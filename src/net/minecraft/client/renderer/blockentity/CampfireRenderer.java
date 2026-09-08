@@ -35,7 +35,7 @@ public class CampfireRenderer implements BlockEntityRenderer<CampfireBlockEntity
       final CampfireRenderState state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
       state.facing = blockEntity.getBlockState().getValue(CampfireBlock.FACING);

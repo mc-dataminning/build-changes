@@ -13,6 +13,6 @@ public class Boat extends AbstractBoat {
 
    @Override
    protected double rideHeight(final EntityDimensions dimensions) {
-      return (double)(dimensions.height() / 3.0F);
+      return dimensions.height() / 3.0F;
    }
 }

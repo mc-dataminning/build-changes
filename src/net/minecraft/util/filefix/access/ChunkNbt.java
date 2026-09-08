@@ -25,12 +25,12 @@ public class ChunkNbt implements AutoCloseable {
       return this.storage.read(pos).thenComposeAsync(maybeTag -> {
          if (maybeTag.isEmpty()) {
             return CompletableFuture.completedFuture(null);
-         } else {
-            CompoundTag tag = maybeTag.get();
-            tag = this.storage.upgradeChunkTag(tag, -1, dataFixContext, this.targetVersion);
-            tag = fixer.apply(tag);
-            return this.storage.write(pos, tag);
          }
+
+         CompoundTag tag = maybeTag.get();
+         tag = this.storage.upgradeChunkTag(tag, -1, dataFixContext, this.targetVersion);
+         tag = fixer.apply(tag);
+         return this.storage.write(pos, tag);
       }, Util.backgroundExecutor());
    }
 

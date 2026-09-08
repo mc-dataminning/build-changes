@@ -525,7 +525,7 @@ public class CaveFeatures {
          SCULK_PATCH_DEEP_DARK, new SequenceFeature(HolderSet.direct(PlacementUtils.inlinePlaced(new SculkPatchFeature(10, 32, 64, 0, 1)), sculkPatchCatalyst))
       );
       Holder<PlacedFeature> sculkPatchShriekers = PlacementUtils.inlinePlaced(
-         new SimpleBlockFeature(BlockStateProvider.of(Blocks.SCULK_SHRIEKER.defaultBlockState().setValue(SculkShriekerBlock.CAN_SUMMON, Boolean.valueOf(true)))),
+         new SimpleBlockFeature(BlockStateProvider.of(Blocks.SCULK_SHRIEKER.defaultBlockState().setValue(SculkShriekerBlock.CAN_SUMMON, true))),
          CountPlacement.of(UniformInt.of(1, 3)),
          OffsetPlacement.of(UniformInt.of(-2, 2), UniformInt.of(-2, 2)),
          BlockPredicateFilter.forPredicate(

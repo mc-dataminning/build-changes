@@ -40,7 +40,7 @@ public class OctreeDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
 
       long colorNum = size + 5L;
       Gizmos.cuboid(
-         aabb.deflate(0.1 * (double)depth),
+         aabb.deflate(0.1 * depth),
          GizmoStyle.stroke(
             ARGB.colorFromFloat(
                fullyVisible ? 0.4F : 1.0F, getColorComponent(colorNum, 0.3F), getColorComponent(colorNum, 0.8F), getColorComponent(colorNum, 0.5F)

@@ -89,21 +89,23 @@ public class EndCrystal extends Entity {
    public final boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
       if (this.isInvulnerableToBase(source)) {
          return false;
-      } else if (source.getEntity() instanceof EnderDragon) {
-         return false;
-      } else {
-         if (!this.isRemoved()) {
-            this.remove(Entity.RemovalReason.KILLED);
-            if (!source.is(DamageTypeTags.IS_EXPLOSION)) {
-               DamageSource damageSource = source.getEntity() != null ? this.damageSources().explosion(this, source.getEntity()) : null;
-               level.explode(this, damageSource, null, this.getX(), this.getY(), this.getZ(), 6.0F, false, Level.ExplosionInteraction.BLOCK);
-            }
+      }
 
-            this.onDestroyedBy(level, source);
+      if (source.getEntity() instanceof EnderDragon) {
+         return false;
+      }
+
+      if (!this.isRemoved()) {
+         this.remove(Entity.RemovalReason.KILLED);
+         if (!source.is(DamageTypeTags.IS_EXPLOSION)) {
+            DamageSource damageSource = source.getEntity() != null ? this.damageSources().explosion(this, source.getEntity()) : null;
+            level.explode(this, damageSource, null, this.getX(), this.getY(), this.getZ(), 6.0F, false, Level.ExplosionInteraction.BLOCK);
          }
 
-         return true;
+         this.onDestroyedBy(level, source);
       }
+
+      return true;
    }
 
    @Override
@@ -119,12 +121,11 @@ public class EndCrystal extends Entity {
       }
    }
 
-   public void setBeamTarget(@Nullable final BlockPos target) {
+   public void setBeamTarget(final @Nullable BlockPos target) {
       this.getEntityData().set(DATA_BEAM_TARGET, Optional.ofNullable(target));
    }
 
-   @Nullable
-   public BlockPos getBeamTarget() {
+   public @Nullable BlockPos getBeamTarget() {
       return this.getEntityData().get(DATA_BEAM_TARGET).orElse(null);
    }
 

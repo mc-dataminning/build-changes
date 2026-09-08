@@ -18,13 +18,13 @@ public class V3807 extends NamespacedSchema {
          map,
          "minecraft:vault",
          () -> DSL.optionalFields(
-               "config",
-               DSL.optionalFields("key_item", References.ITEM_STACK.in(schema)),
-               "server_data",
-               DSL.optionalFields("items_to_eject", DSL.list(References.ITEM_STACK.in(schema))),
-               "shared_data",
-               DSL.optionalFields("display_item", References.ITEM_STACK.in(schema))
-            )
+            "config",
+            DSL.optionalFields("key_item", References.ITEM_STACK.in(schema)),
+            "server_data",
+            DSL.optionalFields("items_to_eject", DSL.list(References.ITEM_STACK.in(schema))),
+            "shared_data",
+            DSL.optionalFields("display_item", References.ITEM_STACK.in(schema))
+         )
       );
       return map;
    }

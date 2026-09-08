@@ -112,9 +112,8 @@ public class ZombieHorse extends AbstractHorse {
       return SoundEvents.ZOMBIE_HORSE_EAT;
    }
 
-   @Nullable
    @Override
-   public AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       return EntityTypes.ZOMBIE_HORSE.create(level, EntitySpawnReason.BREEDING);
    }
 
@@ -129,10 +128,9 @@ public class ZombieHorse extends AbstractHorse {
       this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, i -> i.is(ItemTags.ZOMBIE_HORSE_FOOD), false));
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+   public @Nullable SpawnGroupData finalizeSpawn(
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       if (spawnReason == EntitySpawnReason.NATURAL) {
          Zombie zombie = EntityTypes.ZOMBIE.create(this.level(), EntitySpawnReason.JOCKEY);

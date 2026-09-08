@@ -26,7 +26,7 @@ public class HangingMossBlock extends Block implements BonemealableBlock {
 
    public HangingMossBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(TIP, Boolean.valueOf(true)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(TIP, true));
    }
 
    @Override
@@ -39,9 +39,7 @@ public class HangingMossBlock extends Block implements BonemealableBlock {
       if (random.nextInt(500) == 0) {
          BlockState above = level.getBlockState(pos.above());
          if (above.is(BlockTags.PALE_OAK_LOGS) || above.is(Blocks.PALE_OAK_LEAVES)) {
-            level.playLocalSound(
-               (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), SoundEvents.PALE_HANGING_MOSS_IDLE, SoundSource.AMBIENT, 1.0F, 1.0F, false
-            );
+            level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.PALE_HANGING_MOSS_IDLE, SoundSource.AMBIENT, 1.0F, 1.0F, false);
          }
       }
    }
@@ -77,7 +75,7 @@ public class HangingMossBlock extends Block implements BonemealableBlock {
          ticks.scheduleTick(pos, this, 1);
       }
 
-      return state.setValue(TIP, Boolean.valueOf(!level.getBlockState(pos.below()).is(this)));
+      return state.setValue(TIP, !level.getBlockState(pos.below()).is(this));
    }
 
    @Override
@@ -123,7 +121,7 @@ public class HangingMossBlock extends Block implements BonemealableBlock {
    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state, final BonemealSource source) {
       BlockPos tipPos = this.getTip(level, pos).below();
       if (this.canGrowInto(level.getBlockState(tipPos))) {
-         level.setBlockAndUpdate(tipPos, state.setValue(TIP, Boolean.valueOf(true)));
+         level.setBlockAndUpdate(tipPos, state.setValue(TIP, true));
       }
    }
 }

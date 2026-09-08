@@ -37,14 +37,9 @@ public class SplashManager extends SimplePreparableReloadListener<List<Component
    }
 
    protected List<Component> prepare(final ResourceManager manager, final ProfilerFiller profiler) {
-      try {
-         List var4;
-         try (BufferedReader reader = Minecraft.getInstance().getResourceManager().openAsReader(SPLASHES_LOCATION)) {
-            var4 = reader.lines().map(String::trim).filter(line -> line.hashCode() != 125780783).map(SplashManager::literalSplash).toList();
-         }
-
-         return var4;
-      } catch (IOException var8) {
+      try (BufferedReader reader = Minecraft.getInstance().getResourceManager().openAsReader(SPLASHES_LOCATION)) {
+         return reader.lines().map(String::trim).filter(line -> line.hashCode() != 125780783).map(SplashManager::literalSplash).toList();
+      } catch (IOException ignored) {
          return List.of();
       }
    }
@@ -53,8 +48,7 @@ public class SplashManager extends SimplePreparableReloadListener<List<Component
       this.splashes = List.copyOf(preparations);
    }
 
-   @Nullable
-   public SplashRenderer getSplash() {
+   public @Nullable SplashRenderer getSplash() {
       MonthDay monthDay = SpecialDates.dayNow();
       if (monthDay.equals(SpecialDates.CHRISTMAS)) {
          return SplashRenderer.CHRISTMAS;

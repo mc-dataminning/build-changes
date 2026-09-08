@@ -21,9 +21,8 @@ public class RuleProcessor implements StructureProcessor {
       this.rules = ImmutableList.copyOf(rules);
    }
 
-   @Nullable
    @Override
-   public StructureTemplate.StructureBlockInfo processBlock(
+   public StructureTemplate.@Nullable StructureBlockInfo processBlock(
       final LevelReader level,
       final BlockPos targetPosition,
       final BlockPos referencePos,

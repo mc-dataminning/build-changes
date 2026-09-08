@@ -18,7 +18,7 @@ public record KeyEvent(@InputConstants.Value int key, int keycode, @InputWithMod
    }
 
    @Retention(RetentionPolicy.CLASS)
-   @Target({ElementType.TYPE_USE})
+   @Target(ElementType.TYPE_USE)
    public @interface Action {
    }
 }

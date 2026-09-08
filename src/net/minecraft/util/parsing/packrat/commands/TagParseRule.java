@@ -15,15 +15,14 @@ public class TagParseRule<T> implements Rule<StringReader, Dynamic<?>> {
       this.parser = TagParser.create(ops);
    }
 
-   @Nullable
-   public Dynamic<T> parse(final ParseState<StringReader> state) {
+   public @Nullable Dynamic<T> parse(final ParseState<StringReader> state) {
       state.input().skipWhitespace();
       int mark = state.mark();
 
       try {
          return new Dynamic(this.parser.getOps(), this.parser.parseAsArgument(state.input()));
-      } catch (Exception var4) {
-         state.errorCollector().store(mark, var4);
+      } catch (Exception e) {
+         state.errorCollector().store(mark, e);
          return null;
       }
    }

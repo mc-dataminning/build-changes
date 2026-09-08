@@ -17,6 +17,8 @@ public record Power(Holder<ContextFloatProvider> base, Holder<ContextFloatProvid
 
    @Override
    public float getFloatUnsafe(final LootContext context) {
-      return (float)Math.pow((double)this.base.value().getFloatUnsafe(context), (double)this.exponent.value().getFloatUnsafe(context));
+      float base = this.base.value().getFloatUnsafe(context);
+      float exponent = this.exponent.value().getFloatUnsafe(context);
+      return base == 0.0F && exponent == 0.0F ? Float.NaN : (float)Math.pow(base, exponent);
    }
 }

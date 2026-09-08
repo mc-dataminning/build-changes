@@ -172,8 +172,7 @@ public class Chicken extends Animal {
       this.playSound(this.getSoundSet().stepSound().value(), 0.15F, 1.0F);
    }
 
-   @Nullable
-   public Chicken getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable Chicken getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       Chicken baby = EntityTypes.CHICKEN.create(level, EntitySpawnReason.BREEDING);
       if (baby != null && partner instanceof Chicken partnerChicken) {
          baby.setVariant(this.random.nextBoolean() ? this.getVariant() : partnerChicken.getVariant());
@@ -184,7 +183,7 @@ public class Chicken extends Animal {
 
    @Override
    public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       VariantUtils.selectVariantToSpawn(SpawnContext.create(level, this.blockPosition()), Registries.CHICKEN_VARIANT).ifPresent(this::setVariant);
       this.setSoundVariant(ChickenSoundVariants.pickRandomSoundVariant(this.registryAccess(), level.getRandom()));
@@ -239,9 +238,8 @@ public class Chicken extends Animal {
       return this.entityData.get(DATA_VARIANT_ID);
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       if (type == DataComponents.CHICKEN_VARIANT) {
          return castComponentValue((DataComponentType<T>)type, this.getVariant());
       } else {

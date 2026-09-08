@@ -6,10 +6,10 @@ import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 
 public record RealmsJoinInformation(
-   @Nullable @SerializedName("address") String address,
-   @Nullable @SerializedName("resourcePackUrl") String resourcePackUrl,
-   @Nullable @SerializedName("resourcePackHash") String resourcePackHash,
-   @Nullable @SerializedName("sessionRegionData") RealmsJoinInformation.RegionData regionData
+   @SerializedName("address") @Nullable String address,
+   @SerializedName("resourcePackUrl") @Nullable String resourcePackUrl,
+   @SerializedName("resourcePackHash") @Nullable String resourcePackHash,
+   @SerializedName("sessionRegionData") RealmsJoinInformation.@Nullable RegionData regionData
 ) implements ReflectionBasedSerialization {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static final RealmsJoinInformation EMPTY = new RealmsJoinInformation(null, null, null, null);
@@ -23,14 +23,14 @@ public record RealmsJoinInformation(
          } else {
             return server;
          }
-      } catch (Exception var3) {
-         LOGGER.error("Could not parse RealmsServerAddress", var3);
+      } catch (Exception e) {
+         LOGGER.error("Could not parse RealmsServerAddress", e);
          return EMPTY;
       }
    }
 
-   public static record RegionData(
-      @Nullable @SerializedName("regionName") RealmsRegion region, @Nullable @SerializedName("serviceQuality") ServiceQuality serviceQuality
+   public record RegionData(
+      @SerializedName("regionName") @Nullable RealmsRegion region, @SerializedName("serviceQuality") @Nullable ServiceQuality serviceQuality
    ) implements ReflectionBasedSerialization {
    }
 }

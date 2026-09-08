@@ -25,10 +25,10 @@ public class PlayerTrigger extends SimpleCriterionTrigger<PlayerTrigger.TriggerI
       this.trigger(player, t -> true);
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player) implements SimpleCriterionTrigger.SimpleInstance {
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player) implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<PlayerTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(LootItemCondition.CODEC.optionalFieldOf("player").forGetter(PlayerTrigger.TriggerInstance::player))
-               .apply(i, PlayerTrigger.TriggerInstance::new)
+            .apply(i, PlayerTrigger.TriggerInstance::new)
       );
 
       public static Criterion<PlayerTrigger.TriggerInstance> located(final LocationPredicate.Builder location) {

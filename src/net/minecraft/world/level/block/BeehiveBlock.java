@@ -68,7 +68,7 @@ public class BeehiveBlock extends BaseEntityBlock {
 
    public BeehiveBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(HONEY_LEVEL, Integer.valueOf(0)).setValue(FACING, Direction.NORTH));
+      this.registerDefaultState(this.stateDefinition.any().setValue(HONEY_LEVEL, 0).setValue(FACING, Direction.NORTH));
    }
 
    @Override
@@ -87,7 +87,7 @@ public class BeehiveBlock extends BaseEntityBlock {
       final ServerPlayer player,
       final BlockPos pos,
       final BlockState state,
-      @Nullable final BlockEntity blockEntity,
+      final @Nullable BlockEntity blockEntity,
       final ItemStack destroyedWith
    ) {
       super.playerDestroy(level, player, pos, state, blockEntity, destroyedWith);
@@ -132,8 +132,8 @@ public class BeehiveBlock extends BaseEntityBlock {
       final ServerLevel level,
       final ItemStack tool,
       final BlockState blockState,
-      @Nullable final BlockEntity blockEntity,
-      @Nullable final Entity entity,
+      final @Nullable BlockEntity blockEntity,
+      final @Nullable Entity entity,
       final BlockPos pos
    ) {
       dropFromBlockInteractLootTable(
@@ -154,30 +154,24 @@ public class BeehiveBlock extends BaseEntityBlock {
       int honeyLevel = state.getValue(HONEY_LEVEL);
       boolean hiveEmptied = false;
       if (honeyLevel >= 5) {
-         Item item;
-         label40: {
-            item = itemStack.getItem();
-            if (level instanceof ServerLevel serverLevel && itemStack.is(Items.SHEARS)) {
-               dropHoneycomb(serverLevel, itemStack, state, level.getBlockEntity(pos), player, pos);
-               level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.BEEHIVE_SHEAR, SoundSource.BLOCKS, 1.0F, 1.0F);
-               itemStack.hurtAndBreak(1, player, hand.asEquipmentSlot());
-               hiveEmptied = true;
-               level.gameEvent(player, GameEvent.SHEAR, pos);
-               break label40;
+         Item item = itemStack.getItem();
+         if (level instanceof ServerLevel serverLevel && itemStack.is(Items.SHEARS)) {
+            dropHoneycomb(serverLevel, itemStack, state, level.getBlockEntity(pos), player, pos);
+            level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.BEEHIVE_SHEAR, SoundSource.BLOCKS, 1.0F, 1.0F);
+            itemStack.hurtAndBreak(1, player, hand.asEquipmentSlot());
+            hiveEmptied = true;
+            level.gameEvent(player, GameEvent.SHEAR, pos);
+         } else if (itemStack.is(Items.GLASS_BOTTLE)) {
+            itemStack.shrink(1);
+            level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
+            if (itemStack.isEmpty()) {
+               player.setItemInHand(hand, new ItemStack(Items.HONEY_BOTTLE));
+            } else if (!player.getInventory().add(new ItemStack(Items.HONEY_BOTTLE))) {
+               player.drop(new ItemStack(Items.HONEY_BOTTLE), false, Prediction.PREDICTED);
             }
 
-            if (itemStack.is(Items.GLASS_BOTTLE)) {
-               itemStack.shrink(1);
-               level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-               if (itemStack.isEmpty()) {
-                  player.setItemInHand(hand, new ItemStack(Items.HONEY_BOTTLE));
-               } else if (!player.getInventory().add(new ItemStack(Items.HONEY_BOTTLE))) {
-                  player.drop(new ItemStack(Items.HONEY_BOTTLE), false, Prediction.PREDICTED);
-               }
-
-               hiveEmptied = true;
-               level.gameEvent(player, GameEvent.FLUID_PICKUP, pos);
-            }
+            hiveEmptied = true;
+            level.gameEvent(player, GameEvent.FLUID_PICKUP, pos);
          }
 
          if (!level.isClientSide() && hiveEmptied) {
@@ -207,7 +201,7 @@ public class BeehiveBlock extends BaseEntityBlock {
    }
 
    public void releaseBeesAndResetHoneyLevel(
-      final Level level, final BlockState state, final BlockPos pos, @Nullable final Player player, final BeehiveBlockEntity.BeeReleaseStatus beeReleaseStatus
+      final Level level, final BlockState state, final BlockPos pos, final @Nullable Player player, final BeehiveBlockEntity.BeeReleaseStatus beeReleaseStatus
    ) {
       this.resetHoneyLevel(level, state, pos);
       if (level.getBlockEntity(pos) instanceof BeehiveBlockEntity beehiveBlockEntity) {
@@ -216,7 +210,7 @@ public class BeehiveBlock extends BaseEntityBlock {
    }
 
    public void resetHoneyLevel(final Level level, final BlockState state, final BlockPos pos) {
-      level.setBlockAndUpdate(pos, state.setValue(HONEY_LEVEL, Integer.valueOf(0)));
+      level.setBlockAndUpdate(pos, state.setValue(HONEY_LEVEL, 0));
    }
 
    @Override
@@ -235,14 +229,14 @@ public class BeehiveBlock extends BaseEntityBlock {
          if (topSideHeight >= 1.0 && !state.is(BlockTags.IMPERMEABLE)) {
             double bottomSideHeight = collisionShape.min(Direction.Axis.Y);
             if (bottomSideHeight > 0.0) {
-               this.spawnParticle(level, pos, collisionShape, (double)pos.getY() + bottomSideHeight - 0.05);
+               this.spawnParticle(level, pos, collisionShape, pos.getY() + bottomSideHeight - 0.05);
             } else {
                BlockPos below = pos.below();
                BlockState belowState = level.getBlockState(below);
                VoxelShape belowShape = belowState.getCollisionShape(level, below);
                double belowTopSideHeight = belowShape.max(Direction.Axis.Y);
                if ((belowTopSideHeight < 1.0 || !belowState.isCollisionShapeFullBlock(level, below)) && belowState.getFluidState().isEmpty()) {
-                  this.spawnParticle(level, pos, collisionShape, (double)pos.getY() - 0.05);
+                  this.spawnParticle(level, pos, collisionShape, pos.getY() - 0.05);
                }
             }
          }
@@ -252,10 +246,10 @@ public class BeehiveBlock extends BaseEntityBlock {
    private void spawnParticle(final Level level, final BlockPos pos, final VoxelShape dripShape, final double height) {
       this.spawnFluidParticle(
          level,
-         (double)pos.getX() + dripShape.min(Direction.Axis.X),
-         (double)pos.getX() + dripShape.max(Direction.Axis.X),
-         (double)pos.getZ() + dripShape.min(Direction.Axis.Z),
-         (double)pos.getZ() + dripShape.max(Direction.Axis.Z),
+         pos.getX() + dripShape.min(Direction.Axis.X),
+         pos.getX() + dripShape.max(Direction.Axis.X),
+         pos.getZ() + dripShape.min(Direction.Axis.Z),
+         pos.getZ() + dripShape.max(Direction.Axis.Z),
          height
       );
    }
@@ -276,15 +270,13 @@ public class BeehiveBlock extends BaseEntityBlock {
       builder.add(HONEY_LEVEL, FACING);
    }
 
-   @Nullable
    @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
+   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
       return new BeehiveBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return level.isClientSide() ? null : createTickerHelper(type, BlockEntityTypes.BEEHIVE, BeehiveBlockEntity::serverTick);
    }
 
@@ -300,7 +292,7 @@ public class BeehiveBlock extends BaseEntityBlock {
             ItemStack itemStack = new ItemStack(this);
             itemStack.applyComponents(beehiveBlockEntity.collectComponents());
             itemStack.set(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY.with(HONEY_LEVEL, honeyLevel));
-            ItemEntity entity = new ItemEntity(level, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), itemStack);
+            ItemEntity entity = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), itemStack);
             entity.setDefaultPickUpDelay();
             level.addFreshEntity(entity);
          }

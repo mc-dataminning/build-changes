@@ -29,8 +29,7 @@ public record ClientboundMoveMinecartPacket(int entityId, List<NewMinecartBehavi
       listener.handleMinecartAlongTrack(this);
    }
 
-   @Nullable
-   public Entity getEntity(final Level level) {
+   public @Nullable Entity getEntity(final Level level) {
       return level.getEntity(this.entityId);
    }
 }

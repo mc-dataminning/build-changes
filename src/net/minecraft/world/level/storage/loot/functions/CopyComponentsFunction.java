@@ -28,19 +28,19 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 public class CopyComponentsFunction extends LootItemConditionalFunction {
    private static final Codec<LootContextArg<DataComponentGetter>> GETTER_CODEC = LootContextArg.createArgCodec(
       builder -> builder.anyEntity(CopyComponentsFunction.DirectSource::new)
-            .anyBlockEntity(CopyComponentsFunction.BlockEntitySource::new)
-            .anyItemStack(CopyComponentsFunction.DirectSource::new)
+         .anyBlockEntity(CopyComponentsFunction.BlockEntitySource::new)
+         .anyItemStack(CopyComponentsFunction.DirectSource::new)
    );
    public static final MapCodec<CopyComponentsFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
-            .and(
-               i.group(
-                  GETTER_CODEC.fieldOf("source").forGetter(f -> f.source),
-                  DataComponentType.CODEC.listOf().optionalFieldOf("include").forGetter(f -> f.include),
-                  DataComponentType.CODEC.listOf().optionalFieldOf("exclude").forGetter(f -> f.exclude)
-               )
+         .and(
+            i.group(
+               GETTER_CODEC.fieldOf("source").forGetter(f -> f.source),
+               DataComponentType.CODEC.listOf().optionalFieldOf("include").forGetter(f -> f.include),
+               DataComponentType.CODEC.listOf().optionalFieldOf("exclude").forGetter(f -> f.exclude)
             )
-            .apply(i, CopyComponentsFunction::new)
+         )
+         .apply(i, CopyComponentsFunction::new)
    );
    private final LootContextArg<DataComponentGetter> source;
    private final Optional<List<DataComponentType<?>>> include;
@@ -103,7 +103,7 @@ public class CopyComponentsFunction extends LootItemConditionalFunction {
       return new CopyComponentsFunction.Builder(new CopyComponentsFunction.BlockEntitySource(source));
    }
 
-   private static record BlockEntitySource(ContextKey<? extends BlockEntity> contextParam) implements LootContextArg.Getter<BlockEntity, DataComponentGetter> {
+   private record BlockEntitySource(ContextKey<? extends BlockEntity> contextParam) implements LootContextArg.Getter<BlockEntity, DataComponentGetter> {
       public DataComponentGetter get(final BlockEntity blockEntity) {
          return blockEntity.collectComponents();
       }
@@ -151,8 +151,7 @@ public class CopyComponentsFunction extends LootItemConditionalFunction {
       }
    }
 
-   private static record DirectSource<T extends DataComponentGetter>(ContextKey<? extends T> contextParam)
-      implements LootContextArg.Getter<T, DataComponentGetter> {
+   private record DirectSource<T extends DataComponentGetter>(ContextKey<? extends T> contextParam) implements LootContextArg.Getter<T, DataComponentGetter> {
       public DataComponentGetter get(final T value) {
          return value;
       }

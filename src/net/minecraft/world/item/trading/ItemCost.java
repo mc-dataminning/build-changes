@@ -6,7 +6,6 @@ import java.util.Optional;
 import java.util.function.UnaryOperator;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentExactPredicate;
-import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -18,11 +17,11 @@ import net.minecraft.world.level.ItemLike;
 public record ItemCost(Holder<Item> item, int count, DataComponentExactPredicate components, ItemStack itemStack) {
    public static final Codec<ItemCost> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Item.CODEC.fieldOf("id").forGetter(ItemCost::item),
-               ExtraCodecs.optionalAlwaysPresentFieldOf(ExtraCodecs.POSITIVE_INT, "count", 1).forGetter(ItemCost::count),
-               DataComponentExactPredicate.CODEC.optionalFieldOf("components", DataComponentExactPredicate.EMPTY).forGetter(ItemCost::components)
-            )
-            .apply(i, ItemCost::new)
+            Item.CODEC.fieldOf("id").forGetter(ItemCost::item),
+            ExtraCodecs.optionalAlwaysPresentFieldOf(ExtraCodecs.POSITIVE_INT, "count", 1).forGetter(ItemCost::count),
+            DataComponentExactPredicate.CODEC.optionalFieldOf("components", DataComponentExactPredicate.EMPTY).forGetter(ItemCost::components)
+         )
+         .apply(i, ItemCost::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, ItemCost> STREAM_CODEC = StreamCodec.composite(
       Item.STREAM_CODEC, ItemCost::item, ByteBufCodecs.VAR_INT, ItemCost::count, DataComponentExactPredicate.STREAM_CODEC, ItemCost::components, ItemCost::new
@@ -50,6 +49,6 @@ public record ItemCost(Holder<Item> item, int count, DataComponentExactPredicate
    }
 
    public boolean test(final ItemStack itemStack) {
-      return itemStack.is(this.item) && this.components.test((DataComponentGetter)itemStack);
+      return itemStack.is(this.item) && this.components.test(itemStack);
    }
 }

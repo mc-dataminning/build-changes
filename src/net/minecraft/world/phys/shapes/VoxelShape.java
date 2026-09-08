@@ -20,8 +20,7 @@ import org.jspecify.annotations.Nullable;
 
 public abstract class VoxelShape {
    protected final DiscreteVoxelShape shape;
-   @Nullable
-   private VoxelShape[] faces;
+   private @Nullable VoxelShape @Nullable [] faces;
 
    protected VoxelShape(final DiscreteVoxelShape shape) {
       this.shape = shape;
@@ -80,18 +79,18 @@ public abstract class VoxelShape {
    }
 
    public VoxelShape move(final Vec3i delta) {
-      return this.move((double)delta.getX(), (double)delta.getY(), (double)delta.getZ());
+      return this.move(delta.getX(), delta.getY(), delta.getZ());
    }
 
    public VoxelShape move(final double dx, final double dy, final double dz) {
-      return (VoxelShape)(this.isEmpty()
+      return this.isEmpty()
          ? Shapes.empty()
          : new ArrayVoxelShape(
             this.shape,
             new OffsetDoubleList(this.getCoords(Direction.Axis.X), dx),
             new OffsetDoubleList(this.getCoords(Direction.Axis.Y), dy),
             new OffsetDoubleList(this.getCoords(Direction.Axis.Z), dz)
-         ));
+         );
    }
 
    public VoxelShape optimize() {
@@ -104,13 +103,13 @@ public abstract class VoxelShape {
       this.shape
          .forAllEdges(
             (xi1, yi1, zi1, xi2, yi2, zi2) -> consumer.consume(
-                  this.get(Direction.Axis.X, xi1),
-                  this.get(Direction.Axis.Y, yi1),
-                  this.get(Direction.Axis.Z, zi1),
-                  this.get(Direction.Axis.X, xi2),
-                  this.get(Direction.Axis.Y, yi2),
-                  this.get(Direction.Axis.Z, zi2)
-               ),
+               this.get(Direction.Axis.X, xi1),
+               this.get(Direction.Axis.Y, yi1),
+               this.get(Direction.Axis.Z, zi1),
+               this.get(Direction.Axis.X, xi2),
+               this.get(Direction.Axis.Y, yi2),
+               this.get(Direction.Axis.Z, zi2)
+            ),
             true
          );
    }
@@ -122,13 +121,8 @@ public abstract class VoxelShape {
       this.shape
          .forAllBoxes(
             (xi1, yi1, zi1, xi2, yi2, zi2) -> consumer.consume(
-                  xCoords.getDouble(xi1),
-                  yCoords.getDouble(yi1),
-                  zCoords.getDouble(zi1),
-                  xCoords.getDouble(xi2),
-                  yCoords.getDouble(yi2),
-                  zCoords.getDouble(zi2)
-               ),
+               xCoords.getDouble(xi1), yCoords.getDouble(yi1), zCoords.getDouble(zi1), xCoords.getDouble(xi2), yCoords.getDouble(yi2), zCoords.getDouble(zi2)
+            ),
             true
          );
    }
@@ -161,44 +155,43 @@ public abstract class VoxelShape {
       return Mth.binarySearch(0, this.shape.getSize(axis) + 1, index -> coord < this.get(axis, index)) - 1;
    }
 
-   @Nullable
-   public BlockHitResult clip(final Vec3 from, final Vec3 to, final BlockPos pos) {
+   public @Nullable BlockHitResult clip(final Vec3 from, final Vec3 to, final BlockPos pos) {
       if (this.isEmpty()) {
          return null;
-      } else {
-         Vec3 diff = to.subtract(from);
-         if (diff.lengthSqr() < 1.0E-7) {
-            return null;
-         } else {
-            Vec3 testPoint = from.add(diff.scale(0.001));
-            return this.shape
-                  .isFullWide(
-                     this.findIndex(Direction.Axis.X, testPoint.x - (double)pos.getX()),
-                     this.findIndex(Direction.Axis.Y, testPoint.y - (double)pos.getY()),
-                     this.findIndex(Direction.Axis.Z, testPoint.z - (double)pos.getZ())
-                  )
-               ? new BlockHitResult(testPoint, Direction.getApproximateNearest(diff.x, diff.y, diff.z).getOpposite(), pos, true)
-               : AABB.clip(this.toAabbs(), from, to, pos);
-         }
       }
+
+      Vec3 diff = to.subtract(from);
+      if (diff.lengthSqr() < 1.0E-7) {
+         return null;
+      }
+
+      Vec3 testPoint = from.add(diff.scale(0.001));
+      return this.shape
+            .isFullWide(
+               this.findIndex(Direction.Axis.X, testPoint.x - pos.getX()),
+               this.findIndex(Direction.Axis.Y, testPoint.y - pos.getY()),
+               this.findIndex(Direction.Axis.Z, testPoint.z - pos.getZ())
+            )
+         ? new BlockHitResult(testPoint, Direction.getApproximateNearest(diff.x, diff.y, diff.z).getOpposite(), pos, true)
+         : AABB.clip(this.toAabbs(), from, to, pos);
    }
 
    public Optional<Vec3> closestPointTo(final Vec3 point) {
       if (this.isEmpty()) {
          return Optional.empty();
-      } else {
-         MutableObject<Vec3> closest = new MutableObject();
-         this.forAllBoxes((x1, y1, z1, x2, y2, z2) -> {
-            double x = Mth.clamp(point.x(), x1, x2);
-            double y = Mth.clamp(point.y(), y1, y2);
-            double z = Mth.clamp(point.z(), z1, z2);
-            Vec3 currentClosest = (Vec3)closest.get();
-            if (currentClosest == null || point.distanceToSqr(x, y, z) < point.distanceToSqr(currentClosest)) {
-               closest.setValue(new Vec3(x, y, z));
-            }
-         });
-         return Optional.of(Objects.requireNonNull((Vec3)closest.get()));
       }
+
+      MutableObject<Vec3> closest = new MutableObject();
+      this.forAllBoxes((x1, y1, z1, x2, y2, z2) -> {
+         double x = Mth.clamp(point.x(), x1, x2);
+         double y = Mth.clamp(point.y(), y1, y2);
+         double z = Mth.clamp(point.z(), z1, z2);
+         Vec3 currentClosest = (Vec3)closest.get();
+         if (currentClosest == null || point.distanceToSqr(x, y, z) < point.distanceToSqr(currentClosest)) {
+            closest.setValue(new Vec3(x, y, z));
+         }
+      });
+      return Optional.of(Objects.requireNonNull((Vec3)closest.get()));
    }
 
    public VoxelShape getFaceShape(final Direction direction) {
@@ -231,7 +224,7 @@ public abstract class VoxelShape {
          if (slice.isEmpty()) {
             return Shapes.empty();
          } else {
-            return (VoxelShape)(slice.isCubeLike() ? Shapes.block() : slice);
+            return slice.isCubeLike() ? Shapes.block() : slice;
          }
       }
    }
@@ -258,56 +251,58 @@ public abstract class VoxelShape {
    protected double collideX(final AxisCycle transform, final AABB moving, double distance) {
       if (this.isEmpty()) {
          return distance;
-      } else if (Math.abs(distance) < 1.0E-7) {
+      }
+
+      if (Math.abs(distance) < 1.0E-7) {
          return 0.0;
-      } else {
-         AxisCycle inverse = transform.inverse();
-         Direction.Axis aAxis = inverse.cycle(Direction.Axis.X);
-         Direction.Axis bAxis = inverse.cycle(Direction.Axis.Y);
-         Direction.Axis cAxis = inverse.cycle(Direction.Axis.Z);
-         double maxA = moving.max(aAxis);
-         double minA = moving.min(aAxis);
-         int aMin = this.findIndex(aAxis, minA + 1.0E-7);
-         int aMax = this.findIndex(aAxis, maxA - 1.0E-7);
-         int bMin = Math.max(0, this.findIndex(bAxis, moving.min(bAxis) + 1.0E-7));
-         int bMax = Math.min(this.shape.getSize(bAxis), this.findIndex(bAxis, moving.max(bAxis) - 1.0E-7) + 1);
-         int cMin = Math.max(0, this.findIndex(cAxis, moving.min(cAxis) + 1.0E-7));
-         int cMax = Math.min(this.shape.getSize(cAxis), this.findIndex(cAxis, moving.max(cAxis) - 1.0E-7) + 1);
-         int aSize = this.shape.getSize(aAxis);
-         if (distance > 0.0) {
-            for (int a = aMax + 1; a < aSize; a++) {
-               for (int b = bMin; b < bMax; b++) {
-                  for (int c = cMin; c < cMax; c++) {
-                     if (this.shape.isFullWide(inverse, a, b, c)) {
-                        double newDistance = this.get(aAxis, a) - maxA;
-                        if (newDistance >= -1.0E-7) {
-                           distance = Math.min(distance, newDistance);
-                        }
+      }
 
-                        return distance;
+      AxisCycle inverse = transform.inverse();
+      Direction.Axis aAxis = inverse.cycle(Direction.Axis.X);
+      Direction.Axis bAxis = inverse.cycle(Direction.Axis.Y);
+      Direction.Axis cAxis = inverse.cycle(Direction.Axis.Z);
+      double maxA = moving.max(aAxis);
+      double minA = moving.min(aAxis);
+      int aMin = this.findIndex(aAxis, minA + 1.0E-7);
+      int aMax = this.findIndex(aAxis, maxA - 1.0E-7);
+      int bMin = Math.max(0, this.findIndex(bAxis, moving.min(bAxis) + 1.0E-7));
+      int bMax = Math.min(this.shape.getSize(bAxis), this.findIndex(bAxis, moving.max(bAxis) - 1.0E-7) + 1);
+      int cMin = Math.max(0, this.findIndex(cAxis, moving.min(cAxis) + 1.0E-7));
+      int cMax = Math.min(this.shape.getSize(cAxis), this.findIndex(cAxis, moving.max(cAxis) - 1.0E-7) + 1);
+      int aSize = this.shape.getSize(aAxis);
+      if (distance > 0.0) {
+         for (int a = aMax + 1; a < aSize; a++) {
+            for (int b = bMin; b < bMax; b++) {
+               for (int c = cMin; c < cMax; c++) {
+                  if (this.shape.isFullWide(inverse, a, b, c)) {
+                     double newDistance = this.get(aAxis, a) - maxA;
+                     if (newDistance >= -1.0E-7) {
+                        distance = Math.min(distance, newDistance);
                      }
-                  }
-               }
-            }
-         } else if (distance < 0.0) {
-            for (int a = aMin - 1; a >= 0; a--) {
-               for (int b = bMin; b < bMax; b++) {
-                  for (int cx = cMin; cx < cMax; cx++) {
-                     if (this.shape.isFullWide(inverse, a, b, cx)) {
-                        double newDistance = this.get(aAxis, a + 1) - minA;
-                        if (newDistance <= 1.0E-7) {
-                           distance = Math.max(distance, newDistance);
-                        }
 
-                        return distance;
-                     }
+                     return distance;
                   }
                }
             }
          }
+      } else if (distance < 0.0) {
+         for (int a = aMin - 1; a >= 0; a--) {
+            for (int b = bMin; b < bMax; b++) {
+               for (int c = cMin; c < cMax; c++) {
+                  if (this.shape.isFullWide(inverse, a, b, c)) {
+                     double newDistance = this.get(aAxis, a + 1) - minA;
+                     if (newDistance <= 1.0E-7) {
+                        distance = Math.max(distance, newDistance);
+                     }
 
-         return distance;
+                     return distance;
+                  }
+               }
+            }
+         }
       }
+
+      return distance;
    }
 
    @Override

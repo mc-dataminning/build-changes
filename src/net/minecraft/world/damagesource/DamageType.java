@@ -12,13 +12,13 @@ import net.minecraft.network.codec.StreamCodec;
 public record DamageType(String msgId, DamageScaling scaling, float exhaustion, DamageEffects effects, DeathMessageType deathMessageType) {
    public static final Codec<DamageType> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.STRING.fieldOf("message_id").forGetter(DamageType::msgId),
-               DamageScaling.CODEC.fieldOf("scaling").forGetter(DamageType::scaling),
-               Codec.FLOAT.fieldOf("exhaustion").forGetter(DamageType::exhaustion),
-               DamageEffects.CODEC.optionalFieldOf("effects", DamageEffects.HURT).forGetter(DamageType::effects),
-               DeathMessageType.CODEC.optionalFieldOf("death_message_type", DeathMessageType.DEFAULT).forGetter(DamageType::deathMessageType)
-            )
-            .apply(i, DamageType::new)
+            Codec.STRING.fieldOf("message_id").forGetter(DamageType::msgId),
+            DamageScaling.CODEC.fieldOf("scaling").forGetter(DamageType::scaling),
+            Codec.FLOAT.fieldOf("exhaustion").forGetter(DamageType::exhaustion),
+            DamageEffects.CODEC.optionalFieldOf("effects", DamageEffects.HURT).forGetter(DamageType::effects),
+            DeathMessageType.CODEC.optionalFieldOf("death_message_type", DeathMessageType.DEFAULT).forGetter(DamageType::deathMessageType)
+         )
+         .apply(i, DamageType::new)
    );
    public static final Codec<Holder<DamageType>> CODEC = RegistryCodecs.holder(Registries.DAMAGE_TYPE);
    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<DamageType>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.DAMAGE_TYPE);

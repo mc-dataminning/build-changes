@@ -4,6 +4,7 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.List;
 import java.util.ListIterator;
 import net.minecraft.world.phys.Vec3;
+import org.jspecify.annotations.Nullable;
 
 public class SectionTaskDynamicQueue {
    private static final int MAX_RECOMPILE_QUOTA = 2;
@@ -14,7 +15,7 @@ public class SectionTaskDynamicQueue {
       this.tasks.add(task);
    }
 
-   public synchronized SectionRenderDispatcher.RenderSection.SectionTask poll(final Vec3 cameraPos) {
+   public synchronized SectionRenderDispatcher.RenderSection.@Nullable SectionTask poll(final Vec3 cameraPos) {
       int bestInitialCompileTaskIndex = -1;
       int bestRecompileTaskIndex = -1;
       double bestInitialCompileDistance = Double.MAX_VALUE;
@@ -55,7 +56,7 @@ public class SectionTaskDynamicQueue {
       return this.tasks.size();
    }
 
-   private SectionRenderDispatcher.RenderSection.SectionTask removeTaskByIndex(final int taskIndex) {
+   private SectionRenderDispatcher.RenderSection.@Nullable SectionTask removeTaskByIndex(final int taskIndex) {
       return taskIndex >= 0 ? this.tasks.remove(taskIndex) : null;
    }
 

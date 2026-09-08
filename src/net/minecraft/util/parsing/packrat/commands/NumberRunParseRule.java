@@ -18,8 +18,7 @@ public abstract class NumberRunParseRule implements Rule<StringReader, String> {
       this.underscoreNotAllowedError = underscoreNotAllowedError;
    }
 
-   @Nullable
-   public String parse(final ParseState<StringReader> state) {
+   public @Nullable String parse(final ParseState<StringReader> state) {
       StringReader input = state.input();
       input.skipWhitespace();
       String fullString = input.getString();

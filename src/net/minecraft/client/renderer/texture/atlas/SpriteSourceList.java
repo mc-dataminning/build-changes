@@ -13,7 +13,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Map.Entry;
 import java.util.function.Predicate;
 import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
@@ -36,10 +35,6 @@ public class SpriteSourceList {
    public List<SpriteSource.Loader> list(final ResourceManager resourceManager) {
       final Map<Identifier, SpriteSource.DiscardableLoader> sprites = new HashMap<>();
       SpriteSource.Output output = new SpriteSource.Output() {
-         {
-            Objects.requireNonNull(SpriteSourceList.this);
-         }
-
          @Override
          public void add(final Identifier id, final SpriteSource.DiscardableLoader sprite) {
             SpriteSource.DiscardableLoader previous = sprites.put(id, sprite);
@@ -76,8 +71,8 @@ public class SpriteSourceList {
          try (BufferedReader reader = entry.openAsReader()) {
             Dynamic<JsonElement> contents = new Dynamic(JsonOps.INSTANCE, StrictJsonParser.parse(reader));
             loaders.addAll((Collection<? extends SpriteSource>)SpriteSources.FILE_CODEC.parse(contents).getOrThrow());
-         } catch (Exception var11) {
-            LOGGER.error("Failed to parse atlas definition {} in pack {}", new Object[]{resourceId, entry.sourcePackId(), var11});
+         } catch (Exception e) {
+            LOGGER.error("Failed to parse atlas definition {} in pack {}", new Object[]{resourceId, entry.sourcePackId(), e});
          }
       }
 

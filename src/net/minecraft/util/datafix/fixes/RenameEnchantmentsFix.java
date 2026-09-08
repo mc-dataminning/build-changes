@@ -36,18 +36,18 @@ public class RenameEnchantmentsFix extends DataFix {
       return itemStack.update(
          field,
          tag -> (Dynamic)tag.asStreamOpt()
-               .map(
-                  s -> s.map(
-                        element -> element.update(
-                              "id",
-                              id -> (Dynamic)id.asString()
-                                    .map(stringId -> element.createString(this.renames.getOrDefault(NamespacedSchema.ensureNamespaced(stringId), stringId)))
-                                    .mapOrElse(Function.identity(), fail -> id)
-                           )
-                     )
+            .map(
+               s -> s.map(
+                  element -> element.update(
+                     "id",
+                     id -> (Dynamic)id.asString()
+                        .map(stringId -> element.createString(this.renames.getOrDefault(NamespacedSchema.ensureNamespaced(stringId), stringId)))
+                        .mapOrElse(Function.identity(), fail -> id)
+                  )
                )
-               .map(tag::createList)
-               .mapOrElse(Function.identity(), fail -> tag)
+            )
+            .map(tag::createList)
+            .mapOrElse(Function.identity(), fail -> tag)
       );
    }
 }

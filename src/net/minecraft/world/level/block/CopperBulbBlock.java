@@ -20,7 +20,7 @@ public class CopperBulbBlock extends Block {
 
    public CopperBulbBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.defaultBlockState().setValue(LIT, Boolean.valueOf(false)).setValue(POWERED, Boolean.valueOf(false)));
+      this.registerDefaultState(this.defaultBlockState().setValue(LIT, false).setValue(POWERED, false));
    }
 
    @Override
@@ -32,7 +32,7 @@ public class CopperBulbBlock extends Block {
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       if (level instanceof ServerLevel serverLevel) {
          this.checkAndFlip(state, serverLevel, pos);
@@ -44,11 +44,11 @@ public class CopperBulbBlock extends Block {
       if (signal != state.getValue(POWERED)) {
          BlockState newState = state;
          if (!state.getValue(POWERED)) {
-            newState = state.cycle(LIT);
+            newState = newState.cycle(LIT);
             level.playSound(null, pos, newState.getValue(LIT) ? SoundEvents.COPPER_BULB_TURN_ON : SoundEvents.COPPER_BULB_TURN_OFF, SoundSource.BLOCKS);
          }
 
-         level.setBlockAndUpdate(pos, newState.setValue(POWERED, Boolean.valueOf(signal)));
+         level.setBlockAndUpdate(pos, newState.setValue(POWERED, signal));
       }
    }
 

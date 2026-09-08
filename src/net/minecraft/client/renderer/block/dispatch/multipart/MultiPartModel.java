@@ -7,7 +7,6 @@ import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.BitSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Predicate;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
@@ -23,8 +22,7 @@ import org.jspecify.annotations.Nullable;
 public class MultiPartModel implements BlockStateModel {
    private final MultiPartModel.SharedBakedState shared;
    private final BlockState blockState;
-   @Nullable
-   private List<BlockStateModel> models;
+   private @Nullable List<BlockStateModel> models;
 
    private MultiPartModel(final MultiPartModel.SharedBakedState shared, final BlockState blockState) {
       this.shared = shared;
@@ -36,9 +34,8 @@ public class MultiPartModel implements BlockStateModel {
       return this.shared.particleMaterial;
    }
 
-   @BakedQuad.MaterialFlags
    @Override
-   public int materialFlags() {
+   public @BakedQuad.MaterialFlags int materialFlags() {
       return this.shared.materialFlags;
    }
 
@@ -56,7 +53,7 @@ public class MultiPartModel implements BlockStateModel {
       }
    }
 
-   public static record Selector<T>(Predicate<BlockState> condition, T model) {
+   public record Selector<T>(Predicate<BlockState> condition, T model) {
       public <S> MultiPartModel.Selector<S> with(final S newModel) {
          return new MultiPartModel.Selector<>(this.condition, newModel);
       }
@@ -65,8 +62,7 @@ public class MultiPartModel implements BlockStateModel {
    private static final class SharedBakedState {
       private final List<MultiPartModel.Selector<BlockStateModel>> selectors;
       private final Material.Baked particleMaterial;
-      @BakedQuad.MaterialFlags
-      private final int materialFlags;
+      private final @BakedQuad.MaterialFlags int materialFlags;
       private final Map<BitSet, List<BlockStateModel>> subsets = new ConcurrentHashMap<>();
 
       private static BlockStateModel getFirstModel(final List<MultiPartModel.Selector<BlockStateModel>> selectors) {
@@ -77,8 +73,7 @@ public class MultiPartModel implements BlockStateModel {
          }
       }
 
-      @BakedQuad.MaterialFlags
-      private static int computeMaterialFlags(final List<MultiPartModel.Selector<BlockStateModel>> selectors) {
+      private static @BakedQuad.MaterialFlags int computeMaterialFlags(final List<MultiPartModel.Selector<BlockStateModel>> selectors) {
          int flags = 0;
 
          for (MultiPartModel.Selector<BlockStateModel> selector : selectors) {
@@ -123,10 +118,6 @@ public class MultiPartModel implements BlockStateModel {
       private final ModelBaker.SharedOperationKey<MultiPartModel.SharedBakedState> sharedStateKey = new ModelBaker.SharedOperationKey<MultiPartModel.SharedBakedState>(
          
       ) {
-         {
-            Objects.requireNonNull(Unbaked.this);
-         }
-
          public MultiPartModel.SharedBakedState compute(final ModelBaker modelBakery) {
             Builder<MultiPartModel.Selector<BlockStateModel>> selectors = ImmutableList.builderWithExpectedSize(Unbaked.this.selectors.size());
 

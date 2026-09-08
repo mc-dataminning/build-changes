@@ -11,7 +11,6 @@ import it.unimi.dsi.fastutil.objects.Reference2IntMap.Entry;
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.List;
-import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 
 public class StackedContents<T> {
@@ -33,13 +32,13 @@ public class StackedContents<T> {
    }
 
    public boolean tryPick(
-      final List<? extends StackedContents.IngredientInfo<T>> ingredients, final int amount, @Nullable final StackedContents.Output<T> output
+      final List<? extends StackedContents.IngredientInfo<T>> ingredients, final int amount, final StackedContents.@Nullable Output<T> output
    ) {
       return new StackedContents.RecipePicker(ingredients).tryPick(amount, output);
    }
 
    public int tryPickAll(
-      final List<? extends StackedContents.IngredientInfo<T>> ingredients, final int maxSize, @Nullable final StackedContents.Output<T> output
+      final List<? extends StackedContents.IngredientInfo<T>> ingredients, final int maxSize, final StackedContents.@Nullable Output<T> output
    ) {
       return new StackedContents.RecipePicker(ingredients).tryPickAll(maxSize, output);
    }
@@ -101,7 +100,7 @@ public class StackedContents<T> {
          }
 
          min = max;
-         if (max == 0) {
+         if (min == 0) {
             break;
          }
       }
@@ -125,12 +124,9 @@ public class StackedContents<T> {
       private final List<T> items;
       private final int itemCount;
       private final BitSet data;
-      private final IntList path;
+      private final IntList path = new IntArrayList();
 
       public RecipePicker(final List<? extends StackedContents.IngredientInfo<T>> ingredients) {
-         Objects.requireNonNull(StackedContents.this);
-         super();
-         this.path = new IntArrayList();
          this.ingredients = ingredients;
          this.ingredientCount = ingredients.size();
          this.items = StackedContents.this.getUniqueAvailableIngredientItems(ingredients);
@@ -151,54 +147,53 @@ public class StackedContents<T> {
          }
       }
 
-      public boolean tryPick(final int capacity, @Nullable final StackedContents.Output<T> output) {
+      public boolean tryPick(final int capacity, final StackedContents.@Nullable Output<T> output) {
          if (capacity <= 0) {
             return true;
-         } else {
-            int satisfiedIngredientCount = 0;
+         }
 
-            while (true) {
-               IntList path = this.tryAssigningNewItem(capacity);
-               if (path == null) {
-                  boolean isValidAssignment = satisfiedIngredientCount == this.ingredientCount;
-                  boolean hasOutput = isValidAssignment && output != null;
-                  this.clearAllVisited();
-                  this.clearSatisfied();
+         int satisfiedIngredientCount = 0;
 
-                  for (int ingredient = 0; ingredient < this.ingredientCount; ingredient++) {
-                     for (int item = 0; item < this.itemCount; item++) {
-                        if (this.isAssigned(item, ingredient)) {
-                           this.unassign(item, ingredient);
-                           StackedContents.this.put(this.items.get(item), capacity);
-                           if (hasOutput) {
-                              output.accept(this.items.get(item));
-                           }
-                           break;
+         while (true) {
+            IntList path = this.tryAssigningNewItem(capacity);
+            if (path == null) {
+               boolean isValidAssignment = satisfiedIngredientCount == this.ingredientCount;
+               boolean hasOutput = isValidAssignment && output != null;
+               this.clearAllVisited();
+               this.clearSatisfied();
+
+               for (int ingredient = 0; ingredient < this.ingredientCount; ingredient++) {
+                  for (int item = 0; item < this.itemCount; item++) {
+                     if (this.isAssigned(item, ingredient)) {
+                        this.unassign(item, ingredient);
+                        StackedContents.this.put(this.items.get(item), capacity);
+                        if (hasOutput) {
+                           output.accept(this.items.get(item));
                         }
+                        break;
                      }
                   }
-
-                  assert this.data.get(this.residualOffset(), this.residualOffset() + this.residualCount()).isEmpty();
-
-                  return isValidAssignment;
                }
 
-               int assignedItem = path.getInt(0);
-               StackedContents.this.take(this.items.get(assignedItem), capacity);
-               int satisfiedIngredient = path.size() - 1;
-               this.setSatisfied(path.getInt(satisfiedIngredient));
-               satisfiedIngredientCount++;
+               assert this.data.get(this.residualOffset(), this.residualOffset() + this.residualCount()).isEmpty();
+               return isValidAssignment;
+            }
 
-               for (int i = 0; i < path.size() - 1; i++) {
-                  if (isPathIndexItem(i)) {
-                     int itemx = path.getInt(i);
-                     int ingredient = path.getInt(i + 1);
-                     this.assign(itemx, ingredient);
-                  } else {
-                     int itemx = path.getInt(i + 1);
-                     int ingredient = path.getInt(i);
-                     this.unassign(itemx, ingredient);
-                  }
+            int assignedItem = path.getInt(0);
+            StackedContents.this.take(this.items.get(assignedItem), capacity);
+            int satisfiedIngredient = path.size() - 1;
+            this.setSatisfied(path.getInt(satisfiedIngredient));
+            satisfiedIngredientCount++;
+
+            for (int i = 0; i < path.size() - 1; i++) {
+               if (isPathIndexItem(i)) {
+                  int item = path.getInt(i);
+                  int ingredient = path.getInt(i + 1);
+                  this.assign(item, ingredient);
+               } else {
+                  int item = path.getInt(i + 1);
+                  int ingredient = path.getInt(i);
+                  this.unassign(item, ingredient);
                }
             }
          }
@@ -208,8 +203,7 @@ public class StackedContents<T> {
          return (index & 1) == 0;
       }
 
-      @Nullable
-      private IntList tryAssigningNewItem(final int capacity) {
+      private @Nullable IntList tryAssigningNewItem(final int capacity) {
          this.clearAllVisited();
 
          for (int item = 0; item < this.itemCount; item++) {
@@ -224,8 +218,7 @@ public class StackedContents<T> {
          return null;
       }
 
-      @Nullable
-      private IntList findNewItemAssignmentPath(final int startingItem) {
+      private @Nullable IntList findNewItemAssignmentPath(final int startingItem) {
          this.path.clear();
          this.visitItem(startingItem);
          this.path.add(startingItem);
@@ -251,7 +244,6 @@ public class StackedContents<T> {
                for (int item = 0; item < this.itemCount; item++) {
                   if (!this.hasVisitedItem(item) && this.isAssigned(item, lastAssignedIngredient)) {
                      assert this.hasConnection(item, lastAssignedIngredient);
-
                      this.visitItem(item);
                      this.path.add(item);
                      break;
@@ -318,7 +310,6 @@ public class StackedContents<T> {
 
       private int getSatisfiedIndex(final int ingredient) {
          assert ingredient >= 0 && ingredient < this.ingredientCount;
-
          return this.satisfiedOffset() + ingredient;
       }
 
@@ -336,9 +327,7 @@ public class StackedContents<T> {
 
       private int getConnectionIndex(final int item, final int ingredient) {
          assert item >= 0 && item < this.itemCount;
-
          assert ingredient >= 0 && ingredient < this.ingredientCount;
-
          return this.connectionOffset() + item * this.ingredientCount + ingredient;
       }
 
@@ -348,25 +337,19 @@ public class StackedContents<T> {
 
       private void assign(final int item, final int ingredient) {
          int residualIndex = this.getResidualIndex(item, ingredient);
-
          assert !this.data.get(residualIndex);
-
          this.data.set(residualIndex);
       }
 
       private void unassign(final int item, final int ingredient) {
          int residualIndex = this.getResidualIndex(item, ingredient);
-
          assert this.data.get(residualIndex);
-
          this.data.clear(residualIndex);
       }
 
       private int getResidualIndex(final int item, final int ingredient) {
          assert item >= 0 && item < this.itemCount;
-
          assert ingredient >= 0 && ingredient < this.ingredientCount;
-
          return this.residualOffset() + item * this.ingredientCount + ingredient;
       }
 
@@ -380,7 +363,6 @@ public class StackedContents<T> {
 
       private int getVisitedIngredientIndex(final int ingredient) {
          assert ingredient >= 0 && ingredient < this.ingredientCount;
-
          return this.visitedIngredientOffset() + ingredient;
       }
 
@@ -394,7 +376,6 @@ public class StackedContents<T> {
 
       private int getVisitiedItemIndex(final int item) {
          assert item >= 0 && item < this.itemCount;
-
          return this.visitedItemOffset() + item;
       }
 
@@ -407,7 +388,7 @@ public class StackedContents<T> {
          this.data.clear(offset, offset + count);
       }
 
-      public int tryPickAll(final int maxSize, @Nullable final StackedContents.Output<T> output) {
+      public int tryPickAll(final int maxSize, final StackedContents.@Nullable Output<T> output) {
          int min = 0;
          int max = Math.min(maxSize, StackedContents.this.getResultUpperBound(this.ingredients)) + 1;
 

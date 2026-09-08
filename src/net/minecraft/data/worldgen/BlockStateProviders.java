@@ -39,7 +39,7 @@ public interface BlockStateProviders {
          new WeightedStateProvider(
             WeightedList.<BlockState>builder()
                .add(Blocks.CAVE_VINES_PLANT.defaultBlockState(), 4)
-               .add(Blocks.CAVE_VINES_PLANT.defaultBlockState().setValue(CaveVines.BERRIES, Boolean.valueOf(true)), 1)
+               .add(Blocks.CAVE_VINES_PLANT.defaultBlockState().setValue(CaveVines.BERRIES, true), 1)
          )
       );
       context.register(
@@ -48,7 +48,7 @@ public interface BlockStateProviders {
             new WeightedStateProvider(
                WeightedList.<BlockState>builder()
                   .add(Blocks.CAVE_VINES.defaultBlockState(), 4)
-                  .add(Blocks.CAVE_VINES.defaultBlockState().setValue(CaveVines.BERRIES, Boolean.valueOf(true)), 1)
+                  .add(Blocks.CAVE_VINES.defaultBlockState().setValue(CaveVines.BERRIES, true), 1)
             ),
             CaveVinesBlock.AGE,
             UniformInt.of(23, 25)
@@ -122,7 +122,7 @@ public interface BlockStateProviders {
       context.register(
          MANGROVE_PROPAGULE,
          new RandomizedIntStateProvider(
-            BlockStateProvider.of(Blocks.MANGROVE_PROPAGULE.defaultBlockState().setValue(MangrovePropaguleBlock.HANGING, Boolean.valueOf(true))),
+            BlockStateProvider.of(Blocks.MANGROVE_PROPAGULE.defaultBlockState().setValue(MangrovePropaguleBlock.HANGING, true)),
             MangrovePropaguleBlock.AGE,
             UniformInt.of(0, 4)
          )

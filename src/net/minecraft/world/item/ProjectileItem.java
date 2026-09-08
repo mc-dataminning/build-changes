@@ -21,8 +21,8 @@ public interface ProjectileItem {
       projectile.shoot(xd, yd, zd, pow, uncertainty);
    }
 
-   public static record DispenseConfig(
-      ProjectileItem.PositionFunction positionFunction, float uncertainty, float power, Optional<Integer> overrideDispenseEvent
+   record DispenseConfig(
+      ProjectileItem.PositionFunction positionFunction, float uncertainty, float power, Optional<@LevelEvent.Value Integer> overrideDispenseEvent
    ) {
       public static final ProjectileItem.DispenseConfig DEFAULT = builder().build();
 
@@ -32,11 +32,11 @@ public interface ProjectileItem {
 
       public static class Builder {
          private ProjectileItem.PositionFunction positionFunction = (source, direction) -> DispenserBlock.getDispensePosition(
-               source, 0.7, new Vec3(0.0, 0.1, 0.0)
-            );
+            source, 0.7, new Vec3(0.0, 0.1, 0.0)
+         );
          private float uncertainty = 6.0F;
          private float power = 1.1F;
-         private Optional<Integer> overrideDispenseEvent = Optional.empty();
+         private Optional<@LevelEvent.Value Integer> overrideDispenseEvent = Optional.empty();
 
          public ProjectileItem.DispenseConfig.Builder positionFunction(final ProjectileItem.PositionFunction positionFunction) {
             this.positionFunction = positionFunction;
@@ -53,7 +53,7 @@ public interface ProjectileItem {
             return this;
          }
 
-         public ProjectileItem.DispenseConfig.Builder overrideDispenseEvent(@LevelEvent.Value final int dispenseEvent) {
+         public ProjectileItem.DispenseConfig.Builder overrideDispenseEvent(final @LevelEvent.Value int dispenseEvent) {
             this.overrideDispenseEvent = Optional.of(dispenseEvent);
             return this;
          }
@@ -65,7 +65,7 @@ public interface ProjectileItem {
    }
 
    @FunctionalInterface
-   public interface PositionFunction {
+   interface PositionFunction {
       Position getDispensePosition(final BlockSource source, final Direction direction);
    }
 }

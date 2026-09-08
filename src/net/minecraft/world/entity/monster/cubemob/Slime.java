@@ -104,9 +104,8 @@ public class Slime extends AbstractCubeMob implements Enemy {
       return false;
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       if (groupData == null) {
@@ -120,7 +119,7 @@ public class Slime extends AbstractCubeMob implements Enemy {
    public void setSize(final int size, final boolean updateHealth) {
       super.setSize(size, updateHealth);
       int actualSize = this.entityData.get(ID_SIZE);
-      this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue((double)actualSize);
+      this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(actualSize);
       this.xpReward = actualSize;
    }
 }

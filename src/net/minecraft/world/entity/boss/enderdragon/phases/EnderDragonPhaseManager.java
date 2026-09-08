@@ -9,9 +9,8 @@ import org.slf4j.Logger;
 public class EnderDragonPhaseManager {
    private static final Logger LOGGER = LogUtils.getLogger();
    private final EnderDragon dragon;
-   private final DragonPhaseInstance[] phases = new DragonPhaseInstance[EnderDragonPhase.getCount()];
-   @Nullable
-   private DragonPhaseInstance currentPhase;
+   private final @Nullable DragonPhaseInstance[] phases = new DragonPhaseInstance[EnderDragonPhase.getCount()];
+   private @Nullable DragonPhaseInstance currentPhase;
 
    public EnderDragonPhaseManager(final EnderDragon dragon) {
       this.dragon = dragon;

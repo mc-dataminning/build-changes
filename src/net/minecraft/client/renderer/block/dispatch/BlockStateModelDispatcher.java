@@ -29,25 +29,25 @@ public record BlockStateModelDispatcher(
    private static final Logger LOGGER = LogUtils.getLogger();
    public static final Codec<BlockStateModelDispatcher> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  BlockStateModelDispatcher.SimpleModelSelectors.CODEC.optionalFieldOf("variants").forGetter(BlockStateModelDispatcher::simpleModels),
-                  BlockStateModelDispatcher.MultiPartDefinition.CODEC.optionalFieldOf("multipart").forGetter(BlockStateModelDispatcher::multiPart)
-               )
-               .apply(i, BlockStateModelDispatcher::new)
+               BlockStateModelDispatcher.SimpleModelSelectors.CODEC.optionalFieldOf("variants").forGetter(BlockStateModelDispatcher::simpleModels),
+               BlockStateModelDispatcher.MultiPartDefinition.CODEC.optionalFieldOf("multipart").forGetter(BlockStateModelDispatcher::multiPart)
+            )
+            .apply(i, BlockStateModelDispatcher::new)
       )
       .validate(
          o -> o.simpleModels().isEmpty() && o.multiPart().isEmpty()
-               ? DataResult.error(() -> "Neither 'variants' nor 'multipart' found")
-               : DataResult.success(o)
+            ? DataResult.error(() -> "Neither 'variants' nor 'multipart' found")
+            : DataResult.success(o)
       );
 
    public Map<BlockState, BlockStateModel.UnbakedRoot> instantiate(final StateDefinition<Block, BlockState> stateDefinition, final Supplier<String> source) {
       Map<BlockState, BlockStateModel.UnbakedRoot> matchedStates = new IdentityHashMap<>();
       this.simpleModels.ifPresent(s -> s.instantiate(stateDefinition, source, (state, model) -> {
-            BlockStateModel.UnbakedRoot previousValue = matchedStates.put(state, model);
-            if (previousValue != null) {
-               throw new IllegalArgumentException("Overlapping definition on state: " + state);
-            }
-         }));
+         BlockStateModel.UnbakedRoot previousValue = matchedStates.put(state, model);
+         if (previousValue != null) {
+            throw new IllegalArgumentException("Overlapping definition on state: " + state);
+         }
+      }));
       this.multiPart.ifPresent(m -> {
          List<BlockState> possibleStates = stateDefinition.getPossibleStates();
          BlockStateModel.UnbakedRoot model = m.instantiate(stateDefinition);
@@ -59,7 +59,7 @@ public record BlockStateModelDispatcher(
       return matchedStates;
    }
 
-   public static record MultiPartDefinition(List<Selector> selectors) {
+   public record MultiPartDefinition(List<Selector> selectors) {
       public static final Codec<BlockStateModelDispatcher.MultiPartDefinition> CODEC = ExtraCodecs.nonEmptyList(Selector.CODEC.listOf())
          .xmap(BlockStateModelDispatcher.MultiPartDefinition::new, BlockStateModelDispatcher.MultiPartDefinition::selectors);
 
@@ -74,7 +74,7 @@ public record BlockStateModelDispatcher(
       }
    }
 
-   public static record SimpleModelSelectors(Map<String, BlockStateModel.Unbaked> models) {
+   public record SimpleModelSelectors(Map<String, BlockStateModel.Unbaked> models) {
       public static final Codec<BlockStateModelDispatcher.SimpleModelSelectors> CODEC = ExtraCodecs.nonEmptyMap(
             Codec.unboundedMap(Codec.STRING, BlockStateModel.Unbaked.CODEC)
          )
@@ -97,7 +97,7 @@ public record BlockStateModelDispatcher(
                      output.accept(state, wrapper);
                   }
                }
-            } catch (Exception var9) {
+            } catch (Exception e) {
                BlockStateModelDispatcher.LOGGER.warn("Exception loading blockstate definition: '{}' for variant: '{}'", source.get(), selectorString);
             }
          });

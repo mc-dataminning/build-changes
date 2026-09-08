@@ -22,7 +22,7 @@ public record CommonListenerCookie(
    @Nullable ServerData serverData,
    @Nullable Screen postDisconnectScreen,
    Map<Identifier, byte[]> serverCookies,
-   @Nullable ChatComponent.State chatState,
+   ChatComponent.@Nullable State chatState,
    Map<String, String> customReportDetails,
    ServerLinks serverLinks,
    Map<UUID, PlayerInfo> seenPlayers,

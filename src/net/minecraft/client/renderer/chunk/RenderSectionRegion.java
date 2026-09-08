@@ -56,9 +56,8 @@ public class RenderSectionRegion implements BlockAndTintGetter {
       return this.lightEngine;
    }
 
-   @Nullable
    @Override
-   public BlockEntity getBlockEntity(final BlockPos pos) {
+   public @Nullable BlockEntity getBlockEntity(final BlockPos pos) {
       return this.getSection(SectionPos.blockToSectionCoord(pos.getX()), SectionPos.blockToSectionCoord(pos.getY()), SectionPos.blockToSectionCoord(pos.getZ()))
          .getBlockEntity(pos);
    }

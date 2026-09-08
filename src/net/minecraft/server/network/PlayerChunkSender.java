@@ -66,7 +66,7 @@ public class PlayerChunkSender {
                   }
 
                   connection.send(new ClientboundChunkBatchFinishedPacket(chunksToSend.size()));
-                  this.batchQuota = this.batchQuota - (float)chunksToSend.size();
+                  this.batchQuota = this.batchQuota - chunksToSend.size();
                }
             }
          }
@@ -117,7 +117,7 @@ public class PlayerChunkSender {
          this.unacknowledgedBatches = 0;
       }
 
-      this.desiredChunksPerTick = Double.isNaN((double)desiredChunksPerTick) ? 0.01F : Mth.clamp(desiredChunksPerTick, 0.01F, 64.0F);
+      this.desiredChunksPerTick = Double.isNaN(desiredChunksPerTick) ? 0.01F : Mth.clamp(desiredChunksPerTick, 0.01F, 64.0F);
       if (this.unacknowledgedBatches == 0) {
          this.batchQuota = 1.0F;
       }

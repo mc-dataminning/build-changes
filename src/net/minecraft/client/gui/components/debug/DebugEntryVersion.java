@@ -10,7 +10,7 @@ import org.jspecify.annotations.Nullable;
 public class DebugEntryVersion implements DebugScreenEntry {
    @Override
    public void display(
-      final DebugScreenDisplayer displayer, @Nullable final Level level, @Nullable final LevelChunk clientChunk, @Nullable final LevelChunk serverChunk
+      final DebugScreenDisplayer displayer, final @Nullable Level level, final @Nullable LevelChunk clientChunk, final @Nullable LevelChunk serverChunk
    ) {
       displayer.addPriorityLine(
          "Minecraft "

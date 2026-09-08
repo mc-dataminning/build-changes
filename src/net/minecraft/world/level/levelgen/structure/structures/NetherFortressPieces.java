@@ -48,8 +48,7 @@ public class NetherFortressPieces {
       new NetherFortressPieces.PieceWeight(NetherFortressPieces.CastleStalkRoom.class, 5, 2)
    };
 
-   @Nullable
-   private static NetherFortressPieces.NetherBridgePiece findAndCreateBridgePieceFactory(
+   private static NetherFortressPieces.@Nullable NetherBridgePiece findAndCreateBridgePieceFactory(
       final NetherFortressPieces.PieceWeight piece,
       final StructurePiecesBuilder builder,
       final RandomSource random,
@@ -122,8 +121,7 @@ public class NetherFortressPieces {
          this.generateChildRight((NetherFortressPieces.StartPiece)startPiece, builder, random, 3, 8, false);
       }
 
-      @Nullable
-      public static NetherFortressPieces.BridgeCrossing createPiece(
+      public static NetherFortressPieces.@Nullable BridgeCrossing createPiece(
          final StructurePiecesBuilder builder, final int footX, final int footY, final int footZ, final Direction direction, final int genDepth
       ) {
          BoundingBox box = BoundingBox.orientBox(footX, footY, footZ, -8, -3, 0, 19, 10, 19, direction);
@@ -195,8 +193,7 @@ public class NetherFortressPieces {
          this.selfSeed = tag.getIntOr("Seed", 0);
       }
 
-      @Nullable
-      public static NetherFortressPieces.BridgeEndFiller createPiece(
+      public static NetherFortressPieces.@Nullable BridgeEndFiller createPiece(
          final StructurePiecesBuilder builder,
          final RandomSource random,
          final int footX,
@@ -225,7 +222,7 @@ public class NetherFortressPieces {
          final ChunkPos chunkPos,
          final BlockPos referencePos
       ) {
-         RandomSource selfRandom = RandomSource.createThreadLocalInstance((long)this.selfSeed);
+         RandomSource selfRandom = RandomSource.createThreadLocalInstance(this.selfSeed);
 
          for (int x = 0; x <= 4; x++) {
             for (int y = 3; y <= 4; y++) {
@@ -272,8 +269,7 @@ public class NetherFortressPieces {
          this.generateChildForward((NetherFortressPieces.StartPiece)startPiece, builder, random, 1, 3, false);
       }
 
-      @Nullable
-      public static NetherFortressPieces.BridgeStraight createPiece(
+      public static NetherFortressPieces.@Nullable BridgeStraight createPiece(
          final StructurePiecesBuilder builder,
          final RandomSource random,
          final int footX,
@@ -312,12 +308,9 @@ public class NetherFortressPieces {
             }
          }
 
-         BlockState nsFence = Blocks.NETHER_BRICK_FENCE
-            .defaultBlockState()
-            .setValue(FenceBlock.NORTH, Boolean.valueOf(true))
-            .setValue(FenceBlock.SOUTH, Boolean.valueOf(true));
-         BlockState nseFence = nsFence.setValue(FenceBlock.EAST, Boolean.valueOf(true));
-         BlockState nswFence = nsFence.setValue(FenceBlock.WEST, Boolean.valueOf(true));
+         BlockState nsFence = Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, true).setValue(FenceBlock.SOUTH, true);
+         BlockState nseFence = nsFence.setValue(FenceBlock.EAST, true);
+         BlockState nswFence = nsFence.setValue(FenceBlock.WEST, true);
          this.generateBox(level, chunkBB, 0, 1, 1, 0, 4, 1, nseFence, nseFence, false);
          this.generateBox(level, chunkBB, 0, 3, 4, 0, 4, 4, nseFence, nseFence, false);
          this.generateBox(level, chunkBB, 0, 3, 14, 0, 4, 14, nseFence, nseFence, false);
@@ -348,8 +341,7 @@ public class NetherFortressPieces {
          this.generateChildForward((NetherFortressPieces.StartPiece)startPiece, builder, random, 1, 0, true);
       }
 
-      @Nullable
-      public static NetherFortressPieces.CastleCorridorStairsPiece createPiece(
+      public static NetherFortressPieces.@Nullable CastleCorridorStairsPiece createPiece(
          final StructurePiecesBuilder builder, final int footX, final int footY, final int footZ, final Direction direction, final int genDepth
       ) {
          BoundingBox box = BoundingBox.orientBox(footX, footY, footZ, -1, -7, 0, 5, 14, 10, direction);
@@ -367,37 +359,30 @@ public class NetherFortressPieces {
          final BlockPos referencePos
       ) {
          BlockState stairs = Blocks.NETHER_BRICK_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.SOUTH);
-         BlockState nsFence = Blocks.NETHER_BRICK_FENCE
-            .defaultBlockState()
-            .setValue(FenceBlock.NORTH, Boolean.valueOf(true))
-            .setValue(FenceBlock.SOUTH, Boolean.valueOf(true));
+         BlockState nsFence = Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, true).setValue(FenceBlock.SOUTH, true);
 
          for (int step = 0; step <= 9; step++) {
             int floor = Math.max(1, 7 - step);
             int roof = Math.min(Math.max(floor + 5, 14 - step), 13);
             int z = step;
-            this.generateBox(
-               level, chunkBB, 0, 0, step, 4, floor, step, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false
-            );
-            this.generateBox(level, chunkBB, 1, floor + 1, step, 3, roof - 1, step, Blocks.AIR.defaultBlockState(), Blocks.AIR.defaultBlockState(), false);
+            this.generateBox(level, chunkBB, 0, 0, z, 4, floor, z, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
+            this.generateBox(level, chunkBB, 1, floor + 1, z, 3, roof - 1, z, Blocks.AIR.defaultBlockState(), Blocks.AIR.defaultBlockState(), false);
             if (step <= 6) {
-               this.placeBlock(level, stairs, 1, floor + 1, step, chunkBB);
-               this.placeBlock(level, stairs, 2, floor + 1, step, chunkBB);
-               this.placeBlock(level, stairs, 3, floor + 1, step, chunkBB);
+               this.placeBlock(level, stairs, 1, floor + 1, z, chunkBB);
+               this.placeBlock(level, stairs, 2, floor + 1, z, chunkBB);
+               this.placeBlock(level, stairs, 3, floor + 1, z, chunkBB);
             }
 
+            this.generateBox(level, chunkBB, 0, roof, z, 4, roof, z, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
             this.generateBox(
-               level, chunkBB, 0, roof, step, 4, roof, step, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false
+               level, chunkBB, 0, floor + 1, z, 0, roof - 1, z, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false
             );
             this.generateBox(
-               level, chunkBB, 0, floor + 1, step, 0, roof - 1, step, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false
-            );
-            this.generateBox(
-               level, chunkBB, 4, floor + 1, step, 4, roof - 1, step, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false
+               level, chunkBB, 4, floor + 1, z, 4, roof - 1, z, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false
             );
             if ((step & 1) == 0) {
-               this.generateBox(level, chunkBB, 0, floor + 2, step, 0, floor + 3, step, nsFence, nsFence, false);
-               this.generateBox(level, chunkBB, 4, floor + 2, step, 4, floor + 3, step, nsFence, nsFence, false);
+               this.generateBox(level, chunkBB, 0, floor + 2, z, 0, floor + 3, z, nsFence, nsFence, false);
+               this.generateBox(level, chunkBB, 4, floor + 2, z, 4, floor + 3, z, nsFence, nsFence, false);
             }
 
             for (int x = 0; x <= 4; x++) {
@@ -433,8 +418,7 @@ public class NetherFortressPieces {
          this.generateChildRight((NetherFortressPieces.StartPiece)startPiece, builder, random, 0, zOff, random.nextInt(8) > 0);
       }
 
-      @Nullable
-      public static NetherFortressPieces.CastleCorridorTBalconyPiece createPiece(
+      public static NetherFortressPieces.@Nullable CastleCorridorTBalconyPiece createPiece(
          final StructurePiecesBuilder builder, final int footX, final int footY, final int footZ, final Direction direction, final int genDepth
       ) {
          BoundingBox box = BoundingBox.orientBox(footX, footY, footZ, -3, 0, 0, 9, 7, 9, direction);
@@ -451,14 +435,8 @@ public class NetherFortressPieces {
          final ChunkPos chunkPos,
          final BlockPos referencePos
       ) {
-         BlockState nsFence = Blocks.NETHER_BRICK_FENCE
-            .defaultBlockState()
-            .setValue(FenceBlock.NORTH, Boolean.valueOf(true))
-            .setValue(FenceBlock.SOUTH, Boolean.valueOf(true));
-         BlockState weFence = Blocks.NETHER_BRICK_FENCE
-            .defaultBlockState()
-            .setValue(FenceBlock.WEST, Boolean.valueOf(true))
-            .setValue(FenceBlock.EAST, Boolean.valueOf(true));
+         BlockState nsFence = Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, true).setValue(FenceBlock.SOUTH, true);
+         BlockState weFence = Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, true).setValue(FenceBlock.EAST, true);
          this.generateBox(level, chunkBB, 0, 0, 0, 8, 1, 8, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 0, 2, 0, 8, 5, 8, Blocks.AIR.defaultBlockState(), Blocks.AIR.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 0, 6, 0, 8, 6, 5, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
@@ -471,20 +449,10 @@ public class NetherFortressPieces {
          this.generateBox(level, chunkBB, 6, 1, 4, 7, 2, 4, Blocks.AIR.defaultBlockState(), Blocks.AIR.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 1, 3, 8, 7, 3, 8, weFence, weFence, false);
          this.placeBlock(
-            level,
-            Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.EAST, Boolean.valueOf(true)).setValue(FenceBlock.SOUTH, Boolean.valueOf(true)),
-            0,
-            3,
-            8,
-            chunkBB
+            level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.EAST, true).setValue(FenceBlock.SOUTH, true), 0, 3, 8, chunkBB
          );
          this.placeBlock(
-            level,
-            Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, Boolean.valueOf(true)).setValue(FenceBlock.SOUTH, Boolean.valueOf(true)),
-            8,
-            3,
-            8,
-            chunkBB
+            level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, true).setValue(FenceBlock.SOUTH, true), 8, 3, 8, chunkBB
          );
          this.generateBox(level, chunkBB, 0, 3, 6, 0, 3, 7, nsFence, nsFence, false);
          this.generateBox(level, chunkBB, 8, 3, 6, 8, 3, 7, nsFence, nsFence, false);
@@ -522,8 +490,7 @@ public class NetherFortressPieces {
          this.generateChildForward((NetherFortressPieces.StartPiece)startPiece, builder, random, 5, 3, true);
       }
 
-      @Nullable
-      public static NetherFortressPieces.CastleEntrance createPiece(
+      public static NetherFortressPieces.@Nullable CastleEntrance createPiece(
          final StructurePiecesBuilder builder,
          final RandomSource random,
          final int footX,
@@ -558,14 +525,8 @@ public class NetherFortressPieces {
          this.generateBox(level, chunkBB, 5, 9, 0, 7, 12, 1, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 2, 11, 2, 10, 12, 10, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 5, 8, 0, 7, 8, 0, Blocks.NETHER_BRICK_FENCE.defaultBlockState(), Blocks.NETHER_BRICK_FENCE.defaultBlockState(), false);
-         BlockState weFence = Blocks.NETHER_BRICK_FENCE
-            .defaultBlockState()
-            .setValue(FenceBlock.WEST, Boolean.valueOf(true))
-            .setValue(FenceBlock.EAST, Boolean.valueOf(true));
-         BlockState nsFence = Blocks.NETHER_BRICK_FENCE
-            .defaultBlockState()
-            .setValue(FenceBlock.NORTH, Boolean.valueOf(true))
-            .setValue(FenceBlock.SOUTH, Boolean.valueOf(true));
+         BlockState weFence = Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, true).setValue(FenceBlock.EAST, true);
+         BlockState nsFence = Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, true).setValue(FenceBlock.SOUTH, true);
 
          for (int i = 1; i <= 11; i += 2) {
             this.generateBox(level, chunkBB, i, 10, 0, i, 11, 0, weFence, weFence, false);
@@ -585,65 +546,21 @@ public class NetherFortressPieces {
          }
 
          this.placeBlock(
-            level,
-            Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, Boolean.valueOf(true)).setValue(FenceBlock.EAST, Boolean.valueOf(true)),
-            0,
-            13,
-            0,
-            chunkBB
+            level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, true).setValue(FenceBlock.EAST, true), 0, 13, 0, chunkBB
          );
          this.placeBlock(
-            level,
-            Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.SOUTH, Boolean.valueOf(true)).setValue(FenceBlock.EAST, Boolean.valueOf(true)),
-            0,
-            13,
-            12,
-            chunkBB
+            level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.SOUTH, true).setValue(FenceBlock.EAST, true), 0, 13, 12, chunkBB
          );
          this.placeBlock(
-            level,
-            Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.SOUTH, Boolean.valueOf(true)).setValue(FenceBlock.WEST, Boolean.valueOf(true)),
-            12,
-            13,
-            12,
-            chunkBB
+            level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.SOUTH, true).setValue(FenceBlock.WEST, true), 12, 13, 12, chunkBB
          );
          this.placeBlock(
-            level,
-            Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, Boolean.valueOf(true)).setValue(FenceBlock.WEST, Boolean.valueOf(true)),
-            12,
-            13,
-            0,
-            chunkBB
+            level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, true).setValue(FenceBlock.WEST, true), 12, 13, 0, chunkBB
          );
 
          for (int z = 3; z <= 9; z += 2) {
-            this.generateBox(
-               level,
-               chunkBB,
-               1,
-               7,
-               z,
-               1,
-               8,
-               z,
-               nsFence.setValue(FenceBlock.WEST, Boolean.valueOf(true)),
-               nsFence.setValue(FenceBlock.WEST, Boolean.valueOf(true)),
-               false
-            );
-            this.generateBox(
-               level,
-               chunkBB,
-               11,
-               7,
-               z,
-               11,
-               8,
-               z,
-               nsFence.setValue(FenceBlock.EAST, Boolean.valueOf(true)),
-               nsFence.setValue(FenceBlock.EAST, Boolean.valueOf(true)),
-               false
-            );
+            this.generateBox(level, chunkBB, 1, 7, z, 1, 8, z, nsFence.setValue(FenceBlock.WEST, true), nsFence.setValue(FenceBlock.WEST, true), false);
+            this.generateBox(level, chunkBB, 11, 7, z, 11, 8, z, nsFence.setValue(FenceBlock.EAST, true), nsFence.setValue(FenceBlock.EAST, true), false);
          }
 
          this.generateBox(level, chunkBB, 4, 2, 0, 8, 2, 12, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
@@ -699,8 +616,7 @@ public class NetherFortressPieces {
          this.generateChildRight((NetherFortressPieces.StartPiece)startPiece, builder, random, 0, 1, true);
       }
 
-      @Nullable
-      public static NetherFortressPieces.CastleSmallCorridorCrossingPiece createPiece(
+      public static NetherFortressPieces.@Nullable CastleSmallCorridorCrossingPiece createPiece(
          final StructurePiecesBuilder builder, final int footX, final int footY, final int footZ, final Direction direction, final int genDepth
       ) {
          BoundingBox box = BoundingBox.orientBox(footX, footY, footZ, -1, 0, 0, 5, 7, 5, direction);
@@ -763,8 +679,7 @@ public class NetherFortressPieces {
          this.generateChildLeft((NetherFortressPieces.StartPiece)startPiece, builder, random, 0, 1, true);
       }
 
-      @Nullable
-      public static NetherFortressPieces.CastleSmallCorridorLeftTurnPiece createPiece(
+      public static NetherFortressPieces.@Nullable CastleSmallCorridorLeftTurnPiece createPiece(
          final StructurePiecesBuilder builder,
          final RandomSource random,
          final int footX,
@@ -791,14 +706,8 @@ public class NetherFortressPieces {
       ) {
          this.generateBox(level, chunkBB, 0, 0, 0, 4, 1, 4, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 0, 2, 0, 4, 5, 4, Blocks.AIR.defaultBlockState(), Blocks.AIR.defaultBlockState(), false);
-         BlockState weFence = Blocks.NETHER_BRICK_FENCE
-            .defaultBlockState()
-            .setValue(FenceBlock.WEST, Boolean.valueOf(true))
-            .setValue(FenceBlock.EAST, Boolean.valueOf(true));
-         BlockState nsFence = Blocks.NETHER_BRICK_FENCE
-            .defaultBlockState()
-            .setValue(FenceBlock.NORTH, Boolean.valueOf(true))
-            .setValue(FenceBlock.SOUTH, Boolean.valueOf(true));
+         BlockState weFence = Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, true).setValue(FenceBlock.EAST, true);
+         BlockState nsFence = Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, true).setValue(FenceBlock.SOUTH, true);
          this.generateBox(level, chunkBB, 4, 2, 0, 4, 5, 4, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 4, 3, 1, 4, 4, 1, nsFence, nsFence, false);
          this.generateBox(level, chunkBB, 4, 3, 3, 4, 4, 3, nsFence, nsFence, false);
@@ -840,8 +749,7 @@ public class NetherFortressPieces {
          this.generateChildForward((NetherFortressPieces.StartPiece)startPiece, builder, random, 1, 0, true);
       }
 
-      @Nullable
-      public static NetherFortressPieces.CastleSmallCorridorPiece createPiece(
+      public static NetherFortressPieces.@Nullable CastleSmallCorridorPiece createPiece(
          final StructurePiecesBuilder builder, final int footX, final int footY, final int footZ, final Direction direction, final int genDepth
       ) {
          BoundingBox box = BoundingBox.orientBox(footX, footY, footZ, -1, 0, 0, 5, 7, 5, direction);
@@ -860,10 +768,7 @@ public class NetherFortressPieces {
       ) {
          this.generateBox(level, chunkBB, 0, 0, 0, 4, 1, 4, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 0, 2, 0, 4, 5, 4, Blocks.AIR.defaultBlockState(), Blocks.AIR.defaultBlockState(), false);
-         BlockState nsFence = Blocks.NETHER_BRICK_FENCE
-            .defaultBlockState()
-            .setValue(FenceBlock.NORTH, Boolean.valueOf(true))
-            .setValue(FenceBlock.SOUTH, Boolean.valueOf(true));
+         BlockState nsFence = Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, true).setValue(FenceBlock.SOUTH, true);
          this.generateBox(level, chunkBB, 0, 2, 0, 0, 5, 4, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 4, 2, 0, 4, 5, 4, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 0, 3, 1, 0, 4, 1, nsFence, nsFence, false);
@@ -908,8 +813,7 @@ public class NetherFortressPieces {
          this.generateChildRight((NetherFortressPieces.StartPiece)startPiece, builder, random, 0, 1, true);
       }
 
-      @Nullable
-      public static NetherFortressPieces.CastleSmallCorridorRightTurnPiece createPiece(
+      public static NetherFortressPieces.@Nullable CastleSmallCorridorRightTurnPiece createPiece(
          final StructurePiecesBuilder builder,
          final RandomSource random,
          final int footX,
@@ -936,14 +840,8 @@ public class NetherFortressPieces {
       ) {
          this.generateBox(level, chunkBB, 0, 0, 0, 4, 1, 4, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 0, 2, 0, 4, 5, 4, Blocks.AIR.defaultBlockState(), Blocks.AIR.defaultBlockState(), false);
-         BlockState weFence = Blocks.NETHER_BRICK_FENCE
-            .defaultBlockState()
-            .setValue(FenceBlock.WEST, Boolean.valueOf(true))
-            .setValue(FenceBlock.EAST, Boolean.valueOf(true));
-         BlockState nsFence = Blocks.NETHER_BRICK_FENCE
-            .defaultBlockState()
-            .setValue(FenceBlock.NORTH, Boolean.valueOf(true))
-            .setValue(FenceBlock.SOUTH, Boolean.valueOf(true));
+         BlockState weFence = Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, true).setValue(FenceBlock.EAST, true);
+         BlockState nsFence = Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, true).setValue(FenceBlock.SOUTH, true);
          this.generateBox(level, chunkBB, 0, 2, 0, 0, 5, 4, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 0, 3, 1, 0, 4, 1, nsFence, nsFence, false);
          this.generateBox(level, chunkBB, 0, 3, 3, 0, 4, 3, nsFence, nsFence, false);
@@ -986,8 +884,7 @@ public class NetherFortressPieces {
          this.generateChildForward((NetherFortressPieces.StartPiece)startPiece, builder, random, 5, 11, true);
       }
 
-      @Nullable
-      public static NetherFortressPieces.CastleStalkRoom createPiece(
+      public static NetherFortressPieces.@Nullable CastleStalkRoom createPiece(
          final StructurePiecesBuilder builder, final int footX, final int footY, final int footZ, final Direction direction, final int genDepth
       ) {
          BoundingBox box = BoundingBox.orientBox(footX, footY, footZ, -5, -3, 0, 13, 14, 13, direction);
@@ -1015,16 +912,10 @@ public class NetherFortressPieces {
          this.generateBox(level, chunkBB, 8, 5, 0, 10, 12, 1, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 5, 9, 0, 7, 12, 1, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 2, 11, 2, 10, 12, 10, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
-         BlockState weFence = Blocks.NETHER_BRICK_FENCE
-            .defaultBlockState()
-            .setValue(FenceBlock.WEST, Boolean.valueOf(true))
-            .setValue(FenceBlock.EAST, Boolean.valueOf(true));
-         BlockState nsFence = Blocks.NETHER_BRICK_FENCE
-            .defaultBlockState()
-            .setValue(FenceBlock.NORTH, Boolean.valueOf(true))
-            .setValue(FenceBlock.SOUTH, Boolean.valueOf(true));
-         BlockState nswFence = nsFence.setValue(FenceBlock.WEST, Boolean.valueOf(true));
-         BlockState nseFence = nsFence.setValue(FenceBlock.EAST, Boolean.valueOf(true));
+         BlockState weFence = Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, true).setValue(FenceBlock.EAST, true);
+         BlockState nsFence = Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, true).setValue(FenceBlock.SOUTH, true);
+         BlockState nswFence = nsFence.setValue(FenceBlock.WEST, true);
+         BlockState nseFence = nsFence.setValue(FenceBlock.EAST, true);
 
          for (int i = 1; i <= 11; i += 2) {
             this.generateBox(level, chunkBB, i, 10, 0, i, 11, 0, weFence, weFence, false);
@@ -1044,36 +935,16 @@ public class NetherFortressPieces {
          }
 
          this.placeBlock(
-            level,
-            Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, Boolean.valueOf(true)).setValue(FenceBlock.EAST, Boolean.valueOf(true)),
-            0,
-            13,
-            0,
-            chunkBB
+            level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, true).setValue(FenceBlock.EAST, true), 0, 13, 0, chunkBB
          );
          this.placeBlock(
-            level,
-            Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.SOUTH, Boolean.valueOf(true)).setValue(FenceBlock.EAST, Boolean.valueOf(true)),
-            0,
-            13,
-            12,
-            chunkBB
+            level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.SOUTH, true).setValue(FenceBlock.EAST, true), 0, 13, 12, chunkBB
          );
          this.placeBlock(
-            level,
-            Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.SOUTH, Boolean.valueOf(true)).setValue(FenceBlock.WEST, Boolean.valueOf(true)),
-            12,
-            13,
-            12,
-            chunkBB
+            level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.SOUTH, true).setValue(FenceBlock.WEST, true), 12, 13, 12, chunkBB
          );
          this.placeBlock(
-            level,
-            Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, Boolean.valueOf(true)).setValue(FenceBlock.WEST, Boolean.valueOf(true)),
-            12,
-            13,
-            0,
-            chunkBB
+            level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, true).setValue(FenceBlock.WEST, true), 12, 13, 0, chunkBB
          );
 
          for (int z = 3; z <= 9; z += 2) {
@@ -1083,25 +954,21 @@ public class NetherFortressPieces {
 
          BlockState stairs = Blocks.NETHER_BRICK_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.NORTH);
 
-         for (int ix = 0; ix <= 6; ix++) {
-            int z = ix + 4;
+         for (int i = 0; i <= 6; i++) {
+            int z = i + 4;
 
             for (int x = 5; x <= 7; x++) {
-               this.placeBlock(level, stairs, x, 5 + ix, z, chunkBB);
+               this.placeBlock(level, stairs, x, 5 + i, z, chunkBB);
             }
 
             if (z >= 5 && z <= 8) {
-               this.generateBox(
-                  level, chunkBB, 5, 5, z, 7, ix + 4, z, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false
-               );
+               this.generateBox(level, chunkBB, 5, 5, z, 7, i + 4, z, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
             } else if (z >= 9 && z <= 10) {
-               this.generateBox(
-                  level, chunkBB, 5, 8, z, 7, ix + 4, z, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false
-               );
+               this.generateBox(level, chunkBB, 5, 8, z, 7, i + 4, z, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
             }
 
-            if (ix >= 1) {
-               this.generateBox(level, chunkBB, 5, 6 + ix, z, 7, 9 + ix, z, Blocks.AIR.defaultBlockState(), Blocks.AIR.defaultBlockState(), false);
+            if (i >= 1) {
+               this.generateBox(level, chunkBB, 5, 6 + i, z, 7, 9 + i, z, Blocks.AIR.defaultBlockState(), Blocks.AIR.defaultBlockState(), false);
             }
          }
 
@@ -1177,8 +1044,7 @@ public class NetherFortressPieces {
          tag.putBoolean("Mob", this.hasPlacedSpawner);
       }
 
-      @Nullable
-      public static NetherFortressPieces.MonsterThrone createPiece(
+      public static NetherFortressPieces.@Nullable MonsterThrone createPiece(
          final StructurePiecesBuilder builder, final int footX, final int footY, final int footZ, final int genDepth, final Direction direction
       ) {
          BoundingBox box = BoundingBox.orientBox(footX, footY, footZ, -2, 0, 0, 7, 8, 9, direction);
@@ -1207,57 +1073,31 @@ public class NetherFortressPieces {
          this.generateBox(level, chunkBB, 0, 5, 3, 0, 5, 8, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 6, 5, 3, 6, 5, 8, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 1, 5, 8, 5, 5, 8, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
-         BlockState weFence = Blocks.NETHER_BRICK_FENCE
-            .defaultBlockState()
-            .setValue(FenceBlock.WEST, Boolean.valueOf(true))
-            .setValue(FenceBlock.EAST, Boolean.valueOf(true));
-         BlockState nsFence = Blocks.NETHER_BRICK_FENCE
-            .defaultBlockState()
-            .setValue(FenceBlock.NORTH, Boolean.valueOf(true))
-            .setValue(FenceBlock.SOUTH, Boolean.valueOf(true));
-         this.placeBlock(level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, Boolean.valueOf(true)), 1, 6, 3, chunkBB);
-         this.placeBlock(level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.EAST, Boolean.valueOf(true)), 5, 6, 3, chunkBB);
+         BlockState weFence = Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, true).setValue(FenceBlock.EAST, true);
+         BlockState nsFence = Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, true).setValue(FenceBlock.SOUTH, true);
+         this.placeBlock(level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, true), 1, 6, 3, chunkBB);
+         this.placeBlock(level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.EAST, true), 5, 6, 3, chunkBB);
          this.placeBlock(
-            level,
-            Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.EAST, Boolean.valueOf(true)).setValue(FenceBlock.NORTH, Boolean.valueOf(true)),
-            0,
-            6,
-            3,
-            chunkBB
+            level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.EAST, true).setValue(FenceBlock.NORTH, true), 0, 6, 3, chunkBB
          );
          this.placeBlock(
-            level,
-            Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, Boolean.valueOf(true)).setValue(FenceBlock.NORTH, Boolean.valueOf(true)),
-            6,
-            6,
-            3,
-            chunkBB
+            level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, true).setValue(FenceBlock.NORTH, true), 6, 6, 3, chunkBB
          );
          this.generateBox(level, chunkBB, 0, 6, 4, 0, 6, 7, nsFence, nsFence, false);
          this.generateBox(level, chunkBB, 6, 6, 4, 6, 6, 7, nsFence, nsFence, false);
          this.placeBlock(
-            level,
-            Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.EAST, Boolean.valueOf(true)).setValue(FenceBlock.SOUTH, Boolean.valueOf(true)),
-            0,
-            6,
-            8,
-            chunkBB
+            level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.EAST, true).setValue(FenceBlock.SOUTH, true), 0, 6, 8, chunkBB
          );
          this.placeBlock(
-            level,
-            Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, Boolean.valueOf(true)).setValue(FenceBlock.SOUTH, Boolean.valueOf(true)),
-            6,
-            6,
-            8,
-            chunkBB
+            level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, true).setValue(FenceBlock.SOUTH, true), 6, 6, 8, chunkBB
          );
          this.generateBox(level, chunkBB, 1, 6, 8, 5, 6, 8, weFence, weFence, false);
-         this.placeBlock(level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.EAST, Boolean.valueOf(true)), 1, 7, 8, chunkBB);
+         this.placeBlock(level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.EAST, true), 1, 7, 8, chunkBB);
          this.generateBox(level, chunkBB, 2, 7, 8, 4, 7, 8, weFence, weFence, false);
-         this.placeBlock(level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, Boolean.valueOf(true)), 5, 7, 8, chunkBB);
-         this.placeBlock(level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.EAST, Boolean.valueOf(true)), 2, 8, 8, chunkBB);
+         this.placeBlock(level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, true), 5, 7, 8, chunkBB);
+         this.placeBlock(level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.EAST, true), 2, 8, 8, chunkBB);
          this.placeBlock(level, weFence, 3, 8, 8, chunkBB);
-         this.placeBlock(level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, Boolean.valueOf(true)), 4, 8, 8, chunkBB);
+         this.placeBlock(level, Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, true), 4, 8, 8, chunkBB);
          if (!this.hasPlacedSpawner) {
             BlockPos pos = this.getWorldPos(3, 5, 5);
             if (chunkBB.isInside(pos)) {
@@ -1305,8 +1145,7 @@ public class NetherFortressPieces {
          return hasAnyPieces ? totalWeight : -1;
       }
 
-      @Nullable
-      private NetherFortressPieces.NetherBridgePiece generatePiece(
+      private NetherFortressPieces.@Nullable NetherBridgePiece generatePiece(
          final NetherFortressPieces.StartPiece startPiece,
          final List<NetherFortressPieces.PieceWeight> currentPieces,
          final StructurePiecesBuilder builder,
@@ -1351,8 +1190,7 @@ public class NetherFortressPieces {
          return NetherFortressPieces.BridgeEndFiller.createPiece(builder, random, footX, footY, footZ, direction, depth);
       }
 
-      @Nullable
-      private StructurePiece generateAndAddPiece(
+      private @Nullable StructurePiece generateAndAddPiece(
          final NetherFortressPieces.StartPiece startPiece,
          final StructurePiecesBuilder builder,
          final RandomSource random,
@@ -1381,8 +1219,7 @@ public class NetherFortressPieces {
          }
       }
 
-      @Nullable
-      protected StructurePiece generateChildForward(
+      protected @Nullable StructurePiece generateChildForward(
          final NetherFortressPieces.StartPiece startPiece,
          final StructurePiecesBuilder builder,
          final RandomSource random,
@@ -1447,8 +1284,7 @@ public class NetherFortressPieces {
          return null;
       }
 
-      @Nullable
-      protected StructurePiece generateChildLeft(
+      protected @Nullable StructurePiece generateChildLeft(
          final NetherFortressPieces.StartPiece startPiece,
          final StructurePiecesBuilder builder,
          final RandomSource random,
@@ -1513,8 +1349,7 @@ public class NetherFortressPieces {
          return null;
       }
 
-      @Nullable
-      protected StructurePiece generateChildRight(
+      protected @Nullable StructurePiece generateChildRight(
          final NetherFortressPieces.StartPiece startPiece,
          final StructurePiecesBuilder builder,
          final RandomSource random,
@@ -1634,8 +1469,7 @@ public class NetherFortressPieces {
          this.generateChildRight((NetherFortressPieces.StartPiece)startPiece, builder, random, 0, 2, false);
       }
 
-      @Nullable
-      public static NetherFortressPieces.RoomCrossing createPiece(
+      public static NetherFortressPieces.@Nullable RoomCrossing createPiece(
          final StructurePiecesBuilder builder, final int footX, final int footY, final int footZ, final Direction direction, final int genDepth
       ) {
          BoundingBox box = BoundingBox.orientBox(footX, footY, footZ, -2, 0, 0, 7, 9, 7, direction);
@@ -1662,14 +1496,8 @@ public class NetherFortressPieces {
          this.generateBox(level, chunkBB, 0, 2, 5, 0, 6, 6, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 6, 2, 0, 6, 6, 1, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 6, 2, 5, 6, 6, 6, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
-         BlockState weFence = Blocks.NETHER_BRICK_FENCE
-            .defaultBlockState()
-            .setValue(FenceBlock.WEST, Boolean.valueOf(true))
-            .setValue(FenceBlock.EAST, Boolean.valueOf(true));
-         BlockState nsFence = Blocks.NETHER_BRICK_FENCE
-            .defaultBlockState()
-            .setValue(FenceBlock.NORTH, Boolean.valueOf(true))
-            .setValue(FenceBlock.SOUTH, Boolean.valueOf(true));
+         BlockState weFence = Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, true).setValue(FenceBlock.EAST, true);
+         BlockState nsFence = Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, true).setValue(FenceBlock.SOUTH, true);
          this.generateBox(level, chunkBB, 2, 6, 0, 4, 6, 0, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 2, 5, 0, 4, 5, 0, weFence, weFence, false);
          this.generateBox(level, chunkBB, 2, 6, 6, 4, 6, 6, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
@@ -1706,8 +1534,7 @@ public class NetherFortressPieces {
          this.generateChildRight((NetherFortressPieces.StartPiece)startPiece, builder, random, 6, 2, false);
       }
 
-      @Nullable
-      public static NetherFortressPieces.StairsRoom createPiece(
+      public static NetherFortressPieces.@Nullable StairsRoom createPiece(
          final StructurePiecesBuilder builder, final int footX, final int footY, final int footZ, final int genDepth, final Direction direction
       ) {
          BoundingBox box = BoundingBox.orientBox(footX, footY, footZ, -2, 0, 0, 7, 11, 7, direction);
@@ -1731,14 +1558,8 @@ public class NetherFortressPieces {
          this.generateBox(level, chunkBB, 0, 2, 1, 0, 8, 6, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 6, 2, 1, 6, 8, 6, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 1, 2, 6, 5, 8, 6, Blocks.NETHER_BRICKS.defaultBlockState(), Blocks.NETHER_BRICKS.defaultBlockState(), false);
-         BlockState weFence = Blocks.NETHER_BRICK_FENCE
-            .defaultBlockState()
-            .setValue(FenceBlock.WEST, Boolean.valueOf(true))
-            .setValue(FenceBlock.EAST, Boolean.valueOf(true));
-         BlockState nsFence = Blocks.NETHER_BRICK_FENCE
-            .defaultBlockState()
-            .setValue(FenceBlock.NORTH, Boolean.valueOf(true))
-            .setValue(FenceBlock.SOUTH, Boolean.valueOf(true));
+         BlockState weFence = Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, true).setValue(FenceBlock.EAST, true);
+         BlockState nsFence = Blocks.NETHER_BRICK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, true).setValue(FenceBlock.SOUTH, true);
          this.generateBox(level, chunkBB, 0, 3, 2, 0, 5, 4, nsFence, nsFence, false);
          this.generateBox(level, chunkBB, 6, 3, 2, 6, 5, 2, nsFence, nsFence, false);
          this.generateBox(level, chunkBB, 6, 3, 4, 6, 5, 4, nsFence, nsFence, false);
@@ -1761,8 +1582,7 @@ public class NetherFortressPieces {
    }
 
    public static class StartPiece extends NetherFortressPieces.BridgeCrossing {
-      @Nullable
-      private NetherFortressPieces.PieceWeight previousPiece;
+      private NetherFortressPieces.@Nullable PieceWeight previousPiece;
       private final List<NetherFortressPieces.PieceWeight> availableBridgePieces = new ArrayList<>();
       private final List<NetherFortressPieces.PieceWeight> availableCastlePieces = new ArrayList<>();
       public final List<StructurePiece> pendingChildren = Lists.newArrayList();

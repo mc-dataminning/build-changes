@@ -173,7 +173,7 @@ public class StructureTemplate {
       this.entityInfoList.clear();
 
       for (Entity entity : entities) {
-         Vec3 pos = new Vec3(entity.getX() - (double)minCorner.getX(), entity.getY() - (double)minCorner.getY(), entity.getZ() - (double)minCorner.getZ());
+         Vec3 pos = new Vec3(entity.getX() - minCorner.getX(), entity.getY() - minCorner.getY(), entity.getZ() - minCorner.getZ());
          TagValueOutput output = TagValueOutput.createWithContext(reporter.forChild(entity.problemPath()), entity.registryAccess());
          entity.save(output);
          BlockPos blockPos;
@@ -194,17 +194,17 @@ public class StructureTemplate {
    public List<StructureTemplate.JigsawBlockInfo> getJigsaws(final BlockPos position, final Rotation rotation) {
       if (this.palettes.isEmpty()) {
          return new ArrayList<>();
-      } else {
-         StructurePlaceSettings settings = new StructurePlaceSettings().setRotation(rotation);
-         List<StructureTemplate.JigsawBlockInfo> jigsaws = settings.getRandomPalette(this.palettes, position).jigsaws();
-         List<StructureTemplate.JigsawBlockInfo> result = new ArrayList<>(jigsaws.size());
-
-         for (StructureTemplate.JigsawBlockInfo jigsaw : jigsaws) {
-            result.add(jigsaw.withInfo(calculateRelativePosition(settings, jigsaw.pos).offset(position), jigsaw.state.rotate(settings.getRotation())));
-         }
-
-         return result;
       }
+
+      StructurePlaceSettings settings = new StructurePlaceSettings().setRotation(rotation);
+      List<StructureTemplate.JigsawBlockInfo> jigsaws = settings.getRandomPalette(this.palettes, position).jigsaws();
+      List<StructureTemplate.JigsawBlockInfo> result = new ArrayList<>(jigsaws.size());
+
+      for (StructureTemplate.JigsawBlockInfo jigsaw : jigsaws) {
+         result.add(jigsaw.withInfo(calculateRelativePosition(settings, jigsaw.pos).offset(position), jigsaw.state.rotate(settings.getRotation())));
+      }
+
+      return result;
    }
 
    public ObjectArrayList<StructureTemplate.StructureBlockInfo> filterBlocks(
@@ -214,16 +214,16 @@ public class StructureTemplate {
       BoundingBox boundingBox = settings.getBoundingBox();
       if (this.palettes.isEmpty()) {
          return result;
-      } else {
-         for (StructureTemplate.StructureBlockInfo blockInfo : settings.getRandomPalette(this.palettes, position).blocks(block)) {
-            BlockPos blockPos = absolute ? calculateRelativePosition(settings, blockInfo.pos).offset(position) : blockInfo.pos;
-            if (boundingBox == null || boundingBox.isInside(blockPos)) {
-               result.add(new StructureTemplate.StructureBlockInfo(blockPos, blockInfo.state.rotate(settings.getRotation()), blockInfo.nbt));
-            }
-         }
-
-         return result;
       }
+
+      for (StructureTemplate.StructureBlockInfo blockInfo : settings.getRandomPalette(this.palettes, position).blocks(block)) {
+         BlockPos blockPos = absolute ? calculateRelativePosition(settings, blockInfo.pos).offset(position) : blockInfo.pos;
+         if (boundingBox == null || boundingBox.isInside(blockPos)) {
+            result.add(new StructureTemplate.StructureBlockInfo(blockPos, blockInfo.state.rotate(settings.getRotation()), blockInfo.nbt));
+         }
+      }
+
+      return result;
    }
 
    public BlockPos calculateConnectedPosition(
@@ -244,166 +244,166 @@ public class StructureTemplate {
       final BlockPos referencePos,
       final StructurePlaceSettings settings,
       final RandomSource random,
-      @Block.UpdateFlags final int updateMode
+      final @Block.UpdateFlags int updateMode
    ) {
       if (this.palettes.isEmpty()) {
          return false;
-      } else {
-         List<StructureTemplate.StructureBlockInfo> blockInfoList = settings.getRandomPalette(this.palettes, position).blocks();
-         if ((!blockInfoList.isEmpty() || !settings.isIgnoreEntities() && !this.entityInfoList.isEmpty())
-            && this.size.getX() >= 1
-            && this.size.getY() >= 1
-            && this.size.getZ() >= 1) {
-            BoundingBox boundingBox = settings.getBoundingBox();
-            List<BlockPos> toFill = Lists.newArrayListWithCapacity(settings.shouldApplyWaterlogging() ? blockInfoList.size() : 0);
-            List<BlockPos> lockedFluids = Lists.newArrayListWithCapacity(settings.shouldApplyWaterlogging() ? blockInfoList.size() : 0);
-            List<Pair<BlockPos, CompoundTag>> placed = Lists.newArrayListWithCapacity(blockInfoList.size());
-            int minX = Integer.MAX_VALUE;
-            int minY = Integer.MAX_VALUE;
-            int minZ = Integer.MAX_VALUE;
-            int maxX = Integer.MIN_VALUE;
-            int maxY = Integer.MIN_VALUE;
-            int maxZ = Integer.MIN_VALUE;
-            List<StructureTemplate.StructureBlockInfo> processedBlockInfoList = processBlockInfos(level, position, referencePos, settings, blockInfoList);
+      }
 
-            try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(LOGGER)) {
-               for (StructureTemplate.StructureBlockInfo blockInfo : processedBlockInfoList) {
-                  BlockPos blockPos = blockInfo.pos;
-                  if (boundingBox == null || boundingBox.isInside(blockPos)) {
-                     FluidState previousFluidState = settings.shouldApplyWaterlogging() ? level.getFluidState(blockPos) : null;
-                     BlockState state = blockInfo.state.mirror(settings.getMirror()).rotate(settings.getRotation());
+      List<StructureTemplate.StructureBlockInfo> blockInfoList = settings.getRandomPalette(this.palettes, position).blocks();
+      if ((!blockInfoList.isEmpty() || !settings.isIgnoreEntities() && !this.entityInfoList.isEmpty())
+         && this.size.getX() >= 1
+         && this.size.getY() >= 1
+         && this.size.getZ() >= 1) {
+         BoundingBox boundingBox = settings.getBoundingBox();
+         List<BlockPos> toFill = Lists.newArrayListWithCapacity(settings.shouldApplyWaterlogging() ? blockInfoList.size() : 0);
+         List<BlockPos> lockedFluids = Lists.newArrayListWithCapacity(settings.shouldApplyWaterlogging() ? blockInfoList.size() : 0);
+         List<Pair<BlockPos, CompoundTag>> placed = Lists.newArrayListWithCapacity(blockInfoList.size());
+         int minX = Integer.MAX_VALUE;
+         int minY = Integer.MAX_VALUE;
+         int minZ = Integer.MAX_VALUE;
+         int maxX = Integer.MIN_VALUE;
+         int maxY = Integer.MIN_VALUE;
+         int maxZ = Integer.MIN_VALUE;
+         List<StructureTemplate.StructureBlockInfo> processedBlockInfoList = processBlockInfos(level, position, referencePos, settings, blockInfoList);
+
+         try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(LOGGER)) {
+            for (StructureTemplate.StructureBlockInfo blockInfo : processedBlockInfoList) {
+               BlockPos blockPos = blockInfo.pos;
+               if (boundingBox == null || boundingBox.isInside(blockPos)) {
+                  FluidState previousFluidState = settings.shouldApplyWaterlogging() ? level.getFluidState(blockPos) : null;
+                  BlockState state = blockInfo.state.mirror(settings.getMirror()).rotate(settings.getRotation());
+                  if (blockInfo.nbt != null) {
+                     level.setBlock(blockPos, Blocks.BARRIER.defaultBlockState(), 820);
+                  }
+
+                  if (level.setBlock(blockPos, state, updateMode)) {
+                     minX = Math.min(minX, blockPos.getX());
+                     minY = Math.min(minY, blockPos.getY());
+                     minZ = Math.min(minZ, blockPos.getZ());
+                     maxX = Math.max(maxX, blockPos.getX());
+                     maxY = Math.max(maxY, blockPos.getY());
+                     maxZ = Math.max(maxZ, blockPos.getZ());
+                     placed.add(Pair.of(blockPos, blockInfo.nbt));
                      if (blockInfo.nbt != null) {
-                        level.setBlock(blockPos, Blocks.BARRIER.defaultBlockState(), 820);
-                     }
-
-                     if (level.setBlock(blockPos, state, updateMode)) {
-                        minX = Math.min(minX, blockPos.getX());
-                        minY = Math.min(minY, blockPos.getY());
-                        minZ = Math.min(minZ, blockPos.getZ());
-                        maxX = Math.max(maxX, blockPos.getX());
-                        maxY = Math.max(maxY, blockPos.getY());
-                        maxZ = Math.max(maxZ, blockPos.getZ());
-                        placed.add(Pair.of(blockPos, blockInfo.nbt));
-                        if (blockInfo.nbt != null) {
-                           BlockEntity blockEntity = level.getBlockEntity(blockPos);
-                           if (blockEntity != null) {
-                              if (!SharedConstants.DEBUG_STRUCTURE_EDIT_MODE && blockEntity instanceof RandomizableContainer) {
-                                 blockInfo.nbt.putLong("LootTableSeed", random.nextLong());
-                              }
-
-                              blockEntity.loadWithComponents(
-                                 TagValueInput.create(reporter.forChild(blockEntity.problemPath()), level.registryAccess(), blockInfo.nbt)
-                              );
-                           }
-                        }
-
-                        if (previousFluidState != null) {
-                           if (state.getFluidState().isSource()) {
-                              lockedFluids.add(blockPos);
-                           } else if (state.getBlock() instanceof LiquidBlockContainer) {
-                              ((LiquidBlockContainer)state.getBlock()).placeLiquid(level, blockPos, state, previousFluidState);
-                              if (!previousFluidState.isSource()) {
-                                 toFill.add(blockPos);
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
-
-               boolean filled = true;
-               Direction[] directions = new Direction[]{Direction.UP, Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST};
-
-               while (filled && !toFill.isEmpty()) {
-                  filled = false;
-                  Iterator<BlockPos> iterator = toFill.iterator();
-
-                  while (iterator.hasNext()) {
-                     BlockPos pos = iterator.next();
-                     FluidState toPlace = level.getFluidState(pos);
-
-                     for (int i = 0; i < directions.length && !toPlace.isSource(); i++) {
-                        BlockPos neighborPos = pos.relative(directions[i]);
-                        FluidState neighbor = level.getFluidState(neighborPos);
-                        if (neighbor.isSource() && !lockedFluids.contains(neighborPos)) {
-                           toPlace = neighbor;
-                        }
-                     }
-
-                     if (toPlace.isSource()) {
-                        BlockState statex = level.getBlockState(pos);
-                        if (statex.getBlock() instanceof LiquidBlockContainer liquidBlockContainer) {
-                           liquidBlockContainer.placeLiquid(level, pos, statex, toPlace);
-                           filled = true;
-                           iterator.remove();
-                        }
-                     }
-                  }
-               }
-
-               if (minX <= maxX) {
-                  if (!settings.getKnownShape()) {
-                     DiscreteVoxelShape shape = new BitSetDiscreteVoxelShape(maxX - minX + 1, maxY - minY + 1, maxZ - minZ + 1);
-                     int startX = minX;
-                     int startY = minY;
-                     int startZ = minZ;
-
-                     for (Pair<BlockPos, CompoundTag> blockInfox : placed) {
-                        BlockPos blockPos = (BlockPos)blockInfox.getFirst();
-                        shape.fill(blockPos.getX() - startX, blockPos.getY() - startY, blockPos.getZ() - startZ);
-                     }
-
-                     updateShapeAtEdge(level, updateMode, shape, startX, startY, startZ);
-                  }
-
-                  for (Pair<BlockPos, CompoundTag> blockInfox : placed) {
-                     BlockPos blockPos = (BlockPos)blockInfox.getFirst();
-                     if (!settings.getKnownShape()) {
-                        BlockState statex = level.getBlockState(blockPos);
-                        BlockState newState = Block.updateFromNeighbourShapes(statex, level, blockPos);
-                        if (statex != newState) {
-                           level.setBlock(blockPos, newState, updateMode & -2 | 16);
-                        }
-
-                        level.updateNeighborsAt(blockPos, newState.getBlock());
-                     }
-
-                     if (blockInfox.getSecond() != null) {
                         BlockEntity blockEntity = level.getBlockEntity(blockPos);
                         if (blockEntity != null) {
-                           blockEntity.setChanged();
+                           if (!SharedConstants.DEBUG_STRUCTURE_EDIT_MODE && blockEntity instanceof RandomizableContainer) {
+                              blockInfo.nbt.putLong("LootTableSeed", random.nextLong());
+                           }
+
+                           blockEntity.loadWithComponents(
+                              TagValueInput.create(reporter.forChild(blockEntity.problemPath()), level.registryAccess(), blockInfo.nbt)
+                           );
+                        }
+                     }
+
+                     if (previousFluidState != null) {
+                        if (state.getFluidState().isSource()) {
+                           lockedFluids.add(blockPos);
+                        } else if (state.getBlock() instanceof LiquidBlockContainer) {
+                           ((LiquidBlockContainer)state.getBlock()).placeLiquid(level, blockPos, state, previousFluidState);
+                           if (!previousFluidState.isSource()) {
+                              toFill.add(blockPos);
+                           }
                         }
                      }
                   }
-               }
-
-               if (!settings.isIgnoreEntities()) {
-                  this.placeEntities(
-                     level,
-                     position,
-                     settings.getMirror(),
-                     settings.getRotation(),
-                     settings.getRotationPivot(),
-                     boundingBox,
-                     settings.shouldFinalizeEntities(),
-                     reporter
-                  );
                }
             }
 
-            return true;
-         } else {
-            return false;
+            boolean filled = true;
+            Direction[] directions = new Direction[]{Direction.UP, Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST};
+
+            while (filled && !toFill.isEmpty()) {
+               filled = false;
+               Iterator<BlockPos> iterator = toFill.iterator();
+
+               while (iterator.hasNext()) {
+                  BlockPos pos = iterator.next();
+                  FluidState toPlace = level.getFluidState(pos);
+
+                  for (int i = 0; i < directions.length && !toPlace.isSource(); i++) {
+                     BlockPos neighborPos = pos.relative(directions[i]);
+                     FluidState neighbor = level.getFluidState(neighborPos);
+                     if (neighbor.isSource() && !lockedFluids.contains(neighborPos)) {
+                        toPlace = neighbor;
+                     }
+                  }
+
+                  if (toPlace.isSource()) {
+                     BlockState state = level.getBlockState(pos);
+                     if (state.getBlock() instanceof LiquidBlockContainer liquidBlockContainer) {
+                        liquidBlockContainer.placeLiquid(level, pos, state, toPlace);
+                        filled = true;
+                        iterator.remove();
+                     }
+                  }
+               }
+            }
+
+            if (minX <= maxX) {
+               if (!settings.getKnownShape()) {
+                  DiscreteVoxelShape shape = new BitSetDiscreteVoxelShape(maxX - minX + 1, maxY - minY + 1, maxZ - minZ + 1);
+                  int startX = minX;
+                  int startY = minY;
+                  int startZ = minZ;
+
+                  for (Pair<BlockPos, CompoundTag> blockInfo : placed) {
+                     BlockPos blockPos = (BlockPos)blockInfo.getFirst();
+                     shape.fill(blockPos.getX() - startX, blockPos.getY() - startY, blockPos.getZ() - startZ);
+                  }
+
+                  updateShapeAtEdge(level, updateMode, shape, startX, startY, startZ);
+               }
+
+               for (Pair<BlockPos, CompoundTag> blockInfo : placed) {
+                  BlockPos blockPos = (BlockPos)blockInfo.getFirst();
+                  if (!settings.getKnownShape()) {
+                     BlockState state = level.getBlockState(blockPos);
+                     BlockState newState = Block.updateFromNeighbourShapes(state, level, blockPos);
+                     if (state != newState) {
+                        level.setBlock(blockPos, newState, updateMode & -2 | 16);
+                     }
+
+                     level.updateNeighborsAt(blockPos, newState.getBlock());
+                  }
+
+                  if (blockInfo.getSecond() != null) {
+                     BlockEntity blockEntity = level.getBlockEntity(blockPos);
+                     if (blockEntity != null) {
+                        blockEntity.setChanged();
+                     }
+                  }
+               }
+            }
+
+            if (!settings.isIgnoreEntities()) {
+               this.placeEntities(
+                  level,
+                  position,
+                  settings.getMirror(),
+                  settings.getRotation(),
+                  settings.getRotationPivot(),
+                  boundingBox,
+                  settings.shouldFinalizeEntities(),
+                  reporter
+               );
+            }
          }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public static void updateShapeAtEdge(final LevelAccessor level, @Block.UpdateFlags final int updateMode, final DiscreteVoxelShape shape, final BlockPos pos) {
+   public static void updateShapeAtEdge(final LevelAccessor level, final @Block.UpdateFlags int updateMode, final DiscreteVoxelShape shape, final BlockPos pos) {
       updateShapeAtEdge(level, updateMode, shape, pos.getX(), pos.getY(), pos.getZ());
    }
 
    public static void updateShapeAtEdge(
-      final LevelAccessor level, @Block.UpdateFlags final int updateMode, final DiscreteVoxelShape shape, final int startX, final int startY, final int startZ
+      final LevelAccessor level, final @Block.UpdateFlags int updateMode, final DiscreteVoxelShape shape, final int startX, final int startY, final int startZ
    ) {
       BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
       BlockPos.MutableBlockPos neighborPos = new BlockPos.MutableBlockPos();
@@ -463,8 +463,8 @@ public class StructureTemplate {
          }
       }
 
-      for (StructureProcessor processorx : settings.getProcessors()) {
-         processedBlockInfoList = processorx.finalizeProcessing(level, position, referencePos, originalBlockInfoList, processedBlockInfoList, settings);
+      for (StructureProcessor processor : settings.getProcessors()) {
+         processedBlockInfoList = processor.finalizeProcessing(level, position, referencePos, originalBlockInfoList, processedBlockInfoList, settings);
       }
 
       return processedBlockInfoList;
@@ -476,7 +476,7 @@ public class StructureTemplate {
       final Mirror mirror,
       final Rotation rotation,
       final BlockPos pivot,
-      @Nullable final BoundingBox boundingBox,
+      final @Nullable BoundingBox boundingBox,
       final boolean finalizeEntities,
       final ProblemReporter problemReporter
    ) {
@@ -485,7 +485,7 @@ public class StructureTemplate {
          if (boundingBox == null || boundingBox.isInside(blockPos)) {
             CompoundTag tag = entityInfo.nbt.copy();
             Vec3 relativePos = transform(entityInfo.pos, mirror, rotation, pivot);
-            Vec3 pos = relativePos.add((double)position.getX(), (double)position.getY(), (double)position.getZ());
+            Vec3 pos = relativePos.add(position.getX(), position.getY(), position.getZ());
             ListTag posTag = new ListTag();
             posTag.add(DoubleTag.valueOf(pos.x));
             posTag.add(DoubleTag.valueOf(pos.y));
@@ -517,7 +517,7 @@ public class StructureTemplate {
          return EntityType.create(
             TagValueInput.create(reporter, level.registryAccess(), tag), level.getLevel(), new EntitySpawnRequest(EntitySpawnReason.STRUCTURE, false)
          );
-      } catch (Exception var4) {
+      } catch (Exception ignored) {
          return Optional.empty();
       }
    }
@@ -576,9 +576,9 @@ public class StructureTemplate {
       int pivotZ = pivot.getZ();
 
       return switch (rotation) {
-         case COUNTERCLOCKWISE_90 -> new Vec3((double)(pivotX - pivotZ) + z, y, (double)(pivotX + pivotZ + 1) - x);
-         case CLOCKWISE_90 -> new Vec3((double)(pivotX + pivotZ + 1) - z, y, (double)(pivotZ - pivotX) + x);
-         case CLOCKWISE_180 -> new Vec3((double)(pivotX + pivotX + 1) - x, y, (double)(pivotZ + pivotZ + 1) - z);
+         case COUNTERCLOCKWISE_90 -> new Vec3(pivotX - pivotZ + z, y, pivotX + pivotZ + 1 - x);
+         case CLOCKWISE_90 -> new Vec3(pivotX + pivotZ + 1 - z, y, pivotZ - pivotX + x);
+         case CLOCKWISE_180 -> new Vec3(pivotX + pivotX + 1 - x, y, pivotZ + pivotZ + 1 - z);
          default -> wasMirrored ? new Vec3(x, y, z) : pos;
       };
    }
@@ -769,7 +769,7 @@ public class StructureTemplate {
       return JigsawBlock.getFrontFacing(state).getAxis().isHorizontal() ? JigsawBlockEntity.JointType.ALIGNED : JigsawBlockEntity.JointType.ROLLABLE;
    }
 
-   public static record JigsawBlockInfo(
+   public record JigsawBlockInfo(
       BlockPos pos,
       BlockState state,
       JigsawBlockEntity.JointType jointType,
@@ -818,8 +818,7 @@ public class StructureTemplate {
    public static final class Palette {
       private final List<StructureTemplate.StructureBlockInfo> blocks;
       private final Map<Block, List<StructureTemplate.StructureBlockInfo>> cache = Maps.newHashMap();
-      @Nullable
-      private List<StructureTemplate.JigsawBlockInfo> cachedJigsaws;
+      private @Nullable List<StructureTemplate.JigsawBlockInfo> cachedJigsaws;
 
       private Palette(final List<StructureTemplate.StructureBlockInfo> blocks) {
          this.blocks = blocks;
@@ -857,8 +856,7 @@ public class StructureTemplate {
          return id;
       }
 
-      @Nullable
-      public BlockState stateFor(final int index) {
+      public @Nullable BlockState stateFor(final int index) {
          BlockState blockState = this.ids.byId(index);
          return blockState == null ? DEFAULT_BLOCK_STATE : blockState;
       }
@@ -873,7 +871,7 @@ public class StructureTemplate {
       }
    }
 
-   public static record StructureBlockInfo(BlockPos pos, BlockState state, @Nullable CompoundTag nbt) {
+   public record StructureBlockInfo(BlockPos pos, BlockState state, @Nullable CompoundTag nbt) {
       @Override
       public String toString() {
          return String.format(Locale.ROOT, "<StructureBlockInfo | %s | %s | %s>", this.pos, this.state, this.nbt);

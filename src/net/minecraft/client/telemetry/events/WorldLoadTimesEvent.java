@@ -8,10 +8,9 @@ import org.jspecify.annotations.Nullable;
 
 public class WorldLoadTimesEvent {
    private final boolean newWorld;
-   @Nullable
-   private final Duration worldLoadDuration;
+   private final @Nullable Duration worldLoadDuration;
 
-   public WorldLoadTimesEvent(final boolean newWorld, @Nullable final Duration worldLoadDuration) {
+   public WorldLoadTimesEvent(final boolean newWorld, final @Nullable Duration worldLoadDuration) {
       this.worldLoadDuration = worldLoadDuration;
       this.newWorld = newWorld;
    }

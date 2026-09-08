@@ -16,14 +16,14 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 public class SetBookCoverFunction extends LootItemConditionalFunction {
    public static final MapCodec<SetBookCoverFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
-            .and(
-               i.group(
-                  Filterable.codec(Codec.string(0, 32)).optionalFieldOf("title").forGetter(f -> f.title),
-                  Codec.STRING.optionalFieldOf("author").forGetter(f -> f.author),
-                  ExtraCodecs.intRange(0, 3).optionalFieldOf("generation").forGetter(f -> f.generation)
-               )
+         .and(
+            i.group(
+               Filterable.codec(Codec.string(0, 32)).optionalFieldOf("title").forGetter(f -> f.title),
+               Codec.STRING.optionalFieldOf("author").forGetter(f -> f.author),
+               ExtraCodecs.intRange(0, 3).optionalFieldOf("generation").forGetter(f -> f.generation)
             )
-            .apply(i, SetBookCoverFunction::new)
+         )
+         .apply(i, SetBookCoverFunction::new)
    );
    private final Optional<String> author;
    private final Optional<Filterable<String>> title;

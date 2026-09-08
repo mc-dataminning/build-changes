@@ -10,7 +10,7 @@ public enum ProjectionType {
    private final VertexSorting vertexSorting;
    private final ProjectionType.LayeringTransform layeringTransform;
 
-   private ProjectionType(final VertexSorting vertexSorting, final ProjectionType.LayeringTransform layeringTransform) {
+   ProjectionType(final VertexSorting vertexSorting, final ProjectionType.LayeringTransform layeringTransform) {
       this.vertexSorting = vertexSorting;
       this.layeringTransform = layeringTransform;
    }

@@ -19,13 +19,12 @@ public class ClientMannequin extends Mannequin implements ClientAvatarEntity {
    private static final Logger LOGGER = LogUtils.getLogger();
    public static final PlayerSkin DEFAULT_SKIN = DefaultPlayerSkin.get(Mannequin.DEFAULT_PROFILE.partialProfile());
    private final ClientAvatarState avatarState = new ClientAvatarState();
-   @Nullable
-   private CompletableFuture<Optional<PlayerSkin>> skinLookup;
+   private @Nullable CompletableFuture<Optional<PlayerSkin>> skinLookup;
    private PlayerSkin skin = DEFAULT_SKIN;
    private final PlayerSkinRenderCache skinRenderCache;
 
    public static void registerOverrides(final PlayerSkinRenderCache cache) {
-      Mannequin.constructor = (type, level) -> (Mannequin)(level instanceof ClientLevel ? new ClientMannequin(level, cache) : new Mannequin(type, level));
+      Mannequin.constructor = (type, level) -> level instanceof ClientLevel ? new ClientMannequin(level, cache) : new Mannequin(type, level);
    }
 
    public ClientMannequin(final Level level, final PlayerSkinRenderCache skinRenderCache) {
@@ -41,8 +40,8 @@ public class ClientMannequin extends Mannequin implements ClientAvatarEntity {
          try {
             this.skinLookup.get().ifPresent(this::setSkin);
             this.skinLookup = null;
-         } catch (Exception var2) {
-            LOGGER.error("Error when trying to look up skin", var2);
+         } catch (Exception e) {
+            LOGGER.error("Error when trying to look up skin", e);
          }
       }
    }
@@ -79,15 +78,13 @@ public class ClientMannequin extends Mannequin implements ClientAvatarEntity {
       this.skin = skin;
    }
 
-   @Nullable
    @Override
-   public Component belowNameDisplay() {
+   public @Nullable Component belowNameDisplay() {
       return this.getDescription();
    }
 
-   @Nullable
    @Override
-   public Parrot.Variant getParrotVariantOnShoulder(final boolean left) {
+   public Parrot.@Nullable Variant getParrotVariantOnShoulder(final boolean left) {
       return null;
    }
 

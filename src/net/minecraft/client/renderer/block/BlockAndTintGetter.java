@@ -29,9 +29,8 @@ public interface BlockAndTintGetter extends BlockAndLightGetter {
          return -1;
       }
 
-      @Nullable
       @Override
-      public BlockEntity getBlockEntity(final BlockPos pos) {
+      public @Nullable BlockEntity getBlockEntity(final BlockPos pos) {
          return null;
       }
 

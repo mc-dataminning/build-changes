@@ -28,13 +28,13 @@ public class ItemUtils {
          itemStack.consume(1, player);
          if (itemStack.isEmpty()) {
             return newItemStack;
-         } else {
-            if (!player.getInventory().add(newItemStack)) {
-               player.drop(newItemStack, false, Prediction.PREDICTED);
-            }
-
-            return itemStack;
          }
+
+         if (!player.getInventory().add(newItemStack)) {
+            player.drop(newItemStack, false, Prediction.PREDICTED);
+         }
+
+         return itemStack;
       }
    }
 

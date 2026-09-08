@@ -23,7 +23,7 @@ public class BushBlock extends VegetationBlock implements BonemealableBlock {
    protected BushBlock(final BlockBehaviour.Properties properties, final int shapeHeight) {
       super(properties);
       this.shapeHeight = shapeHeight;
-      this.shape = Block.column(16.0, 0.0, (double)shapeHeight);
+      this.shape = Block.column(16.0, 0.0, shapeHeight);
    }
 
    @Override

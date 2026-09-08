@@ -7,14 +7,12 @@ import com.mojang.serialization.Codec;
 public record TelemetryEventInstance(TelemetryEventType type, TelemetryPropertyMap properties) {
    public static final Codec<TelemetryEventInstance> CODEC = TelemetryEventType.CODEC.dispatchStable(TelemetryEventInstance::type, TelemetryEventType::codec);
 
-   public TelemetryEventInstance(TelemetryEventType type, TelemetryPropertyMap properties) {
+   public TelemetryEventInstance {
       properties.propertySet().forEach(property -> {
          if (!type.contains((TelemetryProperty<?>)property)) {
             throw new IllegalArgumentException("Property '" + property.id() + "' not expected for event: '" + type.id() + "'");
          }
       });
-      this.type = type;
-      this.properties = properties;
    }
 
    public TelemetryEvent export(final TelemetrySession session) {

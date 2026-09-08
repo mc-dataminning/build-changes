@@ -17,64 +17,23 @@ public record RangeChoiceFunction(DensityFunction input, float minInclusive, flo
    implements DensityFunction {
    public static final MapCodec<RangeChoiceFunction> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               DensityFunction.CODEC.fieldOf("input").forGetter(RangeChoiceFunction::input),
-               DensityFunctions.NOISE_VALUE_CODEC.fieldOf("min_inclusive").forGetter(RangeChoiceFunction::minInclusive),
-               DensityFunctions.NOISE_VALUE_CODEC.fieldOf("max_exclusive").forGetter(RangeChoiceFunction::maxExclusive),
-               DensityFunction.CODEC.fieldOf("when_in_range").forGetter(RangeChoiceFunction::whenInRange),
-               DensityFunction.CODEC.fieldOf("when_out_of_range").forGetter(RangeChoiceFunction::whenOutOfRange)
-            )
-            .apply(i, RangeChoiceFunction::new)
+            DensityFunction.CODEC.fieldOf("input").forGetter(RangeChoiceFunction::input),
+            DensityFunctions.NOISE_VALUE_CODEC.fieldOf("min_inclusive").forGetter(RangeChoiceFunction::minInclusive),
+            DensityFunctions.NOISE_VALUE_CODEC.fieldOf("max_exclusive").forGetter(RangeChoiceFunction::maxExclusive),
+            DensityFunction.CODEC.fieldOf("when_in_range").forGetter(RangeChoiceFunction::whenInRange),
+            DensityFunction.CODEC.fieldOf("when_out_of_range").forGetter(RangeChoiceFunction::whenOutOfRange)
+         )
+         .apply(i, RangeChoiceFunction::new)
    );
 
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
    @Override
    public DensitySampler compileSampler(final DensityFunction.CompileContext context) {
       DensitySampler input = this.input.compileSampler(context);
-      if (this.whenInRange instanceof ConstantFunction var3) {
-         ConstantFunction var10000 = var3;
-
-         float var8;
-         label36: {
-            label41: {
-               try {
-                  var16 = var10000.value();
-               } catch (Throwable var11) {
-                  var15 = var11;
-                  boolean var10001 = false;
-                  break label41;
-               }
-
-               var8 = var16;
-               if (false || !(this.whenOutOfRange instanceof ConstantFunction var5)) {
-                  return new RangeChoiceFunction.Sampler(
-                     input, this.minInclusive, this.maxExclusive, this.whenInRange.compileSampler(context), this.whenOutOfRange.compileSampler(context)
-                  );
-               }
-
-               var10000 = var5;
-
-               try {
-                  var18 = var10000.value();
-                  break label36;
-               } catch (Throwable var10) {
-                  var15 = var10;
-                  boolean var19 = false;
-               }
-            }
-
-            Throwable var12 = var15;
-            throw new MatchException(var12.toString(), var12);
-         }
-
-         var8 = var18;
-         if (true) {
-            return new RangeChoiceFunction.ConstSampler(input, this.minInclusive, this.maxExclusive, var8, var8);
-         }
-      }
-
-      return new RangeChoiceFunction.Sampler(
-         input, this.minInclusive, this.maxExclusive, this.whenInRange.compileSampler(context), this.whenOutOfRange.compileSampler(context)
-      );
+      return this.whenInRange instanceof ConstantFunction(float whenInRangeValue) && this.whenOutOfRange instanceof ConstantFunction(float whenOutOfRangeValue)
+         ? new RangeChoiceFunction.ConstSampler(input, this.minInclusive, this.maxExclusive, whenInRangeValue, whenOutOfRangeValue)
+         : new RangeChoiceFunction.Sampler(
+            input, this.minInclusive, this.maxExclusive, this.whenInRange.compileSampler(context), this.whenOutOfRange.compileSampler(context)
+         );
    }
 
    @Override
@@ -92,9 +51,8 @@ public record RangeChoiceFunction(DensityFunction input, float minInclusive, flo
       return Interval.encapsulating(this.whenInRange.range(), this.whenOutOfRange.range());
    }
 
-   @DensityFunction.Axes
    @Override
-   public int domainAxes() {
+   public @DensityFunction.Axes int domainAxes() {
       return this.input.domainAxes() | this.whenInRange.domainAxes() | this.whenOutOfRange.domainAxes();
    }
 
@@ -103,8 +61,7 @@ public record RangeChoiceFunction(DensityFunction input, float minInclusive, flo
       return CODEC;
    }
 
-   private static record ConstSampler(DensitySampler input, float minInclusive, float maxExclusive, float whenInRange, float whenOutOfRange)
-      implements DensitySampler {
+   private record ConstSampler(DensitySampler input, float minInclusive, float maxExclusive, float whenInRange, float whenOutOfRange) implements DensitySampler {
       private float choose(final float input) {
          return input >= this.minInclusive && input < this.maxExclusive ? this.whenInRange : this.whenOutOfRange;
       }
@@ -124,7 +81,7 @@ public record RangeChoiceFunction(DensityFunction input, float minInclusive, flo
       }
    }
 
-   private static record Sampler(DensitySampler input, float minInclusive, float maxExclusive, DensitySampler whenInRange, DensitySampler whenOutOfRange)
+   private record Sampler(DensitySampler input, float minInclusive, float maxExclusive, DensitySampler whenInRange, DensitySampler whenOutOfRange)
       implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {

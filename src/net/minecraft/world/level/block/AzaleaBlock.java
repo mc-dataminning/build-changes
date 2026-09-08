@@ -44,7 +44,7 @@ public class AzaleaBlock extends VegetationBlock implements BonemealableBlock {
 
    @Override
    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state, final BonemealSource source) {
-      return (double)level.getRandom().nextFloat() < 0.45;
+      return level.getRandom().nextFloat() < 0.45;
    }
 
    @Override

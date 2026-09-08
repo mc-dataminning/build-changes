@@ -544,8 +544,8 @@ public class RenderPipelines {
       OitPipelineSet.builder("entity", RenderPipeline.builder(OIT_ENTITY_SNIPPET).withCull(false))
          .withAccumulateModifier(
             accumulate -> accumulate.withShaderDefine("PER_FACE_LIGHTING")
-                  .withBindGroupLayout(BindGroupLayouts.SAMPLER1)
-                  .withBindGroupLayout(BindGroupLayouts.SAMPLER2)
+               .withBindGroupLayout(BindGroupLayouts.SAMPLER1)
+               .withBindGroupLayout(BindGroupLayouts.SAMPLER2)
          )
          .build()
    );
@@ -743,9 +743,9 @@ public class RenderPipelines {
       OitPipelineSet.builder("item_glint", RenderPipeline.builder(OIT_ITEM_SNIPPET))
          .withAccumulateModifier(
             accumulate -> accumulate.withSnippet(GLINT_SNIPPET)
-                  .withBindGroupLayout(BindGroupLayouts.GLOBALS)
-                  .withBindGroupLayout(BindGroupLayouts.SAMPLER1)
-                  .withBindGroupLayout(BindGroupLayouts.SAMPLER2)
+               .withBindGroupLayout(BindGroupLayouts.GLOBALS)
+               .withBindGroupLayout(BindGroupLayouts.SAMPLER1)
+               .withBindGroupLayout(BindGroupLayouts.SAMPLER2)
          )
          .build()
    );
@@ -753,9 +753,9 @@ public class RenderPipelines {
       OitPipelineSet.builder("item_glint_special", RenderPipeline.builder(OIT_ITEM_SNIPPET).withVertexBinding(0, DefaultVertexFormat.ENTITY_GLINT_SPECIAL))
          .withAccumulateModifier(
             accumulate -> accumulate.withSnippet(GLINT_SPECIAL_SNIPPET)
-                  .withBindGroupLayout(BindGroupLayouts.GLOBALS)
-                  .withBindGroupLayout(BindGroupLayouts.SAMPLER1)
-                  .withBindGroupLayout(BindGroupLayouts.SAMPLER2)
+               .withBindGroupLayout(BindGroupLayouts.GLOBALS)
+               .withBindGroupLayout(BindGroupLayouts.SAMPLER1)
+               .withBindGroupLayout(BindGroupLayouts.SAMPLER2)
          )
          .build()
    );

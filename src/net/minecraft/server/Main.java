@@ -66,9 +66,7 @@ import org.slf4j.Logger;
 public class Main {
    private static final Logger LOGGER = LogUtils.getLogger();
 
-   @SuppressForbidden(
-      reason = "System.out needed before bootstrap"
-   )
+   @SuppressForbidden(reason = "System.out needed before bootstrap")
    public static void main(final String[] args) {
       SharedConstants.tryDetectVersion();
       OptionParser parser = new OptionParser();
@@ -137,8 +135,8 @@ public class Main {
             Dynamic<?> levelDataUnfixed;
             try {
                levelDataUnfixed = access.getUnfixedDataTagWithFallback();
-            } catch (NbtException | ReportedNbtException | IOException var41) {
-               LOGGER.error("Failed to load world data. World files may be corrupted. Shutting down.", var41);
+            } catch (IOException | NbtException | ReportedNbtException ex) {
+               LOGGER.error("Failed to load world data. World files may be corrupted. Shutting down.", ex);
                return;
             }
 
@@ -170,29 +168,27 @@ public class Main {
             WorldLoader.InitConfig worldLoadConfig = loadOrCreateConfig(settings.getProperties(), levelDataTag, safeModeEnabled, packRepository);
             worldStem = Util.<WorldStem>blockUntilDone(
                   executor -> WorldLoader.load(
-                        worldLoadConfig,
-                        context -> {
-                           Registry<LevelStem> datapackDimensions = context.datapackDimensions().lookupOrThrow(Registries.LEVEL_STEM);
-                           if (levelDataTag != null) {
-                              LevelDataAndDimensions worldData = LevelStorageSource.getLevelDataAndDimensions(
-                                 access, levelDataTag, context.dataConfiguration(), datapackDimensions, context.datapackWorldRegistries()
-                              );
-                              return new WorldLoader.DataLoadOutput<>(worldData.worldDataAndGenSettings(), worldData.dimensions().dimensionsRegistryAccess());
-                           } else {
-                              LOGGER.info("No existing world data, creating new world");
-                              return createNewWorldData(settings, context, datapackDimensions, options.has(demo), options.has(bonusChest));
-                           }
-                        },
-                        WorldStem::new,
-                        Util.backgroundExecutor(),
-                        executor
-                     )
+                     worldLoadConfig,
+                     context -> {
+                        Registry<LevelStem> datapackDimensions = context.datapackDimensions().lookupOrThrow(Registries.LEVEL_STEM);
+                        if (levelDataTag != null) {
+                           LevelDataAndDimensions worldData = LevelStorageSource.getLevelDataAndDimensions(
+                              access, levelDataTag, context.dataConfiguration(), datapackDimensions, context.datapackWorldRegistries()
+                           );
+                           return new WorldLoader.DataLoadOutput<>(worldData.worldDataAndGenSettings(), worldData.dimensions().dimensionsRegistryAccess());
+                        } else {
+                           LOGGER.info("No existing world data, creating new world");
+                           return createNewWorldData(settings, context, datapackDimensions, options.has(demo), options.has(bonusChest));
+                        }
+                     },
+                     WorldStem::new,
+                     Util.backgroundExecutor(),
+                     executor
+                  )
                )
                .get();
-         } catch (Exception var40) {
-            LOGGER.warn(
-               "Failed to load datapacks, can't proceed with server load. You can either fix your datapacks or reset to vanilla with --safeMode", var40
-            );
+         } catch (Exception e) {
+            LOGGER.warn("Failed to load datapacks, can't proceed with server load. You can either fix your datapacks or reset to vanilla with --safeMode", e);
             return;
          }
 
@@ -238,8 +234,8 @@ public class Main {
          };
          shutdownThread.setUncaughtExceptionHandler(new DefaultUncaughtExceptionHandler(LOGGER));
          Runtime.getRuntime().addShutdownHook(shutdownThread);
-      } catch (Throwable var42) {
-         LOGGER.error(LogUtils.FATAL_MARKER, "Failed to start the minecraft server", var42);
+      } catch (Throwable t) {
+         LOGGER.error(LogUtils.FATAL_MARKER, "Failed to start the minecraft server", t);
       }
    }
 
@@ -283,13 +279,13 @@ public class Main {
       try {
          long pid = ProcessHandle.current().pid();
          Files.writeString(path, Long.toString(pid));
-      } catch (IOException var3) {
-         throw new UncheckedIOException(var3);
+      } catch (IOException e) {
+         throw new UncheckedIOException(e);
       }
    }
 
    private static WorldLoader.InitConfig loadOrCreateConfig(
-      final DedicatedServerProperties properties, @Nullable final Dynamic<?> levelDataTag, final boolean safeModeEnabled, final PackRepository packRepository
+      final DedicatedServerProperties properties, final @Nullable Dynamic<?> levelDataTag, final boolean safeModeEnabled, final PackRepository packRepository
    ) {
       boolean initMode;
       WorldDataConfiguration dataConfigToUse;
@@ -329,7 +325,7 @@ public class Main {
             int totalChunks = upgrader.getTotalChunks();
             if (totalChunks > 0) {
                int done = upgrader.getConverted() + upgrader.getSkipped();
-               LOGGER.info("{}% completed ({} / {} chunks)...", new Object[]{Mth.floor((float)done / (float)totalChunks * 100.0F), done, totalChunks});
+               LOGGER.info("{}% completed ({} / {} chunks)...", new Object[]{Mth.floor((float)done / totalChunks * 100.0F), done, totalChunks});
             }
 
             if (!isRunning.getAsBoolean()) {

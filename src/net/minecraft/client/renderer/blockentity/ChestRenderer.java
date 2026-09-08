@@ -62,7 +62,7 @@ public class ChestRenderer<T extends BlockEntity & LidBlockEntity> implements Bl
       final ChestRenderState state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
       boolean hasLevel = blockEntity.getLevel() != null;
@@ -91,7 +91,7 @@ public class ChestRenderer<T extends BlockEntity & LidBlockEntity> implements Bl
       open = 1.0F - open * open * open;
       SpriteId spriteId = Sheets.chooseSprite(state.material, state.type);
       ChestModel model = this.models.select(state.type);
-      submitNodeCollector.submitModel(model, Float.valueOf(open), poseStack, state.lightCoords, OverlayTexture.NO_OVERLAY, -1, spriteId, this.sprites, 0);
+      submitNodeCollector.submitModel(model, open, poseStack, state.lightCoords, OverlayTexture.NO_OVERLAY, -1, spriteId, this.sprites, 0);
       if (state.breakProgress != null) {
          submitNodeCollector.order(1)
             .submitCrumblingOverlay(

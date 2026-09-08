@@ -16,8 +16,8 @@ public record ServerboundCommandSuggestionPacket(int id, String command) impleme
       public ServerboundCommandSuggestionPacket decode(final ByteBuf input) {
          try {
             return this.downstream.decode(input);
-         } catch (DecoderException var3) {
-            throw new SkipPacketDecoderException(var3);
+         } catch (DecoderException e) {
+            throw new SkipPacketDecoderException(e);
          }
       }
 

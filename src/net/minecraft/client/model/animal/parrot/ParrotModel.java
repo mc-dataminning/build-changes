@@ -85,14 +85,14 @@ public class ParrotModel extends EntityModel<ParrotRenderState> {
       this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
       switch (state.pose) {
          case STANDING:
-            this.leftLeg.xRot = this.leftLeg.xRot + Mth.cos((double)(state.walkAnimationPos * 0.6662F)) * 1.4F * state.walkAnimationSpeed;
-            this.rightLeg.xRot = this.rightLeg.xRot + Mth.cos((double)(state.walkAnimationPos * 0.6662F + (float) Math.PI)) * 1.4F * state.walkAnimationSpeed;
+            this.leftLeg.xRot = this.leftLeg.xRot + Mth.cos(state.walkAnimationPos * 0.6662F) * 1.4F * state.walkAnimationSpeed;
+            this.rightLeg.xRot = this.rightLeg.xRot + Mth.cos(state.walkAnimationPos * 0.6662F + (float) Math.PI) * 1.4F * state.walkAnimationSpeed;
          case FLYING:
          case ON_SHOULDER:
          default:
             float bobbingBody = state.flapAngle * 0.3F;
             this.head.y += bobbingBody;
-            this.tail.xRot = this.tail.xRot + Mth.cos((double)(state.walkAnimationPos * 0.6662F)) * 0.3F * state.walkAnimationSpeed;
+            this.tail.xRot = this.tail.xRot + Mth.cos(state.walkAnimationPos * 0.6662F) * 0.3F * state.walkAnimationSpeed;
             this.tail.y += bobbingBody;
             this.body.y += bobbingBody;
             this.leftWing.zRot = -0.0873F - state.flapAngle;
@@ -104,13 +104,13 @@ public class ParrotModel extends EntityModel<ParrotRenderState> {
          case SITTING:
             break;
          case PARTY:
-            float xPos = Mth.cos((double)state.ageInTicks);
-            float yPos = Mth.sin((double)state.ageInTicks);
+            float xPos = Mth.cos(state.ageInTicks);
+            float yPos = Mth.sin(state.ageInTicks);
             this.head.x += xPos;
             this.head.y += yPos;
             this.head.xRot = 0.0F;
             this.head.yRot = 0.0F;
-            this.head.zRot = Mth.sin((double)state.ageInTicks) * 0.4F;
+            this.head.zRot = Mth.sin(state.ageInTicks) * 0.4F;
             this.body.x += xPos;
             this.body.y += yPos;
             this.leftWing.zRot = -0.0873F - state.flapAngle;
@@ -135,18 +135,18 @@ public class ParrotModel extends EntityModel<ParrotRenderState> {
             break;
          case SITTING:
             float sittingYOffset = 1.9F;
-            this.head.y++;
+            this.head.y += 1.9F;
             this.tail.xRot += (float) (Math.PI / 6);
-            this.tail.y++;
-            this.body.y++;
+            this.tail.y += 1.9F;
+            this.body.y += 1.9F;
             this.leftWing.zRot = -0.0873F;
-            this.leftWing.y++;
+            this.leftWing.y += 1.9F;
             this.rightWing.zRot = 0.0873F;
-            this.rightWing.y++;
-            this.leftLeg.y++;
-            this.rightLeg.y++;
-            this.leftLeg.xRot++;
-            this.rightLeg.xRot++;
+            this.rightWing.y += 1.9F;
+            this.leftLeg.y += 1.9F;
+            this.rightLeg.y += 1.9F;
+            this.leftLeg.xRot += (float) (Math.PI / 2);
+            this.rightLeg.xRot += (float) (Math.PI / 2);
             break;
          case PARTY:
             this.leftLeg.zRot = (float) (-Math.PI / 9);
@@ -164,7 +164,7 @@ public class ParrotModel extends EntityModel<ParrotRenderState> {
       }
    }
 
-   public static enum Pose {
+   public enum Pose {
       FLYING,
       STANDING,
       SITTING,

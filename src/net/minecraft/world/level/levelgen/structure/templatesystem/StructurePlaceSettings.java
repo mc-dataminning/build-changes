@@ -16,11 +16,9 @@ public class StructurePlaceSettings {
    private Rotation rotation = Rotation.NONE;
    private BlockPos rotationPivot = BlockPos.ZERO;
    private boolean ignoreEntities;
-   @Nullable
-   private BoundingBox boundingBox;
+   private @Nullable BoundingBox boundingBox;
    private LiquidSettings liquidSettings = LiquidSettings.APPLY_WATERLOGGING;
-   @Nullable
-   private RandomSource random;
+   private @Nullable RandomSource random;
    private int palette;
    private final List<StructureProcessor> processors = Lists.newArrayList();
    private boolean knownShape;
@@ -67,7 +65,7 @@ public class StructurePlaceSettings {
       return this;
    }
 
-   public StructurePlaceSettings setRandom(@Nullable final RandomSource random) {
+   public StructurePlaceSettings setRandom(final @Nullable RandomSource random) {
       this.random = random;
       return this;
    }
@@ -109,7 +107,7 @@ public class StructurePlaceSettings {
       return this.rotationPivot;
    }
 
-   public RandomSource getRandom(@Nullable final BlockPos pos) {
+   public RandomSource getRandom(final @Nullable BlockPos pos) {
       if (this.random != null) {
          return this.random;
       } else {
@@ -121,8 +119,7 @@ public class StructurePlaceSettings {
       return this.ignoreEntities;
    }
 
-   @Nullable
-   public BoundingBox getBoundingBox() {
+   public @Nullable BoundingBox getBoundingBox() {
       return this.boundingBox;
    }
 
@@ -138,7 +135,7 @@ public class StructurePlaceSettings {
       return this.liquidSettings == LiquidSettings.APPLY_WATERLOGGING;
    }
 
-   public StructureTemplate.Palette getRandomPalette(final List<StructureTemplate.Palette> palettes, @Nullable final BlockPos pos) {
+   public StructureTemplate.Palette getRandomPalette(final List<StructureTemplate.Palette> palettes, final @Nullable BlockPos pos) {
       int paletteSize = palettes.size();
       if (paletteSize == 0) {
          throw new IllegalStateException("No palettes");

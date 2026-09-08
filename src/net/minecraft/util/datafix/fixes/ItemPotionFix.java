@@ -13,10 +13,11 @@ import com.mojang.serialization.Dynamic;
 import java.util.Objects;
 import java.util.Optional;
 import net.minecraft.util.datafix.schemas.NamespacedSchema;
+import org.jspecify.annotations.Nullable;
 
 public class ItemPotionFix extends DataFix {
    private static final int SPLASH = 16384;
-   private static final String[] POTIONS = (String[])DataFixUtils.make(new String[128], map -> {
+   private static final @Nullable String[] POTIONS = (String[])DataFixUtils.make(new String[128], map -> {
       map[0] = "minecraft:water";
       map[1] = "minecraft:regeneration";
       map[2] = "minecraft:swiftness";
@@ -173,7 +174,7 @@ public class ItemPotionFix extends DataFix {
                      String potionName = POTIONS[damage & 127];
                      Typed<?> newTag = tag.get()
                         .set(DSL.remainderFinder(), tagRest.set("Potion", tagRest.createString(potionName == null ? "minecraft:water" : potionName)));
-                     output = input.set(tagFinder, newTag);
+                     output = output.set(tagFinder, newTag);
                      if ((damage & 16384) == 16384) {
                         output = output.set(idFinder, Pair.of(References.ITEM_NAME.typeName(), "minecraft:splash_potion"));
                      }

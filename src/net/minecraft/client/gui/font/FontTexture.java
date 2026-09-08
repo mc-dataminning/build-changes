@@ -34,8 +34,7 @@ public class FontTexture extends AbstractTexture implements Dumpable {
       this.renderTypes = renderTypes;
    }
 
-   @Nullable
-   public BakedSheetGlyph add(final GlyphInfo info, final GlyphBitmap glyph) {
+   public @Nullable BakedSheetGlyph add(final GlyphInfo info, final GlyphBitmap glyph) {
       if (glyph.isColored() != this.colored) {
          return null;
       } else {
@@ -49,10 +48,10 @@ public class FontTexture extends AbstractTexture implements Dumpable {
                info,
                this.renderTypes,
                this.getTextureView(),
-               ((float)slot.x() + 0.01F) / 256.0F,
-               ((float)slot.x() - 0.01F + (float)glyph.getPixelWidth()) / 256.0F,
-               ((float)slot.y() + 0.01F) / 256.0F,
-               ((float)slot.y() - 0.01F + (float)glyph.getPixelHeight()) / 256.0F,
+               (slot.x() + 0.01F) / 256.0F,
+               (slot.x() - 0.01F + glyph.getPixelWidth()) / 256.0F,
+               (slot.y() + 0.01F) / 256.0F,
+               (slot.y() - 0.01F + glyph.getPixelHeight()) / 256.0F,
                glyph.getLeft(),
                glyph.getRight(),
                glyph.getTop(),

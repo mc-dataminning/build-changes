@@ -16,15 +16,13 @@ public record OversizedItemRenderState(GuiItemRenderState guiItemRenderState, in
       return this.guiItemRenderState.pose();
    }
 
-   @Nullable
    @Override
-   public ScreenRectangle scissorArea() {
+   public @Nullable ScreenRectangle scissorArea() {
       return this.guiItemRenderState.scissorArea();
    }
 
-   @Nullable
    @Override
-   public ScreenRectangle bounds() {
+   public @Nullable ScreenRectangle bounds() {
       return this.guiItemRenderState.bounds();
    }
 }

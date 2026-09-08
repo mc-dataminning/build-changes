@@ -55,10 +55,10 @@ public class FoxRenderer extends AgeableMobRenderer<Fox, FoxRenderState, FoxMode
       FoxRenderer.FoxTexturesByState byState = TEXTURES_BY_VARIANT.get(state.variant);
       if (byState == null) {
          return RED_FOX_TEXTURE;
-      } else {
-         FoxRenderer.FoxTexturesByAge ageTextures = state.isSleeping ? byState.sleeping() : byState.idle();
-         return state.isBaby ? ageTextures.baby() : ageTextures.adult();
       }
+
+      FoxRenderer.FoxTexturesByAge ageTextures = state.isSleeping ? byState.sleeping() : byState.idle();
+      return state.isBaby ? ageTextures.baby() : ageTextures.adult();
    }
 
    public FoxRenderState createRenderState() {
@@ -78,9 +78,9 @@ public class FoxRenderer extends AgeableMobRenderer<Fox, FoxRenderState, FoxMode
       state.variant = entity.getVariant();
    }
 
-   private static record FoxTexturesByAge(Identifier adult, Identifier baby) {
+   private record FoxTexturesByAge(Identifier adult, Identifier baby) {
    }
 
-   private static record FoxTexturesByState(FoxRenderer.FoxTexturesByAge idle, FoxRenderer.FoxTexturesByAge sleeping) {
+   private record FoxTexturesByState(FoxRenderer.FoxTexturesByAge idle, FoxRenderer.FoxTexturesByAge sleeping) {
    }
 }

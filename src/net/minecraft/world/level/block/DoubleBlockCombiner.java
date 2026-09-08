@@ -24,41 +24,43 @@ public class DoubleBlockCombiner {
       S blockEntity = entityType.getBlockEntity(level, pos);
       if (blockEntity == null) {
          return DoubleBlockCombiner.Combiner::acceptNone;
-      } else if (blockedChecker.test(level, pos)) {
-         return DoubleBlockCombiner.Combiner::acceptNone;
-      } else {
-         DoubleBlockCombiner.BlockType type = typeResolver.apply(state);
-         boolean single = type == DoubleBlockCombiner.BlockType.SINGLE;
-         boolean isFirst = type == DoubleBlockCombiner.BlockType.FIRST;
-         if (single) {
-            return new DoubleBlockCombiner.NeighborCombineResult.Single<>(blockEntity);
-         } else {
-            BlockPos neighborPos = pos.relative(connectionResolver.apply(state));
-            BlockState neighbourState = level.getBlockState(neighborPos);
-            if (neighbourState.is(state.getBlock())) {
-               DoubleBlockCombiner.BlockType neighbourType = typeResolver.apply(neighbourState);
-               if (neighbourType != DoubleBlockCombiner.BlockType.SINGLE
-                  && type != neighbourType
-                  && neighbourState.getValue(facingProperty) == state.getValue(facingProperty)) {
-                  if (blockedChecker.test(level, neighborPos)) {
-                     return DoubleBlockCombiner.Combiner::acceptNone;
-                  }
+      }
 
-                  S neighbour = entityType.getBlockEntity(level, neighborPos);
-                  if (neighbour != null) {
-                     S first = isFirst ? blockEntity : neighbour;
-                     S second = isFirst ? neighbour : blockEntity;
-                     return new DoubleBlockCombiner.NeighborCombineResult.Double<>(first, second);
-                  }
-               }
+      if (blockedChecker.test(level, pos)) {
+         return DoubleBlockCombiner.Combiner::acceptNone;
+      }
+
+      DoubleBlockCombiner.BlockType type = typeResolver.apply(state);
+      boolean single = type == DoubleBlockCombiner.BlockType.SINGLE;
+      boolean isFirst = type == DoubleBlockCombiner.BlockType.FIRST;
+      if (single) {
+         return new DoubleBlockCombiner.NeighborCombineResult.Single<>(blockEntity);
+      }
+
+      BlockPos neighborPos = pos.relative(connectionResolver.apply(state));
+      BlockState neighbourState = level.getBlockState(neighborPos);
+      if (neighbourState.is(state.getBlock())) {
+         DoubleBlockCombiner.BlockType neighbourType = typeResolver.apply(neighbourState);
+         if (neighbourType != DoubleBlockCombiner.BlockType.SINGLE
+            && type != neighbourType
+            && neighbourState.getValue(facingProperty) == state.getValue(facingProperty)) {
+            if (blockedChecker.test(level, neighborPos)) {
+               return DoubleBlockCombiner.Combiner::acceptNone;
             }
 
-            return new DoubleBlockCombiner.NeighborCombineResult.Single<>(blockEntity);
+            S neighbour = entityType.getBlockEntity(level, neighborPos);
+            if (neighbour != null) {
+               S first = isFirst ? blockEntity : neighbour;
+               S second = isFirst ? neighbour : blockEntity;
+               return new DoubleBlockCombiner.NeighborCombineResult.Double<>(first, second);
+            }
          }
       }
+
+      return new DoubleBlockCombiner.NeighborCombineResult.Single<>(blockEntity);
    }
 
-   public static enum BlockType {
+   public enum BlockType {
       SINGLE,
       FIRST,
       SECOND;
@@ -75,7 +77,7 @@ public class DoubleBlockCombiner {
    public interface NeighborCombineResult<S> {
       <T> T apply(DoubleBlockCombiner.Combiner<? super S, T> callback);
 
-      public static final class Double<S> implements DoubleBlockCombiner.NeighborCombineResult<S> {
+      final class Double<S> implements DoubleBlockCombiner.NeighborCombineResult<S> {
          private final S first;
          private final S second;
 
@@ -90,7 +92,7 @@ public class DoubleBlockCombiner {
          }
       }
 
-      public static final class Single<S> implements DoubleBlockCombiner.NeighborCombineResult<S> {
+      final class Single<S> implements DoubleBlockCombiner.NeighborCombineResult<S> {
          private final S single;
 
          public Single(final S single) {

@@ -60,25 +60,25 @@ public class EntityEquipmentToArmorAndHandFix extends DataFix {
                      .getFirst();
                   Either<ItemStackNew, Unit> noItem = Either.right(DSL.unit());
                   return named -> named.mapSecond(equipmentField -> {
-                        List<ItemStackOld> items = (List<ItemStackOld>)equipmentField.map(Function.identity(), ignored -> List.of());
-                        Either<List<ItemStackNew>, Unit> handItems = Either.right(DSL.unit());
-                        Either<List<ItemStackNew>, Unit> armorItems = Either.right(DSL.unit());
-                        if (!items.isEmpty()) {
-                           handItems = Either.left(Lists.newArrayList(new Object[]{items.getFirst(), emptyStack}));
+                     List<ItemStackOld> items = (List<ItemStackOld>)equipmentField.map(Function.identity(), ignored -> List.of());
+                     Either<List<ItemStackNew>, Unit> handItems = Either.right(DSL.unit());
+                     Either<List<ItemStackNew>, Unit> armorItems = Either.right(DSL.unit());
+                     if (!items.isEmpty()) {
+                        handItems = Either.left(Lists.newArrayList(new Object[]{items.getFirst(), emptyStack}));
+                     }
+
+                     if (items.size() > 1) {
+                        List<ItemStackNew> armor = Lists.newArrayList(new Object[]{emptyStack, emptyStack, emptyStack, emptyStack});
+
+                        for (int i = 1; i < Math.min(items.size(), 5); i++) {
+                           armor.set(i - 1, (ItemStackNew)items.get(i));
                         }
 
-                        if (items.size() > 1) {
-                           List<ItemStackNew> armor = Lists.newArrayList(new Object[]{emptyStack, emptyStack, emptyStack, emptyStack});
+                        armorItems = Either.left(armor);
+                     }
 
-                           for (int i = 1; i < Math.min(items.size(), 5); i++) {
-                              armor.set(i - 1, (ItemStackNew)items.get(i));
-                           }
-
-                           armorItems = Either.left(armor);
-                        }
-
-                        return Pair.of(armorItems, Pair.of(handItems, Pair.of(noItem, noItem)));
-                     });
+                     return Pair.of(armorItems, Pair.of(handItems, Pair.of(noItem, noItem)));
+                  });
                }
             )
          );

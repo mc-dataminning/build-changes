@@ -2,13 +2,14 @@ package net.minecraft.util;
 
 import java.util.Locale;
 import java.util.function.Consumer;
+import org.jspecify.annotations.Nullable;
 
 public class StaticCache2D<T> {
    private final int minX;
    private final int minZ;
    private final int sizeX;
    private final int sizeZ;
-   private final Object[] cache;
+   private final @Nullable Object[] cache;
 
    public static <T> StaticCache2D<T> create(final int centerX, final int centerZ, final int range, final StaticCache2D.Initializer<T> initializer) {
       int minX = centerX - range;

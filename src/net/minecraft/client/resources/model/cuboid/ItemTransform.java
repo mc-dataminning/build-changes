@@ -64,20 +64,20 @@ public record ItemTransform(Vector3fc rotation, Vector3fc translation, Vector3fc
       private static Vector3f getVector3f(final JsonObject object, final String key, final Vector3fc def) {
          if (!object.has(key)) {
             return new Vector3f(def);
-         } else {
-            JsonArray vecArray = GsonHelper.getAsJsonArray(object, key);
-            if (vecArray.size() != 3) {
-               throw new JsonParseException("Expected 3 " + key + " values, found: " + vecArray.size());
-            } else {
-               float[] elements = new float[3];
-
-               for (int i = 0; i < elements.length; i++) {
-                  elements[i] = GsonHelper.convertToFloat(vecArray.get(i), key + "[" + i + "]");
-               }
-
-               return new Vector3f(elements[0], elements[1], elements[2]);
-            }
          }
+
+         JsonArray vecArray = GsonHelper.getAsJsonArray(object, key);
+         if (vecArray.size() != 3) {
+            throw new JsonParseException("Expected 3 " + key + " values, found: " + vecArray.size());
+         }
+
+         float[] elements = new float[3];
+
+         for (int i = 0; i < elements.length; i++) {
+            elements[i] = GsonHelper.convertToFloat(vecArray.get(i), key + "[" + i + "]");
+         }
+
+         return new Vector3f(elements[0], elements[1], elements[2]);
       }
    }
 }

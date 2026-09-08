@@ -34,13 +34,13 @@ public record ThreadAllocationStat(Instant timestamp, String threadName, long to
                LOGGER.warn("Thread allocation stat timestamps are not in chronological order for thread {}, skipping it", thread);
             } else {
                long diff = last.totalBytes - first.totalBytes;
-               allocationsPerSecondByThread.put(thread, (double)diff / (double)duration);
+               allocationsPerSecondByThread.put(thread, (double)diff / duration);
             }
          }
       });
       return new ThreadAllocationStat.Summary(allocationsPerSecondByThread);
    }
 
-   public static record Summary(Map<String, Double> allocationsPerSecondByThread) {
+   public record Summary(Map<String, Double> allocationsPerSecondByThread) {
    }
 }

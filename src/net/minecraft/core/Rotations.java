@@ -25,12 +25,9 @@ public record Rotations(float x, float y, float z) {
       }
    };
 
-   public Rotations(float x, float y, float z) {
+   public Rotations {
       x = !Float.isInfinite(x) && !Float.isNaN(x) ? x % 360.0F : 0.0F;
       y = !Float.isInfinite(y) && !Float.isNaN(y) ? y % 360.0F : 0.0F;
       z = !Float.isInfinite(z) && !Float.isNaN(z) ? z % 360.0F : 0.0F;
-      this.x = x;
-      this.y = y;
-      this.z = z;
    }
 }

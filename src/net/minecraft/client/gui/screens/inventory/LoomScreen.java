@@ -52,8 +52,7 @@ public class LoomScreen extends AbstractContainerScreen<LoomMenu> {
    private static final float BANNER_PATTERN_WIDTH = 21.0F;
    private static final float BANNER_PATTERN_HEIGHT = 40.0F;
    private BannerFlagModel flag;
-   @Nullable
-   private BannerPatternLayers resultBannerPatterns;
+   private @Nullable BannerPatternLayers resultBannerPatterns;
    private ItemStack bannerStack = ItemStack.EMPTY;
    private ItemStack dyeStack = ItemStack.EMPTY;
    private ItemStack patternStack = ItemStack.EMPTY;
@@ -170,7 +169,7 @@ public class LoomScreen extends AbstractContainerScreen<LoomMenu> {
 
    private void extractBannerOnButton(final GuiGraphicsExtractor graphics, final int posX, final int posY, final TextureAtlasSprite bannerPatternSprite) {
       graphics.pose().pushMatrix();
-      graphics.pose().translate((float)(posX + 4), (float)(posY + 2));
+      graphics.pose().translate(posX + 4, posY + 2);
       float patternU0 = bannerPatternSprite.getU0();
       float patternU1 = patternU0 + (bannerPatternSprite.getU1() - bannerPatternSprite.getU0()) * 21.0F / 64.0F;
       float patternVSpan = bannerPatternSprite.getV1() - bannerPatternSprite.getV0();
@@ -191,8 +190,8 @@ public class LoomScreen extends AbstractContainerScreen<LoomMenu> {
 
          for (int row = 0; row < 4; row++) {
             for (int column = 0; column < 4; column++) {
-               double xx = event.x() - (double)(xo + column * 14);
-               double yy = event.y() - (double)(yo + row * 14);
+               double xx = event.x() - (xo + column * 14);
+               double yy = event.y() - (yo + row * 14);
                int actualRow = row + this.startRow;
                int index = actualRow * 4 + column;
                if (xx >= 0.0 && yy >= 0.0 && xx < 14.0 && yy < 14.0 && this.menu.clickMenuButton(this.minecraft.player, index)) {
@@ -205,7 +204,7 @@ public class LoomScreen extends AbstractContainerScreen<LoomMenu> {
 
          xo = this.leftPos + 119;
          yo = this.topPos + 9;
-         if (event.x() >= (double)xo && event.x() < (double)(xo + 12) && event.y() >= (double)yo && event.y() < (double)(yo + 56)) {
+         if (event.x() >= xo && event.x() < xo + 12 && event.y() >= yo && event.y() < yo + 56) {
             this.scrolling = true;
          }
       }
@@ -219,9 +218,9 @@ public class LoomScreen extends AbstractContainerScreen<LoomMenu> {
       if (this.scrolling && this.displayPatterns && offscreenRows > 0) {
          int yscr = this.topPos + 13;
          int yscr2 = yscr + 56;
-         this.scrollOffs = ((float)event.y() - (float)yscr - 7.5F) / ((float)(yscr2 - yscr) - 15.0F);
+         this.scrollOffs = ((float)event.y() - yscr - 7.5F) / (yscr2 - yscr - 15.0F);
          this.scrollOffs = Mth.clamp(this.scrollOffs, 0.0F, 1.0F);
-         this.startRow = Math.max((int)((double)(this.scrollOffs * (float)offscreenRows) + 0.5), 0);
+         this.startRow = Math.max((int)(this.scrollOffs * offscreenRows + 0.5), 0);
          return true;
       } else {
          return super.mouseDragged(event, dx, dy);
@@ -238,21 +237,21 @@ public class LoomScreen extends AbstractContainerScreen<LoomMenu> {
    public boolean mouseScrolled(final double x, final double y, final double scrollX, final double scrollY) {
       if (super.mouseScrolled(x, y, scrollX, scrollY)) {
          return true;
-      } else {
-         int offscreenRows = this.totalRowCount() - 4;
-         if (this.displayPatterns && offscreenRows > 0) {
-            float scrolledDelta = (float)scrollY / (float)offscreenRows;
-            this.scrollOffs = Mth.clamp(this.scrollOffs - scrolledDelta, 0.0F, 1.0F);
-            this.startRow = Math.max((int)(this.scrollOffs * (float)offscreenRows + 0.5F), 0);
-         }
-
-         return true;
       }
+
+      int offscreenRows = this.totalRowCount() - 4;
+      if (this.displayPatterns && offscreenRows > 0) {
+         float scrolledDelta = (float)scrollY / offscreenRows;
+         this.scrollOffs = Mth.clamp(this.scrollOffs - scrolledDelta, 0.0F, 1.0F);
+         this.startRow = Math.max((int)(this.scrollOffs * offscreenRows + 0.5F), 0);
+      }
+
+      return true;
    }
 
    @Override
    protected boolean hasClickedOutside(final double mx, final double my, final int xo, final int yo) {
-      return mx < (double)xo || my < (double)yo || mx >= (double)(xo + this.imageWidth) || my >= (double)(yo + this.imageHeight);
+      return mx < xo || my < yo || mx >= xo + this.imageWidth || my >= yo + this.imageHeight;
    }
 
    private void containerChanged() {

@@ -73,7 +73,7 @@ public final class GameRule<T> implements FeatureElement {
          StringReader reader = new StringReader(value);
          T result = (T)this.argument.parse(reader);
          return reader.canRead() ? DataResult.error(() -> "Failed to deserialize; trailing characters", result) : DataResult.success(result);
-      } catch (CommandSyntaxException var4) {
+      } catch (CommandSyntaxException ignored) {
          return DataResult.error(() -> "Failed to deserialize");
       }
    }

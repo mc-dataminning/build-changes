@@ -24,20 +24,19 @@ public class PipelineCache implements AutoCloseable {
       this.cache.put(pipeline, compiled);
    }
 
-   @Nullable
-   public CompiledRenderPipeline get(final RenderPipeline pipeline) {
+   public @Nullable CompiledRenderPipeline get(final RenderPipeline pipeline) {
       CompiledRenderPipeline cachedPipeline = this.cache.get(pipeline);
       if (cachedPipeline != null) {
          return cachedPipeline;
-      } else {
-         CompiledRenderPipeline newPipeline = this.device.compilePipeline(pipeline, this.shaderSource, Util.backgroundExecutor()).join().finishCompile();
-         if (newPipeline == null) {
-            return null;
-         } else {
-            this.cache.put(pipeline, newPipeline);
-            return newPipeline;
-         }
       }
+
+      CompiledRenderPipeline newPipeline = this.device.compilePipeline(pipeline, this.shaderSource, Util.backgroundExecutor()).join().finishCompile();
+      if (newPipeline == null) {
+         return null;
+      }
+
+      this.cache.put(pipeline, newPipeline);
+      return newPipeline;
    }
 
    public void clear() {

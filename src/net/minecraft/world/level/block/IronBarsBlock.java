@@ -21,13 +21,7 @@ public class IronBarsBlock extends CrossCollisionBlock {
    protected IronBarsBlock(final BlockBehaviour.Properties properties) {
       super(2.0F, 16.0F, 2.0F, 16.0F, 16.0F, properties);
       this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(NORTH, Boolean.valueOf(false))
-            .setValue(EAST, Boolean.valueOf(false))
-            .setValue(SOUTH, Boolean.valueOf(false))
-            .setValue(WEST, Boolean.valueOf(false))
-            .setValue(WATERLOGGED, Boolean.valueOf(false))
+         this.stateDefinition.any().setValue(NORTH, false).setValue(EAST, false).setValue(SOUTH, false).setValue(WEST, false).setValue(WATERLOGGED, false)
       );
    }
 
@@ -45,11 +39,11 @@ public class IronBarsBlock extends CrossCollisionBlock {
       BlockState westState = level.getBlockState(west);
       BlockState eastState = level.getBlockState(east);
       return this.defaultBlockState()
-         .setValue(NORTH, Boolean.valueOf(this.attachsTo(northState, northState.isFaceSturdy(level, north, Direction.SOUTH))))
-         .setValue(SOUTH, Boolean.valueOf(this.attachsTo(southState, southState.isFaceSturdy(level, south, Direction.NORTH))))
-         .setValue(WEST, Boolean.valueOf(this.attachsTo(westState, westState.isFaceSturdy(level, west, Direction.EAST))))
-         .setValue(EAST, Boolean.valueOf(this.attachsTo(eastState, eastState.isFaceSturdy(level, east, Direction.WEST))))
-         .setValue(WATERLOGGED, Boolean.valueOf(replacedFluidState.is(Fluids.WATER)));
+         .setValue(NORTH, this.attachsTo(northState, northState.isFaceSturdy(level, north, Direction.SOUTH)))
+         .setValue(SOUTH, this.attachsTo(southState, southState.isFaceSturdy(level, south, Direction.NORTH)))
+         .setValue(WEST, this.attachsTo(westState, westState.isFaceSturdy(level, west, Direction.EAST)))
+         .setValue(EAST, this.attachsTo(eastState, eastState.isFaceSturdy(level, east, Direction.WEST)))
+         .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
    }
 
    @Override
@@ -70,7 +64,7 @@ public class IronBarsBlock extends CrossCollisionBlock {
       return directionToNeighbour.getAxis().isHorizontal()
          ? state.setValue(
             PROPERTY_BY_DIRECTION.get(directionToNeighbour),
-            Boolean.valueOf(this.attachsTo(neighbourState, neighbourState.isFaceSturdy(level, neighbourPos, directionToNeighbour.getOpposite())))
+            this.attachsTo(neighbourState, neighbourState.isFaceSturdy(level, neighbourPos, directionToNeighbour.getOpposite()))
          )
          : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
    }

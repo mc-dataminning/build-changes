@@ -78,8 +78,8 @@ public class InventoryScreen extends AbstractRecipeBookScreen<InventoryMenu> {
    public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
       this.effects.extractRenderState(graphics, mouseX, mouseY);
       super.extractRenderState(graphics, mouseX, mouseY, a);
-      this.xMouse = (float)mouseX;
-      this.yMouse = (float)mouseY;
+      this.xMouse = mouseX;
+      this.yMouse = mouseY;
    }
 
    @Override
@@ -113,10 +113,10 @@ public class InventoryScreen extends AbstractRecipeBookScreen<InventoryMenu> {
       final float mouseY,
       final LivingEntity entity
    ) {
-      float centerX = (float)(x0 + x1) / 2.0F;
-      float centerY = (float)(y0 + y1) / 2.0F;
-      float xAngle = (float)Math.atan((double)((centerX - mouseX) / 40.0F));
-      float yAngle = (float)Math.atan((double)((centerY - mouseY) / 40.0F));
+      float centerX = (x0 + x1) / 2.0F;
+      float centerY = (y0 + y1) / 2.0F;
+      float xAngle = (float)Math.atan((centerX - mouseX) / 40.0F);
+      float yAngle = (float)Math.atan((centerY - mouseY) / 40.0F);
       Quaternionf rotation = new Quaternionf().rotateZ((float) Math.PI);
       Quaternionf xRotation = new Quaternionf().rotateX(yAngle * 20.0F * (float) (Math.PI / 180.0));
       rotation.mul(xRotation);
@@ -136,7 +136,7 @@ public class InventoryScreen extends AbstractRecipeBookScreen<InventoryMenu> {
       }
 
       Vector3f translation = new Vector3f(0.0F, renderState.boundingBoxHeight / 2.0F + offsetY, 0.0F);
-      graphics.entity(renderState, (float)size, translation, rotation, xRotation, x0, y0, x1, y1);
+      graphics.entity(renderState, size, translation, rotation, xRotation, x0, y0, x1, y1);
    }
 
    private static EntityRenderState extractRenderState(final LivingEntity entity) {

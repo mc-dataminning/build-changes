@@ -18,7 +18,7 @@ public interface ItemAccessor<Target> {
    int getModifySuccess(CommandSourceStack source, CommandResponseTracker<Target> tracker) throws CommandSyntaxException;
 
    @FunctionalInterface
-   public interface SetterFunction<Target> {
+   interface SetterFunction<Target> {
       int apply(Target target, SlotCollection slots);
    }
 }

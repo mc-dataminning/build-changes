@@ -181,12 +181,12 @@ public abstract class PropertyDispatch<V> {
             .getPossibleValues()
             .forEach(
                value1 -> this.property2
-                     .getPossibleValues()
-                     .forEach(
-                        value2 -> this.property3
-                              .getPossibleValues()
-                              .forEach(value3 -> this.select((T1)value1, (T2)value2, (T3)value3, (V)generator.apply(value1, value2, value3)))
-                     )
+                  .getPossibleValues()
+                  .forEach(
+                     value2 -> this.property3
+                        .getPossibleValues()
+                        .forEach(value3 -> this.select((T1)value1, (T2)value2, (T3)value3, (V)generator.apply(value1, value2, value3)))
+                  )
             );
          return this;
       }
@@ -224,20 +224,18 @@ public abstract class PropertyDispatch<V> {
             .getPossibleValues()
             .forEach(
                value1 -> this.property2
-                     .getPossibleValues()
-                     .forEach(
-                        value2 -> this.property3
+                  .getPossibleValues()
+                  .forEach(
+                     value2 -> this.property3
+                        .getPossibleValues()
+                        .forEach(
+                           value3 -> this.property4
                               .getPossibleValues()
                               .forEach(
-                                 value3 -> this.property4
-                                       .getPossibleValues()
-                                       .forEach(
-                                          value4 -> this.select(
-                                                (T1)value1, (T2)value2, (T3)value3, (T4)value4, (V)generator.apply(value1, value2, value3, value4)
-                                             )
-                                       )
+                                 value4 -> this.select((T1)value1, (T2)value2, (T3)value3, (T4)value4, (V)generator.apply(value1, value2, value3, value4))
                               )
-                     )
+                        )
+                  )
             );
          return this;
       }
@@ -285,29 +283,29 @@ public abstract class PropertyDispatch<V> {
             .getPossibleValues()
             .forEach(
                value1 -> this.property2
-                     .getPossibleValues()
-                     .forEach(
-                        value2 -> this.property3
+                  .getPossibleValues()
+                  .forEach(
+                     value2 -> this.property3
+                        .getPossibleValues()
+                        .forEach(
+                           value3 -> this.property4
                               .getPossibleValues()
                               .forEach(
-                                 value3 -> this.property4
-                                       .getPossibleValues()
-                                       .forEach(
-                                          value4 -> this.property5
-                                                .getPossibleValues()
-                                                .forEach(
-                                                   value5 -> this.select(
-                                                         (T1)value1,
-                                                         (T2)value2,
-                                                         (T3)value3,
-                                                         (T4)value4,
-                                                         (T5)value5,
-                                                         (V)generator.apply(value1, value2, value3, value4, value5)
-                                                      )
-                                                )
+                                 value4 -> this.property5
+                                    .getPossibleValues()
+                                    .forEach(
+                                       value5 -> this.select(
+                                          (T1)value1,
+                                          (T2)value2,
+                                          (T3)value3,
+                                          (T4)value4,
+                                          (T5)value5,
+                                          (V)generator.apply(value1, value2, value3, value4, value5)
                                        )
+                                    )
                               )
-                     )
+                        )
+                  )
             );
          return this;
       }

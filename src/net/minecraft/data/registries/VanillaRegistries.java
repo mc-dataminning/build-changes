@@ -145,15 +145,15 @@ public class VanillaRegistries {
          Identifier biomeKey = biome.key().identifier();
          List<HolderSet<PlacedFeature>> biomeFeatures = biome.value().getGenerationSettings().features();
          biomeFeatures.stream().flatMap(HolderSet::stream).forEach(feature -> feature.unwrap().ifLeft(key -> {
-               Holder.Reference<PlacedFeature> value = placedFeatures.getOrThrow(key);
-               if (!validatePlacedFeature(value.value())) {
-                  Util.logAndPauseIfInIde("Placed feature " + key.identifier() + " in biome " + biomeKey + " is missing BiomeFilter.biome()");
-               }
-            }).ifRight(value -> {
-               if (!validatePlacedFeature(value)) {
-                  Util.logAndPauseIfInIde("Placed inline feature in biome " + biome + " is missing BiomeFilter.biome()");
-               }
-            }));
+            Holder.Reference<PlacedFeature> value = placedFeatures.getOrThrow(key);
+            if (!validatePlacedFeature(value.value())) {
+               Util.logAndPauseIfInIde("Placed feature " + key.identifier() + " in biome " + biomeKey + " is missing BiomeFilter.biome()");
+            }
+         }).ifRight(value -> {
+            if (!validatePlacedFeature(value)) {
+               Util.logAndPauseIfInIde("Placed inline feature in biome " + biome + " is missing BiomeFilter.biome()");
+            }
+         }));
       });
    }
 

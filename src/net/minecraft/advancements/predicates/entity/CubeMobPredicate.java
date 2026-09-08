@@ -19,7 +19,7 @@ public record CubeMobPredicate(MinMaxBounds.Ints size) implements EntitySubPredi
    }
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
       return entity instanceof AbstractCubeMob cubeMob ? this.size.matches(cubeMob.getSize()) : false;
    }
 }

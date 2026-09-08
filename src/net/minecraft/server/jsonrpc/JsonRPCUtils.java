@@ -20,11 +20,11 @@ public class JsonRPCUtils {
       return response;
    }
 
-   public static JsonObject createRequest(@Nullable final Integer id, final Identifier method, final List<JsonElement> params) {
+   public static JsonObject createRequest(final @Nullable Integer id, final Identifier method, final List<JsonElement> params) {
       return createRequest(id, method.toString(), params);
    }
 
-   public static JsonObject createRequest(@Nullable final Integer id, final String method, final List<JsonElement> params) {
+   public static JsonObject createRequest(final @Nullable Integer id, final String method, final List<JsonElement> params) {
       JsonObject request = new JsonObject();
       request.addProperty("jsonrpc", "2.0");
       if (id != null) {
@@ -45,7 +45,7 @@ public class JsonRPCUtils {
       return request;
    }
 
-   public static JsonObject createError(final JsonElement id, final String message, final int errorCode, @Nullable final String data) {
+   public static JsonObject createError(final JsonElement id, final String message, final int errorCode, final @Nullable String data) {
       JsonObject errorResponse = new JsonObject();
       errorResponse.addProperty("jsonrpc", "2.0");
       errorResponse.add("id", id);
@@ -60,28 +60,23 @@ public class JsonRPCUtils {
       return errorResponse;
    }
 
-   @Nullable
-   public static JsonElement getRequestId(final JsonObject jsonObject) {
+   public static @Nullable JsonElement getRequestId(final JsonObject jsonObject) {
       return jsonObject.get("id");
    }
 
-   @Nullable
-   public static String getMethodName(final JsonObject jsonObject) {
+   public static @Nullable String getMethodName(final JsonObject jsonObject) {
       return GsonHelper.getAsString(jsonObject, "method", null);
    }
 
-   @Nullable
-   public static JsonElement getParams(final JsonObject jsonObject) {
+   public static @Nullable JsonElement getParams(final JsonObject jsonObject) {
       return jsonObject.get("params");
    }
 
-   @Nullable
-   public static JsonElement getResult(final JsonObject jsonObject) {
+   public static @Nullable JsonElement getResult(final JsonObject jsonObject) {
       return jsonObject.get("result");
    }
 
-   @Nullable
-   public static JsonObject getError(final JsonObject jsonObject) {
+   public static @Nullable JsonObject getError(final JsonObject jsonObject) {
       return GsonHelper.getAsJsonObject(jsonObject, "error", null);
    }
 }

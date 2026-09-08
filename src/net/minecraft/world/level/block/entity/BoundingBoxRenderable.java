@@ -8,13 +8,13 @@ public interface BoundingBoxRenderable {
 
    BoundingBoxRenderable.RenderableBox getRenderableBox();
 
-   public static enum Mode {
+   enum Mode {
       NONE,
       BOX,
       BOX_AND_INVISIBLE_BLOCKS;
    }
 
-   public static record RenderableBox(BlockPos localPos, Vec3i size) {
+   record RenderableBox(BlockPos localPos, Vec3i size) {
       public static BoundingBoxRenderable.RenderableBox fromCorners(final int x1, final int y1, final int z1, final int x2, final int y2, final int z2) {
          int x = Math.min(x1, x2);
          int y = Math.min(y1, y2);

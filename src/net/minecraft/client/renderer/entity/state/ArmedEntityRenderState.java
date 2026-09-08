@@ -17,8 +17,7 @@ public class ArmedEntityRenderState extends LivingEntityRenderState {
    public HumanoidModel.ArmPose leftArmPose = HumanoidModel.ArmPose.EMPTY;
    public final ItemStackRenderState leftHandItemState = new ItemStackRenderState();
    public ItemStack leftHandItemStack = ItemStack.EMPTY;
-   @Nullable
-   public LivingEntity.SwingDescription currentSwing;
+   public LivingEntity.@Nullable SwingDescription currentSwing;
    public float swingAnimation;
 
    public ItemStackRenderState getMainHandItemState() {

@@ -24,14 +24,11 @@ public class GuiRenderState {
    private int firstStratumAfterBlur = Integer.MAX_VALUE;
    private GuiRenderState.Node current;
    private final Set<Object> itemModelIdentities = new HashSet<>();
-   @Nullable
-   private ScreenRectangle lastElementBounds;
-   @Nullable
-   public PanoramaRenderState panoramaRenderState;
+   private @Nullable ScreenRectangle lastElementBounds;
+   public @Nullable PanoramaRenderState panoramaRenderState;
    public Vector4f clearColorOverride = new Vector4f(0.0F);
    public boolean isHudHidden;
-   @Nullable
-   private ScreenRectangle windowRectangleForDebug;
+   private @Nullable ScreenRectangle windowRectangleForDebug;
 
    public GuiRenderState() {
       this.nextStratum();
@@ -45,9 +42,9 @@ public class GuiRenderState {
    public void blurBeforeThisStratum() {
       if (this.firstStratumAfterBlur != Integer.MAX_VALUE) {
          throw new IllegalStateException("Can only blur once per frame");
-      } else {
-         this.firstStratumAfterBlur = this.strata.size() - 1;
       }
+
+      this.firstStratumAfterBlur = this.strata.size() - 1;
    }
 
    public void up() {
@@ -87,7 +84,7 @@ public class GuiRenderState {
       }
    }
 
-   private void addDebugRectangleIfEnabled(@Nullable final ScreenRectangle bounds) {
+   private void addDebugRectangleIfEnabled(final @Nullable ScreenRectangle bounds) {
       if (SharedConstants.DEBUG_RENDER_UI_LAYERING_RECTANGLES && bounds != null) {
          this.up();
          if (this.windowRectangleForDebug == null) {
@@ -111,16 +108,16 @@ public class GuiRenderState {
       ScreenRectangle bounds = screenArea.bounds();
       if (bounds == null) {
          return false;
-      } else {
-         if (this.lastElementBounds != null && this.lastElementBounds.encompasses(bounds)) {
-            this.up();
-         } else {
-            this.navigateToAboveHighestElementWithIntersectingBounds(bounds);
-         }
-
-         this.lastElementBounds = bounds;
-         return true;
       }
+
+      if (this.lastElementBounds != null && this.lastElementBounds.encompasses(bounds)) {
+         this.up();
+      } else {
+         this.navigateToAboveHighestElementWithIntersectingBounds(bounds);
+      }
+
+      this.lastElementBounds = bounds;
+      return true;
    }
 
    private void navigateToAboveHighestElementWithIntersectingBounds(final ScreenRectangle bounds) {
@@ -152,7 +149,7 @@ public class GuiRenderState {
       }
    }
 
-   private boolean hasIntersection(final ScreenRectangle bounds, @Nullable final List<? extends ScreenArea> states) {
+   private boolean hasIntersection(final ScreenRectangle bounds, final @Nullable List<? extends ScreenArea> states) {
       if (states != null) {
          for (ScreenArea area : states) {
             ScreenRectangle existingBounds = area.bounds();
@@ -281,22 +278,15 @@ public class GuiRenderState {
    }
 
    private static class Node {
-      @Nullable
-      public final GuiRenderState.Node parent;
-      @Nullable
-      public GuiRenderState.Node up;
-      @Nullable
-      public List<GuiElementRenderState> elementStates;
-      @Nullable
-      public List<GuiElementRenderState> glyphStates;
-      @Nullable
-      public List<GuiItemRenderState> itemStates;
-      @Nullable
-      public List<GuiTextRenderState> textStates;
-      @Nullable
-      public List<PictureInPictureRenderState> picturesInPictureStates;
+      public final GuiRenderState.@Nullable Node parent;
+      public GuiRenderState.@Nullable Node up;
+      public @Nullable List<GuiElementRenderState> elementStates;
+      public @Nullable List<GuiElementRenderState> glyphStates;
+      public @Nullable List<GuiItemRenderState> itemStates;
+      public @Nullable List<GuiTextRenderState> textStates;
+      public @Nullable List<PictureInPictureRenderState> picturesInPictureStates;
 
-      private Node(@Nullable final GuiRenderState.Node parent) {
+      private Node(final GuiRenderState.@Nullable Node parent) {
          this.parent = parent;
       }
 
@@ -341,7 +331,7 @@ public class GuiRenderState {
       }
    }
 
-   public static enum TraverseRange {
+   public enum TraverseRange {
       ALL,
       BEFORE_BLUR,
       AFTER_BLUR;

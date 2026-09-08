@@ -78,8 +78,7 @@ public class Slot {
       return Math.min(this.getMaxStackSize(), itemStack.getMaxStackSize());
    }
 
-   @Nullable
-   public Identifier getNoItemIcon() {
+   public @Nullable Identifier getNoItemIcon() {
       return null;
    }
 
@@ -98,21 +97,23 @@ public class Slot {
    public Optional<ItemStack> tryRemove(int amount, final int maxAmount, final Player player) {
       if (!this.mayPickup(player)) {
          return Optional.empty();
-      } else if (!this.allowModification(player) && maxAmount < this.getItem().getCount()) {
-         return Optional.empty();
-      } else {
-         amount = Math.min(amount, maxAmount);
-         ItemStack result = this.remove(amount);
-         if (result.isEmpty()) {
-            return Optional.empty();
-         } else {
-            if (this.getItem().isEmpty()) {
-               this.setByPlayer(ItemStack.EMPTY, result);
-            }
-
-            return Optional.of(result);
-         }
       }
+
+      if (!this.allowModification(player) && maxAmount < this.getItem().getCount()) {
+         return Optional.empty();
+      }
+
+      amount = Math.min(amount, maxAmount);
+      ItemStack result = this.remove(amount);
+      if (result.isEmpty()) {
+         return Optional.empty();
+      }
+
+      if (this.getItem().isEmpty()) {
+         this.setByPlayer(ItemStack.EMPTY, result);
+      }
+
+      return Optional.of(result);
    }
 
    public ItemStack safeTake(final int amount, final int maxAmount, final Player player) {
@@ -136,17 +137,17 @@ public class Slot {
          int transferableItemCount = Math.min(Math.min(inputAmount, inputStack.getCount()), this.getMaxStackSize(inputStack) - slotStack.getCount());
          if (transferableItemCount <= 0) {
             return inputStack;
-         } else {
-            if (slotStack.isEmpty()) {
-               this.setByPlayer(inputStack.split(transferableItemCount));
-            } else if (ItemStack.isSameItemSameComponents(slotStack, inputStack)) {
-               inputStack.shrink(transferableItemCount);
-               slotStack.grow(transferableItemCount);
-               this.setByPlayer(slotStack);
-            }
-
-            return inputStack;
          }
+
+         if (slotStack.isEmpty()) {
+            this.setByPlayer(inputStack.split(transferableItemCount));
+         } else if (ItemStack.isSameItemSameComponents(slotStack, inputStack)) {
+            inputStack.shrink(transferableItemCount);
+            slotStack.grow(transferableItemCount);
+            this.setByPlayer(slotStack);
+         }
+
+         return inputStack;
       } else {
          return inputStack;
       }

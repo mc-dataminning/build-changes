@@ -86,7 +86,7 @@ public class CrossbowAttack<E extends Mob & CrossbowAttackMob, T extends LivingE
       return body.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).get();
    }
 
-   private static enum CrossbowState {
+   private enum CrossbowState {
       UNCHARGED,
       CHARGING,
       CHARGED,

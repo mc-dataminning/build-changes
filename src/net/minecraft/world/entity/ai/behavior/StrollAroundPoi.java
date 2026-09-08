@@ -19,18 +19,20 @@ public class StrollAroundPoi {
       MutableLong nextOkStartTime = new MutableLong(0L);
       return BehaviorBuilder.create(
          i -> i.group(i.registered(MemoryModuleType.WALK_TARGET), i.present(memoryType)).apply(i, (walkTarget, memory) -> (level, body, timestamp) -> {
-                  GlobalPos pos = i.get(memory);
-                  if (level.dimension() != pos.dimension() || !pos.pos().closerToCenterThan(body.position(), (double)maxDistanceFromPoi)) {
-                     return false;
-                  } else if (timestamp <= nextOkStartTime.longValue()) {
-                     return true;
-                  } else {
-                     Optional<Vec3> landPos = Optional.ofNullable(LandRandomPos.getPos(body, 8, 6));
-                     walkTarget.setOrErase(landPos.map(p -> new WalkTarget(p, speedModifier, 1)));
-                     nextOkStartTime.setValue(timestamp + 180L);
-                     return true;
-                  }
-               })
+            GlobalPos pos = i.get(memory);
+            if (level.dimension() != pos.dimension() || !pos.pos().closerToCenterThan(body.position(), maxDistanceFromPoi)) {
+               return false;
+            }
+
+            if (timestamp <= nextOkStartTime.longValue()) {
+               return true;
+            }
+
+            Optional<Vec3> landPos = Optional.ofNullable(LandRandomPos.getPos(body, 8, 6));
+            walkTarget.setOrErase(landPos.map(p -> new WalkTarget(p, speedModifier, 1)));
+            nextOkStartTime.setValue(timestamp + 180L);
+            return true;
+         })
       );
    }
 }

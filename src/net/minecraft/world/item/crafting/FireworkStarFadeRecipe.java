@@ -16,11 +16,11 @@ import net.minecraft.world.level.Level;
 public class FireworkStarFadeRecipe extends CustomRecipe {
    public static final MapCodec<FireworkStarFadeRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Ingredient.CODEC.fieldOf("target").forGetter(o -> o.target),
-               Ingredient.CODEC.fieldOf("dye").forGetter(o -> o.dye),
-               ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
-            )
-            .apply(i, FireworkStarFadeRecipe::new)
+            Ingredient.CODEC.fieldOf("target").forGetter(o -> o.target),
+            Ingredient.CODEC.fieldOf("dye").forGetter(o -> o.dye),
+            ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
+         )
+         .apply(i, FireworkStarFadeRecipe::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, FireworkStarFadeRecipe> STREAM_CODEC = StreamCodec.composite(
       Ingredient.CONTENTS_STREAM_CODEC,
@@ -45,31 +45,31 @@ public class FireworkStarFadeRecipe extends CustomRecipe {
    public boolean matches(final CraftingInput input, final Level level) {
       if (input.ingredientCount() < 2) {
          return false;
-      } else {
-         boolean hasDye = false;
-         boolean hasTarget = false;
+      }
 
-         for (int slot = 0; slot < input.size(); slot++) {
-            ItemStack itemStack = input.getItem(slot);
-            if (!itemStack.isEmpty()) {
-               if (this.dye.test(itemStack) && itemStack.has(DataComponents.DYE)) {
-                  hasDye = true;
-               } else {
-                  if (!this.target.test(itemStack)) {
-                     return false;
-                  }
+      boolean hasDye = false;
+      boolean hasTarget = false;
 
-                  if (hasTarget) {
-                     return false;
-                  }
-
-                  hasTarget = true;
+      for (int slot = 0; slot < input.size(); slot++) {
+         ItemStack itemStack = input.getItem(slot);
+         if (!itemStack.isEmpty()) {
+            if (this.dye.test(itemStack) && itemStack.has(DataComponents.DYE)) {
+               hasDye = true;
+            } else {
+               if (!this.target.test(itemStack)) {
+                  return false;
                }
+
+               if (hasTarget) {
+                  return false;
+               }
+
+               hasTarget = true;
             }
          }
-
-         return hasTarget && hasDye;
       }
+
+      return hasTarget && hasDye;
    }
 
    public ItemStack assemble(final CraftingInput input) {

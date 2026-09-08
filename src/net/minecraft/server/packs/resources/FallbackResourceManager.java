@@ -50,7 +50,7 @@ public class FallbackResourceManager implements ResourceManager {
       this.pushInternal(name, null, filter);
    }
 
-   private void pushInternal(final String name, @Nullable final PackResources pack, @Nullable final PackResources.Filter contentFilter) {
+   private void pushInternal(final String name, final @Nullable PackResources pack, final PackResources.@Nullable Filter contentFilter) {
       this.fallbacks.add(new FallbackResourceManager.PackEntry(name, pack, contentFilter));
    }
 
@@ -220,12 +220,9 @@ public class FallbackResourceManager implements ResourceManager {
    }
 
    private static ResourceMetadata parseMetadata(final IoSupplier<InputStream> input) throws IOException {
-      ResourceMetadata var2;
       try (InputStream metadata = input.get()) {
-         var2 = ResourceMetadata.fromJsonStream(metadata);
+         return ResourceMetadata.fromJsonStream(metadata);
       }
-
-      return var2;
    }
 
    private static void applyPackFiltersToExistingResources(
@@ -308,7 +305,7 @@ public class FallbackResourceManager implements ResourceManager {
       return this.fallbacks.stream().map(p -> p.resources).filter(Objects::nonNull);
    }
 
-   private static record EntryStack(
+   private record EntryStack(
       Identifier fileLocation,
       Identifier metadataLocation,
       List<FallbackResourceManager.ResourceWithSource> fileSources,
@@ -349,7 +346,7 @@ public class FallbackResourceManager implements ResourceManager {
       }
    }
 
-   private static record PackEntry(String name, @Nullable PackResources resources, @Nullable PackResources.Filter filter) {
+   private record PackEntry(String name, @Nullable PackResources resources, PackResources.@Nullable Filter filter) {
       public void filterAll(final Collection<Identifier> collection) {
          if (this.filter != null) {
             collection.removeIf(this.filter::isFiltered);
@@ -361,6 +358,6 @@ public class FallbackResourceManager implements ResourceManager {
       }
    }
 
-   private static record ResourceWithSource(PackResources source, IoSupplier<InputStream> resource) {
+   private record ResourceWithSource(PackResources source, IoSupplier<InputStream> resource) {
    }
 }

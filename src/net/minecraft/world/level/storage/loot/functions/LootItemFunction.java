@@ -21,7 +21,7 @@ public interface LootItemFunction extends LootContextUser, BiFunction<ItemStack,
       }
    }
 
-   public interface Builder {
+   interface Builder {
       LootItemFunction build();
    }
 }

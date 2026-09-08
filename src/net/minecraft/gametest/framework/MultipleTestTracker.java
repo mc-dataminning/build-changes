@@ -2,7 +2,6 @@ package net.minecraft.gametest.framework;
 
 import com.google.common.collect.Lists;
 import java.util.Collection;
-import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
@@ -34,10 +33,6 @@ public class MultipleTestTracker {
 
    public void addFailureListener(final Consumer<GameTestInfo> listener) {
       this.addListener(new GameTestListener() {
-         {
-            Objects.requireNonNull(MultipleTestTracker.this);
-         }
-
          @Override
          public void testStructureLoaded(final GameTestInfo testInfo) {
          }

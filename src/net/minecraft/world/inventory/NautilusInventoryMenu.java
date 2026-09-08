@@ -1,6 +1,5 @@
 package net.minecraft.world.inventory;
 
-import java.util.Objects;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -17,10 +16,6 @@ public class NautilusInventoryMenu extends AbstractMountInventoryMenu {
       super(containerId, playerInventory, nautilusInventory, nautilus);
       Container saddleContainer = nautilus.createEquipmentSlotContainer(EquipmentSlot.SADDLE);
       this.addSlot(new ArmorSlot(saddleContainer, nautilus, EquipmentSlot.SADDLE, 0, 8, 18, SADDLE_SLOT_SPRITE) {
-         {
-            Objects.requireNonNull(NautilusInventoryMenu.this);
-         }
-
          @Override
          public boolean isActive() {
             return nautilus.canUseSlot(EquipmentSlot.SADDLE);
@@ -28,10 +23,6 @@ public class NautilusInventoryMenu extends AbstractMountInventoryMenu {
       });
       Container armorContainer = nautilus.createEquipmentSlotContainer(EquipmentSlot.BODY);
       this.addSlot(new ArmorSlot(armorContainer, nautilus, EquipmentSlot.BODY, 0, 8, 36, ARMOR_SLOT_SPRITE) {
-         {
-            Objects.requireNonNull(NautilusInventoryMenu.this);
-         }
-
          @Override
          public boolean isActive() {
             return nautilus.canUseSlot(EquipmentSlot.BODY);

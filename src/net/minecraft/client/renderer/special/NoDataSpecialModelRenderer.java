@@ -7,13 +7,12 @@ import net.minecraft.world.item.ItemStack;
 import org.jspecify.annotations.Nullable;
 
 public interface NoDataSpecialModelRenderer extends SpecialModelRenderer<Void> {
-   @Nullable
-   default Void extractArgument(final ItemStack stack) {
+   default @Nullable Void extractArgument(final ItemStack stack) {
       return null;
    }
 
    default void submit(
-      @Nullable final Void argument,
+      final @Nullable Void argument,
       final PoseStack poseStack,
       final SubmitNodeCollector submitNodeCollector,
       final int lightCoords,
@@ -26,7 +25,7 @@ public interface NoDataSpecialModelRenderer extends SpecialModelRenderer<Void> {
 
    void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, int overlayCoords, boolean hasFoil, final int outlineColor);
 
-   public interface Unbaked extends SpecialModelRenderer.Unbaked<Void> {
+   interface Unbaked extends SpecialModelRenderer.Unbaked<Void> {
       @Override
       MapCodec<? extends NoDataSpecialModelRenderer.Unbaked> type();
    }

@@ -7,7 +7,7 @@ import org.jspecify.annotations.Nullable;
 public record RealmsConfigurationDto(
    @SerializedName("options") RealmsSlotUpdateDto options,
    @SerializedName("settings") List<RealmsSetting> settings,
-   @Nullable @SerializedName("regionSelectionPreference") RegionSelectionPreferenceDto regionSelectionPreference,
-   @Nullable @SerializedName("description") RealmsDescriptionDto description
+   @SerializedName("regionSelectionPreference") @Nullable RegionSelectionPreferenceDto regionSelectionPreference,
+   @SerializedName("description") @Nullable RealmsDescriptionDto description
 ) implements ReflectionBasedSerialization {
 }

@@ -83,8 +83,7 @@ public class ClientboundPlayerLookAtPacket implements Packet<ClientGamePacketLis
       return this.fromAnchor;
    }
 
-   @Nullable
-   public Vec3 getPosition(final Level level) {
+   public @Nullable Vec3 getPosition(final Level level) {
       if (this.atEntity) {
          Entity entity = level.getEntity(this.entity);
          return entity == null ? new Vec3(this.x, this.y, this.z) : this.toAnchor.apply(entity);

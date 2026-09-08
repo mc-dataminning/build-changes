@@ -18,10 +18,10 @@ public record DeprecatedTranslationsInfo(List<String> removed, Map<String, Strin
    public static final DeprecatedTranslationsInfo EMPTY = new DeprecatedTranslationsInfo(List.of(), Map.of());
    public static final Codec<DeprecatedTranslationsInfo> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.STRING.listOf().fieldOf("removed").forGetter(DeprecatedTranslationsInfo::removed),
-               Codec.unboundedMap(Codec.STRING, Codec.STRING).fieldOf("renamed").forGetter(DeprecatedTranslationsInfo::renamed)
-            )
-            .apply(i, DeprecatedTranslationsInfo::new)
+            Codec.STRING.listOf().fieldOf("removed").forGetter(DeprecatedTranslationsInfo::removed),
+            Codec.unboundedMap(Codec.STRING, Codec.STRING).fieldOf("renamed").forGetter(DeprecatedTranslationsInfo::renamed)
+         )
+         .apply(i, DeprecatedTranslationsInfo::new)
    );
 
    public static DeprecatedTranslationsInfo loadFromJson(final InputStream stream) {
@@ -32,11 +32,14 @@ public record DeprecatedTranslationsInfo(List<String> removed, Map<String, Strin
 
    public static DeprecatedTranslationsInfo loadFromResource(final String path) {
       try (InputStream stream = Language.class.getResourceAsStream(path)) {
-         return stream != null ? loadFromJson(stream) : EMPTY;
-      } catch (Exception var6) {
-         LOGGER.error("Failed to read {}", path, var6);
-         return EMPTY;
+         if (stream != null) {
+            return loadFromJson(stream);
+         }
+      } catch (Exception e) {
+         LOGGER.error("Failed to read {}", path, e);
       }
+
+      return EMPTY;
    }
 
    public static DeprecatedTranslationsInfo loadFromDefaultResource() {

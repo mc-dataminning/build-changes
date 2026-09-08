@@ -24,7 +24,7 @@ public class AmbientDesertBlockSoundsPlayer {
    public static void playAmbientSandSounds(final Level level, final BlockPos pos, final RandomSource random) {
       if (level.getBlockState(pos.above()).is(Blocks.AIR)) {
          if (random.nextInt(2100) == 0 && shouldPlayAmbientSandSound(level, pos)) {
-            level.playLocalSound((double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), SoundEvents.SAND_IDLE, SoundSource.AMBIENT, 1.0F, 1.0F, false);
+            level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.SAND_IDLE, SoundSource.AMBIENT, 1.0F, 1.0F, false);
          }
       }
    }
@@ -43,7 +43,7 @@ public class AmbientDesertBlockSoundsPlayer {
          }
 
          if (shouldPlayDesertDryVegetationBlockSounds(level, pos.below())) {
-            level.playLocalSound((double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), SoundEvents.DEAD_BUSH_IDLE, SoundSource.AMBIENT, 1.0F, 1.0F, false);
+            level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.DEAD_BUSH_IDLE, SoundSource.AMBIENT, 1.0F, 1.0F, false);
          }
       }
    }

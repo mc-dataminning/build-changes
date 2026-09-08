@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.Map.Entry;
@@ -79,12 +78,12 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
                   .thenCombine(
                      compilePipelines(device, configs, optionalPipelines, taskExecutor, reloadExecutor),
                      (compiledRequiredPipelines, compiledOptionalPipelines) -> new ShaderManager.PendingResults(
-                           configs,
-                           requiredPipelines,
-                           optionalPipelines,
-                           (List<CompiledRenderPipeline>)compiledRequiredPipelines,
-                           (List<CompiledRenderPipeline>)compiledOptionalPipelines
-                        )
+                        configs,
+                        requiredPipelines,
+                        optionalPipelines,
+                        (List<CompiledRenderPipeline>)compiledRequiredPipelines,
+                        (List<CompiledRenderPipeline>)compiledOptionalPipelines
+                     )
                   );
             },
             reloadExecutor
@@ -93,14 +92,14 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
          .thenAcceptAsync(compilations -> this.apply(device, compilations), reloadExecutor);
    }
 
-   private static CompletableFuture<List<CompiledRenderPipeline>> compilePipelines(
+   private static CompletableFuture<List<@Nullable CompiledRenderPipeline>> compilePipelines(
       final GpuDevice device, final ShaderSource shaderSource, final List<RenderPipeline> pipelines, final Executor taskExecutor, final Executor reloadExecutor
    ) {
       return Util.sequence(
          pipelines.stream()
             .map(
                pipeline -> device.compilePipeline(pipeline, shaderSource, taskExecutor)
-                     .thenApplyAsync(CompiledRenderPipeline.Pending::finishCompile, reloadExecutor)
+                  .thenApplyAsync(CompiledRenderPipeline.Pending::finishCompile, reloadExecutor)
             )
             .toList()
       );
@@ -123,8 +122,8 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
 
       Builder<Identifier, PostChainConfig> postChains = ImmutableMap.builder();
 
-      for (Entry<Identifier, Resource> entryx : POST_CHAIN_ID_CONVERTER.listMatchingResources(manager).entrySet()) {
-         loadPostChain(entryx.getKey(), entryx.getValue(), postChains);
+      for (Entry<Identifier, Resource> entry : POST_CHAIN_ID_CONVERTER.listMatchingResources(manager).entrySet()) {
+         loadPostChain(entry.getKey(), entry.getValue(), postChains);
       }
 
       return new ShaderManager.Configs(shaderSources.build(), includeSources.build(), postChains.build());
@@ -137,8 +136,8 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
          String contents = resource.readAllAsString();
          Identifier id = type.idConverter().fileToId(location);
          output.put(new ShaderManager.ShaderSourceKey(id, type), contents);
-      } catch (IOException var6) {
-         LOGGER.error("Failed to load shader source at {}", location, var6);
+      } catch (IOException e) {
+         LOGGER.error("Failed to load shader source at {}", location, e);
       }
    }
 
@@ -147,8 +146,8 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
          String contents = resource.readAllAsString();
          Identifier id = includeShaderLocationToId(location);
          output.put(id, ShaderSource.CachedIncludeSource.create(id, contents));
-      } catch (IOException var5) {
-         LOGGER.error("Failed to load shader source at {}", location, var5);
+      } catch (IOException e) {
+         LOGGER.error("Failed to load shader source at {}", location, e);
       }
    }
 
@@ -158,8 +157,8 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
       try (Reader reader = resource.openAsReader()) {
          JsonElement json = StrictJsonParser.parse(reader);
          output.put(id, (PostChainConfig)PostChainConfig.CODEC.parse(JsonOps.INSTANCE, json).getOrThrow(JsonSyntaxException::new));
-      } catch (JsonParseException | IOException var9) {
-         LOGGER.error("Failed to parse post chain at {}", location, var9);
+      } catch (IOException | JsonParseException e) {
+         LOGGER.error("Failed to parse post chain at {}", location, e);
       }
    }
 
@@ -170,8 +169,8 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
             String contents = resource.readAllAsString();
             Identifier includeId = includeShaderLocationToId(location);
             includes.put(includeId, ShaderSource.CachedIncludeSource.create(includeId, contents));
-         } catch (Exception var5) {
-            LOGGER.error("Couldn't read shader file {}", location, var5);
+         } catch (Exception exception) {
+            LOGGER.error("Couldn't read shader file {}", location, exception);
          }
       });
       return includes;
@@ -209,9 +208,9 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
             "Failed to load required shader programs:\n" + failedLoads.stream().map(entry -> " - " + entry).collect(Collectors.joining("\n"))
          );
       } else {
-         for (int ix = 0; ix < compilations.optionalPipelines.size(); ix++) {
-            RenderPipeline pipeline = compilations.optionalPipelines.get(ix);
-            CompiledRenderPipeline compiled = compilations.compiledOptionalPipelines.get(ix);
+         for (int i = 0; i < compilations.optionalPipelines.size(); i++) {
+            RenderPipeline pipeline = compilations.optionalPipelines.get(i);
+            CompiledRenderPipeline compiled = compilations.compiledOptionalPipelines.get(i);
             if (compiled != null) {
                pipelineCache.insert(pipeline, compiled);
             } else {
@@ -262,14 +261,13 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
       }
    }
 
-   @Nullable
-   public PostChain getPostChain(final Identifier id, final Set<Identifier> allowedTargets) {
+   public @Nullable PostChain getPostChain(final Identifier id, final Set<Identifier> allowedTargets) {
       try {
          return this.postChains.getOrLoadPostChain(id, allowedTargets);
-      } catch (ShaderManager.CompilationException var4) {
-         LOGGER.error("Failed to load post chain: {}", id, var4);
+      } catch (ShaderManager.CompilationException e) {
+         LOGGER.error("Failed to load post chain: {}", id, e);
          this.postChains.postChains.put(id, Optional.empty());
-         this.tryTriggerRecovery(var4);
+         this.tryTriggerRecovery(e);
          return null;
       }
    }
@@ -290,7 +288,7 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
       }
    }
 
-   public static record Configs(
+   public record Configs(
       Map<ShaderManager.ShaderSourceKey, String> shaderSources,
       Map<Identifier, ShaderSource.CachedIncludeSource> includeSources,
       Map<Identifier, PostChainConfig> postChains
@@ -313,41 +311,36 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
       }
    }
 
-   private static record PendingResults(
+   private record PendingResults(
       ShaderManager.Configs configs,
       List<RenderPipeline> requiredPipelines,
       List<RenderPipeline> optionalPipelines,
-      List<CompiledRenderPipeline> compiledRequiredPipelines,
-      List<CompiledRenderPipeline> compiledOptionalPipelines
+      List<@Nullable CompiledRenderPipeline> compiledRequiredPipelines,
+      List<@Nullable CompiledRenderPipeline> compiledOptionalPipelines
    ) {
    }
 
    private class PostChainCache implements AutoCloseable {
       private final ShaderManager.Configs configs;
-      private final Map<Identifier, Optional<PostChain>> postChains;
+      private final Map<Identifier, Optional<PostChain>> postChains = new HashMap<>();
       private boolean triggeredRecovery;
 
       private PostChainCache(final ShaderManager.Configs configs) {
-         Objects.requireNonNull(ShaderManager.this);
-         super();
-         this.postChains = new HashMap<>();
          this.configs = configs;
       }
 
-      @Nullable
-      public PostChain getOrLoadPostChain(final Identifier id, final Set<Identifier> allowedTargets) throws ShaderManager.CompilationException {
+      public @Nullable PostChain getOrLoadPostChain(final Identifier id, final Set<Identifier> allowedTargets) throws ShaderManager.CompilationException {
          Optional<PostChain> cached = this.postChains.get(id);
          if (cached != null) {
             return cached.orElse(null);
-         } else {
-            PostChain postChain = this.loadPostChain(id, allowedTargets);
-            this.postChains.put(id, Optional.ofNullable(postChain));
-            return postChain;
          }
+
+         PostChain postChain = this.loadPostChain(id, allowedTargets);
+         this.postChains.put(id, Optional.ofNullable(postChain));
+         return postChain;
       }
 
-      @Nullable
-      private PostChain loadPostChain(final Identifier id, final Set<Identifier> allowedTargets) throws ShaderManager.CompilationException {
+      private @Nullable PostChain loadPostChain(final Identifier id, final Set<Identifier> allowedTargets) throws ShaderManager.CompilationException {
          PostChainConfig config = this.configs.postChains.get(id);
          if (config == null) {
             if (!id.equals(GameRenderer.END_OF_FRAME_POST_EFFECT)) {
@@ -378,7 +371,7 @@ public class ShaderManager implements PreparableReloadListener, AutoCloseable {
       }
    }
 
-   private static record ShaderSourceKey(Identifier id, ShaderType type) {
+   private record ShaderSourceKey(Identifier id, ShaderType type) {
       @Override
       public String toString() {
          return this.id + " (" + this.type + ")";

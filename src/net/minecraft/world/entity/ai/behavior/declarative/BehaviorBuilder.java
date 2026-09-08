@@ -9,7 +9,6 @@ import com.mojang.datafixers.util.Function3;
 import com.mojang.datafixers.util.Function4;
 import com.mojang.datafixers.util.Unit;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.BiFunction;
@@ -185,19 +184,15 @@ public class BehaviorBuilder<E extends LivingEntity, M> implements App<BehaviorB
             );
             final BehaviorBuilder.TriggerWithResult<E, Function<A, R>> fTrigger = BehaviorBuilder.get(function);
             return BehaviorBuilder.create(new BehaviorBuilder.TriggerWithResult<E, R>() {
-               {
-                  Objects.requireNonNull(Instance.this);
-               }
-
                @Override
                public R tryTrigger(final ServerLevel level, final E body, final long timestamp) {
                   A ra = (A)aTrigger.tryTrigger(level, body, timestamp);
                   if (ra == null) {
                      return null;
-                  } else {
-                     Function<A, R> rf = (Function<A, R>)fTrigger.tryTrigger(level, body, timestamp);
-                     return (R)(rf == null ? null : rf.apply(ra));
                   }
+
+                  Function<A, R> rf = (Function<A, R>)fTrigger.tryTrigger(level, body, timestamp);
+                  return (R)(rf == null ? null : rf.apply(ra));
                }
 
                @Override
@@ -226,10 +221,6 @@ public class BehaviorBuilder<E extends LivingEntity, M> implements App<BehaviorB
             (App<BehaviorBuilder.Mu<E>, M>)ts
          );
          return BehaviorBuilder.create(new BehaviorBuilder.TriggerWithResult<E, R>() {
-            {
-               Objects.requireNonNull(Instance.this);
-            }
-
             @Override
             public R tryTrigger(final ServerLevel level, final E body, final long timestamp) {
                T t = tTrigger.tryTrigger(level, body, timestamp);
@@ -260,24 +251,20 @@ public class BehaviorBuilder<E extends LivingEntity, M> implements App<BehaviorB
          final BehaviorBuilder.TriggerWithResult<E, B> bTrigger = (BehaviorBuilder.TriggerWithResult<E, B>)BehaviorBuilder.get((App<BehaviorBuilder.Mu<E>, M>)b);
          final BehaviorBuilder.TriggerWithResult<E, BiFunction<A, B, R>> fTrigger = BehaviorBuilder.get(func);
          return BehaviorBuilder.create(new BehaviorBuilder.TriggerWithResult<E, R>() {
-            {
-               Objects.requireNonNull(Instance.this);
-            }
-
             @Override
             public R tryTrigger(final ServerLevel level, final E body, final long timestamp) {
                A ra = aTrigger.tryTrigger(level, body, timestamp);
                if (ra == null) {
                   return null;
-               } else {
-                  B rb = bTrigger.tryTrigger(level, body, timestamp);
-                  if (rb == null) {
-                     return null;
-                  } else {
-                     BiFunction<A, B, R> fr = fTrigger.tryTrigger(level, body, timestamp);
-                     return fr == null ? null : fr.apply(ra, rb);
-                  }
                }
+
+               B rb = bTrigger.tryTrigger(level, body, timestamp);
+               if (rb == null) {
+                  return null;
+               }
+
+               BiFunction<A, B, R> fr = fTrigger.tryTrigger(level, body, timestamp);
+               return fr == null ? null : fr.apply(ra, rb);
             }
 
             @Override
@@ -318,29 +305,25 @@ public class BehaviorBuilder<E extends LivingEntity, M> implements App<BehaviorB
          );
          final BehaviorBuilder.TriggerWithResult<E, Function3<T1, T2, T3, R>> fTrigger = BehaviorBuilder.get(func);
          return BehaviorBuilder.create(new BehaviorBuilder.TriggerWithResult<E, R>() {
-            {
-               Objects.requireNonNull(Instance.this);
-            }
-
             @Override
             public R tryTrigger(final ServerLevel level, final E body, final long timestamp) {
                T1 r1 = t1Trigger.tryTrigger(level, body, timestamp);
                if (r1 == null) {
                   return null;
-               } else {
-                  T2 r2 = t2Trigger.tryTrigger(level, body, timestamp);
-                  if (r2 == null) {
-                     return null;
-                  } else {
-                     T3 r3 = t3Trigger.tryTrigger(level, body, timestamp);
-                     if (r3 == null) {
-                        return null;
-                     } else {
-                        Function3<T1, T2, T3, R> rf = fTrigger.tryTrigger(level, body, timestamp);
-                        return (R)(rf == null ? null : rf.apply(r1, r2, r3));
-                     }
-                  }
                }
+
+               T2 r2 = t2Trigger.tryTrigger(level, body, timestamp);
+               if (r2 == null) {
+                  return null;
+               }
+
+               T3 r3 = t3Trigger.tryTrigger(level, body, timestamp);
+               if (r3 == null) {
+                  return null;
+               }
+
+               Function3<T1, T2, T3, R> rf = fTrigger.tryTrigger(level, body, timestamp);
+               return (R)(rf == null ? null : rf.apply(r1, r2, r3));
             }
 
             @Override
@@ -387,34 +370,30 @@ public class BehaviorBuilder<E extends LivingEntity, M> implements App<BehaviorB
          final BehaviorBuilder.TriggerWithResult<E, Function4<T1, T2, T3, T4, R>> fTrigger = BehaviorBuilder.get(func);
          return BehaviorBuilder.create(
             new BehaviorBuilder.TriggerWithResult<E, R>() {
-               {
-                  Objects.requireNonNull(Instance.this);
-               }
-
                @Override
                public R tryTrigger(final ServerLevel level, final E body, final long timestamp) {
                   T1 r1 = t1Trigger.tryTrigger(level, body, timestamp);
                   if (r1 == null) {
                      return null;
-                  } else {
-                     T2 r2 = t2Trigger.tryTrigger(level, body, timestamp);
-                     if (r2 == null) {
-                        return null;
-                     } else {
-                        T3 r3 = t3Trigger.tryTrigger(level, body, timestamp);
-                        if (r3 == null) {
-                           return null;
-                        } else {
-                           T4 r4 = t4Trigger.tryTrigger(level, body, timestamp);
-                           if (r4 == null) {
-                              return null;
-                           } else {
-                              Function4<T1, T2, T3, T4, R> rf = fTrigger.tryTrigger(level, body, timestamp);
-                              return (R)(rf == null ? null : rf.apply(r1, r2, r3, r4));
-                           }
-                        }
-                     }
                   }
+
+                  T2 r2 = t2Trigger.tryTrigger(level, body, timestamp);
+                  if (r2 == null) {
+                     return null;
+                  }
+
+                  T3 r3 = t3Trigger.tryTrigger(level, body, timestamp);
+                  if (r3 == null) {
+                     return null;
+                  }
+
+                  T4 r4 = t4Trigger.tryTrigger(level, body, timestamp);
+                  if (r4 == null) {
+                     return null;
+                  }
+
+                  Function4<T1, T2, T3, T4, R> rf = fTrigger.tryTrigger(level, body, timestamp);
+                  return (R)(rf == null ? null : rf.apply(r1, r2, r3, r4));
                }
 
                @Override
@@ -459,8 +438,7 @@ public class BehaviorBuilder<E extends LivingEntity, M> implements App<BehaviorB
    private static final class PureMemory<E extends LivingEntity, F extends K1, Value> extends BehaviorBuilder<E, MemoryAccessor<F, Value>> {
       private PureMemory(final MemoryCondition<F, Value> condition) {
          super(new BehaviorBuilder.TriggerWithResult<E, MemoryAccessor<F, Value>>() {
-            @Nullable
-            public MemoryAccessor<F, Value> tryTrigger(final ServerLevel level, final E body, final long timestamp) {
+            public @Nullable MemoryAccessor<F, Value> tryTrigger(final ServerLevel level, final E body, final long timestamp) {
                Brain<?> brain = body.getBrain();
                Optional<Value> value = brain.getMemoryInternal(condition.memory());
                return value == null ? null : condition.createAccessor(brain, value);
@@ -485,8 +463,7 @@ public class BehaviorBuilder<E extends LivingEntity, M> implements App<BehaviorB
    }
 
    private interface TriggerWithResult<E extends LivingEntity, R> {
-      @Nullable
-      R tryTrigger(final ServerLevel level, final E body, final long timestamp);
+      @Nullable R tryTrigger(final ServerLevel level, final E body, final long timestamp);
 
       Set<MemoryModuleType<?>> memories();
 
@@ -496,8 +473,7 @@ public class BehaviorBuilder<E extends LivingEntity, M> implements App<BehaviorB
    private static final class TriggerWrapper<E extends LivingEntity> extends BehaviorBuilder<E, Unit> {
       private TriggerWrapper(final Trigger<? super E> dependentTrigger) {
          super(new BehaviorBuilder.TriggerWithResult<E, Unit>() {
-            @Nullable
-            public Unit tryTrigger(final ServerLevel level, final E body, final long timestamp) {
+            public @Nullable Unit tryTrigger(final ServerLevel level, final E body, final long timestamp) {
                return dependentTrigger.trigger(level, body, timestamp) ? Unit.INSTANCE : null;
             }
 

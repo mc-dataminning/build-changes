@@ -270,8 +270,8 @@ public interface ByteBufCodecs {
    StreamCodec<ByteBuf, PublicKey> PUBLIC_KEY = byteArray(512).map(bytes -> {
       try {
          return Crypt.byteToPublicKey(bytes);
-      } catch (CryptException var2) {
-         throw new DecoderException("Malformed public key bytes", var2);
+      } catch (CryptException e) {
+         throw new DecoderException("Malformed public key bytes", e);
       }
    }, Key::getEncoded);
 
@@ -284,9 +284,9 @@ public interface ByteBufCodecs {
          public void encode(final ByteBuf output, final byte[] value) {
             if (value.length > maxSize) {
                throw new EncoderException("ByteArray with size " + value.length + " is bigger than allowed " + maxSize);
-            } else {
-               FriendlyByteBuf.writeByteArray(output, value);
             }
+
+            FriendlyByteBuf.writeByteArray(output, value);
          }
       };
    }
@@ -341,17 +341,17 @@ public interface ByteBufCodecs {
          public void encode(final ByteBuf output, final Tag value) {
             if (value == EndTag.INSTANCE) {
                throw new EncoderException("Expected non-null compound tag");
-            } else {
-               FriendlyByteBuf.writeNbt(output, value);
             }
+
+            FriendlyByteBuf.writeNbt(output, value);
          }
       };
    }
 
    static StreamCodec<ByteBuf, CompoundTag> compoundTagCodec(final Supplier<NbtAccounter> accounter) {
       return tagCodec(accounter).map(tag -> {
-         if (tag instanceof CompoundTag) {
-            return (CompoundTag)tag;
+         if (tag instanceof CompoundTag compoundTag) {
+            return compoundTag;
          } else {
             throw new DecoderException("Not a compound tag: " + tag);
          }
@@ -368,16 +368,16 @@ public interface ByteBufCodecs {
 
    static <T, B extends ByteBuf, V> StreamCodec.CodecOperation<B, T, V> fromCodec(final DynamicOps<T> ops, final Codec<V> codec) {
       return original -> new StreamCodec<B, V>() {
-            public V decode(final B input) {
-               T payload = (T)original.decode(input);
-               return (V)codec.parse(ops, payload).getOrThrow(msg -> new DecoderException("Failed to decode: " + msg + " " + payload));
-            }
+         public V decode(final B input) {
+            T payload = (T)original.decode(input);
+            return (V)codec.parse(ops, payload).getOrThrow(msg -> new DecoderException("Failed to decode: " + msg + " " + payload));
+         }
 
-            public void encode(final B output, final V value) {
-               T payload = (T)codec.encodeStart(ops, value).getOrThrow(msg -> new EncoderException("Failed to encode: " + msg + " " + value));
-               original.encode(output, payload);
-            }
-         };
+         public void encode(final B output, final V value) {
+            T payload = (T)codec.encodeStart(ops, value).getOrThrow(msg -> new EncoderException("Failed to encode: " + msg + " " + value));
+            original.encode(output, payload);
+         }
+      };
    }
 
    static <T> StreamCodec<ByteBuf, T> fromCodec(final Codec<T> codec, final Supplier<NbtAccounter> accounter) {
@@ -438,9 +438,9 @@ public interface ByteBufCodecs {
    static void writeCount(final ByteBuf output, final int count, final int maxSize) {
       if (count > maxSize) {
          throw new EncoderException(count + " elements exceeded max size of: " + maxSize);
-      } else {
-         VarInt.write(output, count);
       }
+
+      VarInt.write(output, count);
    }
 
    static <B extends ByteBuf, V, C extends Collection<V>> StreamCodec<B, C> collection(
@@ -507,12 +507,12 @@ public interface ByteBufCodecs {
          public void encode(final B output, final C value) {
             if (value.size() != size) {
                throw new EncoderException("Invalid list size, expected " + size + ", but got " + value.size());
-            } else {
-               Iterator<V> iterator = value.iterator();
+            }
 
-               for (int i = 0; i < size; i++) {
-                  elementCodec.encode(output, iterator.next());
-               }
+            Iterator<V> iterator = value.iterator();
+
+            for (int i = 0; i < size; i++) {
+               elementCodec.encode(output, iterator.next());
             }
          }
       };
@@ -581,35 +581,35 @@ public interface ByteBufCodecs {
 
    static <B extends ByteBuf, V> StreamCodec.CodecOperation<B, V, V> lengthPrefixed(final int maxSize, final BiFunction<B, ByteBuf, B> decorator) {
       return original -> new StreamCodec<B, V>() {
-            public V decode(final B input) {
-               int size = VarInt.read(input);
+         public V decode(final B input) {
+            int size = VarInt.read(input);
+            if (size > maxSize) {
+               throw new DecoderException("Buffer size " + size + " is larger than allowed limit of " + maxSize);
+            }
+
+            int index = input.readerIndex();
+            B limitedSlice = (B)((ByteBuf)decorator.apply(input, input.slice(index, size)));
+            input.readerIndex(index + size);
+            return (V)original.decode(limitedSlice);
+         }
+
+         public void encode(final B output, final V value) {
+            B scratchBuffer = (B)((ByteBuf)decorator.apply(output, output.alloc().buffer()));
+
+            try {
+               original.encode(scratchBuffer, value);
+               int size = scratchBuffer.readableBytes();
                if (size > maxSize) {
-                  throw new DecoderException("Buffer size " + size + " is larger than allowed limit of " + maxSize);
-               } else {
-                  int index = input.readerIndex();
-                  B limitedSlice = (B)((ByteBuf)decorator.apply(input, input.slice(index, size)));
-                  input.readerIndex(index + size);
-                  return (V)original.decode(limitedSlice);
+                  throw new EncoderException("Buffer size " + size + " is  larger than allowed limit of " + maxSize);
                }
+
+               VarInt.write(output, size);
+               output.writeBytes(scratchBuffer);
+            } finally {
+               scratchBuffer.release();
             }
-
-            public void encode(final B output, final V value) {
-               B scratchBuffer = (B)((ByteBuf)decorator.apply(output, output.alloc().buffer()));
-
-               try {
-                  original.encode(scratchBuffer, value);
-                  int size = scratchBuffer.readableBytes();
-                  if (size > maxSize) {
-                     throw new EncoderException("Buffer size " + size + " is  larger than allowed limit of " + maxSize);
-                  }
-
-                  VarInt.write(output, size);
-                  output.writeBytes(scratchBuffer);
-               } finally {
-                  scratchBuffer.release();
-               }
-            }
-         };
+         }
+      };
    }
 
    static <V> StreamCodec.CodecOperation<ByteBuf, V, V> lengthPrefixed(final int maxSize) {
@@ -705,15 +705,15 @@ public interface ByteBufCodecs {
             if (count == -1) {
                Registry<T> registry = input.registryAccess().lookupOrThrow(registryKey);
                return registry.get(TagKey.create(registryKey, Identifier.STREAM_CODEC.decode(input))).orElseThrow();
-            } else {
-               List<Holder<T>> holders = new ArrayList<>(Math.min(count, 65536));
-
-               for (int i = 0; i < count; i++) {
-                  holders.add(this.holderCodec.decode(input));
-               }
-
-               return HolderSet.direct(holders);
             }
+
+            List<Holder<T>> holders = new ArrayList<>(Math.min(count, 65536));
+
+            for (int i = 0; i < count; i++) {
+               holders.add(this.holderCodec.decode(input));
+            }
+
+            return HolderSet.direct(holders);
          }
 
          public void encode(final RegistryFriendlyByteBuf output, final HolderSet<T> value) {
@@ -741,8 +741,8 @@ public interface ByteBufCodecs {
 
             try {
                return LenientJsonParser.parse(payload);
-            } catch (JsonSyntaxException var4) {
-               throw new DecoderException("Failed to parse JSON", var4);
+            } catch (JsonSyntaxException e) {
+               throw new DecoderException("Failed to parse JSON", e);
             }
          }
 

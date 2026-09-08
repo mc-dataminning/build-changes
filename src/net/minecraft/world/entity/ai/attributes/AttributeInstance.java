@@ -62,8 +62,7 @@ public class AttributeInstance {
       return ImmutableSet.copyOf(this.permanentModifiers.values());
    }
 
-   @Nullable
-   public AttributeModifier getModifier(final Identifier id) {
+   public @Nullable AttributeModifier getModifier(final Identifier id) {
       return this.modifierById.get(id);
    }
 
@@ -75,10 +74,10 @@ public class AttributeInstance {
       AttributeModifier previous = this.modifierById.putIfAbsent(modifier.id(), modifier);
       if (previous != null) {
          throw new IllegalArgumentException("Modifier is already applied on this attribute!");
-      } else {
-         this.getModifiers(modifier.operation()).put(modifier.id(), modifier);
-         this.setDirty();
       }
+
+      this.getModifiers(modifier.operation()).put(modifier.id(), modifier);
+      this.setDirty();
    }
 
    public void addOrUpdateTransientModifier(final AttributeModifier modifier) {
@@ -123,12 +122,12 @@ public class AttributeInstance {
       AttributeModifier modifier = this.modifierById.remove(id);
       if (modifier == null) {
          return false;
-      } else {
-         this.getModifiers(modifier.operation()).remove(id);
-         this.permanentModifiers.remove(id);
-         this.setDirty();
-         return true;
       }
+
+      this.getModifiers(modifier.operation()).remove(id);
+      this.permanentModifiers.remove(id);
+      this.setDirty();
+      return true;
    }
 
    public void removeModifiers() {
@@ -200,14 +199,14 @@ public class AttributeInstance {
       this.setDirty();
    }
 
-   public static record Packed(Holder<Attribute> attribute, double baseValue, List<AttributeModifier> modifiers) {
+   public record Packed(Holder<Attribute> attribute, double baseValue, List<AttributeModifier> modifiers) {
       public static final Codec<AttributeInstance.Packed> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  BuiltInRegistries.ATTRIBUTE.holderByNameCodec().fieldOf("id").forGetter(AttributeInstance.Packed::attribute),
-                  ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.DOUBLE, "base", 0.0).forGetter(AttributeInstance.Packed::baseValue),
-                  AttributeModifier.CODEC.listOf().optionalFieldOf("modifiers", List.of()).forGetter(AttributeInstance.Packed::modifiers)
-               )
-               .apply(i, AttributeInstance.Packed::new)
+               BuiltInRegistries.ATTRIBUTE.holderByNameCodec().fieldOf("id").forGetter(AttributeInstance.Packed::attribute),
+               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.DOUBLE, "base", 0.0).forGetter(AttributeInstance.Packed::baseValue),
+               AttributeModifier.CODEC.listOf().optionalFieldOf("modifiers", List.of()).forGetter(AttributeInstance.Packed::modifiers)
+            )
+            .apply(i, AttributeInstance.Packed::new)
       );
       public static final Codec<List<AttributeInstance.Packed>> LIST_CODEC = CODEC.listOf();
    }

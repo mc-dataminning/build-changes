@@ -28,31 +28,31 @@ public class BowItem extends ProjectileWeaponItem {
          ItemStack projectile = player.getProjectile(itemStack);
          if (projectile.isEmpty()) {
             return false;
-         } else {
-            int timeHeld = this.getUseDuration(itemStack, entity) - remainingTime;
-            float pow = getPowerForTime(timeHeld);
-            if ((double)pow < 0.1) {
-               return false;
-            } else {
-               List<ItemStack> firedProjectiles = draw(itemStack, projectile, player);
-               if (level instanceof ServerLevel serverLevel && !firedProjectiles.isEmpty()) {
-                  this.shoot(serverLevel, player, player.getUsedItemHand(), itemStack, firedProjectiles, pow * 3.0F, 1.0F, pow == 1.0F, null);
-               }
-
-               level.playSound(
-                  null,
-                  player.getX(),
-                  player.getY(),
-                  player.getZ(),
-                  SoundEvents.ARROW_SHOOT,
-                  SoundSource.PLAYERS,
-                  1.0F,
-                  1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + pow * 0.5F
-               );
-               player.awardStat(Stats.ITEM_USED.get(this));
-               return true;
-            }
          }
+
+         int timeHeld = this.getUseDuration(itemStack, entity) - remainingTime;
+         float pow = getPowerForTime(timeHeld);
+         if (pow < 0.1) {
+            return false;
+         }
+
+         List<ItemStack> firedProjectiles = draw(itemStack, projectile, player);
+         if (level instanceof ServerLevel serverLevel && !firedProjectiles.isEmpty()) {
+            this.shoot(serverLevel, player, player.getUsedItemHand(), itemStack, firedProjectiles, pow * 3.0F, 1.0F, pow == 1.0F, null);
+         }
+
+         level.playSound(
+            null,
+            player.getX(),
+            player.getY(),
+            player.getZ(),
+            SoundEvents.ARROW_SHOOT,
+            SoundSource.PLAYERS,
+            1.0F,
+            1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + pow * 0.5F
+         );
+         player.awardStat(Stats.ITEM_USED.get(this));
+         return true;
       } else {
          return false;
       }
@@ -66,13 +66,13 @@ public class BowItem extends ProjectileWeaponItem {
       final float power,
       final float uncertainty,
       final float angle,
-      @Nullable final LivingEntity targetOverrride
+      final @Nullable LivingEntity targetOverrride
    ) {
       projectileEntity.shootFromRotation(shooter, shooter.getXRot(), shooter.getYRot() + angle, 0.0F, power, uncertainty);
    }
 
    public static float getPowerForTime(final int timeHeld) {
-      float pow = (float)timeHeld / 20.0F;
+      float pow = timeHeld / 20.0F;
       pow = (pow * pow + pow * 2.0F) / 3.0F;
       if (pow > 1.0F) {
          pow = 1.0F;
@@ -97,10 +97,10 @@ public class BowItem extends ProjectileWeaponItem {
       boolean foundProjectile = !player.getProjectile(itemStack).isEmpty();
       if (!player.hasInfiniteMaterials() && !foundProjectile) {
          return InteractionResult.FAIL;
-      } else {
-         player.startUsingItem(hand);
-         return InteractionResult.CONSUME;
       }
+
+      player.startUsingItem(hand);
+      return InteractionResult.CONSUME;
    }
 
    @Override

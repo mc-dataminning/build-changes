@@ -22,9 +22,7 @@ public enum AdvancementWidgetType {
    private final Identifier challengeFrameSprite;
    private final Identifier goalFrameSprite;
 
-   private AdvancementWidgetType(
-      final Identifier boxSprite, final Identifier taskFrameSprite, final Identifier challengeFrameSprite, final Identifier goalFrameSprite
-   ) {
+   AdvancementWidgetType(final Identifier boxSprite, final Identifier taskFrameSprite, final Identifier challengeFrameSprite, final Identifier goalFrameSprite) {
       this.boxSprite = boxSprite;
       this.taskFrameSprite = taskFrameSprite;
       this.challengeFrameSprite = challengeFrameSprite;

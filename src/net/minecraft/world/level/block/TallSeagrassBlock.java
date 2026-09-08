@@ -44,9 +44,8 @@ public class TallSeagrassBlock extends DoublePlantBlock implements LiquidBlockCo
       return new ItemStack(Blocks.SEAGRASS);
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockState state = super.getStateForPlacement(context);
       if (state != null) {
          FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos().above());
@@ -75,7 +74,7 @@ public class TallSeagrassBlock extends DoublePlantBlock implements LiquidBlockCo
    }
 
    @Override
-   public boolean canPlaceLiquid(@Nullable final LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
+   public boolean canPlaceLiquid(final @Nullable LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
       return false;
    }
 

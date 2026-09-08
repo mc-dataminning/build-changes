@@ -17,9 +17,9 @@ public class OptionsAddTextBackgroundFix extends DataFix {
          "OptionsAddTextBackgroundFix",
          this.getInputSchema().getType(References.OPTIONS),
          input -> input.update(DSL.remainderFinder(), tag -> (Dynamic)DataFixUtils.orElse(tag.get("chatOpacity").asString().map(value -> {
-                  double opacity = this.calculateBackground(value);
-                  return tag.set("textBackgroundOpacity", tag.createString(String.valueOf(opacity)));
-               }).result(), tag))
+            double opacity = this.calculateBackground(value);
+            return tag.set("textBackgroundOpacity", tag.createString(String.valueOf(opacity)));
+         }).result(), tag))
       );
    }
 
@@ -27,7 +27,7 @@ public class OptionsAddTextBackgroundFix extends DataFix {
       try {
          double textAlpha = 0.9 * Double.parseDouble(textOpacity) + 0.1;
          return textAlpha / 2.0;
-      } catch (NumberFormatException var4) {
+      } catch (NumberFormatException e) {
          return 0.5;
       }
    }

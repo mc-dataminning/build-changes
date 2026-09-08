@@ -18,8 +18,7 @@ public class SimpleReloadInstance<S> implements ReloadInstance {
    private static final int EXTRA_RELOAD_PROGRESS_WEIGHT = 2;
    private static final int LISTENER_PROGRESS_WEIGHT = 1;
    private final CompletableFuture<Unit> allPreparations = new CompletableFuture<>();
-   @Nullable
-   private CompletableFuture<List<S>> allDone;
+   private @Nullable CompletableFuture<List<S>> allDone;
    private final Set<PreparableReloadListener> preparingListeners;
    private final int listenerCount;
    private final AtomicInteger startedTasks = new AtomicInteger();
@@ -98,10 +97,6 @@ public class SimpleReloadInstance<S> implements ReloadInstance {
       final PreparableReloadListener listener, final CompletableFuture<?> previousBarrier, final Executor mainThreadExecutor
    ) {
       return new PreparableReloadListener.PreparationBarrier() {
-         {
-            Objects.requireNonNull(SimpleReloadInstance.this);
-         }
-
          @Override
          public <T> CompletableFuture<T> wait(final T t) {
             mainThreadExecutor.execute(() -> {
@@ -123,8 +118,8 @@ public class SimpleReloadInstance<S> implements ReloadInstance {
    @Override
    public float getActualProgress() {
       int preparationsDone = this.listenerCount - this.preparingListeners.size();
-      float doneCount = (float)weightProgress(this.finishedTasks.get(), this.finishedReloads.get(), preparationsDone);
-      float totalCount = (float)weightProgress(this.startedTasks.get(), this.startedReloads.get(), this.listenerCount);
+      float doneCount = weightProgress(this.finishedTasks.get(), this.finishedReloads.get(), preparationsDone);
+      float totalCount = weightProgress(this.startedTasks.get(), this.startedReloads.get(), this.listenerCount);
       return doneCount / totalCount;
    }
 
@@ -148,8 +143,8 @@ public class SimpleReloadInstance<S> implements ReloadInstance {
    @FunctionalInterface
    protected interface StateFactory<S> {
       SimpleReloadInstance.StateFactory<Void> SIMPLE = (currentReload, previousStep, listener, taskExecutor, reloadExecutor) -> listener.reload(
-            currentReload, taskExecutor, previousStep, reloadExecutor
-         );
+         currentReload, taskExecutor, previousStep, reloadExecutor
+      );
 
       CompletableFuture<S> create(
          PreparableReloadListener.SharedState sharedState,

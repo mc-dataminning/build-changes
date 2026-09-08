@@ -16,7 +16,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.ConnectScreen;
@@ -69,10 +68,6 @@ public class ServerStatusPinger {
             private boolean success;
             private boolean receivedPing;
             private long pingStart;
-
-            {
-               Objects.requireNonNull(ServerStatusPinger.this);
-            }
 
             @Override
             public void handleStatusResponse(final ClientboundStatusResponsePacket packet) {
@@ -130,8 +125,8 @@ public class ServerStatusPinger {
             private static Component sanitizeDescription(final Component original) {
                try {
                   return ComponentUtils.resolve(ServerStatusPinger.DESCRIPTION_SANITIZE_CONTEXT, original);
-               } catch (CommandSyntaxException var2) {
-                  ServerStatusPinger.LOGGER.warn("Failed to sanitize status {}", original, var2);
+               } catch (CommandSyntaxException e) {
+                  ServerStatusPinger.LOGGER.warn("Failed to sanitize status {}", original, e);
                   return Component.empty();
                }
             }
@@ -162,8 +157,8 @@ public class ServerStatusPinger {
          try {
             connection.initiateServerboundStatusConnection(rawAddress.getHost(), rawAddress.getPort(), listener);
             connection.send(ServerboundStatusRequestPacket.INSTANCE);
-         } catch (Throwable var11) {
-            LOGGER.error("Failed to ping server {}", rawAddress, var11);
+         } catch (Throwable t) {
+            LOGGER.error("Failed to ping server {}", rawAddress, t);
          }
       }
    }
@@ -178,10 +173,6 @@ public class ServerStatusPinger {
       final InetSocketAddress resolvedAddress, final ServerAddress rawAddress, final ServerData data, final EventLoopGroupHolder eventLoopGroupHolder
    ) {
       ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group(eventLoopGroupHolder.eventLoopGroup())).handler(new ChannelInitializer<Channel>() {
-         {
-            Objects.requireNonNull(ServerStatusPinger.this);
-         }
-
          protected void initChannel(final Channel channel) {
             try {
                channel.config().setOption(ChannelOption.TCP_NODELAY, true);

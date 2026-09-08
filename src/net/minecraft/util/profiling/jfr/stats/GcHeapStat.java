@@ -35,16 +35,16 @@ public record GcHeapStat(Instant timestamp, long heapUsed, GcHeapStat.Timing tim
       }
 
       Duration totalDuration = Duration.between(heapStats.get(1).timestamp, heapStats.get(heapStats.size() - 1).timestamp);
-      return (double)totalAllocations / (double)totalDuration.getSeconds();
+      return (double)totalAllocations / totalDuration.getSeconds();
    }
 
-   public static record Summary(Duration duration, Duration gcTotalDuration, int totalGCs, double allocationRateBytesPerSecond) {
+   public record Summary(Duration duration, Duration gcTotalDuration, int totalGCs, double allocationRateBytesPerSecond) {
       public float gcOverHead() {
          return (float)this.gcTotalDuration.toMillis() / (float)this.duration.toMillis();
       }
    }
 
-   public static enum Timing {
+   public enum Timing {
       BEFORE_GC,
       AFTER_GC;
    }

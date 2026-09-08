@@ -32,7 +32,7 @@ public class ConduitBlock extends BaseEntityBlock implements SimpleWaterloggedBl
 
    public ConduitBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.valueOf(true)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, true));
    }
 
    @Override
@@ -45,9 +45,8 @@ public class ConduitBlock extends BaseEntityBlock implements SimpleWaterloggedBl
       return new ConduitBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return createTickerHelper(type, BlockEntityTypes.CONDUIT, level.isClientSide() ? ConduitBlockEntity::clientTick : ConduitBlockEntity::serverTick);
    }
 
@@ -79,11 +78,10 @@ public class ConduitBlock extends BaseEntityBlock implements SimpleWaterloggedBl
       return SHAPE;
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
-      return this.defaultBlockState().setValue(WATERLOGGED, Boolean.valueOf(fluidState.is(FluidTags.WATER) && fluidState.isFull()));
+      return this.defaultBlockState().setValue(WATERLOGGED, fluidState.is(FluidTags.WATER) && fluidState.isFull());
    }
 
    @Override

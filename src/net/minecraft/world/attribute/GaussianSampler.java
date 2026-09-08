@@ -13,9 +13,9 @@ public class GaussianSampler {
       int integralX = Mth.floor(position.x());
       int integralY = Mth.floor(position.y());
       int integralZ = Mth.floor(position.z());
-      double relativeX = position.x() - (double)integralX;
-      double relativeY = position.y() - (double)integralY;
-      double relativeZ = position.z() - (double)integralZ;
+      double relativeX = position.x() - integralX;
+      double relativeY = position.y() - integralY;
+      double relativeZ = position.z() - integralZ;
 
       for (int z = 0; z < 6; z++) {
          double weightZ = Mth.lerp(relativeZ, GAUSSIAN_SAMPLE_KERNEL[z + 1], GAUSSIAN_SAMPLE_KERNEL[z]);

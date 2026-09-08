@@ -9,8 +9,7 @@ import org.jspecify.annotations.Nullable;
 public class ValidationContextSource {
    private final ProblemReporter reporter;
    private final HolderGetter.Provider lootData;
-   @Nullable
-   private ValidationContext entityContext;
+   private @Nullable ValidationContext entityContext;
 
    public ValidationContextSource(final ProblemReporter reporter, final HolderGetter.Provider lootData) {
       this.reporter = reporter;

@@ -16,7 +16,7 @@ public enum PreferredGraphicsApi implements StringRepresentable {
    private final String serializedName;
    private final Component key;
 
-   private PreferredGraphicsApi(final String serializedName, final String key) {
+   PreferredGraphicsApi(final String serializedName, final String key) {
       this.serializedName = serializedName;
       this.key = Component.translatable(key);
    }

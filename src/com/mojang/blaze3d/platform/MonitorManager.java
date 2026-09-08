@@ -49,8 +49,7 @@ public class MonitorManager {
       }
    }
 
-   @Nullable
-   private Monitor addDisplay(final int id) {
+   private @Nullable Monitor addDisplay(final int id) {
       Monitor monitor = Monitor.tryCreate(id);
       if (monitor != null) {
          this.monitors.put(id, monitor);
@@ -59,13 +58,11 @@ public class MonitorManager {
       return monitor;
    }
 
-   @Nullable
-   public Monitor getMonitor(final int id) {
+   public @Nullable Monitor getMonitor(final int id) {
       return (Monitor)this.monitors.get(id);
    }
 
-   @Nullable
-   public Monitor findBestMonitor(final Window window) {
+   public @Nullable Monitor findBestMonitor(final Window window) {
       return this.getMonitor(SDLVideo.SDL_GetDisplayForWindow(window.handle()));
    }
 }

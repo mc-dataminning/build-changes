@@ -96,7 +96,7 @@ public class Goat extends Animal {
    }
 
    public ItemStack createHorn() {
-      RandomSource random = RandomSource.createThreadLocalInstance((long)this.getUUID().hashCode());
+      RandomSource random = RandomSource.createThreadLocalInstance(this.getUUID().hashCode());
       TagKey<Instrument> key = this.isScreamingGoat() ? InstrumentTags.SCREAMING_GOAT_HORNS : InstrumentTags.REGULAR_GOAT_HORNS;
       return this.level()
          .registryAccess()
@@ -149,13 +149,12 @@ public class Goat extends Animal {
       return this.isScreamingGoat() ? SoundEvents.GOAT_SCREAMING_MILK : SoundEvents.GOAT_MILK;
    }
 
-   @Nullable
-   public Goat getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable Goat getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       Goat newGoat = EntityTypes.GOAT.create(level, EntitySpawnReason.BREEDING);
       if (newGoat != null) {
          GoatAi.initMemories(newGoat, level.getRandom());
-         AgeableMob selectedParent = (AgeableMob)(level.getRandom().nextBoolean() ? this : partner);
-         boolean babyIsScreaming = selectedParent instanceof Goat goat && goat.isScreamingGoat() || level.getRandom().nextDouble() < 0.02;
+         boolean babyIsScreaming = (level.getRandom().nextBoolean() ? this : partner) instanceof Goat goat && goat.isScreamingGoat()
+            || level.getRandom().nextDouble() < 0.02;
          newGoat.setScreamingGoat(babyIsScreaming);
       }
 
@@ -193,7 +192,7 @@ public class Goat extends Animal {
    public void setYHeadRot(final float yHeadRot) {
       int maxHeadYRot = this.getMaxHeadYRot();
       float deltaFromBody = Mth.degreesDifference(this.yBodyRot, yHeadRot);
-      float deltaFromBodyClamped = Mth.clamp(deltaFromBody, (float)(-maxHeadYRot), (float)maxHeadYRot);
+      float deltaFromBodyClamped = Mth.clamp(deltaFromBody, -maxHeadYRot, maxHeadYRot);
       super.setYHeadRot(this.yBodyRot + deltaFromBodyClamped);
    }
 
@@ -223,25 +222,25 @@ public class Goat extends Animal {
          ItemStack bucketOrMilkBucket = ItemUtils.createFilledResult(heldItem, player, Items.MILK_BUCKET.getDefaultInstance());
          player.setItemInHand(hand, bucketOrMilkBucket);
          return InteractionResult.SUCCESS;
-      } else {
-         InteractionResult interactionResult = super.mobInteract(player, hand);
-         if (interactionResult.consumesAction() && this.isFood(heldItem)) {
-            this.playEatingSound();
-         }
-
-         return interactionResult;
       }
+
+      InteractionResult interactionResult = super.mobInteract(player, hand);
+      if (interactionResult.consumesAction() && this.isFood(heldItem)) {
+         this.playEatingSound();
+      }
+
+      return interactionResult;
    }
 
    @Override
    public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       RandomSource random = level.getRandom();
       GoatAi.initMemories(this, random);
       this.setScreamingGoat(random.nextDouble() < 0.02);
       this.ageBoundaryReached();
-      if (!this.isBaby() && (double)random.nextFloat() < 0.1F) {
+      if (!this.isBaby() && random.nextFloat() < 0.1F) {
          EntityDataAccessor<Boolean> hornToRemove = random.nextBoolean() ? DATA_HAS_LEFT_HORN : DATA_HAS_RIGHT_HORN;
          this.entityData.set(hornToRemove, false);
       }
@@ -272,7 +271,7 @@ public class Goat extends Animal {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 58) {
          this.isLoweringHead = true;
       } else if (id == 59) {
@@ -313,32 +312,32 @@ public class Goat extends Animal {
    public boolean dropHorn() {
       if (this.isBaby()) {
          return false;
-      } else {
-         boolean hasLeft = this.hasLeftHorn();
-         boolean hasRight = this.hasRightHorn();
-         if (!hasLeft && !hasRight) {
-            return false;
-         } else {
-            EntityDataAccessor<Boolean> hornToDrop;
-            if (!hasLeft) {
-               hornToDrop = DATA_HAS_RIGHT_HORN;
-            } else if (!hasRight) {
-               hornToDrop = DATA_HAS_LEFT_HORN;
-            } else {
-               hornToDrop = this.random.nextBoolean() ? DATA_HAS_LEFT_HORN : DATA_HAS_RIGHT_HORN;
-            }
-
-            this.entityData.set(hornToDrop, false);
-            Vec3 bodyPosition = this.position();
-            ItemStack item = this.createHorn();
-            double deltaX = (double)Mth.randomBetween(this.random, -0.2F, 0.2F);
-            double deltaY = (double)Mth.randomBetween(this.random, 0.3F, 0.7F);
-            double deltaZ = (double)Mth.randomBetween(this.random, -0.2F, 0.2F);
-            ItemEntity itemEntity = new ItemEntity(this.level(), bodyPosition.x(), bodyPosition.y(), bodyPosition.z(), item, deltaX, deltaY, deltaZ);
-            this.level().addFreshEntity(itemEntity);
-            return true;
-         }
       }
+
+      boolean hasLeft = this.hasLeftHorn();
+      boolean hasRight = this.hasRightHorn();
+      if (!hasLeft && !hasRight) {
+         return false;
+      }
+
+      EntityDataAccessor<Boolean> hornToDrop;
+      if (!hasLeft) {
+         hornToDrop = DATA_HAS_RIGHT_HORN;
+      } else if (!hasRight) {
+         hornToDrop = DATA_HAS_LEFT_HORN;
+      } else {
+         hornToDrop = this.random.nextBoolean() ? DATA_HAS_LEFT_HORN : DATA_HAS_RIGHT_HORN;
+      }
+
+      this.entityData.set(hornToDrop, false);
+      Vec3 bodyPosition = this.position();
+      ItemStack item = this.createHorn();
+      double deltaX = Mth.randomBetween(this.random, -0.2F, 0.2F);
+      double deltaY = Mth.randomBetween(this.random, 0.3F, 0.7F);
+      double deltaZ = Mth.randomBetween(this.random, -0.2F, 0.2F);
+      ItemEntity itemEntity = new ItemEntity(this.level(), bodyPosition.x(), bodyPosition.y(), bodyPosition.z(), item, deltaX, deltaY, deltaZ);
+      this.level().addFreshEntity(itemEntity);
+      return true;
    }
 
    public boolean isScreamingGoat() {
@@ -351,7 +350,7 @@ public class Goat extends Animal {
 
    public float getRammingXHeadRot() {
       float maxRammingXHeadRot = this.isBaby() ? 52.5F : 30.0F;
-      return (float)this.lowerHeadTick / 20.0F * maxRammingXHeadRot * (float) (Math.PI / 180.0);
+      return this.lowerHeadTick / 20.0F * maxRammingXHeadRot * (float) (Math.PI / 180.0);
    }
 
    public static boolean checkGoatSpawnRules(

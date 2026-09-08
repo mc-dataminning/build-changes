@@ -56,6 +56,6 @@ public class MushroomCowRenderer extends AgeableMobRenderer<MushroomCow, Mushroo
       this.blockModelResolver.update(state.mushroomModel, state.variant.getBlockState(), BLOCK_DISPLAY_CONTEXT);
    }
 
-   private static record MushroomCowTexture(Identifier adult, Identifier baby) {
+   private record MushroomCowTexture(Identifier adult, Identifier baby) {
    }
 }

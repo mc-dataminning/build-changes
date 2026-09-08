@@ -28,7 +28,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.RedstoneSide;
 import net.minecraft.world.level.redstone.DefaultRedstoneWireEvaluator;
 import net.minecraft.world.level.redstone.ExperimentalRedstoneUtils;
@@ -52,7 +51,7 @@ public class RedstoneWireBlock extends Block {
    );
    private static final int[] COLORS = Util.make(new int[16], list -> {
       for (int i = 0; i <= 15; i++) {
-         float power = (float)i / 15.0F;
+         float power = i / 15.0F;
          float red = power * 0.6F + (power > 0.0F ? 0.4F : 0.3F);
          float green = Mth.clamp(power * power * 0.7F - 0.5F, 0.0F, 1.0F);
          float blue = Mth.clamp(power * power * 0.6F - 0.7F, 0.0F, 1.0F);
@@ -74,7 +73,7 @@ public class RedstoneWireBlock extends Block {
             .setValue(EAST, RedstoneSide.NONE)
             .setValue(SOUTH, RedstoneSide.NONE)
             .setValue(WEST, RedstoneSide.NONE)
-            .setValue(POWER, Integer.valueOf(0))
+            .setValue(POWER, 0)
       );
       this.shapes = this.makeShapes();
       this.crossState = this.defaultBlockState()
@@ -102,7 +101,7 @@ public class RedstoneWireBlock extends Block {
          }
 
          return shape;
-      }, new Property[]{POWER});
+      }, POWER);
    }
 
    @Override
@@ -120,31 +119,31 @@ public class RedstoneWireBlock extends Block {
       state = this.getMissingConnections(level, this.defaultBlockState().setValue(POWER, state.getValue(POWER)), pos);
       if (wasDot && isDot(state)) {
          return state;
-      } else {
-         boolean north = state.getValue(NORTH).isConnected();
-         boolean south = state.getValue(SOUTH).isConnected();
-         boolean east = state.getValue(EAST).isConnected();
-         boolean west = state.getValue(WEST).isConnected();
-         boolean northSouthEmpty = !north && !south;
-         boolean eastWestEmpty = !east && !west;
-         if (!west && northSouthEmpty) {
-            state = state.setValue(WEST, RedstoneSide.SIDE);
-         }
-
-         if (!east && northSouthEmpty) {
-            state = state.setValue(EAST, RedstoneSide.SIDE);
-         }
-
-         if (!north && eastWestEmpty) {
-            state = state.setValue(NORTH, RedstoneSide.SIDE);
-         }
-
-         if (!south && eastWestEmpty) {
-            state = state.setValue(SOUTH, RedstoneSide.SIDE);
-         }
-
-         return state;
       }
+
+      boolean north = state.getValue(NORTH).isConnected();
+      boolean south = state.getValue(SOUTH).isConnected();
+      boolean east = state.getValue(EAST).isConnected();
+      boolean west = state.getValue(WEST).isConnected();
+      boolean northSouthEmpty = !north && !south;
+      boolean eastWestEmpty = !east && !west;
+      if (!west && northSouthEmpty) {
+         state = state.setValue(WEST, RedstoneSide.SIDE);
+      }
+
+      if (!east && northSouthEmpty) {
+         state = state.setValue(EAST, RedstoneSide.SIDE);
+      }
+
+      if (!north && eastWestEmpty) {
+         state = state.setValue(NORTH, RedstoneSide.SIDE);
+      }
+
+      if (!south && eastWestEmpty) {
+         state = state.setValue(SOUTH, RedstoneSide.SIDE);
+      }
+
+      return state;
    }
 
    private BlockState getMissingConnections(final BlockGetter level, BlockState state, final BlockPos pos) {
@@ -173,16 +172,18 @@ public class RedstoneWireBlock extends Block {
    ) {
       if (directionToNeighbour == Direction.DOWN) {
          return !this.canSurviveOn(level, neighbourPos, neighbourState) ? Blocks.AIR.defaultBlockState() : state;
-      } else if (directionToNeighbour == Direction.UP) {
-         return this.getConnectionState(level, state, pos);
-      } else {
-         RedstoneSide sideConnection = this.getConnectingSide(level, pos, directionToNeighbour);
-         return sideConnection.isConnected() == state.getValue(PROPERTY_BY_DIRECTION.get(directionToNeighbour)).isConnected() && !isCross(state)
-            ? state.setValue(PROPERTY_BY_DIRECTION.get(directionToNeighbour), sideConnection)
-            : this.getConnectionState(
-               level, this.crossState.setValue(POWER, state.getValue(POWER)).setValue(PROPERTY_BY_DIRECTION.get(directionToNeighbour), sideConnection), pos
-            );
       }
+
+      if (directionToNeighbour == Direction.UP) {
+         return this.getConnectionState(level, state, pos);
+      }
+
+      RedstoneSide sideConnection = this.getConnectingSide(level, pos, directionToNeighbour);
+      return sideConnection.isConnected() == state.getValue(PROPERTY_BY_DIRECTION.get(directionToNeighbour)).isConnected() && !isCross(state)
+         ? state.setValue(PROPERTY_BY_DIRECTION.get(directionToNeighbour), sideConnection)
+         : this.getConnectionState(
+            level, this.crossState.setValue(POWER, state.getValue(POWER)).setValue(PROPERTY_BY_DIRECTION.get(directionToNeighbour), sideConnection), pos
+         );
    }
 
    private static boolean isCross(final BlockState state) {
@@ -201,7 +202,7 @@ public class RedstoneWireBlock extends Block {
 
    @Override
    protected void updateIndirectNeighbourShapes(
-      final BlockState state, final LevelAccessor level, final BlockPos pos, @Block.UpdateFlags final int updateFlags, final int updateLimit
+      final BlockState state, final LevelAccessor level, final BlockPos pos, final @Block.UpdateFlags int updateFlags, final int updateLimit
    ) {
       BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
 
@@ -264,7 +265,7 @@ public class RedstoneWireBlock extends Block {
       final Level level,
       final BlockPos pos,
       final BlockState state,
-      @Nullable final Orientation orientation,
+      final @Nullable Orientation orientation,
       final boolean shapeUpdateWiresAroundInitialPosition
    ) {
       if (useExperimentalEvaluator(level)) {
@@ -333,7 +334,7 @@ public class RedstoneWireBlock extends Block {
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       if (!level.isClientSide()) {
          if (block != this || !useExperimentalEvaluator(level)) {
@@ -379,7 +380,7 @@ public class RedstoneWireBlock extends Block {
    }
 
    @Override
-   protected boolean shouldRedstoneWireConnectTo(final BlockState state, final BlockGetter level, final BlockPos pos, @Nullable final Direction direction) {
+   protected boolean shouldRedstoneWireConnectTo(final BlockState state, final BlockGetter level, final BlockPos pos, final @Nullable Direction direction) {
       return true;
    }
 
@@ -387,7 +388,7 @@ public class RedstoneWireBlock extends Block {
       return shouldConnectTo(level.getBlockState(pos), level, pos, null);
    }
 
-   protected static boolean shouldConnectTo(final BlockState state, final BlockGetter level, final BlockPos pos, @Nullable final Direction direction) {
+   protected static boolean shouldConnectTo(final BlockState state, final BlockGetter level, final BlockPos pos, final @Nullable Direction direction) {
       return state.shouldRedstoneWireConnectTo(level, pos, direction);
    }
 
@@ -414,10 +415,10 @@ public class RedstoneWireBlock extends Block {
       if (!(random.nextFloat() >= 0.2F * span)) {
          float sideOfBlock = 0.4375F;
          float positionOnLine = from + span * random.nextFloat();
-         double x = 0.5 + (double)(0.4375F * (float)side.getStepX()) + (double)(positionOnLine * (float)along.getStepX());
-         double y = 0.5 + (double)(0.4375F * (float)side.getStepY()) + (double)(positionOnLine * (float)along.getStepY());
-         double z = 0.5 + (double)(0.4375F * (float)side.getStepZ()) + (double)(positionOnLine * (float)along.getStepZ());
-         level.addParticle(new DustParticleOptions(color, 1.0F), (double)pos.getX() + x, (double)pos.getY() + y, (double)pos.getZ() + z, 0.0, 0.0, 0.0);
+         double x = 0.5 + 0.4375F * side.getStepX() + positionOnLine * along.getStepX();
+         double y = 0.5 + 0.4375F * side.getStepY() + positionOnLine * along.getStepY();
+         double z = 0.5 + 0.4375F * side.getStepZ() + positionOnLine * along.getStepZ();
+         level.addParticle(new DustParticleOptions(color, 1.0F), pos.getX() + x, pos.getY() + y, pos.getZ() + z, 0.0, 0.0, 0.0);
       }
    }
 
@@ -445,17 +446,17 @@ public class RedstoneWireBlock extends Block {
    protected BlockState rotate(final BlockState state, final Rotation rotation) {
       return switch (rotation) {
          case CLOCKWISE_180 -> (BlockState)state.setValue(NORTH, state.getValue(SOUTH))
-         .setValue(EAST, state.getValue(WEST))
-         .setValue(SOUTH, state.getValue(NORTH))
-         .setValue(WEST, state.getValue(EAST));
+            .setValue(EAST, state.getValue(WEST))
+            .setValue(SOUTH, state.getValue(NORTH))
+            .setValue(WEST, state.getValue(EAST));
          case COUNTERCLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(EAST))
-         .setValue(EAST, state.getValue(SOUTH))
-         .setValue(SOUTH, state.getValue(WEST))
-         .setValue(WEST, state.getValue(NORTH));
+            .setValue(EAST, state.getValue(SOUTH))
+            .setValue(SOUTH, state.getValue(WEST))
+            .setValue(WEST, state.getValue(NORTH));
          case CLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(WEST))
-         .setValue(EAST, state.getValue(NORTH))
-         .setValue(SOUTH, state.getValue(EAST))
-         .setValue(WEST, state.getValue(SOUTH));
+            .setValue(EAST, state.getValue(NORTH))
+            .setValue(SOUTH, state.getValue(EAST))
+            .setValue(WEST, state.getValue(SOUTH));
          default -> state;
       };
    }
@@ -483,20 +484,20 @@ public class RedstoneWireBlock extends Block {
    ) {
       if (!player.getAbilities().mayBuild) {
          return InteractionResult.PASS;
-      } else {
-         if (isCross(state) || isDot(state)) {
-            BlockState newState = isCross(state) ? this.defaultBlockState() : this.crossState;
-            newState = newState.setValue(POWER, state.getValue(POWER));
-            newState = this.getConnectionState(level, newState, pos);
-            if (newState != state) {
-               level.setBlockAndUpdate(pos, newState);
-               this.updatesOnShapeChange(level, pos, state, newState);
-               return InteractionResult.SUCCESS;
-            }
-         }
-
-         return InteractionResult.PASS;
       }
+
+      if (isCross(state) || isDot(state)) {
+         BlockState newState = isCross(state) ? this.defaultBlockState() : this.crossState;
+         newState = newState.setValue(POWER, state.getValue(POWER));
+         newState = this.getConnectionState(level, newState, pos);
+         if (newState != state) {
+            level.setBlockAndUpdate(pos, newState);
+            this.updatesOnShapeChange(level, pos, state, newState);
+            return InteractionResult.SUCCESS;
+         }
+      }
+
+      return InteractionResult.PASS;
    }
 
    private void updatesOnShapeChange(final Level level, final BlockPos pos, final BlockState oldState, final BlockState newState) {

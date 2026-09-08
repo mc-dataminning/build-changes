@@ -12,11 +12,11 @@ public record CollectionPredicate<T, P extends Predicate<T>>(
    public static <T, P extends Predicate<T>> Codec<CollectionPredicate<T, P>> codec(final Codec<P> elementCodec) {
       return RecordCodecBuilder.create(
          i -> i.group(
-                  CollectionContentsPredicate.codec(elementCodec).optionalFieldOf("contains").forGetter(CollectionPredicate::contains),
-                  CollectionCountsPredicate.codec(elementCodec).optionalFieldOf("count").forGetter(CollectionPredicate::counts),
-                  MinMaxBounds.Ints.CODEC.optionalFieldOf("size").forGetter(CollectionPredicate::size)
-               )
-               .apply(i, CollectionPredicate::new)
+               CollectionContentsPredicate.codec(elementCodec).optionalFieldOf("contains").forGetter(CollectionPredicate::contains),
+               CollectionCountsPredicate.codec(elementCodec).optionalFieldOf("count").forGetter(CollectionPredicate::counts),
+               MinMaxBounds.Ints.CODEC.optionalFieldOf("size").forGetter(CollectionPredicate::size)
+            )
+            .apply(i, CollectionPredicate::new)
       );
    }
 

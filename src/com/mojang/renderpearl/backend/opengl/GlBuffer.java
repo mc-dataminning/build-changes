@@ -6,7 +6,6 @@ import com.mojang.renderpearl.api.buffers.GpuBuffer;
 import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
 import com.mojang.renderpearl.backend.common.BaseGpuBuffer;
 import java.nio.ByteBuffer;
-import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 import org.lwjgl.system.MemoryUtil;
 
@@ -16,7 +15,7 @@ public abstract class GlBuffer extends BaseGpuBuffer {
    protected final boolean canPersistentMap;
    protected int mappingRefCount = 0;
 
-   protected GlBuffer(@GpuBuffer.Usage final int usage, final long size, final int handle, final boolean canPersistentMap) {
+   protected GlBuffer(final @GpuBuffer.Usage int usage, final long size, final int handle, final boolean canPersistentMap) {
       super(usage, size);
       this.handle = handle;
       this.canPersistentMap = canPersistentMap;
@@ -39,20 +38,19 @@ public abstract class GlBuffer extends BaseGpuBuffer {
       private boolean closed;
       private final DirectStateAccess dsa;
       protected final int mappingFlags;
-      @Nullable
-      protected ByteBuffer mappedBuffer;
+      protected @Nullable ByteBuffer mappedBuffer;
 
       protected Direct(
          final GlHeuristics heuristics,
          final DirectStateAccess dsa,
-         @GpuBuffer.Usage final int usage,
+         final @GpuBuffer.Usage int usage,
          final long size,
          final int handle,
          final boolean canPersistentMap
       ) {
          this.dsa = dsa;
          int clampedSize = (int)Math.min(size, 2147483647L);
-         MEMORY_POOL.malloc((long)handle, clampedSize);
+         MEMORY_POOL.malloc(handle, clampedSize);
          int mappingFlags = 0;
          if ((usage & 1) != 0) {
             mappingFlags |= 1;
@@ -91,10 +89,10 @@ public abstract class GlBuffer extends BaseGpuBuffer {
 
             if (this.mappingRefCount != 0) {
                throw new IllegalStateException("Attempt to close a mapped buffer");
-            } else {
-               GlStateManager._glDeleteBuffers(this.handle());
-               MEMORY_POOL.free((long)this.handle());
             }
+
+            GlStateManager._glDeleteBuffers(this.handle());
+            MEMORY_POOL.free(this.handle());
          }
       }
 
@@ -102,13 +100,21 @@ public abstract class GlBuffer extends BaseGpuBuffer {
       public GpuBufferSlice.MappedView map(final long offset, final long length, final boolean read, final boolean write) {
          if (this.isClosed()) {
             throw new IllegalStateException("Buffer already closed");
-         } else if (!read && !write) {
+         }
+
+         if (!read && !write) {
             throw new IllegalArgumentException("At least read or write must be true");
-         } else if (read && (this.usage() & 1) == 0) {
+         }
+
+         if (read && (this.usage() & 1) == 0) {
             throw new IllegalStateException("Buffer is not readable");
-         } else if (write && (this.usage() & 2) == 0) {
+         }
+
+         if (write && (this.usage() & 2) == 0) {
             throw new IllegalStateException("Buffer is not writable");
-         } else if (offset + length > this.size()) {
+         }
+
+         if (offset + length > this.size()) {
             throw new IllegalArgumentException(
                "Cannot map more data than this buffer can hold (attempting to map "
                   + length
@@ -118,9 +124,13 @@ public abstract class GlBuffer extends BaseGpuBuffer {
                   + this.size()
                   + " size buffer)"
             );
-         } else if (offset > 2147483647L || length > 2147483647L) {
+         }
+
+         if (offset > 2147483647L || length > 2147483647L) {
             throw new IllegalArgumentException("Mapping buffers larger than 2GB is not supported");
-         } else if (offset >= 0L && length >= 0L) {
+         }
+
+         if (offset >= 0L && length >= 0L) {
             this.mappingRefCount++;
             if (this.mappedBuffer == null) {
                GlStateManager.clearGlErrors();
@@ -131,12 +141,7 @@ public abstract class GlBuffer extends BaseGpuBuffer {
             }
 
             return new GpuBufferSlice.MappedView(this.slice(offset, length), MemoryUtil.memSlice(this.mappedBuffer, (int)offset, (int)length), new Runnable() {
-               private boolean closed;
-
-               {
-                  Objects.requireNonNull(Direct.this);
-                  this.closed = false;
-               }
+               private boolean closed = false;
 
                @Override
                public void run() {

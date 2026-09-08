@@ -43,7 +43,7 @@ public class VillagerMakeLove extends Behavior<Villager> {
       level.broadcastEntityEvent(breedTarget, (byte)18);
       level.broadcastEntityEvent(body, (byte)18);
       int duration = 275 + body.getRandom().nextInt(50);
-      this.birthTimestamp = timestamp + (long)duration;
+      this.birthTimestamp = timestamp + duration;
    }
 
    protected void tick(final ServerLevel level, final Villager body, final long timestamp) {
@@ -102,15 +102,15 @@ public class VillagerMakeLove extends Behavior<Villager> {
       Villager child = source.getBreedOffspring(level, target);
       if (child == null) {
          return Optional.empty();
-      } else {
-         source.setAge(6000);
-         target.setAge(6000);
-         child.setAge(-24000);
-         child.snapTo(source.getX(), source.getY(), source.getZ(), 0.0F, 0.0F);
-         level.addFreshEntityWithPassengers(child);
-         level.broadcastEntityEvent(child, (byte)12);
-         return Optional.of(child);
       }
+
+      source.setAge(6000);
+      target.setAge(6000);
+      child.setAge(-24000);
+      child.snapTo(source.getX(), source.getY(), source.getZ(), 0.0F, 0.0F);
+      level.addFreshEntityWithPassengers(child);
+      level.broadcastEntityEvent(child, (byte)12);
+      return Optional.of(child);
    }
 
    private void giveBedToChild(final ServerLevel level, final Villager child, final BlockPos bedPos) {

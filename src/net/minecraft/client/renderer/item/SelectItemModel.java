@@ -36,8 +36,8 @@ public class SelectItemModel<T> implements ItemModel {
       final ItemStack item,
       final ItemModelResolver resolver,
       final ItemDisplayContext displayContext,
-      @Nullable final ClientLevel level,
-      @Nullable final ItemOwner owner,
+      final @Nullable ClientLevel level,
+      final @Nullable ItemOwner owner,
       final int seed
    ) {
       output.appendModelIdentityElement(this);
@@ -50,28 +50,27 @@ public class SelectItemModel<T> implements ItemModel {
       ItemModel get(@Nullable T value, @Nullable ClientLevel context);
    }
 
-   public static record SwitchCase<T>(List<T> values, ItemModel.Unbaked model) {
+   public record SwitchCase<T>(List<T> values, ItemModel.Unbaked model) {
       public static <T> Codec<SelectItemModel.SwitchCase<T>> codec(final Codec<T> valueCodec) {
          return RecordCodecBuilder.create(
             i -> i.group(
-                     ExtraCodecs.nonEmptyList(ExtraCodecs.compactListCodec(valueCodec)).fieldOf("when").forGetter(SelectItemModel.SwitchCase::values),
-                     ItemModels.CODEC.fieldOf("model").forGetter(SelectItemModel.SwitchCase::model)
-                  )
-                  .apply(i, SelectItemModel.SwitchCase::new)
+                  ExtraCodecs.nonEmptyList(ExtraCodecs.compactListCodec(valueCodec)).fieldOf("when").forGetter(SelectItemModel.SwitchCase::values),
+                  ItemModels.CODEC.fieldOf("model").forGetter(SelectItemModel.SwitchCase::model)
+               )
+               .apply(i, SelectItemModel.SwitchCase::new)
          );
       }
    }
 
-   public static record Unbaked(
-      Optional<Transformation> transformation, SelectItemModel.UnbakedSwitch<?, ?> unbakedSwitch, Optional<ItemModel.Unbaked> fallback
-   ) implements ItemModel.Unbaked {
+   public record Unbaked(Optional<Transformation> transformation, SelectItemModel.UnbakedSwitch<?, ?> unbakedSwitch, Optional<ItemModel.Unbaked> fallback)
+      implements ItemModel.Unbaked {
       public static final MapCodec<SelectItemModel.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(SelectItemModel.Unbaked::transformation),
-                  SelectItemModel.UnbakedSwitch.MAP_CODEC.forGetter(SelectItemModel.Unbaked::unbakedSwitch),
-                  ItemModels.CODEC.optionalFieldOf("fallback").forGetter(SelectItemModel.Unbaked::fallback)
-               )
-               .apply(i, SelectItemModel.Unbaked::new)
+               Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(SelectItemModel.Unbaked::transformation),
+               SelectItemModel.UnbakedSwitch.MAP_CODEC.forGetter(SelectItemModel.Unbaked::unbakedSwitch),
+               ItemModels.CODEC.optionalFieldOf("fallback").forGetter(SelectItemModel.Unbaked::fallback)
+            )
+            .apply(i, SelectItemModel.Unbaked::new)
       );
 
       @Override
@@ -93,7 +92,7 @@ public class SelectItemModel<T> implements ItemModel {
       }
    }
 
-   public static record UnbakedSwitch<P extends SelectItemModelProperty<T>, T>(P property, List<SelectItemModel.SwitchCase<T>> cases) {
+   public record UnbakedSwitch<P extends SelectItemModelProperty<T>, T>(P property, List<SelectItemModel.SwitchCase<T>> cases) {
       public static final MapCodec<SelectItemModel.UnbakedSwitch<?, ?>> MAP_CODEC = SelectItemModelProperties.CODEC
          .dispatchMap("property", unbaked -> unbaked.property().type(), SelectItemModelProperty.Type::switchCodec);
 
@@ -114,31 +113,31 @@ public class SelectItemModel<T> implements ItemModel {
       }
 
       private SelectItemModel.ModelSelector<T> createModelGetter(
-         final Object2ObjectMap<T, ItemModel> originalModels, @Nullable final RegistryContextSwapper registrySwapper
+         final Object2ObjectMap<T, ItemModel> originalModels, final @Nullable RegistryContextSwapper registrySwapper
       ) {
          if (registrySwapper == null) {
             return (value, var2) -> (ItemModel)originalModels.get(value);
-         } else {
-            ItemModel defaultModel = (ItemModel)originalModels.defaultReturnValue();
-            CacheSlot<ClientLevel, Object2ObjectMap<T, ItemModel>> remappedModelCache = new CacheSlot<>(
-               clientLevel -> {
-                  Object2ObjectMap<T, ItemModel> remappedModels = new Object2ObjectOpenHashMap(originalModels.size());
-                  remappedModels.defaultReturnValue(defaultModel);
-                  originalModels.forEach(
-                     (value, model) -> registrySwapper.swapTo(this.property.valueCodec(), value, clientLevel.registryAccess())
-                           .ifSuccess(remappedValue -> remappedModels.put(remappedValue, model))
-                  );
-                  return remappedModels;
-               }
-            );
-            return (value, context) -> {
-               if (context == null) {
-                  return (ItemModel)originalModels.get(value);
-               } else {
-                  return value == null ? defaultModel : (ItemModel)remappedModelCache.compute(context).get(value);
-               }
-            };
          }
+
+         ItemModel defaultModel = (ItemModel)originalModels.defaultReturnValue();
+         CacheSlot<ClientLevel, Object2ObjectMap<T, ItemModel>> remappedModelCache = new CacheSlot<>(
+            clientLevel -> {
+               Object2ObjectMap<T, ItemModel> remappedModels = new Object2ObjectOpenHashMap(originalModels.size());
+               remappedModels.defaultReturnValue(defaultModel);
+               originalModels.forEach(
+                  (value, model) -> registrySwapper.swapTo(this.property.valueCodec(), value, clientLevel.registryAccess())
+                     .ifSuccess(remappedValue -> remappedModels.put(remappedValue, model))
+               );
+               return remappedModels;
+            }
+         );
+         return (value, context) -> {
+            if (context == null) {
+               return (ItemModel)originalModels.get(value);
+            } else {
+               return value == null ? defaultModel : (ItemModel)remappedModelCache.compute(context).get(value);
+            }
+         };
       }
 
       public void resolveDependencies(final ResolvableModel.Resolver resolver) {

@@ -15,11 +15,11 @@ public interface ConditionalProvider<Value extends Validatable> extends Validata
    ) {
       return RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  LootItemCondition.CODEC.fieldOf("condition").forGetter(ConditionalProvider::condition),
-                  valueCodec.fieldOf("on_true").forGetter(ConditionalProvider::onTrue),
-                  valueCodec.optionalFieldOf("on_false", defaultIfFalse).forGetter(ConditionalProvider::onFalse)
-               )
-               .apply(i, factory::create)
+               LootItemCondition.CODEC.fieldOf("condition").forGetter(ConditionalProvider::condition),
+               valueCodec.fieldOf("on_true").forGetter(ConditionalProvider::onTrue),
+               valueCodec.optionalFieldOf("on_false", defaultIfFalse).forGetter(ConditionalProvider::onFalse)
+            )
+            .apply(i, factory::create)
       );
    }
 
@@ -41,7 +41,7 @@ public interface ConditionalProvider<Value extends Validatable> extends Validata
    }
 
    @FunctionalInterface
-   public interface Factory<Value extends Validatable, Self extends ConditionalProvider<Value>> {
+   interface Factory<Value extends Validatable, Self extends ConditionalProvider<Value>> {
       Self create(Holder<LootItemCondition> condition, Holder<Value> onTrue, Holder<Value> onFalse);
    }
 }

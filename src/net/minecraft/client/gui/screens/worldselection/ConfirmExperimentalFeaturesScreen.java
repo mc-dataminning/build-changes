@@ -2,7 +2,6 @@ package net.minecraft.client.gui.screens.worldselection;
 
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.util.Collection;
-import java.util.Objects;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ActiveTextCollector;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -23,6 +22,7 @@ import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.network.chat.Style;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.world.flag.FeatureFlags;
+import org.jspecify.annotations.Nullable;
 
 public class ConfirmExperimentalFeaturesScreen extends Screen {
    private static final Component TITLE = Component.translatable("selectWorld.experimental.title");
@@ -77,13 +77,11 @@ public class ConfirmExperimentalFeaturesScreen extends Screen {
 
    private class DetailsScreen extends Screen {
       private static final Component TITLE = Component.translatable("selectWorld.experimental.details.title");
-      private final HeaderAndFooterLayout layout;
-      private ConfirmExperimentalFeaturesScreen.DetailsScreen.PackList list;
+      private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
+      private ConfirmExperimentalFeaturesScreen.DetailsScreen.@Nullable PackList list;
 
       private DetailsScreen() {
-         Objects.requireNonNull(ConfirmExperimentalFeaturesScreen.this);
          super(TITLE);
-         this.layout = new HeaderAndFooterLayout(this);
       }
 
       @Override
@@ -112,7 +110,6 @@ public class ConfirmExperimentalFeaturesScreen extends Screen {
 
       private class PackList extends ObjectSelectionList<ConfirmExperimentalFeaturesScreen.DetailsScreen.PackListEntry> {
          public PackList(final Minecraft minecraft, final Collection<Pack> selectedPacks) {
-            Objects.requireNonNull(DetailsScreen.this);
             super(minecraft, DetailsScreen.this.width, DetailsScreen.this.layout.getContentHeight(), DetailsScreen.this.layout.getHeaderHeight(), (9 + 2) * 3);
 
             for (Pack pack : selectedPacks) {
@@ -139,8 +136,6 @@ public class ConfirmExperimentalFeaturesScreen extends Screen {
          private final MultiLineLabel splitMessage;
 
          private PackListEntry(final Component packId, final Component message, final MultiLineLabel splitMessage) {
-            Objects.requireNonNull(DetailsScreen.this);
-            super();
             this.packId = packId;
             this.message = message;
             this.splitMessage = splitMessage;

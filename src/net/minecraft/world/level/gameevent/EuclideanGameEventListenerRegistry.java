@@ -116,11 +116,11 @@ public class EuclideanGameEventListenerRegistry implements GameEventListenerRegi
       Optional<Vec3> position = listener.getListenerSource().getPosition(level);
       if (position.isEmpty()) {
          return Optional.empty();
-      } else {
-         double distanceFromOrigin = BlockPos.containing(position.get()).distSqr(BlockPos.containing(sourcePosition));
-         int radiusSqr = listener.getListenerRadius() * listener.getListenerRadius();
-         return distanceFromOrigin > (double)radiusSqr ? Optional.empty() : position;
       }
+
+      double distanceFromOrigin = BlockPos.containing(position.get()).distSqr(BlockPos.containing(sourcePosition));
+      int radiusSqr = listener.getListenerRadius() * listener.getListenerRadius();
+      return distanceFromOrigin > radiusSqr ? Optional.empty() : position;
    }
 
    @FunctionalInterface

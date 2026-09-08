@@ -16,7 +16,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 public record SequenceFeature(HolderSet<PlacedFeature> features) implements Feature {
    public static final MapCodec<SequenceFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(ExtraCodecs.nonEmptyHolderSet(PlacedFeature.LIST_CODEC).fieldOf("features").forGetter(SequenceFeature::features))
-            .apply(i, SequenceFeature::new)
+         .apply(i, SequenceFeature::new)
    );
 
    @Override

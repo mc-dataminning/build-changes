@@ -58,10 +58,10 @@ public class PortalShape {
       Optional<PortalShape> firstAxis = Optional.of(findAnyShape(level, pos, preferredAxis)).filter(isValid);
       if (firstAxis.isPresent()) {
          return firstAxis;
-      } else {
-         Direction.Axis otherAxis = preferredAxis == Direction.Axis.X ? Direction.Axis.Z : Direction.Axis.X;
-         return Optional.of(findAnyShape(level, pos, otherAxis)).filter(isValid);
       }
+
+      Direction.Axis otherAxis = preferredAxis == Direction.Axis.X ? Direction.Axis.Z : Direction.Axis.X;
+      return Optional.of(findAnyShape(level, pos, otherAxis)).filter(isValid);
    }
 
    public static PortalShape findAnyShape(final BlockGetter level, final BlockPos pos, final Direction.Axis axis) {
@@ -69,20 +69,19 @@ public class PortalShape {
       BlockPos bottomLeft = calculateBottomLeft(level, rightDir, pos);
       if (bottomLeft == null) {
          return new PortalShape(axis, 0, rightDir, pos, 0, 0);
-      } else {
-         int width = calculateWidth(level, bottomLeft, rightDir);
-         if (width == 0) {
-            return new PortalShape(axis, 0, rightDir, bottomLeft, 0, 0);
-         } else {
-            MutableInt portalBlockCountOutput = new MutableInt();
-            int height = calculateHeight(level, bottomLeft, rightDir, width, portalBlockCountOutput);
-            return new PortalShape(axis, portalBlockCountOutput.intValue(), rightDir, bottomLeft, width, height);
-         }
       }
+
+      int width = calculateWidth(level, bottomLeft, rightDir);
+      if (width == 0) {
+         return new PortalShape(axis, 0, rightDir, bottomLeft, 0, 0);
+      }
+
+      MutableInt portalBlockCountOutput = new MutableInt();
+      int height = calculateHeight(level, bottomLeft, rightDir, width, portalBlockCountOutput);
+      return new PortalShape(axis, portalBlockCountOutput.intValue(), rightDir, bottomLeft, width, height);
    }
 
-   @Nullable
-   private static BlockPos calculateBottomLeft(final BlockGetter level, final Direction rightDir, BlockPos pos) {
+   private static @Nullable BlockPos calculateBottomLeft(final BlockGetter level, final Direction rightDir, BlockPos pos) {
       int minY = Math.max(level.getMinY(), pos.getY() - 21);
 
       while (pos.getY() > minY && isEmpty(level.getBlockState(pos.below()))) {
@@ -198,12 +197,12 @@ public class PortalShape {
    public static Vec3 getRelativePosition(
       final BlockUtil.FoundRectangle largestRectangleAround, final Direction.Axis axis, final Vec3 position, final EntityDimensions dimensions
    ) {
-      double width = (double)largestRectangleAround.axis1Size - (double)dimensions.width();
-      double height = (double)largestRectangleAround.axis2Size - (double)dimensions.height();
+      double width = (double)largestRectangleAround.axis1Size - dimensions.width();
+      double height = (double)largestRectangleAround.axis2Size - dimensions.height();
       BlockPos bottomMin = largestRectangleAround.minCorner;
       double relativeRight;
       if (width > 0.0) {
-         double bottomStart = (double)bottomMin.get(axis) + (double)dimensions.width() / 2.0;
+         double bottomStart = bottomMin.get(axis) + dimensions.width() / 2.0;
          relativeRight = Mth.clamp(Mth.inverseLerp(position.get(axis) - bottomStart, 0.0, width), 0.0, 1.0);
       } else {
          relativeRight = 0.5;
@@ -212,25 +211,25 @@ public class PortalShape {
       double relativeUp;
       if (height > 0.0) {
          Direction.Axis heightAxis = Direction.Axis.Y;
-         relativeUp = Mth.clamp(Mth.inverseLerp(position.get(heightAxis) - (double)bottomMin.get(heightAxis), 0.0, height), 0.0, 1.0);
+         relativeUp = Mth.clamp(Mth.inverseLerp(position.get(heightAxis) - bottomMin.get(heightAxis), 0.0, height), 0.0, 1.0);
       } else {
          relativeUp = 0.0;
       }
 
       Direction.Axis forwardAxis = axis == Direction.Axis.X ? Direction.Axis.Z : Direction.Axis.X;
-      double relativeForward = position.get(forwardAxis) - ((double)bottomMin.get(forwardAxis) + 0.5);
+      double relativeForward = position.get(forwardAxis) - (bottomMin.get(forwardAxis) + 0.5);
       return new Vec3(relativeRight, relativeUp, relativeForward);
    }
 
    public static Vec3 findCollisionFreePosition(final Vec3 bottomCenter, final ServerLevel serverLevel, final Entity entity, final EntityDimensions dimensions) {
       if (!(dimensions.width() > 4.0F) && !(dimensions.height() > 4.0F)) {
-         double halfHeight = (double)dimensions.height() / 2.0;
+         double halfHeight = dimensions.height() / 2.0;
          Vec3 center = bottomCenter.add(0.0, halfHeight, 0.0);
          VoxelShape allowedCenters = Shapes.create(
-            AABB.ofSize(center, (double)dimensions.width(), 0.0, (double)dimensions.width()).expandTowards(0.0, 1.0, 0.0).inflate(1.0E-6)
+            AABB.ofSize(center, dimensions.width(), 0.0, dimensions.width()).expandTowards(0.0, 1.0, 0.0).inflate(1.0E-6)
          );
          Optional<Vec3> collisionFreePosition = serverLevel.findFreePosition(
-            entity, allowedCenters, center, (double)dimensions.width(), (double)dimensions.height(), (double)dimensions.width()
+            entity, allowedCenters, center, dimensions.width(), dimensions.height(), dimensions.width()
          );
          Optional<Vec3> collisionFreeBottomCenter = collisionFreePosition.map(vec -> vec.subtract(0.0, halfHeight, 0.0));
          return collisionFreeBottomCenter.orElse(bottomCenter);

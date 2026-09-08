@@ -5,9 +5,8 @@ import org.jspecify.annotations.Nullable;
 public interface EntityTypeTest<B, T extends B> {
    static <B, T extends B> EntityTypeTest<B, T> forClass(final Class<T> cls) {
       return new EntityTypeTest<B, T>() {
-         @Nullable
          @Override
-         public T tryCast(final B entity) {
+         public @Nullable T tryCast(final B entity) {
             return (T)(cls.isInstance(entity) ? entity : null);
          }
 
@@ -20,9 +19,8 @@ public interface EntityTypeTest<B, T extends B> {
 
    static <B, T extends B> EntityTypeTest<B, T> forExactClass(final Class<T> cls) {
       return new EntityTypeTest<B, T>() {
-         @Nullable
          @Override
-         public T tryCast(final B entity) {
+         public @Nullable T tryCast(final B entity) {
             return (T)(cls.equals(entity.getClass()) ? entity : null);
          }
 
@@ -33,8 +31,7 @@ public interface EntityTypeTest<B, T extends B> {
       };
    }
 
-   @Nullable
-   T tryCast(B entity);
+   @Nullable T tryCast(B entity);
 
    Class<? extends B> getBaseClass();
 }

@@ -13,10 +13,8 @@ public class LevelLightEngine implements LightEventListener {
    public static final int LIGHT_SECTION_PADDING = 1;
    public static final LevelLightEngine EMPTY = new LevelLightEngine();
    protected final LevelHeightAccessor levelHeightAccessor;
-   @Nullable
-   private final LightEngine<?, ?> blockEngine;
-   @Nullable
-   private final LightEngine<?, ?> skyEngine;
+   private final @Nullable LightEngine<?, ?> blockEngine;
+   private final @Nullable LightEngine<?, ?> skyEngine;
 
    public LevelLightEngine(final LightChunkGetter chunkSource, final boolean hasBlockLight, final boolean hasSkyLight) {
       this.levelHeightAccessor = chunkSource.getLevel();
@@ -95,9 +93,9 @@ public class LevelLightEngine implements LightEventListener {
 
    public LayerLightEventListener getLayerListener(final LightLayer layer) {
       if (layer == LightLayer.BLOCK) {
-         return (LayerLightEventListener)(this.blockEngine == null ? LayerLightEventListener.DummyLightLayerEventListener.INSTANCE : this.blockEngine);
+         return this.blockEngine == null ? LayerLightEventListener.DummyLightLayerEventListener.INSTANCE : this.blockEngine;
       } else {
-         return (LayerLightEventListener)(this.skyEngine == null ? LayerLightEventListener.DummyLightLayerEventListener.INSTANCE : this.skyEngine);
+         return this.skyEngine == null ? LayerLightEventListener.DummyLightLayerEventListener.INSTANCE : this.skyEngine;
       }
    }
 
@@ -125,7 +123,7 @@ public class LevelLightEngine implements LightEventListener {
       return LayerLightSectionStorage.SectionType.EMPTY;
    }
 
-   public void queueSectionData(final LightLayer layer, final SectionPos pos, @Nullable final DataLayer data) {
+   public void queueSectionData(final LightLayer layer, final SectionPos pos, final @Nullable DataLayer data) {
       if (layer == LightLayer.BLOCK) {
          if (this.blockEngine != null) {
             this.blockEngine.queueSectionData(pos.asLong(), data);

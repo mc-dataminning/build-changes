@@ -20,7 +20,7 @@ public class RateKickingConnection extends Connection {
    protected void tickSecond() {
       super.tickSecond();
       float averageReceivedPackets = this.getAverageReceivedPackets();
-      if (averageReceivedPackets > (float)this.rateLimitPacketsPerSecond) {
+      if (averageReceivedPackets > this.rateLimitPacketsPerSecond) {
          LOGGER.warn("Player exceeded rate-limit (sent {} packets per second)", averageReceivedPackets);
          this.send(new ClientboundDisconnectPacket(EXCEED_REASON), PacketSendListener.thenRun(() -> this.disconnect(EXCEED_REASON)));
          this.setReadOnly();

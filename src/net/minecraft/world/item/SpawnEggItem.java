@@ -87,7 +87,7 @@ public class SpawnEggItem extends Item {
 
    private static InteractionResult spawnMob(
       final EntityType<?> type,
-      @Nullable final LivingEntity user,
+      final @Nullable LivingEntity user,
       final ItemStack itemStack,
       final ServerLevel level,
       final BlockPos spawnPos,
@@ -109,27 +109,31 @@ public class SpawnEggItem extends Item {
       BlockHitResult hitResult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.SOURCE_ONLY);
       if (hitResult.getType() != HitResult.Type.BLOCK) {
          return InteractionResult.PASS;
-      } else {
-         EntityType<?> type = getType(itemStack);
-         if (type == null || !type.canSpawn(level)) {
-            return InteractionResult.FAIL;
-         } else if (level instanceof ServerLevel serverLevel) {
-            BlockPos pos = hitResult.getBlockPos();
-            if (!(level.getBlockState(pos).getBlock() instanceof LiquidBlock)) {
-               return InteractionResult.PASS;
-            } else if (level.mayInteract(player, pos) && player.mayUseItemAt(pos, hitResult.getDirection(), itemStack)) {
-               InteractionResult result = spawnMob(type, player, itemStack, serverLevel, pos, false, false);
-               if (result == InteractionResult.SUCCESS) {
-                  player.awardStat(Stats.ITEM_USED.get(this));
-               }
+      }
 
-               return result;
-            } else {
-               return InteractionResult.FAIL;
-            }
-         } else {
-            return InteractionResult.SUCCESS;
+      EntityType<?> type = getType(itemStack);
+      if (type == null || !type.canSpawn(level)) {
+         return InteractionResult.FAIL;
+      }
+
+      if (level instanceof ServerLevel serverLevel) {
+         BlockPos pos = hitResult.getBlockPos();
+         if (!(level.getBlockState(pos).getBlock() instanceof LiquidBlock)) {
+            return InteractionResult.PASS;
          }
+
+         if (level.mayInteract(player, pos) && player.mayUseItemAt(pos, hitResult.getDirection(), itemStack)) {
+            InteractionResult result = spawnMob(type, player, itemStack, serverLevel, pos, false, false);
+            if (result == InteractionResult.SUCCESS) {
+               player.awardStat(Stats.ITEM_USED.get(this));
+            }
+
+            return result;
+         } else {
+            return InteractionResult.FAIL;
+         }
+      } else {
+         return InteractionResult.SUCCESS;
       }
    }
 
@@ -141,8 +145,7 @@ public class SpawnEggItem extends Item {
       return BuiltInRegistries.ITEM.componentLookup().findMatching(DataComponents.ENTITY_DATA, c -> c.type() == type).findAny();
    }
 
-   @Nullable
-   public static EntityType<?> getType(final ItemStack itemStack) {
+   public static @Nullable EntityType<?> getType(final ItemStack itemStack) {
       TypedEntityData<EntityType<?>> entityData = itemStack.get(DataComponents.ENTITY_DATA);
       return entityData != null ? entityData.type() : null;
    }
@@ -152,33 +155,33 @@ public class SpawnEggItem extends Item {
    ) {
       if (!spawnsEntity(spawnEggStack, type)) {
          return Optional.empty();
-      } else {
-         Mob offspring;
-         if (parent instanceof AgeableMob ageableMob) {
-            offspring = ageableMob.getBreedOffspring(level, ageableMob);
-         } else {
-            offspring = type.create(level, EntitySpawnReason.SPAWN_ITEM_USE);
-         }
-
-         if (offspring == null) {
-            return Optional.empty();
-         } else {
-            offspring.setBaby(true);
-            if (!offspring.isBaby()) {
-               return Optional.empty();
-            } else {
-               offspring.snapTo(pos.x(), pos.y(), pos.z(), 0.0F, 0.0F);
-               offspring.applyComponentsFromItemStack(spawnEggStack);
-               level.addFreshEntityWithPassengers(offspring);
-               spawnEggStack.consume(1, player);
-               return Optional.of(offspring);
-            }
-         }
       }
+
+      Mob offspring;
+      if (parent instanceof AgeableMob ageableMob) {
+         offspring = ageableMob.getBreedOffspring(level, ageableMob);
+      } else {
+         offspring = type.create(level, EntitySpawnReason.SPAWN_ITEM_USE);
+      }
+
+      if (offspring == null) {
+         return Optional.empty();
+      }
+
+      offspring.setBaby(true);
+      if (!offspring.isBaby()) {
+         return Optional.empty();
+      }
+
+      offspring.snapTo(pos.x(), pos.y(), pos.z(), 0.0F, 0.0F);
+      offspring.applyComponentsFromItemStack(spawnEggStack);
+      level.addFreshEntityWithPassengers(offspring);
+      spawnEggStack.consume(1, player);
+      return Optional.of(offspring);
    }
 
    @Override
-   public boolean shouldPrintOpWarning(final ItemStack stack, @Nullable final Player player) {
+   public boolean shouldPrintOpWarning(final ItemStack stack, final @Nullable Player player) {
       if (player != null && player.permissions().hasPermission(Permissions.COMMANDS_GAMEMASTER)) {
          TypedEntityData<EntityType<?>> entityData = stack.get(DataComponents.ENTITY_DATA);
          if (entityData != null) {

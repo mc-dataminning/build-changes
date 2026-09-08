@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName;
 import org.jspecify.annotations.Nullable;
 
 public record InviteCodeRequestDto(
-   @Nullable @SerializedName("linkId") String code,
+   @SerializedName("linkId") @Nullable String code,
    @SerializedName("realmId") long realmId,
    @SerializedName("enabled") boolean enabled,
-   @Nullable @SerializedName("expirationDate") Long expirationDate
+   @SerializedName("expirationDate") @Nullable Long expirationDate
 ) implements ReflectionBasedSerialization {
 }

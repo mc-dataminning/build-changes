@@ -13,7 +13,7 @@ public class StatsCounter {
    }
 
    public void increment(final Player player, final Stat<?> stat, final int count) {
-      int result = (int)Math.min((long)this.getValue(stat) + (long)count, 2147483647L);
+      int result = (int)Math.min((long)this.getValue(stat) + count, 2147483647L);
       this.setValue(player, stat, result);
    }
 

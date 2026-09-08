@@ -15,7 +15,7 @@ public class RailBlock extends BaseRailBlock {
 
    protected RailBlock(final BlockBehaviour.Properties properties) {
       super(false, properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(SHAPE, RailShape.NORTH_SOUTH).setValue(WATERLOGGED, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(SHAPE, RailShape.NORTH_SOUTH).setValue(WATERLOGGED, false));
    }
 
    @Override

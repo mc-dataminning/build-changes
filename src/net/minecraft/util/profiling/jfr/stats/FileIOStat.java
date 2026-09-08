@@ -12,9 +12,9 @@ public record FileIOStat(Duration duration, @Nullable String path, long bytes) {
       long totalBytes = ioStats.stream().mapToLong(it -> it.bytes).sum();
       return new FileIOStat.Summary(
          totalBytes,
-         (double)totalBytes / (double)recordingDuration.getSeconds(),
-         (long)ioStats.size(),
-         (double)ioStats.size() / (double)recordingDuration.getSeconds(),
+         (double)totalBytes / recordingDuration.getSeconds(),
+         ioStats.size(),
+         (double)ioStats.size() / recordingDuration.getSeconds(),
          ioStats.stream().map(FileIOStat::duration).reduce(Duration.ZERO, Duration::plus),
          ioStats.stream()
             .filter(it -> it.path != null)
@@ -28,7 +28,7 @@ public record FileIOStat(Duration duration, @Nullable String path, long bytes) {
       );
    }
 
-   public static record Summary(
+   public record Summary(
       long totalBytes,
       double bytesPerSecond,
       long counts,

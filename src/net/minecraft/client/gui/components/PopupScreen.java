@@ -22,25 +22,22 @@ public class PopupScreen extends Screen {
    private static final int IMAGE_SIZE_X = 130;
    private static final int IMAGE_SIZE_Y = 64;
    private static final int POPUP_DEFAULT_WIDTH = 250;
-   @Nullable
-   private final Screen backgroundScreen;
-   @Nullable
-   private final Identifier image;
+   private final @Nullable Screen backgroundScreen;
+   private final @Nullable Identifier image;
    private final List<Component> messages;
    private final List<PopupScreen.ButtonOption> buttons;
-   @Nullable
-   private final Runnable onClose;
+   private final @Nullable Runnable onClose;
    private final int contentWidth;
    private final LinearLayout layout = LinearLayout.vertical();
 
    private PopupScreen(
-      @Nullable final Screen backgroundScreen,
+      final @Nullable Screen backgroundScreen,
       final int backgroundWidth,
-      @Nullable final Identifier image,
+      final @Nullable Identifier image,
       final Component title,
       final List<Component> messages,
       final List<PopupScreen.ButtonOption> buttons,
-      @Nullable final Runnable onClose
+      final @Nullable Runnable onClose
    ) {
       super(title);
       this.backgroundScreen = backgroundScreen;
@@ -138,18 +135,15 @@ public class PopupScreen extends Screen {
    }
 
    public static class Builder {
-      @Nullable
-      private final Screen backgroundScreen;
+      private final @Nullable Screen backgroundScreen;
       private final Component title;
       private final List<Component> messages = new ArrayList<>();
       private int width = 250;
-      @Nullable
-      private Identifier image;
+      private @Nullable Identifier image;
       private final List<PopupScreen.ButtonOption> buttons = new ArrayList<>();
-      @Nullable
-      private Runnable onClose = null;
+      private @Nullable Runnable onClose = null;
 
-      public Builder(@Nullable final Screen backgroundScreen, final Component title) {
+      public Builder(final @Nullable Screen backgroundScreen, final Component title) {
          this.backgroundScreen = backgroundScreen;
          this.title = title;
       }
@@ -188,6 +182,6 @@ public class PopupScreen extends Screen {
       }
    }
 
-   private static record ButtonOption(Component message, Consumer<PopupScreen> action) {
+   private record ButtonOption(Component message, Consumer<PopupScreen> action) {
    }
 }

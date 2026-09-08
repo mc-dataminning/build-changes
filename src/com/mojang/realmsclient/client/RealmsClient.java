@@ -65,8 +65,7 @@ public class RealmsClient {
       .flatMap(RealmsClient.Environment::byName)
       .orElse(RealmsClient.Environment.PRODUCTION);
    private static final Logger LOGGER = LogUtils.getLogger();
-   @Nullable
-   private static volatile RealmsClient realmsClientInstance = null;
+   private static volatile @Nullable RealmsClient realmsClientInstance = null;
    private final CompletableFuture<Set<String>> featureFlags;
    private final String sessionId;
    private final String username;
@@ -138,17 +137,17 @@ public class RealmsClient {
       RealmsClient realmsClient = realmsClientInstance;
       if (realmsClient != null) {
          return realmsClient;
-      } else {
-         synchronized (RealmsClient.class) {
-            RealmsClient rc = realmsClientInstance;
-            if (rc != null) {
-               return rc;
-            } else {
-               rc = new RealmsClient(sessionId, username, minecraft);
-               realmsClientInstance = rc;
-               return rc;
-            }
+      }
+
+      synchronized (RealmsClient.class) {
+         RealmsClient rc = realmsClientInstance;
+         if (rc != null) {
+            return rc;
          }
+
+         rc = new RealmsClient(sessionId, username, minecraft);
+         realmsClientInstance = rc;
+         return rc;
       }
    }
 
@@ -167,23 +166,23 @@ public class RealmsClient {
    private Set<String> fetchFeatureFlags() {
       if (Minecraft.getInstance().isOfflineDeveloperMode()) {
          return Set.of();
-      } else {
-         String asciiUrl = url("feature/v1", null, false);
-
-         try {
-            String returnJson = this.execute(Request.get(asciiUrl, 5000, 10000));
-            JsonArray object = LenientJsonParser.parse(returnJson).getAsJsonArray();
-            Set<String> featureFlags = object.asList().stream().<String>map(JsonElement::getAsString).collect(Collectors.toSet());
-            LOGGER.debug("Fetched Realms feature flags: {}", featureFlags);
-            return featureFlags;
-         } catch (RealmsServiceException var5) {
-            LOGGER.error("Failed to fetch Realms feature flags", var5);
-         } catch (Exception var6) {
-            LOGGER.error("Could not parse Realms feature flags", var6);
-         }
-
-         return Set.of();
       }
+
+      String asciiUrl = url("feature/v1", null, false);
+
+      try {
+         String returnJson = this.execute(Request.get(asciiUrl, 5000, 10000));
+         JsonArray object = LenientJsonParser.parse(returnJson).getAsJsonArray();
+         Set<String> featureFlags = object.asList().stream().<String>map(JsonElement::getAsString).collect(Collectors.toSet());
+         LOGGER.debug("Fetched Realms feature flags: {}", featureFlags);
+         return featureFlags;
+      } catch (RealmsServiceException e) {
+         LOGGER.error("Failed to fetch Realms feature flags", e);
+      } catch (Exception e) {
+         LOGGER.error("Could not parse Realms feature flags", e);
+      }
+
+      return Set.of();
    }
 
    public RealmsServerList listRealms() throws RealmsServiceException {
@@ -253,8 +252,8 @@ public class RealmsClient {
          }
 
          LOGGER.error("Could not parse Realm tier configuration: {}", json);
-      } catch (Exception var6) {
-         LOGGER.error("Could not parse Realm tier configuration", var6);
+      } catch (Exception e) {
+         LOGGER.error("Could not parse Realm tier configuration", e);
       }
 
       throw new RealmsServiceException(RealmsError.CustomError.configurationError());
@@ -288,19 +287,19 @@ public class RealmsClient {
          PreferredRegionsDto preferredRegionsDto = GSON.fromJson(json, PreferredRegionsDto.class);
          if (preferredRegionsDto == null) {
             return PreferredRegionsDto.empty();
-         } else {
-            Set<RealmsRegion> regionsInResponse = preferredRegionsDto.regionData().stream().map(RegionDataDto::region).collect(Collectors.toSet());
-
-            for (RealmsRegion region : RealmsRegion.values()) {
-               if (region != RealmsRegion.INVALID_REGION && !regionsInResponse.contains(region)) {
-                  LOGGER.debug("No realms region matching {} in server response", region);
-               }
-            }
-
-            return preferredRegionsDto;
          }
-      } catch (Exception var9) {
-         LOGGER.error("Could not parse PreferredRegionSelections", var9);
+
+         Set<RealmsRegion> regionsInResponse = preferredRegionsDto.regionData().stream().map(RegionDataDto::region).collect(Collectors.toSet());
+
+         for (RealmsRegion region : RealmsRegion.values()) {
+            if (region != RealmsRegion.INVALID_REGION && !regionsInResponse.contains(region)) {
+               LOGGER.debug("No realms region matching {} in server response", region);
+            }
+         }
+
+         return preferredRegionsDto;
+      } catch (Exception e) {
+         LOGGER.error("Could not parse PreferredRegionSelections", e);
          return PreferredRegionsDto.empty();
       }
    }
@@ -336,7 +335,7 @@ public class RealmsClient {
 
       try {
          return RealmsClient.CompatibleVersionResponse.valueOf(response);
-      } catch (IllegalArgumentException var5) {
+      } catch (IllegalArgumentException ignored) {
          throw new RealmsServiceException(RealmsError.CustomError.unknownCompatibilityResponse(response));
       }
    }
@@ -381,13 +380,13 @@ public class RealmsClient {
       return request;
    }
 
-   public void createInviteCode(final long realmId, final boolean enabled, @Nullable final Instant expiration) throws RealmsServiceException {
+   public void createInviteCode(final long realmId, final boolean enabled, final @Nullable Instant expiration) throws RealmsServiceException {
       InviteCodeRequestDto request = new InviteCodeRequestDto(null, realmId, enabled, expiration == null ? null : expiration.toEpochMilli());
       String asciiUrl = frontendV2Url("api/v1.0/invite/codes", null);
       this.execute(frontendV2Request(Request.post(asciiUrl, GSON.toJson(request)), this.minecraft.getUser().getAccessToken()));
    }
 
-   public void updateInviteCode(final long realmId, final String code, final boolean enabled, @Nullable final Instant expiration) throws RealmsServiceException {
+   public void updateInviteCode(final long realmId, final String code, final boolean enabled, final @Nullable Instant expiration) throws RealmsServiceException {
       InviteCodeRequestDto request = new InviteCodeRequestDto(code, realmId, enabled, expiration == null ? null : expiration.toEpochMilli());
       String asciiUrl = frontendV2Url("api/v1.0/invite/codes/update", null);
       this.execute(frontendV2Request(Request.post(asciiUrl, GSON.toJson(request)), this.minecraft.getUser().getAccessToken()));
@@ -415,7 +414,7 @@ public class RealmsClient {
       final long realmId,
       final String name,
       final String description,
-      @Nullable final RegionSelectionPreferenceDto regionSelectionPreference,
+      final @Nullable RegionSelectionPreferenceDto regionSelectionPreference,
       final int slotId,
       final RealmsWorldOptions options,
       final List<RealmsSetting> settings
@@ -529,8 +528,7 @@ public class RealmsClient {
       return WorldDownload.parse(json);
    }
 
-   @Nullable
-   public UploadInfo requestUploadInfo(final long realmId) throws RealmsServiceException {
+   public @Nullable UploadInfo requestUploadInfo(final long realmId) throws RealmsServiceException {
       String asciiUrl = this.url("worlds" + "/$WORLD_ID/backups/upload".replace("$WORLD_ID", String.valueOf(realmId)));
       String uploadToken = UploadTokenCache.get(realmId);
       UploadInfo uploadInfo = UploadInfo.parse(this.execute(Request.put(asciiUrl, UploadInfo.createRequest(uploadToken))));
@@ -577,24 +575,24 @@ public class RealmsClient {
       return this.url(path, null);
    }
 
-   private String url(final String path, @Nullable final String queryString) {
+   private String url(final String path, final @Nullable String queryString) {
       return url(path, queryString, this.getFeatureFlags().contains("realms_in_aks"));
    }
 
-   private static String url(final String path, @Nullable final String queryString, final boolean useAlternativeURL) {
+   private static String url(final String path, final @Nullable String queryString, final boolean useAlternativeURL) {
       try {
          return new URI(ENVIRONMENT.protocol, useAlternativeURL ? ENVIRONMENT.alternativeUrl : ENVIRONMENT.baseUrl, "/" + path, queryString, null)
             .toASCIIString();
-      } catch (URISyntaxException var4) {
-         throw new IllegalArgumentException(path, var4);
+      } catch (URISyntaxException e) {
+         throw new IllegalArgumentException(path, e);
       }
    }
 
-   private static String frontendV2Url(final String path, @Nullable final String queryString) {
+   private static String frontendV2Url(final String path, final @Nullable String queryString) {
       try {
          return new URI(ENVIRONMENT.protocol, ENVIRONMENT.frontendV2Url, "/" + path, queryString, null).toASCIIString();
-      } catch (URISyntaxException var3) {
-         throw new IllegalArgumentException(path, var3);
+      } catch (URISyntaxException e) {
+         throw new IllegalArgumentException(path, e);
       }
    }
 
@@ -611,35 +609,37 @@ public class RealmsClient {
             String responseText = request.text();
             if (responseCode >= 200 && responseCode < 300) {
                return responseText;
-            } else if (responseCode == 401) {
+            }
+
+            if (responseCode == 401) {
                String authenticationHeader = request.getHeader("WWW-Authenticate");
                LOGGER.info("Could not authorize you against Realms server: {}", authenticationHeader);
                throw new RealmsServiceException(new RealmsError.AuthenticationError(authenticationHeader));
-            } else {
-               String contentType = request.connection.getContentType();
-               if (contentType != null && contentType.startsWith("text/html")) {
-                  throw new RealmsServiceException(RealmsError.CustomError.htmlPayload(responseCode, responseText));
-               } else {
-                  RealmsError error = RealmsError.parse(responseCode, responseText);
-                  throw new RealmsServiceException(error);
-               }
             }
+
+            String contentType = request.connection.getContentType();
+            if (contentType != null && contentType.startsWith("text/html")) {
+               throw new RealmsServiceException(RealmsError.CustomError.htmlPayload(responseCode, responseText));
+            }
+
+            RealmsError error = RealmsError.parse(responseCode, responseText);
+            throw new RealmsServiceException(error);
          } else {
             int pauseTime = request.getRetryAfterHeader();
             throw new RetryCallException(pauseTime, responseCode);
          }
-      } catch (RealmsHttpException var7) {
-         throw new RealmsServiceException(RealmsError.CustomError.connectivityError(var7));
+      } catch (RealmsHttpException e) {
+         throw new RealmsServiceException(RealmsError.CustomError.connectivityError(e));
       }
    }
 
-   public static enum CompatibleVersionResponse {
+   public enum CompatibleVersionResponse {
       COMPATIBLE,
       OUTDATED,
       OTHER;
    }
 
-   public static enum Environment {
+   public enum Environment {
       PRODUCTION("pc.realms.minecraft.net", "java.frontendlegacy.realms.minecraft-services.net", "java.frontend.realms.minecraft-services.net", "https"),
       STAGE(
          "pc-stage.realms.minecraft.net",
@@ -654,7 +654,7 @@ public class RealmsClient {
       public final String frontendV2Url;
       public final String protocol;
 
-      private Environment(final String baseUrl, final String alternativeUrl, final String frontendV2Url, final String protocol) {
+      Environment(final String baseUrl, final String alternativeUrl, final String frontendV2Url, final String protocol) {
          this.baseUrl = baseUrl;
          this.alternativeUrl = alternativeUrl;
          this.frontendV2Url = frontendV2Url;
@@ -662,9 +662,7 @@ public class RealmsClient {
       }
 
       public static Optional<RealmsClient.Environment> byName(final String name) {
-         String var1 = name.toLowerCase(Locale.ROOT);
-
-         return switch (var1) {
+         return switch (name.toLowerCase(Locale.ROOT)) {
             case "production" -> Optional.of(PRODUCTION);
             case "local" -> Optional.of(LOCAL);
             case "stage", "staging" -> Optional.of(STAGE);

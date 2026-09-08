@@ -14,13 +14,11 @@ public abstract class BanListEntry<T> extends StoredUserEntry<T> {
    public static final String EXPIRES_NEVER = "forever";
    protected final Date created;
    protected final String source;
-   @Nullable
-   protected final Date expires;
-   @Nullable
-   protected final String reason;
+   protected final @Nullable Date expires;
+   protected final @Nullable String reason;
 
    public BanListEntry(
-      @Nullable final T user, @Nullable final Date created, @Nullable final String source, @Nullable final Date expires, @Nullable final String reason
+      final @Nullable T user, final @Nullable Date created, final @Nullable String source, final @Nullable Date expires, final @Nullable String reason
    ) {
       super(user);
       this.created = created == null ? new Date() : created;
@@ -29,13 +27,13 @@ public abstract class BanListEntry<T> extends StoredUserEntry<T> {
       this.reason = reason;
    }
 
-   protected BanListEntry(@Nullable final T user, final JsonObject object) {
+   protected BanListEntry(final @Nullable T user, final JsonObject object) {
       super(user);
 
       Date created;
       try {
          created = object.has("created") ? DATE_FORMAT.parse(object.get("created").getAsString()) : new Date();
-      } catch (ParseException var7) {
+      } catch (ParseException ignored) {
          created = new Date();
       }
 
@@ -45,7 +43,7 @@ public abstract class BanListEntry<T> extends StoredUserEntry<T> {
       Date expires;
       try {
          expires = object.has("expires") ? DATE_FORMAT.parse(object.get("expires").getAsString()) : null;
-      } catch (ParseException var6) {
+      } catch (ParseException ignored) {
          expires = null;
       }
 
@@ -61,13 +59,11 @@ public abstract class BanListEntry<T> extends StoredUserEntry<T> {
       return this.source;
    }
 
-   @Nullable
-   public Date getExpires() {
+   public @Nullable Date getExpires() {
       return this.expires;
    }
 
-   @Nullable
-   public String getReason() {
+   public @Nullable String getReason() {
       return this.reason;
    }
 

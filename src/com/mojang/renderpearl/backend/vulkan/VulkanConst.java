@@ -15,7 +15,7 @@ import com.mojang.renderpearl.api.textures.FilterMode;
 import com.mojang.renderpearl.api.textures.GpuTexture;
 
 public final class VulkanConst {
-   public static int textureUsageToVk(@GpuTexture.Usage final int usage, final GpuFormat format) {
+   public static int textureUsageToVk(final @GpuTexture.Usage int usage, final GpuFormat format) {
       int vkUsage = 0;
       if ((usage & 8) != 0) {
          if (format.hasColorAspect()) {
@@ -42,7 +42,7 @@ public final class VulkanConst {
       return vkUsage;
    }
 
-   public static int bufferUsageToVk(@GpuBuffer.Usage final int usage) {
+   public static int bufferUsageToVk(final @GpuBuffer.Usage int usage) {
       int result = 0;
       if ((usage & 8) != 0) {
          result |= 2;

@@ -12,7 +12,7 @@ class HungerMobEffect extends MobEffect {
    @Override
    public boolean applyEffectTick(final ServerLevel serverLevel, final LivingEntity mob, final int amplification) {
       if (mob instanceof Player player) {
-         player.causeFoodExhaustion(0.005F * (float)(amplification + 1));
+         player.causeFoodExhaustion(0.005F * (amplification + 1));
       }
 
       return true;

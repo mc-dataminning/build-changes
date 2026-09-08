@@ -20,7 +20,7 @@ public interface WorldVersion {
 
    boolean stable();
 
-   public static record Simple(
+   record Simple(
       String id,
       String name,
       DataVersion dataVersion,

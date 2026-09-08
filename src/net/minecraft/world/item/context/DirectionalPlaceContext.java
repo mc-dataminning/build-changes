@@ -67,6 +67,6 @@ public class DirectionalPlaceContext extends BlockPlaceContext {
 
    @Override
    public float getRotation() {
-      return (float)(this.direction.get2DDataValue() * 90);
+      return this.direction.get2DDataValue() * 90;
    }
 }

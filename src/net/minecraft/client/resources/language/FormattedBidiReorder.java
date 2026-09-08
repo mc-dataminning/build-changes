@@ -29,7 +29,7 @@ public class FormattedBidiReorder {
    private static String shape(final String text) {
       try {
          return new ArabicShaping(8).shape(text);
-      } catch (Exception var2) {
+      } catch (Exception e) {
          return text;
       }
    }

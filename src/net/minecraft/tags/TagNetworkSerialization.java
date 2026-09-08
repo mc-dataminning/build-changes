@@ -58,7 +58,7 @@ public class TagNetworkSerialization {
       return new TagLoader.LoadResult<>(registryKey, tags);
    }
 
-   public static record NetworkPayload(Map<Identifier, IntList> tags) {
+   public record NetworkPayload(Map<Identifier, IntList> tags) {
       public static final TagNetworkSerialization.NetworkPayload EMPTY = new TagNetworkSerialization.NetworkPayload(Map.of());
       private static final StreamCodec<ByteBuf, IntList> ID_LIST_STREAM_CODEC = ByteBufCodecs.VAR_INT.apply(ByteBufCodecs.collection(IntArrayList::new));
       public static final StreamCodec<ByteBuf, TagNetworkSerialization.NetworkPayload> STREAM_CODEC = StreamCodec.composite(

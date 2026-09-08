@@ -117,8 +117,7 @@ public class SectionStorage<R, P> implements AutoCloseable {
       return !this.dirtyChunks.isEmpty();
    }
 
-   @Nullable
-   protected Optional<R> get(final long sectionPos) {
+   protected @Nullable Optional<R> get(final long sectionPos) {
       return (Optional<R>)this.storage.get(sectionPos);
    }
 
@@ -149,16 +148,16 @@ public class SectionStorage<R, P> implements AutoCloseable {
    protected R getOrCreate(final long sectionPos) {
       if (this.outsideStoredRange(sectionPos)) {
          throw (IllegalArgumentException)Util.pauseInIde(new IllegalArgumentException("sectionPos out of bounds"));
-      } else {
-         Optional<R> r = this.getOrLoad(sectionPos);
-         if (r.isPresent()) {
-            return r.get();
-         } else {
-            R newR = this.factory.apply(() -> this.setDirty(sectionPos));
-            this.storage.put(sectionPos, Optional.of(newR));
-            return newR;
-         }
       }
+
+      Optional<R> r = this.getOrLoad(sectionPos);
+      if (r.isPresent()) {
+         return r.get();
+      }
+
+      R newR = this.factory.apply(() -> this.setDirty(sectionPos));
+      this.storage.put(sectionPos, Optional.of(newR));
+      return newR;
    }
 
    public CompletableFuture<?> prefetch(final ChunkPos chunkPos) {
@@ -210,7 +209,7 @@ public class SectionStorage<R, P> implements AutoCloseable {
          });
    }
 
-   private void unpackChunk(final ChunkPos pos, @Nullable final SectionStorage.PackedChunk<P> packedChunk) {
+   private void unpackChunk(final ChunkPos pos, final SectionStorage.@Nullable PackedChunk<P> packedChunk) {
       if (packedChunk == null) {
          for (int sectionY = this.levelHeightAccessor.getMinSectionY(); sectionY <= this.levelHeightAccessor.getMaxSectionY(); sectionY++) {
             this.storage.put(getKey(pos, sectionY), Optional.empty());
@@ -300,7 +299,7 @@ public class SectionStorage<R, P> implements AutoCloseable {
       this.simpleRegionStorage.close();
    }
 
-   private static record PackedChunk<T>(Int2ObjectMap<T> sectionsByY, boolean versionChanged) {
+   private record PackedChunk<T>(Int2ObjectMap<T> sectionsByY, boolean versionChanged) {
       public static <T> SectionStorage.PackedChunk<T> parse(
          final Codec<T> codec,
          final DynamicOps<Tag> ops,

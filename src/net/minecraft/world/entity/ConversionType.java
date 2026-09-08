@@ -81,7 +81,7 @@ public enum ConversionType {
    private static final Set<DataComponentType<?>> COMPONENTS_TO_COPY = Set.of(DataComponents.CUSTOM_NAME, DataComponents.CUSTOM_DATA);
    private final boolean discardAfterConversion;
 
-   private ConversionType(final boolean discardAfterConversion) {
+   ConversionType(final boolean discardAfterConversion) {
       this.discardAfterConversion = discardAfterConversion;
    }
 

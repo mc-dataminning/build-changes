@@ -22,11 +22,9 @@ public record WritableBookContent(List<Filterable<String>> pages) implements Boo
       .apply(ByteBufCodecs.list(100))
       .map(WritableBookContent::new, WritableBookContent::pages);
 
-   public WritableBookContent(List<Filterable<String>> pages) {
+   public WritableBookContent {
       if (pages.size() > 100) {
          throw new IllegalArgumentException("Got " + pages.size() + " pages, but maximum is 100");
-      } else {
-         this.pages = pages;
       }
    }
 

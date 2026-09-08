@@ -19,7 +19,7 @@ public record Charge() implements SelectItemModelProperty<CrossbowItem.ChargeTyp
    );
 
    public CrossbowItem.ChargeType get(
-      final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final LivingEntity owner, final int seed, final ItemDisplayContext displayContext
+      final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner, final int seed, final ItemDisplayContext displayContext
    ) {
       ChargedProjectiles projectiles = itemStack.get(DataComponents.CHARGED_PROJECTILES);
       if (projectiles == null || projectiles.isEmpty()) {

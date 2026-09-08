@@ -74,15 +74,15 @@ public class RecipeManager implements RecipeAccess {
                   LOGGER.warn("Recipe {} can't be placed due to empty ingredients and will be ignored", recipeHolder.id().identifier());
                } else {
                   propertySetCollectors.forEach(c -> c.accept(recipe));
-                  if (recipe instanceof StonecutterRecipe stonecutterRecipe
-                     && isIngredientEnabled(enabledFlags, stonecutterRecipe.input())
-                     && stonecutterRecipe.resultDisplay().isEnabled(enabledFlags)) {
-                     stonecutterRecipes.add(
-                        new SelectableRecipe.SingleInputEntry<>(
-                           stonecutterRecipe.input(),
-                           new SelectableRecipe<>(stonecutterRecipe.resultDisplay(), Optional.of((RecipeHolder<StonecutterRecipe>)recipeHolder))
-                        )
-                     );
+                  if (recipe instanceof StonecutterRecipe stonecutterRecipe) {
+                     RecipeHolder<StonecutterRecipe> castHolder = (RecipeHolder<StonecutterRecipe>)recipeHolder;
+                     if (isIngredientEnabled(enabledFlags, stonecutterRecipe.input()) && stonecutterRecipe.resultDisplay().isEnabled(enabledFlags)) {
+                        stonecutterRecipes.add(
+                           new SelectableRecipe.SingleInputEntry<>(
+                              stonecutterRecipe.input(), new SelectableRecipe<>(stonecutterRecipe.resultDisplay(), Optional.of(castHolder))
+                           )
+                        );
+                     }
                   }
                }
             }
@@ -103,14 +103,14 @@ public class RecipeManager implements RecipeAccess {
    }
 
    public <I extends RecipeInput, T extends Recipe<I>> Optional<RecipeHolder<T>> getRecipeFor(
-      final RecipeType<T> type, final I input, final Level level, @Nullable final ResourceKey<Recipe<?>> recipeHint
+      final RecipeType<T> type, final I input, final Level level, final @Nullable ResourceKey<Recipe<?>> recipeHint
    ) {
       RecipeHolder<T> hintedRecipe = recipeHint != null ? this.byKeyTyped(type, recipeHint) : null;
       return this.getRecipeFor(type, input, level, hintedRecipe);
    }
 
    public <I extends RecipeInput, T extends Recipe<I>> Optional<RecipeHolder<T>> getRecipeFor(
-      final RecipeType<T> type, final I input, final Level level, @Nullable final RecipeHolder<T> recipeHint
+      final RecipeType<T> type, final I input, final Level level, final @Nullable RecipeHolder<T> recipeHint
    ) {
       return recipeHint != null && recipeHint.value().matches(input, level) ? Optional.of(recipeHint) : this.getRecipeFor(type, input, level);
    }
@@ -123,8 +123,7 @@ public class RecipeManager implements RecipeAccess {
       return Optional.ofNullable(this.recipes.byKey(recipeId));
    }
 
-   @Nullable
-   private <T extends Recipe<?>> RecipeHolder<T> byKeyTyped(final RecipeType<T> type, final ResourceKey<Recipe<?>> recipeId) {
+   private <T extends Recipe<?>> @Nullable RecipeHolder<T> byKeyTyped(final RecipeType<T> type, final ResourceKey<Recipe<?>> recipeId) {
       RecipeHolder<?> recipe = this.recipes.byKey(recipeId);
       return (RecipeHolder<T>)(recipe != null && recipe.value().getType().equals(type) ? recipe : null);
    }
@@ -155,8 +154,7 @@ public class RecipeManager implements RecipeAccess {
       return this.learnableRecipes;
    }
 
-   @Nullable
-   public RecipeManager.ServerDisplayInfo getRecipeFromDisplay(final RecipeDisplayId id) {
+   public RecipeManager.@Nullable ServerDisplayInfo getRecipeFromDisplay(final RecipeDisplayId id) {
       int index = id.index();
       return index >= 0 && index < this.allDisplays.size() ? this.allDisplays.get(index) : null;
    }
@@ -170,8 +168,7 @@ public class RecipeManager implements RecipeAccess {
 
    public static <I extends RecipeInput, T extends Recipe<I>> RecipeManager.CachedCheck<I, T> createCheck(final RecipeType<T> type) {
       return new RecipeManager.CachedCheck<I, T>() {
-         @Nullable
-         private ResourceKey<Recipe<?>> lastRecipe;
+         private @Nullable ResourceKey<Recipe<?>> lastRecipe;
 
          @Override
          public Optional<RecipeHolder<T>> getRecipeFor(final I input, final ServerLevel level) {
@@ -223,8 +220,8 @@ public class RecipeManager implements RecipeAccess {
 
    private static RecipeManager.IngredientExtractor forSingleInput(final RecipeType<? extends SingleItemRecipe> type) {
       return recipe -> recipe.getType() == type && recipe instanceof SingleItemRecipe singleItemRecipe
-            ? Optional.of(singleItemRecipe.input())
-            : Optional.empty();
+         ? Optional.of(singleItemRecipe.input())
+         : Optional.empty();
    }
 
    public interface CachedCheck<I extends RecipeInput, T extends Recipe<I>> {
@@ -255,6 +252,6 @@ public class RecipeManager implements RecipeAccess {
       Optional<Ingredient> apply(Recipe<?> recipe);
    }
 
-   public static record ServerDisplayInfo(RecipeDisplayEntry display, RecipeHolder<?> parent) {
+   public record ServerDisplayInfo(RecipeDisplayEntry display, RecipeHolder<?> parent) {
    }
 }

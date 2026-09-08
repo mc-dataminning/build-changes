@@ -33,31 +33,28 @@ public class Palette {
          .thenCompose(resources -> ParallelMapTransform.schedule((Map<Identifier, Resource>)resources, Palette::tryLoad, taskExecutor))
          .thenApply(
             palettes -> palettes.entrySet()
-                  .stream()
-                  .filter(entry -> !entry.getValue().isEmpty())
-                  .collect(Collectors.toMap(entry -> ID_CONVERTER.fileToId(entry.getKey()), Entry::getValue))
+               .stream()
+               .filter(entry -> !entry.getValue().isEmpty())
+               .collect(Collectors.toMap(entry -> ID_CONVERTER.fileToId(entry.getKey()), Entry::getValue))
          );
    }
 
    private static Palette tryLoad(final Identifier id, final Resource resource) {
       try {
          return load(resource);
-      } catch (IOException var3) {
-         LOGGER.error("Failed to load palette with id {}", id, var3);
+      } catch (IOException e) {
+         LOGGER.error("Failed to load palette with id {}", id, e);
          return EMPTY;
       }
    }
 
    public static Palette load(final Resource resource) throws IOException {
-      Palette var3;
       try (
          InputStream input = resource.open();
          NativeImage image = NativeImage.read(input);
       ) {
-         var3 = from(image);
+         return from(image);
       }
-
-      return var3;
    }
 
    public static Palette from(final NativeImage image) {

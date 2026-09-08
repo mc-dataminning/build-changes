@@ -11,15 +11,17 @@ public class SegmentedAnglePrecision {
    public SegmentedAnglePrecision(final int bitPrecision) {
       if (bitPrecision < 2) {
          throw new IllegalArgumentException("Precision cannot be less than 2 bits");
-      } else if (bitPrecision > 30) {
-         throw new IllegalArgumentException("Precision cannot be greater than 30 bits");
-      } else {
-         int twoPi = 1 << bitPrecision;
-         this.mask = twoPi - 1;
-         this.precision = bitPrecision;
-         this.degreeToAngle = (float)twoPi / 360.0F;
-         this.angleToDegree = 360.0F / (float)twoPi;
       }
+
+      if (bitPrecision > 30) {
+         throw new IllegalArgumentException("Precision cannot be greater than 30 bits");
+      }
+
+      int twoPi = 1 << bitPrecision;
+      this.mask = twoPi - 1;
+      this.precision = bitPrecision;
+      this.degreeToAngle = twoPi / 360.0F;
+      this.angleToDegree = 360.0F / twoPi;
    }
 
    public boolean isSameAxis(final int binaryAngleA, final int binaryAngleB) {
@@ -30,10 +32,10 @@ public class SegmentedAnglePrecision {
    public int fromDirection(final Direction direction) {
       if (direction.getAxis().isVertical()) {
          return 0;
-      } else {
-         int segmentedAngle2bit = direction.get2DDataValue();
-         return segmentedAngle2bit << this.precision - 2;
       }
+
+      int segmentedAngle2bit = direction.get2DDataValue();
+      return segmentedAngle2bit << this.precision - 2;
    }
 
    public int fromDegreesWithTurns(final float degrees) {
@@ -45,7 +47,7 @@ public class SegmentedAnglePrecision {
    }
 
    public float toDegreesWithTurns(final int binaryAngle) {
-      return (float)binaryAngle * this.angleToDegree;
+      return binaryAngle * this.angleToDegree;
    }
 
    public float toDegrees(final int binaryAngle) {

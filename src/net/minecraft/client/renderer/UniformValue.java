@@ -21,7 +21,7 @@ public interface UniformValue {
 
    UniformValue.Type type();
 
-   public static record FloatUniform(float value) implements UniformValue {
+   record FloatUniform(float value) implements UniformValue {
       public static final Codec<UniformValue.FloatUniform> CODEC = Codec.FLOAT.xmap(UniformValue.FloatUniform::new, UniformValue.FloatUniform::value);
 
       @Override
@@ -40,7 +40,7 @@ public interface UniformValue {
       }
    }
 
-   public static record IVec3Uniform(Vector3ic value) implements UniformValue {
+   record IVec3Uniform(Vector3ic value) implements UniformValue {
       public static final Codec<UniformValue.IVec3Uniform> CODEC = ExtraCodecs.VECTOR3I.xmap(UniformValue.IVec3Uniform::new, UniformValue.IVec3Uniform::value);
 
       @Override
@@ -59,7 +59,7 @@ public interface UniformValue {
       }
    }
 
-   public static record IntUniform(int value) implements UniformValue {
+   record IntUniform(int value) implements UniformValue {
       public static final Codec<UniformValue.IntUniform> CODEC = Codec.INT.xmap(UniformValue.IntUniform::new, UniformValue.IntUniform::value);
 
       @Override
@@ -78,7 +78,7 @@ public interface UniformValue {
       }
    }
 
-   public static record Matrix4x4Uniform(Matrix4fc value) implements UniformValue {
+   record Matrix4x4Uniform(Matrix4fc value) implements UniformValue {
       public static final Codec<UniformValue.Matrix4x4Uniform> CODEC = ExtraCodecs.MATRIX4F
          .xmap(UniformValue.Matrix4x4Uniform::new, UniformValue.Matrix4x4Uniform::value);
 
@@ -98,7 +98,7 @@ public interface UniformValue {
       }
    }
 
-   public static enum Type implements StringRepresentable {
+   enum Type implements StringRepresentable {
       INT("int", UniformValue.IntUniform.CODEC),
       IVEC3("ivec3", UniformValue.IVec3Uniform.CODEC),
       FLOAT("float", UniformValue.FloatUniform.CODEC),
@@ -111,7 +111,7 @@ public interface UniformValue {
       private final String name;
       private final MapCodec<? extends UniformValue> valueCodec;
 
-      private Type(final String name, final Codec<? extends UniformValue> valueCodec) {
+      Type(final String name, final Codec<? extends UniformValue> valueCodec) {
          this.name = name;
          this.valueCodec = valueCodec.fieldOf("value");
       }
@@ -122,7 +122,7 @@ public interface UniformValue {
       }
    }
 
-   public static record Vec2Uniform(Vector2fc value) implements UniformValue {
+   record Vec2Uniform(Vector2fc value) implements UniformValue {
       public static final Codec<UniformValue.Vec2Uniform> CODEC = ExtraCodecs.VECTOR2F.xmap(UniformValue.Vec2Uniform::new, UniformValue.Vec2Uniform::value);
 
       @Override
@@ -141,7 +141,7 @@ public interface UniformValue {
       }
    }
 
-   public static record Vec3Uniform(Vector3fc value) implements UniformValue {
+   record Vec3Uniform(Vector3fc value) implements UniformValue {
       public static final Codec<UniformValue.Vec3Uniform> CODEC = ExtraCodecs.VECTOR3F.xmap(UniformValue.Vec3Uniform::new, UniformValue.Vec3Uniform::value);
 
       @Override
@@ -160,7 +160,7 @@ public interface UniformValue {
       }
    }
 
-   public static record Vec4Uniform(Vector4fc value) implements UniformValue {
+   record Vec4Uniform(Vector4fc value) implements UniformValue {
       public static final Codec<UniformValue.Vec4Uniform> CODEC = ExtraCodecs.VECTOR4F.xmap(UniformValue.Vec4Uniform::new, UniformValue.Vec4Uniform::value);
 
       @Override

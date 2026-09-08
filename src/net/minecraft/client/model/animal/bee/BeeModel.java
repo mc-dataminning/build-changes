@@ -37,7 +37,7 @@ public abstract class BeeModel extends EntityModel<BeeRenderState> {
       if (!state.isOnGround) {
          float speed = state.ageInTicks * 120.32113F * (float) (Math.PI / 180.0);
          this.rightWing.yRot = 0.0F;
-         this.rightWing.zRot = Mth.cos((double)speed) * (float) Math.PI * 0.15F;
+         this.rightWing.zRot = Mth.cos(speed) * (float) Math.PI * 0.15F;
          this.leftWing.xRot = this.rightWing.xRot;
          this.leftWing.yRot = this.rightWing.yRot;
          this.leftWing.zRot = -this.rightWing.zRot;
@@ -47,7 +47,7 @@ public abstract class BeeModel extends EntityModel<BeeRenderState> {
       }
 
       if (!state.isAngry && !state.isOnGround) {
-         float speed = Mth.cos((double)(state.ageInTicks * 0.18F));
+         float speed = Mth.cos(state.ageInTicks * 0.18F);
          this.bobUpAndDown(speed, state.ageInTicks);
       }
 
@@ -59,7 +59,7 @@ public abstract class BeeModel extends EntityModel<BeeRenderState> {
 
    protected void bobUpAndDown(final float speed, final float ageInTicks) {
       this.bone.xRot = 0.1F + speed * (float) Math.PI * 0.025F;
-      this.bone.y = this.bone.y - Mth.cos((double)(ageInTicks * 0.18F)) * 0.9F;
+      this.bone.y = this.bone.y - Mth.cos(ageInTicks * 0.18F) * 0.9F;
       this.frontLeg.xRot = -speed * (float) Math.PI * 0.1F + (float) (Math.PI / 8);
       this.backLeg.xRot = -speed * (float) Math.PI * 0.05F + (float) (Math.PI / 4);
    }

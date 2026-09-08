@@ -18,8 +18,7 @@ public class TelemetryLogManager implements AutoCloseable {
    private static final String RAW_EXTENSION = ".json";
    private static final int EXPIRY_DAYS = 7;
    private final EventLogDirectory directory;
-   @Nullable
-   private CompletableFuture<Optional<TelemetryEventLog>> sessionLog;
+   private @Nullable CompletableFuture<Optional<TelemetryEventLog>> sessionLog;
 
    private TelemetryLogManager(final EventLogDirectory directory) {
       this.directory = directory;
@@ -31,8 +30,8 @@ public class TelemetryLogManager implements AutoCloseable {
             EventLogDirectory directory = EventLogDirectory.open(root, ".json");
             directory.listFiles().prune(LocalDate.now(Clock.systemDefaultZone()), 7).compressAll();
             return Optional.of(new TelemetryLogManager(directory));
-         } catch (Exception var2) {
-            LOGGER.error("Failed to create telemetry log manager", var2);
+         } catch (Exception e) {
+            LOGGER.error("Failed to create telemetry log manager", e);
             return Optional.empty();
          }
       }, Util.backgroundExecutor());
@@ -45,8 +44,8 @@ public class TelemetryLogManager implements AutoCloseable {
                EventLogDirectory.RawFile file = this.directory.createNewFile(LocalDate.now(Clock.systemDefaultZone()));
                FileChannel channel = file.openChannel();
                return Optional.of(new TelemetryEventLog(channel, Util.backgroundExecutor()));
-            } catch (IOException var3) {
-               LOGGER.error("Failed to open channel for telemetry event log", var3);
+            } catch (IOException e) {
+               LOGGER.error("Failed to open channel for telemetry event log", e);
                return Optional.empty();
             }
          }, Util.backgroundExecutor());

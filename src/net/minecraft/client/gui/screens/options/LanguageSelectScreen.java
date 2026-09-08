@@ -2,7 +2,6 @@ package net.minecraft.client.gui.screens.options;
 
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.SortedMap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
@@ -27,9 +26,8 @@ public class LanguageSelectScreen extends OptionsSubScreen {
    private static final Component SEARCH_HINT = Component.translatable("gui.language.search").withStyle(EditBox.SEARCH_HINT_STYLE);
    private static final int SEARCH_BOX_HEIGHT = 15;
    private final LanguageManager languageManager;
-   private LanguageSelectScreen.LanguageSelectionList languageSelectionList;
-   @Nullable
-   private EditBox search;
+   private LanguageSelectScreen.@Nullable LanguageSelectionList languageSelectionList;
+   private @Nullable EditBox search;
 
    public LanguageSelectScreen(final Screen lastScreen, final Options options, final LanguageManager languageManager) {
       super(lastScreen, options, Component.translatable("options.language.title"));
@@ -105,7 +103,6 @@ public class LanguageSelectScreen extends OptionsSubScreen {
 
    private class LanguageSelectionList extends ObjectSelectionList<LanguageSelectScreen.LanguageSelectionList.Entry> {
       public LanguageSelectionList(final Minecraft minecraft) {
-         Objects.requireNonNull(LanguageSelectScreen.this);
          super(minecraft, LanguageSelectScreen.this.width, LanguageSelectScreen.this.height - 33 - 53, 33, 18);
          String selectedLanguage = LanguageSelectScreen.this.languageManager.getSelected();
          LanguageSelectScreen.this.languageManager.getLanguages().forEach((code, info) -> {
@@ -126,8 +123,8 @@ public class LanguageSelectScreen extends OptionsSubScreen {
             .stream()
             .filter(
                entry -> filter.isEmpty()
-                     || entry.getValue().name().toLowerCase(Locale.ROOT).contains(filter.toLowerCase(Locale.ROOT))
-                     || entry.getValue().region().toLowerCase(Locale.ROOT).contains(filter.toLowerCase(Locale.ROOT))
+                  || entry.getValue().name().toLowerCase(Locale.ROOT).contains(filter.toLowerCase(Locale.ROOT))
+                  || entry.getValue().region().toLowerCase(Locale.ROOT).contains(filter.toLowerCase(Locale.ROOT))
             )
             .map(entry -> new LanguageSelectScreen.LanguageSelectionList.Entry(entry.getKey(), entry.getValue()))
             .toList();
@@ -145,8 +142,6 @@ public class LanguageSelectScreen extends OptionsSubScreen {
          private final Component language;
 
          public Entry(final String code, final LanguageInfo language) {
-            Objects.requireNonNull(LanguageSelectionList.this);
-            super();
             this.code = code;
             this.language = language.toComponent();
          }

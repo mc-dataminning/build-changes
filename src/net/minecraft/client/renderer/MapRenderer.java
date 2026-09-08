@@ -47,13 +47,13 @@ public class MapRenderer {
       for (MapRenderState.MapDecorationRenderState decoration : mapRenderState.decorations) {
          if (!showOnlyFrame || decoration.renderOnFrame) {
             poseStack.pushPose();
-            poseStack.translate((float)decoration.x / 2.0F + 64.0F, (float)decoration.y / 2.0F + 64.0F, -0.02F);
-            poseStack.rotateDegrees(Axis.ZP, (float)(decoration.rot * 360) / 16.0F);
+            poseStack.translate(decoration.x / 2.0F + 64.0F, decoration.y / 2.0F + 64.0F, -0.02F);
+            poseStack.rotateDegrees(Axis.ZP, decoration.rot * 360 / 16.0F);
             poseStack.scale(4.0F, 4.0F, 3.0F);
             poseStack.translate(-0.125F, 0.125F, 0.0F);
             TextureAtlasSprite atlasSprite = decoration.atlasSprite;
             if (atlasSprite != null) {
-               float z = (float)count * -0.001F;
+               float z = count * -0.001F;
                submitNodeCollector.submitCustomGeometry(poseStack, RenderTypes.text(atlasSprite.atlasLocation()), (pose, buffer) -> {
                   buffer.addVertex(pose, -1.0F, 1.0F, z).setColor(-1).setUv(atlasSprite.getU0(), atlasSprite.getV0()).setLight(lightCoords);
                   buffer.addVertex(pose, 1.0F, 1.0F, z).setColor(-1).setUv(atlasSprite.getU1(), atlasSprite.getV0()).setLight(lightCoords);
@@ -65,10 +65,10 @@ public class MapRenderer {
 
             if (decoration.name != null) {
                Font font = Minecraft.getInstance().font;
-               float width = (float)font.width(decoration.name);
+               float width = font.width(decoration.name);
                float scale = Mth.clamp(25.0F / width, 0.0F, 6.0F / 9.0F);
                poseStack.pushPose();
-               poseStack.translate((float)decoration.x / 2.0F + 64.0F - width * scale / 2.0F, (float)decoration.y / 2.0F + 64.0F + 4.0F, -0.025F);
+               poseStack.translate(decoration.x / 2.0F + 64.0F - width * scale / 2.0F, decoration.y / 2.0F + 64.0F + 4.0F, -0.025F);
                poseStack.scale(scale, scale, -1.0F);
                poseStack.translate(0.0F, 0.0F, 0.1F);
                submitNodeCollector.order(1)

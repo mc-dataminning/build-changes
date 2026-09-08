@@ -16,11 +16,9 @@ public class AvoidEntityGoal<T extends LivingEntity> extends Goal {
    protected final PathfinderMob mob;
    private final double walkSpeedModifier;
    private final double sprintSpeedModifier;
-   @Nullable
-   protected T toAvoid;
+   protected @Nullable T toAvoid;
    protected final float maxDist;
-   @Nullable
-   protected Path path;
+   protected @Nullable Path path;
    protected final PathNavigation pathNav;
    protected final Class<T> avoidClass;
    protected final Predicate<? super LivingEntity> avoidPredicate;
@@ -52,7 +50,7 @@ public class AvoidEntityGoal<T extends LivingEntity> extends Goal {
       this.pathNav = mob.getNavigation();
       this.setFlags(EnumSet.of(Goal.Flag.MOVE));
       this.avoidEntityTargeting = TargetingConditions.forCombat()
-         .range((double)maxDist)
+         .range(maxDist)
          .selector((target, level) -> predicateOnAvoidEntity.test(target) && avoidPredicate.test(target));
    }
 
@@ -71,9 +69,7 @@ public class AvoidEntityGoal<T extends LivingEntity> extends Goal {
    public boolean canUse() {
       this.toAvoid = getServerLevel(this.mob)
          .getNearestEntity(
-            this.mob
-               .level()
-               .getEntitiesOfClass(this.avoidClass, this.mob.getBoundingBox().inflate((double)this.maxDist, 3.0, (double)this.maxDist), entity -> true),
+            this.mob.level().getEntitiesOfClass(this.avoidClass, this.mob.getBoundingBox().inflate(this.maxDist, 3.0, this.maxDist), entity -> true),
             this.avoidEntityTargeting,
             this.mob,
             this.mob.getX(),
@@ -82,17 +78,19 @@ public class AvoidEntityGoal<T extends LivingEntity> extends Goal {
          );
       if (this.toAvoid == null) {
          return false;
-      } else {
-         Vec3 pos = DefaultRandomPos.getPosAway(this.mob, 16, 7, this.toAvoid.position());
-         if (pos == null) {
-            return false;
-         } else if (this.toAvoid.distanceToSqr(pos.x, pos.y, pos.z) < this.toAvoid.distanceToSqr(this.mob)) {
-            return false;
-         } else {
-            this.path = this.pathNav.createPath(pos.x, pos.y, pos.z, 0);
-            return this.path != null;
-         }
       }
+
+      Vec3 pos = DefaultRandomPos.getPosAway(this.mob, 16, 7, this.toAvoid.position());
+      if (pos == null) {
+         return false;
+      }
+
+      if (this.toAvoid.distanceToSqr(pos.x, pos.y, pos.z) < this.toAvoid.distanceToSqr(this.mob)) {
+         return false;
+      }
+
+      this.path = this.pathNav.createPath(pos.x, pos.y, pos.z, 0);
+      return this.path != null;
    }
 
    @Override

@@ -16,16 +16,16 @@ public record ChunkPyramid(ImmutableList<ChunkStep> steps) {
       .step(
          ChunkStatus.TERRAIN,
          s -> s.addRequirement(ChunkStatus.STRUCTURE_STARTS, 8)
-               .addRequirement(ChunkStatus.BIOMES, 1)
-               .blockStateWriteRadius(0)
-               .setTask(ChunkStatusTasks::buildTerrain)
+            .addRequirement(ChunkStatus.BIOMES, 1)
+            .blockStateWriteRadius(0)
+            .setTask(ChunkStatusTasks::buildTerrain)
       )
       .step(
          ChunkStatus.FEATURES,
          s -> s.addRequirement(ChunkStatus.STRUCTURE_STARTS, 8)
-               .addRequirement(ChunkStatus.TERRAIN, 1)
-               .blockStateWriteRadius(1)
-               .setTask(ChunkStatusTasks::generateFeatures)
+            .addRequirement(ChunkStatus.TERRAIN, 1)
+            .blockStateWriteRadius(1)
+            .setTask(ChunkStatusTasks::generateFeatures)
       )
       .step(ChunkStatus.INITIALIZE_LIGHT, s -> s.setTask(ChunkStatusTasks::initializeLight))
       .step(ChunkStatus.LIGHT, s -> s.addRequirement(ChunkStatus.INITIALIZE_LIGHT, 1).setTask(ChunkStatusTasks::light))

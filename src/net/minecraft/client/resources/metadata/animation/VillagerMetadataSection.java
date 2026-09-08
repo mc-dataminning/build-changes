@@ -8,11 +8,11 @@ import net.minecraft.util.StringRepresentable;
 public record VillagerMetadataSection(VillagerMetadataSection.Hat hat) {
    public static final Codec<VillagerMetadataSection> CODEC = RecordCodecBuilder.create(
       i -> i.group(VillagerMetadataSection.Hat.CODEC.optionalFieldOf("hat", VillagerMetadataSection.Hat.NONE).forGetter(VillagerMetadataSection::hat))
-            .apply(i, VillagerMetadataSection::new)
+         .apply(i, VillagerMetadataSection::new)
    );
    public static final MetadataSectionType<VillagerMetadataSection> TYPE = new MetadataSectionType<>("villager", CODEC);
 
-   public static enum Hat implements StringRepresentable {
+   public enum Hat implements StringRepresentable {
       NONE("none"),
       PARTIAL("partial"),
       FULL("full");
@@ -20,7 +20,7 @@ public record VillagerMetadataSection(VillagerMetadataSection.Hat hat) {
       public static final Codec<VillagerMetadataSection.Hat> CODEC = StringRepresentable.fromEnum(VillagerMetadataSection.Hat::values);
       private final String name;
 
-      private Hat(final String name) {
+      Hat(final String name) {
          this.name = name;
       }
 

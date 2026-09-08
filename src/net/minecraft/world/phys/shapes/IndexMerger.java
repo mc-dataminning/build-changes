@@ -9,7 +9,7 @@ public interface IndexMerger {
 
    int size();
 
-   public interface IndexConsumer {
+   interface IndexConsumer {
       boolean merge(int firstIndex, int secondIndex, int resultIndex);
    }
 }

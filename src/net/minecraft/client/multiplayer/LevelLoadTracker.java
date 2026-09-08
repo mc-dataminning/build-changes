@@ -21,12 +21,9 @@ public class LevelLoadTracker implements LevelLoadListener {
    private static final long CLIENT_WAIT_TIMEOUT_MS = TimeUnit.SECONDS.toMillis(30L);
    public static final long LEVEL_LOAD_CLOSE_DELAY_MS = 500L;
    private final LevelLoadProgressTracker serverProgressTracker = new LevelLoadProgressTracker(true);
-   @Nullable
-   private ChunkLoadStatusView serverChunkStatusView;
-   @Nullable
-   private volatile LevelLoadListener.Stage serverStage;
-   @Nullable
-   private LevelLoadTracker.ClientState clientState;
+   private @Nullable ChunkLoadStatusView serverChunkStatusView;
+   private volatile LevelLoadListener.@Nullable Stage serverStage;
+   private LevelLoadTracker.@Nullable ClientState clientState;
    private final long closeDelayMs;
 
    public LevelLoadTracker() {
@@ -52,22 +49,7 @@ public class LevelLoadTracker implements LevelLoadListener {
    }
 
    public boolean isLevelReady() {
-      if (this.clientState instanceof LevelLoadTracker.ClientLevelReady var3) {
-         LevelLoadTracker.ClientLevelReady var10000 = var3;
-
-         try {
-            var10 = var10000.readyAt();
-         } catch (Throwable var9) {
-            throw new MatchException(var9.toString(), var9);
-         }
-
-         long var5 = var10;
-         if (true && Util.getMillis() >= var5 + this.closeDelayMs) {
-            return true;
-         }
-      }
-
-      return false;
+      return this.clientState instanceof LevelLoadTracker.ClientLevelReady(long readyAt) && Util.getMillis() >= readyAt + this.closeDelayMs;
    }
 
    public void loadingPacketsReceived() {
@@ -99,8 +81,7 @@ public class LevelLoadTracker implements LevelLoadListener {
       }
    }
 
-   @Nullable
-   public ChunkLoadStatusView statusView() {
+   public @Nullable ChunkLoadStatusView statusView() {
       return this.serverChunkStatusView;
    }
 
@@ -112,14 +93,13 @@ public class LevelLoadTracker implements LevelLoadListener {
       return this.serverStage != null;
    }
 
-   @Nullable
-   public Runnable getPlayerCompiledSectionCallback() {
+   public @Nullable Runnable getPlayerCompiledSectionCallback() {
       return this.clientState instanceof LevelLoadTracker.WaitingForPlayerChunk waitingForPlayerChunk
          ? () -> waitingForPlayerChunk.playerSectionReady().set(true)
          : null;
    }
 
-   private static record ClientLevelReady(long readyAt) implements LevelLoadTracker.ClientState {
+   private record ClientLevelReady(long readyAt) implements LevelLoadTracker.ClientState {
    }
 
    private sealed interface ClientState permits LevelLoadTracker.ClientLevelReady, LevelLoadTracker.WaitingForPlayerChunk, LevelLoadTracker.WaitingForServer {
@@ -132,11 +112,11 @@ public class LevelLoadTracker implements LevelLoadListener {
       }
    }
 
-   private static record WaitingForPlayerChunk(LocalPlayer player, ClientLevel level, AtomicBoolean playerSectionReady, long timeoutAfter)
+   private record WaitingForPlayerChunk(LocalPlayer player, ClientLevel level, AtomicBoolean playerSectionReady, long timeoutAfter)
       implements LevelLoadTracker.ClientState {
       @Override
       public LevelLoadTracker.ClientState tick() {
-         return (LevelLoadTracker.ClientState)(this.isReady() ? new LevelLoadTracker.ClientLevelReady(Util.getMillis()) : this);
+         return this.isReady() ? new LevelLoadTracker.ClientLevelReady(Util.getMillis()) : this;
       }
 
       private boolean isReady() {
@@ -152,7 +132,7 @@ public class LevelLoadTracker implements LevelLoadListener {
       }
    }
 
-   private static record WaitingForServer(LocalPlayer player, ClientLevel level, long timeoutAfter) implements LevelLoadTracker.ClientState {
+   private record WaitingForServer(LocalPlayer player, ClientLevel level, long timeoutAfter) implements LevelLoadTracker.ClientState {
       @Override
       public LevelLoadTracker.ClientState loadingPacketsReceived() {
          return new LevelLoadTracker.WaitingForPlayerChunk(this.player, this.level, new AtomicBoolean(), this.timeoutAfter);

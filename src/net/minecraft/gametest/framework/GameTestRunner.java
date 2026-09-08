@@ -7,7 +7,6 @@ import it.unimi.dsi.fastutil.longs.LongArraySet;
 import it.unimi.dsi.fastutil.longs.LongSet;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import net.minecraft.server.MinecraftServer;
@@ -29,8 +28,7 @@ public class GameTestRunner {
    private final List<GameTestInfo> scheduledForRerun = Lists.newArrayList();
    private final GameTestRunner.GameTestBatcher testBatcher;
    private boolean stopped = true;
-   @Nullable
-   private TestEnvironmentDefinition.Activation<?> currentEnvironment;
+   private TestEnvironmentDefinition.@Nullable Activation<?> currentEnvironment;
    private final GameTestRunner.StructureSpawner existingStructureSpawner;
    private final GameTestRunner.StructureSpawner newStructureSpawner;
    private final boolean haltOnError;
@@ -114,10 +112,6 @@ public class GameTestRunner {
          final MultipleTestTracker currentBatchTracker = new MultipleTestTracker();
          testInfosForThisBatch.forEach(currentBatchTracker::addTestToTrack);
          currentBatchTracker.addListener(new GameTestListener() {
-            {
-               Objects.requireNonNull(GameTestRunner.this);
-            }
-
             private void testCompleted(final GameTestInfo testInfo) {
                if (currentBatchTracker.isDone()) {
                   GameTestRunner.this.batchListeners.forEach(listener -> listener.testBatchFinished(currentBatch));

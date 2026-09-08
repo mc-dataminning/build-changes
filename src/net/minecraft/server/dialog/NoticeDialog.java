@@ -11,10 +11,10 @@ public record NoticeDialog(CommonDialogData common, ActionButton action) impleme
    public static final ActionButton DEFAULT_ACTION = new ActionButton(new CommonButtonData(CommonComponents.GUI_OK, 150), Optional.empty());
    public static final MapCodec<NoticeDialog> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               CommonDialogData.MAP_CODEC.forGetter(NoticeDialog::common),
-               ActionButton.CODEC.optionalFieldOf("action", DEFAULT_ACTION).forGetter(NoticeDialog::action)
-            )
-            .apply(i, NoticeDialog::new)
+            CommonDialogData.MAP_CODEC.forGetter(NoticeDialog::common),
+            ActionButton.CODEC.optionalFieldOf("action", DEFAULT_ACTION).forGetter(NoticeDialog::action)
+         )
+         .apply(i, NoticeDialog::new)
    );
 
    @Override

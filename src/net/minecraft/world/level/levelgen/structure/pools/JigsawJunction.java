@@ -64,7 +64,9 @@ public class JigsawJunction {
    public boolean equals(final Object o) {
       if (this == o) {
          return true;
-      } else if (o != null && this.getClass() == o.getClass()) {
+      }
+
+      if (o != null && this.getClass() == o.getClass()) {
          JigsawJunction that = (JigsawJunction)o;
          if (this.sourceX != that.sourceX) {
             return false;

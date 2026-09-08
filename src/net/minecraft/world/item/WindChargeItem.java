@@ -56,9 +56,9 @@ public class WindChargeItem extends Item implements ProjectileItem {
    @Override
    public Projectile asProjectile(final Level level, final Position position, final ItemStack itemStack, final Direction direction) {
       RandomSource random = level.getRandom();
-      double dirX = random.triangle((double)direction.getStepX(), 0.11485000000000001);
-      double dirY = random.triangle((double)direction.getStepY(), 0.11485000000000001);
-      double dirZ = random.triangle((double)direction.getStepZ(), 0.11485000000000001);
+      double dirX = random.triangle(direction.getStepX(), 0.11485000000000001);
+      double dirY = random.triangle(direction.getStepY(), 0.11485000000000001);
+      double dirZ = random.triangle(direction.getStepZ(), 0.11485000000000001);
       Vec3 dir = new Vec3(dirX, dirY, dirZ);
       WindCharge windCharge = new WindCharge(level, position.x(), position.y(), position.z(), dir);
       windCharge.setDeltaMovement(dir);

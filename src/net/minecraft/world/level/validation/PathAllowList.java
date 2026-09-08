@@ -27,22 +27,22 @@ public class PathAllowList implements PathMatcher {
          List<PathMatcher> compiledMatchers;
          try {
             compiledMatchers = this.entries.stream().map(e -> e.compile(fileSystem)).toList();
-         } catch (Exception var5) {
-            LOGGER.error("Failed to compile file pattern list", var5);
+         } catch (Exception e) {
+            LOGGER.error("Failed to compile file pattern list", e);
             return path -> false;
          }
          return switch (compiledMatchers.size()) {
             case 0 -> path -> false;
             case 1 -> (PathMatcher)compiledMatchers.get(0);
             default -> path -> {
-            for (PathMatcher matcher : compiledMatchers) {
-               if (matcher.matches(path)) {
-                  return true;
+               for (PathMatcher matcher : compiledMatchers) {
+                  if (matcher.matches(path)) {
+                     return true;
+                  }
                }
-            }
 
-            return false;
-         };
+               return false;
+            };
          };
       });
    }
@@ -56,7 +56,7 @@ public class PathAllowList implements PathMatcher {
       return new PathAllowList(reader.lines().flatMap(line -> PathAllowList.ConfigEntry.parse(line).stream()).toList());
    }
 
-   public static record ConfigEntry(PathAllowList.EntryType type, String pattern) {
+   public record ConfigEntry(PathAllowList.EntryType type, String pattern) {
       public PathMatcher compile(final FileSystem fileSystem) {
          return this.type().compile(fileSystem, this.pattern);
       }
@@ -64,23 +64,25 @@ public class PathAllowList implements PathMatcher {
       public static Optional<PathAllowList.ConfigEntry> parse(final String definition) {
          if (definition.isBlank() || definition.startsWith("#")) {
             return Optional.empty();
-         } else if (!definition.startsWith("[")) {
-            return Optional.of(new PathAllowList.ConfigEntry(PathAllowList.EntryType.PREFIX, definition));
-         } else {
-            int split = definition.indexOf(93, 1);
-            if (split == -1) {
-               throw new IllegalArgumentException("Unterminated type in line '" + definition + "'");
-            } else {
-               String type = definition.substring(1, split);
-               String contents = definition.substring(split + 1);
-
-               return switch (type) {
-                  case "glob", "regex" -> Optional.of(new PathAllowList.ConfigEntry(PathAllowList.EntryType.FILESYSTEM, type + ":" + contents));
-                  case "prefix" -> Optional.of(new PathAllowList.ConfigEntry(PathAllowList.EntryType.PREFIX, contents));
-                  default -> throw new IllegalArgumentException("Unsupported definition type in line '" + definition + "'");
-               };
-            }
          }
+
+         if (!definition.startsWith("[")) {
+            return Optional.of(new PathAllowList.ConfigEntry(PathAllowList.EntryType.PREFIX, definition));
+         }
+
+         int split = definition.indexOf(93, 1);
+         if (split == -1) {
+            throw new IllegalArgumentException("Unterminated type in line '" + definition + "'");
+         }
+
+         String type = definition.substring(1, split);
+         String contents = definition.substring(split + 1);
+
+         return switch (type) {
+            case "glob", "regex" -> Optional.of(new PathAllowList.ConfigEntry(PathAllowList.EntryType.FILESYSTEM, type + ":" + contents));
+            case "prefix" -> Optional.of(new PathAllowList.ConfigEntry(PathAllowList.EntryType.PREFIX, contents));
+            default -> throw new IllegalArgumentException("Unsupported definition type in line '" + definition + "'");
+         };
       }
 
       @VisibleForTesting

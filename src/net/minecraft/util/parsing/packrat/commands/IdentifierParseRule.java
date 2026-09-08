@@ -13,13 +13,12 @@ public class IdentifierParseRule implements Rule<StringReader, Identifier> {
    private IdentifierParseRule() {
    }
 
-   @Nullable
-   public Identifier parse(final ParseState<StringReader> state) {
+   public @Nullable Identifier parse(final ParseState<StringReader> state) {
       state.input().skipWhitespace();
 
       try {
          return Identifier.readNonEmpty(state.input());
-      } catch (CommandSyntaxException var3) {
+      } catch (CommandSyntaxException e) {
          return null;
       }
    }

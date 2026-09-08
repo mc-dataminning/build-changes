@@ -35,7 +35,7 @@ public class TutorialToast implements Toast {
       final Font font,
       final TutorialToast.Icons icon,
       final Component title,
-      @Nullable final Component message,
+      final @Nullable Component message,
       final boolean progressable,
       final int timeToDisplayMs
    ) {
@@ -50,7 +50,7 @@ public class TutorialToast implements Toast {
       this.timeToDisplayMs = timeToDisplayMs;
    }
 
-   public TutorialToast(final Font font, final TutorialToast.Icons icon, final Component title, @Nullable final Component message, final boolean progressable) {
+   public TutorialToast(final Font font, final TutorialToast.Icons icon, final Component title, final @Nullable Component message, final boolean progressable) {
       this(font, icon, title, message, progressable, 0);
    }
 
@@ -62,10 +62,10 @@ public class TutorialToast implements Toast {
    @Override
    public void update(final ToastManager manager, final long fullyVisibleForMs) {
       if (this.timeToDisplayMs > 0) {
-         this.progress = Math.min((float)fullyVisibleForMs / (float)this.timeToDisplayMs, 1.0F);
+         this.progress = Math.min((float)fullyVisibleForMs / this.timeToDisplayMs, 1.0F);
          this.smoothedProgress = this.progress;
          this.lastSmoothingTime = fullyVisibleForMs;
-         if (fullyVisibleForMs > (long)this.timeToDisplayMs) {
+         if (fullyVisibleForMs > this.timeToDisplayMs) {
             this.hide();
          }
       } else if (this.progressable) {
@@ -117,7 +117,7 @@ public class TutorialToast implements Toast {
       this.progress = progress;
    }
 
-   public static enum Icons {
+   public enum Icons {
       MOVEMENT_KEYS(Identifier.withDefaultNamespace("toast/movement_keys")),
       MOUSE(Identifier.withDefaultNamespace("toast/mouse")),
       TREE(Identifier.withDefaultNamespace("toast/tree")),
@@ -128,7 +128,7 @@ public class TutorialToast implements Toast {
 
       private final Identifier sprite;
 
-      private Icons(final Identifier sprite) {
+      Icons(final Identifier sprite) {
          this.sprite = sprite;
       }
 

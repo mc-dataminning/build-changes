@@ -10,10 +10,10 @@ import net.minecraft.resources.Identifier;
 public class IdentifierPattern {
    public static final Codec<IdentifierPattern> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ExtraCodecs.PATTERN.optionalFieldOf("namespace").forGetter(o -> o.namespacePattern),
-               ExtraCodecs.PATTERN.optionalFieldOf("path").forGetter(o -> o.pathPattern)
-            )
-            .apply(i, IdentifierPattern::new)
+            ExtraCodecs.PATTERN.optionalFieldOf("namespace").forGetter(o -> o.namespacePattern),
+            ExtraCodecs.PATTERN.optionalFieldOf("path").forGetter(o -> o.pathPattern)
+         )
+         .apply(i, IdentifierPattern::new)
    );
    private final Optional<Pattern> namespacePattern;
    private final Predicate<String> namespacePredicate;

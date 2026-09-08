@@ -165,15 +165,14 @@ public class SkeletonHorse extends AbstractHorse {
       }
    }
 
-   @Nullable
    @Override
-   public AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       return EntityTypes.SKELETON_HORSE.create(level, EntitySpawnReason.BREEDING);
    }
 
    @Override
    public InteractionResult mobInteract(final Player player, final InteractionHand hand) {
-      return (InteractionResult)(!this.isTamed() ? InteractionResult.PASS : super.mobInteract(player, hand));
+      return !this.isTamed() ? InteractionResult.PASS : super.mobInteract(player, hand);
    }
 
    @Override

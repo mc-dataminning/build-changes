@@ -26,8 +26,7 @@ public class RestrictionsScreen extends Screen {
    private final Screen previousScreen;
    private final ChatAbilities chatAbilities;
    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-   @Nullable
-   private ScrollableLayout bodyScroll;
+   private @Nullable ScrollableLayout bodyScroll;
 
    public RestrictionsScreen(final Screen previousScreen, final ChatAbilities chatAbilities) {
       super(TITLE);
@@ -58,8 +57,8 @@ public class RestrictionsScreen extends Screen {
                restriction.action()
                   .ifPresent(
                      action -> body.addChild(
-                           Button.builder(action.title(), var2x -> action.runnable().accept(this.minecraft, this.previousScreen)).width(200).build()
-                        )
+                        Button.builder(action.title(), var2x -> action.runnable().accept(this.minecraft, this.previousScreen)).width(200).build()
+                     )
                   );
             }
          );

@@ -16,10 +16,6 @@ public class LecternScreen extends BookViewScreen implements MenuAccess<LecternM
    private static final Component TAKE_BOOK_LABEL = Component.translatable("lectern.take_book");
    private final LecternMenu menu;
    private final ContainerListener listener = new ContainerListener() {
-      {
-         Objects.requireNonNull(LecternScreen.this);
-      }
-
       @Override
       public void slotChanged(final AbstractContainerMenu container, final int slotIndex, final ItemStack itemStack) {
          LecternScreen.this.bookChanged();

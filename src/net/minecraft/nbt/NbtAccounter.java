@@ -39,29 +39,31 @@ public class NbtAccounter {
    public void accountBytes(final long size) {
       if (size < 0L) {
          throw new IllegalArgumentException("Tried to account NBT tag with negative size: " + size);
-      } else if (this.usage + size > this.quota) {
+      }
+
+      if (this.usage + size > this.quota) {
          throw new NbtAccounterException(
             "Tried to read NBT tag that was too big; tried to allocate: " + this.usage + " + " + size + " bytes where max allowed: " + this.quota
          );
-      } else {
-         this.usage += size;
       }
+
+      this.usage += size;
    }
 
    public void pushDepth() {
       if (this.depth >= this.maxDepth) {
          throw new NbtAccounterException("Tried to read NBT tag with too high complexity, depth > " + this.maxDepth);
-      } else {
-         this.depth++;
       }
+
+      this.depth++;
    }
 
    public void popDepth() {
       if (this.depth <= 0) {
          throw new NbtAccounterException("NBT-Accounter tried to pop stack-depth at top-level");
-      } else {
-         this.depth--;
       }
+
+      this.depth--;
    }
 
    @VisibleForTesting

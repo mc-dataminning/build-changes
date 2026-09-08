@@ -50,10 +50,7 @@ public class CopperGolemStatueBlock extends BaseEntityBlock implements SimpleWat
       super(properties);
       this.weatheringState = weatherState;
       this.registerDefaultState(
-         this.defaultBlockState()
-            .setValue(FACING, Direction.NORTH)
-            .setValue(POSE, CopperGolemStatueBlock.Pose.STANDING)
-            .setValue(WATERLOGGED, Boolean.valueOf(false))
+         this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(POSE, CopperGolemStatueBlock.Pose.STANDING).setValue(WATERLOGGED, false)
       );
    }
 
@@ -68,7 +65,7 @@ public class CopperGolemStatueBlock extends BaseEntityBlock implements SimpleWat
       FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
       return this.defaultBlockState()
          .setValue(FACING, context.getHorizontalDirection().getOpposite())
-         .setValue(WATERLOGGED, Boolean.valueOf(replacedFluidState.is(Fluids.WATER)));
+         .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
    }
 
    @Override
@@ -102,10 +99,10 @@ public class CopperGolemStatueBlock extends BaseEntityBlock implements SimpleWat
    ) {
       if (itemStack.is(ItemTags.AXES)) {
          return InteractionResult.PASS;
-      } else {
-         this.updatePose(level, state, pos, player);
-         return InteractionResult.SUCCESS;
       }
+
+      this.updatePose(level, state, pos, player);
+      return InteractionResult.SUCCESS;
    }
 
    protected void updatePose(final Level level, final BlockState state, final BlockPos pos, final Player player) {
@@ -119,9 +116,8 @@ public class CopperGolemStatueBlock extends BaseEntityBlock implements SimpleWat
       return type == PathComputationType.WATER && state.getFluidState().is(FluidTags.WATER);
    }
 
-   @Nullable
    @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
+   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
       return new CopperGolemStatueBlockEntity(worldPosition, blockState);
    }
 
@@ -175,7 +171,7 @@ public class CopperGolemStatueBlock extends BaseEntityBlock implements SimpleWat
       return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
    }
 
-   public static enum Pose implements StringRepresentable {
+   public enum Pose implements StringRepresentable {
       STANDING("standing"),
       SITTING("sitting"),
       RUNNING("running"),
@@ -185,7 +181,7 @@ public class CopperGolemStatueBlock extends BaseEntityBlock implements SimpleWat
       public static final Codec<CopperGolemStatueBlock.Pose> CODEC = StringRepresentable.fromEnum(CopperGolemStatueBlock.Pose::values);
       private final String name;
 
-      private Pose(final String name) {
+      Pose(final String name) {
          this.name = name;
       }
 

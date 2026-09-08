@@ -16,7 +16,7 @@ public enum InteractionHand {
    public static final StreamCodec<ByteBuf, InteractionHand> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, h -> h.id);
    private final int id;
 
-   private InteractionHand(final int id) {
+   InteractionHand(final int id) {
       this.id = id;
    }
 

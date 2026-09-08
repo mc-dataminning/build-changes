@@ -73,8 +73,8 @@ public class HashCache {
       if (Files.isReadable(providerCachePath)) {
          try {
             return HashCache.ProviderCache.load(rootDir, providerCachePath);
-         } catch (Exception var3) {
-            LOGGER.warn("Failed to parse cache {}, discarding", providerCachePath, var3);
+         } catch (Exception e) {
+            LOGGER.warn("Failed to parse cache {}, discarding", providerCachePath, e);
          }
       }
 
@@ -90,10 +90,10 @@ public class HashCache {
       HashCache.ProviderCache existingCache = this.caches.get(providerId);
       if (existingCache == null) {
          throw new IllegalStateException("Provider not registered: " + providerId);
-      } else {
-         HashCache.CacheUpdater output = new HashCache.CacheUpdater(providerId, this.versionId, existingCache);
-         return function.update(output).thenApply(unused -> output.close());
       }
+
+      HashCache.CacheUpdater output = new HashCache.CacheUpdater(providerId, this.versionId, existingCache);
+      return function.update(output).thenApply(unused -> output.close());
    }
 
    public void applyUpdate(final HashCache.UpdateResult result) {
@@ -115,28 +115,24 @@ public class HashCache {
       final MutableInt found = new MutableInt();
       final MutableInt removed = new MutableInt();
       Files.walkFileTree(this.rootDir, new SimpleFileVisitor<Path>() {
-         {
-            Objects.requireNonNull(HashCache.this);
-         }
-
          public FileVisitResult visitFile(final Path file, final BasicFileAttributes attrs) {
             if (HashCache.this.cachePaths.contains(file)) {
                return FileVisitResult.CONTINUE;
-            } else {
-               found.increment();
-               if (allowedFiles.contains(file)) {
-                  return FileVisitResult.CONTINUE;
-               } else {
-                  try {
-                     Files.delete(file);
-                  } catch (IOException var4) {
-                     HashCache.LOGGER.warn("Failed to delete file {}", file, var4);
-                  }
-
-                  removed.increment();
-                  return FileVisitResult.CONTINUE;
-               }
             }
+
+            found.increment();
+            if (allowedFiles.contains(file)) {
+               return FileVisitResult.CONTINUE;
+            }
+
+            try {
+               Files.delete(file);
+            } catch (IOException e) {
+               HashCache.LOGGER.warn("Failed to delete file {}", file, e);
+            }
+
+            removed.increment();
+            return FileVisitResult.CONTINUE;
          }
       });
       LOGGER.info(
@@ -166,15 +162,15 @@ public class HashCache {
       public void writeIfNeeded(final Path path, final byte[] input, final HashCode hash) throws IOException {
          if (this.closed) {
             throw new IllegalStateException("Cannot write to cache as it has already been closed");
-         } else {
-            if (this.shouldWrite(path, hash)) {
-               this.writes.incrementAndGet();
-               Files.createDirectories(path.getParent());
-               Files.write(path, input);
-            }
-
-            this.newCache.put(path, hash);
          }
+
+         if (this.shouldWrite(path, hash)) {
+            this.writes.incrementAndGet();
+            Files.createDirectories(path.getParent());
+            Files.write(path, input);
+         }
+
+         this.newCache.put(path, hash);
       }
 
       public HashCache.UpdateResult close() {
@@ -183,9 +179,8 @@ public class HashCache {
       }
    }
 
-   private static record ProviderCache(String version, ImmutableMap<Path, HashCode> data) {
-      @Nullable
-      public HashCode get(final Path path) {
+   private record ProviderCache(String version, ImmutableMap<Path, HashCode> data) {
+      public @Nullable HashCode get(final Path path) {
          return (HashCode)this.data.get(path);
       }
 
@@ -194,7 +189,6 @@ public class HashCache {
       }
 
       public static HashCache.ProviderCache load(final Path rootDir, final Path cacheFile) throws IOException {
-         HashCache.ProviderCache var7;
          try (BufferedReader reader = Files.newBufferedReader(cacheFile, StandardCharsets.UTF_8)) {
             String header = reader.readLine();
             if (!header.startsWith("// ")) {
@@ -208,10 +202,8 @@ public class HashCache {
                int i = s.indexOf(32);
                result.put(rootDir.resolve(s.substring(i + 1)), HashCode.fromString(s.substring(0, i)));
             });
-            var7 = new HashCache.ProviderCache(savedVersionId, result.build());
+            return new HashCache.ProviderCache(savedVersionId, result.build());
          }
-
-         return var7;
       }
 
       public void save(final Path rootDir, final Path cacheFile, final String extraHeaderInfo) {
@@ -230,13 +222,13 @@ public class HashCache {
                output.write(rootDir.relativize(e.getKey()).toString());
                output.newLine();
             }
-         } catch (IOException var9) {
-            HashCache.LOGGER.warn("Unable write cachefile {}", cacheFile, var9);
+         } catch (IOException e) {
+            HashCache.LOGGER.warn("Unable write cachefile {}", cacheFile, e);
          }
       }
    }
 
-   private static record ProviderCacheBuilder(String version, ConcurrentMap<Path, HashCode> data) {
+   private record ProviderCacheBuilder(String version, ConcurrentMap<Path, HashCode> data) {
       public ProviderCacheBuilder(final String version) {
          this(version, new ConcurrentHashMap<>());
       }
@@ -255,6 +247,6 @@ public class HashCache {
       CompletableFuture<?> update(CachedOutput output);
    }
 
-   public static record UpdateResult(String providerId, HashCache.ProviderCache cache, int writes) {
+   public record UpdateResult(String providerId, HashCache.ProviderCache cache, int writes) {
    }
 }

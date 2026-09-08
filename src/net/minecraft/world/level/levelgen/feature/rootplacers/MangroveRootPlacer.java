@@ -22,8 +22,8 @@ public class MangroveRootPlacer extends RootPlacer {
    public static final int ROOT_LENGTH_LIMIT = 15;
    public static final MapCodec<MangroveRootPlacer> CODEC = RecordCodecBuilder.mapCodec(
       i -> rootPlacerParts(i)
-            .and(MangroveRootPlacement.CODEC.fieldOf("mangrove_root_placement").forGetter(c -> c.mangroveRootPlacement))
-            .apply(i, MangroveRootPlacer::new)
+         .and(MangroveRootPlacement.CODEC.fieldOf("mangrove_root_placement").forGetter(c -> c.mangroveRootPlacement))
+         .apply(i, MangroveRootPlacer::new)
    );
    private final MangroveRootPlacement mangroveRootPlacement;
 

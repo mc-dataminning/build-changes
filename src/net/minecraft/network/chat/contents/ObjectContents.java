@@ -19,10 +19,9 @@ public record ObjectContents(ObjectInfo contents, Optional<Component> fallback) 
    private static final String PLACEHOLDER = Character.toString('￼');
    public static final MapCodec<ObjectContents> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               ObjectInfos.CODEC.forGetter(ObjectContents::contents),
-               ComponentSerialization.CODEC.optionalFieldOf("fallback").forGetter(ObjectContents::fallback)
-            )
-            .apply(i, ObjectContents::new)
+            ObjectInfos.CODEC.forGetter(ObjectContents::contents), ComponentSerialization.CODEC.optionalFieldOf("fallback").forGetter(ObjectContents::fallback)
+         )
+         .apply(i, ObjectContents::new)
    );
 
    @Override

@@ -14,10 +14,10 @@ import net.minecraft.world.level.MoonPhase;
 public class Time extends NeedleDirectionHelper implements RangeSelectItemModelProperty {
    public static final MapCodec<Time> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.BOOL.optionalFieldOf("wobble", true).forGetter(NeedleDirectionHelper::wobble),
-               Time.TimeSource.CODEC.fieldOf("source").forGetter(o -> o.source)
-            )
-            .apply(i, Time::new)
+            Codec.BOOL.optionalFieldOf("wobble", true).forGetter(NeedleDirectionHelper::wobble),
+            Time.TimeSource.CODEC.fieldOf("source").forGetter(o -> o.source)
+         )
+         .apply(i, Time::new)
    );
    private final Time.TimeSource source;
    private final RandomSource randomSource = RandomSource.create();
@@ -45,7 +45,7 @@ public class Time extends NeedleDirectionHelper implements RangeSelectItemModelP
       return MAP_CODEC;
    }
 
-   public static enum TimeSource implements StringRepresentable {
+   public enum TimeSource implements StringRepresentable {
       RANDOM("random") {
          @Override
          public float get(final ClientLevel level, final ItemStack itemStack, final ItemOwner owner, final RandomSource random) {
@@ -61,14 +61,14 @@ public class Time extends NeedleDirectionHelper implements RangeSelectItemModelP
       MOON_PHASE("moon_phase") {
          @Override
          public float get(final ClientLevel level, final ItemStack itemStack, final ItemOwner owner, final RandomSource random) {
-            return (float)level.environmentAttributes().getValue(EnvironmentAttributes.MOON_PHASE, owner.position()).index() / (float)MoonPhase.COUNT;
+            return (float)level.environmentAttributes().getValue(EnvironmentAttributes.MOON_PHASE, owner.position()).index() / MoonPhase.COUNT;
          }
       };
 
       public static final Codec<Time.TimeSource> CODEC = StringRepresentable.fromEnum(Time.TimeSource::values);
       private final String name;
 
-      private TimeSource(final String name) {
+      TimeSource(final String name) {
          this.name = name;
       }
 

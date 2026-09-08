@@ -28,9 +28,9 @@ public class TorchBlock extends BaseTorchBlock {
 
    @Override
    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      double x = (double)pos.getX() + 0.5;
-      double y = (double)pos.getY() + 0.7;
-      double z = (double)pos.getZ() + 0.5;
+      double x = pos.getX() + 0.5;
+      double y = pos.getY() + 0.7;
+      double z = pos.getZ() + 0.5;
       level.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0, 0.0, 0.0);
       level.addParticle(this.flameParticle, x, y, z, 0.0, 0.0, 0.0);
    }

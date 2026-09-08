@@ -32,9 +32,9 @@ public class LegacyRandomSource implements BitRandomSource {
    public void setSeed(final long seed) {
       if (!this.seed.compareAndSet(this.seed.get(), (seed ^ 25214903917L) & 281474976710655L)) {
          throw ThreadingDetector.makeThreadingException("LegacyRandomSource", null);
-      } else {
-         this.gaussianSource.reset();
       }
+
+      this.gaussianSource.reset();
    }
 
    @Override
@@ -70,7 +70,7 @@ public class LegacyRandomSource implements BitRandomSource {
       @Override
       public RandomSource fromHashOf(final String name) {
          int positionalSeed = name.hashCode();
-         return new LegacyRandomSource((long)positionalSeed ^ this.seed);
+         return new LegacyRandomSource(positionalSeed ^ this.seed);
       }
 
       @Override

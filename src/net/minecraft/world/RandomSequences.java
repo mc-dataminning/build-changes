@@ -17,12 +17,12 @@ import net.minecraft.world.level.saveddata.SavedDataType;
 public class RandomSequences extends SavedData {
    public static final Codec<RandomSequences> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.INT.fieldOf("salt").forGetter(RandomSequences::salt),
-               Codec.BOOL.optionalFieldOf("include_world_seed", true).forGetter(RandomSequences::includeWorldSeed),
-               Codec.BOOL.optionalFieldOf("include_sequence_id", true).forGetter(RandomSequences::includeSequenceId),
-               Codec.unboundedMap(Identifier.CODEC, RandomSequence.CODEC).fieldOf("sequences").forGetter(rs -> rs.sequences)
-            )
-            .apply(i, RandomSequences::new)
+            Codec.INT.fieldOf("salt").forGetter(RandomSequences::salt),
+            Codec.BOOL.optionalFieldOf("include_world_seed", true).forGetter(RandomSequences::includeWorldSeed),
+            Codec.BOOL.optionalFieldOf("include_sequence_id", true).forGetter(RandomSequences::includeSequenceId),
+            Codec.unboundedMap(Identifier.CODEC, RandomSequence.CODEC).fieldOf("sequences").forGetter(rs -> rs.sequences)
+         )
+         .apply(i, RandomSequences::new)
    );
    public static final SavedDataType<RandomSequences> TYPE = new SavedDataType<>(
       Identifier.withDefaultNamespace("random_sequences"), RandomSequences::new, CODEC, DataFixTypes.SAVED_DATA_RANDOM_SEQUENCES
@@ -54,7 +54,7 @@ public class RandomSequences extends SavedData {
    private RandomSequence createSequence(
       final Identifier key, final long worldSeed, final int salt, final boolean includeWorldSeed, final boolean includeSequenceId
    ) {
-      long seed = (includeWorldSeed ? worldSeed : 0L) ^ (long)salt;
+      long seed = (includeWorldSeed ? worldSeed : 0L) ^ salt;
       return new RandomSequence(seed, includeSequenceId ? Optional.of(key) : Optional.empty());
    }
 
@@ -98,8 +98,6 @@ public class RandomSequences extends SavedData {
       private final RandomSource random;
 
       private DirtyMarkingRandomSource(final RandomSource random) {
-         Objects.requireNonNull(RandomSequences.this);
-         super();
          this.random = random;
       }
 

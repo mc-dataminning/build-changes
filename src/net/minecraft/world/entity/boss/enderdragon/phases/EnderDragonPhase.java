@@ -31,8 +31,8 @@ public class EnderDragonPhase<T extends DragonPhaseInstance> {
       try {
          Constructor<? extends DragonPhaseInstance> constructor = this.getConstructor();
          return constructor.newInstance(dragon);
-      } catch (Exception var3) {
-         throw new Error(var3);
+      } catch (Exception e) {
+         throw new Error(e);
       }
    }
 

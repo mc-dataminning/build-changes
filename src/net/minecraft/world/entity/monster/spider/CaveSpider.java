@@ -48,16 +48,15 @@ public class CaveSpider extends Spider {
       }
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+   public @Nullable SpawnGroupData finalizeSpawn(
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       return groupData;
    }
 
    @Override
    public Vec3 getVehicleAttachmentPoint(final Entity vehicle) {
-      return vehicle.getBbWidth() <= this.getBbWidth() ? new Vec3(0.0, 0.21875 * (double)this.getScale(), 0.0) : super.getVehicleAttachmentPoint(vehicle);
+      return vehicle.getBbWidth() <= this.getBbWidth() ? new Vec3(0.0, 0.21875 * this.getScale(), 0.0) : super.getVehicleAttachmentPoint(vehicle);
    }
 }

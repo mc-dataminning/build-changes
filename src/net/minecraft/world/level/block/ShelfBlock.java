@@ -60,9 +60,9 @@ public class ShelfBlock extends BaseEntityBlock implements SelectableSlotContain
          this.stateDefinition
             .any()
             .setValue(FACING, Direction.NORTH)
-            .setValue(POWERED, Boolean.valueOf(false))
+            .setValue(POWERED, false)
             .setValue(SIDE_CHAIN_PART, SideChainPart.UNCONNECTED)
-            .setValue(WATERLOGGED, Boolean.valueOf(false))
+            .setValue(WATERLOGGED, false)
       );
    }
 
@@ -81,9 +81,8 @@ public class ShelfBlock extends BaseEntityBlock implements SelectableSlotContain
       return type == PathComputationType.WATER && state.getFluidState().is(FluidTags.WATER);
    }
 
-   @Nullable
    @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
+   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
       return new ShelfBlockEntity(worldPosition, blockState);
    }
 
@@ -100,12 +99,12 @@ public class ShelfBlock extends BaseEntityBlock implements SelectableSlotContain
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       if (!level.isClientSide()) {
          boolean signal = level.hasNeighborSignal(pos);
          if (state.getValue(POWERED) != signal) {
-            BlockState newState = state.setValue(POWERED, Boolean.valueOf(signal));
+            BlockState newState = state.setValue(POWERED, signal);
             if (!signal) {
                newState = newState.setValue(SIDE_CHAIN_PART, SideChainPart.UNCONNECTED);
             }
@@ -122,8 +121,8 @@ public class ShelfBlock extends BaseEntityBlock implements SelectableSlotContain
       FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
       return this.defaultBlockState()
          .setValue(FACING, context.getHorizontalDirection().getOpposite())
-         .setValue(POWERED, Boolean.valueOf(context.getLevel().hasNeighborSignal(context.getClickedPos())))
-         .setValue(WATERLOGGED, Boolean.valueOf(replacedFluidState.is(Fluids.WATER)));
+         .setValue(POWERED, context.getLevel().hasNeighborSignal(context.getClickedPos()))
+         .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
    }
 
    @Override
@@ -164,7 +163,7 @@ public class ShelfBlock extends BaseEntityBlock implements SelectableSlotContain
 
          Inventory inventory = player.getInventory();
          if (level.isClientSide()) {
-            return (InteractionResult)(inventory.getSelectedItem().isEmpty() ? InteractionResult.PASS : InteractionResult.CONSUME);
+            return inventory.getSelectedItem().isEmpty() ? InteractionResult.PASS : InteractionResult.CONSUME;
          }
 
          if (!state.getValue(POWERED)) {
@@ -180,23 +179,21 @@ public class ShelfBlock extends BaseEntityBlock implements SelectableSlotContain
             }
 
             return InteractionResult.SUCCESS_SERVER.heldItemTransformedTo(itemStack);
-         }
+         } else {
+            ItemStack previousItem = inventory.getSelectedItem();
+            boolean anySwapped = this.swapHotbar(level, pos, inventory);
+            if (!anySwapped) {
+               return InteractionResult.CONSUME;
+            }
 
-         ItemStack previousItem = inventory.getSelectedItem();
-         boolean anySwapped = this.swapHotbar(level, pos, inventory);
-         if (!anySwapped) {
-            return InteractionResult.CONSUME;
+            this.playSound(level, pos, SoundEvents.SHELF_MULTI_SWAP);
+            return previousItem == inventory.getSelectedItem()
+               ? InteractionResult.SUCCESS_SERVER
+               : InteractionResult.SUCCESS_SERVER.heldItemTransformedTo(inventory.getSelectedItem());
          }
-
-         this.playSound(level, pos, SoundEvents.SHELF_MULTI_SWAP);
-         if (previousItem == inventory.getSelectedItem()) {
-            return InteractionResult.SUCCESS_SERVER;
-         }
-
-         return InteractionResult.SUCCESS_SERVER.heldItemTransformedTo(inventory.getSelectedItem());
+      } else {
+         return InteractionResult.PASS;
       }
-
-      return InteractionResult.PASS;
    }
 
    private static boolean swapSingleItem(
@@ -218,31 +215,31 @@ public class ShelfBlock extends BaseEntityBlock implements SelectableSlotContain
       List<BlockPos> connectedBlocks = this.getAllBlocksConnectedTo(level, pos);
       if (connectedBlocks.isEmpty()) {
          return false;
-      } else {
-         boolean anySwapped = false;
+      }
 
-         for (int shelfPartIndex = 0; shelfPartIndex < connectedBlocks.size(); shelfPartIndex++) {
-            ShelfBlockEntity shelfPart = (ShelfBlockEntity)level.getBlockEntity(connectedBlocks.get(shelfPartIndex));
-            if (shelfPart != null) {
-               for (int slot = 0; slot < shelfPart.getContainerSize(); slot++) {
-                  int inventorySlot = 9 - (connectedBlocks.size() - shelfPartIndex) * shelfPart.getContainerSize() + slot;
-                  if (inventorySlot >= 0 && inventorySlot <= inventory.getContainerSize()) {
-                     ItemStack placedInventoryItem = inventory.removeItemNoUpdate(inventorySlot);
-                     ItemStack removedShelfItem = shelfPart.swapItemNoUpdate(slot, placedInventoryItem);
-                     if (!placedInventoryItem.isEmpty() || !removedShelfItem.isEmpty()) {
-                        inventory.setItem(inventorySlot, removedShelfItem);
-                        anySwapped = true;
-                     }
+      boolean anySwapped = false;
+
+      for (int shelfPartIndex = 0; shelfPartIndex < connectedBlocks.size(); shelfPartIndex++) {
+         ShelfBlockEntity shelfPart = (ShelfBlockEntity)level.getBlockEntity(connectedBlocks.get(shelfPartIndex));
+         if (shelfPart != null) {
+            for (int slot = 0; slot < shelfPart.getContainerSize(); slot++) {
+               int inventorySlot = 9 - (connectedBlocks.size() - shelfPartIndex) * shelfPart.getContainerSize() + slot;
+               if (inventorySlot >= 0 && inventorySlot <= inventory.getContainerSize()) {
+                  ItemStack placedInventoryItem = inventory.removeItemNoUpdate(inventorySlot);
+                  ItemStack removedShelfItem = shelfPart.swapItemNoUpdate(slot, placedInventoryItem);
+                  if (!placedInventoryItem.isEmpty() || !removedShelfItem.isEmpty()) {
+                     inventory.setItem(inventorySlot, removedShelfItem);
+                     anySwapped = true;
                   }
                }
-
-               inventory.setChanged();
-               shelfPart.setChanged(GameEvent.ENTITY_INTERACT);
             }
-         }
 
-         return anySwapped;
+            inventory.setChanged();
+            shelfPart.setChanged(GameEvent.ENTITY_INTERACT);
+         }
       }
+
+      return anySwapped;
    }
 
    @Override

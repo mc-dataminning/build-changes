@@ -22,14 +22,14 @@ import org.jspecify.annotations.Nullable;
 public class SetLoreFunction extends LootItemConditionalFunction {
    public static final MapCodec<SetLoreFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
-            .and(
-               i.group(
-                  ComponentSerialization.CODEC.sizeLimitedListOf(256).fieldOf("lore").forGetter(f -> f.lore),
-                  ListOperation.codec(256).forGetter(f -> f.mode),
-                  LootContext.EntityTarget.CODEC.optionalFieldOf("entity").forGetter(f -> f.resolutionContext)
-               )
+         .and(
+            i.group(
+               ComponentSerialization.CODEC.sizeLimitedListOf(256).fieldOf("lore").forGetter(f -> f.lore),
+               ListOperation.codec(256).forGetter(f -> f.mode),
+               LootContext.EntityTarget.CODEC.optionalFieldOf("entity").forGetter(f -> f.resolutionContext)
             )
-            .apply(i, SetLoreFunction::new)
+         )
+         .apply(i, SetLoreFunction::new)
    );
    private final List<Component> lore;
    private final ListOperation mode;
@@ -63,14 +63,14 @@ public class SetLoreFunction extends LootItemConditionalFunction {
       return itemStack;
    }
 
-   private List<Component> updateLore(@Nullable final ItemLore itemLore, final LootContext context) {
+   private List<Component> updateLore(final @Nullable ItemLore itemLore, final LootContext context) {
       if (itemLore == null && this.lore.isEmpty()) {
          return List.of();
-      } else {
-         UnaryOperator<Component> resolver = SetNameFunction.createResolver(context, this.resolutionContext.orElse(null));
-         List<Component> resolvedLines = this.lore.stream().map(resolver).toList();
-         return this.mode.apply(itemLore.lines(), resolvedLines, 256);
       }
+
+      UnaryOperator<Component> resolver = SetNameFunction.createResolver(context, this.resolutionContext.orElse(null));
+      List<Component> resolvedLines = this.lore.stream().map(resolver).toList();
+      return this.mode.apply(itemLore.lines(), resolvedLines, 256);
    }
 
    public static SetLoreFunction.Builder setLore() {

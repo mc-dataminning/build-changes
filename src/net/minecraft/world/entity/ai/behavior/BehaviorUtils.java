@@ -94,7 +94,7 @@ public class BehaviorUtils {
    public static void throwItem(
       final LivingEntity thrower, final ItemStack item, final Vec3 targetPos, final Vec3 throwVelocity, final float handYDistanceFromEye
    ) {
-      double yHandPos = thrower.getEyeY() - (double)handYDistanceFromEye;
+      double yHandPos = thrower.getEyeY() - handYDistanceFromEye;
       ItemEntity itemEntity = new ItemEntity(thrower.level(), thrower.getX(), yHandPos, thrower.getZ(), item);
       itemEntity.setThrower(thrower);
       Vec3 throwVector = targetPos.subtract(thrower.position());
@@ -115,10 +115,10 @@ public class BehaviorUtils {
    public static boolean isWithinAttackRange(final Mob body, final LivingEntity target, final int projectileAttackRangeMargin) {
       if (body.getMainHandItem().getItem() instanceof ProjectileWeaponItem weapon && body.canUseNonMeleeWeapon(body.getMainHandItem())) {
          int maxAllowedDistance = weapon.getDefaultProjectileRange() - projectileAttackRangeMargin;
-         return body.closerThan(target, (double)maxAllowedDistance);
+         return body.closerThan(target, maxAllowedDistance);
+      } else {
+         return body.isWithinMeleeAttackRange(target);
       }
-
-      return body.isWithinMeleeAttackRange(target);
    }
 
    public static boolean isOtherTargetMuchFurtherAwayThanCurrentAttackTarget(
@@ -127,11 +127,11 @@ public class BehaviorUtils {
       Optional<LivingEntity> currentTarget = body.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET);
       if (currentTarget.isEmpty()) {
          return false;
-      } else {
-         double distSqrToCurrentTarget = body.distanceToSqr(currentTarget.get().position());
-         double distSqrToOtherTarget = body.distanceToSqr(otherTarget.position());
-         return distSqrToOtherTarget > distSqrToCurrentTarget + howMuchFurtherAway * howMuchFurtherAway;
       }
+
+      double distSqrToCurrentTarget = body.distanceToSqr(currentTarget.get().position());
+      double distSqrToOtherTarget = body.distanceToSqr(otherTarget.position());
+      return distSqrToOtherTarget > distSqrToCurrentTarget + howMuchFurtherAway * howMuchFurtherAway;
    }
 
    public static boolean canSee(final LivingEntity body, final LivingEntity target) {
@@ -156,8 +156,7 @@ public class BehaviorUtils {
       return uuidMemory.<Entity>map(uuid -> body.level().getEntity(uuid)).map(entity -> entity instanceof LivingEntity livingEntity ? livingEntity : null);
    }
 
-   @Nullable
-   public static Vec3 getRandomSwimmablePos(final PathfinderMob body, final int maxHorizontalDistance, final int maxVerticalDistance) {
+   public static @Nullable Vec3 getRandomSwimmablePos(final PathfinderMob body, final int maxHorizontalDistance, final int maxVerticalDistance) {
       Vec3 targetPos = DefaultRandomPos.getPos(body, maxHorizontalDistance, maxVerticalDistance);
       int count = 0;
 

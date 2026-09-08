@@ -63,10 +63,8 @@ public class MushroomCow extends AbstractCow implements Shearable {
       .withEyeHeight(0.69F)
       .withAttachments(EntityAttachments.builder().attach(EntityAttachment.PASSENGER, 0.0F, 0.75F, 0.0F));
    private static final String TAG_STEW_EFFECTS = "stew_effects";
-   @Nullable
-   private SuspiciousStewEffects stewEffects;
-   @Nullable
-   private UUID lastLightningBoltUUID;
+   private @Nullable SuspiciousStewEffects stewEffects;
+   private @Nullable UUID lastLightningBoltUUID;
 
    public MushroomCow(final EntityType<? extends MushroomCow> type, final Level level) {
       super(type, level);
@@ -137,50 +135,50 @@ public class MushroomCow extends AbstractCow implements Shearable {
          Optional<SuspiciousStewEffects> effectsFromItemStack = this.getEffectsFromItemStack(itemStack);
          if (effectsFromItemStack.isEmpty()) {
             return super.mobInteract(player, hand);
-         } else {
-            if (this.stewEffects != null) {
-               if (this.level() instanceof ServerLevel level) {
-                  level.sendParticles(
-                     ParticleTypes.SMOKE,
-                     this.getX(),
-                     this.getY(0.5),
-                     this.getZ(),
-                     2,
-                     0.5,
-                     0.0,
-                     0.5,
-                     0.0,
-                     0.2,
-                     0.0,
-                     ClientboundLevelParticlesPacket.RandomizationType.ALTERNATIVE_WITH_SPEED
-                  );
-               }
-            } else {
-               itemStack.consume(1, player);
-               if (this.level() instanceof ServerLevel level) {
-                  SpellParticleOption particle = SpellParticleOption.create(ParticleTypes.EFFECT, -1, 1.0F);
-                  level.sendParticles(
-                     particle,
-                     this.getX(),
-                     this.getY(0.5),
-                     this.getZ(),
-                     4,
-                     0.5,
-                     0.0,
-                     0.5,
-                     0.0,
-                     0.2,
-                     0.0,
-                     ClientboundLevelParticlesPacket.RandomizationType.ALTERNATIVE_WITH_SPEED
-                  );
-               }
+         }
 
-               this.stewEffects = effectsFromItemStack.get();
-               this.playSound(SoundEvents.MOOSHROOM_EAT, 2.0F, 1.0F);
+         if (this.stewEffects != null) {
+            if (this.level() instanceof ServerLevel level) {
+               level.sendParticles(
+                  ParticleTypes.SMOKE,
+                  this.getX(),
+                  this.getY(0.5),
+                  this.getZ(),
+                  2,
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0,
+                  0.2,
+                  0.0,
+                  ClientboundLevelParticlesPacket.RandomizationType.ALTERNATIVE_WITH_SPEED
+               );
+            }
+         } else {
+            itemStack.consume(1, player);
+            if (this.level() instanceof ServerLevel level) {
+               SpellParticleOption particle = SpellParticleOption.create(ParticleTypes.EFFECT, -1, 1.0F);
+               level.sendParticles(
+                  particle,
+                  this.getX(),
+                  this.getY(0.5),
+                  this.getZ(),
+                  4,
+                  0.5,
+                  0.0,
+                  0.5,
+                  0.0,
+                  0.2,
+                  0.0,
+                  ClientboundLevelParticlesPacket.RandomizationType.ALTERNATIVE_WITH_SPEED
+               );
             }
 
-            return InteractionResult.SUCCESS;
+            this.stewEffects = effectsFromItemStack.get();
+            this.playSound(SoundEvents.MOOSHROOM_EAT, 2.0F, 1.0F);
          }
+
+         return InteractionResult.SUCCESS;
       } else {
          return super.mobInteract(player, hand);
       }
@@ -231,9 +229,8 @@ public class MushroomCow extends AbstractCow implements Shearable {
       return MushroomCow.Variant.byId(this.entityData.get(DATA_TYPE));
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       return type == DataComponents.MOOSHROOM_VARIANT ? castComponentValue((DataComponentType<T>)type, this.getVariant()) : super.get(type);
    }
 
@@ -258,8 +255,7 @@ public class MushroomCow extends AbstractCow implements Shearable {
       return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
    }
 
-   @Nullable
-   public MushroomCow getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable MushroomCow getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       MushroomCow baby = EntityTypes.MOOSHROOM.create(level, EntitySpawnReason.BREEDING);
       if (baby != null) {
          baby.setVariant(this.getOffspringVariant((MushroomCow)partner));
@@ -281,7 +277,7 @@ public class MushroomCow extends AbstractCow implements Shearable {
       return babyVariant;
    }
 
-   public static enum Variant implements StringRepresentable {
+   public enum Variant implements StringRepresentable {
       RED("red", 0, Blocks.RED_MUSHROOM.defaultBlockState()),
       BROWN("brown", 1, Blocks.BROWN_MUSHROOM.defaultBlockState());
 
@@ -293,7 +289,7 @@ public class MushroomCow extends AbstractCow implements Shearable {
       private final int id;
       private final BlockState blockState;
 
-      private Variant(final String type, final int id, final BlockState blockState) {
+      Variant(final String type, final int id, final BlockState blockState) {
          this.type = type;
          this.id = id;
          this.blockState = blockState;

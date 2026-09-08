@@ -37,13 +37,15 @@ public class EntityCustomNameToComponentFix extends DataFix {
       Optional<String> customName = entity.getOptional(customNameF);
       if (customName.isEmpty()) {
          return ExtraDataFixUtils.cast(newEntityType, (Typed<T>)entity);
-      } else if (customName.get().isEmpty()) {
-         return Util.writeAndReadTypedOrThrow(entity, newEntityType, dynamic -> dynamic.remove("CustomName"));
-      } else {
-         String id = entity.getOptional(idF).orElse("");
-         Dynamic<?> component = fixCustomName(entity.getOps(), customName.get(), id);
-         return entity.set(customNameF, Util.readTypedOrThrow(newCustomNameType, component));
       }
+
+      if (customName.get().isEmpty()) {
+         return Util.writeAndReadTypedOrThrow(entity, newEntityType, dynamic -> dynamic.remove("CustomName"));
+      }
+
+      String id = entity.getOptional(idF).orElse("");
+      Dynamic<?> component = fixCustomName(entity.getOps(), customName.get(), id);
+      return entity.set(customNameF, Util.readTypedOrThrow(newCustomNameType, component));
    }
 
    private static <T> Dynamic<T> fixCustomName(final DynamicOps<T> ops, final String customName, final String id) {

@@ -55,8 +55,8 @@ public class FaceBakery {
       final Material.Baked material,
       final Direction facing,
       final ModelState modelState,
-      @Nullable final CuboidRotation elementRotation,
-      @Nullable final Direction shadeDirectionOverride,
+      final @Nullable CuboidRotation elementRotation,
+      final @Nullable Direction shadeDirectionOverride,
       final int lightEmission
    ) {
       CuboidFace.UVs uvs = face.uvs();
@@ -81,7 +81,7 @@ public class FaceBakery {
       final BakedQuad.MaterialInfo materialInfo,
       final Direction facing,
       final ModelState modelState,
-      @Nullable final CuboidRotation elementRotation
+      final @Nullable CuboidRotation elementRotation
    ) {
       Matrix4fc uvTransform = modelState.inverseFaceTransformation(facing);
       Vector3fc[] vertexPositions = new Vector3fc[4];
@@ -135,7 +135,7 @@ public class FaceBakery {
       final Vector3fc to,
       final BakedQuad.MaterialInfo materialInfo,
       final Transformation rotation,
-      @Nullable final CuboidRotation elementRotation,
+      final @Nullable CuboidRotation elementRotation,
       final Vector3fc[] positionOutput,
       final long[] uvOutput,
       final ModelBaker.Interner interner
@@ -181,31 +181,29 @@ public class FaceBakery {
       vertex.add(origin);
    }
 
-   @Nullable
-   private static Direction calculateFacing(final Vector3fc[] positions) {
+   private static @Nullable Direction calculateFacing(final Vector3fc[] positions) {
       Vector3f normal = new Vector3f();
       GeometryUtils.normal(positions[0], positions[1], positions[2], normal);
       return findClosestDirection(normal);
    }
 
-   @Nullable
-   private static Direction findClosestDirection(final Vector3f direction) {
+   private static @Nullable Direction findClosestDirection(final Vector3f direction) {
       if (!direction.isFinite()) {
          return null;
-      } else {
-         Direction best = null;
-         float closestProduct = 0.0F;
-
-         for (Direction candidate : Direction.values()) {
-            float product = direction.dot(candidate.getUnitVec3f());
-            if (product >= 0.0F && product > closestProduct) {
-               closestProduct = product;
-               best = candidate;
-            }
-         }
-
-         return best;
       }
+
+      Direction best = null;
+      float closestProduct = 0.0F;
+
+      for (Direction candidate : Direction.values()) {
+         float product = direction.dot(candidate.getUnitVec3f());
+         if (product >= 0.0F && product > closestProduct) {
+            closestProduct = product;
+            best = candidate;
+         }
+      }
+
+      return best;
    }
 
    private static void recalculateWinding(final Vector3fc[] positions, final long[] uvs, final Direction direction) {

@@ -20,9 +20,9 @@ public class WhiteAshParticle extends BaseAshSmokeParticle {
       final SpriteSet sprites
    ) {
       super(level, x, y, z, 0.1F, -0.1F, 0.1F, xa, ya, za, scale, sprites, 0.0F, 20, 0.0125F, false);
-      this.rCol = (float)ARGB.red(12235202) / 255.0F;
-      this.gCol = (float)ARGB.green(12235202) / 255.0F;
-      this.bCol = (float)ARGB.blue(12235202) / 255.0F;
+      this.rCol = ARGB.red(12235202) / 255.0F;
+      this.gCol = ARGB.green(12235202) / 255.0F;
+      this.bCol = ARGB.blue(12235202) / 255.0F;
    }
 
    public static class Provider implements ParticleProvider<SimpleParticleType> {
@@ -43,9 +43,9 @@ public class WhiteAshParticle extends BaseAshSmokeParticle {
          final double zAux,
          final RandomSource random
       ) {
-         double xa = (double)random.nextFloat() * -1.9 * (double)random.nextFloat() * 0.1;
-         double ya = (double)random.nextFloat() * -0.5 * (double)random.nextFloat() * 0.1 * 5.0;
-         double za = (double)random.nextFloat() * -1.9 * (double)random.nextFloat() * 0.1;
+         double xa = random.nextFloat() * -1.9 * random.nextFloat() * 0.1;
+         double ya = random.nextFloat() * -0.5 * random.nextFloat() * 0.1 * 5.0;
+         double za = random.nextFloat() * -1.9 * random.nextFloat() * 0.1;
          return new WhiteAshParticle(level, x, y, z, xa, ya, za, 1.0F, this.sprites);
       }
    }

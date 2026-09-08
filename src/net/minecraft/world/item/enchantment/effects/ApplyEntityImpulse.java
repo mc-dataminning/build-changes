@@ -16,11 +16,11 @@ import org.joml.Vector3d;
 public record ApplyEntityImpulse(Vec3 direction, Vec3 coordinateScale, LevelBasedValue magnitude) implements EnchantmentEntityEffect {
    public static final MapCodec<ApplyEntityImpulse> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Vec3.CODEC.fieldOf("direction").forGetter(ApplyEntityImpulse::direction),
-               Vec3.CODEC.fieldOf("coordinate_scale").forGetter(ApplyEntityImpulse::coordinateScale),
-               LevelBasedValue.CODEC.fieldOf("magnitude").forGetter(ApplyEntityImpulse::magnitude)
-            )
-            .apply(i, ApplyEntityImpulse::new)
+            Vec3.CODEC.fieldOf("direction").forGetter(ApplyEntityImpulse::direction),
+            Vec3.CODEC.fieldOf("coordinate_scale").forGetter(ApplyEntityImpulse::coordinateScale),
+            LevelBasedValue.CODEC.fieldOf("magnitude").forGetter(ApplyEntityImpulse::magnitude)
+         )
+         .apply(i, ApplyEntityImpulse::new)
    );
    private static final int POST_IMPULSE_CONTEXT_RESET_GRACE_TIME_TICKS = 10;
 
@@ -29,7 +29,7 @@ public record ApplyEntityImpulse(Vec3 direction, Vec3 coordinateScale, LevelBase
       Quaternionf look = entity.getLookQuaternion();
       Vector3d direction = look.transform(this.direction.x, this.direction.y, this.direction.z, new Vector3d())
          .mul(this.coordinateScale.x, this.coordinateScale.y, this.coordinateScale.z)
-         .mul((double)this.magnitude.calculate(enchantmentLevel));
+         .mul(this.magnitude.calculate(enchantmentLevel));
       entity.addDeltaMovement(new Vec3(direction.x, direction.y, direction.z));
       if (entity instanceof ServerPlayer player) {
          player.connection.send(new ClientboundSetEntityMotionPacket(entity));

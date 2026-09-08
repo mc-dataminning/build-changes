@@ -34,8 +34,8 @@ public record ClientboundMapItemDataPacket(
       final MapId mapId,
       final byte scale,
       final boolean locked,
-      @Nullable final Collection<MapDecoration> decorations,
-      @Nullable final MapItemSavedData.MapPatch colorPatch
+      final @Nullable Collection<MapDecoration> decorations,
+      final MapItemSavedData.@Nullable MapPatch colorPatch
    ) {
       this(mapId, scale, locked, decorations != null ? Optional.of(List.copyOf(decorations)) : Optional.empty(), Optional.ofNullable(colorPatch));
    }

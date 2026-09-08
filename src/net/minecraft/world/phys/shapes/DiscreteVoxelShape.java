@@ -24,29 +24,29 @@ public abstract class DiscreteVoxelShape {
    public DiscreteVoxelShape rotate(final OctahedralGroup rotation) {
       if (rotation == OctahedralGroup.IDENTITY) {
          return this;
-      } else {
-         Vector3i v = rotation.rotate(new Vector3i(this.xSize, this.ySize, this.zSize));
-         int shiftX = fixupCoordinate(v, 0);
-         int shiftY = fixupCoordinate(v, 1);
-         int shiftZ = fixupCoordinate(v, 2);
-         DiscreteVoxelShape newShape = new BitSetDiscreteVoxelShape(v.x, v.y, v.z);
+      }
 
-         for (int x = 0; x < this.xSize; x++) {
-            for (int y = 0; y < this.ySize; y++) {
-               for (int z = 0; z < this.zSize; z++) {
-                  if (this.isFull(x, y, z)) {
-                     Vector3i newPos = rotation.rotate(v.set(x, y, z));
-                     int newX = shiftX + newPos.x;
-                     int newY = shiftY + newPos.y;
-                     int newZ = shiftZ + newPos.z;
-                     newShape.fill(newX, newY, newZ);
-                  }
+      Vector3i v = rotation.rotate(new Vector3i(this.xSize, this.ySize, this.zSize));
+      int shiftX = fixupCoordinate(v, 0);
+      int shiftY = fixupCoordinate(v, 1);
+      int shiftZ = fixupCoordinate(v, 2);
+      DiscreteVoxelShape newShape = new BitSetDiscreteVoxelShape(v.x, v.y, v.z);
+
+      for (int x = 0; x < this.xSize; x++) {
+         for (int y = 0; y < this.ySize; y++) {
+            for (int z = 0; z < this.zSize; z++) {
+               if (this.isFull(x, y, z)) {
+                  Vector3i newPos = rotation.rotate(v.set(x, y, z));
+                  int newX = shiftX + newPos.x;
+                  int newY = shiftY + newPos.y;
+                  int newZ = shiftZ + newPos.z;
+                  newShape.fill(newX, newY, newZ);
                }
             }
          }
-
-         return newShape;
       }
+
+      return newShape;
    }
 
    private static int fixupCoordinate(final Vector3i v, final int index) {

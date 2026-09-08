@@ -20,12 +20,12 @@ public record ProjectedRandomPatchySquare(Holder<BlockStateProvider> block, Bloc
    implements Feature {
    public static final MapCodec<ProjectedRandomPatchySquare> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BlockStateProvider.CODEC.fieldOf("block").forGetter(ProjectedRandomPatchySquare::block),
-               BlockPredicate.CODEC.fieldOf("project_through").forGetter(ProjectedRandomPatchySquare::projectThrough),
-               IntProviders.codec(1, 16).fieldOf("size").forGetter(ProjectedRandomPatchySquare::size),
-               ExtraCodecs.NON_NEGATIVE_INT.fieldOf("max_projection_height").forGetter(ProjectedRandomPatchySquare::maxProjectionHeight)
-            )
-            .apply(i, ProjectedRandomPatchySquare::new)
+            BlockStateProvider.CODEC.fieldOf("block").forGetter(ProjectedRandomPatchySquare::block),
+            BlockPredicate.CODEC.fieldOf("project_through").forGetter(ProjectedRandomPatchySquare::projectThrough),
+            IntProviders.codec(1, 16).fieldOf("size").forGetter(ProjectedRandomPatchySquare::size),
+            ExtraCodecs.NON_NEGATIVE_INT.fieldOf("max_projection_height").forGetter(ProjectedRandomPatchySquare::maxProjectionHeight)
+         )
+         .apply(i, ProjectedRandomPatchySquare::new)
    );
 
    @Override

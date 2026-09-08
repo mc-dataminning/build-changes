@@ -32,7 +32,7 @@ public class LookControl implements Control {
    }
 
    public void setLookAt(final double x, final double y, final double z) {
-      this.setLookAt(x, y, z, (float)this.mob.getHeadRotSpeed(), (float)this.mob.getMaxHeadXRot());
+      this.setLookAt(x, y, z, this.mob.getHeadRotSpeed(), this.mob.getMaxHeadXRot());
    }
 
    public void setLookAt(final double x, final double y, final double z, final float yMaxRotSpeed, final float xMaxRotAngle) {
@@ -62,7 +62,7 @@ public class LookControl implements Control {
 
    protected void clampHeadRotationToBody() {
       if (!this.mob.getNavigation().isDone()) {
-         this.mob.yHeadRot = Mth.rotateIfNecessary(this.mob.yHeadRot, this.mob.yBodyRot, (float)this.mob.getMaxHeadYRot());
+         this.mob.yHeadRot = Mth.rotateIfNecessary(this.mob.yHeadRot, this.mob.yBodyRot, this.mob.getMaxHeadYRot());
       }
    }
 

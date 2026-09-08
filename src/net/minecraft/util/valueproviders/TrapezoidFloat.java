@@ -9,11 +9,11 @@ import net.minecraft.util.RandomSource;
 public record TrapezoidFloat(float min, float max, float plateau) implements FloatProvider {
    public static final MapCodec<TrapezoidFloat> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Codec.FLOAT.fieldOf("min").forGetter(TrapezoidFloat::min),
-                  Codec.FLOAT.fieldOf("max").forGetter(TrapezoidFloat::max),
-                  Codec.FLOAT.fieldOf("plateau").forGetter(TrapezoidFloat::plateau)
-               )
-               .apply(i, TrapezoidFloat::new)
+               Codec.FLOAT.fieldOf("min").forGetter(TrapezoidFloat::min),
+               Codec.FLOAT.fieldOf("max").forGetter(TrapezoidFloat::max),
+               Codec.FLOAT.fieldOf("plateau").forGetter(TrapezoidFloat::plateau)
+            )
+            .apply(i, TrapezoidFloat::new)
       )
       .validate(
          c -> {

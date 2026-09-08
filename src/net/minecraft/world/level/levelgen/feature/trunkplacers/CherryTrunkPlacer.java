@@ -25,20 +25,20 @@ public class CherryTrunkPlacer extends TrunkPlacer {
       .codec()
       .validate(
          u -> u.maxInclusive() - u.minInclusive() < 1
-               ? DataResult.error(() -> "Need at least 2 blocks variation for the branch starts to fit both branches")
-               : DataResult.success(u)
+            ? DataResult.error(() -> "Need at least 2 blocks variation for the branch starts to fit both branches")
+            : DataResult.success(u)
       );
    public static final MapCodec<CherryTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(
       i -> trunkPlacerParts(i)
-            .and(
-               i.group(
-                  IntProviders.codec(1, 3).fieldOf("branch_count").forGetter(t -> t.branchCount),
-                  IntProviders.codec(2, 16).fieldOf("branch_horizontal_length").forGetter(t -> t.branchHorizontalLength),
-                  IntProviders.validateCodec(-16, 0, BRANCH_START_CODEC).fieldOf("branch_start_offset_from_top").forGetter(t -> t.branchStartOffsetFromTop),
-                  IntProviders.codec(-16, 16).fieldOf("branch_end_offset_from_top").forGetter(t -> t.branchEndOffsetFromTop)
-               )
+         .and(
+            i.group(
+               IntProviders.codec(1, 3).fieldOf("branch_count").forGetter(t -> t.branchCount),
+               IntProviders.codec(2, 16).fieldOf("branch_horizontal_length").forGetter(t -> t.branchHorizontalLength),
+               IntProviders.validateCodec(-16, 0, BRANCH_START_CODEC).fieldOf("branch_start_offset_from_top").forGetter(t -> t.branchStartOffsetFromTop),
+               IntProviders.codec(-16, 16).fieldOf("branch_end_offset_from_top").forGetter(t -> t.branchEndOffsetFromTop)
             )
-            .apply(i, CherryTrunkPlacer::new)
+         )
+         .apply(i, CherryTrunkPlacer::new)
    );
    private final IntProvider branchCount;
    private final IntProvider branchHorizontalLength;
@@ -176,7 +176,7 @@ public class CherryTrunkPlacer extends TrunkPlacer {
             return new FoliagePlacer.FoliageAttachment(branchEndPos.above(), 0, false);
          }
 
-         float chanceToGrowVertically = (float)Math.abs(branchEndPos.getY() - logPos.getY()) / (float)distance;
+         float chanceToGrowVertically = (float)Math.abs(branchEndPos.getY() - logPos.getY()) / distance;
          boolean growVertically = random.nextFloat() < chanceToGrowVertically;
          logPos.move(growVertically ? verticalDirection : branchDirection);
          this.placeLog(level, trunkSetter, random, logPos, tree, growVertically ? Function.identity() : sidewaysStateModifier);

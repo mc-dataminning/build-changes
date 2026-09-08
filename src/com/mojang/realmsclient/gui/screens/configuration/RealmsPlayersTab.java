@@ -8,7 +8,6 @@ import com.mojang.realmsclient.dto.RealmsServer;
 import com.mojang.realmsclient.gui.screens.RealmsConfirmScreen;
 import com.mojang.realmsclient.util.RealmsUtil;
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -86,13 +85,10 @@ public class RealmsPlayersTab extends GridLayoutTab implements RealmsConfigurati
    }
 
    private class HeaderEntry extends RealmsPlayersTab.Entry {
-      private String cachedNumberOfInvites;
+      private String cachedNumberOfInvites = "";
       private final FocusableTextWidget invitedWidget;
 
       public HeaderEntry() {
-         Objects.requireNonNull(RealmsPlayersTab.this);
-         super();
-         this.cachedNumberOfInvites = "";
          Component invitedText = Component.translatable("mco.configure.world.invited.number", "").withStyle(ChatFormatting.UNDERLINE);
          this.invitedWidget = FocusableTextWidget.builder(invitedText, RealmsPlayersTab.this.font)
             .alwaysShowBorder(false)
@@ -136,7 +132,6 @@ public class RealmsPlayersTab extends GridLayoutTab implements RealmsConfigurati
       private static final int PLAYER_ENTRY_HEIGHT = 36;
 
       public InvitedObjectSelectionList(final int width, final int height) {
-         Objects.requireNonNull(RealmsPlayersTab.this);
          super(Minecraft.getInstance(), width, height, RealmsPlayersTab.this.configurationScreen.getHeaderHeight(), 36);
       }
 
@@ -184,8 +179,6 @@ public class RealmsPlayersTab extends GridLayoutTab implements RealmsConfigurati
       private final Button removeOpButton;
 
       public PlayerEntry(final PlayerInfo playerInfo) {
-         Objects.requireNonNull(RealmsPlayersTab.this);
-         super();
          this.playerInfo = playerInfo;
          int index = RealmsPlayersTab.this.serverData.players.indexOf(this.playerInfo);
          this.makeOpButton = SpriteIconButton.builder(NORMAL_USER_TEXT, button -> this.op(index), false)
@@ -193,10 +186,10 @@ public class RealmsPlayersTab extends GridLayoutTab implements RealmsConfigurati
             .width(16 + RealmsPlayersTab.this.configurationScreen.getFont().width(NORMAL_USER_TEXT))
             .narration(
                defaultNarrationSupplier -> CommonComponents.joinForNarration(
-                     Component.translatable("mco.invited.player.narration", playerInfo.name),
-                     defaultNarrationSupplier.get(),
-                     Component.translatable("narration.cycle_button.usage.focused", OP_TEXT)
-                  )
+                  Component.translatable("mco.invited.player.narration", playerInfo.name),
+                  defaultNarrationSupplier.get(),
+                  Component.translatable("narration.cycle_button.usage.focused", OP_TEXT)
+               )
             )
             .build();
          this.removeOpButton = SpriteIconButton.builder(OP_TEXT, button -> this.deop(index), false)
@@ -204,10 +197,10 @@ public class RealmsPlayersTab extends GridLayoutTab implements RealmsConfigurati
             .width(16 + RealmsPlayersTab.this.configurationScreen.getFont().width(OP_TEXT))
             .narration(
                defaultNarrationSupplier -> CommonComponents.joinForNarration(
-                     Component.translatable("mco.invited.player.narration", playerInfo.name),
-                     defaultNarrationSupplier.get(),
-                     Component.translatable("narration.cycle_button.usage.focused", NORMAL_USER_TEXT)
-                  )
+                  Component.translatable("mco.invited.player.narration", playerInfo.name),
+                  defaultNarrationSupplier.get(),
+                  Component.translatable("narration.cycle_button.usage.focused", NORMAL_USER_TEXT)
+               )
             )
             .build();
          this.removeButton = SpriteIconButton.builder(REMOVE_TEXT, button -> this.uninvite(index), false)
@@ -215,8 +208,8 @@ public class RealmsPlayersTab extends GridLayoutTab implements RealmsConfigurati
             .width(16 + RealmsPlayersTab.this.configurationScreen.getFont().width(REMOVE_TEXT))
             .narration(
                defaultNarrationSupplier -> CommonComponents.joinForNarration(
-                     Component.translatable("mco.invited.player.narration", playerInfo.name), defaultNarrationSupplier.get()
-                  )
+                  Component.translatable("mco.invited.player.narration", playerInfo.name), defaultNarrationSupplier.get()
+               )
             )
             .build();
          this.updateOpButtons();

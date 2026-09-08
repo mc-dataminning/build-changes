@@ -8,12 +8,12 @@ import org.jspecify.annotations.Nullable;
 public class UserBanListEntry extends BanListEntry<NameAndId> {
    private static final Component MESSAGE_UNKNOWN_USER = Component.translatable("commands.banlist.entry.unknown");
 
-   public UserBanListEntry(@Nullable final NameAndId user) {
+   public UserBanListEntry(final @Nullable NameAndId user) {
       this(user, null, null, null, null);
    }
 
    public UserBanListEntry(
-      @Nullable final NameAndId user, @Nullable final Date created, @Nullable final String source, @Nullable final Date expires, @Nullable final String reason
+      final @Nullable NameAndId user, final @Nullable Date created, final @Nullable String source, final @Nullable Date expires, final @Nullable String reason
    ) {
       super(user, created, source, expires, reason);
    }
@@ -33,6 +33,6 @@ public class UserBanListEntry extends BanListEntry<NameAndId> {
    @Override
    public Component getDisplayName() {
       NameAndId user = this.getUser();
-      return (Component)(user != null ? Component.literal(user.name()) : MESSAGE_UNKNOWN_USER);
+      return user != null ? Component.literal(user.name()) : MESSAGE_UNKNOWN_USER;
    }
 }

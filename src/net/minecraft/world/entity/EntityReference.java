@@ -40,8 +40,7 @@ public final class EntityReference<StoredEntityType extends UniquelyIdentifyable
    }
 
    @Contract("!null -> !null; null -> null")
-   @Nullable
-   public static <T extends UniquelyIdentifyable> EntityReference<T> of(@Nullable final T entity) {
+   public static <T extends UniquelyIdentifyable> @Nullable EntityReference<T> of(final @Nullable T entity) {
       return entity != null ? new EntityReference<>(entity) : null;
    }
 
@@ -53,8 +52,7 @@ public final class EntityReference<StoredEntityType extends UniquelyIdentifyable
       return (UUID)this.entity.map(uuid -> uuid, UniquelyIdentifyable::getUUID);
    }
 
-   @Nullable
-   public StoredEntityType getEntity(final UUIDLookup<? extends UniquelyIdentifyable> lookup, final Class<StoredEntityType> clazz) {
+   public @Nullable StoredEntityType getEntity(final UUIDLookup<? extends UniquelyIdentifyable> lookup, final Class<StoredEntityType> clazz) {
       Optional<StoredEntityType> stored = this.entity.right();
       if (stored.isPresent()) {
          StoredEntityType storedEntity = stored.get();
@@ -77,15 +75,13 @@ public final class EntityReference<StoredEntityType extends UniquelyIdentifyable
       return null;
    }
 
-   @Nullable
-   public StoredEntityType getEntity(final Level level, final Class<StoredEntityType> clazz) {
+   public @Nullable StoredEntityType getEntity(final Level level, final Class<StoredEntityType> clazz) {
       return Player.class.isAssignableFrom(clazz)
          ? this.getEntity(level::getPlayerInAnyDimension, clazz)
          : this.getEntity(level::getEntityInAnyDimension, clazz);
    }
 
-   @Nullable
-   private StoredEntityType resolve(@Nullable final UniquelyIdentifyable entity, final Class<StoredEntityType> clazz) {
+   private @Nullable StoredEntityType resolve(final @Nullable UniquelyIdentifyable entity, final Class<StoredEntityType> clazz) {
       return entity != null && clazz.isAssignableFrom(entity.getClass()) ? clazz.cast(entity) : null;
    }
 
@@ -97,41 +93,35 @@ public final class EntityReference<StoredEntityType extends UniquelyIdentifyable
       output.store(key, UUIDUtil.CODEC, this.getUUID());
    }
 
-   public static void store(@Nullable final EntityReference<?> reference, final ValueOutput output, final String key) {
+   public static void store(final @Nullable EntityReference<?> reference, final ValueOutput output, final String key) {
       if (reference != null) {
          reference.store(output, key);
       }
    }
 
-   @Nullable
-   public static <StoredEntityType extends UniquelyIdentifyable> StoredEntityType get(
-      @Nullable final EntityReference<StoredEntityType> reference, final Level level, final Class<StoredEntityType> clazz
+   public static <StoredEntityType extends UniquelyIdentifyable> @Nullable StoredEntityType get(
+      final @Nullable EntityReference<StoredEntityType> reference, final Level level, final Class<StoredEntityType> clazz
    ) {
       return reference != null ? reference.getEntity(level, clazz) : null;
    }
 
-   @Nullable
-   public static Entity getEntity(@Nullable final EntityReference<Entity> reference, final Level level) {
+   public static @Nullable Entity getEntity(final @Nullable EntityReference<Entity> reference, final Level level) {
       return get(reference, level, Entity.class);
    }
 
-   @Nullable
-   public static LivingEntity getLivingEntity(@Nullable final EntityReference<LivingEntity> reference, final Level level) {
+   public static @Nullable LivingEntity getLivingEntity(final @Nullable EntityReference<LivingEntity> reference, final Level level) {
       return get(reference, level, LivingEntity.class);
    }
 
-   @Nullable
-   public static Player getPlayer(@Nullable final EntityReference<Player> reference, final Level level) {
+   public static @Nullable Player getPlayer(final @Nullable EntityReference<Player> reference, final Level level) {
       return get(reference, level, Player.class);
    }
 
-   @Nullable
-   public static <StoredEntityType extends UniquelyIdentifyable> EntityReference<StoredEntityType> read(final ValueInput input, final String key) {
+   public static <StoredEntityType extends UniquelyIdentifyable> @Nullable EntityReference<StoredEntityType> read(final ValueInput input, final String key) {
       return input.<EntityReference<StoredEntityType>>read(key, codec()).orElse(null);
    }
 
-   @Nullable
-   public static <StoredEntityType extends UniquelyIdentifyable> EntityReference<StoredEntityType> readWithOldOwnerConversion(
+   public static <StoredEntityType extends UniquelyIdentifyable> @Nullable EntityReference<StoredEntityType> readWithOldOwnerConversion(
       final ValueInput input, final String key, final Level level
    ) {
       Optional<UUID> uuid = input.read(key, UUIDUtil.CODEC);
@@ -142,15 +132,7 @@ public final class EntityReference<StoredEntityType extends UniquelyIdentifyable
 
    @Override
    public boolean equals(final Object obj) {
-      if (obj == this) {
-         return true;
-      } else {
-         if (obj instanceof EntityReference<?> reference && this.getUUID().equals(reference.getUUID())) {
-            return true;
-         }
-
-         return false;
-      }
+      return obj == this ? true : obj instanceof EntityReference<?> reference && this.getUUID().equals(reference.getUUID());
    }
 
    @Override

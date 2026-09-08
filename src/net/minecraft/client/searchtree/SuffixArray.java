@@ -94,8 +94,8 @@ public class SuffixArray<T> {
       this.suffixToT = new IntArrayList(oldSuffixToT.size());
       this.offsets = new IntArrayList(oldOffsets.size());
 
-      for (int ix = 0; ix < charCount; ix++) {
-         int index = reverse[ix];
+      for (int i = 0; i < charCount; i++) {
+         int index = reverse[i];
          this.suffixToT.add(oldSuffixToT.getInt(index));
          this.offsets.add(oldOffsets.getInt(index));
       }
@@ -182,16 +182,16 @@ public class SuffixArray<T> {
          high = suffixCount;
 
          while (low < high) {
-            int midx = low + (high - low) / 2;
-            int cx = this.compare(text, midx);
+            int mid = low + (high - low) / 2;
+            int c = this.compare(text, mid);
             if (DEBUG_COMPARISONS) {
-               LOGGER.debug("comparing upper \"{}\" with {} \"{}\": {}", new Object[]{text, midx, this.getString(midx), cx});
+               LOGGER.debug("comparing upper \"{}\" with {} \"{}\": {}", new Object[]{text, mid, this.getString(mid), c});
             }
 
-            if (cx >= 0) {
-               low = midx + 1;
+            if (c >= 0) {
+               low = mid + 1;
             } else {
-               high = midx;
+               high = mid;
             }
          }
 

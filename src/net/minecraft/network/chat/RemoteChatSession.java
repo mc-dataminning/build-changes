@@ -26,7 +26,7 @@ public record RemoteChatSession(UUID sessionId, ProfilePublicKey profilePublicKe
       return this.profilePublicKey.data().hasExpired();
    }
 
-   public static record Data(UUID sessionId, ProfilePublicKey.Data profilePublicKey) {
+   public record Data(UUID sessionId, ProfilePublicKey.Data profilePublicKey) {
       public static final StreamCodec<ByteBuf, RemoteChatSession.Data> STREAM_CODEC = StreamCodec.composite(
          UUIDUtil.STREAM_CODEC,
          RemoteChatSession.Data::sessionId,

@@ -53,7 +53,7 @@ public class SlotRanges {
    });
    private static final DynamicCommandExceptionType ERROR_UNKNOWN = new DynamicCommandExceptionType(id -> Component.translatableEscape("slot.unknown", id));
    public static final Codec<SlotRange> CODEC = StringRepresentable.fromValues(() -> SLOTS.toArray(SlotRange[]::new));
-   private static final Function<String, SlotRange> NAME_LOOKUP = StringRepresentable.createNameLookup(SLOTS.toArray(SlotRange[]::new));
+   private static final Function<String, @Nullable SlotRange> NAME_LOOKUP = StringRepresentable.createNameLookup(SLOTS.toArray(SlotRange[]::new));
 
    private static SlotRange create(final String name, final int id) {
       return SlotRange.of(name, IntLists.singleton(id));
@@ -87,8 +87,7 @@ public class SlotRanges {
       output.add(create(name, values));
    }
 
-   @Nullable
-   public static SlotRange nameToIds(final String name) {
+   public static @Nullable SlotRange nameToIds(final String name) {
       return NAME_LOOKUP.apply(name);
    }
 
@@ -100,8 +99,7 @@ public class SlotRanges {
       return SLOTS.stream().filter(e -> e.size() == 1).map(StringRepresentable::getSerializedName);
    }
 
-   @Nullable
-   public static SlotRange tryRead(final StringReader reader) {
+   public static @Nullable SlotRange tryRead(final StringReader reader) {
       String name = ParserUtils.readWhile(reader, c -> c != ' ');
       return nameToIds(name);
    }

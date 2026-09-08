@@ -25,8 +25,7 @@ public class IpBanList extends StoredUserList<String, IpBanListEntry> {
       return this.contains(ip);
    }
 
-   @Nullable
-   public IpBanListEntry get(final SocketAddress address) {
+   public @Nullable IpBanListEntry get(final SocketAddress address) {
       String ip = this.getIpFromAddress(address);
       return this.get(ip);
    }

@@ -15,8 +15,7 @@ public class Resource {
    private final PackResources source;
    private final IoSupplier<InputStream> streamSupplier;
    private final IoSupplier<ResourceMetadata> metadataSupplier;
-   @Nullable
-   private ResourceMetadata cachedMetadata;
+   private @Nullable ResourceMetadata cachedMetadata;
 
    public Resource(final PackResources source, final IoSupplier<InputStream> streamSupplier, final IoSupplier<ResourceMetadata> metadataSupplier) {
       this.source = source;
@@ -52,12 +51,9 @@ public class Resource {
    }
 
    public String readAllAsString() throws IOException {
-      String var2;
       try (Reader reader = this.openAsReader()) {
-         var2 = reader.readAllAsString();
+         return reader.readAllAsString();
       }
-
-      return var2;
    }
 
    public ResourceMetadata metadata() throws IOException {

@@ -54,9 +54,9 @@ public abstract class LavaFluid extends FlowingFluid {
       BlockPos above = pos.above();
       if (level.getBlockState(above).isAir() && !level.getBlockState(above).isSolidRender()) {
          if (random.nextInt(100) == 0) {
-            double xx = (double)pos.getX() + random.nextDouble();
-            double yy = (double)pos.getY() + 1.0;
-            double zz = (double)pos.getZ() + random.nextDouble();
+            double xx = pos.getX() + random.nextDouble();
+            double yy = pos.getY() + 1.0;
+            double zz = pos.getZ() + random.nextDouble();
             level.addParticle(ParticleTypes.LAVA, xx, yy, zz, 0.0, 0.0, 0.0);
             level.playLocalSound(
                xx, yy, zz, SoundEvents.LAVA_POP, SoundSource.AMBIENT, 0.2F + random.nextFloat() * 0.2F, 0.9F + random.nextFloat() * 0.15F, false
@@ -65,9 +65,9 @@ public abstract class LavaFluid extends FlowingFluid {
 
          if (random.nextInt(200) == 0) {
             level.playLocalSound(
-               (double)pos.getX(),
-               (double)pos.getY(),
-               (double)pos.getZ(),
+               pos.getX(),
+               pos.getY(),
+               pos.getZ(),
                SoundEvents.LAVA_AMBIENT,
                SoundSource.AMBIENT,
                0.2F + random.nextFloat() * 0.2F,
@@ -137,9 +137,8 @@ public abstract class LavaFluid extends FlowingFluid {
       return level.isInsideBuildHeight(pos.getY()) && !level.hasChunkAt(pos) ? false : level.getBlockState(pos).ignitedByLava();
    }
 
-   @Nullable
    @Override
-   public ParticleOptions getDripParticle() {
+   public @Nullable ParticleOptions getDripParticle() {
       return ParticleTypes.DRIPPING_LAVA;
    }
 
@@ -155,7 +154,7 @@ public abstract class LavaFluid extends FlowingFluid {
 
    @Override
    public BlockState createLegacyBlock(final FluidState fluidState) {
-      return Blocks.LAVA.defaultBlockState().setValue(LiquidBlock.LEVEL, Integer.valueOf(getLegacyLevel(fluidState)));
+      return Blocks.LAVA.defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(fluidState));
    }
 
    @Override

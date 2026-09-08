@@ -77,8 +77,7 @@ import org.slf4j.Logger;
 public class Options {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static final Gson GSON = new Gson();
-   private static final TypeToken<List<String>> LIST_OF_STRINGS_TYPE = new TypeToken<List<String>>() {
-   };
+   private static final TypeToken<List<String>> LIST_OF_STRINGS_TYPE = new TypeToken<List<String>>() {};
    public static final int RENDER_DISTANCE_SHORT = 4;
    public static final int RENDER_DISTANCE_FAR = 12;
    public static final int RENDER_DISTANCE_REALLY_FAR = 16;
@@ -112,7 +111,7 @@ public class Options {
       "options.entityDistanceScaling",
       OptionInstance.noTooltip(),
       Options::percentValueLabel,
-      new OptionInstance.IntRange(2, 20).xmap(value -> (double)value / 4.0, value -> (int)(value * 4.0), true),
+      new OptionInstance.IntRange(2, 20).xmap(value -> value / 4.0, value -> (int)(value * 4.0), true),
       Codec.doubleRange(0.5, 5.0),
       1.0,
       var1 -> this.setGraphicsPresetToCustom()
@@ -122,8 +121,8 @@ public class Options {
       "options.framerateLimit",
       OptionInstance.noTooltip(),
       (caption, value) -> value == 260
-            ? genericValueLabel(caption, Component.translatable("options.framerateLimit.max"))
-            : genericValueLabel(caption, Component.translatable("options.framerate", value)),
+         ? genericValueLabel(caption, Component.translatable("options.framerateLimit.max"))
+         : genericValueLabel(caption, Component.translatable("options.framerate", value)),
       new OptionInstance.IntRange(1, 26).xmap(value -> value * 10, value -> value / 10, true),
       Codec.intRange(10, 260),
       120,
@@ -237,9 +236,9 @@ public class Options {
       "options.chunkFade",
       OptionInstance.cachedConstantTooltip(GRAPHICS_TOOLTIP_CHUNK_FADE),
       (caption, value) -> value <= 0.0
-            ? Component.translatable("options.chunkFade.none")
-            : Component.translatable("options.chunkFade.seconds", String.format(Locale.ROOT, "%.2f", value)),
-      new OptionInstance.IntRange(0, 40).xmap(value -> (double)value / 20.0, value -> (int)(value * 20.0), true),
+         ? Component.translatable("options.chunkFade.none")
+         : Component.translatable("options.chunkFade.seconds", String.format(Locale.ROOT, "%.2f", value)),
+      new OptionInstance.IntRange(0, 40).xmap(value -> value / 20.0, value -> (int)(value * 20.0), true),
       Codec.doubleRange(0.0, 2.0),
       0.75,
       OptionInstance.NO_ACTION
@@ -340,8 +339,7 @@ public class Options {
       ),
       true
    );
-   @Nullable
-   public String fullscreenVideoModeString;
+   public @Nullable String fullscreenVideoModeString;
    public boolean hideServerAddress;
    public boolean advancedItemTooltips;
    public boolean pauseOnLostFocus = true;
@@ -359,7 +357,7 @@ public class Options {
    private final OptionInstance<Double> chatScale = new OptionInstance<>(
       "options.chat.scale",
       OptionInstance.noTooltip(),
-      (caption, value) -> (Component)(value == 0.0 ? CommonComponents.optionStatus(caption, false) : percentValueLabel(caption, value)),
+      (caption, value) -> value == 0.0 ? CommonComponents.optionStatus(caption, false) : percentValueLabel(caption, value),
       OptionInstance.UnitDouble.INSTANCE,
       1.0,
       var0 -> Minecraft.getInstance().gui.hud.getChat().rescaleChat()
@@ -392,9 +390,9 @@ public class Options {
       "options.chat.delay_instant",
       OptionInstance.noTooltip(),
       (caption, value) -> value <= 0.0
-            ? Component.translatable("options.chat.delay_none")
-            : Component.translatable("options.chat.delay", String.format(Locale.ROOT, "%.1f", value)),
-      new OptionInstance.IntRange(0, 60).xmap(value -> (double)value / 10.0, value -> (int)(value * 10.0), true),
+         ? Component.translatable("options.chat.delay_none")
+         : Component.translatable("options.chat.delay", String.format(Locale.ROOT, "%.1f", value)),
+      new OptionInstance.IntRange(0, 60).xmap(value -> value / 10.0, value -> (int)(value * 10.0), true),
       Codec.doubleRange(0.0, 6.0),
       0.0,
       value -> Minecraft.getInstance().gui.chatListener().setMessageDelay(value)
@@ -404,7 +402,7 @@ public class Options {
       "options.notifications.display_time",
       OptionInstance.cachedConstantTooltip(ACCESSIBILITY_TOOLTIP_NOTIFICATION_DISPLAY_TIME),
       (caption, value) -> genericValueLabel(caption, Component.translatable("options.multiplier", value)),
-      new OptionInstance.IntRange(5, 100).xmap(value -> (double)value / 10.0, value -> (int)(value * 10.0), true),
+      new OptionInstance.IntRange(5, 100).xmap(value -> value / 10.0, value -> (int)(value * 10.0), true),
       Codec.doubleRange(0.5, 10.0),
       1.0,
       OptionInstance.NO_ACTION
@@ -412,7 +410,7 @@ public class Options {
    private final OptionInstance<Integer> mipmapLevels = new OptionInstance<>(
       "options.mipmapLevels",
       OptionInstance.noTooltip(),
-      (caption, value) -> (Component)(value == 0 ? CommonComponents.optionStatus(caption, false) : genericValueLabel(caption, value)),
+      (caption, value) -> value == 0 ? CommonComponents.optionStatus(caption, false) : genericValueLabel(caption, value),
       new OptionInstance.IntRange(0, 4),
       4,
       var1 -> this.setGraphicsPresetToCustom()
@@ -421,9 +419,9 @@ public class Options {
    private final OptionInstance<Integer> maxAnisotropyBit = new OptionInstance<>(
       "options.maxAnisotropy",
       OptionInstance.cachedConstantTooltip(GRAPHICS_TOOLTIP_ANISOTROPIC_FILTERING),
-      (caption, value) -> (Component)(value == 0
-            ? CommonComponents.optionStatus(caption, false)
-            : genericValueLabel(caption, Component.translatable("options.multiplier", Integer.toString(1 << value)))),
+      (caption, value) -> value == 0
+         ? CommonComponents.optionStatus(caption, false)
+         : genericValueLabel(caption, Component.translatable("options.multiplier", Integer.toString(1 << value))),
       new OptionInstance.IntRange(1, 3),
       2,
       var1 -> {
@@ -552,8 +550,7 @@ public class Options {
       new OptionInstance.Enum<>(List.of(PresenceSharing.values()), PresenceSharing.CODEC),
       PresenceSharing.CODEC,
       PresenceSharing.ALL,
-      var0 -> {
-      }
+      var0 -> {}
    );
    private final Map<SoundSource, OptionInstance<Double>> soundSourceVolumes = Util.makeEnumMap(
       SoundSource.class, source -> this.createSoundSliderOptionInstance("soundCategory." + source.getName(), source)
@@ -578,8 +575,8 @@ public class Options {
       "options.accessibility.text_background",
       OptionInstance.noTooltip(),
       (caption, value) -> value
-            ? Component.translatable("options.accessibility.text_background.chat")
-            : Component.translatable("options.accessibility.text_background.everywhere"),
+         ? Component.translatable("options.accessibility.text_background.chat")
+         : Component.translatable("options.accessibility.text_background.everywhere"),
       OptionInstance.BOOLEAN_VALUES,
       true,
       OptionInstance.NO_ACTION
@@ -640,8 +637,8 @@ public class Options {
       "options.sprintWindow",
       OptionInstance.cachedConstantTooltip(SPRINT_WINDOW_TOOLTIP),
       (caption, value) -> value == 0
-            ? genericValueLabel(caption, Component.translatable("options.off"))
-            : genericValueLabel(caption, Component.translatable("options.value", value)),
+         ? genericValueLabel(caption, Component.translatable("options.off"))
+         : genericValueLabel(caption, Component.translatable("options.value", value)),
       new OptionInstance.IntRange(0, 10),
       7,
       OptionInstance.NO_ACTION
@@ -815,7 +812,7 @@ public class Options {
          };
       },
       new OptionInstance.IntRange(30, 110),
-      Codec.DOUBLE.xmap(value -> (int)(value * 40.0 + 70.0), value -> ((double)value.intValue() - 70.0) / 40.0),
+      Codec.DOUBLE.xmap(value -> (int)(value * 40.0 + 70.0), value -> (value.intValue() - 70.0) / 40.0),
       70,
       OptionInstance.NO_ACTION
    );
@@ -937,8 +934,7 @@ public class Options {
       }, new OptionInstance.ClampingLazyMaxIntRange(-1, () -> {
          Minecraft minecraftx = Minecraft.getInstance();
          return !minecraftx.isRunning() ? 2147483646 : minecraftx.getWindow().calculateScale(0, minecraftx.isEnforceUnicode());
-      }, 2147483646), 0, var0 -> {
-      }
+      }, 2147483646), 0, var0 -> {}
    );
    private final OptionInstance<ParticleStatus> particles = new OptionInstance<>(
       "options.particles",
@@ -951,7 +947,7 @@ public class Options {
    private final OptionInstance<NarratorStatus> narrator = new OptionInstance<>(
       "options.narrator",
       OptionInstance.noTooltip(),
-      (caption, value) -> (Component)(this.minecraft.getNarrator().isActive() ? value.getName() : Component.translatable("options.narrator.notavailable")),
+      (caption, value) -> this.minecraft.getNarrator().isActive() ? value.getName() : Component.translatable("options.narrator.notavailable"),
       new OptionInstance.Enum<>(Arrays.asList(NarratorStatus.values()), NarratorStatus.LEGACY_CODEC),
       NarratorStatus.OFF,
       value -> this.minecraft.getNarrator().updateNarratorStatus(value)
@@ -970,10 +966,10 @@ public class Options {
       new OptionInstance.LazyEnum<>(
          () -> Stream.concat(Stream.of(""), Minecraft.getInstance().getSoundManager().getAvailableSoundDevices().stream()).toList(),
          device -> Minecraft.getInstance().isRunning()
-                  && !isSoundDeviceDefault(device)
-                  && !Minecraft.getInstance().getSoundManager().getAvailableSoundDevices().contains(device)
-               ? Optional.empty()
-               : Optional.of(device),
+               && !isSoundDeviceDefault(device)
+               && !Minecraft.getInstance().getSoundManager().getAvailableSoundDevices().contains(device)
+            ? Optional.empty()
+            : Optional.of(device),
          Codec.STRING
       ),
       "",
@@ -1219,7 +1215,7 @@ public class Options {
    }
 
    private static double logMouse(final int value) {
-      return Math.pow(10.0, (double)value / 100.0);
+      return Math.pow(10.0, value / 100.0);
    }
 
    private static int unlogMouse(final double value) {
@@ -1662,8 +1658,8 @@ public class Options {
          if (!currentValue.equals(newValue)) {
             try {
                keyMapping.setKey(InputConstants.getKey(newValue));
-            } catch (IllegalArgumentException var9) {
-               LOGGER.warn("Invalid keyMapping {} = {}, unbinding", new Object[]{keyMapping.getName(), newValue, var9});
+            } catch (IllegalArgumentException e) {
+               LOGGER.warn("Invalid keyMapping {} = {}, unbinding", new Object[]{keyMapping.getName(), newValue, e});
                keyMapping.setKey(InputConstants.UNKNOWN);
             }
          }
@@ -1695,7 +1691,7 @@ public class Options {
                try {
                   Iterator<String> iterator = OPTION_SPLITTER.split(line).iterator();
                   rawOptions.putString(iterator.next(), iterator.next());
-               } catch (Exception var3) {
+               } catch (Exception ignored) {
                   LOGGER.warn("Skipping bad option: {}", line);
                }
             });
@@ -1704,24 +1700,11 @@ public class Options {
          final CompoundTag options = this.dataFix(rawOptions);
          this.processOptions(
             new Options.FieldAccess() {
-               {
-                  Objects.requireNonNull(Options.this);
-               }
-
-               @Nullable
-               private String getValue(final String name) {
+               private @Nullable String getValue(final String name) {
                   Tag tag = options.get(name);
                   if (tag == null) {
                      return null;
-                  } else if (tag instanceof StringTag var3) {
-                     StringTag var10000 = var3;
-
-                     try {
-                        var7 = var10000.value();
-                     } catch (Throwable var6) {
-                        throw new MatchException(var6.toString(), var6);
-                     }
-
+                  } else if (tag instanceof StringTag(String var7)) {
                      return var7;
                   } else {
                      throw new IllegalStateException("Cannot read field of wrong type, expected string: " + tag);
@@ -1748,8 +1731,8 @@ public class Options {
                   if (result != null) {
                      try {
                         return Integer.parseInt(result);
-                     } catch (NumberFormatException var5) {
-                        Options.LOGGER.warn("Invalid integer value for option {} = {}", new Object[]{name, result, var5});
+                     } catch (NumberFormatException e) {
+                        Options.LOGGER.warn("Invalid integer value for option {} = {}", new Object[]{name, result, e});
                      }
                   }
 
@@ -1772,17 +1755,21 @@ public class Options {
                   String result = this.getValue(name);
                   if (result == null) {
                      return current;
-                  } else if (Options.isTrue(result)) {
+                  }
+
+                  if (Options.isTrue(result)) {
                      return 1.0F;
-                  } else if (Options.isFalse(result)) {
+                  }
+
+                  if (Options.isFalse(result)) {
                      return 0.0F;
-                  } else {
-                     try {
-                        return Float.parseFloat(result);
-                     } catch (NumberFormatException var5) {
-                        Options.LOGGER.warn("Invalid floating point value for option {} = {}", new Object[]{name, result, var5});
-                        return current;
-                     }
+                  }
+
+                  try {
+                     return Float.parseFloat(result);
+                  } catch (NumberFormatException e) {
+                     Options.LOGGER.warn("Invalid floating point value for option {} = {}", new Object[]{name, result, e});
+                     return current;
                   }
                }
 
@@ -1795,8 +1782,8 @@ public class Options {
          );
          options.getString("fullscreenResolution").ifPresent(fullscreenResolution -> this.fullscreenVideoModeString = fullscreenResolution);
          KeyMapping.resetMapping();
-      } catch (Exception var7) {
-         LOGGER.error("Failed to load options", var7);
+      } catch (Exception e) {
+         LOGGER.error("Failed to load options", e);
       }
 
       this.preferredGraphicsBackendFromStartup = this.preferredGraphicsBackend.get();
@@ -1826,10 +1813,6 @@ public class Options {
          writer.println("version:" + SharedConstants.getCurrentVersion().dataVersion().version());
          this.processOptions(
             new Options.FieldAccess() {
-               {
-                  Objects.requireNonNull(Options.this);
-               }
-
                public void writePrefix(final String name) {
                   writer.print(name);
                   writer.print(':');
@@ -1886,15 +1869,14 @@ public class Options {
          if (fullscreenVideoModeString != null) {
             writer.println("fullscreenResolution:" + fullscreenVideoModeString);
          }
-      } catch (Exception var6) {
-         LOGGER.error("Failed to save options", var6);
+      } catch (Exception e) {
+         LOGGER.error("Failed to save options", e);
       }
 
       this.broadcastOptions();
    }
 
-   @Nullable
-   private String getFullscreenVideoModeString() {
+   private @Nullable String getFullscreenVideoModeString() {
       Window window = this.minecraft.getWindow();
       if (window == null) {
          return this.fullscreenVideoModeString;
@@ -1987,7 +1969,7 @@ public class Options {
 
    private static List<String> readListOfStrings(final String value) {
       List<String> result = GsonHelper.fromNullableJson(GSON, value, LIST_OF_STRINGS_TYPE);
-      return (List<String>)(result != null ? result : Lists.newArrayList());
+      return result != null ? result : Lists.newArrayList();
    }
 
    public File getFile() {
@@ -1997,10 +1979,6 @@ public class Options {
    public String dumpOptionsForReport() {
       final List<Pair<String, Object>> optionsForReport = new ArrayList<>();
       this.processDumpedOptions(new Options.OptionAccess() {
-         {
-            Objects.requireNonNull(Options.this);
-         }
-
          @Override
          public <T> void process(final String name, final OptionInstance<T> option) {
             optionsForReport.add(Pair.of(name, option.get()));

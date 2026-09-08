@@ -14,8 +14,7 @@ import org.jspecify.annotations.Nullable;
 public class FollowMobGoal extends Goal {
    private final Mob mob;
    private final Predicate<Mob> followPredicate;
-   @Nullable
-   private Mob followingMob;
+   private @Nullable Mob followingMob;
    private final double speedModifier;
    private final PathNavigation navigation;
    private int timeToRecalcPath;
@@ -38,7 +37,7 @@ public class FollowMobGoal extends Goal {
 
    @Override
    public boolean canUse() {
-      List<Mob> mobs = this.mob.level().getEntitiesOfClass(Mob.class, this.mob.getBoundingBox().inflate((double)this.areaSize), this.followPredicate);
+      List<Mob> mobs = this.mob.level().getEntitiesOfClass(Mob.class, this.mob.getBoundingBox().inflate(this.areaSize), this.followPredicate);
       if (!mobs.isEmpty()) {
          for (Mob mobInList : mobs) {
             if (!mobInList.isInvisible()) {
@@ -53,9 +52,7 @@ public class FollowMobGoal extends Goal {
 
    @Override
    public boolean canContinueToUse() {
-      return this.followingMob != null
-         && !this.navigation.isDone()
-         && this.mob.distanceToSqr(this.followingMob) > (double)(this.stopDistance * this.stopDistance);
+      return this.followingMob != null && !this.navigation.isDone() && this.mob.distanceToSqr(this.followingMob) > this.stopDistance * this.stopDistance;
    }
 
    @Override
@@ -75,19 +72,19 @@ public class FollowMobGoal extends Goal {
    @Override
    public void tick() {
       if (this.followingMob != null && !this.mob.isLeashed()) {
-         this.mob.getLookControl().setLookAt(this.followingMob, 10.0F, (float)this.mob.getMaxHeadXRot());
+         this.mob.getLookControl().setLookAt(this.followingMob, 10.0F, this.mob.getMaxHeadXRot());
          if (--this.timeToRecalcPath <= 0) {
             this.timeToRecalcPath = this.adjustedTickDelay(10);
             double xxd = this.mob.getX() - this.followingMob.getX();
             double yyd = this.mob.getY() - this.followingMob.getY();
             double zzd = this.mob.getZ() - this.followingMob.getZ();
             double distSqr = xxd * xxd + yyd * yyd + zzd * zzd;
-            if (!(distSqr <= (double)(this.stopDistance * this.stopDistance))) {
+            if (!(distSqr <= this.stopDistance * this.stopDistance)) {
                this.navigation.moveTo(this.followingMob, this.speedModifier);
             } else {
                this.navigation.stop();
                LookControl lookControl = this.followingMob.getLookControl();
-               if (distSqr <= (double)this.stopDistance
+               if (distSqr <= this.stopDistance
                   || lookControl.getWantedX() == this.mob.getX() && lookControl.getWantedY() == this.mob.getY() && lookControl.getWantedZ() == this.mob.getZ()) {
                   double deltaX = this.followingMob.getX() - this.mob.getX();
                   double deltaZ = this.followingMob.getZ() - this.mob.getZ();

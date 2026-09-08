@@ -51,8 +51,8 @@ import net.minecraft.world.phys.AABB;
 
 public class Blocks {
    private static final BlockBehaviour.StatePredicate NOT_CLOSED_SHULKER = (state, level, pos) -> level.getBlockEntity(pos) instanceof ShulkerBoxBlockEntity shulkerBoxBlockEntity
-         ? shulkerBoxBlockEntity.isClosed()
-         : true;
+      ? shulkerBoxBlockEntity.isClosed()
+      : true;
    private static final BlockBehaviour.StatePredicate NOT_EXTENDED_PISTON = (state, level, pos) -> !state.getValue(PistonBaseBlock.EXTENDED);
    private static final BlockBehaviour.StateArgumentPredicate<AABB> NEAR_PLANE_INTERSECTS_OUTLINE = (state, level, blockPos, nearPlaneBox) -> {
       for (AABB outlineBox : state.getOcclusionShape().toAabbs()) {
@@ -616,45 +616,45 @@ public class Blocks {
    public static final Block RED_POPLAR_LEAVES = register(
       BlockItemIds.RED_POPLAR_LEAVES,
       p -> new UntintedParticleLeavesBlock(
-            0.01F,
-            ParticleTypes.RED_POPLAR_LEAVES,
-            AmbientLeavesBlockSoundPlayer.of(SoundEvents.POPLAR_LEAVES_AMBIENT, BlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE),
-            p
-         ),
+         0.01F,
+         ParticleTypes.RED_POPLAR_LEAVES,
+         AmbientLeavesBlockSoundPlayer.of(SoundEvents.POPLAR_LEAVES_AMBIENT, BlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE),
+         p
+      ),
       leavesProperties(SoundType.POPLAR_LEAVES).mapColor(MapColor.COLOR_RED)
    );
    public static final Block ORANGE_POPLAR_LEAVES = register(
       BlockItemIds.ORANGE_POPLAR_LEAVES,
       p -> new UntintedParticleLeavesBlock(
-            0.01F,
-            ParticleTypes.ORANGE_POPLAR_LEAVES,
-            AmbientLeavesBlockSoundPlayer.of(SoundEvents.POPLAR_LEAVES_AMBIENT, BlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE),
-            p
-         ),
+         0.01F,
+         ParticleTypes.ORANGE_POPLAR_LEAVES,
+         AmbientLeavesBlockSoundPlayer.of(SoundEvents.POPLAR_LEAVES_AMBIENT, BlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE),
+         p
+      ),
       leavesProperties(SoundType.POPLAR_LEAVES).mapColor(MapColor.COLOR_ORANGE)
    );
    public static final Block YELLOW_POPLAR_LEAVES = register(
       BlockItemIds.YELLOW_POPLAR_LEAVES,
       p -> new UntintedParticleLeavesBlock(
-            0.01F,
-            ParticleTypes.YELLOW_POPLAR_LEAVES,
-            AmbientLeavesBlockSoundPlayer.of(SoundEvents.POPLAR_LEAVES_AMBIENT, BlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE),
-            p
-         ),
+         0.01F,
+         ParticleTypes.YELLOW_POPLAR_LEAVES,
+         AmbientLeavesBlockSoundPlayer.of(SoundEvents.POPLAR_LEAVES_AMBIENT, BlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE),
+         p
+      ),
       leavesProperties(SoundType.POPLAR_LEAVES).mapColor(MapColor.COLOR_YELLOW)
    );
    public static final Block AZALEA_LEAVES = register(
       BlockItemIds.AZALEA_LEAVES,
       p -> new UntintedParticleLeavesBlock(
-            0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, -9399763), AmbientLeavesBlockSoundPlayer.noAmbientSound(), p
-         ),
+         0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, -9399763), AmbientLeavesBlockSoundPlayer.noAmbientSound(), p
+      ),
       leavesProperties(SoundType.AZALEA_LEAVES)
    );
    public static final Block FLOWERING_AZALEA_LEAVES = register(
       BlockItemIds.FLOWERING_AZALEA_LEAVES,
       p -> new UntintedParticleLeavesBlock(
-            0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, -9399763), AmbientLeavesBlockSoundPlayer.noAmbientSound(), p
-         ),
+         0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, -9399763), AmbientLeavesBlockSoundPlayer.noAmbientSound(), p
+      ),
       leavesProperties(SoundType.AZALEA_LEAVES)
    );
    public static final Block SPONGE = register(
@@ -715,14 +715,14 @@ public class Blocks {
       Blocks::register,
       BedBlock::new,
       color -> BlockBehaviour.Properties.of()
-            .mapColor(state -> state.getValue(BedBlock.PART) == BedPart.FOOT ? color.getMapColor() : MapColor.WOOL)
-            .sound(SoundType.WOOD)
-            .strength(0.2F)
-            .bounceRestitution(0.75F)
-            .fallDistanceReduction(0.5F)
-            .noOcclusion()
-            .ignitedByLava()
-            .pushReaction(PushReaction.POPPED)
+         .mapColor(state -> state.getValue(BedBlock.PART) == BedPart.FOOT ? color.getMapColor() : MapColor.WOOL)
+         .sound(SoundType.WOOD)
+         .strength(0.2F)
+         .bounceRestitution(0.75F)
+         .fallDistanceReduction(0.5F)
+         .noOcclusion()
+         .ignitedByLava()
+         .pushReaction(PushReaction.POPPED)
    );
    public static final Block STRAW_BED = register(
       BlockItemIds.STRAW_BED,
@@ -876,11 +876,11 @@ public class Blocks {
       Blocks::register,
       (var0, p) -> new Block(p),
       color -> BlockBehaviour.Properties.of()
-            .mapColor(color.getMapColor())
-            .instrument(NoteBlockInstrument.GUITAR)
-            .strength(0.8F)
-            .sound(SoundType.WOOL)
-            .ignitedByLava()
+         .mapColor(color.getMapColor())
+         .instrument(NoteBlockInstrument.GUITAR)
+         .strength(0.8F)
+         .sound(SoundType.WOOL)
+         .ignitedByLava()
    );
    public static final ColorCollection<Block> WOOL_STAIRS = ColorCollection.zipMap(
       ColorCollection.VALUES, BlockItemIds.WOOL_STAIRS, (color, id) -> registerStair(id, WOOL.pick(color))
@@ -2243,14 +2243,14 @@ public class Blocks {
       Blocks::register,
       StainedGlassBlock::new,
       color -> BlockBehaviour.Properties.of()
-            .mapColor(color.getMapColor())
-            .instrument(NoteBlockInstrument.HAT)
-            .strength(0.3F)
-            .sound(SoundType.GLASS)
-            .noOcclusion()
-            .isValidSpawn(Blocks::never)
-            .isRedstoneConductor(Blocks::never)
-            .isSuffocating(Blocks::never)
+         .mapColor(color.getMapColor())
+         .instrument(NoteBlockInstrument.HAT)
+         .strength(0.3F)
+         .sound(SoundType.GLASS)
+         .noOcclusion()
+         .isValidSpawn(Blocks::never)
+         .isRedstoneConductor(Blocks::never)
+         .isSuffocating(Blocks::never)
    );
    public static final Block OAK_TRAPDOOR = register(
       BlockItemIds.OAK_TRAPDOOR,
@@ -2480,8 +2480,8 @@ public class Blocks {
    public static final Block ATTACHED_PUMPKIN_STEM = register(
       BlockIds.ATTACHED_PUMPKIN_STEM,
       p -> new AttachedStemBlock(
-            BlockItemIds.PUMPKIN_CROP.block(), BlockItemIds.PUMPKIN.block(), BlockItemIds.PUMPKIN_CROP.item(), BlockTags.SUPPORTS_PUMPKIN_STEM, p
-         ),
+         BlockItemIds.PUMPKIN_CROP.block(), BlockItemIds.PUMPKIN.block(), BlockItemIds.PUMPKIN_CROP.item(), BlockTags.SUPPORTS_PUMPKIN_STEM, p
+      ),
       BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().instabreak().sound(SoundType.WOOD).pushReaction(PushReaction.POPPED)
    );
    public static final Block ATTACHED_MELON_STEM = register(
@@ -2492,13 +2492,13 @@ public class Blocks {
    public static final Block PUMPKIN_STEM = register(
       BlockItemIds.PUMPKIN_CROP,
       p -> new StemBlock(
-            BlockItemIds.PUMPKIN.block(),
-            BlockIds.ATTACHED_PUMPKIN_STEM,
-            BlockItemIds.PUMPKIN_CROP.item(),
-            BlockTags.SUPPORTS_PUMPKIN_STEM,
-            BlockTags.SUPPORTS_PUMPKIN_STEM_FRUIT,
-            p
-         ),
+         BlockItemIds.PUMPKIN.block(),
+         BlockIds.ATTACHED_PUMPKIN_STEM,
+         BlockItemIds.PUMPKIN_CROP.item(),
+         BlockTags.SUPPORTS_PUMPKIN_STEM,
+         BlockTags.SUPPORTS_PUMPKIN_STEM_FRUIT,
+         p
+      ),
       BlockBehaviour.Properties.of()
          .mapColor(MapColor.PLANT)
          .noCollision()
@@ -2510,13 +2510,13 @@ public class Blocks {
    public static final Block MELON_STEM = register(
       BlockItemIds.MELON_CROP,
       p -> new StemBlock(
-            BlockItemIds.MELON.block(),
-            BlockIds.ATTACHED_MELON_STEM,
-            BlockItemIds.MELON_CROP.item(),
-            BlockTags.SUPPORTS_MELON_STEM,
-            BlockTags.SUPPORTS_MELON_STEM_FRUIT,
-            p
-         ),
+         BlockItemIds.MELON.block(),
+         BlockIds.ATTACHED_MELON_STEM,
+         BlockItemIds.MELON_CROP.item(),
+         BlockTags.SUPPORTS_MELON_STEM,
+         BlockTags.SUPPORTS_MELON_STEM_FRUIT,
+         p
+      ),
       BlockBehaviour.Properties.of()
          .mapColor(MapColor.PLANT)
          .noCollision()
@@ -3014,10 +3014,10 @@ public class Blocks {
       Blocks::register,
       (var0, p) -> new Block(p),
       color -> BlockBehaviour.Properties.of()
-            .mapColor(color.getTerracottaColor())
-            .instrument(NoteBlockInstrument.BASEDRUM)
-            .requiresCorrectToolForDrops()
-            .strength(1.25F, 4.2F)
+         .mapColor(color.getTerracottaColor())
+         .instrument(NoteBlockInstrument.BASEDRUM)
+         .requiresCorrectToolForDrops()
+         .strength(1.25F, 4.2F)
    );
    public static final ColorCollection<Block> STAINED_GLASS_PANE = ColorCollection.registerBlocks(
       BlockItemIds.STAINED_GLASS_PANE,
@@ -3200,26 +3200,26 @@ public class Blocks {
       Blocks::register,
       BannerBlock::new,
       var0 -> BlockBehaviour.Properties.of()
-            .mapColor(MapColor.WOOD)
-            .forceSolidOn()
-            .instrument(NoteBlockInstrument.BASS)
-            .noCollision()
-            .strength(1.0F)
-            .sound(SoundType.WOOD)
-            .ignitedByLava()
+         .mapColor(MapColor.WOOD)
+         .forceSolidOn()
+         .instrument(NoteBlockInstrument.BASS)
+         .noCollision()
+         .strength(1.0F)
+         .sound(SoundType.WOOD)
+         .ignitedByLava()
    );
    public static final ColorCollection<Block> WALL_BANNER = ColorCollection.registerBlocks(
       BlockIds.WALL_BANNER,
       Blocks::register,
       WallBannerBlock::new,
       color -> wallVariant(BANNER.pick(color), true)
-            .mapColor(MapColor.WOOD)
-            .forceSolidOn()
-            .instrument(NoteBlockInstrument.BASS)
-            .noCollision()
-            .strength(1.0F)
-            .sound(SoundType.WOOD)
-            .ignitedByLava()
+         .mapColor(MapColor.WOOD)
+         .forceSolidOn()
+         .instrument(NoteBlockInstrument.BASS)
+         .noCollision()
+         .strength(1.0F)
+         .sound(SoundType.WOOD)
+         .ignitedByLava()
    );
    public static final Block RED_SANDSTONE = register(
       BlockItemIds.RED_SANDSTONE,
@@ -3773,21 +3773,21 @@ public class Blocks {
       Blocks::register,
       (var0, p) -> new GlazedTerracottaBlock(p),
       color -> BlockBehaviour.Properties.of()
-            .mapColor(color.getMapColor())
-            .instrument(NoteBlockInstrument.BASEDRUM)
-            .requiresCorrectToolForDrops()
-            .strength(1.4F)
-            .pushReaction(PushReaction.PUSH)
+         .mapColor(color.getMapColor())
+         .instrument(NoteBlockInstrument.BASEDRUM)
+         .requiresCorrectToolForDrops()
+         .strength(1.4F)
+         .pushReaction(PushReaction.PUSH)
    );
    public static final ColorCollection<Block> CONCRETE = ColorCollection.registerBlocks(
       BlockItemIds.CONCRETE,
       Blocks::register,
       (var0, p) -> new Block(p),
       color -> BlockBehaviour.Properties.of()
-            .mapColor(color.getMapColor())
-            .instrument(NoteBlockInstrument.BASEDRUM)
-            .requiresCorrectToolForDrops()
-            .strength(1.8F)
+         .mapColor(color.getMapColor())
+         .instrument(NoteBlockInstrument.BASEDRUM)
+         .requiresCorrectToolForDrops()
+         .strength(1.8F)
    );
    public static final ColorCollection<Block> CONCRETE_STAIRS = ColorCollection.zipMap(
       ColorCollection.VALUES, BlockItemIds.CONCRETE_STAIRS, (color, id) -> registerStair(id, CONCRETE.pick(color))
@@ -4415,13 +4415,13 @@ public class Blocks {
       (s, p) -> new LanternBlock(p),
       WeatheringLanternBlock::new,
       p -> BlockBehaviour.Properties.of()
-            .mapColor(MapColor.METAL)
-            .forceSolidOn()
-            .strength(3.5F)
-            .sound(SoundType.LANTERN)
-            .lightLevel(state -> 15)
-            .noOcclusion()
-            .pushReaction(PushReaction.POPPED)
+         .mapColor(MapColor.METAL)
+         .forceSolidOn()
+         .strength(3.5F)
+         .sound(SoundType.LANTERN)
+         .lightLevel(state -> 15)
+         .noOcclusion()
+         .pushReaction(PushReaction.POPPED)
    );
    public static final Block CAMPFIRE = register(
       BlockItemIds.CAMPFIRE,
@@ -5119,10 +5119,10 @@ public class Blocks {
       (var0, p) -> new DoorBlock(BlockSetType.COPPER, p),
       (state, p) -> new WeatheringCopperDoorBlock(BlockSetType.COPPER, state, p),
       state -> BlockBehaviour.Properties.of()
-            .mapColor(var1 -> COPPER_BLOCK.weathering().pick(state).defaultMapColor())
-            .strength(3.0F, 6.0F)
-            .noOcclusion()
-            .pushReaction(PushReaction.POPPED)
+         .mapColor(var1 -> COPPER_BLOCK.weathering().pick(state).defaultMapColor())
+         .strength(3.0F, 6.0F)
+         .noOcclusion()
+         .pushReaction(PushReaction.POPPED)
    );
    public static final WeatheringCopperCollection<Block> COPPER_TRAPDOOR = WeatheringCopperCollection.registerBlocks(
       BlockItemIds.COPPER_TRAPDOOR,
@@ -5130,11 +5130,11 @@ public class Blocks {
       (var0, p) -> new TrapDoorBlock(BlockSetType.COPPER, p),
       (state, p) -> new WeatheringCopperTrapDoorBlock(BlockSetType.COPPER, state, p),
       state -> BlockBehaviour.Properties.of()
-            .mapColor(var1 -> COPPER_BLOCK.weathering().pick(state).defaultMapColor())
-            .strength(3.0F, 6.0F)
-            .requiresCorrectToolForDrops()
-            .noOcclusion()
-            .isValidSpawn(Blocks::never)
+         .mapColor(var1 -> COPPER_BLOCK.weathering().pick(state).defaultMapColor())
+         .strength(3.0F, 6.0F)
+         .requiresCorrectToolForDrops()
+         .noOcclusion()
+         .isValidSpawn(Blocks::never)
    );
    public static final WeatheringCopperCollection<Block> COPPER_GRATE = WeatheringCopperCollection.registerBlocks(
       BlockItemIds.COPPER_GRATE,
@@ -5142,14 +5142,14 @@ public class Blocks {
       (var0, p) -> new WaterloggedTransparentBlock(p),
       WeatheringCopperGrateBlock::new,
       state -> BlockBehaviour.Properties.of()
-            .strength(3.0F, 6.0F)
-            .sound(SoundType.COPPER_GRATE)
-            .mapColor(var1 -> COPPER_BLOCK.weathering().pick(state).defaultMapColor())
-            .noOcclusion()
-            .requiresCorrectToolForDrops()
-            .isValidSpawn(Blocks::never)
-            .isRedstoneConductor(Blocks::never)
-            .isSuffocating(Blocks::never)
+         .strength(3.0F, 6.0F)
+         .sound(SoundType.COPPER_GRATE)
+         .mapColor(var1 -> COPPER_BLOCK.weathering().pick(state).defaultMapColor())
+         .noOcclusion()
+         .requiresCorrectToolForDrops()
+         .isValidSpawn(Blocks::never)
+         .isRedstoneConductor(Blocks::never)
+         .isSuffocating(Blocks::never)
    );
    public static final WeatheringCopperCollection<Block> COPPER_BULB = WeatheringCopperCollection.registerBlocks(
       BlockItemIds.COPPER_BULB,
@@ -5177,10 +5177,10 @@ public class Blocks {
       (state, p) -> new CopperChestBlock(state, CopperChestBlock.getHingeSound(state, true), CopperChestBlock.getHingeSound(state, false), p),
       (state, p) -> new WeatheringCopperChestBlock(state, CopperChestBlock.getHingeSound(state, true), CopperChestBlock.getHingeSound(state, false), p),
       state -> BlockBehaviour.Properties.of()
-            .mapColor(var1 -> COPPER_BLOCK.weathering().pick(state).defaultMapColor())
-            .strength(3.0F, 6.0F)
-            .sound(SoundType.COPPER)
-            .requiresCorrectToolForDrops()
+         .mapColor(var1 -> COPPER_BLOCK.weathering().pick(state).defaultMapColor())
+         .strength(3.0F, 6.0F)
+         .sound(SoundType.COPPER)
+         .requiresCorrectToolForDrops()
    );
    public static final WeatheringCopperCollection<Block> COPPER_GOLEM_STATUE = WeatheringCopperCollection.registerBlocks(
       BlockItemIds.COPPER_GOLEM_STATUE,
@@ -5188,11 +5188,11 @@ public class Blocks {
       CopperGolemStatueBlock::new,
       WeatheringCopperGolemStatueBlock::new,
       state -> BlockBehaviour.Properties.of()
-            .mapColor(var1 -> COPPER_BLOCK.weathering().pick(state).defaultMapColor())
-            .strength(3.0F, 6.0F)
-            .sound(SoundType.COPPER_GOLEM_STATUE)
-            .pushReaction(PushReaction.POPPED)
-            .noOcclusion()
+         .mapColor(var1 -> COPPER_BLOCK.weathering().pick(state).defaultMapColor())
+         .strength(3.0F, 6.0F)
+         .sound(SoundType.COPPER_GOLEM_STATUE)
+         .pushReaction(PushReaction.POPPED)
+         .noOcclusion()
    );
    public static final WeatheringCopperCollection<Block> LIGHTNING_ROD = WeatheringCopperCollection.registerBlocks(
       BlockItemIds.LIGHTNING_ROD,
@@ -5200,12 +5200,12 @@ public class Blocks {
       (var0, p) -> new LightningRodBlock(p),
       WeatheringLightningRodBlock::new,
       state -> BlockBehaviour.Properties.of()
-            .mapColor(var1 -> COPPER_BLOCK.weathering().pick(state).defaultMapColor())
-            .forceSolidOn()
-            .requiresCorrectToolForDrops()
-            .strength(3.0F, 6.0F)
-            .sound(SoundType.COPPER)
-            .noOcclusion()
+         .mapColor(var1 -> COPPER_BLOCK.weathering().pick(state).defaultMapColor())
+         .forceSolidOn()
+         .requiresCorrectToolForDrops()
+         .strength(3.0F, 6.0F)
+         .sound(SoundType.COPPER)
+         .noOcclusion()
    );
    public static final Block DRIPSTONE_BLOCK = register(
       BlockItemIds.DRIPSTONE_BLOCK,

@@ -42,13 +42,13 @@ public class ServerMetricsSamplersProvider implements MetricsSamplerProvider {
          IntStream.range(0, cpuStats.nrOfCpus)
             .mapToObj(i -> MetricSampler.create("cpu#" + i, MetricCategory.CPU, () -> cpuStats.loadForCpu(i)))
             .forEach(result::add);
-      } catch (Throwable var2) {
-         LOGGER.warn("Failed to query cpu, no cpu stats will be recorded", var2);
+      } catch (Throwable t) {
+         LOGGER.warn("Failed to query cpu, no cpu stats will be recorded", t);
       }
 
       result.add(
          MetricSampler.create(
-            "heap MiB", MetricCategory.JVM, () -> (double)SystemReport.sizeInMiB(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())
+            "heap MiB", MetricCategory.JVM, () -> SystemReport.sizeInMiB(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())
          )
       );
       result.addAll(MetricsRegistry.INSTANCE.getRegisteredSamplers());
@@ -74,7 +74,7 @@ public class ServerMetricsSamplersProvider implements MetricsSamplerProvider {
 
          long deltaTime = watch.elapsed(TimeUnit.NANOSECONDS);
          watch.reset();
-         return (double)deltaTime;
+         return deltaTime;
       };
       MetricSampler.ValueIncreasedByPercentage thresholdAlerter = new MetricSampler.ValueIncreasedByPercentage(2.0F);
       return MetricSampler.builder("ticktime", MetricCategory.TICK_LOOP, timeSampler, stopwatch)

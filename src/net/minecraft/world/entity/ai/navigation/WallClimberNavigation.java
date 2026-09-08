@@ -8,8 +8,7 @@ import net.minecraft.world.level.pathfinder.Path;
 import org.jspecify.annotations.Nullable;
 
 public class WallClimberNavigation extends GroundPathNavigation {
-   @Nullable
-   private BlockPos pathToPosition;
+   private @Nullable BlockPos pathToPosition;
 
    public WallClimberNavigation(final Mob mob, final Level level) {
       super(mob, level);
@@ -32,11 +31,11 @@ public class WallClimberNavigation extends GroundPathNavigation {
       Path newPath = this.createPath(target, 0);
       if (newPath != null) {
          return this.moveTo(newPath, speedModifier);
-      } else {
-         this.pathToPosition = target.blockPosition();
-         this.speedModifier = speedModifier;
-         return true;
       }
+
+      this.pathToPosition = target.blockPosition();
+      this.speedModifier = speedModifier;
+      return true;
    }
 
    @Override
@@ -45,17 +44,15 @@ public class WallClimberNavigation extends GroundPathNavigation {
          super.tick();
       } else {
          if (this.pathToPosition != null) {
-            if (!this.pathToPosition.closerToCenterThan(this.mob.position(), (double)this.mob.getBbWidth())
+            if (!this.pathToPosition.closerToCenterThan(this.mob.position(), this.mob.getBbWidth())
                && (
-                  !(this.mob.getY() > (double)this.pathToPosition.getY())
-                     || !BlockPos.containing((double)this.pathToPosition.getX(), this.mob.getY(), (double)this.pathToPosition.getZ())
-                        .closerToCenterThan(this.mob.position(), (double)this.mob.getBbWidth())
+                  !(this.mob.getY() > this.pathToPosition.getY())
+                     || !BlockPos.containing(this.pathToPosition.getX(), this.mob.getY(), this.pathToPosition.getZ())
+                        .closerToCenterThan(this.mob.position(), this.mob.getBbWidth())
                )) {
                this.mob
                   .getMoveControl()
-                  .setWantedPosition(
-                     (double)this.pathToPosition.getX(), (double)this.pathToPosition.getY(), (double)this.pathToPosition.getZ(), this.speedModifier
-                  );
+                  .setWantedPosition(this.pathToPosition.getX(), this.pathToPosition.getY(), this.pathToPosition.getZ(), this.speedModifier);
             } else {
                this.pathToPosition = null;
             }

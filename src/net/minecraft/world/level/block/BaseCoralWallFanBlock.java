@@ -24,7 +24,7 @@ public class BaseCoralWallFanBlock extends BaseCoralFanBlock {
 
    protected BaseCoralWallFanBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, Boolean.valueOf(true)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, true));
    }
 
    @Override
@@ -73,9 +73,8 @@ public class BaseCoralWallFanBlock extends BaseCoralFanBlock {
       return relativeState.isFaceSturdy(level, relativePos, facing);
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockState state = super.getStateForPlacement(context);
       LevelReader level = context.getLevel();
       BlockPos pos = context.getClickedPos();

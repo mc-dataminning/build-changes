@@ -43,12 +43,12 @@ public class FleeSunGoal extends Goal {
       Vec3 pos = this.getHidePos();
       if (pos == null) {
          return false;
-      } else {
-         this.wantedX = pos.x;
-         this.wantedY = pos.y;
-         this.wantedZ = pos.z;
-         return true;
       }
+
+      this.wantedX = pos.x;
+      this.wantedY = pos.y;
+      this.wantedZ = pos.z;
+      return true;
    }
 
    @Override
@@ -61,8 +61,7 @@ public class FleeSunGoal extends Goal {
       this.mob.getNavigation().moveTo(this.wantedX, this.wantedY, this.wantedZ, this.speedModifier);
    }
 
-   @Nullable
-   protected Vec3 getHidePos() {
+   protected @Nullable Vec3 getHidePos() {
       RandomSource random = this.mob.getRandom();
       BlockPos pos = this.mob.blockPosition();
 

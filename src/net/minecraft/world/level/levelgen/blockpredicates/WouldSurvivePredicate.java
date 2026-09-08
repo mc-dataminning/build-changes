@@ -10,9 +10,9 @@ import net.minecraft.world.level.block.state.BlockState;
 public class WouldSurvivePredicate implements BlockPredicate {
    public static final MapCodec<WouldSurvivePredicate> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Vec3i.offsetCodec(16).optionalFieldOf("offset", Vec3i.ZERO).forGetter(c -> c.offset), BlockState.CODEC.fieldOf("state").forGetter(c -> c.state)
-            )
-            .apply(i, WouldSurvivePredicate::new)
+            Vec3i.offsetCodec(16).optionalFieldOf("offset", Vec3i.ZERO).forGetter(c -> c.offset), BlockState.CODEC.fieldOf("state").forGetter(c -> c.state)
+         )
+         .apply(i, WouldSurvivePredicate::new)
    );
    private final Vec3i offset;
    private final BlockState state;

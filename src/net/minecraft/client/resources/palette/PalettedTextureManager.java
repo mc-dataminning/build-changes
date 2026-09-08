@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
@@ -57,19 +56,11 @@ public class PalettedTextureManager implements PreparableReloadListener, AutoClo
          .maximumSize(64L)
          .removalListener(notification -> ((Optional)notification.getValue()).ifPresent(PalettedTextureManager.BaseTexture::close))
          .build(new CacheLoader<Identifier, Optional<PalettedTextureManager.BaseTexture>>() {
-            {
-               Objects.requireNonNull(PalettedTextureManager.this);
-            }
-
             public Optional<PalettedTextureManager.BaseTexture> load(final Identifier id) {
                return Optional.ofNullable(PalettedTextureManager.loadBaseTexture(id, resourceManager));
             }
          });
       this.missingHandle = new PalettedTextureManager.Handle() {
-         {
-            Objects.requireNonNull(PalettedTextureManager.this);
-         }
-
          @Override
          public Identifier textureLocation() {
             return MissingTextureAtlasSprite.getLocation();
@@ -87,8 +78,7 @@ public class PalettedTextureManager implements PreparableReloadListener, AutoClo
       };
    }
 
-   @Nullable
-   private static PalettedTextureManager.BaseTexture loadBaseTexture(final Identifier id, final ResourceManager resourceManager) {
+   private static PalettedTextureManager.@Nullable BaseTexture loadBaseTexture(final Identifier id, final ResourceManager resourceManager) {
       Identifier location = id.withPath(path -> "textures/" + path + ".png");
 
       try {
@@ -100,8 +90,8 @@ public class PalettedTextureManager implements PreparableReloadListener, AutoClo
          }
 
          return new PalettedTextureManager.BaseTexture(image, resource.metadata().getSection(PaletteMetadataSection.TYPE).orElse(null));
-      } catch (IOException var10) {
-         LOGGER.error("Failed to load paletted base texture at {}", location, var10);
+      } catch (IOException e) {
+         LOGGER.error("Failed to load paletted base texture at {}", location, e);
          return null;
       }
    }
@@ -111,11 +101,11 @@ public class PalettedTextureManager implements PreparableReloadListener, AutoClo
       PalettedTextureManager.Handle existingHandle = this.handles.get(key);
       if (existingHandle != null) {
          return existingHandle;
-      } else {
-         PalettedTextureManager.Handle handle = this.prepareSlot(baseTexture, paletteId);
-         this.handles.put(key, handle);
-         return handle;
       }
+
+      PalettedTextureManager.Handle handle = this.prepareSlot(baseTexture, paletteId);
+      this.handles.put(key, handle);
+      return handle;
    }
 
    private PalettedTextureManager.Handle prepareSlot(final Identifier baseTextureId, final Identifier paletteId) {
@@ -123,19 +113,16 @@ public class PalettedTextureManager implements PreparableReloadListener, AutoClo
          .getUnchecked(baseTextureId);
       if (maybeBaseTexture.isEmpty()) {
          return this.missingHandle;
-      } else {
-         PalettedTextureManager.BaseTexture baseTexture = maybeBaseTexture.get();
-         PaletteMetadataSection paletteMetadata = baseTexture.paletteMetadata();
-         PaletteMapping paletteMapping = paletteMetadata != null ? this.paletteMappings.apply(paletteMetadata.basePalette(), paletteId) : PaletteMapping.NONE;
+      }
 
-         PalettedTextureManager.Slot var9;
-         try (NativeImage newTexture = baseTexture.image().mappedCopy(paletteMapping)) {
-            PalettedTextureManager.Slot slot = this.allocateSlot(newTexture.getWidth(), newTexture.getHeight());
-            RenderSystem.getDevice().createCommandEncoder().writeToTexture(slot.texture.getTexture(), newTexture, 0, 0, slot.x, slot.y);
-            var9 = slot;
-         }
+      PalettedTextureManager.BaseTexture baseTexture = maybeBaseTexture.get();
+      PaletteMetadataSection paletteMetadata = baseTexture.paletteMetadata();
+      PaletteMapping paletteMapping = paletteMetadata != null ? this.paletteMappings.apply(paletteMetadata.basePalette(), paletteId) : PaletteMapping.NONE;
 
-         return var9;
+      try (NativeImage newTexture = baseTexture.image().mappedCopy(paletteMapping)) {
+         PalettedTextureManager.Slot slot = this.allocateSlot(newTexture.getWidth(), newTexture.getHeight());
+         RenderSystem.getDevice().createCommandEncoder().writeToTexture(slot.texture.getTexture(), newTexture, 0, 0, slot.x, slot.y);
+         return slot;
       }
    }
 
@@ -148,16 +135,16 @@ public class PalettedTextureManager implements PreparableReloadListener, AutoClo
             }
          }
 
-         PalettedTextureManager.AtlasTexture atlasx = new PalettedTextureManager.AtlasTexture(
+         PalettedTextureManager.AtlasTexture atlas = new PalettedTextureManager.AtlasTexture(
             Identifier.withDefaultNamespace("paletted/atlas_" + this.atlasTextures.size())
          );
-         this.textureManager.register(atlasx.location, atlasx);
-         this.atlasTextures.add(atlasx);
-         DynamicAtlasTreeSlot atlasSlot = atlasx.tryAllocateSlot(width, height);
+         this.textureManager.register(atlas.location, atlas);
+         this.atlasTextures.add(atlas);
+         DynamicAtlasTreeSlot atlasSlot = atlas.tryAllocateSlot(width, height);
          if (atlasSlot == null) {
             throw new IllegalStateException("Could not allocate slot in fresh atlas for sprite with size " + width + "x" + height);
          } else {
-            return new PalettedTextureManager.Slot(atlasx, atlasx.location, atlasSlot.x(), atlasSlot.y(), atlasSlot.width(), atlasSlot.height());
+            return new PalettedTextureManager.Slot(atlas, atlas.location, atlasSlot.x(), atlasSlot.y(), atlasSlot.width(), atlasSlot.height());
          }
       } else {
          PalettedTextureManager.OverflowTexture texture = new PalettedTextureManager.OverflowTexture(
@@ -213,8 +200,7 @@ public class PalettedTextureManager implements PreparableReloadListener, AutoClo
          this.sampler = RenderSystem.getSamplerCache().getRepeat(FilterMode.NEAREST);
       }
 
-      @Nullable
-      public DynamicAtlasTreeSlot tryAllocateSlot(final int width, final int height) {
+      public @Nullable DynamicAtlasTreeSlot tryAllocateSlot(final int width, final int height) {
          return this.tree.insert(width, height, 0);
       }
 
@@ -227,7 +213,7 @@ public class PalettedTextureManager implements PreparableReloadListener, AutoClo
       }
    }
 
-   private static record BaseTexture(NativeImage image, @Nullable PaletteMetadataSection paletteMetadata) implements AutoCloseable {
+   private record BaseTexture(NativeImage image, @Nullable PaletteMetadataSection paletteMetadata) implements AutoCloseable {
       @Override
       public void close() {
          this.image.close();
@@ -247,19 +233,18 @@ public class PalettedTextureManager implements PreparableReloadListener, AutoClo
       }
    }
 
-   private static record Slot(AbstractTexture texture, Identifier textureLocation, int x, int y, int width, int height)
-      implements PalettedTextureManager.Handle {
+   private record Slot(AbstractTexture texture, Identifier textureLocation, int x, int y, int width, int height) implements PalettedTextureManager.Handle {
       @Override
       public float getU(final float offset) {
-         return ((float)this.x + offset * (float)this.width) / (float)this.texture.getTexture().getWidth(0);
+         return (this.x + offset * this.width) / this.texture.getTexture().getWidth(0);
       }
 
       @Override
       public float getV(final float offset) {
-         return ((float)this.y + offset * (float)this.height) / (float)this.texture.getTexture().getHeight(0);
+         return (this.y + offset * this.height) / this.texture.getTexture().getHeight(0);
       }
    }
 
-   private static record SlotKey(Identifier baseTexture, Identifier paletteId) {
+   private record SlotKey(Identifier baseTexture, Identifier paletteId) {
    }
 }

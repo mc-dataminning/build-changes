@@ -30,7 +30,7 @@ public class SpawnerRenderer implements BlockEntityRenderer<SpawnerBlockEntity, 
       final SpawnerRenderState state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
       if (blockEntity.getLevel() != null) {

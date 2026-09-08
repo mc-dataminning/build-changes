@@ -28,9 +28,8 @@ public record CacheFunction(DensityFunction input) implements DensityFunction {
       return this.input.range();
    }
 
-   @DensityFunction.Axes
    @Override
-   public int domainAxes() {
+   public @DensityFunction.Axes int domainAxes() {
       return this.input.domainAxes();
    }
 

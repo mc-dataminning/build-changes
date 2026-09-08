@@ -65,7 +65,7 @@ public final class BundleContents implements ContainerComponent<BundleContents>,
          }
 
          return DataResult.success(weight);
-      } catch (ArithmeticException var5) {
+      } catch (ArithmeticException exception) {
          return DataResult.error(() -> "Excessive total bundle weight");
       }
    }
@@ -74,10 +74,10 @@ public final class BundleContents implements ContainerComponent<BundleContents>,
       BundleContents bundle = item.get(DataComponents.BUNDLE_CONTENTS);
       if (bundle != null) {
          return bundle.weight().map(nestedWeight -> nestedWeight.add(BUNDLE_IN_BUNDLE_WEIGHT));
-      } else {
-         List<BeehiveBlockEntity.Occupant> bees = item.getOrDefault(DataComponents.BEES, Bees.EMPTY).bees();
-         return !bees.isEmpty() ? BEEHIVE_WEIGHT : DataResult.success(Fraction.getFraction(1, item.getMaxStackSize()));
       }
+
+      List<BeehiveBlockEntity.Occupant> bees = item.getOrDefault(DataComponents.BEES, Bees.EMPTY).bees();
+      return !bees.isEmpty() ? BEEHIVE_WEIGHT : DataResult.success(Fraction.getFraction(1, item.getMaxStackSize()));
    }
 
    public static boolean canItemBeInBundle(final ItemStack itemToAdd) {
@@ -118,8 +118,7 @@ public final class BundleContents implements ContainerComponent<BundleContents>,
       return this.selectedItem;
    }
 
-   @Nullable
-   public ItemStackTemplate getSelectedItem() {
+   public @Nullable ItemStackTemplate getSelectedItem() {
       return this.selectedItem == -1 ? null : this.items.get(this.selectedItem);
    }
 
@@ -133,15 +132,15 @@ public final class BundleContents implements ContainerComponent<BundleContents>,
       DataResult<Fraction> currentWeight = this.weight.get();
       if (currentWeight.isError()) {
          return new BundleContents.Mutable();
-      } else {
-         List<ItemStack> itemsList = new ArrayList<>(this.items.size());
-
-         for (ItemStackTemplate item : this.items) {
-            itemsList.add(item.create());
-         }
-
-         return new BundleContents.Mutable(itemsList, (Fraction)currentWeight.getOrThrow(), this.selectedItem);
       }
+
+      List<ItemStack> itemsList = new ArrayList<>(this.items.size());
+
+      for (ItemStackTemplate item : this.items) {
+         itemsList.add(item.create());
+      }
+
+      return new BundleContents.Mutable(itemsList, (Fraction)currentWeight.getOrThrow(), this.selectedItem);
    }
 
    @Override
@@ -188,18 +187,18 @@ public final class BundleContents implements ContainerComponent<BundleContents>,
       private int findStackIndexWithinRange(final ItemStack itemsToAdd, final int minInclusive, final int maxExclusive) {
          if (!itemsToAdd.isStackable()) {
             return -1;
-         } else {
-            int startIndex = Math.max(minInclusive, 0);
-            int endIndex = Math.min(maxExclusive, this.items.size());
-
-            for (int i = startIndex; i < endIndex; i++) {
-               if (ItemStack.isSameItemSameComponents(this.items.get(i), itemsToAdd)) {
-                  return i;
-               }
-            }
-
-            return -1;
          }
+
+         int startIndex = Math.max(minInclusive, 0);
+         int endIndex = Math.min(maxExclusive, this.items.size());
+
+         for (int i = startIndex; i < endIndex; i++) {
+            if (ItemStack.isSameItemSameComponents(this.items.get(i), itemsToAdd)) {
+               return i;
+            }
+         }
+
+         return -1;
       }
 
       private int findStackIndex(final ItemStack itemsToAdd) {
@@ -214,31 +213,31 @@ public final class BundleContents implements ContainerComponent<BundleContents>,
       public int tryInsert(final ItemStack itemsToAdd) {
          if (!BundleContents.canItemBeInBundle(itemsToAdd)) {
             return 0;
-         } else {
-            DataResult<Fraction> maybeItemWeight = BundleContents.getWeight(itemsToAdd);
-            if (maybeItemWeight.isError()) {
-               return 0;
-            } else {
-               Fraction itemWeight = (Fraction)maybeItemWeight.getOrThrow();
-               int amountToAdd = Math.min(itemsToAdd.getCount(), this.getMaxAmountToAdd(itemWeight));
-               if (amountToAdd == 0) {
-                  return 0;
-               } else {
-                  this.weight = this.weight.add(getStackedWeight(itemWeight, amountToAdd));
-                  int stackIndex = this.findStackIndex(itemsToAdd);
-                  if (stackIndex != -1) {
-                     ItemStack removedStack = this.items.remove(stackIndex);
-                     ItemStack mergedStack = removedStack.copyWithCount(removedStack.getCount() + amountToAdd);
-                     itemsToAdd.shrink(amountToAdd);
-                     this.items.addFirst(mergedStack);
-                  } else {
-                     this.items.addFirst(itemsToAdd.split(amountToAdd));
-                  }
-
-                  return amountToAdd;
-               }
-            }
          }
+
+         DataResult<Fraction> maybeItemWeight = BundleContents.getWeight(itemsToAdd);
+         if (maybeItemWeight.isError()) {
+            return 0;
+         }
+
+         Fraction itemWeight = (Fraction)maybeItemWeight.getOrThrow();
+         int amountToAdd = Math.min(itemsToAdd.getCount(), this.getMaxAmountToAdd(itemWeight));
+         if (amountToAdd == 0) {
+            return 0;
+         }
+
+         this.weight = this.weight.add(getStackedWeight(itemWeight, amountToAdd));
+         int stackIndex = this.findStackIndex(itemsToAdd);
+         if (stackIndex != -1) {
+            ItemStack removedStack = this.items.remove(stackIndex);
+            ItemStack mergedStack = removedStack.copyWithCount(removedStack.getCount() + amountToAdd);
+            itemsToAdd.shrink(amountToAdd);
+            this.items.addFirst(mergedStack);
+         } else {
+            this.items.addFirst(itemsToAdd.split(amountToAdd));
+         }
+
+         return amountToAdd;
       }
 
       public int tryTransfer(final Slot slot, final Player player) {
@@ -246,10 +245,10 @@ public final class BundleContents implements ContainerComponent<BundleContents>,
          DataResult<Fraction> itemWeight = BundleContents.getWeight(other);
          if (itemWeight.isError()) {
             return 0;
-         } else {
-            int maxAmount = this.getMaxAmountToAdd((Fraction)itemWeight.getOrThrow());
-            return BundleContents.canItemBeInBundle(other) ? this.tryInsert(slot.safeTake(other.getCount(), maxAmount, player)) : 0;
          }
+
+         int maxAmount = this.getMaxAmountToAdd((Fraction)itemWeight.getOrThrow());
+         return BundleContents.canItemBeInBundle(other) ? this.tryInsert(slot.safeTake(other.getCount(), maxAmount, player)) : 0;
       }
 
       public void toggleSelectedItem(final int selectedItem) {
@@ -260,17 +259,16 @@ public final class BundleContents implements ContainerComponent<BundleContents>,
          return selectedItem < 0 || selectedItem >= this.items.size();
       }
 
-      @Nullable
-      public ItemStack removeOne() {
+      public @Nullable ItemStack removeOne() {
          if (this.items.isEmpty()) {
             return null;
-         } else {
-            int removeIndex = this.indexIsOutsideAllowedBounds(this.selectedItem) ? 0 : this.selectedItem;
-            ItemStack stack = this.items.remove(removeIndex).copy();
-            this.weight = this.weight.subtract(getStackedWeight(stack));
-            this.toggleSelectedItem(-1);
-            return stack;
          }
+
+         int removeIndex = this.indexIsOutsideAllowedBounds(this.selectedItem) ? 0 : this.selectedItem;
+         ItemStack stack = this.items.remove(removeIndex).copy();
+         this.weight = this.weight.subtract(getStackedWeight(stack));
+         this.toggleSelectedItem(-1);
+         return stack;
       }
 
       private static Fraction getStackedWeight(final Fraction weight, final int count) {
@@ -327,8 +325,7 @@ public final class BundleContents implements ContainerComponent<BundleContents>,
          }
       }
 
-      @Nullable
-      private static Fraction getWeightWithAddedItems(final Fraction weight, final ItemStack itemsToAdd) {
+      private static @Nullable Fraction getWeightWithAddedItems(final Fraction weight, final ItemStack itemsToAdd) {
          if (BundleContents.canItemBeInBundle(itemsToAdd)) {
             DataResult<Fraction> itemWeight = BundleContents.getWeight(itemsToAdd);
             if (itemWeight.isError()) {

@@ -12,14 +12,14 @@ import org.apache.commons.lang3.StringUtils;
 public class WorldOptions {
    public static final MapCodec<WorldOptions> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.LONG.fieldOf("seed").stable().forGetter(WorldOptions::seed),
-               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "generate_structures", true).stable().forGetter(WorldOptions::generateStructures),
-               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "bonus_chest", false).stable().forGetter(WorldOptions::generateBonusChest),
-               Codec.STRING.lenientOptionalFieldOf("legacy_custom_options").stable().forGetter(s -> s.legacyCustomOptions)
-            )
-            .apply(i, i.stable(WorldOptions::new))
+            Codec.LONG.fieldOf("seed").stable().forGetter(WorldOptions::seed),
+            ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "generate_structures", true).stable().forGetter(WorldOptions::generateStructures),
+            ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "bonus_chest", false).stable().forGetter(WorldOptions::generateBonusChest),
+            Codec.STRING.lenientOptionalFieldOf("legacy_custom_options").stable().forGetter(s -> s.legacyCustomOptions)
+         )
+         .apply(i, i.stable(WorldOptions::new))
    );
-   public static final WorldOptions DEMO_OPTIONS = new WorldOptions((long)"North Carolina".hashCode(), true, true);
+   public static final WorldOptions DEMO_OPTIONS = new WorldOptions("North Carolina".hashCode(), true, true);
    private final long seed;
    private final boolean generateStructures;
    private final boolean generateBonusChest;
@@ -76,12 +76,12 @@ public class WorldOptions {
       seedString = seedString.trim();
       if (StringUtils.isEmpty(seedString)) {
          return OptionalLong.empty();
-      } else {
-         try {
-            return OptionalLong.of(Long.parseLong(seedString));
-         } catch (NumberFormatException var2) {
-            return OptionalLong.of((long)seedString.hashCode());
-         }
+      }
+
+      try {
+         return OptionalLong.of(Long.parseLong(seedString));
+      } catch (NumberFormatException e) {
+         return OptionalLong.of(seedString.hashCode());
       }
    }
 

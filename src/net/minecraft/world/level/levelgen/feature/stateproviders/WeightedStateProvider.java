@@ -13,11 +13,9 @@ public record WeightedStateProvider(WeightedList<BlockState> weightedList) imple
       i -> i.group(WeightedList.nonEmptyCodec(BlockState.CODEC).fieldOf("entries").forGetter(o -> o.weightedList)).apply(i, WeightedStateProvider::new)
    );
 
-   public WeightedStateProvider(WeightedList<BlockState> weightedList) {
+   public WeightedStateProvider {
       if (weightedList.isEmpty()) {
          throw new IllegalArgumentException("Weighted list must have at least one entry");
-      } else {
-         this.weightedList = weightedList;
       }
    }
 

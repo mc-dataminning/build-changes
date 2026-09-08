@@ -39,8 +39,7 @@ public class ClientPackSource extends BuiltInPackSource {
    private static final PackSelectionConfig VANILLA_SELECTION_CONFIG = new PackSelectionConfig(true, Pack.Position.BOTTOM, false);
    private static final PackSelectionConfig BUILT_IN_SELECTION_CONFIG = new PackSelectionConfig(false, Pack.Position.TOP, false);
    private static final Identifier PACKS_DIR = Identifier.withDefaultNamespace("resourcepacks");
-   @Nullable
-   private final Path externalAssetDir;
+   private final @Nullable Path externalAssetDir;
 
    public ClientPackSource(final Path externalAssetSource, final DirectoryValidator validator) {
       super(PackType.CLIENT_RESOURCES, createVanillaPackSource(externalAssetSource), PACKS_DIR, validator);
@@ -51,8 +50,7 @@ public class ClientPackSource extends BuiltInPackSource {
       return new PackLocationInfo(id, title, PackSource.BUILT_IN, Optional.of(KnownPack.vanilla(id)));
    }
 
-   @Nullable
-   private Path findExplodedAssetPacks(final Path externalAssetSource) {
+   private @Nullable Path findExplodedAssetPacks(final Path externalAssetSource) {
       if (SharedConstants.IS_RUNNING_IN_IDE && externalAssetSource.getFileSystem() == FileSystems.getDefault()) {
          Path devAssetDir = externalAssetSource.getParent().resolve("resourcepacks");
          if (Files.isDirectory(devAssetDir)) {
@@ -77,18 +75,16 @@ public class ClientPackSource extends BuiltInPackSource {
    @Override
    protected Component getPackTitle(final String id) {
       Component title = SPECIAL_PACK_NAMES.get(id);
-      return (Component)(title != null ? title : Component.literal(id));
+      return title != null ? title : Component.literal(id);
    }
 
-   @Nullable
    @Override
-   protected Pack createVanillaPack(final Pack.ResourcesSupplier resources) {
+   protected @Nullable Pack createVanillaPack(final Pack.ResourcesSupplier resources) {
       return Pack.readMetaAndCreate(VANILLA_PACK_INFO, resources, PackType.CLIENT_RESOURCES, VANILLA_SELECTION_CONFIG);
    }
 
-   @Nullable
    @Override
-   protected Pack createBuiltinPack(final String id, final Pack.ResourcesSupplier resources, final Component name) {
+   protected @Nullable Pack createBuiltinPack(final String id, final Pack.ResourcesSupplier resources, final Component name) {
       return Pack.readMetaAndCreate(createBuiltInPackLocation(id, name), resources, PackType.CLIENT_RESOURCES, BUILT_IN_SELECTION_CONFIG);
    }
 

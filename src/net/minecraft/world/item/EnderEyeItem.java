@@ -39,32 +39,34 @@ public class EnderEyeItem extends Item {
       BlockState targetState = level.getBlockState(pos);
       if (!targetState.is(Blocks.END_PORTAL_FRAME) || targetState.getValue(EndPortalFrameBlock.HAS_EYE)) {
          return InteractionResult.PASS;
-      } else if (level.isClientSide()) {
-         return InteractionResult.SUCCESS;
-      } else {
-         BlockState newState = targetState.setValue(EndPortalFrameBlock.HAS_EYE, Boolean.valueOf(true));
-         Block.pushEntitiesUp(targetState, newState, level, pos);
-         level.setBlock(pos, newState, 2);
-         level.updateNeighbourForOutputSignal(pos, Blocks.END_PORTAL_FRAME);
-         context.getItemInHand().shrink(1);
-         level.levelEvent(1503, pos, 0);
-         BlockPattern.BlockPatternMatch match = EndPortalFrameBlock.getOrCreatePortalShape().find(level, pos);
-         if (match != null) {
-            BlockPos blockPos = match.getFrontTopLeft().offset(-3, 0, -3);
+      }
 
-            for (int x = 0; x < 3; x++) {
-               for (int z = 0; z < 3; z++) {
-                  BlockPos portalBlockPos = blockPos.offset(x, 0, z);
-                  level.destroyBlock(portalBlockPos, true, null);
-                  level.setBlock(portalBlockPos, Blocks.END_PORTAL.defaultBlockState(), 2);
-               }
-            }
-
-            level.globalLevelEvent(1038, blockPos.offset(1, 0, 1), 0);
-         }
-
+      if (level.isClientSide()) {
          return InteractionResult.SUCCESS;
       }
+
+      BlockState newState = targetState.setValue(EndPortalFrameBlock.HAS_EYE, true);
+      Block.pushEntitiesUp(targetState, newState, level, pos);
+      level.setBlock(pos, newState, 2);
+      level.updateNeighbourForOutputSignal(pos, Blocks.END_PORTAL_FRAME);
+      context.getItemInHand().shrink(1);
+      level.levelEvent(1503, pos, 0);
+      BlockPattern.BlockPatternMatch match = EndPortalFrameBlock.getOrCreatePortalShape().find(level, pos);
+      if (match != null) {
+         BlockPos blockPos = match.getFrontTopLeft().offset(-3, 0, -3);
+
+         for (int x = 0; x < 3; x++) {
+            for (int z = 0; z < 3; z++) {
+               BlockPos portalBlockPos = blockPos.offset(x, 0, z);
+               level.destroyBlock(portalBlockPos, true, null);
+               level.setBlock(portalBlockPos, Blocks.END_PORTAL.defaultBlockState(), 2);
+            }
+         }
+
+         level.globalLevelEvent(1038, blockPos.offset(1, 0, 1), 0);
+      }
+
+      return InteractionResult.SUCCESS;
    }
 
    @Override
@@ -78,30 +80,30 @@ public class EnderEyeItem extends Item {
       BlockHitResult hitResult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.NONE);
       if (hitResult.getType() == HitResult.Type.BLOCK && level.getBlockState(hitResult.getBlockPos()).is(Blocks.END_PORTAL_FRAME)) {
          return InteractionResult.PASS;
-      } else {
-         player.startUsingItem(hand);
-         if (level instanceof ServerLevel serverLevel) {
-            BlockPos nearestMapFeature = serverLevel.findNearestMapStructure(StructureTags.EYE_OF_ENDER_LOCATED, player.blockPosition(), 100, false);
-            if (nearestMapFeature == null) {
-               return InteractionResult.CONSUME;
-            }
+      }
 
-            EyeOfEnder eyeOfEnder = new EyeOfEnder(level, player.getX(), player.getY(0.5), player.getZ());
-            eyeOfEnder.setItem(itemStack);
-            eyeOfEnder.signalTo(Vec3.atLowerCornerOf(nearestMapFeature));
-            level.gameEvent(GameEvent.PROJECTILE_SHOOT, eyeOfEnder.position(), GameEvent.Context.of(player));
-            level.addFreshEntity(eyeOfEnder);
-            if (player instanceof ServerPlayer serverPlayer) {
-               CriteriaTriggers.USED_ENDER_EYE.trigger(serverPlayer, nearestMapFeature);
-            }
-
-            float pitch = Mth.lerp(level.getRandom().nextFloat(), 0.33F, 0.5F);
-            level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENDER_EYE_LAUNCH, SoundSource.NEUTRAL, 1.0F, pitch);
-            itemStack.consume(1, player);
-            player.awardStat(Stats.ITEM_USED.get(this));
+      player.startUsingItem(hand);
+      if (level instanceof ServerLevel serverLevel) {
+         BlockPos nearestMapFeature = serverLevel.findNearestMapStructure(StructureTags.EYE_OF_ENDER_LOCATED, player.blockPosition(), 100, false);
+         if (nearestMapFeature == null) {
+            return InteractionResult.CONSUME;
          }
 
-         return InteractionResult.SUCCESS_SERVER;
+         EyeOfEnder eyeOfEnder = new EyeOfEnder(level, player.getX(), player.getY(0.5), player.getZ());
+         eyeOfEnder.setItem(itemStack);
+         eyeOfEnder.signalTo(Vec3.atLowerCornerOf(nearestMapFeature));
+         level.gameEvent(GameEvent.PROJECTILE_SHOOT, eyeOfEnder.position(), GameEvent.Context.of(player));
+         level.addFreshEntity(eyeOfEnder);
+         if (player instanceof ServerPlayer serverPlayer) {
+            CriteriaTriggers.USED_ENDER_EYE.trigger(serverPlayer, nearestMapFeature);
+         }
+
+         float pitch = Mth.lerp(level.getRandom().nextFloat(), 0.33F, 0.5F);
+         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENDER_EYE_LAUNCH, SoundSource.NEUTRAL, 1.0F, pitch);
+         itemStack.consume(1, player);
+         player.awardStat(Stats.ITEM_USED.get(this));
       }
+
+      return InteractionResult.SUCCESS_SERVER;
    }
 }

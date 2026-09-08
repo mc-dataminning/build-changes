@@ -32,7 +32,7 @@ public class CrashReportCategory {
 
       try {
          result.append(String.format(Locale.ROOT, "World: (%d,%d,%d)", x, y, z));
-      } catch (Throwable var19) {
+      } catch (Throwable ignored) {
          result.append("(Error finding world loc)");
       }
 
@@ -69,7 +69,7 @@ public class CrashReportCategory {
                maxBlockZ
             )
          );
-      } catch (Throwable var18) {
+      } catch (Throwable ignored) {
          result.append("(Error finding chunk loc)");
       }
 
@@ -106,7 +106,7 @@ public class CrashReportCategory {
                maxBlockZ
             )
          );
-      } catch (Throwable var17) {
+      } catch (Throwable ignored) {
          result.append("(Error finding world loc)");
       }
 
@@ -116,14 +116,14 @@ public class CrashReportCategory {
    public CrashReportCategory setDetail(final String key, final CrashReportDetail<String> callback) {
       try {
          this.setDetail(key, callback.call());
-      } catch (Throwable var4) {
-         this.setDetailError(key, var4);
+      } catch (Throwable t) {
+         this.setDetailError(key, t);
       }
 
       return this;
    }
 
-   public CrashReportCategory setDetail(final String key, @Nullable final Object value) {
+   public CrashReportCategory setDetail(final String key, final @Nullable Object value) {
       this.entries.add(new CrashReportCategory.Entry(key, value));
       return this;
    }
@@ -136,14 +136,14 @@ public class CrashReportCategory {
       StackTraceElement[] full = Thread.currentThread().getStackTrace();
       if (full.length <= 0) {
          return 0;
-      } else {
-         this.stackTrace = new StackTraceElement[full.length - 3 - nestedOffset];
-         System.arraycopy(full, 3 + nestedOffset, this.stackTrace, 0, this.stackTrace.length);
-         return this.stackTrace.length;
       }
+
+      this.stackTrace = new StackTraceElement[full.length - 3 - nestedOffset];
+      System.arraycopy(full, 3 + nestedOffset, this.stackTrace, 0, this.stackTrace.length);
+      return this.stackTrace.length;
    }
 
-   public boolean validateStackTrace(@Nullable final StackTraceElement source, @Nullable final StackTraceElement next) {
+   public boolean validateStackTrace(final @Nullable StackTraceElement source, final @Nullable StackTraceElement next) {
       if (this.stackTrace.length != 0 && source != null) {
          StackTraceElement current = this.stackTrace[0];
          if (current.isNativeMethod() == source.isNativeMethod()
@@ -152,12 +152,14 @@ public class CrashReportCategory {
             && Objects.equals(current.getMethodName(), source.getMethodName())) {
             if (next != null != this.stackTrace.length > 1) {
                return false;
-            } else if (next != null && !this.stackTrace[1].equals(next)) {
-               return false;
-            } else {
-               this.stackTrace[0] = source;
-               return true;
             }
+
+            if (next != null && !this.stackTrace[1].equals(next)) {
+               return false;
+            }
+
+            this.stackTrace[0] = source;
+            return true;
          } else {
             return false;
          }
@@ -204,8 +206,8 @@ public class CrashReportCategory {
       return category.setDetail("Block location", () -> formatLocation(levelHeightAccessor, pos));
    }
 
-   public static record Entry(String key, String value) {
-      public Entry(final String key, @Nullable final Object rawValue) {
+   public record Entry(String key, String value) {
+      public Entry(final String key, final @Nullable Object rawValue) {
          String value;
          if (rawValue == null) {
             value = "~~NULL~~";

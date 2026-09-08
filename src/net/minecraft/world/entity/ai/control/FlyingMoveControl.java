@@ -42,7 +42,7 @@ public class FlyingMoveControl<T extends Mob> extends MoveControl<T> {
          double sd = Math.sqrt(xd * xd + zd * zd);
          if (Math.abs(yd) > 1.0E-5F || Math.abs(sd) > 1.0E-5F) {
             float xRotD = (float)(-(Mth.atan2(yd, sd) * 180.0F / (float)Math.PI));
-            this.mob.setXRot(this.rotlerp(this.mob.getXRot(), xRotD, (float)this.maxTurn));
+            this.mob.setXRot(this.rotlerp(this.mob.getXRot(), xRotD, this.maxTurn));
             this.mob.setYya(yd > 0.0 ? speed : -speed);
          }
       } else {

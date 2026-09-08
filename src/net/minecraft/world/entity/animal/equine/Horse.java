@@ -51,7 +51,7 @@ public class Horse extends AbstractHorse {
 
    @Override
    protected void randomizeAttributes(final RandomSource random) {
-      this.getAttribute(Attributes.MAX_HEALTH).setBaseValue((double)generateMaxHealth(random::nextInt));
+      this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(generateMaxHealth(random::nextInt));
       this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(generateSpeed(random::nextDouble));
       this.getAttribute(Attributes.JUMP_STRENGTH).setBaseValue(generateJumpStrength(random::nextDouble));
    }
@@ -94,9 +94,8 @@ public class Horse extends AbstractHorse {
       this.setTypeVariant(variant.getId() & 0xFF | this.getTypeVariant() & -256);
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       return type == DataComponents.HORSE_VARIANT ? castComponentValue((DataComponentType<T>)type, this.getVariant()) : super.get(type);
    }
 
@@ -184,9 +183,8 @@ public class Horse extends AbstractHorse {
       }
    }
 
-   @Nullable
    @Override
-   public AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       if (partner instanceof Donkey) {
          Mule baby = EntityTypes.MULE.create(level, EntitySpawnReason.BREEDING);
          if (baby != null) {
@@ -233,12 +231,11 @@ public class Horse extends AbstractHorse {
 
    @Override
    protected void hurtArmor(final DamageSource damageSource, final float damage) {
-      this.doHurtEquipment(damageSource, damage, new EquipmentSlot[]{EquipmentSlot.BODY});
+      this.doHurtEquipment(damageSource, damage, EquipmentSlot.BODY);
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       RandomSource random = level.getRandom();

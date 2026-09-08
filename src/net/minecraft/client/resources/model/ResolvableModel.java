@@ -5,7 +5,7 @@ import net.minecraft.resources.Identifier;
 public interface ResolvableModel {
    void resolveDependencies(ResolvableModel.Resolver resolver);
 
-   public interface Resolver {
+   interface Resolver {
       void markDependency(Identifier id);
    }
 }

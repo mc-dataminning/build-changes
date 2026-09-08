@@ -3,7 +3,6 @@ package com.mojang.realmsclient.gui.screens.configuration;
 import com.mojang.realmsclient.dto.Backup;
 import com.mojang.realmsclient.dto.RealmsServer;
 import java.util.Locale;
-import java.util.Objects;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
@@ -55,14 +54,14 @@ public class RealmsBackupInfoScreen extends RealmsScreen {
       } else if (k.contains("game") && k.contains("difficulty")) {
          return this.gameDifficultyMetadata(value);
       } else {
-         return (Component)(key.equals("world_type") ? this.parseWorldType(value) : Component.literal(value));
+         return key.equals("world_type") ? this.parseWorldType(value) : Component.literal(value);
       }
    }
 
    private Component gameDifficultyMetadata(final String value) {
       try {
          return RealmsSlotOptionsScreen.DIFFICULTIES.get(Integer.parseInt(value)).getDisplayName();
-      } catch (Exception var3) {
+      } catch (Exception ignored) {
          return UNKNOWN;
       }
    }
@@ -70,7 +69,7 @@ public class RealmsBackupInfoScreen extends RealmsScreen {
    private Component gameModeMetadata(final String value) {
       try {
          return RealmsSlotOptionsScreen.GAME_MODES.get(Integer.parseInt(value)).getShortDisplayName();
-      } catch (Exception var3) {
+      } catch (Exception ignored) {
          return UNKNOWN;
       }
    }
@@ -78,14 +77,13 @@ public class RealmsBackupInfoScreen extends RealmsScreen {
    private Component parseWorldType(final String value) {
       try {
          return RealmsServer.WorldType.valueOf(value.toUpperCase(Locale.ROOT)).getDisplayName();
-      } catch (Exception var3) {
+      } catch (Exception ignored) {
          return RealmsServer.WorldType.UNKNOWN.getDisplayName();
       }
    }
 
    private class BackupInfoList extends ObjectSelectionList<RealmsBackupInfoScreen.BackupInfoListEntry> {
       public BackupInfoList(final Minecraft minecraft) {
-         Objects.requireNonNull(RealmsBackupInfoScreen.this);
          super(
             minecraft,
             RealmsBackupInfoScreen.this.width,
@@ -119,8 +117,6 @@ public class RealmsBackupInfoScreen extends RealmsScreen {
       private final Component valueComponent;
 
       public BackupInfoListEntry(final String key, final String value) {
-         Objects.requireNonNull(RealmsBackupInfoScreen.this);
-         super();
          this.key = key;
          this.value = value;
          this.keyComponent = this.translateKey(key);

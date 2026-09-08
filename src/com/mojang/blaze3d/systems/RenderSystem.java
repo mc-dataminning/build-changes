@@ -43,12 +43,9 @@ public class RenderSystem {
    public static final double DEFAULT_DEPTH_CLEAR_VALUE = 0.0;
    public static final int MINIMUM_ATLAS_TEXTURE_SIZE = 1024;
    public static final int PROJECTION_MATRIX_UBO_SIZE = new Std140SizeCalculator().putMat4f().get();
-   @Nullable
-   private static Thread renderThread;
-   @Nullable
-   private static GpuDevice DEVICE;
-   @Nullable
-   private static GpuBackend BACKEND;
+   private static @Nullable Thread renderThread;
+   private static @Nullable GpuDevice DEVICE;
+   private static @Nullable GpuBackend BACKEND;
    private static final RenderSystem.AutoStorageIndexBuffer sharedSequential = new RenderSystem.AutoStorageIndexBuffer(1, 1, IntConsumer::accept);
    private static final RenderSystem.AutoStorageIndexBuffer sharedSequentialQuad = new RenderSystem.AutoStorageIndexBuffer(4, 6, (c, i) -> {
       c.accept(i);
@@ -69,28 +66,20 @@ public class RenderSystem {
    private static ProjectionType projectionType = ProjectionType.PERSPECTIVE;
    private static ProjectionType savedProjectionType = ProjectionType.PERSPECTIVE;
    private static final Matrix4fStack modelViewStack = new Matrix4fStack(16);
-   @Nullable
-   private static GpuBufferSlice shaderFog = null;
-   @Nullable
-   private static GpuBufferSlice shaderLightDirections;
-   @Nullable
-   private static GpuBufferSlice projectionMatrixBuffer;
-   @Nullable
-   private static GpuBufferSlice savedProjectionMatrixBuffer;
+   private static @Nullable GpuBufferSlice shaderFog = null;
+   private static @Nullable GpuBufferSlice shaderLightDirections;
+   private static @Nullable GpuBufferSlice projectionMatrixBuffer;
+   private static @Nullable GpuBufferSlice savedProjectionMatrixBuffer;
    private static final AtomicLong pollEventsWaitStart = new AtomicLong();
    private static final AtomicBoolean pollingEvents = new AtomicBoolean(false);
    private static final ArrayListDeque<RenderSystem.GpuAsyncTask> PENDING_FENCES = new ArrayListDeque<>();
    public static boolean isRenderingLevel = false;
-   @Nullable
-   private static GpuBuffer globalSettingsUniform;
-   @Nullable
-   private static DynamicGpuData dynamicGpuData;
+   private static @Nullable GpuBuffer globalSettingsUniform;
+   private static @Nullable DynamicGpuData dynamicGpuData;
    private static final ScissorState scissorStateForRenderTypeDraws = new ScissorState();
    private static final SamplerCache samplerCache = new SamplerCache();
-   @Nullable
-   private static PipelineCache fallbackPipelineCache;
-   @Nullable
-   private static PipelineCache currentPipelineCache;
+   private static @Nullable PipelineCache fallbackPipelineCache;
+   private static @Nullable PipelineCache currentPipelineCache;
 
    public static SamplerCache getSamplerCache() {
       return samplerCache;
@@ -99,20 +88,18 @@ public class RenderSystem {
    public static void setFallbackPipelineCache(final PipelineCache pipelineCache) {
       if (fallbackPipelineCache != null) {
          throw new IllegalStateException("Fallback pipeline cache already set");
-      } else {
-         fallbackPipelineCache = pipelineCache;
       }
+
+      fallbackPipelineCache = pipelineCache;
    }
 
-   @Nullable
-   public static PipelineCache setCurrentPipelineCache(final PipelineCache pipelineCache) {
+   public static @Nullable PipelineCache setCurrentPipelineCache(final PipelineCache pipelineCache) {
       PipelineCache oldCache = currentPipelineCache;
       currentPipelineCache = pipelineCache;
       return oldCache;
    }
 
-   @Nullable
-   public static CompiledRenderPipeline getCompiledPipelineNullable(final RenderPipeline pipeline) {
+   public static @Nullable CompiledRenderPipeline getCompiledPipelineNullable(final RenderPipeline pipeline) {
       if (currentPipelineCache != null) {
          CompiledRenderPipeline cachedPipeline = currentPipelineCache.get(pipeline);
          if (cachedPipeline != null) {
@@ -139,9 +126,9 @@ public class RenderSystem {
    public static void initRenderThread() {
       if (renderThread != null) {
          throw new IllegalStateException("Could not initialize render thread");
-      } else {
-         renderThread = Thread.currentThread();
       }
+
+      renderThread = Thread.currentThread();
    }
 
    public static boolean isOnRenderThread() {
@@ -180,8 +167,7 @@ public class RenderSystem {
       shaderFog = fog;
    }
 
-   @Nullable
-   public static GpuBufferSlice getShaderFog() {
+   public static @Nullable GpuBufferSlice getShaderFog() {
       return shaderFog;
    }
 
@@ -189,8 +175,7 @@ public class RenderSystem {
       shaderLightDirections = buffer;
    }
 
-   @Nullable
-   public static GpuBufferSlice getShaderLights() {
+   public static @Nullable GpuBufferSlice getShaderLights() {
       return shaderLightDirections;
    }
 
@@ -235,11 +220,11 @@ public class RenderSystem {
    public static void initRenderer(final GpuDevice device) {
       if (DEVICE != null) {
          throw new IllegalStateException("RenderSystem.DEVICE already initialized");
-      } else {
-         DEVICE = device;
-         dynamicGpuData = new DynamicGpuData();
-         samplerCache.initialize();
       }
+
+      DEVICE = device;
+      dynamicGpuData = new DynamicGpuData();
+      samplerCache.initialize();
    }
 
    public static void shutdownRenderer() {
@@ -297,8 +282,7 @@ public class RenderSystem {
       projectionType = savedProjectionType;
    }
 
-   @Nullable
-   public static GpuBufferSlice getProjectionMatrixBuffer() {
+   public static @Nullable GpuBufferSlice getProjectionMatrixBuffer() {
       assertOnRenderThread();
       return projectionMatrixBuffer;
    }
@@ -327,8 +311,7 @@ public class RenderSystem {
       globalSettingsUniform = buffer;
    }
 
-   @Nullable
-   public static GpuBuffer getGlobalSettingsUniform() {
+   public static @Nullable GpuBuffer getGlobalSettingsUniform() {
       return globalSettingsUniform;
    }
 
@@ -365,8 +348,7 @@ public class RenderSystem {
       }
    }
 
-   @Nullable
-   public static GpuDevice tryGetDevice() {
+   public static @Nullable GpuDevice tryGetDevice() {
       return DEVICE;
    }
 
@@ -414,8 +396,7 @@ public class RenderSystem {
       private final int vertexStride;
       private final int indexStride;
       private final RenderSystem.AutoStorageIndexBuffer.IndexGenerator generator;
-      @Nullable
-      private GpuBuffer buffer;
+      private @Nullable GpuBuffer buffer;
       private IndexType type = IndexType.SHORT;
       private int indexCount;
       private int maxRequestedIndexCount;
@@ -506,6 +487,6 @@ public class RenderSystem {
       }
    }
 
-   private static record GpuAsyncTask(Runnable callback, GpuFence fence) {
+   private record GpuAsyncTask(Runnable callback, GpuFence fence) {
    }
 }

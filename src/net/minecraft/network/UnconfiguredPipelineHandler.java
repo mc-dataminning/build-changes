@@ -74,18 +74,18 @@ public class UnconfiguredPipelineHandler {
          if (msg instanceof Packet) {
             ReferenceCountUtil.release(msg);
             throw new EncoderException("Pipeline has no outbound protocol configured, can't process packet " + msg);
-         } else {
-            if (msg instanceof UnconfiguredPipelineHandler.OutboundConfigurationTask configurationTask) {
-               try {
-                  configurationTask.run(ctx);
-               } finally {
-                  ReferenceCountUtil.release(msg);
-               }
+         }
 
-               promise.setSuccess();
-            } else {
-               ctx.write(msg, promise);
+         if (msg instanceof UnconfiguredPipelineHandler.OutboundConfigurationTask configurationTask) {
+            try {
+               configurationTask.run(ctx);
+            } finally {
+               ReferenceCountUtil.release(msg);
             }
+
+            promise.setSuccess();
+         } else {
+            ctx.write(msg, promise);
          }
       }
    }

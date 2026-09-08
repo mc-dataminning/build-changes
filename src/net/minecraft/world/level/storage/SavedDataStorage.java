@@ -66,15 +66,14 @@ public class SavedDataStorage implements AutoCloseable {
       T data = this.get(type);
       if (data != null) {
          return data;
-      } else {
-         T newData = (T)type.constructor().get();
-         this.set(type, newData);
-         return newData;
       }
+
+      T newData = (T)type.constructor().get();
+      this.set(type, newData);
+      return newData;
    }
 
-   @Nullable
-   public <T extends SavedData> T get(final SavedDataType<T> type) {
+   public <T extends SavedData> @Nullable T get(final SavedDataType<T> type) {
       Optional<SavedData> data = this.cache.get(type);
       if (data == null) {
          data = Optional.ofNullable(this.readSavedData(type));
@@ -84,8 +83,7 @@ public class SavedDataStorage implements AutoCloseable {
       return (T)data.orElse(null);
    }
 
-   @Nullable
-   private <T extends SavedData> T readSavedData(final SavedDataType<T> type) {
+   private <T extends SavedData> @Nullable T readSavedData(final SavedDataType<T> type) {
       try {
          Path file = this.getDataFile(type.id());
          if (Files.exists(file)) {
@@ -96,8 +94,8 @@ public class SavedDataStorage implements AutoCloseable {
                .resultOrPartial(error -> LOGGER.error("Failed to parse saved data for '{}': {}", type, error))
                .orElse(null);
          }
-      } catch (Exception var5) {
-         LOGGER.error("Error loading saved data: {}", type, var5);
+      } catch (Exception e) {
+         LOGGER.error("Error loading saved data: {}", type, e);
       }
 
       return null;
@@ -109,7 +107,6 @@ public class SavedDataStorage implements AutoCloseable {
    }
 
    public CompoundTag readTagFromDisk(final Path dataFile, final DataFixTypes type, final int newVersion) throws IOException {
-      CompoundTag var8;
       try (
          InputStream in = Files.newInputStream(dataFile);
          PushbackInputStream inputStream = new PushbackInputStream(new FastBufferedInputStream(in), 2);
@@ -124,10 +121,8 @@ public class SavedDataStorage implements AutoCloseable {
          }
 
          int version = NbtUtils.getDataVersion(tag, 1343);
-         var8 = type.update(this.fixerUpper, tag, version, newVersion);
+         return type.update(this.fixerUpper, tag, version, newVersion);
       }
-
-      return var8;
    }
 
    private boolean isGzip(final PushbackInputStream inputStream) throws IOException {
@@ -151,52 +146,52 @@ public class SavedDataStorage implements AutoCloseable {
    public CompletableFuture<?> scheduleSave() {
       if (this.closed) {
          throw new IllegalStateException("Trying to schedule save when SavedDataStorage is already closed");
-      } else {
-         Map<SavedDataType<?>, CompoundTag> tagsToSave = this.collectDirtyTagsToSave();
-         if (tagsToSave.isEmpty()) {
-            return CompletableFuture.completedFuture(null);
-         } else {
-            int threads = Util.maxAllowedExecutorThreads();
-            int taskCount = tagsToSave.size();
-            if (taskCount > threads) {
-               this.pendingWriteFuture = this.pendingWriteFuture.thenCompose(ignored -> {
-                  List<CompletableFuture<?>> tasks = new ArrayList<>(threads);
-                  int bucketSize = Mth.positiveCeilDiv(taskCount, threads);
+      }
 
-                  for (List<Entry<SavedDataType<?>, CompoundTag>> entries : Iterables.partition(tagsToSave.entrySet(), bucketSize)) {
-                     tasks.add(CompletableFuture.runAsync(() -> {
-                        for (Entry<SavedDataType<?>, CompoundTag> entry : entries) {
-                           this.tryWrite(entry.getKey(), entry.getValue());
-                        }
-                     }, Util.ioPool()));
+      Map<SavedDataType<?>, CompoundTag> tagsToSave = this.collectDirtyTagsToSave();
+      if (tagsToSave.isEmpty()) {
+         return CompletableFuture.completedFuture(null);
+      }
+
+      int threads = Util.maxAllowedExecutorThreads();
+      int taskCount = tagsToSave.size();
+      if (taskCount > threads) {
+         this.pendingWriteFuture = this.pendingWriteFuture.thenCompose(ignored -> {
+            List<CompletableFuture<?>> tasks = new ArrayList<>(threads);
+            int bucketSize = Mth.positiveCeilDiv(taskCount, threads);
+
+            for (List<Entry<SavedDataType<?>, CompoundTag>> entries : Iterables.partition(tagsToSave.entrySet(), bucketSize)) {
+               tasks.add(CompletableFuture.runAsync(() -> {
+                  for (Entry<SavedDataType<?>, CompoundTag> entry : entries) {
+                     this.tryWrite(entry.getKey(), entry.getValue());
                   }
-
-                  return CompletableFuture.allOf(tasks.toArray(CompletableFuture[]::new));
-               });
-            } else {
-               this.pendingWriteFuture = this.pendingWriteFuture
-                  .thenCompose(
-                     ignored -> CompletableFuture.allOf(
-                           tagsToSave.entrySet()
-                              .stream()
-                              .map(entry -> CompletableFuture.runAsync(() -> this.tryWrite(entry.getKey(), entry.getValue()), Util.ioPool()))
-                              .toArray(CompletableFuture[]::new)
-                        )
-                  );
+               }, Util.ioPool()));
             }
 
-            return this.pendingWriteFuture;
-         }
+            return CompletableFuture.allOf(tasks.toArray(CompletableFuture[]::new));
+         });
+      } else {
+         this.pendingWriteFuture = this.pendingWriteFuture
+            .thenCompose(
+               ignored -> CompletableFuture.allOf(
+                  tagsToSave.entrySet()
+                     .stream()
+                     .map(entry -> CompletableFuture.runAsync(() -> this.tryWrite(entry.getKey(), entry.getValue()), Util.ioPool()))
+                     .toArray(CompletableFuture[]::new)
+               )
+            );
       }
+
+      return this.pendingWriteFuture;
    }
 
    private Map<SavedDataType<?>, CompoundTag> collectDirtyTagsToSave() {
       Map<SavedDataType<?>, CompoundTag> tagsToSave = new Object2ObjectArrayMap();
       RegistryOps<Tag> ops = this.registries.createSerializationContext(NbtOps.INSTANCE);
       this.cache.forEach((type, optional) -> optional.filter(SavedData::isDirty).ifPresent(data -> {
-            tagsToSave.put(type, this.encodeUnchecked(type, data, ops));
-            data.setDirty(false);
-         }));
+         tagsToSave.put(type, this.encodeUnchecked(type, data, ops));
+         data.setDirty(false);
+      }));
       return tagsToSave;
    }
 
@@ -214,8 +209,8 @@ public class SavedDataStorage implements AutoCloseable {
       try {
          FileUtil.createDirectoriesSafe(path.getParent());
          NbtIo.writeCompressed(tag, path);
-      } catch (IOException var5) {
-         LOGGER.error("Could not save data to {}", path.getFileName(), var5);
+      } catch (IOException e) {
+         LOGGER.error("Could not save data to {}", path.getFileName(), e);
       }
    }
 
@@ -227,9 +222,9 @@ public class SavedDataStorage implements AutoCloseable {
    public void close() {
       if (this.closed) {
          throw new IllegalStateException("Trying to close SavedDataStorage when it is already closed");
-      } else {
-         this.saveAndJoin();
-         this.closed = true;
       }
+
+      this.saveAndJoin();
+      this.closed = true;
    }
 }

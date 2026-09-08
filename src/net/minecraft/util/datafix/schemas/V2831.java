@@ -20,11 +20,11 @@ public class V2831 extends NamespacedSchema {
          true,
          References.UNTAGGED_SPAWNER,
          () -> DSL.optionalFields(
-               "SpawnPotentials",
-               DSL.list(DSL.fields("data", DSL.fields("entity", References.ENTITY_TREE.in(schema)))),
-               "SpawnData",
-               DSL.fields("entity", References.ENTITY_TREE.in(schema))
-            )
+            "SpawnPotentials",
+            DSL.list(DSL.fields("data", DSL.fields("entity", References.ENTITY_TREE.in(schema)))),
+            "SpawnData",
+            DSL.fields("entity", References.ENTITY_TREE.in(schema))
+         )
       );
    }
 }

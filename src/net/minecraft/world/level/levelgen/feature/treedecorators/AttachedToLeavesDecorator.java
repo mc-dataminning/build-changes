@@ -17,14 +17,14 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 public class AttachedToLeavesDecorator extends TreeDecorator {
    public static final MapCodec<AttachedToLeavesDecorator> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter(p -> p.probability),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter(p -> p.exclusionRadiusXZ),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter(p -> p.exclusionRadiusY),
-               BlockStateProvider.CODEC.fieldOf("block_provider").forGetter(p -> p.blockProvider),
-               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter(p -> p.requiredEmptyBlocks),
-               ExtraCodecs.nonEmptyList(Direction.CODEC.listOf()).fieldOf("directions").forGetter(p -> p.directions)
-            )
-            .apply(i, AttachedToLeavesDecorator::new)
+            Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter(p -> p.probability),
+            Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter(p -> p.exclusionRadiusXZ),
+            Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter(p -> p.exclusionRadiusY),
+            BlockStateProvider.CODEC.fieldOf("block_provider").forGetter(p -> p.blockProvider),
+            Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter(p -> p.requiredEmptyBlocks),
+            ExtraCodecs.nonEmptyList(Direction.CODEC.listOf()).fieldOf("directions").forGetter(p -> p.directions)
+         )
+         .apply(i, AttachedToLeavesDecorator::new)
    );
    protected final float probability;
    protected final int exclusionRadiusXZ;

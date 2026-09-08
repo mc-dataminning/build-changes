@@ -45,9 +45,7 @@ public class ButtonBlock extends FaceAttachedHorizontalDirectionalBlock {
    protected ButtonBlock(final BlockSetType type, final int ticksToStayPressed, final BlockBehaviour.Properties properties) {
       super(properties.sound(type.soundType()));
       this.type = type;
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, Boolean.valueOf(false)).setValue(FACE, AttachFace.WALL)
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, false).setValue(FACE, AttachFace.WALL));
       this.ticksToStayPressed = ticksToStayPressed;
       this.shapes = this.makeShapes();
    }
@@ -58,10 +56,8 @@ public class ButtonBlock extends FaceAttachedHorizontalDirectionalBlock {
       Map<AttachFace, Map<Direction, VoxelShape>> attachFace = Shapes.rotateAttachFace(Block.boxZ(6.0, 4.0, 8.0, 16.0));
       return this.getShapeForEachState(
          state -> Shapes.join(
-               attachFace.get(state.getValue(FACE)).get(state.getValue(FACING)),
-               state.getValue(POWERED) ? pressedShaper : unpressedShaper,
-               BooleanOp.ONLY_FIRST
-            )
+            attachFace.get(state.getValue(FACE)).get(state.getValue(FACING)), state.getValue(POWERED) ? pressedShaper : unpressedShaper, BooleanOp.ONLY_FIRST
+         )
       );
    }
 
@@ -76,10 +72,10 @@ public class ButtonBlock extends FaceAttachedHorizontalDirectionalBlock {
    ) {
       if (state.getValue(POWERED)) {
          return InteractionResult.CONSUME;
-      } else {
-         this.press(state, level, pos, player);
-         return InteractionResult.SUCCESS;
       }
+
+      this.press(state, level, pos, player);
+      return InteractionResult.SUCCESS;
    }
 
    @Override
@@ -93,15 +89,15 @@ public class ButtonBlock extends FaceAttachedHorizontalDirectionalBlock {
       super.onExplosionHit(state, level, pos, explosion, onHit);
    }
 
-   public void press(final BlockState state, final Level level, final BlockPos pos, @Nullable final Player player) {
-      level.setBlockAndUpdate(pos, state.setValue(POWERED, Boolean.valueOf(true)));
+   public void press(final BlockState state, final Level level, final BlockPos pos, final @Nullable Player player) {
+      level.setBlockAndUpdate(pos, state.setValue(POWERED, true));
       this.updateNeighbours(state, level, pos);
       level.scheduleTick(pos, this, this.ticksToStayPressed);
       this.playSound(player, level, pos, true);
       level.gameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
    }
 
-   protected void playSound(@Nullable final Player player, final LevelAccessor level, final BlockPos pos, final boolean pressed) {
+   protected void playSound(final @Nullable Player player, final LevelAccessor level, final BlockPos pos, final boolean pressed) {
       level.playSound(pressed ? player : null, pos, this.getSound(pressed), SoundSource.BLOCKS);
    }
 
@@ -154,7 +150,7 @@ public class ButtonBlock extends FaceAttachedHorizontalDirectionalBlock {
       boolean shouldBePressed = firstArrow != null;
       boolean wasPressed = state.getValue(POWERED);
       if (shouldBePressed != wasPressed) {
-         level.setBlockAndUpdate(pos, state.setValue(POWERED, Boolean.valueOf(shouldBePressed)));
+         level.setBlockAndUpdate(pos, state.setValue(POWERED, shouldBePressed));
          this.updateNeighbours(state, level, pos);
          this.playSound(null, level, pos, shouldBePressed);
          level.gameEvent(firstArrow, shouldBePressed ? GameEvent.BLOCK_ACTIVATE : GameEvent.BLOCK_DEACTIVATE, pos);

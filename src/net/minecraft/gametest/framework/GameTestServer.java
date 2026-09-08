@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
@@ -91,8 +90,7 @@ public class GameTestServer extends MinecraftServer {
    private List<GameTestBatch> testBatches = new ArrayList<>();
    private final Stopwatch stopwatch = Stopwatch.createUnstarted();
    private static final WorldOptions WORLD_OPTIONS = new WorldOptions(0L, false, false);
-   @Nullable
-   private MultipleTestTracker testTracker;
+   private @Nullable MultipleTestTracker testTracker;
 
    public static GameTestServer create(
       final Thread serverThread,
@@ -116,32 +114,32 @@ public class GameTestServer extends MinecraftServer {
          Stopwatch stopwatch = Stopwatch.createStarted();
          WorldStem worldStem = Util.<WorldStem>blockUntilDone(
                executor -> WorldLoader.load(
-                     initConfig,
-                     context -> {
-                        Registry<LevelStem> noDatapackDimensions = new MappedRegistry<>(Registries.LEVEL_STEM, Lifecycle.stable()).freeze();
-                        WorldDimensions worldDimensions = context.datapackWorldRegistries()
-                           .lookupOrThrow(Registries.WORLD_PRESET)
-                           .getOrThrow(WorldPresets.FLAT_ALL_DIMENSIONS)
-                           .value()
-                           .createWorldDimensions();
-                        WorldDimensions.Complete dimensions = worldDimensions.bake(noDatapackDimensions);
-                        PrimaryLevelData levelData = new PrimaryLevelData(testSettings, dimensions.specialWorldProperty(), dimensions.lifecycle());
-                        return new WorldLoader.DataLoadOutput<>(
-                           new LevelDataAndDimensions.WorldDataAndGenSettings(levelData, new WorldGenSettings(WORLD_OPTIONS, worldDimensions)),
-                           dimensions.dimensionsRegistryAccess()
-                        );
-                     },
-                     WorldStem::new,
-                     Util.backgroundExecutor(),
-                     executor
-                  )
+                  initConfig,
+                  context -> {
+                     Registry<LevelStem> noDatapackDimensions = new MappedRegistry<>(Registries.LEVEL_STEM, Lifecycle.stable()).freeze();
+                     WorldDimensions worldDimensions = context.datapackWorldRegistries()
+                        .lookupOrThrow(Registries.WORLD_PRESET)
+                        .getOrThrow(WorldPresets.FLAT_ALL_DIMENSIONS)
+                        .value()
+                        .createWorldDimensions();
+                     WorldDimensions.Complete dimensions = worldDimensions.bake(noDatapackDimensions);
+                     PrimaryLevelData levelData = new PrimaryLevelData(testSettings, dimensions.specialWorldProperty(), dimensions.lifecycle());
+                     return new WorldLoader.DataLoadOutput<>(
+                        new LevelDataAndDimensions.WorldDataAndGenSettings(levelData, new WorldGenSettings(WORLD_OPTIONS, worldDimensions)),
+                        dimensions.dimensionsRegistryAccess()
+                     );
+                  },
+                  WorldStem::new,
+                  Util.backgroundExecutor(),
+                  executor
+               )
             )
             .get();
          stopwatch.stop();
          LOGGER.debug("Finished resource loading after {} ms", stopwatch.elapsed(TimeUnit.MILLISECONDS));
          return new GameTestServer(serverThread, levelStorageSource, packRepository, worldStem, testSelection, verify, repeatCount);
-      } catch (Exception var13) {
-         LOGGER.warn("Failed to load vanilla datapack, bit oops", var13);
+      } catch (Exception e) {
+         LOGGER.warn("Failed to load vanilla datapack, bit oops", e);
          System.exit(-1);
          throw new IllegalStateException();
       }
@@ -176,11 +174,7 @@ public class GameTestServer extends MinecraftServer {
 
    @Override
    protected boolean initServer() {
-      this.setPlayerList(new PlayerList(this, this.registries(), this.playerDataStorage, new EmptyNotificationService()) {
-         {
-            Objects.requireNonNull(GameTestServer.this);
-         }
-      });
+      this.setPlayerList(new PlayerList(this, this.registries(), this.playerDataStorage, new EmptyNotificationService()) {});
       Gizmos.withCollector(GizmoCollector.NOOP);
       this.loadLevel();
       this.testBatches = this.evaluateTestsToRun(this);

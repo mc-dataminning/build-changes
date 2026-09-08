@@ -23,19 +23,19 @@ public class BlockStatePredicate implements Predicate<BlockState> {
       return new BlockStatePredicate(block.getStateDefinition());
    }
 
-   public boolean test(@Nullable final BlockState input) {
+   public boolean test(final @Nullable BlockState input) {
       if (input != null && input.getBlock().equals(this.definition.getOwner())) {
          if (this.properties.isEmpty()) {
             return true;
-         } else {
-            for (Entry<Property<?>, Predicate<Object>> entry : this.properties.entrySet()) {
-               if (!this.applies(input, entry.getKey(), entry.getValue())) {
-                  return false;
-               }
-            }
-
-            return true;
          }
+
+         for (Entry<Property<?>, Predicate<Object>> entry : this.properties.entrySet()) {
+            if (!this.applies(input, entry.getKey(), entry.getValue())) {
+               return false;
+            }
+         }
+
+         return true;
       } else {
          return false;
       }
@@ -49,9 +49,9 @@ public class BlockStatePredicate implements Predicate<BlockState> {
    public <V extends Comparable<V>> BlockStatePredicate where(final Property<V> property, final Predicate<Object> predicate) {
       if (!this.definition.getProperties().contains(property)) {
          throw new IllegalArgumentException(this.definition + " cannot support property " + property);
-      } else {
-         this.properties.put(property, predicate);
-         return this;
       }
+
+      this.properties.put(property, predicate);
+      return this;
    }
 }

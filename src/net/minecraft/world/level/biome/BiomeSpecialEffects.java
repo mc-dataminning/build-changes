@@ -17,15 +17,15 @@ public record BiomeSpecialEffects(
 ) {
    public static final Codec<BiomeSpecialEffects> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ExtraCodecs.STRING_RGB_COLOR.fieldOf("water_color").forGetter(BiomeSpecialEffects::waterColor),
-               ExtraCodecs.STRING_RGB_COLOR.optionalFieldOf("foliage_color").forGetter(BiomeSpecialEffects::foliageColorOverride),
-               ExtraCodecs.STRING_RGB_COLOR.optionalFieldOf("dry_foliage_color").forGetter(BiomeSpecialEffects::dryFoliageColorOverride),
-               ExtraCodecs.STRING_RGB_COLOR.optionalFieldOf("grass_color").forGetter(BiomeSpecialEffects::grassColorOverride),
-               BiomeSpecialEffects.GrassColorModifier.CODEC
-                  .optionalFieldOf("grass_color_modifier", BiomeSpecialEffects.GrassColorModifier.NONE)
-                  .forGetter(BiomeSpecialEffects::grassColorModifier)
-            )
-            .apply(i, BiomeSpecialEffects::new)
+            ExtraCodecs.STRING_RGB_COLOR.fieldOf("water_color").forGetter(BiomeSpecialEffects::waterColor),
+            ExtraCodecs.STRING_RGB_COLOR.optionalFieldOf("foliage_color").forGetter(BiomeSpecialEffects::foliageColorOverride),
+            ExtraCodecs.STRING_RGB_COLOR.optionalFieldOf("dry_foliage_color").forGetter(BiomeSpecialEffects::dryFoliageColorOverride),
+            ExtraCodecs.STRING_RGB_COLOR.optionalFieldOf("grass_color").forGetter(BiomeSpecialEffects::grassColorOverride),
+            BiomeSpecialEffects.GrassColorModifier.CODEC
+               .optionalFieldOf("grass_color_modifier", BiomeSpecialEffects.GrassColorModifier.NONE)
+               .forGetter(BiomeSpecialEffects::grassColorModifier)
+         )
+         .apply(i, BiomeSpecialEffects::new)
    );
 
    public static class Builder {
@@ -71,7 +71,7 @@ public record BiomeSpecialEffects(
       }
    }
 
-   public static enum GrassColorModifier implements StringRepresentable {
+   public enum GrassColorModifier implements StringRepresentable {
       NONE("none") {
          @Override
          public int modifyColor(final double x, final double z, final int baseColor) {
@@ -87,7 +87,7 @@ public record BiomeSpecialEffects(
       SWAMP("swamp") {
          @Override
          public int modifyColor(final double x, final double z, final int baseColor) {
-            double groundValue = (double)Biome.BIOME_INFO_NOISE.get(x * 0.0225, z * 0.0225);
+            double groundValue = Biome.BIOME_INFO_NOISE.get(x * 0.0225, z * 0.0225);
             return groundValue < -0.1 ? -11766212 : -9801671;
          }
       };
@@ -97,7 +97,7 @@ public record BiomeSpecialEffects(
 
       public abstract int modifyColor(final double x, final double z, final int baseColor);
 
-      private GrassColorModifier(final String name) {
+      GrassColorModifier(final String name) {
          this.name = name;
       }
 

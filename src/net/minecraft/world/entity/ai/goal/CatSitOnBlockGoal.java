@@ -63,19 +63,19 @@ public class CatSitOnBlockGoal extends MoveToBlockGoal {
    protected boolean isValidTarget(final LevelReader level, final BlockPos pos) {
       if (!level.isEmptyBlock(pos.above())) {
          return false;
-      } else {
-         BlockState blockState = level.getBlockState(pos);
-         if (!blockState.is(BlockTags.CATS_CAN_SIT_ON)) {
-            return false;
-         } else {
-            for (Pair<Predicate<BlockState>, TriFunction<BlockState, LevelReader, BlockPos, Boolean>> blockValidation : BLOCK_TYPE_VALIDATION) {
-               if (((Predicate)blockValidation.getFirst()).test(blockState)) {
-                  return (Boolean)((TriFunction)blockValidation.getSecond()).apply(blockState, level, pos);
-               }
-            }
+      }
 
-            return true;
+      BlockState blockState = level.getBlockState(pos);
+      if (!blockState.is(BlockTags.CATS_CAN_SIT_ON)) {
+         return false;
+      }
+
+      for (Pair<Predicate<BlockState>, TriFunction<BlockState, LevelReader, BlockPos, Boolean>> blockValidation : BLOCK_TYPE_VALIDATION) {
+         if (((Predicate)blockValidation.getFirst()).test(blockState)) {
+            return (Boolean)((TriFunction)blockValidation.getSecond()).apply(blockState, level, pos);
          }
       }
+
+      return true;
    }
 }

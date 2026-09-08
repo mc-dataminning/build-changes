@@ -37,10 +37,6 @@ public class RegistrySetBuilder {
 
    public <T> RegistrySetBuilder add(final ResourceKey<? extends Registry<T>> key, final SingleRegistryBootstrap<T> bootstrap) {
       this.entries.add(new RegistrySetBuilder.RegistryStub() {
-         {
-            Objects.requireNonNull(RegistrySetBuilder.this);
-         }
-
          @Override
          public Stream<ResourceKey<? extends Registry<?>>> requiredRegistries() {
             return Stream.of(key);
@@ -56,10 +52,6 @@ public class RegistrySetBuilder {
 
    public RegistrySetBuilder add(final MultiRegistryBootstrap bootstrap) {
       this.entries.add(new RegistrySetBuilder.RegistryStub() {
-         {
-            Objects.requireNonNull(RegistrySetBuilder.this);
-         }
-
          @Override
          public Stream<ResourceKey<? extends Registry<?>>> requiredRegistries() {
             return bootstrap.requestedRegistries().stream();
@@ -140,7 +132,7 @@ public class RegistrySetBuilder {
       return entries.flatMap(RegistrySetBuilder.RegistryStub::requiredRegistries).distinct();
    }
 
-   private static record BootstrappedRegistryState<T>(BootstrapRegistry<T> registry, Map<ResourceKey<T>, T> registeredValues) {
+   private record BootstrappedRegistryState<T>(BootstrapRegistry<T> registry, Map<ResourceKey<T>, T> registeredValues) {
       public static <T> RegistrySetBuilder.BootstrappedRegistryState<T> create(final ResourceKey<? extends Registry<T>> key, final Lifecycle lifecycle) {
          BootstrapRegistry<T> newRegistry = new BootstrapRegistry<>(key, lifecycle);
          return new RegistrySetBuilder.BootstrappedRegistryState<>(newRegistry, new HashMap<>());
@@ -148,10 +140,6 @@ public class RegistrySetBuilder {
 
       public BootstrapContext<T> createBootstrapContext(final RegistrySetBuilder.BuildState state) {
          return new BootstrapContext<T>() {
-            {
-               Objects.requireNonNull(BootstrappedRegistryState.this);
-            }
-
             @Override
             public Holder.Reference<T> register(final ResourceKey<T> key, final T value) {
                T previousValue = BootstrappedRegistryState.this.registeredValues.put(key, value);
@@ -192,25 +180,21 @@ public class RegistrySetBuilder {
 
       public void validatePatchHolders(final RegistrySetBuilder.BuildState state, final HolderLookup.Provider fallback) {
          HolderLookup<T> baseRegistry = fallback.lookupOrThrow(this.registry.key());
-         this.registry
-            .removeIf(
-               element -> {
-                  if (element.isBound()) {
-                     return false;
-                  } else {
-                     if (baseRegistry.get(element.key()).isEmpty()) {
-                        state.errors()
-                           .add(new IllegalStateException("Value " + element.key().identifier() + " referenced by patched element is not present in base"));
-                     }
+         this.registry.removeIf(element -> {
+            if (element.isBound()) {
+               return false;
+            }
 
-                     return true;
-                  }
-               }
-            );
+            if (baseRegistry.get(element.key()).isEmpty()) {
+               state.errors().add(new IllegalStateException("Value " + element.key().identifier() + " referenced by patched element is not present in base"));
+            }
+
+            return true;
+         });
       }
    }
 
-   private static record BuildState(
+   private record BuildState(
       HolderLookup.Provider contextRegistries,
       HolderLookup.Provider allRegistries,
       Map<ResourceKey<? extends Registry<?>>, RegistrySetBuilder.BootstrappedRegistryState<?>> bootstrappedRegistries,
@@ -264,7 +248,7 @@ public class RegistrySetBuilder {
       }
    }
 
-   public static record PatchedRegistries(HolderLookup.Provider full, HolderLookup.Provider patches) {
+   public record PatchedRegistries(HolderLookup.Provider full, HolderLookup.Provider patches) {
    }
 
    private interface RegistryStub {

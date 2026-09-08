@@ -15,59 +15,22 @@ import net.minecraft.world.level.levelgen.densityfunction.generator.ConstantFunc
 public record PowFunction(DensityFunction base, DensityFunction exponent) implements DensityFunction {
    public static final MapCodec<PowFunction> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               DensityFunction.CODEC.fieldOf("base").forGetter(PowFunction::base), DensityFunction.CODEC.fieldOf("exponent").forGetter(PowFunction::exponent)
-            )
-            .apply(i, PowFunction::new)
+            DensityFunction.CODEC.fieldOf("base").forGetter(PowFunction::base), DensityFunction.CODEC.fieldOf("exponent").forGetter(PowFunction::exponent)
+         )
+         .apply(i, PowFunction::new)
    );
 
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
    @Override
    public DensitySampler compileSampler(final DensityFunction.CompileContext context) {
-      Throwable var16;
-      label44: {
-         DensitySampler base = this.base.compileSampler(context);
-         DensitySampler exponent = this.exponent.compileSampler(context);
-         if (this.base instanceof ConstantFunction var4) {
-            ConstantFunction var10000 = var4;
-
-            try {
-               var17 = var10000.value();
-            } catch (Throwable var12) {
-               var16 = var12;
-               boolean var10001 = false;
-               break label44;
-            }
-
-            float var9 = var17;
-            if (true) {
-               return new PowFunction.ConstBaseSampler((double)var9, exponent);
-            }
-         }
-
-         if (!(this.exponent instanceof ConstantFunction var6)) {
-            return new PowFunction.Sampler(base, exponent);
-         }
-
-         ConstantFunction var18 = var6;
-
-         try {
-            var19 = var18.value();
-         } catch (Throwable var11) {
-            var16 = var11;
-            boolean var20 = false;
-            break label44;
-         }
-
-         float var15 = var19;
-         if (true) {
-            return compileConstExponent(base, var15);
-         }
-
-         return new PowFunction.Sampler(base, exponent);
+      DensitySampler base = this.base.compileSampler(context);
+      DensitySampler exponent = this.exponent.compileSampler(context);
+      if (this.base instanceof ConstantFunction(float baseValue)) {
+         return new PowFunction.ConstBaseSampler(baseValue, exponent);
+      } else {
+         return this.exponent instanceof ConstantFunction(float exponentValue)
+            ? compileConstExponent(base, exponentValue)
+            : new PowFunction.Sampler(base, exponent);
       }
-
-      Throwable var13 = var16;
-      throw new MatchException(var13.toString(), var13);
    }
 
    private static DensitySampler compileConstExponent(final DensitySampler base, final float exponent) {
@@ -81,13 +44,13 @@ public record PowFunction(DensityFunction base, DensityFunction exponent) implem
          specialSampler = new UnaryFunction.SquareSampler(base);
       } else {
          if (absExponent != 3.0F) {
-            return new PowFunction.ConstExponentSampler(base, (double)exponent);
+            return new PowFunction.ConstExponentSampler(base, exponent);
          }
 
          specialSampler = new UnaryFunction.CubeSampler(base);
       }
 
-      return (DensitySampler)(exponent >= 0.0F ? specialSampler : new UnaryFunction.ReciprocalSampler(specialSampler));
+      return exponent >= 0.0F ? specialSampler : new UnaryFunction.ReciprocalSampler(specialSampler);
    }
 
    @Override
@@ -102,9 +65,8 @@ public record PowFunction(DensityFunction base, DensityFunction exponent) implem
       return Interval.pow(this.base.range(), this.exponent.range());
    }
 
-   @DensityFunction.Axes
    @Override
-   public int domainAxes() {
+   public @DensityFunction.Axes int domainAxes() {
       return this.base.domainAxes() | this.exponent.domainAxes();
    }
 
@@ -113,39 +75,39 @@ public record PowFunction(DensityFunction base, DensityFunction exponent) implem
       return CODEC;
    }
 
-   private static record ConstBaseSampler(double base, DensitySampler exponent) implements DensitySampler {
+   private record ConstBaseSampler(double base, DensitySampler exponent) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          this.exponent.sampleVolume(context, outputBuffer, volume);
 
          for (int i = 0; i < outputBuffer.size(); i++) {
-            outputBuffer.set(i, (float)Math.pow(this.base, (double)outputBuffer.get(i)));
+            outputBuffer.set(i, (float)Math.pow(this.base, outputBuffer.get(i)));
          }
       }
 
       @Override
       public float sampleValue(final SamplerContext context, final int blockX, final int blockY, final int blockZ) {
-         return (float)Math.pow(this.base, (double)this.exponent.sampleValue(context, blockX, blockY, blockZ));
+         return (float)Math.pow(this.base, this.exponent.sampleValue(context, blockX, blockY, blockZ));
       }
    }
 
-   private static record ConstExponentSampler(DensitySampler base, double exponent) implements DensitySampler {
+   private record ConstExponentSampler(DensitySampler base, double exponent) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          this.base.sampleVolume(context, outputBuffer, volume);
 
          for (int i = 0; i < outputBuffer.size(); i++) {
-            outputBuffer.set(i, (float)Math.pow((double)outputBuffer.get(i), this.exponent));
+            outputBuffer.set(i, (float)Math.pow(outputBuffer.get(i), this.exponent));
          }
       }
 
       @Override
       public float sampleValue(final SamplerContext context, final int blockX, final int blockY, final int blockZ) {
-         return (float)Math.pow((double)this.base.sampleValue(context, blockX, blockY, blockZ), this.exponent);
+         return (float)Math.pow(this.base.sampleValue(context, blockX, blockY, blockZ), this.exponent);
       }
    }
 
-   private static record Sampler(DensitySampler base, DensitySampler exponent) implements DensitySampler {
+   private record Sampler(DensitySampler base, DensitySampler exponent) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          this.base.sampleVolume(context, outputBuffer, volume);
@@ -156,16 +118,14 @@ public record PowFunction(DensityFunction base, DensityFunction exponent) implem
             for (int i = 0; i < outputBuffer.size(); i++) {
                float base = outputBuffer.get(i);
                float exponent = exponentBuffer.get(i);
-               outputBuffer.set(i, (float)Math.pow((double)base, (double)exponent));
+               outputBuffer.set(i, (float)Math.pow(base, exponent));
             }
          }
       }
 
       @Override
       public float sampleValue(final SamplerContext context, final int blockX, final int blockY, final int blockZ) {
-         return (float)Math.pow(
-            (double)this.base.sampleValue(context, blockX, blockY, blockZ), (double)this.exponent.sampleValue(context, blockX, blockY, blockZ)
-         );
+         return (float)Math.pow(this.base.sampleValue(context, blockX, blockY, blockZ), this.exponent.sampleValue(context, blockX, blockY, blockZ));
       }
    }
 }

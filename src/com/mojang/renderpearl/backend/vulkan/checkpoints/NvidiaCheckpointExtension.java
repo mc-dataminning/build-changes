@@ -25,15 +25,15 @@ public class NvidiaCheckpointExtension implements CheckpointExtension {
    public List<CheckpointExtension.QueueCheckpoints> retrieveCheckpoints(final boolean isDeviceLost) {
       if (!isDeviceLost) {
          return List.of();
-      } else {
-         List<CheckpointExtension.QueueCheckpoints> result = new ArrayList<>(this.storages.size());
-
-         for (NvidiaCheckpointExtension.NvidiaCheckpointStorage storage : this.storages) {
-            result.add(storage.retrieveCheckpoints());
-         }
-
-         return result;
       }
+
+      List<CheckpointExtension.QueueCheckpoints> result = new ArrayList<>(this.storages.size());
+
+      for (NvidiaCheckpointExtension.NvidiaCheckpointStorage storage : this.storages) {
+         result.add(storage.retrieveCheckpoints());
+      }
+
+      return result;
    }
 
    @Override
@@ -47,7 +47,7 @@ public class NvidiaCheckpointExtension implements CheckpointExtension {
 
       @Override
       protected void recordCheckpoint(final VkCommandBuffer commandBuffer, final int id) {
-         NVDeviceDiagnosticCheckpoints.vkCmdSetCheckpointNV(commandBuffer, (long)id);
+         NVDeviceDiagnosticCheckpoints.vkCmdSetCheckpointNV(commandBuffer, id);
       }
 
       public CheckpointExtension.QueueCheckpoints retrieveCheckpoints() {

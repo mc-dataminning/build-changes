@@ -50,8 +50,8 @@ public class ComponentSerialization {
                .decode(ops, input)
                .flatMap(
                   pair -> this.isTooLarge(ops, (Component)pair.getFirst())
-                        ? DataResult.error(() -> "Component was too large: greater than max size " + maxFlatSize)
-                        : DataResult.success(pair)
+                     ? DataResult.error(() -> "Component was too large: greater than max size " + maxFlatSize)
+                     : DataResult.success(pair)
                );
          }
 
@@ -97,17 +97,17 @@ public class ComponentSerialization {
       MapCodec<ComponentContents> compressedContentsCodec = createLegacyComponentMatcher(contentTypes, ComponentContents::codec, "type");
       Codec<Component> fullCodec = RecordCodecBuilder.create(
          i -> i.group(
-                  compressedContentsCodec.forGetter(Component::getContents),
-                  ExtraCodecs.nonEmptyList(topSerializer.listOf()).optionalFieldOf("extra", List.of()).forGetter(Component::getSiblings),
-                  Style.Serializer.MAP_CODEC.forGetter(Component::getStyle)
-               )
-               .apply(i, MutableComponent::new)
+               compressedContentsCodec.forGetter(Component::getContents),
+               ExtraCodecs.nonEmptyList(topSerializer.listOf()).optionalFieldOf("extra", List.of()).forGetter(Component::getSiblings),
+               Style.Serializer.MAP_CODEC.forGetter(Component::getStyle)
+            )
+            .apply(i, MutableComponent::new)
       );
       return Codec.either(Codec.either(Codec.STRING, ExtraCodecs.nonEmptyList(topSerializer.listOf())), fullCodec)
          .xmap(
             specialOrComponent -> (Component)specialOrComponent.map(
-                  special -> (Component)special.map(Component::literal, ComponentSerialization::createFromList), c -> c
-               ),
+               special -> (Component)special.map(Component::literal, ComponentSerialization::createFromList), c -> c
+            ),
             component -> {
                String text = component.tryCollapseToString();
                return text != null ? Either.left(Either.left(text)) : Either.right(component);

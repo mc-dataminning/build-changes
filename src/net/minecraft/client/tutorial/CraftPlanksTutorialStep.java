@@ -18,8 +18,7 @@ public class CraftPlanksTutorialStep implements TutorialStepInstance {
    private static final Component CRAFT_TITLE = Component.translatable("tutorial.craft_planks.title");
    private static final Component CRAFT_DESCRIPTION = Component.translatable("tutorial.craft_planks.description");
    private final Tutorial tutorial;
-   @Nullable
-   private TutorialToast toast;
+   private @Nullable TutorialToast toast;
    private int timeWaiting;
 
    public CraftPlanksTutorialStep(final Tutorial tutorial) {

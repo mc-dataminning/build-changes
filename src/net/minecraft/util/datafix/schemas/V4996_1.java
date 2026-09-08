@@ -18,20 +18,20 @@ public class V4996_1 extends NamespacedSchema {
          map,
          "minecraft:decorated_pot",
          () -> DSL.optionalFields(
-               "sherds",
-               DSL.optionalFields(
-                  "back",
-                  References.ITEM_STACK.in(schema),
-                  "left",
-                  References.ITEM_STACK.in(schema),
-                  "right",
-                  References.ITEM_STACK.in(schema),
-                  "front",
-                  References.ITEM_STACK.in(schema)
-               ),
-               "item",
+            "sherds",
+            DSL.optionalFields(
+               "back",
+               References.ITEM_STACK.in(schema),
+               "left",
+               References.ITEM_STACK.in(schema),
+               "right",
+               References.ITEM_STACK.in(schema),
+               "front",
                References.ITEM_STACK.in(schema)
-            )
+            ),
+            "item",
+            References.ITEM_STACK.in(schema)
+         )
       );
       return map;
    }

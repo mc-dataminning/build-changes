@@ -61,13 +61,11 @@ public class MapItem extends Item {
       map.set(DataComponents.MAP_ID, newId);
    }
 
-   @Nullable
-   public static MapItemSavedData getSavedData(@Nullable final MapId id, final Level level) {
+   public static @Nullable MapItemSavedData getSavedData(final @Nullable MapId id, final Level level) {
       return id == null ? null : level.getMapData(id);
    }
 
-   @Nullable
-   public static MapItemSavedData getSavedData(final ItemStack itemStack, final Level level) {
+   public static @Nullable MapItemSavedData getSavedData(final ItemStack itemStack, final Level level) {
       MapId id = itemStack.get(DataComponents.MAP_ID);
       return getSavedData(id, level);
    }
@@ -81,7 +79,7 @@ public class MapItem extends Item {
       final boolean unlimitedTracking,
       final ResourceKey<Level> dimension
    ) {
-      MapItemSavedData newData = MapItemSavedData.createFresh((double)xSpawn, (double)zSpawn, (byte)scale, trackingPosition, unlimitedTracking, dimension);
+      MapItemSavedData newData = MapItemSavedData.createFresh(xSpawn, zSpawn, (byte)scale, trackingPosition, unlimitedTracking, dimension);
       MapId id = level.getFreeMapId();
       level.setMapData(id, newData);
       return id;
@@ -92,8 +90,8 @@ public class MapItem extends Item {
          int scale = 1 << data.scale;
          int centerX = data.centerX;
          int centerZ = data.centerZ;
-         int playerImgX = Mth.floor(player.getX() - (double)centerX) / scale + 64;
-         int playerImgY = Mth.floor(player.getZ() - (double)centerZ) / scale + 64;
+         int playerImgX = Mth.floor(player.getX() - centerX) / scale + 64;
+         int playerImgY = Mth.floor(player.getZ() - centerZ) / scale + 64;
          int radius = 128 / scale;
          if (level.dimensionType().hasCeiling()) {
             radius /= 2;
@@ -161,7 +159,7 @@ public class MapItem extends Item {
                                  }
 
                                  data.checkBanners(level, blockPos.getX(), blockPos.getZ());
-                                 averageAreaHeight += (double)columnY / (double)(scale * scale);
+                                 averageAreaHeight += (double)columnY / (scale * scale);
                                  colorCount.add(state.getMapColor(level, blockPos));
                               }
                            }
@@ -171,7 +169,7 @@ public class MapItem extends Item {
                         MapColor color = (MapColor)Iterables.getFirst(Multisets.copyHighestCountFirst(colorCount), MapColor.NONE);
                         MapColor.Brightness brightness;
                         if (color == MapColor.WATER) {
-                           double diff = (double)waterDepth * 0.1 + (double)(imgX + imgY & 1) * 0.2;
+                           double diff = waterDepth * 0.1 + (imgX + imgY & 1) * 0.2;
                            if (diff < 0.5) {
                               brightness = MapColor.Brightness.HIGH;
                            } else if (diff > 0.9) {
@@ -180,7 +178,7 @@ public class MapItem extends Item {
                               brightness = MapColor.Brightness.NORMAL;
                            }
                         } else {
-                           double diff = (averageAreaHeight - previousAverageAreaHeight) * 4.0 / (double)(scale + 4) + ((double)(imgX + imgY & 1) - 0.5) * 0.4;
+                           double diff = (averageAreaHeight - previousAverageAreaHeight) * 4.0 / (scale + 4) + ((imgX + imgY & 1) - 0.5) * 0.4;
                            if (diff > 0.6) {
                               brightness = MapColor.Brightness.HIGH;
                            } else if (diff < -0.6) {
@@ -248,7 +246,7 @@ public class MapItem extends Item {
                   if (isBiomeWatery(isBiomeWatery, mx, mz)) {
                      newColor = MapColor.COLOR_ORANGE;
                      if (waterCount > 7 && mz % 2 == 0) {
-                        switch ((mx + (int)(Mth.sin((double)((float)mz + 0.0F)) * 7.0F)) / 8 % 5) {
+                        switch ((mx + (int)(Mth.sin(mz + 0.0F) * 7.0F)) / 8 % 5) {
                            case 0:
                            case 4:
                               brightness = MapColor.Brightness.LOW;
@@ -288,7 +286,7 @@ public class MapItem extends Item {
    }
 
    @Override
-   public void inventoryTick(final ItemStack itemStack, final ServerLevel level, final Entity owner, @Nullable final EquipmentSlot slot) {
+   public void inventoryTick(final ItemStack itemStack, final ServerLevel level, final Entity owner, final @Nullable EquipmentSlot slot) {
       MapItemSavedData data = getSavedData(itemStack, level);
       if (data != null) {
          if (owner instanceof Player player) {

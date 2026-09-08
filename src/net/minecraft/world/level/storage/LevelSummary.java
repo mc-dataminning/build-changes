@@ -25,8 +25,7 @@ public class LevelSummary implements Comparable<LevelSummary> {
    private final boolean locked;
    private final boolean experimental;
    private final Path icon;
-   @Nullable
-   private Component info;
+   private @Nullable Component info;
 
    public LevelSummary(
       final LevelSettings settings,
@@ -154,33 +153,37 @@ public class LevelSummary implements Comparable<LevelSummary> {
    private Component createInfo() {
       if (this.isLocked()) {
          return Component.translatable("selectWorld.locked").withStyle(ChatFormatting.RED);
-      } else if (this.requiresManualConversion()) {
-         return Component.translatable("selectWorld.conversion").withStyle(ChatFormatting.RED);
-      } else if (!this.isCompatible()) {
-         return Component.translatable("selectWorld.incompatible.info", this.getWorldVersionName()).withStyle(ChatFormatting.RED);
-      } else {
-         MutableComponent result = this.isHardcore()
-            ? Component.empty().append(Component.translatable("gameMode.hardcore").withColor(-65536))
-            : Component.translatable("gameMode." + this.getGameMode().getName());
-         if (this.hasCommands()) {
-            result.append(", ").append(Component.translatable("selectWorld.commands"));
-         }
-
-         if (this.isExperimental()) {
-            result.append(", ").append(Component.translatable("selectWorld.experimental").withStyle(ChatFormatting.YELLOW));
-         }
-
-         MutableComponent worldVersionName = this.getWorldVersionName();
-         MutableComponent decoratedVersionName = Component.literal(", ").append(Component.translatable("selectWorld.version")).append(CommonComponents.SPACE);
-         if (this.shouldBackup()) {
-            decoratedVersionName.append(worldVersionName.withStyle(this.isDowngrade() ? ChatFormatting.RED : ChatFormatting.ITALIC));
-         } else {
-            decoratedVersionName.append(worldVersionName);
-         }
-
-         result.append(decoratedVersionName);
-         return result;
       }
+
+      if (this.requiresManualConversion()) {
+         return Component.translatable("selectWorld.conversion").withStyle(ChatFormatting.RED);
+      }
+
+      if (!this.isCompatible()) {
+         return Component.translatable("selectWorld.incompatible.info", this.getWorldVersionName()).withStyle(ChatFormatting.RED);
+      }
+
+      MutableComponent result = this.isHardcore()
+         ? Component.empty().append(Component.translatable("gameMode.hardcore").withColor(-65536))
+         : Component.translatable("gameMode." + this.getGameMode().getName());
+      if (this.hasCommands()) {
+         result.append(", ").append(Component.translatable("selectWorld.commands"));
+      }
+
+      if (this.isExperimental()) {
+         result.append(", ").append(Component.translatable("selectWorld.experimental").withStyle(ChatFormatting.YELLOW));
+      }
+
+      MutableComponent worldVersionName = this.getWorldVersionName();
+      MutableComponent decoratedVersionName = Component.literal(", ").append(Component.translatable("selectWorld.version")).append(CommonComponents.SPACE);
+      if (this.shouldBackup()) {
+         decoratedVersionName.append(worldVersionName.withStyle(this.isDowngrade() ? ChatFormatting.RED : ChatFormatting.ITALIC));
+      } else {
+         decoratedVersionName.append(worldVersionName);
+      }
+
+      result.append(decoratedVersionName);
+      return result;
    }
 
    public Component primaryActionMessage() {
@@ -207,7 +210,7 @@ public class LevelSummary implements Comparable<LevelSummary> {
       return true;
    }
 
-   public static enum BackupStatus {
+   public enum BackupStatus {
       NONE(false, false, ""),
       DOWNGRADE(true, true, "downgrade"),
       UPGRADE_TO_SNAPSHOT(true, false, "snapshot"),
@@ -217,7 +220,7 @@ public class LevelSummary implements Comparable<LevelSummary> {
       private final boolean severe;
       private final String translationKey;
 
-      private BackupStatus(final boolean shouldBackup, final boolean severe, final String translationKey) {
+      BackupStatus(final boolean shouldBackup, final boolean severe, final String translationKey) {
          this.shouldBackup = shouldBackup;
          this.severe = severe;
          this.translationKey = translationKey;

@@ -49,8 +49,7 @@ public class StructureTemplateManager {
    private final ResourceManagerTemplateSource resourceManagerSource;
    private final List<TemplateSource> sources;
    private final TemplatePathFactory worldTemplates;
-   @Nullable
-   private final TemplatePathFactory testTemplates;
+   private final @Nullable TemplatePathFactory testTemplates;
 
    public StructureTemplateManager(
       final ResourceManager resourceManager,
@@ -85,11 +84,11 @@ public class StructureTemplateManager {
       Optional<StructureTemplate> cachedTemplate = this.get(id);
       if (cachedTemplate.isPresent()) {
          return cachedTemplate.get();
-      } else {
-         StructureTemplate template = new StructureTemplate();
-         this.structureRepository.put(id, Optional.of(template));
-         return template;
       }
+
+      StructureTemplate template = new StructureTemplate();
+      this.structureRepository.put(id, Optional.of(template));
+      return template;
    }
 
    public Optional<StructureTemplate> get(final Identifier id) {
@@ -123,23 +122,23 @@ public class StructureTemplateManager {
       Optional<StructureTemplate> structureTemplate = this.structureRepository.get(id);
       if (structureTemplate.isEmpty()) {
          return false;
-      } else {
-         Path file;
-         boolean saveAsText;
-         if (SharedConstants.DEBUG_SAVE_STRUCTURES_AS_SNBT) {
-            file = this.worldTemplates.createAndValidatePathToStructure(id, WORLD_TEXT_STRUCTURE_LISTER);
-            saveAsText = true;
-         } else {
-            file = this.worldTemplates.createAndValidatePathToStructure(id, WORLD_STRUCTURE_LISTER);
-            saveAsText = false;
-         }
+      }
 
-         try {
-            return save(file, structureTemplate.get(), saveAsText);
-         } catch (Exception var6) {
-            LOGGER.warn("Failed to save structure file {} to {}", new Object[]{id, file, var6});
-            return false;
-         }
+      Path file;
+      boolean saveAsText;
+      if (SharedConstants.DEBUG_SAVE_STRUCTURES_AS_SNBT) {
+         file = this.worldTemplates.createAndValidatePathToStructure(id, WORLD_TEXT_STRUCTURE_LISTER);
+         saveAsText = true;
+      } else {
+         file = this.worldTemplates.createAndValidatePathToStructure(id, WORLD_STRUCTURE_LISTER);
+         saveAsText = false;
+      }
+
+      try {
+         return save(file, structureTemplate.get(), saveAsText);
+      } catch (Exception e) {
+         LOGGER.warn("Failed to save structure file {} to {}", new Object[]{id, file, e});
+         return false;
       }
    }
 
@@ -147,27 +146,26 @@ public class StructureTemplateManager {
       Path parent = file.getParent();
       if (parent == null) {
          return false;
-      } else {
-         FileUtil.createDirectoriesSafe(parent);
-         CompoundTag tag = structureTemplate.save(new CompoundTag());
-         if (asText) {
-            NbtToSnbt.writeSnbt(CachedOutput.NO_CACHE, file, NbtUtils.structureToSnbt(tag));
-         } else {
-            try (OutputStream output = new FileOutputStream(file.toFile())) {
-               NbtIo.writeCompressed(tag, output);
-            }
-         }
-
-         return true;
       }
+
+      FileUtil.createDirectoriesSafe(parent);
+      CompoundTag tag = structureTemplate.save(new CompoundTag());
+      if (asText) {
+         NbtToSnbt.writeSnbt(CachedOutput.NO_CACHE, file, NbtUtils.structureToSnbt(tag));
+      } else {
+         try (OutputStream output = new FileOutputStream(file.toFile())) {
+            NbtIo.writeCompressed(tag, output);
+         }
+      }
+
+      return true;
    }
 
    public TemplatePathFactory worldTemplates() {
       return this.worldTemplates;
    }
 
-   @Nullable
-   public TemplatePathFactory testTemplates() {
+   public @Nullable TemplatePathFactory testTemplates() {
       return this.testTemplates;
    }
 

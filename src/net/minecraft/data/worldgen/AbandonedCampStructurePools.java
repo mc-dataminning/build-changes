@@ -224,7 +224,7 @@ public class AbandonedCampStructurePools {
       return String.format(Locale.ROOT, "abandoned_camp/camp/default/campsite_default_%s_%d", defaultCampSiteTypes, numOfDefaultCampVariants);
    }
 
-   public static record AbandonedCampStructure(
+   public record AbandonedCampStructure(
       ResourceKey<StructureTemplatePool> campStructureDirectory, ResourceKey<StructureTemplatePool> tentStructureDirectory, String name
    ) {
    }

@@ -30,8 +30,7 @@ public class NewMinecartBehavior extends MinecartBehavior {
    public static final int POS_ROT_LERP_TICKS = 3;
    public static final double ON_RAIL_Y_OFFSET = 0.1;
    public static final double OPPOSING_SLOPES_REST_AT_SPEED_THRESHOLD = 0.005;
-   @Nullable
-   private NewMinecartBehavior.StepPartialTicks cacheIndexAlpha;
+   private NewMinecartBehavior.@Nullable StepPartialTicks cacheIndexAlpha;
    private int cachedLerpDelay;
    private float cachedPartialTick;
    private int lerpDelay = 0;
@@ -73,7 +72,7 @@ public class NewMinecartBehavior extends MinecartBehavior {
             this.currentLerpStepsTotalWeight = 0.0;
 
             for (NewMinecartBehavior.MinecartStep minecartStep : this.currentLerpSteps) {
-               this.currentLerpStepsTotalWeight = this.currentLerpStepsTotalWeight + (double)minecartStep.weight;
+               this.currentLerpStepsTotalWeight = this.currentLerpStepsTotalWeight + minecartStep.weight;
             }
 
             this.lerpDelay = this.currentLerpStepsTotalWeight == 0.0 ? 0 : 3;
@@ -108,52 +107,48 @@ public class NewMinecartBehavior extends MinecartBehavior {
 
    public Vec3 getCartLerpPosition(final float partialTicks) {
       NewMinecartBehavior.StepPartialTicks currentStepPartialTicks = this.getCurrentLerpStep(partialTicks);
-      return Mth.lerp(
-         (double)currentStepPartialTicks.partialTicksInStep, currentStepPartialTicks.previousStep.position, currentStepPartialTicks.currentStep.position
-      );
+      return Mth.lerp(currentStepPartialTicks.partialTicksInStep, currentStepPartialTicks.previousStep.position, currentStepPartialTicks.currentStep.position);
    }
 
    public Vec3 getCartLerpMovements(final float partialTicks) {
       NewMinecartBehavior.StepPartialTicks currentStepPartialTicks = this.getCurrentLerpStep(partialTicks);
-      return Mth.lerp(
-         (double)currentStepPartialTicks.partialTicksInStep, currentStepPartialTicks.previousStep.movement, currentStepPartialTicks.currentStep.movement
-      );
+      return Mth.lerp(currentStepPartialTicks.partialTicksInStep, currentStepPartialTicks.previousStep.movement, currentStepPartialTicks.currentStep.movement);
    }
 
    private NewMinecartBehavior.StepPartialTicks getCurrentLerpStep(final float partialTick) {
       if (partialTick == this.cachedPartialTick && this.lerpDelay == this.cachedLerpDelay && this.cacheIndexAlpha != null) {
          return this.cacheIndexAlpha;
-      } else {
-         float alpha = ((float)(3 - this.lerpDelay) + partialTick) / 3.0F;
-         float countUp = 0.0F;
-         float indexedPartialTick = 1.0F;
-         boolean foundIndex = false;
+      }
 
-         int index;
-         for (index = 0; index < this.currentLerpSteps.size(); index++) {
-            float weight = this.currentLerpSteps.get(index).weight;
-            if (!(weight <= 0.0F)) {
-               countUp += weight;
-               if ((double)countUp >= this.currentLerpStepsTotalWeight * (double)alpha) {
-                  float current = countUp - weight;
-                  indexedPartialTick = (float)(((double)alpha * this.currentLerpStepsTotalWeight - (double)current) / (double)weight);
-                  foundIndex = true;
-                  break;
-               }
+      float alpha = (3 - this.lerpDelay + partialTick) / 3.0F;
+      float countUp = 0.0F;
+      float indexedPartialTick = 1.0F;
+      boolean foundIndex = false;
+
+      int index;
+      for (index = 0; index < this.currentLerpSteps.size(); index++) {
+         float weight = this.currentLerpSteps.get(index).weight;
+         if (!(weight <= 0.0F)) {
+            countUp += weight;
+            if (countUp >= this.currentLerpStepsTotalWeight * alpha) {
+               float current = countUp - weight;
+               indexedPartialTick = (float)((alpha * this.currentLerpStepsTotalWeight - current) / weight);
+               foundIndex = true;
+               break;
             }
          }
-
-         if (!foundIndex) {
-            index = this.currentLerpSteps.size() - 1;
-         }
-
-         NewMinecartBehavior.MinecartStep currentStep = this.currentLerpSteps.get(index);
-         NewMinecartBehavior.MinecartStep previousStep = index > 0 ? this.currentLerpSteps.get(index - 1) : this.oldLerp;
-         this.cacheIndexAlpha = new NewMinecartBehavior.StepPartialTicks(indexedPartialTick, currentStep, previousStep);
-         this.cachedLerpDelay = this.lerpDelay;
-         this.cachedPartialTick = partialTick;
-         return this.cacheIndexAlpha;
       }
+
+      if (!foundIndex) {
+         index = this.currentLerpSteps.size() - 1;
+      }
+
+      NewMinecartBehavior.MinecartStep currentStep = this.currentLerpSteps.get(index);
+      NewMinecartBehavior.MinecartStep previousStep = index > 0 ? this.currentLerpSteps.get(index - 1) : this.oldLerp;
+      this.cacheIndexAlpha = new NewMinecartBehavior.StepPartialTicks(indexedPartialTick, currentStep, previousStep);
+      this.cachedLerpDelay = this.lerpDelay;
+      this.cachedPartialTick = partialTick;
+      return this.cacheIndexAlpha;
    }
 
    public void adjustToRails(final BlockPos targetBlockPos, final BlockState currentState, final boolean instant) {
@@ -189,7 +184,7 @@ public class NewMinecartBehavior extends MinecartBehavior {
             boolean xSnap = exit0.subtract(exit1).z != 0.0;
             targetPosition = new Vec3(
                xSnap ? Vec3.atCenterOf(targetBlockPos).x : previousPosition.x,
-               (double)targetBlockPos.getY(),
+               targetBlockPos.getY(),
                zSnap ? Vec3.atCenterOf(targetBlockPos).z : previousPosition.z
             );
          }
@@ -221,7 +216,7 @@ public class NewMinecartBehavior extends MinecartBehavior {
    }
 
    private void setRotation(float yRot, float xRot) {
-      double yRotDiff = (double)Math.abs(yRot - this.getYRot());
+      double yRotDiff = Math.abs(yRot - this.getYRot());
       if (yRotDiff >= 175.0 && yRotDiff <= 185.0) {
          this.minecart.setFlipped(!this.minecart.isFlipped());
          yRot -= 180.0F;
@@ -316,8 +311,8 @@ public class NewMinecartBehavior extends MinecartBehavior {
    ) {
       Vec3 newDeltaMovement = deltaMovement;
       if (!trackIteration.hasGainedSlopeSpeed) {
-         Vec3 slopedDeltaMovement = this.calculateSlopeSpeed(deltaMovement, shape);
-         if (slopedDeltaMovement.horizontalDistanceSqr() != deltaMovement.horizontalDistanceSqr()) {
+         Vec3 slopedDeltaMovement = this.calculateSlopeSpeed(newDeltaMovement, shape);
+         if (slopedDeltaMovement.horizontalDistanceSqr() != newDeltaMovement.horizontalDistanceSqr()) {
             trackIteration.hasGainedSlopeSpeed = true;
             newDeltaMovement = slopedDeltaMovement;
          }
@@ -401,10 +396,10 @@ public class NewMinecartBehavior extends MinecartBehavior {
       if (state.is(Blocks.POWERED_RAIL) && state.getValue(PoweredRailBlock.POWERED)) {
          if (deltaMovement.length() > 0.01) {
             return deltaMovement.normalize().scale(deltaMovement.length() + 0.06);
-         } else {
-            Vec3 powerDirection = this.minecart.getRedstoneDirection(pos);
-            return powerDirection.lengthSqr() <= 0.0 ? deltaMovement : powerDirection.scale(deltaMovement.length() + 0.2);
          }
+
+         Vec3 powerDirection = this.minecart.getRedstoneDirection(pos);
+         return powerDirection.lengthSqr() <= 0.0 ? deltaMovement : powerDirection.scale(deltaMovement.length() + 0.2);
       } else {
          return deltaMovement;
       }
@@ -414,63 +409,63 @@ public class NewMinecartBehavior extends MinecartBehavior {
    public double stepAlongTrack(final BlockPos pos, final RailShape shape, double movementLeft) {
       if (movementLeft < 1.0E-5F) {
          return 0.0;
+      }
+
+      Vec3 oldPosition = this.position();
+      Pair<Vec3i, Vec3i> exits = AbstractMinecart.exits(shape);
+      Vec3i exit0 = (Vec3i)exits.getFirst();
+      Vec3i exit1 = (Vec3i)exits.getSecond();
+      Vec3 movement = this.getDeltaMovement().horizontal();
+      if (movement.length() < 1.0E-5F) {
+         this.setDeltaMovement(Vec3.ZERO);
+         return 0.0;
+      }
+
+      boolean inHill = exit0.getY() != exit1.getY();
+      Vec3 horizontalInDirection = new Vec3(exit1).scale(0.5).horizontal();
+      Vec3 horizontalOutDirection = new Vec3(exit0).scale(0.5).horizontal();
+      if (movement.dot(horizontalOutDirection) < movement.dot(horizontalInDirection)) {
+         horizontalOutDirection = horizontalInDirection;
+      }
+
+      Vec3 outPosition = Vec3.atBottomCenterOf(pos).add(horizontalOutDirection).add(0.0, 0.1, 0.0).add(horizontalOutDirection.normalize().scale(1.0E-5F));
+      if (inHill && !this.isDecending(movement, shape)) {
+         outPosition = outPosition.add(0.0, 1.0, 0.0);
+      }
+
+      Vec3 towardsOut = outPosition.subtract(this.position()).normalize();
+      movement = towardsOut.scale(movement.length() / towardsOut.horizontalDistance());
+      Vec3 newPosition = oldPosition.add(movement.normalize().scale(movementLeft * (inHill ? Mth.SQRT_OF_TWO : 1.0F)));
+      if (oldPosition.distanceToSqr(outPosition) <= oldPosition.distanceToSqr(newPosition)) {
+         movementLeft = outPosition.subtract(newPosition).horizontalDistance();
+         newPosition = outPosition;
       } else {
-         Vec3 oldPosition = this.position();
-         Pair<Vec3i, Vec3i> exits = AbstractMinecart.exits(shape);
-         Vec3i exit0 = (Vec3i)exits.getFirst();
-         Vec3i exit1 = (Vec3i)exits.getSecond();
-         Vec3 movement = this.getDeltaMovement().horizontal();
-         if (movement.length() < 1.0E-5F) {
-            this.setDeltaMovement(Vec3.ZERO);
-            return 0.0;
-         } else {
-            boolean inHill = exit0.getY() != exit1.getY();
-            Vec3 horizontalInDirection = new Vec3(exit1).scale(0.5).horizontal();
-            Vec3 horizontalOutDirection = new Vec3(exit0).scale(0.5).horizontal();
-            if (movement.dot(horizontalOutDirection) < movement.dot(horizontalInDirection)) {
-               horizontalOutDirection = horizontalInDirection;
-            }
+         movementLeft = 0.0;
+      }
 
-            Vec3 outPosition = Vec3.atBottomCenterOf(pos).add(horizontalOutDirection).add(0.0, 0.1, 0.0).add(horizontalOutDirection.normalize().scale(1.0E-5F));
-            if (inHill && !this.isDecending(movement, shape)) {
-               outPosition = outPosition.add(0.0, 1.0, 0.0);
-            }
-
-            Vec3 towardsOut = outPosition.subtract(this.position()).normalize();
-            movement = towardsOut.scale(movement.length() / towardsOut.horizontalDistance());
-            Vec3 newPosition = oldPosition.add(movement.normalize().scale(movementLeft * (double)(inHill ? Mth.SQRT_OF_TWO : 1.0F)));
-            if (oldPosition.distanceToSqr(outPosition) <= oldPosition.distanceToSqr(newPosition)) {
-               movementLeft = outPosition.subtract(newPosition).horizontalDistance();
-               newPosition = outPosition;
-            } else {
-               movementLeft = 0.0;
-            }
-
-            this.minecart.move(MoverType.SELF, newPosition.subtract(oldPosition));
-            BlockState newBlockState = this.level().getBlockState(BlockPos.containing(newPosition));
-            if (inHill) {
-               if (BaseRailBlock.isRail(newBlockState)) {
-                  RailShape newRailShape = newBlockState.getValue(((BaseRailBlock)newBlockState.getBlock()).getShapeProperty());
-                  if (this.restAtVShape(shape, newRailShape)) {
-                     return 0.0;
-                  }
-               }
-
-               double horizontalDistanceFromOut = outPosition.horizontal().distanceTo(this.position().horizontal());
-               double projectYPos = outPosition.y + (this.isDecending(movement, shape) ? horizontalDistanceFromOut : -horizontalDistanceFromOut);
-               if (this.position().y < projectYPos) {
-                  this.setPos(this.position().x, projectYPos, this.position().z);
-               }
-            }
-
-            if (this.position().distanceTo(oldPosition) < 1.0E-5F && newPosition.distanceTo(oldPosition) > 1.0E-5F) {
-               this.setDeltaMovement(Vec3.ZERO);
+      this.minecart.move(MoverType.SELF, newPosition.subtract(oldPosition));
+      BlockState newBlockState = this.level().getBlockState(BlockPos.containing(newPosition));
+      if (inHill) {
+         if (BaseRailBlock.isRail(newBlockState)) {
+            RailShape newRailShape = newBlockState.getValue(((BaseRailBlock)newBlockState.getBlock()).getShapeProperty());
+            if (this.restAtVShape(shape, newRailShape)) {
                return 0.0;
-            } else {
-               this.setDeltaMovement(movement);
-               return movementLeft;
             }
          }
+
+         double horizontalDistanceFromOut = outPosition.horizontal().distanceTo(this.position().horizontal());
+         double projectYPos = outPosition.y + (this.isDecending(movement, shape) ? horizontalDistanceFromOut : -horizontalDistanceFromOut);
+         if (this.position().y < projectYPos) {
+            this.setPos(this.position().x, projectYPos, this.position().z);
+         }
+      }
+
+      if (this.position().distanceTo(oldPosition) < 1.0E-5F && newPosition.distanceTo(oldPosition) > 1.0E-5F) {
+         this.setDeltaMovement(Vec3.ZERO);
+         return 0.0;
+      } else {
+         this.setDeltaMovement(movement);
+         return movementLeft;
       }
    }
 
@@ -488,7 +483,7 @@ public class NewMinecartBehavior extends MinecartBehavior {
 
    @Override
    public double getMaxSpeed(final ServerLevel level) {
-      return (double)level.getGameRules().get(GameRules.MAX_MINECART_SPEED).intValue() * (this.minecart.isInWater() ? 0.5 : 1.0) / 20.0;
+      return level.getGameRules().get(GameRules.MAX_MINECART_SPEED).intValue() * (this.minecart.isInWater() ? 0.5 : 1.0) / 20.0;
    }
 
    private boolean isDecending(final Vec3 movement, final RailShape shape) {
@@ -511,10 +506,10 @@ public class NewMinecartBehavior extends MinecartBehavior {
       boolean pickedUp = this.pickupEntities(this.minecart.getBoundingBox().inflate(0.2, 0.0, 0.2));
       if (!this.minecart.horizontalCollision && !this.minecart.verticalCollision) {
          return false;
-      } else {
-         boolean pushed = this.pushEntities(this.minecart.getBoundingBox().inflate(1.0E-7));
-         return pickedUp && !pushed;
       }
+
+      boolean pushed = this.pushEntities(this.minecart.getBoundingBox().inflate(1.0E-7));
+      return pickedUp && !pushed;
    }
 
    public boolean pickupEntities(final AABB hitbox) {
@@ -556,9 +551,9 @@ public class NewMinecartBehavior extends MinecartBehavior {
             }
          }
       } else {
-         for (Entity entityx : this.level().getEntities(this.minecart, hitbox)) {
-            if (!this.minecart.hasPassenger(entityx) && entityx.isPushable() && entityx instanceof AbstractMinecart) {
-               entityx.push(this.minecart);
+         for (Entity entity : this.level().getEntities(this.minecart, hitbox)) {
+            if (!this.minecart.hasPassenger(entity) && entity.isPushable() && entity instanceof AbstractMinecart) {
+               entity.push(this.minecart);
                pushed = true;
             }
          }
@@ -567,7 +562,7 @@ public class NewMinecartBehavior extends MinecartBehavior {
       return pushed;
    }
 
-   public static record MinecartStep(Vec3 position, Vec3 movement, float yRot, float xRot, float weight) {
+   public record MinecartStep(Vec3 position, Vec3 movement, float yRot, float xRot, float weight) {
       public static final StreamCodec<ByteBuf, NewMinecartBehavior.MinecartStep> STREAM_CODEC = StreamCodec.composite(
          Vec3.STREAM_CODEC,
          NewMinecartBehavior.MinecartStep::position,
@@ -584,7 +579,7 @@ public class NewMinecartBehavior extends MinecartBehavior {
       public static final NewMinecartBehavior.MinecartStep ZERO = new NewMinecartBehavior.MinecartStep(Vec3.ZERO, Vec3.ZERO, 0.0F, 0.0F, 0.0F);
    }
 
-   private static record StepPartialTicks(float partialTicksInStep, NewMinecartBehavior.MinecartStep currentStep, NewMinecartBehavior.MinecartStep previousStep) {
+   private record StepPartialTicks(float partialTicksInStep, NewMinecartBehavior.MinecartStep currentStep, NewMinecartBehavior.MinecartStep previousStep) {
    }
 
    private static class TrackIteration {

@@ -160,7 +160,7 @@ public class ChunkPalettedStorageFix extends DataFix {
       }
    }
 
-   public static enum Direction {
+   public enum Direction {
       DOWN(ChunkPalettedStorageFix.Direction.AxisDirection.NEGATIVE, ChunkPalettedStorageFix.Direction.Axis.Y),
       UP(ChunkPalettedStorageFix.Direction.AxisDirection.POSITIVE, ChunkPalettedStorageFix.Direction.Axis.Y),
       NORTH(ChunkPalettedStorageFix.Direction.AxisDirection.NEGATIVE, ChunkPalettedStorageFix.Direction.Axis.Z),
@@ -171,7 +171,7 @@ public class ChunkPalettedStorageFix extends DataFix {
       private final ChunkPalettedStorageFix.Direction.Axis axis;
       private final ChunkPalettedStorageFix.Direction.AxisDirection axisDirection;
 
-      private Direction(final ChunkPalettedStorageFix.Direction.AxisDirection axisDirection, final ChunkPalettedStorageFix.Direction.Axis axis) {
+      Direction(final ChunkPalettedStorageFix.Direction.AxisDirection axisDirection, final ChunkPalettedStorageFix.Direction.Axis axis) {
          this.axis = axis;
          this.axisDirection = axisDirection;
       }
@@ -184,19 +184,19 @@ public class ChunkPalettedStorageFix extends DataFix {
          return this.axis;
       }
 
-      public static enum Axis {
+      public enum Axis {
          X,
          Y,
          Z;
       }
 
-      public static enum AxisDirection {
+      public enum AxisDirection {
          POSITIVE(1),
          NEGATIVE(-1);
 
          private final int step;
 
-         private AxisDirection(final int step) {
+         AxisDirection(final int step) {
             this.step = step;
          }
 
@@ -741,47 +741,47 @@ public class ChunkPalettedStorageFix extends DataFix {
       public int upgrade(int sides) {
          if (!this.hasData) {
             return sides;
-         } else {
-            ByteBuffer blocks = (ByteBuffer)this.section.get("Blocks").asByteBufferOpt().result().get();
-            ChunkPalettedStorageFix.DataLayer data = this.section
-               .get("Data")
-               .asByteBufferOpt()
-               .map(buffer -> new ChunkPalettedStorageFix.DataLayer(DataFixUtils.toArray(buffer)))
-               .result()
-               .orElseGet(ChunkPalettedStorageFix.DataLayer::new);
-            ChunkPalettedStorageFix.DataLayer addBlocks = this.section
-               .get("Add")
-               .asByteBufferOpt()
-               .map(buffer -> new ChunkPalettedStorageFix.DataLayer(DataFixUtils.toArray(buffer)))
-               .result()
-               .orElseGet(ChunkPalettedStorageFix.DataLayer::new);
-            this.seen.add(ChunkPalettedStorageFix.MappingConstants.AIR);
-            ChunkPalettedStorageFix.idFor(this.palette, ChunkPalettedStorageFix.MappingConstants.AIR);
-            this.listTag.add(ChunkPalettedStorageFix.MappingConstants.AIR);
+         }
 
-            for (int idx = 0; idx < 4096; idx++) {
-               int xx = idx & 15;
-               int yy = idx >> 8 & 15;
-               int zz = idx >> 4 & 15;
-               int id = addBlocks.get(xx, yy, zz) << 12 | (blocks.get(idx) & 255) << 4 | data.get(xx, yy, zz);
-               if (ChunkPalettedStorageFix.MappingConstants.FIX.get(id >> 4)) {
-                  this.addFix(id >> 4, idx);
-               }
+         ByteBuffer blocks = (ByteBuffer)this.section.get("Blocks").asByteBufferOpt().result().get();
+         ChunkPalettedStorageFix.DataLayer data = this.section
+            .get("Data")
+            .asByteBufferOpt()
+            .map(buffer -> new ChunkPalettedStorageFix.DataLayer(DataFixUtils.toArray(buffer)))
+            .result()
+            .orElseGet(ChunkPalettedStorageFix.DataLayer::new);
+         ChunkPalettedStorageFix.DataLayer addBlocks = this.section
+            .get("Add")
+            .asByteBufferOpt()
+            .map(buffer -> new ChunkPalettedStorageFix.DataLayer(DataFixUtils.toArray(buffer)))
+            .result()
+            .orElseGet(ChunkPalettedStorageFix.DataLayer::new);
+         this.seen.add(ChunkPalettedStorageFix.MappingConstants.AIR);
+         ChunkPalettedStorageFix.idFor(this.palette, ChunkPalettedStorageFix.MappingConstants.AIR);
+         this.listTag.add(ChunkPalettedStorageFix.MappingConstants.AIR);
 
-               if (ChunkPalettedStorageFix.MappingConstants.VIRTUAL.get(id >> 4)) {
-                  int s = ChunkPalettedStorageFix.getSideMask(xx == 0, xx == 15, zz == 0, zz == 15);
-                  if (s == 0) {
-                     this.update.add(idx);
-                  } else {
-                     sides |= s;
-                  }
-               }
-
-               this.setBlock(idx, BlockStateData.getTag(id));
+         for (int idx = 0; idx < 4096; idx++) {
+            int xx = idx & 15;
+            int yy = idx >> 8 & 15;
+            int zz = idx >> 4 & 15;
+            int id = addBlocks.get(xx, yy, zz) << 12 | (blocks.get(idx) & 255) << 4 | data.get(xx, yy, zz);
+            if (ChunkPalettedStorageFix.MappingConstants.FIX.get(id >> 4)) {
+               this.addFix(id >> 4, idx);
             }
 
-            return sides;
+            if (ChunkPalettedStorageFix.MappingConstants.VIRTUAL.get(id >> 4)) {
+               int s = ChunkPalettedStorageFix.getSideMask(xx == 0, xx == 15, zz == 0, zz == 15);
+               if (s == 0) {
+                  this.update.add(idx);
+               } else {
+                  sides |= s;
+               }
+            }
+
+            this.setBlock(idx, BlockStateData.getTag(id));
          }
+
+         return sides;
       }
 
       private void addFix(final int id, final int position) {
@@ -798,26 +798,26 @@ public class ChunkPalettedStorageFix extends DataFix {
          Dynamic<?> section = this.section;
          if (!this.hasData) {
             return section;
-         } else {
-            section = section.set("Palette", section.createList(this.listTag.stream()));
-            int size = Math.max(4, DataFixUtils.ceillog2(this.seen.size()));
-            PackedBitStorage storage = new PackedBitStorage(size, 4096);
-
-            for (int j = 0; j < this.buffer.length; j++) {
-               storage.set(j, this.buffer[j]);
-            }
-
-            section = section.set("BlockStates", section.createLongList(Arrays.stream(storage.getRaw())));
-            section = section.remove("Blocks");
-            section = section.remove("Data");
-            return section.remove("Add");
          }
+
+         section = section.set("Palette", section.createList(this.listTag.stream()));
+         int size = Math.max(4, DataFixUtils.ceillog2(this.seen.size()));
+         PackedBitStorage storage = new PackedBitStorage(size, 4096);
+
+         for (int j = 0; j < this.buffer.length; j++) {
+            storage.set(j, this.buffer[j]);
+         }
+
+         section = section.set("BlockStates", section.createLongList(Arrays.stream(storage.getRaw())));
+         section = section.remove("Blocks");
+         section = section.remove("Data");
+         return section.remove("Add");
       }
    }
 
    private static final class UpgradeChunk {
       private int sides;
-      private final ChunkPalettedStorageFix.Section[] sections = new ChunkPalettedStorageFix.Section[16];
+      private final ChunkPalettedStorageFix.@Nullable Section[] sections = new ChunkPalettedStorageFix.Section[16];
       private final Dynamic<?> level;
       private final int x;
       private final int z;
@@ -831,24 +831,24 @@ public class ChunkPalettedStorageFix extends DataFix {
             .asStreamOpt()
             .ifSuccess(
                s -> s.forEach(
-                     entity -> {
-                        int x = entity.get("x").asInt(0) - this.x & 15;
-                        int y = entity.get("y").asInt(0);
-                        int z = entity.get("z").asInt(0) - this.z & 15;
-                        int key = y << 8 | z << 4 | x;
-                        if (this.blockEntities.put(key, entity) != null) {
-                           ChunkPalettedStorageFix.LOGGER
-                              .warn("In chunk: {}x{} found a duplicate block entity at position: [{}, {}, {}]", new Object[]{this.x, this.z, x, y, z});
-                        }
+                  entity -> {
+                     int x = entity.get("x").asInt(0) - this.x & 15;
+                     int y = entity.get("y").asInt(0);
+                     int z = entity.get("z").asInt(0) - this.z & 15;
+                     int key = y << 8 | z << 4 | x;
+                     if (this.blockEntities.put(key, entity) != null) {
+                        ChunkPalettedStorageFix.LOGGER
+                           .warn("In chunk: {}x{} found a duplicate block entity at position: [{}, {}, {}]", new Object[]{this.x, this.z, x, y, z});
                      }
-                  )
+                  }
+               )
             );
          boolean convertedFromAlphaFormat = level.get("convertedFromAlphaFormat").asBoolean(false);
          level.get("Sections").asStreamOpt().ifSuccess(s -> s.forEach(sec -> {
-               ChunkPalettedStorageFix.Section sectionx = new ChunkPalettedStorageFix.Section((Dynamic<?>)sec);
-               this.sides = sectionx.upgrade(this.sides);
-               this.sections[sectionx.y] = sectionx;
-            }));
+            ChunkPalettedStorageFix.Section sectionx = new ChunkPalettedStorageFix.Section((Dynamic<?>)sec);
+            this.sides = sectionx.upgrade(this.sides);
+            this.sections[sectionx.y] = sectionx;
+         }));
 
          for (ChunkPalettedStorageFix.Section section : this.sections) {
             if (section != null) {
@@ -1093,36 +1093,29 @@ public class ChunkPalettedStorageFix extends DataFix {
          }
       }
 
-      @Nullable
-      private Dynamic<?> getBlockEntity(final int pos) {
+      private @Nullable Dynamic<?> getBlockEntity(final int pos) {
          return (Dynamic<?>)this.blockEntities.get(pos);
       }
 
-      @Nullable
-      private Dynamic<?> removeBlockEntity(final int pos) {
+      private @Nullable Dynamic<?> removeBlockEntity(final int pos) {
          return (Dynamic<?>)this.blockEntities.remove(pos);
       }
 
       public static int relative(final int pos, final ChunkPalettedStorageFix.Direction direction) {
-         int var10000;
-         switch (direction.getAxis()) {
-            case X:
+         return switch (direction.getAxis()) {
+            case X -> {
                int x = (pos & 15) + direction.getAxisDirection().getStep();
-               var10000 = x >= 0 && x <= 15 ? pos & -16 | x : -1;
-               break;
-            case Y:
+               yield x >= 0 && x <= 15 ? pos & -16 | x : -1;
+            }
+            case Y -> {
                int y = (pos >> 8) + direction.getAxisDirection().getStep();
-               var10000 = y >= 0 && y <= 255 ? pos & 0xFF | y << 8 : -1;
-               break;
-            case Z:
+               yield y >= 0 && y <= 255 ? pos & 0xFF | y << 8 : -1;
+            }
+            case Z -> {
                int z = (pos >> 4 & 15) + direction.getAxisDirection().getStep();
-               var10000 = z >= 0 && z <= 15 ? pos & -241 | z << 4 : -1;
-               break;
-            default:
-               throw new MatchException(null, null);
-         }
-
-         return var10000;
+               yield z >= 0 && z <= 15 ? pos & -241 | z << 4 : -1;
+            }
+         };
       }
 
       private void setBlock(final int pos, final Dynamic<?> block) {
@@ -1134,8 +1127,7 @@ public class ChunkPalettedStorageFix extends DataFix {
          }
       }
 
-      @Nullable
-      private ChunkPalettedStorageFix.Section getSection(final int pos) {
+      private ChunkPalettedStorageFix.@Nullable Section getSection(final int pos) {
          int sectionY = pos >> 12;
          return sectionY < this.sections.length ? this.sections[sectionY] : null;
       }

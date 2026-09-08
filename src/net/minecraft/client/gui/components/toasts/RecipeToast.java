@@ -41,15 +41,13 @@ public class RecipeToast implements Toast {
       if (this.recipeItems.isEmpty()) {
          this.wantedVisibility = Toast.Visibility.HIDE;
       } else {
-         this.wantedVisibility = (double)(fullyVisibleForMs - this.lastChanged) >= 5000.0 * manager.getNotificationDisplayTimeMultiplier()
+         this.wantedVisibility = fullyVisibleForMs - this.lastChanged >= 5000.0 * manager.getNotificationDisplayTimeMultiplier()
             ? Toast.Visibility.HIDE
             : Toast.Visibility.SHOW;
       }
 
       this.displayedRecipeIndex = (int)(
-         (double)fullyVisibleForMs
-            / Math.max(1.0, 5000.0 * manager.getNotificationDisplayTimeMultiplier() / (double)this.recipeItems.size())
-            % (double)this.recipeItems.size()
+         fullyVisibleForMs / Math.max(1.0, 5000.0 * manager.getNotificationDisplayTimeMultiplier() / this.recipeItems.size()) % this.recipeItems.size()
       );
    }
 
@@ -84,6 +82,6 @@ public class RecipeToast implements Toast {
       toast.addItem(categoryItem, unlockedItem);
    }
 
-   private static record Entry(ItemStack categoryItem, ItemStack unlockedItem) {
+   private record Entry(ItemStack categoryItem, ItemStack unlockedItem) {
    }
 }

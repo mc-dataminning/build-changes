@@ -18,8 +18,7 @@ public class SimpleEquipmentLayer<S extends LivingEntityRenderState, RM extends 
    private final EquipmentClientInfo.LayerType layer;
    private final Function<S, ItemStack> itemGetter;
    private final EM adultModel;
-   @Nullable
-   private final EM babyModel;
+   private final @Nullable EM babyModel;
    private final int order;
 
    public SimpleEquipmentLayer(
@@ -28,7 +27,7 @@ public class SimpleEquipmentLayer<S extends LivingEntityRenderState, RM extends 
       final EquipmentClientInfo.LayerType layer,
       final Function<S, ItemStack> itemGetter,
       final EM adultModel,
-      @Nullable final EM babyModel,
+      final @Nullable EM babyModel,
       final int order
    ) {
       super(renderer);
@@ -46,7 +45,7 @@ public class SimpleEquipmentLayer<S extends LivingEntityRenderState, RM extends 
       final EquipmentClientInfo.LayerType layer,
       final Function<S, ItemStack> itemGetter,
       final EM adultModel,
-      @Nullable final EM babyModel
+      final @Nullable EM babyModel
    ) {
       this(renderer, equipmentRenderer, layer, itemGetter, adultModel, babyModel, 0);
    }

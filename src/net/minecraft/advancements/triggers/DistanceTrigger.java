@@ -23,16 +23,15 @@ public class DistanceTrigger extends SimpleCriterionTrigger<DistanceTrigger.Trig
       this.trigger(player, t -> t.matches(player.level(), startPosition, playerPosition));
    }
 
-   public static record TriggerInstance(
-      Optional<Holder<LootItemCondition>> player, Optional<LocationPredicate> startPosition, Optional<DistancePredicate> distance
-   ) implements SimpleCriterionTrigger.SimpleInstance {
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<LocationPredicate> startPosition, Optional<DistancePredicate> distance)
+      implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<DistanceTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(DistanceTrigger.TriggerInstance::player),
-                  LocationPredicate.CODEC.optionalFieldOf("start_position").forGetter(DistanceTrigger.TriggerInstance::startPosition),
-                  DistancePredicate.CODEC.optionalFieldOf("distance").forGetter(DistanceTrigger.TriggerInstance::distance)
-               )
-               .apply(i, DistanceTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(DistanceTrigger.TriggerInstance::player),
+               LocationPredicate.CODEC.optionalFieldOf("start_position").forGetter(DistanceTrigger.TriggerInstance::startPosition),
+               DistancePredicate.CODEC.optionalFieldOf("distance").forGetter(DistanceTrigger.TriggerInstance::distance)
+            )
+            .apply(i, DistanceTrigger.TriggerInstance::new)
       );
 
       public static Criterion<DistanceTrigger.TriggerInstance> fallFromHeight(

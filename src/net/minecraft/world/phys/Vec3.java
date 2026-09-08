@@ -43,11 +43,11 @@ public class Vec3 implements Position {
    public final double z;
 
    public static Vec3 atLowerCornerOf(final Vec3i pos) {
-      return new Vec3((double)pos.getX(), (double)pos.getY(), (double)pos.getZ());
+      return new Vec3(pos.getX(), pos.getY(), pos.getZ());
    }
 
    public static Vec3 atLowerCornerWithOffset(final Vec3i pos, final double x, final double y, final double z) {
-      return new Vec3((double)pos.getX() + x, (double)pos.getY() + y, (double)pos.getZ() + z);
+      return new Vec3(pos.getX() + x, pos.getY() + y, pos.getZ() + z);
    }
 
    public static Vec3 atCenterOf(final Vec3i pos) {
@@ -55,7 +55,7 @@ public class Vec3 implements Position {
    }
 
    public static Vec3 atCenterOfWithY(final Vec3i pos, final double y) {
-      return new Vec3((double)pos.getX() + 0.5, y, (double)pos.getZ() + 0.5);
+      return new Vec3(pos.getX() + 0.5, y, pos.getZ() + 0.5);
    }
 
    public static Vec3 atBottomCenterOf(final Vec3i pos) {
@@ -73,11 +73,11 @@ public class Vec3 implements Position {
    }
 
    public Vec3(final Vector3fc vec) {
-      this((double)vec.x(), (double)vec.y(), (double)vec.z());
+      this(vec.x(), vec.y(), vec.z());
    }
 
    public Vec3(final Vec3i vec) {
-      this((double)vec.getX(), (double)vec.getY(), (double)vec.getZ());
+      this(vec.getX(), vec.getY(), vec.getZ());
    }
 
    public Vec3 vectorTo(final Vec3 vec) {
@@ -174,13 +174,11 @@ public class Vec3 implements Position {
    }
 
    public Vec3 offsetRandom(final RandomSource random, final float offset) {
-      return this.add(
-         (double)((random.nextFloat() - 0.5F) * offset), (double)((random.nextFloat() - 0.5F) * offset), (double)((random.nextFloat() - 0.5F) * offset)
-      );
+      return this.add((random.nextFloat() - 0.5F) * offset, (random.nextFloat() - 0.5F) * offset, (random.nextFloat() - 0.5F) * offset);
    }
 
    public Vec3 offsetRandomXZ(final RandomSource random, final float offset) {
-      return this.add((double)((random.nextFloat() - 0.5F) * offset), 0.0, (double)((random.nextFloat() - 0.5F) * offset));
+      return this.add((random.nextFloat() - 0.5F) * offset, 0.0, (random.nextFloat() - 0.5F) * offset);
    }
 
    public double length() {
@@ -203,7 +201,9 @@ public class Vec3 implements Position {
    public boolean equals(final Object o) {
       if (this == o) {
          return true;
-      } else if (o instanceof Vec3 vec3) {
+      }
+
+      if (o instanceof Vec3 vec3) {
          if (Double.compare(vec3.x, this.x) != 0) {
             return false;
          } else {
@@ -234,28 +234,28 @@ public class Vec3 implements Position {
    }
 
    public Vec3 xRot(final float radians) {
-      float cos = Mth.cos((double)radians);
-      float sin = Mth.sin((double)radians);
+      float cos = Mth.cos(radians);
+      float sin = Mth.sin(radians);
       double xx = this.x;
-      double yy = this.y * (double)cos + this.z * (double)sin;
-      double zz = this.z * (double)cos - this.y * (double)sin;
+      double yy = this.y * cos + this.z * sin;
+      double zz = this.z * cos - this.y * sin;
       return new Vec3(xx, yy, zz);
    }
 
    public Vec3 yRot(final float radians) {
-      float cos = Mth.cos((double)radians);
-      float sin = Mth.sin((double)radians);
-      double xx = this.x * (double)cos + this.z * (double)sin;
+      float cos = Mth.cos(radians);
+      float sin = Mth.sin(radians);
+      double xx = this.x * cos + this.z * sin;
       double yy = this.y;
-      double zz = this.z * (double)cos - this.x * (double)sin;
+      double zz = this.z * cos - this.x * sin;
       return new Vec3(xx, yy, zz);
    }
 
    public Vec3 zRot(final float radians) {
-      float cos = Mth.cos((double)radians);
-      float sin = Mth.sin((double)radians);
-      double xx = this.x * (double)cos + this.y * (double)sin;
-      double yy = this.y * (double)cos - this.x * (double)sin;
+      float cos = Mth.cos(radians);
+      float sin = Mth.sin(radians);
+      double xx = this.x * cos + this.y * sin;
+      double yy = this.y * cos - this.x * sin;
       double zz = this.z;
       return new Vec3(xx, yy, zz);
    }
@@ -269,11 +269,11 @@ public class Vec3 implements Position {
    }
 
    public static Vec3 directionFromRotation(final float rotX, final float rotY) {
-      float yCos = Mth.cos((double)(-rotY * (float) (Math.PI / 180.0) - (float) Math.PI));
-      float ySin = Mth.sin((double)(-rotY * (float) (Math.PI / 180.0) - (float) Math.PI));
-      float xCos = -Mth.cos((double)(-rotX * (float) (Math.PI / 180.0)));
-      float xSin = Mth.sin((double)(-rotX * (float) (Math.PI / 180.0)));
-      return new Vec3((double)(ySin * xCos), (double)xSin, (double)(yCos * xCos));
+      float yCos = Mth.cos(-rotY * (float) (Math.PI / 180.0) - (float) Math.PI);
+      float ySin = Mth.sin(-rotY * (float) (Math.PI / 180.0) - (float) Math.PI);
+      float xCos = -Mth.cos(-rotX * (float) (Math.PI / 180.0));
+      float xSin = Mth.sin(-rotX * (float) (Math.PI / 180.0));
+      return new Vec3(ySin * xCos, xSin, yCos * xCos);
    }
 
    public Vec2 rotation() {
@@ -283,9 +283,9 @@ public class Vec3 implements Position {
    }
 
    public Vec3 align(final EnumSet<Direction.Axis> axes) {
-      double x = axes.contains(Direction.Axis.X) ? (double)Mth.floor(this.x) : this.x;
-      double y = axes.contains(Direction.Axis.Y) ? (double)Mth.floor(this.y) : this.y;
-      double z = axes.contains(Direction.Axis.Z) ? (double)Mth.floor(this.z) : this.z;
+      double x = axes.contains(Direction.Axis.X) ? Mth.floor(this.x) : this.x;
+      double y = axes.contains(Direction.Axis.Y) ? Mth.floor(this.y) : this.y;
+      double z = axes.contains(Direction.Axis.Z) ? Mth.floor(this.z) : this.z;
       return new Vec3(x, y, z);
    }
 
@@ -302,7 +302,7 @@ public class Vec3 implements Position {
 
    public Vec3 relative(final Direction direction, final double distance) {
       Vec3i normal = direction.getUnitVec3i();
-      return new Vec3(this.x + distance * (double)normal.getX(), this.y + distance * (double)normal.getY(), this.z + distance * (double)normal.getZ());
+      return new Vec3(this.x + distance * normal.getX(), this.y + distance * normal.getY(), this.z + distance * normal.getZ());
    }
 
    @Override

@@ -45,20 +45,20 @@ public class RecipeCommand {
                                  Commands.argument("recipe", ResourceKeyArgument.key(Registries.RECIPE, LEARNABLE_RECIPE))
                                     .executes(
                                        c -> giveRecipes(
-                                             (CommandSourceStack)c.getSource(),
-                                             EntityArgument.getPlayers(c, "targets"),
-                                             Collections.singleton(ResourceKeyArgument.getRecipe(c, "recipe"))
-                                          )
+                                          (CommandSourceStack)c.getSource(),
+                                          EntityArgument.getPlayers(c, "targets"),
+                                          Collections.singleton(ResourceKeyArgument.getRecipe(c, "recipe"))
+                                       )
                                     )
                               ))
                            .then(
                               Commands.literal("*")
                                  .executes(
                                     c -> giveRecipes(
-                                          (CommandSourceStack)c.getSource(),
-                                          EntityArgument.getPlayers(c, "targets"),
-                                          ((CommandSourceStack)c.getSource()).getServer().getRecipeManager().getLearnableRecipes()
-                                       )
+                                       (CommandSourceStack)c.getSource(),
+                                       EntityArgument.getPlayers(c, "targets"),
+                                       ((CommandSourceStack)c.getSource()).getServer().getRecipeManager().getLearnableRecipes()
+                                    )
                                  )
                            )
                      )
@@ -71,20 +71,20 @@ public class RecipeCommand {
                               Commands.argument("recipe", ResourceKeyArgument.key(Registries.RECIPE, LEARNABLE_RECIPE))
                                  .executes(
                                     c -> takeRecipes(
-                                          (CommandSourceStack)c.getSource(),
-                                          EntityArgument.getPlayers(c, "targets"),
-                                          Collections.singleton(ResourceKeyArgument.getRecipe(c, "recipe"))
-                                       )
+                                       (CommandSourceStack)c.getSource(),
+                                       EntityArgument.getPlayers(c, "targets"),
+                                       Collections.singleton(ResourceKeyArgument.getRecipe(c, "recipe"))
+                                    )
                                  )
                            ))
                         .then(
                            Commands.literal("*")
                               .executes(
                                  c -> takeRecipes(
-                                       (CommandSourceStack)c.getSource(),
-                                       EntityArgument.getPlayers(c, "targets"),
-                                       ((CommandSourceStack)c.getSource()).getServer().getRecipeManager().getLearnableRecipes()
-                                    )
+                                    (CommandSourceStack)c.getSource(),
+                                    EntityArgument.getPlayers(c, "targets"),
+                                    ((CommandSourceStack)c.getSource()).getServer().getRecipeManager().getLearnableRecipes()
+                                 )
                               )
                         )
                   )

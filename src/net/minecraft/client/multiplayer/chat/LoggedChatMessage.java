@@ -33,14 +33,14 @@ public interface LoggedChatMessage extends LoggedChatEvent {
 
    boolean canReport(UUID reportedPlayerId);
 
-   public static record Player(GameProfile profile, PlayerChatMessage message, ChatTrustLevel trustLevel) implements LoggedChatMessage {
+   record Player(GameProfile profile, PlayerChatMessage message, ChatTrustLevel trustLevel) implements LoggedChatMessage {
       public static final MapCodec<LoggedChatMessage.Player> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  ExtraCodecs.AUTHLIB_GAME_PROFILE.fieldOf("profile").forGetter(LoggedChatMessage.Player::profile),
-                  PlayerChatMessage.MAP_CODEC.forGetter(LoggedChatMessage.Player::message),
-                  ChatTrustLevel.CODEC.optionalFieldOf("trust_level", ChatTrustLevel.SECURE).forGetter(LoggedChatMessage.Player::trustLevel)
-               )
-               .apply(i, LoggedChatMessage.Player::new)
+               ExtraCodecs.AUTHLIB_GAME_PROFILE.fieldOf("profile").forGetter(LoggedChatMessage.Player::profile),
+               PlayerChatMessage.MAP_CODEC.forGetter(LoggedChatMessage.Player::message),
+               ChatTrustLevel.CODEC.optionalFieldOf("trust_level", ChatTrustLevel.SECURE).forGetter(LoggedChatMessage.Player::trustLevel)
+            )
+            .apply(i, LoggedChatMessage.Player::new)
       );
       private static final DateTimeFormatter TIME_FORMATTER = Util.localizedDateFormatter(FormatStyle.SHORT);
 
@@ -48,7 +48,7 @@ public interface LoggedChatMessage extends LoggedChatEvent {
       public Component toContentComponent() {
          if (!this.message.filterMask().isEmpty()) {
             Component filtered = this.message.filterMask().applyWithFormatting(this.message.signedContent());
-            return (Component)(filtered != null ? filtered : Component.empty());
+            return filtered != null ? filtered : Component.empty();
          } else {
             return this.message.decoratedContent();
          }
@@ -86,13 +86,13 @@ public interface LoggedChatMessage extends LoggedChatEvent {
       }
    }
 
-   public static record System(Component message, Instant timeStamp) implements LoggedChatMessage {
+   record System(Component message, Instant timeStamp) implements LoggedChatMessage {
       public static final MapCodec<LoggedChatMessage.System> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  ComponentSerialization.CODEC.fieldOf("message").forGetter(LoggedChatMessage.System::message),
-                  ExtraCodecs.INSTANT_ISO8601.fieldOf("time_stamp").forGetter(LoggedChatMessage.System::timeStamp)
-               )
-               .apply(i, LoggedChatMessage.System::new)
+               ComponentSerialization.CODEC.fieldOf("message").forGetter(LoggedChatMessage.System::message),
+               ExtraCodecs.INSTANT_ISO8601.fieldOf("time_stamp").forGetter(LoggedChatMessage.System::timeStamp)
+            )
+            .apply(i, LoggedChatMessage.System::new)
       );
 
       @Override

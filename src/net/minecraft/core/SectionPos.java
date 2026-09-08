@@ -216,9 +216,9 @@ public class SectionPos extends Vec3i {
 
    public static long asLong(final int x, final int y, final int z) {
       long node = 0L;
-      node |= ((long)x & 4194303L) << 42;
-      node |= ((long)y & 1048575L) << 0;
-      return node | ((long)z & 4194303L) << 20;
+      node |= (x & 4194303L) << 42;
+      node |= (y & 1048575L) << 0;
+      return node | (z & 4194303L) << 20;
    }
 
    public long asLong() {
@@ -247,7 +247,7 @@ public class SectionPos extends Vec3i {
    }
 
    public static Stream<SectionPos> betweenClosedStream(final int minX, final int minY, final int minZ, final int maxX, final int maxY, final int maxZ) {
-      return StreamSupport.stream(new AbstractSpliterator<SectionPos>((long)((maxX - minX + 1) * (maxY - minY + 1) * (maxZ - minZ + 1)), 64) {
+      return StreamSupport.stream(new AbstractSpliterator<SectionPos>((maxX - minX + 1) * (maxY - minY + 1) * (maxZ - minZ + 1), 64) {
          private final Cursor3D cursor = new Cursor3D(minX, minY, minZ, maxX, maxY, maxZ);
 
          @Override

@@ -54,8 +54,7 @@ public class DecoratedPotRenderer implements BlockEntityRenderer<DecoratedPotBlo
    private static final String TOP = "top";
    private static final String BOTTOM = "bottom";
    private final SpriteGetter sprites;
-   @Nullable
-   private DecoratedPotRenderer.SideSprite blankSide;
+   private DecoratedPotRenderer.@Nullable SideSprite blankSide;
    private final Map<Identifier, DecoratedPotRenderer.SideSprite> sideCache = new HashMap<>();
    private final ModelPart neck;
    private final ModelPart frontSide;
@@ -143,14 +142,14 @@ public class DecoratedPotRenderer implements BlockEntityRenderer<DecoratedPotBlo
       final DecoratedPotRenderState state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
       state.decorations = blockEntity.getDecorations();
       state.direction = blockEntity.getDirection();
       DecoratedPotBlockEntity.WobbleStyle wobbleStyle = blockEntity.lastWobbleStyle;
       if (wobbleStyle != null && blockEntity.getLevel() != null) {
-         state.wobbleProgress = ((float)(blockEntity.getLevel().getGameTime() - blockEntity.wobbleStartedAtTick) + partialTicks) / (float)wobbleStyle.duration;
+         state.wobbleProgress = ((float)(blockEntity.getLevel().getGameTime() - blockEntity.wobbleStartedAtTick) + partialTicks) / wobbleStyle.duration;
       } else {
          state.wobbleProgress = 0.0F;
       }
@@ -165,12 +164,12 @@ public class DecoratedPotRenderer implements BlockEntityRenderer<DecoratedPotBlo
          if (state.wobbleStyle == DecoratedPotBlockEntity.WobbleStyle.POSITIVE) {
             float amplitude = 0.015625F;
             float deltaTime = state.wobbleProgress * (float) (Math.PI * 2);
-            float tiltX = -1.5F * (Mth.cos((double)deltaTime) + 0.5F) * Mth.sin((double)(deltaTime / 2.0F));
+            float tiltX = -1.5F * (Mth.cos(deltaTime) + 0.5F) * Mth.sin(deltaTime / 2.0F);
             poseStack.rotateAround(Axis.XP.rotation(tiltX * 0.015625F), 0.5F, 0.0F, 0.5F);
-            float tiltZ = Mth.sin((double)deltaTime);
+            float tiltZ = Mth.sin(deltaTime);
             poseStack.rotateAround(Axis.ZP.rotation(tiltZ * 0.015625F), 0.5F, 0.0F, 0.5F);
          } else {
-            float turnAngle = Mth.sin((double)(-state.wobbleProgress * 3.0F * (float) Math.PI)) * 0.125F;
+            float turnAngle = Mth.sin(-state.wobbleProgress * 3.0F * (float) Math.PI) * 0.125F;
             float linearDecayFactor = 1.0F - state.wobbleProgress;
             poseStack.rotateAround(Axis.YP.rotation(turnAngle * linearDecayFactor), 0.5F, 0.0F, 0.5F);
          }
@@ -218,7 +217,7 @@ public class DecoratedPotRenderer implements BlockEntityRenderer<DecoratedPotBlo
       this.bottom.getExtentsForGui(poseStack, output);
    }
 
-   private static record SideSprite(RenderType renderType, TextureAtlasSprite sprite) {
+   private record SideSprite(RenderType renderType, TextureAtlasSprite sprite) {
       public static DecoratedPotRenderer.SideSprite create(final SpriteGetter sprites, final SpriteId spriteId) {
          return new DecoratedPotRenderer.SideSprite(spriteId.renderType(RenderTypes::entitySolid), sprites.get(spriteId));
       }

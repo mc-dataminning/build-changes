@@ -2,7 +2,6 @@ package net.minecraft.commands.synchronization.brigadier;
 
 import com.google.gson.JsonObject;
 import com.mojang.brigadier.arguments.FloatArgumentType;
-import java.util.Objects;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.synchronization.ArgumentTypeInfo;
 import net.minecraft.commands.synchronization.ArgumentUtils;
@@ -48,8 +47,6 @@ public class FloatArgumentInfo implements ArgumentTypeInfo<FloatArgumentType, Fl
       private final float max;
 
       private Template(final float min, final float max) {
-         Objects.requireNonNull(FloatArgumentInfo.this);
-         super();
          this.min = min;
          this.max = max;
       }

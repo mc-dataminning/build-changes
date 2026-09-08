@@ -7,6 +7,7 @@ import com.mojang.renderpearl.api.textures.GpuTexture;
 import java.nio.ByteBuffer;
 import net.minecraft.resources.Identifier;
 import org.joml.Matrix4f;
+import org.jspecify.annotations.Nullable;
 import org.lwjgl.system.MemoryUtil;
 
 public class TextureAtlasSprite implements UvMapping, AutoCloseable {
@@ -28,10 +29,10 @@ public class TextureAtlasSprite implements UvMapping, AutoCloseable {
       this.padding = padding;
       this.x = x;
       this.y = y;
-      this.u0 = (float)(x + padding) / (float)atlasWidth;
-      this.u1 = (float)(x + padding + contents.width()) / (float)atlasWidth;
-      this.v0 = (float)(y + padding) / (float)atlasHeight;
-      this.v1 = (float)(y + padding + contents.height()) / (float)atlasHeight;
+      this.u0 = (float)(x + padding) / atlasWidth;
+      this.u1 = (float)(x + padding + contents.width()) / atlasWidth;
+      this.v0 = (float)(y + padding) / atlasHeight;
+      this.v1 = (float)(y + padding + contents.height()) / atlasHeight;
    }
 
    public int getX() {
@@ -54,7 +55,7 @@ public class TextureAtlasSprite implements UvMapping, AutoCloseable {
       return this.contents;
    }
 
-   public SpriteContents.AnimationState createAnimationState(final GpuBufferSlice uboSlice, final int spriteUboSize) {
+   public SpriteContents.@Nullable AnimationState createAnimationState(final GpuBufferSlice uboSlice, final int spriteUboSize) {
       return this.contents.createAnimationState(uboSlice, spriteUboSize);
    }
 
@@ -104,14 +105,14 @@ public class TextureAtlasSprite implements UvMapping, AutoCloseable {
    ) {
       for (int level = 0; level <= maxMipLevel; level++) {
          Std140Builder.intoBuffer(MemoryUtil.memSlice(uboBuffer, startOffset + level * spriteUboSize, spriteUboSize))
-            .putMat4f(new Matrix4f().ortho2D(0.0F, (float)(atlasWidth >> level), 0.0F, (float)(atlasHeight >> level)))
+            .putMat4f(new Matrix4f().ortho2D(0.0F, atlasWidth >> level, 0.0F, atlasHeight >> level))
             .putMat4f(
                new Matrix4f()
-                  .translate((float)(this.x >> level), (float)(this.y >> level), 0.0F)
-                  .scale((float)(this.contents.width() + this.padding * 2 >> level), (float)(this.contents.height() + this.padding * 2 >> level), 1.0F)
+                  .translate(this.x >> level, this.y >> level, 0.0F)
+                  .scale(this.contents.width() + this.padding * 2 >> level, this.contents.height() + this.padding * 2 >> level, 1.0F)
             )
-            .putFloat((float)this.padding / (float)this.contents.width())
-            .putFloat((float)this.padding / (float)this.contents.height())
+            .putFloat((float)this.padding / this.contents.width())
+            .putFloat((float)this.padding / this.contents.height())
             .putInt(level);
       }
    }

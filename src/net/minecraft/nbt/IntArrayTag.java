@@ -22,7 +22,7 @@ public final class IntArrayTag implements CollectionTag {
       private static int[] readAccounted(final DataInput input, final NbtAccounter accounter) throws IOException {
          accounter.accountBytes(24L);
          int length = input.readInt();
-         accounter.accountBytes(4L, (long)length);
+         accounter.accountBytes(4L, length);
          int[] data = new int[length];
 
          for (int i = 0; i < length; i++) {
@@ -92,15 +92,7 @@ public final class IntArrayTag implements CollectionTag {
 
    @Override
    public boolean equals(final Object obj) {
-      if (this == obj) {
-         return true;
-      } else {
-         if (obj instanceof IntArrayTag intArrayTag && Arrays.equals(this.data, intArrayTag.data)) {
-            return true;
-         }
-
-         return false;
-      }
+      return this == obj ? true : obj instanceof IntArrayTag intArrayTag && Arrays.equals(this.data, intArrayTag.data);
    }
 
    @Override

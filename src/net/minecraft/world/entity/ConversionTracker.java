@@ -5,6 +5,7 @@ import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import org.jspecify.annotations.Nullable;
@@ -15,14 +16,13 @@ public class ConversionTracker<M extends Mob> {
    private final M mob;
    private final EntityDataAccessor<Boolean> conversionId;
    private final Supplier<EntityType<? extends M>> convertsTo;
-   private final Supplier<Integer> conversionSound;
+   private final Supplier<@LevelEvent.Value Integer> conversionSound;
    private final BooleanSupplier isAfflicted;
    private final String afflictionTimeTag;
    private final int totalAfflictionTime;
    private final String conversionTimeTag;
    private final int totalConversionTime;
-   @Nullable
-   private final BiConsumer<M, ServerLevel> postConversionStep;
+   private final @Nullable BiConsumer<M, ServerLevel> postConversionStep;
    private int afflictionTime = 0;
    private int conversionTime;
 
@@ -30,13 +30,13 @@ public class ConversionTracker<M extends Mob> {
       final M mob,
       final EntityDataAccessor<Boolean> conversionId,
       final Supplier<EntityType<? extends M>> convertsTo,
-      final Supplier<Integer> conversionSound,
+      final Supplier<@LevelEvent.Value Integer> conversionSound,
       final BooleanSupplier isAfflicted,
       final String afflictionTimeTag,
       final int totalAfflictionTime,
       final String conversionTimeTag,
       final int totalConversionTime,
-      @Nullable final BiConsumer<M, ServerLevel> postConversionStep
+      final @Nullable BiConsumer<M, ServerLevel> postConversionStep
    ) {
       this.mob = mob;
       this.conversionId = conversionId;

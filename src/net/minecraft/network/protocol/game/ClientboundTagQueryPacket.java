@@ -12,10 +12,9 @@ public class ClientboundTagQueryPacket implements Packet<ClientGamePacketListene
       ClientboundTagQueryPacket::write, ClientboundTagQueryPacket::new
    );
    private final int transactionId;
-   @Nullable
-   private final CompoundTag tag;
+   private final @Nullable CompoundTag tag;
 
-   public ClientboundTagQueryPacket(final int transactionId, @Nullable final CompoundTag tag) {
+   public ClientboundTagQueryPacket(final int transactionId, final @Nullable CompoundTag tag) {
       this.transactionId = transactionId;
       this.tag = tag;
    }
@@ -43,8 +42,7 @@ public class ClientboundTagQueryPacket implements Packet<ClientGamePacketListene
       return this.transactionId;
    }
 
-   @Nullable
-   public CompoundTag getTag() {
+   public @Nullable CompoundTag getTag() {
       return this.tag;
    }
 

@@ -12,10 +12,10 @@ import net.minecraft.world.level.levelgen.structure.placement.StructurePlacement
 public record StructureSet(List<StructureSet.StructureSelectionEntry> structures, StructurePlacement placement) {
    public static final Codec<StructureSet> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               StructureSet.StructureSelectionEntry.CODEC.listOf().fieldOf("structures").forGetter(StructureSet::structures),
-               StructurePlacement.CODEC.fieldOf("placement").forGetter(StructureSet::placement)
-            )
-            .apply(i, StructureSet::new)
+            StructureSet.StructureSelectionEntry.CODEC.listOf().fieldOf("structures").forGetter(StructureSet::structures),
+            StructurePlacement.CODEC.fieldOf("placement").forGetter(StructureSet::placement)
+         )
+         .apply(i, StructureSet::new)
    );
    public static final Codec<Holder<StructureSet>> CODEC = RegistryCodecs.holder(Registries.STRUCTURE_SET, DIRECT_CODEC);
 
@@ -31,13 +31,13 @@ public record StructureSet(List<StructureSet.StructureSelectionEntry> structures
       return new StructureSet.StructureSelectionEntry(structure, 1);
    }
 
-   public static record StructureSelectionEntry(Holder<Structure> structure, int weight) {
+   public record StructureSelectionEntry(Holder<Structure> structure, int weight) {
       public static final Codec<StructureSet.StructureSelectionEntry> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Structure.CODEC.fieldOf("structure").forGetter(StructureSet.StructureSelectionEntry::structure),
-                  ExtraCodecs.POSITIVE_INT.fieldOf("weight").forGetter(StructureSet.StructureSelectionEntry::weight)
-               )
-               .apply(i, StructureSet.StructureSelectionEntry::new)
+               Structure.CODEC.fieldOf("structure").forGetter(StructureSet.StructureSelectionEntry::structure),
+               ExtraCodecs.POSITIVE_INT.fieldOf("weight").forGetter(StructureSet.StructureSelectionEntry::weight)
+            )
+            .apply(i, StructureSet.StructureSelectionEntry::new)
       );
    }
 }

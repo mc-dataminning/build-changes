@@ -17,7 +17,6 @@ import com.mojang.brigadier.tree.RootCommandNode;
 import com.mojang.logging.LogUtils;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Consumer;
@@ -161,7 +160,7 @@ import org.slf4j.Logger;
 
 public class Commands {
    public static final String COMMAND_PREFIX = "/";
-   private static final ThreadLocal<ExecutionContext<CommandSourceStack>> CURRENT_EXECUTION_CONTEXT = new ThreadLocal<>();
+   private static final ThreadLocal<@Nullable ExecutionContext<CommandSourceStack>> CURRENT_EXECUTION_CONTEXT = new ThreadLocal<>();
    private static final Logger LOGGER = LogUtils.getLogger();
    public static final PermissionCheck LEVEL_ALL = PermissionCheck.AlwaysPass.INSTANCE;
    public static final PermissionCheck LEVEL_MODERATORS = new PermissionCheck.Require(Permissions.COMMANDS_MODERATOR);
@@ -171,9 +170,8 @@ public class Commands {
    private static final ClientboundCommandsPacket.NodeInspector<CommandSourceStack> COMMAND_NODE_INSPECTOR = new ClientboundCommandsPacket.NodeInspector<CommandSourceStack>() {
       private final CommandSourceStack noPermissionSource = Commands.createCompilationContext(PermissionSet.NO_PERMISSIONS);
 
-      @Nullable
       @Override
-      public Identifier suggestionId(final ArgumentCommandNode<CommandSourceStack, ?> node) {
+      public @Nullable Identifier suggestionId(final ArgumentCommandNode<CommandSourceStack, ?> node) {
          SuggestionProvider<CommandSourceStack> suggestionProvider = node.getCustomSuggestions();
          return suggestionProvider != null ? SuggestionProviders.getName(suggestionProvider) : null;
       }
@@ -334,15 +332,15 @@ public class Commands {
             executeCommandInContext(
                sender,
                executionContext -> ExecutionContext.queueInitialCommandExecution(
-                     executionContext, commandString, commandChain, sender, CommandResultCallback.EMPTY
-                  )
+                  executionContext, commandString, commandChain, sender, CommandResultCallback.EMPTY
+               )
             );
          }
-      } catch (Exception var12) {
-         MutableComponent hover = Component.literal(var12.getMessage() == null ? var12.getClass().getName() : var12.getMessage());
+      } catch (Exception e) {
+         MutableComponent hover = Component.literal(e.getMessage() == null ? e.getClass().getName() : e.getMessage());
          if (LOGGER.isDebugEnabled()) {
-            LOGGER.error("Command exception: /{}", commandString, var12);
-            StackTraceElement[] stackTrace = var12.getStackTrace();
+            LOGGER.error("Command exception: /{}", commandString, e);
+            StackTraceElement[] stackTrace = e.getStackTrace();
 
             for (int i = 0; i < Math.min(stackTrace.length, 3); i++) {
                hover.append("\n\n")
@@ -356,26 +354,25 @@ public class Commands {
 
          sender.sendFailure(Component.translatable("command.failed").withStyle(s -> s.withHoverEvent(new HoverEvent.ShowText(hover))));
          if (SharedConstants.DEBUG_VERBOSE_COMMAND_ERRORS || SharedConstants.IS_RUNNING_IN_IDE) {
-            sender.sendFailure(Component.literal(Util.describeError(var12)));
-            LOGGER.error("'/{}' threw an exception", commandString, var12);
+            sender.sendFailure(Component.literal(Util.describeError(e)));
+            LOGGER.error("'/{}' threw an exception", commandString, e);
          }
       } finally {
          Profiler.get().pop();
       }
    }
 
-   @Nullable
-   private static ContextChain<CommandSourceStack> finishParsing(
+   private static @Nullable ContextChain<CommandSourceStack> finishParsing(
       final ParseResults<CommandSourceStack> command, final String commandString, final CommandSourceStack sender
    ) {
       try {
          validateParseResults(command);
          return (ContextChain<CommandSourceStack>)ContextChain.tryFlatten(command.getContext().build(commandString))
             .orElseThrow(() -> CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext(command.getReader()));
-      } catch (CommandSyntaxException var7) {
-         sender.sendFailure(ComponentUtils.fromMessage(var7.getRawMessage()));
-         if (var7.getInput() != null && var7.getCursor() >= 0) {
-            int cursor = Math.min(var7.getInput().length(), var7.getCursor());
+      } catch (CommandSyntaxException e) {
+         sender.sendFailure(ComponentUtils.fromMessage(e.getRawMessage()));
+         if (e.getInput() != null && e.getCursor() >= 0) {
+            int cursor = Math.min(e.getInput().length(), e.getCursor());
             MutableComponent context = Component.empty()
                .withStyle(ChatFormatting.GRAY)
                .withStyle(s -> s.withClickEvent(new ClickEvent.SuggestCommand("/" + commandString)));
@@ -383,9 +380,9 @@ public class Commands {
                context.append(CommonComponents.ELLIPSIS);
             }
 
-            context.append(var7.getInput().substring(Math.max(0, cursor - 10), cursor));
-            if (cursor < var7.getInput().length()) {
-               Component remaining = Component.literal(var7.getInput().substring(cursor)).withStyle(ChatFormatting.RED, ChatFormatting.UNDERLINE);
+            context.append(e.getInput().substring(Math.max(0, cursor - 10), cursor));
+            if (cursor < e.getInput().length()) {
+               Component remaining = Component.literal(e.getInput().substring(cursor)).withStyle(ChatFormatting.RED, ChatFormatting.UNDERLINE);
                context.append(remaining);
             }
 
@@ -458,7 +455,7 @@ public class Commands {
          try {
             parser.parse(new StringReader(value));
             return true;
-         } catch (CommandSyntaxException var3) {
+         } catch (CommandSyntaxException ignored) {
             return false;
          }
       };
@@ -475,8 +472,7 @@ public class Commands {
       }
    }
 
-   @Nullable
-   public static <S> CommandSyntaxException getParseException(final ParseResults<S> parse) {
+   public static <S> @Nullable CommandSyntaxException getParseException(final ParseResults<S> parse) {
       if (!parse.getReader().canRead()) {
          return null;
       } else if (parse.getExceptions().size() == 1) {
@@ -507,10 +503,6 @@ public class Commands {
 
          private <T> HolderLookup.RegistryLookup.Delegate<T> createLookup(final HolderLookup.RegistryLookup<T> original) {
             return new HolderLookup.RegistryLookup.Delegate<T>() {
-               {
-                  Objects.requireNonNull(<VAR_NAMELESS_ENCLOSURE>);
-               }
-
                @Override
                public HolderLookup.RegistryLookup<T> parent() {
                   return original;
@@ -537,8 +529,8 @@ public class Commands {
       RootCommandNode<CommandSourceStack> root = dispatcher.getRoot();
       dispatcher.findAmbiguities(
          (parent, child, sibling, ambiguities) -> LOGGER.warn(
-               "Ambiguity between arguments {} and {} with inputs: {}", new Object[]{dispatcher.getPath(child), dispatcher.getPath(sibling), ambiguities}
-            )
+            "Ambiguity between arguments {} and {} with inputs: {}", new Object[]{dispatcher.getPath(child), dispatcher.getPath(sibling), ambiguities}
+         )
       );
       Set<ArgumentType<?>> usedArgumentTypes = ArgumentUtils.findUsedArgumentTypes(root);
       Set<ArgumentType<?>> unregisteredTypes = usedArgumentTypes.stream()
@@ -560,7 +552,7 @@ public class Commands {
       return new CommandSourceStack(CommandSource.NULL, Vec3.ZERO, Vec2.ZERO, null, compilationPermissions, CommonComponents.EMPTY, null);
    }
 
-   public static enum CommandSelection {
+   public enum CommandSelection {
       ALL(true, true),
       DEDICATED(false, true),
       INTEGRATED(true, false);
@@ -568,7 +560,7 @@ public class Commands {
       private final boolean includeIntegrated;
       private final boolean includeDedicated;
 
-      private CommandSelection(final boolean includeIntegrated, final boolean includeDedicated) {
+      CommandSelection(final boolean includeIntegrated, final boolean includeDedicated) {
          this.includeIntegrated = includeIntegrated;
          this.includeDedicated = includeDedicated;
       }

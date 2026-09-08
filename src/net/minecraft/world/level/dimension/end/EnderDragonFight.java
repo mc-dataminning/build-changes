@@ -97,28 +97,25 @@ public class EnderDragonFight extends SavedData {
    private boolean dragonKilled;
    private boolean hasPreviouslyKilledDragon;
    private boolean skipArenaLoadedCheck = false;
-   @Nullable
-   private UUID dragonUUID;
+   private @Nullable UUID dragonUUID;
    private boolean needsStateScanning;
-   @Nullable
-   private BlockPos exitPortalLocation;
-   @Nullable
-   private DragonRespawnStage respawnStage;
+   private @Nullable BlockPos exitPortalLocation;
+   private @Nullable DragonRespawnStage respawnStage;
    private int respawnTime;
    private List<EntityReference<EndCrystal>> respawnCrystals;
    public static final Codec<EnderDragonFight> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "needs_state_scanning", true).forGetter(fight -> fight.needsStateScanning),
-               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "dragon_killed", false).forGetter(fight -> fight.dragonKilled),
-               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "previously_killed", false).forGetter(fight -> fight.hasPreviouslyKilledDragon),
-               DragonRespawnStage.CODEC.optionalFieldOf("respawn_stage").forGetter(fight -> Optional.ofNullable(fight.respawnStage)),
-               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.INT, "respawn_time", 0).forGetter(fight -> fight.respawnTime),
-               UUIDUtil.CODEC.lenientOptionalFieldOf("dragon_uuid").forGetter(fight -> Optional.ofNullable(fight.dragonUUID)),
-               BlockPos.CODEC.lenientOptionalFieldOf("exit_portal_location").forGetter(fight -> Optional.ofNullable(fight.exitPortalLocation)),
-               Codec.list(Codec.INT).lenientOptionalFieldOf("gateways", new ArrayList()).forGetter(fight -> fight.gateways),
-               Codec.list(EntityReference.codec()).optionalFieldOf("respawn_crystals", List.of()).forGetter(fight -> fight.respawnCrystals)
-            )
-            .apply(i, EnderDragonFight::new)
+            ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "needs_state_scanning", true).forGetter(fight -> fight.needsStateScanning),
+            ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "dragon_killed", false).forGetter(fight -> fight.dragonKilled),
+            ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "previously_killed", false).forGetter(fight -> fight.hasPreviouslyKilledDragon),
+            DragonRespawnStage.CODEC.optionalFieldOf("respawn_stage").forGetter(fight -> Optional.ofNullable(fight.respawnStage)),
+            ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.INT, "respawn_time", 0).forGetter(fight -> fight.respawnTime),
+            UUIDUtil.CODEC.lenientOptionalFieldOf("dragon_uuid").forGetter(fight -> Optional.ofNullable(fight.dragonUUID)),
+            BlockPos.CODEC.lenientOptionalFieldOf("exit_portal_location").forGetter(fight -> Optional.ofNullable(fight.exitPortalLocation)),
+            Codec.list(Codec.INT).lenientOptionalFieldOf("gateways", new ArrayList()).forGetter(fight -> fight.gateways),
+            Codec.list(EntityReference.codec()).optionalFieldOf("respawn_crystals", List.of()).forGetter(fight -> fight.respawnCrystals)
+         )
+         .apply(i, EnderDragonFight::new)
    );
    public static final SavedDataType<EnderDragonFight> TYPE = new SavedDataType<>(
       Identifier.withDefaultNamespace("ender_dragon_fight"), EnderDragonFight::createDefault, CODEC, DataFixTypes.SAVED_DATA_ENDER_DRAGON_FIGHT
@@ -161,8 +158,7 @@ public class EnderDragonFight extends SavedData {
          Mth.createInsecureUUID(level.getRandom()), EVENT_DISPLAY_NAME, BossEvent.BossBarColor.PINK, BossEvent.BossBarOverlay.PROGRESS
       );
       this.dragonEvent.setPlayBossMusic(true).setCreateWorldFog(true);
-      this.validPlayer = EntitySelector.ENTITY_STILL_ALIVE
-         .and(EntitySelector.withinDistance((double)origin.getX(), (double)(128 + origin.getY()), (double)origin.getZ(), 192.0));
+      this.validPlayer = EntitySelector.ENTITY_STILL_ALIVE.and(EntitySelector.withinDistance(origin.getX(), 128 + origin.getY(), origin.getZ(), 192.0));
       if (this.gateways.isEmpty()) {
          ObjectArrayList<Integer> newGateways = new ObjectArrayList(ContiguousSet.create(Range.closedOpen(0, 20), DiscreteDomain.integers()));
          Util.shuffle(newGateways, RandomSource.createThreadLocalInstance(seed));
@@ -278,23 +274,23 @@ public class EnderDragonFight extends SavedData {
    protected void setRespawnStage(final DragonRespawnStage stage) {
       if (this.respawnStage == null) {
          throw new IllegalStateException("Dragon respawn isn't in progress, can't skip ahead in the animation.");
-      } else {
-         this.respawnTime = 0;
-         if (stage == DragonRespawnStage.END) {
-            this.respawnStage = null;
-            this.dragonKilled = false;
-            EnderDragon dragon = this.createNewDragon();
-            if (dragon != null) {
-               for (ServerPlayer player : this.dragonEvent.getPlayers()) {
-                  CriteriaTriggers.SUMMONED_ENTITY.trigger(player, dragon);
-               }
-            }
-         } else {
-            this.respawnStage = stage;
-         }
-
-         this.setDirty();
       }
+
+      this.respawnTime = 0;
+      if (stage == DragonRespawnStage.END) {
+         this.respawnStage = null;
+         this.dragonKilled = false;
+         EnderDragon dragon = this.createNewDragon();
+         if (dragon != null) {
+            for (ServerPlayer player : this.dragonEvent.getPlayers()) {
+               CriteriaTriggers.SUMMONED_ENTITY.trigger(player, dragon);
+            }
+         }
+      } else {
+         this.respawnStage = stage;
+      }
+
+      this.setDirty();
    }
 
    private boolean hasActiveExitPortal() {
@@ -313,8 +309,7 @@ public class EnderDragonFight extends SavedData {
       return false;
    }
 
-   @Nullable
-   private BlockPattern.BlockPatternMatch findExitPortal() {
+   private BlockPattern.@Nullable BlockPatternMatch findExitPortal() {
       ChunkPos chunkOrigin = ChunkPos.containing(this.origin);
 
       for (int x = -8 + chunkOrigin.x(); x <= 8 + chunkOrigin.x(); x++) {
@@ -359,24 +354,24 @@ public class EnderDragonFight extends SavedData {
    private boolean isArenaLoaded() {
       if (this.skipArenaLoadedCheck) {
          return true;
-      } else {
-         ChunkPos chunkOrigin = ChunkPos.containing(this.origin);
+      }
 
-         for (int x = -8 + chunkOrigin.x(); x <= 8 + chunkOrigin.x(); x++) {
-            for (int z = 8 + chunkOrigin.z(); z <= 8 + chunkOrigin.z(); z++) {
-               if (!(this.level.getChunk(x, z, ChunkStatus.FULL, false) instanceof LevelChunk levelChunk)) {
-                  return false;
-               }
+      ChunkPos chunkOrigin = ChunkPos.containing(this.origin);
 
-               FullChunkStatus status = levelChunk.getFullStatus();
-               if (!status.isOrAfter(FullChunkStatus.BLOCK_TICKING)) {
-                  return false;
-               }
+      for (int x = -8 + chunkOrigin.x(); x <= 8 + chunkOrigin.x(); x++) {
+         for (int z = 8 + chunkOrigin.z(); z <= 8 + chunkOrigin.z(); z++) {
+            if (!(this.level.getChunk(x, z, ChunkStatus.FULL, false) instanceof LevelChunk levelChunk)) {
+               return false;
+            }
+
+            FullChunkStatus status = levelChunk.getFullStatus();
+            if (!status.isOrAfter(FullChunkStatus.BLOCK_TICKING)) {
+               return false;
             }
          }
-
-         return ChunkPos.rangeClosed(chunkOrigin, 1).allMatch(pos -> this.level.areEntitiesLoaded(pos.pack()));
       }
+
+      return ChunkPos.rangeClosed(chunkOrigin, 1).allMatch(pos -> this.level.areEntitiesLoaded(pos.pack()));
    }
 
    private void updatePlayers() {
@@ -435,8 +430,8 @@ public class EnderDragonFight extends SavedData {
    private void spawnNewGateway() {
       if (!this.gateways.isEmpty()) {
          int gateway = this.gateways.remove(this.gateways.size() - 1);
-         int x = Mth.floor(96.0 * Math.cos(2.0 * (-Math.PI + (Math.PI / 20) * (double)gateway)));
-         int z = Mth.floor(96.0 * Math.sin(2.0 * (-Math.PI + (Math.PI / 20) * (double)gateway)));
+         int x = Mth.floor(96.0 * Math.cos(2.0 * (-Math.PI + (Math.PI / 20) * gateway)));
+         int z = Mth.floor(96.0 * Math.sin(2.0 * (-Math.PI + (Math.PI / 20) * gateway)));
          this.spawnNewGateway(new BlockPos(x, 75, z));
          this.setDirty();
       }
@@ -470,17 +465,14 @@ public class EnderDragonFight extends SavedData {
       }
    }
 
-   @Nullable
-   private EnderDragon createNewDragon() {
+   private @Nullable EnderDragon createNewDragon() {
       this.level.getChunkAt(new BlockPos(this.origin.getX(), 128 + this.origin.getY(), this.origin.getZ()));
       EnderDragon dragon = EntityTypes.ENDER_DRAGON.create(this.level, EntitySpawnReason.EVENT);
       if (dragon != null) {
          dragon.setDragonFight(this);
          dragon.setFightOrigin(this.origin);
          dragon.getPhaseManager().setPhase(EnderDragonPhase.HOLDING_PATTERN);
-         dragon.snapTo(
-            (double)this.origin.getX(), (double)(128 + this.origin.getY()), (double)this.origin.getZ(), this.level.getRandom().nextFloat() * 360.0F, 0.0F
-         );
+         dragon.snapTo(this.origin.getX(), 128 + this.origin.getY(), this.origin.getZ(), this.level.getRandom().nextFloat() * 360.0F, 0.0F);
          this.level.addFreshEntity(dragon);
          this.dragonUUID = dragon.getUUID();
          this.setDirty();
@@ -592,8 +584,7 @@ public class EnderDragonFight extends SavedData {
       }
    }
 
-   @Nullable
-   public UUID dragonUUID() {
+   public @Nullable UUID dragonUUID() {
       return this.dragonUUID;
    }
 }

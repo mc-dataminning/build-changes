@@ -37,7 +37,7 @@ public class GroundPathNavigation extends PathNavigation {
 
    @Override
    protected Vec3 getTempMobPos() {
-      return new Vec3(this.mob.getX(), (double)this.getSurfaceY(), this.mob.getZ());
+      return new Vec3(this.mob.getX(), this.getSurfaceY(), this.mob.getZ());
    }
 
    @Override
@@ -45,13 +45,13 @@ public class GroundPathNavigation extends PathNavigation {
       LevelChunk chunk = this.level.getChunkSource().getChunkNow(SectionPos.blockToSectionCoord(pos.getX()), SectionPos.blockToSectionCoord(pos.getZ()));
       if (chunk == null) {
          return null;
-      } else {
-         if (!this.canPathToTargetsBelowSurface) {
-            pos = this.findSurfacePosition(chunk, pos, reachRange);
-         }
-
-         return super.createPath(pos, reachRange);
       }
+
+      if (!this.canPathToTargetsBelowSurface) {
+         pos = this.findSurfacePosition(chunk, pos, reachRange);
+      }
+
+      return super.createPath(pos, reachRange);
    }
 
    private BlockPos findSurfacePosition(final LevelChunk chunk, BlockPos pos, final int reachRange) {
@@ -77,15 +77,15 @@ public class GroundPathNavigation extends PathNavigation {
 
       if (!chunk.getBlockState(pos).isSolid()) {
          return pos;
-      } else {
-         BlockPos.MutableBlockPos columnPos = pos.mutable().move(Direction.UP);
-
-         while (columnPos.getY() <= this.level.getMaxY() && chunk.getBlockState(columnPos).isSolid()) {
-            columnPos.move(Direction.UP);
-         }
-
-         return columnPos.immutable();
       }
+
+      BlockPos.MutableBlockPos columnPos = pos.mutable().move(Direction.UP);
+
+      while (columnPos.getY() <= this.level.getMaxY() && chunk.getBlockState(columnPos).isSolid()) {
+         columnPos.move(Direction.UP);
+      }
+
+      return columnPos.immutable();
    }
 
    @Override
@@ -96,11 +96,11 @@ public class GroundPathNavigation extends PathNavigation {
    private int getSurfaceY() {
       if (this.mob.isInFloatableFluid() && this.canFloat()) {
          int surface = this.mob.getBlockY();
-         BlockState state = this.level.getBlockState(BlockPos.containing(this.mob.getX(), (double)surface, this.mob.getZ()));
+         BlockState state = this.level.getBlockState(BlockPos.containing(this.mob.getX(), surface, this.mob.getZ()));
          int steps = 0;
 
          while (state.getFluidState().is(FluidTags.ENTITY_FLOATABLE)) {
-            state = this.level.getBlockState(BlockPos.containing(this.mob.getX(), (double)(++surface), this.mob.getZ()));
+            state = this.level.getBlockState(BlockPos.containing(this.mob.getX(), ++surface, this.mob.getZ()));
             if (++steps > 16) {
                return this.mob.getBlockY();
             }

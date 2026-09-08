@@ -15,13 +15,13 @@ public class VaultSharedData {
    public static final String TAG_NAME = "shared_data";
    public static final Codec<VaultSharedData> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ItemStack.lenientOptionalFieldOf("display_item").forGetter(vault -> vault.displayItem),
-               UUIDUtil.CODEC_LINKED_SET.lenientOptionalFieldOf("connected_players", Set.of()).forGetter(vault -> vault.connectedPlayers),
-               Codec.DOUBLE
-                  .lenientOptionalFieldOf("connected_particles_range", VaultConfig.DEFAULT.deactivationRange())
-                  .forGetter(vault -> vault.connectedParticlesRange)
-            )
-            .apply(i, VaultSharedData::new)
+            ItemStack.lenientOptionalFieldOf("display_item").forGetter(vault -> vault.displayItem),
+            UUIDUtil.CODEC_LINKED_SET.lenientOptionalFieldOf("connected_players", Set.of()).forGetter(vault -> vault.connectedPlayers),
+            Codec.DOUBLE
+               .lenientOptionalFieldOf("connected_particles_range", VaultConfig.DEFAULT.deactivationRange())
+               .forGetter(vault -> vault.connectedParticlesRange)
+         )
+         .apply(i, VaultSharedData::new)
    );
    private ItemStack displayItem = ItemStack.EMPTY;
    private Set<UUID> connectedPlayers = new ObjectLinkedOpenHashSet();

@@ -31,11 +31,9 @@ public record ChargedProjectiles(List<ItemStackTemplate> items) implements Conta
       .apply(ByteBufCodecs.list(1024))
       .map(ChargedProjectiles::new, projectiles -> projectiles.items);
 
-   public ChargedProjectiles(List<ItemStackTemplate> items) {
+   public ChargedProjectiles {
       if (items.size() > 1024) {
          throw new IllegalArgumentException("Got " + items.size() + " items, but maximum is 1024");
-      } else {
-         this.items = items;
       }
    }
 

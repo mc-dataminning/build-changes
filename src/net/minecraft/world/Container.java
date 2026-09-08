@@ -3,7 +3,6 @@ package net.minecraft.world;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Objects;
 import java.util.Set;
 import java.util.function.Predicate;
 import net.minecraft.core.BlockPos;
@@ -98,18 +97,13 @@ public interface Container extends Clearable, Iterable<ItemStack>, SlotProvider 
       if (level == null) {
          return false;
       } else {
-         return level.getBlockEntity(worldPosition) != blockEntity ? false : player.isWithinBlockInteractionRange(worldPosition, (double)distanceBuffer);
+         return level.getBlockEntity(worldPosition) != blockEntity ? false : player.isWithinBlockInteractionRange(worldPosition, distanceBuffer);
       }
    }
 
-   @Nullable
    @Override
-   default SlotAccess getSlot(final int slot) {
+   default @Nullable SlotAccess getSlot(final int slot) {
       return slot >= 0 && slot < this.getContainerSize() ? new SlotAccess() {
-         {
-            Objects.requireNonNull(Container.this);
-         }
-
          @Override
          public ItemStack get() {
             return Container.this.getItem(slot);
@@ -128,7 +122,7 @@ public interface Container extends Clearable, Iterable<ItemStack>, SlotProvider 
       return new Container.ContainerIterator(this);
    }
 
-   public static class ContainerIterator implements Iterator<ItemStack> {
+   class ContainerIterator implements Iterator<ItemStack> {
       private final Container container;
       private int index;
       private final int size;

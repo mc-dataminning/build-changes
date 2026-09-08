@@ -17,9 +17,9 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 public record PlacedFeature(Holder<Feature> feature, List<PlacementModifier> placement) {
    public static final Codec<PlacedFeature> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Feature.CODEC.fieldOf("feature").forGetter(c -> c.feature), PlacementModifier.CODEC.listOf().fieldOf("placement").forGetter(c -> c.placement)
-            )
-            .apply(i, PlacedFeature::new)
+            Feature.CODEC.fieldOf("feature").forGetter(c -> c.feature), PlacementModifier.CODEC.listOf().fieldOf("placement").forGetter(c -> c.placement)
+         )
+         .apply(i, PlacedFeature::new)
    );
    public static final Codec<Holder<PlacedFeature>> CODEC = RegistryCodecs.holder(Registries.PLACED_FEATURE, DIRECT_CODEC);
    public static final Codec<HolderSet<PlacedFeature>> LIST_CODEC = RegistryCodecs.holderSet(Registries.PLACED_FEATURE, DIRECT_CODEC);

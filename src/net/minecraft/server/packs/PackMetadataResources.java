@@ -9,11 +9,9 @@ import org.jspecify.annotations.Nullable;
 public interface PackMetadataResources extends AutoCloseable {
    PackLocationInfo location();
 
-   @Nullable
-   IoSupplier<InputStream> getRootResource(String... path);
+   @Nullable IoSupplier<InputStream> getRootResource(String... path);
 
-   @Nullable
-   <T> T getMetadataSection(MetadataSectionType<T> metadataSerializer) throws IOException;
+   <T> @Nullable T getMetadataSection(MetadataSectionType<T> metadataSerializer) throws IOException;
 
    @Override
    void close();

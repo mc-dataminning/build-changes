@@ -269,8 +269,7 @@ public class TrialSpawnerConfigs {
    }
 
    private static <T extends Entity> SpawnData spawnData(final EntityType<T> type) {
-      return customSpawnDataWithEquipment(type, tag -> {
-      }, null);
+      return customSpawnDataWithEquipment(type, tag -> {}, null);
    }
 
    private static <T extends Entity> SpawnData customSpawnData(final EntityType<T> type, final Consumer<CompoundTag> tagModifier) {
@@ -278,12 +277,11 @@ public class TrialSpawnerConfigs {
    }
 
    private static <T extends Entity> SpawnData spawnDataWithEquipment(final EntityType<T> type, final ResourceKey<LootTable> equipmentLootTable) {
-      return customSpawnDataWithEquipment(type, tag -> {
-      }, equipmentLootTable);
+      return customSpawnDataWithEquipment(type, tag -> {}, equipmentLootTable);
    }
 
    private static <T extends Entity> SpawnData customSpawnDataWithEquipment(
-      final EntityType<T> type, final Consumer<CompoundTag> tagModifier, @Nullable final ResourceKey<LootTable> equipmentLootTable
+      final EntityType<T> type, final Consumer<CompoundTag> tagModifier, final @Nullable ResourceKey<LootTable> equipmentLootTable
    ) {
       CompoundTag tag = new CompoundTag();
       tag.putString("id", BuiltInRegistries.ENTITY_TYPE.getKey(type).toString());
@@ -318,7 +316,7 @@ public class TrialSpawnerConfigs {
       return TrialSpawnerConfig.builder().simultaneousMobs(3.0F).simultaneousMobsAddedPerPlayer(0.5F).ticksBetweenSpawn(20);
    }
 
-   private static record Keys(ResourceKey<TrialSpawnerConfig> normal, ResourceKey<TrialSpawnerConfig> ominous) {
+   private record Keys(ResourceKey<TrialSpawnerConfig> normal, ResourceKey<TrialSpawnerConfig> ominous) {
       public static TrialSpawnerConfigs.Keys of(final String id) {
          return new TrialSpawnerConfigs.Keys(TrialSpawnerConfigs.registryKey(id + "/normal"), TrialSpawnerConfigs.registryKey(id + "/ominous"));
       }

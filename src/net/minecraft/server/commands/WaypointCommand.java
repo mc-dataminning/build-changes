@@ -47,10 +47,10 @@ public class WaypointCommand {
                                           Commands.argument("color", TeamColorArgument.teamColor())
                                              .executes(
                                                 c -> setWaypointColor(
-                                                      (CommandSourceStack)c.getSource(),
-                                                      WaypointArgument.getWaypoint(c, "waypoint"),
-                                                      TeamColorArgument.getTeamColor(c, "color")
-                                                   )
+                                                   (CommandSourceStack)c.getSource(),
+                                                   WaypointArgument.getWaypoint(c, "waypoint"),
+                                                   TeamColorArgument.getTeamColor(c, "color")
+                                                )
                                              )
                                        ))
                                     .then(
@@ -59,10 +59,10 @@ public class WaypointCommand {
                                              Commands.argument("color", HexColorArgument.hexColor())
                                                 .executes(
                                                    c -> setWaypointColor(
-                                                         (CommandSourceStack)c.getSource(),
-                                                         WaypointArgument.getWaypoint(c, "waypoint"),
-                                                         HexColorArgument.getHexColor(c, "color")
-                                                      )
+                                                      (CommandSourceStack)c.getSource(),
+                                                      WaypointArgument.getWaypoint(c, "waypoint"),
+                                                      HexColorArgument.getHexColor(c, "color")
+                                                   )
                                                 )
                                           )
                                     ))
@@ -77,8 +77,8 @@ public class WaypointCommand {
                                     Commands.literal("reset")
                                        .executes(
                                           c -> setWaypointStyle(
-                                                (CommandSourceStack)c.getSource(), WaypointArgument.getWaypoint(c, "waypoint"), WaypointStyleAssets.DEFAULT
-                                             )
+                                             (CommandSourceStack)c.getSource(), WaypointArgument.getWaypoint(c, "waypoint"), WaypointStyleAssets.DEFAULT
+                                          )
                                        )
                                  ))
                               .then(
@@ -87,10 +87,10 @@ public class WaypointCommand {
                                        Commands.argument("style", IdentifierArgument.id())
                                           .executes(
                                              c -> setWaypointStyle(
-                                                   (CommandSourceStack)c.getSource(),
-                                                   WaypointArgument.getWaypoint(c, "waypoint"),
-                                                   ResourceKey.create(WaypointStyleAssets.ROOT_ID, IdentifierArgument.getId(c, "style"))
-                                                )
+                                                (CommandSourceStack)c.getSource(),
+                                                WaypointArgument.getWaypoint(c, "waypoint"),
+                                                ResourceKey.create(WaypointStyleAssets.ROOT_ID, IdentifierArgument.getId(c, "style"))
+                                             )
                                           )
                                     )
                               )
@@ -118,8 +118,8 @@ public class WaypointCommand {
       mutateIcon(source, waypoint, icon -> icon.color = Optional.of(color));
       source.sendSuccess(
          () -> Component.translatable(
-               "commands.waypoint.modify.color", Component.literal(HexFormat.of().withUpperCase().toHexDigits((long)ARGB.color(0, color), 6)).withColor(color)
-            ),
+            "commands.waypoint.modify.color", Component.literal(HexFormat.of().withUpperCase().toHexDigits(ARGB.color(0, color), 6)).withColor(color)
+         ),
          false
       );
       return 0;
@@ -149,12 +149,10 @@ public class WaypointCommand {
                            .copy()
                            .withStyle(
                               s -> s.withClickEvent(
-                                       new ClickEvent.SuggestCommand(
-                                          "/execute in " + dimension + " run tp @s " + pos.getX() + " " + pos.getY() + " " + pos.getZ()
-                                       )
-                                    )
-                                    .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.coordinates.tooltip")))
-                                    .withColor(transmitter.waypointIcon().color.orElse(-1))
+                                    new ClickEvent.SuggestCommand("/execute in " + dimension + " run tp @s " + pos.getX() + " " + pos.getY() + " " + pos.getZ())
+                                 )
+                                 .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.coordinates.tooltip")))
+                                 .withColor(transmitter.waypointIcon().color.orElse(-1))
                            );
                      } else {
                         return Component.literal(transmitter.toString());

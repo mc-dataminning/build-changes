@@ -17,7 +17,7 @@ import net.minecraft.world.item.consume_effects.ConsumeEffect;
 public record DeathProtection(List<ConsumeEffect> deathEffects) {
    public static final Codec<DeathProtection> CODEC = RecordCodecBuilder.create(
       i -> i.group(ConsumeEffect.CODEC.listOf().optionalFieldOf("death_effects", List.of()).forGetter(DeathProtection::deathEffects))
-            .apply(i, DeathProtection::new)
+         .apply(i, DeathProtection::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, DeathProtection> STREAM_CODEC = StreamCodec.composite(
       ConsumeEffect.STREAM_CODEC.apply(ByteBufCodecs.list()), DeathProtection::deathEffects, DeathProtection::new

@@ -30,9 +30,8 @@ public class MinecraftPlayerListServiceImpl implements MinecraftPlayerListServic
       return this.server().getPlayerList().getPlayers();
    }
 
-   @Nullable
    @Override
-   public ServerPlayer getPlayer(final UUID uuid) {
+   public @Nullable ServerPlayer getPlayer(final UUID uuid) {
       return this.server().getPlayerList().getPlayer(uuid);
    }
 
@@ -71,9 +70,8 @@ public class MinecraftPlayerListServiceImpl implements MinecraftPlayerListServic
       this.jsonRpcLogger.log(clientInfo, "Remove player '{}'", serverPlayer.getPlainTextName());
    }
 
-   @Nullable
    @Override
-   public ServerPlayer getPlayerByName(final String name) {
+   public @Nullable ServerPlayer getPlayerByName(final String name) {
       return this.server().getPlayerList().getPlayerByName(name);
    }
 }

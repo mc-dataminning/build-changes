@@ -41,9 +41,8 @@ public class PotentSulfurBlock extends BaseEntityBlock {
       builder.add(STATE);
    }
 
-   @Nullable
    @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
+   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
       return new PotentSulfurBlockEntity(worldPosition, blockState);
    }
 
@@ -61,29 +60,30 @@ public class PotentSulfurBlock extends BaseEntityBlock {
       return validBlockState(state, level, pos);
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       return validBlockState(this.defaultBlockState(), context.getLevel(), context.getClickedPos());
    }
 
    private static BlockState validBlockState(final BlockState state, final LevelReader level, final BlockPos pos) {
       if (!level.getFluidState(pos.above()).isSourceOfType(Fluids.WATER)) {
          return state.setValue(STATE, PotentSulfurState.DRY);
-      } else {
-         BlockState belowState = level.getBlockState(pos.below());
-         if (belowState.is(BlockTags.CAUSES_CONTINUOUS_GEYSER_ERUPTIONS) && isSourceIfFluid(belowState)) {
-            return state.setValue(STATE, PotentSulfurState.CONTINUOUS);
-         } else if (belowState.is(BlockTags.CAUSES_PERIODIC_GEYSER_ERUPTIONS) && isSourceIfFluid(belowState)) {
-            boolean isGeyser = state.getValue(STATE) == PotentSulfurState.ERUPTING || state.getValue(STATE) == PotentSulfurState.DORMANT;
-            if (!isGeyser && level.getBlockEntity(pos) instanceof PotentSulfurBlockEntity potentSulfurEntity) {
-               potentSulfurEntity.resetCountdown();
-            }
+      }
 
-            return state.getValue(STATE) == PotentSulfurState.ERUPTING ? state : state.setValue(STATE, PotentSulfurState.DORMANT);
-         } else {
-            return state.setValue(STATE, PotentSulfurState.WET);
+      BlockState belowState = level.getBlockState(pos.below());
+      if (belowState.is(BlockTags.CAUSES_CONTINUOUS_GEYSER_ERUPTIONS) && isSourceIfFluid(belowState)) {
+         return state.setValue(STATE, PotentSulfurState.CONTINUOUS);
+      }
+
+      if (belowState.is(BlockTags.CAUSES_PERIODIC_GEYSER_ERUPTIONS) && isSourceIfFluid(belowState)) {
+         boolean isGeyser = state.getValue(STATE) == PotentSulfurState.ERUPTING || state.getValue(STATE) == PotentSulfurState.DORMANT;
+         if (!isGeyser && level.getBlockEntity(pos) instanceof PotentSulfurBlockEntity potentSulfurEntity) {
+            potentSulfurEntity.resetCountdown();
          }
+
+         return state.getValue(STATE) == PotentSulfurState.ERUPTING ? state : state.setValue(STATE, PotentSulfurState.DORMANT);
+      } else {
+         return state.setValue(STATE, PotentSulfurState.WET);
       }
    }
 
@@ -113,19 +113,17 @@ public class PotentSulfurBlock extends BaseEntityBlock {
    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
       if (state.getValue(STATE) != PotentSulfurState.DRY) {
          if (level.getFluidState(pos.above()).isSourceOfType(Fluids.WATER)) {
-            spawnBubbleParticlesAt(level, random, (double)pos.getX(), (double)(pos.getY() + 1), (double)pos.getZ());
-            spawnBubbleParticlesAt(level, random, (double)pos.getX(), (double)(pos.getY() + 1), (double)pos.getZ());
+            spawnBubbleParticlesAt(level, random, pos.getX(), pos.getY() + 1, pos.getZ());
+            spawnBubbleParticlesAt(level, random, pos.getX(), pos.getY() + 1, pos.getZ());
             if (random.nextInt(10) == 0) {
-               level.playLocalSound((double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), SoundEvents.NOXIOUS_GAS, SoundSource.AMBIENT, 1.0F, 1.0F, false);
+               level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.NOXIOUS_GAS, SoundSource.AMBIENT, 1.0F, 1.0F, false);
             }
          }
       }
    }
 
    private static void spawnBubbleParticlesAt(final Level level, final RandomSource random, final double x, final double y, final double z) {
-      level.addAlwaysVisibleParticle(
-         ParticleTypes.SULFUR_BUBBLES, x + (double)random.nextFloat(), y + (double)random.nextFloat(), z + (double)random.nextFloat(), 0.0, 0.0, 0.0
-      );
+      level.addAlwaysVisibleParticle(ParticleTypes.SULFUR_BUBBLES, x + random.nextFloat(), y + random.nextFloat(), z + random.nextFloat(), 0.0, 0.0, 0.0);
    }
 
    @Override
@@ -137,9 +135,8 @@ public class PotentSulfurBlock extends BaseEntityBlock {
       return true;
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       boolean client = level.isClientSide();
 
       return createTickerHelper(
@@ -149,18 +146,18 @@ public class PotentSulfurBlock extends BaseEntityBlock {
             case DRY -> null;
             case WET -> client ? PotentSulfurBlockEntity.CLIENT_NOXIOUS_GAS_TICKER : PotentSulfurBlockEntity.SERVER_NAUSEA_EFFECT_TICKER;
             case DORMANT -> client
-            ? PotentSulfurBlockEntity.CLIENT_NOXIOUS_GAS_TICKER
-            : PotentSulfurBlockEntity.SERVER_WAITING_COUNTDOWN_TICKER.andThen(PotentSulfurBlockEntity.SERVER_NAUSEA_EFFECT_TICKER);
+               ? PotentSulfurBlockEntity.CLIENT_NOXIOUS_GAS_TICKER
+               : PotentSulfurBlockEntity.SERVER_WAITING_COUNTDOWN_TICKER.andThen(PotentSulfurBlockEntity.SERVER_NAUSEA_EFFECT_TICKER);
             case ERUPTING -> client
-            ? PotentSulfurBlockEntity.CLIENT_GEYSER_PLUME_TICKER
-               .apply(SoundEvents.GEYSER_ERUPTION_ACTIVE)
-               .andThen(PotentSulfurBlockEntity.LAUNCH_ENTITY_TICKER)
-            : PotentSulfurBlockEntity.LAUNCH_ENTITY_TICKER.andThen(PotentSulfurBlockEntity.SERVER_WAITING_COUNTDOWN_TICKER);
+               ? PotentSulfurBlockEntity.CLIENT_GEYSER_PLUME_TICKER
+                  .apply(SoundEvents.GEYSER_ERUPTION_ACTIVE)
+                  .andThen(PotentSulfurBlockEntity.LAUNCH_ENTITY_TICKER)
+               : PotentSulfurBlockEntity.LAUNCH_ENTITY_TICKER.andThen(PotentSulfurBlockEntity.SERVER_WAITING_COUNTDOWN_TICKER);
             case CONTINUOUS -> client
-            ? PotentSulfurBlockEntity.CLIENT_GEYSER_PLUME_TICKER
-               .apply(SoundEvents.GEYSER_CONTINUOUS_ACTIVE)
-               .andThen(PotentSulfurBlockEntity.LAUNCH_ENTITY_TICKER)
-            : PotentSulfurBlockEntity.LAUNCH_ENTITY_TICKER;
+               ? PotentSulfurBlockEntity.CLIENT_GEYSER_PLUME_TICKER
+                  .apply(SoundEvents.GEYSER_CONTINUOUS_ACTIVE)
+                  .andThen(PotentSulfurBlockEntity.LAUNCH_ENTITY_TICKER)
+               : PotentSulfurBlockEntity.LAUNCH_ENTITY_TICKER;
          }
       );
    }

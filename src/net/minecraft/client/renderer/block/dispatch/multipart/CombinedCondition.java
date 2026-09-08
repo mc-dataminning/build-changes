@@ -15,7 +15,7 @@ public record CombinedCondition(CombinedCondition.Operation operation, List<Cond
       return this.operation.apply(Lists.transform(this.terms, c -> c.instantiate(definition)));
    }
 
-   public static enum Operation implements StringRepresentable {
+   public enum Operation implements StringRepresentable {
       AND("AND") {
          @Override
          public <V> Predicate<V> apply(final List<Predicate<V>> terms) {
@@ -32,7 +32,7 @@ public record CombinedCondition(CombinedCondition.Operation operation, List<Cond
       public static final Codec<CombinedCondition.Operation> CODEC = StringRepresentable.fromEnum(CombinedCondition.Operation::values);
       private final String name;
 
-      private Operation(final String name) {
+      Operation(final String name) {
          this.name = name;
       }
 

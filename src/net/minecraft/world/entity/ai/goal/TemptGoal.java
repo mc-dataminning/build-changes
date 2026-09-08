@@ -23,8 +23,7 @@ public class TemptGoal extends Goal {
    private double pz;
    private double pRotX;
    private double pRotY;
-   @Nullable
-   protected Player player;
+   protected @Nullable Player player;
    private int calmDown;
    private boolean isRunning;
    private final Predicate<ItemStack> items;
@@ -72,7 +71,7 @@ public class TemptGoal extends Goal {
                return false;
             }
 
-            if (Math.abs((double)this.player.getXRot() - this.pRotX) > 5.0 || Math.abs((double)this.player.getYRot() - this.pRotY) > 5.0) {
+            if (Math.abs(this.player.getXRot() - this.pRotX) > 5.0 || Math.abs(this.player.getYRot() - this.pRotY) > 5.0) {
                return false;
             }
          } else {
@@ -81,8 +80,8 @@ public class TemptGoal extends Goal {
             this.pz = this.player.getZ();
          }
 
-         this.pRotX = (double)this.player.getXRot();
-         this.pRotY = (double)this.player.getYRot();
+         this.pRotX = this.player.getXRot();
+         this.pRotY = this.player.getYRot();
       }
 
       return this.canUse();
@@ -110,7 +109,7 @@ public class TemptGoal extends Goal {
 
    @Override
    public void tick() {
-      this.mob.getLookControl().setLookAt(this.player, (float)(this.mob.getMaxHeadYRot() + 20), (float)this.mob.getMaxHeadXRot());
+      this.mob.getLookControl().setLookAt(this.player, this.mob.getMaxHeadYRot() + 20, this.mob.getMaxHeadXRot());
       if (this.mob.distanceToSqr(this.player) < this.stopDistance * this.stopDistance) {
          this.stopNavigation();
       } else {

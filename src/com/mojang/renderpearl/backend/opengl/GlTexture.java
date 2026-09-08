@@ -15,7 +15,7 @@ public class GlTexture extends BaseGpuTexture implements FrameBufferAttachment {
    private int views;
 
    protected GlTexture(
-      @GpuTexture.Usage final int usage,
+      final @GpuTexture.Usage int usage,
       final String label,
       final GpuFormat format,
       final int width,

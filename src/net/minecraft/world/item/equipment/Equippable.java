@@ -46,21 +46,21 @@ public record Equippable(
 ) {
    public static final Codec<Equippable> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               EquipmentSlot.CODEC.fieldOf("slot").forGetter(Equippable::slot),
-               SoundEvent.CODEC.optionalFieldOf("equip_sound", SoundEvents.ARMOR_EQUIP_GENERIC).forGetter(Equippable::equipSound),
-               ResourceKey.codec(EquipmentAssets.ROOT_ID).optionalFieldOf("asset_id").forGetter(Equippable::assetId),
-               Identifier.CODEC.optionalFieldOf("camera_overlay").forGetter(Equippable::cameraOverlay),
-               RegistryCodecs.holderSet(Registries.ENTITY_TYPE).optionalFieldOf("allowed_entities").forGetter(Equippable::allowedEntities),
-               Codec.BOOL.optionalFieldOf("dispensable", true).forGetter(Equippable::dispensable),
-               Codec.BOOL.optionalFieldOf("swappable", true).forGetter(Equippable::swappable),
-               Codec.BOOL.optionalFieldOf("damage_on_hurt", true).forGetter(Equippable::damageOnHurt),
-               Codec.BOOL.optionalFieldOf("equip_on_interact", false).forGetter(Equippable::equipOnInteract),
-               Codec.BOOL.optionalFieldOf("can_be_sheared", false).forGetter(Equippable::canBeSheared),
-               SoundEvent.CODEC
-                  .optionalFieldOf("shearing_sound", BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.SHEARS_SNIP))
-                  .forGetter(Equippable::shearingSound)
-            )
-            .apply(i, Equippable::new)
+            EquipmentSlot.CODEC.fieldOf("slot").forGetter(Equippable::slot),
+            SoundEvent.CODEC.optionalFieldOf("equip_sound", SoundEvents.ARMOR_EQUIP_GENERIC).forGetter(Equippable::equipSound),
+            ResourceKey.codec(EquipmentAssets.ROOT_ID).optionalFieldOf("asset_id").forGetter(Equippable::assetId),
+            Identifier.CODEC.optionalFieldOf("camera_overlay").forGetter(Equippable::cameraOverlay),
+            RegistryCodecs.holderSet(Registries.ENTITY_TYPE).optionalFieldOf("allowed_entities").forGetter(Equippable::allowedEntities),
+            Codec.BOOL.optionalFieldOf("dispensable", true).forGetter(Equippable::dispensable),
+            Codec.BOOL.optionalFieldOf("swappable", true).forGetter(Equippable::swappable),
+            Codec.BOOL.optionalFieldOf("damage_on_hurt", true).forGetter(Equippable::damageOnHurt),
+            Codec.BOOL.optionalFieldOf("equip_on_interact", false).forGetter(Equippable::equipOnInteract),
+            Codec.BOOL.optionalFieldOf("can_be_sheared", false).forGetter(Equippable::canBeSheared),
+            SoundEvent.CODEC
+               .optionalFieldOf("shearing_sound", BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.SHEARS_SNIP))
+               .forGetter(Equippable::shearingSound)
+         )
+         .apply(i, Equippable::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, Equippable> STREAM_CODEC = StreamCodec.composite(
       EquipmentSlot.STREAM_CODEC,
@@ -140,16 +140,16 @@ public record Equippable(
                ItemStack swappedToEquipment = player.isCreative() ? inHand.copy() : inHand.copyAndClear();
                player.setItemSlot(this.slot, swappedToEquipment);
                return InteractionResult.SUCCESS.heldItemTransformedTo(swappedToHand);
-            } else {
-               ItemStack swappedToInventory = inEquipmentSlot.copyAndClear();
-               ItemStack swappedToEquipment = inHand.consumeAndReturn(1, player);
-               player.setItemSlot(this.slot, swappedToEquipment);
-               if (!player.getInventory().add(swappedToInventory)) {
-                  player.drop(swappedToInventory, false, Prediction.PREDICTED);
-               }
-
-               return InteractionResult.SUCCESS.heldItemTransformedTo(inHand);
             }
+
+            ItemStack swappedToInventory = inEquipmentSlot.copyAndClear();
+            ItemStack swappedToEquipment = inHand.consumeAndReturn(1, player);
+            player.setItemSlot(this.slot, swappedToEquipment);
+            if (!player.getInventory().add(swappedToInventory)) {
+               player.drop(swappedToInventory, false, Prediction.PREDICTED);
+            }
+
+            return InteractionResult.SUCCESS.heldItemTransformedTo(inHand);
          } else {
             return InteractionResult.FAIL;
          }

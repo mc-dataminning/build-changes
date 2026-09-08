@@ -18,11 +18,11 @@ public record SetBlockProperties(BlockItemStateProperties properties, Vec3i offs
    implements EnchantmentEntityEffect {
    public static final MapCodec<SetBlockProperties> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BlockItemStateProperties.CODEC.fieldOf("properties").forGetter(SetBlockProperties::properties),
-               Vec3i.CODEC.optionalFieldOf("offset", Vec3i.ZERO).forGetter(SetBlockProperties::offset),
-               GameEvent.CODEC.optionalFieldOf("trigger_game_event").forGetter(SetBlockProperties::triggerGameEvent)
-            )
-            .apply(i, SetBlockProperties::new)
+            BlockItemStateProperties.CODEC.fieldOf("properties").forGetter(SetBlockProperties::properties),
+            Vec3i.CODEC.optionalFieldOf("offset", Vec3i.ZERO).forGetter(SetBlockProperties::offset),
+            GameEvent.CODEC.optionalFieldOf("trigger_game_event").forGetter(SetBlockProperties::triggerGameEvent)
+         )
+         .apply(i, SetBlockProperties::new)
    );
 
    public SetBlockProperties(final BlockItemStateProperties properties) {

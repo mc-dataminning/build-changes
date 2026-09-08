@@ -51,20 +51,22 @@ public class CollectFields extends CollectToTag {
       FieldTree currentFrame = this.stack.element();
       if (this.depth() > currentFrame.depth()) {
          return super.visitEntry(type, id);
-      } else if (currentFrame.selectedFields().remove(id, type)) {
+      }
+
+      if (currentFrame.selectedFields().remove(id, type)) {
          this.fieldsToGetCount--;
          return super.visitEntry(type, id);
-      } else {
-         if (type == CompoundTag.TYPE) {
-            FieldTree newFrame = currentFrame.fieldsToRecurse().get(id);
-            if (newFrame != null) {
-               this.stack.push(newFrame);
-               return super.visitEntry(type, id);
-            }
-         }
-
-         return StreamTagVisitor.EntryResult.SKIP;
       }
+
+      if (type == CompoundTag.TYPE) {
+         FieldTree newFrame = currentFrame.fieldsToRecurse().get(id);
+         if (newFrame != null) {
+            this.stack.push(newFrame);
+            return super.visitEntry(type, id);
+         }
+      }
+
+      return StreamTagVisitor.EntryResult.SKIP;
    }
 
    @Override

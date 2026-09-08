@@ -67,7 +67,7 @@ public class DismountHelper {
       while (y < blocks) {
          VoxelShape collisionShape = shapeGetter.apply(cursor);
          if (!collisionShape.isEmpty()) {
-            return (double)(pos.getY() + y) + collisionShape.min(Direction.Axis.Y);
+            return pos.getY() + y + collisionShape.min(Direction.Axis.Y);
          }
 
          y++;
@@ -77,34 +77,36 @@ public class DismountHelper {
       return Double.POSITIVE_INFINITY;
    }
 
-   @Nullable
-   public static Vec3 findSafeDismountLocation(final EntityType<?> type, final CollisionGetter level, final BlockPos blockPos, final boolean checkDangerous) {
+   public static @Nullable Vec3 findSafeDismountLocation(
+      final EntityType<?> type, final CollisionGetter level, final BlockPos blockPos, final boolean checkDangerous
+   ) {
       if (checkDangerous && type.isBlockDangerous(level.getBlockState(blockPos))) {
          return null;
-      } else {
-         double floorHeight = level.getBlockFloorHeight(nonClimbableShape(level, blockPos), () -> nonClimbableShape(level, blockPos.below()));
-         if (!isBlockFloorValid(floorHeight)) {
-            return null;
-         } else if (checkDangerous && floorHeight <= 0.0 && type.isBlockDangerous(level.getBlockState(blockPos.below()))) {
-            return null;
-         } else {
-            Vec3 position = Vec3.upFromBottomCenterOf(blockPos, floorHeight);
-            AABB aabb = type.getDimensions().makeBoundingBox(position);
+      }
 
-            for (VoxelShape shape : level.getBlockCollisions(null, aabb)) {
-               if (!shape.isEmpty()) {
-                  return null;
-               }
-            }
+      double floorHeight = level.getBlockFloorHeight(nonClimbableShape(level, blockPos), () -> nonClimbableShape(level, blockPos.below()));
+      if (!isBlockFloorValid(floorHeight)) {
+         return null;
+      }
 
-            if (type != EntityTypes.PLAYER
-               || !level.getBlockState(blockPos).is(BlockTags.INVALID_SPAWN_INSIDE)
-                  && !level.getBlockState(blockPos.above()).is(BlockTags.INVALID_SPAWN_INSIDE)) {
-               return !level.getWorldBorder().isWithinBounds(aabb) ? null : position;
-            } else {
-               return null;
-            }
+      if (checkDangerous && floorHeight <= 0.0 && type.isBlockDangerous(level.getBlockState(blockPos.below()))) {
+         return null;
+      }
+
+      Vec3 position = Vec3.upFromBottomCenterOf(blockPos, floorHeight);
+      AABB aabb = type.getDimensions().makeBoundingBox(position);
+
+      for (VoxelShape shape : level.getBlockCollisions(null, aabb)) {
+         if (!shape.isEmpty()) {
+            return null;
          }
+      }
+
+      if (type != EntityTypes.PLAYER
+         || !level.getBlockState(blockPos).is(BlockTags.INVALID_SPAWN_INSIDE) && !level.getBlockState(blockPos.above()).is(BlockTags.INVALID_SPAWN_INSIDE)) {
+         return !level.getWorldBorder().isWithinBounds(aabb) ? null : position;
+      } else {
+         return null;
       }
    }
 }

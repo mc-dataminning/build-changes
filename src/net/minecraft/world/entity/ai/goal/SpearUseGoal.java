@@ -18,10 +18,9 @@ public class SpearUseGoal<T extends Monster> extends Goal {
    private static final int MAX_REPOSITION_DISTANCE = 7;
    private static final int MIN_COOLDOWN_DISTANCE = 9;
    private static final int MAX_COOLDOWN_DISTANCE = 11;
-   private static final double MAX_FLEEING_TIME = (double)reducedTickDelay(100);
+   private static final double MAX_FLEEING_TIME = reducedTickDelay(100);
    private final T mob;
-   @Nullable
-   private SpearUseGoal.SpearUseState state;
+   private SpearUseGoal.@Nullable SpearUseState state;
    private final double speedModifierWhenCharging;
    private final double speedModifierWhenRepositioning;
    private final float approachDistanceSq;
@@ -94,8 +93,8 @@ public class SpearUseGoal<T extends Monster> extends Goal {
          this.mob.lookAt(target, 30.0F, 30.0F);
          this.mob.getLookControl().setLookAt(target, 30.0F, 30.0F);
          if (this.state.notEngagedYet()) {
-            if (targetDistSqr > (double)this.approachDistanceSq) {
-               this.mob.getNavigation().moveTo(target, (double)speedModifier * this.speedModifierWhenRepositioning);
+            if (targetDistSqr > this.approachDistanceSq) {
+               this.mob.getNavigation().moveTo(target, speedModifier * this.speedModifierWhenRepositioning);
                return;
             }
 
@@ -107,7 +106,7 @@ public class SpearUseGoal<T extends Monster> extends Goal {
             this.mob.stopUsingItem();
             double distance = Math.sqrt(targetDistSqr);
             this.state.awayPos = LandRandomPos.getPosAway(
-               this.mob, Math.max(0.0, (double)(9 + mountDistance) - distance), Math.max(1.0, (double)(11 + mountDistance) - distance), 7, target.position()
+               this.mob, Math.max(0.0, 9 + mountDistance - distance), Math.max(1.0, 11 + mountDistance - distance), 7, target.position()
             );
             this.state.fleeingTime = 1;
          }
@@ -116,7 +115,7 @@ public class SpearUseGoal<T extends Monster> extends Goal {
             if (this.state.awayPos != null) {
                this.mob
                   .getNavigation()
-                  .moveTo(this.state.awayPos.x, this.state.awayPos.y, this.state.awayPos.z, (double)speedModifier * this.speedModifierWhenRepositioning);
+                  .moveTo(this.state.awayPos.x, this.state.awayPos.y, this.state.awayPos.z, speedModifier * this.speedModifierWhenRepositioning);
                if (this.mob.getNavigation().isDone()) {
                   if (this.state.fleeingTime > 0) {
                      this.state.done = true;
@@ -126,12 +125,10 @@ public class SpearUseGoal<T extends Monster> extends Goal {
                   this.state.awayPos = null;
                }
             } else {
-               this.mob.getNavigation().moveTo(target, (double)speedModifier * this.speedModifierWhenCharging);
-               if (targetDistSqr < (double)this.targetInRangeRadiusSq || this.mob.getNavigation().isDone()) {
+               this.mob.getNavigation().moveTo(target, speedModifier * this.speedModifierWhenCharging);
+               if (targetDistSqr < this.targetInRangeRadiusSq || this.mob.getNavigation().isDone()) {
                   double distance = Math.sqrt(targetDistSqr);
-                  this.state.awayPos = LandRandomPos.getPosAway(
-                     this.mob, (double)(6 + mountDistance) - distance, (double)(7 + mountDistance) - distance, 7, target.position()
-                  );
+                  this.state.awayPos = LandRandomPos.getPosAway(this.mob, 6 + mountDistance - distance, 7 + mountDistance - distance, 7, target.position());
                }
             }
          }
@@ -141,8 +138,7 @@ public class SpearUseGoal<T extends Monster> extends Goal {
    public static class SpearUseState {
       private int engageTime = -1;
       private int fleeingTime = -1;
-      @Nullable
-      private Vec3 awayPos;
+      private @Nullable Vec3 awayPos;
       private boolean done = false;
 
       public boolean notEngagedYet() {
@@ -167,7 +163,7 @@ public class SpearUseGoal<T extends Monster> extends Goal {
       public boolean tickAndCheckFleeing() {
          if (this.fleeingTime > 0) {
             this.fleeingTime++;
-            if ((double)this.fleeingTime > SpearUseGoal.MAX_FLEEING_TIME) {
+            if (this.fleeingTime > SpearUseGoal.MAX_FLEEING_TIME) {
                this.done = true;
                return true;
             }

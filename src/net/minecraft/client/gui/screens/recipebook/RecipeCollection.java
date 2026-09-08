@@ -70,7 +70,7 @@ public class RecipeCollection {
       return result;
    }
 
-   public static enum CraftableStatus {
+   public enum CraftableStatus {
       ANY,
       CRAFTABLE,
       NOT_CRAFTABLE;

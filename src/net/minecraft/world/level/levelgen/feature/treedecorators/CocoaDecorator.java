@@ -39,11 +39,7 @@ public class CocoaDecorator extends TreeDecorator {
                            BlockPos cocoaPos = pos.offset(opposite.getStepX(), 0, opposite.getStepZ());
                            if (context.isAir(cocoaPos)) {
                               context.setBlock(
-                                 cocoaPos,
-                                 Blocks.COCOA
-                                    .defaultBlockState()
-                                    .setValue(CocoaBlock.AGE, Integer.valueOf(random.nextInt(3)))
-                                    .setValue(CocoaBlock.FACING, direction)
+                                 cocoaPos, Blocks.COCOA.defaultBlockState().setValue(CocoaBlock.AGE, random.nextInt(3)).setValue(CocoaBlock.FACING, direction)
                               );
                            }
                         }

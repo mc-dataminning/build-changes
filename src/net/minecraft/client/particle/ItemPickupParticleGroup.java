@@ -25,22 +25,22 @@ public class ItemPickupParticleGroup extends ParticleGroup<ItemPickupParticle> {
       );
    }
 
-   private static record ParticleInstance(EntityRenderState itemRenderState, double xOffset, double yOffset, double zOffset) {
+   private record ParticleInstance(EntityRenderState itemRenderState, double xOffset, double yOffset, double zOffset) {
       public static ItemPickupParticleGroup.ParticleInstance fromParticle(final ItemPickupParticle particle, final Camera camera, final float partialTickTime) {
-         float time = ((float)particle.life + partialTickTime) / 3.0F;
+         float time = (particle.life + partialTickTime) / 3.0F;
          time *= time;
-         double xt = Mth.lerp((double)partialTickTime, particle.targetXOld, particle.targetX);
-         double yt = Mth.lerp((double)partialTickTime, particle.targetYOld, particle.targetY);
-         double zt = Mth.lerp((double)partialTickTime, particle.targetZOld, particle.targetZ);
-         double xx = Mth.lerp((double)time, particle.itemRenderState.x, xt);
-         double yy = Mth.lerp((double)time, particle.itemRenderState.y, yt);
-         double zz = Mth.lerp((double)time, particle.itemRenderState.z, zt);
+         double xt = Mth.lerp(partialTickTime, particle.targetXOld, particle.targetX);
+         double yt = Mth.lerp(partialTickTime, particle.targetYOld, particle.targetY);
+         double zt = Mth.lerp(partialTickTime, particle.targetZOld, particle.targetZ);
+         double xx = Mth.lerp(time, particle.itemRenderState.x, xt);
+         double yy = Mth.lerp(time, particle.itemRenderState.y, yt);
+         double zz = Mth.lerp(time, particle.itemRenderState.z, zt);
          Vec3 pos = camera.position();
          return new ItemPickupParticleGroup.ParticleInstance(particle.itemRenderState, xx - pos.x(), yy - pos.y(), zz - pos.z());
       }
    }
 
-   private static record State(List<ItemPickupParticleGroup.ParticleInstance> instances) implements ParticleGroupRenderState {
+   private record State(List<ItemPickupParticleGroup.ParticleInstance> instances) implements ParticleGroupRenderState {
       @Override
       public void submit(final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
          PoseStack poseStack = new PoseStack();

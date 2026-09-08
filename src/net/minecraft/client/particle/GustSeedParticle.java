@@ -25,7 +25,7 @@ public class GustSeedParticle extends NoRenderParticle {
             double x = this.x + (this.random.nextDouble() - this.random.nextDouble()) * this.scale;
             double y = this.y + (this.random.nextDouble() - this.random.nextDouble()) * this.scale;
             double z = this.z + (this.random.nextDouble() - this.random.nextDouble()) * this.scale;
-            this.level.addParticle(ParticleTypes.GUST, x, y, z, (double)((float)this.age / (float)this.lifetime), 0.0, 0.0);
+            this.level.addParticle(ParticleTypes.GUST, x, y, z, (float)this.age / this.lifetime, 0.0, 0.0);
          }
       }
 

@@ -30,15 +30,15 @@ public class BanPlayerCommands {
                      Commands.argument("reason", MessageArgument.message())
                         .executes(
                            c -> banPlayers(
-                                 (CommandSourceStack)c.getSource(), GameProfileArgument.getGameProfiles(c, "targets"), MessageArgument.getMessage(c, "reason")
-                              )
+                              (CommandSourceStack)c.getSource(), GameProfileArgument.getGameProfiles(c, "targets"), MessageArgument.getMessage(c, "reason")
+                           )
                         )
                   )
             )
       );
    }
 
-   private static int banPlayers(final CommandSourceStack source, final Collection<NameAndId> players, @Nullable final Component reason) throws CommandSyntaxException {
+   private static int banPlayers(final CommandSourceStack source, final Collection<NameAndId> players, final @Nullable Component reason) throws CommandSyntaxException {
       UserBanList list = source.getServer().getPlayerList().getBans();
       int count = 0;
 

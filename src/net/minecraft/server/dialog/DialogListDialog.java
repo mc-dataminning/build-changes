@@ -10,13 +10,13 @@ public record DialogListDialog(CommonDialogData common, HolderSet<Dialog> dialog
    implements ButtonListDialog {
    public static final MapCodec<DialogListDialog> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               CommonDialogData.MAP_CODEC.forGetter(DialogListDialog::common),
-               Dialog.LIST_CODEC.fieldOf("dialogs").forGetter(DialogListDialog::dialogs),
-               ActionButton.CODEC.optionalFieldOf("exit_action").forGetter(DialogListDialog::exitAction),
-               ExtraCodecs.POSITIVE_INT.optionalFieldOf("columns", 2).forGetter(DialogListDialog::columns),
-               WIDTH_CODEC.optionalFieldOf("button_width", 150).forGetter(DialogListDialog::buttonWidth)
-            )
-            .apply(i, DialogListDialog::new)
+            CommonDialogData.MAP_CODEC.forGetter(DialogListDialog::common),
+            Dialog.LIST_CODEC.fieldOf("dialogs").forGetter(DialogListDialog::dialogs),
+            ActionButton.CODEC.optionalFieldOf("exit_action").forGetter(DialogListDialog::exitAction),
+            ExtraCodecs.POSITIVE_INT.optionalFieldOf("columns", 2).forGetter(DialogListDialog::columns),
+            WIDTH_CODEC.optionalFieldOf("button_width", 150).forGetter(DialogListDialog::buttonWidth)
+         )
+         .apply(i, DialogListDialog::new)
    );
 
    @Override

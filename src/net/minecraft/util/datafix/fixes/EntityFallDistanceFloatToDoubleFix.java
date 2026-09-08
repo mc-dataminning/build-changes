@@ -26,9 +26,7 @@ public class EntityFallDistanceFloatToDoubleFix extends DataFix {
    private static Typed<?> fixEntity(final Typed<?> entity) {
       return entity.update(
          DSL.remainderFinder(),
-         remainder -> remainder.renameAndFixField(
-               "FallDistance", "fall_distance", fallDistance -> fallDistance.createDouble((double)fallDistance.asFloat(0.0F))
-            )
+         remainder -> remainder.renameAndFixField("FallDistance", "fall_distance", fallDistance -> fallDistance.createDouble(fallDistance.asFloat(0.0F)))
       );
    }
 }

@@ -23,7 +23,7 @@ public class VulkanGpuTexture extends BaseGpuTexture implements Destroyable {
 
    public VulkanGpuTexture(
       final VulkanDevice device,
-      @GpuTexture.Usage final int usage,
+      final @GpuTexture.Usage int usage,
       final String label,
       final GpuFormat format,
       final int width,
@@ -120,10 +120,10 @@ public class VulkanGpuTexture extends BaseGpuTexture implements Destroyable {
       this.views--;
       if (this.views < 0) {
          throw new IllegalStateException("Too many views removed from texture");
-      } else {
-         if (this.closed && this.views == 0) {
-            this.device.createCommandEncoder().queueForDestroy(this);
-         }
+      }
+
+      if (this.closed && this.views == 0) {
+         this.device.createCommandEncoder().queueForDestroy(this);
       }
    }
 

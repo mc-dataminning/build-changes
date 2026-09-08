@@ -52,10 +52,10 @@ public abstract class Particle {
 
    public Particle(final ClientLevel level, final double x, final double y, final double z, final double xa, final double ya, final double za) {
       this(level, x, y, z);
-      this.xd = xa + (double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.4F);
-      this.yd = ya + (double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.4F);
-      this.zd = za + (double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.4F);
-      double speed = (double)((this.random.nextFloat() + this.random.nextFloat() + 1.0F) * 0.15F);
+      this.xd = xa + (this.random.nextFloat() * 2.0F - 1.0F) * 0.4F;
+      this.yd = ya + (this.random.nextFloat() * 2.0F - 1.0F) * 0.4F;
+      this.zd = za + (this.random.nextFloat() * 2.0F - 1.0F) * 0.4F;
+      double speed = (this.random.nextFloat() + this.random.nextFloat() + 1.0F) * 0.15F;
       double dd = Math.sqrt(this.xd * this.xd + this.yd * this.yd + this.zd * this.zd);
       this.xd = this.xd / dd * speed * 0.4F;
       this.yd = this.yd / dd * speed * 0.4F + 0.1F;
@@ -63,9 +63,9 @@ public abstract class Particle {
    }
 
    public Particle setPower(final float power) {
-      this.xd *= (double)power;
-      this.yd = (this.yd - 0.1F) * (double)power + 0.1F;
-      this.zd *= (double)power;
+      this.xd *= power;
+      this.yd = (this.yd - 0.1F) * power + 0.1F;
+      this.zd *= power;
       return this;
    }
 
@@ -95,16 +95,16 @@ public abstract class Particle {
       if (this.age++ >= this.lifetime) {
          this.remove();
       } else {
-         this.yd = this.yd - 0.04 * (double)this.gravity;
+         this.yd = this.yd - 0.04 * this.gravity;
          this.move(this.xd, this.yd, this.zd);
          if (this.speedUpWhenYMotionIsBlocked && this.y == this.yo) {
             this.xd *= 1.1;
             this.zd *= 1.1;
          }
 
-         this.xd = this.xd * (double)this.friction;
-         this.yd = this.yd * (double)this.friction;
-         this.zd = this.zd * (double)this.friction;
+         this.xd = this.xd * this.friction;
+         this.yd = this.yd * this.friction;
+         this.zd = this.zd * this.friction;
          if (this.onGround) {
             this.xd *= 0.7F;
             this.zd *= 0.7F;
@@ -128,11 +128,9 @@ public abstract class Particle {
          this.bbWidth = w;
          this.bbHeight = h;
          AABB aabb = this.getBoundingBox();
-         double newMinX = (aabb.minX + aabb.maxX - (double)w) / 2.0;
-         double newMinZ = (aabb.minZ + aabb.maxZ - (double)w) / 2.0;
-         this.setBoundingBox(
-            new AABB(newMinX, aabb.minY, newMinZ, newMinX + (double)this.bbWidth, aabb.minY + (double)this.bbHeight, newMinZ + (double)this.bbWidth)
-         );
+         double newMinX = (aabb.minX + aabb.maxX - w) / 2.0;
+         double newMinZ = (aabb.minZ + aabb.maxZ - w) / 2.0;
+         this.setBoundingBox(new AABB(newMinX, aabb.minY, newMinZ, newMinX + this.bbWidth, aabb.minY + this.bbHeight, newMinZ + this.bbWidth));
       }
    }
 
@@ -142,7 +140,7 @@ public abstract class Particle {
       this.z = z;
       float w = this.bbWidth / 2.0F;
       float h = this.bbHeight;
-      this.setBoundingBox(new AABB(x - (double)w, y, z - (double)w, x + (double)w, y + (double)h, z + (double)w));
+      this.setBoundingBox(new AABB(x - w, y, z - w, x + w, y + h, z + w));
    }
 
    public void move(double xa, double ya, double za) {
@@ -207,7 +205,7 @@ public abstract class Particle {
       return Optional.empty();
    }
 
-   public static record LifetimeAlpha(float startAlpha, float endAlpha, float startAtNormalizedAge, float endAtNormalizedAge) {
+   public record LifetimeAlpha(float startAlpha, float endAlpha, float startAtNormalizedAge, float endAtNormalizedAge) {
       public static final Particle.LifetimeAlpha ALWAYS_OPAQUE = new Particle.LifetimeAlpha(1.0F, 1.0F, 0.0F, 1.0F);
 
       public boolean isOpaque() {
@@ -217,10 +215,10 @@ public abstract class Particle {
       public float currentAlphaForAge(final int age, final int lifetime, final float partialTickTime) {
          if (Mth.equal(this.startAlpha, this.endAlpha)) {
             return this.startAlpha;
-         } else {
-            float timeNormalized = Mth.inverseLerp(((float)age + partialTickTime) / (float)lifetime, this.startAtNormalizedAge, this.endAtNormalizedAge);
-            return Mth.clampedLerp(timeNormalized, this.startAlpha, this.endAlpha);
          }
+
+         float timeNormalized = Mth.inverseLerp((age + partialTickTime) / lifetime, this.startAtNormalizedAge, this.endAtNormalizedAge);
+         return Mth.clampedLerp(timeNormalized, this.startAlpha, this.endAlpha);
       }
    }
 }

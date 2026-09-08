@@ -16,6 +16,6 @@ public record Cosine(Holder<ContextFloatProvider> input) implements ContextFloat
 
    @Override
    public float getFloatUnsafe(final LootContext context) {
-      return Mth.cos((double)this.input().value().getFloatUnsafe(context));
+      return Mth.cos(this.input().value().getFloatUnsafe(context));
    }
 }

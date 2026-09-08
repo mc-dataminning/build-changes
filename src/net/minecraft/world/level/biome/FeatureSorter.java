@@ -85,7 +85,7 @@ public class FeatureSorter {
 
                   try {
                      buildFeaturesPerStep(reducedSources, featureGetter, false);
-                  } catch (IllegalStateException var18) {
+                  } catch (IllegalStateException e) {
                      continue;
                   }
 
@@ -109,7 +109,7 @@ public class FeatureSorter {
       return features.build();
    }
 
-   public static record StepFeatureData(List<PlacedFeature> features, ToIntFunction<PlacedFeature> indexMapping) {
+   public record StepFeatureData(List<PlacedFeature> features, ToIntFunction<PlacedFeature> indexMapping) {
       private StepFeatureData(final List<PlacedFeature> features) {
          this(features, Util.createIndexIdentityLookup(features));
       }

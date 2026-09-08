@@ -76,7 +76,7 @@ public class PufferfishMidModel extends EntityModel<EntityRenderState> {
 
    public void setupAnim(final EntityRenderState state) {
       super.setupAnim(state);
-      this.rightBlueFin.zRot = -0.2F + 0.4F * Mth.sin((double)(state.ageInTicks * 0.2F));
-      this.leftBlueFin.zRot = 0.2F - 0.4F * Mth.sin((double)(state.ageInTicks * 0.2F));
+      this.rightBlueFin.zRot = -0.2F + 0.4F * Mth.sin(state.ageInTicks * 0.2F);
+      this.leftBlueFin.zRot = 0.2F - 0.4F * Mth.sin(state.ageInTicks * 0.2F);
    }
 }

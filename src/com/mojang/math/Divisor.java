@@ -29,17 +29,17 @@ public class Divisor implements IntIterator {
    public int nextInt() {
       if (!this.hasNext()) {
          throw new NoSuchElementException();
-      } else {
-         int next = this.quotient;
-         this.remainder = this.remainder + this.mod;
-         if (this.remainder >= this.denominator) {
-            this.remainder = this.remainder - this.denominator;
-            next++;
-         }
-
-         this.returnedParts++;
-         return next;
       }
+
+      int next = this.quotient;
+      this.remainder = this.remainder + this.mod;
+      if (this.remainder >= this.denominator) {
+         this.remainder = this.remainder - this.denominator;
+         next++;
+      }
+
+      this.returnedParts++;
+      return next;
    }
 
    @VisibleForTesting

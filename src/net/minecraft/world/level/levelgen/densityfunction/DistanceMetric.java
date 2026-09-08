@@ -13,7 +13,7 @@ public enum DistanceMetric implements StringRepresentable {
    public static final Codec<DistanceMetric> CODEC = StringRepresentable.fromEnum(DistanceMetric::values);
    private final String name;
 
-   private DistanceMetric(final String name) {
+   DistanceMetric(final String name) {
       this.name = name;
    }
 

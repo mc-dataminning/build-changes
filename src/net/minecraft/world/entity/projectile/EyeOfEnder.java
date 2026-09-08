@@ -25,8 +25,7 @@ public class EyeOfEnder extends Entity implements ItemSupplier {
    private static final float TOO_FAR_SIGNAL_HEIGHT = 8.0F;
    private static final float TOO_FAR_DISTANCE = 12.0F;
    private static final EntityDataAccessor<ItemStack> DATA_ITEM_STACK = SynchedEntityData.defineId(EyeOfEnder.class, EntityDataSerializers.ITEM_STACK);
-   @Nullable
-   private Vec3 target;
+   private @Nullable Vec3 target;
    private int life;
    private boolean surviveAfterDeath;
 
@@ -61,15 +60,15 @@ public class EyeOfEnder extends Entity implements ItemSupplier {
    public boolean shouldRenderAtSqrDistance(final double distance) {
       if (this.tickCount < 2 && distance < 12.25) {
          return false;
-      } else {
-         double size = this.getBoundingBox().getSize() * 4.0;
-         if (Double.isNaN(size)) {
-            size = 4.0;
-         }
-
-         size *= 64.0;
-         return distance < size * size;
       }
+
+      double size = this.getBoundingBox().getSize() * 4.0;
+      if (Double.isNaN(size)) {
+         size = 4.0;
+      }
+
+      size *= 64.0;
+      return distance < size * size;
    }
 
    public void signalTo(final Vec3 target) {

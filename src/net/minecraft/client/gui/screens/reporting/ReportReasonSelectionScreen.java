@@ -1,6 +1,5 @@
 package net.minecraft.client.gui.screens.reporting;
 
-import java.util.Objects;
 import java.util.function.Consumer;
 import net.minecraft.Optionull;
 import net.minecraft.client.Minecraft;
@@ -27,18 +26,16 @@ public class ReportReasonSelectionScreen extends Screen {
    private static final int DESCRIPTION_BOX_WIDTH = 320;
    private static final int DESCRIPTION_BOX_HEIGHT = 62;
    private static final int PADDING = 4;
-   @Nullable
-   private final Screen lastScreen;
-   private ReportReasonSelectionScreen.ReasonSelectionList reasonSelectionList;
-   @Nullable
-   private ReportReason currentlySelectedReason;
+   private final @Nullable Screen lastScreen;
+   private ReportReasonSelectionScreen.@Nullable ReasonSelectionList reasonSelectionList;
+   private @Nullable ReportReason currentlySelectedReason;
    private final Consumer<ReportReason> onSelectedReason;
    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
    private final ReportType reportType;
 
    public ReportReasonSelectionScreen(
-      @Nullable final Screen lastScreen,
-      @Nullable final ReportReason selectedReason,
+      final @Nullable Screen lastScreen,
+      final @Nullable ReportReason selectedReason,
       final ReportType reportType,
       final Consumer<ReportReason> onSelectedReason
    ) {
@@ -133,7 +130,6 @@ public class ReportReasonSelectionScreen extends Screen {
 
    public class ReasonSelectionList extends ObjectSelectionList<ReportReasonSelectionScreen.ReasonSelectionList.Entry> {
       public ReasonSelectionList(final Minecraft minecraft) {
-         Objects.requireNonNull(ReportReasonSelectionScreen.this);
          super(
             minecraft,
             ReportReasonSelectionScreen.this.width,
@@ -149,7 +145,7 @@ public class ReportReasonSelectionScreen extends Screen {
          }
       }
 
-      public ReportReasonSelectionScreen.ReasonSelectionList.Entry findEntry(final ReportReason reason) {
+      public ReportReasonSelectionScreen.ReasonSelectionList.@Nullable Entry findEntry(final ReportReason reason) {
          return this.children().stream().filter(entry -> entry.reason == reason).findFirst().orElse(null);
       }
 
@@ -158,7 +154,7 @@ public class ReportReasonSelectionScreen extends Screen {
          return 320;
       }
 
-      public void setSelected(final ReportReasonSelectionScreen.ReasonSelectionList.Entry selected) {
+      public void setSelected(final ReportReasonSelectionScreen.ReasonSelectionList.@Nullable Entry selected) {
          super.setSelected(selected);
          ReportReasonSelectionScreen.this.currentlySelectedReason = selected != null ? selected.getReason() : null;
       }
@@ -167,8 +163,6 @@ public class ReportReasonSelectionScreen extends Screen {
          private final ReportReason reason;
 
          public Entry(final ReportReason reason) {
-            Objects.requireNonNull(ReasonSelectionList.this);
-            super();
             this.reason = reason;
          }
 

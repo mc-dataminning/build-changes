@@ -101,25 +101,23 @@ public record PackFormat(int major, int minor) implements Comparable<PackFormat>
          : String.format(Locale.ROOT, "%d.%d", this.major(), this.minor());
    }
 
-   public static record IntermediaryFormat(
-      Optional<PackFormat> min, Optional<PackFormat> max, Optional<Integer> format, Optional<InclusiveRange<Integer>> supported
-   ) {
+   public record IntermediaryFormat(Optional<PackFormat> min, Optional<PackFormat> max, Optional<Integer> format, Optional<InclusiveRange<Integer>> supported) {
       private static final MapCodec<PackFormat.IntermediaryFormat> PACK_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  PackFormat.BOTTOM_CODEC.optionalFieldOf("min_format").forGetter(PackFormat.IntermediaryFormat::min),
-                  PackFormat.TOP_CODEC.optionalFieldOf("max_format").forGetter(PackFormat.IntermediaryFormat::max),
-                  Codec.INT.optionalFieldOf("pack_format").forGetter(PackFormat.IntermediaryFormat::format),
-                  InclusiveRange.codec(Codec.INT).optionalFieldOf("supported_formats").forGetter(PackFormat.IntermediaryFormat::supported)
-               )
-               .apply(i, PackFormat.IntermediaryFormat::new)
+               PackFormat.BOTTOM_CODEC.optionalFieldOf("min_format").forGetter(PackFormat.IntermediaryFormat::min),
+               PackFormat.TOP_CODEC.optionalFieldOf("max_format").forGetter(PackFormat.IntermediaryFormat::max),
+               Codec.INT.optionalFieldOf("pack_format").forGetter(PackFormat.IntermediaryFormat::format),
+               InclusiveRange.codec(Codec.INT).optionalFieldOf("supported_formats").forGetter(PackFormat.IntermediaryFormat::supported)
+            )
+            .apply(i, PackFormat.IntermediaryFormat::new)
       );
       public static final MapCodec<PackFormat.IntermediaryFormat> OVERLAY_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  PackFormat.BOTTOM_CODEC.optionalFieldOf("min_format").forGetter(PackFormat.IntermediaryFormat::min),
-                  PackFormat.TOP_CODEC.optionalFieldOf("max_format").forGetter(PackFormat.IntermediaryFormat::max),
-                  InclusiveRange.codec(Codec.INT).optionalFieldOf("formats").forGetter(PackFormat.IntermediaryFormat::supported)
-               )
-               .apply(i, (min, max, formats) -> new PackFormat.IntermediaryFormat(min, max, min.map(PackFormat::major), formats))
+               PackFormat.BOTTOM_CODEC.optionalFieldOf("min_format").forGetter(PackFormat.IntermediaryFormat::min),
+               PackFormat.TOP_CODEC.optionalFieldOf("max_format").forGetter(PackFormat.IntermediaryFormat::max),
+               InclusiveRange.codec(Codec.INT).optionalFieldOf("formats").forGetter(PackFormat.IntermediaryFormat::supported)
+            )
+            .apply(i, (min, max, formats) -> new PackFormat.IntermediaryFormat(min, max, min.map(PackFormat::major), formats))
       );
 
       public static PackFormat.IntermediaryFormat fromRange(final InclusiveRange<PackFormat> range, final int lastPreMinorVersion) {
@@ -160,9 +158,9 @@ public record PackFormat(int major, int minor) implements Comparable<PackFormat>
             return mainFormat > lastPreMinorVersion
                ? DataResult.error(
                   () -> context
-                        + " declares support for version newer than "
-                        + lastPreMinorVersion
-                        + ", but is missing mandatory fields min_format and max_format"
+                     + " declares support for version newer than "
+                     + lastPreMinorVersion
+                     + ", but is missing mandatory fields min_format and max_format"
                )
                : DataResult.success(new InclusiveRange<>(PackFormat.of(mainFormat)));
          } else {
@@ -177,101 +175,101 @@ public record PackFormat(int major, int minor) implements Comparable<PackFormat>
          int majorMax = this.max.get().major();
          if (this.min.get().compareTo(this.max.get()) > 0) {
             return DataResult.error(() -> context + " min_format (" + this.min.get() + ") is greater than max_format (" + this.max.get() + ")");
-         } else {
-            if (majorMin > lastPreMinorVersion && !requireOldField) {
-               if (this.supported.isPresent()) {
-                  return DataResult.error(
-                     () -> context
-                           + " key "
-                           + oldFieldName
-                           + " is deprecated starting from pack format "
-                           + (lastPreMinorVersion + 1)
-                           + ". Remove "
-                           + oldFieldName
-                           + " from your pack.mcmeta."
-                  );
-               }
+         }
 
-               if (hasPackFormatField && this.format.isPresent()) {
-                  String packFormatError = this.validatePackFormatForRange(majorMin, majorMax);
-                  if (packFormatError != null) {
-                     return DataResult.error(() -> packFormatError);
-                  }
-               }
-            } else {
-               if (!this.supported.isPresent()) {
-                  return DataResult.error(
-                     () -> context
-                           + " declares support for format "
-                           + majorMin
-                           + ", but game versions supporting formats 15 to "
-                           + lastPreMinorVersion
-                           + " require a "
-                           + oldFieldName
-                           + " field. Add \""
-                           + oldFieldName
-                           + "\": ["
-                           + majorMin
-                           + ", "
-                           + lastPreMinorVersion
-                           + "] or require a version greater or equal to "
-                           + (lastPreMinorVersion + 1)
-                           + ".0."
-                  );
-               }
-
-               InclusiveRange<Integer> oldSupportedVersions = this.supported.get();
-               if (oldSupportedVersions.minInclusive() != majorMin) {
-                  return DataResult.error(
-                     () -> context
-                           + " version declaration mismatch between "
-                           + oldFieldName
-                           + " (from "
-                           + oldSupportedVersions.minInclusive()
-                           + ") and min_format ("
-                           + this.min.get()
-                           + ")"
-                  );
-               }
-
-               if (oldSupportedVersions.maxInclusive() != majorMax && oldSupportedVersions.maxInclusive() != lastPreMinorVersion) {
-                  return DataResult.error(
-                     () -> context
-                           + " version declaration mismatch between "
-                           + oldFieldName
-                           + " (up to "
-                           + oldSupportedVersions.maxInclusive()
-                           + ") and max_format ("
-                           + this.max.get()
-                           + ")"
-                  );
-               }
-
-               if (hasPackFormatField) {
-                  if (!this.format.isPresent()) {
-                     return DataResult.error(
-                        () -> context
-                              + " declares support for formats up to "
-                              + lastPreMinorVersion
-                              + ", but game versions supporting formats 15 to "
-                              + lastPreMinorVersion
-                              + " require a pack_format field. Add \"pack_format\": "
-                              + majorMin
-                              + " or require a version greater or equal to "
-                              + (lastPreMinorVersion + 1)
-                              + ".0."
-                     );
-                  }
-
-                  String packFormatError = this.validatePackFormatForRange(majorMin, majorMax);
-                  if (packFormatError != null) {
-                     return DataResult.error(() -> packFormatError);
-                  }
-               }
+         if (majorMin > lastPreMinorVersion && !requireOldField) {
+            if (this.supported.isPresent()) {
+               return DataResult.error(
+                  () -> context
+                     + " key "
+                     + oldFieldName
+                     + " is deprecated starting from pack format "
+                     + (lastPreMinorVersion + 1)
+                     + ". Remove "
+                     + oldFieldName
+                     + " from your pack.mcmeta."
+               );
             }
 
-            return DataResult.success(new InclusiveRange<>(this.min.get(), this.max.get()));
+            if (hasPackFormatField && this.format.isPresent()) {
+               String packFormatError = this.validatePackFormatForRange(majorMin, majorMax);
+               if (packFormatError != null) {
+                  return DataResult.error(() -> packFormatError);
+               }
+            }
+         } else {
+            if (!this.supported.isPresent()) {
+               return DataResult.error(
+                  () -> context
+                     + " declares support for format "
+                     + majorMin
+                     + ", but game versions supporting formats 15 to "
+                     + lastPreMinorVersion
+                     + " require a "
+                     + oldFieldName
+                     + " field. Add \""
+                     + oldFieldName
+                     + "\": ["
+                     + majorMin
+                     + ", "
+                     + lastPreMinorVersion
+                     + "] or require a version greater or equal to "
+                     + (lastPreMinorVersion + 1)
+                     + ".0."
+               );
+            }
+
+            InclusiveRange<Integer> oldSupportedVersions = this.supported.get();
+            if (oldSupportedVersions.minInclusive() != majorMin) {
+               return DataResult.error(
+                  () -> context
+                     + " version declaration mismatch between "
+                     + oldFieldName
+                     + " (from "
+                     + oldSupportedVersions.minInclusive()
+                     + ") and min_format ("
+                     + this.min.get()
+                     + ")"
+               );
+            }
+
+            if (oldSupportedVersions.maxInclusive() != majorMax && oldSupportedVersions.maxInclusive() != lastPreMinorVersion) {
+               return DataResult.error(
+                  () -> context
+                     + " version declaration mismatch between "
+                     + oldFieldName
+                     + " (up to "
+                     + oldSupportedVersions.maxInclusive()
+                     + ") and max_format ("
+                     + this.max.get()
+                     + ")"
+               );
+            }
+
+            if (hasPackFormatField) {
+               if (!this.format.isPresent()) {
+                  return DataResult.error(
+                     () -> context
+                        + " declares support for formats up to "
+                        + lastPreMinorVersion
+                        + ", but game versions supporting formats 15 to "
+                        + lastPreMinorVersion
+                        + " require a pack_format field. Add \"pack_format\": "
+                        + majorMin
+                        + " or require a version greater or equal to "
+                        + (lastPreMinorVersion + 1)
+                        + ".0."
+                  );
+               }
+
+               String packFormatError = this.validatePackFormatForRange(majorMin, majorMax);
+               if (packFormatError != null) {
+                  return DataResult.error(() -> packFormatError);
+               }
+            }
          }
+
+         return DataResult.success(new InclusiveRange<>(this.min.get(), this.max.get()));
       }
 
       private DataResult<InclusiveRange<PackFormat>> validateOldFormat(
@@ -283,39 +281,38 @@ public record PackFormat(int major, int minor) implements Comparable<PackFormat>
          if (max > lastPreMinorVersion) {
             return DataResult.error(
                () -> context
-                     + " declares support for version newer than "
-                     + lastPreMinorVersion
-                     + ", but is missing mandatory fields min_format and max_format"
+                  + " declares support for version newer than "
+                  + lastPreMinorVersion
+                  + ", but is missing mandatory fields min_format and max_format"
             );
-         } else {
-            if (hasPackFormatField) {
-               if (!this.format.isPresent()) {
-                  return DataResult.error(
-                     () -> context
-                           + " declares support for formats up to "
-                           + lastPreMinorVersion
-                           + ", but game versions supporting formats 15 to "
-                           + lastPreMinorVersion
-                           + " require a pack_format field. Add \"pack_format\": "
-                           + min
-                           + " or require a version greater or equal to "
-                           + (lastPreMinorVersion + 1)
-                           + ".0."
-                  );
-               }
+         }
 
-               String packFormatError = this.validatePackFormatForRange(min, max);
-               if (packFormatError != null) {
-                  return DataResult.error(() -> packFormatError);
-               }
+         if (hasPackFormatField) {
+            if (!this.format.isPresent()) {
+               return DataResult.error(
+                  () -> context
+                     + " declares support for formats up to "
+                     + lastPreMinorVersion
+                     + ", but game versions supporting formats 15 to "
+                     + lastPreMinorVersion
+                     + " require a pack_format field. Add \"pack_format\": "
+                     + min
+                     + " or require a version greater or equal to "
+                     + (lastPreMinorVersion + 1)
+                     + ".0."
+               );
             }
 
-            return DataResult.success(new InclusiveRange<>(min, max).map(PackFormat::of));
+            String packFormatError = this.validatePackFormatForRange(min, max);
+            if (packFormatError != null) {
+               return DataResult.error(() -> packFormatError);
+            }
          }
+
+         return DataResult.success(new InclusiveRange<>(min, max).map(PackFormat::of));
       }
 
-      @Nullable
-      private String validatePackFormatForRange(final int min, final int max) {
+      private @Nullable String validatePackFormatForRange(final int min, final int max) {
          int mainFormat = this.format.get();
          if (mainFormat < min || mainFormat > max) {
             return "Pack declared support for versions " + min + " to " + max + " but declared main format is " + mainFormat;

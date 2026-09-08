@@ -45,11 +45,11 @@ public class OptionsList extends ContainerObjectSelectionList<OptionsList.Abstra
       }
    }
 
-   public void addSmall(final AbstractWidget firstOption, @Nullable final AbstractWidget secondOption) {
+   public void addSmall(final AbstractWidget firstOption, final @Nullable AbstractWidget secondOption) {
       this.addEntry(OptionsList.Entry.small(firstOption, secondOption, this.screen));
    }
 
-   public void addSmall(final AbstractWidget firstOption, final OptionInstance<?> firstOptionInstance, @Nullable final AbstractWidget secondOption) {
+   public void addSmall(final AbstractWidget firstOption, final OptionInstance<?> firstOptionInstance, final @Nullable AbstractWidget secondOption) {
       this.addEntry(OptionsList.Entry.small(firstOption, firstOptionInstance, secondOption, this.screen));
    }
 
@@ -64,8 +64,7 @@ public class OptionsList extends ContainerObjectSelectionList<OptionsList.Abstra
       return 310;
    }
 
-   @Nullable
-   public AbstractWidget findOption(final OptionInstance<?> option) {
+   public @Nullable AbstractWidget findOption(final OptionInstance<?> option) {
       for (OptionsList.AbstractEntry child : this.children()) {
          if (child instanceof OptionsList.Entry entry) {
             AbstractWidget widgetForOption = entry.findOption(option);
@@ -80,9 +79,7 @@ public class OptionsList extends ContainerObjectSelectionList<OptionsList.Abstra
 
    public void applyUnsavedChanges() {
       for (OptionsList.AbstractEntry child : this.children()) {
-         if (child instanceof OptionsList.Entry) {
-            OptionsList.Entry entry = (OptionsList.Entry)child;
-
+         if (child instanceof OptionsList.Entry entry) {
             for (OptionsList.OptionInstanceWidget optionInstanceWidget : entry.children) {
                if (optionInstanceWidget.optionInstance() != null
                   && optionInstanceWidget.widget() instanceof OptionInstance.OptionInstanceSliderButton<?> optionSlider) {
@@ -95,9 +92,7 @@ public class OptionsList extends ContainerObjectSelectionList<OptionsList.Abstra
 
    public void resetOption(final OptionInstance<?> option) {
       for (OptionsList.AbstractEntry child : this.children()) {
-         if (child instanceof OptionsList.Entry) {
-            OptionsList.Entry entry = (OptionsList.Entry)child;
-
+         if (child instanceof OptionsList.Entry entry) {
             for (OptionsList.OptionInstanceWidget optionInstanceWidget : entry.children) {
                if (optionInstanceWidget.optionInstance() == option && optionInstanceWidget.widget() instanceof ResettableOptionWidget resettableOptionWidget) {
                   resettableOptionWidget.resetValue();
@@ -130,14 +125,14 @@ public class OptionsList extends ContainerObjectSelectionList<OptionsList.Abstra
          return new OptionsList.Entry(List.of(new OptionsList.OptionInstanceWidget(widget, null)), screen);
       }
 
-      public static OptionsList.Entry small(final AbstractWidget leftWidget, @Nullable final AbstractWidget rightWidget, final Screen screen) {
+      public static OptionsList.Entry small(final AbstractWidget leftWidget, final @Nullable AbstractWidget rightWidget, final Screen screen) {
          return rightWidget == null
             ? new OptionsList.Entry(List.of(new OptionsList.OptionInstanceWidget(leftWidget)), screen)
             : new OptionsList.Entry(List.of(new OptionsList.OptionInstanceWidget(leftWidget), new OptionsList.OptionInstanceWidget(rightWidget)), screen);
       }
 
       public static OptionsList.Entry small(
-         final AbstractWidget leftWidget, final OptionInstance<?> leftWidgetOptionInstance, @Nullable final AbstractWidget rightWidget, final Screen screen
+         final AbstractWidget leftWidget, final OptionInstance<?> leftWidgetOptionInstance, final @Nullable AbstractWidget rightWidget, final Screen screen
       ) {
          return rightWidget == null
             ? new OptionsList.Entry(List.of(new OptionsList.OptionInstanceWidget(leftWidget, leftWidgetOptionInstance)), screen)
@@ -147,7 +142,7 @@ public class OptionsList extends ContainerObjectSelectionList<OptionsList.Abstra
       }
 
       public static OptionsList.Entry small(
-         final Options options, final OptionInstance<?> optionA, @Nullable final OptionInstance<?> optionB, final OptionsSubScreen screen
+         final Options options, final OptionInstance<?> optionA, final @Nullable OptionInstance<?> optionB, final OptionsSubScreen screen
       ) {
          AbstractWidget buttonA = optionA.createButton(options);
          return optionB == null
@@ -180,8 +175,7 @@ public class OptionsList extends ContainerObjectSelectionList<OptionsList.Abstra
          return Lists.transform(this.children, OptionsList.OptionInstanceWidget::widget);
       }
 
-      @Nullable
-      public AbstractWidget findOption(final OptionInstance<?> option) {
+      public @Nullable AbstractWidget findOption(final OptionInstance<?> option) {
          for (OptionsList.OptionInstanceWidget child : this.children) {
             if (child.optionInstance == option) {
                return child.widget();
@@ -223,7 +217,7 @@ public class OptionsList extends ContainerObjectSelectionList<OptionsList.Abstra
       }
    }
 
-   public static record OptionInstanceWidget(AbstractWidget widget, @Nullable OptionInstance<?> optionInstance) {
+   public record OptionInstanceWidget(AbstractWidget widget, @Nullable OptionInstance<?> optionInstance) {
       public OptionInstanceWidget(final AbstractWidget widget) {
          this(widget, null);
       }

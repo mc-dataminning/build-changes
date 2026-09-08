@@ -11,14 +11,13 @@ public interface Portal {
       return 0;
    }
 
-   @Nullable
-   TeleportTransition getPortalDestination(final ServerLevel currentLevel, final Entity entity, final BlockPos portalEntryPos);
+   @Nullable TeleportTransition getPortalDestination(final ServerLevel currentLevel, final Entity entity, final BlockPos portalEntryPos);
 
    default Portal.Transition getLocalTransition() {
       return Portal.Transition.NONE;
    }
 
-   public static enum Transition {
+   enum Transition {
       CONFUSION,
       NONE;
    }

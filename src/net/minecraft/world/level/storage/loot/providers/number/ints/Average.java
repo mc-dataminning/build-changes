@@ -20,7 +20,7 @@ public record Average(HolderSet<ContextIntProvider> inputs) implements ContextIn
       long count = 0L;
 
       for (Holder<ContextIntProvider> input : this.inputs()) {
-         sum += (long)input.value().getIntUnsafe(context);
+         sum += input.value().getIntUnsafe(context);
          count++;
       }
 

@@ -32,8 +32,7 @@ import org.jspecify.annotations.Nullable;
 public abstract class AbstractChestBoat extends AbstractBoat implements HasCustomInventoryScreen, ContainerEntity {
    private static final int CONTAINER_SIZE = 27;
    private NonNullList<ItemStack> itemStacks = NonNullList.withSize(27, ItemStack.EMPTY);
-   @Nullable
-   private ResourceKey<LootTable> lootTable;
+   private @Nullable ResourceKey<LootTable> lootTable;
    private long lootTableSeed;
 
    public AbstractChestBoat(final EntityType<? extends AbstractChestBoat> type, final Level level, final Supplier<Item> dropItem) {
@@ -82,17 +81,19 @@ public abstract class AbstractChestBoat extends AbstractBoat implements HasCusto
       InteractionResult superInteraction = super.interact(player, hand, location);
       if (superInteraction != InteractionResult.PASS) {
          return superInteraction;
-      } else if (this.canAddPassenger(player) && !player.isSecondaryUseActive()) {
-         return InteractionResult.PASS;
-      } else {
-         InteractionResult result = this.interactWithContainerVehicle(player);
-         if (result.consumesAction() && player.level() instanceof ServerLevel serverLevel) {
-            this.gameEvent(GameEvent.CONTAINER_OPEN, player);
-            PiglinAi.angerNearbyPiglins(serverLevel, player, true);
-         }
-
-         return result;
       }
+
+      if (this.canAddPassenger(player) && !player.isSecondaryUseActive()) {
+         return InteractionResult.PASS;
+      }
+
+      InteractionResult result = this.interactWithContainerVehicle(player);
+      if (result.consumesAction() && player.level() instanceof ServerLevel serverLevel) {
+         this.gameEvent(GameEvent.CONTAINER_OPEN, player);
+         PiglinAi.angerNearbyPiglins(serverLevel, player, true);
+      }
+
+      return result;
    }
 
    @Override
@@ -148,29 +149,27 @@ public abstract class AbstractChestBoat extends AbstractBoat implements HasCusto
       return this.isChestVehicleStillValid(player);
    }
 
-   @Nullable
    @Override
-   public AbstractContainerMenu createMenu(final int containerId, final Inventory inventory, final Player player) {
+   public @Nullable AbstractContainerMenu createMenu(final int containerId, final Inventory inventory, final Player player) {
       if (this.lootTable != null && player.isSpectator()) {
          return null;
-      } else {
-         this.unpackLootTable(inventory.player);
-         return ChestMenu.threeRows(containerId, inventory, this);
       }
+
+      this.unpackLootTable(inventory.player);
+      return ChestMenu.threeRows(containerId, inventory, this);
    }
 
-   public void unpackLootTable(@Nullable final Player player) {
+   public void unpackLootTable(final @Nullable Player player) {
       this.unpackChestVehicleLootTable(player);
    }
 
-   @Nullable
    @Override
-   public ResourceKey<LootTable> getContainerLootTable() {
+   public @Nullable ResourceKey<LootTable> getContainerLootTable() {
       return this.lootTable;
    }
 
    @Override
-   public void setContainerLootTable(@Nullable final ResourceKey<LootTable> lootTable) {
+   public void setContainerLootTable(final @Nullable ResourceKey<LootTable> lootTable) {
       this.lootTable = lootTable;
    }
 

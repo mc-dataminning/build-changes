@@ -49,9 +49,9 @@ public class VanillaShearingLoot implements LootTableSubProvider {
          BuiltInLootTables.SHEAR_DYED_SHEEP,
          Blocks.WOOL,
          (dyedSheep, wool) -> this.output
-               .accept(
-                  dyedSheep, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ContextIntProviders.between(1, 3)).add(LootItem.lootTableItem(wool)))
-               )
+            .accept(
+               dyedSheep, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ContextIntProviders.between(1, 3)).add(LootItem.lootTableItem(wool)))
+            )
       );
       this.output
          .accept(

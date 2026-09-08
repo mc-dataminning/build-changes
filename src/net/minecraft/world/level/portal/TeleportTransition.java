@@ -21,8 +21,7 @@ public record TeleportTransition(
    Set<Relative> relatives,
    TeleportTransition.PostTeleportTransition postTeleportTransition
 ) {
-   public static final TeleportTransition.PostTeleportTransition DO_NOTHING = entity -> {
-   };
+   public static final TeleportTransition.PostTeleportTransition DO_NOTHING = entity -> {};
    public static final TeleportTransition.PostTeleportTransition PLAY_PORTAL_SOUND = TeleportTransition::playPortalSound;
    public static final TeleportTransition.PostTeleportTransition PLACE_PORTAL_TICKET = TeleportTransition::placePortalTicket;
 

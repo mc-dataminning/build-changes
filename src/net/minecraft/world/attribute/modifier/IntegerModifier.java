@@ -14,7 +14,7 @@ public interface IntegerModifier<Argument> extends AttributeModifier<Integer, Ar
    Integer apply(Integer integer, Argument argument);
 
    @FunctionalInterface
-   public interface Simple extends IntegerModifier<Integer> {
+   interface Simple extends IntegerModifier<Integer> {
       @Override
       default Codec<Integer> argumentCodec(final EnvironmentAttribute<Integer> type) {
          return Codec.INT;

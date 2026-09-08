@@ -31,8 +31,8 @@ public class SnbtDatafixer {
                CompoundTag readSnbt = NbtUtils.snbtToStructure(snbt);
                CompoundTag updatedTag = StructureUpdater.update(path.toString(), readSnbt);
                NbtToSnbt.writeSnbt(CachedOutput.NO_CACHE, path, NbtUtils.structureToSnbt(updatedTag));
-            } catch (IOException | CommandSyntaxException var4) {
-               throw new RuntimeException(var4);
+            } catch (CommandSyntaxException | IOException e) {
+               throw new RuntimeException(e);
             }
          });
       }

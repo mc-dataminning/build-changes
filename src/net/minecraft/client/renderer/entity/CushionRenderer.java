@@ -30,7 +30,7 @@ public class CushionRenderer extends EntityRenderer<Cushion, CushionRenderState>
 
    public void extractRenderState(final Cushion cushion, final CushionRenderState state, final float partialTicks) {
       super.extractRenderState(cushion, state, partialTicks);
-      state.direction = Direction.fromYRot((double)cushion.getYRot());
+      state.direction = Direction.fromYRot(cushion.getYRot());
       state.texture = TEXTURES_BY_COLOR.get(cushion.getColor());
    }
 

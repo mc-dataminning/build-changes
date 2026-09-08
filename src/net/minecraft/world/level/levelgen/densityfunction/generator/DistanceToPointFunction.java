@@ -15,10 +15,10 @@ import net.minecraft.world.level.levelgen.densityfunction.SamplerContext;
 public record DistanceToPointFunction(Vec3i point, DistanceMetric metric) implements DensityFunction {
    public static final MapCodec<DistanceToPointFunction> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Vec3i.CODEC.fieldOf("point").forGetter(DistanceToPointFunction::point),
-               DistanceMetric.CODEC.fieldOf("metric").forGetter(DistanceToPointFunction::metric)
-            )
-            .apply(i, DistanceToPointFunction::new)
+            Vec3i.CODEC.fieldOf("point").forGetter(DistanceToPointFunction::point),
+            DistanceMetric.CODEC.fieldOf("metric").forGetter(DistanceToPointFunction::metric)
+         )
+         .apply(i, DistanceToPointFunction::new)
    );
 
    @Override
@@ -31,9 +31,8 @@ public record DistanceToPointFunction(Vec3i point, DistanceMetric metric) implem
       return Interval.of(0.0F, Float.POSITIVE_INFINITY);
    }
 
-   @DensityFunction.Axes
    @Override
-   public int domainAxes() {
+   public @DensityFunction.Axes int domainAxes() {
       return 7;
    }
 
@@ -47,7 +46,7 @@ public record DistanceToPointFunction(Vec3i point, DistanceMetric metric) implem
       return this;
    }
 
-   private static record Sampler(int x, int y, int z, DistanceMetric metric) implements DensitySampler {
+   private record Sampler(int x, int y, int z, DistanceMetric metric) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          int index = 0;
@@ -68,7 +67,7 @@ public record DistanceToPointFunction(Vec3i point, DistanceMetric metric) implem
 
       @Override
       public float sampleValue(final SamplerContext context, final int blockX, final int blockY, final int blockZ) {
-         return this.metric.compute((float)(this.x - blockX), (float)(this.y - blockY), (float)(this.z - blockZ));
+         return this.metric.compute(this.x - blockX, this.y - blockY, this.z - blockZ);
       }
    }
 }

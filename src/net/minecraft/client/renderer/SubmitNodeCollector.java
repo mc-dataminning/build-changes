@@ -6,7 +6,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 public interface SubmitNodeCollector extends OrderedSubmitNodeCollector {
    OrderedSubmitNodeCollector order(int order);
 
-   public interface CustomGeometryRenderer {
+   interface CustomGeometryRenderer {
       void render(PoseStack.Pose pose, VertexConsumer buffer);
    }
 }

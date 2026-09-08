@@ -15,12 +15,12 @@ public enum JsonRPCErrors {
    private final int errorCode;
    private final String message;
 
-   private JsonRPCErrors(final int errorCode, final String message) {
+   JsonRPCErrors(final int errorCode, final String message) {
       this.errorCode = errorCode;
       this.message = message;
    }
 
-   public JsonObject createWithUnknownId(@Nullable final String data) {
+   public JsonObject createWithUnknownId(final @Nullable String data) {
       return JsonRPCUtils.createError(JsonNull.INSTANCE, this.message, this.errorCode, data);
    }
 

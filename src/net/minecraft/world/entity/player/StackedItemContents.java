@@ -28,17 +28,17 @@ public class StackedItemContents {
       }
    }
 
-   public boolean canCraft(final Recipe<?> recipe, @Nullable final StackedContents.Output<Holder<Item>> output) {
+   public boolean canCraft(final Recipe<?> recipe, final StackedContents.@Nullable Output<Holder<Item>> output) {
       return this.canCraft(recipe, 1, output);
    }
 
-   public boolean canCraft(final Recipe<?> recipe, final int amount, @Nullable final StackedContents.Output<Holder<Item>> output) {
+   public boolean canCraft(final Recipe<?> recipe, final int amount, final StackedContents.@Nullable Output<Holder<Item>> output) {
       PlacementInfo placementInfo = recipe.placementInfo();
       return placementInfo.isImpossibleToPlace() ? false : this.canCraft(placementInfo.ingredients(), amount, output);
    }
 
    public boolean canCraft(
-      final List<? extends StackedContents.IngredientInfo<Holder<Item>>> contents, @Nullable final StackedContents.Output<Holder<Item>> output
+      final List<? extends StackedContents.IngredientInfo<Holder<Item>>> contents, final StackedContents.@Nullable Output<Holder<Item>> output
    ) {
       return this.canCraft(contents, 1, output);
    }
@@ -46,16 +46,16 @@ public class StackedItemContents {
    private boolean canCraft(
       final List<? extends StackedContents.IngredientInfo<Holder<Item>>> contents,
       final int amount,
-      @Nullable final StackedContents.Output<Holder<Item>> output
+      final StackedContents.@Nullable Output<Holder<Item>> output
    ) {
       return this.raw.tryPick(contents, amount, output);
    }
 
-   public int getBiggestCraftableStack(final Recipe<?> recipe, @Nullable final StackedContents.Output<Holder<Item>> output) {
+   public int getBiggestCraftableStack(final Recipe<?> recipe, final StackedContents.@Nullable Output<Holder<Item>> output) {
       return this.getBiggestCraftableStack(recipe, Integer.MAX_VALUE, output);
    }
 
-   public int getBiggestCraftableStack(final Recipe<?> recipe, final int maxSize, @Nullable final StackedContents.Output<Holder<Item>> output) {
+   public int getBiggestCraftableStack(final Recipe<?> recipe, final int maxSize, final StackedContents.@Nullable Output<Holder<Item>> output) {
       return this.raw.tryPickAll(recipe.placementInfo().ingredients(), maxSize, output);
    }
 

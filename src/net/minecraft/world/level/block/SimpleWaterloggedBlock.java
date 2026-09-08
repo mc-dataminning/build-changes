@@ -17,7 +17,7 @@ import org.jspecify.annotations.Nullable;
 
 public interface SimpleWaterloggedBlock extends BucketPickup, LiquidBlockContainer {
    @Override
-   default boolean canPlaceLiquid(@Nullable final LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
+   default boolean canPlaceLiquid(final @Nullable LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
       return type == Fluids.WATER;
    }
 
@@ -25,7 +25,7 @@ public interface SimpleWaterloggedBlock extends BucketPickup, LiquidBlockContain
    default boolean placeLiquid(final LevelAccessor level, final BlockPos pos, final BlockState state, final FluidState fluidState) {
       if (!state.getValue(BlockStateProperties.WATERLOGGED) && fluidState.is(Fluids.WATER)) {
          if (!level.isClientSide()) {
-            level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.WATERLOGGED, Boolean.valueOf(true)));
+            level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.WATERLOGGED, true));
             level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));
          }
 
@@ -36,9 +36,9 @@ public interface SimpleWaterloggedBlock extends BucketPickup, LiquidBlockContain
    }
 
    @Override
-   default ItemStack pickupBlock(@Nullable final LivingEntity user, final LevelAccessor level, final BlockPos pos, final BlockState state) {
+   default ItemStack pickupBlock(final @Nullable LivingEntity user, final LevelAccessor level, final BlockPos pos, final BlockState state) {
       if (state.getValue(BlockStateProperties.WATERLOGGED)) {
-         level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.WATERLOGGED, Boolean.valueOf(false)));
+         level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.WATERLOGGED, false));
          if (!state.canSurvive(level, pos)) {
             level.destroyBlock(pos, true);
          }

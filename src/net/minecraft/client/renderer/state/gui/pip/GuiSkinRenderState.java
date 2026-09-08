@@ -30,7 +30,7 @@ public record GuiSkinRenderState(
       final int x1,
       final int y1,
       final float scale,
-      @Nullable final ScreenRectangle scissorArea
+      final @Nullable ScreenRectangle scissorArea
    ) {
       this(
          playerModel,

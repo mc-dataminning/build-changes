@@ -66,7 +66,7 @@ public class ServerboundPlayerActionPacket implements Packet<ServerGamePacketLis
       return this.sequence;
    }
 
-   public static enum Action {
+   public enum Action {
       START_DESTROY_BLOCK,
       CHANGE_DESTROY_DIRECTION,
       ABORT_DESTROY_BLOCK,

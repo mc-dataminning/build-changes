@@ -39,12 +39,12 @@ public class QuadrupedModel<T extends LivingEntityRenderState> extends EntityMod
       MeshDefinition mesh = new MeshDefinition();
       PartDefinition root = mesh.getRoot();
       root.addOrReplaceChild(
-         "head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, g), PartPose.offset(0.0F, (float)(18 - legSize), -6.0F)
+         "head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, g), PartPose.offset(0.0F, 18 - legSize, -6.0F)
       );
       root.addOrReplaceChild(
          "body",
          CubeListBuilder.create().texOffs(28, 8).addBox(-5.0F, -10.0F, -7.0F, 10.0F, 16.0F, 8.0F, g),
-         PartPose.offsetAndRotation(0.0F, (float)(17 - legSize), 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+         PartPose.offsetAndRotation(0.0F, 17 - legSize, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
       );
       createLegs(root, mirrorLeftLeg, mirrorRightLeg, legSize, g);
       return mesh;
@@ -53,12 +53,12 @@ public class QuadrupedModel<T extends LivingEntityRenderState> extends EntityMod
    public static void createLegs(
       final PartDefinition root, final boolean mirrorLeftLeg, final boolean mirrorRightLeg, final int legSize, final CubeDeformation g
    ) {
-      CubeListBuilder rightLeg = CubeListBuilder.create().mirror(mirrorRightLeg).texOffs(0, 16).addBox(-2.0F, 0.0F, -2.0F, 4.0F, (float)legSize, 4.0F, g);
-      CubeListBuilder leftLeg = CubeListBuilder.create().mirror(mirrorLeftLeg).texOffs(0, 16).addBox(-2.0F, 0.0F, -2.0F, 4.0F, (float)legSize, 4.0F, g);
-      root.addOrReplaceChild("right_hind_leg", rightLeg, PartPose.offset(-3.0F, (float)(24 - legSize), 7.0F));
-      root.addOrReplaceChild("left_hind_leg", leftLeg, PartPose.offset(3.0F, (float)(24 - legSize), 7.0F));
-      root.addOrReplaceChild("right_front_leg", rightLeg, PartPose.offset(-3.0F, (float)(24 - legSize), -5.0F));
-      root.addOrReplaceChild("left_front_leg", leftLeg, PartPose.offset(3.0F, (float)(24 - legSize), -5.0F));
+      CubeListBuilder rightLeg = CubeListBuilder.create().mirror(mirrorRightLeg).texOffs(0, 16).addBox(-2.0F, 0.0F, -2.0F, 4.0F, legSize, 4.0F, g);
+      CubeListBuilder leftLeg = CubeListBuilder.create().mirror(mirrorLeftLeg).texOffs(0, 16).addBox(-2.0F, 0.0F, -2.0F, 4.0F, legSize, 4.0F, g);
+      root.addOrReplaceChild("right_hind_leg", rightLeg, PartPose.offset(-3.0F, 24 - legSize, 7.0F));
+      root.addOrReplaceChild("left_hind_leg", leftLeg, PartPose.offset(3.0F, 24 - legSize, 7.0F));
+      root.addOrReplaceChild("right_front_leg", rightLeg, PartPose.offset(-3.0F, 24 - legSize, -5.0F));
+      root.addOrReplaceChild("left_front_leg", leftLeg, PartPose.offset(3.0F, 24 - legSize, -5.0F));
    }
 
    public void setupAnim(final T state) {
@@ -67,9 +67,9 @@ public class QuadrupedModel<T extends LivingEntityRenderState> extends EntityMod
       this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
       float animationPos = state.walkAnimationPos;
       float animationSpeed = state.walkAnimationSpeed;
-      this.rightHindLeg.xRot = Mth.cos((double)(animationPos * 0.6662F)) * 1.4F * animationSpeed;
-      this.leftHindLeg.xRot = Mth.cos((double)(animationPos * 0.6662F + (float) Math.PI)) * 1.4F * animationSpeed;
-      this.rightFrontLeg.xRot = Mth.cos((double)(animationPos * 0.6662F + (float) Math.PI)) * 1.4F * animationSpeed;
-      this.leftFrontLeg.xRot = Mth.cos((double)(animationPos * 0.6662F)) * 1.4F * animationSpeed;
+      this.rightHindLeg.xRot = Mth.cos(animationPos * 0.6662F) * 1.4F * animationSpeed;
+      this.leftHindLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * 1.4F * animationSpeed;
+      this.rightFrontLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * 1.4F * animationSpeed;
+      this.leftFrontLeg.xRot = Mth.cos(animationPos * 0.6662F) * 1.4F * animationSpeed;
    }
 }

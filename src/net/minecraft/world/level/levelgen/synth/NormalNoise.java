@@ -62,10 +62,10 @@ public final class NormalNoise {
    private static List<NormalNoise.OctaveInfo> buildOctaves(
       final int baseOctave, final double baseAmplitude, final int octaveCount, final boolean normalize, final DoubleList amplitudeModifiers
    ) {
-      double frequency = Math.pow(2.0, (double)baseOctave);
+      double frequency = Math.pow(2.0, baseOctave);
       double amplitude = baseAmplitude;
       if (normalize) {
-         amplitude = baseAmplitude * (Math.pow(0.5, (double)(-(octaveCount - 1))) / (Math.pow(0.5, (double)(-octaveCount)) - 1.0));
+         amplitude *= Math.pow(0.5, -(octaveCount - 1)) / (Math.pow(0.5, -octaveCount) - 1.0);
       }
 
       com.google.common.collect.ImmutableList.Builder<NormalNoise.OctaveInfo> octaves = ImmutableList.builderWithExpectedSize(octaveCount);
@@ -92,11 +92,11 @@ public final class NormalNoise {
       double inputDeviation = estimateDeviation(octaves);
       if (inputDeviation == 0.0) {
          return 0.0;
-      } else {
-         double inputSumDeviation = inputDeviation * Math.sqrt(2.0);
-         double targetDeviation = targetAmplitude * 0.3333333333333333;
-         return targetDeviation / inputSumDeviation;
       }
+
+      double inputSumDeviation = inputDeviation * Math.sqrt(2.0);
+      double targetDeviation = targetAmplitude * 0.3333333333333333;
+      return targetDeviation / inputSumDeviation;
    }
 
    private static double estimateDeviation(final List<NormalNoise.OctaveInfo> octaves) {
@@ -117,21 +117,21 @@ public final class NormalNoise {
    public static NormalNoise createParity(final int firstOctave, final DoubleList amplitudes) {
       if (amplitudes.isEmpty()) {
          throw new IllegalArgumentException("Need at least 1 amplitude");
-      } else {
-         NormalNoise.Builder parameters = builder();
-         parameters.setBaseOctave(firstOctave);
-         parameters.setOctaveCount(amplitudes.size());
-         parameters.setBaseAmplitude(computeParityBaseAmplitude(parameters.baseOctave, amplitudes));
-
-         for (int i = 0; i < amplitudes.size(); i++) {
-            double modifier = amplitudes.getDouble(i);
-            if (modifier != 1.0) {
-               parameters.setAmplitudeModifier(i, modifier);
-            }
-         }
-
-         return parameters.build();
       }
+
+      NormalNoise.Builder parameters = builder();
+      parameters.setBaseOctave(firstOctave);
+      parameters.setOctaveCount(amplitudes.size());
+      parameters.setBaseAmplitude(computeParityBaseAmplitude(parameters.baseOctave, amplitudes));
+
+      for (int i = 0; i < amplitudes.size(); i++) {
+         double modifier = amplitudes.getDouble(i);
+         if (modifier != 1.0) {
+            parameters.setAmplitudeModifier(i, modifier);
+         }
+      }
+
+      return parameters.build();
    }
 
    public static NormalNoise createParity(final int firstOctave, final double... amplitudes) {
@@ -144,10 +144,10 @@ public final class NormalNoise {
       double newNormalizationFactor = computeNormalizationFactor(targetAmplitude, octaves);
       if (newNormalizationFactor == 0.0) {
          return 1.0;
-      } else {
-         double oldNormalizationFactor = computeParityNormalizationFactor(1.0, amplitudes.size(), amplitudes);
-         return oldNormalizationFactor / newNormalizationFactor;
       }
+
+      double oldNormalizationFactor = computeParityNormalizationFactor(1.0, amplitudes.size(), amplitudes);
+      return oldNormalizationFactor / newNormalizationFactor;
    }
 
    private static double computeParityNormalizationFactor(final double baseAmplitude, final int octaveCount, final DoubleList amplitudeModifiers) {
@@ -166,7 +166,7 @@ public final class NormalNoise {
    }
 
    private static double parityExpectedDeviation(final int octaveSpan) {
-      return 0.1 * (1.0 + 1.0 / (double)(octaveSpan + 1));
+      return 0.1 * (1.0 + 1.0 / (octaveSpan + 1));
    }
 
    public Noise create(final RandomSource random) {
@@ -205,15 +205,7 @@ public final class NormalNoise {
 
    @Override
    public boolean equals(final Object obj) {
-      if (obj == this) {
-         return true;
-      } else {
-         if (obj instanceof NormalNoise noise && this.parameters.equals(noise.parameters)) {
-            return true;
-         }
-
-         return false;
-      }
+      return obj == this ? true : obj instanceof NormalNoise noise && this.parameters.equals(noise.parameters);
    }
 
    @Override
@@ -286,10 +278,10 @@ public final class NormalNoise {
       public NormalNoise.Builder setOctaveCount(final int octaveCount) {
          if (!this.amplitudeModifiers.isEmpty()) {
             throw new IllegalArgumentException("Cannot set octave count after setting amplitude modifier");
-         } else {
-            this.octaveCount = octaveCount;
-            return this;
          }
+
+         this.octaveCount = octaveCount;
+         return this;
       }
 
       public NormalNoise.Builder setNormalize(final boolean normalize) {
@@ -328,7 +320,7 @@ public final class NormalNoise {
       }
    }
 
-   public static enum Normalization {
+   public enum Normalization {
       DISABLED,
       ENABLED,
       @Deprecated
@@ -348,7 +340,7 @@ public final class NormalNoise {
          });
    }
 
-   private static record OctaveInfo(int octaveIndex, double frequency, double amplitude) {
+   private record OctaveInfo(int octaveIndex, double frequency, double amplitude) {
       public String seed() {
          return "octave_" + this.octaveIndex;
       }
@@ -358,21 +350,19 @@ public final class NormalNoise {
       }
    }
 
-   private static record Parameters(double baseAmplitude, int baseOctave, int octaveCount, NormalNoise.Normalization normalize, DoubleList amplitudeModifiers) {
+   private record Parameters(double baseAmplitude, int baseOctave, int octaveCount, NormalNoise.Normalization normalize, DoubleList amplitudeModifiers) {
       private static final Codec<DoubleList> AMPLITUDE_MODIFIERS_CODEC = Codec.doubleRange(0.0, 1000000.0)
          .listOf(0, 32)
          .xmap(DoubleArrayList::new, Function.identity());
       public static final Codec<NormalNoise.Parameters> CODEC = RecordCodecBuilder.create(
             i -> i.group(
-                     Codec.doubleRange(1.0E-5F, 1000000.0).optionalFieldOf("base_amplitude", 1.0).forGetter(NormalNoise.Parameters::baseAmplitude),
-                     Codec.intRange(-32, 32).fieldOf("base_octave").forGetter(NormalNoise.Parameters::baseOctave),
-                     Codec.intRange(1, 32).optionalFieldOf("octave_count", 1).forGetter(NormalNoise.Parameters::octaveCount),
-                     NormalNoise.Normalization.CODEC
-                        .optionalFieldOf("normalize", NormalNoise.Normalization.ENABLED)
-                        .forGetter(NormalNoise.Parameters::normalize),
-                     AMPLITUDE_MODIFIERS_CODEC.optionalFieldOf("amplitude_modifiers", DoubleList.of()).forGetter(NormalNoise.Parameters::amplitudeModifiers)
-                  )
-                  .apply(i, NormalNoise.Parameters::new)
+                  Codec.doubleRange(1.0E-5F, 1000000.0).optionalFieldOf("base_amplitude", 1.0).forGetter(NormalNoise.Parameters::baseAmplitude),
+                  Codec.intRange(-32, 32).fieldOf("base_octave").forGetter(NormalNoise.Parameters::baseOctave),
+                  Codec.intRange(1, 32).optionalFieldOf("octave_count", 1).forGetter(NormalNoise.Parameters::octaveCount),
+                  NormalNoise.Normalization.CODEC.optionalFieldOf("normalize", NormalNoise.Normalization.ENABLED).forGetter(NormalNoise.Parameters::normalize),
+                  AMPLITUDE_MODIFIERS_CODEC.optionalFieldOf("amplitude_modifiers", DoubleList.of()).forGetter(NormalNoise.Parameters::amplitudeModifiers)
+               )
+               .apply(i, NormalNoise.Parameters::new)
          )
          .validate(NormalNoise.Parameters::validate);
 

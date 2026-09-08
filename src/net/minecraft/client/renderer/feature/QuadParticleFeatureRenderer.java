@@ -24,8 +24,7 @@ import org.jspecify.annotations.Nullable;
 public class QuadParticleFeatureRenderer implements FeatureRenderer<QuadParticleFeatureRenderer.Submit> {
    public static final FeatureRendererType<QuadParticleFeatureRenderer.Submit> TYPE = FeatureRendererType.create("Particle");
    private final List<QuadParticleFeatureRenderer.PreparedGroup> groups = new ArrayList<>();
-   @Nullable
-   private GpuBufferSlice dynamicTransforms;
+   private @Nullable GpuBufferSlice dynamicTransforms;
 
    @Override
    public void prepareGroup(final FeatureFrameContext context, final List<QuadParticleFeatureRenderer.Submit> submits, final boolean strictlyOrdered) {
@@ -63,7 +62,7 @@ public class QuadParticleFeatureRenderer implements FeatureRenderer<QuadParticle
    @Override
    public void executeGroup(
       final FeatureFrameContext context,
-      @Nullable final OitStage stage,
+      final @Nullable OitStage stage,
       final RenderPass renderPass,
       final int groupIndex,
       final List<QuadParticleFeatureRenderer.Submit> submits,
@@ -79,7 +78,7 @@ public class QuadParticleFeatureRenderer implements FeatureRenderer<QuadParticle
    }
 
    private static void drawLayers(
-      final StagedVertexBuffer stagedBuffer, final QuadParticleFeatureRenderer.PreparedGroup group, final RenderPass renderPass, @Nullable final OitStage stage
+      final StagedVertexBuffer stagedBuffer, final QuadParticleFeatureRenderer.PreparedGroup group, final RenderPass renderPass, final @Nullable OitStage stage
    ) {
       for (Entry<SingleQuadParticle.Layer, StagedVertexBuffer.Draw> entry : group.layers.entrySet()) {
          StagedVertexBuffer.ExecuteInfo executeInfo = stagedBuffer.getExecuteInfo(entry.getValue());
@@ -108,12 +107,12 @@ public class QuadParticleFeatureRenderer implements FeatureRenderer<QuadParticle
       this.dynamicTransforms = null;
    }
 
-   private static record PreparedGroup(
+   private record PreparedGroup(
       Map<SingleQuadParticle.Layer, StagedVertexBuffer.Draw> layers, Map<SingleQuadParticle.Layer, AbstractTexture> textures, boolean translucent
    ) {
    }
 
-   public static record Submit(QuadParticleRenderState particles, boolean translucent) implements SubmitNode {
+   public record Submit(QuadParticleRenderState particles, boolean translucent) implements SubmitNode {
       @Override
       public FeatureRendererType<QuadParticleFeatureRenderer.Submit> featureType() {
          return QuadParticleFeatureRenderer.TYPE;

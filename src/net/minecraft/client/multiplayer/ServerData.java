@@ -23,15 +23,13 @@ public class ServerData {
    public String ip;
    public Component status;
    public Component motd;
-   @Nullable
-   public ServerStatus.Players players;
+   public ServerStatus.@Nullable Players players;
    public long ping;
    public int protocol = SharedConstants.getCurrentVersion().protocolVersion();
    public Component version = Component.literal(SharedConstants.getCurrentVersion().name());
    public List<Component> playerList = Collections.emptyList();
    private ServerData.ServerPackStatus packStatus = ServerData.ServerPackStatus.PROMPT;
-   @Nullable
-   private byte[] iconBytes;
+   private byte @Nullable [] iconBytes;
    private ServerData.Type type;
    private int acceptedCodeOfConduct;
    private ServerData.State state = ServerData.State.INITIAL;
@@ -71,12 +69,11 @@ public class ServerData {
       return server;
    }
 
-   @Nullable
-   public byte[] getIconBytes() {
+   public byte @Nullable [] getIconBytes() {
       return this.iconBytes;
    }
 
-   public void setIconBytes(@Nullable final byte[] iconBytes) {
+   public void setIconBytes(final byte @Nullable [] iconBytes) {
       this.iconBytes = iconBytes;
    }
 
@@ -124,23 +121,22 @@ public class ServerData {
       this.state = state;
    }
 
-   @Nullable
-   public static byte[] validateIcon(@Nullable final byte[] bytes) {
+   public static byte @Nullable [] validateIcon(final byte @Nullable [] bytes) {
       if (bytes != null) {
          try {
             PngInfo iconInfo = PngInfo.fromBytes(bytes);
             if (iconInfo.width() <= 1024 && iconInfo.height() <= 1024) {
                return bytes;
             }
-         } catch (IOException var2) {
-            LOGGER.warn("Failed to decode server icon", var2);
+         } catch (IOException e) {
+            LOGGER.warn("Failed to decode server icon", e);
          }
       }
 
       return null;
    }
 
-   public static enum ServerPackStatus {
+   public enum ServerPackStatus {
       ENABLED("enabled"),
       DISABLED("disabled"),
       PROMPT("prompt");
@@ -156,7 +152,7 @@ public class ServerData {
          });
       private final Component name;
 
-      private ServerPackStatus(final String name) {
+      ServerPackStatus(final String name) {
          this.name = Component.translatable("manageServer.resourcePack." + name);
       }
 
@@ -165,7 +161,7 @@ public class ServerData {
       }
    }
 
-   public static enum State {
+   public enum State {
       INITIAL,
       PINGING,
       UNREACHABLE,
@@ -173,7 +169,7 @@ public class ServerData {
       SUCCESSFUL;
    }
 
-   public static enum Type {
+   public enum Type {
       LAN,
       REALM,
       OTHER;

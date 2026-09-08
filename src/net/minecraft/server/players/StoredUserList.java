@@ -45,21 +45,20 @@ public abstract class StoredUserList<K, V extends StoredUserEntry<K>> {
       V previous = this.map.get(keyForUser);
       if (infos.equals(previous)) {
          return false;
-      } else {
-         this.map.put(keyForUser, infos);
-
-         try {
-            this.save();
-         } catch (IOException var5) {
-            LOGGER.warn("Could not save the list after adding a user.", var5);
-         }
-
-         return true;
       }
+
+      this.map.put(keyForUser, infos);
+
+      try {
+         this.save();
+      } catch (IOException e) {
+         LOGGER.warn("Could not save the list after adding a user.", e);
+      }
+
+      return true;
    }
 
-   @Nullable
-   public V get(final K user) {
+   public @Nullable V get(final K user) {
       this.removeExpired();
       return this.map.get(this.getKeyForUser(user));
    }
@@ -68,15 +67,15 @@ public abstract class StoredUserList<K, V extends StoredUserEntry<K>> {
       V removed = this.map.remove(this.getKeyForUser(user));
       if (removed == null) {
          return false;
-      } else {
-         try {
-            this.save();
-         } catch (IOException var4) {
-            LOGGER.warn("Could not save the list after removing a user.", var4);
-         }
-
-         return true;
       }
+
+      try {
+         this.save();
+      } catch (IOException e) {
+         LOGGER.warn("Could not save the list after removing a user.", e);
+      }
+
+      return true;
    }
 
    public boolean remove(final StoredUserEntry<K> infos) {
@@ -88,8 +87,8 @@ public abstract class StoredUserList<K, V extends StoredUserEntry<K>> {
 
       try {
          this.save();
-      } catch (IOException var2) {
-         LOGGER.warn("Could not save the list after removing a user.", var2);
+      } catch (IOException e) {
+         LOGGER.warn("Could not save the list after removing a user.", e);
       }
    }
 

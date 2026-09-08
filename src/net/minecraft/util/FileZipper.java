@@ -26,8 +26,8 @@ public class FileZipper implements Closeable {
 
       try {
          this.fs = Util.ZIP_FILE_SYSTEM_PROVIDER.newFileSystem(this.tempFile, ImmutableMap.of("create", "true"));
-      } catch (IOException var3) {
-         throw new UncheckedIOException(var3);
+      } catch (IOException e) {
+         throw new UncheckedIOException(e);
       }
    }
 
@@ -37,8 +37,8 @@ public class FileZipper implements Closeable {
          Path path = root.resolve(destinationRelativePath.toString());
          Files.createDirectories(path.getParent());
          Files.write(path, content.getBytes(StandardCharsets.UTF_8));
-      } catch (IOException var5) {
-         throw new UncheckedIOException(var5);
+      } catch (IOException e) {
+         throw new UncheckedIOException(e);
       }
    }
 
@@ -48,8 +48,8 @@ public class FileZipper implements Closeable {
          Path path = root.resolve(destinationRelativePath.toString());
          Files.createDirectories(path.getParent());
          Files.copy(file.toPath(), path);
-      } catch (IOException var5) {
-         throw new UncheckedIOException(var5);
+      } catch (IOException e) {
+         throw new UncheckedIOException(e);
       }
    }
 
@@ -68,8 +68,8 @@ public class FileZipper implements Closeable {
                }
             }
          }
-      } catch (IOException var9) {
-         throw new UncheckedIOException(var9);
+      } catch (IOException e) {
+         throw new UncheckedIOException(e);
       }
    }
 
@@ -79,8 +79,8 @@ public class FileZipper implements Closeable {
          this.fs.close();
          Files.move(this.tempFile, this.outputFile);
          LOGGER.info("Compressed to {}", this.outputFile);
-      } catch (IOException var2) {
-         throw new UncheckedIOException(var2);
+      } catch (IOException e) {
+         throw new UncheckedIOException(e);
       }
    }
 }

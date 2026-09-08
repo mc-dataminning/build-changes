@@ -85,8 +85,7 @@ public class BeehiveBlockEntity extends BlockEntity {
    private static final int MIN_OCCUPATION_TICKS_NECTAR = 2400;
    public static final int MIN_OCCUPATION_TICKS_NECTARLESS = 600;
    private final List<BeehiveBlockEntity.BeeData> stored = Lists.newArrayList();
-   @Nullable
-   private BlockPos savedFlowerPos;
+   private @Nullable BlockPos savedFlowerPos;
 
    public BeehiveBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
       super(BlockEntityTypes.BEEHIVE, worldPosition, blockState);
@@ -118,18 +117,15 @@ public class BeehiveBlockEntity extends BlockEntity {
       return this.stored.size() == 3;
    }
 
-   public void emptyAllLivingFromHive(@Nullable final Player player, final BlockState state, final BeehiveBlockEntity.BeeReleaseStatus releaseReason) {
+   public void emptyAllLivingFromHive(final @Nullable Player player, final BlockState state, final BeehiveBlockEntity.BeeReleaseStatus releaseReason) {
       List<Entity> releasedFromHive = this.releaseAllOccupants(state, releaseReason);
       if (player != null) {
          for (Entity released : releasedFromHive) {
-            if (released instanceof Bee) {
-               Bee bee = (Bee)released;
-               if (player.position().distanceToSqr(released.position()) <= 16.0) {
-                  if (!this.isSedated()) {
-                     bee.setTarget(player);
-                  } else {
-                     bee.setStayOutOfHiveCountdown(400);
-                  }
+            if (released instanceof Bee bee && player.position().distanceToSqr(released.position()) <= 16.0) {
+               if (!this.isSedated()) {
+                  bee.setTarget(player);
+               } else {
+                  bee.setStayOutOfHiveCountdown(400);
                }
             }
          }
@@ -175,10 +171,7 @@ public class BeehiveBlockEntity extends BlockEntity {
             }
 
             BlockPos blockPos = this.getBlockPos();
-            this.level
-               .playSound(
-                  null, (double)blockPos.getX(), (double)blockPos.getY(), (double)blockPos.getZ(), SoundEvents.BEEHIVE_ENTER, SoundSource.BLOCKS, 1.0F, 1.0F
-               );
+            this.level.playSound(null, blockPos.getX(), blockPos.getY(), blockPos.getZ(), SoundEvents.BEEHIVE_ENTER, SoundSource.BLOCKS, 1.0F, 1.0F);
             this.level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(bee, this.getBlockState()));
          }
 
@@ -196,62 +189,62 @@ public class BeehiveBlockEntity extends BlockEntity {
       final BlockPos blockPos,
       final BlockState state,
       final BeehiveBlockEntity.Occupant beeData,
-      @Nullable final List<Entity> spawned,
+      final @Nullable List<Entity> spawned,
       final BeehiveBlockEntity.BeeReleaseStatus releaseStatus,
-      @Nullable final BlockPos savedFlowerPos
+      final @Nullable BlockPos savedFlowerPos
    ) {
       if (level.environmentAttributes().getValue(EnvironmentAttributes.BEES_STAY_IN_HIVE, blockPos)
          && releaseStatus != BeehiveBlockEntity.BeeReleaseStatus.EMERGENCY) {
          return false;
-      } else {
-         Direction facing = state.getValue(BeehiveBlock.FACING);
-         BlockPos facingPos = blockPos.relative(facing);
-         boolean frontBlocked = !level.getBlockState(facingPos).getCollisionShape(level, facingPos).isEmpty();
-         if (frontBlocked && releaseStatus != BeehiveBlockEntity.BeeReleaseStatus.EMERGENCY) {
-            return false;
-         } else {
-            Entity entity = beeData.createEntity(level, blockPos);
-            if (entity != null) {
-               if (entity instanceof Bee bee) {
-                  RandomSource random = level.getRandom();
-                  if (savedFlowerPos != null && !bee.hasSavedFlowerPos() && random.nextFloat() < 0.9F) {
-                     bee.setSavedFlowerPos(savedFlowerPos);
-                  }
+      }
 
-                  if (releaseStatus == BeehiveBlockEntity.BeeReleaseStatus.HONEY_DELIVERED) {
-                     bee.dropOffNectar();
-                     if (state.is(BlockTags.BEEHIVES, s -> s.hasProperty(BeehiveBlock.HONEY_LEVEL))) {
-                        int honeyLevel = getHoneyLevel(state);
-                        if (honeyLevel < 5) {
-                           int levelIncrease = random.nextInt(100) == 0 ? 2 : 1;
-                           if (honeyLevel + levelIncrease > 5) {
-                              levelIncrease--;
-                           }
+      Direction facing = state.getValue(BeehiveBlock.FACING);
+      BlockPos facingPos = blockPos.relative(facing);
+      boolean frontBlocked = !level.getBlockState(facingPos).getCollisionShape(level, facingPos).isEmpty();
+      if (frontBlocked && releaseStatus != BeehiveBlockEntity.BeeReleaseStatus.EMERGENCY) {
+         return false;
+      }
 
-                           level.setBlockAndUpdate(blockPos, state.setValue(BeehiveBlock.HONEY_LEVEL, Integer.valueOf(honeyLevel + levelIncrease)));
-                        }
-                     }
-                  }
-
-                  if (spawned != null) {
-                     spawned.add(bee);
-                  }
-
-                  float bbWidth = entity.getBbWidth();
-                  double delta = frontBlocked ? 0.0 : 0.55 + (double)(bbWidth / 2.0F);
-                  double spawnX = (double)blockPos.getX() + 0.5 + delta * (double)facing.getStepX();
-                  double spawnY = (double)blockPos.getY() + 0.5 - (double)(entity.getBbHeight() / 2.0F);
-                  double spawnZ = (double)blockPos.getZ() + 0.5 + delta * (double)facing.getStepZ();
-                  entity.snapTo(spawnX, spawnY, spawnZ, entity.getYRot(), entity.getXRot());
-               }
-
-               level.playSound(null, blockPos, SoundEvents.BEEHIVE_EXIT, SoundSource.BLOCKS, 1.0F, 1.0F);
-               level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(entity, level.getBlockState(blockPos)));
-               return level.addFreshEntity(entity);
-            } else {
-               return false;
+      Entity entity = beeData.createEntity(level, blockPos);
+      if (entity != null) {
+         if (entity instanceof Bee bee) {
+            RandomSource random = level.getRandom();
+            if (savedFlowerPos != null && !bee.hasSavedFlowerPos() && random.nextFloat() < 0.9F) {
+               bee.setSavedFlowerPos(savedFlowerPos);
             }
+
+            if (releaseStatus == BeehiveBlockEntity.BeeReleaseStatus.HONEY_DELIVERED) {
+               bee.dropOffNectar();
+               if (state.is(BlockTags.BEEHIVES, s -> s.hasProperty(BeehiveBlock.HONEY_LEVEL))) {
+                  int honeyLevel = getHoneyLevel(state);
+                  if (honeyLevel < 5) {
+                     int levelIncrease = random.nextInt(100) == 0 ? 2 : 1;
+                     if (honeyLevel + levelIncrease > 5) {
+                        levelIncrease--;
+                     }
+
+                     level.setBlockAndUpdate(blockPos, state.setValue(BeehiveBlock.HONEY_LEVEL, honeyLevel + levelIncrease));
+                  }
+               }
+            }
+
+            if (spawned != null) {
+               spawned.add(bee);
+            }
+
+            float bbWidth = entity.getBbWidth();
+            double delta = frontBlocked ? 0.0 : 0.55 + bbWidth / 2.0F;
+            double spawnX = blockPos.getX() + 0.5 + delta * facing.getStepX();
+            double spawnY = blockPos.getY() + 0.5 - entity.getBbHeight() / 2.0F;
+            double spawnZ = blockPos.getZ() + 0.5 + delta * facing.getStepZ();
+            entity.snapTo(spawnX, spawnY, spawnZ, entity.getYRot(), entity.getXRot());
          }
+
+         level.playSound(null, blockPos, SoundEvents.BEEHIVE_EXIT, SoundSource.BLOCKS, 1.0F, 1.0F);
+         level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(entity, level.getBlockState(blockPos)));
+         return level.addFreshEntity(entity);
+      } else {
+         return false;
       }
    }
 
@@ -260,7 +253,7 @@ public class BeehiveBlockEntity extends BlockEntity {
    }
 
    private static void tickOccupants(
-      final Level level, final BlockPos pos, final BlockState state, final List<BeehiveBlockEntity.BeeData> stored, @Nullable final BlockPos savedFlowerPos
+      final Level level, final BlockPos pos, final BlockState state, final List<BeehiveBlockEntity.BeeData> stored, final @Nullable BlockPos savedFlowerPos
    ) {
       boolean changed = false;
       Iterator<BeehiveBlockEntity.BeeData> iterator = stored.iterator();
@@ -286,9 +279,9 @@ public class BeehiveBlockEntity extends BlockEntity {
    public static void serverTick(final Level level, final BlockPos blockPos, final BlockState state, final BeehiveBlockEntity entity) {
       tickOccupants(level, blockPos, state, entity.stored, entity.savedFlowerPos);
       if (!entity.stored.isEmpty() && level.getRandom().nextDouble() < 0.005) {
-         double x = (double)blockPos.getX() + 0.5;
-         double y = (double)blockPos.getY();
-         double z = (double)blockPos.getZ() + 0.5;
+         double x = blockPos.getX() + 0.5;
+         double y = blockPos.getY();
+         double z = blockPos.getZ() + 0.5;
          level.playSound(null, x, y, z, SoundEvents.BEEHIVE_WORK, SoundSource.BLOCKS, 1.0F, 1.0F);
       }
    }
@@ -359,20 +352,20 @@ public class BeehiveBlockEntity extends BlockEntity {
       }
    }
 
-   public static enum BeeReleaseStatus {
+   public enum BeeReleaseStatus {
       HONEY_DELIVERED,
       BEE_RELEASED,
       EMERGENCY;
    }
 
-   public static record Occupant(TypedEntityData<EntityType<?>> entityData, int ticksInHive, int minTicksInHive) {
+   public record Occupant(TypedEntityData<EntityType<?>> entityData, int ticksInHive, int minTicksInHive) {
       public static final Codec<BeehiveBlockEntity.Occupant> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  TypedEntityData.codec(EntityType.CODEC).fieldOf("entity_data").forGetter(BeehiveBlockEntity.Occupant::entityData),
-                  Codec.INT.fieldOf("ticks_in_hive").forGetter(BeehiveBlockEntity.Occupant::ticksInHive),
-                  Codec.INT.fieldOf("min_ticks_in_hive").forGetter(BeehiveBlockEntity.Occupant::minTicksInHive)
-               )
-               .apply(i, BeehiveBlockEntity.Occupant::new)
+               TypedEntityData.codec(EntityType.CODEC).fieldOf("entity_data").forGetter(BeehiveBlockEntity.Occupant::entityData),
+               Codec.INT.fieldOf("ticks_in_hive").forGetter(BeehiveBlockEntity.Occupant::ticksInHive),
+               Codec.INT.fieldOf("min_ticks_in_hive").forGetter(BeehiveBlockEntity.Occupant::minTicksInHive)
+            )
+            .apply(i, BeehiveBlockEntity.Occupant::new)
       );
       public static final Codec<List<BeehiveBlockEntity.Occupant>> LIST_CODEC = CODEC.listOf();
       public static final StreamCodec<RegistryFriendlyByteBuf, BeehiveBlockEntity.Occupant> STREAM_CODEC = StreamCodec.composite(
@@ -386,25 +379,21 @@ public class BeehiveBlockEntity extends BlockEntity {
       );
 
       public static BeehiveBlockEntity.Occupant of(final Entity entity) {
-         BeehiveBlockEntity.Occupant var5;
          try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(entity.problemPath(), BeehiveBlockEntity.LOGGER)) {
             TagValueOutput output = TagValueOutput.createWithContext(reporter, entity.registryAccess());
             entity.save(output);
             BeehiveBlockEntity.IGNORED_BEE_TAGS.forEach(output::discard);
             CompoundTag entityTag = output.buildResult();
             boolean hasNectar = entityTag.getBooleanOr("HasNectar", false);
-            var5 = new BeehiveBlockEntity.Occupant(TypedEntityData.of(entity.getType(), entityTag), 0, hasNectar ? 2400 : 600);
+            return new BeehiveBlockEntity.Occupant(TypedEntityData.of(entity.getType(), entityTag), 0, hasNectar ? 2400 : 600);
          }
-
-         return var5;
       }
 
       public static BeehiveBlockEntity.Occupant create(final int ticksInHive) {
          return new BeehiveBlockEntity.Occupant(TypedEntityData.of(EntityTypes.BEE, new CompoundTag()), ticksInHive, 600);
       }
 
-      @Nullable
-      public Entity createEntity(final Level level, final BlockPos hivePos) {
+      public @Nullable Entity createEntity(final Level level, final BlockPos hivePos) {
          CompoundTag entityTag = this.entityData.copyTagWithoutId();
          BeehiveBlockEntity.IGNORED_BEE_TAGS.forEach(entityTag::remove);
          Entity entity = EntityType.loadEntityRecursive(this.entityData.type(), entityTag, level, EntitySpawnReason.LOAD, EntityProcessor.NOP);

@@ -15,7 +15,7 @@ public enum TextureFilteringMethod {
    private final int id;
    private final Component caption;
 
-   private TextureFilteringMethod(final int id, final String key) {
+   TextureFilteringMethod(final int id, final String key) {
       this.id = id;
       this.caption = Component.translatable(key);
    }

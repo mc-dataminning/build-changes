@@ -22,9 +22,9 @@ public class ClientClockManager implements ClockManager {
       this.lastTickGameTime = gameTime;
 
       for (ClientClockManager.ClientClockInstance instance : this.clocks.values()) {
-         double newPartialTicks = (double)instance.partialTick + (double)gameTimeDelta * (double)instance.rate;
-         long fullTicks = (long)Mth.floor(newPartialTicks);
-         instance.partialTick = (float)(newPartialTicks - (double)fullTicks);
+         double newPartialTicks = instance.partialTick + (double)gameTimeDelta * instance.rate;
+         long fullTicks = Mth.floor(newPartialTicks);
+         instance.partialTick = (float)(newPartialTicks - fullTicks);
          instance.totalTicks += fullTicks;
       }
    }

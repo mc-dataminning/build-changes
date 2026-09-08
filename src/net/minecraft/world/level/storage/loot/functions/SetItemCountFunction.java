@@ -16,8 +16,8 @@ import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntPr
 public class SetItemCountFunction extends LootItemConditionalFunction {
    public static final MapCodec<SetItemCountFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
-            .and(i.group(ContextIntProviders.CODEC.fieldOf("count").forGetter(f -> f.count), Codec.BOOL.optionalFieldOf("add", false).forGetter(f -> f.add)))
-            .apply(i, SetItemCountFunction::new)
+         .and(i.group(ContextIntProviders.CODEC.fieldOf("count").forGetter(f -> f.count), Codec.BOOL.optionalFieldOf("add", false).forGetter(f -> f.add)))
+         .apply(i, SetItemCountFunction::new)
    );
    private final Holder<ContextIntProvider> count;
    private final boolean add;

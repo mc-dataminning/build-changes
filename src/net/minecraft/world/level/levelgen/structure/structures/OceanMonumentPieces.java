@@ -313,22 +313,22 @@ public class OceanMonumentPieces {
          ObjectListIterator var34 = roomDefs.iterator();
 
          while (var34.hasNext()) {
-            OceanMonumentPieces.RoomDefinition definitionx = (OceanMonumentPieces.RoomDefinition)var34.next();
+            OceanMonumentPieces.RoomDefinition definition = (OceanMonumentPieces.RoomDefinition)var34.next();
             int closeCount = 0;
             int attemptCount = 0;
 
             while (closeCount < 2 && attemptCount < 5) {
                attemptCount++;
                int f = random.nextInt(6);
-               if (definitionx.hasOpening[f]) {
+               if (definition.hasOpening[f]) {
                   int of = Direction.from3DDataValue(f).getOpposite().get3DDataValue();
-                  definitionx.hasOpening[f] = false;
-                  definitionx.connections[f].hasOpening[of] = false;
-                  if (definitionx.findSource(scanIndex++) && definitionx.connections[f].findSource(scanIndex++)) {
+                  definition.hasOpening[f] = false;
+                  definition.connections[f].hasOpening[of] = false;
+                  if (definition.findSource(scanIndex++) && definition.connections[f].findSource(scanIndex++)) {
                      closeCount++;
                   } else {
-                     definitionx.hasOpening[f] = true;
-                     definitionx.connections[f].hasOpening[of] = true;
+                     definition.hasOpening[f] = true;
+                     definition.connections[f].hasOpening[of] = true;
                   }
                }
             }
@@ -1574,7 +1574,7 @@ public class OceanMonumentPieces {
             ElderGuardian elder = EntityTypes.ELDER_GUARDIAN.create(level.getLevel(), EntitySpawnReason.STRUCTURE);
             if (elder != null) {
                elder.heal(elder.getMaxHealth());
-               elder.snapTo((double)pos.getX() + 0.5, (double)pos.getY(), (double)pos.getZ() + 0.5, 0.0F, 0.0F);
+               elder.snapTo(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 0.0F, 0.0F);
                elder.finalizeSpawn(level, level.getCurrentDifficultyAt(elder.blockPosition()), EntitySpawnReason.STRUCTURE, null);
                level.addFreshEntityWithPassengers(elder);
             }
@@ -1956,19 +1956,17 @@ public class OceanMonumentPieces {
       public boolean findSource(final int scanIndex) {
          if (this.isSource) {
             return true;
-         } else {
-            this.scanIndex = scanIndex;
-
-            for (int i = 0; i < 6; i++) {
-               if (this.connections[i] != null && this.hasOpening[i] && this.connections[i].scanIndex != scanIndex && this.connections[i].findSource(scanIndex)
-                  )
-                {
-                  return true;
-               }
-            }
-
-            return false;
          }
+
+         this.scanIndex = scanIndex;
+
+         for (int i = 0; i < 6; i++) {
+            if (this.connections[i] != null && this.hasOpening[i] && this.connections[i].scanIndex != scanIndex && this.connections[i].findSource(scanIndex)) {
+               return true;
+            }
+         }
+
+         return false;
       }
 
       public boolean isSpecial() {

@@ -8,11 +8,9 @@ import org.jspecify.annotations.Nullable;
 
 public class CommandResponseTracker<Element> {
    private int totalValue;
-   @Nullable
-   private Element onlyElement;
+   private @Nullable Element onlyElement;
    private int elementCount;
-   @Nullable
-   private Element onlyNonZeroElement;
+   private @Nullable Element onlyNonZeroElement;
    private int nonZeroElementCount;
 
    public static <T> CommandResponseTracker<T> create() {
@@ -44,8 +42,7 @@ public class CommandResponseTracker<Element> {
       this.track(element, 1);
    }
 
-   @Nullable
-   private Element firstElement(final CommandResponseTracker.ElementType type) {
+   private @Nullable Element firstElement(final CommandResponseTracker.ElementType type) {
       return (Element)(switch (type) {
          case ANY -> this.onlyElement;
          case NON_ZERO -> this.onlyNonZeroElement;
@@ -222,23 +219,23 @@ public class CommandResponseTracker<Element> {
       return this.sendFeedback(sourceStack, broadcast, CommandResponseTracker.ElementType.NON_ZERO, messages, argument0, argument1);
    }
 
-   public static record Dispatch<Result, Element>(
+   public record Dispatch<Result, Element>(
       CommandResponseTracker.SingleHandler<Result, Element> onSingle, CommandResponseTracker.MultipleHandler<Result> onMultiple
    ) {
    }
 
-   public static record DispatchWithArg<Result, Element, Arg>(
+   public record DispatchWithArg<Result, Element, Arg>(
       CommandResponseTracker.SingleHandlerWithArg<Result, Element, Arg> onSingle, CommandResponseTracker.MultipleHandlerWithArg<Result, Arg> onMultiple
    ) {
    }
 
-   public static record DispatchWithArgs<Result, Element, Arg0, Arg1>(
+   public record DispatchWithArgs<Result, Element, Arg0, Arg1>(
       CommandResponseTracker.SingleHandlerWithArgs<Result, Element, Arg0, Arg1> onSingle,
       CommandResponseTracker.MultipleHandlerWithArgs<Result, Arg0, Arg1> onMultiple
    ) {
    }
 
-   public static enum ElementType {
+   public enum ElementType {
       ANY,
       NON_ZERO;
    }
@@ -258,7 +255,7 @@ public class CommandResponseTracker<Element> {
       CommandSyntaxException get(Arg0 argument0, Arg1 argument1);
    }
 
-   public static record Messages<Element>(@Nullable CommandResponseTracker.ErrorHandler onZero, CommandResponseTracker.Dispatch<Component, Element> onSuccess) {
+   public record Messages<Element>(CommandResponseTracker.@Nullable ErrorHandler onZero, CommandResponseTracker.Dispatch<Component, Element> onSuccess) {
       public void throwIfZero(final int value) throws CommandSyntaxException {
          if (this.onZero != null && value == 0) {
             throw this.onZero.get();
@@ -266,8 +263,8 @@ public class CommandResponseTracker<Element> {
       }
    }
 
-   public static record MessagesWithArg<Element, Arg>(
-      @Nullable CommandResponseTracker.ErrorHandlerWithArg<Arg> onZero, CommandResponseTracker.DispatchWithArg<Component, Element, Arg> onSuccess
+   public record MessagesWithArg<Element, Arg>(
+      CommandResponseTracker.@Nullable ErrorHandlerWithArg<Arg> onZero, CommandResponseTracker.DispatchWithArg<Component, Element, Arg> onSuccess
    ) {
       public void throwIfZero(final int value, final Arg argument) throws CommandSyntaxException {
          if (this.onZero != null && value == 0) {
@@ -276,8 +273,8 @@ public class CommandResponseTracker<Element> {
       }
    }
 
-   public static record MessagesWithArgs<Element, Arg0, Arg1>(
-      @Nullable CommandResponseTracker.ErrorHandlerWithArgs<Arg0, Arg1> onZero,
+   public record MessagesWithArgs<Element, Arg0, Arg1>(
+      CommandResponseTracker.@Nullable ErrorHandlerWithArgs<Arg0, Arg1> onZero,
       CommandResponseTracker.DispatchWithArgs<Component, Element, Arg0, Arg1> onSuccess
    ) {
       public void throwIfZero(final int value, final Arg0 argument0, final Arg1 argument1) throws CommandSyntaxException {

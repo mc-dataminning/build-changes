@@ -6,7 +6,6 @@ import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.JavaOps;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -34,10 +33,6 @@ public class PlaceholderLookupProvider implements HolderGetter.Provider {
 
    public <V> RegistryOps<V> createSerializationContext(final DynamicOps<V> parent) {
       return RegistryOps.create(parent, new RegistryOps.RegistryInfoLookup() {
-         {
-            Objects.requireNonNull(PlaceholderLookupProvider.this);
-         }
-
          @Override
          public <T> Optional<HolderGetter<T>> lookup(final ResourceKey<? extends Registry<? extends T>> registryKey) {
             Optional<HolderGetter<T>> result = PlaceholderLookupProvider.this.context.lookup(registryKey).map(e -> (HolderGetter<T>)e);
@@ -48,10 +43,6 @@ public class PlaceholderLookupProvider implements HolderGetter.Provider {
 
    public RegistryContextSwapper createSwapper() {
       return new RegistryContextSwapper() {
-         {
-            Objects.requireNonNull(PlaceholderLookupProvider.this);
-         }
-
          @Override
          public <T> DataResult<T> swapTo(final Codec<T> codec, final T value, final HolderLookup.Provider newContext) {
             return codec.encodeStart(PlaceholderLookupProvider.this.createSerializationContext(JavaOps.INSTANCE), value)
@@ -65,11 +56,6 @@ public class PlaceholderLookupProvider implements HolderGetter.Provider {
    }
 
    private class UniversalLookup implements HolderGetter<Object> {
-      private UniversalLookup() {
-         Objects.requireNonNull(PlaceholderLookupProvider.this);
-         super();
-      }
-
       @Override
       public Optional<Holder.Reference<Object>> get(final ResourceKey<Object> id) {
          return Optional.of(this.getOrCreate(id));

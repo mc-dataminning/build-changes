@@ -64,21 +64,21 @@ public class LayeredRegistryAccess<T> {
       int index = this.getLayerIndexOrThrow(fromLayer);
       if (layers.size() > this.values.size() - index) {
          throw new IllegalStateException("Too many values to replace");
-      } else {
-         List<RegistryAccess.Frozen> newValues = new ArrayList<>();
-
-         for (int i = 0; i < index; i++) {
-            newValues.add(this.values.get(i));
-         }
-
-         newValues.addAll(layers);
-
-         while (newValues.size() < this.values.size()) {
-            newValues.add(RegistryAccess.EMPTY);
-         }
-
-         return new LayeredRegistryAccess<>(this.keys, newValues);
       }
+
+      List<RegistryAccess.Frozen> newValues = new ArrayList<>();
+
+      for (int i = 0; i < index; i++) {
+         newValues.add(this.values.get(i));
+      }
+
+      newValues.addAll(layers);
+
+      while (newValues.size() < this.values.size()) {
+         newValues.add(RegistryAccess.EMPTY);
+      }
+
+      return new LayeredRegistryAccess<>(this.keys, newValues);
    }
 
    public RegistryAccess.Frozen compositeAccess() {
@@ -88,10 +88,10 @@ public class LayeredRegistryAccess<T> {
    private static Map<ResourceKey<? extends Registry<?>>, Registry<?>> collectRegistries(final Stream<? extends RegistryAccess> registries) {
       Map<ResourceKey<? extends Registry<?>>, Registry<?>> result = new HashMap<>();
       registries.forEach(access -> access.registries().forEach(e -> {
-            if (result.put(e.key(), e.value()) != null) {
-               throw new IllegalStateException("Duplicated registry " + e.key());
-            }
-         }));
+         if (result.put(e.key(), e.value()) != null) {
+            throw new IllegalStateException("Duplicated registry " + e.key());
+         }
+      }));
       return result;
    }
 }

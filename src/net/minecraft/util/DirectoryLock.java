@@ -30,14 +30,14 @@ public class DirectoryLock implements AutoCloseable {
          } else {
             return new DirectoryLock(lockFile, lock);
          }
-      } catch (IOException var6) {
+      } catch (IOException e) {
          try {
             lockFile.close();
-         } catch (IOException var5) {
-            var6.addSuppressed(var5);
+         } catch (IOException nested) {
+            e.addSuppressed(nested);
          }
 
-         throw var6;
+         throw e;
       }
    }
 
@@ -66,19 +66,14 @@ public class DirectoryLock implements AutoCloseable {
    public static boolean isLocked(final Path dir) throws IOException {
       Path lockPath = dir.resolve("session.lock");
 
-      try {
-         boolean var4;
-         try (
-            FileChannel lockFile = FileChannel.open(lockPath, StandardOpenOption.WRITE);
-            FileLock maybeLock = lockFile.tryLock();
-         ) {
-            var4 = maybeLock == null;
-         }
-
-         return var4;
-      } catch (AccessDeniedException var10) {
+      try (
+         FileChannel lockFile = FileChannel.open(lockPath, StandardOpenOption.WRITE);
+         FileLock maybeLock = lockFile.tryLock();
+      ) {
+         return maybeLock == null;
+      } catch (AccessDeniedException e) {
          return true;
-      } catch (NoSuchFileException var11) {
+      } catch (NoSuchFileException e) {
          return false;
       }
    }

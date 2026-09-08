@@ -36,7 +36,7 @@ public class UnderLiquidAmbientSoundInstance extends AbstractTickableSoundInstan
          }
 
          this.fade = Math.min(this.fade, 40);
-         this.volume = Math.max(0.0F, Math.min((float)this.fade / 40.0F, 1.0F));
+         this.volume = Math.max(0.0F, Math.min(this.fade / 40.0F, 1.0F));
       } else {
          this.stop();
       }

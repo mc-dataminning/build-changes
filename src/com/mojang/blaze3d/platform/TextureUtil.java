@@ -45,9 +45,9 @@ public class TextureUtil {
 
          buffer.flip();
          return buffer;
-      } catch (IOException var4) {
+      } catch (IOException e) {
          MemoryUtil.memFree(buffer);
-         throw var4;
+         throw e;
       }
    }
 
@@ -56,58 +56,60 @@ public class TextureUtil {
       long bufferLength = 0L;
 
       for (int i = 0; i <= maxMipLevel; i++) {
-         bufferLength += (long)texture.getFormat().blockSize() * (long)texture.getWidth(i) * (long)texture.getHeight(i);
+         bufferLength += (long)texture.getFormat().blockSize() * texture.getWidth(i) * texture.getHeight(i);
       }
 
       if (bufferLength > 2147483647L) {
          throw new IllegalArgumentException("Exporting textures larger than 2GB is not supported");
-      } else if (texture.getFormat() != GpuFormat.RGBA8_UNORM) {
+      }
+
+      if (texture.getFormat() != GpuFormat.RGBA8_UNORM) {
          throw new IllegalArgumentException("Exporting textures other than RGBA8_UNORM is not supported");
-      } else {
-         GpuBuffer buffer = RenderSystem.getDevice().createBuffer(() -> "Texture output buffer", 9, bufferLength);
-         CommandEncoder commandEncoder = RenderSystem.getDevice().createCommandEncoder();
-         Runnable onCopyComplete = () -> {
-            try (GpuBufferSlice.MappedView read = buffer.map(true, false)) {
-               ByteBuffer data = read.data();
-               IntUnaryOperator decodeTexel = data::getInt;
-               int offsetx = 0;
+      }
 
-               for (int ix = 0; ix <= maxMipLevel; ix++) {
-                  int mipWidth = texture.getWidth(ix);
-                  int mipHeight = texture.getHeight(ix);
+      GpuBuffer buffer = RenderSystem.getDevice().createBuffer(() -> "Texture output buffer", 9, bufferLength);
+      CommandEncoder commandEncoder = RenderSystem.getDevice().createCommandEncoder();
+      Runnable onCopyComplete = () -> {
+         try (GpuBufferSlice.MappedView read = buffer.map(true, false)) {
+            ByteBuffer data = read.data();
+            IntUnaryOperator decodeTexel = data::getInt;
+            int offsetx = 0;
 
-                  try (NativeImage image = new NativeImage(mipWidth, mipHeight, false)) {
-                     for (int y = 0; y < mipHeight; y++) {
-                        for (int x = 0; x < mipWidth; x++) {
-                           int argb = decodeTexel.applyAsInt(offsetx + (x + y * mipWidth) * texture.getFormat().blockSize());
-                           image.setPixelABGR(x, y, pixelModifier.applyAsInt(argb));
-                        }
+            for (int ix = 0; ix <= maxMipLevel; ix++) {
+               int mipWidth = texture.getWidth(ix);
+               int mipHeight = texture.getHeight(ix);
+
+               try (NativeImage image = new NativeImage(mipWidth, mipHeight, false)) {
+                  for (int y = 0; y < mipHeight; y++) {
+                     for (int x = 0; x < mipWidth; x++) {
+                        int argb = decodeTexel.applyAsInt(offsetx + (x + y * mipWidth) * texture.getFormat().blockSize());
+                        image.setPixelABGR(x, y, pixelModifier.applyAsInt(argb));
                      }
-
-                     Path target = dir.resolve(prefix + "_" + ix + ".png");
-                     image.writeToFile(target);
-                     LOGGER.debug("Exported png to: {}", target.toAbsolutePath());
-                  } catch (IOException var20) {
-                     LOGGER.debug("Unable to write: ", var20);
                   }
 
-                  offsetx += texture.getFormat().blockSize() * mipWidth * mipHeight;
+                  Path target = dir.resolve(prefix + "_" + ix + ".png");
+                  image.writeToFile(target);
+                  LOGGER.debug("Exported png to: {}", target.toAbsolutePath());
+               } catch (IOException e) {
+                  LOGGER.debug("Unable to write: ", e);
                }
+
+               offsetx += texture.getFormat().blockSize() * mipWidth * mipHeight;
             }
-
-            buffer.close();
-         };
-         AtomicInteger completedCopies = new AtomicInteger();
-         int offset = 0;
-
-         for (int i = 0; i <= maxMipLevel; i++) {
-            commandEncoder.copyTextureToBuffer(texture, buffer, (long)offset, () -> {
-               if (completedCopies.getAndIncrement() == maxMipLevel) {
-                  onCopyComplete.run();
-               }
-            }, i);
-            offset += texture.getFormat().blockSize() * texture.getWidth(i) * texture.getHeight(i);
          }
+
+         buffer.close();
+      };
+      AtomicInteger completedCopies = new AtomicInteger();
+      int offset = 0;
+
+      for (int i = 0; i <= maxMipLevel; i++) {
+         commandEncoder.copyTextureToBuffer(texture, buffer, offset, () -> {
+            if (completedCopies.getAndIncrement() == maxMipLevel) {
+               onCopyComplete.run();
+            }
+         }, i);
+         offset += texture.getFormat().blockSize() * texture.getWidth(i) * texture.getHeight(i);
       }
    }
 
@@ -142,11 +144,11 @@ public class TextureUtil {
       while (!queue.isEmpty()) {
          int packedCoordinates = queue.dequeueInt();
          int x = x(packedCoordinates, width);
-         int yx = y(packedCoordinates, width);
+         int y = y(packedCoordinates, width);
 
          for (int[] direction : DIRECTIONS) {
             int neighborX = x + direction[0];
-            int neighborY = yx + direction[1];
+            int neighborY = y + direction[1];
             int packedNeighborCoordinates = pack(neighborX, neighborY, width);
             if (neighborX >= 0
                && neighborY >= 0
@@ -161,12 +163,12 @@ public class TextureUtil {
       }
 
       for (int x = 0; x < width; x++) {
-         for (int yx = 0; yx < height; yx++) {
-            int color = image.getPixel(x, yx);
+         for (int y = 0; y < height; y++) {
+            int color = image.getPixel(x, y);
             if (ARGB.alpha(color) == 0) {
-               image.setPixel(x, yx, ARGB.color(0, nearestColor[pack(x, yx, width)]));
+               image.setPixel(x, y, ARGB.color(0, nearestColor[pack(x, y, width)]));
             } else {
-               image.setPixel(x, yx, color);
+               image.setPixel(x, y, color);
             }
          }
       }
@@ -201,10 +203,10 @@ public class TextureUtil {
       int darkenedColor = ARGB.color(0, darkRed, darkGreen, darkBlue);
 
       for (int x = 0; x < width; x++) {
-         for (int yx = 0; yx < height; yx++) {
-            int color = image.getPixel(x, yx);
+         for (int y = 0; y < height; y++) {
+            int color = image.getPixel(x, y);
             if (ARGB.alpha(color) == 0) {
-               image.setPixel(x, yx, darkenedColor);
+               image.setPixel(x, y, darkenedColor);
             }
          }
       }

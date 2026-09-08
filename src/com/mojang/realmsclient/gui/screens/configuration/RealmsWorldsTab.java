@@ -48,11 +48,11 @@ public class RealmsWorldsTab extends GridLayoutTab implements RealmsConfiguratio
          Button.builder(
                Component.translatable("mco.configure.world.buttons.options"),
                var3 -> minecraft.gui
-                     .setScreen(
-                        new RealmsSlotOptionsScreen(
-                           configurationScreen, serverData.slots.get(serverData.activeSlot).copy(), serverData.worldType, serverData.activeSlot
-                        )
+                  .setScreen(
+                     new RealmsSlotOptionsScreen(
+                        configurationScreen, serverData.slots.get(serverData.activeSlot).copy(), serverData.worldType, serverData.activeSlot
                      )
+                  )
             )
             .bounds(0, 0, 150, 20)
             .build()
@@ -93,7 +93,7 @@ public class RealmsWorldsTab extends GridLayoutTab implements RealmsConfiguratio
       }
    }
 
-   private void templateSelectionCallback(@Nullable final WorldTemplate worldTemplate) {
+   private void templateSelectionCallback(final @Nullable WorldTemplate worldTemplate) {
       if (worldTemplate != null && WorldTemplate.WorldTemplateType.MINIGAME == worldTemplate.type()) {
          this.configurationScreen.stateChanged();
          RealmsConfigureWorldScreen newScreen = this.configurationScreen.getNewScreen();

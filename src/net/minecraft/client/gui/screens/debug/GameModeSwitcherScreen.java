@@ -151,7 +151,7 @@ public class GameModeSwitcherScreen extends Screen {
       return false;
    }
 
-   private static enum GameModeIcon {
+   private enum GameModeIcon {
       CREATIVE(Component.translatable("gameMode.creative"), GameType.CREATIVE, new ItemStack(Blocks.GRASS_BLOCK)),
       SURVIVAL(Component.translatable("gameMode.survival"), GameType.SURVIVAL, new ItemStack(Items.IRON_SWORD)),
       ADVENTURE(Component.translatable("gameMode.adventure"), GameType.ADVENTURE, new ItemStack(Items.BURIED_TREASURE_MAP)),
@@ -164,7 +164,7 @@ public class GameModeSwitcherScreen extends Screen {
       private final GameType mode;
       private final ItemStack renderStack;
 
-      private GameModeIcon(final Component name, final GameType mode, final ItemStack renderStack) {
+      GameModeIcon(final Component name, final GameType mode, final ItemStack renderStack) {
          this.name = name;
          this.mode = mode;
          this.renderStack = renderStack;

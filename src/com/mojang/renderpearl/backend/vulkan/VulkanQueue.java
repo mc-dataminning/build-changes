@@ -3,7 +3,6 @@ package com.mojang.renderpearl.backend.vulkan;
 import com.mojang.renderpearl.util.UncheckedAutoCloseable;
 import it.unimi.dsi.fastutil.objects.ReferenceArrayList;
 import java.util.List;
-import java.util.Objects;
 import org.lwjgl.PointerBuffer;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.vulkan.KHRSynchronization2;
@@ -56,48 +55,44 @@ public record VulkanQueue(VkQueue vkQueue, int queueFamilyIndex) {
    }
 
    public class Submission implements UncheckedAutoCloseable {
-      private boolean closed;
-      private final ReferenceArrayList<VulkanQueue.Submission.SubmitStage> stages;
+      private boolean closed = false;
+      private final ReferenceArrayList<VulkanQueue.Submission.SubmitStage> stages = new ReferenceArrayList();
 
       private Submission() {
-         Objects.requireNonNull(VulkanQueue.this);
-         super();
-         this.closed = false;
-         this.stages = new ReferenceArrayList();
          this.stages.add(new VulkanQueue.Submission.SubmitStage());
       }
 
       public void waitSemaphore(final long semaphore, final long value, final long stageMask) {
          if (this.closed) {
             throw new IllegalStateException("Attempt to use closed Submission");
-         } else {
-            if (!((VulkanQueue.Submission.SubmitStage)this.stages.top()).commandBuffers.isEmpty()
-               || !((VulkanQueue.Submission.SubmitStage)this.stages.top()).signals.isEmpty()) {
-               this.stages.add(new VulkanQueue.Submission.SubmitStage());
-            }
-
-            ((VulkanQueue.Submission.SubmitStage)this.stages.top()).waits.add(new VulkanQueue.Submission.SemaphoreOp(semaphore, value, stageMask));
          }
+
+         if (!((VulkanQueue.Submission.SubmitStage)this.stages.top()).commandBuffers.isEmpty()
+            || !((VulkanQueue.Submission.SubmitStage)this.stages.top()).signals.isEmpty()) {
+            this.stages.add(new VulkanQueue.Submission.SubmitStage());
+         }
+
+         ((VulkanQueue.Submission.SubmitStage)this.stages.top()).waits.add(new VulkanQueue.Submission.SemaphoreOp(semaphore, value, stageMask));
       }
 
       public void executeCommands(final VkCommandBuffer commandBuffer) {
          if (this.closed) {
             throw new IllegalStateException("Attempt to use closed Submission");
-         } else {
-            if (!((VulkanQueue.Submission.SubmitStage)this.stages.top()).signals.isEmpty()) {
-               this.stages.add(new VulkanQueue.Submission.SubmitStage());
-            }
-
-            ((VulkanQueue.Submission.SubmitStage)this.stages.top()).commandBuffers.add(commandBuffer);
          }
+
+         if (!((VulkanQueue.Submission.SubmitStage)this.stages.top()).signals.isEmpty()) {
+            this.stages.add(new VulkanQueue.Submission.SubmitStage());
+         }
+
+         ((VulkanQueue.Submission.SubmitStage)this.stages.top()).commandBuffers.add(commandBuffer);
       }
 
       public void signalSemaphore(final long semaphore, final long value, final long stageMask) {
          if (this.closed) {
             throw new IllegalStateException("Attempt to use closed Submission");
-         } else {
-            ((VulkanQueue.Submission.SubmitStage)this.stages.top()).signals.add(new VulkanQueue.Submission.SemaphoreOp(semaphore, value, stageMask));
          }
+
+         ((VulkanQueue.Submission.SubmitStage)this.stages.top()).signals.add(new VulkanQueue.Submission.SemaphoreOp(semaphore, value, stageMask));
       }
 
       @Override
@@ -168,10 +163,10 @@ public record VulkanQueue(VkQueue vkQueue, int queueFamilyIndex) {
          }
       }
 
-      private static record SemaphoreOp(long vkSemaphore, long value, long stageMask) {
+      private record SemaphoreOp(long vkSemaphore, long value, long stageMask) {
       }
 
-      private static record SubmitStage(
+      private record SubmitStage(
          List<VulkanQueue.Submission.SemaphoreOp> waits, List<VkCommandBuffer> commandBuffers, List<VulkanQueue.Submission.SemaphoreOp> signals
       ) {
          public SubmitStage() {

@@ -77,8 +77,8 @@ public abstract class AbstractPiglinModel<S extends HumanoidRenderState> extends
       float defaultAngle = this.getDefaultEarAngleInDegrees() * (float) (Math.PI / 180.0);
       float frequency = state.ageInTicks * 0.1F + animationPos * 0.5F;
       float amplitude = 0.08F + animationSpeed * 0.4F;
-      this.leftEar.zRot = -defaultAngle - Mth.cos((double)(frequency * 1.2F)) * amplitude;
-      this.rightEar.zRot = defaultAngle + Mth.cos((double)frequency) * amplitude;
+      this.leftEar.zRot = -defaultAngle - Mth.cos(frequency * 1.2F) * amplitude;
+      this.rightEar.zRot = defaultAngle + Mth.cos(frequency) * amplitude;
    }
 
    protected abstract float getDefaultEarAngleInDegrees();

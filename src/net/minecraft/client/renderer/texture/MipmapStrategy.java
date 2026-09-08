@@ -13,7 +13,7 @@ public enum MipmapStrategy implements StringRepresentable {
    public static final Codec<MipmapStrategy> CODEC = StringRepresentable.fromValues(MipmapStrategy::values);
    private final String name;
 
-   private MipmapStrategy(final String name) {
+   MipmapStrategy(final String name) {
       this.name = name;
    }
 

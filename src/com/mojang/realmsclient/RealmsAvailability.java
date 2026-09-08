@@ -18,8 +18,7 @@ import org.slf4j.Logger;
 
 public class RealmsAvailability {
    private static final Logger LOGGER = LogUtils.getLogger();
-   @Nullable
-   private static CompletableFuture<RealmsAvailability.Result> future;
+   private static @Nullable CompletableFuture<RealmsAvailability.Result> future;
 
    public static CompletableFuture<RealmsAvailability.Result> get() {
       if (future == null || shouldRefresh(future)) {
@@ -52,11 +51,11 @@ public class RealmsAvailability {
                            ? new RealmsAvailability.Result(RealmsAvailability.Type.NEEDS_PARENTAL_CONSENT)
                            : new RealmsAvailability.Result(RealmsAvailability.Type.SUCCESS);
                      }
-                  } catch (RealmsServiceException var2) {
-                     LOGGER.error("Couldn't connect to realms", var2);
-                     return var2.realmsError.errorCode() == 401
+                  } catch (RealmsServiceException e) {
+                     LOGGER.error("Couldn't connect to realms", e);
+                     return e.realmsError.errorCode() == 401
                         ? new RealmsAvailability.Result(RealmsAvailability.Type.AUTHENTICATION_ERROR)
-                        : new RealmsAvailability.Result(var2);
+                        : new RealmsAvailability.Result(e);
                   }
                },
                Util.nonCriticalIoPool()
@@ -64,7 +63,7 @@ public class RealmsAvailability {
       }
    }
 
-   public static record Result(RealmsAvailability.Type type, @Nullable RealmsServiceException exception) {
+   public record Result(RealmsAvailability.Type type, @Nullable RealmsServiceException exception) {
       public Result(final RealmsAvailability.Type type) {
          this(type, null);
       }
@@ -73,21 +72,20 @@ public class RealmsAvailability {
          this(RealmsAvailability.Type.UNEXPECTED_ERROR, exception);
       }
 
-      @Nullable
-      public Screen createErrorScreen(final Screen lastScreen) {
-         return (Screen)(switch (this.type) {
+      public @Nullable Screen createErrorScreen(final Screen lastScreen) {
+         return switch (this.type) {
             case SUCCESS -> null;
             case INCOMPATIBLE_CLIENT -> new RealmsClientOutdatedScreen(lastScreen);
             case NEEDS_PARENTAL_CONSENT -> new RealmsParentalConsentScreen(lastScreen);
             case AUTHENTICATION_ERROR -> new RealmsGenericErrorScreen(
-            Component.translatable("mco.error.invalid.session.title"), Component.translatable("mco.error.invalid.session.message"), lastScreen
-         );
+               Component.translatable("mco.error.invalid.session.title"), Component.translatable("mco.error.invalid.session.message"), lastScreen
+            );
             case UNEXPECTED_ERROR -> new RealmsGenericErrorScreen(Objects.requireNonNull(this.exception), lastScreen);
-         });
+         };
       }
    }
 
-   public static enum Type {
+   public enum Type {
       SUCCESS,
       INCOMPATIBLE_CLIENT,
       NEEDS_PARENTAL_CONSENT,

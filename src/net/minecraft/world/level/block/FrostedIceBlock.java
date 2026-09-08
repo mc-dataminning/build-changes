@@ -26,7 +26,7 @@ public class FrostedIceBlock extends IceBlock {
 
    public FrostedIceBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(0)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
    }
 
    @Override
@@ -59,7 +59,7 @@ public class FrostedIceBlock extends IceBlock {
    private boolean slightlyMelt(final BlockState state, final Level level, final BlockPos pos) {
       int age = state.getValue(AGE);
       if (age < 3) {
-         level.setBlock(pos, state.setValue(AGE, Integer.valueOf(age + 1)), 2);
+         level.setBlock(pos, state.setValue(AGE, age + 1), 2);
          return false;
       } else {
          this.melt(state, level, pos);
@@ -69,7 +69,7 @@ public class FrostedIceBlock extends IceBlock {
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       if (block.defaultBlockState().is(this) && this.fewerNeigboursThan(level, pos, 2)) {
          this.melt(state, level, pos);

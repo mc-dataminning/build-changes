@@ -24,12 +24,12 @@ import org.jspecify.annotations.Nullable;
 public class SnowLayerBlock extends Block {
    public static final int MAX_HEIGHT = 8;
    public static final IntegerProperty LAYERS = BlockStateProperties.LAYERS;
-   private static final VoxelShape[] SHAPES = Block.boxes(8, height -> Block.column(16.0, 0.0, (double)(height * 2)));
+   private static final VoxelShape[] SHAPES = Block.boxes(8, height -> Block.column(16.0, 0.0, height * 2));
    public static final int HEIGHT_IMPASSABLE = 5;
 
    protected SnowLayerBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(LAYERS, Integer.valueOf(1)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(LAYERS, 1));
    }
 
    @Override
@@ -114,13 +114,12 @@ public class SnowLayerBlock extends Block {
       }
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockState state = context.getLevel().getBlockState(context.getClickedPos());
       if (state.is(this)) {
          int layers = state.getValue(LAYERS);
-         return state.setValue(LAYERS, Integer.valueOf(Math.min(8, layers + 1)));
+         return state.setValue(LAYERS, Math.min(8, layers + 1));
       } else {
          return super.getStateForPlacement(context);
       }

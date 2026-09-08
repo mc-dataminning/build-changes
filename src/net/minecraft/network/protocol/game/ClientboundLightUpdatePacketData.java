@@ -36,8 +36,8 @@ public record ClientboundLightUpdatePacketData(
    public ClientboundLightUpdatePacketData(
       final ChunkPos chunkPos,
       final LevelLightEngine lightEngine,
-      @Nullable final BitSet skyChangedLightSectionFilter,
-      @Nullable final BitSet blockChangedLightSectionFilter
+      final @Nullable BitSet skyChangedLightSectionFilter,
+      final @Nullable BitSet blockChangedLightSectionFilter
    ) {
       this(new BitSet(), new BitSet(), new BitSet(), new BitSet(), new ArrayList<>(), new ArrayList<>());
 

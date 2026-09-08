@@ -48,8 +48,8 @@ public record PositionMoveRotation(Vec3 position, Vec3 deltaMovement, float yRot
       if (relatives.contains(Relative.ROTATE_DELTA)) {
          float diffYRot = source.yRot - absoluteYRot;
          float diffXRot = source.xRot - absoluteXRot;
-         rotatedCurrentMovement = rotatedCurrentMovement.xRot((float)Math.toRadians((double)diffXRot));
-         rotatedCurrentMovement = rotatedCurrentMovement.yRot((float)Math.toRadians((double)diffYRot));
+         rotatedCurrentMovement = rotatedCurrentMovement.xRot((float)Math.toRadians(diffXRot));
+         rotatedCurrentMovement = rotatedCurrentMovement.yRot((float)Math.toRadians(diffYRot));
       }
 
       Vec3 absoluteDeltaMovement = new Vec3(

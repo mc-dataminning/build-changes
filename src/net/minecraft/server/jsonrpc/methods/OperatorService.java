@@ -44,8 +44,8 @@ public class OperatorService {
       List<CompletableFuture<Optional<OperatorService.Op>>> fetch = operators.stream()
          .map(
             operator -> minecraftApi.playerListService()
-                  .getUser(operator.player().id(), operator.player().name())
-                  .thenApply(user -> user.map(nameAndId -> new OperatorService.Op(nameAndId, operator.permissionLevel(), operator.bypassesPlayerLimit())))
+               .getUser(operator.player().id(), operator.player().name())
+               .thenApply(user -> user.map(nameAndId -> new OperatorService.Op(nameAndId, operator.permissionLevel(), operator.bypassesPlayerLimit())))
          )
          .toList();
 
@@ -64,8 +64,8 @@ public class OperatorService {
       List<CompletableFuture<Optional<OperatorService.Op>>> fetch = operators.stream()
          .map(
             operator -> minecraftApi.playerListService()
-                  .getUser(operator.player().id(), operator.player().name())
-                  .thenApply(user -> user.map(nameAndId -> new OperatorService.Op(nameAndId, operator.permissionLevel(), operator.bypassesPlayerLimit())))
+               .getUser(operator.player().id(), operator.player().name())
+               .thenApply(user -> user.map(nameAndId -> new OperatorService.Op(nameAndId, operator.permissionLevel(), operator.bypassesPlayerLimit())))
          )
          .toList();
       Set<OperatorService.Op> finalOperators = Util.sequence(fetch).join().stream().flatMap(Optional::stream).collect(Collectors.toSet());
@@ -84,17 +84,17 @@ public class OperatorService {
       return get(minecraftApi);
    }
 
-   private static record Op(NameAndId user, Optional<PermissionLevel> permissionLevel, Optional<Boolean> bypassesPlayerLimit) {
+   private record Op(NameAndId user, Optional<PermissionLevel> permissionLevel, Optional<Boolean> bypassesPlayerLimit) {
    }
 
-   public static record OperatorDto(PlayerDto player, Optional<PermissionLevel> permissionLevel, Optional<Boolean> bypassesPlayerLimit) {
+   public record OperatorDto(PlayerDto player, Optional<PermissionLevel> permissionLevel, Optional<Boolean> bypassesPlayerLimit) {
       public static final MapCodec<OperatorService.OperatorDto> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  PlayerDto.CODEC.codec().fieldOf("player").forGetter(OperatorService.OperatorDto::player),
-                  PermissionLevel.INT_CODEC.optionalFieldOf("permissionLevel").forGetter(OperatorService.OperatorDto::permissionLevel),
-                  Codec.BOOL.optionalFieldOf("bypassesPlayerLimit").forGetter(OperatorService.OperatorDto::bypassesPlayerLimit)
-               )
-               .apply(i, OperatorService.OperatorDto::new)
+               PlayerDto.CODEC.codec().fieldOf("player").forGetter(OperatorService.OperatorDto::player),
+               PermissionLevel.INT_CODEC.optionalFieldOf("permissionLevel").forGetter(OperatorService.OperatorDto::permissionLevel),
+               Codec.BOOL.optionalFieldOf("bypassesPlayerLimit").forGetter(OperatorService.OperatorDto::bypassesPlayerLimit)
+            )
+            .apply(i, OperatorService.OperatorDto::new)
       );
 
       public static OperatorService.OperatorDto from(final ServerOpListEntry serverOpListEntry) {

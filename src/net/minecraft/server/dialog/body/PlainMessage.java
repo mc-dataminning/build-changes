@@ -11,10 +11,10 @@ public record PlainMessage(Component contents, int width) implements DialogBody 
    public static final int DEFAULT_WIDTH = 200;
    public static final MapCodec<PlainMessage> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               ComponentSerialization.CODEC.fieldOf("contents").forGetter(PlainMessage::contents),
-               Dialog.WIDTH_CODEC.optionalFieldOf("width", 200).forGetter(PlainMessage::width)
-            )
-            .apply(i, PlainMessage::new)
+            ComponentSerialization.CODEC.fieldOf("contents").forGetter(PlainMessage::contents),
+            Dialog.WIDTH_CODEC.optionalFieldOf("width", 200).forGetter(PlainMessage::width)
+         )
+         .apply(i, PlainMessage::new)
    );
    public static final Codec<PlainMessage> CODEC = Codec.withAlternative(
       MAP_CODEC.codec(), ComponentSerialization.CODEC, contents -> new PlainMessage(contents, 200)

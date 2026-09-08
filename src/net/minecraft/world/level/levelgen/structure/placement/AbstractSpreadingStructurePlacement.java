@@ -107,7 +107,7 @@ public abstract class AbstractSpreadingStructurePlacement implements StructurePl
    private static boolean legacyProbabilityReducerWithDouble(final long seed, final int salt, final int sourceX, final int sourceZ, final float probability) {
       WorldgenRandom random = new WorldgenRandom(new LegacyRandomSource(0L));
       random.setLargeFeatureSeed(seed, sourceX, sourceZ);
-      return random.nextDouble() < (double)probability;
+      return random.nextDouble() < probability;
    }
 
    private static boolean legacyArbitrarySaltProbabilityReducer(final long seed, final int salt, final int sourceX, final int sourceZ, final float probability) {
@@ -120,21 +120,21 @@ public abstract class AbstractSpreadingStructurePlacement implements StructurePl
       int cx = sourceX >> 4;
       int cz = sourceZ >> 4;
       WorldgenRandom random = new WorldgenRandom(new LegacyRandomSource(0L));
-      random.setSeed((long)(cx ^ cz << 4) ^ seed);
+      random.setSeed(cx ^ cz << 4 ^ seed);
       random.nextInt();
       return random.nextInt((int)(1.0F / probability)) == 0;
    }
 
    @Deprecated
-   public static record ExclusionZone(Holder<StructureSet> otherSet, int chunkCount) {
+   public record ExclusionZone(Holder<StructureSet> otherSet, int chunkCount) {
       public static final Codec<AbstractSpreadingStructurePlacement.ExclusionZone> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  RegistryCodecs.holder(Registries.STRUCTURE_SET, StructureSet.DIRECT_CODEC, false)
-                     .fieldOf("other_set")
-                     .forGetter(AbstractSpreadingStructurePlacement.ExclusionZone::otherSet),
-                  Codec.intRange(1, 16).fieldOf("chunk_count").forGetter(AbstractSpreadingStructurePlacement.ExclusionZone::chunkCount)
-               )
-               .apply(i, AbstractSpreadingStructurePlacement.ExclusionZone::new)
+               RegistryCodecs.holder(Registries.STRUCTURE_SET, StructureSet.DIRECT_CODEC, false)
+                  .fieldOf("other_set")
+                  .forGetter(AbstractSpreadingStructurePlacement.ExclusionZone::otherSet),
+               Codec.intRange(1, 16).fieldOf("chunk_count").forGetter(AbstractSpreadingStructurePlacement.ExclusionZone::chunkCount)
+            )
+            .apply(i, AbstractSpreadingStructurePlacement.ExclusionZone::new)
       );
 
       private boolean isPlacementForbidden(final ChunkGeneratorStructureState state, final int sourceX, final int sourceZ) {
@@ -147,7 +147,7 @@ public abstract class AbstractSpreadingStructurePlacement implements StructurePl
       boolean shouldGenerate(long seed, final int salt, final int sourceX, final int sourceZ, float probability);
    }
 
-   public static enum FrequencyReductionMethod implements StringRepresentable {
+   public enum FrequencyReductionMethod implements StringRepresentable {
       DEFAULT("default", AbstractSpreadingStructurePlacement::probabilityReducer),
       LEGACY_TYPE_1("legacy_type_1", AbstractSpreadingStructurePlacement::legacyPillagerOutpostReducer),
       LEGACY_TYPE_2("legacy_type_2", AbstractSpreadingStructurePlacement::legacyArbitrarySaltProbabilityReducer),
@@ -159,7 +159,7 @@ public abstract class AbstractSpreadingStructurePlacement implements StructurePl
       private final String name;
       private final AbstractSpreadingStructurePlacement.FrequencyReducer reducer;
 
-      private FrequencyReductionMethod(final String name, final AbstractSpreadingStructurePlacement.FrequencyReducer reducer) {
+      FrequencyReductionMethod(final String name, final AbstractSpreadingStructurePlacement.FrequencyReducer reducer) {
          this.name = name;
          this.reducer = reducer;
       }

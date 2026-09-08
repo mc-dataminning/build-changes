@@ -21,7 +21,6 @@ public class CubeMapTexture extends ReloadableTexture {
    public TextureContents loadContents(final ResourceManager resourceManager) throws IOException {
       Identifier location = this.resourceId();
 
-      TextureContents var15;
       try (TextureContents first = TextureContents.load(resourceManager, location.withSuffix(SUFFIXES[0]))) {
          int width = first.image().getWidth();
          int height = first.image().getHeight();
@@ -51,10 +50,8 @@ public class CubeMapTexture extends ReloadableTexture {
             }
          }
 
-         var15 = new TextureContents(stackedImage, new TextureMetadataSection(true, false, MipmapStrategy.MEAN, 0.0F));
+         return new TextureContents(stackedImage, new TextureMetadataSection(true, false, MipmapStrategy.MEAN, 0.0F));
       }
-
-      return var15;
    }
 
    @Override

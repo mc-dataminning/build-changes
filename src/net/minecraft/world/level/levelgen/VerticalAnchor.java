@@ -64,7 +64,7 @@ public interface VerticalAnchor {
 
    int resolveY(final WorldGenerationContext heightAccessor);
 
-   public static record AboveBottom(int offset) implements VerticalAnchor {
+   record AboveBottom(int offset) implements VerticalAnchor {
       public static final Codec<VerticalAnchor.AboveBottom> CODEC = Codec.intRange(DimensionType.MIN_Y, DimensionType.MAX_Y)
          .fieldOf("above_bottom")
          .xmap(VerticalAnchor.AboveBottom::new, VerticalAnchor.AboveBottom::offset)
@@ -81,7 +81,7 @@ public interface VerticalAnchor {
       }
    }
 
-   public static record Absolute(int y) implements VerticalAnchor {
+   record Absolute(int y) implements VerticalAnchor {
       public static final Codec<VerticalAnchor.Absolute> CODEC = Codec.intRange(DimensionType.MIN_Y, DimensionType.MAX_Y)
          .fieldOf("absolute")
          .xmap(VerticalAnchor.Absolute::new, VerticalAnchor.Absolute::y)
@@ -98,7 +98,7 @@ public interface VerticalAnchor {
       }
    }
 
-   public static record BelowTop(int offset) implements VerticalAnchor {
+   record BelowTop(int offset) implements VerticalAnchor {
       public static final Codec<VerticalAnchor.BelowTop> CODEC = Codec.intRange(DimensionType.MIN_Y, DimensionType.MAX_Y)
          .fieldOf("below_top")
          .xmap(VerticalAnchor.BelowTop::new, VerticalAnchor.BelowTop::offset)
@@ -115,7 +115,7 @@ public interface VerticalAnchor {
       }
    }
 
-   public static record RelativeToSeaLevel(int offset) implements VerticalAnchor {
+   record RelativeToSeaLevel(int offset) implements VerticalAnchor {
       public static final Codec<VerticalAnchor.RelativeToSeaLevel> CODEC = Codec.intRange(DimensionType.MIN_Y, DimensionType.MAX_Y)
          .fieldOf("relative_to_sea_level")
          .xmap(VerticalAnchor.RelativeToSeaLevel::new, VerticalAnchor.RelativeToSeaLevel::offset)

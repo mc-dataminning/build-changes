@@ -11,7 +11,7 @@ public class ImpossibleTrigger implements CriterionTrigger<ImpossibleTrigger.Tri
       return ImpossibleTrigger.TriggerInstance.CODEC;
    }
 
-   public static record TriggerInstance() implements CriterionTriggerInstance {
+   public record TriggerInstance() implements CriterionTriggerInstance {
       public static final Codec<ImpossibleTrigger.TriggerInstance> CODEC = MapCodec.unitCodec(new ImpossibleTrigger.TriggerInstance());
 
       @Override

@@ -21,12 +21,10 @@ class GlRenderPass implements RenderPassBackend {
    private final GlCommandEncoder encoder;
    private final GlDevice device;
    private final ScissorState defaultScissorState;
-   @Nullable
-   protected GlRenderPipeline pipeline;
-   protected final GpuBufferSlice[] vertexBuffers = new GpuBufferSlice[16];
+   protected @Nullable GlRenderPipeline pipeline;
+   protected final @Nullable GpuBufferSlice[] vertexBuffers = new GpuBufferSlice[16];
    protected boolean vertexBufferDirty = true;
-   @Nullable
-   protected GpuBuffer indexBuffer;
+   protected @Nullable GpuBuffer indexBuffer;
    protected IndexType indexType = IndexType.INT;
    protected boolean indexBufferDirty = false;
    private final ScissorState scissorState = new ScissorState();
@@ -34,8 +32,7 @@ class GlRenderPass implements RenderPassBackend {
    protected final ReferenceList<Object> uniforms = new ReferenceArrayList();
    protected final BooleanList dirtyUniforms = new BooleanArrayList();
    protected boolean anyUniformDirty = false;
-   @Nullable
-   protected GpuBufferSlice pushConstants;
+   protected @Nullable GpuBufferSlice pushConstants;
    protected boolean pushConstantsDirty = false;
    protected final int colorAttachmentCount;
 
@@ -82,7 +79,7 @@ class GlRenderPass implements RenderPassBackend {
    }
 
    @Override
-   public void setUniform(final int index, @Nullable final Object value) {
+   public void setUniform(final int index, final @Nullable Object value) {
       this.uniforms.set(index, value);
       this.dirtyUniforms.set(index, true);
       this.anyUniformDirty = true;
@@ -90,7 +87,7 @@ class GlRenderPass implements RenderPassBackend {
 
    @Override
    public void pushConstants(final ByteBuffer value) {
-      this.pushConstants = this.encoder.transientMemory().uploadGpu(value, (long)this.device.getDeviceInfo().limits().minUniformOffsetAlignment(), 128);
+      this.pushConstants = this.encoder.transientMemory().uploadGpu(value, this.device.getDeviceInfo().limits().minUniformOffsetAlignment(), 128);
       this.pushConstantsDirty = true;
    }
 
@@ -127,7 +124,7 @@ class GlRenderPass implements RenderPassBackend {
    }
 
    @Override
-   public void setVertexBuffer(final int slot, @Nullable final GpuBufferSlice vertexBuffer) {
+   public void setVertexBuffer(final int slot, final @Nullable GpuBufferSlice vertexBuffer) {
       GpuBuffer inputBuffer = vertexBuffer != null ? vertexBuffer.buffer() : null;
       GpuBuffer existingBuffer = this.vertexBuffers[slot] != null ? this.vertexBuffers[slot].buffer() : null;
       long inputOffset = vertexBuffer != null ? vertexBuffer.offset() : 0L;
@@ -137,7 +134,7 @@ class GlRenderPass implements RenderPassBackend {
    }
 
    @Override
-   public void setIndexBuffer(@Nullable final GpuBuffer indexBuffer, final IndexType indexType) {
+   public void setIndexBuffer(final @Nullable GpuBuffer indexBuffer, final IndexType indexType) {
       this.indexBuffer = indexBuffer;
       this.indexType = indexType;
       this.indexBufferDirty = true;

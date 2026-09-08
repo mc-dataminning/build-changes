@@ -28,8 +28,8 @@ public interface PlaceRecipeHelper {
       int gridIndex = 0;
 
       for (int gridYPos = 0; gridYPos < gridHeight; gridYPos++) {
-         boolean shouldCenterRecipe = (float)recipeHeight < (float)gridHeight / 2.0F;
-         int startPosCenterRecipe = Mth.floor((float)gridHeight / 2.0F - (float)recipeHeight / 2.0F);
+         boolean shouldCenterRecipe = recipeHeight < gridHeight / 2.0F;
+         int startPosCenterRecipe = Mth.floor(gridHeight / 2.0F - recipeHeight / 2.0F);
          if (shouldCenterRecipe && startPosCenterRecipe > gridYPos) {
             gridIndex += gridWidth;
             gridYPos++;
@@ -40,8 +40,8 @@ public interface PlaceRecipeHelper {
                return;
             }
 
-            shouldCenterRecipe = (float)recipeWidth < (float)gridWidth / 2.0F;
-            startPosCenterRecipe = Mth.floor((float)gridWidth / 2.0F - (float)recipeWidth / 2.0F);
+            shouldCenterRecipe = recipeWidth < gridWidth / 2.0F;
+            startPosCenterRecipe = Mth.floor(gridWidth / 2.0F - recipeWidth / 2.0F);
             int totalRecipeWidthInGrid = recipeWidth;
             boolean addIngredientToSlot = gridXPos < recipeWidth;
             if (shouldCenterRecipe) {
@@ -62,7 +62,7 @@ public interface PlaceRecipeHelper {
    }
 
    @FunctionalInterface
-   public interface Output<T> {
+   interface Output<T> {
       void addItemToSlot(T item, int gridIndex, int gridXPos, int gridYPos);
    }
 }

@@ -3,7 +3,6 @@ package net.minecraft.core;
 import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.Lifecycle;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -27,7 +26,7 @@ public interface HolderLookup<T> extends HolderGetter<T> {
       return this.listTags().map(HolderSet.Named::key);
    }
 
-   public interface Provider extends HolderGetter.Provider {
+   interface Provider extends HolderGetter.Provider {
       Stream<ResourceKey<? extends Registry<?>>> listRegistryKeys();
 
       default Stream<HolderLookup.RegistryLookup<?>> listRegistries() {
@@ -67,7 +66,7 @@ public interface HolderLookup<T> extends HolderGetter<T> {
       }
    }
 
-   public interface RegistryLookup<T> extends HolderLookup<T> {
+   interface RegistryLookup<T> extends HolderLookup<T> {
       ResourceKey<? extends Registry<? extends T>> key();
 
       Lifecycle registryLifecycle();
@@ -78,10 +77,6 @@ public interface HolderLookup<T> extends HolderGetter<T> {
 
       default HolderLookup.RegistryLookup<T> filterElements(final Predicate<T> filter) {
          return new HolderLookup.RegistryLookup.Delegate<T>() {
-            {
-               Objects.requireNonNull(RegistryLookup.this);
-            }
-
             @Override
             public HolderLookup.RegistryLookup<T> parent() {
                return RegistryLookup.this;
@@ -99,7 +94,7 @@ public interface HolderLookup<T> extends HolderGetter<T> {
          };
       }
 
-      public interface Delegate<T> extends HolderLookup.RegistryLookup<T> {
+      interface Delegate<T> extends HolderLookup.RegistryLookup<T> {
          HolderLookup.RegistryLookup<T> parent();
 
          @Override

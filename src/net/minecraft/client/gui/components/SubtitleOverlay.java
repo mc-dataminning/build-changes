@@ -84,10 +84,7 @@ public class SubtitleOverlay implements SoundEventListener {
                   int textWidth = this.minecraft.font.width(text);
                   int brightness = subtitle.getBrightness(closestRecentLocation, displayTimeMultiplier);
                   graphics.pose().pushMatrix();
-                  graphics.pose()
-                     .translate(
-                        (float)graphics.guiWidth() - (float)halfWidth * 1.0F - 2.0F, (float)(graphics.guiHeight() - 35) - (float)(row * (height + 1)) * 1.0F
-                     );
+                  graphics.pose().translate(graphics.guiWidth() - halfWidth * 1.0F - 2.0F, graphics.guiHeight() - 35 - row * (height + 1) * 1.0F);
                   graphics.pose().scale(1.0F, 1.0F);
                   graphics.fill(-halfWidth - 1, -halfHeight - 1, halfWidth + 1, halfHeight + 1, this.minecraft.options.getBackgroundColor(0.8F));
                   int textColor = ARGB.color(255, brightness, brightness, brightness);
@@ -125,7 +122,7 @@ public class SubtitleOverlay implements SoundEventListener {
       }
    }
 
-   private static record SoundPlayedAt(Vec3 location, long time) {
+   private record SoundPlayedAt(Vec3 location, long time) {
    }
 
    private static class Subtitle {
@@ -145,8 +142,8 @@ public class SubtitleOverlay implements SoundEventListener {
          int displayFullBrightnessTime = this.looping ? 500 : 0;
          return Mth.floor(
             Mth.clampedLerp(
-               (float)Math.max(0L, Util.getMillis() - closestRecentLocation.time - (long)displayFullBrightnessTime)
-                  / (float)((double)(3000L - (long)displayFullBrightnessTime) * displayTimeMultiplier),
+               (float)Math.max(0L, Util.getMillis() - closestRecentLocation.time - displayFullBrightnessTime)
+                  / (float)((3000L - displayFullBrightnessTime) * displayTimeMultiplier),
                255.0F,
                75.0F
             )
@@ -157,8 +154,7 @@ public class SubtitleOverlay implements SoundEventListener {
          return this.text;
       }
 
-      @Nullable
-      public SubtitleOverlay.SoundPlayedAt getBestSubtitleCandidate(final Vec3 position) {
+      public SubtitleOverlay.@Nullable SoundPlayedAt getBestSubtitleCandidate(final Vec3 position) {
          if (this.playedAt.isEmpty()) {
             return null;
          } else {
@@ -166,7 +162,7 @@ public class SubtitleOverlay implements SoundEventListener {
                ? this.playedAt.getFirst()
                : this.playedAt
                   .stream()
-                  .filter(soundPlayedAt -> soundPlayedAt.location.closerThan(position, (double)this.range))
+                  .filter(soundPlayedAt -> soundPlayedAt.location.closerThan(position, this.range))
                   .max(Comparator.comparingLong(SubtitleOverlay.SoundPlayedAt::time).thenComparingDouble(sound -> sound.location.distanceTo(position)))
                   .orElse(null);
          }
@@ -180,17 +176,19 @@ public class SubtitleOverlay implements SoundEventListener {
       public boolean isAudibleFrom(final Vec3 camera) {
          if (Float.isInfinite(this.range)) {
             return true;
-         } else if (this.playedAt.isEmpty()) {
-            return false;
-         } else {
-            SubtitleOverlay.SoundPlayedAt closest = this.getBestSubtitleCandidate(camera);
-            return closest == null ? false : camera.closerThan(closest.location, (double)this.range);
          }
+
+         if (this.playedAt.isEmpty()) {
+            return false;
+         }
+
+         SubtitleOverlay.SoundPlayedAt closest = this.getBestSubtitleCandidate(camera);
+         return closest == null ? false : camera.closerThan(closest.location, this.range);
       }
 
       public void purgeOldInstances(final double maxAge) {
          long currentTime = Util.getMillis();
-         this.playedAt.removeIf(soundPlayedAt -> (double)(currentTime - soundPlayedAt.time()) > maxAge);
+         this.playedAt.removeIf(soundPlayedAt -> currentTime - soundPlayedAt.time() > maxAge);
       }
 
       public boolean isStillActive() {

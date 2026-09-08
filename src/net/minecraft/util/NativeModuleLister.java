@@ -34,60 +34,60 @@ public class NativeModuleLister {
    public static List<NativeModuleLister.NativeModuleInfo> listModules() {
       if (!Platform.isWindows()) {
          return ImmutableList.of();
-      } else {
-         int selfHandle = Kernel32.INSTANCE.GetCurrentProcessId();
-         Builder<NativeModuleLister.NativeModuleInfo> result = ImmutableList.builder();
-
-         for (MODULEENTRY32W module : Kernel32Util.getModules(selfHandle)) {
-            String name = module.szModule();
-            Optional<NativeModuleLister.NativeModuleVersion> versionInfo = tryGetModuleVersion(module.szExePath());
-            result.add(new NativeModuleLister.NativeModuleInfo(name, versionInfo));
-         }
-
-         return result.build();
       }
+
+      int selfHandle = Kernel32.INSTANCE.GetCurrentProcessId();
+      Builder<NativeModuleLister.NativeModuleInfo> result = ImmutableList.builder();
+
+      for (MODULEENTRY32W module : Kernel32Util.getModules(selfHandle)) {
+         String name = module.szModule();
+         Optional<NativeModuleLister.NativeModuleVersion> versionInfo = tryGetModuleVersion(module.szExePath());
+         result.add(new NativeModuleLister.NativeModuleInfo(name, versionInfo));
+      }
+
+      return result.build();
    }
 
    public static Optional<NativeModuleLister.NativeModuleVersion> tryGetModuleVersion(final String path) {
       if (!Platform.isWindows()) {
          return Optional.empty();
-      } else {
-         try {
-            IntByReference dwDummy = new IntByReference();
-            int versionLength = Version.INSTANCE.GetFileVersionInfoSize(path, dwDummy);
-            if (versionLength == 0) {
-               int lastError = Native.getLastError();
-               if (lastError != 1813 && lastError != 1812) {
-                  throw new Win32Exception(lastError);
-               } else {
-                  return Optional.empty();
-               }
+      }
+
+      try {
+         IntByReference dwDummy = new IntByReference();
+         int versionLength = Version.INSTANCE.GetFileVersionInfoSize(path, dwDummy);
+         if (versionLength == 0) {
+            int lastError = Native.getLastError();
+            if (lastError != 1813 && lastError != 1812) {
+               throw new Win32Exception(lastError);
             } else {
-               Pointer lpData = new Memory((long)versionLength);
-               if (!Version.INSTANCE.GetFileVersionInfo(path, 0, versionLength, lpData)) {
-                  throw new Win32Exception(Native.getLastError());
-               } else {
-                  IntByReference size = new IntByReference();
-                  Pointer translationsBuffer = queryVersionValue(lpData, "\\VarFileInfo\\Translation", size);
-                  int[] langsAndCodepages = translationsBuffer.getIntArray(0L, size.getValue() / 4);
-                  OptionalInt maybeLangAndCodepage = findLangAndCodepage(langsAndCodepages);
-                  if (maybeLangAndCodepage.isEmpty()) {
-                     return Optional.empty();
-                  } else {
-                     int langAndCodepage = maybeLangAndCodepage.getAsInt();
-                     int lang = langAndCodepage & 65535;
-                     int codepage = (langAndCodepage & -65536) >> 16;
-                     String description = queryVersionString(lpData, langTableKey("FileDescription", lang, codepage), size);
-                     String companyName = queryVersionString(lpData, langTableKey("CompanyName", lang, codepage), size);
-                     String fileVersion = queryVersionString(lpData, langTableKey("FileVersion", lang, codepage), size);
-                     return Optional.of(new NativeModuleLister.NativeModuleVersion(description, fileVersion, companyName));
-                  }
-               }
+               return Optional.empty();
             }
-         } catch (Exception var14) {
-            LOGGER.info("Failed to find module info for {}", path, var14);
-            return Optional.empty();
+         } else {
+            Pointer lpData = new Memory(versionLength);
+            if (!Version.INSTANCE.GetFileVersionInfo(path, 0, versionLength, lpData)) {
+               throw new Win32Exception(Native.getLastError());
+            }
+
+            IntByReference size = new IntByReference();
+            Pointer translationsBuffer = queryVersionValue(lpData, "\\VarFileInfo\\Translation", size);
+            int[] langsAndCodepages = translationsBuffer.getIntArray(0L, size.getValue() / 4);
+            OptionalInt maybeLangAndCodepage = findLangAndCodepage(langsAndCodepages);
+            if (maybeLangAndCodepage.isEmpty()) {
+               return Optional.empty();
+            }
+
+            int langAndCodepage = maybeLangAndCodepage.getAsInt();
+            int lang = langAndCodepage & 65535;
+            int codepage = (langAndCodepage & -65536) >> 16;
+            String description = queryVersionString(lpData, langTableKey("FileDescription", lang, codepage), size);
+            String companyName = queryVersionString(lpData, langTableKey("CompanyName", lang, codepage), size);
+            String fileVersion = queryVersionString(lpData, langTableKey("FileVersion", lang, codepage), size);
+            return Optional.of(new NativeModuleLister.NativeModuleVersion(description, fileVersion, companyName));
          }
+      } catch (Exception e) {
+         LOGGER.info("Failed to find module info for {}", path, e);
+         return Optional.empty();
       }
    }
 
@@ -123,7 +123,7 @@ public class NativeModuleLister {
          Pointer ptr = queryVersionValue(lpData, key, outSize);
          byte[] result = ptr.getByteArray(0L, (outSize.getValue() - 1) * 2);
          return sanitize(new String(result, StandardCharsets.UTF_16LE));
-      } catch (Exception var5) {
+      } catch (Exception e) {
          return "";
       }
    }
@@ -138,14 +138,14 @@ public class NativeModuleLister {
       );
    }
 
-   public static record NativeModuleInfo(String name, Optional<NativeModuleLister.NativeModuleVersion> version) {
+   public record NativeModuleInfo(String name, Optional<NativeModuleLister.NativeModuleVersion> version) {
       @Override
       public String toString() {
          return this.version.<String>map(v -> this.name + ":" + v).orElse(this.name);
       }
    }
 
-   public static record NativeModuleVersion(String description, String version, String company) {
+   public record NativeModuleVersion(String description, String version, String company) {
       @Override
       public String toString() {
          return this.description + ":" + this.version + ":" + this.company;

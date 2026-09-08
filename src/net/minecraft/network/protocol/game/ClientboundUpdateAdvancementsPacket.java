@@ -45,7 +45,7 @@ public record ClientboundUpdateAdvancementsPacket(
       listener.handleUpdateAdvancementsPacket(this);
    }
 
-   public static record PositionedAdvancement(AdvancementHolder advancement, float x, float y) {
+   public record PositionedAdvancement(AdvancementHolder advancement, float x, float y) {
       public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundUpdateAdvancementsPacket.PositionedAdvancement> STREAM_CODEC = StreamCodec.composite(
          AdvancementHolder.STREAM_CODEC,
          ClientboundUpdateAdvancementsPacket.PositionedAdvancement::advancement,

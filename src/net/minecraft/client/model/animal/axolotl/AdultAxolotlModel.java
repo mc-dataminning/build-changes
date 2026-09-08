@@ -86,8 +86,8 @@ public class AdultAxolotlModel extends EntityModel<AxolotlRenderState> {
    private void setupLayStillOnGroundAnimation(final float ageInTicks, final float factor) {
       if (!(factor <= 1.0E-5F)) {
          float animMoveSpeed = ageInTicks * 0.09F;
-         float sineSway = Mth.sin((double)animMoveSpeed);
-         float cosineSway = Mth.cos((double)animMoveSpeed);
+         float sineSway = Mth.sin(animMoveSpeed);
+         float cosineSway = Mth.cos(animMoveSpeed);
          float movement = sineSway * sineSway - 2.0F * sineSway;
          float movement2 = cosineSway * cosineSway - 3.0F * sineSway;
          this.head.xRot += -0.09F * movement * factor;
@@ -108,13 +108,13 @@ public class AdultAxolotlModel extends EntityModel<AxolotlRenderState> {
    private void setupGroundCrawlingAnimation(final float ageInTicks, final float factor) {
       if (!(factor <= 1.0E-5F)) {
          float animMoveSpeed = ageInTicks * 0.11F;
-         float cosineSway = Mth.cos((double)animMoveSpeed);
+         float cosineSway = Mth.cos(animMoveSpeed);
          float hindLegYRotSway = (cosineSway * cosineSway - 2.0F * cosineSway) / 5.0F;
          float frontLegYRotSway = 0.7F * cosineSway;
          float headAndTailYRot = 0.09F * cosineSway * factor;
          this.head.yRot += headAndTailYRot;
          this.tail.yRot += headAndTailYRot;
-         float gillAngle = (0.6F - 0.08F * (cosineSway * cosineSway + 2.0F * Mth.sin((double)animMoveSpeed))) * factor;
+         float gillAngle = (0.6F - 0.08F * (cosineSway * cosineSway + 2.0F * Mth.sin(animMoveSpeed))) * factor;
          this.topGills.xRot += gillAngle;
          this.leftGills.yRot -= gillAngle;
          this.rightGills.yRot += gillAngle;
@@ -135,8 +135,8 @@ public class AdultAxolotlModel extends EntityModel<AxolotlRenderState> {
    private void setupWaterHoveringAnimation(final float ageInTicks, final float factor) {
       if (!(factor <= 1.0E-5F)) {
          float animMoveSpeed = ageInTicks * 0.075F;
-         float cosineSway = Mth.cos((double)animMoveSpeed);
-         float sineSway = Mth.sin((double)animMoveSpeed) * 0.15F;
+         float cosineSway = Mth.cos(animMoveSpeed);
+         float sineSway = Mth.sin(animMoveSpeed) * 0.15F;
          float bodyXRot = (-0.15F + 0.075F * cosineSway) * factor;
          this.body.xRot += bodyXRot;
          this.body.y -= sineSway * factor;
@@ -157,8 +157,8 @@ public class AdultAxolotlModel extends EntityModel<AxolotlRenderState> {
    private void setupSwimmingAnimation(final float ageInTicks, final float xRot, final float factor) {
       if (!(factor <= 1.0E-5F)) {
          float animMoveSpeed = ageInTicks * 0.33F;
-         float sineSway = Mth.sin((double)animMoveSpeed);
-         float cosineSway = Mth.cos((double)animMoveSpeed);
+         float sineSway = Mth.sin(animMoveSpeed);
+         float cosineSway = Mth.cos(animMoveSpeed);
          float bodySway = 0.13F * sineSway;
          this.body.xRot += (xRot * (float) (Math.PI / 180.0) + bodySway) * factor;
          this.head.xRot -= bodySway * 1.8F * factor;
@@ -167,7 +167,7 @@ public class AdultAxolotlModel extends EntityModel<AxolotlRenderState> {
          float gillYRot = (0.3F * sineSway + 0.9F) * factor;
          this.leftGills.yRot += gillYRot;
          this.rightGills.yRot -= gillYRot;
-         this.tail.yRot = this.tail.yRot + 0.3F * Mth.cos((double)(animMoveSpeed * 0.9F)) * factor;
+         this.tail.yRot = this.tail.yRot + 0.3F * Mth.cos(animMoveSpeed * 0.9F) * factor;
          this.leftHindLeg.xRot += 1.8849558F * factor;
          this.leftHindLeg.yRot += -0.4F * sineSway * factor;
          this.leftHindLeg.zRot += (float) (Math.PI / 2) * factor;

@@ -13,12 +13,12 @@ public record CustomModelData(List<Float> floats, List<Boolean> flags, List<Stri
    public static final CustomModelData EMPTY = new CustomModelData(List.of(), List.of(), List.of(), List.of());
    public static final Codec<CustomModelData> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.FLOAT.listOf().optionalFieldOf("floats", List.of()).forGetter(CustomModelData::floats),
-               Codec.BOOL.listOf().optionalFieldOf("flags", List.of()).forGetter(CustomModelData::flags),
-               Codec.STRING.listOf().optionalFieldOf("strings", List.of()).forGetter(CustomModelData::strings),
-               ExtraCodecs.RGB_COLOR_CODEC.listOf().optionalFieldOf("colors", List.of()).forGetter(CustomModelData::colors)
-            )
-            .apply(i, CustomModelData::new)
+            Codec.FLOAT.listOf().optionalFieldOf("floats", List.of()).forGetter(CustomModelData::floats),
+            Codec.BOOL.listOf().optionalFieldOf("flags", List.of()).forGetter(CustomModelData::flags),
+            Codec.STRING.listOf().optionalFieldOf("strings", List.of()).forGetter(CustomModelData::strings),
+            ExtraCodecs.RGB_COLOR_CODEC.listOf().optionalFieldOf("colors", List.of()).forGetter(CustomModelData::colors)
+         )
+         .apply(i, CustomModelData::new)
    );
    public static final StreamCodec<ByteBuf, CustomModelData> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.FLOAT.apply(ByteBufCodecs.list()),
@@ -32,28 +32,23 @@ public record CustomModelData(List<Float> floats, List<Boolean> flags, List<Stri
       CustomModelData::new
    );
 
-   @Nullable
-   private static <T> T getSafe(final List<T> values, final int index) {
+   private static <T> @Nullable T getSafe(final List<T> values, final int index) {
       return index >= 0 && index < values.size() ? values.get(index) : null;
    }
 
-   @Nullable
-   public Float getFloat(final int index) {
+   public @Nullable Float getFloat(final int index) {
       return getSafe(this.floats, index);
    }
 
-   @Nullable
-   public Boolean getBoolean(final int index) {
+   public @Nullable Boolean getBoolean(final int index) {
       return getSafe(this.flags, index);
    }
 
-   @Nullable
-   public String getString(final int index) {
+   public @Nullable String getString(final int index) {
       return getSafe(this.strings, index);
    }
 
-   @Nullable
-   public Integer getColor(final int index) {
+   public @Nullable Integer getColor(final int index) {
       return getSafe(this.colors, index);
    }
 }

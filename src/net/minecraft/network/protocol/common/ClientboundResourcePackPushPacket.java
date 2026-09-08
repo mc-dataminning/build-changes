@@ -28,15 +28,9 @@ public record ClientboundResourcePackPushPacket(UUID id, String url, String hash
       ClientboundResourcePackPushPacket::new
    );
 
-   public ClientboundResourcePackPushPacket(UUID id, String url, String hash, boolean required, Optional<Component> prompt) {
+   public ClientboundResourcePackPushPacket {
       if (hash.length() > 40) {
          throw new IllegalArgumentException("Hash is too long (max 40, was " + hash.length() + ")");
-      } else {
-         this.id = id;
-         this.url = url;
-         this.hash = hash;
-         this.required = required;
-         this.prompt = prompt;
       }
    }
 

@@ -30,19 +30,19 @@ public class BundleMouseActions implements ItemSlotMouseAction {
       int amountOfShownItems = BundleItem.getNumberOfItemsToShow(itemStack);
       if (amountOfShownItems == 0) {
          return false;
-      } else {
-         Vector2i wheelXY = this.scrollWheelHandler.onMouseScroll(scrollX, scrollY);
-         int wheel = wheelXY.y == 0 ? -wheelXY.x : wheelXY.y;
-         if (wheel != 0) {
-            int selectedItem = BundleItem.getSelectedItemIndex(itemStack);
-            int updatedSelectedItem = ScrollWheelHandler.getNextScrollWheelSelection((double)wheel, selectedItem, amountOfShownItems);
-            if (selectedItem != updatedSelectedItem) {
-               this.toggleSelectedBundleItem(itemStack, slotIndex, updatedSelectedItem);
-            }
-         }
-
-         return true;
       }
+
+      Vector2i wheelXY = this.scrollWheelHandler.onMouseScroll(scrollX, scrollY);
+      int wheel = wheelXY.y == 0 ? -wheelXY.x : wheelXY.y;
+      if (wheel != 0) {
+         int selectedItem = BundleItem.getSelectedItemIndex(itemStack);
+         int updatedSelectedItem = ScrollWheelHandler.getNextScrollWheelSelection(wheel, selectedItem, amountOfShownItems);
+         if (selectedItem != updatedSelectedItem) {
+            this.toggleSelectedBundleItem(itemStack, slotIndex, updatedSelectedItem);
+         }
+      }
+
+      return true;
    }
 
    @Override

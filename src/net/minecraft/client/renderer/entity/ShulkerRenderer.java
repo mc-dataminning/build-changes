@@ -33,21 +33,21 @@ public class ShulkerRenderer extends MobRenderer<Shulker, ShulkerRenderState, Sh
    public boolean shouldRender(final Shulker entity, final Frustum culler, final double camX, final double camY, final double camZ, final float partialTicks) {
       if (super.shouldRender(entity, culler, camX, camY, camZ, partialTicks)) {
          return true;
-      } else {
-         Vec3 startPos = entity.getRenderPosition(0.0F);
-         if (startPos == null) {
-            return false;
-         } else {
-            EntityType<?> type = entity.getType();
-            float halfHeight = type.getHeight() / 2.0F;
-            float halfWidth = type.getWidth() / 2.0F;
-            Vec3 targetPos = Vec3.atBottomCenterOf(entity.blockPosition());
-            return culler.isVisible(
-               new AABB(startPos.x, startPos.y + (double)halfHeight, startPos.z, targetPos.x, targetPos.y + (double)halfHeight, targetPos.z)
-                  .inflate((double)halfWidth, (double)halfHeight, (double)halfWidth)
-            );
-         }
       }
+
+      Vec3 startPos = entity.getRenderPosition(0.0F);
+      if (startPos == null) {
+         return false;
+      }
+
+      EntityType<?> type = entity.getType();
+      float halfHeight = type.getHeight() / 2.0F;
+      float halfWidth = type.getWidth() / 2.0F;
+      Vec3 targetPos = Vec3.atBottomCenterOf(entity.blockPosition());
+      return culler.isVisible(
+         new AABB(startPos.x, startPos.y + halfHeight, startPos.z, targetPos.x, targetPos.y + halfHeight, targetPos.z)
+            .inflate(halfWidth, halfHeight, halfWidth)
+      );
    }
 
    public Identifier getTextureLocation(final ShulkerRenderState state) {
@@ -68,7 +68,7 @@ public class ShulkerRenderer extends MobRenderer<Shulker, ShulkerRenderState, Sh
       state.attachFace = entity.getAttachFace();
    }
 
-   public static Identifier getTextureLocation(@Nullable final DyeColor color) {
+   public static Identifier getTextureLocation(final @Nullable DyeColor color) {
       return color == null ? DEFAULT_TEXTURE_LOCATION : TEXTURE_LOCATION[color.getId()];
    }
 

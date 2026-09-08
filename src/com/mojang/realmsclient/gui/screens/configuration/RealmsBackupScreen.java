@@ -46,11 +46,10 @@ public class RealmsBackupScreen extends RealmsScreen {
    public static final DateTimeFormatter SHORT_DATE_FORMAT = Util.localizedDateFormatter(FormatStyle.SHORT);
    private final RealmsConfigureWorldScreen lastScreen;
    private List<Backup> backups = Collections.emptyList();
-   private RealmsBackupScreen.BackupObjectSelectionList backupList;
+   private RealmsBackupScreen.@Nullable BackupObjectSelectionList backupList;
    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
    private final int slotId;
-   @Nullable
-   private Button downloadButton;
+   private @Nullable Button downloadButton;
    private final RealmsServer serverData;
    private boolean noBackups = false;
 
@@ -98,10 +97,6 @@ public class RealmsBackupScreen extends RealmsScreen {
 
    private void fetchRealmsBackups() {
       (new Thread("Realms-fetch-backups") {
-            {
-               Objects.requireNonNull(RealmsBackupScreen.this);
-            }
-
             @Override
             public void run() {
                RealmsClient client = RealmsClient.getOrCreate();
@@ -123,8 +118,8 @@ public class RealmsBackupScreen extends RealmsScreen {
                            }
                         }
                      );
-               } catch (RealmsServiceException var3) {
-                  RealmsBackupScreen.LOGGER.error("Couldn't request backups", var3);
+               } catch (RealmsServiceException e) {
+                  RealmsBackupScreen.LOGGER.error("Couldn't request backups", e);
                }
             }
          })
@@ -144,21 +139,21 @@ public class RealmsBackupScreen extends RealmsScreen {
                this,
                Component.translatable("mco.configure.world.restore.download.question.line1"),
                var1 -> this.minecraft
-                     .gui
-                     .setScreen(
-                        new RealmsLongRunningMcoTaskScreen(
-                           this.lastScreen.getNewScreen(),
-                           new DownloadTask(
-                              this.serverData.id,
-                              this.slotId,
-                              Objects.requireNonNullElse(this.serverData.name, "")
-                                 + " ("
-                                 + this.serverData.slots.get(this.serverData.activeSlot).options.getSlotName(this.serverData.activeSlot)
-                                 + ")",
-                              this
-                           )
+                  .gui
+                  .setScreen(
+                     new RealmsLongRunningMcoTaskScreen(
+                        this.lastScreen.getNewScreen(),
+                        new DownloadTask(
+                           this.serverData.id,
+                           this.slotId,
+                           Objects.requireNonNullElse(this.serverData.name, "")
+                              + " ("
+                              + this.serverData.slots.get(this.serverData.activeSlot).options.getSlotName(this.serverData.activeSlot)
+                              + ")",
+                           this
                         )
                      )
+                  )
             )
          );
    }
@@ -167,7 +162,6 @@ public class RealmsBackupScreen extends RealmsScreen {
       private static final int ITEM_HEIGHT = 36;
 
       public BackupObjectSelectionList() {
-         Objects.requireNonNull(RealmsBackupScreen.this);
          super(
             Minecraft.getInstance(),
             RealmsBackupScreen.this.width,
@@ -186,16 +180,11 @@ public class RealmsBackupScreen extends RealmsScreen {
    private class Entry extends ContainerObjectSelectionList.Entry<RealmsBackupScreen.Entry> {
       private static final int Y_PADDING = 2;
       private final Backup backup;
-      @Nullable
-      private Button restoreButton;
-      @Nullable
-      private Button changesButton;
-      private final List<AbstractWidget> children;
+      private @Nullable Button restoreButton;
+      private @Nullable Button changesButton;
+      private final List<AbstractWidget> children = new ArrayList<>();
 
       public Entry(final Backup backup) {
-         Objects.requireNonNull(RealmsBackupScreen.this);
-         super();
-         this.children = new ArrayList<>();
          this.backup = backup;
          this.populateChangeList(backup);
          if (!backup.changeList.isEmpty()) {

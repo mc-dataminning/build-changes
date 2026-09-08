@@ -13,8 +13,7 @@ import org.jspecify.annotations.Nullable;
 public class MerchantContainer implements Container {
    private final Merchant merchant;
    private final NonNullList<ItemStack> itemStacks = NonNullList.withSize(3, ItemStack.EMPTY);
-   @Nullable
-   private MerchantOffer activeOffer;
+   private @Nullable MerchantOffer activeOffer;
    private int selectionHint;
    private int futureXp;
 
@@ -48,14 +47,14 @@ public class MerchantContainer implements Container {
       ItemStack itemStack = this.itemStacks.get(slot);
       if (slot == 2 && !itemStack.isEmpty()) {
          return ContainerHelper.removeItem(this.itemStacks, slot, itemStack.getCount());
-      } else {
-         ItemStack result = ContainerHelper.removeItem(this.itemStacks, slot, count);
-         if (!result.isEmpty() && this.isPaymentSlot(slot)) {
-            this.updateSellItem();
-         }
-
-         return result;
       }
+
+      ItemStack result = ContainerHelper.removeItem(this.itemStacks, slot, count);
+      if (!result.isEmpty() && this.isPaymentSlot(slot)) {
+         this.updateSellItem();
+      }
+
+      return result;
    }
 
    private boolean isPaymentSlot(final int slot) {
@@ -124,8 +123,7 @@ public class MerchantContainer implements Container {
       }
    }
 
-   @Nullable
-   public MerchantOffer getActiveOffer() {
+   public @Nullable MerchantOffer getActiveOffer() {
       return this.activeOffer;
    }
 

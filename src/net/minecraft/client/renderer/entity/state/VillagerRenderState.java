@@ -5,12 +5,10 @@ import org.jspecify.annotations.Nullable;
 
 public class VillagerRenderState extends HoldingEntityRenderState implements VillagerDataHolderRenderState {
    public boolean isUnhappy;
-   @Nullable
-   public VillagerData villagerData;
+   public @Nullable VillagerData villagerData;
 
-   @Nullable
    @Override
-   public VillagerData getVillagerData() {
+   public @Nullable VillagerData getVillagerData() {
       return this.villagerData;
    }
 }

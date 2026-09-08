@@ -45,7 +45,7 @@ public class ItemEntityRenderer extends EntityRenderer<ItemEntity, ItemEntityRen
          poseStack.pushPose();
          AABB boundingBox = state.item.getModelBoundingBox();
          float minOffsetY = -((float)boundingBox.minY) + 0.0625F;
-         float bob = Mth.sin((double)(state.ageInTicks / 10.0F + state.bobOffset)) * 0.1F + 0.1F;
+         float bob = Mth.sin(state.ageInTicks / 10.0F + state.bobOffset) * 0.1F + 0.1F;
          poseStack.translate(0.0F, bob + minOffsetY, 0.0F);
          float spin = ItemEntity.getSpin(state.ageInTicks, state.bobOffset);
          poseStack.rotate(Axis.YP, spin);
@@ -75,7 +75,7 @@ public class ItemEntityRenderer extends EntityRenderer<ItemEntity, ItemEntityRen
    ) {
       int amount = state.count;
       if (amount != 0) {
-         random.setSeed((long)state.seed);
+         random.setSeed(state.seed);
          ItemStackRenderState item = state.item;
          float modelDepth = (float)modelBoundingBox.getZsize();
          if (modelDepth > 0.0625F) {
@@ -92,7 +92,7 @@ public class ItemEntityRenderer extends EntityRenderer<ItemEntity, ItemEntityRen
             }
          } else {
             float offsetZ = modelDepth * 1.5F;
-            poseStack.translate(0.0F, 0.0F, -(offsetZ * (float)(amount - 1) / 2.0F));
+            poseStack.translate(0.0F, 0.0F, -(offsetZ * (amount - 1) / 2.0F));
             item.submit(poseStack, submitNodeCollector, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
             poseStack.translate(0.0F, 0.0F, offsetZ);
 
@@ -119,7 +119,7 @@ public class ItemEntityRenderer extends EntityRenderer<ItemEntity, ItemEntityRen
       AABB modelBoundingBox = state.item.getModelBoundingBox();
       int amount = state.count;
       if (amount != 0) {
-         random.setSeed((long)state.seed);
+         random.setSeed(state.seed);
          ItemStackRenderState item = state.item;
          float modelDepth = (float)modelBoundingBox.getZsize();
          if (modelDepth > 0.0625F) {
@@ -136,7 +136,7 @@ public class ItemEntityRenderer extends EntityRenderer<ItemEntity, ItemEntityRen
             }
          } else {
             float offsetZ = modelDepth * 1.5F;
-            poseStack.translate(0.0F, 0.0F, -(offsetZ * (float)(amount - 1) / 2.0F));
+            poseStack.translate(0.0F, 0.0F, -(offsetZ * (amount - 1) / 2.0F));
             item.submit(poseStack, submitNodeCollector, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
             poseStack.translate(0.0F, 0.0F, offsetZ);
 

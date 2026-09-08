@@ -18,8 +18,7 @@ public class DragonSittingFlamingPhase extends AbstractDragonSittingPhase {
    private static final int WARMUP_TIME = 10;
    private int flameTicks;
    private int flameCount;
-   @Nullable
-   private AreaEffectCloud flame;
+   private @Nullable AreaEffectCloud flame;
 
    public DragonSittingFlamingPhase(final EnderDragon dragon) {
       super(dragon);
@@ -44,13 +43,7 @@ public class DragonSittingFlamingPhase extends AbstractDragonSittingPhase {
                this.dragon
                   .level()
                   .addParticle(
-                     PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 1.0F),
-                     px,
-                     py,
-                     pz,
-                     -look.x * 0.08F * (double)j,
-                     -look.y * 0.6F,
-                     -look.z * 0.08F * (double)j
+                     PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 1.0F), px, py, pz, -look.x * 0.08F * j, -look.y * 0.6F, -look.z * 0.08F * j
                   );
             }
 
@@ -75,7 +68,7 @@ public class DragonSittingFlamingPhase extends AbstractDragonSittingPhase {
          double z = this.dragon.head.getZ() + look.z * 5.0 / 2.0;
          double initialY = this.dragon.head.getY(0.5);
          double y = initialY;
-         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(x, initialY, z);
+         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(x, y, z);
 
          while (level.isEmptyBlock(pos)) {
             if (--y < 0.0) {
@@ -86,7 +79,7 @@ public class DragonSittingFlamingPhase extends AbstractDragonSittingPhase {
             pos.set(x, y, z);
          }
 
-         y = (double)(Mth.floor(y) + 1);
+         y = Mth.floor(y) + 1;
          this.flame = new AreaEffectCloud(level, x, y, z);
          this.flame.setOwner(this.dragon);
          this.flame.setRadius(5.0F);

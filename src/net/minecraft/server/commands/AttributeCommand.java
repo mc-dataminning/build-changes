@@ -54,21 +54,21 @@ public class AttributeCommand {
                                  ((LiteralArgumentBuilder)Commands.literal("get")
                                        .executes(
                                           c -> getAttributeValue(
-                                                (CommandSourceStack)c.getSource(),
-                                                EntityArgument.getEntity(c, "target"),
-                                                ResourceArgument.getAttribute(c, "attribute"),
-                                                1.0
-                                             )
+                                             (CommandSourceStack)c.getSource(),
+                                             EntityArgument.getEntity(c, "target"),
+                                             ResourceArgument.getAttribute(c, "attribute"),
+                                             1.0
+                                          )
                                        ))
                                     .then(
                                        Commands.argument("scale", DoubleArgumentType.doubleArg())
                                           .executes(
                                              c -> getAttributeValue(
-                                                   (CommandSourceStack)c.getSource(),
-                                                   EntityArgument.getEntity(c, "target"),
-                                                   ResourceArgument.getAttribute(c, "attribute"),
-                                                   DoubleArgumentType.getDouble(c, "scale")
-                                                )
+                                                (CommandSourceStack)c.getSource(),
+                                                EntityArgument.getEntity(c, "target"),
+                                                ResourceArgument.getAttribute(c, "attribute"),
+                                                DoubleArgumentType.getDouble(c, "scale")
+                                             )
                                           )
                                     )
                               ))
@@ -80,11 +80,11 @@ public class AttributeCommand {
                                                 Commands.argument("value", DoubleArgumentType.doubleArg())
                                                    .executes(
                                                       c -> setAttributeBase(
-                                                            (CommandSourceStack)c.getSource(),
-                                                            EntityArgument.getEntity(c, "target"),
-                                                            ResourceArgument.getAttribute(c, "attribute"),
-                                                            DoubleArgumentType.getDouble(c, "value")
-                                                         )
+                                                         (CommandSourceStack)c.getSource(),
+                                                         EntityArgument.getEntity(c, "target"),
+                                                         ResourceArgument.getAttribute(c, "attribute"),
+                                                         DoubleArgumentType.getDouble(c, "value")
+                                                      )
                                                    )
                                              )
                                        ))
@@ -92,21 +92,21 @@ public class AttributeCommand {
                                        ((LiteralArgumentBuilder)Commands.literal("get")
                                              .executes(
                                                 c -> getAttributeBase(
-                                                      (CommandSourceStack)c.getSource(),
-                                                      EntityArgument.getEntity(c, "target"),
-                                                      ResourceArgument.getAttribute(c, "attribute"),
-                                                      1.0
-                                                   )
+                                                   (CommandSourceStack)c.getSource(),
+                                                   EntityArgument.getEntity(c, "target"),
+                                                   ResourceArgument.getAttribute(c, "attribute"),
+                                                   1.0
+                                                )
                                              ))
                                           .then(
                                              Commands.argument("scale", DoubleArgumentType.doubleArg())
                                                 .executes(
                                                    c -> getAttributeBase(
-                                                         (CommandSourceStack)c.getSource(),
-                                                         EntityArgument.getEntity(c, "target"),
-                                                         ResourceArgument.getAttribute(c, "attribute"),
-                                                         DoubleArgumentType.getDouble(c, "scale")
-                                                      )
+                                                      (CommandSourceStack)c.getSource(),
+                                                      EntityArgument.getEntity(c, "target"),
+                                                      ResourceArgument.getAttribute(c, "attribute"),
+                                                      DoubleArgumentType.getDouble(c, "scale")
+                                                   )
                                                 )
                                           )
                                     ))
@@ -114,10 +114,10 @@ public class AttributeCommand {
                                     Commands.literal("reset")
                                        .executes(
                                           c -> resetAttributeBase(
-                                                (CommandSourceStack)c.getSource(),
-                                                EntityArgument.getEntity(c, "target"),
-                                                ResourceArgument.getAttribute(c, "attribute")
-                                             )
+                                             (CommandSourceStack)c.getSource(),
+                                             EntityArgument.getEntity(c, "target"),
+                                             ResourceArgument.getAttribute(c, "attribute")
+                                          )
                                        )
                                  )
                            ))
@@ -135,39 +135,39 @@ public class AttributeCommand {
                                                                Commands.literal("add_value")
                                                                   .executes(
                                                                      c -> addModifier(
-                                                                           (CommandSourceStack)c.getSource(),
-                                                                           EntityArgument.getEntity(c, "target"),
-                                                                           ResourceArgument.getAttribute(c, "attribute"),
-                                                                           IdentifierArgument.getId(c, "id"),
-                                                                           DoubleArgumentType.getDouble(c, "value"),
-                                                                           AttributeModifier.Operation.ADD_VALUE
-                                                                        )
+                                                                        (CommandSourceStack)c.getSource(),
+                                                                        EntityArgument.getEntity(c, "target"),
+                                                                        ResourceArgument.getAttribute(c, "attribute"),
+                                                                        IdentifierArgument.getId(c, "id"),
+                                                                        DoubleArgumentType.getDouble(c, "value"),
+                                                                        AttributeModifier.Operation.ADD_VALUE
+                                                                     )
                                                                   )
                                                             ))
                                                          .then(
                                                             Commands.literal("add_multiplied_base")
                                                                .executes(
                                                                   c -> addModifier(
-                                                                        (CommandSourceStack)c.getSource(),
-                                                                        EntityArgument.getEntity(c, "target"),
-                                                                        ResourceArgument.getAttribute(c, "attribute"),
-                                                                        IdentifierArgument.getId(c, "id"),
-                                                                        DoubleArgumentType.getDouble(c, "value"),
-                                                                        AttributeModifier.Operation.ADD_MULTIPLIED_BASE
-                                                                     )
+                                                                     (CommandSourceStack)c.getSource(),
+                                                                     EntityArgument.getEntity(c, "target"),
+                                                                     ResourceArgument.getAttribute(c, "attribute"),
+                                                                     IdentifierArgument.getId(c, "id"),
+                                                                     DoubleArgumentType.getDouble(c, "value"),
+                                                                     AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+                                                                  )
                                                                )
                                                          ))
                                                       .then(
                                                          Commands.literal("add_multiplied_total")
                                                             .executes(
                                                                c -> addModifier(
-                                                                     (CommandSourceStack)c.getSource(),
-                                                                     EntityArgument.getEntity(c, "target"),
-                                                                     ResourceArgument.getAttribute(c, "attribute"),
-                                                                     IdentifierArgument.getId(c, "id"),
-                                                                     DoubleArgumentType.getDouble(c, "value"),
-                                                                     AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
-                                                                  )
+                                                                  (CommandSourceStack)c.getSource(),
+                                                                  EntityArgument.getEntity(c, "target"),
+                                                                  ResourceArgument.getAttribute(c, "attribute"),
+                                                                  IdentifierArgument.getId(c, "id"),
+                                                                  DoubleArgumentType.getDouble(c, "value"),
+                                                                  AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
+                                                               )
                                                             )
                                                       )
                                                 )
@@ -179,19 +179,17 @@ public class AttributeCommand {
                                           Commands.argument("id", IdentifierArgument.id())
                                              .suggests(
                                                 (c, p) -> SharedSuggestionProvider.suggestResource(
-                                                      getAttributeModifiers(
-                                                         EntityArgument.getEntity(c, "target"), ResourceArgument.getAttribute(c, "attribute")
-                                                      ),
-                                                      p
-                                                   )
+                                                   getAttributeModifiers(EntityArgument.getEntity(c, "target"), ResourceArgument.getAttribute(c, "attribute")),
+                                                   p
+                                                )
                                              )
                                              .executes(
                                                 c -> removeModifier(
-                                                      (CommandSourceStack)c.getSource(),
-                                                      EntityArgument.getEntity(c, "target"),
-                                                      ResourceArgument.getAttribute(c, "attribute"),
-                                                      IdentifierArgument.getId(c, "id")
-                                                   )
+                                                   (CommandSourceStack)c.getSource(),
+                                                   EntityArgument.getEntity(c, "target"),
+                                                   ResourceArgument.getAttribute(c, "attribute"),
+                                                   IdentifierArgument.getId(c, "id")
+                                                )
                                              )
                                        )
                                  ))
@@ -203,31 +201,31 @@ public class AttributeCommand {
                                              ((RequiredArgumentBuilder)Commands.argument("id", IdentifierArgument.id())
                                                    .suggests(
                                                       (c, p) -> SharedSuggestionProvider.suggestResource(
-                                                            getAttributeModifiers(
-                                                               EntityArgument.getEntity(c, "target"), ResourceArgument.getAttribute(c, "attribute")
-                                                            ),
-                                                            p
-                                                         )
+                                                         getAttributeModifiers(
+                                                            EntityArgument.getEntity(c, "target"), ResourceArgument.getAttribute(c, "attribute")
+                                                         ),
+                                                         p
+                                                      )
                                                    )
                                                    .executes(
                                                       c -> getAttributeModifier(
-                                                            (CommandSourceStack)c.getSource(),
-                                                            EntityArgument.getEntity(c, "target"),
-                                                            ResourceArgument.getAttribute(c, "attribute"),
-                                                            IdentifierArgument.getId(c, "id"),
-                                                            1.0
-                                                         )
+                                                         (CommandSourceStack)c.getSource(),
+                                                         EntityArgument.getEntity(c, "target"),
+                                                         ResourceArgument.getAttribute(c, "attribute"),
+                                                         IdentifierArgument.getId(c, "id"),
+                                                         1.0
+                                                      )
                                                    ))
                                                 .then(
                                                    Commands.argument("scale", DoubleArgumentType.doubleArg())
                                                       .executes(
                                                          c -> getAttributeModifier(
-                                                               (CommandSourceStack)c.getSource(),
-                                                               EntityArgument.getEntity(c, "target"),
-                                                               ResourceArgument.getAttribute(c, "attribute"),
-                                                               IdentifierArgument.getId(c, "id"),
-                                                               DoubleArgumentType.getDouble(c, "scale")
-                                                            )
+                                                            (CommandSourceStack)c.getSource(),
+                                                            EntityArgument.getEntity(c, "target"),
+                                                            ResourceArgument.getAttribute(c, "attribute"),
+                                                            IdentifierArgument.getId(c, "id"),
+                                                            DoubleArgumentType.getDouble(c, "scale")
+                                                         )
                                                       )
                                                 )
                                           )
@@ -249,8 +247,8 @@ public class AttributeCommand {
    }
 
    private static LivingEntity getLivingEntity(final Entity target) throws CommandSyntaxException {
-      if (target instanceof LivingEntity) {
-         return (LivingEntity)target;
+      if (target instanceof LivingEntity livingEntity) {
+         return livingEntity;
       } else {
          throw ERROR_NOT_LIVING_ENTITY.create(target.getDisplayName());
       }
@@ -290,20 +288,16 @@ public class AttributeCommand {
       AttributeMap attributes = livingEntity.getAttributes();
       if (!attributes.hasModifier(attribute, id)) {
          throw ERROR_NO_SUCH_MODIFIER.create(target.getDisplayName(), getAttributeDescription(attribute), id);
-      } else {
-         double result = attributes.getModifierValue(attribute, id);
-         source.sendSuccess(
-            () -> Component.translatable(
-                  "commands.attribute.modifier.value.get.success",
-                  Component.translationArg(id),
-                  getAttributeDescription(attribute),
-                  target.getDisplayName(),
-                  result
-               ),
-            false
-         );
-         return (int)(result * scale);
       }
+
+      double result = attributes.getModifierValue(attribute, id);
+      source.sendSuccess(
+         () -> Component.translatable(
+            "commands.attribute.modifier.value.get.success", Component.translationArg(id), getAttributeDescription(attribute), target.getDisplayName(), result
+         ),
+         false
+      );
+      return (int)(result * scale);
    }
 
    private static Stream<Identifier> getAttributeModifiers(final Entity target, final Holder<Attribute> attribute) throws CommandSyntaxException {
@@ -323,14 +317,13 @@ public class AttributeCommand {
       LivingEntity livingTarget = getLivingEntity(target);
       if (!livingTarget.getAttributes().resetBaseValue(attribute)) {
          throw ERROR_NO_SUCH_ATTRIBUTE.create(target.getDisplayName(), getAttributeDescription(attribute));
-      } else {
-         double value = livingTarget.getAttributeBaseValue(attribute);
-         source.sendSuccess(
-            () -> Component.translatable("commands.attribute.base_value.reset.success", getAttributeDescription(attribute), target.getDisplayName(), value),
-            false
-         );
-         return 1;
       }
+
+      double value = livingTarget.getAttributeBaseValue(attribute);
+      source.sendSuccess(
+         () -> Component.translatable("commands.attribute.base_value.reset.success", getAttributeDescription(attribute), target.getDisplayName(), value), false
+      );
+      return 1;
    }
 
    private static int addModifier(
@@ -345,16 +338,16 @@ public class AttributeCommand {
       AttributeModifier modifier = new AttributeModifier(id, value, operation);
       if (attributeInstance.hasModifier(id)) {
          throw ERROR_MODIFIER_ALREADY_PRESENT.create(target.getDisplayName(), getAttributeDescription(attribute), id);
-      } else {
-         attributeInstance.addPermanentModifier(modifier);
-         source.sendSuccess(
-            () -> Component.translatable(
-                  "commands.attribute.modifier.add.success", Component.translationArg(id), getAttributeDescription(attribute), target.getDisplayName()
-               ),
-            false
-         );
-         return 1;
       }
+
+      attributeInstance.addPermanentModifier(modifier);
+      source.sendSuccess(
+         () -> Component.translatable(
+            "commands.attribute.modifier.add.success", Component.translationArg(id), getAttributeDescription(attribute), target.getDisplayName()
+         ),
+         false
+      );
+      return 1;
    }
 
    private static int removeModifier(final CommandSourceStack source, final Entity target, final Holder<Attribute> attribute, final Identifier id) throws CommandSyntaxException {
@@ -362,8 +355,8 @@ public class AttributeCommand {
       if (attributeInstance.removeModifier(id)) {
          source.sendSuccess(
             () -> Component.translatable(
-                  "commands.attribute.modifier.remove.success", Component.translationArg(id), getAttributeDescription(attribute), target.getDisplayName()
-               ),
+               "commands.attribute.modifier.remove.success", Component.translationArg(id), getAttributeDescription(attribute), target.getDisplayName()
+            ),
             false
          );
          return 1;

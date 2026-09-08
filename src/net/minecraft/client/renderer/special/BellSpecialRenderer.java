@@ -39,7 +39,7 @@ public class BellSpecialRenderer implements NoDataSpecialModelRenderer {
       this.model.root().getExtentsForGui(poseStack, output);
    }
 
-   public static record Unbaked() implements NoDataSpecialModelRenderer.Unbaked {
+   public record Unbaked() implements NoDataSpecialModelRenderer.Unbaked {
       public static final MapCodec<BellSpecialRenderer.Unbaked> MAP_CODEC = MapCodec.unit(new BellSpecialRenderer.Unbaked());
 
       @Override

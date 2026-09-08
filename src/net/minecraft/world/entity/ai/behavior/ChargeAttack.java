@@ -66,9 +66,7 @@ public class ChargeAttack extends Behavior<Animal> {
          LivingEntity attackTarget = attackCandidate.get();
          if (body instanceof TamableAnimal tamedAnimal && tamedAnimal.isTame()) {
             return false;
-         }
-
-         if (body.position().subtract(this.startPosition).lengthSqr() >= this.maxChargeDistance * this.maxChargeDistance) {
+         } else if (body.position().subtract(this.startPosition).lengthSqr() >= this.maxChargeDistance * this.maxChargeDistance) {
             return false;
          } else if (attackTarget.position().subtract(body.position()).lengthSqr() >= this.maxTargetDetectionDistance * this.maxTargetDetectionDistance) {
             return false;
@@ -83,7 +81,7 @@ public class ChargeAttack extends Behavior<Animal> {
       this.startPosition = body.position();
       LivingEntity attackCandidate = brain.getMemory(MemoryModuleType.ATTACK_TARGET).get();
       Vec3 direction = attackCandidate.position().subtract(body.position()).normalize();
-      this.chargeVelocityVector = direction.scale((double)this.speed);
+      this.chargeVelocityVector = direction.scale(this.speed);
       if (this.canStillUse(level, body, timestamp)) {
          body.playSound(this.chargeSound);
       }
@@ -121,7 +119,7 @@ public class ChargeAttack extends Behavior<Animal> {
    private void dealKnockBack(final ServerLevel level, final Animal body, final LivingEntity target) {
       int movementSpeedLevel = body.hasEffect(MobEffects.SPEED) ? body.getEffect(MobEffects.SPEED).getAmplifier() + 1 : 0;
       int movementSlowdownLevel = body.hasEffect(MobEffects.SLOWNESS) ? body.getEffect(MobEffects.SLOWNESS).getAmplifier() + 1 : 0;
-      float speedBoostPower = 0.25F * (float)(movementSpeedLevel - movementSlowdownLevel);
+      float speedBoostPower = 0.25F * (movementSpeedLevel - movementSlowdownLevel);
       float speedFactor = Mth.clamp(this.speed * (float)body.getAttributeValue(Attributes.MOVEMENT_SPEED), 0.2F, 2.0F) + speedBoostPower;
       DamageSource damageSource = level.damageSources().mobAttack(body);
       float damage = (float)body.getAttributeValue(Attributes.ATTACK_DAMAGE);

@@ -44,7 +44,7 @@ public class EvokerFangsModel extends EntityModel<EvokerFangsRenderState> {
       biteAmount = 1.0F - biteAmount * biteAmount * biteAmount;
       this.upperJaw.zRot = (float) Math.PI - biteAmount * 0.35F * (float) Math.PI;
       this.lowerJaw.zRot = (float) Math.PI + biteAmount * 0.35F * (float) Math.PI;
-      this.base.y = this.base.y - (biteProgress + Mth.sin((double)(biteProgress * 2.7F))) * 7.2F;
+      this.base.y = this.base.y - (biteProgress + Mth.sin(biteProgress * 2.7F)) * 7.2F;
       float preScale = 1.0F;
       if (biteProgress > 0.9F) {
          preScale *= (1.0F - biteProgress) / 0.1F;

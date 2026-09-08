@@ -49,16 +49,16 @@ public abstract class FoxModel extends EntityModel<FoxRenderState> {
       if (state.isSleeping) {
          this.head.xRot = 0.0F;
          this.head.yRot = (float) (-Math.PI * 2.0 / 3.0);
-         this.head.zRot = Mth.cos((double)(state.ageInTicks * 0.027F)) / 22.0F;
+         this.head.zRot = Mth.cos(state.ageInTicks * 0.027F) / 22.0F;
       }
 
       if (state.isFaceplanted) {
          float legMoveFactor = 0.1F;
          this.legMotionPos += 0.67F;
-         this.rightHindLeg.xRot = Mth.cos((double)(this.legMotionPos * 0.4662F)) * 0.1F;
-         this.leftHindLeg.xRot = Mth.cos((double)(this.legMotionPos * 0.4662F + (float) Math.PI)) * 0.1F;
-         this.rightFrontLeg.xRot = Mth.cos((double)(this.legMotionPos * 0.4662F + (float) Math.PI)) * 0.1F;
-         this.leftFrontLeg.xRot = Mth.cos((double)(this.legMotionPos * 0.4662F)) * 0.1F;
+         this.rightHindLeg.xRot = Mth.cos(this.legMotionPos * 0.4662F) * 0.1F;
+         this.leftHindLeg.xRot = Mth.cos(this.legMotionPos * 0.4662F + (float) Math.PI) * 0.1F;
+         this.rightFrontLeg.xRot = Mth.cos(this.legMotionPos * 0.4662F + (float) Math.PI) * 0.1F;
+         this.leftFrontLeg.xRot = Mth.cos(this.legMotionPos * 0.4662F) * 0.1F;
       }
    }
 
@@ -85,7 +85,7 @@ public abstract class FoxModel extends EntityModel<FoxRenderState> {
    protected void setCrouchingPose(final FoxRenderState state) {
       this.body.xRot += 0.10471976F;
       this.head.y = this.head.y + state.crouchAmount * state.ageScale;
-      float wiggleAmount = Mth.cos((double)state.ageInTicks) * 0.05F;
+      float wiggleAmount = Mth.cos(state.ageInTicks) * 0.05F;
       this.body.yRot = wiggleAmount;
       this.rightHindLeg.zRot = wiggleAmount;
       this.leftHindLeg.zRot = wiggleAmount;

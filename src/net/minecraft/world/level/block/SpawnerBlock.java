@@ -24,9 +24,8 @@ public class SpawnerBlock extends BaseEntityBlock {
       return new SpawnerBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return createTickerHelper(type, BlockEntityTypes.MOB_SPAWNER, level.isClientSide() ? SpawnerBlockEntity::clientTick : SpawnerBlockEntity::serverTick);
    }
 

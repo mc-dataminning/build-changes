@@ -17,18 +17,20 @@ public interface BitRandomSource extends RandomSource {
    default int nextInt(final int bound) {
       if (bound <= 0) {
          throw new IllegalArgumentException("Bound must be positive");
-      } else if ((bound & bound - 1) == 0) {
-         return (int)((long)bound * (long)this.next(31) >> 31);
-      } else {
-         int sample;
-         int modulo;
-         do {
-            sample = this.next(31);
-            modulo = sample % bound;
-         } while (sample - modulo + (bound - 1) < 0);
-
-         return modulo;
       }
+
+      if ((bound & bound - 1) == 0) {
+         return (int)((long)bound * this.next(31) >> 31);
+      }
+
+      int sample;
+      int modulo;
+      do {
+         sample = this.next(31);
+         modulo = sample % bound;
+      } while (sample - modulo + (bound - 1) < 0);
+
+      return modulo;
    }
 
    @Override
@@ -36,7 +38,7 @@ public interface BitRandomSource extends RandomSource {
       int upper = this.next(32);
       int lower = this.next(32);
       long shifted = (long)upper << 32;
-      return shifted + (long)lower;
+      return shifted + lower;
    }
 
    @Override
@@ -46,14 +48,14 @@ public interface BitRandomSource extends RandomSource {
 
    @Override
    default float nextFloat() {
-      return (float)this.next(24) * 5.9604645E-8F;
+      return this.next(24) * 5.9604645E-8F;
    }
 
    @Override
    default double nextDouble() {
       int upper = this.next(26);
       int lower = this.next(27);
-      long combined = ((long)upper << 27) + (long)lower;
-      return (double)combined * 1.110223E-16F;
+      long combined = ((long)upper << 27) + lower;
+      return combined * 1.110223E-16F;
    }
 }

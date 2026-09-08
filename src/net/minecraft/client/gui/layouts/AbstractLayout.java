@@ -71,15 +71,15 @@ public abstract class AbstractLayout implements Layout {
       }
 
       public void setX(final int x, final int availableSpace) {
-         float leastOffset = (float)this.layoutSettings.paddingLeft;
-         float mostOffset = (float)(availableSpace - this.child.getWidth() - this.layoutSettings.paddingRight);
+         float leastOffset = this.layoutSettings.paddingLeft;
+         float mostOffset = availableSpace - this.child.getWidth() - this.layoutSettings.paddingRight;
          int offset = (int)Mth.lerp(this.layoutSettings.xAlignment, leastOffset, mostOffset);
          this.child.setX(offset + x);
       }
 
       public void setY(final int y, final int availableSpace) {
-         float leastOffset = (float)this.layoutSettings.paddingTop;
-         float mostOffset = (float)(availableSpace - this.child.getHeight() - this.layoutSettings.paddingBottom);
+         float leastOffset = this.layoutSettings.paddingTop;
+         float mostOffset = availableSpace - this.child.getHeight() - this.layoutSettings.paddingBottom;
          int offset = Math.round(Mth.lerp(this.layoutSettings.yAlignment, leastOffset, mostOffset));
          this.child.setY(offset + y);
       }

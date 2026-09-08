@@ -3,7 +3,6 @@ package net.minecraft.client.multiplayer;
 import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Stream;
 import net.minecraft.client.Minecraft;
@@ -50,10 +49,8 @@ public class ClientConfigurationPacketListenerImpl extends ClientCommonPacketLis
    private FeatureFlagSet enabledFeatures;
    private final RegistryAccess.Frozen receivedRegistries;
    private final RegistryDataCollector registryDataCollector = new RegistryDataCollector();
-   @Nullable
-   private KnownPacksManager knownPacks;
-   @Nullable
-   protected ChatComponent.State chatState;
+   private @Nullable KnownPacksManager knownPacks;
+   protected ChatComponent.@Nullable State chatState;
    private boolean seenCodeOfConduct;
 
    public ClientConfigurationPacketListenerImpl(final Minecraft minecraft, final Connection connection, final CommonListenerCookie cookie) {
@@ -115,13 +112,10 @@ public class ClientConfigurationPacketListenerImpl extends ClientCommonPacketLis
    private <T> T runWithResources(final Function<ResourceProvider, T> operation) {
       if (this.knownPacks == null) {
          return operation.apply(ResourceProvider.EMPTY);
-      } else {
-         Object var3;
-         try (CloseableResourceManager manager = this.knownPacks.createResourceManager()) {
-            var3 = operation.apply(manager);
-         }
+      }
 
-         return (T)var3;
+      try (CloseableResourceManager manager = this.knownPacks.createResourceManager()) {
+         return operation.apply(manager);
       }
    }
 
@@ -130,22 +124,22 @@ public class ClientConfigurationPacketListenerImpl extends ClientCommonPacketLis
       PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
       if (this.seenCodeOfConduct) {
          throw new IllegalStateException("Server sent duplicate Code of Conduct");
+      }
+
+      this.seenCodeOfConduct = true;
+      String codeOfConduct = packet.codeOfConduct();
+      if (this.serverData != null && this.serverData.hasAcceptedCodeOfConduct(codeOfConduct)) {
+         this.send(ServerboundAcceptCodeOfConductPacket.INSTANCE);
       } else {
-         this.seenCodeOfConduct = true;
-         String codeOfConduct = packet.codeOfConduct();
-         if (this.serverData != null && this.serverData.hasAcceptedCodeOfConduct(codeOfConduct)) {
-            this.send(ServerboundAcceptCodeOfConductPacket.INSTANCE);
-         } else {
-            Screen lastScreen = this.minecraft.gui.screen();
-            this.minecraft.gui.setScreen(new CodeOfConductScreen(this.serverData, lastScreen, codeOfConduct, accepted -> {
-               if (accepted) {
-                  this.send(ServerboundAcceptCodeOfConductPacket.INSTANCE);
-                  this.minecraft.gui.setScreen(lastScreen);
-               } else {
-                  this.createDialogAccess().disconnect(DISCONNECTED_MESSAGE);
-               }
-            }));
-         }
+         Screen lastScreen = this.minecraft.gui.screen();
+         this.minecraft.gui.setScreen(new CodeOfConductScreen(this.serverData, lastScreen, codeOfConduct, accepted -> {
+            if (accepted) {
+               this.send(ServerboundAcceptCodeOfConductPacket.INSTANCE);
+               this.minecraft.gui.setScreen(lastScreen);
+            } else {
+               this.createDialogAccess().disconnect(DISCONNECTED_MESSAGE);
+            }
+         }));
       }
    }
 
@@ -154,7 +148,7 @@ public class ClientConfigurationPacketListenerImpl extends ClientCommonPacketLis
       PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
       RegistryAccess.Frozen registries = this.runWithResources(
          knownPacksProvider -> this.registryDataCollector
-               .collectGameRegistries(knownPacksProvider, this.receivedRegistries, this.connection.isMemoryConnection())
+            .collectGameRegistries(knownPacksProvider, this.receivedRegistries, this.connection.isMemoryConnection())
       );
       IntegratedServer localServer = this.minecraft.getSingleplayerServer();
       if (localServer != null) {
@@ -188,10 +182,6 @@ public class ClientConfigurationPacketListenerImpl extends ClientCommonPacketLis
       this.connection.send(ServerboundFinishConfigurationPacket.INSTANCE);
       this.connection
          .setupOutboundProtocol(GameProtocols.SERVERBOUND_TEMPLATE.bind(RegistryFriendlyByteBuf.decorator(registries), new GameProtocols.Context() {
-            {
-               Objects.requireNonNull(ClientConfigurationPacketListenerImpl.this);
-            }
-
             @Override
             public boolean hasInfiniteMaterials() {
                return true;
@@ -223,12 +213,8 @@ public class ClientConfigurationPacketListenerImpl extends ClientCommonPacketLis
    @Override
    protected DialogConnectionAccess createDialogAccess() {
       return new ClientCommonPacketListenerImpl.CommonDialogAccess() {
-         {
-            Objects.requireNonNull(ClientConfigurationPacketListenerImpl.this);
-         }
-
          @Override
-         public void runCommand(final String command, @Nullable final Screen activeScreen) {
+         public void runCommand(final String command, final @Nullable Screen activeScreen) {
             ClientConfigurationPacketListenerImpl.LOGGER.warn("Commands are not supported in configuration phase, trying to run '{}'", command);
          }
       };

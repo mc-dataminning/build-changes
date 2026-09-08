@@ -34,10 +34,10 @@ public class BellRenderer implements BlockEntityRenderer<BellBlockEntity, BellRe
       final BellRenderState state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-      state.ticks = (float)blockEntity.ticks + partialTicks;
+      state.ticks = blockEntity.ticks + partialTicks;
       state.shakeDirection = blockEntity.shaking ? blockEntity.clickDirection : null;
    }
 

@@ -12,7 +12,7 @@ public record IsUsingItem() implements ConditionalItemModelProperty {
 
    @Override
    public boolean get(
-      final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final LivingEntity owner, final int seed, final ItemDisplayContext displayContext
+      final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner, final int seed, final ItemDisplayContext displayContext
    ) {
       return owner == null ? false : owner.isUsingItem() && owner.getUseItem() == itemStack;
    }

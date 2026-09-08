@@ -36,18 +36,18 @@ public record FossilFeature(
 ) implements Feature {
    public static final MapCodec<FossilFeature> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  ExtraCodecs.nonEmptyList(Identifier.CODEC.listOf()).fieldOf("fossil_structures").forGetter(FossilFeature::fossilStructures),
-                  ExtraCodecs.nonEmptyList(Identifier.CODEC.listOf()).fieldOf("overlay_structures").forGetter(FossilFeature::overlayStructures),
-                  StructureProcessorType.LIST_CODEC.fieldOf("fossil_processors").forGetter(FossilFeature::fossilProcessors),
-                  StructureProcessorType.LIST_CODEC.fieldOf("overlay_processors").forGetter(FossilFeature::overlayProcessors),
-                  Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter(FossilFeature::maxEmptyCornersAllowed)
-               )
-               .apply(i, FossilFeature::new)
+               ExtraCodecs.nonEmptyList(Identifier.CODEC.listOf()).fieldOf("fossil_structures").forGetter(FossilFeature::fossilStructures),
+               ExtraCodecs.nonEmptyList(Identifier.CODEC.listOf()).fieldOf("overlay_structures").forGetter(FossilFeature::overlayStructures),
+               StructureProcessorType.LIST_CODEC.fieldOf("fossil_processors").forGetter(FossilFeature::fossilProcessors),
+               StructureProcessorType.LIST_CODEC.fieldOf("overlay_processors").forGetter(FossilFeature::overlayProcessors),
+               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter(FossilFeature::maxEmptyCornersAllowed)
+            )
+            .apply(i, FossilFeature::new)
       )
       .validate(
          fossil -> fossil.fossilStructures.size() == fossil.overlayStructures.size()
-               ? DataResult.success(fossil)
-               : DataResult.error(() -> "Fossil structure lists must be equal lengths")
+            ? DataResult.success(fossil)
+            : DataResult.error(() -> "Fossil structure lists must be equal lengths")
       );
 
    @Override
@@ -86,15 +86,15 @@ public record FossilFeature(
       BlockPos targetPos = fossilBase.getZeroPositionWithTransform(lowCorner.atY(targetY), Mirror.NONE, rotation);
       if (countEmptyCorners(level, fossilBase.getBoundingBox(settings, targetPos)) > this.maxEmptyCornersAllowed()) {
          return false;
-      } else {
-         settings.clearProcessors();
-         this.fossilProcessors().value().list().forEach(settings::addProcessor);
-         fossilBase.placeInWorld(level, targetPos, targetPos, settings, random, 260);
-         settings.clearProcessors();
-         this.overlayProcessors().value().list().forEach(settings::addProcessor);
-         fossilOverlay.placeInWorld(level, targetPos, targetPos, settings, random, 260);
-         return true;
       }
+
+      settings.clearProcessors();
+      this.fossilProcessors().value().list().forEach(settings::addProcessor);
+      fossilBase.placeInWorld(level, targetPos, targetPos, settings, random, 260);
+      settings.clearProcessors();
+      this.overlayProcessors().value().list().forEach(settings::addProcessor);
+      fossilOverlay.placeInWorld(level, targetPos, targetPos, settings, random, 260);
+      return true;
    }
 
    private static int countEmptyCorners(final WorldGenLevel level, final BoundingBox structureBounds) {

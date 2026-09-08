@@ -12,8 +12,7 @@ import net.minecraft.util.random.WeightedList;
 public class WeightedVariants implements BlockStateModel {
    private final WeightedList<BlockStateModel> list;
    private final Material.Baked particleMaterial;
-   @BakedQuad.MaterialFlags
-   private final int materialFlags;
+   private final @BakedQuad.MaterialFlags int materialFlags;
 
    public WeightedVariants(final WeightedList<BlockStateModel> list) {
       this.list = list;
@@ -22,8 +21,7 @@ public class WeightedVariants implements BlockStateModel {
       this.materialFlags = computeMaterialFlags(list);
    }
 
-   @BakedQuad.MaterialFlags
-   private static int computeMaterialFlags(final WeightedList<BlockStateModel> list) {
+   private static @BakedQuad.MaterialFlags int computeMaterialFlags(final WeightedList<BlockStateModel> list) {
       int flags = 0;
 
       for (Weighted<BlockStateModel> entry : list.unwrap()) {
@@ -38,9 +36,8 @@ public class WeightedVariants implements BlockStateModel {
       return this.particleMaterial;
    }
 
-   @BakedQuad.MaterialFlags
    @Override
-   public int materialFlags() {
+   public @BakedQuad.MaterialFlags int materialFlags() {
       return this.materialFlags;
    }
 
@@ -49,7 +46,7 @@ public class WeightedVariants implements BlockStateModel {
       this.list.getRandomOrThrow(random).collectParts(random, output);
    }
 
-   public static record Unbaked(WeightedList<BlockStateModel.Unbaked> entries) implements BlockStateModel.Unbaked {
+   public record Unbaked(WeightedList<BlockStateModel.Unbaked> entries) implements BlockStateModel.Unbaked {
       @Override
       public BlockStateModel bake(final ModelBaker modelBakery) {
          return new WeightedVariants(this.entries.map(m -> m.bake(modelBakery)));

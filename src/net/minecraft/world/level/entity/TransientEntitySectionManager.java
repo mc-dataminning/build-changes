@@ -3,7 +3,6 @@ package net.minecraft.world.level.entity;
 import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
 import net.minecraft.util.VisibleForDebug;
@@ -87,8 +86,6 @@ public class TransientEntitySectionManager<T extends EntityAccess> {
       private EntitySection<T> currentSection;
 
       private Callback(final T entity, final long currentSectionKey, final EntitySection<T> currentSection) {
-         Objects.requireNonNull(TransientEntitySectionManager.this);
-         super();
          this.entity = entity;
          this.currentSectionKey = currentSectionKey;
          this.currentSection = currentSection;

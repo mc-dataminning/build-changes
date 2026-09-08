@@ -24,7 +24,6 @@ import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.ssl.SslContext;
 import java.net.InetSocketAddress;
-import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
@@ -41,11 +40,9 @@ public class ManagementServer {
    private static final Logger LOGGER = LogUtils.getLogger();
    private final HostAndPort hostAndPort;
    private final AuthenticationHandler authenticationHandler;
-   @Nullable
-   private Channel serverChannel;
+   private @Nullable Channel serverChannel;
    private final EventLoopGroup eventLoopGroup;
-   @Nullable
-   private ScheduledFuture<?> heartbeat;
+   private @Nullable ScheduledFuture<?> heartbeat;
    private final Set<Connection> connections = Sets.newIdentityHashSet();
 
    public ManagementServer(final HostAndPort hostAndPort, final AuthenticationHandler authenticationHandler) {
@@ -66,13 +63,13 @@ public class ManagementServer {
       if (this.heartbeat != null && !this.heartbeat.cancel(true)) {
          LOGGER.warn("The existing heartbeat was not canceled and the new heartbeat of {} seconds has not been applied.", period);
          return false;
-      } else {
-         if (period > 0L) {
-            this.heartbeat = this.eventLoopGroup.scheduleAtFixedRate(notificationManager::statusHeartbeat, period, period, TimeUnit.SECONDS);
-         }
-
-         return true;
       }
+
+      if (period > 0L) {
+         this.heartbeat = this.eventLoopGroup.scheduleAtFixedRate(notificationManager::statusHeartbeat, period, period, TimeUnit.SECONDS);
+      }
+
+      return true;
    }
 
    public void onConnected(final Connection connection) {
@@ -95,16 +92,12 @@ public class ManagementServer {
       this.start(minecraftApi, sslContext);
    }
 
-   private void start(final MinecraftApi minecraftApi, @Nullable final SslContext sslContext) {
+   private void start(final MinecraftApi minecraftApi, final @Nullable SslContext sslContext) {
       final JsonRpcLogger jsonrpcLogger = new JsonRpcLogger();
       ChannelFuture channel = ((ServerBootstrap)((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().handler(new LoggingHandler(LogLevel.DEBUG)))
                .channel(NioServerSocketChannel.class))
             .childHandler(
                new ChannelInitializer<Channel>() {
-                  {
-                     Objects.requireNonNull(ManagementServer.this);
-                  }
-
                   protected void initChannel(final Channel channel) {
                      try {
                         channel.config().setOption(ChannelOption.TCP_NODELAY, true);

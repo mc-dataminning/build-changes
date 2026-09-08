@@ -31,18 +31,15 @@ public class RealmsServer extends ValueObject implements ReflectionBasedSerializ
    @SerializedName("id")
    public long id = -1L;
    @SerializedName("remoteSubscriptionId")
-   @Nullable
-   public String remoteSubscriptionId;
+   public @Nullable String remoteSubscriptionId;
    @SerializedName("name")
-   @Nullable
-   public String name;
+   public @Nullable String name;
    @SerializedName("motd")
    public String motd = "";
    @SerializedName("state")
    public RealmsServer.State state = RealmsServer.State.CLOSED;
    @SerializedName("owner")
-   @Nullable
-   public String owner;
+   public @Nullable String owner;
    @SerializedName("ownerUUID")
    @JsonAdapter(UUIDTypeAdapter.class)
    public UUID ownerUUID = Util.NIL_UUID;
@@ -67,37 +64,31 @@ public class RealmsServer extends ValueObject implements ReflectionBasedSerializ
    @SerializedName("activeSlot")
    public int activeSlot = -1;
    @SerializedName("minigameName")
-   @Nullable
-   public String minigameName;
+   public @Nullable String minigameName;
    @SerializedName("minigameId")
    public int minigameId = -1;
    @SerializedName("minigameImage")
-   @Nullable
-   public String minigameImage;
+   public @Nullable String minigameImage;
    @SerializedName("parentWorldId")
    public long parentRealmId = -1L;
    @SerializedName("parentWorldName")
-   @Nullable
-   public String parentWorldName;
+   public @Nullable String parentWorldName;
    @SerializedName("activeVersion")
    public String activeVersion = "";
    @SerializedName("compatibility")
    public RealmsServer.Compatibility compatibility = RealmsServer.Compatibility.UNVERIFIABLE;
    @SerializedName("regionSelectionPreference")
-   @Nullable
-   public RegionSelectionPreferenceDto regionSelectionPreference;
+   public @Nullable RegionSelectionPreferenceDto regionSelectionPreference;
 
    public String getDescription() {
       return this.motd;
    }
 
-   @Nullable
-   public String getName() {
+   public @Nullable String getName() {
       return this.name;
    }
 
-   @Nullable
-   public String getMinigameName() {
+   public @Nullable String getMinigameName() {
       return this.minigameName;
    }
 
@@ -119,8 +110,8 @@ public class RealmsServer extends ValueObject implements ReflectionBasedSerializ
             finalize(server);
             return server;
          }
-      } catch (Exception var3) {
-         LOGGER.error("Could not parse McoServer", var3);
+      } catch (Exception e) {
+         LOGGER.error("Could not parse McoServer", e);
          return new RealmsServer();
       }
    }
@@ -162,9 +153,9 @@ public class RealmsServer extends ValueObject implements ReflectionBasedSerializ
       server.players
          .sort(
             (o1, o2) -> ComparisonChain.start()
-                  .compareFalseFirst(o2.accepted, o1.accepted)
-                  .compare(o1.name.toLowerCase(Locale.ROOT), o2.name.toLowerCase(Locale.ROOT))
-                  .result()
+               .compareFalseFirst(o2.accepted, o1.accepted)
+               .compare(o1.name.toLowerCase(Locale.ROOT), o2.name.toLowerCase(Locale.ROOT))
+               .result()
          );
    }
 
@@ -216,22 +207,26 @@ public class RealmsServer extends ValueObject implements ReflectionBasedSerializ
    public boolean equals(final Object obj) {
       if (obj == null) {
          return false;
-      } else if (obj == this) {
-         return true;
-      } else if (obj.getClass() != this.getClass()) {
-         return false;
-      } else {
-         RealmsServer rhs = (RealmsServer)obj;
-         return new EqualsBuilder()
-            .append(this.id, rhs.id)
-            .append(this.name, rhs.name)
-            .append(this.motd, rhs.motd)
-            .append(this.state, rhs.state)
-            .append(this.owner, rhs.owner)
-            .append(this.expired, rhs.expired)
-            .append(this.worldType, this.worldType)
-            .isEquals();
       }
+
+      if (obj == this) {
+         return true;
+      }
+
+      if (obj.getClass() != this.getClass()) {
+         return false;
+      }
+
+      RealmsServer rhs = (RealmsServer)obj;
+      return new EqualsBuilder()
+         .append(this.id, rhs.id)
+         .append(this.name, rhs.name)
+         .append(this.motd, rhs.motd)
+         .append(this.state, rhs.state)
+         .append(this.owner, rhs.owner)
+         .append(this.expired, rhs.expired)
+         .append(this.worldType, this.worldType)
+         .isEquals();
    }
 
    public RealmsServer copy() {
@@ -292,7 +287,7 @@ public class RealmsServer extends ValueObject implements ReflectionBasedSerializ
       return new ServerData(Objects.requireNonNullElse(this.name, "unknown server"), ip, ServerData.Type.REALM);
    }
 
-   public static enum Compatibility {
+   public enum Compatibility {
       UNVERIFIABLE,
       INCOMPATIBLE,
       RELEASE_TYPE_INCOMPATIBLE,
@@ -333,13 +328,13 @@ public class RealmsServer extends ValueObject implements ReflectionBasedSerializ
       }
    }
 
-   public static enum State {
+   public enum State {
       CLOSED,
       OPEN,
       UNINITIALIZED;
    }
 
-   public static enum WorldType {
+   public enum WorldType {
       NORMAL("normal"),
       MINIGAME("minigame"),
       ADVENTUREMAP("adventureMap"),
@@ -350,7 +345,7 @@ public class RealmsServer extends ValueObject implements ReflectionBasedSerializ
       private static final String TRANSLATION_PREFIX = "mco.backup.entry.worldType.";
       private final Component displayName;
 
-      private WorldType(final String translationKey) {
+      WorldType(final String translationKey) {
          this.displayName = Component.translatable("mco.backup.entry.worldType." + translationKey);
       }
 

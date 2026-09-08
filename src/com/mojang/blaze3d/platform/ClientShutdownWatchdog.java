@@ -16,14 +16,14 @@ public class ClientShutdownWatchdog {
    private static final int SHUTDOWN_STARTED_ID = Integer.MIN_VALUE;
 
    public static void startShutdownWatchdog(
-      final String callsite, final boolean forceShutdown, @Nullable final Minecraft minecraft, final GameConfig gameConfig, final long mainThreadId
+      final String callsite, final boolean forceShutdown, final @Nullable Minecraft minecraft, final GameConfig gameConfig, final long mainThreadId
    ) {
       int id = THREAD_COUNTER.incrementAndGet();
       if (id >= 0) {
          Thread thread = new Thread(() -> {
             try {
                Thread.sleep(CRASH_REPORT_PRELOAD_LOAD);
-            } catch (InterruptedException var9) {
+            } catch (InterruptedException e) {
                return;
             }
 

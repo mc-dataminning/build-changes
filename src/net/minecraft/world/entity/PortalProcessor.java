@@ -28,8 +28,7 @@ public class PortalProcessor {
       }
    }
 
-   @Nullable
-   public TeleportTransition getPortalDestination(final ServerLevel serverLevel, final Entity entity) {
+   public @Nullable TeleportTransition getPortalDestination(final ServerLevel serverLevel, final Entity entity) {
       return this.portal.getPortalDestination(serverLevel, entity, this.entryPosition);
    }
 

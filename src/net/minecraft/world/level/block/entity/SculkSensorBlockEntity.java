@@ -1,6 +1,5 @@
 package net.minecraft.world.level.block.entity;
 
-import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
@@ -80,8 +79,6 @@ public class SculkSensorBlockEntity extends BlockEntity implements GameEventList
       private final PositionSource positionSource;
 
       public VibrationUser(final BlockPos blockPos) {
-         Objects.requireNonNull(SculkSensorBlockEntity.this);
-         super();
          this.blockPos = blockPos;
          this.positionSource = new BlockPositionSource(blockPos);
       }
@@ -102,7 +99,7 @@ public class SculkSensorBlockEntity extends BlockEntity implements GameEventList
       }
 
       @Override
-      public boolean canReceiveVibration(final ServerLevel level, final BlockPos pos, final Holder<GameEvent> event, @Nullable final GameEvent.Context context) {
+      public boolean canReceiveVibration(final ServerLevel level, final BlockPos pos, final Holder<GameEvent> event, final GameEvent.@Nullable Context context) {
          if (!pos.equals(this.blockPos) || !event.is(GameEvent.BLOCK_DESTROY) && !event.is(GameEvent.BLOCK_PLACE)) {
             return VibrationSystem.getGameEventFrequency(event) == 0 ? false : SculkSensorBlock.canActivate(SculkSensorBlockEntity.this.getBlockState());
          } else {
@@ -115,8 +112,8 @@ public class SculkSensorBlockEntity extends BlockEntity implements GameEventList
          final ServerLevel level,
          final BlockPos pos,
          final Holder<GameEvent> event,
-         @Nullable final Entity sourceEntity,
-         @Nullable final Entity projectileOwner,
+         final @Nullable Entity sourceEntity,
+         final @Nullable Entity projectileOwner,
          final float receivingDistance
       ) {
          BlockState state = SculkSensorBlockEntity.this.getBlockState();

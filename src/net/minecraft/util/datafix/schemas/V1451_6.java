@@ -29,28 +29,28 @@ public class V1451_6 extends NamespacedSchema {
                      int colonPos = name.indexOf(58);
                      if (colonPos < 0) {
                         return Pair.of("_special", name);
-                     } else {
-                        try {
-                           Identifier statType = Identifier.bySeparator(name.substring(0, colonPos), '.');
-                           Identifier statId = Identifier.bySeparator(name.substring(colonPos + 1), '.');
-                           return Pair.of(statType.toString(), statId.toString());
-                        } catch (Exception var4) {
-                           return Pair.of("_special", name);
-                        }
+                     }
+
+                     try {
+                        Identifier statType = Identifier.bySeparator(name.substring(0, colonPos), '.');
+                        Identifier statId = Identifier.bySeparator(name.substring(colonPos + 1), '.');
+                        return Pair.of(statType.toString(), statId.toString());
+                     } catch (Exception e) {
+                        return Pair.of("_special", name);
                      }
                   })
                   .map(
                      explodedId -> input.set(
-                           "CriteriaType",
-                           input.createMap(
-                              ImmutableMap.of(
-                                 input.createString("type"),
-                                 input.createString((String)explodedId.getFirst()),
-                                 input.createString("id"),
-                                 input.createString((String)explodedId.getSecond())
-                              )
+                        "CriteriaType",
+                        input.createMap(
+                           ImmutableMap.of(
+                              input.createString("type"),
+                              input.createString((String)explodedId.getFirst()),
+                              input.createString("id"),
+                              input.createString((String)explodedId.getSecond())
                            )
                         )
+                     )
                   ),
                input
             ))
@@ -94,33 +94,31 @@ public class V1451_6 extends NamespacedSchema {
          false,
          References.STATS,
          () -> DSL.optionalFields(
-               "stats",
-               DSL.optionalFields(
-                  new Pair[]{
-                     Pair.of("minecraft:mined", DSL.compoundList(References.BLOCK_NAME.in(schema), DSL.constType(DSL.intType()))),
-                     Pair.of("minecraft:crafted", ITEM_STATS.get()),
-                     Pair.of("minecraft:used", ITEM_STATS.get()),
-                     Pair.of("minecraft:broken", ITEM_STATS.get()),
-                     Pair.of("minecraft:picked_up", ITEM_STATS.get()),
-                     Pair.of("minecraft:dropped", ITEM_STATS.get()),
-                     Pair.of("minecraft:killed", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.intType()))),
-                     Pair.of("minecraft:killed_by", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.intType()))),
-                     Pair.of("minecraft:custom", DSL.compoundList(DSL.constType(namespacedString()), DSL.constType(DSL.intType())))
-                  }
-               )
+            "stats",
+            DSL.optionalFields(
+               new Pair[]{
+                  Pair.of("minecraft:mined", DSL.compoundList(References.BLOCK_NAME.in(schema), DSL.constType(DSL.intType()))),
+                  Pair.of("minecraft:crafted", ITEM_STATS.get()),
+                  Pair.of("minecraft:used", ITEM_STATS.get()),
+                  Pair.of("minecraft:broken", ITEM_STATS.get()),
+                  Pair.of("minecraft:picked_up", ITEM_STATS.get()),
+                  Pair.of("minecraft:dropped", ITEM_STATS.get()),
+                  Pair.of("minecraft:killed", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.intType()))),
+                  Pair.of("minecraft:killed_by", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.intType()))),
+                  Pair.of("minecraft:custom", DSL.compoundList(DSL.constType(namespacedString()), DSL.constType(DSL.intType())))
+               }
             )
+         )
       );
       Map<String, Supplier<TypeTemplate>> criterionTypes = createCriterionTypes(schema);
       schema.registerType(
          false,
          References.OBJECTIVE,
          () -> DSL.hook(
-               DSL.optionalFields(
-                  "CriteriaType", DSL.taggedChoiceLazy("type", DSL.string(), criterionTypes), "DisplayName", References.TEXT_COMPONENT.in(schema)
-               ),
-               UNPACK_OBJECTIVE_ID,
-               REPACK_OBJECTIVE_ID
-            )
+            DSL.optionalFields("CriteriaType", DSL.taggedChoiceLazy("type", DSL.string(), criterionTypes), "DisplayName", References.TEXT_COMPONENT.in(schema)),
+            UNPACK_OBJECTIVE_ID,
+            REPACK_OBJECTIVE_ID
+         )
       );
    }
 

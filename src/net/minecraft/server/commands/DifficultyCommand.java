@@ -35,10 +35,10 @@ public class DifficultyCommand {
       MinecraftServer server = source.getServer();
       if (server.getWorldData().getDifficulty() == difficulty) {
          throw ERROR_ALREADY_SAME_DIFFICULTY.create(difficulty.getDisplayName());
-      } else {
-         server.setDifficulty(difficulty, true);
-         source.sendSuccess(() -> Component.translatable("commands.difficulty.success", difficulty.getDisplayName()), true);
-         return 0;
       }
+
+      server.setDifficulty(difficulty, true);
+      source.sendSuccess(() -> Component.translatable("commands.difficulty.success", difficulty.getDisplayName()), true);
+      return 0;
    }
 }

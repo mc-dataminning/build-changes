@@ -52,11 +52,11 @@ public abstract class LightEngine<M extends DataLayerStorageMap<M>, S extends La
       boolean toEmpty = isEmptyShape(toState);
       if (fromEmpty && toEmpty) {
          return simpleOpacity;
-      } else {
-         VoxelShape fromShape = fromEmpty ? Shapes.empty() : fromState.getOcclusionShape();
-         VoxelShape toShape = toEmpty ? Shapes.empty() : toState.getOcclusionShape();
-         return Shapes.mergedFaceOccludes(fromShape, toShape, direction) ? 16 : simpleOpacity;
       }
+
+      VoxelShape fromShape = fromEmpty ? Shapes.empty() : fromState.getOcclusionShape();
+      VoxelShape toShape = toEmpty ? Shapes.empty() : toState.getOcclusionShape();
+      return Shapes.mergedFaceOccludes(fromShape, toShape, direction) ? 16 : simpleOpacity;
    }
 
    public static VoxelShape getOcclusionShape(final BlockState state, final Direction direction) {
@@ -84,8 +84,7 @@ public abstract class LightEngine<M extends DataLayerStorageMap<M>, S extends La
       return Shapes.faceShapeOccludes(fromShape, toShape);
    }
 
-   @Nullable
-   protected LightChunk getChunk(final int chunkX, final int chunkZ) {
+   protected @Nullable LightChunk getChunk(final int chunkX, final int chunkZ) {
       long pos = ChunkPos.pack(chunkX, chunkZ);
 
       for (int i = 0; i < 2; i++) {
@@ -96,9 +95,9 @@ public abstract class LightEngine<M extends DataLayerStorageMap<M>, S extends La
 
       LightChunk chunk = this.chunkSource.getChunkForLighting(chunkX, chunkZ);
 
-      for (int ix = 1; ix > 0; ix--) {
-         this.lastChunkPos[ix] = this.lastChunkPos[ix - 1];
-         this.lastChunk[ix] = this.lastChunk[ix - 1];
+      for (int i = 1; i > 0; i--) {
+         this.lastChunkPos[i] = this.lastChunkPos[i - 1];
+         this.lastChunk[i] = this.lastChunk[i - 1];
       }
 
       this.lastChunkPos[0] = pos;
@@ -116,7 +115,7 @@ public abstract class LightEngine<M extends DataLayerStorageMap<M>, S extends La
       this.blockNodesToCheck.add(pos.asLong());
    }
 
-   public void queueSectionData(final long pos, @Nullable final DataLayer data) {
+   public void queueSectionData(final long pos, final @Nullable DataLayer data) {
       this.storage.queueSectionData(pos, data);
    }
 
@@ -199,9 +198,8 @@ public abstract class LightEngine<M extends DataLayerStorageMap<M>, S extends La
       return this.storage.hasInconsistencies() || !this.blockNodesToCheck.isEmpty() || !this.decreaseQueue.isEmpty() || !this.increaseQueue.isEmpty();
    }
 
-   @Nullable
    @Override
-   public DataLayer getDataLayerData(final SectionPos pos) {
+   public @Nullable DataLayer getDataLayerData(final SectionPos pos) {
       return this.storage.getDataLayerData(pos.asLong());
    }
 
@@ -312,7 +310,7 @@ public abstract class LightEngine<M extends DataLayerStorageMap<M>, S extends La
       }
 
       private static long withLevel(final long entry, final int level) {
-         return entry & -16L | (long)level & 15L;
+         return entry & -16L | level & 15L;
       }
 
       private static long withDirection(final long entry, final Direction direction) {

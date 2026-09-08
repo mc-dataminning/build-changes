@@ -21,8 +21,7 @@ public interface ParseState<S> {
       }
    }
 
-   @Nullable
-   <T> T parse(NamedRule<S, T> rule);
+   <T> @Nullable T parse(NamedRule<S, T> rule);
 
    S input();
 

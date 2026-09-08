@@ -20,7 +20,7 @@ public class CaveVinesBlock extends GrowingPlantHeadBlock implements CaveVines {
 
    public CaveVinesBlock(final BlockBehaviour.Properties properties) {
       super(properties, Direction.DOWN, SHAPE, false, 0.1);
-      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(0)).setValue(BERRIES, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0).setValue(BERRIES, false));
    }
 
    @Override
@@ -45,7 +45,7 @@ public class CaveVinesBlock extends GrowingPlantHeadBlock implements CaveVines {
 
    @Override
    protected BlockState getGrowIntoState(final BlockState growFromState, final RandomSource random) {
-      return super.getGrowIntoState(growFromState, random).setValue(BERRIES, Boolean.valueOf(random.nextFloat() < 0.11F));
+      return super.getGrowIntoState(growFromState, random).setValue(BERRIES, random.nextFloat() < 0.11F);
    }
 
    @Override
@@ -78,6 +78,6 @@ public class CaveVinesBlock extends GrowingPlantHeadBlock implements CaveVines {
 
    @Override
    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state, final BonemealSource source) {
-      level.setBlock(pos, state.setValue(BERRIES, Boolean.valueOf(true)), 2);
+      level.setBlock(pos, state.setValue(BERRIES, true), 2);
    }
 }

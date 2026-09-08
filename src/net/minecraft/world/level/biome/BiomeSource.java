@@ -42,8 +42,7 @@ public abstract class BiomeSource {
       return this.possibleBiomes.get();
    }
 
-   @Nullable
-   public Pair<BlockPos, Holder<Biome>> findBiomeHorizontal(
+   public @Nullable Pair<BlockPos, Holder<Biome>> findBiomeHorizontal(
       final int x,
       final int y,
       final int z,
@@ -55,8 +54,7 @@ public abstract class BiomeSource {
       return this.findBiomeHorizontal(x, y, z, searchRadius, 1, allowed, random, false, randomState);
    }
 
-   @Nullable
-   public Pair<BlockPos, Holder<Biome>> findClosestBiome3d(
+   public @Nullable Pair<BlockPos, Holder<Biome>> findClosestBiome3d(
       final BlockPos origin,
       final int searchRadius,
       final int sampleResolutionHorizontal,
@@ -68,32 +66,31 @@ public abstract class BiomeSource {
       Set<Holder<Biome>> candidateBiomes = this.possibleBiomes().stream().filter(allowed).collect(Collectors.toUnmodifiableSet());
       if (candidateBiomes.isEmpty()) {
          return null;
-      } else {
-         BiomeResolver resolver = this.createCachingResolver(randomState);
-         int sampleRadius = Math.floorDiv(searchRadius, sampleResolutionHorizontal);
-         int[] sampleYs = Mth.outFromOrigin(origin.getY(), level.getMinY() + 1, level.getMaxY() + 1, sampleResolutionVertical).toArray();
+      }
 
-         for (BlockPos.MutableBlockPos sampleColumn : BlockPos.spiralAround(BlockPos.ZERO, sampleRadius, Direction.EAST, Direction.SOUTH)) {
-            int blockX = origin.getX() + sampleColumn.getX() * sampleResolutionHorizontal;
-            int blockZ = origin.getZ() + sampleColumn.getZ() * sampleResolutionHorizontal;
-            int noiseX = QuartPos.fromBlock(blockX);
-            int noiseZ = QuartPos.fromBlock(blockZ);
+      BiomeResolver resolver = this.createCachingResolver(randomState);
+      int sampleRadius = Math.floorDiv(searchRadius, sampleResolutionHorizontal);
+      int[] sampleYs = Mth.outFromOrigin(origin.getY(), level.getMinY() + 1, level.getMaxY() + 1, sampleResolutionVertical).toArray();
 
-            for (int blockY : sampleYs) {
-               int noiseY = QuartPos.fromBlock(blockY);
-               Holder<Biome> biome = resolver.getNoiseBiome(noiseX, noiseY, noiseZ);
-               if (candidateBiomes.contains(biome)) {
-                  return Pair.of(new BlockPos(blockX, blockY, blockZ), biome);
-               }
+      for (BlockPos.MutableBlockPos sampleColumn : BlockPos.spiralAround(BlockPos.ZERO, sampleRadius, Direction.EAST, Direction.SOUTH)) {
+         int blockX = origin.getX() + sampleColumn.getX() * sampleResolutionHorizontal;
+         int blockZ = origin.getZ() + sampleColumn.getZ() * sampleResolutionHorizontal;
+         int noiseX = QuartPos.fromBlock(blockX);
+         int noiseZ = QuartPos.fromBlock(blockZ);
+
+         for (int blockY : sampleYs) {
+            int noiseY = QuartPos.fromBlock(blockY);
+            Holder<Biome> biome = resolver.getNoiseBiome(noiseX, noiseY, noiseZ);
+            if (candidateBiomes.contains(biome)) {
+               return Pair.of(new BlockPos(blockX, blockY, blockZ), biome);
             }
          }
-
-         return null;
       }
+
+      return null;
    }
 
-   @Nullable
-   public Pair<BlockPos, Holder<Biome>> findBiomeHorizontal(
+   public @Nullable Pair<BlockPos, Holder<Biome>> findBiomeHorizontal(
       final int originX,
       final int originY,
       final int originZ,

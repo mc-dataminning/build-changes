@@ -20,7 +20,7 @@ public enum HumanoidArm implements StringRepresentable {
    private final String name;
    private final Component caption;
 
-   private HumanoidArm(final int id, final String name, final String translationKey) {
+   HumanoidArm(final int id, final String name, final String translationKey) {
       this.id = id;
       this.name = name;
       this.caption = Component.translatable(translationKey);

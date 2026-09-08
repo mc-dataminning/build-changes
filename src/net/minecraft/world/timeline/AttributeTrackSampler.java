@@ -17,8 +17,7 @@ public class AttributeTrackSampler<Value, Argument> implements EnvironmentAttrib
    private final KeyframeTrackSampler<Argument> argumentSampler;
    private final ClockManager clockManager;
    private int cachedTickId;
-   @Nullable
-   private Argument cachedArgument;
+   private @Nullable Argument cachedArgument;
 
    public AttributeTrackSampler(
       final Holder<WorldClock> clock,

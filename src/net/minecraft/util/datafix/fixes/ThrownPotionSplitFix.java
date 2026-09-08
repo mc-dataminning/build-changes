@@ -32,13 +32,13 @@ public class ThrownPotionSplitFix extends EntityRenameFix {
    protected Pair<String, Typed<?>> fix(final String name, final Typed<?> entity) {
       if (!name.equals("minecraft:potion")) {
          return Pair.of(name, entity);
-      } else {
-         String itemId = this.itemIdFinder.get().getItemId(entity);
-         return "minecraft:lingering_potion".equals(itemId) ? Pair.of("minecraft:lingering_potion", entity) : Pair.of("minecraft:splash_potion", entity);
       }
+
+      String itemId = this.itemIdFinder.get().getItemId(entity);
+      return "minecraft:lingering_potion".equals(itemId) ? Pair.of("minecraft:lingering_potion", entity) : Pair.of("minecraft:splash_potion", entity);
    }
 
-   private static record ItemIdFinder(OpticFinder<?> itemFinder, OpticFinder<Pair<String, String>> itemIdFinder) {
+   private record ItemIdFinder(OpticFinder<?> itemFinder, OpticFinder<Pair<String, String>> itemIdFinder) {
       public String getItemId(final Typed<?> entity) {
          return entity.getOptionalTyped(this.itemFinder)
             .flatMap(item -> item.getOptional(this.itemIdFinder))

@@ -16,8 +16,7 @@ public interface LootContextArg<R> {
       builder -> builder.anyOf(LootContext.EntityTarget.values()).anyOf(LootContext.BlockEntityTarget.values())
    );
 
-   @Nullable
-   R get(LootContext context);
+   @Nullable R get(LootContext context);
 
    ContextKey<?> contextParam();
 
@@ -33,7 +32,7 @@ public interface LootContextArg<R> {
       return consumer.apply(new LootContextArg.ArgCodecBuilder<>()).build();
    }
 
-   public static final class ArgCodecBuilder<R> {
+   final class ArgCodecBuilder<R> {
       private final ExtraCodecs.LateBoundIdMapper<String, LootContextArg<R>> sources = new ExtraCodecs.LateBoundIdMapper<>();
 
       private ArgCodecBuilder() {
@@ -81,28 +80,25 @@ public interface LootContextArg<R> {
       }
    }
 
-   public interface Getter<T, R> extends LootContextArg<R> {
-      @Nullable
-      R get(T value);
+   interface Getter<T, R> extends LootContextArg<R> {
+      @Nullable R get(T value);
 
       @Override
       ContextKey<? extends T> contextParam();
 
-      @Nullable
       @Override
-      default R get(final LootContext context) {
+      default @Nullable R get(final LootContext context) {
          T value = context.getOptional((ContextKey<T>)this.contextParam());
          return value != null ? this.get(value) : null;
       }
    }
 
-   public interface SimpleGetter<T> extends LootContextArg<T> {
+   interface SimpleGetter<T> extends LootContextArg<T> {
       @Override
       ContextKey<? extends T> contextParam();
 
-      @Nullable
       @Override
-      default T get(final LootContext context) {
+      default @Nullable T get(final LootContext context) {
          return context.getOptional((ContextKey<T>)this.contextParam());
       }
    }

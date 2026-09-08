@@ -91,10 +91,10 @@ public class TeamCommand {
                                           Commands.argument("displayName", ComponentArgument.textComponent(context))
                                              .executes(
                                                 c -> createTeam(
-                                                      (CommandSourceStack)c.getSource(),
-                                                      StringArgumentType.getString(c, "team"),
-                                                      ComponentArgument.getResolvedComponent(c, "displayName")
-                                                   )
+                                                   (CommandSourceStack)c.getSource(),
+                                                   StringArgumentType.getString(c, "team"),
+                                                   ComponentArgument.getResolvedComponent(c, "displayName")
+                                                )
                                              )
                                        )
                                  )
@@ -119,20 +119,20 @@ public class TeamCommand {
                            ((RequiredArgumentBuilder)Commands.argument("team", TeamArgument.team())
                                  .executes(
                                     c -> joinTeam(
-                                          (CommandSourceStack)c.getSource(),
-                                          TeamArgument.getTeam(c, "team"),
-                                          Collections.singleton(((CommandSourceStack)c.getSource()).getEntityOrException())
-                                       )
+                                       (CommandSourceStack)c.getSource(),
+                                       TeamArgument.getTeam(c, "team"),
+                                       Collections.singleton(((CommandSourceStack)c.getSource()).getEntityOrException())
+                                    )
                                  ))
                               .then(
                                  Commands.argument("members", ScoreHolderArgument.scoreHolders())
                                     .suggests(ScoreHolderArgument.SUGGEST_SCORE_HOLDERS)
                                     .executes(
                                        c -> joinTeam(
-                                             (CommandSourceStack)c.getSource(),
-                                             TeamArgument.getTeam(c, "team"),
-                                             ScoreHolderArgument.getNamesWithDefaultWildcard(c, "members")
-                                          )
+                                          (CommandSourceStack)c.getSource(),
+                                          TeamArgument.getTeam(c, "team"),
+                                          ScoreHolderArgument.getNamesWithDefaultWildcard(c, "members")
+                                       )
                                     )
                               )
                         )
@@ -157,10 +157,10 @@ public class TeamCommand {
                                                          Commands.argument("displayName", ComponentArgument.textComponent(context))
                                                             .executes(
                                                                c -> setDisplayName(
-                                                                     (CommandSourceStack)c.getSource(),
-                                                                     TeamArgument.getTeam(c, "team"),
-                                                                     ComponentArgument.getResolvedComponent(c, "displayName")
-                                                                  )
+                                                                  (CommandSourceStack)c.getSource(),
+                                                                  TeamArgument.getTeam(c, "team"),
+                                                                  ComponentArgument.getResolvedComponent(c, "displayName")
+                                                               )
                                                             )
                                                       )
                                                 ))
@@ -174,10 +174,10 @@ public class TeamCommand {
                                                       Commands.argument("value", TeamColorArgument.teamColor())
                                                          .executes(
                                                             c -> setColor(
-                                                                  (CommandSourceStack)c.getSource(),
-                                                                  TeamArgument.getTeam(c, "team"),
-                                                                  TeamColorArgument.getTeamColor(c, "value")
-                                                               )
+                                                               (CommandSourceStack)c.getSource(),
+                                                               TeamArgument.getTeam(c, "team"),
+                                                               TeamColorArgument.getTeamColor(c, "value")
+                                                            )
                                                          )
                                                    )
                                              ))
@@ -187,10 +187,10 @@ public class TeamCommand {
                                                    Commands.argument("allowed", BoolArgumentType.bool())
                                                       .executes(
                                                          c -> setFriendlyFire(
-                                                               (CommandSourceStack)c.getSource(),
-                                                               TeamArgument.getTeam(c, "team"),
-                                                               BoolArgumentType.getBool(c, "allowed")
-                                                            )
+                                                            (CommandSourceStack)c.getSource(),
+                                                            TeamArgument.getTeam(c, "team"),
+                                                            BoolArgumentType.getBool(c, "allowed")
+                                                         )
                                                       )
                                                 )
                                           ))
@@ -200,10 +200,10 @@ public class TeamCommand {
                                                 Commands.argument("allowed", BoolArgumentType.bool())
                                                    .executes(
                                                       c -> setFriendlySight(
-                                                            (CommandSourceStack)c.getSource(),
-                                                            TeamArgument.getTeam(c, "team"),
-                                                            BoolArgumentType.getBool(c, "allowed")
-                                                         )
+                                                         (CommandSourceStack)c.getSource(),
+                                                         TeamArgument.getTeam(c, "team"),
+                                                         BoolArgumentType.getBool(c, "allowed")
+                                                      )
                                                    )
                                              )
                                        ))
@@ -213,36 +213,34 @@ public class TeamCommand {
                                                       Commands.literal("never")
                                                          .executes(
                                                             c -> setNameTagVisibility(
-                                                                  (CommandSourceStack)c.getSource(), TeamArgument.getTeam(c, "team"), Team.Visibility.NEVER
-                                                               )
+                                                               (CommandSourceStack)c.getSource(), TeamArgument.getTeam(c, "team"), Team.Visibility.NEVER
+                                                            )
                                                          )
                                                    ))
                                                 .then(
                                                    Commands.literal("hideForOtherTeams")
                                                       .executes(
                                                          c -> setNameTagVisibility(
-                                                               (CommandSourceStack)c.getSource(),
-                                                               TeamArgument.getTeam(c, "team"),
-                                                               Team.Visibility.HIDE_FOR_OTHER_TEAMS
-                                                            )
+                                                            (CommandSourceStack)c.getSource(),
+                                                            TeamArgument.getTeam(c, "team"),
+                                                            Team.Visibility.HIDE_FOR_OTHER_TEAMS
+                                                         )
                                                       )
                                                 ))
                                              .then(
                                                 Commands.literal("hideForOwnTeam")
                                                    .executes(
                                                       c -> setNameTagVisibility(
-                                                            (CommandSourceStack)c.getSource(),
-                                                            TeamArgument.getTeam(c, "team"),
-                                                            Team.Visibility.HIDE_FOR_OWN_TEAM
-                                                         )
+                                                         (CommandSourceStack)c.getSource(), TeamArgument.getTeam(c, "team"), Team.Visibility.HIDE_FOR_OWN_TEAM
+                                                      )
                                                    )
                                              ))
                                           .then(
                                              Commands.literal("always")
                                                 .executes(
                                                    c -> setNameTagVisibility(
-                                                         (CommandSourceStack)c.getSource(), TeamArgument.getTeam(c, "team"), Team.Visibility.ALWAYS
-                                                      )
+                                                      (CommandSourceStack)c.getSource(), TeamArgument.getTeam(c, "team"), Team.Visibility.ALWAYS
+                                                   )
                                                 )
                                           )
                                     ))
@@ -252,34 +250,34 @@ public class TeamCommand {
                                                    Commands.literal("never")
                                                       .executes(
                                                          c -> setDeathMessageVisibility(
-                                                               (CommandSourceStack)c.getSource(), TeamArgument.getTeam(c, "team"), Team.Visibility.NEVER
-                                                            )
+                                                            (CommandSourceStack)c.getSource(), TeamArgument.getTeam(c, "team"), Team.Visibility.NEVER
+                                                         )
                                                       )
                                                 ))
                                              .then(
                                                 Commands.literal("hideForOtherTeams")
                                                    .executes(
                                                       c -> setDeathMessageVisibility(
-                                                            (CommandSourceStack)c.getSource(),
-                                                            TeamArgument.getTeam(c, "team"),
-                                                            Team.Visibility.HIDE_FOR_OTHER_TEAMS
-                                                         )
+                                                         (CommandSourceStack)c.getSource(),
+                                                         TeamArgument.getTeam(c, "team"),
+                                                         Team.Visibility.HIDE_FOR_OTHER_TEAMS
+                                                      )
                                                    )
                                              ))
                                           .then(
                                              Commands.literal("hideForOwnTeam")
                                                 .executes(
                                                    c -> setDeathMessageVisibility(
-                                                         (CommandSourceStack)c.getSource(), TeamArgument.getTeam(c, "team"), Team.Visibility.HIDE_FOR_OWN_TEAM
-                                                      )
+                                                      (CommandSourceStack)c.getSource(), TeamArgument.getTeam(c, "team"), Team.Visibility.HIDE_FOR_OWN_TEAM
+                                                   )
                                                 )
                                           ))
                                        .then(
                                           Commands.literal("always")
                                              .executes(
                                                 c -> setDeathMessageVisibility(
-                                                      (CommandSourceStack)c.getSource(), TeamArgument.getTeam(c, "team"), Team.Visibility.ALWAYS
-                                                   )
+                                                   (CommandSourceStack)c.getSource(), TeamArgument.getTeam(c, "team"), Team.Visibility.ALWAYS
+                                                )
                                              )
                                        )
                                  ))
@@ -289,24 +287,24 @@ public class TeamCommand {
                                                 Commands.literal("never")
                                                    .executes(
                                                       c -> setCollision(
-                                                            (CommandSourceStack)c.getSource(), TeamArgument.getTeam(c, "team"), Team.CollisionRule.NEVER
-                                                         )
+                                                         (CommandSourceStack)c.getSource(), TeamArgument.getTeam(c, "team"), Team.CollisionRule.NEVER
+                                                      )
                                                    )
                                              ))
                                           .then(
                                              Commands.literal("pushOwnTeam")
                                                 .executes(
                                                    c -> setCollision(
-                                                         (CommandSourceStack)c.getSource(), TeamArgument.getTeam(c, "team"), Team.CollisionRule.PUSH_OWN_TEAM
-                                                      )
+                                                      (CommandSourceStack)c.getSource(), TeamArgument.getTeam(c, "team"), Team.CollisionRule.PUSH_OWN_TEAM
+                                                   )
                                                 )
                                           ))
                                        .then(
                                           Commands.literal("pushOtherTeams")
                                              .executes(
                                                 c -> setCollision(
-                                                      (CommandSourceStack)c.getSource(), TeamArgument.getTeam(c, "team"), Team.CollisionRule.PUSH_OTHER_TEAMS
-                                                   )
+                                                   (CommandSourceStack)c.getSource(), TeamArgument.getTeam(c, "team"), Team.CollisionRule.PUSH_OTHER_TEAMS
+                                                )
                                              )
                                        ))
                                     .then(
@@ -322,10 +320,10 @@ public class TeamCommand {
                                     Commands.argument("prefix", ComponentArgument.textComponent(context))
                                        .executes(
                                           c -> setPrefix(
-                                                (CommandSourceStack)c.getSource(),
-                                                TeamArgument.getTeam(c, "team"),
-                                                ComponentArgument.getResolvedComponent(c, "prefix")
-                                             )
+                                             (CommandSourceStack)c.getSource(),
+                                             TeamArgument.getTeam(c, "team"),
+                                             ComponentArgument.getResolvedComponent(c, "prefix")
+                                          )
                                        )
                                  )
                            ))
@@ -335,10 +333,10 @@ public class TeamCommand {
                                  Commands.argument("suffix", ComponentArgument.textComponent(context))
                                     .executes(
                                        c -> setSuffix(
-                                             (CommandSourceStack)c.getSource(),
-                                             TeamArgument.getTeam(c, "team"),
-                                             ComponentArgument.getResolvedComponent(c, "suffix")
-                                          )
+                                          (CommandSourceStack)c.getSource(),
+                                          TeamArgument.getTeam(c, "team"),
+                                          ComponentArgument.getResolvedComponent(c, "suffix")
+                                       )
                                     )
                               )
                         )
@@ -372,38 +370,37 @@ public class TeamCommand {
    private static int setNameTagVisibility(final CommandSourceStack source, final PlayerTeam team, final Team.Visibility visibility) throws CommandSyntaxException {
       if (team.getNameTagVisibility() == visibility) {
          throw ERROR_TEAM_NAMETAG_VISIBLITY_UNCHANGED.create();
-      } else {
-         team.setNameTagVisibility(visibility);
-         source.sendSuccess(
-            () -> Component.translatable("commands.team.option.nametagVisibility.success", team.getFormattedDisplayName(), visibility.getDisplayName()), true
-         );
-         return 0;
       }
+
+      team.setNameTagVisibility(visibility);
+      source.sendSuccess(
+         () -> Component.translatable("commands.team.option.nametagVisibility.success", team.getFormattedDisplayName(), visibility.getDisplayName()), true
+      );
+      return 0;
    }
 
    private static int setDeathMessageVisibility(final CommandSourceStack source, final PlayerTeam team, final Team.Visibility visibility) throws CommandSyntaxException {
       if (team.getDeathMessageVisibility() == visibility) {
          throw ERROR_TEAM_DEATH_MESSAGE_VISIBLITY_UNCHANGED.create();
-      } else {
-         team.setDeathMessageVisibility(visibility);
-         source.sendSuccess(
-            () -> Component.translatable("commands.team.option.deathMessageVisibility.success", team.getFormattedDisplayName(), visibility.getDisplayName()),
-            true
-         );
-         return 0;
       }
+
+      team.setDeathMessageVisibility(visibility);
+      source.sendSuccess(
+         () -> Component.translatable("commands.team.option.deathMessageVisibility.success", team.getFormattedDisplayName(), visibility.getDisplayName()), true
+      );
+      return 0;
    }
 
    private static int setCollision(final CommandSourceStack source, final PlayerTeam team, final Team.CollisionRule collision) throws CommandSyntaxException {
       if (team.getCollisionRule() == collision) {
          throw ERROR_TEAM_COLLISION_UNCHANGED.create();
-      } else {
-         team.setCollisionRule(collision);
-         source.sendSuccess(
-            () -> Component.translatable("commands.team.option.collisionRule.success", team.getFormattedDisplayName(), collision.getDisplayName()), true
-         );
-         return 0;
       }
+
+      team.setCollisionRule(collision);
+      source.sendSuccess(
+         () -> Component.translatable("commands.team.option.collisionRule.success", team.getFormattedDisplayName(), collision.getDisplayName()), true
+      );
+      return 0;
    }
 
    private static int setFriendlySight(final CommandSourceStack source, final PlayerTeam team, final boolean allowed) throws CommandSyntaxException {
@@ -442,33 +439,33 @@ public class TeamCommand {
    private static int setDisplayName(final CommandSourceStack source, final PlayerTeam team, final Component displayName) throws CommandSyntaxException {
       if (team.getDisplayName().equals(displayName)) {
          throw ERROR_TEAM_ALREADY_NAME.create();
-      } else {
-         team.setDisplayName(displayName);
-         source.sendSuccess(() -> Component.translatable("commands.team.option.name.success", team.getFormattedDisplayName()), true);
-         return 0;
       }
+
+      team.setDisplayName(displayName);
+      source.sendSuccess(() -> Component.translatable("commands.team.option.name.success", team.getFormattedDisplayName()), true);
+      return 0;
    }
 
    private static int setColor(final CommandSourceStack source, final PlayerTeam team, final TeamColor color) throws CommandSyntaxException {
       Optional<TeamColor> currentColor = team.getColor();
       if (currentColor.isPresent() && currentColor.get().equals(color)) {
          throw ERROR_TEAM_ALREADY_COLOR.create();
-      } else {
-         team.setColor(Optional.of(color));
-         source.sendSuccess(() -> Component.translatable("commands.team.option.color.success", team.getFormattedDisplayName(), color.getSerializedName()), true);
-         return 0;
       }
+
+      team.setColor(Optional.of(color));
+      source.sendSuccess(() -> Component.translatable("commands.team.option.color.success", team.getFormattedDisplayName(), color.getSerializedName()), true);
+      return 0;
    }
 
    private static int clearColor(final CommandSourceStack source, final PlayerTeam team) throws CommandSyntaxException {
       Optional<TeamColor> currentColor = team.getColor();
       if (currentColor.isEmpty()) {
          throw ERROR_TEAM_ALREADY_COLOR.create();
-      } else {
-         team.setColor(Optional.empty());
-         source.sendSuccess(() -> Component.translatable("commands.team.option.color.clear.success", team.getFormattedDisplayName()), true);
-         return 0;
       }
+
+      team.setColor(Optional.empty());
+      source.sendSuccess(() -> Component.translatable("commands.team.option.color.clear.success", team.getFormattedDisplayName()), true);
+      return 0;
    }
 
    private static int emptyTeam(final CommandSourceStack source, final PlayerTeam team) throws CommandSyntaxException {
@@ -476,14 +473,14 @@ public class TeamCommand {
       Collection<String> members = Lists.newArrayList(team.getPlayers());
       if (members.isEmpty()) {
          throw ERROR_TEAM_ALREADY_EMPTY.create();
-      } else {
-         for (String member : members) {
-            scoreboard.removePlayerFromTeam(member, team);
-         }
-
-         source.sendSuccess(() -> Component.translatable("commands.team.empty.success", members.size(), team.getFormattedDisplayName()), true);
-         return members.size();
       }
+
+      for (String member : members) {
+         scoreboard.removePlayerFromTeam(member, team);
+      }
+
+      source.sendSuccess(() -> Component.translatable("commands.team.empty.success", members.size(), team.getFormattedDisplayName()), true);
+      return members.size();
    }
 
    private static int deleteTeam(final CommandSourceStack source, final PlayerTeam team) {
@@ -501,12 +498,12 @@ public class TeamCommand {
       Scoreboard scoreboard = source.getServer().getScoreboard();
       if (scoreboard.getPlayerTeam(name) != null) {
          throw ERROR_TEAM_ALREADY_EXISTS.create();
-      } else {
-         PlayerTeam team = scoreboard.addPlayerTeam(name);
-         team.setDisplayName(displayName);
-         source.sendSuccess(() -> Component.translatable("commands.team.add.success", team.getFormattedDisplayName()), true);
-         return scoreboard.getPlayerTeams().size();
       }
+
+      PlayerTeam team = scoreboard.addPlayerTeam(name);
+      team.setDisplayName(displayName);
+      source.sendSuccess(() -> Component.translatable("commands.team.add.success", team.getFormattedDisplayName()), true);
+      return scoreboard.getPlayerTeams().size();
    }
 
    private static int listMembers(final CommandSourceStack source, final PlayerTeam team) {
@@ -516,8 +513,8 @@ public class TeamCommand {
       } else {
          source.sendSuccess(
             () -> Component.translatable(
-                  "commands.team.list.members.success", team.getFormattedDisplayName(), members.size(), ComponentUtils.formatList(members)
-               ),
+               "commands.team.list.members.success", team.getFormattedDisplayName(), members.size(), ComponentUtils.formatList(members)
+            ),
             false
          );
       }
@@ -532,8 +529,8 @@ public class TeamCommand {
       } else {
          source.sendSuccess(
             () -> Component.translatable(
-                  "commands.team.list.teams.success", teams.size(), ComponentUtils.formatList(teams, PlayerTeam::getFormattedDisplayName)
-               ),
+               "commands.team.list.teams.success", teams.size(), ComponentUtils.formatList(teams, PlayerTeam::getFormattedDisplayName)
+            ),
             false
          );
       }

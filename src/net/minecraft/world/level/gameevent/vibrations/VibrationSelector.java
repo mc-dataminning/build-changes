@@ -7,10 +7,10 @@ import java.util.Optional;
 public class VibrationSelector {
    public static final Codec<VibrationSelector> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               VibrationInfo.CODEC.lenientOptionalFieldOf("event").forGetter(o -> o.currentVibrationData.map(VibrationSelector.VibrationEvent::event)),
-               Codec.LONG.fieldOf("tick").forGetter(o -> o.currentVibrationData.map(VibrationSelector.VibrationEvent::tick).orElse(-1L))
-            )
-            .apply(i, VibrationSelector::new)
+            VibrationInfo.CODEC.lenientOptionalFieldOf("event").forGetter(o -> o.currentVibrationData.map(VibrationSelector.VibrationEvent::event)),
+            Codec.LONG.fieldOf("tick").forGetter(o -> o.currentVibrationData.map(VibrationSelector.VibrationEvent::tick).orElse(-1L))
+         )
+         .apply(i, VibrationSelector::new)
    );
    private Optional<VibrationSelector.VibrationEvent> currentVibrationData;
 
@@ -61,6 +61,6 @@ public class VibrationSelector {
       this.currentVibrationData = Optional.empty();
    }
 
-   private static record VibrationEvent(VibrationInfo event, long tick) {
+   private record VibrationEvent(VibrationInfo event, long tick) {
    }
 }

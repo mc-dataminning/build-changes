@@ -16,8 +16,7 @@ import net.minecraft.client.renderer.rendertype.RenderType;
 import org.jspecify.annotations.Nullable;
 
 public abstract class RenderTypeFeatureRenderer<Submit extends SubmitNode> implements FeatureRenderer<Submit> {
-   @Nullable
-   private RenderTypeFeatureRenderer.Group currentGroup;
+   private RenderTypeFeatureRenderer.@Nullable Group currentGroup;
    private final List<RenderTypeFeatureRenderer.Group> groups = new ArrayList<>();
 
    protected abstract void buildGroup(FeatureFrameContext context, List<Submit> submits);
@@ -48,7 +47,7 @@ public abstract class RenderTypeFeatureRenderer<Submit extends SubmitNode> imple
    @Override
    public void executeGroup(
       final FeatureFrameContext context,
-      @Nullable final OitStage stage,
+      final @Nullable OitStage stage,
       final RenderPass renderPass,
       final int groupIndex,
       final List<Submit> submits,
@@ -79,10 +78,8 @@ public abstract class RenderTypeFeatureRenderer<Submit extends SubmitNode> imple
       private final boolean canReorder;
       private final List<StagedVertexBuffer.Draw> draws = new ArrayList<>();
       private final List<PreparedRenderType> drawRenderTypes = new ArrayList<>();
-      @Nullable
-      private RenderType lastRenderType;
-      @Nullable
-      private StagedVertexBuffer.Draw lastDraw;
+      private @Nullable RenderType lastRenderType;
+      private StagedVertexBuffer.@Nullable Draw lastDraw;
 
       private Group(final StagedVertexBuffer stagedBuffer, final boolean canReorder) {
          this.stagedBuffer = stagedBuffer;
@@ -103,14 +100,14 @@ public abstract class RenderTypeFeatureRenderer<Submit extends SubmitNode> imple
          int existingIndex = this.canReorder && renderType.canConsolidateConsecutiveGeometry() ? this.drawRenderTypes.indexOf(preparedRenderType) : -1;
          if (existingIndex != -1) {
             return this.draws.get(existingIndex);
-         } else {
-            boolean useImprovedTransparency = Minecraft.getInstance().gameRenderer.useImprovedTransparency();
-            VertexSorting quadSorting = renderType.sortOnUpload() && !useImprovedTransparency ? RenderSystem.getProjectionType().vertexSorting() : null;
-            StagedVertexBuffer.Draw draw = this.stagedBuffer.appendDraw(renderType.format(), renderType.primitiveTopology(), quadSorting);
-            this.draws.add(draw);
-            this.drawRenderTypes.add(preparedRenderType);
-            return draw;
          }
+
+         boolean useImprovedTransparency = Minecraft.getInstance().gameRenderer.useImprovedTransparency();
+         VertexSorting quadSorting = renderType.sortOnUpload() && !useImprovedTransparency ? RenderSystem.getProjectionType().vertexSorting() : null;
+         StagedVertexBuffer.Draw draw = this.stagedBuffer.appendDraw(renderType.format(), renderType.primitiveTopology(), quadSorting);
+         this.draws.add(draw);
+         this.drawRenderTypes.add(preparedRenderType);
+         return draw;
       }
    }
 }

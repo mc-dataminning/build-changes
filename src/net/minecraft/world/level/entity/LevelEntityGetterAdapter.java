@@ -15,15 +15,13 @@ public class LevelEntityGetterAdapter<T extends EntityAccess> implements LevelEn
       this.sectionStorage = sectionStorage;
    }
 
-   @Nullable
    @Override
-   public T get(final int id) {
+   public @Nullable T get(final int id) {
       return this.visibleEntities.getEntity(id);
    }
 
-   @Nullable
    @Override
-   public T get(final UUID id) {
+   public @Nullable T get(final UUID id) {
       return this.visibleEntities.getEntity(id);
    }
 

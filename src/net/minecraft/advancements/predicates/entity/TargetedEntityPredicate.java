@@ -11,7 +11,7 @@ public record TargetedEntityPredicate(EntityPredicate targetedEntity) implements
    public static final Codec<TargetedEntityPredicate> CODEC = EntityPredicate.CODEC.xmap(TargetedEntityPredicate::new, TargetedEntityPredicate::targetedEntity);
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
       return this.targetedEntity.matches(level, position, entity instanceof Mob mob ? mob.getTarget() : null);
    }
 }

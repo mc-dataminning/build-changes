@@ -24,8 +24,8 @@ public class BlockEntityRenderers {
       PROVIDERS.forEach((type, provider) -> {
          try {
             result.put(type, provider.create(context));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + BuiltInRegistries.BLOCK_ENTITY_TYPE.getKey((BlockEntityType<?>)type), var5);
+         } catch (Exception e) {
+            throw new IllegalStateException("Failed to create model for " + BuiltInRegistries.BLOCK_ENTITY_TYPE.getKey((BlockEntityType<?>)type), e);
          }
       });
       return result.build();

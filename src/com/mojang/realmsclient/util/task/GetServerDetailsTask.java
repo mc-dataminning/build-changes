@@ -45,35 +45,35 @@ public class GetServerDetailsTask extends LongRunningTask {
       RealmsJoinInformation address;
       try {
          address = this.fetchServerAddress();
-      } catch (CancellationException var4) {
+      } catch (CancellationException e) {
          LOGGER.info("User aborted connecting to realms");
          return;
-      } catch (RealmsServiceException var5) {
-         switch (var5.realmsError.errorCode()) {
+      } catch (RealmsServiceException e) {
+         switch (e.realmsError.errorCode()) {
             case 6002:
                setScreen(new RealmsTermsScreen(this.lastScreen, this.server));
                return;
             case 6006:
                boolean isOwner = Minecraft.getInstance().isLocalPlayer(this.server.ownerUUID);
                setScreen(
-                  (Screen)(isOwner
+                  isOwner
                      ? new RealmsBrokenWorldScreen(this.lastScreen, this.server.id, this.server.isMinigameActive())
                      : new RealmsGenericErrorScreen(
                         Component.translatable("mco.brokenworld.nonowner.title"), Component.translatable("mco.brokenworld.nonowner.error"), this.lastScreen
-                     ))
+                     )
                );
                return;
             default:
-               this.error(var5);
-               LOGGER.error("Couldn't connect to world", var5);
+               this.error(e);
+               LOGGER.error("Couldn't connect to world", e);
                return;
          }
-      } catch (TimeoutException var6) {
+      } catch (TimeoutException e) {
          this.error(Component.translatable("mco.errorMessage.connectionFailure"));
          return;
-      } catch (Exception var7) {
-         LOGGER.error("Couldn't connect to world", var7);
-         this.error(var7);
+      } catch (Exception e) {
+         LOGGER.error("Couldn't connect to world", e);
+         this.error(e);
          return;
       }
 
@@ -81,9 +81,9 @@ public class GetServerDetailsTask extends LongRunningTask {
          this.error(Component.translatable("mco.errorMessage.connectionFailure"));
       } else {
          boolean requiresResourcePack = address.resourcePackUrl() != null && address.resourcePackHash() != null;
-         Screen nextScreen = (Screen)(requiresResourcePack
+         Screen nextScreen = requiresResourcePack
             ? this.resourcePackDownloadConfirmationScreen(address, generatePackId(this.server), this::connectScreen)
-            : this.connectScreen(address));
+            : this.connectScreen(address);
          setScreen(nextScreen);
       }
    }
@@ -109,8 +109,8 @@ public class GetServerDetailsTask extends LongRunningTask {
 
          try {
             return client.join(this.server.id);
-         } catch (RetryCallException var4) {
-            pause((long)var4.delaySeconds);
+         } catch (RetryCallException e) {
+            pause(e.delaySeconds);
          }
       }
 
@@ -140,17 +140,19 @@ public class GetServerDetailsTask extends LongRunningTask {
       try {
          if (address.resourcePackUrl() == null) {
             return CompletableFuture.failedFuture(new IllegalStateException("resourcePackUrl was null"));
-         } else if (address.resourcePackHash() == null) {
-            return CompletableFuture.failedFuture(new IllegalStateException("resourcePackHash was null"));
-         } else {
-            DownloadedPackSource packSource = Minecraft.getInstance().getDownloadedPackSource();
-            CompletableFuture<Void> result = packSource.waitForPackFeedback(packId);
-            packSource.allowServerPacks();
-            packSource.pushPack(packId, new URL(address.resourcePackUrl()), address.resourcePackHash());
-            return result;
          }
-      } catch (Exception var5) {
-         return CompletableFuture.failedFuture(var5);
+
+         if (address.resourcePackHash() == null) {
+            return CompletableFuture.failedFuture(new IllegalStateException("resourcePackHash was null"));
+         }
+
+         DownloadedPackSource packSource = Minecraft.getInstance().getDownloadedPackSource();
+         CompletableFuture<Void> result = packSource.waitForPackFeedback(packId);
+         packSource.allowServerPacks();
+         packSource.pushPack(packId, new URL(address.resourcePackUrl()), address.resourcePackHash());
+         return result;
+      } catch (Exception e) {
+         return CompletableFuture.failedFuture(e);
       }
    }
 }

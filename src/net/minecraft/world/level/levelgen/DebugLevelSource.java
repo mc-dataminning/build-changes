@@ -39,8 +39,8 @@ public class DebugLevelSource extends ChunkGenerator {
    private static final List<BlockState> ALL_BLOCKS = StreamSupport.stream(BuiltInRegistries.BLOCK.spliterator(), false)
       .flatMap(b -> b.getStateDefinition().getPossibleStates().stream())
       .collect(Collectors.toList());
-   private static final int GRID_WIDTH = Mth.ceil(Mth.sqrt((float)ALL_BLOCKS.size()));
-   private static final int GRID_HEIGHT = Mth.ceil((float)ALL_BLOCKS.size() / (float)GRID_WIDTH);
+   private static final int GRID_WIDTH = Mth.ceil(Mth.sqrt(ALL_BLOCKS.size()));
+   private static final int GRID_HEIGHT = Mth.ceil((float)ALL_BLOCKS.size() / GRID_WIDTH);
    protected static final BlockState AIR = Blocks.AIR.defaultBlockState();
    protected static final BlockState BARRIER = Blocks.BARRIER.defaultBlockState();
    public static final int HEIGHT = 70;
@@ -80,7 +80,7 @@ public class DebugLevelSource extends ChunkGenerator {
       final RandomState randomState,
       final StructureManager structureManager,
       final BiomeManager biomeManager,
-      @Nullable final WorldGenRegion carverBiomeRegion,
+      final @Nullable WorldGenRegion carverBiomeRegion,
       final Set<Holder<Biome>> possibleBiomes
    ) {
       return CompletableFuture.completedFuture(chunk);

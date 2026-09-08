@@ -15,10 +15,10 @@ public class Varint21LengthFieldPrepender extends MessageToByteEncoder<ByteBuf> 
       int headerLength = VarInt.getByteSize(bodyLength);
       if (headerLength > 3) {
          throw new EncoderException("Packet too large: size " + bodyLength + " is over 8");
-      } else {
-         out.ensureWritable(headerLength + bodyLength);
-         VarInt.write(out, bodyLength);
-         out.writeBytes(msg, msg.readerIndex(), bodyLength);
       }
+
+      out.ensureWritable(headerLength + bodyLength);
+      VarInt.write(out, bodyLength);
+      out.writeBytes(msg, msg.readerIndex(), bodyLength);
    }
 }

@@ -100,37 +100,36 @@ public class RecoverWorldDataScreen extends Screen {
       }
    }
 
-   private Component buildInfo(final LevelStorageSource.LevelStorageAccess access, final boolean fallback, @Nullable final Exception exception) {
+   private Component buildInfo(final LevelStorageSource.LevelStorageAccess access, final boolean fallback, final @Nullable Exception exception) {
       if (fallback && exception instanceof FileNotFoundException) {
          return Component.empty();
-      } else {
-         MutableComponent component = Component.empty();
-         Instant timeStamp = access.getFileModificationTime(fallback);
-         MutableComponent time = timeStamp != null
-            ? Component.literal(WorldSelectionList.DATE_FORMAT.format(ZonedDateTime.ofInstant(timeStamp, ZoneId.systemDefault())))
-            : Component.translatable("recover_world.state_entry.unknown");
-         component.append(Component.translatable("recover_world.state_entry", time.withStyle(ChatFormatting.GRAY)));
-         if (exception == null) {
-            component.append(NO_ISSUES);
-         } else if (exception instanceof FileNotFoundException) {
-            component.append(MISSING_FILE);
-         } else if (exception instanceof ReportedNbtException) {
-            component.append(Component.literal(exception.getCause().toString()).withStyle(ChatFormatting.RED));
-         } else {
-            component.append(Component.literal(exception.toString()).withStyle(ChatFormatting.RED));
-         }
-
-         return component;
       }
+
+      MutableComponent component = Component.empty();
+      Instant timeStamp = access.getFileModificationTime(fallback);
+      MutableComponent time = timeStamp != null
+         ? Component.literal(WorldSelectionList.DATE_FORMAT.format(ZonedDateTime.ofInstant(timeStamp, ZoneId.systemDefault())))
+         : Component.translatable("recover_world.state_entry.unknown");
+      component.append(Component.translatable("recover_world.state_entry", time.withStyle(ChatFormatting.GRAY)));
+      if (exception == null) {
+         component.append(NO_ISSUES);
+      } else if (exception instanceof FileNotFoundException) {
+         component.append(MISSING_FILE);
+      } else if (exception instanceof ReportedNbtException) {
+         component.append(Component.literal(exception.getCause().toString()).withStyle(ChatFormatting.RED));
+      } else {
+         component.append(Component.literal(exception.toString()).withStyle(ChatFormatting.RED));
+      }
+
+      return component;
    }
 
-   @Nullable
-   private Exception collectIssue(final LevelStorageSource.LevelStorageAccess access, final boolean useFallback) {
+   private @Nullable Exception collectIssue(final LevelStorageSource.LevelStorageAccess access, final boolean useFallback) {
       try {
          access.collectIssues(useFallback);
          return null;
-      } catch (NbtException | ReportedNbtException | IOException var4) {
-         return var4;
+      } catch (IOException | NbtException | ReportedNbtException e) {
+         return e;
       }
    }
 

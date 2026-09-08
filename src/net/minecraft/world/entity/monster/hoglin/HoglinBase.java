@@ -18,7 +18,7 @@ public interface HoglinBase {
       float attackDamage = (float)body.getAttributeValue(Attributes.ATTACK_DAMAGE);
       float actualDamage;
       if (!body.isBaby() && (int)attackDamage > 0) {
-         actualDamage = attackDamage / 2.0F + (float)level.getRandom().nextInt((int)attackDamage);
+         actualDamage = attackDamage / 2.0F + level.getRandom().nextInt((int)attackDamage);
       } else {
          actualDamage = attackDamage;
       }
@@ -43,10 +43,10 @@ public interface HoglinBase {
          double xd = target.getX() - body.getX();
          double zd = target.getZ() - body.getZ();
          RandomSource random = body.level().getRandom();
-         float horizontalPushAngle = (float)(random.nextInt(21) - 10);
-         double horizontalScale = effectiveKnockbackPower * (double)(random.nextFloat() * 0.5F + 0.2F);
+         float horizontalPushAngle = random.nextInt(21) - 10;
+         double horizontalScale = effectiveKnockbackPower * (random.nextFloat() * 0.5F + 0.2F);
          Vec3 horizontalPushVector = new Vec3(xd, 0.0, zd).normalize().scale(horizontalScale).yRot(horizontalPushAngle);
-         double verticalScale = effectiveKnockbackPower * (double)random.nextFloat() * 0.5;
+         double verticalScale = effectiveKnockbackPower * random.nextFloat() * 0.5;
          target.push(horizontalPushVector.x, verticalScale, horizontalPushVector.z);
          target.syncVelocity = true;
       }

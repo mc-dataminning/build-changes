@@ -21,13 +21,11 @@ public class GenericWaitingScreen extends Screen {
    private final boolean showButton;
    private final boolean closeOnEscape;
    private final MultiLineLabel message;
-   @Nullable
-   private Button button;
+   private @Nullable Button button;
    private int disableButtonTicks;
 
    public static GenericWaitingScreen createWaitingWithoutButton(final Component title, final Component messageText) {
-      return new GenericWaitingScreen(title, true, messageText, Component.empty(), () -> {
-      }, 0, false, false);
+      return new GenericWaitingScreen(title, true, messageText, Component.empty(), () -> {}, 0, false, false);
    }
 
    public static GenericWaitingScreen createWaiting(final Component title, final Component buttonLabel, final Runnable buttonCallback) {

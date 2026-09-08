@@ -57,8 +57,7 @@ public class PlayerAdvancements {
    private final Set<AdvancementHolder> progressChanged = new HashSet<>();
    private final Set<AdvancementNode> rootsToUpdate = new HashSet<>();
    private ServerPlayer player;
-   @Nullable
-   private AdvancementHolder lastSelectedTab;
+   private @Nullable AdvancementHolder lastSelectedTab;
    private boolean isFirstPacket = true;
    private final Codec<PlayerAdvancements.Data> codec;
    private final Map<CriterionTrigger<?>, Map<PlayerAdvancements.TriggerInstanceKey, ? extends CriterionTriggerInstance>> activeTriggers = new IdentityHashMap<>();
@@ -117,10 +116,10 @@ public class PlayerAdvancements {
             JsonElement json = StrictJsonParser.parse(reader);
             PlayerAdvancements.Data data = (PlayerAdvancements.Data)this.codec.parse(JsonOps.INSTANCE, json).getOrThrow(JsonParseException::new);
             this.applyFrom(manager, data);
-         } catch (JsonIOException | IOException var7) {
-            LOGGER.error("Couldn't access player advancements in {}", this.playerSavePath, var7);
-         } catch (JsonParseException var8) {
-            LOGGER.error("Couldn't parse player advancements in {}", this.playerSavePath, var8);
+         } catch (IOException | JsonIOException e) {
+            LOGGER.error("Couldn't access player advancements in {}", this.playerSavePath, e);
+         } catch (JsonParseException e) {
+            LOGGER.error("Couldn't parse player advancements in {}", this.playerSavePath, e);
          }
       }
 
@@ -137,8 +136,8 @@ public class PlayerAdvancements {
          try (Writer outputWriter = Files.newBufferedWriter(this.playerSavePath, StandardCharsets.UTF_8)) {
             GSON.toJson(json, GSON.newJsonWriter(outputWriter));
          }
-      } catch (JsonIOException | IOException var7) {
-         LOGGER.error("Couldn't save player advancements to {}", this.playerSavePath, var7);
+      } catch (IOException | JsonIOException e) {
+         LOGGER.error("Couldn't save player advancements to {}", this.playerSavePath, e);
       }
    }
 
@@ -267,7 +266,7 @@ public class PlayerAdvancements {
       this.isFirstPacket = false;
    }
 
-   public void setSelectedTab(@Nullable final AdvancementHolder holder) {
+   public void setSelectedTab(final @Nullable AdvancementHolder holder) {
       AdvancementHolder old = this.lastSelectedTab;
       if (holder != null && holder.value().isRoot() && holder.value().display().isPresent()) {
          this.lastSelectedTab = holder;
@@ -319,8 +318,7 @@ public class PlayerAdvancements {
       this.getOrCreateTriggerMapForType(typeAndInstance.trigger()).put(criterion, typeAndInstance.triggerInstance());
    }
 
-   @Nullable
-   public <T extends CriterionTriggerInstance> Map<PlayerAdvancements.TriggerInstanceKey, T> getTriggerMapForType(final CriterionTrigger<T> type) {
+   public <T extends CriterionTriggerInstance> @Nullable Map<PlayerAdvancements.TriggerInstanceKey, T> getTriggerMapForType(final CriterionTrigger<T> type) {
       return (Map<PlayerAdvancements.TriggerInstanceKey, T>)this.activeTriggers.get(type);
    }
 
@@ -334,7 +332,7 @@ public class PlayerAdvancements {
       }
    }
 
-   private static record Data(Map<Identifier, AdvancementProgress> map) {
+   private record Data(Map<Identifier, AdvancementProgress> map) {
       public static final Codec<PlayerAdvancements.Data> CODEC = Codec.unboundedMap(Identifier.CODEC, AdvancementProgress.CODEC)
          .xmap(PlayerAdvancements.Data::new, PlayerAdvancements.Data::map);
 
@@ -343,6 +341,6 @@ public class PlayerAdvancements {
       }
    }
 
-   public static record TriggerInstanceKey(AdvancementHolder advancement, String criterion) {
+   public record TriggerInstanceKey(AdvancementHolder advancement, String criterion) {
    }
 }

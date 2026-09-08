@@ -60,8 +60,7 @@ public class EntityHitboxDebugRenderer implements DebugRenderer.SimpleDebugRende
       }
    }
 
-   @Nullable
-   private Entity getServerEntity(final Entity entity) {
+   private @Nullable Entity getServerEntity(final Entity entity) {
       IntegratedServer server = this.minecraft.getSingleplayerServer();
       if (server != null) {
          ServerLevel level = server.getLevel(entity.level().dimension());
@@ -86,10 +85,7 @@ public class EntityHitboxDebugRenderer implements DebugRenderer.SimpleDebugRende
          float height = 0.0625F;
          Vec3 position = vehicle.getPassengerRidingPosition(entity).add(offset);
          Gizmos.cuboid(
-            new AABB(
-               position.x - (double)width, position.y, position.z - (double)width, position.x + (double)width, position.y + 0.0625, position.z + (double)width
-            ),
-            GizmoStyle.stroke(-256)
+            new AABB(position.x - width, position.y, position.z - width, position.x + width, position.y + 0.0625, position.z + width), GizmoStyle.stroke(-256)
          );
       }
 
@@ -97,7 +93,7 @@ public class EntityHitboxDebugRenderer implements DebugRenderer.SimpleDebugRende
          AABB bb = entity.getBoundingBox().move(offset);
          float padding = 0.01F;
          Gizmos.cuboid(
-            new AABB(bb.minX, bb.minY + (double)entity.getEyeHeight() - 0.01F, bb.minZ, bb.maxX, bb.minY + (double)entity.getEyeHeight() + 0.01F, bb.maxZ),
+            new AABB(bb.minX, bb.minY + entity.getEyeHeight() - 0.01F, bb.minZ, bb.maxX, bb.minY + entity.getEyeHeight() + 0.01F, bb.maxZ),
             GizmoStyle.stroke(-65536)
          );
       }
@@ -111,7 +107,7 @@ public class EntityHitboxDebugRenderer implements DebugRenderer.SimpleDebugRende
          }
       }
 
-      Vec3 eyePosition = currentPosition.add(0.0, (double)entity.getEyeHeight(), 0.0);
+      Vec3 eyePosition = currentPosition.add(0.0, entity.getEyeHeight(), 0.0);
       Vec3 viewVector = entity.getViewVector(partialTicks);
       Gizmos.arrow(eyePosition, eyePosition.add(viewVector.scale(2.0)), -16776961);
       if (isServerEntity) {

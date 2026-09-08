@@ -171,11 +171,11 @@ public interface DispenseItemBehavior {
                ItemStack pickup = bucket.pickupBlock(null, level, target, blockState);
                if (pickup.isEmpty()) {
                   return super.execute(source, dispensed);
-               } else {
-                  level.gameEvent(null, GameEvent.FLUID_PICKUP, target);
-                  Item targetType = pickup.getItem();
-                  return this.consumeWithRemainder(source, dispensed, new ItemStack(targetType));
                }
+
+               level.gameEvent(null, GameEvent.FLUID_PICKUP, target);
+               Item targetType = pickup.getItem();
+               return this.consumeWithRemainder(source, dispensed, new ItemStack(targetType));
             } else {
                return super.execute(source, dispensed);
             }
@@ -204,20 +204,20 @@ public interface DispenseItemBehavior {
             if (!level.getGameRules().get(GameRules.TNT_EXPLODES)) {
                this.setSuccess(false);
                return dispensed;
-            } else {
-               BlockPos target = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
-               if (SulfurCubeBlockDispenseItemBehavior.dispenseBlock(level, target, dispensed)) {
-                  return dispensed;
-               } else {
-                  PrimedTnt tnt = new PrimedTnt(level, (double)target.getX() + 0.5, (double)target.getY(), (double)target.getZ() + 0.5, null);
-                  level.addFreshEntity(tnt);
-                  level.playSound(null, tnt.getX(), tnt.getY(), tnt.getZ(), SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
-                  level.gameEvent(null, GameEvent.ENTITY_PLACE, target);
-                  dispensed.shrink(1);
-                  this.setSuccess(true);
-                  return dispensed;
-               }
             }
+
+            BlockPos target = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
+            if (SulfurCubeBlockDispenseItemBehavior.dispenseBlock(level, target, dispensed)) {
+               return dispensed;
+            }
+
+            PrimedTnt tnt = new PrimedTnt(level, target.getX() + 0.5, target.getY(), target.getZ() + 0.5, null);
+            level.addFreshEntity(tnt);
+            level.playSound(null, tnt.getX(), tnt.getY(), tnt.getZ(), SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
+            level.gameEvent(null, GameEvent.ENTITY_PLACE, target);
+            dispensed.shrink(1);
+            this.setSuccess(true);
+            return dispensed;
          }
       });
       DispenserBlock.registerBehavior(
@@ -230,10 +230,7 @@ public interface DispenseItemBehavior {
                BlockPos target = source.pos().relative(direction);
                if (level.isEmptyBlock(target) && WitherSkullBlock.canSpawnMob(level, target, dispensed)) {
                   level.setBlockAndUpdate(
-                     target,
-                     Blocks.WITHER_SKELETON_SKULL
-                        .defaultBlockState()
-                        .setValue(SkullBlock.ROTATION, Integer.valueOf(RotationSegment.convertToSegment(direction)))
+                     target, Blocks.WITHER_SKELETON_SKULL.defaultBlockState().setValue(SkullBlock.ROTATION, RotationSegment.convertToSegment(direction))
                   );
                   level.gameEvent(null, GameEvent.BLOCK_PLACE, target);
                   if (level.getBlockEntity(target) instanceof SkullBlockEntity skullBlockEntity) {
@@ -334,18 +331,17 @@ public interface DispenseItemBehavior {
             if (armadillos.isEmpty()) {
                this.setSuccess(false);
                return dispensed;
-            } else {
-               for (Armadillo armadillo : armadillos) {
-                  if (armadillo.brushOffScute(null, dispensed)) {
-                     dispensed.hurtAndBreak(16, level, null, item -> {
-                     });
-                     return dispensed;
-                  }
-               }
-
-               this.setSuccess(false);
-               return dispensed;
             }
+
+            for (Armadillo armadillo : armadillos) {
+               if (armadillo.brushOffScute(null, dispensed)) {
+                  dispensed.hurtAndBreak(16, level, null, item -> {});
+                  return dispensed;
+               }
+            }
+
+            this.setSuccess(false);
+            return dispensed;
          }
       });
       DispenserBlock.registerBehavior(Items.HONEYCOMB, new OptionalDispenseItemBehavior() {
@@ -377,37 +373,29 @@ public interface DispenseItemBehavior {
                PotionContents potion = dispensed.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
                if (!potion.is(Potions.WATER)) {
                   return this.defaultDispenseItemBehavior.dispense(source, dispensed);
-               } else {
-                  ServerLevel level = source.level();
-                  BlockPos pos = source.pos();
-                  BlockPos target = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
-                  if (!level.getBlockState(target).is(BlockTags.CONVERTIBLE_TO_MUD)) {
-                     return this.defaultDispenseItemBehavior.dispense(source, dispensed);
-                  } else {
-                     if (!level.isClientSide()) {
-                        RandomSource random = level.getRandom();
+               }
 
-                        for (int i = 0; i < 5; i++) {
-                           level.sendParticles(
-                              ParticleTypes.SPLASH,
-                              (double)pos.getX() + random.nextDouble(),
-                              (double)(pos.getY() + 1),
-                              (double)pos.getZ() + random.nextDouble(),
-                              1,
-                              0.0,
-                              0.0,
-                              0.0,
-                              1.0
-                           );
-                        }
-                     }
+               ServerLevel level = source.level();
+               BlockPos pos = source.pos();
+               BlockPos target = source.pos().relative(source.state().getValue(DispenserBlock.FACING));
+               if (!level.getBlockState(target).is(BlockTags.CONVERTIBLE_TO_MUD)) {
+                  return this.defaultDispenseItemBehavior.dispense(source, dispensed);
+               }
 
-                     level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
-                     level.gameEvent(null, GameEvent.FLUID_PLACE, pos);
-                     level.setBlockAndUpdate(target, Blocks.MUD.defaultBlockState());
-                     return this.consumeWithRemainder(source, dispensed, new ItemStack(Items.GLASS_BOTTLE));
+               if (!level.isClientSide()) {
+                  RandomSource random = level.getRandom();
+
+                  for (int i = 0; i < 5; i++) {
+                     level.sendParticles(
+                        ParticleTypes.SPLASH, pos.getX() + random.nextDouble(), pos.getY() + 1, pos.getZ() + random.nextDouble(), 1, 0.0, 0.0, 0.0, 1.0
+                     );
                   }
                }
+
+               level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+               level.gameEvent(null, GameEvent.FLUID_PLACE, pos);
+               level.setBlockAndUpdate(target, Blocks.MUD.defaultBlockState());
+               return this.consumeWithRemainder(source, dispensed, new ItemStack(Items.GLASS_BOTTLE));
             }
          }
       );

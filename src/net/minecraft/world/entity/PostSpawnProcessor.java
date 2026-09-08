@@ -14,7 +14,6 @@ public interface PostSpawnProcessor<T extends Entity> {
    }
 
    static <T extends Entity> PostSpawnProcessor<T> nop() {
-      return var0 -> {
-      };
+      return var0 -> {};
    }
 }

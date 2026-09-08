@@ -22,7 +22,7 @@ public interface AggregateProvider<Value extends Validatable> extends Validatabl
    }
 
    @FunctionalInterface
-   public interface Factory<Value extends Validatable, Self extends AggregateProvider<Value>> {
+   interface Factory<Value extends Validatable, Self extends AggregateProvider<Value>> {
       Self create(HolderSet<Value> value);
    }
 }

@@ -2,7 +2,6 @@ package net.minecraft.world.level.levelgen.densityfunction.generator;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
 import net.minecraft.core.Holder;
 import net.minecraft.util.Interval;
 import net.minecraft.world.level.levelgen.densityfunction.DensityBuffer;
@@ -30,7 +29,7 @@ public interface ShiftNoiseFunction extends DensityFunction {
    @Override
    MapCodec<? extends ShiftNoiseFunction> codec();
 
-   public static record Shift(Holder<NormalNoise> offsetNoise) implements ShiftNoiseFunction {
+   record Shift(Holder<NormalNoise> offsetNoise) implements ShiftNoiseFunction {
       public static final MapCodec<ShiftNoiseFunction.Shift> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(NormalNoise.CODEC.fieldOf("noise").forGetter(ShiftNoiseFunction.Shift::offsetNoise)).apply(i, ShiftNoiseFunction.Shift::new)
       );
@@ -46,9 +45,8 @@ public interface ShiftNoiseFunction extends DensityFunction {
          return new ShiftNoiseFunction.Shift(this.offsetNoise);
       }
 
-      @DensityFunction.Axes
       @Override
-      public int domainAxes() {
+      public @DensityFunction.Axes int domainAxes() {
          return 7;
       }
 
@@ -58,7 +56,7 @@ public interface ShiftNoiseFunction extends DensityFunction {
       }
    }
 
-   public static record ShiftA(Holder<NormalNoise> offsetNoise) implements ShiftNoiseFunction {
+   record ShiftA(Holder<NormalNoise> offsetNoise) implements ShiftNoiseFunction {
       public static final MapCodec<ShiftNoiseFunction.ShiftA> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(NormalNoise.CODEC.fieldOf("noise").forGetter(ShiftNoiseFunction.ShiftA::offsetNoise)).apply(i, ShiftNoiseFunction.ShiftA::new)
       );
@@ -74,9 +72,8 @@ public interface ShiftNoiseFunction extends DensityFunction {
          return new ShiftNoiseFunction.ShiftA(this.offsetNoise);
       }
 
-      @DensityFunction.Axes
       @Override
-      public int domainAxes() {
+      public @DensityFunction.Axes int domainAxes() {
          return 5;
       }
 
@@ -86,7 +83,7 @@ public interface ShiftNoiseFunction extends DensityFunction {
       }
    }
 
-   public static record ShiftB(Holder<NormalNoise> offsetNoise) implements ShiftNoiseFunction {
+   record ShiftB(Holder<NormalNoise> offsetNoise) implements ShiftNoiseFunction {
       public static final MapCodec<ShiftNoiseFunction.ShiftB> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(NormalNoise.CODEC.fieldOf("noise").forGetter(ShiftNoiseFunction.ShiftB::offsetNoise)).apply(i, ShiftNoiseFunction.ShiftB::new)
       );
@@ -95,10 +92,6 @@ public interface ShiftNoiseFunction extends DensityFunction {
       public DensitySampler compileSampler(final DensityFunction.CompileContext context) {
          final Noise noise = context.createNoiseSampler(this.offsetNoise);
          return new DensitySampler() {
-            {
-               Objects.requireNonNull(ShiftB.this);
-            }
-
             @Override
             public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
                DensityVolume transposedVolume = new DensityVolume(
@@ -120,7 +113,7 @@ public interface ShiftNoiseFunction extends DensityFunction {
 
             @Override
             public float sampleValue(final SamplerContext context, final int blockX, final int blockY, final int blockZ) {
-               return noise.get((double)blockZ * 0.25, (double)blockX * 0.25, 0.0) * 4.0F;
+               return noise.get(blockZ * 0.25, blockX * 0.25, 0.0) * 4.0F;
             }
          };
       }
@@ -130,9 +123,8 @@ public interface ShiftNoiseFunction extends DensityFunction {
          return new ShiftNoiseFunction.ShiftB(this.offsetNoise);
       }
 
-      @DensityFunction.Axes
       @Override
-      public int domainAxes() {
+      public @DensityFunction.Axes int domainAxes() {
          return 5;
       }
 

@@ -25,17 +25,15 @@ public class ItemLoreFix extends DataFix {
          "Item Lore componentize",
          itemStackType,
          itemStack -> itemStack.updateTyped(
-               tagFinder,
-               tag -> tag.updateTyped(
-                     displayFinder,
-                     display -> display.updateTyped(
-                           loreFinder,
-                           lore -> lore.update(
-                                 textComponentFinder, textComponent -> textComponent.mapSecond(LegacyComponentDataFixUtils::createTextComponentJson)
-                              )
-                        )
-                  )
+            tagFinder,
+            tag -> tag.updateTyped(
+               displayFinder,
+               display -> display.updateTyped(
+                  loreFinder,
+                  lore -> lore.update(textComponentFinder, textComponent -> textComponent.mapSecond(LegacyComponentDataFixUtils::createTextComponentJson))
+               )
             )
+         )
       );
    }
 }

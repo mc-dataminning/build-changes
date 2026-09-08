@@ -29,8 +29,7 @@ import org.jspecify.annotations.Nullable;
 
 public class EntitySelector {
    public static final int INFINITE = Integer.MAX_VALUE;
-   public static final BiConsumer<Vec3, List<? extends Entity>> ORDER_ARBITRARY = (p, c) -> {
-   };
+   public static final BiConsumer<Vec3, List<? extends Entity>> ORDER_ARBITRARY = (p, c) -> {};
    private static final EntityTypeTest<Entity, ?> ANY_TYPE = new EntityTypeTest<Entity, Entity>() {
       public Entity tryCast(final Entity entity) {
          return entity;
@@ -57,17 +56,13 @@ public class EntitySelector {
    private final boolean includesEntities;
    private final boolean worldLimited;
    private final List<Predicate<Entity>> contextFreePredicates;
-   @Nullable
-   private final MinMaxBounds.Doubles range;
+   private final MinMaxBounds.@Nullable Doubles range;
    private final Function<Vec3, Vec3> position;
-   @Nullable
-   private final AABB aabb;
+   private final @Nullable AABB aabb;
    private final BiConsumer<Vec3, List<? extends Entity>> order;
    private final boolean currentEntity;
-   @Nullable
-   private final String playerName;
-   @Nullable
-   private final UUID entityUUID;
+   private final @Nullable String playerName;
+   private final @Nullable UUID entityUUID;
    private final EntityTypeTest<Entity, ?> type;
    private final boolean usesSelector;
 
@@ -76,14 +71,14 @@ public class EntitySelector {
       final boolean includesEntities,
       final boolean worldLimited,
       final List<Predicate<Entity>> contextFreePredicates,
-      @Nullable final MinMaxBounds.Doubles range,
+      final MinMaxBounds.@Nullable Doubles range,
       final Function<Vec3, Vec3> position,
-      @Nullable final AABB aabb,
+      final @Nullable AABB aabb,
       final BiConsumer<Vec3, List<? extends Entity>> order,
       final boolean currentEntity,
-      @Nullable final String playerName,
-      @Nullable final UUID entityUUID,
-      @Nullable final EntityType<?> type,
+      final @Nullable String playerName,
+      final @Nullable UUID entityUUID,
+      final @Nullable EntityType<?> type,
       final boolean usesSelector
    ) {
       this.maxResults = maxResults;
@@ -97,7 +92,7 @@ public class EntitySelector {
       this.currentEntity = currentEntity;
       this.playerName = playerName;
       this.entityUUID = entityUUID;
-      this.type = (EntityTypeTest<Entity, ?>)(type == null ? ANY_TYPE : type);
+      this.type = type == null ? ANY_TYPE : type;
       this.usesSelector = usesSelector;
    }
 
@@ -143,10 +138,14 @@ public class EntitySelector {
       this.checkPermissions(sender);
       if (!this.includesEntities) {
          return this.findPlayers(sender);
-      } else if (this.playerName != null) {
+      }
+
+      if (this.playerName != null) {
          ServerPlayer result = sender.getServer().getPlayerList().getPlayerByName(this.playerName);
          return result == null ? List.of() : List.of(result);
-      } else if (this.entityUUID != null) {
+      }
+
+      if (this.entityUUID != null) {
          for (ServerLevel level : sender.getServer().getAllLevels()) {
             Entity entity = level.getEntity(this.entityUUID);
             if (entity != null) {
@@ -164,23 +163,23 @@ public class EntitySelector {
          if (this.currentEntity) {
             Predicate<Entity> predicate = this.getPredicate(pos, absoluteAabb, null);
             return sender.getEntity() != null && predicate.test(sender.getEntity()) ? List.of(sender.getEntity()) : List.of();
-         } else {
-            Predicate<Entity> predicate = this.getPredicate(pos, absoluteAabb, sender.enabledFeatures());
-            List<Entity> result = new ObjectArrayList();
-            if (this.isWorldLimited()) {
-               this.addEntities(result, sender.getLevel(), absoluteAabb, predicate);
-            } else {
-               for (ServerLevel levelx : sender.getServer().getAllLevels()) {
-                  this.addEntities(result, levelx, absoluteAabb, predicate);
-               }
-            }
-
-            return this.sortAndLimit(pos, result);
          }
+
+         Predicate<Entity> predicate = this.getPredicate(pos, absoluteAabb, sender.enabledFeatures());
+         List<Entity> result = new ObjectArrayList();
+         if (this.isWorldLimited()) {
+            this.addEntities(result, sender.getLevel(), absoluteAabb, predicate);
+         } else {
+            for (ServerLevel level : sender.getServer().getAllLevels()) {
+               this.addEntities(result, level, absoluteAabb, predicate);
+            }
+         }
+
+         return this.sortAndLimit(pos, result);
       }
    }
 
-   private void addEntities(final List<Entity> result, final ServerLevel level, @Nullable final AABB absoluteAABB, final Predicate<Entity> predicate) {
+   private void addEntities(final List<Entity> result, final ServerLevel level, final @Nullable AABB absoluteAABB, final Predicate<Entity> predicate) {
       int limit = this.getResultLimit();
       if (result.size() < limit) {
          if (absoluteAABB != null) {
@@ -210,48 +209,45 @@ public class EntitySelector {
       if (this.playerName != null) {
          ServerPlayer result = sender.getServer().getPlayerList().getPlayerByName(this.playerName);
          return result == null ? List.of() : List.of(result);
-      } else if (this.entityUUID != null) {
+      }
+
+      if (this.entityUUID != null) {
          ServerPlayer result = sender.getServer().getPlayerList().getPlayer(this.entityUUID);
          return result == null ? List.of() : List.of(result);
+      }
+
+      Vec3 pos = this.position.apply(sender.getPosition());
+      AABB absoluteAabb = this.getAbsoluteAabb(pos);
+      Predicate<Entity> predicate = this.getPredicate(pos, absoluteAabb, null);
+      if (this.currentEntity) {
+         return sender.getEntity() instanceof ServerPlayer player && predicate.test(player) ? List.of(player) : List.of();
+      }
+
+      int limit = this.getResultLimit();
+      List<ServerPlayer> result;
+      if (this.isWorldLimited()) {
+         result = sender.getLevel().getPlayers(predicate, limit);
       } else {
-         Vec3 pos = this.position.apply(sender.getPosition());
-         AABB absoluteAabb = this.getAbsoluteAabb(pos);
-         Predicate<Entity> predicate = this.getPredicate(pos, absoluteAabb, null);
-         if (this.currentEntity) {
-            if (sender.getEntity() instanceof ServerPlayer player && predicate.test(player)) {
-               return List.of(player);
-            }
+         result = new ObjectArrayList();
 
-            return List.of();
-         } else {
-            int limit = this.getResultLimit();
-            List<ServerPlayer> result;
-            if (this.isWorldLimited()) {
-               result = sender.getLevel().getPlayers(predicate, limit);
-            } else {
-               result = new ObjectArrayList();
-
-               for (ServerPlayer player : sender.getServer().getPlayerList().getPlayers()) {
-                  if (predicate.test(player)) {
-                     result.add(player);
-                     if (result.size() >= limit) {
-                        return result;
-                     }
-                  }
+         for (ServerPlayer player : sender.getServer().getPlayerList().getPlayers()) {
+            if (predicate.test(player)) {
+               result.add(player);
+               if (result.size() >= limit) {
+                  return result;
                }
             }
-
-            return this.sortAndLimit(pos, result);
          }
       }
+
+      return this.sortAndLimit(pos, result);
    }
 
-   @Nullable
-   private AABB getAbsoluteAabb(final Vec3 pos) {
+   private @Nullable AABB getAbsoluteAabb(final Vec3 pos) {
       return this.aabb != null ? this.aabb.move(pos) : null;
    }
 
-   private Predicate<Entity> getPredicate(final Vec3 pos, @Nullable final AABB absoluteAabb, @Nullable final FeatureFlagSet enabledFeatures) {
+   private Predicate<Entity> getPredicate(final Vec3 pos, final @Nullable AABB absoluteAabb, final @Nullable FeatureFlagSet enabledFeatures) {
       boolean filterFeatures = enabledFeatures != null;
       boolean filterAabb = absoluteAabb != null;
       boolean filterRange = this.range != null;

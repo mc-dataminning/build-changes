@@ -17,11 +17,11 @@ public record WaypointStyle(int nearDistance, int farDistance, List<Identifier> 
    private static final Codec<Integer> DISTANCE_CODEC = Codec.intRange(0, 60000000);
    public static final Codec<WaypointStyle> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  DISTANCE_CODEC.optionalFieldOf("near_distance", 128).forGetter(WaypointStyle::nearDistance),
-                  DISTANCE_CODEC.optionalFieldOf("far_distance", 332).forGetter(WaypointStyle::farDistance),
-                  ExtraCodecs.nonEmptyList(Identifier.CODEC.listOf()).fieldOf("sprites").forGetter(WaypointStyle::sprites)
-               )
-               .apply(i, WaypointStyle::new)
+               DISTANCE_CODEC.optionalFieldOf("near_distance", 128).forGetter(WaypointStyle::nearDistance),
+               DISTANCE_CODEC.optionalFieldOf("far_distance", 332).forGetter(WaypointStyle::farDistance),
+               ExtraCodecs.nonEmptyList(Identifier.CODEC.listOf()).fieldOf("sprites").forGetter(WaypointStyle::sprites)
+            )
+            .apply(i, WaypointStyle::new)
       )
       .validate(WaypointStyle::validate);
 
@@ -43,17 +43,23 @@ public record WaypointStyle(int nearDistance, int farDistance, List<Identifier> 
    }
 
    public Identifier sprite(final float distance) {
-      if (distance < (float)this.nearDistance) {
+      if (distance < this.nearDistance) {
          return this.spriteLocations.getFirst();
-      } else if (distance >= (float)this.farDistance) {
-         return this.spriteLocations.getLast();
-      } else if (this.spriteLocations.size() == 1) {
-         return this.spriteLocations.getFirst();
-      } else if (this.spriteLocations.size() == 3) {
-         return this.spriteLocations.get(1);
-      } else {
-         int index = Mth.lerpInt((distance - (float)this.nearDistance) / (float)(this.farDistance - this.nearDistance), 1, this.spriteLocations.size() - 1);
-         return this.spriteLocations.get(index);
       }
+
+      if (distance >= this.farDistance) {
+         return this.spriteLocations.getLast();
+      }
+
+      if (this.spriteLocations.size() == 1) {
+         return this.spriteLocations.getFirst();
+      }
+
+      if (this.spriteLocations.size() == 3) {
+         return this.spriteLocations.get(1);
+      }
+
+      int index = Mth.lerpInt((distance - this.nearDistance) / (this.farDistance - this.nearDistance), 1, this.spriteLocations.size() - 1);
+      return this.spriteLocations.get(index);
    }
 }

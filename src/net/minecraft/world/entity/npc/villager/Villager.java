@@ -115,8 +115,7 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
    private static final int DEFAULT_LAST_GOSSIP_DECAY = 0;
    private static final int DEFAULT_RESTOCKS_TODAY = 0;
    private static final EntityDimensions BABY_DIMENSIONS = EntityDimensions.scalable(0.49F, 0.98F).withEyeHeight(0.63F);
-   @Nullable
-   private Player lastTradedPlayer;
+   private @Nullable Player lastTradedPlayer;
    private int foodLevel = 0;
    private final GossipContainer gossips = new GossipContainer();
    private long lastGossipTime;
@@ -268,29 +267,31 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
       ItemStack itemStack = player.getItemInHand(hand);
       if (itemStack.is(Items.VILLAGER_SPAWN_EGG) || !this.isAlive() || this.isTrading() || this.isSleeping()) {
          return super.mobInteract(player, hand);
-      } else if (this.isBaby()) {
+      }
+
+      if (this.isBaby()) {
          this.setUnhappy();
          return InteractionResult.SUCCESS;
-      } else {
-         if (!this.level().isClientSide()) {
-            boolean noOffers = this.getOffers().isEmpty();
-            if (hand == InteractionHand.MAIN_HAND) {
-               if (noOffers) {
-                  this.setUnhappy();
-               }
+      }
 
-               player.awardStat(Stats.TALKED_TO_VILLAGER);
-            }
-
+      if (!this.level().isClientSide()) {
+         boolean noOffers = this.getOffers().isEmpty();
+         if (hand == InteractionHand.MAIN_HAND) {
             if (noOffers) {
-               return InteractionResult.CONSUME;
+               this.setUnhappy();
             }
 
-            this.startTrading(player);
+            player.awardStat(Stats.TALKED_TO_VILLAGER);
          }
 
-         return InteractionResult.SUCCESS;
+         if (noOffers) {
+            return InteractionResult.CONSUME;
+         }
+
+         this.startTrading(player);
       }
+
+      return InteractionResult.SUCCESS;
    }
 
    private void setUnhappy() {
@@ -307,7 +308,7 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
    }
 
    @Override
-   public void setTradingPlayer(@Nullable final Player player) {
+   public void setTradingPlayer(final @Nullable Player player) {
       boolean shouldStop = this.getTradingPlayer() != null && player == null;
       super.setTradingPlayer(player);
       if (shouldStop) {
@@ -340,19 +341,13 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
          offer.resetUses();
       }
 
-      this.resendOffersToTradingPlayer();
+      Player tradingPlayer = this.getTradingPlayer();
+      if (tradingPlayer != null) {
+         this.updateSpecialPrices(tradingPlayer);
+      }
+
       this.lastRestockGameTime = this.level().getGameTime();
       this.numberOfRestocksToday++;
-   }
-
-   private void resendOffersToTradingPlayer() {
-      MerchantOffers offers = this.getOffers();
-      Player tradingPlayer = this.getTradingPlayer();
-      if (tradingPlayer != null && !offers.isEmpty()) {
-         tradingPlayer.sendMerchantOffers(
-            tradingPlayer.containerMenu.containerId, offers, this.getVillagerData().level(), this.getVillagerXp(), this.showProgressBar(), this.canRestock()
-         );
-      }
    }
 
    private boolean needsToRestock() {
@@ -373,7 +368,7 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
       long halfDayPassedTime = this.lastRestockGameTime + 12000L;
       long gameTime = this.level().getGameTime();
       boolean isNewDay = gameTime > halfDayPassedTime;
-      long currentDay = (long)this.level()
+      long currentDay = this.level()
          .registryAccess()
          .get(Timelines.OVERWORLD_DAY)
          .map(timeline -> timeline.value().getPeriodCount(level.clockManager()))
@@ -401,7 +396,10 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
          this.updateDemand();
       }
 
-      this.resendOffersToTradingPlayer();
+      Player tradingPlayer = this.getTradingPlayer();
+      if (tradingPlayer != null) {
+         this.updateSpecialPrices(tradingPlayer);
+      }
    }
 
    private void updateDemand() {
@@ -414,27 +412,34 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
       this.resetSpecialPrices();
       int reputation = this.getPlayerReputation(player);
       MobEffectInstance heroOfTheVillage = player.getEffect(MobEffects.HERO_OF_THE_VILLAGE);
-      double heroModifier = heroOfTheVillage == null ? 0.0 : (double)(0.3F + 0.0625F * (float)heroOfTheVillage.getAmplifier());
-      boolean offersChanged = false;
+      double heroModifier = heroOfTheVillage == null ? 0.0 : 0.3F + 0.0625F * heroOfTheVillage.getAmplifier();
+      MerchantOffers merchantOffers = this.getOffers();
 
-      for (MerchantOffer offer : this.getOffers()) {
+      for (MerchantOffer offer : merchantOffers) {
          if (reputation != 0) {
-            offer.addToSpecialPriceDiff(-Mth.floor((float)reputation * offer.getPriceMultiplier()));
-            offersChanged = true;
+            offer.addToSpecialPriceDiff(-Mth.floor(reputation * offer.getPriceMultiplier()));
          }
 
          if (heroModifier > 0.0) {
-            int costReduction = (int)Math.floor(heroModifier * (double)offer.getBaseCostA().getCount());
+            int costReduction = (int)Math.floor(heroModifier * offer.getBaseCostA().getCount());
             offer.addToSpecialPriceDiff(-Math.max(costReduction, 1));
-            offersChanged = true;
          }
       }
 
-      if (offersChanged) {
-         Player tradingPlayer = this.getTradingPlayer();
-         if (tradingPlayer != null && tradingPlayer.containerMenu instanceof MerchantMenu menu) {
+      Player tradingPlayer = this.getTradingPlayer();
+      if (tradingPlayer != null && !merchantOffers.isEmpty()) {
+         if (tradingPlayer.containerMenu instanceof MerchantMenu menu) {
             menu.updateSellItem();
          }
+
+         tradingPlayer.sendMerchantOffers(
+            tradingPlayer.containerMenu.containerId,
+            merchantOffers,
+            this.getVillagerData().level(),
+            this.getVillagerXp(),
+            this.showProgressBar(),
+            this.canRestock()
+         );
       }
    }
 
@@ -488,8 +493,9 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
 
    @Override
    public void postDataManipulated() {
-      if (this.isTrading()) {
-         this.resendOffersToTradingPlayer();
+      Player tradingPlayer = this.getTradingPlayer();
+      if (tradingPlayer != null) {
+         this.updateSpecialPrices(tradingPlayer);
       }
    }
 
@@ -498,9 +504,8 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
       return false;
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getAmbientSound() {
+   protected @Nullable SoundEvent getAmbientSound() {
       if (this.isSleeping()) {
          return null;
       } else {
@@ -567,7 +572,7 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
    }
 
    @Override
-   public void setLastHurtByMob(@Nullable final LivingEntity hurtBy) {
+   public void setLastHurtByMob(final @Nullable LivingEntity hurtBy) {
       if (hurtBy != null && this.level() instanceof ServerLevel serverLevel) {
          serverLevel.onReputationEvent(ReputationEventType.VILLAGER_HURT, hurtBy, this);
          if (this.isAlive() && hurtBy instanceof Player) {
@@ -692,7 +697,7 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 12) {
          this.addParticlesAroundSelf(ParticleTypes.HEART);
       } else if (id == 13) {
@@ -706,10 +711,9 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
       }
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+   public @Nullable SpawnGroupData finalizeSpawn(
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       if (spawnReason == EntitySpawnReason.BREEDING) {
          this.setVillagerData(this.getVillagerData().withProfession(level.registryAccess(), VillagerProfession.NONE));
@@ -719,8 +723,7 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
       return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
    }
 
-   @Nullable
-   public Villager getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable Villager getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       double biomeRoll = this.random.nextDouble();
       Holder<VillagerType> type;
       if (biomeRoll < 0.5) {
@@ -810,7 +813,6 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
          Player tradingPlayer = this.getTradingPlayer();
          if (tradingPlayer != null) {
             this.updateSpecialPrices(tradingPlayer);
-            this.resendOffersToTradingPlayer();
          }
       }
    }
@@ -825,7 +827,6 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
          Player tradingPlayer = this.getTradingPlayer();
          if (tradingPlayer != null && newGossip > 0) {
             this.updateSpecialPrices(tradingPlayer);
-            this.resendOffersToTradingPlayer();
          }
       }
    }
@@ -876,7 +877,6 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
       Player tradingPlayer = this.getTradingPlayer();
       if (tradingPlayer != null && tradingPlayer.getUUID().equals(source.getUUID())) {
          this.updateSpecialPrices(tradingPlayer);
-         this.resendOffersToTradingPlayer();
       }
    }
 
@@ -913,9 +913,8 @@ public class Villager extends AbstractVillager implements VillagerDataHolder, Re
       return sleepMemory.filter(aLong -> gameTime - aLong < 24000L).isPresent();
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       return type == DataComponents.VILLAGER_VARIANT ? castComponentValue((DataComponentType<T>)type, this.getVillagerData().type()) : super.get(type);
    }
 

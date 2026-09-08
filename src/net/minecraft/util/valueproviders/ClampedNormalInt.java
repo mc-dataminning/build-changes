@@ -10,17 +10,17 @@ import net.minecraft.util.RandomSource;
 public record ClampedNormalInt(float mean, float deviation, int minInclusive, int maxInclusive) implements IntProvider {
    public static final MapCodec<ClampedNormalInt> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Codec.FLOAT.fieldOf("mean").forGetter(ClampedNormalInt::mean),
-                  Codec.FLOAT.fieldOf("deviation").forGetter(ClampedNormalInt::deviation),
-                  Codec.INT.fieldOf("min_inclusive").forGetter(ClampedNormalInt::minInclusive),
-                  Codec.INT.fieldOf("max_inclusive").forGetter(ClampedNormalInt::maxInclusive)
-               )
-               .apply(i, ClampedNormalInt::new)
+               Codec.FLOAT.fieldOf("mean").forGetter(ClampedNormalInt::mean),
+               Codec.FLOAT.fieldOf("deviation").forGetter(ClampedNormalInt::deviation),
+               Codec.INT.fieldOf("min_inclusive").forGetter(ClampedNormalInt::minInclusive),
+               Codec.INT.fieldOf("max_inclusive").forGetter(ClampedNormalInt::maxInclusive)
+            )
+            .apply(i, ClampedNormalInt::new)
       )
       .validate(
          c -> c.maxInclusive < c.minInclusive
-               ? DataResult.error(() -> "Max must be larger than min: [" + c.minInclusive + ", " + c.maxInclusive + "]")
-               : DataResult.success(c)
+            ? DataResult.error(() -> "Max must be larger than min: [" + c.minInclusive + ", " + c.maxInclusive + "]")
+            : DataResult.success(c)
       );
 
    public static ClampedNormalInt of(final float mean, final float deviation, final int minInclusive, final int maxInclusive) {
@@ -29,7 +29,7 @@ public record ClampedNormalInt(float mean, float deviation, int minInclusive, in
 
    @Override
    public int sample(final RandomSource random) {
-      return sample(random, this.mean, this.deviation, (float)this.minInclusive, (float)this.maxInclusive);
+      return sample(random, this.mean, this.deviation, this.minInclusive, this.maxInclusive);
    }
 
    public static int sample(final RandomSource random, final float mean, final float deviation, final float minInclusive, final float maxInclusive) {

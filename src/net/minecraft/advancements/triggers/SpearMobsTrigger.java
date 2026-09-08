@@ -18,13 +18,13 @@ public class SpearMobsTrigger extends SimpleCriterionTrigger<SpearMobsTrigger.Tr
       this.trigger(player, t -> t.matches(number));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<Integer> count) implements SimpleCriterionTrigger.SimpleInstance {
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<Integer> count) implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<SpearMobsTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(SpearMobsTrigger.TriggerInstance::player),
-                  ExtraCodecs.POSITIVE_INT.optionalFieldOf("count").forGetter(SpearMobsTrigger.TriggerInstance::count)
-               )
-               .apply(i, SpearMobsTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(SpearMobsTrigger.TriggerInstance::player),
+               ExtraCodecs.POSITIVE_INT.optionalFieldOf("count").forGetter(SpearMobsTrigger.TriggerInstance::count)
+            )
+            .apply(i, SpearMobsTrigger.TriggerInstance::new)
       );
 
       public static Criterion<SpearMobsTrigger.TriggerInstance> spearMobs(final int requiredCount) {

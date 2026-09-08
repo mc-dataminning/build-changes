@@ -32,12 +32,12 @@ public record PalettedPermutations(List<Identifier> textures, Identifier palette
    public static final String DEFAULT_SEPARATOR = "_";
    public static final MapCodec<PalettedPermutations> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.list(Identifier.CODEC).fieldOf("textures").forGetter(PalettedPermutations::textures),
-               Identifier.CODEC.fieldOf("palette_key").forGetter(PalettedPermutations::paletteKey),
-               Codec.unboundedMap(Codec.STRING, Identifier.CODEC).fieldOf("permutations").forGetter(PalettedPermutations::permutations),
-               Codec.STRING.optionalFieldOf("separator", "_").forGetter(PalettedPermutations::separator)
-            )
-            .apply(i, PalettedPermutations::new)
+            Codec.list(Identifier.CODEC).fieldOf("textures").forGetter(PalettedPermutations::textures),
+            Identifier.CODEC.fieldOf("palette_key").forGetter(PalettedPermutations::paletteKey),
+            Codec.unboundedMap(Codec.STRING, Identifier.CODEC).fieldOf("permutations").forGetter(PalettedPermutations::permutations),
+            Codec.STRING.optionalFieldOf("separator", "_").forGetter(PalettedPermutations::separator)
+         )
+         .apply(i, PalettedPermutations::new)
    );
 
    public PalettedPermutations(final List<Identifier> textures, final Identifier paletteKey, final Map<String, Identifier> permutations) {
@@ -51,8 +51,8 @@ public record PalettedPermutations(List<Identifier> textures, Identifier palette
       this.permutations
          .forEach(
             (suffix, palette) -> palettes.put(
-                  suffix, Suppliers.memoize(() -> PaletteMapping.create(paletteKeySupplier.get(), loadPaletteEntryFromImage(resourceManager, palette)))
-               )
+               suffix, Suppliers.memoize(() -> PaletteMapping.create(paletteKeySupplier.get(), loadPaletteEntryFromImage(resourceManager, palette)))
+            )
          );
 
       for (Identifier textureLocation : this.textures) {
@@ -76,13 +76,13 @@ public record PalettedPermutations(List<Identifier> textures, Identifier palette
       if (resource.isEmpty()) {
          LOGGER.error("Failed to load palette image {}", paletteId);
          throw new IllegalArgumentException();
-      } else {
-         try {
-            return Palette.load(resource.get());
-         } catch (Exception var4) {
-            LOGGER.error("Couldn't load texture {}", paletteId, var4);
-            throw new IllegalArgumentException();
-         }
+      }
+
+      try {
+         return Palette.load(resource.get());
+      } catch (Exception exception) {
+         LOGGER.error("Couldn't load texture {}", paletteId, exception);
+         throw new IllegalArgumentException();
       }
    }
 
@@ -91,23 +91,19 @@ public record PalettedPermutations(List<Identifier> textures, Identifier palette
       return MAP_CODEC;
    }
 
-   private static record PalettedSpriteSupplier(LazyLoadedImage baseImage, Supplier<PaletteMapping> palette, Identifier permutationLocation)
+   private record PalettedSpriteSupplier(LazyLoadedImage baseImage, Supplier<PaletteMapping> palette, Identifier permutationLocation)
       implements SpriteSource.DiscardableLoader {
-      @Nullable
       @Override
-      public SpriteContents get(final SpriteResourceLoader loader) {
-         Object var3;
+      public @Nullable SpriteContents get(final SpriteResourceLoader loader) {
          try {
             NativeImage image = this.baseImage.get().mappedCopy((IntUnaryOperator)this.palette.get());
             return new SpriteContents(this.permutationLocation, new FrameSize(image.getWidth(), image.getHeight()), image);
-         } catch (IllegalArgumentException | IOException var7) {
-            PalettedPermutations.LOGGER.error("unable to apply palette to {}", this.permutationLocation, var7);
-            var3 = null;
+         } catch (IOException | IllegalArgumentException e) {
+            PalettedPermutations.LOGGER.error("unable to apply palette to {}", this.permutationLocation, e);
+            return null;
          } finally {
             this.baseImage.release();
          }
-
-         return (SpriteContents)var3;
       }
 
       @Override

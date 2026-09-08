@@ -1,6 +1,5 @@
 package net.minecraft.client.gui.screens.inventory;
 
-import java.lang.runtime.SwitchBootstraps;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -151,19 +150,19 @@ public class BookViewScreen extends Screen {
    public boolean keyPressed(final KeyEvent event) {
       if (super.keyPressed(event)) {
          return true;
-      } else {
-         return switch (event.shortcutKey()) {
-            case 1073741899 -> {
-               this.backButton.onPress(event);
-               yield true;
-            }
-            case 1073741902 -> {
-               this.forwardButton.onPress(event);
-               yield true;
-            }
-            default -> false;
-         };
       }
+
+      return switch (event.shortcutKey()) {
+         case 1073741899 -> {
+            this.backButton.onPress(event);
+            yield true;
+         }
+         case 1073741902 -> {
+            this.forwardButton.onPress(event);
+            yield true;
+         }
+         default -> false;
+      };
    }
 
    @Override
@@ -226,64 +225,25 @@ public class BookViewScreen extends Screen {
       return super.mouseClicked(event, doubleClick);
    }
 
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
-   protected boolean handleClickEvent(@Nullable final ClickEvent event) {
+   protected boolean handleClickEvent(final @Nullable ClickEvent event) {
       if (event == null) {
          return false;
-      } else {
-         LocalPlayer player = Objects.requireNonNull(this.minecraft.player, "Player not available");
-         Objects.requireNonNull(event);
-         ClickEvent var3 = event;
-         byte var4 = 0;
-
-         while (true) {
-            Throwable var14;
-            switch (SwitchBootstraps.typeSwitch<"typeSwitch",ClickEvent.ChangePage,ClickEvent.RunCommand>(var3, var4)) {
-               case 0:
-                  ClickEvent.ChangePage var5 = (ClickEvent.ChangePage)var3;
-                  ClickEvent.ChangePage var16 = var5;
-
-                  try {
-                     var17 = var16.page();
-                  } catch (Throwable var11) {
-                     var14 = var11;
-                     boolean var18 = false;
-                     break;
-                  }
-
-                  int var13 = var17;
-                  if (true) {
-                     this.forcePage(var13 - 1);
-                     return true;
-                  }
-
-                  var4 = 1;
-                  continue;
-               case 1:
-                  ClickEvent.RunCommand var7 = (ClickEvent.RunCommand)var3;
-                  ClickEvent.RunCommand var10000 = var7;
-
-                  try {
-                     var15 = var10000.command();
-                  } catch (Throwable var10) {
-                     var14 = var10;
-                     boolean var10001 = false;
-                     break;
-                  }
-
-                  String var9 = var15;
-                  this.closeContainerOnServer();
-                  clickCommandAction(player, var9, null);
-                  return true;
-               default:
-                  defaultHandleGameClickEvent(event, this.minecraft, this);
-                  return true;
-            }
-
-            Throwable var12 = var14;
-            throw new MatchException(var12.toString(), var12);
-         }
       }
+
+      LocalPlayer player = Objects.requireNonNull(this.minecraft.player, "Player not available");
+      switch (event) {
+         case ClickEvent.ChangePage(int page):
+            this.forcePage(page - 1);
+            break;
+         case ClickEvent.RunCommand(String command):
+            this.closeContainerOnServer();
+            clickCommandAction(player, command, null);
+            break;
+         default:
+            defaultHandleGameClickEvent(event, this.minecraft, this);
+      }
+
+      return true;
    }
 
    protected void closeContainerOnServer() {
@@ -294,7 +254,7 @@ public class BookViewScreen extends Screen {
       return true;
    }
 
-   public static record BookAccess(List<Component> pages) {
+   public record BookAccess(List<Component> pages) {
       public int getPageCount() {
          return this.pages.size();
       }
@@ -303,16 +263,15 @@ public class BookViewScreen extends Screen {
          return page >= 0 && page < this.getPageCount() ? this.pages.get(page) : CommonComponents.EMPTY;
       }
 
-      @Nullable
-      public static BookViewScreen.BookAccess fromItem(final ItemStack itemStack) {
+      public static BookViewScreen.@Nullable BookAccess fromItem(final ItemStack itemStack) {
          boolean filterEnabled = Minecraft.getInstance().isTextFilteringEnabled();
          WrittenBookContent writtenContent = itemStack.get(DataComponents.WRITTEN_BOOK_CONTENT);
          if (writtenContent != null) {
             return new BookViewScreen.BookAccess(writtenContent.getPages(filterEnabled));
-         } else {
-            WritableBookContent writableContent = itemStack.get(DataComponents.WRITABLE_BOOK_CONTENT);
-            return writableContent != null ? new BookViewScreen.BookAccess(writableContent.getPages(filterEnabled).map(Component::literal).toList()) : null;
          }
+
+         WritableBookContent writableContent = itemStack.get(DataComponents.WRITABLE_BOOK_CONTENT);
+         return writableContent != null ? new BookViewScreen.BookAccess(writableContent.getPages(filterEnabled).map(Component::literal).toList()) : null;
       }
    }
 }

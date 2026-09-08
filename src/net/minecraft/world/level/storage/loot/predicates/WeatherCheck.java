@@ -10,10 +10,10 @@ import net.minecraft.world.level.storage.loot.LootContext;
 public record WeatherCheck(Optional<Boolean> isRaining, Optional<Boolean> isThundering) implements LootItemCondition {
    public static final MapCodec<WeatherCheck> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.BOOL.optionalFieldOf("raining").forGetter(WeatherCheck::isRaining),
-               Codec.BOOL.optionalFieldOf("thundering").forGetter(WeatherCheck::isThundering)
-            )
-            .apply(i, WeatherCheck::new)
+            Codec.BOOL.optionalFieldOf("raining").forGetter(WeatherCheck::isRaining),
+            Codec.BOOL.optionalFieldOf("thundering").forGetter(WeatherCheck::isThundering)
+         )
+         .apply(i, WeatherCheck::new)
    );
 
    @Override

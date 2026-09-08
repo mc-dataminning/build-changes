@@ -26,7 +26,7 @@ public class RedstoneWallTorchBlock extends RedstoneTorchBlock {
 
    protected RedstoneWallTorchBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(LIT, Boolean.valueOf(true)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(LIT, true));
    }
 
    @Override
@@ -53,9 +53,8 @@ public class RedstoneWallTorchBlock extends RedstoneTorchBlock {
       return directionToNeighbour.getOpposite() == state.getValue(FACING) && !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : state;
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockState state = Blocks.WALL_TORCH.getStateForPlacement(context);
       return state == null ? null : this.defaultBlockState().setValue(FACING, state.getValue(FACING));
    }
@@ -65,9 +64,9 @@ public class RedstoneWallTorchBlock extends RedstoneTorchBlock {
       if (state.getValue(LIT)) {
          Direction opposite = state.getValue(FACING).getOpposite();
          double r = 0.27;
-         double x = (double)pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.2 + 0.27 * (double)opposite.getStepX();
-         double y = (double)pos.getY() + 0.7 + (random.nextDouble() - 0.5) * 0.2 + 0.22;
-         double z = (double)pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.2 + 0.27 * (double)opposite.getStepZ();
+         double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.2 + 0.27 * opposite.getStepX();
+         double y = pos.getY() + 0.7 + (random.nextDouble() - 0.5) * 0.2 + 0.22;
+         double z = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.2 + 0.27 * opposite.getStepZ();
          level.addParticle(DustParticleOptions.REDSTONE, x, y, z, 0.0, 0.0, 0.0);
       }
    }
@@ -98,9 +97,8 @@ public class RedstoneWallTorchBlock extends RedstoneTorchBlock {
       builder.add(FACING, LIT);
    }
 
-   @Nullable
    @Override
-   protected Orientation randomOrientation(final Level level, final BlockState state) {
+   protected @Nullable Orientation randomOrientation(final Level level, final BlockState state) {
       return ExperimentalRedstoneUtils.initialOrientation(level, state.getValue(FACING).getOpposite(), Direction.UP);
    }
 }

@@ -10,11 +10,11 @@ import net.minecraft.world.level.levelgen.Heightmap;
 public record SurfaceRelativeThresholdFilter(Heightmap.Types heightmap, int minInclusive, int maxInclusive) implements PlacementFilter {
    public static final MapCodec<SurfaceRelativeThresholdFilter> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Heightmap.Types.CODEC.fieldOf("heightmap").forGetter(SurfaceRelativeThresholdFilter::heightmap),
-               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter(SurfaceRelativeThresholdFilter::minInclusive),
-               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter(SurfaceRelativeThresholdFilter::maxInclusive)
-            )
-            .apply(i, SurfaceRelativeThresholdFilter::new)
+            Heightmap.Types.CODEC.fieldOf("heightmap").forGetter(SurfaceRelativeThresholdFilter::heightmap),
+            Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter(SurfaceRelativeThresholdFilter::minInclusive),
+            Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter(SurfaceRelativeThresholdFilter::maxInclusive)
+         )
+         .apply(i, SurfaceRelativeThresholdFilter::new)
    );
 
    public static SurfaceRelativeThresholdFilter of(final Heightmap.Types heightmap, final int minInclusive, final int maxInclusive) {
@@ -23,10 +23,10 @@ public record SurfaceRelativeThresholdFilter(Heightmap.Types heightmap, int minI
 
    @Override
    public boolean shouldPlace(final PlacementContext context, final RandomSource random, final BlockPos origin) {
-      long surfaceY = (long)context.getHeight(this.heightmap, origin.getX(), origin.getZ());
-      long minY = surfaceY + (long)this.minInclusive;
-      long maxY = surfaceY + (long)this.maxInclusive;
-      return minY <= (long)origin.getY() && (long)origin.getY() <= maxY;
+      long surfaceY = context.getHeight(this.heightmap, origin.getX(), origin.getZ());
+      long minY = surfaceY + this.minInclusive;
+      long maxY = surfaceY + this.maxInclusive;
+      return minY <= origin.getY() && origin.getY() <= maxY;
    }
 
    @Override

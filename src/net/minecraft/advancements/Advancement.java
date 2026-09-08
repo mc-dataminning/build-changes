@@ -37,17 +37,17 @@ public record Advancement(
       .validate(criteria -> criteria.isEmpty() ? DataResult.error(() -> "Advancement criteria cannot be empty") : DataResult.success(criteria));
    public static final Codec<Advancement> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Identifier.CODEC.optionalFieldOf("parent").forGetter(Advancement::parent),
-                  DisplayInfo.CODEC.optionalFieldOf("display").forGetter(Advancement::display),
-                  AdvancementRewards.CODEC.optionalFieldOf("rewards", AdvancementRewards.EMPTY).forGetter(Advancement::rewards),
-                  CRITERIA_CODEC.fieldOf("criteria").forGetter(Advancement::criteria),
-                  AdvancementRequirements.CODEC.optionalFieldOf("requirements").forGetter(a -> Optional.of(a.requirements())),
-                  Codec.BOOL.optionalFieldOf("sends_telemetry_event", false).forGetter(Advancement::sendsTelemetryEvent)
-               )
-               .apply(i, (parent, display, rewards, criteria, requirementsOpt, sendsTelemetryEvent) -> {
-                  AdvancementRequirements requirements = requirementsOpt.orElseGet(() -> AdvancementRequirements.allOf(criteria.keySet()));
-                  return new Advancement(parent, display, rewards, criteria, requirements, sendsTelemetryEvent);
-               })
+               Identifier.CODEC.optionalFieldOf("parent").forGetter(Advancement::parent),
+               DisplayInfo.CODEC.optionalFieldOf("display").forGetter(Advancement::display),
+               AdvancementRewards.CODEC.optionalFieldOf("rewards", AdvancementRewards.EMPTY).forGetter(Advancement::rewards),
+               CRITERIA_CODEC.fieldOf("criteria").forGetter(Advancement::criteria),
+               AdvancementRequirements.CODEC.optionalFieldOf("requirements").forGetter(a -> Optional.of(a.requirements())),
+               Codec.BOOL.optionalFieldOf("sends_telemetry_event", false).forGetter(Advancement::sendsTelemetryEvent)
+            )
+            .apply(i, (parent, display, rewards, criteria, requirementsOpt, sendsTelemetryEvent) -> {
+               AdvancementRequirements requirements = requirementsOpt.orElseGet(() -> AdvancementRequirements.allOf(criteria.keySet()));
+               return new Advancement(parent, display, rewards, criteria, requirements, sendsTelemetryEvent);
+            })
       )
       .validate(Advancement::validate);
    public static final StreamCodec<RegistryFriendlyByteBuf, Advancement> STREAM_CODEC = StreamCodec.composite(
@@ -60,8 +60,8 @@ public record Advancement(
       ByteBufCodecs.BOOL,
       Advancement::sendsTelemetryEvent,
       (parent, display, requirements, sendsTelemetryEvent) -> new Advancement(
-            parent, display, AdvancementRewards.EMPTY, Map.of(), requirements, sendsTelemetryEvent
-         )
+         parent, display, AdvancementRewards.EMPTY, Map.of(), requirements, sendsTelemetryEvent
+      )
    );
 
    public Advancement(
@@ -81,12 +81,14 @@ public record Advancement(
       boolean hasBackground = isVisible && advancement.display.get().background().isPresent();
       if (isRoot && isVisible && !hasBackground) {
          return DataResult.error(() -> "Visible advancement roots must have background");
-      } else if (!isRoot && hasBackground) {
-         return DataResult.error(() -> "Only advancement roots can have background");
-      } else {
-         DataResult<AdvancementRequirements> requirementValidation = advancement.requirements().validate(advancement.criteria().keySet());
-         return requirementValidation.isError() ? requirementValidation.map(var1x -> advancement) : DataResult.success(advancement);
       }
+
+      if (!isRoot && hasBackground) {
+         return DataResult.error(() -> "Only advancement roots can have background");
+      }
+
+      DataResult<AdvancementRequirements> requirementValidation = advancement.requirements().validate(advancement.criteria().keySet());
+      return requirementValidation.isError() ? requirementValidation.map(var1x -> advancement) : DataResult.success(advancement);
    }
 
    private static Component decorateName(final DisplayInfo display) {
@@ -134,9 +136,7 @@ public record Advancement(
          return this;
       }
 
-      @Deprecated(
-         forRemoval = true
-      )
+      @Deprecated(forRemoval = true)
       public Advancement.Builder parent(final Identifier parent) {
          this.parent = Optional.of(parent);
          return this;

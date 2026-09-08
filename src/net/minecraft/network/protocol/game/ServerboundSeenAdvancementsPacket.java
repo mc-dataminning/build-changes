@@ -13,10 +13,9 @@ public class ServerboundSeenAdvancementsPacket implements Packet<ServerGamePacke
       ServerboundSeenAdvancementsPacket::write, ServerboundSeenAdvancementsPacket::new
    );
    private final ServerboundSeenAdvancementsPacket.Action action;
-   @Nullable
-   private final Identifier tab;
+   private final @Nullable Identifier tab;
 
-   public ServerboundSeenAdvancementsPacket(final ServerboundSeenAdvancementsPacket.Action action, @Nullable final Identifier tab) {
+   public ServerboundSeenAdvancementsPacket(final ServerboundSeenAdvancementsPacket.Action action, final @Nullable Identifier tab) {
       this.action = action;
       this.tab = tab;
    }
@@ -58,12 +57,11 @@ public class ServerboundSeenAdvancementsPacket implements Packet<ServerGamePacke
       return this.action;
    }
 
-   @Nullable
-   public Identifier getTab() {
+   public @Nullable Identifier getTab() {
       return this.tab;
    }
 
-   public static enum Action {
+   public enum Action {
       OPENED_TAB,
       CLOSED_SCREEN;
    }

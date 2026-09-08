@@ -89,8 +89,7 @@ public class Strider extends Animal implements ItemSteerable {
       .withEyeHeight(0.4375F)
       .withAttachments(EntityAttachments.builder().attach(EntityAttachment.PASSENGER, 0.0F, 0.65625F, 0.0F));
    private final ItemBasedSteering steering = new ItemBasedSteering(this.entityData, DATA_BOOST_TIME);
-   @Nullable
-   private TemptGoal temptGoal;
+   private @Nullable TemptGoal temptGoal;
 
    public Strider(final EntityType<? extends Strider> strider, final Level level) {
       super(strider, level);
@@ -145,7 +144,7 @@ public class Strider extends Animal implements ItemSteerable {
 
    @Override
    protected Holder<SoundEvent> getEquipSound(final EquipmentSlot slot, final ItemStack stack, final Equippable equippable) {
-      return (Holder<SoundEvent>)(slot == EquipmentSlot.SADDLE ? SoundEvents.STRIDER_SADDLE : super.getEquipSound(slot, stack, equippable));
+      return slot == EquipmentSlot.SADDLE ? SoundEvents.STRIDER_SADDLE : super.getEquipSound(slot, stack, equippable);
    }
 
    @Override
@@ -192,12 +191,12 @@ public class Strider extends Animal implements ItemSteerable {
    protected Vec3 getPassengerAttachmentPoint(final Entity passenger, final EntityDimensions dimensions, final float scale) {
       if (!this.level().isClientSide()) {
          return super.getPassengerAttachmentPoint(passenger, dimensions, scale);
-      } else {
-         float animSpeed = Math.min(0.25F, this.walkAnimation.speed());
-         float animPos = this.walkAnimation.position();
-         float offset = 0.12F * Mth.cos((double)(animPos * 1.5F)) * 2.0F * animSpeed;
-         return super.getPassengerAttachmentPoint(passenger, dimensions, scale).add(0.0, (double)(offset * scale), 0.0);
       }
+
+      float animSpeed = Math.min(0.25F, this.walkAnimation.speed());
+      float animPos = this.walkAnimation.position();
+      float offset = 0.12F * Mth.cos(animPos * 1.5F) * 2.0F * animSpeed;
+      return super.getPassengerAttachmentPoint(passenger, dimensions, scale).add(0.0, offset * scale, 0.0);
    }
 
    @Override
@@ -205,22 +204,21 @@ public class Strider extends Animal implements ItemSteerable {
       return level.isUnobstructed(this);
    }
 
-   @Nullable
    @Override
-   public LivingEntity getControllingPassenger() {
-      return (LivingEntity)(this.isSaddled() && this.getFirstPassenger() instanceof Player player && player.isHolding(Items.WARPED_FUNGUS_ON_A_STICK)
+   public @Nullable LivingEntity getControllingPassenger() {
+      return this.isSaddled() && this.getFirstPassenger() instanceof Player player && player.isHolding(Items.WARPED_FUNGUS_ON_A_STICK)
          ? player
-         : super.getControllingPassenger());
+         : super.getControllingPassenger();
    }
 
    @Override
    public Vec3 getDismountLocationForPassenger(final LivingEntity passenger) {
       Vec3[] directions = new Vec3[]{
-         getCollisionHorizontalEscapeVector((double)this.getBbWidth(), (double)passenger.getBbWidth(), passenger.getYRot()),
-         getCollisionHorizontalEscapeVector((double)this.getBbWidth(), (double)passenger.getBbWidth(), passenger.getYRot() - 22.5F),
-         getCollisionHorizontalEscapeVector((double)this.getBbWidth(), (double)passenger.getBbWidth(), passenger.getYRot() + 22.5F),
-         getCollisionHorizontalEscapeVector((double)this.getBbWidth(), (double)passenger.getBbWidth(), passenger.getYRot() - 45.0F),
-         getCollisionHorizontalEscapeVector((double)this.getBbWidth(), (double)passenger.getBbWidth(), passenger.getYRot() + 45.0F)
+         getCollisionHorizontalEscapeVector(this.getBbWidth(), passenger.getBbWidth(), passenger.getYRot()),
+         getCollisionHorizontalEscapeVector(this.getBbWidth(), passenger.getBbWidth(), passenger.getYRot() - 22.5F),
+         getCollisionHorizontalEscapeVector(this.getBbWidth(), passenger.getBbWidth(), passenger.getYRot() + 22.5F),
+         getCollisionHorizontalEscapeVector(this.getBbWidth(), passenger.getBbWidth(), passenger.getYRot() - 45.0F),
+         getCollisionHorizontalEscapeVector(this.getBbWidth(), passenger.getBbWidth(), passenger.getYRot() + 45.0F)
       };
       Set<BlockPos> targetBlockPositions = Sets.newLinkedHashSet();
       double colliderTop = this.getBoundingBox().maxY;
@@ -273,7 +271,7 @@ public class Strider extends Animal implements ItemSteerable {
 
    @Override
    protected float getRiddenSpeed(final Player controller) {
-      return (float)(this.getAttributeValue(Attributes.MOVEMENT_SPEED) * (double)(this.isSuffocating() ? 0.35F : 0.55F) * (double)this.steering.boostFactor());
+      return (float)(this.getAttributeValue(Attributes.MOVEMENT_SPEED) * (this.isSuffocating() ? 0.35F : 0.55F) * this.steering.boostFactor());
    }
 
    @Override
@@ -309,23 +307,12 @@ public class Strider extends Animal implements ItemSteerable {
       }
 
       if (!this.isNoAi()) {
-         boolean inWarmBlocks;
-         boolean var10000;
-         label36: {
-            BlockState stateInside = this.level().getBlockState(this.blockPosition());
-            BlockState stateOn = this.getBlockStateOnLegacy();
-            inWarmBlocks = stateInside.is(BlockTags.STRIDER_WARM_BLOCKS)
-               || stateOn.is(BlockTags.STRIDER_WARM_BLOCKS)
-               || this.getFluidHeight(FluidTags.LAVA) > 0.0;
-            if (this.getVehicle() instanceof Strider strider && !strider.isSuffocating()) {
-               var10000 = true;
-               break label36;
-            }
-
-            var10000 = false;
-         }
-
-         boolean onWarmStrider = var10000;
+         BlockState stateInside = this.level().getBlockState(this.blockPosition());
+         BlockState stateOn = this.getBlockStateOnLegacy();
+         boolean inWarmBlocks = stateInside.is(BlockTags.STRIDER_WARM_BLOCKS)
+            || stateOn.is(BlockTags.STRIDER_WARM_BLOCKS)
+            || this.getFluidHeight(FluidTags.LAVA) > 0.0;
+         boolean onWarmStrider = this.getVehicle() instanceof Strider strider && !strider.isSuffocating();
          this.setSuffocating(!inWarmBlocks && !onWarmStrider);
       }
 
@@ -363,9 +350,8 @@ public class Strider extends Animal implements ItemSteerable {
       return Animal.createAnimalAttributes().add(Attributes.MOVEMENT_SPEED, 0.175F);
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getAmbientSound() {
+   protected @Nullable SoundEvent getAmbientSound() {
       return !this.isPanicking() && !this.isBeingTempted() ? SoundEvents.STRIDER_AMBIENT : null;
    }
 
@@ -408,8 +394,7 @@ public class Strider extends Animal implements ItemSteerable {
       }
    }
 
-   @Nullable
-   public Strider getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable Strider getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       return EntityTypes.STRIDER.create(level, EntitySpawnReason.BREEDING);
    }
 
@@ -431,67 +416,64 @@ public class Strider extends Animal implements ItemSteerable {
          InteractionResult interactionResult = super.mobInteract(player, hand);
          if (!interactionResult.consumesAction()) {
             ItemStack itemStack = player.getItemInHand(hand);
-            return (InteractionResult)(this.isEquippableInSlot(itemStack, EquipmentSlot.SADDLE)
-               ? itemStack.interactLivingEntity(player, this, hand)
-               : InteractionResult.PASS);
-         } else {
-            if (hasFood && !this.isSilent()) {
-               this.level()
-                  .playSound(
-                     null,
-                     this.getX(),
-                     this.getY(),
-                     this.getZ(),
-                     SoundEvents.STRIDER_EAT,
-                     this.getSoundSource(),
-                     1.0F,
-                     1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.2F
-                  );
-            }
-
-            return interactionResult;
+            return this.isEquippableInSlot(itemStack, EquipmentSlot.SADDLE) ? itemStack.interactLivingEntity(player, this, hand) : InteractionResult.PASS;
          }
+
+         if (hasFood && !this.isSilent()) {
+            this.level()
+               .playSound(
+                  null,
+                  this.getX(),
+                  this.getY(),
+                  this.getZ(),
+                  SoundEvents.STRIDER_EAT,
+                  this.getSoundSource(),
+                  1.0F,
+                  1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.2F
+               );
+         }
+
+         return interactionResult;
       }
    }
 
    @Override
    public Vec3 getLeashOffset() {
-      return new Vec3(0.0, (double)(0.6F * this.getEyeHeight()), (double)(this.getBbWidth() * 0.4F));
+      return new Vec3(0.0, 0.6F * this.getEyeHeight(), this.getBbWidth() * 0.4F);
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       if (this.isBaby()) {
          return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-      } else {
-         RandomSource random = level.getRandom();
-         if (random.nextInt(30) == 0 && level.getLevel().isSpawningMonsters()) {
-            Mob jockey = EntityTypes.ZOMBIFIED_PIGLIN.create(level.getLevel(), EntitySpawnReason.JOCKEY);
-            if (jockey != null) {
-               groupData = this.spawnJockey(level, difficulty, jockey, new Zombie.ZombieGroupData(Zombie.getSpawnAsBabyOdds(random), false));
-               jockey.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.WARPED_FUNGUS_ON_A_STICK));
-               this.setItemSlot(EquipmentSlot.SADDLE, new ItemStack(Items.SADDLE));
-               this.setGuaranteedDrop(EquipmentSlot.SADDLE);
-            }
-         } else if (random.nextInt(10) == 0) {
-            AgeableMob jockey = EntityTypes.STRIDER.create(level.getLevel(), EntitySpawnReason.JOCKEY);
-            if (jockey != null) {
-               jockey.setAge(-24000);
-               groupData = this.spawnJockey(level, difficulty, jockey, null);
-            }
-         } else {
-            groupData = new AgeableMob.AgeableMobGroupData(0.5F);
-         }
-
-         return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
       }
+
+      RandomSource random = level.getRandom();
+      if (random.nextInt(30) == 0 && level.getLevel().isSpawningMonsters()) {
+         Mob jockey = EntityTypes.ZOMBIFIED_PIGLIN.create(level.getLevel(), EntitySpawnReason.JOCKEY);
+         if (jockey != null) {
+            groupData = this.spawnJockey(level, difficulty, jockey, new Zombie.ZombieGroupData(Zombie.getSpawnAsBabyOdds(random), false));
+            jockey.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.WARPED_FUNGUS_ON_A_STICK));
+            this.setItemSlot(EquipmentSlot.SADDLE, new ItemStack(Items.SADDLE));
+            this.setGuaranteedDrop(EquipmentSlot.SADDLE);
+         }
+      } else if (random.nextInt(10) == 0) {
+         AgeableMob jockey = EntityTypes.STRIDER.create(level.getLevel(), EntitySpawnReason.JOCKEY);
+         if (jockey != null) {
+            jockey.setAge(-24000);
+            groupData = this.spawnJockey(level, difficulty, jockey, null);
+         }
+      } else {
+         groupData = new AgeableMob.AgeableMobGroupData(0.5F);
+      }
+
+      return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
    }
 
    private SpawnGroupData spawnJockey(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final Mob jockey, @Nullable final SpawnGroupData jockeyGroupData
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final Mob jockey, final @Nullable SpawnGroupData jockeyGroupData
    ) {
       jockey.snapTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
       jockey.finalizeSpawn(level, difficulty, EntitySpawnReason.JOCKEY, jockeyGroupData);

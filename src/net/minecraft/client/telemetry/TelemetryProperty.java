@@ -135,7 +135,7 @@ public record TelemetryProperty<T>(String id, String exportKey, Codec<T> codec, 
       void apply(TelemetryPropertyContainer output, String key, T value);
    }
 
-   public static enum GameMode implements StringRepresentable {
+   public enum GameMode implements StringRepresentable {
       SURVIVAL("survival", 0),
       CREATIVE("creative", 1),
       ADVENTURE("adventure", 2),
@@ -146,7 +146,7 @@ public record TelemetryProperty<T>(String id, String exportKey, Codec<T> codec, 
       private final String key;
       private final int id;
 
-      private GameMode(final String key, final int id) {
+      GameMode(final String key, final int id) {
          this.key = key;
          this.id = id;
       }
@@ -161,7 +161,7 @@ public record TelemetryProperty<T>(String id, String exportKey, Codec<T> codec, 
       }
    }
 
-   public static enum ServerType implements StringRepresentable {
+   public enum ServerType implements StringRepresentable {
       REALM("realm"),
       LOCAL("local"),
       OTHER("server");
@@ -169,7 +169,7 @@ public record TelemetryProperty<T>(String id, String exportKey, Codec<T> codec, 
       public static final Codec<TelemetryProperty.ServerType> CODEC = StringRepresentable.fromEnum(TelemetryProperty.ServerType::values);
       private final String key;
 
-      private ServerType(final String key) {
+      ServerType(final String key) {
          this.key = key;
       }
 

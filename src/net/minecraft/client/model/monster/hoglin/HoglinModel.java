@@ -86,14 +86,14 @@ public class HoglinModel extends EntityModel<HoglinRenderState> {
       super.setupAnim(state);
       float animationSpeed = state.walkAnimationSpeed;
       float animationPos = state.walkAnimationPos;
-      this.rightEar.zRot = (float) (-Math.PI * 2.0 / 9.0) - animationSpeed * Mth.sin((double)animationPos);
-      this.leftEar.zRot = (float) (Math.PI * 2.0 / 9.0) + animationSpeed * Mth.sin((double)animationPos);
+      this.rightEar.zRot = (float) (-Math.PI * 2.0 / 9.0) - animationSpeed * Mth.sin(animationPos);
+      this.leftEar.zRot = (float) (Math.PI * 2.0 / 9.0) + animationSpeed * Mth.sin(animationPos);
       this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
-      float headbuttLerpFactor = 1.0F - (float)Mth.abs(10 - 2 * state.attackAnimationRemainingTicks) / 10.0F;
+      float headbuttLerpFactor = 1.0F - Mth.abs(10 - 2 * state.attackAnimationRemainingTicks) / 10.0F;
       this.animateHeadbutt(headbuttLerpFactor);
       float amplitudeMultiplier = 1.2F;
-      this.rightFrontLeg.xRot = Mth.cos((double)animationPos) * 1.2F * animationSpeed;
-      this.leftFrontLeg.xRot = Mth.cos((double)(animationPos + (float) Math.PI)) * 1.2F * animationSpeed;
+      this.rightFrontLeg.xRot = Mth.cos(animationPos) * 1.2F * animationSpeed;
+      this.leftFrontLeg.xRot = Mth.cos(animationPos + (float) Math.PI) * 1.2F * animationSpeed;
       this.rightHindLeg.xRot = this.leftFrontLeg.xRot;
       this.leftHindLeg.xRot = this.rightFrontLeg.xRot;
    }

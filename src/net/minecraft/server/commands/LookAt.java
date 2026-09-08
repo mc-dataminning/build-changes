@@ -10,7 +10,7 @@ import net.minecraft.world.phys.Vec3;
 public interface LookAt {
    void perform(CommandSourceStack source, Entity target);
 
-   public static record LookAtEntity(Entity entity, EntityAnchorArgument.Anchor anchor) implements LookAt {
+   record LookAtEntity(Entity entity, EntityAnchorArgument.Anchor anchor) implements LookAt {
       @Override
       public void perform(final CommandSourceStack source, final Entity target) {
          if (target instanceof ServerPlayer targetPlayer) {
@@ -21,7 +21,7 @@ public interface LookAt {
       }
    }
 
-   public static record LookAtPosition(Vec3 position) implements LookAt {
+   record LookAtPosition(Vec3 position) implements LookAt {
       @Override
       public void perform(final CommandSourceStack source, final Entity target) {
          target.lookAt(source.getAnchor(), this.position);

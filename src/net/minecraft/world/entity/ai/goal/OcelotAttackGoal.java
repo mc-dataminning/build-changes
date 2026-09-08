@@ -19,10 +19,10 @@ public class OcelotAttackGoal extends Goal {
       LivingEntity bestTarget = this.mob.getTarget();
       if (bestTarget == null) {
          return false;
-      } else {
-         this.target = bestTarget;
-         return true;
       }
+
+      this.target = bestTarget;
+      return true;
    }
 
    @Override
@@ -48,7 +48,7 @@ public class OcelotAttackGoal extends Goal {
    @Override
    public void tick() {
       this.mob.getLookControl().setLookAt(this.target, 30.0F, 30.0F);
-      double meleeRadiusSqr = (double)(this.mob.getBbWidth() * 2.0F * this.mob.getBbWidth() * 2.0F);
+      double meleeRadiusSqr = this.mob.getBbWidth() * 2.0F * (this.mob.getBbWidth() * 2.0F);
       double distSqr = this.mob.distanceToSqr(this.target.getX(), this.target.getY(), this.target.getZ());
       double speedModifier = 0.8;
       if (distSqr > meleeRadiusSqr && distSqr < 16.0) {

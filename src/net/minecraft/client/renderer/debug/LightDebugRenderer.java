@@ -41,16 +41,16 @@ public class LightDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
             Gizmos.billboardText(
                level.getChunkSource().getLightEngine().getDebugData(LightLayer.SKY, SectionPos.of(sectionNode)),
                new Vec3(
-                  (double)SectionPos.sectionToBlockCoord(SectionPos.x(sectionNode), 8),
-                  (double)SectionPos.sectionToBlockCoord(SectionPos.y(sectionNode), 8),
-                  (double)SectionPos.sectionToBlockCoord(SectionPos.z(sectionNode), 8)
+                  SectionPos.sectionToBlockCoord(SectionPos.x(sectionNode), 8),
+                  SectionPos.sectionToBlockCoord(SectionPos.y(sectionNode), 8),
+                  SectionPos.sectionToBlockCoord(SectionPos.z(sectionNode), 8)
                ),
                TextGizmo.Style.forColorAndCentered(-65536).withScale(4.8F)
             );
          }
 
          if (skyBrightness != 15 && this.showSkyLight) {
-            int color = ARGB.srgbLerp((float)skyBrightness / 15.0F, -16776961, -16711681);
+            int color = ARGB.srgbLerp(skyBrightness / 15.0F, -16776961, -16711681);
             Gizmos.billboardText(
                String.valueOf(skyBrightness), Vec3.atLowerCornerWithOffset(blockPos, 0.5, 0.25, 0.5), TextGizmo.Style.forColorAndCentered(color)
             );
@@ -59,7 +59,7 @@ public class LightDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
          if (this.showBlockLight) {
             int blockBrightness = level.getBrightness(LightLayer.BLOCK, blockPos);
             if (blockBrightness != 0) {
-               int color = ARGB.srgbLerp((float)blockBrightness / 15.0F, -5636096, -256);
+               int color = ARGB.srgbLerp(blockBrightness / 15.0F, -5636096, -256);
                Gizmos.billboardText(
                   String.valueOf(level.getBrightness(LightLayer.BLOCK, blockPos)), Vec3.atCenterOf(blockPos), TextGizmo.Style.forColorAndCentered(color)
                );

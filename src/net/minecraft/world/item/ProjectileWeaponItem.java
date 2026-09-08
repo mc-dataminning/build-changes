@@ -49,17 +49,17 @@ public abstract class ProjectileWeaponItem extends Item {
       final float power,
       final float uncertainty,
       final boolean isCrit,
-      @Nullable final LivingEntity targetOverride
+      final @Nullable LivingEntity targetOverride
    ) {
       float maxAngle = EnchantmentHelper.processProjectileSpread(level, weapon, shooter, 0.0F);
-      float angleStep = projectiles.size() == 1 ? 0.0F : 2.0F * maxAngle / (float)(projectiles.size() - 1);
-      float angleOffset = (float)((projectiles.size() - 1) % 2) * angleStep / 2.0F;
+      float angleStep = projectiles.size() == 1 ? 0.0F : 2.0F * maxAngle / (projectiles.size() - 1);
+      float angleOffset = (projectiles.size() - 1) % 2 * angleStep / 2.0F;
       float direction = 1.0F;
 
       for (int i = 0; i < projectiles.size(); i++) {
          ItemStack projectile = projectiles.get(i);
          if (!projectile.isEmpty()) {
-            float angle = angleOffset + direction * (float)((i + 1) / 2) * angleStep;
+            float angle = angleOffset + direction * ((i + 1) / 2) * angleStep;
             direction = -direction;
             int index = i;
             Projectile.spawnProjectile(
@@ -87,40 +87,38 @@ public abstract class ProjectileWeaponItem extends Item {
       final float power,
       final float uncertainty,
       final float angle,
-      @Nullable final LivingEntity targetOverrride
+      final @Nullable LivingEntity targetOverrride
    );
 
    protected Projectile createProjectile(
       final Level level, final LivingEntity shooter, final ItemStack weapon, final ItemStack projectile, final boolean isCrit
    ) {
       ArrowItem arrowItem = projectile.getItem() instanceof ArrowItem arrow ? arrow : (ArrowItem)Items.ARROW;
-      AbstractArrow arrowx = arrowItem.createArrow(level, projectile, shooter, weapon);
+      AbstractArrow arrow = arrowItem.createArrow(level, projectile, shooter, weapon);
       if (isCrit) {
-         arrowx.setCritArrow(true);
+         arrow.setCritArrow(true);
       }
 
-      return arrowx;
+      return arrow;
    }
 
    protected static List<ItemStack> draw(final ItemStack weapon, final ItemStack projectile, final LivingEntity shooter) {
       if (projectile.isEmpty()) {
          return List.of();
-      } else {
-         int numProjectiles = shooter.level() instanceof ServerLevel serverLevel
-            ? EnchantmentHelper.processProjectileCount(serverLevel, weapon, shooter, 1)
-            : 1;
-         List<ItemStack> drawn = new ArrayList<>(numProjectiles);
-         ItemStack projectileCopy = projectile.copy();
-
-         for (int i = 0; i < numProjectiles; i++) {
-            ItemStack drawnStack = useAmmo(weapon, i == 0 ? projectile : projectileCopy, shooter, i > 0);
-            if (!drawnStack.isEmpty()) {
-               drawn.add(drawnStack);
-            }
-         }
-
-         return drawn;
       }
+
+      int numProjectiles = shooter.level() instanceof ServerLevel serverLevel ? EnchantmentHelper.processProjectileCount(serverLevel, weapon, shooter, 1) : 1;
+      List<ItemStack> drawn = new ArrayList<>(numProjectiles);
+      ItemStack projectileCopy = projectile.copy();
+
+      for (int i = 0; i < numProjectiles; i++) {
+         ItemStack drawnStack = useAmmo(weapon, i == 0 ? projectile : projectileCopy, shooter, i > 0);
+         if (!drawnStack.isEmpty()) {
+            drawn.add(drawnStack);
+         }
+      }
+
+      return drawn;
    }
 
    protected static ItemStack useAmmo(final ItemStack weapon, final ItemStack projectile, final LivingEntity holder, final boolean forceInfinite) {
@@ -129,17 +127,19 @@ public abstract class ProjectileWeaponItem extends Item {
          : 0;
       if (ammoToUse > projectile.getCount()) {
          return ItemStack.EMPTY;
-      } else if (ammoToUse == 0) {
+      }
+
+      if (ammoToUse == 0) {
          ItemStack copy = projectile.copyWithCount(1);
          copy.set(DataComponents.INTANGIBLE_PROJECTILE, Unit.INSTANCE);
          return copy;
-      } else {
-         ItemStack used = projectile.split(ammoToUse);
-         if (projectile.isEmpty() && holder instanceof Player player) {
-            player.getInventory().removeItem(projectile);
-         }
-
-         return used;
       }
+
+      ItemStack used = projectile.split(ammoToUse);
+      if (projectile.isEmpty() && holder instanceof Player player) {
+         player.getInventory().removeItem(projectile);
+      }
+
+      return used;
    }
 }

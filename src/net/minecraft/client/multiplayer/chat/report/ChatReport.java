@@ -80,9 +80,8 @@ public class ChatReport extends Report {
          return StringUtils.isNotEmpty(this.comments()) || !this.reportedMessages().isEmpty() || this.reason() != null;
       }
 
-      @Nullable
       @Override
-      public Report.CannotBuildReason checkBuildable() {
+      public Report.@Nullable CannotBuildReason checkBuildable() {
          if (this.report.reportedMessages.isEmpty()) {
             return Report.CannotBuildReason.NO_REPORTED_MESSAGES;
          } else if (this.report.reportedMessages.size() > this.limits.maxReportedMessageCount()) {
@@ -99,13 +98,13 @@ public class ChatReport extends Report {
          Report.CannotBuildReason error = this.checkBuildable();
          if (error != null) {
             return Either.right(error);
-         } else {
-            String reason = Objects.requireNonNull(this.report.reason).backendName();
-            ReportEvidence evidence = this.buildEvidence(reportingContext);
-            ReportedEntity reportedEntity = new ReportedEntity(this.report.reportedProfileId);
-            AbuseReport abuseReport = AbuseReport.chat(this.report.comments, reason, evidence, reportedEntity, this.report.createdAt);
-            return Either.left(new Report.Result(this.report.reportId, ReportType.CHAT, abuseReport));
          }
+
+         String reason = Objects.requireNonNull(this.report.reason).backendName();
+         ReportEvidence evidence = this.buildEvidence(reportingContext);
+         ReportedEntity reportedEntity = new ReportedEntity(this.report.reportedProfileId);
+         AbuseReport abuseReport = AbuseReport.chat(this.report.comments, reason, evidence, reportedEntity, this.report.createdAt);
+         return Either.left(new Report.Result(this.report.reportId, ReportType.CHAT, abuseReport));
       }
 
       private ReportEvidence buildEvidence(final ReportingContext reportingContext) {

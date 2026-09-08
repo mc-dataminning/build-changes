@@ -66,9 +66,7 @@ public class DelegateDataOutput implements DataOutput {
       this.parent.writeDouble(v);
    }
 
-   @SuppressForbidden(
-      reason = "Delegation is not use"
-   )
+   @SuppressForbidden(reason = "Delegation is not use")
    @Override
    public void writeBytes(final String s) throws IOException {
       this.parent.writeBytes(s);

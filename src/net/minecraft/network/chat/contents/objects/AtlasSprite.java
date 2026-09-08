@@ -10,10 +10,10 @@ public record AtlasSprite(Identifier atlas, Identifier sprite) implements Object
    public static final Identifier DEFAULT_ATLAS = AtlasIds.BLOCKS;
    public static final MapCodec<AtlasSprite> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Identifier.CODEC.optionalFieldOf("atlas", DEFAULT_ATLAS).forGetter(AtlasSprite::atlas),
-               Identifier.CODEC.fieldOf("sprite").forGetter(AtlasSprite::sprite)
-            )
-            .apply(i, AtlasSprite::new)
+            Identifier.CODEC.optionalFieldOf("atlas", DEFAULT_ATLAS).forGetter(AtlasSprite::atlas),
+            Identifier.CODEC.fieldOf("sprite").forGetter(AtlasSprite::sprite)
+         )
+         .apply(i, AtlasSprite::new)
    );
 
    @Override

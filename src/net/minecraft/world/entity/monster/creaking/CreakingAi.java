@@ -30,7 +30,7 @@ public class CreakingAi {
    private static ActivityData<Creaking> initCoreActivity() {
       return ActivityData.create(Activity.CORE, 0, ImmutableList.of(new Swim<Creaking>(0.8F) {
          protected boolean checkExtraStartConditions(final ServerLevel level, final Creaking body) {
-            return body.canMove() && super.checkExtraStartConditions(level, (LivingEntity)body);
+            return body.canMove() && super.checkExtraStartConditions(level, body);
          }
       }, new LookAtTargetSink(45, 90), new MoveToTargetSink()));
    }
@@ -66,13 +66,7 @@ public class CreakingAi {
 
    private static boolean isAttackTargetStillReachable(final Creaking creaking, final LivingEntity target) {
       Optional<List<Player>> visibleAttackablePlayers = creaking.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_ATTACKABLE_PLAYERS);
-      return visibleAttackablePlayers.<Boolean>map(players -> {
-         if (target instanceof Player player && players.contains(player)) {
-            return true;
-         }
-
-         return false;
-      }).orElse(false);
+      return visibleAttackablePlayers.<Boolean>map(players -> target instanceof Player player && players.contains(player)).orElse(false);
    }
 
    protected static List<ActivityData<Creaking>> getActivities(final Creaking creaking) {

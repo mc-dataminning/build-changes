@@ -24,6 +24,6 @@ public interface RecipeDisplay {
       return this.result().isEnabled(enabledFeatures) && this.craftingStation().isEnabled(enabledFeatures);
    }
 
-   public static record Type<T extends RecipeDisplay>(MapCodec<T> codec, StreamCodec<RegistryFriendlyByteBuf, T> streamCodec) {
+   record Type<T extends RecipeDisplay>(MapCodec<T> codec, StreamCodec<RegistryFriendlyByteBuf, T> streamCodec) {
    }
 }

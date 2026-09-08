@@ -58,13 +58,13 @@ public class FireworkParticles {
 
       @Override
       public void extract(final QuadParticleRenderState particleTypeRenderState, final Camera camera, final float partialTickTime) {
-         this.setAlpha(0.6F - ((float)this.age + partialTickTime - 1.0F) * 0.25F * 0.5F);
+         this.setAlpha(0.6F - (this.age + partialTickTime - 1.0F) * 0.25F * 0.5F);
          super.extract(particleTypeRenderState, camera, partialTickTime);
       }
 
       @Override
       public float getQuadSize(final float a) {
-         return 7.1F * Mth.sin((double)(((float)this.age + a - 1.0F) * 0.25F * (float) Math.PI));
+         return 7.1F * Mth.sin((this.age + a - 1.0F) * 0.25F * (float) Math.PI);
       }
    }
 
@@ -200,16 +200,16 @@ public class FireworkParticles {
          this.playSound = playSound;
          if (explosions.isEmpty()) {
             throw new IllegalArgumentException("Cannot create firework starter with no explosions");
-         } else {
-            this.explosions = explosions;
-            this.lifetime = explosions.size() * 2 - 1;
+         }
 
-            for (FireworkExplosion explosion : explosions) {
-               if (explosion.hasTwinkle()) {
-                  this.twinkleDelay = true;
-                  this.lifetime += 15;
-                  break;
-               }
+         this.explosions = explosions;
+         this.lifetime = explosions.size() * 2 - 1;
+
+         for (FireworkExplosion explosion : explosions) {
+            if (explosion.hasTwinkle()) {
+               this.twinkleDelay = true;
+               this.lifetime += 15;
+               break;
             }
          }
       }
@@ -242,16 +242,16 @@ public class FireworkParticles {
 
          if (this.life % 2 == 0 && this.life / 2 < this.explosions.size()) {
             int eIndex = this.life / 2;
-            FireworkExplosion explosionx = this.explosions.get(eIndex);
-            boolean trail = explosionx.hasTrail();
-            boolean twinkle = explosionx.hasTwinkle();
-            IntList colors = explosionx.colors();
-            IntList fadeColors = explosionx.fadeColors();
+            FireworkExplosion explosion = this.explosions.get(eIndex);
+            boolean trail = explosion.hasTrail();
+            boolean twinkle = explosion.hasTwinkle();
+            IntList colors = explosion.colors();
+            IntList fadeColors = explosion.fadeColors();
             if (colors.isEmpty()) {
                colors = IntList.of(DyeColor.BLACK.getFireworkColor());
             }
 
-            switch (explosionx.shape()) {
+            switch (explosion.shape()) {
                case SMALL_BALL:
                   this.createParticleBall(0.25, 2, colors, fadeColors, trail, twinkle);
                   break;
@@ -275,8 +275,8 @@ public class FireworkParticles {
          this.life++;
          if (this.life > this.lifetime) {
             if (this.twinkleDelay && this.playSound) {
-               boolean farEffectx = this.isFarAwayFromCamera();
-               SoundEvent sound = farEffectx ? SoundEvents.FIREWORK_ROCKET_TWINKLE_FAR : SoundEvents.FIREWORK_ROCKET_TWINKLE;
+               boolean farEffect = this.isFarAwayFromCamera();
+               SoundEvent sound = farEffect ? SoundEvents.FIREWORK_ROCKET_TWINKLE_FAR : SoundEvents.FIREWORK_ROCKET_TWINKLE;
                this.level.playLocalSound(this.x, this.y, this.z, sound, SoundSource.AMBIENT, 20.0F, 0.9F + this.random.nextFloat() * 0.15F, true);
             }
 
@@ -322,9 +322,9 @@ public class FireworkParticles {
          for (int yStep = -steps; yStep <= steps; yStep++) {
             for (int xStep = -steps; xStep <= steps; xStep++) {
                for (int zStep = -steps; zStep <= steps; zStep++) {
-                  double xa = (double)xStep + (this.random.nextDouble() - this.random.nextDouble()) * 0.5;
-                  double ya = (double)yStep + (this.random.nextDouble() - this.random.nextDouble()) * 0.5;
-                  double za = (double)zStep + (this.random.nextDouble() - this.random.nextDouble()) * 0.5;
+                  double xa = xStep + (this.random.nextDouble() - this.random.nextDouble()) * 0.5;
+                  double ya = yStep + (this.random.nextDouble() - this.random.nextDouble()) * 0.5;
+                  double za = zStep + (this.random.nextDouble() - this.random.nextDouble()) * 0.5;
                   double len = Math.sqrt(xa * xa + ya * ya + za * za) / baseSpeed + this.random.nextGaussian() * 0.05;
                   this.createParticle(xx, yy, zz, xa / len, ya / len, za / len, rgbColors, fadeColors, trail, twinkle);
                   if (yStep != -steps && yStep != steps && xStep != -steps && xStep != steps) {
@@ -351,7 +351,7 @@ public class FireworkParticles {
          double angleMod = flat ? 0.034 : 0.34;
 
          for (int angleStep = 0; angleStep < 3; angleStep++) {
-            double angle = (double)baseAngle + (double)((float)angleStep * (float) Math.PI) * angleMod;
+            double angle = baseAngle + angleStep * (float) Math.PI * angleMod;
             double ox = sx;
             double oy = sy;
 

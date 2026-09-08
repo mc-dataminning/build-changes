@@ -46,7 +46,7 @@ public class MossyCarpetBlock extends Block implements BonemealableBlock {
       this.registerDefaultState(
          this.stateDefinition
             .any()
-            .setValue(BASE, Boolean.valueOf(true))
+            .setValue(BASE, true)
             .setValue(NORTH, WallSide.NONE)
             .setValue(EAST, WallSide.NONE)
             .setValue(SOUTH, WallSide.NONE)
@@ -102,15 +102,15 @@ public class MossyCarpetBlock extends Block implements BonemealableBlock {
    private static boolean hasFaces(final BlockState blockState) {
       if (blockState.getValue(BASE)) {
          return true;
-      } else {
-         for (EnumProperty<WallSide> property : PROPERTY_BY_DIRECTION.values()) {
-            if (blockState.getValue(property) != WallSide.NONE) {
-               return true;
-            }
-         }
-
-         return false;
       }
+
+      for (EnumProperty<WallSide> property : PROPERTY_BY_DIRECTION.values()) {
+         if (blockState.getValue(property) != WallSide.NONE) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    private static boolean canSupportAtFace(final BlockGetter level, final BlockPos pos, final Direction direction) {
@@ -151,13 +151,12 @@ public class MossyCarpetBlock extends Block implements BonemealableBlock {
       return state;
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       return getUpdatedState(this.defaultBlockState(), context.getLevel(), context.getClickedPos(), true);
    }
 
-   public static void placeAt(final LevelAccessor level, final BlockPos pos, final RandomSource random, @Block.UpdateFlags final int updateType) {
+   public static void placeAt(final LevelAccessor level, final BlockPos pos, final RandomSource random, final @Block.UpdateFlags int updateType) {
       BlockState simpleCarpetLayer = Blocks.PALE_MOSS_CARPET.defaultBlockState();
       BlockState adjustedCarpetLayer = getUpdatedState(simpleCarpetLayer, level, pos, true);
       level.setBlock(pos, adjustedCarpetLayer, updateType);
@@ -170,7 +169,7 @@ public class MossyCarpetBlock extends Block implements BonemealableBlock {
    }
 
    @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, @Nullable final LivingEntity by, final ItemStack itemStack) {
+   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
       if (!level.isClientSide()) {
          RandomSource random = level.getRandom();
          BlockState topper = createTopperWithSideChance(level, pos, random::nextBoolean);
@@ -185,7 +184,7 @@ public class MossyCarpetBlock extends Block implements BonemealableBlock {
       BlockState abovePreviousState = level.getBlockState(above);
       boolean isMossyCarpetAbove = abovePreviousState.is(Blocks.PALE_MOSS_CARPET);
       if ((!isMossyCarpetAbove || !abovePreviousState.getValue(BASE)) && (isMossyCarpetAbove || abovePreviousState.canBeReplaced())) {
-         BlockState noCarpetBaseState = Blocks.PALE_MOSS_CARPET.defaultBlockState().setValue(BASE, Boolean.valueOf(false));
+         BlockState noCarpetBaseState = Blocks.PALE_MOSS_CARPET.defaultBlockState().setValue(BASE, false);
          BlockState aboveState = getUpdatedState(noCarpetBaseState, level, pos.above(), true);
 
          for (Direction direction : Direction.Plane.HORIZONTAL) {
@@ -214,10 +213,10 @@ public class MossyCarpetBlock extends Block implements BonemealableBlock {
    ) {
       if (!state.canSurvive(level, pos)) {
          return Blocks.AIR.defaultBlockState();
-      } else {
-         BlockState blockState = getUpdatedState(state, level, pos, false);
-         return !hasFaces(blockState) ? Blocks.AIR.defaultBlockState() : blockState;
       }
+
+      BlockState blockState = getUpdatedState(state, level, pos, false);
+      return !hasFaces(blockState) ? Blocks.AIR.defaultBlockState() : blockState;
    }
 
    @Override
@@ -229,17 +228,17 @@ public class MossyCarpetBlock extends Block implements BonemealableBlock {
    protected BlockState rotate(final BlockState state, final Rotation rotation) {
       return switch (rotation) {
          case CLOCKWISE_180 -> (BlockState)state.setValue(NORTH, state.getValue(SOUTH))
-         .setValue(EAST, state.getValue(WEST))
-         .setValue(SOUTH, state.getValue(NORTH))
-         .setValue(WEST, state.getValue(EAST));
+            .setValue(EAST, state.getValue(WEST))
+            .setValue(SOUTH, state.getValue(NORTH))
+            .setValue(WEST, state.getValue(EAST));
          case COUNTERCLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(EAST))
-         .setValue(EAST, state.getValue(SOUTH))
-         .setValue(SOUTH, state.getValue(WEST))
-         .setValue(WEST, state.getValue(NORTH));
+            .setValue(EAST, state.getValue(SOUTH))
+            .setValue(SOUTH, state.getValue(WEST))
+            .setValue(WEST, state.getValue(NORTH));
          case CLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(WEST))
-         .setValue(EAST, state.getValue(NORTH))
-         .setValue(SOUTH, state.getValue(EAST))
-         .setValue(WEST, state.getValue(SOUTH));
+            .setValue(EAST, state.getValue(NORTH))
+            .setValue(SOUTH, state.getValue(EAST))
+            .setValue(WEST, state.getValue(SOUTH));
          default -> state;
       };
    }
@@ -253,8 +252,7 @@ public class MossyCarpetBlock extends Block implements BonemealableBlock {
       };
    }
 
-   @Nullable
-   public static EnumProperty<WallSide> getPropertyForFace(final Direction direction) {
+   public static @Nullable EnumProperty<WallSide> getPropertyForFace(final Direction direction) {
       return PROPERTY_BY_DIRECTION.get(direction);
    }
 

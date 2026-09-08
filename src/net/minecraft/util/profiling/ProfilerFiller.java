@@ -57,11 +57,11 @@ public interface ProfilerFiller {
       if (first == InactiveProfiler.INSTANCE) {
          return second;
       } else {
-         return (ProfilerFiller)(second == InactiveProfiler.INSTANCE ? first : new ProfilerFiller.CombinedProfileFiller(first, second));
+         return second == InactiveProfiler.INSTANCE ? first : new ProfilerFiller.CombinedProfileFiller(first, second);
       }
    }
 
-   public static class CombinedProfileFiller implements ProfilerFiller {
+   class CombinedProfileFiller implements ProfilerFiller {
       private final ProfilerFiller first;
       private final ProfilerFiller second;
 

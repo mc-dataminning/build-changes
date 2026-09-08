@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 public interface BlockEntityRendererProvider<T extends BlockEntity, S extends BlockEntityRenderState> {
    BlockEntityRenderer<T, S> create(BlockEntityRendererProvider.Context context);
 
-   public static record Context(
+   record Context(
       BlockEntityRenderDispatcher blockEntityRenderDispatcher,
       BlockModelResolver blockModelResolver,
       ItemModelResolver itemModelResolver,

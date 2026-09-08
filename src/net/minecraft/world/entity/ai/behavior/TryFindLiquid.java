@@ -18,44 +18,46 @@ public class TryFindLiquid {
       MutableLong nextOkStartTime = new MutableLong(0L);
       return BehaviorBuilder.create(
          i -> i.group(i.absent(MemoryModuleType.ATTACK_TARGET), i.absent(MemoryModuleType.WALK_TARGET), i.registered(MemoryModuleType.LOOK_TARGET))
-               .apply(
-                  i,
-                  (var4x, walkTarget, lookTarget) -> (level, body, timestamp) -> {
-                        if (level.getFluidState(body.blockPosition()).is(fluidTag)) {
-                           return false;
-                        } else if (timestamp < nextOkStartTime.longValue()) {
-                           nextOkStartTime.setValue(timestamp + 20L + 2L);
-                           return true;
-                        } else {
-                           MutableObject<BlockPos> foundPos = new MutableObject(null);
-                           BlockPos bodyBlockPos = body.blockPosition();
-                           level.findBlocksInBoxByManhattanDistance(bodyBlockPos, range)
-                              .filterPos(pos -> pos.differsHorizontally(bodyBlockPos))
-                              .filterState(state -> state.getBlock() instanceof LiquidBlock && state.getFluidState().is(fluidTag))
-                              .forEachUntil((pos, var4xx) -> {
-                                 BlockState aboveState = level.getBlockState(pos.above());
-                                 if (aboveState.isAir()) {
-                                    foundPos.setValue(pos.immutable());
-                                    return Continuation.ABORT;
-                                 } else {
-                                    if (foundPos.get() == null && !pos.closerToCenterThan(body.position(), 1.5)) {
-                                       foundPos.setValue(pos.immutable());
-                                    }
+            .apply(
+               i,
+               (var4x, walkTarget, lookTarget) -> (level, body, timestamp) -> {
+                  if (level.getFluidState(body.blockPosition()).is(fluidTag)) {
+                     return false;
+                  }
 
-                                    return Continuation.CONTINUE;
-                                 }
-                              });
-                           BlockPos blockPos = (BlockPos)foundPos.get();
-                           if (blockPos != null) {
-                              lookTarget.set(new BlockPosTracker(blockPos));
-                              walkTarget.set(new WalkTarget(new BlockPosTracker(blockPos), speedModifier, 0));
-                           }
+                  if (timestamp < nextOkStartTime.longValue()) {
+                     nextOkStartTime.setValue(timestamp + 20L + 2L);
+                     return true;
+                  }
 
-                           nextOkStartTime.setValue(timestamp + 40L);
-                           return true;
+                  MutableObject<BlockPos> foundPos = new MutableObject(null);
+                  BlockPos bodyBlockPos = body.blockPosition();
+                  level.findBlocksInBoxByManhattanDistance(bodyBlockPos, range)
+                     .filterPos(pos -> pos.differsHorizontally(bodyBlockPos))
+                     .filterState(state -> state.getBlock() instanceof LiquidBlock && state.getFluidState().is(fluidTag))
+                     .forEachUntil((pos, var4xx) -> {
+                        BlockState aboveState = level.getBlockState(pos.above());
+                        if (aboveState.isAir()) {
+                           foundPos.setValue(pos.immutable());
+                           return Continuation.ABORT;
                         }
-                     }
-               )
+
+                        if (foundPos.get() == null && !pos.closerToCenterThan(body.position(), 1.5)) {
+                           foundPos.setValue(pos.immutable());
+                        }
+
+                        return Continuation.CONTINUE;
+                     });
+                  BlockPos blockPos = (BlockPos)foundPos.get();
+                  if (blockPos != null) {
+                     lookTarget.set(new BlockPosTracker(blockPos));
+                     walkTarget.set(new WalkTarget(new BlockPosTracker(blockPos), speedModifier, 0));
+                  }
+
+                  nextOkStartTime.setValue(timestamp + 40L);
+                  return true;
+               }
+            )
       );
    }
 }

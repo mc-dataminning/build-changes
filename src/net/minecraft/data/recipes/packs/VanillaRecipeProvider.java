@@ -2084,47 +2084,44 @@ public class VanillaRecipeProvider extends RecipeProvider {
       CustomCraftingRecipeBuilder.customCrafting(
             RecipeCategory.MISC,
             (commonInfo, bookInfo) -> new ImbueRecipe(
-                  commonInfo, bookInfo, Ingredient.of(Items.LINGERING_POTION), Ingredient.of(Items.ARROW), new ItemStackTemplate(Items.TIPPED_ARROW, 8)
-               )
+               commonInfo, bookInfo, Ingredient.of(Items.LINGERING_POTION), Ingredient.of(Items.ARROW), new ItemStackTemplate(Items.TIPPED_ARROW, 8)
+            )
          )
          .unlockedBy("has_lingering_potion", this.has(Items.LINGERING_POTION))
          .save(this.output, "tipped_arrow");
       SpecialRecipeBuilder.special(
             () -> new BookCloningRecipe(
-                  Ingredient.of(Items.WRITTEN_BOOK),
-                  this.tag(ItemTags.BOOK_CLONING_TARGET),
-                  BookCloningRecipe.DEFAULT_BOOK_GENERATION_RANGES,
-                  new ItemStackTemplate(Items.WRITTEN_BOOK)
-               )
+               Ingredient.of(Items.WRITTEN_BOOK),
+               this.tag(ItemTags.BOOK_CLONING_TARGET),
+               BookCloningRecipe.DEFAULT_BOOK_GENERATION_RANGES,
+               new ItemStackTemplate(Items.WRITTEN_BOOK)
+            )
          )
          .save(this.output, "book_cloning");
       SpecialRecipeBuilder.special(
             () -> new FireworkRocketRecipe(
-                  Ingredient.of(Items.PAPER),
-                  Ingredient.of(Items.GUNPOWDER),
-                  Ingredient.of(Items.FIREWORK_STAR),
-                  new ItemStackTemplate(Items.FIREWORK_ROCKET, 3)
-               )
+               Ingredient.of(Items.PAPER), Ingredient.of(Items.GUNPOWDER), Ingredient.of(Items.FIREWORK_STAR), new ItemStackTemplate(Items.FIREWORK_ROCKET, 3)
+            )
          )
          .save(this.output, "firework_rocket");
       SpecialRecipeBuilder.special(
             () -> new FireworkStarRecipe(
-                  Map.of(
-                     FireworkExplosion.Shape.LARGE_BALL,
-                     Ingredient.of(Items.FIRE_CHARGE),
-                     FireworkExplosion.Shape.BURST,
-                     Ingredient.of(Items.FEATHER),
-                     FireworkExplosion.Shape.STAR,
-                     Ingredient.of(Items.GOLD_NUGGET),
-                     FireworkExplosion.Shape.CREEPER,
-                     this.tag(ItemTags.SKULLS)
-                  ),
-                  Ingredient.of(Items.DIAMOND),
-                  Ingredient.of(Items.GLOWSTONE_DUST),
-                  Ingredient.of(Items.GUNPOWDER),
-                  this.tag(ItemTags.DYES),
-                  new ItemStackTemplate(Items.FIREWORK_STAR)
-               )
+               Map.of(
+                  FireworkExplosion.Shape.LARGE_BALL,
+                  Ingredient.of(Items.FIRE_CHARGE),
+                  FireworkExplosion.Shape.BURST,
+                  Ingredient.of(Items.FEATHER),
+                  FireworkExplosion.Shape.STAR,
+                  Ingredient.of(Items.GOLD_NUGGET),
+                  FireworkExplosion.Shape.CREEPER,
+                  this.tag(ItemTags.SKULLS)
+               ),
+               Ingredient.of(Items.DIAMOND),
+               Ingredient.of(Items.GLOWSTONE_DUST),
+               Ingredient.of(Items.GUNPOWDER),
+               this.tag(ItemTags.DYES),
+               new ItemStackTemplate(Items.FIREWORK_STAR)
+            )
          )
          .save(this.output, "firework_star");
       SpecialRecipeBuilder.special(
@@ -2356,15 +2353,15 @@ public class VanillaRecipeProvider extends RecipeProvider {
       DyeColor.VALUES
          .forEach(
             dyeColor -> SimpleCookingRecipeBuilder.smelting(
-                     Ingredient.of(Blocks.DYED_TERRACOTTA.pick(dyeColor)),
-                     RecipeCategory.DECORATIONS,
-                     CookingBookCategory.BLOCKS,
-                     Items.GLAZED_TERRACOTTA.pick(dyeColor),
-                     0.1F,
-                     200
-                  )
-                  .unlockedBy("has_" + dyeColor.getName() + "_terracotta", this.has(Blocks.DYED_TERRACOTTA.pick(dyeColor)))
-                  .save(this.output)
+                  Ingredient.of(Blocks.DYED_TERRACOTTA.pick(dyeColor)),
+                  RecipeCategory.DECORATIONS,
+                  CookingBookCategory.BLOCKS,
+                  Items.GLAZED_TERRACOTTA.pick(dyeColor),
+                  0.1F,
+                  200
+               )
+               .unlockedBy("has_" + dyeColor.getName() + "_terracotta", this.has(Blocks.DYED_TERRACOTTA.pick(dyeColor)))
+               .save(this.output)
          );
       SimpleCookingRecipeBuilder.smelting(Ingredient.of(Blocks.ANCIENT_DEBRIS), RecipeCategory.MISC, CookingBookCategory.MISC, Items.NETHERITE_SCRAP, 2.0F, 200)
          .unlockedBy("has_ancient_debris", this.has(Blocks.ANCIENT_DEBRIS))
@@ -2676,6 +2673,6 @@ public class VanillaRecipeProvider extends RecipeProvider {
          });
    }
 
-   public static record TrimTemplate(Item template, ResourceKey<TrimPattern> patternId, ResourceKey<Recipe<?>> recipeId) {
+   public record TrimTemplate(Item template, ResourceKey<TrimPattern> patternId, ResourceKey<Recipe<?>> recipeId) {
    }
 }

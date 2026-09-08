@@ -26,35 +26,35 @@ public class HeightmapRenamingFix extends DataFix {
       Optional<? extends Dynamic<?>> heightmaps = tag.get("Heightmaps").result();
       if (heightmaps.isEmpty()) {
          return tag;
-      } else {
-         Dynamic<?> heightmapsTag = (Dynamic<?>)heightmaps.get();
-         Optional<? extends Dynamic<?>> liquid = heightmapsTag.get("LIQUID").result();
-         if (liquid.isPresent()) {
-            heightmapsTag = heightmapsTag.remove("LIQUID");
-            heightmapsTag = heightmapsTag.set("WORLD_SURFACE_WG", liquid.get());
-         }
-
-         Optional<? extends Dynamic<?>> solid = heightmapsTag.get("SOLID").result();
-         if (solid.isPresent()) {
-            heightmapsTag = heightmapsTag.remove("SOLID");
-            heightmapsTag = heightmapsTag.set("OCEAN_FLOOR_WG", solid.get());
-            heightmapsTag = heightmapsTag.set("OCEAN_FLOOR", solid.get());
-         }
-
-         Optional<? extends Dynamic<?>> light = heightmapsTag.get("LIGHT").result();
-         if (light.isPresent()) {
-            heightmapsTag = heightmapsTag.remove("LIGHT");
-            heightmapsTag = heightmapsTag.set("LIGHT_BLOCKING", light.get());
-         }
-
-         Optional<? extends Dynamic<?>> rain = heightmapsTag.get("RAIN").result();
-         if (rain.isPresent()) {
-            heightmapsTag = heightmapsTag.remove("RAIN");
-            heightmapsTag = heightmapsTag.set("MOTION_BLOCKING", rain.get());
-            heightmapsTag = heightmapsTag.set("MOTION_BLOCKING_NO_LEAVES", rain.get());
-         }
-
-         return tag.set("Heightmaps", heightmapsTag);
       }
+
+      Dynamic<?> heightmapsTag = (Dynamic<?>)heightmaps.get();
+      Optional<? extends Dynamic<?>> liquid = heightmapsTag.get("LIQUID").result();
+      if (liquid.isPresent()) {
+         heightmapsTag = heightmapsTag.remove("LIQUID");
+         heightmapsTag = heightmapsTag.set("WORLD_SURFACE_WG", liquid.get());
+      }
+
+      Optional<? extends Dynamic<?>> solid = heightmapsTag.get("SOLID").result();
+      if (solid.isPresent()) {
+         heightmapsTag = heightmapsTag.remove("SOLID");
+         heightmapsTag = heightmapsTag.set("OCEAN_FLOOR_WG", solid.get());
+         heightmapsTag = heightmapsTag.set("OCEAN_FLOOR", solid.get());
+      }
+
+      Optional<? extends Dynamic<?>> light = heightmapsTag.get("LIGHT").result();
+      if (light.isPresent()) {
+         heightmapsTag = heightmapsTag.remove("LIGHT");
+         heightmapsTag = heightmapsTag.set("LIGHT_BLOCKING", light.get());
+      }
+
+      Optional<? extends Dynamic<?>> rain = heightmapsTag.get("RAIN").result();
+      if (rain.isPresent()) {
+         heightmapsTag = heightmapsTag.remove("RAIN");
+         heightmapsTag = heightmapsTag.set("MOTION_BLOCKING", rain.get());
+         heightmapsTag = heightmapsTag.set("MOTION_BLOCKING_NO_LEAVES", rain.get());
+      }
+
+      return tag.set("Heightmaps", heightmapsTag);
    }
 }

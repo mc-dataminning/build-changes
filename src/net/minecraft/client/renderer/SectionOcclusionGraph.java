@@ -22,6 +22,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.chunk.CompiledSectionMesh;
 import net.minecraft.client.renderer.chunk.SectionMesh;
 import net.minecraft.client.renderer.chunk.SectionRenderDispatcher;
@@ -49,29 +50,26 @@ public class SectionOcclusionGraph {
    private static final int MINIMUM_ADVANCED_CULLING_SECTION_DISTANCE = SectionPos.blockToSectionCoord(60);
    private static final double CEILED_SECTION_DIAGONAL = Math.ceil(Math.sqrt(3.0) * 16.0);
    private boolean needsFullUpdate = true;
-   @Nullable
-   private Future<?> fullUpdateTask;
-   @Nullable
-   private ViewArea viewArea;
-   private final AtomicReference<SectionOcclusionGraph.GraphState> currentGraph = new AtomicReference<>();
+   private @Nullable Future<?> fullUpdateTask;
+   private @Nullable ViewArea viewArea;
+   private final AtomicReference<SectionOcclusionGraph.@Nullable GraphState> currentGraph = new AtomicReference<>();
    private final AtomicBoolean needsFrustumUpdate = new AtomicBoolean(false);
    private final LongOpenHashSet emptySections = new LongOpenHashSet();
    private final LongOpenHashSet loadedChunks = new LongOpenHashSet();
-   @Nullable
-   private volatile BlockingQueue<SectionRenderDispatcher.RenderSection> nextSectionsToPropagateFrom;
+   private volatile @Nullable BlockingQueue<SectionRenderDispatcher.RenderSection> nextSectionsToPropagateFrom;
    private double prevCamX = Double.MIN_VALUE;
    private double prevCamY = Double.MIN_VALUE;
    private double prevCamZ = Double.MIN_VALUE;
    private int prevFov = Integer.MAX_VALUE;
    private boolean lastSmartCull = true;
 
-   public void waitAndReset(@Nullable final ViewArea viewArea) {
+   public void waitAndReset(final @Nullable ViewArea viewArea) {
       if (this.fullUpdateTask != null) {
          try {
             this.fullUpdateTask.get();
             this.fullUpdateTask = null;
-         } catch (Exception var3) {
-            LOGGER.warn("Full update failed", var3);
+         } catch (Exception e) {
+            LOGGER.warn("Full update failed", e);
          }
       }
 
@@ -142,6 +140,8 @@ public class SectionOcclusionGraph {
       if (sectionsToPropagateFrom != nextSectionsToPropagateFrom) {
          sectionsToPropagateFrom.add(section);
       }
+
+      Minecraft.getInstance().levelRenderer.removeTransientBlocksInSection(section.getSectionNode(), section.getSectionMesh().getCompileTaskStartTime());
    }
 
    public void update(final CameraRenderState camera, final int fov, final ChunkLoadingRenderState chunkLoadingRenderState) {
@@ -167,8 +167,7 @@ public class SectionOcclusionGraph {
          Queue<SectionOcclusionGraph.Node> queue = Queues.newArrayDeque();
          this.initializeQueueForFullUpdate(camera.blockPos, queue);
          queue.forEach(node -> newState.storage.sectionToNodeMap.put(node.section, node));
-         this.runUpdates(newState.storage, camera.pos, queue, camera.smartCull, node -> {
-         }, clonedEmptySections, clonedLoadedChunks);
+         this.runUpdates(newState.storage, camera.pos, queue, camera.smartCull, node -> {}, clonedEmptySections, clonedLoadedChunks);
          this.currentGraph.set(newState);
          this.nextSectionsToPropagateFrom = null;
          this.needsFrustumUpdate.set(true);
@@ -319,16 +318,14 @@ public class SectionOcclusionGraph {
                         ? cameraSectionCenter.getZ() > renderSectionOriginZ
                         : cameraSectionCenter.getZ() < renderSectionOriginZ;
                      Vector3d checkPos = new Vector3d(
-                        (double)(renderSectionOriginX + (maxX ? 16 : 0)),
-                        (double)(renderSectionOriginY + (maxY ? 16 : 0)),
-                        (double)(renderSectionOriginZ + (maxZ ? 16 : 0))
+                        renderSectionOriginX + (maxX ? 16 : 0), renderSectionOriginY + (maxY ? 16 : 0), renderSectionOriginZ + (maxZ ? 16 : 0)
                      );
                      Vector3d step = new Vector3d(cameraPos.x, cameraPos.y, cameraPos.z).sub(checkPos).normalize().mul(CEILED_SECTION_DIAGONAL);
                      boolean visible = true;
 
                      while (checkPos.distanceSquared(cameraPos.x, cameraPos.y, cameraPos.z) > 3600.0) {
                         checkPos.add(step);
-                        if (checkPos.y > (double)this.viewArea.maxY() || checkPos.y < (double)this.viewArea.minY()) {
+                        if (checkPos.y > this.viewArea.maxY() || checkPos.y < this.viewArea.minY()) {
                            break;
                         }
 
@@ -374,7 +371,7 @@ public class SectionOcclusionGraph {
       );
    }
 
-   private SectionRenderDispatcher.RenderSection getRelativeFrom(
+   private SectionRenderDispatcher.@Nullable RenderSection getRelativeFrom(
       final long cameraSectionNode, final SectionRenderDispatcher.RenderSection renderSection, final Direction direction
    ) {
       long relative = renderSection.getNeighborSectionNode(direction);
@@ -388,8 +385,7 @@ public class SectionOcclusionGraph {
    }
 
    @VisibleForDebug
-   @Nullable
-   public SectionOcclusionGraph.Node getNode(final SectionRenderDispatcher.RenderSection section) {
+   public SectionOcclusionGraph.@Nullable Node getNode(final SectionRenderDispatcher.RenderSection section) {
       return this.currentGraph.get().storage.sectionToNodeMap.get(section);
    }
 
@@ -417,7 +413,7 @@ public class SectionOcclusionGraph {
       return this.currentGraph.get().storage.sectionTree;
    }
 
-   private static record GraphState(SectionOcclusionGraph.GraphStorage storage, BlockingQueue<SectionRenderDispatcher.RenderSection> sectionsToPropagateFrom) {
+   private record GraphState(SectionOcclusionGraph.GraphStorage storage, BlockingQueue<SectionRenderDispatcher.RenderSection> sectionsToPropagateFrom) {
       private GraphState(final ViewArea viewArea) {
          this(new SectionOcclusionGraph.GraphStorage(viewArea), new LinkedBlockingQueue<>());
       }
@@ -444,7 +440,7 @@ public class SectionOcclusionGraph {
       @VisibleForDebug
       public final int step;
 
-      private Node(final SectionRenderDispatcher.RenderSection section, @Nullable final Direction sourceDirection, final int step) {
+      private Node(final SectionRenderDispatcher.RenderSection section, final @Nullable Direction sourceDirection, final int step) {
          this.section = section;
          if (sourceDirection != null) {
             this.addSourceDirection(sourceDirection);
@@ -496,8 +492,7 @@ public class SectionOcclusionGraph {
          this.nodes[renderSection.index] = node;
       }
 
-      @Nullable
-      public SectionOcclusionGraph.Node get(final SectionRenderDispatcher.RenderSection renderSection) {
+      public SectionOcclusionGraph.@Nullable Node get(final SectionRenderDispatcher.RenderSection renderSection) {
          int index = renderSection.index;
          return index >= 0 && index < this.nodes.length ? this.nodes[index] : null;
       }

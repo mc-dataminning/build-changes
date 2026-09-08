@@ -38,14 +38,14 @@ public class AlternativesEntry extends CompositeEntryBase {
          case 1 -> (ComposableEntryContainer)entries.get(0);
          case 2 -> entries.get(0).or(entries.get(1));
          default -> (context, output) -> {
-         for (ComposableEntryContainer entry : entries) {
-            if (entry.expand(context, output)) {
-               return true;
+            for (ComposableEntryContainer entry : entries) {
+               if (entry.expand(context, output)) {
+                  return true;
+               }
             }
-         }
 
-         return false;
-      };
+            return false;
+         };
       };
    }
 

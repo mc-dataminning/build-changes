@@ -3,6 +3,7 @@ package com.mojang.realmsclient.util;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mojang.util.UndashedUuid;
+import java.net.URI;
 import java.time.Instant;
 import java.util.UUID;
 import java.util.function.Function;
@@ -21,8 +22,7 @@ public class JsonUtils {
       }
    }
 
-   @Nullable
-   public static <T> T getOptional(final String key, final JsonObject node, final Function<JsonObject, T> parser) {
+   public static <T> @Nullable T getOptional(final String key, final JsonObject node, final Function<JsonObject, T> parser) {
       JsonElement property = node.get(key);
       if (property == null || property.isJsonNull()) {
          return null;
@@ -43,8 +43,7 @@ public class JsonUtils {
    }
 
    @Contract("_,_,!null->!null;_,_,null->_")
-   @Nullable
-   public static String getStringOr(final String key, final JsonObject node, @Nullable final String defaultValue) {
+   public static @Nullable String getStringOr(final String key, final JsonObject node, final @Nullable String defaultValue) {
       JsonElement element = node.get(key);
       if (element != null) {
          return element.isJsonNull() ? defaultValue : element.getAsString();
@@ -53,9 +52,22 @@ public class JsonUtils {
       }
    }
 
+   public static URI getRequiredUri(final String key, final JsonObject node) {
+      URI uri = getUriNullable(key, node);
+      if (uri == null) {
+         throw new IllegalStateException("Missing required URI property: " + key);
+      } else {
+         return uri;
+      }
+   }
+
+   public static @Nullable URI getUriNullable(final String key, final JsonObject node) {
+      String string = getStringOr(key, node, null);
+      return string != null && !string.isEmpty() ? URI.create(string) : null;
+   }
+
    @Contract("_,_,!null->!null;_,_,null->_")
-   @Nullable
-   public static UUID getUuidOr(final String key, final JsonObject node, @Nullable final UUID defaultValue) {
+   public static @Nullable UUID getUuidOr(final String key, final JsonObject node, final @Nullable UUID defaultValue) {
       String uuidAsString = getStringOr(key, node, null);
       return uuidAsString == null ? defaultValue : UndashedUuid.fromStringLenient(uuidAsString);
    }
@@ -93,8 +105,7 @@ public class JsonUtils {
    }
 
    @Contract("_,_,!null->!null;_,_,null->_")
-   @Nullable
-   public static Instant getEpochMillisOr(final String key, final JsonObject node, @Nullable final Instant defaultValue) {
+   public static @Nullable Instant getEpochMillisOr(final String key, final JsonObject node, final @Nullable Instant defaultValue) {
       JsonElement element = node.get(key);
       return element != null && !element.isJsonNull() ? Instant.ofEpochMilli(Long.parseLong(element.getAsString())) : defaultValue;
    }

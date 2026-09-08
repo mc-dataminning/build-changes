@@ -39,15 +39,15 @@ public abstract class AbstractConsecutiveExecutor<T extends Runnable> implements
    private boolean pollTask() {
       if (!this.isRunning()) {
          return false;
-      } else {
-         Runnable runnable = this.queue.pop();
-         if (runnable == null) {
-            return false;
-         } else {
-            Util.runNamed(runnable, this.name);
-            return true;
-         }
       }
+
+      Runnable runnable = this.queue.pop();
+      if (runnable == null) {
+         return false;
+      }
+
+      Util.runNamed(runnable, this.name);
+      return true;
    }
 
    @Override
@@ -80,11 +80,11 @@ public abstract class AbstractConsecutiveExecutor<T extends Runnable> implements
       if (this.canBeScheduled() && this.setRunning()) {
          try {
             this.executor.execute(this);
-         } catch (RejectedExecutionException var4) {
+         } catch (RejectedExecutionException e) {
             try {
                this.executor.execute(this);
-            } catch (RejectedExecutionException var3) {
-               LOGGER.error("Could not schedule ConsecutiveExecutor", var3);
+            } catch (RejectedExecutionException e2) {
+               LOGGER.error("Could not schedule ConsecutiveExecutor", e2);
             }
          }
       }
@@ -129,7 +129,7 @@ public abstract class AbstractConsecutiveExecutor<T extends Runnable> implements
       return this.status.get() == AbstractConsecutiveExecutor.Status.CLOSED;
    }
 
-   private static enum Status {
+   private enum Status {
       SLEEPING,
       RUNNING,
       CLOSED;

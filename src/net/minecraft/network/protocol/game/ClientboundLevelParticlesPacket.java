@@ -99,7 +99,7 @@ public record ClientboundLevelParticlesPacket(
       listener.handleParticleEvent(this);
    }
 
-   public static enum RandomizationType {
+   public enum RandomizationType {
       DEFAULT(0),
       ALTERNATIVE(1),
       ALTERNATIVE_WITH_SPEED(2);
@@ -110,7 +110,7 @@ public record ClientboundLevelParticlesPacket(
       public static final StreamCodec<ByteBuf, ClientboundLevelParticlesPacket.RandomizationType> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, h -> h.id);
       private final int id;
 
-      private RandomizationType(final int id) {
+      RandomizationType(final int id) {
          this.id = id;
       }
 

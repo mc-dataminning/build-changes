@@ -20,7 +20,7 @@ public class MangroveRootsBlock extends Block implements SimpleWaterloggedBlock 
 
    protected MangroveRootsBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false));
    }
 
    @Override
@@ -28,12 +28,11 @@ public class MangroveRootsBlock extends Block implements SimpleWaterloggedBlock 
       return neighborState.is(Blocks.MANGROVE_ROOTS) && direction.getAxis() == Direction.Axis.Y;
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
       boolean isWaterSource = replacedFluidState.is(Fluids.WATER);
-      return super.getStateForPlacement(context).setValue(WATERLOGGED, Boolean.valueOf(isWaterSource));
+      return super.getStateForPlacement(context).setValue(WATERLOGGED, isWaterSource);
    }
 
    @Override

@@ -70,14 +70,14 @@ public class ItemEnchantments implements TooltipProvider {
 
       while (var10.hasNext()) {
          Entry<Holder<Enchantment>> entry = (Entry<Holder<Enchantment>>)var10.next();
-         Holder<Enchantment> enchantmentx = (Holder<Enchantment>)entry.getKey();
-         if (!order.contains(enchantmentx)) {
+         Holder<Enchantment> enchantment = (Holder<Enchantment>)entry.getKey();
+         if (!order.contains(enchantment)) {
             consumer.accept(Enchantment.getFullname((Holder<Enchantment>)entry.getKey(), entry.getIntValue()));
          }
       }
    }
 
-   private static <T> HolderSet<T> getTagOrEmpty(@Nullable final HolderLookup.Provider registries, final ResourceKey<Registry<T>> registry, final TagKey<T> tag) {
+   private static <T> HolderSet<T> getTagOrEmpty(final HolderLookup.@Nullable Provider registries, final ResourceKey<Registry<T>> registry, final TagKey<T> tag) {
       if (registries != null) {
          Optional<HolderSet.Named<T>> maybeOrder = registries.lookupOrThrow(registry).get(tag);
          if (maybeOrder.isPresent()) {

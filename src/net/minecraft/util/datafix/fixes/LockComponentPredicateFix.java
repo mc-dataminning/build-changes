@@ -14,23 +14,23 @@ public class LockComponentPredicateFix extends DataComponentRemainderFix {
       super(outputSchema, "LockComponentPredicateFix", "minecraft:lock");
    }
 
-   @Nullable
    @Override
-   protected <T> Dynamic<T> fixComponent(final Dynamic<T> input) {
+   protected <T> @Nullable Dynamic<T> fixComponent(final Dynamic<T> input) {
       return fixLock(input);
    }
 
-   @Nullable
-   public static <T> Dynamic<T> fixLock(final Dynamic<T> input) {
+   public static <T> @Nullable Dynamic<T> fixLock(final Dynamic<T> input) {
       Optional<String> name = input.asString().result();
       if (name.isEmpty()) {
          return null;
-      } else if (name.get().isEmpty()) {
-         return null;
-      } else {
-         Dynamic<T> nameComponent = input.createString("\"" + ESCAPER.escape(name.get()) + "\"");
-         Dynamic<T> components = input.emptyMap().set("minecraft:custom_name", nameComponent);
-         return input.emptyMap().set("components", components);
       }
+
+      if (name.get().isEmpty()) {
+         return null;
+      }
+
+      Dynamic<T> nameComponent = input.createString("\"" + ESCAPER.escape(name.get()) + "\"");
+      Dynamic<T> components = input.emptyMap().set("minecraft:custom_name", nameComponent);
+      return input.emptyMap().set("components", components);
    }
 }

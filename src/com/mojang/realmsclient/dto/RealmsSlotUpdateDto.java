@@ -13,7 +13,7 @@ public record RealmsSlotUpdateDto(
    @SerializedName("version") String version,
    @SerializedName("compatibility") RealmsServer.Compatibility compatibility,
    @SerializedName("worldTemplateId") long templateId,
-   @Nullable @SerializedName("worldTemplateImage") String templateImage,
+   @SerializedName("worldTemplateImage") @Nullable String templateImage,
    @SerializedName("hardcore") boolean hardcore
 ) implements ReflectionBasedSerialization {
    public RealmsSlotUpdateDto(final int slotId, final RealmsWorldOptions options, final boolean hardcore) {

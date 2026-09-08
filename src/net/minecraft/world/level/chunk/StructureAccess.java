@@ -7,8 +7,7 @@ import net.minecraft.world.level.levelgen.structure.StructureStart;
 import org.jspecify.annotations.Nullable;
 
 public interface StructureAccess {
-   @Nullable
-   StructureStart getStartForStructure(Structure structure);
+   @Nullable StructureStart getStartForStructure(Structure structure);
 
    void setStartForStructure(Structure structure, StructureStart structureStart);
 

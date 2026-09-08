@@ -42,16 +42,16 @@ public class EntitySection<T extends EntityAccess> {
       Collection<? extends T> foundEntities = this.storage.find(type.getBaseClass());
       if (foundEntities.isEmpty()) {
          return Continuation.CONTINUE;
-      } else {
-         for (T entity : foundEntities) {
-            U maybeEntity = (U)type.tryCast(entity);
-            if (maybeEntity != null && entity.getBoundingBox().intersects(bb) && consumer.accept(maybeEntity).shouldAbort()) {
-               return Continuation.ABORT;
-            }
-         }
-
-         return Continuation.CONTINUE;
       }
+
+      for (T entity : foundEntities) {
+         U maybeEntity = (U)type.tryCast(entity);
+         if (maybeEntity != null && entity.getBoundingBox().intersects(bb) && consumer.accept(maybeEntity).shouldAbort()) {
+            return Continuation.ABORT;
+         }
+      }
+
+      return Continuation.CONTINUE;
    }
 
    public boolean isEmpty() {

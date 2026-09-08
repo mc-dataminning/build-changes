@@ -20,13 +20,13 @@ public class V100 extends Schema {
          true,
          References.ENTITY_EQUIPMENT,
          () -> DSL.and(
-               DSL.optional(DSL.field("ArmorItems", DSL.list(References.ITEM_STACK.in(schema)))),
-               new TypeTemplate[]{
-                  DSL.optional(DSL.field("HandItems", DSL.list(References.ITEM_STACK.in(schema)))),
-                  DSL.optional(DSL.field("body_armor_item", References.ITEM_STACK.in(schema))),
-                  DSL.optional(DSL.field("saddle", References.ITEM_STACK.in(schema)))
-               }
-            )
+            DSL.optional(DSL.field("ArmorItems", DSL.list(References.ITEM_STACK.in(schema)))),
+            new TypeTemplate[]{
+               DSL.optional(DSL.field("HandItems", DSL.list(References.ITEM_STACK.in(schema)))),
+               DSL.optional(DSL.field("body_armor_item", References.ITEM_STACK.in(schema))),
+               DSL.optional(DSL.field("saddle", References.ITEM_STACK.in(schema)))
+            }
+         )
       );
    }
 }

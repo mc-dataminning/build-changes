@@ -142,11 +142,11 @@ public class GameTestHelper {
    }
 
    public ItemEntity spawnItem(final Item item, final float x, final float y, final float z) {
-      return this.spawnItem(item, new Vec3((double)x, (double)y, (double)z));
+      return this.spawnItem(item, new Vec3(x, y, z));
    }
 
    public ItemEntity spawnItem(final Item item, final BlockPos pos) {
-      return this.spawnItem(item, (float)pos.getX(), (float)pos.getY(), (float)pos.getZ());
+      return this.spawnItem(item, pos.getX(), pos.getY(), pos.getZ());
    }
 
    public void despawnItem(final BlockPos pos, final double distance) {
@@ -177,11 +177,11 @@ public class GameTestHelper {
       return this.spawn(entityType, new Vec3(x, y, z), entitySpawnReason);
    }
 
-   public <E extends Entity> E spawn(final EntityType<E> entityType, final BlockPos pos, @Nullable final EntitySpawnReason spawnReason) {
+   public <E extends Entity> E spawn(final EntityType<E> entityType, final BlockPos pos, final @Nullable EntitySpawnReason spawnReason) {
       return this.spawnEntity(entityType, pos).spawnReason(spawnReason).spawn();
    }
 
-   public <E extends Entity> E spawn(final EntityType<E> entityType, final Vec3 pos, @Nullable final EntitySpawnReason spawnReason) {
+   public <E extends Entity> E spawn(final EntityType<E> entityType, final Vec3 pos, final @Nullable EntitySpawnReason spawnReason) {
       return this.spawnEntity(entityType, pos).spawnReason(spawnReason).spawn();
    }
 
@@ -198,7 +198,7 @@ public class GameTestHelper {
    }
 
    public <E extends Entity> GameTestEntityBuilder<E> spawnEntity(final EntityType<E> entityType, final float x, final float y, final float z) {
-      return this.spawnEntity(entityType, new Vec3((double)x, (double)y, (double)z));
+      return this.spawnEntity(entityType, new Vec3(x, y, z));
    }
 
    public <E extends Mob> GameTestMobBuilder<E> spawnMob(final EntityType<E> entityType, final Vec3 position) {
@@ -214,7 +214,7 @@ public class GameTestHelper {
    }
 
    public <E extends Mob> GameTestMobBuilder<E> spawnMob(final EntityType<E> entityType, final float x, final float y, final float z) {
-      return this.spawnMob(entityType, new Vec3((double)x, (double)y, (double)z));
+      return this.spawnMob(entityType, new Vec3(x, y, z));
    }
 
    public void hurt(final Entity entity, final DamageSource source, final float damage) {
@@ -237,17 +237,19 @@ public class GameTestHelper {
       List<E> entities = this.findEntities(entityType, x, y, z, distance);
       if (entities.isEmpty()) {
          throw this.assertionException("test.error.expected_entity_around", entityType.getDescription(), x, y, z);
-      } else if (entities.size() > 1) {
-         throw this.assertionException("test.error.too_many_entities", entityType.toShortString(), x, y, z, entities.size());
-      } else {
-         Vec3 center = this.absoluteVec(new Vec3((double)x, (double)y, (double)z));
-         entities.sort((e1, e2) -> {
-            double d1 = e1.position().distanceTo(center);
-            double d2 = e2.position().distanceTo(center);
-            return Double.compare(d1, d2);
-         });
-         return entities.get(0);
       }
+
+      if (entities.size() > 1) {
+         throw this.assertionException("test.error.too_many_entities", entityType.toShortString(), x, y, z, entities.size());
+      }
+
+      Vec3 center = this.absoluteVec(new Vec3(x, y, z));
+      entities.sort((e1, e2) -> {
+         double d1 = e1.position().distanceTo(center);
+         double d2 = e2.position().distanceTo(center);
+         return Double.compare(d1, d2);
+      });
+      return entities.get(0);
    }
 
    public <E extends Entity> List<E> findEntities(final EntityType<E> entityType, final int x, final int y, final int z, final double distance) {
@@ -267,7 +269,7 @@ public class GameTestHelper {
    }
 
    public <E extends Entity> E spawn(final EntityType<E> entityType, final float x, final float y, final float z) {
-      return this.spawn(entityType, new Vec3((double)x, (double)y, (double)z));
+      return this.spawn(entityType, new Vec3(x, y, z));
    }
 
    public <E extends Mob> E spawnWithNoFreeWill(final EntityType<E> entityType, final BlockPos pos) {
@@ -285,11 +287,11 @@ public class GameTestHelper {
    }
 
    public <E extends Mob> E spawnWithNoFreeWill(final EntityType<E> entityType, final float x, final float y, final float z) {
-      return this.spawnWithNoFreeWill(entityType, new Vec3((double)x, (double)y, (double)z));
+      return this.spawnWithNoFreeWill(entityType, new Vec3(x, y, z));
    }
 
    public void moveTo(final Mob mob, final float x, final float y, final float z) {
-      this.moveTo(mob, new Vec3((double)x, (double)y, (double)z));
+      this.moveTo(mob, new Vec3(x, y, z));
    }
 
    public void moveTo(final Mob mob, final BlockPos pos) {
@@ -304,7 +306,7 @@ public class GameTestHelper {
    public GameTestSequence walkTo(final Mob mob, final BlockPos targetPos, final float speedModifier) {
       return this.startSequence().thenExecuteAfter(2, () -> {
          Path path = mob.getNavigation().createPath(this.absolutePos(targetPos), 0);
-         mob.getNavigation().moveTo(path, (double)speedModifier);
+         mob.getNavigation().moveTo(path, speedModifier);
       });
    }
 
@@ -356,10 +358,6 @@ public class GameTestHelper {
 
    public Player makeMockPlayer(final GameType gameType) {
       return new Player(this.getLevel(), new GameProfile(UUID.randomUUID(), "test-mock-player")) {
-         {
-            Objects.requireNonNull(GameTestHelper.this);
-         }
-
          @Override
          public GameType gameMode() {
             return gameType;
@@ -376,10 +374,6 @@ public class GameTestHelper {
       var player = new ServerPlayer(
          this.getLevel().getServer(), this.getLevel(), new GameProfile(UUID.randomUUID(), "test-mock-player"), ClientInformation.createDefault()
       ) {
-         {
-            Objects.requireNonNull(GameTestHelper.this);
-         }
-
          @Override
          public GameType gameMode() {
             return gameType;
@@ -399,16 +393,10 @@ public class GameTestHelper {
       entity.setYRot(yRot);
    }
 
-   @Deprecated(
-      forRemoval = true
-   )
+   @Deprecated(forRemoval = true)
    public ServerPlayer makeMockServerPlayerInLevel() {
       CommonListenerCookie cookie = CommonListenerCookie.createInitial(new GameProfile(UUID.randomUUID(), "test-mock-player"), false);
       ServerPlayer player = new ServerPlayer(this.getLevel().getServer(), this.getLevel(), cookie.gameProfile(), cookie.clientInformation()) {
-         {
-            Objects.requireNonNull(GameTestHelper.this);
-         }
-
          @Override
          public GameType gameMode() {
             return GameType.CREATIVE;
@@ -560,7 +548,9 @@ public class GameTestHelper {
       boolean hasProperty = blockState.hasProperty(property);
       if (!hasProperty) {
          throw this.assertionException(pos, "test.error.block_property_missing", property.getName(), value);
-      } else if (!blockState.<T>getValue(property).equals(value)) {
+      }
+
+      if (!blockState.<T>getValue(property).equals(value)) {
          throw this.assertionException(pos, "test.error.block_property_mismatch", property.getName(), value, blockState.getValue(property));
       }
    }
@@ -571,10 +561,10 @@ public class GameTestHelper {
       this.assertBlockState(pos, blockState -> {
          if (!blockState.hasProperty(property)) {
             return false;
-         } else {
-            T value = blockState.getValue(property);
-            return predicate.test(value);
          }
+
+         T value = blockState.getValue(property);
+         return predicate.test(value);
       }, state -> errorMessage);
    }
 
@@ -791,33 +781,33 @@ public class GameTestHelper {
       List<E> entities = this.getLevel().getEntities(entityType, new AABB(absolutePos), Entity::isAlive);
       if (entities.isEmpty()) {
          throw this.assertionException(pos, "test.error.expected_entity", entityType.getDescription());
-      } else {
-         for (E entity : entities) {
-            if (!test.test(entity)) {
-               throw this.assertionException(entity.blockPosition(), "test.error.expected_entity_data_predicate", entity.getName());
-            }
+      }
+
+      for (E entity : entities) {
+         if (!test.test(entity)) {
+            throw this.assertionException(entity.blockPosition(), "test.error.expected_entity_data_predicate", entity.getName());
          }
       }
    }
 
    public <E extends Entity, T> void assertEntityData(
-      final BlockPos pos, final EntityType<E> entityType, final Function<? super E, T> dataAccessor, @Nullable final T data
+      final BlockPos pos, final EntityType<E> entityType, final Function<? super E, T> dataAccessor, final @Nullable T data
    ) {
       this.assertEntityData(new AABB(pos), entityType, dataAccessor, data);
    }
 
    public <E extends Entity, T> void assertEntityData(
-      final AABB box, final EntityType<E> entityType, final Function<? super E, T> dataAccessor, @Nullable final T data
+      final AABB box, final EntityType<E> entityType, final Function<? super E, T> dataAccessor, final @Nullable T data
    ) {
       List<E> entities = this.getLevel().getEntities(entityType, this.absoluteAABB(box), Entity::isAlive);
       if (entities.isEmpty()) {
          throw this.assertionException(BlockPos.containing(box.getBottomCenter()), "test.error.expected_entity", entityType.getDescription());
-      } else {
-         for (E entity : entities) {
-            T actual = dataAccessor.apply(entity);
-            if (!Objects.equals(actual, data)) {
-               throw this.assertionException(BlockPos.containing(box.getBottomCenter()), "test.error.expected_entity_data", data, actual);
-            }
+      }
+
+      for (E entity : entities) {
+         T actual = dataAccessor.apply(entity);
+         if (!Objects.equals(actual, data)) {
+            throw this.assertionException(BlockPos.containing(box.getBottomCenter()), "test.error.expected_entity_data", data, actual);
          }
       }
    }
@@ -827,15 +817,15 @@ public class GameTestHelper {
       List<E> entities = this.getLevel().getEntities(entityType, new AABB(absolutePos), Entity::isAlive);
       if (entities.isEmpty()) {
          throw this.assertionException(pos, "test.error.expected_entity", entityType.getDescription());
-      } else {
-         for (E entity : entities) {
-            if (entity.isHolding(item)) {
-               return;
-            }
-         }
-
-         throw this.assertionException(pos, "test.error.expected_entity_holding", getItemName(item));
       }
+
+      for (E entity : entities) {
+         if (entity.isHolding(item)) {
+            return;
+         }
+      }
+
+      throw this.assertionException(pos, "test.error.expected_entity_holding", getItemName(item));
    }
 
    public <E extends Entity & InventoryCarrier> void assertEntityInventoryContains(final BlockPos pos, final EntityType<E> entityType, final Item item) {
@@ -843,15 +833,15 @@ public class GameTestHelper {
       List<E> entities = this.getLevel().getEntities(entityType, new AABB(absolutePos), rec$ -> rec$.isAlive());
       if (entities.isEmpty()) {
          throw this.assertionException(pos, "test.error.expected_entity", entityType.getDescription());
-      } else {
-         for (E entity : entities) {
-            if (entity.getInventory().hasAnyMatching(itemStack -> itemStack.is(item))) {
-               return;
-            }
-         }
-
-         throw this.assertionException(pos, "test.error.expected_entity_having", getItemName(item));
       }
+
+      for (E entity : entities) {
+         if (entity.getInventory().hasAnyMatching(itemStack -> itemStack.is(item))) {
+            return;
+         }
+      }
+
+      throw this.assertionException(pos, "test.error.expected_entity_having", getItemName(item));
    }
 
    public void assertContainerEmpty(final BlockPos pos) {
@@ -950,9 +940,9 @@ public class GameTestHelper {
    private void ensureSingleFinalCheck() {
       if (this.finalCheckAdded) {
          throw new IllegalStateException("This test already has final clause");
-      } else {
-         this.finalCheckAdded = true;
       }
+
+      this.finalCheckAdded = true;
    }
 
    public void succeedIf(final Runnable asserter) {
@@ -967,7 +957,7 @@ public class GameTestHelper {
 
    public void succeedOnTickWhen(final int tick, final Runnable asserter) {
       this.ensureSingleFinalCheck();
-      this.testInfo.createSequence().thenWaitUntil((long)tick, asserter).thenSucceed();
+      this.testInfo.createSequence().thenWaitUntil(tick, asserter).thenSucceed();
    }
 
    public void runAtTickTime(final long time, final Runnable asserter) {
@@ -975,11 +965,11 @@ public class GameTestHelper {
    }
 
    public void runBeforeTestEnd(final Runnable asserter) {
-      this.runAtTickTime((long)(this.testInfo.getTimeoutTicks() - 1), asserter);
+      this.runAtTickTime(this.testInfo.getTimeoutTicks() - 1, asserter);
    }
 
    public void runAfterDelay(final long ticksToDelay, final Runnable whatToRun) {
-      this.runAtTickTime((long)this.testInfo.getTick() + ticksToDelay, whatToRun);
+      this.runAtTickTime(this.testInfo.getTick() + ticksToDelay, whatToRun);
    }
 
    public void setTime(final long ticks) {
@@ -1045,7 +1035,7 @@ public class GameTestHelper {
    }
 
    public void failIfEver(final Runnable asserter) {
-      LongStream.range((long)this.testInfo.getTick(), (long)this.testInfo.getTimeoutTicks()).forEach(i -> this.testInfo.setRunAtTickTime(i, asserter::run));
+      LongStream.range(this.testInfo.getTick(), this.testInfo.getTimeoutTicks()).forEach(i -> this.testInfo.setRunAtTickTime(i, asserter::run));
    }
 
    public GameTestSequence startSequence() {
@@ -1138,7 +1128,7 @@ public class GameTestHelper {
    }
 
    public long getTick() {
-      return (long)this.testInfo.getTick();
+      return this.testInfo.getTick();
    }
 
    public AABB getBounds() {
@@ -1146,7 +1136,7 @@ public class GameTestHelper {
    }
 
    public AABB getBoundsWithPadding() {
-      return this.getBounds().inflate((double)this.testInfo.getTest().padding());
+      return this.getBounds().inflate(this.testInfo.getTest().padding());
    }
 
    public AABB getRelativeBounds() {
@@ -1165,7 +1155,7 @@ public class GameTestHelper {
    }
 
    public void onEachTick(final Runnable action) {
-      LongStream.range((long)this.testInfo.getTick(), (long)this.testInfo.getTimeoutTicks()).forEach(i -> this.testInfo.setRunAtTickTime(i, action::run));
+      LongStream.range(this.testInfo.getTick(), this.testInfo.getTimeoutTicks()).forEach(i -> this.testInfo.setRunAtTickTime(i, action::run));
    }
 
    public void setBiome(final ResourceKey<Biome> biome) {
@@ -1190,7 +1180,6 @@ public class GameTestHelper {
       public TestBlockPlaceContext(
          final Level level, final InteractionHand hand, final ItemStack itemStackInHand, final BlockHitResult hitResult, final Direction placeDirection
       ) {
-         Objects.requireNonNull(GameTestHelper.this);
          super(level, null, hand, itemStackInHand, hitResult);
          this.placeDirection = placeDirection;
       }

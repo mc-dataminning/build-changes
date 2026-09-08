@@ -62,11 +62,11 @@ public class RegistryOps<T> extends DelegatingOps<T> {
    public static <E, O> RecordCodecBuilder<O, HolderGetter<E>> retrieveGetter(final ResourceKey<? extends Registry<? extends E>> registryKey) {
       return ExtraCodecs.retrieveContext(
             ops -> ops instanceof RegistryOps<?> registryOps
-                  ? registryOps.lookupProvider
-                     .lookup(registryKey)
-                     .map(r -> DataResult.success(r, Lifecycle.stable()))
-                     .orElseGet(() -> DataResult.error(() -> "Unknown registry: " + registryKey))
-                  : DataResult.error(() -> "Not a registry ops")
+               ? registryOps.lookupProvider
+                  .lookup(registryKey)
+                  .map(r -> DataResult.success(r, Lifecycle.stable()))
+                  .orElseGet(() -> DataResult.error(() -> "Unknown registry: " + registryKey))
+               : DataResult.error(() -> "Not a registry ops")
          )
          .forGetter(var0 -> null);
    }
@@ -75,12 +75,12 @@ public class RegistryOps<T> extends DelegatingOps<T> {
       ResourceKey<? extends Registry<E>> registryKey = ResourceKey.createRegistryKey(key.registry());
       return ExtraCodecs.retrieveContext(
             ops -> ops instanceof RegistryOps<?> registryOps
-                  ? registryOps.lookupProvider
-                     .lookup(registryKey)
-                     .flatMap(r -> r.get(key))
-                     .<DataResult<E>>map(DataResult::success)
-                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + key))
-                  : DataResult.error(() -> "Not a registry ops")
+               ? registryOps.lookupProvider
+                  .lookup(registryKey)
+                  .flatMap(r -> r.get(key))
+                  .<DataResult<E>>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Can't find value: " + key))
+               : DataResult.error(() -> "Not a registry ops")
          )
          .forGetter(var0 -> null);
    }
@@ -100,15 +100,7 @@ public class RegistryOps<T> extends DelegatingOps<T> {
 
       @Override
       public boolean equals(final Object obj) {
-         if (this == obj) {
-            return true;
-         } else {
-            if (obj instanceof RegistryOps.HolderLookupAdapter adapter && this.lookupProvider.equals(adapter.lookupProvider)) {
-               return true;
-            }
-
-            return false;
-         }
+         return this == obj ? true : obj instanceof RegistryOps.HolderLookupAdapter adapter && this.lookupProvider.equals(adapter.lookupProvider);
       }
 
       @Override

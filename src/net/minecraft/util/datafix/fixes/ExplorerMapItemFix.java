@@ -69,37 +69,36 @@ public class ExplorerMapItemFix extends DataFix {
             Optional<String> id = itemStack.getOptional(idFinder).map(Pair::getSecond);
             if (id.filter(itemId -> itemId.equals("minecraft:filled_map")).isEmpty()) {
                return itemStack;
-            } else {
-               Optional<? extends Typed<?>> components = itemStack.getOptionalTyped(componentsFinder);
-               if (components.isEmpty()) {
-                  return itemStack;
-               } else {
-                  Dynamic<?> componentsData = (Dynamic<?>)components.get().getOrCreate(DSL.remainderFinder());
-                  Optional<? extends Dynamic<?>> mapDecorations = componentsData.get("minecraft:map_decorations").result();
-                  if (mapDecorations.isEmpty()) {
-                     return itemStack;
-                  } else {
-                     Optional<? extends Dynamic<?>> explorerDecoration = mapDecorations.get().get("+").result();
-                     if (explorerDecoration.isEmpty()) {
-                        return itemStack;
-                     } else {
-                        String decorationType = NamespacedSchema.ensureNamespaced(explorerDecoration.get().get("type").asString(""));
-                        String newItemId = DECORATION_TYPE_TO_ITEM_ID.get(decorationType);
-                        if (newItemId == null) {
-                           return itemStack;
-                        } else {
-                           String legacyNameKey = DECORATION_TYPE_TO_LEGACY_NAME_KEY.get(decorationType);
-                           return Util.writeAndReadTypedOrThrow(
-                              itemStack,
-                              itemStack.getType(),
-                              data -> data.set("id", data.createString(newItemId))
-                                    .update("components", componentData -> removeLegacyItemName(componentData, legacyNameKey))
-                           );
-                        }
-                     }
-                  }
-               }
             }
+
+            Optional<? extends Typed<?>> components = itemStack.getOptionalTyped(componentsFinder);
+            if (components.isEmpty()) {
+               return itemStack;
+            }
+
+            Dynamic<?> componentsData = (Dynamic<?>)components.get().getOrCreate(DSL.remainderFinder());
+            Optional<? extends Dynamic<?>> mapDecorations = componentsData.get("minecraft:map_decorations").result();
+            if (mapDecorations.isEmpty()) {
+               return itemStack;
+            }
+
+            Optional<? extends Dynamic<?>> explorerDecoration = mapDecorations.get().get("+").result();
+            if (explorerDecoration.isEmpty()) {
+               return itemStack;
+            }
+
+            String decorationType = NamespacedSchema.ensureNamespaced(explorerDecoration.get().get("type").asString(""));
+            String newItemId = DECORATION_TYPE_TO_ITEM_ID.get(decorationType);
+            if (newItemId == null) {
+               return itemStack;
+            }
+
+            String legacyNameKey = DECORATION_TYPE_TO_LEGACY_NAME_KEY.get(decorationType);
+            return Util.writeAndReadTypedOrThrow(
+               itemStack,
+               itemStack.getType(),
+               data -> data.set("id", data.createString(newItemId)).update("components", componentData -> removeLegacyItemName(componentData, legacyNameKey))
+            );
          }
       );
    }

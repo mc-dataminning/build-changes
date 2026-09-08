@@ -42,9 +42,9 @@ public class TracyZoneFiller implements ProfilerFiller {
       if (SharedConstants.IS_RUNNING_IN_IDE) {
          Optional<StackFrame> result = STACK_WALKER.walk(
             s -> s.filter(
-                     framex -> framex.getDeclaringClass() != TracyZoneFiller.class && framex.getDeclaringClass() != ProfilerFiller.CombinedProfileFiller.class
-                  )
-                  .findFirst()
+                  framex -> framex.getDeclaringClass() != TracyZoneFiller.class && framex.getDeclaringClass() != ProfilerFiller.CombinedProfileFiller.class
+               )
+               .findFirst()
          );
          if (result.isPresent()) {
             StackFrame frame = result.get();
@@ -129,7 +129,7 @@ public class TracyZoneFiller implements ProfilerFiller {
 
       public void set(final int value) {
          this.value = value;
-         this.plot.setValue((double)value);
+         this.plot.setValue(value);
       }
 
       public void add(final int amount) {

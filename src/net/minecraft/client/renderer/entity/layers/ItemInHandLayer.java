@@ -45,7 +45,7 @@ public class ItemInHandLayer<S extends ArmedEntityRenderState, M extends EntityM
          float offsetX = this.useBabyOffset(state) ? 0.0F : 1.0F;
          float offsetY = this.useBabyOffset(state) ? 1.0F : 2.0F;
          float offsetZ = this.useBabyOffset(state) ? -4.5F : -10.0F;
-         poseStack.translate((float)(isLeftHand ? -1 : 1) * offsetX / 16.0F, offsetY / 16.0F, offsetZ / 16.0F);
+         poseStack.translate((isLeftHand ? -1 : 1) * offsetX / 16.0F, offsetY / 16.0F, offsetZ / 16.0F);
          if (state.currentSwing != null
             && state.currentSwing.hand().asArm(state.mainArm) == arm
             && state.currentSwing.animation().type() == SwingAnimationType.STAB) {

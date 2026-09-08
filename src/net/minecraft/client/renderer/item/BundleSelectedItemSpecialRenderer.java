@@ -20,8 +20,8 @@ public class BundleSelectedItemSpecialRenderer implements ItemModel {
       final ItemStack item,
       final ItemModelResolver resolver,
       final ItemDisplayContext displayContext,
-      @Nullable final ClientLevel level,
-      @Nullable final ItemOwner owner,
+      final @Nullable ClientLevel level,
+      final @Nullable ItemOwner owner,
       final int seed
    ) {
       output.appendModelIdentityElement(this);
@@ -31,7 +31,7 @@ public class BundleSelectedItemSpecialRenderer implements ItemModel {
       }
    }
 
-   public static record Unbaked() implements ItemModel.Unbaked {
+   public record Unbaked() implements ItemModel.Unbaked {
       public static final MapCodec<BundleSelectedItemSpecialRenderer.Unbaked> MAP_CODEC = MapCodec.unit(new BundleSelectedItemSpecialRenderer.Unbaked());
 
       @Override

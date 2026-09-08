@@ -20,11 +20,11 @@ public record ItemStackTemplate(Holder<Item> item, int count, DataComponentPatch
    private static final Logger LOGGER = LogUtils.getLogger();
    public static final MapCodec<ItemStackTemplate> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Item.CODEC.fieldOf("id").forGetter(ItemStackTemplate::item),
-               ExtraCodecs.intRange(1, 99).optionalFieldOf("count", 1).forGetter(ItemStackTemplate::count),
-               DataComponentPatch.CODEC.optionalFieldOf("components", DataComponentPatch.EMPTY).forGetter(ItemStackTemplate::components)
-            )
-            .apply(i, ItemStackTemplate::new)
+            Item.CODEC.fieldOf("id").forGetter(ItemStackTemplate::item),
+            ExtraCodecs.intRange(1, 99).optionalFieldOf("count", 1).forGetter(ItemStackTemplate::count),
+            DataComponentPatch.CODEC.optionalFieldOf("components", DataComponentPatch.EMPTY).forGetter(ItemStackTemplate::components)
+         )
+         .apply(i, ItemStackTemplate::new)
    );
    public static final Codec<ItemStackTemplate> CODEC = Codec.withAlternative(MAP_CODEC.codec(), Item.CODEC, item -> new ItemStackTemplate((Item)item.value()));
    public static final StreamCodec<RegistryFriendlyByteBuf, ItemStackTemplate> STREAM_CODEC = StreamCodec.composite(
@@ -112,9 +112,8 @@ public record ItemStackTemplate(Holder<Item> item, int count, DataComponentPatch
       return this.item;
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       return this.components.get(this.item.components(), type);
    }
 }

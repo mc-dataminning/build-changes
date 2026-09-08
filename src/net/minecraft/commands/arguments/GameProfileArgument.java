@@ -105,15 +105,15 @@ public class GameProfileArgument implements ArgumentType<GameProfileArgument.Res
          List<ServerPlayer> players = this.selector.findPlayers(sender);
          if (players.isEmpty()) {
             throw EntityArgument.NO_PLAYERS_FOUND.create();
-         } else {
-            List<NameAndId> result = new ArrayList<>();
-
-            for (ServerPlayer entity : players) {
-               result.add(entity.nameAndId());
-            }
-
-            return result;
          }
+
+         List<NameAndId> result = new ArrayList<>();
+
+         for (ServerPlayer entity : players) {
+            result.add(entity.nameAndId());
+         }
+
+         return result;
       }
    }
 }

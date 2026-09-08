@@ -12,15 +12,12 @@ public final class GuiItemRenderState implements ScreenArea {
    private final TrackingItemStackRenderState itemStackRenderState;
    private final int x;
    private final int y;
-   @Nullable
-   private final ScreenRectangle scissorArea;
-   @Nullable
-   private final ScreenRectangle oversizedItemBounds;
-   @Nullable
-   private final ScreenRectangle bounds;
+   private final @Nullable ScreenRectangle scissorArea;
+   private final @Nullable ScreenRectangle oversizedItemBounds;
+   private final @Nullable ScreenRectangle bounds;
 
    public GuiItemRenderState(
-      final Matrix3x2f pose, final TrackingItemStackRenderState itemStackRenderState, final int x, final int y, @Nullable final ScreenRectangle scissorArea
+      final Matrix3x2f pose, final TrackingItemStackRenderState itemStackRenderState, final int x, final int y, final @Nullable ScreenRectangle scissorArea
    ) {
       this.pose = pose;
       this.itemStackRenderState = itemStackRenderState;
@@ -31,26 +28,24 @@ public final class GuiItemRenderState implements ScreenArea {
       this.bounds = this.calculateBounds(this.oversizedItemBounds != null ? this.oversizedItemBounds : new ScreenRectangle(this.x, this.y, 16, 16));
    }
 
-   @Nullable
-   private ScreenRectangle calculateOversizedItemBounds() {
+   private @Nullable ScreenRectangle calculateOversizedItemBounds() {
       AABB aabb = this.itemStackRenderState.getModelBoundingBox();
       int actualXSize = Mth.ceil(aabb.getXsize() * 16.0);
       int actualYSize = Mth.ceil(aabb.getYsize() * 16.0);
       if (actualXSize <= 16 && actualYSize <= 16) {
          return null;
-      } else {
-         float xOffset = (float)(aabb.minX * 16.0);
-         float yOffset = (float)(aabb.maxY * 16.0);
-         int flooredXOffset = Mth.floor(xOffset);
-         int flooredYOffset = Mth.floor(yOffset);
-         int actualX = this.x + flooredXOffset + 8;
-         int actualY = this.y - flooredYOffset + 8;
-         return new ScreenRectangle(actualX, actualY, actualXSize, actualYSize);
       }
+
+      float xOffset = (float)(aabb.minX * 16.0);
+      float yOffset = (float)(aabb.maxY * 16.0);
+      int flooredXOffset = Mth.floor(xOffset);
+      int flooredYOffset = Mth.floor(yOffset);
+      int actualX = this.x + flooredXOffset + 8;
+      int actualY = this.y - flooredYOffset + 8;
+      return new ScreenRectangle(actualX, actualY, actualXSize, actualYSize);
    }
 
-   @Nullable
-   private ScreenRectangle calculateBounds(final ScreenRectangle itemBounds) {
+   private @Nullable ScreenRectangle calculateBounds(final ScreenRectangle itemBounds) {
       ScreenRectangle bounds = itemBounds.transformMaxBounds(this.pose);
       return this.scissorArea != null ? this.scissorArea.intersection(bounds) : bounds;
    }
@@ -71,19 +66,16 @@ public final class GuiItemRenderState implements ScreenArea {
       return this.y;
    }
 
-   @Nullable
-   public ScreenRectangle scissorArea() {
+   public @Nullable ScreenRectangle scissorArea() {
       return this.scissorArea;
    }
 
-   @Nullable
-   public ScreenRectangle oversizedItemBounds() {
+   public @Nullable ScreenRectangle oversizedItemBounds() {
       return this.oversizedItemBounds;
    }
 
-   @Nullable
    @Override
-   public ScreenRectangle bounds() {
+   public @Nullable ScreenRectangle bounds() {
       return this.bounds;
    }
 }

@@ -56,8 +56,8 @@ public class Main {
    public static void main(final String[] args) {
       try {
          SharedConstants.tryDetectVersion();
-      } catch (Throwable var76) {
-         logEarlyException(var76);
+      } catch (Throwable t) {
+         logEarlyException(t);
          System.exit(-7);
          return;
       }
@@ -65,8 +65,8 @@ public class Main {
       OptionParser parser;
       try {
          parser = new OptionParser();
-      } catch (Throwable var75) {
-         logEarlyException(var75);
+      } catch (Throwable t) {
+         logEarlyException(t);
          System.exit(-4);
          return;
       }
@@ -81,8 +81,7 @@ public class Main {
       OptionSpec<Void> vulkanValidationOption = parser.accepts("vulkanValidation");
       OptionSpec<PreferredGraphicsApi> graphicsBackendOption = parser.accepts("graphicsBackend")
          .withRequiredArg()
-         .withValuesConvertedBy(new EnumConverter<PreferredGraphicsApi>(PreferredGraphicsApi.class) {
-         });
+         .withValuesConvertedBy(new EnumConverter<PreferredGraphicsApi>(PreferredGraphicsApi.class) {});
       OptionSpec<Void> jfrProfilingOption = parser.accepts("jfrProfile");
       OptionSpec<Void> tracyProfilingOption = parser.accepts("tracy");
       OptionSpec<Void> tracyNoImageOption = parser.accepts("tracyNoImages");
@@ -115,8 +114,8 @@ public class Main {
       OptionSet optionSet;
       try {
          optionSet = parser.parse(args);
-      } catch (Throwable var74) {
-         logEarlyException(var74);
+      } catch (Throwable t) {
+         logEarlyException(t);
          System.exit(-5);
          return;
       }
@@ -126,8 +125,8 @@ public class Main {
 
       try {
          NativeLibrariesBootstrap.loadLibraries();
-      } catch (Throwable var73) {
-         CrashReport report = CrashReport.forThrowable(var73, "Loading native libraries");
+      } catch (Throwable t) {
+         CrashReport report = CrashReport.forThrowable(t, "Loading native libraries");
          CrashReportCategory initialization = report.addCategory("Initialization");
          NativeModuleLister.addCrashSection(initialization);
          Minecraft.fillReport(null, null, launchedVersion, null, report);
@@ -239,8 +238,8 @@ public class Main {
          );
          Util.startTimerHackThread();
          dataFixerOptimization.join();
-      } catch (Throwable var77) {
-         CrashReport report = CrashReport.forThrowable(var77, stage);
+      } catch (Throwable t) {
+         CrashReport report = CrashReport.forThrowable(t, stage);
          CrashReportCategory initialization = report.addCategory("Initialization");
          NativeModuleLister.addCrashSection(initialization);
          Minecraft.fillReport(null, null, launchedVersion, null, report);
@@ -268,12 +267,12 @@ public class Main {
          Thread.currentThread().setName("Render thread");
          RenderSystem.initRenderThread();
          minecraft = new Minecraft(gameConfig);
-      } catch (SilentInitException var70) {
+      } catch (SilentInitException e) {
          Util.shutdownExecutors();
-         logger.warn("Failed to create window: ", var70);
+         logger.warn("Failed to create window: ", e);
          return;
-      } catch (Throwable var71) {
-         CrashReport report = CrashReport.forThrowable(var71, "Initializing game");
+      } catch (Throwable t) {
+         CrashReport report = CrashReport.forThrowable(t, "Initializing game");
          CrashReportCategory initialization = report.addCategory("Initialization");
          NativeModuleLister.addCrashSection(initialization);
          Minecraft.fillReport(minecraft, null, gameConfig.game.launchVersion, null, report);
@@ -285,8 +284,8 @@ public class Main {
 
       try {
          minecraft.exitWorldAndClose();
-      } catch (Throwable var69) {
-         CrashReport report = CrashReport.forThrowable(var69, "Game shutdown");
+      } catch (Throwable t) {
+         CrashReport report = CrashReport.forThrowable(t, "Game shutdown");
          Minecraft.fillReport(null, null, launchedVersion, null, report);
          Minecraft.crash(null, gameDir, report, -6);
          return;
@@ -295,9 +294,7 @@ public class Main {
       ClientShutdownWatchdog.startShutdownWatchdog("post-main", true, null, gameConfig, Thread.currentThread().threadId());
    }
 
-   @SuppressForbidden(
-      reason = "Logging not available yet"
-   )
+   @SuppressForbidden(reason = "Logging not available yet")
    private static void logEarlyException(final Throwable t) {
       t.printStackTrace();
    }
@@ -327,8 +324,7 @@ public class Main {
       }
    }
 
-   @Nullable
-   private static String unescapeJavaArgument(@Nullable final String arg) {
+   private static @Nullable String unescapeJavaArgument(final @Nullable String arg) {
       return arg == null ? null : StringEscapeUtils.unescapeJava(arg);
    }
 
@@ -336,15 +332,14 @@ public class Main {
       return xuid.isEmpty() ? Optional.empty() : Optional.of(xuid);
    }
 
-   private static OptionalInt ofNullable(@Nullable final Integer value) {
+   private static OptionalInt ofNullable(final @Nullable Integer value) {
       return value != null ? OptionalInt.of(value) : OptionalInt.empty();
    }
 
-   @Nullable
-   private static <T> T parseArgument(final OptionSet optionSet, final OptionSpec<T> optionSpec) {
+   private static <T> @Nullable T parseArgument(final OptionSet optionSet, final OptionSpec<T> optionSpec) {
       try {
          return (T)optionSet.valueOf(optionSpec);
-      } catch (Throwable var5) {
+      } catch (Throwable t) {
          if (optionSpec instanceof ArgumentAcceptingOptionSpec<T> options) {
             List<T> defaultValues = options.defaultValues();
             if (!defaultValues.isEmpty()) {
@@ -352,11 +347,11 @@ public class Main {
             }
          }
 
-         throw var5;
+         throw t;
       }
    }
 
-   private static boolean stringHasValue(@Nullable final String string) {
+   private static boolean stringHasValue(final @Nullable String string) {
       return string != null && !string.isEmpty();
    }
 
@@ -368,7 +363,7 @@ public class Main {
       try {
          UndashedUuid.fromStringLenient((String)uuidOption.value(optionSet));
          return true;
-      } catch (IllegalArgumentException var4) {
+      } catch (IllegalArgumentException e) {
          logger.warn("Invalid UUID: '{}", uuidOption.value(optionSet));
          return false;
       }

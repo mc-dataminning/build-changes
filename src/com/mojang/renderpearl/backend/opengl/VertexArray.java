@@ -6,6 +6,7 @@ import com.mojang.renderpearl.util.UncheckedAutoCloseable;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.function.BiFunction;
+import org.jspecify.annotations.Nullable;
 import org.lwjgl.opengl.ARBVertexAttribBinding;
 import org.lwjgl.opengl.GL33C;
 import org.lwjgl.opengl.GLCapabilities;
@@ -32,7 +33,7 @@ public abstract sealed class VertexArray implements UncheckedAutoCloseable permi
       GL33C.glDeleteVertexArrays(this.vertexArrayId);
    }
 
-   public abstract void bind(final GpuBufferSlice[] vertexBuffers);
+   public abstract void bind(final @Nullable GpuBufferSlice[] vertexBuffers);
 
    private static final class Emulated extends VertexArray {
       private final int[] bufferStride = new int[16];
@@ -70,7 +71,7 @@ public abstract sealed class VertexArray implements UncheckedAutoCloseable permi
       }
 
       @Override
-      public void bind(final GpuBufferSlice[] vertexBuffers) {
+      public void bind(final @Nullable GpuBufferSlice[] vertexBuffers) {
          GlStateManager._glBindVertexArray(this.vertexArrayId);
 
          for (int attributeIndex = 0; attributeIndex < 16; attributeIndex++) {
@@ -81,7 +82,7 @@ public abstract sealed class VertexArray implements UncheckedAutoCloseable permi
                }
 
                GlStateManager._glBindBuffer(34962, ((GlBuffer)vertexBuffers[vertexBufferIndex].buffer()).handle());
-               long totalOffset = vertexBuffers[vertexBufferIndex].offset() + (long)this.elementOffset[attributeIndex];
+               long totalOffset = vertexBuffers[vertexBufferIndex].offset() + this.elementOffset[attributeIndex];
                if (this.isInteger[attributeIndex]) {
                   GL33C.glVertexAttribIPointer(
                      attributeIndex, this.channelCount[attributeIndex], this.glType[attributeIndex], this.bufferStride[vertexBufferIndex], totalOffset
@@ -143,7 +144,7 @@ public abstract sealed class VertexArray implements UncheckedAutoCloseable permi
       }
 
       @Override
-      public void bind(final GpuBufferSlice[] vertexBuffers) {
+      public void bind(final @Nullable GpuBufferSlice[] vertexBuffers) {
          GlStateManager._glBindVertexArray(this.vertexArrayId);
 
          for (int i = 0; i < vertexBuffers.length; i++) {

@@ -27,10 +27,9 @@ public interface ResourceMetadata {
    IoSupplier<ResourceMetadata> EMPTY_SUPPLIER = () -> EMPTY;
 
    static ResourceMetadata fromJsonStream(final InputStream inputStream) throws IOException {
-      ResourceMetadata var3;
       try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
          final JsonObject metadata = GsonHelper.parse(reader);
-         var3 = new ResourceMetadata() {
+         return new ResourceMetadata() {
             @Override
             public <T> Optional<T> getSection(final MetadataSectionType<T> serializer) {
                String name = serializer.name();
@@ -44,8 +43,6 @@ public interface ResourceMetadata {
             }
          };
       }
-
-      return var3;
    }
 
    <T> Optional<T> getSection(MetadataSectionType<T> serializer);
@@ -66,7 +63,7 @@ public interface ResourceMetadata {
       return types.stream().map(this::getTypedSection).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
    }
 
-   public static class MapBased implements ResourceMetadata {
+   class MapBased implements ResourceMetadata {
       private final Map<MetadataSectionType<?>, ?> values;
 
       private MapBased(final Map<MetadataSectionType<?>, ?> values) {

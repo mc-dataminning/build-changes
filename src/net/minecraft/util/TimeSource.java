@@ -11,7 +11,7 @@ public interface TimeSource {
       return () -> value;
    }
 
-   public interface NanoTimeSource extends LongSupplier, TimeSource {
+   interface NanoTimeSource extends LongSupplier, TimeSource {
       @Override
       default long get(final TimeUnit timeUnit) {
          return timeUnit.convert(this.getAsLong(), TimeUnit.NANOSECONDS);

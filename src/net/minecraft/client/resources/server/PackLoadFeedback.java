@@ -7,7 +7,7 @@ public interface PackLoadFeedback {
 
    void reportFinalResult(UUID id, PackLoadFeedback.FinalResult result);
 
-   public static enum FinalResult {
+   enum FinalResult {
       DECLINED,
       APPLIED,
       DISCARDED,
@@ -15,7 +15,7 @@ public interface PackLoadFeedback {
       ACTIVATION_FAILED;
    }
 
-   public static enum Update {
+   enum Update {
       ACCEPTED,
       DOWNLOADED;
    }

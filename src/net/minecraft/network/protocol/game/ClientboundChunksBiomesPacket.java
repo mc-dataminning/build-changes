@@ -33,7 +33,7 @@ public record ClientboundChunksBiomesPacket(List<ClientboundChunksBiomesPacket.C
       listener.handleChunksBiomes(this);
    }
 
-   public static record ChunkBiomeData(ChunkPos pos, byte[] buffer) {
+   public record ChunkBiomeData(ChunkPos pos, byte[] buffer) {
       public static final StreamCodec<ByteBuf, ClientboundChunksBiomesPacket.ChunkBiomeData> STREAM_CODEC = StreamCodec.composite(
          ChunkPos.STREAM_CODEC,
          ClientboundChunksBiomesPacket.ChunkBiomeData::pos,

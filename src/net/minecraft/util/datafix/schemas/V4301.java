@@ -21,22 +21,22 @@ public class V4301 extends NamespacedSchema {
          true,
          References.ENTITY_EQUIPMENT,
          () -> DSL.optional(
-               DSL.field(
-                  "equipment",
-                  DSL.optionalFields(
-                     new Pair[]{
-                        Pair.of("mainhand", References.ITEM_STACK.in(schema)),
-                        Pair.of("offhand", References.ITEM_STACK.in(schema)),
-                        Pair.of("feet", References.ITEM_STACK.in(schema)),
-                        Pair.of("legs", References.ITEM_STACK.in(schema)),
-                        Pair.of("chest", References.ITEM_STACK.in(schema)),
-                        Pair.of("head", References.ITEM_STACK.in(schema)),
-                        Pair.of("body", References.ITEM_STACK.in(schema)),
-                        Pair.of("saddle", References.ITEM_STACK.in(schema))
-                     }
-                  )
+            DSL.field(
+               "equipment",
+               DSL.optionalFields(
+                  new Pair[]{
+                     Pair.of("mainhand", References.ITEM_STACK.in(schema)),
+                     Pair.of("offhand", References.ITEM_STACK.in(schema)),
+                     Pair.of("feet", References.ITEM_STACK.in(schema)),
+                     Pair.of("legs", References.ITEM_STACK.in(schema)),
+                     Pair.of("chest", References.ITEM_STACK.in(schema)),
+                     Pair.of("head", References.ITEM_STACK.in(schema)),
+                     Pair.of("body", References.ITEM_STACK.in(schema)),
+                     Pair.of("saddle", References.ITEM_STACK.in(schema))
+                  }
                )
             )
+         )
       );
    }
 }

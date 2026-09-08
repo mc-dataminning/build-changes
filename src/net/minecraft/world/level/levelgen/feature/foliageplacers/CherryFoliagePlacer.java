@@ -13,16 +13,16 @@ import net.minecraft.world.level.levelgen.feature.TreeFeature;
 public class CherryFoliagePlacer extends FoliagePlacer {
    public static final MapCodec<CherryFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(
       i -> foliagePlacerParts(i)
-            .and(
-               i.group(
-                  IntProviders.codec(4, 16).fieldOf("height").forGetter(p -> p.height),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("wide_bottom_layer_hole_chance").forGetter(p -> p.wideBottomLayerHoleChance),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("corner_hole_chance").forGetter(p -> p.wideBottomLayerHoleChance),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_chance").forGetter(p -> p.hangingLeavesChance),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_extension_chance").forGetter(p -> p.hangingLeavesExtensionChance)
-               )
+         .and(
+            i.group(
+               IntProviders.codec(4, 16).fieldOf("height").forGetter(p -> p.height),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("wide_bottom_layer_hole_chance").forGetter(p -> p.wideBottomLayerHoleChance),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("corner_hole_chance").forGetter(p -> p.wideBottomLayerHoleChance),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_chance").forGetter(p -> p.hangingLeavesChance),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_extension_chance").forGetter(p -> p.hangingLeavesExtensionChance)
             )
-            .apply(i, CherryFoliagePlacer::new)
+         )
+         .apply(i, CherryFoliagePlacer::new)
    );
    private final IntProvider height;
    private final float wideBottomLayerHoleChance;
@@ -92,12 +92,12 @@ public class CherryFoliagePlacer extends FoliagePlacer {
    protected boolean shouldSkipLocation(final RandomSource random, final int dx, final int y, final int dz, final int currentRadius, final boolean doubleTrunk) {
       if (y == -1 && (dx == currentRadius || dz == currentRadius) && random.nextFloat() < this.wideBottomLayerHoleChance) {
          return true;
-      } else {
-         boolean corner = dx == currentRadius && dz == currentRadius;
-         boolean wideLayer = currentRadius > 2;
-         return wideLayer
-            ? corner || dx + dz > currentRadius * 2 - 2 && random.nextFloat() < this.cornerHoleChance
-            : corner && random.nextFloat() < this.cornerHoleChance;
       }
+
+      boolean corner = dx == currentRadius && dz == currentRadius;
+      boolean wideLayer = currentRadius > 2;
+      return wideLayer
+         ? corner || dx + dz > currentRadius * 2 - 2 && random.nextFloat() < this.cornerHoleChance
+         : corner && random.nextFloat() < this.cornerHoleChance;
    }
 }

@@ -6,20 +6,17 @@ import org.jspecify.annotations.Nullable;
 
 public interface CommandSigningContext {
    CommandSigningContext ANONYMOUS = new CommandSigningContext() {
-      @Nullable
       @Override
-      public PlayerChatMessage getArgument(final String name) {
+      public @Nullable PlayerChatMessage getArgument(final String name) {
          return null;
       }
    };
 
-   @Nullable
-   PlayerChatMessage getArgument(String name);
+   @Nullable PlayerChatMessage getArgument(String name);
 
-   public static record SignedArguments(Map<String, PlayerChatMessage> arguments) implements CommandSigningContext {
-      @Nullable
+   record SignedArguments(Map<String, PlayerChatMessage> arguments) implements CommandSigningContext {
       @Override
-      public PlayerChatMessage getArgument(final String name) {
+      public @Nullable PlayerChatMessage getArgument(final String name) {
          return this.arguments.get(name);
       }
    }

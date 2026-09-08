@@ -36,14 +36,14 @@ public class BlockPosFormatAndRenamesFix extends DataFix {
 
    private <T> Dynamic<T> fixMapSavedData(final Dynamic<T> data) {
       return data.update("frames", frames -> frames.createList(frames.asStream().map(frame -> {
-            frame = frame.renameAndFixField("Pos", "pos", ExtraDataFixUtils::fixBlockPos);
-            frame = frame.renameField("Rotation", "rotation");
-            return frame.renameField("EntityId", "entity_id");
-         }))).update("banners", banners -> banners.createList(banners.asStream().map(banner -> {
-            banner = banner.renameField("Pos", "pos");
-            banner = banner.renameField("Color", "color");
-            return banner.renameField("Name", "name");
-         })));
+         frame = frame.renameAndFixField("Pos", "pos", ExtraDataFixUtils::fixBlockPos);
+         frame = frame.renameField("Rotation", "rotation");
+         return frame.renameField("EntityId", "entity_id");
+      }))).update("banners", banners -> banners.createList(banners.asStream().map(banner -> {
+         banner = banner.renameField("Pos", "pos");
+         banner = banner.renameField("Color", "color");
+         return banner.renameField("Name", "name");
+      })));
    }
 
    public TypeRewriteRule makeRule() {

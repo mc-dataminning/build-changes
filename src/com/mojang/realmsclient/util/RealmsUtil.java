@@ -53,27 +53,27 @@ public class RealmsUtil {
       PlayerFaceExtractor.extractRenderState(graphics, ResolvableProfile.createUnresolved(playerId), x, y, size);
    }
 
-   public static <T> CompletableFuture<T> supplyAsync(final RealmsUtil.RealmsIoFunction<T> function, @Nullable final Consumer<RealmsServiceException> onFailure) {
+   public static <T> CompletableFuture<T> supplyAsync(final RealmsUtil.RealmsIoFunction<T> function, final @Nullable Consumer<RealmsServiceException> onFailure) {
       return CompletableFuture.supplyAsync(() -> {
          RealmsClient client = RealmsClient.getOrCreate();
 
          try {
             return function.apply(client);
-         } catch (Throwable var5) {
-            if (var5 instanceof RealmsServiceException e) {
+         } catch (Throwable t) {
+            if (t instanceof RealmsServiceException e) {
                if (onFailure != null) {
                   onFailure.accept(e);
                }
             } else {
-               LOGGER.error("Unhandled exception", var5);
+               LOGGER.error("Unhandled exception", t);
             }
 
-            throw new RuntimeException(var5);
+            throw new RuntimeException(t);
          }
       }, Util.nonCriticalIoPool());
    }
 
-   public static CompletableFuture<Void> runAsync(final RealmsUtil.RealmsIoConsumer function, @Nullable final Consumer<RealmsServiceException> onFailure) {
+   public static CompletableFuture<Void> runAsync(final RealmsUtil.RealmsIoConsumer function, final @Nullable Consumer<RealmsServiceException> onFailure) {
       return supplyAsync(function, onFailure);
    }
 

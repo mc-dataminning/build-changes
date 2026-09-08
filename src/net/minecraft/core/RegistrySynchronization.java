@@ -88,7 +88,7 @@ public class RegistrySynchronization {
       return NETWORKABLE_REGISTRIES.contains(key);
    }
 
-   public static record PackedRegistryEntry(Identifier id, Optional<Tag> data) {
+   public record PackedRegistryEntry(Identifier id, Optional<Tag> data) {
       public static final StreamCodec<ByteBuf, RegistrySynchronization.PackedRegistryEntry> STREAM_CODEC = StreamCodec.composite(
          Identifier.STREAM_CODEC,
          RegistrySynchronization.PackedRegistryEntry::id,

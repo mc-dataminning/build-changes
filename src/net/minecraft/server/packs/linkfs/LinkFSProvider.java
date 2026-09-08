@@ -27,7 +27,6 @@ import java.nio.file.attribute.FileAttributeView;
 import java.nio.file.spi.FileSystemProvider;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
@@ -78,17 +77,13 @@ class LinkFSProvider extends FileSystemProvider {
          throw new NotDirectoryException(dir.toString());
       } else {
          return new DirectoryStream<Path>() {
-            {
-               Objects.requireNonNull(LinkFSProvider.this);
-            }
-
             @Override
             public Iterator<Path> iterator() {
                return directoryContents.children().values().stream().filter(path -> {
                   try {
                      return filter.accept(path);
-                  } catch (IOException var3) {
-                     throw new DirectoryIteratorException(var3);
+                  } catch (IOException e) {
+                     throw new DirectoryIteratorException(e);
                   }
                }).map(path -> (Path)path).iterator();
             }
@@ -139,32 +134,31 @@ class LinkFSProvider extends FileSystemProvider {
    public void checkAccess(final Path path, final AccessMode... modes) throws IOException {
       if (modes.length == 0 && !toLinkPath(path).exists()) {
          throw new NoSuchFileException(path.toString());
-      } else {
-         AccessMode[] var3 = modes;
-         int var4 = modes.length;
-         int var5 = 0;
+      }
 
-         while (var5 < var4) {
-            AccessMode mode = var3[var5];
-            switch (mode) {
-               case READ:
-                  if (!toLinkPath(path).exists()) {
-                     throw new NoSuchFileException(path.toString());
-                  }
-               default:
-                  var5++;
-                  break;
-               case EXECUTE:
-               case WRITE:
-                  throw new AccessDeniedException(mode.toString());
-            }
+      AccessMode[] var3 = modes;
+      int var4 = var3.length;
+      int var5 = 0;
+
+      while (var5 < var4) {
+         AccessMode mode = var3[var5];
+         switch (mode) {
+            case READ:
+               if (!toLinkPath(path).exists()) {
+                  throw new NoSuchFileException(path.toString());
+               }
+            default:
+               var5++;
+               break;
+            case EXECUTE:
+            case WRITE:
+               throw new AccessDeniedException(mode.toString());
          }
       }
    }
 
-   @Nullable
    @Override
-   public <V extends FileAttributeView> V getFileAttributeView(final Path path, final Class<V> type, final LinkOption... options) {
+   public <V extends FileAttributeView> @Nullable V getFileAttributeView(final Path path, final Class<V> type, final LinkOption... options) {
       LinkFSPath linkPath = toLinkPath(path);
       return (V)(type == BasicFileAttributeView.class ? linkPath.getBasicAttributeView() : null);
    }
@@ -189,11 +183,11 @@ class LinkFSProvider extends FileSystemProvider {
       throw new ReadOnlyFileSystemException();
    }
 
-   private static LinkFSPath toLinkPath(@Nullable final Path path) {
+   private static LinkFSPath toLinkPath(final @Nullable Path path) {
       if (path == null) {
          throw new NullPointerException();
-      } else if (path instanceof LinkFSPath) {
-         return (LinkFSPath)path;
+      } else if (path instanceof LinkFSPath p) {
+         return p;
       } else {
          throw new ProviderMismatchException();
       }

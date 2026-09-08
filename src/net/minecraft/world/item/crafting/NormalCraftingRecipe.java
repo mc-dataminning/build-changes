@@ -5,8 +5,7 @@ import org.jspecify.annotations.Nullable;
 public abstract class NormalCraftingRecipe implements CraftingRecipe {
    protected final Recipe.CommonInfo commonInfo;
    protected final CraftingRecipe.CraftingBookInfo bookInfo;
-   @Nullable
-   private PlacementInfo placementInfo;
+   private @Nullable PlacementInfo placementInfo;
 
    protected NormalCraftingRecipe(final Recipe.CommonInfo commonInfo, final CraftingRecipe.CraftingBookInfo bookInfo) {
       this.commonInfo = commonInfo;

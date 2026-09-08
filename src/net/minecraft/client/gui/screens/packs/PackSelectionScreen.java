@@ -2,6 +2,7 @@ package net.minecraft.client.gui.screens.packs;
 
 import com.google.common.collect.Maps;
 import com.google.common.hash.Hashing;
+import com.mojang.blaze3d.Blaze3D;
 import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
@@ -20,7 +21,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -69,18 +69,13 @@ public class PackSelectionScreen extends Screen {
    private static final Identifier DEFAULT_ICON = Identifier.withDefaultNamespace("textures/misc/unknown_pack.png");
    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
    private final PackSelectionModel model;
-   @Nullable
-   private PackSelectionScreen.Watcher watcher;
+   private PackSelectionScreen.@Nullable Watcher watcher;
    private long ticksToReload;
-   @Nullable
-   private TransferableSelectionList availablePackList;
-   @Nullable
-   private TransferableSelectionList selectedPackList;
-   @Nullable
-   private EditBox search;
+   private @Nullable TransferableSelectionList availablePackList;
+   private @Nullable TransferableSelectionList selectedPackList;
+   private @Nullable EditBox search;
    private final Path packDir;
-   @Nullable
-   private Button doneButton;
+   private @Nullable Button doneButton;
    private final Map<String, Identifier> packIcons = Maps.newHashMap();
 
    public PackSelectionScreen(final PackRepository repository, final Consumer<PackRepository> output, final Path packDir, final Component title) {
@@ -120,7 +115,7 @@ public class PackSelectionScreen extends Screen {
       this.selectedPackList = this.layout.addToContents(new TransferableSelectionList(this.minecraft, this, 200, this.height - 66, SELECTED_TITLE));
       LinearLayout footer = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
       footer.addChild(
-         Button.builder(OPEN_PACK_FOLDER_TITLE, button -> Util.getPlatform().openPath(this.packDir)).tooltip(Tooltip.create(DIRECTORY_BUTTON_TOOLTIP)).build()
+         Button.builder(OPEN_PACK_FOLDER_TITLE, button -> Blaze3D.openPath(this.packDir)).tooltip(Tooltip.create(DIRECTORY_BUTTON_TOOLTIP)).build()
       );
       this.doneButton = footer.addChild(Button.builder(CommonComponents.GUI_DONE, button -> this.onClose()).build());
       this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
@@ -141,7 +136,7 @@ public class PackSelectionScreen extends Screen {
       this.updateFilteredEntries(value, null);
    }
 
-   private void updateFilteredEntries(final String value, final PackSelectionModel.EntryBase transferredEntry) {
+   private void updateFilteredEntries(final String value, final PackSelectionModel.@Nullable EntryBase transferredEntry) {
       this.filterEntries(value, this.model.getSelected(), this.selectedPackList, transferredEntry);
       this.filterEntries(value, this.model.getUnselected(), this.availablePackList, transferredEntry);
    }
@@ -149,16 +144,16 @@ public class PackSelectionScreen extends Screen {
    private void filterEntries(
       final String value,
       final Stream<PackSelectionModel.Entry> oldEntries,
-      @Nullable final TransferableSelectionList listToUpdate,
-      final PackSelectionModel.EntryBase transferredEntry
+      final @Nullable TransferableSelectionList listToUpdate,
+      final PackSelectionModel.@Nullable EntryBase transferredEntry
    ) {
       if (listToUpdate != null) {
          String lowerCaseValue = value.toLowerCase(Locale.ROOT);
          Stream<PackSelectionModel.Entry> filteredEntries = oldEntries.filter(
             packEntry -> value.isBlank()
-                  || packEntry.getId().toLowerCase(Locale.ROOT).contains(lowerCaseValue)
-                  || packEntry.getTitle().getString().toLowerCase(Locale.ROOT).contains(lowerCaseValue)
-                  || packEntry.getDescription().getString().toLowerCase(Locale.ROOT).contains(lowerCaseValue)
+               || packEntry.getId().toLowerCase(Locale.ROOT).contains(lowerCaseValue)
+               || packEntry.getTitle().getString().toLowerCase(Locale.ROOT).contains(lowerCaseValue)
+               || packEntry.getDescription().getString().toLowerCase(Locale.ROOT).contains(lowerCaseValue)
          );
          listToUpdate.updateList(filteredEntries, transferredEntry);
       }
@@ -183,7 +178,7 @@ public class PackSelectionScreen extends Screen {
             if (this.watcher.pollForChanges()) {
                this.ticksToReload = 20L;
             }
-         } catch (IOException var2) {
+         } catch (IOException e) {
             LOGGER.warn("Failed to poll for directory {} changes, stopping", this.packDir);
             this.closeWatcher();
          }
@@ -194,7 +189,7 @@ public class PackSelectionScreen extends Screen {
       }
    }
 
-   private void populateLists(final PackSelectionModel.EntryBase transferredEntry) {
+   private void populateLists(final PackSelectionModel.@Nullable EntryBase transferredEntry) {
       if (this.selectedPackList != null) {
          this.selectedPackList.updateList(this.model.getSelected(), transferredEntry);
       }
@@ -226,12 +221,12 @@ public class PackSelectionScreen extends Screen {
             contents.forEach(path -> {
                try {
                   Util.copyBetweenDirs(pack.getParent(), targetDir, path);
-               } catch (IOException var5) {
-                  LOGGER.warn("Failed to copy datapack file  from {} to {}", new Object[]{path, targetDir, var5});
+               } catch (IOException e) {
+                  LOGGER.warn("Failed to copy datapack file  from {} to {}", new Object[]{path, targetDir, ex});
                   showErrorToast.setTrue();
                }
             });
-         } catch (IOException var8) {
+         } catch (IOException e) {
             LOGGER.warn("Failed to copy datapack file from {} to {}", pack, targetDir);
             showErrorToast.setTrue();
          }
@@ -253,10 +248,6 @@ public class PackSelectionScreen extends Screen {
                      List<Path> packCandidates = new ArrayList<>(files.size());
                      Set<Path> leftoverPacks = new HashSet<>(files);
                      PackDetector<Path> packDetector = new PackDetector<Path>(this.minecraft.directoryValidator()) {
-                        {
-                           Objects.requireNonNull(PackSelectionScreen.this);
-                        }
-
                         protected Path createZipPack(final Path content) {
                            return content;
                         }
@@ -276,8 +267,8 @@ public class PackSelectionScreen extends Screen {
                               packCandidates.add(candidate);
                               leftoverPacks.remove(candidate);
                            }
-                        } catch (IOException var10) {
-                           LOGGER.warn("Failed to check {} for packs", path, var10);
+                        } catch (IOException e) {
+                           LOGGER.warn("Failed to check {} for packs", path, e);
                         }
                      }
 
@@ -319,29 +310,24 @@ public class PackSelectionScreen extends Screen {
    }
 
    private Identifier loadPackIcon(final TextureManager textureManager, final Pack pack) {
-      try {
-         Identifier var9;
-         try (PackMetadataResources packResources = pack.openMetadata()) {
-            IoSupplier<InputStream> resource = packResources.getRootResource("pack.png");
-            if (resource == null) {
-               return DEFAULT_ICON;
-            }
-
-            String id = pack.getId();
-            Identifier location = Identifier.withDefaultNamespace(
-               "pack/" + Util.sanitizeName(id, Identifier::validPathChar) + "/" + Hashing.sha1().hashUnencodedChars(id) + "/icon"
-            );
-
-            try (InputStream stream = resource.get()) {
-               NativeImage iconImage = NativeImage.read(stream);
-               textureManager.register(location, new DynamicTexture(location::toString, iconImage));
-               var9 = location;
-            }
+      try (PackMetadataResources packResources = pack.openMetadata()) {
+         IoSupplier<InputStream> resource = packResources.getRootResource("pack.png");
+         if (resource == null) {
+            return DEFAULT_ICON;
          }
 
-         return var9;
-      } catch (Exception var14) {
-         LOGGER.warn("Failed to load icon from pack {}", pack.getId(), var14);
+         String id = pack.getId();
+         Identifier location = Identifier.withDefaultNamespace(
+            "pack/" + Util.sanitizeName(id, Identifier::validPathChar) + "/" + Hashing.sha1().hashUnencodedChars(id) + "/icon"
+         );
+
+         try (InputStream stream = resource.get()) {
+            NativeImage iconImage = NativeImage.read(stream);
+            textureManager.register(location, new DynamicTexture(location::toString, iconImage));
+            return location;
+         }
+      } catch (Exception e) {
+         LOGGER.warn("Failed to load icon from pack {}", pack.getId(), e);
          return DEFAULT_ICON;
       }
    }
@@ -368,18 +354,17 @@ public class PackSelectionScreen extends Screen {
                   }
                }
             }
-         } catch (Exception var7) {
+         } catch (Exception e) {
             this.watcher.close();
-            throw var7;
+            throw e;
          }
       }
 
-      @Nullable
-      public static PackSelectionScreen.Watcher create(final Path packDir) {
+      public static PackSelectionScreen.@Nullable Watcher create(final Path packDir) {
          try {
             return new PackSelectionScreen.Watcher(packDir);
-         } catch (IOException var2) {
-            PackSelectionScreen.LOGGER.warn("Failed to initialize pack directory {} monitoring", packDir, var2);
+         } catch (IOException e) {
+            PackSelectionScreen.LOGGER.warn("Failed to initialize pack directory {} monitoring", packDir, e);
             return null;
          }
       }

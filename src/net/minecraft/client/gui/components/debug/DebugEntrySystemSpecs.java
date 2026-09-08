@@ -1,5 +1,6 @@
 package net.minecraft.client.gui.components.debug;
 
+import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.renderpearl.api.device.DeviceInfo;
 import com.mojang.renderpearl.api.device.DeviceType;
@@ -15,8 +16,7 @@ import oshi.hardware.CentralProcessor;
 
 public class DebugEntrySystemSpecs implements DebugScreenEntry {
    private static final Identifier GROUP = Identifier.withDefaultNamespace("system");
-   @Nullable
-   private static String cpuInfo;
+   private static @Nullable String cpuInfo;
 
    public static String getCpuInfo() {
       if (cpuInfo == null) {
@@ -36,23 +36,19 @@ public class DebugEntrySystemSpecs implements DebugScreenEntry {
    @Override
    public void display(
       final DebugScreenDisplayer displayer,
-      @Nullable final Level serverOrClientLevel,
-      @Nullable final LevelChunk clientChunk,
-      @Nullable final LevelChunk serverChunk
+      final @Nullable Level serverOrClientLevel,
+      final @Nullable LevelChunk clientChunk,
+      final @Nullable LevelChunk serverChunk
    ) {
       DeviceInfo deviceInfo = RenderSystem.getDevice().getDeviceInfo();
+      Window window = Minecraft.getInstance().getWindow();
       displayer.addToGroup(
          GROUP,
          List.of(
             String.format(Locale.ROOT, "Java: %s", System.getProperty("java.version")),
             String.format(Locale.ROOT, "CPU: %s", getCpuInfo()),
-            String.format(
-               Locale.ROOT,
-               "Display: %dx%d (%s)",
-               Minecraft.getInstance().getWindow().getWidth(),
-               Minecraft.getInstance().getWindow().getHeight(),
-               deviceInfo.vendorName()
-            ),
+            String.format(Locale.ROOT, "Display: %dx%d (%s)", window.getWidth(), window.getHeight(), deviceInfo.vendorName()),
+            String.format(Locale.ROOT, "Window: %dx%d (%.2fx pixel density)", window.getScreenWidth(), window.getScreenHeight(), window.getPixelDensity()),
             String.format(Locale.ROOT, "%s%s", deviceInfo.name(), this.typeName(deviceInfo.type())),
             String.format(Locale.ROOT, "%s %s", deviceInfo.backendName(), this.firstLine(deviceInfo.driverInfo()))
          )

@@ -9,7 +9,6 @@ import com.mojang.realmsclient.gui.RealmsDataFetcher;
 import com.mojang.realmsclient.util.RealmsUtil;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -31,6 +30,7 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.realms.RealmsScreen;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Util;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 
 public class RealmsPendingInvitesScreen extends RealmsScreen {
@@ -40,13 +40,13 @@ public class RealmsPendingInvitesScreen extends RealmsScreen {
    private final CompletableFuture<List<PendingInvite>> pendingInvites = CompletableFuture.supplyAsync(() -> {
       try {
          return RealmsClient.getOrCreate().pendingInvites().pendingInvites();
-      } catch (RealmsServiceException var1) {
-         LOGGER.error("Couldn't list invites", var1);
+      } catch (RealmsServiceException e) {
+         LOGGER.error("Couldn't list invites", e);
          return List.of();
       }
    }, Util.nonCriticalIoPool());
    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-   private RealmsPendingInvitesScreen.PendingInvitationSelectionList pendingInvitationSelectionList;
+   private RealmsPendingInvitesScreen.@Nullable PendingInvitationSelectionList pendingInvitationSelectionList;
 
    public RealmsPendingInvitesScreen(final Screen lastScreen, final Component title) {
       super(title);
@@ -104,7 +104,7 @@ public class RealmsPendingInvitesScreen extends RealmsScreen {
       private static final int SPRITE_SIZE = 21;
       private static final int TEXT_LEFT = 38;
       private final PendingInvite pendingInvite;
-      private final List<AbstractWidget> children;
+      private final List<AbstractWidget> children = new ArrayList<>();
       private final SpriteIconButton acceptButton;
       private final SpriteIconButton rejectButton;
       private final StringWidget realmName;
@@ -112,9 +112,6 @@ public class RealmsPendingInvitesScreen extends RealmsScreen {
       private final StringWidget inviteDate;
 
       public Entry(final PendingInvite pendingInvite) {
-         Objects.requireNonNull(RealmsPendingInvitesScreen.this);
-         super();
-         this.children = new ArrayList<>();
          this.pendingInvite = pendingInvite;
          int maxTextWidth = RealmsPendingInvitesScreen.this.pendingInvitationSelectionList.getRowWidth() - 32 - 32 - 42;
          this.realmName = new StringWidget(Component.literal(pendingInvite.realmName()), RealmsPendingInvitesScreen.this.font).setMaxWidth(maxTextWidth);
@@ -170,11 +167,11 @@ public class RealmsPendingInvitesScreen extends RealmsScreen {
          int textX = x + 38;
          RealmsUtil.extractPlayerFace(graphics, x, y, 32, this.pendingInvite.realmOwnerUuid());
          this.realmName.setPosition(textX, y + 1);
-         this.realmName.extractWidgetRenderState(graphics, mouseX, mouseY, (float)x);
+         this.realmName.extractWidgetRenderState(graphics, mouseX, mouseY, x);
          this.realmOwnerName.setPosition(textX, y + 12);
-         this.realmOwnerName.extractWidgetRenderState(graphics, mouseX, mouseY, (float)x);
+         this.realmOwnerName.extractWidgetRenderState(graphics, mouseX, mouseY, x);
          this.inviteDate.setPosition(textX, y + 24);
-         this.inviteDate.extractWidgetRenderState(graphics, mouseX, mouseY, (float)x);
+         this.inviteDate.extractWidgetRenderState(graphics, mouseX, mouseY, x);
          int buttonY = y + this.getContentHeight() / 2 - 10;
          this.acceptButton.setPosition(x + this.getContentWidth() - 16 - 42, buttonY);
          this.acceptButton.extractRenderState(graphics, mouseX, mouseY, a);
@@ -194,8 +191,8 @@ public class RealmsPendingInvitesScreen extends RealmsScreen {
                }
 
                return true;
-            } catch (RealmsServiceException var3) {
-               RealmsPendingInvitesScreen.LOGGER.error("Couldn't handle invite", var3);
+            } catch (RealmsServiceException e) {
+               RealmsPendingInvitesScreen.LOGGER.error("Couldn't handle invite", e);
                return false;
             }
          }, Util.ioPool()).thenAcceptAsync(result -> {
@@ -216,7 +213,6 @@ public class RealmsPendingInvitesScreen extends RealmsScreen {
       public static final int ITEM_HEIGHT = 36;
 
       public PendingInvitationSelectionList(final Minecraft minecraft) {
-         Objects.requireNonNull(RealmsPendingInvitesScreen.this);
          super(
             minecraft,
             RealmsPendingInvitesScreen.this.width,

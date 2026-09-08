@@ -111,8 +111,7 @@ public final class FluidState extends StateHolder<Fluid, FluidState> implements 
       return this.getType().createLegacyBlock(this);
    }
 
-   @Nullable
-   public ParticleOptions getDripParticle() {
+   public @Nullable ParticleOptions getDripParticle() {
       return this.getType().getDripParticle();
    }
 
@@ -133,8 +132,7 @@ public final class FluidState extends StateHolder<Fluid, FluidState> implements 
       return this.getType().getShape(this, level, pos);
    }
 
-   @Nullable
-   public AABB getAABB(final BlockGetter level, final BlockPos pos) {
+   public @Nullable AABB getAABB(final BlockGetter level, final BlockPos pos) {
       return this.getType().getAABB(this, level, pos);
    }
 

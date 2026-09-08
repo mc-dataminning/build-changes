@@ -18,21 +18,21 @@ public interface CollectionCountsPredicate<T, P extends Predicate<T>> extends Pr
    }
 
    static <T, P extends Predicate<T>> CollectionCountsPredicate<T, P> of(final List<CollectionCountsPredicate.Entry<T, P>> predicates) {
-      return (CollectionCountsPredicate<T, P>)(switch (predicates.size()) {
+      return switch (predicates.size()) {
          case 0 -> new CollectionCountsPredicate.Zero();
          case 1 -> new CollectionCountsPredicate.Single(predicates.getFirst());
          default -> new CollectionCountsPredicate.Multiple(predicates);
-      });
+      };
    }
 
-   public static record Entry<T, P extends Predicate<T>>(P test, MinMaxBounds.Ints count) {
+   record Entry<T, P extends Predicate<T>>(P test, MinMaxBounds.Ints count) {
       public static <T, P extends Predicate<T>> Codec<CollectionCountsPredicate.Entry<T, P>> codec(final Codec<P> elementCodec) {
          return RecordCodecBuilder.create(
             i -> i.group(
-                     elementCodec.fieldOf("test").forGetter(CollectionCountsPredicate.Entry::test),
-                     MinMaxBounds.Ints.CODEC.fieldOf("count").forGetter(CollectionCountsPredicate.Entry::count)
-                  )
-                  .apply(i, CollectionCountsPredicate.Entry::new)
+                  elementCodec.fieldOf("test").forGetter(CollectionCountsPredicate.Entry::test),
+                  MinMaxBounds.Ints.CODEC.fieldOf("count").forGetter(CollectionCountsPredicate.Entry::count)
+               )
+               .apply(i, CollectionCountsPredicate.Entry::new)
          );
       }
 
@@ -49,7 +49,7 @@ public interface CollectionCountsPredicate<T, P extends Predicate<T>> extends Pr
       }
    }
 
-   public static record Multiple<T, P extends Predicate<T>>(List<CollectionCountsPredicate.Entry<T, P>> entries) implements CollectionCountsPredicate<T, P> {
+   record Multiple<T, P extends Predicate<T>>(List<CollectionCountsPredicate.Entry<T, P>> entries) implements CollectionCountsPredicate<T, P> {
       public boolean test(final Iterable<? extends T> values) {
          for (CollectionCountsPredicate.Entry<T, P> entry : this.entries) {
             if (!entry.test(values)) {
@@ -66,7 +66,7 @@ public interface CollectionCountsPredicate<T, P extends Predicate<T>> extends Pr
       }
    }
 
-   public static record Single<T, P extends Predicate<T>>(CollectionCountsPredicate.Entry<T, P> entry) implements CollectionCountsPredicate<T, P> {
+   record Single<T, P extends Predicate<T>>(CollectionCountsPredicate.Entry<T, P> entry) implements CollectionCountsPredicate<T, P> {
       public boolean test(final Iterable<? extends T> values) {
          return this.entry.test(values);
       }
@@ -77,7 +77,7 @@ public interface CollectionCountsPredicate<T, P extends Predicate<T>> extends Pr
       }
    }
 
-   public static class Zero<T, P extends Predicate<T>> implements CollectionCountsPredicate<T, P> {
+   class Zero<T, P extends Predicate<T>> implements CollectionCountsPredicate<T, P> {
       public boolean test(final Iterable<? extends T> values) {
          return true;
       }

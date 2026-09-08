@@ -15,7 +15,6 @@ import com.mojang.renderpearl.backend.vulkan.checkpoints.CheckpointExtension;
 import java.nio.ByteBuffer;
 import java.nio.LongBuffer;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.OptionalDouble;
 import org.joml.Vector4fc;
@@ -57,12 +56,9 @@ public class VulkanCommandEncoder implements CommandEncoderBackend, Destroyable 
    private VulkanQueue.Submission submissionBuilder;
    private final DestructionQueue<Destroyable> destroyQueue = new DestructionQueue<>(2, Destroyable::destroy);
    private final VulkanCommandPool[] commandPools = new VulkanCommandPool[2];
-   @Nullable
-   private VkCommandBuffer currentInitCommandBuffer;
-   @Nullable
-   private VkCommandBuffer currentCommandBuffer;
-   @Nullable
-   private VulkanRenderPass currentRenderPass;
+   private @Nullable VkCommandBuffer currentInitCommandBuffer;
+   private @Nullable VkCommandBuffer currentCommandBuffer;
+   private @Nullable VulkanRenderPass currentRenderPass;
 
    public VulkanCommandEncoder(final VulkanDevice device) {
       this.device = device;
@@ -162,59 +158,61 @@ public class VulkanCommandEncoder implements CommandEncoderBackend, Destroyable 
    private VkCommandBuffer commandBuffer() {
       if (this.currentCommandBuffer != null) {
          return this.currentCommandBuffer;
-      } else if (this.currentRenderPass != null) {
-         throw new IllegalStateException("Cannot start command buffer while inside RenderPass");
-      } else {
-         this.currentCommandBuffer = this.allocateAndBeginTransientCommandBuffer();
-         return this.currentCommandBuffer;
       }
+
+      if (this.currentRenderPass != null) {
+         throw new IllegalStateException("Cannot start command buffer while inside RenderPass");
+      }
+
+      this.currentCommandBuffer = this.allocateAndBeginTransientCommandBuffer();
+      return this.currentCommandBuffer;
    }
 
    VkCommandBuffer objectInitCommandBuffer() {
       if (this.currentInitCommandBuffer != null) {
          return this.currentInitCommandBuffer;
-      } else {
-         this.currentInitCommandBuffer = this.allocateAndBeginTransientCommandBuffer();
-         return this.currentInitCommandBuffer;
       }
+
+      this.currentInitCommandBuffer = this.allocateAndBeginTransientCommandBuffer();
+      return this.currentInitCommandBuffer;
    }
 
    private void endCommandBuffer() {
       if (this.currentCommandBuffer != null || this.currentInitCommandBuffer != null) {
          if (this.currentRenderPass != null) {
             throw new IllegalStateException("Cannot end command buffer while inside RenderPass");
-         } else {
-            if (this.currentInitCommandBuffer != null) {
-               MemoryStack stack = MemoryStack.stackPush();
+         }
 
-               try {
-                  memoryBarrier(this.currentInitCommandBuffer, stack);
-               } catch (Throwable var5) {
-                  if (stack != null) {
-                     try {
-                        stack.close();
-                     } catch (Throwable var4) {
-                        var5.addSuppressed(var4);
-                     }
-                  }
+         if (this.currentInitCommandBuffer != null) {
+            MemoryStack stack = MemoryStack.stackPush();
 
-                  throw var5;
-               }
-
+            try {
+               memoryBarrier(this.currentInitCommandBuffer, stack);
+            } catch (Throwable var5) {
                if (stack != null) {
-                  stack.close();
+                  try {
+                     stack.close();
+                  } catch (Throwable var4) {
+                     var5.addSuppressed(var4);
+                  }
                }
 
-               VulkanUtils.crashIfFailure(this.device, VK12.vkEndCommandBuffer(this.currentInitCommandBuffer), "Failed to end VkCommandBuffer");
-               this.submissionBuilder.executeCommands(this.currentInitCommandBuffer);
-               this.currentInitCommandBuffer = null;
+               throw var5;
             }
 
-            if (this.currentCommandBuffer != null) {
-               VulkanUtils.crashIfFailure(this.device, VK12.vkEndCommandBuffer(this.currentCommandBuffer), "Failed to end VkCommandBuffer");
-               this.submissionBuilder.executeCommands(this.currentCommandBuffer);
-               this.currentCommandBuffer = null;
+            if (stack != null) {
+               stack.close();
             }
+
+            VulkanUtils.crashIfFailure(this.device, VK12.vkEndCommandBuffer(this.currentInitCommandBuffer), "Failed to end VkCommandBuffer");
+            this.submissionBuilder.executeCommands(this.currentInitCommandBuffer);
+            this.currentInitCommandBuffer = null;
+         }
+
+         if (this.currentCommandBuffer != null) {
+            VulkanUtils.crashIfFailure(this.device, VK12.vkEndCommandBuffer(this.currentCommandBuffer), "Failed to end VkCommandBuffer");
+            this.submissionBuilder.executeCommands(this.currentCommandBuffer);
+            this.currentCommandBuffer = null;
          }
       }
    }
@@ -222,28 +220,28 @@ public class VulkanCommandEncoder implements CommandEncoderBackend, Destroyable 
    public void waitSemaphore(final long vkSemaphore, final long value, final long stageMask) {
       if (this.currentRenderPass != null) {
          throw new IllegalStateException("Cannot add semaphore operation while inside RenderPass");
-      } else {
-         this.endCommandBuffer();
-         this.submissionBuilder.waitSemaphore(vkSemaphore, value, stageMask);
       }
+
+      this.endCommandBuffer();
+      this.submissionBuilder.waitSemaphore(vkSemaphore, value, stageMask);
    }
 
    public void execute(final VkCommandBuffer commandBuffer) {
       if (this.currentRenderPass != null) {
          throw new IllegalStateException("Cannot execute command buffer while inside RenderPass");
-      } else {
-         this.endCommandBuffer();
-         this.submissionBuilder.executeCommands(commandBuffer);
       }
+
+      this.endCommandBuffer();
+      this.submissionBuilder.executeCommands(commandBuffer);
    }
 
    public void signalSemaphore(final long vkSemaphore, final long value, final long stageMask) {
       if (this.currentRenderPass != null) {
          throw new IllegalStateException("Cannot add semaphore operation while inside RenderPass");
-      } else {
-         this.endCommandBuffer();
-         this.submissionBuilder.signalSemaphore(vkSemaphore, value, stageMask);
       }
+
+      this.endCommandBuffer();
+      this.submissionBuilder.signalSemaphore(vkSemaphore, value, stageMask);
    }
 
    private void memoryBarrier(final MemoryStack stack) {
@@ -272,12 +270,12 @@ public class VulkanCommandEncoder implements CommandEncoderBackend, Destroyable 
       if (!this.awaitSubmitCompletion(this.currentSubmitIndex - 2L, 5000000000L)) {
          List<CheckpointExtension.QueueCheckpoints> checkpoints = this.device.checkpointExtension().retrieveCheckpoints(false);
          throw new IllegalStateException("5s timeout reached when waiting for VK semaphore: " + VulkanUtils.formatCheckpoints(checkpoints));
-      } else {
-         this.currentCommandPool().reset();
-         this.destroyQueue.rotate();
-         this.checkpointStorage.rotate();
-         this.transientMemory.beginSubmit();
       }
+
+      this.currentCommandPool().reset();
+      this.destroyQueue.rotate();
+      this.checkpointStorage.rotate();
+      this.transientMemory.beginSubmit();
    }
 
    @Override
@@ -399,30 +397,30 @@ public class VulkanCommandEncoder implements CommandEncoderBackend, Destroyable 
    public void submitRenderPass() {
       if (this.currentRenderPass == null) {
          throw new IllegalStateException("Cannot submit a renderpass if one hasn't been started!");
-      } else {
-         KHRDynamicRendering.vkCmdEndRenderingKHR(this.commandBuffer());
-         this.device.instance().debug().endDebugGroup(this.commandBuffer());
-         this.checkpointStorage.recordCheckpoint(this.commandBuffer(), CheckpointExtension.CheckpointType.END_RENDER_PASS, this.currentRenderPass.getLabel());
-         this.currentRenderPass = null;
-         MemoryStack stack = MemoryStack.stackPush();
+      }
 
-         try {
-            this.memoryBarrier(stack);
-         } catch (Throwable var5) {
-            if (stack != null) {
-               try {
-                  stack.close();
-               } catch (Throwable var4) {
-                  var5.addSuppressed(var4);
-               }
-            }
+      KHRDynamicRendering.vkCmdEndRenderingKHR(this.commandBuffer());
+      this.device.instance().debug().endDebugGroup(this.commandBuffer());
+      this.checkpointStorage.recordCheckpoint(this.commandBuffer(), CheckpointExtension.CheckpointType.END_RENDER_PASS, this.currentRenderPass.getLabel());
+      this.currentRenderPass = null;
+      MemoryStack stack = MemoryStack.stackPush();
 
-            throw var5;
-         }
-
+      try {
+         this.memoryBarrier(stack);
+      } catch (Throwable var5) {
          if (stack != null) {
-            stack.close();
+            try {
+               stack.close();
+            } catch (Throwable var4) {
+               var5.addSuppressed(var4);
+            }
          }
+
+         throw var5;
+      }
+
+      if (stack != null) {
+         stack.close();
       }
    }
 
@@ -523,9 +521,7 @@ public class VulkanCommandEncoder implements CommandEncoderBackend, Destroyable 
                   .withRenderArea(new RenderPass.RenderArea(0, 0, colorTexture.getWidth(mipLevel), colorTexture.getHeight(mipLevel)))
                   .build()
             );
-
             assert this.currentRenderPass != null;
-
             org.lwjgl.vulkan.VkClearRect.Buffer rects = VkClearRect.calloc(1, stack);
             rects.baseArrayLayer(0);
             rects.layerCount(1);
@@ -597,7 +593,7 @@ public class VulkanCommandEncoder implements CommandEncoderBackend, Destroyable 
          org.lwjgl.vulkan.VkBufferCopy.Buffer regions = VkBufferCopy.calloc(1, stack)
             .srcOffset(stagingBuffer.offset())
             .dstOffset(destination.offset())
-            .size((long)data.remaining());
+            .size(data.remaining());
          VK12.vkCmdCopyBuffer(this.commandBuffer(), ((VulkanGpuBuffer)stagingBuffer.buffer()).vkBuffer(), destBuffer.vkBuffer(), regions);
          this.memoryBarrier(stack);
       } catch (Throwable var9) {
@@ -708,8 +704,8 @@ public class VulkanCommandEncoder implements CommandEncoderBackend, Destroyable 
       final int arrayLayer
    ) {
       int texelSize = destination.getFormat().blockSize();
-      long skipTexels = (long)sourceX + (long)sourceY * (long)sourceWidth;
-      long skipBytes = skipTexels * (long)texelSize;
+      long skipTexels = sourceX + (long)sourceY * sourceWidth;
+      long skipBytes = skipTexels * texelSize;
       MemoryStack stack = MemoryStack.stackPush();
 
       try {
@@ -845,7 +841,9 @@ public class VulkanCommandEncoder implements CommandEncoderBackend, Destroyable 
    private boolean awaitSubmitCompletion(final long submitIndex, final long timeoutNS) {
       if (this.completedSubmitIndex >= submitIndex) {
          return true;
-      } else if (submitIndex == this.currentSubmitIndex) {
+      }
+
+      if (submitIndex == this.currentSubmitIndex) {
          if (timeoutNS == 0L) {
             return false;
          } else {
@@ -891,14 +889,8 @@ public class VulkanCommandEncoder implements CommandEncoderBackend, Destroyable 
    @Override
    public GpuFence createFence() {
       return new GpuFence() {
-         private final long submitIndex;
-         private boolean completed;
-
-         {
-            Objects.requireNonNull(VulkanCommandEncoder.this);
-            this.submitIndex = VulkanCommandEncoder.this.currentSubmitIndex;
-            this.completed = false;
-         }
+         private final long submitIndex = VulkanCommandEncoder.this.currentSubmitIndex;
+         private boolean completed = false;
 
          @Override
          public boolean awaitCompletion(final long timeoutMs) {

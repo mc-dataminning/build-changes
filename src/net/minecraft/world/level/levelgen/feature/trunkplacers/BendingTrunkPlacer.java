@@ -19,13 +19,13 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 public class BendingTrunkPlacer extends TrunkPlacer {
    public static final MapCodec<BendingTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(
       i -> trunkPlacerParts(i)
-            .and(
-               i.group(
-                  ExtraCodecs.POSITIVE_INT.optionalFieldOf("min_height_for_leaves", 1).forGetter(c -> c.minHeightForLeaves),
-                  IntProviders.codec(1, 64).fieldOf("bend_length").forGetter(c -> c.bendLength)
-               )
+         .and(
+            i.group(
+               ExtraCodecs.POSITIVE_INT.optionalFieldOf("min_height_for_leaves", 1).forGetter(c -> c.minHeightForLeaves),
+               IntProviders.codec(1, 64).fieldOf("bend_length").forGetter(c -> c.bendLength)
             )
-            .apply(i, BendingTrunkPlacer::new)
+         )
+         .apply(i, BendingTrunkPlacer::new)
    );
    private final int minHeightForLeaves;
    private final IntProvider bendLength;

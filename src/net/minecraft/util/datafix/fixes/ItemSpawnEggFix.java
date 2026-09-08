@@ -14,9 +14,10 @@ import java.util.Objects;
 import java.util.Optional;
 import net.minecraft.util.datafix.ExtraDataFixUtils;
 import net.minecraft.util.datafix.schemas.NamespacedSchema;
+import org.jspecify.annotations.Nullable;
 
 public class ItemSpawnEggFix extends DataFix {
-   private static final String[] ID_TO_ENTITY = (String[])DataFixUtils.make(new String[256], map -> {
+   private static final @Nullable String[] ID_TO_ENTITY = (String[])DataFixUtils.make(new String[256], map -> {
       map[1] = "Item";
       map[2] = "XPOrb";
       map[7] = "ThrownEgg";
@@ -109,14 +110,14 @@ public class ItemSpawnEggFix extends DataFix {
                Optional<? extends Typed<?>> entityOptional = entityTreeOptional.flatMap(value -> value.getOptionalTyped(entityFinder));
                Optional<String> oldId = entityOptional.flatMap(value -> value.getOptional(entityIdFinder));
                Typed<?> output = input;
-               String entityName = ID_TO_ENTITY[damage & 255];
+               String entityName = ID_TO_ENTITY[damage & 0xFF];
                if (entityName != null && (oldId.isEmpty() || !Objects.equals(oldId.get(), entityName))) {
                   Typed<?> tag = input.getOrCreateTyped(tagFinder);
                   Dynamic<?> entityTag = (Dynamic<?>)DataFixUtils.orElse(
                      tag.getOptionalTyped(entityTagFinder).map(entityTree -> (Dynamic)entityTree.write().getOrThrow()), rest.emptyMap()
                   );
                   entityTag = entityTag.set("id", entityTag.createString(entityName));
-                  output = input.set(tagFinder, ExtraDataFixUtils.readAndSet(tag, entityTagFinder, entityTag));
+                  output = output.set(tagFinder, ExtraDataFixUtils.readAndSet(tag, entityTagFinder, entityTag));
                }
 
                if (damage != 0) {

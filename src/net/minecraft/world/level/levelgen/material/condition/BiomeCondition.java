@@ -2,7 +2,6 @@ package net.minecraft.world.level.levelgen.material.condition;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
 import java.util.Set;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
@@ -35,10 +34,6 @@ public record BiomeCondition(HolderSet<Biome> biomes) implements MaterialConditi
       }
 
       return new MaterialRuleContext.LazyYCondition(ruleContext) {
-         {
-            Objects.requireNonNull(BiomeCondition.this);
-         }
-
          @Override
          protected boolean compute() {
             return BiomeCondition.this.biomes.contains(this.context.getBiome());

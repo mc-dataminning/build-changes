@@ -36,10 +36,10 @@ public abstract class Request<T extends Request<T>> {
 
          this.connection.setConnectTimeout(connectTimeout);
          this.connection.setReadTimeout(readTimeout);
-      } catch (MalformedURLException var5) {
-         throw new RealmsHttpException(var5.getMessage(), var5);
-      } catch (IOException var6) {
-         throw new RealmsHttpException(var6.getMessage(), var6);
+      } catch (MalformedURLException e) {
+         throw new RealmsHttpException(e.getMessage(), e);
+      } catch (IOException e) {
+         throw new RealmsHttpException(e.getMessage(), e);
       }
    }
 
@@ -71,7 +71,7 @@ public abstract class Request<T extends Request<T>> {
 
       try {
          return Integer.valueOf(pauseTime);
-      } catch (Exception var3) {
+      } catch (Exception ignored) {
          return 5;
       }
    }
@@ -80,8 +80,8 @@ public abstract class Request<T extends Request<T>> {
       try {
          this.connect();
          return this.connection.getResponseCode();
-      } catch (Exception var2) {
-         throw new RealmsHttpException(var2.getMessage(), var2);
+      } catch (Exception e) {
+         throw new RealmsHttpException(e.getMessage(), e);
       }
    }
 
@@ -97,24 +97,24 @@ public abstract class Request<T extends Request<T>> {
 
          this.dispose();
          return result;
-      } catch (IOException var2) {
-         throw new RealmsHttpException(var2.getMessage(), var2);
+      } catch (IOException e) {
+         throw new RealmsHttpException(e.getMessage(), e);
       }
    }
 
-   private String read(@Nullable final InputStream in) throws IOException {
+   private String read(final @Nullable InputStream in) throws IOException {
       if (in == null) {
          return "";
-      } else {
-         InputStreamReader streamReader = new InputStreamReader(in, StandardCharsets.UTF_8);
-         StringBuilder sb = new StringBuilder();
-
-         for (int x = streamReader.read(); x != -1; x = streamReader.read()) {
-            sb.append((char)x);
-         }
-
-         return sb.toString();
       }
+
+      InputStreamReader streamReader = new InputStreamReader(in, StandardCharsets.UTF_8);
+      StringBuilder sb = new StringBuilder();
+
+      for (int x = streamReader.read(); x != -1; x = streamReader.read()) {
+         sb.append((char)x);
+      }
+
+      return sb.toString();
    }
 
    private void dispose() {
@@ -128,7 +128,7 @@ public abstract class Request<T extends Request<T>> {
 
          in.close();
          return;
-      } catch (Exception var9) {
+      } catch (Exception ignore) {
          try {
             InputStream errorStream = this.connection.getErrorStream();
             if (errorStream != null) {
@@ -151,11 +151,11 @@ public abstract class Request<T extends Request<T>> {
    protected T connect() {
       if (this.connected) {
          return (T)this;
-      } else {
-         T t = this.doConnect();
-         this.connected = true;
-         return t;
       }
+
+      T t = this.doConnect();
+      this.connected = true;
+      return t;
    }
 
    protected abstract T doConnect();
@@ -195,7 +195,7 @@ public abstract class Request<T extends Request<T>> {
    public static String getHeader(final HttpURLConnection connection, final String header) {
       try {
          return connection.getHeaderField(header);
-      } catch (Exception var3) {
+      } catch (Exception ignored) {
          return "";
       }
    }
@@ -211,8 +211,8 @@ public abstract class Request<T extends Request<T>> {
             this.connection.setRequestMethod("DELETE");
             this.connection.connect();
             return this;
-         } catch (Exception var2) {
-            throw new RealmsHttpException(var2.getMessage(), var2);
+         } catch (Exception e) {
+            throw new RealmsHttpException(e.getMessage(), e);
          }
       }
    }
@@ -229,8 +229,8 @@ public abstract class Request<T extends Request<T>> {
             this.connection.setUseCaches(false);
             this.connection.setRequestMethod("GET");
             return this;
-         } catch (Exception var2) {
-            throw new RealmsHttpException(var2.getMessage(), var2);
+         } catch (Exception e) {
+            throw new RealmsHttpException(e.getMessage(), e);
          }
       }
    }
@@ -259,8 +259,8 @@ public abstract class Request<T extends Request<T>> {
             writer.close();
             out.flush();
             return this;
-         } catch (Exception var3) {
-            throw new RealmsHttpException(var3.getMessage(), var3);
+         } catch (Exception e) {
+            throw new RealmsHttpException(e.getMessage(), e);
          }
       }
    }
@@ -288,8 +288,8 @@ public abstract class Request<T extends Request<T>> {
             writer.close();
             out.flush();
             return this;
-         } catch (Exception var3) {
-            throw new RealmsHttpException(var3.getMessage(), var3);
+         } catch (Exception e) {
+            throw new RealmsHttpException(e.getMessage(), e);
          }
       }
    }

@@ -37,8 +37,7 @@ import org.jspecify.annotations.Nullable;
 public abstract class StructurePiece {
    protected static final BlockState CAVE_AIR = Blocks.CAVE_AIR.defaultBlockState();
    protected BoundingBox boundingBox;
-   @Nullable
-   private Direction orientation;
+   private @Nullable Direction orientation;
    private Mirror mirror;
    private Rotation rotation;
    protected int genDepth;
@@ -138,14 +137,14 @@ public abstract class StructurePiece {
       Direction orientation = this.getOrientation();
       if (orientation == null) {
          return x;
-      } else {
-         return switch (orientation) {
-            case NORTH, SOUTH -> this.boundingBox.minX() + x;
-            case WEST -> this.boundingBox.maxX() - z;
-            case EAST -> this.boundingBox.minX() + z;
-            default -> x;
-         };
       }
+
+      return switch (orientation) {
+         case NORTH, SOUTH -> this.boundingBox.minX() + x;
+         case WEST -> this.boundingBox.maxX() - z;
+         case EAST -> this.boundingBox.minX() + z;
+         default -> x;
+      };
    }
 
    protected int getWorldY(final int y) {
@@ -156,14 +155,14 @@ public abstract class StructurePiece {
       Direction orientation = this.getOrientation();
       if (orientation == null) {
          return z;
-      } else {
-         return switch (orientation) {
-            case NORTH -> this.boundingBox.maxZ() - z;
-            case SOUTH -> this.boundingBox.minZ() + z;
-            case WEST, EAST -> this.boundingBox.minZ() + x;
-            default -> z;
-         };
       }
+
+      return switch (orientation) {
+         case NORTH -> this.boundingBox.maxZ() - z;
+         case SOUTH -> this.boundingBox.minZ() + z;
+         case WEST, EAST -> this.boundingBox.minZ() + x;
+         default -> z;
+      };
    }
 
    protected void placeBlock(final WorldGenLevel level, BlockState blockState, final int x, final int y, final int z, final BoundingBox chunkBB) {
@@ -352,20 +351,20 @@ public abstract class StructurePiece {
       final BlockState fillBlock,
       final boolean skipAir
    ) {
-      float diagX = (float)(x1 - x0 + 1);
-      float diagY = (float)(y1 - y0 + 1);
-      float diagZ = (float)(z1 - z0 + 1);
-      float cx = (float)x0 + diagX / 2.0F;
-      float cz = (float)z0 + diagZ / 2.0F;
+      float diagX = x1 - x0 + 1;
+      float diagY = y1 - y0 + 1;
+      float diagZ = z1 - z0 + 1;
+      float cx = x0 + diagX / 2.0F;
+      float cz = z0 + diagZ / 2.0F;
 
       for (int y = y0; y <= y1; y++) {
-         float normalizedYDistance = (float)(y - y0) / diagY;
+         float normalizedYDistance = (y - y0) / diagY;
 
          for (int x = x0; x <= x1; x++) {
-            float normalizedXDistance = ((float)x - cx) / (diagX * 0.5F);
+            float normalizedXDistance = (x - cx) / (diagX * 0.5F);
 
             for (int z = z0; z <= z1; z++) {
-               float normalizedZDistance = ((float)z - cz) / (diagZ * 0.5F);
+               float normalizedZDistance = (z - cz) / (diagZ * 0.5F);
                if (!skipAir || !this.getBlock(level, x, y, z, chunkBB).isAir()) {
                   float dist = normalizedXDistance * normalizedXDistance
                      + normalizedYDistance * normalizedYDistance
@@ -427,26 +426,26 @@ public abstract class StructurePiece {
 
       if (solidNeighbor != null) {
          return blockState.setValue(HorizontalDirectionalBlock.FACING, solidNeighbor.getOpposite());
-      } else {
-         Direction lockDir = blockState.getValue(HorizontalDirectionalBlock.FACING);
-         BlockPos relativePosx = blockPos.relative(lockDir);
-         if (level.getBlockState(relativePosx).isSolidRender()) {
-            lockDir = lockDir.getOpposite();
-            relativePosx = blockPos.relative(lockDir);
-         }
-
-         if (level.getBlockState(relativePosx).isSolidRender()) {
-            lockDir = lockDir.getClockWise();
-            relativePosx = blockPos.relative(lockDir);
-         }
-
-         if (level.getBlockState(relativePosx).isSolidRender()) {
-            lockDir = lockDir.getOpposite();
-            relativePosx = blockPos.relative(lockDir);
-         }
-
-         return blockState.setValue(HorizontalDirectionalBlock.FACING, lockDir);
       }
+
+      Direction lockDir = blockState.getValue(HorizontalDirectionalBlock.FACING);
+      BlockPos relativePos = blockPos.relative(lockDir);
+      if (level.getBlockState(relativePos).isSolidRender()) {
+         lockDir = lockDir.getOpposite();
+         relativePos = blockPos.relative(lockDir);
+      }
+
+      if (level.getBlockState(relativePos).isSolidRender()) {
+         lockDir = lockDir.getClockWise();
+         relativePos = blockPos.relative(lockDir);
+      }
+
+      if (level.getBlockState(relativePos).isSolidRender()) {
+         lockDir = lockDir.getOpposite();
+         relativePos = blockPos.relative(lockDir);
+      }
+
+      return blockState.setValue(HorizontalDirectionalBlock.FACING, lockDir);
    }
 
    protected boolean createChest(
@@ -505,8 +504,7 @@ public abstract class StructurePiece {
          .orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox without pieces"));
    }
 
-   @Nullable
-   public static StructurePiece findCollisionPiece(final List<StructurePiece> pieces, final BoundingBox box) {
+   public static @Nullable StructurePiece findCollisionPiece(final List<StructurePiece> pieces, final BoundingBox box) {
       for (StructurePiece piece : pieces) {
          if (piece.getBoundingBox().intersects(box)) {
             return piece;
@@ -516,12 +514,11 @@ public abstract class StructurePiece {
       return null;
    }
 
-   @Nullable
-   public Direction getOrientation() {
+   public @Nullable Direction getOrientation() {
       return this.orientation;
    }
 
-   public void setOrientation(@Nullable final Direction orientation) {
+   public void setOrientation(final @Nullable Direction orientation) {
       this.orientation = orientation;
       if (orientation == null) {
          this.rotation = Rotation.NONE;

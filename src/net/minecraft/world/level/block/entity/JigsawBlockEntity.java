@@ -144,14 +144,14 @@ public class JigsawBlockEntity extends BlockEntity {
       JigsawPlacement.generateJigsaw(level, pool, this.target, levels, position, keepJigsaws);
    }
 
-   public static enum JointType implements StringRepresentable {
+   public enum JointType implements StringRepresentable {
       ROLLABLE("rollable"),
       ALIGNED("aligned");
 
       public static final StringRepresentable.EnumCodec<JigsawBlockEntity.JointType> CODEC = StringRepresentable.fromEnum(JigsawBlockEntity.JointType::values);
       private final String name;
 
-      private JointType(final String name) {
+      JointType(final String name) {
          this.name = name;
       }
 

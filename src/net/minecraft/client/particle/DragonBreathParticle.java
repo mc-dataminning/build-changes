@@ -29,7 +29,7 @@ public class DragonBreathParticle extends SingleQuadParticle {
       this.gCol = Mth.nextFloat(this.random, 0.0F, 0.0F);
       this.bCol = Mth.nextFloat(this.random, 0.8235294F, 0.9764706F);
       this.quadSize *= 0.75F;
-      this.lifetime = (int)(20.0 / ((double)this.random.nextFloat() * 0.8 + 0.2));
+      this.lifetime = (int)(20.0 / (this.random.nextFloat() * 0.8 + 0.2));
       this.hasHitGround = false;
       this.hasPhysics = false;
       this.sprites = sprites;
@@ -60,10 +60,10 @@ public class DragonBreathParticle extends SingleQuadParticle {
             this.zd *= 1.1;
          }
 
-         this.xd = this.xd * (double)this.friction;
-         this.zd = this.zd * (double)this.friction;
+         this.xd = this.xd * this.friction;
+         this.zd = this.zd * this.friction;
          if (this.hasHitGround) {
-            this.yd = this.yd * (double)this.friction;
+            this.yd = this.yd * this.friction;
          }
       }
    }
@@ -75,7 +75,7 @@ public class DragonBreathParticle extends SingleQuadParticle {
 
    @Override
    public float getQuadSize(final float a) {
-      return this.quadSize * Mth.clamp(((float)this.age + a) / (float)this.lifetime * 32.0F, 0.0F, 1.0F);
+      return this.quadSize * Mth.clamp((this.age + a) / this.lifetime * 32.0F, 0.0F, 1.0F);
    }
 
    public static class Provider implements ParticleProvider<PowerParticleOption> {

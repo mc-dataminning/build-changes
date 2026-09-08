@@ -6,6 +6,5 @@ import org.jspecify.annotations.Nullable;
 public class ChickenRenderState extends LivingEntityRenderState {
    public float flap;
    public float flapSpeed;
-   @Nullable
-   public ChickenVariant variant;
+   public @Nullable ChickenVariant variant;
 }

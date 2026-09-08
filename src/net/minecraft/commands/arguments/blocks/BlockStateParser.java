@@ -72,14 +72,10 @@ public class BlockStateParser {
    private final Map<Property<?>, Comparable<?>> properties = Maps.newHashMap();
    private final Map<String, String> vagueProperties = Maps.newHashMap();
    private Identifier id = Identifier.withDefaultNamespace("");
-   @Nullable
-   private StateDefinition<Block, BlockState> definition;
-   @Nullable
-   private BlockState state;
-   @Nullable
-   private CompoundTag nbt;
-   @Nullable
-   private HolderSet<Block> tag;
+   private @Nullable StateDefinition<Block, BlockState> definition;
+   private @Nullable BlockState state;
+   private @Nullable CompoundTag nbt;
+   private @Nullable HolderSet<Block> tag;
    private Function<SuggestionsBuilder, CompletableFuture<Suggestions>> suggestions = SUGGEST_NOTHING;
 
    private BlockStateParser(final HolderLookup<Block> blocks, final StringReader reader, final boolean forTesting, final boolean allowNbt) {
@@ -100,9 +96,9 @@ public class BlockStateParser {
          BlockStateParser parser = new BlockStateParser(blocks, reader, false, allowNbt);
          parser.parse();
          return new BlockStateParser.BlockResult(parser.state, parser.properties, parser.nbt);
-      } catch (CommandSyntaxException var5) {
+      } catch (CommandSyntaxException e) {
          reader.setCursor(cursor);
-         throw var5;
+         throw e;
       }
    }
 
@@ -123,9 +119,9 @@ public class BlockStateParser {
          return parser.tag != null
             ? Either.right(new BlockStateParser.TagResult(parser.tag, parser.vagueProperties, parser.nbt))
             : Either.left(new BlockStateParser.BlockResult(parser.state, parser.properties, parser.nbt));
-      } catch (CommandSyntaxException var5) {
+      } catch (CommandSyntaxException e) {
          reader.setCursor(cursor);
-         throw var5;
+         throw e;
       }
    }
 
@@ -227,17 +223,17 @@ public class BlockStateParser {
    private boolean hasBlockEntity() {
       if (this.state != null) {
          return this.state.hasBlockEntity();
-      } else {
-         if (this.tag != null) {
-            for (Holder<Block> block : this.tag) {
-               if (block.value().defaultBlockState().hasBlockEntity()) {
-                  return true;
-               }
+      }
+
+      if (this.tag != null) {
+         for (Holder<Block> block : this.tag) {
+            if (block.value().defaultBlockState().hasBlockEntity()) {
+               return true;
             }
          }
-
-         return false;
       }
+
+      return false;
    }
 
    private CompletableFuture<Suggestions> suggestEquals(final SuggestionsBuilder builder) {
@@ -369,16 +365,16 @@ public class BlockStateParser {
    private void readTag() throws CommandSyntaxException {
       if (!this.forTesting) {
          throw ERROR_NO_TAGS_ALLOWED.createWithContext(this.reader);
-      } else {
-         int start = this.reader.getCursor();
-         this.reader.expect('#');
-         this.suggestions = this::suggestTag;
-         Identifier id = Identifier.read(this.reader);
-         this.tag = this.blocks.get(TagKey.create(Registries.BLOCK, id)).orElseThrow(() -> {
-            this.reader.setCursor(start);
-            return ERROR_UNKNOWN_TAG.createWithContext(this.reader, id.toString());
-         });
       }
+
+      int start = this.reader.getCursor();
+      this.reader.expect('#');
+      this.suggestions = this::suggestTag;
+      Identifier id = Identifier.read(this.reader);
+      this.tag = this.blocks.get(TagKey.create(Registries.BLOCK, id)).orElseThrow(() -> {
+         this.reader.setCursor(start);
+         return ERROR_UNKNOWN_TAG.createWithContext(this.reader, id.toString());
+      });
    }
 
    private void readProperties() throws CommandSyntaxException {
@@ -526,9 +522,9 @@ public class BlockStateParser {
       return result.toString();
    }
 
-   public static record BlockResult(BlockState blockState, Map<Property<?>, Comparable<?>> properties, @Nullable CompoundTag nbt) {
+   public record BlockResult(BlockState blockState, Map<Property<?>, Comparable<?>> properties, @Nullable CompoundTag nbt) {
    }
 
-   public static record TagResult(HolderSet<Block> tag, Map<String, String> vagueProperties, @Nullable CompoundTag nbt) {
+   public record TagResult(HolderSet<Block> tag, Map<String, String> vagueProperties, @Nullable CompoundTag nbt) {
    }
 }

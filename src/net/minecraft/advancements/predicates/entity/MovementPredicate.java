@@ -20,15 +20,15 @@ public record MovementPredicate(
 ) implements EntitySubPredicate {
    public static final Codec<MovementPredicate> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               MinMaxBounds.Doubles.CODEC.optionalFieldOf("x", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::x),
-               MinMaxBounds.Doubles.CODEC.optionalFieldOf("y", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::y),
-               MinMaxBounds.Doubles.CODEC.optionalFieldOf("z", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::z),
-               MinMaxBounds.Doubles.CODEC.optionalFieldOf("speed", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::speed),
-               MinMaxBounds.Doubles.CODEC.optionalFieldOf("horizontal_speed", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::horizontalSpeed),
-               MinMaxBounds.Doubles.CODEC.optionalFieldOf("vertical_speed", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::verticalSpeed),
-               MinMaxBounds.Doubles.CODEC.optionalFieldOf("fall_distance", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::fallDistance)
-            )
-            .apply(i, MovementPredicate::new)
+            MinMaxBounds.Doubles.CODEC.optionalFieldOf("x", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::x),
+            MinMaxBounds.Doubles.CODEC.optionalFieldOf("y", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::y),
+            MinMaxBounds.Doubles.CODEC.optionalFieldOf("z", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::z),
+            MinMaxBounds.Doubles.CODEC.optionalFieldOf("speed", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::speed),
+            MinMaxBounds.Doubles.CODEC.optionalFieldOf("horizontal_speed", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::horizontalSpeed),
+            MinMaxBounds.Doubles.CODEC.optionalFieldOf("vertical_speed", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::verticalSpeed),
+            MinMaxBounds.Doubles.CODEC.optionalFieldOf("fall_distance", MinMaxBounds.Doubles.ANY).forGetter(MovementPredicate::fallDistance)
+         )
+         .apply(i, MovementPredicate::new)
    );
 
    public static MovementPredicate speed(final MinMaxBounds.Doubles bounds) {
@@ -84,22 +84,22 @@ public record MovementPredicate(
          double speedSqr = Mth.lengthSquared(x, y, z);
          if (!this.speed.matchesSqr(speedSqr)) {
             return false;
-         } else {
-            double horizontalSpeedSqr = Mth.lengthSquared(x, z);
-            if (!this.horizontalSpeed.matchesSqr(horizontalSpeedSqr)) {
-               return false;
-            } else {
-               double verticalSpeed = Math.abs(y);
-               return !this.verticalSpeed.matches(verticalSpeed) ? false : this.fallDistance.matches(fallDistance);
-            }
          }
+
+         double horizontalSpeedSqr = Mth.lengthSquared(x, z);
+         if (!this.horizontalSpeed.matchesSqr(horizontalSpeedSqr)) {
+            return false;
+         }
+
+         double verticalSpeed = Math.abs(y);
+         return !this.verticalSpeed.matches(verticalSpeed) ? false : this.fallDistance.matches(fallDistance);
       } else {
          return false;
       }
    }
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
       Vec3 velocity = entity.getKnownMovement().scale(20.0);
       return this.matches(velocity.x, velocity.y, velocity.z, entity.fallDistance);
    }

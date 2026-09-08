@@ -19,30 +19,30 @@ public interface SignalGetter extends BlockGetter {
       result = Math.max(result, this.getDirectSignal(pos.below(), Direction.DOWN));
       if (result >= 15) {
          return result;
-      } else {
-         result = Math.max(result, this.getDirectSignal(pos.above(), Direction.UP));
-         if (result >= 15) {
-            return result;
-         } else {
-            result = Math.max(result, this.getDirectSignal(pos.north(), Direction.NORTH));
-            if (result >= 15) {
-               return result;
-            } else {
-               result = Math.max(result, this.getDirectSignal(pos.south(), Direction.SOUTH));
-               if (result >= 15) {
-                  return result;
-               } else {
-                  result = Math.max(result, this.getDirectSignal(pos.west(), Direction.WEST));
-                  if (result >= 15) {
-                     return result;
-                  } else {
-                     result = Math.max(result, this.getDirectSignal(pos.east(), Direction.EAST));
-                     return result >= 15 ? result : result;
-                  }
-               }
-            }
-         }
       }
+
+      result = Math.max(result, this.getDirectSignal(pos.above(), Direction.UP));
+      if (result >= 15) {
+         return result;
+      }
+
+      result = Math.max(result, this.getDirectSignal(pos.north(), Direction.NORTH));
+      if (result >= 15) {
+         return result;
+      }
+
+      result = Math.max(result, this.getDirectSignal(pos.south(), Direction.SOUTH));
+      if (result >= 15) {
+         return result;
+      }
+
+      result = Math.max(result, this.getDirectSignal(pos.west(), Direction.WEST));
+      if (result >= 15) {
+         return result;
+      }
+
+      result = Math.max(result, this.getDirectSignal(pos.east(), Direction.EAST));
+      return result >= 15 ? result : result;
    }
 
    default int getControlInputSignal(final BlockPos pos, final Direction direction, final boolean onlyDiodes) {

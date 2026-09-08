@@ -28,7 +28,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class StemBlock extends VegetationBlock implements BonemealableBlock {
    public static final int MAX_AGE = 7;
    public static final IntegerProperty AGE = BlockStateProperties.AGE_7;
-   private static final VoxelShape[] SHAPES = Block.boxes(7, age -> Block.column(2.0, 0.0, (double)(2 + age * 2)));
+   private static final VoxelShape[] SHAPES = Block.boxes(7, age -> Block.column(2.0, 0.0, 2 + age * 2));
    private final ResourceKey<Block> fruit;
    private final ResourceKey<Block> attachedStem;
    private final ResourceKey<Item> seed;
@@ -49,7 +49,7 @@ public class StemBlock extends VegetationBlock implements BonemealableBlock {
       this.seed = seed;
       this.stemSupportBlocks = stemSupportBlocks;
       this.fruitSupportBlocks = fruitSupportBlocks;
-      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(0)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
    }
 
    @Override
@@ -69,7 +69,7 @@ public class StemBlock extends VegetationBlock implements BonemealableBlock {
          if (random.nextInt((int)(25.0F / growthSpeed) + 1) == 0) {
             int age = state.getValue(AGE);
             if (age < 7) {
-               state = state.setValue(AGE, Integer.valueOf(age + 1));
+               state = state.setValue(AGE, age + 1);
                level.setBlock(pos, state, 2);
             } else {
                Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(random);
@@ -107,7 +107,7 @@ public class StemBlock extends VegetationBlock implements BonemealableBlock {
    @Override
    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state, final BonemealSource source) {
       int age = Math.min(7, state.getValue(AGE) + Mth.nextInt(random, 2, 5));
-      BlockState newState = state.setValue(AGE, Integer.valueOf(age));
+      BlockState newState = state.setValue(AGE, age);
       level.setBlock(pos, newState, 2);
       if (age == 7) {
          newState.randomTick(level, pos, random);

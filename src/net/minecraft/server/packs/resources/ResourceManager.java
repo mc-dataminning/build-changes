@@ -19,7 +19,7 @@ public interface ResourceManager extends ResourceProvider {
 
    Stream<PackResources> listPacks();
 
-   public static enum Empty implements ResourceManager {
+   enum Empty implements ResourceManager {
       INSTANCE;
 
       @Override
@@ -54,7 +54,7 @@ public interface ResourceManager extends ResourceProvider {
    }
 
    @FunctionalInterface
-   public interface Selector {
+   interface Selector {
       boolean isIncluded(Identifier resourceId);
    }
 }

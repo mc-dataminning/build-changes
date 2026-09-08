@@ -52,7 +52,7 @@ public class BlockModelRotation implements ModelState {
       return "simple[" + this.orientation.getSerializedName() + "]";
    }
 
-   private static record WithUvLock(BlockModelRotation parent) implements ModelState {
+   private record WithUvLock(BlockModelRotation parent) implements ModelState {
       @Override
       public Transformation transformation() {
          return this.parent.transformation;

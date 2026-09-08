@@ -42,10 +42,9 @@ public class ShulkerBoxBlock extends BaseEntityBlock {
    public static final Map<Direction, VoxelShape> SHAPES_OPEN_SUPPORT = Shapes.rotateAll(Block.boxZ(16.0, 0.0, 1.0));
    public static final EnumProperty<Direction> FACING = DirectionalBlock.FACING;
    public static final Identifier CONTENTS = Identifier.withDefaultNamespace("contents");
-   @Nullable
-   private final DyeColor color;
+   private final @Nullable DyeColor color;
 
-   public ShulkerBoxBlock(@Nullable final DyeColor color, final BlockBehaviour.Properties properties) {
+   public ShulkerBoxBlock(final @Nullable DyeColor color, final BlockBehaviour.Properties properties) {
       super(properties);
       this.color = color;
       this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.UP));
@@ -56,9 +55,8 @@ public class ShulkerBoxBlock extends BaseEntityBlock {
       return new ShulkerBoxBlockEntity(this.color, worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return createTickerHelper(type, BlockEntityTypes.SHULKER_BOX, ShulkerBoxBlockEntity::tick);
    }
 
@@ -80,10 +78,10 @@ public class ShulkerBoxBlock extends BaseEntityBlock {
    private static boolean canOpen(final BlockState state, final Level level, final BlockPos pos, final ShulkerBoxBlockEntity blockEntity) {
       if (blockEntity.getAnimationStatus() != ShulkerBoxBlockEntity.AnimationStatus.CLOSED) {
          return true;
-      } else {
-         AABB lidOpenBoundingBox = Shulker.getProgressDeltaAabb(1.0F, state.getValue(FACING), 0.0F, 0.5F, Vec3.atBottomCenterOf(pos)).deflate(1.0E-6);
-         return level.noCollision(lidOpenBoundingBox);
       }
+
+      AABB lidOpenBoundingBox = Shulker.getProgressDeltaAabb(1.0F, state.getValue(FACING), 0.0F, 0.5F, Vec3.atBottomCenterOf(pos)).deflate(1.0E-6);
+      return level.noCollision(lidOpenBoundingBox);
    }
 
    @Override
@@ -103,7 +101,7 @@ public class ShulkerBoxBlock extends BaseEntityBlock {
          if (!level.isClientSide() && player.preventsBlockDrops() && !shulkerBoxBlockEntity.isEmpty()) {
             ItemStack itemStack = new ItemStack(state.getBlock());
             itemStack.applyComponents(blockEntity.collectComponents());
-            ItemEntity entity = new ItemEntity(level, (double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, itemStack);
+            ItemEntity entity = new ItemEntity(level, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, itemStack);
             entity.setDefaultPickUpDelay();
             level.addFreshEntity(entity);
          } else {
@@ -135,11 +133,9 @@ public class ShulkerBoxBlock extends BaseEntityBlock {
 
    @Override
    protected VoxelShape getBlockSupportShape(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      if (level.getBlockEntity(pos) instanceof ShulkerBoxBlockEntity shulker && !shulker.isClosed()) {
-         return SHAPES_OPEN_SUPPORT.get(state.getValue(FACING).getOpposite());
-      }
-
-      return Shapes.block();
+      return level.getBlockEntity(pos) instanceof ShulkerBoxBlockEntity shulker && !shulker.isClosed()
+         ? SHAPES_OPEN_SUPPORT.get(state.getValue(FACING).getOpposite())
+         : Shapes.block();
    }
 
    @Override
@@ -164,8 +160,7 @@ public class ShulkerBoxBlock extends BaseEntityBlock {
       return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(level.getBlockEntity(pos));
    }
 
-   @Nullable
-   public DyeColor getColor() {
+   public @Nullable DyeColor getColor() {
       return this.color;
    }
 

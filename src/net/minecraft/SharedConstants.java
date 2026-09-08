@@ -8,20 +8,18 @@ import net.minecraft.commands.BrigadierExceptions;
 import net.minecraft.world.level.ChunkPos;
 import org.jspecify.annotations.Nullable;
 
-@SuppressForbidden(
-   reason = "System.out needed before bootstrap"
-)
+@SuppressForbidden(reason = "System.out needed before bootstrap")
 public class SharedConstants {
    @Deprecated
    public static final boolean SNAPSHOT = true;
    @Deprecated
-   public static final int WORLD_VERSION = 5018;
+   public static final int WORLD_VERSION = 5019;
    @Deprecated
    public static final String SERIES = "main";
    @Deprecated
    public static final int RELEASE_NETWORK_PROTOCOL_VERSION = 777;
    @Deprecated
-   public static final int SNAPSHOT_NETWORK_PROTOCOL_VERSION = 334;
+   public static final int SNAPSHOT_NETWORK_PROTOCOL_VERSION = 335;
    public static final int SNBT_NAG_VERSION = 4997;
    private static final int SNAPSHOT_PROTOCOL_BIT = 30;
    public static final boolean CRASH_EAGERLY = true;
@@ -30,7 +28,7 @@ public class SharedConstants {
    @Deprecated
    public static final int RESOURCE_PACK_FORMAT_MINOR = 1;
    @Deprecated
-   public static final int DATA_PACK_FORMAT_MAJOR = 120;
+   public static final int DATA_PACK_FORMAT_MAJOR = 121;
    @Deprecated
    public static final int DATA_PACK_FORMAT_MINOR = 0;
    public static final String RPC_MANAGEMENT_SERVER_API_VERSION = "3.1.0";
@@ -147,8 +145,7 @@ public class SharedConstants {
    public static final float AVERAGE_RANDOM_TICKS_PER_BLOCK_PER_MINUTE = 0.87890625F;
    public static final float AVERAGE_RANDOM_TICKS_PER_BLOCK_PER_GAME_DAY = 17.578125F;
    public static final int WORLD_ICON_SIZE = 64;
-   @Nullable
-   private static WorldVersion CURRENT_VERSION;
+   private static @Nullable WorldVersion CURRENT_VERSION;
 
    private static String prefixDebugFlagName(final String name) {
       return "MC_DEBUG_" + name;
@@ -162,27 +159,27 @@ public class SharedConstants {
    private static boolean debugFlag(final String name) {
       if (!DEBUG_ENABLED) {
          return false;
-      } else {
-         String prefixedName = prefixDebugFlagName(name);
-         if (DEBUG_PRINT_PROPERTIES) {
-            System.out.println("Debug property available: " + prefixedName + ": bool");
-         }
-
-         return booleanProperty(prefixedName);
       }
+
+      String prefixedName = prefixDebugFlagName(name);
+      if (DEBUG_PRINT_PROPERTIES) {
+         System.out.println("Debug property available: " + prefixedName + ": bool");
+      }
+
+      return booleanProperty(prefixedName);
    }
 
    private static int debugIntValue(final String name) {
       if (!DEBUG_ENABLED) {
          return 0;
-      } else {
-         String prefixedName = prefixDebugFlagName(name);
-         if (DEBUG_PRINT_PROPERTIES) {
-            System.out.println("Debug property available: " + prefixedName + ": int");
-         }
-
-         return Integer.parseInt(System.getProperty(prefixedName, "0"));
       }
+
+      String prefixedName = prefixDebugFlagName(name);
+      if (DEBUG_PRINT_PROPERTIES) {
+         System.out.println("Debug property available: " + prefixedName + ": int");
+      }
+
+      return Integer.parseInt(System.getProperty(prefixedName, "0"));
    }
 
    public static void setVersion(final WorldVersion version) {
@@ -208,7 +205,7 @@ public class SharedConstants {
    }
 
    public static int getProtocolVersion() {
-      return 1073742158;
+      return 1073742159;
    }
 
    public static boolean debugVoidTerrain(final ChunkPos pos) {

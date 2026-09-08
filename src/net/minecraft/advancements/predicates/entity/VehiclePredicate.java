@@ -10,7 +10,7 @@ public record VehiclePredicate(EntityPredicate vehicle) implements EntitySubPred
    public static final Codec<VehiclePredicate> CODEC = EntityPredicate.CODEC.xmap(VehiclePredicate::new, VehiclePredicate::vehicle);
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
       return this.vehicle.matches(level, position, entity.getVehicle());
    }
 }

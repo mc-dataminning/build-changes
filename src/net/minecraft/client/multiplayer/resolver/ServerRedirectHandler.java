@@ -26,8 +26,8 @@ public interface ServerRedirectHandler {
          env.put("java.naming.provider.url", "dns:");
          env.put("com.sun.jndi.dns.timeout.retries", "1");
          context = new InitialDirContext(env);
-      } catch (Throwable var3) {
-         LOGGER.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
+      } catch (Throwable e) {
+         LOGGER.error("Failed to initialize SRV redirect resolved, some servers might not work", e);
          return EMPTY;
       }
 

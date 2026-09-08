@@ -15,24 +15,24 @@ public class SetHiddenState {
       MutableInt ticksHidden = new MutableInt(0);
       return BehaviorBuilder.create(
          i -> i.group(i.present(MemoryModuleType.HIDING_PLACE), i.present(MemoryModuleType.HEARD_BELL_TIME))
-               .apply(i, (hidingPlace, heardBellTime) -> (level, body, timestamp) -> {
-                     long timeTriggered = i.<Long>get(heardBellTime);
-                     boolean timedOutTryingToHide = timeTriggered + 300L <= timestamp;
-                     if (ticksHidden.intValue() <= stayHiddenTicks && !timedOutTryingToHide) {
-                        BlockPos hidePos = i.<GlobalPos>get(hidingPlace).pos();
-                        if (hidePos.closerThan(body.blockPosition(), (double)closeEnoughDist)) {
-                           ticksHidden.increment();
-                        }
+            .apply(i, (hidingPlace, heardBellTime) -> (level, body, timestamp) -> {
+               long timeTriggered = i.<Long>get(heardBellTime);
+               boolean timedOutTryingToHide = timeTriggered + 300L <= timestamp;
+               if (ticksHidden.intValue() <= stayHiddenTicks && !timedOutTryingToHide) {
+                  BlockPos hidePos = i.<GlobalPos>get(hidingPlace).pos();
+                  if (hidePos.closerThan(body.blockPosition(), closeEnoughDist)) {
+                     ticksHidden.increment();
+                  }
 
-                        return true;
-                     } else {
-                        heardBellTime.erase();
-                        hidingPlace.erase();
-                        body.getBrain().updateActivityFromSchedule(level.environmentAttributes(), level.getGameTime(), body.position());
-                        ticksHidden.setValue(0);
-                        return true;
-                     }
-                  })
+                  return true;
+               } else {
+                  heardBellTime.erase();
+                  hidingPlace.erase();
+                  body.getBrain().updateActivityFromSchedule(level.environmentAttributes(), level.getGameTime(), body.position());
+                  ticksHidden.setValue(0);
+                  return true;
+               }
+            })
       );
    }
 }

@@ -14,7 +14,6 @@ import com.mojang.serialization.JsonOps;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.permissions.PermissionCheck;
@@ -66,15 +65,14 @@ public class ArgumentUtils {
 
    public static <S> JsonObject serializeNodeToJson(final CommandDispatcher<S> dispatcher, final CommandNode<S> node) {
       JsonObject result = new JsonObject();
-      Objects.requireNonNull(node);
       switch (node) {
-         case RootCommandNode rootNode:
+         case RootCommandNode<S> rootNode:
             result.addProperty("type", "root");
             break;
-         case LiteralCommandNode literalNode:
+         case LiteralCommandNode<S> literalNode:
             result.addProperty("type", "literal");
             break;
-         case ArgumentCommandNode argumentNode:
+         case ArgumentCommandNode<S, ?> argumentNode:
             serializeArgumentToJson(result, argumentNode.getType());
             break;
          default:

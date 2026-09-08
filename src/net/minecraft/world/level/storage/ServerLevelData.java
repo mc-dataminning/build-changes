@@ -15,13 +15,13 @@ public interface ServerLevelData extends WritableLevelData {
       category.setDetail(
          "Level game mode",
          () -> String.format(
-               Locale.ROOT,
-               "Game mode: %s (ID %d). Hardcore: %b. Commands: %b",
-               this.getGameType().getName(),
-               this.getGameType().getId(),
-               this.isHardcore(),
-               this.isAllowCommands()
-            )
+            Locale.ROOT,
+            "Game mode: %s (ID %d). Hardcore: %b. Commands: %b",
+            this.getGameType().getName(),
+            this.getGameType().getId(),
+            this.isHardcore(),
+            this.isAllowCommands()
+         )
       );
    }
 

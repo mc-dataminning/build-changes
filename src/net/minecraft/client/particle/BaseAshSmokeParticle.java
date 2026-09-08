@@ -29,9 +29,9 @@ public abstract class BaseAshSmokeParticle extends SingleQuadParticle {
       this.gravity = gravity;
       this.speedUpWhenYMotionIsBlocked = true;
       this.sprites = sprites;
-      this.xd *= (double)dirX;
-      this.yd *= (double)dirY;
-      this.zd *= (double)dirZ;
+      this.xd *= dirX;
+      this.yd *= dirY;
+      this.zd *= dirZ;
       this.xd += xa;
       this.yd += ya;
       this.zd += za;
@@ -40,7 +40,7 @@ public abstract class BaseAshSmokeParticle extends SingleQuadParticle {
       this.gCol = col;
       this.bCol = col;
       this.quadSize *= 0.75F * scale;
-      this.lifetime = (int)((double)maxLifetime / ((double)this.random.nextFloat() * 0.8 + 0.2) * (double)scale);
+      this.lifetime = (int)(maxLifetime / (this.random.nextFloat() * 0.8 + 0.2) * scale);
       this.lifetime = Math.max(this.lifetime, 1);
       this.setSpriteFromAge(sprites);
       this.hasPhysics = hasPhysics;
@@ -53,7 +53,7 @@ public abstract class BaseAshSmokeParticle extends SingleQuadParticle {
 
    @Override
    public float getQuadSize(final float a) {
-      return this.quadSize * Mth.clamp(((float)this.age + a) / (float)this.lifetime * 32.0F, 0.0F, 1.0F);
+      return this.quadSize * Mth.clamp((this.age + a) / this.lifetime * 32.0F, 0.0F, 1.0F);
    }
 
    @Override

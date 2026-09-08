@@ -64,8 +64,7 @@ public class CreativeModeTabs {
    private static final Comparator<Holder<PaintingVariant>> PAINTING_COMPARATOR = Comparator.comparing(
       Holder::value, Comparator.comparingInt(PaintingVariant::area).thenComparing(PaintingVariant::width)
    );
-   @Nullable
-   private static CreativeModeTab.ItemDisplayParameters CACHED_PARAMETERS;
+   private static CreativeModeTab.@Nullable ItemDisplayParameters CACHED_PARAMETERS;
 
    private static ResourceKey<CreativeModeTab> createKey(final String id) {
       return ResourceKey.create(Registries.CREATIVE_MODE_TAB, Identifier.withDefaultNamespace(id));
@@ -858,12 +857,12 @@ public class CreativeModeTabs {
                      .lookup(Registries.PAINTING_VARIANT)
                      .ifPresent(
                         paintings -> generatePresetPaintings(
-                              functionalBlocks,
-                              parameters.holders(),
-                              (HolderLookup.RegistryLookup<PaintingVariant>)paintings,
-                              variant -> variant.is(PaintingVariantTags.PLACEABLE),
-                              CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
-                           )
+                           functionalBlocks,
+                           parameters.holders(),
+                           (HolderLookup.RegistryLookup<PaintingVariant>)paintings,
+                           variant -> variant.is(PaintingVariantTags.PLACEABLE),
+                           CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+                        )
                      );
                   functionalBlocks.accept(Items.BOOKSHELF);
                   functionalBlocks.accept(Items.CHISELED_BOOKSHELF);
@@ -1161,8 +1160,8 @@ public class CreativeModeTabs {
                      .lookup(Registries.INSTRUMENT)
                      .ifPresent(
                         instruments -> generateInstrumentTypes(
-                              toolsAndUtilities, instruments, Items.GOAT_HORN, InstrumentTags.GOAT_HORNS, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
-                           )
+                           toolsAndUtilities, instruments, Items.GOAT_HORN, InstrumentTags.GOAT_HORNS, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+                        )
                      );
                   toolsAndUtilities.accept(Items.MUSIC_DISC_13);
                   toolsAndUtilities.accept(Items.MUSIC_DISC_CAT);
@@ -1280,8 +1279,8 @@ public class CreativeModeTabs {
                      .lookup(Registries.POTION)
                      .ifPresent(
                         potions -> generatePotionEffectTypes(
-                              combat, potions, Items.TIPPED_ARROW, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS, parameters.enabledFeatures()
-                           )
+                           combat, potions, Items.TIPPED_ARROW, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS, parameters.enabledFeatures()
+                        )
                      );
                }
             )
@@ -1640,12 +1639,12 @@ public class CreativeModeTabs {
                         .lookup(Registries.PAINTING_VARIANT)
                         .ifPresent(
                            paintings -> generatePresetPaintings(
-                                 opBlocks,
-                                 parameters.holders(),
-                                 (HolderLookup.RegistryLookup<PaintingVariant>)paintings,
-                                 variant -> !variant.is(PaintingVariantTags.PLACEABLE),
-                                 CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
-                              )
+                              opBlocks,
+                              parameters.holders(),
+                              (HolderLookup.RegistryLookup<PaintingVariant>)paintings,
+                              variant -> !variant.is(PaintingVariantTags.PLACEABLE),
+                              CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+                           )
                         );
                   }
                }
@@ -1717,7 +1716,7 @@ public class CreativeModeTabs {
       enchantments.listElements()
          .flatMap(
             enchantment -> IntStream.rangeClosed(enchantment.value().getMinLevel(), enchantment.value().getMaxLevel())
-                  .mapToObj(level -> EnchantmentHelper.createBook(new EnchantmentInstance(enchantment, level)))
+               .mapToObj(level -> EnchantmentHelper.createBook(new EnchantmentInstance(enchantment, level)))
          )
          .forEach(stack -> output.accept(stack, tabVisibility));
    }
@@ -1732,8 +1731,8 @@ public class CreativeModeTabs {
       instruments.get(instrumentTagKey)
          .ifPresent(
             tag -> tag.stream()
-                  .map(instrument -> InstrumentItem.create(instrumentItem, (Holder<Instrument>)instrument))
-                  .forEach(stack -> output.accept(stack, tabVisibility))
+               .map(instrument -> InstrumentItem.create(instrumentItem, (Holder<Instrument>)instrument))
+               .forEach(stack -> output.accept(stack, tabVisibility))
          );
    }
 
@@ -1819,10 +1818,10 @@ public class CreativeModeTabs {
    public static boolean tryRebuildTabContents(final FeatureFlagSet enabledFeatures, final boolean hasPermissions, final HolderLookup.Provider lookup) {
       if (CACHED_PARAMETERS != null && !CACHED_PARAMETERS.needsUpdate(enabledFeatures, hasPermissions, lookup)) {
          return false;
-      } else {
-         CACHED_PARAMETERS = new CreativeModeTab.ItemDisplayParameters(enabledFeatures, hasPermissions, lookup);
-         buildAllTabContents(CACHED_PARAMETERS);
-         return true;
       }
+
+      CACHED_PARAMETERS = new CreativeModeTab.ItemDisplayParameters(enabledFeatures, hasPermissions, lookup);
+      buildAllTabContents(CACHED_PARAMETERS);
+      return true;
    }
 }

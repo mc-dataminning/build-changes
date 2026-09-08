@@ -48,7 +48,7 @@ public class VulkanGpuSampler implements GpuSampler, Destroyable {
          createInfo.mipLodBias(0.0F);
          createInfo.maxLod(Math.max(0.25F, (float)maxLod.orElse(1000.0)));
          createInfo.anisotropyEnable(maxAnisotropy > 1);
-         createInfo.maxAnisotropy((float)maxAnisotropy);
+         createInfo.maxAnisotropy(maxAnisotropy);
          LongBuffer pointer = stack.callocLong(1);
          VulkanUtils.crashIfFailure(device, VK12.vkCreateSampler(device.vkDevice(), createInfo, null, pointer), "Can't create sampler");
          this.vkSampler = pointer.get(0);

@@ -58,7 +58,7 @@ public class ClientboundUpdateAttributesPacket implements Packet<ClientGamePacke
       return this.attributes;
    }
 
-   public static record AttributeSnapshot(Holder<Attribute> attribute, double base, Collection<AttributeModifier> modifiers) {
+   public record AttributeSnapshot(Holder<Attribute> attribute, double base, Collection<AttributeModifier> modifiers) {
       public static final StreamCodec<ByteBuf, AttributeModifier> MODIFIER_STREAM_CODEC = StreamCodec.composite(
          Identifier.STREAM_CODEC,
          AttributeModifier::id,

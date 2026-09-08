@@ -68,9 +68,8 @@ public class InactiveProfiler implements ProfileCollector {
       return EmptyProfileResults.EMPTY;
    }
 
-   @Nullable
    @Override
-   public ActiveProfiler.PathEntry getEntry(final String path) {
+   public ActiveProfiler.@Nullable PathEntry getEntry(final String path) {
       return null;
    }
 

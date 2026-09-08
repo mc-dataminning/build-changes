@@ -10,11 +10,11 @@ public record UseEffects(boolean canSprint, boolean interactVibrations, float sp
    public static final UseEffects DEFAULT = new UseEffects(false, true, 0.2F);
    public static final Codec<UseEffects> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.BOOL.optionalFieldOf("can_sprint", DEFAULT.canSprint).forGetter(UseEffects::canSprint),
-               Codec.BOOL.optionalFieldOf("interact_vibrations", DEFAULT.interactVibrations).forGetter(UseEffects::interactVibrations),
-               Codec.floatRange(0.0F, 1.0F).optionalFieldOf("speed_multiplier", DEFAULT.speedMultiplier).forGetter(UseEffects::speedMultiplier)
-            )
-            .apply(i, UseEffects::new)
+            Codec.BOOL.optionalFieldOf("can_sprint", DEFAULT.canSprint).forGetter(UseEffects::canSprint),
+            Codec.BOOL.optionalFieldOf("interact_vibrations", DEFAULT.interactVibrations).forGetter(UseEffects::interactVibrations),
+            Codec.floatRange(0.0F, 1.0F).optionalFieldOf("speed_multiplier", DEFAULT.speedMultiplier).forGetter(UseEffects::speedMultiplier)
+         )
+         .apply(i, UseEffects::new)
    );
    public static final StreamCodec<ByteBuf, UseEffects> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.BOOL,

@@ -58,8 +58,7 @@ public class CommandSourceStack implements SharedSuggestionProvider, ExecutionCo
    private final CommandSourceStack.NamesProvider namesProvider;
    private final MinecraftServer server;
    private final boolean silent;
-   @Nullable
-   private final Entity entity;
+   private final @Nullable Entity entity;
    private final CommandResultCallback resultCallback;
    private final EntityAnchorArgument.Anchor anchor;
    private final Vec2 rotation;
@@ -98,7 +97,7 @@ public class CommandSourceStack implements SharedSuggestionProvider, ExecutionCo
       final PermissionSet permissions,
       final CommandSourceStack.NamesProvider namesProvider,
       final MinecraftServer server,
-      @Nullable final Entity entity
+      final @Nullable Entity entity
    ) {
       this(
          source,
@@ -125,7 +124,7 @@ public class CommandSourceStack implements SharedSuggestionProvider, ExecutionCo
       final PermissionSet permissions,
       final CommandSourceStack.NamesProvider namesProvider,
       final MinecraftServer server,
-      @Nullable final Entity entity,
+      final @Nullable Entity entity,
       final boolean silent,
       final CommandResultCallback resultCallback,
       final EntityAnchorArgument.Anchor anchor,
@@ -319,25 +318,25 @@ public class CommandSourceStack implements SharedSuggestionProvider, ExecutionCo
    public CommandSourceStack withLevel(final ServerLevel level) {
       if (level == this.level) {
          return this;
-      } else {
-         double scale = DimensionType.getTeleportationScale(this.level.dimensionType(), level.dimensionType());
-         Vec3 pos = new Vec3(this.worldPosition.x * scale, this.worldPosition.y, this.worldPosition.z * scale);
-         return new CommandSourceStack(
-            this.source,
-            pos,
-            this.rotation,
-            level,
-            this.permissions,
-            this.namesProvider,
-            this.server,
-            this.entity,
-            this.silent,
-            this.resultCallback,
-            this.anchor,
-            this.signingContext,
-            this.chatMessageChainer
-         );
       }
+
+      double scale = DimensionType.getTeleportationScale(this.level.dimensionType(), level.dimensionType());
+      Vec3 pos = new Vec3(this.worldPosition.x * scale, this.worldPosition.y, this.worldPosition.z * scale);
+      return new CommandSourceStack(
+         this.source,
+         pos,
+         this.rotation,
+         level,
+         this.permissions,
+         this.namesProvider,
+         this.server,
+         this.entity,
+         this.silent,
+         this.resultCallback,
+         this.anchor,
+         this.signingContext,
+         this.chatMessageChainer
+      );
    }
 
    public CommandSourceStack facing(final Entity entity, final EntityAnchorArgument.Anchor anchor) {
@@ -396,8 +395,7 @@ public class CommandSourceStack implements SharedSuggestionProvider, ExecutionCo
       return this.level;
    }
 
-   @Nullable
-   public Entity getEntity() {
+   public @Nullable Entity getEntity() {
       return this.entity;
    }
 
@@ -410,16 +408,14 @@ public class CommandSourceStack implements SharedSuggestionProvider, ExecutionCo
    }
 
    public ServerPlayer getPlayerOrException() throws CommandSyntaxException {
-      Entity var2 = this.entity;
-      if (var2 instanceof ServerPlayer) {
-         return (ServerPlayer)var2;
+      if (this.entity instanceof ServerPlayer player) {
+         return player;
       } else {
          throw ERROR_NOT_PLAYER.create();
       }
    }
 
-   @Nullable
-   public ServerPlayer getPlayer() {
+   public @Nullable ServerPlayer getPlayer() {
       return this.entity instanceof ServerPlayer player ? player : null;
    }
 
@@ -581,7 +577,7 @@ public class CommandSourceStack implements SharedSuggestionProvider, ExecutionCo
    }
 
    @Override
-   public void handleError(final CommandExceptionType type, final Message message, final boolean forked, @Nullable final TraceCallbacks tracer) {
+   public void handleError(final CommandExceptionType type, final Message message, final boolean forked, final @Nullable TraceCallbacks tracer) {
       if (tracer != null) {
          tracer.onError(message.getString());
       }
@@ -599,12 +595,12 @@ public class CommandSourceStack implements SharedSuggestionProvider, ExecutionCo
    public interface NamesProvider {
       CommandSourceStack.NamesProvider FOR_ENTITY = new CommandSourceStack.NamesProvider() {
          @Override
-         public Component displayName(@Nullable final Entity entity) {
+         public Component displayName(final @Nullable Entity entity) {
             return entity != null ? entity.getDisplayName() : CommonComponents.EMPTY;
          }
 
          @Override
-         public String textName(@Nullable final Entity entity) {
+         public String textName(final @Nullable Entity entity) {
             return entity != null ? entity.getPlainTextName() : "";
          }
       };
@@ -616,12 +612,12 @@ public class CommandSourceStack implements SharedSuggestionProvider, ExecutionCo
       static CommandSourceStack.NamesProvider constant(final Component value) {
          return new CommandSourceStack.NamesProvider() {
             @Override
-            public Component displayName(@Nullable final Entity entity) {
+            public Component displayName(final @Nullable Entity entity) {
                return value;
             }
 
             @Override
-            public String textName(@Nullable final Entity entity) {
+            public String textName(final @Nullable Entity entity) {
                return value.getString();
             }
          };

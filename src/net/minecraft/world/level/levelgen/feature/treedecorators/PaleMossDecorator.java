@@ -19,11 +19,11 @@ import net.minecraft.world.level.block.HangingMossBlock;
 public class PaleMossDecorator extends TreeDecorator {
    public static final MapCodec<PaleMossDecorator> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("leaves_probability").forGetter(p -> p.leavesProbability),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("trunk_probability").forGetter(p -> p.trunkProbability),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("ground_probability").forGetter(p -> p.groundProbability)
-            )
-            .apply(i, PaleMossDecorator::new)
+            Codec.floatRange(0.0F, 1.0F).fieldOf("leaves_probability").forGetter(p -> p.leavesProbability),
+            Codec.floatRange(0.0F, 1.0F).fieldOf("trunk_probability").forGetter(p -> p.trunkProbability),
+            Codec.floatRange(0.0F, 1.0F).fieldOf("ground_probability").forGetter(p -> p.groundProbability)
+         )
+         .apply(i, PaleMossDecorator::new)
    );
    private final float leavesProbability;
    private final float trunkProbability;
@@ -74,11 +74,11 @@ public class PaleMossDecorator extends TreeDecorator {
    }
 
    private static void addMossHanger(BlockPos pos, final TreeDecorator.Context context) {
-      while (context.isAir(pos.below()) && !((double)context.random().nextFloat() < 0.5)) {
-         context.setBlock(pos, Blocks.PALE_HANGING_MOSS.defaultBlockState().setValue(HangingMossBlock.TIP, Boolean.valueOf(false)));
+      while (context.isAir(pos.below()) && !(context.random().nextFloat() < 0.5)) {
+         context.setBlock(pos, Blocks.PALE_HANGING_MOSS.defaultBlockState().setValue(HangingMossBlock.TIP, false));
          pos = pos.below();
       }
 
-      context.setBlock(pos, Blocks.PALE_HANGING_MOSS.defaultBlockState().setValue(HangingMossBlock.TIP, Boolean.valueOf(true)));
+      context.setBlock(pos, Blocks.PALE_HANGING_MOSS.defaultBlockState().setValue(HangingMossBlock.TIP, true));
    }
 }

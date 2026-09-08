@@ -110,8 +110,8 @@ public class SpatialLongSet extends LongLinkedOpenHashSet {
             this.first = this.last = pos;
             this.link[pos] = -1L;
          } else {
-            this.link[this.last] = this.link[this.last] ^ (this.link[this.last] ^ (long)pos & 4294967295L) & 4294967295L;
-            this.link[pos] = ((long)this.last & 4294967295L) << 32 | 4294967295L;
+            this.link[this.last] = this.link[this.last] ^ (this.link[this.last] ^ pos & 4294967295L) & 4294967295L;
+            this.link[pos] = (this.last & 4294967295L) << 32 | 4294967295L;
             this.last = pos;
          }
 
@@ -134,82 +134,84 @@ public class SpatialLongSet extends LongLinkedOpenHashSet {
          long bitMask = 1L << innerKey;
          if (outerKey == 0L) {
             return this.containsNullKey ? this.removeFromNullEntry(bitMask) : false;
-         } else if (this.lastPos != -1 && outerKey == this.lastOuterKey) {
+         }
+
+         if (this.lastPos != -1 && outerKey == this.lastOuterKey) {
             return this.removeFromEntry(this.lastPos, bitMask);
-         } else {
-            long[] keys = this.key;
-            int pos = (int)HashCommon.mix(outerKey) & this.mask;
+         }
 
-            for (long curr = keys[pos]; curr != 0L; curr = keys[pos]) {
-               if (outerKey == curr) {
-                  this.lastPos = pos;
-                  this.lastOuterKey = outerKey;
-                  return this.removeFromEntry(pos, bitMask);
-               }
+         long[] keys = this.key;
+         int pos = (int)HashCommon.mix(outerKey) & this.mask;
 
-               pos = pos + 1 & this.mask;
+         for (long curr = keys[pos]; curr != 0L; curr = keys[pos]) {
+            if (outerKey == curr) {
+               this.lastPos = pos;
+               this.lastOuterKey = outerKey;
+               return this.removeFromEntry(pos, bitMask);
             }
 
-            return false;
+            pos = pos + 1 & this.mask;
          }
+
+         return false;
       }
 
       private boolean removeFromNullEntry(final long bitMask) {
          if ((this.value[this.n] & bitMask) == 0L) {
             return false;
-         } else {
-            this.value[this.n] = this.value[this.n] & ~bitMask;
-            if (this.value[this.n] != 0L) {
-               return true;
-            } else {
-               this.containsNullKey = false;
-               this.size--;
-               this.fixPointers(this.n);
-               if (this.size < this.maxFill / 4 && this.n > 16) {
-                  this.rehash(this.n / 2);
-               }
-
-               return true;
-            }
          }
+
+         this.value[this.n] = this.value[this.n] & ~bitMask;
+         if (this.value[this.n] != 0L) {
+            return true;
+         }
+
+         this.containsNullKey = false;
+         this.size--;
+         this.fixPointers(this.n);
+         if (this.size < this.maxFill / 4 && this.n > 16) {
+            this.rehash(this.n / 2);
+         }
+
+         return true;
       }
 
       private boolean removeFromEntry(final int pos, final long bitMask) {
          if ((this.value[pos] & bitMask) == 0L) {
             return false;
-         } else {
-            this.value[pos] = this.value[pos] & ~bitMask;
-            if (this.value[pos] != 0L) {
-               return true;
-            } else {
-               this.lastPos = -1;
-               this.size--;
-               this.fixPointers(pos);
-               this.shiftKeys(pos);
-               if (this.size < this.maxFill / 4 && this.n > 16) {
-                  this.rehash(this.n / 2);
-               }
-
-               return true;
-            }
          }
+
+         this.value[pos] = this.value[pos] & ~bitMask;
+         if (this.value[pos] != 0L) {
+            return true;
+         }
+
+         this.lastPos = -1;
+         this.size--;
+         this.fixPointers(pos);
+         this.shiftKeys(pos);
+         if (this.size < this.maxFill / 4 && this.n > 16) {
+            this.rehash(this.n / 2);
+         }
+
+         return true;
       }
 
       public long removeFirstBit() {
          if (this.size == 0) {
             throw new NoSuchElementException();
-         } else {
-            int pos = this.first;
-            long outerKey = this.key[pos];
-            int innerKey = Long.numberOfTrailingZeros(this.value[pos]);
-            this.value[pos] = this.value[pos] & ~(1L << innerKey);
-            if (this.value[pos] == 0L) {
-               this.removeFirstLong();
-               this.lastPos = -1;
-            }
-
-            return getFullKey(outerKey, innerKey);
          }
+
+         int pos = this.first;
+         long outerKey = this.key[pos];
+         int innerKey = Long.numberOfTrailingZeros(this.value[pos]);
+         this.value[pos] = this.value[pos] & ~(1L << innerKey);
+         if (this.value[pos] == 0L) {
+            this.removeFirstLong();
+            this.lastPos = -1;
+         }
+
+         return getFullKey(outerKey, innerKey);
       }
 
       protected void rehash(final int newN) {

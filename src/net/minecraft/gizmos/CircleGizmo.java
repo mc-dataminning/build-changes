@@ -12,9 +12,8 @@ public record CircleGizmo(Vec3 pos, float radius, GizmoStyle style) implements G
          Vec3[] points = new Vec3[21];
 
          for (int i = 0; i < 20; i++) {
-            float theta = (float)i * (float) (Math.PI / 10);
-            Vec3 point = this.pos
-               .add((double)((float)((double)this.radius * Math.cos((double)theta))), 0.0, (double)((float)((double)this.radius * Math.sin((double)theta))));
+            float theta = i * (float) (Math.PI / 10);
+            Vec3 point = this.pos.add((float)(this.radius * Math.cos(theta)), 0.0, (float)(this.radius * Math.sin(theta)));
             points[i] = point;
          }
 

@@ -20,19 +20,19 @@ public class DropChancesFormatFix extends DataFix {
    protected TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
          "DropChancesFormatFix", this.getInputSchema().getType(References.ENTITY), input -> input.update(DSL.remainderFinder(), remainder -> {
-               List<Float> armorDropChances = parseDropChances(remainder.get("ArmorDropChances"));
-               List<Float> handDropChances = parseDropChances(remainder.get("HandDropChances"));
-               float bodyArmorDropChance = remainder.get("body_armor_drop_chance").asNumber().result().map(Number::floatValue).orElse(0.085F);
-               remainder = remainder.remove("ArmorDropChances").remove("HandDropChances").remove("body_armor_drop_chance");
-               Dynamic<?> slotChances = remainder.emptyMap();
-               slotChances = addSlotChances(slotChances, armorDropChances, ARMOR_SLOT_NAMES);
-               slotChances = addSlotChances(slotChances, handDropChances, HAND_SLOT_NAMES);
-               if (bodyArmorDropChance != 0.085F) {
-                  slotChances = slotChances.set("body", remainder.createFloat(bodyArmorDropChance));
-               }
+            List<Float> armorDropChances = parseDropChances(remainder.get("ArmorDropChances"));
+            List<Float> handDropChances = parseDropChances(remainder.get("HandDropChances"));
+            float bodyArmorDropChance = remainder.get("body_armor_drop_chance").asNumber().result().map(Number::floatValue).orElse(0.085F);
+            remainder = remainder.remove("ArmorDropChances").remove("HandDropChances").remove("body_armor_drop_chance");
+            Dynamic<?> slotChances = remainder.emptyMap();
+            slotChances = addSlotChances(slotChances, armorDropChances, ARMOR_SLOT_NAMES);
+            slotChances = addSlotChances(slotChances, handDropChances, HAND_SLOT_NAMES);
+            if (bodyArmorDropChance != 0.085F) {
+               slotChances = slotChances.set("body", remainder.createFloat(bodyArmorDropChance));
+            }
 
-               return !slotChances.equals(remainder.emptyMap()) ? remainder.set("drop_chances", slotChances) : remainder;
-            })
+            return !slotChances.equals(remainder.emptyMap()) ? remainder.set("drop_chances", slotChances) : remainder;
+         })
       );
    }
 

@@ -18,8 +18,7 @@ public interface RecipeBuilder {
 
    RecipeBuilder group(@Nullable String group);
 
-   @Nullable
-   ResourceKey<Recipe<?>> defaultId();
+   @Nullable ResourceKey<Recipe<?>> defaultId();
 
    void save(RecipeOutput output, ResourceKey<Recipe<?>> location);
 
@@ -27,9 +26,9 @@ public interface RecipeBuilder {
       ResourceKey<Recipe<?>> defaultKey = this.defaultId();
       if (defaultKey == null) {
          throw new IllegalStateException("Recipe has no name to derive an id from - save it with an explicit id");
-      } else {
-         this.save(output, defaultKey);
       }
+
+      this.save(output, defaultKey);
    }
 
    default void save(final RecipeOutput output, final String id) {
@@ -37,9 +36,9 @@ public interface RecipeBuilder {
       ResourceKey<Recipe<?>> overriddenKey = ResourceKey.create(Registries.RECIPE, Identifier.parse(id));
       if (overriddenKey == defaultKey) {
          throw new IllegalStateException("Recipe " + id + " should remove its 'save' argument as it is equal to default one");
-      } else {
-         this.save(output, overriddenKey);
       }
+
+      this.save(output, overriddenKey);
    }
 
    static CraftingBookCategory determineCraftingBookCategory(final RecipeCategory category) {
@@ -55,7 +54,7 @@ public interface RecipeBuilder {
       return new Recipe.CommonInfo(showNotification);
    }
 
-   static CraftingRecipe.CraftingBookInfo createCraftingBookInfo(final RecipeCategory category, @Nullable final String group) {
+   static CraftingRecipe.CraftingBookInfo createCraftingBookInfo(final RecipeCategory category, final @Nullable String group) {
       return new CraftingRecipe.CraftingBookInfo(determineCraftingBookCategory(category), Objects.requireNonNullElse(group, ""));
    }
 

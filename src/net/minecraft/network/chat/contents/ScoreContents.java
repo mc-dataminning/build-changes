@@ -26,10 +26,10 @@ import net.minecraft.world.scores.Scoreboard;
 public record ScoreContents(Either<CompilableString<EntitySelector>, String> name, String objective) implements ComponentContents {
    public static final MapCodec<ScoreContents> INNER_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.either(EntitySelector.COMPILABLE_CODEC, Codec.STRING).fieldOf("name").forGetter(ScoreContents::name),
-               Codec.STRING.fieldOf("objective").forGetter(ScoreContents::objective)
-            )
-            .apply(i, ScoreContents::new)
+            Codec.either(EntitySelector.COMPILABLE_CODEC, Codec.STRING).fieldOf("name").forGetter(ScoreContents::name),
+            Codec.STRING.fieldOf("objective").forGetter(ScoreContents::objective)
+         )
+         .apply(i, ScoreContents::new)
    );
    public static final MapCodec<ScoreContents> MAP_CODEC = INNER_CODEC.fieldOf("score");
 
@@ -77,12 +77,12 @@ public record ScoreContents(Either<CompilableString<EntitySelector>, String> nam
       CommandSourceStack source = context.source();
       if (source == null) {
          return Component.empty();
-      } else {
-         ScoreHolder scoreHolder = this.findTargetName(source);
-         Entity entity = context.defaultScoreboardEntity();
-         ScoreHolder scoreName = (ScoreHolder)(entity != null && scoreHolder.equals(ScoreHolder.WILDCARD) ? entity : scoreHolder);
-         return this.getScore(scoreName, source);
       }
+
+      ScoreHolder scoreHolder = this.findTargetName(source);
+      Entity entity = context.defaultScoreboardEntity();
+      ScoreHolder scoreName = entity != null && scoreHolder.equals(ScoreHolder.WILDCARD) ? entity : scoreHolder;
+      return this.getScore(scoreName, source);
    }
 
    @Override

@@ -76,7 +76,7 @@ import org.jspecify.annotations.Nullable;
 public class Parrot extends ShoulderRidingEntity {
    private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(Parrot.class, EntityDataSerializers.INT);
    private static final Predicate<Mob> NOT_PARROT_PREDICATE = new Predicate<Mob>() {
-      public boolean test(@Nullable final Mob input) {
+      public boolean test(final @Nullable Mob input) {
          return input != null && Parrot.MOB_SOUND_MAP.containsKey(input.getType());
       }
    };
@@ -131,8 +131,7 @@ public class Parrot extends ShoulderRidingEntity {
    private float flapping = 1.0F;
    private float nextFlap = 1.0F;
    private boolean partyParrot;
-   @Nullable
-   private BlockPos jukebox;
+   private @Nullable BlockPos jukebox;
 
    public Parrot(final EntityType<? extends Parrot> type, final Level level) {
       super(type, level);
@@ -142,9 +141,8 @@ public class Parrot extends ShoulderRidingEntity {
       this.setPathfindingMalus(PathType.COCOA, -1.0F);
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       this.setVariant(Util.getRandom(Parrot.Variant.values(), level.getRandom()));
@@ -216,7 +214,7 @@ public class Parrot extends ShoulderRidingEntity {
    private void calculateFlapping() {
       this.oFlap = this.flap;
       this.oFlapSpeed = this.flapSpeed;
-      this.flapSpeed = this.flapSpeed + (float)(!this.onGround() && !this.isPassenger() ? 4 : -1) * 0.3F;
+      this.flapSpeed = this.flapSpeed + (!this.onGround() && !this.isPassenger() ? 4 : -1) * 0.3F;
       this.flapSpeed = Mth.clamp(this.flapSpeed, 0.0F, 1.0F);
       if (!this.onGround() && this.flapping < 1.0F) {
          this.flapping = 1.0F;
@@ -320,15 +318,13 @@ public class Parrot extends ShoulderRidingEntity {
       return false;
    }
 
-   @Nullable
    @Override
-   public AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       return null;
    }
 
-   @Nullable
    @Override
-   public SoundEvent getAmbientSound() {
+   public @Nullable SoundEvent getAmbientSound() {
       return getAmbient(this.level(), this.level().getRandom());
    }
 
@@ -401,10 +397,10 @@ public class Parrot extends ShoulderRidingEntity {
    public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
       if (this.isInvulnerableTo(level, source)) {
          return false;
-      } else {
-         this.setOrderedToSit(false);
-         return super.hurtServer(level, source, damage);
       }
+
+      this.setOrderedToSit(false);
+      return super.hurtServer(level, source, damage);
    }
 
    public Parrot.Variant getVariant() {
@@ -415,9 +411,8 @@ public class Parrot extends ShoulderRidingEntity {
       this.entityData.set(DATA_VARIANT_ID, variant.id);
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       return type == DataComponents.PARROT_VARIANT ? castComponentValue((DataComponentType<T>)type, this.getVariant()) : super.get(type);
    }
 
@@ -471,7 +466,7 @@ public class Parrot extends ShoulderRidingEntity {
 
    @Override
    public Vec3 getLeashOffset() {
-      return new Vec3(0.0, (double)(0.5F * this.getEyeHeight()), (double)(this.getBbWidth() * 0.4F));
+      return new Vec3(0.0, 0.5F * this.getEyeHeight(), this.getBbWidth() * 0.4F);
    }
 
    private static class ParrotWanderGoal extends WaterAvoidingRandomFlyingGoal {
@@ -479,9 +474,8 @@ public class Parrot extends ShoulderRidingEntity {
          super(mob, speedModifier);
       }
 
-      @Nullable
       @Override
-      protected Vec3 getPosition() {
+      protected @Nullable Vec3 getPosition() {
          Vec3 pos = null;
          if (this.mob.isInWater()) {
             pos = LandRandomPos.getPos(this.mob, 15, 15);
@@ -494,8 +488,7 @@ public class Parrot extends ShoulderRidingEntity {
          return pos == null ? super.getPosition() : pos;
       }
 
-      @Nullable
-      private Vec3 getTreePos() {
+      private @Nullable Vec3 getTreePos() {
          BlockPos mobPos = this.mob.blockPosition();
          BlockPos.MutableBlockPos abovePos = new BlockPos.MutableBlockPos();
          BlockPos.MutableBlockPos belowPos = new BlockPos.MutableBlockPos();
@@ -521,7 +514,7 @@ public class Parrot extends ShoulderRidingEntity {
       }
    }
 
-   public static enum Variant implements StringRepresentable {
+   public enum Variant implements StringRepresentable {
       RED_BLUE(0, "red_blue"),
       BLUE(1, "blue"),
       GREEN(2, "green"),
@@ -537,7 +530,7 @@ public class Parrot extends ShoulderRidingEntity {
       private final int id;
       private final String name;
 
-      private Variant(final int id, final String name) {
+      Variant(final int id, final String name) {
          this.id = id;
          this.name = name;
       }

@@ -61,7 +61,7 @@ public enum GpuFormat {
    private final GpuFormat.ComponentType componentType;
    private final int componentCount;
 
-   private GpuFormat(final GpuFormat.ComponentType componentType, final int componentCount) {
+   GpuFormat(final GpuFormat.ComponentType componentType, final int componentCount) {
       this.componentType = componentType;
       this.componentCount = componentCount;
    }
@@ -94,7 +94,7 @@ public enum GpuFormat {
       return this == S8_UINT || this == D32_FLOAT_S8_UINT || this == D24_UNORM_S8_UINT;
    }
 
-   public static enum ComponentType {
+   public enum ComponentType {
       UNORM_8(1),
       SNORM_8(1),
       UINT_8(1),
@@ -114,7 +114,7 @@ public enum GpuFormat {
 
       private final int byteSize;
 
-      private ComponentType(final int byteSize) {
+      ComponentType(final int byteSize) {
          this.byteSize = byteSize;
       }
 

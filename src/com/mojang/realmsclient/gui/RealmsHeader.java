@@ -2,6 +2,7 @@ package com.mojang.realmsclient.gui;
 
 import com.mojang.realmsclient.gui.screens.RealmsPendingInvitesScreen;
 import com.mojang.realmsclient.util.RealmsPersistence;
+import java.net.URI;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
@@ -34,8 +35,7 @@ public final class RealmsHeader {
    private final Button joinRealmButton;
    private final RealmsHeader.NotificationButton pendingInvitesButton;
    private final RealmsHeader.NotificationButton newsButton;
-   @Nullable
-   private volatile String newsLink;
+   private volatile @Nullable URI newsLink;
 
    public RealmsHeader(final Screen screen, final Runnable openJoinRealmScreen) {
       this.screen = screen;
@@ -66,7 +66,7 @@ public final class RealmsHeader {
       this.pendingInvitesButton.setTooltip(numberOfPendingInvites == 0 ? NO_PENDING_INVITES_TOOLTIP : PENDING_INVITES_TOOLTIP);
    }
 
-   public void setNews(@Nullable final String newsLink, final boolean hasUnreadNews) {
+   public void setNews(final @Nullable URI newsLink, final boolean hasUnreadNews) {
       this.newsLink = newsLink;
       this.newsButton.setNotificationCount(hasUnreadNews ? Integer.MAX_VALUE : 0);
    }
@@ -76,7 +76,7 @@ public final class RealmsHeader {
    }
 
    private void openNews() {
-      String newsLink = this.newsLink;
+      URI newsLink = this.newsLink;
       if (newsLink != null) {
          ConfirmLinkScreen.confirmLinkNow(this.screen, newsLink);
          if (this.newsButton.notificationCount() != 0) {
@@ -105,7 +105,7 @@ public final class RealmsHeader {
       private static final int NOTIFICATION_Y_OFFSET = -3;
       private int notificationCount;
 
-      public NotificationButton(final Component title, final Identifier texture, final Button.OnPress onPress, @Nullable final Component tooltip) {
+      public NotificationButton(final Component title, final Identifier texture, final Button.OnPress onPress, final @Nullable Component tooltip) {
          super(20, 20, title, 14, 14, 0, 0, new WidgetSprites(texture), onPress, tooltip, null, false);
       }
 

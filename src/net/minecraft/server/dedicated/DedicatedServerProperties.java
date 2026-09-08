@@ -78,8 +78,7 @@ public class DedicatedServerProperties extends Settings<DedicatedServerPropertie
    public final String managementServerTlsKeystore = this.get("management-server-tls-keystore", "");
    public final String managementServerTlsKeystorePassword = this.get("management-server-tls-keystore-password", "");
    public final String managementServerAllowedOrigins = this.get("management-server-allowed-origins", "");
-   @Nullable
-   public final Boolean announcePlayerAchievements = this.getLegacyBoolean("announce-player-achievements");
+   public final @Nullable Boolean announcePlayerAchievements = this.getLegacyBoolean("announce-player-achievements");
    public final boolean enableQuery = this.get("enable-query", false);
    public final int queryPort = this.get("query.port", 25565);
    public final boolean enableRcon = this.get("enable-rcon", false);
@@ -97,7 +96,7 @@ public class DedicatedServerProperties extends Settings<DedicatedServerPropertie
       DedicatedServerProperties::serializePermission,
       LevelBasedPermissionSet.GAMEMASTER
    );
-   public final long maxTickTime = this.get("max-tick-time", TimeUnit.MINUTES.toMillis(1L));
+   public final long maxTickTime = this.get("max-tick-time", (long)TimeUnit.MINUTES.toMillis(1L));
    public final int maxChainedNeighborUpdates = this.get("max-chained-neighbor-updates", 1000000);
    public final int rateLimitPacketsPerSecond = this.get("rate-limit", 0);
    public final int commandSpamThresholdSeconds = this.get("command-spam-threshold-seconds", 10);
@@ -115,7 +114,7 @@ public class DedicatedServerProperties extends Settings<DedicatedServerPropertie
    public final Settings<DedicatedServerProperties>.MutableValue<Boolean> enableStatus = this.getMutable("enable-status", true);
    public final Settings<DedicatedServerProperties>.MutableValue<Boolean> hideOnlinePlayers = this.getMutable("hide-online-players", false);
    public final Settings<DedicatedServerProperties>.MutableValue<Integer> entityBroadcastRangePercentage = this.getMutable(
-      "entity-broadcast-range-percentage", v -> Mth.clamp(Integer.parseInt(v), 10, 1000), Integer.valueOf(100)
+      "entity-broadcast-range-percentage", v -> Mth.clamp(Integer.parseInt(v), 10, 1000), 100
    );
    public final String textFilteringConfig = this.get("text-filtering-config", "");
    public final int textFilteringVersion = this.get("text-filtering-version", 0);
@@ -163,8 +162,7 @@ public class DedicatedServerProperties extends Settings<DedicatedServerPropertie
       return new DedicatedServerProperties(properties);
    }
 
-   @Nullable
-   private static Component parseResourcePackPrompt(final String prompt) {
+   private static @Nullable Component parseResourcePackPrompt(final String prompt) {
       if (!Strings.isNullOrEmpty(prompt)) {
          try {
             JsonElement element = StrictJsonParser.parse(prompt);
@@ -172,8 +170,8 @@ public class DedicatedServerProperties extends Settings<DedicatedServerPropertie
                .parse(RegistryAccess.EMPTY.createSerializationContext(JsonOps.INSTANCE), element)
                .resultOrPartial(msg -> LOGGER.warn("Failed to parse resource pack prompt '{}': {}", prompt, msg))
                .orElse(null);
-         } catch (Exception var2) {
-            LOGGER.warn("Failed to parse resource pack prompt '{}'", prompt, var2);
+         } catch (Exception e) {
+            LOGGER.warn("Failed to parse resource pack prompt '{}'", prompt, e);
          }
       }
 
@@ -184,50 +182,48 @@ public class DedicatedServerProperties extends Settings<DedicatedServerPropertie
       final String id,
       final String url,
       final String resourcePackSha1,
-      @Nullable final String resourcePackHash,
+      final @Nullable String resourcePackHash,
       final boolean requireResourcePack,
       final String resourcePackPrompt
    ) {
       if (url.isEmpty()) {
          return Optional.empty();
-      } else {
-         String hash;
-         if (!resourcePackSha1.isEmpty()) {
-            hash = resourcePackSha1;
-            if (!Strings.isNullOrEmpty(resourcePackHash)) {
-               LOGGER.warn("resource-pack-hash is deprecated and found along side resource-pack-sha1. resource-pack-hash will be ignored.");
-            }
-         } else if (!Strings.isNullOrEmpty(resourcePackHash)) {
-            LOGGER.warn("resource-pack-hash is deprecated. Please use resource-pack-sha1 instead.");
-            hash = resourcePackHash;
-         } else {
-            hash = "";
-         }
-
-         if (hash.isEmpty()) {
-            LOGGER.warn(
-               "You specified a resource pack without providing a sha1 hash. Pack will be updated on the client only if you change the name of the pack."
-            );
-         } else if (!SHA1.matcher(hash).matches()) {
-            LOGGER.warn("Invalid sha1 for resource-pack-sha1");
-         }
-
-         Component prompt = parseResourcePackPrompt(resourcePackPrompt);
-         UUID parsedId;
-         if (id.isEmpty()) {
-            parsedId = UUID.nameUUIDFromBytes(url.getBytes(StandardCharsets.UTF_8));
-            LOGGER.warn("resource-pack-id missing, using default of {}", parsedId);
-         } else {
-            try {
-               parsedId = UUID.fromString(id);
-            } catch (IllegalArgumentException var10) {
-               LOGGER.warn("Failed to parse '{}' into UUID", id);
-               return Optional.empty();
-            }
-         }
-
-         return Optional.of(new MinecraftServer.ServerResourcePackInfo(parsedId, url, hash, requireResourcePack, prompt));
       }
+
+      String hash;
+      if (!resourcePackSha1.isEmpty()) {
+         hash = resourcePackSha1;
+         if (!Strings.isNullOrEmpty(resourcePackHash)) {
+            LOGGER.warn("resource-pack-hash is deprecated and found along side resource-pack-sha1. resource-pack-hash will be ignored.");
+         }
+      } else if (!Strings.isNullOrEmpty(resourcePackHash)) {
+         LOGGER.warn("resource-pack-hash is deprecated. Please use resource-pack-sha1 instead.");
+         hash = resourcePackHash;
+      } else {
+         hash = "";
+      }
+
+      if (hash.isEmpty()) {
+         LOGGER.warn("You specified a resource pack without providing a sha1 hash. Pack will be updated on the client only if you change the name of the pack.");
+      } else if (!SHA1.matcher(hash).matches()) {
+         LOGGER.warn("Invalid sha1 for resource-pack-sha1");
+      }
+
+      Component prompt = parseResourcePackPrompt(resourcePackPrompt);
+      UUID parsedId;
+      if (id.isEmpty()) {
+         parsedId = UUID.nameUUIDFromBytes(url.getBytes(StandardCharsets.UTF_8));
+         LOGGER.warn("resource-pack-id missing, using default of {}", parsedId);
+      } else {
+         try {
+            parsedId = UUID.fromString(id);
+         } catch (IllegalArgumentException e) {
+            LOGGER.warn("Failed to parse '{}' into UUID", id);
+            return Optional.empty();
+         }
+      }
+
+      return Optional.of(new MinecraftServer.ServerResourcePackInfo(parsedId, url, hash, requireResourcePack, prompt));
    }
 
    private static DataPackConfig getDatapackConfig(final String enabledPacks, final String disabledPacks) {
@@ -236,12 +232,11 @@ public class DedicatedServerProperties extends Settings<DedicatedServerPropertie
       return new DataPackConfig(enabledPacksIds, disabledPacksIds);
    }
 
-   @Nullable
-   public static LevelBasedPermissionSet deserializePermission(final String value) {
+   public static @Nullable LevelBasedPermissionSet deserializePermission(final String value) {
       try {
          PermissionLevel permissionLevel = PermissionLevel.byId(Integer.parseInt(value));
          return LevelBasedPermissionSet.forLevel(permissionLevel);
-      } catch (NumberFormatException var2) {
+      } catch (NumberFormatException e) {
          return null;
       }
    }
@@ -254,7 +249,7 @@ public class DedicatedServerProperties extends Settings<DedicatedServerPropertie
       return this.worldDimensionData.create(registries);
    }
 
-   private static record WorldDimensionData(JsonObject generatorSettings, String levelType) {
+   private record WorldDimensionData(JsonObject generatorSettings, String levelType) {
       private static final Map<String, ResourceKey<WorldPreset>> LEGACY_PRESET_NAMES = Map.of(
          "default", WorldPresets.NORMAL, "largebiomes", WorldPresets.LARGE_BIOMES
       );

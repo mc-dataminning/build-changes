@@ -18,7 +18,7 @@ import net.minecraft.world.phys.BlockHitResult;
 public class CaveVinesPlantBlock extends GrowingPlantBodyBlock implements CaveVines {
    public CaveVinesPlantBlock(final BlockBehaviour.Properties properties) {
       super(properties, Direction.DOWN, SHAPE, false);
-      this.registerDefaultState(this.stateDefinition.any().setValue(BERRIES, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(BERRIES, false));
    }
 
    @Override
@@ -60,6 +60,6 @@ public class CaveVinesPlantBlock extends GrowingPlantBodyBlock implements CaveVi
 
    @Override
    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state, final BonemealSource source) {
-      level.setBlock(pos, state.setValue(BERRIES, Boolean.valueOf(true)), 2);
+      level.setBlock(pos, state.setValue(BERRIES, true), 2);
    }
 }

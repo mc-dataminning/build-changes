@@ -16,10 +16,9 @@ public interface ProtocolInfo<T extends PacketListener> {
 
    StreamCodec<ByteBuf, Packet<? super T>> codec();
 
-   @Nullable
-   BundlerInfo bundlerInfo();
+   @Nullable BundlerInfo bundlerInfo();
 
-   public interface Details {
+   interface Details {
       ConnectionProtocol id();
 
       PacketFlow flow();
@@ -28,12 +27,12 @@ public interface ProtocolInfo<T extends PacketListener> {
       void listPackets(ProtocolInfo.Details.PacketVisitor output);
 
       @FunctionalInterface
-      public interface PacketVisitor {
+      interface PacketVisitor {
          void accept(PacketType<?> type, int networkId);
       }
    }
 
-   public interface DetailsProvider {
+   interface DetailsProvider {
       ProtocolInfo.Details details();
    }
 }

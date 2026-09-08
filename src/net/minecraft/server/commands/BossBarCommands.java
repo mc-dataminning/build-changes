@@ -61,8 +61,8 @@ public class BossBarCommands {
       Component.translatable("commands.bossbar.set.visibility.unchanged.visible")
    );
    public static final SuggestionProvider<CommandSourceStack> SUGGEST_BOSS_BAR = (c, b) -> SharedSuggestionProvider.suggestResource(
-         ((CommandSourceStack)c.getSource()).getServer().getCustomBossEvents().getIds(), b
-      );
+      ((CommandSourceStack)c.getSource()).getServer().getCustomBossEvents().getIds(), b
+   );
 
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
       dispatcher.register(
@@ -78,10 +78,10 @@ public class BossBarCommands {
                                        Commands.argument("name", ComponentArgument.textComponent(context))
                                           .executes(
                                              c -> createBar(
-                                                   (CommandSourceStack)c.getSource(),
-                                                   IdentifierArgument.getId(c, "id"),
-                                                   ComponentArgument.getResolvedComponent(c, "name")
-                                                )
+                                                (CommandSourceStack)c.getSource(),
+                                                IdentifierArgument.getId(c, "id"),
+                                                ComponentArgument.getResolvedComponent(c, "name")
+                                             )
                                           )
                                     )
                               )
@@ -108,10 +108,10 @@ public class BossBarCommands {
                                                       Commands.argument("name", ComponentArgument.textComponent(context))
                                                          .executes(
                                                             c -> setName(
-                                                                  (CommandSourceStack)c.getSource(),
-                                                                  getBossBar(c),
-                                                                  ComponentArgument.getResolvedComponent(c, "name")
-                                                               )
+                                                               (CommandSourceStack)c.getSource(),
+                                                               getBossBar(c),
+                                                               ComponentArgument.getResolvedComponent(c, "name")
+                                                            )
                                                          )
                                                    )
                                              ))
@@ -123,16 +123,16 @@ public class BossBarCommands {
                                                                      Commands.literal("pink")
                                                                         .executes(
                                                                            c -> setColor(
-                                                                                 (CommandSourceStack)c.getSource(), getBossBar(c), BossEvent.BossBarColor.PINK
-                                                                              )
+                                                                              (CommandSourceStack)c.getSource(), getBossBar(c), BossEvent.BossBarColor.PINK
+                                                                           )
                                                                         )
                                                                   ))
                                                                .then(
                                                                   Commands.literal("blue")
                                                                      .executes(
                                                                         c -> setColor(
-                                                                              (CommandSourceStack)c.getSource(), getBossBar(c), BossEvent.BossBarColor.BLUE
-                                                                           )
+                                                                           (CommandSourceStack)c.getSource(), getBossBar(c), BossEvent.BossBarColor.BLUE
+                                                                        )
                                                                      )
                                                                ))
                                                             .then(
@@ -172,16 +172,16 @@ public class BossBarCommands {
                                                             Commands.literal("progress")
                                                                .executes(
                                                                   c -> setStyle(
-                                                                        (CommandSourceStack)c.getSource(), getBossBar(c), BossEvent.BossBarOverlay.PROGRESS
-                                                                     )
+                                                                     (CommandSourceStack)c.getSource(), getBossBar(c), BossEvent.BossBarOverlay.PROGRESS
+                                                                  )
                                                                )
                                                          ))
                                                       .then(
                                                          Commands.literal("notched_6")
                                                             .executes(
                                                                c -> setStyle(
-                                                                     (CommandSourceStack)c.getSource(), getBossBar(c), BossEvent.BossBarOverlay.NOTCHED_6
-                                                                  )
+                                                                  (CommandSourceStack)c.getSource(), getBossBar(c), BossEvent.BossBarOverlay.NOTCHED_6
+                                                               )
                                                             )
                                                       ))
                                                    .then(
@@ -278,11 +278,11 @@ public class BossBarCommands {
       } else {
          source.sendSuccess(
             () -> Component.translatable(
-                  "commands.bossbar.get.players.some",
-                  bossBar.getDisplayName(),
-                  bossBar.getPlayers().size(),
-                  ComponentUtils.formatList(bossBar.getPlayers(), Player::getDisplayName)
-               ),
+               "commands.bossbar.get.players.some",
+               bossBar.getDisplayName(),
+               bossBar.getPlayers().size(),
+               ComponentUtils.formatList(bossBar.getPlayers(), Player::getDisplayName)
+            ),
             true
          );
       }
@@ -312,75 +312,75 @@ public class BossBarCommands {
    private static int setValue(final CommandSourceStack source, final CustomBossEvent bossBar, final int value) throws CommandSyntaxException {
       if (bossBar.value() == value) {
          throw ERROR_NO_VALUE_CHANGE.create();
-      } else {
-         bossBar.setValue(value);
-         source.sendSuccess(() -> Component.translatable("commands.bossbar.set.value.success", bossBar.getDisplayName(), value), true);
-         return value;
       }
+
+      bossBar.setValue(value);
+      source.sendSuccess(() -> Component.translatable("commands.bossbar.set.value.success", bossBar.getDisplayName(), value), true);
+      return value;
    }
 
    private static int setMax(final CommandSourceStack source, final CustomBossEvent bossBar, final int value) throws CommandSyntaxException {
       if (bossBar.max() == value) {
          throw ERROR_NO_MAX_CHANGE.create();
-      } else {
-         bossBar.setMax(value);
-         source.sendSuccess(() -> Component.translatable("commands.bossbar.set.max.success", bossBar.getDisplayName(), value), true);
-         return value;
       }
+
+      bossBar.setMax(value);
+      source.sendSuccess(() -> Component.translatable("commands.bossbar.set.max.success", bossBar.getDisplayName(), value), true);
+      return value;
    }
 
    private static int setColor(final CommandSourceStack source, final CustomBossEvent bossBar, final BossEvent.BossBarColor color) throws CommandSyntaxException {
       if (bossBar.getColor().equals(color)) {
          throw ERROR_NO_COLOR_CHANGE.create();
-      } else {
-         bossBar.setColor(color);
-         source.sendSuccess(() -> Component.translatable("commands.bossbar.set.color.success", bossBar.getDisplayName()), true);
-         return 0;
       }
+
+      bossBar.setColor(color);
+      source.sendSuccess(() -> Component.translatable("commands.bossbar.set.color.success", bossBar.getDisplayName()), true);
+      return 0;
    }
 
    private static int setStyle(final CommandSourceStack source, final CustomBossEvent bossBar, final BossEvent.BossBarOverlay style) throws CommandSyntaxException {
       if (bossBar.getOverlay().equals(style)) {
          throw ERROR_NO_STYLE_CHANGE.create();
-      } else {
-         bossBar.setOverlay(style);
-         source.sendSuccess(() -> Component.translatable("commands.bossbar.set.style.success", bossBar.getDisplayName()), true);
-         return 0;
       }
+
+      bossBar.setOverlay(style);
+      source.sendSuccess(() -> Component.translatable("commands.bossbar.set.style.success", bossBar.getDisplayName()), true);
+      return 0;
    }
 
    private static int setName(final CommandSourceStack source, final CustomBossEvent bossBar, final Component name) throws CommandSyntaxException {
       Component replaced = ComponentUtils.resolve(ResolutionContext.builder().withSource(source).withEntityOverride(null).build(), name);
       if (bossBar.getName().equals(replaced)) {
          throw ERROR_NO_NAME_CHANGE.create();
-      } else {
-         bossBar.setName(replaced);
-         source.sendSuccess(() -> Component.translatable("commands.bossbar.set.name.success", bossBar.getDisplayName()), true);
-         return 0;
       }
+
+      bossBar.setName(replaced);
+      source.sendSuccess(() -> Component.translatable("commands.bossbar.set.name.success", bossBar.getDisplayName()), true);
+      return 0;
    }
 
    private static int setPlayers(final CommandSourceStack source, final CustomBossEvent bossBar, final Collection<ServerPlayer> targets) throws CommandSyntaxException {
       boolean changed = bossBar.setPlayers(targets);
       if (!changed) {
          throw ERROR_NO_PLAYER_CHANGE.create();
-      } else {
-         if (bossBar.getPlayers().isEmpty()) {
-            source.sendSuccess(() -> Component.translatable("commands.bossbar.set.players.success.none", bossBar.getDisplayName()), true);
-         } else {
-            source.sendSuccess(
-               () -> Component.translatable(
-                     "commands.bossbar.set.players.success.some",
-                     bossBar.getDisplayName(),
-                     targets.size(),
-                     ComponentUtils.formatList(targets, Player::getDisplayName)
-                  ),
-               true
-            );
-         }
-
-         return bossBar.getPlayers().size();
       }
+
+      if (bossBar.getPlayers().isEmpty()) {
+         source.sendSuccess(() -> Component.translatable("commands.bossbar.set.players.success.none", bossBar.getDisplayName()), true);
+      } else {
+         source.sendSuccess(
+            () -> Component.translatable(
+               "commands.bossbar.set.players.success.some",
+               bossBar.getDisplayName(),
+               targets.size(),
+               ComponentUtils.formatList(targets, Player::getDisplayName)
+            ),
+            true
+         );
+      }
+
+      return bossBar.getPlayers().size();
    }
 
    private static int listBars(final CommandSourceStack source) {
@@ -401,13 +401,13 @@ public class BossBarCommands {
       CustomBossEvents events = source.getServer().getCustomBossEvents();
       if (events.get(id) != null) {
          throw ERROR_ALREADY_EXISTS.create(id.toString());
-      } else {
-         CustomBossEvent event = events.create(
-            source.getLevel().getRandom(), id, ComponentUtils.resolve(ResolutionContext.builder().withSource(source).withEntityOverride(null).build(), name)
-         );
-         source.sendSuccess(() -> Component.translatable("commands.bossbar.create.success", event.getDisplayName()), true);
-         return events.getEvents().size();
       }
+
+      CustomBossEvent event = events.create(
+         source.getLevel().getRandom(), id, ComponentUtils.resolve(ResolutionContext.builder().withSource(source).withEntityOverride(null).build(), name)
+      );
+      source.sendSuccess(() -> Component.translatable("commands.bossbar.create.success", event.getDisplayName()), true);
+      return events.getEvents().size();
    }
 
    private static int removeBar(final CommandSourceStack source, final CustomBossEvent bossBar) {

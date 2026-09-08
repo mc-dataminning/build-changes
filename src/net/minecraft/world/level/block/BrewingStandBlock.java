@@ -37,13 +37,7 @@ public class BrewingStandBlock extends BaseEntityBlock {
 
    public BrewingStandBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(HAS_BOTTLE[0], Boolean.valueOf(false))
-            .setValue(HAS_BOTTLE[1], Boolean.valueOf(false))
-            .setValue(HAS_BOTTLE[2], Boolean.valueOf(false))
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(HAS_BOTTLE[0], false).setValue(HAS_BOTTLE[1], false).setValue(HAS_BOTTLE[2], false));
    }
 
    @Override
@@ -51,9 +45,8 @@ public class BrewingStandBlock extends BaseEntityBlock {
       return new BrewingStandBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return level instanceof ServerLevel serverLevel
          ? createTickerHelper(
             type, BlockEntityTypes.BREWING_STAND, (var1, pos, state, entity) -> BrewingStandBlockEntity.serverTick(serverLevel, pos, state, entity)
@@ -80,9 +73,9 @@ public class BrewingStandBlock extends BaseEntityBlock {
 
    @Override
    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      double x = (double)pos.getX() + 0.4 + (double)random.nextFloat() * 0.2;
-      double y = (double)pos.getY() + 0.7 + (double)random.nextFloat() * 0.3;
-      double z = (double)pos.getZ() + 0.4 + (double)random.nextFloat() * 0.2;
+      double x = pos.getX() + 0.4 + random.nextFloat() * 0.2;
+      double y = pos.getY() + 0.7 + random.nextFloat() * 0.3;
+      double z = pos.getZ() + 0.4 + random.nextFloat() * 0.2;
       level.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0, 0.0, 0.0);
    }
 

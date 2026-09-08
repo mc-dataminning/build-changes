@@ -26,8 +26,8 @@ public class CompositeModel implements ItemModel {
       final ItemStack item,
       final ItemModelResolver resolver,
       final ItemDisplayContext displayContext,
-      @Nullable final ClientLevel level,
-      @Nullable final ItemOwner owner,
+      final @Nullable ClientLevel level,
+      final @Nullable ItemOwner owner,
       final int seed
    ) {
       output.appendModelIdentityElement(this);
@@ -38,13 +38,13 @@ public class CompositeModel implements ItemModel {
       }
    }
 
-   public static record Unbaked(List<ItemModel.Unbaked> models, Optional<Transformation> transformation) implements ItemModel.Unbaked {
+   public record Unbaked(List<ItemModel.Unbaked> models, Optional<Transformation> transformation) implements ItemModel.Unbaked {
       public static final MapCodec<CompositeModel.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  ItemModels.CODEC.listOf().fieldOf("models").forGetter(CompositeModel.Unbaked::models),
-                  Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(CompositeModel.Unbaked::transformation)
-               )
-               .apply(i, CompositeModel.Unbaked::new)
+               ItemModels.CODEC.listOf().fieldOf("models").forGetter(CompositeModel.Unbaked::models),
+               Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(CompositeModel.Unbaked::transformation)
+            )
+            .apply(i, CompositeModel.Unbaked::new)
       );
 
       @Override
@@ -63,12 +63,12 @@ public class CompositeModel implements ItemModel {
       public ItemModel bake(final ItemModel.BakingContext context, final Matrix4fc transformation) {
          if (this.models.isEmpty()) {
             return EmptyModel.INSTANCE;
-         } else {
-            Matrix4fc childTransform = Transformation.compose(transformation, this.transformation);
-            return (ItemModel)(this.models.size() == 1
-               ? this.models.getFirst().bake(context, childTransform)
-               : new CompositeModel(this.models.stream().map(m -> m.bake(context, childTransform)).toList()));
          }
+
+         Matrix4fc childTransform = Transformation.compose(transformation, this.transformation);
+         return this.models.size() == 1
+            ? this.models.getFirst().bake(context, childTransform)
+            : new CompositeModel(this.models.stream().map(m -> m.bake(context, childTransform)).toList());
       }
    }
 }

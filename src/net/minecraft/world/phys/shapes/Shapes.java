@@ -69,25 +69,27 @@ public final class Shapes {
                DoubleArrayList.wrap(new double[]{minY, maxY}),
                DoubleArrayList.wrap(new double[]{minZ, maxZ})
             );
-         } else if (xBits == 0 && yBits == 0 && zBits == 0) {
-            return block();
-         } else {
-            int xSize = 1 << xBits;
-            int ySize = 1 << yBits;
-            int zSize = 1 << zBits;
-            BitSetDiscreteVoxelShape voxelShape = BitSetDiscreteVoxelShape.withFilledBounds(
-               xSize,
-               ySize,
-               zSize,
-               (int)Math.round(minX * (double)xSize),
-               (int)Math.round(minY * (double)ySize),
-               (int)Math.round(minZ * (double)zSize),
-               (int)Math.round(maxX * (double)xSize),
-               (int)Math.round(maxY * (double)ySize),
-               (int)Math.round(maxZ * (double)zSize)
-            );
-            return new CubeVoxelShape(voxelShape);
          }
+
+         if (xBits == 0 && yBits == 0 && zBits == 0) {
+            return block();
+         }
+
+         int xSize = 1 << xBits;
+         int ySize = 1 << yBits;
+         int zSize = 1 << zBits;
+         BitSetDiscreteVoxelShape voxelShape = BitSetDiscreteVoxelShape.withFilledBounds(
+            xSize,
+            ySize,
+            zSize,
+            (int)Math.round(minX * xSize),
+            (int)Math.round(minY * ySize),
+            (int)Math.round(minZ * zSize),
+            (int)Math.round(maxX * xSize),
+            (int)Math.round(maxY * ySize),
+            (int)Math.round(maxZ * zSize)
+         );
+         return new CubeVoxelShape(voxelShape);
       } else {
          return empty();
       }
@@ -102,10 +104,10 @@ public final class Shapes {
       if (!(min < -1.0E-7) && !(max > 1.0000001)) {
          for (int bits = 0; bits <= 3; bits++) {
             int intervals = 1 << bits;
-            double shMin = min * (double)intervals;
-            double shMax = max * (double)intervals;
-            boolean foundMin = Math.abs(shMin - (double)Math.round(shMin)) < 1.0E-7 * (double)intervals;
-            boolean foundMax = Math.abs(shMax - (double)Math.round(shMax)) < 1.0E-7 * (double)intervals;
+            double shMin = min * intervals;
+            double shMax = max * intervals;
+            boolean foundMin = Math.abs(shMin - Math.round(shMin)) < 1.0E-7 * intervals;
+            boolean foundMax = Math.abs(shMax - Math.round(shMax)) < 1.0E-7 * intervals;
             if (foundMin && foundMax) {
                return bits;
             }
@@ -119,7 +121,7 @@ public final class Shapes {
 
    @VisibleForTesting
    static long lcm(final int first, final int second) {
-      return (long)first * (long)(second / IntMath.gcd(first, second));
+      return (long)first * (second / IntMath.gcd(first, second));
    }
 
    public static VoxelShape or(final VoxelShape first, final VoxelShape second) {
@@ -137,78 +139,78 @@ public final class Shapes {
    public static VoxelShape joinUnoptimized(final VoxelShape first, final VoxelShape second, final BooleanOp op) {
       if (op.apply(false, false)) {
          throw (IllegalArgumentException)Util.pauseInIde(new IllegalArgumentException());
-      } else if (first == second) {
-         return op.apply(true, true) ? first : empty();
-      } else {
-         boolean firstOnlyMatters = op.apply(true, false);
-         boolean secondOnlyMatters = op.apply(false, true);
-         if (first.isEmpty()) {
-            return secondOnlyMatters ? second : empty();
-         } else if (second.isEmpty()) {
-            return firstOnlyMatters ? first : empty();
-         } else {
-            IndexMerger xMerger = createIndexMerger(
-               1, first.getCoords(Direction.Axis.X), second.getCoords(Direction.Axis.X), firstOnlyMatters, secondOnlyMatters
-            );
-            IndexMerger yMerger = createIndexMerger(
-               xMerger.size() - 1, first.getCoords(Direction.Axis.Y), second.getCoords(Direction.Axis.Y), firstOnlyMatters, secondOnlyMatters
-            );
-            IndexMerger zMerger = createIndexMerger(
-               (xMerger.size() - 1) * (yMerger.size() - 1),
-               first.getCoords(Direction.Axis.Z),
-               second.getCoords(Direction.Axis.Z),
-               firstOnlyMatters,
-               secondOnlyMatters
-            );
-            BitSetDiscreteVoxelShape voxelShape = BitSetDiscreteVoxelShape.join(first.shape, second.shape, xMerger, yMerger, zMerger, op);
-            return (VoxelShape)(xMerger instanceof DiscreteCubeMerger && yMerger instanceof DiscreteCubeMerger && zMerger instanceof DiscreteCubeMerger
-               ? new CubeVoxelShape(voxelShape)
-               : new ArrayVoxelShape(voxelShape, xMerger.getList(), yMerger.getList(), zMerger.getList()));
-         }
       }
+
+      if (first == second) {
+         return op.apply(true, true) ? first : empty();
+      }
+
+      boolean firstOnlyMatters = op.apply(true, false);
+      boolean secondOnlyMatters = op.apply(false, true);
+      if (first.isEmpty()) {
+         return secondOnlyMatters ? second : empty();
+      }
+
+      if (second.isEmpty()) {
+         return firstOnlyMatters ? first : empty();
+      }
+
+      IndexMerger xMerger = createIndexMerger(1, first.getCoords(Direction.Axis.X), second.getCoords(Direction.Axis.X), firstOnlyMatters, secondOnlyMatters);
+      IndexMerger yMerger = createIndexMerger(
+         xMerger.size() - 1, first.getCoords(Direction.Axis.Y), second.getCoords(Direction.Axis.Y), firstOnlyMatters, secondOnlyMatters
+      );
+      IndexMerger zMerger = createIndexMerger(
+         (xMerger.size() - 1) * (yMerger.size() - 1),
+         first.getCoords(Direction.Axis.Z),
+         second.getCoords(Direction.Axis.Z),
+         firstOnlyMatters,
+         secondOnlyMatters
+      );
+      BitSetDiscreteVoxelShape voxelShape = BitSetDiscreteVoxelShape.join(first.shape, second.shape, xMerger, yMerger, zMerger, op);
+      return xMerger instanceof DiscreteCubeMerger && yMerger instanceof DiscreteCubeMerger && zMerger instanceof DiscreteCubeMerger
+         ? new CubeVoxelShape(voxelShape)
+         : new ArrayVoxelShape(voxelShape, xMerger.getList(), yMerger.getList(), zMerger.getList());
    }
 
    public static boolean joinIsNotEmpty(final VoxelShape first, final VoxelShape second, final BooleanOp op) {
       if (op.apply(false, false)) {
          throw (IllegalArgumentException)Util.pauseInIde(new IllegalArgumentException());
-      } else {
-         boolean firstEmpty = first.isEmpty();
-         boolean secondEmpty = second.isEmpty();
-         if (!firstEmpty && !secondEmpty) {
-            if (first == second) {
-               return op.apply(true, true);
-            } else {
-               boolean firstOnlyMatters = op.apply(true, false);
-               boolean secondOnlyMatters = op.apply(false, true);
+      }
 
-               for (Direction.Axis axis : AxisCycle.AXIS_VALUES) {
-                  if (first.max(axis) < second.min(axis) - 1.0E-7) {
-                     return firstOnlyMatters || secondOnlyMatters;
-                  }
-
-                  if (second.max(axis) < first.min(axis) - 1.0E-7) {
-                     return firstOnlyMatters || secondOnlyMatters;
-                  }
-               }
-
-               IndexMerger xMerger = createIndexMerger(
-                  1, first.getCoords(Direction.Axis.X), second.getCoords(Direction.Axis.X), firstOnlyMatters, secondOnlyMatters
-               );
-               IndexMerger yMerger = createIndexMerger(
-                  xMerger.size() - 1, first.getCoords(Direction.Axis.Y), second.getCoords(Direction.Axis.Y), firstOnlyMatters, secondOnlyMatters
-               );
-               IndexMerger zMerger = createIndexMerger(
-                  (xMerger.size() - 1) * (yMerger.size() - 1),
-                  first.getCoords(Direction.Axis.Z),
-                  second.getCoords(Direction.Axis.Z),
-                  firstOnlyMatters,
-                  secondOnlyMatters
-               );
-               return joinIsNotEmpty(xMerger, yMerger, zMerger, first.shape, second.shape, op);
-            }
-         } else {
-            return op.apply(!firstEmpty, !secondEmpty);
+      boolean firstEmpty = first.isEmpty();
+      boolean secondEmpty = second.isEmpty();
+      if (!firstEmpty && !secondEmpty) {
+         if (first == second) {
+            return op.apply(true, true);
          }
+
+         boolean firstOnlyMatters = op.apply(true, false);
+         boolean secondOnlyMatters = op.apply(false, true);
+
+         for (Direction.Axis axis : AxisCycle.AXIS_VALUES) {
+            if (first.max(axis) < second.min(axis) - 1.0E-7) {
+               return firstOnlyMatters || secondOnlyMatters;
+            }
+
+            if (second.max(axis) < first.min(axis) - 1.0E-7) {
+               return firstOnlyMatters || secondOnlyMatters;
+            }
+         }
+
+         IndexMerger xMerger = createIndexMerger(1, first.getCoords(Direction.Axis.X), second.getCoords(Direction.Axis.X), firstOnlyMatters, secondOnlyMatters);
+         IndexMerger yMerger = createIndexMerger(
+            xMerger.size() - 1, first.getCoords(Direction.Axis.Y), second.getCoords(Direction.Axis.Y), firstOnlyMatters, secondOnlyMatters
+         );
+         IndexMerger zMerger = createIndexMerger(
+            (xMerger.size() - 1) * (yMerger.size() - 1),
+            first.getCoords(Direction.Axis.Z),
+            second.getCoords(Direction.Axis.Z),
+            firstOnlyMatters,
+            secondOnlyMatters
+         );
+         return joinIsNotEmpty(xMerger, yMerger, zMerger, first.shape, second.shape, op);
+      } else {
+         return op.apply(!firstEmpty, !secondEmpty);
       }
    }
 
@@ -222,8 +224,8 @@ public final class Shapes {
    ) {
       return !xMerger.forMergedIndexes(
          (x1, x2, xr) -> yMerger.forMergedIndexes(
-               (y1, y2, yr) -> zMerger.forMergedIndexes((z1, z2, zr) -> !op.apply(first.isFullWide(x1, y1, z1), second.isFullWide(x2, y2, z2)))
-            )
+            (y1, y2, yr) -> zMerger.forMergedIndexes((z1, z2, zr) -> !op.apply(first.isFullWide(x1, y1, z1), second.isFullWide(x2, y2, z2)))
+         )
       );
    }
 
@@ -242,18 +244,20 @@ public final class Shapes {
    public static boolean blockOccludes(final VoxelShape shape, final VoxelShape occluder, final Direction direction) {
       if (shape == block() && occluder == block()) {
          return true;
-      } else if (occluder.isEmpty()) {
-         return false;
-      } else {
-         Direction.Axis axis = direction.getAxis();
-         Direction.AxisDirection sign = direction.getAxisDirection();
-         VoxelShape first = sign == Direction.AxisDirection.POSITIVE ? shape : occluder;
-         VoxelShape second = sign == Direction.AxisDirection.POSITIVE ? occluder : shape;
-         BooleanOp op = sign == Direction.AxisDirection.POSITIVE ? BooleanOp.ONLY_FIRST : BooleanOp.ONLY_SECOND;
-         return DoubleMath.fuzzyEquals(first.max(axis), 1.0, 1.0E-7)
-            && DoubleMath.fuzzyEquals(second.min(axis), 0.0, 1.0E-7)
-            && !joinIsNotEmpty(new SliceShape(first, axis, first.shape.getSize(axis) - 1), new SliceShape(second, axis, 0), op);
       }
+
+      if (occluder.isEmpty()) {
+         return false;
+      }
+
+      Direction.Axis axis = direction.getAxis();
+      Direction.AxisDirection sign = direction.getAxisDirection();
+      VoxelShape first = sign == Direction.AxisDirection.POSITIVE ? shape : occluder;
+      VoxelShape second = sign == Direction.AxisDirection.POSITIVE ? occluder : shape;
+      BooleanOp op = sign == Direction.AxisDirection.POSITIVE ? BooleanOp.ONLY_FIRST : BooleanOp.ONLY_SECOND;
+      return DoubleMath.fuzzyEquals(first.max(axis), 1.0, 1.0E-7)
+         && DoubleMath.fuzzyEquals(second.min(axis), 0.0, 1.0E-7)
+         && !joinIsNotEmpty(new SliceShape(first, axis, first.shape.getSize(axis) - 1), new SliceShape(second, axis, 0), op);
    }
 
    public static boolean mergedFaceOccludes(final VoxelShape shape, final VoxelShape occluder, final Direction direction) {
@@ -296,7 +300,7 @@ public final class Shapes {
       int secondSize = second.size() - 1;
       if (first instanceof CubePointRange && second instanceof CubePointRange) {
          long size = lcm(firstSize, secondSize);
-         if ((long)cost * size <= 256L) {
+         if (cost * size <= 256L) {
             return new DiscreteCubeMerger(firstSize, secondSize);
          }
       }
@@ -306,9 +310,9 @@ public final class Shapes {
       } else if (second.getDouble(secondSize) < first.getDouble(0) - 1.0E-7) {
          return new NonOverlappingMerger(second, first, true);
       } else {
-         return (IndexMerger)(firstSize == secondSize && Objects.equals(first, second)
+         return firstSize == secondSize && Objects.equals(first, second)
             ? new IdenticalMerger(first)
-            : new IndirectMerger(first, second, firstOnlyMatters, secondOnlyMatters));
+            : new IndirectMerger(first, second, firstOnlyMatters, secondOnlyMatters);
       }
    }
 
@@ -319,49 +323,49 @@ public final class Shapes {
    public static VoxelShape rotate(final VoxelShape shape, final OctahedralGroup rotation, final Vec3 rotationPoint) {
       if (rotation == OctahedralGroup.IDENTITY) {
          return shape;
-      } else {
-         DiscreteVoxelShape newDiscreteShape = shape.shape.rotate(rotation);
-         if (shape instanceof CubeVoxelShape && BLOCK_CENTER.equals(rotationPoint)) {
-            return new CubeVoxelShape(newDiscreteShape);
-         } else {
-            Direction.Axis newX = rotation.permutation().permuteAxis(Direction.Axis.X);
-            Direction.Axis newY = rotation.permutation().permuteAxis(Direction.Axis.Y);
-            Direction.Axis newZ = rotation.permutation().permuteAxis(Direction.Axis.Z);
-            DoubleList newXs = shape.getCoords(newX);
-            DoubleList newYs = shape.getCoords(newY);
-            DoubleList newZs = shape.getCoords(newZ);
-            boolean flipX = rotation.inverts(Direction.Axis.X);
-            boolean flipY = rotation.inverts(Direction.Axis.Y);
-            boolean flipZ = rotation.inverts(Direction.Axis.Z);
-            return new ArrayVoxelShape(
-               newDiscreteShape,
-               flipAxisIfNeeded(newXs, flipX, rotationPoint.get(newX), rotationPoint.x),
-               flipAxisIfNeeded(newYs, flipY, rotationPoint.get(newY), rotationPoint.y),
-               flipAxisIfNeeded(newZs, flipZ, rotationPoint.get(newZ), rotationPoint.z)
-            );
-         }
       }
+
+      DiscreteVoxelShape newDiscreteShape = shape.shape.rotate(rotation);
+      if (shape instanceof CubeVoxelShape && BLOCK_CENTER.equals(rotationPoint)) {
+         return new CubeVoxelShape(newDiscreteShape);
+      }
+
+      Direction.Axis newX = rotation.permutation().permuteAxis(Direction.Axis.X);
+      Direction.Axis newY = rotation.permutation().permuteAxis(Direction.Axis.Y);
+      Direction.Axis newZ = rotation.permutation().permuteAxis(Direction.Axis.Z);
+      DoubleList newXs = shape.getCoords(newX);
+      DoubleList newYs = shape.getCoords(newY);
+      DoubleList newZs = shape.getCoords(newZ);
+      boolean flipX = rotation.inverts(Direction.Axis.X);
+      boolean flipY = rotation.inverts(Direction.Axis.Y);
+      boolean flipZ = rotation.inverts(Direction.Axis.Z);
+      return new ArrayVoxelShape(
+         newDiscreteShape,
+         flipAxisIfNeeded(newXs, flipX, rotationPoint.get(newX), rotationPoint.x),
+         flipAxisIfNeeded(newYs, flipY, rotationPoint.get(newY), rotationPoint.y),
+         flipAxisIfNeeded(newZs, flipZ, rotationPoint.get(newZ), rotationPoint.z)
+      );
    }
 
    @VisibleForTesting
    static DoubleList flipAxisIfNeeded(final DoubleList newAxis, final boolean flip, final double newRelative, final double oldRelative) {
       if (!flip && newRelative == oldRelative) {
          return newAxis;
-      } else {
-         int size = newAxis.size();
-         DoubleList newList = new DoubleArrayList(size);
-         if (flip) {
-            for (int i = size - 1; i >= 0; i--) {
-               newList.add(-(newAxis.getDouble(i) - newRelative) + oldRelative);
-            }
-         } else {
-            for (int i = 0; i >= 0 && i < size; i++) {
-               newList.add(newAxis.getDouble(i) - newRelative + oldRelative);
-            }
-         }
-
-         return newList;
       }
+
+      int size = newAxis.size();
+      DoubleList newList = new DoubleArrayList(size);
+      if (flip) {
+         for (int i = size - 1; i >= 0; i--) {
+            newList.add(-(newAxis.getDouble(i) - newRelative) + oldRelative);
+         }
+      } else {
+         for (int i = 0; i >= 0 && i < size; i++) {
+            newList.add(newAxis.getDouble(i) - newRelative + oldRelative);
+         }
+      }
+
+      return newList;
    }
 
    public static boolean equal(final VoxelShape first, final VoxelShape second) {

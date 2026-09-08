@@ -27,19 +27,26 @@ public class CommonLinks {
    public static final URI BUY_REALMS = URI.create("https://aka.ms/BuyJavaRealms");
    public static final URI REALMS_TERMS = URI.create("https://aka.ms/MinecraftRealmsTerms");
    public static final URI REALMS_CONTENT_CREATION = URI.create("https://aka.ms/MinecraftRealmsContentCreator");
-   public static final String EXTEND_REALMS_LINK = "https://aka.ms/ExtendJavaRealms";
+   public static final URI EXTEND_REALMS_LINK = URI.create("https://aka.ms/ExtendJavaRealms");
    public static final String INTENTIONAL_GAME_DESIGN_BUG_ID = "MCPE-28723";
    public static final URI INTENTIONAL_GAME_DESIGN_BUG = URI.create("https://bugs.mojang.com/browse/MCPE-28723");
 
-   public static String extendRealms(@Nullable final String subscriptionId, final UUID profileId, final boolean trial) {
-      return subscriptionId == null
-         ? "https://aka.ms/ExtendJavaRealms"
-         : extendRealms(subscriptionId, profileId) + "&ref=" + (trial ? "expiredTrial" : "expiredRealm");
+   public static URI extendRealms(final @Nullable String subscriptionId, final UUID profileId, final CommonLinks.ExtensionReference reference) {
+      if (subscriptionId == null) {
+         return EXTEND_REALMS_LINK;
+      }
+
+      String uri = EXTEND_REALMS_LINK + "?subscriptionId=" + subscriptionId + "&profileId=" + UndashedUuid.toString(profileId);
+
+      return URI.create(switch (reference) {
+         case EXPIRED_TRIAL -> uri + "&ref=expiredTrial";
+         case EXPIRED_REALM -> uri + "&ref=expiredRealm";
+      });
    }
 
-   public static String extendRealms(@Nullable final String subscriptionId, final UUID profileId) {
-      return subscriptionId == null
-         ? "https://aka.ms/ExtendJavaRealms"
-         : "https://aka.ms/ExtendJavaRealms?subscriptionId=" + subscriptionId + "&profileId=" + UndashedUuid.toString(profileId);
+   public enum ExtensionReference {
+      NONE,
+      EXPIRED_TRIAL,
+      EXPIRED_REALM;
    }
 }

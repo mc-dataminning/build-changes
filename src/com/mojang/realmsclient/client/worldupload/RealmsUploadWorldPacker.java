@@ -29,7 +29,6 @@ public class RealmsUploadWorldPacker {
    private File tarGzipArchive() throws IOException {
       TarArchiveOutputStream tar = null;
 
-      File var3;
       try {
          File file = File.createTempFile("realms-upload-file", ".tar.gz");
          tar = new TarArchiveOutputStream(new GZIPOutputStream(new FileOutputStream(file)));
@@ -41,38 +40,36 @@ public class RealmsUploadWorldPacker {
 
          tar.finish();
          this.verifyBelowSizeLimit(file.length());
-         var3 = file;
+         return file;
       } finally {
          if (tar != null) {
             tar.close();
          }
       }
-
-      return var3;
    }
 
    private void addFileToTarGz(final TarArchiveOutputStream out, final Path path, final String base, final boolean root) throws IOException {
       if (this.isCanceled.getAsBoolean()) {
          throw new RealmsUploadCanceledException();
-      } else {
-         this.verifyBelowSizeLimit(out.getBytesWritten());
-         File file = path.toFile();
-         String entryName = root ? base : base + file.getName();
-         TarArchiveEntry entry = new TarArchiveEntry(file, entryName);
-         out.putArchiveEntry(entry);
-         if (file.isFile()) {
-            try (InputStream is = new FileInputStream(file)) {
-               is.transferTo(out);
-            }
+      }
 
-            out.closeArchiveEntry();
-         } else {
-            out.closeArchiveEntry();
-            File[] children = file.listFiles();
-            if (children != null) {
-               for (File child : children) {
-                  this.addFileToTarGz(out, child.toPath(), entryName + "/", false);
-               }
+      this.verifyBelowSizeLimit(out.getBytesWritten());
+      File file = path.toFile();
+      String entryName = root ? base : base + file.getName();
+      TarArchiveEntry entry = new TarArchiveEntry(file, entryName);
+      out.putArchiveEntry(entry);
+      if (file.isFile()) {
+         try (InputStream is = new FileInputStream(file)) {
+            is.transferTo(out);
+         }
+
+         out.closeArchiveEntry();
+      } else {
+         out.closeArchiveEntry();
+         File[] children = file.listFiles();
+         if (children != null) {
+            for (File child : children) {
+               this.addFileToTarGz(out, child.toPath(), entryName + "/", false);
             }
          }
       }

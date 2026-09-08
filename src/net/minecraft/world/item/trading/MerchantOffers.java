@@ -31,21 +31,20 @@ public class MerchantOffers extends ArrayList<MerchantOffer> {
       super(offers);
    }
 
-   @Nullable
-   public MerchantOffer getRecipeFor(final ItemStack buyA, final ItemStack buyB, final int selectionHint) {
+   public @Nullable MerchantOffer getRecipeFor(final ItemStack buyA, final ItemStack buyB, final int selectionHint) {
       if (selectionHint > 0 && selectionHint < this.size()) {
          MerchantOffer offer = this.get(selectionHint);
          return offer.satisfiedBy(buyA, buyB) ? offer : null;
-      } else {
-         for (int i = 0; i < this.size(); i++) {
-            MerchantOffer offer = this.get(i);
-            if (offer.satisfiedBy(buyA, buyB)) {
-               return offer;
-            }
-         }
-
-         return null;
       }
+
+      for (int i = 0; i < this.size(); i++) {
+         MerchantOffer offer = this.get(i);
+         if (offer.satisfiedBy(buyA, buyB)) {
+            return offer;
+         }
+      }
+
+      return null;
    }
 
    public MerchantOffers copy() {

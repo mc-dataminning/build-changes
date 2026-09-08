@@ -34,7 +34,7 @@ public class Mth {
    private static final double SIN_SCALE = 10430.378350470453;
    private static final float[] SIN = Util.make(new float[65536], sin -> {
       for (int i = 0; i < sin.length; i++) {
-         sin[i] = (float)Math.sin((double)i / 10430.378350470453);
+         sin[i] = (float)Math.sin(i / 10430.378350470453);
       }
    });
    private static final int[] MULTIPLY_DE_BRUIJN_BIT_POSITION = new int[]{
@@ -56,11 +56,11 @@ public class Mth {
    }
 
    public static float sqrt(final float x) {
-      return (float)Math.sqrt((double)x);
+      return (float)Math.sqrt(x);
    }
 
    public static int floor(final float v) {
-      return (int)Math.floor((double)v);
+      return (int)Math.floor(v);
    }
 
    public static int floor(final double v) {
@@ -80,7 +80,7 @@ public class Mth {
    }
 
    public static int ceil(final float v) {
-      return (int)Math.ceil((double)v);
+      return (int)Math.ceil(v);
    }
 
    public static int ceil(final double v) {
@@ -184,7 +184,7 @@ public class Mth {
    }
 
    public static float unpackDegrees(final byte rot) {
-      return (float)(rot * 360) / 256.0F;
+      return rot * 360 / 256.0F;
    }
 
    public static int wrapDegrees(final int angle) {
@@ -294,7 +294,7 @@ public class Mth {
       if (itemCount < 0) {
          throw new IllegalArgumentException("itemCount must be greater than or equal to zero");
       } else {
-         return ceil(Math.sqrt((double)itemCount));
+         return ceil(Math.sqrt(itemCount));
       }
    }
 
@@ -308,7 +308,7 @@ public class Mth {
 
    public static int ceillog2(int input) {
       input = isPowerOfTwo(input) ? input : smallestEncompassingPowerOfTwo(input);
-      return MULTIPLY_DE_BRUIJN_BIT_POSITION[(int)((long)input * 125613361L >> 27) & 31];
+      return MULTIPLY_DE_BRUIJN_BIT_POSITION[(int)(input * 125613361L >> 27) & 31];
    }
 
    public static int log2(final int input) {
@@ -316,11 +316,11 @@ public class Mth {
    }
 
    public static float frac(final float num) {
-      return num - (float)floor(num);
+      return num - floor(num);
    }
 
    public static double frac(final double num) {
-      return num - (double)lfloor(num);
+      return num - lfloor(num);
    }
 
    @Deprecated
@@ -330,7 +330,7 @@ public class Mth {
 
    @Deprecated
    public static long getSeed(final int x, final int y, final int z) {
-      long seed = (long)(x * 3129871) ^ (long)z * 116129781L ^ (long)y;
+      long seed = x * 3129871 ^ z * 116129781L ^ y;
       seed = seed * seed * 42317861L + seed * 11L;
       return seed >> 16;
    }
@@ -355,86 +355,86 @@ public class Mth {
       double diffX = rayStart.x - centerX;
       if (Math.abs(diffX) > boxExtentX && diffX * rayDir.x >= 0.0) {
          return false;
-      } else {
-         double centerY = (aabb.minY + aabb.maxY) * 0.5;
-         double boxExtentY = (aabb.maxY - aabb.minY) * 0.5;
-         double diffY = rayStart.y - centerY;
-         if (Math.abs(diffY) > boxExtentY && diffY * rayDir.y >= 0.0) {
-            return false;
-         } else {
-            double centerZ = (aabb.minZ + aabb.maxZ) * 0.5;
-            double boxExtentZ = (aabb.maxZ - aabb.minZ) * 0.5;
-            double diffZ = rayStart.z - centerZ;
-            if (Math.abs(diffZ) > boxExtentZ && diffZ * rayDir.z >= 0.0) {
-               return false;
-            } else {
-               double andrewWooDiffX = Math.abs(rayDir.x);
-               double andrewWooDiffY = Math.abs(rayDir.y);
-               double andrewWooDiffZ = Math.abs(rayDir.z);
-               double f = rayDir.y * diffZ - rayDir.z * diffY;
-               if (Math.abs(f) > boxExtentY * andrewWooDiffZ + boxExtentZ * andrewWooDiffY) {
-                  return false;
-               } else {
-                  f = rayDir.z * diffX - rayDir.x * diffZ;
-                  if (Math.abs(f) > boxExtentX * andrewWooDiffZ + boxExtentZ * andrewWooDiffX) {
-                     return false;
-                  } else {
-                     f = rayDir.x * diffY - rayDir.y * diffX;
-                     return Math.abs(f) < boxExtentX * andrewWooDiffY + boxExtentY * andrewWooDiffX;
-                  }
-               }
-            }
-         }
       }
+
+      double centerY = (aabb.minY + aabb.maxY) * 0.5;
+      double boxExtentY = (aabb.maxY - aabb.minY) * 0.5;
+      double diffY = rayStart.y - centerY;
+      if (Math.abs(diffY) > boxExtentY && diffY * rayDir.y >= 0.0) {
+         return false;
+      }
+
+      double centerZ = (aabb.minZ + aabb.maxZ) * 0.5;
+      double boxExtentZ = (aabb.maxZ - aabb.minZ) * 0.5;
+      double diffZ = rayStart.z - centerZ;
+      if (Math.abs(diffZ) > boxExtentZ && diffZ * rayDir.z >= 0.0) {
+         return false;
+      }
+
+      double andrewWooDiffX = Math.abs(rayDir.x);
+      double andrewWooDiffY = Math.abs(rayDir.y);
+      double andrewWooDiffZ = Math.abs(rayDir.z);
+      double f = rayDir.y * diffZ - rayDir.z * diffY;
+      if (Math.abs(f) > boxExtentY * andrewWooDiffZ + boxExtentZ * andrewWooDiffY) {
+         return false;
+      }
+
+      f = rayDir.z * diffX - rayDir.x * diffZ;
+      if (Math.abs(f) > boxExtentX * andrewWooDiffZ + boxExtentZ * andrewWooDiffX) {
+         return false;
+      }
+
+      f = rayDir.x * diffY - rayDir.y * diffX;
+      return Math.abs(f) < boxExtentX * andrewWooDiffY + boxExtentY * andrewWooDiffX;
    }
 
    public static double atan2(double y, double x) {
       double d2 = x * x + y * y;
       if (Double.isNaN(d2)) {
          return Double.NaN;
-      } else {
-         boolean negY = y < 0.0;
-         if (negY) {
-            y = -y;
-         }
-
-         boolean negX = x < 0.0;
-         if (negX) {
-            x = -x;
-         }
-
-         boolean steep = y > x;
-         if (steep) {
-            double t = x;
-            x = y;
-            y = t;
-         }
-
-         double rinv = fastInvSqrt(d2);
-         x *= rinv;
-         y *= rinv;
-         double yp = FRAC_BIAS + y;
-         int index = (int)Double.doubleToRawLongBits(yp);
-         double phi = ASIN_TAB[index];
-         double cPhi = COS_TAB[index];
-         double sPhi = yp - FRAC_BIAS;
-         double sd = y * cPhi - x * sPhi;
-         double d = (6.0 + sd * sd) * sd * 0.16666666666666666;
-         double theta = phi + d;
-         if (steep) {
-            theta = (Math.PI / 2) - theta;
-         }
-
-         if (negX) {
-            theta = Math.PI - theta;
-         }
-
-         if (negY) {
-            theta = -theta;
-         }
-
-         return theta;
       }
+
+      boolean negY = y < 0.0;
+      if (negY) {
+         y = -y;
+      }
+
+      boolean negX = x < 0.0;
+      if (negX) {
+         x = -x;
+      }
+
+      boolean steep = y > x;
+      if (steep) {
+         double t = x;
+         x = y;
+         y = t;
+      }
+
+      double rinv = fastInvSqrt(d2);
+      x *= rinv;
+      y *= rinv;
+      double yp = FRAC_BIAS + y;
+      int index = (int)Double.doubleToRawLongBits(yp);
+      double phi = ASIN_TAB[index];
+      double cPhi = COS_TAB[index];
+      double sPhi = yp - FRAC_BIAS;
+      double sd = y * cPhi - x * sPhi;
+      double d = (6.0 + sd * sd) * sd * 0.16666666666666666;
+      double theta = phi + d;
+      if (steep) {
+         theta = (Math.PI / 2) - theta;
+      }
+
+      if (negX) {
+         theta = Math.PI - theta;
+      }
+
+      if (negY) {
+         theta = -theta;
+      }
+
+      return theta;
    }
 
    public static float invSqrt(final float x) {
@@ -468,7 +468,7 @@ public class Mth {
 
    public static int hsvToArgb(final float hue, final float saturation, final float value, final int alpha) {
       int h = (int)(hue * 6.0F) % 6;
-      float f = hue * 6.0F - (float)h;
+      float f = hue * 6.0F - h;
       float p = value * (1.0F - saturation);
       float q = value * (1.0F - f * saturation);
       float t = value * (1.0F - (1.0F - f) * saturation);
@@ -539,12 +539,12 @@ public class Mth {
    }
 
    public static int lerpInt(final float alpha1, final int p0, final int p1) {
-      return p0 + floor(alpha1 * (float)(p1 - p0));
+      return p0 + floor(alpha1 * (p1 - p0));
    }
 
    public static int lerpDiscrete(final float alpha1, final int p0, final int p1) {
       int delta = p1 - p0;
-      return p0 + floor(alpha1 * (float)(delta - 1)) + (alpha1 > 0.0F ? 1 : 0);
+      return p0 + floor(alpha1 * (delta - 1)) + (alpha1 > 0.0F ? 1 : 0);
    }
 
    public static float lerp(final float alpha1, final float p0, final float p1) {
@@ -688,7 +688,7 @@ public class Mth {
    }
 
    public static double wobble(final double coord) {
-      return coord + (2.0 * RandomSource.createThreadLocalInstance((long)floor(coord * 3000.0)).nextDouble() - 1.0) * 1.0E-7 / 2.0;
+      return coord + (2.0 * RandomSource.createThreadLocalInstance(floor(coord * 3000.0)).nextDouble() - 1.0) * 1.0E-7 / 2.0;
    }
 
    public static int roundToward(final int input, final int multiple) {
@@ -732,7 +732,7 @@ public class Mth {
    }
 
    public static float length(final float x, final float y) {
-      return (float)Math.sqrt((double)lengthSquared(x, y));
+      return (float)Math.sqrt(lengthSquared(x, y));
    }
 
    public static double lengthSquared(final double x, final double y, final double z) {
@@ -752,7 +752,7 @@ public class Mth {
    }
 
    public static int quantize(final double value, final int quantizeResolution) {
-      return floor(value / (double)quantizeResolution) * quantizeResolution;
+      return floor(value / quantizeResolution) * quantizeResolution;
    }
 
    public static IntStream outFromOrigin(final int origin, final int lowerBound, final int upperBound) {
@@ -762,27 +762,29 @@ public class Mth {
    public static IntStream outFromOrigin(final int origin, final int lowerBound, final int upperBound, final int stepSize) {
       if (lowerBound > upperBound) {
          throw new IllegalArgumentException(String.format(Locale.ROOT, "upperBound %d expected to be > lowerBound %d", upperBound, lowerBound));
-      } else if (stepSize < 1) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "step size expected to be >= 1, was %d", stepSize));
-      } else {
-         int clampedOrigin = clamp(origin, lowerBound, upperBound);
-         return IntStream.iterate(clampedOrigin, cursor -> {
-            int currentDistance = Math.abs(clampedOrigin - cursor);
-            return clampedOrigin - currentDistance >= lowerBound || clampedOrigin + currentDistance <= upperBound;
-         }, cursor -> {
-            boolean previousWasNegative = cursor <= clampedOrigin;
-            int currentDistance = Math.abs(clampedOrigin - cursor);
-            boolean canMovePositive = clampedOrigin + currentDistance + stepSize <= upperBound;
-            if (!previousWasNegative || !canMovePositive) {
-               int attemptedStep = clampedOrigin - currentDistance - (previousWasNegative ? stepSize : 0);
-               if (attemptedStep >= lowerBound) {
-                  return attemptedStep;
-               }
-            }
-
-            return clampedOrigin + currentDistance + stepSize;
-         });
       }
+
+      if (stepSize < 1) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "step size expected to be >= 1, was %d", stepSize));
+      }
+
+      int clampedOrigin = clamp(origin, lowerBound, upperBound);
+      return IntStream.iterate(clampedOrigin, cursor -> {
+         int currentDistance = Math.abs(clampedOrigin - cursor);
+         return clampedOrigin - currentDistance >= lowerBound || clampedOrigin + currentDistance <= upperBound;
+      }, cursor -> {
+         boolean previousWasNegative = cursor <= clampedOrigin;
+         int currentDistance = Math.abs(clampedOrigin - cursor);
+         boolean canMovePositive = clampedOrigin + currentDistance + stepSize <= upperBound;
+         if (!previousWasNegative || !canMovePositive) {
+            int attemptedStep = clampedOrigin - currentDistance - (previousWasNegative ? stepSize : 0);
+            if (attemptedStep >= lowerBound) {
+               return attemptedStep;
+            }
+         }
+
+         return clampedOrigin + currentDistance + stepSize;
+      });
    }
 
    public static Quaternionf rotationAroundAxis(final Vector3fc axis, final Quaternionf rotation, final Quaternionf result) {
@@ -796,7 +798,7 @@ public class Mth {
 
    static {
       for (int ind = 0; ind < 257; ind++) {
-         double v = (double)ind / 256.0;
+         double v = ind / 256.0;
          double asinv = Math.asin(v);
          COS_TAB[ind] = Math.cos(asinv);
          ASIN_TAB[ind] = asinv;

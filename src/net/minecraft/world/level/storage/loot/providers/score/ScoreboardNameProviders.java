@@ -12,7 +12,7 @@ public class ScoreboardNameProviders {
       .dispatch(ScoreboardNameProvider::codec, c -> c);
    public static final Codec<ScoreboardNameProvider> CODEC = Codec.lazyInitialized(
       () -> Codec.either(ContextScoreboardNameProvider.INLINE_CODEC, TYPED_CODEC)
-            .xmap(Either::unwrap, provider -> provider instanceof ContextScoreboardNameProvider context ? Either.left(context) : Either.right(provider))
+         .xmap(Either::unwrap, provider -> provider instanceof ContextScoreboardNameProvider context ? Either.left(context) : Either.right(provider))
    );
 
    public static MapCodec<? extends ScoreboardNameProvider> bootstrap(final Registry<MapCodec<? extends ScoreboardNameProvider>> registry) {

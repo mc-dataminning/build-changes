@@ -50,47 +50,39 @@ public class CloudRenderer extends SimplePreparableReloadListener<Optional<Cloud
    private int prevCellX = Integer.MIN_VALUE;
    private int prevCellZ = Integer.MIN_VALUE;
    private CloudRenderer.RelativeCameraPos prevRelativeCameraPos = CloudRenderer.RelativeCameraPos.INSIDE_CLOUDS;
-   @Nullable
-   private CloudStatus prevCloudStatus;
-   @Nullable
-   private CloudRenderer.TextureData texture;
+   private @Nullable CloudStatus prevCloudStatus;
+   private CloudRenderer.@Nullable TextureData texture;
    private int quadCount = 0;
    private final MappableRingBuffer ubo = new MappableRingBuffer(() -> "Cloud UBO", 130, UBO_SIZE);
-   @Nullable
-   private MappableRingBuffer utb;
+   private @Nullable MappableRingBuffer utb;
 
    protected Optional<CloudRenderer.TextureData> prepare(final ResourceManager manager, final ProfilerFiller profiler) {
-      try {
-         Optional var20;
-         try (
-            InputStream input = manager.open(TEXTURE_LOCATION);
-            NativeImage texture = NativeImage.read(input);
-         ) {
-            int width = texture.getWidth();
-            int height = texture.getHeight();
-            long[] cells = new long[width * height];
+      try (
+         InputStream input = manager.open(TEXTURE_LOCATION);
+         NativeImage texture = NativeImage.read(input);
+      ) {
+         int width = texture.getWidth();
+         int height = texture.getHeight();
+         long[] cells = new long[width * height];
 
-            for (int y = 0; y < height; y++) {
-               for (int x = 0; x < width; x++) {
-                  int color = texture.getPixel(x, y);
-                  if (isCellEmpty(color)) {
-                     cells[x + y * width] = 0L;
-                  } else {
-                     boolean north = isCellEmpty(texture.getPixel(x, Math.floorMod(y - 1, height)));
-                     boolean east = isCellEmpty(texture.getPixel(Math.floorMod(x + 1, height), y));
-                     boolean south = isCellEmpty(texture.getPixel(x, Math.floorMod(y + 1, height)));
-                     boolean west = isCellEmpty(texture.getPixel(Math.floorMod(x - 1, height), y));
-                     cells[x + y * width] = packCellData(color, north, east, south, west);
-                  }
+         for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+               int color = texture.getPixel(x, y);
+               if (isCellEmpty(color)) {
+                  cells[x + y * width] = 0L;
+               } else {
+                  boolean north = isCellEmpty(texture.getPixel(x, Math.floorMod(y - 1, height)));
+                  boolean east = isCellEmpty(texture.getPixel(Math.floorMod(x + 1, height), y));
+                  boolean south = isCellEmpty(texture.getPixel(x, Math.floorMod(y + 1, height)));
+                  boolean west = isCellEmpty(texture.getPixel(Math.floorMod(x - 1, height), y));
+                  cells[x + y * width] = packCellData(color, north, east, south, west);
                }
             }
-
-            var20 = Optional.of(new CloudRenderer.TextureData(cells, width, height));
          }
 
-         return var20;
-      } catch (IOException var19) {
-         LOGGER.error("Failed to load cloud texture", var19);
+         return Optional.of(new CloudRenderer.TextureData(cells, width, height));
+      } catch (IOException e) {
+         LOGGER.error("Failed to load cloud texture", e);
          return Optional.empty();
       }
    }
@@ -112,7 +104,7 @@ public class CloudRenderer extends SimplePreparableReloadListener<Optional<Cloud
    }
 
    private static long packCellData(final int color, final boolean north, final boolean east, final boolean south, final boolean west) {
-      return (long)color << 4 | (long)((north ? 1 : 0) << 3) | (long)((east ? 1 : 0) << 2) | (long)((south ? 1 : 0) << 1) | (long)((west ? 1 : 0) << 0);
+      return (long)color << 4 | (north ? 1 : 0) << 3 | (east ? 1 : 0) << 2 | (south ? 1 : 0) << 1 | (west ? 1 : 0) << 0;
    }
 
    private static boolean isNorthEmpty(final long cellData) {
@@ -142,9 +134,9 @@ public class CloudRenderer extends SimplePreparableReloadListener<Optional<Cloud
    ) {
       if (this.texture != null) {
          int radiusBlocks = range * 16;
-         int radiusCells = Mth.ceil((float)radiusBlocks / 12.0F);
+         int radiusCells = Mth.ceil(radiusBlocks / 12.0F);
          int utbSize = getSizeForCloudDistance(radiusCells);
-         if (this.utb == null || this.utb.currentBuffer().size() != (long)utbSize) {
+         if (this.utb == null || this.utb.currentBuffer().size() != utbSize) {
             if (this.utb != null) {
                this.utb.close();
             }
@@ -152,7 +144,7 @@ public class CloudRenderer extends SimplePreparableReloadListener<Optional<Cloud
             this.utb = new MappableRingBuffer(() -> "Cloud UTB", 258, utbSize);
          }
 
-         float relativeBottomY = (float)((double)bottomY - cameraPosition.y);
+         float relativeBottomY = (float)(bottomY - cameraPosition.y);
          float relativeTopY = relativeBottomY + 4.0F;
          CloudRenderer.RelativeCameraPos relativeCameraPos;
          if (relativeTopY < 0.0F) {
@@ -163,17 +155,17 @@ public class CloudRenderer extends SimplePreparableReloadListener<Optional<Cloud
             relativeCameraPos = CloudRenderer.RelativeCameraPos.INSIDE_CLOUDS;
          }
 
-         float cloudOffset = (float)(gameTime % ((long)this.texture.width * 400L)) + partialTicks;
-         double cloudX = cameraPosition.x + (double)(cloudOffset * 0.030000001F);
+         float cloudOffset = (float)(gameTime % (this.texture.width * 400L)) + partialTicks;
+         double cloudX = cameraPosition.x + cloudOffset * 0.030000001F;
          double cloudZ = cameraPosition.z + 3.96F;
-         double textureWidthBlocks = (double)this.texture.width * 12.0;
-         double textureHeightBlocks = (double)this.texture.height * 12.0;
-         cloudX -= (double)Mth.floor(cloudX / textureWidthBlocks) * textureWidthBlocks;
-         cloudZ -= (double)Mth.floor(cloudZ / textureHeightBlocks) * textureHeightBlocks;
+         double textureWidthBlocks = this.texture.width * 12.0;
+         double textureHeightBlocks = this.texture.height * 12.0;
+         cloudX -= Mth.floor(cloudX / textureWidthBlocks) * textureWidthBlocks;
+         cloudZ -= Mth.floor(cloudZ / textureHeightBlocks) * textureHeightBlocks;
          int cellX = Mth.floor(cloudX / 12.0);
          int cellZ = Mth.floor(cloudZ / 12.0);
-         float xInCell = (float)(cloudX - (double)((float)cellX * 12.0F));
-         float zInCell = (float)(cloudZ - (double)((float)cellZ * 12.0F));
+         float xInCell = (float)(cloudX - cellX * 12.0F);
+         float zInCell = (float)(cloudZ - cellZ * 12.0F);
          boolean fancyClouds = cloudStatus == CloudStatus.FANCY;
          if (this.needsRebuild
             || cellX != this.prevCellX
@@ -367,12 +359,12 @@ public class CloudRenderer extends SimplePreparableReloadListener<Optional<Cloud
       }
    }
 
-   private static enum RelativeCameraPos {
+   private enum RelativeCameraPos {
       ABOVE_CLOUDS,
       INSIDE_CLOUDS,
       BELOW_CLOUDS;
    }
 
-   public static record TextureData(long[] cells, int width, int height) {
+   public record TextureData(long[] cells, int width, int height) {
    }
 }

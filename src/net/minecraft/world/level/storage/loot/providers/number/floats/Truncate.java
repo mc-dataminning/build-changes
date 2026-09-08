@@ -16,6 +16,6 @@ public record Truncate(Holder<ContextFloatProvider> input) implements ContextFlo
    @Override
    public float getFloatUnsafe(final LootContext context) {
       float value = this.input().value().getFloatUnsafe(context);
-      return value > 0.0F ? (float)Math.floor((double)value) : (float)Math.ceil((double)value);
+      return value > 0.0F ? (float)Math.floor(value) : (float)Math.ceil(value);
    }
 }

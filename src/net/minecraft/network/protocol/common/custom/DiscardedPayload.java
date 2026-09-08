@@ -6,8 +6,7 @@ import net.minecraft.resources.Identifier;
 
 public record DiscardedPayload(Identifier id) implements CustomPacketPayload {
    public static <T extends FriendlyByteBuf> StreamCodec<T, DiscardedPayload> codec(final Identifier id, final int maxPayloadSize) {
-      return CustomPacketPayload.codec((payload, buf) -> {
-      }, buf -> {
+      return CustomPacketPayload.codec((payload, buf) -> {}, buf -> {
          int length = buf.readableBytes();
          if (length >= 0 && length <= maxPayloadSize) {
             buf.skipBytes(length);

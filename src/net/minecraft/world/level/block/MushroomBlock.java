@@ -79,15 +79,15 @@ public class MushroomBlock extends VegetationBlock implements BonemealableBlock 
       Optional<? extends Holder<Feature>> feature = level.registryAccess().lookupOrThrow(Registries.FEATURE).get(this.feature);
       if (feature.isEmpty()) {
          return false;
-      } else {
-         level.removeBlock(pos, false);
-         if (feature.get().value().place(level, level.getChunkSource().getGenerator(), random, pos)) {
-            return true;
-         } else {
-            level.setBlockAndUpdate(pos, state);
-            return false;
-         }
       }
+
+      level.removeBlock(pos, false);
+      if (feature.get().value().place(level, level.getChunkSource().getGenerator(), random, pos)) {
+         return true;
+      }
+
+      level.setBlockAndUpdate(pos, state);
+      return false;
    }
 
    @Override
@@ -112,7 +112,7 @@ public class MushroomBlock extends VegetationBlock implements BonemealableBlock 
 
    @Override
    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state, final BonemealSource source) {
-      return (double)random.nextFloat() < 0.4;
+      return random.nextFloat() < 0.4;
    }
 
    @Override

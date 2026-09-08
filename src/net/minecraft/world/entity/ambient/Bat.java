@@ -37,8 +37,7 @@ public class Bat extends AmbientCreature {
    private static final byte DEFAULT_FLAGS = 0;
    public final AnimationState flyAnimationState = new AnimationState();
    public final AnimationState restAnimationState = new AnimationState();
-   @Nullable
-   private BlockPos targetPosition;
+   private @Nullable BlockPos targetPosition;
 
    public Bat(final EntityType<? extends Bat> type, final Level level) {
       super(type, level);
@@ -49,7 +48,7 @@ public class Bat extends AmbientCreature {
 
    @Override
    public boolean isFlapping() {
-      return !this.isResting() && (float)this.tickCount % 10.0F == 0.0F;
+      return !this.isResting() && this.tickCount % 10.0F == 0.0F;
    }
 
    @Override
@@ -68,9 +67,8 @@ public class Bat extends AmbientCreature {
       return super.getVoicePitch() * 0.95F;
    }
 
-   @Nullable
    @Override
-   public SoundEvent getAmbientSound() {
+   public @Nullable SoundEvent getAmbientSound() {
       return this.isResting() && this.random.nextInt(4) != 0 ? null : SoundEvents.BAT_AMBIENT;
    }
 
@@ -119,7 +117,7 @@ public class Bat extends AmbientCreature {
       super.tick();
       if (this.isResting()) {
          this.setDeltaMovement(Vec3.ZERO);
-         this.setPosRaw(this.getX(), (double)Mth.floor(this.getY()) + 1.0 - (double)this.getBbHeight(), this.getZ());
+         this.setPosRaw(this.getX(), Mth.floor(this.getY()) + 1.0 - this.getBbHeight(), this.getZ());
       } else {
          this.setDeltaMovement(this.getDeltaMovement().multiply(1.0, 0.6, 1.0));
       }
@@ -136,7 +134,7 @@ public class Bat extends AmbientCreature {
          boolean isSilent = this.isSilent();
          if (level.getBlockState(above).isRedstoneConductor(level, pos)) {
             if (this.random.nextInt(200) == 0) {
-               this.yHeadRot = (float)this.random.nextInt(360);
+               this.yHeadRot = this.random.nextInt(360);
             }
 
             if (level.getNearestPlayer(BAT_RESTING_TARGETING, this) != null) {
@@ -158,15 +156,15 @@ public class Bat extends AmbientCreature {
 
          if (this.targetPosition == null || this.random.nextInt(30) == 0 || this.targetPosition.closerToCenterThan(this.position(), 2.0)) {
             this.targetPosition = BlockPos.containing(
-               this.getX() + (double)this.random.nextInt(7) - (double)this.random.nextInt(7),
-               this.getY() + (double)this.random.nextInt(6) - 2.0,
-               this.getZ() + (double)this.random.nextInt(7) - (double)this.random.nextInt(7)
+               this.getX() + this.random.nextInt(7) - this.random.nextInt(7),
+               this.getY() + this.random.nextInt(6) - 2.0,
+               this.getZ() + this.random.nextInt(7) - this.random.nextInt(7)
             );
          }
 
-         double dx = (double)this.targetPosition.getX() + 0.5 - this.getX();
-         double dy = (double)this.targetPosition.getY() + 0.1 - this.getY();
-         double dz = (double)this.targetPosition.getZ() + 0.5 - this.getZ();
+         double dx = this.targetPosition.getX() + 0.5 - this.getX();
+         double dy = this.targetPosition.getY() + 0.1 - this.getY();
+         double dz = this.targetPosition.getZ() + 0.5 - this.getZ();
          Vec3 movement = this.getDeltaMovement();
          Vec3 newMovement = movement.add(
             (Math.signum(dx) * 0.5 - movement.x) * 0.1F, (Math.signum(dy) * 0.7F - movement.y) * 0.1F, (Math.signum(dz) * 0.5 - movement.z) * 0.1F
@@ -200,13 +198,13 @@ public class Bat extends AmbientCreature {
    public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
       if (this.isInvulnerableTo(level, source)) {
          return false;
-      } else {
-         if (this.isResting()) {
-            this.setResting(false);
-         }
-
-         return super.hurtServer(level, source, damage);
       }
+
+      if (this.isResting()) {
+         this.setResting(false);
+      }
+
+      return super.hurtServer(level, source, damage);
    }
 
    @Override

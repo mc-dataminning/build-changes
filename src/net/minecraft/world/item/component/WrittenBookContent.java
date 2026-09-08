@@ -43,13 +43,13 @@ public record WrittenBookContent(Filterable<String> title, String author, int ge
    public static final Codec<List<Filterable<Component>>> PAGES_CODEC = pagesCodec(CONTENT_CODEC);
    public static final Codec<WrittenBookContent> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Filterable.codec(Codec.string(0, 32)).fieldOf("title").forGetter(WrittenBookContent::title),
-               Codec.STRING.fieldOf("author").forGetter(WrittenBookContent::author),
-               ExtraCodecs.intRange(0, 3).optionalFieldOf("generation", 0).forGetter(WrittenBookContent::generation),
-               PAGES_CODEC.optionalFieldOf("pages", List.of()).forGetter(WrittenBookContent::pages),
-               Codec.BOOL.optionalFieldOf("resolved", false).forGetter(WrittenBookContent::resolved)
-            )
-            .apply(i, WrittenBookContent::new)
+            Filterable.codec(Codec.string(0, 32)).fieldOf("title").forGetter(WrittenBookContent::title),
+            Codec.STRING.fieldOf("author").forGetter(WrittenBookContent::author),
+            ExtraCodecs.intRange(0, 3).optionalFieldOf("generation", 0).forGetter(WrittenBookContent::generation),
+            PAGES_CODEC.optionalFieldOf("pages", List.of()).forGetter(WrittenBookContent::pages),
+            Codec.BOOL.optionalFieldOf("resolved", false).forGetter(WrittenBookContent::resolved)
+         )
+         .apply(i, WrittenBookContent::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, WrittenBookContent> STREAM_CODEC = StreamCodec.composite(
       Filterable.streamCodec(ByteBufCodecs.stringUtf8(32)),
@@ -104,24 +104,23 @@ public record WrittenBookContent(Filterable<String> title, String author, int ge
       return false;
    }
 
-   @Nullable
-   public WrittenBookContent resolve(final ResolutionContext context, final HolderLookup.Provider registries) {
+   public @Nullable WrittenBookContent resolve(final ResolutionContext context, final HolderLookup.Provider registries) {
       if (this.resolved) {
          return null;
-      } else {
-         Builder<Filterable<Component>> newPages = ImmutableList.builderWithExpectedSize(this.pages.size());
+      }
 
-         for (Filterable<Component> page : this.pages) {
-            Optional<Filterable<Component>> resolvedPage = resolvePage(context, registries, page);
-            if (resolvedPage.isEmpty()) {
-               return null;
-            }
+      Builder<Filterable<Component>> newPages = ImmutableList.builderWithExpectedSize(this.pages.size());
 
-            newPages.add(resolvedPage.get());
+      for (Filterable<Component> page : this.pages) {
+         Optional<Filterable<Component>> resolvedPage = resolvePage(context, registries, page);
+         if (resolvedPage.isEmpty()) {
+            return null;
          }
 
-         return new WrittenBookContent(this.title, this.author, this.generation, newPages.build(), true);
+         newPages.add(resolvedPage.get());
       }
+
+      return new WrittenBookContent(this.title, this.author, this.generation, newPages.build(), true);
    }
 
    public WrittenBookContent markResolved() {
@@ -135,7 +134,7 @@ public record WrittenBookContent(Filterable<String> title, String author, int ge
          try {
             Component newComponent = ComponentUtils.resolve(context, component);
             return isPageTooLarge(newComponent, registries) ? Optional.empty() : Optional.of(newComponent);
-         } catch (Exception var4) {
+         } catch (Exception ignored) {
             return Optional.of(component);
          }
       });

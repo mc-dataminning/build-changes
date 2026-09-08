@@ -73,26 +73,24 @@ public final class NaturalSpawner {
       Object2IntOpenHashMap<MobCategory> mobCounts = new Object2IntOpenHashMap();
 
       for (Entity entity : entities) {
-         if (entity instanceof Mob mob && (mob.isPersistenceRequired() || mob.requiresCustomPersistence())) {
-            continue;
-         }
+         if (!(entity instanceof Mob mob && (mob.isPersistenceRequired() || mob.requiresCustomPersistence()))) {
+            MobCategory category = entity.getType().getCategory();
+            if (category != MobCategory.MISC) {
+               BlockPos pos = entity.blockPosition();
+               chunkGetter.query(ChunkPos.pack(pos), chunk -> {
+                  MobSpawnSettings naturalMobSpawns = level.environmentAttributes().getValue(EnvironmentAttributes.NATURAL_MOB_SPAWNS, pos);
+                  MobSpawnSettings.MobSpawnCost mobSpawnCost = naturalMobSpawns.getMobSpawnCost(entity.getType());
+                  if (mobSpawnCost != null) {
+                     spawnPotential.addCharge(entity.blockPosition(), mobSpawnCost.charge());
+                  }
 
-         MobCategory category = entity.getType().getCategory();
-         if (category != MobCategory.MISC) {
-            BlockPos pos = entity.blockPosition();
-            chunkGetter.query(ChunkPos.pack(pos), chunk -> {
-               MobSpawnSettings naturalMobSpawns = level.environmentAttributes().getValue(EnvironmentAttributes.NATURAL_MOB_SPAWNS, pos);
-               MobSpawnSettings.MobSpawnCost mobSpawnCost = naturalMobSpawns.getMobSpawnCost(entity.getType());
-               if (mobSpawnCost != null) {
-                  spawnPotential.addCharge(entity.blockPosition(), mobSpawnCost.charge());
-               }
+                  if (entity instanceof Mob) {
+                     localMobCapCalculator.addMob(chunk.getPos(), category);
+                  }
 
-               if (entity instanceof Mob) {
-                  localMobCapCalculator.addMob(chunk.getPos(), category);
-               }
-
-               mobCounts.addTo(category, 1);
-            });
+                  mobCounts.addTo(category, 1);
+               });
+            }
          }
       }
 
@@ -143,8 +141,7 @@ public final class NaturalSpawner {
 
    @VisibleForDebug
    public static void spawnCategoryForPosition(final MobCategory mobCategory, final ServerLevel level, final BlockPos start) {
-      spawnCategoryForPosition(mobCategory, level, level.getChunk(start), start, (var0, var1, var2, var3) -> true, (var0, var1) -> {
-      });
+      spawnCategoryForPosition(mobCategory, level, level.getChunk(start), start, (var0, var1, var2, var3) -> true, (var0, var1) -> {});
    }
 
    public static void spawnCategoryForPosition(
@@ -176,11 +173,11 @@ public final class NaturalSpawner {
                x += level.random.nextInt(6) - level.random.nextInt(6);
                z += level.random.nextInt(6) - level.random.nextInt(6);
                pos.set(x, yStart, z);
-               double xx = (double)x + 0.5;
-               double zz = (double)z + 0.5;
-               Player nearestPlayer = level.getNearestPlayer(xx, (double)yStart, zz, -1.0, false);
+               double xx = x + 0.5;
+               double zz = z + 0.5;
+               Player nearestPlayer = level.getNearestPlayer(xx, yStart, zz, -1.0, false);
                if (nearestPlayer != null) {
-                  double nearestPlayerDistanceSqr = nearestPlayer.distanceToSqr(xx, (double)yStart, zz);
+                  double nearestPlayerDistanceSqr = nearestPlayer.distanceToSqr(xx, yStart, zz);
                   if (isRightDistanceToPlayerAndSpawnPoint(level, chunk, pos, nearestPlayerDistanceSqr)) {
                      if (currentSpawnData == null) {
                         Optional<MobSpawnSettings.SpawnerData> nextSpawnData = getRandomSpawnMobAt(
@@ -201,7 +198,7 @@ public final class NaturalSpawner {
                            return;
                         }
 
-                        mob.snapTo(xx, (double)yStart, zz, level.random.nextFloat() * 360.0F, 0.0F);
+                        mob.snapTo(xx, yStart, zz, level.random.nextFloat() * 360.0F, 0.0F);
                         if (isValidPositionForMob(level, mob, nearestPlayerDistanceSqr)) {
                            groupData = mob.finalizeSpawn(level, level.getCurrentDifficultyAt(mob.blockPosition()), EntitySpawnReason.NATURAL, groupData);
                            clusterSize++;
@@ -229,16 +226,15 @@ public final class NaturalSpawner {
    ) {
       if (nearestPlayerDistanceSqr <= 576.0) {
          return false;
-      } else {
-         LevelData.RespawnData respawnData = level.getRespawnData();
-         if (respawnData.dimension() == level.dimension()
-            && respawnData.pos().closerToCenterThan(new Vec3((double)pos.getX() + 0.5, (double)pos.getY(), (double)pos.getZ() + 0.5), 24.0)) {
-            return false;
-         } else {
-            ChunkPos chunkPos = ChunkPos.containing(pos);
-            return Objects.equals(chunkPos, chunk.getPos()) || level.canSpawnEntitiesInChunk(chunkPos);
-         }
       }
+
+      LevelData.RespawnData respawnData = level.getRespawnData();
+      if (respawnData.dimension() == level.dimension() && respawnData.pos().closerToCenterThan(new Vec3(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5), 24.0)) {
+         return false;
+      }
+
+      ChunkPos chunkPos = ChunkPos.containing(pos);
+      return Objects.equals(chunkPos, chunk.getPos()) || level.canSpawnEntitiesInChunk(chunkPos);
    }
 
    private static boolean isValidSpawnPostitionForType(
@@ -253,8 +249,7 @@ public final class NaturalSpawner {
       EntityType<?> type = currentSpawnData.type();
       if (type.getCategory() == MobCategory.MISC) {
          return false;
-      } else if (!type.canSpawnFarFromPlayer()
-         && nearestPlayerDistanceSqr > (double)(type.getCategory().getDespawnDistance() * type.getCategory().getDespawnDistance())) {
+      } else if (!type.canSpawnFarFromPlayer() && nearestPlayerDistanceSqr > type.getCategory().getDespawnDistance() * type.getCategory().getDespawnDistance()) {
          return false;
       } else if (!type.canSummon() || !canSpawnMobAt(level, structureManager, generator, mobCategory, currentSpawnData, pos)) {
          return false;
@@ -263,28 +258,26 @@ public final class NaturalSpawner {
       } else {
          return !SpawnPlacements.checkSpawnRules(type, level, EntitySpawnReason.NATURAL, pos, level.random)
             ? false
-            : level.noCollision(type.getSpawnAABB((double)pos.getX() + 0.5, (double)pos.getY(), (double)pos.getZ() + 0.5));
+            : level.noCollision(type.getSpawnAABB(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5));
       }
    }
 
-   @Nullable
-   private static Mob getMobForSpawn(final ServerLevel level, final EntityType<?> type) {
+   private static @Nullable Mob getMobForSpawn(final ServerLevel level, final EntityType<?> type) {
       try {
-         Entity var3 = type.create(level, EntitySpawnReason.NATURAL);
-         if (var3 instanceof Mob) {
-            return (Mob)var3;
+         if (type.create(level, EntitySpawnReason.NATURAL) instanceof Mob mob) {
+            return mob;
          }
 
          LOGGER.warn("Can't spawn entity of type: {}", BuiltInRegistries.ENTITY_TYPE.getKey(type));
-      } catch (Exception var4) {
-         LOGGER.warn("Failed to create mob", var4);
+      } catch (Exception e) {
+         LOGGER.warn("Failed to create mob", e);
       }
 
       return null;
    }
 
    private static boolean isValidPositionForMob(final ServerLevel level, final Mob mob, final double nearestPlayerDistanceSqr) {
-      return nearestPlayerDistanceSqr > (double)(mob.getType().getCategory().getDespawnDistance() * mob.getType().getCategory().getDespawnDistance())
+      return nearestPlayerDistanceSqr > mob.getType().getCategory().getDespawnDistance() * mob.getType().getCategory().getDespawnDistance()
             && mob.removeWhenFarAway(nearestPlayerDistanceSqr)
          ? false
          : mob.checkSpawnRules(level, EntitySpawnReason.NATURAL) && mob.checkSpawnObstruction(level);
@@ -385,15 +378,11 @@ public final class NaturalSpawner {
                         BlockPos pos = getTopNonCollidingPos(level, spawnerData.type(), x, z);
                         if (spawnerData.type().canSummon() && SpawnPlacements.isSpawnPositionOk(spawnerData.type(), level, pos)) {
                            float width = spawnerData.type().getWidth();
-                           double fx = Mth.clamp((double)x, (double)xo + (double)width, (double)xo + 16.0 - (double)width);
-                           double fz = Mth.clamp((double)z, (double)zo + (double)width, (double)zo + 16.0 - (double)width);
-                           if (!level.noCollision(spawnerData.type().getSpawnAABB(fx, (double)pos.getY(), fz))
+                           double fx = Mth.clamp(x, (double)xo + width, xo + 16.0 - width);
+                           double fz = Mth.clamp(z, (double)zo + width, zo + 16.0 - width);
+                           if (!level.noCollision(spawnerData.type().getSpawnAABB(fx, pos.getY(), fz))
                               || !SpawnPlacements.checkSpawnRules(
-                                 spawnerData.type(),
-                                 level,
-                                 EntitySpawnReason.CHUNK_GENERATION,
-                                 BlockPos.containing(fx, (double)pos.getY(), fz),
-                                 level.getRandom()
+                                 spawnerData.type(), level, EntitySpawnReason.CHUNK_GENERATION, BlockPos.containing(fx, pos.getY(), fz), level.getRandom()
                               )) {
                               continue;
                            }
@@ -401,8 +390,8 @@ public final class NaturalSpawner {
                            Entity entity;
                            try {
                               entity = spawnerData.type().create(level.getLevel(), EntitySpawnReason.NATURAL);
-                           } catch (Exception var29) {
-                              LOGGER.warn("Failed to create mob", var29);
+                           } catch (Exception e) {
+                              LOGGER.warn("Failed to create mob", e);
                               continue;
                            }
 
@@ -410,7 +399,7 @@ public final class NaturalSpawner {
                               continue;
                            }
 
-                           entity.snapTo(fx, (double)pos.getY(), fz, random.nextFloat() * 360.0F, 0.0F);
+                           entity.snapTo(fx, pos.getY(), fz, random.nextFloat() * 360.0F, 0.0F);
                            if (entity instanceof Mob mob && mob.checkSpawnRules(level, EntitySpawnReason.CHUNK_GENERATION) && mob.checkSpawnObstruction(level)) {
                               groupSpawnData = mob.finalizeSpawn(
                                  level, level.getCurrentDifficultyAt(mob.blockPosition()), EntitySpawnReason.CHUNK_GENERATION, groupSpawnData
@@ -473,10 +462,8 @@ public final class NaturalSpawner {
       private final PotentialCalculator spawnPotential;
       private final Object2IntMap<MobCategory> unmodifiableMobCategoryCounts;
       private final LocalMobCapCalculator localMobCapCalculator;
-      @Nullable
-      private BlockPos lastCheckedPos;
-      @Nullable
-      private EntityType<?> lastCheckedType;
+      private @Nullable BlockPos lastCheckedPos;
+      private @Nullable EntityType<?> lastCheckedType;
       private double lastCharge;
 
       private SpawnState(

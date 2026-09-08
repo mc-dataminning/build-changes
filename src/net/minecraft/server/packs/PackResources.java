@@ -13,8 +13,7 @@ public interface PackResources extends PackMetadataResources {
    String METADATA_EXTENSION = ".mcmeta";
    String PACK_META = "pack.mcmeta";
 
-   @Nullable
-   IoSupplier<InputStream> getResource(PackType type, Identifier location);
+   @Nullable IoSupplier<InputStream> getResource(PackType type, Identifier location);
 
    void listResources(PackType type, String namespace, String directory, PackResources.ResourceOutput output);
 
@@ -29,11 +28,11 @@ public interface PackResources extends PackMetadataResources {
    }
 
    @FunctionalInterface
-   public interface Filter {
+   interface Filter {
       boolean isFiltered(Identifier resourceId);
    }
 
    @FunctionalInterface
-   public interface ResourceOutput extends BiConsumer<Identifier, IoSupplier<InputStream>> {
+   interface ResourceOutput extends BiConsumer<Identifier, IoSupplier<InputStream>> {
    }
 }

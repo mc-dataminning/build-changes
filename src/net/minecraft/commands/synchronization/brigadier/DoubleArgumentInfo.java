@@ -2,7 +2,6 @@ package net.minecraft.commands.synchronization.brigadier;
 
 import com.google.gson.JsonObject;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
-import java.util.Objects;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.synchronization.ArgumentTypeInfo;
 import net.minecraft.commands.synchronization.ArgumentUtils;
@@ -48,8 +47,6 @@ public class DoubleArgumentInfo implements ArgumentTypeInfo<DoubleArgumentType, 
       private final double max;
 
       private Template(final double min, final double max) {
-         Objects.requireNonNull(DoubleArgumentInfo.this);
-         super();
          this.min = min;
          this.max = max;
       }

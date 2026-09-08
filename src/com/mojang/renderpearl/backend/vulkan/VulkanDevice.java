@@ -117,9 +117,7 @@ public class VulkanDevice implements GpuDeviceBackend {
          physicalDevice.deviceType()
       );
       IntIntPair graphicsQueueFamily = physicalDevice.graphicsQueueFamilyAndIndex();
-
       assert graphicsQueueFamily != null;
-
       IntIntPair computeQueueFamily = physicalDevice.computeQueueFamilyAndIndex();
       IntIntPair transferQueueFamily = physicalDevice.transferQueueFamilyAndIndex();
       this.graphicsQueue = new VulkanQueue(this, graphicsQueueFamily.leftInt(), graphicsQueueFamily.rightInt());
@@ -203,8 +201,8 @@ public class VulkanDevice implements GpuDeviceBackend {
 
    @Override
    public GpuTexture createTexture(
-      @Nullable final String label,
-      @GpuTexture.Usage final int usage,
+      final @Nullable String label,
+      final @GpuTexture.Usage int usage,
       final GpuFormat format,
       final int width,
       final int height,
@@ -219,18 +217,18 @@ public class VulkanDevice implements GpuDeviceBackend {
       return new VulkanGpuTextureView(this, (VulkanGpuTexture)texture, baseMipLevel, mipLevels);
    }
 
-   public VulkanGpuBuffer createBuffer(@Nullable final Supplier<String> label, @GpuBuffer.Usage final int usage, final long size) {
+   public VulkanGpuBuffer createBuffer(final @Nullable Supplier<String> label, final @GpuBuffer.Usage int usage, final long size) {
       return new VulkanGpuBuffer.Direct(this, label, usage, size, this.isIntegratedIntelMoltenVK);
    }
 
    @Override
-   public GpuBuffer createBuffer(@Nullable final Supplier<String> label, @GpuBuffer.Usage final int usage, final ByteBuffer data) {
-      VulkanGpuBuffer buffer = this.createBuffer(label, usage | 8, (long)data.remaining());
+   public GpuBuffer createBuffer(final @Nullable Supplier<String> label, final @GpuBuffer.Usage int usage, final ByteBuffer data) {
+      VulkanGpuBuffer buffer = this.createBuffer(label, usage | 8, data.remaining());
       GpuBufferSlice stagingBuffer = this.commandEncoder.transientMemory().uploadStaging(data, 1L, 16);
       MemoryStack stack = MemoryStack.stackPush();
 
       try {
-         Buffer regions = VkBufferCopy.calloc(1, stack).srcOffset(stagingBuffer.offset()).dstOffset(0L).size((long)data.remaining());
+         Buffer regions = VkBufferCopy.calloc(1, stack).srcOffset(stagingBuffer.offset()).dstOffset(0L).size(data.remaining());
          VK12.vkCmdCopyBuffer(this.commandEncoder.objectInitCommandBuffer(), ((VulkanGpuBuffer)stagingBuffer.buffer()).vkBuffer(), buffer.vkBuffer(), regions);
       } catch (Throwable var10) {
          if (stack != null) {
@@ -274,45 +272,45 @@ public class VulkanDevice implements GpuDeviceBackend {
 
    @Override
    public long getTimestampCalibrationOffset() {
-      double timestampPeriod = (double)this.deviceInfo.timestampPeriod();
+      double timestampPeriod = this.deviceInfo.timestampPeriod();
       if (!this.enabledFeatures.contains(VulkanFeatureSets.CALIBRATED_TIMESTAMP_FEATURESET)) {
          long deviceTime = this.commandEncoder.getTimestampNow();
          long hostTime = System.nanoTime();
-         long deviceTimeInNanos = timestampPeriod == 1.0 ? deviceTime : (long)((double)deviceTime * timestampPeriod);
+         long deviceTimeInNanos = timestampPeriod == 1.0 ? deviceTime : (long)(deviceTime * timestampPeriod);
          return hostTime - deviceTimeInNanos;
-      } else {
-         MemoryStack stack = MemoryStack.stackPush();
-
-         long var13;
-         try {
-            org.lwjgl.vulkan.VkCalibratedTimestampInfoEXT.Buffer infos = VkCalibratedTimestampInfoEXT.calloc(2, stack);
-            ((VkCalibratedTimestampInfoKHR)infos.get(0)).sType$Default().timeDomain(0);
-            ((VkCalibratedTimestampInfoKHR)infos.get(1)).sType$Default().timeDomain(1);
-            LongBuffer timestampValues = stack.callocLong(infos.capacity());
-            LongBuffer deviation = stack.callocLong(1);
-            EXTCalibratedTimestamps.vkGetCalibratedTimestampsEXT(this.vkDevice, infos, timestampValues, deviation);
-            long deviceTime = timestampValues.get(0);
-            long hostTime = timestampValues.get(1);
-            long deviceInNanos = timestampPeriod == 1.0 ? deviceTime : (long)((double)deviceTime * timestampPeriod);
-            var13 = hostTime - deviceInNanos;
-         } catch (Throwable var16) {
-            if (stack != null) {
-               try {
-                  stack.close();
-               } catch (Throwable var15) {
-                  var16.addSuppressed(var15);
-               }
-            }
-
-            throw var16;
-         }
-
-         if (stack != null) {
-            stack.close();
-         }
-
-         return var13;
       }
+
+      MemoryStack stack = MemoryStack.stackPush();
+
+      long var13;
+      try {
+         org.lwjgl.vulkan.VkCalibratedTimestampInfoEXT.Buffer infos = VkCalibratedTimestampInfoEXT.calloc(2, stack);
+         ((VkCalibratedTimestampInfoKHR)infos.get(0)).sType$Default().timeDomain(0);
+         ((VkCalibratedTimestampInfoKHR)infos.get(1)).sType$Default().timeDomain(1);
+         LongBuffer timestampValues = stack.callocLong(infos.capacity());
+         LongBuffer deviation = stack.callocLong(1);
+         EXTCalibratedTimestamps.vkGetCalibratedTimestampsEXT(this.vkDevice, infos, timestampValues, deviation);
+         long deviceTime = timestampValues.get(0);
+         long hostTime = timestampValues.get(1);
+         long deviceInNanos = timestampPeriod == 1.0 ? deviceTime : (long)(deviceTime * timestampPeriod);
+         var13 = hostTime - deviceInNanos;
+      } catch (Throwable var16) {
+         if (stack != null) {
+            try {
+               stack.close();
+            } catch (Throwable var15) {
+               var16.addSuppressed(var15);
+            }
+         }
+
+         throw var16;
+      }
+
+      if (stack != null) {
+         stack.close();
+      }
+
+      return var13;
    }
 
    public CheckpointExtension checkpointExtension() {

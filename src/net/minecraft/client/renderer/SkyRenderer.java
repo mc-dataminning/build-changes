@@ -287,7 +287,7 @@ public class SkyRenderer implements AutoCloseable {
       if (!(alpha <= 0.001F)) {
          poseStack.pushPose();
          poseStack.rotateDegrees(Axis.XP, 90.0F);
-         float angle = Mth.sin((double)sunAngle) < 0.0F ? 180.0F : 0.0F;
+         float angle = Mth.sin(sunAngle) < 0.0F ? 180.0F : 0.0F;
          poseStack.rotateDegrees(Axis.ZP, angle + 90.0F);
          Matrix4fStack modelViewStack = RenderSystem.getModelViewStack();
          modelViewStack.pushMatrix();
@@ -334,7 +334,6 @@ public class SkyRenderer implements AutoCloseable {
       int vertices = 18;
       int vtxSize = DefaultVertexFormat.POSITION_COLOR.getVertexSize();
 
-      GpuBuffer var16;
       try (ByteBufferBuilder byteBufferBuilder = ByteBufferBuilder.exactlySized(18 * vtxSize)) {
          BufferBuilder bufferBuilder = new BufferBuilder(byteBufferBuilder, PrimitiveTopology.TRIANGLE_FAN, DefaultVertexFormat.POSITION_COLOR);
          int centerColor = ARGB.white(1.0F);
@@ -342,18 +341,16 @@ public class SkyRenderer implements AutoCloseable {
          bufferBuilder.addVertex(0.0F, 100.0F, 0.0F).setColor(centerColor);
 
          for (int i = 0; i <= 16; i++) {
-            float angle = (float)i * (float) (Math.PI * 2) / 16.0F;
-            float sinAngle = Mth.sin((double)angle);
-            float cosAngle = Mth.cos((double)angle);
+            float angle = i * (float) (Math.PI * 2) / 16.0F;
+            float sinAngle = Mth.sin(angle);
+            float cosAngle = Mth.cos(angle);
             bufferBuilder.addVertex(sinAngle * 120.0F, cosAngle * 120.0F, -cosAngle * 40.0F).setColor(ringColor);
          }
 
          try (MeshData mesh = bufferBuilder.buildOrThrow()) {
-            var16 = RenderSystem.getDevice().createBuffer(() -> "Sunrise/Sunset fan", 32, mesh.vertexBuffer());
+            return RenderSystem.getDevice().createBuffer(() -> "Sunrise/Sunset fan", 32, mesh.vertexBuffer());
          }
       }
-
-      return var16;
    }
 
    private static GpuBuffer buildSunQuad(final TextureAtlas atlas) {
@@ -367,7 +364,6 @@ public class SkyRenderer implements AutoCloseable {
    private static GpuBuffer buildCelestialQuad(final String name, final TextureAtlasSprite sprite) {
       VertexFormat format = DefaultVertexFormat.POSITION_TEX;
 
-      GpuBuffer var6;
       try (ByteBufferBuilder byteBufferBuilder = ByteBufferBuilder.exactlySized(4 * format.getVertexSize())) {
          BufferBuilder bufferBuilder = new BufferBuilder(byteBufferBuilder, PrimitiveTopology.QUADS, format);
          bufferBuilder.addVertex(-1.0F, 0.0F, -1.0F).setUv(sprite.getU0(), sprite.getV0());
@@ -376,18 +372,15 @@ public class SkyRenderer implements AutoCloseable {
          bufferBuilder.addVertex(-1.0F, 0.0F, 1.0F).setUv(sprite.getU0(), sprite.getV1());
 
          try (MeshData mesh = bufferBuilder.buildOrThrow()) {
-            var6 = RenderSystem.getDevice().createBuffer(() -> name, 32, mesh.vertexBuffer());
+            return RenderSystem.getDevice().createBuffer(() -> name, 32, mesh.vertexBuffer());
          }
       }
-
-      return var6;
    }
 
    private static GpuBuffer buildMoonPhases(final TextureAtlas atlas) {
       MoonPhase[] phases = MoonPhase.values();
       VertexFormat format = DefaultVertexFormat.POSITION_TEX;
 
-      GpuBuffer var15;
       try (ByteBufferBuilder byteBufferBuilder = ByteBufferBuilder.exactlySized(phases.length * 4 * format.getVertexSize())) {
          BufferBuilder bufferBuilder = new BufferBuilder(byteBufferBuilder, PrimitiveTopology.QUADS, format);
 
@@ -400,18 +393,15 @@ public class SkyRenderer implements AutoCloseable {
          }
 
          try (MeshData mesh = bufferBuilder.buildOrThrow()) {
-            var15 = RenderSystem.getDevice().createBuffer(() -> "Moon phases", 32, mesh.vertexBuffer());
+            return RenderSystem.getDevice().createBuffer(() -> "Moon phases", 32, mesh.vertexBuffer());
          }
       }
-
-      return var15;
    }
 
    private GpuBuffer buildStars() {
       RandomSource random = RandomSource.createThreadLocalInstance(10842L);
       float starDistance = 100.0F;
 
-      GpuBuffer var19;
       try (ByteBufferBuilder byteBufferBuilder = ByteBufferBuilder.exactlySized(DefaultVertexFormat.POSITION.getVertexSize() * 1500 * 4)) {
          BufferBuilder bufferBuilder = new BufferBuilder(byteBufferBuilder, PrimitiveTopology.QUADS, DefaultVertexFormat.POSITION);
 
@@ -434,11 +424,9 @@ public class SkyRenderer implements AutoCloseable {
 
          try (MeshData mesh = bufferBuilder.buildOrThrow()) {
             this.starIndexCount = mesh.drawState().indexCount();
-            var19 = RenderSystem.getDevice().createBuffer(() -> "Stars vertex buffer", 40, mesh.vertexBuffer());
+            return RenderSystem.getDevice().createBuffer(() -> "Stars vertex buffer", 40, mesh.vertexBuffer());
          }
       }
-
-      return var19;
    }
 
    private void buildSkyDisc(final VertexConsumer builder, final float yy) {
@@ -446,12 +434,11 @@ public class SkyRenderer implements AutoCloseable {
       builder.addVertex(0.0F, yy, 0.0F);
 
       for (int i = -180; i <= 180; i += 45) {
-         builder.addVertex(x * Mth.cos((double)((float)i * (float) (Math.PI / 180.0))), yy, 512.0F * Mth.sin((double)((float)i * (float) (Math.PI / 180.0))));
+         builder.addVertex(x * Mth.cos(i * (float) (Math.PI / 180.0)), yy, 512.0F * Mth.sin(i * (float) (Math.PI / 180.0)));
       }
    }
 
    private static GpuBuffer buildEndSky() {
-      GpuBuffer var10;
       try (ByteBufferBuilder byteBufferBuilder = ByteBufferBuilder.exactlySized(24 * DefaultVertexFormat.POSITION_TEX_COLOR.getVertexSize())) {
          BufferBuilder bufferBuilder = new BufferBuilder(byteBufferBuilder, PrimitiveTopology.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
 
@@ -481,11 +468,9 @@ public class SkyRenderer implements AutoCloseable {
          }
 
          try (MeshData meshData = bufferBuilder.buildOrThrow()) {
-            var10 = RenderSystem.getDevice().createBuffer(() -> "End sky vertex buffer", 40, meshData.vertexBuffer());
+            return RenderSystem.getDevice().createBuffer(() -> "End sky vertex buffer", 40, meshData.vertexBuffer());
          }
       }
-
-      return var10;
    }
 
    @Override

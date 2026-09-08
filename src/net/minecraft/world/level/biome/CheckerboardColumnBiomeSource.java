@@ -10,7 +10,7 @@ import net.minecraft.core.HolderSet;
 public class CheckerboardColumnBiomeSource extends BiomeSource implements BiomeResolver {
    public static final MapCodec<CheckerboardColumnBiomeSource> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(Biome.LIST_CODEC.fieldOf("biomes").forGetter(s -> s.allowedBiomes), Codec.intRange(0, 62).optionalFieldOf("scale", 2).forGetter(s -> s.size))
-            .apply(i, CheckerboardColumnBiomeSource::new)
+         .apply(i, CheckerboardColumnBiomeSource::new)
    );
    private final HolderSet<Biome> allowedBiomes;
    private final int bitShift;

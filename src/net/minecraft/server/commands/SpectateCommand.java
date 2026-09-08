@@ -32,10 +32,8 @@ public class SpectateCommand {
                ((RequiredArgumentBuilder)Commands.argument("target", EntityArgument.entity())
                      .executes(
                         c -> spectate(
-                              (CommandSourceStack)c.getSource(),
-                              EntityArgument.getEntity(c, "target"),
-                              ((CommandSourceStack)c.getSource()).getPlayerOrException()
-                           )
+                           (CommandSourceStack)c.getSource(), EntityArgument.getEntity(c, "target"), ((CommandSourceStack)c.getSource()).getPlayerOrException()
+                        )
                      ))
                   .then(
                      Commands.argument("player", EntityArgument.player())
@@ -47,22 +45,26 @@ public class SpectateCommand {
       );
    }
 
-   private static int spectate(final CommandSourceStack source, @Nullable final Entity target, final ServerPlayer player) throws CommandSyntaxException {
+   private static int spectate(final CommandSourceStack source, final @Nullable Entity target, final ServerPlayer player) throws CommandSyntaxException {
       if (player == target) {
          throw ERROR_SELF.create();
-      } else if (!player.isSpectator()) {
-         throw ERROR_NOT_SPECTATOR.create(player.getDisplayName());
-      } else if (target != null && target.getType().clientTrackingRange() == 0) {
-         throw ERROR_CANNOT_SPECTATE.create(target.getDisplayName());
-      } else {
-         player.setCamera(target);
-         if (target != null) {
-            source.sendSuccess(() -> Component.translatable("commands.spectate.success.started", target.getDisplayName()), false);
-         } else {
-            source.sendSuccess(() -> Component.translatable("commands.spectate.success.stopped"), false);
-         }
-
-         return 1;
       }
+
+      if (!player.isSpectator()) {
+         throw ERROR_NOT_SPECTATOR.create(player.getDisplayName());
+      }
+
+      if (target != null && target.getType().clientTrackingRange() == 0) {
+         throw ERROR_CANNOT_SPECTATE.create(target.getDisplayName());
+      }
+
+      player.setCamera(target);
+      if (target != null) {
+         source.sendSuccess(() -> Component.translatable("commands.spectate.success.started", target.getDisplayName()), false);
+      } else {
+         source.sendSuccess(() -> Component.translatable("commands.spectate.success.stopped"), false);
+      }
+
+      return 1;
    }
 }

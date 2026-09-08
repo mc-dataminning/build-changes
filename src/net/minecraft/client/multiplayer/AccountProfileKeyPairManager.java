@@ -71,8 +71,8 @@ public class AccountProfileKeyPairManager implements ProfileKeyPairManager {
                ProfileKeyPair fetchedKeyPair = this.fetchProfileKeyPair(this.userApiService);
                this.writeProfileKeyPair(fetchedKeyPair);
                return Optional.ofNullable(fetchedKeyPair);
-            } catch (CryptException | MinecraftClientException | IOException var3) {
-               LOGGER.error("Failed to retrieve profile key pair", var3);
+            } catch (IOException | CryptException | MinecraftClientException e) {
+               LOGGER.error("Failed to retrieve profile key pair", e);
                this.writeProfileKeyPair(null);
                return cachedKeyPair;
             }
@@ -83,26 +83,21 @@ public class AccountProfileKeyPairManager implements ProfileKeyPairManager {
    private Optional<ProfileKeyPair> readProfileKeyPair() {
       if (Files.notExists(this.profileKeyPairPath)) {
          return Optional.empty();
-      } else {
-         try {
-            Optional var2;
-            try (BufferedReader bufferedReader = Files.newBufferedReader(this.profileKeyPairPath)) {
-               var2 = ProfileKeyPair.CODEC.parse(JsonOps.INSTANCE, StrictJsonParser.parse(bufferedReader)).result();
-            }
+      }
 
-            return var2;
-         } catch (Exception var6) {
-            LOGGER.error("Failed to read profile key pair file {}", this.profileKeyPairPath, var6);
-            return Optional.empty();
-         }
+      try (BufferedReader bufferedReader = Files.newBufferedReader(this.profileKeyPairPath)) {
+         return ProfileKeyPair.CODEC.parse(JsonOps.INSTANCE, StrictJsonParser.parse(bufferedReader)).result();
+      } catch (Exception e) {
+         LOGGER.error("Failed to read profile key pair file {}", this.profileKeyPairPath, e);
+         return Optional.empty();
       }
    }
 
-   private void writeProfileKeyPair(@Nullable final ProfileKeyPair profileKeyPair) {
+   private void writeProfileKeyPair(final @Nullable ProfileKeyPair profileKeyPair) {
       try {
          Files.deleteIfExists(this.profileKeyPairPath);
-      } catch (IOException var3) {
-         LOGGER.error("Failed to delete profile key pair file {}", this.profileKeyPairPath, var3);
+      } catch (IOException e) {
+         LOGGER.error("Failed to delete profile key pair file {}", this.profileKeyPairPath, e);
       }
 
       if (profileKeyPair != null) {
@@ -111,16 +106,15 @@ public class AccountProfileKeyPairManager implements ProfileKeyPairManager {
                try {
                   Files.createDirectories(this.profileKeyPairPath.getParent());
                   Files.writeString(this.profileKeyPairPath, jsonStr.toString());
-               } catch (Exception var3x) {
-                  LOGGER.error("Failed to write profile key pair file {}", this.profileKeyPairPath, var3x);
+               } catch (Exception e) {
+                  LOGGER.error("Failed to write profile key pair file {}", this.profileKeyPairPath, e);
                }
             });
          }
       }
    }
 
-   @Nullable
-   private ProfileKeyPair fetchProfileKeyPair(final UserApiService userApiService) throws CryptException, IOException {
+   private @Nullable ProfileKeyPair fetchProfileKeyPair(final UserApiService userApiService) throws CryptException, IOException {
       KeyPairResponse keyPair = userApiService.getKeyPair();
       if (keyPair != null) {
          ProfilePublicKey.Data publicKeyData = parsePublicKey(keyPair);
@@ -143,8 +137,8 @@ public class AccountProfileKeyPairManager implements ProfileKeyPairManager {
             PublicKey key = Crypt.stringToRsaPublicKey(keyPair.publicKey());
             ByteBuffer signature = response.publicKeySignature();
             return new ProfilePublicKey.Data(expiresAt, key, signature.array());
-         } catch (IllegalArgumentException | DateTimeException var5) {
-            throw new CryptException(var5);
+         } catch (DateTimeException | IllegalArgumentException e) {
+            throw new CryptException(e);
          }
       } else {
          throw new CryptException(new MissingException("Missing public key"));

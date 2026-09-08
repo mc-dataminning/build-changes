@@ -71,18 +71,11 @@ public class BeaconBlockEntity extends BlockEntity implements MenuProvider, Name
    private List<BeaconBeamOwner.Section> checkingBeamSections = new ArrayList<>();
    private int levels;
    private int lastCheckY;
-   @Nullable
-   private Holder<MobEffect> primaryPower;
-   @Nullable
-   private Holder<MobEffect> secondaryPower;
-   @Nullable
-   private Component name;
+   private @Nullable Holder<MobEffect> primaryPower;
+   private @Nullable Holder<MobEffect> secondaryPower;
+   private @Nullable Component name;
    private LockCode lockKey = LockCode.NO_LOCK;
    private final ContainerData dataAccess = new ContainerData() {
-      {
-         Objects.requireNonNull(BeaconBlockEntity.this);
-      }
-
       @Override
       public int get(final int dataId) {
          return switch (dataId) {
@@ -117,8 +110,7 @@ public class BeaconBlockEntity extends BlockEntity implements MenuProvider, Name
       }
    };
 
-   @Nullable
-   private static Holder<MobEffect> filterEffect(@Nullable final Holder<MobEffect> effect) {
+   private static @Nullable Holder<MobEffect> filterEffect(final @Nullable Holder<MobEffect> effect) {
       return VALID_EFFECTS.contains(effect) ? effect : null;
    }
 
@@ -134,7 +126,7 @@ public class BeaconBlockEntity extends BlockEntity implements MenuProvider, Name
       if (entity.lastCheckY < y) {
          checkPos = pos;
          entity.checkingBeamSections = Lists.newArrayList();
-         entity.lastCheckY = pos.getY() - 1;
+         entity.lastCheckY = checkPos.getY() - 1;
       } else {
          checkPos = new BlockPos(x, entity.lastCheckY + 1, z);
       }
@@ -194,9 +186,7 @@ public class BeaconBlockEntity extends BlockEntity implements MenuProvider, Name
             if (!wasActive && isActive) {
                playSound(level, pos, SoundEvents.BEACON_ACTIVATE);
 
-               for (ServerPlayer player : level.getEntitiesOfClass(
-                  ServerPlayer.class, new AABB((double)x, (double)y, (double)z, (double)x, (double)(y - 4), (double)z).inflate(10.0, 5.0, 10.0)
-               )) {
+               for (ServerPlayer player : level.getEntitiesOfClass(ServerPlayer.class, new AABB(x, y, z, x, y - 4, z).inflate(10.0, 5.0, 10.0))) {
                   CriteriaTriggers.CONSTRUCT_BEACON.trigger(player, entity.levels);
                }
             } else if (wasActive && !isActive) {
@@ -240,7 +230,7 @@ public class BeaconBlockEntity extends BlockEntity implements MenuProvider, Name
       super.setRemoved();
    }
 
-   public static boolean validateEffects(@Nullable final Holder<MobEffect> primary, @Nullable final Holder<MobEffect> secondary, final int levels) {
+   public static boolean validateEffects(final @Nullable Holder<MobEffect> primary, final @Nullable Holder<MobEffect> secondary, final int levels) {
       if (secondary != null && levels < 4) {
          return false;
       } else {
@@ -254,37 +244,37 @@ public class BeaconBlockEntity extends BlockEntity implements MenuProvider, Name
       }
    }
 
-   private static int getRequiredLevelsFor(@Nullable final Holder<MobEffect> effect) {
+   private static int getRequiredLevelsFor(final @Nullable Holder<MobEffect> effect) {
       if (effect == null) {
          return 0;
-      } else {
-         for (int i = 0; i < BEACON_EFFECTS.size(); i++) {
-            List<Holder<MobEffect>> effectsForLevel = BEACON_EFFECTS.get(i);
-            if (effectsForLevel.contains(effect)) {
-               return i + 1;
-            }
-         }
-
-         return Integer.MAX_VALUE;
       }
+
+      for (int i = 0; i < BEACON_EFFECTS.size(); i++) {
+         List<Holder<MobEffect>> effectsForLevel = BEACON_EFFECTS.get(i);
+         if (effectsForLevel.contains(effect)) {
+            return i + 1;
+         }
+      }
+
+      return Integer.MAX_VALUE;
    }
 
    private static void applyEffects(
       final Level level,
       final BlockPos worldPosition,
       final int levels,
-      @Nullable final Holder<MobEffect> primaryPower,
-      @Nullable final Holder<MobEffect> secondaryPower
+      final @Nullable Holder<MobEffect> primaryPower,
+      final @Nullable Holder<MobEffect> secondaryPower
    ) {
       if (!level.isClientSide() && primaryPower != null) {
-         double range = (double)(levels * 10 + 10);
+         double range = levels * 10 + 10;
          int baseAmp = 0;
          if (levels >= 4 && Objects.equals(primaryPower, secondaryPower)) {
             baseAmp = 1;
          }
 
          int durationTicks = (9 + levels * 2) * 20;
-         AABB bb = new AABB(worldPosition).inflate(range).expandTowards(0.0, (double)level.getHeight(), 0.0);
+         AABB bb = new AABB(worldPosition).inflate(range).expandTowards(0.0, level.getHeight(), 0.0);
          List<Player> players = level.getEntitiesOfClass(Player.class, bb);
 
          for (Player player : players) {
@@ -317,14 +307,13 @@ public class BeaconBlockEntity extends BlockEntity implements MenuProvider, Name
       return this.saveCustomOnly(registries);
    }
 
-   private static void storeEffect(final ValueOutput output, final String field, @Nullable final Holder<MobEffect> effect) {
+   private static void storeEffect(final ValueOutput output, final String field, final @Nullable Holder<MobEffect> effect) {
       if (effect != null) {
          effect.unwrapKey().ifPresent(key -> output.putString(field, key.identifier().toString()));
       }
    }
 
-   @Nullable
-   private static Holder<MobEffect> loadEffect(final ValueInput input, final String field) {
+   private static @Nullable Holder<MobEffect> loadEffect(final ValueInput input, final String field) {
       return input.<Holder<MobEffect>>read(field, BuiltInRegistries.MOB_EFFECT.holderByNameCodec()).filter(VALID_EFFECTS::contains).orElse(null);
    }
 
@@ -347,25 +336,23 @@ public class BeaconBlockEntity extends BlockEntity implements MenuProvider, Name
       this.lockKey.addToTag(output);
    }
 
-   public void setCustomName(@Nullable final Component name) {
+   public void setCustomName(final @Nullable Component name) {
       this.name = name;
    }
 
-   @Nullable
    @Override
-   public Component getCustomName() {
+   public @Nullable Component getCustomName() {
       return this.name;
    }
 
-   @Nullable
    @Override
-   public AbstractContainerMenu createMenu(final int containerId, final Inventory inventory, final Player player) {
+   public @Nullable AbstractContainerMenu createMenu(final int containerId, final Inventory inventory, final Player player) {
       if (this.lockKey.canUnlock(player)) {
          return new BeaconMenu(containerId, inventory, this.dataAccess, ContainerLevelAccess.create(this.level, this.getBlockPos()));
-      } else {
-         BaseContainerBlockEntity.sendChestLockedNotifications(Vec3.atCenterOf(this.getBlockPos()), player, this.getDisplayName());
-         return null;
       }
+
+      BaseContainerBlockEntity.sendChestLockedNotifications(Vec3.atCenterOf(this.getBlockPos()), player, this.getDisplayName());
+      return null;
    }
 
    @Override

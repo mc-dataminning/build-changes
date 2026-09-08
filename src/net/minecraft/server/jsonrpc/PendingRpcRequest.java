@@ -12,8 +12,8 @@ public record PendingRpcRequest<Result>(
       try {
          Result result = (Result)this.method.value().decodeResult(response);
          this.resultFuture.complete(Objects.requireNonNull(result));
-      } catch (Exception var3) {
-         this.resultFuture.completeExceptionally(var3);
+      } catch (Exception e) {
+         this.resultFuture.completeExceptionally(e);
       }
    }
 

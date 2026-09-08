@@ -54,8 +54,7 @@ public abstract class Button extends AbstractButton {
    public static class Builder {
       private final Component message;
       private final Button.OnPress onPress;
-      @Nullable
-      private Tooltip tooltip;
+      private @Nullable Tooltip tooltip;
       private int x;
       private int y;
       private int width = 150;
@@ -88,7 +87,7 @@ public abstract class Button extends AbstractButton {
          return this.pos(x, y).size(width, height);
       }
 
-      public Button.Builder tooltip(@Nullable final Tooltip tooltip) {
+      public Button.Builder tooltip(final @Nullable Tooltip tooltip) {
          this.tooltip = tooltip;
          return this;
       }

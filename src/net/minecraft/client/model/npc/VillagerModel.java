@@ -80,14 +80,14 @@ public class VillagerModel extends EntityModel<VillagerRenderState> implements H
       this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
       this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
       if (state.isUnhappy) {
-         this.head.zRot = 0.3F * Mth.sin((double)(0.45F * state.ageInTicks));
+         this.head.zRot = 0.3F * Mth.sin(0.45F * state.ageInTicks);
          this.head.xRot = 0.4F;
       } else {
          this.head.zRot = 0.0F;
       }
 
-      this.rightLeg.xRot = Mth.cos((double)(state.walkAnimationPos * 0.6662F)) * 1.4F * state.walkAnimationSpeed * 0.5F;
-      this.leftLeg.xRot = Mth.cos((double)(state.walkAnimationPos * 0.6662F + (float) Math.PI)) * 1.4F * state.walkAnimationSpeed * 0.5F;
+      this.rightLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F) * 1.4F * state.walkAnimationSpeed * 0.5F;
+      this.leftLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F + (float) Math.PI) * 1.4F * state.walkAnimationSpeed * 0.5F;
       this.rightLeg.yRot = 0.0F;
       this.leftLeg.yRot = 0.0F;
    }

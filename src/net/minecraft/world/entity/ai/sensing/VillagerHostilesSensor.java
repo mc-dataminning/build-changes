@@ -29,7 +29,7 @@ public class VillagerHostilesSensor extends NearestVisibleLivingEntitySensor {
 
    private boolean isClose(final LivingEntity body, final LivingEntity mob) {
       float distThreshold = (Float)ACCEPTABLE_DISTANCE_FROM_HOSTILES.get(mob.getType());
-      return mob.distanceToSqr(body) <= (double)(distThreshold * distThreshold);
+      return mob.distanceToSqr(body) <= distThreshold * distThreshold;
    }
 
    @Override

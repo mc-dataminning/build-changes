@@ -201,17 +201,17 @@ public class InputConstants {
    public static InputConstants.Key getKey(final String name) {
       if (InputConstants.Key.NAME_MAP.containsKey(name)) {
          return InputConstants.Key.NAME_MAP.get(name);
-      } else {
-         for (InputConstants.Type type : InputConstants.Type.values()) {
-            if (name.startsWith(type.defaultPrefix)) {
-               String humanReadableValue = name.substring(type.defaultPrefix.length() + 1);
-               int intValue = Integer.parseInt(humanReadableValue);
-               return type.getOrCreate(intValue);
-            }
-         }
-
-         throw new IllegalArgumentException("Unknown key name: " + name);
       }
+
+      for (InputConstants.Type type : InputConstants.Type.values()) {
+         if (name.startsWith(type.defaultPrefix)) {
+            String humanReadableValue = name.substring(type.defaultPrefix.length() + 1);
+            int intValue = Integer.parseInt(humanReadableValue);
+            return type.getOrCreate(intValue);
+         }
+      }
+
+      throw new IllegalArgumentException("Unknown key name: " + name);
    }
 
    public static boolean isKeyDown(final int key) {
@@ -301,19 +301,19 @@ public class InputConstants {
       }
    }
 
-   public static enum Type {
+   public enum Type {
       KEYBOARD(
          "key.keyboard",
          (value, name) -> {
             if ("key.keyboard.unknown".equals(name)) {
                return Component.translatable(name);
-            } else {
-               int keycode = SDLKeyboard.SDL_GetKeyFromScancode(value, (short)0, false);
-               String systemName = SDLKeyboard.SDL_GetKeyName(keycode);
-               return systemName != null && systemName.codePointCount(0, systemName.length()) == 1
-                  ? Component.literal(systemName.toUpperCase(Locale.ROOT))
-                  : Component.translatable(InputQuirks.keyboardTranslationKey(name));
             }
+
+            int keycode = SDLKeyboard.SDL_GetKeyFromScancode(value, (short)0, false);
+            String systemName = SDLKeyboard.SDL_GetKeyName(keycode);
+            return systemName != null && systemName.codePointCount(0, systemName.length()) == 1
+               ? Component.literal(systemName.toUpperCase(Locale.ROOT))
+               : Component.translatable(InputQuirks.keyboardTranslationKey(name));
          }
       ),
       MOUSE("key.mouse", (value, name) -> Language.getInstance().has(name) ? Component.translatable(name) : Component.translatable("key.mouse", value));
@@ -328,7 +328,7 @@ public class InputConstants {
          type.map.put(value, key);
       }
 
-      private Type(final String defaultPrefix, final BiFunction<Integer, String, Component> displayTextSupplier) {
+      Type(final String defaultPrefix, final BiFunction<Integer, String, Component> displayTextSupplier) {
          this.defaultPrefix = defaultPrefix;
          this.displayTextSupplier = displayTextSupplier;
       }
@@ -600,7 +600,7 @@ public class InputConstants {
    }
 
    @Retention(RetentionPolicy.CLASS)
-   @Target({ElementType.TYPE_USE})
+   @Target(ElementType.TYPE_USE)
    public @interface Value {
    }
 }

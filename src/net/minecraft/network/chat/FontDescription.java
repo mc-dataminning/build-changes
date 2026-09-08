@@ -10,17 +10,17 @@ public interface FontDescription {
       .flatComapMap(
          FontDescription.Resource::new,
          fontDescription -> fontDescription instanceof FontDescription.Resource resource
-               ? DataResult.success(resource.id())
-               : DataResult.error(() -> "Unsupported font description type: " + fontDescription)
+            ? DataResult.success(resource.id())
+            : DataResult.error(() -> "Unsupported font description type: " + fontDescription)
       );
    FontDescription.Resource DEFAULT = new FontDescription.Resource(Identifier.withDefaultNamespace("default"));
 
-   public static record AtlasSprite(Identifier atlasId, Identifier spriteId) implements FontDescription {
+   record AtlasSprite(Identifier atlasId, Identifier spriteId) implements FontDescription {
    }
 
-   public static record PlayerSprite(ResolvableProfile profile, boolean hat) implements FontDescription {
+   record PlayerSprite(ResolvableProfile profile, boolean hat) implements FontDescription {
    }
 
-   public static record Resource(Identifier id) implements FontDescription {
+   record Resource(Identifier id) implements FontDescription {
    }
 }

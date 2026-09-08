@@ -16,47 +16,45 @@ public class TryFindLandNearLiquid {
       MutableLong nextOkStartTime = new MutableLong(0L);
       return BehaviorBuilder.create(
          i -> i.group(i.absent(MemoryModuleType.ATTACK_TARGET), i.absent(MemoryModuleType.WALK_TARGET), i.registered(MemoryModuleType.LOOK_TARGET))
-               .apply(
-                  i,
-                  (var4x, walkTarget, lookTarget) -> (level, body, timestamp) -> {
-                        if (level.getFluidState(body.blockPosition()).is(fluidTag)) {
+            .apply(i, (var4x, walkTarget, lookTarget) -> (level, body, timestamp) -> {
+               if (level.getFluidState(body.blockPosition()).is(fluidTag)) {
+                  return false;
+               } else if (timestamp < nextOkStartTime.longValue()) {
+                  nextOkStartTime.setValue(timestamp + 40L);
+                  return true;
+               } else {
+                  CollisionContext context = CollisionContext.of(body);
+                  BlockPos bodyBlockPos = body.blockPosition();
+                  BlockPos.MutableBlockPos testPos = new BlockPos.MutableBlockPos();
+                  level.findBlocksInBoxByManhattanDistance(bodyBlockPos, range)
+                     .filterPos(pos -> pos.differsHorizontally(bodyBlockPos))
+                     .findFirst((pos, state) -> {
+                        if (!state.getCollisionShape(level, pos, context).isEmpty()) {
                            return false;
-                        } else if (timestamp < nextOkStartTime.longValue()) {
-                           nextOkStartTime.setValue(timestamp + 40L);
-                           return true;
-                        } else {
-                           CollisionContext context = CollisionContext.of(body);
-                           BlockPos bodyBlockPos = body.blockPosition();
-                           BlockPos.MutableBlockPos testPos = new BlockPos.MutableBlockPos();
-                           level.findBlocksInBoxByManhattanDistance(bodyBlockPos, range)
-                              .filterPos(pos -> pos.differsHorizontally(bodyBlockPos))
-                              .findFirst((pos, state) -> {
-                                 if (!state.getCollisionShape(level, pos, context).isEmpty()) {
-                                    return false;
-                                 } else if (level.getBlockState(testPos.setWithOffset(pos, Direction.DOWN)).getCollisionShape(level, pos, context).isEmpty()) {
-                                    return false;
-                                 } else {
-                                    for (Direction direction : Direction.Plane.HORIZONTAL) {
-                                       testPos.setWithOffset(pos, direction);
-                                       if (level.getBlockState(testPos).isAir()
-                                          && level.getBlockState(testPos.move(Direction.DOWN)).getFluidState().is(fluidTag)) {
-                                          return true;
-                                       }
-                                    }
-
-                                    return false;
-                                 }
-                              })
-                              .ifPresent(pos -> {
-                                 BlockPos targetPos = pos.immutable();
-                                 lookTarget.set(new BlockPosTracker(targetPos));
-                                 walkTarget.set(new WalkTarget(new BlockPosTracker(targetPos), speedModifier, 0));
-                              });
-                           nextOkStartTime.setValue(timestamp + 40L);
-                           return true;
                         }
-                     }
-               )
+
+                        if (level.getBlockState(testPos.setWithOffset(pos, Direction.DOWN)).getCollisionShape(level, pos, context).isEmpty()) {
+                           return false;
+                        }
+
+                        for (Direction direction : Direction.Plane.HORIZONTAL) {
+                           testPos.setWithOffset(pos, direction);
+                           if (level.getBlockState(testPos).isAir() && level.getBlockState(testPos.move(Direction.DOWN)).getFluidState().is(fluidTag)) {
+                              return true;
+                           }
+                        }
+
+                        return false;
+                     })
+                     .ifPresent(pos -> {
+                        BlockPos targetPos = pos.immutable();
+                        lookTarget.set(new BlockPosTracker(targetPos));
+                        walkTarget.set(new WalkTarget(new BlockPosTracker(targetPos), speedModifier, 0));
+                     });
+                  nextOkStartTime.setValue(timestamp + 40L);
+                  return true;
+               }
+            })
       );
    }
 }

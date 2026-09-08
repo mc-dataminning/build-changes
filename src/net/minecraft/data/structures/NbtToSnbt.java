@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
 import java.util.stream.Stream;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
@@ -45,27 +46,22 @@ public class NbtToSnbt implements DataProvider {
 
       for (Path input : this.inputFolders) {
          tasks.add(
-            CompletableFuture.<CompletableFuture>supplyAsync(
+            CompletableFuture.<CompletableFuture<Void>>supplyAsync(
                   () -> {
-                     try {
-                        CompletableFuture t$;
-                        try (Stream<Path> walk = Files.walk(input)) {
-                           t$ = CompletableFuture.allOf(
-                              walk.filter(path -> path.toString().endsWith(".nbt"))
-                                 .map(path -> CompletableFuture.runAsync(() -> convertStructure(cache, path, getName(input, path), output), Util.ioPool()))
-                                 .toArray(CompletableFuture[]::new)
-                           );
-                        }
-
-                        return t$;
-                     } catch (IOException var8) {
-                        LOGGER.error("Failed to read structure input directory", var8);
+                     try (Stream<Path> walk = Files.walk(input)) {
+                        return CompletableFuture.allOf(
+                           walk.filter(path -> path.toString().endsWith(".nbt"))
+                              .map(path -> CompletableFuture.runAsync(() -> convertStructure(cache, path, getName(input, path), output), Util.ioPool()))
+                              .toArray(CompletableFuture[]::new)
+                        );
+                     } catch (IOException e) {
+                        LOGGER.error("Failed to read structure input directory", e);
                         return CompletableFuture.completedFuture(null);
                      }
                   },
                   Util.backgroundExecutor().forName("NbtToSnbt")
                )
-               .thenCompose(v -> v)
+               .thenCompose(v -> (CompletionStage<Void>)v)
          );
       }
 
@@ -82,32 +78,26 @@ public class NbtToSnbt implements DataProvider {
       return name.substring(0, name.length() - ".nbt".length());
    }
 
-   @Nullable
-   public static Path convertStructure(final CachedOutput cache, final Path path, final String name, final Path output) {
-      try {
-         Path var8;
-         try (
-            InputStream rawInput = Files.newInputStream(path);
-            InputStream input = new FastBufferedInputStream(rawInput);
-         ) {
-            Path resultPath = output.resolve(name + ".snbt");
-            CompoundTag structure = NbtIo.readCompressed(input, NbtAccounter.unlimitedHeap());
-            writeSnbt(
-               cache,
-               resultPath,
-               NbtUtils.structureToSnbt(
-                  NbtUtils.addCurrentDataVersion(
-                     DataFixTypes.STRUCTURE.updateToCurrentVersion(DataFixers.getDataFixer(), structure, NbtUtils.getDataVersion(structure))
-                  )
+   public static @Nullable Path convertStructure(final CachedOutput cache, final Path path, final String name, final Path output) {
+      try (
+         InputStream rawInput = Files.newInputStream(path);
+         InputStream input = new FastBufferedInputStream(rawInput);
+      ) {
+         Path resultPath = output.resolve(name + ".snbt");
+         CompoundTag structure = NbtIo.readCompressed(input, NbtAccounter.unlimitedHeap());
+         writeSnbt(
+            cache,
+            resultPath,
+            NbtUtils.structureToSnbt(
+               NbtUtils.addCurrentDataVersion(
+                  DataFixTypes.STRUCTURE.updateToCurrentVersion(DataFixers.getDataFixer(), structure, NbtUtils.getDataVersion(structure))
                )
-            );
-            LOGGER.info("Converted {} from NBT to SNBT", name);
-            var8 = resultPath;
-         }
-
-         return var8;
-      } catch (IOException var13) {
-         LOGGER.error("Couldn't convert {} from NBT to SNBT at {}", new Object[]{name, path, var13});
+            )
+         );
+         LOGGER.info("Converted {} from NBT to SNBT", name);
+         return resultPath;
+      } catch (IOException e) {
+         LOGGER.error("Couldn't convert {} from NBT to SNBT at {}", new Object[]{name, path, e});
          return null;
       }
    }

@@ -21,7 +21,7 @@ public interface HoverEvent {
 
    HoverEvent.Action action();
 
-   public static enum Action implements StringRepresentable {
+   enum Action implements StringRepresentable {
       SHOW_TEXT("show_text", true, HoverEvent.ShowText.CODEC),
       SHOW_ITEM("show_item", true, HoverEvent.ShowItem.CODEC),
       SHOW_ENTITY("show_entity", true, HoverEvent.ShowEntity.CODEC);
@@ -32,7 +32,7 @@ public interface HoverEvent {
       private final boolean allowFromServer;
       private final MapCodec<? extends HoverEvent> codec;
 
-      private Action(final String name, final boolean allowFromServer, final MapCodec<? extends HoverEvent> codec) {
+      Action(final String name, final boolean allowFromServer, final MapCodec<? extends HoverEvent> codec) {
          this.name = name;
          this.allowFromServer = allowFromServer;
          this.codec = codec;
@@ -57,22 +57,21 @@ public interface HoverEvent {
       }
    }
 
-   public static class EntityTooltipInfo {
+   class EntityTooltipInfo {
       public static final MapCodec<HoverEvent.EntityTooltipInfo> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  BuiltInRegistries.ENTITY_TYPE.byNameCodec().fieldOf("id").forGetter(o -> o.type),
-                  UUIDUtil.LENIENT_CODEC.fieldOf("uuid").forGetter(o -> o.uuid),
-                  ComponentSerialization.CODEC.optionalFieldOf("name").forGetter(o -> o.name)
-               )
-               .apply(i, HoverEvent.EntityTooltipInfo::new)
+               BuiltInRegistries.ENTITY_TYPE.byNameCodec().fieldOf("id").forGetter(o -> o.type),
+               UUIDUtil.LENIENT_CODEC.fieldOf("uuid").forGetter(o -> o.uuid),
+               ComponentSerialization.CODEC.optionalFieldOf("name").forGetter(o -> o.name)
+            )
+            .apply(i, HoverEvent.EntityTooltipInfo::new)
       );
       public final EntityType<?> type;
       public final UUID uuid;
       public final Optional<Component> name;
-      @Nullable
-      private List<Component> linesCache;
+      private @Nullable List<Component> linesCache;
 
-      public EntityTooltipInfo(final EntityType<?> type, final UUID uuid, @Nullable final Component name) {
+      public EntityTooltipInfo(final EntityType<?> type, final UUID uuid, final @Nullable Component name) {
          this(type, uuid, Optional.ofNullable(name));
       }
 
@@ -113,7 +112,7 @@ public interface HoverEvent {
       }
    }
 
-   public static record ShowEntity(HoverEvent.EntityTooltipInfo entity) implements HoverEvent {
+   record ShowEntity(HoverEvent.EntityTooltipInfo entity) implements HoverEvent {
       public static final MapCodec<HoverEvent.ShowEntity> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(HoverEvent.EntityTooltipInfo.CODEC.forGetter(HoverEvent.ShowEntity::entity)).apply(i, HoverEvent.ShowEntity::new)
       );
@@ -124,7 +123,7 @@ public interface HoverEvent {
       }
    }
 
-   public static record ShowItem(ItemStackTemplate item) implements HoverEvent {
+   record ShowItem(ItemStackTemplate item) implements HoverEvent {
       public static final MapCodec<HoverEvent.ShowItem> CODEC = ItemStackTemplate.MAP_CODEC.xmap(HoverEvent.ShowItem::new, HoverEvent.ShowItem::item);
 
       @Override
@@ -133,7 +132,7 @@ public interface HoverEvent {
       }
    }
 
-   public static record ShowText(Component value) implements HoverEvent {
+   record ShowText(Component value) implements HoverEvent {
       public static final MapCodec<HoverEvent.ShowText> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(ComponentSerialization.CODEC.fieldOf("value").forGetter(HoverEvent.ShowText::value)).apply(i, HoverEvent.ShowText::new)
       );

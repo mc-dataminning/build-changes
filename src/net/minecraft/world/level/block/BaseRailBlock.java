@@ -74,7 +74,7 @@ public abstract class BaseRailBlock extends Block implements SimpleWaterloggedBl
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       if (!level.isClientSide() && level.getBlockState(pos).is(this)) {
          RailShape shape = state.getValue(this.getShapeProperty());
@@ -90,15 +90,15 @@ public abstract class BaseRailBlock extends Block implements SimpleWaterloggedBl
    private static boolean shouldBeRemoved(final BlockPos pos, final Level level, final RailShape shape) {
       if (!canSupportRigidBlock(level, pos.below())) {
          return true;
-      } else {
-         return switch (shape) {
-            case ASCENDING_EAST -> !canSupportRigidBlock(level, pos.east());
-            case ASCENDING_WEST -> !canSupportRigidBlock(level, pos.west());
-            case ASCENDING_NORTH -> !canSupportRigidBlock(level, pos.north());
-            case ASCENDING_SOUTH -> !canSupportRigidBlock(level, pos.south());
-            default -> false;
-         };
       }
+
+      return switch (shape) {
+         case ASCENDING_EAST -> !canSupportRigidBlock(level, pos.east());
+         case ASCENDING_WEST -> !canSupportRigidBlock(level, pos.west());
+         case ASCENDING_NORTH -> !canSupportRigidBlock(level, pos.north());
+         case ASCENDING_SOUTH -> !canSupportRigidBlock(level, pos.south());
+         default -> false;
+      };
    }
 
    protected void updateState(final BlockState state, final Level level, final BlockPos pos, final Block block) {
@@ -107,10 +107,10 @@ public abstract class BaseRailBlock extends Block implements SimpleWaterloggedBl
    protected BlockState updateDir(final Level level, final BlockPos pos, final BlockState state, final boolean first) {
       if (level.isClientSide()) {
          return state;
-      } else {
-         RailShape current = state.getValue(this.getShapeProperty());
-         return new RailState(level, pos, state).place(level.hasNeighborSignal(pos), first, current).getState();
       }
+
+      RailShape current = state.getValue(this.getShapeProperty());
+      return new RailState(level, pos, state).place(level.hasNeighborSignal(pos), first, current).getState();
    }
 
    @Override
@@ -134,8 +134,7 @@ public abstract class BaseRailBlock extends Block implements SimpleWaterloggedBl
       BlockState state = super.defaultBlockState();
       Direction direction = context.getHorizontalDirection();
       boolean isEastWest = direction == Direction.EAST || direction == Direction.WEST;
-      return state.setValue(this.getShapeProperty(), isEastWest ? RailShape.EAST_WEST : RailShape.NORTH_SOUTH)
-         .setValue(WATERLOGGED, Boolean.valueOf(isWaterSource));
+      return state.setValue(this.getShapeProperty(), isEastWest ? RailShape.EAST_WEST : RailShape.NORTH_SOUTH).setValue(WATERLOGGED, isWaterSource);
    }
 
    public abstract Property<RailShape> getShapeProperty();

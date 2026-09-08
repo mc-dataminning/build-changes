@@ -56,12 +56,11 @@ public class OminousBannerRarityFix extends DataFix {
                ? components.updateTyped(
                      itemNameFinder,
                      itemName -> itemName.set(
-                           textComponentFinder,
-                           Pair.of(
-                              References.TEXT_COMPONENT.typeName(),
-                              LegacyComponentDataFixUtils.createTranslatableComponentJson("block.minecraft.ominous_banner")
-                           )
+                        textComponentFinder,
+                        Pair.of(
+                           References.TEXT_COMPONENT.typeName(), LegacyComponentDataFixUtils.createTranslatableComponentJson("block.minecraft.ominous_banner")
                         )
+                     )
                   )
                   .update(DSL.remainderFinder(), remainder -> remainder.set("minecraft:rarity", remainder.createString("uncommon")))
                : components;

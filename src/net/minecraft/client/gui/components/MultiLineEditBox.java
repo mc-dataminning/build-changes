@@ -26,8 +26,7 @@ public class MultiLineEditBox extends AbstractTextAreaWidget {
    private final int textColor;
    private final boolean textShadow;
    private final int cursorColor;
-   @Nullable
-   private IMEPreeditOverlay preeditOverlay;
+   private @Nullable IMEPreeditOverlay preeditOverlay;
    private long focusedTime = Util.getMillis();
 
    private MultiLineEditBox(
@@ -121,7 +120,7 @@ public class MultiLineEditBox extends AbstractTextAreaWidget {
    }
 
    @Override
-   public boolean preeditUpdated(@Nullable final PreeditEvent event) {
+   public boolean preeditUpdated(final @Nullable PreeditEvent event) {
       this.preeditOverlay = event != null ? new IMEPreeditOverlay(event, this.font, 9 + 1) : null;
       return true;
    }
@@ -156,7 +155,7 @@ public class MultiLineEditBox extends AbstractTextAreaWidget {
                   graphics.text(this.font, textBeforeCursor, innerLeft, drawTop, this.textColor, this.textShadow);
                   graphics.text(this.font, textAfterCursor, textBeforeCursorPosRight, drawTop, this.textColor, this.textShadow);
                   if (showCursor) {
-                     TextCursorUtils.extractInsertCursor(graphics, textBeforeCursorPosRight, drawTop, this.cursorColor, 9 + 1);
+                     TextCursorUtils.extractInsertCursor(graphics, cursorX, cursorY, this.cursorColor, 9 + 1);
                   }
                }
 
@@ -244,11 +243,11 @@ public class MultiLineEditBox extends AbstractTextAreaWidget {
       double scrollAmount = this.scrollAmount();
       MultilineTextField.StringView firstFullyVisibleLine = this.textField.getLineView((int)(scrollAmount / 9.0));
       if (this.textField.cursor() <= firstFullyVisibleLine.beginIndex()) {
-         scrollAmount = (double)(this.textField.getLineAtCursor() * 9);
+         scrollAmount = this.textField.getLineAtCursor() * 9;
       } else {
-         MultilineTextField.StringView lastFullyVisibleLine = this.textField.getLineView((int)((scrollAmount + (double)this.height) / 9.0) - 1);
+         MultilineTextField.StringView lastFullyVisibleLine = this.textField.getLineView((int)((scrollAmount + this.height) / 9.0) - 1);
          if (this.textField.cursor() > lastFullyVisibleLine.endIndex()) {
-            scrollAmount = (double)(this.textField.getLineAtCursor() * 9 - this.height + 9 + this.totalInnerPadding());
+            scrollAmount = this.textField.getLineAtCursor() * 9 - this.height + 9 + this.totalInnerPadding();
          }
       }
 
@@ -256,8 +255,8 @@ public class MultiLineEditBox extends AbstractTextAreaWidget {
    }
 
    private void seekCursorScreen(final double x, final double y) {
-      double mouseX = x - (double)this.getX() - (double)this.innerPadding();
-      double mouseY = y - (double)this.getY() - (double)this.innerPadding() + this.scrollAmount();
+      double mouseX = x - this.getX() - this.innerPadding();
+      double mouseY = y - this.getY() - this.innerPadding() + this.scrollAmount();
       this.textField.seekCursorToPoint(mouseX, mouseY);
    }
 

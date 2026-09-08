@@ -17,7 +17,7 @@ public record TeamColor(int defaultColor) implements ItemTintSource {
    );
 
    @Override
-   public int calculate(final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final LivingEntity owner) {
+   public int calculate(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner) {
       if (owner != null) {
          Team team = owner.getTeam();
          if (team != null) {

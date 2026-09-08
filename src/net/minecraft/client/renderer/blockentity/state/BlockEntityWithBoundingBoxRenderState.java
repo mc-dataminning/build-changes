@@ -7,12 +7,10 @@ public class BlockEntityWithBoundingBoxRenderState extends BlockEntityRenderStat
    public boolean isVisible;
    public BoundingBoxRenderable.Mode mode;
    public BoundingBoxRenderable.RenderableBox box;
-   @Nullable
-   public BlockEntityWithBoundingBoxRenderState.InvisibleBlockType[] invisibleBlocks;
-   @Nullable
-   public boolean[] structureVoids;
+   public BlockEntityWithBoundingBoxRenderState.@Nullable InvisibleBlockType @Nullable [] invisibleBlocks;
+   public boolean @Nullable [] structureVoids;
 
-   public static enum InvisibleBlockType {
+   public enum InvisibleBlockType {
       AIR,
       BARRIER,
       LIGHT,

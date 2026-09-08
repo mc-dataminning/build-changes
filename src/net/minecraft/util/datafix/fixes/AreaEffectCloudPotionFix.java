@@ -23,21 +23,21 @@ public class AreaEffectCloudPotionFix extends NamedEntityFix {
       entity = entity.remove("Color").remove("effects").remove("Potion");
       if (color.isEmpty() && effects.isEmpty() && potion.isEmpty()) {
          return entity;
-      } else {
-         Dynamic<T> potionContents = entity.emptyMap();
-         if (color.isPresent()) {
-            potionContents = potionContents.set("custom_color", color.get());
-         }
-
-         if (effects.isPresent()) {
-            potionContents = potionContents.set("custom_effects", effects.get());
-         }
-
-         if (potion.isPresent()) {
-            potionContents = potionContents.set("potion", potion.get());
-         }
-
-         return entity.set("potion_contents", potionContents);
       }
+
+      Dynamic<T> potionContents = entity.emptyMap();
+      if (color.isPresent()) {
+         potionContents = potionContents.set("custom_color", color.get());
+      }
+
+      if (effects.isPresent()) {
+         potionContents = potionContents.set("custom_effects", effects.get());
+      }
+
+      if (potion.isPresent()) {
+         potionContents = potionContents.set("potion", potion.get());
+      }
+
+      return entity.set("potion_contents", potionContents);
    }
 }

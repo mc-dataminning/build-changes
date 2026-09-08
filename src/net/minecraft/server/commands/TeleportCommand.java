@@ -41,11 +41,11 @@ public class TeleportCommand {
    );
    private static final CommandResponseTracker.MessagesWithArg<Entity, Vec3> RESPONSE_TELEPORT_TO_POS = CommandResponseTracker.messages(
       (entity, var1, pos) -> Component.translatable(
-            "commands.teleport.success.location.single", entity.getDisplayName(), formatDouble(pos.x), formatDouble(pos.y), formatDouble(pos.z)
-         ),
+         "commands.teleport.success.location.single", entity.getDisplayName(), formatDouble(pos.x), formatDouble(pos.y), formatDouble(pos.z)
+      ),
       (elementCount, var1, pos) -> Component.translatable(
-            "commands.teleport.success.location.multiple", elementCount, formatDouble(pos.x), formatDouble(pos.y), formatDouble(pos.z)
-         )
+         "commands.teleport.success.location.multiple", elementCount, formatDouble(pos.x), formatDouble(pos.y), formatDouble(pos.z)
+      )
    );
 
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
@@ -56,23 +56,23 @@ public class TeleportCommand {
                      Commands.argument("location", Vec3Argument.vec3())
                         .executes(
                            c -> teleportToPos(
-                                 (CommandSourceStack)c.getSource(),
-                                 Collections.singleton(((CommandSourceStack)c.getSource()).getEntityOrException()),
-                                 ((CommandSourceStack)c.getSource()).getLevel(),
-                                 Vec3Argument.getCoordinates(c, "location"),
-                                 null,
-                                 null
-                              )
+                              (CommandSourceStack)c.getSource(),
+                              Collections.singleton(((CommandSourceStack)c.getSource()).getEntityOrException()),
+                              ((CommandSourceStack)c.getSource()).getLevel(),
+                              Vec3Argument.getCoordinates(c, "location"),
+                              null,
+                              null
+                           )
                         )
                   ))
                .then(
                   Commands.argument("destination", EntityArgument.entity())
                      .executes(
                         c -> teleportToEntity(
-                              (CommandSourceStack)c.getSource(),
-                              Collections.singleton(((CommandSourceStack)c.getSource()).getEntityOrException()),
-                              EntityArgument.getEntity(c, "destination")
-                           )
+                           (CommandSourceStack)c.getSource(),
+                           Collections.singleton(((CommandSourceStack)c.getSource()).getEntityOrException()),
+                           EntityArgument.getEntity(c, "destination")
+                        )
                      )
                ))
             .then(
@@ -81,25 +81,25 @@ public class TeleportCommand {
                         ((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument("location", Vec3Argument.vec3())
                                  .executes(
                                     c -> teleportToPos(
-                                          (CommandSourceStack)c.getSource(),
-                                          EntityArgument.getEntities(c, "targets"),
-                                          ((CommandSourceStack)c.getSource()).getLevel(),
-                                          Vec3Argument.getCoordinates(c, "location"),
-                                          null,
-                                          null
-                                       )
+                                       (CommandSourceStack)c.getSource(),
+                                       EntityArgument.getEntities(c, "targets"),
+                                       ((CommandSourceStack)c.getSource()).getLevel(),
+                                       Vec3Argument.getCoordinates(c, "location"),
+                                       null,
+                                       null
+                                    )
                                  ))
                               .then(
                                  Commands.argument("rotation", RotationArgument.rotation())
                                     .executes(
                                        c -> teleportToPos(
-                                             (CommandSourceStack)c.getSource(),
-                                             EntityArgument.getEntities(c, "targets"),
-                                             ((CommandSourceStack)c.getSource()).getLevel(),
-                                             Vec3Argument.getCoordinates(c, "location"),
-                                             RotationArgument.getRotation(c, "rotation"),
-                                             null
-                                          )
+                                          (CommandSourceStack)c.getSource(),
+                                          EntityArgument.getEntities(c, "targets"),
+                                          ((CommandSourceStack)c.getSource()).getLevel(),
+                                          Vec3Argument.getCoordinates(c, "location"),
+                                          RotationArgument.getRotation(c, "rotation"),
+                                          null
+                                       )
                                     )
                               ))
                            .then(
@@ -110,30 +110,27 @@ public class TeleportCommand {
                                              ((RequiredArgumentBuilder)Commands.argument("facingEntity", EntityArgument.entity())
                                                    .executes(
                                                       c -> teleportToPos(
+                                                         (CommandSourceStack)c.getSource(),
+                                                         EntityArgument.getEntities(c, "targets"),
+                                                         ((CommandSourceStack)c.getSource()).getLevel(),
+                                                         Vec3Argument.getCoordinates(c, "location"),
+                                                         null,
+                                                         new LookAt.LookAtEntity(EntityArgument.getEntity(c, "facingEntity"), EntityAnchorArgument.Anchor.FEET)
+                                                      )
+                                                   ))
+                                                .then(
+                                                   Commands.argument("facingAnchor", EntityAnchorArgument.anchor())
+                                                      .executes(
+                                                         c -> teleportToPos(
                                                             (CommandSourceStack)c.getSource(),
                                                             EntityArgument.getEntities(c, "targets"),
                                                             ((CommandSourceStack)c.getSource()).getLevel(),
                                                             Vec3Argument.getCoordinates(c, "location"),
                                                             null,
                                                             new LookAt.LookAtEntity(
-                                                               EntityArgument.getEntity(c, "facingEntity"), EntityAnchorArgument.Anchor.FEET
+                                                               EntityArgument.getEntity(c, "facingEntity"), EntityAnchorArgument.getAnchor(c, "facingAnchor")
                                                             )
                                                          )
-                                                   ))
-                                                .then(
-                                                   Commands.argument("facingAnchor", EntityAnchorArgument.anchor())
-                                                      .executes(
-                                                         c -> teleportToPos(
-                                                               (CommandSourceStack)c.getSource(),
-                                                               EntityArgument.getEntities(c, "targets"),
-                                                               ((CommandSourceStack)c.getSource()).getLevel(),
-                                                               Vec3Argument.getCoordinates(c, "location"),
-                                                               null,
-                                                               new LookAt.LookAtEntity(
-                                                                  EntityArgument.getEntity(c, "facingEntity"),
-                                                                  EntityAnchorArgument.getAnchor(c, "facingAnchor")
-                                                               )
-                                                            )
                                                       )
                                                 )
                                           )
@@ -142,13 +139,13 @@ public class TeleportCommand {
                                     Commands.argument("facingLocation", Vec3Argument.vec3())
                                        .executes(
                                           c -> teleportToPos(
-                                                (CommandSourceStack)c.getSource(),
-                                                EntityArgument.getEntities(c, "targets"),
-                                                ((CommandSourceStack)c.getSource()).getLevel(),
-                                                Vec3Argument.getCoordinates(c, "location"),
-                                                null,
-                                                new LookAt.LookAtPosition(Vec3Argument.getVec3(c, "facingLocation"))
-                                             )
+                                             (CommandSourceStack)c.getSource(),
+                                             EntityArgument.getEntities(c, "targets"),
+                                             ((CommandSourceStack)c.getSource()).getLevel(),
+                                             Vec3Argument.getCoordinates(c, "location"),
+                                             null,
+                                             new LookAt.LookAtPosition(Vec3Argument.getVec3(c, "facingLocation"))
+                                          )
                                        )
                                  )
                            )
@@ -157,8 +154,8 @@ public class TeleportCommand {
                      Commands.argument("destination", EntityArgument.entity())
                         .executes(
                            c -> teleportToEntity(
-                                 (CommandSourceStack)c.getSource(), EntityArgument.getEntities(c, "targets"), EntityArgument.getEntity(c, "destination")
-                              )
+                              (CommandSourceStack)c.getSource(), EntityArgument.getEntities(c, "targets"), EntityArgument.getEntity(c, "destination")
+                           )
                         )
                   )
             )
@@ -196,8 +193,8 @@ public class TeleportCommand {
       final Collection<? extends Entity> entities,
       final ServerLevel level,
       final Coordinates destination,
-      @Nullable final Coordinates rotation,
-      @Nullable final LookAt lookAt
+      final @Nullable Coordinates rotation,
+      final @Nullable LookAt lookAt
    ) throws CommandSyntaxException {
       CommandResponseTracker<Entity> tracker = CommandResponseTracker.create();
       Vec3 pos = destination.getPosition(source);
@@ -217,7 +214,7 @@ public class TeleportCommand {
       return tracker.sendFeedback(source, true, RESPONSE_TELEPORT_TO_POS, pos);
    }
 
-   private static Set<Relative> getRelatives(final Coordinates destination, @Nullable final Coordinates rotation, final boolean sameDimension) {
+   private static Set<Relative> getRelatives(final Coordinates destination, final @Nullable Coordinates rotation, final boolean sameDimension) {
       Set<Relative> dir = Relative.direction(destination.isXRelative(), destination.isYRelative(), destination.isZRelative());
       Set<Relative> pos = sameDimension ? Relative.position(destination.isXRelative(), destination.isYRelative(), destination.isZRelative()) : Set.of();
       Set<Relative> rot = rotation == null ? Relative.ROTATION : Relative.rotation(rotation.isYRelative(), rotation.isXRelative());
@@ -238,32 +235,32 @@ public class TeleportCommand {
       final Set<Relative> relatives,
       final float yRot,
       final float xRot,
-      @Nullable final LookAt lookAt
+      final @Nullable LookAt lookAt
    ) throws CommandSyntaxException {
       BlockPos blockPos = BlockPos.containing(x, y, z);
       if (!Level.isInSpawnableBounds(blockPos)) {
          throw INVALID_POSITION.create();
-      } else {
-         double relativeOrAbsoluteX = relatives.contains(Relative.X) ? x - victim.getX() : x;
-         double relativeOrAbsoluteY = relatives.contains(Relative.Y) ? y - victim.getY() : y;
-         double relativeOrAbsoluteZ = relatives.contains(Relative.Z) ? z - victim.getZ() : z;
-         float relativeOrAbsoluteYRot = relatives.contains(Relative.Y_ROT) ? yRot - victim.getYRot() : yRot;
-         float relativeOrAbsoluteXRot = relatives.contains(Relative.X_ROT) ? xRot - victim.getXRot() : xRot;
-         float newYRot = Mth.wrapDegrees(relativeOrAbsoluteYRot);
-         float newXRot = Mth.wrapDegrees(relativeOrAbsoluteXRot);
-         if (victim.teleportTo(level, relativeOrAbsoluteX, relativeOrAbsoluteY, relativeOrAbsoluteZ, relatives, newYRot, newXRot, true)) {
-            if (lookAt != null) {
-               lookAt.perform(source, victim);
-            }
+      }
 
-            if (!(victim instanceof LivingEntity living) || !living.isFallFlying()) {
-               victim.setDeltaMovement(victim.getDeltaMovement().multiply(1.0, 0.0, 1.0));
-               victim.setOnGround(true);
-            }
+      double relativeOrAbsoluteX = relatives.contains(Relative.X) ? x - victim.getX() : x;
+      double relativeOrAbsoluteY = relatives.contains(Relative.Y) ? y - victim.getY() : y;
+      double relativeOrAbsoluteZ = relatives.contains(Relative.Z) ? z - victim.getZ() : z;
+      float relativeOrAbsoluteYRot = relatives.contains(Relative.Y_ROT) ? yRot - victim.getYRot() : yRot;
+      float relativeOrAbsoluteXRot = relatives.contains(Relative.X_ROT) ? xRot - victim.getXRot() : xRot;
+      float newYRot = Mth.wrapDegrees(relativeOrAbsoluteYRot);
+      float newXRot = Mth.wrapDegrees(relativeOrAbsoluteXRot);
+      if (victim.teleportTo(level, relativeOrAbsoluteX, relativeOrAbsoluteY, relativeOrAbsoluteZ, relatives, newYRot, newXRot, true)) {
+         if (lookAt != null) {
+            lookAt.perform(source, victim);
+         }
 
-            if (victim instanceof PathfinderMob mob) {
-               mob.getNavigation().stop();
-            }
+         if (!(victim instanceof LivingEntity living && living.isFallFlying())) {
+            victim.setDeltaMovement(victim.getDeltaMovement().multiply(1.0, 0.0, 1.0));
+            victim.setOnGround(true);
+         }
+
+         if (victim instanceof PathfinderMob mob) {
+            mob.getNavigation().stop();
          }
       }
    }

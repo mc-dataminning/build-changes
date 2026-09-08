@@ -8,12 +8,12 @@ import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 public class StopHoldingItemIfNoLongerAdmiring {
    public static BehaviorControl<Piglin> create() {
       return BehaviorBuilder.create(i -> i.group(i.absent(MemoryModuleType.ADMIRING_ITEM)).apply(i, admiring -> (level, body, timestamp) -> {
-               if (!body.getOffhandItem().isEmpty() && !body.getOffhandItem().has(DataComponents.BLOCKS_ATTACKS)) {
-                  PiglinAi.stopHoldingOffHandItem(level, body, true);
-                  return true;
-               } else {
-                  return false;
-               }
-            }));
+         if (!body.getOffhandItem().isEmpty() && !body.getOffhandItem().has(DataComponents.BLOCKS_ATTACKS)) {
+            PiglinAi.stopHoldingOffHandItem(level, body, true);
+            return true;
+         } else {
+            return false;
+         }
+      }));
    }
 }

@@ -11,8 +11,7 @@ public interface RuleBlockEntityModifier {
       .byNameCodec()
       .dispatch(RuleBlockEntityModifier::getType, RuleBlockEntityModifierType::codec);
 
-   @Nullable
-   CompoundTag apply(final RandomSource random, @Nullable final CompoundTag existingTag);
+   @Nullable CompoundTag apply(final RandomSource random, final @Nullable CompoundTag existingTag);
 
    RuleBlockEntityModifierType<?> getType();
 }

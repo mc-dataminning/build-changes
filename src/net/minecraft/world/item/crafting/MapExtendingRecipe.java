@@ -15,11 +15,11 @@ import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
 public class MapExtendingRecipe extends CustomRecipe {
    public static final MapCodec<MapExtendingRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Ingredient.CODEC.fieldOf("map").forGetter(o -> o.map),
-               Ingredient.CODEC.fieldOf("material").forGetter(o -> o.material),
-               TransmuteResult.CODEC.fieldOf("result").forGetter(o -> o.result)
-            )
-            .apply(i, MapExtendingRecipe::new)
+            Ingredient.CODEC.fieldOf("map").forGetter(o -> o.map),
+            Ingredient.CODEC.fieldOf("material").forGetter(o -> o.material),
+            TransmuteResult.CODEC.fieldOf("result").forGetter(o -> o.result)
+         )
+         .apply(i, MapExtendingRecipe::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, MapExtendingRecipe> STREAM_CODEC = StreamCodec.composite(
       Ingredient.CONTENTS_STREAM_CODEC,
@@ -46,15 +46,15 @@ public class MapExtendingRecipe extends CustomRecipe {
    public boolean matches(final CraftingInput input, final Level level) {
       if (!this.pattern.matches(input)) {
          return false;
-      } else {
-         ItemStack map = findFilledMap(input);
-         if (map.isEmpty()) {
-            return false;
-         } else {
-            MapItemSavedData data = MapItem.getSavedData(map, level);
-            return data == null ? false : data.scale < 4;
-         }
       }
+
+      ItemStack map = findFilledMap(input);
+      if (map.isEmpty()) {
+         return false;
+      }
+
+      MapItemSavedData data = MapItem.getSavedData(map, level);
+      return data == null ? false : data.scale < 4;
    }
 
    public ItemStack assemble(final CraftingInput input) {

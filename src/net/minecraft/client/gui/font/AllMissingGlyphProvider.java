@@ -22,9 +22,8 @@ public class AllMissingGlyphProvider implements GlyphProvider {
       }
    };
 
-   @Nullable
    @Override
-   public UnbakedGlyph getGlyph(final int codepoint) {
+   public @Nullable UnbakedGlyph getGlyph(final int codepoint) {
       return MISSING_INSTANCE;
    }
 

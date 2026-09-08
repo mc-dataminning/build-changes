@@ -35,7 +35,7 @@ public class SculkChargeParticle extends SingleQuadParticle {
       this.setSpriteFromAge(this.sprites);
    }
 
-   public static record Provider(SpriteSet sprite) implements ParticleProvider<SculkChargeParticleOptions> {
+   public record Provider(SpriteSet sprite) implements ParticleProvider<SculkChargeParticleOptions> {
       public Particle createParticle(
          final SculkChargeParticleOptions options,
          final ClientLevel level,

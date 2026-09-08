@@ -23,17 +23,16 @@ public interface PictureInPictureRenderState extends ScreenArea {
       return IDENTITY_POSE;
    }
 
-   @Nullable
-   ScreenRectangle scissorArea();
+   @Nullable ScreenRectangle scissorArea();
 
-   @Nullable
-   static ScreenRectangle getBounds(final int x0, final int y0, final int x1, final int y1, @Nullable final ScreenRectangle scissorArea) {
+   static @Nullable ScreenRectangle getBounds(final int x0, final int y0, final int x1, final int y1, final @Nullable ScreenRectangle scissorArea) {
       ScreenRectangle bounds = new ScreenRectangle(x0, y0, x1 - x0, y1 - y0);
       return scissorArea != null ? scissorArea.intersection(bounds) : bounds;
    }
 
-   @Nullable
-   static ScreenRectangle getBounds(final int x0, final int y0, final int x1, final int y1, final Matrix3x2fc pose, @Nullable final ScreenRectangle scissorArea) {
+   static @Nullable ScreenRectangle getBounds(
+      final int x0, final int y0, final int x1, final int y1, final Matrix3x2fc pose, final @Nullable ScreenRectangle scissorArea
+   ) {
       ScreenRectangle bounds = new ScreenRectangle(x0, y0, x1 - x0, y1 - y0).transformMaxBounds(pose);
       return scissorArea != null ? scissorArea.intersection(bounds) : bounds;
    }

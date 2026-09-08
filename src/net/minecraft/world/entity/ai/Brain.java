@@ -41,8 +41,7 @@ public class Brain<E extends LivingEntity> {
    private final Map<MemoryModuleType<?>, MemorySlot<?>> memories = Maps.newHashMap();
    private final Map<SensorType<? extends Sensor<? super E>>, Sensor<? super E>> sensors = Maps.newLinkedHashMap();
    private final Map<Integer, Map<Activity, Set<BehaviorControl<? super E>>>> availableBehaviorsByPriority = Maps.newTreeMap();
-   @Nullable
-   private EnvironmentAttribute<Activity> schedule;
+   private @Nullable EnvironmentAttribute<Activity> schedule;
    private final Map<Activity, Set<Pair<MemoryModuleType<?>, MemoryStatus>>> activityRequirements = Maps.newHashMap();
    private final Map<Activity, Set<MemoryModuleType<?>>> activityMemoriesToEraseWhenStopped = Maps.newHashMap();
    private Set<Activity> coreActivities = Sets.newHashSet();
@@ -115,10 +114,6 @@ public class Brain<E extends LivingEntity> {
    public Brain.Packed pack() {
       final MemoryMap.Builder builder = new MemoryMap.Builder();
       this.forEach(new Brain.Visitor() {
-         {
-            Objects.requireNonNull(Brain.this);
-         }
-
          @Override
          public <U> void acceptEmpty(final MemoryModuleType<U> type) {
          }
@@ -140,8 +135,7 @@ public class Brain<E extends LivingEntity> {
       return new Brain.Packed(builder.build());
    }
 
-   @Nullable
-   private <T> MemorySlot<T> getMemorySlotIfPresent(final MemoryModuleType<T> memoryType) {
+   private <T> @Nullable MemorySlot<T> getMemorySlotIfPresent(final MemoryModuleType<T> memoryType) {
       return (MemorySlot<T>)this.memories.get(memoryType);
    }
 
@@ -169,7 +163,7 @@ public class Brain<E extends LivingEntity> {
       }
    }
 
-   public <U> void setMemory(final MemoryModuleType<U> type, @Nullable final U value) {
+   public <U> void setMemory(final MemoryModuleType<U> type, final @Nullable U value) {
       this.setMemoryInternal(type, value);
    }
 
@@ -224,8 +218,7 @@ public class Brain<E extends LivingEntity> {
       return Optional.ofNullable(this.getMemorySlot(type).value());
    }
 
-   @Nullable
-   public <U> Optional<U> getMemoryInternal(final MemoryModuleType<U> type) {
+   public <U> @Nullable Optional<U> getMemoryInternal(final MemoryModuleType<U> type) {
       MemorySlot<U> slot = this.getMemorySlotIfPresent(type);
       return slot == null ? null : Optional.ofNullable(slot.value());
    }
@@ -445,25 +438,21 @@ public class Brain<E extends LivingEntity> {
    private boolean activityRequirementsAreMet(final Activity activity) {
       if (!this.activityRequirements.containsKey(activity)) {
          return false;
-      } else {
-         for (Pair<MemoryModuleType<?>, MemoryStatus> memoryRequirement : this.activityRequirements.get(activity)) {
-            MemoryModuleType<?> memoryType = (MemoryModuleType<?>)memoryRequirement.getFirst();
-            MemoryStatus memoryStatus = (MemoryStatus)memoryRequirement.getSecond();
-            if (!this.checkMemory(memoryType, memoryStatus)) {
-               return false;
-            }
-         }
-
-         return true;
       }
+
+      for (Pair<MemoryModuleType<?>, MemoryStatus> memoryRequirement : this.activityRequirements.get(activity)) {
+         MemoryModuleType<?> memoryType = (MemoryModuleType<?>)memoryRequirement.getFirst();
+         MemoryStatus memoryStatus = (MemoryStatus)memoryRequirement.getSecond();
+         if (!this.checkMemory(memoryType, memoryStatus)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    private static boolean isEmptyCollection(final Object object) {
-      if (object instanceof Collection<?> collection && collection.isEmpty()) {
-         return true;
-      }
-
-      return false;
+      return object instanceof Collection<?> collection && collection.isEmpty();
    }
 
    public boolean isBrainDead() {
@@ -475,7 +464,7 @@ public class Brain<E extends LivingEntity> {
       List<ActivityData<E>> createActivities(E body);
    }
 
-   public static record Packed(MemoryMap memories) {
+   public record Packed(MemoryMap memories) {
       public static final Brain.Packed EMPTY = new Brain.Packed(MemoryMap.EMPTY);
       public static final Codec<Brain.Packed> CODEC = RecordCodecBuilder.create(
          i -> i.group(MemoryMap.CODEC.fieldOf("memories").forGetter(Brain.Packed::memories)).apply(i, Brain.Packed::new)

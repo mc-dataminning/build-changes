@@ -26,21 +26,15 @@ public class AddNewChoices extends DataFix {
    private <K> TypeRewriteRule cap(final TaggedChoiceType<K> inputType, final TaggedChoiceType<?> outputType) {
       if (inputType.getKeyType() != outputType.getKeyType()) {
          throw new IllegalStateException("Could not inject: key type is not the same");
-      } else {
-         return this.fixTypeEverywhere(
-            this.name,
-            inputType,
-            outputType,
-            ops -> input -> {
-                  if (!outputType.hasType(input.getFirst())) {
-                     throw new IllegalArgumentException(
-                        String.format(Locale.ROOT, "%s: Unknown type %s in '%s'", this.name, input.getFirst(), this.type.typeName())
-                     );
-                  } else {
-                     return input;
-                  }
-               }
-         );
       }
+
+      TaggedChoiceType<K> outputChoiceType = (TaggedChoiceType<K>)outputType;
+      return this.fixTypeEverywhere(this.name, inputType, outputChoiceType, ops -> input -> {
+         if (!outputChoiceType.hasType(input.getFirst())) {
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "%s: Unknown type %s in '%s'", this.name, input.getFirst(), this.type.typeName()));
+         } else {
+            return input;
+         }
+      });
    }
 }

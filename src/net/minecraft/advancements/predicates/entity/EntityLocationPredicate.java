@@ -11,7 +11,7 @@ public record EntityLocationPredicate(LocationPredicate predicate) implements En
    public static final Codec<EntityLocationPredicate> CODEC = LocationPredicate.CODEC.xmap(EntityLocationPredicate::new, EntityLocationPredicate::predicate);
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
       return this.predicate.matches(level, entity.getX(), entity.getY(), entity.getZ());
    }
 }

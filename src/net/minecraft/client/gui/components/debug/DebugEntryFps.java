@@ -13,9 +13,9 @@ public class DebugEntryFps implements DebugScreenEntry {
    @Override
    public void display(
       final DebugScreenDisplayer displayer,
-      @Nullable final Level serverOrClientLevel,
-      @Nullable final LevelChunk clientChunk,
-      @Nullable final LevelChunk serverChunk
+      final @Nullable Level serverOrClientLevel,
+      final @Nullable LevelChunk clientChunk,
+      final @Nullable LevelChunk serverChunk
    ) {
       Minecraft minecraft = Minecraft.getInstance();
       int framerateLimit = minecraft.getFramerateLimitTracker().getFramerateLimit();
@@ -38,7 +38,7 @@ public class DebugEntryFps implements DebugScreenEntry {
       return true;
    }
 
-   private static String presentModeName(@Nullable final GpuSurface.PresentMode mode) {
+   private static String presentModeName(final GpuSurface.@Nullable PresentMode mode) {
       return switch (mode) {
          case null -> "";
          case IMMEDIATE -> " (immediate)";

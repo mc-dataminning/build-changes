@@ -52,9 +52,9 @@ public abstract class DiodeBlock extends HorizontalDirectionalBlock {
          boolean on = state.getValue(POWERED);
          boolean shouldTurnOn = this.shouldTurnOn(level, pos, state);
          if (on && !shouldTurnOn) {
-            level.setBlock(pos, state.setValue(POWERED, Boolean.valueOf(false)), 2);
+            level.setBlock(pos, state.setValue(POWERED, false), 2);
          } else if (!on) {
-            level.setBlock(pos, state.setValue(POWERED, Boolean.valueOf(true)), 2);
+            level.setBlock(pos, state.setValue(POWERED, true), 2);
             if (!shouldTurnOn) {
                level.scheduleTick(pos, this, this.getDelay(state), TickPriority.VERY_HIGH);
             }
@@ -64,7 +64,7 @@ public abstract class DiodeBlock extends HorizontalDirectionalBlock {
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       if (level.getBlockState(pos).is(this)) {
          if (state.canSurvive(level, pos)) {
@@ -112,10 +112,10 @@ public abstract class DiodeBlock extends HorizontalDirectionalBlock {
       int input = level.getSignal(targetPos, direction);
       if (input >= 15) {
          return input;
-      } else {
-         BlockState targetBlockState = level.getBlockState(targetPos);
-         return Math.max(input, targetBlockState.is(Blocks.REDSTONE_WIRE) ? targetBlockState.getValue(RedstoneWireBlock.POWER) : 0);
       }
+
+      BlockState targetBlockState = level.getBlockState(targetPos);
+      return Math.max(input, targetBlockState.is(Blocks.REDSTONE_WIRE) ? targetBlockState.getValue(RedstoneWireBlock.POWER) : 0);
    }
 
    protected int getAlternateSignal(final SignalGetter level, final BlockPos pos, final BlockState state) {
@@ -155,7 +155,7 @@ public abstract class DiodeBlock extends HorizontalDirectionalBlock {
    }
 
    @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, @Nullable final LivingEntity by, final ItemStack itemStack) {
+   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
       if (this.shouldTurnOn(level, pos, state)) {
          level.scheduleTick(pos, this, 1);
       }

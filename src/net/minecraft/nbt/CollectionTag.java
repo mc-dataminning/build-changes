@@ -2,7 +2,6 @@ package net.minecraft.nbt;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import java.util.Objects;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
@@ -27,10 +26,6 @@ public sealed interface CollectionTag extends Tag, Iterable<Tag> permits ListTag
    default Iterator<Tag> iterator() {
       return new Iterator<Tag>() {
          private int index;
-
-         {
-            Objects.requireNonNull(CollectionTag.this);
-         }
 
          @Override
          public boolean hasNext() {

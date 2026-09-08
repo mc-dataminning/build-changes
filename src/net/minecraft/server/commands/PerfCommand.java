@@ -46,23 +46,23 @@ public class PerfCommand {
       MinecraftServer server = source.getServer();
       if (server.isRecordingMetrics()) {
          throw ERROR_ALREADY_RUNNING.create();
-      } else {
-         Consumer<ProfileResults> onStopped = results -> whenStopped(source, results);
-         Consumer<Path> onReportFinished = profilingLogs -> saveResults(source, profilingLogs, server);
-         server.startRecordingMetrics(onStopped, onReportFinished);
-         source.sendSuccess(() -> Component.translatable("commands.perf.started"), false);
-         return 0;
       }
+
+      Consumer<ProfileResults> onStopped = results -> whenStopped(source, results);
+      Consumer<Path> onReportFinished = profilingLogs -> saveResults(source, profilingLogs, server);
+      server.startRecordingMetrics(onStopped, onReportFinished);
+      source.sendSuccess(() -> Component.translatable("commands.perf.started"), false);
+      return 0;
    }
 
    private static int stopProfilingDedicatedServer(final CommandSourceStack source) throws CommandSyntaxException {
       MinecraftServer server = source.getServer();
       if (!server.isRecordingMetrics()) {
          throw ERROR_NOT_RUNNING.create();
-      } else {
-         server.finishRecordingMetrics();
-         return 0;
       }
+
+      server.finishRecordingMetrics();
+      return 0;
    }
 
    private static void saveResults(final CommandSourceStack source, final Path report, final MinecraftServer server) {
@@ -73,9 +73,9 @@ public class PerfCommand {
       String zipFile;
       try {
          zipFile = FileUtil.findAvailableName(MetricsPersister.PROFILING_RESULTS_DIR, profilingName, ".zip");
-      } catch (IOException var11) {
+      } catch (IOException e) {
          source.sendFailure(Component.translatable("commands.perf.reportFailed"));
-         LOGGER.error("Failed to create report name", var11);
+         LOGGER.error("Failed to create report name", e);
          return;
       }
 
@@ -86,8 +86,8 @@ public class PerfCommand {
 
       try {
          FileUtils.forceDelete(report.toFile());
-      } catch (IOException var9) {
-         LOGGER.warn("Failed to delete temporary profiling file {}", report, var9);
+      } catch (IOException e) {
+         LOGGER.warn("Failed to delete temporary profiling file {}", report, e);
       }
 
       source.sendSuccess(() -> Component.translatable("commands.perf.reportSaved", zipFile), false);
@@ -96,14 +96,14 @@ public class PerfCommand {
    private static void whenStopped(final CommandSourceStack source, final ProfileResults results) {
       if (results != EmptyProfileResults.EMPTY) {
          int ticks = results.getTickDuration();
-         double durationInSeconds = (double)results.getNanoDuration() / (double)TimeUtil.NANOSECONDS_PER_SECOND;
+         double durationInSeconds = (double)results.getNanoDuration() / TimeUtil.NANOSECONDS_PER_SECOND;
          source.sendSuccess(
             () -> Component.translatable(
-                  "commands.perf.stopped",
-                  String.format(Locale.ROOT, "%.2f", durationInSeconds),
-                  ticks,
-                  String.format(Locale.ROOT, "%.2f", (double)ticks / durationInSeconds)
-               ),
+               "commands.perf.stopped",
+               String.format(Locale.ROOT, "%.2f", durationInSeconds),
+               ticks,
+               String.format(Locale.ROOT, "%.2f", ticks / durationInSeconds)
+            ),
             false
          );
       }

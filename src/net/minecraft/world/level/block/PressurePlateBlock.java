@@ -16,7 +16,7 @@ public class PressurePlateBlock extends BasePressurePlateBlock {
 
    protected PressurePlateBlock(final BlockSetType type, final BlockBehaviour.Properties properties) {
       super(properties, type);
-      this.registerDefaultState(this.stateDefinition.any().setValue(POWERED, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(POWERED, false));
    }
 
    @Override
@@ -26,7 +26,7 @@ public class PressurePlateBlock extends BasePressurePlateBlock {
 
    @Override
    protected BlockState setSignalForState(final BlockState state, final int signal) {
-      return state.setValue(POWERED, Boolean.valueOf(signal > 0));
+      return state.setValue(POWERED, signal > 0);
    }
 
    @Override

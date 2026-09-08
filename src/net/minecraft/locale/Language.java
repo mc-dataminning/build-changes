@@ -57,11 +57,11 @@ public abstract class Language {
 
          @Override
          public FormattedCharSequence getVisualOrder(final FormattedText logicalOrderText) {
-            return output -> logicalOrderText.visit(
-                     (style, contents) -> StringDecomposer.iterateFormatted(contents, style, output) ? Optional.empty() : FormattedText.STOP_ITERATION,
-                     Style.EMPTY
-                  )
-                  .isPresent();
+            return outputx -> logicalOrderText.visit(
+                  (style, contents) -> StringDecomposer.iterateFormatted(contents, style, output) ? Optional.empty() : FormattedText.STOP_ITERATION,
+                  Style.EMPTY
+               )
+               .isPresent();
          }
       };
    }
@@ -69,8 +69,8 @@ public abstract class Language {
    private static void parseTranslations(final BiConsumer<String, String> output, final String path) {
       try (InputStream stream = Language.class.getResourceAsStream(path)) {
          loadFromJson(stream, output);
-      } catch (JsonParseException | IOException var7) {
-         LOGGER.error("Couldn't read strings from {}", path, var7);
+      } catch (IOException | JsonParseException e) {
+         LOGGER.error("Couldn't read strings from {}", path, e);
       }
    }
 

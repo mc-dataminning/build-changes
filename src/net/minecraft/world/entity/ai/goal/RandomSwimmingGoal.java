@@ -10,9 +10,8 @@ public class RandomSwimmingGoal extends RandomStrollGoal {
       super(mob, speedModifier, interval);
    }
 
-   @Nullable
    @Override
-   protected Vec3 getPosition() {
+   protected @Nullable Vec3 getPosition() {
       return BehaviorUtils.getRandomSwimmablePos(this.mob, 10, 7);
    }
 }

@@ -18,13 +18,13 @@ public class ConstructBeaconTrigger extends SimpleCriterionTrigger<ConstructBeac
       this.trigger(player, t -> t.matches(levels));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, MinMaxBounds.Ints level) implements SimpleCriterionTrigger.SimpleInstance {
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, MinMaxBounds.Ints level) implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<ConstructBeaconTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(ConstructBeaconTrigger.TriggerInstance::player),
-                  MinMaxBounds.Ints.CODEC.optionalFieldOf("level", MinMaxBounds.Ints.ANY).forGetter(ConstructBeaconTrigger.TriggerInstance::level)
-               )
-               .apply(i, ConstructBeaconTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(ConstructBeaconTrigger.TriggerInstance::player),
+               MinMaxBounds.Ints.CODEC.optionalFieldOf("level", MinMaxBounds.Ints.ANY).forGetter(ConstructBeaconTrigger.TriggerInstance::level)
+            )
+            .apply(i, ConstructBeaconTrigger.TriggerInstance::new)
       );
 
       public static Criterion<ConstructBeaconTrigger.TriggerInstance> constructedBeacon() {

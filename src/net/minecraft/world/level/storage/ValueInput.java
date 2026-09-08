@@ -51,13 +51,13 @@ public interface ValueInput {
    @Deprecated
    HolderLookup.Provider lookup();
 
-   public interface TypedInputList<T> extends Iterable<T> {
+   interface TypedInputList<T> extends Iterable<T> {
       boolean isEmpty();
 
       Stream<T> stream();
    }
 
-   public interface ValueInputList extends Iterable<ValueInput> {
+   interface ValueInputList extends Iterable<ValueInput> {
       boolean isEmpty();
 
       Stream<ValueInput> stream();

@@ -80,13 +80,13 @@ public class RemoveBlockGoal extends MoveToBlockGoal {
             if (level instanceof ServerLevel serverLevel) {
                serverLevel.sendParticles(
                   new ItemParticleOption(ParticleTypes.ITEM, Items.EGG),
-                  (double)eatPos.getX() + 0.5,
-                  (double)eatPos.getY() + 0.7,
-                  (double)eatPos.getZ() + 0.5,
+                  eatPos.getX() + 0.5,
+                  eatPos.getY() + 0.7,
+                  eatPos.getZ() + 0.5,
                   3,
-                  ((double)random.nextFloat() - 0.5) * 0.08,
-                  ((double)random.nextFloat() - 0.5) * 0.08,
-                  ((double)random.nextFloat() - 0.5) * 0.08,
+                  (random.nextFloat() - 0.5) * 0.08,
+                  (random.nextFloat() - 0.5) * 0.08,
+                  (random.nextFloat() - 0.5) * 0.08,
                   0.15F
                );
             }
@@ -107,8 +107,7 @@ public class RemoveBlockGoal extends MoveToBlockGoal {
                   double xa = random.nextGaussian() * 0.02;
                   double ya = random.nextGaussian() * 0.02;
                   double za = random.nextGaussian() * 0.02;
-                  ((ServerLevel)level)
-                     .sendParticles(ParticleTypes.POOF, (double)eatPos.getX() + 0.5, (double)eatPos.getY(), (double)eatPos.getZ() + 0.5, 1, xa, ya, za, 0.15F);
+                  ((ServerLevel)level).sendParticles(ParticleTypes.POOF, eatPos.getX() + 0.5, eatPos.getY(), eatPos.getZ() + 0.5, 1, xa, ya, za, 0.15F);
                }
 
                this.playBreakSound(level, eatPos);
@@ -119,21 +118,20 @@ public class RemoveBlockGoal extends MoveToBlockGoal {
       }
    }
 
-   @Nullable
-   private BlockPos getPosWithBlock(final BlockPos pos, final BlockGetter level) {
+   private @Nullable BlockPos getPosWithBlock(final BlockPos pos, final BlockGetter level) {
       if (level.getBlockState(pos).is(this.blockToRemove)) {
          return pos;
-      } else {
-         BlockPos[] neighbours = new BlockPos[]{pos.below(), pos.west(), pos.east(), pos.north(), pos.south(), pos.below().below()};
-
-         for (BlockPos neighborPos : neighbours) {
-            if (level.getBlockState(neighborPos).is(this.blockToRemove)) {
-               return neighborPos;
-            }
-         }
-
-         return null;
       }
+
+      BlockPos[] neighbours = new BlockPos[]{pos.below(), pos.west(), pos.east(), pos.north(), pos.south(), pos.below().below()};
+
+      for (BlockPos neighborPos : neighbours) {
+         if (level.getBlockState(neighborPos).is(this.blockToRemove)) {
+            return neighborPos;
+         }
+      }
+
+      return null;
    }
 
    @Override

@@ -61,8 +61,7 @@ public class SkeletonTrapGoal extends Goal {
       }
    }
 
-   @Nullable
-   private AbstractHorse createHorse(final DifficultyInstance difficulty) {
+   private @Nullable AbstractHorse createHorse(final DifficultyInstance difficulty) {
       SkeletonHorse horse = EntityTypes.SKELETON_HORSE.create(this.horse.level(), EntitySpawnReason.TRIGGERED);
       if (horse != null) {
          horse.finalizeSpawn((ServerLevel)this.horse.level(), difficulty, EntitySpawnReason.TRIGGERED, null);
@@ -76,8 +75,7 @@ public class SkeletonTrapGoal extends Goal {
       return horse;
    }
 
-   @Nullable
-   private Skeleton createSkeleton(final DifficultyInstance difficulty, final AbstractHorse horse) {
+   private @Nullable Skeleton createSkeleton(final DifficultyInstance difficulty, final AbstractHorse horse) {
       Skeleton skeleton = EntityTypes.SKELETON.create(horse.level(), EntitySpawnReason.TRIGGERED);
       if (skeleton != null) {
          skeleton.finalizeSpawn((ServerLevel)horse.level(), difficulty, EntitySpawnReason.TRIGGERED, null);

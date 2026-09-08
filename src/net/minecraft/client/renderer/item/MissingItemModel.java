@@ -37,8 +37,8 @@ public class MissingItemModel implements ItemModel {
       final ItemStack item,
       final ItemModelResolver resolver,
       final ItemDisplayContext displayContext,
-      @Nullable final ClientLevel level,
-      @Nullable final ItemOwner owner,
+      final @Nullable ClientLevel level,
+      final @Nullable ItemOwner owner,
       final int seed
    ) {
       output.appendModelIdentityElement(this);

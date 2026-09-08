@@ -1,6 +1,5 @@
 package net.minecraft.world.entity.animal.wolf;
 
-import java.util.Objects;
 import java.util.Optional;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -100,8 +99,8 @@ public class Wolf extends TamableAnimal implements NeutralMob {
       Wolf.class, EntityDataSerializers.WOLF_SOUND_VARIANT
    );
    public static final TargetingConditions.Selector PREY_SELECTOR = (target, level) -> target.is(EntityTypes.SHEEP)
-         || target.is(EntityTypes.RABBIT)
-         || target.is(EntityTypes.FOX);
+      || target.is(EntityTypes.RABBIT)
+      || target.is(EntityTypes.FOX);
    private static final EntityDimensions BABY_DIMENSIONS = EntityDimensions.scalable(0.3F, 0.425F)
       .withEyeHeight(0.34375F)
       .withAttachments(EntityAttachments.builder().attach(EntityAttachment.PASSENGER, 0.0F, 0.4375F, 0.0F));
@@ -117,8 +116,7 @@ public class Wolf extends TamableAnimal implements NeutralMob {
    private float shakeAnim;
    private float shakeAnimO;
    private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
-   @Nullable
-   private EntityReference<LivingEntity> persistentAngerTarget;
+   private @Nullable EntityReference<LivingEntity> persistentAngerTarget;
 
    public Wolf(final EntityType<? extends Wolf> type, final Level level) {
       super(type, level);
@@ -181,9 +179,8 @@ public class Wolf extends TamableAnimal implements NeutralMob {
       this.entityData.set(DATA_SOUND_VARIANT_ID, soundVariant);
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       if (type == DataComponents.WOLF_VARIANT) {
          return castComponentValue((DataComponentType<T>)type, this.getVariant());
       } else if (type == DataComponents.WOLF_SOUND_VARIANT) {
@@ -259,9 +256,8 @@ public class Wolf extends TamableAnimal implements NeutralMob {
          .ifPresent(this::setSoundVariant);
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       if (groupData instanceof Wolf.WolfPackData wolfGroupData) {
@@ -355,16 +351,13 @@ public class Wolf extends TamableAnimal implements NeutralMob {
 
             if (this.shakeAnim > 0.4F) {
                float yt = (float)this.getY();
-               int shakeCount = (int)(Mth.sin((double)((this.shakeAnim - 0.4F) * (float) Math.PI)) * 7.0F);
+               int shakeCount = (int)(Mth.sin((this.shakeAnim - 0.4F) * (float) Math.PI) * 7.0F);
                Vec3 movement = this.getDeltaMovement();
 
                for (int i = 0; i < shakeCount; i++) {
                   float xo = (this.random.nextFloat() * 2.0F - 1.0F) * this.getBbWidth() * 0.5F;
                   float zo = (this.random.nextFloat() * 2.0F - 1.0F) * this.getBbWidth() * 0.5F;
-                  this.level()
-                     .addParticle(
-                        ParticleTypes.SPLASH, this.getX() + (double)xo, (double)(yt + 0.8F), this.getZ() + (double)zo, movement.x, movement.y, movement.z
-                     );
+                  this.level().addParticle(ParticleTypes.SPLASH, this.getX() + xo, yt + 0.8F, this.getZ() + zo, movement.x, movement.y, movement.z);
                }
             }
          }
@@ -407,10 +400,10 @@ public class Wolf extends TamableAnimal implements NeutralMob {
    public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
       if (this.isInvulnerableTo(level, source)) {
          return false;
-      } else {
-         this.setOrderedToSit(false);
-         return super.hurtServer(level, source, damage);
       }
+
+      this.setOrderedToSit(false);
+      return super.hurtServer(level, source, damage);
    }
 
    @Override
@@ -447,7 +440,7 @@ public class Wolf extends TamableAnimal implements NeutralMob {
 
    @Override
    protected void hurtArmor(final DamageSource damageSource, final float damage) {
-      this.doHurtEquipment(damageSource, damage, new EquipmentSlot[]{EquipmentSlot.BODY});
+      this.doHurtEquipment(damageSource, damage, EquipmentSlot.BODY);
    }
 
    @Override
@@ -479,7 +472,7 @@ public class Wolf extends TamableAnimal implements NeutralMob {
                itemStack.shrink(1);
                this.playSound(SoundEvents.WOLF_ARMOR_REPAIR);
                ItemStack armor = this.getBodyArmorItem();
-               int repairUnit = (int)((float)armor.getMaxDamage() * 0.125F);
+               int repairUnit = (int)(armor.getMaxDamage() * 0.125F);
                armor.setDamageValue(Math.max(0, armor.getDamageValue() - repairUnit));
                return InteractionResult.SUCCESS;
             }
@@ -524,7 +517,7 @@ public class Wolf extends TamableAnimal implements NeutralMob {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 8) {
          this.isShaking = true;
          this.shakeAnim = 0.0F;
@@ -570,17 +563,16 @@ public class Wolf extends TamableAnimal implements NeutralMob {
 
    @Override
    public void startPersistentAngerTimer() {
-      this.setTimeToRemainAngry((long)PERSISTENT_ANGER_TIME.sample(this.random));
+      this.setTimeToRemainAngry(PERSISTENT_ANGER_TIME.sample(this.random));
    }
 
-   @Nullable
    @Override
-   public EntityReference<LivingEntity> getPersistentAngerTarget() {
+   public @Nullable EntityReference<LivingEntity> getPersistentAngerTarget() {
       return this.persistentAngerTarget;
    }
 
    @Override
-   public void setPersistentAngerTarget(@Nullable final EntityReference<LivingEntity> persistentAngerTarget) {
+   public void setPersistentAngerTarget(final @Nullable EntityReference<LivingEntity> persistentAngerTarget) {
       this.persistentAngerTarget = persistentAngerTarget;
    }
 
@@ -597,8 +589,7 @@ public class Wolf extends TamableAnimal implements NeutralMob {
       return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
    }
 
-   @Nullable
-   public Wolf getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable Wolf getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       Wolf baby = EntityTypes.WOLF.create(level, EntitySpawnReason.BREEDING);
       if (baby != null && partner instanceof Wolf partnerWolf) {
          if (this.random.nextBoolean()) {
@@ -650,20 +641,10 @@ public class Wolf extends TamableAnimal implements NeutralMob {
          return false;
       } else if (target instanceof Wolf wolfTarget) {
          return !wolfTarget.isTame() || wolfTarget.getOwner() != owner;
+      } else if (target instanceof Player playerTarget && owner instanceof Player playerOwner && !playerOwner.canHarmPlayer(playerTarget)) {
+         return false;
       } else {
-         if (target instanceof Player playerTarget && owner instanceof Player playerOwner && !playerOwner.canHarmPlayer(playerTarget)) {
-            return false;
-         }
-
-         if (target instanceof AbstractHorse horse && horse.isTamed()) {
-            return false;
-         }
-
-         if (target instanceof TamableAnimal animal && animal.isTame()) {
-            return false;
-         }
-
-         return true;
+         return target instanceof AbstractHorse horse && horse.isTamed() ? false : !(target instanceof TamableAnimal animal && animal.isTame());
       }
    }
 
@@ -674,7 +655,7 @@ public class Wolf extends TamableAnimal implements NeutralMob {
 
    @Override
    public Vec3 getLeashOffset() {
-      return new Vec3(0.0, (double)(0.6F * this.getEyeHeight()), (double)(this.getBbWidth() * 0.4F));
+      return new Vec3(0.0, 0.6F * this.getEyeHeight(), this.getBbWidth() * 0.4F);
    }
 
    public static boolean checkWolfSpawnRules(
@@ -689,7 +670,6 @@ public class Wolf extends TamableAnimal implements NeutralMob {
       public WolfAvoidEntityGoal(
          final Wolf wolf, final Class<T> avoidClass, final float maxDist, final double walkSpeedModifier, final double sprintSpeedModifier
       ) {
-         Objects.requireNonNull(Wolf.this);
          super(wolf, avoidClass, maxDist, walkSpeedModifier, sprintSpeedModifier);
          this.wolf = wolf;
       }

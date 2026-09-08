@@ -9,7 +9,7 @@ import net.minecraft.resources.Identifier;
 import org.jspecify.annotations.Nullable;
 
 public record MethodInfo<Params, Result>(String description, Optional<ParamInfo<Params>> params, Optional<ResultInfo<Result>> result) {
-   public MethodInfo(final String description, @Nullable final ParamInfo<Params> paramInfo, @Nullable final ResultInfo<Result> resultInfo) {
+   public MethodInfo(final String description, final @Nullable ParamInfo<Params> paramInfo, final @Nullable ResultInfo<Result> resultInfo) {
       this(description, Optional.ofNullable(paramInfo), Optional.ofNullable(resultInfo));
    }
 
@@ -28,11 +28,11 @@ public record MethodInfo<Params, Result>(String description, Optional<ParamInfo<
    private static <Params, Result> MapCodec<MethodInfo<Params, Result>> typedCodec() {
       return RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Codec.STRING.fieldOf("description").forGetter(MethodInfo::description),
-                  paramsTypedCodec().fieldOf("params").forGetter(MethodInfo::params),
-                  ResultInfo.typedCodec().optionalFieldOf("result").forGetter(MethodInfo::result)
-               )
-               .apply(i, MethodInfo::new)
+               Codec.STRING.fieldOf("description").forGetter(MethodInfo::description),
+               paramsTypedCodec().fieldOf("params").forGetter(MethodInfo::params),
+               ResultInfo.typedCodec().optionalFieldOf("result").forGetter(MethodInfo::result)
+            )
+            .apply(i, MethodInfo::new)
       );
    }
 
@@ -40,13 +40,13 @@ public record MethodInfo<Params, Result>(String description, Optional<ParamInfo<
       return new MethodInfo.Named<>(name, this);
    }
 
-   public static record Named<Params, Result>(Identifier name, MethodInfo<Params, Result> contents) {
+   public record Named<Params, Result>(Identifier name, MethodInfo<Params, Result> contents) {
       public static final Codec<MethodInfo.Named<?, ?>> CODEC = typedCodec();
 
       public static <Params, Result> Codec<MethodInfo.Named<Params, Result>> typedCodec() {
          return RecordCodecBuilder.create(
             i -> i.group(Identifier.CODEC.fieldOf("name").forGetter(MethodInfo.Named::name), MethodInfo.typedCodec().forGetter(MethodInfo.Named::contents))
-                  .apply(i, MethodInfo.Named::new)
+               .apply(i, MethodInfo.Named::new)
          );
       }
    }

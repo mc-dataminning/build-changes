@@ -43,35 +43,28 @@ public class SilverfishModel extends EntityModel<EntityRenderState> {
             getSegmentName(i),
             CubeListBuilder.create()
                .texOffs(BODY_TEXS[i][0], BODY_TEXS[i][1])
-               .addBox(
-                  (float)BODY_SIZES[i][0] * -0.5F,
-                  0.0F,
-                  (float)BODY_SIZES[i][2] * -0.5F,
-                  (float)BODY_SIZES[i][0],
-                  (float)BODY_SIZES[i][1],
-                  (float)BODY_SIZES[i][2]
-               ),
-            PartPose.offset(0.0F, (float)(24 - BODY_SIZES[i][1]), placement)
+               .addBox(BODY_SIZES[i][0] * -0.5F, 0.0F, BODY_SIZES[i][2] * -0.5F, BODY_SIZES[i][0], BODY_SIZES[i][1], BODY_SIZES[i][2]),
+            PartPose.offset(0.0F, 24 - BODY_SIZES[i][1], placement)
          );
          zPlacement[i] = placement;
          if (i < 6) {
-            placement += (float)(BODY_SIZES[i][2] + BODY_SIZES[i + 1][2]) * 0.5F;
+            placement += (BODY_SIZES[i][2] + BODY_SIZES[i + 1][2]) * 0.5F;
          }
       }
 
       root.addOrReplaceChild(
          getLayerName(0),
-         CubeListBuilder.create().texOffs(20, 0).addBox(-5.0F, 0.0F, (float)BODY_SIZES[2][2] * -0.5F, 10.0F, 8.0F, (float)BODY_SIZES[2][2]),
+         CubeListBuilder.create().texOffs(20, 0).addBox(-5.0F, 0.0F, BODY_SIZES[2][2] * -0.5F, 10.0F, 8.0F, BODY_SIZES[2][2]),
          PartPose.offset(0.0F, 16.0F, zPlacement[2])
       );
       root.addOrReplaceChild(
          getLayerName(1),
-         CubeListBuilder.create().texOffs(20, 11).addBox(-3.0F, 0.0F, (float)BODY_SIZES[4][2] * -0.5F, 6.0F, 4.0F, (float)BODY_SIZES[4][2]),
+         CubeListBuilder.create().texOffs(20, 11).addBox(-3.0F, 0.0F, BODY_SIZES[4][2] * -0.5F, 6.0F, 4.0F, BODY_SIZES[4][2]),
          PartPose.offset(0.0F, 20.0F, zPlacement[4])
       );
       root.addOrReplaceChild(
          getLayerName(2),
-         CubeListBuilder.create().texOffs(20, 18).addBox(-3.0F, 0.0F, (float)BODY_SIZES[4][2] * -0.5F, 6.0F, 5.0F, (float)BODY_SIZES[1][2]),
+         CubeListBuilder.create().texOffs(20, 18).addBox(-3.0F, 0.0F, BODY_SIZES[4][2] * -0.5F, 6.0F, 5.0F, BODY_SIZES[1][2]),
          PartPose.offset(0.0F, 19.0F, zPlacement[1])
       );
       return LayerDefinition.create(mesh, 64, 32);
@@ -81,14 +74,8 @@ public class SilverfishModel extends EntityModel<EntityRenderState> {
       super.setupAnim(state);
 
       for (int i = 0; i < this.bodyParts.length; i++) {
-         this.bodyParts[i].yRot = Mth.cos((double)(state.ageInTicks * 0.9F + (float)i * 0.15F * (float) Math.PI))
-            * (float) Math.PI
-            * 0.05F
-            * (float)(1 + Math.abs(i - 2));
-         this.bodyParts[i].x = Mth.sin((double)(state.ageInTicks * 0.9F + (float)i * 0.15F * (float) Math.PI))
-            * (float) Math.PI
-            * 0.2F
-            * (float)Math.abs(i - 2);
+         this.bodyParts[i].yRot = Mth.cos(state.ageInTicks * 0.9F + i * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (1 + Math.abs(i - 2));
+         this.bodyParts[i].x = Mth.sin(state.ageInTicks * 0.9F + i * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * Math.abs(i - 2);
       }
 
       this.bodyLayers[0].yRot = this.bodyParts[2].yRot;

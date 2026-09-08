@@ -19,12 +19,12 @@ public record CowSoundVariant(Holder<SoundEvent> ambientSound, Holder<SoundEvent
    private static Codec<CowSoundVariant> codec() {
       return RecordCodecBuilder.create(
          i -> i.group(
-                  SoundEvent.CODEC.fieldOf("ambient_sound").forGetter(CowSoundVariant::ambientSound),
-                  SoundEvent.CODEC.fieldOf("hurt_sound").forGetter(CowSoundVariant::hurtSound),
-                  SoundEvent.CODEC.fieldOf("death_sound").forGetter(CowSoundVariant::deathSound),
-                  SoundEvent.CODEC.fieldOf("step_sound").forGetter(CowSoundVariant::stepSound)
-               )
-               .apply(i, CowSoundVariant::new)
+               SoundEvent.CODEC.fieldOf("ambient_sound").forGetter(CowSoundVariant::ambientSound),
+               SoundEvent.CODEC.fieldOf("hurt_sound").forGetter(CowSoundVariant::hurtSound),
+               SoundEvent.CODEC.fieldOf("death_sound").forGetter(CowSoundVariant::deathSound),
+               SoundEvent.CODEC.fieldOf("step_sound").forGetter(CowSoundVariant::stepSound)
+            )
+            .apply(i, CowSoundVariant::new)
       );
    }
 }

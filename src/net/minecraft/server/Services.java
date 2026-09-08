@@ -29,8 +29,7 @@ public record Services(
       return new Services(sessionService, serviceAccess.getServicesKeySet(), profileRepository, profileCache, profileResolver);
    }
 
-   @Nullable
-   public SignatureValidator profileKeySignatureValidator() {
+   public @Nullable SignatureValidator profileKeySignatureValidator() {
       return SignatureValidator.from(this.servicesKeySet, ServicesKeyType.PROFILE_KEY);
    }
 

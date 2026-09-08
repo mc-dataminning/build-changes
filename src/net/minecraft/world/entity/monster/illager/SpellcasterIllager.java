@@ -1,7 +1,6 @@
 package net.minecraft.world.entity.monster.illager;
 
 import java.util.EnumSet;
-import java.util.Objects;
 import java.util.function.IntFunction;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -86,17 +85,17 @@ public abstract class SpellcasterIllager extends AbstractIllager {
          float red = (float)spell.spellColor[0];
          float green = (float)spell.spellColor[1];
          float blue = (float)spell.spellColor[2];
-         float bodyAngle = this.yBodyRot * (float) (Math.PI / 180.0) + Mth.cos((double)((float)this.tickCount * 0.6662F)) * 0.25F;
-         float cos = Mth.cos((double)bodyAngle);
-         float sin = Mth.sin((double)bodyAngle);
-         double handDistance = 0.6 * (double)this.getScale();
-         double handHeight = 1.8 * (double)this.getScale();
+         float bodyAngle = this.yBodyRot * (float) (Math.PI / 180.0) + Mth.cos(this.tickCount * 0.6662F) * 0.25F;
+         float cos = Mth.cos(bodyAngle);
+         float sin = Mth.sin(bodyAngle);
+         double handDistance = 0.6 * this.getScale();
+         double handHeight = 1.8 * this.getScale();
          this.level()
             .addParticle(
                ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, red, green, blue),
-               this.getX() + (double)cos * handDistance,
+               this.getX() + cos * handDistance,
                this.getY() + handHeight,
-               this.getZ() + (double)sin * handDistance,
+               this.getZ() + sin * handDistance,
                0.0,
                0.0,
                0.0
@@ -104,9 +103,9 @@ public abstract class SpellcasterIllager extends AbstractIllager {
          this.level()
             .addParticle(
                ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, red, green, blue),
-               this.getX() - (double)cos * handDistance,
+               this.getX() - cos * handDistance,
                this.getY() + handHeight,
-               this.getZ() - (double)sin * handDistance,
+               this.getZ() - sin * handDistance,
                0.0,
                0.0,
                0.0
@@ -120,7 +119,7 @@ public abstract class SpellcasterIllager extends AbstractIllager {
 
    protected abstract SoundEvent getCastingSoundEvent();
 
-   protected static enum IllagerSpell {
+   protected enum IllagerSpell {
       NONE(0, 0.0, 0.0, 0.0),
       SUMMON_VEX(1, 0.7, 0.7, 0.8),
       FANGS(2, 0.4, 0.3, 0.35),
@@ -132,7 +131,7 @@ public abstract class SpellcasterIllager extends AbstractIllager {
       private final int id;
       private final double[] spellColor;
 
-      private IllagerSpell(final int id, final double red, final double green, final double blue) {
+      IllagerSpell(final int id, final double red, final double green, final double blue) {
          this.id = id;
          this.spellColor = new double[]{red, green, blue};
       }
@@ -144,8 +143,6 @@ public abstract class SpellcasterIllager extends AbstractIllager {
 
    protected class SpellcasterCastingSpellGoal extends Goal {
       public SpellcasterCastingSpellGoal() {
-         Objects.requireNonNull(SpellcasterIllager.this);
-         super();
          this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
       }
 
@@ -170,7 +167,7 @@ public abstract class SpellcasterIllager extends AbstractIllager {
       public void tick() {
          if (SpellcasterIllager.this.getTarget() != null) {
             SpellcasterIllager.this.getLookControl()
-               .setLookAt(SpellcasterIllager.this.getTarget(), (float)SpellcasterIllager.this.getMaxHeadYRot(), (float)SpellcasterIllager.this.getMaxHeadXRot());
+               .setLookAt(SpellcasterIllager.this.getTarget(), SpellcasterIllager.this.getMaxHeadYRot(), SpellcasterIllager.this.getMaxHeadXRot());
          }
       }
    }
@@ -178,11 +175,6 @@ public abstract class SpellcasterIllager extends AbstractIllager {
    protected abstract class SpellcasterUseSpellGoal extends Goal {
       protected int attackWarmupDelay;
       protected int nextAttackTickCount;
-
-      protected SpellcasterUseSpellGoal() {
-         Objects.requireNonNull(SpellcasterIllager.this);
-         super();
-      }
 
       @Override
       public boolean canUse() {
@@ -232,8 +224,7 @@ public abstract class SpellcasterIllager extends AbstractIllager {
 
       protected abstract int getCastingInterval();
 
-      @Nullable
-      protected abstract SoundEvent getSpellPrepareSound();
+      protected abstract @Nullable SoundEvent getSpellPrepareSound();
 
       protected abstract SpellcasterIllager.IllagerSpell getSpell();
    }

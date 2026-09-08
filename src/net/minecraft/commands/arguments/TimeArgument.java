@@ -13,7 +13,6 @@ import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.SharedSuggestionProvider;
@@ -49,7 +48,7 @@ public class TimeArgument implements ArgumentType<Integer> {
       if (factor == 0) {
          throw ERROR_INVALID_UNIT.createWithContext(reader);
       } else {
-         int ticks = Math.round(value * (float)factor);
+         int ticks = Math.round(value * factor);
          if (ticks < this.minimum) {
             throw ERROR_TICK_COUNT_TOO_LOW.createWithContext(reader, ticks, this.minimum);
          } else {
@@ -63,7 +62,7 @@ public class TimeArgument implements ArgumentType<Integer> {
 
       try {
          reader.readFloat();
-      } catch (CommandSyntaxException var5) {
+      } catch (CommandSyntaxException ignored) {
          return builder.buildFuture();
       }
 
@@ -103,8 +102,6 @@ public class TimeArgument implements ArgumentType<Integer> {
          private final int min;
 
          private Template(final int min) {
-            Objects.requireNonNull(Info.this);
-            super();
             this.min = min;
          }
 

@@ -12,10 +12,10 @@ import org.jspecify.annotations.Nullable;
 public class GravityProcessor implements StructureProcessor {
    public static final MapCodec<GravityProcessor> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Heightmap.Types.CODEC.optionalFieldOf("heightmap", Heightmap.Types.WORLD_SURFACE_WG).forGetter(p -> p.heightmap),
-               Codec.INT.optionalFieldOf("offset", 0).forGetter(p -> p.offset)
-            )
-            .apply(i, GravityProcessor::new)
+            Heightmap.Types.CODEC.optionalFieldOf("heightmap", Heightmap.Types.WORLD_SURFACE_WG).forGetter(p -> p.heightmap),
+            Codec.INT.optionalFieldOf("offset", 0).forGetter(p -> p.offset)
+         )
+         .apply(i, GravityProcessor::new)
    );
    private final Heightmap.Types heightmap;
    private final int offset;
@@ -25,9 +25,8 @@ public class GravityProcessor implements StructureProcessor {
       this.offset = offset;
    }
 
-   @Nullable
    @Override
-   public StructureTemplate.StructureBlockInfo processBlock(
+   public StructureTemplate.@Nullable StructureBlockInfo processBlock(
       final LevelReader level,
       final BlockPos targetPosition,
       final BlockPos referencePos,

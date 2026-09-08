@@ -1,7 +1,6 @@
 package net.minecraft.world.level.blockscan;
 
 import com.google.common.collect.Iterables;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
@@ -33,12 +32,7 @@ public class OrderedBlockMatcher extends BlockMatcher {
    @Override
    public boolean atLeastMatched(final int n) {
       return BlockScanUtils.findBlocksWithCache(this.level, this.positions, this.statePredicate, new BlockStateConsumer() {
-         private int count;
-
-         {
-            Objects.requireNonNull(OrderedBlockMatcher.this);
-            this.count = 0;
-         }
+         private int count = 0;
 
          @Override
          public Continuation apply(final BlockPos pos, final BlockState state) {

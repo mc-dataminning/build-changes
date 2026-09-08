@@ -37,11 +37,8 @@ public record IntTag(int value) implements NumericTag {
       }
    };
 
-   @Deprecated(
-      forRemoval = true
-   )
-   public IntTag(int value) {
-      this.value = value;
+   @Deprecated(forRemoval = true)
+   public IntTag {
    }
 
    public static IntTag valueOf(final int i) {
@@ -79,7 +76,7 @@ public record IntTag(int value) implements NumericTag {
 
    @Override
    public long longValue() {
-      return (long)this.value;
+      return this.value;
    }
 
    @Override
@@ -99,12 +96,12 @@ public record IntTag(int value) implements NumericTag {
 
    @Override
    public double doubleValue() {
-      return (double)this.value;
+      return this.value;
    }
 
    @Override
    public float floatValue() {
-      return (float)this.value;
+      return this.value;
    }
 
    @Override

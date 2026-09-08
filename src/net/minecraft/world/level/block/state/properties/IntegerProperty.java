@@ -14,13 +14,15 @@ public final class IntegerProperty extends Property<Integer> {
       super(name, Integer.class);
       if (min < 0) {
          throw new IllegalArgumentException("Min value of " + name + " must be 0 or greater");
-      } else if (max <= min) {
-         throw new IllegalArgumentException("Max value of " + name + " must be greater than min (" + min + ")");
-      } else {
-         this.min = min;
-         this.max = max;
-         this.values = IntImmutableList.toList(IntStream.range(min, max + 1));
       }
+
+      if (max <= min) {
+         throw new IllegalArgumentException("Max value of " + name + " must be greater than min (" + min + ")");
+      }
+
+      this.min = min;
+      this.max = max;
+      this.values = IntImmutableList.toList(IntStream.range(min, max + 1));
    }
 
    @Override
@@ -33,11 +35,7 @@ public final class IntegerProperty extends Property<Integer> {
       if (this == o) {
          return true;
       } else {
-         if (o instanceof IntegerProperty that && super.equals(o)) {
-            return this.values.equals(that.values);
-         }
-
-         return false;
+         return o instanceof IntegerProperty that && super.equals(o) ? this.values.equals(that.values) : false;
       }
    }
 
@@ -55,7 +53,7 @@ public final class IntegerProperty extends Property<Integer> {
       try {
          int value = Integer.parseInt(name);
          return value >= this.min && value <= this.max ? Optional.of(value) : Optional.empty();
-      } catch (NumberFormatException var3) {
+      } catch (NumberFormatException ignored) {
          return Optional.empty();
       }
    }

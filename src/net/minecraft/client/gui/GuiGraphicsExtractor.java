@@ -93,14 +93,10 @@ public class GuiGraphicsExtractor {
    private CursorType pendingCursor = CursorType.DEFAULT;
    private final int mouseX;
    private final int mouseY;
-   @Nullable
-   private Runnable deferredTooltip;
-   @Nullable
-   private Style hoveredTextStyle;
-   @Nullable
-   private Style clickableTextStyle;
-   @Nullable
-   private Renderable preeditOverlay;
+   private @Nullable Runnable deferredTooltip;
+   private @Nullable Style hoveredTextStyle;
+   private @Nullable Style clickableTextStyle;
+   private @Nullable Renderable preeditOverlay;
 
    private GuiGraphicsExtractor(final Minecraft minecraft, final Matrix3x2fStack pose, final GuiRenderState guiRenderState, final int mouseX, final int mouseY) {
       this.minecraft = minecraft;
@@ -222,7 +218,7 @@ public class GuiGraphicsExtractor {
       final int x1,
       final int y1,
       final int color1,
-      @Nullable final Integer color2
+      final @Nullable Integer color2
    ) {
       this.guiRenderState
          .addGuiElement(
@@ -240,11 +236,11 @@ public class GuiGraphicsExtractor {
       this.fill(RenderPipelines.GUI_TEXT_HIGHLIGHT, x0, y0, x1, y1, -16776961);
    }
 
-   public void text(final Font font, @Nullable final String str, final int x, final int y, final int color) {
+   public void text(final Font font, final @Nullable String str, final int x, final int y, final int color) {
       this.text(font, str, x, y, color, true);
    }
 
-   public void text(final Font font, @Nullable final String str, final int x, final int y, final int color, final boolean dropShadow) {
+   public void text(final Font font, final @Nullable String str, final int x, final int y, final int color, final boolean dropShadow) {
       if (str != null) {
          this.text(font, Language.getInstance().getVisualOrder(FormattedText.of(str)), x, y, color, dropShadow);
       }
@@ -374,10 +370,10 @@ public class GuiGraphicsExtractor {
          x + width,
          y,
          y + height,
-         (u + 0.0F) / (float)textureWidth,
-         (u + (float)srcWidth) / (float)textureWidth,
-         (v + 0.0F) / (float)textureHeight,
-         (v + (float)srcHeight) / (float)textureHeight,
+         (u + 0.0F) / textureWidth,
+         (u + srcWidth) / textureWidth,
+         (v + 0.0F) / textureHeight,
+         (v + srcHeight) / textureHeight,
          color
       );
    }
@@ -418,7 +414,6 @@ public class GuiGraphicsExtractor {
    ) {
       TextureAtlasSprite sprite = this.guiSprites.getSprite(location);
       GuiSpriteScaling scaling = getSpriteScaling(sprite);
-      Objects.requireNonNull(scaling);
       switch (scaling) {
          case GuiSpriteScaling.Stretch stretch:
             this.blitSprite(renderPipeline, sprite, x, y, width, height, color);
@@ -429,6 +424,7 @@ public class GuiGraphicsExtractor {
          case GuiSpriteScaling.NineSlice nineSlice:
             this.blitNineSlicedSprite(renderPipeline, sprite, nineSlice, x, y, width, height, color);
             break;
+         default:
       }
    }
 
@@ -506,10 +502,10 @@ public class GuiGraphicsExtractor {
             x + width,
             y,
             y + height,
-            sprite.getU((float)textureX / (float)spriteWidth),
-            sprite.getU((float)(textureX + width) / (float)spriteWidth),
-            sprite.getV((float)textureY / (float)spriteHeight),
-            sprite.getV((float)(textureY + height) / (float)spriteHeight),
+            sprite.getU((float)textureX / spriteWidth),
+            sprite.getU((float)(textureX + width) / spriteWidth),
+            sprite.getV((float)textureY / spriteHeight),
+            sprite.getV((float)(textureY + height) / spriteHeight),
             color
          );
       }
@@ -743,10 +739,10 @@ public class GuiGraphicsExtractor {
                x + width,
                y,
                y + height,
-               sprite.getU((float)textureX / (float)spriteWidth),
-               sprite.getU((float)(textureX + textureWidth) / (float)spriteWidth),
-               sprite.getV((float)textureY / (float)spriteHeight),
-               sprite.getV((float)(textureY + textureHeight) / (float)spriteHeight),
+               sprite.getU((float)textureX / spriteWidth),
+               sprite.getU((float)(textureX + textureWidth) / spriteWidth),
+               sprite.getV((float)textureY / spriteHeight),
+               sprite.getV((float)(textureY + textureHeight) / spriteHeight),
                color
             );
          } else {
@@ -784,10 +780,10 @@ public class GuiGraphicsExtractor {
                y,
                x + width,
                y + height,
-               sprite.getU((float)textureX / (float)spriteWidth),
-               sprite.getU((float)(textureX + tileWidth) / (float)spriteWidth),
-               sprite.getV((float)textureY / (float)spriteHeight),
-               sprite.getV((float)(textureY + tileHeight) / (float)spriteHeight),
+               sprite.getU((float)textureX / spriteWidth),
+               sprite.getU((float)(textureX + tileWidth) / spriteWidth),
+               sprite.getV((float)textureY / spriteHeight),
+               sprite.getV((float)(textureY + tileHeight) / spriteHeight),
                color
             );
          } else {
@@ -901,15 +897,15 @@ public class GuiGraphicsExtractor {
       this.item(owner, owner.level(), itemStack, x, y, seed);
    }
 
-   private void item(@Nullable final LivingEntity owner, @Nullable final Level level, final ItemStack itemStack, final int x, final int y, final int seed) {
+   private void item(final @Nullable LivingEntity owner, final @Nullable Level level, final ItemStack itemStack, final int x, final int y, final int seed) {
       if (!itemStack.isEmpty()) {
          TrackingItemStackRenderState itemStackRenderState = new TrackingItemStackRenderState();
          this.minecraft.getItemModelResolver().updateForTopItem(itemStackRenderState, itemStack, ItemDisplayContext.GUI, level, owner, seed);
 
          try {
             this.guiRenderState.addItem(new GuiItemRenderState(new Matrix3x2f(this.pose), itemStackRenderState, x, y, this.scissorStack.peek()));
-         } catch (Throwable var11) {
-            CrashReport report = CrashReport.forThrowable(var11, "Rendering item");
+         } catch (Throwable t) {
+            CrashReport report = CrashReport.forThrowable(t, "Rendering item");
             CrashReportCategory category = report.addCategory("Item being rendered");
             category.setDetail("Item Type", () -> String.valueOf(itemStack.getItem()));
             category.setDetail("Item Components", () -> String.valueOf(itemStack.getComponents()));
@@ -931,7 +927,7 @@ public class GuiGraphicsExtractor {
       this.itemDecorations(font, itemStack, x, y, null);
    }
 
-   public void itemDecorations(final Font font, final ItemStack itemStack, final int x, final int y, @Nullable final String countText) {
+   public void itemDecorations(final Font font, final ItemStack itemStack, final int x, final int y, final @Nullable String countText) {
       if (!itemStack.isEmpty()) {
          this.pose.pushMatrix();
          this.itemBar(itemStack, x, y);
@@ -950,7 +946,7 @@ public class GuiGraphicsExtractor {
       }
    }
 
-   private void itemCount(final Font font, final ItemStack itemStack, final int x, final int y, @Nullable final String countText) {
+   private void itemCount(final Font font, final ItemStack itemStack, final int x, final int y, final @Nullable String countText) {
       if (itemStack.getCount() != 1 || countText != null) {
          String amount = countText == null ? String.valueOf(itemStack.getCount()) : countText;
          this.text(font, amount, x + 19 - 2 - font.width(amount), y + 6 + 3, -1, true);
@@ -978,8 +974,8 @@ public class GuiGraphicsExtractor {
       for (MapRenderState.MapDecorationRenderState decoration : mapRenderState.decorations) {
          if (decoration.renderOnFrame) {
             this.pose.pushMatrix();
-            this.pose.translate((float)decoration.x / 2.0F + 64.0F, (float)decoration.y / 2.0F + 64.0F);
-            this.pose.rotate((float) (Math.PI / 180.0) * (float)decoration.rot * 360.0F / 16.0F);
+            this.pose.translate(decoration.x / 2.0F + 64.0F, decoration.y / 2.0F + 64.0F);
+            this.pose.rotate((float) (Math.PI / 180.0) * decoration.rot * 360.0F / 16.0F);
             this.pose.scale(4.0F, 4.0F);
             this.pose.translate(-0.125F, 0.125F);
             TextureAtlasSprite atlasSprite = decoration.atlasSprite;
@@ -1004,10 +1000,10 @@ public class GuiGraphicsExtractor {
             this.pose.popMatrix();
             if (decoration.name != null) {
                Font font = minecraft.font;
-               float width = (float)font.width(decoration.name);
+               float width = font.width(decoration.name);
                float scale = Mth.clamp(25.0F / width, 0.0F, 6.0F / 9.0F);
                this.pose.pushMatrix();
-               this.pose.translate((float)decoration.x / 2.0F + 64.0F - width * scale / 2.0F, (float)decoration.y / 2.0F + 64.0F + 4.0F);
+               this.pose.translate(decoration.x / 2.0F + 64.0F - width * scale / 2.0F, decoration.y / 2.0F + 64.0F + 4.0F);
                this.pose.scale(scale, scale);
                this.guiRenderState
                   .addText(
@@ -1035,7 +1031,7 @@ public class GuiGraphicsExtractor {
       final float scale,
       final Vector3fc translation,
       final Quaternionfc rotation,
-      @Nullable final Quaternionfc overrideCameraAngle,
+      final @Nullable Quaternionfc overrideCameraAngle,
       final int x0,
       final int y0,
       final int x1,
@@ -1121,7 +1117,7 @@ public class GuiGraphicsExtractor {
       final Optional<TooltipComponent> optionalImage,
       final int xo,
       final int yo,
-      @Nullable final Identifier style
+      final @Nullable Identifier style
    ) {
       this.setTooltipForNextFrame(font, texts, optionalImage, xo, yo, style, false);
    }
@@ -1132,7 +1128,7 @@ public class GuiGraphicsExtractor {
       final Optional<TooltipComponent> optionalImage,
       final int xo,
       final int yo,
-      @Nullable final Identifier style,
+      final @Nullable Identifier style,
       final boolean extraSpaceAfterFirstLine
    ) {
       List<ClientTooltipComponent> components = texts.stream()
@@ -1151,7 +1147,7 @@ public class GuiGraphicsExtractor {
       final int xo,
       final int yo,
       final boolean replaceExisting,
-      @Nullable final Identifier style
+      final @Nullable Identifier style
    ) {
       List<ClientTooltipComponent> components = tooltip.stream().map(ClientTooltipComponent::create).collect(Collectors.toList());
       component.ifPresent(tooltipComponent -> components.add(components.isEmpty() ? 0 : 1, ClientTooltipComponent.create(tooltipComponent)));
@@ -1162,7 +1158,7 @@ public class GuiGraphicsExtractor {
       this.setTooltipForNextFrame(font, text, xo, yo, null);
    }
 
-   public void setTooltipForNextFrame(final Font font, final Component text, final int xo, final int yo, @Nullable final Identifier style) {
+   public void setTooltipForNextFrame(final Font font, final Component text, final int xo, final int yo, final @Nullable Identifier style) {
       this.setTooltipForNextFrame(font, List.of(text.getVisualOrderText()), xo, yo, style);
    }
 
@@ -1170,7 +1166,7 @@ public class GuiGraphicsExtractor {
       this.setComponentTooltipForNextFrame(font, lines, xo, yo, null);
    }
 
-   public void setComponentTooltipForNextFrame(final Font font, final List<Component> lines, final int xo, final int yo, @Nullable final Identifier style) {
+   public void setComponentTooltipForNextFrame(final Font font, final List<Component> lines, final int xo, final int yo, final @Nullable Identifier style) {
       this.setTooltipForNextFrameInternal(
          font,
          lines.stream().map(Component::getVisualOrderText).map(ClientTooltipComponent::create).toList(),
@@ -1187,7 +1183,7 @@ public class GuiGraphicsExtractor {
    }
 
    public void setTooltipForNextFrame(
-      final Font font, final List<? extends FormattedCharSequence> lines, final int xo, final int yo, @Nullable final Identifier style
+      final Font font, final List<? extends FormattedCharSequence> lines, final int xo, final int yo, final @Nullable Identifier style
    ) {
       this.setTooltipForNextFrameInternal(
          font, lines.stream().map(ClientTooltipComponent::create).collect(Collectors.toList()), xo, yo, DefaultTooltipPositioner.INSTANCE, style, false
@@ -1213,7 +1209,7 @@ public class GuiGraphicsExtractor {
       final int xo,
       final int yo,
       final ClientTooltipPositioner positioner,
-      @Nullable final Identifier style,
+      final @Nullable Identifier style,
       final boolean replaceExisting
    ) {
       this.setTooltipForNextFrameInternal(font, lines, xo, yo, positioner, style, replaceExisting, false);
@@ -1225,7 +1221,7 @@ public class GuiGraphicsExtractor {
       final int xo,
       final int yo,
       final ClientTooltipPositioner positioner,
-      @Nullable final Identifier style,
+      final @Nullable Identifier style,
       final boolean replaceExisting,
       final boolean extraSpaceAfterFirstLine
    ) {
@@ -1242,7 +1238,7 @@ public class GuiGraphicsExtractor {
       final int xo,
       final int yo,
       final ClientTooltipPositioner positioner,
-      @Nullable final Identifier style,
+      final @Nullable Identifier style,
       boolean extraSpaceAfterFirstLine
    ) {
       int textWidth = 0;
@@ -1259,11 +1255,11 @@ public class GuiGraphicsExtractor {
 
       int w = textWidth;
       int h = tempHeight;
-      Vector2ic positionedTooltip = positioner.positionTooltip(this.guiWidth(), this.guiHeight(), xo, yo, textWidth, tempHeight);
+      Vector2ic positionedTooltip = positioner.positionTooltip(this.guiWidth(), this.guiHeight(), xo, yo, w, h);
       int x = positionedTooltip.x();
       int y = positionedTooltip.y();
       this.pose.pushMatrix();
-      TooltipRenderUtil.extractTooltipBackground(this, x, y, textWidth, tempHeight, style);
+      TooltipRenderUtil.extractTooltipBackground(this, x, y, w, h, style);
       int localY = y;
 
       for (int i = 0; i < lines.size(); i++) {
@@ -1308,65 +1304,22 @@ public class GuiGraphicsExtractor {
       }
    }
 
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
    private void componentHoverEffect(final Font font, final Style hoveredStyle, final int xMouse, final int yMouse) {
       if (hoveredStyle.getHoverEvent() != null) {
-         HoverEvent var10000 = hoveredStyle.getHoverEvent();
-         Objects.requireNonNull(var10000);
-         Object var5 = var10000;
-         Throwable var21;
-         switch (var5) {
-            case HoverEvent.ShowItem var7:
-               HoverEvent.ShowItem var25 = var7;
-
-               try {
-                  var26 = var25.item();
-               } catch (Throwable var16) {
-                  var21 = var16;
-                  boolean var28 = false;
-                  break;
-               }
-
-               ItemStackTemplate var18 = var26;
-               this.setTooltipForNextFrame(font, var18.create(), xMouse, yMouse);
-               return;
-            case HoverEvent.ShowEntity var9:
-               HoverEvent.ShowEntity var23 = var9;
-
-               try {
-                  var24 = var23.entity();
-               } catch (Throwable var15) {
-                  var21 = var15;
-                  boolean var27 = false;
-                  break;
-               }
-
-               HoverEvent.EntityTooltipInfo var19 = var24;
+         switch (hoveredStyle.getHoverEvent()) {
+            case HoverEvent.ShowItem(ItemStackTemplate item):
+               this.setTooltipForNextFrame(font, item.create(), xMouse, yMouse);
+               break;
+            case HoverEvent.ShowEntity(HoverEvent.EntityTooltipInfo entity):
                if (this.minecraft.options.advancedItemTooltips) {
-                  this.setComponentTooltipForNextFrame(font, var19.getTooltipLines(), xMouse, yMouse);
+                  this.setComponentTooltipForNextFrame(font, entity.getTooltipLines(), xMouse, yMouse);
                }
-
-               return;
-            case HoverEvent.ShowText var11:
-               HoverEvent.ShowText var20 = var11;
-
-               try {
-                  var22 = var20.value();
-               } catch (Throwable var14) {
-                  var21 = var14;
-                  boolean var10001 = false;
-                  break;
-               }
-
-               Component var13 = var22;
-               this.setTooltipForNextFrame(font, font.split(var13, Math.max(this.guiWidth() / 2, 200)), xMouse, yMouse);
-               return;
+               break;
+            case HoverEvent.ShowText(Component text):
+               this.setTooltipForNextFrame(font, font.split(text, Math.max(this.guiWidth() / 2, 200)), xMouse, yMouse);
+               break;
             default:
-               return;
          }
-
-         Throwable var17 = var21;
-         throw new MatchException(var17.toString(), var17);
       }
    }
 
@@ -1387,7 +1340,7 @@ public class GuiGraphicsExtractor {
    }
 
    public ActiveTextCollector textRenderer(
-      final GuiGraphicsExtractor.HoveredTextEffects hoveredTextEffects, @Nullable final Consumer<Style> additionalHoverStyleConsumer
+      final GuiGraphicsExtractor.HoveredTextEffects hoveredTextEffects, final @Nullable Consumer<Style> additionalHoverStyleConsumer
    ) {
       return new GuiGraphicsExtractor.RenderingTextCollector(this.createDefaultTextParameters(1.0F), hoveredTextEffects, additionalHoverStyleConsumer);
    }
@@ -1396,7 +1349,7 @@ public class GuiGraphicsExtractor {
       return new ActiveTextCollector.Parameters(new Matrix3x2f(this.pose), opacity, this.scissorStack.peek());
    }
 
-   public static enum HoveredTextEffects {
+   public enum HoveredTextEffects {
       NONE(false, false),
       TOOLTIP_ONLY(true, false),
       TOOLTIP_AND_CURSOR(true, true);
@@ -1404,7 +1357,7 @@ public class GuiGraphicsExtractor {
       public final boolean allowTooltip;
       public final boolean allowCursorChanges;
 
-      private HoveredTextEffects(final boolean allowTooltip, final boolean allowCursorChanges) {
+      HoveredTextEffects(final boolean allowTooltip, final boolean allowCursorChanges) {
          this.allowTooltip = allowTooltip;
          this.allowCursorChanges = allowCursorChanges;
       }
@@ -1417,16 +1370,13 @@ public class GuiGraphicsExtractor {
    private class RenderingTextCollector implements ActiveTextCollector, Consumer<Style> {
       private ActiveTextCollector.Parameters defaultParameters;
       private final GuiGraphicsExtractor.HoveredTextEffects hoveredTextEffects;
-      @Nullable
-      private final Consumer<Style> additionalConsumer;
+      private final @Nullable Consumer<Style> additionalConsumer;
 
       private RenderingTextCollector(
          final ActiveTextCollector.Parameters initialParameters,
          final GuiGraphicsExtractor.HoveredTextEffects hoveredTextEffects,
-         @Nullable final Consumer<Style> additonalConsumer
+         final @Nullable Consumer<Style> additonalConsumer
       ) {
-         Objects.requireNonNull(GuiGraphicsExtractor.this);
-         super();
          this.defaultParameters = initialParameters;
          this.hoveredTextEffects = hoveredTextEffects;
          this.additionalConsumer = additonalConsumer;
@@ -1479,7 +1429,7 @@ public class GuiGraphicsExtractor {
          }
 
          if (needsFullStyleScan) {
-            ActiveTextCollector.findElementUnderCursor(renderState, (float)GuiGraphicsExtractor.this.mouseX, (float)GuiGraphicsExtractor.this.mouseY, this);
+            ActiveTextCollector.findElementUnderCursor(renderState, GuiGraphicsExtractor.this.mouseX, GuiGraphicsExtractor.this.mouseY, this);
          }
       }
 
@@ -1516,13 +1466,12 @@ public class GuiGraphicsExtractor {
       public void pop() {
          if (this.stack.isEmpty()) {
             throw new IllegalStateException("Scissor stack underflow");
-         } else {
-            this.stack.removeLast();
          }
+
+         this.stack.removeLast();
       }
 
-      @Nullable
-      public ScreenRectangle peek() {
+      public @Nullable ScreenRectangle peek() {
          return this.stack.peekLast();
       }
 

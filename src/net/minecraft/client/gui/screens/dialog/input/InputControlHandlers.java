@@ -4,7 +4,6 @@ import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.function.Supplier;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.components.AbstractSliderButton;
@@ -38,8 +37,7 @@ public class InputControlHandlers {
       HANDLERS.put(type, handler);
    }
 
-   @Nullable
-   private static <T extends InputControl> InputControlHandler<T> get(final T inputControl) {
+   private static <T extends InputControl> @Nullable InputControlHandler<T> get(final T inputControl) {
       return (InputControlHandler<T>)HANDLERS.get(inputControl.mapCodec());
    }
 
@@ -64,10 +62,6 @@ public class InputControlHandlers {
          Font font = screen.getFont();
          final Checkbox control = Checkbox.builder(input.label(), font).selected(input.initial()).build();
          output.accept(control, new Action.ValueGetter() {
-            {
-               Objects.requireNonNull(BooleanHandler.this);
-            }
-
             @Override
             public String asTemplateSubstitution() {
                return control.selected() ? input.onTrue() : input.onFalse();
@@ -84,12 +78,8 @@ public class InputControlHandlers {
    private static class NumberRangeHandler implements InputControlHandler<NumberRangeInput> {
       public void addControl(final NumberRangeInput input, final Screen screen, final InputControlHandler.Output output) {
          float initialValue = input.rangeInfo().initialSliderValue();
-         final InputControlHandlers.NumberRangeHandler.SliderImpl control = new InputControlHandlers.NumberRangeHandler.SliderImpl(input, (double)initialValue);
+         final InputControlHandlers.NumberRangeHandler.SliderImpl control = new InputControlHandlers.NumberRangeHandler.SliderImpl(input, initialValue);
          output.accept(control, new Action.ValueGetter() {
-            {
-               Objects.requireNonNull(NumberRangeHandler.this);
-            }
-
             @Override
             public String asTemplateSubstitution() {
                return control.stringValueToSend();
@@ -141,7 +131,7 @@ public class InputControlHandlers {
 
          private static String valueToString(final float v) {
             int intV = (int)v;
-            return (float)intV == v ? Integer.toString(intV) : Float.toString(v);
+            return intV == v ? Integer.toString(intV) : Float.toString(v);
          }
       }
    }
@@ -182,12 +172,8 @@ public class InputControlHandlers {
             getter = editBox::getValue;
          }
 
-         LayoutElement wrappedControl = (LayoutElement)(input.labelVisible() ? CommonLayouts.labeledElement(font, control, input.label()) : control);
+         LayoutElement wrappedControl = input.labelVisible() ? CommonLayouts.labeledElement(font, control, input.label()) : control;
          output.accept(wrappedControl, new Action.ValueGetter() {
-            {
-               Objects.requireNonNull(TextInputHandler.this);
-            }
-
             @Override
             public String asTemplateSubstitution() {
                return StringTag.escapeWithoutQuotes(getter.get());

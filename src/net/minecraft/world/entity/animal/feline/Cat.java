@@ -86,10 +86,8 @@ public class Cat extends TamableAnimal {
    private static final EntityDimensions BABY_DIMENSIONS = EntityDimensions.scalable(0.3F, 0.35F)
       .withEyeHeight(0.34375F)
       .withAttachments(EntityAttachments.builder().attach(EntityAttachment.PASSENGER, 0.0F, 0.3125F, 0.0F));
-   @Nullable
-   private Cat.CatAvoidEntityGoal<Player> avoidPlayersGoal;
-   @Nullable
-   private TemptGoal temptGoal;
+   private Cat.@Nullable CatAvoidEntityGoal<Player> avoidPlayersGoal;
+   private @Nullable TemptGoal temptGoal;
    private float lieDownAmount;
    private float lieDownAmountO;
    private float lieDownAmountTail;
@@ -143,9 +141,8 @@ public class Cat extends TamableAnimal {
       return this.isBaby() ? this.getSoundVariant().value().babySounds() : this.getSoundVariant().value().adultSounds();
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       if (type == DataComponents.CAT_VARIANT) {
          return castComponentValue((DataComponentType<T>)type, this.getVariant());
       } else if (type == DataComponents.CAT_SOUND_VARIANT) {
@@ -254,9 +251,8 @@ public class Cat extends TamableAnimal {
       }
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getAmbientSound() {
+   protected @Nullable SoundEvent getAmbientSound() {
       if (this.isTame()) {
          if (this.isInLove()) {
             return this.getSoundSet().purrSound().value();
@@ -368,8 +364,7 @@ public class Cat extends TamableAnimal {
       return Mth.lerp(a, this.relaxStateOneAmountO, this.relaxStateOneAmount);
    }
 
-   @Nullable
-   public Cat getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable Cat getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       Cat baby = EntityTypes.CAT.create(level, EntitySpawnReason.BREEDING);
       if (baby != null && partner instanceof Cat partnerCat) {
          if (this.random.nextBoolean()) {
@@ -399,9 +394,8 @@ public class Cat extends TamableAnimal {
       }
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       groupData = super.finalizeSpawn(level, difficulty, spawnReason, groupData);
@@ -524,10 +518,8 @@ public class Cat extends TamableAnimal {
 
    private static class CatRelaxOnOwnerGoal extends Goal {
       private final Cat cat;
-      @Nullable
-      private Player ownerPlayer;
-      @Nullable
-      private BlockPos goalPos;
+      private @Nullable Player ownerPlayer;
+      private @Nullable BlockPos goalPos;
       private int onBedTicks;
 
       public CatRelaxOnOwnerGoal(final Cat cat) {
@@ -538,32 +530,34 @@ public class Cat extends TamableAnimal {
       public boolean canUse() {
          if (!this.cat.isTame()) {
             return false;
-         } else if (this.cat.isOrderedToSit()) {
-            return false;
-         } else {
-            LivingEntity owner = this.cat.getOwner();
-            if (owner instanceof Player playerOwner) {
-               this.ownerPlayer = playerOwner;
-               if (!owner.isSleeping()) {
-                  return false;
-               }
+         }
 
-               if (this.cat.distanceToSqr(this.ownerPlayer) > 100.0) {
-                  return false;
-               }
-
-               BlockPos ownerPos = this.ownerPlayer.blockPosition();
-               BlockState ownerPosState = this.cat.level().getBlockState(ownerPos);
-               if (ownerPosState.is(BlockTags.CATS_CAN_LIE_ON)) {
-                  this.goalPos = ownerPosState.getOptionalValue(BedBlock.FACING)
-                     .map(bedDir -> ownerPos.relative(bedDir.getOpposite()))
-                     .orElseGet(ownerPos::immutable);
-                  return !this.spaceIsOccupied();
-               }
-            }
-
+         if (this.cat.isOrderedToSit()) {
             return false;
          }
+
+         LivingEntity owner = this.cat.getOwner();
+         if (owner instanceof Player playerOwner) {
+            this.ownerPlayer = playerOwner;
+            if (!owner.isSleeping()) {
+               return false;
+            }
+
+            if (this.cat.distanceToSqr(this.ownerPlayer) > 100.0) {
+               return false;
+            }
+
+            BlockPos ownerPos = this.ownerPlayer.blockPosition();
+            BlockState ownerPosState = this.cat.level().getBlockState(ownerPos);
+            if (ownerPosState.is(BlockTags.CATS_CAN_LIE_ON)) {
+               this.goalPos = ownerPosState.getOptionalValue(BedBlock.FACING)
+                  .map(bedDir -> ownerPos.relative(bedDir.getOpposite()))
+                  .orElseGet(ownerPos::immutable);
+               return !this.spaceIsOccupied();
+            }
+         }
+
+         return false;
       }
 
       private boolean spaceIsOccupied() {
@@ -590,7 +584,7 @@ public class Cat extends TamableAnimal {
       public void start() {
          if (this.goalPos != null) {
             this.cat.setInSittingPose(false);
-            this.cat.getNavigation().moveTo((double)this.goalPos.getX(), (double)this.goalPos.getY(), (double)this.goalPos.getZ(), 1.1F);
+            this.cat.getNavigation().moveTo(this.goalPos.getX(), this.goalPos.getY(), this.goalPos.getZ(), 1.1F);
          }
       }
 
@@ -614,9 +608,9 @@ public class Cat extends TamableAnimal {
          catPos.set(this.cat.isLeashed() ? this.cat.getLeashHolder().blockPosition() : this.cat.blockPosition());
          this.cat
             .randomTeleport(
-               (double)(catPos.getX() + random.nextInt(11) - 5),
-               (double)(catPos.getY() + random.nextInt(5) - 2),
-               (double)(catPos.getZ() + random.nextInt(11) - 5),
+               catPos.getX() + random.nextInt(11) - 5,
+               catPos.getY() + random.nextInt(5) - 2,
+               catPos.getZ() + random.nextInt(11) - 5,
                false,
                BlockTags.CAT_DOES_NOT_TELEPORT_TO
             );
@@ -626,14 +620,14 @@ public class Cat extends TamableAnimal {
                getServerLevel(this.cat),
                BuiltInLootTables.CAT_MORNING_GIFT,
                (level, itemStack) -> level.addFreshEntity(
-                     new ItemEntity(
-                        level,
-                        (double)catPos.getX() - (double)Mth.sin((double)(this.cat.yBodyRot * (float) (Math.PI / 180.0))),
-                        (double)catPos.getY(),
-                        (double)catPos.getZ() + (double)Mth.cos((double)(this.cat.yBodyRot * (float) (Math.PI / 180.0))),
-                        itemStack
-                     )
+                  new ItemEntity(
+                     level,
+                     (double)catPos.getX() - Mth.sin(this.cat.yBodyRot * (float) (Math.PI / 180.0)),
+                     catPos.getY(),
+                     (double)catPos.getZ() + Mth.cos(this.cat.yBodyRot * (float) (Math.PI / 180.0)),
+                     itemStack
                   )
+               )
             );
       }
 
@@ -641,7 +635,7 @@ public class Cat extends TamableAnimal {
       public void tick() {
          if (this.ownerPlayer != null && this.goalPos != null) {
             this.cat.setInSittingPose(false);
-            this.cat.getNavigation().moveTo((double)this.goalPos.getX(), (double)this.goalPos.getY(), (double)this.goalPos.getZ(), 1.1F);
+            this.cat.getNavigation().moveTo(this.goalPos.getX(), this.goalPos.getY(), this.goalPos.getZ(), 1.1F);
             if (this.cat.distanceToSqr(this.ownerPlayer) < 2.5) {
                this.onBedTicks++;
                if (this.onBedTicks > this.adjustedTickDelay(16)) {
@@ -659,8 +653,7 @@ public class Cat extends TamableAnimal {
    }
 
    private static class CatTemptGoal extends TemptGoal {
-      @Nullable
-      private Player selectedPlayer;
+      private @Nullable Player selectedPlayer;
       private final Cat cat;
 
       public CatTemptGoal(final Cat mob, final double speedModifier, final Predicate<ItemStack> items, final boolean canScare) {

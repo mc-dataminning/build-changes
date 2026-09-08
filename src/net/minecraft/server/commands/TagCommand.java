@@ -50,10 +50,8 @@ public class TagCommand {
                                  Commands.argument("name", StringArgumentType.word())
                                     .executes(
                                        c -> addTag(
-                                             (CommandSourceStack)c.getSource(),
-                                             EntityArgument.getEntities(c, "targets"),
-                                             StringArgumentType.getString(c, "name")
-                                          )
+                                          (CommandSourceStack)c.getSource(), EntityArgument.getEntities(c, "targets"), StringArgumentType.getString(c, "name")
+                                       )
                                     )
                               )
                         ))
@@ -64,8 +62,8 @@ public class TagCommand {
                                  .suggests((c, p) -> SharedSuggestionProvider.suggest(getTags(EntityArgument.getEntities(c, "targets")), p))
                                  .executes(
                                     c -> removeTag(
-                                          (CommandSourceStack)c.getSource(), EntityArgument.getEntities(c, "targets"), StringArgumentType.getString(c, "name")
-                                       )
+                                       (CommandSourceStack)c.getSource(), EntityArgument.getEntities(c, "targets"), StringArgumentType.getString(c, "name")
+                                    )
                                  )
                            )
                      ))

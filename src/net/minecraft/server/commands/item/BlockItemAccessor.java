@@ -13,13 +13,12 @@ import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.slot.SlotCollection;
 import net.minecraft.world.item.slot.SlotSource;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jspecify.annotations.Nullable;
 
 public record BlockItemAccessor(BlockPos pos) implements ItemAccessor<BlockPos> {
    public static final ArgProvider.Factory<ItemAccessor<?>> PROVIDER = arg -> ArgProvider.create(
-         "block", () -> Commands.argument(arg, BlockPosArgument.blockPos()), c -> new BlockItemAccessor(BlockPosArgument.getLoadedBlockPos(c, arg))
-      );
+      "block", () -> Commands.argument(arg, BlockPosArgument.blockPos()), c -> new BlockItemAccessor(BlockPosArgument.getLoadedBlockPos(c, arg))
+   );
    private static final CommandResponseTracker.Messages<BlockPos> RESPONSE_SET = CommandResponseTracker.messages(
       ItemCommands.ERROR_TARGET_NO_CHANGES,
       (pos, slotCount) -> Component.translatable("commands.item.block.replace.success", slotCount, pos.getX(), pos.getY(), pos.getZ()),
@@ -28,8 +27,8 @@ public record BlockItemAccessor(BlockPos pos) implements ItemAccessor<BlockPos> 
    private static final CommandResponseTracker.MessagesWithArg<BlockPos, ItemStack> RESPONSE_SET_KNOWN_ITEM = CommandResponseTracker.messages(
       ItemCommands.ERROR_TARGET_NO_CHANGES_KNOWN_ITEM::create,
       (pos, slotCount, itemStack) -> Component.translatable(
-            "commands.item.block.replace.success.known_item", slotCount, pos.getX(), pos.getY(), pos.getZ(), itemStack.getDisplayName()
-         ),
+         "commands.item.block.replace.success.known_item", slotCount, pos.getX(), pos.getY(), pos.getZ(), itemStack.getDisplayName()
+      ),
       (var0, var1, var2) -> Component.empty()
    );
    private static final CommandResponseTracker.Messages<BlockPos> RESPONSE_MODIFY = CommandResponseTracker.messages(
@@ -55,7 +54,7 @@ public record BlockItemAccessor(BlockPos pos) implements ItemAccessor<BlockPos> 
    }
 
    @Override
-   public int getReplaceSuccess(final CommandSourceStack source, final CommandResponseTracker<BlockPos> tracker, @Nullable final ItemStack knownItem) throws CommandSyntaxException {
+   public int getReplaceSuccess(final CommandSourceStack source, final CommandResponseTracker<BlockPos> tracker, final @Nullable ItemStack knownItem) throws CommandSyntaxException {
       return knownItem != null ? tracker.sendFeedback(source, true, RESPONSE_SET_KNOWN_ITEM, knownItem) : tracker.sendFeedback(source, true, RESPONSE_SET);
    }
 
@@ -65,9 +64,8 @@ public record BlockItemAccessor(BlockPos pos) implements ItemAccessor<BlockPos> 
    }
 
    public static Container getContainer(final CommandSourceStack source, final BlockPos pos, final Dynamic3CommandExceptionType exceptionType) throws CommandSyntaxException {
-      BlockEntity entity = source.getLevel().getBlockEntity(pos);
-      if (entity instanceof Container) {
-         return (Container)entity;
+      if (source.getLevel().getBlockEntity(pos) instanceof Container container) {
+         return container;
       } else {
          throw exceptionType.create(pos.getX(), pos.getY(), pos.getZ());
       }

@@ -74,10 +74,10 @@ public interface ActiveTextCollector {
       int availableMessageWidth = right - left;
       if (lineWidth > availableMessageWidth) {
          int maxPosition = lineWidth - availableMessageWidth;
-         double time = (double)Util.getMillis() / 1000.0;
-         double period = Math.max((double)maxPosition * 0.5, 3.0);
+         double time = Util.getMillis() / 1000.0;
+         double period = Math.max(maxPosition * 0.5, 3.0);
          double alpha = Math.sin((Math.PI / 2) * Math.cos((Math.PI * 2) * time / period)) / 2.0 + 0.5;
-         double pos = Mth.lerp(alpha, 0.0, (double)maxPosition);
+         double pos = Mth.lerp(alpha, 0.0, maxPosition);
          ActiveTextCollector.Parameters localParameters = parameters.withScissor(left, right, top, bottom);
          this.accept(TextAlignment.LEFT, left - (int)pos, textTop, localParameters, message.getVisualOrderText());
       } else {
@@ -121,15 +121,14 @@ public interface ActiveTextCollector {
       return x >= left && x < right && y >= top && y < bottom;
    }
 
-   public static class ClickableStyleFinder implements ActiveTextCollector {
+   class ClickableStyleFinder implements ActiveTextCollector {
       private static final ActiveTextCollector.Parameters INITIAL = new ActiveTextCollector.Parameters(new Matrix3x2f());
       private final Font font;
       private final int testX;
       private final int testY;
       private ActiveTextCollector.Parameters defaultParameters = INITIAL;
       private boolean includeInsertions;
-      @Nullable
-      private Style result;
+      private @Nullable Style result;
       private final Consumer<Style> styleScanner = style -> {
          if (style.getClickEvent() != null || this.includeInsertions && style.getInsertion() != null) {
             this.result = style;
@@ -160,7 +159,7 @@ public interface ActiveTextCollector {
          GuiTextRenderState renderState = new GuiTextRenderState(
             this.font, text, parameters.pose(), leftX, y, ARGB.white(parameters.opacity()), 0, true, true, parameters.scissor()
          );
-         ActiveTextCollector.findElementUnderCursor(renderState, (float)this.testX, (float)this.testY, this.styleScanner);
+         ActiveTextCollector.findElementUnderCursor(renderState, this.testX, this.testY, this.styleScanner);
       }
 
       @Override
@@ -183,13 +182,12 @@ public interface ActiveTextCollector {
          return this;
       }
 
-      @Nullable
-      public Style result() {
+      public @Nullable Style result() {
          return this.result;
       }
    }
 
-   public static record Parameters(Matrix3x2fc pose, float opacity, @Nullable ScreenRectangle scissor) {
+   record Parameters(Matrix3x2fc pose, float opacity, @Nullable ScreenRectangle scissor) {
       public Parameters(final Matrix3x2fc pose) {
          this(pose, 1.0F, null);
       }

@@ -11,7 +11,7 @@ public record Cooldown() implements RangeSelectItemModelProperty {
    public static final MapCodec<Cooldown> MAP_CODEC = MapCodec.unit(new Cooldown());
 
    @Override
-   public float get(final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final ItemOwner owner, final int seed) {
+   public float get(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable ItemOwner owner, final int seed) {
       return owner != null && owner.asLivingEntity() instanceof Player player ? player.getCooldowns().getCooldownPercent(itemStack, 0.0F) : 0.0F;
    }
 

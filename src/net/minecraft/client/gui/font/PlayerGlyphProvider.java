@@ -7,7 +7,6 @@ import com.mojang.blaze3d.font.GlyphInfo;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.renderpearl.api.pipeline.RenderPipeline;
 import com.mojang.renderpearl.api.textures.GpuTextureView;
-import java.util.Objects;
 import java.util.function.Supplier;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GlyphSource;
@@ -25,19 +24,11 @@ public class PlayerGlyphProvider {
       .expireAfterAccess(PlayerSkinRenderCache.CACHE_DURATION)
       .build(
          new CacheLoader<FontDescription.PlayerSprite, GlyphSource>() {
-            {
-               Objects.requireNonNull(PlayerGlyphProvider.this);
-            }
-
             public GlyphSource load(final FontDescription.PlayerSprite playerInfo) {
                final Supplier<PlayerSkinRenderCache.RenderInfo> skin = PlayerGlyphProvider.this.playerSkinRenderCache.createLookup(playerInfo.profile());
                final boolean hat = playerInfo.hat();
                return new SingleSpriteSource(
                   new BakedGlyph() {
-                     {
-                        Objects.requireNonNull(<VAR_NAMELESS_ENCLOSURE>);
-                     }
-
                      @Override
                      public GlyphInfo info() {
                         return PlayerGlyphProvider.GLYPH_INFO;
@@ -69,7 +60,7 @@ public class PlayerGlyphProvider {
       return (GlyphSource)this.wrapperCache.getUnchecked(playerInfo);
    }
 
-   private static record Instance(
+   private record Instance(
       Supplier<PlayerSkinRenderCache.RenderInfo> skin, boolean hat, float x, float y, int color, int shadowColor, float shadowOffset, Style style
    ) implements PlainTextRenderable {
       @Override
@@ -109,10 +100,10 @@ public class PlayerGlyphProvider {
          final int textureWidth,
          final int textureHeight
       ) {
-         float u0 = (u + 0.0F) / (float)textureWidth;
-         float u1 = (u + (float)srcWidth) / (float)textureWidth;
-         float v0 = (v + 0.0F) / (float)textureHeight;
-         float v1 = (v + (float)srcHeight) / (float)textureHeight;
+         float u0 = (u + 0.0F) / textureWidth;
+         float u1 = (u + srcWidth) / textureWidth;
+         float v0 = (v + 0.0F) / textureHeight;
+         float v1 = (v + srcHeight) / textureHeight;
          buffer.addVertex(pose, x0, y0, z).setUv(u0, v0).setColor(color).setLight(packedLightCoords);
          buffer.addVertex(pose, x0, y1, z).setUv(u0, v1).setColor(color).setLight(packedLightCoords);
          buffer.addVertex(pose, x1, y1, z).setUv(u1, v1).setColor(color).setLight(packedLightCoords);

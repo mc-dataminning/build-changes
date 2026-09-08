@@ -20,10 +20,10 @@ import net.minecraft.world.entity.Entity;
 public record SelectorContents(CompilableString<EntitySelector> selector, Optional<Component> separator) implements ComponentContents {
    public static final MapCodec<SelectorContents> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               EntitySelector.COMPILABLE_CODEC.fieldOf("selector").forGetter(SelectorContents::selector),
-               ComponentSerialization.CODEC.optionalFieldOf("separator").forGetter(SelectorContents::separator)
-            )
-            .apply(i, SelectorContents::new)
+            EntitySelector.COMPILABLE_CODEC.fieldOf("selector").forGetter(SelectorContents::selector),
+            ComponentSerialization.CODEC.optionalFieldOf("separator").forGetter(SelectorContents::separator)
+         )
+         .apply(i, SelectorContents::new)
    );
 
    @Override
@@ -36,10 +36,10 @@ public record SelectorContents(CompilableString<EntitySelector> selector, Option
       CommandSourceStack source = context.source();
       if (source == null) {
          return Component.empty();
-      } else {
-         Optional<? extends Component> resolvedSeparator = ComponentUtils.resolve(context, this.separator, recursionDepth);
-         return ComponentUtils.formatList(this.selector.compiled().findEntities(source), resolvedSeparator, Entity::getDisplayName);
       }
+
+      Optional<? extends Component> resolvedSeparator = ComponentUtils.resolve(context, this.separator, recursionDepth);
+      return ComponentUtils.formatList(this.selector.compiled().findEntities(source), resolvedSeparator, Entity::getDisplayName);
    }
 
    @Override

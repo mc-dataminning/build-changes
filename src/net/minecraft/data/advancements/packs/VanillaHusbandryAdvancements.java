@@ -716,22 +716,22 @@ public class VanillaHusbandryAdvancements extends AdvancementSubProvider {
       this.sortedVariants(Registries.FROG_VARIANT)
          .forEach(
             frogVariant -> advancement.addCriterion(
-                  frogVariant.key().identifier().toString(),
-                  PlayerInteractTrigger.TriggerInstance.itemUsedOnEntity(
-                     ItemPredicate.Builder.item().of(this.items, Items.LEAD),
-                     Optional.of(
-                        EntityPredicate.wrap(
-                           EntityPredicate.Builder.entity()
-                              .of(this.entityTypes, EntityTypes.FROG)
-                              .components(
-                                 DataComponentMatchers.Builder.components()
-                                    .exact(DataComponentExactPredicate.expect(DataComponents.FROG_VARIANT, frogVariant))
-                                    .build()
-                              )
-                        )
+               frogVariant.key().identifier().toString(),
+               PlayerInteractTrigger.TriggerInstance.itemUsedOnEntity(
+                  ItemPredicate.Builder.item().of(this.items, Items.LEAD),
+                  Optional.of(
+                     EntityPredicate.wrap(
+                        EntityPredicate.Builder.entity()
+                           .of(this.entityTypes, EntityTypes.FROG)
+                           .components(
+                              DataComponentMatchers.Builder.components()
+                                 .exact(DataComponentExactPredicate.expect(DataComponents.FROG_VARIANT, frogVariant))
+                                 .build()
+                           )
                      )
                   )
                )
+            )
          );
       return advancement;
    }
@@ -753,19 +753,19 @@ public class VanillaHusbandryAdvancements extends AdvancementSubProvider {
    ) {
       breedable.forEach(
          animal -> advancement.addCriterion(
-               EntityType.getKey((EntityType<?>)animal).toString(),
-               BredAnimalsTrigger.TriggerInstance.bredAnimals(EntityPredicate.Builder.entity().of(this.entityTypes, (EntityType<?>)animal))
-            )
+            EntityType.getKey((EntityType<?>)animal).toString(),
+            BredAnimalsTrigger.TriggerInstance.bredAnimals(EntityPredicate.Builder.entity().of(this.entityTypes, (EntityType<?>)animal))
+         )
       );
       indirectlyBreedable.forEach(
          animal -> advancement.addCriterion(
-               EntityType.getKey((EntityType<?>)animal).toString(),
-               BredAnimalsTrigger.TriggerInstance.bredAnimals(
-                  Optional.of(EntityPredicate.Builder.entity().of(this.entityTypes, (EntityType<?>)animal).build()),
-                  Optional.of(EntityPredicate.Builder.entity().of(this.entityTypes, (EntityType<?>)animal).build()),
-                  Optional.empty()
-               )
+            EntityType.getKey((EntityType<?>)animal).toString(),
+            BredAnimalsTrigger.TriggerInstance.bredAnimals(
+               Optional.of(EntityPredicate.Builder.entity().of(this.entityTypes, (EntityType<?>)animal).build()),
+               Optional.of(EntityPredicate.Builder.entity().of(this.entityTypes, (EntityType<?>)animal).build()),
+               Optional.empty()
             )
+         )
       );
       return advancement;
    }
@@ -798,11 +798,11 @@ public class VanillaHusbandryAdvancements extends AdvancementSubProvider {
       this.sortedVariants(Registries.CAT_VARIANT)
          .forEach(
             v -> advancement.addCriterion(
-                  v.key().identifier().toString(),
-                  TameAnimalTrigger.TriggerInstance.tamedAnimal(
-                     EntityPredicate.Builder.entity().components(DataComponentExactPredicate.expect(DataComponents.CAT_VARIANT, v))
-                  )
+               v.key().identifier().toString(),
+               TameAnimalTrigger.TriggerInstance.tamedAnimal(
+                  EntityPredicate.Builder.entity().components(DataComponentExactPredicate.expect(DataComponents.CAT_VARIANT, v))
                )
+            )
          );
       return advancement;
    }
@@ -811,11 +811,11 @@ public class VanillaHusbandryAdvancements extends AdvancementSubProvider {
       this.sortedVariants(Registries.WOLF_VARIANT)
          .forEach(
             v -> advancement.addCriterion(
-                  v.key().identifier().toString(),
-                  TameAnimalTrigger.TriggerInstance.tamedAnimal(
-                     EntityPredicate.Builder.entity().components(DataComponentExactPredicate.expect(DataComponents.WOLF_VARIANT, v))
-                  )
+               v.key().identifier().toString(),
+               TameAnimalTrigger.TriggerInstance.tamedAnimal(
+                  EntityPredicate.Builder.entity().components(DataComponentExactPredicate.expect(DataComponents.WOLF_VARIANT, v))
                )
+            )
          );
       return advancement;
    }

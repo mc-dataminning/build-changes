@@ -17,7 +17,7 @@ public enum SimpleDensityFunction implements DensityFunction {
    private final String id;
    private final MapCodec<SimpleDensityFunction> codec = MapCodec.unit(this);
 
-   private SimpleDensityFunction(final String id) {
+   SimpleDensityFunction(final String id) {
       this.id = id;
    }
 
@@ -44,9 +44,8 @@ public enum SimpleDensityFunction implements DensityFunction {
       };
    }
 
-   @DensityFunction.Axes
    @Override
-   public int domainAxes() {
+   public @DensityFunction.Axes int domainAxes() {
       return switch (this) {
          case BLEND_ALPHA, BLEND_OFFSET -> 5;
          case BEARDIFIER -> 7;

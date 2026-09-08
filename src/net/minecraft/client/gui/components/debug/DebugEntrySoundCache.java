@@ -17,9 +17,9 @@ public class DebugEntrySoundCache implements DebugScreenEntry {
    @Override
    public void display(
       final DebugScreenDisplayer displayer,
-      @Nullable final Level serverOrClientLevel,
-      @Nullable final LevelChunk clientChunk,
-      @Nullable final LevelChunk serverChunk
+      final @Nullable Level serverOrClientLevel,
+      final @Nullable LevelChunk clientChunk,
+      final @Nullable LevelChunk serverChunk
    ) {
       SoundBufferLibrary.DebugOutput.Counter counter = new SoundBufferLibrary.DebugOutput.Counter();
       Minecraft.getInstance().getSoundManager().getSoundCacheDebugStats(counter);
@@ -27,6 +27,6 @@ public class DebugEntrySoundCache implements DebugScreenEntry {
    }
 
    private static long bytesToMegabytes(final long used) {
-      return Mth.ceilLong((double)used / 1024.0 / 1024.0);
+      return Mth.ceilLong(used / 1024.0 / 1024.0);
    }
 }

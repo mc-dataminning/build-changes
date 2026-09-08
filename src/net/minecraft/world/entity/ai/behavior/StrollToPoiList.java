@@ -19,30 +19,27 @@ public class StrollToPoiList {
       MutableLong nextOkStartTime = new MutableLong(0L);
       return BehaviorBuilder.create(
          i -> i.group(i.registered(MemoryModuleType.WALK_TARGET), i.present(strollToMemoryType), i.present(mustBeCloseToMemoryType))
-               .apply(
-                  i,
-                  (walkTarget, strollToMemory, mustBeCloseToMemory) -> (level, body, timestamp) -> {
-                        List<GlobalPos> strollTo = i.get(strollToMemory);
-                        GlobalPos stayCloseTo = i.get(mustBeCloseToMemory);
-                        if (strollTo.isEmpty()) {
-                           return false;
-                        } else {
-                           GlobalPos targetPos = strollTo.get(level.getRandom().nextInt(strollTo.size()));
-                           if (targetPos != null
-                              && level.dimension() == targetPos.dimension()
-                              && stayCloseTo.pos().closerToCenterThan(body.position(), (double)maxDistanceFromPoi)) {
-                              if (timestamp > nextOkStartTime.longValue()) {
-                                 walkTarget.set(new WalkTarget(targetPos.pos(), speedModifier, closeEnoughDist));
-                                 nextOkStartTime.setValue(timestamp + 100L);
-                              }
+            .apply(i, (walkTarget, strollToMemory, mustBeCloseToMemory) -> (level, body, timestamp) -> {
+               List<GlobalPos> strollTo = i.get(strollToMemory);
+               GlobalPos stayCloseTo = i.get(mustBeCloseToMemory);
+               if (strollTo.isEmpty()) {
+                  return false;
+               }
 
-                              return true;
-                           } else {
-                              return false;
-                           }
-                        }
-                     }
-               )
+               GlobalPos targetPos = strollTo.get(level.getRandom().nextInt(strollTo.size()));
+               if (targetPos != null && level.dimension() == targetPos.dimension() && stayCloseTo.pos().closerToCenterThan(body.position(), maxDistanceFromPoi)
+                  )
+                {
+                  if (timestamp > nextOkStartTime.longValue()) {
+                     walkTarget.set(new WalkTarget(targetPos.pos(), speedModifier, closeEnoughDist));
+                     nextOkStartTime.setValue(timestamp + 100L);
+                  }
+
+                  return true;
+               } else {
+                  return false;
+               }
+            })
       );
    }
 }

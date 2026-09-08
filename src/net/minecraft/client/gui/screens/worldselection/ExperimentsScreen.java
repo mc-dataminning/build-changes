@@ -32,8 +32,7 @@ public class ExperimentsScreen extends Screen {
    private final PackRepository packRepository;
    private final Consumer<PackRepository> output;
    private final Object2BooleanMap<Pack> packs = new Object2BooleanLinkedOpenHashMap();
-   @Nullable
-   private ScrollableLayout scrollArea;
+   private @Nullable ScrollableLayout scrollArea;
 
    public ExperimentsScreen(final Screen parent, final PackRepository packRepository, final Consumer<PackRepository> output) {
       super(TITLE);
@@ -57,9 +56,9 @@ public class ExperimentsScreen extends Screen {
       this.packs
          .forEach(
             (pack, selected) -> switchGridBuilder.addSwitch(
-                     getHumanReadableTitle(pack), () -> this.packs.getBoolean(pack), newSelected -> this.packs.put(pack, newSelected)
-                  )
-                  .withInfo(pack.getDescription())
+                  getHumanReadableTitle(pack), () -> this.packs.getBoolean(pack), newSelected -> this.packs.put(pack, newSelected)
+               )
+               .withInfo(pack.getDescription())
          );
       Layout switchGridLayout = switchGridBuilder.build().layout();
       this.scrollArea = new ScrollableLayout(this.minecraft, switchGridLayout, 130);
@@ -74,7 +73,7 @@ public class ExperimentsScreen extends Screen {
 
    private static Component getHumanReadableTitle(final Pack pack) {
       String translationKey = "dataPack." + pack.getId() + ".name";
-      return (Component)(Language.getInstance().has(translationKey) ? Component.translatable(translationKey) : pack.getTitle());
+      return Language.getInstance().has(translationKey) ? Component.translatable(translationKey) : pack.getTitle();
    }
 
    @Override

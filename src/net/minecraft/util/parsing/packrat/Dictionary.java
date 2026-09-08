@@ -14,10 +14,10 @@ public class Dictionary<S> {
       Dictionary.Entry<S, T> holder = (Dictionary.Entry<S, T>)this.terms.computeIfAbsent(name, Dictionary.Entry::new);
       if (holder.value != null) {
          throw new IllegalArgumentException("Trying to override rule: " + name);
-      } else {
-         holder.value = entry;
-         return holder;
       }
+
+      holder.value = entry;
+      return holder;
    }
 
    public <T> NamedRule<S, T> putComplex(final Atom<T> name, final Term<S> term, final Rule.RuleAction<S, T> action) {
@@ -57,8 +57,7 @@ public class Dictionary<S> {
 
    private static class Entry<S, T> implements NamedRule<S, T>, Supplier<String> {
       private final Atom<T> name;
-      @Nullable
-      private Rule<S, T> value;
+      private @Nullable Rule<S, T> value;
 
       private Entry(final Atom<T> name) {
          this.name = name;
@@ -79,16 +78,16 @@ public class Dictionary<S> {
       }
    }
 
-   private static record Reference<S, T>(Dictionary.Entry<S, T> ruleToParse, Atom<T> nameToStore) implements Term<S> {
+   private record Reference<S, T>(Dictionary.Entry<S, T> ruleToParse, Atom<T> nameToStore) implements Term<S> {
       @Override
       public boolean parse(final ParseState<S> state, final Scope scope, final Control control) {
          T result = state.parse(this.ruleToParse);
          if (result == null) {
             return false;
-         } else {
-            scope.put(this.nameToStore, result);
-            return true;
          }
+
+         scope.put(this.nameToStore, result);
+         return true;
       }
    }
 }

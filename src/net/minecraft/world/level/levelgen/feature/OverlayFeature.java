@@ -16,7 +16,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 public record OverlayFeature(HolderSet<PlacedFeature> features) implements Feature {
    public static final MapCodec<OverlayFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(ExtraCodecs.nonEmptyHolderSet(PlacedFeature.LIST_CODEC).fieldOf("features").forGetter(OverlayFeature::features))
-            .apply(i, OverlayFeature::new)
+         .apply(i, OverlayFeature::new)
    );
 
    @Override

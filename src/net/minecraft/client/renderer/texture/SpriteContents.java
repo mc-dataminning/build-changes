@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.IntStream;
 import net.minecraft.CrashReport;
@@ -40,6 +39,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.metadata.MetadataSectionType;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 
 public class SpriteContents implements AutoCloseable, Stitcher.Entry {
@@ -50,7 +50,7 @@ public class SpriteContents implements AutoCloseable, Stitcher.Entry {
    private final int height;
    private final NativeImage originalImage;
    private NativeImage[] byMipLevel;
-   private final SpriteContents.AnimatedTexture animatedTexture;
+   private final SpriteContents.@Nullable AnimatedTexture animatedTexture;
    private final List<MetadataSectionType.WithValue<?>> additionalMetadata;
    private final MipmapStrategy mipmapStrategy;
    private final float alphaCutoffBias;
@@ -86,8 +86,8 @@ public class SpriteContents implements AutoCloseable, Stitcher.Entry {
    public void increaseMipLevel(final int mipLevel) {
       try {
          this.byMipLevel = MipmapGenerator.generateMipLevels(this.name, this.byMipLevel, mipLevel, this.mipmapStrategy, this.alphaCutoffBias, this.transparency);
-      } catch (Throwable var5) {
-         CrashReport report = CrashReport.forThrowable(var5, "Generating mipmaps for frame");
+      } catch (Throwable t) {
+         CrashReport report = CrashReport.forThrowable(t, "Generating mipmaps for frame");
          CrashReportCategory frameCategory = report.addCategory("Frame being iterated");
          frameCategory.setDetail("Sprite name", this.name);
          frameCategory.setDetail("Sprite size", () -> this.width + " x " + this.height);
@@ -110,7 +110,7 @@ public class SpriteContents implements AutoCloseable, Stitcher.Entry {
       return this.transparency;
    }
 
-   private SpriteContents.AnimatedTexture createAnimatedTexture(
+   private SpriteContents.@Nullable AnimatedTexture createAnimatedTexture(
       final FrameSize frameSize, final int fullWidth, final int fullHeight, final AnimationMetadataSection metadata
    ) {
       int frameRowSize = fullWidth / frameSize.width();
@@ -183,7 +183,7 @@ public class SpriteContents implements AutoCloseable, Stitcher.Entry {
       return this.animatedTexture != null ? this.animatedTexture.getUniqueFrames() : IntList.of(1);
    }
 
-   public SpriteContents.AnimationState createAnimationState(final GpuBufferSlice uboSlice, final int spriteUboSize) {
+   public SpriteContents.@Nullable AnimationState createAnimationState(final GpuBufferSlice uboSlice, final int spriteUboSize) {
       return this.animatedTexture != null ? this.animatedTexture.createAnimationState(uboSlice, spriteUboSize) : null;
    }
 
@@ -214,8 +214,8 @@ public class SpriteContents implements AutoCloseable, Stitcher.Entry {
       int actualX = x;
       int actualY = y;
       if (this.animatedTexture != null) {
-         actualX = x + this.animatedTexture.getFrameX(frame) * this.width;
-         actualY = y + this.animatedTexture.getFrameY(frame) * this.height;
+         actualX += this.animatedTexture.getFrameX(frame) * this.width;
+         actualY += this.animatedTexture.getFrameY(frame) * this.height;
       }
 
       return ARGB.alpha(this.originalImage.getPixel(actualX, actualY)) == 0;
@@ -224,29 +224,31 @@ public class SpriteContents implements AutoCloseable, Stitcher.Entry {
    public Transparency computeTransparency(final float u0, final float v0, final float u1, final float v1) {
       if (this.transparency.isOpaque()) {
          return this.transparency;
-      } else if (u0 == 0.0F && v0 == 0.0F && u1 == 1.0F && v1 == 1.0F) {
-         return this.transparency;
-      } else {
-         int x0 = Mth.floor(u0 * (float)this.width);
-         int y0 = Mth.floor(v0 * (float)this.height);
-         int x1 = Mth.ceil(u1 * (float)this.width);
-         int y1 = Mth.ceil(v1 * (float)this.height);
-         if (this.animatedTexture == null) {
-            return this.originalImage.computeTransparency(x0, y0, x1, y1);
-         } else {
-            IntList uniqueFrames = this.animatedTexture.uniqueFrames;
-            Transparency transparency = Transparency.NONE;
-
-            for (int i = 0; i < uniqueFrames.size(); i++) {
-               int frame = uniqueFrames.getInt(i);
-               int frameX = this.animatedTexture.getFrameX(frame) * this.width;
-               int frameY = this.animatedTexture.getFrameY(frame) * this.height;
-               transparency = transparency.or(this.originalImage.computeTransparency(frameX + x0, frameY + y0, frameX + x1, frameY + y1));
-            }
-
-            return transparency;
-         }
       }
+
+      if (u0 == 0.0F && v0 == 0.0F && u1 == 1.0F && v1 == 1.0F) {
+         return this.transparency;
+      }
+
+      int x0 = Mth.floor(u0 * this.width);
+      int y0 = Mth.floor(v0 * this.height);
+      int x1 = Mth.ceil(u1 * this.width);
+      int y1 = Mth.ceil(v1 * this.height);
+      if (this.animatedTexture == null) {
+         return this.originalImage.computeTransparency(x0, y0, x1, y1);
+      }
+
+      IntList uniqueFrames = this.animatedTexture.uniqueFrames;
+      Transparency transparency = Transparency.NONE;
+
+      for (int i = 0; i < uniqueFrames.size(); i++) {
+         int frame = uniqueFrames.getInt(i);
+         int frameX = this.animatedTexture.getFrameX(frame) * this.width;
+         int frameY = this.animatedTexture.getFrameY(frame) * this.height;
+         transparency = transparency.or(this.originalImage.computeTransparency(frameX + x0, frameY + y0, frameX + x1, frameY + y1));
+      }
+
+      return transparency;
    }
 
    public void uploadFirstFrame(final GpuTexture destination, final int level) {
@@ -260,8 +262,6 @@ public class SpriteContents implements AutoCloseable, Stitcher.Entry {
       private final boolean interpolateFrames;
 
       private AnimatedTexture(final List<SpriteContents.FrameInfo> frames, final int frameRowSize, final boolean interpolateFrames) {
-         Objects.requireNonNull(SpriteContents.this);
-         super();
          this.frames = frames;
          this.frameRowSize = frameRowSize;
          this.interpolateFrames = interpolateFrames;
@@ -319,7 +319,7 @@ public class SpriteContents implements AutoCloseable, Stitcher.Entry {
          }
 
          for (int level = 0; level < SpriteContents.this.byMipLevel.length; level++) {
-            spriteUbosByMip[level] = uboSlice.slice((long)(level * spriteUboSize), (long)spriteUboSize);
+            spriteUbosByMip[level] = uboSlice.slice(level * spriteUboSize, spriteUboSize);
          }
 
          return SpriteContents.this.new AnimationState(this, frameTexturesByIndex, spriteUbosByMip);
@@ -336,14 +336,11 @@ public class SpriteContents implements AutoCloseable, Stitcher.Entry {
       private final SpriteContents.AnimatedTexture animationInfo;
       private final Int2ObjectMap<GpuTextureView> frameTexturesByIndex;
       private final GpuBufferSlice[] spriteUbosByMip;
-      private boolean isDirty;
+      private boolean isDirty = true;
 
       private AnimationState(
          final SpriteContents.AnimatedTexture animationInfo, final Int2ObjectMap<GpuTextureView> frameTexturesByIndex, final GpuBufferSlice[] spriteUbosByMip
       ) {
-         Objects.requireNonNull(SpriteContents.this);
-         super();
-         this.isDirty = true;
          this.animationInfo = animationInfo;
          this.frameTexturesByIndex = frameTexturesByIndex;
          this.spriteUbosByMip = spriteUbosByMip;
@@ -376,7 +373,7 @@ public class SpriteContents implements AutoCloseable, Stitcher.Entry {
          GpuSampler sampler = RenderSystem.getSamplerCache().getClampToEdge(FilterMode.NEAREST, true);
          List<SpriteContents.FrameInfo> frames = this.animationInfo.frames;
          int oldFrame = frames.get(this.frame).index;
-         float frameProgress = (float)this.subFrame / (float)this.animationInfo.frames.get(this.frame).time;
+         float frameProgress = (float)this.subFrame / this.animationInfo.frames.get(this.frame).time;
          int frameProgressAsInt = (int)(frameProgress * 1000.0F);
          if (this.animationInfo.interpolateFrames) {
             int newFrame = frames.get((this.frame + 1) % frames.size()).index;
@@ -404,6 +401,6 @@ public class SpriteContents implements AutoCloseable, Stitcher.Entry {
       }
    }
 
-   private static record FrameInfo(int index, int time) {
+   private record FrameInfo(int index, int time) {
    }
 }

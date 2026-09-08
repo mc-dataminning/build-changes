@@ -18,14 +18,14 @@ public interface CollectionContentsPredicate<T, P extends Predicate<T>> extends 
    }
 
    static <T, P extends Predicate<T>> CollectionContentsPredicate<T, P> of(final List<P> predicates) {
-      return (CollectionContentsPredicate<T, P>)(switch (predicates.size()) {
+      return switch (predicates.size()) {
          case 0 -> new CollectionContentsPredicate.Zero();
          case 1 -> new CollectionContentsPredicate.Single(predicates.getFirst());
          default -> new CollectionContentsPredicate.Multiple(predicates);
-      });
+      };
    }
 
-   public static record Multiple<T, P extends Predicate<T>>(List<P> tests) implements CollectionContentsPredicate<T, P> {
+   record Multiple<T, P extends Predicate<T>>(List<P> tests) implements CollectionContentsPredicate<T, P> {
       public boolean test(final Iterable<? extends T> values) {
          List<Predicate<T>> testsToMatch = new ArrayList<>(this.tests);
 
@@ -45,7 +45,7 @@ public interface CollectionContentsPredicate<T, P extends Predicate<T>> extends 
       }
    }
 
-   public static record Single<T, P extends Predicate<T>>(P test) implements CollectionContentsPredicate<T, P> {
+   record Single<T, P extends Predicate<T>>(P test) implements CollectionContentsPredicate<T, P> {
       public boolean test(final Iterable<? extends T> values) {
          for (T value : values) {
             if (this.test.test(value)) {
@@ -62,7 +62,7 @@ public interface CollectionContentsPredicate<T, P extends Predicate<T>> extends 
       }
    }
 
-   public static class Zero<T, P extends Predicate<T>> implements CollectionContentsPredicate<T, P> {
+   class Zero<T, P extends Predicate<T>> implements CollectionContentsPredicate<T, P> {
       public boolean test(final Iterable<? extends T> values) {
          return true;
       }

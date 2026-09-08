@@ -42,10 +42,10 @@ public class SlotSourceArgument implements ArgumentType<SlotSourceArgument.Resul
       SlotRange slotRange = SlotRanges.tryRead(reader);
       if (slotRange != null) {
          return new SlotSourceArgument.LiteralResult(slotRange);
-      } else {
-         reader.setCursor(start);
-         return new SlotSourceArgument.HolderResult((Holder<SlotSource>)this.holderArgument.parse(reader));
       }
+
+      reader.setCursor(start);
+      return new SlotSourceArgument.HolderResult((Holder<SlotSource>)this.holderArgument.parse(reader));
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> contextBuilder, final SuggestionsBuilder builder) {
@@ -59,7 +59,7 @@ public class SlotSourceArgument implements ArgumentType<SlotSourceArgument.Resul
       return EXAMPLES;
    }
 
-   public static record HolderResult(Holder<SlotSource> holder) implements SlotSourceArgument.Result {
+   public record HolderResult(Holder<SlotSource> holder) implements SlotSourceArgument.Result {
       @Override
       public SlotSource value() {
          return this.holder.value();
@@ -71,7 +71,7 @@ public class SlotSourceArgument implements ArgumentType<SlotSourceArgument.Resul
       }
    }
 
-   public static record LiteralResult(SlotRange slotRange) implements SlotSourceArgument.Result {
+   public record LiteralResult(SlotRange slotRange) implements SlotSourceArgument.Result {
       @Override
       public SlotSource value() {
          return RangeSlotSource.slotRange(this.slotRange);

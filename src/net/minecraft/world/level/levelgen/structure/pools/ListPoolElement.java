@@ -28,10 +28,10 @@ public class ListPoolElement extends StructurePoolElement {
       super(projection);
       if (elements.isEmpty()) {
          throw new IllegalArgumentException("Elements are empty");
-      } else {
-         this.elements = elements;
-         this.setProjectionOnEachElement(projection);
       }
+
+      this.elements = elements;
+      this.setProjectionOnEachElement(projection);
    }
 
    @Override

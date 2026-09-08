@@ -37,8 +37,8 @@ public class ChainedJsonException extends IOException {
    }
 
    public static ChainedJsonException forException(final Exception e) {
-      if (e instanceof ChainedJsonException) {
-         return (ChainedJsonException)e;
+      if (e instanceof ChainedJsonException chainedJsonException) {
+         return chainedJsonException;
       } else {
          String message = e.getMessage();
          if (e instanceof FileNotFoundException) {
@@ -50,8 +50,7 @@ public class ChainedJsonException extends IOException {
    }
 
    public static class Entry {
-      @Nullable
-      private String filename;
+      private @Nullable String filename;
       private final List<String> jsonKeys = Lists.newArrayList();
 
       private Entry() {
@@ -61,8 +60,7 @@ public class ChainedJsonException extends IOException {
          this.jsonKeys.add(0, name);
       }
 
-      @Nullable
-      public String getFilename() {
+      public @Nullable String getFilename() {
          return this.filename;
       }
 

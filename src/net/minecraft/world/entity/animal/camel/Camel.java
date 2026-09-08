@@ -2,7 +2,6 @@ package net.minecraft.world.entity.animal.camel;
 
 import com.google.common.annotations.VisibleForTesting;
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
@@ -135,7 +134,7 @@ public class Camel extends AbstractHorse {
 
    @Override
    public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       CamelAi.initMemories(this, level.getRandom());
       this.resetLastPoseChangeTickToFullStand(level.getLevel().getGameTime());
@@ -304,13 +303,13 @@ public class Camel extends AbstractHorse {
 
    @Override
    protected void executeRidersJump(final float amount, final Vec3 input) {
-      double jumpMomentum = (double)this.getJumpPower();
+      double jumpMomentum = this.getJumpPower();
       this.addDeltaMovement(
          this.getLookAngle()
             .multiply(1.0, 0.0, 1.0)
             .normalize()
-            .scale((double)(22.2222F * amount) * this.getAttributeValue(Attributes.MOVEMENT_SPEED) * (double)this.getBlockSpeedFactor())
-            .add(0.0, (double)(1.4285F * amount) * jumpMomentum, 0.0)
+            .scale(22.2222F * amount * this.getAttributeValue(Attributes.MOVEMENT_SPEED) * this.getBlockSpeedFactor())
+            .add(0.0, 1.4285F * amount * jumpMomentum, 0.0)
       );
       this.dashCooldown = 55;
       this.setDashing(true);
@@ -394,7 +393,7 @@ public class Camel extends AbstractHorse {
             this.doPlayerRide(player);
             return InteractionResult.CONSUME;
          } else {
-            return (InteractionResult)(this.isBaby() && player.isHolding(Items.GOLDEN_DANDELION) ? super.mobInteract(player, hand) : InteractionResult.FAIL);
+            return this.isBaby() && player.isHolding(Items.GOLDEN_DANDELION) ? super.mobInteract(player, hand) : InteractionResult.FAIL;
          }
       }
    }
@@ -420,49 +419,49 @@ public class Camel extends AbstractHorse {
    protected boolean handleEating(final Player player, final ItemStack itemStack) {
       if (!this.isFood(itemStack)) {
          return false;
-      } else {
-         boolean couldHeal = this.getHealth() < this.getMaxHealth();
-         if (couldHeal) {
-            this.heal(2.0F);
-         }
+      }
 
-         boolean couldSetInLove = this.isTamed() && this.getAge() == 0 && this.canFallInLove();
-         if (couldSetInLove) {
-            this.setInLove(player);
-         }
+      boolean couldHeal = this.getHealth() < this.getMaxHealth();
+      if (couldHeal) {
+         this.heal(2.0F);
+      }
 
-         boolean couldAgeUp = this.canAgeUp();
-         if (couldAgeUp) {
-            this.level().addParticle(ParticleTypes.HAPPY_VILLAGER, this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
-            if (!this.level().isClientSide()) {
-               this.ageUp(10);
-            }
-         }
+      boolean couldSetInLove = this.isTamed() && this.getAge() == 0 && this.canFallInLove();
+      if (couldSetInLove) {
+         this.setInLove(player);
+      }
 
-         if (!couldHeal && !couldSetInLove && !couldAgeUp) {
-            return false;
-         } else {
-            if (!this.isSilent()) {
-               SoundEvent eatingSound = this.getEatingSound();
-               if (eatingSound != null) {
-                  this.level()
-                     .playSound(
-                        null,
-                        this.getX(),
-                        this.getY(),
-                        this.getZ(),
-                        eatingSound,
-                        this.getSoundSource(),
-                        1.0F,
-                        1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.2F
-                     );
-               }
-            }
-
-            this.gameEvent(GameEvent.EAT);
-            return true;
+      boolean couldAgeUp = this.canAgeUp();
+      if (couldAgeUp) {
+         this.level().addParticle(ParticleTypes.HAPPY_VILLAGER, this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
+         if (!this.level().isClientSide()) {
+            this.ageUp(10);
          }
       }
+
+      if (!couldHeal && !couldSetInLove && !couldAgeUp) {
+         return false;
+      }
+
+      if (!this.isSilent()) {
+         SoundEvent eatingSound = this.getEatingSound();
+         if (eatingSound != null) {
+            this.level()
+               .playSound(
+                  null,
+                  this.getX(),
+                  this.getY(),
+                  this.getZ(),
+                  eatingSound,
+                  this.getSoundSource(),
+                  1.0F,
+                  1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.2F
+               );
+         }
+      }
+
+      this.gameEvent(GameEvent.EAT);
+      return true;
    }
 
    @Override
@@ -472,15 +471,10 @@ public class Camel extends AbstractHorse {
 
    @Override
    public boolean canMate(final Animal partner) {
-      if (partner != this && partner instanceof Camel camel && this.canParent() && camel.canParent()) {
-         return true;
-      }
-
-      return false;
+      return partner != this && partner instanceof Camel camel && this.canParent() && camel.canParent();
    }
 
-   @Nullable
-   public Camel getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable Camel getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       return EntityTypes.CAMEL.create(level, EntitySpawnReason.BREEDING);
    }
 
@@ -511,7 +505,7 @@ public class Camel extends AbstractHorse {
          }
       }
 
-      return new Vec3(0.0, (double)height, (double)(offset * scale)).yRot(-this.getYRot() * (float) (Math.PI / 180.0));
+      return new Vec3(0.0, height, offset * scale).yRot(-this.getYRot() * (float) (Math.PI / 180.0));
    }
 
    @Override
@@ -521,7 +515,7 @@ public class Camel extends AbstractHorse {
 
    private double getBodyAnchorAnimationYOffset(final boolean isFront, final float partialTicks, final EntityDimensions dimensions, final float scale) {
       double ageSitYOffset = this.isBaby() ? 0.09375 : 0.375;
-      double baseSitOffset = (double)dimensions.height() - ageSitYOffset;
+      double baseSitOffset = dimensions.height() - ageSitYOffset;
       float sittingHeightDifference = scale * 1.43F;
       float verticalDrop = sittingHeightDifference - scale * 0.2F;
       float bottomPoint = sittingHeightDifference - verticalDrop;
@@ -539,19 +533,17 @@ public class Camel extends AbstractHorse {
             flexPointOffset = isFront ? 0.6F : 0.35F;
          }
 
-         float poseTime = Mth.clamp((float)this.getPoseTime() + partialTicks, 0.0F, (float)animationDuration);
-         boolean isFirstPart = poseTime < (float)halfPoint;
-         float part = isFirstPart ? poseTime / (float)halfPoint : (poseTime - (float)halfPoint) / (float)(animationDuration - halfPoint);
+         float poseTime = Mth.clamp((float)this.getPoseTime() + partialTicks, 0.0F, animationDuration);
+         boolean isFirstPart = poseTime < halfPoint;
+         float part = isFirstPart ? poseTime / halfPoint : (poseTime - halfPoint) / (animationDuration - halfPoint);
          float flexPoint = sittingHeightDifference - flexPointOffset * verticalDrop;
          baseSitOffset += isSitting
-            ? (double)Mth.lerp(part, isFirstPart ? sittingHeightDifference : flexPoint, isFirstPart ? flexPoint : bottomPoint)
-            : (double)Mth.lerp(
-               part, isFirstPart ? bottomPoint - sittingHeightDifference : bottomPoint - flexPoint, isFirstPart ? bottomPoint - flexPoint : 0.0F
-            );
+            ? Mth.lerp(part, isFirstPart ? sittingHeightDifference : flexPoint, isFirstPart ? flexPoint : bottomPoint)
+            : Mth.lerp(part, isFirstPart ? bottomPoint - sittingHeightDifference : bottomPoint - flexPoint, isFirstPart ? bottomPoint - flexPoint : 0.0F);
       }
 
       if (isSitting && !isInTransition) {
-         baseSitOffset += (double)bottomPoint;
+         baseSitOffset += bottomPoint;
       }
 
       return baseSitOffset;
@@ -561,9 +553,7 @@ public class Camel extends AbstractHorse {
    public Vec3 getLeashOffset(final float partialTicks) {
       EntityDimensions dimensions = this.getDimensions(this.getPose());
       float scale = this.getAgeScale();
-      return new Vec3(
-         0.0, this.getBodyAnchorAnimationYOffset(true, partialTicks, dimensions, scale) - (double)(0.2F * scale), (double)(dimensions.width() * 0.56F)
-      );
+      return new Vec3(0.0, this.getBodyAnchorAnimationYOffset(true, partialTicks, dimensions, scale) - 0.2F * scale, dimensions.width() * 0.56F);
    }
 
    @Override
@@ -586,7 +576,7 @@ public class Camel extends AbstractHorse {
 
    public boolean isInPoseTransition() {
       long poseTime = this.getPoseTime();
-      return poseTime < (long)(this.isCamelSitting() ? 40 : 52);
+      return poseTime < (this.isCamelSitting() ? 40 : 52);
    }
 
    private boolean isVisuallySittingDown() {
@@ -640,7 +630,7 @@ public class Camel extends AbstractHorse {
 
    @Override
    protected Holder<SoundEvent> getEquipSound(final EquipmentSlot slot, final ItemStack stack, final Equippable equippable) {
-      return (Holder<SoundEvent>)(slot == EquipmentSlot.SADDLE ? this.getSaddleSound() : super.getEquipSound(slot, stack, equippable));
+      return slot == EquipmentSlot.SADDLE ? this.getSaddleSound() : super.getEquipSound(slot, stack, equippable);
    }
 
    protected Holder.Reference<SoundEvent> getSaddleSound() {
@@ -675,7 +665,6 @@ public class Camel extends AbstractHorse {
 
    private class CamelBodyRotationControl extends BodyRotationControl {
       public CamelBodyRotationControl(final Camel camel) {
-         Objects.requireNonNull(Camel.this);
          super(camel);
       }
 
@@ -689,7 +678,6 @@ public class Camel extends AbstractHorse {
 
    private class CamelLookControl extends LookControl {
       private CamelLookControl() {
-         Objects.requireNonNull(Camel.this);
          super(Camel.this);
       }
 

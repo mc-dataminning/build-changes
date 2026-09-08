@@ -13,8 +13,7 @@ import org.jspecify.annotations.Nullable;
 
 public class NotificationManager implements NotificationService {
    private final List<NotificationService> notificationServices = Lists.newArrayList();
-   @Nullable
-   private DedicatedServer server;
+   private @Nullable DedicatedServer server;
 
    public void registerService(final NotificationService notificationService) {
       this.notificationServices.add(notificationService);
@@ -23,13 +22,12 @@ public class NotificationManager implements NotificationService {
    public void setServer(final DedicatedServer server) {
       if (this.server != null) {
          throw new IllegalStateException("Server already set");
-      } else {
-         this.server = server;
       }
+
+      this.server = server;
    }
 
-   @Nullable
-   public DedicatedServer server() {
+   public @Nullable DedicatedServer server() {
       return this.server;
    }
 

@@ -51,8 +51,7 @@ public class VariantSelector {
       };
    }
 
-   @Nullable
-   private static <T extends Comparable<T>> T getValueHelper(final Property<T> property, final String next) {
+   private static <T extends Comparable<T>> @Nullable T getValueHelper(final Property<T> property, final String next) {
       return property.getValue(next).orElse(null);
    }
 }

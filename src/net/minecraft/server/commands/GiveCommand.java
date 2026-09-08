@@ -26,11 +26,11 @@ public class GiveCommand {
    );
    private static final CommandResponseTracker.MessagesWithArgs<ServerPlayer, Integer, ItemStack> RESPONSE_GIVE = CommandResponseTracker.messages(
       (player, var1, count, prototypeItemStack) -> Component.translatable(
-            "commands.give.success.single", count, prototypeItemStack.getDisplayName(), player.getDisplayName()
-         ),
+         "commands.give.success.single", count, prototypeItemStack.getDisplayName(), player.getDisplayName()
+      ),
       (playerCount, var1, count, prototypeItemStack) -> Component.translatable(
-            "commands.give.success.multiple", count, prototypeItemStack.getDisplayName(), playerCount
-         )
+         "commands.give.success.multiple", count, prototypeItemStack.getDisplayName(), playerCount
+      )
    );
    public static final int MAX_ALLOWED_ITEMSTACKS = 100;
 
@@ -48,11 +48,11 @@ public class GiveCommand {
                            Commands.argument("count", IntegerArgumentType.integer(1))
                               .executes(
                                  c -> giveItem(
-                                       (CommandSourceStack)c.getSource(),
-                                       ItemArgument.getItem(c, "item"),
-                                       EntityArgument.getPlayers(c, "targets"),
-                                       IntegerArgumentType.getInteger(c, "count")
-                                    )
+                                    (CommandSourceStack)c.getSource(),
+                                    ItemArgument.getItem(c, "item"),
+                                    EntityArgument.getPlayers(c, "targets"),
+                                    IntegerArgumentType.getInteger(c, "count")
+                                 )
                               )
                         )
                   )
@@ -67,48 +67,48 @@ public class GiveCommand {
       int maxAllowedCount = maxStackSize * 100;
       if (count > maxAllowedCount) {
          throw TOO_MANY_ITEMS.create(maxAllowedCount, prototypeItemStack.getDisplayName());
-      } else {
-         for (ServerPlayer player : players) {
-            int remaining = count;
+      }
 
-            while (remaining > 0) {
-               int size = Math.min(maxStackSize, remaining);
-               remaining -= size;
-               ItemStack copyToDrop = prototypeItemStack.copyWithCount(size);
-               boolean added = player.getInventory().add(copyToDrop);
-               if (added && copyToDrop.isEmpty()) {
-                  ItemEntity drop = player.createItemStackToDrop(prototypeItemStack.copy(), false, false);
-                  if (drop != null) {
-                     drop.makeFakeItem();
-                     drop.level().addFreshEntity(drop);
-                  }
+      for (ServerPlayer player : players) {
+         int remaining = count;
 
-                  player.level()
-                     .playSound(
-                        null,
-                        player.getX(),
-                        player.getY(),
-                        player.getZ(),
-                        SoundEvents.ITEM_PICKUP,
-                        SoundSource.PLAYERS,
-                        0.2F,
-                        ((player.getRandom().nextFloat() - player.getRandom().nextFloat()) * 0.7F + 1.0F) * 2.0F
-                     );
-                  player.containerMenu.broadcastChanges();
-               } else {
-                  ItemEntity drop = player.createItemStackToDrop(copyToDrop, false, false);
-                  if (drop != null) {
-                     drop.setNoPickUpDelay();
-                     drop.setTarget(player.getUUID());
-                     drop.level().addFreshEntity(drop);
-                  }
+         while (remaining > 0) {
+            int size = Math.min(maxStackSize, remaining);
+            remaining -= size;
+            ItemStack copyToDrop = prototypeItemStack.copyWithCount(size);
+            boolean added = player.getInventory().add(copyToDrop);
+            if (added && copyToDrop.isEmpty()) {
+               ItemEntity drop = player.createItemStackToDrop(prototypeItemStack.copy(), false, false);
+               if (drop != null) {
+                  drop.makeFakeItem();
+                  drop.level().addFreshEntity(drop);
+               }
+
+               player.level()
+                  .playSound(
+                     null,
+                     player.getX(),
+                     player.getY(),
+                     player.getZ(),
+                     SoundEvents.ITEM_PICKUP,
+                     SoundSource.PLAYERS,
+                     0.2F,
+                     ((player.getRandom().nextFloat() - player.getRandom().nextFloat()) * 0.7F + 1.0F) * 2.0F
+                  );
+               player.containerMenu.broadcastChanges();
+            } else {
+               ItemEntity drop = player.createItemStackToDrop(copyToDrop, false, false);
+               if (drop != null) {
+                  drop.setNoPickUpDelay();
+                  drop.setTarget(player.getUUID());
+                  drop.level().addFreshEntity(drop);
                }
             }
-
-            tracker.track(player);
          }
 
-         return tracker.sendFeedback(source, true, RESPONSE_GIVE, count, prototypeItemStack);
+         tracker.track(player);
       }
+
+      return tracker.sendFeedback(source, true, RESPONSE_GIVE, count, prototypeItemStack);
    }
 }

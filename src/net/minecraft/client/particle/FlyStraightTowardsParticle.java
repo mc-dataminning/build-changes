@@ -69,14 +69,14 @@ public class FlyStraightTowardsParticle extends SingleQuadParticle {
       if (this.age++ >= this.lifetime) {
          this.remove();
       } else {
-         float normalizedAge = (float)this.age / (float)this.lifetime;
+         float normalizedAge = (float)this.age / this.lifetime;
          float posAlpha = 1.0F - normalizedAge;
-         this.x = this.xStart + this.xd * (double)posAlpha;
-         this.y = this.yStart + this.yd * (double)posAlpha;
-         this.z = this.zStart + this.zd * (double)posAlpha;
+         this.x = this.xStart + this.xd * posAlpha;
+         this.y = this.yStart + this.yd * posAlpha;
+         this.z = this.zStart + this.zd * posAlpha;
          int color = ARGB.srgbLerp(normalizedAge, this.startColor, this.endColor);
-         this.setColor((float)ARGB.red(color) / 255.0F, (float)ARGB.green(color) / 255.0F, (float)ARGB.blue(color) / 255.0F);
-         this.setAlpha((float)ARGB.alpha(color) / 255.0F);
+         this.setColor(ARGB.red(color) / 255.0F, ARGB.green(color) / 255.0F, ARGB.blue(color) / 255.0F);
+         this.setAlpha(ARGB.alpha(color) / 255.0F);
       }
    }
 

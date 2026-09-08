@@ -80,19 +80,19 @@ public class AuthenticationHandler extends ChannelDuplexHandler {
          return this.isValidApiKey(tokenInAuthorizationHeader)
             ? AuthenticationHandler.SecurityCheckResult.allowed()
             : AuthenticationHandler.SecurityCheckResult.denied("Invalid API key");
-      } else {
-         String tokenInSecWebsocketProtocolHeader = this.parseTokenInSecWebsocketProtocolHeader(request);
-         if (tokenInSecWebsocketProtocolHeader != null) {
-            if (!this.isAllowedOriginHeader(request)) {
-               return AuthenticationHandler.SecurityCheckResult.denied("Origin Not Allowed");
-            } else {
-               return this.isValidApiKey(tokenInSecWebsocketProtocolHeader)
-                  ? AuthenticationHandler.SecurityCheckResult.allowed(true)
-                  : AuthenticationHandler.SecurityCheckResult.denied("Invalid API key");
-            }
+      }
+
+      String tokenInSecWebsocketProtocolHeader = this.parseTokenInSecWebsocketProtocolHeader(request);
+      if (tokenInSecWebsocketProtocolHeader != null) {
+         if (!this.isAllowedOriginHeader(request)) {
+            return AuthenticationHandler.SecurityCheckResult.denied("Origin Not Allowed");
          } else {
-            return AuthenticationHandler.SecurityCheckResult.denied("Missing API key");
+            return this.isValidApiKey(tokenInSecWebsocketProtocolHeader)
+               ? AuthenticationHandler.SecurityCheckResult.allowed(true)
+               : AuthenticationHandler.SecurityCheckResult.denied("Invalid API key");
          }
+      } else {
+         return AuthenticationHandler.SecurityCheckResult.denied("Missing API key");
       }
    }
 
@@ -101,14 +101,12 @@ public class AuthenticationHandler extends ChannelDuplexHandler {
       return originHeader != null && !originHeader.isEmpty() ? this.allowedOrigins.contains(originHeader) : false;
    }
 
-   @Nullable
-   private String parseTokenInAuthorizationHeader(final HttpRequest request) {
+   private @Nullable String parseTokenInAuthorizationHeader(final HttpRequest request) {
       String authHeader = request.headers().get(HttpHeaderNames.AUTHORIZATION);
       return authHeader != null && authHeader.startsWith("Bearer ") ? authHeader.substring("Bearer ".length()).trim() : null;
    }
 
-   @Nullable
-   private String parseTokenInSecWebsocketProtocolHeader(final HttpRequest request) {
+   private @Nullable String parseTokenInSecWebsocketProtocolHeader(final HttpRequest request) {
       String authHeader = request.headers().get(HttpHeaderNames.SEC_WEBSOCKET_PROTOCOL);
       return authHeader != null && authHeader.startsWith("minecraft-v1,") ? authHeader.substring("minecraft-v1,".length()).trim() : null;
    }
@@ -116,11 +114,11 @@ public class AuthenticationHandler extends ChannelDuplexHandler {
    public boolean isValidApiKey(final String suppliedKey) {
       if (suppliedKey.isEmpty()) {
          return false;
-      } else {
-         byte[] suppliedKeyBytes = suppliedKey.getBytes(StandardCharsets.UTF_8);
-         byte[] configuredKeyBytes = this.securityConfig.secretKey().getBytes(StandardCharsets.UTF_8);
-         return MessageDigest.isEqual(suppliedKeyBytes, configuredKeyBytes);
       }
+
+      byte[] suppliedKeyBytes = suppliedKey.getBytes(StandardCharsets.UTF_8);
+      byte[] configuredKeyBytes = this.securityConfig.secretKey().getBytes(StandardCharsets.UTF_8);
+      return MessageDigest.isEqual(suppliedKeyBytes, configuredKeyBytes);
    }
 
    private String getClientIp(final ChannelHandlerContext context) {

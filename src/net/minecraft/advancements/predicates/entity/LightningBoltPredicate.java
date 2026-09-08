@@ -13,10 +13,10 @@ import org.jspecify.annotations.Nullable;
 public record LightningBoltPredicate(MinMaxBounds.Ints blocksSetOnFire, Optional<EntityPredicate> entityStruck) implements EntitySubPredicate {
    public static final Codec<LightningBoltPredicate> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               MinMaxBounds.Ints.CODEC.optionalFieldOf("blocks_set_on_fire", MinMaxBounds.Ints.ANY).forGetter(LightningBoltPredicate::blocksSetOnFire),
-               EntityPredicate.CODEC.optionalFieldOf("entity_struck").forGetter(LightningBoltPredicate::entityStruck)
-            )
-            .apply(i, LightningBoltPredicate::new)
+            MinMaxBounds.Ints.CODEC.optionalFieldOf("blocks_set_on_fire", MinMaxBounds.Ints.ANY).forGetter(LightningBoltPredicate::blocksSetOnFire),
+            EntityPredicate.CODEC.optionalFieldOf("entity_struck").forGetter(LightningBoltPredicate::entityStruck)
+         )
+         .apply(i, LightningBoltPredicate::new)
    );
 
    public static LightningBoltPredicate blockSetOnFire(final MinMaxBounds.Ints count) {
@@ -24,7 +24,7 @@ public record LightningBoltPredicate(MinMaxBounds.Ints blocksSetOnFire, Optional
    }
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
       return !(entity instanceof LightningBolt bolt)
          ? false
          : this.blocksSetOnFire.matches(bolt.getBlocksSetOnFire())

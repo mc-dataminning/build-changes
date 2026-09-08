@@ -18,11 +18,9 @@ public class OminousBannerBlockEntityRenameFix extends NamedEntityFix {
       return entity.updateTyped(
          customNameF,
          customName -> customName.update(
-               textComponentF,
-               pair -> pair.mapSecond(
-                     name -> name.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"")
-                  )
-            )
+            textComponentF,
+            pair -> pair.mapSecond(name -> name.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\""))
+         )
       );
    }
 }

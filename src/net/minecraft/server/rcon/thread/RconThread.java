@@ -41,11 +41,11 @@ public class RconThread extends GenericThread {
                rconClient.start();
                this.clients.add(rconClient);
                this.clearClients();
-            } catch (SocketTimeoutException var7) {
+            } catch (SocketTimeoutException ignored) {
                this.clearClients();
-            } catch (IOException var8) {
+            } catch (IOException e) {
                if (this.running) {
-                  LOGGER.info("IO exception: ", var8);
+                  LOGGER.info("IO exception: ", e);
                }
             }
          }
@@ -54,8 +54,7 @@ public class RconThread extends GenericThread {
       }
    }
 
-   @Nullable
-   public static RconThread create(final ServerInterface serverInterface) {
+   public static @Nullable RconThread create(final ServerInterface serverInterface) {
       DedicatedServerProperties settings = serverInterface.getProperties();
       String serverIp = serverInterface.getServerIp();
       if (serverIp.isEmpty()) {
@@ -68,21 +67,21 @@ public class RconThread extends GenericThread {
          if (password.isEmpty()) {
             LOGGER.warn("No rcon password set in server.properties, rcon disabled!");
             return null;
-         } else {
-            try {
-               ServerSocket socket = new ServerSocket(port, 0, InetAddress.getByName(serverIp));
-               socket.setSoTimeout(500);
-               RconThread result = new RconThread(serverInterface, socket, password);
-               if (!result.start()) {
-                  return null;
-               } else {
-                  LOGGER.info("RCON running on {}:{}", serverIp, port);
-                  return result;
-               }
-            } catch (IOException var7) {
-               LOGGER.warn("Unable to initialise RCON on {}:{}", new Object[]{serverIp, port, var7});
+         }
+
+         try {
+            ServerSocket socket = new ServerSocket(port, 0, InetAddress.getByName(serverIp));
+            socket.setSoTimeout(500);
+            RconThread result = new RconThread(serverInterface, socket, password);
+            if (!result.start()) {
                return null;
             }
+
+            LOGGER.info("RCON running on {}:{}", serverIp, port);
+            return result;
+         } catch (IOException e) {
+            LOGGER.warn("Unable to initialise RCON on {}:{}", new Object[]{serverIp, port, e});
+            return null;
          }
       } else {
          LOGGER.warn("Invalid rcon port {} found in server.properties, rcon disabled!", port);
@@ -110,8 +109,8 @@ public class RconThread extends GenericThread {
 
       try {
          socket.close();
-      } catch (IOException var3) {
-         LOGGER.warn("Failed to close socket", var3);
+      } catch (IOException e) {
+         LOGGER.warn("Failed to close socket", e);
       }
    }
 }

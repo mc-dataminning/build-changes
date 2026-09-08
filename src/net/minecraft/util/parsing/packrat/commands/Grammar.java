@@ -17,10 +17,8 @@ import net.minecraft.util.parsing.packrat.NamedRule;
 import net.minecraft.util.parsing.packrat.ParseState;
 
 public record Grammar<T>(Dictionary<StringReader> rules, NamedRule<StringReader, T> top) implements CommandArgumentParser<T> {
-   public Grammar(Dictionary<StringReader> rules, NamedRule<StringReader, T> top) {
+   public Grammar {
       rules.checkAllBound();
-      this.rules = rules;
-      this.top = top;
    }
 
    public Optional<T> parse(final ParseState<StringReader> state) {
@@ -34,27 +32,27 @@ public record Grammar<T>(Dictionary<StringReader> rules, NamedRule<StringReader,
       Optional<T> result = this.parse(state);
       if (result.isPresent()) {
          return result.get();
+      }
+
+      List<ErrorEntry<StringReader>> errorEntries = errorCollector.entries();
+      List<Exception> exceptions = errorEntries.stream().<Exception>mapMulti((entry, output) -> {
+         if (entry.reason() instanceof DelayedException<?> delayedException) {
+            output.accept(delayedException.create(reader.getString(), entry.cursor()));
+         } else if (entry.reason() instanceof Exception exceptionx) {
+            output.accept(exceptionx);
+         }
+      }).toList();
+
+      for (Exception exception : exceptions) {
+         if (exception instanceof CommandSyntaxException cse) {
+            throw cse;
+         }
+      }
+
+      if (exceptions.size() == 1 && exceptions.get(0) instanceof RuntimeException re) {
+         throw re;
       } else {
-         List<ErrorEntry<StringReader>> errorEntries = errorCollector.entries();
-         List<Exception> exceptions = errorEntries.stream().<Exception>mapMulti((entry, output) -> {
-            if (entry.reason() instanceof DelayedException<?> delayedException) {
-               output.accept(delayedException.create(reader.getString(), entry.cursor()));
-            } else if (entry.reason() instanceof Exception exceptionx) {
-               output.accept(exceptionx);
-            }
-         }).toList();
-
-         for (Exception exception : exceptions) {
-            if (exception instanceof CommandSyntaxException cse) {
-               throw cse;
-            }
-         }
-
-         if (exceptions.size() == 1 && exceptions.get(0) instanceof RuntimeException re) {
-            throw re;
-         } else {
-            throw new IllegalStateException("Failed to parse: " + errorEntries.stream().map(ErrorEntry::toString).collect(Collectors.joining(", ")));
-         }
+         throw new IllegalStateException("Failed to parse: " + errorEntries.stream().map(ErrorEntry::toString).collect(Collectors.joining(", ")));
       }
    }
 
@@ -68,18 +66,18 @@ public record Grammar<T>(Dictionary<StringReader> rules, NamedRule<StringReader,
       List<ErrorEntry<StringReader>> errorEntries = errorCollector.entries();
       if (errorEntries.isEmpty()) {
          return suggestionsBuilder.buildFuture();
-      } else {
-         SuggestionsBuilder offsetBuilder = suggestionsBuilder.createOffset(errorCollector.cursor());
-
-         for (ErrorEntry<StringReader> entry : errorEntries) {
-            if (entry.suggestions() instanceof ResourceSuggestion resourceSuggestionTerm) {
-               SharedSuggestionProvider.suggestResource(resourceSuggestionTerm.possibleResources(), offsetBuilder);
-            } else {
-               SharedSuggestionProvider.suggest(entry.suggestions().possibleValues(state), offsetBuilder);
-            }
-         }
-
-         return offsetBuilder.buildFuture();
       }
+
+      SuggestionsBuilder offsetBuilder = suggestionsBuilder.createOffset(errorCollector.cursor());
+
+      for (ErrorEntry<StringReader> entry : errorEntries) {
+         if (entry.suggestions() instanceof ResourceSuggestion resourceSuggestionTerm) {
+            SharedSuggestionProvider.suggestResource(resourceSuggestionTerm.possibleResources(), offsetBuilder);
+         } else {
+            SharedSuggestionProvider.suggest(entry.suggestions().possibleValues(state), offsetBuilder);
+         }
+      }
+
+      return offsetBuilder.buildFuture();
    }
 }

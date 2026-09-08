@@ -64,8 +64,8 @@ public class WaterloggedVegetationPatchFeature extends VegetationPatchFeature {
          }
       }
 
-      for (BlockPos surfacePosx : waterSurface) {
-         level.setBlock(surfacePosx, Blocks.WATER.defaultBlockState(), 2);
+      for (BlockPos surfacePos : waterSurface) {
+         level.setBlock(surfacePos, Blocks.WATER.defaultBlockState(), 2);
       }
 
       return waterSurface;
@@ -89,7 +89,7 @@ public class WaterloggedVegetationPatchFeature extends VegetationPatchFeature {
       if (super.placeVegetation(level, generator, random, placementPos.below())) {
          BlockState placed = level.getBlockState(placementPos);
          if (placed.hasProperty(BlockStateProperties.WATERLOGGED) && !placed.getValue(BlockStateProperties.WATERLOGGED)) {
-            level.setBlock(placementPos, placed.setValue(BlockStateProperties.WATERLOGGED, Boolean.valueOf(true)), 2);
+            level.setBlock(placementPos, placed.setValue(BlockStateProperties.WATERLOGGED, true), 2);
          }
 
          return true;

@@ -13,7 +13,7 @@ public interface LevelWriter {
       return this.setBlock(pos, blockState, 3);
    }
 
-   default boolean setBlock(final BlockPos pos, final BlockState blockState, @Block.UpdateFlags final int updateFlags) {
+   default boolean setBlock(final BlockPos pos, final BlockState blockState, final @Block.UpdateFlags int updateFlags) {
       return this.setBlock(pos, blockState, updateFlags, 512);
    }
 
@@ -23,7 +23,7 @@ public interface LevelWriter {
       return this.destroyBlock(pos, dropResources, null);
    }
 
-   default boolean destroyBlock(final BlockPos pos, final boolean dropResources, @Nullable final Entity breaker) {
+   default boolean destroyBlock(final BlockPos pos, final boolean dropResources, final @Nullable Entity breaker) {
       return this.destroyBlock(pos, dropResources, breaker, 512);
    }
 

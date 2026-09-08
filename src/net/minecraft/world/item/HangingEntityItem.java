@@ -40,39 +40,39 @@ public class HangingEntityItem extends Item {
       ItemStack itemInHand = context.getItemInHand();
       if (player != null && !this.mayPlace(player, clickedFace, itemInHand, blockPos)) {
          return InteractionResult.FAIL;
-      } else {
-         Level level = context.getLevel();
-         HangingEntity entity;
-         if (this.type == EntityTypes.PAINTING) {
-            Optional<Painting> painting = Painting.create(level, blockPos, clickedFace);
-            if (painting.isEmpty()) {
-               return InteractionResult.CONSUME;
-            }
+      }
 
-            entity = painting.get();
-         } else if (this.type == EntityTypes.ITEM_FRAME) {
-            entity = new ItemFrame(level, blockPos, clickedFace);
-         } else {
-            if (this.type != EntityTypes.GLOW_ITEM_FRAME) {
-               return InteractionResult.SUCCESS;
-            }
-
-            entity = new GlowItemFrame(level, blockPos, clickedFace);
-         }
-
-         EntityType.<HangingEntity>createDefaultStackConfig(level, itemInHand, player).apply(entity);
-         if (entity.survives()) {
-            if (!level.isClientSide()) {
-               entity.playPlacementSound();
-               level.gameEvent(player, GameEvent.ENTITY_PLACE, entity.position());
-               level.addFreshEntity(entity);
-            }
-
-            itemInHand.shrink(1);
-            return InteractionResult.SUCCESS;
-         } else {
+      Level level = context.getLevel();
+      HangingEntity entity;
+      if (this.type == EntityTypes.PAINTING) {
+         Optional<Painting> painting = Painting.create(level, blockPos, clickedFace);
+         if (painting.isEmpty()) {
             return InteractionResult.CONSUME;
          }
+
+         entity = painting.get();
+      } else if (this.type == EntityTypes.ITEM_FRAME) {
+         entity = new ItemFrame(level, blockPos, clickedFace);
+      } else {
+         if (this.type != EntityTypes.GLOW_ITEM_FRAME) {
+            return InteractionResult.SUCCESS;
+         }
+
+         entity = new GlowItemFrame(level, blockPos, clickedFace);
+      }
+
+      EntityType.<HangingEntity>createDefaultStackConfig(level, itemInHand, player).apply(entity);
+      if (entity.survives()) {
+         if (!level.isClientSide()) {
+            entity.playPlacementSound();
+            level.gameEvent(player, GameEvent.ENTITY_PLACE, entity.position());
+            level.addFreshEntity(entity);
+         }
+
+         itemInHand.shrink(1);
+         return InteractionResult.SUCCESS;
+      } else {
+         return InteractionResult.CONSUME;
       }
    }
 

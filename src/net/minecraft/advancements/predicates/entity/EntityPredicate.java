@@ -81,11 +81,11 @@ public final class EntityPredicate {
       return Holder.direct(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, singlePredicate).build());
    }
 
-   public boolean matches(final ServerPlayer player, @Nullable final Entity entity) {
+   public boolean matches(final ServerPlayer player, final @Nullable Entity entity) {
       return this.matches(player.level(), player.position(), entity);
    }
 
-   public boolean matches(final ServerLevel level, @Nullable final Vec3 position, @Nullable final Entity entity) {
+   public boolean matches(final ServerLevel level, final @Nullable Vec3 position, final @Nullable Entity entity) {
       return entity == null ? false : this.combinedPart.matches(entity, level, position);
    }
 
@@ -99,15 +99,7 @@ public final class EntityPredicate {
 
    @Override
    public boolean equals(final Object o) {
-      if (o == this) {
-         return true;
-      } else {
-         if (o instanceof EntityPredicate that && Objects.equals(this.parts, that.parts)) {
-            return true;
-         }
-
-         return false;
-      }
+      return o == this || o instanceof EntityPredicate that && Objects.equals(this.parts, that.parts);
    }
 
    @Override
@@ -123,24 +115,22 @@ public final class EntityPredicate {
    private static EntitySubPredicate combine(final Map<Codec<? extends EntitySubPredicate>, EntitySubPredicate> predicateMap) {
       if (predicateMap.isEmpty()) {
          return EntitySubPredicate.ALWAYS_TRUE;
-      } else if (predicateMap.size() == 1) {
-         return (EntitySubPredicate)Iterables.getOnlyElement(predicateMap.values());
-      } else {
-         EntitySubPredicate[] predicates = predicateMap.entrySet()
-            .stream()
-            .sorted(PREDICATE_TYPE_ORDER)
-            .map(Entry::getValue)
-            .toArray(EntitySubPredicate[]::new);
-         return predicates.length == 2 ? predicates[0].and(predicates[1]) : (entity, level, position) -> {
-            for (EntitySubPredicate part : predicates) {
-               if (!part.matches(entity, level, position)) {
-                  return false;
-               }
-            }
-
-            return true;
-         };
       }
+
+      if (predicateMap.size() == 1) {
+         return (EntitySubPredicate)Iterables.getOnlyElement(predicateMap.values());
+      }
+
+      EntitySubPredicate[] predicates = predicateMap.entrySet().stream().sorted(PREDICATE_TYPE_ORDER).map(Entry::getValue).toArray(EntitySubPredicate[]::new);
+      return predicates.length == 2 ? predicates[0].and(predicates[1]) : (entity, level, position) -> {
+         for (EntitySubPredicate part : predicates) {
+            if (!part.matches(entity, level, position)) {
+               return false;
+            }
+         }
+
+         return true;
+      };
    }
 
    public static class Builder {

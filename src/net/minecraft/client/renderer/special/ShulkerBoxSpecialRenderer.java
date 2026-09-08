@@ -41,13 +41,13 @@ public class ShulkerBoxSpecialRenderer implements NoDataSpecialModelRenderer {
       this.shulkerBoxRenderer.getExtents(this.openness, output);
    }
 
-   public static record Unbaked(Identifier texture, float openness) implements NoDataSpecialModelRenderer.Unbaked {
+   public record Unbaked(Identifier texture, float openness) implements NoDataSpecialModelRenderer.Unbaked {
       public static final MapCodec<ShulkerBoxSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Identifier.CODEC.fieldOf("texture").forGetter(ShulkerBoxSpecialRenderer.Unbaked::texture),
-                  Codec.FLOAT.optionalFieldOf("openness", 0.0F).forGetter(ShulkerBoxSpecialRenderer.Unbaked::openness)
-               )
-               .apply(i, ShulkerBoxSpecialRenderer.Unbaked::new)
+               Identifier.CODEC.fieldOf("texture").forGetter(ShulkerBoxSpecialRenderer.Unbaked::texture),
+               Codec.FLOAT.optionalFieldOf("openness", 0.0F).forGetter(ShulkerBoxSpecialRenderer.Unbaked::openness)
+            )
+            .apply(i, ShulkerBoxSpecialRenderer.Unbaked::new)
       );
 
       public Unbaked() {

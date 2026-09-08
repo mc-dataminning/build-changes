@@ -9,8 +9,7 @@ import org.jspecify.annotations.Nullable;
 
 public class MoveTowardsTargetGoal extends Goal {
    private final PathfinderMob mob;
-   @Nullable
-   private LivingEntity target;
+   private @Nullable LivingEntity target;
    private double wantedX;
    private double wantedY;
    private double wantedZ;
@@ -29,24 +28,26 @@ public class MoveTowardsTargetGoal extends Goal {
       this.target = this.mob.getTarget();
       if (this.target == null) {
          return false;
-      } else if (this.target.distanceToSqr(this.mob) > (double)(this.within * this.within)) {
-         return false;
-      } else {
-         Vec3 pos = DefaultRandomPos.getPosTowards(this.mob, 16, 7, this.target.position(), (float) (Math.PI / 2));
-         if (pos == null) {
-            return false;
-         } else {
-            this.wantedX = pos.x;
-            this.wantedY = pos.y;
-            this.wantedZ = pos.z;
-            return true;
-         }
       }
+
+      if (this.target.distanceToSqr(this.mob) > this.within * this.within) {
+         return false;
+      }
+
+      Vec3 pos = DefaultRandomPos.getPosTowards(this.mob, 16, 7, this.target.position(), (float) (Math.PI / 2));
+      if (pos == null) {
+         return false;
+      }
+
+      this.wantedX = pos.x;
+      this.wantedY = pos.y;
+      this.wantedZ = pos.z;
+      return true;
    }
 
    @Override
    public boolean canContinueToUse() {
-      return !this.mob.getNavigation().isDone() && this.target.isAlive() && this.target.distanceToSqr(this.mob) < (double)(this.within * this.within);
+      return !this.mob.getNavigation().isDone() && this.target.isAlive() && this.target.distanceToSqr(this.mob) < this.within * this.within;
    }
 
    @Override

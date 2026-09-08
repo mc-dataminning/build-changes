@@ -14,7 +14,7 @@ public class WeightedRandom {
       long totalWeight = 0L;
 
       for (T item : items) {
-         totalWeight += (long)weightGetter.applyAsInt(item);
+         totalWeight += weightGetter.applyAsInt(item);
       }
 
       if (totalWeight > 2147483647L) {
@@ -27,12 +27,14 @@ public class WeightedRandom {
    public static <T> Optional<T> getRandomItem(final RandomSource random, final List<T> items, final int totalWeight, final ToIntFunction<T> weightGetter) {
       if (totalWeight < 0) {
          throw (IllegalArgumentException)Util.pauseInIde(new IllegalArgumentException("Negative total weight in getRandomItem"));
-      } else if (totalWeight == 0) {
-         return Optional.empty();
-      } else {
-         int selection = random.nextInt(totalWeight);
-         return getWeightedItem(items, selection, weightGetter);
       }
+
+      if (totalWeight == 0) {
+         return Optional.empty();
+      }
+
+      int selection = random.nextInt(totalWeight);
+      return getWeightedItem(items, selection, weightGetter);
    }
 
    public static <T> Optional<T> getWeightedItem(final List<T> items, int index, final ToIntFunction<T> weightGetter) {

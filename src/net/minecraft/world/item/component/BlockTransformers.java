@@ -2,7 +2,6 @@ package net.minecraft.world.item.component;
 
 import com.google.common.collect.ImmutableList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import java.util.Map.Entry;
 import net.minecraft.core.Direction;
@@ -128,10 +127,7 @@ public class BlockTransformers {
       for (Entry<Block, Block> entry : blocks) {
          BlockPredicate predicate = BlockPredicate.matchesBlocks(entry.getKey());
          CopyPropertiesProvider provider = new CopyPropertiesProvider(entry.getValue());
-         Block var10000 = entry.getKey();
-         Objects.requireNonNull(var10000);
-         Object var10 = var10000;
-         switch (var10) {
+         switch ((Block)entry.getKey()) {
             case CopperChestBlock var12:
                chestRules.ifTrueThenProvide(predicate, provider);
                break;

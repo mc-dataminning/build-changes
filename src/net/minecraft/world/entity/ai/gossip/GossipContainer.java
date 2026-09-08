@@ -69,26 +69,26 @@ public class GossipContainer {
       List<GossipContainer.GossipEntry> entries = this.unpack().toList();
       if (entries.isEmpty()) {
          return Collections.emptyList();
-      } else {
-         int[] ranges = new int[entries.size()];
-         int rangesEnd = 0;
-
-         for (int i = 0; i < entries.size(); i++) {
-            GossipContainer.GossipEntry gossip = entries.get(i);
-            rangesEnd += Math.abs(gossip.weightedValue());
-            ranges[i] = rangesEnd - 1;
-         }
-
-         Set<GossipContainer.GossipEntry> results = Sets.newIdentityHashSet();
-
-         for (int i = 0; i < maxCount; i++) {
-            int choice = random.nextInt(rangesEnd);
-            int selectedIndex = Arrays.binarySearch(ranges, choice);
-            results.add(entries.get(selectedIndex < 0 ? -selectedIndex - 1 : selectedIndex));
-         }
-
-         return results;
       }
+
+      int[] ranges = new int[entries.size()];
+      int rangesEnd = 0;
+
+      for (int i = 0; i < entries.size(); i++) {
+         GossipContainer.GossipEntry gossip = entries.get(i);
+         rangesEnd += Math.abs(gossip.weightedValue());
+         ranges[i] = rangesEnd - 1;
+      }
+
+      Set<GossipContainer.GossipEntry> results = Sets.newIdentityHashSet();
+
+      for (int i = 0; i < maxCount; i++) {
+         int choice = random.nextInt(rangesEnd);
+         int selectedIndex = Arrays.binarySearch(ranges, choice);
+         results.add(entries.get(selectedIndex < 0 ? -selectedIndex - 1 : selectedIndex));
+      }
+
+      return results;
    }
 
    private GossipContainer.EntityGossips getOrCreate(final UUID target) {
@@ -112,7 +112,7 @@ public class GossipContainer {
    }
 
    public long getCountForType(final GossipType type, final DoublePredicate valueTest) {
-      return this.gossips.values().stream().filter(e -> valueTest.test((double)(e.entries.getOrDefault(type, 0) * type.weight))).count();
+      return this.gossips.values().stream().filter(e -> valueTest.test(e.entries.getOrDefault(type, 0) * type.weight)).count();
    }
 
    public void add(final UUID target, final GossipType type, final int amountToAdd) {
@@ -223,14 +223,14 @@ public class GossipContainer {
       }
    }
 
-   private static record GossipEntry(UUID target, GossipType type, int value) {
+   private record GossipEntry(UUID target, GossipType type, int value) {
       public static final Codec<GossipContainer.GossipEntry> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  UUIDUtil.CODEC.fieldOf("Target").forGetter(GossipContainer.GossipEntry::target),
-                  GossipType.CODEC.fieldOf("Type").forGetter(GossipContainer.GossipEntry::type),
-                  ExtraCodecs.POSITIVE_INT.fieldOf("Value").forGetter(GossipContainer.GossipEntry::value)
-               )
-               .apply(i, GossipContainer.GossipEntry::new)
+               UUIDUtil.CODEC.fieldOf("Target").forGetter(GossipContainer.GossipEntry::target),
+               GossipType.CODEC.fieldOf("Type").forGetter(GossipContainer.GossipEntry::type),
+               ExtraCodecs.POSITIVE_INT.fieldOf("Value").forGetter(GossipContainer.GossipEntry::value)
+            )
+            .apply(i, GossipContainer.GossipEntry::new)
       );
 
       public int weightedValue() {

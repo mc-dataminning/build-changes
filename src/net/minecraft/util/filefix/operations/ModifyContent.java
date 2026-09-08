@@ -21,12 +21,12 @@ public class ModifyContent implements FileFixOperation {
          ScopedValue.where(this.fileAccessProvider.baseDirectory(), baseDirectory).run(() -> {
             try {
                this.fixFunction.run(upgradeProgress);
-            } catch (IOException var3) {
-               throw new UncheckedIOException(var3);
+            } catch (IOException e) {
+               throw new UncheckedIOException(e);
             }
          });
-      } catch (UncheckedIOException var7) {
-         throw var7.getCause();
+      } catch (UncheckedIOException e) {
+         throw e.getCause();
       } finally {
          this.fileAccessProvider.close();
       }

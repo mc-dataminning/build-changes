@@ -68,8 +68,8 @@ public class CartographyTableScreen extends AbstractContainerScreen<CartographyT
 
    private void extractResultingMap(
       final GuiGraphicsExtractor graphics,
-      @Nullable final MapId id,
-      @Nullable final MapItemSavedData data,
+      final @Nullable MapId id,
+      final @Nullable MapItemSavedData data,
       final boolean isDuplication,
       final boolean isScaling,
       final boolean isLocking,
@@ -97,11 +97,11 @@ public class CartographyTableScreen extends AbstractContainerScreen<CartographyT
    }
 
    private void extractMap(
-      final GuiGraphicsExtractor graphics, @Nullable final MapId id, @Nullable final MapItemSavedData data, final int x, final int y, final float scale
+      final GuiGraphicsExtractor graphics, final @Nullable MapId id, final @Nullable MapItemSavedData data, final int x, final int y, final float scale
    ) {
       if (id != null && data != null) {
          graphics.pose().pushMatrix();
-         graphics.pose().translate((float)x, (float)y);
+         graphics.pose().translate(x, y);
          graphics.pose().scale(scale, scale);
          this.minecraft.getMapRenderer().extractRenderState(id, data, this.mapRenderState);
          graphics.map(this.mapRenderState);

@@ -7,11 +7,10 @@ import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 
 public class LastSeenMessagesTracker {
-   private final LastSeenTrackedEntry[] trackedMessages;
+   private final @Nullable LastSeenTrackedEntry[] trackedMessages;
    private int tail;
    private int offset;
-   @Nullable
-   private MessageSignature lastTrackedMessage;
+   private @Nullable MessageSignature lastTrackedMessage;
 
    public LastSeenMessagesTracker(final int lastSeenCount) {
       this.trackedMessages = new LastSeenTrackedEntry[lastSeenCount];
@@ -20,14 +19,14 @@ public class LastSeenMessagesTracker {
    public boolean addPending(final MessageSignature message, final boolean wasShown) {
       if (Objects.equals(message, this.lastTrackedMessage)) {
          return false;
-      } else {
-         this.lastTrackedMessage = message;
-         this.addEntry(wasShown ? new LastSeenTrackedEntry(message, true) : null);
-         return true;
       }
+
+      this.lastTrackedMessage = message;
+      this.addEntry(wasShown ? new LastSeenTrackedEntry(message, true) : null);
+      return true;
    }
 
-   private void addEntry(@Nullable final LastSeenTrackedEntry entry) {
+   private void addEntry(final @Nullable LastSeenTrackedEntry entry) {
       int index = this.tail;
       this.tail = (index + 1) % this.trackedMessages.length;
       this.offset++;
@@ -74,6 +73,6 @@ public class LastSeenMessagesTracker {
       return this.offset;
    }
 
-   public static record Update(LastSeenMessages lastSeen, LastSeenMessages.Update update) {
+   public record Update(LastSeenMessages lastSeen, LastSeenMessages.Update update) {
    }
 }

@@ -76,8 +76,7 @@ public class EnvironmentAttribute<Value> {
 
    public static class Builder<Value> {
       private final AttributeType<Value> type;
-      @Nullable
-      private Value defaultValue;
+      private @Nullable Value defaultValue;
       private AttributeRange<Value> valueRange = AttributeRange.any();
       private boolean isSyncable = false;
       private boolean isPositional = true;

@@ -48,7 +48,7 @@ public class DripParticle extends SingleQuadParticle {
       this.zo = this.z;
       this.preMoveUpdate();
       if (!this.removed) {
-         this.yd = this.yd - (double)this.gravity;
+         this.yd = this.yd - this.gravity;
          this.move(this.xd, this.yd, this.zd);
          this.postMoveUpdate();
          if (!this.removed) {
@@ -58,7 +58,7 @@ public class DripParticle extends SingleQuadParticle {
             if (this.type != Fluids.EMPTY) {
                BlockPos pos = BlockPos.containing(this.x, this.y, this.z);
                FluidState fluidState = this.level.getFluidState(pos);
-               if (fluidState.is(this.type) && this.y < (double)((float)pos.getY() + fluidState.getHeight(this.level, pos))) {
+               if (fluidState.is(this.type) && this.y < pos.getY() + fluidState.getHeight(this.level, pos)) {
                   this.remove();
                }
             }
@@ -91,8 +91,8 @@ public class DripParticle extends SingleQuadParticle {
       @Override
       protected void preMoveUpdate() {
          this.rCol = 1.0F;
-         this.gCol = 16.0F / (float)(40 - this.lifetime + 16);
-         this.bCol = 4.0F / (float)(40 - this.lifetime + 8);
+         this.gCol = 16.0F / (40 - this.lifetime + 16);
+         this.bCol = 4.0F / (40 - this.lifetime + 8);
          super.preMoveUpdate();
       }
    }
@@ -134,7 +134,7 @@ public class DripParticle extends SingleQuadParticle {
    private static class DripLandParticle extends DripParticle {
       private DripLandParticle(final ClientLevel level, final double x, final double y, final double z, final Fluid type, final TextureAtlasSprite sprite) {
          super(level, x, y, z, type, sprite);
-         this.lifetime = (int)(16.0 / ((double)this.random.nextFloat() * 0.8 + 0.2));
+         this.lifetime = (int)(16.0 / (this.random.nextFloat() * 0.8 + 0.2));
       }
    }
 
@@ -270,7 +270,7 @@ public class DripParticle extends SingleQuadParticle {
          final TextureAtlasSprite sprite
       ) {
          super(level, x, y, z, type, sprite);
-         this.lifetime = (int)(64.0 / ((double)this.random.nextFloat() * 0.8 + 0.2));
+         this.lifetime = (int)(64.0 / (this.random.nextFloat() * 0.8 + 0.2));
          this.landParticle = landParticle;
       }
 
@@ -392,7 +392,7 @@ public class DripParticle extends SingleQuadParticle {
          final RandomSource random
       ) {
          DripParticle particle = new DripParticle.DripLandParticle(level, x, y, z, Fluids.EMPTY, this.sprite.get(random));
-         particle.lifetime = (int)(128.0 / ((double)random.nextFloat() * 0.8 + 0.2));
+         particle.lifetime = (int)(128.0 / (random.nextFloat() * 0.8 + 0.2));
          particle.setColor(0.522F, 0.408F, 0.082F);
          return particle;
       }
@@ -487,7 +487,7 @@ public class DripParticle extends SingleQuadParticle {
          final RandomSource random
       ) {
          DripParticle particle = new DripParticle.FallingParticle(level, x, y, z, Fluids.EMPTY, this.sprite.get(random));
-         particle.lifetime = (int)(16.0 / ((double)random.nextFloat() * 0.8 + 0.2));
+         particle.lifetime = (int)(16.0 / (random.nextFloat() * 0.8 + 0.2));
          particle.gravity = 0.007F;
          particle.setColor(0.92F, 0.782F, 0.72F);
          return particle;
@@ -571,7 +571,7 @@ public class DripParticle extends SingleQuadParticle {
       ) {
          DripParticle particle = new DripParticle.DripLandParticle(level, x, y, z, Fluids.EMPTY, this.sprite.get(random));
          particle.isGlowing = true;
-         particle.lifetime = (int)(28.0 / ((double)random.nextFloat() * 0.8 + 0.2));
+         particle.lifetime = (int)(28.0 / (random.nextFloat() * 0.8 + 0.2));
          particle.setColor(0.51171875F, 0.03125F, 0.890625F);
          return particle;
       }

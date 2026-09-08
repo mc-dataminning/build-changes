@@ -8,9 +8,9 @@ import java.util.Locale;
 public interface StatFormatter {
    DecimalFormat DECIMAL_FORMAT = new DecimalFormat("########0.00", DecimalFormatSymbols.getInstance(Locale.ROOT));
    StatFormatter DEFAULT = NumberFormat.getIntegerInstance(Locale.US)::format;
-   StatFormatter DIVIDE_BY_TEN = value -> DECIMAL_FORMAT.format((double)value * 0.1);
+   StatFormatter DIVIDE_BY_TEN = value -> DECIMAL_FORMAT.format(value * 0.1);
    StatFormatter DISTANCE = cm -> {
-      double meters = (double)cm / 100.0;
+      double meters = cm / 100.0;
       double kilometers = meters / 1000.0;
       if (kilometers > 0.5) {
          return DECIMAL_FORMAT.format(kilometers) + " km";
@@ -19,7 +19,7 @@ public interface StatFormatter {
       }
    };
    StatFormatter TIME = value -> {
-      double seconds = (double)value / 20.0;
+      double seconds = value / 20.0;
       double minutes = seconds / 60.0;
       double hours = minutes / 60.0;
       double days = hours / 24.0;

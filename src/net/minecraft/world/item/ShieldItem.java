@@ -11,6 +11,6 @@ public class ShieldItem extends Item {
    @Override
    public Component getName(final ItemStack itemStack) {
       DyeColor baseColor = itemStack.get(DataComponents.BASE_COLOR);
-      return (Component)(baseColor != null ? Component.translatable(this.descriptionId + "." + baseColor.getName()) : super.getName(itemStack));
+      return baseColor != null ? Component.translatable(this.descriptionId + "." + baseColor.getName()) : super.getName(itemStack);
    }
 }

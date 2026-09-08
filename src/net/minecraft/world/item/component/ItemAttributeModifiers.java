@@ -150,7 +150,7 @@ public record ItemAttributeModifiers(List<ItemAttributeModifiers.Entry> modifier
 
       void apply(Consumer<Component> consumer, @Nullable Player player, Holder<Attribute> attribute, AttributeModifier modifier);
 
-      public static record Default() implements ItemAttributeModifiers.Display {
+      record Default() implements ItemAttributeModifiers.Display {
          private static final ItemAttributeModifiers.Display.Default INSTANCE = new ItemAttributeModifiers.Display.Default();
          private static final MapCodec<ItemAttributeModifiers.Display.Default> CODEC = MapCodec.unit(INSTANCE);
          private static final StreamCodec<RegistryFriendlyByteBuf, ItemAttributeModifiers.Display.Default> STREAM_CODEC = StreamCodec.unit(INSTANCE);
@@ -162,7 +162,7 @@ public record ItemAttributeModifiers(List<ItemAttributeModifiers.Entry> modifier
 
          @Override
          public void apply(
-            final Consumer<Component> consumer, @Nullable final Player player, final Holder<Attribute> attribute, final AttributeModifier modifier
+            final Consumer<Component> consumer, final @Nullable Player player, final Holder<Attribute> attribute, final AttributeModifier modifier
          ) {
             double amount = modifier.amount();
             boolean displayWithBase = false;
@@ -220,7 +220,7 @@ public record ItemAttributeModifiers(List<ItemAttributeModifiers.Entry> modifier
          }
       }
 
-      public static record Hidden() implements ItemAttributeModifiers.Display {
+      record Hidden() implements ItemAttributeModifiers.Display {
          private static final ItemAttributeModifiers.Display.Hidden INSTANCE = new ItemAttributeModifiers.Display.Hidden();
          private static final MapCodec<ItemAttributeModifiers.Display.Hidden> CODEC = MapCodec.unit(INSTANCE);
          private static final StreamCodec<RegistryFriendlyByteBuf, ItemAttributeModifiers.Display.Hidden> STREAM_CODEC = StreamCodec.unit(INSTANCE);
@@ -232,15 +232,15 @@ public record ItemAttributeModifiers(List<ItemAttributeModifiers.Entry> modifier
 
          @Override
          public void apply(
-            final Consumer<Component> consumer, @Nullable final Player player, final Holder<Attribute> attribute, final AttributeModifier modifier
+            final Consumer<Component> consumer, final @Nullable Player player, final Holder<Attribute> attribute, final AttributeModifier modifier
          ) {
          }
       }
 
-      public static record OverrideText(Component component) implements ItemAttributeModifiers.Display {
+      record OverrideText(Component component) implements ItemAttributeModifiers.Display {
          private static final MapCodec<ItemAttributeModifiers.Display.OverrideText> CODEC = RecordCodecBuilder.mapCodec(
             i -> i.group(ComponentSerialization.CODEC.fieldOf("value").forGetter(ItemAttributeModifiers.Display.OverrideText::component))
-                  .apply(i, ItemAttributeModifiers.Display.OverrideText::new)
+               .apply(i, ItemAttributeModifiers.Display.OverrideText::new)
          );
          private static final StreamCodec<RegistryFriendlyByteBuf, ItemAttributeModifiers.Display.OverrideText> STREAM_CODEC = StreamCodec.composite(
             ComponentSerialization.STREAM_CODEC, ItemAttributeModifiers.Display.OverrideText::component, ItemAttributeModifiers.Display.OverrideText::new
@@ -253,13 +253,13 @@ public record ItemAttributeModifiers(List<ItemAttributeModifiers.Entry> modifier
 
          @Override
          public void apply(
-            final Consumer<Component> consumer, @Nullable final Player player, final Holder<Attribute> attribute, final AttributeModifier modifier
+            final Consumer<Component> consumer, final @Nullable Player player, final Holder<Attribute> attribute, final AttributeModifier modifier
          ) {
             consumer.accept(this.component);
          }
       }
 
-      public static enum Type implements StringRepresentable {
+      enum Type implements StringRepresentable {
          DEFAULT("default", 0, ItemAttributeModifiers.Display.Default.CODEC, ItemAttributeModifiers.Display.Default.STREAM_CODEC),
          HIDDEN("hidden", 1, ItemAttributeModifiers.Display.Hidden.CODEC, ItemAttributeModifiers.Display.Hidden.STREAM_CODEC),
          OVERRIDE("override", 2, ItemAttributeModifiers.Display.OverrideText.CODEC, ItemAttributeModifiers.Display.OverrideText.STREAM_CODEC);
@@ -276,7 +276,7 @@ public record ItemAttributeModifiers(List<ItemAttributeModifiers.Entry> modifier
          private final MapCodec<? extends ItemAttributeModifiers.Display> codec;
          private final StreamCodec<RegistryFriendlyByteBuf, ? extends ItemAttributeModifiers.Display> streamCodec;
 
-         private Type(
+         Type(
             final String name,
             final int id,
             final MapCodec<? extends ItemAttributeModifiers.Display> codec,
@@ -303,17 +303,17 @@ public record ItemAttributeModifiers(List<ItemAttributeModifiers.Entry> modifier
       }
    }
 
-   public static record Entry(Holder<Attribute> attribute, AttributeModifier modifier, EquipmentSlotGroup slot, ItemAttributeModifiers.Display display) {
+   public record Entry(Holder<Attribute> attribute, AttributeModifier modifier, EquipmentSlotGroup slot, ItemAttributeModifiers.Display display) {
       public static final Codec<ItemAttributeModifiers.Entry> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Attribute.CODEC.fieldOf("type").forGetter(ItemAttributeModifiers.Entry::attribute),
-                  AttributeModifier.MAP_CODEC.forGetter(ItemAttributeModifiers.Entry::modifier),
-                  EquipmentSlotGroup.CODEC.optionalFieldOf("slot", EquipmentSlotGroup.ANY).forGetter(ItemAttributeModifiers.Entry::slot),
-                  ItemAttributeModifiers.Display.CODEC
-                     .optionalFieldOf("display", ItemAttributeModifiers.Display.Default.INSTANCE)
-                     .forGetter(ItemAttributeModifiers.Entry::display)
-               )
-               .apply(i, ItemAttributeModifiers.Entry::new)
+               Attribute.CODEC.fieldOf("type").forGetter(ItemAttributeModifiers.Entry::attribute),
+               AttributeModifier.MAP_CODEC.forGetter(ItemAttributeModifiers.Entry::modifier),
+               EquipmentSlotGroup.CODEC.optionalFieldOf("slot", EquipmentSlotGroup.ANY).forGetter(ItemAttributeModifiers.Entry::slot),
+               ItemAttributeModifiers.Display.CODEC
+                  .optionalFieldOf("display", ItemAttributeModifiers.Display.Default.INSTANCE)
+                  .forGetter(ItemAttributeModifiers.Entry::display)
+            )
+            .apply(i, ItemAttributeModifiers.Entry::new)
       );
       public static final StreamCodec<RegistryFriendlyByteBuf, ItemAttributeModifiers.Entry> STREAM_CODEC = StreamCodec.composite(
          Attribute.STREAM_CODEC,

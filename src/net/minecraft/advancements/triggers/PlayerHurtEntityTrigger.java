@@ -27,16 +27,15 @@ public class PlayerHurtEntityTrigger extends SimpleCriterionTrigger<PlayerHurtEn
       this.trigger(player, t -> t.matches(player, victimContext, source, originalDamage, actualDamage, blocked));
    }
 
-   public static record TriggerInstance(
-      Optional<Holder<LootItemCondition>> player, Optional<DamagePredicate> damage, Optional<Holder<LootItemCondition>> entity
-   ) implements SimpleCriterionTrigger.SimpleInstance {
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<DamagePredicate> damage, Optional<Holder<LootItemCondition>> entity)
+      implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<PlayerHurtEntityTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(PlayerHurtEntityTrigger.TriggerInstance::player),
-                  DamagePredicate.CODEC.optionalFieldOf("damage").forGetter(PlayerHurtEntityTrigger.TriggerInstance::damage),
-                  LootItemCondition.CODEC.optionalFieldOf("entity").forGetter(PlayerHurtEntityTrigger.TriggerInstance::entity)
-               )
-               .apply(i, PlayerHurtEntityTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(PlayerHurtEntityTrigger.TriggerInstance::player),
+               DamagePredicate.CODEC.optionalFieldOf("damage").forGetter(PlayerHurtEntityTrigger.TriggerInstance::damage),
+               LootItemCondition.CODEC.optionalFieldOf("entity").forGetter(PlayerHurtEntityTrigger.TriggerInstance::entity)
+            )
+            .apply(i, PlayerHurtEntityTrigger.TriggerInstance::new)
       );
 
       public static Criterion<PlayerHurtEntityTrigger.TriggerInstance> playerHurtEntity() {

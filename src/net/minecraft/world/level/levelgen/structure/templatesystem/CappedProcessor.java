@@ -16,10 +16,10 @@ import net.minecraft.world.level.ServerLevelAccessor;
 public class CappedProcessor implements StructureProcessor {
    public static final MapCodec<CappedProcessor> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               StructureProcessorType.SINGLE_CODEC.fieldOf("delegate").forGetter(c -> c.delegate),
-               IntProviders.POSITIVE_CODEC.fieldOf("limit").forGetter(c -> c.limit)
-            )
-            .apply(i, CappedProcessor::new)
+            StructureProcessorType.SINGLE_CODEC.fieldOf("delegate").forGetter(c -> c.delegate),
+            IntProviders.POSITIVE_CODEC.fieldOf("limit").forGetter(c -> c.limit)
+         )
+         .apply(i, CappedProcessor::new)
    );
    private final StructureProcessor delegate;
    private final IntProvider limit;
@@ -57,31 +57,31 @@ public class CappedProcessor implements StructureProcessor {
                   + processedBlockInfoList.size()
             );
             return processedBlockInfoList;
-         } else {
-            RandomSource random = RandomSource.createThreadLocalInstance(level.getLevel().getSeed()).forkPositional().at(position);
-            int maxToReplace = Math.min(this.limit.sample(random), processedBlockInfoList.size());
-            if (maxToReplace < 1) {
-               return processedBlockInfoList;
-            } else {
-               IntArrayList indices = Util.toShuffledList(IntStream.range(0, processedBlockInfoList.size()), random);
-               IntIterator indexIterator = indices.intIterator();
-               int replaced = 0;
+         }
 
-               while (indexIterator.hasNext() && replaced < maxToReplace) {
-                  int index = indexIterator.nextInt();
-                  StructureTemplate.StructureBlockInfo originalBlockInfo = originalBlockInfoList.get(index);
-                  StructureTemplate.StructureBlockInfo processedBlockInfo = processedBlockInfoList.get(index);
-                  StructureTemplate.StructureBlockInfo maybeAltered = this.delegate
-                     .processBlock(level, position, referencePos, originalBlockInfo.pos(), processedBlockInfo, settings);
-                  if (maybeAltered != null && !processedBlockInfo.equals(maybeAltered)) {
-                     replaced++;
-                     processedBlockInfoList.set(index, maybeAltered);
-                  }
-               }
+         RandomSource random = RandomSource.createThreadLocalInstance(level.getLevel().getSeed()).forkPositional().at(position);
+         int maxToReplace = Math.min(this.limit.sample(random), processedBlockInfoList.size());
+         if (maxToReplace < 1) {
+            return processedBlockInfoList;
+         }
 
-               return processedBlockInfoList;
+         IntArrayList indices = Util.toShuffledList(IntStream.range(0, processedBlockInfoList.size()), random);
+         IntIterator indexIterator = indices.intIterator();
+         int replaced = 0;
+
+         while (indexIterator.hasNext() && replaced < maxToReplace) {
+            int index = indexIterator.nextInt();
+            StructureTemplate.StructureBlockInfo originalBlockInfo = originalBlockInfoList.get(index);
+            StructureTemplate.StructureBlockInfo processedBlockInfo = processedBlockInfoList.get(index);
+            StructureTemplate.StructureBlockInfo maybeAltered = this.delegate
+               .processBlock(level, position, referencePos, originalBlockInfo.pos(), processedBlockInfo, settings);
+            if (maybeAltered != null && !processedBlockInfo.equals(maybeAltered)) {
+               replaced++;
+               processedBlockInfoList.set(index, maybeAltered);
             }
          }
+
+         return processedBlockInfoList;
       } else {
          return processedBlockInfoList;
       }

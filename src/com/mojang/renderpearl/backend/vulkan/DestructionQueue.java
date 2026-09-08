@@ -33,12 +33,12 @@ public class DestructionQueue<T> implements UncheckedAutoCloseable {
       ReferenceArrayList<T> currentQueue = (ReferenceArrayList<T>)this.destructionQueues.set(this.currentDestructionQueueIndex, new ReferenceArrayList());
       if (currentQueue.isEmpty()) {
          return false;
-      } else {
-         this.destroyCallback.begin(currentQueue.size());
-         currentQueue.forEach(this.destroyCallback::destroy);
-         this.destroyCallback.end();
-         return true;
       }
+
+      this.destroyCallback.begin(currentQueue.size());
+      currentQueue.forEach(this.destroyCallback::destroy);
+      this.destroyCallback.end();
+      return true;
    }
 
    public void add(final T t) {

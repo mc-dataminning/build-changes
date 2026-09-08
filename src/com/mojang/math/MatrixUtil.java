@@ -37,11 +37,12 @@ public class MatrixUtil {
 
    private static GivensParameters approxGivensQuat(final float a11, final float a12, final float a22) {
       float ch = 2.0F * (a11 - a22);
-      return G * a12 * a12 < ch * ch ? GivensParameters.fromUnnormalized(a12, ch) : PI_4;
+      float sh = a12;
+      return G * sh * sh < ch * ch ? GivensParameters.fromUnnormalized(sh, ch) : PI_4;
    }
 
    private static GivensParameters qrGivensQuat(final float a1, final float a2) {
-      float p = (float)java.lang.Math.hypot((double)a1, (double)a2);
+      float p = (float)java.lang.Math.hypot(a1, a2);
       float sh = p > 1.0E-6F ? a2 : 0.0F;
       float ch = Math.abs(a1) + Math.max(p, 1.0E-6F);
       if (a1 < 0.0F) {
@@ -111,8 +112,8 @@ public class MatrixUtil {
       eigenvalueJacobi(scratch, 5, v);
       float columnScaleSquare0 = scratch.m00;
       float columnScaleSquare1 = scratch.m11;
-      boolean zeroColumn0 = (double)columnScaleSquare0 < 1.0E-6;
-      boolean zeroColumn1 = (double)columnScaleSquare1 < 1.0E-6;
+      boolean zeroColumn0 = columnScaleSquare0 < 1.0E-6;
+      boolean zeroColumn1 = columnScaleSquare1 < 1.0E-6;
       Matrix3f u012s = input.rotate(v);
       u.identity();
       Quaternionf tmpQ = new Quaternionf();
@@ -127,6 +128,7 @@ public class MatrixUtil {
       Matrix3f u12s = p.aroundZ(scratch);
       u.mul(qt0);
       u12s.transpose().mul(u012s);
+      scratch = u012s;
       if (zeroColumn0) {
          p = qrGivensQuat(u12s.m22, -u12s.m20);
       } else {
@@ -135,9 +137,10 @@ public class MatrixUtil {
 
       p = p.inverse();
       Quaternionf qt1 = p.aroundY(tmpQ);
-      Matrix3f u2s = p.aroundY(u012s);
+      Matrix3f u2s = p.aroundY(scratch);
       u.mul(qt1);
       u2s.transpose().mul(u12s);
+      scratch = u12s;
       if (zeroColumn1) {
          p = qrGivensQuat(u2s.m22, -u2s.m21);
       } else {
@@ -145,7 +148,7 @@ public class MatrixUtil {
       }
 
       Quaternionf qt2 = p.aroundX(tmpQ);
-      Matrix3f sm = p.aroundX(u12s);
+      Matrix3f sm = p.aroundX(scratch);
       u.mul(qt2);
       sm.transpose().mul(u2s);
       s.set(sm.m00, sm.m11, sm.m22);

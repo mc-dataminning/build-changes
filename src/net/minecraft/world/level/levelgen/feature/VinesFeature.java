@@ -21,15 +21,15 @@ public record VinesFeature() implements Feature {
    public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
       if (!level.isEmptyBlock(origin)) {
          return false;
-      } else {
-         for (Direction direction : Direction.values()) {
-            if (direction != Direction.DOWN && VineBlock.isAcceptableNeighbour(level, origin.relative(direction), direction)) {
-               level.setBlock(origin, Blocks.VINE.defaultBlockState().setValue(VineBlock.getPropertyForFace(direction), Boolean.valueOf(true)), 2);
-               return true;
-            }
-         }
-
-         return false;
       }
+
+      for (Direction direction : Direction.values()) {
+         if (direction != Direction.DOWN && VineBlock.isAcceptableNeighbour(level, origin.relative(direction), direction)) {
+            level.setBlock(origin, Blocks.VINE.defaultBlockState().setValue(VineBlock.getPropertyForFace(direction), true), 2);
+            return true;
+         }
+      }
+
+      return false;
    }
 }

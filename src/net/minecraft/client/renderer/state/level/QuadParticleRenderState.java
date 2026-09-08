@@ -55,8 +55,8 @@ public class QuadParticleRenderState implements ParticleGroupRenderState {
       if (storage != null) {
          storage.forEachParticle(
             (x, y, z, xRot, yRot, zRot, wRot, scale, u0, u1, v0, v1, color, lightCoords) -> this.renderRotatedQuad(
-                  bufferBuilder, x, y, z, xRot, yRot, zRot, wRot, scale, u0, u1, v0, v1, color, lightCoords
-               )
+               bufferBuilder, x, y, z, xRot, yRot, zRot, wRot, scale, u0, u1, v0, v1, color, lightCoords
+            )
          );
       }
    }

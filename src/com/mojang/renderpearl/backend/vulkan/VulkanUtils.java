@@ -326,6 +326,6 @@ public class VulkanUtils {
       return deviceFeatures;
    }
 
-   public static record DeviceUUID(int driverID, int vendorID, int deviceID) {
+   public record DeviceUUID(int driverID, int vendorID, int deviceID) {
    }
 }

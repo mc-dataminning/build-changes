@@ -28,12 +28,12 @@ public record EquipmentClientInfo(
    private static final Codec<List<EquipmentClientInfo.Layer>> LAYER_LIST_CODEC = ExtraCodecs.nonEmptyList(EquipmentClientInfo.Layer.CODEC.listOf());
    public static final Codec<EquipmentClientInfo> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ExtraCodecs.nonEmptyMap(Codec.unboundedMap(EquipmentClientInfo.LayerType.CODEC, LAYER_LIST_CODEC))
-                  .fieldOf("layers")
-                  .forGetter(EquipmentClientInfo::layers),
-               EquipmentClientInfo.TrimOverride.CODEC.listOf().optionalFieldOf("trim_overrides", List.of()).forGetter(EquipmentClientInfo::trimOverrides)
-            )
-            .apply(i, EquipmentClientInfo::new)
+            ExtraCodecs.nonEmptyMap(Codec.unboundedMap(EquipmentClientInfo.LayerType.CODEC, LAYER_LIST_CODEC))
+               .fieldOf("layers")
+               .forGetter(EquipmentClientInfo::layers),
+            EquipmentClientInfo.TrimOverride.CODEC.listOf().optionalFieldOf("trim_overrides", List.of()).forGetter(EquipmentClientInfo::trimOverrides)
+         )
+         .apply(i, EquipmentClientInfo::new)
    );
 
    public static EquipmentClientInfo.Builder builder() {
@@ -86,21 +86,21 @@ public record EquipmentClientInfo(
       }
    }
 
-   public static record Dyeable(Optional<Integer> colorWhenUndyed) {
+   public record Dyeable(Optional<Integer> colorWhenUndyed) {
       public static final Codec<EquipmentClientInfo.Dyeable> CODEC = RecordCodecBuilder.create(
          i -> i.group(ExtraCodecs.RGB_COLOR_CODEC.optionalFieldOf("color_when_undyed").forGetter(EquipmentClientInfo.Dyeable::colorWhenUndyed))
-               .apply(i, EquipmentClientInfo.Dyeable::new)
+            .apply(i, EquipmentClientInfo.Dyeable::new)
       );
    }
 
-   public static record Layer(Identifier textureId, Optional<EquipmentClientInfo.Dyeable> dyeable, boolean usePlayerTexture) {
+   public record Layer(Identifier textureId, Optional<EquipmentClientInfo.Dyeable> dyeable, boolean usePlayerTexture) {
       public static final Codec<EquipmentClientInfo.Layer> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Identifier.CODEC.fieldOf("texture").forGetter(EquipmentClientInfo.Layer::textureId),
-                  EquipmentClientInfo.Dyeable.CODEC.optionalFieldOf("dyeable").forGetter(EquipmentClientInfo.Layer::dyeable),
-                  Codec.BOOL.optionalFieldOf("use_player_texture", false).forGetter(EquipmentClientInfo.Layer::usePlayerTexture)
-               )
-               .apply(i, EquipmentClientInfo.Layer::new)
+               Identifier.CODEC.fieldOf("texture").forGetter(EquipmentClientInfo.Layer::textureId),
+               EquipmentClientInfo.Dyeable.CODEC.optionalFieldOf("dyeable").forGetter(EquipmentClientInfo.Layer::dyeable),
+               Codec.BOOL.optionalFieldOf("use_player_texture", false).forGetter(EquipmentClientInfo.Layer::usePlayerTexture)
+            )
+            .apply(i, EquipmentClientInfo.Layer::new)
       );
 
       public Layer(final Identifier textureId) {
@@ -122,7 +122,7 @@ public record EquipmentClientInfo(
       }
    }
 
-   public static enum LayerType implements StringRepresentable {
+   public enum LayerType implements StringRepresentable {
       HUMANOID("humanoid"),
       HUMANOID_LEGGINGS("humanoid_leggings"),
       HUMANOID_BABY("humanoid_baby"),
@@ -146,7 +146,7 @@ public record EquipmentClientInfo(
       public static final Codec<EquipmentClientInfo.LayerType> CODEC = StringRepresentable.fromEnum(EquipmentClientInfo.LayerType::values);
       private final String id;
 
-      private LayerType(final String id) {
+      LayerType(final String id) {
          this.id = id;
       }
 
@@ -160,14 +160,14 @@ public record EquipmentClientInfo(
       }
    }
 
-   public static record TrimOverride(EquipmentClientInfo.TrimPredicate predicate, Optional<Identifier> textureId, Optional<Identifier> paletteId) {
+   public record TrimOverride(EquipmentClientInfo.TrimPredicate predicate, Optional<Identifier> textureId, Optional<Identifier> paletteId) {
       public static final Codec<EquipmentClientInfo.TrimOverride> CODEC = RecordCodecBuilder.create(
             i -> i.group(
-                     EquipmentClientInfo.TrimPredicate.CODEC.fieldOf("when").forGetter(EquipmentClientInfo.TrimOverride::predicate),
-                     Identifier.CODEC.optionalFieldOf("texture").forGetter(EquipmentClientInfo.TrimOverride::textureId),
-                     Identifier.CODEC.optionalFieldOf("palette").forGetter(EquipmentClientInfo.TrimOverride::paletteId)
-                  )
-                  .apply(i, EquipmentClientInfo.TrimOverride::new)
+                  EquipmentClientInfo.TrimPredicate.CODEC.fieldOf("when").forGetter(EquipmentClientInfo.TrimOverride::predicate),
+                  Identifier.CODEC.optionalFieldOf("texture").forGetter(EquipmentClientInfo.TrimOverride::textureId),
+                  Identifier.CODEC.optionalFieldOf("palette").forGetter(EquipmentClientInfo.TrimOverride::paletteId)
+               )
+               .apply(i, EquipmentClientInfo.TrimOverride::new)
          )
          .validate(EquipmentClientInfo.TrimOverride::validate);
 
@@ -178,13 +178,13 @@ public record EquipmentClientInfo(
       }
    }
 
-   public static record TrimPredicate(Optional<ResourceKey<TrimMaterial>> material, Optional<ResourceKey<TrimPattern>> pattern) {
+   public record TrimPredicate(Optional<ResourceKey<TrimMaterial>> material, Optional<ResourceKey<TrimPattern>> pattern) {
       public static final Codec<EquipmentClientInfo.TrimPredicate> CODEC = RecordCodecBuilder.create(
             i -> i.group(
-                     ResourceKey.codec(Registries.TRIM_MATERIAL).optionalFieldOf("material").forGetter(EquipmentClientInfo.TrimPredicate::material),
-                     ResourceKey.codec(Registries.TRIM_PATTERN).optionalFieldOf("pattern").forGetter(EquipmentClientInfo.TrimPredicate::pattern)
-                  )
-                  .apply(i, EquipmentClientInfo.TrimPredicate::new)
+                  ResourceKey.codec(Registries.TRIM_MATERIAL).optionalFieldOf("material").forGetter(EquipmentClientInfo.TrimPredicate::material),
+                  ResourceKey.codec(Registries.TRIM_PATTERN).optionalFieldOf("pattern").forGetter(EquipmentClientInfo.TrimPredicate::pattern)
+               )
+               .apply(i, EquipmentClientInfo.TrimPredicate::new)
          )
          .validate(EquipmentClientInfo.TrimPredicate::validate);
 

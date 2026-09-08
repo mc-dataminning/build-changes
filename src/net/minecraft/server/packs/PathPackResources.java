@@ -37,9 +37,8 @@ public class PathPackResources extends AbstractPackMetadataResources implements 
       this.root = root;
    }
 
-   @Nullable
    @Override
-   public IoSupplier<InputStream> getRootResource(final String... path) {
+   public @Nullable IoSupplier<InputStream> getRootResource(final String... path) {
       FileUtil.validatePath(path);
       Path pathInRoot = FileUtil.resolvePath(this.root, List.of(path));
       return Files.exists(pathInRoot) ? IoSupplier.create(pathInRoot) : null;
@@ -48,15 +47,17 @@ public class PathPackResources extends AbstractPackMetadataResources implements 
    public static boolean validatePath(final Path path) {
       if (!SharedConstants.DEBUG_VALIDATE_RESOURCE_PATH_CASE) {
          return true;
-      } else if (path.getFileSystem() != FileSystems.getDefault()) {
+      }
+
+      if (path.getFileSystem() != FileSystems.getDefault()) {
          return true;
-      } else {
-         try {
-            return path.toRealPath().endsWith(path);
-         } catch (IOException var2) {
-            LOGGER.warn("Failed to resolve real path for {}", path, var2);
-            return false;
-         }
+      }
+
+      try {
+         return path.toRealPath().endsWith(path);
+      } catch (IOException e) {
+         LOGGER.warn("Failed to resolve real path for {}", path, e);
+         return false;
       }
    }
 
@@ -64,15 +65,13 @@ public class PathPackResources extends AbstractPackMetadataResources implements 
       return this.root.resolve(type.getDirectory());
    }
 
-   @Nullable
    @Override
-   public IoSupplier<InputStream> getResource(final PackType type, final Identifier location) {
+   public @Nullable IoSupplier<InputStream> getResource(final PackType type, final Identifier location) {
       Path topDir = this.topPackDir(type);
       return getResource(topDir, location);
    }
 
-   @Nullable
-   public static IoSupplier<InputStream> getResource(final Path topDir, final Identifier location) {
+   public static @Nullable IoSupplier<InputStream> getResource(final Path topDir, final Identifier location) {
       Path namespaceDir = topDir.resolve(location.getNamespace());
       return (IoSupplier<InputStream>)FileUtil.decomposePath(location.getPath()).mapOrElse(decomposedPath -> {
          Path resolvedPath = FileUtil.resolvePath(namespaceDir, decomposedPath);
@@ -83,8 +82,7 @@ public class PathPackResources extends AbstractPackMetadataResources implements 
       });
    }
 
-   @Nullable
-   private static IoSupplier<InputStream> returnFileIfExists(final Path resolvedPath) {
+   private static @Nullable IoSupplier<InputStream> returnFileIfExists(final Path resolvedPath) {
       return Files.exists(resolvedPath) && validatePath(resolvedPath) ? IoSupplier.create(resolvedPath) : null;
    }
 
@@ -114,9 +112,9 @@ public class PathPackResources extends AbstractPackMetadataResources implements 
                output.accept(identifier, IoSupplier.create(file));
             }
          });
-      } catch (NotDirectoryException | NoSuchFileException var10) {
-      } catch (IOException var11) {
-         LOGGER.error("Failed to list path {}", targetPath, var11);
+      } catch (NoSuchFileException | NotDirectoryException var10) {
+      } catch (IOException e) {
+         LOGGER.error("Failed to list path {}", targetPath, e);
       }
    }
 
@@ -148,9 +146,9 @@ public class PathPackResources extends AbstractPackMetadataResources implements 
                }
             }
          }
-      } catch (NotDirectoryException | NoSuchFileException var8) {
-      } catch (IOException var9) {
-         LOGGER.error("Failed to list path {}", rootDir, var9);
+      } catch (NoSuchFileException | NotDirectoryException var8) {
+      } catch (IOException e) {
+         LOGGER.error("Failed to list path {}", rootDir, e);
       }
 
       return namespaces;
@@ -182,16 +180,16 @@ public class PathPackResources extends AbstractPackMetadataResources implements 
          List<String> overlays = metadata.overlays();
          if (overlays.isEmpty()) {
             return Stream.of(primary);
-         } else {
-            List<PackResources> overlayResources = new ArrayList<>(overlays.size());
-
-            for (String overlay : overlays) {
-               Path overlayRoot = this.content.resolve(overlay);
-               overlayResources.add(new PathPackResources(location, overlayRoot));
-            }
-
-            return Stream.of(new OverlayedPackResources(primary, overlayResources));
          }
+
+         List<PackResources> overlayResources = new ArrayList<>(overlays.size());
+
+         for (String overlay : overlays) {
+            Path overlayRoot = this.content.resolve(overlay);
+            overlayResources.add(new PathPackResources(location, overlayRoot));
+         }
+
+         return Stream.of(new OverlayedPackResources(primary, overlayResources));
       }
    }
 }

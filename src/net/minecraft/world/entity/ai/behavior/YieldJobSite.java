@@ -18,47 +18,49 @@ public class YieldJobSite {
    public static BehaviorControl<Villager> create(final float speedModifier) {
       return BehaviorBuilder.create(
          i -> i.group(
-                  i.present(MemoryModuleType.POTENTIAL_JOB_SITE),
-                  i.absent(MemoryModuleType.JOB_SITE),
-                  i.present(MemoryModuleType.NEAREST_LIVING_ENTITIES),
-                  i.registered(MemoryModuleType.WALK_TARGET),
-                  i.registered(MemoryModuleType.LOOK_TARGET)
-               )
-               .apply(
-                  i,
-                  (potentialJob, jobSite, nearestEntities, walkTarget, lookTarget) -> (level, body, timestamp) -> {
-                        if (body.isBaby()) {
-                           return false;
-                        } else if (!body.getVillagerData().profession().is(VillagerProfession.NONE)) {
-                           return false;
-                        } else {
-                           BlockPos poiPos = i.<GlobalPos>get(potentialJob).pos();
-                           Optional<Holder<PoiType>> poiType = level.getPoiManager().getType(poiPos);
-                           if (poiType.isEmpty()) {
-                              return true;
-                           } else {
-                              i.<List<LivingEntity>>get(nearestEntities)
-                                 .stream()
-                                 .filter(v -> v instanceof Villager && v != body)
-                                 .map(v -> (Villager)v)
-                                 .filter(LivingEntity::isAlive)
-                                 .filter(v -> nearbyWantsJobsite(poiType.get(), v, poiPos))
-                                 .findFirst()
-                                 .ifPresent(nearbyVillager -> {
-                                    walkTarget.erase();
-                                    lookTarget.erase();
-                                    potentialJob.erase();
-                                    if (nearbyVillager.getBrain().getMemory(MemoryModuleType.JOB_SITE).isEmpty()) {
-                                       BehaviorUtils.setWalkAndLookTargetMemories(nearbyVillager, poiPos, speedModifier, 1);
-                                       nearbyVillager.getBrain().setMemory(MemoryModuleType.POTENTIAL_JOB_SITE, GlobalPos.of(level.dimension(), poiPos));
-                                       level.debugSynchronizers().updatePoi(poiPos);
-                                    }
-                                 });
-                              return true;
-                           }
+               i.present(MemoryModuleType.POTENTIAL_JOB_SITE),
+               i.absent(MemoryModuleType.JOB_SITE),
+               i.present(MemoryModuleType.NEAREST_LIVING_ENTITIES),
+               i.registered(MemoryModuleType.WALK_TARGET),
+               i.registered(MemoryModuleType.LOOK_TARGET)
+            )
+            .apply(
+               i,
+               (potentialJob, jobSite, nearestEntities, walkTarget, lookTarget) -> (level, body, timestamp) -> {
+                  if (body.isBaby()) {
+                     return false;
+                  }
+
+                  if (!body.getVillagerData().profession().is(VillagerProfession.NONE)) {
+                     return false;
+                  }
+
+                  BlockPos poiPos = i.<GlobalPos>get(potentialJob).pos();
+                  Optional<Holder<PoiType>> poiType = level.getPoiManager().getType(poiPos);
+                  if (poiType.isEmpty()) {
+                     return true;
+                  }
+
+                  i.<List<LivingEntity>>get(nearestEntities)
+                     .stream()
+                     .filter(v -> v instanceof Villager && v != body)
+                     .map(v -> (Villager)v)
+                     .filter(LivingEntity::isAlive)
+                     .filter(v -> nearbyWantsJobsite(poiType.get(), v, poiPos))
+                     .findFirst()
+                     .ifPresent(nearbyVillager -> {
+                        walkTarget.erase();
+                        lookTarget.erase();
+                        potentialJob.erase();
+                        if (nearbyVillager.getBrain().getMemory(MemoryModuleType.JOB_SITE).isEmpty()) {
+                           BehaviorUtils.setWalkAndLookTargetMemories(nearbyVillager, poiPos, speedModifier, 1);
+                           nearbyVillager.getBrain().setMemory(MemoryModuleType.POTENTIAL_JOB_SITE, GlobalPos.of(level.dimension(), poiPos));
+                           level.debugSynchronizers().updatePoi(poiPos);
                         }
-                     }
-               )
+                     });
+                  return true;
+               }
+            )
       );
    }
 

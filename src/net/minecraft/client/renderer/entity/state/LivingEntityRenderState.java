@@ -24,15 +24,12 @@ public class LivingEntityRenderState extends EntityRenderState {
    public boolean isAutoSpinAttack;
    public boolean hasRedOverlay;
    public boolean isInvisibleToPlayer;
-   @Nullable
-   public Direction bedOrientation;
+   public @Nullable Direction bedOrientation;
    public Pose pose = Pose.STANDING;
    public final ItemStackRenderState headItem = new ItemStackRenderState();
    public float wornHeadAnimationPos;
-   @Nullable
-   public SkullBlock.Type wornHeadType;
-   @Nullable
-   public ResolvableProfile wornHeadProfile;
+   public SkullBlock.@Nullable Type wornHeadType;
+   public @Nullable ResolvableProfile wornHeadProfile;
 
    public boolean hasPose(final Pose pose) {
       return this.pose == pose;

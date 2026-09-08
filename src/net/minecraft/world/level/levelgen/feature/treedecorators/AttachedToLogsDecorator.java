@@ -15,11 +15,11 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 public class AttachedToLogsDecorator extends TreeDecorator {
    public static final MapCodec<AttachedToLogsDecorator> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter(p -> p.probability),
-               BlockStateProvider.CODEC.fieldOf("block_provider").forGetter(p -> p.blockProvider),
-               ExtraCodecs.nonEmptyList(Direction.CODEC.listOf()).fieldOf("directions").forGetter(p -> p.directions)
-            )
-            .apply(i, AttachedToLogsDecorator::new)
+            Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter(p -> p.probability),
+            BlockStateProvider.CODEC.fieldOf("block_provider").forGetter(p -> p.blockProvider),
+            ExtraCodecs.nonEmptyList(Direction.CODEC.listOf()).fieldOf("directions").forGetter(p -> p.directions)
+         )
+         .apply(i, AttachedToLogsDecorator::new)
    );
    private final float probability;
    private final Holder<BlockStateProvider> blockProvider;

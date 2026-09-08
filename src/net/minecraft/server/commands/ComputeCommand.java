@@ -2,6 +2,7 @@ package net.minecraft.server.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
@@ -30,7 +31,7 @@ public class ComputeCommand {
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
       dispatcher.register(
          LootContextSources.addContextSources(
-            (LiteralArgumentBuilder)Commands.literal("compute").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)),
+            (LiteralArgumentBuilder & ArgumentBuilder)Commands.literal("compute").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)),
             (contextDecorator, output) -> {
                output.accept(
                   Commands.literal("float")
@@ -41,8 +42,8 @@ public class ComputeCommand {
                               Commands.argument("scale", FloatArgumentType.floatArg())
                                  .executes(
                                     c -> computeAsFloat(
-                                          c, contextDecorator, ResourceOrIdArgument.getFloatProvider(c, "provider"), FloatArgumentType.getFloat(c, "scale")
-                                       )
+                                       c, contextDecorator, ResourceOrIdArgument.getFloatProvider(c, "provider"), FloatArgumentType.getFloat(c, "scale")
+                                    )
                                  )
                            )
                      )
@@ -62,8 +63,8 @@ public class ComputeCommand {
    private static void printExactOutput(final CommandSourceStack source, final Holder<?> provider, final int result) {
       source.sendSuccess(
          () -> provider.unwrapKey()
-               .map(key -> Component.translatable("command.compute.result.named.exact", Component.translationArg(key.identifier()), result))
-               .orElseGet(() -> Component.translatable("command.compute.result.unnamed.exact", result)),
+            .map(key -> Component.translatable("command.compute.result.named.exact", Component.translationArg(key.identifier()), result))
+            .orElseGet(() -> Component.translatable("command.compute.result.unnamed.exact", result)),
          false
       );
    }
@@ -71,8 +72,8 @@ public class ComputeCommand {
    private static void printRoundedOutput(final CommandSourceStack source, final Holder<?> provider, final int result, final float original) {
       source.sendSuccess(
          () -> provider.unwrapKey()
-               .map(key -> Component.translatable("command.compute.result.named.rounded", Component.translationArg(key.identifier()), original, result))
-               .orElseGet(() -> Component.translatable("command.compute.result.unnamed.rounded", original, result)),
+            .map(key -> Component.translatable("command.compute.result.named.rounded", Component.translationArg(key.identifier()), original, result))
+            .orElseGet(() -> Component.translatable("command.compute.result.unnamed.rounded", original, result)),
          false
       );
    }
@@ -87,8 +88,8 @@ public class ComputeCommand {
          CommandSourceStack source = (CommandSourceStack)context.getSource();
          printExactOutput(source, provider, result);
          return result;
-      } catch (ArithmeticException var6) {
-         throw throwInvalidValue(provider, var6.getMessage());
+      } catch (ArithmeticException e) {
+         throw throwInvalidValue(provider, e.getMessage());
       }
    }
 
@@ -103,24 +104,24 @@ public class ComputeCommand {
       float original;
       try {
          original = provider.value().getFloatUnsafe(lootContext);
-      } catch (ArithmeticException var8) {
-         throw throwInvalidValue(provider, var8.getMessage());
+      } catch (ArithmeticException e) {
+         throw throwInvalidValue(provider, e.getMessage());
       }
 
       if (!Float.isFinite(original)) {
          String invalidValue = Float.toString(original);
          throw throwInvalidValue(provider, invalidValue);
-      } else {
-         int result = Mth.floor(original * scale);
-         CommandSourceStack source = (CommandSourceStack)context.getSource();
-         if ((float)result == original) {
-            printExactOutput(source, provider, result);
-         } else {
-            printRoundedOutput(source, provider, result, original);
-         }
-
-         return result;
       }
+
+      int result = Mth.floor(original * scale);
+      CommandSourceStack source = (CommandSourceStack)context.getSource();
+      if (result == original) {
+         printExactOutput(source, provider, result);
+      } else {
+         printRoundedOutput(source, provider, result, original);
+      }
+
+      return result;
    }
 
    private static CommandSyntaxException throwInvalidValue(final Holder<?> provider, final String invalidValue) {

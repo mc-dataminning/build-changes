@@ -20,6 +20,7 @@ import org.joml.Matrix4f;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import org.joml.Vector3fc;
+import org.jspecify.annotations.Nullable;
 
 public final class ModelPart {
    public static final float DEFAULT_SCALE = 1.0F;
@@ -209,7 +210,7 @@ public final class ModelPart {
       return List.copyOf(allParts);
    }
 
-   public Function<String, ModelPart> createPartLookup() {
+   public Function<String, @Nullable ModelPart> createPartLookup() {
       Map<String, ModelPart> parts = new HashMap<>();
       parts.put("root", this);
       this.addAllChildren(parts::putIfAbsent);
@@ -282,15 +283,15 @@ public final class ModelPart {
          ModelPart.Vertex l1 = new ModelPart.Vertex(maxX, minY, maxZ, 0.0F, 8.0F);
          ModelPart.Vertex l2 = new ModelPart.Vertex(maxX, maxY, maxZ, 8.0F, 8.0F);
          ModelPart.Vertex l3 = new ModelPart.Vertex(minX, maxY, maxZ, 8.0F, 0.0F);
-         float u0 = (float)xTexOffs;
-         float u1 = (float)xTexOffs + depth;
-         float u2 = (float)xTexOffs + depth + width;
-         float u22 = (float)xTexOffs + depth + width + width;
-         float u3 = (float)xTexOffs + depth + width + depth;
-         float u4 = (float)xTexOffs + depth + width + depth + width;
-         float v0 = (float)yTexOffs;
-         float v1 = (float)yTexOffs + depth;
-         float v2 = (float)yTexOffs + depth + height;
+         float u0 = xTexOffs;
+         float u1 = xTexOffs + depth;
+         float u2 = xTexOffs + depth + width;
+         float u22 = xTexOffs + depth + width + width;
+         float u3 = xTexOffs + depth + width + depth;
+         float u4 = xTexOffs + depth + width + depth + width;
+         float v0 = yTexOffs;
+         float v1 = yTexOffs + depth;
+         float v2 = yTexOffs + depth + height;
          int pos = 0;
          if (visibleFaces.contains(Direction.DOWN)) {
             this.polygons[pos++] = new ModelPart.Polygon(new ModelPart.Vertex[]{l1, l0, t0, t1}, u1, v0, u2, v1, xTexSize, yTexSize, mirror, Direction.DOWN);
@@ -338,7 +339,7 @@ public final class ModelPart {
       }
    }
 
-   public static record Polygon(ModelPart.Vertex[] vertices, Vector3fc normal) {
+   public record Polygon(ModelPart.Vertex[] vertices, Vector3fc normal) {
       public Polygon(
          final ModelPart.Vertex[] vertices,
          final float u0,
@@ -373,7 +374,7 @@ public final class ModelPart {
       }
    }
 
-   public static record Vertex(float x, float y, float z, float u, float v) {
+   public record Vertex(float x, float y, float z, float u, float v) {
       public static final float SCALE_FACTOR = 16.0F;
 
       public ModelPart.Vertex remap(final float u, final float v) {

@@ -18,8 +18,7 @@ public interface Toast {
 
    void update(final ToastManager manager, final long fullyVisibleForMs);
 
-   @Nullable
-   default SoundEvent getSoundEvent() {
+   default @Nullable SoundEvent getSoundEvent() {
       return null;
    }
 
@@ -30,11 +29,11 @@ public interface Toast {
    }
 
    default float xPos(final int screenWidth, final float visiblePortion) {
-      return (float)screenWidth - (float)this.width() * visiblePortion;
+      return screenWidth - this.width() * visiblePortion;
    }
 
    default float yPos(final int firstSlotIndex) {
-      return (float)(firstSlotIndex * this.height());
+      return firstSlotIndex * this.height();
    }
 
    default int width() {
@@ -52,13 +51,13 @@ public interface Toast {
    default void onFinishedRendering() {
    }
 
-   public static enum Visibility {
+   enum Visibility {
       SHOW(SoundEvents.UI_TOAST_IN),
       HIDE(SoundEvents.UI_TOAST_OUT);
 
       private final SoundEvent soundEvent;
 
-      private Visibility(final SoundEvent soundEvent) {
+      Visibility(final SoundEvent soundEvent) {
          this.soundEvent = soundEvent;
       }
 

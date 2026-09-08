@@ -33,18 +33,18 @@ public abstract class EntityRenameFix extends DataFix {
          oldType,
          newType,
          ops -> input -> {
-               String oldName = (String)input.getFirst();
-               Type<?> oldEntityType = patchedInputTypes.apply(oldName);
-               Pair<String, Typed<?>> newEntity = this.fix(oldName, this.getEntity(input.getSecond(), ops, oldEntityType));
-               Type<?> expectedType = (Type<?>)newType.types().get(newEntity.getFirst());
-               if (!expectedType.equals(((Typed)newEntity.getSecond()).getType(), true, true)) {
-                  throw new IllegalStateException(
-                     String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", expectedType, ((Typed)newEntity.getSecond()).getType())
-                  );
-               } else {
-                  return Pair.of((String)newEntity.getFirst(), ((Typed)newEntity.getSecond()).getValue());
-               }
+            String oldName = (String)input.getFirst();
+            Type<?> oldEntityType = patchedInputTypes.apply(oldName);
+            Pair<String, Typed<?>> newEntity = this.fix(oldName, this.getEntity(input.getSecond(), ops, oldEntityType));
+            Type<?> expectedType = (Type<?>)newType.types().get(newEntity.getFirst());
+            if (!expectedType.equals(((Typed)newEntity.getSecond()).getType(), true, true)) {
+               throw new IllegalStateException(
+                  String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", expectedType, ((Typed)newEntity.getSecond()).getType())
+               );
+            } else {
+               return Pair.of((String)newEntity.getFirst(), ((Typed)newEntity.getSecond()).getValue());
             }
+         }
       );
    }
 

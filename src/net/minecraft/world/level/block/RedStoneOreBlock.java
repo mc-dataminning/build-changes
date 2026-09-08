@@ -25,7 +25,7 @@ public class RedStoneOreBlock extends Block {
 
    public RedStoneOreBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.defaultBlockState().setValue(LIT, Boolean.valueOf(false)));
+      this.registerDefaultState(this.defaultBlockState().setValue(LIT, false));
    }
 
    @Override
@@ -59,15 +59,15 @@ public class RedStoneOreBlock extends Block {
          interact(state, level, pos);
       }
 
-      return (InteractionResult)(itemStack.getItem() instanceof BlockItem && new BlockPlaceContext(player, hand, itemStack, hitResult).canPlace()
+      return itemStack.getItem() instanceof BlockItem && new BlockPlaceContext(player, hand, itemStack, hitResult).canPlace()
          ? InteractionResult.PASS
-         : InteractionResult.SUCCESS);
+         : InteractionResult.SUCCESS;
    }
 
    private static void interact(final BlockState state, final Level level, final BlockPos pos) {
       spawnParticles(level, pos);
       if (!state.getValue(LIT)) {
-         level.setBlockAndUpdate(pos, state.setValue(LIT, Boolean.valueOf(true)));
+         level.setBlockAndUpdate(pos, state.setValue(LIT, true));
       }
    }
 
@@ -79,7 +79,7 @@ public class RedStoneOreBlock extends Block {
    @Override
    protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
       if (state.getValue(LIT)) {
-         level.setBlockAndUpdate(pos, state.setValue(LIT, Boolean.valueOf(false)));
+         level.setBlockAndUpdate(pos, state.setValue(LIT, false));
       }
    }
 
@@ -106,10 +106,10 @@ public class RedStoneOreBlock extends Block {
          BlockPos relative = pos.relative(direction);
          if (!level.getBlockState(relative).isSolidRender()) {
             Direction.Axis axis = direction.getAxis();
-            double dx = axis == Direction.Axis.X ? 0.5 + 0.5625 * (double)direction.getStepX() : (double)random.nextFloat();
-            double dy = axis == Direction.Axis.Y ? 0.5 + 0.5625 * (double)direction.getStepY() : (double)random.nextFloat();
-            double dz = axis == Direction.Axis.Z ? 0.5 + 0.5625 * (double)direction.getStepZ() : (double)random.nextFloat();
-            level.addParticle(DustParticleOptions.REDSTONE, (double)pos.getX() + dx, (double)pos.getY() + dy, (double)pos.getZ() + dz, 0.0, 0.0, 0.0);
+            double dx = axis == Direction.Axis.X ? 0.5 + 0.5625 * direction.getStepX() : random.nextFloat();
+            double dy = axis == Direction.Axis.Y ? 0.5 + 0.5625 * direction.getStepY() : random.nextFloat();
+            double dz = axis == Direction.Axis.Z ? 0.5 + 0.5625 * direction.getStepZ() : random.nextFloat();
+            level.addParticle(DustParticleOptions.REDSTONE, pos.getX() + dx, pos.getY() + dy, pos.getZ() + dz, 0.0, 0.0, 0.0);
          }
       }
    }

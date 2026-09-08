@@ -46,11 +46,10 @@ public abstract class AbstractBedBlock extends HorizontalDirectionalBlock {
 
    public AbstractBedBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(PART, BedPart.FOOT).setValue(OCCUPIED, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(PART, BedPart.FOOT).setValue(OCCUPIED, false));
    }
 
-   @Nullable
-   public static Direction getBedOrientation(final BlockGetter level, final BlockPos pos) {
+   public static @Nullable Direction getBedOrientation(final BlockGetter level, final BlockPos pos) {
       BlockState blockState = level.getBlockState(pos);
       return blockState.getBlock() instanceof AbstractBedBlock ? blockState.getValue(FACING) : null;
    }
@@ -72,46 +71,48 @@ public abstract class AbstractBedBlock extends HorizontalDirectionalBlock {
    public OptionalDouble getSleepHeight(final BlockState state, final Level level, final BlockPos pos) {
       if (!state.is(this)) {
          return OptionalDouble.empty();
-      } else {
-         VoxelShape shape = state.getShape(level, pos);
-         return shape.isEmpty() ? OptionalDouble.empty() : OptionalDouble.of(shape.max(Direction.Axis.Y));
       }
+
+      VoxelShape shape = state.getShape(level, pos);
+      return shape.isEmpty() ? OptionalDouble.empty() : OptionalDouble.of(shape.max(Direction.Axis.Y));
    }
 
    @Override
    protected InteractionResult useWithoutItem(BlockState state, final Level level, BlockPos pos, final Player player, final BlockHitResult hitResult) {
       if (level.isClientSide()) {
          return InteractionResult.SUCCESS_SERVER;
-      } else {
-         BedPart part = state.getValue(PART);
-         BlockState otherState = level.getBlockState(pos.relative(getNeighbourDirection(part, state.getValue(FACING))));
-         if (otherState.is(this) && otherState.getValue(PART) != part) {
-            if (part != BedPart.HEAD) {
-               pos = pos.relative(state.getValue(FACING));
-               state = level.getBlockState(pos);
-            }
+      }
 
-            BedRule bedRule = this.getBedRule(level, pos);
-            if (bedRule.destroyOnUse()) {
-               bedRule.errorMessage().ifPresent(player::sendOverlayMessage);
-               return this.destroyOnUse(state, level, pos, player);
-            } else if (state.getValue(OCCUPIED)) {
-               if (!this.kickVillagerOutOfBed(level, pos)) {
-                  player.sendOverlayMessage(Component.translatable("block.minecraft.bed.occupied"));
-               }
-
-               return InteractionResult.SUCCESS_SERVER;
-            } else {
-               player.startSleepInBed(this, state, bedRule, pos).ifLeft(problem -> {
-                  if (problem.message() != null) {
-                     player.sendOverlayMessage(problem.message());
-                  }
-               });
-               return InteractionResult.SUCCESS_SERVER;
-            }
-         } else {
-            return InteractionResult.CONSUME;
+      BedPart part = state.getValue(PART);
+      BlockState otherState = level.getBlockState(pos.relative(getNeighbourDirection(part, state.getValue(FACING))));
+      if (otherState.is(this) && otherState.getValue(PART) != part) {
+         if (part != BedPart.HEAD) {
+            pos = pos.relative(state.getValue(FACING));
+            state = level.getBlockState(pos);
          }
+
+         BedRule bedRule = this.getBedRule(level, pos);
+         if (bedRule.destroyOnUse()) {
+            bedRule.errorMessage().ifPresent(player::sendOverlayMessage);
+            return this.destroyOnUse(state, level, pos, player);
+         }
+
+         if (state.getValue(OCCUPIED)) {
+            if (!this.kickVillagerOutOfBed(level, pos)) {
+               player.sendOverlayMessage(Component.translatable("block.minecraft.bed.occupied"));
+            }
+
+            return InteractionResult.SUCCESS_SERVER;
+         } else {
+            player.startSleepInBed(this, state, bedRule, pos).ifLeft(problem -> {
+               if (problem.message() != null) {
+                  player.sendOverlayMessage(problem.message());
+               }
+            });
+            return InteractionResult.SUCCESS_SERVER;
+         }
+      } else {
+         return InteractionResult.CONSUME;
       }
    }
 
@@ -126,10 +127,10 @@ public abstract class AbstractBedBlock extends HorizontalDirectionalBlock {
       List<Villager> villagers = level.getEntitiesOfClass(Villager.class, new AABB(pos), LivingEntity::isSleeping);
       if (villagers.isEmpty()) {
          return false;
-      } else {
-         villagers.get(0).stopSleeping();
-         return true;
       }
+
+      villagers.get(0).stopSleeping();
+      return true;
    }
 
    @Override
@@ -173,9 +174,8 @@ public abstract class AbstractBedBlock extends HorizontalDirectionalBlock {
       return super.playerWillDestroy(level, pos, state, player);
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       Direction facing = context.getHorizontalDirection();
       BlockPos pos = context.getClickedPos();
       BlockPos relative = pos.relative(facing);
@@ -206,11 +206,11 @@ public abstract class AbstractBedBlock extends HorizontalDirectionalBlock {
       Direction side = right.isFacingAngle(yaw) ? right.getOpposite() : right;
       if (isBunkBed(level, pos)) {
          return findBunkBedStandUpPosition(type, level, pos, forward, side);
-      } else {
-         int[][] offsets = bedStandUpOffsets(forward, side);
-         Optional<Vec3> safePosition = findStandUpPositionAtOffset(type, level, pos, offsets, true);
-         return safePosition.isPresent() ? safePosition : findStandUpPositionAtOffset(type, level, pos, offsets, false);
       }
+
+      int[][] offsets = bedStandUpOffsets(forward, side);
+      Optional<Vec3> safePosition = findStandUpPositionAtOffset(type, level, pos, offsets, true);
+      return safePosition.isPresent() ? safePosition : findStandUpPositionAtOffset(type, level, pos, offsets, false);
    }
 
    private static Optional<Vec3> findBunkBedStandUpPosition(
@@ -220,27 +220,27 @@ public abstract class AbstractBedBlock extends HorizontalDirectionalBlock {
       Optional<Vec3> safePosition = findStandUpPositionAtOffset(type, level, pos, offsets, true);
       if (safePosition.isPresent()) {
          return safePosition;
-      } else {
-         BlockPos below = pos.below();
-         Optional<Vec3> belowSafePosition = findStandUpPositionAtOffset(type, level, below, offsets, true);
-         if (belowSafePosition.isPresent()) {
-            return belowSafePosition;
-         } else {
-            int[][] aboveOffsets = bedAboveStandUpOffsets(forward);
-            Optional<Vec3> aboveSafePosition = findStandUpPositionAtOffset(type, level, pos, aboveOffsets, true);
-            if (aboveSafePosition.isPresent()) {
-               return aboveSafePosition;
-            } else {
-               Optional<Vec3> unsafePosition = findStandUpPositionAtOffset(type, level, pos, offsets, false);
-               if (unsafePosition.isPresent()) {
-                  return unsafePosition;
-               } else {
-                  Optional<Vec3> belowUnsafePosition = findStandUpPositionAtOffset(type, level, below, offsets, false);
-                  return belowUnsafePosition.isPresent() ? belowUnsafePosition : findStandUpPositionAtOffset(type, level, pos, aboveOffsets, false);
-               }
-            }
-         }
       }
+
+      BlockPos below = pos.below();
+      Optional<Vec3> belowSafePosition = findStandUpPositionAtOffset(type, level, below, offsets, true);
+      if (belowSafePosition.isPresent()) {
+         return belowSafePosition;
+      }
+
+      int[][] aboveOffsets = bedAboveStandUpOffsets(forward);
+      Optional<Vec3> aboveSafePosition = findStandUpPositionAtOffset(type, level, pos, aboveOffsets, true);
+      if (aboveSafePosition.isPresent()) {
+         return aboveSafePosition;
+      }
+
+      Optional<Vec3> unsafePosition = findStandUpPositionAtOffset(type, level, pos, offsets, false);
+      if (unsafePosition.isPresent()) {
+         return unsafePosition;
+      }
+
+      Optional<Vec3> belowUnsafePosition = findStandUpPositionAtOffset(type, level, below, offsets, false);
+      return belowUnsafePosition.isPresent() ? belowUnsafePosition : findStandUpPositionAtOffset(type, level, pos, aboveOffsets, false);
    }
 
    private static Optional<Vec3> findStandUpPositionAtOffset(
@@ -265,7 +265,7 @@ public abstract class AbstractBedBlock extends HorizontalDirectionalBlock {
    }
 
    @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, @Nullable final LivingEntity by, final ItemStack itemStack) {
+   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
       super.setPlacedBy(level, pos, state, by, itemStack);
       BlockPos otherPos = pos.relative(state.getValue(FACING));
       level.setBlockAndUpdate(otherPos, state.setValue(PART, BedPart.HEAD));

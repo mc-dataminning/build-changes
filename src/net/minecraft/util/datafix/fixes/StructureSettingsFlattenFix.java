@@ -22,11 +22,11 @@ public class StructureSettingsFlattenFix extends DataFix {
          "StructureSettingsFlatten",
          worldGenSettingsType,
          input -> input.updateTyped(
-               dimensions,
-               typed -> Util.writeAndReadTypedOrThrow(
-                     typed, dimensions.type(), serialized -> serialized.updateMapValues(StructureSettingsFlattenFix::fixDimension)
-                  )
+            dimensions,
+            typed -> Util.writeAndReadTypedOrThrow(
+               typed, dimensions.type(), serialized -> serialized.updateMapValues(StructureSettingsFlattenFix::fixDimension)
             )
+         )
       );
    }
 

@@ -75,19 +75,19 @@ public class PlaceCommand {
                               ((RequiredArgumentBuilder)Commands.argument("feature", ResourceOrIdArgument.feature(context))
                                     .executes(
                                        c -> placeFeature(
-                                             (CommandSourceStack)c.getSource(),
-                                             ResourceOrIdArgument.getFeature(c, "feature"),
-                                             BlockPos.containing(((CommandSourceStack)c.getSource()).getPosition())
-                                          )
+                                          (CommandSourceStack)c.getSource(),
+                                          ResourceOrIdArgument.getFeature(c, "feature"),
+                                          BlockPos.containing(((CommandSourceStack)c.getSource()).getPosition())
+                                       )
                                     ))
                                  .then(
                                     Commands.argument("pos", BlockPosArgument.blockPos())
                                        .executes(
                                           c -> placeFeature(
-                                                (CommandSourceStack)c.getSource(),
-                                                ResourceOrIdArgument.getFeature(c, "feature"),
-                                                BlockPosArgument.getLoadedBlockPos(c, "pos")
-                                             )
+                                             (CommandSourceStack)c.getSource(),
+                                             ResourceOrIdArgument.getFeature(c, "feature"),
+                                             BlockPosArgument.getLoadedBlockPos(c, "pos")
+                                          )
                                        )
                                  )
                            )
@@ -102,23 +102,23 @@ public class PlaceCommand {
                                        ((RequiredArgumentBuilder)Commands.argument("max_depth", IntegerArgumentType.integer(1, 20))
                                              .executes(
                                                 c -> placeJigsaw(
-                                                      (CommandSourceStack)c.getSource(),
-                                                      ResourceKeyArgument.getStructureTemplatePool(c, "pool"),
-                                                      IdentifierArgument.getId(c, "target"),
-                                                      IntegerArgumentType.getInteger(c, "max_depth"),
-                                                      BlockPos.containing(((CommandSourceStack)c.getSource()).getPosition())
-                                                   )
+                                                   (CommandSourceStack)c.getSource(),
+                                                   ResourceKeyArgument.getStructureTemplatePool(c, "pool"),
+                                                   IdentifierArgument.getId(c, "target"),
+                                                   IntegerArgumentType.getInteger(c, "max_depth"),
+                                                   BlockPos.containing(((CommandSourceStack)c.getSource()).getPosition())
+                                                )
                                              ))
                                           .then(
                                              Commands.argument("position", BlockPosArgument.blockPos())
                                                 .executes(
                                                    c -> placeJigsaw(
-                                                         (CommandSourceStack)c.getSource(),
-                                                         ResourceKeyArgument.getStructureTemplatePool(c, "pool"),
-                                                         IdentifierArgument.getId(c, "target"),
-                                                         IntegerArgumentType.getInteger(c, "max_depth"),
-                                                         BlockPosArgument.getLoadedBlockPos(c, "position")
-                                                      )
+                                                      (CommandSourceStack)c.getSource(),
+                                                      ResourceKeyArgument.getStructureTemplatePool(c, "pool"),
+                                                      IdentifierArgument.getId(c, "target"),
+                                                      IntegerArgumentType.getInteger(c, "max_depth"),
+                                                      BlockPosArgument.getLoadedBlockPos(c, "position")
+                                                   )
                                                 )
                                           )
                                     )
@@ -131,19 +131,19 @@ public class PlaceCommand {
                         ((RequiredArgumentBuilder)Commands.argument("structure", ResourceKeyArgument.key(Registries.STRUCTURE))
                               .executes(
                                  c -> placeStructure(
-                                       (CommandSourceStack)c.getSource(),
-                                       ResourceKeyArgument.getStructure(c, "structure"),
-                                       BlockPos.containing(((CommandSourceStack)c.getSource()).getPosition())
-                                    )
+                                    (CommandSourceStack)c.getSource(),
+                                    ResourceKeyArgument.getStructure(c, "structure"),
+                                    BlockPos.containing(((CommandSourceStack)c.getSource()).getPosition())
+                                 )
                               ))
                            .then(
                               Commands.argument("pos", BlockPosArgument.blockPos())
                                  .executes(
                                     c -> placeStructure(
-                                          (CommandSourceStack)c.getSource(),
-                                          ResourceKeyArgument.getStructure(c, "structure"),
-                                          BlockPosArgument.getLoadedBlockPos(c, "pos")
-                                       )
+                                       (CommandSourceStack)c.getSource(),
+                                       ResourceKeyArgument.getStructure(c, "structure"),
+                                       BlockPosArgument.getLoadedBlockPos(c, "pos")
+                                    )
                                  )
                            )
                      )
@@ -155,76 +155,90 @@ public class PlaceCommand {
                            .suggests(SUGGEST_TEMPLATES)
                            .executes(
                               c -> placeTemplate(
-                                    (CommandSourceStack)c.getSource(),
-                                    IdentifierArgument.getId(c, "template"),
-                                    BlockPos.containing(((CommandSourceStack)c.getSource()).getPosition()),
-                                    Rotation.NONE,
-                                    Mirror.NONE,
-                                    1.0F,
-                                    0,
-                                    false
-                                 )
+                                 (CommandSourceStack)c.getSource(),
+                                 IdentifierArgument.getId(c, "template"),
+                                 BlockPos.containing(((CommandSourceStack)c.getSource()).getPosition()),
+                                 Rotation.NONE,
+                                 Mirror.NONE,
+                                 1.0F,
+                                 0,
+                                 false
+                              )
                            ))
                         .then(
                            ((RequiredArgumentBuilder)Commands.argument("pos", BlockPosArgument.blockPos())
                                  .executes(
                                     c -> placeTemplate(
-                                          (CommandSourceStack)c.getSource(),
-                                          IdentifierArgument.getId(c, "template"),
-                                          BlockPosArgument.getLoadedBlockPos(c, "pos"),
-                                          Rotation.NONE,
-                                          Mirror.NONE,
-                                          1.0F,
-                                          0,
-                                          false
-                                       )
+                                       (CommandSourceStack)c.getSource(),
+                                       IdentifierArgument.getId(c, "template"),
+                                       BlockPosArgument.getLoadedBlockPos(c, "pos"),
+                                       Rotation.NONE,
+                                       Mirror.NONE,
+                                       1.0F,
+                                       0,
+                                       false
+                                    )
                                  ))
                               .then(
                                  ((RequiredArgumentBuilder)Commands.argument("rotation", TemplateRotationArgument.templateRotation())
                                        .executes(
                                           c -> placeTemplate(
-                                                (CommandSourceStack)c.getSource(),
-                                                IdentifierArgument.getId(c, "template"),
-                                                BlockPosArgument.getLoadedBlockPos(c, "pos"),
-                                                TemplateRotationArgument.getRotation(c, "rotation"),
-                                                Mirror.NONE,
-                                                1.0F,
-                                                0,
-                                                false
-                                             )
+                                             (CommandSourceStack)c.getSource(),
+                                             IdentifierArgument.getId(c, "template"),
+                                             BlockPosArgument.getLoadedBlockPos(c, "pos"),
+                                             TemplateRotationArgument.getRotation(c, "rotation"),
+                                             Mirror.NONE,
+                                             1.0F,
+                                             0,
+                                             false
+                                          )
                                        ))
                                     .then(
                                        ((RequiredArgumentBuilder)Commands.argument("mirror", TemplateMirrorArgument.templateMirror())
                                              .executes(
                                                 c -> placeTemplate(
-                                                      (CommandSourceStack)c.getSource(),
-                                                      IdentifierArgument.getId(c, "template"),
-                                                      BlockPosArgument.getLoadedBlockPos(c, "pos"),
-                                                      TemplateRotationArgument.getRotation(c, "rotation"),
-                                                      TemplateMirrorArgument.getMirror(c, "mirror"),
-                                                      1.0F,
-                                                      0,
-                                                      false
-                                                   )
+                                                   (CommandSourceStack)c.getSource(),
+                                                   IdentifierArgument.getId(c, "template"),
+                                                   BlockPosArgument.getLoadedBlockPos(c, "pos"),
+                                                   TemplateRotationArgument.getRotation(c, "rotation"),
+                                                   TemplateMirrorArgument.getMirror(c, "mirror"),
+                                                   1.0F,
+                                                   0,
+                                                   false
+                                                )
                                              ))
                                           .then(
                                              ((RequiredArgumentBuilder)Commands.argument("integrity", FloatArgumentType.floatArg(0.0F, 1.0F))
                                                    .executes(
                                                       c -> placeTemplate(
-                                                            (CommandSourceStack)c.getSource(),
-                                                            IdentifierArgument.getId(c, "template"),
-                                                            BlockPosArgument.getLoadedBlockPos(c, "pos"),
-                                                            TemplateRotationArgument.getRotation(c, "rotation"),
-                                                            TemplateMirrorArgument.getMirror(c, "mirror"),
-                                                            FloatArgumentType.getFloat(c, "integrity"),
-                                                            0,
-                                                            false
-                                                         )
+                                                         (CommandSourceStack)c.getSource(),
+                                                         IdentifierArgument.getId(c, "template"),
+                                                         BlockPosArgument.getLoadedBlockPos(c, "pos"),
+                                                         TemplateRotationArgument.getRotation(c, "rotation"),
+                                                         TemplateMirrorArgument.getMirror(c, "mirror"),
+                                                         FloatArgumentType.getFloat(c, "integrity"),
+                                                         0,
+                                                         false
+                                                      )
                                                    ))
                                                 .then(
                                                    ((RequiredArgumentBuilder)Commands.argument("seed", IntegerArgumentType.integer())
                                                          .executes(
                                                             c -> placeTemplate(
+                                                               (CommandSourceStack)c.getSource(),
+                                                               IdentifierArgument.getId(c, "template"),
+                                                               BlockPosArgument.getLoadedBlockPos(c, "pos"),
+                                                               TemplateRotationArgument.getRotation(c, "rotation"),
+                                                               TemplateMirrorArgument.getMirror(c, "mirror"),
+                                                               FloatArgumentType.getFloat(c, "integrity"),
+                                                               IntegerArgumentType.getInteger(c, "seed"),
+                                                               false
+                                                            )
+                                                         ))
+                                                      .then(
+                                                         Commands.literal("strict")
+                                                            .executes(
+                                                               c -> placeTemplate(
                                                                   (CommandSourceStack)c.getSource(),
                                                                   IdentifierArgument.getId(c, "template"),
                                                                   BlockPosArgument.getLoadedBlockPos(c, "pos"),
@@ -232,22 +246,8 @@ public class PlaceCommand {
                                                                   TemplateMirrorArgument.getMirror(c, "mirror"),
                                                                   FloatArgumentType.getFloat(c, "integrity"),
                                                                   IntegerArgumentType.getInteger(c, "seed"),
-                                                                  false
+                                                                  true
                                                                )
-                                                         ))
-                                                      .then(
-                                                         Commands.literal("strict")
-                                                            .executes(
-                                                               c -> placeTemplate(
-                                                                     (CommandSourceStack)c.getSource(),
-                                                                     IdentifierArgument.getId(c, "template"),
-                                                                     BlockPosArgument.getLoadedBlockPos(c, "pos"),
-                                                                     TemplateRotationArgument.getRotation(c, "rotation"),
-                                                                     TemplateMirrorArgument.getMirror(c, "mirror"),
-                                                                     FloatArgumentType.getFloat(c, "integrity"),
-                                                                     IntegerArgumentType.getInteger(c, "seed"),
-                                                                     true
-                                                                  )
                                                             )
                                                       )
                                                 )
@@ -267,17 +267,17 @@ public class PlaceCommand {
       checkLoaded(level, new ChunkPos(chunkPos.x() - 1, chunkPos.z() - 1), new ChunkPos(chunkPos.x() + 1, chunkPos.z() + 1));
       if (!feature.place(level, level.getChunkSource().getGenerator(), level.getRandom(), pos)) {
          throw ERROR_FEATURE_FAILED.create();
-      } else {
-         Optional<String> key = featureHolder.getRegisteredNameIfPresent();
-         if (key.isPresent()) {
-            String id = key.get();
-            source.sendSuccess(() -> Component.translatable("commands.place.feature.success", id, pos.getX(), pos.getY(), pos.getZ()), true);
-         } else {
-            source.sendSuccess(() -> Component.translatable("commands.place.feature.success.inline", pos.getX(), pos.getY(), pos.getZ()), true);
-         }
-
-         return 1;
       }
+
+      Optional<String> key = featureHolder.getRegisteredNameIfPresent();
+      if (key.isPresent()) {
+         String id = key.get();
+         source.sendSuccess(() -> Component.translatable("commands.place.feature.success", id, pos.getX(), pos.getY(), pos.getZ()), true);
+      } else {
+         source.sendSuccess(() -> Component.translatable("commands.place.feature.success.inline", pos.getX(), pos.getY(), pos.getZ()), true);
+      }
+
+      return 1;
    }
 
    public static int placeJigsaw(
@@ -288,10 +288,10 @@ public class PlaceCommand {
       checkLoaded(level, chunk, chunk);
       if (!JigsawPlacement.generateJigsaw(level, pool, target, maxDepth, pos, false)) {
          throw ERROR_JIGSAW_FAILED.create();
-      } else {
-         source.sendSuccess(() -> Component.translatable("commands.place.jigsaw.success", pos.getX(), pos.getY(), pos.getZ()), true);
-         return 1;
       }
+
+      source.sendSuccess(() -> Component.translatable("commands.place.jigsaw.success", pos.getX(), pos.getY(), pos.getZ()), true);
+      return 1;
    }
 
    public static int placeStructure(final CommandSourceStack source, final Holder.Reference<Structure> structureHolder, final BlockPos pos) throws CommandSyntaxException {
@@ -316,26 +316,26 @@ public class PlaceCommand {
       );
       if (!start.isValid()) {
          throw ERROR_STRUCTURE_FAILED.create();
-      } else {
-         BoundingBox boundingBox = start.getBoundingBox();
-         ChunkPos chunkMin = new ChunkPos(SectionPos.blockToSectionCoord(boundingBox.minX()), SectionPos.blockToSectionCoord(boundingBox.minZ()));
-         ChunkPos chunkMax = new ChunkPos(SectionPos.blockToSectionCoord(boundingBox.maxX()), SectionPos.blockToSectionCoord(boundingBox.maxZ()));
-         checkLoaded(level, chunkMin, chunkMax);
-         ChunkPos.rangeClosed(chunkMin, chunkMax)
-            .forEach(
-               c -> start.placeInChunk(
-                     level,
-                     level.structureManager(),
-                     chunkGenerator,
-                     level.getRandom(),
-                     new BoundingBox(c.getMinBlockX(), level.getMinY(), c.getMinBlockZ(), c.getMaxBlockX(), level.getMaxY() + 1, c.getMaxBlockZ()),
-                     c
-                  )
-            );
-         String id = structureHolder.key().identifier().toString();
-         source.sendSuccess(() -> Component.translatable("commands.place.structure.success", id, pos.getX(), pos.getY(), pos.getZ()), true);
-         return 1;
       }
+
+      BoundingBox boundingBox = start.getBoundingBox();
+      ChunkPos chunkMin = new ChunkPos(SectionPos.blockToSectionCoord(boundingBox.minX()), SectionPos.blockToSectionCoord(boundingBox.minZ()));
+      ChunkPos chunkMax = new ChunkPos(SectionPos.blockToSectionCoord(boundingBox.maxX()), SectionPos.blockToSectionCoord(boundingBox.maxZ()));
+      checkLoaded(level, chunkMin, chunkMax);
+      ChunkPos.rangeClosed(chunkMin, chunkMax)
+         .forEach(
+            c -> start.placeInChunk(
+               level,
+               level.structureManager(),
+               chunkGenerator,
+               level.getRandom(),
+               new BoundingBox(c.getMinBlockX(), level.getMinY(), c.getMinBlockZ(), c.getMaxBlockX(), level.getMaxY() + 1, c.getMaxBlockZ()),
+               c
+            )
+         );
+      String id = structureHolder.key().identifier().toString();
+      source.sendSuccess(() -> Component.translatable("commands.place.structure.success", id, pos.getX(), pos.getY(), pos.getZ()), true);
+      return 1;
    }
 
    public static int placeTemplate(
@@ -354,30 +354,30 @@ public class PlaceCommand {
       Optional<StructureTemplate> maybeStructureTemplate;
       try {
          maybeStructureTemplate = manager.get(template);
-      } catch (IdentifierException var14) {
+      } catch (IdentifierException e) {
          throw ERROR_TEMPLATE_INVALID.create(template);
       }
 
       if (maybeStructureTemplate.isEmpty()) {
          throw ERROR_TEMPLATE_INVALID.create(template);
-      } else {
-         StructureTemplate structureTemplate = maybeStructureTemplate.get();
-         checkLoaded(level, ChunkPos.containing(pos), ChunkPos.containing(pos.offset(structureTemplate.getSize())));
-         StructurePlaceSettings placeSettings = new StructurePlaceSettings().setMirror(mirror).setRotation(rotation).setKnownShape(strict);
-         if (integrity < 1.0F) {
-            placeSettings.clearProcessors().addProcessor(new BlockRotProcessor(integrity)).setRandom(StructureBlockEntity.createRandom((long)seed));
-         }
-
-         boolean placed = structureTemplate.placeInWorld(level, pos, pos, placeSettings, StructureBlockEntity.createRandom((long)seed), 2 | (strict ? 816 : 0));
-         if (!placed) {
-            throw ERROR_TEMPLATE_FAILED.create();
-         } else {
-            source.sendSuccess(
-               () -> Component.translatable("commands.place.template.success", Component.translationArg(template), pos.getX(), pos.getY(), pos.getZ()), true
-            );
-            return 1;
-         }
       }
+
+      StructureTemplate structureTemplate = maybeStructureTemplate.get();
+      checkLoaded(level, ChunkPos.containing(pos), ChunkPos.containing(pos.offset(structureTemplate.getSize())));
+      StructurePlaceSettings placeSettings = new StructurePlaceSettings().setMirror(mirror).setRotation(rotation).setKnownShape(strict);
+      if (integrity < 1.0F) {
+         placeSettings.clearProcessors().addProcessor(new BlockRotProcessor(integrity)).setRandom(StructureBlockEntity.createRandom(seed));
+      }
+
+      boolean placed = structureTemplate.placeInWorld(level, pos, pos, placeSettings, StructureBlockEntity.createRandom(seed), 2 | (strict ? 816 : 0));
+      if (!placed) {
+         throw ERROR_TEMPLATE_FAILED.create();
+      }
+
+      source.sendSuccess(
+         () -> Component.translatable("commands.place.template.success", Component.translationArg(template), pos.getX(), pos.getY(), pos.getZ()), true
+      );
+      return 1;
    }
 
    private static void checkLoaded(final ServerLevel level, final ChunkPos chunkMin, final ChunkPos chunkMax) throws CommandSyntaxException {

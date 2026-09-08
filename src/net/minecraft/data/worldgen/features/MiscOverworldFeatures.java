@@ -133,15 +133,15 @@ public class MiscOverworldFeatures {
          )
       );
       BiFunction<Integer, Integer, Holder<PlacedFeature>> tuffCover = (count, spread) -> PlacementUtils.inlinePlaced(
-            new SimpleBlockFeature(BlockStateProvider.of(Blocks.TUFF)),
-            CountPlacement.of(count),
-            OffsetPlacement.ofTriangle(spread, 3),
-            EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), 4),
-            BlockPredicateFilter.forPredicate(BlockPredicate.solid())
-         );
+         new SimpleBlockFeature(BlockStateProvider.of(Blocks.TUFF)),
+         CountPlacement.of(count),
+         OffsetPlacement.ofTriangle(spread, 3),
+         EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), 4),
+         BlockPredicateFilter.forPredicate(BlockPredicate.solid())
+      );
       Function<WeightedList<TemplateFeature.TemplateEntry>, Holder<PlacedFeature>> sulfurSprings = entries -> PlacementUtils.inlinePlaced(
-            new TemplateFeature(entries), OffsetPlacement.vertical(ConstantInt.of(-7))
-         );
+         new TemplateFeature(entries), OffsetPlacement.vertical(ConstantInt.of(-7))
+      );
       context.register(
          SULFUR_SPRING,
          new WeightedRandomSelectorFeature(

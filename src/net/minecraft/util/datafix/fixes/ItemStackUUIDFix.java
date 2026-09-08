@@ -18,13 +18,13 @@ public class ItemStackUUIDFix extends AbstractUUIDFix {
       return this.fixTypeEverywhereTyped("ItemStackUUIDFix", this.getInputSchema().getType(this.typeReference), input -> {
          OpticFinder<?> itemTagFinder = input.getType().findField("tag");
          return input.updateTyped(itemTagFinder, typedTag -> typedTag.update(DSL.remainderFinder(), tag -> {
-               tag = this.updateAttributeModifiers(tag);
-               if (input.getOptional(idF).map(idPair -> "minecraft:player_head".equals(idPair.getSecond())).orElse(false)) {
-                  tag = this.updateSkullOwner(tag);
-               }
+            tag = this.updateAttributeModifiers(tag);
+            if (input.getOptional(idF).map(idPair -> "minecraft:player_head".equals(idPair.getSecond())).orElse(false)) {
+               tag = this.updateSkullOwner(tag);
+            }
 
-               return tag;
-            }));
+            return tag;
+         }));
       });
    }
 
@@ -32,8 +32,8 @@ public class ItemStackUUIDFix extends AbstractUUIDFix {
       return tag.update(
          "AttributeModifiers",
          modifiers -> tag.createList(
-               modifiers.asStream().map(modifier -> (Dynamic)replaceUUIDLeastMost((Dynamic<?>)modifier, "UUID", "UUID").orElse((Dynamic<?>)modifier))
-            )
+            modifiers.asStream().map(modifier -> (Dynamic)replaceUUIDLeastMost((Dynamic<?>)modifier, "UUID", "UUID").orElse((Dynamic<?>)modifier))
+         )
       );
    }
 

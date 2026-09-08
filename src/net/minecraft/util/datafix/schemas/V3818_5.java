@@ -30,10 +30,10 @@ public class V3818_5 extends NamespacedSchema {
          true,
          References.ITEM_STACK,
          () -> DSL.hook(
-               DSL.optionalFields("id", References.ITEM_NAME.in(schema), "components", References.DATA_COMPONENTS.in(schema)),
-               UNPACK_PLAIN_ID,
-               HookFunction.IDENTITY
-            )
+            DSL.optionalFields("id", References.ITEM_NAME.in(schema), "components", References.DATA_COMPONENTS.in(schema)),
+            UNPACK_PLAIN_ID,
+            HookFunction.IDENTITY
+         )
       );
    }
 }

@@ -7,10 +7,9 @@ public interface CompiledRenderPipeline extends UncheckedAutoCloseable {
    boolean isClosed();
 
    @FunctionalInterface
-   public interface Pending {
+   interface Pending {
       CompiledRenderPipeline.Pending NULL = () -> null;
 
-      @Nullable
-      CompiledRenderPipeline finishCompile();
+      @Nullable CompiledRenderPipeline finishCompile();
    }
 }

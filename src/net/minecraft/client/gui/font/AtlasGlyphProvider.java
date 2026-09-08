@@ -6,7 +6,6 @@ import com.mojang.renderpearl.api.pipeline.RenderPipeline;
 import com.mojang.renderpearl.api.textures.GpuTextureView;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.function.Function;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GlyphSource;
@@ -44,10 +43,6 @@ public class AtlasGlyphProvider {
    private GlyphSource createSprite(final TextureAtlasSprite sprite) {
       return new SingleSpriteSource(
          new BakedGlyph() {
-            {
-               Objects.requireNonNull(AtlasGlyphProvider.this);
-            }
-
             @Override
             public GlyphInfo info() {
                return AtlasGlyphProvider.GLYPH_INFO;
@@ -65,7 +60,7 @@ public class AtlasGlyphProvider {
       );
    }
 
-   private static record Instance(
+   private record Instance(
       GlyphRenderTypes renderTypes,
       GpuTextureView textureView,
       TextureAtlasSprite sprite,

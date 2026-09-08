@@ -98,63 +98,63 @@ public class PostPass implements AutoCloseable {
       );
       if (outputHandle == null) {
          throw new IllegalStateException("Missing handle for target " + this.outputTargetId);
-      } else {
-         pass.executes(
-            () -> {
-               RenderTarget outputTarget = outputHandle.get();
-               RenderSystem.backupProjectionMatrix();
-               RenderSystem.setProjectionMatrix(shaderOrthoMatrix, ProjectionType.ORTHOGRAPHIC);
-               CommandEncoder commandEncoder = RenderSystem.getDevice().createCommandEncoder();
-               SamplerCache samplerCache = RenderSystem.getSamplerCache();
-               List<PostPass.InputTexture> inputTextures = this.inputs
-                  .stream()
-                  .map(
-                     i -> new PostPass.InputTexture(
-                           i.samplerName(), i.texture(targets), samplerCache.getClampToEdge(i.bilinear() ? FilterMode.LINEAR : FilterMode.NEAREST)
-                        )
+      }
+
+      pass.executes(
+         () -> {
+            RenderTarget outputTarget = outputHandle.get();
+            RenderSystem.backupProjectionMatrix();
+            RenderSystem.setProjectionMatrix(shaderOrthoMatrix, ProjectionType.ORTHOGRAPHIC);
+            CommandEncoder commandEncoder = RenderSystem.getDevice().createCommandEncoder();
+            SamplerCache samplerCache = RenderSystem.getSamplerCache();
+            List<PostPass.InputTexture> inputTextures = this.inputs
+               .stream()
+               .map(
+                  i -> new PostPass.InputTexture(
+                     i.samplerName(), i.texture(targets), samplerCache.getClampToEdge(i.bilinear() ? FilterMode.LINEAR : FilterMode.NEAREST)
                   )
-                  .toList();
+               )
+               .toList();
 
-               try (GpuBufferSlice.MappedView view = this.infoUbo.currentBuffer().map(false, true)) {
-                  Std140Builder builder = Std140Builder.intoBuffer(view.data());
-                  builder.putVec2((float)outputTarget.width, (float)outputTarget.height);
+            try (GpuBufferSlice.MappedView view = this.infoUbo.currentBuffer().map(false, true)) {
+               Std140Builder builder = Std140Builder.intoBuffer(view.data());
+               builder.putVec2(outputTarget.width, outputTarget.height);
 
-                  for (PostPass.InputTexture inputxxx : inputTextures) {
-                     builder.putVec2((float)inputxxx.view.getWidth(0), (float)inputxxx.view.getHeight(0));
-                  }
-               }
-
-               try (RenderPass renderPass = commandEncoder.createRenderPass(
-                     () -> "Post pass " + this.name,
-                     outputTarget.getColorTextureView(),
-                     Optional.empty(),
-                     outputTarget.hasDepth() ? outputTarget.getDepthTextureView() : null,
-                     OptionalDouble.empty()
-                  )) {
-                  renderPass.setPipeline(RenderSystem.getCompiledPipeline(this.pipeline));
-                  RenderSystem.bindDefaultUniforms(renderPass);
-                  renderPass.setUniform("SamplerInfo", this.infoUbo.currentBuffer());
-
-                  for (Entry<String, GpuBuffer> entry : this.customUniforms.entrySet()) {
-                     renderPass.setUniform(entry.getKey(), entry.getValue());
-                  }
-
-                  for (PostPass.InputTexture inputx : inputTextures) {
-                     renderPass.setUniform(inputx.samplerName() + "Sampler", inputx.view(), inputx.sampler());
-                  }
-
-                  renderPass.draw(3, 1, 0, 0);
-               }
-
-               this.infoUbo.rotate();
-               RenderSystem.restoreProjectionMatrix();
-
-               for (PostPass.Input inputxx : this.inputs) {
-                  inputxx.cleanup(targets);
+               for (PostPass.InputTexture inputxxx : inputTextures) {
+                  builder.putVec2(inputxxx.view.getWidth(0), inputxxx.view.getHeight(0));
                }
             }
-         );
-      }
+
+            try (RenderPass renderPass = commandEncoder.createRenderPass(
+                  () -> "Post pass " + this.name,
+                  outputTarget.getColorTextureView(),
+                  Optional.empty(),
+                  outputTarget.hasDepth() ? outputTarget.getDepthTextureView() : null,
+                  OptionalDouble.empty()
+               )) {
+               renderPass.setPipeline(RenderSystem.getCompiledPipeline(this.pipeline));
+               RenderSystem.bindDefaultUniforms(renderPass);
+               renderPass.setUniform("SamplerInfo", this.infoUbo.currentBuffer());
+
+               for (Entry<String, GpuBuffer> entry : this.customUniforms.entrySet()) {
+                  renderPass.setUniform(entry.getKey(), entry.getValue());
+               }
+
+               for (PostPass.InputTexture inputx : inputTextures) {
+                  renderPass.setUniform(inputx.samplerName() + "Sampler", inputx.view(), inputx.sampler());
+               }
+
+               renderPass.draw(3, 1, 0, 0);
+            }
+
+            this.infoUbo.rotate();
+            RenderSystem.restoreProjectionMatrix();
+
+            for (PostPass.Input inputxx : this.inputs) {
+               inputxx.cleanup(targets);
+            }
+         }
+      );
    }
 
    @Override
@@ -179,10 +179,10 @@ public class PostPass implements AutoCloseable {
       boolean bilinear();
    }
 
-   private static record InputTexture(String samplerName, GpuTextureView view, GpuSampler sampler) {
+   private record InputTexture(String samplerName, GpuTextureView view, GpuSampler sampler) {
    }
 
-   public static record TargetInput(String samplerName, Identifier targetId, boolean depthBuffer, boolean bilinear) implements PostPass.Input {
+   public record TargetInput(String samplerName, Identifier targetId, boolean depthBuffer, boolean bilinear) implements PostPass.Input {
       private ResourceHandle<RenderTarget> getHandle(final Map<Identifier, ResourceHandle<RenderTarget>> targets) {
          ResourceHandle<RenderTarget> handle = targets.get(this.targetId);
          if (handle == null) {
@@ -210,7 +210,7 @@ public class PostPass implements AutoCloseable {
       }
    }
 
-   public static record TextureInput(String samplerName, AbstractTexture texture, int width, int height, boolean bilinear) implements PostPass.Input {
+   public record TextureInput(String samplerName, AbstractTexture texture, int width, int height, boolean bilinear) implements PostPass.Input {
       @Override
       public void addToPass(final FramePass pass, final Map<Identifier, ResourceHandle<RenderTarget>> targets) {
       }

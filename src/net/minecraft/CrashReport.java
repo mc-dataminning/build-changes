@@ -12,7 +12,6 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.concurrent.CompletionException;
 import net.minecraft.util.FileUtil;
 import net.minecraft.util.MemoryReserve;
@@ -27,8 +26,7 @@ public class CrashReport {
    private final String title;
    private final Throwable exception;
    private final List<CrashReportCategory> details = Lists.newArrayList();
-   @Nullable
-   private Path saveFile;
+   private @Nullable Path saveFile;
    private boolean trackingStackTrace = true;
    private StackTraceElement[] uncategorizedStackTrace = new StackTraceElement[0];
    private final SystemReport systemReport = new SystemReport();
@@ -86,18 +84,15 @@ public class CrashReport {
          exception = replaceMessage(exception, this.title);
       }
 
-      String var4;
       try {
          writer = new StringWriter();
          printWriter = new PrintWriter(writer);
          exception.printStackTrace(printWriter);
-         var4 = writer.toString();
+         return writer.toString();
       } finally {
          IOUtils.closeQuietly(writer);
          IOUtils.closeQuietly(printWriter);
       }
-
-      return var4;
    }
 
    private static Throwable copyProperties(final Throwable original, final Throwable copy) {
@@ -115,14 +110,12 @@ public class CrashReport {
 
          copy.setStackTrace(original.getStackTrace());
          return copy;
-      } catch (Throwable var8) {
+      } catch (Throwable e) {
          return original;
       }
    }
 
    private static Throwable replaceMessage(final Throwable original, final String title) {
-      Objects.requireNonNull(original);
-
       return switch (original) {
          case NullPointerException var4 -> copyProperties(original, new NullPointerException(title));
          case StackOverflowError var5 -> copyProperties(original, new StackOverflowError(title));
@@ -156,30 +149,29 @@ public class CrashReport {
       return this.getFriendlyReport(reportType, List.of());
    }
 
-   @Nullable
-   public Path getSaveFile() {
+   public @Nullable Path getSaveFile() {
       return this.saveFile;
    }
 
    public boolean saveToFile(final Path saveFile, final ReportType reportType, final List<String> extraComments) {
       if (this.saveFile != null) {
          return false;
-      } else {
-         try {
-            if (saveFile.getParent() != null) {
-               FileUtil.createDirectoriesSafe(saveFile.getParent());
-            }
+      }
 
-            try (Writer writer = Files.newBufferedWriter(saveFile, StandardCharsets.UTF_8)) {
-               writer.write(this.getFriendlyReport(reportType, extraComments));
-            }
-
-            this.saveFile = saveFile;
-            return true;
-         } catch (Throwable var9) {
-            LOGGER.error("Could not save crash report to {}", saveFile, var9);
-            return false;
+      try {
+         if (saveFile.getParent() != null) {
+            FileUtil.createDirectoriesSafe(saveFile.getParent());
          }
+
+         try (Writer writer = Files.newBufferedWriter(saveFile, StandardCharsets.UTF_8)) {
+            writer.write(this.getFriendlyReport(reportType, extraComments));
+         }
+
+         this.saveFile = saveFile;
+         return true;
+      } catch (Throwable t) {
+         LOGGER.error("Could not save crash report to {}", saveFile, t);
+         return false;
       }
    }
 

@@ -7,7 +7,6 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
@@ -18,19 +17,17 @@ import net.minecraft.util.ExtraCodecs;
 public record PostChainConfig(Map<Identifier, PostChainConfig.InternalTarget> internalTargets, List<PostChainConfig.Pass> passes) {
    public static final Codec<PostChainConfig> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.unboundedMap(Identifier.CODEC, PostChainConfig.InternalTarget.CODEC)
-                  .optionalFieldOf("targets", Map.of())
-                  .forGetter(PostChainConfig::internalTargets),
-               PostChainConfig.Pass.CODEC.listOf().optionalFieldOf("passes", List.of()).forGetter(PostChainConfig::passes)
-            )
-            .apply(i, PostChainConfig::new)
+            Codec.unboundedMap(Identifier.CODEC, PostChainConfig.InternalTarget.CODEC)
+               .optionalFieldOf("targets", Map.of())
+               .forGetter(PostChainConfig::internalTargets),
+            PostChainConfig.Pass.CODEC.listOf().optionalFieldOf("passes", List.of()).forGetter(PostChainConfig::passes)
+         )
+         .apply(i, PostChainConfig::new)
    );
 
    public sealed interface Input permits PostChainConfig.TargetInput, PostChainConfig.TextureInput {
       Codec<PostChainConfig.Input> CODEC = Codec.xor(PostChainConfig.TextureInput.CODEC, PostChainConfig.TargetInput.CODEC)
          .xmap(either -> (PostChainConfig.Input)either.map(Function.identity(), Function.identity()), input -> {
-            Objects.requireNonNull(input);
-
             return switch (input) {
                case PostChainConfig.TextureInput texture -> Either.left(texture);
                case PostChainConfig.TargetInput target -> Either.right(target);
@@ -43,19 +40,19 @@ public record PostChainConfig(Map<Identifier, PostChainConfig.InternalTarget> in
       Set<Identifier> referencedTargets();
    }
 
-   public static record InternalTarget(Optional<Integer> width, Optional<Integer> height, boolean persistent, int clearColor) {
+   public record InternalTarget(Optional<Integer> width, Optional<Integer> height, boolean persistent, int clearColor) {
       public static final Codec<PostChainConfig.InternalTarget> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  ExtraCodecs.POSITIVE_INT.optionalFieldOf("width").forGetter(PostChainConfig.InternalTarget::width),
-                  ExtraCodecs.POSITIVE_INT.optionalFieldOf("height").forGetter(PostChainConfig.InternalTarget::height),
-                  Codec.BOOL.optionalFieldOf("persistent", false).forGetter(PostChainConfig.InternalTarget::persistent),
-                  ExtraCodecs.ARGB_COLOR_CODEC.optionalFieldOf("clear_color", 0).forGetter(PostChainConfig.InternalTarget::clearColor)
-               )
-               .apply(i, PostChainConfig.InternalTarget::new)
+               ExtraCodecs.POSITIVE_INT.optionalFieldOf("width").forGetter(PostChainConfig.InternalTarget::width),
+               ExtraCodecs.POSITIVE_INT.optionalFieldOf("height").forGetter(PostChainConfig.InternalTarget::height),
+               Codec.BOOL.optionalFieldOf("persistent", false).forGetter(PostChainConfig.InternalTarget::persistent),
+               ExtraCodecs.ARGB_COLOR_CODEC.optionalFieldOf("clear_color", 0).forGetter(PostChainConfig.InternalTarget::clearColor)
+            )
+            .apply(i, PostChainConfig.InternalTarget::new)
       );
    }
 
-   public static record Pass(
+   public record Pass(
       Identifier vertexShaderId,
       Identifier fragmentShaderId,
       List<PostChainConfig.Input> inputs,
@@ -76,13 +73,13 @@ public record PostChainConfig(Map<Identifier, PostChainConfig.InternalTarget> in
       private static final Codec<Map<String, List<UniformValue>>> UNIFORM_BLOCKS_CODEC = Codec.unboundedMap(Codec.STRING, UniformValue.CODEC.listOf());
       public static final Codec<PostChainConfig.Pass> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Identifier.CODEC.fieldOf("vertex_shader").forGetter(PostChainConfig.Pass::vertexShaderId),
-                  Identifier.CODEC.fieldOf("fragment_shader").forGetter(PostChainConfig.Pass::fragmentShaderId),
-                  INPUTS_CODEC.optionalFieldOf("inputs", List.of()).forGetter(PostChainConfig.Pass::inputs),
-                  Identifier.CODEC.fieldOf("output").forGetter(PostChainConfig.Pass::outputTarget),
-                  UNIFORM_BLOCKS_CODEC.optionalFieldOf("uniforms", Map.of()).forGetter(PostChainConfig.Pass::uniforms)
-               )
-               .apply(i, PostChainConfig.Pass::new)
+               Identifier.CODEC.fieldOf("vertex_shader").forGetter(PostChainConfig.Pass::vertexShaderId),
+               Identifier.CODEC.fieldOf("fragment_shader").forGetter(PostChainConfig.Pass::fragmentShaderId),
+               INPUTS_CODEC.optionalFieldOf("inputs", List.of()).forGetter(PostChainConfig.Pass::inputs),
+               Identifier.CODEC.fieldOf("output").forGetter(PostChainConfig.Pass::outputTarget),
+               UNIFORM_BLOCKS_CODEC.optionalFieldOf("uniforms", Map.of()).forGetter(PostChainConfig.Pass::uniforms)
+            )
+            .apply(i, PostChainConfig.Pass::new)
       );
 
       public Stream<Identifier> referencedTargets() {
@@ -91,15 +88,15 @@ public record PostChainConfig(Map<Identifier, PostChainConfig.InternalTarget> in
       }
    }
 
-   public static record TargetInput(String samplerName, Identifier targetId, boolean useDepthBuffer, boolean bilinear) implements PostChainConfig.Input {
+   public record TargetInput(String samplerName, Identifier targetId, boolean useDepthBuffer, boolean bilinear) implements PostChainConfig.Input {
       public static final Codec<PostChainConfig.TargetInput> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Codec.STRING.fieldOf("sampler_name").forGetter(PostChainConfig.TargetInput::samplerName),
-                  Identifier.CODEC.fieldOf("target").forGetter(PostChainConfig.TargetInput::targetId),
-                  Codec.BOOL.optionalFieldOf("use_depth_buffer", false).forGetter(PostChainConfig.TargetInput::useDepthBuffer),
-                  Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(PostChainConfig.TargetInput::bilinear)
-               )
-               .apply(i, PostChainConfig.TargetInput::new)
+               Codec.STRING.fieldOf("sampler_name").forGetter(PostChainConfig.TargetInput::samplerName),
+               Identifier.CODEC.fieldOf("target").forGetter(PostChainConfig.TargetInput::targetId),
+               Codec.BOOL.optionalFieldOf("use_depth_buffer", false).forGetter(PostChainConfig.TargetInput::useDepthBuffer),
+               Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(PostChainConfig.TargetInput::bilinear)
+            )
+            .apply(i, PostChainConfig.TargetInput::new)
       );
 
       @Override
@@ -108,16 +105,16 @@ public record PostChainConfig(Map<Identifier, PostChainConfig.InternalTarget> in
       }
    }
 
-   public static record TextureInput(String samplerName, Identifier location, int width, int height, boolean bilinear) implements PostChainConfig.Input {
+   public record TextureInput(String samplerName, Identifier location, int width, int height, boolean bilinear) implements PostChainConfig.Input {
       public static final Codec<PostChainConfig.TextureInput> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Codec.STRING.fieldOf("sampler_name").forGetter(PostChainConfig.TextureInput::samplerName),
-                  Identifier.CODEC.fieldOf("location").forGetter(PostChainConfig.TextureInput::location),
-                  ExtraCodecs.POSITIVE_INT.fieldOf("width").forGetter(PostChainConfig.TextureInput::width),
-                  ExtraCodecs.POSITIVE_INT.fieldOf("height").forGetter(PostChainConfig.TextureInput::height),
-                  Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(PostChainConfig.TextureInput::bilinear)
-               )
-               .apply(i, PostChainConfig.TextureInput::new)
+               Codec.STRING.fieldOf("sampler_name").forGetter(PostChainConfig.TextureInput::samplerName),
+               Identifier.CODEC.fieldOf("location").forGetter(PostChainConfig.TextureInput::location),
+               ExtraCodecs.POSITIVE_INT.fieldOf("width").forGetter(PostChainConfig.TextureInput::width),
+               ExtraCodecs.POSITIVE_INT.fieldOf("height").forGetter(PostChainConfig.TextureInput::height),
+               Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(PostChainConfig.TextureInput::bilinear)
+            )
+            .apply(i, PostChainConfig.TextureInput::new)
       );
 
       @Override

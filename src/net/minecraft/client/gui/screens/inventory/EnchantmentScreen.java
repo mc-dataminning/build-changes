@@ -76,8 +76,8 @@ public class EnchantmentScreen extends AbstractContainerScreen<EnchantmentMenu> 
       int yo = (this.height - this.imageHeight) / 2;
 
       for (int i = 0; i < 3; i++) {
-         double xx = event.x() - (double)(xo + 60);
-         double yy = event.y() - (double)(yo + 14 + 19 * i);
+         double xx = event.x() - (xo + 60);
+         double yy = event.y() - (yo + 14 + 19 * i);
          if (xx >= 0.0 && yy >= 0.0 && xx < 108.0 && yy < 19.0 && this.menu.clickMenuButton(this.minecraft.player, i)) {
             this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, i);
             return true;
@@ -94,7 +94,7 @@ public class EnchantmentScreen extends AbstractContainerScreen<EnchantmentMenu> 
       int yo = (this.height - this.imageHeight) / 2;
       graphics.blit(RenderPipelines.GUI_TEXTURED, ENCHANTING_TABLE_LOCATION, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
       this.extractBook(graphics, xo, yo);
-      EnchantmentNames.getInstance().initSeed((long)this.menu.getEnchantmentSeed());
+      EnchantmentNames.getInstance().initSeed(this.menu.getEnchantmentSeed());
       int goldCount = this.menu.getGoldCount();
 
       for (int i = 0; i < 3; i++) {
@@ -162,7 +162,7 @@ public class EnchantmentScreen extends AbstractContainerScreen<EnchantmentMenu> 
          if (!enchant.isEmpty()) {
             int enchantLevel = this.menu.levelClue[i];
             int cost = i + 1;
-            if (this.isHovering(60, 14 + 19 * i, 108, 17, (double)mouseX, (double)mouseY) && minLevel > 0 && enchantLevel >= 0) {
+            if (this.isHovering(60, 14 + 19 * i, 108, 17, mouseX, mouseY) && minLevel > 0 && enchantLevel >= 0) {
                List<Component> texts = Lists.newArrayList();
                texts.add(Component.translatable("container.enchant.clue", Enchantment.getFullname(enchant.get(), enchantLevel)).withStyle(ChatFormatting.WHITE));
                if (!infiniteMaterials) {
@@ -202,7 +202,7 @@ public class EnchantmentScreen extends AbstractContainerScreen<EnchantmentMenu> 
          this.last = current;
 
          do {
-            this.flipT = this.flipT + (float)(this.random.nextInt(4) - this.random.nextInt(4));
+            this.flipT = this.flipT + (this.random.nextInt(4) - this.random.nextInt(4));
          } while (this.flip <= this.flipT + 1.0F && this.flip >= this.flipT - 1.0F);
       }
 

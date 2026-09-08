@@ -61,19 +61,21 @@ public class BrewingRecipeBuilder implements RecipeBuilder {
       throw new IllegalStateException("Brewing recipes cannot be unlocked");
    }
 
-   public BrewingRecipeBuilder group(@Nullable final String group) {
+   public BrewingRecipeBuilder group(final @Nullable String group) {
       throw new IllegalStateException("Brewing recipes do not have groups");
    }
 
    public static Optional<Holder<Potion>> getExactPotion(final PotionsPredicate predicate) {
       if (predicate.potions().isEmpty()) {
          return Optional.empty();
-      } else if (predicate.effects().isPresent()) {
-         return Optional.empty();
-      } else {
-         HolderSet<Potion> potionSet = predicate.potions().get();
-         return potionSet.size() != 1 ? Optional.empty() : Optional.of(potionSet.get(0));
       }
+
+      if (predicate.effects().isPresent()) {
+         return Optional.empty();
+      }
+
+      HolderSet<Potion> potionSet = predicate.potions().get();
+      return potionSet.size() != 1 ? Optional.empty() : Optional.of(potionSet.get(0));
    }
 
    private Optional<Holder<Potion>> getIngredientPotion(final PotionIngredient ingredient) {

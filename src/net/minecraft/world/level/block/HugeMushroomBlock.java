@@ -27,12 +27,12 @@ public class HugeMushroomBlock extends Block {
       this.registerDefaultState(
          this.stateDefinition
             .any()
-            .setValue(NORTH, Boolean.valueOf(true))
-            .setValue(EAST, Boolean.valueOf(true))
-            .setValue(SOUTH, Boolean.valueOf(true))
-            .setValue(WEST, Boolean.valueOf(true))
-            .setValue(UP, Boolean.valueOf(true))
-            .setValue(DOWN, Boolean.valueOf(true))
+            .setValue(NORTH, true)
+            .setValue(EAST, true)
+            .setValue(SOUTH, true)
+            .setValue(WEST, true)
+            .setValue(UP, true)
+            .setValue(DOWN, true)
       );
    }
 
@@ -41,12 +41,12 @@ public class HugeMushroomBlock extends Block {
       BlockGetter level = context.getLevel();
       BlockPos pos = context.getClickedPos();
       return this.defaultBlockState()
-         .setValue(DOWN, Boolean.valueOf(!level.getBlockState(pos.below()).is(this)))
-         .setValue(UP, Boolean.valueOf(!level.getBlockState(pos.above()).is(this)))
-         .setValue(NORTH, Boolean.valueOf(!level.getBlockState(pos.north()).is(this)))
-         .setValue(EAST, Boolean.valueOf(!level.getBlockState(pos.east()).is(this)))
-         .setValue(SOUTH, Boolean.valueOf(!level.getBlockState(pos.south()).is(this)))
-         .setValue(WEST, Boolean.valueOf(!level.getBlockState(pos.west()).is(this)));
+         .setValue(DOWN, !level.getBlockState(pos.below()).is(this))
+         .setValue(UP, !level.getBlockState(pos.above()).is(this))
+         .setValue(NORTH, !level.getBlockState(pos.north()).is(this))
+         .setValue(EAST, !level.getBlockState(pos.east()).is(this))
+         .setValue(SOUTH, !level.getBlockState(pos.south()).is(this))
+         .setValue(WEST, !level.getBlockState(pos.west()).is(this));
    }
 
    @Override
@@ -61,7 +61,7 @@ public class HugeMushroomBlock extends Block {
       final RandomSource random
    ) {
       return neighbourState.is(this)
-         ? state.setValue(PROPERTY_BY_DIRECTION.get(directionToNeighbour), Boolean.valueOf(false))
+         ? state.setValue(PROPERTY_BY_DIRECTION.get(directionToNeighbour), false)
          : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
    }
 

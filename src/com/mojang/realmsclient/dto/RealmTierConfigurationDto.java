@@ -7,11 +7,11 @@ public record RealmTierConfigurationDto(
    @SerializedName("renderDistance") RealmTierConfigurationDto.RealmTierRangeDto renderDistance,
    @SerializedName("simDistance") RealmTierConfigurationDto.RealmTierRangeDto simDistance
 ) implements ReflectionBasedSerialization {
-   public static record RealmTierRangeDto(
+   public record RealmTierRangeDto(
       @SerializedName("min") int min,
       @SerializedName("max") int max,
       @SerializedName("defaultValue") int defaultValue,
-      @Nullable @SerializedName("current") Integer current
+      @SerializedName("current") @Nullable Integer current
    ) implements ReflectionBasedSerialization {
    }
 }

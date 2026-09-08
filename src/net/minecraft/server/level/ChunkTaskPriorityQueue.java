@@ -60,22 +60,21 @@ public class ChunkTaskPriorityQueue {
       }
    }
 
-   @Nullable
-   public ChunkTaskPriorityQueue.TasksForChunk pop() {
+   public ChunkTaskPriorityQueue.@Nullable TasksForChunk pop() {
       if (!this.hasWork()) {
          return null;
-      } else {
-         int index = this.topPriorityQueueIndex;
-         Long2ObjectLinkedOpenHashMap<List<Runnable>> queue = this.queuesPerPriority.get(index);
-         long chunkPos = queue.firstLongKey();
-         List<Runnable> tasks = (List<Runnable>)queue.removeFirst();
-
-         while (this.hasWork() && this.queuesPerPriority.get(this.topPriorityQueueIndex).isEmpty()) {
-            this.topPriorityQueueIndex++;
-         }
-
-         return new ChunkTaskPriorityQueue.TasksForChunk(chunkPos, tasks);
       }
+
+      int index = this.topPriorityQueueIndex;
+      Long2ObjectLinkedOpenHashMap<List<Runnable>> queue = this.queuesPerPriority.get(index);
+      long chunkPos = queue.firstLongKey();
+      List<Runnable> tasks = (List<Runnable>)queue.removeFirst();
+
+      while (this.hasWork() && this.queuesPerPriority.get(this.topPriorityQueueIndex).isEmpty()) {
+         this.topPriorityQueueIndex++;
+      }
+
+      return new ChunkTaskPriorityQueue.TasksForChunk(chunkPos, tasks);
    }
 
    public boolean hasWork() {
@@ -87,6 +86,6 @@ public class ChunkTaskPriorityQueue {
       return this.name + " " + this.topPriorityQueueIndex + "...";
    }
 
-   public static record TasksForChunk(long chunkPos, List<Runnable> tasks) {
+   public record TasksForChunk(long chunkPos, List<Runnable> tasks) {
    }
 }

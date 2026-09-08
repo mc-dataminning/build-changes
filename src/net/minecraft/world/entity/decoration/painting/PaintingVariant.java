@@ -17,13 +17,13 @@ import net.minecraft.util.ExtraCodecs;
 public record PaintingVariant(int width, int height, Identifier assetId, Optional<Component> title, Optional<Component> author) {
    public static final Codec<PaintingVariant> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ExtraCodecs.intRange(1, 16).fieldOf("width").forGetter(PaintingVariant::width),
-               ExtraCodecs.intRange(1, 16).fieldOf("height").forGetter(PaintingVariant::height),
-               Identifier.CODEC.fieldOf("asset_id").forGetter(PaintingVariant::assetId),
-               ComponentSerialization.CODEC.optionalFieldOf("title").forGetter(PaintingVariant::title),
-               ComponentSerialization.CODEC.optionalFieldOf("author").forGetter(PaintingVariant::author)
-            )
-            .apply(i, PaintingVariant::new)
+            ExtraCodecs.intRange(1, 16).fieldOf("width").forGetter(PaintingVariant::width),
+            ExtraCodecs.intRange(1, 16).fieldOf("height").forGetter(PaintingVariant::height),
+            Identifier.CODEC.fieldOf("asset_id").forGetter(PaintingVariant::assetId),
+            ComponentSerialization.CODEC.optionalFieldOf("title").forGetter(PaintingVariant::title),
+            ComponentSerialization.CODEC.optionalFieldOf("author").forGetter(PaintingVariant::author)
+         )
+         .apply(i, PaintingVariant::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, PaintingVariant> DIRECT_STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.VAR_INT,

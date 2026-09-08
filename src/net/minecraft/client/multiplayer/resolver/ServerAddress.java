@@ -22,7 +22,7 @@ public final class ServerAddress {
    public String getHost() {
       try {
          return IDN.toASCII(this.hostAndPort.getHost());
-      } catch (IllegalArgumentException var2) {
+      } catch (IllegalArgumentException ignored) {
          return "";
       }
    }
@@ -31,17 +31,17 @@ public final class ServerAddress {
       return this.hostAndPort.getPort();
    }
 
-   public static ServerAddress parseString(@Nullable final String input) {
+   public static ServerAddress parseString(final @Nullable String input) {
       if (input == null) {
          return INVALID;
-      } else {
-         try {
-            HostAndPort result = HostAndPort.fromString(input).withDefaultPort(25565);
-            return result.getHost().isEmpty() ? INVALID : new ServerAddress(result);
-         } catch (IllegalArgumentException var2) {
-            LOGGER.info("Failed to parse URL {}", input, var2);
-            return INVALID;
-         }
+      }
+
+      try {
+         HostAndPort result = HostAndPort.fromString(input).withDefaultPort(25565);
+         return result.getHost().isEmpty() ? INVALID : new ServerAddress(result);
+      } catch (IllegalArgumentException e) {
+         LOGGER.info("Failed to parse URL {}", input, e);
+         return INVALID;
       }
    }
 

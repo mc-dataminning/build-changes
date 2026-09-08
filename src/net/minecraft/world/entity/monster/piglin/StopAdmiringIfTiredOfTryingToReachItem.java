@@ -10,32 +10,32 @@ public class StopAdmiringIfTiredOfTryingToReachItem {
    public static BehaviorControl<LivingEntity> create(final int maxTimeToReachItem, final int disableTime) {
       return BehaviorBuilder.create(
          i -> i.group(
-                  i.present(MemoryModuleType.ADMIRING_ITEM),
-                  i.present(MemoryModuleType.NEAREST_VISIBLE_WANTED_ITEM),
-                  i.registered(MemoryModuleType.TIME_TRYING_TO_REACH_ADMIRE_ITEM),
-                  i.registered(MemoryModuleType.DISABLE_WALK_TO_ADMIRE_ITEM)
-               )
-               .apply(i, (admiring, nearestVisible, time, disableWalk) -> (level, body, timestamp) -> {
-                     if (!body.getOffhandItem().isEmpty()) {
-                        return false;
-                     } else {
-                        Optional<Integer> tryReachItemTimeOptional = i.tryGet(time);
-                        if (tryReachItemTimeOptional.isEmpty()) {
-                           time.set(0);
-                        } else {
-                           int timeTryingToReach = tryReachItemTimeOptional.get();
-                           if (timeTryingToReach > maxTimeToReachItem) {
-                              admiring.erase();
-                              time.erase();
-                              disableWalk.setWithExpiry(true, (long)disableTime);
-                           } else {
-                              time.set(timeTryingToReach + 1);
-                           }
-                        }
+               i.present(MemoryModuleType.ADMIRING_ITEM),
+               i.present(MemoryModuleType.NEAREST_VISIBLE_WANTED_ITEM),
+               i.registered(MemoryModuleType.TIME_TRYING_TO_REACH_ADMIRE_ITEM),
+               i.registered(MemoryModuleType.DISABLE_WALK_TO_ADMIRE_ITEM)
+            )
+            .apply(i, (admiring, nearestVisible, time, disableWalk) -> (level, body, timestamp) -> {
+               if (!body.getOffhandItem().isEmpty()) {
+                  return false;
+               }
 
-                        return true;
-                     }
-                  })
+               Optional<Integer> tryReachItemTimeOptional = i.tryGet(time);
+               if (tryReachItemTimeOptional.isEmpty()) {
+                  time.set(0);
+               } else {
+                  int timeTryingToReach = tryReachItemTimeOptional.get();
+                  if (timeTryingToReach > maxTimeToReachItem) {
+                     admiring.erase();
+                     time.erase();
+                     disableWalk.setWithExpiry(true, disableTime);
+                  } else {
+                     time.set(timeTryingToReach + 1);
+                  }
+               }
+
+               return true;
+            })
       );
    }
 }

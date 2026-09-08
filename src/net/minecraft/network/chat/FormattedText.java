@@ -92,11 +92,11 @@ public interface FormattedText {
       return builder.toString();
    }
 
-   public interface ContentConsumer<T> {
+   interface ContentConsumer<T> {
       Optional<T> accept(final String contents);
    }
 
-   public interface StyledContentConsumer<T> {
+   interface StyledContentConsumer<T> {
       Optional<T> accept(final Style style, final String contents);
    }
 }

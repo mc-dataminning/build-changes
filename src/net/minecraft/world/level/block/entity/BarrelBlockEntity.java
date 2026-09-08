@@ -1,7 +1,6 @@
 package net.minecraft.world.level.block.entity;
 
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Vec3i;
@@ -27,10 +26,6 @@ public class BarrelBlockEntity extends RandomizableContainerBlockEntity {
    private static final Component DEFAULT_NAME = Component.translatable("container.barrel");
    private NonNullList<ItemStack> items = NonNullList.withSize(27, ItemStack.EMPTY);
    private final ContainerOpenersCounter openersCounter = new ContainerOpenersCounter() {
-      {
-         Objects.requireNonNull(BarrelBlockEntity.this);
-      }
-
       @Override
       protected void onOpen(final Level level, final BlockPos pos, final BlockState state) {
          BarrelBlockEntity.this.playSound(state, SoundEvents.BARREL_OPEN);
@@ -133,14 +128,14 @@ public class BarrelBlockEntity extends RandomizableContainerBlockEntity {
    }
 
    private void updateBlockState(final BlockState state, final boolean isOpen) {
-      this.level.setBlockAndUpdate(this.getBlockPos(), state.setValue(BarrelBlock.OPEN, Boolean.valueOf(isOpen)));
+      this.level.setBlockAndUpdate(this.getBlockPos(), state.setValue(BarrelBlock.OPEN, isOpen));
    }
 
    private void playSound(final BlockState state, final SoundEvent event) {
       Vec3i direction = state.getValue(BarrelBlock.FACING).getUnitVec3i();
-      double x = (double)this.worldPosition.getX() + 0.5 + (double)direction.getX() / 2.0;
-      double y = (double)this.worldPosition.getY() + 0.5 + (double)direction.getY() / 2.0;
-      double z = (double)this.worldPosition.getZ() + 0.5 + (double)direction.getZ() / 2.0;
+      double x = this.worldPosition.getX() + 0.5 + direction.getX() / 2.0;
+      double y = this.worldPosition.getY() + 0.5 + direction.getY() / 2.0;
+      double z = this.worldPosition.getZ() + 0.5 + direction.getZ() / 2.0;
       this.level.playSound(null, x, y, z, event, SoundSource.BLOCKS, 0.5F, this.level.getRandom().nextFloat() * 0.1F + 0.9F);
    }
 }

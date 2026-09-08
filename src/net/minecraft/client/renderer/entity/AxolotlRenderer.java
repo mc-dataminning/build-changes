@@ -55,6 +55,6 @@ public class AxolotlRenderer extends AgeableMobRenderer<Axolotl, AxolotlRenderSt
       state.playDeadAnimationState.copyFrom(entity.playDeadAnimationState);
    }
 
-   private static record AxolotlTextures(Identifier adult, Identifier baby) {
+   private record AxolotlTextures(Identifier adult, Identifier baby) {
    }
 }

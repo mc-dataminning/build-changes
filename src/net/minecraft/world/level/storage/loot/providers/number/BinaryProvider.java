@@ -13,7 +13,7 @@ public interface BinaryProvider<Value extends Validatable> extends Validatable {
    ) {
       return RecordCodecBuilder.mapCodec(
          i -> i.group(valueCodec.fieldOf("left").forGetter(BinaryProvider::left), valueCodec.fieldOf("right").forGetter(BinaryProvider::right))
-               .apply(i, factory::create)
+            .apply(i, factory::create)
       );
    }
 
@@ -28,7 +28,7 @@ public interface BinaryProvider<Value extends Validatable> extends Validatable {
    Holder<Value> right();
 
    @FunctionalInterface
-   public interface Factory<Value extends Validatable, Self extends BinaryProvider<Value>> {
+   interface Factory<Value extends Validatable, Self extends BinaryProvider<Value>> {
       Self create(Holder<Value> left, Holder<Value> right);
    }
 }

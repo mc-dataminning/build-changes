@@ -43,11 +43,11 @@ public class RecipeBookTabButton extends ImageButton {
    @Override
    public void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
       if (this.animationTime > 0.0F) {
-         float squeeze = 1.0F + 0.1F * (float)Math.sin((double)(this.animationTime / 15.0F * (float) Math.PI));
+         float squeeze = 1.0F + 0.1F * (float)Math.sin(this.animationTime / 15.0F * (float) Math.PI);
          graphics.pose().pushMatrix();
-         graphics.pose().translate((float)(this.getX() + 8), (float)(this.getY() + 12));
+         graphics.pose().translate(this.getX() + 8, this.getY() + 12);
          graphics.pose().scale(1.0F, squeeze);
-         graphics.pose().translate((float)(-(this.getX() + 8)), (float)(-(this.getY() + 12)));
+         graphics.pose().translate(-(this.getX() + 8), -(this.getY() + 12));
       }
 
       Identifier sprite = this.sprites.get(true, this.selected);

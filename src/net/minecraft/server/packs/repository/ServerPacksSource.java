@@ -58,15 +58,13 @@ public class ServerPacksSource extends BuiltInPackSource {
       return Component.literal(id);
    }
 
-   @Nullable
    @Override
-   protected Pack createVanillaPack(final Pack.ResourcesSupplier resources) {
+   protected @Nullable Pack createVanillaPack(final Pack.ResourcesSupplier resources) {
       return Pack.readMetaAndCreate(VANILLA_PACK_INFO, resources, PackType.SERVER_DATA, VANILLA_SELECTION_CONFIG);
    }
 
-   @Nullable
    @Override
-   protected Pack createBuiltinPack(final String id, final Pack.ResourcesSupplier resources, final Component name) {
+   protected @Nullable Pack createBuiltinPack(final String id, final Pack.ResourcesSupplier resources, final Component name) {
       return Pack.readMetaAndCreate(createBuiltInPackLocation(id, name), resources, PackType.SERVER_DATA, FEATURE_SELECTION_CONFIG);
    }
 

@@ -9,7 +9,7 @@ import net.minecraft.SharedConstants;
 import net.minecraft.client.Minecraft;
 import org.jspecify.annotations.Nullable;
 
-public record ReportEnvironment(String clientVersion, @Nullable ReportEnvironment.Server server) {
+public record ReportEnvironment(String clientVersion, ReportEnvironment.@Nullable Server server) {
    public static ReportEnvironment local() {
       return create(null);
    }
@@ -22,7 +22,7 @@ public record ReportEnvironment(String clientVersion, @Nullable ReportEnvironmen
       return create(new ReportEnvironment.Server.Realm(realm));
    }
 
-   public static ReportEnvironment create(@Nullable final ReportEnvironment.Server server) {
+   public static ReportEnvironment create(final ReportEnvironment.@Nullable Server server) {
       return new ReportEnvironment(getClientVersion(), server);
    }
 
@@ -30,13 +30,11 @@ public record ReportEnvironment(String clientVersion, @Nullable ReportEnvironmen
       return new ClientInfo(this.clientVersion, Locale.getDefault().toLanguageTag());
    }
 
-   @Nullable
-   public ThirdPartyServerInfo thirdPartyServerInfo() {
+   public @Nullable ThirdPartyServerInfo thirdPartyServerInfo() {
       return this.server instanceof ReportEnvironment.Server.ThirdParty thirdParty ? new ThirdPartyServerInfo(thirdParty.ip) : null;
    }
 
-   @Nullable
-   public RealmInfo realmInfo() {
+   public @Nullable RealmInfo realmInfo() {
       return this.server instanceof ReportEnvironment.Server.Realm realm ? new RealmInfo(String.valueOf(realm.realmId()), realm.slotId()) : null;
    }
 
@@ -51,13 +49,13 @@ public record ReportEnvironment(String clientVersion, @Nullable ReportEnvironmen
    }
 
    public interface Server {
-      public static record Realm(long realmId, int slotId) implements ReportEnvironment.Server {
+      record Realm(long realmId, int slotId) implements ReportEnvironment.Server {
          public Realm(final RealmsServer realm) {
             this(realm.id, realm.activeSlot);
          }
       }
 
-      public static record ThirdParty(String ip) implements ReportEnvironment.Server {
+      record ThirdParty(String ip) implements ReportEnvironment.Server {
       }
    }
 }

@@ -61,14 +61,7 @@ public enum DragonRespawnStage implements StringRepresentable {
                      level.removeBlock(pos, false);
                   }
 
-                  level.explode(
-                     null,
-                     (double)((float)spike.getCenterX() + 0.5F),
-                     (double)spike.getHeight(),
-                     (double)((float)spike.getCenterZ() + 0.5F),
-                     5.0F,
-                     Level.ExplosionInteraction.BLOCK
-                  );
+                  level.explode(null, spike.getCenterX() + 0.5F, spike.getHeight(), spike.getCenterZ() + 0.5F, 5.0F, Level.ExplosionInteraction.BLOCK);
                   EndSpikeFeature feature = new EndSpikeFeature(List.of(spike), true, Optional.of(new BlockPos(0, 128, 0)));
                   feature.place(level, level.getChunkSource().getGenerator(), RandomSource.create(), new BlockPos(spike.getCenterX(), 45, spike.getCenterZ()));
                }
@@ -110,7 +103,7 @@ public enum DragonRespawnStage implements StringRepresentable {
    public static final Codec<DragonRespawnStage> CODEC = StringRepresentable.fromEnum(DragonRespawnStage::values);
    private final String name;
 
-   private DragonRespawnStage(final String name) {
+   DragonRespawnStage(final String name) {
       this.name = name;
    }
 

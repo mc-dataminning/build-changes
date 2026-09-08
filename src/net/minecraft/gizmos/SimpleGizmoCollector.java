@@ -54,7 +54,7 @@ public class SimpleGizmoCollector implements GizmoCollector {
       @Override
       public GizmoProperties persistForMillis(final int milliseconds) {
          this.startTimeMillis = Util.getMillis();
-         this.expireTimeMillis = this.startTimeMillis + (long)milliseconds;
+         this.expireTimeMillis = this.startTimeMillis + milliseconds;
          return this;
       }
 

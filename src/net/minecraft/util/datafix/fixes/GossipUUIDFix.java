@@ -16,19 +16,15 @@ public class GossipUUIDFix extends NamedEntityFix {
       return entity.update(
          DSL.remainderFinder(),
          tag -> tag.update(
-               "Gossips",
-               gossips -> (Dynamic)DataFixUtils.orElse(
-                     gossips.asStreamOpt()
-                        .result()
-                        .map(
-                           s -> s.map(
-                                 gossip -> (Dynamic)AbstractUUIDFix.replaceUUIDLeastMost((Dynamic<?>)gossip, "Target", "Target").orElse((Dynamic<?>)gossip)
-                              )
-                        )
-                        .map(gossips::createList),
-                     gossips
-                  )
+            "Gossips",
+            gossips -> (Dynamic)DataFixUtils.orElse(
+               gossips.asStreamOpt()
+                  .result()
+                  .map(s -> s.map(gossip -> (Dynamic)AbstractUUIDFix.replaceUUIDLeastMost((Dynamic<?>)gossip, "Target", "Target").orElse((Dynamic<?>)gossip)))
+                  .map(gossips::createList),
+               gossips
             )
+         )
       );
    }
 }

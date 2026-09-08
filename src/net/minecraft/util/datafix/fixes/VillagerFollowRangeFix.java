@@ -22,13 +22,13 @@ public class VillagerFollowRangeFix extends NamedEntityFix {
       return tag.update(
          "Attributes",
          attributes -> tag.createList(
-               attributes.asStream()
-                  .map(
-                     attribute -> attribute.get("Name").asString("").equals("generic.follow_range") && attribute.get("Base").asDouble(0.0) == 16.0
-                           ? attribute.set("Base", attribute.createDouble(48.0))
-                           : attribute
-                  )
-            )
+            attributes.asStream()
+               .map(
+                  attribute -> attribute.get("Name").asString("").equals("generic.follow_range") && attribute.get("Base").asDouble(0.0) == 16.0
+                     ? attribute.set("Base", attribute.createDouble(48.0))
+                     : attribute
+               )
+         )
       );
    }
 }

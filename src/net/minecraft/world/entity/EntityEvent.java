@@ -72,7 +72,7 @@ public class EntityEvent {
    public static final byte BOAT_LAUNCH = 72;
 
    @Retention(RetentionPolicy.CLASS)
-   @Target({ElementType.TYPE_USE})
+   @Target(ElementType.TYPE_USE)
    public @interface Value {
    }
 }

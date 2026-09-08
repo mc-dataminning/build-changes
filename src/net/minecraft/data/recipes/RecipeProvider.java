@@ -5,7 +5,6 @@ import com.mojang.datafixers.util.Pair;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Stream;
 import net.minecraft.advancements.Advancement;
@@ -64,8 +63,8 @@ public abstract class RecipeProvider {
       .put(
          BlockFamily.Variant.CHISELED,
          (RecipeProvider.FamilyCraftingRecipeProvider)(context, result, base) -> context.chiseledBuilder(
-               RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(base)
-            )
+            RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(base)
+         )
       )
       .put(
          BlockFamily.Variant.CARPET,
@@ -101,8 +100,8 @@ public abstract class RecipeProvider {
       .put(
          BlockFamily.Variant.SLAB,
          (RecipeProvider.FamilyCraftingRecipeProvider)(context, result, base) -> context.slabBuilder(
-               RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(base)
-            )
+            RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(base)
+         )
       )
       .put(
          BlockFamily.Variant.STAIRS, (RecipeProvider.FamilyCraftingRecipeProvider)(context, result, base) -> context.stairBuilder(result, Ingredient.of(base))
@@ -110,14 +109,14 @@ public abstract class RecipeProvider {
       .put(
          BlockFamily.Variant.PRESSURE_PLATE,
          (RecipeProvider.FamilyCraftingRecipeProvider)(context, result, base) -> context.pressurePlateBuilder(
-               RecipeCategory.REDSTONE, result, Ingredient.of(base)
-            )
+            RecipeCategory.REDSTONE, result, Ingredient.of(base)
+         )
       )
       .put(
          BlockFamily.Variant.POLISHED,
          (RecipeProvider.FamilyCraftingRecipeProvider)(context, result, base) -> context.polishedBuilder(
-               RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(base)
-            )
+            RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(base)
+         )
       )
       .put(
          BlockFamily.Variant.TRAPDOOR,
@@ -130,94 +129,90 @@ public abstract class RecipeProvider {
       .put(
          BlockFamily.Variant.BRICKS,
          (RecipeProvider.FamilyCraftingRecipeProvider)(context, result, base) -> context.bricksBuilder(
-               RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(base)
-            )
+            RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(base)
+         )
       )
       .put(
          BlockFamily.Variant.TILES,
          (RecipeProvider.FamilyCraftingRecipeProvider)(context, result, base) -> context.tilesBuilder(
-               RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(base)
-            )
+            RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(base)
+         )
       )
       .put(
          BlockFamily.Variant.PILLAR,
          (RecipeProvider.FamilyCraftingRecipeProvider)(context, result, base) -> context.pillarBuilder(
-               RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(base)
-            )
+            RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(base)
+         )
       )
       .build();
    private static final Map<BlockFamily.Variant, RecipeProvider.FamilyStonecutterRecipeProvider> STONECUTTER_RECIPE_BUILDERS = ImmutableMap.builder()
       .put(
          BlockFamily.Variant.SLAB,
          (RecipeProvider.FamilyStonecutterRecipeProvider)(context, result, base) -> context.stonecutterResultFromBase(
-               RecipeCategory.BUILDING_BLOCKS, result, base, 2
-            )
+            RecipeCategory.BUILDING_BLOCKS, result, base, 2
+         )
       )
       .put(
          BlockFamily.Variant.STAIRS,
          (RecipeProvider.FamilyStonecutterRecipeProvider)(context, result, base) -> context.stonecutterResultFromBase(
-               RecipeCategory.BUILDING_BLOCKS, result, base, 1
-            )
+            RecipeCategory.BUILDING_BLOCKS, result, base, 1
+         )
       )
       .put(
          BlockFamily.Variant.BRICKS,
          (RecipeProvider.FamilyStonecutterRecipeProvider)(context, result, base) -> context.stonecutterResultFromBase(
-               RecipeCategory.BUILDING_BLOCKS, result, base, 1
-            )
+            RecipeCategory.BUILDING_BLOCKS, result, base, 1
+         )
       )
       .put(
          BlockFamily.Variant.WALL,
          (RecipeProvider.FamilyStonecutterRecipeProvider)(context, result, base) -> context.stonecutterResultFromBase(
-               RecipeCategory.DECORATIONS, result, base, 1
-            )
+            RecipeCategory.DECORATIONS, result, base, 1
+         )
       )
       .put(
          BlockFamily.Variant.CHISELED,
          (RecipeProvider.FamilyStonecutterRecipeProvider)(context, result, base) -> context.stonecutterResultFromBase(
-               RecipeCategory.BUILDING_BLOCKS, result, base, 1
-            )
+            RecipeCategory.BUILDING_BLOCKS, result, base, 1
+         )
       )
       .put(
          BlockFamily.Variant.POLISHED,
          (RecipeProvider.FamilyStonecutterRecipeProvider)(context, result, base) -> context.stonecutterResultFromBase(
-               RecipeCategory.BUILDING_BLOCKS, result, base, 1
-            )
+            RecipeCategory.BUILDING_BLOCKS, result, base, 1
+         )
       )
       .put(
          BlockFamily.Variant.CUT,
          (RecipeProvider.FamilyStonecutterRecipeProvider)(context, result, base) -> context.stonecutterResultFromBase(
-               RecipeCategory.BUILDING_BLOCKS, result, base, 1
-            )
+            RecipeCategory.BUILDING_BLOCKS, result, base, 1
+         )
       )
       .put(
          BlockFamily.Variant.TILES,
          (RecipeProvider.FamilyStonecutterRecipeProvider)(context, result, base) -> context.stonecutterResultFromBase(
-               RecipeCategory.BUILDING_BLOCKS, result, base, 1
-            )
+            RecipeCategory.BUILDING_BLOCKS, result, base, 1
+         )
       )
       .put(
          BlockFamily.Variant.PILLAR,
          (RecipeProvider.FamilyStonecutterRecipeProvider)(context, result, base) -> context.stonecutterResultFromBase(
-               RecipeCategory.BUILDING_BLOCKS, result, base, 1
-            )
+            RecipeCategory.BUILDING_BLOCKS, result, base, 1
+         )
       )
       .put(
          BlockFamily.Variant.COBBLED,
          (RecipeProvider.FamilyStonecutterRecipeProvider)(context, result, base) -> context.stonecutterResultFromBase(
-               RecipeCategory.BUILDING_BLOCKS, result, base, 1
-            )
+            RecipeCategory.BUILDING_BLOCKS, result, base, 1
+         )
       )
       .build();
 
    protected RecipeProvider(final BootstrapContext<Recipe<?>> recipeOutput, final BootstrapContext<Advancement> advancementOutput) {
       this.advancementOutput = advancementOutput;
       this.output = new RecipeOutput() {
-         {
-            Objects.requireNonNull(RecipeProvider.this);
-         }
-
          @Override
-         public void accept(final ResourceKey<Recipe<?>> id, final Recipe<?> recipe, @Nullable final AdvancementHolder advancementHolder) {
+         public void accept(final ResourceKey<Recipe<?>> id, final Recipe<?> recipe, final @Nullable AdvancementHolder advancementHolder) {
             recipeOutput.register(id, recipe);
             if (advancementHolder != null) {
                this.acceptAdvancement(advancementHolder);
@@ -254,11 +249,11 @@ public abstract class RecipeProvider {
       BlockFamilies.getAllFamilies().forEach(family -> this.generateRecipes(family, flagSet));
    }
 
-   protected void oneToOneConversionRecipe(final ItemLike product, final ItemLike resource, @Nullable final String group) {
+   protected void oneToOneConversionRecipe(final ItemLike product, final ItemLike resource, final @Nullable String group) {
       this.oneToOneConversionRecipe(product, resource, group, 1);
    }
 
-   protected void oneToOneConversionRecipe(final ItemLike product, final ItemLike resource, @Nullable final String group, final int productCount) {
+   protected void oneToOneConversionRecipe(final ItemLike product, final ItemLike resource, final @Nullable String group, final int productCount) {
       this.shapeless(RecipeCategory.MISC, product, productCount)
          .requires(resource)
          .group(group)
@@ -458,7 +453,7 @@ public abstract class RecipeProvider {
    }
 
    protected void colorWithDye(
-      final List<Item> dyes, final List<Item> dyedItems, @Nullable final Item uncoloredItem, final String groupName, final RecipeCategory category
+      final List<Item> dyes, final List<Item> dyedItems, final @Nullable Item uncoloredItem, final String groupName, final RecipeCategory category
    ) {
       for (int dyeIndex = 0; dyeIndex < dyes.size(); dyeIndex++) {
          Item dye = dyes.get(dyeIndex);
@@ -710,9 +705,9 @@ public abstract class RecipeProvider {
       final RecipeCategory packedFormCategory,
       final ItemLike packedForm,
       final String packingRecipeId,
-      @Nullable final String packingRecipeGroup,
+      final @Nullable String packingRecipeGroup,
       final String unpackingRecipeId,
-      @Nullable final String unpackingRecipeGroup
+      final @Nullable String unpackingRecipeGroup
    ) {
       this.shapeless(unpackedFormCategory, unpackedForm, 9)
          .requires(packedForm)

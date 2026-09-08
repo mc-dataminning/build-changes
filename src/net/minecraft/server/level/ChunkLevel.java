@@ -14,14 +14,12 @@ public class ChunkLevel {
    public static final int RADIUS_AROUND_FULL_CHUNK = FULL_CHUNK_STEP.accumulatedDependencies().getRadius();
    public static final int MAX_LEVEL = 33 + RADIUS_AROUND_FULL_CHUNK;
 
-   @Nullable
-   public static ChunkStatus generationStatus(final int level) {
+   public static @Nullable ChunkStatus generationStatus(final int level) {
       return getStatusAroundFullChunk(level - 33, null);
    }
 
    @Contract("_,!null->!null;_,_->_")
-   @Nullable
-   public static ChunkStatus getStatusAroundFullChunk(final int distanceToFullChunk, @Nullable final ChunkStatus defaultValue) {
+   public static @Nullable ChunkStatus getStatusAroundFullChunk(final int distanceToFullChunk, final @Nullable ChunkStatus defaultValue) {
       if (distanceToFullChunk > RADIUS_AROUND_FULL_CHUNK) {
          return defaultValue;
       } else {

@@ -16,13 +16,12 @@ public interface DynamicGpuDataStorage<T extends DynamicGpuDataStorage.DynamicGp
 
    GpuBufferSlice[] writeDataBatchedMultiple(final List<List<T>> dataLists);
 
-   @GpuBuffer.Usage
-   int usage();
+   @GpuBuffer.Usage int usage();
 
    @Override
    void close();
 
-   public interface DynamicGpuData {
+   interface DynamicGpuData {
       void write(ByteBuffer byteBuffer);
    }
 }

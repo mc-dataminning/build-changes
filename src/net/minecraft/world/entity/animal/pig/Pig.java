@@ -93,12 +93,11 @@ public class Pig extends Animal implements ItemSteerable {
       return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 10.0).add(Attributes.MOVEMENT_SPEED, 0.25);
    }
 
-   @Nullable
    @Override
-   public LivingEntity getControllingPassenger() {
-      return (LivingEntity)(this.isSaddled() && this.getFirstPassenger() instanceof Player player && player.isHolding(Items.CARROT_ON_A_STICK)
+   public @Nullable LivingEntity getControllingPassenger() {
+      return this.isSaddled() && this.getFirstPassenger() instanceof Player player && player.isHolding(Items.CARROT_ON_A_STICK)
          ? player
-         : super.getControllingPassenger());
+         : super.getControllingPassenger();
    }
 
    @Override
@@ -175,9 +174,7 @@ public class Pig extends Animal implements ItemSteerable {
          InteractionResult interactionResult = super.mobInteract(player, hand);
          if (!interactionResult.consumesAction()) {
             ItemStack itemStack = player.getItemInHand(hand);
-            return (InteractionResult)(this.isEquippableInSlot(itemStack, EquipmentSlot.SADDLE)
-               ? itemStack.interactLivingEntity(player, this, hand)
-               : InteractionResult.PASS);
+            return this.isEquippableInSlot(itemStack, EquipmentSlot.SADDLE) ? itemStack.interactLivingEntity(player, this, hand) : InteractionResult.PASS;
          } else {
             return interactionResult;
          }
@@ -196,7 +193,7 @@ public class Pig extends Animal implements ItemSteerable {
 
    @Override
    protected Holder<SoundEvent> getEquipSound(final EquipmentSlot slot, final ItemStack stack, final Equippable equippable) {
-      return (Holder<SoundEvent>)(slot == EquipmentSlot.SADDLE ? SoundEvents.PIG_SADDLE : super.getEquipSound(slot, stack, equippable));
+      return slot == EquipmentSlot.SADDLE ? SoundEvents.PIG_SADDLE : super.getEquipSound(slot, stack, equippable);
    }
 
    @Override
@@ -229,7 +226,7 @@ public class Pig extends Animal implements ItemSteerable {
 
    @Override
    protected float getRiddenSpeed(final Player controller) {
-      return (float)(this.getAttributeValue(Attributes.MOVEMENT_SPEED) * 0.225 * (double)this.steering.boostFactor());
+      return (float)(this.getAttributeValue(Attributes.MOVEMENT_SPEED) * 0.225 * this.steering.boostFactor());
    }
 
    @Override
@@ -242,8 +239,7 @@ public class Pig extends Animal implements ItemSteerable {
       return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
    }
 
-   @Nullable
-   public Pig getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable Pig getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       Pig baby = EntityTypes.PIG.create(level, EntitySpawnReason.BREEDING);
       if (baby != null && partner instanceof Pig partnerPig) {
          baby.setVariant(this.random.nextBoolean() ? this.getVariant() : partnerPig.getVariant());
@@ -259,7 +255,7 @@ public class Pig extends Animal implements ItemSteerable {
 
    @Override
    public Vec3 getLeashOffset() {
-      return new Vec3(0.0, (double)(0.6F * this.getEyeHeight()), (double)(this.getBbWidth() * 0.4F));
+      return new Vec3(0.0, 0.6F * this.getEyeHeight(), this.getBbWidth() * 0.4F);
    }
 
    private void setVariant(final Holder<PigVariant> variant) {
@@ -282,9 +278,8 @@ public class Pig extends Animal implements ItemSteerable {
       return this.isBaby() ? this.getSoundVariant().value().babySounds() : this.getSoundVariant().value().adultSounds();
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       if (type == DataComponents.PIG_VARIANT) {
          return castComponentValue((DataComponentType<T>)type, this.getVariant());
       } else {
@@ -314,7 +309,7 @@ public class Pig extends Animal implements ItemSteerable {
 
    @Override
    public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       VariantUtils.selectVariantToSpawn(SpawnContext.create(level, this.blockPosition()), Registries.PIG_VARIANT).ifPresent(this::setVariant);
       this.setSoundVariant(PigSoundVariants.pickRandomSoundVariant(this.registryAccess(), level.getRandom()));

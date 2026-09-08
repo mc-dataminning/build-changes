@@ -54,33 +54,21 @@ public interface FileRelation {
       Path dimensionsRoot = basePath.resolve("dimensions");
       if (!Files.exists(dimensionsRoot)) {
          return getDefaultDimensions(basePath);
-      } else {
-         try {
-            List var4;
-            try (Stream<Path> namespacePaths = Files.list(dimensionsRoot)) {
-               List<Path> discoveredDimensions = namespacePaths.filter(x$0 -> Files.isDirectory(x$0))
-                  .flatMap(path -> directoriesInPath(path).stream())
-                  .toList();
-               var4 = discoveredDimensions.isEmpty() ? getDefaultDimensions(basePath) : discoveredDimensions;
-            }
+      }
 
-            return var4;
-         } catch (IOException var7) {
-            LOGGER.warn("Failed to discover dimensions, assuming default: {}", var7.toString());
-            return getDefaultDimensions(basePath);
-         }
+      try (Stream<Path> namespacePaths = Files.list(dimensionsRoot)) {
+         List<Path> discoveredDimensions = namespacePaths.filter(x$0 -> Files.isDirectory(x$0)).flatMap(path -> directoriesInPath(path).stream()).toList();
+         return discoveredDimensions.isEmpty() ? getDefaultDimensions(basePath) : discoveredDimensions;
+      } catch (IOException e) {
+         LOGGER.warn("Failed to discover dimensions, assuming default: {}", e.toString());
+         return getDefaultDimensions(basePath);
       }
    }
 
    static List<Path> directoriesInPath(final Path path) {
-      try {
-         List var2;
-         try (Stream<Path> dimensionPaths = Files.list(path)) {
-            var2 = dimensionPaths.filter(x$0 -> Files.isDirectory(x$0)).toList();
-         }
-
-         return var2;
-      } catch (IOException var6) {
+      try (Stream<Path> dimensionPaths = Files.list(path)) {
+         return dimensionPaths.filter(x$0 -> Files.isDirectory(x$0)).toList();
+      } catch (IOException e) {
          return List.of();
       }
    }

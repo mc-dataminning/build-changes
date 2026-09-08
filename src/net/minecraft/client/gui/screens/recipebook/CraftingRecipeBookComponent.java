@@ -1,7 +1,6 @@
 package net.minecraft.client.gui.screens.recipebook;
 
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.network.chat.Component;
 import net.minecraft.recipebook.PlaceRecipeHelper;
@@ -44,7 +43,6 @@ public class CraftingRecipeBookComponent extends RecipeBookComponent<AbstractCra
    private boolean canDisplay(final RecipeDisplay display) {
       int gridWidth = this.menu.getGridWidth();
       int gridHeight = this.menu.getGridHeight();
-      Objects.requireNonNull(display);
 
       return switch (display) {
          case ShapedCraftingRecipeDisplay shaped -> gridWidth >= shaped.width() && gridHeight >= shaped.height();
@@ -56,7 +54,6 @@ public class CraftingRecipeBookComponent extends RecipeBookComponent<AbstractCra
    @Override
    protected void fillGhostRecipe(final GhostSlots ghostSlots, final RecipeDisplay recipe, final ContextMap context) {
       ghostSlots.setResult(this.menu.getResultSlot(), context, recipe.result());
-      Objects.requireNonNull(recipe);
       switch (recipe) {
          case ShapedCraftingRecipeDisplay shaped: {
             List<Slot> inputSlots = this.menu.getInputGridSlots();
@@ -84,6 +81,7 @@ public class CraftingRecipeBookComponent extends RecipeBookComponent<AbstractCra
                break label15;
             }
          }
+         default:
       }
    }
 

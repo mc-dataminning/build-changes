@@ -46,7 +46,7 @@ public class EnderChestBlock extends AbstractChestBlock<EnderChestBlockEntity> i
 
    protected EnderChestBlock(final BlockBehaviour.Properties properties) {
       super(properties, () -> BlockEntityTypes.ENDER_CHEST);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false));
    }
 
    @Override
@@ -66,7 +66,7 @@ public class EnderChestBlock extends AbstractChestBlock<EnderChestBlockEntity> i
       FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
       return this.defaultBlockState()
          .setValue(FACING, context.getHorizontalDirection().getOpposite())
-         .setValue(WATERLOGGED, Boolean.valueOf(replacedFluidState.is(Fluids.WATER)));
+         .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
    }
 
    @Override
@@ -78,16 +78,16 @@ public class EnderChestBlock extends AbstractChestBlock<EnderChestBlockEntity> i
          BlockPos above = pos.above();
          if (level.getBlockState(above).isRedstoneConductor(level, above)) {
             return InteractionResult.SUCCESS;
-         } else {
-            if (level instanceof ServerLevel serverLevel) {
-               container.setActiveChest(enderChest);
-               player.openMenu(new SimpleMenuProvider((containerId, inventory, p) -> ChestMenu.threeRows(containerId, inventory, container), CONTAINER_TITLE));
-               player.awardStat(Stats.OPEN_ENDERCHEST);
-               PiglinAi.angerNearbyPiglins(serverLevel, player, true);
-            }
-
-            return InteractionResult.SUCCESS;
          }
+
+         if (level instanceof ServerLevel serverLevel) {
+            container.setActiveChest(enderChest);
+            player.openMenu(new SimpleMenuProvider((containerId, inventory, p) -> ChestMenu.threeRows(containerId, inventory, container), CONTAINER_TITLE));
+            player.awardStat(Stats.OPEN_ENDERCHEST);
+            PiglinAi.angerNearbyPiglins(serverLevel, player, true);
+         }
+
+         return InteractionResult.SUCCESS;
       } else {
          return InteractionResult.SUCCESS;
       }
@@ -98,9 +98,8 @@ public class EnderChestBlock extends AbstractChestBlock<EnderChestBlockEntity> i
       return new EnderChestBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return level.isClientSide() ? createTickerHelper(type, BlockEntityTypes.ENDER_CHEST, EnderChestBlockEntity::lidAnimateTick) : null;
    }
 
@@ -109,12 +108,12 @@ public class EnderChestBlock extends AbstractChestBlock<EnderChestBlockEntity> i
       for (int i = 0; i < 3; i++) {
          int flipX = random.nextInt(2) * 2 - 1;
          int flipZ = random.nextInt(2) * 2 - 1;
-         double x = (double)pos.getX() + 0.5 + 0.25 * (double)flipX;
-         double y = (double)((float)pos.getY() + random.nextFloat());
-         double z = (double)pos.getZ() + 0.5 + 0.25 * (double)flipZ;
-         double xa = (double)(random.nextFloat() * (float)flipX);
-         double ya = ((double)random.nextFloat() - 0.5) * 0.125;
-         double za = (double)(random.nextFloat() * (float)flipZ);
+         double x = pos.getX() + 0.5 + 0.25 * flipX;
+         double y = pos.getY() + random.nextFloat();
+         double z = pos.getZ() + 0.5 + 0.25 * flipZ;
+         double xa = random.nextFloat() * flipX;
+         double ya = (random.nextFloat() - 0.5) * 0.125;
+         double za = random.nextFloat() * flipZ;
          level.addParticle(ParticleTypes.PORTAL, x, y, z, xa, ya, za);
       }
    }

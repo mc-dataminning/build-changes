@@ -20,18 +20,18 @@ public record ZombieNautilusVariant(ModelAndTexture<ZombieNautilusVariant.ModelT
    implements PriorityProvider<SpawnContext, SpawnCondition> {
    public static final Codec<ZombieNautilusVariant> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ModelAndTexture.codec(ZombieNautilusVariant.ModelType.CODEC, ZombieNautilusVariant.ModelType.NORMAL)
-                  .forGetter(ZombieNautilusVariant::modelAndTexture),
-               SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(ZombieNautilusVariant::spawnConditions)
-            )
-            .apply(i, ZombieNautilusVariant::new)
+            ModelAndTexture.codec(ZombieNautilusVariant.ModelType.CODEC, ZombieNautilusVariant.ModelType.NORMAL)
+               .forGetter(ZombieNautilusVariant::modelAndTexture),
+            SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(ZombieNautilusVariant::spawnConditions)
+         )
+         .apply(i, ZombieNautilusVariant::new)
    );
    public static final Codec<ZombieNautilusVariant> NETWORK_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ModelAndTexture.codec(ZombieNautilusVariant.ModelType.CODEC, ZombieNautilusVariant.ModelType.NORMAL)
-                  .forGetter(ZombieNautilusVariant::modelAndTexture)
-            )
-            .apply(i, ZombieNautilusVariant::new)
+            ModelAndTexture.codec(ZombieNautilusVariant.ModelType.CODEC, ZombieNautilusVariant.ModelType.NORMAL)
+               .forGetter(ZombieNautilusVariant::modelAndTexture)
+         )
+         .apply(i, ZombieNautilusVariant::new)
    );
    public static final Codec<Holder<ZombieNautilusVariant>> CODEC = RegistryCodecs.holder(Registries.ZOMBIE_NAUTILUS_VARIANT);
    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<ZombieNautilusVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(
@@ -47,14 +47,14 @@ public record ZombieNautilusVariant(ModelAndTexture<ZombieNautilusVariant.ModelT
       return this.spawnConditions.selectors();
    }
 
-   public static enum ModelType implements StringRepresentable {
+   public enum ModelType implements StringRepresentable {
       NORMAL("normal"),
       WARM("warm");
 
       public static final Codec<ZombieNautilusVariant.ModelType> CODEC = StringRepresentable.fromEnum(ZombieNautilusVariant.ModelType::values);
       private final String name;
 
-      private ModelType(final String name) {
+      ModelType(final String name) {
          this.name = name;
       }
 

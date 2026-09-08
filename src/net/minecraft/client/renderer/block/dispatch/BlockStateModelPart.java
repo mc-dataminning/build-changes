@@ -15,10 +15,9 @@ public interface BlockStateModelPart {
 
    Material.Baked particleMaterial();
 
-   @BakedQuad.MaterialFlags
-   int materialFlags();
+   @BakedQuad.MaterialFlags int materialFlags();
 
-   public interface Unbaked extends ResolvableModel {
+   interface Unbaked extends ResolvableModel {
       BlockStateModelPart bake(ModelBaker modelBakery);
    }
 }

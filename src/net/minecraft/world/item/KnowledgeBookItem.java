@@ -30,26 +30,26 @@ public class KnowledgeBookItem extends Item {
       itemStack.consume(1, player);
       if (recipeIds.isEmpty()) {
          return InteractionResult.FAIL;
-      } else {
-         if (!level.isClientSide()) {
-            RecipeManager recipeManager = level.getServer().getRecipeManager();
-            List<RecipeHolder<?>> recipes = new ArrayList<>(recipeIds.size());
+      }
 
-            for (ResourceKey<Recipe<?>> recipeId : recipeIds) {
-               Optional<RecipeHolder<?>> recipe = recipeManager.byKey(recipeId);
-               if (!recipe.isPresent()) {
-                  LOGGER.error("Invalid recipe: {}", recipeId);
-                  return InteractionResult.FAIL;
-               }
+      if (!level.isClientSide()) {
+         RecipeManager recipeManager = level.getServer().getRecipeManager();
+         List<RecipeHolder<?>> recipes = new ArrayList<>(recipeIds.size());
 
-               recipes.add(recipe.get());
+         for (ResourceKey<Recipe<?>> recipeId : recipeIds) {
+            Optional<RecipeHolder<?>> recipe = recipeManager.byKey(recipeId);
+            if (!recipe.isPresent()) {
+               LOGGER.error("Invalid recipe: {}", recipeId);
+               return InteractionResult.FAIL;
             }
 
-            player.awardRecipes(recipes);
-            player.awardStat(Stats.ITEM_USED.get(this));
+            recipes.add(recipe.get());
          }
 
-         return InteractionResult.SUCCESS;
+         player.awardRecipes(recipes);
+         player.awardStat(Stats.ITEM_USED.get(this));
       }
+
+      return InteractionResult.SUCCESS;
    }
 }

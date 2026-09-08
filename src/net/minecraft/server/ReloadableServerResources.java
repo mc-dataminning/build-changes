@@ -84,25 +84,25 @@ public class ReloadableServerResources {
       return ReloadableServerRegistries.reload(contextLayers, updatedContextTags, resourceManager, backgroundExecutor)
          .thenCompose(
             fullRegistries -> CompletableFuture.<List<DataComponentInitializers.PendingComponents<?>>>supplyAsync(
-                     () -> BuiltInRegistries.DATA_COMPONENT_INITIALIZERS.build(fullRegistries.lookupWithUpdatedTags()), backgroundExecutor
-                  )
-                  .thenCompose(
-                     pendingComponents -> {
-                        ReloadableServerResources result = new ReloadableServerResources(
-                           fullRegistries,
-                           enabledFeatures,
-                           commandSelection,
-                           updatedContextTags,
-                           functionCompilationPermissions,
-                           (List<DataComponentInitializers.PendingComponents<?>>)pendingComponents
-                        );
-                        return SimpleReloadInstance.create(
-                              resourceManager, result.listeners(), backgroundExecutor, mainThreadExecutor, DATA_RELOAD_INITIAL_TASK, LOGGER.isDebugEnabled()
-                           )
-                           .done()
-                           .thenApply(ignore -> result);
-                     }
-                  )
+                  () -> BuiltInRegistries.DATA_COMPONENT_INITIALIZERS.build(fullRegistries.lookupWithUpdatedTags()), backgroundExecutor
+               )
+               .thenCompose(
+                  pendingComponents -> {
+                     ReloadableServerResources result = new ReloadableServerResources(
+                        fullRegistries,
+                        enabledFeatures,
+                        commandSelection,
+                        updatedContextTags,
+                        functionCompilationPermissions,
+                        (List<DataComponentInitializers.PendingComponents<?>>)pendingComponents
+                     );
+                     return SimpleReloadInstance.create(
+                           resourceManager, result.listeners(), backgroundExecutor, mainThreadExecutor, DATA_RELOAD_INITIAL_TASK, LOGGER.isDebugEnabled()
+                        )
+                        .done()
+                        .thenApply(ignore -> result);
+                  }
+               )
          );
    }
 

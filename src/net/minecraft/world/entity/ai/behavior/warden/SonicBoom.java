@@ -49,8 +49,8 @@ public class SonicBoom extends Behavior<Warden> {
    }
 
    protected void start(final ServerLevel level, final Warden body, final long timestamp) {
-      body.getBrain().setMemoryWithExpiry(MemoryModuleType.ATTACK_COOLING_DOWN, true, (long)DURATION);
-      body.getBrain().setMemoryWithExpiry(MemoryModuleType.SONIC_BOOM_SOUND_DELAY, Unit.INSTANCE, (long)TICKS_BEFORE_PLAYING_SOUND);
+      body.getBrain().setMemoryWithExpiry(MemoryModuleType.ATTACK_COOLING_DOWN, true, DURATION);
+      body.getBrain().setMemoryWithExpiry(MemoryModuleType.SONIC_BOOM_SOUND_DELAY, Unit.INSTANCE, TICKS_BEFORE_PLAYING_SOUND);
       level.broadcastEntityEvent(body, (byte)62);
       body.playSound(SoundEvents.WARDEN_SONIC_CHARGE, 3.0F, 1.0F);
    }
@@ -59,7 +59,7 @@ public class SonicBoom extends Behavior<Warden> {
       body.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).ifPresent(target -> body.getLookControl().setLookAt(target.position()));
       if (!body.getBrain().hasMemoryValue(MemoryModuleType.SONIC_BOOM_SOUND_DELAY)
          && !body.getBrain().hasMemoryValue(MemoryModuleType.SONIC_BOOM_SOUND_COOLDOWN)) {
-         body.getBrain().setMemoryWithExpiry(MemoryModuleType.SONIC_BOOM_SOUND_COOLDOWN, Unit.INSTANCE, (long)(DURATION - TICKS_BEFORE_PLAYING_SOUND));
+         body.getBrain().setMemoryWithExpiry(MemoryModuleType.SONIC_BOOM_SOUND_COOLDOWN, Unit.INSTANCE, DURATION - TICKS_BEFORE_PLAYING_SOUND);
          body.getBrain()
             .getMemory(MemoryModuleType.ATTACK_TARGET)
             .filter(body::canTargetEntity)
@@ -71,7 +71,7 @@ public class SonicBoom extends Behavior<Warden> {
                int steps = Mth.floor(delta.length()) + 7;
 
                for (int i = 1; i < steps; i++) {
-                  Vec3 particlePos = source.add(normalize.scale((double)i));
+                  Vec3 particlePos = source.add(normalize.scale(i));
                   level.sendParticles(ParticleTypes.SONIC_BOOM, particlePos.x, particlePos.y, particlePos.z, 1, 0.0, 0.0, 0.0, 0.0);
                }
 
@@ -90,6 +90,6 @@ public class SonicBoom extends Behavior<Warden> {
    }
 
    public static void setCooldown(final LivingEntity body, final int cooldown) {
-      body.getBrain().setMemoryWithExpiry(MemoryModuleType.SONIC_BOOM_COOLDOWN, Unit.INSTANCE, (long)cooldown);
+      body.getBrain().setMemoryWithExpiry(MemoryModuleType.SONIC_BOOM_COOLDOWN, Unit.INSTANCE, cooldown);
    }
 }

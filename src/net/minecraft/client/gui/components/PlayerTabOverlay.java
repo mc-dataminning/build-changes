@@ -58,10 +58,8 @@ public class PlayerTabOverlay {
    public static final int MAX_ROWS_PER_COL = 20;
    private final Minecraft minecraft;
    private final Hud hud;
-   @Nullable
-   private Component footer;
-   @Nullable
-   private Component header;
+   private @Nullable Component footer;
+   private @Nullable Component header;
    private boolean visible;
    private final Map<UUID, PlayerTabOverlay.HealthState> healthStates = new Object2ObjectOpenHashMap();
 
@@ -96,7 +94,7 @@ public class PlayerTabOverlay {
    }
 
    public void extractRenderState(
-      final GuiGraphicsExtractor graphics, final int screenWidth, final Scoreboard scoreboard, @Nullable final Objective displayObjective
+      final GuiGraphicsExtractor graphics, final int screenWidth, final Scoreboard scoreboard, final @Nullable Objective displayObjective
    ) {
       List<PlayerInfo> playerInfos = this.getPlayerInfos();
       List<PlayerTabOverlay.ScoreDisplayEntry> entriesToDisplay = new ArrayList<>(playerInfos.size());
@@ -272,16 +270,16 @@ public class PlayerTabOverlay {
 
    private void extractTablistHearts(final int yo, final int left, final int right, final UUID profileId, final GuiGraphicsExtractor graphics, final int score) {
       PlayerTabOverlay.HealthState health = this.healthStates.computeIfAbsent(profileId, id -> new PlayerTabOverlay.HealthState(score));
-      health.update(score, (long)this.hud.getGuiTicks());
+      health.update(score, this.hud.getGuiTicks());
       int fullHearts = Mth.positiveCeilDiv(Math.max(score, health.displayedValue()), 2);
       int heartsToRender = Math.max(score, Math.max(health.displayedValue(), 20)) / 2;
-      boolean blink = health.isBlinking((long)this.hud.getGuiTicks());
+      boolean blink = health.isBlinking(this.hud.getGuiTicks());
       if (fullHearts > 0) {
-         int widthPerHeart = Mth.floor(Math.min((float)(right - left - 4) / (float)heartsToRender, 9.0F));
+         int widthPerHeart = Mth.floor(Math.min((float)(right - left - 4) / heartsToRender, 9.0F));
          if (widthPerHeart <= 3) {
-            float pct = Mth.clamp((float)score / 20.0F, 0.0F, 1.0F);
+            float pct = Mth.clamp(score / 20.0F, 0.0F, 1.0F);
             int color = (int)((1.0F - pct) * 255.0F) << 16 | (int)(pct * 255.0F) << 8;
-            float hearts = (float)score / 2.0F;
+            float hearts = score / 2.0F;
             Component hpText = Component.translatable("multiplayer.player.list.hp", hearts);
             Component text;
             if (right - this.minecraft.font.width(hpText) >= left) {
@@ -336,11 +334,11 @@ public class PlayerTabOverlay {
       }
    }
 
-   public void setFooter(@Nullable final Component footer) {
+   public void setFooter(final @Nullable Component footer) {
       this.footer = footer;
    }
 
-   public void setHeader(@Nullable final Component header) {
+   public void setHeader(final @Nullable Component header) {
       this.header = header;
    }
 
@@ -385,6 +383,6 @@ public class PlayerTabOverlay {
       }
    }
 
-   private static record ScoreDisplayEntry(Component name, int score, @Nullable Component formattedScore, int scoreWidth) {
+   private record ScoreDisplayEntry(Component name, int score, @Nullable Component formattedScore, int scoreWidth) {
    }
 }

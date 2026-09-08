@@ -27,30 +27,29 @@ public class CommandStorage {
       return container != null ? container.get(id.getPath()) : new CompoundTag();
    }
 
-   @Nullable
-   private CommandStorage.Container getContainer(final String namespace) {
+   private CommandStorage.@Nullable Container getContainer(final String namespace) {
       CommandStorage.Container container = this.namespaces.get(namespace);
       if (container != null) {
          return container;
-      } else {
-         CommandStorage.Container newContainer = this.savedDataStorage.get(CommandStorage.Container.type(namespace));
-         if (newContainer != null) {
-            this.namespaces.put(namespace, newContainer);
-         }
-
-         return newContainer;
       }
+
+      CommandStorage.Container newContainer = this.savedDataStorage.get(CommandStorage.Container.type(namespace));
+      if (newContainer != null) {
+         this.namespaces.put(namespace, newContainer);
+      }
+
+      return newContainer;
    }
 
    private CommandStorage.Container getOrCreateContainer(final String namespace) {
       CommandStorage.Container container = this.namespaces.get(namespace);
       if (container != null) {
          return container;
-      } else {
-         CommandStorage.Container newContainer = this.savedDataStorage.computeIfAbsent(CommandStorage.Container.type(namespace));
-         this.namespaces.put(namespace, newContainer);
-         return newContainer;
       }
+
+      CommandStorage.Container newContainer = this.savedDataStorage.computeIfAbsent(CommandStorage.Container.type(namespace));
+      this.namespaces.put(namespace, newContainer);
+      return newContainer;
    }
 
    public void set(final Identifier id, final CompoundTag contents) {
@@ -64,7 +63,7 @@ public class CommandStorage {
    private static class Container extends SavedData {
       public static final Codec<CommandStorage.Container> CODEC = RecordCodecBuilder.create(
          i -> i.group(Codec.unboundedMap(ExtraCodecs.RESOURCE_PATH_CODEC, CompoundTag.CODEC).fieldOf("contents").forGetter(container -> container.storage))
-               .apply(i, CommandStorage.Container::new)
+            .apply(i, CommandStorage.Container::new)
       );
       private final Map<String, CompoundTag> storage;
 

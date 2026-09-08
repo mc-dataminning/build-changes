@@ -26,16 +26,11 @@ public class EntityRenderState {
    public boolean displayFireAnimation;
    public int lightCoords = 15728880;
    public int outlineColor = 0;
-   @Nullable
-   public Vec3 passengerOffset;
-   @Nullable
-   public Component nameTag;
-   @Nullable
-   public Component scoreText;
-   @Nullable
-   public Vec3 nameTagAttachment;
-   @Nullable
-   public List<EntityRenderState.LeashState> leashStates;
+   public @Nullable Vec3 passengerOffset;
+   public @Nullable Component nameTag;
+   public @Nullable Component scoreText;
+   public @Nullable Vec3 nameTagAttachment;
+   public @Nullable List<EntityRenderState.LeashState> leashStates;
    public float shadowRadius;
    public final List<EntityRenderState.ShadowPiece> shadowPieces = new ArrayList<>();
 
@@ -59,6 +54,6 @@ public class EntityRenderState {
       public boolean slack = true;
    }
 
-   public static record ShadowPiece(float relativeX, float relativeY, float relativeZ, VoxelShape shapeBelow, float alpha) {
+   public record ShadowPiece(float relativeX, float relativeY, float relativeZ, VoxelShape shapeBelow, float alpha) {
    }
 }

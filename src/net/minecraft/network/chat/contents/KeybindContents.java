@@ -16,8 +16,7 @@ public class KeybindContents implements ComponentContents {
       i -> i.group(Codec.STRING.fieldOf("keybind").forGetter(o -> o.name)).apply(i, KeybindContents::new)
    );
    private final String name;
-   @Nullable
-   private Supplier<Component> nameResolver;
+   private @Nullable Supplier<Component> nameResolver;
 
    public KeybindContents(final String name) {
       this.name = name;
@@ -43,15 +42,7 @@ public class KeybindContents implements ComponentContents {
 
    @Override
    public boolean equals(final Object o) {
-      if (this == o) {
-         return true;
-      } else {
-         if (o instanceof KeybindContents that && this.name.equals(that.name)) {
-            return true;
-         }
-
-         return false;
-      }
+      return this == o ? true : o instanceof KeybindContents that && this.name.equals(that.name);
    }
 
    @Override

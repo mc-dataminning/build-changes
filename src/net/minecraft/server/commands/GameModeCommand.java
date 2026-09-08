@@ -27,8 +27,8 @@ public class GameModeCommand {
                ((RequiredArgumentBuilder)Commands.argument("gamemode", GameModeArgument.gameMode())
                      .executes(
                         c -> setMode(
-                              c, Collections.singleton(((CommandSourceStack)c.getSource()).getPlayerOrException()), GameModeArgument.getGameMode(c, "gamemode")
-                           )
+                           c, Collections.singleton(((CommandSourceStack)c.getSource()).getPlayerOrException()), GameModeArgument.getGameMode(c, "gamemode")
+                        )
                      ))
                   .then(
                      Commands.argument("target", EntityArgument.players())

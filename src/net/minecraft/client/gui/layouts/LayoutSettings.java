@@ -57,7 +57,7 @@ public interface LayoutSettings {
       return new LayoutSettings.LayoutSettingsImpl();
    }
 
-   public static class LayoutSettingsImpl implements LayoutSettings {
+   class LayoutSettingsImpl implements LayoutSettings {
       public int paddingLeft;
       public int paddingTop;
       public int paddingRight;

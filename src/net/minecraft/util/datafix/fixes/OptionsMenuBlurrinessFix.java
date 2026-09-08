@@ -15,16 +15,16 @@ public class OptionsMenuBlurrinessFix extends DataFix {
          "OptionsMenuBlurrinessFix",
          this.getInputSchema().getType(References.OPTIONS),
          input -> input.update(DSL.remainderFinder(), tag -> tag.update("menuBackgroundBlurriness", value -> {
-                  int intValue = this.convertToIntRange(value.asString("0.5"));
-                  return value.createString(String.valueOf(intValue));
-               }))
+            int intValue = this.convertToIntRange(value.asString("0.5"));
+            return value.createString(String.valueOf(intValue));
+         }))
       );
    }
 
    private int convertToIntRange(final String floatBlurriness) {
       try {
          return Math.round(Float.parseFloat(floatBlurriness) * 10.0F);
-      } catch (NumberFormatException var3) {
+      } catch (NumberFormatException e) {
          return 5;
       }
    }

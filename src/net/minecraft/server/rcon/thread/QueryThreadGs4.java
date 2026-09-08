@@ -62,8 +62,8 @@ public class QueryThreadGs4 extends GenericThread {
          try {
             InetAddress addr = InetAddress.getLocalHost();
             this.hostIp = addr.getHostAddress();
-         } catch (UnknownHostException var4) {
-            LOGGER.warn("Unable to determine local host IP, please set server-ip in server.properties", var4);
+         } catch (UnknownHostException e) {
+            LOGGER.warn("Unable to determine local host IP, please set server-ip in server.properties", e);
          }
       }
 
@@ -71,8 +71,7 @@ public class QueryThreadGs4 extends GenericThread {
       this.validChallenges = Maps.newHashMap();
    }
 
-   @Nullable
-   public static QueryThreadGs4 create(final ServerInterface serverInterface) {
+   public static @Nullable QueryThreadGs4 create(final ServerInterface serverInterface) {
       int port = serverInterface.getProperties().queryPort;
       if (0 < port && 65535 >= port) {
          QueryThreadGs4 result = new QueryThreadGs4(serverInterface, port);
@@ -139,47 +138,47 @@ public class QueryThreadGs4 extends GenericThread {
          data[3] = ident[2];
          data[4] = ident[3];
          return data;
-      } else {
-         this.lastRulesResponse = now;
-         this.rulesResponse.reset();
-         this.rulesResponse.write(0);
-         this.rulesResponse.writeBytes(this.getIdentBytes(packet.getSocketAddress()));
-         this.rulesResponse.writeString("splitnum");
-         this.rulesResponse.write(128);
-         this.rulesResponse.write(0);
-         this.rulesResponse.writeString("hostname");
-         this.rulesResponse.writeString(this.serverName);
-         this.rulesResponse.writeString("gametype");
-         this.rulesResponse.writeString("SMP");
-         this.rulesResponse.writeString("game_id");
-         this.rulesResponse.writeString("MINECRAFT");
-         this.rulesResponse.writeString("version");
-         this.rulesResponse.writeString(this.serverInterface.getServerVersion());
-         this.rulesResponse.writeString("plugins");
-         this.rulesResponse.writeString(this.serverInterface.getPluginNames());
-         this.rulesResponse.writeString("map");
-         this.rulesResponse.writeString(this.worldName);
-         this.rulesResponse.writeString("numplayers");
-         this.rulesResponse.writeString(this.serverInterface.getPlayerCount() + "");
-         this.rulesResponse.writeString("maxplayers");
-         this.rulesResponse.writeString(this.maxPlayers + "");
-         this.rulesResponse.writeString("hostport");
-         this.rulesResponse.writeString(this.serverPort + "");
-         this.rulesResponse.writeString("hostip");
-         this.rulesResponse.writeString(this.hostIp);
-         this.rulesResponse.write(0);
-         this.rulesResponse.write(1);
-         this.rulesResponse.writeString("player_");
-         this.rulesResponse.write(0);
-         String[] players = this.serverInterface.getPlayerNames();
-
-         for (String player : players) {
-            this.rulesResponse.writeString(player);
-         }
-
-         this.rulesResponse.write(0);
-         return this.rulesResponse.toByteArray();
       }
+
+      this.lastRulesResponse = now;
+      this.rulesResponse.reset();
+      this.rulesResponse.write(0);
+      this.rulesResponse.writeBytes(this.getIdentBytes(packet.getSocketAddress()));
+      this.rulesResponse.writeString("splitnum");
+      this.rulesResponse.write(128);
+      this.rulesResponse.write(0);
+      this.rulesResponse.writeString("hostname");
+      this.rulesResponse.writeString(this.serverName);
+      this.rulesResponse.writeString("gametype");
+      this.rulesResponse.writeString("SMP");
+      this.rulesResponse.writeString("game_id");
+      this.rulesResponse.writeString("MINECRAFT");
+      this.rulesResponse.writeString("version");
+      this.rulesResponse.writeString(this.serverInterface.getServerVersion());
+      this.rulesResponse.writeString("plugins");
+      this.rulesResponse.writeString(this.serverInterface.getPluginNames());
+      this.rulesResponse.writeString("map");
+      this.rulesResponse.writeString(this.worldName);
+      this.rulesResponse.writeString("numplayers");
+      this.rulesResponse.writeString(this.serverInterface.getPlayerCount() + "");
+      this.rulesResponse.writeString("maxplayers");
+      this.rulesResponse.writeString(this.maxPlayers + "");
+      this.rulesResponse.writeString("hostport");
+      this.rulesResponse.writeString(this.serverPort + "");
+      this.rulesResponse.writeString("hostip");
+      this.rulesResponse.writeString(this.hostIp);
+      this.rulesResponse.write(0);
+      this.rulesResponse.write(1);
+      this.rulesResponse.writeString("player_");
+      this.rulesResponse.write(0);
+      String[] players = this.serverInterface.getPlayerNames();
+
+      for (String player : players) {
+         this.rulesResponse.writeString(player);
+      }
+
+      this.rulesResponse.write(0);
+      return this.rulesResponse.toByteArray();
    }
 
    private byte[] getIdentBytes(final SocketAddress src) {
@@ -190,10 +189,10 @@ public class QueryThreadGs4 extends GenericThread {
       SocketAddress sockAddr = src.getSocketAddress();
       if (!this.validChallenges.containsKey(sockAddr)) {
          return false;
-      } else {
-         byte[] data = src.getData();
-         return this.validChallenges.get(sockAddr).getChallenge() == PktUtils.intFromNetworkByteArray(data, 7, src.getLength());
       }
+
+      byte[] data = src.getData();
+      return this.validChallenges.get(sockAddr).getChallenge() == PktUtils.intFromNetworkByteArray(data, 7, src.getLength());
    }
 
    private void sendChallenge(final DatagramPacket src) throws IOException {
@@ -224,11 +223,11 @@ public class QueryThreadGs4 extends GenericThread {
                this.socket.receive(request);
                this.pruneChallenges();
                this.processPacket(request);
-            } catch (SocketTimeoutException var8) {
+            } catch (SocketTimeoutException ignored) {
                this.pruneChallenges();
             } catch (PortUnreachableException var9) {
-            } catch (IOException var10) {
-               this.recoverSocketError(var10);
+            } catch (IOException e) {
+               this.recoverSocketError(e);
             }
          }
       } finally {
@@ -261,8 +260,8 @@ public class QueryThreadGs4 extends GenericThread {
          this.socket = new DatagramSocket(this.port, InetAddress.getByName(this.serverIp));
          this.socket.setSoTimeout(500);
          return true;
-      } catch (Exception var2) {
-         LOGGER.warn("Unable to initialise query system on {}:{}", new Object[]{this.serverIp, this.port, var2});
+      } catch (Exception e) {
+         LOGGER.warn("Unable to initialise query system on {}:{}", new Object[]{this.serverIp, this.port, e});
          return false;
       }
    }

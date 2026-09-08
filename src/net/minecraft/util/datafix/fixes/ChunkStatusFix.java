@@ -20,14 +20,14 @@ public class ChunkStatusFix extends DataFix {
       OpticFinder<?> levelF = DSL.fieldFinder("Level", levelType);
       return this.fixTypeEverywhereTyped(
          "ChunkStatusFix", chunkType, this.getOutputSchema().getType(References.CHUNK), input -> input.updateTyped(levelF, level -> {
-               Dynamic<?> tag = (Dynamic<?>)level.get(DSL.remainderFinder());
-               String status = tag.get("Status").asString("empty");
-               if (Objects.equals(status, "postprocessed")) {
-                  tag = tag.set("Status", tag.createString("fullchunk"));
-               }
+            Dynamic<?> tag = (Dynamic<?>)level.get(DSL.remainderFinder());
+            String status = tag.get("Status").asString("empty");
+            if (Objects.equals(status, "postprocessed")) {
+               tag = tag.set("Status", tag.createString("fullchunk"));
+            }
 
-               return level.set(DSL.remainderFinder(), tag);
-            })
+            return level.set(DSL.remainderFinder(), tag);
+         })
       );
    }
 }

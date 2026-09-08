@@ -37,7 +37,7 @@ public class AngerManagement {
    private int highestAnger;
    private static final Codec<Pair<UUID, Integer>> SUSPECT_ANGER_PAIR = RecordCodecBuilder.create(
       i -> i.group(UUIDUtil.CODEC.fieldOf("uuid").forGetter(Pair::getFirst), ExtraCodecs.NON_NEGATIVE_INT.fieldOf("anger").forGetter(Pair::getSecond))
-            .apply(i, Pair::of)
+         .apply(i, Pair::of)
    );
    private final Predicate<Entity> filter;
    @VisibleForTesting
@@ -51,7 +51,7 @@ public class AngerManagement {
    public static Codec<AngerManagement> codec(final Predicate<Entity> filter) {
       return RecordCodecBuilder.create(
          i -> i.group(SUSPECT_ANGER_PAIR.listOf().lenientOptionalFieldOf("suspects", List.of()).forGetter(AngerManagement::createUuidAngerPairs))
-               .apply(i, list -> new AngerManagement(filter, list))
+            .apply(i, list -> new AngerManagement(filter, list))
       );
    }
 
@@ -162,12 +162,11 @@ public class AngerManagement {
       this.sortAndUpdateHighestAnger();
    }
 
-   @Nullable
-   private Entity getTopSuspect() {
+   private @Nullable Entity getTopSuspect() {
       return this.suspects.stream().filter(this.filter).findFirst().orElse(null);
    }
 
-   public int getActiveAnger(@Nullable final Entity currentTarget) {
+   public int getActiveAnger(final @Nullable Entity currentTarget) {
       return currentTarget == null ? this.highestAnger : this.angerBySuspect.getInt(currentTarget);
    }
 
@@ -176,7 +175,7 @@ public class AngerManagement {
    }
 
    @VisibleForTesting
-   protected static record Sorter(AngerManagement angerManagement) implements Comparator<Entity> {
+   protected record Sorter(AngerManagement angerManagement) implements Comparator<Entity> {
       public int compare(final Entity entity1, final Entity entity2) {
          if (entity1.equals(entity2)) {
             return 0;

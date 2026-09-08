@@ -18,7 +18,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class TorchflowerCropBlock extends CropBlock {
    public static final int MAX_AGE = 1;
    public static final IntegerProperty AGE = BlockStateProperties.AGE_1;
-   private static final VoxelShape[] SHAPES = Block.boxes(1, age -> Block.column(6.0, 0.0, (double)(6 + age * 4)));
+   private static final VoxelShape[] SHAPES = Block.boxes(1, age -> Block.column(6.0, 0.0, 6 + age * 4));
    private static final int BONEMEAL_INCREASE = 1;
 
    public TorchflowerCropBlock(final BlockBehaviour.Properties properties) {

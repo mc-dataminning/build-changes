@@ -28,8 +28,8 @@ public record ClientboundLevelChunkWithLightPacket(int x, int z, ClientboundLeve
    public ClientboundLevelChunkWithLightPacket(
       final LevelChunk levelChunk,
       final LevelLightEngine lightEngine,
-      @Nullable final BitSet skyChangedLightSectionFilter,
-      @Nullable final BitSet blockChangedLightSectionFilter
+      final @Nullable BitSet skyChangedLightSectionFilter,
+      final @Nullable BitSet blockChangedLightSectionFilter
    ) {
       ChunkPos chunkPos = levelChunk.getPos();
       this(

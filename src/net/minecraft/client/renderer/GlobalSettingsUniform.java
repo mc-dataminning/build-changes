@@ -11,7 +11,7 @@ import org.lwjgl.system.MemoryStack;
 
 public class GlobalSettingsUniform implements AutoCloseable {
    public static final int UBO_SIZE = new Std140SizeCalculator().putIVec3().putFloat().putVec3().putFloat().putVec2().putInt().putInt().get();
-   private final GpuBuffer buffer = RenderSystem.getDevice().createBuffer(() -> "Global Settings UBO", 136, (long)UBO_SIZE);
+   private final GpuBuffer buffer = RenderSystem.getDevice().createBuffer(() -> "Global Settings UBO", 136, UBO_SIZE);
 
    public void update(
       final int width,
@@ -32,9 +32,9 @@ public class GlobalSettingsUniform implements AutoCloseable {
          ByteBuffer data = Std140Builder.onStack(stack, UBO_SIZE)
             .putIVec3(cameraX, cameraY, cameraZ)
             .putFloat((float)glintAlpha)
-            .putVec3((float)((double)cameraX - cameraPos.x), (float)((double)cameraY - cameraPos.y), (float)((double)cameraZ - cameraPos.z))
+            .putVec3((float)(cameraX - cameraPos.x), (float)(cameraY - cameraPos.y), (float)(cameraZ - cameraPos.z))
             .putFloat(((float)(gameTime % 24000L) + worldPartialTicks) / 24000.0F)
-            .putVec2((float)width, (float)height)
+            .putVec2(width, height)
             .putInt(menuBlurRadius)
             .putInt(useRgss ? 1 : 0)
             .get();

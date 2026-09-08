@@ -9,15 +9,15 @@ import net.minecraft.util.RandomSource;
 public record VeryBiasedToBottomInt(int minInclusive, int maxInclusive) implements IntProvider {
    public static final MapCodec<VeryBiasedToBottomInt> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Codec.INT.fieldOf("min_inclusive").forGetter(VeryBiasedToBottomInt::minInclusive),
-                  Codec.INT.fieldOf("max_inclusive").forGetter(VeryBiasedToBottomInt::maxInclusive)
-               )
-               .apply(i, VeryBiasedToBottomInt::new)
+               Codec.INT.fieldOf("min_inclusive").forGetter(VeryBiasedToBottomInt::minInclusive),
+               Codec.INT.fieldOf("max_inclusive").forGetter(VeryBiasedToBottomInt::maxInclusive)
+            )
+            .apply(i, VeryBiasedToBottomInt::new)
       )
       .validate(
          u -> u.maxInclusive < u.minInclusive
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + u.minInclusive + ", max_inclusive: " + u.maxInclusive)
-               : DataResult.success(u)
+            ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + u.minInclusive + ", max_inclusive: " + u.maxInclusive)
+            : DataResult.success(u)
       );
 
    public static VeryBiasedToBottomInt of(final int minInclusive, final int maxInclusive) {

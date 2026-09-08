@@ -18,7 +18,7 @@ public enum ChatTrustLevel implements StringRepresentable {
    public static final Codec<ChatTrustLevel> CODEC = StringRepresentable.fromEnum(ChatTrustLevel::values);
    private final String serializedName;
 
-   private ChatTrustLevel(final String serializedName) {
+   ChatTrustLevel(final String serializedName) {
       this.serializedName = serializedName;
    }
 
@@ -33,10 +33,10 @@ public enum ChatTrustLevel implements StringRepresentable {
    private static boolean isModified(final PlayerChatMessage message, final Component decoratedMessage) {
       if (!decoratedMessage.getString().contains(message.signedContent())) {
          return true;
-      } else {
-         Component decoratedContent = message.unsignedContent();
-         return decoratedContent == null ? false : containsModifiedStyle(decoratedContent);
       }
+
+      Component decoratedContent = message.unsignedContent();
+      return decoratedContent == null ? false : containsModifiedStyle(decoratedContent);
    }
 
    private static boolean containsModifiedStyle(final Component decoratedContent) {
@@ -51,8 +51,7 @@ public enum ChatTrustLevel implements StringRepresentable {
       return this == NOT_SECURE;
    }
 
-   @Nullable
-   public GuiMessageTag createTag(final PlayerChatMessage message) {
+   public @Nullable GuiMessageTag createTag(final PlayerChatMessage message) {
       return switch (this) {
          case MODIFIED -> GuiMessageTag.chatModified(message.signedContent());
          case NOT_SECURE -> GuiMessageTag.chatNotSecure();

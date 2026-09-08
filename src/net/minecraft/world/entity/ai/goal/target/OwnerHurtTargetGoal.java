@@ -23,13 +23,13 @@ public class OwnerHurtTargetGoal extends TargetGoal {
          LivingEntity owner = this.tameAnimal.getOwner();
          if (owner == null) {
             return false;
-         } else {
-            this.ownerLastHurt = owner.getLastHurtMob();
-            int ts = owner.getLastHurtMobTimestamp();
-            return ts != this.timestamp
-               && this.canAttack(this.ownerLastHurt, TargetingConditions.DEFAULT)
-               && this.tameAnimal.wantsToAttack(this.ownerLastHurt, owner);
          }
+
+         this.ownerLastHurt = owner.getLastHurtMob();
+         int ts = owner.getLastHurtMobTimestamp();
+         return ts != this.timestamp
+            && this.canAttack(this.ownerLastHurt, TargetingConditions.DEFAULT)
+            && this.tameAnimal.wantsToAttack(this.ownerLastHurt, owner);
       } else {
          return false;
       }

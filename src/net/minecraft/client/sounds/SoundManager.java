@@ -12,7 +12,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Map.Entry;
 import net.minecraft.SharedConstants;
 import net.minecraft.client.Camera;
@@ -50,8 +49,7 @@ public class SoundManager extends SimplePreparableReloadListener<SoundManager.Pr
    private static final Logger LOGGER = LogUtils.getLogger();
    private static final String SOUNDS_PATH = "sounds.json";
    private static final Gson GSON = new GsonBuilder().registerTypeAdapter(SoundEventRegistration.class, new SoundEventRegistrationSerializer()).create();
-   private static final TypeToken<Map<String, SoundEventRegistration>> SOUND_EVENT_REGISTRATION_TYPE = new TypeToken<Map<String, SoundEventRegistration>>() {
-   };
+   private static final TypeToken<Map<String, SoundEventRegistration>> SOUND_EVENT_REGISTRATION_TYPE = new TypeToken<Map<String, SoundEventRegistration>>() {};
    private final Map<Identifier, WeighedSoundEvents> registry = Maps.newHashMap();
    private final SoundEngine soundEngine;
    private final Map<Identifier, Resource> soundCache = new HashMap<>();
@@ -82,8 +80,8 @@ public class SoundManager extends SimplePreparableReloadListener<SoundManager.Pr
                   }
 
                   profiler.pop();
-               } catch (RuntimeException var19) {
-                  LOGGER.warn("Invalid {} in resourcepack: '{}'", new Object[]{"sounds.json", resource.sourcePackId(), var19});
+               } catch (RuntimeException e) {
+                  LOGGER.warn("Invalid {} in resourcepack: '{}'", new Object[]{"sounds.json", resource.sourcePackId(), e});
                }
 
                profiler.pop();
@@ -107,9 +105,9 @@ public class SoundManager extends SimplePreparableReloadListener<SoundManager.Pr
       }
 
       if (LOGGER.isDebugEnabled()) {
-         for (Identifier locationx : this.registry.keySet()) {
-            if (!BuiltInRegistries.SOUND_EVENT.containsKey(locationx)) {
-               LOGGER.debug("Not having sound event for: {}", locationx);
+         for (Identifier location : this.registry.keySet()) {
+            if (!BuiltInRegistries.SOUND_EVENT.containsKey(location)) {
+               LOGGER.debug("Not having sound event for: {}", location);
             }
          }
       }
@@ -135,8 +133,7 @@ public class SoundManager extends SimplePreparableReloadListener<SoundManager.Pr
       }
    }
 
-   @Nullable
-   public WeighedSoundEvents getSoundEvent(final Identifier location) {
+   public @Nullable WeighedSoundEvents getSoundEvent(final Identifier location) {
       return this.registry.get(location);
    }
 
@@ -208,7 +205,7 @@ public class SoundManager extends SimplePreparableReloadListener<SoundManager.Pr
       this.soundEngine.removeEventListener(listener);
    }
 
-   public void stop(@Nullable final Identifier sound, @Nullable final SoundSource source) {
+   public void stop(final @Nullable Identifier sound, final @Nullable SoundSource source) {
       this.soundEngine.stop(sound, source);
    }
 
@@ -259,40 +256,36 @@ public class SoundManager extends SimplePreparableReloadListener<SoundManager.Pr
                   break;
                case SOUND_EVENT:
                   weighted = new Weighted<Sound>() {
-                     {
-                        Objects.requireNonNull(Preparations.this);
-                     }
-
                      @Override
                      public int getWeight() {
-                        WeighedSoundEvents registration = Preparations.this.registry.get(soundLocation);
-                        return registration == null ? 0 : registration.getWeight();
+                        WeighedSoundEvents registrationx = Preparations.this.registry.get(soundLocation);
+                        return registrationx == null ? 0 : registrationx.getWeight();
                      }
 
                      public Sound getSound(final RandomSource random) {
-                        WeighedSoundEvents registration = Preparations.this.registry.get(soundLocation);
-                        if (registration == null) {
+                        WeighedSoundEvents registrationx = Preparations.this.registry.get(soundLocation);
+                        if (registrationx == null) {
                            return SoundManager.EMPTY_SOUND;
-                        } else {
-                           Sound wrappedSound = registration.getSound(random);
-                           return new Sound(
-                              wrappedSound.getLocation(),
-                              new MultipliedFloats(wrappedSound.getVolume(), sound.getVolume()),
-                              new MultipliedFloats(wrappedSound.getPitch(), sound.getPitch()),
-                              sound.getWeight(),
-                              Sound.Type.FILE,
-                              wrappedSound.shouldStream() || sound.shouldStream(),
-                              wrappedSound.shouldPreload(),
-                              wrappedSound.getAttenuationDistance()
-                           );
                         }
+
+                        Sound wrappedSound = registrationx.getSound(random);
+                        return new Sound(
+                           wrappedSound.getLocation(),
+                           new MultipliedFloats(wrappedSound.getVolume(), sound.getVolume()),
+                           new MultipliedFloats(wrappedSound.getPitch(), sound.getPitch()),
+                           sound.getWeight(),
+                           Sound.Type.FILE,
+                           wrappedSound.shouldStream() || sound.shouldStream(),
+                           wrappedSound.shouldPreload(),
+                           wrappedSound.getAttenuationDistance()
+                        );
                      }
 
                      @Override
                      public void preloadIfRequired(final SoundEngine soundEngine) {
-                        WeighedSoundEvents registration = Preparations.this.registry.get(soundLocation);
-                        if (registration != null) {
-                           registration.preloadIfRequired(soundEngine);
+                        WeighedSoundEvents registrationx = Preparations.this.registry.get(soundLocation);
+                        if (registrationx != null) {
+                           registrationx.preloadIfRequired(soundEngine);
                         }
                      }
                   };

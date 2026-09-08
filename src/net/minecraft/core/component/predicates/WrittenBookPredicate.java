@@ -23,13 +23,13 @@ public record WrittenBookPredicate(
 ) implements SingleComponentItemPredicate<WrittenBookContent> {
    public static final Codec<WrittenBookPredicate> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               CollectionPredicate.codec(WrittenBookPredicate.PagePredicate.CODEC).optionalFieldOf("pages").forGetter(WrittenBookPredicate::pages),
-               Codec.STRING.optionalFieldOf("author").forGetter(WrittenBookPredicate::author),
-               Codec.STRING.optionalFieldOf("title").forGetter(WrittenBookPredicate::title),
-               MinMaxBounds.Ints.CODEC.optionalFieldOf("generation", MinMaxBounds.Ints.ANY).forGetter(WrittenBookPredicate::generation),
-               Codec.BOOL.optionalFieldOf("resolved").forGetter(WrittenBookPredicate::resolved)
-            )
-            .apply(i, WrittenBookPredicate::new)
+            CollectionPredicate.codec(WrittenBookPredicate.PagePredicate.CODEC).optionalFieldOf("pages").forGetter(WrittenBookPredicate::pages),
+            Codec.STRING.optionalFieldOf("author").forGetter(WrittenBookPredicate::author),
+            Codec.STRING.optionalFieldOf("title").forGetter(WrittenBookPredicate::title),
+            MinMaxBounds.Ints.CODEC.optionalFieldOf("generation", MinMaxBounds.Ints.ANY).forGetter(WrittenBookPredicate::generation),
+            Codec.BOOL.optionalFieldOf("resolved").forGetter(WrittenBookPredicate::resolved)
+         )
+         .apply(i, WrittenBookPredicate::new)
    );
 
    @Override
@@ -49,7 +49,7 @@ public record WrittenBookPredicate(
       }
    }
 
-   public static record PagePredicate(Component contents) implements Predicate<Filterable<Component>> {
+   public record PagePredicate(Component contents) implements Predicate<Filterable<Component>> {
       public static final Codec<WrittenBookPredicate.PagePredicate> CODEC = ComponentSerialization.CODEC
          .xmap(WrittenBookPredicate.PagePredicate::new, WrittenBookPredicate.PagePredicate::contents);
 

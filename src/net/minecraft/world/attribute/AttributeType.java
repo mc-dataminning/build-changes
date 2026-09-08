@@ -33,8 +33,8 @@ public record AttributeType<Value>(
       final Map<AttributeModifier.OperationId, AttributeModifier<Value, ?>> modifierLibrary,
       final LerpFunction<Value> lerp,
       final LerpFunction<Value> partialTickLerp,
-      @Nullable final ToFloatFunction<Value> toFloat,
-      @Nullable final ToIntFunction<Value> toInt
+      final @Nullable ToFloatFunction<Value> toFloat,
+      final @Nullable ToIntFunction<Value> toInt
    ) {
       return new AttributeType<>(valueCodec, modifierLibrary, createModifierCodec(modifierLibrary), lerp, lerp, lerp, partialTickLerp, toFloat, toInt);
    }

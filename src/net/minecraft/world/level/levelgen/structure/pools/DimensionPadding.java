@@ -9,10 +9,10 @@ import net.minecraft.util.ExtraCodecs;
 public record DimensionPadding(int bottom, int top) {
    private static final Codec<DimensionPadding> RECORD_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ExtraCodecs.NON_NEGATIVE_INT.lenientOptionalFieldOf("bottom", 0).forGetter(r -> r.bottom),
-               ExtraCodecs.NON_NEGATIVE_INT.lenientOptionalFieldOf("top", 0).forGetter(r -> r.top)
-            )
-            .apply(i, DimensionPadding::new)
+            ExtraCodecs.NON_NEGATIVE_INT.lenientOptionalFieldOf("bottom", 0).forGetter(r -> r.bottom),
+            ExtraCodecs.NON_NEGATIVE_INT.lenientOptionalFieldOf("top", 0).forGetter(r -> r.top)
+         )
+         .apply(i, DimensionPadding::new)
    );
    public static final Codec<DimensionPadding> CODEC = Codec.either(ExtraCodecs.NON_NEGATIVE_INT, RECORD_CODEC)
       .xmap(

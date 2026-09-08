@@ -26,8 +26,7 @@ public class InWorldGameRulesScreen extends AbstractGameRulesScreen implements H
    private final List<GameRule<?>> serverProvidedRules = new ArrayList<>();
    private final ClientPacketListener connection;
    private final Screen lastScreen;
-   @Nullable
-   private LoadingDotsWidget loadingDotsWidget;
+   private @Nullable LoadingDotsWidget loadingDotsWidget;
    private boolean receivedServerValues = false;
 
    public InWorldGameRulesScreen(final ClientPacketListener connection, final Consumer<Optional<GameRules>> exitCallback, final Screen lastScreen) {

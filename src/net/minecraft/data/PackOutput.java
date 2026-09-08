@@ -59,14 +59,14 @@ public class PackOutput {
       }
    }
 
-   public static enum Target {
+   public enum Target {
       DATA_PACK("data"),
       RESOURCE_PACK("assets"),
       REPORTS("reports");
 
       private final String directory;
 
-      private Target(final String directory) {
+      Target(final String directory) {
          this.directory = directory;
       }
    }

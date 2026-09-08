@@ -18,7 +18,7 @@ public record CustomModelDataProperty(int index) implements ConditionalItemModel
 
    @Override
    public boolean get(
-      final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final LivingEntity owner, final int seed, final ItemDisplayContext displayContext
+      final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner, final int seed, final ItemDisplayContext displayContext
    ) {
       CustomModelData customModelData = itemStack.get(DataComponents.CUSTOM_MODEL_DATA);
       return customModelData != null ? customModelData.getBoolean(this.index) == Boolean.TRUE : false;

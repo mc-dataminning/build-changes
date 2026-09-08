@@ -14,7 +14,6 @@ import com.mojang.datafixers.util.Function7;
 import com.mojang.datafixers.util.Function8;
 import com.mojang.datafixers.util.Function9;
 import io.netty.buffer.ByteBuf;
-import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -71,10 +70,6 @@ public interface StreamCodec<B, V> extends StreamEncoder<B, V>, StreamDecoder<B,
 
    default <O> StreamCodec<B, O> map(final Function<? super V, ? extends O> to, final Function<? super O, ? extends V> from) {
       return new StreamCodec<B, O>() {
-         {
-            Objects.requireNonNull(StreamCodec.this);
-         }
-
          @Override
          public O decode(final B input) {
             return (O)to.apply(StreamCodec.this.decode(input));
@@ -89,10 +84,6 @@ public interface StreamCodec<B, V> extends StreamEncoder<B, V>, StreamDecoder<B,
 
    default <O extends ByteBuf> StreamCodec<O, V> mapStream(final Function<O, ? extends B> operation) {
       return new StreamCodec<O, V>() {
-         {
-            Objects.requireNonNull(StreamCodec.this);
-         }
-
          public V decode(final O input) {
             B wrappedStream = (B)operation.apply(input);
             return StreamCodec.this.decode(wrappedStream);
@@ -109,10 +100,6 @@ public interface StreamCodec<B, V> extends StreamEncoder<B, V>, StreamDecoder<B,
       final Function<? super U, ? extends V> type, final Function<? super V, ? extends StreamCodec<? super B, ? extends U>> codec
    ) {
       return new StreamCodec<B, U>() {
-         {
-            Objects.requireNonNull(StreamCodec.this);
-         }
-
          @Override
          public U decode(final B input) {
             V key = StreamCodec.this.decode(input);
@@ -777,7 +764,7 @@ public interface StreamCodec<B, V> extends StreamEncoder<B, V>, StreamDecoder<B,
    }
 
    @FunctionalInterface
-   public interface CodecOperation<B, S, T> {
+   interface CodecOperation<B, S, T> {
       StreamCodec<B, T> apply(StreamCodec<B, S> original);
    }
 }

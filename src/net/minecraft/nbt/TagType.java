@@ -65,7 +65,7 @@ public interface TagType<T extends Tag> {
       };
    }
 
-   public interface StaticSize<T extends Tag> extends TagType<T> {
+   interface StaticSize<T extends Tag> extends TagType<T> {
       @Override
       default void skip(final DataInput input, final NbtAccounter accounter) throws IOException {
          input.skipBytes(this.size());
@@ -79,7 +79,7 @@ public interface TagType<T extends Tag> {
       int size();
    }
 
-   public interface VariableSize<T extends Tag> extends TagType<T> {
+   interface VariableSize<T extends Tag> extends TagType<T> {
       @Override
       default void skip(final DataInput input, final int count, final NbtAccounter accounter) throws IOException {
          for (int i = 0; i < count; i++) {

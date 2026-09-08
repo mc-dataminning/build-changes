@@ -28,16 +28,16 @@ public class TpsDebugChart extends AbstractDebugChart {
    @Override
    protected void extractAdditionalSampleBars(final GuiGraphicsExtractor graphics, final int bottom, final int currentX, final int sampleIndex) {
       long tickMethodTime = this.sampleStorage.get(sampleIndex, TpsDebugDimensions.TICK_SERVER_METHOD.ordinal());
-      int tickMethodHeight = this.getSampleHeight((double)tickMethodTime);
+      int tickMethodHeight = this.getSampleHeight(tickMethodTime);
       graphics.fill(currentX, bottom - tickMethodHeight, currentX + 1, bottom, -6745839);
       long tasksTime = this.sampleStorage.get(sampleIndex, TpsDebugDimensions.SCHEDULED_TASKS.ordinal());
-      int tasksHeight = this.getSampleHeight((double)tasksTime);
+      int tasksHeight = this.getSampleHeight(tasksTime);
       graphics.fill(currentX, bottom - tickMethodHeight - tasksHeight, currentX + 1, bottom - tickMethodHeight, -4548257);
       long otherTime = this.sampleStorage.get(sampleIndex)
          - this.sampleStorage.get(sampleIndex, TpsDebugDimensions.IDLE.ordinal())
          - tickMethodTime
          - tasksTime;
-      int otherHeight = this.getSampleHeight((double)otherTime);
+      int otherHeight = this.getSampleHeight(otherTime);
       graphics.fill(currentX, bottom - otherHeight - tasksHeight - tickMethodHeight, currentX + 1, bottom - tasksHeight - tickMethodHeight, -10547572);
    }
 
@@ -53,13 +53,13 @@ public class TpsDebugChart extends AbstractDebugChart {
 
    @Override
    protected int getSampleHeight(final double nanos) {
-      return (int)Math.round(toMilliseconds(nanos) * 60.0 / (double)this.msptSupplier.get().floatValue());
+      return (int)Math.round(toMilliseconds(nanos) * 60.0 / this.msptSupplier.get().floatValue());
    }
 
    @Override
    protected int getSampleColor(final long nanos) {
       float mspt = this.msptSupplier.get();
-      return this.getSampleColor(toMilliseconds((double)nanos), (double)mspt, -16711936, (double)mspt * 1.125, -256, (double)mspt * 1.25, -65536);
+      return this.getSampleColor(toMilliseconds(nanos), mspt, -16711936, mspt * 1.125, -256, mspt * 1.25, -65536);
    }
 
    private static double toMilliseconds(final double nanos) {

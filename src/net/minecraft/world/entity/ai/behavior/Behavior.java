@@ -45,7 +45,7 @@ public abstract class Behavior<E extends LivingEntity> implements BehaviorContro
       if (this.hasRequiredMemories(body) && this.checkExtraStartConditions(level, body)) {
          this.status = Behavior.Status.RUNNING;
          int duration = this.minDuration + level.getRandom().nextInt(this.maxDuration + 1 - this.minDuration);
-         this.endTimestamp = timestamp + (long)duration;
+         this.endTimestamp = timestamp + duration;
          this.start(level, body, timestamp);
          return true;
       } else {
@@ -106,7 +106,7 @@ public abstract class Behavior<E extends LivingEntity> implements BehaviorContro
       return true;
    }
 
-   public static enum Status {
+   public enum Status {
       STOPPED,
       RUNNING;
    }

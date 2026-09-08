@@ -14,7 +14,7 @@ public class ParallelMapTransform {
    private static final int DEFAULT_TASKS_PER_THREAD = 16;
 
    public static <K, U, V> CompletableFuture<Map<K, V>> schedule(
-      final Map<K, U> input, final BiFunction<K, U, V> operation, final int maxTaskCount, final Executor executor
+      final Map<K, U> input, final BiFunction<K, U, @Nullable V> operation, final int maxTaskCount, final Executor executor
    ) {
       int inputSize = input.size();
       if (inputSize == 0) {
@@ -28,14 +28,14 @@ public class ParallelMapTransform {
             return result != null ? Map.of(key, result) : Map.of();
          }, executor);
       } else {
-         ParallelMapTransform.SplitterBase<K, U, V> splitter = (ParallelMapTransform.SplitterBase<K, U, V>)(inputSize <= maxTaskCount
+         ParallelMapTransform.SplitterBase<K, U, V> splitter = inputSize <= maxTaskCount
             ? new ParallelMapTransform.SingleTaskSplitter<>(operation, inputSize)
-            : new ParallelMapTransform.BatchedTaskSplitter<>(operation, inputSize, maxTaskCount));
+            : new ParallelMapTransform.BatchedTaskSplitter<>(operation, inputSize, maxTaskCount);
          return splitter.scheduleTasks(input, executor);
       }
    }
 
-   public static <K, U, V> CompletableFuture<Map<K, V>> schedule(final Map<K, U> input, final BiFunction<K, U, V> operation, final Executor executor) {
+   public static <K, U, V> CompletableFuture<Map<K, V>> schedule(final Map<K, U> input, final BiFunction<K, U, @Nullable V> operation, final Executor executor) {
       int maxTaskCount = Util.maxAllowedExecutorThreads() * 16;
       return schedule(input, operation, maxTaskCount, executor);
    }
@@ -52,7 +52,6 @@ public class ParallelMapTransform {
          int fullCapacity = this.batchSize * maxTasks;
          int leftoverCapacity = fullCapacity - size;
          this.firstUndersizedBatchIndex = maxTasks - leftoverCapacity;
-
          assert this.firstUndersizedBatchIndex > 0 && this.firstUndersizedBatchIndex <= maxTasks;
       }
 
@@ -61,9 +60,7 @@ public class ParallelMapTransform {
          final ParallelMapTransform.Container<K, U, V> container, final int startIndex, final int endIndex, final Executor executor
       ) {
          int batchSize = endIndex - startIndex;
-
          assert batchSize == this.batchSize || batchSize == this.batchSize - 1;
-
          return CompletableFuture.runAsync(createTask(this.result, startIndex, endIndex, container), executor);
       }
 
@@ -97,7 +94,7 @@ public class ParallelMapTransform {
       }
    }
 
-   private static record Container<K, U, V>(BiFunction<K, U, V> operation, Object[] keys, Object[] values) {
+   private record Container<K, U, V>(BiFunction<K, U, V> operation, @Nullable Object[] keys, @Nullable Object[] values) {
       public Container(final BiFunction<K, U, V> operation, final int size) {
          this(operation, new Object[size], new Object[size]);
       }
@@ -107,18 +104,15 @@ public class ParallelMapTransform {
          this.values[index] = input;
       }
 
-      @Nullable
-      private K key(final int index) {
+      private @Nullable K key(final int index) {
          return (K)this.keys[index];
       }
 
-      @Nullable
-      private V output(final int index) {
+      private @Nullable V output(final int index) {
          return (V)this.values[index];
       }
 
-      @Nullable
-      private U input(final int index) {
+      private @Nullable U input(final int index) {
          return (U)this.values[index];
       }
 
@@ -154,7 +148,6 @@ public class ParallelMapTransform {
          final ParallelMapTransform.Container<K, U, V> container, final int startIndex, final int endIndex, final Executor executor
       ) {
          assert startIndex + 1 == endIndex;
-
          return CompletableFuture.runAsync(() -> container.applyOperation(startIndex), executor);
       }
 
@@ -198,13 +191,9 @@ public class ParallelMapTransform {
                this.lastScheduledIndex = this.currentIndex;
             }
          });
-
          assert this.currentIndex == this.container.size();
-
          assert this.lastScheduledIndex == this.currentIndex;
-
          assert this.batchIndex == this.tasks.length;
-
          return this.scheduleFinalOperation(CompletableFuture.allOf(this.tasks), this.container);
       }
 

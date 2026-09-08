@@ -47,7 +47,9 @@ public class BuildContexts<T extends ExecutionCommandSource<T>> {
          context.profiler().push(() -> "prepare " + this.commandInput);
 
          try {
-            for (int forkLimit = context.forkLimit(); currentStage.getStage() != Stage.EXECUTE; currentStage = currentStage.nextStage()) {
+            int forkLimit = context.forkLimit();
+
+            while (currentStage.getStage() != Stage.EXECUTE) {
                CommandContext<T> contextToRun = currentStage.getTopContext();
                if (contextToRun.isForked()) {
                   modifiers = modifiers.setForked();
@@ -66,16 +68,15 @@ public class BuildContexts<T extends ExecutionCommandSource<T>> {
 
                   for (T source : currentSources) {
                      try {
-                        Collection<T> newSources = ContextChain.runModifier(contextToRun, source, (c, s, r) -> {
-                        }, forkedMode);
+                        Collection<T> newSources = ContextChain.runModifier(contextToRun, source, (c, s, r) -> {}, forkedMode);
                         if (nextSources.size() + newSources.size() >= forkLimit) {
                            originalSource.handleError(ERROR_FORK_LIMIT_REACHED.create(forkLimit), forkedMode, context.tracer());
                            return;
                         }
 
                         nextSources.addAll(newSources);
-                     } catch (CommandSyntaxException var20) {
-                        source.handleError(var20, forkedMode, context.tracer());
+                     } catch (CommandSyntaxException e) {
+                        source.handleError(e, forkedMode, context.tracer());
                         if (!forkedMode) {
                            return;
                         }
@@ -84,6 +85,8 @@ public class BuildContexts<T extends ExecutionCommandSource<T>> {
 
                   currentSources = nextSources;
                }
+
+               currentStage = currentStage.nextStage();
             }
          } finally {
             context.profiler().pop();

@@ -50,10 +50,10 @@ public class BreezeAi {
                1,
                StartAttacking.create(
                   (var0, breeze) -> breeze.getBrain()
-                        .getMemory(MemoryModuleType.HURT_BY)
-                        .map(DamageSource::getEntity)
-                        .filter(entity -> entity instanceof LivingEntity)
-                        .map(entity -> (LivingEntity)entity)
+                     .getMemory(MemoryModuleType.HURT_BY)
+                     .map(DamageSource::getEntity)
+                     .filter(entity -> entity instanceof LivingEntity)
+                     .map(entity -> (LivingEntity)entity)
                )
             ),
             Pair.of(2, new BreezeAi.SlideToTargetSink(20, 40)),

@@ -21,17 +21,16 @@ public abstract class ResourceLookupRule<C, V> implements Rule<StringReader, V>,
       this.error = DelayedException.create(Identifier.ERROR_INVALID);
    }
 
-   @Nullable
    @Override
-   public V parse(final ParseState<StringReader> state) {
+   public @Nullable V parse(final ParseState<StringReader> state) {
       state.input().skipWhitespace();
       int mark = state.mark();
       Identifier id = state.parse(this.idParser);
       if (id != null) {
          try {
             return this.validateElement((ImmutableStringReader)state.input(), id);
-         } catch (Exception var5) {
-            state.errorCollector().store(mark, this, var5);
+         } catch (Exception e) {
+            state.errorCollector().store(mark, this, e);
             return null;
          }
       } else {

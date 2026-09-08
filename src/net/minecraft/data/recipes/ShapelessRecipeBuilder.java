@@ -20,8 +20,7 @@ public class ShapelessRecipeBuilder implements RecipeBuilder {
    private final ItemStackTemplate result;
    private final List<Ingredient> ingredients = new ArrayList<>();
    private final RecipeUnlockAdvancementBuilder advancementBuilder = new RecipeUnlockAdvancementBuilder();
-   @Nullable
-   private String group;
+   private @Nullable String group;
 
    private ShapelessRecipeBuilder(final HolderGetter<Item> items, final RecipeCategory category, final ItemStackTemplate result) {
       this.items = items;
@@ -74,7 +73,7 @@ public class ShapelessRecipeBuilder implements RecipeBuilder {
       return this;
    }
 
-   public ShapelessRecipeBuilder group(@Nullable final String group) {
+   public ShapelessRecipeBuilder group(final @Nullable String group) {
       this.group = group;
       return this;
    }

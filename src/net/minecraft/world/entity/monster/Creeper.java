@@ -151,7 +151,7 @@ public class Creeper extends Monster {
    }
 
    @Override
-   public void setTarget(@Nullable final LivingEntity target) {
+   public void setTarget(final @Nullable LivingEntity target) {
       if (!(target instanceof Goat)) {
          super.setTarget(target);
       }
@@ -189,7 +189,7 @@ public class Creeper extends Monster {
    }
 
    public float getSwelling(final float a) {
-      return Mth.lerp(a, (float)this.oldSwell, (float)this.swell) / (float)(this.maxSwell - 2);
+      return Mth.lerp(a, this.oldSwell, this.swell) / (this.maxSwell - 2);
    }
 
    public int getSwellDir() {
@@ -231,7 +231,7 @@ public class Creeper extends Monster {
       if (this.level() instanceof ServerLevel level) {
          float explosionMultiplier = this.isPowered() ? 2.0F : 1.0F;
          this.dead = true;
-         level.explode(this, this.getX(), this.getY(), this.getZ(), (float)this.explosionRadius * explosionMultiplier, Level.ExplosionInteraction.MOB);
+         level.explode(this, this.getX(), this.getY(), this.getZ(), this.explosionRadius * explosionMultiplier, Level.ExplosionInteraction.MOB);
          this.spawnLingeringCloud();
          this.triggerOnDeathMobEffects(level, Entity.RemovalReason.KILLED);
          this.discard();
@@ -247,7 +247,7 @@ public class Creeper extends Monster {
          cloud.setWaitTime(10);
          cloud.setDuration(300);
          cloud.setPotionDurationScale(0.25F);
-         cloud.setRadiusPerTick(-cloud.getRadius() / (float)cloud.getDuration());
+         cloud.setRadiusPerTick(-cloud.getRadius() / cloud.getDuration());
 
          for (MobEffectInstance mobEffect : activeEffects) {
             cloud.addEffect(new MobEffectInstance(mobEffect));

@@ -18,12 +18,12 @@ public record ReplaceBlock(Vec3i offset, Optional<BlockPredicate> predicate, Hol
    implements EnchantmentEntityEffect {
    public static final MapCodec<ReplaceBlock> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Vec3i.CODEC.optionalFieldOf("offset", Vec3i.ZERO).forGetter(ReplaceBlock::offset),
-               BlockPredicate.CODEC.optionalFieldOf("predicate").forGetter(ReplaceBlock::predicate),
-               BlockStateProvider.CODEC.fieldOf("block_state").forGetter(ReplaceBlock::blockState),
-               GameEvent.CODEC.optionalFieldOf("trigger_game_event").forGetter(ReplaceBlock::triggerGameEvent)
-            )
-            .apply(i, ReplaceBlock::new)
+            Vec3i.CODEC.optionalFieldOf("offset", Vec3i.ZERO).forGetter(ReplaceBlock::offset),
+            BlockPredicate.CODEC.optionalFieldOf("predicate").forGetter(ReplaceBlock::predicate),
+            BlockStateProvider.CODEC.fieldOf("block_state").forGetter(ReplaceBlock::blockState),
+            GameEvent.CODEC.optionalFieldOf("trigger_game_event").forGetter(ReplaceBlock::triggerGameEvent)
+         )
+         .apply(i, ReplaceBlock::new)
    );
 
    @Override

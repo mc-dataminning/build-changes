@@ -77,10 +77,10 @@ public abstract class BlockAttachedEntity extends Entity {
       this.kill(level, this);
    }
 
-   public void kill(final ServerLevel level, @Nullable final Entity attributedTo) {
+   public void kill(final ServerLevel level, final @Nullable Entity attributedTo) {
       this.onKilled();
       this.remove(Entity.RemovalReason.KILLED);
-      this.gameEvent(GameEvent.ENTITY_DIE, (Entity)(attributedTo != null ? attributedTo : this));
+      this.gameEvent(GameEvent.ENTITY_DIE, attributedTo != null ? attributedTo : this);
    }
 
    protected void onKilled() {
@@ -95,17 +95,19 @@ public abstract class BlockAttachedEntity extends Entity {
    public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
       if (this.isInvulnerableToBase(source)) {
          return false;
-      } else if (!level.getGameRules().get(GameRules.MOB_GRIEFING) && source.getEntity() instanceof Mob) {
-         return false;
-      } else {
-         if (!this.isRemoved()) {
-            this.kill(level, source.getEntity());
-            this.markHurt();
-            this.dropItem(level, source.getEntity());
-         }
-
-         return true;
       }
+
+      if (!level.getGameRules().get(GameRules.MOB_GRIEFING) && source.getEntity() instanceof Mob) {
+         return false;
+      }
+
+      if (!this.isRemoved()) {
+         this.kill(level, source.getEntity());
+         this.markHurt();
+         this.dropItem(level, source.getEntity());
+      }
+
+      return true;
    }
 
    @Override

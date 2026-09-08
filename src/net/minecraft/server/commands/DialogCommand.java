@@ -37,10 +37,8 @@ public class DialogCommand {
                               Commands.argument("dialog", ResourceOrIdArgument.dialog(context))
                                  .executes(
                                     c -> showDialog(
-                                          (CommandSourceStack)c.getSource(),
-                                          EntityArgument.getPlayers(c, "targets"),
-                                          ResourceOrIdArgument.getDialog(c, "dialog")
-                                       )
+                                       (CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets"), ResourceOrIdArgument.getDialog(c, "dialog")
+                                    )
                                  )
                            )
                      )

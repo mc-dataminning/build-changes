@@ -3,7 +3,6 @@ package net.minecraft.world.level.storage.loot;
 import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
 import java.util.Optional;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProvider;
@@ -14,14 +13,11 @@ public sealed interface FloatRangePredicate extends Validatable permits FloatRan
    Codec<FloatRangePredicate.Point> POINT_CODEC = ContextFloatProviders.CODEC.xmap(FloatRangePredicate.Point::new, FloatRangePredicate.Point::value);
    Codec<FloatRangePredicate.Line> LINE_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ContextFloatProviders.CODEC.optionalFieldOf("min").forGetter(r -> r.min),
-               ContextFloatProviders.CODEC.optionalFieldOf("max").forGetter(r -> r.max)
-            )
-            .apply(i, FloatRangePredicate.Line::new)
+            ContextFloatProviders.CODEC.optionalFieldOf("min").forGetter(r -> r.min), ContextFloatProviders.CODEC.optionalFieldOf("max").forGetter(r -> r.max)
+         )
+         .apply(i, FloatRangePredicate.Line::new)
    );
    Codec<FloatRangePredicate> CODEC = Codec.either(POINT_CODEC, LINE_CODEC).xmap(Either::unwrap, range -> {
-      Objects.requireNonNull(range);
-
       return switch (range) {
          case FloatRangePredicate.Point point -> Either.left(point);
          case FloatRangePredicate.Line line -> Either.right(line);
@@ -51,11 +47,10 @@ public sealed interface FloatRangePredicate extends Validatable permits FloatRan
       return this.test(context, input.getFloat(context));
    }
 
-   public static final class Line implements FloatRangePredicate {
+   final class Line implements FloatRangePredicate {
       private final Optional<Holder<ContextFloatProvider>> min;
       private final Optional<Holder<ContextFloatProvider>> max;
-      @Nullable
-      private final FloatRangePredicate.Line.FloatChecker predicate;
+      private final FloatRangePredicate.Line.@Nullable FloatChecker predicate;
 
       private Line(final Optional<Holder<ContextFloatProvider>> min, final Optional<Holder<ContextFloatProvider>> max) {
          this.min = min;
@@ -63,9 +58,8 @@ public sealed interface FloatRangePredicate extends Validatable permits FloatRan
          this.predicate = createPredicate(min.orElse(null), max.orElse(null));
       }
 
-      @Nullable
-      private static FloatRangePredicate.Line.FloatChecker createPredicate(
-         @Nullable final Holder<ContextFloatProvider> min, @Nullable final Holder<ContextFloatProvider> max
+      private static FloatRangePredicate.Line.@Nullable FloatChecker createPredicate(
+         final @Nullable Holder<ContextFloatProvider> min, final @Nullable Holder<ContextFloatProvider> max
       ) {
          if (min == null) {
             return max == null ? null : (context, input) -> input <= max.value().getFloat(context);
@@ -98,7 +92,7 @@ public sealed interface FloatRangePredicate extends Validatable permits FloatRan
       }
    }
 
-   public static record Point(Holder<ContextFloatProvider> value) implements FloatRangePredicate {
+   record Point(Holder<ContextFloatProvider> value) implements FloatRangePredicate {
       @Override
       public void validate(final ValidationContext context) {
          Validatable.validateHolder(context, this.value);

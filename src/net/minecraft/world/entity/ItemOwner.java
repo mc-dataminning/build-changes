@@ -11,8 +11,7 @@ public interface ItemOwner {
 
    float getVisualRotationYInDegrees();
 
-   @Nullable
-   default LivingEntity asLivingEntity() {
+   default @Nullable LivingEntity asLivingEntity() {
       return null;
    }
 
@@ -20,7 +19,7 @@ public interface ItemOwner {
       return new ItemOwner.OffsetFromOwner(owner, offset);
    }
 
-   public static record OffsetFromOwner(ItemOwner owner, Vec3 offset) implements ItemOwner {
+   record OffsetFromOwner(ItemOwner owner, Vec3 offset) implements ItemOwner {
       @Override
       public Level level() {
          return this.owner.level();
@@ -36,9 +35,8 @@ public interface ItemOwner {
          return this.owner.getVisualRotationYInDegrees();
       }
 
-      @Nullable
       @Override
-      public LivingEntity asLivingEntity() {
+      public @Nullable LivingEntity asLivingEntity() {
          return this.owner.asLivingEntity();
       }
    }

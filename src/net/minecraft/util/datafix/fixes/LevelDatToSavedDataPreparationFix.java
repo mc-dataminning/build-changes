@@ -76,8 +76,8 @@ public class LevelDatToSavedDataPreparationFix extends DataFix {
          scheduledEvents.stream()
             .map(
                event -> event.renameField("Name", "id")
-                     .renameField("TriggerTime", "trigger_time")
-                     .renameAndFixField("Callback", "callback", callback -> callback.renameField("Type", "type").renameField("Name", "id"))
+                  .renameField("TriggerTime", "trigger_time")
+                  .renameAndFixField("Callback", "callback", callback -> callback.renameField("Type", "type").renameField("Name", "id"))
             )
       );
       Dynamic<?> newEvents = levelData.emptyMap();

@@ -32,21 +32,21 @@ import org.jspecify.annotations.Nullable;
 public class VillagerTrade implements Validatable {
    public static final Codec<VillagerTrade> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  TradeCost.CODEC.fieldOf("wants").forGetter(villagerTrade -> villagerTrade.wants),
-                  TradeCost.CODEC.optionalFieldOf("additional_wants").forGetter(villagerTrade -> villagerTrade.additionalWants),
-                  ItemStackTemplate.CODEC.fieldOf("gives").forGetter(villagerTrade -> villagerTrade.gives),
-                  ContextIntProviders.CODEC.optionalFieldOf("max_uses", ContextIntProviders.exactly(4)).forGetter(villagerTrade -> villagerTrade.maxUses),
-                  ContextIntProviders.CODEC.optionalFieldOf("xp", ContextIntProviders.exactly(1)).forGetter(villagerTrade -> villagerTrade.xp),
-                  ContextFloatProviders.CODEC
-                     .optionalFieldOf("reputation_discount", ContextFloatProviders.exactly(0.0F))
-                     .forGetter(villagerTrade -> villagerTrade.reputationDiscount),
-                  LootItemCondition.CODEC.optionalFieldOf("merchant_predicate").forGetter(villagerTrade -> villagerTrade.merchantPredicate),
-                  LootItemFunctions.CODEC.optionalFieldOf("given_item_modifier").forGetter(villagerTrade -> villagerTrade.givenItemModifier),
-                  RegistryCodecs.holderSet(Registries.ENCHANTMENT)
-                     .optionalFieldOf("double_trade_price_enchantments")
-                     .forGetter(villagerTrade -> villagerTrade.doubleTradePriceEnchantments)
-               )
-               .apply(i, VillagerTrade::new)
+               TradeCost.CODEC.fieldOf("wants").forGetter(villagerTrade -> villagerTrade.wants),
+               TradeCost.CODEC.optionalFieldOf("additional_wants").forGetter(villagerTrade -> villagerTrade.additionalWants),
+               ItemStackTemplate.CODEC.fieldOf("gives").forGetter(villagerTrade -> villagerTrade.gives),
+               ContextIntProviders.CODEC.optionalFieldOf("max_uses", ContextIntProviders.exactly(4)).forGetter(villagerTrade -> villagerTrade.maxUses),
+               ContextIntProviders.CODEC.optionalFieldOf("xp", ContextIntProviders.exactly(1)).forGetter(villagerTrade -> villagerTrade.xp),
+               ContextFloatProviders.CODEC
+                  .optionalFieldOf("reputation_discount", ContextFloatProviders.exactly(0.0F))
+                  .forGetter(villagerTrade -> villagerTrade.reputationDiscount),
+               LootItemCondition.CODEC.optionalFieldOf("merchant_predicate").forGetter(villagerTrade -> villagerTrade.merchantPredicate),
+               LootItemFunctions.CODEC.optionalFieldOf("given_item_modifier").forGetter(villagerTrade -> villagerTrade.givenItemModifier),
+               RegistryCodecs.holderSet(Registries.ENCHANTMENT)
+                  .optionalFieldOf("double_trade_price_enchantments")
+                  .forGetter(villagerTrade -> villagerTrade.doubleTradePriceEnchantments)
+            )
+            .apply(i, VillagerTrade::new)
       )
       .validate(Validatable.validatorForContext(LootContextParamSets.VILLAGER_TRADE));
    private final TradeCost wants;
@@ -92,50 +92,49 @@ public class VillagerTrade implements Validatable {
       Validatable.validateHolder(context, "given_item_modifier", this.givenItemModifier);
    }
 
-   @Nullable
-   public MerchantOffer getOffer(final LootContext lootContext) {
+   public @Nullable MerchantOffer getOffer(final LootContext lootContext) {
       if (this.merchantPredicate.isPresent() && !this.merchantPredicate.get().value().test(lootContext)) {
          return null;
-      } else {
-         ItemStack result = this.gives.create();
-         int additionalCost = 0;
-         if (this.givenItemModifier.isPresent()) {
-            result = this.givenItemModifier.get().value().apply(result, lootContext);
-            if (result.isEmpty()) {
-               return null;
-            }
-         }
+      }
 
-         Integer additionalTradeCost = result.remove(DataComponents.ADDITIONAL_TRADE_COST);
-         if (additionalTradeCost != null) {
-            additionalCost += additionalTradeCost;
-         }
-
-         if (this.doubleTradePriceEnchantments.isPresent()) {
-            HolderSet<Enchantment> enchantments = this.doubleTradePriceEnchantments.get();
-            ItemEnchantments itemEnchantments = result.get(DataComponents.STORED_ENCHANTMENTS);
-            if (itemEnchantments != null && itemEnchantments.keySet().stream().anyMatch(enchantments::contains)) {
-               additionalCost *= 2;
-            }
-         }
-
-         ItemCost itemCost = this.wants.toItemCost(lootContext, additionalCost);
-         if (itemCost.count() < 1) {
+      ItemStack result = this.gives.create();
+      int additionalCost = 0;
+      if (this.givenItemModifier.isPresent()) {
+         result = this.givenItemModifier.get().value().apply(result, lootContext);
+         if (result.isEmpty()) {
             return null;
-         } else {
-            Optional<ItemCost> additionalItemCost = this.additionalWants.map(tradeCost -> tradeCost.toItemCost(lootContext, 0));
-            return additionalItemCost.isPresent() && additionalItemCost.get().count() < 1
-               ? null
-               : new MerchantOffer(
-                  itemCost,
-                  additionalItemCost,
-                  result,
-                  Math.max(this.maxUses.value().getInt(lootContext), 1),
-                  Math.max(this.xp.value().getInt(lootContext), 0),
-                  Math.max(this.reputationDiscount.value().getFloat(lootContext), 0.0F)
-               );
          }
       }
+
+      Integer additionalTradeCost = result.remove(DataComponents.ADDITIONAL_TRADE_COST);
+      if (additionalTradeCost != null) {
+         additionalCost += additionalTradeCost;
+      }
+
+      if (this.doubleTradePriceEnchantments.isPresent()) {
+         HolderSet<Enchantment> enchantments = this.doubleTradePriceEnchantments.get();
+         ItemEnchantments itemEnchantments = result.get(DataComponents.STORED_ENCHANTMENTS);
+         if (itemEnchantments != null && itemEnchantments.keySet().stream().anyMatch(enchantments::contains)) {
+            additionalCost *= 2;
+         }
+      }
+
+      ItemCost itemCost = this.wants.toItemCost(lootContext, additionalCost);
+      if (itemCost.count() < 1) {
+         return null;
+      }
+
+      Optional<ItemCost> additionalItemCost = this.additionalWants.map(tradeCost -> tradeCost.toItemCost(lootContext, 0));
+      return additionalItemCost.isPresent() && additionalItemCost.get().count() < 1
+         ? null
+         : new MerchantOffer(
+            itemCost,
+            additionalItemCost,
+            result,
+            Math.max(this.maxUses.value().getInt(lootContext), 1),
+            Math.max(this.xp.value().getInt(lootContext), 0),
+            Math.max(this.reputationDiscount.value().getFloat(lootContext), 0.0F)
+         );
    }
 
    public static VillagerTrade.Builder builder(

@@ -21,7 +21,7 @@ public interface ListModifier<Element> extends AttributeModifier<List<Element>, 
       return attribute.type().keyframeLerp();
    }
 
-   public static record Append<Element>() implements ListModifier<Element> {
+   record Append<Element>() implements ListModifier<Element> {
       private static final ListModifier.Append<?> INSTANCE = new ListModifier.Append();
 
       public List<Element> apply(final List<Element> subject, final List<Element> argument) {

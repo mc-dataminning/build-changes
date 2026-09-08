@@ -21,9 +21,9 @@ public class DustPlumeParticle extends BaseAshSmokeParticle {
    ) {
       super(level, x, y, z, 0.7F, 0.6F, 0.7F, xa, ya + 0.15F, za, scale, sprites, 0.5F, 7, 0.5F, false);
       float colorShift = this.random.nextFloat() * 0.2F;
-      this.rCol = (float)ARGB.red(12235202) / 255.0F - colorShift;
-      this.gCol = (float)ARGB.green(12235202) / 255.0F - colorShift;
-      this.bCol = (float)ARGB.blue(12235202) / 255.0F - colorShift;
+      this.rCol = ARGB.red(12235202) / 255.0F - colorShift;
+      this.gCol = ARGB.green(12235202) / 255.0F - colorShift;
+      this.bCol = ARGB.blue(12235202) / 255.0F - colorShift;
    }
 
    @Override

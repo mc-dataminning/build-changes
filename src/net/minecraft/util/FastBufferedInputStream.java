@@ -59,19 +59,19 @@ public class FastBufferedInputStream extends InputStream {
    public long skip(long count) throws IOException {
       if (count <= 0L) {
          return 0L;
-      } else {
-         long availableInBuffer = (long)this.bytesInBuffer();
-         if (availableInBuffer <= 0L) {
-            return this.in.skip(count);
-         } else {
-            if (count > availableInBuffer) {
-               count = availableInBuffer;
-            }
-
-            this.position = (int)((long)this.position + count);
-            return count;
-         }
       }
+
+      long availableInBuffer = this.bytesInBuffer();
+      if (availableInBuffer <= 0L) {
+         return this.in.skip(count);
+      }
+
+      if (count > availableInBuffer) {
+         count = availableInBuffer;
+      }
+
+      this.position = (int)(this.position + count);
+      return count;
    }
 
    @Override

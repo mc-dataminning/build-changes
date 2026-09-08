@@ -54,13 +54,10 @@ public class FileDownload {
    private volatile boolean finished;
    private volatile boolean error;
    private volatile boolean extracting;
-   @Nullable
-   private volatile File tempFile;
+   private volatile @Nullable File tempFile;
    private volatile File resourcePackPath;
-   @Nullable
-   private volatile CompletableFuture<?> pendingRequest;
-   @Nullable
-   private Thread currentThread;
+   private volatile @Nullable CompletableFuture<?> pendingRequest;
+   private @Nullable Thread currentThread;
    private static final String[] INVALID_FILE_NAMES = new String[]{
       "CON",
       "COM",
@@ -88,22 +85,21 @@ public class FileDownload {
       "LPT9"
    };
 
-   @Nullable
-   private <T> T joinCancellableRequest(final CompletableFuture<T> pendingRequest) throws Throwable {
+   private <T> @Nullable T joinCancellableRequest(final CompletableFuture<T> pendingRequest) throws Throwable {
       this.pendingRequest = pendingRequest;
       if (this.cancelled) {
          pendingRequest.cancel(true);
          return null;
-      } else {
+      }
+
+      try {
          try {
-            try {
-               return pendingRequest.join();
-            } catch (CompletionException var3) {
-               throw var3.getCause();
-            }
-         } catch (CancellationException var4) {
-            return null;
+            return pendingRequest.join();
+         } catch (CompletionException e) {
+            throw e.getCause();
          }
+      } catch (CancellationException e) {
+         return null;
       }
    }
 
@@ -117,15 +113,10 @@ public class FileDownload {
 
    @CheckReturnValue
    public static OptionalLong contentLength(final String downloadLink) {
-      try {
-         OptionalLong var3;
-         try (HttpClient client = createClient()) {
-            HttpResponse<Void> response = client.send(createRequest(downloadLink).HEAD().build(), BodyHandlers.discarding());
-            var3 = response.headers().firstValueAsLong("Content-Length");
-         }
-
-         return var3;
-      } catch (Exception var6) {
+      try (HttpClient client = createClient()) {
+         HttpResponse<Void> response = client.send(createRequest(downloadLink).HEAD().build(), BodyHandlers.discarding());
+         return response.headers().firstValueAsLong("Content-Length");
+      } catch (Exception e) {
          LOGGER.error("Unable to get content length for download");
          return OptionalLong.empty();
       }
@@ -144,8 +135,8 @@ public class FileDownload {
                   this.tempFile = File.createTempFile("backup", ".tar.gz");
                   this.download(downloadStatus, client, worldDownload.downloadLink(), this.tempFile);
                   this.finishWorldDownload(worldName.trim(), this.tempFile, levelStorageSource, downloadStatus);
-               } catch (Exception var23) {
-                  LOGGER.error("Caught exception while downloading world", var23);
+               } catch (Exception e) {
+                  LOGGER.error("Caught exception while downloading world", e);
                   this.error = true;
                } finally {
                   this.pendingRequest = null;
@@ -166,8 +157,8 @@ public class FileDownload {
                      this.tempFile = File.createTempFile("resources", ".tar.gz");
                      this.download(downloadStatus, client, resourcePackLink, this.tempFile);
                      this.finishResourcePackDownload(downloadStatus, this.tempFile, worldDownload);
-                  } catch (Exception var22) {
-                     LOGGER.error("Caught exception while downloading resource pack", var22);
+                  } catch (Exception e) {
+                     LOGGER.error("Caught exception while downloading resource pack", e);
                      this.error = true;
                   } finally {
                      this.pendingRequest = null;
@@ -193,10 +184,10 @@ public class FileDownload {
       HttpResponse<InputStream> response;
       try {
          response = this.joinCancellableRequest(client.sendAsync(request, BodyHandlers.ofInputStream()));
-      } catch (Error var14) {
-         throw var14;
-      } catch (Throwable var15) {
-         LOGGER.error("Failed to download {}", url, var15);
+      } catch (Error e) {
+         throw e;
+      } catch (Throwable e) {
+         LOGGER.error("Failed to download {}", url, e);
          this.error = true;
          return;
       }
@@ -254,7 +245,7 @@ public class FileDownload {
       return folder;
    }
 
-   private void untarGzipArchive(String name, @Nullable final File file, final LevelStorageSource levelStorageSource) throws IOException {
+   private void untarGzipArchive(String name, final @Nullable File file, final LevelStorageSource levelStorageSource) throws IOException {
       Pattern namePattern = Pattern.compile(".*-([0-9]+)$");
       int number = 1;
 
@@ -283,8 +274,8 @@ public class FileDownload {
                }
             }
          }
-      } catch (Exception var44) {
-         LOGGER.error("Error getting level list", var44);
+      } catch (Exception e) {
+         LOGGER.error("Error getting level list", e);
          this.error = true;
          return;
       }
@@ -337,8 +328,8 @@ public class FileDownload {
                tarEntry = tarIn.getNextTarEntry();
             }
          }
-      } catch (Exception var42) {
-         LOGGER.error("Error extracting world", var42);
+      } catch (Exception e) {
+         LOGGER.error("Error extracting world", e);
          this.error = true;
       } finally {
          if (tarIn != null) {
@@ -351,10 +342,10 @@ public class FileDownload {
 
          try (LevelStorageSource.LevelStorageAccess access = levelStorageSource.validateAndCreateAccess(finalName)) {
             access.renameAndDropPlayer(finalName);
-         } catch (NbtException | ReportedNbtException | IOException var40) {
-            LOGGER.error("Failed to modify unpacked realms level {}", finalName, var40);
-         } catch (ContentValidationException var41) {
-            LOGGER.warn("Failed to download file", var41);
+         } catch (IOException | NbtException | ReportedNbtException e) {
+            LOGGER.error("Failed to modify unpacked realms level {}", finalName, e);
+         } catch (ContentValidationException e) {
+            LOGGER.warn("Failed to download file", e);
          }
 
          this.resourcePackPath = worldPath.resolve(LevelResource.MAP_RESOURCE_FILE.id()).toFile();
@@ -371,8 +362,8 @@ public class FileDownload {
          try {
             this.extracting = true;
             this.untarGzipArchive(worldName, tempFile, levelStorageSource);
-         } catch (IOException var6) {
-            LOGGER.error("Error extracting archive", var6);
+         } catch (IOException e) {
+            LOGGER.error("Error extracting archive", e);
             this.error = true;
          }
       }
@@ -392,8 +383,8 @@ public class FileDownload {
                FileUtils.deleteQuietly(tempFile);
                this.error = true;
             }
-         } catch (IOException var5) {
-            LOGGER.error("Error copying resourcepack file", var5);
+         } catch (IOException e) {
+            LOGGER.error("Error copying resourcepack file", e);
             this.error = true;
          }
       }

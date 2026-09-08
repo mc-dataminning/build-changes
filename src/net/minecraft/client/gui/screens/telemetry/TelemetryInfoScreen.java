@@ -1,5 +1,6 @@
 package net.minecraft.client.gui.screens.telemetry;
 
+import com.mojang.blaze3d.Blaze3D;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
 import net.minecraft.client.gui.components.AbstractWidget;
@@ -14,7 +15,6 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.CommonLinks;
-import net.minecraft.util.Util;
 import org.jspecify.annotations.Nullable;
 
 public class TelemetryInfoScreen extends Screen {
@@ -31,12 +31,9 @@ public class TelemetryInfoScreen extends Screen {
    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(
       this, 16 + 9 * 5 + 20, EXTRA_TELEMETRY_AVAILABLE ? 33 + Checkbox.getBoxSize(Minecraft.getInstance().font) : 33
    );
-   @Nullable
-   private TelemetryEventWidget telemetryEventWidget;
-   @Nullable
-   private MultiLineTextWidget description;
-   @Nullable
-   private Checkbox checkbox;
+   private @Nullable TelemetryEventWidget telemetryEventWidget;
+   private @Nullable MultiLineTextWidget description;
+   private @Nullable Checkbox checkbox;
    private double savedScroll;
 
    public TelemetryInfoScreen(final Screen lastScreen, final Options options) {
@@ -123,7 +120,7 @@ public class TelemetryInfoScreen extends Screen {
    }
 
    private void openDataFolder(final Button button) {
-      Util.getPlatform().openPath(this.minecraft.getTelemetryManager().getLogDirectory());
+      Blaze3D.openPath(this.minecraft.getTelemetryManager().getLogDirectory());
    }
 
    @Override

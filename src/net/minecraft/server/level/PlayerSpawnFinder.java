@@ -41,7 +41,7 @@ public class PlayerSpawnFinder {
       this.level = level;
       this.spawnSuggestion = spawnSuggestion;
       this.radius = radius;
-      long squareSide = (long)radius * 2L + 1L;
+      long squareSide = radius * 2L + 1L;
       this.candidateCount = (int)Math.min(1024L, squareSide * squareSide);
       this.coprime = getCoprime(this.candidateCount);
       this.offset = RandomSource.createThreadLocalInstance().nextInt(this.candidateCount);
@@ -50,21 +50,21 @@ public class PlayerSpawnFinder {
    public static CompletableFuture<Vec3> findSpawn(final ServerLevel level, final BlockPos spawnSuggestion) {
       if (level.getServer().getWorldData().getGameType() == GameType.ADVENTURE) {
          return CompletableFuture.completedFuture(fixupSpawnHeight(level, spawnSuggestion));
-      } else {
-         int radius = Math.max(0, level.getGameRules().get(GameRules.RESPAWN_RADIUS));
-         int distToBorder = Mth.floor(level.getWorldBorder().getDistanceToBorder((double)spawnSuggestion.getX(), (double)spawnSuggestion.getZ()));
-         if (distToBorder < radius) {
-            radius = distToBorder;
-         }
-
-         if (distToBorder <= 1) {
-            radius = 1;
-         }
-
-         PlayerSpawnFinder finder = new PlayerSpawnFinder(level, spawnSuggestion, radius);
-         finder.scheduleNext();
-         return finder.finishedFuture;
       }
+
+      int radius = Math.max(0, level.getGameRules().get(GameRules.RESPAWN_RADIUS));
+      int distToBorder = Mth.floor(level.getWorldBorder().getDistanceToBorder(spawnSuggestion.getX(), spawnSuggestion.getZ()));
+      if (distToBorder < radius) {
+         radius = distToBorder;
+      }
+
+      if (distToBorder <= 1) {
+         radius = 1;
+      }
+
+      PlayerSpawnFinder finder = new PlayerSpawnFinder(level, spawnSuggestion, radius);
+      finder.scheduleNext();
+      return finder.finishedFuture;
    }
 
    private void scheduleNext() {
@@ -127,8 +127,8 @@ public class PlayerSpawnFinder {
                      } else {
                         this.scheduleNext();
                      }
-                  } catch (Throwable var9) {
-                     throwable = var9;
+                  } catch (Throwable t) {
+                     throwable = t;
                   }
                }
 
@@ -145,52 +145,50 @@ public class PlayerSpawnFinder {
       }
    }
 
-   @Nullable
-   protected static BlockPos getLevelRespawnPos(final ServerLevel level, final int x, final int z) {
+   protected static @Nullable BlockPos getLevelRespawnPos(final ServerLevel level, final int x, final int z) {
       boolean caveWorld = level.dimensionType().hasCeiling();
       LevelChunk chunk = level.getChunk(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z));
       int topY = caveWorld ? level.getChunkSource().getGenerator().getSpawnHeight(level) : chunk.getHeight(Heightmap.Types.MOTION_BLOCKING, x & 15, z & 15);
       if (topY < level.getMinY()) {
          return null;
-      } else {
-         int surface = chunk.getHeight(Heightmap.Types.WORLD_SURFACE, x & 15, z & 15);
-         if (surface <= topY && surface > chunk.getHeight(Heightmap.Types.OCEAN_FLOOR, x & 15, z & 15)) {
-            return null;
-         } else {
-            BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+      }
 
-            for (int y = topY + 1; y >= level.getMinY(); y--) {
-               pos.set(x, y, z);
-               BlockState blockState = level.getBlockState(pos);
-               if (!blockState.getFluidState().isEmpty()) {
-                  break;
-               }
+      int surface = chunk.getHeight(Heightmap.Types.WORLD_SURFACE, x & 15, z & 15);
+      if (surface <= topY && surface > chunk.getHeight(Heightmap.Types.OCEAN_FLOOR, x & 15, z & 15)) {
+         return null;
+      }
 
-               if (Block.isFaceFull(blockState.getCollisionShape(level, pos), Direction.UP)) {
-                  return pos.above().immutable();
-               }
-            }
+      BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
 
-            return null;
+      for (int y = topY + 1; y >= level.getMinY(); y--) {
+         pos.set(x, y, z);
+         BlockState blockState = level.getBlockState(pos);
+         if (!blockState.getFluidState().isEmpty()) {
+            break;
+         }
+
+         if (Block.isFaceFull(blockState.getCollisionShape(level, pos), Direction.UP)) {
+            return pos.above().immutable();
          }
       }
+
+      return null;
    }
 
-   @Nullable
-   public static BlockPos getSpawnPosInChunk(final ServerLevel level, final ChunkPos chunkPos) {
+   public static @Nullable BlockPos getSpawnPosInChunk(final ServerLevel level, final ChunkPos chunkPos) {
       if (SharedConstants.debugVoidTerrain(chunkPos)) {
          return null;
-      } else {
-         for (int x = chunkPos.getMinBlockX(); x <= chunkPos.getMaxBlockX(); x++) {
-            for (int z = chunkPos.getMinBlockZ(); z <= chunkPos.getMaxBlockZ(); z++) {
-               BlockPos validSpawnPosition = getLevelRespawnPos(level, x, z);
-               if (validSpawnPosition != null) {
-                  return validSpawnPosition;
-               }
+      }
+
+      for (int x = chunkPos.getMinBlockX(); x <= chunkPos.getMaxBlockX(); x++) {
+         for (int z = chunkPos.getMinBlockZ(); z <= chunkPos.getMaxBlockZ(); z++) {
+            BlockPos validSpawnPosition = getLevelRespawnPos(level, x, z);
+            if (validSpawnPosition != null) {
+               return validSpawnPosition;
             }
          }
-
-         return null;
       }
+
+      return null;
    }
 }

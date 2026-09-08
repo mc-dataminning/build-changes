@@ -51,8 +51,7 @@ public abstract class AbstractCandleBlock extends Block {
    @Override
    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
       if (state.getValue(LIT)) {
-         this.getParticleOffsets(state)
-            .forEach(particlePos -> addParticlesAndSound(level, particlePos.add((double)pos.getX(), (double)pos.getY(), (double)pos.getZ()), random));
+         this.getParticleOffsets(state).forEach(particlePos -> addParticlesAndSound(level, particlePos.add(pos.getX(), pos.getY(), pos.getZ()), random));
       }
    }
 
@@ -77,21 +76,15 @@ public abstract class AbstractCandleBlock extends Block {
       level.addParticle(ParticleTypes.SMALL_FLAME, pos.x, pos.y, pos.z, 0.0, 0.0, 0.0);
    }
 
-   public static void extinguish(@Nullable final Player player, final BlockState state, final LevelAccessor level, final BlockPos pos) {
+   public static void extinguish(final @Nullable Player player, final BlockState state, final LevelAccessor level, final BlockPos pos) {
       setLit(level, state, pos, false);
       if (state.getBlock() instanceof AbstractCandleBlock) {
          ((AbstractCandleBlock)state.getBlock())
             .getParticleOffsets(state)
             .forEach(
                particlePos -> level.addParticle(
-                     ParticleTypes.SMOKE,
-                     (double)pos.getX() + particlePos.x(),
-                     (double)pos.getY() + particlePos.y(),
-                     (double)pos.getZ() + particlePos.z(),
-                     0.0,
-                     0.1F,
-                     0.0
-                  )
+                  ParticleTypes.SMOKE, pos.getX() + particlePos.x(), pos.getY() + particlePos.y(), pos.getZ() + particlePos.z(), 0.0, 0.1F, 0.0
+               )
             );
       }
 
@@ -100,7 +93,7 @@ public abstract class AbstractCandleBlock extends Block {
    }
 
    private static void setLit(final LevelAccessor level, final BlockState state, final BlockPos pos, final boolean lit) {
-      level.setBlock(pos, state.setValue(LIT, Boolean.valueOf(lit)), 11);
+      level.setBlock(pos, state.setValue(LIT, lit), 11);
    }
 
    @Override

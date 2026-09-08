@@ -127,20 +127,20 @@ public class GlHeuristics {
    private DeviceType guessDeviceType(final String renderer, final String vendor) {
       if (vendor.contains("intel")) {
          return renderer.contains("arc") ? DeviceType.DISCRETE : DeviceType.INTEGRATED;
-      } else {
-         for (String string : DEVICE_NAMES_THAT_IMPLY_CPU) {
-            if (renderer.contains(string)) {
-               return DeviceType.CPU;
-            }
-         }
-
-         for (String stringx : DEVICE_NAMES_THAT_IMPLY_VIRTUAL) {
-            if (renderer.contains(stringx)) {
-               return DeviceType.VIRTUAL;
-            }
-         }
-
-         return DeviceType.OTHER;
       }
+
+      for (String string : DEVICE_NAMES_THAT_IMPLY_CPU) {
+         if (renderer.contains(string)) {
+            return DeviceType.CPU;
+         }
+      }
+
+      for (String string : DEVICE_NAMES_THAT_IMPLY_VIRTUAL) {
+         if (renderer.contains(string)) {
+            return DeviceType.VIRTUAL;
+         }
+      }
+
+      return DeviceType.OTHER;
    }
 }

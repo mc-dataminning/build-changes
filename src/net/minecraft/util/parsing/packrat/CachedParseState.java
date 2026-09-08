@@ -1,14 +1,13 @@
 package net.minecraft.util.parsing.packrat;
 
-import java.util.Objects;
 import net.minecraft.util.Util;
 import org.jspecify.annotations.Nullable;
 
 public abstract class CachedParseState<S> implements ParseState<S> {
-   private CachedParseState.PositionCache[] positionCache = new CachedParseState.PositionCache[256];
+   private CachedParseState.@Nullable PositionCache[] positionCache = new CachedParseState.PositionCache[256];
    private final ErrorCollector<S> errorCollector;
    private final Scope scope = new Scope();
-   private CachedParseState.SimpleControl[] controlCache = new CachedParseState.SimpleControl[16];
+   private CachedParseState.@Nullable SimpleControl[] controlCache = new CachedParseState.SimpleControl[16];
    private int nextControlToReturn;
    private final CachedParseState<S>.Silent silent = new CachedParseState.Silent();
 
@@ -26,9 +25,8 @@ public abstract class CachedParseState<S> implements ParseState<S> {
       return this.errorCollector;
    }
 
-   @Nullable
    @Override
-   public <T> T parse(final NamedRule<S, T> rule) {
+   public <T> @Nullable T parse(final NamedRule<S, T> rule) {
       int markBeforeParse = this.mark();
       CachedParseState.PositionCache positionCache = this.getCacheForPosition(markBeforeParse);
       int entryIndex = positionCache.findKeyIndex(rule.name());
@@ -109,7 +107,7 @@ public abstract class CachedParseState<S> implements ParseState<S> {
       return this.silent;
    }
 
-   private static record CacheEntry<T>(@Nullable T value, int markAfterParse) {
+   private record CacheEntry<T>(@Nullable T value, int markAfterParse) {
       public static final CachedParseState.CacheEntry<?> NEGATIVE = new CachedParseState.CacheEntry(null, -1);
 
       public static <T> CachedParseState.CacheEntry<T> negativeEntry() {
@@ -149,8 +147,7 @@ public abstract class CachedParseState<S> implements ParseState<S> {
          return newKeyIndex;
       }
 
-      @Nullable
-      public <T> CachedParseState.CacheEntry<T> getValue(final int keyIndex) {
+      public <T> CachedParseState.@Nullable CacheEntry<T> getValue(final int keyIndex) {
          return (CachedParseState.CacheEntry<T>)this.atomCache[keyIndex + 1];
       }
 
@@ -160,13 +157,7 @@ public abstract class CachedParseState<S> implements ParseState<S> {
    }
 
    private class Silent implements ParseState<S> {
-      private final ErrorCollector<S> silentCollector;
-
-      private Silent() {
-         Objects.requireNonNull(CachedParseState.this);
-         super();
-         this.silentCollector = new ErrorCollector.Nop<>();
-      }
+      private final ErrorCollector<S> silentCollector = new ErrorCollector.Nop<>();
 
       @Override
       public ErrorCollector<S> errorCollector() {
@@ -178,9 +169,8 @@ public abstract class CachedParseState<S> implements ParseState<S> {
          return CachedParseState.this.scope();
       }
 
-      @Nullable
       @Override
-      public <T> T parse(final NamedRule<S, T> rule) {
+      public <T> @Nullable T parse(final NamedRule<S, T> rule) {
          return CachedParseState.this.parse(rule);
       }
 

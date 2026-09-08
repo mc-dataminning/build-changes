@@ -36,15 +36,15 @@ public record ProfilePublicKey(ProfilePublicKey.Data data) {
       return SignatureValidator.from(this.data.key, "SHA256withRSA");
    }
 
-   public static record Data(Instant expiresAt, PublicKey key, byte[] keySignature) {
+   public record Data(Instant expiresAt, PublicKey key, byte[] keySignature) {
       private static final int MAX_KEY_SIGNATURE_SIZE = 4096;
       public static final Codec<ProfilePublicKey.Data> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  ExtraCodecs.INSTANT_ISO8601.fieldOf("expires_at").forGetter(ProfilePublicKey.Data::expiresAt),
-                  Crypt.PUBLIC_KEY_CODEC.fieldOf("key").forGetter(ProfilePublicKey.Data::key),
-                  ExtraCodecs.BASE64_STRING.fieldOf("signature_v2").forGetter(ProfilePublicKey.Data::keySignature)
-               )
-               .apply(i, ProfilePublicKey.Data::new)
+               ExtraCodecs.INSTANT_ISO8601.fieldOf("expires_at").forGetter(ProfilePublicKey.Data::expiresAt),
+               Crypt.PUBLIC_KEY_CODEC.fieldOf("key").forGetter(ProfilePublicKey.Data::key),
+               ExtraCodecs.BASE64_STRING.fieldOf("signature_v2").forGetter(ProfilePublicKey.Data::keySignature)
+            )
+            .apply(i, ProfilePublicKey.Data::new)
       );
       public static final StreamCodec<ByteBuf, ProfilePublicKey.Data> STREAM_CODEC = StreamCodec.composite(
          ByteBufCodecs.INSTANT,

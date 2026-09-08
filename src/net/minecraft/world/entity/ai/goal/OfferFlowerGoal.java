@@ -17,8 +17,7 @@ public class OfferFlowerGoal extends Goal {
    private static final Item OFFER_ITEM = Items.POPPY;
    public static final int OFFER_TICKS = 400;
    private final IronGolem golem;
-   @Nullable
-   private LivingEntity entity;
+   private @Nullable LivingEntity entity;
    private int tick;
 
    public OfferFlowerGoal(final IronGolem golem) {
@@ -30,21 +29,23 @@ public class OfferFlowerGoal extends Goal {
    public boolean canUse() {
       if (!this.golem.level().isBrightOutside()) {
          return false;
-      } else if (this.golem.getRandom().nextInt(8000) != 0) {
-         return false;
-      } else {
-         this.entity = getServerLevel(this.golem)
-            .getNearestEntity(
-               EntityTypeTags.CANDIDATE_FOR_IRON_GOLEM_GIFT,
-               OFFER_TARGET_CONTEXT,
-               this.golem,
-               this.golem.getX(),
-               this.golem.getY(),
-               this.golem.getZ(),
-               this.getGolemBoundingBox()
-            );
-         return this.entity != null;
       }
+
+      if (this.golem.getRandom().nextInt(8000) != 0) {
+         return false;
+      }
+
+      this.entity = getServerLevel(this.golem)
+         .getNearestEntity(
+            EntityTypeTags.CANDIDATE_FOR_IRON_GOLEM_GIFT,
+            OFFER_TARGET_CONTEXT,
+            this.golem,
+            this.golem.getX(),
+            this.golem.getY(),
+            this.golem.getZ(),
+            this.getGolemBoundingBox()
+         );
+      return this.entity != null;
    }
 
    @Override

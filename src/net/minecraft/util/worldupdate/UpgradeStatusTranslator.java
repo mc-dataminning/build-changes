@@ -20,20 +20,22 @@ public class UpgradeStatusTranslator {
       UpgradeProgress.Status status = upgradeProgress.getStatus();
       if (status == UpgradeProgress.Status.FAILED) {
          return FAILED;
-      } else if (status == UpgradeProgress.Status.COUNTING) {
-         return COUNTING;
-      } else {
-         DataFixTypes dataFixType = upgradeProgress.getDataFixType();
-         if (dataFixType == null) {
-            return COUNTING;
-         } else {
-            UpgradeStatusTranslator.Messages typeMessages = this.messages.get(dataFixType);
-            return typeMessages == null ? UPGRADING : typeMessages.forStatus(status);
-         }
       }
+
+      if (status == UpgradeProgress.Status.COUNTING) {
+         return COUNTING;
+      }
+
+      DataFixTypes dataFixType = upgradeProgress.getDataFixType();
+      if (dataFixType == null) {
+         return COUNTING;
+      }
+
+      UpgradeStatusTranslator.Messages typeMessages = this.messages.get(dataFixType);
+      return typeMessages == null ? UPGRADING : typeMessages.forStatus(status);
    }
 
-   public static record Messages(Component upgrading, Component finished) {
+   public record Messages(Component upgrading, Component finished) {
       public static UpgradeStatusTranslator.Messages create(final String type) {
          return new UpgradeStatusTranslator.Messages(
             Component.translatable("optimizeWorld.stage.upgrading." + type), Component.translatable("optimizeWorld.stage.finished." + type)

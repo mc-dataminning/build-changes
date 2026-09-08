@@ -28,12 +28,12 @@ public class Arrow extends AbstractArrow {
       super(type, level);
    }
 
-   public Arrow(final Level level, final double x, final double y, final double z, final ItemStack pickupItemStack, @Nullable final ItemStack firedFromWeapon) {
+   public Arrow(final Level level, final double x, final double y, final double z, final ItemStack pickupItemStack, final @Nullable ItemStack firedFromWeapon) {
       super(EntityTypes.ARROW, x, y, z, level, pickupItemStack, firedFromWeapon);
       this.updateColor();
    }
 
-   public Arrow(final Level level, final LivingEntity owner, final ItemStack pickupItemStack, @Nullable final ItemStack firedFromWeapon) {
+   public Arrow(final Level level, final LivingEntity owner, final ItemStack pickupItemStack, final @Nullable ItemStack firedFromWeapon) {
       super(EntityTypes.ARROW, owner, level, pickupItemStack, firedFromWeapon);
       this.updateColor();
    }
@@ -43,7 +43,7 @@ public class Arrow extends AbstractArrow {
    }
 
    private float getPotionDurationScale() {
-      return this.getPickupItemStackOrigin().getOrDefault(DataComponents.POTION_DURATION_SCALE, Float.valueOf(1.0F));
+      return this.getPickupItemStackOrigin().getOrDefault(DataComponents.POTION_DURATION_SCALE, 1.0F);
    }
 
    private void setPotionContents(final PotionContents potionContents) {
@@ -126,13 +126,13 @@ public class Arrow extends AbstractArrow {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 0) {
          int colorValue = this.getColor();
          if (colorValue != -1) {
-            float red = (float)(colorValue >> 16 & 0xFF) / 255.0F;
-            float green = (float)(colorValue >> 8 & 0xFF) / 255.0F;
-            float blue = (float)(colorValue >> 0 & 0xFF) / 255.0F;
+            float red = (colorValue >> 16 & 0xFF) / 255.0F;
+            float green = (colorValue >> 8 & 0xFF) / 255.0F;
+            float blue = (colorValue >> 0 & 0xFF) / 255.0F;
 
             for (int i = 0; i < 20; i++) {
                this.level()

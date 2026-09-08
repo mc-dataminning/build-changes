@@ -17,10 +17,10 @@ public class SaveOnCommand {
             boolean success = source.getServer().setAutoSave(true);
             if (!success) {
                throw ERROR_ALREADY_ON.create();
-            } else {
-               source.sendSuccess(() -> Component.translatable("commands.save.enabled"), true);
-               return 1;
             }
+
+            source.sendSuccess(() -> Component.translatable("commands.save.enabled"), true);
+            return 1;
          })
       );
    }

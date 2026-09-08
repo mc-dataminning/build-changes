@@ -45,10 +45,8 @@ public class VideoSettingsScreen extends OptionsSubScreen {
    private final int oldAnisotropyBit;
    private final TextureFilteringMethod oldTextureFiltering;
    private final LinearLayout header = LinearLayout.vertical().spacing(2);
-   @Nullable
-   private StringWidget restartWarning;
-   @Nullable
-   private Monitor fullscreenModeMonitor;
+   private @Nullable StringWidget restartWarning;
+   private @Nullable Monitor fullscreenModeMonitor;
 
    private static OptionInstance<?>[] qualityOptions(final Options options) {
       return new OptionInstance[]{
@@ -123,21 +121,23 @@ public class VideoSettingsScreen extends OptionsSubScreen {
          (caption, value) -> {
             if (this.fullscreenModeMonitor == null) {
                return Component.translatable("options.fullscreen.unavailable");
-            } else if (value == -1) {
-               return Options.genericValueLabel(caption, Component.translatable("options.fullscreen.current"));
-            } else {
-               VideoMode mode = this.fullscreenModeMonitor.mode(value);
-               return Options.genericValueLabel(
-                  caption,
-                  Component.translatable(
-                     "options.fullscreen.entry",
-                     mode.getWidth(),
-                     mode.getHeight(),
-                     mode.refreshRateLabel(),
-                     mode.getRedBits() + mode.getGreenBits() + mode.getBlueBits()
-                  )
-               );
             }
+
+            if (value == -1) {
+               return Options.genericValueLabel(caption, Component.translatable("options.fullscreen.current"));
+            }
+
+            VideoMode mode = this.fullscreenModeMonitor.mode(value);
+            return Options.genericValueLabel(
+               caption,
+               Component.translatable(
+                  "options.fullscreen.entry",
+                  mode.getWidth(),
+                  mode.getHeight(),
+                  mode.refreshRateLabel(),
+                  mode.getRedBits() + mode.getGreenBits() + mode.getBlueBits()
+               )
+            );
          },
          new OptionInstance.IntRange(-1, this.fullscreenModeMonitor != null ? this.fullscreenModeMonitor.modeCount() - 1 : -1),
          initialValue,

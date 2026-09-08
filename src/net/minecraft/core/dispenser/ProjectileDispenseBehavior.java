@@ -31,9 +31,9 @@ public class ProjectileDispenseBehavior extends DefaultDispenseItemBehavior {
          this.projectileItem.asProjectile(level, position, dispensed, direction),
          level,
          dispensed,
-         (double)direction.getStepX(),
-         (double)direction.getStepY(),
-         (double)direction.getStepZ(),
+         direction.getStepX(),
+         direction.getStepY(),
+         direction.getStepZ(),
          this.dispenseConfig.power(),
          this.dispenseConfig.uncertainty()
       );

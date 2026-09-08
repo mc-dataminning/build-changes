@@ -17,12 +17,12 @@ import net.minecraft.util.Util;
 public class RenderTypes {
    static final BiFunction<Identifier, Boolean, RenderType> OUTLINE = Util.memoize(
       (texture, cullState) -> RenderType.create(
-            "outline",
-            RenderSetup.builder(cullState ? RenderPipelines.OUTLINE_CULL : RenderPipelines.OUTLINE_NO_CULL)
-               .withTexture("Sampler0", texture)
-               .setOutline(RenderSetup.OutlineProperty.IS_OUTLINE)
-               .createRenderSetup()
-         )
+         "outline",
+         RenderSetup.builder(cullState ? RenderPipelines.OUTLINE_CULL : RenderPipelines.OUTLINE_NO_CULL)
+            .withTexture("Sampler0", texture)
+            .setOutline(RenderSetup.OutlineProperty.IS_OUTLINE)
+            .createRenderSetup()
+      )
    );
    private static final RenderType SOLID_MOVING_BLOCK = RenderType.create("solid_moving_block", createMovingBlockSetup(RenderPipelines.SOLID_BLOCK, false));
    private static final RenderType CUTOUT_MOVING_BLOCK = RenderType.create("cutout_moving_block", createMovingBlockSetup(RenderPipelines.CUTOUT_BLOCK, false));
@@ -363,13 +363,13 @@ public class RenderTypes {
    );
    private static final Function<Identifier, RenderType> EYES = Util.memoize(
       texture -> RenderType.create(
-            "eyes",
-            RenderSetup.builder(RenderPipelines.EYES)
-               .setOitPipelines(RenderPipelines.OIT_EYES)
-               .withTexture("Sampler0", texture)
-               .sortOnUpload()
-               .createRenderSetup()
-         )
+         "eyes",
+         RenderSetup.builder(RenderPipelines.EYES)
+            .setOitPipelines(RenderPipelines.OIT_EYES)
+            .withTexture("Sampler0", texture)
+            .sortOnUpload()
+            .createRenderSetup()
+      )
    );
    private static final RenderType LEASH = RenderType.create("leash", RenderSetup.builder(RenderPipelines.LEASH).useLightmap().createRenderSetup());
    private static final RenderType WATER_MASK = RenderType.create("water_mask", RenderSetup.builder(RenderPipelines.WATER_MASK).createRenderSetup());
@@ -393,66 +393,62 @@ public class RenderTypes {
    );
    private static final Function<Identifier, RenderType> CRUMBLING = Util.memoize(
       texture -> RenderType.create(
-            "crumbling",
-            RenderSetup.builder(RenderPipelines.CRUMBLING)
-               .setOitPipelines(RenderPipelines.OIT_CRUMBLING)
-               .withTexture("Sampler0", texture)
-               .sortOnUpload()
-               .createRenderSetup()
-         )
+         "crumbling",
+         RenderSetup.builder(RenderPipelines.CRUMBLING)
+            .setOitPipelines(RenderPipelines.OIT_CRUMBLING)
+            .withTexture("Sampler0", texture)
+            .sortOnUpload()
+            .createRenderSetup()
+      )
    );
    private static final Function<Identifier, RenderType> TEXT = Util.memoize(
       texture -> RenderType.create(
-            "text",
-            RenderSetup.builder(RenderPipelines.TEXT)
-               .setOitPipelines(RenderPipelines.OIT_TEXT)
-               .withTexture("Sampler0", texture)
-               .useLightmap()
-               .createRenderSetup()
-         )
+         "text",
+         RenderSetup.builder(RenderPipelines.TEXT).setOitPipelines(RenderPipelines.OIT_TEXT).withTexture("Sampler0", texture).useLightmap().createRenderSetup()
+      )
    );
    private static final Function<Identifier, RenderType> TEXT_GRAYSCALE = Util.memoize(
       texture -> RenderType.create(
-            "text_grayscale",
-            RenderSetup.builder(RenderPipelines.TEXT_GRAYSCALE)
-               .setOitPipelines(RenderPipelines.OIT_TEXT_GRAYSCALE)
-               .withTexture("Sampler0", texture)
-               .useLightmap()
-               .createRenderSetup()
-         )
+         "text_grayscale",
+         RenderSetup.builder(RenderPipelines.TEXT_GRAYSCALE)
+            .setOitPipelines(RenderPipelines.OIT_TEXT_GRAYSCALE)
+            .withTexture("Sampler0", texture)
+            .useLightmap()
+            .createRenderSetup()
+      )
    );
    private static final Function<Identifier, RenderType> TEXT_POLYGON_OFFSET = Util.memoize(
       texture -> RenderType.create(
-            "text_polygon_offset",
-            RenderSetup.builder(RenderPipelines.TEXT_POLYGON_OFFSET)
-               .setOitPipelines(RenderPipelines.OIT_TEXT_POLYGON_OFFSET)
-               .withTexture("Sampler0", texture)
-               .useLightmap()
-               .sortOnUpload()
-               .createRenderSetup()
-         )
+         "text_polygon_offset",
+         RenderSetup.builder(RenderPipelines.TEXT_POLYGON_OFFSET)
+            .setOitPipelines(RenderPipelines.OIT_TEXT_POLYGON_OFFSET)
+            .withTexture("Sampler0", texture)
+            .useLightmap()
+            .sortOnUpload()
+            .createRenderSetup()
+      )
    );
    private static final Function<Identifier, RenderType> TEXT_GRAYSCALE_POLYGON_OFFSET = Util.memoize(
       texture -> RenderType.create(
-            "text_grayscale_polygon_offset",
-            RenderSetup.builder(RenderPipelines.TEXT_GRAYSCALE_POLYGON_OFFSET)
-               .setOitPipelines(RenderPipelines.OIT_TEXT_GRAYSCALE_POLYGON_OFFSET)
-               .withTexture("Sampler0", texture)
-               .useLightmap()
-               .sortOnUpload()
-               .createRenderSetup()
-         )
+         "text_grayscale_polygon_offset",
+         RenderSetup.builder(RenderPipelines.TEXT_GRAYSCALE_POLYGON_OFFSET)
+            .setOitPipelines(RenderPipelines.OIT_TEXT_GRAYSCALE_POLYGON_OFFSET)
+            .withTexture("Sampler0", texture)
+            .useLightmap()
+            .sortOnUpload()
+            .createRenderSetup()
+      )
    );
    private static final Function<Identifier, RenderType> TEXT_SEE_THROUGH = Util.memoize(
       texture -> RenderType.create(
-            "text_see_through", RenderSetup.builder(RenderPipelines.TEXT_SEE_THROUGH).withTexture("Sampler0", texture).useLightmap().createRenderSetup()
-         )
+         "text_see_through", RenderSetup.builder(RenderPipelines.TEXT_SEE_THROUGH).withTexture("Sampler0", texture).useLightmap().createRenderSetup()
+      )
    );
    private static final Function<Identifier, RenderType> TEXT_GRAYSCALE_SEE_THROUGH = Util.memoize(
       texture -> RenderType.create(
-            "text_grayscale_see_through",
-            RenderSetup.builder(RenderPipelines.TEXT_GRAYSCALE_SEE_THROUGH).withTexture("Sampler0", texture).useLightmap().sortOnUpload().createRenderSetup()
-         )
+         "text_grayscale_see_through",
+         RenderSetup.builder(RenderPipelines.TEXT_GRAYSCALE_SEE_THROUGH).withTexture("Sampler0", texture).useLightmap().sortOnUpload().createRenderSetup()
+      )
    );
    private static final RenderType LIGHTNING = RenderType.create(
       "lightning", RenderSetup.builder(RenderPipelines.LIGHTNING).setOitPipelines(RenderPipelines.OIT_LIGHTNING).sortOnUpload().createRenderSetup()
@@ -520,13 +516,13 @@ public class RenderTypes {
    );
    private static final Function<Identifier, RenderType> BLOCK_SCREEN_EFFECT = Util.memoize(
       texture -> RenderType.create(
-            "block_screen_effect", RenderSetup.builder(RenderPipelines.BLOCK_SCREEN_EFFECT).withTexture("Sampler0", texture).createRenderSetup()
-         )
+         "block_screen_effect", RenderSetup.builder(RenderPipelines.BLOCK_SCREEN_EFFECT).withTexture("Sampler0", texture).createRenderSetup()
+      )
    );
    private static final Function<Identifier, RenderType> FIRE_SCREEN_EFFECT = Util.memoize(
       texture -> RenderType.create(
-            "fire_screen_effect", RenderSetup.builder(RenderPipelines.FIRE_SCREEN_EFFECT).withTexture("Sampler0", texture).createRenderSetup()
-         )
+         "fire_screen_effect", RenderSetup.builder(RenderPipelines.FIRE_SCREEN_EFFECT).withTexture("Sampler0", texture).createRenderSetup()
+      )
    );
 
    private static RenderSetup createMovingBlockSetup(final RenderPipeline pipeline, final boolean translucent) {

@@ -1,6 +1,5 @@
 package net.minecraft.client.particle;
 
-import java.util.Objects;
 import java.util.Optional;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -14,7 +13,7 @@ public class SuspendedParticle extends SingleQuadParticle {
       super(level, x, y - 0.125, z, sprite);
       this.setSize(0.01F, 0.01F);
       this.quadSize = this.quadSize * (this.random.nextFloat() * 0.6F + 0.2F);
-      this.lifetime = (int)(16.0 / ((double)this.random.nextFloat() * 0.8 + 0.2));
+      this.lifetime = (int)(16.0 / (this.random.nextFloat() * 0.8 + 0.2));
       this.hasPhysics = false;
       this.friction = 1.0F;
       this.gravity = 0.0F;
@@ -33,7 +32,7 @@ public class SuspendedParticle extends SingleQuadParticle {
       super(level, x, y - 0.125, z, xd, yd, zd, sprite);
       this.setSize(0.01F, 0.01F);
       this.quadSize = this.quadSize * (this.random.nextFloat() * 0.6F + 0.6F);
-      this.lifetime = (int)(16.0 / ((double)this.random.nextFloat() * 0.8 + 0.2));
+      this.lifetime = (int)(16.0 / (this.random.nextFloat() * 0.8 + 0.2));
       this.hasPhysics = false;
       this.friction = 1.0F;
       this.gravity = 0.0F;
@@ -90,10 +89,6 @@ public class SuspendedParticle extends SingleQuadParticle {
          final RandomSource random
       ) {
          SuspendedParticle particle = new SuspendedParticle(level, x, y, z, 0.0, -0.8F, 0.0, this.sprite.get(random)) {
-            {
-               Objects.requireNonNull(SporeBlossomAirProvider.this);
-            }
-
             @Override
             public Optional<ParticleLimit> getParticleLimit() {
                return Optional.of(ParticleLimit.SPORE_BLOSSOM);
@@ -148,7 +143,7 @@ public class SuspendedParticle extends SingleQuadParticle {
          final double zAux,
          final RandomSource random
       ) {
-         double ya = (double)random.nextFloat() * -1.9 * (double)random.nextFloat() * 0.1;
+         double ya = random.nextFloat() * -1.9 * random.nextFloat() * 0.1;
          SuspendedParticle particle = new SuspendedParticle(level, x, y, z, 0.0, ya, 0.0, this.sprite.get(random));
          particle.setColor(0.1F, 0.1F, 0.3F);
          particle.setSize(0.001F, 0.001F);

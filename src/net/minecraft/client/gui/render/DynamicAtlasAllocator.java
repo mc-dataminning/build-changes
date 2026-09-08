@@ -38,18 +38,18 @@ public class DynamicAtlasAllocator<K> {
       int preexistingKeyCount = Sets.intersection(this.usedSlotByKey.keySet(), keys).size();
       if (preexistingKeyCount == keys.size()) {
          return true;
-      } else {
-         MutableInt needSpaceFor = new MutableInt(keys.size() - preexistingKeyCount);
-         this.freeSlotIf((key, var3x) -> {
-            if (needSpaceFor.intValue() != 0 && !keys.contains(key)) {
-               needSpaceFor.decrement();
-               return true;
-            } else {
-               return false;
-            }
-         });
-         return needSpaceFor.intValue() == 0;
       }
+
+      MutableInt needSpaceFor = new MutableInt(keys.size() - preexistingKeyCount);
+      this.freeSlotIf((key, var3x) -> {
+         if (needSpaceFor.intValue() != 0 && !keys.contains(key)) {
+            needSpaceFor.decrement();
+            return true;
+         } else {
+            return false;
+         }
+      });
+      return needSpaceFor.intValue() == 0;
    }
 
    public void endFrame() {
@@ -60,12 +60,12 @@ public class DynamicAtlasAllocator<K> {
       this.usedSlotByKey.entrySet().removeIf(entry -> {
          if (!predicate.test(entry.getKey(), entry.getValue())) {
             return false;
-         } else {
-            DynamicAtlasAllocator.Slot slot = entry.getValue();
-            this.freeSlots.set(slot.x + slot.y * this.width);
-            slot.discardAfterFrame = false;
-            return true;
          }
+
+         DynamicAtlasAllocator.Slot slot = entry.getValue();
+         this.freeSlots.set(slot.x + slot.y * this.width);
+         slot.discardAfterFrame = false;
+         return true;
       });
    }
 
@@ -74,27 +74,26 @@ public class DynamicAtlasAllocator<K> {
       return predictedUsedSlots.size() <= this.slots.size();
    }
 
-   @Nullable
-   public DynamicAtlasAllocator.Slot getOrAllocate(final K key, final boolean discardAfterFrame) {
+   public DynamicAtlasAllocator.@Nullable Slot getOrAllocate(final K key, final boolean discardAfterFrame) {
       DynamicAtlasAllocator.Slot usedSlot = this.usedSlotByKey.get(key);
       if (usedSlot != null) {
          usedSlot.discardAfterFrame |= discardAfterFrame;
          usedSlot.externalState = DynamicAtlasAllocator.SlotState.READY;
          return usedSlot;
-      } else {
-         int freeSlotIndex = this.freeSlots.nextSetBit(0);
-         if (freeSlotIndex == -1) {
-            return null;
-         } else {
-            DynamicAtlasAllocator.Slot freeSlot = this.slots.get(freeSlotIndex);
-            freeSlot.externalState = freeSlot.fresh ? DynamicAtlasAllocator.SlotState.EMPTY : DynamicAtlasAllocator.SlotState.STALE;
-            freeSlot.fresh = false;
-            freeSlot.discardAfterFrame = discardAfterFrame;
-            this.usedSlotByKey.put(key, freeSlot);
-            this.freeSlots.clear(freeSlotIndex);
-            return freeSlot;
-         }
       }
+
+      int freeSlotIndex = this.freeSlots.nextSetBit(0);
+      if (freeSlotIndex == -1) {
+         return null;
+      }
+
+      DynamicAtlasAllocator.Slot freeSlot = this.slots.get(freeSlotIndex);
+      freeSlot.externalState = freeSlot.fresh ? DynamicAtlasAllocator.SlotState.EMPTY : DynamicAtlasAllocator.SlotState.STALE;
+      freeSlot.fresh = false;
+      freeSlot.discardAfterFrame = discardAfterFrame;
+      this.usedSlotByKey.put(key, freeSlot);
+      this.freeSlots.clear(freeSlotIndex);
+      return freeSlot;
    }
 
    @VisibleForTesting
@@ -132,7 +131,7 @@ public class DynamicAtlasAllocator<K> {
       }
    }
 
-   public static enum SlotState {
+   public enum SlotState {
       EMPTY,
       STALE,
       READY;

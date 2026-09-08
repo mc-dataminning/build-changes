@@ -18,22 +18,22 @@ public class StayCloseToTarget {
    ) {
       return BehaviorBuilder.create(
          i -> i.group(i.registered(MemoryModuleType.LOOK_TARGET), i.registered(MemoryModuleType.WALK_TARGET))
-               .apply(i, (lookTarget, walkTarget) -> (level, body, timestamp) -> {
-                     Optional<PositionTracker> targetPosition = targetPositionGetter.apply(body);
-                     if (!targetPosition.isEmpty() && shouldRunPredicate.test(body)) {
-                        PositionTracker positionTracker = targetPosition.get();
-                        if (body.position().closerThan(positionTracker.currentPosition(), (double)tooFar)) {
-                           return false;
-                        } else {
-                           PositionTracker target = targetPosition.get();
-                           lookTarget.set(target);
-                           walkTarget.set(new WalkTarget(target, speedModifier, closeEnough));
-                           return true;
-                        }
-                     } else {
-                        return false;
-                     }
-                  })
+            .apply(i, (lookTarget, walkTarget) -> (level, body, timestamp) -> {
+               Optional<PositionTracker> targetPosition = targetPositionGetter.apply(body);
+               if (!targetPosition.isEmpty() && shouldRunPredicate.test(body)) {
+                  PositionTracker positionTracker = targetPosition.get();
+                  if (body.position().closerThan(positionTracker.currentPosition(), tooFar)) {
+                     return false;
+                  }
+
+                  PositionTracker target = targetPosition.get();
+                  lookTarget.set(target);
+                  walkTarget.set(new WalkTarget(target, speedModifier, closeEnough));
+                  return true;
+               } else {
+                  return false;
+               }
+            })
       );
    }
 }

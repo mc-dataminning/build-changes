@@ -40,7 +40,7 @@ public class JukeboxBlockEntity extends BlockEntity implements ContainerSingleIt
 
    private void notifyItemChangedInJukebox(final boolean wasInserted) {
       if (this.level != null && this.level.getBlockState(this.getBlockPos()) == this.getBlockState()) {
-         this.level.setBlock(this.getBlockPos(), this.getBlockState().setValue(JukeboxBlock.HAS_RECORD, Boolean.valueOf(wasInserted)), 2);
+         this.level.setBlock(this.getBlockPos(), this.getBlockState().setValue(JukeboxBlock.HAS_RECORD, wasInserted), 2);
          this.level.gameEvent(GameEvent.BLOCK_CHANGE, this.getBlockPos(), GameEvent.Context.of(this.getBlockState()));
       }
    }
@@ -81,7 +81,7 @@ public class JukeboxBlockEntity extends BlockEntity implements ContainerSingleIt
       input.getLong("ticks_since_song_started")
          .ifPresent(
             ticksSinceSongStarted -> JukeboxSong.fromStack(this.item)
-                  .ifPresent(song -> this.jukeboxSongPlayer.setSongWithoutPlaying((Holder<JukeboxSong>)song, ticksSinceSongStarted))
+               .ifPresent(song -> this.jukeboxSongPlayer.setSongWithoutPlaying((Holder<JukeboxSong>)song, ticksSinceSongStarted))
          );
    }
 

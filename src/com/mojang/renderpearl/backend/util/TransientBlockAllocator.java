@@ -18,13 +18,11 @@ public class TransientBlockAllocator<T extends TransientBlockAllocator.Allocator
    private final ReferenceArrayList<T> specialBlocks = new ReferenceArrayList();
    private final ReferenceArrayList<T> freeBlocks = new ReferenceArrayList();
    private final ReferenceArrayList<T> usedBlocks = new ReferenceArrayList();
-   @Nullable
-   private T currentBlock;
+   private @Nullable T currentBlock;
    private long currentOffset = 0L;
 
    public TransientBlockAllocator(final long blockSize, final long maxAlignment, final TransientBlockAllocator.Allocator<T> allocator) {
-      this(blockSize, maxAlignment, allocator, var0 -> {
-      });
+      this(blockSize, maxAlignment, allocator, var0 -> {});
    }
 
    public TransientBlockAllocator(
@@ -52,48 +50,43 @@ public class TransientBlockAllocator<T extends TransientBlockAllocator.Allocator
       this.freeBlocks.forEach(this.allocator::free);
       this.freeBlocks.clear();
       if (this.usedBlocks.isEmpty() && this.specialBlocks.isEmpty()) {
-         return () -> {
-         };
-      } else {
-         ReferenceArrayList<T> blocksUsedThisRotation = this.usedBlocks.clone();
-         this.usedBlocks.clear();
-         ReferenceArrayList<T> specialBlocksUsedThisRotation = this.specialBlocks.clone();
-         this.specialBlocks.clear();
-         return () -> {
-            this.freeBlocks.ensureCapacity(this.freeBlocks.size() + blocksUsedThisRotation.size());
-            Iterator i$ = blocksUsedThisRotation.iterator();
-
-            while (i$.hasNext()) {
-               T usedBlock = (T)i$.next();
-               if (usedBlock.suboptimal()) {
-                  this.allocator.free(usedBlock);
-               } else {
-                  this.freeBlocks.add(usedBlock);
-               }
-            }
-
-            specialBlocksUsedThisRotation.forEach(this.allocator::free);
-         };
+         return () -> {};
       }
+
+      ReferenceArrayList<T> blocksUsedThisRotation = this.usedBlocks.clone();
+      this.usedBlocks.clear();
+      ReferenceArrayList<T> specialBlocksUsedThisRotation = this.specialBlocks.clone();
+      this.specialBlocks.clear();
+      return () -> {
+         this.freeBlocks.ensureCapacity(this.freeBlocks.size() + blocksUsedThisRotation.size());
+         Iterator i$ = blocksUsedThisRotation.iterator();
+
+         while (i$.hasNext()) {
+            T usedBlock = (T)i$.next();
+            if (usedBlock.suboptimal()) {
+               this.allocator.free(usedBlock);
+            } else {
+               this.freeBlocks.add(usedBlock);
+            }
+         }
+
+         specialBlocksUsedThisRotation.forEach(this.allocator::free);
+      };
    }
 
-   @Contract(
-      pure = true
-   )
+   @Contract(pure = true)
    public boolean canAllocateInBlock(final long size, final long alignment) {
       return size <= this.blockSize && alignment <= this.maxAlignment;
    }
 
-   @Contract(
-      pure = true
-   )
+   @Contract(pure = true)
    public boolean canAllocateInCurrentBlock(final long size, final long alignment) {
       if (this.currentBlock == null && this.canAllocateInBlock(size, alignment)) {
          return true;
-      } else {
-         long alignedOffset = Mth.roundToward(this.currentOffset, alignment);
-         return size <= this.blockSize - alignedOffset && alignment <= this.maxAlignment;
       }
+
+      long alignedOffset = Mth.roundToward(this.currentOffset, alignment);
+      return size <= this.blockSize - alignedOffset && alignment <= this.maxAlignment;
    }
 
    private T allocateBlock() {
@@ -110,47 +103,51 @@ public class TransientBlockAllocator<T extends TransientBlockAllocator.Allocator
    public TransientBlockAllocator.Allocation<T> allocate(final long size, final long alignment, final long minimumAllocation, final long elementSize) {
       if (alignment > this.maxAlignment) {
          throw new IllegalArgumentException("Alignment requirement over maximum supported alignment");
-      } else if (size == this.blockSize) {
+      }
+
+      if (size == this.blockSize) {
          return new TransientBlockAllocator.Allocation<>(this.allocateBlock(), 0L, this.blockSize);
-      } else if (!this.canAllocateInBlock(size, alignment)) {
+      }
+
+      if (!this.canAllocateInBlock(size, alignment)) {
          T specialBlock = this.allocator.alloc(size);
          this.onBlockUse.accept(specialBlock);
          this.specialBlocks.add(specialBlock);
          return new TransientBlockAllocator.Allocation<>(specialBlock, 0L, size);
-      } else {
-         if (this.currentBlock == null) {
-            this.currentBlock = this.allocateBlock();
-            this.currentOffset = 0L;
-         }
-
-         if (this.canAllocateInCurrentBlock(size, alignment)) {
-            assert this.currentBlock != null;
-
-            long alignedOffset = Mth.roundToward(this.currentOffset, alignment);
-            this.currentOffset = alignedOffset + size;
-            T block = this.currentBlock;
-            return new TransientBlockAllocator.Allocation<>(block, alignedOffset, size);
-         } else if (this.canAllocateInCurrentBlock(minimumAllocation, alignment)) {
-            assert this.currentBlock != null;
-
-            long alignedOffset = Mth.roundToward(this.currentOffset, alignment);
-            long allocatedSize = (this.blockSize - alignedOffset) / elementSize * elementSize;
-            this.currentOffset = alignedOffset + allocatedSize;
-            T block = this.currentBlock;
-            return new TransientBlockAllocator.Allocation<>(block, alignedOffset, allocatedSize);
-         } else {
-            T newBlock = this.allocateBlock();
-            if (this.currentOffset > size) {
-               this.currentBlock = newBlock;
-               this.currentOffset = size;
-            }
-
-            return new TransientBlockAllocator.Allocation<>(newBlock, 0L, size);
-         }
       }
+
+      if (this.currentBlock == null) {
+         this.currentBlock = this.allocateBlock();
+         this.currentOffset = 0L;
+      }
+
+      if (this.canAllocateInCurrentBlock(size, alignment)) {
+         assert this.currentBlock != null;
+         long alignedOffset = Mth.roundToward(this.currentOffset, alignment);
+         this.currentOffset = alignedOffset + size;
+         T block = this.currentBlock;
+         return new TransientBlockAllocator.Allocation<>(block, alignedOffset, size);
+      }
+
+      if (this.canAllocateInCurrentBlock(minimumAllocation, alignment)) {
+         assert this.currentBlock != null;
+         long alignedOffset = Mth.roundToward(this.currentOffset, alignment);
+         long allocatedSize = (this.blockSize - alignedOffset) / elementSize * elementSize;
+         this.currentOffset = alignedOffset + allocatedSize;
+         T block = this.currentBlock;
+         return new TransientBlockAllocator.Allocation<>(block, alignedOffset, allocatedSize);
+      }
+
+      T newBlock = this.allocateBlock();
+      if (this.currentOffset > size) {
+         this.currentBlock = newBlock;
+         this.currentOffset = size;
+      }
+
+      return new TransientBlockAllocator.Allocation<>(newBlock, 0L, size);
    }
 
-   public static record Allocation<T>(T block, long offset, long size) {
+   public record Allocation<T>(T block, long offset, long size) {
    }
 
    public interface Allocator<T extends TransientBlockAllocator.Allocator.Block> {
@@ -174,16 +171,14 @@ public class TransientBlockAllocator<T extends TransientBlockAllocator.Allocator
          };
       }
 
-      public interface Block {
+      interface Block {
          boolean suboptimal();
       }
 
-      public static record CpuBlock(long address) implements TransientBlockAllocator.Allocator.Block {
-         public CpuBlock(long address) {
+      record CpuBlock(long address) implements TransientBlockAllocator.Allocator.Block {
+         public CpuBlock {
             if (address == 0L) {
                throw new IllegalArgumentException("Failed to allocate CPU block");
-            } else {
-               this.address = address;
             }
          }
 

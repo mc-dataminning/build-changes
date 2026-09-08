@@ -15,7 +15,7 @@ public record ContainerPredicate(Optional<CollectionPredicate<ItemInstance, Item
    implements SingleComponentItemPredicate<ItemContainerContents> {
    public static final Codec<ContainerPredicate> CODEC = RecordCodecBuilder.create(
       i -> i.group(CollectionPredicate.codec(ItemPredicate.CODEC).optionalFieldOf("items").forGetter(ContainerPredicate::items))
-            .apply(i, ContainerPredicate::new)
+         .apply(i, ContainerPredicate::new)
    );
 
    @Override

@@ -90,6 +90,7 @@ import net.minecraft.util.datafix.fixes.CustomModelDataExpandFix;
 import net.minecraft.util.datafix.fixes.DayTimeToClockFix;
 import net.minecraft.util.datafix.fixes.DebugProfileLookingAtSplitFix;
 import net.minecraft.util.datafix.fixes.DebugProfileOverlayReferenceFix;
+import net.minecraft.util.datafix.fixes.DebugProfileRenameEntryFix;
 import net.minecraft.util.datafix.fixes.DecoratedPotFieldRenameFix;
 import net.minecraft.util.datafix.fixes.DropChancesFormatFix;
 import net.minecraft.util.datafix.fixes.DropInvalidSignDataFix;
@@ -449,12 +450,12 @@ public class DataFixers {
    public static CompletableFuture<?> optimize(final Set<TypeReference> typesToOptimize) {
       if (typesToOptimize.isEmpty()) {
          return CompletableFuture.completedFuture(null);
-      } else {
-         Executor executor = Executors.newSingleThreadExecutor(
-            new ThreadFactoryBuilder().setNameFormat("Datafixer Bootstrap #%d").setDaemon(true).setPriority(1).build()
-         );
-         return DATA_FIXER.optimize(typesToOptimize, executor);
       }
+
+      Executor executor = Executors.newSingleThreadExecutor(
+         new ThreadFactoryBuilder().setNameFormat("Datafixer Bootstrap #%d").setDaemon(true).setPriority(1).build()
+      );
+      return DATA_FIXER.optimize(typesToOptimize, executor);
    }
 
    private static void addFixers(final DataFixerBuilder fixerUpper, final FileFixerUpper.Builder fileFixerUpper) {
@@ -1647,6 +1648,8 @@ public class DataFixers {
       fixerUpper.addFixer(new AddNewChoices(v4997, "Added Poplar Boat and Poplar Chest Boat", References.ENTITY));
       Schema v5000 = fixerUpper.addSchema(5000, V5000::new);
       fixerUpper.addFixer(new AddNewChoices(v5000, "Added Cushion", References.ENTITY));
+      Schema v5001 = fixerUpper.addSchema(5001, SAME_NAMESPACED);
+      fixerUpper.addFixer(new DebugProfileRenameEntryFix(v5001, "minecraft:post_effect", "minecraft:post_effects"));
       Schema v5002 = fixerUpper.addSchema(5002, SAME_NAMESPACED);
       fixerUpper.addFixer(new SignsOpFlagFix(v5002));
       Schema v5006 = fixerUpper.addSchema(5006, SAME_NAMESPACED);

@@ -60,14 +60,14 @@ public class SpreadPlayersCommand {
                                           Commands.argument("targets", EntityArgument.entities())
                                              .executes(
                                                 c -> spreadPlayers(
-                                                      (CommandSourceStack)c.getSource(),
-                                                      Vec2Argument.getVec2(c, "center"),
-                                                      FloatArgumentType.getFloat(c, "spreadDistance"),
-                                                      FloatArgumentType.getFloat(c, "maxRange"),
-                                                      ((CommandSourceStack)c.getSource()).getLevel().getMaxY() + 1,
-                                                      BoolArgumentType.getBool(c, "respectTeams"),
-                                                      EntityArgument.getEntities(c, "targets")
-                                                   )
+                                                   (CommandSourceStack)c.getSource(),
+                                                   Vec2Argument.getVec2(c, "center"),
+                                                   FloatArgumentType.getFloat(c, "spreadDistance"),
+                                                   FloatArgumentType.getFloat(c, "maxRange"),
+                                                   ((CommandSourceStack)c.getSource()).getLevel().getMaxY() + 1,
+                                                   BoolArgumentType.getBool(c, "respectTeams"),
+                                                   EntityArgument.getEntities(c, "targets")
+                                                )
                                              )
                                        )
                                  ))
@@ -81,14 +81,14 @@ public class SpreadPlayersCommand {
                                                    Commands.argument("targets", EntityArgument.entities())
                                                       .executes(
                                                          c -> spreadPlayers(
-                                                               (CommandSourceStack)c.getSource(),
-                                                               Vec2Argument.getVec2(c, "center"),
-                                                               FloatArgumentType.getFloat(c, "spreadDistance"),
-                                                               FloatArgumentType.getFloat(c, "maxRange"),
-                                                               IntegerArgumentType.getInteger(c, "maxHeight"),
-                                                               BoolArgumentType.getBool(c, "respectTeams"),
-                                                               EntityArgument.getEntities(c, "targets")
-                                                            )
+                                                            (CommandSourceStack)c.getSource(),
+                                                            Vec2Argument.getVec2(c, "center"),
+                                                            FloatArgumentType.getFloat(c, "spreadDistance"),
+                                                            FloatArgumentType.getFloat(c, "maxRange"),
+                                                            IntegerArgumentType.getInteger(c, "maxHeight"),
+                                                            BoolArgumentType.getBool(c, "respectTeams"),
+                                                            EntityArgument.getEntities(c, "targets")
+                                                         )
                                                       )
                                                 )
                                           )
@@ -113,29 +113,29 @@ public class SpreadPlayersCommand {
       int minY = level.getMinY();
       if (maxHeight < minY) {
          throw ERROR_INVALID_MAX_HEIGHT.create(maxHeight, minY);
-      } else {
-         RandomSource random = RandomSource.createThreadLocalInstance();
-         double minX = (double)(center.x - maxRange);
-         double minZ = (double)(center.y - maxRange);
-         double maxX = (double)(center.x + maxRange);
-         double maxZ = (double)(center.y + maxRange);
-         SpreadPlayersCommand.Position[] positions = createInitialPositions(
-            random, respectTeams ? getNumberOfTeams(entities) : entities.size(), minX, minZ, maxX, maxZ
-         );
-         spreadPositions(center, (double)spreadDistance, level, random, minX, minZ, maxX, maxZ, maxHeight, positions, respectTeams);
-         double distance = setPlayerPositions(entities, level, positions, maxHeight, respectTeams);
-         source.sendSuccess(
-            () -> Component.translatable(
-                  "commands.spreadplayers.success." + (respectTeams ? "teams" : "entities"),
-                  positions.length,
-                  center.x,
-                  center.y,
-                  String.format(Locale.ROOT, "%.2f", distance)
-               ),
-            true
-         );
-         return positions.length;
       }
+
+      RandomSource random = RandomSource.createThreadLocalInstance();
+      double minX = center.x - maxRange;
+      double minZ = center.y - maxRange;
+      double maxX = center.x + maxRange;
+      double maxZ = center.y + maxRange;
+      SpreadPlayersCommand.Position[] positions = createInitialPositions(
+         random, respectTeams ? getNumberOfTeams(entities) : entities.size(), minX, minZ, maxX, maxZ
+      );
+      spreadPositions(center, spreadDistance, level, random, minX, minZ, maxX, maxZ, maxHeight, positions, respectTeams);
+      double distance = setPlayerPositions(entities, level, positions, maxHeight, respectTeams);
+      source.sendSuccess(
+         () -> Component.translatable(
+            "commands.spreadplayers.success." + (respectTeams ? "teams" : "entities"),
+            positions.length,
+            center.x,
+            center.y,
+            String.format(Locale.ROOT, "%.2f", distance)
+         ),
+         true
+      );
+      return positions.length;
    }
 
    private static int getNumberOfTeams(final Collection<? extends Entity> players) {
@@ -192,8 +192,8 @@ public class SpreadPlayersCommand {
             }
 
             if (neighbourCount > 0) {
-               averageNeighbourPos.x /= (double)neighbourCount;
-               averageNeighbourPos.z /= (double)neighbourCount;
+               averageNeighbourPos.x /= neighbourCount;
+               averageNeighbourPos.z /= neighbourCount;
                double length = averageNeighbourPos.getLength();
                if (length > 0.0) {
                   averageNeighbourPos.normalize();
@@ -259,9 +259,9 @@ public class SpreadPlayersCommand {
 
          entity.teleportTo(
             level,
-            (double)Mth.floor(position.x) + 0.5,
-            (double)position.getSpawnY(level, maxHeight),
-            (double)Mth.floor(position.z) + 0.5,
+            Mth.floor(position.x) + 0.5,
+            position.getSpawnY(level, maxHeight),
+            Mth.floor(position.z) + 0.5,
             Set.of(),
             entity.getYRot(),
             entity.getXRot(),
@@ -279,7 +279,7 @@ public class SpreadPlayersCommand {
          avgDistance += closest;
       }
 
-      return entities.size() < 2 ? 0.0 : avgDistance / (double)entities.size();
+      return entities.size() < 2 ? 0.0 : avgDistance / entities.size();
    }
 
    private static SpreadPlayersCommand.Position[] createInitialPositions(
@@ -343,7 +343,7 @@ public class SpreadPlayersCommand {
       }
 
       public int getSpawnY(final BlockGetter level, final int maxHeight) {
-         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(this.x, (double)(maxHeight + 1), this.z);
+         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(this.x, maxHeight + 1, this.z);
          boolean air2Above = level.getBlockState(pos).isAir();
          pos.move(Direction.DOWN);
          boolean air1Above = level.getBlockState(pos).isAir();
@@ -363,7 +363,7 @@ public class SpreadPlayersCommand {
       }
 
       public boolean isSafe(final BlockGetter level, final int maxHeight) {
-         BlockPos pos = BlockPos.containing(this.x, (double)(this.getSpawnY(level, maxHeight) - 1), this.z);
+         BlockPos pos = BlockPos.containing(this.x, this.getSpawnY(level, maxHeight) - 1, this.z);
          BlockState state = level.getBlockState(pos);
          return pos.getY() < maxHeight && !state.liquid() && state.is(BlockTags.ENTITIES_CAN_TELEPORT_TO);
       }

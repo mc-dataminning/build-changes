@@ -83,6 +83,7 @@ import org.joml.Vector3i;
 import org.joml.Vector3ic;
 import org.joml.Vector4f;
 import org.joml.Vector4fc;
+import org.jspecify.annotations.Nullable;
 
 public class ExtraCodecs {
    public static final Codec<JsonElement> JSON = converter(JsonOps.INSTANCE);
@@ -116,18 +117,18 @@ public class ExtraCodecs {
       );
    public static final Codec<AxisAngle4f> AXISANGLE4F = RecordCodecBuilder.create(
       i -> i.group(Codec.FLOAT.fieldOf("angle").forGetter(o -> o.angle), VECTOR3F.fieldOf("axis").forGetter(o -> new Vector3f(o.x, o.y, o.z)))
-            .apply(i, AxisAngle4f::new)
+         .apply(i, AxisAngle4f::new)
    );
    public static final Codec<Quaternionfc> QUATERNIONF = Codec.withAlternative(QUATERNIONF_COMPONENTS, AXISANGLE4F.xmap(Quaternionf::new, AxisAngle4f::new));
    public static final Codec<Matrix4fc> MATRIX4F = Codec.FLOAT.listOf().comapFlatMap(input -> Util.fixedSize(input, 16).map(l -> {
-         Matrix4f result = new Matrix4f();
+      Matrix4f result = new Matrix4f();
 
-         for (int i = 0; i < l.size(); i++) {
-            result.setRowColumn(i >> 2, i & 3, (Float)l.get(i));
-         }
+      for (int i = 0; i < l.size(); i++) {
+         result.setRowColumn(i >> 2, i & 3, (Float)l.get(i));
+      }
 
-         return result.determineProperties();
-      }), m -> {
+      return result.determineProperties();
+   }), m -> {
       FloatList output = new FloatArrayList(16);
 
       for (int i = 0; i < 16; i++) {
@@ -163,15 +164,15 @@ public class ExtraCodecs {
    public static final Codec<Pattern> PATTERN = Codec.STRING.comapFlatMap(pattern -> {
       try {
          return DataResult.success(Pattern.compile(pattern));
-      } catch (PatternSyntaxException var2) {
-         return DataResult.error(() -> "Invalid regex pattern '" + pattern + "': " + var2.getMessage());
+      } catch (PatternSyntaxException e) {
+         return DataResult.error(() -> "Invalid regex pattern '" + pattern + "': " + e.getMessage());
       }
    }, Pattern::pattern);
    public static final Codec<Instant> INSTANT_ISO8601 = temporalCodec(DateTimeFormatter.ISO_INSTANT).xmap(Instant::from, Function.identity());
    public static final Codec<byte[]> BASE64_STRING = Codec.STRING.comapFlatMap(string -> {
       try {
          return DataResult.success(Base64.getDecoder().decode(string));
-      } catch (IllegalArgumentException var2) {
+      } catch (IllegalArgumentException e) {
          return DataResult.error(() -> "Malformed base64 string");
       }
    }, bytes -> Base64.getEncoder().encodeToString(bytes));
@@ -180,8 +181,8 @@ public class ExtraCodecs {
    public static final Codec<ExtraCodecs.TagOrElementLocation> TAG_OR_ELEMENT_ID = Codec.STRING
       .comapFlatMap(
          name -> name.startsWith("#")
-               ? Identifier.read(name.substring(1)).map(id -> new ExtraCodecs.TagOrElementLocation(id, true))
-               : Identifier.read(name).map(id -> new ExtraCodecs.TagOrElementLocation(id, false)),
+            ? Identifier.read(name.substring(1)).map(id -> new ExtraCodecs.TagOrElementLocation(id, true))
+            : Identifier.read(name).map(id -> new ExtraCodecs.TagOrElementLocation(id, false)),
          ExtraCodecs.TagOrElementLocation::decoratedId
       );
    public static final Function<Optional<Long>, OptionalLong> toOptionalLong = o -> o.map(OptionalLong::of).orElseGet(OptionalLong::empty);
@@ -194,11 +195,11 @@ public class ExtraCodecs {
    public static final int MAX_PROPERTIES = 16;
    private static final Codec<Property> PROPERTY = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.sizeLimitedString(64).fieldOf("name").forGetter(Property::name),
-               Codec.sizeLimitedString(32767).fieldOf("value").forGetter(Property::value),
-               Codec.sizeLimitedString(1024).optionalFieldOf("signature").forGetter(property -> Optional.ofNullable(property.signature()))
-            )
-            .apply(i, (name, value, signature) -> new Property(name, value, (String)signature.orElse(null)))
+            Codec.sizeLimitedString(64).fieldOf("name").forGetter(Property::name),
+            Codec.sizeLimitedString(32767).fieldOf("value").forGetter(Property::value),
+            Codec.sizeLimitedString(1024).optionalFieldOf("signature").forGetter(property -> Optional.ofNullable(property.signature()))
+         )
+         .apply(i, (name, value, signature) -> new Property(name, value, (String)signature.orElse(null)))
    );
    public static final Codec<PropertyMap> PROPERTY_MAP = Codec.either(
          Codec.unboundedMap(Codec.STRING, Codec.STRING.listOf())
@@ -208,10 +209,10 @@ public class ExtraCodecs {
       .xmap(mapListEither -> {
          Builder<String, Property> result = ImmutableMultimap.builder();
          mapListEither.ifLeft(s -> s.forEach((name, properties) -> {
-               for (String property : properties) {
-                  result.put(name, new Property(name, property));
-               }
-            })).ifRight(properties -> {
+            for (String property : properties) {
+               result.put(name, new Property(name, property));
+            }
+         })).ifRight(properties -> {
             for (Property property : properties) {
                result.put(property.name(), property);
             }
@@ -221,8 +222,8 @@ public class ExtraCodecs {
    public static final Codec<String> PLAYER_NAME = Codec.string(0, 16)
       .validate(
          name -> StringUtil.isValidPlayerName(name)
-               ? DataResult.success(name)
-               : DataResult.error(() -> "Player name contained disallowed characters: '" + name + "'")
+            ? DataResult.success(name)
+            : DataResult.error(() -> "Player name contained disallowed characters: '" + name + "'")
       );
    public static final Codec<GameProfile> AUTHLIB_GAME_PROFILE = gameProfileCodec(UUIDUtil.AUTHLIB_CODEC).codec();
    public static final MapCodec<GameProfile> STORED_GAME_PROFILE = gameProfileCodec(UUIDUtil.CODEC);
@@ -237,8 +238,8 @@ public class ExtraCodecs {
    public static final Codec<URI> UNTRUSTED_URI = Codec.STRING.comapFlatMap(string -> {
       try {
          return DataResult.success(Util.parseAndValidateUntrustedUri(string));
-      } catch (URISyntaxException var2) {
-         return DataResult.error(var2::getMessage);
+      } catch (URISyntaxException e) {
+         return DataResult.error(e::getMessage);
       }
    }, URI::toString);
    public static final Codec<String> CHAT_STRING = Codec.STRING.validate(string -> {
@@ -261,20 +262,20 @@ public class ExtraCodecs {
       return Codec.STRING.comapFlatMap(string -> {
          if (!string.startsWith("#")) {
             return DataResult.error(() -> "Hex color must begin with #");
-         } else {
-            int digits = string.length() - "#".length();
-            if (digits != expectedDigits) {
-               return DataResult.error(() -> "Hex color is wrong size, expected " + expectedDigits + " digits but got " + digits);
-            } else {
-               try {
-                  long value = HexFormat.fromHexDigitsToLong(string, "#".length(), string.length());
-                  return value >= 0L && value <= maxValue ? DataResult.success((int)value) : DataResult.error(() -> "Color value out of range: " + string);
-               } catch (NumberFormatException var7) {
-                  return DataResult.error(() -> "Invalid color value: " + string);
-               }
-            }
          }
-      }, value -> "#" + HexFormat.of().toHexDigits((long)value.intValue(), expectedDigits));
+
+         int digits = string.length() - "#".length();
+         if (digits != expectedDigits) {
+            return DataResult.error(() -> "Hex color is wrong size, expected " + expectedDigits + " digits but got " + digits);
+         }
+
+         try {
+            long value = HexFormat.fromHexDigitsToLong(string, "#".length(), string.length());
+            return value >= 0L && value <= maxValue ? DataResult.success((int)value) : DataResult.error(() -> "Color value out of range: " + string);
+         } catch (NumberFormatException e) {
+            return DataResult.error(() -> "Invalid color value: " + string);
+         }
+      }, value -> "#" + HexFormat.of().toHexDigits(value.intValue(), expectedDigits));
    }
 
    public static <P, I> Codec<I> intervalCodec(
@@ -286,13 +287,13 @@ public class ExtraCodecs {
       final Function<I, P> getMax
    ) {
       Codec<I> arrayCodec = Codec.list(pointCodec).comapFlatMap(list -> Util.fixedSize(list, 2).flatMap(l -> {
-            P min = (P)l.get(0);
-            P max = (P)l.get(1);
-            return makeInterval.apply(min, max);
-         }), p -> ImmutableList.of(getMin.apply((I)p), getMax.apply((I)p)));
+         P min = (P)l.get(0);
+         P max = (P)l.get(1);
+         return makeInterval.apply(min, max);
+      }), p -> ImmutableList.of(getMin.apply((I)p), getMax.apply((I)p)));
       Codec<I> objectCodec = RecordCodecBuilder.create(
             i -> i.group(pointCodec.fieldOf(lowerBoundName).forGetter(Pair::getFirst), pointCodec.fieldOf(upperBoundName).forGetter(Pair::getSecond))
-                  .apply(i, Pair::of)
+               .apply(i, Pair::of)
          )
          .comapFlatMap(p -> makeInterval.apply((P)p.getFirst(), (P)p.getSecond()), i -> Pair.of(getMin.apply((I)i), getMax.apply((I)i)));
       Codec<I> arrayOrObjectCodec = Codec.withAlternative(arrayCodec, objectCodec);
@@ -323,12 +324,12 @@ public class ExtraCodecs {
       };
    }
 
-   public static <E> Codec<E> idResolverCodec(final ToIntFunction<E> toInt, final IntFunction<E> fromInt, final int unknownId) {
+   public static <E> Codec<E> idResolverCodec(final ToIntFunction<E> toInt, final IntFunction<@Nullable E> fromInt, final int unknownId) {
       return Codec.INT
          .flatXmap(
             id -> Optional.ofNullable(fromInt.apply(id))
-                  .<DataResult>map(DataResult::success)
-                  .orElseGet(() -> DataResult.error(() -> "Unknown element id: " + id)),
+               .<DataResult>map(DataResult::success)
+               .orElseGet(() -> DataResult.error(() -> "Unknown element id: " + id)),
             e -> {
                int id = toInt.applyAsInt((E)e);
                return id == unknownId ? DataResult.error(() -> "Element with unknown id: " + e) : DataResult.success(id);
@@ -336,7 +337,7 @@ public class ExtraCodecs {
          );
    }
 
-   public static <I, E> Codec<E> idResolverCodec(final Codec<I> value, final Function<I, E> fromId, final Function<E, I> toId) {
+   public static <I, E> Codec<E> idResolverCodec(final Codec<I> value, final Function<I, @Nullable E> fromId, final Function<E, @Nullable I> toId) {
       return value.flatXmap(id -> {
          E element = fromId.apply((I)id);
          return element == null ? DataResult.error(() -> "Unknown element id: " + id) : DataResult.success(element);
@@ -422,8 +423,8 @@ public class ExtraCodecs {
       return Codec.INT
          .validate(
             value -> value.compareTo(minInclusive) >= 0 && value.compareTo(maxInclusive) <= 0
-                  ? DataResult.success(value)
-                  : DataResult.error(() -> error.apply(value))
+               ? DataResult.success(value)
+               : DataResult.error(() -> error.apply(value))
          );
    }
 
@@ -434,22 +435,22 @@ public class ExtraCodecs {
    private static Codec<Long> longRangeWithMessage(final long minInclusive, final long maxInclusive, final Function<Long, String> error) {
       return Codec.LONG
          .validate(
-            value -> (long)value.compareTo(minInclusive) >= 0L && (long)value.compareTo(maxInclusive) <= 0L
-                  ? DataResult.success(value)
-                  : DataResult.error(() -> error.apply(value))
+            value -> value.compareTo(minInclusive) >= 0L && value.compareTo(maxInclusive) <= 0L
+               ? DataResult.success(value)
+               : DataResult.error(() -> error.apply(value))
          );
    }
 
    public static Codec<Long> longRange(final int minInclusive, final int maxInclusive) {
-      return longRangeWithMessage((long)minInclusive, (long)maxInclusive, n -> "Value must be within range [" + minInclusive + ";" + maxInclusive + "]: " + n);
+      return longRangeWithMessage(minInclusive, maxInclusive, n -> "Value must be within range [" + minInclusive + ";" + maxInclusive + "]: " + n);
    }
 
    private static Codec<Float> floatRangeMinInclusiveWithMessage(final float minInclusive, final float maxInclusive, final Function<Float, String> error) {
       return Codec.FLOAT
          .validate(
             value -> value.compareTo(minInclusive) >= 0 && value.compareTo(maxInclusive) <= 0
-                  ? DataResult.success(value)
-                  : DataResult.error(() -> error.apply(value))
+               ? DataResult.success(value)
+               : DataResult.error(() -> error.apply(value))
          );
    }
 
@@ -457,8 +458,8 @@ public class ExtraCodecs {
       return Codec.FLOAT
          .validate(
             value -> value.compareTo(minExclusive) > 0 && value.compareTo(maxInclusive) <= 0
-                  ? DataResult.success(value)
-                  : DataResult.error(() -> error.apply(value))
+               ? DataResult.success(value)
+               : DataResult.error(() -> error.apply(value))
          );
    }
 
@@ -526,8 +527,8 @@ public class ExtraCodecs {
          public <T> DataResult<Pair<A, T>> decode(final DynamicOps<T> ops, final T input) {
             try {
                return codec.decode(ops, input);
-            } catch (Exception var4) {
-               return DataResult.error(() -> "Caught exception decoding " + input + ": " + var4.getMessage());
+            } catch (Exception e) {
+               return DataResult.error(() -> "Caught exception decoding " + input + ": " + e.getMessage());
             }
          }
       });
@@ -537,8 +538,8 @@ public class ExtraCodecs {
       return Codec.STRING.comapFlatMap(s -> {
          try {
             return DataResult.success(formatter.parse(s));
-         } catch (Exception var3) {
-            return DataResult.error(var3::getMessage);
+         } catch (Exception e) {
+            return DataResult.error(e::getMessage);
          }
       }, formatter::format);
    }
@@ -550,19 +551,19 @@ public class ExtraCodecs {
    private static MapCodec<GameProfile> gameProfileCodec(final Codec<UUID> uuidCodec) {
       return RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  uuidCodec.fieldOf("id").forGetter(GameProfile::id),
-                  PLAYER_NAME.fieldOf("name").forGetter(GameProfile::name),
-                  PROPERTY_MAP.optionalFieldOf("properties", PropertyMap.EMPTY).forGetter(GameProfile::properties)
-               )
-               .apply(i, GameProfile::new)
+               uuidCodec.fieldOf("id").forGetter(GameProfile::id),
+               PLAYER_NAME.fieldOf("name").forGetter(GameProfile::name),
+               PROPERTY_MAP.optionalFieldOf("properties", PropertyMap.EMPTY).forGetter(GameProfile::properties)
+            )
+            .apply(i, GameProfile::new)
       );
    }
 
    public static <K, V> Codec<Map<K, V>> sizeLimitedMap(final Codec<Map<K, V>> codec, final int maxSizeInclusive) {
       return codec.validate(
          map -> map.size() > maxSizeInclusive
-               ? DataResult.error(() -> "Map is too long: " + map.size() + ", expected range [0-" + maxSizeInclusive + "]")
-               : DataResult.success(map)
+            ? DataResult.error(() -> "Map is too long: " + map.size() + ", expected range [0-" + maxSizeInclusive + "]")
+            : DataResult.success(map)
       );
    }
 
@@ -632,7 +633,7 @@ public class ExtraCodecs {
       return Codec.STRING.comapFlatMap(key -> {
          try {
             return DataResult.success(valueOf.apply(key));
-         } catch (IllegalArgumentException var3) {
+         } catch (IllegalArgumentException ignored) {
             return DataResult.error(() -> "No value with id: " + key);
          }
       }, Enum::toString);
@@ -646,28 +647,26 @@ public class ExtraCodecs {
       return pathCodec(pathFactory).xmap(Path::normalize, Path::normalize).validate(path -> {
          if (path.isAbsolute()) {
             return DataResult.error(() -> "Illegal absolute path: " + path);
-         } else {
-            for (Path pathElement : path) {
-               if (pathElement.startsWith("..") || pathElement.startsWith(".")) {
-                  return DataResult.error(() -> "Illegal path traversal: " + path);
-               }
-            }
-
-            return FileUtil.isEmptyPath(path) ? DataResult.error(() -> "Path is empty: " + path) : DataResult.success(path);
          }
+
+         for (Path pathElement : path) {
+            if (pathElement.startsWith("..") || pathElement.startsWith(".")) {
+               return DataResult.error(() -> "Illegal path traversal: " + path);
+            }
+         }
+
+         return FileUtil.isEmptyPath(path) ? DataResult.error(() -> "Path is empty: " + path) : DataResult.success(path);
       });
    }
 
    public static Codec<Path> guardedPathCodec(final Path baseFolder) {
-      FileSystem var10000 = baseFolder.getFileSystem();
-      Objects.requireNonNull(var10000);
-      FileSystem var1 = var10000;
+      FileSystem var1 = baseFolder.getFileSystem();
       return relativeNormalizedSubPathCodec(x$0 -> var1.getPath(x$0))
          .xmap(baseFolder::resolve, baseFolder::relativize)
          .validate(
             path -> !path.startsWith(baseFolder)
-                  ? DataResult.error(() -> String.format(Locale.ROOT, "Path %s does not start with base folder %s", path, baseFolder))
-                  : DataResult.success(path)
+               ? DataResult.error(() -> String.format(Locale.ROOT, "Path %s does not start with base folder %s", path, baseFolder))
+               : DataResult.success(path)
          );
    }
 
@@ -698,7 +697,7 @@ public class ExtraCodecs {
       }
    }
 
-   public static record StrictUnboundedMapCodec<K, V>(Codec<K> keyCodec, Codec<V> elementCodec) implements BaseMapCodec<K, V>, Codec<Map<K, V>> {
+   public record StrictUnboundedMapCodec<K, V>(Codec<K> keyCodec, Codec<V> elementCodec) implements BaseMapCodec<K, V>, Codec<Map<K, V>> {
       public <T> DataResult<Map<K, V>> decode(final DynamicOps<T> ops, final MapLike<T> input) {
          com.google.common.collect.ImmutableMap.Builder<K, V> read = ImmutableMap.builder();
 
@@ -738,7 +737,7 @@ public class ExtraCodecs {
       }
    }
 
-   public static record TagOrElementLocation(Identifier id, boolean tag) {
+   public record TagOrElementLocation(Identifier id, boolean tag) {
       @Override
       public String toString() {
          return this.decoratedId();

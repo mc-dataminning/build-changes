@@ -10,16 +10,11 @@ import net.minecraft.network.chat.Style;
 import org.jspecify.annotations.Nullable;
 
 public record PreeditEvent(String fullText, int caretPosition, List<String> blocks, int focusedBlock) {
-   public PreeditEvent(String fullText, int caretPosition, List<String> blocks, int focusedBlock) {
+   public PreeditEvent {
       Preconditions.checkElementIndex(focusedBlock, blocks.size());
-      this.fullText = fullText;
-      this.caretPosition = caretPosition;
-      this.blocks = blocks;
-      this.focusedBlock = focusedBlock;
    }
 
-   @Nullable
-   public static PreeditEvent fromSdlTextEditing(@Nullable final String text, final int selectionStart, final int selectionLength) {
+   public static @Nullable PreeditEvent fromSdlTextEditing(final @Nullable String text, final int selectionStart, final int selectionLength) {
       if (text != null && !text.isEmpty()) {
          int totalCodepoints = text.codePointCount(0, text.length());
          int caretCodepoint = selectionStart < 0 ? totalCodepoints : Math.min(selectionStart, totalCodepoints);
@@ -29,21 +24,21 @@ public record PreeditEvent(String fullText, int caretPosition, List<String> bloc
             int selectionEndChar = text.offsetByCodePoints(0, selectionEndCodepoint);
             if (selectionEndChar <= caretChar) {
                return new PreeditEvent(text, caretChar, List.of(text), 0);
-            } else {
-               Builder<String> blocks = ImmutableList.builder();
-               int focusedBlock = 0;
-               if (caretChar > 0) {
-                  blocks.add(text.substring(0, caretChar));
-                  focusedBlock = 1;
-               }
-
-               blocks.add(text.substring(caretChar, selectionEndChar));
-               if (selectionEndChar < text.length()) {
-                  blocks.add(text.substring(selectionEndChar));
-               }
-
-               return new PreeditEvent(text, caretChar, blocks.build(), focusedBlock);
             }
+
+            Builder<String> blocks = ImmutableList.builder();
+            int focusedBlock = 0;
+            if (caretChar > 0) {
+               blocks.add(text.substring(0, caretChar));
+               focusedBlock = 1;
+            }
+
+            blocks.add(text.substring(caretChar, selectionEndChar));
+            if (selectionEndChar < text.length()) {
+               blocks.add(text.substring(selectionEndChar));
+            }
+
+            return new PreeditEvent(text, caretChar, blocks.build(), focusedBlock);
          } else {
             return new PreeditEvent(text, caretChar, ImmutableList.of(text), 0);
          }
@@ -56,19 +51,19 @@ public record PreeditEvent(String fullText, int caretPosition, List<String> bloc
       int blockCount = this.blocks.size();
       if (blockCount == 1) {
          return Component.literal(this.blocks.getFirst()).withStyle(focusedStyle);
-      } else {
-         MutableComponent result = Component.empty();
+      }
 
-         for (int i = 0; i < blockCount; i++) {
-            MutableComponent part = Component.literal(this.blocks.get(i));
-            if (i == this.focusedBlock) {
-               part.withStyle(focusedStyle);
-            }
+      MutableComponent result = Component.empty();
 
-            result.append(part);
+      for (int i = 0; i < blockCount; i++) {
+         MutableComponent part = Component.literal(this.blocks.get(i));
+         if (i == this.focusedBlock) {
+            part.withStyle(focusedStyle);
          }
 
-         return result;
+         result.append(part);
       }
+
+      return result;
    }
 }

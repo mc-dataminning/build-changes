@@ -46,7 +46,7 @@ public interface MinMaxBounds<T extends Number & Comparable<T>> {
       };
    }
 
-   public static record Bounds<T extends Number & Comparable<T>>(Optional<T> min, Optional<T> max) {
+   record Bounds<T extends Number & Comparable<T>>(Optional<T> min, Optional<T> max) {
       public boolean isAny() {
          return this.min().isEmpty() && this.max().isEmpty();
       }
@@ -103,10 +103,10 @@ public interface MinMaxBounds<T extends Number & Comparable<T>> {
       public static <T extends Number & Comparable<T>> Codec<MinMaxBounds.Bounds<T>> createCodec(final Codec<T> numberCodec) {
          Codec<MinMaxBounds.Bounds<T>> rangeCodec = RecordCodecBuilder.create(
             i -> i.group(
-                     numberCodec.optionalFieldOf("min").forGetter(MinMaxBounds.Bounds::min),
-                     numberCodec.optionalFieldOf("max").forGetter(MinMaxBounds.Bounds::max)
-                  )
-                  .apply(i, MinMaxBounds.Bounds::new)
+                  numberCodec.optionalFieldOf("min").forGetter(MinMaxBounds.Bounds::min),
+                  numberCodec.optionalFieldOf("max").forGetter(MinMaxBounds.Bounds::max)
+               )
+               .apply(i, MinMaxBounds.Bounds::new)
          );
          return Codec.either(rangeCodec, numberCodec).xmap(either -> (MinMaxBounds.Bounds)either.map(v -> v, x$0 -> exactly((T)x$0)), bounds -> {
             Optional<T> point = bounds.asPoint();
@@ -143,29 +143,29 @@ public interface MinMaxBounds<T extends Number & Comparable<T>> {
       ) throws CommandSyntaxException {
          if (!reader.canRead()) {
             throw MinMaxBounds.ERROR_EMPTY.createWithContext(reader);
-         } else {
-            int start = reader.getCursor();
+         }
 
-            try {
-               Optional<T> min = readNumber(reader, converter, parseExc);
-               Optional<T> max;
-               if (reader.canRead(2) && reader.peek() == '.' && reader.peek(1) == '.') {
-                  reader.skip();
-                  reader.skip();
-                  max = readNumber(reader, converter, parseExc);
-               } else {
-                  max = min;
-               }
+         int start = reader.getCursor();
 
-               if (min.isEmpty() && max.isEmpty()) {
-                  throw MinMaxBounds.ERROR_EMPTY.createWithContext(reader);
-               } else {
-                  return new MinMaxBounds.Bounds<>(min, max);
-               }
-            } catch (CommandSyntaxException var6) {
-               reader.setCursor(start);
-               throw new CommandSyntaxException(var6.getType(), var6.getRawMessage(), var6.getInput(), start);
+         try {
+            Optional<T> min = readNumber(reader, converter, parseExc);
+            Optional<T> max;
+            if (reader.canRead(2) && reader.peek() == '.' && reader.peek(1) == '.') {
+               reader.skip();
+               reader.skip();
+               max = readNumber(reader, converter, parseExc);
+            } else {
+               max = min;
             }
+
+            if (min.isEmpty() && max.isEmpty()) {
+               throw MinMaxBounds.ERROR_EMPTY.createWithContext(reader);
+            } else {
+               return new MinMaxBounds.Bounds<>(min, max);
+            }
+         } catch (CommandSyntaxException e) {
+            reader.setCursor(start);
+            throw new CommandSyntaxException(e.getType(), e.getRawMessage(), e.getInput(), start);
          }
       }
 
@@ -181,12 +181,12 @@ public interface MinMaxBounds<T extends Number & Comparable<T>> {
          String number = reader.getString().substring(start, reader.getCursor());
          if (number.isEmpty()) {
             return Optional.empty();
-         } else {
-            try {
-               return Optional.of(converter.apply(number));
-            } catch (NumberFormatException var6) {
-               throw parseExc.get().createWithContext(reader, number);
-            }
+         }
+
+         try {
+            return Optional.of(converter.apply(number));
+         } catch (NumberFormatException ex) {
+            throw parseExc.get().createWithContext(reader, number);
          }
       }
 
@@ -200,7 +200,7 @@ public interface MinMaxBounds<T extends Number & Comparable<T>> {
       }
    }
 
-   public static record Doubles(MinMaxBounds.Bounds<Double> bounds, MinMaxBounds.Bounds<Double> boundsSqr) implements MinMaxBounds<Double> {
+   record Doubles(MinMaxBounds.Bounds<Double> bounds, MinMaxBounds.Bounds<Double> boundsSqr) implements MinMaxBounds<Double> {
       public static final MinMaxBounds.Doubles ANY = new MinMaxBounds.Doubles(MinMaxBounds.Bounds.any());
       public static final Codec<MinMaxBounds.Doubles> CODEC = MinMaxBounds.Bounds.createCodec(Codec.DOUBLE)
          .validate(MinMaxBounds.Bounds::validateSwappedBoundsInCodec)
@@ -252,7 +252,7 @@ public interface MinMaxBounds<T extends Number & Comparable<T>> {
       }
    }
 
-   public static record FloatDegrees(MinMaxBounds.Bounds<Float> bounds) implements MinMaxBounds<Float> {
+   record FloatDegrees(MinMaxBounds.Bounds<Float> bounds) implements MinMaxBounds<Float> {
       public static final MinMaxBounds.FloatDegrees ANY = new MinMaxBounds.FloatDegrees(MinMaxBounds.Bounds.any());
       public static final Codec<MinMaxBounds.FloatDegrees> CODEC = MinMaxBounds.Bounds.createCodec(Codec.FLOAT)
          .xmap(MinMaxBounds.FloatDegrees::new, MinMaxBounds.FloatDegrees::bounds);
@@ -267,7 +267,7 @@ public interface MinMaxBounds<T extends Number & Comparable<T>> {
       }
    }
 
-   public static record Ints(MinMaxBounds.Bounds<Integer> bounds, MinMaxBounds.Bounds<Long> boundsSqr) implements MinMaxBounds<Integer> {
+   record Ints(MinMaxBounds.Bounds<Integer> bounds, MinMaxBounds.Bounds<Long> boundsSqr) implements MinMaxBounds<Integer> {
       public static final MinMaxBounds.Ints ANY = new MinMaxBounds.Ints(MinMaxBounds.Bounds.any());
       public static final Codec<MinMaxBounds.Ints> CODEC = MinMaxBounds.Bounds.createCodec(Codec.INT)
          .validate(MinMaxBounds.Bounds::validateSwappedBoundsInCodec)

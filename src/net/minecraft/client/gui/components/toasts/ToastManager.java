@@ -6,7 +6,6 @@ import java.util.BitSet;
 import java.util.Deque;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.MusicToastDisplayState;
@@ -29,7 +28,7 @@ public class ToastManager {
    private final BitSet occupiedSlots = new BitSet(5);
    private final Deque<Toast> queued = Queues.newArrayDeque();
    private final Set<SoundEvent> playedToastSounds = new HashSet<>();
-   private ToastManager.ToastInstance<NowPlayingToast> nowPlayingToast;
+   private ToastManager.@Nullable ToastInstance<NowPlayingToast> nowPlayingToast;
 
    public ToastManager(final Minecraft minecraft, final Options options) {
       this.minecraft = minecraft;
@@ -59,16 +58,16 @@ public class ToastManager {
             int firstSlotIndex = this.findFreeSlotsIndex(occcupiedSlotCount);
             if (firstSlotIndex == -1) {
                return false;
-            } else {
-               this.visibleToasts.add(new ToastManager.ToastInstance<>(toast, firstSlotIndex, occcupiedSlotCount));
-               this.occupiedSlots.set(firstSlotIndex, firstSlotIndex + occcupiedSlotCount);
-               SoundEvent toastSound = toast.getSoundEvent();
-               if (toastSound != null && this.playedToastSounds.add(toastSound)) {
-                  this.minecraft.getSoundManager().play(SimpleSoundInstance.forUI(toastSound, 1.0F, 1.0F));
-               }
-
-               return true;
             }
+
+            this.visibleToasts.add(new ToastManager.ToastInstance<>(toast, firstSlotIndex, occcupiedSlotCount));
+            this.occupiedSlots.set(firstSlotIndex, firstSlotIndex + occcupiedSlotCount);
+            SoundEvent toastSound = toast.getSoundEvent();
+            if (toastSound != null && this.playedToastSounds.add(toastSound)) {
+               this.minecraft.getSoundManager().play(SimpleSoundInstance.forUI(toastSound, 1.0F, 1.0F));
+            }
+
+            return true;
          });
       }
 
@@ -117,8 +116,7 @@ public class ToastManager {
       return 5 - this.occupiedSlots.cardinality();
    }
 
-   @Nullable
-   public <T extends Toast> T getToast(final Class<? extends T> clazz, final Object token) {
+   public <T extends Toast> @Nullable T getToast(final Class<? extends T> clazz, final Object token) {
       for (ToastManager.ToastInstance<?> instance : this.visibleToasts) {
          if (clazz.isAssignableFrom(instance.getToast().getClass()) && instance.getToast().getToken().equals(token)) {
             return (T)instance.getToast();
@@ -202,8 +200,6 @@ public class ToastManager {
       protected boolean hasFinishedRendering;
 
       private ToastInstance(final T toast, final int firstSlotIndex, final int occupiedSlotCount) {
-         Objects.requireNonNull(ToastManager.this);
-         super();
          this.toast = toast;
          this.firstSlotIndex = firstSlotIndex;
          this.occupiedSlotCount = occupiedSlotCount;
@@ -253,7 +249,7 @@ public class ToastManager {
          this.toast.update(ToastManager.this, this.fullyVisibleFor);
          Toast.Visibility wantedVisibility = this.toast.getWantedVisibility();
          if (wantedVisibility != this.visibility) {
-            this.animationStartTime = now - (long)((int)((1.0F - this.visiblePortion) * 600.0F));
+            this.animationStartTime = now - (int)((1.0F - this.visiblePortion) * 600.0F);
             this.visibility = wantedVisibility;
          }
 

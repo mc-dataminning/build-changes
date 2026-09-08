@@ -42,10 +42,7 @@ public class ClientboundSetPlayerTeamPacket implements Packet<ClientGamePacketLi
 
    public static ClientboundSetPlayerTeamPacket createAddOrModifyPacket(final PlayerTeam team, final boolean createNew) {
       return new ClientboundSetPlayerTeamPacket(
-         team.getName(),
-         createNew ? 0 : 2,
-         Optional.of(new ClientboundSetPlayerTeamPacket.Parameters(team)),
-         (Collection<String>)(createNew ? team.getPlayers() : List.of())
+         team.getName(), createNew ? 0 : 2, Optional.of(new ClientboundSetPlayerTeamPacket.Parameters(team)), createNew ? team.getPlayers() : List.of()
       );
    }
 
@@ -96,8 +93,7 @@ public class ClientboundSetPlayerTeamPacket implements Packet<ClientGamePacketLi
       return method == 0 || method == 2;
    }
 
-   @Nullable
-   public ClientboundSetPlayerTeamPacket.Action getPlayerAction() {
+   public ClientboundSetPlayerTeamPacket.@Nullable Action getPlayerAction() {
       return switch (this.method) {
          case 0, 3 -> ClientboundSetPlayerTeamPacket.Action.ADD;
          default -> null;
@@ -105,8 +101,7 @@ public class ClientboundSetPlayerTeamPacket implements Packet<ClientGamePacketLi
       };
    }
 
-   @Nullable
-   public ClientboundSetPlayerTeamPacket.Action getTeamAction() {
+   public ClientboundSetPlayerTeamPacket.@Nullable Action getTeamAction() {
       return switch (this.method) {
          case 0 -> ClientboundSetPlayerTeamPacket.Action.ADD;
          case 1 -> ClientboundSetPlayerTeamPacket.Action.REMOVE;
@@ -135,12 +130,12 @@ public class ClientboundSetPlayerTeamPacket implements Packet<ClientGamePacketLi
       return this.parameters;
    }
 
-   public static enum Action {
+   public enum Action {
       ADD,
       REMOVE;
    }
 
-   public static record Parameters(
+   public record Parameters(
       Component displayName,
       Component playerPrefix,
       Component playerSuffix,

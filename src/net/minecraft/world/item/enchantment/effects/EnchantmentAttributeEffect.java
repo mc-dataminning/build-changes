@@ -20,12 +20,12 @@ public record EnchantmentAttributeEffect(Identifier id, Holder<Attribute> attrib
    implements EnchantmentLocationBasedEffect {
    public static final MapCodec<EnchantmentAttributeEffect> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Identifier.CODEC.fieldOf("id").forGetter(EnchantmentAttributeEffect::id),
-               Attribute.CODEC.fieldOf("attribute").forGetter(EnchantmentAttributeEffect::attribute),
-               LevelBasedValue.CODEC.fieldOf("amount").forGetter(EnchantmentAttributeEffect::amount),
-               AttributeModifier.Operation.CODEC.fieldOf("operation").forGetter(EnchantmentAttributeEffect::operation)
-            )
-            .apply(i, EnchantmentAttributeEffect::new)
+            Identifier.CODEC.fieldOf("id").forGetter(EnchantmentAttributeEffect::id),
+            Attribute.CODEC.fieldOf("attribute").forGetter(EnchantmentAttributeEffect::attribute),
+            LevelBasedValue.CODEC.fieldOf("amount").forGetter(EnchantmentAttributeEffect::amount),
+            AttributeModifier.Operation.CODEC.fieldOf("operation").forGetter(EnchantmentAttributeEffect::operation)
+         )
+         .apply(i, EnchantmentAttributeEffect::new)
    );
 
    private Identifier idForSlot(final StringRepresentable slot) {
@@ -33,7 +33,7 @@ public record EnchantmentAttributeEffect(Identifier id, Holder<Attribute> attrib
    }
 
    public AttributeModifier getModifier(final int level, final StringRepresentable slot) {
-      return new AttributeModifier(this.idForSlot(slot), (double)this.amount().calculate(level), this.operation());
+      return new AttributeModifier(this.idForSlot(slot), this.amount().calculate(level), this.operation());
    }
 
    @Override

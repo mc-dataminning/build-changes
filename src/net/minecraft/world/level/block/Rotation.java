@@ -29,7 +29,7 @@ public enum Rotation implements StringRepresentable {
    private final String id;
    private final OctahedralGroup rotation;
 
-   private Rotation(final int index, final String id, final OctahedralGroup rotation) {
+   Rotation(final int index, final String id, final OctahedralGroup rotation) {
       this.index = index;
       this.id = id;
       this.rotation = rotation;
@@ -90,14 +90,14 @@ public enum Rotation implements StringRepresentable {
    public Direction rotate(final Direction direction) {
       if (direction.getAxis() == Direction.Axis.Y) {
          return direction;
-      } else {
-         return switch (this) {
-            case CLOCKWISE_90 -> direction.getClockWise();
-            case CLOCKWISE_180 -> direction.getOpposite();
-            case COUNTERCLOCKWISE_90 -> direction.getCounterClockWise();
-            default -> direction;
-         };
       }
+
+      return switch (this) {
+         case CLOCKWISE_90 -> direction.getClockWise();
+         case CLOCKWISE_180 -> direction.getOpposite();
+         case COUNTERCLOCKWISE_90 -> direction.getCounterClockWise();
+         default -> direction;
+      };
    }
 
    public int rotate(final int rotation, final int steps) {

@@ -29,15 +29,15 @@ public class TransmuteRecipe extends NormalCraftingRecipe {
       .validate(MinMaxBounds.validateContainedInRange(FULL_RANGE_MATERIAL_COUNT));
    public static final MapCodec<TransmuteRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
-               CraftingRecipe.CraftingBookInfo.MAP_CODEC.forGetter(o -> o.bookInfo),
-               Ingredient.CODEC.fieldOf("input").forGetter(o -> o.input),
-               Ingredient.CODEC.fieldOf("material").forGetter(o -> o.material),
-               MATERIAL_COUNT_BOUNDS.optionalFieldOf("material_count", DEFAULT_MATERIAL_COUNT).forGetter(o -> o.materialCount),
-               TransmuteResult.CODEC.fieldOf("result").forGetter(o -> o.result),
-               Codec.BOOL.optionalFieldOf("add_material_count_to_result", false).forGetter(o -> o.addMaterialCountToResult)
-            )
-            .apply(i, TransmuteRecipe::new)
+            Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
+            CraftingRecipe.CraftingBookInfo.MAP_CODEC.forGetter(o -> o.bookInfo),
+            Ingredient.CODEC.fieldOf("input").forGetter(o -> o.input),
+            Ingredient.CODEC.fieldOf("material").forGetter(o -> o.material),
+            MATERIAL_COUNT_BOUNDS.optionalFieldOf("material_count", DEFAULT_MATERIAL_COUNT).forGetter(o -> o.materialCount),
+            TransmuteResult.CODEC.fieldOf("result").forGetter(o -> o.result),
+            Codec.BOOL.optionalFieldOf("add_material_count_to_result", false).forGetter(o -> o.addMaterialCountToResult)
+         )
+         .apply(i, TransmuteRecipe::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, TransmuteRecipe> STREAM_CODEC = StreamCodec.composite(
       Recipe.CommonInfo.STREAM_CODEC,
@@ -128,10 +128,10 @@ public class TransmuteRecipe extends NormalCraftingRecipe {
             int resultCount = this.computeResultSize(materialCount);
             if (resultCount != 1) {
                return true;
-            } else {
-               ItemStack result = this.computeResult(foundInput, 0);
-               return result.isEmpty() ? false : !ItemStack.isSameItemSameComponents(foundInput, result);
             }
+
+            ItemStack result = this.computeResult(foundInput, 0);
+            return result.isEmpty() ? false : !ItemStack.isSameItemSameComponents(foundInput, result);
          } else {
             return false;
          }
@@ -158,8 +158,8 @@ public class TransmuteRecipe extends NormalCraftingRecipe {
 
          return this.computeResult(inputIngredient, materialCount);
       } else {
-         for (int slotx = 0; slotx < input.size(); slotx++) {
-            ItemStack itemStack = input.getItem(slotx);
+         for (int slot = 0; slot < input.size(); slot++) {
+            ItemStack itemStack = input.getItem(slot);
             if (!itemStack.isEmpty() && this.input.test(itemStack)) {
                return this.computeResult(itemStack, 0);
             }

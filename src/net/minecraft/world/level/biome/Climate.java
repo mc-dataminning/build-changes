@@ -85,14 +85,14 @@ public class Climate {
       long distance(Climate.RTree.Node<T> node, long[] target);
    }
 
-   public static record Parameter(long min, long max) {
+   public record Parameter(long min, long max) {
       public static final Codec<Climate.Parameter> CODEC = ExtraCodecs.intervalCodec(
          Codec.floatRange(-2.0F, 2.0F),
          "min",
          "max",
          (min, max) -> min.compareTo(max) > 0
-               ? DataResult.error(() -> "Cannon construct interval, min > max (" + min + " > " + max + ")")
-               : DataResult.success(new Climate.Parameter(Climate.quantizeCoord(min), Climate.quantizeCoord(max))),
+            ? DataResult.error(() -> "Cannon construct interval, min > max (" + min + " > " + max + ")")
+            : DataResult.success(new Climate.Parameter(Climate.quantizeCoord(min), Climate.quantizeCoord(max))),
          p -> Climate.unquantizeCoord(p.min()),
          p -> Climate.unquantizeCoord(p.max())
       );
@@ -128,7 +128,7 @@ public class Climate {
          return above > 0L ? above : Math.max(below, 0L);
       }
 
-      public Climate.Parameter span(@Nullable final Climate.Parameter other) {
+      public Climate.Parameter span(final Climate.@Nullable Parameter other) {
          return other == null ? this : new Climate.Parameter(Math.min(this.min, other.min()), Math.max(this.max, other.max()));
       }
    }
@@ -141,7 +141,7 @@ public class Climate {
          return ExtraCodecs.nonEmptyList(
                RecordCodecBuilder.create(
                      i -> i.group(Climate.ParameterPoint.CODEC.fieldOf("parameters").forGetter(Pair::getFirst), valueCodec.forGetter(Pair::getSecond))
-                           .apply(i, Pair::of)
+                        .apply(i, Pair::of)
                   )
                   .listOf()
             )
@@ -198,7 +198,7 @@ public class Climate {
       }
    }
 
-   public static record ParameterPoint(
+   public record ParameterPoint(
       Climate.Parameter temperature,
       Climate.Parameter humidity,
       Climate.Parameter continentalness,
@@ -209,15 +209,15 @@ public class Climate {
    ) {
       public static final Codec<Climate.ParameterPoint> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Climate.Parameter.CODEC.fieldOf("temperature").forGetter(p -> p.temperature),
-                  Climate.Parameter.CODEC.fieldOf("humidity").forGetter(p -> p.humidity),
-                  Climate.Parameter.CODEC.fieldOf("continentalness").forGetter(p -> p.continentalness),
-                  Climate.Parameter.CODEC.fieldOf("erosion").forGetter(p -> p.erosion),
-                  Climate.Parameter.CODEC.fieldOf("depth").forGetter(p -> p.depth),
-                  Climate.Parameter.CODEC.fieldOf("weirdness").forGetter(p -> p.weirdness),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("offset").xmap(Climate::quantizeCoord, Climate::unquantizeCoord).forGetter(p -> p.offset)
-               )
-               .apply(i, Climate.ParameterPoint::new)
+               Climate.Parameter.CODEC.fieldOf("temperature").forGetter(p -> p.temperature),
+               Climate.Parameter.CODEC.fieldOf("humidity").forGetter(p -> p.humidity),
+               Climate.Parameter.CODEC.fieldOf("continentalness").forGetter(p -> p.continentalness),
+               Climate.Parameter.CODEC.fieldOf("erosion").forGetter(p -> p.erosion),
+               Climate.Parameter.CODEC.fieldOf("depth").forGetter(p -> p.depth),
+               Climate.Parameter.CODEC.fieldOf("weirdness").forGetter(p -> p.weirdness),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("offset").xmap(Climate::quantizeCoord, Climate::unquantizeCoord).forGetter(p -> p.offset)
+            )
+            .apply(i, Climate.ParameterPoint::new)
       );
 
       public long fitness(final Climate.TargetPoint target) {
@@ -240,7 +240,7 @@ public class Climate {
    protected static final class RTree<T> {
       private static final int CHILDREN_PER_NODE = 19;
       private final Climate.RTree.Node<T> root;
-      private final ThreadLocal<Climate.RTree.Leaf<T>> lastResult = new ThreadLocal<>();
+      private final ThreadLocal<Climate.RTree.@Nullable Leaf<T>> lastResult = new ThreadLocal<>();
 
       private RTree(final Climate.RTree.Node<T> root) {
          this.root = root;
@@ -253,25 +253,29 @@ public class Climate {
       public static <T> Climate.RTree<T> create(final List<Pair<Climate.ParameterPoint, T>> values, final int childrenPerNode) {
          if (values.isEmpty()) {
             throw new IllegalArgumentException("Need at least one value to build the search tree.");
-         } else {
-            int dimensions = ((Climate.ParameterPoint)values.get(0).getFirst()).parameterSpace().size();
-            if (dimensions != 7) {
-               throw new IllegalStateException("Expecting parameter space to be 7, got " + dimensions);
-            } else {
-               List<Climate.RTree.Leaf<T>> leaves = values.stream()
-                  .map(p -> new Climate.RTree.Leaf<>((Climate.ParameterPoint)p.getFirst(), p.getSecond()))
-                  .collect(Collectors.toCollection(ArrayList::new));
-               return new Climate.RTree<>(build(dimensions, leaves, childrenPerNode));
-            }
          }
+
+         int dimensions = ((Climate.ParameterPoint)values.get(0).getFirst()).parameterSpace().size();
+         if (dimensions != 7) {
+            throw new IllegalStateException("Expecting parameter space to be 7, got " + dimensions);
+         }
+
+         List<Climate.RTree.Leaf<T>> leaves = values.stream()
+            .map(p -> new Climate.RTree.Leaf<>((Climate.ParameterPoint)p.getFirst(), p.getSecond()))
+            .collect(Collectors.toCollection(ArrayList::new));
+         return new Climate.RTree<>(build(dimensions, leaves, childrenPerNode));
       }
 
       private static <T> Climate.RTree.Node<T> build(final int dimensions, final List<? extends Climate.RTree.Node<T>> children, final int childrenPerNode) {
          if (children.isEmpty()) {
             throw new IllegalStateException("Need at least one child to build a node");
-         } else if (children.size() == 1) {
+         }
+
+         if (children.size() == 1) {
             return (Climate.RTree.Node<T>)children.get(0);
-         } else if (children.size() <= childrenPerNode) {
+         }
+
+         if (children.size() <= childrenPerNode) {
             children.sort(Comparator.comparingLong(leaf -> {
                long totalMagnitude = 0L;
 
@@ -283,32 +287,32 @@ public class Climate {
                return totalMagnitude;
             }));
             return new Climate.RTree.SubTree<>(children);
-         } else {
-            long minCost = Long.MAX_VALUE;
-            int minDimension = -1;
-            List<Climate.RTree.SubTree<T>> minBuckets = null;
+         }
 
-            for (int d = 0; d < dimensions; d++) {
-               sort(children, dimensions, d, false);
-               List<Climate.RTree.SubTree<T>> buckets = bucketize(children, childrenPerNode);
-               long totalCost = 0L;
+         long minCost = Long.MAX_VALUE;
+         int minDimension = -1;
+         List<Climate.RTree.SubTree<T>> minBuckets = null;
 
-               for (Climate.RTree.SubTree<T> bucket : buckets) {
-                  totalCost += cost(bucket.parameterSpace);
-               }
+         for (int d = 0; d < dimensions; d++) {
+            sort(children, dimensions, d, false);
+            List<Climate.RTree.SubTree<T>> buckets = bucketize(children, childrenPerNode);
+            long totalCost = 0L;
 
-               if (minCost > totalCost) {
-                  minCost = totalCost;
-                  minDimension = d;
-                  minBuckets = buckets;
-               }
+            for (Climate.RTree.SubTree<T> bucket : buckets) {
+               totalCost += cost(bucket.parameterSpace);
             }
 
-            sort(minBuckets, dimensions, minDimension, true);
-            return new Climate.RTree.SubTree<>(
-               minBuckets.stream().map(b -> build(dimensions, Arrays.asList(b.children), childrenPerNode)).collect(Collectors.toList())
-            );
+            if (minCost > totalCost) {
+               minCost = totalCost;
+               minDimension = d;
+               minBuckets = buckets;
+            }
          }
+
+         sort(minBuckets, dimensions, minDimension, true);
+         return new Climate.RTree.SubTree<>(
+            minBuckets.stream().map(b -> build(dimensions, Arrays.asList(b.children), childrenPerNode)).collect(Collectors.toList())
+         );
       }
 
       private static <T> void sort(final List<? extends Climate.RTree.Node<T>> children, final int dimensions, final int dimension, final boolean absolute) {
@@ -332,9 +336,7 @@ public class Climate {
       private static <T> List<Climate.RTree.SubTree<T>> bucketize(final List<? extends Climate.RTree.Node<T>> nodes, final int childrenPerNode) {
          List<Climate.RTree.SubTree<T>> buckets = Lists.newArrayList();
          List<Climate.RTree.Node<T>> children = Lists.newArrayList();
-         int expectedChildrenCount = (int)Math.pow(
-            (double)childrenPerNode, Math.floor(Math.log((double)nodes.size() - 0.01) / Math.log((double)childrenPerNode))
-         );
+         int expectedChildrenCount = (int)Math.pow(childrenPerNode, Math.floor(Math.log(nodes.size() - 0.01) / Math.log(childrenPerNode)));
 
          for (Climate.RTree.Node<T> child : nodes) {
             children.add(child);
@@ -364,22 +366,22 @@ public class Climate {
       private static <T> List<Climate.Parameter> buildParameterSpace(final List<? extends Climate.RTree.Node<T>> children) {
          if (children.isEmpty()) {
             throw new IllegalArgumentException("SubTree needs at least one child");
-         } else {
-            int dimensions = 7;
-            List<Climate.Parameter> bounds = Lists.newArrayList();
-
-            for (int d = 0; d < 7; d++) {
-               bounds.add(null);
-            }
-
-            for (Climate.RTree.Node<T> child : children) {
-               for (int d = 0; d < 7; d++) {
-                  bounds.set(d, child.parameterSpace[d].span(bounds.get(d)));
-               }
-            }
-
-            return bounds;
          }
+
+         int dimensions = 7;
+         List<Climate.Parameter> bounds = Lists.newArrayList();
+
+         for (int d = 0; d < 7; d++) {
+            bounds.add(null);
+         }
+
+         for (Climate.RTree.Node<T> child : children) {
+            for (int d = 0; d < 7; d++) {
+               bounds.set(d, child.parameterSpace[d].span(bounds.get(d)));
+            }
+         }
+
+         return bounds;
       }
 
       public T search(final Climate.TargetPoint target, final Climate.DistanceMetric<T> distanceMetric) {
@@ -399,7 +401,7 @@ public class Climate {
 
          @Override
          protected Climate.RTree.Leaf<T> search(
-            final long[] target, @Nullable final Climate.RTree.Leaf<T> candidate, final Climate.DistanceMetric<T> distanceMetric
+            final long[] target, final Climate.RTree.@Nullable Leaf<T> candidate, final Climate.DistanceMetric<T> distanceMetric
          ) {
             return this;
          }
@@ -414,7 +416,7 @@ public class Climate {
          }
 
          protected abstract Climate.RTree.Leaf<T> search(
-            final long[] target, @Nullable final Climate.RTree.Leaf<T> candidate, final Climate.DistanceMetric<T> distanceMetric
+            final long[] target, final Climate.RTree.@Nullable Leaf<T> candidate, final Climate.DistanceMetric<T> distanceMetric
          );
 
          protected long distance(final long[] target) {
@@ -429,7 +431,7 @@ public class Climate {
 
          @Override
          public String toString() {
-            return Arrays.toString((Object[])this.parameterSpace);
+            return Arrays.toString(this.parameterSpace);
          }
       }
 
@@ -447,7 +449,7 @@ public class Climate {
 
          @Override
          protected Climate.RTree.Leaf<T> search(
-            final long[] target, @Nullable final Climate.RTree.Leaf<T> candidate, final Climate.DistanceMetric<T> distanceMetric
+            final long[] target, final Climate.RTree.@Nullable Leaf<T> candidate, final Climate.DistanceMetric<T> distanceMetric
          ) {
             long minDistance = candidate == null ? Long.MAX_VALUE : distanceMetric.distance(candidate, target);
             Climate.RTree.Leaf<T> closestLeaf = candidate;
@@ -469,7 +471,7 @@ public class Climate {
       }
    }
 
-   public static record Sampler(
+   public record Sampler(
       DensitySampler.Bound temperature,
       DensitySampler.Bound humidity,
       DensitySampler.Bound continentalness,
@@ -492,7 +494,7 @@ public class Climate {
       }
    }
 
-   public static record TargetPoint(long temperature, long humidity, long continentalness, long erosion, long depth, long weirdness) {
+   public record TargetPoint(long temperature, long humidity, long continentalness, long erosion, long depth, long weirdness) {
       @VisibleForTesting
       long[] toParameterArray() {
          return new long[]{this.temperature, this.humidity, this.continentalness, this.erosion, this.depth, this.weirdness, 0L};

@@ -104,32 +104,32 @@ public class LevelDatToSavedDataFileFix extends FileFix {
       OptionalDynamic<?> tagOpt = content.get(key);
       if (tagOpt.result().isEmpty()) {
          return content;
-      } else {
-         Dynamic<?> tag = (Dynamic<?>)tagOpt.result().get();
-         targetFile.getOnlyFile().write(tag);
-         return content.remove(key);
       }
+
+      Dynamic<?> tag = (Dynamic<?>)tagOpt.result().get();
+      targetFile.getOnlyFile().write(tag);
+      return content.remove(key);
    }
 
    private Dynamic<?> extractPlayerDataToFile(final FileAccess<PlayerData> fallbackFile, final Dynamic<?> content) {
       OptionalDynamic<?> playerTagOpt = content.get("Player");
       if (playerTagOpt.result().isEmpty()) {
          return content;
-      } else {
-         Dynamic<?> playerTag = (Dynamic<?>)playerTagOpt.result().get();
-         int dataVersion = NbtUtils.getDataVersion(playerTag);
-         Dynamic<?> playerTagFixed = DataFixTypes.PLAYER.update(DataFixers.getDataFixer(), playerTag, dataVersion, this.getVersion());
-         Optional<? extends Dynamic<?>> playerUuid = playerTagFixed.get("UUID").result();
-         Dynamic<?> usedUuid;
-         if (playerUuid.isPresent()) {
-            usedUuid = (Dynamic<?>)playerUuid.get();
-         } else {
-            fallbackFile.getOnlyFile().write(playerTagFixed);
-            usedUuid = content.createIntList(Arrays.stream(UUIDUtil.uuidToIntArray(FALLBACK_SINGLE_PLAYER_UUID)));
-         }
-
-         return content.remove("Player").set("singleplayer_uuid", usedUuid);
       }
+
+      Dynamic<?> playerTag = (Dynamic<?>)playerTagOpt.result().get();
+      int dataVersion = NbtUtils.getDataVersion(playerTag);
+      Dynamic<?> playerTagFixed = DataFixTypes.PLAYER.update(DataFixers.getDataFixer(), playerTag, dataVersion, this.getVersion());
+      Optional<? extends Dynamic<?>> playerUuid = playerTagFixed.get("UUID").result();
+      Dynamic<?> usedUuid;
+      if (playerUuid.isPresent()) {
+         usedUuid = (Dynamic<?>)playerUuid.get();
+      } else {
+         fallbackFile.getOnlyFile().write(playerTagFixed);
+         usedUuid = content.createIntList(Arrays.stream(UUIDUtil.uuidToIntArray(FALLBACK_SINGLE_PLAYER_UUID)));
+      }
+
+      return content.remove("Player").set("singleplayer_uuid", usedUuid);
    }
 
    private static Dynamic<?> extractWorldBorderToFiles(
@@ -158,13 +158,13 @@ public class LevelDatToSavedDataFileFix extends FileFix {
       OptionalDynamic<?> worldGenSettingsTagOpt = content.get("world_gen_settings");
       if (worldGenSettingsTagOpt.result().isEmpty()) {
          return content;
-      } else {
-         Dynamic<?> worldGenSettingsTag = (Dynamic<?>)worldGenSettingsTagOpt.result().get();
-         int dataVersion = NbtUtils.getDataVersion(content);
-         Dynamic<?> worldGenSettingsTagFixed = DataFixTypes.WORLD_GEN_SETTINGS
-            .update(DataFixers.getDataFixer(), worldGenSettingsTag, dataVersion, this.getVersion());
-         targetFile.getOnlyFile().write(worldGenSettingsTagFixed);
-         return content.remove("world_gen_settings");
       }
+
+      Dynamic<?> worldGenSettingsTag = (Dynamic<?>)worldGenSettingsTagOpt.result().get();
+      int dataVersion = NbtUtils.getDataVersion(content);
+      Dynamic<?> worldGenSettingsTagFixed = DataFixTypes.WORLD_GEN_SETTINGS
+         .update(DataFixers.getDataFixer(), worldGenSettingsTag, dataVersion, this.getVersion());
+      targetFile.getOnlyFile().write(worldGenSettingsTagFixed);
+      return content.remove("world_gen_settings");
    }
 }

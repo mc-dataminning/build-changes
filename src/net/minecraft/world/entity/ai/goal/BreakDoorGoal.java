@@ -69,7 +69,7 @@ public class BreakDoorGoal extends DoorInteractGoal {
       }
 
       this.breakTime++;
-      int progress = (int)((float)this.breakTime / (float)this.getDoorBreakTime() * 10.0F);
+      int progress = (int)((float)this.breakTime / this.getDoorBreakTime() * 10.0F);
       if (progress != this.lastBreakProgress) {
          this.mob.level().destroyBlockProgress(this.mob.getId(), this.doorPos, progress);
          this.lastBreakProgress = progress;

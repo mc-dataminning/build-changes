@@ -12,10 +12,8 @@ import org.jspecify.annotations.Nullable;
 
 public class DragonTakeoffPhase extends AbstractDragonPhaseInstance {
    private boolean firstTick;
-   @Nullable
-   private Path currentPath;
-   @Nullable
-   private Vec3 targetLocation;
+   private @Nullable Path currentPath;
+   private @Nullable Vec3 targetLocation;
 
    public DragonTakeoffPhase(final EnderDragon dragon) {
       super(dragon);
@@ -69,17 +67,16 @@ public class DragonTakeoffPhase extends AbstractDragonPhaseInstance {
 
             double yTarget;
             do {
-               yTarget = (double)((float)current.getY() + this.dragon.getRandom().nextFloat() * 20.0F);
-            } while (yTarget < (double)current.getY());
+               yTarget = current.getY() + this.dragon.getRandom().nextFloat() * 20.0F;
+            } while (yTarget < current.getY());
 
-            this.targetLocation = new Vec3((double)current.getX(), yTarget, (double)current.getZ());
+            this.targetLocation = new Vec3(current.getX(), yTarget, current.getZ());
          }
       }
    }
 
-   @Nullable
    @Override
-   public Vec3 getFlyTargetLocation() {
+   public @Nullable Vec3 getFlyTargetLocation() {
       return this.targetLocation;
    }
 

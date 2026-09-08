@@ -14,10 +14,10 @@ import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 public record RandomPoolAlias(ResourceKey<StructureTemplatePool> alias, WeightedList<ResourceKey<StructureTemplatePool>> targets) implements PoolAliasBinding {
    public static final MapCodec<RandomPoolAlias> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               ResourceKey.codec(Registries.TEMPLATE_POOL).fieldOf("alias").forGetter(RandomPoolAlias::alias),
-               WeightedList.nonEmptyCodec(ResourceKey.codec(Registries.TEMPLATE_POOL)).fieldOf("targets").forGetter(RandomPoolAlias::targets)
-            )
-            .apply(i, RandomPoolAlias::new)
+            ResourceKey.codec(Registries.TEMPLATE_POOL).fieldOf("alias").forGetter(RandomPoolAlias::alias),
+            WeightedList.nonEmptyCodec(ResourceKey.codec(Registries.TEMPLATE_POOL)).fieldOf("targets").forGetter(RandomPoolAlias::targets)
+         )
+         .apply(i, RandomPoolAlias::new)
    );
 
    @Override

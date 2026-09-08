@@ -66,8 +66,7 @@ public class FishingHook extends Projectile {
    private float fishAngle;
    private boolean openWater = true;
    private static final float GRAVITY = 0.03F;
-   @Nullable
-   private Entity hookedIn;
+   private @Nullable Entity hookedIn;
    private FishingHook.FishHookState currentState = FishingHook.FishHookState.FLYING;
    private final int luck;
    private final int lureSpeed;
@@ -87,15 +86,15 @@ public class FishingHook extends Projectile {
       this.setOwner(player);
       float xRot1 = player.getXRot();
       float yRot1 = player.getYRot();
-      float yCos = Mth.cos((double)(-yRot1 * (float) (Math.PI / 180.0) - (float) Math.PI));
-      float ySin = Mth.sin((double)(-yRot1 * (float) (Math.PI / 180.0) - (float) Math.PI));
-      float xCos = -Mth.cos((double)(-xRot1 * (float) (Math.PI / 180.0)));
-      float xSin = Mth.sin((double)(-xRot1 * (float) (Math.PI / 180.0)));
-      double x1 = player.getX() - (double)ySin * 0.3;
+      float yCos = Mth.cos(-yRot1 * (float) (Math.PI / 180.0) - (float) Math.PI);
+      float ySin = Mth.sin(-yRot1 * (float) (Math.PI / 180.0) - (float) Math.PI);
+      float xCos = -Mth.cos(-xRot1 * (float) (Math.PI / 180.0));
+      float xSin = Mth.sin(-xRot1 * (float) (Math.PI / 180.0));
+      double x1 = player.getX() - ySin * 0.3;
       double y1 = player.getEyeY();
-      double z1 = player.getZ() - (double)yCos * 0.3;
+      double z1 = player.getZ() - yCos * 0.3;
       this.snapTo(x1, y1, z1, yRot1, xRot1);
-      Vec3 newMovement = new Vec3((double)(-ySin), (double)Mth.clamp(-(xSin / xCos), -5.0F, 5.0F), (double)(-yCos));
+      Vec3 newMovement = new Vec3(-ySin, Mth.clamp(-(xSin / xCos), -5.0F, 5.0F), -yCos);
       double dist = newMovement.length();
       newMovement = newMovement.multiply(
          0.6 / dist + this.random.triangle(0.5, 0.0103365),
@@ -135,7 +134,7 @@ public class FishingHook extends Projectile {
       if (DATA_BITING.equals(accessor)) {
          this.biting = this.getEntityData().get(DATA_BITING);
          if (this.biting) {
-            this.setDeltaMovement(this.getDeltaMovement().x, (double)(-0.4F * Mth.nextFloat(this.syncronizedRandom, 0.6F, 1.0F)), this.getDeltaMovement().z);
+            this.setDeltaMovement(this.getDeltaMovement().x, -0.4F * Mth.nextFloat(this.syncronizedRandom, 0.6F, 1.0F), this.getDeltaMovement().z);
          }
       }
 
@@ -204,12 +203,12 @@ public class FishingHook extends Projectile {
 
             if (this.currentState == FishingHook.FishHookState.BOBBING) {
                Vec3 movement = this.getDeltaMovement();
-               double force = this.getY() + movement.y - (double)blockPos.getY() - (double)liquidHeight;
+               double force = this.getY() + movement.y - blockPos.getY() - liquidHeight;
                if (Math.abs(force) < 0.01) {
                   force += Math.signum(force) * 0.1;
                }
 
-               this.setDeltaMovement(movement.x * 0.9, movement.y - force * (double)this.random.nextFloat() * 0.2, movement.z * 0.9);
+               this.setDeltaMovement(movement.x * 0.9, movement.y - force * this.random.nextFloat() * 0.2, movement.z * 0.9);
                if (this.nibble <= 0 && this.timeUntilHooked <= 0) {
                   this.openWater = true;
                } else {
@@ -220,7 +219,7 @@ public class FishingHook extends Projectile {
                   this.outOfWaterTime = Math.max(0, this.outOfWaterTime - 1);
                   if (this.biting) {
                      this.setDeltaMovement(
-                        this.getDeltaMovement().add(0.0, -0.1 * (double)this.syncronizedRandom.nextFloat() * (double)this.syncronizedRandom.nextFloat(), 0.0)
+                        this.getDeltaMovement().add(0.0, -0.1 * this.syncronizedRandom.nextFloat() * this.syncronizedRandom.nextFloat(), 0.0)
                      );
                   }
 
@@ -289,7 +288,7 @@ public class FishingHook extends Projectile {
       this.setDeltaMovement(this.getDeltaMovement().normalize().scale(hitResult.distanceTo(this)));
    }
 
-   private void setHookedEntity(@Nullable final Entity hookedIn) {
+   private void setHookedEntity(final @Nullable Entity hookedIn) {
       this.hookedIn = hookedIn;
       this.getEntityData().set(DATA_HOOKED_ENTITY, hookedIn == null ? 0 : hookedIn.getId() + 1);
    }
@@ -318,46 +317,30 @@ public class FishingHook extends Projectile {
          if (this.timeUntilHooked > 0) {
             this.fishAngle = this.fishAngle + (float)this.random.triangle(0.0, 9.188);
             float angle = this.fishAngle * (float) (Math.PI / 180.0);
-            float angleSin = Mth.sin((double)angle);
-            float angleCos = Mth.cos((double)angle);
-            double fishX = this.getX() + (double)(angleSin * (float)this.timeUntilHooked * 0.1F);
-            double fishY = (double)((float)Mth.floor(this.getY()) + 1.0F);
-            double fishZ = this.getZ() + (double)(angleCos * (float)this.timeUntilHooked * 0.1F);
+            float angleSin = Mth.sin(angle);
+            float angleCos = Mth.cos(angle);
+            double fishX = this.getX() + angleSin * this.timeUntilHooked * 0.1F;
+            double fishY = Mth.floor(this.getY()) + 1.0F;
+            double fishZ = this.getZ() + angleCos * this.timeUntilHooked * 0.1F;
             BlockState splashBlockState = serverLevel.getBlockState(BlockPos.containing(fishX, fishY - 1.0, fishZ));
             if (splashBlockState.is(Blocks.WATER)) {
                if (this.random.nextFloat() < 0.15F) {
-                  serverLevel.sendParticles(ParticleTypes.BUBBLE, fishX, fishY - 0.1F, fishZ, 1, (double)angleSin, 0.1, (double)angleCos, 0.0);
+                  serverLevel.sendParticles(ParticleTypes.BUBBLE, fishX, fishY - 0.1F, fishZ, 1, angleSin, 0.1, angleCos, 0.0);
                }
 
                float particleXMovement = angleSin * 0.04F;
                float particleZMovement = angleCos * 0.04F;
-               serverLevel.sendParticles(ParticleTypes.FISHING, fishX, fishY, fishZ, 0, (double)particleZMovement, 0.01, (double)(-particleXMovement), 1.0);
-               serverLevel.sendParticles(ParticleTypes.FISHING, fishX, fishY, fishZ, 0, (double)(-particleZMovement), 0.01, (double)particleXMovement, 1.0);
+               serverLevel.sendParticles(ParticleTypes.FISHING, fishX, fishY, fishZ, 0, particleZMovement, 0.01, -particleXMovement, 1.0);
+               serverLevel.sendParticles(ParticleTypes.FISHING, fishX, fishY, fishZ, 0, -particleZMovement, 0.01, particleXMovement, 1.0);
             }
          } else {
             this.playSound(SoundEvents.FISHING_BOBBER_SPLASH, 0.25F, 1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.4F);
             double y = this.getY() + 0.5;
             serverLevel.sendParticles(
-               ParticleTypes.BUBBLE,
-               this.getX(),
-               y,
-               this.getZ(),
-               (int)(1.0F + this.getBbWidth() * 20.0F),
-               (double)this.getBbWidth(),
-               0.0,
-               (double)this.getBbWidth(),
-               0.2F
+               ParticleTypes.BUBBLE, this.getX(), y, this.getZ(), (int)(1.0F + this.getBbWidth() * 20.0F), this.getBbWidth(), 0.0, this.getBbWidth(), 0.2F
             );
             serverLevel.sendParticles(
-               ParticleTypes.FISHING,
-               this.getX(),
-               y,
-               this.getZ(),
-               (int)(1.0F + this.getBbWidth() * 20.0F),
-               (double)this.getBbWidth(),
-               0.0,
-               (double)this.getBbWidth(),
-               0.2F
+               ParticleTypes.FISHING, this.getX(), y, this.getZ(), (int)(1.0F + this.getBbWidth() * 20.0F), this.getBbWidth(), 0.0, this.getBbWidth(), 0.2F
             );
             this.nibble = Mth.nextInt(this.random, 20, 40);
             this.getEntityData().set(DATA_BITING, true);
@@ -366,19 +349,19 @@ public class FishingHook extends Projectile {
          this.timeUntilLured -= fishingSpeed;
          float teaseChance = 0.15F;
          if (this.timeUntilLured < 20) {
-            teaseChance += (float)(20 - this.timeUntilLured) * 0.05F;
+            teaseChance += (20 - this.timeUntilLured) * 0.05F;
          } else if (this.timeUntilLured < 40) {
-            teaseChance += (float)(40 - this.timeUntilLured) * 0.02F;
+            teaseChance += (40 - this.timeUntilLured) * 0.02F;
          } else if (this.timeUntilLured < 60) {
-            teaseChance += (float)(60 - this.timeUntilLured) * 0.01F;
+            teaseChance += (60 - this.timeUntilLured) * 0.01F;
          }
 
          if (this.random.nextFloat() < teaseChance) {
             float angle = Mth.nextFloat(this.random, 0.0F, 360.0F) * (float) (Math.PI / 180.0);
             float dist = Mth.nextFloat(this.random, 25.0F, 60.0F);
-            double fishX = this.getX() + (double)(Mth.sin((double)angle) * dist) * 0.1;
-            double fishY = (double)((float)Mth.floor(this.getY()) + 1.0F);
-            double fishZ = this.getZ() + (double)(Mth.cos((double)angle) * dist) * 0.1;
+            double fishX = this.getX() + Mth.sin(angle) * dist * 0.1;
+            double fishY = Mth.floor(this.getY()) + 1.0F;
+            double fishZ = this.getZ() + Mth.cos(angle) * dist * 0.1;
             BlockState splashBlockState = serverLevel.getBlockState(BlockPos.containing(fishX, fishY - 1.0, fishZ));
             if (splashBlockState.is(Blocks.WATER)) {
                serverLevel.sendParticles(ParticleTypes.SPLASH, fishX, fishY, fishZ, 2 + this.random.nextInt(2), 0.1F, 0.0, 0.1F, 0.0);
@@ -466,7 +449,7 @@ public class FishingHook extends Projectile {
                .withParameter(LootContextParams.ORIGIN, this.position())
                .withParameter(LootContextParams.TOOL, rod)
                .withParameter(LootContextParams.THIS_ENTITY, this)
-               .withLuck((float)this.luck + owner.getLuck())
+               .withLuck(this.luck + owner.getLuck())
                .create(LootContextParamSets.FISHING);
             LootTable lootTable = this.level().getServer().reloadableRegistries().getLootTable(BuiltInLootTables.FISHING);
             List<ItemStack> items = lootTable.getRandomItems(params);
@@ -501,7 +484,7 @@ public class FishingHook extends Projectile {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 31 && this.hookedIn != null) {
          this.pullEntity(this.hookedIn);
       }
@@ -539,25 +522,23 @@ public class FishingHook extends Projectile {
    }
 
    @Override
-   public void setOwner(@Nullable final Entity owner) {
+   public void setOwner(final @Nullable Entity owner) {
       super.setOwner(owner);
       this.updateOwnerInfo(this);
    }
 
-   private void updateOwnerInfo(@Nullable final FishingHook hook) {
+   private void updateOwnerInfo(final @Nullable FishingHook hook) {
       Player owner = this.getPlayerOwner();
       if (owner != null) {
          owner.fishing = hook;
       }
    }
 
-   @Nullable
-   public Player getPlayerOwner() {
+   public @Nullable Player getPlayerOwner() {
       return this.getOwner() instanceof Player player ? player : null;
    }
 
-   @Nullable
-   public Entity getHookedIn() {
+   public @Nullable Entity getHookedIn() {
       return this.hookedIn;
    }
 
@@ -582,13 +563,13 @@ public class FishingHook extends Projectile {
       }
    }
 
-   private static enum FishHookState {
+   private enum FishHookState {
       FLYING,
       HOOKED_IN_ENTITY,
       BOBBING;
    }
 
-   private static enum OpenWaterType {
+   private enum OpenWaterType {
       ABOVE_WATER,
       INSIDE_WATER,
       INVALID;

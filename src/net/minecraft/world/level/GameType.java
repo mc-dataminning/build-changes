@@ -37,7 +37,7 @@ public enum GameType implements StringRepresentable {
    private final Component shortName;
    private final Component longName;
 
-   private GameType(final int id, final String name) {
+   GameType(final int id, final String name) {
       this.id = id;
       this.name = name;
       this.shortName = Component.translatable("selectWorld.gameMode." + name);
@@ -106,8 +106,7 @@ public enum GameType implements StringRepresentable {
    }
 
    @Contract("_,!null->!null;_,null->_")
-   @Nullable
-   public static GameType byName(final String name, @Nullable final GameType defaultMode) {
+   public static @Nullable GameType byName(final String name, final @Nullable GameType defaultMode) {
       GameType result = CODEC.byName(name);
       return result != null ? result : defaultMode;
    }

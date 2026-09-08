@@ -130,10 +130,10 @@ public class PiglinBruteAi {
       Optional<LivingEntity> angryAt = BehaviorUtils.getLivingEntityFromUUIDMemory(body, MemoryModuleType.ANGRY_AT);
       if (angryAt.isPresent() && Sensor.isEntityAttackableIgnoringLineOfSight(level, body, angryAt.get())) {
          return angryAt;
-      } else {
-         Optional<? extends LivingEntity> player = body.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_ATTACKABLE_PLAYER);
-         return player.isPresent() ? player : body.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_NEMESIS);
       }
+
+      Optional<? extends LivingEntity> player = body.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_ATTACKABLE_PLAYER);
+      return player.isPresent() ? player : body.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_NEMESIS);
    }
 
    protected static void wasHurtBy(final ServerLevel level, final PiglinBrute body, final LivingEntity attacker) {
@@ -148,7 +148,7 @@ public class PiglinBruteAi {
    }
 
    protected static void maybePlayActivitySound(final PiglinBrute body) {
-      if ((double)body.level().getRandom().nextFloat() < 0.0125) {
+      if (body.level().getRandom().nextFloat() < 0.0125) {
          playActivitySound(body);
       }
    }

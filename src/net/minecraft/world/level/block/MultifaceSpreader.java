@@ -93,7 +93,9 @@ public class MultifaceSpreader {
    ) {
       if (spreadDirection.getAxis() == startingFace.getAxis()) {
          return Optional.empty();
-      } else if (this.config.isOtherBlockValidAsSource(state) || this.config.hasFace(state, startingFace) && !this.config.hasFace(state, spreadDirection)) {
+      }
+
+      if (this.config.isOtherBlockValidAsSource(state) || this.config.hasFace(state, startingFace) && !this.config.hasFace(state, spreadDirection)) {
          for (MultifaceSpreader.SpreadType type : this.config.getSpreadTypes()) {
             MultifaceSpreader.SpreadPos spreadPos = type.getSpreadPos(pos, spreadDirection, startingFace);
             if (canSpreadInto.test(level, pos, spreadPos)) {
@@ -119,9 +121,8 @@ public class MultifaceSpreader {
          this.block = block;
       }
 
-      @Nullable
       @Override
-      public BlockState getStateForPlacement(
+      public @Nullable BlockState getStateForPlacement(
          final BlockState oldState, final BlockGetter level, final BlockPos placementPos, final Direction placementDirection
       ) {
          return this.block.getStateForPlacement(oldState, level, placementPos, placementDirection);
@@ -142,8 +143,9 @@ public class MultifaceSpreader {
    }
 
    public interface SpreadConfig {
-      @Nullable
-      BlockState getStateForPlacement(final BlockState oldState, final BlockGetter level, final BlockPos placementPos, final Direction placementDirection);
+      @Nullable BlockState getStateForPlacement(
+         final BlockState oldState, final BlockGetter level, final BlockPos placementPos, final Direction placementDirection
+      );
 
       boolean canSpreadInto(final BlockGetter level, final BlockPos sourcePos, final MultifaceSpreader.SpreadPos spreadPos);
 
@@ -177,7 +179,7 @@ public class MultifaceSpreader {
       }
    }
 
-   public static record SpreadPos(BlockPos pos, Direction face) {
+   public record SpreadPos(BlockPos pos, Direction face) {
    }
 
    @FunctionalInterface
@@ -185,7 +187,7 @@ public class MultifaceSpreader {
       boolean test(final BlockGetter level, final BlockPos sourcePos, final MultifaceSpreader.SpreadPos spreadPos);
    }
 
-   public static enum SpreadType {
+   public enum SpreadType {
       SAME_POSITION {
          @Override
          public MultifaceSpreader.SpreadPos getSpreadPos(final BlockPos pos, final Direction spreadDirection, final Direction fromFace) {

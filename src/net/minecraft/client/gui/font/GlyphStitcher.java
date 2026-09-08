@@ -33,8 +33,7 @@ public class GlyphStitcher implements AutoCloseable {
       this.reset();
    }
 
-   @Nullable
-   public BakedSheetGlyph stitch(final GlyphInfo info, final GlyphBitmap glyphBitmap) {
+   public @Nullable BakedSheetGlyph stitch(final GlyphInfo info, final GlyphBitmap glyphBitmap) {
       for (FontTexture texture : this.textures) {
          BakedSheetGlyph glyph = texture.add(info, glyphBitmap);
          if (glyph != null) {
@@ -46,10 +45,10 @@ public class GlyphStitcher implements AutoCloseable {
       Identifier name = this.textureName(nextIndex);
       boolean isColored = glyphBitmap.isColored();
       GlyphRenderTypes renderTypes = isColored ? GlyphRenderTypes.createForColorTexture(name) : GlyphRenderTypes.createForGrayscaleTexture(name);
-      FontTexture texturex = new FontTexture(name::toString, renderTypes, isColored);
-      this.textures.add(texturex);
-      this.textureManager.register(name, texturex);
-      return texturex.add(info, glyphBitmap);
+      FontTexture texture = new FontTexture(name::toString, renderTypes, isColored);
+      this.textures.add(texture);
+      this.textureManager.register(name, texture);
+      return texture.add(info, glyphBitmap);
    }
 
    private Identifier textureName(final int index) {

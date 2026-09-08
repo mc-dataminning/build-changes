@@ -34,61 +34,59 @@ public class InteractWithDoor {
       MutableInt remainingCooldown = new MutableInt(0);
       return BehaviorBuilder.create(
          i -> i.group(i.present(MemoryModuleType.PATH), i.registered(MemoryModuleType.DOORS_TO_CLOSE), i.registered(MemoryModuleType.NEAREST_LIVING_ENTITIES))
-               .apply(
-                  i,
-                  (pathMemory, doorsMemory, nearestEntities) -> (level, body, timestamp) -> {
-                        Path path = i.get(pathMemory);
-                        Optional<Set<GlobalPos>> doors = i.tryGet(doorsMemory);
-                        if (!path.notStarted() && !path.isDone()) {
-                           if (Objects.equals(lastCheckedNode.get(), path.getNextNode())) {
-                              remainingCooldown.setValue(20);
-                           } else if (remainingCooldown.decrementAndGet() > 0) {
-                              return false;
-                           }
+            .apply(
+               i,
+               (pathMemory, doorsMemory, nearestEntities) -> (level, body, timestamp) -> {
+                  Path path = i.get(pathMemory);
+                  Optional<Set<GlobalPos>> doors = i.tryGet(doorsMemory);
+                  if (!path.notStarted() && !path.isDone()) {
+                     if (Objects.equals(lastCheckedNode.get(), path.getNextNode())) {
+                        remainingCooldown.setValue(20);
+                     } else if (remainingCooldown.decrementAndGet() > 0) {
+                        return false;
+                     }
 
-                           lastCheckedNode.setValue(path.getNextNode());
-                           Node fromNode = path.getPreviousNode();
-                           Node toNode = path.getNextNode();
-                           BlockPos fromPos = fromNode.asBlockPos();
-                           BlockState fromState = level.getBlockState(fromPos);
-                           if (fromState.is(BlockTags.MOB_INTERACTABLE_DOORS, s -> s.getBlock() instanceof DoorBlock)) {
-                              DoorBlock fromBlock = (DoorBlock)fromState.getBlock();
-                              if (!fromBlock.isOpen(fromState)) {
-                                 fromBlock.setOpen(body, level, fromState, fromPos, true);
-                              }
+                     lastCheckedNode.setValue(path.getNextNode());
+                     Node fromNode = path.getPreviousNode();
+                     Node toNode = path.getNextNode();
+                     BlockPos fromPos = fromNode.asBlockPos();
+                     BlockState fromState = level.getBlockState(fromPos);
+                     if (fromState.is(BlockTags.MOB_INTERACTABLE_DOORS, s -> s.getBlock() instanceof DoorBlock)) {
+                        DoorBlock fromBlock = (DoorBlock)fromState.getBlock();
+                        if (!fromBlock.isOpen(fromState)) {
+                           fromBlock.setOpen(body, level, fromState, fromPos, true);
+                        }
 
-                              doors = rememberDoorToClose(doorsMemory, doors, level, fromPos);
-                           }
+                        doors = rememberDoorToClose(doorsMemory, doors, level, fromPos);
+                     }
 
-                           BlockPos toPos = toNode.asBlockPos();
-                           BlockState toState = level.getBlockState(toPos);
-                           if (toState.is(BlockTags.MOB_INTERACTABLE_DOORS, s -> s.getBlock() instanceof DoorBlock)) {
-                              DoorBlock door = (DoorBlock)toState.getBlock();
-                              if (!door.isOpen(toState)) {
-                                 door.setOpen(body, level, toState, toPos, true);
-                                 doors = rememberDoorToClose(doorsMemory, doors, level, toPos);
-                              }
-                           }
-
-                           doors.ifPresent(
-                              doorSet -> closeDoorsThatIHaveOpenedOrPassedThrough(
-                                    level, body, fromNode, toNode, (Set<GlobalPos>)doorSet, i.tryGet(nearestEntities)
-                                 )
-                           );
-                           return true;
-                        } else {
-                           return false;
+                     BlockPos toPos = toNode.asBlockPos();
+                     BlockState toState = level.getBlockState(toPos);
+                     if (toState.is(BlockTags.MOB_INTERACTABLE_DOORS, s -> s.getBlock() instanceof DoorBlock)) {
+                        DoorBlock door = (DoorBlock)toState.getBlock();
+                        if (!door.isOpen(toState)) {
+                           door.setOpen(body, level, toState, toPos, true);
+                           doors = rememberDoorToClose(doorsMemory, doors, level, toPos);
                         }
                      }
-               )
+
+                     doors.ifPresent(
+                        doorSet -> closeDoorsThatIHaveOpenedOrPassedThrough(level, body, fromNode, toNode, (Set<GlobalPos>)doorSet, i.tryGet(nearestEntities))
+                     );
+                     return true;
+                  } else {
+                     return false;
+                  }
+               }
+            )
       );
    }
 
    public static void closeDoorsThatIHaveOpenedOrPassedThrough(
       final ServerLevel level,
       final LivingEntity body,
-      @Nullable final Node movingFromNode,
-      @Nullable final Node movingToNode,
+      final @Nullable Node movingFromNode,
+      final @Nullable Node movingToNode,
       final Set<GlobalPos> doors,
       final Optional<List<LivingEntity>> nearestEntities
    ) {
@@ -133,20 +131,20 @@ public class InteractWithDoor {
    private static boolean isMobComingThroughDoor(final Brain<?> otherBrain, final BlockPos doorPos) {
       if (!otherBrain.hasMemoryValue(MemoryModuleType.PATH)) {
          return false;
-      } else {
-         Path path = otherBrain.getMemory(MemoryModuleType.PATH).get();
-         if (path.isDone()) {
-            return false;
-         } else {
-            Node movingFromNode = path.getPreviousNode();
-            if (movingFromNode == null) {
-               return false;
-            } else {
-               Node movingToNode = path.getNextNode();
-               return doorPos.equals(movingFromNode.asBlockPos()) || doorPos.equals(movingToNode.asBlockPos());
-            }
-         }
       }
+
+      Path path = otherBrain.getMemory(MemoryModuleType.PATH).get();
+      if (path.isDone()) {
+         return false;
+      }
+
+      Node movingFromNode = path.getPreviousNode();
+      if (movingFromNode == null) {
+         return false;
+      }
+
+      Node movingToNode = path.getNextNode();
+      return doorPos.equals(movingFromNode.asBlockPos()) || doorPos.equals(movingToNode.asBlockPos());
    }
 
    private static boolean isDoorTooFarAway(final ServerLevel level, final LivingEntity body, final GlobalPos doorGlobalPos) {

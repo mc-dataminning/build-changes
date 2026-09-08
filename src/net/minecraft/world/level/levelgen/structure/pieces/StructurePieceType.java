@@ -95,7 +95,7 @@ public interface StructurePieceType {
       return setFullContextPieceId(type, id);
    }
 
-   public interface ContextlessType extends StructurePieceType {
+   interface ContextlessType extends StructurePieceType {
       StructurePiece load(final CompoundTag tag);
 
       @Override
@@ -104,7 +104,7 @@ public interface StructurePieceType {
       }
    }
 
-   public interface StructureTemplateType extends StructurePieceType {
+   interface StructureTemplateType extends StructurePieceType {
       StructurePiece load(final StructureTemplateManager structureTemplateManager, final CompoundTag tag);
 
       @Override

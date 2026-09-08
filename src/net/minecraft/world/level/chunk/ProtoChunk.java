@@ -42,12 +42,10 @@ import org.slf4j.Logger;
 
 public class ProtoChunk extends ChunkAccess {
    private static final Logger LOGGER = LogUtils.getLogger();
-   @Nullable
-   private volatile LevelLightEngine lightEngine;
+   private volatile @Nullable LevelLightEngine lightEngine;
    private volatile ChunkStatus status = ChunkStatus.EMPTY;
    private final List<CompoundTag> entities = Lists.newArrayList();
-   @Nullable
-   private BelowZeroRetrogen belowZeroRetrogen;
+   private @Nullable BelowZeroRetrogen belowZeroRetrogen;
    private final ProtoChunkTicks<Block> blockTicks;
    private final ProtoChunkTicks<Fluid> fluidTicks;
 
@@ -56,7 +54,7 @@ public class ProtoChunk extends ChunkAccess {
       final UpgradeData upgradeData,
       final LevelHeightAccessor levelHeightAccessor,
       final PalettedContainerFactory containerFactory,
-      @Nullable final BlendingData blendingData
+      final @Nullable BlendingData blendingData
    ) {
       this(chunkPos, upgradeData, null, new ProtoChunkTicks<>(), new ProtoChunkTicks<>(), levelHeightAccessor, containerFactory, blendingData);
    }
@@ -64,12 +62,12 @@ public class ProtoChunk extends ChunkAccess {
    public ProtoChunk(
       final ChunkPos chunkPos,
       final UpgradeData upgradeData,
-      @Nullable final LevelChunkSection[] sections,
+      final LevelChunkSection @Nullable [] sections,
       final ProtoChunkTicks<Block> blockTicks,
       final ProtoChunkTicks<Fluid> fluidTicks,
       final LevelHeightAccessor levelHeightAccessor,
       final PalettedContainerFactory containerFactory,
-      @Nullable final BlendingData blendingData
+      final @Nullable BlendingData blendingData
    ) {
       super(chunkPos, upgradeData, levelHeightAccessor, containerFactory, 0L, sections, blendingData);
       this.blockTicks = blockTicks;
@@ -96,10 +94,10 @@ public class ProtoChunk extends ChunkAccess {
       int y = pos.getY();
       if (this.isOutsideBuildHeight(y)) {
          return Blocks.VOID_AIR.defaultBlockState();
-      } else {
-         LevelChunkSection section = this.getSection(this.getSectionIndex(y));
-         return section.hasOnlyAir() ? Blocks.AIR.defaultBlockState() : section.getBlockState(pos.getX() & 15, y & 15, pos.getZ() & 15);
       }
+
+      LevelChunkSection section = this.getSection(this.getSectionIndex(y));
+      return section.hasOnlyAir() ? Blocks.AIR.defaultBlockState() : section.getBlockState(pos.getX() & 15, y & 15, pos.getZ() & 15);
    }
 
    @Override
@@ -107,66 +105,65 @@ public class ProtoChunk extends ChunkAccess {
       int y = pos.getY();
       if (this.isOutsideBuildHeight(y)) {
          return Fluids.EMPTY.defaultFluidState();
-      } else {
-         LevelChunkSection section = this.getSection(this.getSectionIndex(y));
-         return section.hasOnlyAir() ? Fluids.EMPTY.defaultFluidState() : section.getFluidState(pos.getX() & 15, y & 15, pos.getZ() & 15);
       }
+
+      LevelChunkSection section = this.getSection(this.getSectionIndex(y));
+      return section.hasOnlyAir() ? Fluids.EMPTY.defaultFluidState() : section.getFluidState(pos.getX() & 15, y & 15, pos.getZ() & 15);
    }
 
-   @Nullable
    @Override
-   public BlockState setBlockState(final BlockPos pos, final BlockState state, @Block.UpdateFlags final int flags) {
+   public @Nullable BlockState setBlockState(final BlockPos pos, final BlockState state, final @Block.UpdateFlags int flags) {
       int x = pos.getX();
       int y = pos.getY();
       int z = pos.getZ();
       if (this.isOutsideBuildHeight(y)) {
          return Blocks.VOID_AIR.defaultBlockState();
-      } else {
-         int sectionIndex = this.getSectionIndex(y);
-         LevelChunkSection section = this.getSection(sectionIndex);
-         boolean wasEmpty = section.hasOnlyAir();
-         if (wasEmpty && state.is(Blocks.AIR)) {
-            return state;
-         } else {
-            int localX = SectionPos.sectionRelative(x);
-            int localY = SectionPos.sectionRelative(y);
-            int localZ = SectionPos.sectionRelative(z);
-            BlockState oldState = section.setBlockState(localX, localY, localZ, state);
-            if (this.status.isOrAfter(ChunkStatus.INITIALIZE_LIGHT)) {
-               boolean isEmpty = section.hasOnlyAir();
-               if (isEmpty != wasEmpty) {
-                  this.lightEngine.updateSectionStatus(pos, isEmpty);
-               }
+      }
 
-               if (LightEngine.hasDifferentLightProperties(oldState, state)) {
-                  this.skyLightSources.update(this, localX, y, localZ);
-                  this.lightEngine.checkBlock(pos);
-               }
-            }
+      int sectionIndex = this.getSectionIndex(y);
+      LevelChunkSection section = this.getSection(sectionIndex);
+      boolean wasEmpty = section.hasOnlyAir();
+      if (wasEmpty && state.is(Blocks.AIR)) {
+         return state;
+      }
 
-            EnumSet<Heightmap.Types> heightmapsAfter = this.getPersistedStatus().heightmapsAfter();
-            EnumSet<Heightmap.Types> toPrime = null;
+      int localX = SectionPos.sectionRelative(x);
+      int localY = SectionPos.sectionRelative(y);
+      int localZ = SectionPos.sectionRelative(z);
+      BlockState oldState = section.setBlockState(localX, localY, localZ, state);
+      if (this.status.isOrAfter(ChunkStatus.INITIALIZE_LIGHT)) {
+         boolean isEmpty = section.hasOnlyAir();
+         if (isEmpty != wasEmpty) {
+            this.lightEngine.updateSectionStatus(pos, isEmpty);
+         }
 
-            for (Heightmap.Types type : heightmapsAfter) {
-               Heightmap heightmap = this.heightmaps.get(type);
-               if (heightmap == null) {
-                  if (toPrime == null) {
-                     toPrime = EnumSet.noneOf(Heightmap.Types.class);
-                  }
-
-                  toPrime.add(type);
-               } else {
-                  heightmap.update(localX, y, localZ, state);
-               }
-            }
-
-            if (toPrime != null) {
-               Heightmap.primeHeightmaps(this, toPrime);
-            }
-
-            return oldState;
+         if (LightEngine.hasDifferentLightProperties(oldState, state)) {
+            this.skyLightSources.update(this, localX, y, localZ);
+            this.lightEngine.checkBlock(pos);
          }
       }
+
+      EnumSet<Heightmap.Types> heightmapsAfter = this.getPersistedStatus().heightmapsAfter();
+      EnumSet<Heightmap.Types> toPrime = null;
+
+      for (Heightmap.Types type : heightmapsAfter) {
+         Heightmap heightmap = this.heightmaps.get(type);
+         if (heightmap == null) {
+            if (toPrime == null) {
+               toPrime = EnumSet.noneOf(Heightmap.Types.class);
+            }
+
+            toPrime.add(type);
+         } else {
+            heightmap.update(localX, y, localZ, state);
+         }
+      }
+
+      if (toPrime != null) {
+         Heightmap.primeHeightmaps(this, toPrime);
+      }
+
+      return oldState;
    }
 
    @Override
@@ -175,9 +172,8 @@ public class ProtoChunk extends ChunkAccess {
       this.blockEntities.put(blockEntity.getBlockPos(), blockEntity);
    }
 
-   @Nullable
    @Override
-   public BlockEntity getBlockEntity(final BlockPos pos) {
+   public @Nullable BlockEntity getBlockEntity(final BlockPos pos) {
       return this.blockEntities.get(pos);
    }
 
@@ -274,9 +270,8 @@ public class ProtoChunk extends ChunkAccess {
       return Collections.unmodifiableMap(this.pendingBlockEntities);
    }
 
-   @Nullable
    @Override
-   public CompoundTag getBlockEntityNbtForSaving(final BlockPos blockPos, final HolderLookup.Provider registryAccess) {
+   public @Nullable CompoundTag getBlockEntityNbtForSaving(final BlockPos blockPos, final HolderLookup.Provider registryAccess) {
       BlockEntity blockEntity = this.getBlockEntity(blockPos);
       return blockEntity != null ? blockEntity.saveWithFullMetadata(registryAccess) : this.pendingBlockEntities.get(blockPos);
    }
@@ -291,13 +286,12 @@ public class ProtoChunk extends ChunkAccess {
       this.lightEngine = lightEngine;
    }
 
-   public void setBelowZeroRetrogen(@Nullable final BelowZeroRetrogen belowZeroRetrogen) {
+   public void setBelowZeroRetrogen(final @Nullable BelowZeroRetrogen belowZeroRetrogen) {
       this.belowZeroRetrogen = belowZeroRetrogen;
    }
 
-   @Nullable
    @Override
-   public BelowZeroRetrogen getBelowZeroRetrogen() {
+   public @Nullable BelowZeroRetrogen getBelowZeroRetrogen() {
       return this.belowZeroRetrogen;
    }
 
@@ -315,6 +309,6 @@ public class ProtoChunk extends ChunkAccess {
 
    @Override
    public LevelHeightAccessor getHeightAccessorForGeneration() {
-      return (LevelHeightAccessor)(this.isUpgrading() ? BelowZeroRetrogen.UPGRADE_HEIGHT_ACCESSOR : this);
+      return this.isUpgrading() ? BelowZeroRetrogen.UPGRADE_HEIGHT_ACCESSOR : this;
    }
 }

@@ -25,15 +25,13 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.InfestedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gamerules.GameRules;
 import org.jspecify.annotations.Nullable;
 
 public class Silverfish extends Monster {
-   @Nullable
-   private Silverfish.SilverfishWakeUpFriendsGoal friendsGoal;
+   private Silverfish.@Nullable SilverfishWakeUpFriendsGoal friendsGoal;
 
    public Silverfish(final EntityType<? extends Silverfish> type, final Level level) {
       super(type, level);
@@ -84,13 +82,13 @@ public class Silverfish extends Monster {
    public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
       if (this.isInvulnerableTo(level, source)) {
          return false;
-      } else {
-         if ((source.getEntity() != null || source.is(DamageTypeTags.ALWAYS_TRIGGERS_SILVERFISH)) && this.friendsGoal != null) {
-            this.friendsGoal.notifyHurt();
-         }
-
-         return super.hurtServer(level, source, damage);
       }
+
+      if ((source.getEntity() != null || source.is(DamageTypeTags.ALWAYS_TRIGGERS_SILVERFISH)) && this.friendsGoal != null) {
+         this.friendsGoal.notifyHurt();
+      }
+
+      return super.hurtServer(level, source, damage);
    }
 
    @Override
@@ -115,17 +113,18 @@ public class Silverfish extends Monster {
    ) {
       if (!checkAnyLightMonsterSpawnRules(type, level, spawnReason, pos, random)) {
          return false;
-      } else if (EntitySpawnReason.isSpawner(spawnReason)) {
-         return true;
-      } else {
-         Player nearestPlayer = level.getNearestPlayer((double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, 5.0, true);
-         return nearestPlayer == null;
       }
+
+      if (EntitySpawnReason.isSpawner(spawnReason)) {
+         return true;
+      }
+
+      Player nearestPlayer = level.getNearestPlayer(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 5.0, true);
+      return nearestPlayer == null;
    }
 
    private static class SilverfishMergeWithStoneGoal extends RandomStrollGoal {
-      @Nullable
-      private Direction selectedDirection;
+      private @Nullable Direction selectedDirection;
       private boolean doMerge;
 
       public SilverfishMergeWithStoneGoal(final Silverfish silverfish) {
@@ -137,23 +136,25 @@ public class Silverfish extends Monster {
       public boolean canUse() {
          if (this.mob.getTarget() != null) {
             return false;
-         } else if (!this.mob.getNavigation().isDone()) {
-            return false;
-         } else {
-            RandomSource random = this.mob.getRandom();
-            if (getServerLevel(this.mob).getGameRules().get(GameRules.MOB_GRIEFING) && random.nextInt(reducedTickDelay(10)) == 0) {
-               this.selectedDirection = Direction.getRandom(random);
-               BlockPos pos = BlockPos.containing(this.mob.getX(), this.mob.getY() + 0.5, this.mob.getZ()).relative(this.selectedDirection);
-               BlockState blockState = this.mob.level().getBlockState(pos);
-               if (InfestedBlock.isCompatibleHostBlock(blockState)) {
-                  this.doMerge = true;
-                  return true;
-               }
-            }
-
-            this.doMerge = false;
-            return super.canUse();
          }
+
+         if (!this.mob.getNavigation().isDone()) {
+            return false;
+         }
+
+         RandomSource random = this.mob.getRandom();
+         if (getServerLevel(this.mob).getGameRules().get(GameRules.MOB_GRIEFING) && random.nextInt(reducedTickDelay(10)) == 0) {
+            this.selectedDirection = Direction.getRandom(random);
+            BlockPos pos = BlockPos.containing(this.mob.getX(), this.mob.getY() + 0.5, this.mob.getZ()).relative(this.selectedDirection);
+            BlockState blockState = this.mob.level().getBlockState(pos);
+            if (InfestedBlock.isCompatibleHostBlock(blockState)) {
+               this.doMerge = true;
+               return true;
+            }
+         }
+
+         this.doMerge = false;
+         return super.canUse();
       }
 
       @Override
@@ -210,9 +211,7 @@ public class Silverfish extends Monster {
                   for (int zOff = 0; zOff <= 10 && zOff >= -10; zOff = (zOff <= 0 ? 1 : 0) - zOff) {
                      BlockPos testPos = basePos.offset(xOff, yOff, zOff);
                      BlockState blockState = level.getBlockState(testPos);
-                     Block block = blockState.getBlock();
-                     if (block instanceof InfestedBlock) {
-                        InfestedBlock infestedBlock = (InfestedBlock)block;
+                     if (blockState.getBlock() instanceof InfestedBlock infestedBlock) {
                         if (getServerLevel(level).getGameRules().get(GameRules.MOB_GRIEFING)) {
                            level.destroyBlock(testPos, true, this.silverfish);
                         } else {

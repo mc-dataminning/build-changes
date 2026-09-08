@@ -36,10 +36,7 @@ public class SpawnUtil {
          searchPos.setWithOffset(start, dx, spawnRangeY, dz);
          if (level.getWorldBorder().isWithinBounds(searchPos)
             && moveToPossibleSpawnPosition(level, spawnRangeY, searchPos, strategy)
-            && (
-               !checkCollisions
-                  || level.noCollision(entityType.getSpawnAABB((double)searchPos.getX() + 0.5, (double)searchPos.getY(), (double)searchPos.getZ() + 0.5))
-            )) {
+            && (!checkCollisions || level.noCollision(entityType.getSpawnAABB(searchPos.getX() + 0.5, searchPos.getY(), searchPos.getZ() + 0.5)))) {
             T mob = (T)entityType.create(level, null, searchPos, spawnReason, false, false);
             if (mob != null) {
                if (mob.checkSpawnRules(level, spawnReason) && mob.checkSpawnObstruction(level)) {
@@ -80,28 +77,28 @@ public class SpawnUtil {
    public interface Strategy {
       @Deprecated
       SpawnUtil.Strategy LEGACY_IRON_GOLEM = (level, pos, blockState, abovePos, aboveState) -> !blockState.is(Blocks.COBWEB)
-               && !blockState.is(Blocks.CACTUS)
-               && !blockState.is(Blocks.GLASS_PANE)
-               && !(blockState.getBlock() instanceof StainedGlassPaneBlock)
-               && !(blockState.getBlock() instanceof StainedGlassBlock)
-               && !(blockState.getBlock() instanceof LeavesBlock)
-               && !blockState.is(Blocks.CONDUIT)
-               && !blockState.is(Blocks.ICE)
-               && !blockState.is(Blocks.TNT)
-               && !blockState.is(Blocks.GLOWSTONE)
-               && !blockState.is(Blocks.BEACON)
-               && !blockState.is(Blocks.SEA_LANTERN)
-               && !blockState.is(Blocks.FROSTED_ICE)
-               && !blockState.is(Blocks.TINTED_GLASS)
-               && !blockState.is(Blocks.GLASS)
-            ? (aboveState.isAir() || aboveState.liquid()) && (blockState.isSolid() || blockState.is(Blocks.POWDER_SNOW))
-            : false;
+            && !blockState.is(Blocks.CACTUS)
+            && !blockState.is(Blocks.GLASS_PANE)
+            && !(blockState.getBlock() instanceof StainedGlassPaneBlock)
+            && !(blockState.getBlock() instanceof StainedGlassBlock)
+            && !(blockState.getBlock() instanceof LeavesBlock)
+            && !blockState.is(Blocks.CONDUIT)
+            && !blockState.is(Blocks.ICE)
+            && !blockState.is(Blocks.TNT)
+            && !blockState.is(Blocks.GLOWSTONE)
+            && !blockState.is(Blocks.BEACON)
+            && !blockState.is(Blocks.SEA_LANTERN)
+            && !blockState.is(Blocks.FROSTED_ICE)
+            && !blockState.is(Blocks.TINTED_GLASS)
+            && !blockState.is(Blocks.GLASS)
+         ? (aboveState.isAir() || aboveState.liquid()) && (blockState.isSolid() || blockState.is(Blocks.POWDER_SNOW))
+         : false;
       SpawnUtil.Strategy ON_TOP_OF_COLLIDER = (level, pos, blockState, abovePos, aboveState) -> aboveState.getCollisionShape(level, abovePos).isEmpty()
-            && Block.isFaceFull(blockState.getCollisionShape(level, pos), Direction.UP);
+         && Block.isFaceFull(blockState.getCollisionShape(level, pos), Direction.UP);
       SpawnUtil.Strategy ON_TOP_OF_COLLIDER_NO_LEAVES = (level, pos, blockState, abovePos, aboveState) -> aboveState.getCollisionShape(level, abovePos)
-               .isEmpty()
-            && !blockState.is(BlockTags.LEAVES)
-            && Block.isFaceFull(blockState.getCollisionShape(level, pos), Direction.UP);
+            .isEmpty()
+         && !blockState.is(BlockTags.LEAVES)
+         && Block.isFaceFull(blockState.getCollisionShape(level, pos), Direction.UP);
 
       boolean canSpawnOn(ServerLevel level, BlockPos pos, BlockState blockState, BlockPos abovePos, BlockState aboveState);
    }

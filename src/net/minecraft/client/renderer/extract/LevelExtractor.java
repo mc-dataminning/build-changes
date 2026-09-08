@@ -5,6 +5,8 @@ import it.unimi.dsi.fastutil.longs.LongCollection;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
@@ -41,6 +43,7 @@ import net.minecraft.client.renderer.state.level.BlockOutlineRenderState;
 import net.minecraft.client.renderer.state.level.LevelRenderState;
 import net.minecraft.client.renderer.state.level.PlayerRenderState;
 import net.minecraft.client.renderer.state.level.SectionUpdateRenderState;
+import net.minecraft.client.renderer.state.level.TransientBlockRenderState;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.server.IntegratedServer;
 import net.minecraft.core.BlockPos;
@@ -84,13 +87,12 @@ public class LevelExtractor implements ResourceManagerReloadListener {
    private static final float CHUNK_VISIBILITY_THRESHOLD = 0.3F;
    private final Minecraft minecraft;
    private final LevelRenderer levelRenderer;
-   @Nullable
-   private ClientLevel level;
-   @Nullable
-   private SectionUpdateTracker sectionUpdateTracker;
+   private @Nullable ClientLevel level;
+   private @Nullable SectionUpdateTracker sectionUpdateTracker;
    private final LevelRenderState levelRenderState;
    public final DebugRenderer debugRenderer = new DebugRenderer();
    public final GameTestBlockHighlightRenderer gameTestBlockHighlightRenderer = new GameTestBlockHighlightRenderer();
+   private final Deque<TransientBlock> transientBlockQueue = new ArrayDeque<>();
    private final SimpleGizmoCollector mainThreadGizmos = new SimpleGizmoCollector();
    private double prevCamRotX = Double.MIN_VALUE;
    private double prevCamRotY = Double.MIN_VALUE;
@@ -139,8 +141,8 @@ public class LevelExtractor implements ResourceManagerReloadListener {
          this.levelRenderer.invalidateCompiledGeometry(this.level, this.minecraft.options, camera, this.minecraft.getBlockColors());
          this.shouldInvalidateCompiledGeometry = false;
       } else if (camera.getCapturedFrustum() == null) {
-         double camRotX = Math.floor((double)(camera.xRot() / 2.0F));
-         double camRotY = Math.floor((double)(camera.yRot() / 2.0F));
+         double camRotX = Math.floor(camera.xRot() / 2.0F);
+         double camRotY = Math.floor(camera.yRot() / 2.0F);
          if (this.levelRenderer.sectionOcclusionGraph().consumeFrustumUpdate() || camRotX != this.prevCamRotX || camRotY != this.prevCamRotY) {
             profiler.popPush("applyFrustum");
             this.applyFrustum(cullFrustum);
@@ -195,6 +197,8 @@ public class LevelExtractor implements ResourceManagerReloadListener {
       this.extractBlockOutline(camera, this.levelRenderState);
       profiler.popPush("blockBreaking");
       this.extractBlockDestroyAnimation(camera, this.levelRenderState);
+      profiler.popPush("transientBlocks");
+      this.drainTransientBlockQueue();
       profiler.popPush("weather");
       this.levelRenderer.weatherEffectRenderer().extractRenderState(this.level, worldPartialTicks, cameraPos, this.levelRenderState.weatherRenderState);
       SkyRenderer skyRenderer = this.levelRenderer.skyRenderer();
@@ -210,7 +214,7 @@ public class LevelExtractor implements ResourceManagerReloadListener {
             this.level.getWorldBorder(),
             worldPartialTicks,
             cameraPos,
-            (double)(this.minecraft.options.getEffectiveRenderDistance() * 16),
+            this.minecraft.options.getEffectiveRenderDistance() * 16,
             this.levelRenderState.worldBorderRenderState
          );
       profiler.popPush("particles");
@@ -239,15 +243,31 @@ public class LevelExtractor implements ResourceManagerReloadListener {
       profiler.pop();
    }
 
+   private void drainTransientBlockQueue() {
+      long currentTimeMs = Util.getMillis();
+
+      TransientBlock transientBlock;
+      while ((transientBlock = this.transientBlockQueue.poll()) != null) {
+         TransientBlockRenderState state = new TransientBlockRenderState();
+         state.movingBlockRenderState.randomSeedPos = transientBlock.pos();
+         state.movingBlockRenderState.blockPos = transientBlock.pos();
+         state.movingBlockRenderState.blockState = transientBlock.state();
+         state.movingBlockRenderState.biome = this.level.getBiome(transientBlock.pos());
+         state.movingBlockRenderState.cardinalLighting = this.level.cardinalLighting();
+         state.movingBlockRenderState.lightEngine = this.level.getLightEngine();
+         state.createTimeNs = transientBlock.createTimeNs();
+         state.liveUntilMs = currentTimeMs + (long)(transientBlock.timeToLive() * 1000.0);
+         this.levelRenderer.addTransientBlock(transientBlock.pos().asLong(), state);
+      }
+   }
+
    private void extractVisibleEntities(final Camera camera, final Frustum frustum, final DeltaTracker deltaTracker, final LevelRenderState output) {
       Vec3 cameraPos = camera.position();
       double camX = cameraPos.x();
       double camY = cameraPos.y();
       double camZ = cameraPos.z();
       TickRateManager tickRateManager = this.minecraft.level.tickRateManager();
-      Entity.setViewScale(
-         Mth.clamp((double)this.minecraft.options.getEffectiveRenderDistance() / 8.0, 1.0, 2.5) * this.minecraft.options.entityDistanceScaling().get()
-      );
+      Entity.setViewScale(Mth.clamp(this.minecraft.options.getEffectiveRenderDistance() / 8.0, 1.0, 2.5) * this.minecraft.options.entityDistanceScaling().get());
       long chunkFadeDuration = Util.toMillis(this.minecraft.options.chunkSectionFadeInTime().get());
 
       for (Entity entity : this.level.entitiesForRendering()) {
@@ -312,7 +332,7 @@ public class LevelExtractor implements ResourceManagerReloadListener {
                ModelFeatureRenderer.CrumblingOverlay breakProgress;
                if (progresses != null && !progresses.isEmpty()) {
                   poseStack.pushPose();
-                  poseStack.translate((double)blockPos.getX() - camX, (double)blockPos.getY() - camY, (double)blockPos.getZ() - camZ);
+                  poseStack.translate(blockPos.getX() - camX, blockPos.getY() - camY, blockPos.getZ() - camZ);
                   breakProgress = new ModelFeatureRenderer.CrumblingOverlay(progresses.last().getProgress(), poseStack.last());
                   poseStack.popPose();
                } else {
@@ -427,25 +447,25 @@ public class LevelExtractor implements ResourceManagerReloadListener {
                state.itemActivation = activationState;
             }
 
-            if (camera.entity() instanceof LivingEntity livingEntity && livingEntity.isSleeping()) {
-               return;
-            }
-
-            BlockState viewBlockingState = getViewBlockingState(player, camera.getCullFrustum());
-            if (viewBlockingState != null) {
-               TextureAtlasSprite sprite = this.minecraft.getModelManager().getBlockStateModelSet().getParticleMaterial(viewBlockingState).sprite();
-               state.blockOverlay = new PlayerRenderState.BlockOverlay(sprite.atlasLocation(), sprite.getU0(), sprite.getV0(), sprite.getU1(), sprite.getV1());
-            }
-
-            if (this.minecraft.options.getCameraType().isFirstPerson()) {
-               state.isEyeInWater = player.isEyeInFluid(FluidTags.WATER);
-               state.isOnFire = player.isOnFire();
-               if (state.isEyeInWater) {
-                  BlockPos eyePos = BlockPos.containing(player.getEyePosition());
-                  float brightness = Lightmap.getBrightness(player.level().dimensionType(), player.level().getMaxLocalRawBrightness(eyePos));
-                  state.waterOverlay = new PlayerRenderState.WaterOverlay(
-                     ARGB.colorFromFloat(0.1F, brightness, brightness, brightness), -player.getYRot() / 64.0F, player.getXRot() / 64.0F
+            if (!(camera.entity() instanceof LivingEntity livingEntity && livingEntity.isSleeping())) {
+               BlockState viewBlockingState = getViewBlockingState(player, camera.getCullFrustum());
+               if (viewBlockingState != null) {
+                  TextureAtlasSprite sprite = this.minecraft.getModelManager().getBlockStateModelSet().getParticleMaterial(viewBlockingState).sprite();
+                  state.blockOverlay = new PlayerRenderState.BlockOverlay(
+                     sprite.atlasLocation(), sprite.getU0(), sprite.getV0(), sprite.getU1(), sprite.getV1()
                   );
+               }
+
+               if (this.minecraft.options.getCameraType().isFirstPerson()) {
+                  state.isEyeInWater = player.isEyeInFluid(FluidTags.WATER);
+                  state.isOnFire = player.isOnFire();
+                  if (state.isEyeInWater) {
+                     BlockPos eyePos = BlockPos.containing(player.getEyePosition());
+                     float brightness = Lightmap.getBrightness(player.level().dimensionType(), player.level().getMaxLocalRawBrightness(eyePos));
+                     state.waterOverlay = new PlayerRenderState.WaterOverlay(
+                        ARGB.colorFromFloat(0.1F, brightness, brightness, brightness), -player.getYRot() / 64.0F, player.getXRot() / 64.0F
+                     );
+                  }
                }
             }
          } else {
@@ -454,35 +474,34 @@ public class LevelExtractor implements ResourceManagerReloadListener {
       }
    }
 
-   @Nullable
-   private static BlockState getViewBlockingState(final LocalPlayer player, final Frustum frustum) {
+   private static @Nullable BlockState getViewBlockingState(final LocalPlayer player, final Frustum frustum) {
       if (player.noPhysics) {
          return null;
-      } else {
-         Level level = player.level();
-         AABB nearPlaneBB = frustum.getNearPlaneBounds().move(player.getEyePosition());
-         MutableObject<BlockState> outState = new MutableObject();
-         level.findBlocksIn(nearPlaneBB).filterState(state -> state.getRenderShape() != RenderShape.INVISIBLE).forEachUntil((pos, state) -> {
-            if (state.isViewBlocking(level, pos, nearPlaneBB)) {
-               outState.setValue(state);
-               return Continuation.ABORT;
-            } else {
-               return Continuation.CONTINUE;
-            }
-         });
-         return (BlockState)outState.get();
       }
+
+      Level level = player.level();
+      AABB nearPlaneBB = frustum.getNearPlaneBounds().move(player.getEyePosition());
+      MutableObject<BlockState> outState = new MutableObject();
+      level.findBlocksIn(nearPlaneBB).filterState(state -> state.getRenderShape() != RenderShape.INVISIBLE).forEachUntil((pos, state) -> {
+         if (state.isViewBlocking(level, pos, nearPlaneBB)) {
+            outState.setValue(state);
+            return Continuation.ABORT;
+         } else {
+            return Continuation.CONTINUE;
+         }
+      });
+      return (BlockState)outState.get();
    }
 
    private void applyFrustum(final Frustum frustum) {
       if (!Minecraft.getInstance().isSameThread()) {
          throw new IllegalStateException("applyFrustum called from wrong thread: " + Thread.currentThread().getName());
-      } else {
-         this.levelRenderer.clearVisibleSections();
-         this.levelRenderer
-            .sectionOcclusionGraph()
-            .addSectionsInFrustum(frustum, this.levelRenderer.visibleSections(), this.levelRenderer.nearbyVisibleSections());
       }
+
+      this.levelRenderer.clearVisibleSections();
+      this.levelRenderer
+         .sectionOcclusionGraph()
+         .addSectionsInFrustum(frustum, this.levelRenderer.visibleSections(), this.levelRenderer.nearbyVisibleSections());
    }
 
    private static boolean shouldShowEntityOutlines(final Camera camera, final PlayerRenderState playerRenderState) {
@@ -494,7 +513,7 @@ public class LevelExtractor implements ResourceManagerReloadListener {
       this.shouldResetSkyRenderer = true;
    }
 
-   public void setLevel(@Nullable final ClientLevel level) {
+   public void setLevel(final @Nullable ClientLevel level) {
       this.level = level;
       if (level != null) {
          this.allChanged();
@@ -524,7 +543,7 @@ public class LevelExtractor implements ResourceManagerReloadListener {
       this.shouldResetChunkLayerSampler = true;
    }
 
-   public void blockChanged(final BlockPos pos, @Block.UpdateFlags final int updateFlags) {
+   public void blockChanged(final BlockPos pos, final @Block.UpdateFlags int updateFlags) {
       this.setBlockDirty(pos, (updateFlags & 8) != 0);
    }
 
@@ -578,6 +597,10 @@ public class LevelExtractor implements ResourceManagerReloadListener {
       this.sectionUpdateTracker.setDirty(sectionX, sectionY, sectionZ, playerChanged);
    }
 
+   public void queueTransientBlock(final TransientBlock transientBlock) {
+      this.transientBlockQueue.add(transientBlock);
+   }
+
    public Gizmos.TemporaryCollection collectPerFrameMainThreadGizmos() {
       return Gizmos.withCollector(this.mainThreadGizmos);
    }
@@ -597,30 +620,28 @@ public class LevelExtractor implements ResourceManagerReloadListener {
    }
 
    @VisibleForDebug
-   @Nullable
-   public String sectionStatistics() {
+   public @Nullable String sectionStatistics() {
       ViewArea viewArea = this.levelRenderer.viewArea();
       if (viewArea == null) {
          return null;
-      } else {
-         int totalSections = viewArea.size();
-         int rendered = this.countRenderedSections();
-         SectionRenderDispatcher sectionRenderDispatcher = this.levelRenderer.sectionRenderDispatcher();
-         return String.format(
-            Locale.ROOT,
-            "C: %d/%d %sD: %d, %s",
-            rendered,
-            totalSections,
-            this.minecraft.smartCull ? "(s) " : "",
-            this.lastViewDistance,
-            sectionRenderDispatcher == null ? "null" : sectionRenderDispatcher.getStats()
-         );
       }
+
+      int totalSections = viewArea.size();
+      int rendered = this.countRenderedSections();
+      SectionRenderDispatcher sectionRenderDispatcher = this.levelRenderer.sectionRenderDispatcher();
+      return String.format(
+         Locale.ROOT,
+         "C: %d/%d %sD: %d, %s",
+         rendered,
+         totalSections,
+         this.minecraft.smartCull ? "(s) " : "",
+         this.lastViewDistance,
+         sectionRenderDispatcher == null ? "null" : sectionRenderDispatcher.getStats()
+      );
    }
 
    @VisibleForDebug
-   @Nullable
-   public String entityStatistics() {
+   public @Nullable String entityStatistics() {
       return this.level == null
          ? null
          : "E: " + this.levelRenderState.lastEntityRenderStateCount + "/" + this.level.getEntityCount() + ", SD: " + this.level.getServerSimulationDistance();
@@ -628,11 +649,11 @@ public class LevelExtractor implements ResourceManagerReloadListener {
 
    @VisibleForDebug
    public double totalSections() {
-      return this.sectionUpdateTracker == null ? 0.0 : (double)this.sectionUpdateTracker.size();
+      return this.sectionUpdateTracker == null ? 0.0 : this.sectionUpdateTracker.size();
    }
 
    @VisibleForDebug
    public double lastViewDistance() {
-      return (double)this.lastViewDistance;
+      return this.lastViewDistance;
    }
 }

@@ -65,7 +65,7 @@ public class AttachedStemBlock extends VegetationBlock {
       if (!neighbourState.is(this.fruit) && directionToNeighbour == state.getValue(FACING)) {
          Optional<Block> stem = level.registryAccess().lookupOrThrow(Registries.BLOCK).getOptional(this.stem);
          if (stem.isPresent()) {
-            return stem.get().defaultBlockState().trySetValue(StemBlock.AGE, Integer.valueOf(7));
+            return stem.get().defaultBlockState().trySetValue(StemBlock.AGE, 7);
          }
       }
 

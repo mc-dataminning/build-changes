@@ -46,8 +46,8 @@ public abstract class SimpleJsonResourceReloadListener<T> extends SimplePreparab
                   throw new IllegalStateException("Duplicate data file ignored with ID " + id);
                }
             }).ifError(error -> LOGGER.error("Couldn't parse data file '{}' from '{}': {}", new Object[]{id, location, error}));
-         } catch (IllegalArgumentException | IOException | JsonParseException var13) {
-            LOGGER.error("Couldn't parse data file '{}' from '{}'", new Object[]{id, location, var13});
+         } catch (JsonParseException | IllegalArgumentException | IOException e) {
+            LOGGER.error("Couldn't parse data file '{}' from '{}'", new Object[]{id, location, e});
          }
       }
 

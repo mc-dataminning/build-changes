@@ -17,12 +17,12 @@ import net.minecraft.world.level.Level;
 public class ShapelessRecipe extends NormalCraftingRecipe {
    public static final MapCodec<ShapelessRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
-               CraftingRecipe.CraftingBookInfo.MAP_CODEC.forGetter(o -> o.bookInfo),
-               ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result),
-               Ingredient.CODEC.listOf(1, 9).fieldOf("ingredients").forGetter(o -> o.ingredients)
-            )
-            .apply(i, ShapelessRecipe::new)
+            Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
+            CraftingRecipe.CraftingBookInfo.MAP_CODEC.forGetter(o -> o.bookInfo),
+            ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result),
+            Ingredient.CODEC.listOf(1, 9).fieldOf("ingredients").forGetter(o -> o.ingredients)
+         )
+         .apply(i, ShapelessRecipe::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, ShapelessRecipe> STREAM_CODEC = StreamCodec.composite(
       Recipe.CommonInfo.STREAM_CODEC,

@@ -41,7 +41,7 @@ public interface LevelLoadListener {
 
    void updateFocus(ResourceKey<Level> dimension, ChunkPos chunkPos);
 
-   public static enum Stage {
+   enum Stage {
       START_SERVER,
       PREPARE_GLOBAL_SPAWN,
       LOAD_INITIAL_CHUNKS,

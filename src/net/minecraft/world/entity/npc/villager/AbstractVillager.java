@@ -55,10 +55,8 @@ import org.slf4j.Logger;
 public abstract class AbstractVillager extends AgeableMob implements Npc, Merchant, InventoryCarrier {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static final EntityDataAccessor<Integer> DATA_UNHAPPY_COUNTER = SynchedEntityData.defineId(AbstractVillager.class, EntityDataSerializers.INT);
-   @Nullable
-   private Player tradingPlayer;
-   @Nullable
-   protected MerchantOffers offers;
+   private @Nullable Player tradingPlayer;
+   protected @Nullable MerchantOffers offers;
    private final SimpleContainer inventory = new SimpleContainer(8);
 
    public AbstractVillager(final EntityType<? extends AbstractVillager> type, final Level level) {
@@ -67,9 +65,8 @@ public abstract class AbstractVillager extends AgeableMob implements Npc, Mercha
       this.setPathfindingMalus(PathType.FIRE, -1.0F);
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       if (groupData == null) {
@@ -99,13 +96,12 @@ public abstract class AbstractVillager extends AgeableMob implements Npc, Mercha
    }
 
    @Override
-   public void setTradingPlayer(@Nullable final Player player) {
+   public void setTradingPlayer(final @Nullable Player player) {
       this.tradingPlayer = player;
    }
 
-   @Nullable
    @Override
-   public Player getTradingPlayer() {
+   public @Nullable Player getTradingPlayer() {
       return this.tradingPlayer;
    }
 
@@ -128,7 +124,7 @@ public abstract class AbstractVillager extends AgeableMob implements Npc, Mercha
    }
 
    @Override
-   public void overrideOffers(@Nullable final MerchantOffers offers) {
+   public void overrideOffers(final @Nullable MerchantOffers offers) {
    }
 
    @Override
@@ -190,9 +186,8 @@ public abstract class AbstractVillager extends AgeableMob implements Npc, Mercha
       this.readInventoryFromTag(input);
    }
 
-   @Nullable
    @Override
-   public Entity teleport(final TeleportTransition transition) {
+   public @Nullable Entity teleport(final TeleportTransition transition) {
       this.stopTrading();
       return super.teleport(transition);
    }
@@ -226,9 +221,8 @@ public abstract class AbstractVillager extends AgeableMob implements Npc, Mercha
       return this.inventory;
    }
 
-   @Nullable
    @Override
-   public SlotAccess getSlot(final int slot) {
+   public @Nullable SlotAccess getSlot(final int slot) {
       int inventorySlot = slot - 300;
       return inventorySlot >= 0 && inventorySlot < this.inventory.getContainerSize() ? this.inventory.getSlot(inventorySlot) : super.getSlot(slot);
    }

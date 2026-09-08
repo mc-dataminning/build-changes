@@ -31,24 +31,15 @@ public class TestInstanceBlockEditScreen extends Screen {
    private static final int BUTTON_PADDING = 8;
    private static final int WIDTH = 316;
    private final TestInstanceBlockEntity blockEntity;
-   @Nullable
-   private EditBox idEdit;
-   @Nullable
-   private EditBox sizeXEdit;
-   @Nullable
-   private EditBox sizeYEdit;
-   @Nullable
-   private EditBox sizeZEdit;
-   @Nullable
-   private FittingMultiLineTextWidget infoWidget;
-   @Nullable
-   private Button saveButton;
-   @Nullable
-   private Button exportButton;
-   @Nullable
-   private CycleButton<Boolean> includeEntitiesButton;
-   @Nullable
-   private CycleButton<Rotation> rotationButton;
+   private @Nullable EditBox idEdit;
+   private @Nullable EditBox sizeXEdit;
+   private @Nullable EditBox sizeYEdit;
+   private @Nullable EditBox sizeZEdit;
+   private @Nullable FittingMultiLineTextWidget infoWidget;
+   private @Nullable Button saveButton;
+   private @Nullable Button exportButton;
+   private @Nullable CycleButton<Boolean> includeEntitiesButton;
+   private @Nullable CycleButton<Rotation> rotationButton;
 
    public TestInstanceBlockEditScreen(final TestInstanceBlockEntity blockEntity) {
       super(blockEntity.getBlockState().getBlock().getName());
@@ -148,7 +139,7 @@ public class TestInstanceBlockEditScreen extends Screen {
    private int widgetX(final int index, final int count) {
       int leftEdge = this.width / 2 - 158;
       float buttonSize = exactWidgetSize(count);
-      return (int)((float)leftEdge + (float)index * (8.0F + buttonSize));
+      return (int)(leftEdge + index * (8.0F + buttonSize));
    }
 
    private static int widgetSize(final int count) {
@@ -156,7 +147,7 @@ public class TestInstanceBlockEditScreen extends Screen {
    }
 
    private static float exactWidgetSize(final int count) {
-      return (float)(316 - (count - 1) * 8) / (float)count;
+      return (float)(316 - (count - 1) * 8) / count;
    }
 
    @Override
@@ -201,9 +192,9 @@ public class TestInstanceBlockEditScreen extends Screen {
          .errorMessage()
          .ifPresent(
             error -> description.append(
-                     Component.translatable("test_instance.description.failed", Component.empty().withStyle(ChatFormatting.RED).append(error))
-                  )
-                  .append("\n\n")
+                  Component.translatable("test_instance.description.failed", Component.empty().withStyle(ChatFormatting.RED).append(error))
+               )
+               .append("\n\n")
          );
       description.append(status);
       this.infoWidget.setMessage(description);
@@ -217,7 +208,7 @@ public class TestInstanceBlockEditScreen extends Screen {
    private static int parseSize(final String value) {
       try {
          return Mth.clamp(Integer.parseInt(value), 1, 48);
-      } catch (NumberFormatException var2) {
+      } catch (NumberFormatException ignored) {
          return 1;
       }
    }

@@ -36,7 +36,7 @@ public class JUnitLikeTestReporter implements TestReporter {
       Element testCase = this.document.createElement("testcase");
       testCase.setAttribute("name", name);
       testCase.setAttribute("classname", testInfo.getStructure().toString());
-      testCase.setAttribute("time", String.valueOf((double)testInfo.getRunTime() / 1000.0));
+      testCase.setAttribute("time", String.valueOf(testInfo.getRunTime() / 1000.0));
       this.testSuite.appendChild(testCase);
       return testCase;
    }
@@ -60,12 +60,12 @@ public class JUnitLikeTestReporter implements TestReporter {
    @Override
    public void finish() {
       this.stopwatch.stop();
-      this.testSuite.setAttribute("time", String.valueOf((double)this.stopwatch.elapsed(TimeUnit.MILLISECONDS) / 1000.0));
+      this.testSuite.setAttribute("time", String.valueOf(this.stopwatch.elapsed(TimeUnit.MILLISECONDS) / 1000.0));
 
       try {
          this.save(this.destination);
-      } catch (TransformerException var2) {
-         throw new Error("Couldn't save test report", var2);
+      } catch (TransformerException exception) {
+         throw new Error("Couldn't save test report", exception);
       }
    }
 

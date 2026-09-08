@@ -40,9 +40,7 @@ public class CreakingHeartBlock extends BaseEntityBlock {
 
    protected CreakingHeartBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(
-         this.defaultBlockState().setValue(AXIS, Direction.Axis.Y).setValue(STATE, CreakingHeartState.UPROOTED).setValue(NATURAL, Boolean.valueOf(false))
-      );
+      this.registerDefaultState(this.defaultBlockState().setValue(AXIS, Direction.Axis.Y).setValue(STATE, CreakingHeartState.UPROOTED).setValue(NATURAL, false));
    }
 
    @Override
@@ -50,9 +48,8 @@ public class CreakingHeartBlock extends BaseEntityBlock {
       return new CreakingHeartBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       if (level.isClientSide()) {
          return null;
       } else {
@@ -67,9 +64,7 @@ public class CreakingHeartBlock extends BaseEntityBlock {
       if (level.environmentAttributes().getValue(EnvironmentAttributes.CREAKING_ACTIVE, pos)) {
          if (state.getValue(STATE) != CreakingHeartState.UPROOTED) {
             if (random.nextInt(16) == 0 && isSurroundedByLogs(level, pos)) {
-               level.playLocalSound(
-                  (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), SoundEvents.CREAKING_HEART_IDLE, SoundSource.BLOCKS, 1.0F, 1.0F, false
-               );
+               level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.CREAKING_HEART_IDLE, SoundSource.BLOCKS, 1.0F, 1.0F, false);
             }
          }
       }
@@ -133,9 +128,8 @@ public class CreakingHeartBlock extends BaseEntityBlock {
       return true;
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       return updateState(this.defaultBlockState().setValue(AXIS, context.getClickedFace().getAxis()), context.getLevel(), context.getClickedPos());
    }
 

@@ -75,6 +75,6 @@ public class ResourceKey<T> {
       return createRegistryKey(this.registryName);
    }
 
-   private static record InternKey(Identifier registry, Identifier identifier) {
+   private record InternKey(Identifier registry, Identifier identifier) {
    }
 }

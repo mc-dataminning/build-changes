@@ -20,7 +20,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -58,23 +57,23 @@ public class MultifaceBlock extends Block implements SimpleWaterloggedBlock {
          }
 
          return shape.isEmpty() ? Shapes.block() : shape;
-      }, new Property[]{WATERLOGGED});
+      }, WATERLOGGED);
    }
 
    public static Set<Direction> availableFaces(final BlockState state) {
       if (!(state.getBlock() instanceof MultifaceBlock)) {
          return Set.of();
-      } else {
-         Set<Direction> faces = EnumSet.noneOf(Direction.class);
-
-         for (Direction direction : Direction.values()) {
-            if (hasFace(state, direction)) {
-               faces.add(direction);
-            }
-         }
-
-         return faces;
       }
+
+      Set<Direction> faces = EnumSet.noneOf(Direction.class);
+
+      for (Direction direction : Direction.values()) {
+         if (hasFace(state, direction)) {
+            faces.add(direction);
+         }
+      }
+
+      return faces;
    }
 
    public static Set<Direction> unpack(final byte data) {
@@ -170,9 +169,8 @@ public class MultifaceBlock extends Block implements SimpleWaterloggedBlock {
       return !context.getItemInHand().is(this.asItem()) || hasAnyVacantFace(state);
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       Level level = context.getLevel();
       BlockPos placePos = context.getClickedPos();
       BlockState oldState = level.getBlockState(placePos);
@@ -192,22 +190,23 @@ public class MultifaceBlock extends Block implements SimpleWaterloggedBlock {
       }
    }
 
-   @Nullable
-   public BlockState getStateForPlacement(final BlockState oldState, final BlockGetter level, final BlockPos placementPos, final Direction placementDirection) {
+   public @Nullable BlockState getStateForPlacement(
+      final BlockState oldState, final BlockGetter level, final BlockPos placementPos, final Direction placementDirection
+   ) {
       if (!this.isValidStateForPlacement(level, oldState, placementPos, placementDirection)) {
          return null;
-      } else {
-         BlockState newState;
-         if (oldState.is(this)) {
-            newState = oldState;
-         } else if (oldState.getFluidState().isSourceOfType(Fluids.WATER)) {
-            newState = this.defaultBlockState().setValue(BlockStateProperties.WATERLOGGED, Boolean.valueOf(true));
-         } else {
-            newState = this.defaultBlockState();
-         }
-
-         return newState.setValue(getFaceProperty(placementDirection), Boolean.valueOf(true));
       }
+
+      BlockState newState;
+      if (oldState.is(this)) {
+         newState = oldState;
+      } else if (oldState.getFluidState().isSourceOfType(Fluids.WATER)) {
+         newState = this.defaultBlockState().setValue(BlockStateProperties.WATERLOGGED, true);
+      } else {
+         newState = this.defaultBlockState();
+      }
+
+      return newState.setValue(getFaceProperty(placementDirection), true);
    }
 
    @Override
@@ -238,7 +237,7 @@ public class MultifaceBlock extends Block implements SimpleWaterloggedBlock {
 
    public static boolean hasFace(final BlockState state, final Direction faceDirection) {
       BooleanProperty property = getFaceProperty(faceDirection);
-      return state.getValueOrElse(property, Boolean.valueOf(false));
+      return state.getValueOrElse(property, false);
    }
 
    public static boolean canAttachTo(final BlockGetter level, final BlockPos pos, final Direction directionTowardsNeighbour) {
@@ -255,7 +254,7 @@ public class MultifaceBlock extends Block implements SimpleWaterloggedBlock {
    }
 
    private static BlockState removeFace(final BlockState state, final BooleanProperty property) {
-      BlockState newState = state.setValue(property, Boolean.valueOf(false));
+      BlockState newState = state.setValue(property, false);
       return hasAnyFace(newState) ? newState : Blocks.AIR.defaultBlockState();
    }
 
@@ -264,10 +263,10 @@ public class MultifaceBlock extends Block implements SimpleWaterloggedBlock {
    }
 
    private static BlockState getDefaultMultifaceState(final StateDefinition<Block, BlockState> stateDefinition) {
-      BlockState state = stateDefinition.any().setValue(WATERLOGGED, Boolean.valueOf(false));
+      BlockState state = stateDefinition.any().setValue(WATERLOGGED, false);
 
       for (BooleanProperty faceProperty : PROPERTY_BY_DIRECTION.values()) {
-         state = state.trySetValue(faceProperty, Boolean.valueOf(false));
+         state = state.trySetValue(faceProperty, false);
       }
 
       return state;

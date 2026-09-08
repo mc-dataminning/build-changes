@@ -36,20 +36,20 @@ public class SmeltItemFunction extends LootItemConditionalFunction {
    public ItemStack run(final ItemStack itemStack, final LootContext context) {
       if (itemStack.isEmpty()) {
          return itemStack;
-      } else {
-         SingleRecipeInput input = new SingleRecipeInput(itemStack);
-         Optional<RecipeHolder<SmeltingRecipe>> recipe = context.getLevel().recipeAccess().getRecipeFor(RecipeType.SMELTING, input, context.getLevel());
-         if (recipe.isPresent()) {
-            ItemStack result = recipe.get().value().assemble(input);
-            if (!result.isEmpty()) {
-               int newCount = (this.useInputCount ? itemStack.count() : 1) * result.getCount();
-               return result.copyWithCount(Math.min(newCount, result.getMaxStackSize()));
-            }
-         }
-
-         LOGGER.warn("Couldn't smelt {} because there is no smelting recipe", itemStack);
-         return itemStack;
       }
+
+      SingleRecipeInput input = new SingleRecipeInput(itemStack);
+      Optional<RecipeHolder<SmeltingRecipe>> recipe = context.getLevel().recipeAccess().getRecipeFor(RecipeType.SMELTING, input, context.getLevel());
+      if (recipe.isPresent()) {
+         ItemStack result = recipe.get().value().assemble(input);
+         if (!result.isEmpty()) {
+            int newCount = (this.useInputCount ? itemStack.count() : 1) * result.getCount();
+            return result.copyWithCount(Math.min(newCount, result.getMaxStackSize()));
+         }
+      }
+
+      LOGGER.warn("Couldn't smelt {} because there is no smelting recipe", itemStack);
+      return itemStack;
    }
 
    public static LootItemConditionalFunction.Builder<?> smelted() {

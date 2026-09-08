@@ -18,7 +18,7 @@ public interface RangeArgument<T extends MinMaxBounds<?>> extends ArgumentType<T
       return new RangeArgument.Floats();
    }
 
-   public static class Floats implements RangeArgument<MinMaxBounds.Doubles> {
+   class Floats implements RangeArgument<MinMaxBounds.Doubles> {
       private static final Collection<String> EXAMPLES = Arrays.asList("0..5.2", "0", "-5.4", "-100.76..", "..100");
 
       public static MinMaxBounds.Doubles getRange(final CommandContext<CommandSourceStack> context, final String name) {
@@ -34,7 +34,7 @@ public interface RangeArgument<T extends MinMaxBounds<?>> extends ArgumentType<T
       }
    }
 
-   public static class Ints implements RangeArgument<MinMaxBounds.Ints> {
+   class Ints implements RangeArgument<MinMaxBounds.Ints> {
       private static final Collection<String> EXAMPLES = Arrays.asList("0..5", "0", "-5", "-100..", "..100");
 
       public static MinMaxBounds.Ints getRange(final CommandContext<CommandSourceStack> context, final String name) {

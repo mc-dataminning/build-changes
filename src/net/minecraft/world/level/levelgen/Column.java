@@ -71,12 +71,12 @@ public abstract class Column {
       BlockPos.MutableBlockPos mutablePos = pos.mutable();
       if (!level.isStateAtPosition(pos, insideColumn)) {
          return Optional.empty();
-      } else {
-         int nearestEmptyY = pos.getY();
-         OptionalInt ceiling = scanDirection(level, searchRange, insideColumn, validEdge, mutablePos, nearestEmptyY, Direction.UP);
-         OptionalInt floor = scanDirection(level, searchRange, insideColumn, validEdge, mutablePos, nearestEmptyY, Direction.DOWN);
-         return Optional.of(create(floor, ceiling));
       }
+
+      int nearestEmptyY = pos.getY();
+      OptionalInt ceiling = scanDirection(level, searchRange, insideColumn, validEdge, mutablePos, nearestEmptyY, Direction.UP);
+      OptionalInt floor = scanDirection(level, searchRange, insideColumn, validEdge, mutablePos, nearestEmptyY, Direction.DOWN);
+      return Optional.of(create(floor, ceiling));
    }
 
    private static OptionalInt scanDirection(

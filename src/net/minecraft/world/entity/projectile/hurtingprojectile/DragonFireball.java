@@ -40,7 +40,7 @@ public class DragonFireball extends AbstractHurtingProjectile {
             cloud.setCustomParticle(PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 1.0F));
             cloud.setRadius(3.0F);
             cloud.setDuration(600);
-            cloud.setRadiusPerTick((7.0F - cloud.getRadius()) / (float)cloud.getDuration());
+            cloud.setRadiusPerTick((7.0F - cloud.getRadius()) / cloud.getDuration());
             cloud.setPotionDurationScale(0.25F);
             cloud.addEffect(new MobEffectInstance(MobEffects.INSTANT_DAMAGE, 1, 1));
             if (!entitiesOfClass.isEmpty()) {

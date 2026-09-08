@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableList;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 import java.util.function.Supplier;
 import net.minecraft.ChatFormatting;
@@ -55,12 +54,9 @@ public class PlayerEntry extends ContainerObjectSelectionList.Entry<PlayerEntry>
    private final boolean reportingEnabled;
    private boolean hasDraftReport;
    private final boolean chatReportable;
-   @Nullable
-   private Button hideButton;
-   @Nullable
-   private Button showButton;
-   @Nullable
-   private Button reportButton;
+   private @Nullable Button hideButton;
+   private @Nullable Button showButton;
+   private @Nullable Button reportButton;
    private float tooltipHoverTime;
    private static final Component HIDDEN = Component.translatable("gui.socialInteractions.status_hidden").withStyle(ChatFormatting.ITALIC);
    private static final Component BLOCKED = Component.translatable("gui.socialInteractions.status_blocked").withStyle(ChatFormatting.ITALIC);
@@ -111,17 +107,13 @@ public class PlayerEntry extends ContainerObjectSelectionList.Entry<PlayerEntry>
             20,
             REPORT_BUTTON_SPRITES,
             button -> reportingContext.draftReportHandled(
-                  minecraft,
-                  socialInteractionsScreen,
-                  () -> minecraft.gui.setScreen(new ReportPlayerScreen(socialInteractionsScreen, reportingContext, this, chatDisabledOrBlocked)),
-                  false
-               ),
+               minecraft,
+               socialInteractionsScreen,
+               () -> minecraft.gui.setScreen(new ReportPlayerScreen(socialInteractionsScreen, reportingContext, this, chatDisabledOrBlocked)),
+               false
+            ),
             Component.translatable("gui.socialInteractions.report")
          ) {
-            {
-               Objects.requireNonNull(PlayerEntry.this);
-            }
-
             @Override
             protected MutableComponent createNarrationMessage() {
                return PlayerEntry.this.getEntryNarationMessage(super.createNarrationMessage());
@@ -134,10 +126,6 @@ public class PlayerEntry extends ContainerObjectSelectionList.Entry<PlayerEntry>
             socialManager.hidePlayer(id);
             this.onHiddenOrShown(true, Component.translatable("gui.socialInteractions.hidden_in_chat", playerName));
          }, Component.translatable("gui.socialInteractions.hide")) {
-            {
-               Objects.requireNonNull(PlayerEntry.this);
-            }
-
             @Override
             protected MutableComponent createNarrationMessage() {
                return PlayerEntry.this.getEntryNarationMessage(super.createNarrationMessage());
@@ -149,10 +137,6 @@ public class PlayerEntry extends ContainerObjectSelectionList.Entry<PlayerEntry>
             socialManager.showPlayer(id);
             this.onHiddenOrShown(false, Component.translatable("gui.socialInteractions.shown_in_chat", playerName));
          }, Component.translatable("gui.socialInteractions.show")) {
-            {
-               Objects.requireNonNull(PlayerEntry.this);
-            }
-
             @Override
             protected MutableComponent createNarrationMessage() {
                return PlayerEntry.this.getEntryNarationMessage(super.createNarrationMessage());

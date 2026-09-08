@@ -19,8 +19,7 @@ public class Node {
    public float g;
    public float h;
    public float f;
-   @Nullable
-   public Node cameFrom;
+   public @Nullable Node cameFrom;
    public boolean closed;
    public float walkedDistance;
    public float costMalus;
@@ -82,50 +81,50 @@ public class Node {
    }
 
    public float distanceTo(final Node to) {
-      float xd = (float)(to.x - this.x);
-      float yd = (float)(to.y - this.y);
-      float zd = (float)(to.z - this.z);
+      float xd = to.x - this.x;
+      float yd = to.y - this.y;
+      float zd = to.z - this.z;
       return Mth.sqrt(xd * xd + yd * yd + zd * zd);
    }
 
    public float distanceToXZ(final Node to) {
-      float xd = (float)(to.x - this.x);
-      float zd = (float)(to.z - this.z);
+      float xd = to.x - this.x;
+      float zd = to.z - this.z;
       return Mth.sqrt(xd * xd + zd * zd);
    }
 
    public float distanceTo(final BlockPos pos) {
-      float xd = (float)(pos.getX() - this.x);
-      float yd = (float)(pos.getY() - this.y);
-      float zd = (float)(pos.getZ() - this.z);
+      float xd = pos.getX() - this.x;
+      float yd = pos.getY() - this.y;
+      float zd = pos.getZ() - this.z;
       return Mth.sqrt(xd * xd + yd * yd + zd * zd);
    }
 
    public float distanceToSqr(final Node to) {
-      float xd = (float)(to.x - this.x);
-      float yd = (float)(to.y - this.y);
-      float zd = (float)(to.z - this.z);
+      float xd = to.x - this.x;
+      float yd = to.y - this.y;
+      float zd = to.z - this.z;
       return xd * xd + yd * yd + zd * zd;
    }
 
    public float distanceToSqr(final BlockPos pos) {
-      float xd = (float)(pos.getX() - this.x);
-      float yd = (float)(pos.getY() - this.y);
-      float zd = (float)(pos.getZ() - this.z);
+      float xd = pos.getX() - this.x;
+      float yd = pos.getY() - this.y;
+      float zd = pos.getZ() - this.z;
       return xd * xd + yd * yd + zd * zd;
    }
 
    public float distanceManhattan(final Node to) {
-      float xd = (float)Math.abs(to.x - this.x);
-      float yd = (float)Math.abs(to.y - this.y);
-      float zd = (float)Math.abs(to.z - this.z);
+      float xd = Math.abs(to.x - this.x);
+      float yd = Math.abs(to.y - this.y);
+      float zd = Math.abs(to.z - this.z);
       return xd + yd + zd;
    }
 
    public float distanceManhattan(final BlockPos pos) {
-      float xd = (float)Math.abs(pos.getX() - this.x);
-      float yd = (float)Math.abs(pos.getY() - this.y);
-      float zd = (float)Math.abs(pos.getZ() - this.z);
+      float xd = Math.abs(pos.getX() - this.x);
+      float yd = Math.abs(pos.getY() - this.y);
+      float zd = Math.abs(pos.getZ() - this.z);
       return xd + yd + zd;
    }
 
@@ -134,7 +133,7 @@ public class Node {
    }
 
    public Vec3 asVec3() {
-      return new Vec3((double)this.x, (double)this.y, (double)this.z);
+      return new Vec3(this.x, this.y, this.z);
    }
 
    @Override

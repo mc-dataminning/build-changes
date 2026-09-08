@@ -140,9 +140,8 @@ public class Frog extends Animal {
       this.entityData.set(DATA_VARIANT_ID, variant);
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       return type == DataComponents.FROG_VARIANT ? castComponentValue((DataComponentType<T>)type, this.getVariant()) : super.get(type);
    }
 
@@ -238,9 +237,8 @@ public class Frog extends Animal {
       this.level().playSound(null, this, SoundEvents.FROG_EAT, SoundSource.NEUTRAL, 2.0F, 1.0F);
    }
 
-   @Nullable
    @Override
-   public AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       Frog frog = EntityTypes.FROG.create(level, EntitySpawnReason.BREEDING);
       if (frog != null) {
          FrogAi.initMemories(frog, level.getRandom());
@@ -262,7 +260,7 @@ public class Frog extends Animal {
 
    @Override
    public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       VariantUtils.selectVariantToSpawn(SpawnContext.create(level, this.blockPosition()), Registries.FROG_VARIANT).ifPresent(this::setVariant);
       FrogAi.initMemories(this, level.getRandom());
@@ -277,21 +275,18 @@ public class Frog extends Animal {
          .add(Attributes.STEP_HEIGHT, 1.0);
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getAmbientSound() {
+   protected @Nullable SoundEvent getAmbientSound() {
       return SoundEvents.FROG_AMBIENT;
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
+   protected @Nullable SoundEvent getHurtSound(final DamageSource source) {
       return SoundEvents.FROG_HURT;
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getDeathSound() {
+   protected @Nullable SoundEvent getDeathSound() {
       return SoundEvents.FROG_DEATH;
    }
 
@@ -318,11 +313,7 @@ public class Frog extends Animal {
    }
 
    public static boolean canEat(final LivingEntity entity) {
-      if (entity instanceof AbstractCubeMob cubeMob && cubeMob.getSize() != 1) {
-         return false;
-      }
-
-      return entity.is(EntityTypeTags.FROG_FOOD);
+      return entity instanceof AbstractCubeMob cubeMob && cubeMob.getSize() != 1 ? false : entity.is(EntityTypeTags.FROG_FOOD);
    }
 
    @Override
@@ -330,9 +321,8 @@ public class Frog extends Animal {
       return new Frog.FrogPathNavigation(this, level);
    }
 
-   @Nullable
    @Override
-   public LivingEntity getTarget() {
+   public @Nullable LivingEntity getTarget() {
       return this.getTargetFromBrain();
    }
 
@@ -349,7 +339,6 @@ public class Frog extends Animal {
 
    private class FrogLookControl extends LookControl {
       public FrogLookControl(final Mob mob) {
-         Objects.requireNonNull(Frog.this);
          super(mob);
       }
 

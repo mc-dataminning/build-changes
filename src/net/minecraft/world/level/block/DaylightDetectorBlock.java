@@ -31,7 +31,7 @@ public class DaylightDetectorBlock extends BaseEntityBlock {
 
    public DaylightDetectorBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(POWER, Integer.valueOf(0)).setValue(INVERTED, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(POWER, 0).setValue(INVERTED, false));
    }
 
    @Override
@@ -53,12 +53,12 @@ public class DaylightDetectorBlock extends BaseEntityBlock {
       } else if (target > 0) {
          float offset = sunAngle < (float) Math.PI ? 0.0F : (float) (Math.PI * 2);
          sunAngle += (offset - sunAngle) * 0.2F;
-         target = Math.round((float)target * Mth.cos((double)sunAngle));
+         target = Math.round(target * Mth.cos(sunAngle));
       }
 
       target = Mth.clamp(target, 0, 15);
       if (state.getValue(POWER) != target) {
-         level.setBlockAndUpdate(pos, state.setValue(POWER, Integer.valueOf(target)));
+         level.setBlockAndUpdate(pos, state.setValue(POWER, target));
       }
    }
 
@@ -68,16 +68,16 @@ public class DaylightDetectorBlock extends BaseEntityBlock {
    ) {
       if (!player.mayBuild()) {
          return super.useWithoutItem(state, level, pos, player, hitResult);
-      } else {
-         if (!level.isClientSide()) {
-            BlockState newState = state.cycle(INVERTED);
-            level.setBlock(pos, newState, 2);
-            level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, newState));
-            updateSignalStrength(newState, level, pos);
-         }
-
-         return InteractionResult.SUCCESS;
       }
+
+      if (!level.isClientSide()) {
+         BlockState newState = state.cycle(INVERTED);
+         level.setBlock(pos, newState, 2);
+         level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, newState));
+         updateSignalStrength(newState, level, pos);
+      }
+
+      return InteractionResult.SUCCESS;
    }
 
    @Override
@@ -95,9 +95,8 @@ public class DaylightDetectorBlock extends BaseEntityBlock {
       return new DaylightDetectorBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return !level.isClientSide() && level.dimensionType().hasSkyLight()
          ? createTickerHelper(type, BlockEntityTypes.DAYLIGHT_DETECTOR, DaylightDetectorBlock::tickEntity)
          : null;

@@ -17,10 +17,10 @@ public class SpellParticleOption implements ParticleOptions {
    public static MapCodec<SpellParticleOption> codec(final ParticleType<SpellParticleOption> type) {
       return RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  ExtraCodecs.RGB_COLOR_CODEC.optionalFieldOf("color", -1).forGetter(o -> o.color),
-                  Codec.FLOAT.optionalFieldOf("power", 1.0F).forGetter(o -> o.power)
-               )
-               .apply(i, (color, power) -> new SpellParticleOption(type, color, power))
+               ExtraCodecs.RGB_COLOR_CODEC.optionalFieldOf("color", -1).forGetter(o -> o.color),
+               Codec.FLOAT.optionalFieldOf("power", 1.0F).forGetter(o -> o.power)
+            )
+            .apply(i, (color, power) -> new SpellParticleOption(type, color, power))
       );
    }
 
@@ -42,15 +42,15 @@ public class SpellParticleOption implements ParticleOptions {
    }
 
    public float getRed() {
-      return (float)ARGB.red(this.color) / 255.0F;
+      return ARGB.red(this.color) / 255.0F;
    }
 
    public float getGreen() {
-      return (float)ARGB.green(this.color) / 255.0F;
+      return ARGB.green(this.color) / 255.0F;
    }
 
    public float getBlue() {
-      return (float)ARGB.blue(this.color) / 255.0F;
+      return ARGB.blue(this.color) / 255.0F;
    }
 
    public float getPower() {

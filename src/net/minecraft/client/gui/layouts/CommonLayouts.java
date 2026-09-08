@@ -12,8 +12,7 @@ public class CommonLayouts {
    }
 
    public static Layout labeledElement(final Font font, final LayoutElement element, final Component label) {
-      return labeledElement(font, element, label, s -> {
-      });
+      return labeledElement(font, element, label, s -> {});
    }
 
    public static Layout labeledElement(final Font font, final LayoutElement element, final Component label, final Consumer<LayoutSettings> settings) {

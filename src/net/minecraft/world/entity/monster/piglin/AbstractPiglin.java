@@ -120,9 +120,8 @@ public abstract class AbstractPiglin extends Monster {
 
    public abstract PiglinArmPose getArmPose();
 
-   @Nullable
    @Override
-   public LivingEntity getTarget() {
+   public @Nullable LivingEntity getTarget() {
       return this.getTargetFromBrain();
    }
 

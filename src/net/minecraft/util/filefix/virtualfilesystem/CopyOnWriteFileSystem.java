@@ -50,50 +50,50 @@ public class CopyOnWriteFileSystem extends FileSystem {
    public static CopyOnWriteFileSystem create(final String name, final Path baseDirectory, final Path tmpDirectory, final PathMatcher skippedPaths) throws IOException {
       if (Files.exists(tmpDirectory)) {
          throw new CowFSCreationException("Temporary directory already exists: " + tmpDirectory);
-      } else {
-         CopyOnWriteFileSystem fileSystem = new CopyOnWriteFileSystem(name, baseDirectory, tmpDirectory, skippedPaths);
-         Files.createDirectory(tmpDirectory);
-         return fileSystem;
       }
+
+      CopyOnWriteFileSystem fileSystem = new CopyOnWriteFileSystem(name, baseDirectory, tmpDirectory, skippedPaths);
+      Files.createDirectory(tmpDirectory);
+      return fileSystem;
    }
 
    private DirectoryNode buildFileTreeFrom(final Path baseDirectory) throws IOException {
       final DirectoryNode fileTree = new DirectoryNode(this.rootPath);
       Files.walkFileTree(baseDirectory, new SimpleFileVisitor<Path>() {
-         {
-            Objects.requireNonNull(CopyOnWriteFileSystem.this);
-         }
-
          public FileVisitResult visitFile(final Path realPath, final BasicFileAttributes attrs) throws IOException {
             checkAttributes(realPath, attrs);
             if (CopyOnWriteFileSystem.this.skippedPaths.matches(realPath)) {
                return FileVisitResult.CONTINUE;
-            } else {
-               CopyOnWriteFSPath cowPath = this.toCowPath(realPath);
-               DirectoryNode parentNode = fileTree.directoryByPath(Objects.requireNonNull(cowPath.getParent()));
-               parentNode.addChild(new FileNode(cowPath, realPath, false));
-               return FileVisitResult.CONTINUE;
             }
+
+            CopyOnWriteFSPath cowPath = this.toCowPath(realPath);
+            DirectoryNode parentNode = fileTree.directoryByPath(Objects.requireNonNull(cowPath.getParent()));
+            parentNode.addChild(new FileNode(cowPath, realPath, false));
+            return FileVisitResult.CONTINUE;
          }
 
          public FileVisitResult preVisitDirectory(final Path realPath, final BasicFileAttributes attrs) throws IOException {
             checkAttributes(realPath, attrs);
             if (CopyOnWriteFileSystem.this.skippedPaths.matches(realPath)) {
                return FileVisitResult.SKIP_SUBTREE;
-            } else if (realPath.equals(baseDirectory)) {
-               return FileVisitResult.CONTINUE;
-            } else {
-               CopyOnWriteFSPath cowPath = this.toCowPath(realPath);
-               DirectoryNode parentNode = fileTree.directoryByPath(Objects.requireNonNull(cowPath.getParent()));
-               parentNode.addChild(new DirectoryNode(cowPath));
+            }
+
+            if (realPath.equals(baseDirectory)) {
                return FileVisitResult.CONTINUE;
             }
+
+            CopyOnWriteFSPath cowPath = this.toCowPath(realPath);
+            DirectoryNode parentNode = fileTree.directoryByPath(Objects.requireNonNull(cowPath.getParent()));
+            parentNode.addChild(new DirectoryNode(cowPath));
+            return FileVisitResult.CONTINUE;
          }
 
          private static void checkAttributes(final Path realPath, final BasicFileAttributes attrs) throws CowFSCreationException {
             if (!attrs.isRegularFile() && !attrs.isDirectory()) {
                throw new CowFSSymlinkException("Cannot build copy-on-write file system when symlink is present: " + realPath);
-            } else if (!Files.isWritable(realPath)) {
+            }
+
+            if (!Files.isWritable(realPath)) {
                throw new CowFSCreationException("Cannot build copy-on-write file system, missing write access for file: " + realPath);
             }
          }
@@ -207,7 +207,6 @@ public class CopyOnWriteFileSystem extends FileSystem {
    private void collectMoveOperations(final Path outPath, final DirectoryNode folder, final CopyOnWriteFileSystem.Moves result) {
       for (Node childNode : folder.children()) {
          Path target = outPath.resolve(Objects.requireNonNull(childNode.name()));
-         Objects.requireNonNull(childNode);
          switch (childNode) {
             case FileNode fileNode:
                FileMove move = new FileMove(fileNode.storagePath(), target);
@@ -292,6 +291,6 @@ public class CopyOnWriteFileSystem extends FileSystem {
       return failedMoves;
    }
 
-   public static record Moves(List<Path> directories, List<FileMove> copiedFiles, List<FileMove> preexistingFiles) {
+   public record Moves(List<Path> directories, List<FileMove> copiedFiles, List<FileMove> preexistingFiles) {
    }
 }

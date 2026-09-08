@@ -40,9 +40,9 @@ public class Hotbar {
          .stream()
          .map(
             dynamic -> ItemStack.OPTIONAL_CODEC
-                  .parse(RegistryOps.injectRegistryContext(dynamic, registries))
-                  .resultOrPartial(error -> LOGGER.warn("Could not parse hotbar item: {}", error))
-                  .orElse(ItemStack.EMPTY)
+               .parse(RegistryOps.injectRegistryContext(dynamic, registries))
+               .resultOrPartial(error -> LOGGER.warn("Could not parse hotbar item: {}", error))
+               .orElse(ItemStack.EMPTY)
          )
          .toList();
    }

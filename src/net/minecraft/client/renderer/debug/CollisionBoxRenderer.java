@@ -26,7 +26,7 @@ public class CollisionBoxRenderer implements DebugRenderer.SimpleDebugRenderer {
    public void emitGizmos(
       final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
    ) {
-      double time = (double)Util.getNanos();
+      double time = Util.getNanos();
       if (time - this.lastUpdateTime > 1.0E8) {
          this.lastUpdateTime = time;
          Entity cameraEntity = this.minecraft.getCameraEntity();

@@ -13,11 +13,11 @@ import org.slf4j.Logger;
 public class TrapezoidHeight extends HeightProvider {
    public static final MapCodec<TrapezoidHeight> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               VerticalAnchor.CODEC.fieldOf("min_inclusive").forGetter(u -> u.minInclusive),
-               VerticalAnchor.CODEC.fieldOf("max_inclusive").forGetter(u -> u.maxInclusive),
-               Codec.INT.optionalFieldOf("plateau", 0).forGetter(u -> u.plateau)
-            )
-            .apply(i, TrapezoidHeight::new)
+            VerticalAnchor.CODEC.fieldOf("min_inclusive").forGetter(u -> u.minInclusive),
+            VerticalAnchor.CODEC.fieldOf("max_inclusive").forGetter(u -> u.maxInclusive),
+            Codec.INT.optionalFieldOf("plateau", 0).forGetter(u -> u.plateau)
+         )
+         .apply(i, TrapezoidHeight::new)
    );
    private static final Logger LOGGER = LogUtils.getLogger();
    private final VerticalAnchor minInclusive;
@@ -45,16 +45,16 @@ public class TrapezoidHeight extends HeightProvider {
       if (min > max) {
          LOGGER.warn("Empty height range: {}", this);
          return min;
-      } else {
-         int range = max - min;
-         if (this.plateau >= range) {
-            return Mth.randomBetweenInclusive(random, min, max);
-         } else {
-            int plateauStart = (range - this.plateau) / 2;
-            int plateauEnd = range - plateauStart;
-            return min + Mth.randomBetweenInclusive(random, 0, plateauEnd) + Mth.randomBetweenInclusive(random, 0, plateauStart);
-         }
       }
+
+      int range = max - min;
+      if (this.plateau >= range) {
+         return Mth.randomBetweenInclusive(random, min, max);
+      }
+
+      int plateauStart = (range - this.plateau) / 2;
+      int plateauEnd = range - plateauStart;
+      return min + Mth.randomBetweenInclusive(random, 0, plateauEnd) + Mth.randomBetweenInclusive(random, 0, plateauStart);
    }
 
    @Override

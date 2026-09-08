@@ -11,19 +11,19 @@ public class ByIdMap {
    private static <T> IntFunction<T> createMap(final ToIntFunction<T> idGetter, final T[] values) {
       if (values.length == 0) {
          throw new IllegalArgumentException("Empty value list");
-      } else {
-         Int2ObjectMap<T> result = new Int2ObjectOpenHashMap();
-
-         for (T value : values) {
-            int id = idGetter.applyAsInt(value);
-            T previous = (T)result.put(id, value);
-            if (previous != null) {
-               throw new IllegalArgumentException("Duplicate entry on id " + id + ": current=" + value + ", previous=" + previous);
-            }
-         }
-
-         return result;
       }
+
+      Int2ObjectMap<T> result = new Int2ObjectOpenHashMap();
+
+      for (T value : values) {
+         int id = idGetter.applyAsInt(value);
+         T previous = (T)result.put(id, value);
+         if (previous != null) {
+            throw new IllegalArgumentException("Duplicate entry on id " + id + ": current=" + value + ", previous=" + previous);
+         }
+      }
+
+      return result;
    }
 
    public static <T> IntFunction<T> sparse(final ToIntFunction<T> idGetter, final T[] values, final T _default) {
@@ -35,32 +35,32 @@ public class ByIdMap {
       int length = values.length;
       if (length == 0) {
          throw new IllegalArgumentException("Empty value list");
-      } else {
-         T[] result = (T[])values.clone();
-         Arrays.fill(result, null);
-
-         for (T value : values) {
-            int id = idGetter.applyAsInt(value);
-            if (id < 0 || id >= length) {
-               throw new IllegalArgumentException("Values are not continous, found index " + id + " for value " + value);
-            }
-
-            T previous = result[id];
-            if (previous != null) {
-               throw new IllegalArgumentException("Duplicate entry on id " + id + ": current=" + value + ", previous=" + previous);
-            }
-
-            result[id] = value;
-         }
-
-         for (int i = 0; i < length; i++) {
-            if (result[i] == null) {
-               throw new IllegalArgumentException("Missing value at index: " + i);
-            }
-         }
-
-         return result;
       }
+
+      T[] result = (T[])values.clone();
+      Arrays.fill(result, null);
+
+      for (T value : values) {
+         int id = idGetter.applyAsInt(value);
+         if (id < 0 || id >= length) {
+            throw new IllegalArgumentException("Values are not continous, found index " + id + " for value " + value);
+         }
+
+         T previous = result[id];
+         if (previous != null) {
+            throw new IllegalArgumentException("Duplicate entry on id " + id + ": current=" + value + ", previous=" + previous);
+         }
+
+         result[id] = value;
+      }
+
+      for (int i = 0; i < length; i++) {
+         if (result[i] == null) {
+            throw new IllegalArgumentException("Missing value at index: " + i);
+         }
+      }
+
+      return result;
    }
 
    public static <T> IntFunction<T> continuous(final ToIntFunction<T> idGetter, final T[] values, final ByIdMap.OutOfBoundsStrategy strategy) {
@@ -77,7 +77,7 @@ public class ByIdMap {
       };
    }
 
-   public static enum OutOfBoundsStrategy {
+   public enum OutOfBoundsStrategy {
       ZERO,
       WRAP,
       CLAMP;

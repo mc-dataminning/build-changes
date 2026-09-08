@@ -88,7 +88,7 @@ public abstract class BasePressurePlateBlock extends Block {
       }
    }
 
-   private void checkPressed(@Nullable final Entity sourceEntity, final Level level, final BlockPos pos, final BlockState state, final int oldSignal) {
+   private void checkPressed(final @Nullable Entity sourceEntity, final Level level, final BlockPos pos, final BlockState state, final int oldSignal) {
       int signal = this.getSignalStrength(level, pos);
       boolean wasPressed = oldSignal > 0;
       boolean isPressed = signal > 0;

@@ -28,9 +28,9 @@ public class LlamaSpit extends Projectile {
       this(EntityTypes.LLAMA_SPIT, level);
       this.setOwner(owner);
       this.setPos(
-         owner.getX() - (double)(owner.getBbWidth() + 1.0F) * 0.5 * (double)Mth.sin((double)(owner.yBodyRot * (float) (Math.PI / 180.0))),
+         owner.getX() - (owner.getBbWidth() + 1.0F) * 0.5 * Mth.sin(owner.yBodyRot * (float) (Math.PI / 180.0)),
          owner.getEyeY() - 0.1F,
-         owner.getZ() + (double)(owner.getBbWidth() + 1.0F) * 0.5 * (double)Mth.cos((double)(owner.yBodyRot * (float) (Math.PI / 180.0)))
+         owner.getZ() + (owner.getBbWidth() + 1.0F) * 0.5 * Mth.cos(owner.yBodyRot * (float) (Math.PI / 180.0))
       );
    }
 
@@ -55,7 +55,7 @@ public class LlamaSpit extends Projectile {
       } else if (this.isInWater()) {
          this.discard();
       } else {
-         this.setDeltaMovement(movement.scale((double)this.getAirDrag()));
+         this.setDeltaMovement(movement.scale(this.getAirDrag()));
          this.applyGravity();
          this.setPos(x, y, z);
       }
@@ -96,7 +96,7 @@ public class LlamaSpit extends Projectile {
       Vec3 movement = packet.getMovement();
 
       for (int i = 0; i < 7; i++) {
-         double k = 0.4 + 0.1 * (double)i;
+         double k = 0.4 + 0.1 * i;
          this.level().addParticle(ParticleTypes.SPIT, this.getX(), this.getY(), this.getZ(), movement.x * k, movement.y, movement.z * k);
       }
 

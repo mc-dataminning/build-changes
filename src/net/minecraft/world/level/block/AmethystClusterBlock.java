@@ -31,8 +31,8 @@ public class AmethystClusterBlock extends AmethystBlock implements SimpleWaterlo
 
    public AmethystClusterBlock(final float height, final float width, final BlockBehaviour.Properties props) {
       super(props);
-      this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, Boolean.valueOf(false)).setValue(FACING, Direction.UP));
-      this.shapes = Shapes.rotateAll(Block.boxZ((double)width, (double)(16.0F - height), 16.0));
+      this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, false).setValue(FACING, Direction.UP));
+      this.shapes = Shapes.rotateAll(Block.boxZ(width, 16.0F - height, 16.0));
       this.height = height;
       this.width = width;
    }
@@ -69,14 +69,11 @@ public class AmethystClusterBlock extends AmethystBlock implements SimpleWaterlo
          : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       LevelAccessor level = context.getLevel();
       BlockPos pos = context.getClickedPos();
-      return this.defaultBlockState()
-         .setValue(WATERLOGGED, Boolean.valueOf(level.getFluidState(pos).is(Fluids.WATER)))
-         .setValue(FACING, context.getClickedFace());
+      return this.defaultBlockState().setValue(WATERLOGGED, level.getFluidState(pos).is(Fluids.WATER)).setValue(FACING, context.getClickedFace());
    }
 
    @Override

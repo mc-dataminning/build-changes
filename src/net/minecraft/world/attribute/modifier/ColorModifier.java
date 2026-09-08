@@ -53,7 +53,7 @@ public interface ColorModifier<Subject, Argument> extends AttributeModifier<Subj
    };
 
    @FunctionalInterface
-   public interface ArgbModifier<Subject> extends ColorModifier<Subject, Vector4fc> {
+   interface ArgbModifier<Subject> extends ColorModifier<Subject, Vector4fc> {
       @Override
       default Codec<Vector4fc> argumentCodec(final EnvironmentAttribute<Subject> type) {
          return ExtraCodecs.STRING_ARGB_VEC4_COLOR;
@@ -65,13 +65,13 @@ public interface ColorModifier<Subject, Argument> extends AttributeModifier<Subj
       }
    }
 
-   public static record BlendToGray(float brightness, float factor) {
+   record BlendToGray(float brightness, float factor) {
       public static final Codec<ColorModifier.BlendToGray> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("brightness").forGetter(ColorModifier.BlendToGray::brightness),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("factor").forGetter(ColorModifier.BlendToGray::factor)
-               )
-               .apply(i, ColorModifier.BlendToGray::new)
+               Codec.floatRange(0.0F, 1.0F).fieldOf("brightness").forGetter(ColorModifier.BlendToGray::brightness),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("factor").forGetter(ColorModifier.BlendToGray::factor)
+            )
+            .apply(i, ColorModifier.BlendToGray::new)
       );
 
       public static ColorModifier.BlendToGray lerp(final float alpha, final ColorModifier.BlendToGray from, final ColorModifier.BlendToGray to) {
@@ -79,7 +79,7 @@ public interface ColorModifier<Subject, Argument> extends AttributeModifier<Subj
       }
    }
 
-   public interface RgbModifier<Subject> extends ColorModifier<Subject, Vector3fc> {
+   interface RgbModifier<Subject> extends ColorModifier<Subject, Vector3fc> {
       @Override
       default Codec<Vector3fc> argumentCodec(final EnvironmentAttribute<Subject> type) {
          return ExtraCodecs.STRING_RGB_VEC3_COLOR;

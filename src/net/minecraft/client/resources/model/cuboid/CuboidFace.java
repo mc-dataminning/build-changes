@@ -12,7 +12,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.util.GsonHelper;
 import org.jspecify.annotations.Nullable;
 
-public record CuboidFace(@Nullable Direction cullForDirection, int tintIndex, String texture, @Nullable CuboidFace.UVs uvs, Quadrant rotation) {
+public record CuboidFace(@Nullable Direction cullForDirection, int tintIndex, String texture, CuboidFace.@Nullable UVs uvs, Quadrant rotation) {
    public static final int NO_TINT = -1;
 
    public static float getU(final CuboidFace.UVs uvs, final Quadrant rotation, final int vertex) {
@@ -45,8 +45,7 @@ public record CuboidFace(@Nullable Direction cullForDirection, int tintIndex, St
          return GsonHelper.getAsString(object, "texture");
       }
 
-      @Nullable
-      private static Direction getCullFacing(final JsonObject object) {
+      private static @Nullable Direction getCullFacing(final JsonObject object) {
          String cullFace = GsonHelper.getAsString(object, "cullface", "");
          return Direction.byName(cullFace);
       }
@@ -56,26 +55,25 @@ public record CuboidFace(@Nullable Direction cullForDirection, int tintIndex, St
          return Quadrant.parseJson(rotation);
       }
 
-      @Nullable
-      private static CuboidFace.UVs getUVs(final JsonObject object) {
+      private static CuboidFace.@Nullable UVs getUVs(final JsonObject object) {
          if (!object.has("uv")) {
             return null;
-         } else {
-            JsonArray uvArray = GsonHelper.getAsJsonArray(object, "uv");
-            if (uvArray.size() != 4) {
-               throw new JsonParseException("Expected 4 uv values, found: " + uvArray.size());
-            } else {
-               float minU = GsonHelper.convertToFloat(uvArray.get(0), "minU");
-               float minV = GsonHelper.convertToFloat(uvArray.get(1), "minV");
-               float maxU = GsonHelper.convertToFloat(uvArray.get(2), "maxU");
-               float maxV = GsonHelper.convertToFloat(uvArray.get(3), "maxV");
-               return new CuboidFace.UVs(minU, minV, maxU, maxV);
-            }
          }
+
+         JsonArray uvArray = GsonHelper.getAsJsonArray(object, "uv");
+         if (uvArray.size() != 4) {
+            throw new JsonParseException("Expected 4 uv values, found: " + uvArray.size());
+         }
+
+         float minU = GsonHelper.convertToFloat(uvArray.get(0), "minU");
+         float minV = GsonHelper.convertToFloat(uvArray.get(1), "minV");
+         float maxU = GsonHelper.convertToFloat(uvArray.get(2), "maxU");
+         float maxV = GsonHelper.convertToFloat(uvArray.get(3), "maxV");
+         return new CuboidFace.UVs(minU, minV, maxU, maxV);
       }
    }
 
-   public static record UVs(float minU, float minV, float maxU, float maxV) {
+   public record UVs(float minU, float minV, float maxU, float maxV) {
       public float getVertexU(final int index) {
          return index != 0 && index != 1 ? this.maxU : this.minU;
       }

@@ -22,9 +22,9 @@ public abstract class BrewingProvider {
    protected void addContainerTransformation(final Item container, final Item reagent, final Item output) {
       if (!this.containers.contains(container)) {
          throw new IllegalStateException("Adding a transformation for an unknown container: " + container);
-      } else {
-         this.containerTransformations.add(new BrewingProvider.ContainerTransformation(container, reagent, output));
       }
+
+      this.containerTransformations.add(new BrewingProvider.ContainerTransformation(container, reagent, output));
    }
 
    protected void addContainer(final Item container) {
@@ -70,6 +70,6 @@ public abstract class BrewingProvider {
 
    protected abstract void buildMixes();
 
-   private static record ContainerTransformation(Item container, Item reagent, Item output) {
+   private record ContainerTransformation(Item container, Item reagent, Item output) {
    }
 }

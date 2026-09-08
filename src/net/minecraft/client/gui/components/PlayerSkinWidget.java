@@ -39,7 +39,7 @@ public class PlayerSkinWidget extends AbstractWidget {
 
    @Override
    protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      float scale = 0.97F * (float)this.getHeight() / 2.125F;
+      float scale = 0.97F * this.getHeight() / 2.125F;
       float pivotY = -1.0625F;
       PlayerSkin skin = this.skin.get();
       Model.Simple model = skin.model() == PlayerModelType.SLIM ? this.slimModel : this.wideModel;
@@ -62,9 +62,8 @@ public class PlayerSkinWidget extends AbstractWidget {
    protected void updateWidgetNarration(final NarrationElementOutput output) {
    }
 
-   @Nullable
    @Override
-   public ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
+   public @Nullable ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
       return null;
    }
 }

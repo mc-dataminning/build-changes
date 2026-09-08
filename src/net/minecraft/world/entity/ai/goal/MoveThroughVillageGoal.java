@@ -24,8 +24,7 @@ import org.jspecify.annotations.Nullable;
 public class MoveThroughVillageGoal extends Goal {
    protected final PathfinderMob mob;
    private final double speedModifier;
-   @Nullable
-   private Path path;
+   private @Nullable Path path;
    private BlockPos poiPos;
    private final boolean onlyAtNight;
    private final List<BlockPos> visited = Lists.newArrayList();
@@ -50,79 +49,77 @@ public class MoveThroughVillageGoal extends Goal {
    public boolean canUse() {
       if (!GoalUtils.hasGroundPathNavigation(this.mob)) {
          return false;
-      } else {
-         this.updateVisited();
-         if (this.onlyAtNight && this.mob.level().isBrightOutside()) {
-            return false;
-         } else {
-            ServerLevel level = (ServerLevel)this.mob.level();
-            BlockPos pos = this.mob.blockPosition();
-            if (!level.isCloseToVillage(pos, 6)) {
-               return false;
-            } else {
-               Vec3 landPos = LandRandomPos.getPos(
-                  this.mob,
-                  15,
-                  7,
-                  p -> {
-                     if (!level.isVillage(p)) {
-                        return Double.NEGATIVE_INFINITY;
-                     } else {
-                        Optional<BlockPos> newPoiPos = level.getPoiManager()
-                           .find(e -> e.is(PoiTypeTags.VILLAGE), this::hasNotVisited, p, 10, PoiManager.Occupancy.IS_OCCUPIED);
-                        return newPoiPos.<Double>map(poiPos -> -poiPos.distSqr(pos)).orElse(Double.NEGATIVE_INFINITY);
-                     }
-                  }
-               );
-               if (landPos == null) {
-                  return false;
-               } else {
-                  Optional<BlockPos> target = level.getPoiManager()
-                     .find(e -> e.is(PoiTypeTags.VILLAGE), this::hasNotVisited, BlockPos.containing(landPos), 10, PoiManager.Occupancy.IS_OCCUPIED);
-                  if (target.isEmpty()) {
-                     return false;
-                  } else {
-                     this.poiPos = target.get().immutable();
-                     PathNavigation navigation = this.mob.getNavigation();
-                     navigation.setCanOpenDoors(this.canDealWithDoors.getAsBoolean());
-                     this.path = navigation.createPath(this.poiPos, 0);
-                     navigation.setCanOpenDoors(true);
-                     if (this.path == null) {
-                        Vec3 partialStep = DefaultRandomPos.getPosTowards(this.mob, 10, 7, Vec3.atBottomCenterOf(this.poiPos), (float) (Math.PI / 2));
-                        if (partialStep == null) {
-                           return false;
-                        }
+      }
 
-                        navigation.setCanOpenDoors(this.canDealWithDoors.getAsBoolean());
-                        this.path = this.mob.getNavigation().createPath(partialStep.x, partialStep.y, partialStep.z, 0);
-                        navigation.setCanOpenDoors(true);
-                        if (this.path == null) {
-                           return false;
-                        }
-                     }
+      this.updateVisited();
+      if (this.onlyAtNight && this.mob.level().isBrightOutside()) {
+         return false;
+      }
 
-                     for (int i = 0; i < this.path.getNodeCount(); i++) {
-                        Node node = this.path.getNode(i);
-                        BlockPos doorPos = new BlockPos(node.x, node.y + 1, node.z);
-                        if (DoorBlock.isWoodenDoor(this.mob.level(), doorPos)) {
-                           this.path = this.mob.getNavigation().createPath((double)node.x, (double)node.y, (double)node.z, 0);
-                           break;
-                        }
-                     }
+      ServerLevel level = (ServerLevel)this.mob.level();
+      BlockPos pos = this.mob.blockPosition();
+      if (!level.isCloseToVillage(pos, 6)) {
+         return false;
+      }
 
-                     return this.path != null;
-                  }
-               }
+      Vec3 landPos = LandRandomPos.getPos(
+         this.mob,
+         15,
+         7,
+         p -> {
+            if (!level.isVillage(p)) {
+               return Double.NEGATIVE_INFINITY;
             }
+
+            Optional<BlockPos> newPoiPos = level.getPoiManager()
+               .find(e -> e.is(PoiTypeTags.VILLAGE), this::hasNotVisited, p, 10, PoiManager.Occupancy.IS_OCCUPIED);
+            return newPoiPos.<Double>map(poiPos -> -poiPos.distSqr(pos)).orElse(Double.NEGATIVE_INFINITY);
+         }
+      );
+      if (landPos == null) {
+         return false;
+      }
+
+      Optional<BlockPos> target = level.getPoiManager()
+         .find(e -> e.is(PoiTypeTags.VILLAGE), this::hasNotVisited, BlockPos.containing(landPos), 10, PoiManager.Occupancy.IS_OCCUPIED);
+      if (target.isEmpty()) {
+         return false;
+      }
+
+      this.poiPos = target.get().immutable();
+      PathNavigation navigation = this.mob.getNavigation();
+      navigation.setCanOpenDoors(this.canDealWithDoors.getAsBoolean());
+      this.path = navigation.createPath(this.poiPos, 0);
+      navigation.setCanOpenDoors(true);
+      if (this.path == null) {
+         Vec3 partialStep = DefaultRandomPos.getPosTowards(this.mob, 10, 7, Vec3.atBottomCenterOf(this.poiPos), (float) (Math.PI / 2));
+         if (partialStep == null) {
+            return false;
+         }
+
+         navigation.setCanOpenDoors(this.canDealWithDoors.getAsBoolean());
+         this.path = this.mob.getNavigation().createPath(partialStep.x, partialStep.y, partialStep.z, 0);
+         navigation.setCanOpenDoors(true);
+         if (this.path == null) {
+            return false;
          }
       }
+
+      for (int i = 0; i < this.path.getNodeCount(); i++) {
+         Node node = this.path.getNode(i);
+         BlockPos doorPos = new BlockPos(node.x, node.y + 1, node.z);
+         if (DoorBlock.isWoodenDoor(this.mob.level(), doorPos)) {
+            this.path = this.mob.getNavigation().createPath(node.x, node.y, node.z, 0);
+            break;
+         }
+      }
+
+      return this.path != null;
    }
 
    @Override
    public boolean canContinueToUse() {
-      return this.mob.getNavigation().isDone()
-         ? false
-         : !this.poiPos.closerToCenterThan(this.mob.position(), (double)(this.mob.getBbWidth() + (float)this.distanceToPoi));
+      return this.mob.getNavigation().isDone() ? false : !this.poiPos.closerToCenterThan(this.mob.position(), this.mob.getBbWidth() + this.distanceToPoi);
    }
 
    @Override
@@ -132,7 +129,7 @@ public class MoveThroughVillageGoal extends Goal {
 
    @Override
    public void stop() {
-      if (this.mob.getNavigation().isDone() || this.poiPos.closerToCenterThan(this.mob.position(), (double)this.distanceToPoi)) {
+      if (this.mob.getNavigation().isDone() || this.poiPos.closerToCenterThan(this.mob.position(), this.distanceToPoi)) {
          this.visited.add(this.poiPos);
       }
    }

@@ -86,7 +86,7 @@ public class WrappedGoal extends Goal {
    }
 
    @Override
-   public boolean equals(@Nullable final Object o) {
+   public boolean equals(final @Nullable Object o) {
       if (this == o) {
          return true;
       } else {

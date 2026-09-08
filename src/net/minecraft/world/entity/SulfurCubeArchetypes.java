@@ -187,11 +187,11 @@ public class SulfurCubeArchetypes {
       final float speed, final float bounce, final float friction, final float drag
    ) {
       return List.of(
-         add(Attributes.KNOCKBACK_RESISTANCE, (double)(-speed)),
-         add(Attributes.EXPLOSION_KNOCKBACK_RESISTANCE, (double)(-speed)),
-         add(Attributes.BOUNCINESS, (double)bounce),
-         multiply(Attributes.FRICTION_MODIFIER, (double)friction),
-         multiply(Attributes.AIR_DRAG_MODIFIER, (double)drag)
+         add(Attributes.KNOCKBACK_RESISTANCE, -speed),
+         add(Attributes.EXPLOSION_KNOCKBACK_RESISTANCE, -speed),
+         add(Attributes.BOUNCINESS, bounce),
+         multiply(Attributes.FRICTION_MODIFIER, friction),
+         multiply(Attributes.AIR_DRAG_MODIFIER, drag)
       );
    }
 

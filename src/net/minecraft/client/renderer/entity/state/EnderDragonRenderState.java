@@ -8,8 +8,7 @@ public class EnderDragonRenderState extends EntityRenderState {
    public float flapTime;
    public float deathTime;
    public boolean hasRedOverlay;
-   @Nullable
-   public Vec3 beamOffset;
+   public @Nullable Vec3 beamOffset;
    public boolean isLandingOrTakingOff;
    public boolean isSitting;
    public double distanceToEgg;
@@ -23,9 +22,9 @@ public class EnderDragonRenderState extends EntityRenderState {
    public float getHeadPartYOffset(final int part, final DragonFlightHistory.Sample bodyPos, final DragonFlightHistory.Sample partPos) {
       double result;
       if (this.isLandingOrTakingOff) {
-         result = (double)part / Math.max(this.distanceToEgg / 4.0, 1.0);
+         result = part / Math.max(this.distanceToEgg / 4.0, 1.0);
       } else if (this.isSitting) {
-         result = (double)part;
+         result = part;
       } else if (part == 6) {
          result = 0.0;
       } else {

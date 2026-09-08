@@ -71,10 +71,10 @@ public record ClientboundDamageEventPacket(int entityId, Holder<DamageType> sour
    public DamageSource getSource(final Level level) {
       if (this.sourcePosition.isPresent()) {
          return new DamageSource(this.sourceType, this.sourcePosition.get());
-      } else {
-         Entity cause = level.getEntity(this.sourceCauseId);
-         Entity direct = level.getEntity(this.sourceDirectId);
-         return new DamageSource(this.sourceType, direct, cause);
       }
+
+      Entity cause = level.getEntity(this.sourceCauseId);
+      Entity direct = level.getEntity(this.sourceDirectId);
+      return new DamageSource(this.sourceType, direct, cause);
    }
 }

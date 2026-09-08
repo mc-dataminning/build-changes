@@ -10,10 +10,10 @@ import net.minecraft.util.RandomSource;
 public record AmbientParticle(ParticleOptions particle, float probability) {
    public static final Codec<AmbientParticle> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ParticleTypes.CODEC.fieldOf("particle").forGetter(s -> s.particle),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter(s -> s.probability)
-            )
-            .apply(i, AmbientParticle::new)
+            ParticleTypes.CODEC.fieldOf("particle").forGetter(s -> s.particle),
+            Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter(s -> s.probability)
+         )
+         .apply(i, AmbientParticle::new)
    );
 
    public boolean canSpawn(final RandomSource random) {

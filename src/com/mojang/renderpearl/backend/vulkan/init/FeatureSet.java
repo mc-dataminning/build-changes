@@ -12,13 +12,6 @@ import org.lwjgl.vulkan.VkPhysicalDevice;
 import org.lwjgl.vulkan.VkPhysicalDeviceFeatures2;
 
 public record FeatureSet(String name, Set<String> extensions, Set<VulkanFeature> features, FeatureSet.Condition condition) {
-   public FeatureSet(final String name, final Set<String> extensions, final Set<VulkanFeature> features, final FeatureSet.Condition condition) {
-      this.name = name;
-      this.extensions = Set.copyOf(extensions);
-      this.features = Set.copyOf(features);
-      this.condition = condition;
-   }
-
    public FeatureSet(final String name, final Set<String> extensions, final Set<VulkanFeature> features) {
       this(name, extensions, features, FeatureSet.Condition.IDENTITY_CONDITION);
    }
@@ -103,27 +96,27 @@ public record FeatureSet(String name, Set<String> extensions, Set<VulkanFeature>
    public Set<String> unsupportedExtensions(final Set<String> deviceSupportedExtensions) {
       if (this.extensions.isEmpty()) {
          return Set.of();
-      } else {
-         Set<String> supportedExtensions = new ObjectOpenHashSet(this.extensions);
-         supportedExtensions.removeAll(deviceSupportedExtensions);
-         return supportedExtensions.isEmpty() ? Set.of() : Collections.unmodifiableSet(supportedExtensions);
       }
+
+      Set<String> supportedExtensions = new ObjectOpenHashSet(this.extensions);
+      supportedExtensions.removeAll(deviceSupportedExtensions);
+      return supportedExtensions.isEmpty() ? Set.of() : Collections.unmodifiableSet(supportedExtensions);
    }
 
    public Set<String> supportedExtensions(final Set<String> deviceSupportedExtensions) {
       if (this.extensions.isEmpty()) {
          return Set.of();
-      } else {
-         Set<String> supportedExtensions = new ObjectOpenHashSet();
-
-         for (String extension : this.extensions) {
-            if (deviceSupportedExtensions.contains(extension)) {
-               supportedExtensions.add(extension);
-            }
-         }
-
-         return supportedExtensions.isEmpty() ? Set.of() : Collections.unmodifiableSet(supportedExtensions);
       }
+
+      Set<String> supportedExtensions = new ObjectOpenHashSet();
+
+      for (String extension : this.extensions) {
+         if (deviceSupportedExtensions.contains(extension)) {
+            supportedExtensions.add(extension);
+         }
+      }
+
+      return supportedExtensions.isEmpty() ? Set.of() : Collections.unmodifiableSet(supportedExtensions);
    }
 
    public Set<VulkanFeature> unsupportedFeatures(final VkPhysicalDevice vkPhysicalDevice) {

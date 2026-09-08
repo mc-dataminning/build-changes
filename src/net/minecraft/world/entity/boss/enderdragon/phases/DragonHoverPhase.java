@@ -6,8 +6,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
 public class DragonHoverPhase extends AbstractDragonPhaseInstance {
-   @Nullable
-   private Vec3 targetLocation;
+   private @Nullable Vec3 targetLocation;
 
    public DragonHoverPhase(final EnderDragon dragon) {
       super(dragon);
@@ -35,9 +34,8 @@ public class DragonHoverPhase extends AbstractDragonPhaseInstance {
       return 1.0F;
    }
 
-   @Nullable
    @Override
-   public Vec3 getFlyTargetLocation() {
+   public @Nullable Vec3 getFlyTargetLocation() {
       return this.targetLocation;
    }
 

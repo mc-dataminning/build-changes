@@ -31,39 +31,39 @@ public class MinecartItem extends Item {
       BlockState blockState = level.getBlockState(pos);
       if (!blockState.is(BlockTags.RAILS)) {
          return InteractionResult.FAIL;
-      } else {
-         ItemStack itemStack = context.getItemInHand();
-         RailShape shape = blockState.getBlock() instanceof BaseRailBlock
-            ? blockState.getValue(((BaseRailBlock)blockState.getBlock()).getShapeProperty())
-            : RailShape.NORTH_SOUTH;
-         double offset = 0.0;
-         if (shape.isSlope()) {
-            offset = 0.5;
-         }
+      }
 
-         Vec3 spawnPos = new Vec3((double)pos.getX() + 0.5, (double)pos.getY() + 0.0625 + offset, (double)pos.getZ() + 0.5);
-         AbstractMinecart cart = AbstractMinecart.createMinecart(
-            level, spawnPos.x, spawnPos.y, spawnPos.z, this.type, EntitySpawnReason.DISPENSER, itemStack, context.getPlayer()
-         );
-         if (cart == null) {
-            return InteractionResult.FAIL;
-         } else {
-            if (AbstractMinecart.useExperimentalMovement(level)) {
-               for (Entity entity : level.getEntities(null, cart.getBoundingBox())) {
-                  if (entity instanceof AbstractMinecart) {
-                     return InteractionResult.FAIL;
-                  }
-               }
+      ItemStack itemStack = context.getItemInHand();
+      RailShape shape = blockState.getBlock() instanceof BaseRailBlock
+         ? blockState.getValue(((BaseRailBlock)blockState.getBlock()).getShapeProperty())
+         : RailShape.NORTH_SOUTH;
+      double offset = 0.0;
+      if (shape.isSlope()) {
+         offset = 0.5;
+      }
+
+      Vec3 spawnPos = new Vec3(pos.getX() + 0.5, pos.getY() + 0.0625 + offset, pos.getZ() + 0.5);
+      AbstractMinecart cart = AbstractMinecart.createMinecart(
+         level, spawnPos.x, spawnPos.y, spawnPos.z, this.type, EntitySpawnReason.DISPENSER, itemStack, context.getPlayer()
+      );
+      if (cart == null) {
+         return InteractionResult.FAIL;
+      }
+
+      if (AbstractMinecart.useExperimentalMovement(level)) {
+         for (Entity entity : level.getEntities(null, cart.getBoundingBox())) {
+            if (entity instanceof AbstractMinecart) {
+               return InteractionResult.FAIL;
             }
-
-            if (level instanceof ServerLevel serverLevel) {
-               serverLevel.addFreshEntity(cart);
-               serverLevel.gameEvent(GameEvent.ENTITY_PLACE, pos, GameEvent.Context.of(context.getPlayer(), serverLevel.getBlockState(pos.below())));
-            }
-
-            itemStack.shrink(1);
-            return InteractionResult.SUCCESS;
          }
       }
+
+      if (level instanceof ServerLevel serverLevel) {
+         serverLevel.addFreshEntity(cart);
+         serverLevel.gameEvent(GameEvent.ENTITY_PLACE, pos, GameEvent.Context.of(context.getPlayer(), serverLevel.getBlockState(pos.below())));
+      }
+
+      itemStack.shrink(1);
+      return InteractionResult.SUCCESS;
    }
 }

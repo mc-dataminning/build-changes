@@ -15,7 +15,7 @@ public enum AttackIndicatorStatus {
    private final int id;
    private final Component caption;
 
-   private AttackIndicatorStatus(final int id, final String key) {
+   AttackIndicatorStatus(final int id, final String key) {
       this.id = id;
       this.caption = Component.translatable(key);
    }

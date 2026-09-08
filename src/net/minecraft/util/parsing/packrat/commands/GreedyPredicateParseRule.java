@@ -22,8 +22,7 @@ public abstract class GreedyPredicateParseRule implements Rule<StringReader, Str
       this.error = error;
    }
 
-   @Nullable
-   public String parse(final ParseState<StringReader> state) {
+   public @Nullable String parse(final ParseState<StringReader> state) {
       StringReader input = state.input();
       String fullString = input.getString();
       int start = input.getCursor();

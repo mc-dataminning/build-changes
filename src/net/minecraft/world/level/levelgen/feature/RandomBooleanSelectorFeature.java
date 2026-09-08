@@ -13,10 +13,10 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 public record RandomBooleanSelectorFeature(Holder<PlacedFeature> featureTrue, Holder<PlacedFeature> featureFalse) implements Feature {
    public static final MapCodec<RandomBooleanSelectorFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               PlacedFeature.CODEC.fieldOf("feature_true").forGetter(RandomBooleanSelectorFeature::featureTrue),
-               PlacedFeature.CODEC.fieldOf("feature_false").forGetter(RandomBooleanSelectorFeature::featureFalse)
-            )
-            .apply(i, RandomBooleanSelectorFeature::new)
+            PlacedFeature.CODEC.fieldOf("feature_true").forGetter(RandomBooleanSelectorFeature::featureTrue),
+            PlacedFeature.CODEC.fieldOf("feature_false").forGetter(RandomBooleanSelectorFeature::featureFalse)
+         )
+         .apply(i, RandomBooleanSelectorFeature::new)
    );
 
    @Override

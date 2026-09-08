@@ -3,7 +3,6 @@ package net.minecraft.client;
 import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
@@ -23,17 +22,17 @@ public class StringSplitter {
       this.widthProvider = widthProvider;
    }
 
-   public float stringWidth(@Nullable final String str) {
+   public float stringWidth(final @Nullable String str) {
       if (str == null) {
          return 0.0F;
-      } else {
-         MutableFloat result = new MutableFloat();
-         StringDecomposer.iterateFormatted(str, Style.EMPTY, (position, style, codepoint) -> {
-            result.add(this.widthProvider.getWidth(codepoint, style));
-            return true;
-         });
-         return result.floatValue();
       }
+
+      MutableFloat result = new MutableFloat();
+      StringDecomposer.iterateFormatted(str, Style.EMPTY, (position, style, codepoint) -> {
+         result.add(this.widthProvider.getWidth(codepoint, style));
+         return true;
+      });
+      return result.floatValue();
    }
 
    public float stringWidth(final FormattedText text) {
@@ -55,7 +54,7 @@ public class StringSplitter {
    }
 
    public int plainIndexAtWidth(final String str, final int maxWidth, final Style style) {
-      StringSplitter.WidthLimitedCharSink output = new StringSplitter.WidthLimitedCharSink((float)maxWidth);
+      StringSplitter.WidthLimitedCharSink output = new StringSplitter.WidthLimitedCharSink(maxWidth);
       StringDecomposer.iterate(str, style, output);
       return output.getPosition();
    }
@@ -69,25 +68,20 @@ public class StringSplitter {
       MutableInt result = new MutableInt(str.length());
       StringDecomposer.iterateBackwards(str, style, (position, s, codepoint) -> {
          float w = currentWidth.addAndGet(this.widthProvider.getWidth(codepoint, s));
-         if (w > (float)maxWidth) {
+         if (w > maxWidth) {
             return false;
-         } else {
-            result.setValue(position);
-            return true;
          }
+
+         result.setValue(position);
+         return true;
       });
       return str.substring(result.intValue());
    }
 
    public FormattedText headByWidth(final FormattedText text, final int width, final Style initialStyle) {
-      final StringSplitter.WidthLimitedCharSink output = new StringSplitter.WidthLimitedCharSink((float)width);
+      final StringSplitter.WidthLimitedCharSink output = new StringSplitter.WidthLimitedCharSink(width);
       return text.visit(new FormattedText.StyledContentConsumer<FormattedText>() {
-         private final ComponentCollector collector;
-
-         {
-            Objects.requireNonNull(StringSplitter.this);
-            this.collector = new ComponentCollector();
-         }
+         private final ComponentCollector collector = new ComponentCollector();
 
          @Override
          public Optional<FormattedText> accept(final Style style, final String contents) {
@@ -111,7 +105,7 @@ public class StringSplitter {
    }
 
    public int findLineBreak(final String input, final int max, final Style initialStyle) {
-      StringSplitter.LineBreakFinder finder = new StringSplitter.LineBreakFinder((float)max);
+      StringSplitter.LineBreakFinder finder = new StringSplitter.LineBreakFinder(max);
       StringDecomposer.iterateFormatted(input, initialStyle, finder);
       return finder.getSplitPosition();
    }
@@ -165,7 +159,7 @@ public class StringSplitter {
       Style workStyle = initialStyle;
 
       while (start < size) {
-         StringSplitter.LineBreakFinder finder = new StringSplitter.LineBreakFinder((float)maxWidth);
+         StringSplitter.LineBreakFinder finder = new StringSplitter.LineBreakFinder(maxWidth);
          boolean endOfText = StringDecomposer.iterateFormatted(input, start, workStyle, initialStyle, finder);
          if (endOfText) {
             output.accept(workStyle, start, size);
@@ -209,7 +203,7 @@ public class StringSplitter {
 
       while (shouldRestart) {
          shouldRestart = false;
-         StringSplitter.LineBreakFinder finder = new StringSplitter.LineBreakFinder((float)maxWidth);
+         StringSplitter.LineBreakFinder finder = new StringSplitter.LineBreakFinder(maxWidth);
 
          for (StringSplitter.LineComponent part : parts.parts) {
             boolean endOfText = StringDecomposer.iterateFormatted(part.contents, 0, part.style, initialStyle, finder);
@@ -298,8 +292,7 @@ public class StringSplitter {
          return result.getResultOrEmpty();
       }
 
-      @Nullable
-      public FormattedText getRemainder() {
+      public @Nullable FormattedText getRemainder() {
          ComponentCollector result = new ComponentCollector();
          this.parts.forEach(result::append);
          this.parts.clear();
@@ -309,22 +302,16 @@ public class StringSplitter {
 
    private class LineBreakFinder implements FormattedCharSink {
       private final float maxWidth;
-      private int lineBreak;
-      private Style lineBreakStyle;
+      private int lineBreak = -1;
+      private Style lineBreakStyle = Style.EMPTY;
       private boolean hadNonZeroWidthChar;
       private float width;
-      private int lastSpace;
-      private Style lastSpaceStyle;
+      private int lastSpace = -1;
+      private Style lastSpaceStyle = Style.EMPTY;
       private int nextChar;
       private int offset;
 
       public LineBreakFinder(final float maxWidth) {
-         Objects.requireNonNull(StringSplitter.this);
-         super();
-         this.lineBreak = -1;
-         this.lineBreakStyle = Style.EMPTY;
-         this.lastSpace = -1;
-         this.lastSpaceStyle = Style.EMPTY;
          this.maxWidth = Math.max(maxWidth, 1.0F);
       }
 
@@ -403,8 +390,6 @@ public class StringSplitter {
       private int position;
 
       public WidthLimitedCharSink(final float maxWidth) {
-         Objects.requireNonNull(StringSplitter.this);
-         super();
          this.maxWidth = maxWidth;
       }
 

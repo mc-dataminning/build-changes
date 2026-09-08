@@ -3,7 +3,6 @@ package net.minecraft.world.level.block.entity;
 import com.google.common.annotations.VisibleForTesting;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
@@ -37,14 +36,8 @@ public class CrafterBlockEntity extends RandomizableContainerBlockEntity impleme
    private NonNullList<ItemStack> items = NonNullList.withSize(9, ItemStack.EMPTY);
    private int craftingTicksRemaining = 0;
    protected final ContainerData containerData = new ContainerData() {
-      private final int[] slotStates;
-      private int triggered;
-
-      {
-         Objects.requireNonNull(CrafterBlockEntity.this);
-         this.slotStates = new int[9];
-         this.triggered = 0;
-      }
+      private final int[] slotStates = new int[9];
+      private int triggered = 0;
 
       @Override
       public int get(final int dataId) {
@@ -246,7 +239,7 @@ public class CrafterBlockEntity extends RandomizableContainerBlockEntity impleme
       if (craftingTicksRemaining >= 0) {
          entity.craftingTicksRemaining = craftingTicksRemaining;
          if (craftingTicksRemaining == 0) {
-            level.setBlockAndUpdate(blockPos, blockState.setValue(CrafterBlock.CRAFTING, Boolean.valueOf(false)));
+            level.setBlockAndUpdate(blockPos, blockState.setValue(CrafterBlock.CRAFTING, false));
          }
       }
    }

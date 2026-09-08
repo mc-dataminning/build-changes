@@ -56,17 +56,13 @@ import org.slf4j.Logger;
 public class ClientHandshakePacketListenerImpl implements ClientLoginPacketListener {
    private static final Logger LOGGER = LogUtils.getLogger();
    private final Minecraft minecraft;
-   @Nullable
-   private final ServerData serverData;
-   @Nullable
-   private final Screen parent;
+   private final @Nullable ServerData serverData;
+   private final @Nullable Screen parent;
    private final Consumer<Component> updateStatus;
    private final Connection connection;
    private final boolean newWorld;
-   @Nullable
-   private final Duration worldLoadDuration;
-   @Nullable
-   private String minigameName;
+   private final @Nullable Duration worldLoadDuration;
+   private @Nullable String minigameName;
    private final LevelLoadTracker levelLoadTracker;
    private final Map<Identifier, byte[]> cookies;
    private final boolean wasTransferredTo;
@@ -77,13 +73,13 @@ public class ClientHandshakePacketListenerImpl implements ClientLoginPacketListe
    public ClientHandshakePacketListenerImpl(
       final Connection connection,
       final Minecraft minecraft,
-      @Nullable final ServerData serverData,
-      @Nullable final Screen parent,
+      final @Nullable ServerData serverData,
+      final @Nullable Screen parent,
       final boolean newWorld,
-      @Nullable final Duration worldLoadDuration,
+      final @Nullable Duration worldLoadDuration,
       final Consumer<Component> updateStatus,
       final LevelLoadTracker levelLoadTracker,
-      @Nullable final TransferState transferState
+      final @Nullable TransferState transferState
    ) {
       this.connection = connection;
       this.minecraft = minecraft;
@@ -126,8 +122,8 @@ public class ClientHandshakePacketListenerImpl implements ClientLoginPacketListe
          encryptCipher = Crypt.getCipher(1, secretKey);
          byte[] challenge = packet.getChallenge();
          setKeyPacket = new ServerboundKeyPacket(secretKey, publicKey, challenge);
-      } catch (Exception var9) {
-         throw new IllegalStateException("Protocol error", var9);
+      } catch (Exception e) {
+         throw new IllegalStateException("Protocol error", e);
       }
 
       if (packet.shouldAuthenticate()) {
@@ -154,21 +150,20 @@ public class ClientHandshakePacketListenerImpl implements ClientLoginPacketListe
       this.connection.send(setKeyPacket, PacketSendListener.thenRun(() -> this.connection.setEncryptionKey(decryptCipher, encryptCipher)));
    }
 
-   @Nullable
-   private Component authenticateServer(final String digest) {
+   private @Nullable Component authenticateServer(final String digest) {
       try {
          this.minecraft.services().sessionService().joinServer(this.minecraft.getUser().getProfileId(), this.minecraft.getUser().getAccessToken(), digest);
          return null;
-      } catch (AuthenticationUnavailableException var3) {
+      } catch (AuthenticationUnavailableException ignored) {
          return Component.translatable("disconnect.loginFailedInfo", Component.translatable("disconnect.loginFailedInfo.serversUnavailable"));
-      } catch (InvalidCredentialsException var4) {
+      } catch (InvalidCredentialsException ignored) {
          return Component.translatable("disconnect.loginFailedInfo", Component.translatable("disconnect.loginFailedInfo.invalidSession"));
-      } catch (InsufficientPrivilegesException var5) {
+      } catch (InsufficientPrivilegesException ignored) {
          return Component.translatable("disconnect.loginFailedInfo", Component.translatable("disconnect.loginFailedInfo.insufficientPrivileges"));
-      } catch (ForcedUsernameChangeException | UserBannedException var6) {
+      } catch (UserBannedException | ForcedUsernameChangeException ignored) {
          return Component.translatable("disconnect.loginFailedInfo", Component.translatable("disconnect.loginFailedInfo.userBanned"));
-      } catch (AuthenticationException var7) {
-         return Component.translatable("disconnect.loginFailedInfo", var7.getMessage());
+      } catch (AuthenticationException e) {
+         return Component.translatable("disconnect.loginFailedInfo", e.getMessage());
       }
    }
 
@@ -239,7 +234,7 @@ public class ClientHandshakePacketListenerImpl implements ClientLoginPacketListe
       this.connection.send(new ServerboundCustomQueryAnswerPacket(packet.transactionId(), null));
    }
 
-   public void setMinigameName(@Nullable final String minigameName) {
+   public void setMinigameName(final @Nullable String minigameName) {
       this.minigameName = minigameName;
    }
 
@@ -255,7 +250,7 @@ public class ClientHandshakePacketListenerImpl implements ClientLoginPacketListe
       connectionDetails.setDetail("Is Local", () -> String.valueOf(this.connection.isMemoryConnection()));
    }
 
-   private static enum State {
+   private enum State {
       CONNECTING(Component.translatable("connect.connecting"), Set.of()),
       AUTHORIZING(Component.translatable("connect.authorizing"), Set.of(CONNECTING)),
       ENCRYPTING(Component.translatable("connect.encrypting"), Set.of(AUTHORIZING)),
@@ -264,7 +259,7 @@ public class ClientHandshakePacketListenerImpl implements ClientLoginPacketListe
       private final Component message;
       private final Set<ClientHandshakePacketListenerImpl.State> fromStates;
 
-      private State(final Component message, final Set<ClientHandshakePacketListenerImpl.State> fromStates) {
+      State(final Component message, final Set<ClientHandshakePacketListenerImpl.State> fromStates) {
          this.message = message;
          this.fromStates = fromStates;
       }

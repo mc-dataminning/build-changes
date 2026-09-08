@@ -66,38 +66,47 @@ public class LongJump extends Behavior<Breeze> {
    public static boolean canRun(final ServerLevel level, final Breeze breeze) {
       if (!breeze.onGround() && !breeze.isInWater()) {
          return false;
-      } else if (!breeze.isInFluidDeeperThan(breeze.getFluidJumpThreshold(), FluidTags.ENTITY_FLOATABLE) && !breeze.isInLava()) {
+      }
+
+      if (!breeze.isInFluidDeeperThan(breeze.getFluidJumpThreshold(), FluidTags.ENTITY_FLOATABLE) && !breeze.isInLava()) {
          if (breeze.getBrain().checkMemory(MemoryModuleType.BREEZE_JUMP_TARGET, MemoryStatus.VALUE_PRESENT)) {
             return true;
-         } else {
-            LivingEntity attackTarget = breeze.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).orElse(null);
-            if (attackTarget == null) {
-               return false;
-            } else if (outOfAggroRange(breeze, attackTarget)) {
-               breeze.getBrain().eraseMemory(MemoryModuleType.ATTACK_TARGET);
-               return false;
-            } else if (tooCloseForJump(breeze, attackTarget)) {
-               return false;
-            } else if (!canJumpFromCurrentPosition(level, breeze)) {
-               return false;
-            } else {
-               BlockPos targetPos = snapToSurface(breeze, BreezeUtil.randomPointBehindTarget(attackTarget, breeze.getRandom()));
-               if (targetPos == null) {
-                  return false;
-               } else {
-                  BlockState bs = level.getBlockState(targetPos.below());
-                  if (breeze.getType().isBlockDangerous(bs)) {
-                     return false;
-                  } else if (!BreezeUtil.hasLineOfSight(breeze, Vec3.atCenterOf(targetPos))
-                     && !BreezeUtil.hasLineOfSight(breeze, Vec3.atCenterOf(targetPos.above(4)))) {
-                     return false;
-                  } else {
-                     breeze.getBrain().setMemory(MemoryModuleType.BREEZE_JUMP_TARGET, targetPos);
-                     return true;
-                  }
-               }
-            }
          }
+
+         LivingEntity attackTarget = breeze.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).orElse(null);
+         if (attackTarget == null) {
+            return false;
+         }
+
+         if (outOfAggroRange(breeze, attackTarget)) {
+            breeze.getBrain().eraseMemory(MemoryModuleType.ATTACK_TARGET);
+            return false;
+         }
+
+         if (tooCloseForJump(breeze, attackTarget)) {
+            return false;
+         }
+
+         if (!canJumpFromCurrentPosition(level, breeze)) {
+            return false;
+         }
+
+         BlockPos targetPos = snapToSurface(breeze, BreezeUtil.randomPointBehindTarget(attackTarget, breeze.getRandom()));
+         if (targetPos == null) {
+            return false;
+         }
+
+         BlockState bs = level.getBlockState(targetPos.below());
+         if (breeze.getType().isBlockDangerous(bs)) {
+            return false;
+         }
+
+         if (!BreezeUtil.hasLineOfSight(breeze, Vec3.atCenterOf(targetPos)) && !BreezeUtil.hasLineOfSight(breeze, Vec3.atCenterOf(targetPos.above(4)))) {
+            return false;
+         }
+
+         breeze.getBrain().setMemory(MemoryModuleType.BREEZE_JUMP_TARGET, targetPos);
+         return true;
       } else {
          return false;
       }
@@ -113,7 +122,7 @@ public class LongJump extends Behavior<Breeze> {
 
    protected void start(final ServerLevel level, final Breeze breeze, final long timestamp) {
       if (breeze.getBrain().checkMemory(MemoryModuleType.BREEZE_JUMP_INHALING, MemoryStatus.VALUE_ABSENT)) {
-         breeze.getBrain().setMemoryWithExpiry(MemoryModuleType.BREEZE_JUMP_INHALING, Unit.INSTANCE, (long)INHALING_DURATION_TICKS);
+         breeze.getBrain().setMemoryWithExpiry(MemoryModuleType.BREEZE_JUMP_INHALING, Unit.INSTANCE, INHALING_DURATION_TICKS);
       }
 
       breeze.setPose(Pose.INHALING);
@@ -179,17 +188,16 @@ public class LongJump extends Behavior<Breeze> {
       return isJumping && (landedOnGround || landedInWater);
    }
 
-   @Nullable
-   private static BlockPos snapToSurface(final LivingEntity entity, final Vec3 target) {
+   private static @Nullable BlockPos snapToSurface(final LivingEntity entity, final Vec3 target) {
       ClipContext collisionBelow = new ClipContext(target, target.relative(Direction.DOWN, 10.0), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, entity);
       HitResult surfaceBelow = entity.level().clip(collisionBelow);
       if (surfaceBelow.getType() == HitResult.Type.BLOCK) {
          return BlockPos.containing(surfaceBelow.getLocation()).above();
-      } else {
-         ClipContext collisionAbove = new ClipContext(target, target.relative(Direction.UP, 10.0), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, entity);
-         HitResult surfaceAbove = entity.level().clip(collisionAbove);
-         return surfaceAbove.getType() == HitResult.Type.BLOCK ? BlockPos.containing(surfaceAbove.getLocation()).above() : null;
       }
+
+      ClipContext collisionAbove = new ClipContext(target, target.relative(Direction.UP, 10.0), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, entity);
+      HitResult surfaceAbove = entity.level().clip(collisionAbove);
+      return surfaceAbove.getType() == HitResult.Type.BLOCK ? BlockPos.containing(surfaceAbove.getLocation()).above() : null;
    }
 
    private static boolean outOfAggroRange(final Breeze breeze, final LivingEntity attackTarget) {
@@ -204,16 +212,16 @@ public class LongJump extends Behavior<Breeze> {
       BlockPos currentPos = breeze.blockPosition();
       if (level.getBlockState(currentPos).is(Blocks.HONEY_BLOCK)) {
          return false;
-      } else {
-         for (int i = 1; i <= 4; i++) {
-            BlockPos offsetPos = currentPos.relative(Direction.UP, i);
-            if (!level.getBlockState(offsetPos).isAir() && !level.getFluidState(offsetPos).is(FluidTags.WATER)) {
-               return false;
-            }
-         }
-
-         return true;
       }
+
+      for (int i = 1; i <= 4; i++) {
+         BlockPos offsetPos = currentPos.relative(Direction.UP, i);
+         if (!level.getBlockState(offsetPos).isAir() && !level.getFluidState(offsetPos).is(FluidTags.WATER)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    private static Optional<Vec3> calculateOptimalJumpVector(final Breeze body, final RandomSource random, final Vec3 targetPos) {
@@ -222,7 +230,7 @@ public class LongJump extends Behavior<Breeze> {
          Optional<Vec3> velocityVector = LongJumpUtil.calculateJumpVectorForAngle(body, targetPos, maxJumpVelocity, angle, false);
          if (velocityVector.isPresent()) {
             if (body.hasEffect(MobEffects.JUMP_BOOST)) {
-               double jumpEffectAmplifier = velocityVector.get().normalize().y * (double)body.getJumpBoostPower();
+               double jumpEffectAmplifier = velocityVector.get().normalize().y * body.getJumpBoostPower();
                return velocityVector.map(v -> v.add(0.0, jumpEffectAmplifier, 0.0));
             }
 

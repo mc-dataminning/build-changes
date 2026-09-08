@@ -19,14 +19,14 @@ public class BrewedPotionTrigger extends SimpleCriterionTrigger<BrewedPotionTrig
       this.trigger(player, t -> t.matches(potion));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<PotionsPredicate> potion)
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<PotionsPredicate> potion)
       implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<BrewedPotionTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(BrewedPotionTrigger.TriggerInstance::player),
-                  PotionsPredicate.CODEC.optionalFieldOf("potion").forGetter(BrewedPotionTrigger.TriggerInstance::potion)
-               )
-               .apply(i, BrewedPotionTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(BrewedPotionTrigger.TriggerInstance::player),
+               PotionsPredicate.CODEC.optionalFieldOf("potion").forGetter(BrewedPotionTrigger.TriggerInstance::potion)
+            )
+            .apply(i, BrewedPotionTrigger.TriggerInstance::new)
       );
 
       public static Criterion<BrewedPotionTrigger.TriggerInstance> brewedPotion() {

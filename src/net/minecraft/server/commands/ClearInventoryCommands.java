@@ -43,8 +43,8 @@ public class ClearInventoryCommands {
                   .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
                .executes(
                   c -> clearUnlimited(
-                        (CommandSourceStack)c.getSource(), Collections.singleton(((CommandSourceStack)c.getSource()).getPlayerOrException()), var0x -> true
-                     )
+                     (CommandSourceStack)c.getSource(), Collections.singleton(((CommandSourceStack)c.getSource()).getPlayerOrException()), var0x -> true
+                  )
                ))
             .then(
                ((RequiredArgumentBuilder)Commands.argument("targets", EntityArgument.players())
@@ -53,20 +53,18 @@ public class ClearInventoryCommands {
                      ((RequiredArgumentBuilder)Commands.argument("item", ItemPredicateArgument.itemPredicate(context))
                            .executes(
                               c -> clearUnlimited(
-                                    (CommandSourceStack)c.getSource(),
-                                    EntityArgument.getPlayers(c, "targets"),
-                                    ItemPredicateArgument.getItemPredicate(c, "item")
-                                 )
+                                 (CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets"), ItemPredicateArgument.getItemPredicate(c, "item")
+                              )
                            ))
                         .then(
                            Commands.argument("maxCount", IntegerArgumentType.integer(0))
                               .executes(
                                  c -> clearInventory(
-                                       (CommandSourceStack)c.getSource(),
-                                       EntityArgument.getPlayers(c, "targets"),
-                                       ItemPredicateArgument.getItemPredicate(c, "item"),
-                                       IntegerArgumentType.getInteger(c, "maxCount")
-                                    )
+                                    (CommandSourceStack)c.getSource(),
+                                    EntityArgument.getPlayers(c, "targets"),
+                                    ItemPredicateArgument.getItemPredicate(c, "item"),
+                                    IntegerArgumentType.getInteger(c, "maxCount")
+                                 )
                               )
                         )
                   )

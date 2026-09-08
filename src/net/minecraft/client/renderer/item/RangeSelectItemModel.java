@@ -63,8 +63,8 @@ public class RangeSelectItemModel implements ItemModel {
       final ItemStack item,
       final ItemModelResolver resolver,
       final ItemDisplayContext displayContext,
-      @Nullable final ClientLevel level,
-      @Nullable final ItemOwner owner,
+      final @Nullable ClientLevel level,
+      final @Nullable ItemOwner owner,
       final int seed
    ) {
       output.appendModelIdentityElement(this);
@@ -80,18 +80,18 @@ public class RangeSelectItemModel implements ItemModel {
       selectedModel.update(output, item, resolver, displayContext, level, owner, seed);
    }
 
-   public static record Entry(float threshold, ItemModel.Unbaked model) {
+   public record Entry(float threshold, ItemModel.Unbaked model) {
       public static final Codec<RangeSelectItemModel.Entry> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Codec.FLOAT.fieldOf("threshold").forGetter(RangeSelectItemModel.Entry::threshold),
-                  ItemModels.CODEC.fieldOf("model").forGetter(RangeSelectItemModel.Entry::model)
-               )
-               .apply(i, RangeSelectItemModel.Entry::new)
+               Codec.FLOAT.fieldOf("threshold").forGetter(RangeSelectItemModel.Entry::threshold),
+               ItemModels.CODEC.fieldOf("model").forGetter(RangeSelectItemModel.Entry::model)
+            )
+            .apply(i, RangeSelectItemModel.Entry::new)
       );
       public static final Comparator<RangeSelectItemModel.Entry> BY_THRESHOLD = Comparator.comparingDouble(RangeSelectItemModel.Entry::threshold);
    }
 
-   public static record Unbaked(
+   public record Unbaked(
       Optional<Transformation> transformation,
       RangeSelectItemModelProperty property,
       float scale,
@@ -100,13 +100,13 @@ public class RangeSelectItemModel implements ItemModel {
    ) implements ItemModel.Unbaked {
       public static final MapCodec<RangeSelectItemModel.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(RangeSelectItemModel.Unbaked::transformation),
-                  RangeSelectItemModelProperties.MAP_CODEC.forGetter(RangeSelectItemModel.Unbaked::property),
-                  Codec.FLOAT.optionalFieldOf("scale", 1.0F).forGetter(RangeSelectItemModel.Unbaked::scale),
-                  RangeSelectItemModel.Entry.CODEC.listOf().fieldOf("entries").forGetter(RangeSelectItemModel.Unbaked::entries),
-                  ItemModels.CODEC.optionalFieldOf("fallback").forGetter(RangeSelectItemModel.Unbaked::fallback)
-               )
-               .apply(i, RangeSelectItemModel.Unbaked::new)
+               Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(RangeSelectItemModel.Unbaked::transformation),
+               RangeSelectItemModelProperties.MAP_CODEC.forGetter(RangeSelectItemModel.Unbaked::property),
+               Codec.FLOAT.optionalFieldOf("scale", 1.0F).forGetter(RangeSelectItemModel.Unbaked::scale),
+               RangeSelectItemModel.Entry.CODEC.listOf().fieldOf("entries").forGetter(RangeSelectItemModel.Unbaked::entries),
+               ItemModels.CODEC.optionalFieldOf("fallback").forGetter(RangeSelectItemModel.Unbaked::fallback)
+            )
+            .apply(i, RangeSelectItemModel.Unbaked::new)
       );
 
       @Override

@@ -11,8 +11,7 @@ import net.minecraft.world.level.storage.ValueOutput;
 import org.jspecify.annotations.Nullable;
 
 public class PlayerEnderChestContainer extends SimpleContainer {
-   @Nullable
-   private EnderChestBlockEntity activeChest;
+   private @Nullable EnderChestBlockEntity activeChest;
 
    public PlayerEnderChestContainer() {
       super(27);

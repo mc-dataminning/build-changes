@@ -17,25 +17,25 @@ public class StartAttacking {
    ) {
       return BehaviorBuilder.create(
          i -> i.group(i.absent(MemoryModuleType.ATTACK_TARGET), i.registered(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE))
-               .apply(i, (attackTarget, cantReachSince) -> (level, body, timestamp) -> {
-                     if (!canAttackPredicate.test(level, (E)body)) {
-                        return false;
-                     } else {
-                        Optional<? extends LivingEntity> target = targetFinderFunction.get(level, (E)body);
-                        if (target.isEmpty()) {
-                           return false;
-                        } else {
-                           LivingEntity targetEntity = target.get();
-                           if (!body.canAttack(targetEntity)) {
-                              return false;
-                           } else {
-                              attackTarget.set(targetEntity);
-                              cantReachSince.erase();
-                              return true;
-                           }
-                        }
-                     }
-                  })
+            .apply(i, (attackTarget, cantReachSince) -> (level, body, timestamp) -> {
+               if (!canAttackPredicate.test(level, (E)body)) {
+                  return false;
+               }
+
+               Optional<? extends LivingEntity> target = targetFinderFunction.get(level, (E)body);
+               if (target.isEmpty()) {
+                  return false;
+               }
+
+               LivingEntity targetEntity = target.get();
+               if (!body.canAttack(targetEntity)) {
+                  return false;
+               }
+
+               attackTarget.set(targetEntity);
+               cantReachSince.erase();
+               return true;
+            })
       );
    }
 

@@ -20,14 +20,11 @@ public final class ListTag extends AbstractList<Tag> implements CollectionTag {
       public ListTag load(final DataInput input, final NbtAccounter accounter) throws IOException {
          accounter.pushDepth();
 
-         ListTag var3;
          try {
-            var3 = loadList(input, accounter);
+            return loadList(input, accounter);
          } finally {
             accounter.popDepth();
          }
-
-         return var3;
       }
 
       private static ListTag loadList(final DataInput input, final NbtAccounter accounter) throws IOException {
@@ -36,31 +33,28 @@ public final class ListTag extends AbstractList<Tag> implements CollectionTag {
          int count = readListCount(input);
          if (typeId == 0 && count > 0) {
             throw new NbtFormatException("Missing type on ListTag");
-         } else {
-            accounter.accountBytes(4L, (long)count);
-            TagType<?> type = TagTypes.getType(typeId);
-            ListTag list = new ListTag(new ArrayList<>(count));
-
-            for (int i = 0; i < count; i++) {
-               list.addAndUnwrap(type.load(input, accounter));
-            }
-
-            return list;
          }
+
+         accounter.accountBytes(4L, count);
+         TagType<?> type = TagTypes.getType(typeId);
+         ListTag list = new ListTag(new ArrayList<>(count));
+
+         for (int i = 0; i < count; i++) {
+            list.addAndUnwrap(type.load(input, accounter));
+         }
+
+         return list;
       }
 
       @Override
       public StreamTagVisitor.ValueResult parse(final DataInput input, final StreamTagVisitor output, final NbtAccounter accounter) throws IOException {
          accounter.pushDepth();
 
-         StreamTagVisitor.ValueResult var4;
          try {
-            var4 = parseList(input, output, accounter);
+            return parseList(input, output, accounter);
          } finally {
             accounter.popDepth();
          }
-
-         return var4;
       }
 
       private static StreamTagVisitor.ValueResult parseList(final DataInput input, final StreamTagVisitor output, final NbtAccounter accounter) throws IOException {
@@ -74,7 +68,7 @@ public final class ListTag extends AbstractList<Tag> implements CollectionTag {
                elementType.skip(input, count, accounter);
                return output.visitContainerEnd();
             default:
-               accounter.accountBytes(4L, (long)count);
+               accounter.accountBytes(4L, count);
                int i = 0;
 
                while (true) {
@@ -175,11 +169,7 @@ public final class ListTag extends AbstractList<Tag> implements CollectionTag {
       if (elementType != 10) {
          return tag;
       } else {
-         if (tag instanceof CompoundTag compoundTag && !isWrapper(compoundTag)) {
-            return compoundTag;
-         }
-
-         return wrapElement(tag);
+         return tag instanceof CompoundTag compoundTag && !isWrapper(compoundTag) ? compoundTag : wrapElement(tag);
       }
    }
 
@@ -322,23 +312,10 @@ public final class ListTag extends AbstractList<Tag> implements CollectionTag {
    }
 
    public String getStringOr(final int index, final String defaultValue) {
-      if (this.getNullable(index) instanceof StringTag var4) {
-         StringTag var10000 = var4;
-
-         try {
-            var8 = var10000.value();
-         } catch (Throwable var7) {
-            throw new MatchException(var7.toString(), var7);
-         }
-
-         return var8;
-      } else {
-         return defaultValue;
-      }
+      return this.getNullable(index) instanceof StringTag(String var8) ? var8 : defaultValue;
    }
 
-   @Nullable
-   private Tag getNullable(final int index) {
+   private @Nullable Tag getNullable(final int index) {
       return index >= 0 && index < this.list.size() ? this.list.get(index) : null;
    }
 
@@ -393,15 +370,7 @@ public final class ListTag extends AbstractList<Tag> implements CollectionTag {
 
    @Override
    public boolean equals(final Object obj) {
-      if (this == obj) {
-         return true;
-      } else {
-         if (obj instanceof ListTag listTag && Objects.equals(this.list, listTag.list)) {
-            return true;
-         }
-
-         return false;
-      }
+      return this == obj ? true : obj instanceof ListTag listTag && Objects.equals(this.list, listTag.list);
    }
 
    @Override

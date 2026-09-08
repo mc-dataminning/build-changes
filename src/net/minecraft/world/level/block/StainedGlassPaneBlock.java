@@ -10,13 +10,7 @@ public class StainedGlassPaneBlock extends IronBarsBlock implements BeaconBeamBl
       super(properties);
       this.color = color;
       this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(NORTH, Boolean.valueOf(false))
-            .setValue(EAST, Boolean.valueOf(false))
-            .setValue(SOUTH, Boolean.valueOf(false))
-            .setValue(WEST, Boolean.valueOf(false))
-            .setValue(WATERLOGGED, Boolean.valueOf(false))
+         this.stateDefinition.any().setValue(NORTH, false).setValue(EAST, false).setValue(SOUTH, false).setValue(WEST, false).setValue(WATERLOGGED, false)
       );
    }
 

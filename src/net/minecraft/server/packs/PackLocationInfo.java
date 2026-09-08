@@ -14,8 +14,8 @@ public record PackLocationInfo(String id, Component title, PackSource source, Op
       return ComponentUtils.wrapInSquareBrackets(this.source.decorate(Component.literal(this.id)))
          .withStyle(
             s -> s.withColor(enabled ? ChatFormatting.GREEN : ChatFormatting.RED)
-                  .withInsertion(StringArgumentType.escapeIfRequired(this.id))
-                  .withHoverEvent(new HoverEvent.ShowText(Component.empty().append(this.title).append("\n").append(description)))
+               .withInsertion(StringArgumentType.escapeIfRequired(this.id))
+               .withHoverEvent(new HoverEvent.ShowText(Component.empty().append(this.title).append("\n").append(description)))
          );
    }
 }

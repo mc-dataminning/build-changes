@@ -19,23 +19,23 @@ public class SetWalkTargetFromAttackTargetIfTargetOutOfReach {
    public static BehaviorControl<Mob> create(final Function<LivingEntity, Float> speedModifier) {
       return BehaviorBuilder.create(
          i -> i.group(
-                  i.registered(MemoryModuleType.WALK_TARGET),
-                  i.registered(MemoryModuleType.LOOK_TARGET),
-                  i.present(MemoryModuleType.ATTACK_TARGET),
-                  i.registered(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-               )
-               .apply(i, (walkTarget, lookTarget, attackTarget, nearestEntities) -> (level, body, timestamp) -> {
-                     LivingEntity toAttack = i.get(attackTarget);
-                     Optional<NearestVisibleLivingEntities> entities = i.tryGet(nearestEntities);
-                     if (entities.isPresent() && entities.get().contains(toAttack) && BehaviorUtils.isWithinAttackRange(body, toAttack, 1)) {
-                        walkTarget.erase();
-                     } else {
-                        lookTarget.set(new EntityTracker(toAttack, true));
-                        walkTarget.set(new WalkTarget(new EntityTracker(toAttack, false), speedModifier.apply(body), 0));
-                     }
+               i.registered(MemoryModuleType.WALK_TARGET),
+               i.registered(MemoryModuleType.LOOK_TARGET),
+               i.present(MemoryModuleType.ATTACK_TARGET),
+               i.registered(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
+            )
+            .apply(i, (walkTarget, lookTarget, attackTarget, nearestEntities) -> (level, body, timestamp) -> {
+               LivingEntity toAttack = i.get(attackTarget);
+               Optional<NearestVisibleLivingEntities> entities = i.tryGet(nearestEntities);
+               if (entities.isPresent() && entities.get().contains(toAttack) && BehaviorUtils.isWithinAttackRange(body, toAttack, 1)) {
+                  walkTarget.erase();
+               } else {
+                  lookTarget.set(new EntityTracker(toAttack, true));
+                  walkTarget.set(new WalkTarget(new EntityTracker(toAttack, false), speedModifier.apply(body), 0));
+               }
 
-                     return true;
-                  })
+               return true;
+            })
       );
    }
 }

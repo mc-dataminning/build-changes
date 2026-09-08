@@ -18,7 +18,7 @@ public class SectionBufferBuilderPool implements AutoCloseable {
    }
 
    public static SectionBufferBuilderPool allocate(final int maxWorkers) {
-      int maxBuffers = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / SectionBufferBuilderPack.TOTAL_BUFFERS_SIZE);
+      int maxBuffers = Math.max(1, (int)(Runtime.getRuntime().maxMemory() * 0.3) / SectionBufferBuilderPack.TOTAL_BUFFERS_SIZE);
       int targetBufferCount = Math.max(1, Math.min(maxWorkers, maxBuffers));
       List<SectionBufferBuilderPack> buffers = new ArrayList<>(targetBufferCount);
 
@@ -26,7 +26,7 @@ public class SectionBufferBuilderPool implements AutoCloseable {
          for (int i = 0; i < targetBufferCount; i++) {
             buffers.add(new SectionBufferBuilderPack());
          }
-      } catch (OutOfMemoryError var7) {
+      } catch (OutOfMemoryError e) {
          LOGGER.warn("Allocated only {}/{} buffers", buffers.size(), targetBufferCount);
          int buffersToDrop = Math.min(buffers.size() * 2 / 3, buffers.size() - 1);
 
@@ -38,8 +38,7 @@ public class SectionBufferBuilderPool implements AutoCloseable {
       return new SectionBufferBuilderPool(buffers);
    }
 
-   @Nullable
-   public SectionBufferBuilderPack acquire() {
+   public @Nullable SectionBufferBuilderPack acquire() {
       return this.freeBuffers.poll();
    }
 

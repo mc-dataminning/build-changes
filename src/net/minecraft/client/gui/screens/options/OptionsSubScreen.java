@@ -15,8 +15,7 @@ import org.jspecify.annotations.Nullable;
 public abstract class OptionsSubScreen extends Screen {
    protected final Screen lastScreen;
    protected final Options options;
-   @Nullable
-   protected OptionsList list;
+   protected @Nullable OptionsList list;
    public final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
 
    public OptionsSubScreen(final Screen lastScreen, final Options options, final Component title) {

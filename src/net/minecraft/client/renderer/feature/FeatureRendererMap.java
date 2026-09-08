@@ -8,7 +8,7 @@ import net.minecraft.util.Mth;
 import org.jspecify.annotations.Nullable;
 
 public class FeatureRendererMap implements AutoCloseable {
-   private FeatureRenderer<?>[] renderers = new FeatureRenderer[0];
+   private @Nullable FeatureRenderer<?>[] renderers = new FeatureRenderer[0];
 
    public <Submit extends SubmitNode> void put(final FeatureRendererType<Submit> type, final FeatureRenderer<Submit> renderer) {
       if (this.renderers.length <= type.id()) {
@@ -18,8 +18,7 @@ public class FeatureRendererMap implements AutoCloseable {
       this.renderers[type.id()] = renderer;
    }
 
-   @Nullable
-   public <Submit extends SubmitNode> FeatureRenderer<Submit> get(final FeatureRendererType<Submit> type) {
+   public <Submit extends SubmitNode> @Nullable FeatureRenderer<Submit> get(final FeatureRendererType<Submit> type) {
       return (FeatureRenderer<Submit>)(type.id() >= this.renderers.length ? null : this.renderers[type.id()]);
    }
 

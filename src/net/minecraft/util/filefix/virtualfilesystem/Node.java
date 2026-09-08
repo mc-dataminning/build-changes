@@ -3,16 +3,14 @@ package net.minecraft.util.filefix.virtualfilesystem;
 import org.jspecify.annotations.Nullable;
 
 abstract sealed class Node permits FileNode, DirectoryNode {
-   @Nullable
-   protected DirectoryNode parent;
+   protected @Nullable DirectoryNode parent;
    protected CopyOnWriteFSPath path;
 
    protected Node(final CopyOnWriteFSPath cowPath) {
       this.setPath(cowPath);
    }
 
-   @Nullable
-   public String name() {
+   public @Nullable String name() {
       CopyOnWriteFSPath fileName = this.path.getFileName();
       return fileName == null ? null : fileName.toString();
    }

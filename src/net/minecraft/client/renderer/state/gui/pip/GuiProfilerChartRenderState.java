@@ -16,7 +16,7 @@ public record GuiProfilerChartRenderState(
       final int y0,
       final int x1,
       final int y1,
-      @Nullable final ScreenRectangle scissorArea
+      final @Nullable ScreenRectangle scissorArea
    ) {
       this(pose, chartData, x0, y0, x1, y1, scissorArea, PictureInPictureRenderState.getBounds(x0, y0, x1, y1, pose, scissorArea));
    }

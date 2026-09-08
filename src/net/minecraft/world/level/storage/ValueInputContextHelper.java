@@ -5,7 +5,6 @@ import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.MapCodec;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Stream;
 import net.minecraft.core.HolderLookup;
@@ -15,10 +14,6 @@ public class ValueInputContextHelper {
    private final HolderLookup.Provider lookup;
    private final DynamicOps<Tag> ops;
    private final ValueInput.ValueInputList emptyChildList = new ValueInput.ValueInputList() {
-      {
-         Objects.requireNonNull(ValueInputContextHelper.this);
-      }
-
       @Override
       public boolean isEmpty() {
          return true;
@@ -35,10 +30,6 @@ public class ValueInputContextHelper {
       }
    };
    private final ValueInput.TypedInputList<Object> emptyTypedList = new ValueInput.TypedInputList<Object>() {
-      {
-         Objects.requireNonNull(ValueInputContextHelper.this);
-      }
-
       @Override
       public boolean isEmpty() {
          return true;
@@ -55,10 +46,6 @@ public class ValueInputContextHelper {
       }
    };
    private final ValueInput empty = new ValueInput() {
-      {
-         Objects.requireNonNull(ValueInputContextHelper.this);
-      }
-
       @Override
       public <T> Optional<T> read(final String name, final Codec<T> codec) {
          return Optional.empty();

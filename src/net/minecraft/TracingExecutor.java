@@ -10,56 +10,56 @@ public record TracingExecutor(ExecutorService service) implements Executor {
    public Executor forName(final String name) {
       if (SharedConstants.IS_RUNNING_IN_IDE) {
          return command -> this.service.execute(() -> {
-               Thread thread = Thread.currentThread();
-               String oldName = thread.getName();
-               thread.setName(name);
+            Thread thread = Thread.currentThread();
+            String oldName = thread.getName();
+            thread.setName(name);
 
-               try {
-                  Zone ignored = TracyClient.beginZone(name, SharedConstants.IS_RUNNING_IN_IDE);
-
-                  try {
-                     command.run();
-                  } catch (Throwable var12) {
-                     if (ignored != null) {
-                        try {
-                           ignored.close();
-                        } catch (Throwable var11) {
-                           var12.addSuppressed(var11);
-                        }
-                     }
-
-                     throw var12;
-                  }
-
-                  if (ignored != null) {
-                     ignored.close();
-                  }
-               } finally {
-                  thread.setName(oldName);
-               }
-            });
-      } else {
-         return (Executor)(TracyClient.isAvailable() ? command -> this.service.execute(() -> {
+            try {
                Zone ignored = TracyClient.beginZone(name, SharedConstants.IS_RUNNING_IN_IDE);
 
                try {
                   command.run();
-               } catch (Throwable var6) {
+               } catch (Throwable t$) {
                   if (ignored != null) {
                      try {
                         ignored.close();
-                     } catch (Throwable var5) {
-                        var6.addSuppressed(var5);
+                     } catch (Throwable x2) {
+                        t$.addSuppressed(x2);
                      }
                   }
 
-                  throw var6;
+                  throw t$;
                }
 
                if (ignored != null) {
                   ignored.close();
                }
-            }) : this.service);
+            } finally {
+               thread.setName(oldName);
+            }
+         });
+      } else {
+         return TracyClient.isAvailable() ? command -> this.service.execute(() -> {
+            Zone ignored = TracyClient.beginZone(name, SharedConstants.IS_RUNNING_IN_IDE);
+
+            try {
+               command.run();
+            } catch (Throwable t$) {
+               if (ignored != null) {
+                  try {
+                     ignored.close();
+                  } catch (Throwable x2) {
+                     t$.addSuppressed(x2);
+                  }
+               }
+
+               throw t$;
+            }
+
+            if (ignored != null) {
+               ignored.close();
+            }
+         }) : this.service;
       }
    }
 
@@ -74,7 +74,7 @@ public record TracingExecutor(ExecutorService service) implements Executor {
       boolean terminated;
       try {
          terminated = this.service.awaitTermination(timeout, unit);
-      } catch (InterruptedException var6) {
+      } catch (InterruptedException e) {
          terminated = false;
       }
 
@@ -89,16 +89,16 @@ public record TracingExecutor(ExecutorService service) implements Executor {
 
          try {
             command.run();
-         } catch (Throwable var5) {
+         } catch (Throwable t$) {
             if (ignored != null) {
                try {
                   ignored.close();
-               } catch (Throwable var4) {
-                  var5.addSuppressed(var4);
+               } catch (Throwable x2) {
+                  t$.addSuppressed(x2);
                }
             }
 
-            throw var5;
+            throw t$;
          }
 
          if (ignored != null) {

@@ -31,14 +31,14 @@ public class CritParticle extends SingleQuadParticle {
       this.gCol = col;
       this.bCol = col;
       this.quadSize *= 0.75F;
-      this.lifetime = Math.max((int)(6.0 / ((double)this.random.nextFloat() * 0.8 + 0.6)), 1);
+      this.lifetime = Math.max((int)(6.0 / (this.random.nextFloat() * 0.8 + 0.6)), 1);
       this.hasPhysics = false;
       this.tick();
    }
 
    @Override
    public float getQuadSize(final float a) {
-      return this.quadSize * Mth.clamp(((float)this.age + a) / (float)this.lifetime * 32.0F, 0.0F, 1.0F);
+      return this.quadSize * Mth.clamp((this.age + a) / this.lifetime * 32.0F, 0.0F, 1.0F);
    }
 
    @Override

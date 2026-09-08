@@ -52,7 +52,7 @@ public class PortalParticle extends SingleQuadParticle {
 
    @Override
    public float getQuadSize(final float a) {
-      float s = ((float)this.age + a) / (float)this.lifetime;
+      float s = (this.age + a) / this.lifetime;
       s = 1.0F - s;
       s *= s;
       s = 1.0F - s;
@@ -61,7 +61,7 @@ public class PortalParticle extends SingleQuadParticle {
 
    @Override
    public int getLightCoords(final float a) {
-      float brightness = (float)this.age / (float)this.lifetime;
+      float brightness = (float)this.age / this.lifetime;
       brightness *= brightness;
       brightness *= brightness;
       return LightCoordsUtil.addSmoothBlockEmission(super.getLightCoords(a), brightness);
@@ -75,12 +75,13 @@ public class PortalParticle extends SingleQuadParticle {
       if (this.age++ >= this.lifetime) {
          this.remove();
       } else {
-         float pos = (float)this.age / (float)this.lifetime;
-         float var3 = -pos + pos * pos * 2.0F;
-         float var4 = 1.0F - var3;
-         this.x = this.xStart + this.xd * (double)var4;
-         this.y = this.yStart + this.yd * (double)var4 + (double)(1.0F - pos);
-         this.z = this.zStart + this.zd * (double)var4;
+         float pos = (float)this.age / this.lifetime;
+         float a = pos;
+         pos = -pos + pos * pos * 2.0F;
+         pos = 1.0F - pos;
+         this.x = this.xStart + this.xd * pos;
+         this.y = this.yStart + this.yd * pos + (1.0F - a);
+         this.z = this.zStart + this.zd * pos;
       }
    }
 

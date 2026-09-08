@@ -40,12 +40,12 @@ public class ServerPlaceRecipe<R extends Recipe<?>> {
       ServerPlaceRecipe<R> placer = new ServerPlaceRecipe<>(menu, inventory, useMaxItems, gridWidth, gridHeight, inputGridSlots, slotsToClear);
       if (!allowDroppingItemsToClear && !placer.testClearGrid()) {
          return RecipeBookMenu.PostPlaceAction.NOTHING;
-      } else {
-         StackedItemContents availableItems = new StackedItemContents();
-         inventory.fillStackedContents(availableItems);
-         menu.fillCraftSlotsStackedContents(availableItems);
-         return placer.tryPlaceRecipe(recipe, availableItems);
       }
+
+      StackedItemContents availableItems = new StackedItemContents();
+      inventory.fillStackedContents(availableItems);
+      menu.fillCraftSlotsStackedContents(availableItems);
+      return placer.tryPlaceRecipe(recipe, availableItems);
    }
 
    private ServerPlaceRecipe(
@@ -137,7 +137,7 @@ public class ServerPlaceRecipe<R extends Recipe<?>> {
 
    private static int clampToMaxStackSize(int value, final List<Holder<Item>> items) {
       for (Holder<Item> item : items) {
-         value = Math.min(value, item.components().getOrDefault(DataComponents.MAX_STACK_SIZE, Integer.valueOf(1)));
+         value = Math.min(value, item.components().getOrDefault(DataComponents.MAX_STACK_SIZE, 1));
       }
 
       return value;
@@ -146,7 +146,9 @@ public class ServerPlaceRecipe<R extends Recipe<?>> {
    private int calculateAmountToCraft(final int biggestCraftableStack, final boolean recipeMatchesPlaced) {
       if (this.useMaxItems) {
          return biggestCraftableStack;
-      } else if (recipeMatchesPlaced) {
+      }
+
+      if (recipeMatchesPlaced) {
          int smallestStackSize = Integer.MAX_VALUE;
 
          for (Slot inputSlot : this.inputGridSlots) {
@@ -171,24 +173,24 @@ public class ServerPlaceRecipe<R extends Recipe<?>> {
       int inventorySlotId = this.inventory.findSlotMatchingCraftingIngredient(itemInInventory, itemInTargetSlot);
       if (inventorySlotId == -1) {
          return -1;
-      } else {
-         ItemStack inventoryItem = this.inventory.getItem(inventorySlotId);
-         ItemStack takenStack;
-         if (count < inventoryItem.getCount()) {
-            takenStack = this.inventory.removeItem(inventorySlotId, count);
-         } else {
-            takenStack = this.inventory.removeItemNoUpdate(inventorySlotId);
-         }
-
-         int takenCount = takenStack.getCount();
-         if (itemInTargetSlot.isEmpty()) {
-            targetSlot.set(takenStack);
-         } else {
-            itemInTargetSlot.grow(takenCount);
-         }
-
-         return count - takenCount;
       }
+
+      ItemStack inventoryItem = this.inventory.getItem(inventorySlotId);
+      ItemStack takenStack;
+      if (count < inventoryItem.getCount()) {
+         takenStack = this.inventory.removeItem(inventorySlotId, count);
+      } else {
+         takenStack = this.inventory.removeItemNoUpdate(inventorySlotId);
+      }
+
+      int takenCount = takenStack.getCount();
+      if (itemInTargetSlot.isEmpty()) {
+         targetSlot.set(takenStack);
+      } else {
+         itemInTargetSlot.grow(takenCount);
+      }
+
+      return count - takenCount;
    }
 
    private boolean testClearGrid() {

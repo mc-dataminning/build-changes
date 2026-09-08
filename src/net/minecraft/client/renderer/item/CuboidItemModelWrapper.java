@@ -70,8 +70,8 @@ public class CuboidItemModelWrapper implements ItemModel {
       final ItemStack item,
       final ItemModelResolver resolver,
       final ItemDisplayContext displayContext,
-      @Nullable final ClientLevel level,
-      @Nullable final ItemOwner owner,
+      final @Nullable ClientLevel level,
+      final @Nullable ItemOwner owner,
       final int seed
    ) {
       output.appendModelIdentityElement(this);
@@ -127,14 +127,14 @@ public class CuboidItemModelWrapper implements ItemModel {
       return itemStack.is(ItemTags.COMPASSES) || itemStack.is(Items.CLOCK);
    }
 
-   public static record Unbaked(Identifier model, Optional<Transformation> transformation, List<ItemTintSource> tints) implements ItemModel.Unbaked {
+   public record Unbaked(Identifier model, Optional<Transformation> transformation, List<ItemTintSource> tints) implements ItemModel.Unbaked {
       public static final MapCodec<CuboidItemModelWrapper.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Identifier.CODEC.fieldOf("model").forGetter(CuboidItemModelWrapper.Unbaked::model),
-                  Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(CuboidItemModelWrapper.Unbaked::transformation),
-                  ItemTintSources.CODEC.listOf().optionalFieldOf("tints", List.of()).forGetter(CuboidItemModelWrapper.Unbaked::tints)
-               )
-               .apply(i, CuboidItemModelWrapper.Unbaked::new)
+               Identifier.CODEC.fieldOf("model").forGetter(CuboidItemModelWrapper.Unbaked::model),
+               Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(CuboidItemModelWrapper.Unbaked::transformation),
+               ItemTintSources.CODEC.listOf().optionalFieldOf("tints", List.of()).forGetter(CuboidItemModelWrapper.Unbaked::tints)
+            )
+            .apply(i, CuboidItemModelWrapper.Unbaked::new)
       );
 
       @Override

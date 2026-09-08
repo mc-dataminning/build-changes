@@ -57,28 +57,36 @@ public class RideCommand {
       Entity currentVehicle = target.getVehicle();
       if (currentVehicle != null) {
          throw ERROR_ALREADY_RIDING.create(target.getDisplayName(), currentVehicle.getDisplayName());
-      } else if (vehicle.is(EntityTypes.PLAYER)) {
-         throw ERROR_MOUNTING_PLAYER.create();
-      } else if (target.getSelfAndPassengers().anyMatch(e -> e == vehicle)) {
-         throw ERROR_MOUNTING_LOOP.create();
-      } else if (target.level() != vehicle.level()) {
-         throw ERROR_WRONG_DIMENSION.create();
-      } else if (!target.startRiding(vehicle, true, true)) {
-         throw ERROR_MOUNT_FAILED.create(target.getDisplayName(), vehicle.getDisplayName());
-      } else {
-         source.sendSuccess(() -> Component.translatable("commands.ride.mount.success", target.getDisplayName(), vehicle.getDisplayName()), true);
-         return 1;
       }
+
+      if (vehicle.is(EntityTypes.PLAYER)) {
+         throw ERROR_MOUNTING_PLAYER.create();
+      }
+
+      if (target.getSelfAndPassengers().anyMatch(e -> e == vehicle)) {
+         throw ERROR_MOUNTING_LOOP.create();
+      }
+
+      if (target.level() != vehicle.level()) {
+         throw ERROR_WRONG_DIMENSION.create();
+      }
+
+      if (!target.startRiding(vehicle, true, true)) {
+         throw ERROR_MOUNT_FAILED.create(target.getDisplayName(), vehicle.getDisplayName());
+      }
+
+      source.sendSuccess(() -> Component.translatable("commands.ride.mount.success", target.getDisplayName(), vehicle.getDisplayName()), true);
+      return 1;
    }
 
    private static int dismount(final CommandSourceStack source, final Entity target) throws CommandSyntaxException {
       Entity vehicle = target.getVehicle();
       if (vehicle == null) {
          throw ERROR_NOT_RIDING.create(target.getDisplayName());
-      } else {
-         target.stopRiding();
-         source.sendSuccess(() -> Component.translatable("commands.ride.dismount.success", target.getDisplayName(), vehicle.getDisplayName()), true);
-         return 1;
       }
+
+      target.stopRiding();
+      source.sendSuccess(() -> Component.translatable("commands.ride.dismount.success", target.getDisplayName(), vehicle.getDisplayName()), true);
+      return 1;
    }
 }

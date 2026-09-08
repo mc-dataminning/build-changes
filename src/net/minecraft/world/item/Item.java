@@ -116,8 +116,8 @@ public class Item implements ItemLike, FeatureElement {
    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<Item>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.ITEM);
    public static final Codec<Holder<Item>> CODEC_WITH_BOUND_COMPONENTS = CODEC.validate(
       item -> !item.areComponentsBound()
-            ? DataResult.error(() -> "Item " + item.getRegisteredName() + " does not have components yet")
-            : DataResult.success(item)
+         ? DataResult.error(() -> "Item " + item.getRegisteredName() + " does not have components yet")
+         : DataResult.success(item)
    );
    private static final Logger LOGGER = LogUtils.getLogger();
    public static final Map<Block, Item> BY_BLOCK = Maps.newHashMap();
@@ -128,8 +128,7 @@ public class Item implements ItemLike, FeatureElement {
    public static final int MAX_BAR_WIDTH = 13;
    protected static final int APPROXIMATELY_INFINITE_USE_DURATION = 72000;
    private final Holder.Reference<Item> builtInRegistryHolder = BuiltInRegistries.ITEM.createIntrusiveHolder(this);
-   @Nullable
-   private final ItemStackTemplate craftingRemainingItem;
+   private final @Nullable ItemStackTemplate craftingRemainingItem;
    protected final String descriptionId;
    private final FeatureFlagSet requiredFeatures;
 
@@ -172,7 +171,7 @@ public class Item implements ItemLike, FeatureElement {
    }
 
    public int getDefaultMaxStackSize() {
-      return this.components().getOrDefault(DataComponents.MAX_STACK_SIZE, Integer.valueOf(1));
+      return this.components().getOrDefault(DataComponents.MAX_STACK_SIZE, 1);
    }
 
    public void onUseTick(final Level level, final LivingEntity livingEntity, final ItemStack itemStack, final int ticksRemaining) {
@@ -183,15 +182,7 @@ public class Item implements ItemLike, FeatureElement {
 
    public boolean canDestroyBlock(final ItemStack itemStack, final BlockState state, final Level level, final BlockPos pos, final LivingEntity user) {
       Tool tool = itemStack.get(DataComponents.TOOL);
-      if (tool != null && !tool.canDestroyBlocksInCreative()) {
-         if (user instanceof Player player && player.getAbilities().instabuild) {
-            return false;
-         }
-
-         return true;
-      } else {
-         return true;
-      }
+      return tool != null && !tool.canDestroyBlocksInCreative() ? !(user instanceof Player player && player.getAbilities().instabuild) : true;
    }
 
    @Override
@@ -202,7 +193,7 @@ public class Item implements ItemLike, FeatureElement {
    public InteractionResult useOn(final UseOnContext context) {
       ItemStack stack = context.getItemInHand();
       Holder<BlockTransformer> blockTransformer = stack.get(DataComponents.BLOCK_TRANSFORMER);
-      return (InteractionResult)(blockTransformer != null ? blockTransformer.value().transformBlock(context) : InteractionResult.PASS);
+      return blockTransformer != null ? blockTransformer.value().transformBlock(context) : InteractionResult.PASS;
    }
 
    public float getDestroySpeed(final ItemStack itemStack, final BlockState state) {
@@ -245,12 +236,12 @@ public class Item implements ItemLike, FeatureElement {
    }
 
    public int getBarWidth(final ItemStack stack) {
-      return Mth.clamp(Math.round(13.0F - (float)stack.getDamageValue() * 13.0F / (float)stack.getMaxDamage()), 0, 13);
+      return Mth.clamp(Math.round(13.0F - stack.getDamageValue() * 13.0F / stack.getMaxDamage()), 0, 13);
    }
 
    public int getBarColor(final ItemStack stack) {
       int maxDamage = stack.getMaxDamage();
-      float healthPercentage = Math.max(0.0F, ((float)maxDamage - (float)stack.getDamageValue()) / (float)maxDamage);
+      float healthPercentage = Math.max(0.0F, ((float)maxDamage - stack.getDamageValue()) / maxDamage);
       return Mth.hsvToRgb(healthPercentage / 3.0F, 1.0F, 1.0F);
    }
 
@@ -269,8 +260,7 @@ public class Item implements ItemLike, FeatureElement {
    }
 
    @Deprecated
-   @Nullable
-   public DamageSource getItemDamageSource(final LivingEntity attacker) {
+   public @Nullable DamageSource getItemDamageSource(final LivingEntity attacker) {
       return null;
    }
 
@@ -284,13 +274,13 @@ public class Item implements ItemLike, FeatureElement {
       Tool tool = itemStack.get(DataComponents.TOOL);
       if (tool == null) {
          return false;
-      } else {
-         if (!level.isClientSide() && state.getDestroySpeed(level, pos) != 0.0F && tool.damagePerBlock() > 0) {
-            itemStack.hurtAndBreak(tool.damagePerBlock(), owner, EquipmentSlot.MAINHAND);
-         }
-
-         return true;
       }
+
+      if (!level.isClientSide() && state.getDestroySpeed(level, pos) != 0.0F && tool.damagePerBlock() > 0) {
+         itemStack.hurtAndBreak(tool.damagePerBlock(), owner, EquipmentSlot.MAINHAND);
+      }
+
+      return true;
    }
 
    public boolean isCorrectToolForDrops(final ItemStack itemStack, final BlockState state) {
@@ -307,12 +297,11 @@ public class Item implements ItemLike, FeatureElement {
       return BuiltInRegistries.ITEM.wrapAsHolder(this).getRegisteredName();
    }
 
-   @Nullable
-   public final ItemStackTemplate getCraftingRemainder() {
+   public final @Nullable ItemStackTemplate getCraftingRemainder() {
       return this.craftingRemainingItem;
    }
 
-   public void inventoryTick(final ItemStack itemStack, final ServerLevel level, final Entity owner, @Nullable final EquipmentSlot slot) {
+   public void inventoryTick(final ItemStack itemStack, final ServerLevel level, final Entity owner, final @Nullable EquipmentSlot slot) {
    }
 
    public void onCraftedBy(final ItemStack itemStack, final Player player) {
@@ -396,7 +385,7 @@ public class Item implements ItemLike, FeatureElement {
       return this.requiredFeatures;
    }
 
-   public boolean shouldPrintOpWarning(final ItemStack stack, @Nullable final Player player) {
+   public boolean shouldPrintOpWarning(final ItemStack stack, final @Nullable Player player) {
       return false;
    }
 
@@ -404,11 +393,9 @@ public class Item implements ItemLike, FeatureElement {
       private static final DependantName<Item, String> BLOCK_DESCRIPTION_ID = id -> Util.makeDescriptionId("block", id.identifier());
       private static final DependantName<Item, String> ITEM_DESCRIPTION_ID = id -> Util.makeDescriptionId("item", id.identifier());
       private DataComponentInitializers.Initializer<Item> componentInitializer = (builder, var1, var2) -> builder.addAll(DataComponents.COMMON_ITEM_COMPONENTS);
-      @Nullable
-      private ItemStackTemplate craftingRemainingItem;
+      private @Nullable ItemStackTemplate craftingRemainingItem;
       private FeatureFlagSet requiredFeatures = FeatureFlags.VANILLA_SET;
-      @Nullable
-      private ResourceKey<Item> id;
+      private @Nullable ResourceKey<Item> id;
       private DependantName<Item, String> descriptionId = ITEM_DESCRIPTION_ID;
       private final DependantName<Item, Identifier> model = ResourceKey::identifier;
 
@@ -568,12 +555,12 @@ public class Item implements ItemLike, FeatureElement {
                ItemAttributeModifiers.builder()
                   .add(
                      Attributes.ATTACK_DAMAGE,
-                     new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID, (double)(0.0F + material.attackDamageBonus()), AttributeModifier.Operation.ADD_VALUE),
+                     new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID, 0.0F + material.attackDamageBonus(), AttributeModifier.Operation.ADD_VALUE),
                      EquipmentSlotGroup.MAINHAND
                   )
                   .add(
                      Attributes.ATTACK_SPEED,
-                     new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, (double)(1.0F / attackDuration) - 4.0, AttributeModifier.Operation.ADD_VALUE),
+                     new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, 1.0F / attackDuration - 4.0, AttributeModifier.Operation.ADD_VALUE),
                      EquipmentSlotGroup.MAINHAND
                   )
                   .build()
@@ -671,10 +658,10 @@ public class Item implements ItemLike, FeatureElement {
       public Item.Properties requiredFeatures(final FeatureFlagSet flags) {
          if (!FeatureFlags.REGISTRY.isSubset(flags)) {
             throw new IllegalArgumentException("Mismatched flag sets");
-         } else {
-            this.requiredFeatures = flags;
-            return this;
          }
+
+         this.requiredFeatures = flags;
+         return this;
       }
 
       public Item.Properties setId(final ResourceKey<Item> id) {
@@ -744,18 +731,17 @@ public class Item implements ItemLike, FeatureElement {
       private DataComponentInitializers.Initializer<Item> finalizeInitializer(final Component name, final Identifier model) {
          return this.componentInitializer
             .andThen((components, var3, var4) -> components.set(DataComponents.ITEM_NAME, name).set(DataComponents.ITEM_MODEL, model).addValidator(c -> {
-                  if (c.has(DataComponents.DAMAGE) && c.getOrDefault(DataComponents.MAX_STACK_SIZE, Integer.valueOf(1)) > 1) {
-                     throw new IllegalStateException("Item cannot have both durability and be stackable");
-                  }
-               }));
+               if (c.has(DataComponents.DAMAGE) && c.getOrDefault(DataComponents.MAX_STACK_SIZE, 1) > 1) {
+                  throw new IllegalStateException("Item cannot have both durability and be stackable");
+               }
+            }));
       }
    }
 
    public interface TooltipContext {
       Item.TooltipContext EMPTY = new Item.TooltipContext() {
-         @Nullable
          @Override
-         public HolderLookup.Provider registries() {
+         public HolderLookup.@Nullable Provider registries() {
             return null;
          }
 
@@ -764,9 +750,8 @@ public class Item implements ItemLike, FeatureElement {
             return 20.0F;
          }
 
-         @Nullable
          @Override
-         public MapItemSavedData mapData(final MapId id) {
+         public @Nullable MapItemSavedData mapData(final MapId id) {
             return null;
          }
 
@@ -776,17 +761,15 @@ public class Item implements ItemLike, FeatureElement {
          }
       };
 
-      @Nullable
-      HolderLookup.Provider registries();
+      HolderLookup.@Nullable Provider registries();
 
       float tickRate();
 
-      @Nullable
-      MapItemSavedData mapData(MapId id);
+      @Nullable MapItemSavedData mapData(MapId id);
 
       boolean isPeaceful();
 
-      static Item.TooltipContext of(@Nullable final Level level) {
+      static Item.TooltipContext of(final @Nullable Level level) {
          return level == null ? EMPTY : new Item.TooltipContext() {
             @Override
             public HolderLookup.Provider registries() {
@@ -798,9 +781,8 @@ public class Item implements ItemLike, FeatureElement {
                return level.tickRateManager().tickrate();
             }
 
-            @Nullable
             @Override
-            public MapItemSavedData mapData(final MapId id) {
+            public @Nullable MapItemSavedData mapData(final MapId id) {
                return level.getMapData(id);
             }
 
@@ -823,9 +805,8 @@ public class Item implements ItemLike, FeatureElement {
                return 20.0F;
             }
 
-            @Nullable
             @Override
-            public MapItemSavedData mapData(final MapId id) {
+            public @Nullable MapItemSavedData mapData(final MapId id) {
                return null;
             }
 

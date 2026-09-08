@@ -19,9 +19,8 @@ public record TrimMaterialProperty() implements SelectItemModelProperty<Resource
       MapCodec.unit(new TrimMaterialProperty()), VALUE_CODEC
    );
 
-   @Nullable
-   public ResourceKey<TrimMaterial> get(
-      final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final LivingEntity owner, final int seed, final ItemDisplayContext displayContext
+   public @Nullable ResourceKey<TrimMaterial> get(
+      final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner, final int seed, final ItemDisplayContext displayContext
    ) {
       ArmorTrim trim = itemStack.get(DataComponents.TRIM);
       return trim == null ? null : trim.material().unwrapKey().orElse(null);

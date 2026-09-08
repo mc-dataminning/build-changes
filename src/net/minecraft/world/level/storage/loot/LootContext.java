@@ -37,8 +37,7 @@ public class LootContext {
       return this.params.contextMap().has(key);
    }
 
-   @Nullable
-   public <T> T getOptional(final ContextKey<T> key) {
+   public <T> @Nullable T getOptional(final ContextKey<T> key) {
       return this.params.contextMap().get(key);
    }
 
@@ -90,13 +89,13 @@ public class LootContext {
       return new LootContext.VisitedEntry<>(LootDataType.SLOT_SOURCE, slotSource);
    }
 
-   public static enum BlockEntityTarget implements StringRepresentable, LootContextArg.SimpleGetter<BlockEntity> {
+   public enum BlockEntityTarget implements StringRepresentable, LootContextArg.SimpleGetter<BlockEntity> {
       BLOCK_ENTITY("block_entity", LootContextParams.BLOCK_ENTITY);
 
       private final String name;
       private final ContextKey<? extends BlockEntity> param;
 
-      private BlockEntityTarget(final String name, final ContextKey<? extends BlockEntity> param) {
+      BlockEntityTarget(final String name, final ContextKey<? extends BlockEntity> param) {
          this.name = name;
          this.param = param;
       }
@@ -114,8 +113,7 @@ public class LootContext {
 
    public static class Builder {
       private final LootParams params;
-      @Nullable
-      private RandomSource random;
+      private @Nullable RandomSource random;
 
       public Builder(final LootParams params) {
          this.params = params;
@@ -146,7 +144,7 @@ public class LootContext {
       }
    }
 
-   public static enum EntityTarget implements StringRepresentable, LootContextArg.SimpleGetter<Entity> {
+   public enum EntityTarget implements StringRepresentable, LootContextArg.SimpleGetter<Entity> {
       THIS("this", LootContextParams.THIS_ENTITY),
       ATTACKER("attacker", LootContextParams.ATTACKING_ENTITY),
       DIRECT_ATTACKER("direct_attacker", LootContextParams.DIRECT_ATTACKING_ENTITY),
@@ -158,7 +156,7 @@ public class LootContext {
       private final String name;
       private final ContextKey<? extends Entity> param;
 
-      private EntityTarget(final String name, final ContextKey<? extends Entity> param) {
+      EntityTarget(final String name, final ContextKey<? extends Entity> param) {
          this.name = name;
          this.param = param;
       }
@@ -183,13 +181,13 @@ public class LootContext {
       }
    }
 
-   public static enum ItemStackTarget implements StringRepresentable, LootContextArg.SimpleGetter<ItemInstance> {
+   public enum ItemStackTarget implements StringRepresentable, LootContextArg.SimpleGetter<ItemInstance> {
       TOOL("tool", LootContextParams.TOOL);
 
       private final String name;
       private final ContextKey<? extends ItemInstance> param;
 
-      private ItemStackTarget(final String name, final ContextKey<? extends ItemInstance> param) {
+      ItemStackTarget(final String name, final ContextKey<? extends ItemInstance> param) {
          this.name = name;
          this.param = param;
       }
@@ -205,6 +203,6 @@ public class LootContext {
       }
    }
 
-   public static record VisitedEntry<T extends Validatable>(LootDataType<T> type, T value) {
+   public record VisitedEntry<T extends Validatable>(LootDataType<T> type, T value) {
    }
 }

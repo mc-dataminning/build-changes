@@ -29,15 +29,12 @@ public class NbtIo {
    };
 
    public static CompoundTag readCompressed(final Path file, final NbtAccounter accounter) throws IOException {
-      CompoundTag var4;
       try (
          InputStream rawInput = Files.newInputStream(file);
          InputStream input = new FastBufferedInputStream(rawInput);
       ) {
-         var4 = readCompressed(input, accounter);
+         return readCompressed(input, accounter);
       }
-
-      return var4;
    }
 
    private static DataInputStream createDecompressorStream(final InputStream in) throws IOException {
@@ -49,12 +46,9 @@ public class NbtIo {
    }
 
    public static CompoundTag readCompressed(final InputStream in, final NbtAccounter accounter) throws IOException {
-      CompoundTag var3;
       try (DataInputStream dis = createDecompressorStream(in)) {
-         var3 = read(dis, accounter);
+         return read(dis, accounter);
       }
-
-      return var3;
    }
 
    public static void parseCompressed(final Path file, final StreamTagVisitor output, final NbtAccounter accounter) throws IOException {
@@ -97,20 +91,16 @@ public class NbtIo {
       }
    }
 
-   @Nullable
-   public static CompoundTag read(final Path file) throws IOException {
+   public static @Nullable CompoundTag read(final Path file) throws IOException {
       if (!Files.exists(file)) {
          return null;
-      } else {
-         CompoundTag var3;
-         try (
-            InputStream in = Files.newInputStream(file);
-            DataInputStream dis = new DataInputStream(in);
-         ) {
-            var3 = read(dis, NbtAccounter.unlimitedHeap());
-         }
+      }
 
-         return var3;
+      try (
+         InputStream in = Files.newInputStream(file);
+         DataInputStream dis = new DataInputStream(in);
+      ) {
+         return read(dis, NbtAccounter.unlimitedHeap());
       }
    }
 
@@ -119,9 +109,8 @@ public class NbtIo {
    }
 
    public static CompoundTag read(final DataInput input, final NbtAccounter accounter) throws IOException {
-      Tag tag = readUnnamedTag(input, accounter);
-      if (tag instanceof CompoundTag) {
-         return (CompoundTag)tag;
+      if (readUnnamedTag(input, accounter) instanceof CompoundTag compoundTag) {
+         return compoundTag;
       } else {
          throw new IOException("Root tag must be a named compound tag");
       }
@@ -155,7 +144,7 @@ public class NbtIo {
 
    public static Tag readAnyTag(final DataInput input, final NbtAccounter accounter) throws IOException {
       byte type = input.readByte();
-      return (Tag)(type == 0 ? EndTag.INSTANCE : readTagSafe(input, accounter, type));
+      return type == 0 ? EndTag.INSTANCE : readTagSafe(input, accounter, type);
    }
 
    public static void writeAnyTag(final Tag tag, final DataOutput output) throws IOException {
@@ -182,17 +171,17 @@ public class NbtIo {
       byte type = input.readByte();
       if (type == 0) {
          return EndTag.INSTANCE;
-      } else {
-         StringTag.skipString(input);
-         return readTagSafe(input, accounter, type);
       }
+
+      StringTag.skipString(input);
+      return readTagSafe(input, accounter, type);
    }
 
    private static Tag readTagSafe(final DataInput input, final NbtAccounter accounter, final byte type) {
       try {
          return TagTypes.getType(type).load(input, accounter);
-      } catch (IOException var6) {
-         CrashReport report = CrashReport.forThrowable(var6, "Loading NBT data");
+      } catch (IOException e) {
+         CrashReport report = CrashReport.forThrowable(e, "Loading NBT data");
          CrashReportCategory category = report.addCategory("NBT Tag");
          category.setDetail("Tag type", type);
          throw new ReportedNbtException(report);
@@ -208,8 +197,8 @@ public class NbtIo {
       public void writeUTF(final String s) throws IOException {
          try {
             super.writeUTF(s);
-         } catch (UTFDataFormatException var3) {
-            Util.logAndPauseIfInIde("Failed to write NBT String", var3);
+         } catch (UTFDataFormatException exception) {
+            Util.logAndPauseIfInIde("Failed to write NBT String", exception);
             super.writeUTF("");
          }
       }

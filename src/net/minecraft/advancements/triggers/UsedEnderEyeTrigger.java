@@ -16,20 +16,19 @@ public class UsedEnderEyeTrigger extends SimpleCriterionTrigger<UsedEnderEyeTrig
    }
 
    public void trigger(final ServerPlayer player, final BlockPos feature) {
-      double xd = player.getX() - (double)feature.getX();
-      double zd = player.getZ() - (double)feature.getZ();
+      double xd = player.getX() - feature.getX();
+      double zd = player.getZ() - feature.getZ();
       double sqrDist = xd * xd + zd * zd;
       this.trigger(player, t -> t.matches(sqrDist));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, MinMaxBounds.Doubles distance)
-      implements SimpleCriterionTrigger.SimpleInstance {
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, MinMaxBounds.Doubles distance) implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<UsedEnderEyeTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(UsedEnderEyeTrigger.TriggerInstance::player),
-                  MinMaxBounds.Doubles.CODEC.optionalFieldOf("distance", MinMaxBounds.Doubles.ANY).forGetter(UsedEnderEyeTrigger.TriggerInstance::distance)
-               )
-               .apply(i, UsedEnderEyeTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(UsedEnderEyeTrigger.TriggerInstance::player),
+               MinMaxBounds.Doubles.CODEC.optionalFieldOf("distance", MinMaxBounds.Doubles.ANY).forGetter(UsedEnderEyeTrigger.TriggerInstance::distance)
+            )
+            .apply(i, UsedEnderEyeTrigger.TriggerInstance::new)
       );
 
       public boolean matches(final double sqrDistance) {

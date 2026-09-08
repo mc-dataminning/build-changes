@@ -280,7 +280,7 @@ public class DataComponents {
    public static final DataComponentType<TypedEntityData<BlockEntityType<?>>> BLOCK_ENTITY_DATA = register(
       "block_entity_data",
       b -> b.persistent(TypedEntityData.codec(BuiltInRegistries.BLOCK_ENTITY_TYPE.byNameCodec()))
-            .networkSynchronized(TypedEntityData.streamCodec(ByteBufCodecs.registry(Registries.BLOCK_ENTITY_TYPE)))
+         .networkSynchronized(TypedEntityData.streamCodec(ByteBufCodecs.registry(Registries.BLOCK_ENTITY_TYPE)))
    );
    public static final DataComponentType<InstrumentComponent> INSTRUMENT = register(
       "instrument", b -> b.persistent(InstrumentComponent.CODEC).networkSynchronized(InstrumentComponent.STREAM_CODEC).cacheEncoding()
@@ -297,8 +297,8 @@ public class DataComponents {
    public static final DataComponentType<HolderSet<BannerPattern>> PROVIDES_BANNER_PATTERNS = register(
       "provides_banner_patterns",
       b -> b.persistent(RegistryCodecs.holderSet(Registries.BANNER_PATTERN))
-            .networkSynchronized(ByteBufCodecs.holderSet(Registries.BANNER_PATTERN))
-            .cacheEncoding()
+         .networkSynchronized(ByteBufCodecs.holderSet(Registries.BANNER_PATTERN))
+         .cacheEncoding()
    );
    public static final DataComponentType<List<ResourceKey<Recipe<?>>>> RECIPES = register(
       "recipes", b -> b.persistent(Recipe.KEY_CODEC.listOf()).cacheEncoding()

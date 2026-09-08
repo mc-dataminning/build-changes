@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.mojang.logging.LogUtils;
 import com.mojang.realmsclient.dto.GuardedSerializer;
 import com.mojang.realmsclient.dto.ReflectionBasedSerialization;
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
@@ -35,8 +36,8 @@ public class RealmsPersistence {
             return realmsPersistenceData;
          }
       } catch (NoSuchFileException var3) {
-      } catch (Exception var4) {
-         LOGGER.warn("Failed to read Realms storage {}", file, var4);
+      } catch (Exception e) {
+         LOGGER.warn("Failed to read Realms storage {}", file, e);
       }
 
       return new RealmsPersistence.RealmsPersistenceData();
@@ -57,8 +58,7 @@ public class RealmsPersistence {
 
    public static class RealmsPersistenceData implements ReflectionBasedSerialization {
       @SerializedName("newsLink")
-      @Nullable
-      public String newsLink;
+      public @Nullable URI newsLink;
       @SerializedName("hasUnreadNews")
       public boolean hasUnreadNews;
    }

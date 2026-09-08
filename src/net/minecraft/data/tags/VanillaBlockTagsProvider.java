@@ -1,6 +1,5 @@
 package net.minecraft.data.tags;
 
-import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
@@ -24,10 +23,6 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
 
    protected BlockItemTagAppender<Block> tag(final TagKey<Block> tag) {
       return new BlockItemTagAppender<Block>(super.tag(tag)) {
-         {
-            Objects.requireNonNull(VanillaBlockTagsProvider.this);
-         }
-
          @Override
          protected ResourceKey<Block> convertElement(final BlockItemId element) {
             return element.block();
@@ -40,16 +35,16 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
       new VanillaBlockItemTagsProvider(tagId -> BlockItemTagsProvider.wrapForBlocks(this.tag(tagId.block()))).run();
       this.tag(BlockTags.MOB_INTERACTABLE_DOORS).addTag(BlockTags.WOODEN_DOORS).addAll(toIds(BlockItemIds.COPPER_DOOR));
       this.tag(BlockTags.OVERWORLD_NATURAL_LOGS)
-         .add(BlockItemIds.ACACIA_LOG)
-         .add(BlockItemIds.BIRCH_LOG)
-         .add(BlockItemIds.OAK_LOG)
-         .add(BlockItemIds.JUNGLE_LOG)
-         .add(BlockItemIds.SPRUCE_LOG)
-         .add(BlockItemIds.DARK_OAK_LOG)
-         .add(BlockItemIds.PALE_OAK_LOG)
-         .add(BlockItemIds.MANGROVE_LOG)
-         .add(BlockItemIds.CHERRY_LOG)
-         .add(BlockItemIds.POPLAR_LOG);
+         .add(new BlockItemId[]{BlockItemIds.ACACIA_LOG})
+         .add(new BlockItemId[]{BlockItemIds.BIRCH_LOG})
+         .add(new BlockItemId[]{BlockItemIds.OAK_LOG})
+         .add(new BlockItemId[]{BlockItemIds.JUNGLE_LOG})
+         .add(new BlockItemId[]{BlockItemIds.SPRUCE_LOG})
+         .add(new BlockItemId[]{BlockItemIds.DARK_OAK_LOG})
+         .add(new BlockItemId[]{BlockItemIds.PALE_OAK_LOG})
+         .add(new BlockItemId[]{BlockItemIds.MANGROVE_LOG})
+         .add(new BlockItemId[]{BlockItemIds.CHERRY_LOG})
+         .add(new BlockItemId[]{BlockItemIds.POPLAR_LOG});
       this.tag(BlockTags.ENDERMAN_HOLDABLE)
          .addTag(BlockTags.SMALL_FLOWERS)
          .addTag(BlockTags.DIRT)
@@ -77,7 +72,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockItemIds.CACTUS_FLOWER
          );
       this.tag(BlockTags.FLOWER_POTS)
-         .add(BlockItemIds.FLOWER_POT)
+         .add(new BlockItemId[]{BlockItemIds.FLOWER_POT})
          .add(
             BlockIds.POTTED_OPEN_EYEBLOSSOM,
             BlockIds.POTTED_CLOSED_EYEBLOSSOM,
@@ -151,7 +146,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
       this.tag(BlockTags.ICE).add(BlockItemIds.ICE, BlockItemIds.PACKED_ICE, BlockItemIds.BLUE_ICE).add(BlockIds.FROSTED_ICE);
       this.tag(BlockTags.VALID_SPAWN).add(BlockItemIds.GRASS_BLOCK, BlockItemIds.PODZOL);
       this.tag(BlockTags.IMPERMEABLE).addAll(toIds(BlockItemIds.STAINED_GLASS)).add(BlockItemIds.GLASS, BlockItemIds.TINTED_GLASS, BlockItemIds.BARRIER);
-      this.tag(BlockTags.UNDERWATER_BONEMEALS).add(BlockItemIds.SEAGRASS).addTag(BlockTags.CORALS).addTag(BlockTags.WALL_CORALS);
+      this.tag(BlockTags.UNDERWATER_BONEMEALS).add(new BlockItemId[]{BlockItemIds.SEAGRASS}).addTag(BlockTags.CORALS).addTag(BlockTags.WALL_CORALS);
       this.tag(BlockTags.WALL_SIGNS)
          .add(
             BlockIds.OAK_WALL_SIGN,
@@ -190,7 +185,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
       this.tag(BlockTags.DRAGON_IMMUNE)
          .add(BlockItemIds.BARRIER, BlockItemIds.BEDROCK)
          .add(BlockIds.END_PORTAL)
-         .add(BlockItemIds.END_PORTAL_FRAME)
+         .add(new BlockItemId[]{BlockItemIds.END_PORTAL_FRAME})
          .add(BlockIds.END_GATEWAY)
          .add(
             BlockItemIds.COMMAND_BLOCK,
@@ -210,11 +205,11 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockItemIds.TEST_BLOCK,
             BlockItemIds.TEST_INSTANCE_BLOCK
          );
-      this.tag(BlockTags.DRAGON_TRANSPARENT).add(BlockItemIds.LIGHT).addTag(BlockTags.FIRE);
+      this.tag(BlockTags.DRAGON_TRANSPARENT).add(new BlockItemId[]{BlockItemIds.LIGHT}).addTag(BlockTags.FIRE);
       this.tag(BlockTags.WITHER_IMMUNE)
          .add(BlockItemIds.BARRIER, BlockItemIds.BEDROCK)
          .add(BlockIds.END_PORTAL)
-         .add(BlockItemIds.END_PORTAL_FRAME)
+         .add(new BlockItemId[]{BlockItemIds.END_PORTAL_FRAME})
          .add(BlockIds.END_GATEWAY)
          .add(
             BlockItemIds.COMMAND_BLOCK,
@@ -240,8 +235,8 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          );
       this.tag(BlockTags.BEE_GROWABLES)
          .addTag(BlockTags.CROPS)
-         .add(BlockItemIds.SWEET_BERRY_CROP)
-         .add(BlockItemIds.GLOW_BERRY_CROP)
+         .add(new BlockItemId[]{BlockItemIds.SWEET_BERRY_CROP})
+         .add(new BlockItemId[]{BlockItemIds.GLOW_BERRY_CROP})
          .add(BlockIds.CAVE_VINES_PLANT);
       this.tag(BlockTags.PORTALS).add(BlockIds.NETHER_PORTAL, BlockIds.END_PORTAL, BlockIds.END_GATEWAY);
       this.tag(BlockTags.FIRE).add(BlockIds.FIRE, BlockIds.SOUL_FIRE);
@@ -254,26 +249,26 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          .addTag(BlockTags.SIGNS)
          .addTag(BlockTags.BANNERS)
          .addTag(BlockTags.PRESSURE_PLATES)
-         .add(BlockItemIds.CACTUS_FLOWER);
+         .add(new BlockItemId[]{BlockItemIds.CACTUS_FLOWER});
       this.tag(BlockTags.CLIMBABLE)
          .add(BlockItemIds.LADDER, BlockItemIds.VINE, BlockItemIds.SCAFFOLDING, BlockItemIds.WEEPING_VINES)
          .add(BlockIds.WEEPING_VINES_PLANT)
-         .add(BlockItemIds.TWISTING_VINES)
+         .add(new BlockItemId[]{BlockItemIds.TWISTING_VINES})
          .add(BlockIds.TWISTING_VINES_PLANT)
-         .add(BlockItemIds.GLOW_BERRY_CROP)
+         .add(new BlockItemId[]{BlockItemIds.GLOW_BERRY_CROP})
          .add(BlockIds.CAVE_VINES_PLANT);
       this.tag(BlockTags.FALL_DAMAGE_RESETTING).addTag(BlockTags.CLIMBABLE).add(BlockItemIds.SWEET_BERRY_CROP, BlockItemIds.COBWEB);
       this.tag(BlockTags.PIGLIN_REPELLENTS)
          .add(BlockIds.SOUL_FIRE)
-         .add(BlockItemIds.SOUL_TORCH)
-         .add(BlockItemIds.SOUL_LANTERN)
+         .add(new BlockItemId[]{BlockItemIds.SOUL_TORCH})
+         .add(new BlockItemId[]{BlockItemIds.SOUL_LANTERN})
          .add(BlockIds.SOUL_WALL_TORCH)
-         .add(BlockItemIds.SOUL_CAMPFIRE);
+         .add(new BlockItemId[]{BlockItemIds.SOUL_CAMPFIRE});
       this.tag(BlockTags.HOGLIN_REPELLENTS)
-         .add(BlockItemIds.WARPED_FUNGUS)
+         .add(new BlockItemId[]{BlockItemIds.WARPED_FUNGUS})
          .add(BlockIds.POTTED_WARPED_FUNGUS)
          .add(BlockIds.NETHER_PORTAL)
-         .add(BlockItemIds.RESPAWN_ANCHOR);
+         .add(new BlockItemId[]{BlockItemIds.RESPAWN_ANCHOR});
       this.tag(BlockTags.STRIDER_WARM_BLOCKS).add(BlockIds.LAVA);
       this.tag(BlockTags.CAMPFIRES).add(BlockItemIds.CAMPFIRE, BlockItemIds.SOUL_CAMPFIRE);
       this.tag(BlockTags.GUARDED_BY_PIGLINS)
@@ -292,40 +287,51 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
       this.tag(BlockTags.PREVENT_MOB_SPAWNING_INSIDE).addTag(BlockTags.RAILS);
       this.tag(BlockTags.UNSTABLE_BOTTOM_CENTER).addTag(BlockTags.FENCE_GATES);
       this.tag(BlockTags.EDIBLE_FOR_SHEEP)
-         .add(BlockItemIds.SHORT_GRASS)
-         .add(BlockItemIds.SHORT_DRY_GRASS)
-         .add(BlockItemIds.TALL_DRY_GRASS)
-         .add(BlockItemIds.FERN);
+         .add(new BlockItemId[]{BlockItemIds.SHORT_GRASS})
+         .add(new BlockItemId[]{BlockItemIds.SHORT_DRY_GRASS})
+         .add(new BlockItemId[]{BlockItemIds.TALL_DRY_GRASS})
+         .add(new BlockItemId[]{BlockItemIds.FERN});
       this.tag(BlockTags.CAN_GLIDE_THROUGH)
-         .add(BlockItemIds.VINE)
-         .add(BlockItemIds.TWISTING_VINES)
+         .add(new BlockItemId[]{BlockItemIds.VINE})
+         .add(new BlockItemId[]{BlockItemIds.TWISTING_VINES})
          .add(BlockIds.TWISTING_VINES_PLANT)
-         .add(BlockItemIds.WEEPING_VINES)
+         .add(new BlockItemId[]{BlockItemIds.WEEPING_VINES})
          .add(BlockIds.WEEPING_VINES_PLANT)
          .addTag(BlockTags.CAVE_VINES);
-      this.tag(BlockTags.CAUSES_PERIODIC_GEYSER_ERUPTIONS).add(BlockItemIds.MAGMA_BLOCK);
+      this.tag(BlockTags.CAUSES_PERIODIC_GEYSER_ERUPTIONS).add(new BlockItemId[]{BlockItemIds.MAGMA_BLOCK});
       this.tag(BlockTags.CAUSES_CONTINUOUS_GEYSER_ERUPTIONS).add(BlockIds.LAVA);
-      this.tag(BlockTags.NETHER_PORTAL_FRAME).add(BlockItemIds.OBSIDIAN);
+      this.tag(BlockTags.NETHER_PORTAL_FRAME).add(new BlockItemId[]{BlockItemIds.OBSIDIAN});
       this.tag(BlockTags.CONDUIT_EFFECT_BLOCK)
          .add(BlockItemIds.PRISMARINE, BlockItemIds.PRISMARINE_BRICKS, BlockItemIds.SEA_LANTERN, BlockItemIds.DARK_PRISMARINE);
       this.tag(BlockTags.INFINIBURN_OVERWORLD).add(BlockItemIds.NETHERRACK, BlockItemIds.MAGMA_BLOCK);
       this.tag(BlockTags.INFINIBURN_NETHER).addTag(BlockTags.INFINIBURN_OVERWORLD);
-      this.tag(BlockTags.INFINIBURN_END).addTag(BlockTags.INFINIBURN_OVERWORLD).add(BlockItemIds.BEDROCK);
-      this.tag(BlockTags.STONE_ORE_REPLACEABLES).add(BlockItemIds.STONE).add(BlockItemIds.GRANITE).add(BlockItemIds.DIORITE).add(BlockItemIds.ANDESITE);
-      this.tag(BlockTags.HEIGHT_SPECIFIC_ORE_REPLACEABLES).add(BlockItemIds.TUFF);
-      this.tag(BlockTags.DEEPSLATE_ORE_REPLACEABLES).add(BlockItemIds.DEEPSLATE);
+      this.tag(BlockTags.INFINIBURN_END).addTag(BlockTags.INFINIBURN_OVERWORLD).add(new BlockItemId[]{BlockItemIds.BEDROCK});
+      this.tag(BlockTags.STONE_ORE_REPLACEABLES)
+         .add(new BlockItemId[]{BlockItemIds.STONE})
+         .add(new BlockItemId[]{BlockItemIds.GRANITE})
+         .add(new BlockItemId[]{BlockItemIds.DIORITE})
+         .add(new BlockItemId[]{BlockItemIds.ANDESITE});
+      this.tag(BlockTags.HEIGHT_SPECIFIC_ORE_REPLACEABLES).add(new BlockItemId[]{BlockItemIds.TUFF});
+      this.tag(BlockTags.DEEPSLATE_ORE_REPLACEABLES).add(new BlockItemId[]{BlockItemIds.DEEPSLATE});
       this.tag(BlockTags.SUBSTRATE_OVERWORLD).addTag(BlockTags.DIRT).addTag(BlockTags.MUD).addTag(BlockTags.MOSS_BLOCKS).addTag(BlockTags.GRASS_BLOCKS);
       this.tag(BlockTags.BASE_STONE_OVERWORLD)
-         .add(BlockItemIds.STONE)
-         .add(BlockItemIds.GRANITE)
-         .add(BlockItemIds.DIORITE)
-         .add(BlockItemIds.ANDESITE)
-         .add(BlockItemIds.TUFF)
-         .add(BlockItemIds.DEEPSLATE);
-      this.tag(BlockTags.BASE_STONE_NETHER).add(BlockItemIds.NETHERRACK).add(BlockItemIds.BASALT).add(BlockItemIds.BLACKSTONE);
+         .add(new BlockItemId[]{BlockItemIds.STONE})
+         .add(new BlockItemId[]{BlockItemIds.GRANITE})
+         .add(new BlockItemId[]{BlockItemIds.DIORITE})
+         .add(new BlockItemId[]{BlockItemIds.ANDESITE})
+         .add(new BlockItemId[]{BlockItemIds.TUFF})
+         .add(new BlockItemId[]{BlockItemIds.DEEPSLATE});
+      this.tag(BlockTags.BASE_STONE_NETHER)
+         .add(new BlockItemId[]{BlockItemIds.NETHERRACK})
+         .add(new BlockItemId[]{BlockItemIds.BASALT})
+         .add(new BlockItemId[]{BlockItemIds.BLACKSTONE});
       this.tag(BlockTags.BENEATH_TREE_PODZOL_REPLACEABLE).addTag(BlockTags.SUBSTRATE_OVERWORLD);
       this.tag(BlockTags.BENEATH_BAMBOO_PODZOL_REPLACEABLE).addTag(BlockTags.SUBSTRATE_OVERWORLD);
-      this.tag(BlockTags.CANNOT_REPLACE_BELOW_TREE_TRUNK).addTag(BlockTags.DIRT).addTag(BlockTags.MUD).addTag(BlockTags.MOSS_BLOCKS).add(BlockItemIds.PODZOL);
+      this.tag(BlockTags.CANNOT_REPLACE_BELOW_TREE_TRUNK)
+         .addTag(BlockTags.DIRT)
+         .addTag(BlockTags.MUD)
+         .addTag(BlockTags.MOSS_BLOCKS)
+         .add(new BlockItemId[]{BlockItemIds.PODZOL});
       this.tag(BlockTags.CANNOT_PLACE_BASALT_PILLAR_ON)
          .add(BlockIds.LAVA)
          .add(
@@ -339,10 +345,12 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockItemIds.CHEST,
             BlockItemIds.SPAWNER
          );
-      this.tag(BlockTags.UNCARVABLE).add(BlockItemIds.BEDROCK);
+      this.tag(BlockTags.UNCARVABLE).add(new BlockItemId[]{BlockItemIds.BEDROCK});
       this.tag(BlockTags.CANDLE_CAKES).add(BlockIds.CANDLE_CAKE).addAll(BlockIds.DYED_CANDLE_CAKE);
       this.tag(BlockTags.CRYSTAL_SOUND_BLOCKS).add(BlockItemIds.AMETHYST_BLOCK, BlockItemIds.BUDDING_AMETHYST);
-      this.tag(BlockTags.CAULDRONS).add(BlockItemIds.CAULDRON).add(BlockIds.WATER_CAULDRON, BlockIds.LAVA_CAULDRON, BlockIds.POWDER_SNOW_CAULDRON);
+      this.tag(BlockTags.CAULDRONS)
+         .add(new BlockItemId[]{BlockItemIds.CAULDRON})
+         .add(BlockIds.WATER_CAULDRON, BlockIds.LAVA_CAULDRON, BlockIds.POWDER_SNOW_CAULDRON);
       this.tag(BlockTags.INSIDE_STEP_SOUND_BLOCKS)
          .add(
             BlockItemIds.POWDER_SNOW,
@@ -366,7 +374,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockItemIds.RESIN_CLUMP
          );
       this.tag(BlockTags.DRIPSTONE_REPLACEABLE).addTag(BlockTags.BASE_STONE_OVERWORLD);
-      this.tag(BlockTags.CAVE_VINES).add(BlockIds.CAVE_VINES_PLANT).add(BlockItemIds.GLOW_BERRY_CROP);
+      this.tag(BlockTags.CAVE_VINES).add(BlockIds.CAVE_VINES_PLANT).add(new BlockItemId[]{BlockItemIds.GLOW_BERRY_CROP});
       this.tag(BlockTags.MOSS_REPLACEABLE)
          .addTag(BlockTags.BASE_STONE_OVERWORLD)
          .addTag(BlockTags.CAVE_VINES)
@@ -374,31 +382,38 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          .addTag(BlockTags.MUD)
          .addTag(BlockTags.MOSS_BLOCKS)
          .addTag(BlockTags.GRASS_BLOCKS);
-      this.tag(BlockTags.LUSH_GROUND_REPLACEABLE).addTag(BlockTags.MOSS_REPLACEABLE).add(BlockItemIds.CLAY).add(BlockItemIds.GRAVEL).add(BlockItemIds.SAND);
+      this.tag(BlockTags.LUSH_GROUND_REPLACEABLE)
+         .addTag(BlockTags.MOSS_REPLACEABLE)
+         .add(new BlockItemId[]{BlockItemIds.CLAY})
+         .add(new BlockItemId[]{BlockItemIds.GRAVEL})
+         .add(new BlockItemId[]{BlockItemIds.SAND});
       this.tag(BlockTags.AZALEA_ROOT_REPLACEABLE)
          .addTag(BlockTags.BASE_STONE_OVERWORLD)
          .addTag(BlockTags.SUBSTRATE_OVERWORLD)
          .addTag(BlockTags.TERRACOTTA)
-         .add(BlockItemIds.RED_SAND)
-         .add(BlockItemIds.CLAY)
-         .add(BlockItemIds.GRAVEL)
-         .add(BlockItemIds.SAND)
-         .add(BlockItemIds.SNOW_BLOCK)
-         .add(BlockItemIds.POWDER_SNOW);
-      this.tag(BlockTags.ICE_SPIKE_REPLACEABLE).addTag(BlockTags.SUBSTRATE_OVERWORLD).add(BlockItemIds.SNOW_BLOCK).add(BlockItemIds.ICE);
+         .add(new BlockItemId[]{BlockItemIds.RED_SAND})
+         .add(new BlockItemId[]{BlockItemIds.CLAY})
+         .add(new BlockItemId[]{BlockItemIds.GRAVEL})
+         .add(new BlockItemId[]{BlockItemIds.SAND})
+         .add(new BlockItemId[]{BlockItemIds.SNOW_BLOCK})
+         .add(new BlockItemId[]{BlockItemIds.POWDER_SNOW});
+      this.tag(BlockTags.ICE_SPIKE_REPLACEABLE)
+         .addTag(BlockTags.SUBSTRATE_OVERWORLD)
+         .add(new BlockItemId[]{BlockItemIds.SNOW_BLOCK})
+         .add(new BlockItemId[]{BlockItemIds.ICE});
       this.tag(BlockTags.FOREST_ROCK_CAN_PLACE_ON).addTag(BlockTags.SUBSTRATE_OVERWORLD).addTag(BlockTags.BASE_STONE_OVERWORLD);
       this.tag(BlockTags.HUGE_BROWN_MUSHROOM_CAN_PLACE_ON)
          .addTag(BlockTags.SUBSTRATE_OVERWORLD)
-         .add(BlockItemIds.MYCELIUM)
-         .add(BlockItemIds.PODZOL)
-         .add(BlockItemIds.CRIMSON_NYLIUM)
-         .add(BlockItemIds.WARPED_NYLIUM);
+         .add(new BlockItemId[]{BlockItemIds.MYCELIUM})
+         .add(new BlockItemId[]{BlockItemIds.PODZOL})
+         .add(new BlockItemId[]{BlockItemIds.CRIMSON_NYLIUM})
+         .add(new BlockItemId[]{BlockItemIds.WARPED_NYLIUM});
       this.tag(BlockTags.HUGE_RED_MUSHROOM_CAN_PLACE_ON)
          .addTag(BlockTags.SUBSTRATE_OVERWORLD)
-         .add(BlockItemIds.MYCELIUM)
-         .add(BlockItemIds.PODZOL)
-         .add(BlockItemIds.CRIMSON_NYLIUM)
-         .add(BlockItemIds.WARPED_NYLIUM);
+         .add(new BlockItemId[]{BlockItemIds.MYCELIUM})
+         .add(new BlockItemId[]{BlockItemIds.PODZOL})
+         .add(new BlockItemId[]{BlockItemIds.CRIMSON_NYLIUM})
+         .add(new BlockItemId[]{BlockItemIds.WARPED_NYLIUM});
       this.tag(BlockTags.OCCLUDES_VIBRATION_SIGNALS).addTag(BlockTags.WOOL);
       this.tag(BlockTags.SNOW).add(BlockItemIds.SNOW, BlockItemIds.SNOW_BLOCK, BlockItemIds.POWDER_SNOW);
       this.tag(BlockTags.MINEABLE_WITH_AXE)
@@ -446,13 +461,13 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          .addTag(BlockTags.WOODEN_SLABS)
          .addTag(BlockTags.WOODEN_STAIRS)
          .addTag(BlockTags.WOODEN_TRAPDOORS)
-         .add(BlockItemIds.MANGROVE_ROOTS)
+         .add(new BlockItemId[]{BlockItemIds.MANGROVE_ROOTS})
          .addTag(BlockTags.ALL_HANGING_SIGNS)
          .add(BlockItemIds.BAMBOO_MOSAIC, BlockItemIds.BAMBOO_MOSAIC_SLAB, BlockItemIds.BAMBOO_MOSAIC_STAIRS)
          .addTag(BlockTags.BAMBOO_BLOCKS)
-         .add(BlockItemIds.CHISELED_BOOKSHELF)
+         .add(new BlockItemId[]{BlockItemIds.CHISELED_BOOKSHELF})
          .addTag(BlockTags.WOODEN_SHELVES)
-         .add(BlockItemIds.CREAKING_HEART);
+         .add(new BlockItemId[]{BlockItemIds.CREAKING_HEART});
       this.tag(BlockTags.MINEABLE_WITH_HOE)
          .addTag(BlockTags.LEAVES)
          .add(
@@ -723,11 +738,11 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          .addTag(BlockTags.ANVIL)
          .addTag(BlockTags.CAULDRONS)
          .addTag(BlockTags.RAILS)
-         .add(BlockItemIds.CONDUIT)
-         .add(BlockItemIds.MUD_BRICKS)
-         .add(BlockItemIds.MUD_BRICK_STAIRS)
-         .add(BlockItemIds.MUD_BRICK_SLAB)
-         .add(BlockItemIds.PACKED_MUD)
+         .add(new BlockItemId[]{BlockItemIds.CONDUIT})
+         .add(new BlockItemId[]{BlockItemIds.MUD_BRICKS})
+         .add(new BlockItemId[]{BlockItemIds.MUD_BRICK_STAIRS})
+         .add(new BlockItemId[]{BlockItemIds.MUD_BRICK_SLAB})
+         .add(new BlockItemId[]{BlockItemIds.PACKED_MUD})
          .add(
             BlockItemIds.CRAFTER,
             BlockItemIds.TUFF_SLAB,
@@ -835,7 +850,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          )
          .add(BlockIds.BIG_DRIPLEAF_STEM)
          .add(BlockItemIds.CHORUS_PLANT, BlockItemIds.CHORUS_FLOWER);
-      this.tag(BlockTags.SWORD_INSTANTLY_MINES).add(BlockItemIds.BAMBOO).add(BlockIds.BAMBOO_SAPLING);
+      this.tag(BlockTags.SWORD_INSTANTLY_MINES).add(new BlockItemId[]{BlockItemIds.BAMBOO}).add(BlockIds.BAMBOO_SAPLING);
       this.tag(BlockTags.SHEARS_EXTREME_BREAKING_SPEED).addTag(BlockTags.LEAVES);
       this.tag(BlockTags.SHEARS_MAJOR_BREAKING_SPEED).addTag(BlockTags.WOOL).addTag(BlockTags.WOOL_SLABS).addTag(BlockTags.WOOL_STAIRS);
       this.tag(BlockTags.SHEARS_MINOR_BREAKING_SPEED).add(BlockItemIds.GLOW_LICHEN, BlockItemIds.VINE);
@@ -902,21 +917,21 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          );
       this.tag(BlockTags.LAVA_POOL_STONE_CANNOT_REPLACE).addTag(BlockTags.FEATURES_CANNOT_REPLACE).addTag(BlockTags.LEAVES).addTag(BlockTags.LOGS);
       this.tag(BlockTags.GEODE_INVALID_BLOCKS)
-         .add(BlockItemIds.BEDROCK)
+         .add(new BlockItemId[]{BlockItemIds.BEDROCK})
          .add(BlockIds.WATER, BlockIds.LAVA)
          .add(BlockItemIds.ICE, BlockItemIds.PACKED_ICE, BlockItemIds.BLUE_ICE);
-      this.tag(BlockTags.ANIMALS_SPAWNABLE_ON).add(BlockItemIds.GRASS_BLOCK);
+      this.tag(BlockTags.ANIMALS_SPAWNABLE_ON).add(new BlockItemId[]{BlockItemIds.GRASS_BLOCK});
       this.tag(BlockTags.ARMADILLO_SPAWNABLE_ON)
          .addTag(BlockTags.ANIMALS_SPAWNABLE_ON)
          .addTag(BlockTags.BADLANDS_TERRACOTTA)
          .add(BlockItemIds.RED_SAND, BlockItemIds.COARSE_DIRT);
-      this.tag(BlockTags.AXOLOTLS_SPAWNABLE_ON).add(BlockItemIds.CLAY);
+      this.tag(BlockTags.AXOLOTLS_SPAWNABLE_ON).add(new BlockItemId[]{BlockItemIds.CLAY});
       this.tag(BlockTags.GOATS_SPAWNABLE_ON)
          .addTag(BlockTags.ANIMALS_SPAWNABLE_ON)
          .add(BlockItemIds.STONE, BlockItemIds.SNOW, BlockItemIds.SNOW_BLOCK, BlockItemIds.PACKED_ICE, BlockItemIds.GRAVEL);
-      this.tag(BlockTags.MOOSHROOMS_SPAWNABLE_ON).add(BlockItemIds.MYCELIUM);
+      this.tag(BlockTags.MOOSHROOMS_SPAWNABLE_ON).add(new BlockItemId[]{BlockItemIds.MYCELIUM});
       this.tag(BlockTags.PARROTS_SPAWNABLE_ON).add(BlockItemIds.GRASS_BLOCK, BlockItemIds.AIR).addTag(BlockTags.LEAVES).addTag(BlockTags.LOGS);
-      this.tag(BlockTags.POLAR_BEARS_SPAWNABLE_ON_ALTERNATE).add(BlockItemIds.ICE);
+      this.tag(BlockTags.POLAR_BEARS_SPAWNABLE_ON_ALTERNATE).add(new BlockItemId[]{BlockItemIds.ICE});
       this.tag(BlockTags.RABBITS_SPAWNABLE_ON).add(BlockItemIds.GRASS_BLOCK, BlockItemIds.SNOW, BlockItemIds.SNOW_BLOCK, BlockItemIds.SAND);
       this.tag(BlockTags.FOXES_SPAWNABLE_ON)
          .add(BlockItemIds.GRASS_BLOCK, BlockItemIds.SNOW, BlockItemIds.SNOW_BLOCK, BlockItemIds.PODZOL, BlockItemIds.COARSE_DIRT);
@@ -926,7 +941,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
       this.tag(BlockTags.BATS_SPAWNABLE_ON).addTag(BlockTags.BASE_STONE_OVERWORLD);
       this.tag(BlockTags.CAMELS_SPAWNABLE_ON).addTag(BlockTags.SAND);
       this.tag(BlockTags.BADLANDS_TERRACOTTA)
-         .add(BlockItemIds.TERRACOTTA)
+         .add(new BlockItemId[]{BlockItemIds.TERRACOTTA})
          .add(
             BlockItemIds.DYED_TERRACOTTA.white(),
             BlockItemIds.DYED_TERRACOTTA.yellow(),
@@ -939,8 +954,8 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          .addTag(BlockTags.SUBSTRATE_OVERWORLD)
          .addTag(BlockTags.SAND)
          .addTag(BlockTags.TERRACOTTA)
-         .add(BlockItemIds.SNOW_BLOCK)
-         .add(BlockItemIds.POWDER_SNOW);
+         .add(new BlockItemId[]{BlockItemIds.SNOW_BLOCK})
+         .add(new BlockItemId[]{BlockItemIds.POWDER_SNOW});
       this.tag(BlockTags.FROG_PREFER_JUMP_TO).add(BlockItemIds.LILY_PAD, BlockItemIds.BIG_DRIPLEAF);
       this.tag(BlockTags.SCULK_GROWTH_INHIBITORS).add(BlockItemIds.SCULK_SENSOR, BlockItemIds.SCULK_SHRIEKER);
       this.tag(BlockTags.SCULK_REPLACEABLE)
@@ -950,40 +965,40 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          .addTag(BlockTags.NYLIUM)
          .addTag(BlockTags.BASE_STONE_NETHER)
          .add(BlockItemIds.SAND, BlockItemIds.RED_SAND)
-         .add(BlockItemIds.GRAVEL)
-         .add(BlockItemIds.SOUL_SAND)
-         .add(BlockItemIds.SOUL_SOIL)
-         .add(BlockItemIds.CALCITE)
-         .add(BlockItemIds.SMOOTH_BASALT)
-         .add(BlockItemIds.CLAY)
-         .add(BlockItemIds.DRIPSTONE_BLOCK)
-         .add(BlockItemIds.END_STONE)
-         .add(BlockItemIds.RED_SANDSTONE)
-         .add(BlockItemIds.SANDSTONE)
+         .add(new BlockItemId[]{BlockItemIds.GRAVEL})
+         .add(new BlockItemId[]{BlockItemIds.SOUL_SAND})
+         .add(new BlockItemId[]{BlockItemIds.SOUL_SOIL})
+         .add(new BlockItemId[]{BlockItemIds.CALCITE})
+         .add(new BlockItemId[]{BlockItemIds.SMOOTH_BASALT})
+         .add(new BlockItemId[]{BlockItemIds.CLAY})
+         .add(new BlockItemId[]{BlockItemIds.DRIPSTONE_BLOCK})
+         .add(new BlockItemId[]{BlockItemIds.END_STONE})
+         .add(new BlockItemId[]{BlockItemIds.RED_SANDSTONE})
+         .add(new BlockItemId[]{BlockItemIds.SANDSTONE})
          .add(BlockItemIds.SULFUR, BlockItemIds.CINNABAR);
       this.tag(BlockTags.SCULK_REPLACEABLE_WORLD_GEN)
          .addTag(BlockTags.SCULK_REPLACEABLE)
-         .add(BlockItemIds.DEEPSLATE_BRICKS)
-         .add(BlockItemIds.DEEPSLATE_TILES)
-         .add(BlockItemIds.COBBLED_DEEPSLATE)
-         .add(BlockItemIds.CRACKED_DEEPSLATE_BRICKS)
-         .add(BlockItemIds.CRACKED_DEEPSLATE_TILES)
-         .add(BlockItemIds.POLISHED_DEEPSLATE);
-      this.tag(BlockTags.VIBRATION_RESONATORS).add(BlockItemIds.AMETHYST_BLOCK);
+         .add(new BlockItemId[]{BlockItemIds.DEEPSLATE_BRICKS})
+         .add(new BlockItemId[]{BlockItemIds.DEEPSLATE_TILES})
+         .add(new BlockItemId[]{BlockItemIds.COBBLED_DEEPSLATE})
+         .add(new BlockItemId[]{BlockItemIds.CRACKED_DEEPSLATE_BRICKS})
+         .add(new BlockItemId[]{BlockItemIds.CRACKED_DEEPSLATE_TILES})
+         .add(new BlockItemId[]{BlockItemIds.POLISHED_DEEPSLATE});
+      this.tag(BlockTags.VIBRATION_RESONATORS).add(new BlockItemId[]{BlockItemIds.AMETHYST_BLOCK});
       this.tag(BlockTags.CONVERTIBLE_TO_MUD).add(BlockItemIds.DIRT, BlockItemIds.COARSE_DIRT, BlockItemIds.ROOTED_DIRT);
       this.tag(BlockTags.ANCIENT_CITY_REPLACEABLE)
-         .add(BlockItemIds.DEEPSLATE)
-         .add(BlockItemIds.DEEPSLATE_BRICKS)
-         .add(BlockItemIds.DEEPSLATE_TILES)
-         .add(BlockItemIds.DEEPSLATE_BRICK_SLAB)
-         .add(BlockItemIds.DEEPSLATE_TILE_SLAB)
-         .add(BlockItemIds.DEEPSLATE_BRICK_STAIRS)
-         .add(BlockItemIds.DEEPSLATE_TILE_WALL)
-         .add(BlockItemIds.DEEPSLATE_BRICK_WALL)
-         .add(BlockItemIds.COBBLED_DEEPSLATE)
-         .add(BlockItemIds.CRACKED_DEEPSLATE_BRICKS)
-         .add(BlockItemIds.CRACKED_DEEPSLATE_TILES)
-         .add(BlockItemIds.WOOL.gray());
+         .add(new BlockItemId[]{BlockItemIds.DEEPSLATE})
+         .add(new BlockItemId[]{BlockItemIds.DEEPSLATE_BRICKS})
+         .add(new BlockItemId[]{BlockItemIds.DEEPSLATE_TILES})
+         .add(new BlockItemId[]{BlockItemIds.DEEPSLATE_BRICK_SLAB})
+         .add(new BlockItemId[]{BlockItemIds.DEEPSLATE_TILE_SLAB})
+         .add(new BlockItemId[]{BlockItemIds.DEEPSLATE_BRICK_STAIRS})
+         .add(new BlockItemId[]{BlockItemIds.DEEPSLATE_TILE_WALL})
+         .add(new BlockItemId[]{BlockItemIds.DEEPSLATE_BRICK_WALL})
+         .add(new BlockItemId[]{BlockItemIds.COBBLED_DEEPSLATE})
+         .add(new BlockItemId[]{BlockItemIds.CRACKED_DEEPSLATE_BRICKS})
+         .add(new BlockItemId[]{BlockItemIds.CRACKED_DEEPSLATE_TILES})
+         .add(new BlockItemId[]{BlockItemIds.WOOL.gray()});
       this.tag(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)
          .add(
             BlockItemIds.MUD,
@@ -1008,7 +1023,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
       this.tag(BlockTags.REPLACEABLE_BY_TREES)
          .addTag(BlockTags.LEAVES)
          .addTag(BlockTags.SMALL_FLOWERS)
-         .add(BlockItemIds.PALE_MOSS_CARPET)
+         .add(new BlockItemId[]{BlockItemIds.PALE_MOSS_CARPET})
          .add(
             BlockItemIds.SHORT_GRASS,
             BlockItemIds.FERN,
@@ -1025,7 +1040,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockItemIds.PITCHER_PLANT
          )
          .add(BlockIds.WATER)
-         .add(BlockItemIds.SEAGRASS)
+         .add(new BlockItemId[]{BlockItemIds.SEAGRASS})
          .add(BlockIds.TALL_SEAGRASS)
          .add(BlockItemIds.BUSH, BlockItemIds.FIREFLY_BUSH)
          .add(
@@ -1040,7 +1055,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
       this.tag(BlockTags.REPLACEABLE_BY_MUSHROOMS)
          .addTag(BlockTags.LEAVES)
          .addTag(BlockTags.SMALL_FLOWERS)
-         .add(BlockItemIds.PALE_MOSS_CARPET)
+         .add(new BlockItemId[]{BlockItemIds.PALE_MOSS_CARPET})
          .add(
             BlockItemIds.SHORT_GRASS,
             BlockItemIds.FERN,
@@ -1057,7 +1072,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockItemIds.PITCHER_PLANT
          )
          .add(BlockIds.WATER)
-         .add(BlockItemIds.SEAGRASS)
+         .add(new BlockItemId[]{BlockItemIds.SEAGRASS})
          .add(BlockIds.TALL_SEAGRASS)
          .add(BlockItemIds.BROWN_MUSHROOM, BlockItemIds.RED_MUSHROOM, BlockItemIds.BROWN_MUSHROOM_BLOCK, BlockItemIds.RED_MUSHROOM_BLOCK)
          .add(
@@ -1071,17 +1086,17 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockItemIds.RED_SHRUB,
             BlockItemIds.FIREFLY_BUSH
          );
-      this.tag(BlockTags.ENABLES_BUBBLE_COLUMN_DRAG_DOWN).add(BlockItemIds.MAGMA_BLOCK);
-      this.tag(BlockTags.ENABLES_BUBBLE_COLUMN_PUSH_UP).add(BlockItemIds.SOUL_SAND);
+      this.tag(BlockTags.ENABLES_BUBBLE_COLUMN_DRAG_DOWN).add(new BlockItemId[]{BlockItemIds.MAGMA_BLOCK});
+      this.tag(BlockTags.ENABLES_BUBBLE_COLUMN_PUSH_UP).add(new BlockItemId[]{BlockItemIds.SOUL_SAND});
       this.tag(BlockTags.PREVENTS_NEARBY_LEAF_DECAY).addTag(BlockTags.LOGS);
       this.tag(BlockTags.CATS_CAN_SIT_ON).add(BlockItemIds.FURNACE, BlockItemIds.CHEST).addTag(BlockItemTags.BEDS.block());
       this.tag(BlockTags.CATS_CAN_LIE_ON).addTag(BlockItemTags.BEDS.block());
       this.tag(BlockTags.VILLAGERS_CAN_SLEEP_ON_BED).addTag(BlockItemTags.BEDS.block());
       this.tag(BlockTags.VILLAGER_BABIES_CAN_JUMP_ON_BED).addTag(BlockItemTags.BEDS.block());
-      this.tag(BlockTags.SPEEDS_UP_ZOMBIE_VILLAGER_CURING).add(BlockItemIds.IRON_BARS).addTag(BlockItemTags.BEDS.block());
-      this.tag(BlockTags.SUPPORTS_VEGETATION).addTag(BlockTags.SUBSTRATE_OVERWORLD).add(BlockItemIds.FARMLAND);
+      this.tag(BlockTags.SPEEDS_UP_ZOMBIE_VILLAGER_CURING).add(new BlockItemId[]{BlockItemIds.IRON_BARS}).addTag(BlockItemTags.BEDS.block());
+      this.tag(BlockTags.SUPPORTS_VEGETATION).addTag(BlockTags.SUBSTRATE_OVERWORLD).add(new BlockItemId[]{BlockItemIds.FARMLAND});
       this.tag(BlockTags.SUPPORTS_DRY_VEGETATION).addTag(BlockTags.SAND).addTag(BlockTags.TERRACOTTA).addTag(BlockTags.SUPPORTS_VEGETATION);
-      this.tag(BlockTags.SUPPORTS_CROPS).add(BlockItemIds.FARMLAND);
+      this.tag(BlockTags.SUPPORTS_CROPS).add(new BlockItemId[]{BlockItemIds.FARMLAND});
       this.tag(BlockTags.SUPPORTS_STEM_CROPS).addTag(BlockTags.SUPPORTS_CROPS);
       this.tag(BlockTags.SUPPORTS_STEM_FRUIT).addTag(BlockTags.SUPPORTS_VEGETATION);
       this.tag(BlockTags.SUPPORTS_PUMPKIN_STEM).addTag(BlockTags.SUPPORTS_STEM_CROPS);
@@ -1093,10 +1108,10 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
       this.tag(BlockTags.SUPPORTS_BAMBOO)
          .addTag(BlockTags.SAND)
          .addTag(BlockTags.SUBSTRATE_OVERWORLD)
-         .add(BlockItemIds.BAMBOO)
+         .add(new BlockItemId[]{BlockItemIds.BAMBOO})
          .add(BlockIds.BAMBOO_SAPLING)
          .add(BlockItemIds.GRAVEL, BlockItemIds.SUSPICIOUS_GRAVEL);
-      this.tag(BlockTags.SUPPORTS_SMALL_DRIPLEAF).add(BlockItemIds.CLAY).add(BlockItemIds.MOSS_BLOCK);
+      this.tag(BlockTags.SUPPORTS_SMALL_DRIPLEAF).add(new BlockItemId[]{BlockItemIds.CLAY}).add(new BlockItemId[]{BlockItemIds.MOSS_BLOCK});
       this.tag(BlockTags.SUPPORTS_BIG_DRIPLEAF)
          .addTag(BlockTags.SUPPORTS_SMALL_DRIPLEAF)
          .add(
@@ -1112,66 +1127,72 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockItemIds.FARMLAND
          );
       this.tag(BlockTags.SUPPORTS_CACTUS).addTag(BlockTags.SAND);
-      this.tag(BlockTags.SUPPORTS_CHORUS_PLANT).add(BlockItemIds.END_STONE);
-      this.tag(BlockTags.SUPPORTS_CHORUS_FLOWER).add(BlockItemIds.END_STONE);
-      this.tag(BlockTags.SUPPORTS_NETHER_SPROUTS).addTag(BlockTags.SUPPORTS_VEGETATION).addTag(BlockTags.NYLIUM).add(BlockItemIds.SOUL_SOIL);
-      this.tag(BlockTags.SUPPORTS_AZALEA).addTag(BlockTags.SUPPORTS_VEGETATION).add(BlockItemIds.CLAY);
+      this.tag(BlockTags.SUPPORTS_CHORUS_PLANT).add(new BlockItemId[]{BlockItemIds.END_STONE});
+      this.tag(BlockTags.SUPPORTS_CHORUS_FLOWER).add(new BlockItemId[]{BlockItemIds.END_STONE});
+      this.tag(BlockTags.SUPPORTS_NETHER_SPROUTS).addTag(BlockTags.SUPPORTS_VEGETATION).addTag(BlockTags.NYLIUM).add(new BlockItemId[]{BlockItemIds.SOUL_SOIL});
+      this.tag(BlockTags.SUPPORTS_AZALEA).addTag(BlockTags.SUPPORTS_VEGETATION).add(new BlockItemId[]{BlockItemIds.CLAY});
       this.tag(BlockTags.SUPPORTS_WARPED_FUNGUS)
          .addTag(BlockTags.SUPPORTS_VEGETATION)
          .addTag(BlockTags.NYLIUM)
-         .add(BlockItemIds.MYCELIUM)
-         .add(BlockItemIds.SOUL_SOIL);
+         .add(new BlockItemId[]{BlockItemIds.MYCELIUM})
+         .add(new BlockItemId[]{BlockItemIds.SOUL_SOIL});
       this.tag(BlockTags.SUPPORTS_CRIMSON_FUNGUS).addTag(BlockTags.SUPPORTS_WARPED_FUNGUS);
-      this.tag(BlockTags.SUPPORTS_MANGROVE_PROPAGULE).addTag(BlockTags.SUPPORTS_VEGETATION).add(BlockItemIds.CLAY);
-      this.tag(BlockTags.SUPPORTS_HANGING_MANGROVE_PROPAGULE).add(BlockItemIds.MANGROVE_LEAVES);
-      this.tag(BlockTags.SUPPORTS_NETHER_WART).add(BlockItemIds.SOUL_SAND);
-      this.tag(BlockTags.SUPPORTS_WARPED_ROOTS).addTag(BlockTags.SUPPORTS_VEGETATION).addTag(BlockTags.NYLIUM).add(BlockItemIds.SOUL_SOIL);
+      this.tag(BlockTags.SUPPORTS_MANGROVE_PROPAGULE).addTag(BlockTags.SUPPORTS_VEGETATION).add(new BlockItemId[]{BlockItemIds.CLAY});
+      this.tag(BlockTags.SUPPORTS_HANGING_MANGROVE_PROPAGULE).add(new BlockItemId[]{BlockItemIds.MANGROVE_LEAVES});
+      this.tag(BlockTags.SUPPORTS_NETHER_WART).add(new BlockItemId[]{BlockItemIds.SOUL_SAND});
+      this.tag(BlockTags.SUPPORTS_WARPED_ROOTS).addTag(BlockTags.SUPPORTS_VEGETATION).addTag(BlockTags.NYLIUM).add(new BlockItemId[]{BlockItemIds.SOUL_SOIL});
       this.tag(BlockTags.SUPPORTS_CRIMSON_ROOTS).addTag(BlockTags.SUPPORTS_WARPED_ROOTS);
       this.tag(BlockTags.SUPPORTS_WITHER_ROSE)
          .addTag(BlockTags.SUPPORTS_VEGETATION)
-         .add(BlockItemIds.NETHERRACK)
-         .add(BlockItemIds.SOUL_SAND)
-         .add(BlockItemIds.SOUL_SOIL);
+         .add(new BlockItemId[]{BlockItemIds.NETHERRACK})
+         .add(new BlockItemId[]{BlockItemIds.SOUL_SAND})
+         .add(new BlockItemId[]{BlockItemIds.SOUL_SOIL});
       this.tag(BlockTags.SUPPORTS_COCOA).addTag(BlockTags.JUNGLE_LOGS);
-      this.tag(BlockTags.SUPPORTS_LILY_PAD).add(BlockItemIds.ICE).add(BlockIds.FROSTED_ICE);
+      this.tag(BlockTags.SUPPORTS_LILY_PAD).add(new BlockItemId[]{BlockItemIds.ICE}).add(BlockIds.FROSTED_ICE);
       this.tag(BlockTags.SUPPORTS_FROGSPAWN);
-      this.tag(BlockTags.SUPPORT_OVERRIDE_CACTUS_FLOWER).add(BlockItemIds.CACTUS).add(BlockItemIds.FARMLAND);
-      this.tag(BlockTags.SUPPORT_OVERRIDE_SNOW_LAYER).add(BlockItemIds.HONEY_BLOCK).add(BlockItemIds.SOUL_SAND).add(BlockItemIds.MUD);
-      this.tag(BlockTags.CANNOT_SUPPORT_SEAGRASS).add(BlockItemIds.MAGMA_BLOCK);
-      this.tag(BlockTags.CANNOT_SUPPORT_KELP).add(BlockItemIds.MAGMA_BLOCK);
-      this.tag(BlockTags.CANNOT_SUPPORT_SNOW_LAYER).add(BlockItemIds.ICE).add(BlockItemIds.PACKED_ICE).add(BlockItemIds.BARRIER);
+      this.tag(BlockTags.SUPPORT_OVERRIDE_CACTUS_FLOWER).add(new BlockItemId[]{BlockItemIds.CACTUS}).add(new BlockItemId[]{BlockItemIds.FARMLAND});
+      this.tag(BlockTags.SUPPORT_OVERRIDE_SNOW_LAYER)
+         .add(new BlockItemId[]{BlockItemIds.HONEY_BLOCK})
+         .add(new BlockItemId[]{BlockItemIds.SOUL_SAND})
+         .add(new BlockItemId[]{BlockItemIds.MUD});
+      this.tag(BlockTags.CANNOT_SUPPORT_SEAGRASS).add(new BlockItemId[]{BlockItemIds.MAGMA_BLOCK});
+      this.tag(BlockTags.CANNOT_SUPPORT_KELP).add(new BlockItemId[]{BlockItemIds.MAGMA_BLOCK});
+      this.tag(BlockTags.CANNOT_SUPPORT_SNOW_LAYER)
+         .add(new BlockItemId[]{BlockItemIds.ICE})
+         .add(new BlockItemId[]{BlockItemIds.PACKED_ICE})
+         .add(new BlockItemId[]{BlockItemIds.BARRIER});
       this.tag(BlockTags.OVERRIDES_MUSHROOM_LIGHT_REQUIREMENT)
-         .add(BlockItemIds.MYCELIUM)
-         .add(BlockItemIds.PODZOL)
-         .add(BlockItemIds.CRIMSON_NYLIUM)
-         .add(BlockItemIds.WARPED_NYLIUM);
-      this.tag(BlockTags.GROWS_CROPS).add(BlockItemIds.FARMLAND);
+         .add(new BlockItemId[]{BlockItemIds.MYCELIUM})
+         .add(new BlockItemId[]{BlockItemIds.PODZOL})
+         .add(new BlockItemId[]{BlockItemIds.CRIMSON_NYLIUM})
+         .add(new BlockItemId[]{BlockItemIds.WARPED_NYLIUM});
+      this.tag(BlockTags.GROWS_CROPS).add(new BlockItemId[]{BlockItemIds.FARMLAND});
       this.tag(BlockTags.SNAPS_GOAT_HORN)
          .addTag(BlockTags.OVERWORLD_NATURAL_LOGS)
-         .add(BlockItemIds.STONE)
-         .add(BlockItemIds.PACKED_ICE)
-         .add(BlockItemIds.IRON_ORE)
-         .add(BlockItemIds.COAL_ORE)
-         .add(BlockItemIds.COPPER_ORE)
-         .add(BlockItemIds.EMERALD_ORE);
+         .add(new BlockItemId[]{BlockItemIds.STONE})
+         .add(new BlockItemId[]{BlockItemIds.PACKED_ICE})
+         .add(new BlockItemId[]{BlockItemIds.IRON_ORE})
+         .add(new BlockItemId[]{BlockItemIds.COAL_ORE})
+         .add(new BlockItemId[]{BlockItemIds.COPPER_ORE})
+         .add(new BlockItemId[]{BlockItemIds.EMERALD_ORE});
       this.tag(BlockTags.INVALID_SPAWN_INSIDE).add(BlockIds.END_PORTAL, BlockIds.END_GATEWAY);
-      this.tag(BlockTags.TRAIL_RUINS_REPLACEABLE).add(BlockItemIds.GRAVEL);
+      this.tag(BlockTags.TRAIL_RUINS_REPLACEABLE).add(new BlockItemId[]{BlockItemIds.GRAVEL});
       this.tag(BlockTags.SNIFFER_DIGGABLE_BLOCK)
          .addTag(BlockTags.DIRT)
          .addTag(BlockTags.MUD)
          .addTag(BlockTags.MOSS_BLOCKS)
          .add(BlockItemIds.GRASS_BLOCK, BlockItemIds.PODZOL);
-      this.tag(BlockTags.SNIFFER_EGG_HATCH_BOOST).add(BlockItemIds.MOSS_BLOCK);
+      this.tag(BlockTags.SNIFFER_EGG_HATCH_BOOST).add(new BlockItemId[]{BlockItemIds.MOSS_BLOCK});
       this.tag(BlockTags.REPLACEABLE)
          .addAll(
             registries.lookupOrThrow(Registries.BLOCK).listElements().filter(b -> b.value().defaultBlockState().canBeReplaced()).map(Holder.Reference::key)
          );
-      this.tag(BlockTags.ENCHANTMENT_POWER_PROVIDER).add(BlockItemIds.BOOKSHELF);
+      this.tag(BlockTags.ENCHANTMENT_POWER_PROVIDER).add(new BlockItemId[]{BlockItemIds.BOOKSHELF});
       this.tag(BlockTags.ENCHANTMENT_POWER_TRANSMITTER).addTag(BlockTags.REPLACEABLE);
       this.tag(BlockTags.MAINTAINS_FARMLAND)
-         .add(BlockItemIds.PUMPKIN_CROP)
+         .add(new BlockItemId[]{BlockItemIds.PUMPKIN_CROP})
          .add(BlockIds.ATTACHED_PUMPKIN_STEM)
-         .add(BlockItemIds.MELON_CROP)
+         .add(new BlockItemId[]{BlockItemIds.MELON_CROP})
          .add(BlockIds.ATTACHED_MELON_STEM)
          .add(
             BlockItemIds.BEETROOT_CROP,
@@ -1190,7 +1211,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
          .add(BlockIds.FIRE)
          .addTag(BlockTags.SPELEOTHEMS);
       this.tag(BlockTags.DOES_NOT_BLOCK_HOPPERS).addTag(BlockTags.BEEHIVES);
-      this.tag(BlockTags.SUPPRESSES_BOUNCE).add(BlockItemIds.HONEY_BLOCK);
+      this.tag(BlockTags.SUPPRESSES_BOUNCE).add(new BlockItemId[]{BlockItemIds.HONEY_BLOCK});
       this.tag(BlockTags.BLOCKS_WIND_CHARGE_EXPLOSIONS).add(BlockItemIds.BARRIER, BlockItemIds.BEDROCK);
       this.tag(BlockTags.TRIGGERS_AMBIENT_DESERT_SAND_BLOCK_SOUNDS).add(BlockItemIds.SAND, BlockItemIds.RED_SAND);
       this.tag(BlockTags.TRIGGERS_AMBIENT_DESERT_DRY_VEGETATION_BLOCK_SOUNDS).addTag(BlockTags.TERRACOTTA).add(BlockItemIds.SAND, BlockItemIds.RED_SAND);
@@ -1198,13 +1219,16 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
       this.tag(BlockTags.REQUIRED_FOR_POPLAR_LEAF_AMBIENCE).addTag(BlockTags.OVERWORLD_NATURAL_LOGS);
       this.tag(BlockTags.SPELEOTHEMS).add(BlockItemIds.POINTED_DRIPSTONE, BlockItemIds.SULFUR_SPIKE);
       this.tag(BlockTags.SULFUR_SPIKE_REPLACEABLE).add(BlockItemIds.SULFUR, BlockItemIds.CINNABAR);
-      this.tag(BlockTags.CUSHION_USES_COLLISION_SHAPE).addTag(BlockTags.CAULDRONS).add(BlockItemIds.HOPPER).add(BlockItemIds.COMPOSTER);
-      this.tag(BlockTags.FOX_IMMUNE_TO).add(BlockItemIds.SWEET_BERRY_CROP);
-      this.tag(BlockTags.POLAR_BEAR_IMMUNE_TO).add(BlockItemIds.POWDER_SNOW);
-      this.tag(BlockTags.SNOW_GOLEM_IMMUNE_TO).add(BlockItemIds.POWDER_SNOW);
-      this.tag(BlockTags.STRAY_IMMUNE_TO).add(BlockItemIds.POWDER_SNOW);
-      this.tag(BlockTags.WITHER_IMMUNE_TO).add(BlockItemIds.WITHER_ROSE);
-      this.tag(BlockTags.WITHER_SKELETON_IMMUNE_TO).add(BlockItemIds.WITHER_ROSE);
+      this.tag(BlockTags.CUSHION_USES_COLLISION_SHAPE)
+         .addTag(BlockTags.CAULDRONS)
+         .add(new BlockItemId[]{BlockItemIds.HOPPER})
+         .add(new BlockItemId[]{BlockItemIds.COMPOSTER});
+      this.tag(BlockTags.FOX_IMMUNE_TO).add(new BlockItemId[]{BlockItemIds.SWEET_BERRY_CROP});
+      this.tag(BlockTags.POLAR_BEAR_IMMUNE_TO).add(new BlockItemId[]{BlockItemIds.POWDER_SNOW});
+      this.tag(BlockTags.SNOW_GOLEM_IMMUNE_TO).add(new BlockItemId[]{BlockItemIds.POWDER_SNOW});
+      this.tag(BlockTags.STRAY_IMMUNE_TO).add(new BlockItemId[]{BlockItemIds.POWDER_SNOW});
+      this.tag(BlockTags.WITHER_IMMUNE_TO).add(new BlockItemId[]{BlockItemIds.WITHER_ROSE});
+      this.tag(BlockTags.WITHER_SKELETON_IMMUNE_TO).add(new BlockItemId[]{BlockItemIds.WITHER_ROSE});
       this.tag(BlockTags.DEFAULT_IMMUNE_TO);
       this.tag(BlockTags.BLOCKS_MOTION_NO_LEAVES)
          .addTag(BlockTags.ALL_HANGING_SIGNS)
@@ -1634,7 +1658,7 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockItemIds.SHELF_MUSHROOM,
             BlockItemIds.STRAW_BED
          );
-      this.tag(BlockTags.AIR).add(BlockItemIds.AIR).add(BlockIds.VOID_AIR, BlockIds.CAVE_AIR);
+      this.tag(BlockTags.AIR).add(new BlockItemId[]{BlockItemIds.AIR}).add(BlockIds.VOID_AIR, BlockIds.CAVE_AIR);
       this.tag(BlockTags.DANGEROUS_FOR_TELEPORTATION)
          .add(BlockIds.FIRE, BlockIds.SOUL_FIRE, BlockIds.LAVA_CAULDRON)
          .add(
@@ -1648,8 +1672,8 @@ public class VanillaBlockTagsProvider extends TagsProvider<Block> {
             BlockItemIds.POWDER_SNOW
          );
       this.tag(BlockTags.CAT_DOES_NOT_TELEPORT_TO).addTag(BlockTags.DANGEROUS_FOR_TELEPORTATION);
-      this.tag(BlockTags.ENDERMAN_DOES_NOT_TELEPORT_TO).addTag(BlockTags.DANGEROUS_FOR_TELEPORTATION).add(BlockItemIds.BEDROCK);
-      this.tag(BlockTags.SHULKER_DOES_NOT_TELEPORT_TO).add(BlockItemIds.BEDROCK);
+      this.tag(BlockTags.ENDERMAN_DOES_NOT_TELEPORT_TO).addTag(BlockTags.DANGEROUS_FOR_TELEPORTATION).add(new BlockItemId[]{BlockItemIds.BEDROCK});
+      this.tag(BlockTags.SHULKER_DOES_NOT_TELEPORT_TO).add(new BlockItemId[]{BlockItemIds.BEDROCK});
    }
 
    private static ColorCollection<ResourceKey<Block>> toIds(final ColorCollection<BlockItemId> ids) {

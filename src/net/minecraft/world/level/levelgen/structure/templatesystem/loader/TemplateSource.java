@@ -37,27 +37,22 @@ public abstract class TemplateSource {
    public abstract Stream<Identifier> list();
 
    protected Optional<StructureTemplate> load(final IoSupplier<InputStream> opener, final boolean asText, final Consumer<Throwable> onError) {
-      try {
-         Optional var7;
-         try (
-            InputStream rawInput = opener.get();
-            InputStream input = new FastBufferedInputStream(rawInput);
-         ) {
-            CompoundTag structureTag;
-            if (asText) {
-               structureTag = readTextStructure(input);
-            } else {
-               structureTag = readStructure(input);
-            }
-
-            var7 = Optional.of(this.readStructure(structureTag));
+      try (
+         InputStream rawInput = opener.get();
+         InputStream input = new FastBufferedInputStream(rawInput);
+      ) {
+         CompoundTag structureTag;
+         if (asText) {
+            structureTag = readTextStructure(input);
+         } else {
+            structureTag = readStructure(input);
          }
 
-         return var7;
-      } catch (FileNotFoundException var12) {
+         return Optional.of(this.readStructure(structureTag));
+      } catch (FileNotFoundException e) {
          return Optional.empty();
-      } catch (Throwable var13) {
-         onError.accept(var13);
+      } catch (Throwable e) {
+         onError.accept(e);
          return Optional.empty();
       }
    }
@@ -67,13 +62,10 @@ public abstract class TemplateSource {
    }
 
    private static CompoundTag readTextStructure(final InputStream input) throws IOException, CommandSyntaxException {
-      CompoundTag var3;
       try (Reader reader = new InputStreamReader(input, StandardCharsets.UTF_8)) {
          String contents = reader.readAllAsString();
-         var3 = NbtUtils.snbtToStructure(contents);
+         return NbtUtils.snbtToStructure(contents);
       }
-
-      return var3;
    }
 
    private StructureTemplate readStructure(final CompoundTag tag) {

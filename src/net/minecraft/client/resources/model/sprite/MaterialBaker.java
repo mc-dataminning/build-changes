@@ -24,8 +24,8 @@ public class MaterialBaker {
    private final Material.Baked missingSpriteForceTranslucent;
    private final Multimap<String, Identifier> missingSprites = Multimaps.synchronizedMultimap(HashMultimap.create());
    private final Multimap<String, String> missingReferences = Multimaps.synchronizedMultimap(HashMultimap.create());
-   private final Map<Material, Material.Baked> bakedMaterials = new ConcurrentHashMap<>();
-   private final Function<Material, Material.Baked> bakerFunction = this::bake;
+   private final Map<Material, Material.@Nullable Baked> bakedMaterials = new ConcurrentHashMap<>();
+   private final Function<Material, Material.@Nullable Baked> bakerFunction = this::bake;
 
    public MaterialBaker(final SpriteLoader.Preparations blockAtlas, final SpriteLoader.Preparations itemAtlas) {
       this.blockAtlas = blockAtlas;
@@ -52,14 +52,12 @@ public class MaterialBaker {
       }
    }
 
-   @Nullable
-   private Material.Baked bake(final Material material) {
+   private Material.@Nullable Baked bake(final Material material) {
       Material.Baked itemMaterial = bakeForAtlas(material, this.itemAtlas);
       return itemMaterial != null ? itemMaterial : bakeForAtlas(material, this.blockAtlas);
    }
 
-   @Nullable
-   private static Material.Baked bakeForAtlas(final Material material, final SpriteLoader.Preparations atlas) {
+   private static Material.@Nullable Baked bakeForAtlas(final Material material, final SpriteLoader.Preparations atlas) {
       TextureAtlasSprite sprite = atlas.getSprite(material.sprite());
       return sprite != null ? new Material.Baked(sprite, material.forceTranslucent()) : null;
    }
@@ -79,17 +77,17 @@ public class MaterialBaker {
          .asMap()
          .forEach(
             (location, sprites) -> LOGGER.warn(
-                  "Missing textures in model {}:\n{}", location, sprites.stream().sorted().map(sprite -> "    " + sprite).collect(Collectors.joining("\n"))
-               )
+               "Missing textures in model {}:\n{}", location, sprites.stream().sorted().map(sprite -> "    " + sprite).collect(Collectors.joining("\n"))
+            )
          );
       this.missingReferences
          .asMap()
          .forEach(
             (location, references) -> LOGGER.warn(
-                  "Missing texture references in model {}:\n{}",
-                  location,
-                  references.stream().sorted().map(reference -> "    " + reference).collect(Collectors.joining("\n"))
-               )
+               "Missing texture references in model {}:\n{}",
+               location,
+               references.stream().sorted().map(reference -> "    " + reference).collect(Collectors.joining("\n"))
+            )
          );
    }
 }

@@ -37,8 +37,8 @@ public record ClientboundCommandSuggestionsPacket(int id, int start, int length,
             .stream()
             .map(
                suggestion -> new ClientboundCommandSuggestionsPacket.Entry(
-                     suggestion.getText(), Optional.ofNullable(suggestion.getTooltip()).map(ComponentUtils::fromMessage)
-                  )
+                  suggestion.getText(), Optional.ofNullable(suggestion.getTooltip()).map(ComponentUtils::fromMessage)
+               )
             )
             .toList()
       );
@@ -58,7 +58,7 @@ public record ClientboundCommandSuggestionsPacket(int id, int start, int length,
       return new Suggestions(range, this.suggestions.stream().map(entry -> new Suggestion(range, entry.text(), entry.tooltip().orElse(null))).toList());
    }
 
-   public static record Entry(String text, Optional<Component> tooltip) {
+   public record Entry(String text, Optional<Component> tooltip) {
       public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundCommandSuggestionsPacket.Entry> STREAM_CODEC = StreamCodec.composite(
          ByteBufCodecs.STRING_UTF8,
          ClientboundCommandSuggestionsPacket.Entry::text,

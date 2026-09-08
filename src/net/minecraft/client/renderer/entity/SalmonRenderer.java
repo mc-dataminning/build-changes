@@ -46,7 +46,7 @@ public class SalmonRenderer extends MobRenderer<Salmon, SalmonRenderState, Salmo
          angleMultiplier = 1.7F;
       }
 
-      float bodyZRot = amplitudeMultiplier * 4.3F * Mth.sin((double)(angleMultiplier * 0.6F * state.ageInTicks));
+      float bodyZRot = amplitudeMultiplier * 4.3F * Mth.sin(angleMultiplier * 0.6F * state.ageInTicks);
       poseStack.rotateDegrees(Axis.YP, bodyZRot);
       if (!state.isInWater) {
          poseStack.translate(0.2F, 0.1F, 0.0F);

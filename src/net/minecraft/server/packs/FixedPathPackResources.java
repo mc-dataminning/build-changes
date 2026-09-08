@@ -29,8 +29,7 @@ public class FixedPathPackResources implements PackResources {
    private static final Logger LOGGER = LogUtils.getLogger();
    private final PackLocationInfo location;
    private final ResourceMetadata builtInMetadata;
-   @Nullable
-   private ResourceMetadata resourceMetadata;
+   private @Nullable ResourceMetadata resourceMetadata;
    private final Set<String> namespaces;
    private final List<Path> rootPaths;
    private final Map<PackType, List<Path>> pathsForType;
@@ -49,9 +48,8 @@ public class FixedPathPackResources implements PackResources {
       this.pathsForType = pathsForType;
    }
 
-   @Nullable
    @Override
-   public IoSupplier<InputStream> getRootResource(final String... path) {
+   public @Nullable IoSupplier<InputStream> getRootResource(final String... path) {
       FileUtil.validatePath(path);
       List<String> pathList = List.of(path);
 
@@ -106,9 +104,8 @@ public class FixedPathPackResources implements PackResources {
       PathPackResources.listPath(namespace, namespaceDir, directory, result);
    }
 
-   @Nullable
    @Override
-   public IoSupplier<InputStream> getResource(final PackType type, final Identifier location) {
+   public @Nullable IoSupplier<InputStream> getResource(final PackType type, final Identifier location) {
       return (IoSupplier<InputStream>)FileUtil.decomposePath(location.getPath()).mapOrElse(decomposedPath -> {
          String namespace = location.getNamespace();
 
@@ -131,9 +128,8 @@ public class FixedPathPackResources implements PackResources {
       return this.namespaces;
    }
 
-   @Nullable
    @Override
-   public <T> T getMetadataSection(final MetadataSectionType<T> metadataSerializer) {
+   public <T> @Nullable T getMetadataSection(final MetadataSectionType<T> metadataSerializer) {
       try {
          if (this.resourceMetadata == null) {
             this.resourceMetadata = AbstractPackMetadataResources.loadMetadata(this);
@@ -143,8 +139,8 @@ public class FixedPathPackResources implements PackResources {
          if (section.isPresent()) {
             return section.get();
          }
-      } catch (Exception var3) {
-         LOGGER.warn("Failed to parse vanilla pack metadata", var3);
+      } catch (Exception e) {
+         LOGGER.warn("Failed to parse vanilla pack metadata", e);
       }
 
       return this.builtInMetadata.getSection(metadataSerializer).orElse(null);

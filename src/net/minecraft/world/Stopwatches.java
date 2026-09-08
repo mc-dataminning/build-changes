@@ -40,8 +40,7 @@ public class Stopwatches extends SavedData {
       return result;
    }
 
-   @Nullable
-   public Stopwatch get(final Identifier id) {
+   public @Nullable Stopwatch get(final Identifier id) {
       return this.stopwatches.get(id);
    }
 

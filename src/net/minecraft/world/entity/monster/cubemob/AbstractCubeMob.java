@@ -82,14 +82,14 @@ public abstract class AbstractCubeMob extends AgeableMob {
       this.reapplyPosition();
       this.refreshDimensions();
       this.setCubeMobHealth(actualSize);
-      this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue((double)(0.2F + 0.1F * (float)actualSize));
+      this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.2F + 0.1F * actualSize);
       if (updateHealth) {
          this.setHealth(this.getMaxHealth());
       }
    }
 
    protected void setCubeMobHealth(final int actualSize) {
-      this.getAttribute(Attributes.MAX_HEALTH).setBaseValue((double)(actualSize * actualSize));
+      this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(actualSize * actualSize);
    }
 
    public int getSize() {
@@ -114,8 +114,7 @@ public abstract class AbstractCubeMob extends AgeableMob {
       return this.getSize() <= 1;
    }
 
-   @Nullable
-   protected abstract ParticleOptions getParticleType();
+   protected abstract @Nullable ParticleOptions getParticleType();
 
    @Override
    public void tick() {
@@ -126,14 +125,14 @@ public abstract class AbstractCubeMob extends AgeableMob {
          float size = this.getDimensions(this.getPose()).width() * 2.0F;
          float radius = size / 2.0F;
 
-         for (int i = 0; (float)i < size * 16.0F; i++) {
+         for (int i = 0; i < size * 16.0F; i++) {
             float dir = this.random.nextFloat() * (float) (Math.PI * 2);
             float d = this.random.nextFloat() * 0.5F + 0.5F;
-            float xd = Mth.sin((double)dir) * radius * d;
-            float zd = Mth.cos((double)dir) * radius * d;
+            float xd = Mth.sin(dir) * radius * d;
+            float zd = Mth.cos(dir) * radius * d;
             ParticleOptions particleType = this.getParticleType();
             if (particleType != null) {
-               this.level().addParticle(particleType, this.getX() + (double)xd, this.getY(), this.getZ() + (double)zd, 0.0, 0.0, 0.0);
+               this.level().addParticle(particleType, this.getX() + xd, this.getY(), this.getZ() + zd, 0.0, 0.0, 0.0);
             }
          }
 
@@ -194,8 +193,8 @@ public abstract class AbstractCubeMob extends AgeableMob {
          PlayerTeam team = this.getTeam();
 
          for (int i = 0; i < count; i++) {
-            float xd = ((float)(i % 2) - 0.5F) * xzCubeSpawnOffset;
-            float zd = ((float)(i / 2) - 0.5F) * xzCubeSpawnOffset;
+            float xd = (i % 2 - 0.5F) * xzCubeSpawnOffset;
+            float zd = (i / 2 - 0.5F) * xzCubeSpawnOffset;
             this.convertTo(
                this.getType(),
                new ConversionParams(ConversionType.SPLIT_ON_DEATH, false, false, team),
@@ -210,7 +209,7 @@ public abstract class AbstractCubeMob extends AgeableMob {
 
    protected void setUpSplitCube(final AbstractCubeMob cubeMob, final int halfSize, final float xd, final float zd) {
       cubeMob.setSize(halfSize, true);
-      cubeMob.snapTo(this.getX() + (double)xd, this.getY() + 0.5, this.getZ() + (double)zd, this.random.nextFloat() * 360.0F, 0.0F);
+      cubeMob.snapTo(this.getX() + xd, this.getY() + 0.5, this.getZ() + zd, this.random.nextFloat() * 360.0F, 0.0F);
    }
 
    protected int getSplitCount() {
@@ -248,7 +247,7 @@ public abstract class AbstractCubeMob extends AgeableMob {
 
    @Override
    protected Vec3 getPassengerAttachmentPoint(final Entity passenger, final EntityDimensions dimensions, final float scale) {
-      return new Vec3(0.0, (double)dimensions.height() - 0.015625 * (double)this.getSize() * (double)scale, 0.0);
+      return new Vec3(0.0, dimensions.height() - 0.015625 * this.getSize() * scale, 0.0);
    }
 
    protected boolean canDealDamage() {
@@ -261,13 +260,13 @@ public abstract class AbstractCubeMob extends AgeableMob {
 
    @Override
    public EntityDimensions getDefaultDimensions(final Pose pose) {
-      return this.getType().getDimensions().scale((float)this.getSize());
+      return this.getType().getDimensions().scale(this.getSize());
    }
 
    @Override
    public void jumpFromGround() {
       Vec3 movement = this.getDeltaMovement();
-      this.setDeltaMovement(movement.x, (double)this.getJumpPower(), movement.z);
+      this.setDeltaMovement(movement.x, this.getJumpPower(), movement.z);
       this.needsSync = true;
    }
 
@@ -278,7 +277,7 @@ public abstract class AbstractCubeMob extends AgeableMob {
 
    @Override
    protected float getSoundVolume() {
-      return 0.4F * (float)this.getSize();
+      return 0.4F * this.getSize();
    }
 
    @Override
@@ -305,15 +304,13 @@ public abstract class AbstractCubeMob extends AgeableMob {
 
    protected abstract SoundEvent getSquishSound();
 
-   @Nullable
-   public AbstractCubeMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable AbstractCubeMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       return null;
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+   public @Nullable SpawnGroupData finalizeSpawn(
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       SpawnGroupData data = super.finalizeSpawn(level, difficulty, spawnReason, groupData);
       this.setSpawnSize(level, difficulty);
@@ -510,7 +507,7 @@ public abstract class AbstractCubeMob extends AgeableMob {
       public void tick() {
          if (--this.nextRandomizeTime <= 0) {
             this.nextRandomizeTime = this.adjustedTickDelay(40 + this.cubeMob.getRandom().nextInt(60));
-            this.chosenDegrees = (float)this.cubeMob.getRandom().nextInt(360);
+            this.chosenDegrees = this.cubeMob.getRandom().nextInt(360);
          }
 
          if (this.cubeMob.getMoveControl() instanceof AbstractCubeMob.CubeMobMoveControl cubeMobMoveControl) {

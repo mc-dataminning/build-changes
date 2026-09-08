@@ -54,7 +54,7 @@ public class ShadowFeatureRenderer extends RenderTypeFeatureRenderer<ShadowFeatu
       buffer.addVertex(position.x(), position.y(), position.z(), color, u, v, OverlayTexture.NO_OVERLAY, 15728880, 0.0F, 1.0F, 0.0F);
    }
 
-   public static record Submit(Matrix4fc pose, float radius, List<EntityRenderState.ShadowPiece> pieces) implements SubmitNode {
+   public record Submit(Matrix4fc pose, float radius, List<EntityRenderState.ShadowPiece> pieces) implements SubmitNode {
       @Override
       public FeatureRendererType<ShadowFeatureRenderer.Submit> featureType() {
          return ShadowFeatureRenderer.TYPE;

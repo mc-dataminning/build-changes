@@ -100,8 +100,7 @@ public class WorldGenSettingsFix extends DataFix {
       } else if (name.isEmpty()) {
          generator = defaultOverworld(input, seed);
       } else {
-         String generateMapFeatures = name.get();
-         switch (generateMapFeatures) {
+         switch ((String)name.get()) {
             case "flat":
                OptionalDynamic<T> flatSettings = input.get("generatorOptions");
                Map<Dynamic<T>, Dynamic<T>> structureBuilder = fixFlatStructures(ops, flatSettings);
@@ -119,33 +118,33 @@ public class WorldGenSettingsFix extends DataFix {
                               .result()
                               .orElseGet(
                                  () -> input.createList(
-                                       Stream.of(
-                                          input.createMap(
-                                             ImmutableMap.of(
-                                                input.createString("height"),
-                                                input.createInt(1),
-                                                input.createString("block"),
-                                                input.createString("minecraft:bedrock")
-                                             )
-                                          ),
-                                          input.createMap(
-                                             ImmutableMap.of(
-                                                input.createString("height"),
-                                                input.createInt(2),
-                                                input.createString("block"),
-                                                input.createString("minecraft:dirt")
-                                             )
-                                          ),
-                                          input.createMap(
-                                             ImmutableMap.of(
-                                                input.createString("height"),
-                                                input.createInt(1),
-                                                input.createString("block"),
-                                                input.createString("minecraft:grass_block")
-                                             )
+                                    Stream.of(
+                                       input.createMap(
+                                          ImmutableMap.of(
+                                             input.createString("height"),
+                                             input.createInt(1),
+                                             input.createString("block"),
+                                             input.createString("minecraft:bedrock")
+                                          )
+                                       ),
+                                       input.createMap(
+                                          ImmutableMap.of(
+                                             input.createString("height"),
+                                             input.createInt(2),
+                                             input.createString("block"),
+                                             input.createString("minecraft:dirt")
+                                          )
+                                       ),
+                                       input.createMap(
+                                          ImmutableMap.of(
+                                             input.createString("height"),
+                                             input.createInt(1),
+                                             input.createString("block"),
+                                             input.createString("minecraft:grass_block")
                                           )
                                        )
                                     )
+                                 )
                               ),
                            input.createString("biome"),
                            input.createString(flatSettings.get("biome").asString("minecraft:plains"))
@@ -288,75 +287,74 @@ public class WorldGenSettingsFix extends DataFix {
          .flatMap(Dynamic::getMapValues)
          .ifSuccess(
             map -> map.forEach(
-                  (structureKey, value1) -> value1.getMapValues()
-                        .result()
-                        .ifPresent(
-                           m -> m.forEach(
-                                 (optionKey, optionValue) -> {
-                                    String structureName = structureKey.asString("");
-                                    String optionName = optionKey.asString("");
-                                    String value = optionValue.asString("");
-                                    if ("stronghold".equals(structureName)) {
-                                       hasStronghold.setTrue();
-                                       switch (optionName) {
-                                          case "distance":
-                                             strongholdDistance.setValue(getInt(value, strongholdDistance.intValue(), 1));
-                                             return;
-                                          case "spread":
-                                             strongholdSpread.setValue(getInt(value, strongholdSpread.intValue(), 1));
-                                             return;
-                                          case "count":
-                                             strongholdCount.setValue(getInt(value, strongholdCount.intValue(), 1));
-                                             return;
-                                       }
-                                    } else {
-                                       switch (optionName) {
-                                          case "distance":
-                                             switch (structureName) {
-                                                case "village":
-                                                   setSpacing(structureConfig, "minecraft:village", value, 9);
-                                                   return;
-                                                case "biome_1":
-                                                   setSpacing(structureConfig, "minecraft:desert_pyramid", value, 9);
-                                                   setSpacing(structureConfig, "minecraft:igloo", value, 9);
-                                                   setSpacing(structureConfig, "minecraft:jungle_pyramid", value, 9);
-                                                   setSpacing(structureConfig, "minecraft:swamp_hut", value, 9);
-                                                   setSpacing(structureConfig, "minecraft:pillager_outpost", value, 9);
-                                                   return;
-                                                case "endcity":
-                                                   setSpacing(structureConfig, "minecraft:endcity", value, 1);
-                                                   return;
-                                                case "mansion":
-                                                   setSpacing(structureConfig, "minecraft:mansion", value, 1);
-                                                   return;
-                                                default:
-                                                   return;
-                                             }
-                                          case "separation":
-                                             if ("oceanmonument".equals(structureName)) {
-                                                WorldGenSettingsFix.StructureFeatureConfiguration config = structureConfig.getOrDefault(
-                                                   "minecraft:monument", (WorldGenSettingsFix.StructureFeatureConfiguration)DEFAULTS.get("minecraft:monument")
-                                                );
-                                                int spacing = getInt(value, config.separation, 1);
-                                                structureConfig.put(
-                                                   "minecraft:monument",
-                                                   new WorldGenSettingsFix.StructureFeatureConfiguration(spacing, config.separation, config.salt)
-                                                );
-                                             }
-
-                                             return;
-                                          case "spacing":
-                                             if ("oceanmonument".equals(structureName)) {
-                                                setSpacing(structureConfig, "minecraft:monument", value, 1);
-                                             }
-
-                                             return;
-                                       }
+               (structureKey, value1) -> value1.getMapValues()
+                  .result()
+                  .ifPresent(
+                     m -> m.forEach(
+                        (optionKey, optionValue) -> {
+                           String structureName = structureKey.asString("");
+                           String optionName = optionKey.asString("");
+                           String value = optionValue.asString("");
+                           if ("stronghold".equals(structureName)) {
+                              hasStronghold.setTrue();
+                              switch (optionName) {
+                                 case "distance":
+                                    strongholdDistance.setValue(getInt(value, strongholdDistance.intValue(), 1));
+                                    return;
+                                 case "spread":
+                                    strongholdSpread.setValue(getInt(value, strongholdSpread.intValue(), 1));
+                                    return;
+                                 case "count":
+                                    strongholdCount.setValue(getInt(value, strongholdCount.intValue(), 1));
+                                    return;
+                              }
+                           } else {
+                              switch (optionName) {
+                                 case "distance":
+                                    switch (structureName) {
+                                       case "village":
+                                          setSpacing(structureConfig, "minecraft:village", value, 9);
+                                          return;
+                                       case "biome_1":
+                                          setSpacing(structureConfig, "minecraft:desert_pyramid", value, 9);
+                                          setSpacing(structureConfig, "minecraft:igloo", value, 9);
+                                          setSpacing(structureConfig, "minecraft:jungle_pyramid", value, 9);
+                                          setSpacing(structureConfig, "minecraft:swamp_hut", value, 9);
+                                          setSpacing(structureConfig, "minecraft:pillager_outpost", value, 9);
+                                          return;
+                                       case "endcity":
+                                          setSpacing(structureConfig, "minecraft:endcity", value, 1);
+                                          return;
+                                       case "mansion":
+                                          setSpacing(structureConfig, "minecraft:mansion", value, 1);
+                                          return;
+                                       default:
+                                          return;
                                     }
-                                 }
-                              )
-                        )
-               )
+                                 case "separation":
+                                    if ("oceanmonument".equals(structureName)) {
+                                       WorldGenSettingsFix.StructureFeatureConfiguration config = structureConfig.getOrDefault(
+                                          "minecraft:monument", (WorldGenSettingsFix.StructureFeatureConfiguration)DEFAULTS.get("minecraft:monument")
+                                       );
+                                       int spacing = getInt(value, config.separation, 1);
+                                       structureConfig.put(
+                                          "minecraft:monument", new WorldGenSettingsFix.StructureFeatureConfiguration(spacing, config.separation, config.salt)
+                                       );
+                                    }
+
+                                    return;
+                                 case "spacing":
+                                    if ("oceanmonument".equals(structureName)) {
+                                       setSpacing(structureConfig, "minecraft:monument", value, 1);
+                                    }
+
+                                    return;
+                              }
+                           }
+                        }
+                     )
+                  )
+            )
          );
       Builder<Dynamic<T>, Dynamic<T>> structureBuilder = ImmutableMap.builder();
       structureBuilder.put(
@@ -405,11 +403,11 @@ public class WorldGenSettingsFix extends DataFix {
    private static final class StructureFeatureConfiguration {
       public static final Codec<WorldGenSettingsFix.StructureFeatureConfiguration> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Codec.INT.fieldOf("spacing").forGetter(c -> c.spacing),
-                  Codec.INT.fieldOf("separation").forGetter(c -> c.separation),
-                  Codec.INT.fieldOf("salt").forGetter(c -> c.salt)
-               )
-               .apply(i, WorldGenSettingsFix.StructureFeatureConfiguration::new)
+               Codec.INT.fieldOf("spacing").forGetter(c -> c.spacing),
+               Codec.INT.fieldOf("separation").forGetter(c -> c.separation),
+               Codec.INT.fieldOf("salt").forGetter(c -> c.salt)
+            )
+            .apply(i, WorldGenSettingsFix.StructureFeatureConfiguration::new)
       );
       private final int spacing;
       private final int separation;

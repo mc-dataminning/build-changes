@@ -10,11 +10,7 @@ public record ClientIntentionPacket(int protocolVersion, String hostName, int po
    private static final int MAX_HOST_LENGTH = 255;
 
    @Deprecated
-   public ClientIntentionPacket(int protocolVersion, String hostName, int port, ClientIntent intention) {
-      this.protocolVersion = protocolVersion;
-      this.hostName = hostName;
-      this.port = port;
-      this.intention = intention;
+   public ClientIntentionPacket {
    }
 
    private ClientIntentionPacket(final FriendlyByteBuf input) {

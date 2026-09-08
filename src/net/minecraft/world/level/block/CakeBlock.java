@@ -32,11 +32,11 @@ public class CakeBlock extends Block {
    public static final int MAX_BITES = 6;
    public static final IntegerProperty BITES = BlockStateProperties.BITES;
    public static final int FULL_CAKE_SIGNAL = getOutputSignal(0);
-   private static final VoxelShape[] SHAPES = Block.boxes(6, bite -> Block.box((double)(1 + bite * 2), 0.0, 1.0, 15.0, 8.0, 15.0));
+   private static final VoxelShape[] SHAPES = Block.boxes(6, bite -> Block.box(1 + bite * 2, 0.0, 1.0, 15.0, 8.0, 15.0));
 
    protected CakeBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(BITES, Integer.valueOf(0)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(BITES, 0));
    }
 
    @Override
@@ -87,20 +87,20 @@ public class CakeBlock extends Block {
    protected static InteractionResult eat(final LevelAccessor level, final BlockPos pos, final BlockState state, final Player player) {
       if (!player.canEat(false)) {
          return InteractionResult.PASS;
-      } else {
-         player.awardStat(Stats.EAT_CAKE_SLICE);
-         player.getFoodData().eat(2, 0.1F);
-         int bites = state.getValue(BITES);
-         level.gameEvent(player, GameEvent.EAT, pos);
-         if (bites < 6) {
-            level.setBlockAndUpdate(pos, state.setValue(BITES, Integer.valueOf(bites + 1)));
-         } else {
-            level.removeBlock(pos, false);
-            level.gameEvent(player, GameEvent.BLOCK_DESTROY, pos);
-         }
-
-         return InteractionResult.SUCCESS;
       }
+
+      player.awardStat(Stats.EAT_CAKE_SLICE);
+      player.getFoodData().eat(2, 0.1F);
+      int bites = state.getValue(BITES);
+      level.gameEvent(player, GameEvent.EAT, pos);
+      if (bites < 6) {
+         level.setBlockAndUpdate(pos, state.setValue(BITES, bites + 1));
+      } else {
+         level.removeBlock(pos, false);
+         level.gameEvent(player, GameEvent.BLOCK_DESTROY, pos);
+      }
+
+      return InteractionResult.SUCCESS;
    }
 
    @Override

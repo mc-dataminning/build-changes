@@ -3,7 +3,6 @@ package net.minecraft.world.level.storage.loot;
 import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
 import java.util.Optional;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
@@ -14,13 +13,11 @@ public sealed interface IntRangePredicate extends Validatable permits IntRangePr
    Codec<IntRangePredicate.Point> POINT_CODEC = ContextIntProviders.CODEC.xmap(IntRangePredicate.Point::new, IntRangePredicate.Point::value);
    Codec<IntRangePredicate.Line> LINE_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ContextIntProviders.CODEC.optionalFieldOf("min").forGetter(r -> r.min), ContextIntProviders.CODEC.optionalFieldOf("max").forGetter(r -> r.max)
-            )
-            .apply(i, IntRangePredicate.Line::new)
+            ContextIntProviders.CODEC.optionalFieldOf("min").forGetter(r -> r.min), ContextIntProviders.CODEC.optionalFieldOf("max").forGetter(r -> r.max)
+         )
+         .apply(i, IntRangePredicate.Line::new)
    );
    Codec<IntRangePredicate> CODEC = Codec.either(POINT_CODEC, LINE_CODEC).xmap(Either::unwrap, range -> {
-      Objects.requireNonNull(range);
-
       return switch (range) {
          case IntRangePredicate.Point point -> Either.left(point);
          case IntRangePredicate.Line line -> Either.right(line);
@@ -50,11 +47,10 @@ public sealed interface IntRangePredicate extends Validatable permits IntRangePr
       return this.test(context, input.getInt(context));
    }
 
-   public static final class Line implements IntRangePredicate {
+   final class Line implements IntRangePredicate {
       private final Optional<Holder<ContextIntProvider>> min;
       private final Optional<Holder<ContextIntProvider>> max;
-      @Nullable
-      private final IntRangePredicate.Line.IntChecker predicate;
+      private final IntRangePredicate.Line.@Nullable IntChecker predicate;
 
       private Line(final Optional<Holder<ContextIntProvider>> min, final Optional<Holder<ContextIntProvider>> max) {
          this.min = min;
@@ -62,9 +58,8 @@ public sealed interface IntRangePredicate extends Validatable permits IntRangePr
          this.predicate = createPredicate(min.orElse(null), max.orElse(null));
       }
 
-      @Nullable
-      private static IntRangePredicate.Line.IntChecker createPredicate(
-         @Nullable final Holder<ContextIntProvider> min, @Nullable final Holder<ContextIntProvider> max
+      private static IntRangePredicate.Line.@Nullable IntChecker createPredicate(
+         final @Nullable Holder<ContextIntProvider> min, final @Nullable Holder<ContextIntProvider> max
       ) {
          if (min == null) {
             return max == null ? null : (context, input) -> input <= max.value().getInt(context);
@@ -97,7 +92,7 @@ public sealed interface IntRangePredicate extends Validatable permits IntRangePr
       }
    }
 
-   public static record Point(Holder<ContextIntProvider> value) implements IntRangePredicate {
+   record Point(Holder<ContextIntProvider> value) implements IntRangePredicate {
       @Override
       public void validate(final ValidationContext context) {
          Validatable.validateHolder(context, this.value);

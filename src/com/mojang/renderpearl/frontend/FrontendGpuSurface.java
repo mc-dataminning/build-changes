@@ -22,21 +22,23 @@ public class FrontendGpuSurface implements GpuSurface {
    public void close() {
       if (this.hasImageAcquired) {
          throw new IllegalStateException("Cannot close a surface while it is acquired");
-      } else {
-         this.backend.close();
       }
+
+      this.backend.close();
    }
 
    @Override
    public void configure(final GpuSurface.Configuration config) throws SurfaceException {
       if (this.hasImageAcquired) {
          throw new IllegalStateException("Cannot configure a surface while it is acquired");
-      } else if (!this.supportedPresentModes().contains(config.presentMode())) {
-         throw new SurfaceException("Surface does not support present mode " + config.presentMode() + " (supported: " + this.supportedPresentModes() + ")");
-      } else {
-         this.backend.configure(config);
-         this.currentConfiguration = Optional.of(config);
       }
+
+      if (!this.supportedPresentModes().contains(config.presentMode())) {
+         throw new SurfaceException("Surface does not support present mode " + config.presentMode() + " (supported: " + this.supportedPresentModes() + ")");
+      }
+
+      this.backend.configure(config);
+      this.currentConfiguration = Optional.of(config);
    }
 
    @Override
@@ -63,13 +65,15 @@ public class FrontendGpuSurface implements GpuSurface {
    public void acquireNextTexture() throws SurfaceException {
       if (this.hasImageAcquired) {
          throw new IllegalStateException("Cannot acquire a surface while it is already acquired");
-      } else if (this.currentConfiguration.isEmpty()) {
-         throw new IllegalStateException("Cannot acquire an unconfigured surface");
-      } else {
-         this.backend.acquireNextTexture();
-         this.hasImageAcquired = true;
-         this.hasBlittedTexture = false;
       }
+
+      if (this.currentConfiguration.isEmpty()) {
+         throw new IllegalStateException("Cannot acquire an unconfigured surface");
+      }
+
+      this.backend.acquireNextTexture();
+      this.hasImageAcquired = true;
+      this.hasBlittedTexture = false;
    }
 
    @Override
@@ -77,20 +81,30 @@ public class FrontendGpuSurface implements GpuSurface {
       if (commandEncoder instanceof FrontendCommandEncoder frontendCommandEncoder) {
          if (frontendCommandEncoder.isInRenderPass()) {
             throw new IllegalStateException("Close the existing render pass before presenting with a command encoder");
-         } else if (!textureView.texture().getFormat().hasColorAspect()) {
-            throw new IllegalStateException("Cannot present a non-color texture!");
-         } else if ((textureView.texture().usage() & 2) == 0) {
-            throw new IllegalStateException("Color texture must have USAGE_COPY_SRC to presented to the screen");
-         } else if (textureView.texture().getDepthOrLayers() > 1) {
-            throw new UnsupportedOperationException("Textures with multiple depths or layers are not yet supported for presentation");
-         } else if (!this.hasImageAcquired) {
-            throw new IllegalStateException("Cannot present to an unacquired surface");
-         } else if (this.hasBlittedTexture) {
-            throw new IllegalStateException("Already blitted to this frame!");
-         } else {
-            this.backend.blitFromTexture(frontendCommandEncoder.backend(), textureView);
-            this.hasBlittedTexture = true;
          }
+
+         if (!textureView.texture().getFormat().hasColorAspect()) {
+            throw new IllegalStateException("Cannot present a non-color texture!");
+         }
+
+         if ((textureView.texture().usage() & 2) == 0) {
+            throw new IllegalStateException("Color texture must have USAGE_COPY_SRC to presented to the screen");
+         }
+
+         if (textureView.texture().getDepthOrLayers() > 1) {
+            throw new UnsupportedOperationException("Textures with multiple depths or layers are not yet supported for presentation");
+         }
+
+         if (!this.hasImageAcquired) {
+            throw new IllegalStateException("Cannot present to an unacquired surface");
+         }
+
+         if (this.hasBlittedTexture) {
+            throw new IllegalStateException("Already blitted to this frame!");
+         }
+
+         this.backend.blitFromTexture(frontendCommandEncoder.backend(), textureView);
+         this.hasBlittedTexture = true;
       } else {
          throw new IllegalArgumentException("CommandEncoder must be instance of FrontendCommandEncoder");
       }
@@ -100,11 +114,13 @@ public class FrontendGpuSurface implements GpuSurface {
    public void present() {
       if (!this.hasImageAcquired) {
          throw new IllegalStateException("Cannot present to a surface if it isn't acquired");
-      } else if (!this.hasBlittedTexture) {
-         throw new IllegalStateException("Must blit to surface before presenting!");
-      } else {
-         this.backend.present();
-         this.hasImageAcquired = false;
       }
+
+      if (!this.hasBlittedTexture) {
+         throw new IllegalStateException("Must blit to surface before presenting!");
+      }
+
+      this.backend.present();
+      this.hasImageAcquired = false;
    }
 }

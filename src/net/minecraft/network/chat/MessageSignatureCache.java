@@ -10,7 +10,7 @@ import org.jspecify.annotations.Nullable;
 public class MessageSignatureCache {
    public static final int NOT_FOUND = -1;
    private static final int DEFAULT_CAPACITY = 128;
-   private final MessageSignature[] entries;
+   private final @Nullable MessageSignature[] entries;
 
    public MessageSignatureCache(final int capacity) {
       this.entries = new MessageSignature[capacity];
@@ -30,12 +30,11 @@ public class MessageSignatureCache {
       return -1;
    }
 
-   @Nullable
-   public MessageSignature unpack(final int id) {
+   public @Nullable MessageSignature unpack(final int id) {
       return this.entries[id];
    }
 
-   public void push(final SignedMessageBody body, @Nullable final MessageSignature signature) {
+   public void push(final SignedMessageBody body, final @Nullable MessageSignature signature) {
       List<MessageSignature> lastSeen = body.lastSeen().entries();
       ArrayDeque<MessageSignature> queue = new ArrayDeque<>(lastSeen.size() + 1);
       queue.addAll(lastSeen);

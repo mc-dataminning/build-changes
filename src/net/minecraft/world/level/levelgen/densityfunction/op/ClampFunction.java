@@ -16,11 +16,11 @@ import net.minecraft.world.level.levelgen.densityfunction.SamplerContext;
 public record ClampFunction(DensityFunction input, float min, float max) implements DensityFunction {
    public static final MapCodec<ClampFunction> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  DensityFunction.CODEC.fieldOf("input").forGetter(ClampFunction::input),
-                  DensityFunctions.NOISE_VALUE_CODEC.fieldOf("min").forGetter(ClampFunction::min),
-                  DensityFunctions.NOISE_VALUE_CODEC.fieldOf("max").forGetter(ClampFunction::max)
-               )
-               .apply(i, ClampFunction::new)
+               DensityFunction.CODEC.fieldOf("input").forGetter(ClampFunction::input),
+               DensityFunctions.NOISE_VALUE_CODEC.fieldOf("min").forGetter(ClampFunction::min),
+               DensityFunctions.NOISE_VALUE_CODEC.fieldOf("max").forGetter(ClampFunction::max)
+            )
+            .apply(i, ClampFunction::new)
       )
       .validate(ClampFunction::validate);
 
@@ -51,13 +51,12 @@ public record ClampFunction(DensityFunction input, float min, float max) impleme
       return Interval.clamp(this.input.range(), this.min, this.max);
    }
 
-   @DensityFunction.Axes
    @Override
-   public int domainAxes() {
+   public @DensityFunction.Axes int domainAxes() {
       return this.input.domainAxes();
    }
 
-   public static record Sampler(DensitySampler input, float min, float max) implements DensitySampler {
+   public record Sampler(DensitySampler input, float min, float max) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          this.input.sampleVolume(context, outputBuffer, volume);

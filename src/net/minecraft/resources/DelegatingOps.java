@@ -190,8 +190,6 @@ public abstract class DelegatingOps<T> implements DynamicOps<T> {
       private final ListBuilder<T> original;
 
       protected DelegateListBuilder(final ListBuilder<T> original) {
-         Objects.requireNonNull(DelegatingOps.this);
-         super();
          this.original = original;
       }
 
@@ -242,8 +240,6 @@ public abstract class DelegatingOps<T> implements DynamicOps<T> {
       private final RecordBuilder<T> original;
 
       protected DelegateRecordBuilder(final RecordBuilder<T> original) {
-         Objects.requireNonNull(DelegatingOps.this);
-         super();
          this.original = original;
       }
 

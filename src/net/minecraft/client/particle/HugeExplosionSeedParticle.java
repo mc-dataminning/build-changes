@@ -17,7 +17,7 @@ public class HugeExplosionSeedParticle extends NoRenderParticle {
          double xx = this.x + (this.random.nextDouble() - this.random.nextDouble()) * 4.0;
          double yy = this.y + (this.random.nextDouble() - this.random.nextDouble()) * 4.0;
          double zz = this.z + (this.random.nextDouble() - this.random.nextDouble()) * 4.0;
-         this.level.addParticle(ParticleTypes.EXPLOSION, xx, yy, zz, (double)((float)this.age / (float)this.lifetime), 0.0, 0.0);
+         this.level.addParticle(ParticleTypes.EXPLOSION, xx, yy, zz, (float)this.age / this.lifetime, 0.0, 0.0);
       }
 
       this.age++;

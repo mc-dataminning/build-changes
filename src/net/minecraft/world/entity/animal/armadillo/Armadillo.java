@@ -3,7 +3,6 @@ package net.minecraft.world.entity.animal.armadillo;
 import com.mojang.serialization.Codec;
 import io.netty.buffer.ByteBuf;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.IntFunction;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -85,9 +84,8 @@ public class Armadillo extends Animal {
       this.scuteTime = this.pickNextScuteDropTime();
    }
 
-   @Nullable
    @Override
-   public AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       return EntityTypes.ARMADILLO.create(level, EntitySpawnReason.BREEDING);
    }
 
@@ -110,7 +108,7 @@ public class Armadillo extends Animal {
    }
 
    public boolean shouldSwitchToScaredState() {
-      return this.getState() == Armadillo.ArmadilloState.ROLLING && this.inStateTicks > (long)Armadillo.ArmadilloState.ROLLING.animationDuration();
+      return this.getState() == Armadillo.ArmadilloState.ROLLING && this.inStateTicks > Armadillo.ArmadilloState.ROLLING.animationDuration();
    }
 
    public Armadillo.ArmadilloState getState() {
@@ -224,7 +222,7 @@ public class Armadillo extends Animal {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 64 && this.level().isClientSide()) {
          this.peekReceivedClient = true;
          this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.ARMADILLO_PEEK, this.getSoundSource(), 1.0F, 1.0F, false);
@@ -321,22 +319,22 @@ public class Armadillo extends Animal {
          itemStack.hurtAndBreak(16, player, hand.asEquipmentSlot());
          return InteractionResult.SUCCESS;
       } else {
-         return (InteractionResult)(this.isScared() ? InteractionResult.FAIL : super.mobInteract(player, hand));
+         return this.isScared() ? InteractionResult.FAIL : super.mobInteract(player, hand);
       }
    }
 
-   public boolean brushOffScute(@Nullable final Entity interactingEntity, final ItemStack tool) {
+   public boolean brushOffScute(final @Nullable Entity interactingEntity, final ItemStack tool) {
       if (this.isBaby()) {
          return false;
-      } else {
-         if (this.level() instanceof ServerLevel level) {
-            this.dropFromEntityInteractLootTable(level, BuiltInLootTables.ARMADILLO_BRUSH, interactingEntity, tool, this::spawnAtLocation);
-            this.playSound(SoundEvents.ARMADILLO_BRUSH);
-            this.gameEvent(GameEvent.ENTITY_INTERACT);
-         }
-
-         return true;
       }
+
+      if (this.level() instanceof ServerLevel level) {
+         this.dropFromEntityInteractLootTable(level, BuiltInLootTables.ARMADILLO_BRUSH, interactingEntity, tool, this::spawnAtLocation);
+         this.playSound(SoundEvents.ARMADILLO_BRUSH);
+         this.gameEvent(GameEvent.ENTITY_INTERACT);
+      }
+
+      return true;
    }
 
    public boolean canStayRolledUp() {
@@ -381,10 +379,6 @@ public class Armadillo extends Animal {
    @Override
    protected BodyRotationControl createBodyControl() {
       return new BodyRotationControl(this) {
-         {
-            Objects.requireNonNull(Armadillo.this);
-         }
-
          @Override
          public void clientTick() {
             if (!Armadillo.this.isScared()) {
@@ -394,7 +388,7 @@ public class Armadillo extends Animal {
       };
    }
 
-   public static enum ArmadilloState implements StringRepresentable {
+   public enum ArmadilloState implements StringRepresentable {
       IDLE("idle", false, 0, 0) {
          @Override
          public boolean shouldHideInShell(final long ticksInState) {
@@ -430,7 +424,7 @@ public class Armadillo extends Animal {
       private final int animationDuration;
       private final int id;
 
-      private ArmadilloState(final String name, final boolean isThreatened, final int animationDuration, final int id) {
+      ArmadilloState(final String name, final boolean isThreatened, final int animationDuration, final int id) {
          this.name = name;
          this.isThreatened = isThreatened;
          this.animationDuration = animationDuration;

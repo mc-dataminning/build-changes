@@ -54,13 +54,11 @@ public class BlockEntityRenderDispatcher implements ResourceManagerReloadListene
       this.playerSkinRenderCache = playerSkinRenderCache;
    }
 
-   @Nullable
-   public <E extends BlockEntity, S extends BlockEntityRenderState> BlockEntityRenderer<E, S> getRenderer(final E blockEntity) {
+   public <E extends BlockEntity, S extends BlockEntityRenderState> @Nullable BlockEntityRenderer<E, S> getRenderer(final E blockEntity) {
       return (BlockEntityRenderer<E, S>)this.renderers.get(blockEntity.getType());
    }
 
-   @Nullable
-   public <E extends BlockEntity, S extends BlockEntityRenderState> BlockEntityRenderer<E, S> getRenderer(final S state) {
+   public <E extends BlockEntity, S extends BlockEntityRenderState> @Nullable BlockEntityRenderer<E, S> getRenderer(final S state) {
       return (BlockEntityRenderer<E, S>)this.renderers.get(state.blockEntityType);
    }
 
@@ -68,25 +66,30 @@ public class BlockEntityRenderDispatcher implements ResourceManagerReloadListene
       this.cameraPos = cameraPos;
    }
 
-   @Nullable
-   public <E extends BlockEntity, S extends BlockEntityRenderState> S tryExtractRenderState(
-      final E blockEntity, final float partialTicks, @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress, final boolean isGloballyRendered
+   public <E extends BlockEntity, S extends BlockEntityRenderState> @Nullable S tryExtractRenderState(
+      final E blockEntity, final float partialTicks, final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress, final boolean isGloballyRendered
    ) {
       BlockEntityRenderer<E, S> renderer = this.getRenderer(blockEntity);
       if (renderer == null) {
          return null;
-      } else if (!blockEntity.hasLevel() || !blockEntity.getType().isValid(blockEntity.getBlockState())) {
-         return null;
-      } else if (isGloballyRendered != renderer.shouldRenderOffScreen()) {
-         return null;
-      } else if (!renderer.shouldRender(blockEntity, this.cameraPos)) {
-         return null;
-      } else {
-         Vec3 cameraPosition = this.cameraPos;
-         S state = renderer.createRenderState();
-         renderer.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-         return state;
       }
+
+      if (!blockEntity.hasLevel() || !blockEntity.getType().isValid(blockEntity.getBlockState())) {
+         return null;
+      }
+
+      if (isGloballyRendered != renderer.shouldRenderOffScreen()) {
+         return null;
+      }
+
+      if (!renderer.shouldRender(blockEntity, this.cameraPos)) {
+         return null;
+      }
+
+      Vec3 cameraPosition = this.cameraPos;
+      S state = renderer.createRenderState();
+      renderer.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
+      return state;
    }
 
    public <S extends BlockEntityRenderState> void submit(
@@ -96,8 +99,8 @@ public class BlockEntityRenderDispatcher implements ResourceManagerReloadListene
       if (renderer != null) {
          try {
             renderer.submit(state, poseStack, submitNodeCollector, camera);
-         } catch (Throwable var9) {
-            CrashReport report = CrashReport.forThrowable(var9, "Rendering Block Entity");
+         } catch (Throwable t) {
+            CrashReport report = CrashReport.forThrowable(t, "Rendering Block Entity");
             CrashReportCategory category = report.addCategory("Block Entity Details");
             state.fillCrashReportCategory(category);
             throw new ReportedException(report);

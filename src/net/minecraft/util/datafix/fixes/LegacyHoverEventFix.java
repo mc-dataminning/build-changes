@@ -50,25 +50,23 @@ public class LegacyHoverEventFix extends DataFix {
             "LegacyHoverEventFix",
             textComponentType,
             ops -> named -> named.mapSecond(
-                     simpleOrFull -> simpleOrFull.mapRight(
-                           full -> full.mapSecond(separatorHoverRemainder -> separatorHoverRemainder.mapSecond(hoverAndRemainder -> {
-                                    Dynamic<?> remainder = (Dynamic<?>)hoverAndRemainder.getSecond();
-                                    Optional<? extends Dynamic<?>> hoverEvent = remainder.get("hoverEvent").result();
-                                    if (hoverEvent.isEmpty()) {
-                                       return hoverAndRemainder;
-                                    } else {
-                                       Optional<? extends Dynamic<?>> legacyHoverValue = hoverEvent.get().get("value").result();
-                                       if (legacyHoverValue.isEmpty()) {
-                                          return hoverAndRemainder;
-                                       } else {
-                                          String hoverAction = ((Either)hoverAndRemainder.getFirst()).left().<String>map(Pair::getFirst).orElse("");
-                                          H newHoverEvent = this.fixHoverEvent(hoverEventType, hoverAction, (Dynamic<?>)hoverEvent.get());
-                                          return hoverAndRemainder.mapFirst(ignored -> Either.left(newHoverEvent));
-                                       }
-                                    }
-                                 }))
-                        )
-                  )
+               simpleOrFull -> simpleOrFull.mapRight(full -> full.mapSecond(separatorHoverRemainder -> separatorHoverRemainder.mapSecond(hoverAndRemainder -> {
+                  Dynamic<?> remainder = (Dynamic<?>)hoverAndRemainder.getSecond();
+                  Optional<? extends Dynamic<?>> hoverEvent = remainder.get("hoverEvent").result();
+                  if (hoverEvent.isEmpty()) {
+                     return hoverAndRemainder;
+                  }
+
+                  Optional<? extends Dynamic<?>> legacyHoverValue = hoverEvent.get().get("value").result();
+                  if (legacyHoverValue.isEmpty()) {
+                     return hoverAndRemainder;
+                  }
+
+                  String hoverAction = ((Either)hoverAndRemainder.getFirst()).left().<String>map(Pair::getFirst).orElse("");
+                  H newHoverEvent = this.fixHoverEvent(hoverEventType, hoverAction, (Dynamic<?>)hoverEvent.get());
+                  return hoverAndRemainder.mapFirst(ignored -> Either.left(newHoverEvent));
+               })))
+            )
          );
       }
    }

@@ -32,9 +32,8 @@ public class BlockAgeProcessor implements StructureProcessor {
       this.mossiness = mossiness;
    }
 
-   @Nullable
    @Override
-   public StructureTemplate.StructureBlockInfo processBlock(
+   public StructureTemplate.@Nullable StructureBlockInfo processBlock(
       final LevelReader level,
       final BlockPos targetPosition,
       final BlockPos referencePos,
@@ -61,45 +60,40 @@ public class BlockAgeProcessor implements StructureProcessor {
       return newState != null ? new StructureTemplate.StructureBlockInfo(pos, newState, processedBlockInfo.nbt()) : processedBlockInfo;
    }
 
-   @Nullable
-   private BlockState maybeReplaceFullStoneBlock(final RandomSource random) {
+   private @Nullable BlockState maybeReplaceFullStoneBlock(final RandomSource random) {
       if (random.nextFloat() >= 0.5F) {
          return null;
-      } else {
-         BlockState[] nonMossyReplacements = new BlockState[]{
-            Blocks.CRACKED_STONE_BRICKS.defaultBlockState(), getRandomFacingStairs(random, Blocks.STONE_BRICK_STAIRS)
-         };
-         BlockState[] mossyReplacements = new BlockState[]{
-            Blocks.MOSSY_STONE_BRICKS.defaultBlockState(), getRandomFacingStairs(random, Blocks.MOSSY_STONE_BRICK_STAIRS)
-         };
-         return this.getRandomBlock(random, nonMossyReplacements, mossyReplacements);
       }
+
+      BlockState[] nonMossyReplacements = new BlockState[]{
+         Blocks.CRACKED_STONE_BRICKS.defaultBlockState(), getRandomFacingStairs(random, Blocks.STONE_BRICK_STAIRS)
+      };
+      BlockState[] mossyReplacements = new BlockState[]{
+         Blocks.MOSSY_STONE_BRICKS.defaultBlockState(), getRandomFacingStairs(random, Blocks.MOSSY_STONE_BRICK_STAIRS)
+      };
+      return this.getRandomBlock(random, nonMossyReplacements, mossyReplacements);
    }
 
-   @Nullable
-   private BlockState maybeReplaceStairs(final BlockState blockState, final RandomSource random) {
+   private @Nullable BlockState maybeReplaceStairs(final BlockState blockState, final RandomSource random) {
       if (random.nextFloat() >= 0.5F) {
          return null;
-      } else {
-         BlockState[] mossyReplacements = new BlockState[]{
-            Blocks.MOSSY_STONE_BRICK_STAIRS.withPropertiesOf(blockState), Blocks.MOSSY_STONE_BRICK_SLAB.defaultBlockState()
-         };
-         return this.getRandomBlock(random, NON_MOSSY_REPLACEMENTS, mossyReplacements);
       }
+
+      BlockState[] mossyReplacements = new BlockState[]{
+         Blocks.MOSSY_STONE_BRICK_STAIRS.withPropertiesOf(blockState), Blocks.MOSSY_STONE_BRICK_SLAB.defaultBlockState()
+      };
+      return this.getRandomBlock(random, NON_MOSSY_REPLACEMENTS, mossyReplacements);
    }
 
-   @Nullable
-   private BlockState maybeReplaceSlab(final BlockState blockState, final RandomSource random) {
+   private @Nullable BlockState maybeReplaceSlab(final BlockState blockState, final RandomSource random) {
       return random.nextFloat() < this.mossiness ? Blocks.MOSSY_STONE_BRICK_SLAB.withPropertiesOf(blockState) : null;
    }
 
-   @Nullable
-   private BlockState maybeReplaceWall(final BlockState blockState, final RandomSource random) {
+   private @Nullable BlockState maybeReplaceWall(final BlockState blockState, final RandomSource random) {
       return random.nextFloat() < this.mossiness ? Blocks.MOSSY_STONE_BRICK_WALL.withPropertiesOf(blockState) : null;
    }
 
-   @Nullable
-   private BlockState maybeReplaceObsidian(final RandomSource random) {
+   private @Nullable BlockState maybeReplaceObsidian(final RandomSource random) {
       return random.nextFloat() < 0.15F ? Blocks.CRYING_OBSIDIAN.defaultBlockState() : null;
    }
 

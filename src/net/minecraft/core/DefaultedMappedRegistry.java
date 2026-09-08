@@ -29,7 +29,7 @@ public class DefaultedMappedRegistry<T> extends MappedRegistry<T> implements Def
    }
 
    @Override
-   public int getId(@Nullable final T thing) {
+   public int getId(final @Nullable T thing) {
       int id = super.getId(thing);
       return id == -1 ? super.getId(this.defaultValue.value()) : id;
    }
@@ -41,13 +41,13 @@ public class DefaultedMappedRegistry<T> extends MappedRegistry<T> implements Def
    }
 
    @Override
-   public T getValue(@Nullable final Identifier key) {
+   public T getValue(final @Nullable Identifier key) {
       T t = super.getValue(key);
       return t == null ? this.defaultValue.value() : t;
    }
 
    @Override
-   public Optional<T> getOptional(@Nullable final Identifier key) {
+   public Optional<T> getOptional(final @Nullable Identifier key) {
       return Optional.ofNullable(super.getValue(key));
    }
 

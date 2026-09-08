@@ -51,8 +51,8 @@ public class WindCharge extends AbstractWindCharge {
    @Override
    public boolean deflect(
       final ProjectileDeflection deflection,
-      @Nullable final Entity deflectingEntity,
-      @Nullable final EntityReference<Entity> newOwner,
+      final @Nullable Entity deflectingEntity,
+      final @Nullable EntityReference<Entity> newOwner,
       final boolean byAttack,
       final Vec3 power
    ) {
@@ -81,6 +81,6 @@ public class WindCharge extends AbstractWindCharge {
 
    @Override
    public boolean shouldRenderAtSqrDistance(final double distance) {
-      return this.tickCount < 2 && distance < (double)MIN_CAMERA_DISTANCE_SQUARED ? false : super.shouldRenderAtSqrDistance(distance);
+      return this.tickCount < 2 && distance < MIN_CAMERA_DISTANCE_SQUARED ? false : super.shouldRenderAtSqrDistance(distance);
    }
 }

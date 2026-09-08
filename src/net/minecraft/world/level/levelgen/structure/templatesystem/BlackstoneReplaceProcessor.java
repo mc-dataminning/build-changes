@@ -45,9 +45,8 @@ public class BlackstoneReplaceProcessor implements StructureProcessor {
    private BlackstoneReplaceProcessor() {
    }
 
-   @Nullable
    @Override
-   public StructureTemplate.StructureBlockInfo processBlock(
+   public StructureTemplate.@Nullable StructureBlockInfo processBlock(
       final LevelReader level,
       final BlockPos targetPosition,
       final BlockPos referencePos,
@@ -58,23 +57,23 @@ public class BlackstoneReplaceProcessor implements StructureProcessor {
       Block newBlock = this.replacements.get(processedBlockInfo.state().getBlock());
       if (newBlock == null) {
          return processedBlockInfo;
-      } else {
-         BlockState oldState = processedBlockInfo.state();
-         BlockState newState = newBlock.defaultBlockState();
-         if (oldState.hasProperty(StairBlock.FACING)) {
-            newState = newState.setValue(StairBlock.FACING, oldState.getValue(StairBlock.FACING));
-         }
-
-         if (oldState.hasProperty(StairBlock.HALF)) {
-            newState = newState.setValue(StairBlock.HALF, oldState.getValue(StairBlock.HALF));
-         }
-
-         if (oldState.hasProperty(SlabBlock.TYPE)) {
-            newState = newState.setValue(SlabBlock.TYPE, oldState.getValue(SlabBlock.TYPE));
-         }
-
-         return new StructureTemplate.StructureBlockInfo(processedBlockInfo.pos(), newState, processedBlockInfo.nbt());
       }
+
+      BlockState oldState = processedBlockInfo.state();
+      BlockState newState = newBlock.defaultBlockState();
+      if (oldState.hasProperty(StairBlock.FACING)) {
+         newState = newState.setValue(StairBlock.FACING, oldState.getValue(StairBlock.FACING));
+      }
+
+      if (oldState.hasProperty(StairBlock.HALF)) {
+         newState = newState.setValue(StairBlock.HALF, oldState.getValue(StairBlock.HALF));
+      }
+
+      if (oldState.hasProperty(SlabBlock.TYPE)) {
+         newState = newState.setValue(SlabBlock.TYPE, oldState.getValue(SlabBlock.TYPE));
+      }
+
+      return new StructureTemplate.StructureBlockInfo(processedBlockInfo.pos(), newState, processedBlockInfo.nbt());
    }
 
    @Override

@@ -75,8 +75,7 @@ public class Turtle extends Animal {
    private int layEggCounter;
    public static final TargetingConditions.Selector BABY_ON_LAND_SELECTOR = (target, level) -> target.isBaby() && !target.isInWater();
    private BlockPos homePos = BlockPos.ZERO;
-   @Nullable
-   private BlockPos travelPos;
+   private @Nullable BlockPos travelPos;
    private boolean goingHome;
 
    public Turtle(final EntityType<? extends Turtle> type, final Level level) {
@@ -134,10 +133,9 @@ public class Turtle extends Animal {
       this.setHasEgg(input.getBooleanOr("has_egg", false));
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+   public @Nullable SpawnGroupData finalizeSpawn(
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       this.setHomePos(this.blockPosition());
       return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
@@ -176,9 +174,8 @@ public class Turtle extends Animal {
       return 200;
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getAmbientSound() {
+   protected @Nullable SoundEvent getAmbientSound() {
       return !this.isInWater() && this.onGround() && !this.isBaby() ? SoundEvents.TURTLE_AMBIENT_LAND : super.getAmbientSound();
    }
 
@@ -192,15 +189,13 @@ public class Turtle extends Animal {
       return SoundEvents.TURTLE_SWIM;
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
+   protected @Nullable SoundEvent getHurtSound(final DamageSource source) {
       return this.isBaby() ? SoundEvents.TURTLE_HURT_BABY : SoundEvents.TURTLE_HURT;
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getDeathSound() {
+   protected @Nullable SoundEvent getDeathSound() {
       return this.isBaby() ? SoundEvents.TURTLE_DEATH_BABY : SoundEvents.TURTLE_DEATH;
    }
 
@@ -230,9 +225,8 @@ public class Turtle extends Animal {
       return new Turtle.TurtlePathNavigation(this, level);
    }
 
-   @Nullable
    @Override
-   public AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       return EntityTypes.TURTLE.create(level, EntitySpawnReason.BREEDING);
    }
 
@@ -465,7 +459,7 @@ public class Turtle extends Animal {
                Level level = this.turtle.level();
                level.playSound(null, turtlePos, SoundEvents.TURTLE_LAY_EGG, SoundSource.BLOCKS, 0.3F, 0.9F + level.getRandom().nextFloat() * 0.2F);
                BlockPos eggPos = this.blockPos.above();
-               BlockState eggState = Blocks.TURTLE_EGG.defaultBlockState().setValue(TurtleEggBlock.EGGS, Integer.valueOf(this.turtle.random.nextInt(4) + 1));
+               BlockState eggState = Blocks.TURTLE_EGG.defaultBlockState().setValue(TurtleEggBlock.EGGS, this.turtle.random.nextInt(4) + 1);
                level.setBlockAndUpdate(eggPos, eggState);
                level.gameEvent(GameEvent.BLOCK_PLACE, eggPos, GameEvent.Context.of(this.turtle, eggState));
                this.turtle.setHasEgg(false);
@@ -522,7 +516,7 @@ public class Turtle extends Animal {
                this.mob.yBodyRot = this.mob.getYRot();
                float targetSpeed = (float)(this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED));
                this.mob.setSpeed(Mth.lerp(0.125F, this.mob.getSpeed(), targetSpeed));
-               this.mob.setDeltaMovement(this.mob.getDeltaMovement().add(0.0, (double)this.mob.getSpeed() * yd * 0.1, 0.0));
+               this.mob.setDeltaMovement(this.mob.getDeltaMovement().add(0.0, this.mob.getSpeed() * yd * 0.1, 0.0));
             }
          } else {
             this.mob.setSpeed(0.0F);
@@ -542,9 +536,9 @@ public class Turtle extends Animal {
          } else {
             BlockPos blockPos = this.lookForWater(this.mob.level(), this.mob, 7);
             if (blockPos != null) {
-               this.posX = (double)blockPos.getX();
-               this.posY = (double)blockPos.getY();
-               this.posZ = (double)blockPos.getZ();
+               this.posX = blockPos.getX();
+               this.posY = blockPos.getY();
+               this.posZ = blockPos.getZ();
                return true;
             } else {
                return this.findRandomPosition();
@@ -560,11 +554,9 @@ public class Turtle extends Animal {
 
       @Override
       public boolean isStableDestination(final BlockPos pos) {
-         if (this.mob instanceof Turtle turtle && turtle.travelPos != null) {
-            return this.level.getBlockState(pos).is(Blocks.WATER);
-         }
-
-         return !this.level.getBlockState(pos.below()).isAir();
+         return this.mob instanceof Turtle turtle && turtle.travelPos != null
+            ? this.level.getBlockState(pos).is(Blocks.WATER)
+            : !this.level.getBlockState(pos.below()).isAir();
       }
    }
 
@@ -605,11 +597,11 @@ public class Turtle extends Animal {
          int xt = random.nextInt(1025) - 512;
          int yt = random.nextInt(9) - 4;
          int zt = random.nextInt(1025) - 512;
-         if ((double)yt + this.turtle.getY() > (double)(this.turtle.level().getSeaLevel() - 1)) {
+         if (yt + this.turtle.getY() > this.turtle.level().getSeaLevel() - 1) {
             yt = 0;
          }
 
-         this.turtle.travelPos = BlockPos.containing((double)xt + this.turtle.getX(), (double)yt + this.turtle.getY(), (double)zt + this.turtle.getZ());
+         this.turtle.travelPos = BlockPos.containing(xt + this.turtle.getX(), yt + this.turtle.getY(), zt + this.turtle.getZ());
          this.stuck = false;
       }
 

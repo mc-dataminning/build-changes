@@ -22,15 +22,13 @@ public abstract class BaseEntityBlock extends Block implements EntityBlock {
       return blockEntity == null ? false : blockEntity.triggerEvent(b0, b1);
    }
 
-   @Nullable
    @Override
-   protected MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
+   protected @Nullable MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
       return level.getBlockEntity(pos) instanceof MenuProvider menuProvider ? menuProvider : null;
    }
 
-   @Nullable
-   protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> createTickerHelper(
-      final BlockEntityType<A> actual, final BlockEntityType<E> expected, @Nullable final BlockEntityTicker<? super E> ticker
+   protected static <E extends BlockEntity, A extends BlockEntity> @Nullable BlockEntityTicker<A> createTickerHelper(
+      final BlockEntityType<A> actual, final BlockEntityType<E> expected, final @Nullable BlockEntityTicker<? super E> ticker
    ) {
       return expected == actual ? ticker : null;
    }

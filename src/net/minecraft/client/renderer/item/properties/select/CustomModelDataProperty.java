@@ -17,14 +17,13 @@ public record CustomModelDataProperty(int index) implements SelectItemModelPrope
    public static final SelectItemModelProperty.Type<CustomModelDataProperty, String> TYPE = SelectItemModelProperty.Type.create(
       RecordCodecBuilder.mapCodec(
          i -> i.group(ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("index", 0).forGetter(CustomModelDataProperty::index))
-               .apply(i, CustomModelDataProperty::new)
+            .apply(i, CustomModelDataProperty::new)
       ),
       VALUE_CODEC
    );
 
-   @Nullable
-   public String get(
-      final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final LivingEntity owner, final int seed, final ItemDisplayContext displayContext
+   public @Nullable String get(
+      final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner, final int seed, final ItemDisplayContext displayContext
    ) {
       CustomModelData customModelData = itemStack.get(DataComponents.CUSTOM_MODEL_DATA);
       return customModelData != null ? customModelData.getString(this.index) : null;

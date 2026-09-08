@@ -56,8 +56,7 @@ class GlDevice implements GpuDeviceBackend {
    private final long glContext;
    private final GlHeuristics heuristics;
    private final GlCommandEncoder encoder;
-   @Nullable
-   private final GlDebug debugLog;
+   private final @Nullable GlDebug debugLog;
    private final GlDebugLabel debugLabels;
    private final DirectStateAccess directStateAccess;
    private final FrameBufferCache frameBufferCache = new FrameBufferCache();
@@ -75,105 +74,105 @@ class GlDevice implements GpuDeviceBackend {
             "Failed to create window for OpenGL context: " + Objects.requireNonNullElse(SDLError.SDL_GetError(), "<no error>"),
             BackendCreationException.Reason.OPENGL_MISSING
          );
-      } else {
-         long glContext = SDLVideo.SDL_GL_CreateContext(this.initialWindowHandle);
-         if (glContext == 0L) {
-            SDLVideo.SDL_DestroyWindow(this.initialWindowHandle);
-            throw new BackendCreationException(
-               "Failed to create OpenGL context: " + Objects.requireNonNullElse(SDLError.SDL_GetError(), "<no error>"),
-               BackendCreationException.Reason.OPENGL_MISSING
-            );
-         } else {
-            this.glContext = glContext;
-            this.makeCurrent(this.initialWindowHandle);
+      }
 
-            try {
-               MemoryStack stack = MemoryStack.stackPush();
+      long glContext = SDLVideo.SDL_GL_CreateContext(this.initialWindowHandle);
+      if (glContext == 0L) {
+         SDLVideo.SDL_DestroyWindow(this.initialWindowHandle);
+         throw new BackendCreationException(
+            "Failed to create OpenGL context: " + Objects.requireNonNullElse(SDLError.SDL_GetError(), "<no error>"),
+            BackendCreationException.Reason.OPENGL_MISSING
+         );
+      }
 
+      this.glContext = glContext;
+      this.makeCurrent(this.initialWindowHandle);
+
+      try {
+         MemoryStack stack = MemoryStack.stackPush();
+
+         try {
+            IntBuffer majorVersion = stack.callocInt(1);
+            IntBuffer minorVersion = stack.callocInt(1);
+            SDLVideo.SDL_GL_GetAttribute(17, majorVersion);
+            SDLVideo.SDL_GL_GetAttribute(18, minorVersion);
+            if (majorVersion.get(0) < 3 || majorVersion.get(0) == 3 && minorVersion.get(0) < 3) {
+               throw new BackendCreationException(
+                  "Failed to create OpenGL 3.3 context, got OpenGL " + majorVersion.get(0) + "." + minorVersion.get(0),
+                  BackendCreationException.Reason.OPENGL_MISSING
+               );
+            }
+
+            long secondWindow = backend.createWindow("Minecraft - RenderPearl OpenGL Hidden Test Window", 320, 480, 2147614728L);
+            if (secondWindow == 0L) {
+               throw new BackendCreationException(
+                  "Failed to create window for OpenGL after creating context: " + Objects.requireNonNullElse(SDLError.SDL_GetError(), "<no error>"),
+                  BackendCreationException.Reason.OPENGL_MISSING
+               );
+            }
+
+            SDLVideo.SDL_DestroyWindow(secondWindow);
+         } catch (Throwable var11) {
+            if (stack != null) {
                try {
-                  IntBuffer majorVersion = stack.callocInt(1);
-                  IntBuffer minorVersion = stack.callocInt(1);
-                  SDLVideo.SDL_GL_GetAttribute(17, majorVersion);
-                  SDLVideo.SDL_GL_GetAttribute(18, minorVersion);
-                  if (majorVersion.get(0) < 3 || majorVersion.get(0) == 3 && minorVersion.get(0) < 3) {
-                     throw new BackendCreationException(
-                        "Failed to create OpenGL 3.3 context, got OpenGL " + majorVersion.get(0) + "." + minorVersion.get(0),
-                        BackendCreationException.Reason.OPENGL_MISSING
-                     );
-                  }
-
-                  long secondWindow = backend.createWindow("Minecraft - RenderPearl OpenGL Hidden Test Window", 320, 480, 2147614728L);
-                  if (secondWindow == 0L) {
-                     throw new BackendCreationException(
-                        "Failed to create window for OpenGL after creating context: " + Objects.requireNonNullElse(SDLError.SDL_GetError(), "<no error>"),
-                        BackendCreationException.Reason.OPENGL_MISSING
-                     );
-                  }
-
-                  SDLVideo.SDL_DestroyWindow(secondWindow);
-               } catch (Throwable var11) {
-                  if (stack != null) {
-                     try {
-                        stack.close();
-                     } catch (Throwable var10) {
-                        var11.addSuppressed(var10);
-                     }
-                  }
-
-                  throw var11;
-               }
-
-               if (stack != null) {
                   stack.close();
+               } catch (Throwable var10) {
+                  var11.addSuppressed(var10);
                }
+            }
 
-               GLCapabilities capabilities = GL.createCapabilities();
-               Set<String> enabledExtensions = new HashSet<>();
-               int maxSupportedAnisotropy;
-               if (capabilities.GL_EXT_texture_filter_anisotropic) {
-                  maxSupportedAnisotropy = Mth.floor(GL33C.glGetFloat(34047));
-                  enabledExtensions.add("GL_EXT_texture_filter_anisotropic");
-               } else {
-                  maxSupportedAnisotropy = 1;
-               }
+            throw var11;
+         }
 
-               this.heuristics = new GlHeuristics(GlStateManager._getString(7937), GlStateManager._getString(7936));
-               this.debugLog = GlDebug.enableDebugCallback(debugOptions.logLevel(), debugOptions.synchronousLogs(), enabledExtensions);
-               this.debugLabels = GlDebugLabel.create(capabilities, debugOptions.useLabels(), enabledExtensions);
-               this.bufferStorage = BufferStorage.create(capabilities, enabledExtensions, this.heuristics.couldBeIntelGen7() || this.heuristics.isNvidia());
-               this.directStateAccess = DirectStateAccess.create(capabilities, enabledExtensions, this.heuristics);
-               this.vertexArraySource = VertexArray.createSource(capabilities, enabledExtensions);
-               GL33C.glEnable(34895);
-               GL33C.glEnable(34370);
-               if (capabilities.GL_ARB_clip_control) {
-                  ARBClipControl.glClipControl(36001, 37727);
-                  enabledExtensions.add("GL_ARB_clip_control");
-               }
+         if (stack != null) {
+            stack.close();
+         }
 
-               if (capabilities.GL_ARB_shader_draw_parameters && USE_GL_ARB_shader_draw_parameters) {
-                  enabledExtensions.add("GL_ARB_shader_draw_parameters");
-               }
+         GLCapabilities capabilities = GL.createCapabilities();
+         Set<String> enabledExtensions = new HashSet<>();
+         int maxSupportedAnisotropy;
+         if (capabilities.GL_EXT_texture_filter_anisotropic) {
+            maxSupportedAnisotropy = Mth.floor(GL33C.glGetFloat(34047));
+            enabledExtensions.add("GL_EXT_texture_filter_anisotropic");
+         } else {
+            maxSupportedAnisotropy = 1;
+         }
 
-               if (capabilities.GL_ARB_draw_indirect && USE_GL_ARB_draw_indirect) {
-                  enabledExtensions.add("GL_ARB_draw_indirect");
-                  if (capabilities.GL_ARB_multi_draw_indirect && USE_GL_ARB_multi_draw_indirect) {
-                     enabledExtensions.add("GL_ARB_multi_draw_indirect");
-                  }
-               }
+         this.heuristics = new GlHeuristics(GlStateManager._getString(7937), GlStateManager._getString(7936));
+         this.debugLog = GlDebug.enableDebugCallback(debugOptions.logLevel(), debugOptions.synchronousLogs(), enabledExtensions);
+         this.debugLabels = GlDebugLabel.create(capabilities, debugOptions.useLabels(), enabledExtensions);
+         this.bufferStorage = BufferStorage.create(capabilities, enabledExtensions, this.heuristics.couldBeIntelGen7() || this.heuristics.isNvidia());
+         this.directStateAccess = DirectStateAccess.create(capabilities, enabledExtensions, this.heuristics);
+         this.vertexArraySource = VertexArray.createSource(capabilities, enabledExtensions);
+         GL33C.glEnable(34895);
+         GL33C.glEnable(34370);
+         if (capabilities.GL_ARB_clip_control) {
+            ARBClipControl.glClipControl(36001, 37727);
+            enabledExtensions.add("GL_ARB_clip_control");
+         }
 
-               if (capabilities.GL_ARB_base_instance && USE_GL_ARB_base_instance) {
-                  enabledExtensions.add("GL_ARB_base_instance");
-               }
+         if (capabilities.GL_ARB_shader_draw_parameters && USE_GL_ARB_shader_draw_parameters) {
+            enabledExtensions.add("GL_ARB_shader_draw_parameters");
+         }
 
-               this.deviceInfo = this.heuristics.createDeviceInfo(capabilities, maxSupportedAnisotropy, enabledExtensions);
-               this.encoder = new GlCommandEncoder(this);
-               this.recompiler = new GlPipelineRecompiler(this.debugLabels, this.deviceInfo.features().shaderDrawParameters());
-            } catch (Throwable var12) {
-               SDLVideo.SDL_GL_DestroyContext(glContext);
-               SDLVideo.SDL_DestroyWindow(this.initialWindowHandle);
-               throw var12;
+         if (capabilities.GL_ARB_draw_indirect && USE_GL_ARB_draw_indirect) {
+            enabledExtensions.add("GL_ARB_draw_indirect");
+            if (capabilities.GL_ARB_multi_draw_indirect && USE_GL_ARB_multi_draw_indirect) {
+               enabledExtensions.add("GL_ARB_multi_draw_indirect");
             }
          }
+
+         if (capabilities.GL_ARB_base_instance && USE_GL_ARB_base_instance) {
+            enabledExtensions.add("GL_ARB_base_instance");
+         }
+
+         this.deviceInfo = this.heuristics.createDeviceInfo(capabilities, maxSupportedAnisotropy, enabledExtensions);
+         this.encoder = new GlCommandEncoder(this);
+         this.recompiler = new GlPipelineRecompiler(this.debugLabels, this.deviceInfo.features().shaderDrawParameters());
+      } catch (Throwable throwable) {
+         SDLVideo.SDL_GL_DestroyContext(glContext);
+         SDLVideo.SDL_DestroyWindow(this.initialWindowHandle);
+         throw throwable;
       }
    }
 
@@ -210,7 +209,7 @@ class GlDevice implements GpuDeviceBackend {
    @Override
    public GpuTexture createTexture(
       @Nullable String label,
-      @GpuTexture.Usage final int usage,
+      final @GpuTexture.Usage int usage,
       final GpuFormat format,
       final int width,
       final int height,
@@ -259,13 +258,15 @@ class GlDevice implements GpuDeviceBackend {
          int error = GlStateManager._getError();
          if (error == 1285) {
             throw new GpuOutOfMemoryException("Could not allocate texture of " + width + "x" + height + " for " + label);
-         } else if (error != 0) {
-            throw new IllegalStateException("OpenGL error " + error);
-         } else {
-            GlTexture texture = new GlTexture(usage, label, format, width, height, depthOrLayers, mipLevels, id, this.frameBufferCache);
-            this.debugLabels.applyLabel(texture);
-            return texture;
          }
+
+         if (error != 0) {
+            throw new IllegalStateException("OpenGL error " + error);
+         }
+
+         GlTexture texture = new GlTexture(usage, label, format, width, height, depthOrLayers, mipLevels, id, this.frameBufferCache);
+         this.debugLabels.applyLabel(texture);
+         return texture;
       } else {
          throw new IllegalArgumentException(format + " format cannot be used to create textures");
       }
@@ -277,34 +278,38 @@ class GlDevice implements GpuDeviceBackend {
    }
 
    @Override
-   public GpuBuffer createBuffer(@Nullable final Supplier<String> label, @GpuBuffer.Usage final int usage, final long size) {
+   public GpuBuffer createBuffer(final @Nullable Supplier<String> label, final @GpuBuffer.Usage int usage, final long size) {
       GlStateManager.clearGlErrors();
       GlBuffer buffer = this.bufferStorage.createBuffer(this.heuristics, this.directStateAccess, usage, size);
       int error = GlStateManager._getError();
       if (error == 1285) {
          throw new GpuOutOfMemoryException("Could not allocate buffer of " + size + " for " + label);
-      } else if (error != 0) {
-         throw new IllegalStateException("OpenGL error " + error);
-      } else {
-         this.debugLabels.applyLabel(buffer, label);
-         return buffer;
       }
+
+      if (error != 0) {
+         throw new IllegalStateException("OpenGL error " + error);
+      }
+
+      this.debugLabels.applyLabel(buffer, label);
+      return buffer;
    }
 
    @Override
-   public GpuBuffer createBuffer(@Nullable final Supplier<String> label, @GpuBuffer.Usage final int usage, final ByteBuffer data) {
+   public GpuBuffer createBuffer(final @Nullable Supplier<String> label, final @GpuBuffer.Usage int usage, final ByteBuffer data) {
       GlStateManager.clearGlErrors();
-      long size = (long)data.remaining();
+      long size = data.remaining();
       GlBuffer buffer = this.bufferStorage.createBuffer(this.heuristics, this.directStateAccess, usage, data);
       int error = GlStateManager._getError();
       if (error == 1285) {
          throw new GpuOutOfMemoryException("Could not allocate buffer of " + size + " for " + label);
-      } else if (error != 0) {
-         throw new IllegalStateException("OpenGL error " + error);
-      } else {
-         this.debugLabels.applyLabel(buffer, label);
-         return buffer;
       }
+
+      if (error != 0) {
+         throw new IllegalStateException("OpenGL error " + error);
+      }
+
+      this.debugLabels.applyLabel(buffer, label);
+      return buffer;
    }
 
    @Override
@@ -354,10 +359,10 @@ class GlDevice implements GpuDeviceBackend {
          GlProgram glProgram = this.recompiler.compileProgram(createInfo, decompiledShaders);
          if (glProgram == null) {
             return null;
-         } else {
-            VertexArray vertexArray = this.vertexArraySource.apply(glProgram, createInfo);
-            return new GlRenderPipeline(this, createInfo, glProgram, vertexArray);
          }
+
+         VertexArray vertexArray = this.vertexArraySource.apply(glProgram, createInfo);
+         return new GlRenderPipeline(this, createInfo, glProgram, vertexArray);
       };
    }
 

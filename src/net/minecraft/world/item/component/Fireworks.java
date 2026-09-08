@@ -18,21 +18,18 @@ public record Fireworks(int flightDuration, List<FireworkExplosion> explosions) 
    public static final int MAX_EXPLOSIONS = 256;
    public static final Codec<Fireworks> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ExtraCodecs.UNSIGNED_BYTE.optionalFieldOf("flight_duration", 0).forGetter(Fireworks::flightDuration),
-               FireworkExplosion.CODEC.sizeLimitedListOf(256).optionalFieldOf("explosions", List.of()).forGetter(Fireworks::explosions)
-            )
-            .apply(i, Fireworks::new)
+            ExtraCodecs.UNSIGNED_BYTE.optionalFieldOf("flight_duration", 0).forGetter(Fireworks::flightDuration),
+            FireworkExplosion.CODEC.sizeLimitedListOf(256).optionalFieldOf("explosions", List.of()).forGetter(Fireworks::explosions)
+         )
+         .apply(i, Fireworks::new)
    );
    public static final StreamCodec<ByteBuf, Fireworks> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.VAR_INT, Fireworks::flightDuration, FireworkExplosion.STREAM_CODEC.apply(ByteBufCodecs.list(256)), Fireworks::explosions, Fireworks::new
    );
 
-   public Fireworks(int flightDuration, List<FireworkExplosion> explosions) {
+   public Fireworks {
       if (explosions.size() > 256) {
          throw new IllegalArgumentException("Got " + explosions.size() + " explosions, but maximum is 256");
-      } else {
-         this.flightDuration = flightDuration;
-         this.explosions = explosions;
       }
    }
 

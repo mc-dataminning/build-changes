@@ -19,13 +19,11 @@ public class DynamicGpuDataStorageMapped<T extends DynamicGpuDataStorage.Dynamic
    private MappableRingBuffer ringBuffer;
    private int nextBlock;
    private int capacity;
-   @Nullable
-   private T lastData;
+   private @Nullable T lastData;
    private final String label;
-   @GpuBuffer.Usage
-   private final int usage;
+   private final @GpuBuffer.Usage int usage;
 
-   public DynamicGpuDataStorageMapped(final String label, final int dataSize, @GpuBuffer.Usage final int usage, final int initialCapacity) {
+   public DynamicGpuDataStorageMapped(final String label, final int dataSize, final @GpuBuffer.Usage int usage, final int initialCapacity) {
       GpuDevice device = RenderSystem.getDevice();
       this.usage = usage;
       this.blockSize = usage == 128 ? Mth.roundToward(dataSize, device.getDeviceInfo().limits().minUniformOffsetAlignment()) : dataSize;
@@ -60,148 +58,140 @@ public class DynamicGpuDataStorageMapped<T extends DynamicGpuDataStorage.Dynamic
    @Override
    public GpuBufferSlice writeData(final T gpuData) {
       if (this.lastData != null && this.lastData.equals(gpuData)) {
-         return this.ringBuffer.currentBuffer().slice((long)((this.nextBlock - 1) * this.blockSize), (long)this.blockSize);
-      } else {
-         if (this.nextBlock >= this.capacity) {
-            int newCapacity = this.capacity * 2;
-            LOGGER.info(
-               "Resizing {}, capacity limit of {} reached during a single frame. New capacity will be {}.",
-               new Object[]{this.label, this.capacity, newCapacity}
-            );
-            this.resizeBuffers(newCapacity);
-         }
-
-         int offset = this.nextBlock * this.blockSize;
-
-         try (GpuBufferSlice.MappedView view = this.ringBuffer.currentBuffer().slice((long)offset, (long)this.blockSize).map(false, true)) {
-            gpuData.write(view.data());
-         }
-
-         this.nextBlock++;
-         this.lastData = gpuData;
-         return this.ringBuffer.currentBuffer().slice((long)offset, (long)this.blockSize);
+         return this.ringBuffer.currentBuffer().slice((this.nextBlock - 1) * this.blockSize, this.blockSize);
       }
+
+      if (this.nextBlock >= this.capacity) {
+         int newCapacity = this.capacity * 2;
+         LOGGER.info(
+            "Resizing {}, capacity limit of {} reached during a single frame. New capacity will be {}.", new Object[]{this.label, this.capacity, newCapacity}
+         );
+         this.resizeBuffers(newCapacity);
+      }
+
+      int offset = this.nextBlock * this.blockSize;
+
+      try (GpuBufferSlice.MappedView view = this.ringBuffer.currentBuffer().slice(offset, this.blockSize).map(false, true)) {
+         gpuData.write(view.data());
+      }
+
+      this.nextBlock++;
+      this.lastData = gpuData;
+      return this.ringBuffer.currentBuffer().slice(offset, this.blockSize);
    }
 
    @Override
    public GpuBufferSlice[] writeData(final T[] dataArray) {
       if (dataArray.length == 0) {
          return new GpuBufferSlice[0];
-      } else {
-         if (this.nextBlock + dataArray.length > this.capacity) {
-            int newCapacity = Mth.smallestEncompassingPowerOfTwo(Math.max(this.capacity + 1, dataArray.length));
-            LOGGER.info(
-               "Resizing {}, capacity limit of {} reached during a single frame. New capacity will be {}.",
-               new Object[]{this.label, this.capacity, newCapacity}
-            );
-            this.resizeBuffers(newCapacity);
-         }
-
-         int firstOffset = this.nextBlock * this.blockSize;
-         GpuBufferSlice[] result = new GpuBufferSlice[dataArray.length];
-
-         try (GpuBufferSlice.MappedView view = this.ringBuffer
-               .currentBuffer()
-               .slice((long)firstOffset, (long)(dataArray.length * this.blockSize))
-               .map(false, true)) {
-            ByteBuffer byteBuffer = view.data();
-
-            for (int i = 0; i < dataArray.length; i++) {
-               T data = dataArray[i];
-               result[i] = this.ringBuffer.currentBuffer().slice((long)(firstOffset + i * this.blockSize), (long)this.blockSize);
-               byteBuffer.position(i * this.blockSize);
-               data.write(byteBuffer);
-            }
-         }
-
-         this.nextBlock += dataArray.length;
-         this.lastData = dataArray[dataArray.length - 1];
-         return result;
       }
+
+      if (this.nextBlock + dataArray.length > this.capacity) {
+         int newCapacity = Mth.smallestEncompassingPowerOfTwo(Math.max(this.capacity + 1, dataArray.length));
+         LOGGER.info(
+            "Resizing {}, capacity limit of {} reached during a single frame. New capacity will be {}.", new Object[]{this.label, this.capacity, newCapacity}
+         );
+         this.resizeBuffers(newCapacity);
+      }
+
+      int firstOffset = this.nextBlock * this.blockSize;
+      GpuBufferSlice[] result = new GpuBufferSlice[dataArray.length];
+
+      try (GpuBufferSlice.MappedView view = this.ringBuffer.currentBuffer().slice(firstOffset, dataArray.length * this.blockSize).map(false, true)) {
+         ByteBuffer byteBuffer = view.data();
+
+         for (int i = 0; i < dataArray.length; i++) {
+            T data = dataArray[i];
+            result[i] = this.ringBuffer.currentBuffer().slice(firstOffset + i * this.blockSize, this.blockSize);
+            byteBuffer.position(i * this.blockSize);
+            data.write(byteBuffer);
+         }
+      }
+
+      this.nextBlock += dataArray.length;
+      this.lastData = dataArray[dataArray.length - 1];
+      return result;
    }
 
    @Override
    public GpuBufferSlice writeDataBatched(final List<T> dataList) {
       if (dataList.isEmpty()) {
          return new GpuBufferSlice(null, 0L, 0L);
-      } else {
-         if (this.nextBlock + dataList.size() > this.capacity) {
-            int newCapacity = Mth.smallestEncompassingPowerOfTwo(Math.max(this.capacity + 1, dataList.size()));
-            LOGGER.info(
-               "Resizing {}, capacity limit of {} reached during a single frame. New capacity will be {}.",
-               new Object[]{this.label, this.capacity, newCapacity}
-            );
-            this.resizeBuffers(newCapacity);
-         }
-
-         int firstOffset = this.nextBlock * this.blockSize;
-         GpuBufferSlice result = this.ringBuffer.currentBuffer().slice((long)firstOffset, (long)(dataList.size() * this.blockSize));
-
-         try (GpuBufferSlice.MappedView view = result.map(false, true)) {
-            ByteBuffer byteBuffer = view.data();
-
-            for (int i = 0; i < dataList.size(); i++) {
-               T data = dataList.get(i);
-               byteBuffer.position(i * this.blockSize);
-               data.write(byteBuffer);
-            }
-         }
-
-         this.nextBlock = this.nextBlock + dataList.size();
-         this.lastData = dataList.getLast();
-         return result;
       }
+
+      if (this.nextBlock + dataList.size() > this.capacity) {
+         int newCapacity = Mth.smallestEncompassingPowerOfTwo(Math.max(this.capacity + 1, dataList.size()));
+         LOGGER.info(
+            "Resizing {}, capacity limit of {} reached during a single frame. New capacity will be {}.", new Object[]{this.label, this.capacity, newCapacity}
+         );
+         this.resizeBuffers(newCapacity);
+      }
+
+      int firstOffset = this.nextBlock * this.blockSize;
+      GpuBufferSlice result = this.ringBuffer.currentBuffer().slice(firstOffset, dataList.size() * this.blockSize);
+
+      try (GpuBufferSlice.MappedView view = result.map(false, true)) {
+         ByteBuffer byteBuffer = view.data();
+
+         for (int i = 0; i < dataList.size(); i++) {
+            T data = dataList.get(i);
+            byteBuffer.position(i * this.blockSize);
+            data.write(byteBuffer);
+         }
+      }
+
+      this.nextBlock = this.nextBlock + dataList.size();
+      this.lastData = dataList.getLast();
+      return result;
    }
 
    @Override
    public GpuBufferSlice[] writeDataBatchedMultiple(final List<List<T>> dataLists) {
       if (dataLists.isEmpty()) {
          return new GpuBufferSlice[0];
-      } else {
-         int totalCount = 0;
-
-         for (List<T> data : dataLists) {
-            totalCount += data.size();
-         }
-
-         if (this.nextBlock + totalCount > this.capacity) {
-            int newCapacity = Mth.smallestEncompassingPowerOfTwo(Math.max(this.capacity + 1, totalCount));
-            LOGGER.info(
-               "Resizing {}, capacity limit of {} reached during a single frame. New capacity will be {}.",
-               new Object[]{this.label, this.capacity, newCapacity}
-            );
-            this.resizeBuffers(newCapacity);
-         }
-
-         int offset = this.nextBlock * this.blockSize;
-         GpuBufferSlice[] result = new GpuBufferSlice[dataLists.size()];
-         int bufferPositionIndex = 0;
-
-         try (GpuBufferSlice.MappedView view = this.ringBuffer.currentBuffer().slice((long)offset, (long)(totalCount * this.blockSize)).map(false, true)) {
-            ByteBuffer byteBuffer = view.data();
-
-            for (int i = 0; i < dataLists.size(); i++) {
-               List<T> dataList = dataLists.get(i);
-               result[i] = this.ringBuffer.currentBuffer().slice((long)offset, (long)(dataList.size() * this.blockSize));
-
-               for (T data : dataList) {
-                  byteBuffer.position(bufferPositionIndex++ * this.blockSize);
-                  data.write(byteBuffer);
-               }
-
-               offset += dataList.size() * this.blockSize;
-            }
-         }
-
-         this.nextBlock += totalCount;
-         this.lastData = dataLists.getLast().getLast();
-         return result;
       }
+
+      int totalCount = 0;
+
+      for (List<T> data : dataLists) {
+         totalCount += data.size();
+      }
+
+      if (this.nextBlock + totalCount > this.capacity) {
+         int newCapacity = Mth.smallestEncompassingPowerOfTwo(Math.max(this.capacity + 1, totalCount));
+         LOGGER.info(
+            "Resizing {}, capacity limit of {} reached during a single frame. New capacity will be {}.", new Object[]{this.label, this.capacity, newCapacity}
+         );
+         this.resizeBuffers(newCapacity);
+      }
+
+      int offset = this.nextBlock * this.blockSize;
+      GpuBufferSlice[] result = new GpuBufferSlice[dataLists.size()];
+      int bufferPositionIndex = 0;
+
+      try (GpuBufferSlice.MappedView view = this.ringBuffer.currentBuffer().slice(offset, totalCount * this.blockSize).map(false, true)) {
+         ByteBuffer byteBuffer = view.data();
+
+         for (int i = 0; i < dataLists.size(); i++) {
+            List<T> dataList = dataLists.get(i);
+            result[i] = this.ringBuffer.currentBuffer().slice(offset, dataList.size() * this.blockSize);
+
+            for (T data : dataList) {
+               byteBuffer.position(bufferPositionIndex++ * this.blockSize);
+               data.write(byteBuffer);
+            }
+
+            offset += dataList.size() * this.blockSize;
+         }
+      }
+
+      this.nextBlock += totalCount;
+      this.lastData = dataLists.getLast().getLast();
+      return result;
    }
 
-   @GpuBuffer.Usage
    @Override
-   public int usage() {
+   public @GpuBuffer.Usage int usage() {
       return this.usage;
    }
 

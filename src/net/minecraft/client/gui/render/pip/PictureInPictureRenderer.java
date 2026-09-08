@@ -26,14 +26,10 @@ import org.joml.Matrix4fStack;
 import org.jspecify.annotations.Nullable;
 
 public abstract class PictureInPictureRenderer<T extends PictureInPictureRenderState> implements AutoCloseable {
-   @Nullable
-   private GpuTexture texture;
-   @Nullable
-   private GpuTextureView textureView;
-   @Nullable
-   private GpuTexture depthTexture;
-   @Nullable
-   private GpuTextureView depthTextureView;
+   private @Nullable GpuTexture texture;
+   private @Nullable GpuTextureView textureView;
+   private @Nullable GpuTexture depthTexture;
+   private @Nullable GpuTextureView depthTextureView;
    private final Projection projection = new Projection();
    private final ProjectionMatrixBuffer projectionMatrixBuffer = new ProjectionMatrixBuffer("PIP - " + this.getClass().getSimpleName());
    private final SubmitNodeStorage submitNodeStorage = new SubmitNodeStorage();
@@ -49,8 +45,8 @@ public abstract class PictureInPictureRenderer<T extends PictureInPictureRenderS
          Matrix4fStack modelViewStack = RenderSystem.getModelViewStack();
          modelViewStack.pushMatrix();
          PoseStack poseStack = new PoseStack();
-         poseStack.translate((float)width / 2.0F, this.getTranslateY(height, guiScale), 0.0F);
-         float scale = (float)guiScale * renderState.scale();
+         poseStack.translate(width / 2.0F, this.getTranslateY(height, guiScale), 0.0F);
+         float scale = guiScale * renderState.scale();
          poseStack.scale(scale, scale, -scale);
          this.renderToTexture(renderState, poseStack, this.submitNodeStorage);
 
@@ -111,7 +107,7 @@ public abstract class PictureInPictureRenderer<T extends PictureInPictureRenderS
       }
 
       device.createCommandEncoder().clearColorAndDepthTextures(this.texture, GuiRenderer.CLEAR_COLOR, this.depthTexture, 0.0);
-      this.projection.setupOrtho(-1000.0F, 1000.0F, (float)width, (float)height, true);
+      this.projection.setupOrtho(-1000.0F, 1000.0F, width, height, true);
       RenderSystem.setProjectionMatrix(this.projectionMatrixBuffer.getBuffer(this.projection), ProjectionType.ORTHOGRAPHIC);
    }
 
@@ -120,7 +116,7 @@ public abstract class PictureInPictureRenderer<T extends PictureInPictureRenderS
    }
 
    protected float getTranslateY(final int height, final int guiScale) {
-      return (float)height;
+      return height;
    }
 
    @Override

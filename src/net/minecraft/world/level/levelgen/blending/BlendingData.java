@@ -63,7 +63,7 @@ public class BlendingData {
    protected static final float NO_VALUE = Float.MAX_VALUE;
    private boolean hasCalculatedData;
    private final float[] heights;
-   private final List<List<Holder<Biome>>> biomes;
+   private final List<@Nullable List<@Nullable Holder<Biome>>> biomes;
    private final transient float[][] densities;
 
    private BlendingData(final int minSection, final int maxSection, final Optional<float[]> heights) {
@@ -77,8 +77,7 @@ public class BlendingData {
       this.areaWithOldGeneration = LevelHeightAccessor.create(minY, height);
    }
 
-   @Nullable
-   public static BlendingData unpack(@Nullable final BlendingData.Packed packed) {
+   public static @Nullable BlendingData unpack(final BlendingData.@Nullable Packed packed) {
       return packed == null ? null : new BlendingData(packed.minSection(), packed.maxSection(), packed.heights());
    }
 
@@ -99,8 +98,7 @@ public class BlendingData {
       );
    }
 
-   @Nullable
-   public static BlendingData getOrUpdateBlendingData(final WorldGenRegion region, final int chunkX, final int chunkZ) {
+   public static @Nullable BlendingData getOrUpdateBlendingData(final WorldGenRegion region, final int chunkX, final int chunkZ) {
       ChunkAccess chunk = region.getChunk(chunkX, chunkZ);
       BlendingData blendingData = chunk.getBlendingData();
       if (blendingData != null && !chunk.getHighestGeneratedStatus().isBefore(ChunkStatus.BIOMES)) {
@@ -175,7 +173,7 @@ public class BlendingData {
 
    private void addValuesForColumn(final int index, final ChunkAccess chunk, final int blockX, final int blockZ) {
       if (this.heights[index] == Float.MAX_VALUE) {
-         this.heights[index] = (float)this.getHeightAtXZ(chunk, blockX, blockZ);
+         this.heights[index] = this.getHeightAtXZ(chunk, blockX, blockZ);
       }
 
       this.densities[index] = this.getDensityColumn(chunk, blockX, blockZ, Mth.floor(this.heights[index]));
@@ -233,7 +231,7 @@ public class BlendingData {
 
       int highestCellWithSurfaceIndex = this.getCellYIndex(Mth.floorDiv(height, 8));
       if (highestCellWithSurfaceIndex >= 0 && highestCellWithSurfaceIndex < densities.length - 1) {
-         float inCellIndex = ((float)height + 0.5F) % 8.0F / 8.0F;
+         float inCellIndex = (height + 0.5F) % 8.0F / 8.0F;
          float amplitudeAboveToMakeSurfaceBeAtHeight = (1.0F - inCellIndex) / inCellIndex;
          float max = Math.max(amplitudeAboveToMakeSurfaceBeAtHeight, 1.0F) * 0.25F;
          densities[highestCellWithSurfaceIndex + 1] = -amplitudeAboveToMakeSurfaceBeAtHeight / max;
@@ -276,13 +274,13 @@ public class BlendingData {
       }
    }
 
-   private float getDensity(@Nullable final float[] densityColumn, final int cellY) {
+   private float getDensity(final float @Nullable [] densityColumn, final int cellY) {
       if (densityColumn == null) {
          return Float.MAX_VALUE;
-      } else {
-         int yIndex = this.getCellYIndex(cellY);
-         return yIndex >= 0 && yIndex < densityColumn.length ? densityColumn[yIndex] * 0.1F : Float.MAX_VALUE;
       }
+
+      int yIndex = this.getCellYIndex(cellY);
+      return yIndex >= 0 && yIndex < densityColumn.length ? densityColumn[yIndex] * 0.1F : Float.MAX_VALUE;
    }
 
    protected float getDensity(final int cellX, final int cellY, final int cellZ) {
@@ -371,19 +369,19 @@ public class BlendingData {
    private static int getX(final int index) {
       if (index < CELL_COLUMN_INSIDE_COUNT) {
          return zeroIfNegative(CELL_HORIZONTAL_MAX_INDEX_INSIDE - index);
-      } else {
-         int offsetIndex = index - CELL_COLUMN_INSIDE_COUNT;
-         return CELL_HORIZONTAL_MAX_INDEX_OUTSIDE - zeroIfNegative(CELL_HORIZONTAL_MAX_INDEX_OUTSIDE - offsetIndex);
       }
+
+      int offsetIndex = index - CELL_COLUMN_INSIDE_COUNT;
+      return CELL_HORIZONTAL_MAX_INDEX_OUTSIDE - zeroIfNegative(CELL_HORIZONTAL_MAX_INDEX_OUTSIDE - offsetIndex);
    }
 
    private static int getZ(final int index) {
       if (index < CELL_COLUMN_INSIDE_COUNT) {
          return zeroIfNegative(index - CELL_HORIZONTAL_MAX_INDEX_INSIDE);
-      } else {
-         int offsetIndex = index - CELL_COLUMN_INSIDE_COUNT;
-         return CELL_HORIZONTAL_MAX_INDEX_OUTSIDE - zeroIfNegative(offsetIndex - CELL_HORIZONTAL_MAX_INDEX_OUTSIDE);
       }
+
+      int offsetIndex = index - CELL_COLUMN_INSIDE_COUNT;
+      return CELL_HORIZONTAL_MAX_INDEX_OUTSIDE - zeroIfNegative(offsetIndex - CELL_HORIZONTAL_MAX_INDEX_OUTSIDE);
    }
 
    private static int zeroIfNegative(final int value) {
@@ -406,15 +404,15 @@ public class BlendingData {
       void consume(final int cellX, final int cellZ, final float height);
    }
 
-   public static record Packed(int minSection, int maxSection, Optional<float[]> heights) {
+   public record Packed(int minSection, int maxSection, Optional<float[]> heights) {
       private static final Codec<float[]> FLOAT_ARRAY_CODEC = Codec.FLOAT.listOf().xmap(Floats::toArray, Floats::asList);
       public static final Codec<BlendingData.Packed> CODEC = RecordCodecBuilder.create(
             i -> i.group(
-                     Codec.INT.fieldOf("min_section").forGetter(BlendingData.Packed::minSection),
-                     Codec.INT.fieldOf("max_section").forGetter(BlendingData.Packed::maxSection),
-                     FLOAT_ARRAY_CODEC.lenientOptionalFieldOf("heights").forGetter(BlendingData.Packed::heights)
-                  )
-                  .apply(i, BlendingData.Packed::new)
+                  Codec.INT.fieldOf("min_section").forGetter(BlendingData.Packed::minSection),
+                  Codec.INT.fieldOf("max_section").forGetter(BlendingData.Packed::maxSection),
+                  FLOAT_ARRAY_CODEC.lenientOptionalFieldOf("heights").forGetter(BlendingData.Packed::heights)
+               )
+               .apply(i, BlendingData.Packed::new)
          )
          .validate(BlendingData.Packed::validateArraySize);
 

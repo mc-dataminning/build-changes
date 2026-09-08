@@ -33,7 +33,7 @@ public class SnifferEggBlock extends Block {
 
    public SnifferEggBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(HATCH, Integer.valueOf(0)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(HATCH, 0));
    }
 
    @Override
@@ -58,7 +58,7 @@ public class SnifferEggBlock extends Block {
    public void tick(final BlockState state, final ServerLevel level, final BlockPos position, final RandomSource random) {
       if (!this.isReadyToHatch(state)) {
          level.playSound(null, position, SoundEvents.SNIFFER_EGG_CRACK, SoundSource.BLOCKS, 0.7F, 0.9F + random.nextFloat() * 0.2F);
-         level.setBlock(position, state.setValue(HATCH, Integer.valueOf(this.getHatchLevel(state) + 1)), 2);
+         level.setBlock(position, state.setValue(HATCH, this.getHatchLevel(state) + 1), 2);
       } else {
          level.playSound(null, position, SoundEvents.SNIFFER_EGG_HATCH, SoundSource.BLOCKS, 0.7F, 0.9F + random.nextFloat() * 0.2F);
          level.destroyBlock(position, false);

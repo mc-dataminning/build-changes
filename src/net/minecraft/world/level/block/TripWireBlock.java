@@ -43,13 +43,13 @@ public class TripWireBlock extends Block {
       this.registerDefaultState(
          this.stateDefinition
             .any()
-            .setValue(POWERED, Boolean.valueOf(false))
-            .setValue(ATTACHED, Boolean.valueOf(false))
-            .setValue(DISARMED, Boolean.valueOf(false))
-            .setValue(NORTH, Boolean.valueOf(false))
-            .setValue(EAST, Boolean.valueOf(false))
-            .setValue(SOUTH, Boolean.valueOf(false))
-            .setValue(WEST, Boolean.valueOf(false))
+            .setValue(POWERED, false)
+            .setValue(ATTACHED, false)
+            .setValue(DISARMED, false)
+            .setValue(NORTH, false)
+            .setValue(EAST, false)
+            .setValue(SOUTH, false)
+            .setValue(WEST, false)
       );
       this.hook = hook;
    }
@@ -64,10 +64,10 @@ public class TripWireBlock extends Block {
       BlockGetter level = context.getLevel();
       BlockPos pos = context.getClickedPos();
       return this.defaultBlockState()
-         .setValue(NORTH, Boolean.valueOf(this.shouldConnectTo(level.getBlockState(pos.north()), Direction.NORTH)))
-         .setValue(EAST, Boolean.valueOf(this.shouldConnectTo(level.getBlockState(pos.east()), Direction.EAST)))
-         .setValue(SOUTH, Boolean.valueOf(this.shouldConnectTo(level.getBlockState(pos.south()), Direction.SOUTH)))
-         .setValue(WEST, Boolean.valueOf(this.shouldConnectTo(level.getBlockState(pos.west()), Direction.WEST)));
+         .setValue(NORTH, this.shouldConnectTo(level.getBlockState(pos.north()), Direction.NORTH))
+         .setValue(EAST, this.shouldConnectTo(level.getBlockState(pos.east()), Direction.EAST))
+         .setValue(SOUTH, this.shouldConnectTo(level.getBlockState(pos.south()), Direction.SOUTH))
+         .setValue(WEST, this.shouldConnectTo(level.getBlockState(pos.west()), Direction.WEST));
    }
 
    @Override
@@ -82,7 +82,7 @@ public class TripWireBlock extends Block {
       final RandomSource random
    ) {
       return directionToNeighbour.getAxis().isHorizontal()
-         ? state.setValue(PROPERTY_BY_DIRECTION.get(directionToNeighbour), Boolean.valueOf(this.shouldConnectTo(neighbourState, directionToNeighbour)))
+         ? state.setValue(PROPERTY_BY_DIRECTION.get(directionToNeighbour), this.shouldConnectTo(neighbourState, directionToNeighbour))
          : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
    }
 
@@ -96,14 +96,14 @@ public class TripWireBlock extends Block {
    @Override
    protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
       if (!movedByPiston) {
-         this.updateSource(level, pos, state.setValue(POWERED, Boolean.valueOf(true)));
+         this.updateSource(level, pos, state.setValue(POWERED, true));
       }
    }
 
    @Override
    public BlockState playerWillDestroy(final Level level, final BlockPos pos, final BlockState state, final Player player) {
       if (!level.isClientSide() && !player.getMainHandItem().isEmpty() && player.getMainHandItem().is(Items.SHEARS)) {
-         level.setBlock(pos, state.setValue(DISARMED, Boolean.valueOf(true)), 260);
+         level.setBlock(pos, state.setValue(DISARMED, true), 260);
          level.gameEvent(player, GameEvent.SHEAR, pos);
       }
 
@@ -172,7 +172,7 @@ public class TripWireBlock extends Block {
       }
 
       if (shouldBePressed != wasPressed) {
-         state = state.setValue(POWERED, Boolean.valueOf(shouldBePressed));
+         state = state.setValue(POWERED, shouldBePressed);
          level.setBlockAndUpdate(pos, state);
          this.updateSource(level, pos, state);
       }
@@ -192,17 +192,17 @@ public class TripWireBlock extends Block {
    protected BlockState rotate(final BlockState state, final Rotation rotation) {
       return switch (rotation) {
          case CLOCKWISE_180 -> (BlockState)state.setValue(NORTH, state.getValue(SOUTH))
-         .setValue(EAST, state.getValue(WEST))
-         .setValue(SOUTH, state.getValue(NORTH))
-         .setValue(WEST, state.getValue(EAST));
+            .setValue(EAST, state.getValue(WEST))
+            .setValue(SOUTH, state.getValue(NORTH))
+            .setValue(WEST, state.getValue(EAST));
          case COUNTERCLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(EAST))
-         .setValue(EAST, state.getValue(SOUTH))
-         .setValue(SOUTH, state.getValue(WEST))
-         .setValue(WEST, state.getValue(NORTH));
+            .setValue(EAST, state.getValue(SOUTH))
+            .setValue(SOUTH, state.getValue(WEST))
+            .setValue(WEST, state.getValue(NORTH));
          case CLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(WEST))
-         .setValue(EAST, state.getValue(NORTH))
-         .setValue(SOUTH, state.getValue(EAST))
-         .setValue(WEST, state.getValue(SOUTH));
+            .setValue(EAST, state.getValue(NORTH))
+            .setValue(SOUTH, state.getValue(EAST))
+            .setValue(WEST, state.getValue(SOUTH));
          default -> state;
       };
    }

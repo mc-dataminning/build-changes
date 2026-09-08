@@ -1,7 +1,6 @@
 package net.minecraft.server.network.config;
 
 import com.mojang.logging.LogUtils;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
@@ -35,8 +34,7 @@ public class PrepareSpawnTask implements ConfigurationTask {
    private final MinecraftServer server;
    private final NameAndId nameAndId;
    private final LevelLoadListener loadListener;
-   @Nullable
-   private PrepareSpawnTask.State state;
+   private PrepareSpawnTask.@Nullable State state;
 
    public PrepareSpawnTask(final MinecraftServer server, final NameAndId nameAndId) {
       this.server = server;
@@ -68,9 +66,7 @@ public class PrepareSpawnTask implements ConfigurationTask {
 
    @Override
    public boolean tick() {
-      Object var1 = this.state;
-
-      return switch (var1) {
+      return switch (this.state) {
          case null -> false;
          case PrepareSpawnTask.Preparing preparing -> {
             PrepareSpawnTask.Ready ready = preparing.tick();
@@ -117,14 +113,10 @@ public class PrepareSpawnTask implements ConfigurationTask {
       private final ServerLevel spawnLevel;
       private final CompletableFuture<Vec3> spawnPosition;
       private final Vec2 spawnAngle;
-      @Nullable
-      private CompletableFuture<?> chunkLoadFuture;
-      private final ChunkLoadCounter chunkLoadCounter;
+      private @Nullable CompletableFuture<?> chunkLoadFuture;
+      private final ChunkLoadCounter chunkLoadCounter = new ChunkLoadCounter();
 
       private Preparing(final ServerLevel spawnLevel, final CompletableFuture<Vec3> spawnPosition, final Vec2 spawnAngle) {
-         Objects.requireNonNull(PrepareSpawnTask.this);
-         super();
-         this.chunkLoadCounter = new ChunkLoadCounter();
          this.spawnLevel = spawnLevel;
          this.spawnPosition = spawnPosition;
          this.spawnAngle = spawnAngle;
@@ -134,31 +126,31 @@ public class PrepareSpawnTask implements ConfigurationTask {
          this.spawnPosition.cancel(false);
       }
 
-      public PrepareSpawnTask.Ready tick() {
+      public PrepareSpawnTask.@Nullable Ready tick() {
          if (!this.spawnPosition.isDone()) {
             return null;
-         } else {
-            Vec3 spawnPosition = this.spawnPosition.join();
-            if (this.chunkLoadFuture == null) {
-               ChunkPos spawnChunk = ChunkPos.containing(BlockPos.containing(spawnPosition));
-               this.chunkLoadCounter
-                  .track(
-                     this.spawnLevel,
-                     () -> this.chunkLoadFuture = this.spawnLevel.getChunkSource().addTicketAndLoadWithRadius(TicketType.PLAYER_SPAWN, spawnChunk, 3)
-                  );
-               PrepareSpawnTask.this.loadListener.start(LevelLoadListener.Stage.LOAD_PLAYER_CHUNKS, this.chunkLoadCounter.totalChunks());
-               PrepareSpawnTask.this.loadListener.updateFocus(this.spawnLevel.dimension(), spawnChunk);
-            }
-
-            PrepareSpawnTask.this.loadListener
-               .update(LevelLoadListener.Stage.LOAD_PLAYER_CHUNKS, this.chunkLoadCounter.readyChunks(), this.chunkLoadCounter.totalChunks());
-            if (!this.chunkLoadFuture.isDone()) {
-               return null;
-            } else {
-               PrepareSpawnTask.this.loadListener.finish(LevelLoadListener.Stage.LOAD_PLAYER_CHUNKS);
-               return PrepareSpawnTask.this.new Ready(this.spawnLevel, spawnPosition, this.spawnAngle);
-            }
          }
+
+         Vec3 spawnPosition = this.spawnPosition.join();
+         if (this.chunkLoadFuture == null) {
+            ChunkPos spawnChunk = ChunkPos.containing(BlockPos.containing(spawnPosition));
+            this.chunkLoadCounter
+               .track(
+                  this.spawnLevel,
+                  () -> this.chunkLoadFuture = this.spawnLevel.getChunkSource().addTicketAndLoadWithRadius(TicketType.PLAYER_SPAWN, spawnChunk, 3)
+               );
+            PrepareSpawnTask.this.loadListener.start(LevelLoadListener.Stage.LOAD_PLAYER_CHUNKS, this.chunkLoadCounter.totalChunks());
+            PrepareSpawnTask.this.loadListener.updateFocus(this.spawnLevel.dimension(), spawnChunk);
+         }
+
+         PrepareSpawnTask.this.loadListener
+            .update(LevelLoadListener.Stage.LOAD_PLAYER_CHUNKS, this.chunkLoadCounter.readyChunks(), this.chunkLoadCounter.totalChunks());
+         if (!this.chunkLoadFuture.isDone()) {
+            return null;
+         }
+
+         PrepareSpawnTask.this.loadListener.finish(LevelLoadListener.Stage.LOAD_PLAYER_CHUNKS);
+         return PrepareSpawnTask.this.new Ready(this.spawnLevel, spawnPosition, this.spawnAngle);
       }
    }
 
@@ -168,8 +160,6 @@ public class PrepareSpawnTask implements ConfigurationTask {
       private final Vec2 spawnAngle;
 
       private Ready(final ServerLevel spawnLevel, final Vec3 spawnPosition, final Vec2 spawnAngle) {
-         Objects.requireNonNull(PrepareSpawnTask.this);
-         super();
          this.spawnLevel = spawnLevel;
          this.spawnPosition = spawnPosition;
          this.spawnAngle = spawnAngle;
@@ -184,7 +174,6 @@ public class PrepareSpawnTask implements ConfigurationTask {
          this.spawnLevel.waitForEntities(spawnChunk, 3);
          ServerPlayer player = new ServerPlayer(PrepareSpawnTask.this.server, this.spawnLevel, cookie.gameProfile(), cookie.clientInformation());
 
-         ServerPlayer var7;
          try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(player.problemPath(), PrepareSpawnTask.LOGGER)) {
             Optional<ValueInput> input = PrepareSpawnTask.this.server
                .getPlayerList()
@@ -197,10 +186,8 @@ public class PrepareSpawnTask implements ConfigurationTask {
                player.loadAndSpawnEnderPearls(tag);
                player.loadAndSpawnParentVehicle(tag);
             });
-            var7 = player;
+            return player;
          }
-
-         return var7;
       }
    }
 

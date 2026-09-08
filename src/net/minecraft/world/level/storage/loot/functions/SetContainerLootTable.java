@@ -21,8 +21,8 @@ public class SetContainerLootTable extends LootItemConditionalFunction {
       );
    public static final MapCodec<SetContainerLootTable> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
-            .and(i.group(ID_ONLY_CODEC.fieldOf("loot_table_id").forGetter(f -> f.lootTableId), Codec.LONG.optionalFieldOf("seed", 0L).forGetter(f -> f.seed)))
-            .apply(i, SetContainerLootTable::new)
+         .and(i.group(ID_ONLY_CODEC.fieldOf("loot_table_id").forGetter(f -> f.lootTableId), Codec.LONG.optionalFieldOf("seed", 0L).forGetter(f -> f.seed)))
+         .apply(i, SetContainerLootTable::new)
    );
    private final Holder.Reference<LootTable> lootTableId;
    private final long seed;
@@ -42,10 +42,10 @@ public class SetContainerLootTable extends LootItemConditionalFunction {
    public ItemStack run(final ItemStack itemStack, final LootContext context) {
       if (itemStack.isEmpty()) {
          return itemStack;
-      } else {
-         itemStack.set(DataComponents.CONTAINER_LOOT, new SeededContainerLoot(this.lootTableId.key(), this.seed));
-         return itemStack;
       }
+
+      itemStack.set(DataComponents.CONTAINER_LOOT, new SeededContainerLoot(this.lootTableId.key(), this.seed));
+      return itemStack;
    }
 
    public static LootItemConditionalFunction.Builder<?> withLootTable(final Holder.Reference<LootTable> value) {

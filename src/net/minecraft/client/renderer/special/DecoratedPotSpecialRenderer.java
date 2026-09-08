@@ -19,13 +19,12 @@ public class DecoratedPotSpecialRenderer implements SpecialModelRenderer<PotDeco
       this.decoratedPotRenderer = decoratedPotRenderer;
    }
 
-   @Nullable
-   public PotDecorations extractArgument(final ItemStack stack) {
+   public @Nullable PotDecorations extractArgument(final ItemStack stack) {
       return stack.get(DataComponents.POT_DECORATIONS);
    }
 
    public void submit(
-      @Nullable final PotDecorations decorations,
+      final @Nullable PotDecorations decorations,
       final PoseStack poseStack,
       final SubmitNodeCollector submitNodeCollector,
       final int lightCoords,
@@ -42,7 +41,7 @@ public class DecoratedPotSpecialRenderer implements SpecialModelRenderer<PotDeco
       this.decoratedPotRenderer.getExtents(output);
    }
 
-   public static record Unbaked() implements SpecialModelRenderer.Unbaked<PotDecorations> {
+   public record Unbaked() implements SpecialModelRenderer.Unbaked<PotDecorations> {
       public static final MapCodec<DecoratedPotSpecialRenderer.Unbaked> MAP_CODEC = MapCodec.unit(new DecoratedPotSpecialRenderer.Unbaked());
 
       @Override

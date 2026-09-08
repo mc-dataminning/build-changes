@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import org.jspecify.annotations.Nullable;
 
 public class ModelBlockRenderer {
    private static final Direction[] DIRECTIONS = Direction.values();
@@ -31,7 +32,7 @@ public class ModelBlockRenderer {
    private int tintCacheIndex = -1;
    private int tintCacheValue;
    private boolean tintSourcesInitialized;
-   private final List<BlockTintSource> tintSources = new ObjectArrayList();
+   private final List<@Nullable BlockTintSource> tintSources = new ObjectArrayList();
    private final IntList computedTintValues = new IntArrayList();
 
    public ModelBlockRenderer(final boolean ambientOcclusion, final boolean cull, final BlockColors blockColors) {
@@ -192,10 +193,10 @@ public class ModelBlockRenderer {
    private boolean shouldRenderFace(final BlockAndTintGetter level, final BlockState state, final Direction direction, final BlockPos neighborPos) {
       if (!this.cull) {
          return true;
-      } else {
-         BlockState neighborState = level.getBlockState(neighborPos);
-         return Block.shouldRenderFace(state, neighborState, direction);
       }
+
+      BlockState neighborState = level.getBlockState(neighborPos);
+      return Block.shouldRenderFace(state, neighborState, direction);
    }
 
    private void putQuadWithTint(
@@ -219,12 +220,12 @@ public class ModelBlockRenderer {
    private int getTintColor(final BlockAndTintGetter level, final BlockState state, final BlockPos pos, final int tintIndex) {
       if (this.tintCacheIndex == tintIndex) {
          return this.tintCacheValue;
-      } else {
-         int tintColor = this.computeTintColor(level, state, pos, tintIndex);
-         this.tintCacheIndex = tintIndex;
-         this.tintCacheValue = tintColor;
-         return tintColor;
       }
+
+      int tintColor = this.computeTintColor(level, state, pos, tintIndex);
+      this.tintCacheIndex = tintIndex;
+      this.tintCacheValue = tintColor;
+      return tintColor;
    }
 
    private int computeTintColor(final BlockAndTintGetter level, final BlockState state, final BlockPos pos, final int tintIndex) {

@@ -42,8 +42,8 @@ public class MetricsPersister {
    ) {
       try {
          Files.createDirectories(PROFILING_RESULTS_DIR);
-      } catch (IOException var8) {
-         throw new UncheckedIOException(var8);
+      } catch (IOException e) {
+         throw new UncheckedIOException(e);
       }
 
       try {
@@ -59,18 +59,18 @@ public class MetricsPersister {
 
          this.saveProfilingTaskExecutionResult(profilerResults, workingDir);
          return tempDir;
-      } catch (IOException var7) {
-         throw new UncheckedIOException(var7);
+      } catch (IOException e) {
+         throw new UncheckedIOException(e);
       }
    }
 
    private void saveMetrics(final Set<MetricSampler> samplers, final Path dir) {
       if (samplers.isEmpty()) {
          throw new IllegalArgumentException("Expected at least one sampler to persist");
-      } else {
-         Map<MetricCategory, List<MetricSampler>> samplersByCategory = samplers.stream().collect(Collectors.groupingBy(MetricSampler::getCategory));
-         samplersByCategory.forEach((category, samplersInCategory) -> this.saveCategory(category, (List<MetricSampler>)samplersInCategory, dir));
       }
+
+      Map<MetricCategory, List<MetricSampler>> samplersByCategory = samplers.stream().collect(Collectors.groupingBy(MetricSampler::getCategory));
+      samplersByCategory.forEach((category, samplersInCategory) -> this.saveCategory(category, (List<MetricSampler>)samplersInCategory, dir));
    }
 
    private void saveCategory(final MetricCategory category, final List<MetricSampler> samplers, final Path dir) {
@@ -100,8 +100,8 @@ public class MetricsPersister {
          }
 
          LOGGER.info("Flushed metrics to {}", file);
-      } catch (Exception var18) {
-         LOGGER.error("Could not save profiler results to {}", file, var18);
+      } catch (Exception e) {
+         LOGGER.error("Could not save profiler results to {}", file, e);
       } finally {
          IOUtils.closeQuietly(writer);
       }
@@ -111,13 +111,13 @@ public class MetricsPersister {
       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss.SSS", Locale.UK).withZone(ZoneId.systemDefault());
       deviationsBySampler.forEach(
          (sampler, deviations) -> deviations.forEach(
-               deviation -> {
-                  String timestamp = formatter.format(deviation.timestamp);
-                  Path deviationLogFile = directory.resolve(Util.sanitizeName(sampler.getName(), Identifier::validPathChar))
-                     .resolve(String.format(Locale.ROOT, "%d@%s.txt", deviation.tick, timestamp));
-                  deviation.profilerResultAtTick.saveResults(deviationLogFile);
-               }
-            )
+            deviation -> {
+               String timestamp = formatter.format(deviation.timestamp);
+               Path deviationLogFile = directory.resolve(Util.sanitizeName(sampler.getName(), Identifier::validPathChar))
+                  .resolve(String.format(Locale.ROOT, "%d@%s.txt", deviation.tick, timestamp));
+               deviation.profilerResultAtTick.saveResults(deviationLogFile);
+            }
+         )
       );
    }
 

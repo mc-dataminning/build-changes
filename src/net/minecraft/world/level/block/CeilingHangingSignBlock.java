@@ -51,13 +51,7 @@ public class CeilingHangingSignBlock extends SignBlock implements HangingSignBlo
 
    public CeilingHangingSignBlock(final WoodType type, final BlockBehaviour.Properties properties) {
       super(type, properties.sound(type.hangingSignSoundType()));
-      this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(ROTATION, Integer.valueOf(8))
-            .setValue(ATTACHED, Boolean.valueOf(false))
-            .setValue(WATERLOGGED, Boolean.valueOf(false))
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(ROTATION, 8).setValue(ATTACHED, false).setValue(WATERLOGGED, false));
    }
 
    @Override
@@ -70,11 +64,10 @@ public class CeilingHangingSignBlock extends SignBlock implements HangingSignBlo
       final InteractionHand hand,
       final BlockHitResult hitResult
    ) {
-      if (level.getBlockEntity(pos) instanceof SignBlockEntity signEntity && this.shouldTryToChainAnotherHangingSign(player, hitResult, signEntity, itemStack)) {
-         return InteractionResult.PASS;
-      }
-
-      return super.useItemOn(itemStack, state, level, pos, player, hand, hitResult);
+      return level.getBlockEntity(pos) instanceof SignBlockEntity signEntity
+            && this.shouldTryToChainAnotherHangingSign(player, hitResult, signEntity, itemStack)
+         ? InteractionResult.PASS
+         : super.useItemOn(itemStack, state, level, pos, player, hand, hitResult);
    }
 
    private boolean shouldTryToChainAnotherHangingSign(
@@ -97,7 +90,7 @@ public class CeilingHangingSignBlock extends SignBlock implements HangingSignBlo
       BlockPos above = context.getClickedPos().above();
       BlockState stateAbove = level.getBlockState(above);
       boolean isBelowHangingSign = stateAbove.is(BlockTags.ALL_HANGING_SIGNS);
-      Direction direction = Direction.fromYRot((double)context.getRotation());
+      Direction direction = Direction.fromYRot(context.getRotation());
       boolean attachedToMiddle = !Block.isFaceFull(stateAbove.getCollisionShape(level, above), Direction.DOWN) || context.isSecondaryUseActive();
       if (isBelowHangingSign && !context.isSecondaryUseActive()) {
          if (stateAbove.hasProperty(WallHangingSignBlock.FACING)) {
@@ -117,9 +110,9 @@ public class CeilingHangingSignBlock extends SignBlock implements HangingSignBlo
          ? RotationSegment.convertToSegment(direction.getOpposite())
          : RotationSegment.convertToSegment(context.getRotation() + 180.0F);
       return this.defaultBlockState()
-         .setValue(ATTACHED, Boolean.valueOf(attachedToMiddle))
-         .setValue(ROTATION, Integer.valueOf(rotationSegment))
-         .setValue(WATERLOGGED, Boolean.valueOf(replacedFluidState.is(Fluids.WATER)));
+         .setValue(ATTACHED, attachedToMiddle)
+         .setValue(ROTATION, rotationSegment)
+         .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
    }
 
    @Override
@@ -155,12 +148,12 @@ public class CeilingHangingSignBlock extends SignBlock implements HangingSignBlo
 
    @Override
    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(ROTATION, Integer.valueOf(rotation.rotate(state.getValue(ROTATION), 16)));
+      return state.setValue(ROTATION, rotation.rotate(state.getValue(ROTATION), 16));
    }
 
    @Override
    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.setValue(ROTATION, Integer.valueOf(mirror.mirror(state.getValue(ROTATION), 16)));
+      return state.setValue(ROTATION, mirror.mirror(state.getValue(ROTATION), 16));
    }
 
    @Override
@@ -173,9 +166,8 @@ public class CeilingHangingSignBlock extends SignBlock implements HangingSignBlo
       return new HangingSignBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return createTickerHelper(type, BlockEntityTypes.HANGING_SIGN, SignBlockEntity::tick);
    }
 

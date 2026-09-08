@@ -49,7 +49,7 @@ public class StairBlock extends Block implements SimpleWaterloggedBlock {
             .setValue(FACING, Direction.NORTH)
             .setValue(HALF, Half.BOTTOM)
             .setValue(SHAPE, StairsShape.STRAIGHT)
-            .setValue(WATERLOGGED, Boolean.valueOf(false))
+            .setValue(WATERLOGGED, false)
       );
       this.base = baseState.getBlock();
       this.baseState = baseState;
@@ -91,12 +91,9 @@ public class StairBlock extends Block implements SimpleWaterloggedBlock {
       BlockState state = this.defaultBlockState()
          .setValue(FACING, context.getHorizontalDirection())
          .setValue(
-            HALF,
-            clickedFace != Direction.DOWN && (clickedFace == Direction.UP || !(context.getClickLocation().y - (double)pos.getY() > 0.5))
-               ? Half.BOTTOM
-               : Half.TOP
+            HALF, clickedFace != Direction.DOWN && (clickedFace == Direction.UP || !(context.getClickLocation().y - pos.getY() > 0.5)) ? Half.BOTTOM : Half.TOP
          )
-         .setValue(WATERLOGGED, Boolean.valueOf(replacedFluidState.is(Fluids.WATER)));
+         .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
       return state.setValue(SHAPE, getStairsShape(state, context.getLevel(), pos));
    }
 

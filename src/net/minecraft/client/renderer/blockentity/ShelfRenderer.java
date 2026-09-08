@@ -37,7 +37,7 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfBlockEntity, Shel
       final ShelfRenderState state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
       state.alignToBottom = blockEntity.getAlignItemsToBottom();
@@ -75,7 +75,7 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfBlockEntity, Shel
       final int slot,
       final float yRot
    ) {
-      float itemSlotOffsetX = (float)(slot - 1) * 0.3125F;
+      float itemSlotOffsetX = (slot - 1) * 0.3125F;
       poseStack.pushPose();
       poseStack.translate(0.5F, 0.5F, 0.5F);
       poseStack.rotateDegrees(Axis.YP, yRot);

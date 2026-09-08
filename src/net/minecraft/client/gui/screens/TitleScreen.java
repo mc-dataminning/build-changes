@@ -48,12 +48,9 @@ public class TitleScreen extends Screen {
    private static final Component TITLE = Component.translatable("narrator.screen.title");
    private static final Component COPYRIGHT_TEXT = Component.translatable("title.credits");
    private static final String DEMO_LEVEL_ID = "Demo_World";
-   @Nullable
-   private SplashRenderer splash;
-   @Nullable
-   private RealmsNotificationsScreen realmsNotificationsScreen;
-   @Nullable
-   private FriendsButton friends;
+   private @Nullable SplashRenderer splash;
+   private @Nullable RealmsNotificationsScreen realmsNotificationsScreen;
+   private @Nullable FriendsButton friends;
    private boolean fading;
    private long fadeInStart;
    private final LogoRenderer logoRenderer;
@@ -66,7 +63,7 @@ public class TitleScreen extends Screen {
       this(fading, null);
    }
 
-   public TitleScreen(final boolean fading, @Nullable final LogoRenderer logoRenderer) {
+   public TitleScreen(final boolean fading, final @Nullable LogoRenderer logoRenderer) {
       super(TITLE);
       this.fading = fading;
       this.logoRenderer = Objects.requireNonNullElseGet(logoRenderer, () -> new LogoRenderer(false));
@@ -194,7 +191,7 @@ public class TitleScreen extends Screen {
       Tooltip tooltip = multiplayerDisabledReason != null ? Tooltip.create(multiplayerDisabledReason) : null;
       int var7;
       this.addRenderableWidget(Button.builder(Component.translatable("menu.multiplayer"), button -> {
-         Screen screen = (Screen)(this.minecraft.options.skipMultiplayerWarning ? new JoinMultiplayerScreen(this) : new SafetyScreen(this));
+         Screen screen = this.minecraft.options.skipMultiplayerWarning ? new JoinMultiplayerScreen(this) : new SafetyScreen(this);
          this.minecraft.gui.setScreen(screen);
       }).bounds(this.width / 2 - 100, var7 = topPos + spacing, 200, 20).tooltip(tooltip).build()).active = multiplayerAllowed;
       this.addRenderableWidget(
@@ -207,8 +204,7 @@ public class TitleScreen extends Screen {
       return topPos;
    }
 
-   @Nullable
-   private Component getMultiplayerDisabledReason() {
+   private @Nullable Component getMultiplayerDisabledReason() {
       if (this.minecraft.allowsMultiplayer()) {
          return null;
       } else if (this.minecraft.isNameBanned()) {
@@ -266,9 +262,9 @@ public class TitleScreen extends Screen {
                               )
                            );
                      }
-                  } catch (IOException var8) {
+                  } catch (IOException e) {
                      SystemToast.onWorldAccessFailure(this.minecraft, "Demo_World");
-                     LOGGER.warn("Failed to access demo world", var8);
+                     LOGGER.warn("Failed to access demo world", e);
                   }
                }
             )
@@ -280,16 +276,11 @@ public class TitleScreen extends Screen {
    }
 
    private boolean checkDemoWorldPresence() {
-      try {
-         boolean var2;
-         try (LevelStorageSource.LevelStorageAccess levelSource = this.minecraft.getLevelSource().createAccess("Demo_World")) {
-            var2 = levelSource.hasWorldData();
-         }
-
-         return var2;
-      } catch (IOException var6) {
+      try (LevelStorageSource.LevelStorageAccess levelSource = this.minecraft.getLevelSource().createAccess("Demo_World")) {
+         return levelSource.hasWorldData();
+      } catch (IOException e) {
          SystemToast.onWorldAccessFailure(this.minecraft, "Demo_World");
-         LOGGER.warn("Failed to read demo world data", var6);
+         LOGGER.warn("Failed to read demo world data", e);
          return false;
       }
    }
@@ -365,9 +356,9 @@ public class TitleScreen extends Screen {
       if (result) {
          try (LevelStorageSource.LevelStorageAccess levelSource = this.minecraft.getLevelSource().createAccess("Demo_World")) {
             levelSource.deleteLevel();
-         } catch (IOException var7) {
+         } catch (IOException e) {
             SystemToast.onWorldDeleteFailure(this.minecraft, "Demo_World");
-            LOGGER.warn("Failed to delete demo world", var7);
+            LOGGER.warn("Failed to delete demo world", e);
          }
       }
 

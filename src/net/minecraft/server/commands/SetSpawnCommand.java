@@ -25,25 +25,25 @@ import net.minecraft.world.phys.Vec2;
 public class SetSpawnCommand {
    private static final CommandResponseTracker.MessagesWithArg<ServerPlayer, LevelData.RespawnData> RESPONSE_SET = CommandResponseTracker.messages(
       (player, var1, respawnData) -> Component.translatable(
-            "commands.spawnpoint.success.single",
-            respawnData.pos().getX(),
-            respawnData.pos().getY(),
-            respawnData.pos().getZ(),
-            respawnData.yaw(),
-            respawnData.pitch(),
-            Component.translationArg(respawnData.dimension().identifier()),
-            player.getDisplayName()
-         ),
+         "commands.spawnpoint.success.single",
+         respawnData.pos().getX(),
+         respawnData.pos().getY(),
+         respawnData.pos().getZ(),
+         respawnData.yaw(),
+         respawnData.pitch(),
+         Component.translationArg(respawnData.dimension().identifier()),
+         player.getDisplayName()
+      ),
       (playerCount, var1, respawnData) -> Component.translatable(
-            "commands.spawnpoint.success.multiple",
-            respawnData.pos().getX(),
-            respawnData.pos().getY(),
-            respawnData.pos().getZ(),
-            respawnData.yaw(),
-            respawnData.pitch(),
-            Component.translationArg(respawnData.dimension().identifier()),
-            playerCount
-         )
+         "commands.spawnpoint.success.multiple",
+         respawnData.pos().getX(),
+         respawnData.pos().getY(),
+         respawnData.pos().getZ(),
+         respawnData.yaw(),
+         respawnData.pitch(),
+         Component.translationArg(respawnData.dimension().identifier()),
+         playerCount
+      )
    );
 
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
@@ -52,41 +52,41 @@ public class SetSpawnCommand {
                   .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
                .executes(
                   c -> setSpawn(
-                        (CommandSourceStack)c.getSource(),
-                        Collections.singleton(((CommandSourceStack)c.getSource()).getPlayerOrException()),
-                        BlockPos.containing(((CommandSourceStack)c.getSource()).getPosition()),
-                        WorldCoordinates.ZERO_ROTATION
-                     )
+                     (CommandSourceStack)c.getSource(),
+                     Collections.singleton(((CommandSourceStack)c.getSource()).getPlayerOrException()),
+                     BlockPos.containing(((CommandSourceStack)c.getSource()).getPosition()),
+                     WorldCoordinates.ZERO_ROTATION
+                  )
                ))
             .then(
                ((RequiredArgumentBuilder)Commands.argument("targets", EntityArgument.players())
                      .executes(
                         c -> setSpawn(
-                              (CommandSourceStack)c.getSource(),
-                              EntityArgument.getPlayers(c, "targets"),
-                              BlockPos.containing(((CommandSourceStack)c.getSource()).getPosition()),
-                              WorldCoordinates.ZERO_ROTATION
-                           )
+                           (CommandSourceStack)c.getSource(),
+                           EntityArgument.getPlayers(c, "targets"),
+                           BlockPos.containing(((CommandSourceStack)c.getSource()).getPosition()),
+                           WorldCoordinates.ZERO_ROTATION
+                        )
                      ))
                   .then(
                      ((RequiredArgumentBuilder)Commands.argument("pos", BlockPosArgument.blockPos())
                            .executes(
                               c -> setSpawn(
-                                    (CommandSourceStack)c.getSource(),
-                                    EntityArgument.getPlayers(c, "targets"),
-                                    BlockPosArgument.getSpawnablePos(c, "pos"),
-                                    WorldCoordinates.ZERO_ROTATION
-                                 )
+                                 (CommandSourceStack)c.getSource(),
+                                 EntityArgument.getPlayers(c, "targets"),
+                                 BlockPosArgument.getSpawnablePos(c, "pos"),
+                                 WorldCoordinates.ZERO_ROTATION
+                              )
                            ))
                         .then(
                            Commands.argument("rotation", RotationArgument.rotation())
                               .executes(
                                  c -> setSpawn(
-                                       (CommandSourceStack)c.getSource(),
-                                       EntityArgument.getPlayers(c, "targets"),
-                                       BlockPosArgument.getSpawnablePos(c, "pos"),
-                                       RotationArgument.getRotation(c, "rotation")
-                                    )
+                                    (CommandSourceStack)c.getSource(),
+                                    EntityArgument.getPlayers(c, "targets"),
+                                    BlockPosArgument.getSpawnablePos(c, "pos"),
+                                    RotationArgument.getRotation(c, "rotation")
+                                 )
                               )
                         )
                   )

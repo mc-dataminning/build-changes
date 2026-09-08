@@ -21,13 +21,13 @@ import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntPr
 public class SetEnchantmentsFunction extends LootItemConditionalFunction {
    public static final MapCodec<SetEnchantmentsFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
-            .and(
-               i.group(
-                  Codec.unboundedMap(Enchantment.CODEC, ContextIntProviders.CODEC).optionalFieldOf("enchantments", Map.of()).forGetter(f -> f.enchantments),
-                  Codec.BOOL.optionalFieldOf("add", false).forGetter(f -> f.add)
-               )
+         .and(
+            i.group(
+               Codec.unboundedMap(Enchantment.CODEC, ContextIntProviders.CODEC).optionalFieldOf("enchantments", Map.of()).forGetter(f -> f.enchantments),
+               Codec.BOOL.optionalFieldOf("add", false).forGetter(f -> f.add)
             )
-            .apply(i, SetEnchantmentsFunction::new)
+         )
+         .apply(i, SetEnchantmentsFunction::new)
    );
    private final Map<Holder<Enchantment>, Holder<ContextIntProvider>> enchantments;
    private final boolean add;
@@ -64,16 +64,16 @@ public class SetEnchantmentsFunction extends LootItemConditionalFunction {
                this.enchantments
                   .forEach(
                      (enchantment, levelProvider) -> enchantments.set(
-                           (Holder<Enchantment>)enchantment,
-                           Mth.clamp(enchantments.getLevel((Holder<Enchantment>)enchantment) + levelProvider.value().getInt(context), 0, 255)
-                        )
+                        (Holder<Enchantment>)enchantment,
+                        Mth.clamp(enchantments.getLevel((Holder<Enchantment>)enchantment) + levelProvider.value().getInt(context), 0, 255)
+                     )
                   );
             } else {
                this.enchantments
                   .forEach(
                      (enchantment, levelProvider) -> enchantments.set(
-                           (Holder<Enchantment>)enchantment, Mth.clamp(levelProvider.value().getInt(context), 0, 255)
-                        )
+                        (Holder<Enchantment>)enchantment, Mth.clamp(levelProvider.value().getInt(context), 0, 255)
+                     )
                   );
             }
          }

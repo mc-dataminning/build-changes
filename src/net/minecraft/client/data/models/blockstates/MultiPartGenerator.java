@@ -53,7 +53,7 @@ public class MultiPartGenerator implements BlockModelDefinitionGenerator {
       );
    }
 
-   private static record Entry(Optional<Condition> condition, MultiVariant variants) {
+   private record Entry(Optional<Condition> condition, MultiVariant variants) {
       public Selector toUnbaked() {
          return new Selector(this.condition, this.variants.toUnbaked());
       }

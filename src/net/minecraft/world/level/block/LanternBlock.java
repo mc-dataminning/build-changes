@@ -28,19 +28,18 @@ public class LanternBlock extends Block implements SimpleWaterloggedBlock {
 
    public LanternBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(HANGING, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(HANGING, false).setValue(WATERLOGGED, false));
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
 
       for (Direction direction : context.getNearestLookingDirections()) {
          if (direction.getAxis() == Direction.Axis.Y) {
-            BlockState state = this.defaultBlockState().setValue(HANGING, Boolean.valueOf(direction == Direction.UP));
+            BlockState state = this.defaultBlockState().setValue(HANGING, direction == Direction.UP);
             if (state.canSurvive(context.getLevel(), context.getClickedPos())) {
-               return state.setValue(WATERLOGGED, Boolean.valueOf(replacedFluidState.is(Fluids.WATER)));
+               return state.setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
             }
          }
       }

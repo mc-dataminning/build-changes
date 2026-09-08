@@ -52,8 +52,7 @@ public class ZombieNautilus extends AbstractNautilus {
       return AbstractNautilus.createAttributes().add(Attributes.MOVEMENT_SPEED, 1.1F);
    }
 
-   @Nullable
-   public ZombieNautilus getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable ZombieNautilus getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       return null;
    }
 
@@ -145,9 +144,8 @@ public class ZombieNautilus extends AbstractNautilus {
       return this.entityData.get(DATA_VARIANT_ID);
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       return type == DataComponents.ZOMBIE_NAUTILUS_VARIANT ? castComponentValue((DataComponentType<T>)type, this.getVariant()) : super.get(type);
    }
 
@@ -170,7 +168,7 @@ public class ZombieNautilus extends AbstractNautilus {
 
    @Override
    public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       VariantUtils.selectVariantToSpawn(SpawnContext.create(level, this.blockPosition()), Registries.ZOMBIE_NAUTILUS_VARIANT).ifPresent(this::setVariant);
       return super.finalizeSpawn(level, difficulty, spawnReason, groupData);

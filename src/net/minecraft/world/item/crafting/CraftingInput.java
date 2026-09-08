@@ -62,20 +62,22 @@ public class CraftingInput implements RecipeInput {
          int newHeight = bottom - top + 1;
          if (newWidth <= 0 || newHeight <= 0) {
             return CraftingInput.Positioned.EMPTY;
-         } else if (newWidth == width && newHeight == height) {
-            return new CraftingInput.Positioned(new CraftingInput(width, height, items), left, top);
-         } else {
-            List<ItemStack> newItems = new ArrayList<>(newWidth * newHeight);
-
-            for (int y = 0; y < newHeight; y++) {
-               for (int xx = 0; xx < newWidth; xx++) {
-                  int index = xx + left + (y + top) * width;
-                  newItems.add(items.get(index));
-               }
-            }
-
-            return new CraftingInput.Positioned(new CraftingInput(newWidth, newHeight, newItems), left, top);
          }
+
+         if (newWidth == width && newHeight == height) {
+            return new CraftingInput.Positioned(new CraftingInput(width, height, items), left, top);
+         }
+
+         List<ItemStack> newItems = new ArrayList<>(newWidth * newHeight);
+
+         for (int y = 0; y < newHeight; y++) {
+            for (int x = 0; x < newWidth; x++) {
+               int index = x + left + (y + top) * width;
+               newItems.add(items.get(index));
+            }
+         }
+
+         return new CraftingInput.Positioned(new CraftingInput(newWidth, newHeight, newItems), left, top);
       } else {
          return CraftingInput.Positioned.EMPTY;
       }
@@ -141,7 +143,7 @@ public class CraftingInput implements RecipeInput {
       return 31 * result + this.height;
    }
 
-   public static record Positioned(CraftingInput input, int left, int top) {
+   public record Positioned(CraftingInput input, int left, int top) {
       public static final CraftingInput.Positioned EMPTY = new CraftingInput.Positioned(CraftingInput.EMPTY, 0, 0);
    }
 }

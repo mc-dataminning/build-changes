@@ -14,7 +14,7 @@ public record RarityFilter(int chance) implements PlacementFilter {
 
    @Override
    public boolean shouldPlace(final PlacementContext context, final RandomSource random, final BlockPos origin) {
-      return random.nextFloat() < 1.0F / (float)this.chance;
+      return random.nextFloat() < 1.0F / this.chance;
    }
 
    @Override

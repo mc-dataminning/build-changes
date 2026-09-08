@@ -13,6 +13,5 @@ public interface GuiElementRenderState extends ScreenArea {
 
    TextureSetup textureSetup();
 
-   @Nullable
-   ScreenRectangle scissorArea();
+   @Nullable ScreenRectangle scissorArea();
 }

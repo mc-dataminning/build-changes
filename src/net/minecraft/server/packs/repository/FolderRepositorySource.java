@@ -56,8 +56,8 @@ public class FolderRepositorySource implements RepositorySource {
                result.accept(pack);
             }
          });
-      } catch (IOException var3) {
-         LOGGER.warn("Failed to list packs in {}", this.folder, var3);
+      } catch (IOException e) {
+         LOGGER.warn("Failed to list packs in {}", this.folder, e);
       }
    }
 
@@ -81,8 +81,8 @@ public class FolderRepositorySource implements RepositorySource {
                } else {
                   LOGGER.info("Found non-pack entry '{}', ignoring", content);
                }
-            } catch (IOException var10) {
-               LOGGER.warn("Failed to read properties of '{}', ignoring", content, var10);
+            } catch (IOException e) {
+               LOGGER.warn("Failed to read properties of '{}', ignoring", content, e);
             }
          }
       }
@@ -93,8 +93,7 @@ public class FolderRepositorySource implements RepositorySource {
          super(validator);
       }
 
-      @Nullable
-      protected Pack.ResourcesSupplier createZipPack(final Path content) {
+      protected Pack.@Nullable ResourcesSupplier createZipPack(final Path content) {
          FileSystem fileSystem = content.getFileSystem();
          if (fileSystem != FileSystems.getDefault() && !(fileSystem instanceof LinkFileSystem)) {
             FolderRepositorySource.LOGGER.info("Can't open pack archive at {}", content);

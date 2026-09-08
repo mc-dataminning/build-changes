@@ -6,10 +6,8 @@ import org.jspecify.annotations.Nullable;
 
 public class SingleKeyCache<K, V> {
    private final Function<K, V> computeValue;
-   @Nullable
-   private K cacheKey = (K)null;
-   @Nullable
-   private V cachedValue;
+   private @Nullable K cacheKey = (K)null;
+   private @Nullable V cachedValue;
 
    public SingleKeyCache(final Function<K, V> computeValue) {
       this.computeValue = computeValue;

@@ -27,8 +27,7 @@ public class Pack {
    private final Pack.Metadata metadata;
    private final PackSelectionConfig selectionConfig;
 
-   @Nullable
-   public static Pack readMetaAndCreate(
+   public static @Nullable Pack readMetaAndCreate(
       final PackLocationInfo location, final Pack.ResourcesSupplier resources, final PackType packType, final PackSelectionConfig selectionConfig
    ) {
       PackFormat currentPackVersion = SharedConstants.getCurrentVersion().packVersion(packType);
@@ -43,37 +42,31 @@ public class Pack {
       this.selectionConfig = selectionConfig;
    }
 
-   @Nullable
-   public static Pack.Metadata readPackMetadata(
+   public static Pack.@Nullable Metadata readPackMetadata(
       final PackLocationInfo location, final Pack.ResourcesSupplier resources, final PackFormat currentPackVersion, final PackType type
    ) {
-      try {
-         Pack.Metadata var11;
-         try (PackMetadataResources pack = resources.openMetadata(location)) {
-            PackMetadataSection meta;
-            try {
-               meta = pack.getMetadataSection(PackMetadataSection.forPackType(type));
-            } catch (JsonParseException var13) {
-               LOGGER.warn("Error reading pack metadata, attempting fallback type", var13);
-               meta = pack.getMetadataSection(PackMetadataSection.FALLBACK_TYPE);
-            }
+      try (PackMetadataResources pack = resources.openMetadata(location)) {
+         PackMetadataSection meta;
+         try {
+            meta = pack.getMetadataSection(PackMetadataSection.forPackType(type));
+         } catch (JsonParseException e) {
+            LOGGER.warn("Error reading pack metadata, attempting fallback type", e);
+            meta = pack.getMetadataSection(PackMetadataSection.FALLBACK_TYPE);
+         }
 
-            if (meta == null) {
-               LOGGER.warn("Missing metadata in pack {}", location.id());
-               return null;
-            }
-
+         if (meta == null) {
+            LOGGER.warn("Missing metadata in pack {}", location.id());
+            return null;
+         } else {
             FeatureFlagsMetadataSection featureFlagMeta = pack.getMetadataSection(FeatureFlagsMetadataSection.TYPE);
             FeatureFlagSet requiredFlags = featureFlagMeta != null ? featureFlagMeta.flags() : FeatureFlagSet.of();
             PackCompatibility packCompatibility = PackCompatibility.forVersion(meta.supportedFormats(), currentPackVersion);
             OverlayMetadataSection overlays = pack.getMetadataSection(OverlayMetadataSection.forPackType(type));
             List<String> overlaySet = overlays != null ? overlays.overlaysForVersion(currentPackVersion) : List.of();
-            var11 = new Pack.Metadata(meta.description(), packCompatibility, requiredFlags, overlaySet);
+            return new Pack.Metadata(meta.description(), packCompatibility, requiredFlags, overlaySet);
          }
-
-         return var11;
-      } catch (Exception var15) {
-         LOGGER.warn("Failed to read pack {} metadata", location.id(), var15);
+      } catch (Exception e) {
+         LOGGER.warn("Failed to read pack {} metadata", location.id(), e);
          return null;
       }
    }
@@ -148,10 +141,10 @@ public class Pack {
       return this.location.hashCode();
    }
 
-   public static record Metadata(Component description, PackCompatibility compatibility, FeatureFlagSet requestedFeatures, List<String> overlays) {
+   public record Metadata(Component description, PackCompatibility compatibility, FeatureFlagSet requestedFeatures, List<String> overlays) {
    }
 
-   public static enum Position {
+   public enum Position {
       TOP,
       BOTTOM;
 

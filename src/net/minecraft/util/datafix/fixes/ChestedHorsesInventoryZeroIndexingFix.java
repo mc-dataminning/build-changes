@@ -43,19 +43,19 @@ public class ChestedHorsesInventoryZeroIndexingFix extends DataFix {
          "Fix non-zero indexing in chest horse type " + horseId,
          schema,
          input -> input.updateTyped(
-               entityFinder,
-               horseLike -> horseLike.updateTyped(
-                     itemsFieldFinder,
-                     items -> items.update(
-                           itemStackFinder,
-                           namedStack -> namedStack.mapSecond(
-                                 itemStack -> itemStack.mapSecond(
-                                       pair -> pair.mapSecond(remainder -> remainder.update("Slot", slot -> slot.createByte((byte)(slot.asInt(2) - 2))))
-                                    )
-                              )
-                        )
+            entityFinder,
+            horseLike -> horseLike.updateTyped(
+               itemsFieldFinder,
+               items -> items.update(
+                  itemStackFinder,
+                  namedStack -> namedStack.mapSecond(
+                     itemStack -> itemStack.mapSecond(
+                        pair -> pair.mapSecond(remainder -> remainder.update("Slot", slot -> slot.createByte((byte)(slot.asInt(2) - 2))))
+                     )
                   )
+               )
             )
+         )
       );
    }
 }

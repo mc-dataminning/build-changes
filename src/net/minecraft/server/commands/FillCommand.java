@@ -55,15 +55,13 @@ public class FillCommand {
                                  ((LiteralArgumentBuilder)Commands.literal("replace")
                                        .executes(
                                           c -> fillBlocks(
-                                                (CommandSourceStack)c.getSource(),
-                                                BoundingBox.fromCorners(
-                                                   BlockPosArgument.getLoadedBlockPos(c, "from"), BlockPosArgument.getLoadedBlockPos(c, "to")
-                                                ),
-                                                BlockStateArgument.getBlock(c, "block"),
-                                                FillCommand.Mode.REPLACE,
-                                                null,
-                                                false
-                                             )
+                                             (CommandSourceStack)c.getSource(),
+                                             BoundingBox.fromCorners(BlockPosArgument.getLoadedBlockPos(c, "from"), BlockPosArgument.getLoadedBlockPos(c, "to")),
+                                             BlockStateArgument.getBlock(c, "block"),
+                                             FillCommand.Mode.REPLACE,
+                                             null,
+                                             false
+                                          )
                                        ))
                                     .then(
                                        wrapWithMode(
@@ -80,13 +78,13 @@ public class FillCommand {
                                  Commands.literal("keep")
                                     .executes(
                                        c -> fillBlocks(
-                                             (CommandSourceStack)c.getSource(),
-                                             BoundingBox.fromCorners(BlockPosArgument.getLoadedBlockPos(c, "from"), BlockPosArgument.getLoadedBlockPos(c, "to")),
-                                             BlockStateArgument.getBlock(c, "block"),
-                                             FillCommand.Mode.REPLACE,
-                                             b -> b.getLevel().isEmptyBlock(b.getPos()),
-                                             false
-                                          )
+                                          (CommandSourceStack)c.getSource(),
+                                          BoundingBox.fromCorners(BlockPosArgument.getLoadedBlockPos(c, "from"), BlockPosArgument.getLoadedBlockPos(c, "to")),
+                                          BlockStateArgument.getBlock(c, "block"),
+                                          FillCommand.Mode.REPLACE,
+                                          b -> b.getLevel().isEmptyBlock(b.getPos()),
+                                          false
+                                       )
                                     )
                               )
                         )
@@ -105,64 +103,64 @@ public class FillCommand {
    ) {
       return builder.executes(
             c -> fillBlocks(
-                  (CommandSourceStack)c.getSource(),
-                  BoundingBox.fromCorners(from.apply(c), to.apply(c)),
-                  block.apply(c),
-                  FillCommand.Mode.REPLACE,
-                  filter.apply(c),
-                  false
-               )
+               (CommandSourceStack)c.getSource(),
+               BoundingBox.fromCorners(from.apply(c), to.apply(c)),
+               block.apply(c),
+               FillCommand.Mode.REPLACE,
+               filter.apply(c),
+               false
+            )
          )
          .then(
             Commands.literal("outline")
                .executes(
                   c -> fillBlocks(
-                        (CommandSourceStack)c.getSource(),
-                        BoundingBox.fromCorners(from.apply(c), to.apply(c)),
-                        block.apply(c),
-                        FillCommand.Mode.OUTLINE,
-                        filter.apply(c),
-                        false
-                     )
+                     (CommandSourceStack)c.getSource(),
+                     BoundingBox.fromCorners(from.apply(c), to.apply(c)),
+                     block.apply(c),
+                     FillCommand.Mode.OUTLINE,
+                     filter.apply(c),
+                     false
+                  )
                )
          )
          .then(
             Commands.literal("hollow")
                .executes(
                   c -> fillBlocks(
-                        (CommandSourceStack)c.getSource(),
-                        BoundingBox.fromCorners(from.apply(c), to.apply(c)),
-                        block.apply(c),
-                        FillCommand.Mode.HOLLOW,
-                        filter.apply(c),
-                        false
-                     )
+                     (CommandSourceStack)c.getSource(),
+                     BoundingBox.fromCorners(from.apply(c), to.apply(c)),
+                     block.apply(c),
+                     FillCommand.Mode.HOLLOW,
+                     filter.apply(c),
+                     false
+                  )
                )
          )
          .then(
             Commands.literal("destroy")
                .executes(
                   c -> fillBlocks(
-                        (CommandSourceStack)c.getSource(),
-                        BoundingBox.fromCorners(from.apply(c), to.apply(c)),
-                        block.apply(c),
-                        FillCommand.Mode.DESTROY,
-                        filter.apply(c),
-                        false
-                     )
+                     (CommandSourceStack)c.getSource(),
+                     BoundingBox.fromCorners(from.apply(c), to.apply(c)),
+                     block.apply(c),
+                     FillCommand.Mode.DESTROY,
+                     filter.apply(c),
+                     false
+                  )
                )
          )
          .then(
             Commands.literal("strict")
                .executes(
                   c -> fillBlocks(
-                        (CommandSourceStack)c.getSource(),
-                        BoundingBox.fromCorners(from.apply(c), to.apply(c)),
-                        block.apply(c),
-                        FillCommand.Mode.REPLACE,
-                        filter.apply(c),
-                        true
-                     )
+                     (CommandSourceStack)c.getSource(),
+                     BoundingBox.fromCorners(from.apply(c), to.apply(c)),
+                     block.apply(c),
+                     FillCommand.Mode.REPLACE,
+                     filter.apply(c),
+                     true
+                  )
                )
          );
    }
@@ -172,64 +170,64 @@ public class FillCommand {
       final BoundingBox region,
       final BlockInput target,
       final FillCommand.Mode mode,
-      @Nullable final Predicate<BlockInWorld> predicate,
+      final @Nullable Predicate<BlockInWorld> predicate,
       final boolean strict
    ) throws CommandSyntaxException {
-      long area = (long)region.getXSpan() * (long)region.getYSpan() * (long)region.getZSpan();
+      long area = (long)region.getXSpan() * region.getYSpan() * region.getZSpan();
       int limit = source.getLevel().getGameRules().get(GameRules.MAX_BLOCK_MODIFICATIONS);
-      if (area > (long)limit) {
+      if (area > limit) {
          throw ERROR_AREA_TOO_LARGE.create(limit, area);
-      } else {
-         record UpdatedPosition(BlockPos pos, BlockState oldState) {
-         }
+      }
 
-         List<UpdatedPosition> updatePositions = Lists.newArrayList();
-         ServerLevel level = source.getLevel();
-         if (level.isDebug()) {
-            throw ERROR_FAILED.create();
-         } else {
-            int count = 0;
+      record UpdatedPosition(BlockPos pos, BlockState oldState) {
+      }
 
-            for (BlockPos pos : BlockPos.betweenClosed(region.minX(), region.minY(), region.minZ(), region.maxX(), region.maxY(), region.maxZ())) {
-               if (predicate == null || predicate.test(new BlockInWorld(level, pos, true))) {
-                  BlockState oldState = level.getBlockState(pos);
-                  boolean affected = false;
-                  if (mode.affector.affect(level, pos)) {
-                     affected = true;
-                  }
+      List<UpdatedPosition> updatePositions = Lists.newArrayList();
+      ServerLevel level = source.getLevel();
+      if (level.isDebug()) {
+         throw ERROR_FAILED.create();
+      }
 
-                  BlockInput block = mode.filter.filter(region, pos, target, level);
-                  if (block == null) {
-                     if (affected) {
-                        count++;
-                     }
-                  } else if (!block.place(level, pos, 2 | (strict ? 816 : 256))) {
-                     if (affected) {
-                        count++;
-                     }
-                  } else {
-                     if (!strict) {
-                        updatePositions.add(new UpdatedPosition(pos.immutable(), oldState));
-                     }
+      int count = 0;
 
-                     count++;
-                  }
+      for (BlockPos pos : BlockPos.betweenClosed(region.minX(), region.minY(), region.minZ(), region.maxX(), region.maxY(), region.maxZ())) {
+         if (predicate == null || predicate.test(new BlockInWorld(level, pos, true))) {
+            BlockState oldState = level.getBlockState(pos);
+            boolean affected = false;
+            if (mode.affector.affect(level, pos)) {
+               affected = true;
+            }
+
+            BlockInput block = mode.filter.filter(region, pos, target, level);
+            if (block == null) {
+               if (affected) {
+                  count++;
                }
-            }
-
-            for (UpdatedPosition posx : updatePositions) {
-               level.updateNeighboursOnBlockSet(posx.pos, posx.oldState);
-            }
-
-            if (count == 0) {
-               throw ERROR_FAILED.create();
+            } else if (!block.place(level, pos, 2 | (strict ? 816 : 256))) {
+               if (affected) {
+                  count++;
+               }
             } else {
-               int finalCount = count;
-               source.sendSuccess(() -> Component.translatable("commands.fill.success", finalCount), true);
-               return count;
+               if (!strict) {
+                  updatePositions.add(new UpdatedPosition(pos.immutable(), oldState));
+               }
+
+               count++;
             }
          }
       }
+
+      for (UpdatedPosition pos : updatePositions) {
+         level.updateNeighboursOnBlockSet(pos.pos, pos.oldState);
+      }
+
+      if (count == 0) {
+         throw ERROR_FAILED.create();
+      }
+
+      int finalCount = count;
+      source.sendSuccess(() -> Component.translatable("commands.fill.success", finalCount), true);
+      return count;
    }
 
    @FunctionalInterface
@@ -243,40 +241,39 @@ public class FillCommand {
    public interface Filter {
       FillCommand.Filter NOOP = (r, p, b, l) -> b;
 
-      @Nullable
-      BlockInput filter(final BoundingBox region, final BlockPos pos, final BlockInput block, final ServerLevel level);
+      @Nullable BlockInput filter(final BoundingBox region, final BlockPos pos, final BlockInput block, final ServerLevel level);
    }
 
-   private static enum Mode {
+   private enum Mode {
       REPLACE(FillCommand.Affector.NOOP, FillCommand.Filter.NOOP),
       OUTLINE(
          FillCommand.Affector.NOOP,
          (r, p, b, l) -> p.getX() != r.minX()
-                  && p.getX() != r.maxX()
-                  && p.getY() != r.minY()
-                  && p.getY() != r.maxY()
-                  && p.getZ() != r.minZ()
-                  && p.getZ() != r.maxZ()
-               ? null
-               : b
+               && p.getX() != r.maxX()
+               && p.getY() != r.minY()
+               && p.getY() != r.maxY()
+               && p.getZ() != r.minZ()
+               && p.getZ() != r.maxZ()
+            ? null
+            : b
       ),
       HOLLOW(
          FillCommand.Affector.NOOP,
          (r, p, b, l) -> p.getX() != r.minX()
-                  && p.getX() != r.maxX()
-                  && p.getY() != r.minY()
-                  && p.getY() != r.maxY()
-                  && p.getZ() != r.minZ()
-                  && p.getZ() != r.maxZ()
-               ? FillCommand.HOLLOW_CORE
-               : b
+               && p.getX() != r.maxX()
+               && p.getY() != r.minY()
+               && p.getY() != r.maxY()
+               && p.getZ() != r.minZ()
+               && p.getZ() != r.maxZ()
+            ? FillCommand.HOLLOW_CORE
+            : b
       ),
       DESTROY((l, p) -> l.destroyBlock(p, true), FillCommand.Filter.NOOP);
 
       public final FillCommand.Filter filter;
       public final FillCommand.Affector affector;
 
-      private Mode(final FillCommand.Affector affector, final FillCommand.Filter filter) {
+      Mode(final FillCommand.Affector affector, final FillCommand.Filter filter) {
          this.affector = affector;
          this.filter = filter;
       }
@@ -284,7 +281,6 @@ public class FillCommand {
 
    @FunctionalInterface
    private interface NullableCommandFunction<T, R> {
-      @Nullable
-      R apply(T t) throws CommandSyntaxException;
+      @Nullable R apply(T t) throws CommandSyntaxException;
    }
 }

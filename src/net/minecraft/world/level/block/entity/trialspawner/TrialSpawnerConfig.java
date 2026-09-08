@@ -30,38 +30,38 @@ public record TrialSpawnerConfig(
    public static final TrialSpawnerConfig DEFAULT = builder().build();
    public static final Codec<TrialSpawnerConfig> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.intRange(1, 128).optionalFieldOf("spawn_range", DEFAULT.spawnRange).forGetter(TrialSpawnerConfig::spawnRange),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs", DEFAULT.totalMobs).forGetter(TrialSpawnerConfig::totalMobs),
-               Codec.floatRange(0.0F, Float.MAX_VALUE)
-                  .optionalFieldOf("simultaneous_mobs", DEFAULT.simultaneousMobs)
-                  .forGetter(TrialSpawnerConfig::simultaneousMobs),
-               Codec.floatRange(0.0F, Float.MAX_VALUE)
-                  .optionalFieldOf("total_mobs_added_per_player", DEFAULT.totalMobsAddedPerPlayer)
-                  .forGetter(TrialSpawnerConfig::totalMobsAddedPerPlayer),
-               Codec.floatRange(0.0F, Float.MAX_VALUE)
-                  .optionalFieldOf("simultaneous_mobs_added_per_player", DEFAULT.simultaneousMobsAddedPerPlayer)
-                  .forGetter(TrialSpawnerConfig::simultaneousMobsAddedPerPlayer),
-               Codec.intRange(0, Integer.MAX_VALUE)
-                  .optionalFieldOf("ticks_between_spawn", DEFAULT.ticksBetweenSpawn)
-                  .forGetter(TrialSpawnerConfig::ticksBetweenSpawn),
-               SpawnData.LIST_CODEC.optionalFieldOf("spawn_potentials", WeightedList.of()).forGetter(TrialSpawnerConfig::spawnPotentialsDefinition),
-               WeightedList.codec(LootTable.KEY_CODEC)
-                  .optionalFieldOf("loot_tables_to_eject", DEFAULT.lootTablesToEject)
-                  .forGetter(TrialSpawnerConfig::lootTablesToEject),
-               LootTable.KEY_CODEC
-                  .optionalFieldOf("items_to_drop_when_ominous", DEFAULT.itemsToDropWhenOminous)
-                  .forGetter(TrialSpawnerConfig::itemsToDropWhenOminous)
-            )
-            .apply(i, TrialSpawnerConfig::new)
+            Codec.intRange(1, 128).optionalFieldOf("spawn_range", DEFAULT.spawnRange).forGetter(TrialSpawnerConfig::spawnRange),
+            Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs", DEFAULT.totalMobs).forGetter(TrialSpawnerConfig::totalMobs),
+            Codec.floatRange(0.0F, Float.MAX_VALUE)
+               .optionalFieldOf("simultaneous_mobs", DEFAULT.simultaneousMobs)
+               .forGetter(TrialSpawnerConfig::simultaneousMobs),
+            Codec.floatRange(0.0F, Float.MAX_VALUE)
+               .optionalFieldOf("total_mobs_added_per_player", DEFAULT.totalMobsAddedPerPlayer)
+               .forGetter(TrialSpawnerConfig::totalMobsAddedPerPlayer),
+            Codec.floatRange(0.0F, Float.MAX_VALUE)
+               .optionalFieldOf("simultaneous_mobs_added_per_player", DEFAULT.simultaneousMobsAddedPerPlayer)
+               .forGetter(TrialSpawnerConfig::simultaneousMobsAddedPerPlayer),
+            Codec.intRange(0, Integer.MAX_VALUE)
+               .optionalFieldOf("ticks_between_spawn", DEFAULT.ticksBetweenSpawn)
+               .forGetter(TrialSpawnerConfig::ticksBetweenSpawn),
+            SpawnData.LIST_CODEC.optionalFieldOf("spawn_potentials", WeightedList.of()).forGetter(TrialSpawnerConfig::spawnPotentialsDefinition),
+            WeightedList.codec(LootTable.KEY_CODEC)
+               .optionalFieldOf("loot_tables_to_eject", DEFAULT.lootTablesToEject)
+               .forGetter(TrialSpawnerConfig::lootTablesToEject),
+            LootTable.KEY_CODEC
+               .optionalFieldOf("items_to_drop_when_ominous", DEFAULT.itemsToDropWhenOminous)
+               .forGetter(TrialSpawnerConfig::itemsToDropWhenOminous)
+         )
+         .apply(i, TrialSpawnerConfig::new)
    );
    public static final Codec<Holder<TrialSpawnerConfig>> CODEC = RegistryCodecs.holder(Registries.TRIAL_SPAWNER_CONFIG, DIRECT_CODEC);
 
    public int calculateTargetTotalMobs(final int additionalPlayers) {
-      return (int)Math.floor((double)(this.totalMobs + this.totalMobsAddedPerPlayer * (float)additionalPlayers));
+      return (int)Math.floor(this.totalMobs + this.totalMobsAddedPerPlayer * additionalPlayers);
    }
 
    public int calculateTargetSimultaneousMobs(final int additionalPlayers) {
-      return (int)Math.floor((double)(this.simultaneousMobs + this.simultaneousMobsAddedPerPlayer * (float)additionalPlayers));
+      return (int)Math.floor(this.simultaneousMobs + this.simultaneousMobsAddedPerPlayer * additionalPlayers);
    }
 
    public long ticksBetweenItemSpawners() {

@@ -54,9 +54,8 @@ public class SkinReport extends Report {
          return StringUtils.isNotEmpty(this.comments()) || this.reason() != null;
       }
 
-      @Nullable
       @Override
-      public Report.CannotBuildReason checkBuildable() {
+      public Report.@Nullable CannotBuildReason checkBuildable() {
          if (this.report.reason == null) {
             return Report.CannotBuildReason.NO_REASON;
          } else {
@@ -69,14 +68,14 @@ public class SkinReport extends Report {
          Report.CannotBuildReason error = this.checkBuildable();
          if (error != null) {
             return Either.right(error);
-         } else {
-            String reason = Objects.requireNonNull(this.report.reason).backendName();
-            ReportedEntity reportedEntity = new ReportedEntity(this.report.reportedProfileId);
-            PlayerSkin skin = this.report.skinGetter.get();
-            String skinUrl = skin.body() instanceof ClientAsset.DownloadedTexture downloadedTexture ? downloadedTexture.url() : null;
-            AbuseReport abuseReport = AbuseReport.skin(this.report.comments, reason, skinUrl, reportedEntity, this.report.createdAt);
-            return Either.left(new Report.Result(this.report.reportId, ReportType.SKIN, abuseReport));
          }
+
+         String reason = Objects.requireNonNull(this.report.reason).backendName();
+         ReportedEntity reportedEntity = new ReportedEntity(this.report.reportedProfileId);
+         PlayerSkin skin = this.report.skinGetter.get();
+         String skinUrl = skin.body() instanceof ClientAsset.DownloadedTexture downloadedTexture ? downloadedTexture.url() : null;
+         AbuseReport abuseReport = AbuseReport.skin(this.report.comments, reason, skinUrl, reportedEntity, this.report.createdAt);
+         return Either.left(new Report.Result(this.report.reportId, ReportType.SKIN, abuseReport));
       }
    }
 }

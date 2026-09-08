@@ -9,8 +9,7 @@ public class SingleThreadedRandomSource implements BitRandomSource {
    private static final long MULTIPLIER = 25214903917L;
    private static final long INCREMENT = 11L;
    private long seed;
-   @Nullable
-   private MarsagliaPolarGaussian gaussianSource;
+   private @Nullable MarsagliaPolarGaussian gaussianSource;
 
    public SingleThreadedRandomSource(final long seed) {
       this.setSeed(seed);

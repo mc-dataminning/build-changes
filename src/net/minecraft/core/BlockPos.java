@@ -104,9 +104,9 @@ public class BlockPos extends Vec3i {
 
    public static long asLong(final int x, final int y, final int z) {
       long node = 0L;
-      node |= ((long)x & PACKED_X_MASK) << X_OFFSET;
-      node |= ((long)y & PACKED_Y_MASK) << 0;
-      return node | ((long)z & PACKED_Z_MASK) << Z_OFFSET;
+      node |= (x & PACKED_X_MASK) << X_OFFSET;
+      node |= (y & PACKED_Y_MASK) << 0;
+      return node | (z & PACKED_Z_MASK) << Z_OFFSET;
    }
 
    public static long getFlatIndex(final long neighborBlockNode) {
@@ -194,12 +194,12 @@ public class BlockPos extends Vec3i {
    public BlockPos relative(final Direction.Axis axis, final int steps) {
       if (steps == 0) {
          return this;
-      } else {
-         int xStep = axis == Direction.Axis.X ? steps : 0;
-         int yStep = axis == Direction.Axis.Y ? steps : 0;
-         int zStep = axis == Direction.Axis.Z ? steps : 0;
-         return new BlockPos(this.getX() + xStep, this.getY() + yStep, this.getZ() + zStep);
       }
+
+      int xStep = axis == Direction.Axis.X ? steps : 0;
+      int yStep = axis == Direction.Axis.Y ? steps : 0;
+      int zStep = axis == Direction.Axis.Z ? steps : 0;
+      return new BlockPos(this.getX() + xStep, this.getY() + yStep, this.getZ() + zStep);
    }
 
    public BlockPos rotate(final Rotation rotation) {
@@ -233,9 +233,9 @@ public class BlockPos extends Vec3i {
 
    public Vec3 clampLocationWithin(final Vec3 location) {
       return new Vec3(
-         Mth.clamp(location.x, (double)((float)this.getX() + 1.0E-5F), (double)this.getX() + 1.0 - 1.0E-5F),
-         Mth.clamp(location.y, (double)((float)this.getY() + 1.0E-5F), (double)this.getY() + 1.0 - 1.0E-5F),
-         Mth.clamp(location.z, (double)((float)this.getZ() + 1.0E-5F), (double)this.getZ() + 1.0 - 1.0E-5F)
+         Mth.clamp(location.x, this.getX() + 1.0E-5F, this.getX() + 1.0 - 1.0E-5F),
+         Mth.clamp(location.y, this.getY() + 1.0E-5F, this.getY() + 1.0 - 1.0E-5F),
+         Mth.clamp(location.z, this.getZ() + 1.0E-5F, this.getZ() + 1.0 - 1.0E-5F)
       );
    }
 
@@ -259,19 +259,19 @@ public class BlockPos extends Vec3i {
       int height = maxY - minY + 1;
       int depth = maxZ - minZ + 1;
       return () -> new AbstractIterator<BlockPos>() {
-            private final BlockPos.MutableBlockPos nextPos = new BlockPos.MutableBlockPos();
-            private int counter = limit;
+         private final BlockPos.MutableBlockPos nextPos = new BlockPos.MutableBlockPos();
+         private int counter = limit;
 
-            protected BlockPos computeNext() {
-               if (this.counter <= 0) {
-                  return (BlockPos)this.endOfData();
-               } else {
-                  BlockPos next = this.nextPos.set(minX + random.nextInt(width), minY + random.nextInt(height), minZ + random.nextInt(depth));
-                  this.counter--;
-                  return next;
-               }
+         protected BlockPos computeNext() {
+            if (this.counter <= 0) {
+               return (BlockPos)this.endOfData();
             }
-         };
+
+            BlockPos next = this.nextPos.set(minX + random.nextInt(width), minY + random.nextInt(height), minZ + random.nextInt(depth));
+            this.counter--;
+            return next;
+         }
+      };
    }
 
    public static Iterable<BlockPos> withinManhattan(final BlockPos origin, final int reach) {
@@ -291,52 +291,51 @@ public class BlockPos extends Vec3i {
       int originY = origin.getY();
       int originZ = origin.getZ();
       return () -> new AbstractIterator<BlockPos>() {
-            private final BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
-            private int currentDepth;
-            private int maxX;
-            private int maxY;
-            private int x;
-            private int y;
-            private boolean zMirror;
+         private final BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
+         private int currentDepth;
+         private int maxX;
+         private int maxY;
+         private int x;
+         private int y;
+         private boolean zMirror;
 
-            @Nullable
-            protected BlockPos computeNext() {
-               if (this.zMirror) {
-                  this.zMirror = false;
-                  this.cursor.setZ(originZ - (this.cursor.getZ() - originZ));
-                  return this.cursor;
-               } else {
-                  BlockPos found;
-                  for (found = null; found == null; this.y++) {
-                     if (this.y > this.maxY) {
-                        this.x++;
-                        if (this.x > this.maxX) {
-                           this.currentDepth++;
-                           if (this.currentDepth > maxDepth) {
-                              return (BlockPos)this.endOfData();
-                           }
+         protected @Nullable BlockPos computeNext() {
+            if (this.zMirror) {
+               this.zMirror = false;
+               this.cursor.setZ(originZ - (this.cursor.getZ() - originZ));
+               return this.cursor;
+            }
 
-                           this.maxX = Math.min(reachX, this.currentDepth);
-                           this.x = -this.maxX;
-                        }
-
-                        this.maxY = Math.min(reachY, this.currentDepth - Math.abs(this.x));
-                        this.y = -this.maxY;
+            BlockPos found;
+            for (found = null; found == null; this.y++) {
+               if (this.y > this.maxY) {
+                  this.x++;
+                  if (this.x > this.maxX) {
+                     this.currentDepth++;
+                     if (this.currentDepth > maxDepth) {
+                        return (BlockPos)this.endOfData();
                      }
 
-                     int xx = this.x;
-                     int yy = this.y;
-                     int zz = this.currentDepth - Math.abs(xx) - Math.abs(yy);
-                     if (zz <= reachZ) {
-                        this.zMirror = zz != 0;
-                        found = this.cursor.set(originX + xx, originY + yy, originZ + zz);
-                     }
+                     this.maxX = Math.min(reachX, this.currentDepth);
+                     this.x = -this.maxX;
                   }
 
-                  return found;
+                  this.maxY = Math.min(reachY, this.currentDepth - Math.abs(this.x));
+                  this.y = -this.maxY;
+               }
+
+               int xx = this.x;
+               int yy = this.y;
+               int zz = this.currentDepth - Math.abs(xx) - Math.abs(yy);
+               if (zz <= reachZ) {
+                  this.zMirror = zz != 0;
+                  found = this.cursor.set(originX + xx, originY + yy, originZ + zz);
                }
             }
-         };
+
+            return found;
+         }
+      };
    }
 
    public static Iterable<BlockPos> betweenClosed(final AABB box) {
@@ -385,22 +384,22 @@ public class BlockPos extends Vec3i {
       int depth = maxZ - minZ + 1;
       int end = width * height * depth;
       return () -> new AbstractIterator<BlockPos>() {
-            private final BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
-            private int index;
+         private final BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
+         private int index;
 
-            protected BlockPos computeNext() {
-               if (this.index == end) {
-                  return (BlockPos)this.endOfData();
-               } else {
-                  int x = this.index % width;
-                  int slice = this.index / width;
-                  int y = slice % height;
-                  int z = slice / height;
-                  this.index++;
-                  return this.cursor.set(minX + x, minY + y, minZ + z);
-               }
+         protected BlockPos computeNext() {
+            if (this.index == end) {
+               return (BlockPos)this.endOfData();
             }
-         };
+
+            int x = this.index % width;
+            int slice = this.index / width;
+            int y = slice % height;
+            int z = slice / height;
+            this.index++;
+            return this.cursor.set(minX + x, minY + y, minZ + z);
+         }
+      };
    }
 
    public static Iterable<BlockPos> neighborColumn(final int startX, final int startY, final int startZ, final int endY) {
@@ -411,21 +410,21 @@ public class BlockPos extends Vec3i {
       };
       int stepCount = steps.length * height;
       return () -> new AbstractIterator<BlockPos>() {
-            private final BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
-            private int index;
+         private final BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
+         private int index;
 
-            protected BlockPos computeNext() {
-               if (this.index == stepCount) {
-                  return (BlockPos)this.endOfData();
-               } else {
-                  int y = this.index % height;
-                  int stepIndex = this.index / height;
-                  Vec3i step = steps[stepIndex];
-                  this.index++;
-                  return this.cursor.set(startX + step.getX(), startY + y * yDirection, startZ + step.getZ());
-               }
+         protected BlockPos computeNext() {
+            if (this.index == stepCount) {
+               return (BlockPos)this.endOfData();
             }
-         };
+
+            int y = this.index % height;
+            int stepIndex = this.index / height;
+            Vec3i step = steps[stepIndex];
+            this.index++;
+            return this.cursor.set(startX + step.getX(), startY + y * yDirection, startZ + step.getZ());
+         }
+      };
    }
 
    public static Iterable<BlockPos.MutableBlockPos> spiralAround(
@@ -433,37 +432,35 @@ public class BlockPos extends Vec3i {
    ) {
       Validate.validState(firstDirection.getAxis() != secondDirection.getAxis(), "The two directions cannot be on the same axis", new Object[0]);
       return () -> new AbstractIterator<BlockPos.MutableBlockPos>() {
-            private final Direction[] directions = new Direction[]{
-               firstDirection, secondDirection, firstDirection.getOpposite(), secondDirection.getOpposite()
-            };
-            private final BlockPos.MutableBlockPos cursor = center.mutable().move(secondDirection);
-            private final int legs = 4 * radius;
-            private int leg = -1;
-            private int legSize;
-            private int legIndex;
-            private int lastX = this.cursor.getX();
-            private int lastY = this.cursor.getY();
-            private int lastZ = this.cursor.getZ();
+         private final Direction[] directions = new Direction[]{firstDirection, secondDirection, firstDirection.getOpposite(), secondDirection.getOpposite()};
+         private final BlockPos.MutableBlockPos cursor = center.mutable().move(secondDirection);
+         private final int legs = 4 * radius;
+         private int leg = -1;
+         private int legSize;
+         private int legIndex;
+         private int lastX = this.cursor.getX();
+         private int lastY = this.cursor.getY();
+         private int lastZ = this.cursor.getZ();
 
-            protected BlockPos.MutableBlockPos computeNext() {
-               this.cursor.set(this.lastX, this.lastY, this.lastZ).move(this.directions[(this.leg + 4) % 4]);
-               this.lastX = this.cursor.getX();
-               this.lastY = this.cursor.getY();
-               this.lastZ = this.cursor.getZ();
-               if (this.legIndex >= this.legSize) {
-                  if (this.leg >= this.legs) {
-                     return (BlockPos.MutableBlockPos)this.endOfData();
-                  }
-
-                  this.leg++;
-                  this.legIndex = 0;
-                  this.legSize = this.leg / 2 + 1;
+         protected BlockPos.MutableBlockPos computeNext() {
+            this.cursor.set(this.lastX, this.lastY, this.lastZ).move(this.directions[(this.leg + 4) % 4]);
+            this.lastX = this.cursor.getX();
+            this.lastY = this.cursor.getY();
+            this.lastZ = this.cursor.getZ();
+            if (this.legIndex >= this.legSize) {
+               if (this.leg >= this.legs) {
+                  return (BlockPos.MutableBlockPos)this.endOfData();
                }
 
-               this.legIndex++;
-               return this.cursor;
+               this.leg++;
+               this.legIndex = 0;
+               this.legSize = this.leg / 2 + 1;
             }
-         };
+
+            this.legIndex++;
+            return this.cursor;
+         }
+      };
    }
 
    public static int breadthFirstTraversal(
@@ -557,48 +554,48 @@ public class BlockPos extends Vec3i {
       int secondMax = secondVisitAxis.choose(diffX, diffY, diffZ);
       int thirdMax = thirdVisitAxis.choose(diffX, diffY, diffZ);
       return () -> new AbstractIterator<BlockPos>() {
-            private final BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
-            private int firstIndex;
-            private int secondIndex;
-            private int thirdIndex;
-            private boolean end;
-            private final int firstDirX = firstVisitDir.getStepX();
-            private final int firstDirY = firstVisitDir.getStepY();
-            private final int firstDirZ = firstVisitDir.getStepZ();
-            private final int secondDirX = secondVisitDir.getStepX();
-            private final int secondDirY = secondVisitDir.getStepY();
-            private final int secondDirZ = secondVisitDir.getStepZ();
-            private final int thirdDirX = thirdVisitDir.getStepX();
-            private final int thirdDirY = thirdVisitDir.getStepY();
-            private final int thirdDirZ = thirdVisitDir.getStepZ();
+         private final BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
+         private int firstIndex;
+         private int secondIndex;
+         private int thirdIndex;
+         private boolean end;
+         private final int firstDirX = firstVisitDir.getStepX();
+         private final int firstDirY = firstVisitDir.getStepY();
+         private final int firstDirZ = firstVisitDir.getStepZ();
+         private final int secondDirX = secondVisitDir.getStepX();
+         private final int secondDirY = secondVisitDir.getStepY();
+         private final int secondDirZ = secondVisitDir.getStepZ();
+         private final int thirdDirX = thirdVisitDir.getStepX();
+         private final int thirdDirY = thirdVisitDir.getStepY();
+         private final int thirdDirZ = thirdVisitDir.getStepZ();
 
-            protected BlockPos computeNext() {
-               if (this.end) {
-                  return (BlockPos)this.endOfData();
-               } else {
-                  this.cursor
-                     .set(
-                        startCornerX + this.firstDirX * this.firstIndex + this.secondDirX * this.secondIndex + this.thirdDirX * this.thirdIndex,
-                        startCornerY + this.firstDirY * this.firstIndex + this.secondDirY * this.secondIndex + this.thirdDirY * this.thirdIndex,
-                        startCornerZ + this.firstDirZ * this.firstIndex + this.secondDirZ * this.secondIndex + this.thirdDirZ * this.thirdIndex
-                     );
-                  if (this.thirdIndex < thirdMax) {
-                     this.thirdIndex++;
-                  } else if (this.secondIndex < secondMax) {
-                     this.secondIndex++;
-                     this.thirdIndex = 0;
-                  } else if (this.firstIndex < firstMax) {
-                     this.firstIndex++;
-                     this.thirdIndex = 0;
-                     this.secondIndex = 0;
-                  } else {
-                     this.end = true;
-                  }
-
-                  return this.cursor;
-               }
+         protected BlockPos computeNext() {
+            if (this.end) {
+               return (BlockPos)this.endOfData();
             }
-         };
+
+            this.cursor
+               .set(
+                  startCornerX + this.firstDirX * this.firstIndex + this.secondDirX * this.secondIndex + this.thirdDirX * this.thirdIndex,
+                  startCornerY + this.firstDirY * this.firstIndex + this.secondDirY * this.secondIndex + this.thirdDirY * this.thirdIndex,
+                  startCornerZ + this.firstDirZ * this.firstIndex + this.secondDirZ * this.secondIndex + this.thirdDirZ * this.thirdIndex
+               );
+            if (this.thirdIndex < thirdMax) {
+               this.thirdIndex++;
+            } else if (this.secondIndex < secondMax) {
+               this.secondIndex++;
+               this.thirdIndex = 0;
+            } else if (this.firstIndex < firstMax) {
+               this.firstIndex++;
+               this.thirdIndex = 0;
+               this.secondIndex = 0;
+            } else {
+               this.end = true;
+            }
+
+            return this.cursor;
+         }
+      };
    }
 
    public static class MutableBlockPos extends BlockPos {
@@ -719,7 +716,7 @@ public class BlockPos extends Vec3i {
       }
    }
 
-   public static enum TraversalNodeStatus {
+   public enum TraversalNodeStatus {
       ACCEPT,
       SKIP,
       STOP;

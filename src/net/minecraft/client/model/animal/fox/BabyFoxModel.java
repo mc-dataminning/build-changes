@@ -83,8 +83,8 @@ public class BabyFoxModel extends FoxModel {
       this.head.z += 0.0F;
       this.rightFrontLeg.xRot = (float) (-Math.PI / 12);
       this.leftFrontLeg.xRot = (float) (-Math.PI / 12);
-      this.rightFrontLeg.z--;
-      this.leftFrontLeg.z--;
+      this.rightFrontLeg.z -= 1.5F;
+      this.leftFrontLeg.z -= 1.5F;
       this.rightFrontLeg.x += 0.01F;
       this.leftFrontLeg.x -= 0.01F;
       this.rightHindLeg.z -= 3.75F;
@@ -98,9 +98,9 @@ public class BabyFoxModel extends FoxModel {
       super.setSleepingPose(state);
       this.body.zRot = (float) (-Math.PI / 2);
       this.body.xRot = (float) (-Math.PI / 18);
-      this.body.y++;
-      this.body.z--;
-      this.body.x--;
+      this.body.y += 1.5F;
+      this.body.z -= 1.5F;
+      this.body.x -= 1.5F;
       this.tail.xRot = (float) (-Math.PI * 5.0 / 6.0);
       this.tail.xRot = -2.1816616F;
       this.tail.x -= 0.7F;

@@ -142,7 +142,7 @@ public class CycleButton<T> extends AbstractButton implements ResettableOptionWi
    }
 
    private Component createLabelForValue(final T newValue) {
-      return (Component)(this.displayState == CycleButton.DisplayState.VALUE ? this.valueStringifier.apply(newValue) : this.createFullName(newValue));
+      return this.displayState == CycleButton.DisplayState.VALUE ? this.valueStringifier.apply(newValue) : this.createFullName(newValue);
    }
 
    private MutableComponent createFullName(final T newValue) {
@@ -173,7 +173,7 @@ public class CycleButton<T> extends AbstractButton implements ResettableOptionWi
    }
 
    public MutableComponent createDefaultNarrationMessage() {
-      return wrapDefaultNarrationMessage((Component)(this.displayState == CycleButton.DisplayState.VALUE ? this.createFullName(this.value) : this.getMessage()));
+      return wrapDefaultNarrationMessage(this.displayState == CycleButton.DisplayState.VALUE ? this.createFullName(this.value) : this.getMessage());
    }
 
    public static <T> CycleButton.Builder<T> builder(final Function<T, Component> valueStringifier, final Supplier<T> defaultValueSupplier) {
@@ -258,8 +258,7 @@ public class CycleButton<T> extends AbstractButton implements ResettableOptionWi
       }
 
       public CycleButton<T> create(final int x, final int y, final int width, final int height, final Component name) {
-         return this.create(x, y, width, height, name, (button, value) -> {
-         });
+         return this.create(x, y, width, height, name, (button, value) -> {});
       }
 
       public CycleButton<T> create(
@@ -268,36 +267,34 @@ public class CycleButton<T> extends AbstractButton implements ResettableOptionWi
          List<T> values = this.values.getDefaultList();
          if (values.isEmpty()) {
             throw new IllegalStateException("No values for cycle button");
-         } else {
-            T initialValue = this.defaultValueSupplier.get();
-            int initialIndex = values.indexOf(initialValue);
-            Component valueText = this.valueStringifier.apply(initialValue);
-            Component initialTitle = (Component)(this.displayState == CycleButton.DisplayState.VALUE
-               ? valueText
-               : CommonComponents.optionNameValue(name, valueText));
-            return new CycleButton<>(
-               x,
-               y,
-               width,
-               height,
-               initialTitle,
-               name,
-               initialIndex,
-               initialValue,
-               this.defaultValueSupplier,
-               this.values,
-               this.valueStringifier,
-               this.narrationProvider,
-               valueChangeListener,
-               this.tooltipSupplier,
-               this.displayState,
-               this.spriteSupplier
-            );
          }
+
+         T initialValue = this.defaultValueSupplier.get();
+         int initialIndex = values.indexOf(initialValue);
+         Component valueText = this.valueStringifier.apply(initialValue);
+         Component initialTitle = this.displayState == CycleButton.DisplayState.VALUE ? valueText : CommonComponents.optionNameValue(name, valueText);
+         return new CycleButton<>(
+            x,
+            y,
+            width,
+            height,
+            initialTitle,
+            name,
+            initialIndex,
+            initialValue,
+            this.defaultValueSupplier,
+            this.values,
+            this.valueStringifier,
+            this.narrationProvider,
+            valueChangeListener,
+            this.tooltipSupplier,
+            this.displayState,
+            this.spriteSupplier
+         );
       }
    }
 
-   public static enum DisplayState {
+   public enum DisplayState {
       NAME_AND_VALUE,
       VALUE,
       HIDE;
@@ -310,8 +307,7 @@ public class CycleButton<T> extends AbstractButton implements ResettableOptionWi
 
    @FunctionalInterface
    public interface SpriteSupplier<T> {
-      @Nullable
-      Identifier apply(CycleButton<T> button, T value);
+      @Nullable Identifier apply(CycleButton<T> button, T value);
    }
 
    public interface ValueListSupplier<T> {

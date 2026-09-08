@@ -25,17 +25,17 @@ public class LpVec3 {
       int lowest = input.readUnsignedByte();
       if (lowest == 0) {
          return Vec3.ZERO;
-      } else {
-         int middle = input.readUnsignedByte();
-         long highest = input.readUnsignedInt();
-         long buffer = highest << 16 | (long)(middle << 8) | (long)lowest;
-         long scale = (long)(lowest & 3);
-         if (hasContinuationBit(lowest)) {
-            scale |= ((long)VarInt.read(input) & 4294967295L) << 2;
-         }
-
-         return new Vec3(unpack(buffer >> 3) * (double)scale, unpack(buffer >> 18) * (double)scale, unpack(buffer >> 33) * (double)scale);
       }
+
+      int middle = input.readUnsignedByte();
+      long highest = input.readUnsignedInt();
+      long buffer = highest << 16 | middle << 8 | lowest;
+      long scale = lowest & 3;
+      if (hasContinuationBit(lowest)) {
+         scale |= (VarInt.read(input) & 4294967295L) << 2;
+      }
+
+      return new Vec3(unpack(buffer >> 3) * scale, unpack(buffer >> 18) * scale, unpack(buffer >> 33) * scale);
    }
 
    public static void write(final ByteBuf output, final Vec3 value) {
@@ -49,12 +49,12 @@ public class LpVec3 {
          long scale = Mth.ceilLong(chessboardLength);
          boolean isPartial = (scale & 3L) != scale;
          long markers = isPartial ? scale & 3L | 4L : scale;
-         long xn = pack(x / (double)scale) << 3;
-         long yn = pack(y / (double)scale) << 18;
-         long zn = pack(z / (double)scale) << 33;
+         long xn = pack(x / scale) << 3;
+         long yn = pack(y / scale) << 18;
+         long zn = pack(z / scale) << 33;
          long buffer = markers | xn | yn | zn;
-         output.writeByte((byte)((int)buffer));
-         output.writeByte((byte)((int)(buffer >> 8)));
+         output.writeByte((byte)buffer);
+         output.writeByte((byte)(buffer >> 8));
          output.writeInt((int)(buffer >> 16));
          if (isPartial) {
             VarInt.write(output, (int)(scale >> 2));
@@ -71,6 +71,6 @@ public class LpVec3 {
    }
 
    private static double unpack(final long value) {
-      return Math.min((double)(value & 32767L), 32766.0) * 2.0 / 32766.0 - 1.0;
+      return Math.min(value & 32767L, 32766.0) * 2.0 / 32766.0 - 1.0;
    }
 }

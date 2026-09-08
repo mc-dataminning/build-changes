@@ -15,7 +15,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 public record WeightedRandomSelectorFeature(WeightedList<Holder<PlacedFeature>> features) implements Feature {
    public static final MapCodec<WeightedRandomSelectorFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(WeightedList.codec(PlacedFeature.CODEC).fieldOf("features").forGetter(WeightedRandomSelectorFeature::features))
-            .apply(i, WeightedRandomSelectorFeature::new)
+         .apply(i, WeightedRandomSelectorFeature::new)
    );
 
    @Override

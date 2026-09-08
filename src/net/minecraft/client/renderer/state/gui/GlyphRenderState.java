@@ -27,9 +27,8 @@ public record GlyphRenderState(Matrix3x2fc pose, TextRenderable renderable, @Nul
       return TextureSetup.singleTextureWithLightmap(this.renderable.textureView(), RenderSystem.getSamplerCache().getClampToEdge(FilterMode.NEAREST));
    }
 
-   @Nullable
    @Override
-   public ScreenRectangle bounds() {
+   public @Nullable ScreenRectangle bounds() {
       return null;
    }
 }

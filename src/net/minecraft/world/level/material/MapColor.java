@@ -2,9 +2,10 @@ package net.minecraft.world.level.material;
 
 import com.google.common.base.Preconditions;
 import net.minecraft.util.ARGB;
+import org.jspecify.annotations.Nullable;
 
 public class MapColor {
-   private static final MapColor[] MATERIAL_COLORS = new MapColor[64];
+   private static final @Nullable MapColor[] MATERIAL_COLORS = new MapColor[64];
    public static final MapColor NONE = new MapColor(0, 0);
    public static final MapColor GRASS = new MapColor(1, 8368696);
    public static final MapColor SAND = new MapColor(2, 16247203);
@@ -103,7 +104,7 @@ public class MapColor {
       return (byte)(this.id << 2 | brightness.id & 3);
    }
 
-   public static enum Brightness {
+   public enum Brightness {
       LOW(0, 180),
       NORMAL(1, 220),
       HIGH(2, 255),
@@ -113,7 +114,7 @@ public class MapColor {
       public final int id;
       public final int modifier;
 
-      private Brightness(final int id, final int modifier) {
+      Brightness(final int id, final int modifier) {
          this.id = id;
          this.modifier = modifier;
       }

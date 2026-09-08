@@ -32,7 +32,7 @@ public class RconClient extends GenericThread {
 
       try {
          this.client.setSoTimeout(0);
-      } catch (Exception var5) {
+      } catch (Exception ignored) {
          this.running = false;
       }
 
@@ -68,8 +68,8 @@ public class RconClient extends GenericThread {
 
                         try {
                            this.sendCmdResponse(requestid, this.serverInterface.runCommand(command));
-                        } catch (Exception var14) {
-                           this.sendCmdResponse(requestid, "Error executing: " + command + " (" + var14.getMessage() + ")");
+                        } catch (Exception e) {
+                           this.sendCmdResponse(requestid, "Error executing: " + command + " (" + e.getMessage() + ")");
                         }
                         break;
                      }
@@ -95,8 +95,8 @@ public class RconClient extends GenericThread {
 
             return;
          } catch (IOException var15) {
-         } catch (Exception var16) {
-            LOGGER.error("Exception whilst parsing RCON input", var16);
+         } catch (Exception e) {
+            LOGGER.error("Exception whilst parsing RCON input", e);
          }
       } finally {
          this.closeSocket();
@@ -143,8 +143,8 @@ public class RconClient extends GenericThread {
    private void closeSocket() {
       try {
          this.client.close();
-      } catch (IOException var2) {
-         LOGGER.warn("Failed to close socket", var2);
+      } catch (IOException e) {
+         LOGGER.warn("Failed to close socket", e);
       }
    }
 }

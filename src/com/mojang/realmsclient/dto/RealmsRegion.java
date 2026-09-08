@@ -41,13 +41,12 @@ public enum RealmsRegion {
    public final String nameId;
    public final String translationKey;
 
-   private RealmsRegion(final String nameId, final String translationKey) {
+   RealmsRegion(final String nameId, final String translationKey) {
       this.nameId = nameId;
       this.translationKey = translationKey;
    }
 
-   @Nullable
-   public static RealmsRegion findByNameId(final String nameIdStr) {
+   public static @Nullable RealmsRegion findByNameId(final String nameIdStr) {
       for (RealmsRegion value : values()) {
          if (value.nameId.equals(nameIdStr)) {
             return value;

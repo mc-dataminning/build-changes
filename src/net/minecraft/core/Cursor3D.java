@@ -30,14 +30,14 @@ public class Cursor3D {
    public boolean advance() {
       if (this.index == this.end) {
          return false;
-      } else {
-         this.x = this.index % this.width;
-         int slice = this.index / this.width;
-         this.y = slice % this.height;
-         this.z = slice / this.height;
-         this.index++;
-         return true;
       }
+
+      this.x = this.index % this.width;
+      int slice = this.index / this.width;
+      this.y = slice % this.height;
+      this.z = slice / this.height;
+      this.index++;
+      return true;
    }
 
    public int nextX() {

@@ -49,15 +49,12 @@ public abstract class Projectile extends Entity implements TraceableEntity {
    private static final String TAG_LEFT_OWNER = "LeftOwner";
    private static final String TAG_HAS_BEEN_SHOT = "HasBeenShot";
    private static final String TAG_CAN_BREAK = "can_break";
-   @Nullable
-   protected EntityReference<Entity> owner;
-   @Nullable
-   private AdventureModePredicate canBreak;
+   protected @Nullable EntityReference<Entity> owner;
+   private @Nullable AdventureModePredicate canBreak;
    private boolean leftOwner = false;
    private boolean leftOwnerChecked;
    private boolean hasBeenShot = false;
-   @Nullable
-   private Entity lastDeflectedBy;
+   private @Nullable Entity lastDeflectedBy;
 
    protected Projectile(final EntityType<? extends Projectile> type, final Level level) {
       super(type, level);
@@ -79,17 +76,16 @@ public abstract class Projectile extends Entity implements TraceableEntity {
       }
    }
 
-   protected void setOwner(@Nullable final EntityReference<Entity> owner) {
+   protected void setOwner(final @Nullable EntityReference<Entity> owner) {
       this.owner = owner;
    }
 
-   public void setOwner(@Nullable final Entity owner) {
+   public void setOwner(final @Nullable Entity owner) {
       this.setOwner(EntityReference.of(owner));
    }
 
-   @Nullable
    @Override
-   public Entity getOwner() {
+   public @Nullable Entity getOwner() {
       return EntityReference.getEntity(this.owner, this.level());
    }
 
@@ -166,11 +162,11 @@ public abstract class Projectile extends Entity implements TraceableEntity {
       return new Vec3(xd, yd, zd)
          .normalize()
          .add(
-            this.random.triangle(0.0, 0.0172275 * (double)uncertainty),
-            this.random.triangle(0.0, 0.0172275 * (double)uncertainty),
-            this.random.triangle(0.0, 0.0172275 * (double)uncertainty)
+            this.random.triangle(0.0, 0.0172275 * uncertainty),
+            this.random.triangle(0.0, 0.0172275 * uncertainty),
+            this.random.triangle(0.0, 0.0172275 * uncertainty)
          )
-         .scale((double)pow);
+         .scale(pow);
    }
 
    public void shoot(final double xd, final double yd, final double zd, final float pow, final float uncertainty) {
@@ -185,10 +181,10 @@ public abstract class Projectile extends Entity implements TraceableEntity {
    }
 
    public void shootFromRotation(final Entity source, final float xRot, final float yRot, final float yOffset, final float pow, final float uncertainty) {
-      float xd = -Mth.sin((double)(yRot * (float) (Math.PI / 180.0))) * Mth.cos((double)(xRot * (float) (Math.PI / 180.0)));
-      float yd = -Mth.sin((double)((xRot + yOffset) * (float) (Math.PI / 180.0)));
-      float zd = Mth.cos((double)(yRot * (float) (Math.PI / 180.0))) * Mth.cos((double)(xRot * (float) (Math.PI / 180.0)));
-      this.shoot((double)xd, (double)yd, (double)zd, pow, uncertainty);
+      float xd = -Mth.sin(yRot * (float) (Math.PI / 180.0)) * Mth.cos(xRot * (float) (Math.PI / 180.0));
+      float yd = -Mth.sin((xRot + yOffset) * (float) (Math.PI / 180.0));
+      float zd = Mth.cos(yRot * (float) (Math.PI / 180.0)) * Mth.cos(xRot * (float) (Math.PI / 180.0));
+      this.shoot(xd, yd, zd, pow, uncertainty);
       Vec3 sourceMovement = source.getKnownMovement();
       this.setDeltaMovement(this.getDeltaMovement().add(sourceMovement.x, source.onGround() ? 0.0 : sourceMovement.y, sourceMovement.z));
    }
@@ -210,15 +206,9 @@ public abstract class Projectile extends Entity implements TraceableEntity {
    public boolean canBreakBlockInAdventureMode(final ServerLevel level, final BlockInWorld blockInWorld) {
       Entity owner = this.getOwner();
       GameType worldGameMode = level.getServer().getDefaultGameType();
-      if (owner == null && worldGameMode != GameType.ADVENTURE) {
-         return true;
-      } else {
-         if (owner instanceof Player player && player.gameMode() != GameType.ADVENTURE) {
-            return true;
-         }
-
-         return this.canBreak != null && this.canBreak.test(blockInWorld);
-      }
+      return (owner != null || worldGameMode == GameType.ADVENTURE) && !(owner instanceof Player player && player.gameMode() != GameType.ADVENTURE)
+         ? this.canBreak != null && this.canBreak.test(blockInWorld)
+         : true;
    }
 
    public static <T extends Projectile> T spawnProjectileFromRotation(
@@ -268,8 +258,7 @@ public abstract class Projectile extends Entity implements TraceableEntity {
    }
 
    public static <T extends Projectile> T spawnProjectile(final T projectile, final ServerLevel serverLevel, final ItemStack itemStack) {
-      return spawnProjectile(projectile, serverLevel, itemStack, ignored -> {
-      });
+      return spawnProjectile(projectile, serverLevel, itemStack, ignored -> {});
    }
 
    public static <T extends Projectile> T spawnProjectile(
@@ -282,8 +271,7 @@ public abstract class Projectile extends Entity implements TraceableEntity {
    }
 
    public void applyOnProjectileSpawned(final ServerLevel serverLevel, final ItemStack pickupItemStack) {
-      EnchantmentHelper.onProjectileSpawned(serverLevel, pickupItemStack, this, item -> {
-      });
+      EnchantmentHelper.onProjectileSpawned(serverLevel, pickupItemStack, this, item -> {});
       if (this instanceof AbstractArrow arrow) {
          ItemStack weapon = arrow.getWeaponItem();
          if (weapon != null && !weapon.isEmpty() && !pickupItemStack.getItem().equals(weapon.getItem())) {
@@ -327,8 +315,8 @@ public abstract class Projectile extends Entity implements TraceableEntity {
 
    public boolean deflect(
       final ProjectileDeflection deflection,
-      @Nullable final Entity deflectingEntity,
-      @Nullable final EntityReference<Entity> newOwner,
+      final @Nullable Entity deflectingEntity,
+      final @Nullable EntityReference<Entity> newOwner,
       final boolean byAttack,
       final Vec3 power
    ) {
@@ -343,8 +331,8 @@ public abstract class Projectile extends Entity implements TraceableEntity {
 
    public boolean deflect(
       final ProjectileDeflection deflection,
-      @Nullable final Entity deflectingEntity,
-      @Nullable final EntityReference<Entity> newOwner,
+      final @Nullable Entity deflectingEntity,
+      final @Nullable EntityReference<Entity> newOwner,
       final boolean byAttack,
       final double power
    ) {
@@ -391,10 +379,10 @@ public abstract class Projectile extends Entity implements TraceableEntity {
    protected boolean canHitEntity(final Entity entity) {
       if (!entity.canBeHitByProjectile()) {
          return false;
-      } else {
-         Entity owner = this.getOwner();
-         return owner == null || this.leftOwner || !owner.isPassengerOfSameVehicle(entity);
       }
+
+      Entity owner = this.getOwner();
+      return owner == null || this.leftOwner || !owner.isPassengerOfSameVehicle(entity);
    }
 
    protected void updateRotation() {

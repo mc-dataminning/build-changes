@@ -34,7 +34,7 @@ public class KelpPlantBlock extends GrowingPlantBodyBlock implements LiquidBlock
    }
 
    @Override
-   public boolean canPlaceLiquid(@Nullable final LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
+   public boolean canPlaceLiquid(final @Nullable LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
       return false;
    }
 

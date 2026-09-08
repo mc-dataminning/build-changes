@@ -88,17 +88,17 @@ public class RavagerModel extends EntityModel<RavagerRenderState> {
          float headAnim = Mth.triangleWave(attackTick, 10.0F);
          float scaled = (1.0F + headAnim) * 0.5F;
          float headPos = scaled * scaled * scaled * 12.0F;
-         float yOffset = headPos * Mth.sin((double)this.neck.xRot);
+         float yOffset = headPos * Mth.sin(this.neck.xRot);
          this.neck.z = -6.5F + headPos;
          this.neck.y = -7.0F - yOffset;
          if (attackTick > 5.0F) {
-            this.mouth.xRot = Mth.sin((double)((-4.0F + attackTick) / 4.0F)) * (float) Math.PI * 0.4F;
+            this.mouth.xRot = Mth.sin((-4.0F + attackTick) / 4.0F) * (float) Math.PI * 0.4F;
          } else {
-            this.mouth.xRot = (float) (Math.PI / 20) * Mth.sin((double)((float) Math.PI * attackTick / 10.0F));
+            this.mouth.xRot = (float) (Math.PI / 20) * Mth.sin((float) Math.PI * attackTick / 10.0F);
          }
       } else {
          float headPos = -1.0F;
-         float yOffset = -1.0F * Mth.sin((double)this.neck.xRot);
+         float yOffset = -1.0F * Mth.sin(this.neck.xRot);
          this.neck.x = 0.0F;
          this.neck.y = -7.0F - yOffset;
          this.neck.z = 5.5F;
@@ -106,10 +106,10 @@ public class RavagerModel extends EntityModel<RavagerRenderState> {
          this.neck.xRot = isStunned ? 0.21991149F : 0.0F;
          this.mouth.xRot = (float) Math.PI * (isStunned ? 0.05F : 0.01F);
          if (isStunned) {
-            double speed = (double)stunnedTick / 40.0;
+            double speed = stunnedTick / 40.0;
             this.neck.x = (float)Math.sin(speed * 10.0) * 3.0F;
-         } else if ((double)state.roarAnimation > 0.0) {
-            float mouthAnim = Mth.sin((double)(state.roarAnimation * (float) Math.PI * 0.25F));
+         } else if (state.roarAnimation > 0.0) {
+            float mouthAnim = Mth.sin(state.roarAnimation * (float) Math.PI * 0.25F);
             this.mouth.xRot = (float) (Math.PI / 2) * mouthAnim;
          }
       }
@@ -118,9 +118,9 @@ public class RavagerModel extends EntityModel<RavagerRenderState> {
       this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
       float animationPos = state.walkAnimationPos;
       float legRot = 0.4F * state.walkAnimationSpeed;
-      this.rightHindLeg.xRot = Mth.cos((double)(animationPos * 0.6662F)) * legRot;
-      this.leftHindLeg.xRot = Mth.cos((double)(animationPos * 0.6662F + (float) Math.PI)) * legRot;
-      this.rightFrontLeg.xRot = Mth.cos((double)(animationPos * 0.6662F + (float) Math.PI)) * legRot;
-      this.leftFrontLeg.xRot = Mth.cos((double)(animationPos * 0.6662F)) * legRot;
+      this.rightHindLeg.xRot = Mth.cos(animationPos * 0.6662F) * legRot;
+      this.leftHindLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * legRot;
+      this.rightFrontLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * legRot;
+      this.leftFrontLeg.xRot = Mth.cos(animationPos * 0.6662F) * legRot;
    }
 }

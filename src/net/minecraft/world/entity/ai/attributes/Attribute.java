@@ -52,7 +52,7 @@ public class Attribute {
       return this.sentiment.getStyle(valueIncrease);
    }
 
-   public static enum Sentiment {
+   public enum Sentiment {
       POSITIVE,
       NEUTRAL,
       NEGATIVE;

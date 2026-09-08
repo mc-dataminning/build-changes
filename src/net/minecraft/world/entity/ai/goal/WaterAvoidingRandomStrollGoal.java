@@ -18,9 +18,8 @@ public class WaterAvoidingRandomStrollGoal extends RandomStrollGoal {
       this.probability = probability;
    }
 
-   @Nullable
    @Override
-   protected Vec3 getPosition() {
+   protected @Nullable Vec3 getPosition() {
       if (this.mob.isInWater()) {
          Vec3 pos = LandRandomPos.getPos(this.mob, 15, 7);
          return pos == null ? super.getPosition() : pos;

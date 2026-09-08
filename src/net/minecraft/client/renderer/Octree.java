@@ -1,6 +1,5 @@
 package net.minecraft.client.renderer;
 
-import java.util.Objects;
 import net.minecraft.client.renderer.chunk.SectionRenderDispatcher;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.core.BlockPos;
@@ -8,6 +7,7 @@ import net.minecraft.core.SectionPos;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.phys.AABB;
+import org.jspecify.annotations.Nullable;
 
 public class Octree {
    private final Octree.Branch root;
@@ -42,15 +42,15 @@ public class Octree {
       int cameraX = this.cameraSectionCenter.getX();
       int cameraY = this.cameraSectionCenter.getY();
       int cameraZ = this.cameraSectionCenter.getZ();
-      return (double)cameraX > minX - (double)closeDistance
-         && (double)cameraX < maxX + (double)closeDistance
-         && (double)cameraY > minY - (double)closeDistance
-         && (double)cameraY < maxY + (double)closeDistance
-         && (double)cameraZ > minZ - (double)closeDistance
-         && (double)cameraZ < maxZ + (double)closeDistance;
+      return cameraX > minX - closeDistance
+         && cameraX < maxX + closeDistance
+         && cameraY > minY - closeDistance
+         && cameraY < maxY + closeDistance
+         && cameraZ > minZ - closeDistance
+         && cameraZ < maxZ + closeDistance;
    }
 
-   private static enum AxisSorting {
+   private enum AxisSorting {
       XYZ(4, 2, 1),
       XZY(4, 1, 2),
       YXZ(2, 4, 1),
@@ -62,7 +62,7 @@ public class Octree {
       private final int yShift;
       private final int zShift;
 
-      private AxisSorting(final int xShift, final int yShift, final int zShift) {
+      AxisSorting(final int xShift, final int yShift, final int zShift) {
          this.xShift = xShift;
          this.yShift = yShift;
          this.zShift = zShift;
@@ -80,7 +80,7 @@ public class Octree {
    }
 
    private class Branch implements Octree.Node {
-      private final Octree.Node[] nodes;
+      private final Octree.@Nullable Node[] nodes = new Octree.Node[8];
       private final BoundingBox boundingBox;
       private final int bbCenterX;
       private final int bbCenterY;
@@ -91,9 +91,6 @@ public class Octree {
       private final boolean cameraZDiffNegative;
 
       public Branch(final BoundingBox boundingBox) {
-         Objects.requireNonNull(Octree.this);
-         super();
-         this.nodes = new Octree.Node[8];
          this.boundingBox = boundingBox;
          this.bbCenterX = this.boundingBox.minX() + this.boundingBox.getXSpan() / 2;
          this.bbCenterY = this.boundingBox.minY() + this.boundingBox.getYSpan() / 2;
@@ -202,12 +199,12 @@ public class Octree {
          if (isVisible) {
             isClose = isClose
                && Octree.this.isClose(
-                  (double)this.boundingBox.minX(),
-                  (double)this.boundingBox.minY(),
-                  (double)this.boundingBox.minZ(),
-                  (double)this.boundingBox.maxX(),
-                  (double)this.boundingBox.maxY(),
-                  (double)this.boundingBox.maxZ(),
+                  this.boundingBox.minX(),
+                  this.boundingBox.minY(),
+                  this.boundingBox.minZ(),
+                  this.boundingBox.maxX(),
+                  this.boundingBox.maxY(),
+                  this.boundingBox.maxZ(),
                   closeDistance
                );
             visitor.visit(this, skipFrustumCheck, depth, isClose);
@@ -221,19 +218,19 @@ public class Octree {
       }
 
       @Override
-      public SectionRenderDispatcher.RenderSection getSection() {
+      public SectionRenderDispatcher.@Nullable RenderSection getSection() {
          return null;
       }
 
       @Override
       public AABB getAABB() {
          return new AABB(
-            (double)this.boundingBox.minX(),
-            (double)this.boundingBox.minY(),
-            (double)this.boundingBox.minZ(),
-            (double)(this.boundingBox.maxX() + 1),
-            (double)(this.boundingBox.maxY() + 1),
-            (double)(this.boundingBox.maxZ() + 1)
+            this.boundingBox.minX(),
+            this.boundingBox.minY(),
+            this.boundingBox.minZ(),
+            this.boundingBox.maxX() + 1,
+            this.boundingBox.maxY() + 1,
+            this.boundingBox.maxZ() + 1
          );
       }
    }
@@ -242,8 +239,6 @@ public class Octree {
       private final SectionRenderDispatcher.RenderSection section;
 
       private Leaf(final SectionRenderDispatcher.RenderSection section) {
-         Objects.requireNonNull(Octree.this);
-         super();
          this.section = section;
       }
 
@@ -273,7 +268,7 @@ public class Octree {
    public interface Node {
       void visitNodes(Octree.OctreeVisitor visitor, boolean skipFrustumCheck, Frustum frustum, int depth, final int closeDistance, boolean isClose);
 
-      SectionRenderDispatcher.RenderSection getSection();
+      SectionRenderDispatcher.@Nullable RenderSection getSection();
 
       AABB getAABB();
    }

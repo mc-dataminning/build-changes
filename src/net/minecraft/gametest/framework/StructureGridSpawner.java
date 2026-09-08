@@ -59,21 +59,21 @@ public class StructureGridSpawner implements GameTestRunner.StructureSpawner {
       GameTestInfo infoWithStructure = testInfo.prepareTestStructure();
       if (infoWithStructure == null) {
          return Optional.empty();
-      } else {
-         infoWithStructure.startExecution(1);
-         AABB structureBounds = testInfo.getTestInstanceBlockEntity().getTestBounds();
-         grid.rowBounds = grid.rowBounds.minmax(structureBounds);
-         grid.nextCorner.move((int)structureBounds.getXsize() + 5, 0, 0);
-         if (++grid.currentRowCount >= this.testsPerRow) {
-            grid.currentRowCount = 0;
-            grid.nextCorner.move(0, 0, (int)grid.rowBounds.getZsize() + 6);
-            grid.nextCorner.setX(grid.firstTestNorthWestCorner.getX());
-            grid.rowBounds = new AABB(grid.nextCorner);
-         }
-
-         grid.testsInLastBatch.add(testInfo);
-         return Optional.of(testInfo);
       }
+
+      infoWithStructure.startExecution(1);
+      AABB structureBounds = testInfo.getTestInstanceBlockEntity().getTestBounds();
+      grid.rowBounds = grid.rowBounds.minmax(structureBounds);
+      grid.nextCorner.move((int)structureBounds.getXsize() + 5, 0, 0);
+      if (++grid.currentRowCount >= this.testsPerRow) {
+         grid.currentRowCount = 0;
+         grid.nextCorner.move(0, 0, (int)grid.rowBounds.getZsize() + 6);
+         grid.nextCorner.setX(grid.firstTestNorthWestCorner.getX());
+         grid.rowBounds = new AABB(grid.nextCorner);
+      }
+
+      grid.testsInLastBatch.add(testInfo);
+      return Optional.of(testInfo);
    }
 
    private static final class DimensionGridState {

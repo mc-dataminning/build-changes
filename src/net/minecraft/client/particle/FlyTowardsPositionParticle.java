@@ -80,12 +80,12 @@ public class FlyTowardsPositionParticle extends SingleQuadParticle {
    public int getLightCoords(final float a) {
       if (this.isGlowing) {
          return LightCoordsUtil.withBlock(super.getLightCoords(a), 15);
-      } else {
-         float brightness = (float)this.age / (float)this.lifetime;
-         brightness *= brightness;
-         brightness *= brightness;
-         return LightCoordsUtil.addSmoothBlockEmission(super.getLightCoords(a), brightness);
       }
+
+      float brightness = (float)this.age / this.lifetime;
+      brightness *= brightness;
+      brightness *= brightness;
+      return LightCoordsUtil.addSmoothBlockEmission(super.getLightCoords(a), brightness);
    }
 
    @Override
@@ -96,14 +96,14 @@ public class FlyTowardsPositionParticle extends SingleQuadParticle {
       if (this.age++ >= this.lifetime) {
          this.remove();
       } else {
-         float pos = (float)this.age / (float)this.lifetime;
+         float pos = (float)this.age / this.lifetime;
          pos = 1.0F - pos;
          float pp = 1.0F - pos;
          pp *= pp;
          pp *= pp;
-         this.x = this.xStart + this.xd * (double)pos;
-         this.y = this.yStart + this.yd * (double)pos - (double)(pp * 1.2F);
-         this.z = this.zStart + this.zd * (double)pos;
+         this.x = this.xStart + this.xd * pos;
+         this.y = this.yStart + this.yd * pos - pp * 1.2F;
+         this.z = this.zStart + this.zd * pos;
       }
    }
 

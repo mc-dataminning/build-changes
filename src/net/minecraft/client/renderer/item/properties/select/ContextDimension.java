@@ -17,9 +17,8 @@ public record ContextDimension() implements SelectItemModelProperty<ResourceKey<
       MapCodec.unit(new ContextDimension()), VALUE_CODEC
    );
 
-   @Nullable
-   public ResourceKey<Level> get(
-      final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final LivingEntity owner, final int seed, final ItemDisplayContext displayContext
+   public @Nullable ResourceKey<Level> get(
+      final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner, final int seed, final ItemDisplayContext displayContext
    ) {
       return level != null ? level.dimension() : null;
    }

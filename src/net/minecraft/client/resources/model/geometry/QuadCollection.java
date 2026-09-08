@@ -41,8 +41,7 @@ public class QuadCollection {
       this.down = down;
    }
 
-   @BakedQuad.MaterialFlags
-   private static int computeMaterialFlags(final List<BakedQuad> quads) {
+   private static @BakedQuad.MaterialFlags int computeMaterialFlags(final List<BakedQuad> quads) {
       int flags = 0;
 
       for (BakedQuad quad : quads) {
@@ -52,7 +51,7 @@ public class QuadCollection {
       return flags;
    }
 
-   public List<BakedQuad> getQuads(@Nullable final Direction direction) {
+   public List<BakedQuad> getQuads(final @Nullable Direction direction) {
       return switch (direction) {
          case null -> this.unculled;
          case NORTH -> this.north;
@@ -68,8 +67,7 @@ public class QuadCollection {
       return this.all;
    }
 
-   @BakedQuad.MaterialFlags
-   public int materialFlags() {
+   public @BakedQuad.MaterialFlags int materialFlags() {
       if (this.materialFlags == -1) {
          this.materialFlags = computeMaterialFlags(this.all);
       }
@@ -77,7 +75,7 @@ public class QuadCollection {
       return this.materialFlags;
    }
 
-   public boolean hasMaterialFlag(@BakedQuad.MaterialFlags final int flag) {
+   public boolean hasMaterialFlag(final @BakedQuad.MaterialFlags int flag) {
       return (this.materialFlags() & flag) != 0;
    }
 
@@ -136,23 +134,23 @@ public class QuadCollection {
             return unculledFaces.isEmpty()
                ? QuadCollection.EMPTY
                : new QuadCollection(unculledFaces, unculledFaces, List.of(), List.of(), List.of(), List.of(), List.of(), List.of());
-         } else {
-            com.google.common.collect.ImmutableList.Builder<BakedQuad> quads = ImmutableList.builder();
-            quads.addAll(unculledFaces);
-            Collection<BakedQuad> north = this.culledFaces.get(Direction.NORTH);
-            quads.addAll(north);
-            Collection<BakedQuad> south = this.culledFaces.get(Direction.SOUTH);
-            quads.addAll(south);
-            Collection<BakedQuad> east = this.culledFaces.get(Direction.EAST);
-            quads.addAll(east);
-            Collection<BakedQuad> west = this.culledFaces.get(Direction.WEST);
-            quads.addAll(west);
-            Collection<BakedQuad> up = this.culledFaces.get(Direction.UP);
-            quads.addAll(up);
-            Collection<BakedQuad> down = this.culledFaces.get(Direction.DOWN);
-            quads.addAll(down);
-            return createFromSublists(quads.build(), unculledFaces.size(), north.size(), south.size(), east.size(), west.size(), up.size(), down.size());
          }
+
+         com.google.common.collect.ImmutableList.Builder<BakedQuad> quads = ImmutableList.builder();
+         quads.addAll(unculledFaces);
+         Collection<BakedQuad> north = this.culledFaces.get(Direction.NORTH);
+         quads.addAll(north);
+         Collection<BakedQuad> south = this.culledFaces.get(Direction.SOUTH);
+         quads.addAll(south);
+         Collection<BakedQuad> east = this.culledFaces.get(Direction.EAST);
+         quads.addAll(east);
+         Collection<BakedQuad> west = this.culledFaces.get(Direction.WEST);
+         quads.addAll(west);
+         Collection<BakedQuad> up = this.culledFaces.get(Direction.UP);
+         quads.addAll(up);
+         Collection<BakedQuad> down = this.culledFaces.get(Direction.DOWN);
+         quads.addAll(down);
+         return createFromSublists(quads.build(), unculledFaces.size(), north.size(), south.size(), east.size(), west.size(), up.size(), down.size());
       }
    }
 }

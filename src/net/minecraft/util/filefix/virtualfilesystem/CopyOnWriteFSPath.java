@@ -44,19 +44,16 @@ public class CopyOnWriteFSPath implements Path {
       return this.isAbsolute;
    }
 
-   @Nullable
    @Override
-   public Path getRoot() {
+   public @Nullable Path getRoot() {
       return this.isAbsolute() ? this.fs.rootPath() : null;
    }
 
-   @Nullable
-   public CopyOnWriteFSPath getFileName() {
+   public @Nullable CopyOnWriteFSPath getFileName() {
       return this.isRoot() ? null : new CopyOnWriteFSPath(this.path.getFileName(), this.fs, false);
    }
 
-   @Nullable
-   public CopyOnWriteFSPath getParent() {
+   public @Nullable CopyOnWriteFSPath getParent() {
       if (this.isRoot()) {
          return null;
       } else {
@@ -115,10 +112,10 @@ public class CopyOnWriteFSPath implements Path {
       CopyOnWriteFSPath otherCow = asCow(other);
       if (other.isAbsolute()) {
          return otherCow;
-      } else {
-         Path result = this.path.resolve(otherCow.path);
-         return new CopyOnWriteFSPath(result, this.fs, this.isAbsolute());
       }
+
+      Path result = this.path.resolve(otherCow.path);
+      return new CopyOnWriteFSPath(result, this.fs, this.isAbsolute());
    }
 
    public CopyOnWriteFSPath resolve(final String other) {
@@ -139,10 +136,10 @@ public class CopyOnWriteFSPath implements Path {
       CopyOnWriteFSPath otherCow = asCow(other);
       if (this.isAbsolute() != otherCow.isAbsolute()) {
          throw new IllegalArgumentException("'other' is different type of Path");
-      } else {
-         Path result = this.path.relativize(otherCow.path);
-         return new CopyOnWriteFSPath(result, this.fs, false);
       }
+
+      Path result = this.path.relativize(otherCow.path);
+      return new CopyOnWriteFSPath(result, this.fs, false);
    }
 
    @Override
@@ -194,8 +191,8 @@ public class CopyOnWriteFSPath implements Path {
    }
 
    protected static CopyOnWriteFSPath asCow(final Path other) {
-      if (other instanceof CopyOnWriteFSPath) {
-         return (CopyOnWriteFSPath)other;
+      if (other instanceof CopyOnWriteFSPath copyOnWriteFSPath) {
+         return copyOnWriteFSPath;
       } else {
          throw new CowFSIllegalArgumentException("Other path is of mismatching file system");
       }

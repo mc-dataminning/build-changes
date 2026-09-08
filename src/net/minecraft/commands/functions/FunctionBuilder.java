@@ -10,10 +10,8 @@ import net.minecraft.resources.Identifier;
 import org.jspecify.annotations.Nullable;
 
 class FunctionBuilder<T extends ExecutionCommandSource<T>> {
-   @Nullable
-   private List<UnboundEntryAction<T>> plainEntries = new ArrayList<>();
-   @Nullable
-   private List<MacroFunction.Entry<T>> macroEntries;
+   private @Nullable List<UnboundEntryAction<T>> plainEntries = new ArrayList<>();
+   private @Nullable List<MacroFunction.Entry<T>> macroEntries;
    private final List<String> macroArguments = new ArrayList<>();
 
    public void addCommand(final UnboundEntryAction<T> command) {
@@ -48,8 +46,8 @@ class FunctionBuilder<T extends ExecutionCommandSource<T>> {
       StringTemplate parseResults;
       try {
          parseResults = StringTemplate.fromString(command);
-      } catch (Exception var7) {
-         throw new IllegalArgumentException("Can't parse function line " + line + ": '" + command + "'", var7);
+      } catch (Exception e) {
+         throw new IllegalArgumentException("Can't parse function line " + line + ": '" + command + "'", e);
       }
 
       if (this.plainEntries != null) {
@@ -66,8 +64,6 @@ class FunctionBuilder<T extends ExecutionCommandSource<T>> {
    }
 
    public CommandFunction<T> build(final Identifier id) {
-      return (CommandFunction<T>)(this.macroEntries != null
-         ? new MacroFunction<>(id, this.macroEntries, this.macroArguments)
-         : new PlainTextFunction<>(id, this.plainEntries));
+      return this.macroEntries != null ? new MacroFunction<>(id, this.macroEntries, this.macroArguments) : new PlainTextFunction<>(id, this.plainEntries);
    }
 }

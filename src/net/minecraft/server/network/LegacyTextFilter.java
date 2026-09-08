@@ -10,7 +10,6 @@ import java.net.URI;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
-import java.util.Objects;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import net.minecraft.network.chat.FilterMask;
@@ -44,79 +43,70 @@ public class LegacyTextFilter extends ServerTextFilter {
       this.authKey = authKey;
    }
 
-   @Nullable
-   public static ServerTextFilter createTextFilterFromConfig(final String config) {
+   public static @Nullable ServerTextFilter createTextFilterFromConfig(final String config) {
       try {
          JsonObject parsedConfig = GsonHelper.parse(config);
          URI host = new URI(GsonHelper.getAsString(parsedConfig, "apiServer"));
          String key = GsonHelper.getAsString(parsedConfig, "apiKey");
          if (key.isEmpty()) {
             throw new IllegalArgumentException("Missing API key");
-         } else {
-            int ruleId = GsonHelper.getAsInt(parsedConfig, "ruleId", 1);
-            String serverId = GsonHelper.getAsString(parsedConfig, "serverId", "");
-            String roomId = GsonHelper.getAsString(parsedConfig, "roomId", "Java:Chat");
-            int hashesToDrop = GsonHelper.getAsInt(parsedConfig, "hashesToDrop", -1);
-            int maxConcurrentRequests = GsonHelper.getAsInt(parsedConfig, "maxConcurrentRequests", 7);
-            JsonObject endpoints = GsonHelper.getAsJsonObject(parsedConfig, "endpoints", null);
-            String chatEndpointConfig = getEndpointFromConfig(endpoints, "chat", "v1/chat");
-            boolean isLegacyChatEndpoint = chatEndpointConfig.equals("v1/chat");
-            URL chatEndpoint = host.resolve("/" + chatEndpointConfig).toURL();
-            URL joinEndpoint = getEndpoint(host, endpoints, "join", "v1/join");
-            URL leaveEndpoint = getEndpoint(host, endpoints, "leave", "v1/leave");
-            LegacyTextFilter.JoinOrLeaveEncoder commonJoinOrLeaveEncoder = user -> {
+         }
+
+         int ruleId = GsonHelper.getAsInt(parsedConfig, "ruleId", 1);
+         String serverId = GsonHelper.getAsString(parsedConfig, "serverId", "");
+         String roomId = GsonHelper.getAsString(parsedConfig, "roomId", "Java:Chat");
+         int hashesToDrop = GsonHelper.getAsInt(parsedConfig, "hashesToDrop", -1);
+         int maxConcurrentRequests = GsonHelper.getAsInt(parsedConfig, "maxConcurrentRequests", 7);
+         JsonObject endpoints = GsonHelper.getAsJsonObject(parsedConfig, "endpoints", null);
+         String chatEndpointConfig = getEndpointFromConfig(endpoints, "chat", "v1/chat");
+         boolean isLegacyChatEndpoint = chatEndpointConfig.equals("v1/chat");
+         URL chatEndpoint = host.resolve("/" + chatEndpointConfig).toURL();
+         URL joinEndpoint = getEndpoint(host, endpoints, "join", "v1/join");
+         URL leaveEndpoint = getEndpoint(host, endpoints, "leave", "v1/leave");
+         LegacyTextFilter.JoinOrLeaveEncoder commonJoinOrLeaveEncoder = user -> {
+            JsonObject object = new JsonObject();
+            object.addProperty("server", serverId);
+            object.addProperty("room", roomId);
+            object.addProperty("user_id", user.id().toString());
+            object.addProperty("user_display_name", user.name());
+            return object;
+         };
+         ServerTextFilter.MessageEncoder chatEncoder;
+         if (isLegacyChatEndpoint) {
+            chatEncoder = (sender, message) -> {
                JsonObject object = new JsonObject();
+               object.addProperty("rule", ruleId);
                object.addProperty("server", serverId);
                object.addProperty("room", roomId);
-               object.addProperty("user_id", user.id().toString());
-               object.addProperty("user_display_name", user.name());
+               object.addProperty("player", sender.id().toString());
+               object.addProperty("player_display_name", sender.name());
+               object.addProperty("text", message);
+               object.addProperty("language", "*");
                return object;
             };
-            ServerTextFilter.MessageEncoder chatEncoder;
-            if (isLegacyChatEndpoint) {
-               chatEncoder = (sender, message) -> {
-                  JsonObject object = new JsonObject();
-                  object.addProperty("rule", ruleId);
-                  object.addProperty("server", serverId);
-                  object.addProperty("room", roomId);
-                  object.addProperty("player", sender.id().toString());
-                  object.addProperty("player_display_name", sender.name());
-                  object.addProperty("text", message);
-                  object.addProperty("language", "*");
-                  return object;
-               };
-            } else {
-               String ruleIdStr = String.valueOf(ruleId);
-               chatEncoder = (sender, message) -> {
-                  JsonObject object = new JsonObject();
-                  object.addProperty("rule_id", ruleIdStr);
-                  object.addProperty("category", serverId);
-                  object.addProperty("subcategory", roomId);
-                  object.addProperty("user_id", sender.id().toString());
-                  object.addProperty("user_display_name", sender.name());
-                  object.addProperty("text", message);
-                  object.addProperty("language", "*");
-                  return object;
-               };
-            }
-
-            ServerTextFilter.IgnoreStrategy ignoreStrategy = ServerTextFilter.IgnoreStrategy.select(hashesToDrop);
-            ExecutorService workerPool = createWorkerPool(maxConcurrentRequests);
-            String encodedKey = Base64.getEncoder().encodeToString(key.getBytes(StandardCharsets.US_ASCII));
-            return new LegacyTextFilter(
-               chatEndpoint,
-               chatEncoder,
-               joinEndpoint,
-               commonJoinOrLeaveEncoder,
-               leaveEndpoint,
-               commonJoinOrLeaveEncoder,
-               encodedKey,
-               ignoreStrategy,
-               workerPool
-            );
+         } else {
+            String ruleIdStr = String.valueOf(ruleId);
+            chatEncoder = (sender, message) -> {
+               JsonObject object = new JsonObject();
+               object.addProperty("rule_id", ruleIdStr);
+               object.addProperty("category", serverId);
+               object.addProperty("subcategory", roomId);
+               object.addProperty("user_id", sender.id().toString());
+               object.addProperty("user_display_name", sender.name());
+               object.addProperty("text", message);
+               object.addProperty("language", "*");
+               return object;
+            };
          }
-      } catch (Exception var20) {
-         LOGGER.warn("Failed to parse chat filter config {}", config, var20);
+
+         ServerTextFilter.IgnoreStrategy ignoreStrategy = ServerTextFilter.IgnoreStrategy.select(hashesToDrop);
+         ExecutorService workerPool = createWorkerPool(maxConcurrentRequests);
+         String encodedKey = Base64.getEncoder().encodeToString(key.getBytes(StandardCharsets.US_ASCII));
+         return new LegacyTextFilter(
+            chatEndpoint, chatEncoder, joinEndpoint, commonJoinOrLeaveEncoder, leaveEndpoint, commonJoinOrLeaveEncoder, encodedKey, ignoreStrategy, workerPool
+         );
+      } catch (Exception e) {
+         LOGGER.warn("Failed to parse chat filter config {}", config, e);
          return null;
       }
    }
@@ -124,10 +114,6 @@ public class LegacyTextFilter extends ServerTextFilter {
    @Override
    public TextFilter createContext(final GameProfile gameProfile) {
       return new ServerTextFilter.PlayerContext(gameProfile) {
-         {
-            Objects.requireNonNull(LegacyTextFilter.this);
-         }
-
          @Override
          public void join() {
             LegacyTextFilter.this.processJoinOrLeave(this.profile, LegacyTextFilter.this.joinEndpoint, LegacyTextFilter.this.joinEncoder, this.streamExecutor);
@@ -146,8 +132,8 @@ public class LegacyTextFilter extends ServerTextFilter {
 
          try {
             this.processRequest(object, endpoint);
-         } catch (Exception var6) {
-            LOGGER.warn("Failed to send join/leave packet to {} for player {}", new Object[]{endpoint, user, var6});
+         } catch (Exception e) {
+            LOGGER.warn("Failed to send join/leave packet to {} for player {}", new Object[]{endpoint, user, e});
          }
       });
    }
@@ -170,16 +156,16 @@ public class LegacyTextFilter extends ServerTextFilter {
       boolean response = GsonHelper.getAsBoolean(result, "response", false);
       if (response) {
          return FilteredText.passThrough(message);
-      } else {
-         String filteredMessage = GsonHelper.getAsString(result, "hashed", null);
-         if (filteredMessage == null) {
-            return FilteredText.fullyFiltered(message);
-         } else {
-            JsonArray removedChars = GsonHelper.getAsJsonArray(result, "hashes");
-            FilterMask mask = this.parseMask(message, removedChars, ignoreStrategy);
-            return new FilteredText(message, mask);
-         }
       }
+
+      String filteredMessage = GsonHelper.getAsString(result, "hashed", null);
+      if (filteredMessage == null) {
+         return FilteredText.fullyFiltered(message);
+      }
+
+      JsonArray removedChars = GsonHelper.getAsJsonArray(result, "hashes");
+      FilterMask mask = this.parseMask(message, removedChars, ignoreStrategy);
+      return new FilteredText(message, mask);
    }
 
    @FunctionalInterface

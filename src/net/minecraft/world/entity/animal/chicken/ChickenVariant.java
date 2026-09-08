@@ -22,18 +22,18 @@ public record ChickenVariant(
 ) implements PriorityProvider<SpawnContext, SpawnCondition> {
    public static final Codec<ChickenVariant> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ModelAndTexture.codec(ChickenVariant.ModelType.CODEC, ChickenVariant.ModelType.NORMAL).forGetter(ChickenVariant::modelAndTexture),
-               ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(ChickenVariant::babyTexture),
-               SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(ChickenVariant::spawnConditions)
-            )
-            .apply(i, ChickenVariant::new)
+            ModelAndTexture.codec(ChickenVariant.ModelType.CODEC, ChickenVariant.ModelType.NORMAL).forGetter(ChickenVariant::modelAndTexture),
+            ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(ChickenVariant::babyTexture),
+            SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(ChickenVariant::spawnConditions)
+         )
+         .apply(i, ChickenVariant::new)
    );
    public static final Codec<ChickenVariant> NETWORK_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ModelAndTexture.codec(ChickenVariant.ModelType.CODEC, ChickenVariant.ModelType.NORMAL).forGetter(ChickenVariant::modelAndTexture),
-               ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(ChickenVariant::babyTexture)
-            )
-            .apply(i, ChickenVariant::new)
+            ModelAndTexture.codec(ChickenVariant.ModelType.CODEC, ChickenVariant.ModelType.NORMAL).forGetter(ChickenVariant::modelAndTexture),
+            ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(ChickenVariant::babyTexture)
+         )
+         .apply(i, ChickenVariant::new)
    );
    public static final Codec<Holder<ChickenVariant>> CODEC = RegistryCodecs.holder(Registries.CHICKEN_VARIANT);
    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<ChickenVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.CHICKEN_VARIANT);
@@ -47,14 +47,14 @@ public record ChickenVariant(
       return this.spawnConditions.selectors();
    }
 
-   public static enum ModelType implements StringRepresentable {
+   public enum ModelType implements StringRepresentable {
       NORMAL("normal"),
       COLD("cold");
 
       public static final Codec<ChickenVariant.ModelType> CODEC = StringRepresentable.fromEnum(ChickenVariant.ModelType::values);
       private final String name;
 
-      private ModelType(final String name) {
+      ModelType(final String name) {
          this.name = name;
       }
 

@@ -32,14 +32,14 @@ public class Raids extends SavedData {
    private static final Identifier RAID_FILE_ID = Identifier.withDefaultNamespace("raids");
    public static final Codec<Raids> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Raids.RaidWithId.CODEC
-                  .listOf()
-                  .optionalFieldOf("raids", List.of())
-                  .forGetter(r -> r.raidMap.int2ObjectEntrySet().stream().map(Raids.RaidWithId::from).toList()),
-               Codec.INT.fieldOf("next_id").forGetter(r -> r.nextId),
-               Codec.INT.fieldOf("tick").forGetter(r -> r.tick)
-            )
-            .apply(i, Raids::new)
+            Raids.RaidWithId.CODEC
+               .listOf()
+               .optionalFieldOf("raids", List.of())
+               .forGetter(r -> r.raidMap.int2ObjectEntrySet().stream().map(Raids.RaidWithId::from).toList()),
+            Codec.INT.fieldOf("next_id").forGetter(r -> r.nextId),
+            Codec.INT.fieldOf("tick").forGetter(r -> r.tick)
+         )
+         .apply(i, Raids::new)
    );
    public static final SavedDataType<Raids> TYPE = new SavedDataType<>(RAID_FILE_ID, Raids::new, CODEC, DataFixTypes.SAVED_DATA_RAIDS);
    private final Int2ObjectMap<Raid> raidMap = new Int2ObjectOpenHashMap();
@@ -59,8 +59,7 @@ public class Raids extends SavedData {
       this.tick = tick;
    }
 
-   @Nullable
-   public Raid get(final int raidId) {
+   public @Nullable Raid get(final int raidId) {
       return (Raid)this.raidMap.get(raidId);
    }
 
@@ -104,50 +103,49 @@ public class Raids extends SavedData {
       return raider.isAlive() && raider.canJoinRaid() && raider.getNoActionTime() <= 2400;
    }
 
-   @Nullable
-   public Raid createOrExtendRaid(final ServerPlayer player, final BlockPos raidPosition) {
+   public @Nullable Raid createOrExtendRaid(final ServerPlayer player, final BlockPos raidPosition) {
       if (player.isSpectator()) {
          return null;
-      } else {
-         ServerLevel level = player.level();
-         if (!level.getGameRules().get(GameRules.RAIDS)) {
-            return null;
-         } else if (!level.environmentAttributes().getValue(EnvironmentAttributes.CAN_START_RAID, raidPosition)) {
-            return null;
-         } else {
-            List<PoiRecord> posses = level.getPoiManager()
-               .getInRange(e -> e.is(PoiTypeTags.VILLAGE), raidPosition, 64, PoiManager.Occupancy.IS_OCCUPIED)
-               .toList();
-            int count = 0;
-            Vec3 posTotals = Vec3.ZERO;
-
-            for (PoiRecord p : posses) {
-               BlockPos pos = p.getPos();
-               posTotals = posTotals.add((double)pos.getX(), (double)pos.getY(), (double)pos.getZ());
-               count++;
-            }
-
-            BlockPos raidCenterPos;
-            if (count > 0) {
-               posTotals = posTotals.scale(1.0 / (double)count);
-               raidCenterPos = BlockPos.containing(posTotals);
-            } else {
-               raidCenterPos = raidPosition;
-            }
-
-            Raid raid = this.getOrCreateRaid(level, raidCenterPos);
-            if (!raid.isStarted() && !this.raidMap.containsValue(raid)) {
-               this.raidMap.put(this.getUniqueId(), raid);
-            }
-
-            if (!raid.isStarted() || raid.getRaidOmenLevel() < raid.getMaxRaidOmenLevel()) {
-               raid.absorbRaidOmen(player);
-            }
-
-            this.setDirty();
-            return raid;
-         }
       }
+
+      ServerLevel level = player.level();
+      if (!level.getGameRules().get(GameRules.RAIDS)) {
+         return null;
+      }
+
+      if (!level.environmentAttributes().getValue(EnvironmentAttributes.CAN_START_RAID, raidPosition)) {
+         return null;
+      }
+
+      List<PoiRecord> posses = level.getPoiManager().getInRange(e -> e.is(PoiTypeTags.VILLAGE), raidPosition, 64, PoiManager.Occupancy.IS_OCCUPIED).toList();
+      int count = 0;
+      Vec3 posTotals = Vec3.ZERO;
+
+      for (PoiRecord p : posses) {
+         BlockPos pos = p.getPos();
+         posTotals = posTotals.add(pos.getX(), pos.getY(), pos.getZ());
+         count++;
+      }
+
+      BlockPos raidCenterPos;
+      if (count > 0) {
+         posTotals = posTotals.scale(1.0 / count);
+         raidCenterPos = BlockPos.containing(posTotals);
+      } else {
+         raidCenterPos = raidPosition;
+      }
+
+      Raid raid = this.getOrCreateRaid(level, raidCenterPos);
+      if (!raid.isStarted() && !this.raidMap.containsValue(raid)) {
+         this.raidMap.put(this.getUniqueId(), raid);
+      }
+
+      if (!raid.isStarted() || raid.getRaidOmenLevel() < raid.getMaxRaidOmenLevel()) {
+         raid.absorbRaidOmen(player);
+      }
+
+      this.setDirty();
+      return raid;
    }
 
    private Raid getOrCreateRaid(final ServerLevel level, final BlockPos pos) {
@@ -163,10 +161,9 @@ public class Raids extends SavedData {
       return ++this.nextId;
    }
 
-   @Nullable
-   public Raid getNearbyRaid(final BlockPos pos, final int maxDistSqr) {
+   public @Nullable Raid getNearbyRaid(final BlockPos pos, final int maxDistSqr) {
       Raid closest = null;
-      double closestDistanceSqr = (double)maxDistSqr;
+      double closestDistanceSqr = maxDistSqr;
       ObjectIterator var6 = this.raidMap.values().iterator();
 
       while (var6.hasNext()) {
@@ -186,10 +183,10 @@ public class Raids extends SavedData {
       return this.raidMap.values().stream().map(Raid::getCenter).filter(chunkPos::contains).toList();
    }
 
-   private static record RaidWithId(int id, Raid raid) {
+   private record RaidWithId(int id, Raid raid) {
       public static final Codec<Raids.RaidWithId> CODEC = RecordCodecBuilder.create(
          i -> i.group(Codec.INT.fieldOf("id").forGetter(Raids.RaidWithId::id), Raid.MAP_CODEC.forGetter(Raids.RaidWithId::raid))
-               .apply(i, Raids.RaidWithId::new)
+            .apply(i, Raids.RaidWithId::new)
       );
 
       public static Raids.RaidWithId from(final Entry<Raid> entry) {

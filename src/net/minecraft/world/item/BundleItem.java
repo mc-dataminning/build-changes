@@ -2,7 +2,6 @@ package net.minecraft.world.item;
 
 import com.mojang.serialization.DataResult.Error;
 import com.mojang.serialization.DataResult.Success;
-import java.util.Objects;
 import java.util.Optional;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
@@ -45,14 +44,9 @@ public class BundleItem extends Item {
    }
 
    private static Fraction getWeightSafe(final BundleContents contents) {
-      Object var10000;
-      Objects.requireNonNull(var10000);
-      Object var1 = var10000;
-
-      contents.weight();
-      return switch (var1) {
-         case Success success -> (Fraction)success.value();
-         case Error error -> Fraction.ONE;
+      return switch (contents.weight()) {
+         case Success<Fraction> success -> (Fraction)success.value();
+         case Error<?> error -> Fraction.ONE;
          default -> throw new MatchException(null, null);
       };
    }
@@ -67,36 +61,36 @@ public class BundleItem extends Item {
       BundleContents initialContents = self.get(DataComponents.BUNDLE_CONTENTS);
       if (initialContents == null) {
          return false;
-      } else {
-         ItemStack other = slot.getItem();
-         BundleContents.Mutable contents = initialContents.asMutable();
-         if (clickAction == ClickAction.PRIMARY && !other.isEmpty()) {
-            if (contents.tryTransfer(slot, player) > 0) {
-               playInsertSound(player);
-            } else {
-               playInsertFailSound(player);
-            }
+      }
 
-            self.set(DataComponents.BUNDLE_CONTENTS, contents.toImmutable());
-            this.broadcastChangesOnContainerMenu(player);
-            return true;
-         } else if (clickAction == ClickAction.SECONDARY && other.isEmpty()) {
-            ItemStack itemStack = contents.removeOne();
-            if (itemStack != null) {
-               ItemStack remainder = slot.safeInsert(itemStack);
-               if (remainder.getCount() > 0) {
-                  contents.tryInsert(remainder);
-               } else {
-                  playRemoveOneSound(player);
-               }
-            }
-
-            self.set(DataComponents.BUNDLE_CONTENTS, contents.toImmutable());
-            this.broadcastChangesOnContainerMenu(player);
-            return true;
+      ItemStack other = slot.getItem();
+      BundleContents.Mutable contents = initialContents.asMutable();
+      if (clickAction == ClickAction.PRIMARY && !other.isEmpty()) {
+         if (contents.tryTransfer(slot, player) > 0) {
+            playInsertSound(player);
          } else {
-            return false;
+            playInsertFailSound(player);
          }
+
+         self.set(DataComponents.BUNDLE_CONTENTS, contents.toImmutable());
+         this.broadcastChangesOnContainerMenu(player);
+         return true;
+      } else if (clickAction == ClickAction.SECONDARY && other.isEmpty()) {
+         ItemStack itemStack = contents.removeOne();
+         if (itemStack != null) {
+            ItemStack remainder = slot.safeInsert(itemStack);
+            if (remainder.getCount() > 0) {
+               contents.tryInsert(remainder);
+            } else {
+               playRemoveOneSound(player);
+            }
+         }
+
+         self.set(DataComponents.BUNDLE_CONTENTS, contents.toImmutable());
+         this.broadcastChangesOnContainerMenu(player);
+         return true;
+      } else {
+         return false;
       }
    }
 
@@ -107,39 +101,39 @@ public class BundleItem extends Item {
       if (clickAction == ClickAction.PRIMARY && other.isEmpty()) {
          toggleSelectedItem(self, -1);
          return false;
-      } else {
-         BundleContents initialContents = self.get(DataComponents.BUNDLE_CONTENTS);
-         if (initialContents == null) {
-            return false;
+      }
+
+      BundleContents initialContents = self.get(DataComponents.BUNDLE_CONTENTS);
+      if (initialContents == null) {
+         return false;
+      }
+
+      BundleContents.Mutable contents = initialContents.asMutable();
+      if (clickAction == ClickAction.PRIMARY && !other.isEmpty()) {
+         if (slot.allowModification(player) && contents.tryInsert(other) > 0) {
+            playInsertSound(player);
          } else {
-            BundleContents.Mutable contents = initialContents.asMutable();
-            if (clickAction == ClickAction.PRIMARY && !other.isEmpty()) {
-               if (slot.allowModification(player) && contents.tryInsert(other) > 0) {
-                  playInsertSound(player);
-               } else {
-                  playInsertFailSound(player);
-               }
+            playInsertFailSound(player);
+         }
 
-               self.set(DataComponents.BUNDLE_CONTENTS, contents.toImmutable());
-               this.broadcastChangesOnContainerMenu(player);
-               return true;
-            } else if (clickAction == ClickAction.SECONDARY && other.isEmpty()) {
-               if (slot.allowModification(player)) {
-                  ItemStack removed = contents.removeOne();
-                  if (removed != null) {
-                     playRemoveOneSound(player);
-                     carriedItem.set(removed);
-                  }
-               }
-
-               self.set(DataComponents.BUNDLE_CONTENTS, contents.toImmutable());
-               this.broadcastChangesOnContainerMenu(player);
-               return true;
-            } else {
-               toggleSelectedItem(self, -1);
-               return false;
+         self.set(DataComponents.BUNDLE_CONTENTS, contents.toImmutable());
+         this.broadcastChangesOnContainerMenu(player);
+         return true;
+      } else if (clickAction == ClickAction.SECONDARY && other.isEmpty()) {
+         if (slot.allowModification(player)) {
+            ItemStack removed = contents.removeOne();
+            if (removed != null) {
+               playRemoveOneSound(player);
+               carriedItem.set(removed);
             }
          }
+
+         self.set(DataComponents.BUNDLE_CONTENTS, contents.toImmutable());
+         this.broadcastChangesOnContainerMenu(player);
+         return true;
+      } else {
+         toggleSelectedItem(self, -1);
+         return false;
       }
    }
 
@@ -187,8 +181,7 @@ public class BundleItem extends Item {
       return stack.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY).getSelectedItemIndex();
    }
 
-   @Nullable
-   public static ItemStackTemplate getSelectedItem(final ItemStack stack) {
+   public static @Nullable ItemStackTemplate getSelectedItem(final ItemStack stack) {
       return stack.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY).getSelectedItem();
    }
 

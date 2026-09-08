@@ -25,15 +25,15 @@ public final class DataComponentPatch {
       .xmap(data -> {
          if (data.isEmpty()) {
             return EMPTY;
-         } else {
-            Reference2ObjectMap<DataComponentType<?>, Object> map = new Reference2ObjectArrayMap(data.size());
-
-            for (Entry<DataComponentPatch.PatchKey, ?> entry : data.entrySet()) {
-               map.put(entry.getKey().type(), entry.getValue());
-            }
-
-            return new DataComponentPatch(map);
          }
+
+         Reference2ObjectMap<DataComponentType<?>, Object> map = new Reference2ObjectArrayMap(data.size());
+
+         for (Entry<DataComponentPatch.PatchKey, ?> entry : data.entrySet()) {
+            map.put(entry.getKey().type(), entry.getValue());
+         }
+
+         return new DataComponentPatch(map);
       }, patch -> {
          Reference2ObjectMap<DataComponentPatch.PatchKey, Object> map = new Reference2ObjectArrayMap(patch.map.size());
          Iterator i$ = Reference2ObjectMaps.fastIterable(patch.map).iterator();
@@ -74,23 +74,23 @@ public final class DataComponentPatch {
             int negativeCount = input.readVarInt();
             if (positiveCount == 0 && negativeCount == 0) {
                return DataComponentPatch.EMPTY;
-            } else {
-               int expectedSize = positiveCount + negativeCount;
-               Reference2ObjectMap<DataComponentType<?>, Object> map = new Reference2ObjectArrayMap(Math.min(expectedSize, 65536));
-
-               for (int i = 0; i < positiveCount; i++) {
-                  DataComponentType<?> type = DataComponentType.STREAM_CODEC.decode(input);
-                  Object value = codecGetter.apply(type).decode(input);
-                  map.put(type, value);
-               }
-
-               for (int i = 0; i < negativeCount; i++) {
-                  DataComponentType<?> type = DataComponentType.STREAM_CODEC.decode(input);
-                  map.put(type, Removed.INSTANCE);
-               }
-
-               return new DataComponentPatch(map);
             }
+
+            int expectedSize = positiveCount + negativeCount;
+            Reference2ObjectMap<DataComponentType<?>, Object> map = new Reference2ObjectArrayMap(Math.min(expectedSize, 65536));
+
+            for (int i = 0; i < positiveCount; i++) {
+               DataComponentType<?> type = DataComponentType.STREAM_CODEC.decode(input);
+               Object value = codecGetter.apply(type).decode(input);
+               map.put(type, value);
+            }
+
+            for (int i = 0; i < negativeCount; i++) {
+               DataComponentType<?> type = DataComponentType.STREAM_CODEC.decode(input);
+               map.put(type, Removed.INSTANCE);
+            }
+
+            return new DataComponentPatch(map);
          }
 
          public void encode(final RegistryFriendlyByteBuf output, final DataComponentPatch patch) {
@@ -154,8 +154,7 @@ public final class DataComponentPatch {
       return new DataComponentPatch.Builder();
    }
 
-   @Nullable
-   public <T> T get(final DataComponentGetter prototype, final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentGetter prototype, final DataComponentType<? extends T> type) {
       return getFromPatchAndPrototype(this.map, prototype, type);
    }
 
@@ -173,11 +172,11 @@ public final class DataComponentPatch {
    public DataComponentPatch forget(final Predicate<DataComponentType<?>> test) {
       if (this.isEmpty()) {
          return EMPTY;
-      } else {
-         Reference2ObjectMap<DataComponentType<?>, Object> newMap = new Reference2ObjectArrayMap(this.map);
-         newMap.keySet().removeIf(test);
-         return newMap.isEmpty() ? EMPTY : new DataComponentPatch(newMap);
       }
+
+      Reference2ObjectMap<DataComponentType<?>, Object> newMap = new Reference2ObjectArrayMap(this.map);
+      newMap.keySet().removeIf(test);
+      return newMap.isEmpty() ? EMPTY : new DataComponentPatch(newMap);
    }
 
    public boolean isEmpty() {
@@ -187,31 +186,23 @@ public final class DataComponentPatch {
    public DataComponentPatch.SplitResult split() {
       if (this.isEmpty()) {
          return DataComponentPatch.SplitResult.EMPTY;
-      } else {
-         DataComponentMap.Builder added = DataComponentMap.builder();
-         Set<DataComponentType<?>> removed = Sets.newIdentityHashSet();
-         this.map.forEach((type, value) -> {
-            if (Removed.isNotRemoved(value)) {
-               added.setUnchecked(type, value);
-            } else {
-               removed.add(type);
-            }
-         });
-         return new DataComponentPatch.SplitResult(added.build(), removed);
       }
+
+      DataComponentMap.Builder added = DataComponentMap.builder();
+      Set<DataComponentType<?>> removed = Sets.newIdentityHashSet();
+      this.map.forEach((type, value) -> {
+         if (Removed.isNotRemoved(value)) {
+            added.setUnchecked(type, value);
+         } else {
+            removed.add(type);
+         }
+      });
+      return new DataComponentPatch.SplitResult(added.build(), removed);
    }
 
    @Override
    public boolean equals(final Object obj) {
-      if (this == obj) {
-         return true;
-      } else {
-         if (obj instanceof DataComponentPatch patch && this.map.equals(patch.map)) {
-            return true;
-         }
-
-         return false;
-      }
+      return this == obj ? true : obj instanceof DataComponentPatch patch && this.map.equals(patch.map);
    }
 
    @Override
@@ -291,7 +282,7 @@ public final class DataComponentPatch {
       <T> StreamCodec<? super RegistryFriendlyByteBuf, T> apply(DataComponentType<T> type);
    }
 
-   private static record PatchKey(DataComponentType<?> type, boolean removed) {
+   private record PatchKey(DataComponentType<?> type, boolean removed) {
       public static final Codec<DataComponentPatch.PatchKey> CODEC = Codec.STRING
          .flatXmap(
             string -> {
@@ -322,7 +313,7 @@ public final class DataComponentPatch {
       }
    }
 
-   public static record SplitResult(DataComponentMap added, Set<DataComponentType<?>> removed) {
+   public record SplitResult(DataComponentMap added, Set<DataComponentType<?>> removed) {
       public static final DataComponentPatch.SplitResult EMPTY = new DataComponentPatch.SplitResult(DataComponentMap.EMPTY, Set.of());
    }
 }

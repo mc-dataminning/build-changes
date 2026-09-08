@@ -35,10 +35,9 @@ public class GameConfig {
       public final File gameDirectory;
       public final File resourcePackDirectory;
       public final File assetDirectory;
-      @Nullable
-      public final String assetIndex;
+      public final @Nullable String assetIndex;
 
-      public FolderData(final File gameDirectory, final File resourcePackDirectory, final File assetDirectory, @Nullable final String assetIndex) {
+      public FolderData(final File gameDirectory, final File resourcePackDirectory, final File assetDirectory, final @Nullable String assetIndex) {
          this.gameDirectory = gameDirectory;
          this.resourcePackDirectory = resourcePackDirectory;
          this.assetDirectory = assetDirectory;
@@ -59,8 +58,7 @@ public class GameConfig {
       public final boolean captureTracyImages;
       public final boolean renderDebugLabels;
       public final boolean vulkanValidation;
-      @Nullable
-      public final PreferredGraphicsApi forcedGraphicsApi;
+      public final @Nullable PreferredGraphicsApi forcedGraphicsApi;
       public final boolean offlineDeveloperMode;
 
       public GameData(
@@ -72,7 +70,7 @@ public class GameConfig {
          final boolean captureTracyImages,
          final boolean vulkanValidation,
          final boolean renderDebugLabels,
-         @Nullable final PreferredGraphicsApi forcedGraphicsApi,
+         final @Nullable PreferredGraphicsApi forcedGraphicsApi,
          final boolean offlineDeveloperMode
       ) {
          this.demo = demo;
@@ -88,34 +86,34 @@ public class GameConfig {
       }
    }
 
-   public static record QuickPlayData(@Nullable String logPath, GameConfig.QuickPlayVariant variant) {
+   public record QuickPlayData(@Nullable String logPath, GameConfig.QuickPlayVariant variant) {
       public boolean isEnabled() {
          return this.variant.isEnabled();
       }
    }
 
-   public static record QuickPlayDisabled() implements GameConfig.QuickPlayVariant {
+   public record QuickPlayDisabled() implements GameConfig.QuickPlayVariant {
       @Override
       public boolean isEnabled() {
          return false;
       }
    }
 
-   public static record QuickPlayMultiplayerData(String serverAddress) implements GameConfig.QuickPlayVariant {
+   public record QuickPlayMultiplayerData(String serverAddress) implements GameConfig.QuickPlayVariant {
       @Override
       public boolean isEnabled() {
          return !StringUtil.isBlank(this.serverAddress);
       }
    }
 
-   public static record QuickPlayRealmsData(String realmId) implements GameConfig.QuickPlayVariant {
+   public record QuickPlayRealmsData(String realmId) implements GameConfig.QuickPlayVariant {
       @Override
       public boolean isEnabled() {
          return !StringUtil.isBlank(this.realmId);
       }
    }
 
-   public static record QuickPlaySinglePlayerData(@Nullable String worldId) implements GameConfig.QuickPlayVariant {
+   public record QuickPlaySinglePlayerData(@Nullable String worldId) implements GameConfig.QuickPlayVariant {
       @Override
       public boolean isEnabled() {
          return true;

@@ -54,10 +54,9 @@ public class PiglinBrute extends AbstractPiglin {
          .add(Attributes.FOLLOW_RANGE, 12.0);
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+   public @Nullable SpawnGroupData finalizeSpawn(
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       PiglinBruteAi.initMemories(this);
       this.populateDefaultEquipmentSlots(level.getRandom(), difficulty);

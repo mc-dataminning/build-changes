@@ -6,8 +6,7 @@ import org.jspecify.annotations.Nullable;
 
 public class ItemActivation {
    public static final int ANIMATION_LENGTH = 40;
-   @Nullable
-   private ItemStack item;
+   private @Nullable ItemStack item;
    private int ticks;
    private float offX;
    private float offY;

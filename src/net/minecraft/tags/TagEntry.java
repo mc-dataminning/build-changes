@@ -13,10 +13,10 @@ import org.jspecify.annotations.Nullable;
 public class TagEntry {
    private static final Codec<TagEntry> FULL_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ExtraCodecs.TAG_OR_ELEMENT_ID.fieldOf("id").forGetter(TagEntry::elementOrTag),
-               Codec.BOOL.optionalFieldOf("required", true).forGetter(e -> e.required)
-            )
-            .apply(i, TagEntry::new)
+            ExtraCodecs.TAG_OR_ELEMENT_ID.fieldOf("id").forGetter(TagEntry::elementOrTag),
+            Codec.BOOL.optionalFieldOf("required", true).forGetter(e -> e.required)
+         )
+         .apply(i, TagEntry::new)
    );
    public static final Codec<TagEntry> CODEC = Codec.either(ExtraCodecs.TAG_OR_ELEMENT_ID, FULL_CODEC)
       .xmap(e -> (TagEntry)e.map(l -> new TagEntry(l, true), r -> r), entry -> entry.required ? Either.left(entry.elementOrTag()) : Either.right(entry));
@@ -108,10 +108,8 @@ public class TagEntry {
    }
 
    public interface Lookup<T> {
-      @Nullable
-      T element(Identifier key, boolean required);
+      @Nullable T element(Identifier key, boolean required);
 
-      @Nullable
-      Collection<T> tag(Identifier key);
+      @Nullable Collection<T> tag(Identifier key);
    }
 }

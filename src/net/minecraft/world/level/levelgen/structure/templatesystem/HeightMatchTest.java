@@ -11,7 +11,7 @@ import net.minecraft.world.level.dimension.DimensionType;
 public class HeightMatchTest extends RuleTest {
    public static final MapCodec<HeightMatchTest> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(Codec.INT.fieldOf("min_inclusive").forGetter(c -> c.minInclusive), Codec.INT.fieldOf("max_inclusive").forGetter(c -> c.maxInclusive))
-            .apply(i, HeightMatchTest::new)
+         .apply(i, HeightMatchTest::new)
    );
    private final int minInclusive;
    private final int maxInclusive;

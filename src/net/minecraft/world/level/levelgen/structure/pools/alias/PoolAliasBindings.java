@@ -25,10 +25,10 @@ public class PoolAliasBindings {
          .map(key -> key.identifier().getPath())
          .forEach(
             path -> Pools.register(
-                  context,
-                  path,
-                  new StructureTemplatePool(emptyPool, List.of(Pair.of(StructurePoolElement.single(path), 1)), StructureTemplatePool.Projection.RIGID)
-               )
+               context,
+               path,
+               new StructureTemplatePool(emptyPool, List.of(Pair.of(StructurePoolElement.single(path), 1)), StructureTemplatePool.Projection.RIGID)
+            )
          );
    }
 }

@@ -19,32 +19,32 @@ public class TryFindLand {
       MutableLong nextOkStartTime = new MutableLong(0L);
       return BehaviorBuilder.create(
          i -> i.group(i.absent(MemoryModuleType.ATTACK_TARGET), i.absent(MemoryModuleType.WALK_TARGET), i.registered(MemoryModuleType.LOOK_TARGET))
-               .apply(
-                  i,
-                  (attackTarget, walkTarget, lookTarget) -> (level, body, timestamp) -> {
-                        if (!level.getFluidState(body.blockPosition()).is(FluidTags.WATER)) {
-                           return false;
-                        } else if (timestamp < nextOkStartTime.longValue()) {
-                           nextOkStartTime.setValue(timestamp + 60L);
-                           return true;
-                        } else {
-                           BlockPos bodyBlockPos = body.blockPosition();
-                           BlockPos.MutableBlockPos belowPos = new BlockPos.MutableBlockPos();
-                           CollisionContext context = CollisionContext.of(body);
-                           level.findBlocksInBoxByManhattanDistance(bodyBlockPos, range)
-                              .filterPos(pos -> pos.differsHorizontally(bodyBlockPos))
-                              .filterState(state -> state.getFluidState().isEmpty())
-                              .findFirst((pos, state) -> canStandOn(level, pos, state, context, belowPos))
-                              .ifPresent(pos -> {
-                                 BlockPos targetPos = pos.immutable();
-                                 lookTarget.set(new BlockPosTracker(targetPos));
-                                 walkTarget.set(new WalkTarget(new BlockPosTracker(targetPos), speedModifier, 1));
-                              });
-                           nextOkStartTime.setValue(timestamp + 60L);
-                           return true;
-                        }
-                     }
-               )
+            .apply(
+               i,
+               (attackTarget, walkTarget, lookTarget) -> (level, body, timestamp) -> {
+                  if (!level.getFluidState(body.blockPosition()).is(FluidTags.WATER)) {
+                     return false;
+                  } else if (timestamp < nextOkStartTime.longValue()) {
+                     nextOkStartTime.setValue(timestamp + 60L);
+                     return true;
+                  } else {
+                     BlockPos bodyBlockPos = body.blockPosition();
+                     BlockPos.MutableBlockPos belowPos = new BlockPos.MutableBlockPos();
+                     CollisionContext context = CollisionContext.of(body);
+                     level.findBlocksInBoxByManhattanDistance(bodyBlockPos, range)
+                        .filterPos(pos -> pos.differsHorizontally(bodyBlockPos))
+                        .filterState(state -> state.getFluidState().isEmpty())
+                        .findFirst((pos, state) -> canStandOn(level, pos, state, context, belowPos))
+                        .ifPresent(pos -> {
+                           BlockPos targetPos = pos.immutable();
+                           lookTarget.set(new BlockPosTracker(targetPos));
+                           walkTarget.set(new WalkTarget(new BlockPosTracker(targetPos), speedModifier, 1));
+                        });
+                     nextOkStartTime.setValue(timestamp + 60L);
+                     return true;
+                  }
+               }
+            )
       );
    }
 

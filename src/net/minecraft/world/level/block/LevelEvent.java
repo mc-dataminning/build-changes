@@ -100,7 +100,7 @@ public class LevelEvent {
    public static final int PARTICLES_TRIAL_SPAWNER_SPAWN_ITEM = 3021;
 
    @Retention(RetentionPolicy.CLASS)
-   @Target({ElementType.TYPE_USE})
+   @Target(ElementType.TYPE_USE)
    public @interface Value {
    }
 }

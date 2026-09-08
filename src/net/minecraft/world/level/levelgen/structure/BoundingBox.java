@@ -127,23 +127,23 @@ public class BoundingBox {
       Iterator<BlockPos> iterator = iterable.iterator();
       if (!iterator.hasNext()) {
          return Optional.empty();
-      } else {
-         BoundingBox result = new BoundingBox(iterator.next());
-         iterator.forEachRemaining(result::encapsulate);
-         return Optional.of(result);
       }
+
+      BoundingBox result = new BoundingBox(iterator.next());
+      iterator.forEachRemaining(result::encapsulate);
+      return Optional.of(result);
    }
 
    public static Optional<BoundingBox> encapsulatingBoxes(final Iterable<BoundingBox> iterable) {
       Iterator<BoundingBox> iterator = iterable.iterator();
       if (!iterator.hasNext()) {
          return Optional.empty();
-      } else {
-         BoundingBox first = iterator.next();
-         BoundingBox result = new BoundingBox(first.minX, first.minY, first.minZ, first.maxX, first.maxY, first.maxZ);
-         iterator.forEachRemaining(result::encapsulate);
-         return Optional.of(result);
       }
+
+      BoundingBox first = iterator.next();
+      BoundingBox result = new BoundingBox(first.minX, first.minY, first.minZ, first.maxX, first.maxY, first.maxZ);
+      iterator.forEachRemaining(result::encapsulate);
+      return Optional.of(result);
    }
 
    @Deprecated

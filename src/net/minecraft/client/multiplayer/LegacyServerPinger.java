@@ -38,9 +38,9 @@ public class LegacyServerPinger extends SimpleChannelInboundHandler<ByteBuf> {
          int payloadSize = toSend.writerIndex() - payloadStart;
          toSend.setShort(sizeIndex, payloadSize);
          ctx.channel().writeAndFlush(toSend).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
-      } catch (Exception var6) {
+      } catch (Exception e) {
          toSend.release();
-         throw var6;
+         throw e;
       }
    }
 

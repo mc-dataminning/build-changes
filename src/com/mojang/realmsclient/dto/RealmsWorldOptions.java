@@ -26,8 +26,7 @@ public class RealmsWorldOptions extends ValueObject implements ReflectionBasedSe
    @SerializedName("worldTemplateId")
    public long templateId = -1L;
    @SerializedName("worldTemplateImage")
-   @Nullable
-   public String templateImage = null;
+   public @Nullable String templateImage = null;
    @Exclude
    public boolean empty;
 
@@ -87,10 +86,10 @@ public class RealmsWorldOptions extends ValueObject implements ReflectionBasedSe
       RealmsWorldOptions options = gson.fromJson(json, RealmsWorldOptions.class);
       if (options == null) {
          return createDefaults();
-      } else {
-         finalize(options);
-         return options;
       }
+
+      finalize(options);
+      return options;
    }
 
    private static void finalize(final RealmsWorldOptions options) {

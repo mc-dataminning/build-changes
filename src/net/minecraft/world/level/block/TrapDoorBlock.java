@@ -50,10 +50,10 @@ public class TrapDoorBlock extends HorizontalDirectionalBlock implements SimpleW
          this.stateDefinition
             .any()
             .setValue(FACING, Direction.NORTH)
-            .setValue(OPEN, Boolean.valueOf(false))
+            .setValue(OPEN, false)
             .setValue(HALF, Half.BOTTOM)
-            .setValue(POWERED, Boolean.valueOf(false))
-            .setValue(WATERLOGGED, Boolean.valueOf(false))
+            .setValue(POWERED, false)
+            .setValue(WATERLOGGED, false)
       );
    }
 
@@ -78,10 +78,10 @@ public class TrapDoorBlock extends HorizontalDirectionalBlock implements SimpleW
    ) {
       if (!this.type.canOpenByHand()) {
          return InteractionResult.PASS;
-      } else {
-         this.toggle(state, level, pos, player);
-         return InteractionResult.SUCCESS;
       }
+
+      this.toggle(state, level, pos, player);
+      return InteractionResult.SUCCESS;
    }
 
    @Override
@@ -95,7 +95,7 @@ public class TrapDoorBlock extends HorizontalDirectionalBlock implements SimpleW
       super.onExplosionHit(state, level, pos, explosion, onHit);
    }
 
-   private void toggle(final BlockState state, final Level level, final BlockPos pos, @Nullable final Player player) {
+   private void toggle(final BlockState state, final Level level, final BlockPos pos, final @Nullable Player player) {
       BlockState updated = state.cycle(OPEN);
       level.setBlock(pos, updated, 2);
       if (updated.getValue(WATERLOGGED)) {
@@ -105,7 +105,7 @@ public class TrapDoorBlock extends HorizontalDirectionalBlock implements SimpleW
       this.playSound(player, level, pos, updated.getValue(OPEN));
    }
 
-   protected void playSound(@Nullable final Player player, final Level level, final BlockPos pos, final boolean opening) {
+   protected void playSound(final @Nullable Player player, final Level level, final BlockPos pos, final boolean opening) {
       level.playSound(
          player, pos, opening ? this.type.trapdoorOpen() : this.type.trapdoorClose(), SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F
       );
@@ -114,17 +114,17 @@ public class TrapDoorBlock extends HorizontalDirectionalBlock implements SimpleW
 
    @Override
    protected void neighborChanged(
-      BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       if (!level.isClientSide()) {
          boolean signal = level.hasNeighborSignal(pos);
          if (signal != state.getValue(POWERED)) {
             if (state.getValue(OPEN) != signal) {
-               state = state.setValue(OPEN, Boolean.valueOf(signal));
+               state = state.setValue(OPEN, signal);
                this.playSound(null, level, pos, signal);
             }
 
-            level.setBlock(pos, state.setValue(POWERED, Boolean.valueOf(signal)), 2);
+            level.setBlock(pos, state.setValue(POWERED, signal), 2);
             if (state.getValue(WATERLOGGED)) {
                level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
             }
@@ -139,16 +139,16 @@ public class TrapDoorBlock extends HorizontalDirectionalBlock implements SimpleW
       Direction clickedFace = context.getClickedFace();
       if (!context.replacingClickedOnBlock() && clickedFace.getAxis().isHorizontal()) {
          state = state.setValue(FACING, clickedFace)
-            .setValue(HALF, context.getClickLocation().y - (double)context.getClickedPos().getY() > 0.5 ? Half.TOP : Half.BOTTOM);
+            .setValue(HALF, context.getClickLocation().y - context.getClickedPos().getY() > 0.5 ? Half.TOP : Half.BOTTOM);
       } else {
          state = state.setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(HALF, clickedFace == Direction.UP ? Half.BOTTOM : Half.TOP);
       }
 
       if (context.getLevel().hasNeighborSignal(context.getClickedPos())) {
-         state = state.setValue(OPEN, Boolean.valueOf(true)).setValue(POWERED, Boolean.valueOf(true));
+         state = state.setValue(OPEN, true).setValue(POWERED, true);
       }
 
-      return state.setValue(WATERLOGGED, Boolean.valueOf(replacedFluidState.is(Fluids.WATER)));
+      return state.setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
    }
 
    @Override

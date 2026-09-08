@@ -18,7 +18,7 @@ public class SnowyBlock extends Block {
 
    protected SnowyBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(SNOWY, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(SNOWY, false));
    }
 
    @Override
@@ -33,14 +33,14 @@ public class SnowyBlock extends Block {
       final RandomSource random
    ) {
       return directionToNeighbour == Direction.UP
-         ? state.setValue(SNOWY, Boolean.valueOf(isSnowySetting(neighbourState)))
+         ? state.setValue(SNOWY, isSnowySetting(neighbourState))
          : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
    }
 
    @Override
    public BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockState aboveState = context.getLevel().getBlockState(context.getClickedPos().above());
-      return this.defaultBlockState().setValue(SNOWY, Boolean.valueOf(isSnowySetting(aboveState)));
+      return this.defaultBlockState().setValue(SNOWY, isSnowySetting(aboveState));
    }
 
    protected static boolean isSnowySetting(final BlockState aboveState) {

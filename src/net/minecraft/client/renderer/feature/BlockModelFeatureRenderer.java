@@ -22,9 +22,7 @@ public class BlockModelFeatureRenderer extends RenderTypeFeatureRenderer<BlockMo
    protected void buildGroup(final FeatureFrameContext context, final List<BlockModelFeatureRenderer.Submit> submits) {
       for (BlockModelFeatureRenderer.Submit submit : submits) {
          VertexConsumer buffer = this.getVertexBuilder(submit.renderType());
-         VertexConsumer wrappedBuffer = (VertexConsumer)(submit.sheetedDecalPose() != null
-            ? new SheetedDecalTextureGenerator(buffer, submit.sheetedDecalPose(), 1.0F)
-            : buffer);
+         VertexConsumer wrappedBuffer = submit.sheetedDecalPose() != null ? new SheetedDecalTextureGenerator(buffer, submit.sheetedDecalPose(), 1.0F) : buffer;
          this.quadInstance.setLightCoords(submit.lightCoords());
          this.quadInstance.setOverlayCoords(submit.overlayCoords());
 
@@ -67,7 +65,7 @@ public class BlockModelFeatureRenderer extends RenderTypeFeatureRenderer<BlockMo
       buffer.putBakedQuad(pose, quad, instance);
    }
 
-   public static record Submit(
+   public record Submit(
       PoseStack.Pose pose,
       RenderType renderType,
       List<BlockStateModelPart> modelParts,
@@ -75,7 +73,7 @@ public class BlockModelFeatureRenderer extends RenderTypeFeatureRenderer<BlockMo
       int lightCoords,
       int overlayCoords,
       int tintColor,
-      @Nullable PoseStack.Pose sheetedDecalPose
+      PoseStack.@Nullable Pose sheetedDecalPose
    ) implements TranslucentSubmit {
       @Override
       public float distanceToCameraSq() {

@@ -23,11 +23,11 @@ public record StatePropertiesPredicate(List<StatePropertiesPredicate.PropertyMat
       )
       .xmap(
          map -> map.entrySet()
-               .stream()
-               .map(entry -> new StatePropertiesPredicate.PropertyMatcher((String)entry.getKey(), (StatePropertiesPredicate.ValueMatcher)entry.getValue()))
-               .toList(),
+            .stream()
+            .map(entry -> new StatePropertiesPredicate.PropertyMatcher((String)entry.getKey(), (StatePropertiesPredicate.ValueMatcher)entry.getValue()))
+            .toList(),
          properties -> properties.stream()
-               .collect(Collectors.toMap(StatePropertiesPredicate.PropertyMatcher::name, StatePropertiesPredicate.PropertyMatcher::valueMatcher))
+            .collect(Collectors.toMap(StatePropertiesPredicate.PropertyMatcher::name, StatePropertiesPredicate.PropertyMatcher::valueMatcher))
       );
    public static final Codec<StatePropertiesPredicate> CODEC = PROPERTIES_CODEC.xmap(StatePropertiesPredicate::new, StatePropertiesPredicate::properties);
    public static final StreamCodec<ByteBuf, StatePropertiesPredicate> STREAM_CODEC = StatePropertiesPredicate.PropertyMatcher.STREAM_CODEC
@@ -95,7 +95,7 @@ public record StatePropertiesPredicate(List<StatePropertiesPredicate.PropertyMat
       }
    }
 
-   private static record ExactMatcher(String value) implements StatePropertiesPredicate.ValueMatcher {
+   private record ExactMatcher(String value) implements StatePropertiesPredicate.ValueMatcher {
       public static final Codec<StatePropertiesPredicate.ExactMatcher> CODEC = Codec.STRING
          .xmap(StatePropertiesPredicate.ExactMatcher::new, StatePropertiesPredicate.ExactMatcher::value);
       public static final StreamCodec<ByteBuf, StatePropertiesPredicate.ExactMatcher> STREAM_CODEC = ByteBufCodecs.STRING_UTF8
@@ -109,7 +109,7 @@ public record StatePropertiesPredicate(List<StatePropertiesPredicate.PropertyMat
       }
    }
 
-   private static record PropertyMatcher(String name, StatePropertiesPredicate.ValueMatcher valueMatcher) {
+   private record PropertyMatcher(String name, StatePropertiesPredicate.ValueMatcher valueMatcher) {
       public static final StreamCodec<ByteBuf, StatePropertiesPredicate.PropertyMatcher> STREAM_CODEC = StreamCodec.composite(
          ByteBufCodecs.STRING_UTF8,
          StatePropertiesPredicate.PropertyMatcher::name,
@@ -129,13 +129,13 @@ public record StatePropertiesPredicate(List<StatePropertiesPredicate.PropertyMat
       }
    }
 
-   private static record RangedMatcher(Optional<String> minValue, Optional<String> maxValue) implements StatePropertiesPredicate.ValueMatcher {
+   private record RangedMatcher(Optional<String> minValue, Optional<String> maxValue) implements StatePropertiesPredicate.ValueMatcher {
       public static final Codec<StatePropertiesPredicate.RangedMatcher> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Codec.STRING.optionalFieldOf("min").forGetter(StatePropertiesPredicate.RangedMatcher::minValue),
-                  Codec.STRING.optionalFieldOf("max").forGetter(StatePropertiesPredicate.RangedMatcher::maxValue)
-               )
-               .apply(i, StatePropertiesPredicate.RangedMatcher::new)
+               Codec.STRING.optionalFieldOf("min").forGetter(StatePropertiesPredicate.RangedMatcher::minValue),
+               Codec.STRING.optionalFieldOf("max").forGetter(StatePropertiesPredicate.RangedMatcher::maxValue)
+            )
+            .apply(i, StatePropertiesPredicate.RangedMatcher::new)
       );
       public static final StreamCodec<ByteBuf, StatePropertiesPredicate.RangedMatcher> STREAM_CODEC = StreamCodec.composite(
          ByteBufCodecs.optional(ByteBufCodecs.STRING_UTF8),

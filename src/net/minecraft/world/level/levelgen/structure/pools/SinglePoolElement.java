@@ -150,15 +150,15 @@ public class SinglePoolElement extends StructurePoolElement {
       StructurePlaceSettings settings = this.getSettings(rotation, chunkBB, liquidSettings, keepJigsaws);
       if (!template.placeInWorld(level, position, referencePos, settings, random, 18)) {
          return false;
-      } else {
-         for (StructureTemplate.StructureBlockInfo dataMarker : StructureTemplate.processBlockInfos(
-            level, position, referencePos, settings, this.getDataMarkers(structureTemplateManager, position, rotation, false)
-         )) {
-            this.handleDataMarker(level, dataMarker, position, rotation, random, chunkBB);
-         }
-
-         return true;
       }
+
+      for (StructureTemplate.StructureBlockInfo dataMarker : StructureTemplate.processBlockInfos(
+         level, position, referencePos, settings, this.getDataMarkers(structureTemplateManager, position, rotation, false)
+      )) {
+         this.handleDataMarker(level, dataMarker, position, rotation, random, chunkBB);
+      }
+
+      return true;
    }
 
    protected StructurePlaceSettings getSettings(

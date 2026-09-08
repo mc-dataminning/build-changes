@@ -27,13 +27,13 @@ public record FireworkExplosion(FireworkExplosion.Shape shape, IntList colors, I
    public static final Codec<IntList> COLOR_LIST_CODEC = Codec.INT.listOf().xmap(IntArrayList::new, ArrayList::new);
    public static final Codec<FireworkExplosion> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               FireworkExplosion.Shape.CODEC.fieldOf("shape").forGetter(FireworkExplosion::shape),
-               COLOR_LIST_CODEC.optionalFieldOf("colors", IntList.of()).forGetter(FireworkExplosion::colors),
-               COLOR_LIST_CODEC.optionalFieldOf("fade_colors", IntList.of()).forGetter(FireworkExplosion::fadeColors),
-               Codec.BOOL.optionalFieldOf("has_trail", false).forGetter(FireworkExplosion::hasTrail),
-               Codec.BOOL.optionalFieldOf("has_twinkle", false).forGetter(FireworkExplosion::hasTwinkle)
-            )
-            .apply(i, FireworkExplosion::new)
+            FireworkExplosion.Shape.CODEC.fieldOf("shape").forGetter(FireworkExplosion::shape),
+            COLOR_LIST_CODEC.optionalFieldOf("colors", IntList.of()).forGetter(FireworkExplosion::colors),
+            COLOR_LIST_CODEC.optionalFieldOf("fade_colors", IntList.of()).forGetter(FireworkExplosion::fadeColors),
+            Codec.BOOL.optionalFieldOf("has_trail", false).forGetter(FireworkExplosion::hasTrail),
+            Codec.BOOL.optionalFieldOf("has_twinkle", false).forGetter(FireworkExplosion::hasTwinkle)
+         )
+         .apply(i, FireworkExplosion::new)
    );
    private static final StreamCodec<ByteBuf, IntList> COLOR_LIST_STREAM_CODEC = ByteBufCodecs.INT
       .apply(ByteBufCodecs.list())
@@ -95,14 +95,14 @@ public record FireworkExplosion(FireworkExplosion.Shape shape, IntList colors, I
 
    private static Component getColorName(final int colorIndex) {
       DyeColor color = DyeColor.byFireworkColor(colorIndex);
-      return (Component)(color == null ? CUSTOM_COLOR_NAME : Component.translatable("item.minecraft.firework_star." + color.getName()));
+      return color == null ? CUSTOM_COLOR_NAME : Component.translatable("item.minecraft.firework_star." + color.getName());
    }
 
    public FireworkExplosion withFadeColors(final IntList fadeColors) {
       return new FireworkExplosion(this.shape, this.colors, new IntArrayList(fadeColors), this.hasTrail, this.hasTwinkle);
    }
 
-   public static enum Shape implements StringRepresentable {
+   public enum Shape implements StringRepresentable {
       SMALL_BALL(0, "small_ball"),
       LARGE_BALL(1, "large_ball"),
       STAR(2, "star"),
@@ -117,7 +117,7 @@ public record FireworkExplosion(FireworkExplosion.Shape shape, IntList colors, I
       private final int id;
       private final String name;
 
-      private Shape(final int id, final String name) {
+      Shape(final int id, final String name) {
          this.id = id;
          this.name = name;
       }

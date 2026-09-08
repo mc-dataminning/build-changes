@@ -32,9 +32,7 @@ public class SmallDripleafBlock extends DoublePlantBlock implements SimpleWaterl
 
    public SmallDripleafBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER).setValue(WATERLOGGED, Boolean.valueOf(false)).setValue(FACING, Direction.NORTH)
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER).setValue(WATERLOGGED, false).setValue(FACING, Direction.NORTH));
    }
 
    @Override
@@ -48,9 +46,8 @@ public class SmallDripleafBlock extends DoublePlantBlock implements SimpleWaterl
          || level.getFluidState(pos.above()).isSourceOfType(Fluids.WATER) && super.mayPlaceOn(state, level, pos);
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockState state = super.getStateForPlacement(context);
       return state != null
          ? copyWaterloggedFrom(context.getLevel(), context.getClickedPos(), state.setValue(FACING, context.getHorizontalDirection().getOpposite()))
@@ -58,7 +55,7 @@ public class SmallDripleafBlock extends DoublePlantBlock implements SimpleWaterl
    }
 
    @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, @Nullable final LivingEntity by, final ItemStack itemStack) {
+   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
       if (!level.isClientSide()) {
          BlockPos abovePos = pos.above();
          BlockState blockState = DoublePlantBlock.copyWaterloggedFrom(
@@ -77,11 +74,11 @@ public class SmallDripleafBlock extends DoublePlantBlock implements SimpleWaterl
    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
       if (state.getValue(HALF) == DoubleBlockHalf.UPPER) {
          return super.canSurvive(state, level, pos);
-      } else {
-         BlockPos belowPos = pos.below();
-         BlockState belowState = level.getBlockState(belowPos);
-         return this.mayPlaceOn(belowState, level, belowPos);
       }
+
+      BlockPos belowPos = pos.below();
+      BlockState belowState = level.getBlockState(belowPos);
+      return this.mayPlaceOn(belowState, level, belowPos);
    }
 
    @Override

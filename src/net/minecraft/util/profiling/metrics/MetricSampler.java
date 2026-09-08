@@ -18,10 +18,8 @@ public class MetricSampler {
    private final ByteBuf ticks;
    private final ByteBuf values;
    private volatile boolean isRunning;
-   @Nullable
-   private final Runnable beforeTick;
-   @Nullable
-   final MetricSampler.ThresholdTest thresholdTest;
+   private final @Nullable Runnable beforeTick;
+   final MetricSampler.@Nullable ThresholdTest thresholdTest;
    private double currentValue;
 
    protected MetricSampler(
@@ -29,8 +27,8 @@ public class MetricSampler {
       final MetricSampler.SamplingPhase samplingPhase,
       final MetricCategory category,
       final DoubleSupplier sampler,
-      @Nullable final Runnable beforeTick,
-      @Nullable final MetricSampler.ThresholdTest thresholdTest
+      final @Nullable Runnable beforeTick,
+      final MetricSampler.@Nullable ThresholdTest thresholdTest
    ) {
       this.name = name;
       this.samplingPhase = samplingPhase;
@@ -64,10 +62,10 @@ public class MetricSampler {
    public void onStartTick() {
       if (!this.isRunning) {
          throw new IllegalStateException("Not running");
-      } else {
-         if (this.beforeTick != null) {
-            this.beforeTick.run();
-         }
+      }
+
+      if (this.beforeTick != null) {
+         this.beforeTick.run();
       }
    }
 
@@ -152,10 +150,8 @@ public class MetricSampler {
       private final DoubleSupplier sampler;
       private final T context;
       private MetricSampler.SamplingPhase samplingPhase = MetricSampler.SamplingPhase.END_TICK;
-      @Nullable
-      private Runnable beforeTick;
-      @Nullable
-      private MetricSampler.ThresholdTest thresholdTest;
+      private @Nullable Runnable beforeTick;
+      private MetricSampler.@Nullable ThresholdTest thresholdTest;
 
       public MetricSamplerBuilder(final String name, final MetricCategory category, final ToDoubleFunction<T> sampler, final T context) {
          this.name = name;
@@ -208,7 +204,7 @@ public class MetricSampler {
       }
    }
 
-   public static enum SamplingPhase {
+   public enum SamplingPhase {
       EXTRACT,
       END_TICK;
    }
@@ -229,7 +225,7 @@ public class MetricSampler {
       public boolean test(final double value) {
          boolean result;
          if (this.previousValue != Double.MIN_VALUE && !(value <= this.previousValue)) {
-            result = (value - this.previousValue) / this.previousValue >= (double)this.percentageIncreaseThreshold;
+            result = (value - this.previousValue) / this.previousValue >= this.percentageIncreaseThreshold;
          } else {
             result = false;
          }

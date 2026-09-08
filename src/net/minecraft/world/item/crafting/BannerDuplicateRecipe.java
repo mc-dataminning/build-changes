@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.entity.BannerPatternLayers;
 public class BannerDuplicateRecipe extends CustomRecipe {
    public static final MapCodec<BannerDuplicateRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(Ingredient.CODEC.fieldOf("banner").forGetter(o -> o.banner), ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result))
-            .apply(i, BannerDuplicateRecipe::new)
+         .apply(i, BannerDuplicateRecipe::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, BannerDuplicateRecipe> STREAM_CODEC = StreamCodec.composite(
       Ingredient.CONTENTS_STREAM_CODEC, o -> o.banner, ItemStackTemplate.STREAM_CODEC, o -> o.result, BannerDuplicateRecipe::new
@@ -33,47 +33,47 @@ public class BannerDuplicateRecipe extends CustomRecipe {
    public boolean matches(final CraftingInput input, final Level level) {
       if (input.ingredientCount() != 2) {
          return false;
-      } else {
-         DyeColor color = null;
-         boolean hasTarget = false;
-         boolean hasSource = false;
+      }
 
-         for (int slot = 0; slot < input.size(); slot++) {
-            ItemStack itemStack = input.getItem(slot);
-            if (!itemStack.isEmpty()) {
-               if (!this.banner.test(itemStack) || !(itemStack.getItem() instanceof BannerItem banner)) {
+      DyeColor color = null;
+      boolean hasTarget = false;
+      boolean hasSource = false;
+
+      for (int slot = 0; slot < input.size(); slot++) {
+         ItemStack itemStack = input.getItem(slot);
+         if (!itemStack.isEmpty()) {
+            if (!this.banner.test(itemStack) || !(itemStack.getItem() instanceof BannerItem banner)) {
+               return false;
+            }
+
+            if (color == null) {
+               color = banner.getColor();
+            } else if (color != banner.getColor()) {
+               return false;
+            }
+
+            int patternCount = itemStack.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY).layers().size();
+            if (patternCount > 6) {
+               return false;
+            }
+
+            if (patternCount > 0) {
+               if (hasSource) {
                   return false;
                }
 
-               if (color == null) {
-                  color = banner.getColor();
-               } else if (color != banner.getColor()) {
+               hasSource = true;
+            } else {
+               if (hasTarget) {
                   return false;
                }
 
-               int patternCount = itemStack.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY).layers().size();
-               if (patternCount > 6) {
-                  return false;
-               }
-
-               if (patternCount > 0) {
-                  if (hasSource) {
-                     return false;
-                  }
-
-                  hasSource = true;
-               } else {
-                  if (hasTarget) {
-                     return false;
-                  }
-
-                  hasTarget = true;
-               }
+               hasTarget = true;
             }
          }
-
-         return hasSource && hasTarget;
       }
+
+      return hasSource && hasTarget;
    }
 
    public ItemStack assemble(final CraftingInput input) {

@@ -11,11 +11,11 @@ import net.minecraft.world.level.Level;
 public class BrewingRecipe implements Recipe<BrewingInput> {
    public static final MapCodec<BrewingRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               PotionIngredient.MAP_CODEC.fieldOf("input").forGetter(o -> o.input),
-               PotionIngredient.MAP_CODEC.fieldOf("reagent").forGetter(o -> o.reagent),
-               ItemStackTemplate.CODEC.fieldOf("output").forGetter(o -> o.output)
-            )
-            .apply(i, BrewingRecipe::new)
+            PotionIngredient.MAP_CODEC.fieldOf("input").forGetter(o -> o.input),
+            PotionIngredient.MAP_CODEC.fieldOf("reagent").forGetter(o -> o.reagent),
+            ItemStackTemplate.CODEC.fieldOf("output").forGetter(o -> o.output)
+         )
+         .apply(i, BrewingRecipe::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, BrewingRecipe> STREAM_CODEC = StreamCodec.composite(
       PotionIngredient.STREAM_CODEC,

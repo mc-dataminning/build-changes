@@ -18,13 +18,11 @@ import com.mojang.renderpearl.backend.api.CommandEncoderBackend;
 import com.mojang.renderpearl.backend.api.RenderPassBackend;
 import com.mojang.renderpearl.util.TextureViewAndSampler;
 import com.mojang.renderpearl.util.UncheckedAutoCloseable;
-import java.lang.runtime.SwitchBootstraps;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.OptionalDouble;
 import org.joml.Vector4fc;
@@ -47,17 +45,15 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
    private long currentSubmitIndex = 2L;
    private final int readFbo;
    private final int drawFbo;
-   @Nullable
-   private GlRenderPipeline lastPipeline;
-   @Nullable
-   private GlProgram lastProgram;
-   private final List<FrameBufferAttachment> renderPassColorTextures = new ArrayList<>();
+   private @Nullable GlRenderPipeline lastPipeline;
+   private @Nullable GlProgram lastProgram;
+   private final List<@Nullable FrameBufferAttachment> renderPassColorTextures = new ArrayList<>();
 
    protected GlCommandEncoder(final GlDevice device) {
       this.device = device;
-      this.transientMemory = (GlTransientMemory)(device.getDeviceInfo().features().persistentMapping()
+      this.transientMemory = device.getDeviceInfo().features().persistentMapping()
          ? new GlTransientMemory.PersistentMapping(device, this)
-         : new GlTransientMemory.Fallback(device, this));
+         : new GlTransientMemory.Fallback(device, this);
       this.readFbo = device.directStateAccess().createFrameBufferObject();
       this.drawFbo = device.directStateAccess().createFrameBufferObject();
    }
@@ -81,15 +77,17 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
       this.currentSubmitIndex++;
       if (!this.awaitSubmit(this.currentSubmitIndex - 2L, -1L)) {
          throw new IllegalStateException("Failed to wait for frame completion");
-      } else {
-         this.transientMemory.rotate();
       }
+
+      this.transientMemory.rotate();
    }
 
    public boolean awaitSubmit(final long index, final long timeoutNS) {
       if (this.currentSubmitIndex > index + 2L) {
          return true;
-      } else if (index == this.currentSubmitIndex) {
+      }
+
+      if (index == this.currentSubmitIndex) {
          if (timeoutNS == 0L) {
             return false;
          } else {
@@ -100,18 +98,20 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
          long fence = this.fences[submitSlot];
          if (fence == 0L) {
             return true;
-         } else {
-            int result = GlStateManager._glClientWaitSync(fence, 1, timeoutNS);
-            if (result == 37147) {
-               return false;
-            } else if (result == 37149) {
-               throw new IllegalStateException("Failed to complete GPU fence: " + GlStateManager._getError());
-            } else {
-               GL33C.glDeleteSync(this.fences[submitSlot]);
-               this.fences[submitSlot] = 0L;
-               return true;
-            }
          }
+
+         int result = GlStateManager._glClientWaitSync(fence, 1, timeoutNS);
+         if (result == 37147) {
+            return false;
+         }
+
+         if (result == 37149) {
+            throw new IllegalStateException("Failed to complete GPU fence: " + GlStateManager._getError());
+         }
+
+         GL33C.glDeleteSync(this.fences[submitSlot]);
+         this.fences[submitSlot] = 0L;
+         return true;
       }
    }
 
@@ -176,11 +176,11 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
       GlStateManager._viewport(0, 0, width, height);
       int[] drawBuffers = new int[this.renderPassColorTextures.size()];
 
-      for (int ix = 0; ix < this.renderPassColorTextures.size(); ix++) {
-         if (colorAttachments.get(ix) != null) {
-            drawBuffers[ix] = 36064 + ix;
+      for (int i = 0; i < this.renderPassColorTextures.size(); i++) {
+         if (colorAttachments.get(i) != null) {
+            drawBuffers[i] = 36064 + i;
          } else {
-            drawBuffers[ix] = 0;
+            drawBuffers[i] = 0;
          }
       }
 
@@ -338,8 +338,8 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
       }
 
       int texelSize = destination.getFormat().blockSize();
-      long skipTexels = (long)sourceX + (long)sourceY * (long)sourceWidth;
-      long skipBytes = skipTexels * (long)texelSize;
+      long skipTexels = sourceX + (long)sourceY * sourceWidth;
+      long skipBytes = skipTexels * texelSize;
       GlBuffer sourceGlBuffer = (GlBuffer)source.buffer();
       GlStateManager._glBindBuffer(35052, sourceGlBuffer.handle());
       GlStateManager._pixelStore(3314, sourceWidth);
@@ -392,7 +392,7 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
 
       GlStateManager._readPixels(x, y, width, height, GlConst.toGlExternalId(source.getFormat()), GlConst.toGlType(source.getFormat()), offset);
       RenderSystem.queueFencedTask(callback);
-      GlStateManager._glFramebufferTexture2D(36008, isDepth ? '贀' : '賠', 3553, 0, mipLevel);
+      GlStateManager._glFramebufferTexture2D(36008, isDepth ? 36096 : 36064, 3553, 0, mipLevel);
       GlStateManager._glBindFramebuffer(36008, 0);
       GlStateManager._glBindBuffer(35051, 0);
       int error = GlStateManager._getError();
@@ -454,7 +454,7 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
       final int baseVertex,
       final int firstIndex,
       final int drawCount,
-      @Nullable final IndexType indexType,
+      final @Nullable IndexType indexType,
       final int instanceCount,
       final int firstInstance
    ) {
@@ -465,14 +465,14 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
                renderPass.pipeline.primitiveTopology(),
                drawCount,
                GlConst.toGl(indexType),
-               (long)firstIndex * (long)indexType.bytes,
+               (long)firstIndex * indexType.bytes,
                instanceCount,
                baseVertex,
                firstInstance
             );
          } else {
             GL33C.glDrawElementsInstancedBaseVertex(
-               renderPass.pipeline.primitiveTopology(), drawCount, GlConst.toGl(indexType), (long)firstIndex * (long)indexType.bytes, instanceCount, baseVertex
+               renderPass.pipeline.primitiveTopology(), drawCount, GlConst.toGl(indexType), (long)firstIndex * indexType.bytes, instanceCount, baseVertex
             );
          }
       } else if (firstInstance > 0) {
@@ -484,8 +484,8 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
 
    public void executeDraws(
       final GlRenderPass renderPass,
-      @Nullable final IndexType indexType,
-      @Nullable final PointerBuffer firstIndexOffsets,
+      final @Nullable IndexType indexType,
+      final @Nullable PointerBuffer firstIndexOffsets,
       final IntBuffer indexCounts,
       final IntBuffer vertexOffsets,
       final int drawCount
@@ -495,7 +495,6 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
          GL33C.nglMultiDrawArrays(renderPass.pipeline.primitiveTopology(), MemoryUtil.memAddress(vertexOffsets), MemoryUtil.memAddress(indexCounts), drawCount);
       } else {
          assert firstIndexOffsets != null;
-
          GL33C.nglMultiDrawElementsBaseVertex(
             renderPass.pipeline.primitiveTopology(),
             MemoryUtil.memAddress(indexCounts),
@@ -508,7 +507,7 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
    }
 
    protected void executeDrawIndirect(
-      final GlRenderPass renderPass, @Nullable final IndexType indexType, final GlBuffer commands, final long offset, final int drawCount
+      final GlRenderPass renderPass, final @Nullable IndexType indexType, final GlBuffer commands, final long offset, final int drawCount
    ) {
       this.setupDraw(renderPass);
       GlStateManager._glBindBuffer(36671, commands.handle());
@@ -525,7 +524,6 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
       }
    }
 
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
    private void setupDraw(final GlRenderPass renderPass) {
       if (renderPass.vertexBufferDirty) {
          renderPass.pipeline.vertexArray().bind(renderPass.vertexBuffers);
@@ -548,7 +546,6 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
          Uniform.Ubo pushConstantUBO = glProgram.pushConstant();
          if (pushConstantUBO != null) {
             assert renderPass.pushConstants != null;
-
             GL33C.glBindBufferRange(
                35345,
                pushConstantUBO.blockBinding(),
@@ -562,116 +559,27 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
       if (renderPass.anyUniformDirty) {
          renderPass.anyUniformDirty = false;
 
-         label130:
          for (int i = 0; i < renderPass.dirtyUniforms.size(); i++) {
             if (renderPass.dirtyUniforms.getBoolean(i)) {
                renderPass.dirtyUniforms.set(i, false);
                Uniform dirtyUniform = glProgram.getUniform(i);
                if (dirtyUniform != null) {
-                  Objects.requireNonNull(dirtyUniform);
-                  Uniform var5 = dirtyUniform;
-                  byte var6 = 0;
-
-                  while (true) {
-                     int var34;
-                     label125:
-                     while (true) {
-                        Throwable var33;
-                        switch (SwitchBootstraps.typeSwitch<"typeSwitch",Uniform.Ubo,Uniform.Utb,Uniform.Sampler>(var5, var6)) {
-                           case 0:
-                              Uniform.Ubo var7 = (Uniform.Ubo)var5;
-                              Uniform.Ubo var41 = var7;
-
-                              try {
-                                 var34 = var41.blockBinding();
-                              } catch (Throwable var23) {
-                                 var33 = var23;
-                                 boolean var46 = false;
-                                 break;
-                              }
-
-                              int var26 = var34;
-                              if (true) {
-                                 GpuBufferSlice var27 = (GpuBufferSlice)renderPass.uniforms.get(i);
-                                 GL33C.glBindBufferRange(35345, var26, ((GlBuffer)var27.buffer()).handle(), var27.offset(), var27.length());
-                                 continue label130;
-                              }
-
-                              var6 = 1;
-                              continue;
-                           case 1:
-                              Uniform.Utb bufferView = (Uniform.Utb)var5;
-                              Uniform.Utb var35 = bufferView;
-
-                              try {
-                                 var34 = var35.samplerIndex();
-                              } catch (Throwable var22) {
-                                 var33 = var22;
-                                 boolean var43 = false;
-                                 break;
-                              }
-
-                              int var28 = var34;
-                              if (true) {
-                                 Uniform.Utb var37 = bufferView;
-
-                                 try {
-                                    var38 = var37.format();
-                                 } catch (Throwable var21) {
-                                    var33 = var21;
-                                    boolean var44 = false;
-                                    break;
-                                 }
-
-                                 GpuFormat var29 = var38;
-                                 Uniform.Utb var39 = bufferView;
-
-                                 try {
-                                    var34 = var39.texture();
-                                 } catch (Throwable var20) {
-                                    var33 = var20;
-                                    boolean var45 = false;
-                                    break;
-                                 }
-
-                                 var28 = var34;
-                                 if (true) {
-                                    GlStateManager._activeTexture(33984 + var28);
-                                    GL33C.glBindTexture(35882, var28);
-                                    GpuBufferSlice var31 = (GpuBufferSlice)renderPass.uniforms.get(i);
-                                    GL33C.glTexBuffer(35882, GlConst.toGlInternalId(var29), ((GlBuffer)var31.buffer()).handle());
-                                    continue label130;
-                                 }
-                              }
-
-                              var6 = 2;
-                              continue;
-                           case 2:
-                              Uniform.Sampler bufferView = (Uniform.Sampler)var5;
-                              Uniform.Sampler var10000 = bufferView;
-
-                              try {
-                                 var34 = var10000.samplerIndex();
-                                 break label125;
-                              } catch (Throwable var19) {
-                                 var33 = var19;
-                                 boolean var10001 = false;
-                                 break;
-                              }
-                           default:
-                              throw new MatchException(null, null);
-                        }
-
-                        Throwable var25 = var33;
-                        throw new MatchException(var25.toString(), var25);
-                     }
-
-                     int viewAndSampler = var34;
-                     if (true) {
-                        TextureViewAndSampler viewAndSamplerx = (TextureViewAndSampler)renderPass.uniforms.get(i);
-                        if (viewAndSamplerx != null) {
-                           GlTextureView textureView = (GlTextureView)viewAndSamplerx.view();
-                           GlStateManager._activeTexture(33984 + viewAndSampler);
+                  switch (dirtyUniform) {
+                     case Uniform.Ubo(int blockBinding):
+                        GpuBufferSlice var26 = (GpuBufferSlice)renderPass.uniforms.get(i);
+                        GL33C.glBindBufferRange(35345, blockBinding, ((GlBuffer)var26.buffer()).handle(), var26.offset(), var26.length());
+                        break;
+                     case Uniform.Utb(int samplerIndex, GpuFormat format, int texture):
+                        GlStateManager._activeTexture(33984 + samplerIndex);
+                        GL33C.glBindTexture(35882, texture);
+                        GpuBufferSlice var30 = (GpuBufferSlice)renderPass.uniforms.get(i);
+                        GL33C.glTexBuffer(35882, GlConst.toGlInternalId(format), ((GlBuffer)var30.buffer()).handle());
+                        break;
+                     case Uniform.Sampler(int samplerIndex):
+                        TextureViewAndSampler viewAndSampler = (TextureViewAndSampler)renderPass.uniforms.get(i);
+                        if (viewAndSampler != null) {
+                           GlTextureView textureView = (GlTextureView)viewAndSampler.view();
+                           GlStateManager._activeTexture(33984 + samplerIndex);
                            GlTexture texture = textureView.texture();
                            int target;
                            if ((texture.usage() & 16) != 0) {
@@ -682,14 +590,13 @@ class GlCommandEncoder implements CommandEncoderBackend, UncheckedAutoCloseable 
                               GlStateManager._bindTexture(texture.id);
                            }
 
-                           GL33C.glBindSampler(viewAndSampler, ((GlSampler)viewAndSamplerx.sampler()).getId());
+                           GL33C.glBindSampler(samplerIndex, ((GlSampler)viewAndSampler.sampler()).getId());
                            GlStateManager._texParameter(target, 33084, textureView.baseMipLevel());
                            GlStateManager._texParameter(target, 33085, textureView.baseMipLevel() + textureView.mipLevels() - 1);
                         }
                         break;
-                     }
-
-                     var6 = 3;
+                     default:
+                        throw new MatchException(null, null);
                   }
                }
             }

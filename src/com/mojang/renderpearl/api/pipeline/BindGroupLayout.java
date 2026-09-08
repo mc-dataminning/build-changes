@@ -8,9 +8,8 @@ import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
 public record BindGroupLayout(List<BindGroupLayout.UniformDescription> uniforms) {
-   public BindGroupLayout(List<BindGroupLayout.UniformDescription> uniforms) {
+   public BindGroupLayout {
       uniforms = List.copyOf(uniforms);
-      this.uniforms = uniforms;
    }
 
    public static BindGroupLayout.Builder builder() {
@@ -50,19 +49,19 @@ public record BindGroupLayout(List<BindGroupLayout.UniformDescription> uniforms)
       public BindGroupLayout.Builder withUniform(final String name, final UniformType type) {
          if (type == UniformType.TEXEL_BUFFER) {
             throw new IllegalArgumentException("Cannot use texel buffer without specifying texture format");
-         } else {
-            this.uniforms.add(new BindGroupLayout.UniformDescription(name, type));
-            return this;
          }
+
+         this.uniforms.add(new BindGroupLayout.UniformDescription(name, type));
+         return this;
       }
 
       public BindGroupLayout.Builder withUniform(final String name, final UniformType type, final GpuFormat format) {
          if (type != UniformType.TEXEL_BUFFER) {
             throw new IllegalArgumentException("Only texel buffer can specify texture format");
-         } else {
-            this.uniforms.add(new BindGroupLayout.UniformDescription(name, format));
-            return this;
          }
+
+         this.uniforms.add(new BindGroupLayout.UniformDescription(name, format));
+         return this;
       }
 
       public BindGroupLayout build() {
@@ -70,7 +69,7 @@ public record BindGroupLayout(List<BindGroupLayout.UniformDescription> uniforms)
       }
    }
 
-   public static record UniformDescription(String name, UniformType type, @Nullable GpuFormat gpuFormat) {
+   public record UniformDescription(String name, UniformType type, @Nullable GpuFormat gpuFormat) {
       public UniformDescription(final String name, final UniformType type) {
          this(name, type, null);
          if (type == UniformType.TEXEL_BUFFER) {

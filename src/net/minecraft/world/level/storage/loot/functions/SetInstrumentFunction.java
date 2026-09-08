@@ -17,8 +17,8 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 public class SetInstrumentFunction extends LootItemConditionalFunction {
    public static final MapCodec<SetInstrumentFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
-            .and(RegistryCodecs.holderSet(Registries.INSTRUMENT).fieldOf("options").forGetter(f -> f.options))
-            .apply(i, SetInstrumentFunction::new)
+         .and(RegistryCodecs.holderSet(Registries.INSTRUMENT).fieldOf("options").forGetter(f -> f.options))
+         .apply(i, SetInstrumentFunction::new)
    );
    private final HolderSet<Instrument> options;
 

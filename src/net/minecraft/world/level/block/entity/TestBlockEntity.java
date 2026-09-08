@@ -53,8 +53,7 @@ public class TestBlockEntity extends BlockEntity {
       }
    }
 
-   @Nullable
-   public ClientboundBlockEntityDataPacket getUpdatePacket() {
+   public @Nullable ClientboundBlockEntityDataPacket getUpdatePacket() {
       return ClientboundBlockEntityDataPacket.create(this);
    }
 

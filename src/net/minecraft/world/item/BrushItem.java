@@ -87,11 +87,9 @@ public class BrushItem extends Item {
                   }
                }
             }
-
-            return;
+         } else {
+            livingEntity.releaseUsingItem();
          }
-
-         livingEntity.releaseUsingItem();
       } else {
          livingEntity.releaseUsingItem();
       }
@@ -115,17 +113,17 @@ public class BrushItem extends Item {
       for (int i = 0; i < particles; i++) {
          level.addParticle(
             particle,
-            hitLocation.x - (double)(hitDirection == Direction.WEST ? 1.0E-6F : 0.0F),
+            hitLocation.x - (hitDirection == Direction.WEST ? 1.0E-6F : 0.0F),
             hitLocation.y,
-            hitLocation.z - (double)(hitDirection == Direction.NORTH ? 1.0E-6F : 0.0F),
-            dustParticlesDelta.xd() * (double)flip * 3.0 * level.getRandom().nextDouble(),
+            hitLocation.z - (hitDirection == Direction.NORTH ? 1.0E-6F : 0.0F),
+            dustParticlesDelta.xd() * flip * 3.0 * level.getRandom().nextDouble(),
             0.0,
-            dustParticlesDelta.zd() * (double)flip * 3.0 * level.getRandom().nextDouble()
+            dustParticlesDelta.zd() * flip * 3.0 * level.getRandom().nextDouble()
          );
       }
    }
 
-   private static record DustParticlesDelta(double xd, double yd, double zd) {
+   private record DustParticlesDelta(double xd, double yd, double zd) {
       private static final double ALONG_SIDE_DELTA = 1.0;
       private static final double OUT_FROM_SIDE_DELTA = 0.1;
 

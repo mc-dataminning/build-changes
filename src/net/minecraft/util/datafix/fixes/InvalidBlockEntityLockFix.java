@@ -17,14 +17,14 @@ public class InvalidBlockEntityLockFix extends DataFix {
          "BlockEntityLockToComponentFix",
          this.getInputSchema().getType(References.BLOCK_ENTITY),
          blockEntity -> blockEntity.update(DSL.remainderFinder(), remainder -> {
-               Optional<? extends Dynamic<?>> lock = remainder.get("lock").result();
-               if (lock.isEmpty()) {
-                  return remainder;
-               } else {
-                  Dynamic<?> newLock = InvalidLockComponentFix.fixLock(lock.get());
-                  return newLock != null ? remainder.set("lock", newLock) : remainder.remove("lock");
-               }
-            })
+            Optional<? extends Dynamic<?>> lock = remainder.get("lock").result();
+            if (lock.isEmpty()) {
+               return remainder;
+            }
+
+            Dynamic<?> newLock = InvalidLockComponentFix.fixLock(lock.get());
+            return newLock != null ? remainder.set("lock", newLock) : remainder.remove("lock");
+         })
       );
    }
 }

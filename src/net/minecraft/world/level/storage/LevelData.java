@@ -30,15 +30,15 @@ public interface LevelData {
       category.setDetail("Level spawn location", () -> CrashReportCategory.formatLocation(levelHeightAccessor, this.getRespawnData().pos()));
    }
 
-   public static record RespawnData(GlobalPos globalPos, float yaw, float pitch) {
+   record RespawnData(GlobalPos globalPos, float yaw, float pitch) {
       public static final LevelData.RespawnData DEFAULT = new LevelData.RespawnData(GlobalPos.of(Level.OVERWORLD, BlockPos.ZERO), 0.0F, 0.0F);
       public static final MapCodec<LevelData.RespawnData> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  GlobalPos.MAP_CODEC.forGetter(LevelData.RespawnData::globalPos),
-                  Codec.floatRange(-180.0F, 180.0F).fieldOf("yaw").forGetter(LevelData.RespawnData::yaw),
-                  Codec.floatRange(-90.0F, 90.0F).fieldOf("pitch").forGetter(LevelData.RespawnData::pitch)
-               )
-               .apply(i, LevelData.RespawnData::new)
+               GlobalPos.MAP_CODEC.forGetter(LevelData.RespawnData::globalPos),
+               Codec.floatRange(-180.0F, 180.0F).fieldOf("yaw").forGetter(LevelData.RespawnData::yaw),
+               Codec.floatRange(-90.0F, 90.0F).fieldOf("pitch").forGetter(LevelData.RespawnData::pitch)
+            )
+            .apply(i, LevelData.RespawnData::new)
       );
       public static final Codec<LevelData.RespawnData> CODEC = MAP_CODEC.codec();
       public static final StreamCodec<ByteBuf, LevelData.RespawnData> STREAM_CODEC = StreamCodec.composite(

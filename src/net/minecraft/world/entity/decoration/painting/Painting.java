@@ -69,9 +69,8 @@ public class Painting extends HangingEntity {
       return this.entityData.get(DATA_PAINTING_VARIANT_ID);
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       return type == DataComponents.PAINTING_VARIANT ? castComponentValue((DataComponentType<T>)type, this.getVariant()) : super.get(type);
    }
 
@@ -97,27 +96,27 @@ public class Painting extends HangingEntity {
       level.registryAccess().lookupOrThrow(Registries.PAINTING_VARIANT).getTagOrEmpty(PaintingVariantTags.PLACEABLE).forEach(potentialVariants::add);
       if (potentialVariants.isEmpty()) {
          return Optional.empty();
-      } else {
-         candidate.setDirection(direction);
-         potentialVariants.removeIf(variant -> {
-            candidate.setVariant((Holder<PaintingVariant>)variant);
-            return !candidate.survives();
-         });
-         if (potentialVariants.isEmpty()) {
-            return Optional.empty();
-         } else {
-            int largestPaintingAreaSize = potentialVariants.stream().mapToInt(Painting::variantArea).max().orElse(0);
-            potentialVariants.removeIf(variant -> variantArea((Holder<PaintingVariant>)variant) < largestPaintingAreaSize);
-            Optional<Holder<PaintingVariant>> selectedVariant = Util.getRandomSafe(potentialVariants, candidate.random);
-            if (selectedVariant.isEmpty()) {
-               return Optional.empty();
-            } else {
-               candidate.setVariant(selectedVariant.get());
-               candidate.setDirection(direction);
-               return Optional.of(candidate);
-            }
-         }
       }
+
+      candidate.setDirection(direction);
+      potentialVariants.removeIf(variant -> {
+         candidate.setVariant((Holder<PaintingVariant>)variant);
+         return !candidate.survives();
+      });
+      if (potentialVariants.isEmpty()) {
+         return Optional.empty();
+      }
+
+      int largestPaintingAreaSize = potentialVariants.stream().mapToInt(Painting::variantArea).max().orElse(0);
+      potentialVariants.removeIf(variant -> variantArea((Holder<PaintingVariant>)variant) < largestPaintingAreaSize);
+      Optional<Holder<PaintingVariant>> selectedVariant = Util.getRandomSafe(potentialVariants, candidate.random);
+      if (selectedVariant.isEmpty()) {
+         return Optional.empty();
+      }
+
+      candidate.setVariant(selectedVariant.get());
+      candidate.setDirection(direction);
+      return Optional.of(candidate);
    }
 
    private static int variantArea(final Holder<PaintingVariant> variant) {
@@ -159,9 +158,9 @@ public class Painting extends HangingEntity {
       Direction left = direction.getCounterClockWise();
       Vec3 position = attachedToWall.relative(left, horizontalOffset).relative(Direction.UP, verticalOffset);
       Direction.Axis axis = direction.getAxis();
-      double xSize = axis == Direction.Axis.X ? 0.0625 : (double)variant.width();
-      double ySize = (double)variant.height();
-      double zSize = axis == Direction.Axis.Z ? 0.0625 : (double)variant.width();
+      double xSize = axis == Direction.Axis.X ? 0.0625 : variant.width();
+      double ySize = variant.height();
+      double zSize = axis == Direction.Axis.Z ? 0.0625 : variant.width();
       return AABB.ofSize(position, xSize, ySize, zSize);
    }
 
@@ -170,16 +169,14 @@ public class Painting extends HangingEntity {
    }
 
    @Override
-   public void dropItem(final ServerLevel level, @Nullable final Entity causedBy) {
+   public void dropItem(final ServerLevel level, final @Nullable Entity causedBy) {
       if (level.getGameRules().get(GameRules.ENTITY_DROPS)) {
          this.playSound(SoundEvents.PAINTING_BREAK, 1.0F, 1.0F);
-         if (causedBy instanceof Player player && player.hasInfiniteMaterials()) {
-            return;
+         if (!(causedBy instanceof Player player && player.hasInfiniteMaterials())) {
+            ItemStack itemStack = new ItemStack(Items.PAINTING);
+            itemStack.set(DataComponents.CUSTOM_NAME, this.getCustomName());
+            this.spawnAtLocation(level, itemStack);
          }
-
-         ItemStack itemStack = new ItemStack(Items.PAINTING);
-         itemStack.set(DataComponents.CUSTOM_NAME, this.getCustomName());
-         this.spawnAtLocation(level, itemStack);
       }
    }
 

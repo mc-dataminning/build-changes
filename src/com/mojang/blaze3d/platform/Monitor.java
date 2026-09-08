@@ -22,8 +22,7 @@ public record Monitor(String name, int id, List<VideoMode> videoModes, VideoMode
    private static final Logger LOGGER = LogUtils.getLogger();
    private static final HexFormat HEX_FORMAT = HexFormat.of().withUpperCase();
 
-   @Nullable
-   public static Monitor tryCreate(final int id) {
+   public static @Nullable Monitor tryCreate(final int id) {
       String name = queryMonitorName(id);
       Builder<VideoMode> videoModes = ImmutableList.builder();
       MemoryStack stack = MemoryStack.stackPush();
@@ -60,9 +59,9 @@ public record Monitor(String name, int id, List<VideoMode> videoModes, VideoMode
                      break label145;
                   }
 
-                  SDL_DisplayMode currentMode = SDLVideo.SDL_GetCurrentDisplayMode(id);
+                  SDL_DisplayMode currentMode = SDLVideo.SDL_GetDesktopDisplayMode(id);
                   if (currentMode == null) {
-                     LOGGER.warn("Failed to query current video mode of monitor {}: {}", name, SDLError.SDL_GetError());
+                     LOGGER.warn("Failed to query current desktop video mode of monitor {}: {}", name, SDLError.SDL_GetError());
                      var18 = null;
                      break label146;
                   }

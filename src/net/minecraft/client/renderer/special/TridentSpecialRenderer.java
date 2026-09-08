@@ -44,7 +44,7 @@ public class TridentSpecialRenderer implements NoDataSpecialModelRenderer {
       this.model.root().getExtentsForGui(poseStack, output);
    }
 
-   public static record Unbaked() implements NoDataSpecialModelRenderer.Unbaked {
+   public record Unbaked() implements NoDataSpecialModelRenderer.Unbaked {
       public static final MapCodec<TridentSpecialRenderer.Unbaked> MAP_CODEC = MapCodec.unit(new TridentSpecialRenderer.Unbaked());
 
       @Override

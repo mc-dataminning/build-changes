@@ -20,14 +20,14 @@ public record GradientFunction(Direction.Axis axis, TilingMode tiling, int fromC
    implements DensityFunction {
    public static final MapCodec<GradientFunction> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Direction.Axis.CODEC.fieldOf("axis").forGetter(GradientFunction::axis),
-                  TilingMode.CODEC.optionalFieldOf("tiling", TilingMode.CLAMP_TO_EDGE).forGetter(GradientFunction::tiling),
-                  Codec.INT.fieldOf("from_coordinate").forGetter(GradientFunction::fromCoordinate),
-                  Codec.INT.fieldOf("to_coordinate").forGetter(GradientFunction::toCoordinate),
-                  DensityFunctions.NOISE_VALUE_CODEC.fieldOf("from_value").forGetter(GradientFunction::fromValue),
-                  DensityFunctions.NOISE_VALUE_CODEC.fieldOf("to_value").forGetter(GradientFunction::toValue)
-               )
-               .apply(i, GradientFunction::new)
+               Direction.Axis.CODEC.fieldOf("axis").forGetter(GradientFunction::axis),
+               TilingMode.CODEC.optionalFieldOf("tiling", TilingMode.CLAMP_TO_EDGE).forGetter(GradientFunction::tiling),
+               Codec.INT.fieldOf("from_coordinate").forGetter(GradientFunction::fromCoordinate),
+               Codec.INT.fieldOf("to_coordinate").forGetter(GradientFunction::toCoordinate),
+               DensityFunctions.NOISE_VALUE_CODEC.fieldOf("from_value").forGetter(GradientFunction::fromValue),
+               DensityFunctions.NOISE_VALUE_CODEC.fieldOf("to_value").forGetter(GradientFunction::toValue)
+            )
+            .apply(i, GradientFunction::new)
       )
       .validate(GradientFunction::validate);
 
@@ -40,9 +40,9 @@ public record GradientFunction(Direction.Axis axis, TilingMode tiling, int fromC
    @Override
    public DensitySampler compileSampler(final DensityFunction.CompileContext context) {
       int coordinateRange = this.toCoordinate - this.fromCoordinate;
-      float coordinateFactor = (this.toValue - this.fromValue) / (float)coordinateRange;
+      float coordinateFactor = (this.toValue - this.fromValue) / coordinateRange;
 
-      return (DensitySampler)(switch (this.tiling) {
+      return switch (this.tiling) {
          case CLAMP_TO_EDGE -> {
             int minCoordinate = Math.min(this.fromCoordinate, this.toCoordinate);
             int maxCoordinate = Math.max(this.fromCoordinate, this.toCoordinate);
@@ -50,7 +50,7 @@ public record GradientFunction(Direction.Axis axis, TilingMode tiling, int fromC
          }
          case REPEAT -> new GradientFunction.RepeatSampler(this.axis, this.fromCoordinate, coordinateRange, this.fromValue, coordinateFactor);
          case MIRRORED_REPEAT -> new GradientFunction.MirroredRepeatSampler(this.axis, this.fromCoordinate, coordinateRange, this.fromValue, coordinateFactor);
-      });
+      };
    }
 
    @Override
@@ -58,9 +58,8 @@ public record GradientFunction(Direction.Axis axis, TilingMode tiling, int fromC
       return Interval.encapsulating(this.fromValue, this.toValue);
    }
 
-   @DensityFunction.Axes
    @Override
-   public int domainAxes() {
+   public @DensityFunction.Axes int domainAxes() {
       return DensityFunction.axesFrom(this.axis);
    }
 
@@ -74,7 +73,7 @@ public record GradientFunction(Direction.Axis axis, TilingMode tiling, int fromC
       return this;
    }
 
-   private static record ClampedSampler(Direction.Axis axis, int fromCoordinate, int minCoordinate, int maxCoordinate, float fromValue, float coordinateFactor)
+   private record ClampedSampler(Direction.Axis axis, int fromCoordinate, int minCoordinate, int maxCoordinate, float fromValue, float coordinateFactor)
       implements GradientFunction.GradientSampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
@@ -89,7 +88,7 @@ public record GradientFunction(Direction.Axis axis, TilingMode tiling, int fromC
       @Override
       public float compute(final int coordinate) {
          int relativeCoordinate = Mth.clamp(coordinate, this.minCoordinate, this.maxCoordinate) - this.fromCoordinate;
-         return this.fromValue + (float)relativeCoordinate * this.coordinateFactor;
+         return this.fromValue + relativeCoordinate * this.coordinateFactor;
       }
    }
 
@@ -129,7 +128,7 @@ public record GradientFunction(Direction.Axis axis, TilingMode tiling, int fromC
       float compute(int coordinate);
    }
 
-   private static record MirroredRepeatSampler(Direction.Axis axis, int fromCoordinate, int coordinateRange, float fromValue, float coordinateFactor)
+   private record MirroredRepeatSampler(Direction.Axis axis, int fromCoordinate, int coordinateRange, float fromValue, float coordinateFactor)
       implements GradientFunction.GradientSampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
@@ -147,12 +146,12 @@ public record GradientFunction(Direction.Axis axis, TilingMode tiling, int fromC
          int tileIndex = Math.floorDiv(relativeCoordinate, this.coordinateRange);
          int localCoordinate = relativeCoordinate - tileIndex * this.coordinateRange;
          return (tileIndex & 1) == 0
-            ? this.fromValue + (float)localCoordinate * this.coordinateFactor
-            : this.fromValue + (float)(this.coordinateRange - localCoordinate) * this.coordinateFactor;
+            ? this.fromValue + localCoordinate * this.coordinateFactor
+            : this.fromValue + (this.coordinateRange - localCoordinate) * this.coordinateFactor;
       }
    }
 
-   private static record RepeatSampler(Direction.Axis axis, int fromCoordinate, int coordinateRange, float fromValue, float coordinateFactor)
+   private record RepeatSampler(Direction.Axis axis, int fromCoordinate, int coordinateRange, float fromValue, float coordinateFactor)
       implements GradientFunction.GradientSampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
@@ -167,7 +166,7 @@ public record GradientFunction(Direction.Axis axis, TilingMode tiling, int fromC
       @Override
       public float compute(final int coordinate) {
          int relativeCoordinate = coordinate - this.fromCoordinate;
-         return this.fromValue + (float)Math.floorMod(relativeCoordinate, this.coordinateRange) * this.coordinateFactor;
+         return this.fromValue + Math.floorMod(relativeCoordinate, this.coordinateRange) * this.coordinateFactor;
       }
    }
 }

@@ -178,14 +178,13 @@ public abstract class SignBlock extends BaseEntityBlock implements SimpleWaterlo
       return playerWhoMayEdit != null && !playerWhoMayEdit.equals(player.getUUID());
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return createTickerHelper(type, BlockEntityTypes.SIGN, SignBlockEntity::tick);
    }
 
    @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, @Nullable final LivingEntity by, final ItemStack itemStack) {
+   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
       if (!level.isClientSide()
          && by instanceof ServerPlayer player
          && state.getBlock() instanceof SignBlock sign

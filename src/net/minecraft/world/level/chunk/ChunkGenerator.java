@@ -158,95 +158,94 @@ public abstract class ChunkGenerator {
       return biomeResolver;
    }
 
-   @Nullable
-   public Pair<BlockPos, Holder<Structure>> findNearestMapStructure(
+   public @Nullable Pair<BlockPos, Holder<Structure>> findNearestMapStructure(
       final ServerLevel level, final HolderSet<Structure> wantedStructures, final BlockPos pos, final int maxSearchRadius, final boolean createReference
    ) {
       if (SharedConstants.DEBUG_DISABLE_FEATURES) {
          return null;
-      } else if (!level.getServer().getWorldGenSettings().options().generateStructures()) {
+      }
+
+      if (!level.getServer().getWorldGenSettings().options().generateStructures()) {
          return null;
-      } else {
-         ChunkGeneratorStructureState generatorState = level.getChunkSource().getGeneratorState();
-         Map<StructurePlacement, Set<Holder<Structure>>> placementScans = new Object2ObjectArrayMap();
+      }
 
-         for (Holder<Structure> structure : wantedStructures) {
-            for (StructurePlacement placement : generatorState.getPlacementsForStructure(structure)) {
-               placementScans.computeIfAbsent(placement, p -> new ObjectArraySet()).add(structure);
-            }
-         }
+      ChunkGeneratorStructureState generatorState = level.getChunkSource().getGeneratorState();
+      Map<StructurePlacement, Set<Holder<Structure>>> placementScans = new Object2ObjectArrayMap();
 
-         if (placementScans.isEmpty()) {
-            return null;
-         } else {
-            Pair<BlockPos, Holder<Structure>> nearest = null;
-            double distanceSqr = Double.MAX_VALUE;
-            StructureManager structureManager = level.structureManager();
-            List<Entry<StructurePlacement, Set<Holder<Structure>>>> randomSpreadEntries = new ArrayList<>(placementScans.size());
-
-            for (Entry<StructurePlacement, Set<Holder<Structure>>> entry : placementScans.entrySet()) {
-               StructurePlacement placement = entry.getKey();
-               if (placement instanceof ConcentricRingsStructurePlacement) {
-                  ConcentricRingsStructurePlacement rings = (ConcentricRingsStructurePlacement)placement;
-                  Pair<BlockPos, Holder<Structure>> generating = this.getNearestGeneratedStructure(
-                     entry.getValue(), level, structureManager, pos, createReference, rings
-                  );
-                  if (generating != null) {
-                     BlockPos structurePos = (BlockPos)generating.getFirst();
-                     double newDistanceSqr = pos.distSqr(structurePos);
-                     if (newDistanceSqr < distanceSqr) {
-                        distanceSqr = newDistanceSqr;
-                        nearest = generating;
-                     }
-                  }
-               } else if (placement instanceof RandomSpreadStructurePlacement) {
-                  randomSpreadEntries.add(entry);
-               }
-            }
-
-            if (!randomSpreadEntries.isEmpty()) {
-               int chunkOriginX = SectionPos.blockToSectionCoord(pos.getX());
-               int chunkOriginZ = SectionPos.blockToSectionCoord(pos.getZ());
-
-               for (int radius = 0; radius <= maxSearchRadius; radius++) {
-                  boolean foundSomething = false;
-
-                  for (Entry<StructurePlacement, Set<Holder<Structure>>> entryx : randomSpreadEntries) {
-                     RandomSpreadStructurePlacement randomPlacement = (RandomSpreadStructurePlacement)entryx.getKey();
-                     Pair<BlockPos, Holder<Structure>> structurePos = getNearestGeneratedStructure(
-                        entryx.getValue(),
-                        level,
-                        structureManager,
-                        chunkOriginX,
-                        chunkOriginZ,
-                        radius,
-                        createReference,
-                        generatorState.getLevelSeed(),
-                        randomPlacement
-                     );
-                     if (structurePos != null) {
-                        foundSomething = true;
-                        double newDistanceSqr = pos.distSqr((Vec3i)structurePos.getFirst());
-                        if (newDistanceSqr < distanceSqr) {
-                           distanceSqr = newDistanceSqr;
-                           nearest = structurePos;
-                        }
-                     }
-                  }
-
-                  if (foundSomething) {
-                     return nearest;
-                  }
-               }
-            }
-
-            return nearest;
+      for (Holder<Structure> structure : wantedStructures) {
+         for (StructurePlacement placement : generatorState.getPlacementsForStructure(structure)) {
+            placementScans.computeIfAbsent(placement, p -> new ObjectArraySet()).add(structure);
          }
       }
+
+      if (placementScans.isEmpty()) {
+         return null;
+      }
+
+      Pair<BlockPos, Holder<Structure>> nearest = null;
+      double distanceSqr = Double.MAX_VALUE;
+      StructureManager structureManager = level.structureManager();
+      List<Entry<StructurePlacement, Set<Holder<Structure>>>> randomSpreadEntries = new ArrayList<>(placementScans.size());
+
+      for (Entry<StructurePlacement, Set<Holder<Structure>>> entry : placementScans.entrySet()) {
+         StructurePlacement placement = entry.getKey();
+         if (placement instanceof ConcentricRingsStructurePlacement rings) {
+            Pair<BlockPos, Holder<Structure>> generating = this.getNearestGeneratedStructure(
+               entry.getValue(), level, structureManager, pos, createReference, rings
+            );
+            if (generating != null) {
+               BlockPos structurePos = (BlockPos)generating.getFirst();
+               double newDistanceSqr = pos.distSqr(structurePos);
+               if (newDistanceSqr < distanceSqr) {
+                  distanceSqr = newDistanceSqr;
+                  nearest = generating;
+               }
+            }
+         } else if (placement instanceof RandomSpreadStructurePlacement) {
+            randomSpreadEntries.add(entry);
+         }
+      }
+
+      if (!randomSpreadEntries.isEmpty()) {
+         int chunkOriginX = SectionPos.blockToSectionCoord(pos.getX());
+         int chunkOriginZ = SectionPos.blockToSectionCoord(pos.getZ());
+
+         for (int radius = 0; radius <= maxSearchRadius; radius++) {
+            boolean foundSomething = false;
+
+            for (Entry<StructurePlacement, Set<Holder<Structure>>> entry : randomSpreadEntries) {
+               RandomSpreadStructurePlacement randomPlacement = (RandomSpreadStructurePlacement)entry.getKey();
+               Pair<BlockPos, Holder<Structure>> structurePos = getNearestGeneratedStructure(
+                  entry.getValue(),
+                  level,
+                  structureManager,
+                  chunkOriginX,
+                  chunkOriginZ,
+                  radius,
+                  createReference,
+                  generatorState.getLevelSeed(),
+                  randomPlacement
+               );
+               if (structurePos != null) {
+                  foundSomething = true;
+                  double newDistanceSqr = pos.distSqr((Vec3i)structurePos.getFirst());
+                  if (newDistanceSqr < distanceSqr) {
+                     distanceSqr = newDistanceSqr;
+                     nearest = structurePos;
+                  }
+               }
+            }
+
+            if (foundSomething) {
+               return nearest;
+            }
+         }
+      }
+
+      return nearest;
    }
 
-   @Nullable
-   private Pair<BlockPos, Holder<Structure>> getNearestGeneratedStructure(
+   private @Nullable Pair<BlockPos, Holder<Structure>> getNearestGeneratedStructure(
       final Set<Holder<Structure>> structures,
       final ServerLevel level,
       final StructureManager structureManager,
@@ -257,30 +256,29 @@ public abstract class ChunkGenerator {
       List<ChunkPos> positions = level.getChunkSource().getGeneratorState().getRingPositionsFor(rings);
       if (positions == null) {
          throw new IllegalStateException("Somehow tried to find structures for a placement that doesn't exist");
-      } else {
-         Pair<BlockPos, Holder<Structure>> closestPos = null;
-         double closest = Double.MAX_VALUE;
-         BlockPos.MutableBlockPos structurePos = new BlockPos.MutableBlockPos();
+      }
 
-         for (ChunkPos chunkPos : positions) {
-            structurePos.set(SectionPos.sectionToBlockCoord(chunkPos.x(), 8), 32, SectionPos.sectionToBlockCoord(chunkPos.z(), 8));
-            double distSqr = structurePos.distSqr(pos);
-            boolean isClosest = closestPos == null || distSqr < closest;
-            if (isClosest) {
-               Pair<BlockPos, Holder<Structure>> generating = getStructureGeneratingAt(structures, level, structureManager, createReference, rings, chunkPos);
-               if (generating != null) {
-                  closestPos = generating;
-                  closest = distSqr;
-               }
+      Pair<BlockPos, Holder<Structure>> closestPos = null;
+      double closest = Double.MAX_VALUE;
+      BlockPos.MutableBlockPos structurePos = new BlockPos.MutableBlockPos();
+
+      for (ChunkPos chunkPos : positions) {
+         structurePos.set(SectionPos.sectionToBlockCoord(chunkPos.x(), 8), 32, SectionPos.sectionToBlockCoord(chunkPos.z(), 8));
+         double distSqr = structurePos.distSqr(pos);
+         boolean isClosest = closestPos == null || distSqr < closest;
+         if (isClosest) {
+            Pair<BlockPos, Holder<Structure>> generating = getStructureGeneratingAt(structures, level, structureManager, createReference, rings, chunkPos);
+            if (generating != null) {
+               closestPos = generating;
+               closest = distSqr;
             }
          }
-
-         return closestPos;
       }
+
+      return closestPos;
    }
 
-   @Nullable
-   private static Pair<BlockPos, Holder<Structure>> getNearestGeneratedStructure(
+   private static @Nullable Pair<BlockPos, Holder<Structure>> getNearestGeneratedStructure(
       final Set<Holder<Structure>> structures,
       final LevelReader level,
       final StructureManager structureManager,
@@ -315,8 +313,7 @@ public abstract class ChunkGenerator {
       return null;
    }
 
-   @Nullable
-   private static Pair<BlockPos, Holder<Structure>> getStructureGeneratingAt(
+   private static @Nullable Pair<BlockPos, Holder<Structure>> getStructureGeneratingAt(
       final Set<Holder<Structure>> structures,
       final LevelReader level,
       final StructureManager structureManager,
@@ -383,15 +380,15 @@ public abstract class ChunkGenerator {
                   for (Structure structure : structuresByStep.getOrDefault(stepIndex, Collections.emptyList())) {
                      random.setFeatureSeed(decorationSeed, index, stepIndex);
                      Supplier<String> currentlyGenerating = () -> structuresRegistry.getResourceKey(structure)
-                           .map(Object::toString)
-                           .orElseGet(structure::toString);
+                        .map(Object::toString)
+                        .orElseGet(structure::toString);
 
                      try {
                         level.setCurrentlyGenerating(currentlyGenerating);
                         structureManager.startsForStructure(sectionPos.x(), sectionPos.z(), structure)
                            .forEach(start -> start.placeInChunk(level, structureManager, this, random, getWritableArea(chunk), centerPos));
-                     } catch (Exception var30) {
-                        CrashReport report = CrashReport.forThrowable(var30, "Feature placement");
+                     } catch (Exception e) {
+                        CrashReport report = CrashReport.forThrowable(e, "Feature placement");
                         report.addCategory("Feature").setDetail("Description", currentlyGenerating::get);
                         throw new ReportedException(report);
                      }
@@ -428,8 +425,8 @@ public abstract class ChunkGenerator {
                      try {
                         level.setCurrentlyGenerating(currentlyGenerating);
                         placer.placeWithBiomeCheck(feature, random, origin);
-                     } catch (Exception var31) {
-                        CrashReport report = CrashReport.forThrowable(var31, "Feature placement");
+                     } catch (Exception e) {
+                        CrashReport report = CrashReport.forThrowable(e, "Feature placement");
                         report.addCategory("Feature").setDetail("Description", currentlyGenerating::get);
                         throw new ReportedException(report);
                      }
@@ -441,8 +438,8 @@ public abstract class ChunkGenerator {
             if (SharedConstants.DEBUG_FEATURE_COUNT) {
                FeatureCountTracker.chunkDecorated(level.getLevel());
             }
-         } catch (Exception var32) {
-            CrashReport report = CrashReport.forThrowable(var32, "Biome decoration");
+         } catch (Exception e) {
+            CrashReport report = CrashReport.forThrowable(e, "Biome decoration");
             report.addCategory("Generation")
                .setDetail("CenterX", centerPos.x())
                .setDetail("CenterZ", centerPos.z())
@@ -652,8 +649,8 @@ public abstract class ChunkGenerator {
                   if (start.isValid() && start.getBoundingBox().intersects(targetBlockX, targetBlockZ, targetBlockX + 15, targetBlockZ + 15)) {
                      structureManager.addReferenceForStructure(start.getStructure(), sourceChunkKey, centerChunk);
                   }
-               } catch (Exception var21) {
-                  CrashReport report = CrashReport.forThrowable(var21, "Generating structure reference");
+               } catch (Exception e) {
+                  CrashReport report = CrashReport.forThrowable(e, "Generating structure reference");
                   CrashReportCategory structure = report.addCategory("Structure");
                   Optional<? extends Registry<Structure>> configuredStructuresRegistry = level.registryAccess().lookup(Registries.STRUCTURE);
                   structure.setDetail("Id", () -> configuredStructuresRegistry.<String>map(r -> r.getKey(start.getStructure()).toString()).orElse("UNKNOWN"));

@@ -111,7 +111,7 @@ public abstract class TrackedWaypoint implements Waypoint {
 
       @Override
       public double yawAngleToCamera(final Level level, final TrackedWaypoint.Camera camera, final PartialTickSupplier partialTickSupplier) {
-         return (double)Mth.degreesDifference(camera.yaw(), this.angle * (180.0F / (float)Math.PI));
+         return Mth.degreesDifference(camera.yaw(), this.angle * (180.0F / (float)Math.PI));
       }
 
       @Override
@@ -175,7 +175,7 @@ public abstract class TrackedWaypoint implements Waypoint {
          Vec3 cameraPosition = camera.position();
          Vec3 direction = cameraPosition.subtract(this.position(cameraPosition.y())).rotateClockwise90();
          float waypointAngle = (float)Mth.atan2(direction.z(), direction.x()) * (180.0F / (float)Math.PI);
-         return (double)Mth.degreesDifference(camera.yaw(), waypointAngle);
+         return Mth.degreesDifference(camera.yaw(), waypointAngle);
       }
 
       @Override
@@ -231,7 +231,7 @@ public abstract class TrackedWaypoint implements Waypoint {
       }
    }
 
-   public static enum PitchDirection {
+   public enum PitchDirection {
       NONE,
       UP,
       DOWN;
@@ -243,7 +243,7 @@ public abstract class TrackedWaypoint implements Waypoint {
       double projectHorizonToScreen();
    }
 
-   private static enum Type {
+   private enum Type {
       EMPTY(TrackedWaypoint.EmptyWaypoint::new),
       VEC3I(TrackedWaypoint.Vec3iWaypoint::new),
       CHUNK(TrackedWaypoint.ChunkWaypoint::new),
@@ -251,7 +251,7 @@ public abstract class TrackedWaypoint implements Waypoint {
 
       private final TriFunction<Either<UUID, String>, Waypoint.Icon, FriendlyByteBuf, TrackedWaypoint> constructor;
 
-      private Type(final TriFunction<Either<UUID, String>, Waypoint.Icon, FriendlyByteBuf, TrackedWaypoint> constructor) {
+      Type(final TriFunction<Either<UUID, String>, Waypoint.Icon, FriendlyByteBuf, TrackedWaypoint> constructor) {
          this.constructor = constructor;
       }
    }
@@ -297,7 +297,7 @@ public abstract class TrackedWaypoint implements Waypoint {
       public double yawAngleToCamera(final Level level, final TrackedWaypoint.Camera camera, final PartialTickSupplier partialTickSupplier) {
          Vec3 direction = camera.position().subtract(this.position(level, partialTickSupplier)).rotateClockwise90();
          float waypointAngle = (float)Mth.atan2(direction.z(), direction.x()) * (180.0F / (float)Math.PI);
-         return (double)Mth.degreesDifference(camera.yaw(), waypointAngle);
+         return Mth.degreesDifference(camera.yaw(), waypointAngle);
       }
 
       @Override
@@ -309,21 +309,23 @@ public abstract class TrackedWaypoint implements Waypoint {
          double yInFrontOfCamera = isBehindCamera ? -pointOnScreen.y : pointOnScreen.y;
          if (yInFrontOfCamera < -1.0) {
             return TrackedWaypoint.PitchDirection.DOWN;
-         } else if (yInFrontOfCamera > 1.0) {
-            return TrackedWaypoint.PitchDirection.UP;
-         } else {
-            if (isBehindCamera) {
-               if (pointOnScreen.y > 0.0) {
-                  return TrackedWaypoint.PitchDirection.UP;
-               }
+         }
 
-               if (pointOnScreen.y < 0.0) {
-                  return TrackedWaypoint.PitchDirection.DOWN;
-               }
+         if (yInFrontOfCamera > 1.0) {
+            return TrackedWaypoint.PitchDirection.UP;
+         }
+
+         if (isBehindCamera) {
+            if (pointOnScreen.y > 0.0) {
+               return TrackedWaypoint.PitchDirection.UP;
             }
 
-            return TrackedWaypoint.PitchDirection.NONE;
+            if (pointOnScreen.y < 0.0) {
+               return TrackedWaypoint.PitchDirection.DOWN;
+            }
          }
+
+         return TrackedWaypoint.PitchDirection.NONE;
       }
 
       @Override

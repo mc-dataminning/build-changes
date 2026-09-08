@@ -8,7 +8,7 @@ public enum GameRuleType implements StringRepresentable {
 
    private final String name;
 
-   private GameRuleType(final String name) {
+   GameRuleType(final String name) {
       this.name = name;
    }
 

@@ -57,16 +57,14 @@ public class EndPortalBlock extends BaseEntityBlock implements Portal {
       if (entity.canUsePortal(false)) {
          if (!level.isClientSide() && level.dimension() == Level.END && entity instanceof ServerPlayer player && !player.seenCredits) {
             player.showEndCredits();
-            return;
+         } else {
+            entity.setAsInsidePortal(this, pos);
          }
-
-         entity.setAsInsidePortal(this, pos);
       }
    }
 
-   @Nullable
    @Override
-   public TeleportTransition getPortalDestination(final ServerLevel currentLevel, final Entity entity, final BlockPos portalEntryPos) {
+   public @Nullable TeleportTransition getPortalDestination(final ServerLevel currentLevel, final Entity entity, final BlockPos portalEntryPos) {
       LevelData.RespawnData respawnData = currentLevel.getRespawnData();
       ResourceKey<Level> currentDimension = currentLevel.dimension();
       boolean fromEnd = currentDimension == Level.END;
@@ -75,41 +73,41 @@ public class EndPortalBlock extends BaseEntityBlock implements Portal {
       ServerLevel newLevel = currentLevel.getServer().getLevel(newDimension);
       if (newLevel == null) {
          return null;
-      } else {
-         Vec3 spawnPos = Vec3.atBottomCenterOf(spawnBlockPos);
-         float yRot;
-         float xRot;
-         Set<Relative> relatives;
-         if (!fromEnd) {
-            EndPlatformFeature.createEndPlatform(newLevel, BlockPos.containing(spawnPos).below(), true);
-            yRot = Direction.WEST.toYRot();
-            xRot = 0.0F;
-            relatives = Relative.union(Relative.DELTA, Set.of(Relative.X_ROT));
-            if (entity instanceof ServerPlayer) {
-               spawnPos = spawnPos.subtract(0.0, 1.0, 0.0);
-            }
-         } else {
-            yRot = respawnData.yaw();
-            xRot = respawnData.pitch();
-            relatives = Relative.union(Relative.DELTA, Relative.ROTATION);
-            if (entity instanceof ServerPlayer serverPlayer) {
-               return serverPlayer.findRespawnPositionAndUseSpawnBlock(false, TeleportTransition.DO_NOTHING);
-            }
+      }
 
-            spawnPos = Vec3.atBottomCenterOf(entity.adjustSpawnLocation(newLevel, spawnBlockPos));
+      Vec3 spawnPos = Vec3.atBottomCenterOf(spawnBlockPos);
+      float yRot;
+      float xRot;
+      Set<Relative> relatives;
+      if (!fromEnd) {
+         EndPlatformFeature.createEndPlatform(newLevel, BlockPos.containing(spawnPos).below(), true);
+         yRot = Direction.WEST.toYRot();
+         xRot = 0.0F;
+         relatives = Relative.union(Relative.DELTA, Set.of(Relative.X_ROT));
+         if (entity instanceof ServerPlayer) {
+            spawnPos = spawnPos.subtract(0.0, 1.0, 0.0);
+         }
+      } else {
+         yRot = respawnData.yaw();
+         xRot = respawnData.pitch();
+         relatives = Relative.union(Relative.DELTA, Relative.ROTATION);
+         if (entity instanceof ServerPlayer serverPlayer) {
+            return serverPlayer.findRespawnPositionAndUseSpawnBlock(false, TeleportTransition.DO_NOTHING);
          }
 
-         return new TeleportTransition(
-            newLevel, spawnPos, Vec3.ZERO, yRot, xRot, relatives, TeleportTransition.PLAY_PORTAL_SOUND.then(TeleportTransition.PLACE_PORTAL_TICKET)
-         );
+         spawnPos = Vec3.atBottomCenterOf(entity.adjustSpawnLocation(newLevel, spawnBlockPos));
       }
+
+      return new TeleportTransition(
+         newLevel, spawnPos, Vec3.ZERO, yRot, xRot, relatives, TeleportTransition.PLAY_PORTAL_SOUND.then(TeleportTransition.PLACE_PORTAL_TICKET)
+      );
    }
 
    @Override
    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      double x = (double)pos.getX() + random.nextDouble();
-      double y = (double)pos.getY() + 0.8;
-      double z = (double)pos.getZ() + random.nextDouble();
+      double x = pos.getX() + random.nextDouble();
+      double y = pos.getY() + 0.8;
+      double z = pos.getZ() + random.nextDouble();
       level.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0, 0.0, 0.0);
    }
 

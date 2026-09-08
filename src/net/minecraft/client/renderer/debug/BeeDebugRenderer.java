@@ -47,8 +47,7 @@ public class BeeDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
    private static final int GRAY = -3355444;
    private static final int PINK = -98404;
    private final Minecraft minecraft;
-   @Nullable
-   private UUID lastLookedAtUuid;
+   private @Nullable UUID lastLookedAtUuid;
 
    public BeeDebugRenderer(final Minecraft minecraft) {
       this.minecraft = minecraft;
@@ -155,7 +154,7 @@ public class BeeDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
       renderTextOverHive(hive.type().getName().getString() + (hive.sedated() ? " (sedated)" : ""), hivePos, row++, -1);
    }
 
-   private void renderBeeInfo(final Entity entity, final DebugBeeInfo beeInfo, @Nullable final DebugGoalInfo goalInfo) {
+   private void renderBeeInfo(final Entity entity, final DebugBeeInfo beeInfo, final @Nullable DebugGoalInfo goalInfo) {
       boolean selected = this.isBeeSelected(entity);
       int row = 0;
       Gizmos.billboardTextOverMob(entity, row++, beeInfo.toString(), -1, 0.48F);
@@ -195,7 +194,7 @@ public class BeeDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
 
    private String getPosDescription(final Entity entity, final BlockPos pos) {
       double dist = pos.distToCenterSqr(entity.position());
-      double distRounded = (double)Math.round(dist * 10.0) / 10.0;
+      double distRounded = Math.round(dist * 10.0) / 10.0;
       return pos.toShortString() + " (dist " + distRounded + ")";
    }
 

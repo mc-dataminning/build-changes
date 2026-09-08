@@ -54,8 +54,7 @@ public class FilterMask {
       this.mask.set(index);
    }
 
-   @Nullable
-   public String apply(final String text) {
+   public @Nullable String apply(final String text) {
       return switch (this.type) {
          case PASS_THROUGH -> text;
          case FULLY_FILTERED -> null;
@@ -73,8 +72,7 @@ public class FilterMask {
       };
    }
 
-   @Nullable
-   public Component applyWithFormatting(final String text) {
+   public @Nullable Component applyWithFormatting(final String text) {
       return switch (this.type) {
          case PASS_THROUGH -> Component.literal(text);
          case FULLY_FILTERED -> null;
@@ -129,7 +127,7 @@ public class FilterMask {
       return 31 * result + this.type.hashCode();
    }
 
-   private static enum Type implements StringRepresentable {
+   private enum Type implements StringRepresentable {
       PASS_THROUGH(0, "pass_through", () -> MapCodec.unit(FilterMask.PASS_THROUGH), () -> StreamCodec.unit(FilterMask.PASS_THROUGH)),
       FULLY_FILTERED(1, "fully_filtered", () -> MapCodec.unit(FilterMask.FULLY_FILTERED), () -> StreamCodec.unit(FilterMask.FULLY_FILTERED)),
       PARTIALLY_FILTERED(
@@ -146,9 +144,7 @@ public class FilterMask {
       private final Supplier<MapCodec<FilterMask>> codec;
       private final Supplier<StreamCodec<ByteBuf, FilterMask>> streamCodec;
 
-      private Type(
-         final int id, final String serializedName, final Supplier<MapCodec<FilterMask>> codec, final Supplier<StreamCodec<ByteBuf, FilterMask>> streamCodec
-      ) {
+      Type(final int id, final String serializedName, final Supplier<MapCodec<FilterMask>> codec, final Supplier<StreamCodec<ByteBuf, FilterMask>> streamCodec) {
          this.id = id;
          this.serializedName = serializedName;
          this.codec = Suppliers.memoize(codec::get);

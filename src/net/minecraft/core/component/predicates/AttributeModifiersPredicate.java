@@ -22,11 +22,11 @@ public record AttributeModifiersPredicate(Optional<CollectionPredicate<ItemAttri
    implements SingleComponentItemPredicate<ItemAttributeModifiers> {
    public static final Codec<AttributeModifiersPredicate> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               CollectionPredicate.codec(AttributeModifiersPredicate.EntryPredicate.CODEC)
-                  .optionalFieldOf("modifiers")
-                  .forGetter(AttributeModifiersPredicate::modifiers)
-            )
-            .apply(i, AttributeModifiersPredicate::new)
+            CollectionPredicate.codec(AttributeModifiersPredicate.EntryPredicate.CODEC)
+               .optionalFieldOf("modifiers")
+               .forGetter(AttributeModifiersPredicate::modifiers)
+         )
+         .apply(i, AttributeModifiersPredicate::new)
    );
 
    @Override
@@ -38,7 +38,7 @@ public record AttributeModifiersPredicate(Optional<CollectionPredicate<ItemAttri
       return !this.modifiers.isPresent() || this.modifiers.get().test(value.modifiers());
    }
 
-   public static record EntryPredicate(
+   public record EntryPredicate(
       Optional<HolderSet<Attribute>> attribute,
       Optional<Identifier> id,
       MinMaxBounds.Doubles amount,
@@ -47,13 +47,13 @@ public record AttributeModifiersPredicate(Optional<CollectionPredicate<ItemAttri
    ) implements Predicate<ItemAttributeModifiers.Entry> {
       public static final Codec<AttributeModifiersPredicate.EntryPredicate> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  RegistryCodecs.holderSet(Registries.ATTRIBUTE).optionalFieldOf("attribute").forGetter(AttributeModifiersPredicate.EntryPredicate::attribute),
-                  Identifier.CODEC.optionalFieldOf("id").forGetter(AttributeModifiersPredicate.EntryPredicate::id),
-                  MinMaxBounds.Doubles.CODEC.optionalFieldOf("amount", MinMaxBounds.Doubles.ANY).forGetter(AttributeModifiersPredicate.EntryPredicate::amount),
-                  AttributeModifier.Operation.CODEC.optionalFieldOf("operation").forGetter(AttributeModifiersPredicate.EntryPredicate::operation),
-                  EquipmentSlotGroup.CODEC.optionalFieldOf("slot").forGetter(AttributeModifiersPredicate.EntryPredicate::slot)
-               )
-               .apply(i, AttributeModifiersPredicate.EntryPredicate::new)
+               RegistryCodecs.holderSet(Registries.ATTRIBUTE).optionalFieldOf("attribute").forGetter(AttributeModifiersPredicate.EntryPredicate::attribute),
+               Identifier.CODEC.optionalFieldOf("id").forGetter(AttributeModifiersPredicate.EntryPredicate::id),
+               MinMaxBounds.Doubles.CODEC.optionalFieldOf("amount", MinMaxBounds.Doubles.ANY).forGetter(AttributeModifiersPredicate.EntryPredicate::amount),
+               AttributeModifier.Operation.CODEC.optionalFieldOf("operation").forGetter(AttributeModifiersPredicate.EntryPredicate::operation),
+               EquipmentSlotGroup.CODEC.optionalFieldOf("slot").forGetter(AttributeModifiersPredicate.EntryPredicate::slot)
+            )
+            .apply(i, AttributeModifiersPredicate.EntryPredicate::new)
       );
 
       public boolean test(final ItemAttributeModifiers.Entry value) {

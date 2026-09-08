@@ -13,16 +13,16 @@ public abstract class NeedleDirectionHelper {
       this.wobble = wobble;
    }
 
-   public float get(final ItemStack itemStack, @Nullable ClientLevel clientLevel, @Nullable final ItemOwner owner, final int seed) {
+   public float get(final ItemStack itemStack, @Nullable ClientLevel clientLevel, final @Nullable ItemOwner owner, final int seed) {
       if (owner == null) {
          return 0.0F;
-      } else {
-         if (clientLevel == null && owner.level() instanceof ClientLevel level) {
-            clientLevel = level;
-         }
-
-         return clientLevel == null ? 0.0F : this.calculate(itemStack, clientLevel, seed, owner);
       }
+
+      if (clientLevel == null && owner.level() instanceof ClientLevel level) {
+         clientLevel = level;
+      }
+
+      return clientLevel == null ? 0.0F : this.calculate(itemStack, clientLevel, seed, owner);
    }
 
    protected abstract float calculate(final ItemStack itemStack, final ClientLevel level, final int seed, final ItemOwner owner);

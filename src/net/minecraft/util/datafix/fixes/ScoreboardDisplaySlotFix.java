@@ -39,8 +39,7 @@ public class ScoreboardDisplaySlotFix extends DataFix {
       super(outputSchema, false);
    }
 
-   @Nullable
-   private static String rename(final String key) {
+   private static @Nullable String rename(final String key) {
       return SLOT_RENAMES.get(key);
    }
 
@@ -51,21 +50,19 @@ public class ScoreboardDisplaySlotFix extends DataFix {
          "Scoreboard DisplaySlot rename",
          scoreboardType,
          input -> input.updateTyped(
-               rootTagFinder,
-               scoreboardInfo -> scoreboardInfo.update(
-                     DSL.remainderFinder(),
-                     tag -> tag.update(
-                           "DisplaySlots",
-                           slots -> slots.updateMapValues(
-                                 pair -> pair.mapFirst(
-                                       key -> (Dynamic)DataFixUtils.orElse(
-                                             key.asString().result().map(ScoreboardDisplaySlotFix::rename).map(key::createString), key
-                                          )
-                                    )
-                              )
-                        )
+            rootTagFinder,
+            scoreboardInfo -> scoreboardInfo.update(
+               DSL.remainderFinder(),
+               tag -> tag.update(
+                  "DisplaySlots",
+                  slots -> slots.updateMapValues(
+                     pair -> pair.mapFirst(
+                        key -> (Dynamic)DataFixUtils.orElse(key.asString().result().map(ScoreboardDisplaySlotFix::rename).map(key::createString), key)
+                     )
                   )
+               )
             )
+         )
       );
    }
 }

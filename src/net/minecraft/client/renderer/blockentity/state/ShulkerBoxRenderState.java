@@ -6,7 +6,6 @@ import org.jspecify.annotations.Nullable;
 
 public class ShulkerBoxRenderState extends BlockEntityRenderState {
    public Direction direction = Direction.NORTH;
-   @Nullable
-   public DyeColor color;
+   public @Nullable DyeColor color;
    public float progress;
 }

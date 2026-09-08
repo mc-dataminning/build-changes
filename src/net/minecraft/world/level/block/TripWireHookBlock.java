@@ -41,9 +41,7 @@ public class TripWireHookBlock extends Block {
 
    public TripWireHookBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, Boolean.valueOf(false)).setValue(ATTACHED, Boolean.valueOf(false))
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, false).setValue(ATTACHED, false));
    }
 
    @Override
@@ -75,10 +73,9 @@ public class TripWireHookBlock extends Block {
          : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockState state = this.defaultBlockState().setValue(POWERED, Boolean.valueOf(false)).setValue(ATTACHED, Boolean.valueOf(false));
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
+      BlockState state = this.defaultBlockState().setValue(POWERED, false).setValue(ATTACHED, false);
       LevelReader level = context.getLevel();
       BlockPos pos = context.getClickedPos();
       Direction[] directions = context.getNearestLookingDirections();
@@ -97,7 +94,7 @@ public class TripWireHookBlock extends Block {
    }
 
    @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, @Nullable final LivingEntity by, final ItemStack itemStack) {
+   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
       calculateState(level, pos, state, false, false, -1, null);
    }
 
@@ -108,7 +105,7 @@ public class TripWireHookBlock extends Block {
       final boolean isBeingDestroyed,
       final boolean canUpdate,
       final int wireSource,
-      @Nullable final BlockState wireSourceState
+      final @Nullable BlockState wireSourceState
    ) {
       Optional<Direction> facingOptional = state.getOptionalValue(FACING);
       if (facingOptional.isPresent()) {
@@ -152,18 +149,18 @@ public class TripWireHookBlock extends Block {
 
          attached &= receiverPos > 1;
          powered &= attached;
-         BlockState newState = block.defaultBlockState().trySetValue(ATTACHED, Boolean.valueOf(attached)).trySetValue(POWERED, Boolean.valueOf(powered));
+         BlockState newState = block.defaultBlockState().trySetValue(ATTACHED, attached).trySetValue(POWERED, powered);
          if (receiverPos > 0) {
-            BlockPos testPosx = pos.relative(direction, receiverPos);
+            BlockPos testPos = pos.relative(direction, receiverPos);
             Direction opposite = direction.getOpposite();
-            level.setBlockAndUpdate(testPosx, newState.setValue(FACING, opposite));
-            notifyNeighbors(block, level, testPosx, opposite);
+            level.setBlockAndUpdate(testPos, newState.setValue(FACING, opposite));
+            notifyNeighbors(block, level, testPos, opposite);
             if (!level.getBlockState(pos).is(Blocks.TRIPWIRE_HOOK)) {
                onRemoved(newState, level, pos);
                return;
             }
 
-            emitState(level, testPosx, attached, powered, wasAttached, wasPowered);
+            emitState(level, testPos, attached, powered, wasAttached, wasPowered);
          }
 
          emitState(level, pos, attached, powered, wasAttached, wasPowered);
@@ -176,12 +173,12 @@ public class TripWireHookBlock extends Block {
 
          if (wasAttached != attached) {
             for (int i = 1; i < receiverPos; i++) {
-               BlockPos testPosx = pos.relative(direction, i);
+               BlockPos testPos = pos.relative(direction, i);
                BlockState wireData = wireStates[i];
                if (wireData != null) {
-                  BlockState testPosState = level.getBlockState(testPosx);
+                  BlockState testPosState = level.getBlockState(testPos);
                   if (testPosState.is(Blocks.TRIPWIRE) || testPosState.is(Blocks.TRIPWIRE_HOOK)) {
-                     level.setBlockAndUpdate(testPosx, wireData.trySetValue(ATTACHED, Boolean.valueOf(attached)));
+                     level.setBlockAndUpdate(testPos, wireData.trySetValue(ATTACHED, attached));
                   }
                }
             }

@@ -70,27 +70,27 @@ public class PatchedRegistry<T> implements HolderLookup.RegistryLookup<T> {
       Cloner<T> cloner = clonerFactory.cloner(registryKey);
       if (cloner == null) {
          throw new NullPointerException("No cloner for " + registryKey.identifier());
-      } else {
-         HolderLookup.RegistryLookup<T> patchContents = patchProvider.lookupOrThrow(registryKey);
-         HolderLookup.RegistryLookup<T> baseContents = baseProvider.lookupOrThrow(registryKey);
-         Lifecycle lifecycle = patchContents.registryLifecycle().add(baseContents.registryLifecycle());
-         PatchedRegistry<T> result = new PatchedRegistry<>(registryKey, lifecycle);
-         patchContents.listElements().forEach(elementHolder -> {
-            ResourceKey<T> elementKey = elementHolder.key();
-            PatchedRegistry.LazyHolder<T> holder = new PatchedRegistry.LazyHolder<>(result, elementKey);
-            holder.supplier = () -> cloner.clone((T)elementHolder.value(), patchProvider, (HolderLookup.Provider)clonedRegistriesProvider.get());
-            result.entries.put(elementKey, holder);
-         });
-         baseContents.listElements().forEach(elementHolder -> {
-            ResourceKey<T> elementKey = elementHolder.key();
-            result.entries.computeIfAbsent(elementKey, key -> {
-               PatchedRegistry.LazyHolder<T> holder = new PatchedRegistry.LazyHolder<>(result, elementKey);
-               holder.supplier = () -> cloner.clone((T)elementHolder.value(), baseProvider, (HolderLookup.Provider)clonedRegistriesProvider.get());
-               return holder;
-            });
-         });
-         return result;
       }
+
+      HolderLookup.RegistryLookup<T> patchContents = patchProvider.lookupOrThrow(registryKey);
+      HolderLookup.RegistryLookup<T> baseContents = baseProvider.lookupOrThrow(registryKey);
+      Lifecycle lifecycle = patchContents.registryLifecycle().add(baseContents.registryLifecycle());
+      PatchedRegistry<T> result = new PatchedRegistry<>(registryKey, lifecycle);
+      patchContents.listElements().forEach(elementHolder -> {
+         ResourceKey<T> elementKey = elementHolder.key();
+         PatchedRegistry.LazyHolder<T> holder = new PatchedRegistry.LazyHolder<>(result, elementKey);
+         holder.supplier = () -> cloner.clone((T)elementHolder.value(), patchProvider, (HolderLookup.Provider)clonedRegistriesProvider.get());
+         result.entries.put(elementKey, holder);
+      });
+      baseContents.listElements().forEach(elementHolder -> {
+         ResourceKey<T> elementKey = elementHolder.key();
+         result.entries.computeIfAbsent(elementKey, key -> {
+            PatchedRegistry.LazyHolder<T> holder = new PatchedRegistry.LazyHolder<>(result, elementKey);
+            holder.supplier = () -> cloner.clone((T)elementHolder.value(), baseProvider, (HolderLookup.Provider)clonedRegistriesProvider.get());
+            return holder;
+         });
+      });
+      return result;
    }
 
    public static HolderLookup.Provider applyPatches(
@@ -104,8 +104,8 @@ public class PatchedRegistry<T> implements HolderLookup.RegistryLookup<T> {
       List<HolderLookup.RegistryLookup<?>> lazyFullRegistries = registriesToClone.stream()
          .map(
             registryKey -> createLazyFullPatchedRegistries(
-                  clonerFactory, (ResourceKey<? extends Registry<?>>)registryKey, baseRegistries, patchRegistries, resultHolder
-               )
+               clonerFactory, (ResourceKey<? extends Registry<?>>)registryKey, baseRegistries, patchRegistries, resultHolder
+            )
          )
          .collect(Collectors.toUnmodifiableList());
       HolderLookup.Provider result = HolderLookup.Provider.create(Stream.concat(context.listRegistries(), lazyFullRegistries.stream()));
@@ -114,10 +114,9 @@ public class PatchedRegistry<T> implements HolderLookup.RegistryLookup<T> {
    }
 
    private static class LazyHolder<T> extends Holder.Reference<T> {
-      @Nullable
-      private Supplier<T> supplier;
+      private @Nullable Supplier<T> supplier;
 
-      protected LazyHolder(final HolderOwner<T> owner, @Nullable final ResourceKey<T> key) {
+      protected LazyHolder(final HolderOwner<T> owner, final @Nullable ResourceKey<T> key) {
          super(Holder.Reference.Type.STAND_ALONE, owner, key, null);
       }
 

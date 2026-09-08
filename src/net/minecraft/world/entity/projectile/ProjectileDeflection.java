@@ -7,8 +7,7 @@ import org.jspecify.annotations.Nullable;
 
 @FunctionalInterface
 public interface ProjectileDeflection {
-   ProjectileDeflection NONE = (var0, var1, var2, var3) -> {
-   };
+   ProjectileDeflection NONE = (var0, var1, var2, var3) -> {};
    ProjectileDeflection REVERSE = (projectile, var1, random, power) -> {
       float rotation = 170.0F + random.nextFloat() * 20.0F;
       projectile.setDeltaMovement(projectile.getDeltaMovement().multiply(-power.x * 0.5, -power.y * 0.5, -power.z * 0.5));

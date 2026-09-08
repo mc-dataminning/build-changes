@@ -41,26 +41,26 @@ public class SleepInBed extends Behavior<LivingEntity> {
    protected boolean checkExtraStartConditions(final ServerLevel level, final LivingEntity body) {
       if (body.isPassenger()) {
          return false;
-      } else {
-         Brain<?> brain = body.getBrain();
-         GlobalPos target = brain.getMemory(MemoryModuleType.HOME).get();
-         if (level.dimension() != target.dimension()) {
-            return false;
-         } else {
-            Optional<Long> lastWokenMemory = brain.getMemory(MemoryModuleType.LAST_WOKEN);
-            if (lastWokenMemory.isPresent()) {
-               long timeSinceLastWoken = level.getGameTime() - lastWokenMemory.get();
-               if (timeSinceLastWoken > 0L && timeSinceLastWoken < 100L) {
-                  return false;
-               }
-            }
+      }
 
-            BlockState blockState = level.getBlockState(target.pos());
-            return target.pos().closerToCenterThan(body.position(), 2.0)
-               && blockState.is(BlockTags.VILLAGERS_CAN_SLEEP_ON_BED)
-               && !blockState.getValue(AbstractBedBlock.OCCUPIED);
+      Brain<?> brain = body.getBrain();
+      GlobalPos target = brain.getMemory(MemoryModuleType.HOME).get();
+      if (level.dimension() != target.dimension()) {
+         return false;
+      }
+
+      Optional<Long> lastWokenMemory = brain.getMemory(MemoryModuleType.LAST_WOKEN);
+      if (lastWokenMemory.isPresent()) {
+         long timeSinceLastWoken = level.getGameTime() - lastWokenMemory.get();
+         if (timeSinceLastWoken > 0L && timeSinceLastWoken < 100L) {
+            return false;
          }
       }
+
+      BlockState blockState = level.getBlockState(target.pos());
+      return target.pos().closerToCenterThan(body.position(), 2.0)
+         && blockState.is(BlockTags.VILLAGERS_CAN_SLEEP_ON_BED)
+         && !blockState.getValue(AbstractBedBlock.OCCUPIED);
    }
 
    @Override
@@ -68,10 +68,10 @@ public class SleepInBed extends Behavior<LivingEntity> {
       Optional<GlobalPos> memory = body.getBrain().getMemory(MemoryModuleType.HOME);
       if (memory.isEmpty()) {
          return false;
-      } else {
-         BlockPos bedPos = memory.get().pos();
-         return body.getBrain().isActive(Activity.REST) && body.getY() > (double)bedPos.getY() + 0.4 && bedPos.closerToCenterThan(body.position(), 1.14);
       }
+
+      BlockPos bedPos = memory.get().pos();
+      return body.getBrain().isActive(Activity.REST) && body.getY() > bedPos.getY() + 0.4 && bedPos.closerToCenterThan(body.position(), 1.14);
    }
 
    @Override

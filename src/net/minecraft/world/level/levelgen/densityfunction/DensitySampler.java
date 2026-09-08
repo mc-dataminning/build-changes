@@ -26,7 +26,7 @@ public interface DensitySampler {
       return new DensitySampler.Bound(this, context);
    }
 
-   public static record Bound(DensitySampler sampler, SamplerContext context) {
+   record Bound(DensitySampler sampler, SamplerContext context) {
       public float sampleValue(final int blockX, final int blockY, final int blockZ) {
          return this.sampler.sampleValue(this.context, blockX, blockY, blockZ);
       }

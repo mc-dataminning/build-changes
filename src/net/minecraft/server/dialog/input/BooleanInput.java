@@ -9,12 +9,12 @@ import net.minecraft.network.chat.ComponentSerialization;
 public record BooleanInput(Component label, boolean initial, String onTrue, String onFalse) implements InputControl {
    public static final MapCodec<BooleanInput> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               ComponentSerialization.CODEC.fieldOf("label").forGetter(BooleanInput::label),
-               Codec.BOOL.optionalFieldOf("initial", false).forGetter(BooleanInput::initial),
-               Codec.STRING.optionalFieldOf("on_true", "true").forGetter(BooleanInput::onTrue),
-               Codec.STRING.optionalFieldOf("on_false", "false").forGetter(BooleanInput::onFalse)
-            )
-            .apply(i, BooleanInput::new)
+            ComponentSerialization.CODEC.fieldOf("label").forGetter(BooleanInput::label),
+            Codec.BOOL.optionalFieldOf("initial", false).forGetter(BooleanInput::initial),
+            Codec.STRING.optionalFieldOf("on_true", "true").forGetter(BooleanInput::onTrue),
+            Codec.STRING.optionalFieldOf("on_false", "false").forGetter(BooleanInput::onFalse)
+         )
+         .apply(i, BooleanInput::new)
    );
 
    @Override

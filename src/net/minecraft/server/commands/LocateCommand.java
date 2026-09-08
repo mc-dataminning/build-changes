@@ -63,9 +63,9 @@ public class LocateCommand {
                            Commands.argument("structure", ResourceOrTagKeyArgument.resourceOrTagKey(Registries.STRUCTURE))
                               .executes(
                                  c -> locateStructure(
-                                       (CommandSourceStack)c.getSource(),
-                                       ResourceOrTagKeyArgument.getResourceOrTagKey(c, "structure", Registries.STRUCTURE, ERROR_STRUCTURE_INVALID)
-                                    )
+                                    (CommandSourceStack)c.getSource(),
+                                    ResourceOrTagKeyArgument.getResourceOrTagKey(c, "structure", Registries.STRUCTURE, ERROR_STRUCTURE_INVALID)
+                                 )
                               )
                         )
                   ))
@@ -82,8 +82,8 @@ public class LocateCommand {
                      Commands.argument("poi", ResourceOrTagArgument.resourceOrTag(context, Registries.POINT_OF_INTEREST_TYPE))
                         .executes(
                            c -> locatePoi(
-                                 (CommandSourceStack)c.getSource(), ResourceOrTagArgument.getResourceOrTag(c, "poi", Registries.POINT_OF_INTEREST_TYPE)
-                              )
+                              (CommandSourceStack)c.getSource(), ResourceOrTagArgument.getResourceOrTag(c, "poi", Registries.POINT_OF_INTEREST_TYPE)
+                           )
                         )
                   )
             )
@@ -186,8 +186,8 @@ public class LocateCommand {
       Component coordinates = ComponentUtils.wrapInSquareBrackets(Component.translatable("chat.coordinates", foundPos.getX(), displayedY, foundPos.getZ()))
          .withStyle(
             s -> s.withColor(ChatFormatting.GREEN)
-                  .withClickEvent(new ClickEvent.SuggestCommand("/tp @s " + foundPos.getX() + " " + displayedY + " " + foundPos.getZ()))
-                  .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.coordinates.tooltip")))
+               .withClickEvent(new ClickEvent.SuggestCommand("/tp @s " + foundPos.getX() + " " + displayedY + " " + foundPos.getZ()))
+               .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.coordinates.tooltip")))
          );
       source.sendSuccess(() -> Component.translatable(successMessageKey, foundName, coordinates, distance), false);
       LOGGER.info("Locating element {} took {} ms", foundName, taskDuration.toMillis());
@@ -197,6 +197,6 @@ public class LocateCommand {
    private static float dist(final int x1, final int z1, final int x2, final int z2) {
       int dx = x2 - x1;
       int dz = z2 - z1;
-      return Mth.sqrt((float)(dx * dx + dz * dz));
+      return Mth.sqrt(dx * dx + dz * dz);
    }
 }

@@ -41,8 +41,7 @@ public class ExperienceOrb extends Entity {
    private int age = 0;
    private int health = 5;
    private int count = 1;
-   @Nullable
-   private Player followingPlayer;
+   private @Nullable Player followingPlayer;
 
    public ExperienceOrb(final Level level, final double x, final double y, final double z, final int value) {
       this(level, new Vec3(x, y, z), Vec3.ZERO, value);
@@ -76,11 +75,11 @@ public class ExperienceOrb extends Entity {
    }
 
    protected void unstuckIfPossible(final double maxDistance) {
-      Vec3 center = this.position().add(0.0, (double)this.getBbHeight() / 2.0, 0.0);
+      Vec3 center = this.position().add(0.0, this.getBbHeight() / 2.0, 0.0);
       VoxelShape allowedCenters = Shapes.create(AABB.ofSize(center, maxDistance, maxDistance, maxDistance));
       this.level()
-         .findFreePosition(this, allowedCenters, center, (double)this.getBbWidth(), (double)this.getBbHeight(), (double)this.getBbWidth())
-         .ifPresent(pos -> this.setPos(pos.add(0.0, (double)(-this.getBbHeight()) / 2.0, 0.0)));
+         .findFreePosition(this, allowedCenters, center, this.getBbWidth(), this.getBbHeight(), this.getBbWidth())
+         .ifPresent(pos -> this.setPos(pos.add(0.0, -this.getBbHeight() / 2.0, 0.0)));
    }
 
    @Override
@@ -112,9 +111,7 @@ public class ExperienceOrb extends Entity {
          }
 
          if (this.level().getFluidState(this.blockPosition()).is(FluidTags.LAVA)) {
-            this.setDeltaMovement(
-               (double)((this.random.nextFloat() - this.random.nextFloat()) * 0.2F), 0.2F, (double)((this.random.nextFloat() - this.random.nextFloat()) * 0.2F)
-            );
+            this.setDeltaMovement((this.random.nextFloat() - this.random.nextFloat()) * 0.2F, 0.2F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F);
          }
 
          if (this.tickCount % 20 == 1) {
@@ -138,7 +135,7 @@ public class ExperienceOrb extends Entity {
             friction *= this.level().getBlockState(this.getBlockPosBelowThatAffectsMyMovement()).getBlock().getFriction();
          }
 
-         this.setDeltaMovement(this.getDeltaMovement().scale((double)friction));
+         this.setDeltaMovement(this.getDeltaMovement().scale(friction));
          if (this.verticalCollisionBelow && fallSpeed < -this.getGravity()) {
             this.setDeltaMovement(new Vec3(this.getDeltaMovement().x, -fallSpeed * 0.4, this.getDeltaMovement().z));
          }
@@ -168,7 +165,7 @@ public class ExperienceOrb extends Entity {
       if (this.followingPlayer != null) {
          Vec3 delta = new Vec3(
             this.followingPlayer.getX() - this.getX(),
-            this.followingPlayer.getY() + (double)this.followingPlayer.getEyeHeight() / 2.0 - this.getY(),
+            this.followingPlayer.getY() + this.followingPlayer.getEyeHeight() / 2.0 - this.getY(),
             this.followingPlayer.getZ() - this.getZ()
          );
          double length = delta.lengthSqr();
@@ -250,15 +247,15 @@ public class ExperienceOrb extends Entity {
    public final boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
       if (this.isInvulnerableToBase(source)) {
          return false;
-      } else {
-         this.markHurt();
-         this.health = (int)((float)this.health - damage);
-         if (this.health <= 0) {
-            this.discard();
-         }
-
-         return true;
       }
+
+      this.markHurt();
+      this.health = (int)(this.health - damage);
+      if (this.health <= 0) {
+         this.discard();
+      }
+
+      return true;
    }
 
    @Override

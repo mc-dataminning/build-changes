@@ -56,7 +56,7 @@ public class LiquidBlock extends Block implements BucketPickup {
       }
 
       this.stateCache.add(fluid.getFlowing(8, true));
-      this.registerDefaultState(this.stateDefinition.any().setValue(LEVEL, Integer.valueOf(0)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(LEVEL, 0));
    }
 
    @Override
@@ -70,18 +70,16 @@ public class LiquidBlock extends Block implements BucketPickup {
                .map(LivingEntity::getLiquidCollisionShape)
                .filter(
                   liquidStableShape -> context.isAbove(liquidStableShape, pos, true)
-                        && context.canStandOnFluid(level.getFluidState(pos.above()), state.getFluidState())
+                     && context.canStandOnFluid(level.getFluidState(pos.above()), state.getFluidState())
                )
                .orElse(Shapes.empty());
       }
    }
 
    private Optional<LivingEntity> ifMobIsColliding(final CollisionContext context) {
-      if (context instanceof EntityCollisionContext entityCollisionContext && entityCollisionContext.getEntity() instanceof LivingEntity mob) {
-         return Optional.of(mob);
-      }
-
-      return Optional.empty();
+      return context instanceof EntityCollisionContext entityCollisionContext && entityCollisionContext.getEntity() instanceof LivingEntity mob
+         ? Optional.of(mob)
+         : Optional.empty();
    }
 
    @Override
@@ -178,7 +176,7 @@ public class LiquidBlock extends Block implements BucketPickup {
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       if (this.shouldSpreadLiquid(level, pos, state)) {
          level.scheduleTick(pos, state.getFluidState().getType(), this.fluid.getTickDelay(level));
@@ -232,7 +230,7 @@ public class LiquidBlock extends Block implements BucketPickup {
    }
 
    @Override
-   public ItemStack pickupBlock(@Nullable final LivingEntity user, final LevelAccessor level, final BlockPos pos, final BlockState state) {
+   public ItemStack pickupBlock(final @Nullable LivingEntity user, final LevelAccessor level, final BlockPos pos, final BlockState state) {
       if (state.getValue(LEVEL) == 0) {
          level.setBlock(pos, Blocks.AIR.defaultBlockState(), 11);
          return new ItemStack(this.fluid.getBucket());

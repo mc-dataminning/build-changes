@@ -3,7 +3,6 @@ package net.minecraft.client.gui.screens.options.controls;
 import com.google.common.collect.ImmutableList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
@@ -27,7 +26,7 @@ public class KeyBindsList extends ContainerObjectSelectionList<KeyBindsList.Entr
       super(minecraft, keyBindsScreen.width, keyBindsScreen.layout.getContentHeight(), keyBindsScreen.layout.getHeaderHeight(), 20);
       this.keyBindsScreen = keyBindsScreen;
       KeyMapping[] keyMappings = (KeyMapping[])ArrayUtils.clone(minecraft.options.keyMappings);
-      Arrays.sort((Object[])keyMappings);
+      Arrays.sort(keyMappings);
       KeyMapping.Category previousCategory = null;
 
       for (KeyMapping key : keyMappings) {
@@ -65,8 +64,6 @@ public class KeyBindsList extends ContainerObjectSelectionList<KeyBindsList.Entr
       private final FocusableTextWidget categoryName;
 
       public CategoryEntry(final KeyMapping.Category category) {
-         Objects.requireNonNull(KeyBindsList.this);
-         super();
          this.categoryName = FocusableTextWidget.builder(
                category.label().copy().withStyle(ChatFormatting.UNDERLINE, ChatFormatting.BOLD), KeyBindsList.this.minecraft.font
             )
@@ -107,12 +104,9 @@ public class KeyBindsList extends ContainerObjectSelectionList<KeyBindsList.Entr
       private final Component name;
       private final Button changeButton;
       private final Button resetButton;
-      private boolean hasCollision;
+      private boolean hasCollision = false;
 
       private KeyEntry(final KeyMapping key, final Component name) {
-         Objects.requireNonNull(KeyBindsList.this);
-         super();
-         this.hasCollision = false;
          this.key = key;
          this.name = name;
          this.changeButton = Button.builder(name, button -> {
@@ -122,8 +116,8 @@ public class KeyBindsList extends ContainerObjectSelectionList<KeyBindsList.Entr
             .bounds(0, 0, 75, 20)
             .createNarration(
                defaultNarrationSupplier -> key.isUnbound()
-                     ? Component.translatable("narrator.controls.unbound", name)
-                     : Component.translatable("narrator.controls.bound", name, defaultNarrationSupplier.get())
+                  ? Component.translatable("narrator.controls.unbound", name)
+                  : Component.translatable("narrator.controls.bound", name, defaultNarrationSupplier.get())
             )
             .build();
          this.resetButton = Button.builder(RESET_BUTTON_TITLE, button -> {

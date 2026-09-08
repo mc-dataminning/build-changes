@@ -21,8 +21,7 @@ public abstract class SpriteIconButton extends Button {
    protected final int spriteOffsetX;
    protected final int spriteOffsetY;
    private final boolean switchToLoadingAfterPress;
-   @Nullable
-   private final Tooltip defaultTooltip;
+   private final @Nullable Tooltip defaultTooltip;
    private boolean loading;
 
    private SpriteIconButton(
@@ -35,8 +34,8 @@ public abstract class SpriteIconButton extends Button {
       final int spriteOffsetY,
       final WidgetSprites sprite,
       final Button.OnPress onPress,
-      @Nullable final Component tooltip,
-      @Nullable final Button.CreateNarration narration,
+      final @Nullable Component tooltip,
+      final Button.@Nullable CreateNarration narration,
       final boolean switchToLoadingAfterPress
    ) {
       super(0, 0, width, height, message, onPress, narration == null ? DEFAULT_NARRATION : narration);
@@ -86,21 +85,21 @@ public abstract class SpriteIconButton extends Button {
    protected boolean extractLoadingStateIfLoading(final GuiGraphicsExtractor graphics) {
       if (!this.loading) {
          return false;
-      } else {
-         graphics.blitSprite(
-            RenderPipelines.GUI_TEXTURED, BUTTON_DISABLED_SPRITE, this.getX(), this.getY(), this.getWidth(), this.getHeight(), ARGB.white(this.alpha)
-         );
-         graphics.blitSprite(
-            RenderPipelines.GUI_TEXTURED,
-            LOADING_SPRITE,
-            this.getX() + (this.getWidth() - 5) / 2,
-            this.getY() + (this.getHeight() - 2) / 2,
-            5,
-            2,
-            ARGB.white(this.alpha)
-         );
-         return true;
       }
+
+      graphics.blitSprite(
+         RenderPipelines.GUI_TEXTURED, BUTTON_DISABLED_SPRITE, this.getX(), this.getY(), this.getWidth(), this.getHeight(), ARGB.white(this.alpha)
+      );
+      graphics.blitSprite(
+         RenderPipelines.GUI_TEXTURED,
+         LOADING_SPRITE,
+         this.getX() + (this.getWidth() - 5) / 2,
+         this.getY() + (this.getHeight() - 2) / 2,
+         5,
+         2,
+         ARGB.white(this.alpha)
+      );
+      return true;
    }
 
    public static SpriteIconButton.Builder builder(final Component message, final Button.OnPress onPress, final boolean iconOnly) {
@@ -113,16 +112,13 @@ public abstract class SpriteIconButton extends Button {
       private final boolean iconOnly;
       private int width = 150;
       private int height = 20;
-      @Nullable
-      private WidgetSprites sprite;
+      private @Nullable WidgetSprites sprite;
       private int spriteWidth;
       private int spriteHeight;
       private int spriteOffsetX;
       private int spriteOffsetY;
-      @Nullable
-      private Component tooltip;
-      @Nullable
-      private Button.CreateNarration narration;
+      private @Nullable Component tooltip;
+      private Button.@Nullable CreateNarration narration;
       private boolean switchToLoadingAfterPress;
 
       private Builder(final Component message, final Button.OnPress onPress, final boolean iconOnly) {
@@ -186,7 +182,7 @@ public abstract class SpriteIconButton extends Button {
          if (this.sprite == null) {
             throw new IllegalStateException("Sprite not set");
          } else {
-            return (SpriteIconButton)(this.iconOnly
+            return this.iconOnly
                ? new SpriteIconButton.CenteredIcon(
                   this.width,
                   this.height,
@@ -214,7 +210,7 @@ public abstract class SpriteIconButton extends Button {
                   this.tooltip,
                   this.narration,
                   this.switchToLoadingAfterPress
-               ));
+               );
          }
       }
    }
@@ -230,8 +226,8 @@ public abstract class SpriteIconButton extends Button {
          final int spriteOffsetY,
          final WidgetSprites sprite,
          final Button.OnPress onPress,
-         @Nullable final Component tooltip,
-         @Nullable final Button.CreateNarration narration,
+         final @Nullable Component tooltip,
+         final Button.@Nullable CreateNarration narration,
          final boolean switchToLoadingAfterPress
       ) {
          super(width, height, message, spriteWidth, spriteHeight, spriteOffsetX, spriteOffsetY, sprite, onPress, tooltip, narration, switchToLoadingAfterPress);
@@ -259,8 +255,8 @@ public abstract class SpriteIconButton extends Button {
          final int spriteOffsetY,
          final WidgetSprites sprite,
          final Button.OnPress onPress,
-         @Nullable final Component tooltip,
-         @Nullable final Button.CreateNarration narration,
+         final @Nullable Component tooltip,
+         final Button.@Nullable CreateNarration narration,
          final boolean switchToLoadingAfterPress
       ) {
          super(width, height, message, spriteWidth, spriteHeight, spriteOffsetX, spriteOffsetY, sprite, onPress, tooltip, narration, switchToLoadingAfterPress);

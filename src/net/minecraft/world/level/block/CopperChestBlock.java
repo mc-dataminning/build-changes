@@ -64,8 +64,8 @@ public class CopperChestBlock extends ChestBlock {
          BlockState updatedBlockState = state;
          BlockState connectedPredictedBlockState = connectedState;
          if (copperChestBlock.isWaxed() != connectedCopperChestBlock.isWaxed()) {
-            updatedBlockState = unwaxBlock(copperChestBlock, state).orElse(state);
-            connectedPredictedBlockState = unwaxBlock(connectedCopperChestBlock, connectedState).orElse(connectedState);
+            updatedBlockState = unwaxBlock(copperChestBlock, state).orElse(updatedBlockState);
+            connectedPredictedBlockState = unwaxBlock(connectedCopperChestBlock, connectedState).orElse(connectedPredictedBlockState);
          }
 
          Block leastOxidizedBlock = copperChestBlock.weatherState.ordinal() <= connectedCopperChestBlock.weatherState.ordinal()

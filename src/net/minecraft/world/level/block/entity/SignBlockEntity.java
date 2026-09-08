@@ -45,8 +45,7 @@ public class SignBlockEntity extends BlockEntity {
    private static final boolean DEFAULT_IS_WAXED = false;
    private static final boolean DEFAULT_ALLOW_OP_FEATURES = false;
    private static final Component CLICK_ACTIONS_DISABLED = Component.translatable("sign.click_actions_disabled").withStyle(ChatFormatting.RED);
-   @Nullable
-   private UUID playerWhoMayEdit;
+   private @Nullable UUID playerWhoMayEdit;
    private SignText frontText = SignText.EMPTY;
    private SignText backText = SignText.EMPTY;
    private boolean isWaxed = false;
@@ -63,8 +62,8 @@ public class SignBlockEntity extends BlockEntity {
    public SignTextSlot getSlotPlayerIsFacing(final Player player) {
       if (this.getBlockState().getBlock() instanceof SignBlock sign) {
          Vec3 signPositionOffset = sign.getSignHitboxCenterPosition(this.getBlockState());
-         double xd = player.getX() - ((double)this.getBlockPos().getX() + signPositionOffset.x);
-         double zd = player.getZ() - ((double)this.getBlockPos().getZ() + signPositionOffset.z);
+         double xd = player.getX() - (this.getBlockPos().getX() + signPositionOffset.x);
+         double zd = player.getZ() - (this.getBlockPos().getZ() + signPositionOffset.z);
          float signYRot = sign.getYRotationDegrees(this.getBlockState());
          float playerYRot = (float)(Mth.atan2(zd, xd) * 180.0F / (float)Math.PI) - 90.0F;
          return Mth.degreesDifferenceAbs(signYRot, playerYRot) <= 90.0F ? SignTextSlot.FRONT : SignTextSlot.BACK;
@@ -185,9 +184,6 @@ public class SignBlockEntity extends BlockEntity {
          Style style = message.getStyle();
          ClickEvent event = style.getClickEvent();
          switch (event) {
-            case null:
-            default:
-               break;
             case ClickEvent.RunCommand command:
                if (this.allowOpFeatures) {
                   level.getServer().getCommands().performPrefixedCommand(createCommandSourceStack(player, level, pos), command.command());
@@ -208,6 +204,9 @@ public class SignBlockEntity extends BlockEntity {
                }
 
                hasAnyClickCommand = true;
+               continue;
+            case null:
+            default:
          }
       }
 
@@ -218,7 +217,7 @@ public class SignBlockEntity extends BlockEntity {
       return hasAnyClickCommand;
    }
 
-   private static CommandSourceStack createCommandSourceStack(@Nullable final Player player, final ServerLevel level, final BlockPos pos) {
+   private static CommandSourceStack createCommandSourceStack(final @Nullable Player player, final ServerLevel level, final BlockPos pos) {
       return player != null
          ? new CommandSourceStack(CommandSource.NULL, Vec3.atCenterOf(pos), Vec2.ZERO, level, LevelBasedPermissionSet.GAMEMASTER, level.getServer(), player)
          : new CommandSourceStack(
@@ -235,12 +234,11 @@ public class SignBlockEntity extends BlockEntity {
       return this.saveCustomOnly(registries);
    }
 
-   public void setAllowedPlayerEditor(@Nullable final UUID playerUUID) {
+   public void setAllowedPlayerEditor(final @Nullable UUID playerUUID) {
       this.playerWhoMayEdit = playerUUID;
    }
 
-   @Nullable
-   public UUID getPlayerWhoMayEdit() {
+   public @Nullable UUID getPlayerWhoMayEdit() {
       return this.playerWhoMayEdit;
    }
 

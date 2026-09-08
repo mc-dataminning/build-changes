@@ -27,14 +27,14 @@ public interface SideChainPartBlock {
       BlockState state = level.getBlockState(pos);
       if (!this.isConnectable(state)) {
          return List.of();
-      } else {
-         SideChainPartBlock.Neighbors neighbors = this.getNeighbors(level, pos, this.getFacing(state));
-         List<BlockPos> results = new LinkedList<>();
-         results.add(pos);
-         this.addBlocksConnectingTowards(neighbors::left, SideChainPart.LEFT, results::addFirst);
-         this.addBlocksConnectingTowards(neighbors::right, SideChainPart.RIGHT, results::addLast);
-         return results;
       }
+
+      SideChainPartBlock.Neighbors neighbors = this.getNeighbors(level, pos, this.getFacing(state));
+      List<BlockPos> results = new LinkedList<>();
+      results.add(pos);
+      this.addBlocksConnectingTowards(neighbors::left, SideChainPart.LEFT, results::addFirst);
+      this.addBlocksConnectingTowards(neighbors::right, SideChainPart.RIGHT, results::addLast);
+      return results;
    }
 
    private void addBlocksConnectingTowards(
@@ -103,7 +103,7 @@ public interface SideChainPartBlock {
       }
    }
 
-   public static record EmptyNeighbor(BlockPos pos) implements SideChainPartBlock.Neighbor {
+   record EmptyNeighbor(BlockPos pos) implements SideChainPartBlock.Neighbor {
       @Override
       public boolean isConnectable() {
          return false;
@@ -120,7 +120,7 @@ public interface SideChainPartBlock {
       }
    }
 
-   public sealed interface Neighbor permits SideChainPartBlock.EmptyNeighbor, SideChainPartBlock.SideChainNeighbor {
+   sealed interface Neighbor permits SideChainPartBlock.EmptyNeighbor, SideChainPartBlock.SideChainNeighbor {
       BlockPos pos();
 
       boolean isConnectable();
@@ -142,9 +142,7 @@ public interface SideChainPartBlock {
       }
    }
 
-   public static record Neighbors(
-      SideChainPartBlock block, LevelAccessor level, Direction facing, BlockPos center, Map<BlockPos, SideChainPartBlock.Neighbor> cache
-   ) {
+   record Neighbors(SideChainPartBlock block, LevelAccessor level, Direction facing, BlockPos center, Map<BlockPos, SideChainPartBlock.Neighbor> cache) {
       private boolean isConnectableToThisBlock(final BlockState neighbor) {
          return this.block.isConnectable(neighbor) && this.block.getFacing(neighbor) == this.facing;
       }
@@ -152,9 +150,7 @@ public interface SideChainPartBlock {
       private SideChainPartBlock.Neighbor createNewNeighbor(final BlockPos pos) {
          BlockState neighbor = this.level.getBlockState(pos);
          SideChainPart part = this.isConnectableToThisBlock(neighbor) ? this.block.getSideChainPart(neighbor) : null;
-         return (SideChainPartBlock.Neighbor)(part == null
-            ? new SideChainPartBlock.EmptyNeighbor(pos)
-            : new SideChainPartBlock.SideChainNeighbor(this.level, this.block, pos, part));
+         return part == null ? new SideChainPartBlock.EmptyNeighbor(pos) : new SideChainPartBlock.SideChainNeighbor(this.level, this.block, pos, part);
       }
 
       private SideChainPartBlock.Neighbor getOrCreateNeighbor(final Direction dir, final Integer steps) {
@@ -178,8 +174,7 @@ public interface SideChainPartBlock {
       }
    }
 
-   public static record SideChainNeighbor(LevelAccessor level, SideChainPartBlock block, BlockPos pos, SideChainPart part)
-      implements SideChainPartBlock.Neighbor {
+   record SideChainNeighbor(LevelAccessor level, SideChainPartBlock block, BlockPos pos, SideChainPart part) implements SideChainPartBlock.Neighbor {
       @Override
       public boolean isConnectable() {
          return true;

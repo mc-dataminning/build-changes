@@ -75,7 +75,7 @@ public class ArmorStandRenderer extends LivingEntityRenderer<ArmorStand, ArmorSt
    protected void setupRotations(final ArmorStandRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
       poseStack.rotateDegrees(Axis.YP, 180.0F - bodyRot);
       if (state.wiggle < 5.0F) {
-         poseStack.rotateDegrees(Axis.YP, Mth.sin((double)(state.wiggle / 1.5F * (float) Math.PI)) * 3.0F);
+         poseStack.rotateDegrees(Axis.YP, Mth.sin(state.wiggle / 1.5F * (float) Math.PI) * 3.0F);
       }
    }
 
@@ -83,8 +83,7 @@ public class ArmorStandRenderer extends LivingEntityRenderer<ArmorStand, ArmorSt
       return entity.isCustomNameVisible();
    }
 
-   @Nullable
-   protected RenderType getRenderType(
+   protected @Nullable RenderType getRenderType(
       final ArmorStandRenderState state, final boolean isBodyVisible, final boolean forceTransparent, final boolean appearGlowing
    ) {
       if (!state.isMarker) {

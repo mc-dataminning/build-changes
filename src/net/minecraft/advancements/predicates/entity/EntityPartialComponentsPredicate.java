@@ -13,7 +13,7 @@ public record EntityPartialComponentsPredicate(Map<DataComponentPredicate.Type<?
       .xmap(EntityPartialComponentsPredicate::new, EntityPartialComponentsPredicate::predicates);
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
       for (DataComponentPredicate predicate : this.predicates.values()) {
          if (!predicate.matches(entity)) {
             return false;

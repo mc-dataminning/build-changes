@@ -41,7 +41,7 @@ public class BrewingStandScreen extends AbstractContainerScreen<BrewingStandMenu
       int tickCount = this.menu.getBrewingTicks();
       int totalTickCount = this.menu.getTotalBrewingTicks();
       if (tickCount > 0 && totalTickCount > 0) {
-         int length = (int)(28.0F * (1.0F - (float)tickCount / (float)totalTickCount));
+         int length = (int)(28.0F * (1.0F - (float)tickCount / totalTickCount));
          if (length > 0) {
             graphics.blitSprite(RenderPipelines.GUI_TEXTURED, BREW_PROGRESS_SPRITE, 9, 28, 0, 0, xo + 97, yo + 16, 9, length);
          }

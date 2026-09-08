@@ -30,19 +30,15 @@ public class DragonSittingScanningPhase extends AbstractDragonSittingPhase {
             this.dragon.getPhaseManager().setPhase(EnderDragonPhase.SITTING_ATTACKING);
          } else {
             Vec3 aim = new Vec3(attackTarget.getX() - this.dragon.getX(), 0.0, attackTarget.getZ() - this.dragon.getZ()).normalize();
-            Vec3 dir = new Vec3(
-                  (double)Mth.sin((double)(this.dragon.getYRot() * (float) (Math.PI / 180.0))),
-                  0.0,
-                  (double)(-Mth.cos((double)(this.dragon.getYRot() * (float) (Math.PI / 180.0))))
-               )
+            Vec3 dir = new Vec3(Mth.sin(this.dragon.getYRot() * (float) (Math.PI / 180.0)), 0.0, -Mth.cos(this.dragon.getYRot() * (float) (Math.PI / 180.0)))
                .normalize();
             float dot = (float)dir.dot(aim);
-            float angle = (float)(Math.acos((double)dot) * 180.0F / (float)Math.PI) + 0.5F;
+            float angle = (float)(Math.acos(dot) * 180.0F / (float)Math.PI) + 0.5F;
             if (angle < 0.0F || angle > 10.0F) {
                double xAttackDist = attackTarget.getX() - this.dragon.head.getX();
                double zAttackDist = attackTarget.getZ() - this.dragon.head.getZ();
                double yRotDelta = Mth.clamp(
-                  Mth.wrapDegrees(180.0 - Mth.atan2(xAttackDist, zAttackDist) * 180.0F / (float)Math.PI - (double)this.dragon.getYRot()), -100.0, 100.0
+                  Mth.wrapDegrees(180.0 - Mth.atan2(xAttackDist, zAttackDist) * 180.0F / (float)Math.PI - this.dragon.getYRot()), -100.0, 100.0
                );
                this.dragon.yRotA *= 0.8F;
                float dist = (float)Math.sqrt(xAttackDist * xAttackDist + zAttackDist * zAttackDist) + 1.0F;

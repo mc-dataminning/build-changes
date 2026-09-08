@@ -55,16 +55,15 @@ public class DoublePlantBlock extends VegetationBlock {
       }
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockPos pos = context.getClickedPos();
       Level level = context.getLevel();
       return pos.getY() < level.getMaxY() && level.getBlockState(pos.above()).canBeReplaced(context) ? super.getStateForPlacement(context) : null;
    }
 
    @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, @Nullable final LivingEntity by, final ItemStack itemStack) {
+   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
       BlockPos abovePos = pos.above();
       level.setBlockAndUpdate(abovePos, copyWaterloggedFrom(level, abovePos, this.defaultBlockState().setValue(HALF, DoubleBlockHalf.UPPER)));
    }
@@ -73,22 +72,20 @@ public class DoublePlantBlock extends VegetationBlock {
    protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
       if (state.getValue(HALF) != DoubleBlockHalf.UPPER) {
          return super.canSurvive(state, level, pos);
-      } else {
-         BlockState belowState = level.getBlockState(pos.below());
-         return belowState.is(this) && belowState.getValue(HALF) == DoubleBlockHalf.LOWER;
       }
+
+      BlockState belowState = level.getBlockState(pos.below());
+      return belowState.is(this) && belowState.getValue(HALF) == DoubleBlockHalf.LOWER;
    }
 
-   public static void placeAt(final LevelAccessor level, final BlockState state, final BlockPos lowerPos, @Block.UpdateFlags final int updateType) {
+   public static void placeAt(final LevelAccessor level, final BlockState state, final BlockPos lowerPos, final @Block.UpdateFlags int updateType) {
       BlockPos upperPos = lowerPos.above();
       level.setBlock(lowerPos, copyWaterloggedFrom(level, lowerPos, state.setValue(HALF, DoubleBlockHalf.LOWER)), updateType);
       level.setBlock(upperPos, copyWaterloggedFrom(level, upperPos, state.setValue(HALF, DoubleBlockHalf.UPPER)), updateType);
    }
 
    public static BlockState copyWaterloggedFrom(final LevelReader level, final BlockPos pos, final BlockState state) {
-      return state.hasProperty(BlockStateProperties.WATERLOGGED)
-         ? state.setValue(BlockStateProperties.WATERLOGGED, Boolean.valueOf(level.isWaterAt(pos)))
-         : state;
+      return state.hasProperty(BlockStateProperties.WATERLOGGED) ? state.setValue(BlockStateProperties.WATERLOGGED, level.isWaterAt(pos)) : state;
    }
 
    @Override
@@ -110,7 +107,7 @@ public class DoublePlantBlock extends VegetationBlock {
       final ServerPlayer player,
       final BlockPos pos,
       final BlockState state,
-      @Nullable final BlockEntity blockEntity,
+      final @Nullable BlockEntity blockEntity,
       final ItemStack destroyedWith
    ) {
       super.playerDestroy(level, player, pos, Blocks.AIR.defaultBlockState(), blockEntity, destroyedWith);

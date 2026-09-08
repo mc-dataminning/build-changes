@@ -111,7 +111,7 @@ public class CrossbowItem extends ProjectileWeaponItem {
       final float power,
       final float uncertainty,
       final float angle,
-      @Nullable final LivingEntity targetOverride
+      final @Nullable LivingEntity targetOverride
    ) {
       Vector3f shotVector;
       if (targetOverride != null) {
@@ -122,12 +122,12 @@ public class CrossbowItem extends ProjectileWeaponItem {
          shotVector = getProjectileShotVector(livingEntity, new Vec3(xd, yd, zd), angle);
       } else {
          Vec3 upVector = livingEntity.getUpVector(1.0F);
-         Quaternionf upQuaternion = new Quaternionf().setAngleAxis((double)(angle * (float) (Math.PI / 180.0)), upVector.x, upVector.y, upVector.z);
+         Quaternionf upQuaternion = new Quaternionf().setAngleAxis(angle * (float) (Math.PI / 180.0), upVector.x, upVector.y, upVector.z);
          Vec3 viewVec = livingEntity.getViewVector(1.0F);
          shotVector = viewVec.toVector3f().rotate(upQuaternion);
       }
 
-      projectileEntity.shoot((double)shotVector.x(), (double)shotVector.y(), (double)shotVector.z(), power, uncertainty);
+      projectileEntity.shoot(shotVector.x(), shotVector.y(), shotVector.z(), power, uncertainty);
       float soundPitch = getShotPitch(livingEntity.getRandom(), index);
       livingEntity.level()
          .playSound(
@@ -138,7 +138,7 @@ public class CrossbowItem extends ProjectileWeaponItem {
    private static Vector3f getProjectileShotVector(final LivingEntity body, final Vec3 originalVector, final float angle) {
       Vector3f viewVec = originalVector.toVector3f().normalize();
       Vector3f rightVectorPreRot = new Vector3f(viewVec).cross(new Vector3f(0.0F, 1.0F, 0.0F));
-      if ((double)rightVectorPreRot.lengthSquared() <= 1.0E-7) {
+      if (rightVectorPreRot.lengthSquared() <= 1.0E-7) {
          Vec3 up = body.getUpVector(1.0F);
          rightVectorPreRot = new Vector3f(viewVec).cross(up.toVector3f());
       }
@@ -153,14 +153,14 @@ public class CrossbowItem extends ProjectileWeaponItem {
    ) {
       if (projectile.is(Items.FIREWORK_ROCKET)) {
          return new FireworkRocketEntity(level, projectile, shooter, shooter.getX(), shooter.getEyeY() - 0.15F, shooter.getZ(), true);
-      } else {
-         Projectile projectileEntity = super.createProjectile(level, shooter, heldItem, projectile, isCrit);
-         if (projectileEntity instanceof AbstractArrow arrow) {
-            arrow.setSoundEvent(SoundEvents.CROSSBOW_HIT);
-         }
-
-         return projectileEntity;
       }
+
+      Projectile projectileEntity = super.createProjectile(level, shooter, heldItem, projectile, isCrit);
+      if (projectileEntity instanceof AbstractArrow arrow) {
+         arrow.setSoundEvent(SoundEvents.CROSSBOW_HIT);
+      }
+
+      return projectileEntity;
    }
 
    @Override
@@ -175,7 +175,7 @@ public class CrossbowItem extends ProjectileWeaponItem {
       final ItemStack weapon,
       final float power,
       final float uncertainty,
-      @Nullable final LivingEntity targetOverride
+      final @Nullable LivingEntity targetOverride
    ) {
       if (level instanceof ServerLevel serverLevel) {
          ChargedProjectiles charged = weapon.set(DataComponents.CHARGED_PROJECTILES, ChargedProjectiles.EMPTY);
@@ -203,7 +203,7 @@ public class CrossbowItem extends ProjectileWeaponItem {
    public void onUseTick(final Level level, final LivingEntity entity, final ItemStack itemStack, final int ticksRemaining) {
       if (!level.isClientSide()) {
          CrossbowItem.ChargingSounds sounds = getChargingSounds(itemStack);
-         float tickPercent = (float)(itemStack.getUseDuration(entity) - ticksRemaining) / (float)getChargeDuration(itemStack, entity);
+         float tickPercent = (float)(itemStack.getUseDuration(entity) - ticksRemaining) / getChargeDuration(itemStack, entity);
          if (tickPercent < 0.2F) {
             this.startSoundPlayed = false;
             this.midLoadSoundPlayed = false;
@@ -224,15 +224,15 @@ public class CrossbowItem extends ProjectileWeaponItem {
             sounds.end()
                .ifPresent(
                   sound -> level.playSound(
-                        null,
-                        entity.getX(),
-                        entity.getY(),
-                        entity.getZ(),
-                        sound.value(),
-                        entity.getSoundSource(),
-                        1.0F,
-                        1.0F / (level.getRandom().nextFloat() * 0.5F + 1.0F) + 0.2F
-                     )
+                     null,
+                     entity.getX(),
+                     entity.getY(),
+                     entity.getZ(),
+                     sound.value(),
+                     entity.getSoundSource(),
+                     1.0F,
+                     1.0F / (level.getRandom().nextFloat() * 0.5F + 1.0F) + 0.2F
+                  )
                );
          }
       }
@@ -258,7 +258,7 @@ public class CrossbowItem extends ProjectileWeaponItem {
    }
 
    private static float getPowerForTime(final int timeHeld, final ItemStack itemStack, final LivingEntity holder) {
-      float pow = (float)timeHeld / (float)getChargeDuration(itemStack, holder);
+      float pow = (float)timeHeld / getChargeDuration(itemStack, holder);
       if (pow > 1.0F) {
          pow = 1.0F;
       }
@@ -276,7 +276,7 @@ public class CrossbowItem extends ProjectileWeaponItem {
       return 8;
    }
 
-   public static enum ChargeType implements StringRepresentable {
+   public enum ChargeType implements StringRepresentable {
       NONE("none"),
       ARROW("arrow"),
       ROCKET("rocket");
@@ -284,7 +284,7 @@ public class CrossbowItem extends ProjectileWeaponItem {
       public static final Codec<CrossbowItem.ChargeType> CODEC = StringRepresentable.fromEnum(CrossbowItem.ChargeType::values);
       private final String name;
 
-      private ChargeType(final String name) {
+      ChargeType(final String name) {
          this.name = name;
       }
 
@@ -294,14 +294,14 @@ public class CrossbowItem extends ProjectileWeaponItem {
       }
    }
 
-   public static record ChargingSounds(Optional<Holder<SoundEvent>> start, Optional<Holder<SoundEvent>> mid, Optional<Holder<SoundEvent>> end) {
+   public record ChargingSounds(Optional<Holder<SoundEvent>> start, Optional<Holder<SoundEvent>> mid, Optional<Holder<SoundEvent>> end) {
       public static final Codec<CrossbowItem.ChargingSounds> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  SoundEvent.CODEC.optionalFieldOf("start").forGetter(CrossbowItem.ChargingSounds::start),
-                  SoundEvent.CODEC.optionalFieldOf("mid").forGetter(CrossbowItem.ChargingSounds::mid),
-                  SoundEvent.CODEC.optionalFieldOf("end").forGetter(CrossbowItem.ChargingSounds::end)
-               )
-               .apply(i, CrossbowItem.ChargingSounds::new)
+               SoundEvent.CODEC.optionalFieldOf("start").forGetter(CrossbowItem.ChargingSounds::start),
+               SoundEvent.CODEC.optionalFieldOf("mid").forGetter(CrossbowItem.ChargingSounds::mid),
+               SoundEvent.CODEC.optionalFieldOf("end").forGetter(CrossbowItem.ChargingSounds::end)
+            )
+            .apply(i, CrossbowItem.ChargingSounds::new)
       );
    }
 }

@@ -94,9 +94,9 @@ public class SectionCompiler {
                if (blockState.getRenderShape() == RenderShape.MODEL) {
                   blockRenderer.tesselateBlock(
                      ModelBlockRenderer.forceOpaque(this.cutoutLeaves, blockState) ? opaqueQuadOutput : quadOutput,
-                     (float)SectionPos.sectionRelative(pos.getX()),
-                     (float)SectionPos.sectionRelative(pos.getY()),
-                     (float)SectionPos.sectionRelative(pos.getZ()),
+                     SectionPos.sectionRelative(pos.getX()),
+                     SectionPos.sectionRelative(pos.getY()),
+                     SectionPos.sectionRelative(pos.getZ()),
                      region,
                      pos,
                      blockState,
@@ -104,8 +104,8 @@ public class SectionCompiler {
                      blockState.getSeed(pos)
                   );
                }
-            } catch (Throwable var21) {
-               CrashReport report = CrashReport.forThrowable(var21, "Tesselating block in world");
+            } catch (Throwable t) {
+               CrashReport report = CrashReport.forThrowable(t, "Tesselating block in world");
                CrashReportCategory category = report.addCategory("Block being tesselated");
                CrashReportCategory.populateBlockDetails(category, region, pos, blockState);
                throw new ReportedException(report);
@@ -151,8 +151,7 @@ public class SectionCompiler {
       public final List<BlockEntity> blockEntities = new ArrayList<>();
       public final Map<ChunkSectionLayer, MeshData> renderedLayers = new EnumMap<>(ChunkSectionLayer.class);
       public VisibilitySet visibilitySet = new VisibilitySet();
-      @Nullable
-      public MeshData.SortState transparencyState;
+      public MeshData.@Nullable SortState transparencyState;
 
       public void release() {
          this.renderedLayers.values().forEach(MeshData::close);

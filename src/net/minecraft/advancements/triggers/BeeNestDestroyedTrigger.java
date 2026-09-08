@@ -12,7 +12,6 @@ import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.codec.RegistryCodecs;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.ItemInstance;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -28,7 +27,7 @@ public class BeeNestDestroyedTrigger extends SimpleCriterionTrigger<BeeNestDestr
       this.trigger(player, t -> t.matches(state, itemStack, numBeesInside));
    }
 
-   public static record TriggerInstance(
+   public record TriggerInstance(
       Optional<Holder<LootItemCondition>> player,
       Optional<HolderSet<Block>> block,
       Optional<StatePropertiesPredicate> state,
@@ -37,15 +36,13 @@ public class BeeNestDestroyedTrigger extends SimpleCriterionTrigger<BeeNestDestr
    ) implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<BeeNestDestroyedTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(BeeNestDestroyedTrigger.TriggerInstance::player),
-                  RegistryCodecs.holderSet(Registries.BLOCK).optionalFieldOf("blocks").forGetter(BeeNestDestroyedTrigger.TriggerInstance::block),
-                  StatePropertiesPredicate.CODEC.optionalFieldOf("state").forGetter(BeeNestDestroyedTrigger.TriggerInstance::state),
-                  ItemPredicate.CODEC.optionalFieldOf("item").forGetter(BeeNestDestroyedTrigger.TriggerInstance::item),
-                  MinMaxBounds.Ints.CODEC
-                     .optionalFieldOf("num_bees_inside", MinMaxBounds.Ints.ANY)
-                     .forGetter(BeeNestDestroyedTrigger.TriggerInstance::beesInside)
-               )
-               .apply(i, BeeNestDestroyedTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(BeeNestDestroyedTrigger.TriggerInstance::player),
+               RegistryCodecs.holderSet(Registries.BLOCK).optionalFieldOf("blocks").forGetter(BeeNestDestroyedTrigger.TriggerInstance::block),
+               StatePropertiesPredicate.CODEC.optionalFieldOf("state").forGetter(BeeNestDestroyedTrigger.TriggerInstance::state),
+               ItemPredicate.CODEC.optionalFieldOf("item").forGetter(BeeNestDestroyedTrigger.TriggerInstance::item),
+               MinMaxBounds.Ints.CODEC.optionalFieldOf("num_bees_inside", MinMaxBounds.Ints.ANY).forGetter(BeeNestDestroyedTrigger.TriggerInstance::beesInside)
+            )
+            .apply(i, BeeNestDestroyedTrigger.TriggerInstance::new)
       );
 
       public static Criterion<BeeNestDestroyedTrigger.TriggerInstance> destroyedBeeNest(
@@ -71,7 +68,7 @@ public class BeeNestDestroyedTrigger extends SimpleCriterionTrigger<BeeNestDestr
          } else if (this.state.isPresent() && !this.state.get().matches(state)) {
             return false;
          } else {
-            return this.item.isPresent() && !this.item.get().test((ItemInstance)itemStack) ? false : this.beesInside.matches(numBeesInside);
+            return this.item.isPresent() && !this.item.get().test(itemStack) ? false : this.beesInside.matches(numBeesInside);
          }
       }
    }

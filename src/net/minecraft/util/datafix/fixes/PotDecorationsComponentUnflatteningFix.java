@@ -28,33 +28,33 @@ public class PotDecorationsComponentUnflatteningFix extends DataFix {
       Optional<Stream<Dynamic<T>>> decorationIds = original.asStreamOpt().result();
       if (decorationIds.isEmpty()) {
          return original;
-      } else {
-         List<Optional<String>> decorationIdList = decorationIds.get().map(s -> s.asString().result()).toList();
-         Map<Dynamic<T>, Dynamic<T>> result = new HashMap<>(4);
+      }
 
-         for (int i = 0; i < 4; i++) {
-            String decorationId;
-            if (i < decorationIdList.size()) {
-               decorationId = decorationIdList.get(i).orElse("minecraft:brick");
-            } else {
-               decorationId = "minecraft:brick";
-            }
+      List<Optional<String>> decorationIdList = decorationIds.get().map(s -> s.asString().result()).toList();
+      Map<Dynamic<T>, Dynamic<T>> result = new HashMap<>(4);
 
-            if (decorationId.isEmpty()) {
-               return original;
-            }
-            String sideName = switch (i) {
-               case 0 -> "back";
-               case 1 -> "left";
-               case 2 -> "right";
-               case 3 -> "front";
-               default -> throw new IndexOutOfBoundsException();
-            };
-            Map<Dynamic<T>, Dynamic<T>> newStack = Map.of(original.createString("id"), original.createString(decorationId));
-            result.put(original.createString(sideName), original.createMap(newStack));
+      for (int i = 0; i < 4; i++) {
+         String decorationId;
+         if (i < decorationIdList.size()) {
+            decorationId = decorationIdList.get(i).orElse("minecraft:brick");
+         } else {
+            decorationId = "minecraft:brick";
          }
 
-         return original.createMap(result);
+         if (decorationId.isEmpty()) {
+            return original;
+         }
+         String sideName = switch (i) {
+            case 0 -> "back";
+            case 1 -> "left";
+            case 2 -> "right";
+            case 3 -> "front";
+            default -> throw new IndexOutOfBoundsException();
+         };
+         Map<Dynamic<T>, Dynamic<T>> newStack = Map.of(original.createString("id"), original.createString(decorationId));
+         result.put(original.createString(sideName), original.createMap(newStack));
       }
+
+      return original.createMap(result);
    }
 }

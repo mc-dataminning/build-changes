@@ -52,10 +52,9 @@ public class SkullBlockRenderer implements BlockEntityRenderer<SkullBlockEntity,
    });
    private final PlayerSkinRenderCache playerSkinRenderCache;
 
-   @Nullable
-   public static SkullModelBase createModel(final EntityModelSet modelSet, final SkullBlock.Type type) {
+   public static @Nullable SkullModelBase createModel(final EntityModelSet modelSet, final SkullBlock.Type type) {
       if (type instanceof SkullBlock.Types vanillaType) {
-         return (SkullModelBase)(switch (vanillaType) {
+         return switch (vanillaType) {
             case SKELETON -> new SkullModel(modelSet.bakeLayer(ModelLayers.SKELETON_SKULL));
             case WITHER_SKELETON -> new SkullModel(modelSet.bakeLayer(ModelLayers.WITHER_SKELETON_SKULL));
             case PLAYER -> new SkullModel(modelSet.bakeLayer(ModelLayers.PLAYER_HEAD));
@@ -63,7 +62,7 @@ public class SkullBlockRenderer implements BlockEntityRenderer<SkullBlockEntity,
             case CREEPER -> new SkullModel(modelSet.bakeLayer(ModelLayers.CREEPER_HEAD));
             case DRAGON -> new DragonHeadModel(modelSet.bakeLayer(ModelLayers.DRAGON_SKULL));
             case PIGLIN -> new PiglinHeadModel(modelSet.bakeLayer(ModelLayers.PIGLIN_HEAD));
-         });
+         };
       } else {
          return null;
       }
@@ -84,7 +83,7 @@ public class SkullBlockRenderer implements BlockEntityRenderer<SkullBlockEntity,
       final SkullBlockRenderState state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
       state.animationProgress = blockEntity.getAnimation(partialTicks);
@@ -118,7 +117,7 @@ public class SkullBlockRenderer implements BlockEntityRenderer<SkullBlockEntity,
       final SkullModelBase model,
       final RenderType renderType,
       final int outlineColor,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       SkullModelBase.State modelState = new SkullModelBase.State();
       modelState.animationPos = animationValue;
@@ -140,7 +139,7 @@ public class SkullBlockRenderer implements BlockEntityRenderer<SkullBlockEntity,
       return getSkullRenderType(type, null);
    }
 
-   public static RenderType getSkullRenderType(final SkullBlock.Type type, @Nullable final Identifier texture) {
+   public static RenderType getSkullRenderType(final SkullBlock.Type type, final @Nullable Identifier texture) {
       return RenderTypes.entityCutoutZOffset(texture != null ? texture : SKIN_BY_TYPE.get(type));
    }
 
@@ -155,7 +154,7 @@ public class SkullBlockRenderer implements BlockEntityRenderer<SkullBlockEntity,
    private static Transformation createWallTransformation(final Direction wallDirection) {
       float offset = 0.25F;
       return new Transformation(
-         new Vector3f(0.5F - (float)wallDirection.getStepX() * 0.25F, 0.25F, 0.5F - (float)wallDirection.getStepZ() * 0.25F),
+         new Vector3f(0.5F - wallDirection.getStepX() * 0.25F, 0.25F, 0.5F - wallDirection.getStepZ() * 0.25F),
          Axis.YP.rotationDegrees(-wallDirection.getOpposite().toYRot()),
          new Vector3f(-1.0F, -1.0F, 1.0F),
          null

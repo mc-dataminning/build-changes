@@ -11,7 +11,7 @@ import net.minecraft.server.packs.resources.ResourceManager;
 public record DirectoryLister(String sourcePath, String idPrefix) implements SpriteSource {
    public static final MapCodec<DirectoryLister> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(Codec.STRING.fieldOf("source").forGetter(DirectoryLister::sourcePath), Codec.STRING.fieldOf("prefix").forGetter(DirectoryLister::idPrefix))
-            .apply(i, DirectoryLister::new)
+         .apply(i, DirectoryLister::new)
    );
 
    @Override

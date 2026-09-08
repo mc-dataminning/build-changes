@@ -1,6 +1,5 @@
 package net.minecraft.client.gui.screens.inventory;
 
-import java.util.Objects;
 import net.minecraft.client.GameNarrator;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractSliderButton;
@@ -77,7 +76,7 @@ public class JigsawBlockEditScreen extends Screen {
    private int parseAsInt(final String value) {
       try {
          return Integer.parseInt(value);
-      } catch (NumberFormatException var3) {
+      } catch (NumberFormatException ignored) {
          return 0;
       }
    }
@@ -134,7 +133,6 @@ public class JigsawBlockEditScreen extends Screen {
       this.jointButton.visible = vertical;
       this.addRenderableWidget(new AbstractSliderButton(this.width / 2 - 154, 185, 100, 20, CommonComponents.EMPTY, 0.0) {
          {
-            Objects.requireNonNull(JigsawBlockEditScreen.this);
             this.updateMessage();
          }
 

@@ -38,9 +38,9 @@ public class DragonFlightHistory {
    public DragonFlightHistory.Sample get(final int delay, final float partialTicks) {
       DragonFlightHistory.Sample sample = this.get(delay);
       DragonFlightHistory.Sample sampleOld = this.get(delay + 1);
-      return new DragonFlightHistory.Sample(Mth.lerp((double)partialTicks, sampleOld.y, sample.y), Mth.rotLerp(partialTicks, sampleOld.yRot, sample.yRot));
+      return new DragonFlightHistory.Sample(Mth.lerp(partialTicks, sampleOld.y, sample.y), Mth.rotLerp(partialTicks, sampleOld.yRot, sample.yRot));
    }
 
-   public static record Sample(double y, float yRot) {
+   public record Sample(double y, float yRot) {
    }
 }

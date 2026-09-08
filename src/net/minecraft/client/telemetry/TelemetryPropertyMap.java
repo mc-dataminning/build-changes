@@ -68,8 +68,7 @@ public class TelemetryPropertyMap {
       };
    }
 
-   @Nullable
-   public <T> T get(final TelemetryProperty<T> property) {
+   public <T> @Nullable T get(final TelemetryProperty<T> property) {
       return (T)this.entries.get(property);
    }
 
@@ -93,7 +92,7 @@ public class TelemetryPropertyMap {
          return this;
       }
 
-      public <T> TelemetryPropertyMap.Builder putIfNotNull(final TelemetryProperty<T> property, @Nullable final T value) {
+      public <T> TelemetryPropertyMap.Builder putIfNotNull(final TelemetryProperty<T> property, final @Nullable T value) {
          if (value != null) {
             this.entries.put(property, value);
          }

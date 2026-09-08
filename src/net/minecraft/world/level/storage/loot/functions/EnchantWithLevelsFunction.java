@@ -29,14 +29,14 @@ import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntPr
 public class EnchantWithLevelsFunction extends LootItemConditionalFunction {
    public static final MapCodec<EnchantWithLevelsFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
-            .and(
-               i.group(
-                  ContextIntProviders.CODEC.fieldOf("levels").forGetter(f -> f.levels),
-                  RegistryCodecs.holderSet(Registries.ENCHANTMENT).optionalFieldOf("options").forGetter(f -> f.options),
-                  Codec.BOOL.optionalFieldOf("include_additional_cost_component", false).forGetter(f -> f.includeAdditionalCostComponent)
-               )
+         .and(
+            i.group(
+               ContextIntProviders.CODEC.fieldOf("levels").forGetter(f -> f.levels),
+               RegistryCodecs.holderSet(Registries.ENCHANTMENT).optionalFieldOf("options").forGetter(f -> f.options),
+               Codec.BOOL.optionalFieldOf("include_additional_cost_component", false).forGetter(f -> f.includeAdditionalCostComponent)
             )
-            .apply(i, EnchantWithLevelsFunction::new)
+         )
+         .apply(i, EnchantWithLevelsFunction::new)
    );
    private final Holder<ContextIntProvider> levels;
    private final Optional<HolderSet<Enchantment>> options;

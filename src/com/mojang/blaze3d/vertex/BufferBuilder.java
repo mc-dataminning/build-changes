@@ -37,36 +37,35 @@ public class BufferBuilder implements VertexConsumer {
    private static final int NORMAL_SEMANTIC_ID = 6;
    private static final int LINE_WIDTH_SEMANTIC_ID = 7;
    private static final String[] elementNames = new String[]{"Position", "Color", "UV0", "UV1", "UV2", "UV3", "Normal", "LineWidth"};
-   private final VertexFormatElement[] elements = new VertexFormatElement[elementNames.length];
+   private final @Nullable VertexFormatElement[] elements = new VertexFormatElement[elementNames.length];
 
    public BufferBuilder(final ByteBufferBuilder buffer, final PrimitiveTopology primitiveTopology, final VertexFormat format) {
       if (!format.contains("Position")) {
          throw new IllegalArgumentException("Cannot build mesh with no position element");
-      } else {
-         this.buffer = buffer;
-         this.primitiveTopology = primitiveTopology;
-         this.format = format;
-         this.vertexSize = format.getVertexSize();
-         int elementsMask = 0;
+      }
 
-         for (int i = 0; i < elementNames.length; i++) {
-            String elementName = elementNames[i];
-            VertexFormatElement element = format.getElement(elementName);
-            if (element != null) {
-               elementsMask |= 1 << i;
-            }
+      this.buffer = buffer;
+      this.primitiveTopology = primitiveTopology;
+      this.format = format;
+      this.vertexSize = format.getVertexSize();
+      int elementsMask = 0;
 
-            this.elements[i] = element;
+      for (int i = 0; i < elementNames.length; i++) {
+         String elementName = elementNames[i];
+         VertexFormatElement element = format.getElement(elementName);
+         if (element != null) {
+            elementsMask |= 1 << i;
          }
 
-         this.initialElementsToFill = elementsMask & -2;
-         this.blockFormat = format == DefaultVertexFormat.BLOCK;
-         this.entityFormat = format == DefaultVertexFormat.ENTITY;
+         this.elements[i] = element;
       }
+
+      this.initialElementsToFill = elementsMask & -2;
+      this.blockFormat = format == DefaultVertexFormat.BLOCK;
+      this.entityFormat = format == DefaultVertexFormat.ENTITY;
    }
 
-   @Nullable
-   public MeshData build() {
+   public @Nullable MeshData build() {
       this.ensureBuilding();
       this.endLastVertex();
       MeshData mesh = this.storeMesh();
@@ -90,20 +89,19 @@ public class BufferBuilder implements VertexConsumer {
       }
    }
 
-   @Nullable
-   private MeshData storeMesh() {
+   private @Nullable MeshData storeMesh() {
       if (this.vertices == 0) {
          return null;
-      } else {
-         ByteBufferBuilder.Result vertexBuffer = this.buffer.build();
-         if (vertexBuffer == null) {
-            return null;
-         } else {
-            int indices = this.primitiveTopology.indexCount(this.vertices);
-            IndexType indexType = IndexType.least(this.vertices);
-            return new MeshData(vertexBuffer, new MeshData.DrawState(this.format, this.vertices, indices, this.primitiveTopology, indexType));
-         }
       }
+
+      ByteBufferBuilder.Result vertexBuffer = this.buffer.build();
+      if (vertexBuffer == null) {
+         return null;
+      }
+
+      int indices = this.primitiveTopology.indexCount(this.vertices);
+      IndexType indexType = IndexType.least(this.vertices);
+      return new MeshData(vertexBuffer, new MeshData.DrawState(this.format, this.vertices, indices, this.primitiveTopology, indexType));
    }
 
    private long beginVertex() {
@@ -111,12 +109,12 @@ public class BufferBuilder implements VertexConsumer {
       this.endLastVertex();
       if (this.vertices >= 16777215) {
          throw new IllegalStateException("Trying to write too many vertices (>16777215) into BufferBuilder");
-      } else {
-         this.vertices++;
-         long pointer = this.buffer.reserve(this.vertexSize);
-         this.vertexPointer = pointer;
-         return pointer;
       }
+
+      this.vertices++;
+      long pointer = this.buffer.reserve(this.vertexSize);
+      this.vertexPointer = pointer;
+      return pointer;
    }
 
    private long beginElement(final int semanticID) {
@@ -129,7 +127,7 @@ public class BufferBuilder implements VertexConsumer {
          if (vertexPointer == -1L) {
             throw new IllegalArgumentException("Not currently building vertex");
          } else {
-            return vertexPointer + (long)element.offset();
+            return vertexPointer + element.offset();
          }
       } else {
          return -1L;
@@ -144,12 +142,12 @@ public class BufferBuilder implements VertexConsumer {
                .mapToObj(i -> elementNames[i])
                .collect(Collectors.joining(", "));
             throw new IllegalStateException("Missing elements in vertex: " + missingElements);
-         } else {
-            if (this.primitiveTopology == PrimitiveTopology.LINES) {
-               long pointer = this.buffer.reserve(this.vertexSize);
-               MemoryUtil.memCopy(pointer - (long)this.vertexSize, pointer, (long)this.vertexSize);
-               this.vertices++;
-            }
+         }
+
+         if (this.primitiveTopology == PrimitiveTopology.LINES) {
+            long pointer = this.buffer.reserve(this.vertexSize);
+            MemoryUtil.memCopy(pointer - this.vertexSize, pointer, this.vertexSize);
+            this.vertices++;
          }
       }
    }
@@ -171,7 +169,7 @@ public class BufferBuilder implements VertexConsumer {
    @Override
    public VertexConsumer addVertex(final float x, final float y, final float z) {
       VertexFormatElement positionElement = this.elements[0];
-      long pointer = this.beginVertex() + (long)positionElement.offset();
+      long pointer = this.beginVertex() + positionElement.offset();
       this.elementsToFill = this.initialElementsToFill;
       putVec3f(pointer, x, y, z);
       return this;

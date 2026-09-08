@@ -106,10 +106,8 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
    private float scrollOffs;
    private boolean scrolling;
    private EditBox searchBox;
-   @Nullable
-   private List<Slot> originalSlots;
-   @Nullable
-   private Slot destroyItemSlot;
+   private @Nullable List<Slot> originalSlots;
+   private @Nullable Slot destroyItemSlot;
    private CreativeInventoryListener listener;
    private boolean ignoreTextInput;
    private boolean hasClickedOutside;
@@ -146,19 +144,19 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
    }
 
    private boolean tryRebuildTabContents(
-      @Nullable final SessionSearchTrees searchTrees, final FeatureFlagSet enabledFeatures, final boolean hasPermissions, final HolderLookup.Provider holders
+      final @Nullable SessionSearchTrees searchTrees, final FeatureFlagSet enabledFeatures, final boolean hasPermissions, final HolderLookup.Provider holders
    ) {
       if (!CreativeModeTabs.tryRebuildTabContents(enabledFeatures, hasPermissions, holders)) {
          return false;
-      } else {
-         if (searchTrees != null) {
-            List<ItemStack> creativeSearchItems = List.copyOf(CreativeModeTabs.searchTab().getDisplayItems());
-            searchTrees.updateCreativeTooltips(holders, creativeSearchItems);
-            searchTrees.updateCreativeTags(creativeSearchItems);
-         }
-
-         return true;
       }
+
+      if (searchTrees != null) {
+         List<ItemStack> creativeSearchItems = List.copyOf(CreativeModeTabs.searchTab().getDisplayItems());
+         searchTrees.updateCreativeTooltips(holders, creativeSearchItems);
+         searchTrees.updateCreativeTags(creativeSearchItems);
+      }
+
+      return true;
    }
 
    private void refreshCurrentTabContents(final Collection<ItemStack> displayList) {
@@ -187,7 +185,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
    }
 
    @Override
-   protected void slotClicked(@Nullable final Slot slot, final int slotId, final int buttonNum, ContainerInput containerInput) {
+   protected void slotClicked(final @Nullable Slot slot, final int slotId, final int buttonNum, ContainerInput containerInput) {
       if (this.isCreativeSlot(slot)) {
          this.searchBox.moveCursorToEnd(false);
          this.searchBox.setHighlightPos(0);
@@ -319,7 +317,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
       }
    }
 
-   private boolean isCreativeSlot(@Nullable final Slot slot) {
+   private boolean isCreativeSlot(final @Nullable Slot slot) {
       return slot != null && slot.container == CONTAINER;
    }
 
@@ -374,24 +372,26 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
    public boolean charTyped(final CharacterEvent event) {
       if (this.ignoreTextInput) {
          return false;
-      } else if (selectedTab.getType() != CreativeModeTab.Type.SEARCH) {
-         return false;
-      } else {
-         String oldContents = this.searchBox.getValue();
-         if (this.searchBox.charTyped(event)) {
-            if (!Objects.equals(oldContents, this.searchBox.getValue())) {
-               this.refreshSearchResults();
-            }
+      }
 
-            return true;
-         } else {
-            return false;
+      if (selectedTab.getType() != CreativeModeTab.Type.SEARCH) {
+         return false;
+      }
+
+      String oldContents = this.searchBox.getValue();
+      if (this.searchBox.charTyped(event)) {
+         if (!Objects.equals(oldContents, this.searchBox.getValue())) {
+            this.refreshSearchResults();
          }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
    @Override
-   public boolean preeditUpdated(@Nullable final PreeditEvent event) {
+   public boolean preeditUpdated(final @Nullable PreeditEvent event) {
       if (this.ignoreTextInput) {
          return false;
       } else {
@@ -416,17 +416,17 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
          if (doQuickSwap && pressingNumber && this.checkHotbarKeyPressed(event)) {
             this.ignoreTextInput = true;
             return true;
-         } else {
-            String oldContents = this.searchBox.getValue();
-            if (this.searchBox.keyPressed(event)) {
-               if (!Objects.equals(oldContents, this.searchBox.getValue())) {
-                  this.refreshSearchResults();
-               }
+         }
 
-               return true;
-            } else {
-               return this.searchBox.capturesInput() && !event.isEscape() ? true : super.keyPressed(event);
+         String oldContents = this.searchBox.getValue();
+         if (this.searchBox.keyPressed(event)) {
+            if (!Objects.equals(oldContents, this.searchBox.getValue())) {
+               this.refreshSearchResults();
             }
+
+            return true;
+         } else {
+            return this.searchBox.capturesInput() && !event.isEscape() ? true : super.keyPressed(event);
          }
       }
    }
@@ -493,8 +493,8 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
    @Override
    public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
       if (event.button() == 1) {
-         double xm = event.x() - (double)this.leftPos;
-         double ym = event.y() - (double)this.topPos;
+         double xm = event.x() - this.leftPos;
+         double ym = event.y() - this.topPos;
 
          for (CreativeModeTab tab : CreativeModeTabs.tabs()) {
             if (this.checkTabClicked(tab, xm, ym)) {
@@ -514,8 +514,8 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
    @Override
    public boolean mouseReleased(final MouseButtonEvent event) {
       if (event.button() == 1) {
-         double xm = event.x() - (double)this.leftPos;
-         double ym = event.y() - (double)this.topPos;
+         double xm = event.x() - this.leftPos;
+         double ym = event.y() - this.topPos;
          this.scrolling = false;
 
          for (CreativeModeTab tab : CreativeModeTabs.tabs()) {
@@ -572,34 +572,34 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
 
          this.menu.slots.clear();
 
-         for (int ix = 0; ix < invMenu.slots.size(); ix++) {
+         for (int i = 0; i < invMenu.slots.size(); i++) {
             int x;
             int y;
-            if (ix >= 5 && ix < 9) {
-               int pos = ix - 5;
+            if (i >= 5 && i < 9) {
+               int pos = i - 5;
                int col = pos / 2;
                int row = pos % 2;
                x = 54 + col * 54;
                y = 6 + row * 27;
-            } else if (ix >= 0 && ix < 5) {
+            } else if (i >= 0 && i < 5) {
                x = -2000;
                y = -2000;
-            } else if (ix == 45) {
+            } else if (i == 45) {
                x = 35;
                y = 20;
             } else {
-               int pos = ix - 9;
+               int pos = i - 9;
                int col = pos % 9;
                int row = pos / 9;
                x = 9 + col * 18;
-               if (ix >= 36) {
+               if (i >= 36) {
                   y = 112;
                } else {
                   y = 54 + row * 18;
                }
             }
 
-            Slot slot = new CreativeModeInventoryScreen.SlotWrapper(invMenu.slots.get(ix), ix, x, y);
+            Slot slot = new CreativeModeInventoryScreen.SlotWrapper(invMenu.slots.get(i), i, x, y);
             this.menu.slots.add(slot);
          }
 
@@ -635,18 +635,20 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
    public boolean mouseScrolled(final double x, final double y, final double scrollX, final double scrollY) {
       if (super.mouseScrolled(x, y, scrollX, scrollY)) {
          return true;
-      } else if (!this.canScroll()) {
-         return false;
-      } else {
-         this.scrollOffs = this.menu.subtractInputFromScroll(this.scrollOffs, scrollY);
-         this.menu.scrollTo(this.scrollOffs);
-         return true;
       }
+
+      if (!this.canScroll()) {
+         return false;
+      }
+
+      this.scrollOffs = this.menu.subtractInputFromScroll(this.scrollOffs, scrollY);
+      this.menu.scrollTo(this.scrollOffs);
+      return true;
    }
 
    @Override
    protected boolean hasClickedOutside(final double mx, final double my, final int xo, final int yo) {
-      boolean clickedOutside = mx < (double)xo || my < (double)yo || mx >= (double)(xo + this.imageWidth) || my >= (double)(yo + this.imageHeight);
+      boolean clickedOutside = mx < xo || my < yo || mx >= xo + this.imageWidth || my >= yo + this.imageHeight;
       this.hasClickedOutside = clickedOutside && !this.checkTabClicked(selectedTab, mx, my);
       return this.hasClickedOutside;
    }
@@ -658,7 +660,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
       int yscr = yo + 18;
       int xscr2 = xscr + 14;
       int yscr2 = yscr + 112;
-      return xm >= (double)xscr && ym >= (double)yscr && xm < (double)xscr2 && ym < (double)yscr2 && selectedTab.canScroll();
+      return xm >= xscr && ym >= yscr && xm < xscr2 && ym < yscr2 && selectedTab.canScroll();
    }
 
    @Override
@@ -666,7 +668,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
       if (this.scrolling) {
          int yscr = this.topPos + 18;
          int yscr2 = yscr + 112;
-         this.scrollOffs = ((float)event.y() - (float)yscr - 7.5F) / ((float)(yscr2 - yscr) - 15.0F);
+         this.scrollOffs = ((float)event.y() - yscr - 7.5F) / (yscr2 - yscr - 15.0F);
          this.scrollOffs = Mth.clamp(this.scrollOffs, 0.0F, 1.0F);
          this.menu.scrollTo(this.scrollOffs);
          return true;
@@ -688,7 +690,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
 
       if (this.destroyItemSlot != null
          && selectedTab.getType() == CreativeModeTab.Type.INVENTORY
-         && this.isHovering(this.destroyItemSlot.x, this.destroyItemSlot.y, 16, 16, (double)mouseX, (double)mouseY)) {
+         && this.isHovering(this.destroyItemSlot.x, this.destroyItemSlot.y, 16, 16, mouseX, mouseY)) {
          graphics.setTooltipForNextFrame(this.font, TRASH_SLOT_TOOLTIP, mouseX, mouseY);
       }
    }
@@ -708,28 +710,30 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
       List<Component> originalLines = itemStack.getTooltipLines(Item.TooltipContext.of(this.minecraft.level), this.minecraft.player, tooltipStyle);
       if (originalLines.isEmpty()) {
          return originalLines;
-      } else if (isSingleCategoryTab && isCreativeSlot) {
-         return originalLines;
-      } else {
-         List<Component> linesToDisplay = Lists.newArrayList(originalLines);
-         if (isSearchTab && isCreativeSlot) {
-            this.visibleTags.forEach(tag -> {
-               if (itemStack.is((TagKey<Item>)tag)) {
-                  linesToDisplay.add(1, Component.literal("#" + tag.location()).withStyle(ChatFormatting.DARK_PURPLE));
-               }
-            });
-         }
-
-         int i = 1;
-
-         for (CreativeModeTab tab : CreativeModeTabs.tabs()) {
-            if (tab.getType() != CreativeModeTab.Type.SEARCH && tab.contains(itemStack)) {
-               linesToDisplay.add(i++, tab.getDisplayName().copy().withStyle(ChatFormatting.BLUE));
-            }
-         }
-
-         return linesToDisplay;
       }
+
+      if (isSingleCategoryTab && isCreativeSlot) {
+         return originalLines;
+      }
+
+      List<Component> linesToDisplay = Lists.newArrayList(originalLines);
+      if (isSearchTab && isCreativeSlot) {
+         this.visibleTags.forEach(tag -> {
+            if (itemStack.is((TagKey<Item>)tag)) {
+               linesToDisplay.add(1, Component.literal("#" + tag.location()).withStyle(ChatFormatting.DARK_PURPLE));
+            }
+         });
+      }
+
+      int i = 1;
+
+      for (CreativeModeTab tab : CreativeModeTabs.tabs()) {
+         if (tab.getType() != CreativeModeTab.Type.SEARCH && tab.contains(itemStack)) {
+            linesToDisplay.add(i++, tab.getDisplayName().copy().withStyle(ChatFormatting.BLUE));
+         }
+      }
+
+      return linesToDisplay;
    }
 
    @Override
@@ -745,7 +749,7 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
       graphics.blit(
          RenderPipelines.GUI_TEXTURED, selectedTab.getBackgroundTexture(), this.leftPos, this.topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256
       );
-      if (this.insideScrollbar((double)mouseX, (double)mouseY)) {
+      if (this.insideScrollbar(mouseX, mouseY)) {
          if (this.canScroll()) {
             graphics.requestCursor(this.scrolling ? CursorTypes.RESIZE_NS : CursorTypes.POINTING_HAND);
          } else {
@@ -759,22 +763,13 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
       int yscr2 = yscr + 112;
       if (selectedTab.canScroll()) {
          Identifier sprite = this.canScroll() ? SCROLLER_SPRITE : SCROLLER_DISABLED_SPRITE;
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, xscr, yscr + (int)((float)(yscr2 - yscr - 17) * this.scrollOffs), 12, 15);
+         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, xscr, yscr + (int)((yscr2 - yscr - 17) * this.scrollOffs), 12, 15);
       }
 
       this.extractTabButton(graphics, mouseX, mouseY, selectedTab);
       if (selectedTab.getType() == CreativeModeTab.Type.INVENTORY) {
          InventoryScreen.extractEntityInInventoryFollowsMouse(
-            graphics,
-            this.leftPos + 73,
-            this.topPos + 6,
-            this.leftPos + 105,
-            this.topPos + 49,
-            20,
-            0.0625F,
-            (float)mouseX,
-            (float)mouseY,
-            this.minecraft.player
+            graphics, this.leftPos + 73, this.topPos + 6, this.leftPos + 105, this.topPos + 49, 20, 0.0625F, mouseX, mouseY, this.minecraft.player
          );
       }
    }
@@ -804,13 +799,13 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
    protected boolean checkTabClicked(final CreativeModeTab tab, final double xm, final double ym) {
       int x = this.getTabX(tab);
       int y = this.getTabY(tab);
-      return xm >= (double)x && xm <= (double)(x + 26) && ym >= (double)y && ym <= (double)(y + 32);
+      return xm >= x && xm <= x + 26 && ym >= y && ym <= y + 32;
    }
 
    protected boolean checkTabHovering(final GuiGraphicsExtractor graphics, final CreativeModeTab tab, final int xm, final int ym) {
       int x = this.getTabX(tab);
       int y = this.getTabY(tab);
-      if (this.isHovering(x + 3, y + 3, 21, 27, (double)xm, (double)ym)) {
+      if (this.isHovering(x + 3, y + 3, 21, 27, xm, ym)) {
          graphics.setTooltipForNextFrame(this.font, tab.getDisplayName(), xm, ym);
          return true;
       } else {
@@ -914,15 +909,15 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
       }
 
       protected int getRowIndexForScroll(final float scrollOffs) {
-         return Math.max((int)((double)(scrollOffs * (float)this.calculateRowCount()) + 0.5), 0);
+         return Math.max((int)(scrollOffs * this.calculateRowCount() + 0.5), 0);
       }
 
       protected float getScrollForRowIndex(final int rowIndex) {
-         return Mth.clamp((float)rowIndex / (float)this.calculateRowCount(), 0.0F, 1.0F);
+         return Mth.clamp((float)rowIndex / this.calculateRowCount(), 0.0F, 1.0F);
       }
 
       protected float subtractInputFromScroll(final float scrollOffs, final double input) {
-         return Mth.clamp(scrollOffs - (float)(input / (double)this.calculateRowCount()), 0.0F, 1.0F);
+         return Mth.clamp(scrollOffs - (float)(input / this.calculateRowCount()), 0.0F, 1.0F);
       }
 
       public void scrollTo(final float scrollOffs) {
@@ -1030,9 +1025,8 @@ public class CreativeModeInventoryScreen extends AbstractContainerScreen<Creativ
          return this.target.getMaxStackSize(itemStack);
       }
 
-      @Nullable
       @Override
-      public Identifier getNoItemIcon() {
+      public @Nullable Identifier getNoItemIcon() {
          return this.target.getNoItemIcon();
       }
 

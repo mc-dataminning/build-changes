@@ -49,22 +49,22 @@ public class WallBlock extends Block implements SimpleWaterloggedBlock {
       this.registerDefaultState(
          this.stateDefinition
             .any()
-            .setValue(UP, Boolean.valueOf(true))
+            .setValue(UP, true)
             .setValue(NORTH, WallSide.NONE)
             .setValue(EAST, WallSide.NONE)
             .setValue(SOUTH, WallSide.NONE)
             .setValue(WEST, WallSide.NONE)
-            .setValue(WATERLOGGED, Boolean.valueOf(false))
+            .setValue(WATERLOGGED, false)
       );
       this.shapes = this.makeShapes(16.0F, 14.0F);
       this.collisionShapes = this.makeShapes(24.0F, 24.0F);
    }
 
    private Function<BlockState, VoxelShape> makeShapes(final float postHeight, final float wallTop) {
-      VoxelShape post = Block.column(8.0, 0.0, (double)postHeight);
+      VoxelShape post = Block.column(8.0, 0.0, postHeight);
       int width = 6;
-      Map<Direction, VoxelShape> low = Shapes.rotateHorizontal(Block.boxZ(6.0, 0.0, (double)wallTop, 0.0, 11.0));
-      Map<Direction, VoxelShape> tall = Shapes.rotateHorizontal(Block.boxZ(6.0, 0.0, (double)postHeight, 0.0, 11.0));
+      Map<Direction, VoxelShape> low = Shapes.rotateHorizontal(Block.boxZ(6.0, 0.0, wallTop, 0.0, 11.0));
+      Map<Direction, VoxelShape> tall = Shapes.rotateHorizontal(Block.boxZ(6.0, 0.0, postHeight, 0.0, 11.0));
       return this.getShapeForEachState(state -> {
          VoxelShape shape = state.getValue(UP) ? post : Shapes.empty();
 
@@ -77,7 +77,7 @@ public class WallBlock extends Block implements SimpleWaterloggedBlock {
          }
 
          return shape;
-      }, new Property[]{WATERLOGGED});
+      }, WATERLOGGED);
    }
 
    @Override
@@ -120,7 +120,7 @@ public class WallBlock extends Block implements SimpleWaterloggedBlock {
       boolean east = this.connectsTo(eastState, eastState.isFaceSturdy(level, eastPos, Direction.WEST), Direction.WEST);
       boolean south = this.connectsTo(southState, southState.isFaceSturdy(level, southPos, Direction.NORTH), Direction.NORTH);
       boolean west = this.connectsTo(westState, westState.isFaceSturdy(level, westPos, Direction.EAST), Direction.EAST);
-      BlockState state = this.defaultBlockState().setValue(WATERLOGGED, Boolean.valueOf(replacedFluidState.is(Fluids.WATER)));
+      BlockState state = this.defaultBlockState().setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
       return this.updateShape(level, state, topPos, topState, north, east, south, west);
    }
 
@@ -197,30 +197,30 @@ public class WallBlock extends Block implements SimpleWaterloggedBlock {
    ) {
       VoxelShape aboveShape = topNeighbour.getCollisionShape(level, topPos).getFaceShape(Direction.DOWN);
       BlockState sidesUpdatedState = this.updateSides(state, north, east, south, west, aboveShape);
-      return sidesUpdatedState.setValue(UP, Boolean.valueOf(this.shouldRaisePost(sidesUpdatedState, topNeighbour, aboveShape)));
+      return sidesUpdatedState.setValue(UP, this.shouldRaisePost(sidesUpdatedState, topNeighbour, aboveShape));
    }
 
    private boolean shouldRaisePost(final BlockState state, final BlockState topNeighbour, final VoxelShape aboveShape) {
       boolean topNeighbourHasPost = topNeighbour.getBlock() instanceof WallBlock && topNeighbour.getValue(UP);
       if (topNeighbourHasPost) {
          return true;
-      } else {
-         WallSide northWall = state.getValue(NORTH);
-         WallSide southWall = state.getValue(SOUTH);
-         WallSide eastWall = state.getValue(EAST);
-         WallSide westWall = state.getValue(WEST);
-         boolean southNone = southWall == WallSide.NONE;
-         boolean westNone = westWall == WallSide.NONE;
-         boolean eastNone = eastWall == WallSide.NONE;
-         boolean northNone = northWall == WallSide.NONE;
-         boolean hasCorner = northNone && southNone && westNone && eastNone || northNone != southNone || westNone != eastNone;
-         if (hasCorner) {
-            return true;
-         } else {
-            boolean hasHighWall = northWall == WallSide.TALL && southWall == WallSide.TALL || eastWall == WallSide.TALL && westWall == WallSide.TALL;
-            return hasHighWall ? false : topNeighbour.is(BlockTags.WALL_POST_OVERRIDE) || isCovered(aboveShape, TEST_SHAPE_POST);
-         }
       }
+
+      WallSide northWall = state.getValue(NORTH);
+      WallSide southWall = state.getValue(SOUTH);
+      WallSide eastWall = state.getValue(EAST);
+      WallSide westWall = state.getValue(WEST);
+      boolean southNone = southWall == WallSide.NONE;
+      boolean westNone = westWall == WallSide.NONE;
+      boolean eastNone = eastWall == WallSide.NONE;
+      boolean northNone = northWall == WallSide.NONE;
+      boolean hasCorner = northNone && southNone && westNone && eastNone || northNone != southNone || westNone != eastNone;
+      if (hasCorner) {
+         return true;
+      }
+
+      boolean hasHighWall = northWall == WallSide.TALL && southWall == WallSide.TALL || eastWall == WallSide.TALL && westWall == WallSide.TALL;
+      return hasHighWall ? false : topNeighbour.is(BlockTags.WALL_POST_OVERRIDE) || isCovered(aboveShape, TEST_SHAPE_POST);
    }
 
    private BlockState updateSides(
@@ -264,17 +264,17 @@ public class WallBlock extends Block implements SimpleWaterloggedBlock {
    protected BlockState rotate(final BlockState state, final Rotation rotation) {
       return switch (rotation) {
          case CLOCKWISE_180 -> (BlockState)state.setValue(NORTH, state.getValue(SOUTH))
-         .setValue(EAST, state.getValue(WEST))
-         .setValue(SOUTH, state.getValue(NORTH))
-         .setValue(WEST, state.getValue(EAST));
+            .setValue(EAST, state.getValue(WEST))
+            .setValue(SOUTH, state.getValue(NORTH))
+            .setValue(WEST, state.getValue(EAST));
          case COUNTERCLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(EAST))
-         .setValue(EAST, state.getValue(SOUTH))
-         .setValue(SOUTH, state.getValue(WEST))
-         .setValue(WEST, state.getValue(NORTH));
+            .setValue(EAST, state.getValue(SOUTH))
+            .setValue(SOUTH, state.getValue(WEST))
+            .setValue(WEST, state.getValue(NORTH));
          case CLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(WEST))
-         .setValue(EAST, state.getValue(NORTH))
-         .setValue(SOUTH, state.getValue(EAST))
-         .setValue(WEST, state.getValue(SOUTH));
+            .setValue(EAST, state.getValue(NORTH))
+            .setValue(SOUTH, state.getValue(EAST))
+            .setValue(WEST, state.getValue(SOUTH));
          default -> state;
       };
    }

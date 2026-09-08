@@ -22,11 +22,11 @@ public abstract class ChickenModel extends EntityModel<ChickenRenderState> {
 
    public void setupAnim(final ChickenRenderState state) {
       super.setupAnim(state);
-      float flapAngle = (Mth.sin((double)state.flap) + 1.0F) * state.flapSpeed;
+      float flapAngle = (Mth.sin(state.flap) + 1.0F) * state.flapSpeed;
       float animationSpeed = state.walkAnimationSpeed;
       float animationPos = state.walkAnimationPos;
-      this.rightLeg.xRot = Mth.cos((double)(animationPos * 0.6662F)) * 1.4F * animationSpeed;
-      this.leftLeg.xRot = Mth.cos((double)(animationPos * 0.6662F + (float) Math.PI)) * 1.4F * animationSpeed;
+      this.rightLeg.xRot = Mth.cos(animationPos * 0.6662F) * 1.4F * animationSpeed;
+      this.leftLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * 1.4F * animationSpeed;
       this.rightWing.zRot = flapAngle;
       this.leftWing.zRot = -flapAngle;
    }

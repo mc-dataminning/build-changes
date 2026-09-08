@@ -15,6 +15,7 @@ import java.util.Locale;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
@@ -93,9 +94,9 @@ public class SystemReport {
    public void setDetail(final String key, final CrashReportDetail<Object> valueSupplier) {
       try {
          this.entries.add(new CrashReportCategory.Entry(key, valueSupplier.call()));
-      } catch (Throwable var4) {
-         LOGGER.warn("Failed to get system info for {}", key, var4);
-         this.entries.add(new CrashReportCategory.Entry(key, var4));
+      } catch (Throwable t) {
+         LOGGER.warn("Failed to get system info for {}", key, t);
+         this.entries.add(new CrashReportCategory.Entry(key, t));
       }
    }
 
@@ -117,9 +118,9 @@ public class SystemReport {
    private void ignoreErrors(final String group, final Runnable action) {
       try {
          action.run();
-      } catch (Throwable var4) {
-         LOGGER.warn("Failed retrieving info for group {}", group, var4);
-         this.entries.add(new CrashReportCategory.Entry(group, var4));
+      } catch (Throwable t) {
+         LOGGER.warn("Failed retrieving info for group {}", group, t);
+         this.entries.add(new CrashReportCategory.Entry(group, t));
       }
    }
 
@@ -187,9 +188,9 @@ public class SystemReport {
       this.setDetail(
          "Process Loads",
          () -> {
-            double userTimeSeconds = (double)process.getUserTime() / 1000.0;
-            double kernelTimeSeconds = (double)process.getKernelTime() / 1000.0;
-            double upTimeSeconds = (double)process.getUpTime() / 1000.0;
+            double userTimeSeconds = process.getUserTime() / 1000.0;
+            double kernelTimeSeconds = process.getKernelTime() / 1000.0;
+            double upTimeSeconds = process.getUpTime() / 1000.0;
             double totalTimeSeconds = kernelTimeSeconds + userTimeSeconds;
             return String.format(
                Locale.ROOT,
@@ -212,7 +213,7 @@ public class SystemReport {
       this.putSpaceForPath(env, () -> System.getProperty(env));
    }
 
-   private void putSpaceForPath(final String id, final Supplier<String> pathSupplier) {
+   private void putSpaceForPath(final String id, final Supplier<@Nullable String> pathSupplier) {
       String key = "Space in storage for " + id + " (MiB)";
 
       try {
@@ -226,13 +227,13 @@ public class SystemReport {
          this.setDetail(
             key, () -> String.format(Locale.ROOT, "available: %.2f, total: %.2f", sizeInMiB(store.getUsableSpace()), sizeInMiB(store.getTotalSpace()))
          );
-      } catch (InvalidPathException var6) {
-         LOGGER.warn("{} is not a path", id, var6);
+      } catch (InvalidPathException e) {
+         LOGGER.warn("{} is not a path", id, e);
          this.setDetail(key, "<invalid path>");
-      } catch (FileNotFoundException | NoSuchFileException var7) {
+      } catch (NoSuchFileException | FileNotFoundException e) {
          this.setDetail(key, "<no such file>");
-      } catch (Exception var8) {
-         LOGGER.warn("Failed retrieving storage space for {}", id, var8);
+      } catch (Exception e) {
+         LOGGER.warn("Failed retrieving storage space for {}", id, e);
          this.setDetail(key, "ERR");
       }
    }

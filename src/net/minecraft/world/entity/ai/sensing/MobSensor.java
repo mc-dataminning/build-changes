@@ -54,7 +54,7 @@ public class MobSensor<T extends LivingEntity> extends Sensor<T> {
    }
 
    public void mobDetected(final T body) {
-      body.getBrain().setMemoryWithExpiry(this.toSet, true, (long)this.memoryTimeToLive);
+      body.getBrain().setMemoryWithExpiry(this.toSet, true, this.memoryTimeToLive);
    }
 
    public void clearMemory(final T body) {

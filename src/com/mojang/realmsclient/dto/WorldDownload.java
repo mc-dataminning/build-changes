@@ -18,8 +18,8 @@ public record WorldDownload(String downloadLink, String resourcePackUrl, String 
             JsonUtils.getStringOr("resourcePackUrl", jsonObject, ""),
             JsonUtils.getStringOr("resourcePackHash", jsonObject, "")
          );
-      } catch (Exception var3) {
-         LOGGER.error("Could not parse WorldDownload", var3);
+      } catch (Exception e) {
+         LOGGER.error("Could not parse WorldDownload", e);
          return new WorldDownload("", "", "");
       }
    }

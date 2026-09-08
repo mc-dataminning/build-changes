@@ -28,15 +28,15 @@ public class InputQuirks {
    static {
       KEYBOARD_DISPLAY_OVERRIDES = switch (PLATFORM) {
          case OSX -> Map.of(
-         "key.keyboard.left.alt",
-         "key.keyboard.left.option",
-         "key.keyboard.right.alt",
-         "key.keyboard.right.option",
-         "key.keyboard.left.win",
-         "key.keyboard.left.command",
-         "key.keyboard.right.win",
-         "key.keyboard.right.command"
-      );
+            "key.keyboard.left.alt",
+            "key.keyboard.left.option",
+            "key.keyboard.right.alt",
+            "key.keyboard.right.option",
+            "key.keyboard.left.win",
+            "key.keyboard.left.command",
+            "key.keyboard.right.win",
+            "key.keyboard.right.command"
+         );
          case WINDOWS -> Map.of("key.keyboard.left.win", "key.keyboard.left.windows", "key.keyboard.right.win", "key.keyboard.right.windows");
          case LINUX -> Map.of("key.keyboard.left.win", "key.keyboard.left.meta", "key.keyboard.right.win", "key.keyboard.right.meta");
          default -> Map.of();

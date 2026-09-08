@@ -37,9 +37,8 @@ public class ImposterProtoChunk extends ProtoChunk {
       this.allowWrites = allowWrites;
    }
 
-   @Nullable
    @Override
-   public BlockEntity getBlockEntity(final BlockPos pos) {
+   public @Nullable BlockEntity getBlockEntity(final BlockPos pos) {
       return this.wrapped.getBlockEntity(pos);
    }
 
@@ -58,9 +57,8 @@ public class ImposterProtoChunk extends ProtoChunk {
       return this.allowWrites ? this.wrapped.getSection(sectionIndex) : super.getSection(sectionIndex);
    }
 
-   @Nullable
    @Override
-   public BlockState setBlockState(final BlockPos pos, final BlockState state, @Block.UpdateFlags final int flags) {
+   public @Nullable BlockState setBlockState(final BlockPos pos, final BlockState state, final @Block.UpdateFlags int flags) {
       return this.allowWrites ? this.wrapped.setBlockState(pos, state, flags) : null;
    }
 
@@ -122,9 +120,8 @@ public class ImposterProtoChunk extends ProtoChunk {
       return this.wrapped.getPos();
    }
 
-   @Nullable
    @Override
-   public StructureStart getStartForStructure(final Structure structure) {
+   public @Nullable StructureStart getStartForStructure(final Structure structure) {
       return this.wrapped.getStartForStructure(structure);
    }
 
@@ -196,15 +193,13 @@ public class ImposterProtoChunk extends ProtoChunk {
    public void setBlockEntityNbt(final CompoundTag entityTag) {
    }
 
-   @Nullable
    @Override
-   public CompoundTag getBlockEntityNbt(final BlockPos blockPos) {
+   public @Nullable CompoundTag getBlockEntityNbt(final BlockPos blockPos) {
       return this.wrapped.getBlockEntityNbt(blockPos);
    }
 
-   @Nullable
    @Override
-   public CompoundTag getBlockEntityNbtForSaving(final BlockPos blockPos, final HolderLookup.Provider registryAccess) {
+   public @Nullable CompoundTag getBlockEntityNbtForSaving(final BlockPos blockPos, final HolderLookup.Provider registryAccess) {
       return this.wrapped.getBlockEntityNbtForSaving(blockPos, registryAccess);
    }
 
@@ -228,9 +223,8 @@ public class ImposterProtoChunk extends ProtoChunk {
       return this.wrapped.getTicksForSerialization(currentTick);
    }
 
-   @Nullable
    @Override
-   public BlendingData getBlendingData() {
+   public @Nullable BlendingData getBlendingData() {
       return this.wrapped.getBlendingData();
    }
 

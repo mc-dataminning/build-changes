@@ -31,7 +31,7 @@ public class ProfilerSamplerAdapter {
    private static MetricSampler samplerForProfilingPath(final Supplier<ProfileCollector> profiler, final String profilerPath, final MetricCategory category) {
       return MetricSampler.create(profilerPath, category, () -> {
          ActiveProfiler.PathEntry entry = profiler.get().getEntry(profilerPath);
-         return entry == null ? 0.0 : (double)entry.getMaxDuration() / (double)TimeUtil.NANOSECONDS_PER_MILLISECOND;
+         return entry == null ? 0.0 : (double)entry.getMaxDuration() / TimeUtil.NANOSECONDS_PER_MILLISECOND;
       });
    }
 }

@@ -32,12 +32,12 @@ public record FallenTreeFeature(
    private static final int FALLEN_LOG_MAX_SPACE_FROM_STUMP = 2;
    public static final MapCodec<FallenTreeFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BlockStateProvider.CODEC.fieldOf("trunk_provider").forGetter(FallenTreeFeature::trunkProvider),
-               IntProviders.codec(0, 16).fieldOf("log_length").forGetter(FallenTreeFeature::logLength),
-               TreeDecorator.CODEC.listOf().fieldOf("stump_decorators").forGetter(FallenTreeFeature::stumpDecorators),
-               TreeDecorator.CODEC.listOf().fieldOf("log_decorators").forGetter(FallenTreeFeature::logDecorators)
-            )
-            .apply(i, FallenTreeFeature::new)
+            BlockStateProvider.CODEC.fieldOf("trunk_provider").forGetter(FallenTreeFeature::trunkProvider),
+            IntProviders.codec(0, 16).fieldOf("log_length").forGetter(FallenTreeFeature::logLength),
+            TreeDecorator.CODEC.listOf().fieldOf("stump_decorators").forGetter(FallenTreeFeature::stumpDecorators),
+            TreeDecorator.CODEC.listOf().fieldOf("log_decorators").forGetter(FallenTreeFeature::logDecorators)
+         )
+         .apply(i, FallenTreeFeature::new)
    );
 
    @Override

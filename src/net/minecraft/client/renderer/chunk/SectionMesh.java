@@ -30,15 +30,18 @@ public interface SectionMesh extends AutoCloseable {
 
    boolean facesCanSeeEachother(Direction direction1, Direction direction2);
 
-   @Nullable
-   default SectionMesh.SectionDraw getSectionDraw(final ChunkSectionLayer layer) {
+   default SectionMesh.@Nullable SectionDraw getSectionDraw(final ChunkSectionLayer layer) {
       return null;
+   }
+
+   default long getCompileTaskStartTime() {
+      return 0L;
    }
 
    @Override
    default void close() {
    }
 
-   public static record SectionDraw(int indexCount, IndexType indexType, boolean hasCustomIndexBuffer) {
+   record SectionDraw(int indexCount, IndexType indexType, boolean hasCustomIndexBuffer) {
    }
 }

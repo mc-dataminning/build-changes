@@ -24,7 +24,6 @@ import java.net.SocketAddress;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 import java.util.Queue;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -46,8 +45,7 @@ public class ServerConnectionListener {
    private static final Logger LOGGER = LogUtils.getLogger();
    private final MinecraftServer server;
    public volatile boolean running;
-   @Nullable
-   private volatile UUID sessionId;
+   private volatile @Nullable UUID sessionId;
    private final List<ChannelFuture> channels = Collections.synchronizedList(Lists.newArrayList());
    private final List<Connection> connections = Collections.synchronizedList(Lists.newArrayList());
    private final Queue<Connection> pendingConnections = new ConcurrentLinkedQueue<>();
@@ -57,7 +55,7 @@ public class ServerConnectionListener {
       this.running = true;
    }
 
-   public void startTcpServerListener(@Nullable final InetAddress address, final int port) throws IOException {
+   public void startTcpServerListener(final @Nullable InetAddress address, final int port) throws IOException {
       synchronized (this.channels) {
          EventLoopGroupHolder eventLoopGroupHolder = EventLoopGroupHolder.remote(this.server.useNativeTransport());
          this.channels
@@ -65,10 +63,6 @@ public class ServerConnectionListener {
                ((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel(eventLoopGroupHolder.serverChannelCls()))
                      .childHandler(
                         new ChannelInitializer<Channel>() {
-                           {
-                              Objects.requireNonNull(ServerConnectionListener.this);
-                           }
-
                            protected void initChannel(final Channel channel) {
                               try {
                                  channel.config().setOption(ChannelOption.TCP_NODELAY, true);
@@ -82,9 +76,9 @@ public class ServerConnectionListener {
 
                               Connection.configureSerialization(pipeline, PacketFlow.SERVERBOUND, false, null);
                               int rateLimitPacketsPerSecond = ServerConnectionListener.this.server.getRateLimitPacketsPerSecond();
-                              Connection connection = (Connection)(rateLimitPacketsPerSecond > 0
+                              Connection connection = rateLimitPacketsPerSecond > 0
                                  ? new RateKickingConnection(rateLimitPacketsPerSecond)
-                                 : new Connection(PacketFlow.SERVERBOUND));
+                                 : new Connection(PacketFlow.SERVERBOUND);
                               ServerConnectionListener.this.pendingConnections.add(connection);
                               connection.configurePacketHandler(pipeline);
                               connection.setListenerForServerboundHandshake(
@@ -107,10 +101,6 @@ public class ServerConnectionListener {
          newChannel = ((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel(EventLoopGroupHolder.local().serverChannelCls()))
                .childHandler(
                   new ChannelInitializer<Channel>() {
-                     {
-                        Objects.requireNonNull(ServerConnectionListener.this);
-                     }
-
                      protected void initChannel(final Channel channel) {
                         Connection connection = new Connection(PacketFlow.SERVERBOUND);
                         connection.setListenerForServerboundHandshake(
@@ -146,7 +136,7 @@ public class ServerConnectionListener {
       for (ChannelFuture channel : this.channels) {
          try {
             channel.channel().close().sync();
-         } catch (InterruptedException var4) {
+         } catch (InterruptedException ignored) {
             LOGGER.error("Interrupted whilst closing channel");
          }
       }
@@ -161,7 +151,7 @@ public class ServerConnectionListener {
             if (!(future.channel() instanceof LocalServerChannel)) {
                try {
                   future.channel().close().sync();
-               } catch (InterruptedException var6) {
+               } catch (InterruptedException ignored) {
                   LOGGER.error("Interrupted whilst closing TCP listener");
                }
 
@@ -182,12 +172,12 @@ public class ServerConnectionListener {
                if (connection.isConnected()) {
                   try {
                      connection.tick();
-                  } catch (Exception var9) {
+                  } catch (Exception e) {
                      if (connection.isMemoryConnection()) {
-                        throw new ReportedException(CrashReport.forThrowable(var9, "Ticking memory connection"));
+                        throw new ReportedException(CrashReport.forThrowable(e, "Ticking memory connection"));
                      }
 
-                     LOGGER.warn("Failed to handle packet for {}", connection.getLoggableAddress(this.server.logIPs()), var9);
+                     LOGGER.warn("Failed to handle packet for {}", connection.getLoggableAddress(this.server.logIPs()), e);
                      Component component = Component.literal("Internal server error");
                      connection.send(new ClientboundDisconnectPacket(component), PacketSendListener.thenRun(() -> connection.disconnect(component)));
                      connection.setReadOnly();
@@ -226,16 +216,16 @@ public class ServerConnectionListener {
       UUID uuid = this.sessionId;
       if (uuid != null) {
          return uuid;
-      } else {
-         synchronized (this) {
-            uuid = this.sessionId;
-            if (uuid == null) {
-               uuid = UUID.randomUUID();
-               this.sessionId = uuid;
-            }
+      }
 
-            return uuid;
+      synchronized (this) {
+         uuid = this.sessionId;
+         if (uuid == null) {
+            uuid = UUID.randomUUID();
+            this.sessionId = uuid;
          }
+
+         return uuid;
       }
    }
 
@@ -255,9 +245,9 @@ public class ServerConnectionListener {
       }
 
       private void delayDownstream(final ChannelHandlerContext ctx, final Object msg) {
-         int sendDelay = this.delay + (int)(Math.random() * (double)this.jitter);
+         int sendDelay = this.delay + (int)(Math.random() * this.jitter);
          this.queuedMessages.add(new ServerConnectionListener.LatencySimulator.DelayedMessage(ctx, msg));
-         TIMER.newTimeout(this::onTimeout, (long)sendDelay, TimeUnit.MILLISECONDS);
+         TIMER.newTimeout(this::onTimeout, sendDelay, TimeUnit.MILLISECONDS);
       }
 
       private void onTimeout(final Timeout timeout) {
@@ -265,7 +255,7 @@ public class ServerConnectionListener {
          next.ctx.fireChannelRead(next.msg);
       }
 
-      private static record DelayedMessage(ChannelHandlerContext ctx, Object msg) {
+      private record DelayedMessage(ChannelHandlerContext ctx, Object msg) {
       }
    }
 }

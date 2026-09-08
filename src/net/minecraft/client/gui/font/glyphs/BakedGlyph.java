@@ -8,6 +8,5 @@ import org.jspecify.annotations.Nullable;
 public interface BakedGlyph {
    GlyphInfo info();
 
-   @Nullable
-   TextRenderable.Styled createGlyph(float x, float y, int color, int shadowColor, Style style, float boldOffset, float shadowOffset);
+   TextRenderable.@Nullable Styled createGlyph(float x, float y, int color, int shadowColor, Style style, float boldOffset, float shadowOffset);
 }

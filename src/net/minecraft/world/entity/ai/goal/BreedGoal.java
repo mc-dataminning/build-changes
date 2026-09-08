@@ -12,8 +12,7 @@ public class BreedGoal extends Goal {
    protected final Animal animal;
    private final Class<? extends Animal> partnerClass;
    protected final ServerLevel level;
-   @Nullable
-   protected Animal partner;
+   protected @Nullable Animal partner;
    private int loveTime;
    private final double speedModifier;
 
@@ -33,10 +32,10 @@ public class BreedGoal extends Goal {
    public boolean canUse() {
       if (!this.animal.isInLove()) {
          return false;
-      } else {
-         this.partner = this.getFreePartner();
-         return this.partner != null;
       }
+
+      this.partner = this.getFreePartner();
+      return this.partner != null;
    }
 
    @Override
@@ -52,7 +51,7 @@ public class BreedGoal extends Goal {
 
    @Override
    public void tick() {
-      this.animal.getLookControl().setLookAt(this.partner, 10.0F, (float)this.animal.getMaxHeadXRot());
+      this.animal.getLookControl().setLookAt(this.partner, 10.0F, this.animal.getMaxHeadXRot());
       this.animal.getNavigation().moveTo(this.partner, this.speedModifier);
       this.loveTime++;
       if (this.loveTime >= this.adjustedTickDelay(60) && this.animal.distanceToSqr(this.partner) < 9.0) {
@@ -60,8 +59,7 @@ public class BreedGoal extends Goal {
       }
    }
 
-   @Nullable
-   private Animal getFreePartner() {
+   private @Nullable Animal getFreePartner() {
       List<? extends Animal> animals = this.level
          .getNearbyEntities(this.partnerClass, PARTNER_TARGETING, this.animal, this.animal.getBoundingBox().inflate(8.0));
       double dist = Double.MAX_VALUE;

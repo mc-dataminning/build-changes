@@ -6,7 +6,7 @@ public interface UncheckedAutoCloseable extends AutoCloseable {
    @Override
    void close();
 
-   static void safeClose(@Nullable final UncheckedAutoCloseable closeable) {
+   static void safeClose(final @Nullable UncheckedAutoCloseable closeable) {
       if (closeable != null) {
          closeable.close();
       }

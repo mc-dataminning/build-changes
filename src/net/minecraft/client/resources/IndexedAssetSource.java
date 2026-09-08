@@ -38,9 +38,9 @@ public class IndexedAssetSource {
                builder.put(path, file);
             }
          }
-      } catch (JsonParseException var17) {
+      } catch (JsonParseException ignored) {
          LOGGER.error("Unable to parse resource index file: {}", indexFile);
-      } catch (IOException var18) {
+      } catch (IOException ignored) {
          LOGGER.error("Can't open the resource index file: {}", indexFile);
       }
 

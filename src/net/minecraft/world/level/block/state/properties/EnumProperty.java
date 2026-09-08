@@ -19,24 +19,24 @@ public final class EnumProperty<T extends Enum<T> & StringRepresentable> extends
       super(name, clazz);
       if (values.isEmpty()) {
          throw new IllegalArgumentException("Trying to make empty EnumProperty '" + name + "'");
-      } else {
-         this.values = List.copyOf(values);
-         T[] allEnumValues = clazz.getEnumConstants();
-         this.ordinalToIndex = new int[allEnumValues.length];
-
-         for (T value : allEnumValues) {
-            this.ordinalToIndex[value.ordinal()] = values.indexOf(value);
-         }
-
-         Builder<String, T> names = ImmutableMap.builder();
-
-         for (T value : values) {
-            String key = value.getSerializedName();
-            names.put(key, value);
-         }
-
-         this.names = names.buildOrThrow();
       }
+
+      this.values = List.copyOf(values);
+      T[] allEnumValues = clazz.getEnumConstants();
+      this.ordinalToIndex = new int[allEnumValues.length];
+
+      for (T value : allEnumValues) {
+         this.ordinalToIndex[value.ordinal()] = values.indexOf(value);
+      }
+
+      Builder<String, T> names = ImmutableMap.builder();
+
+      for (T value : values) {
+         String key = value.getSerializedName();
+         names.put(key, value);
+      }
+
+      this.names = names.buildOrThrow();
    }
 
    @Override
@@ -62,11 +62,7 @@ public final class EnumProperty<T extends Enum<T> & StringRepresentable> extends
       if (this == o) {
          return true;
       } else {
-         if (o instanceof EnumProperty<?> that && super.equals(o)) {
-            return this.values.equals(that.values);
-         }
-
-         return false;
+         return o instanceof EnumProperty<?> that && super.equals(o) ? this.values.equals(that.values) : false;
       }
    }
 

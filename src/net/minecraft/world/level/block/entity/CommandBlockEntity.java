@@ -1,6 +1,5 @@
 package net.minecraft.world.level.block.entity;
 
-import java.util.Objects;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.BlockPos;
@@ -28,10 +27,6 @@ public class CommandBlockEntity extends BlockEntity {
    private boolean auto = false;
    private boolean conditionMet = false;
    private final BaseCommandBlock commandBlock = new BaseCommandBlock() {
-      {
-         Objects.requireNonNull(CommandBlockEntity.this);
-      }
-
       @Override
       public void setCommand(final String command) {
          super.setCommand(command);
@@ -134,18 +129,8 @@ public class CommandBlockEntity extends BlockEntity {
       if (this.isConditional()) {
          BlockPos relative = this.worldPosition.relative(this.level.getBlockState(this.worldPosition).getValue(CommandBlock.FACING).getOpposite());
          if (this.level.getBlockState(relative).getBlock() instanceof CommandBlock) {
-            boolean var10001;
-            label16: {
-               if (this.level.getBlockEntity(relative) instanceof CommandBlockEntity commandBlockEntity
-                  && commandBlockEntity.getCommandBlock().getSuccessCount() > 0) {
-                  var10001 = true;
-                  break label16;
-               }
-
-               var10001 = false;
-            }
-
-            this.conditionMet = var10001;
+            this.conditionMet = this.level.getBlockEntity(relative) instanceof CommandBlockEntity commandBlockEntity
+               && commandBlockEntity.getCommandBlock().getSuccessCount() > 0;
          } else {
             this.conditionMet = false;
          }
@@ -190,7 +175,7 @@ public class CommandBlockEntity extends BlockEntity {
       output.discard("powered");
    }
 
-   public static enum Mode {
+   public enum Mode {
       SEQUENCE,
       AUTO,
       REDSTONE;

@@ -57,7 +57,7 @@ public record VillagerProfession(
       final Registry<VillagerProfession> registry,
       final ResourceKey<VillagerProfession> name,
       final ResourceKey<PoiType> jobSite,
-      @Nullable final SoundEvent workSound,
+      final @Nullable SoundEvent workSound,
       final Int2ObjectMap<ResourceKey<TradeSet>> trades
    ) {
       return register(registry, name, poiType -> poiType.is(jobSite), poiType -> poiType.is(jobSite), workSound, trades);
@@ -68,7 +68,7 @@ public record VillagerProfession(
       final ResourceKey<VillagerProfession> name,
       final Predicate<Holder<PoiType>> heldJobSite,
       final Predicate<Holder<PoiType>> acquirableJobSite,
-      @Nullable final SoundEvent workSound
+      final @Nullable SoundEvent workSound
    ) {
       return register(registry, name, heldJobSite, acquirableJobSite, ImmutableSet.of(), ImmutableSet.of(), workSound, Int2ObjectMap.ofEntries(new Entry[0]));
    }
@@ -78,7 +78,7 @@ public record VillagerProfession(
       final ResourceKey<VillagerProfession> name,
       final Predicate<Holder<PoiType>> heldJobSite,
       final Predicate<Holder<PoiType>> acquirableJobSite,
-      @Nullable final SoundEvent workSound,
+      final @Nullable SoundEvent workSound,
       final Int2ObjectMap<ResourceKey<TradeSet>> trades
    ) {
       return register(registry, name, heldJobSite, acquirableJobSite, ImmutableSet.of(), ImmutableSet.of(), workSound, trades);
@@ -90,7 +90,7 @@ public record VillagerProfession(
       final ResourceKey<PoiType> jobSite,
       final ImmutableSet<Item> requestedItems,
       final ImmutableSet<Block> secondaryPoi,
-      @Nullable final SoundEvent workSound,
+      final @Nullable SoundEvent workSound,
       final Int2ObjectMap<ResourceKey<TradeSet>> trades
    ) {
       return register(registry, name, poiType -> poiType.is(jobSite), poiType -> poiType.is(jobSite), requestedItems, secondaryPoi, workSound, trades);
@@ -103,7 +103,7 @@ public record VillagerProfession(
       final Predicate<Holder<PoiType>> acquirableJobSite,
       final ImmutableSet<Item> requestedItems,
       final ImmutableSet<Block> secondaryPoi,
-      @Nullable final SoundEvent workSound,
+      final @Nullable SoundEvent workSound,
       final Int2ObjectMap<ResourceKey<TradeSet>> trades
    ) {
       return Registry.register(
@@ -323,8 +323,7 @@ public record VillagerProfession(
       );
    }
 
-   @Nullable
-   public ResourceKey<TradeSet> getTrades(final int level) {
+   public @Nullable ResourceKey<TradeSet> getTrades(final int level) {
       return (ResourceKey<TradeSet>)this.tradeSetsByLevel.get(level);
    }
 }

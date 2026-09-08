@@ -55,8 +55,8 @@ public class DownloadQueue implements AutoCloseable {
                   targetDir, request.url, config.headers, config.hashFunction, request.hash, config.maxSize, config.proxy, config.listener
                );
                result.downloaded.put(id, downloadedFile);
-            } catch (Exception var9) {
-               LOGGER.error("Failed to download {}", request.url, var9);
+            } catch (Exception e) {
+               LOGGER.error("Failed to download {}", request.url, e);
                result.failed.add(id);
             }
 
@@ -71,8 +71,8 @@ public class DownloadQueue implements AutoCloseable {
                         downloadedFile != null ? this.getFileInfo(downloadedFile) : Either.left("download_failed")
                      )
                   );
-            } catch (Exception var8) {
-               LOGGER.error("Failed to log download of {}", request.url, var8);
+            } catch (Exception e) {
+               LOGGER.error("Failed to log download of {}", request.url, e);
             }
          }
       );
@@ -84,8 +84,8 @@ public class DownloadQueue implements AutoCloseable {
          long size = Files.size(downloadedFile);
          Path relativePath = this.cacheDir.relativize(downloadedFile);
          return Either.right(new DownloadQueue.FileInfoEntry(relativePath.toString(), size));
-      } catch (IOException var5) {
-         LOGGER.error("Failed to get file size of {}", downloadedFile, var5);
+      } catch (IOException e) {
+         LOGGER.error("Failed to get file size of {}", downloadedFile, e);
          return Either.left("no_access");
       }
    }
@@ -102,41 +102,39 @@ public class DownloadQueue implements AutoCloseable {
       this.eventLog.close();
    }
 
-   public static record BatchConfig(
-      HashFunction hashFunction, int maxSize, Map<String, String> headers, Proxy proxy, HttpUtil.DownloadProgressListener listener
-   ) {
+   public record BatchConfig(HashFunction hashFunction, int maxSize, Map<String, String> headers, Proxy proxy, HttpUtil.DownloadProgressListener listener) {
    }
 
-   public static record BatchResult(Map<UUID, Path> downloaded, Set<UUID> failed) {
+   public record BatchResult(Map<UUID, Path> downloaded, Set<UUID> failed) {
       public BatchResult() {
          this(new HashMap<>(), new HashSet<>());
       }
    }
 
-   public static record DownloadRequest(URL url, @Nullable HashCode hash) {
+   public record DownloadRequest(URL url, @Nullable HashCode hash) {
    }
 
-   private static record FileInfoEntry(String name, long size) {
+   private record FileInfoEntry(String name, long size) {
       public static final Codec<DownloadQueue.FileInfoEntry> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Codec.STRING.fieldOf("name").forGetter(DownloadQueue.FileInfoEntry::name),
-                  Codec.LONG.fieldOf("size").forGetter(DownloadQueue.FileInfoEntry::size)
-               )
-               .apply(i, DownloadQueue.FileInfoEntry::new)
+               Codec.STRING.fieldOf("name").forGetter(DownloadQueue.FileInfoEntry::name),
+               Codec.LONG.fieldOf("size").forGetter(DownloadQueue.FileInfoEntry::size)
+            )
+            .apply(i, DownloadQueue.FileInfoEntry::new)
       );
    }
 
-   private static record LogEntry(UUID id, String url, Instant time, Optional<String> hash, Either<String, DownloadQueue.FileInfoEntry> errorOrFileInfo) {
+   private record LogEntry(UUID id, String url, Instant time, Optional<String> hash, Either<String, DownloadQueue.FileInfoEntry> errorOrFileInfo) {
       public static final Codec<DownloadQueue.LogEntry> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  UUIDUtil.STRING_CODEC.fieldOf("id").forGetter(DownloadQueue.LogEntry::id),
-                  Codec.STRING.fieldOf("url").forGetter(DownloadQueue.LogEntry::url),
-                  ExtraCodecs.INSTANT_ISO8601.fieldOf("time").forGetter(DownloadQueue.LogEntry::time),
-                  Codec.STRING.optionalFieldOf("hash").forGetter(DownloadQueue.LogEntry::hash),
-                  Codec.mapEither(Codec.STRING.fieldOf("error"), DownloadQueue.FileInfoEntry.CODEC.fieldOf("file"))
-                     .forGetter(DownloadQueue.LogEntry::errorOrFileInfo)
-               )
-               .apply(i, DownloadQueue.LogEntry::new)
+               UUIDUtil.STRING_CODEC.fieldOf("id").forGetter(DownloadQueue.LogEntry::id),
+               Codec.STRING.fieldOf("url").forGetter(DownloadQueue.LogEntry::url),
+               ExtraCodecs.INSTANT_ISO8601.fieldOf("time").forGetter(DownloadQueue.LogEntry::time),
+               Codec.STRING.optionalFieldOf("hash").forGetter(DownloadQueue.LogEntry::hash),
+               Codec.mapEither(Codec.STRING.fieldOf("error"), DownloadQueue.FileInfoEntry.CODEC.fieldOf("file"))
+                  .forGetter(DownloadQueue.LogEntry::errorOrFileInfo)
+            )
+            .apply(i, DownloadQueue.LogEntry::new)
       );
    }
 }

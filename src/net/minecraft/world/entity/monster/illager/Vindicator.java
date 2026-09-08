@@ -122,10 +122,9 @@ public class Vindicator extends AbstractIllager {
       return SoundEvents.VINDICATOR_CELEBRATE;
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+   public @Nullable SpawnGroupData finalizeSpawn(
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       SpawnGroupData spawnGroupData = super.finalizeSpawn(level, difficulty, spawnReason, groupData);
       this.getNavigation().setCanOpenDoors(true);
@@ -143,7 +142,7 @@ public class Vindicator extends AbstractIllager {
    }
 
    @Override
-   public void setCustomName(@Nullable final Component name) {
+   public void setCustomName(final @Nullable Component name) {
       super.setCustomName(name);
       if (!this.isJohnny && name != null && name.getString().equals("Johnny")) {
          this.isJohnny = true;

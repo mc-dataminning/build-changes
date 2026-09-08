@@ -17,41 +17,45 @@ public record WorldCoordinate(boolean relative, double value) {
    public static WorldCoordinate parseDouble(final StringReader reader, final boolean center) throws CommandSyntaxException {
       if (reader.canRead() && reader.peek() == '^') {
          throw Vec3Argument.ERROR_MIXED_TYPE.createWithContext(reader);
-      } else if (!reader.canRead()) {
-         throw ERROR_EXPECTED_DOUBLE.createWithContext(reader);
-      } else {
-         boolean relative = isRelative(reader);
-         int start = reader.getCursor();
-         double value = reader.canRead() && reader.peek() != ' ' ? reader.readDouble() : 0.0;
-         String number = reader.getString().substring(start, reader.getCursor());
-         if (relative && number.isEmpty()) {
-            return new WorldCoordinate(true, 0.0);
-         } else {
-            if (!number.contains(".") && !relative && center) {
-               value += 0.5;
-            }
-
-            return new WorldCoordinate(relative, value);
-         }
       }
+
+      if (!reader.canRead()) {
+         throw ERROR_EXPECTED_DOUBLE.createWithContext(reader);
+      }
+
+      boolean relative = isRelative(reader);
+      int start = reader.getCursor();
+      double value = reader.canRead() && reader.peek() != ' ' ? reader.readDouble() : 0.0;
+      String number = reader.getString().substring(start, reader.getCursor());
+      if (relative && number.isEmpty()) {
+         return new WorldCoordinate(true, 0.0);
+      }
+
+      if (!number.contains(".") && !relative && center) {
+         value += 0.5;
+      }
+
+      return new WorldCoordinate(relative, value);
    }
 
    public static WorldCoordinate parseInt(final StringReader reader) throws CommandSyntaxException {
       if (reader.canRead() && reader.peek() == '^') {
          throw Vec3Argument.ERROR_MIXED_TYPE.createWithContext(reader);
-      } else if (!reader.canRead()) {
-         throw ERROR_EXPECTED_INT.createWithContext(reader);
-      } else {
-         boolean relative = isRelative(reader);
-         double value;
-         if (reader.canRead() && reader.peek() != ' ') {
-            value = relative ? reader.readDouble() : (double)reader.readInt();
-         } else {
-            value = 0.0;
-         }
-
-         return new WorldCoordinate(relative, value);
       }
+
+      if (!reader.canRead()) {
+         throw ERROR_EXPECTED_INT.createWithContext(reader);
+      }
+
+      boolean relative = isRelative(reader);
+      double value;
+      if (reader.canRead() && reader.peek() != ' ') {
+         value = relative ? reader.readDouble() : reader.readInt();
+      } else {
+         value = 0.0;
+      }
+
+      return new WorldCoordinate(relative, value);
    }
 
    public static boolean isRelative(final StringReader reader) {

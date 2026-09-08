@@ -15,15 +15,15 @@ public interface GuiSpriteScaling {
 
    GuiSpriteScaling.Type type();
 
-   public static record NineSlice(int width, int height, GuiSpriteScaling.NineSlice.Border border, boolean stretchInner) implements GuiSpriteScaling {
+   record NineSlice(int width, int height, GuiSpriteScaling.NineSlice.Border border, boolean stretchInner) implements GuiSpriteScaling {
       public static final MapCodec<GuiSpriteScaling.NineSlice> CODEC = RecordCodecBuilder.mapCodec(
             i -> i.group(
-                     ExtraCodecs.POSITIVE_INT.fieldOf("width").forGetter(GuiSpriteScaling.NineSlice::width),
-                     ExtraCodecs.POSITIVE_INT.fieldOf("height").forGetter(GuiSpriteScaling.NineSlice::height),
-                     GuiSpriteScaling.NineSlice.Border.CODEC.fieldOf("border").forGetter(GuiSpriteScaling.NineSlice::border),
-                     Codec.BOOL.optionalFieldOf("stretch_inner", false).forGetter(GuiSpriteScaling.NineSlice::stretchInner)
-                  )
-                  .apply(i, GuiSpriteScaling.NineSlice::new)
+                  ExtraCodecs.POSITIVE_INT.fieldOf("width").forGetter(GuiSpriteScaling.NineSlice::width),
+                  ExtraCodecs.POSITIVE_INT.fieldOf("height").forGetter(GuiSpriteScaling.NineSlice::height),
+                  GuiSpriteScaling.NineSlice.Border.CODEC.fieldOf("border").forGetter(GuiSpriteScaling.NineSlice::border),
+                  Codec.BOOL.optionalFieldOf("stretch_inner", false).forGetter(GuiSpriteScaling.NineSlice::stretchInner)
+               )
+               .apply(i, GuiSpriteScaling.NineSlice::new)
          )
          .validate(GuiSpriteScaling.NineSlice::validate);
 
@@ -47,7 +47,7 @@ public interface GuiSpriteScaling {
          return GuiSpriteScaling.Type.NINE_SLICE;
       }
 
-      public static record Border(int left, int top, int right, int bottom) {
+      public record Border(int left, int top, int right, int bottom) {
          private static final Codec<GuiSpriteScaling.NineSlice.Border> VALUE_CODEC = ExtraCodecs.POSITIVE_INT
             .flatComapMap(size -> new GuiSpriteScaling.NineSlice.Border(size, size, size, size), border -> {
                OptionalInt size = border.unpackValue();
@@ -55,12 +55,12 @@ public interface GuiSpriteScaling {
             });
          private static final Codec<GuiSpriteScaling.NineSlice.Border> RECORD_CODEC = RecordCodecBuilder.create(
             i -> i.group(
-                     ExtraCodecs.NON_NEGATIVE_INT.fieldOf("left").forGetter(GuiSpriteScaling.NineSlice.Border::left),
-                     ExtraCodecs.NON_NEGATIVE_INT.fieldOf("top").forGetter(GuiSpriteScaling.NineSlice.Border::top),
-                     ExtraCodecs.NON_NEGATIVE_INT.fieldOf("right").forGetter(GuiSpriteScaling.NineSlice.Border::right),
-                     ExtraCodecs.NON_NEGATIVE_INT.fieldOf("bottom").forGetter(GuiSpriteScaling.NineSlice.Border::bottom)
-                  )
-                  .apply(i, GuiSpriteScaling.NineSlice.Border::new)
+                  ExtraCodecs.NON_NEGATIVE_INT.fieldOf("left").forGetter(GuiSpriteScaling.NineSlice.Border::left),
+                  ExtraCodecs.NON_NEGATIVE_INT.fieldOf("top").forGetter(GuiSpriteScaling.NineSlice.Border::top),
+                  ExtraCodecs.NON_NEGATIVE_INT.fieldOf("right").forGetter(GuiSpriteScaling.NineSlice.Border::right),
+                  ExtraCodecs.NON_NEGATIVE_INT.fieldOf("bottom").forGetter(GuiSpriteScaling.NineSlice.Border::bottom)
+               )
+               .apply(i, GuiSpriteScaling.NineSlice.Border::new)
          );
          private static final Codec<GuiSpriteScaling.NineSlice.Border> CODEC = Codec.either(VALUE_CODEC, RECORD_CODEC)
             .xmap(Either::unwrap, border -> border.unpackValue().isPresent() ? Either.left(border) : Either.right(border));
@@ -71,7 +71,7 @@ public interface GuiSpriteScaling {
       }
    }
 
-   public static record Stretch() implements GuiSpriteScaling {
+   record Stretch() implements GuiSpriteScaling {
       public static final MapCodec<GuiSpriteScaling.Stretch> CODEC = MapCodec.unit(GuiSpriteScaling.Stretch::new);
 
       @Override
@@ -80,13 +80,13 @@ public interface GuiSpriteScaling {
       }
    }
 
-   public static record Tile(int width, int height) implements GuiSpriteScaling {
+   record Tile(int width, int height) implements GuiSpriteScaling {
       public static final MapCodec<GuiSpriteScaling.Tile> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  ExtraCodecs.POSITIVE_INT.fieldOf("width").forGetter(GuiSpriteScaling.Tile::width),
-                  ExtraCodecs.POSITIVE_INT.fieldOf("height").forGetter(GuiSpriteScaling.Tile::height)
-               )
-               .apply(i, GuiSpriteScaling.Tile::new)
+               ExtraCodecs.POSITIVE_INT.fieldOf("width").forGetter(GuiSpriteScaling.Tile::width),
+               ExtraCodecs.POSITIVE_INT.fieldOf("height").forGetter(GuiSpriteScaling.Tile::height)
+            )
+            .apply(i, GuiSpriteScaling.Tile::new)
       );
 
       @Override
@@ -95,7 +95,7 @@ public interface GuiSpriteScaling {
       }
    }
 
-   public static enum Type implements StringRepresentable {
+   enum Type implements StringRepresentable {
       STRETCH("stretch", GuiSpriteScaling.Stretch.CODEC),
       TILE("tile", GuiSpriteScaling.Tile.CODEC),
       NINE_SLICE("nine_slice", GuiSpriteScaling.NineSlice.CODEC);
@@ -104,7 +104,7 @@ public interface GuiSpriteScaling {
       private final String key;
       private final MapCodec<? extends GuiSpriteScaling> codec;
 
-      private Type(final String key, final MapCodec<? extends GuiSpriteScaling> codec) {
+      Type(final String key, final MapCodec<? extends GuiSpriteScaling> codec) {
          this.key = key;
          this.codec = codec;
       }

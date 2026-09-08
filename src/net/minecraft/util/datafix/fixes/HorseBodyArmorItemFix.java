@@ -29,8 +29,8 @@ public class HorseBodyArmorItemFix extends NamedEntityWriteReadFix {
             output = output.update(
                "ArmorDropChances",
                armorDropChances -> armorDropChances.createList(
-                     Streams.mapWithIndex(armorDropChances.asStream(), (entry, index) -> index == 2L ? entry.createFloat(0.085F) : entry)
-                  )
+                  Streams.mapWithIndex(armorDropChances.asStream(), (entry, index) -> index == 2L ? entry.createFloat(0.085F) : entry)
+               )
             );
          }
 

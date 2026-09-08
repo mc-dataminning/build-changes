@@ -36,6 +36,6 @@ public abstract class ArrowRenderer<T extends AbstractArrow, S extends ArrowRend
       super.extractRenderState(entity, state, partialTicks);
       state.xRot = entity.getXRot(partialTicks);
       state.yRot = entity.getYRot(partialTicks);
-      state.shake = (float)entity.shakeTime - partialTicks;
+      state.shake = entity.shakeTime - partialTicks;
    }
 }

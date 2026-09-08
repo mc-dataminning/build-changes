@@ -40,15 +40,12 @@ public class AdvancementToast implements Toast {
       if (display == null) {
          this.wantedVisibility = Toast.Visibility.HIDE;
       } else {
-         this.wantedVisibility = (double)fullyVisibleForMs >= 5000.0 * manager.getNotificationDisplayTimeMultiplier()
-            ? Toast.Visibility.HIDE
-            : Toast.Visibility.SHOW;
+         this.wantedVisibility = fullyVisibleForMs >= 5000.0 * manager.getNotificationDisplayTimeMultiplier() ? Toast.Visibility.HIDE : Toast.Visibility.SHOW;
       }
    }
 
-   @Nullable
    @Override
-   public SoundEvent getSoundEvent() {
+   public @Nullable SoundEvent getSoundEvent() {
       return this.isChallengeAdvancement() ? SoundEvents.UI_TOAST_CHALLENGE_COMPLETE : null;
    }
 

@@ -129,10 +129,8 @@ public class Checkbox extends AbstractButton {
       private int y = 0;
       private Checkbox.OnValueChange onValueChange = Checkbox.OnValueChange.NOP;
       private boolean selected = false;
-      @Nullable
-      private OptionInstance<Boolean> option = null;
-      @Nullable
-      private Tooltip tooltip = null;
+      private @Nullable OptionInstance<Boolean> option = null;
+      private @Nullable Tooltip tooltip = null;
 
       private Builder(final Component message, final Font font) {
          this.message = message;
@@ -188,8 +186,7 @@ public class Checkbox extends AbstractButton {
    }
 
    public interface OnValueChange {
-      Checkbox.OnValueChange NOP = (checkbox, value) -> {
-      };
+      Checkbox.OnValueChange NOP = (checkbox, value) -> {};
 
       void onValueChange(Checkbox checkbox, boolean value);
    }

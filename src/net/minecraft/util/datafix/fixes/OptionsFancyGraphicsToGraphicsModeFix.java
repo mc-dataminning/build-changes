@@ -16,8 +16,8 @@ public class OptionsFancyGraphicsToGraphicsModeFix extends DataFix {
          "fancyGraphics to graphicsMode",
          this.getInputSchema().getType(References.OPTIONS),
          input -> input.update(
-               DSL.remainderFinder(), tag -> tag.renameAndFixField("fancyGraphics", "graphicsMode", OptionsFancyGraphicsToGraphicsModeFix::fixGraphicsMode)
-            )
+            DSL.remainderFinder(), tag -> tag.renameAndFixField("fancyGraphics", "graphicsMode", OptionsFancyGraphicsToGraphicsModeFix::fixGraphicsMode)
+         )
       );
    }
 

@@ -24,9 +24,9 @@ public class FoodToConsumableFix extends DataFix {
                Stream<? extends Dynamic<?>> effects = foodComponent.get().get("effects").asStream();
                Stream<? extends Dynamic<?>> onConsumeEffects = effects.map(
                   effect -> effect.emptyMap()
-                        .set("type", effect.createString("minecraft:apply_effects"))
-                        .set("effects", effect.createList(effect.get("effect").result().stream()))
-                        .set("probability", effect.createFloat(effect.get("probability").asFloat(1.0F)))
+                     .set("type", effect.createString("minecraft:apply_effects"))
+                     .set("effects", effect.createList(effect.get("effect").result().stream()))
+                     .set("probability", effect.createFloat(effect.get("probability").asFloat(1.0F)))
                );
                components = Dynamic.copyField(foodComponent.get(), "using_converts_to", components, "minecraft:use_remainder");
                components = components.set("minecraft:food", foodComponent.get().remove("eat_seconds").remove("effects").remove("using_converts_to"));

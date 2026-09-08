@@ -31,9 +31,7 @@ public class DebugProfileLookingAtSplitFix extends DataFix {
                   Map<Dynamic<T>, Dynamic<T>> newOptions = new HashMap<>();
                   map.forEach(
                      (key, value) -> renamedKey((Dynamic<T>)key)
-                           .ifPresentOrElse(
-                              newKey -> newOptions.putIfAbsent((Dynamic<T>)newKey, value), () -> newOptions.put((Dynamic<T>)key, (Dynamic<T>)value)
-                           )
+                        .ifPresentOrElse(newKey -> newOptions.putIfAbsent((Dynamic<T>)newKey, value), () -> newOptions.put((Dynamic<T>)key, (Dynamic<T>)value))
                   );
                   return custom.createMap(newOptions);
                }

@@ -116,7 +116,7 @@ public class Sheep extends Animal implements Shearable {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 10) {
          this.eatAnimationTick = 40;
       } else {
@@ -130,14 +130,14 @@ public class Sheep extends Animal implements Shearable {
       } else if (this.eatAnimationTick >= 4 && this.eatAnimationTick <= 36) {
          return 1.0F;
       } else {
-         return this.eatAnimationTick < 4 ? ((float)this.eatAnimationTick - a) / 4.0F : -((float)(this.eatAnimationTick - 40) - a) / 4.0F;
+         return this.eatAnimationTick < 4 ? (this.eatAnimationTick - a) / 4.0F : -(this.eatAnimationTick - 40 - a) / 4.0F;
       }
    }
 
    public float getHeadEatAngleScale(final float a) {
       if (this.eatAnimationTick > 4 && this.eatAnimationTick <= 36) {
-         float scale = ((float)(this.eatAnimationTick - 4) - a) / 32.0F;
-         return (float) (Math.PI / 5) + 0.21991149F * Mth.sin((double)(scale * 28.7F));
+         float scale = (this.eatAnimationTick - 4 - a) / 32.0F;
+         return (float) (Math.PI / 5) + 0.21991149F * Mth.sin(scale * 28.7F);
       } else {
          return this.eatAnimationTick > 0 ? (float) (Math.PI / 5) : this.getXRot(a) * (float) (Math.PI / 180.0);
       }
@@ -152,9 +152,9 @@ public class Sheep extends Animal implements Shearable {
             this.gameEvent(GameEvent.SHEAR, player);
             itemStack.hurtAndBreak(1, player, hand.asEquipmentSlot());
             return InteractionResult.SUCCESS_SERVER;
+         } else {
+            return InteractionResult.CONSUME;
          }
-
-         return InteractionResult.CONSUME;
       } else {
          return super.mobInteract(player, hand);
       }
@@ -174,9 +174,9 @@ public class Sheep extends Animal implements Shearable {
                   entity.setDeltaMovement(
                      entity.getDeltaMovement()
                         .add(
-                           (double)((this.random.nextFloat() - this.random.nextFloat()) * 0.1F),
-                           (double)(this.random.nextFloat() * 0.05F),
-                           (double)((this.random.nextFloat() - this.random.nextFloat()) * 0.1F)
+                           (this.random.nextFloat() - this.random.nextFloat()) * 0.1F,
+                           this.random.nextFloat() * 0.05F,
+                           (this.random.nextFloat() - this.random.nextFloat()) * 0.1F
                         )
                   );
                }
@@ -234,9 +234,8 @@ public class Sheep extends Animal implements Shearable {
       this.entityData.set(DATA_WOOL_ID, (byte)(current & 240 | color.getId() & 15));
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       return type == DataComponents.SHEEP_COLOR ? castComponentValue((DataComponentType<T>)type, this.getColor()) : super.get(type);
    }
 
@@ -279,8 +278,7 @@ public class Sheep extends Animal implements Shearable {
       return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
    }
 
-   @Nullable
-   public Sheep getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable Sheep getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       Sheep sheep = EntityTypes.SHEEP.create(level, EntitySpawnReason.BREEDING);
       if (sheep != null) {
          DyeColor parent1DyeColor = this.getColor();
@@ -300,10 +298,9 @@ public class Sheep extends Animal implements Shearable {
       }
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+   public @Nullable SpawnGroupData finalizeSpawn(
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       this.setColor(getRandomSheepColor(level, this.blockPosition()));
       return super.finalizeSpawn(level, difficulty, spawnReason, groupData);

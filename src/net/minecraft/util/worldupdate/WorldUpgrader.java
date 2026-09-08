@@ -140,7 +140,7 @@ public class WorldUpgrader implements AutoCloseable {
             .setRecreateRegionFiles(this.recreateRegionFiles)
             .trackProgress(this.upgradeProgress),
          (levelSpecificBuilder, level) -> levelSpecificBuilder.setDataFixContextTag(getDataFixContextTag(this.dimensions, level))
-               .addTagModifier(currentVersion, this.eraseCache ? WorldUpgrader::verifyChunkPosAndEraseCache : WorldUpgrader::verifyChunkPos)
+            .addTagModifier(currentVersion, this.eraseCache ? WorldUpgrader::verifyChunkPosAndEraseCache : WorldUpgrader::verifyChunkPos)
       );
       this.overworldSavedDataStorage.saveAndJoin();
       conversionTime = Util.getMillis() - conversionTime;

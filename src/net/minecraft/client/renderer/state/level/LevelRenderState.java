@@ -12,8 +12,7 @@ public class LevelRenderState {
    public final List<SectionUpdateRenderState> sectionUpdateRenderStates = new ArrayList<>();
    public final List<EntityRenderState> entityRenderStates = new ArrayList<>();
    public final List<BlockEntityRenderState> blockEntityRenderStates = new ArrayList<>();
-   @Nullable
-   public BlockOutlineRenderState blockOutlineRenderState;
+   public @Nullable BlockOutlineRenderState blockOutlineRenderState;
    public final List<BlockBreakingRenderState> blockBreakingRenderStates = new ArrayList<>();
    public final WeatherRenderState weatherRenderState = new WeatherRenderState();
    public final WorldBorderRenderState worldBorderRenderState = new WorldBorderRenderState();
@@ -27,8 +26,7 @@ public class LevelRenderState {
    public boolean render3dCrosshair;
    public boolean renderWireframeTerrain;
    public boolean shouldUseMultiDrawIndirectForTerrain;
-   @Nullable
-   public Runnable playerCompiledSectionCallback;
+   public @Nullable Runnable playerCompiledSectionCallback;
    public ChunkLoadingRenderState chunkLoadingRenderState = new ChunkLoadingRenderState();
    public boolean shouldResetChunkLayerSampler;
    public boolean shouldShowEntityOutlines;

@@ -49,30 +49,28 @@ public class TextComponentHoverAndClickEventFix extends DataFix {
          throw new IllegalStateException(
             "Text component type did not match, expected " + oldTextComponentType + " but got " + this.getInputSchema().getType(References.TEXT_COMPONENT)
          );
-      } else {
-         Type<?> patchedInputType = ExtraDataFixUtils.patchSubType(oldTextComponentType, oldTextComponentType, newTextComponentType);
-         return this.fixTypeEverywhere(
-            "TextComponentHoverAndClickEventFix",
-            oldTextComponentType,
-            newTextComponentType,
-            ops -> textComponent -> {
-                  boolean hasHoverOrClick = (Boolean)((Either)textComponent.getSecond()).map(simple -> false, full -> {
-                     Pair<Either<H, Unit>, Dynamic<?>> hoverAndRemainder = (Pair<Either<H, Unit>, Dynamic<?>>)((Pair)full.getSecond()).getSecond();
-                     boolean hasHover = ((Either)hoverAndRemainder.getFirst()).left().isPresent();
-                     boolean hasClick = ((Dynamic)hoverAndRemainder.getSecond()).get("clickEvent").result().isPresent();
-                     return hasHover || hasClick;
-                  });
-                  return !hasHoverOrClick
-                     ? textComponent
-                     : Util.writeAndReadTypedOrThrow(
-                           ExtraDataFixUtils.cast(patchedInputType, textComponent, ops),
-                           newTextComponentType,
-                           TextComponentHoverAndClickEventFix::fixTextComponent
-                        )
-                        .getValue();
-               }
-         );
       }
+
+      Type<?> patchedInputType = ExtraDataFixUtils.patchSubType(oldTextComponentType, oldTextComponentType, newTextComponentType);
+      return this.fixTypeEverywhere(
+         "TextComponentHoverAndClickEventFix",
+         oldTextComponentType,
+         newTextComponentType,
+         ops -> textComponent -> {
+            boolean hasHoverOrClick = (Boolean)((Either)textComponent.getSecond()).map(simple -> false, full -> {
+               Pair<Either<H, Unit>, Dynamic<?>> hoverAndRemainder = (Pair<Either<H, Unit>, Dynamic<?>>)((Pair)full.getSecond()).getSecond();
+               boolean hasHover = ((Either)hoverAndRemainder.getFirst()).left().isPresent();
+               boolean hasClick = ((Dynamic)hoverAndRemainder.getSecond()).get("clickEvent").result().isPresent();
+               return hasHover || hasClick;
+            });
+            return !hasHoverOrClick
+               ? textComponent
+               : Util.writeAndReadTypedOrThrow(
+                     ExtraDataFixUtils.cast(patchedInputType, textComponent, ops), newTextComponentType, TextComponentHoverAndClickEventFix::fixTextComponent
+                  )
+                  .getValue();
+         }
+      );
    }
 
    private static Dynamic<?> fixTextComponent(final Dynamic<?> dynamic) {
@@ -105,8 +103,7 @@ public class TextComponentHoverAndClickEventFix extends DataFix {
       };
    }
 
-   @Nullable
-   private static <T> Dynamic<T> fixClickEvent(final Dynamic<T> dynamic) {
+   private static <T> @Nullable Dynamic<T> fixClickEvent(final Dynamic<T> dynamic) {
       String action = dynamic.get("action").asString("");
       String value = dynamic.get("value").asString("");
 
@@ -127,17 +124,16 @@ public class TextComponentHoverAndClickEventFix extends DataFix {
       };
    }
 
-   @Nullable
-   private static Integer parseOldPage(final Dynamic<?> value) {
+   private static @Nullable Integer parseOldPage(final Dynamic<?> value) {
       Optional<Number> numberValue = value.asNumber().result();
       if (numberValue.isPresent()) {
          return numberValue.get().intValue();
-      } else {
-         try {
-            return Integer.parseInt(value.asString(""));
-         } catch (Exception var3) {
-            return null;
-         }
+      }
+
+      try {
+         return Integer.parseInt(value.asString(""));
+      } catch (Exception ignored) {
+         return null;
       }
    }
 
@@ -147,11 +143,11 @@ public class TextComponentHoverAndClickEventFix extends DataFix {
          String scheme = parsedUri.getScheme();
          if (scheme == null) {
             return false;
-         } else {
-            String protocol = scheme.toLowerCase(Locale.ROOT);
-            return "http".equals(protocol) || "https".equals(protocol);
          }
-      } catch (URISyntaxException var4) {
+
+         String protocol = scheme.toLowerCase(Locale.ROOT);
+         return "http".equals(protocol) || "https".equals(protocol);
+      } catch (URISyntaxException e) {
          return false;
       }
    }

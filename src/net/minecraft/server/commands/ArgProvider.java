@@ -48,7 +48,7 @@ public interface ArgProvider<T> {
    }
 
    @FunctionalInterface
-   public interface Factory<T> {
+   interface Factory<T> {
       ArgProvider<T> create(String arg);
    }
 }

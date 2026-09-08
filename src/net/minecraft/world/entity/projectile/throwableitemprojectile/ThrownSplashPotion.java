@@ -40,7 +40,7 @@ public class ThrownSplashPotion extends AbstractThrownPotion {
    @Override
    public void onHitAsPotion(final ServerLevel level, final ItemStack potionItem, final HitResult hitResult) {
       PotionContents contents = potionItem.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
-      float durationScale = potionItem.getOrDefault(DataComponents.POTION_DURATION_SCALE, Float.valueOf(1.0F));
+      float durationScale = potionItem.getOrDefault(DataComponents.POTION_DURATION_SCALE, 1.0F);
       Iterable<MobEffectInstance> mobEffects = contents.getAllEffects();
       AABB potionAabb = this.getBoundingBox().move(hitResult.getLocation().subtract(this.position()));
       AABB effectAabb = potionAabb.inflate(4.0, 2.0, 4.0);
@@ -51,7 +51,7 @@ public class ThrownSplashPotion extends AbstractThrownPotion {
 
          for (LivingEntity entity : entities) {
             if (entity.isAffectedByPotions()) {
-               double dist = potionAabb.distanceToSqr(entity.getBoundingBox().inflate((double)margin));
+               double dist = potionAabb.distanceToSqr(entity.getBoundingBox().inflate(margin));
                if (dist < 16.0) {
                   double scale = 1.0 - Math.sqrt(dist) / 4.0;
 
@@ -60,7 +60,7 @@ public class ThrownSplashPotion extends AbstractThrownPotion {
                      if (effect.value().isInstantaneous()) {
                         effect.value().applyInstantaneousEffect(level, this, this.getOwner(), entity, effectInstance.getAmplifier(), scale);
                      } else {
-                        int duration = effectInstance.mapDuration(d -> (int)(scale * (double)d * (double)durationScale + 0.5));
+                        int duration = effectInstance.mapDuration(d -> (int)(scale * d * durationScale + 0.5));
                         MobEffectInstance newEffect = new MobEffectInstance(
                            effect, duration, effectInstance.getAmplifier(), effectInstance.isAmbient(), effectInstance.isVisible()
                         );

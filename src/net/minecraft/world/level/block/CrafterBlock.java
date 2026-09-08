@@ -50,13 +50,7 @@ public class CrafterBlock extends BaseEntityBlock {
 
    public CrafterBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(ORIENTATION, FrontAndTop.NORTH_UP)
-            .setValue(TRIGGERED, Boolean.valueOf(false))
-            .setValue(CRAFTING, Boolean.valueOf(false))
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(ORIENTATION, FrontAndTop.NORTH_UP).setValue(TRIGGERED, false).setValue(CRAFTING, false));
    }
 
    @Override
@@ -71,17 +65,17 @@ public class CrafterBlock extends BaseEntityBlock {
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       boolean shouldTrigger = level.hasNeighborSignal(pos);
       boolean isTriggered = state.getValue(TRIGGERED);
       BlockEntity blockEntity = level.getBlockEntity(pos);
       if (shouldTrigger && !isTriggered) {
          level.scheduleTick(pos, this, 4);
-         level.setBlock(pos, state.setValue(TRIGGERED, Boolean.valueOf(true)), 2);
+         level.setBlock(pos, state.setValue(TRIGGERED, true), 2);
          this.setBlockEntityTriggered(blockEntity, true);
       } else if (!shouldTrigger && isTriggered) {
-         level.setBlock(pos, state.setValue(TRIGGERED, Boolean.valueOf(false)).setValue(CRAFTING, Boolean.valueOf(false)), 2);
+         level.setBlock(pos, state.setValue(TRIGGERED, false).setValue(CRAFTING, false), 2);
          this.setBlockEntityTriggered(blockEntity, false);
       }
    }
@@ -91,13 +85,12 @@ public class CrafterBlock extends BaseEntityBlock {
       this.dispenseFrom(state, level, pos);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return level.isClientSide() ? null : createTickerHelper(type, BlockEntityTypes.CRAFTER, CrafterBlockEntity::serverTick);
    }
 
-   private void setBlockEntityTriggered(@Nullable final BlockEntity blockEntity, final boolean triggered) {
+   private void setBlockEntityTriggered(final @Nullable BlockEntity blockEntity, final boolean triggered) {
       if (blockEntity instanceof CrafterBlockEntity crafterBlockEntity) {
          crafterBlockEntity.setTriggered(triggered);
       }
@@ -121,11 +114,11 @@ public class CrafterBlock extends BaseEntityBlock {
       };
       return this.defaultBlockState()
          .setValue(ORIENTATION, FrontAndTop.fromFrontAndTop(nearestLookingDirection, verticalDirection))
-         .setValue(TRIGGERED, Boolean.valueOf(context.getLevel().hasNeighborSignal(context.getClickedPos())));
+         .setValue(TRIGGERED, context.getLevel().hasNeighborSignal(context.getClickedPos()));
    }
 
    @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, @Nullable final LivingEntity by, final ItemStack itemStack) {
+   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
       if (state.getValue(TRIGGERED)) {
          level.scheduleTick(pos, this, 4);
       }
@@ -160,7 +153,7 @@ public class CrafterBlock extends BaseEntityBlock {
                level.levelEvent(1050, pos, 0);
             } else {
                blockEntity.setCraftingTicksRemaining(6);
-               level.setBlock(pos, state.setValue(CRAFTING, Boolean.valueOf(true)), 2);
+               level.setBlock(pos, state.setValue(CRAFTING, true), 2);
                results.onCraftedBySystem(level);
                this.dispenseItem(level, pos, blockEntity, results, state, pickedRecipe);
 

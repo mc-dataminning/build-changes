@@ -73,12 +73,9 @@ public class ZombieVillager extends Zombie implements VillagerDataHolder {
    private static final int NOT_CONVERTING = -1;
    private static final int DEFAULT_XP = 0;
    private int villagerConversionTime;
-   @Nullable
-   private UUID conversionStarter;
-   @Nullable
-   private GossipContainer gossips;
-   @Nullable
-   private MerchantOffers tradeOffers;
+   private @Nullable UUID conversionStarter;
+   private @Nullable GossipContainer gossips;
+   private @Nullable MerchantOffers tradeOffers;
    private int villagerXp = 0;
    private static final EntityDimensions BABY_DIMENSIONS = EntityDimensions.scalable(0.49F, 0.98F)
       .withEyeHeight(0.67F)
@@ -132,10 +129,9 @@ public class ZombieVillager extends Zombie implements VillagerDataHolder {
       this.villagerXp = input.getIntOr("Xp", 0);
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+   public @Nullable SpawnGroupData finalizeSpawn(
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       this.finalizeVillagerType(level, this.blockPosition());
       return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
@@ -197,7 +193,7 @@ public class ZombieVillager extends Zombie implements VillagerDataHolder {
       return this.getEntityData().get(DATA_CONVERTING_ID);
    }
 
-   private void startConverting(@Nullable final UUID player, final int time) {
+   private void startConverting(final @Nullable UUID player, final int time) {
       this.conversionStarter = player;
       this.villagerConversionTime = time;
       this.getEntityData().set(DATA_CONVERTING_ID, true);
@@ -212,7 +208,7 @@ public class ZombieVillager extends Zombie implements VillagerDataHolder {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 16) {
          if (!this.isSilent()) {
             this.level()
@@ -373,9 +369,8 @@ public class ZombieVillager extends Zombie implements VillagerDataHolder {
       this.villagerXp = villagerXp;
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       return type == DataComponents.VILLAGER_VARIANT ? castComponentValue((DataComponentType<T>)type, this.getVillagerData().type()) : super.get(type);
    }
 

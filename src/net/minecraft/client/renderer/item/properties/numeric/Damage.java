@@ -15,9 +15,9 @@ public record Damage(boolean normalize) implements RangeSelectItemModelProperty 
    );
 
    @Override
-   public float get(final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final ItemOwner owner, final int seed) {
-      float damage = (float)itemStack.getDamageValue();
-      float maxDamage = (float)itemStack.getMaxDamage();
+   public float get(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable ItemOwner owner, final int seed) {
+      float damage = itemStack.getDamageValue();
+      float maxDamage = itemStack.getMaxDamage();
       return this.normalize ? Mth.clamp(damage / maxDamage, 0.0F, 1.0F) : Mth.clamp(damage, 0.0F, maxDamage);
    }
 

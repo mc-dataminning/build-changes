@@ -48,8 +48,7 @@ public class ChatLog {
       this.buffer[this.index(this.nextId++)] = event;
    }
 
-   @Nullable
-   public LoggedChatEvent lookup(final int id) {
+   public @Nullable LoggedChatEvent lookup(final int id) {
       return id >= this.start() && id <= this.end() ? this.buffer[this.index(id)] : null;
    }
 

@@ -23,7 +23,7 @@ public enum TestBlockMode implements StringRepresentable {
    private final Component displayName;
    private final Component detailedMessage;
 
-   private TestBlockMode(final int id, final String name) {
+   TestBlockMode(final int id, final String name) {
       this.id = id;
       this.name = name;
       this.displayName = Component.translatable("test_block.mode." + name);

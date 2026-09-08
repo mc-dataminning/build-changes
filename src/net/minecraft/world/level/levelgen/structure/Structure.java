@@ -200,7 +200,7 @@ public abstract class Structure {
 
    public abstract StructureType<?> type();
 
-   public static record GenerationContext(
+   public record GenerationContext(
       RegistryAccess registryAccess,
       ChunkGenerator chunkGenerator,
       BiomeSource biomeSource,
@@ -282,7 +282,7 @@ public abstract class Structure {
       }
    }
 
-   public static record GenerationStub(BlockPos position, Either<Consumer<StructurePiecesBuilder>, StructurePiecesBuilder> generator) {
+   public record GenerationStub(BlockPos position, Either<Consumer<StructurePiecesBuilder>, StructurePiecesBuilder> generator) {
       public GenerationStub(final BlockPos position, final Consumer<StructurePiecesBuilder> generator) {
          this(position, Either.left(generator));
       }
@@ -296,7 +296,7 @@ public abstract class Structure {
       }
    }
 
-   public static record StructureSettings(
+   public record StructureSettings(
       HolderSet<Biome> biomes, Map<MobCategory, StructureSpawnOverride> spawnOverrides, GenerationStep.Decoration step, TerrainAdjustment terrainAdaptation
    ) {
       private static final Structure.StructureSettings DEFAULT = new Structure.StructureSettings(
@@ -304,16 +304,16 @@ public abstract class Structure {
       );
       public static final MapCodec<Structure.StructureSettings> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  RegistryCodecs.holderSet(Registries.BIOME).fieldOf("biomes").forGetter(Structure.StructureSettings::biomes),
-                  Codec.simpleMap(MobCategory.CODEC, StructureSpawnOverride.CODEC, StringRepresentable.keys(MobCategory.values()))
-                     .fieldOf("spawn_overrides")
-                     .forGetter(Structure.StructureSettings::spawnOverrides),
-                  GenerationStep.Decoration.CODEC.fieldOf("step").forGetter(Structure.StructureSettings::step),
-                  TerrainAdjustment.CODEC
-                     .optionalFieldOf("terrain_adaptation", DEFAULT.terrainAdaptation)
-                     .forGetter(Structure.StructureSettings::terrainAdaptation)
-               )
-               .apply(i, Structure.StructureSettings::new)
+               RegistryCodecs.holderSet(Registries.BIOME).fieldOf("biomes").forGetter(Structure.StructureSettings::biomes),
+               Codec.simpleMap(MobCategory.CODEC, StructureSpawnOverride.CODEC, StringRepresentable.keys(MobCategory.values()))
+                  .fieldOf("spawn_overrides")
+                  .forGetter(Structure.StructureSettings::spawnOverrides),
+               GenerationStep.Decoration.CODEC.fieldOf("step").forGetter(Structure.StructureSettings::step),
+               TerrainAdjustment.CODEC
+                  .optionalFieldOf("terrain_adaptation", DEFAULT.terrainAdaptation)
+                  .forGetter(Structure.StructureSettings::terrainAdaptation)
+            )
+            .apply(i, Structure.StructureSettings::new)
       );
 
       public StructureSettings(final HolderSet<Biome> biomes) {

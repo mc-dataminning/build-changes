@@ -18,12 +18,12 @@ import net.minecraft.world.level.chunk.ChunkGenerator;
 public record DeltaFeature(BlockState contents, BlockState rim, IntProvider size, IntProvider rimSize) implements Feature {
    public static final MapCodec<DeltaFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BlockState.CODEC.fieldOf("contents").forGetter(DeltaFeature::contents),
-               BlockState.CODEC.fieldOf("rim").forGetter(DeltaFeature::rim),
-               IntProviders.codec(0, 16).fieldOf("size").forGetter(DeltaFeature::size),
-               IntProviders.codec(0, 16).fieldOf("rim_size").forGetter(DeltaFeature::rimSize)
-            )
-            .apply(i, DeltaFeature::new)
+            BlockState.CODEC.fieldOf("contents").forGetter(DeltaFeature::contents),
+            BlockState.CODEC.fieldOf("rim").forGetter(DeltaFeature::rim),
+            IntProviders.codec(0, 16).fieldOf("size").forGetter(DeltaFeature::size),
+            IntProviders.codec(0, 16).fieldOf("rim_size").forGetter(DeltaFeature::rimSize)
+         )
+         .apply(i, DeltaFeature::new)
    );
    private static final ImmutableList<Block> CANNOT_REPLACE = ImmutableList.of(
       Blocks.BEDROCK, Blocks.NETHER_BRICKS, Blocks.NETHER_BRICK_FENCE, Blocks.NETHER_BRICK_STAIRS, Blocks.NETHER_WART, Blocks.CHEST, Blocks.SPAWNER
@@ -73,17 +73,19 @@ public record DeltaFeature(BlockState contents, BlockState rim, IntProvider size
       BlockState state = level.getBlockState(pos);
       if (state.is(this.contents.getBlock())) {
          return false;
-      } else if (CANNOT_REPLACE.contains(state.getBlock())) {
-         return false;
-      } else {
-         for (Direction d : DIRECTIONS) {
-            boolean isAir = level.getBlockState(pos.relative(d)).isAir();
-            if (isAir && d != Direction.UP || !isAir && d == Direction.UP) {
-               return false;
-            }
-         }
-
-         return true;
       }
+
+      if (CANNOT_REPLACE.contains(state.getBlock())) {
+         return false;
+      }
+
+      for (Direction d : DIRECTIONS) {
+         boolean isAir = level.getBlockState(pos.relative(d)).isAir();
+         if (isAir && d != Direction.UP || !isAir && d == Direction.UP) {
+            return false;
+         }
+      }
+
+      return true;
    }
 }

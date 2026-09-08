@@ -30,7 +30,7 @@ public class RedstoneTorchBlock extends BaseTorchBlock {
 
    protected RedstoneTorchBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(LIT, Boolean.valueOf(true)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(LIT, true));
    }
 
    @Override
@@ -68,20 +68,20 @@ public class RedstoneTorchBlock extends BaseTorchBlock {
 
       if (state.getValue(LIT)) {
          if (neighborSignal) {
-            level.setBlockAndUpdate(pos, state.setValue(LIT, Boolean.valueOf(false)));
+            level.setBlockAndUpdate(pos, state.setValue(LIT, false));
             if (isToggledTooFrequently(level, pos, true)) {
                level.levelEvent(1502, pos, 0);
                level.scheduleTick(pos, level.getBlockState(pos).getBlock(), 160);
             }
          }
       } else if (!neighborSignal && !isToggledTooFrequently(level, pos, false)) {
-         level.setBlockAndUpdate(pos, state.setValue(LIT, Boolean.valueOf(true)));
+         level.setBlockAndUpdate(pos, state.setValue(LIT, true));
       }
    }
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       if (state.getValue(LIT) == this.hasNeighborSignal(level, pos, state) && !level.getBlockTicks().willTickThisTick(pos, this)) {
          level.scheduleTick(pos, this, 2);
@@ -111,9 +111,9 @@ public class RedstoneTorchBlock extends BaseTorchBlock {
    @Override
    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
       if (state.getValue(LIT)) {
-         double x = (double)pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.2;
-         double y = (double)pos.getY() + 0.7 + (random.nextDouble() - 0.5) * 0.2;
-         double z = (double)pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.2;
+         double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.2;
+         double y = pos.getY() + 0.7 + (random.nextDouble() - 0.5) * 0.2;
+         double z = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.2;
          level.addParticle(DustParticleOptions.REDSTONE, x, y, z, 0.0, 0.0, 0.0);
       }
    }
@@ -142,8 +142,7 @@ public class RedstoneTorchBlock extends BaseTorchBlock {
       return false;
    }
 
-   @Nullable
-   protected Orientation randomOrientation(final Level level, final BlockState state) {
+   protected @Nullable Orientation randomOrientation(final Level level, final BlockState state) {
       return ExperimentalRedstoneUtils.initialOrientation(level, null, Direction.UP);
    }
 

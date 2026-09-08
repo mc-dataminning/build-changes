@@ -26,13 +26,13 @@ public class LevelUUIDFix extends AbstractUUIDFix {
          "LevelUUIDFix",
          type,
          input -> input.update(DSL.remainderFinder(), tag -> {
-                  tag = this.updateDragonFight(tag);
-                  return this.updateWanderingTrader(tag);
-               })
-               .updateTyped(
-                  customBossEventsF,
-                  customBossEvents -> customBossEvents.updateTyped(customBossEventF, event -> event.update(DSL.remainderFinder(), this::updateCustomBossEvent))
-               )
+               tag = this.updateDragonFight(tag);
+               return this.updateWanderingTrader(tag);
+            })
+            .updateTyped(
+               customBossEventsF,
+               customBossEvents -> customBossEvents.updateTyped(customBossEventF, event -> event.update(DSL.remainderFinder(), this::updateCustomBossEvent))
+            )
       );
    }
 
@@ -44,19 +44,19 @@ public class LevelUUIDFix extends AbstractUUIDFix {
       return tag.update(
          "DimensionData",
          dimensionDataMap -> dimensionDataMap.updateMapValues(
-               dimensionDataPair -> dimensionDataPair.mapSecond(
-                     dimensionData -> dimensionData.update(
-                           "DragonFight", dragonfight -> replaceUUIDLeastMost(dragonfight, "DragonUUID", "Dragon").orElse(dragonfight)
-                        )
-                  )
+            dimensionDataPair -> dimensionDataPair.mapSecond(
+               dimensionData -> dimensionData.update(
+                  "DragonFight", dragonfight -> replaceUUIDLeastMost(dragonfight, "DragonUUID", "Dragon").orElse(dragonfight)
+               )
             )
+         )
       );
    }
 
    private Dynamic<?> updateCustomBossEvent(final Dynamic<?> tag) {
       return tag.update("Players", players -> tag.createList(players.asStream().map(player -> (Dynamic)createUUIDFromML((Dynamic<?>)player).orElseGet(() -> {
-               LOGGER.warn("CustomBossEvents contains invalid UUIDs.");
-               return (Dynamic<?>)player;
-            }))));
+         LOGGER.warn("CustomBossEvents contains invalid UUIDs.");
+         return (Dynamic<?>)player;
+      }))));
    }
 }

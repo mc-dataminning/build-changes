@@ -91,21 +91,21 @@ public class ValidationContext {
       return this.reporter;
    }
 
-   public static record MinBoundsProblem(int minBounds) implements ProblemReporter.Problem {
+   public record MinBoundsProblem(int minBounds) implements ProblemReporter.Problem {
       @Override
       public String description() {
          return "List must contain at least " + this.minBounds + " element(s)";
       }
    }
 
-   public static record ParametersNotProvidedProblem(Set<ContextKey<?>> notProvided) implements ProblemReporter.Problem {
+   public record ParametersNotProvidedProblem(Set<ContextKey<?>> notProvided) implements ProblemReporter.Problem {
       @Override
       public String description() {
          return "Parameters " + this.notProvided + " are not provided in this context";
       }
    }
 
-   public static record RecursiveElementReferenceProblem(ResourceKey<?> referenced) implements ProblemReporter.Problem {
+   public record RecursiveElementReferenceProblem(ResourceKey<?> referenced) implements ProblemReporter.Problem {
       @Override
       public String description() {
          return this.referenced.identifier() + " of type " + this.referenced.registry() + " is recursively called";
@@ -117,7 +117,7 @@ public class ValidationContext {
       }
    }
 
-   public static record RecursiveTagReferenceProblem(TagKey<?> referenced) implements ProblemReporter.Problem {
+   public record RecursiveTagReferenceProblem(TagKey<?> referenced) implements ProblemReporter.Problem {
       @Override
       public String description() {
          return "#" + this.referenced.location() + " of type " + this.referenced.registry() + " is recursively called";

@@ -27,8 +27,7 @@ public interface DragonPhaseInstance {
 
    EnderDragonPhase<? extends DragonPhaseInstance> getPhase();
 
-   @Nullable
-   Vec3 getFlyTargetLocation();
+   @Nullable Vec3 getFlyTargetLocation();
 
    float onHurt(DamageSource source, float damage);
 }

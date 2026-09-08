@@ -59,8 +59,8 @@ public abstract class RegistryLoadTask<T> {
       synchronized (this.registryWriteLock) {
          elements.forEach(
             element -> element.value
-                  .ifLeft(value -> this.registry.register(element.key, (T)value, element.registrationInfo))
-                  .ifRight(error -> this.loadingErrors.put(element.key, error))
+               .ifLeft(value -> this.registry.register(element.key, (T)value, element.registrationInfo))
+               .ifRight(error -> this.loadingErrors.put(element.key, error))
          );
          this.elementsRegistered = true;
       }
@@ -76,8 +76,8 @@ public abstract class RegistryLoadTask<T> {
       try {
          this.registry.freeze();
          return true;
-      } catch (Exception var3) {
-         loadingErrors.put(this.registry.key(), var3);
+      } catch (Exception e) {
+         loadingErrors.put(this.registry.key(), e);
          return false;
       }
    }
@@ -87,27 +87,22 @@ public abstract class RegistryLoadTask<T> {
       this.data.validator().validate(this.registry, registryErrors);
       if (registryErrors.isEmpty()) {
          return Optional.of(this.registry);
-      } else {
-         loadingErrors.putAll(registryErrors);
-         return Optional.empty();
       }
+
+      loadingErrors.putAll(registryErrors);
+      return Optional.empty();
    }
 
-   protected static record PendingRegistration<T>(ResourceKey<T> key, Either<T, Exception> value, RegistrationInfo registrationInfo) {
+   protected record PendingRegistration<T>(ResourceKey<T> key, Either<T, Exception> value, RegistrationInfo registrationInfo) {
       public static <T> Either<T, Exception> loadFromResource(
          final Decoder<T> elementDecoder, final RegistryOps<JsonElement> ops, final ResourceKey<T> elementKey, final Resource thunk
       ) {
-         try {
-            Either var6;
-            try (Reader reader = thunk.openAsReader()) {
-               JsonElement json = StrictJsonParser.parse(reader);
-               var6 = Either.left(elementDecoder.parse(ops, json).getOrThrow());
-            }
-
-            return var6;
-         } catch (Exception var9) {
+         try (Reader reader = thunk.openAsReader()) {
+            JsonElement json = StrictJsonParser.parse(reader);
+            return Either.left(elementDecoder.parse(ops, json).getOrThrow());
+         } catch (Exception e) {
             return Either.right(
-               new IllegalStateException(String.format(Locale.ROOT, "Failed to parse %s from pack %s", elementKey.identifier(), thunk.sourcePackId()), var9)
+               new IllegalStateException(String.format(Locale.ROOT, "Failed to parse %s from pack %s", elementKey.identifier(), thunk.sourcePackId()), e)
             );
          }
       }
@@ -124,8 +119,8 @@ public abstract class RegistryLoadTask<T> {
             .map(resource -> loadFromResource(elementDecoder, ops, elementKey, resource))
             .orElseGet(
                () -> Either.right(
-                     new IllegalStateException(String.format(Locale.ROOT, "Failed to find resource %s for element %s", resourceId, elementKey.identifier()))
-                  )
+                  new IllegalStateException(String.format(Locale.ROOT, "Failed to find resource %s for element %s", resourceId, elementKey.identifier()))
+               )
             );
       }
 
@@ -135,9 +130,9 @@ public abstract class RegistryLoadTask<T> {
          try {
             DataResult<T> parseResult = elementDecoder.parse(ops, contents);
             return Either.left(parseResult.getOrThrow());
-         } catch (Exception var5) {
+         } catch (Exception e) {
             return Either.right(
-               new IllegalStateException(String.format(Locale.ROOT, "Failed to parse value %s for key %s from server", contents, elementKey.identifier()), var5)
+               new IllegalStateException(String.format(Locale.ROOT, "Failed to parse value %s for key %s from server", contents, elementKey.identifier()), e)
             );
          }
       }

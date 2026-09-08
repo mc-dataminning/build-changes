@@ -16,10 +16,9 @@ public interface SpvModule extends AutoCloseable {
 
    SpvModule.Reflection reflect() throws ShaderCompileException;
 
-   @Nullable
-   SpvModule.Reflection getReflectionInfoIfAvailable();
+   SpvModule.@Nullable Reflection getReflectionInfoIfAvailable();
 
-   public interface Reflection {
+   interface Reflection {
       List<SpvModule.Reflection.InterfaceVariable> inputs();
 
       List<SpvModule.Reflection.InterfaceVariable> outputs();
@@ -30,7 +29,7 @@ public interface SpvModule extends AutoCloseable {
 
       List<SpvModule.Reflection.PushConstant> pushConstants();
 
-      public interface Descriptor {
+      interface Descriptor {
          String name();
 
          SpvModule.Reflection.Type type();
@@ -46,7 +45,7 @@ public interface SpvModule extends AutoCloseable {
          void binding(int location);
       }
 
-      public interface InterfaceVariable {
+      interface InterfaceVariable {
          String name();
 
          SpvModule.Reflection.Type type();
@@ -62,11 +61,11 @@ public interface SpvModule extends AutoCloseable {
          int decoration(int decoration);
       }
 
-      public interface PushConstant {
+      interface PushConstant {
          int size();
       }
 
-      public interface Type {
+      interface Type {
          int baseType();
 
          int dimensions();

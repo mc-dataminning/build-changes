@@ -32,25 +32,24 @@ public interface SignatureValidator {
             Signature verifier = Signature.getInstance(algorithm);
             verifier.initVerify(publicKey);
             return verifySignature(updater, signature, verifier);
-         } catch (Exception var5) {
-            LOGGER.error("Failed to verify signature", var5);
+         } catch (Exception e) {
+            LOGGER.error("Failed to verify signature", e);
             return false;
          }
       };
    }
 
-   @Nullable
-   static SignatureValidator from(final ServicesKeySet keySet, final ServicesKeyType type) {
+   static @Nullable SignatureValidator from(final ServicesKeySet keySet, final ServicesKeyType type) {
       Collection<ServicesKeyInfo> keys = keySet.keys(type);
       return keys.isEmpty() ? null : (updater, signature) -> keys.stream().anyMatch(key -> {
-            Signature verifier = key.signature();
+         Signature verifier = key.signature();
 
-            try {
-               return verifySignature(updater, signature, verifier);
-            } catch (SignatureException var5) {
-               LOGGER.error("Failed to verify Services signature", var5);
-               return false;
-            }
-         });
+         try {
+            return verifySignature(updater, signature, verifier);
+         } catch (SignatureException e) {
+            LOGGER.error("Failed to verify Services signature", e);
+            return false;
+         }
+      });
    }
 }

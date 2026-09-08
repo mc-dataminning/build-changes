@@ -8,7 +8,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 public record BlockReplacement(RuleTest target, BlockState state) {
    public static final Codec<BlockReplacement> CODEC = RecordCodecBuilder.create(
       i -> i.group(RuleTest.CODEC.fieldOf("target").forGetter(c -> c.target), BlockState.CODEC.fieldOf("state").forGetter(c -> c.state))
-            .apply(i, BlockReplacement::new)
+         .apply(i, BlockReplacement::new)
    );
 
    public static BlockReplacement replace(final RuleTest rule, final BlockState state) {

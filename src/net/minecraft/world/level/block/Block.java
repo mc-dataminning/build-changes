@@ -97,21 +97,16 @@ public class Block extends BlockBehaviour implements ItemLike {
    public static final int UPDATE_SKIP_SHAPE_UPDATE_ON_WIRE = 128;
    public static final int UPDATE_SKIP_BLOCK_ENTITY_SIDEEFFECTS = 256;
    public static final int UPDATE_SKIP_ON_PLACE = 512;
-   @Block.UpdateFlags
-   public static final int UPDATE_NONE = 260;
-   @Block.UpdateFlags
-   public static final int UPDATE_ALL = 3;
-   @Block.UpdateFlags
-   public static final int UPDATE_ALL_IMMEDIATE = 11;
-   @Block.UpdateFlags
-   public static final int UPDATE_SKIP_ALL_SIDEEFFECTS = 816;
+   public static final @Block.UpdateFlags int UPDATE_NONE = 260;
+   public static final @Block.UpdateFlags int UPDATE_ALL = 3;
+   public static final @Block.UpdateFlags int UPDATE_ALL_IMMEDIATE = 11;
+   public static final @Block.UpdateFlags int UPDATE_SKIP_ALL_SIDEEFFECTS = 816;
    public static final float INDESTRUCTIBLE = -1.0F;
    public static final float INSTANT = 0.0F;
    public static final int UPDATE_LIMIT = 512;
    protected final StateDefinition<Block, BlockState> stateDefinition;
    private BlockState defaultBlockState;
-   @Nullable
-   private Item item;
+   private @Nullable Item item;
    private static final int CACHE_SIZE = 256;
    private static final ThreadLocal<Object2ByteLinkedOpenHashMap<Block.ShapePairKey>> OCCLUSION_CACHE = ThreadLocal.withInitial(() -> {
       Object2ByteLinkedOpenHashMap<Block.ShapePairKey> map = new Object2ByteLinkedOpenHashMap<Block.ShapePairKey>(256, 0.25F) {
@@ -122,13 +117,13 @@ public class Block extends BlockBehaviour implements ItemLike {
       return map;
    });
 
-   public static int getId(@Nullable final BlockState blockState) {
+   public static int getId(final @Nullable BlockState blockState) {
       if (blockState == null) {
          return 0;
-      } else {
-         int id = BLOCK_STATE_REGISTRY.getId(blockState);
-         return id == -1 ? 0 : id;
       }
+
+      int id = BLOCK_STATE_REGISTRY.getId(blockState);
+      return id == -1 ? 0 : id;
    }
 
    public static BlockState stateById(final int idWithData) {
@@ -136,7 +131,7 @@ public class Block extends BlockBehaviour implements ItemLike {
       return state == null ? Blocks.AIR.defaultBlockState() : state;
    }
 
-   public static Block byItem(@Nullable final Item item) {
+   public static Block byItem(final @Nullable Item item) {
       return item instanceof BlockItem blockItem ? blockItem.getBlock() : Blocks.AIR;
    }
 
@@ -145,14 +140,14 @@ public class Block extends BlockBehaviour implements ItemLike {
          .move(pos);
       if (offsetShape.isEmpty()) {
          return newState;
-      } else {
-         for (Entity collidingEntity : level.getEntities(null, offsetShape.bounds())) {
-            double offset = Shapes.collide(Direction.Axis.Y, collidingEntity.getBoundingBox().move(0.0, 1.0, 0.0), List.of(offsetShape), -1.0);
-            collidingEntity.teleportRelative(0.0, 1.0 + offset, 0.0);
-         }
-
-         return newState;
       }
+
+      for (Entity collidingEntity : level.getEntities(null, offsetShape.bounds())) {
+         double offset = Shapes.collide(Direction.Axis.Y, collidingEntity.getBoundingBox().move(0.0, 1.0, 0.0), List.of(offsetShape), -1.0);
+         collidingEntity.teleportRelative(0.0, 1.0 + offset, 0.0);
+      }
+
+      return newState;
    }
 
    public static VoxelShape box(final double minX, final double minY, final double minZ, final double maxX, final double maxY, final double maxZ) {
@@ -209,7 +204,7 @@ public class Block extends BlockBehaviour implements ItemLike {
    }
 
    public static void updateOrDestroy(
-      final BlockState blockState, final BlockState newState, final LevelAccessor level, final BlockPos blockPos, @Block.UpdateFlags final int updateFlags
+      final BlockState blockState, final BlockState newState, final LevelAccessor level, final BlockPos blockPos, final @Block.UpdateFlags int updateFlags
    ) {
       updateOrDestroy(blockState, newState, level, blockPos, updateFlags, 512);
    }
@@ -219,7 +214,7 @@ public class Block extends BlockBehaviour implements ItemLike {
       final BlockState newState,
       final LevelAccessor level,
       final BlockPos blockPos,
-      @Block.UpdateFlags final int updateFlags,
+      final @Block.UpdateFlags int updateFlags,
       final int updateLimit
    ) {
       if (newState != blockState) {
@@ -262,20 +257,20 @@ public class Block extends BlockBehaviour implements ItemLike {
       final ResourceKey<LootTable> key,
       final BlockPos interactedBlockPos,
       final BlockState interactedBlockState,
-      @Nullable final BlockEntity interactedBlockEntity,
-      @Nullable final ItemInstance tool,
-      @Nullable final Entity interactingEntity,
+      final @Nullable BlockEntity interactedBlockEntity,
+      final @Nullable ItemInstance tool,
+      final @Nullable Entity interactingEntity,
       final BiConsumer<ServerLevel, ItemStack> consumer
    ) {
       return dropFromLootTable(
          level,
          key,
          params -> params.withParameter(LootContextParams.BLOCK_STATE, interactedBlockState)
-               .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(interactedBlockPos))
-               .withOptionalParameter(LootContextParams.BLOCK_ENTITY, interactedBlockEntity)
-               .withOptionalParameter(LootContextParams.INTERACTING_ENTITY, interactingEntity)
-               .withOptionalParameter(LootContextParams.TOOL, tool)
-               .create(LootContextParamSets.BLOCK_INTERACT),
+            .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(interactedBlockPos))
+            .withOptionalParameter(LootContextParams.BLOCK_ENTITY, interactedBlockEntity)
+            .withOptionalParameter(LootContextParams.INTERACTING_ENTITY, interactingEntity)
+            .withOptionalParameter(LootContextParams.TOOL, tool)
+            .create(LootContextParamSets.BLOCK_INTERACT),
          consumer
       );
    }
@@ -301,31 +296,35 @@ public class Block extends BlockBehaviour implements ItemLike {
       VoxelShape occluder = neighborState.getFaceOcclusionShape(direction.getOpposite());
       if (occluder == Shapes.block()) {
          return false;
-      } else if (state.skipRendering(neighborState, direction)) {
-         return false;
-      } else if (occluder == Shapes.empty()) {
-         return true;
-      } else {
-         VoxelShape shape = state.getFaceOcclusionShape(direction);
-         if (shape == Shapes.empty()) {
-            return true;
-         } else {
-            Block.ShapePairKey key = new Block.ShapePairKey(shape, occluder);
-            Object2ByteLinkedOpenHashMap<Block.ShapePairKey> cache = OCCLUSION_CACHE.get();
-            byte cached = cache.getAndMoveToFirst(key);
-            if (cached != 127) {
-               return cached != 0;
-            } else {
-               boolean result = Shapes.joinIsNotEmpty(shape, occluder, BooleanOp.ONLY_FIRST);
-               if (cache.size() == 256) {
-                  cache.removeLastByte();
-               }
-
-               cache.putAndMoveToFirst(key, (byte)(result ? 1 : 0));
-               return result;
-            }
-         }
       }
+
+      if (state.skipRendering(neighborState, direction)) {
+         return false;
+      }
+
+      if (occluder == Shapes.empty()) {
+         return true;
+      }
+
+      VoxelShape shape = state.getFaceOcclusionShape(direction);
+      if (shape == Shapes.empty()) {
+         return true;
+      }
+
+      Block.ShapePairKey key = new Block.ShapePairKey(shape, occluder);
+      Object2ByteLinkedOpenHashMap<Block.ShapePairKey> cache = OCCLUSION_CACHE.get();
+      byte cached = cache.getAndMoveToFirst(key);
+      if (cached != 127) {
+         return cached != 0;
+      }
+
+      boolean result = Shapes.joinIsNotEmpty(shape, occluder, BooleanOp.ONLY_FIRST);
+      if (cache.size() == 256) {
+         cache.removeLastByte();
+      }
+
+      cache.putAndMoveToFirst(key, (byte)(result ? 1 : 0));
+      return result;
    }
 
    public static boolean canSupportRigidBlock(final BlockGetter level, final BlockPos below) {
@@ -354,7 +353,7 @@ public class Block extends BlockBehaviour implements ItemLike {
    public void destroy(final LevelAccessor level, final BlockPos pos, final BlockState state) {
    }
 
-   public static List<ItemStack> getDrops(final BlockState state, final ServerLevel level, final BlockPos pos, @Nullable final BlockEntity blockEntity) {
+   public static List<ItemStack> getDrops(final BlockState state, final ServerLevel level, final BlockPos pos, final @Nullable BlockEntity blockEntity) {
       LootParams.Builder params = new LootParams.Builder(level)
          .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
          .withParameter(LootContextParams.TOOL, ItemStack.EMPTY)
@@ -366,8 +365,8 @@ public class Block extends BlockBehaviour implements ItemLike {
       final BlockState state,
       final ServerLevel level,
       final BlockPos pos,
-      @Nullable final BlockEntity blockEntity,
-      @Nullable final Entity breaker,
+      final @Nullable BlockEntity blockEntity,
+      final @Nullable Entity breaker,
       final ItemInstance tool
    ) {
       LootParams.Builder params = new LootParams.Builder(level)
@@ -385,7 +384,7 @@ public class Block extends BlockBehaviour implements ItemLike {
       }
    }
 
-   public static void dropResources(final BlockState state, final LevelAccessor level, final BlockPos pos, @Nullable final BlockEntity blockEntity) {
+   public static void dropResources(final BlockState state, final LevelAccessor level, final BlockPos pos, final @Nullable BlockEntity blockEntity) {
       if (level instanceof ServerLevel serverLevel) {
          getDrops(state, serverLevel, pos, blockEntity).forEach(stack -> popResource(serverLevel, pos, stack));
          state.spawnAfterBreak(serverLevel, pos, ItemStack.EMPTY, true);
@@ -396,8 +395,8 @@ public class Block extends BlockBehaviour implements ItemLike {
       final BlockState state,
       final Level level,
       final BlockPos pos,
-      @Nullable final BlockEntity blockEntity,
-      @Nullable final Entity breaker,
+      final @Nullable BlockEntity blockEntity,
+      final @Nullable Entity breaker,
       final ItemStack tool
    ) {
       if (level instanceof ServerLevel serverLevel) {
@@ -407,11 +406,11 @@ public class Block extends BlockBehaviour implements ItemLike {
    }
 
    public static void popResource(final Level level, final BlockPos pos, final ItemStack itemStack) {
-      double halfHeight = (double)EntityTypes.ITEM.getHeight() / 2.0;
+      double halfHeight = EntityTypes.ITEM.getHeight() / 2.0;
       RandomSource random = level.getRandom();
-      double x = (double)pos.getX() + 0.5 + Mth.nextDouble(random, -0.25, 0.25);
-      double y = (double)pos.getY() + 0.5 + Mth.nextDouble(random, -0.25, 0.25) - halfHeight;
-      double z = (double)pos.getZ() + 0.5 + Mth.nextDouble(random, -0.25, 0.25);
+      double x = pos.getX() + 0.5 + Mth.nextDouble(random, -0.25, 0.25);
+      double y = pos.getY() + 0.5 + Mth.nextDouble(random, -0.25, 0.25) - halfHeight;
+      double z = pos.getZ() + 0.5 + Mth.nextDouble(random, -0.25, 0.25);
       popResource(level, () -> new ItemEntity(level, x, y, z, itemStack), itemStack);
    }
 
@@ -419,15 +418,15 @@ public class Block extends BlockBehaviour implements ItemLike {
       int stepX = face.getStepX();
       int stepY = face.getStepY();
       int stepZ = face.getStepZ();
-      double halfWidth = (double)EntityTypes.ITEM.getWidth() / 2.0;
-      double halfHeight = (double)EntityTypes.ITEM.getHeight() / 2.0;
+      double halfWidth = EntityTypes.ITEM.getWidth() / 2.0;
+      double halfHeight = EntityTypes.ITEM.getHeight() / 2.0;
       RandomSource random = level.getRandom();
-      double x = (double)pos.getX() + 0.5 + (stepX == 0 ? Mth.nextDouble(random, -0.25, 0.25) : (double)stepX * (0.5 + halfWidth));
-      double y = (double)pos.getY() + 0.5 + (stepY == 0 ? Mth.nextDouble(random, -0.25, 0.25) : (double)stepY * (0.5 + halfHeight)) - halfHeight;
-      double z = (double)pos.getZ() + 0.5 + (stepZ == 0 ? Mth.nextDouble(random, -0.25, 0.25) : (double)stepZ * (0.5 + halfWidth));
-      double deltaX = stepX == 0 ? Mth.nextDouble(random, -0.1, 0.1) : (double)stepX * 0.1;
-      double deltaY = stepY == 0 ? Mth.nextDouble(random, 0.0, 0.1) : (double)stepY * 0.1 + 0.1;
-      double deltaZ = stepZ == 0 ? Mth.nextDouble(random, -0.1, 0.1) : (double)stepZ * 0.1;
+      double x = pos.getX() + 0.5 + (stepX == 0 ? Mth.nextDouble(random, -0.25, 0.25) : stepX * (0.5 + halfWidth));
+      double y = pos.getY() + 0.5 + (stepY == 0 ? Mth.nextDouble(random, -0.25, 0.25) : stepY * (0.5 + halfHeight)) - halfHeight;
+      double z = pos.getZ() + 0.5 + (stepZ == 0 ? Mth.nextDouble(random, -0.25, 0.25) : stepZ * (0.5 + halfWidth));
+      double deltaX = stepX == 0 ? Mth.nextDouble(random, -0.1, 0.1) : stepX * 0.1;
+      double deltaY = stepY == 0 ? Mth.nextDouble(random, 0.0, 0.1) : stepY * 0.1 + 0.1;
+      double deltaZ = stepZ == 0 ? Mth.nextDouble(random, -0.1, 0.1) : stepZ * 0.1;
       popResource(level, () -> new ItemEntity(level, x, y, z, itemStack, deltaX, deltaY, deltaZ), itemStack);
    }
 
@@ -436,7 +435,6 @@ public class Block extends BlockBehaviour implements ItemLike {
          ItemEntity entity = entityFactory.get();
          entity.setDefaultPickUpDelay();
          level.addFreshEntity(entity);
-         return;
       }
    }
 
@@ -456,8 +454,7 @@ public class Block extends BlockBehaviour implements ItemLike {
    public void stepOn(final Level level, final BlockPos pos, final BlockState onState, final Entity entity) {
    }
 
-   @Nullable
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       return this.defaultBlockState();
    }
 
@@ -466,7 +463,7 @@ public class Block extends BlockBehaviour implements ItemLike {
       final ServerPlayer player,
       final BlockPos pos,
       final BlockState state,
-      @Nullable final BlockEntity blockEntity,
+      final @Nullable BlockEntity blockEntity,
       final ItemStack destroyedWith
    ) {
       player.awardStat(Stats.BLOCK_MINED.get(this));
@@ -474,7 +471,7 @@ public class Block extends BlockBehaviour implements ItemLike {
       dropResources(state, level, pos, blockEntity, player, destroyedWith);
    }
 
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, @Nullable final LivingEntity by, final ItemStack itemStack) {
+   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
    }
 
    public boolean isPossibleToRespawnInThis(final BlockState state) {
@@ -486,7 +483,7 @@ public class Block extends BlockBehaviour implements ItemLike {
    }
 
    public void fallOn(final Level level, final BlockState state, final BlockPos pos, final Entity entity, final double fallDistance) {
-      double reducedFallDistance = fallDistance * (double)(1.0F - this.getFallDistanceReduction());
+      double reducedFallDistance = fallDistance * (1.0F - this.getFallDistanceReduction());
       entity.causeFallDamage(reducedFallDistance, 1.0F, entity.damageSources().fall());
    }
 
@@ -513,7 +510,7 @@ public class Block extends BlockBehaviour implements ItemLike {
       return this.jumpFactor;
    }
 
-   public void spawnDestroyByEntityParticles(final Level level, @Nullable final Entity entity, final BlockPos pos, final BlockState state) {
+   public void spawnDestroyByEntityParticles(final Level level, final @Nullable Entity entity, final BlockPos pos, final BlockState state) {
       level.levelEvent(entity, 2001, pos, getId(state));
    }
 
@@ -624,14 +621,10 @@ public class Block extends BlockBehaviour implements ItemLike {
       }
    }
 
-   private static record ShapePairKey(VoxelShape first, VoxelShape second) {
+   private record ShapePairKey(VoxelShape first, VoxelShape second) {
       @Override
       public boolean equals(final Object o) {
-         if (o instanceof Block.ShapePairKey that && this.first == that.first && this.second == that.second) {
-            return true;
-         }
-
-         return false;
+         return o instanceof Block.ShapePairKey that && this.first == that.first && this.second == that.second;
       }
 
       @Override
@@ -641,7 +634,7 @@ public class Block extends BlockBehaviour implements ItemLike {
    }
 
    @Retention(RetentionPolicy.CLASS)
-   @Target({ElementType.TYPE_USE})
+   @Target(ElementType.TYPE_USE)
    public @interface UpdateFlags {
    }
 }

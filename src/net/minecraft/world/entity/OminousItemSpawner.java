@@ -36,7 +36,7 @@ public class OminousItemSpawner extends Entity {
 
    public static OminousItemSpawner create(final Level level, final ItemStack item) {
       OminousItemSpawner itemSpawner = new OminousItemSpawner(EntityTypes.OMINOUS_ITEM_SPAWNER, level);
-      itemSpawner.spawnItemAfterTicks = (long)level.getRandom().nextIntBetweenInclusive(60, 120);
+      itemSpawner.spawnItemAfterTicks = level.getRandom().nextIntBetweenInclusive(60, 120);
       itemSpawner.setItem(item);
       return itemSpawner;
    }
@@ -52,11 +52,11 @@ public class OminousItemSpawner extends Entity {
    }
 
    private void tickServer(final ServerLevel level) {
-      if ((long)this.tickCount == this.spawnItemAfterTicks - 36L) {
+      if (this.tickCount == this.spawnItemAfterTicks - 36L) {
          level.playSound(null, this.blockPosition(), SoundEvents.TRIAL_SPAWNER_ABOUT_TO_SPAWN_ITEM, SoundSource.NEUTRAL);
       }
 
-      if ((long)this.tickCount >= this.spawnItemAfterTicks) {
+      if (this.tickCount >= this.spawnItemAfterTicks) {
          this.spawnItem();
          this.kill(level);
       }
@@ -95,9 +95,9 @@ public class OminousItemSpawner extends Entity {
          projectileItem.asProjectile(level, this.position(), item, direction),
          level,
          item,
-         (double)direction.getStepX(),
-         (double)direction.getStepY(),
-         (double)direction.getStepZ(),
+         direction.getStepX(),
+         direction.getStepY(),
+         direction.getStepZ(),
          dispenseConfig.power(),
          dispenseConfig.uncertainty()
       );

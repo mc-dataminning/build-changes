@@ -17,10 +17,9 @@ public interface MemoryCondition<F extends K1, Value> {
 
    MemoryStatus condition();
 
-   @Nullable
-   MemoryAccessor<F, Value> createAccessor(Brain<?> brain, final Optional<Value> value);
+   @Nullable MemoryAccessor<F, Value> createAccessor(Brain<?> brain, final Optional<Value> value);
 
-   public static record Absent<Value>(MemoryModuleType<Value> memory) implements MemoryCondition<Mu<Unit>, Value> {
+   record Absent<Value>(MemoryModuleType<Value> memory) implements MemoryCondition<Mu<Unit>, Value> {
       @Override
       public MemoryStatus condition() {
          return MemoryStatus.VALUE_ABSENT;
@@ -32,7 +31,7 @@ public interface MemoryCondition<F extends K1, Value> {
       }
    }
 
-   public static record Present<Value>(MemoryModuleType<Value> memory) implements MemoryCondition<com.mojang.datafixers.kinds.IdF.Mu, Value> {
+   record Present<Value>(MemoryModuleType<Value> memory) implements MemoryCondition<com.mojang.datafixers.kinds.IdF.Mu, Value> {
       @Override
       public MemoryStatus condition() {
          return MemoryStatus.VALUE_PRESENT;
@@ -44,7 +43,7 @@ public interface MemoryCondition<F extends K1, Value> {
       }
    }
 
-   public static record Registered<Value>(MemoryModuleType<Value> memory) implements MemoryCondition<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
+   record Registered<Value>(MemoryModuleType<Value> memory) implements MemoryCondition<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
       @Override
       public MemoryStatus condition() {
          return MemoryStatus.REGISTERED;

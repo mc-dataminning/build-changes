@@ -57,14 +57,14 @@ public class BitStorageAlignFix extends DataFix {
       return level.updateTyped(
          sectionsFinder,
          sections -> sections.updateTyped(
-               sectionFinder,
-               section -> {
-                  int bits = section.getOptional(paletteFinder).map(palette -> Math.max(4, DataFixUtils.ceillog2(palette.size()))).orElse(0);
-                  return bits != 0 && !Mth.isPowerOfTwo(bits)
-                     ? section.update(DSL.remainderFinder(), tag -> tag.update("BlockStates", states -> updateBitStorage(tag, states, 4096, bits)))
-                     : section;
-               }
-            )
+            sectionFinder,
+            section -> {
+               int bits = section.getOptional(paletteFinder).map(palette -> Math.max(4, DataFixUtils.ceillog2(palette.size()))).orElse(0);
+               return bits != 0 && !Mth.isPowerOfTwo(bits)
+                  ? section.update(DSL.remainderFinder(), tag -> tag.update("BlockStates", states -> updateBitStorage(tag, states, 4096, bits)))
+                  : section;
+            }
+         )
       );
    }
 
@@ -78,53 +78,53 @@ public class BitStorageAlignFix extends DataFix {
       int dataLength = data.length;
       if (dataLength == 0) {
          return data;
-      } else {
-         long mask = (1L << bits) - 1L;
-         int valuesPerLong = 64 / bits;
-         int requiredLength = (size + valuesPerLong - 1) / valuesPerLong;
-         long[] result = new long[requiredLength];
-         int outputDataIndex = 0;
-         int outputStart = 0;
-         long outputData = 0L;
-         int currentIndex = 0;
-         long current = data[0];
-         long next = dataLength > 1 ? data[1] : 0L;
-
-         for (int index = 0; index < size; index++) {
-            int position = index * bits;
-            int startData = position >> 6;
-            int endData = (index + 1) * bits - 1 >> 6;
-            int startBit = position ^ startData << 6;
-            if (startData != currentIndex) {
-               current = next;
-               next = startData + 1 < dataLength ? data[startData + 1] : 0L;
-               currentIndex = startData;
-            }
-
-            long valueToInsert;
-            if (startData == endData) {
-               valueToInsert = current >>> startBit & mask;
-            } else {
-               int shiftBits = 64 - startBit;
-               valueToInsert = (current >>> startBit | next << shiftBits) & mask;
-            }
-
-            int outputEnd = outputStart + bits;
-            if (outputEnd >= 64) {
-               result[outputDataIndex++] = outputData;
-               outputData = valueToInsert;
-               outputStart = bits;
-            } else {
-               outputData |= valueToInsert << outputStart;
-               outputStart = outputEnd;
-            }
-         }
-
-         if (outputData != 0L) {
-            result[outputDataIndex] = outputData;
-         }
-
-         return result;
       }
+
+      long mask = (1L << bits) - 1L;
+      int valuesPerLong = 64 / bits;
+      int requiredLength = (size + valuesPerLong - 1) / valuesPerLong;
+      long[] result = new long[requiredLength];
+      int outputDataIndex = 0;
+      int outputStart = 0;
+      long outputData = 0L;
+      int currentIndex = 0;
+      long current = data[0];
+      long next = dataLength > 1 ? data[1] : 0L;
+
+      for (int index = 0; index < size; index++) {
+         int position = index * bits;
+         int startData = position >> 6;
+         int endData = (index + 1) * bits - 1 >> 6;
+         int startBit = position ^ startData << 6;
+         if (startData != currentIndex) {
+            current = next;
+            next = startData + 1 < dataLength ? data[startData + 1] : 0L;
+            currentIndex = startData;
+         }
+
+         long valueToInsert;
+         if (startData == endData) {
+            valueToInsert = current >>> startBit & mask;
+         } else {
+            int shiftBits = 64 - startBit;
+            valueToInsert = (current >>> startBit | next << shiftBits) & mask;
+         }
+
+         int outputEnd = outputStart + bits;
+         if (outputEnd >= 64) {
+            result[outputDataIndex++] = outputData;
+            outputData = valueToInsert;
+            outputStart = bits;
+         } else {
+            outputData |= valueToInsert << outputStart;
+            outputStart = outputEnd;
+         }
+      }
+
+      if (outputData != 0L) {
+         result[outputDataIndex] = outputData;
+      }
+
+      return result;
    }
 }

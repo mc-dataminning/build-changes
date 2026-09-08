@@ -28,16 +28,16 @@ public class EndRodBlock extends RodBlock {
    @Override
    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
       Direction direction = state.getValue(FACING);
-      double x = (double)pos.getX() + 0.55 - (double)(random.nextFloat() * 0.1F);
-      double y = (double)pos.getY() + 0.55 - (double)(random.nextFloat() * 0.1F);
-      double z = (double)pos.getZ() + 0.55 - (double)(random.nextFloat() * 0.1F);
-      double r = (double)(0.4F - (random.nextFloat() + random.nextFloat()) * 0.4F);
+      double x = pos.getX() + 0.55 - random.nextFloat() * 0.1F;
+      double y = pos.getY() + 0.55 - random.nextFloat() * 0.1F;
+      double z = pos.getZ() + 0.55 - random.nextFloat() * 0.1F;
+      double r = 0.4F - (random.nextFloat() + random.nextFloat()) * 0.4F;
       if (random.nextInt(5) == 0) {
          level.addParticle(
             ParticleTypes.END_ROD,
-            x + (double)direction.getStepX() * r,
-            y + (double)direction.getStepY() * r,
-            z + (double)direction.getStepZ() * r,
+            x + direction.getStepX() * r,
+            y + direction.getStepY() * r,
+            z + direction.getStepZ() * r,
             random.nextGaussian() * 0.005,
             random.nextGaussian() * 0.005,
             random.nextGaussian() * 0.005

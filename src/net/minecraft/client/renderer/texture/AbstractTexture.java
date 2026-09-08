@@ -9,10 +9,8 @@ import com.mojang.renderpearl.api.textures.GpuTextureView;
 import org.jspecify.annotations.Nullable;
 
 public abstract class AbstractTexture implements AutoCloseable {
-   @Nullable
-   protected GpuTexture texture;
-   @Nullable
-   protected GpuTextureView textureView;
+   protected @Nullable GpuTexture texture;
+   protected @Nullable GpuTextureView textureView;
    protected GpuSampler sampler = RenderSystem.getSamplerCache()
       .getSampler(AddressMode.REPEAT, AddressMode.REPEAT, FilterMode.NEAREST, FilterMode.LINEAR, false);
 

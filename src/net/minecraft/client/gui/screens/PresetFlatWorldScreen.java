@@ -6,7 +6,6 @@ import com.mojang.logging.LogUtils;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -66,8 +65,7 @@ public class PresetFlatWorldScreen extends Screen {
       this.parent = parent;
    }
 
-   @Nullable
-   private static FlatLayerInfo getLayerInfoFromString(final HolderGetter<Block> blocks, final String input, final int firstFree) {
+   private static @Nullable FlatLayerInfo getLayerInfoFromString(final HolderGetter<Block> blocks, final String input, final int firstFree) {
       List<String> parts = Splitter.on('*').limit(2).splitToList(input);
       int height;
       String blockId;
@@ -76,8 +74,8 @@ public class PresetFlatWorldScreen extends Screen {
 
          try {
             height = Math.max(Integer.parseInt(parts.get(0)), 0);
-         } catch (NumberFormatException var11) {
-            LOGGER.error("Error while parsing flat world string", var11);
+         } catch (NumberFormatException e) {
+            LOGGER.error("Error while parsing flat world string", e);
             return null;
          }
       } else {
@@ -91,8 +89,8 @@ public class PresetFlatWorldScreen extends Screen {
       Optional<Holder.Reference<Block>> block;
       try {
          block = blocks.get(ResourceKey.create(Registries.BLOCK, Identifier.parse(blockId)));
-      } catch (Exception var10) {
-         LOGGER.error("Error while parsing flat world string", var10);
+      } catch (Exception e) {
+         LOGGER.error("Error while parsing flat world string", e);
          return null;
       }
 
@@ -136,27 +134,24 @@ public class PresetFlatWorldScreen extends Screen {
       Iterator<String> parts = Splitter.on(';').split(definition).iterator();
       if (!parts.hasNext()) {
          return FlatLevelGeneratorSettings.getDefault(biomes, structureSets, placedFeatures);
-      } else {
-         List<FlatLayerInfo> layers = getLayersInfoFromString(blocks, parts.next());
-         if (layers.isEmpty()) {
-            return FlatLevelGeneratorSettings.getDefault(biomes, structureSets, placedFeatures);
-         } else {
-            Holder.Reference<Biome> defaultBiome = biomes.getOrThrow(DEFAULT_BIOME);
-            Holder<Biome> biome = defaultBiome;
-            if (parts.hasNext()) {
-               String biomeName = parts.next();
-               biome = Optional.ofNullable(Identifier.tryParse(biomeName))
-                  .map(id -> ResourceKey.create(Registries.BIOME, id))
-                  .flatMap(biomes::get)
-                  .orElseGet(() -> {
-                     LOGGER.warn("Invalid biome: {}", biomeName);
-                     return defaultBiome;
-                  });
-            }
-
-            return settings.withBiomeAndLayers(layers, settings.structureOverrides(), biome);
-         }
       }
+
+      List<FlatLayerInfo> layers = getLayersInfoFromString(blocks, parts.next());
+      if (layers.isEmpty()) {
+         return FlatLevelGeneratorSettings.getDefault(biomes, structureSets, placedFeatures);
+      }
+
+      Holder.Reference<Biome> defaultBiome = biomes.getOrThrow(DEFAULT_BIOME);
+      Holder<Biome> biome = defaultBiome;
+      if (parts.hasNext()) {
+         String biomeName = parts.next();
+         biome = Optional.ofNullable(Identifier.tryParse(biomeName)).map(id -> ResourceKey.create(Registries.BIOME, id)).flatMap(biomes::get).orElseGet(() -> {
+            LOGGER.warn("Invalid biome: {}", biomeName);
+            return defaultBiome;
+         });
+      }
+
+      return settings.withBiomeAndLayers(layers, settings.structureOverrides(), biome);
    }
 
    private static String save(final FlatLevelGeneratorSettings settings) {
@@ -237,7 +232,6 @@ public class PresetFlatWorldScreen extends Screen {
 
    private class PresetsList extends ObjectSelectionList<PresetFlatWorldScreen.PresetsList.Entry> {
       public PresetsList(final RegistryAccess access, final FeatureFlagSet enabledFeatures) {
-         Objects.requireNonNull(PresetFlatWorldScreen.this);
          super(PresetFlatWorldScreen.this.minecraft, PresetFlatWorldScreen.this.width, PresetFlatWorldScreen.this.height - 117, 80, 24);
 
          for (Holder<FlatLevelGeneratorPreset> preset : access.lookupOrThrow(Registries.FLAT_LEVEL_GENERATOR_PRESET)
@@ -262,7 +256,7 @@ public class PresetFlatWorldScreen extends Screen {
          }
       }
 
-      public void setSelected(final PresetFlatWorldScreen.PresetsList.Entry selected) {
+      public void setSelected(final PresetFlatWorldScreen.PresetsList.@Nullable Entry selected) {
          super.setSelected(selected);
          PresetFlatWorldScreen.this.updateButtonValidity(selected != null);
       }
@@ -271,13 +265,13 @@ public class PresetFlatWorldScreen extends Screen {
       public boolean keyPressed(final KeyEvent event) {
          if (super.keyPressed(event)) {
             return true;
-         } else {
-            if (event.isSelection() && this.getSelected() != null) {
-               this.getSelected().select();
-            }
-
-            return false;
          }
+
+         if (event.isSelection() && this.getSelected() != null) {
+            this.getSelected().select();
+         }
+
+         return false;
       }
 
       public class Entry extends ObjectSelectionList.Entry<PresetFlatWorldScreen.PresetsList.Entry> {
@@ -285,8 +279,6 @@ public class PresetFlatWorldScreen extends Screen {
          private final Component name;
 
          public Entry(final Holder<FlatLevelGeneratorPreset> preset) {
-            Objects.requireNonNull(PresetsList.this);
-            super();
             this.preset = preset.value();
             this.name = preset.unwrapKey()
                .map(key -> Component.translatable(key.identifier().toLanguageKey("flat_world_preset")))

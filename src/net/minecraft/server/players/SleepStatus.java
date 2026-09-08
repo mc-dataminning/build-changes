@@ -19,7 +19,7 @@ public class SleepStatus {
    }
 
    public int sleepersNeeded(final int sleepPercentageNeeded) {
-      return Math.max(1, Mth.ceil((float)(this.activePlayers * sleepPercentageNeeded) / 100.0F));
+      return Math.max(1, Mth.ceil(this.activePlayers * sleepPercentageNeeded / 100.0F));
    }
 
    public void removeAllSleepers() {

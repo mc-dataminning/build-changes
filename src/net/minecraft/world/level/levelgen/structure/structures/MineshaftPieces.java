@@ -45,8 +45,7 @@ public class MineshaftPieces {
    private static final int MAX_DEPTH = 8;
    public static final int MAGIC_START_Y = 50;
 
-   @Nullable
-   private static MineshaftPieces.MineShaftPiece createRandomShaftPiece(
+   private static MineshaftPieces.@Nullable MineShaftPiece createRandomShaftPiece(
       final StructurePiecesBuilder builder,
       final RandomSource random,
       final int footX,
@@ -77,8 +76,7 @@ public class MineshaftPieces {
       return null;
    }
 
-   @Nullable
-   private static MineshaftPieces.MineShaftPiece generateAndAddPiece(
+   private static MineshaftPieces.@Nullable MineShaftPiece generateAndAddPiece(
       final StructurePiece startPiece,
       final StructurePiecesBuilder builder,
       final RandomSource random,
@@ -90,7 +88,9 @@ public class MineshaftPieces {
    ) {
       if (depth > 8) {
          return null;
-      } else if (Math.abs(footX - startPiece.getBoundingBox().minX()) <= 80 && Math.abs(footZ - startPiece.getBoundingBox().minZ()) <= 80) {
+      }
+
+      if (Math.abs(footX - startPiece.getBoundingBox().minX()) <= 80 && Math.abs(footZ - startPiece.getBoundingBox().minZ()) <= 80) {
          MineshaftStructure.Type type = ((MineshaftPieces.MineShaftPiece)startPiece).type;
          MineshaftPieces.MineShaftPiece newPiece = createRandomShaftPiece(builder, random, footX, footY, footZ, direction, depth + 1, type);
          if (newPiece != null) {
@@ -141,8 +141,7 @@ public class MineshaftPieces {
          }
       }
 
-      @Nullable
-      public static BoundingBox findCorridorSize(
+      public static @Nullable BoundingBox findCorridorSize(
          final StructurePiecesBuilder builder, final RandomSource random, final int footX, final int footY, final int footZ, final Direction direction
       ) {
          for (int corridorLength = random.nextInt(3) + 2; corridorLength > 0; corridorLength--) {
@@ -364,7 +363,7 @@ public class MineshaftPieces {
             this.placeBlock(level, state, x, y, z, chunkBB);
             MinecartChest chest = EntityTypes.CHEST_MINECART.create(level.getLevel(), EntitySpawnReason.CHUNK_GENERATION);
             if (chest != null) {
-               chest.setInitialPos((double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5);
+               chest.setInitialPos(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
                chest.setLootTable(lootTable, random.nextLong());
                level.addFreshEntity(chest);
             }
@@ -432,8 +431,8 @@ public class MineshaftPieces {
             }
 
             for (int x = 0; x <= 2; x++) {
-               for (int zx = 0; zx <= length; zx++) {
-                  this.setPlanksBlock(level, chunkBB, planks, x, -1, zx);
+               for (int z = 0; z <= length; z++) {
+                  this.setPlanksBlock(level, chunkBB, planks, x, -1, z);
                }
             }
 
@@ -447,11 +446,11 @@ public class MineshaftPieces {
             if (this.hasRails) {
                BlockState state = Blocks.RAIL.defaultBlockState().setValue(RailBlock.SHAPE, RailShape.NORTH_SOUTH);
 
-               for (int zx = 0; zx <= length; zx++) {
-                  BlockState floor = this.getBlock(level, 1, -1, zx, chunkBB);
+               for (int z = 0; z <= length; z++) {
+                  BlockState floor = this.getBlock(level, 1, -1, z, chunkBB);
                   if (!floor.isAir() && floor.isSolidRender()) {
-                     float probability = this.isInterior(level, 1, 0, zx, chunkBB) ? 0.7F : 0.9F;
-                     this.maybeGenerateBlock(level, chunkBB, random, probability, 1, 0, zx, state);
+                     float probability = this.isInterior(level, 1, 0, z, chunkBB) ? 0.7F : 0.9F;
+                     this.maybeGenerateBlock(level, chunkBB, random, probability, 1, 0, z, state);
                   }
                }
             }
@@ -551,8 +550,8 @@ public class MineshaftPieces {
          if (this.isSupportingBox(level, chunkBB, x0, x1, y1, z)) {
             BlockState planksBlock = this.type.getPlanksState();
             BlockState fenceBlock = this.type.getFenceState();
-            this.generateBox(level, chunkBB, x0, y0, z, x0, y1 - 1, z, fenceBlock.setValue(FenceBlock.WEST, Boolean.valueOf(true)), CAVE_AIR, false);
-            this.generateBox(level, chunkBB, x1, y0, z, x1, y1 - 1, z, fenceBlock.setValue(FenceBlock.EAST, Boolean.valueOf(true)), CAVE_AIR, false);
+            this.generateBox(level, chunkBB, x0, y0, z, x0, y1 - 1, z, fenceBlock.setValue(FenceBlock.WEST, true), CAVE_AIR, false);
+            this.generateBox(level, chunkBB, x1, y0, z, x1, y1 - 1, z, fenceBlock.setValue(FenceBlock.EAST, true), CAVE_AIR, false);
             if (random.nextInt(4) == 0) {
                this.generateBox(level, chunkBB, x0, y1, z, x0, y1, z, planksBlock, CAVE_AIR, false);
                this.generateBox(level, chunkBB, x1, y1, z, x1, y1, z, planksBlock, CAVE_AIR, false);
@@ -612,14 +611,13 @@ public class MineshaftPieces {
          tag.store("D", Direction.LEGACY_ID_CODEC_2D, this.direction);
       }
 
-      public MineShaftCrossing(final int genDepth, final BoundingBox boundingBox, @Nullable final Direction direction, final MineshaftStructure.Type type) {
+      public MineShaftCrossing(final int genDepth, final BoundingBox boundingBox, final @Nullable Direction direction, final MineshaftStructure.Type type) {
          super(StructurePieceType.MINE_SHAFT_CROSSING, genDepth, type, boundingBox);
          this.direction = direction;
          this.isTwoFloored = boundingBox.getYSpan() > 3;
       }
 
-      @Nullable
-      public static BoundingBox findCrossing(
+      public static @Nullable BoundingBox findCrossing(
          final StructurePiecesBuilder builder, final RandomSource random, final int footX, final int footY, final int footZ, final Direction direction
       ) {
          int y1;
@@ -904,45 +902,45 @@ public class MineshaftPieces {
          BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos((x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2);
          if (level.getBiome(blockPos).is(BiomeTags.MINESHAFT_BLOCKING)) {
             return true;
-         } else {
-            for (int x = x0; x <= x1; x++) {
-               for (int z = z0; z <= z1; z++) {
-                  if (level.getBlockState(blockPos.set(x, y0, z)).liquid()) {
-                     return true;
-                  }
-
-                  if (level.getBlockState(blockPos.set(x, y1, z)).liquid()) {
-                     return true;
-                  }
-               }
-            }
-
-            for (int x = x0; x <= x1; x++) {
-               for (int y = y0; y <= y1; y++) {
-                  if (level.getBlockState(blockPos.set(x, y, z0)).liquid()) {
-                     return true;
-                  }
-
-                  if (level.getBlockState(blockPos.set(x, y, z1)).liquid()) {
-                     return true;
-                  }
-               }
-            }
-
-            for (int z = z0; z <= z1; z++) {
-               for (int y = y0; y <= y1; y++) {
-                  if (level.getBlockState(blockPos.set(x0, y, z)).liquid()) {
-                     return true;
-                  }
-
-                  if (level.getBlockState(blockPos.set(x1, y, z)).liquid()) {
-                     return true;
-                  }
-               }
-            }
-
-            return false;
          }
+
+         for (int x = x0; x <= x1; x++) {
+            for (int z = z0; z <= z1; z++) {
+               if (level.getBlockState(blockPos.set(x, y0, z)).liquid()) {
+                  return true;
+               }
+
+               if (level.getBlockState(blockPos.set(x, y1, z)).liquid()) {
+                  return true;
+               }
+            }
+         }
+
+         for (int x = x0; x <= x1; x++) {
+            for (int y = y0; y <= y1; y++) {
+               if (level.getBlockState(blockPos.set(x, y, z0)).liquid()) {
+                  return true;
+               }
+
+               if (level.getBlockState(blockPos.set(x, y, z1)).liquid()) {
+                  return true;
+               }
+            }
+         }
+
+         for (int z = z0; z <= z1; z++) {
+            for (int y = y0; y <= y1; y++) {
+               if (level.getBlockState(blockPos.set(x0, y, z)).liquid()) {
+                  return true;
+               }
+
+               if (level.getBlockState(blockPos.set(x1, y, z)).liquid()) {
+                  return true;
+               }
+            }
+         }
+
+         return false;
       }
 
       protected void setPlanksBlock(final WorldGenLevel level, final BoundingBox chunkBB, final BlockState planksBlock, final int x, final int y, final int z) {
@@ -1181,8 +1179,7 @@ public class MineshaftPieces {
          super(StructurePieceType.MINE_SHAFT_STAIRS, tag);
       }
 
-      @Nullable
-      public static BoundingBox findStairs(
+      public static @Nullable BoundingBox findStairs(
          final StructurePiecesBuilder builder, final RandomSource random, final int footX, final int footY, final int footZ, final Direction direction
       ) {
          BoundingBox box = switch (direction) {

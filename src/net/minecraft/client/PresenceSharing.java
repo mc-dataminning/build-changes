@@ -15,7 +15,7 @@ public enum PresenceSharing implements StringRepresentable {
    private final Component translatable;
    private final Component tooltip;
 
-   private PresenceSharing(final String name) {
+   PresenceSharing(final String name) {
       this.name = name;
       this.translatable = Component.translatable("options.sharePresence." + name);
       this.tooltip = Component.translatable("options.sharePresence." + name + ".tooltip");

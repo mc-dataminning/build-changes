@@ -29,9 +29,8 @@ public class FurnaceBlock extends AbstractFurnaceBlock {
       return new FurnaceBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return createFurnaceTicker(level, type, BlockEntityTypes.FURNACE);
    }
 
@@ -47,9 +46,9 @@ public class FurnaceBlock extends AbstractFurnaceBlock {
    @Override
    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
       if (state.getValue(LIT)) {
-         double x = (double)pos.getX() + 0.5;
-         double y = (double)pos.getY();
-         double z = (double)pos.getZ() + 0.5;
+         double x = pos.getX() + 0.5;
+         double y = pos.getY();
+         double z = pos.getZ() + 0.5;
          if (random.nextDouble() < 0.1) {
             level.playLocalSound(x, y, z, SoundEvents.FURNACE_FIRE_CRACKLE, SoundSource.BLOCKS, 1.0F, 1.0F, false);
          }
@@ -58,9 +57,9 @@ public class FurnaceBlock extends AbstractFurnaceBlock {
          Direction.Axis axis = direction.getAxis();
          double r = 0.52;
          double ss = random.nextDouble() * 0.6 - 0.3;
-         double dx = axis == Direction.Axis.X ? (double)direction.getStepX() * 0.52 : ss;
+         double dx = axis == Direction.Axis.X ? direction.getStepX() * 0.52 : ss;
          double dy = random.nextDouble() * 6.0 / 16.0;
-         double dz = axis == Direction.Axis.Z ? (double)direction.getStepZ() * 0.52 : ss;
+         double dz = axis == Direction.Axis.Z ? direction.getStepZ() * 0.52 : ss;
          level.addParticle(ParticleTypes.SMOKE, x + dx, y + dy, z + dz, 0.0, 0.0, 0.0);
          level.addParticle(ParticleTypes.FLAME, x + dx, y + dy, z + dz, 0.0, 0.0, 0.0);
       }

@@ -14,14 +14,14 @@ import org.jspecify.annotations.Nullable;
 public record CustomModelDataSource(int index, int defaultColor) implements ItemTintSource {
    public static final MapCodec<CustomModelDataSource> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("index", 0).forGetter(CustomModelDataSource::index),
-               ExtraCodecs.RGB_COLOR_CODEC.fieldOf("default").forGetter(CustomModelDataSource::defaultColor)
-            )
-            .apply(i, CustomModelDataSource::new)
+            ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("index", 0).forGetter(CustomModelDataSource::index),
+            ExtraCodecs.RGB_COLOR_CODEC.fieldOf("default").forGetter(CustomModelDataSource::defaultColor)
+         )
+         .apply(i, CustomModelDataSource::new)
    );
 
    @Override
-   public int calculate(final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final LivingEntity owner) {
+   public int calculate(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner) {
       CustomModelData customModelData = itemStack.get(DataComponents.CUSTOM_MODEL_DATA);
       if (customModelData != null) {
          Integer value = customModelData.getColor(this.index);

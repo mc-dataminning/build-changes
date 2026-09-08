@@ -32,15 +32,15 @@ public class JukeboxBlock extends BaseEntityBlock {
 
    protected JukeboxBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(HAS_RECORD, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(HAS_RECORD, false));
    }
 
    @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, @Nullable final LivingEntity by, final ItemStack itemStack) {
+   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
       super.setPlacedBy(level, pos, state, by, itemStack);
       TypedEntityData<BlockEntityType<?>> blockEntityData = itemStack.get(DataComponents.BLOCK_ENTITY_DATA);
       if (blockEntityData != null && blockEntityData.contains("RecordItem")) {
-         level.setBlock(pos, state.setValue(HAS_RECORD, Boolean.valueOf(true)), 2);
+         level.setBlock(pos, state.setValue(HAS_RECORD, true), 2);
       }
    }
 
@@ -68,11 +68,11 @@ public class JukeboxBlock extends BaseEntityBlock {
    ) {
       if (state.getValue(HAS_RECORD)) {
          return InteractionResult.TRY_WITH_EMPTY_HAND;
-      } else {
-         ItemStack toInsert = player.getItemInHand(hand);
-         InteractionResult result = JukeboxPlayable.tryInsertIntoJukebox(level, pos, toInsert, player);
-         return (InteractionResult)(!result.consumesAction() ? InteractionResult.TRY_WITH_EMPTY_HAND : result);
       }
+
+      ItemStack toInsert = player.getItemInHand(hand);
+      InteractionResult result = JukeboxPlayable.tryInsertIntoJukebox(level, pos, toInsert, player);
+      return !result.consumesAction() ? InteractionResult.TRY_WITH_EMPTY_HAND : result;
    }
 
    @Override
@@ -92,11 +92,7 @@ public class JukeboxBlock extends BaseEntityBlock {
 
    @Override
    protected int ownSignal(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      if (level.getBlockEntity(pos) instanceof JukeboxBlockEntity jukebox && jukebox.getSongPlayer().isPlaying()) {
-         return 15;
-      }
-
-      return 0;
+      return level.getBlockEntity(pos) instanceof JukeboxBlockEntity jukebox && jukebox.getSongPlayer().isPlaying() ? 15 : 0;
    }
 
    @Override
@@ -114,9 +110,8 @@ public class JukeboxBlock extends BaseEntityBlock {
       builder.add(HAS_RECORD);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return blockState.getValue(HAS_RECORD) ? createTickerHelper(type, BlockEntityTypes.JUKEBOX, JukeboxBlockEntity::tick) : null;
    }
 }

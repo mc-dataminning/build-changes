@@ -7,17 +7,15 @@ import net.minecraft.world.level.chunk.DataLayer;
 import org.jspecify.annotations.Nullable;
 
 public interface LayerLightEventListener extends LightEventListener {
-   @Nullable
-   DataLayer getDataLayerData(final SectionPos pos);
+   @Nullable DataLayer getDataLayerData(final SectionPos pos);
 
    int getLightValue(final BlockPos pos);
 
-   public static enum DummyLightLayerEventListener implements LayerLightEventListener {
+   enum DummyLightLayerEventListener implements LayerLightEventListener {
       INSTANCE;
 
-      @Nullable
       @Override
-      public DataLayer getDataLayerData(final SectionPos pos) {
+      public @Nullable DataLayer getDataLayerData(final SectionPos pos) {
          return null;
       }
 

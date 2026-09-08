@@ -16,11 +16,11 @@ import net.minecraft.world.item.ItemStackTemplate;
 public record TransmuteResult(Optional<Holder<Item>> item, int count, DataComponentPatch components) {
    public static final MapCodec<TransmuteResult> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Item.CODEC.optionalFieldOf("id").forGetter(TransmuteResult::item),
-               ExtraCodecs.intRange(1, 99).optionalFieldOf("count", 1).forGetter(TransmuteResult::count),
-               DataComponentPatch.CODEC.optionalFieldOf("components", DataComponentPatch.EMPTY).forGetter(TransmuteResult::components)
-            )
-            .apply(i, TransmuteResult::new)
+            Item.CODEC.optionalFieldOf("id").forGetter(TransmuteResult::item),
+            ExtraCodecs.intRange(1, 99).optionalFieldOf("count", 1).forGetter(TransmuteResult::count),
+            DataComponentPatch.CODEC.optionalFieldOf("components", DataComponentPatch.EMPTY).forGetter(TransmuteResult::components)
+         )
+         .apply(i, TransmuteResult::new)
    );
    public static final Codec<TransmuteResult> CODEC = Codec.withAlternative(MAP_CODEC.codec(), Item.CODEC, TransmuteResult::new);
    public static final StreamCodec<RegistryFriendlyByteBuf, TransmuteResult> STREAM_CODEC = StreamCodec.composite(

@@ -14,14 +14,14 @@ public record TextInput(int width, Component label, boolean labelVisible, String
    implements InputControl {
    public static final MapCodec<TextInput> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Dialog.WIDTH_CODEC.optionalFieldOf("width", 200).forGetter(TextInput::width),
-                  ComponentSerialization.CODEC.fieldOf("label").forGetter(TextInput::label),
-                  Codec.BOOL.optionalFieldOf("label_visible", true).forGetter(TextInput::labelVisible),
-                  Codec.STRING.optionalFieldOf("initial", "").forGetter(TextInput::initial),
-                  ExtraCodecs.POSITIVE_INT.optionalFieldOf("max_length", 32).forGetter(TextInput::maxLength),
-                  TextInput.MultilineOptions.CODEC.optionalFieldOf("multiline").forGetter(TextInput::multiline)
-               )
-               .apply(i, TextInput::new)
+               Dialog.WIDTH_CODEC.optionalFieldOf("width", 200).forGetter(TextInput::width),
+               ComponentSerialization.CODEC.fieldOf("label").forGetter(TextInput::label),
+               Codec.BOOL.optionalFieldOf("label_visible", true).forGetter(TextInput::labelVisible),
+               Codec.STRING.optionalFieldOf("initial", "").forGetter(TextInput::initial),
+               ExtraCodecs.POSITIVE_INT.optionalFieldOf("max_length", 32).forGetter(TextInput::maxLength),
+               TextInput.MultilineOptions.CODEC.optionalFieldOf("multiline").forGetter(TextInput::multiline)
+            )
+            .apply(i, TextInput::new)
       )
       .validate(o -> o.initial.length() > o.maxLength() ? DataResult.error(() -> "Default text length exceeds allowed size") : DataResult.success(o));
 
@@ -30,14 +30,14 @@ public record TextInput(int width, Component label, boolean labelVisible, String
       return MAP_CODEC;
    }
 
-   public static record MultilineOptions(Optional<Integer> maxLines, Optional<Integer> height) {
+   public record MultilineOptions(Optional<Integer> maxLines, Optional<Integer> height) {
       public static final int MAX_HEIGHT = 512;
       public static final Codec<TextInput.MultilineOptions> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  ExtraCodecs.POSITIVE_INT.optionalFieldOf("max_lines").forGetter(TextInput.MultilineOptions::maxLines),
-                  ExtraCodecs.intRange(1, 512).optionalFieldOf("height").forGetter(TextInput.MultilineOptions::height)
-               )
-               .apply(i, TextInput.MultilineOptions::new)
+               ExtraCodecs.POSITIVE_INT.optionalFieldOf("max_lines").forGetter(TextInput.MultilineOptions::maxLines),
+               ExtraCodecs.intRange(1, 512).optionalFieldOf("height").forGetter(TextInput.MultilineOptions::height)
+            )
+            .apply(i, TextInput.MultilineOptions::new)
       );
    }
 }

@@ -1,6 +1,5 @@
 package net.minecraft.world.entity.monster.illager;
 
-import java.util.Objects;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -38,7 +37,7 @@ public abstract class AbstractIllager extends Raider {
       }
    }
 
-   public static enum IllagerArmPose {
+   public enum IllagerArmPose {
       CROSSED,
       ATTACKING,
       SPELLCASTING,
@@ -51,7 +50,6 @@ public abstract class AbstractIllager extends Raider {
 
    protected class RaiderOpenDoorGoal extends OpenDoorGoal {
       public RaiderOpenDoorGoal(final Raider raider) {
-         Objects.requireNonNull(AbstractIllager.this);
          super(raider, false);
       }
 

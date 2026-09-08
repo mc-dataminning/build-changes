@@ -26,14 +26,14 @@ public class GameEventListenerRenderer implements DebugRenderer.SimpleDebugRende
       final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
    ) {
       this.forEachListener(debugValues, (origin, radius) -> {
-         double size = (double)radius * 2.0;
+         double size = radius * 2.0;
          Gizmos.cuboid(AABB.ofSize(origin, size, size, size), GizmoStyle.fill(ARGB.colorFromFloat(0.35F, 1.0F, 1.0F, 0.0F)));
       });
       this.forEachListener(
          debugValues,
          (origin, radius) -> Gizmos.cuboid(
-               AABB.ofSize(origin, 0.5, 1.0, 0.5).move(0.0, 0.5, 0.0), GizmoStyle.fill(ARGB.colorFromFloat(0.35F, 1.0F, 1.0F, 0.0F))
-            )
+            AABB.ofSize(origin, 0.5, 1.0, 0.5).move(0.0, 0.5, 0.0), GizmoStyle.fill(ARGB.colorFromFloat(0.35F, 1.0F, 1.0F, 0.0F))
+         )
       );
       this.forEachListener(debugValues, (origin, radius) -> {
          Gizmos.billboardText("Listener Origin", origin.add(0.0, 1.8, 0.0), TextGizmo.Style.whiteAndCentered().withScale(0.4F));

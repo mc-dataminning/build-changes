@@ -16,14 +16,13 @@ import org.jspecify.annotations.Nullable;
 public class CodeOfConductScreen extends WarningScreen {
    private static final Component TITLE = Component.translatable("multiplayer.codeOfConduct.title").withStyle(ChatFormatting.BOLD);
    private static final Component CHECK = Component.translatable("multiplayer.codeOfConduct.check");
-   @Nullable
-   private final ServerData serverData;
+   private final @Nullable ServerData serverData;
    private final String codeOfConductText;
    private final BooleanConsumer resultConsumer;
    private final Screen parent;
 
    private CodeOfConductScreen(
-      @Nullable final ServerData serverData,
+      final @Nullable ServerData serverData,
       final Screen parent,
       final Component contents,
       final String codeOfConductText,
@@ -36,7 +35,7 @@ public class CodeOfConductScreen extends WarningScreen {
       this.resultConsumer = resultConsumer;
    }
 
-   public CodeOfConductScreen(@Nullable final ServerData serverData, final Screen parent, final String codeOfConductText, final BooleanConsumer resultConsumer) {
+   public CodeOfConductScreen(final @Nullable ServerData serverData, final Screen parent, final String codeOfConductText, final BooleanConsumer resultConsumer) {
       this(serverData, parent, Component.literal(codeOfConductText), codeOfConductText, resultConsumer);
    }
 

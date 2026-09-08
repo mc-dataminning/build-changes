@@ -25,12 +25,12 @@ public record PotDecorations(
    public static final PotDecorations EMPTY = new PotDecorations(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
    public static final Codec<PotDecorations> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ItemStackTemplate.CODEC.optionalFieldOf("back").forGetter(PotDecorations::back),
-               ItemStackTemplate.CODEC.optionalFieldOf("left").forGetter(PotDecorations::left),
-               ItemStackTemplate.CODEC.optionalFieldOf("right").forGetter(PotDecorations::right),
-               ItemStackTemplate.CODEC.optionalFieldOf("front").forGetter(PotDecorations::front)
-            )
-            .apply(i, PotDecorations::new)
+            ItemStackTemplate.CODEC.optionalFieldOf("back").forGetter(PotDecorations::back),
+            ItemStackTemplate.CODEC.optionalFieldOf("left").forGetter(PotDecorations::left),
+            ItemStackTemplate.CODEC.optionalFieldOf("right").forGetter(PotDecorations::right),
+            ItemStackTemplate.CODEC.optionalFieldOf("front").forGetter(PotDecorations::front)
+         )
+         .apply(i, PotDecorations::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, PotDecorations> STREAM_CODEC = StreamCodec.composite(
       ItemStackTemplate.STREAM_CODEC.apply(ByteBufCodecs::optional),

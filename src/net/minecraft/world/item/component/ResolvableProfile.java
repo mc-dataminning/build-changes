@@ -27,10 +27,10 @@ import net.minecraft.world.item.TooltipFlag;
 public abstract sealed class ResolvableProfile implements TooltipProvider permits ResolvableProfile.Static, ResolvableProfile.Dynamic {
    private static final Codec<ResolvableProfile> FULL_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.mapEither(ExtraCodecs.STORED_GAME_PROFILE, ResolvableProfile.Partial.MAP_CODEC).forGetter(ResolvableProfile::unpack),
-               PlayerSkin.Patch.MAP_CODEC.forGetter(ResolvableProfile::skinPatch)
-            )
-            .apply(i, ResolvableProfile::create)
+            Codec.mapEither(ExtraCodecs.STORED_GAME_PROFILE, ResolvableProfile.Partial.MAP_CODEC).forGetter(ResolvableProfile::unpack),
+            PlayerSkin.Patch.MAP_CODEC.forGetter(ResolvableProfile::skinPatch)
+         )
+         .apply(i, ResolvableProfile::create)
    );
    public static final Codec<ResolvableProfile> CODEC = Codec.withAlternative(FULL_CODEC, ExtraCodecs.PLAYER_NAME, ResolvableProfile::createUnresolved);
    public static final StreamCodec<ByteBuf, ResolvableProfile> STREAM_CODEC = StreamCodec.composite(
@@ -46,11 +46,11 @@ public abstract sealed class ResolvableProfile implements TooltipProvider permit
    private static ResolvableProfile create(final Either<GameProfile, ResolvableProfile.Partial> value, final PlayerSkin.Patch patch) {
       return (ResolvableProfile)value.map(
          full -> new ResolvableProfile.Static(Either.left(full), patch),
-         partial -> (ResolvableProfile)(partial.properties.isEmpty() && partial.id.isPresent() != partial.name.isPresent()
-               ? partial.name
-                  .<ResolvableProfile>map(s -> new ResolvableProfile.Dynamic(Either.left(s), patch))
-                  .orElseGet(() -> new ResolvableProfile.Dynamic(Either.right(partial.id.get()), patch))
-               : new ResolvableProfile.Static(Either.right(partial), patch))
+         partial -> partial.properties.isEmpty() && partial.id.isPresent() != partial.name.isPresent()
+            ? partial.name
+               .<ResolvableProfile>map(s -> new ResolvableProfile.Dynamic(Either.left(s), patch))
+               .orElseGet(() -> new ResolvableProfile.Dynamic(Either.right(partial.id.get()), patch))
+            : new ResolvableProfile.Static(Either.right(partial), patch)
       );
    }
 
@@ -107,15 +107,7 @@ public abstract sealed class ResolvableProfile implements TooltipProvider permit
 
       @Override
       public boolean equals(final Object o) {
-         if (this == o) {
-            return true;
-         } else {
-            if (o instanceof ResolvableProfile.Dynamic that && this.nameOrId.equals(that.nameOrId) && this.skinPatch.equals(that.skinPatch)) {
-               return true;
-            }
-
-            return false;
-         }
+         return this == o || o instanceof ResolvableProfile.Dynamic that && this.nameOrId.equals(that.nameOrId) && this.skinPatch.equals(that.skinPatch);
       }
 
       @Override
@@ -142,15 +134,15 @@ public abstract sealed class ResolvableProfile implements TooltipProvider permit
       }
    }
 
-   protected static record Partial(Optional<String> name, Optional<UUID> id, PropertyMap properties) {
+   protected record Partial(Optional<String> name, Optional<UUID> id, PropertyMap properties) {
       public static final ResolvableProfile.Partial EMPTY = new ResolvableProfile.Partial(Optional.empty(), Optional.empty(), PropertyMap.EMPTY);
       private static final MapCodec<ResolvableProfile.Partial> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  ExtraCodecs.PLAYER_NAME.optionalFieldOf("name").forGetter(ResolvableProfile.Partial::name),
-                  UUIDUtil.CODEC.optionalFieldOf("id").forGetter(ResolvableProfile.Partial::id),
-                  ExtraCodecs.PROPERTY_MAP.optionalFieldOf("properties", PropertyMap.EMPTY).forGetter(ResolvableProfile.Partial::properties)
-               )
-               .apply(i, ResolvableProfile.Partial::new)
+               ExtraCodecs.PLAYER_NAME.optionalFieldOf("name").forGetter(ResolvableProfile.Partial::name),
+               UUIDUtil.CODEC.optionalFieldOf("id").forGetter(ResolvableProfile.Partial::id),
+               ExtraCodecs.PROPERTY_MAP.optionalFieldOf("properties", PropertyMap.EMPTY).forGetter(ResolvableProfile.Partial::properties)
+            )
+            .apply(i, ResolvableProfile.Partial::new)
       );
       public static final StreamCodec<ByteBuf, ResolvableProfile.Partial> STREAM_CODEC = StreamCodec.composite(
          ByteBufCodecs.PLAYER_NAME.apply(ByteBufCodecs::optional),
@@ -193,15 +185,7 @@ public abstract sealed class ResolvableProfile implements TooltipProvider permit
 
       @Override
       public boolean equals(final Object o) {
-         if (this == o) {
-            return true;
-         } else {
-            if (o instanceof ResolvableProfile.Static that && this.contents.equals(that.contents) && this.skinPatch.equals(that.skinPatch)) {
-               return true;
-            }
-
-            return false;
-         }
+         return this == o || o instanceof ResolvableProfile.Static that && this.contents.equals(that.contents) && this.skinPatch.equals(that.skinPatch);
       }
 
       @Override

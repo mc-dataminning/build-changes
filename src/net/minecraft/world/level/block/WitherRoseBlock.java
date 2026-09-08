@@ -40,19 +40,13 @@ public class WitherRoseBlock extends FlowerBlock {
    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
       VoxelShape shape = this.getShape(state, level, pos, CollisionContext.empty());
       Vec3 shapeCenter = shape.bounds().getCenter();
-      double x = (double)pos.getX() + shapeCenter.x;
-      double z = (double)pos.getZ() + shapeCenter.z;
+      double x = pos.getX() + shapeCenter.x;
+      double z = pos.getZ() + shapeCenter.z;
 
       for (int i = 0; i < 3; i++) {
          if (random.nextBoolean()) {
             level.addParticle(
-               ParticleTypes.SMOKE,
-               x + random.nextDouble() / 5.0,
-               (double)pos.getY() + (0.5 - random.nextDouble()),
-               z + random.nextDouble() / 5.0,
-               0.0,
-               0.0,
-               0.0
+               ParticleTypes.SMOKE, x + random.nextDouble() / 5.0, pos.getY() + (0.5 - random.nextDouble()), z + random.nextDouble() / 5.0, 0.0, 0.0, 0.0
             );
          }
       }

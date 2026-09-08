@@ -226,7 +226,7 @@ public record BlockSetType(
       return TYPES.values().stream();
    }
 
-   public static enum PressurePlateSensitivity {
+   public enum PressurePlateSensitivity {
       EVERYTHING,
       MOBS;
    }

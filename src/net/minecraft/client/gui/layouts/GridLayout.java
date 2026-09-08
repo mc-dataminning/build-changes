@@ -3,7 +3,6 @@ package net.minecraft.client.gui.layouts;
 import com.mojang.math.Divisor;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Consumer;
 import net.minecraft.util.Mth;
 import net.minecraft.util.Util;
@@ -110,12 +109,14 @@ public class GridLayout extends AbstractLayout {
    ) {
       if (rows < 1) {
          throw new IllegalArgumentException("Occupied rows must be at least 1");
-      } else if (columns < 1) {
-         throw new IllegalArgumentException("Occupied columns must be at least 1");
-      } else {
-         this.children.add(new GridLayout.ChildContainer(child, row, column, rows, columns, cellSettings));
-         return child;
       }
+
+      if (columns < 1) {
+         throw new IllegalArgumentException("Occupied columns must be at least 1");
+      }
+
+      this.children.add(new GridLayout.ChildContainer(child, row, column, rows, columns, cellSettings));
+      return child;
    }
 
    public <T extends LayoutElement> T addChild(
@@ -190,8 +191,6 @@ public class GridLayout extends AbstractLayout {
       private int index;
 
       private RowHelper(final int columns) {
-         Objects.requireNonNull(GridLayout.this);
-         super();
          this.columns = columns;
       }
 

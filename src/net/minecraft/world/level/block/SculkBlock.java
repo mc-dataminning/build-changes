@@ -31,7 +31,7 @@ public class SculkBlock extends DropExperienceBlock implements SculkBehaviour {
       int charge = cursor.getCharge();
       if (charge != 0 && random.nextInt(spreader.chargeDecayRate()) == 0) {
          BlockPos chargePos = cursor.getPos();
-         boolean isCloseToCatalyst = chargePos.closerThan(originPos, (double)spreader.noGrowthRadius());
+         boolean isCloseToCatalyst = chargePos.closerThan(originPos, spreader.noGrowthRadius());
          if (!isCloseToCatalyst && canPlaceGrowth(level, chargePos)) {
             int xpPerGrowthSpawn = spreader.growthSpawnCost();
             if (random.nextInt(xpPerGrowthSpawn) < charge) {
@@ -54,22 +54,22 @@ public class SculkBlock extends DropExperienceBlock implements SculkBehaviour {
 
    private static int getDecayPenalty(final SculkSpreader spreader, final BlockPos pos, final BlockPos originPos, final int charge) {
       int noGrowthRadius = spreader.noGrowthRadius();
-      float outerDistanceSquared = Mth.square((float)Math.sqrt(pos.distSqr(originPos)) - (float)noGrowthRadius);
+      float outerDistanceSquared = Mth.square((float)Math.sqrt(pos.distSqr(originPos)) - noGrowthRadius);
       int maxReachSquared = Mth.square(24 - noGrowthRadius);
-      float distanceFactor = Math.min(1.0F, outerDistanceSquared / (float)maxReachSquared);
-      return Math.max(1, (int)((float)charge * distanceFactor * 0.5F));
+      float distanceFactor = Math.min(1.0F, outerDistanceSquared / maxReachSquared);
+      return Math.max(1, (int)(charge * distanceFactor * 0.5F));
    }
 
    private BlockState getRandomGrowthState(final LevelAccessor level, final BlockPos pos, final RandomSource random, final boolean isWorldGen) {
       BlockState state;
       if (random.nextInt(11) == 0) {
-         state = Blocks.SCULK_SHRIEKER.defaultBlockState().setValue(SculkShriekerBlock.CAN_SUMMON, Boolean.valueOf(isWorldGen));
+         state = Blocks.SCULK_SHRIEKER.defaultBlockState().setValue(SculkShriekerBlock.CAN_SUMMON, isWorldGen);
       } else {
          state = Blocks.SCULK_SENSOR.defaultBlockState();
       }
 
       return state.hasProperty(BlockStateProperties.WATERLOGGED) && !level.getFluidState(pos).isEmpty()
-         ? state.setValue(BlockStateProperties.WATERLOGGED, Boolean.valueOf(true))
+         ? state.setValue(BlockStateProperties.WATERLOGGED, true)
          : state;
    }
 

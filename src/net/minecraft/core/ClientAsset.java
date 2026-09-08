@@ -9,14 +9,14 @@ import net.minecraft.resources.Identifier;
 public interface ClientAsset {
    Identifier id();
 
-   public static record DownloadedTexture(Identifier texturePath, String url) implements ClientAsset.Texture {
+   record DownloadedTexture(Identifier texturePath, String url) implements ClientAsset.Texture {
       @Override
       public Identifier id() {
          return this.texturePath;
       }
    }
 
-   public static record ResourceTexture(Identifier id, Identifier texturePath) implements ClientAsset.Texture {
+   record ResourceTexture(Identifier id, Identifier texturePath) implements ClientAsset.Texture {
       public static final Codec<ClientAsset.ResourceTexture> CODEC = Identifier.CODEC.xmap(ClientAsset.ResourceTexture::new, ClientAsset.ResourceTexture::id);
       public static final MapCodec<ClientAsset.ResourceTexture> DEFAULT_FIELD_CODEC = CODEC.fieldOf("asset_id");
       public static final StreamCodec<ByteBuf, ClientAsset.ResourceTexture> STREAM_CODEC = Identifier.STREAM_CODEC
@@ -27,7 +27,7 @@ public interface ClientAsset {
       }
    }
 
-   public interface Texture extends ClientAsset {
+   interface Texture extends ClientAsset {
       Identifier texturePath();
    }
 }

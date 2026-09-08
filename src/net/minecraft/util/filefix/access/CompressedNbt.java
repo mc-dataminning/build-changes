@@ -30,7 +30,7 @@ public abstract class CompressedNbt implements AutoCloseable {
    protected final Optional<Dynamic<Tag>> readFile() throws IOException {
       try {
          return Optional.of(new Dynamic(NbtOps.INSTANCE, NbtIo.readCompressed(this.path, NbtAccounter.unlimitedHeap())));
-      } catch (NoSuchFileException var2) {
+      } catch (NoSuchFileException ignored) {
          this.missingSeverity.log("Missing file: {}", this.path);
          return Optional.empty();
       }
@@ -44,8 +44,8 @@ public abstract class CompressedNbt implements AutoCloseable {
       try {
          FileUtil.createDirectoriesSafe(this.path.getParent());
          NbtIo.writeCompressed(cast, this.path);
-      } catch (IOException var4) {
-         LOGGER.error("Failed to write to {}", this.path, var4);
+      } catch (IOException e) {
+         LOGGER.error("Failed to write to {}", this.path, e);
       }
    }
 
@@ -57,14 +57,14 @@ public abstract class CompressedNbt implements AutoCloseable {
    public void close() {
    }
 
-   public static enum MissingSeverity {
+   public enum MissingSeverity {
       IMPORTANT(CompressedNbt.LOGGER::error),
       NEUTRAL(CompressedNbt.LOGGER::info),
       MINOR(CompressedNbt.LOGGER::debug);
 
       private final BiConsumer<String, Object> logFunction;
 
-      private MissingSeverity(final BiConsumer<String, Object> logFunction) {
+      MissingSeverity(final BiConsumer<String, Object> logFunction) {
          this.logFunction = logFunction;
       }
 

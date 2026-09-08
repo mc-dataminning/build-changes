@@ -29,7 +29,7 @@ public class TargetBlock extends Block {
 
    public TargetBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(OUTPUT_POWER, Integer.valueOf(0)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(OUTPUT_POWER, 0));
    }
 
    @Override
@@ -70,14 +70,14 @@ public class TargetBlock extends Block {
    }
 
    private static void setOutputPower(final LevelAccessor level, final BlockState state, final int outputStrength, final BlockPos pos, final int duration) {
-      level.setBlockAndUpdate(pos, state.setValue(OUTPUT_POWER, Integer.valueOf(outputStrength)));
+      level.setBlockAndUpdate(pos, state.setValue(OUTPUT_POWER, outputStrength));
       level.scheduleTick(pos, state.getBlock(), duration);
    }
 
    @Override
    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
       if (state.getValue(OUTPUT_POWER) != 0) {
-         level.setBlockAndUpdate(pos, state.setValue(OUTPUT_POWER, Integer.valueOf(0)));
+         level.setBlockAndUpdate(pos, state.setValue(OUTPUT_POWER, 0));
       }
    }
 
@@ -100,7 +100,7 @@ public class TargetBlock extends Block {
    protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
       if (!level.isClientSide() && !state.is(oldState.getBlock())) {
          if (state.getValue(OUTPUT_POWER) > 0 && !level.getBlockTicks().hasScheduledTick(pos, this)) {
-            level.setBlock(pos, state.setValue(OUTPUT_POWER, Integer.valueOf(0)), 18);
+            level.setBlock(pos, state.setValue(OUTPUT_POWER, 0), 18);
          }
       }
    }

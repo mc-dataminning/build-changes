@@ -5,7 +5,6 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Map.Entry;
 import java.util.function.Predicate;
 import net.minecraft.util.StringRepresentable;
@@ -24,16 +23,14 @@ public interface Condition {
             .comapFlatMap(map -> {
                if (map.size() != 1) {
                   return DataResult.error(() -> "Invalid map size for combiner condition, expected exactly one element");
-               } else {
-                  Entry<CombinedCondition.Operation, List<Condition>> entry = (Entry<CombinedCondition.Operation, List<Condition>>)map.entrySet()
-                     .iterator()
-                     .next();
-                  return DataResult.success(new CombinedCondition(entry.getKey(), entry.getValue()));
                }
+
+               Entry<CombinedCondition.Operation, List<Condition>> entry = (Entry<CombinedCondition.Operation, List<Condition>>)map.entrySet()
+                  .iterator()
+                  .next();
+               return DataResult.success(new CombinedCondition(entry.getKey(), entry.getValue()));
             }, condition -> Map.of(condition.operation(), condition.terms()));
          return Codec.either(combinerCodec, KeyValueCondition.CODEC).flatComapMap(either -> (Condition)either.map(l -> l, r -> r), condition -> {
-            Objects.requireNonNull(condition);
-
             return switch (condition) {
                case CombinedCondition combiner -> DataResult.success(Either.left(combiner));
                case KeyValueCondition keyValue -> DataResult.success(Either.right(keyValue));

@@ -22,8 +22,7 @@ public class BannerBlockEntity extends BlockEntity implements Nameable {
    public static final int MAX_PATTERNS = 6;
    private static final String TAG_PATTERNS = "patterns";
    private static final Component DEFAULT_NAME = Component.translatable("block.minecraft.banner");
-   @Nullable
-   private Component name;
+   private @Nullable Component name;
    private final DyeColor baseColor;
    private BannerPatternLayers patterns = BannerPatternLayers.EMPTY;
 
@@ -41,9 +40,8 @@ public class BannerBlockEntity extends BlockEntity implements Nameable {
       return this.name != null ? this.name : DEFAULT_NAME;
    }
 
-   @Nullable
    @Override
-   public Component getCustomName() {
+   public @Nullable Component getCustomName() {
       return this.name;
    }
 

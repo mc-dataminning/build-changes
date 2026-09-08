@@ -36,7 +36,7 @@ public class CandleCakeBlock extends AbstractCandleBlock {
 
    protected CandleCakeBlock(final Block block, final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(LIT, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(LIT, false));
       if (block instanceof CandleBlock matchingCandleBlock) {
          BY_CANDLE.put(matchingCandleBlock, this);
          this.candleBlock = matchingCandleBlock;
@@ -88,7 +88,7 @@ public class CandleCakeBlock extends AbstractCandleBlock {
    }
 
    private static boolean candleHit(final BlockHitResult hitResult) {
-      return hitResult.getLocation().y - (double)hitResult.getBlockPos().getY() > 0.5;
+      return hitResult.getLocation().y - hitResult.getBlockPos().getY() > 0.5;
    }
 
    @Override

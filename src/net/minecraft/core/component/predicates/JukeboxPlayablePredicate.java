@@ -17,7 +17,7 @@ import net.minecraft.world.item.JukeboxSong;
 public record JukeboxPlayablePredicate(Optional<HolderSet<JukeboxSong>> song) implements SingleComponentItemPredicate<JukeboxPlayable> {
    public static final Codec<JukeboxPlayablePredicate> CODEC = RecordCodecBuilder.create(
       i -> i.group(RegistryCodecs.holderSet(Registries.JUKEBOX_SONG).optionalFieldOf("song").forGetter(JukeboxPlayablePredicate::song))
-            .apply(i, JukeboxPlayablePredicate::new)
+         .apply(i, JukeboxPlayablePredicate::new)
    );
 
    @Override
@@ -28,19 +28,19 @@ public record JukeboxPlayablePredicate(Optional<HolderSet<JukeboxSong>> song) im
    public boolean matches(final JukeboxPlayable value) {
       if (!this.song.isPresent()) {
          return true;
-      } else {
-         boolean songIsPresent = false;
-
-         for (Holder<JukeboxSong> maybeSong : this.song.get()) {
-            Optional<ResourceKey<JukeboxSong>> songId = maybeSong.unwrapKey();
-            if (!songId.isEmpty() && songId.equals(value.song().unwrapKey())) {
-               songIsPresent = true;
-               break;
-            }
-         }
-
-         return songIsPresent;
       }
+
+      boolean songIsPresent = false;
+
+      for (Holder<JukeboxSong> maybeSong : this.song.get()) {
+         Optional<ResourceKey<JukeboxSong>> songId = maybeSong.unwrapKey();
+         if (!songId.isEmpty() && songId.equals(value.song().unwrapKey())) {
+            songIsPresent = true;
+            break;
+         }
+      }
+
+      return songIsPresent;
    }
 
    public static JukeboxPlayablePredicate any() {

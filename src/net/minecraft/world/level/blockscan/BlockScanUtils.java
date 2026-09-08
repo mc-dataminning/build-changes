@@ -77,8 +77,8 @@ public class BlockScanUtils {
          }
 
          if (aboveWorld) {
-            for (BlockPos posx : BlockPos.betweenClosed(minX, level.getMaxY() + 1, minZ, maxX, maxY, maxZ)) {
-               if (consumer.apply(posx, Blocks.AIR.defaultBlockState()).shouldAbort()) {
+            for (BlockPos pos : BlockPos.betweenClosed(minX, level.getMaxY() + 1, minZ, maxX, maxY, maxZ)) {
+               if (consumer.apply(pos, Blocks.AIR.defaultBlockState()).shouldAbort()) {
                   return true;
                }
             }

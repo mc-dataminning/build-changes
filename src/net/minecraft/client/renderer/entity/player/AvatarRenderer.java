@@ -70,7 +70,7 @@ public class AvatarRenderer<AvatarlikeEntity extends Avatar & ClientAvatarEntity
 
    public Vec3 getRenderOffset(final AvatarRenderState state) {
       Vec3 offset = super.getRenderOffset(state);
-      return state.isCrouching ? offset.add(0.0, (double)(state.scale * -2.0F) / 16.0, 0.0) : offset;
+      return state.isCrouching ? offset.add(0.0, state.scale * -2.0F / 16.0, 0.0) : offset;
    }
 
    private static HumanoidModel.ArmPose getArmPose(final Avatar avatar, final HumanoidArm arm) {
@@ -88,48 +88,48 @@ public class AvatarRenderer<AvatarlikeEntity extends Avatar & ClientAvatarEntity
    private static HumanoidModel.ArmPose getArmPose(final Avatar avatar, final ItemStack itemInHand, final InteractionHand hand) {
       if (itemInHand.isEmpty()) {
          return HumanoidModel.ArmPose.EMPTY;
-      } else if (!avatar.isSwinging() && itemInHand.is(Items.CROSSBOW) && CrossbowItem.isCharged(itemInHand)) {
+      }
+
+      if (!avatar.isSwinging() && itemInHand.is(Items.CROSSBOW) && CrossbowItem.isCharged(itemInHand)) {
          return HumanoidModel.ArmPose.CROSSBOW_HOLD;
-      } else {
-         if (avatar.getUsedItemHand() == hand && avatar.getUseItemRemainingTicks() > 0) {
-            ItemUseAnimation anim = itemInHand.getUseAnimation();
-            if (anim == ItemUseAnimation.BLOCK) {
-               return HumanoidModel.ArmPose.BLOCK;
-            }
+      }
 
-            if (anim == ItemUseAnimation.BOW) {
-               return HumanoidModel.ArmPose.BOW_AND_ARROW;
-            }
-
-            if (anim == ItemUseAnimation.TRIDENT) {
-               return HumanoidModel.ArmPose.THROW_TRIDENT;
-            }
-
-            if (anim == ItemUseAnimation.CROSSBOW) {
-               return HumanoidModel.ArmPose.CROSSBOW_CHARGE;
-            }
-
-            if (anim == ItemUseAnimation.SPYGLASS) {
-               return HumanoidModel.ArmPose.SPYGLASS;
-            }
-
-            if (anim == ItemUseAnimation.TOOT_HORN) {
-               return HumanoidModel.ArmPose.TOOT_HORN;
-            }
-
-            if (anim == ItemUseAnimation.BRUSH) {
-               return HumanoidModel.ArmPose.BRUSH;
-            }
-
-            if (anim == ItemUseAnimation.SPEAR) {
-               return HumanoidModel.ArmPose.SPEAR;
-            }
+      if (avatar.getUsedItemHand() == hand && avatar.getUseItemRemainingTicks() > 0) {
+         ItemUseAnimation anim = itemInHand.getUseAnimation();
+         if (anim == ItemUseAnimation.BLOCK) {
+            return HumanoidModel.ArmPose.BLOCK;
          }
 
-         return HumanoidMobRenderer.usesSpearPose(itemInHand, hand.asArm(avatar.getMainArm()), avatar)
-            ? HumanoidModel.ArmPose.SPEAR
-            : HumanoidModel.ArmPose.ITEM;
+         if (anim == ItemUseAnimation.BOW) {
+            return HumanoidModel.ArmPose.BOW_AND_ARROW;
+         }
+
+         if (anim == ItemUseAnimation.TRIDENT) {
+            return HumanoidModel.ArmPose.THROW_TRIDENT;
+         }
+
+         if (anim == ItemUseAnimation.CROSSBOW) {
+            return HumanoidModel.ArmPose.CROSSBOW_CHARGE;
+         }
+
+         if (anim == ItemUseAnimation.SPYGLASS) {
+            return HumanoidModel.ArmPose.SPYGLASS;
+         }
+
+         if (anim == ItemUseAnimation.TOOT_HORN) {
+            return HumanoidModel.ArmPose.TOOT_HORN;
+         }
+
+         if (anim == ItemUseAnimation.BRUSH) {
+            return HumanoidModel.ArmPose.BRUSH;
+         }
+
+         if (anim == ItemUseAnimation.SPEAR) {
+            return HumanoidModel.ArmPose.SPEAR;
+         }
       }
+
+      return HumanoidMobRenderer.usesSpearPose(itemInHand, hand.asArm(avatar.getMainArm()), avatar) ? HumanoidModel.ArmPose.SPEAR : HumanoidModel.ArmPose.ITEM;
    }
 
    public Identifier getTextureLocation(final AvatarRenderState state) {
@@ -191,9 +191,9 @@ public class AvatarRenderer<AvatarlikeEntity extends Avatar & ClientAvatarEntity
    }
 
    private void extractFlightData(final AvatarlikeEntity entity, final AvatarRenderState state, final float partialTicks) {
-      state.fallFlyingTimeInTicks = (float)entity.getFallFlyingTicks() + partialTicks;
+      state.fallFlyingTimeInTicks = entity.getFallFlyingTicks() + partialTicks;
       Vec3 lookAngle = entity.getViewVector(partialTicks);
-      Vec3 movement = entity.avatarState().deltaMovementOnPreviousTick().lerp(entity.getDeltaMovement(), (double)partialTicks);
+      Vec3 movement = entity.avatarState().deltaMovementOnPreviousTick().lerp(entity.getDeltaMovement(), partialTicks);
       if (movement.horizontalDistanceSqr() > 1.0E-5F && lookAngle.horizontalDistanceSqr() > 1.0E-5F) {
          state.shouldApplyFlyingYRot = true;
          double dot = movement.horizontal().normalize().dot(lookAngle.horizontal().normalize());
@@ -207,12 +207,12 @@ public class AvatarRenderer<AvatarlikeEntity extends Avatar & ClientAvatarEntity
 
    private void extractCapeState(final AvatarlikeEntity entity, final AvatarRenderState state, final float partialTicks) {
       ClientAvatarState clientState = entity.avatarState();
-      double deltaX = clientState.getInterpolatedCloakX(partialTicks) - Mth.lerp((double)partialTicks, entity.xo, entity.getX());
-      double deltaY = clientState.getInterpolatedCloakY(partialTicks) - Mth.lerp((double)partialTicks, entity.yo, entity.getY());
-      double deltaZ = clientState.getInterpolatedCloakZ(partialTicks) - Mth.lerp((double)partialTicks, entity.zo, entity.getZ());
+      double deltaX = clientState.getInterpolatedCloakX(partialTicks) - Mth.lerp(partialTicks, entity.xo, entity.getX());
+      double deltaY = clientState.getInterpolatedCloakY(partialTicks) - Mth.lerp(partialTicks, entity.yo, entity.getY());
+      double deltaZ = clientState.getInterpolatedCloakZ(partialTicks) - Mth.lerp(partialTicks, entity.zo, entity.getZ());
       float yBodyRot = Mth.rotLerp(partialTicks, entity.yBodyRotO, entity.yBodyRot);
-      double forwardX = (double)Mth.sin((double)(yBodyRot * (float) (Math.PI / 180.0)));
-      double forwardZ = (double)(-Mth.cos((double)(yBodyRot * (float) (Math.PI / 180.0))));
+      double forwardX = Mth.sin(yBodyRot * (float) (Math.PI / 180.0));
+      double forwardZ = -Mth.cos(yBodyRot * (float) (Math.PI / 180.0));
       state.capeFlap = (float)deltaY * 10.0F;
       state.capeFlap = Mth.clamp(state.capeFlap, -6.0F, 32.0F);
       state.capeLean = (float)(deltaX * forwardX + deltaZ * forwardZ) * 100.0F;
@@ -222,7 +222,7 @@ public class AvatarRenderer<AvatarlikeEntity extends Avatar & ClientAvatarEntity
       state.capeLean2 = Mth.clamp(state.capeLean2, -20.0F, 20.0F);
       float pow = clientState.getInterpolatedBob(partialTicks);
       float walkDistance = clientState.getInterpolatedWalkDistance(partialTicks);
-      state.capeFlap = state.capeFlap + Mth.sin((double)(walkDistance * 6.0F)) * 32.0F * pow;
+      state.capeFlap = state.capeFlap + Mth.sin(walkDistance * 6.0F) * 32.0F * pow;
    }
 
    public void renderRightHand(

@@ -37,10 +37,10 @@ public class HexColorArgument implements ArgumentType<Integer> {
 
       return switch (colorString.length()) {
          case 3 -> ARGB.color(
-         duplicateDigit(Integer.parseInt(colorString, 0, 1, 16)),
-         duplicateDigit(Integer.parseInt(colorString, 1, 2, 16)),
-         duplicateDigit(Integer.parseInt(colorString, 2, 3, 16))
-      );
+            duplicateDigit(Integer.parseInt(colorString, 0, 1, 16)),
+            duplicateDigit(Integer.parseInt(colorString, 1, 2, 16)),
+            duplicateDigit(Integer.parseInt(colorString, 2, 3, 16))
+         );
          case 6 -> ARGB.color(Integer.parseInt(colorString, 0, 2, 16), Integer.parseInt(colorString, 2, 4, 16), Integer.parseInt(colorString, 4, 6, 16));
          default -> throw ERROR_INVALID_HEX.createWithContext(reader, colorString);
       };

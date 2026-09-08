@@ -33,9 +33,9 @@ public class FireflyBushBlock extends VegetationBlock implements BonemealableBlo
       }
 
       if (level.getMaxLocalRawBrightness(pos) <= 13 && random.nextDouble() <= 0.7) {
-         double fireflyX = (double)pos.getX() + random.nextDouble() * 10.0 - 5.0;
-         double fireflyY = (double)pos.getY() + random.nextDouble() * 5.0;
-         double fireflyZ = (double)pos.getZ() + random.nextDouble() * 10.0 - 5.0;
+         double fireflyX = pos.getX() + random.nextDouble() * 10.0 - 5.0;
+         double fireflyY = pos.getY() + random.nextDouble() * 5.0;
+         double fireflyZ = pos.getZ() + random.nextDouble() * 10.0 - 5.0;
          level.addParticle(ParticleTypes.FIREFLY, fireflyX, fireflyY, fireflyZ, 0.0, 0.0, 0.0);
       }
    }

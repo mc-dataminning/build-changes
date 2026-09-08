@@ -16,15 +16,15 @@ public interface ResolvedModel extends ModelDebugName {
 
    UnbakedModel wrapped();
 
-   @Nullable
-   ResolvedModel parent();
+   @Nullable ResolvedModel parent();
 
    static TextureSlots findTopTextureSlots(final ResolvedModel top) {
       ResolvedModel current = top;
+      TextureSlots.Resolver resolver = new TextureSlots.Resolver();
 
-      TextureSlots.Resolver resolver;
-      for (resolver = new TextureSlots.Resolver(); current != null; current = current.parent()) {
+      while (current != null) {
          resolver.addLast(current.wrapped().textureSlots());
+         current = current.parent();
       }
 
       return resolver.resolve(top);

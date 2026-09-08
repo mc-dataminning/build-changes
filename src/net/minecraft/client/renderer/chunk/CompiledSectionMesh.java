@@ -25,15 +25,14 @@ public class CompiledSectionMesh implements SectionMesh {
    };
    private final List<BlockEntity> renderableBlockEntities;
    private final VisibilitySet visibilitySet;
-   @Nullable
-   private final MeshData.SortState transparencyState;
-   @Nullable
-   private TranslucencyPointOfView translucencyPointOfView;
+   private final MeshData.@Nullable SortState transparencyState;
+   private @Nullable TranslucencyPointOfView translucencyPointOfView;
    private final Map<ChunkSectionLayer, SectionMesh.SectionDraw> draws = new EnumMap<>(ChunkSectionLayer.class);
    private final Map<ChunkSectionLayer, AtomicBoolean> vertexBufferUploaded = Util.makeEnumMap(ChunkSectionLayer.class, layer -> new AtomicBoolean());
    private final Map<ChunkSectionLayer, AtomicBoolean> indexBufferUploaded = Util.makeEnumMap(ChunkSectionLayer.class, layer -> new AtomicBoolean());
+   private final long compileTaskStartTimeNs;
 
-   public CompiledSectionMesh(final TranslucencyPointOfView translucencyPointOfView, final SectionCompiler.Results results) {
+   public CompiledSectionMesh(final TranslucencyPointOfView translucencyPointOfView, final SectionCompiler.Results results, final long compileTaskStartTimeNs) {
       this.translucencyPointOfView = translucencyPointOfView;
       this.visibilitySet = results.visibilitySet;
       this.renderableBlockEntities = results.blockEntities;
@@ -41,8 +40,9 @@ public class CompiledSectionMesh implements SectionMesh {
       results.renderedLayers
          .forEach(
             (layer, mesh) -> this.draws
-                  .put(layer, new SectionMesh.SectionDraw(mesh.drawState().indexCount(), mesh.drawState().indexType(), mesh.indexBuffer() != null))
+               .put(layer, new SectionMesh.SectionDraw(mesh.drawState().indexCount(), mesh.drawState().indexType(), mesh.indexBuffer() != null))
          );
+      this.compileTaskStartTimeNs = compileTaskStartTimeNs;
    }
 
    public void setTranslucencyPointOfView(final TranslucencyPointOfView translucencyPointOfView) {
@@ -74,10 +74,14 @@ public class CompiledSectionMesh implements SectionMesh {
       return this.visibilitySet.visibilityBetween(direction1, direction2);
    }
 
-   @Nullable
    @Override
-   public SectionMesh.SectionDraw getSectionDraw(final ChunkSectionLayer layer) {
+   public SectionMesh.@Nullable SectionDraw getSectionDraw(final ChunkSectionLayer layer) {
       return this.draws.get(layer);
+   }
+
+   @Override
+   public long getCompileTaskStartTime() {
+      return this.compileTaskStartTimeNs;
    }
 
    public boolean isVertexBufferUploaded(final ChunkSectionLayer layer) {
@@ -101,8 +105,7 @@ public class CompiledSectionMesh implements SectionMesh {
       return this.draws.containsKey(ChunkSectionLayer.TRANSLUCENT);
    }
 
-   @Nullable
-   public MeshData.SortState getTransparencyState() {
+   public MeshData.@Nullable SortState getTransparencyState() {
       return this.transparencyState;
    }
 

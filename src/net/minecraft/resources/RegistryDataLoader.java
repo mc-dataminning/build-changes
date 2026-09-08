@@ -314,11 +314,11 @@ public class RegistryDataLoader {
                .sorted(Entry.comparingByKey(ERROR_KEY_COMPARATOR))
                .forEach(
                   e -> briefDetails.append("\n\t\t")
-                        .append(e.getKey().registry())
-                        .append("/")
-                        .append(e.getKey().identifier())
-                        .append(": ")
-                        .append(e.getValue().getMessage())
+                     .append(e.getKey().registry())
+                     .append("/")
+                     .append(e.getKey().identifier())
+                     .append(": ")
+                     .append(e.getValue().getMessage())
                );
             return briefDetails.toString();
          }
@@ -331,10 +331,10 @@ public class RegistryDataLoader {
       <T> RegistryLoadTask<T> create(RegistryDataLoader.RegistryData<T> data, Map<ResourceKey<?>, Exception> loadingErrors);
    }
 
-   public static record NetworkedRegistryData(List<RegistrySynchronization.PackedRegistryEntry> elements, TagNetworkSerialization.NetworkPayload tags) {
+   public record NetworkedRegistryData(List<RegistrySynchronization.PackedRegistryEntry> elements, TagNetworkSerialization.NetworkPayload tags) {
    }
 
-   public static record RegistryData<T>(ResourceKey<? extends Registry<T>> key, Codec<T> elementCodec, RegistryValidator<T> validator) {
+   public record RegistryData<T>(ResourceKey<? extends Registry<T>> key, Codec<T> elementCodec, RegistryValidator<T> validator) {
       private RegistryData(final ResourceKey<? extends Registry<T>> key, final Codec<T> elementCodec) {
          this(key, elementCodec, RegistryValidator.none());
       }

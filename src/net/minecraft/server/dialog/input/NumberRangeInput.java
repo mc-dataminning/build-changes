@@ -14,12 +14,12 @@ import net.minecraft.util.Mth;
 public record NumberRangeInput(int width, Component label, String labelFormat, NumberRangeInput.RangeInfo rangeInfo) implements InputControl {
    public static final MapCodec<NumberRangeInput> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Dialog.WIDTH_CODEC.optionalFieldOf("width", 200).forGetter(NumberRangeInput::width),
-               ComponentSerialization.CODEC.fieldOf("label").forGetter(NumberRangeInput::label),
-               Codec.STRING.optionalFieldOf("label_format", "options.generic_value").forGetter(NumberRangeInput::labelFormat),
-               NumberRangeInput.RangeInfo.MAP_CODEC.forGetter(NumberRangeInput::rangeInfo)
-            )
-            .apply(i, NumberRangeInput::new)
+            Dialog.WIDTH_CODEC.optionalFieldOf("width", 200).forGetter(NumberRangeInput::width),
+            ComponentSerialization.CODEC.fieldOf("label").forGetter(NumberRangeInput::label),
+            Codec.STRING.optionalFieldOf("label_format", "options.generic_value").forGetter(NumberRangeInput::labelFormat),
+            NumberRangeInput.RangeInfo.MAP_CODEC.forGetter(NumberRangeInput::rangeInfo)
+         )
+         .apply(i, NumberRangeInput::new)
    );
 
    @Override
@@ -31,21 +31,21 @@ public record NumberRangeInput(int width, Component label, String labelFormat, N
       return Component.translatable(this.labelFormat, this.label, value);
    }
 
-   public static record RangeInfo(float start, float end, Optional<Float> initial, Optional<Float> step) {
+   public record RangeInfo(float start, float end, Optional<Float> initial, Optional<Float> step) {
       public static final MapCodec<NumberRangeInput.RangeInfo> MAP_CODEC = RecordCodecBuilder.mapCodec(
             i -> i.group(
-                     Codec.FLOAT.fieldOf("start").forGetter(NumberRangeInput.RangeInfo::start),
-                     Codec.FLOAT.fieldOf("end").forGetter(NumberRangeInput.RangeInfo::end),
-                     Codec.FLOAT.optionalFieldOf("initial").forGetter(NumberRangeInput.RangeInfo::initial),
-                     ExtraCodecs.POSITIVE_FLOAT.optionalFieldOf("step").forGetter(NumberRangeInput.RangeInfo::step)
-                  )
-                  .apply(i, NumberRangeInput.RangeInfo::new)
+                  Codec.FLOAT.fieldOf("start").forGetter(NumberRangeInput.RangeInfo::start),
+                  Codec.FLOAT.fieldOf("end").forGetter(NumberRangeInput.RangeInfo::end),
+                  Codec.FLOAT.optionalFieldOf("initial").forGetter(NumberRangeInput.RangeInfo::initial),
+                  ExtraCodecs.POSITIVE_FLOAT.optionalFieldOf("step").forGetter(NumberRangeInput.RangeInfo::step)
+               )
+               .apply(i, NumberRangeInput.RangeInfo::new)
          )
          .validate(range -> {
             if (range.initial.isPresent()) {
-               double initial = (double)range.initial.get().floatValue();
-               double min = (double)Math.min(range.start, range.end);
-               double max = (double)Math.max(range.start, range.end);
+               double initial = range.initial.get().floatValue();
+               double min = Math.min(range.start, range.end);
+               double max = Math.max(range.start, range.end);
                if (initial < min || initial > max) {
                   return DataResult.error(() -> "Initial value " + initial + " is outside of range [" + min + ", " + max + "]");
                }
@@ -58,24 +58,24 @@ public record NumberRangeInput(int width, Component label, String labelFormat, N
          float valueInRange = Mth.lerp(sliderValue, this.start, this.end);
          if (this.step.isEmpty()) {
             return valueInRange;
-         } else {
-            float step = this.step.get();
-            float initialValue = this.initialScaledValue();
-            float deltaToInitial = valueInRange - initialValue;
-            int stepsOutsideInitial = Math.round(deltaToInitial / step);
-            float result = initialValue + (float)stepsOutsideInitial * step;
-            if (!this.isOutOfRange(result)) {
-               return result;
-            } else {
-               int oneStepLess = stepsOutsideInitial - Mth.sign((double)stepsOutsideInitial);
-               return initialValue + (float)oneStepLess * step;
-            }
          }
+
+         float step = this.step.get();
+         float initialValue = this.initialScaledValue();
+         float deltaToInitial = valueInRange - initialValue;
+         int stepsOutsideInitial = Math.round(deltaToInitial / step);
+         float result = initialValue + stepsOutsideInitial * step;
+         if (!this.isOutOfRange(result)) {
+            return result;
+         }
+
+         int oneStepLess = stepsOutsideInitial - Mth.sign(stepsOutsideInitial);
+         return initialValue + oneStepLess * step;
       }
 
       private boolean isOutOfRange(final float scaledValue) {
          float sliderPos = this.scaledValueToSlider(scaledValue);
-         return (double)sliderPos < 0.0 || (double)sliderPos > 1.0;
+         return sliderPos < 0.0 || sliderPos > 1.0;
       }
 
       private float initialScaledValue() {

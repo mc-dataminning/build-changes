@@ -63,12 +63,9 @@ public class ModelManager implements PreparableReloadListener {
    private final BlockColors blockColors;
    private EntityModelSet entityModelSet = EntityModelSet.EMPTY;
    private ModelBakery.MissingModels missingModels;
-   @Nullable
-   private BlockStateModelSet blockStateModelSet;
-   @Nullable
-   private BlockModelSet blockModelSet;
-   @Nullable
-   private FluidStateModelSet fluidStateModelSet;
+   private @Nullable BlockStateModelSet blockStateModelSet;
+   private @Nullable BlockModelSet blockModelSet;
+   private @Nullable FluidStateModelSet fluidStateModelSet;
    private Object2IntMap<BlockState> modelGroups = Object2IntMaps.emptyMap();
 
    public ModelManager(final BlockColors blockColors, final AtlasManager atlasManager, final PlayerSkinRenderCache playerSkinRenderCache) {
@@ -173,15 +170,10 @@ public class ModelManager implements PreparableReloadListener {
                   result.add(CompletableFuture.supplyAsync(() -> {
                      Identifier modelId = MODEL_LISTER.fileToId(resource.getKey());
 
-                     try {
-                        Pair t$;
-                        try (Reader reader = resource.getValue().openAsReader()) {
-                           t$ = Pair.of(modelId, CuboidModel.fromStream(reader));
-                        }
-
-                        return t$;
-                     } catch (Exception var7) {
-                        LOGGER.error("Failed to load model {}", resource.getKey(), var7);
+                     try (Reader reader = resource.getValue().openAsReader()) {
+                        return Pair.of(modelId, CuboidModel.fromStream(reader));
+                     } catch (Exception e) {
+                        LOGGER.error("Failed to load model {}", resource.getKey(), e);
                         return null;
                      }
                   }, executor));
@@ -198,16 +190,13 @@ public class ModelManager implements PreparableReloadListener {
       final BlockStateModelLoader.LoadedModels blockStateModels,
       final ClientItemInfoLoader.LoadedClientInfos itemInfos
    ) {
-      ModelManager.ResolvedModels var5;
       try (Zone ignored = Profiler.get().zone("dependencies")) {
          ModelDiscovery result = new ModelDiscovery(allModels, MissingCuboidModel.missingModel());
          result.addSpecialModel(ItemModelGenerator.GENERATED_ITEM_MODEL_ID, new ItemModelGenerator());
          blockStateModels.models().values().forEach(result::addRoot);
          itemInfos.contents().values().forEach(info -> result.addRoot(info.model()));
-         var5 = new ModelManager.ResolvedModels(result.missingModel(), result.resolve());
+         return new ModelManager.ResolvedModels(result.missingModel(), result.resolve());
       }
-
-      return var5;
    }
 
    private static CompletableFuture<ModelManager.ReloadState> loadModels(
@@ -242,7 +231,6 @@ public class ModelManager implements PreparableReloadListener {
    private static Map<BlockState, BlockStateModel> createBlockStateToModelDispatch(
       final Map<BlockState, BlockStateModel> bakedModels, final BlockStateModel missingModel
    ) {
-      Object var8;
       try (Zone ignored = Profiler.get().zone("block state dispatch")) {
          Map<BlockState, BlockStateModel> modelByStateCache = new IdentityHashMap<>(bakedModels);
 
@@ -254,19 +242,14 @@ public class ModelManager implements PreparableReloadListener {
             });
          }
 
-         var8 = modelByStateCache;
+         return modelByStateCache;
       }
-
-      return (Map<BlockState, BlockStateModel>)var8;
    }
 
    private static Object2IntMap<BlockState> buildModelGroups(final BlockColors blockColors, final BlockStateModelLoader.LoadedModels blockStateModels) {
-      Object2IntMap var3;
       try (Zone ignored = Profiler.get().zone("block groups")) {
-         var3 = ModelGroupCollector.build(blockColors, blockStateModels);
+         return ModelGroupCollector.build(blockColors, blockStateModels);
       }
-
-      return var3;
    }
 
    private void apply(final ModelManager.ReloadState preparations) {
@@ -284,26 +267,26 @@ public class ModelManager implements PreparableReloadListener {
    public boolean requiresRender(final BlockState oldState, final BlockState newState) {
       if (oldState == newState) {
          return false;
-      } else {
-         int oldModelGroup = this.modelGroups.getInt(oldState);
-         if (oldModelGroup != -1) {
-            int newModelGroup = this.modelGroups.getInt(newState);
-            if (oldModelGroup == newModelGroup) {
-               FluidState oldFluidState = oldState.getFluidState();
-               FluidState newFluidState = newState.getFluidState();
-               return oldFluidState != newFluidState;
-            }
-         }
-
-         return true;
       }
+
+      int oldModelGroup = this.modelGroups.getInt(oldState);
+      if (oldModelGroup != -1) {
+         int newModelGroup = this.modelGroups.getInt(newState);
+         if (oldModelGroup == newModelGroup) {
+            FluidState oldFluidState = oldState.getFluidState();
+            FluidState newFluidState = newState.getFluidState();
+            return oldFluidState != newFluidState;
+         }
+      }
+
+      return true;
    }
 
    public Supplier<EntityModelSet> entityModels() {
       return () -> this.entityModelSet;
    }
 
-   private static record ReloadState(
+   private record ReloadState(
       ModelBakery.BakingResult bakedModels,
       Object2IntMap<BlockState> modelGroups,
       Map<BlockState, BlockStateModel> blockStateModels,
@@ -313,6 +296,6 @@ public class ModelManager implements PreparableReloadListener {
    ) {
    }
 
-   private static record ResolvedModels(ResolvedModel missing, Map<Identifier, ResolvedModel> models) {
+   private record ResolvedModels(ResolvedModel missing, Map<Identifier, ResolvedModel> models) {
    }
 }

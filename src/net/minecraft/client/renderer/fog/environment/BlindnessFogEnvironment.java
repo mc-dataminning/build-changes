@@ -22,7 +22,7 @@ public class BlindnessFogEnvironment extends MobEffectFogEnvironment {
       if (camera.entity() instanceof LivingEntity livingEntity) {
          MobEffectInstance effect = livingEntity.getEffect(this.getMobEffect());
          if (effect != null) {
-            float distance = effect.isInfiniteDuration() ? 5.0F : Mth.lerp(Math.min(1.0F, (float)effect.getDuration() / 20.0F), renderDistance, 5.0F);
+            float distance = effect.isInfiniteDuration() ? 5.0F : Mth.lerp(Math.min(1.0F, effect.getDuration() / 20.0F), renderDistance, 5.0F);
             fog.environmentalStart = distance * 0.25F;
             fog.environmentalEnd = distance;
             fog.skyEnd = distance * 0.8F;
@@ -36,7 +36,7 @@ public class BlindnessFogEnvironment extends MobEffectFogEnvironment {
       MobEffectInstance instance = entity.getEffect(this.getMobEffect());
       if (instance != null) {
          if (instance.endsWithin(19)) {
-            darkness = Math.max((float)instance.getDuration() / 20.0F, darkness);
+            darkness = Math.max(instance.getDuration() / 20.0F, darkness);
          } else {
             darkness = 1.0F;
          }

@@ -2,7 +2,6 @@ package net.minecraft.client.gui.components;
 
 import com.google.common.collect.Maps;
 import java.util.Map;
-import java.util.Objects;
 import java.util.UUID;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -65,11 +64,12 @@ public class BossHealthOverlay {
 
          for (LerpingBossEvent event : this.events.values()) {
             int xLeft = screenWidth / 2 - 91;
-            this.extractBar(graphics, xLeft, yOffset, event);
+            int yo = yOffset;
+            this.extractBar(graphics, xLeft, yo, event);
             Component msg = event.getName();
             int width = this.minecraft.font.width(msg);
             int x = screenWidth / 2 - width / 2;
-            int y = yOffset - 9;
+            int y = yo - 9;
             graphics.text(this.minecraft.font, msg, x, y, -1);
             yOffset += 10 + 9;
             if (yOffset >= graphics.guiHeight() / 3) {
@@ -107,10 +107,6 @@ public class BossHealthOverlay {
    public void update(final ClientboundBossEventPacket packet) {
       packet.dispatch(
          new ClientboundBossEventPacket.Handler() {
-            {
-               Objects.requireNonNull(BossHealthOverlay.this);
-            }
-
             @Override
             public void add(
                final UUID id,

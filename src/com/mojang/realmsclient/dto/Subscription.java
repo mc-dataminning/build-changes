@@ -19,13 +19,13 @@ public record Subscription(Instant startDate, int daysLeft, Subscription.Subscri
             JsonUtils.getIntOr("daysLeft", jsonObject, 0),
             typeFrom(JsonUtils.getStringOr("subscriptionType", jsonObject, null))
          );
-      } catch (Exception var2) {
-         LOGGER.error("Could not parse Subscription", var2);
+      } catch (Exception e) {
+         LOGGER.error("Could not parse Subscription", e);
          return new Subscription(Instant.EPOCH, 0, Subscription.SubscriptionType.NORMAL);
       }
    }
 
-   private static Subscription.SubscriptionType typeFrom(@Nullable final String subscriptionType) {
+   private static Subscription.SubscriptionType typeFrom(final @Nullable String subscriptionType) {
       try {
          if (subscriptionType != null) {
             return Subscription.SubscriptionType.valueOf(subscriptionType);
@@ -36,7 +36,7 @@ public record Subscription(Instant startDate, int daysLeft, Subscription.Subscri
       return Subscription.SubscriptionType.NORMAL;
    }
 
-   public static enum SubscriptionType {
+   public enum SubscriptionType {
       NORMAL,
       RECURRING;
    }

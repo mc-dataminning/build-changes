@@ -37,11 +37,8 @@ public record ShortTag(short value) implements NumericTag {
       }
    };
 
-   @Deprecated(
-      forRemoval = true
-   )
-   public ShortTag(short value) {
-      this.value = value;
+   @Deprecated(forRemoval = true)
+   public ShortTag {
    }
 
    public static ShortTag valueOf(final short i) {
@@ -79,7 +76,7 @@ public record ShortTag(short value) implements NumericTag {
 
    @Override
    public long longValue() {
-      return (long)this.value;
+      return this.value;
    }
 
    @Override
@@ -94,17 +91,17 @@ public record ShortTag(short value) implements NumericTag {
 
    @Override
    public byte byteValue() {
-      return (byte)(this.value & 255);
+      return (byte)(this.value & 0xFF);
    }
 
    @Override
    public double doubleValue() {
-      return (double)this.value;
+      return this.value;
    }
 
    @Override
    public float floatValue() {
-      return (float)this.value;
+      return this.value;
    }
 
    @Override

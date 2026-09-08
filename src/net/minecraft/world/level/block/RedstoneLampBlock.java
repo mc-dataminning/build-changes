@@ -17,18 +17,17 @@ public class RedstoneLampBlock extends Block {
 
    public RedstoneLampBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.defaultBlockState().setValue(LIT, Boolean.valueOf(false)));
+      this.registerDefaultState(this.defaultBlockState().setValue(LIT, false));
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.defaultBlockState().setValue(LIT, Boolean.valueOf(context.getLevel().hasNeighborSignal(context.getClickedPos())));
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
+      return this.defaultBlockState().setValue(LIT, context.getLevel().hasNeighborSignal(context.getClickedPos()));
    }
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       if (!level.isClientSide()) {
          boolean isLit = state.getValue(LIT);

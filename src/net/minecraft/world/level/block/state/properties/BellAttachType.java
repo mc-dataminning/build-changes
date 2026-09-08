@@ -10,7 +10,7 @@ public enum BellAttachType implements StringRepresentable {
 
    private final String name;
 
-   private BellAttachType(final String name) {
+   BellAttachType(final String name) {
       this.name = name;
    }
 

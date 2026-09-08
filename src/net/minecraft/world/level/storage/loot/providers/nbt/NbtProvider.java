@@ -7,8 +7,7 @@ import net.minecraft.world.level.storage.loot.LootContextUser;
 import org.jspecify.annotations.Nullable;
 
 public interface NbtProvider extends LootContextUser {
-   @Nullable
-   Tag get(LootContext context);
+   @Nullable Tag get(LootContext context);
 
    MapCodec<? extends NbtProvider> codec();
 }

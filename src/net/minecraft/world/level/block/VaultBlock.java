@@ -32,9 +32,7 @@ public class VaultBlock extends BaseEntityBlock {
 
    public VaultBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(STATE, VaultState.INACTIVE).setValue(OMINOUS, Boolean.valueOf(false))
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(STATE, VaultState.INACTIVE).setValue(OMINOUS, false));
    }
 
    @Override
@@ -62,9 +60,8 @@ public class VaultBlock extends BaseEntityBlock {
       }
    }
 
-   @Nullable
    @Override
-   public BlockEntity newBlockEntity(final BlockPos pos, final BlockState state) {
+   public @Nullable BlockEntity newBlockEntity(final BlockPos pos, final BlockState state) {
       return new VaultBlockEntity(pos, state);
    }
 
@@ -73,16 +70,15 @@ public class VaultBlock extends BaseEntityBlock {
       builder.add(FACING, STATE, OMINOUS);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return level instanceof ServerLevel serverLevel
          ? createTickerHelper(
             type,
             BlockEntityTypes.VAULT,
             (innerLevel, pos, state, entity) -> VaultBlockEntity.Server.tick(
-                  serverLevel, pos, state, entity.getConfig(), entity.getServerData(), entity.getSharedData()
-               )
+               serverLevel, pos, state, entity.getConfig(), entity.getServerData(), entity.getSharedData()
+            )
          )
          : createTickerHelper(
             type,

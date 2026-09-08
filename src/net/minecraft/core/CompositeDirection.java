@@ -34,12 +34,9 @@ public record CompositeDirection(Set<Direction> directions, Vec3i step) implemen
    public static final CompositeDirection SOUTH_WEST_DOWN = SOUTH_WEST.compose(DOWN);
    public static final CompositeDirection NORTH_WEST_DOWN = NORTH_WEST.compose(DOWN);
 
-   public CompositeDirection(Set<Direction> directions, Vec3i step) {
+   public CompositeDirection {
       if (directions.isEmpty()) {
          throw new IllegalArgumentException("Directions cannot be empty");
-      } else {
-         this.directions = directions;
-         this.step = step;
       }
    }
 
@@ -88,7 +85,7 @@ public record CompositeDirection(Set<Direction> directions, Vec3i step) implemen
       return this.step;
    }
 
-   public static enum Direction8 implements Directional {
+   public enum Direction8 implements Directional {
       NORTH(CompositeDirection.NORTH),
       NORTH_EAST(CompositeDirection.NORTH_EAST),
       EAST(CompositeDirection.EAST),
@@ -100,7 +97,7 @@ public record CompositeDirection(Set<Direction> directions, Vec3i step) implemen
 
       private final CompositeDirection compositeDirection;
 
-      private Direction8(final CompositeDirection compositeDirection) {
+      Direction8(final CompositeDirection compositeDirection) {
          this.compositeDirection = compositeDirection;
       }
 

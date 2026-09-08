@@ -23,13 +23,13 @@ public record GuiEntityRenderState(
       final EntityRenderState renderState,
       final Vector3fc translation,
       final Quaternionfc rotation,
-      @Nullable final Quaternionfc overrideCameraAngle,
+      final @Nullable Quaternionfc overrideCameraAngle,
       final int x0,
       final int y0,
       final int x1,
       final int y1,
       final float scale,
-      @Nullable final ScreenRectangle scissorArea
+      final @Nullable ScreenRectangle scissorArea
    ) {
       this(
          renderState,

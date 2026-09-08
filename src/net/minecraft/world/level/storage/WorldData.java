@@ -75,8 +75,7 @@ public interface WorldData {
 
    void setDifficultyLocked(final boolean difficultyLocked);
 
-   @Nullable
-   UUID getSinglePlayerUUID();
+   @Nullable UUID getSinglePlayerUUID();
 
    boolean isFlatWorld();
 

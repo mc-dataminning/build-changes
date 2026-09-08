@@ -27,7 +27,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.BlockHitResult;
@@ -46,7 +45,7 @@ public class HopperBlock extends BaseEntityBlock {
 
    public HopperBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.DOWN).setValue(ENABLED, Boolean.valueOf(true)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.DOWN).setValue(ENABLED, true));
       VoxelShape inside = Block.column(12.0, 11.0, 16.0);
       this.shapes = this.makeShapes(inside);
       this.interactionShapes = ImmutableMap.builderWithExpectedSize(5)
@@ -60,7 +59,7 @@ public class HopperBlock extends BaseEntityBlock {
       VoxelShape spoutlessHopper = Shapes.join(spoutlessHopperOutline, inside, BooleanOp.ONLY_FIRST);
       Map<Direction, VoxelShape> spouts = Shapes.rotateAll(Block.boxZ(4.0, 4.0, 8.0, 0.0, 8.0), new Vec3(8.0, 6.0, 8.0).scale(0.0625));
       return this.getShapeForEachState(
-         state -> Shapes.or(spoutlessHopper, Shapes.join(spouts.get(state.getValue(FACING)), Shapes.block(), BooleanOp.AND)), new Property[]{ENABLED}
+         state -> Shapes.or(spoutlessHopper, Shapes.join(spouts.get(state.getValue(FACING)), Shapes.block(), BooleanOp.AND)), ENABLED
       );
    }
 
@@ -77,9 +76,7 @@ public class HopperBlock extends BaseEntityBlock {
    @Override
    public BlockState getStateForPlacement(final BlockPlaceContext context) {
       Direction direction = context.getClickedFace().getOpposite();
-      return this.defaultBlockState()
-         .setValue(FACING, direction.getAxis() == Direction.Axis.Y ? Direction.DOWN : direction)
-         .setValue(ENABLED, Boolean.valueOf(true));
+      return this.defaultBlockState().setValue(FACING, direction.getAxis() == Direction.Axis.Y ? Direction.DOWN : direction).setValue(ENABLED, true);
    }
 
    @Override
@@ -87,9 +84,8 @@ public class HopperBlock extends BaseEntityBlock {
       return new HopperBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return level.isClientSide() ? null : createTickerHelper(type, BlockEntityTypes.HOPPER, HopperBlockEntity::pushItemsTick);
    }
 
@@ -114,7 +110,7 @@ public class HopperBlock extends BaseEntityBlock {
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       this.checkPoweredState(level, pos, state);
    }
@@ -122,7 +118,7 @@ public class HopperBlock extends BaseEntityBlock {
    private void checkPoweredState(final Level level, final BlockPos pos, final BlockState state) {
       boolean shouldBeOn = !level.hasNeighborSignal(pos);
       if (shouldBeOn != state.getValue(ENABLED)) {
-         level.setBlock(pos, state.setValue(ENABLED, Boolean.valueOf(shouldBeOn)), 2);
+         level.setBlock(pos, state.setValue(ENABLED, shouldBeOn), 2);
       }
    }
 

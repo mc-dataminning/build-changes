@@ -16,8 +16,7 @@ import org.jspecify.annotations.Nullable;
 
 public class Tutorial {
    private final Minecraft minecraft;
-   @Nullable
-   private TutorialStepInstance instance;
+   private @Nullable TutorialStepInstance instance;
 
    public Tutorial(final Minecraft minecraft, final Options options) {
       this.minecraft = minecraft;
@@ -35,7 +34,7 @@ public class Tutorial {
       }
    }
 
-   public void onLookAt(@Nullable final ClientLevel level, @Nullable final HitResult hit) {
+   public void onLookAt(final @Nullable ClientLevel level, final @Nullable HitResult hit) {
       if (this.instance != null && hit != null && level != null) {
          this.instance.onLookAt(level, hit);
       }

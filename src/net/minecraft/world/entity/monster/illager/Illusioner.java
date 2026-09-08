@@ -1,6 +1,5 @@
 package net.minecraft.world.entity.monster.illager;
 
-import java.util.Objects;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -84,7 +83,7 @@ public class Illusioner extends SpellcasterIllager implements RangedAttackMob {
 
    @Override
    public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.BOW));
       return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
@@ -107,9 +106,7 @@ public class Illusioner extends SpellcasterIllager implements RangedAttackMob {
             for (int i = 0; i < 4; i++) {
                this.clientSideIllusionOffsets[0][i] = this.clientSideIllusionOffsets[1][i];
                this.clientSideIllusionOffsets[1][i] = new Vec3(
-                  (double)(-6.0F + (float)this.random.nextInt(13)) * 0.5,
-                  (double)Math.max(0, this.random.nextInt(6) - 4),
-                  (double)(-6.0F + (float)this.random.nextInt(13)) * 0.5
+                  (-6.0F + this.random.nextInt(13)) * 0.5, Math.max(0, this.random.nextInt(6) - 4), (-6.0F + this.random.nextInt(13)) * 0.5
                );
             }
 
@@ -137,17 +134,17 @@ public class Illusioner extends SpellcasterIllager implements RangedAttackMob {
    public Vec3[] getIllusionOffsets(final float a) {
       if (this.clientSideIllusionTicks <= 0) {
          return this.clientSideIllusionOffsets[1];
-      } else {
-         double scale = (double)(((float)this.clientSideIllusionTicks - a) / 3.0F);
-         scale = Math.pow(scale, 0.25);
-         Vec3[] offsets = new Vec3[4];
-
-         for (int i = 0; i < 4; i++) {
-            offsets[i] = this.clientSideIllusionOffsets[1][i].scale(1.0 - scale).add(this.clientSideIllusionOffsets[0][i].scale(scale));
-         }
-
-         return offsets;
       }
+
+      double scale = (this.clientSideIllusionTicks - a) / 3.0F;
+      scale = Math.pow(scale, 0.25);
+      Vec3[] offsets = new Vec3[4];
+
+      for (int i = 0; i < 4; i++) {
+         offsets[i] = this.clientSideIllusionOffsets[1][i].scale(1.0 - scale).add(this.clientSideIllusionOffsets[0][i].scale(scale));
+      }
+
+      return offsets;
    }
 
    @Override
@@ -204,11 +201,6 @@ public class Illusioner extends SpellcasterIllager implements RangedAttackMob {
    private class IllusionerBlindnessSpellGoal extends SpellcasterIllager.SpellcasterUseSpellGoal {
       private int lastTargetId;
 
-      private IllusionerBlindnessSpellGoal() {
-         Objects.requireNonNull(Illusioner.this);
-         super();
-      }
-
       @Override
       public boolean canUse() {
          if (!super.canUse()) {
@@ -218,7 +210,7 @@ public class Illusioner extends SpellcasterIllager implements RangedAttackMob {
          } else {
             return Illusioner.this.getTarget().getId() == this.lastTargetId
                ? false
-               : getServerLevel(Illusioner.this).getCurrentDifficultyAt(Illusioner.this.blockPosition()).isHarderThan((float)Difficulty.NORMAL.ordinal());
+               : getServerLevel(Illusioner.this).getCurrentDifficultyAt(Illusioner.this.blockPosition()).isHarderThan(Difficulty.NORMAL.ordinal());
          }
       }
 
@@ -258,11 +250,6 @@ public class Illusioner extends SpellcasterIllager implements RangedAttackMob {
    }
 
    private class IllusionerMirrorSpellGoal extends SpellcasterIllager.SpellcasterUseSpellGoal {
-      private IllusionerMirrorSpellGoal() {
-         Objects.requireNonNull(Illusioner.this);
-         super();
-      }
-
       @Override
       public boolean canUse() {
          return !super.canUse() ? false : !Illusioner.this.hasEffect(MobEffects.INVISIBILITY);
@@ -283,9 +270,8 @@ public class Illusioner extends SpellcasterIllager implements RangedAttackMob {
          Illusioner.this.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 1200));
       }
 
-      @Nullable
       @Override
-      protected SoundEvent getSpellPrepareSound() {
+      protected @Nullable SoundEvent getSpellPrepareSound() {
          return SoundEvents.ILLUSIONER_PREPARE_MIRROR;
       }
 

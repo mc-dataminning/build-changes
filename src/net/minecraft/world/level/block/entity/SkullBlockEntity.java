@@ -22,14 +22,11 @@ public class SkullBlockEntity extends BlockEntity {
    private static final String TAG_PROFILE = "profile";
    private static final String TAG_NOTE_BLOCK_SOUND = "note_block_sound";
    private static final String TAG_CUSTOM_NAME = "custom_name";
-   @Nullable
-   private ResolvableProfile owner;
-   @Nullable
-   private Identifier noteBlockSound;
+   private @Nullable ResolvableProfile owner;
+   private @Nullable Identifier noteBlockSound;
    private int animationTickCount;
    private boolean isAnimating;
-   @Nullable
-   private Component customName;
+   private @Nullable Component customName;
 
    public SkullBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
       super(BlockEntityTypes.SKULL, worldPosition, blockState);
@@ -61,16 +58,14 @@ public class SkullBlockEntity extends BlockEntity {
    }
 
    public float getAnimation(final float a) {
-      return this.isAnimating ? (float)this.animationTickCount + a : (float)this.animationTickCount;
+      return this.isAnimating ? this.animationTickCount + a : this.animationTickCount;
    }
 
-   @Nullable
-   public ResolvableProfile getOwnerProfile() {
+   public @Nullable ResolvableProfile getOwnerProfile() {
       return this.owner;
    }
 
-   @Nullable
-   public Identifier getNoteBlockSound() {
+   public @Nullable Identifier getNoteBlockSound() {
       return this.noteBlockSound;
    }
 

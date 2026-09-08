@@ -13,7 +13,7 @@ public interface ContainerComponent<T extends ContainerComponent<T>> {
 
    ContainerComponent.Mutable<T> asMutable();
 
-   public interface Mutable<T> extends SlotCollection {
+   interface Mutable<T> extends SlotCollection {
       T toImmutable();
    }
 }

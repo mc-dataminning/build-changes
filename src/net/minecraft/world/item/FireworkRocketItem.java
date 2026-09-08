@@ -30,28 +30,28 @@ public class FireworkRocketItem extends Item implements ProjectileItem {
       Player player = context.getPlayer();
       if (player != null && player.isFallFlying()) {
          return InteractionResult.PASS;
-      } else {
-         if (level instanceof ServerLevel serverLevel) {
-            ItemStack itemStack = context.getItemInHand();
-            Vec3 clickLocation = context.getClickLocation();
-            Direction direction = context.getClickedFace();
-            Projectile.spawnProjectile(
-               new FireworkRocketEntity(
-                  level,
-                  context.getPlayer(),
-                  clickLocation.x + (double)direction.getStepX() * 0.15,
-                  clickLocation.y + (double)direction.getStepY() * 0.15,
-                  clickLocation.z + (double)direction.getStepZ() * 0.15,
-                  itemStack
-               ),
-               serverLevel,
-               itemStack
-            );
-            itemStack.shrink(1);
-         }
-
-         return InteractionResult.SUCCESS;
       }
+
+      if (level instanceof ServerLevel serverLevel) {
+         ItemStack itemStack = context.getItemInHand();
+         Vec3 clickLocation = context.getClickLocation();
+         Direction direction = context.getClickedFace();
+         Projectile.spawnProjectile(
+            new FireworkRocketEntity(
+               level,
+               context.getPlayer(),
+               clickLocation.x + direction.getStepX() * 0.15,
+               clickLocation.y + direction.getStepY() * 0.15,
+               clickLocation.z + direction.getStepZ() * 0.15,
+               itemStack
+            ),
+            serverLevel,
+            itemStack
+         );
+         itemStack.shrink(1);
+      }
+
+      return InteractionResult.SUCCESS;
    }
 
    @Override
@@ -91,10 +91,6 @@ public class FireworkRocketItem extends Item implements ProjectileItem {
 
    private static Vec3 getEntityJustOutsideOfBlockPos(final BlockSource source, final Direction direction) {
       return source.center()
-         .add(
-            (double)direction.getStepX() * 0.5000099999997474,
-            (double)direction.getStepY() * 0.5000099999997474,
-            (double)direction.getStepZ() * 0.5000099999997474
-         );
+         .add(direction.getStepX() * 0.5000099999997474, direction.getStepY() * 0.5000099999997474, direction.getStepZ() * 0.5000099999997474);
    }
 }

@@ -39,20 +39,20 @@ public abstract class ResettingWorldTask extends LongRunningTask {
 
             this.callback.run();
             return;
-         } catch (RetryCallException var4) {
+         } catch (RetryCallException e) {
             if (this.aborted()) {
                return;
             }
 
-            pause((long)var4.delaySeconds);
+            pause(e.delaySeconds);
             i++;
-         } catch (Exception var5) {
+         } catch (Exception e) {
             if (this.aborted()) {
                return;
             }
 
             LOGGER.error("Couldn't reset world");
-            this.error(var5);
+            this.error(e);
             return;
          }
       }

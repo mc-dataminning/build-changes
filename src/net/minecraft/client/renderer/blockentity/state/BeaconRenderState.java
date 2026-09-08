@@ -8,6 +8,6 @@ public class BeaconRenderState extends BlockEntityRenderState {
    public float beamRadiusScale;
    public List<BeaconRenderState.Section> sections = new ArrayList<>();
 
-   public static record Section(int color, int height) {
+   public record Section(int color, int height) {
    }
 }

@@ -54,12 +54,11 @@ public class PresenceHandler {
       }, Util.nonCriticalIoPool());
    }
 
-   @Nullable
-   private PresenceResponse postPresence(final PresenceStatus status) {
+   private @Nullable PresenceResponse postPresence(final PresenceStatus status) {
       try {
          return this.friendsService.presence(status.name());
-      } catch (Exception var3) {
-         LOGGER.warn("Failed to post presence {}", status, var3);
+      } catch (Exception e) {
+         LOGGER.warn("Failed to post presence {}", status, e);
          return null;
       }
    }
@@ -72,13 +71,13 @@ public class PresenceHandler {
    private boolean shouldRefreshPresence() {
       if (this.isPresenceSharingDisabled()) {
          return false;
-      } else {
-         Duration sinceLastPresence = Duration.between(this.lastPresencePost, Instant.now());
-         Optional<Duration> presencePollInterval = this.friendsService.getPresencePollInterval();
-         Duration interval = !presencePollInterval.isEmpty() && presencePollInterval.get().isPositive() ? presencePollInterval.get() : PRESENCE_UPDATE_INTERVAL;
-         Duration maxInterval = interval.multipliedBy(5L);
-         return this.updatePresence && sinceLastPresence.compareTo(interval) >= 0 || sinceLastPresence.compareTo(maxInterval) >= 0;
       }
+
+      Duration sinceLastPresence = Duration.between(this.lastPresencePost, Instant.now());
+      Optional<Duration> presencePollInterval = this.friendsService.getPresencePollInterval();
+      Duration interval = !presencePollInterval.isEmpty() && presencePollInterval.get().isPositive() ? presencePollInterval.get() : PRESENCE_UPDATE_INTERVAL;
+      Duration maxInterval = interval.multipliedBy(5L);
+      return this.updatePresence && sinceLastPresence.compareTo(interval) >= 0 || sinceLastPresence.compareTo(maxInterval) >= 0;
    }
 
    public void tick() {

@@ -20,13 +20,12 @@ public class WaitingForResponseScreen extends Screen {
    };
    private static final int BUTTON_VISIBLE_AFTER = 1;
    private static final int BUTTON_ACTIVE_AFTER = 5;
-   @Nullable
-   private final Screen previousScreen;
+   private final @Nullable Screen previousScreen;
    private final HeaderAndFooterLayout layout;
    private final Button closeButton;
    private int ticks;
 
-   public WaitingForResponseScreen(@Nullable final Screen nextScreen) {
+   public WaitingForResponseScreen(final @Nullable Screen nextScreen) {
       super(TITLE);
       this.previousScreen = nextScreen;
       this.layout = new HeaderAndFooterLayout(this, 33, 0);
@@ -79,8 +78,7 @@ public class WaitingForResponseScreen extends Screen {
       this.minecraft.gui.setScreen(this.previousScreen);
    }
 
-   @Nullable
-   public Screen previousScreen() {
+   public @Nullable Screen previousScreen() {
       return this.previousScreen;
    }
 }

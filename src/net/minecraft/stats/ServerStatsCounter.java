@@ -67,10 +67,10 @@ public class ServerStatsCounter extends StatsCounter {
          try (Reader reader = Files.newBufferedReader(file, StandardCharsets.UTF_8)) {
             JsonElement element = StrictJsonParser.parse(reader);
             this.parse(server.getFixerUpper(), element);
-         } catch (IOException var8) {
-            LOGGER.error("Couldn't read statistics file {}", file, var8);
-         } catch (JsonParseException var9) {
-            LOGGER.error("Couldn't parse statistics file {}", file, var9);
+         } catch (IOException e) {
+            LOGGER.error("Couldn't read statistics file {}", file, e);
+         } catch (JsonParseException e) {
+            LOGGER.error("Couldn't parse statistics file {}", file, e);
          }
       }
    }
@@ -82,8 +82,8 @@ public class ServerStatsCounter extends StatsCounter {
          try (Writer writer = Files.newBufferedWriter(this.file, StandardCharsets.UTF_8)) {
             GSON.toJson(this.toJson(), GSON.newJsonWriter(writer));
          }
-      } catch (JsonIOException | IOException var6) {
-         LOGGER.error("Couldn't save stats to {}", this.file, var6);
+      } catch (IOException | JsonIOException e) {
+         LOGGER.error("Couldn't save stats to {}", this.file, e);
       }
    }
 

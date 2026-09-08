@@ -14,10 +14,10 @@ public record SeededContainerLoot(ResourceKey<LootTable> lootTable, long seed) i
    private static final Component UNKNOWN_CONTENTS = Component.translatable("item.container.loot_table.unknown");
    public static final Codec<SeededContainerLoot> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               LootTable.KEY_CODEC.fieldOf("loot_table").forGetter(SeededContainerLoot::lootTable),
-               Codec.LONG.optionalFieldOf("seed", 0L).forGetter(SeededContainerLoot::seed)
-            )
-            .apply(i, SeededContainerLoot::new)
+            LootTable.KEY_CODEC.fieldOf("loot_table").forGetter(SeededContainerLoot::lootTable),
+            Codec.LONG.optionalFieldOf("seed", 0L).forGetter(SeededContainerLoot::seed)
+         )
+         .apply(i, SeededContainerLoot::new)
    );
 
    @Override

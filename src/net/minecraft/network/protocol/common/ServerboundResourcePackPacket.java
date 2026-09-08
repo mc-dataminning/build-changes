@@ -29,7 +29,7 @@ public record ServerboundResourcePackPacket(UUID id, ServerboundResourcePackPack
       listener.handleResourcePackResponse(this);
    }
 
-   public static enum Action {
+   public enum Action {
       SUCCESSFULLY_LOADED,
       DECLINED,
       FAILED_DOWNLOAD,

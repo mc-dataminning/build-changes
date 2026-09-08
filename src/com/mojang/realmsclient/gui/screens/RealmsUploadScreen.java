@@ -43,31 +43,26 @@ public class RealmsUploadScreen extends RealmsScreen implements RealmsWorldUploa
    private static final Component VERIFYING_TEXT = Component.translatable("mco.upload.verifying");
    private final RealmsResetWorldScreen lastScreen;
    private final LevelSummary selectedLevel;
-   @Nullable
-   private final RealmCreationTask realmCreationTask;
+   private final @Nullable RealmCreationTask realmCreationTask;
    private final long realmId;
    private final int slotId;
-   private final AtomicReference<RealmsWorldUpload> currentUpload = new AtomicReference<>();
+   private final AtomicReference<@Nullable RealmsWorldUpload> currentUpload = new AtomicReference<>();
    private final UploadStatus uploadStatus;
    private final RateLimiter narrationRateLimiter;
-   @Nullable
-   private volatile Component[] errorMessage;
+   private volatile Component @Nullable [] errorMessage;
    private volatile Component status = Component.translatable("mco.upload.preparing");
-   @Nullable
-   private volatile String progress;
+   private volatile @Nullable String progress;
    private volatile boolean cancelled;
    private volatile boolean uploadFinished;
    private volatile boolean showDots = true;
    private volatile boolean uploadStarted;
-   @Nullable
-   private Button backButton;
-   @Nullable
-   private Button cancelButton;
+   private @Nullable Button backButton;
+   private @Nullable Button cancelButton;
    private int tickCount;
    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
 
    public RealmsUploadScreen(
-      @Nullable final RealmCreationTask realmCreationTask,
+      final @Nullable RealmCreationTask realmCreationTask,
       final long realmId,
       final int slotId,
       final RealmsResetWorldScreen lastScreen,
@@ -233,46 +228,46 @@ public class RealmsUploadScreen extends RealmsScreen implements RealmsWorldUploa
       RealmsWorldUpload newUpload = new RealmsWorldUpload(worldFolder, realmsSlot, this.minecraft.getUser(), this.realmId, this);
       if (!this.currentUpload.compareAndSet(null, newUpload)) {
          throw new IllegalStateException("Tried to start uploading but was already uploading");
-      } else {
-         newUpload.packAndUpload().handleAsync((result, exception) -> {
-            if (exception != null) {
-               if (exception instanceof CompletionException e) {
-                  exception = e.getCause();
-               }
-
-               if (exception instanceof RealmsUploadException e) {
-                  if (e.getStatusMessage() != null) {
-                     this.status = e.getStatusMessage();
-                  }
-
-                  this.setErrorMessage(e.getErrorMessages());
-               } else {
-                  this.status = Component.translatable("mco.upload.failed", exception.getMessage());
-               }
-            } else {
-               this.status = Component.translatable("mco.upload.done");
-               if (this.backButton != null) {
-                  this.backButton.setMessage(CommonComponents.GUI_DONE);
-               }
-            }
-
-            this.uploadFinished = true;
-            this.showDots = false;
-            if (this.backButton != null) {
-               this.backButton.visible = true;
-            }
-
-            if (this.cancelButton != null) {
-               this.cancelButton.visible = false;
-            }
-
-            this.currentUpload.set(null);
-            return null;
-         }, this.minecraft);
       }
+
+      newUpload.packAndUpload().handleAsync((result, exception) -> {
+         if (exception != null) {
+            if (exception instanceof CompletionException e) {
+               exception = e.getCause();
+            }
+
+            if (exception instanceof RealmsUploadException e) {
+               if (e.getStatusMessage() != null) {
+                  this.status = e.getStatusMessage();
+               }
+
+               this.setErrorMessage(e.getErrorMessages());
+            } else {
+               this.status = Component.translatable("mco.upload.failed", exception.getMessage());
+            }
+         } else {
+            this.status = Component.translatable("mco.upload.done");
+            if (this.backButton != null) {
+               this.backButton.setMessage(CommonComponents.GUI_DONE);
+            }
+         }
+
+         this.uploadFinished = true;
+         this.showDots = false;
+         if (this.backButton != null) {
+            this.backButton.visible = true;
+         }
+
+         if (this.cancelButton != null) {
+            this.cancelButton.visible = false;
+         }
+
+         this.currentUpload.set(null);
+         return null;
+      }, this.minecraft);
    }
 
-   private void setErrorMessage(@Nullable final Component... messages) {
+   private void setErrorMessage(final Component @Nullable ... messages) {
       this.errorMessage = messages;
    }
 

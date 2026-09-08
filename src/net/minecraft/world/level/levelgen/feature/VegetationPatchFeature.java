@@ -43,18 +43,18 @@ public class VegetationPatchFeature implements Feature {
    ) {
       return RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("replaceable").forGetter(f -> f.replaceable),
-                  BlockStateProvider.CODEC.fieldOf("ground_state").forGetter(f -> f.groundState),
-                  PlacedFeature.CODEC.fieldOf("vegetation_feature").forGetter(f -> f.vegetationFeature),
-                  CaveSurface.CODEC.fieldOf("surface").forGetter(f -> f.surface),
-                  IntProviders.codec(1, 128).fieldOf("depth").forGetter(f -> f.depth),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter(f -> f.extraBottomBlockChance),
-                  Codec.intRange(1, 256).fieldOf("vertical_range").forGetter(f -> f.verticalRange),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter(f -> f.vegetationChance),
-                  IntProviders.CODEC.fieldOf("xz_radius").forGetter(f -> f.xzRadius),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter(f -> f.extraEdgeColumnChance)
-               )
-               .apply(i, constructor)
+               RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("replaceable").forGetter(f -> f.replaceable),
+               BlockStateProvider.CODEC.fieldOf("ground_state").forGetter(f -> f.groundState),
+               PlacedFeature.CODEC.fieldOf("vegetation_feature").forGetter(f -> f.vegetationFeature),
+               CaveSurface.CODEC.fieldOf("surface").forGetter(f -> f.surface),
+               IntProviders.codec(1, 128).fieldOf("depth").forGetter(f -> f.depth),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter(f -> f.extraBottomBlockChance),
+               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter(f -> f.verticalRange),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter(f -> f.vegetationChance),
+               IntProviders.CODEC.fieldOf("xz_radius").forGetter(f -> f.xzRadius),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter(f -> f.extraEdgeColumnChance)
+            )
+            .apply(i, constructor)
       );
    }
 

@@ -38,8 +38,8 @@ public class TextureManager implements PreparableReloadListener, AutoCloseable {
    public void registerAndLoad(final Identifier textureId, final ReloadableTexture texture) {
       try {
          texture.apply(this.loadContentsSafe(textureId, texture));
-      } catch (Throwable var6) {
-         CrashReport report = CrashReport.forThrowable(var6, "Uploading texture");
+      } catch (Throwable t) {
+         CrashReport report = CrashReport.forThrowable(t, "Uploading texture");
          CrashReportCategory category = report.addCategory("Uploaded texture");
          category.setDetail("Resource location", texture.resourceId());
          category.setDetail("Texture id", textureId);
@@ -52,8 +52,8 @@ public class TextureManager implements PreparableReloadListener, AutoCloseable {
    private TextureContents loadContentsSafe(final Identifier textureId, final ReloadableTexture texture) {
       try {
          return loadContents(this.resourceManager, texture);
-      } catch (Exception var4) {
-         LOGGER.error("Failed to load texture {} into slot {}", new Object[]{texture.resourceId(), textureId, var4});
+      } catch (Exception e) {
+         LOGGER.error("Failed to load texture {} into slot {}", new Object[]{texture.resourceId(), textureId, e});
          return TextureContents.createMissing();
       }
    }
@@ -80,8 +80,8 @@ public class TextureManager implements PreparableReloadListener, AutoCloseable {
 
       try {
          texture.close();
-      } catch (Exception var4) {
-         LOGGER.warn("Failed to close texture {}", id, var4);
+      } catch (Exception e) {
+         LOGGER.warn("Failed to close texture {}", id, e);
       }
    }
 
@@ -89,11 +89,11 @@ public class TextureManager implements PreparableReloadListener, AutoCloseable {
       AbstractTexture textureObject = this.byPath.get(location);
       if (textureObject != null) {
          return textureObject;
-      } else {
-         SimpleTexture texture = new SimpleTexture(location);
-         this.registerAndLoad(location, texture);
-         return texture;
       }
+
+      SimpleTexture texture = new SimpleTexture(location);
+      this.registerAndLoad(location, texture);
+      return texture;
    }
 
    public void tick() {
@@ -142,8 +142,8 @@ public class TextureManager implements PreparableReloadListener, AutoCloseable {
    public void dumpAllSheets(final Path targetDir) {
       try {
          Files.createDirectories(targetDir);
-      } catch (IOException var3) {
-         LOGGER.error("Failed to create directory {}", targetDir, var3);
+      } catch (IOException e) {
+         LOGGER.error("Failed to create directory {}", targetDir, e);
          return;
       }
 
@@ -151,8 +151,8 @@ public class TextureManager implements PreparableReloadListener, AutoCloseable {
          if (texture instanceof Dumpable dumpable) {
             try {
                dumpable.dumpContents(location, targetDir);
-            } catch (Exception var5) {
-               LOGGER.error("Failed to dump texture {}", location, var5);
+            } catch (Exception e) {
+               LOGGER.error("Failed to dump texture {}", location, e);
             }
          }
       });
@@ -161,7 +161,7 @@ public class TextureManager implements PreparableReloadListener, AutoCloseable {
    private static TextureContents loadContents(final ResourceManager manager, final ReloadableTexture texture) throws IOException {
       try {
          return texture.loadContents(manager);
-      } catch (FileNotFoundException var3) {
+      } catch (FileNotFoundException e) {
          return TextureContents.createMissing();
       }
    }
@@ -170,12 +170,12 @@ public class TextureManager implements PreparableReloadListener, AutoCloseable {
       return new TextureManager.PendingReload(texture, CompletableFuture.supplyAsync(() -> {
          try {
             return loadContents(manager, texture);
-         } catch (IOException var3) {
-            throw new UncheckedIOException(var3);
+         } catch (IOException e) {
+            throw new UncheckedIOException(e);
          }
       }, executor));
    }
 
-   private static record PendingReload(ReloadableTexture texture, CompletableFuture<TextureContents> newContents) {
+   private record PendingReload(ReloadableTexture texture, CompletableFuture<TextureContents> newContents) {
    }
 }

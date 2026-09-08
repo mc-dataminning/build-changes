@@ -32,8 +32,7 @@ public class MinecartTNT extends AbstractMinecart {
    private static final String TAG_EXPLOSION_SPEED_FACTOR = "explosion_speed_factor";
    private static final float DEFAULT_EXPLOSION_POWER_BASE = 4.0F;
    private static final float DEFAULT_EXPLOSION_SPEED_FACTOR = 1.0F;
-   @Nullable
-   private DamageSource ignitionSource;
+   private @Nullable DamageSource ignitionSource;
    private int fuse = -1;
    private float explosionPowerBase = 4.0F;
    private float explosionSpeedFactor = 1.0F;
@@ -98,7 +97,7 @@ public class MinecartTNT extends AbstractMinecart {
       return new ItemStack(Items.TNT_MINECART);
    }
 
-   protected void explode(@Nullable final DamageSource damageSource, final double speedSqr) {
+   protected void explode(final @Nullable DamageSource damageSource, final double speedSqr) {
       if (this.level() instanceof ServerLevel level) {
          if (level.getGameRules().get(GameRules.TNT_EXPLODES)) {
             double speed = Math.min(Math.sqrt(speedSqr), 5.0);
@@ -109,7 +108,7 @@ public class MinecartTNT extends AbstractMinecart {
                this.getX(),
                this.getY(),
                this.getZ(),
-               (float)((double)this.explosionPowerBase + (double)this.explosionSpeedFactor * this.random.nextDouble() * 1.5 * speed),
+               (float)(this.explosionPowerBase + this.explosionSpeedFactor * this.random.nextDouble() * 1.5 * speed),
                false,
                Level.ExplosionInteraction.TNT
             );
@@ -138,7 +137,7 @@ public class MinecartTNT extends AbstractMinecart {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 70) {
          this.primeFuse(null);
       } else {
@@ -146,20 +145,18 @@ public class MinecartTNT extends AbstractMinecart {
       }
    }
 
-   public void primeFuse(@Nullable final DamageSource source) {
-      if (this.level() instanceof ServerLevel serverLevel && !serverLevel.getGameRules().get(GameRules.TNT_EXPLODES)) {
-         return;
-      }
+   public void primeFuse(final @Nullable DamageSource source) {
+      if (!(this.level() instanceof ServerLevel serverLevel && !serverLevel.getGameRules().get(GameRules.TNT_EXPLODES))) {
+         this.fuse = 80;
+         if (!this.level().isClientSide()) {
+            if (source != null && this.ignitionSource == null) {
+               this.ignitionSource = this.damageSources().explosion(this, source.getEntity());
+            }
 
-      this.fuse = 80;
-      if (!this.level().isClientSide()) {
-         if (source != null && this.ignitionSource == null) {
-            this.ignitionSource = this.damageSources().explosion(this, source.getEntity());
-         }
-
-         this.level().broadcastEntityEvent(this, (byte)70);
-         if (!this.isSilent()) {
-            this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
+            this.level().broadcastEntityEvent(this, (byte)70);
+            if (!this.isSilent()) {
+               this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
+            }
          }
       }
    }

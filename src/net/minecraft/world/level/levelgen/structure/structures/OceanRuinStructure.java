@@ -16,12 +16,12 @@ import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilde
 public class OceanRuinStructure extends Structure {
    public static final MapCodec<OceanRuinStructure> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               settingsCodec(i),
-               OceanRuinStructure.Type.CODEC.fieldOf("biome_temp").forGetter(c -> c.biomeTemp),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter(c -> c.largeProbability),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter(c -> c.clusterProbability)
-            )
-            .apply(i, OceanRuinStructure::new)
+            settingsCodec(i),
+            OceanRuinStructure.Type.CODEC.fieldOf("biome_temp").forGetter(c -> c.biomeTemp),
+            Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter(c -> c.largeProbability),
+            Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter(c -> c.clusterProbability)
+         )
+         .apply(i, OceanRuinStructure::new)
    );
    public final OceanRuinStructure.Type biomeTemp;
    public final float largeProbability;
@@ -52,7 +52,7 @@ public class OceanRuinStructure extends Structure {
       return StructureType.OCEAN_RUIN;
    }
 
-   public static enum Type implements StringRepresentable {
+   public enum Type implements StringRepresentable {
       WARM("warm"),
       COLD("cold");
 
@@ -61,7 +61,7 @@ public class OceanRuinStructure extends Structure {
       public static final Codec<OceanRuinStructure.Type> LEGACY_CODEC = ExtraCodecs.legacyEnum(OceanRuinStructure.Type::valueOf);
       private final String name;
 
-      private Type(final String name) {
+      Type(final String name) {
          this.name = name;
       }
 

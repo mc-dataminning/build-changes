@@ -16,10 +16,10 @@ import org.jspecify.annotations.Nullable;
 public class BlockRotProcessor implements StructureProcessor {
    public static final MapCodec<BlockRotProcessor> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               RegistryCodecs.holderSet(Registries.BLOCK).optionalFieldOf("rottable_blocks").forGetter(t -> t.rottableBlocks),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter(t -> t.integrity)
-            )
-            .apply(i, BlockRotProcessor::new)
+            RegistryCodecs.holderSet(Registries.BLOCK).optionalFieldOf("rottable_blocks").forGetter(t -> t.rottableBlocks),
+            Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter(t -> t.integrity)
+         )
+         .apply(i, BlockRotProcessor::new)
    );
    private final Optional<HolderSet<Block>> rottableBlocks;
    private final float integrity;
@@ -37,9 +37,8 @@ public class BlockRotProcessor implements StructureProcessor {
       this.rottableBlocks = blockTagKey;
    }
 
-   @Nullable
    @Override
-   public StructureTemplate.StructureBlockInfo processBlock(
+   public StructureTemplate.@Nullable StructureBlockInfo processBlock(
       final LevelReader level,
       final BlockPos targetPosition,
       final BlockPos referencePos,

@@ -52,11 +52,11 @@ public class GameRuleCommand {
       String seralizedValue = gameRule.serialize(value);
       if (gameRules.get(gameRule).equals(value)) {
          throw ERROR_GAME_RULE_NOT_SET.create(gameRule, seralizedValue);
-      } else {
-         gameRules.set(gameRule, value, ((CommandSourceStack)context.getSource()).getServer());
-         source.sendSuccess(() -> Component.translatable("commands.gamerule.set", gameRule.id(), seralizedValue), true);
-         return gameRule.getCommandResult(value);
       }
+
+      gameRules.set(gameRule, value, ((CommandSourceStack)context.getSource()).getServer());
+      source.sendSuccess(() -> Component.translatable("commands.gamerule.set", gameRule.id(), seralizedValue), true);
+      return gameRule.getCommandResult(value);
    }
 
    private static <T> int queryRule(final CommandSourceStack source, final GameRule<T> gameRule) {

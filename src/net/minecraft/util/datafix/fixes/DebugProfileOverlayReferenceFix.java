@@ -15,14 +15,12 @@ public class DebugProfileOverlayReferenceFix extends DataFix {
          "DebugProfileOverlayReferenceFix",
          this.getInputSchema().getType(References.DEBUG_PROFILE),
          typed -> typed.update(
-               DSL.remainderFinder(),
-               file -> file.update(
-                     "custom",
-                     custom -> custom.updateMapValues(
-                           pair -> pair.mapSecond(value -> value.asString("").equals("inF3") ? value.createString("inOverlay") : value)
-                        )
-                  )
+            DSL.remainderFinder(),
+            file -> file.update(
+               "custom",
+               custom -> custom.updateMapValues(pair -> pair.mapSecond(value -> value.asString("").equals("inF3") ? value.createString("inOverlay") : value))
             )
+         )
       );
    }
 }

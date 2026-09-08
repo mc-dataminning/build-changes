@@ -9,18 +9,18 @@ import net.minecraft.world.entity.schedule.Activity;
 public class ResetRaidStatus {
    public static BehaviorControl<LivingEntity> create() {
       return BehaviorBuilder.create(i -> i.point((level, body, timestamp) -> {
-            if (level.getRandom().nextInt(20) != 0) {
-               return false;
-            } else {
-               Brain<?> brain = body.getBrain();
-               Raid nearbyRaid = level.getRaidAt(body.blockPosition());
-               if (nearbyRaid == null || nearbyRaid.isStopped() || nearbyRaid.isLoss()) {
-                  brain.setDefaultActivity(Activity.IDLE);
-                  brain.updateActivityFromSchedule(level.environmentAttributes(), level.getGameTime(), body.position());
-               }
+         if (level.getRandom().nextInt(20) != 0) {
+            return false;
+         }
 
-               return true;
-            }
-         }));
+         Brain<?> brain = body.getBrain();
+         Raid nearbyRaid = level.getRaidAt(body.blockPosition());
+         if (nearbyRaid == null || nearbyRaid.isStopped() || nearbyRaid.isLoss()) {
+            brain.setDefaultActivity(Activity.IDLE);
+            brain.updateActivityFromSchedule(level.environmentAttributes(), level.getGameTime(), body.position());
+         }
+
+         return true;
+      }));
    }
 }

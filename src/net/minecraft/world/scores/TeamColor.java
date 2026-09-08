@@ -37,15 +37,14 @@ public enum TeamColor implements StringRepresentable {
    private final TextColor format;
    private final DisplaySlot displaySlot;
 
-   private TeamColor(final int id, final String name, final TextColor format, final DisplaySlot displaySlot) {
+   TeamColor(final int id, final String name, final TextColor format, final DisplaySlot displaySlot) {
       this.id = id;
       this.name = name;
       this.format = format;
       this.displaySlot = displaySlot;
    }
 
-   @Nullable
-   public static TeamColor byName(final String name) {
+   public static @Nullable TeamColor byName(final String name) {
       return CODEC.byName(name);
    }
 

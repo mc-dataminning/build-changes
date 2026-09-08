@@ -10,14 +10,11 @@ import org.jspecify.annotations.Nullable;
 public interface SoundInstance {
    Identifier getIdentifier();
 
-   @Nullable
-   WeighedSoundEvents getOrResolve(SoundManager soundManager);
+   @Nullable WeighedSoundEvents getOrResolve(SoundManager soundManager);
 
-   @Nullable
-   Sound getSound();
+   @Nullable Sound getSound();
 
-   @Nullable
-   WeighedSoundEvents getSoundEvent();
+   @Nullable WeighedSoundEvents getSoundEvent();
 
    SoundSource getSource();
 
@@ -51,7 +48,7 @@ public interface SoundInstance {
       return RandomSource.create();
    }
 
-   public static enum Attenuation {
+   enum Attenuation {
       NONE,
       LINEAR;
    }

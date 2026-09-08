@@ -15,13 +15,13 @@ import net.minecraft.world.level.block.entity.PotDecorations;
 public class DecoratedPotRecipe extends CustomRecipe {
    public static final MapCodec<DecoratedPotRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Ingredient.CODEC.fieldOf("back").forGetter(o -> o.backPattern),
-               Ingredient.CODEC.fieldOf("left").forGetter(o -> o.leftPattern),
-               Ingredient.CODEC.fieldOf("right").forGetter(o -> o.rightPattern),
-               Ingredient.CODEC.fieldOf("front").forGetter(o -> o.frontPattern),
-               ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
-            )
-            .apply(i, DecoratedPotRecipe::new)
+            Ingredient.CODEC.fieldOf("back").forGetter(o -> o.backPattern),
+            Ingredient.CODEC.fieldOf("left").forGetter(o -> o.leftPattern),
+            Ingredient.CODEC.fieldOf("right").forGetter(o -> o.rightPattern),
+            Ingredient.CODEC.fieldOf("front").forGetter(o -> o.frontPattern),
+            ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
+         )
+         .apply(i, DecoratedPotRecipe::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, DecoratedPotRecipe> STREAM_CODEC = StreamCodec.composite(
       Ingredient.CONTENTS_STREAM_CODEC,

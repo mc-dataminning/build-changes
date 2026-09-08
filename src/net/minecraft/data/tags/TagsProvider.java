@@ -92,10 +92,10 @@ public abstract class TagsProvider<T> implements DataProvider {
                                     unresolvedEntries.stream().map(Objects::toString).collect(Collectors.joining(","))
                                  )
                               );
-                           } else {
-                              Path path = this.pathProvider.json(id);
-                              return DataProvider.saveStable(cache, c.contents, TagFile.CODEC, new TagFile(entries, builder.shouldReplace()), path);
                            }
+
+                           Path path = this.pathProvider.json(id);
+                           return DataProvider.saveStable(cache, c.contents, TagFile.CODEC, new TagFile(entries, builder.shouldReplace()), path);
                         }
                      )
                      .toArray(CompletableFuture[]::new)

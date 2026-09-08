@@ -108,30 +108,25 @@ public class FilledProfileResults implements ProfileResults {
          globalTime = totalTime;
       }
 
-      for (String keyx : this.entries.keySet()) {
-         if (isDirectChild(path, keyx)) {
-            ProfilerPathEntry entry = this.getEntry(keyx);
+      for (String key : this.entries.keySet()) {
+         if (isDirectChild(path, key)) {
+            ProfilerPathEntry entry = this.getEntry(key);
             long time = entry.getDuration();
-            double timePercentage = (double)time * 100.0 / (double)totalTime;
-            double globalPercentage = (double)time * 100.0 / (double)globalTime;
-            String name = keyx.substring(path.length());
+            double timePercentage = time * 100.0 / totalTime;
+            double globalPercentage = time * 100.0 / globalTime;
+            String name = key.substring(path.length());
             result.add(new ResultField(name, timePercentage, globalPercentage, entry.getCount()));
          }
       }
 
       if ((float)totalTime > oldTime) {
          result.add(
-            new ResultField(
-               "unspecified",
-               (double)((float)totalTime - oldTime) * 100.0 / (double)totalTime,
-               (double)((float)totalTime - oldTime) * 100.0 / (double)globalTime,
-               selfCount
-            )
+            new ResultField("unspecified", ((float)totalTime - oldTime) * 100.0 / totalTime, ((float)totalTime - oldTime) * 100.0 / globalTime, selfCount)
          );
       }
 
       Collections.sort(result);
-      result.add(0, new ResultField(rawPath, 100.0, (double)totalTime * 100.0 / (double)globalTime, selfCount));
+      result.add(0, new ResultField(rawPath, 100.0, totalTime * 100.0 / globalTime, selfCount));
       return result;
    }
 
@@ -149,7 +144,7 @@ public class FilledProfileResults implements ProfileResults {
                   List<String> pathSegments = SPLITTER.splitToList(path);
                   counters.forEach(
                      (counter, value) -> result.computeIfAbsent(counter, k -> new FilledProfileResults.CounterCollector())
-                           .addValue(pathSegments.iterator(), value)
+                        .addValue(pathSegments.iterator(), value)
                   );
                }
             }
@@ -181,20 +176,17 @@ public class FilledProfileResults implements ProfileResults {
    public boolean saveResults(final Path file) {
       Writer writer = null;
 
-      boolean var4;
       try {
          Files.createDirectories(file.getParent());
          writer = Files.newBufferedWriter(file, StandardCharsets.UTF_8);
          writer.write(this.getProfilerResults(this.getNanoDuration(), this.getTickDuration()));
          return true;
-      } catch (Throwable var8) {
-         LOGGER.error("Could not save profiler results to {}", file, var8);
-         var4 = false;
+      } catch (Throwable t) {
+         LOGGER.error("Could not save profiler results to {}", file, t);
+         return false;
       } finally {
          IOUtils.closeQuietly(writer);
       }
-
-      return var4;
    }
 
    protected String getProfilerResults(final long timespan, final int tickspan) {
@@ -204,7 +196,7 @@ public class FilledProfileResults implements ProfileResults {
       builder.append("Time span: ").append(timespan / 1000000L).append(" ms\n");
       builder.append("Tick span: ").append(tickspan).append(" ticks\n");
       builder.append("// This is approximately ")
-         .append(String.format(Locale.ROOT, "%.2f", (float)tickspan / ((float)timespan / 1.0E9F)))
+         .append(String.format(Locale.ROOT, "%.2f", tickspan / ((float)timespan / 1.0E9F)))
          .append(" ticks per second. It should be ")
          .append(20)
          .append(" ticks per second\n\n");
@@ -242,14 +234,7 @@ public class FilledProfileResults implements ProfileResults {
       List<ResultField> results = this.getTimes(path);
       Object2LongMap<String> counters = ((ProfilerPathEntry)ObjectUtils.firstNonNull(new ProfilerPathEntry[]{this.entries.get(path), EMPTY})).getCounters();
       counters.forEach(
-         (id, value) -> indentLine(builder, depth)
-               .append('#')
-               .append(id)
-               .append(' ')
-               .append(value)
-               .append('/')
-               .append(value / (long)this.tickDuration)
-               .append('\n')
+         (id, value) -> indentLine(builder, depth).append('#').append(id).append(' ').append(value).append('/').append(value / this.tickDuration).append('\n')
       );
       if (results.size() >= 3) {
          for (int i = 1; i < results.size(); i++) {
@@ -259,7 +244,7 @@ public class FilledProfileResults implements ProfileResults {
                .append('(')
                .append(result.count)
                .append('/')
-               .append(String.format(Locale.ROOT, "%.0f", (float)result.count / (float)this.tickDuration))
+               .append(String.format(Locale.ROOT, "%.0f", (float)result.count / this.tickDuration))
                .append(')')
                .append(" - ")
                .append(String.format(Locale.ROOT, "%.2f", result.percentage))
@@ -269,8 +254,8 @@ public class FilledProfileResults implements ProfileResults {
             if (!"unspecified".equals(result.name)) {
                try {
                   this.appendProfilerResults(depth + 1, path + "\u001e" + result.name, builder);
-               } catch (Exception var9) {
-                  builder.append("[[ EXCEPTION ").append(var9).append(" ]]");
+               } catch (Exception e) {
+                  builder.append("[[ EXCEPTION ").append(e).append(" ]]");
                }
             }
          }
@@ -287,9 +272,9 @@ public class FilledProfileResults implements ProfileResults {
          .append('/')
          .append(result.totalValue)
          .append(" average: ")
-         .append(result.selfValue / (long)tickspan)
+         .append(result.selfValue / tickspan)
          .append('/')
-         .append(result.totalValue / (long)tickspan)
+         .append(result.totalValue / tickspan)
          .append('\n');
       result.children
          .entrySet()

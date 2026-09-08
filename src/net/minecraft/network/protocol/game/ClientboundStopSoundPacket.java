@@ -14,12 +14,10 @@ public class ClientboundStopSoundPacket implements Packet<ClientGamePacketListen
    );
    private static final int HAS_SOURCE = 1;
    private static final int HAS_SOUND = 2;
-   @Nullable
-   private final Identifier name;
-   @Nullable
-   private final SoundSource source;
+   private final @Nullable Identifier name;
+   private final @Nullable SoundSource source;
 
-   public ClientboundStopSoundPacket(@Nullable final Identifier name, @Nullable final SoundSource source) {
+   public ClientboundStopSoundPacket(final @Nullable Identifier name, final @Nullable SoundSource source) {
       this.name = name;
       this.source = source;
    }
@@ -66,13 +64,11 @@ public class ClientboundStopSoundPacket implements Packet<ClientGamePacketListen
       listener.handleStopSoundEvent(this);
    }
 
-   @Nullable
-   public Identifier getName() {
+   public @Nullable Identifier getName() {
       return this.name;
    }
 
-   @Nullable
-   public SoundSource getSource() {
+   public @Nullable SoundSource getSource() {
       return this.source;
    }
 }

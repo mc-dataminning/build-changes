@@ -19,13 +19,13 @@ public record BedRule(BedRule.Rule canSleep, BedRule.Rule canSetSpawn, boolean d
    );
    public static final Codec<BedRule> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               BedRule.Rule.CODEC.fieldOf("can_sleep").forGetter(BedRule::canSleep),
-               BedRule.Rule.CODEC.fieldOf("can_set_spawn").forGetter(BedRule::canSetSpawn),
-               Codec.BOOL.optionalFieldOf("destroy_on_use", false).forGetter(BedRule::destroyOnUse),
-               Codec.BOOL.optionalFieldOf("destroy_on_leave", false).forGetter(BedRule::destroyOnLeave),
-               ComponentSerialization.CODEC.optionalFieldOf("error_message").forGetter(BedRule::errorMessage)
-            )
-            .apply(i, BedRule::new)
+            BedRule.Rule.CODEC.fieldOf("can_sleep").forGetter(BedRule::canSleep),
+            BedRule.Rule.CODEC.fieldOf("can_set_spawn").forGetter(BedRule::canSetSpawn),
+            Codec.BOOL.optionalFieldOf("destroy_on_use", false).forGetter(BedRule::destroyOnUse),
+            Codec.BOOL.optionalFieldOf("destroy_on_leave", false).forGetter(BedRule::destroyOnLeave),
+            ComponentSerialization.CODEC.optionalFieldOf("error_message").forGetter(BedRule::errorMessage)
+         )
+         .apply(i, BedRule::new)
    );
 
    public boolean canSleep(final Level level) {
@@ -40,7 +40,7 @@ public record BedRule(BedRule.Rule canSleep, BedRule.Rule canSetSpawn, boolean d
       return new Player.BedSleepingProblem(this.errorMessage.orElse(null));
    }
 
-   public static enum Rule implements StringRepresentable {
+   public enum Rule implements StringRepresentable {
       ALWAYS("always"),
       WHEN_DARK("when_dark"),
       NEVER("never");
@@ -48,7 +48,7 @@ public record BedRule(BedRule.Rule canSleep, BedRule.Rule canSetSpawn, boolean d
       public static final Codec<BedRule.Rule> CODEC = StringRepresentable.fromEnum(BedRule.Rule::values);
       private final String name;
 
-      private Rule(final String name) {
+      Rule(final String name) {
          this.name = name;
       }
 

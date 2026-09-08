@@ -64,11 +64,9 @@ public class PauseScreen extends Screen {
    private static final Tooltip CUSTOM_OPTIONS_TOOLTIP = Tooltip.create(Component.translatable("menu.custom_options.tooltip"));
    private static final Tooltip NO_PLAYERS_TO_REPORT_TOOLTIP = Tooltip.create(Component.translatable("menu.playerReporting.no_players"));
    private final Runnable friendListUpdateListener = this::onFriendListUpdate;
-   @Nullable
-   private FriendsButton friends;
+   private @Nullable FriendsButton friends;
    private final boolean showPauseMenu;
-   @Nullable
-   private Button disconnectButton;
+   private @Nullable Button disconnectButton;
 
    public PauseScreen(final boolean showPauseMenu) {
       super(showPauseMenu ? GAME : PAUSED);

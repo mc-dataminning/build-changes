@@ -25,61 +25,56 @@ public class GolemRandomStrollInVillageGoal extends RandomStrollGoal {
       super(mob, speedModifier, 240, false);
    }
 
-   @Nullable
    @Override
-   protected Vec3 getPosition() {
+   protected @Nullable Vec3 getPosition() {
       RandomSource random = this.mob.level().getRandom();
       if (random.nextFloat() < 0.3F) {
          return this.getPositionTowardsAnywhere();
-      } else {
-         Vec3 target;
-         if (random.nextFloat() < 0.7F) {
-            target = this.getPositionTowardsVillagerWhoWantsGolem();
-            if (target == null) {
-               target = this.getPositionTowardsPoi();
-            }
-         } else {
-            target = this.getPositionTowardsPoi();
-            if (target == null) {
-               target = this.getPositionTowardsVillagerWhoWantsGolem();
-            }
-         }
-
-         return target == null ? this.getPositionTowardsAnywhere() : target;
       }
+
+      Vec3 target;
+      if (random.nextFloat() < 0.7F) {
+         target = this.getPositionTowardsVillagerWhoWantsGolem();
+         if (target == null) {
+            target = this.getPositionTowardsPoi();
+         }
+      } else {
+         target = this.getPositionTowardsPoi();
+         if (target == null) {
+            target = this.getPositionTowardsVillagerWhoWantsGolem();
+         }
+      }
+
+      return target == null ? this.getPositionTowardsAnywhere() : target;
    }
 
-   @Nullable
-   private Vec3 getPositionTowardsAnywhere() {
+   private @Nullable Vec3 getPositionTowardsAnywhere() {
       return LandRandomPos.getPos(this.mob, 10, 7);
    }
 
-   @Nullable
-   private Vec3 getPositionTowardsVillagerWhoWantsGolem() {
+   private @Nullable Vec3 getPositionTowardsVillagerWhoWantsGolem() {
       ServerLevel level = (ServerLevel)this.mob.level();
       List<Villager> villagers = level.getEntities(EntityTypes.VILLAGER, this.mob.getBoundingBox().inflate(32.0), this::doesVillagerWantGolem);
       if (villagers.isEmpty()) {
          return null;
-      } else {
-         Villager villager = villagers.get(this.mob.level().getRandom().nextInt(villagers.size()));
-         Vec3 targetPos = villager.position();
-         return LandRandomPos.getPosTowards(this.mob, 10, 7, targetPos);
       }
+
+      Villager villager = villagers.get(this.mob.level().getRandom().nextInt(villagers.size()));
+      Vec3 targetPos = villager.position();
+      return LandRandomPos.getPosTowards(this.mob, 10, 7, targetPos);
    }
 
-   @Nullable
-   private Vec3 getPositionTowardsPoi() {
+   private @Nullable Vec3 getPositionTowardsPoi() {
       SectionPos targetSection = this.getRandomVillageSection();
       if (targetSection == null) {
          return null;
-      } else {
-         BlockPos targetPos = this.getRandomPoiWithinSection(targetSection);
-         return targetPos == null ? null : LandRandomPos.getPosTowards(this.mob, 10, 7, Vec3.atBottomCenterOf(targetPos));
       }
+
+      BlockPos targetPos = this.getRandomPoiWithinSection(targetSection);
+      return targetPos == null ? null : LandRandomPos.getPosTowards(this.mob, 10, 7, Vec3.atBottomCenterOf(targetPos));
    }
 
-   @Nullable
-   private SectionPos getRandomVillageSection() {
+   private @Nullable SectionPos getRandomVillageSection() {
       ServerLevel level = (ServerLevel)this.mob.level();
       List<SectionPos> villageSections = SectionPos.cube(SectionPos.of(this.mob), 2)
          .filter(sectionPos -> level.sectionsToVillage(sectionPos) == 0)
@@ -87,8 +82,7 @@ public class GolemRandomStrollInVillageGoal extends RandomStrollGoal {
       return villageSections.isEmpty() ? null : villageSections.get(level.getRandom().nextInt(villageSections.size()));
    }
 
-   @Nullable
-   private BlockPos getRandomPoiWithinSection(final SectionPos sectionPos) {
+   private @Nullable BlockPos getRandomPoiWithinSection(final SectionPos sectionPos) {
       ServerLevel level = (ServerLevel)this.mob.level();
       PoiManager poiManager = level.getPoiManager();
       List<BlockPos> pois = poiManager.getInRange(poiType -> true, sectionPos.center(), 8, PoiManager.Occupancy.IS_OCCUPIED)

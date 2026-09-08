@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -75,98 +74,97 @@ public class JigsawPlacement {
       StructurePoolElement centerElement = centerPool.getRandomTemplate(random);
       if (centerElement == EmptyPoolElement.INSTANCE) {
          return Optional.empty();
-      } else {
-         BlockPos anchoredPosition;
-         if (startJigsaw.isPresent()) {
-            Identifier targetJigsawId = startJigsaw.get();
-            Optional<BlockPos> anchor = getRandomNamedJigsaw(centerElement, targetJigsawId, position, centerRotation, structureTemplateManager, random);
-            if (anchor.isEmpty()) {
-               LOGGER.error(
-                  "No starting jigsaw {} found in start pool {}",
-                  targetJigsawId,
-                  startPool.unwrapKey().map(key -> key.identifier().toString()).orElse("<unregistered>")
-               );
-               return Optional.empty();
-            }
+      }
 
-            anchoredPosition = anchor.get();
-         } else {
-            anchoredPosition = position;
-         }
-
-         Vec3i localAnchorPosition = anchoredPosition.subtract(position);
-         BlockPos adjustedPosition = position.subtract(localAnchorPosition);
-         PoolElementStructurePiece centerPiece = new PoolElementStructurePiece(
-            structureTemplateManager,
-            centerElement,
-            adjustedPosition,
-            centerElement.getGroundLevelDelta(),
-            centerRotation,
-            centerElement.getBoundingBox(structureTemplateManager, adjustedPosition, centerRotation),
-            liquidSettings
-         );
-         BoundingBox box = centerPiece.getBoundingBox();
-         int centerX = (box.maxX() + box.minX()) / 2;
-         int centerZ = (box.maxZ() + box.minZ()) / 2;
-         int bottomY;
-         if (projectStartToHeightmap.isEmpty()) {
-            bottomY = adjustedPosition.getY();
-         } else {
-            if (!context.couldStructureExistInColumn(centerX, centerZ, heightAccessor.getMinY(), heightAccessor.getMaxY())) {
-               return Optional.empty();
-            }
-
-            bottomY = position.getY()
-               + chunkGenerator.getFirstFreeHeight(centerX, centerZ, projectStartToHeightmap.get(), heightAccessor, context.randomState());
-         }
-
-         int oldAbsoluteGroundY = box.minY() + centerPiece.getGroundLevelDelta();
-         centerPiece.move(0, bottomY - oldAbsoluteGroundY, 0);
-         if (isStartTooCloseToWorldHeightLimits(heightAccessor, dimensionPadding, centerPiece.getBoundingBox())) {
-            LOGGER.debug(
-               "Center piece {} with bounding box {} does not fit dimension padding {}",
-               new Object[]{centerElement, centerPiece.getBoundingBox(), dimensionPadding}
+      BlockPos anchoredPosition;
+      if (startJigsaw.isPresent()) {
+         Identifier targetJigsawId = startJigsaw.get();
+         Optional<BlockPos> anchor = getRandomNamedJigsaw(centerElement, targetJigsawId, position, centerRotation, structureTemplateManager, random);
+         if (anchor.isEmpty()) {
+            LOGGER.error(
+               "No starting jigsaw {} found in start pool {}",
+               targetJigsawId,
+               startPool.unwrapKey().map(key -> key.identifier().toString()).orElse("<unregistered>")
             );
             return Optional.empty();
-         } else {
-            int centerY = bottomY + localAnchorPosition.getY();
-            return Optional.of(
-               new Structure.GenerationStub(
-                  new BlockPos(centerX, centerY, centerZ),
-                  (Consumer<StructurePiecesBuilder>)(builder -> {
-                     List<PoolElementStructurePiece> pieces = Lists.newArrayList();
-                     pieces.add(centerPiece);
-                     if (maxDepth > 0) {
-                        AABB aabb = new AABB(
-                           (double)(centerX - maxDistanceFromCenter.horizontal()),
-                           (double)Math.max(centerY - maxDistanceFromCenter.vertical(), heightAccessor.getMinY() + dimensionPadding.bottom()),
-                           (double)(centerZ - maxDistanceFromCenter.horizontal()),
-                           (double)(centerX + maxDistanceFromCenter.horizontal() + 1),
-                           (double)Math.min(centerY + maxDistanceFromCenter.vertical() + 1, heightAccessor.getMaxY() + 1 - dimensionPadding.top()),
-                           (double)(centerZ + maxDistanceFromCenter.horizontal() + 1)
-                        );
-                        VoxelShape shape = Shapes.join(Shapes.create(aabb), Shapes.create(AABB.of(box)), BooleanOp.ONLY_FIRST);
-                        addPieces(
-                           context.randomState(),
-                           maxDepth,
-                           doExpansionHack,
-                           chunkGenerator,
-                           structureTemplateManager,
-                           heightAccessor,
-                           random,
-                           pools,
-                           centerPiece,
-                           pieces,
-                           shape,
-                           poolAliasLookup,
-                           liquidSettings
-                        );
-                        pieces.forEach(builder::addPiece);
-                     }
-                  })
-               )
-            );
          }
+
+         anchoredPosition = anchor.get();
+      } else {
+         anchoredPosition = position;
+      }
+
+      Vec3i localAnchorPosition = anchoredPosition.subtract(position);
+      BlockPos adjustedPosition = position.subtract(localAnchorPosition);
+      PoolElementStructurePiece centerPiece = new PoolElementStructurePiece(
+         structureTemplateManager,
+         centerElement,
+         adjustedPosition,
+         centerElement.getGroundLevelDelta(),
+         centerRotation,
+         centerElement.getBoundingBox(structureTemplateManager, adjustedPosition, centerRotation),
+         liquidSettings
+      );
+      BoundingBox box = centerPiece.getBoundingBox();
+      int centerX = (box.maxX() + box.minX()) / 2;
+      int centerZ = (box.maxZ() + box.minZ()) / 2;
+      int bottomY;
+      if (projectStartToHeightmap.isEmpty()) {
+         bottomY = adjustedPosition.getY();
+      } else {
+         if (!context.couldStructureExistInColumn(centerX, centerZ, heightAccessor.getMinY(), heightAccessor.getMaxY())) {
+            return Optional.empty();
+         }
+
+         bottomY = position.getY() + chunkGenerator.getFirstFreeHeight(centerX, centerZ, projectStartToHeightmap.get(), heightAccessor, context.randomState());
+      }
+
+      int oldAbsoluteGroundY = box.minY() + centerPiece.getGroundLevelDelta();
+      centerPiece.move(0, bottomY - oldAbsoluteGroundY, 0);
+      if (isStartTooCloseToWorldHeightLimits(heightAccessor, dimensionPadding, centerPiece.getBoundingBox())) {
+         LOGGER.debug(
+            "Center piece {} with bounding box {} does not fit dimension padding {}",
+            new Object[]{centerElement, centerPiece.getBoundingBox(), dimensionPadding}
+         );
+         return Optional.empty();
+      } else {
+         int centerY = bottomY + localAnchorPosition.getY();
+         return Optional.of(
+            new Structure.GenerationStub(
+               new BlockPos(centerX, centerY, centerZ),
+               builder -> {
+                  List<PoolElementStructurePiece> pieces = Lists.newArrayList();
+                  pieces.add(centerPiece);
+                  if (maxDepth > 0) {
+                     AABB aabb = new AABB(
+                        centerX - maxDistanceFromCenter.horizontal(),
+                        Math.max(centerY - maxDistanceFromCenter.vertical(), heightAccessor.getMinY() + dimensionPadding.bottom()),
+                        centerZ - maxDistanceFromCenter.horizontal(),
+                        centerX + maxDistanceFromCenter.horizontal() + 1,
+                        Math.min(centerY + maxDistanceFromCenter.vertical() + 1, heightAccessor.getMaxY() + 1 - dimensionPadding.top()),
+                        centerZ + maxDistanceFromCenter.horizontal() + 1
+                     );
+                     VoxelShape shape = Shapes.join(Shapes.create(aabb), Shapes.create(AABB.of(box)), BooleanOp.ONLY_FIRST);
+                     addPieces(
+                        context.randomState(),
+                        maxDepth,
+                        doExpansionHack,
+                        chunkGenerator,
+                        structureTemplateManager,
+                        heightAccessor,
+                        random,
+                        pools,
+                        centerPiece,
+                        pieces,
+                        shape,
+                        poolAliasLookup,
+                        liquidSettings
+                     );
+                     pieces.forEach(builder::addPiece);
+                  }
+               }
+            )
+         );
       }
    }
 
@@ -175,11 +173,11 @@ public class JigsawPlacement {
    ) {
       if (dimensionPadding == DimensionPadding.ZERO) {
          return false;
-      } else {
-         int minYWithPadding = heightAccessor.getMinY() + dimensionPadding.bottom();
-         int maxYWithPadding = heightAccessor.getMaxY() - dimensionPadding.top();
-         return centerPieceBb.minY() < minYWithPadding || centerPieceBb.maxY() > maxYWithPadding;
       }
+
+      int minYWithPadding = heightAccessor.getMinY() + dimensionPadding.bottom();
+      int maxYWithPadding = heightAccessor.getMaxY() - dimensionPadding.top();
+      return centerPieceBb.minY() < minYWithPadding || centerPieceBb.maxY() > maxYWithPadding;
    }
 
    private static Optional<BlockPos> getRandomNamedJigsaw(
@@ -276,7 +274,7 @@ public class JigsawPlacement {
       }
    }
 
-   private static record PieceState(PoolElementStructurePiece piece, MutableObject<VoxelShape> free, int depth) {
+   private record PieceState(PoolElementStructurePiece piece, MutableObject<VoxelShape> free, int depth) {
    }
 
    private static final class Placer {
@@ -380,14 +378,14 @@ public class JigsawPlacement {
                               expandTo = targetJigsaws.stream().mapToInt(targetJigsawx -> {
                                  if (!hackBox.isInside(targetJigsawx.pos().relative(JigsawBlock.getFrontFacing(targetJigsawx.state())))) {
                                     return 0;
-                                 } else {
-                                    ResourceKey<StructureTemplatePool> childPoolName = poolAliasLookup.lookup(targetJigsawx.pool());
-                                    Optional<? extends Holder<StructureTemplatePool>> childPool = this.pools.get(childPoolName);
-                                    Optional<Holder<StructureTemplatePool>> childFallbackPool = childPool.map(p -> p.value().getFallback());
-                                    int childPoolSize = childPool.<Integer>map(p -> p.value().getMaxSize(this.structureTemplateManager)).orElse(0);
-                                    int childFallbackSize = childFallbackPool.<Integer>map(p -> p.value().getMaxSize(this.structureTemplateManager)).orElse(0);
-                                    return Math.max(childPoolSize, childFallbackSize);
                                  }
+
+                                 ResourceKey<StructureTemplatePool> childPoolName = poolAliasLookup.lookup(targetJigsawx.pool());
+                                 Optional<? extends Holder<StructureTemplatePool>> childPool = this.pools.get(childPoolName);
+                                 Optional<Holder<StructureTemplatePool>> childFallbackPool = childPool.map(p -> p.value().getFallback());
+                                 int childPoolSize = childPool.<Integer>map(p -> p.value().getMaxSize(this.structureTemplateManager)).orElse(0);
+                                 int childFallbackSize = childFallbackPool.<Integer>map(p -> p.value().getMaxSize(this.structureTemplateManager)).orElse(0);
+                                 return Math.max(childPoolSize, childFallbackSize);
                               }).max().orElse(0);
                            } else {
                               expandTo = 0;

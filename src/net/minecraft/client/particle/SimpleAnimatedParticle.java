@@ -17,17 +17,17 @@ public abstract class SimpleAnimatedParticle extends SingleQuadParticle {
    }
 
    public void setColor(final int rgb) {
-      float r = (float)((rgb & 0xFF0000) >> 16) / 255.0F;
-      float g = (float)((rgb & 0xFF00) >> 8) / 255.0F;
-      float b = (float)((rgb & 0xFF) >> 0) / 255.0F;
+      float r = ((rgb & 0xFF0000) >> 16) / 255.0F;
+      float g = ((rgb & 0xFF00) >> 8) / 255.0F;
+      float b = ((rgb & 0xFF) >> 0) / 255.0F;
       float scale = 1.0F;
       this.setColor(r * 1.0F, g * 1.0F, b * 1.0F);
    }
 
    public void setFadeColor(final int rgb) {
-      this.fadeR = (float)((rgb & 0xFF0000) >> 16) / 255.0F;
-      this.fadeG = (float)((rgb & 0xFF00) >> 8) / 255.0F;
-      this.fadeB = (float)((rgb & 0xFF) >> 0) / 255.0F;
+      this.fadeR = ((rgb & 0xFF0000) >> 16) / 255.0F;
+      this.fadeG = ((rgb & 0xFF00) >> 8) / 255.0F;
+      this.fadeB = ((rgb & 0xFF) >> 0) / 255.0F;
       this.hasFade = true;
    }
 
@@ -41,7 +41,7 @@ public abstract class SimpleAnimatedParticle extends SingleQuadParticle {
       super.tick();
       this.setSpriteFromAge(this.sprites);
       if (this.age > this.lifetime / 2) {
-         this.setAlpha(1.0F - ((float)this.age - (float)(this.lifetime / 2)) / (float)this.lifetime);
+         this.setAlpha(1.0F - ((float)this.age - this.lifetime / 2) / this.lifetime);
          if (this.hasFade) {
             this.rCol = this.rCol + (this.fadeR - this.rCol) * 0.2F;
             this.gCol = this.gCol + (this.fadeG - this.gCol) * 0.2F;

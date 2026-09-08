@@ -23,10 +23,10 @@ public record PotionsPredicate(Optional<HolderSet<Potion>> potions, Optional<Col
    implements SingleComponentItemPredicate<PotionContents> {
    public static final Codec<PotionsPredicate> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               RegistryCodecs.holderSet(Registries.POTION).optionalFieldOf("potions").forGetter(PotionsPredicate::potions),
-               CollectionPredicate.codec(MobEffectsPredicate.CODEC).optionalFieldOf("effects").forGetter(PotionsPredicate::effects)
-            )
-            .apply(i, PotionsPredicate::new)
+            RegistryCodecs.holderSet(Registries.POTION).optionalFieldOf("potions").forGetter(PotionsPredicate::potions),
+            CollectionPredicate.codec(MobEffectsPredicate.CODEC).optionalFieldOf("effects").forGetter(PotionsPredicate::effects)
+         )
+         .apply(i, PotionsPredicate::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, PotionsPredicate> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.optional(ByteBufCodecs.holderSet(Registries.POTION)),

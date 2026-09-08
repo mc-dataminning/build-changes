@@ -18,8 +18,7 @@ public record ResolutionContext(
 ) {
    private static final int DEFAULT_RESOLVED_COMPONENT_LIMIT = 65536;
 
-   @Nullable
-   public ObjectInfo validate(final ObjectInfo description) {
+   public @Nullable ObjectInfo validate(final ObjectInfo description) {
       return this.objectInfoValidator.test(description) ? description : null;
    }
 
@@ -32,10 +31,8 @@ public record ResolutionContext(
    }
 
    public static class Builder {
-      @Nullable
-      private CommandSourceStack source;
-      @Nullable
-      private Entity defaultScoreboardEntity;
+      private @Nullable CommandSourceStack source;
+      private @Nullable Entity defaultScoreboardEntity;
       private Predicate<ObjectInfo> objectInfoValidator = var0 -> true;
       private int depthLimit = 100;
       private ResolutionContext.LimitBehavior depthLimitBehavior = ResolutionContext.LimitBehavior.STOP_PROCESSING_AND_COPY_REMAINING;
@@ -46,7 +43,7 @@ public record ResolutionContext(
          return this;
       }
 
-      public ResolutionContext.Builder withEntityOverride(@Nullable final Entity defaultScoreboardEntity) {
+      public ResolutionContext.Builder withEntityOverride(final @Nullable Entity defaultScoreboardEntity) {
          this.defaultScoreboardEntity = defaultScoreboardEntity;
          return this;
       }
@@ -73,7 +70,7 @@ public record ResolutionContext(
       }
    }
 
-   public static enum LimitBehavior {
+   public enum LimitBehavior {
       DISCARD_REMAINING,
       STOP_PROCESSING_AND_COPY_REMAINING;
    }

@@ -52,9 +52,7 @@ public class GameTestMainUtil {
    private static final OptionSpec<String> packs = parser.accepts("packs", "A folder of datapacks to include in the world").withRequiredArg();
    private static final OptionSpec<Void> help = parser.accepts("help").forHelp();
 
-   @SuppressForbidden(
-      reason = "Using System.err due to no bootstrap"
-   )
+   @SuppressForbidden(reason = "Using System.err due to no bootstrap")
    public static void runGameTestServer(final String[] args, final Consumer<String> onUniverseCreated) throws Exception {
       parser.allowsUnrecognizedOptions();
       OptionSet options = parser.parse(args);
@@ -89,13 +87,13 @@ public class GameTestMainUtil {
          PackRepository packRepository = ServerPacksSource.createPackRepository(levelStorageSource);
          MinecraftServer.spin(
             thread -> GameTestServer.create(
-                  thread,
-                  levelStorageSource,
-                  packRepository,
-                  optionalFromOption(options, tests),
-                  (Boolean)options.valueOf(verify),
-                  (Integer)options.valueOf(repeatCount)
-               )
+               thread,
+               levelStorageSource,
+               packRepository,
+               optionalFromOption(options, tests),
+               (Boolean)options.valueOf(verify),
+               (Integer)options.valueOf(repeatCount)
+            )
          );
       }
    }

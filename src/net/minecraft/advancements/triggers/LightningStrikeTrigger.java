@@ -27,16 +27,16 @@ public class LightningStrikeTrigger extends SimpleCriterionTrigger<LightningStri
       this.trigger(player, t -> t.matches(lightningContext, entitiesAroundContexts));
    }
 
-   public static record TriggerInstance(
+   public record TriggerInstance(
       Optional<Holder<LootItemCondition>> player, Optional<Holder<LootItemCondition>> lightning, Optional<Holder<LootItemCondition>> bystander
    ) implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<LightningStrikeTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(LightningStrikeTrigger.TriggerInstance::player),
-                  LootItemCondition.CODEC.optionalFieldOf("lightning").forGetter(LightningStrikeTrigger.TriggerInstance::lightning),
-                  LootItemCondition.CODEC.optionalFieldOf("bystander").forGetter(LightningStrikeTrigger.TriggerInstance::bystander)
-               )
-               .apply(i, LightningStrikeTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(LightningStrikeTrigger.TriggerInstance::player),
+               LootItemCondition.CODEC.optionalFieldOf("lightning").forGetter(LightningStrikeTrigger.TriggerInstance::lightning),
+               LootItemCondition.CODEC.optionalFieldOf("bystander").forGetter(LightningStrikeTrigger.TriggerInstance::bystander)
+            )
+            .apply(i, LightningStrikeTrigger.TriggerInstance::new)
       );
 
       public static Criterion<LightningStrikeTrigger.TriggerInstance> lightningStrike(

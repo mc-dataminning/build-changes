@@ -2,7 +2,6 @@ package net.minecraft.client.gui.screens.friends;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractContainerWidget;
@@ -50,10 +49,6 @@ class AddFriendWidget extends AbstractContainerWidget {
    AddFriendWidget(final int width, final Runnable afterSend) {
       super(0, 0, width, 0, Component.empty());
       this.editBox = new EditBox(this.minecraft.font, width - 20 - 3 - 16, 20, ENTER_NICKNAME) {
-         {
-            Objects.requireNonNull(AddFriendWidget.this);
-         }
-
          @Override
          public boolean keyPressed(final KeyEvent event) {
             boolean enterPressed = event.shortcutKey() == 13 || event.shortcutKey() == 1073741912;
@@ -95,10 +90,6 @@ class AddFriendWidget extends AbstractContainerWidget {
       this.profileNameButton = new PlainTextButton(
          0, 0, profileNameWidth, 9, profileNameComponent, var2 -> this.minecraft.keyboardHandler.setClipboard(profileName), this.minecraft.font
       ) {
-         {
-            Objects.requireNonNull(AddFriendWidget.this);
-         }
-
          @Override
          protected MutableComponent createNarrationMessage() {
             return wrapDefaultNarrationMessage(Component.translatable("gui.friends.my_profile_name.narration", profileNameComponent));
@@ -134,8 +125,7 @@ class AddFriendWidget extends AbstractContainerWidget {
       this.applyState(value.trim().isEmpty() ? AddFriendWidget.State.EMPTY_INPUT : AddFriendWidget.State.READY);
    }
 
-   @Nullable
-   private Component getInvalidInputReason(final String name) {
+   private @Nullable Component getInvalidInputReason(final String name) {
       PlayerSocialManager playerSocialManager = this.minecraft.getPlayerSocialManager();
       if (this.minecraft.getUser().getName().equalsIgnoreCase(name)) {
          return Component.translatable("gui.friends.validation.cannot_add_self");
@@ -242,7 +232,7 @@ class AddFriendWidget extends AbstractContainerWidget {
       return List.of(this.editBox, this.addButton, this.profileNameButton);
    }
 
-   static enum State {
+   enum State {
       EMPTY_INPUT,
       READY,
       SENDING,

@@ -79,24 +79,24 @@ public class MissingDimensionFix extends DataFix {
       FieldFinder<?> dimensionsFinder = new FieldFinder("dimensions", expectedDimensionsType);
       if (!settings.findFieldType("dimensions").equals(expectedDimensionsType)) {
          throw new IllegalStateException();
-      } else {
-         OpticFinder<? extends List<? extends Pair<String, ?>>> dimensionListFinder = dimensionsType.finder();
-         return this.fixTypeEverywhereTyped(
-            "MissingDimensionFix",
-            settings,
-            input -> input.updateTyped(dimensionsFinder, dimensions -> dimensions.updateTyped(dimensionListFinder, generators -> {
-                     if (!(generators.getValue() instanceof List)) {
-                        throw new IllegalStateException("List exptected");
-                     } else if (((List)generators.getValue()).isEmpty()) {
-                        Dynamic<?> tag = (Dynamic<?>)input.get(DSL.remainderFinder());
-                        Dynamic<?> newDimensions = this.recreateSettings(tag);
-                        return (Typed)DataFixUtils.orElse(dimensionsType.readTyped(newDimensions).result().map(Pair::getFirst), generators);
-                     } else {
-                        return generators;
-                     }
-                  }))
-         );
       }
+
+      OpticFinder<? extends List<? extends Pair<String, ?>>> dimensionListFinder = dimensionsType.finder();
+      return this.fixTypeEverywhereTyped(
+         "MissingDimensionFix",
+         settings,
+         input -> input.updateTyped(dimensionsFinder, dimensions -> dimensions.updateTyped(dimensionListFinder, generators -> {
+            if (!(generators.getValue() instanceof List)) {
+               throw new IllegalStateException("List exptected");
+            } else if (((List)generators.getValue()).isEmpty()) {
+               Dynamic<?> tag = (Dynamic<?>)input.get(DSL.remainderFinder());
+               Dynamic<?> newDimensions = this.recreateSettings(tag);
+               return (Typed)DataFixUtils.orElse(dimensionsType.readTyped(newDimensions).result().map(Pair::getFirst), generators);
+            } else {
+               return generators;
+            }
+         }))
+      );
    }
 
    protected static Type<? extends Pair<? extends Either<? extends Pair<? extends Either<?, Unit>, ? extends Pair<? extends Either<? extends List<? extends Pair<? extends Either<?, Unit>, Dynamic<?>>>, Unit>, Dynamic<?>>>, Unit>, Dynamic<?>>> flatType(

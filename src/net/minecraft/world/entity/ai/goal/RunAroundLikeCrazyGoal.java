@@ -26,12 +26,12 @@ public class RunAroundLikeCrazyGoal extends Goal {
          Vec3 pos = DefaultRandomPos.getPos(this.horse, 5, 4);
          if (pos == null) {
             return false;
-         } else {
-            this.posX = pos.x;
-            this.posY = pos.y;
-            this.posZ = pos.z;
-            return true;
          }
+
+         this.posX = pos.x;
+         this.posY = pos.y;
+         this.posZ = pos.z;
+         return true;
       } else {
          return false;
       }

@@ -36,12 +36,12 @@ public class EntryGroup extends CompositeEntryBase {
             };
          }
          default -> (context, output) -> {
-         for (ComposableEntryContainer entry : entries) {
-            entry.expand(context, output);
-         }
+            for (ComposableEntryContainer entry : entries) {
+               entry.expand(context, output);
+            }
 
-         return true;
-      };
+            return true;
+         };
       };
    }
 

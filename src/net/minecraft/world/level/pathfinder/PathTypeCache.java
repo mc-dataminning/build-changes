@@ -18,8 +18,7 @@ public class PathTypeCache {
       return cachedPathType != null ? cachedPathType : this.compute(level, pos, index, key);
    }
 
-   @Nullable
-   private PathType get(final int index, final long key) {
+   private @Nullable PathType get(final int index, final long key) {
       return this.positions[index] == key ? this.pathTypes[index] : null;
    }
 

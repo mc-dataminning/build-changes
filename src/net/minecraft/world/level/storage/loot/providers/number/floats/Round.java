@@ -15,6 +15,6 @@ public record Round(Holder<ContextFloatProvider> input) implements ContextFloatP
 
    @Override
    public float getFloatUnsafe(final LootContext context) {
-      return (float)Math.round(this.input().value().getFloatUnsafe(context));
+      return Math.round(this.input().value().getFloatUnsafe(context));
    }
 }

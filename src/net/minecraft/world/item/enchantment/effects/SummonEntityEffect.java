@@ -22,10 +22,10 @@ import net.minecraft.world.phys.Vec3;
 public record SummonEntityEffect(HolderSet<EntityType<?>> entityTypes, boolean joinTeam) implements EnchantmentEntityEffect {
    public static final MapCodec<SummonEntityEffect> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               RegistryCodecs.holderSet(Registries.ENTITY_TYPE).fieldOf("entity").forGetter(SummonEntityEffect::entityTypes),
-               Codec.BOOL.optionalFieldOf("join_team", false).forGetter(SummonEntityEffect::joinTeam)
-            )
-            .apply(i, SummonEntityEffect::new)
+            RegistryCodecs.holderSet(Registries.ENTITY_TYPE).fieldOf("entity").forGetter(SummonEntityEffect::entityTypes),
+            Codec.BOOL.optionalFieldOf("join_team", false).forGetter(SummonEntityEffect::joinTeam)
+         )
+         .apply(i, SummonEntityEffect::new)
    );
 
    @Override

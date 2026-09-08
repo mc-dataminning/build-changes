@@ -48,8 +48,8 @@ public abstract class AbstractMountInventoryScreen<T extends AbstractMountInvent
 
    @Override
    public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      this.xMouse = (float)mouseX;
-      this.yMouse = (float)mouseY;
+      this.xMouse = mouseX;
+      this.yMouse = mouseY;
       super.extractRenderState(graphics, mouseX, mouseY, a);
    }
 
@@ -57,8 +57,7 @@ public abstract class AbstractMountInventoryScreen<T extends AbstractMountInvent
 
    protected abstract Identifier getSlotSpriteLocation();
 
-   @Nullable
-   protected abstract Identifier getChestSlotsSpriteLocation();
+   protected abstract @Nullable Identifier getChestSlotsSpriteLocation();
 
    protected abstract boolean shouldRenderSaddleSlot();
 

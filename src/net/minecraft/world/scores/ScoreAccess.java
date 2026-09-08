@@ -29,10 +29,9 @@ public interface ScoreAccess {
 
    void lock();
 
-   @Nullable
-   Component display();
+   @Nullable Component display();
 
-   void display(@Nullable final Component display);
+   void display(final @Nullable Component display);
 
    void numberFormatOverride(@Nullable NumberFormat numberFormat);
 }

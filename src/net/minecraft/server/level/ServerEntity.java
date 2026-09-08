@@ -75,8 +75,7 @@ public class ServerEntity {
    private List<Entity> lastPassengers = Collections.emptyList();
    private boolean wasRiding;
    private boolean wasOnGround;
-   @Nullable
-   private List<SynchedEntityData.DataValue<?>> trackedDataValues;
+   private @Nullable List<SynchedEntityData.DataValue<?>> trackedDataValues;
 
    public ServerEntity(
       final ServerLevel level, final Entity entity, final UpdateInterval updateInterval, final boolean trackDelta, final ServerEntity.Synchronizer synchronizer
@@ -145,63 +144,58 @@ public class ServerEntity {
             this.positionCodec.setBase(currentPosition);
             this.sendDirtyEntityData();
             this.wasRiding = true;
+         } else if (this.entity instanceof AbstractMinecart minecart && minecart.getBehavior() instanceof NewMinecartBehavior newMinecartBehavior) {
+            this.handleMinecartPosRot(newMinecartBehavior, yRotn, xRotn, shouldSendRotation);
          } else {
-            label154: {
-               if (this.entity instanceof AbstractMinecart minecart && minecart.getBehavior() instanceof NewMinecartBehavior newMinecartBehavior) {
-                  this.handleMinecartPosRot(newMinecartBehavior, yRotn, xRotn, shouldSendRotation);
-                  break label154;
-               }
-
-               this.teleportDelay++;
-               PositionPath position = this.interpolationTracker.getPositionPath(currentPosition);
-               this.interpolationTracker.clear();
-               MovementPacket<ClientGamePacketListener> packet;
-               if (this.entity instanceof AbstractArrow) {
-                  packet = this.createMovePacket(position, yRotn, xRotn, true, true);
-               } else {
-                  boolean positionChanged = this.positionCodec.delta(currentPosition).lengthSqr() >= 7.6293945E-6F;
-                  boolean shouldSendPosition = positionChanged || this.tickCount % 60 == 0;
-                  packet = this.createMovePacket(position, yRotn, xRotn, shouldSendPosition, shouldSendRotation);
-               }
-
-               if (this.entity.needsSync || this.trackDelta || this.entity instanceof LivingEntity livingEntity && livingEntity.isFallFlying()) {
-                  Vec3 movement = this.entity.getDeltaMovement();
-                  double diff = movement.distanceToSqr(this.lastSentMovement);
-                  if (diff > 1.0E-7 || diff > 0.0 && movement.lengthSqr() == 0.0) {
-                     this.lastSentMovement = movement;
-                     if (this.entity instanceof AbstractHurtingProjectile projectile) {
-                        this.synchronizer
-                           .sendToTrackingPlayers(
-                              new ClientboundBundlePacket(
-                                 List.of(
-                                    new ClientboundSetEntityMotionPacket(this.entity.getId(), this.lastSentMovement),
-                                    new ClientboundProjectilePowerPacket(projectile.getId(), projectile.accelerationPower)
-                                 )
-                              )
-                           );
-                     } else {
-                        this.synchronizer.sendToTrackingPlayers(new ClientboundSetEntityMotionPacket(this.entity.getId(), this.lastSentMovement));
-                     }
-                  }
-               }
-
-               if (packet != null) {
-                  this.synchronizer.sendToTrackingPlayers(packet);
-                  this.sendDirtyEntityData();
-                  if (packet.hasPosition()) {
-                     this.positionCodec.setBase(currentPosition);
-                  }
-
-                  if (packet.hasRotation()) {
-                     this.lastSentYRot = yRotn;
-                     this.lastSentXRot = xRotn;
-                  }
-               } else {
-                  this.sendDirtyEntityData();
-               }
-
-               this.wasRiding = false;
+            this.teleportDelay++;
+            PositionPath position = this.interpolationTracker.getPositionPath(currentPosition);
+            this.interpolationTracker.clear();
+            MovementPacket<ClientGamePacketListener> packet;
+            if (this.entity instanceof AbstractArrow) {
+               packet = this.createMovePacket(position, yRotn, xRotn, true, true);
+            } else {
+               boolean positionChanged = this.positionCodec.delta(currentPosition).lengthSqr() >= 7.6293945E-6F;
+               boolean shouldSendPosition = positionChanged || this.tickCount % 60 == 0;
+               packet = this.createMovePacket(position, yRotn, xRotn, shouldSendPosition, shouldSendRotation);
             }
+
+            if (this.entity.needsSync || this.trackDelta || this.entity instanceof LivingEntity livingEntity && livingEntity.isFallFlying()) {
+               Vec3 movement = this.entity.getDeltaMovement();
+               double diff = movement.distanceToSqr(this.lastSentMovement);
+               if (diff > 1.0E-7 || diff > 0.0 && movement.lengthSqr() == 0.0) {
+                  this.lastSentMovement = movement;
+                  if (this.entity instanceof AbstractHurtingProjectile projectile) {
+                     this.synchronizer
+                        .sendToTrackingPlayers(
+                           new ClientboundBundlePacket(
+                              List.of(
+                                 new ClientboundSetEntityMotionPacket(this.entity.getId(), this.lastSentMovement),
+                                 new ClientboundProjectilePowerPacket(projectile.getId(), projectile.accelerationPower)
+                              )
+                           )
+                        );
+                  } else {
+                     this.synchronizer.sendToTrackingPlayers(new ClientboundSetEntityMotionPacket(this.entity.getId(), this.lastSentMovement));
+                  }
+               }
+            }
+
+            if (packet != null) {
+               this.synchronizer.sendToTrackingPlayers(packet);
+               this.sendDirtyEntityData();
+               if (packet.hasPosition()) {
+                  this.positionCodec.setBase(currentPosition);
+               }
+
+               if (packet.hasRotation()) {
+                  this.lastSentYRot = yRotn;
+                  this.lastSentXRot = xRotn;
+               }
+            } else {
+               this.sendDirtyEntityData();
+            }
+
+            this.wasRiding = false;
          }
 
          byte yHeadRot = Mth.packDegrees(this.entity.getYHeadRot());
@@ -220,22 +214,23 @@ public class ServerEntity {
       }
    }
 
-   @Nullable
-   private MovementPacket<ClientGamePacketListener> createMovePacket(
+   private @Nullable MovementPacket<ClientGamePacketListener> createMovePacket(
       final PositionPath position, final byte yRotn, final byte xRotn, final boolean shouldSendPosition, final boolean shouldSendRotation
    ) {
       if (this.entity.getRequiresPrecisePosition() || this.teleportDelay > 400 || this.wasRiding || this.wasOnGround != this.entity.onGround()) {
          this.wasOnGround = this.entity.onGround();
          this.teleportDelay = 0;
          return ClientboundEntityPositionSyncPacket.of(this.entity, position);
-      } else if (shouldSendPosition) {
+      }
+
+      if (shouldSendPosition) {
          VecDelta encodedDelta = this.positionCodec.tryEncode(position);
          if (encodedDelta == null || this.isFullPrecisionEncodingRequired(position.endPosition(), encodedDelta)) {
             return ClientboundEntityPositionSyncPacket.of(this.entity, position);
          } else {
-            return (MovementPacket<ClientGamePacketListener>)(shouldSendRotation
+            return shouldSendRotation
                ? new ClientboundMoveEntityPacket.PosRot(this.entity.getId(), encodedDelta, yRotn, xRotn, this.entity.onGround())
-               : new ClientboundMoveEntityPacket.Pos(this.entity.getId(), encodedDelta, this.entity.onGround()));
+               : new ClientboundMoveEntityPacket.Pos(this.entity.getId(), encodedDelta, this.entity.onGround());
          }
       } else {
          return shouldSendRotation ? new ClientboundMoveEntityPacket.Rot(this.entity.getId(), yRotn, xRotn, this.entity.onGround()) : null;
@@ -324,11 +319,11 @@ public class ServerEntity {
          }
       }
 
-      if (this.entity instanceof LivingEntity livingEntityx) {
+      if (this.entity instanceof LivingEntity livingEntity) {
          List<Pair<EquipmentSlot, ItemStack>> slots = Lists.newArrayList();
 
          for (EquipmentSlot slot : EquipmentSlot.VALUES) {
-            ItemStack itemStack = livingEntityx.getItemBySlot(slot);
+            ItemStack itemStack = livingEntity.getItemBySlot(slot);
             if (!itemStack.isEmpty()) {
                slots.add(Pair.of(slot, itemStack.copy()));
             }

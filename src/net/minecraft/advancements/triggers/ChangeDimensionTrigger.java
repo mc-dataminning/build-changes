@@ -20,15 +20,15 @@ public class ChangeDimensionTrigger extends SimpleCriterionTrigger<ChangeDimensi
       this.trigger(player, t -> t.matches(from, to));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<ResourceKey<Level>> from, Optional<ResourceKey<Level>> to)
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<ResourceKey<Level>> from, Optional<ResourceKey<Level>> to)
       implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<ChangeDimensionTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(ChangeDimensionTrigger.TriggerInstance::player),
-                  ResourceKey.codec(Registries.DIMENSION).optionalFieldOf("from").forGetter(ChangeDimensionTrigger.TriggerInstance::from),
-                  ResourceKey.codec(Registries.DIMENSION).optionalFieldOf("to").forGetter(ChangeDimensionTrigger.TriggerInstance::to)
-               )
-               .apply(i, ChangeDimensionTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(ChangeDimensionTrigger.TriggerInstance::player),
+               ResourceKey.codec(Registries.DIMENSION).optionalFieldOf("from").forGetter(ChangeDimensionTrigger.TriggerInstance::from),
+               ResourceKey.codec(Registries.DIMENSION).optionalFieldOf("to").forGetter(ChangeDimensionTrigger.TriggerInstance::to)
+            )
+            .apply(i, ChangeDimensionTrigger.TriggerInstance::new)
       );
 
       public static Criterion<ChangeDimensionTrigger.TriggerInstance> changedDimension() {

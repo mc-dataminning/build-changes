@@ -17,16 +17,16 @@ public class LoggedPrintStream extends PrintStream {
    }
 
    @Override
-   public void println(@Nullable final String string) {
+   public void println(final @Nullable String string) {
       this.logLine(string);
    }
 
    @Override
-   public void println(@Nullable final Object object) {
+   public void println(final @Nullable Object object) {
       this.logLine(String.valueOf(object));
    }
 
-   protected void logLine(@Nullable final String out) {
+   protected void logLine(final @Nullable String out) {
       LOGGER.info("[{}]: {}", this.name, out);
    }
 }

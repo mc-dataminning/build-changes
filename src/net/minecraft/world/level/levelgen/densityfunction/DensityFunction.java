@@ -6,7 +6,6 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.util.Objects;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -20,42 +19,24 @@ import net.minecraft.world.level.levelgen.synth.NormalNoise;
 public interface DensityFunction {
    Codec<Holder<DensityFunction>> REFERENCE_CODEC = RegistryCodecs.holder(Registries.DENSITY_FUNCTION);
    Codec<DensityFunction> CODEC = RegistryCodecs.holder(Registries.DENSITY_FUNCTION, DensityFunctions.DIRECT_CODEC).xmap(holder -> {
-      Objects.requireNonNull(holder);
-
-      return (DensityFunction)(switch (holder) {
-         case Holder.Direct direct -> (DensityFunction)direct.value();
-         case Holder.Reference reference -> new DensityFunctions.HolderHolder(reference);
+      return switch (holder) {
+         case Holder.Direct<DensityFunction> direct -> (DensityFunction)direct.value();
+         case Holder.Reference<DensityFunction> reference -> new DensityFunctions.HolderHolder(reference);
          default -> throw new MatchException(null, null);
-      });
+      };
    }, value -> {
-      Objects.requireNonNull(value);
-
       return switch (value) {
-         case DensityFunctions.HolderHolder $b$0 -> {
-            DensityFunctions.HolderHolder var7 = $b$0;
-
-            try {
-               var8 = var7.function();
-            } catch (Throwable var6) {
-               throw new MatchException(var6.toString(), var6);
-            }
-
-            Holder patt3$temp = var8;
-            yield patt3$temp;
-         }
+         case DensityFunctions.HolderHolder(Holder<DensityFunction> function) -> function;
          default -> Holder.direct(value);
       };
    });
    int AXIS_X = 1;
    int AXIS_Y = 2;
    int AXIS_Z = 4;
-   @DensityFunction.Axes
-   int NO_AXES = 0;
-   @DensityFunction.Axes
-   int ALL_AXES = 7;
+   @DensityFunction.Axes int NO_AXES = 0;
+   @DensityFunction.Axes int ALL_AXES = 7;
 
-   @DensityFunction.Axes
-   static int axesFrom(final Direction.Axis axis) {
+   static @DensityFunction.Axes int axesFrom(final Direction.Axis axis) {
       return switch (axis) {
          case X -> 1;
          case Y -> 2;
@@ -69,8 +50,7 @@ public interface DensityFunction {
 
    Interval range();
 
-   @DensityFunction.Axes
-   int domainAxes();
+   @DensityFunction.Axes int domainAxes();
 
    MapCodec<? extends DensityFunction> codec();
 
@@ -169,11 +149,11 @@ public interface DensityFunction {
    }
 
    @Retention(RetentionPolicy.CLASS)
-   @Target({ElementType.TYPE_USE})
-   public @interface Axes {
+   @Target(ElementType.TYPE_USE)
+   @interface Axes {
    }
 
-   public interface CompileContext {
+   interface CompileContext {
       Noise createNoiseSampler(Holder<NormalNoise> parameters);
 
       RandomSource createRandom(Identifier seed);

@@ -46,39 +46,36 @@ public class EntityStorage implements EntityPersistentStorage<Entity> {
    public CompletableFuture<ChunkEntities<Entity>> loadEntities(final ChunkPos pos) {
       if (this.emptyChunks.contains(pos.pack())) {
          return CompletableFuture.completedFuture(emptyChunk(pos));
-      } else {
-         CompletableFuture<Optional<CompoundTag>> loadFuture = this.simpleRegionStorage.read(pos);
-         this.reportLoadFailureIfPresent(loadFuture, pos);
-         return loadFuture.thenApplyAsync(tag -> {
-            if (tag.isEmpty()) {
-               this.emptyChunks.add(pos.pack());
-               return emptyChunk(pos);
-            } else {
-               try {
-                  ChunkPos storedPos = tag.get().<ChunkPos>read("Position", ChunkPos.CODEC).orElseThrow();
-                  if (!Objects.equals(pos, storedPos)) {
-                     LOGGER.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{pos, pos, storedPos});
-                     this.level.getServer().reportMisplacedChunk(storedPos, pos, this.simpleRegionStorage.storageInfo());
-                  }
-               } catch (Exception var11) {
-                  LOGGER.warn("Failed to parse chunk {} position info", pos, var11);
-                  this.level.getServer().reportChunkLoadFailure(var11, this.simpleRegionStorage.storageInfo(), pos);
-               }
-
-               CompoundTag upgradedChunkTag = this.simpleRegionStorage.upgradeChunkTag(tag.get(), -1);
-
-               ChunkEntities var8;
-               try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(ChunkAccess.problemPath(pos), LOGGER)) {
-                  ValueInput chunkRoot = TagValueInput.create(reporter, this.level.registryAccess(), upgradedChunkTag);
-                  ValueInput.ValueInputList entities = chunkRoot.childrenListOrEmpty("Entities");
-                  List<Entity> chunkEntities = EntityType.loadEntitiesRecursive(entities, this.level, EntitySpawnReason.LOAD).toList();
-                  var8 = new ChunkEntities<>(pos, chunkEntities);
-               }
-
-               return var8;
-            }
-         }, this.entityDeserializerQueue::schedule);
       }
+
+      CompletableFuture<Optional<CompoundTag>> loadFuture = this.simpleRegionStorage.read(pos);
+      this.reportLoadFailureIfPresent(loadFuture, pos);
+      return loadFuture.thenApplyAsync(tag -> {
+         if (tag.isEmpty()) {
+            this.emptyChunks.add(pos.pack());
+            return emptyChunk(pos);
+         }
+
+         try {
+            ChunkPos storedPos = tag.get().<ChunkPos>read("Position", ChunkPos.CODEC).orElseThrow();
+            if (!Objects.equals(pos, storedPos)) {
+               LOGGER.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{pos, pos, storedPos});
+               this.level.getServer().reportMisplacedChunk(storedPos, pos, this.simpleRegionStorage.storageInfo());
+            }
+         } catch (Exception e) {
+            LOGGER.warn("Failed to parse chunk {} position info", pos, e);
+            this.level.getServer().reportChunkLoadFailure(e, this.simpleRegionStorage.storageInfo(), pos);
+         }
+
+         CompoundTag upgradedChunkTag = this.simpleRegionStorage.upgradeChunkTag(tag.get(), -1);
+
+         try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(ChunkAccess.problemPath(pos), LOGGER)) {
+            ValueInput chunkRoot = TagValueInput.create(reporter, this.level.registryAccess(), upgradedChunkTag);
+            ValueInput.ValueInputList entities = chunkRoot.childrenListOrEmpty("Entities");
+            List<Entity> chunkEntities = EntityType.loadEntitiesRecursive(entities, this.level, EntitySpawnReason.LOAD).toList();
+            return new ChunkEntities<>(pos, chunkEntities);
+         }
+      }, this.entityDeserializerQueue::schedule);
    }
 
    private static ChunkEntities<Entity> emptyChunk(final ChunkPos pos) {

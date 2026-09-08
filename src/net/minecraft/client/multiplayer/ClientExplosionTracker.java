@@ -40,22 +40,19 @@ public class ClientExplosionTracker {
    private void addParticle(final ClientLevel level, final ClientExplosionTracker.ExplosionInfo explosion) {
       RandomSource random = level.getRandom();
       Vec3 center = explosion.center();
-      Vec3 directionFromCenter = new Vec3(
-            (double)(random.nextFloat() * 2.0F - 1.0F), (double)(random.nextFloat() * 2.0F - 1.0F), (double)(random.nextFloat() * 2.0F - 1.0F)
-         )
-         .normalize();
-      float radius = (float)Math.cbrt((double)random.nextFloat()) * explosion.radius();
-      Vec3 localPos = directionFromCenter.scale((double)radius);
+      Vec3 directionFromCenter = new Vec3(random.nextFloat() * 2.0F - 1.0F, random.nextFloat() * 2.0F - 1.0F, random.nextFloat() * 2.0F - 1.0F).normalize();
+      float radius = (float)Math.cbrt(random.nextFloat()) * explosion.radius();
+      Vec3 localPos = directionFromCenter.scale(radius);
       Vec3 pos = center.add(localPos);
       if (level.getBlockState(BlockPos.containing(pos)).isAir()) {
          float speed = 0.5F / (radius / explosion.radius() + 0.1F) * random.nextFloat() * random.nextFloat() + 0.3F;
          ExplosionParticleInfo info = explosion.blockParticles.getRandomOrThrow(random);
-         Vec3 particlePos = center.add(localPos.scale((double)info.scaling()));
-         Vec3 particleVelocity = directionFromCenter.scale((double)(speed * info.speed()));
+         Vec3 particlePos = center.add(localPos.scale(info.scaling()));
+         Vec3 particleVelocity = directionFromCenter.scale(speed * info.speed());
          level.addParticle(info.particle(), particlePos.x(), particlePos.y(), particlePos.z(), particleVelocity.x(), particleVelocity.y(), particleVelocity.z());
       }
    }
 
-   private static record ExplosionInfo(Vec3 center, float radius, int blockCount, WeightedList<ExplosionParticleInfo> blockParticles) {
+   private record ExplosionInfo(Vec3 center, float radius, int blockCount, WeightedList<ExplosionParticleInfo> blockParticles) {
    }
 }

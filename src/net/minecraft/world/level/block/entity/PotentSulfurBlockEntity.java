@@ -68,27 +68,18 @@ public class PotentSulfurBlockEntity extends BlockEntity {
       }
    };
    public static Function<SoundEvent, BlockEntityTicker<PotentSulfurBlockEntity>> CLIENT_GEYSER_PLUME_TICKER = sound -> (level, pos, state, entity) -> {
-         BlockPos sourceBlock = findNoxiousGasSourceBlock(level, pos);
-         if (sourceBlock != null) {
-            long eruptionTime = level.getGameTime() - entity.eruptionTick;
-            if (eruptionTime % 20L == 0L) {
-               spawnGeyserParticle(level, pos, sourceBlock);
-            }
-
-            if (eruptionTime % 40L == 0L) {
-               level.playLocalSound(
-                  (double)sourceBlock.getX() + 0.5,
-                  (double)sourceBlock.getY() + 0.5,
-                  (double)sourceBlock.getZ() + 0.5,
-                  sound,
-                  SoundSource.BLOCKS,
-                  1.0F,
-                  1.0F,
-                  false
-               );
-            }
+      BlockPos sourceBlock = findNoxiousGasSourceBlock(level, pos);
+      if (sourceBlock != null) {
+         long eruptionTime = level.getGameTime() - entity.eruptionTick;
+         if (eruptionTime % 20L == 0L) {
+            spawnGeyserParticle(level, pos, sourceBlock);
          }
-      };
+
+         if (eruptionTime % 40L == 0L) {
+            level.playLocalSound(sourceBlock.getX() + 0.5, sourceBlock.getY() + 0.5, sourceBlock.getZ() + 0.5, sound, SoundSource.BLOCKS, 1.0F, 1.0F, false);
+         }
+      }
+   };
    public static BlockEntityTicker<PotentSulfurBlockEntity> SERVER_WAITING_COUNTDOWN_TICKER = (level, pos, state, entity) -> {
       if (level.getGameTime() % 20L == 0L) {
          BlockPos sourceBlock = findNoxiousGasSourceBlock(level, pos);
@@ -126,24 +117,17 @@ public class PotentSulfurBlockEntity extends BlockEntity {
       if (sourceBlock != null) {
          int waterBlocks = sourceBlock.getY() - pos.getY() - 1;
          int geyserForceHeight = getUnobstructedBlockCount(level, pos.above(), waterBlocks);
-         AABB aabb = new AABB(pos.above()).expandTowards(0.0, (double)(geyserForceHeight - 1), 0.0);
+         AABB aabb = new AABB(pos.above()).expandTowards(0.0, geyserForceHeight - 1, 0.0);
 
          for (Entity entityToBeLaunched : level.getEntitiesOfClass(Entity.class, aabb, EFFECT_PREDICATE)) {
             Vec3 entityVelocity = entityToBeLaunched.getDeltaMovement();
             entityToBeLaunched.checkFallDistanceAccumulation();
-            if (entityToBeLaunched.canSimulateMovement()) {
-               if (entityToBeLaunched instanceof Player) {
-                  Player player = (Player)entityToBeLaunched;
-                  if (player.getAbilities().flying) {
-                     continue;
-                  }
-               }
-
-               if (!entityToBeLaunched.isPassenger()
-                  && !entityToBeLaunched.is(EntityTypeTags.NOT_AFFECTED_BY_GEYSERS)
-                  && entityVelocity.y < 0.3F + (double)waterBlocks * 0.1) {
-                  entityToBeLaunched.addDeltaMovement(new Vec3(0.0, 0.2F, 0.0));
-               }
+            if (entityToBeLaunched.canSimulateMovement()
+               && !(entityToBeLaunched instanceof Player player && player.getAbilities().flying)
+               && !entityToBeLaunched.isPassenger()
+               && !entityToBeLaunched.is(EntityTypeTags.NOT_AFFECTED_BY_GEYSERS)
+               && entityVelocity.y < 0.3F + waterBlocks * 0.1) {
+               entityToBeLaunched.addDeltaMovement(new Vec3(0.0, 0.2F, 0.0));
             }
          }
       }
@@ -193,13 +177,7 @@ public class PotentSulfurBlockEntity extends BlockEntity {
    private static void spawnGeyserParticle(final Level level, final BlockPos sulfurPos, final BlockPos sourcePos) {
       int waterBlocks = sourcePos.getY() - sulfurPos.getY() - 1;
       level.addParticle(
-         new GeyserParticleOptions(ParticleTypes.GEYSER, waterBlocks),
-         (double)sourcePos.getX() + 0.5,
-         (double)sourcePos.getY(),
-         (double)sourcePos.getZ() + 0.5,
-         0.0,
-         0.0,
-         0.0
+         new GeyserParticleOptions(ParticleTypes.GEYSER, waterBlocks), sourcePos.getX() + 0.5, sourcePos.getY(), sourcePos.getZ() + 0.5, 0.0, 0.0, 0.0
       );
    }
 
@@ -209,7 +187,7 @@ public class PotentSulfurBlockEntity extends BlockEntity {
 
    private static int getUnobstructedBlockCount(final Level level, final BlockPos pos, final int waterBlocks) {
       int geyserForceHeight = 6 * waterBlocks;
-      CollisionContext geyserPositionContext = CollisionContext.positionContext((double)pos.below().getY());
+      CollisionContext geyserPositionContext = CollisionContext.positionContext(pos.below().getY());
 
       for (int i = 0; i < geyserForceHeight; i++) {
          BlockPos currentPos = pos.above(i);
@@ -226,10 +204,9 @@ public class PotentSulfurBlockEntity extends BlockEntity {
       return !state.isAir() && !state.is(Blocks.WATER) ? state.getCollisionShape(level, pos, context).isEmpty() : true;
    }
 
-   @Nullable
-   private static BlockPos findNoxiousGasSourceBlock(final Level level, final BlockPos origin) {
+   private static @Nullable BlockPos findNoxiousGasSourceBlock(final Level level, final BlockPos origin) {
       int maxY = origin.getY() + 4 + 1;
-      CollisionContext geyserPositionContext = CollisionContext.positionContext((double)origin.getY());
+      CollisionContext geyserPositionContext = CollisionContext.positionContext(origin.getY());
       BlockPos.MutableBlockPos pos = origin.above(1).mutable();
 
       while (pos.getY() <= maxY) {
@@ -250,16 +227,18 @@ public class PotentSulfurBlockEntity extends BlockEntity {
 
    public static boolean canBeReachedByNoxiousGas(final Level level, final BlockPos sourceBlock, final Vec3 pos) {
       BlockPos blockPos = BlockPos.containing(pos);
-      CollisionContext geyserPositionContext = CollisionContext.positionContext((double)blockPos.below().getY());
+      CollisionContext geyserPositionContext = CollisionContext.positionContext(blockPos.below().getY());
       if (!isGeyserPassableBlock(level.getBlockState(blockPos), level, blockPos, geyserPositionContext)) {
          return false;
-      } else if (pos.distanceToSqr(Vec3.atCenterOf(sourceBlock)) > 9.0) {
-         return false;
-      } else {
-         Vec3 belowSource = Vec3.atCenterOf(sourceBlock.below());
-         Vec3 belowPos = pos.with(Direction.Axis.Y, pos.y - 1.0);
-         return isWater(level, belowPos) && haveLineOfSight(level, belowSource, belowPos);
       }
+
+      if (pos.distanceToSqr(Vec3.atCenterOf(sourceBlock)) > 9.0) {
+         return false;
+      }
+
+      Vec3 belowSource = Vec3.atCenterOf(sourceBlock.below());
+      Vec3 belowPos = pos.with(Direction.Axis.Y, pos.y - 1.0);
+      return isWater(level, belowPos) && haveLineOfSight(level, belowSource, belowPos);
    }
 
    private static boolean isWater(final Level level, final Vec3 pos) {

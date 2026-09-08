@@ -286,17 +286,16 @@ public class Sniffer extends Animal {
       if (this.level() instanceof ServerLevel level && this.entityData.get(DATA_DROP_SEED_AT_TICK) == this.tickCount) {
          BlockPos head = this.getHeadBlock();
          this.dropFromGiftLootTable(level, BuiltInLootTables.SNIFFER_DIGGING, (l, itemStack) -> {
-            ItemEntity entity = new ItemEntity(this.level(), (double)head.getX(), (double)head.getY(), (double)head.getZ(), itemStack);
+            ItemEntity entity = new ItemEntity(this.level(), head.getX(), head.getY(), head.getZ(), itemStack);
             entity.setDefaultPickUpDelay();
             l.addFreshEntity(entity);
          });
          this.playSound(SoundEvents.SNIFFER_DROP_SEED, 1.0F, 1.0F);
-         return;
       }
    }
 
    private Sniffer emitDiggingParticles(final AnimationState state) {
-      boolean emit = state.getTimeInMillis((float)this.tickCount) > 1700L && state.getTimeInMillis((float)this.tickCount) < 6000L;
+      boolean emit = state.getTimeInMillis(this.tickCount) > 1700L && state.getTimeInMillis(this.tickCount) < 6000L;
       if (emit) {
          BlockPos head = this.getHeadBlock();
          BlockState stateBelow = this.level().getBlockState(head.below());
@@ -460,7 +459,7 @@ public class Sniffer extends Animal {
       super.customServerAiStep(level);
    }
 
-   public static enum State {
+   public enum State {
       IDLING(0),
       FEELING_HAPPY(1),
       SCENTING(2),
@@ -473,7 +472,7 @@ public class Sniffer extends Animal {
       public static final StreamCodec<ByteBuf, Sniffer.State> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Sniffer.State::id);
       private final int id;
 
-      private State(final int id) {
+      State(final int id) {
          this.id = id;
       }
 

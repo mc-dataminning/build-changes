@@ -15,8 +15,7 @@ public abstract class Report {
    protected final Instant createdAt;
    protected final UUID reportedProfileId;
    protected String comments = "";
-   @Nullable
-   protected ReportReason reason;
+   protected @Nullable ReportReason reason;
    protected boolean attested;
 
    public Report(final UUID reportId, final Instant createdAt, final UUID reportedProfileId) {
@@ -62,8 +61,7 @@ public abstract class Report {
          this.report.comments = comments;
       }
 
-      @Nullable
-      public ReportReason reason() {
+      public @Nullable ReportReason reason() {
          return this.report.reason;
       }
 
@@ -77,15 +75,14 @@ public abstract class Report {
 
       public abstract boolean hasContent();
 
-      @Nullable
-      public Report.CannotBuildReason checkBuildable() {
+      public Report.@Nullable CannotBuildReason checkBuildable() {
          return !this.report().attested ? Report.CannotBuildReason.NOT_ATTESTED : null;
       }
 
       public abstract Either<Report.Result, Report.CannotBuildReason> build(ReportingContext reportingContext);
    }
 
-   public static record CannotBuildReason(Component message) {
+   public record CannotBuildReason(Component message) {
       public static final Report.CannotBuildReason NO_REASON = new Report.CannotBuildReason(Component.translatable("gui.abuseReport.send.no_reason"));
       public static final Report.CannotBuildReason NO_REPORTED_MESSAGES = new Report.CannotBuildReason(
          Component.translatable("gui.chatReport.send.no_reported_messages")
@@ -103,6 +100,6 @@ public abstract class Report {
       }
    }
 
-   public static record Result(UUID id, ReportType reportType, AbuseReport report) {
+   public record Result(UUID id, ReportType reportType, AbuseReport report) {
    }
 }

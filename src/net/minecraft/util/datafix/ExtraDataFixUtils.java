@@ -52,8 +52,8 @@ public class ExtraDataFixUtils {
 
    private static <A, B> TypeRewriteRule typePatcher(final Type<A> inputEntityType, final Type<B> outputEntityType) {
       RewriteResult<A, B> view = RewriteResult.create(View.create("Patcher", inputEntityType, outputEntityType, ops -> a -> {
-            throw new UnsupportedOperationException();
-         }), new BitSet());
+         throw new UnsupportedOperationException();
+      }), new BitSet());
       return TypeRewriteRule.everywhere(TypeRewriteRule.ifSame(inputEntityType, view), PointFreeRule.nop(), true, true);
    }
 

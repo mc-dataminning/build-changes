@@ -55,10 +55,8 @@ public class ServerLoginPacketListenerImpl implements ServerLoginPacketListener,
    private final ServerActivityMonitor serverActivityMonitor;
    private volatile ServerLoginPacketListenerImpl.State state = ServerLoginPacketListenerImpl.State.HELLO;
    private int tick;
-   @Nullable
-   private String requestedUsername;
-   @Nullable
-   private GameProfile authenticatedProfile;
+   private @Nullable String requestedUsername;
+   private @Nullable GameProfile authenticatedProfile;
    private final String serverId = "";
    private final boolean transferred;
 
@@ -96,8 +94,8 @@ public class ServerLoginPacketListenerImpl implements ServerLoginPacketListener,
          LOGGER.info("Disconnecting {}: {}", this.getUserName(), component.getString());
          this.connection.send(new ClientboundLoginDisconnectPacket(component));
          this.connection.disconnect(component);
-      } catch (Exception var3) {
-         LOGGER.error("Error whilst disconnecting player", var3);
+      } catch (Exception e) {
+         LOGGER.error("Error whilst disconnecting player", e);
       }
    }
 
@@ -183,15 +181,11 @@ public class ServerLoginPacketListenerImpl implements ServerLoginPacketListener,
          Cipher decryptCipher = Crypt.getCipher(2, secretKey);
          Cipher encryptCipher = Crypt.getCipher(1, secretKey);
          this.connection.setEncryptionKey(decryptCipher, encryptCipher);
-      } catch (CryptException var7) {
-         throw new IllegalStateException("Protocol error", var7);
+      } catch (CryptException e) {
+         throw new IllegalStateException("Protocol error", e);
       }
 
       Thread thread = new Thread("User Authenticator #" + UNIQUE_THREAD_ID.incrementAndGet()) {
-         {
-            Objects.requireNonNull(ServerLoginPacketListenerImpl.this);
-         }
-
          @Override
          public void run() {
             String name = Objects.requireNonNull(ServerLoginPacketListenerImpl.this.requestedUsername, "Player name not initialized");
@@ -210,7 +204,7 @@ public class ServerLoginPacketListenerImpl implements ServerLoginPacketListener,
                   ServerLoginPacketListenerImpl.this.disconnect(Component.translatable("multiplayer.disconnect.unverified_username"));
                   ServerLoginPacketListenerImpl.LOGGER.error("Username '{}' tried to join with an invalid session", name);
                }
-            } catch (AuthenticationUnavailableException var4) {
+            } catch (AuthenticationUnavailableException ignored) {
                if (ServerLoginPacketListenerImpl.this.server.isSingleplayer()) {
                   ServerLoginPacketListenerImpl.LOGGER.warn("Authentication servers are down but will let them in anyway!");
                   ServerLoginPacketListenerImpl.this.startClientVerification(UUIDUtil.createOfflineProfile(name));
@@ -221,8 +215,7 @@ public class ServerLoginPacketListenerImpl implements ServerLoginPacketListener,
             }
          }
 
-         @Nullable
-         private InetAddress getAddress() {
+         private @Nullable InetAddress getAddress() {
             return ServerLoginPacketListenerImpl.this.server.getPreventProxyConnections()
                   && ServerLoginPacketListenerImpl.this.connection.getRemoteAddress() instanceof InetSocketAddress inetSocketAddress
                ? inetSocketAddress.getAddress()
@@ -259,7 +252,7 @@ public class ServerLoginPacketListenerImpl implements ServerLoginPacketListener,
       this.disconnect(ServerCommonPacketListenerImpl.DISCONNECT_UNEXPECTED_QUERY);
    }
 
-   private static enum State {
+   private enum State {
       HELLO,
       KEY,
       AUTHENTICATING,

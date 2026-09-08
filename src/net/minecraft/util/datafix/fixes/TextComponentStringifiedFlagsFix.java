@@ -20,20 +20,20 @@ public class TextComponentStringifiedFlagsFix extends DataFix {
          "TextComponentStringyFlagsFix",
          textComponentType,
          ops -> named -> named.mapSecond(
-                  e1 -> e1.mapRight(
-                        p2 -> p2.mapSecond(
-                              p3 -> p3.mapSecond(
-                                    p4 -> p4.mapSecond(
-                                          remainder -> remainder.update("bold", TextComponentStringifiedFlagsFix::stringToBool)
-                                                .update("italic", TextComponentStringifiedFlagsFix::stringToBool)
-                                                .update("underlined", TextComponentStringifiedFlagsFix::stringToBool)
-                                                .update("strikethrough", TextComponentStringifiedFlagsFix::stringToBool)
-                                                .update("obfuscated", TextComponentStringifiedFlagsFix::stringToBool)
-                                       )
-                                 )
-                           )
+            e1 -> e1.mapRight(
+               p2 -> p2.mapSecond(
+                  p3 -> p3.mapSecond(
+                     p4 -> p4.mapSecond(
+                        remainder -> remainder.update("bold", TextComponentStringifiedFlagsFix::stringToBool)
+                           .update("italic", TextComponentStringifiedFlagsFix::stringToBool)
+                           .update("underlined", TextComponentStringifiedFlagsFix::stringToBool)
+                           .update("strikethrough", TextComponentStringifiedFlagsFix::stringToBool)
+                           .update("obfuscated", TextComponentStringifiedFlagsFix::stringToBool)
                      )
+                  )
                )
+            )
+         )
       );
    }
 

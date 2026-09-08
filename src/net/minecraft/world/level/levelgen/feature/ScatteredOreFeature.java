@@ -56,6 +56,6 @@ public class ScatteredOreFeature extends AbstractOreFeature {
    }
 
    private int getRandomPlacementInOneAxisRelativeToOrigin(final RandomSource random, final int maxDistanceFromOrigin) {
-      return Math.round((random.nextFloat() - random.nextFloat()) * (float)maxDistanceFromOrigin);
+      return Math.round((random.nextFloat() - random.nextFloat()) * maxDistanceFromOrigin);
    }
 }

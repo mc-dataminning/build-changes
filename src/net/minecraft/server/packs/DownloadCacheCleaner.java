@@ -46,8 +46,8 @@ public class DownloadCacheCleaner {
                if (entry.removalPriority == 0) {
                   emptyDirectoryCandidates.add(pathToRemove.getParent());
                }
-            } catch (IOException var12) {
-               LOGGER.warn("Failed to delete cache file {}", pathToRemove, var12);
+            } catch (IOException e) {
+               LOGGER.warn("Failed to delete cache file {}", pathToRemove, e);
             }
          }
 
@@ -57,12 +57,12 @@ public class DownloadCacheCleaner {
             try {
                Files.delete(dir);
             } catch (DirectoryNotEmptyException var10) {
-            } catch (IOException var11) {
-               LOGGER.warn("Failed to delete empty(?) cache directory {}", dir, var11);
+            } catch (IOException e) {
+               LOGGER.warn("Failed to delete empty(?) cache directory {}", dir, e);
             }
          }
-      } catch (UncheckedIOException | IOException var13) {
-         LOGGER.error("Failed to vacuum cache dir {}", cacheDir, var13);
+      } catch (IOException | UncheckedIOException e) {
+         LOGGER.error("Failed to vacuum cache dir {}", cacheDir, e);
       }
    }
 
@@ -80,7 +80,7 @@ public class DownloadCacheCleaner {
             }
          });
          return unsortedFiles;
-      } catch (NoSuchFileException var2) {
+      } catch (NoSuchFileException e) {
          return List.of();
       }
    }
@@ -97,14 +97,14 @@ public class DownloadCacheCleaner {
       return result;
    }
 
-   private static record PathAndPriority(Path path, int removalPriority) {
+   private record PathAndPriority(Path path, int removalPriority) {
       public static final Comparator<DownloadCacheCleaner.PathAndPriority> HIGHEST_PRIORITY_FIRST = Comparator.comparing(
             DownloadCacheCleaner.PathAndPriority::removalPriority
          )
          .reversed();
    }
 
-   private static record PathAndTime(Path path, FileTime modifiedTime) {
+   private record PathAndTime(Path path, FileTime modifiedTime) {
       public static final Comparator<DownloadCacheCleaner.PathAndTime> NEWEST_FIRST = Comparator.comparing(DownloadCacheCleaner.PathAndTime::modifiedTime)
          .reversed();
    }

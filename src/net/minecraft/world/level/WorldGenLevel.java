@@ -11,6 +11,6 @@ public interface WorldGenLevel extends ServerLevelAccessor {
       return true;
    }
 
-   default void setCurrentlyGenerating(@Nullable final Supplier<String> currentlyGenerating) {
+   default void setCurrentlyGenerating(final @Nullable Supplier<String> currentlyGenerating) {
    }
 }

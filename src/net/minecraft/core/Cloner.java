@@ -30,8 +30,7 @@ public class Cloner<T> {
          return this;
       }
 
-      @Nullable
-      public <T> Cloner<T> cloner(final ResourceKey<? extends Registry<? extends T>> key) {
+      public <T> @Nullable Cloner<T> cloner(final ResourceKey<? extends Registry<? extends T>> key) {
          return (Cloner<T>)this.codecs.get(key);
       }
    }

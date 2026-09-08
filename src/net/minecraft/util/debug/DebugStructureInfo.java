@@ -15,7 +15,7 @@ public record DebugStructureInfo(BoundingBox boundingBox, List<DebugStructureInf
       DebugStructureInfo::new
    );
 
-   public static record Piece(BoundingBox boundingBox, boolean isStart) {
+   public record Piece(BoundingBox boundingBox, boolean isStart) {
       public static final StreamCodec<ByteBuf, DebugStructureInfo.Piece> STREAM_CODEC = StreamCodec.composite(
          BoundingBox.STREAM_CODEC, DebugStructureInfo.Piece::boundingBox, ByteBufCodecs.BOOL, DebugStructureInfo.Piece::isStart, DebugStructureInfo.Piece::new
       );

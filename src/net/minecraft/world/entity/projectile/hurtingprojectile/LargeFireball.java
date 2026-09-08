@@ -33,7 +33,7 @@ public class LargeFireball extends Fireball {
       super.onHit(hitResult);
       if (this.level() instanceof ServerLevel serverLevel) {
          boolean grief = serverLevel.getGameRules().get(GameRules.MOB_GRIEFING);
-         this.level().explode(this, this.getX(), this.getY(), this.getZ(), (float)this.explosionPower, grief, Level.ExplosionInteraction.MOB);
+         this.level().explode(this, this.getX(), this.getY(), this.getZ(), this.explosionPower, grief, Level.ExplosionInteraction.MOB);
          this.discard();
       }
    }

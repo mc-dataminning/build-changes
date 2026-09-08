@@ -1,6 +1,5 @@
 package net.minecraft.data.tags;
 
-import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -22,10 +21,6 @@ public class VanillaItemTagsProvider extends TagsProvider<Item> {
 
    protected BlockItemTagAppender<Item> tag(final TagKey<Item> tag) {
       return new BlockItemTagAppender<Item>(super.tag(tag)) {
-         {
-            Objects.requireNonNull(VanillaItemTagsProvider.this);
-         }
-
          @Override
          protected ResourceKey<Item> convertElement(final BlockItemId element) {
             return element.item();
@@ -88,12 +83,15 @@ public class VanillaItemTagsProvider extends TagsProvider<Item> {
       this.tag(ItemTags.ARROWS).add(ItemIds.ARROW, ItemIds.TIPPED_ARROW, ItemIds.SPECTRAL_ARROW);
       this.tag(ItemTags.LECTERN_BOOKS).add(ItemIds.WRITTEN_BOOK, ItemIds.WRITABLE_BOOK);
       this.tag(ItemTags.BEACON_PAYMENT_ITEMS).add(ItemIds.NETHERITE_INGOT, ItemIds.EMERALD, ItemIds.DIAMOND, ItemIds.GOLD_INGOT, ItemIds.IRON_INGOT);
-      this.tag(ItemTags.PIGLIN_REPELLENTS).add(BlockItemIds.SOUL_TORCH).add(BlockItemIds.SOUL_LANTERN).add(BlockItemIds.SOUL_CAMPFIRE);
+      this.tag(ItemTags.PIGLIN_REPELLENTS)
+         .add(new BlockItemId[]{BlockItemIds.SOUL_TORCH})
+         .add(new BlockItemId[]{BlockItemIds.SOUL_LANTERN})
+         .add(new BlockItemId[]{BlockItemIds.SOUL_CAMPFIRE});
       this.tag(ItemTags.PIGLIN_LOVED)
          .addTag(ItemTags.GOLD_ORES)
          .add(BlockItemIds.GOLD_BLOCK, BlockItemIds.GILDED_BLACKSTONE, BlockItemIds.LIGHT_WEIGHTED_PRESSURE_PLATE)
          .add(ItemIds.GOLD_INGOT)
-         .add(BlockItemIds.BELL)
+         .add(new BlockItemId[]{BlockItemIds.BELL})
          .add(
             ItemIds.CLOCK,
             ItemIds.GOLDEN_CARROT,
@@ -353,7 +351,7 @@ public class VanillaItemTagsProvider extends TagsProvider<Item> {
             ItemIds.NETHERITE_INGOT,
             ItemIds.QUARTZ
          )
-         .add(BlockItemIds.REDSTONE_DUST)
+         .add(new BlockItemId[]{BlockItemIds.REDSTONE_DUST})
          .add(ItemIds.RESIN_BRICK);
       this.tag(ItemTags.BOOKSHELF_BOOKS).add(ItemIds.BOOK, ItemIds.WRITTEN_BOOK, ItemIds.ENCHANTED_BOOK, ItemIds.WRITABLE_BOOK, ItemIds.KNOWLEDGE_BOOK);
       this.tag(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS)
@@ -366,7 +364,7 @@ public class VanillaItemTagsProvider extends TagsProvider<Item> {
             BlockItemIds.PIGLIN_HEAD,
             BlockItemIds.PLAYER_HEAD
          );
-      this.tag(ItemTags.SNIFFER_FOOD).add(BlockItemIds.TORCHFLOWER_CROP);
+      this.tag(ItemTags.SNIFFER_FOOD).add(new BlockItemId[]{BlockItemIds.TORCHFLOWER_CROP});
       this.tag(ItemTags.VILLAGER_PLANTABLE_SEEDS)
          .add(
             BlockItemIds.WHEAT_CROP,
@@ -428,12 +426,12 @@ public class VanillaItemTagsProvider extends TagsProvider<Item> {
          .addTag(ItemTags.HEAD_ARMOR)
          .add(ItemIds.ELYTRA)
          .addTag(ItemTags.SKULLS)
-         .add(BlockItemIds.CARVED_PUMPKIN);
+         .add(new BlockItemId[]{BlockItemIds.CARVED_PUMPKIN});
       this.tag(ItemTags.CROSSBOW_ENCHANTABLE).add(ItemIds.CROSSBOW);
       this.tag(ItemTags.VANISHING_ENCHANTABLE)
          .addTag(ItemTags.DURABILITY_ENCHANTABLE)
          .add(ItemIds.COMPASS)
-         .add(BlockItemIds.CARVED_PUMPKIN)
+         .add(new BlockItemId[]{BlockItemIds.CARVED_PUMPKIN})
          .addTag(ItemTags.SKULLS);
       this.tag(ItemTags.DYES).addAll(ItemIds.DYE);
       this.tag(ItemTags.CAULDRON_CAN_REMOVE_DYE)
@@ -467,16 +465,16 @@ public class VanillaItemTagsProvider extends TagsProvider<Item> {
       this.tag(ItemTags.CAT_FOOD).add(ItemIds.COD, ItemIds.SALMON);
       this.tag(ItemTags.HORSE_FOOD)
          .add(ItemIds.WHEAT, ItemIds.SUGAR)
-         .add(BlockItemIds.HAY_BLOCK)
+         .add(new BlockItemId[]{BlockItemIds.HAY_BLOCK})
          .add(ItemIds.APPLE)
-         .add(BlockItemIds.CARROT_CROP)
+         .add(new BlockItemId[]{BlockItemIds.CARROT_CROP})
          .add(ItemIds.GOLDEN_CARROT, ItemIds.GOLDEN_APPLE, ItemIds.ENCHANTED_GOLDEN_APPLE);
-      this.tag(ItemTags.ZOMBIE_HORSE_FOOD).add(BlockItemIds.RED_MUSHROOM);
+      this.tag(ItemTags.ZOMBIE_HORSE_FOOD).add(new BlockItemId[]{BlockItemIds.RED_MUSHROOM});
       this.tag(ItemTags.HORSE_TEMPT_ITEMS).add(ItemIds.GOLDEN_CARROT, ItemIds.GOLDEN_APPLE, ItemIds.ENCHANTED_GOLDEN_APPLE);
       this.tag(ItemTags.HARNESSES).addAll(ItemIds.HARNESS);
       this.tag(ItemTags.HAPPY_GHAST_FOOD).add(ItemIds.SNOWBALL);
       this.tag(ItemTags.HAPPY_GHAST_TEMPT_ITEMS).addTag(ItemTags.HAPPY_GHAST_FOOD).addTag(ItemTags.HARNESSES);
-      this.tag(ItemTags.CAMEL_FOOD).add(BlockItemIds.CACTUS);
+      this.tag(ItemTags.CAMEL_FOOD).add(new BlockItemId[]{BlockItemIds.CACTUS});
       this.tag(ItemTags.CAMEL_HUSK_FOOD).add(ItemIds.RABBIT_FOOT);
       this.tag(ItemTags.ARMADILLO_FOOD).add(ItemIds.SPIDER_EYE);
       this.tag(ItemTags.CHICKEN_FOOD)
@@ -489,35 +487,35 @@ public class VanillaItemTagsProvider extends TagsProvider<Item> {
             BlockItemIds.PITCHER_CROP
          );
       this.tag(ItemTags.FROG_FOOD).add(ItemIds.SLIME_BALL);
-      this.tag(ItemTags.HOGLIN_FOOD).add(BlockItemIds.CRIMSON_FUNGUS);
-      this.tag(ItemTags.LLAMA_FOOD).add(ItemIds.WHEAT).add(BlockItemIds.HAY_BLOCK);
-      this.tag(ItemTags.LLAMA_TEMPT_ITEMS).add(BlockItemIds.HAY_BLOCK);
+      this.tag(ItemTags.HOGLIN_FOOD).add(new BlockItemId[]{BlockItemIds.CRIMSON_FUNGUS});
+      this.tag(ItemTags.LLAMA_FOOD).add(ItemIds.WHEAT).add(new BlockItemId[]{BlockItemIds.HAY_BLOCK});
+      this.tag(ItemTags.LLAMA_TEMPT_ITEMS).add(new BlockItemId[]{BlockItemIds.HAY_BLOCK});
       this.tag(ItemTags.NAUTILUS_TAMING_ITEMS).add(ItemIds.PUFFERFISH_BUCKET, ItemIds.PUFFERFISH);
       this.tag(ItemTags.NAUTILUS_BUCKET_FOOD).add(ItemIds.PUFFERFISH_BUCKET, ItemIds.COD_BUCKET, ItemIds.SALMON_BUCKET, ItemIds.TROPICAL_FISH_BUCKET);
       this.tag(ItemTags.NAUTILUS_FOOD).addTag(ItemTags.FISHES).addTag(ItemTags.NAUTILUS_BUCKET_FOOD);
-      this.tag(ItemTags.PANDA_FOOD).add(BlockItemIds.BAMBOO);
-      this.tag(ItemTags.PANDA_EATS_FROM_GROUND).addTag(ItemTags.PANDA_FOOD).add(BlockItemIds.CAKE);
+      this.tag(ItemTags.PANDA_FOOD).add(new BlockItemId[]{BlockItemIds.BAMBOO});
+      this.tag(ItemTags.PANDA_EATS_FROM_GROUND).addTag(ItemTags.PANDA_FOOD).add(new BlockItemId[]{BlockItemIds.CAKE});
       this.tag(ItemTags.PIG_FOOD).add(BlockItemIds.CARROT_CROP, BlockItemIds.POTATO_CROP).add(ItemIds.BEETROOT);
-      this.tag(ItemTags.RABBIT_FOOD).add(BlockItemIds.CARROT_CROP).add(ItemIds.GOLDEN_CARROT).add(BlockItemIds.DANDELION);
-      this.tag(ItemTags.STRIDER_FOOD).add(BlockItemIds.WARPED_FUNGUS);
+      this.tag(ItemTags.RABBIT_FOOD).add(new BlockItemId[]{BlockItemIds.CARROT_CROP}).add(ItemIds.GOLDEN_CARROT).add(new BlockItemId[]{BlockItemIds.DANDELION});
+      this.tag(ItemTags.STRIDER_FOOD).add(new BlockItemId[]{BlockItemIds.WARPED_FUNGUS});
       this.tag(ItemTags.STRIDER_TEMPT_ITEMS).addTag(ItemTags.STRIDER_FOOD).add(ItemIds.WARPED_FUNGUS_ON_A_STICK);
-      this.tag(ItemTags.TURTLE_FOOD).add(BlockItemIds.SEAGRASS);
+      this.tag(ItemTags.TURTLE_FOOD).add(new BlockItemId[]{BlockItemIds.SEAGRASS});
       this.tag(ItemTags.PARROT_FOOD)
-         .add(BlockItemIds.WHEAT_CROP)
+         .add(new BlockItemId[]{BlockItemIds.WHEAT_CROP})
          .add(BlockItemIds.MELON_CROP, BlockItemIds.PUMPKIN_CROP, BlockItemIds.BEETROOT_CROP, BlockItemIds.TORCHFLOWER_CROP, BlockItemIds.PITCHER_CROP);
       this.tag(ItemTags.PARROT_POISONOUS_FOOD).add(ItemIds.COOKIE);
       this.tag(ItemTags.COW_FOOD).add(ItemIds.WHEAT);
       this.tag(ItemTags.SHEEP_FOOD).add(ItemIds.WHEAT);
       this.tag(ItemTags.SULFUR_CUBE_FOOD).add(ItemIds.SLIME_BALL);
       this.tag(ItemTags.GOAT_FOOD).add(ItemIds.WHEAT);
-      this.tag(ItemTags.MAP_INVISIBILITY_EQUIPMENT).add(BlockItemIds.CARVED_PUMPKIN);
-      this.tag(ItemTags.GAZE_DISGUISE_EQUIPMENT).add(BlockItemIds.CARVED_PUMPKIN);
-      this.tag(ItemTags.SHEARABLE_FROM_COPPER_GOLEM).add(BlockItemIds.POPPY);
+      this.tag(ItemTags.MAP_INVISIBILITY_EQUIPMENT).add(new BlockItemId[]{BlockItemIds.CARVED_PUMPKIN});
+      this.tag(ItemTags.GAZE_DISGUISE_EQUIPMENT).add(new BlockItemId[]{BlockItemIds.CARVED_PUMPKIN});
+      this.tag(ItemTags.SHEARABLE_FROM_COPPER_GOLEM).add(new BlockItemId[]{BlockItemIds.POPPY});
       this.tag(ItemTags.METAL_NUGGETS).add(ItemIds.COPPER_NUGGET, ItemIds.IRON_NUGGET, ItemIds.GOLD_NUGGET);
       this.tag(ItemTags.MUSHROOMS).add(BlockItemIds.BROWN_MUSHROOM, BlockItemIds.RED_MUSHROOM, BlockItemIds.SHELF_MUSHROOM);
       this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_BOUNCY)
          .addTag(ItemTags.PLANKS)
-         .add(BlockItemIds.BAMBOO_MOSAIC)
+         .add(new BlockItemId[]{BlockItemIds.BAMBOO_MOSAIC})
          .addTag(ItemTags.LOGS)
          .addTag(ItemTags.BAMBOO_BLOCKS);
       this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_BOUNCY)
@@ -614,9 +612,9 @@ public class VanillaItemTagsProvider extends TagsProvider<Item> {
       this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_REGULAR)
          .addTag(ItemTags.CONCRETE_POWDERS)
          .add(BlockItemIds.MUD, BlockItemIds.MUDDY_MANGROVE_ROOTS, BlockItemIds.PACKED_MUD)
-         .add(BlockItemIds.COAL_BLOCK)
+         .add(new BlockItemId[]{BlockItemIds.COAL_BLOCK})
          .add(BlockItemIds.DIRT, BlockItemIds.COARSE_DIRT, BlockItemIds.ROOTED_DIRT, BlockItemIds.PODZOL, BlockItemIds.GRASS_BLOCK, BlockItemIds.CLAY)
-         .add(BlockItemIds.BONE_BLOCK);
+         .add(new BlockItemId[]{BlockItemIds.BONE_BLOCK});
       this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_FLAT)
          .add(BlockItemIds.IRON_BLOCK, BlockItemIds.GOLD_BLOCK, BlockItemIds.RAW_COPPER_BLOCK, BlockItemIds.RAW_GOLD_BLOCK, BlockItemIds.RAW_IRON_BLOCK)
          .addTag(ItemTags.GOLD_ORES)
@@ -652,11 +650,11 @@ public class VanillaItemTagsProvider extends TagsProvider<Item> {
       this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_SLOW_SLIDING)
          .add(BlockItemIds.BROWN_MUSHROOM_BLOCK, BlockItemIds.RED_MUSHROOM_BLOCK, BlockItemIds.MUSHROOM_STEM, BlockItemIds.MYCELIUM)
          .addTag(ItemTags.WART_BLOCKS)
-         .add(BlockItemIds.SHROOMLIGHT);
-      this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_STICKY).add(BlockItemIds.HONEYCOMB_BLOCK);
+         .add(new BlockItemId[]{BlockItemIds.SHROOMLIGHT});
+      this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_STICKY).add(new BlockItemId[]{BlockItemIds.HONEYCOMB_BLOCK});
       this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_HIGH_RESISTANCE).add(BlockItemIds.SOUL_SAND, BlockItemIds.SOUL_SOIL);
-      this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_EXPLOSIVE).add(BlockItemIds.TNT);
-      this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_HOT).add(BlockItemIds.MAGMA_BLOCK);
+      this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_EXPLOSIVE).add(new BlockItemId[]{BlockItemIds.TNT});
+      this.tag(ItemTags.SULFUR_CUBE_ARCHETYPE_HOT).add(new BlockItemId[]{BlockItemIds.MAGMA_BLOCK});
       this.tag(ItemTags.SULFUR_CUBE_SWALLOWABLE)
          .addTag(ItemTags.SULFUR_CUBE_ARCHETYPE_BOUNCY)
          .addTag(ItemTags.SULFUR_CUBE_ARCHETYPE_REGULAR)

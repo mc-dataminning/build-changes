@@ -32,8 +32,8 @@ public class FeatureCountTracker {
    public static void chunkDecorated(final ServerLevel level) {
       try {
          ((FeatureCountTracker.LevelData)data.get(level)).chunksWithFeatures().increment();
-      } catch (Exception var2) {
-         LOGGER.error("Failed to increment chunk count", var2);
+      } catch (Exception e) {
+         LOGGER.error("Failed to increment chunk count", e);
       }
    }
 
@@ -42,8 +42,8 @@ public class FeatureCountTracker {
          ((FeatureCountTracker.LevelData)data.get(level))
             .featureData()
             .computeInt(new FeatureCountTracker.FeatureData(feature, topFeature), (f, old) -> old == null ? 1 : old + 1);
-      } catch (Exception var4) {
-         LOGGER.error("Failed to increment feature count", var4);
+      } catch (Exception e) {
+         LOGGER.error("Failed to increment feature count", e);
       }
    }
 
@@ -66,23 +66,23 @@ public class FeatureCountTracker {
                featureCounts.featureData()
                   .forEach(
                      (data, count) -> LOGGER.debug(
-                           "{} {} {} {} {}",
-                           new Object[]{
-                              prefix,
-                              String.format(Locale.ROOT, "%10d", count),
-                              String.format(Locale.ROOT, "%10f", (double)count / (double)chunks),
-                              data.topFeature().flatMap(featureRegistry::getResourceKey).map(ResourceKey::identifier),
-                              data.feature()
-                           }
-                        )
+                        "{} {} {} {} {}",
+                        new Object[]{
+                           prefix,
+                           String.format(Locale.ROOT, "%10d", count),
+                           String.format(Locale.ROOT, "%10f", (double)count / chunks),
+                           data.topFeature().flatMap(featureRegistry::getResourceKey).map(ResourceKey::identifier),
+                           data.feature()
+                        }
+                     )
                   );
             }
          );
    }
 
-   private static record FeatureData(Feature feature, Optional<PlacedFeature> topFeature) {
+   private record FeatureData(Feature feature, Optional<PlacedFeature> topFeature) {
    }
 
-   private static record LevelData(Object2IntMap<FeatureCountTracker.FeatureData> featureData, MutableInt chunksWithFeatures) {
+   private record LevelData(Object2IntMap<FeatureCountTracker.FeatureData> featureData, MutableInt chunksWithFeatures) {
    }
 }

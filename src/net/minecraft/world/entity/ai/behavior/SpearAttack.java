@@ -30,8 +30,7 @@ public class SpearAttack extends Behavior<PathfinderMob> {
       this.targetInRangeRadiusSq = targetInRangeRadius * targetInRangeRadius;
    }
 
-   @Nullable
-   private LivingEntity getTarget(final PathfinderMob mob) {
+   private @Nullable LivingEntity getTarget(final PathfinderMob mob) {
       return mob.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).orElse(null);
    }
 
@@ -75,17 +74,15 @@ public class SpearAttack extends Behavior<PathfinderMob> {
       mob.getBrain().setMemory(MemoryModuleType.SPEAR_ENGAGE_TIME, mob.getBrain().getMemory(MemoryModuleType.SPEAR_ENGAGE_TIME).orElse(0) - 1);
       Vec3 awayPos = mob.getBrain().getMemory(MemoryModuleType.SPEAR_CHARGE_POSITION).orElse(null);
       if (awayPos != null) {
-         mob.getNavigation().moveTo(awayPos.x, awayPos.y, awayPos.z, (double)speedModifier * this.speedModifierWhenRepositioning);
+         mob.getNavigation().moveTo(awayPos.x, awayPos.y, awayPos.z, speedModifier * this.speedModifierWhenRepositioning);
          if (mob.getNavigation().isDone()) {
             mob.getBrain().eraseMemory(MemoryModuleType.SPEAR_CHARGE_POSITION);
          }
       } else {
-         mob.getNavigation().moveTo(target, (double)speedModifier * this.speedModifierWhenCharging);
-         if (targetDistSqr < (double)this.targetInRangeRadiusSq || mob.getNavigation().isDone()) {
+         mob.getNavigation().moveTo(target, speedModifier * this.speedModifierWhenCharging);
+         if (targetDistSqr < this.targetInRangeRadiusSq || mob.getNavigation().isDone()) {
             double distance = Math.sqrt(targetDistSqr);
-            Vec3 newAwayPos = LandRandomPos.getPosAway(
-               mob, (double)(6 + mountDistance) - distance, (double)(7 + mountDistance) - distance, 7, target.position()
-            );
+            Vec3 newAwayPos = LandRandomPos.getPosAway(mob, 6 + mountDistance - distance, 7 + mountDistance - distance, 7, target.position());
             mob.getBrain().setMemory(MemoryModuleType.SPEAR_CHARGE_POSITION, newAwayPos);
          }
       }
@@ -104,7 +101,7 @@ public class SpearAttack extends Behavior<PathfinderMob> {
       return false;
    }
 
-   public static enum SpearStatus {
+   public enum SpearStatus {
       APPROACH,
       CHARGING,
       RETREAT;

@@ -13,8 +13,7 @@ import org.jspecify.annotations.Nullable;
 public interface MinecraftPlayerListService {
    List<ServerPlayer> getPlayers();
 
-   @Nullable
-   ServerPlayer getPlayer(UUID uuid);
+   @Nullable ServerPlayer getPlayer(UUID uuid);
 
    default CompletableFuture<Optional<NameAndId>> getUser(final Optional<UUID> id, final Optional<String> name) {
       if (id.isPresent()) {
@@ -39,8 +38,7 @@ public interface MinecraftPlayerListService {
 
    List<ServerPlayer> getPlayersWithAddress(String ip);
 
-   @Nullable
-   ServerPlayer getPlayerByName(String name);
+   @Nullable ServerPlayer getPlayerByName(String name);
 
    void remove(ServerPlayer player, ClientInfo clientInfo);
 }

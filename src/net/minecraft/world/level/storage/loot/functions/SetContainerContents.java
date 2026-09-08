@@ -21,13 +21,13 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 public class SetContainerContents extends LootItemConditionalFunction {
    public static final MapCodec<SetContainerContents> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
-            .and(
-               i.group(
-                  ContainerComponentManipulators.CODEC.fieldOf("component").forGetter(f -> f.component),
-                  LootPoolEntries.CODEC.listOf().fieldOf("entries").forGetter(f -> f.entries)
-               )
+         .and(
+            i.group(
+               ContainerComponentManipulators.CODEC.fieldOf("component").forGetter(f -> f.component),
+               LootPoolEntries.CODEC.listOf().fieldOf("entries").forGetter(f -> f.entries)
             )
-            .apply(i, SetContainerContents::new)
+         )
+         .apply(i, SetContainerContents::new)
    );
    private final ContainerComponentManipulator<?> component;
    private final List<LootPoolEntryContainer> entries;
@@ -49,13 +49,12 @@ public class SetContainerContents extends LootItemConditionalFunction {
    public ItemStack run(final ItemStack itemStack, final LootContext context) {
       if (itemStack.isEmpty()) {
          return itemStack;
-      } else {
-         Stream.Builder<ItemStack> contents = Stream.builder();
-         this.entries
-            .forEach(e -> e.expand(context, entry -> entry.createItemStack(LootTable.createStackSplitter(context.getLevel(), contents::add), context)));
-         this.component.setContents(itemStack, contents.build());
-         return itemStack;
       }
+
+      Stream.Builder<ItemStack> contents = Stream.builder();
+      this.entries.forEach(e -> e.expand(context, entry -> entry.createItemStack(LootTable.createStackSplitter(context.getLevel(), contents::add), context)));
+      this.component.setContents(itemStack, contents.build());
+      return itemStack;
    }
 
    @Override

@@ -11,7 +11,7 @@ import net.minecraft.resources.Identifier;
 public record CustomAll(Identifier id, Optional<CompoundTag> additions) implements Action {
    public static final MapCodec<CustomAll> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(Identifier.CODEC.fieldOf("id").forGetter(CustomAll::id), CompoundTag.CODEC.optionalFieldOf("additions").forGetter(CustomAll::additions))
-            .apply(i, CustomAll::new)
+         .apply(i, CustomAll::new)
    );
 
    @Override

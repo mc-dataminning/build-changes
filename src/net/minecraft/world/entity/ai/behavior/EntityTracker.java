@@ -25,7 +25,7 @@ public class EntityTracker implements PositionTracker {
 
    @Override
    public Vec3 currentPosition() {
-      return this.trackEyeHeight ? this.entity.position().add(0.0, (double)this.entity.getEyeHeight(), 0.0) : this.entity.position();
+      return this.trackEyeHeight ? this.entity.position().add(0.0, this.entity.getEyeHeight(), 0.0) : this.entity.position();
    }
 
    @Override
@@ -38,10 +38,10 @@ public class EntityTracker implements PositionTracker {
       if (this.entity instanceof LivingEntity livingEntity) {
          if (!livingEntity.isAlive()) {
             return false;
-         } else {
-            Optional<NearestVisibleLivingEntities> visibleEntities = body.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES);
-            return visibleEntities.isPresent() && visibleEntities.get().contains(livingEntity);
          }
+
+         Optional<NearestVisibleLivingEntities> visibleEntities = body.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES);
+         return visibleEntities.isPresent() && visibleEntities.get().contains(livingEntity);
       } else {
          return true;
       }

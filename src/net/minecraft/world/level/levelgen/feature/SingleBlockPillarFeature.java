@@ -19,13 +19,13 @@ public record SingleBlockPillarFeature(
 ) implements Feature {
    public static final MapCodec<SingleBlockPillarFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BlockStateProvider.CODEC.fieldOf("block").forGetter(SingleBlockPillarFeature::block),
-               BlockPredicate.CODEC.optionalFieldOf("can_replace", BlockPredicate.alwaysTrue()).forGetter(SingleBlockPillarFeature::canReplace),
-               Direction.VERTICAL_CODEC.fieldOf("direction").forGetter(SingleBlockPillarFeature::direction),
-               Codec.floatRange(0.0F, 1.0F).optionalFieldOf("chance_to_continue", 1.0F).forGetter(SingleBlockPillarFeature::chanceToContinue),
-               PlacedFeature.CODEC.optionalFieldOf("cap_feature").forGetter(SingleBlockPillarFeature::capFeature)
-            )
-            .apply(i, SingleBlockPillarFeature::new)
+            BlockStateProvider.CODEC.fieldOf("block").forGetter(SingleBlockPillarFeature::block),
+            BlockPredicate.CODEC.optionalFieldOf("can_replace", BlockPredicate.alwaysTrue()).forGetter(SingleBlockPillarFeature::canReplace),
+            Direction.VERTICAL_CODEC.fieldOf("direction").forGetter(SingleBlockPillarFeature::direction),
+            Codec.floatRange(0.0F, 1.0F).optionalFieldOf("chance_to_continue", 1.0F).forGetter(SingleBlockPillarFeature::chanceToContinue),
+            PlacedFeature.CODEC.optionalFieldOf("cap_feature").forGetter(SingleBlockPillarFeature::capFeature)
+         )
+         .apply(i, SingleBlockPillarFeature::new)
    );
 
    public SingleBlockPillarFeature(

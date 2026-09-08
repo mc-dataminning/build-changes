@@ -27,14 +27,14 @@ public record RandomNeighborSpreadFeature(
 ) implements Feature {
    public static final MapCodec<RandomNeighborSpreadFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BlockStateProvider.CODEC.fieldOf("block").forGetter(RandomNeighborSpreadFeature::block),
-               RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("accepted_neighbors").forGetter(RandomNeighborSpreadFeature::acceptedNeighbors),
-               BlockPredicate.CODEC.fieldOf("can_replace").forGetter(RandomNeighborSpreadFeature::canReplace),
-               IntProviders.codec(1, 3000).fieldOf("attempts").forGetter(RandomNeighborSpreadFeature::attempts),
-               IntProviders.codec(-16, 16).fieldOf("xz_offset").forGetter(RandomNeighborSpreadFeature::xzOffset),
-               IntProviders.codec(-16, 16).fieldOf("y_offset").forGetter(RandomNeighborSpreadFeature::yOffset)
-            )
-            .apply(i, RandomNeighborSpreadFeature::new)
+            BlockStateProvider.CODEC.fieldOf("block").forGetter(RandomNeighborSpreadFeature::block),
+            RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("accepted_neighbors").forGetter(RandomNeighborSpreadFeature::acceptedNeighbors),
+            BlockPredicate.CODEC.fieldOf("can_replace").forGetter(RandomNeighborSpreadFeature::canReplace),
+            IntProviders.codec(1, 3000).fieldOf("attempts").forGetter(RandomNeighborSpreadFeature::attempts),
+            IntProviders.codec(-16, 16).fieldOf("xz_offset").forGetter(RandomNeighborSpreadFeature::xzOffset),
+            IntProviders.codec(-16, 16).fieldOf("y_offset").forGetter(RandomNeighborSpreadFeature::yOffset)
+         )
+         .apply(i, RandomNeighborSpreadFeature::new)
    );
    private static final Direction[] DIRECTIONS = Direction.values();
 

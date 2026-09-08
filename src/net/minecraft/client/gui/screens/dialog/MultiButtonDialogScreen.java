@@ -7,7 +7,7 @@ import net.minecraft.server.dialog.MultiActionDialog;
 import org.jspecify.annotations.Nullable;
 
 public class MultiButtonDialogScreen extends ButtonListDialogScreen<MultiActionDialog> {
-   public MultiButtonDialogScreen(@Nullable final Screen previousScreen, final MultiActionDialog dialog, final DialogConnectionAccess connectionAccess) {
+   public MultiButtonDialogScreen(final @Nullable Screen previousScreen, final MultiActionDialog dialog, final DialogConnectionAccess connectionAccess) {
       super(previousScreen, dialog, connectionAccess);
    }
 

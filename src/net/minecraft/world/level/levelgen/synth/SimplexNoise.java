@@ -44,9 +44,9 @@ public class SimplexNoise extends GradientNoise {
       double s = (xin + yin) * F2;
       int i = Mth.floor(xin + s);
       int j = Mth.floor(yin + s);
-      double t = (double)(i + j) * G2;
-      double X0 = (double)i - t;
-      double Y0 = (double)j - t;
+      double t = (i + j) * G2;
+      double X0 = i - t;
+      double Y0 = j - t;
       double x0 = xin - X0;
       double y0 = yin - Y0;
       int i1;
@@ -59,8 +59,8 @@ public class SimplexNoise extends GradientNoise {
          j1 = 1;
       }
 
-      double x1 = x0 - (double)i1 + G2;
-      double y1 = y0 - (double)j1 + G2;
+      double x1 = x0 - i1 + G2;
+      double y1 = y0 - j1 + G2;
       double x2 = x0 - 1.0 + 2.0 * G2;
       double y2 = y0 - 1.0 + 2.0 * G2;
       int ii = i & 0xFF;
@@ -85,10 +85,10 @@ public class SimplexNoise extends GradientNoise {
       int j = Mth.floor(yin + s);
       int k = Mth.floor(zin + s);
       double G3 = 0.16666666666666666;
-      double t = (double)(i + j + k) * 0.16666666666666666;
-      double X0 = (double)i - t;
-      double Y0 = (double)j - t;
-      double Z0 = (double)k - t;
+      double t = (i + j + k) * 0.16666666666666666;
+      double X0 = i - t;
+      double Y0 = j - t;
+      double Z0 = k - t;
       double x0 = xin - X0;
       double y0 = yin - Y0;
       double z0 = zin - Z0;
@@ -144,12 +144,12 @@ public class SimplexNoise extends GradientNoise {
          k2 = 0;
       }
 
-      double x1 = x0 - (double)i1 + 0.16666666666666666;
-      double y1 = y0 - (double)j1 + 0.16666666666666666;
-      double z1 = z0 - (double)k1 + 0.16666666666666666;
-      double x2 = x0 - (double)i2 + 0.3333333333333333;
-      double y2 = y0 - (double)j2 + 0.3333333333333333;
-      double z2 = z0 - (double)k2 + 0.3333333333333333;
+      double x1 = x0 - i1 + 0.16666666666666666;
+      double y1 = y0 - j1 + 0.16666666666666666;
+      double z1 = z0 - k1 + 0.16666666666666666;
+      double x2 = x0 - i2 + 0.3333333333333333;
+      double y2 = y0 - j2 + 0.3333333333333333;
+      double z2 = z0 - k2 + 0.3333333333333333;
       double x3 = x0 - 1.0 + 0.5;
       double y3 = y0 - 1.0 + 0.5;
       double z3 = z0 - 1.0 + 0.5;

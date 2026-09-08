@@ -9,8 +9,7 @@ import org.jspecify.annotations.Nullable;
 
 public class PathfindingContext {
    private final CollisionGetter level;
-   @Nullable
-   private final PathTypeCache cache;
+   private final @Nullable PathTypeCache cache;
    private final BlockPos mobPosition;
    private final BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
 

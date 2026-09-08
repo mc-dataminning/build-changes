@@ -91,10 +91,9 @@ public class BabyDonkeyModel extends DonkeyModel {
       float eating = state.eatAnimation;
       float standing = state.standAnimation;
       float feedingAnim = state.feedingAnimation;
-      float baseHeadAngle = (1.0F - Math.max(standing, eating))
-         * ((float) (Math.PI / 6) + headRotXRad + feedingAnim * Mth.sin((double)state.ageInTicks) * 0.05F);
+      float baseHeadAngle = (1.0F - Math.max(standing, eating)) * ((float) (Math.PI / 6) + headRotXRad + feedingAnim * Mth.sin(state.ageInTicks) * 0.05F);
       this.headParts.xRot = standing * ((float) (Math.PI / 12) + headRotXRad)
-         + eating * ((float) (Math.PI / 2) + Mth.sin((double)state.ageInTicks) * 0.05F)
+         + eating * ((float) (Math.PI / 2) + Mth.sin(state.ageInTicks) * 0.05F)
          + baseHeadAngle;
    }
 

@@ -12,7 +12,7 @@ public interface PermissionCheck {
 
    MapCodec<? extends PermissionCheck> codec();
 
-   public static class AlwaysPass implements PermissionCheck {
+   class AlwaysPass implements PermissionCheck {
       public static final PermissionCheck.AlwaysPass INSTANCE = new PermissionCheck.AlwaysPass();
       public static final MapCodec<PermissionCheck.AlwaysPass> MAP_CODEC = MapCodec.unit(INSTANCE);
 
@@ -30,7 +30,7 @@ public interface PermissionCheck {
       }
    }
 
-   public static record Require(Permission permission) implements PermissionCheck {
+   record Require(Permission permission) implements PermissionCheck {
       public static final MapCodec<PermissionCheck.Require> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(Permission.CODEC.fieldOf("permission").forGetter(PermissionCheck.Require::permission)).apply(i, PermissionCheck.Require::new)
       );

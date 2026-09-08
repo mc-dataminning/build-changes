@@ -29,10 +29,10 @@ public record GameRuleCategory(Identifier id) {
       GameRuleCategory category = new GameRuleCategory(id);
       if (SORT_ORDER.contains(category)) {
          throw new IllegalArgumentException(String.format(Locale.ROOT, "Category '%s' is already registered.", id));
-      } else {
-         SORT_ORDER.add(category);
-         return category;
       }
+
+      SORT_ORDER.add(category);
+      return category;
    }
 
    public MutableComponent label() {

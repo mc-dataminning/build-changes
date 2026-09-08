@@ -18,14 +18,14 @@ public class EmptyModel implements ItemModel {
       final ItemStack item,
       final ItemModelResolver resolver,
       final ItemDisplayContext displayContext,
-      @Nullable final ClientLevel level,
-      @Nullable final ItemOwner owner,
+      final @Nullable ClientLevel level,
+      final @Nullable ItemOwner owner,
       final int seed
    ) {
       output.appendModelIdentityElement(this);
    }
 
-   public static record Unbaked() implements ItemModel.Unbaked {
+   public record Unbaked() implements ItemModel.Unbaked {
       public static final MapCodec<EmptyModel.Unbaked> MAP_CODEC = MapCodec.unit(EmptyModel.Unbaked::new);
 
       @Override

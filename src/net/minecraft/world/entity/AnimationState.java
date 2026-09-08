@@ -36,12 +36,12 @@ public class AnimationState {
 
    public void fastForward(final int ticks, final float timeScale) {
       if (this.isStarted()) {
-         this.startTick -= (int)((float)ticks * timeScale);
+         this.startTick -= (int)(ticks * timeScale);
       }
    }
 
    public long getTimeInMillis(final float ageInTicks) {
-      float timeInTicks = ageInTicks - (float)this.startTick;
+      float timeInTicks = ageInTicks - this.startTick;
       return (long)(timeInTicks * 50.0F);
    }
 

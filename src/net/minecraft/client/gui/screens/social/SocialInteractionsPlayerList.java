@@ -11,22 +11,19 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
-import java.util.Map.Entry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.ContainerObjectSelectionList;
 import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.client.multiplayer.PlayerInfo;
 import net.minecraft.client.multiplayer.chat.ChatLog;
-import net.minecraft.client.multiplayer.chat.LoggedChatEvent;
 import net.minecraft.client.multiplayer.chat.LoggedChatMessage;
 import org.jspecify.annotations.Nullable;
 
 public class SocialInteractionsPlayerList extends ContainerObjectSelectionList<PlayerEntry> {
    private final SocialInteractionsScreen socialInteractionsScreen;
    private final List<PlayerEntry> players = Lists.newArrayList();
-   @Nullable
-   private String filter;
+   private @Nullable String filter;
 
    public SocialInteractionsPlayerList(
       final SocialInteractionsScreen socialInteractionsScreen, final Minecraft minecraft, final int width, final int height, final int y, final int itemHeight
@@ -126,12 +123,8 @@ public class SocialInteractionsPlayerList extends ContainerObjectSelectionList<P
       Map<UUID, GameProfile> gameProfiles = new Object2ObjectLinkedOpenHashMap();
 
       for (int id = chatLog.end(); id >= chatLog.start(); id--) {
-         LoggedChatEvent event = chatLog.lookup(id);
-         if (event instanceof LoggedChatMessage.Player) {
-            LoggedChatMessage.Player message = (LoggedChatMessage.Player)event;
-            if (message.message().hasSignature()) {
-               gameProfiles.put(message.profileId(), message.profile());
-            }
+         if (chatLog.lookup(id) instanceof LoggedChatMessage.Player message && message.message().hasSignature()) {
+            gameProfiles.put(message.profileId(), message.profile());
          }
       }
 
@@ -208,11 +201,11 @@ public class SocialInteractionsPlayerList extends ContainerObjectSelectionList<P
       if ((page == SocialInteractionsScreen.Page.ALL || this.minecraft.getPlayerSocialManager().shouldHideMessageFrom(playerId))
          && (Strings.isNullOrEmpty(this.filter) || player.getProfile().name().toLowerCase(Locale.ROOT).contains(this.filter))) {
          boolean chatReportable = player.hasVerifiableChat();
-         PlayerEntry playerEntryx = new PlayerEntry(
+         PlayerEntry playerEntry = new PlayerEntry(
             this.minecraft, this.socialInteractionsScreen, player.getProfile().id(), player.getProfile().name(), player::getSkin, chatReportable
          );
-         this.addEntry(playerEntryx);
-         this.players.add(playerEntryx);
+         this.addEntry(playerEntry);
+         this.players.add(playerEntry);
       }
    }
 

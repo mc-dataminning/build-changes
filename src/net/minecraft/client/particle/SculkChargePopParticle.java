@@ -35,7 +35,7 @@ public class SculkChargePopParticle extends SingleQuadParticle {
       this.setSpriteFromAge(this.sprites);
    }
 
-   public static record Provider(SpriteSet sprite) implements ParticleProvider<SimpleParticleType> {
+   public record Provider(SpriteSet sprite) implements ParticleProvider<SimpleParticleType> {
       public Particle createParticle(
          final SimpleParticleType options,
          final ClientLevel level,

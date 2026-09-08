@@ -23,8 +23,8 @@ public class WorldSessionTelemetryManager {
    public WorldSessionTelemetryManager(
       final TelemetryEventSender eventSender,
       final boolean newWorld,
-      @Nullable final Duration worldLoadDuration,
-      @Nullable final String minigameName,
+      final @Nullable Duration worldLoadDuration,
+      final @Nullable String minigameName,
       final UUID sessionId
    ) {
       this.worldLoadEvent = new WorldLoadEvent(minigameName);

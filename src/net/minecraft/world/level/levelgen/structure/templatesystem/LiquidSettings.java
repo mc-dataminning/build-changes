@@ -10,7 +10,7 @@ public enum LiquidSettings implements StringRepresentable {
    public static final Codec<LiquidSettings> CODEC = StringRepresentable.fromValues(LiquidSettings::values);
    private final String name;
 
-   private LiquidSettings(final String name) {
+   LiquidSettings(final String name) {
       this.name = name;
    }
 

@@ -40,7 +40,7 @@ public enum PathType {
    private final int id;
    private final float malus;
 
-   private PathType(final int id, final float defaultCost) {
+   PathType(final int id, final float defaultCost) {
       this.id = id;
       this.malus = defaultCost;
    }

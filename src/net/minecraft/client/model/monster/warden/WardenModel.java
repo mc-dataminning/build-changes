@@ -144,8 +144,8 @@ public class WardenModel extends EntityModel<WardenRenderState> {
 
    private void animateIdlePose(final float ageInTicks) {
       float scaledAge = ageInTicks * 0.1F;
-      float wobbleCosine = Mth.cos((double)scaledAge);
-      float wobbleSine = Mth.sin((double)scaledAge);
+      float wobbleCosine = Mth.cos(scaledAge);
+      float wobbleSine = Mth.sin(scaledAge);
       this.head.zRot += 0.06F * wobbleCosine;
       this.head.xRot += 0.06F * wobbleSine;
       this.body.zRot += 0.025F * wobbleSine;
@@ -155,15 +155,15 @@ public class WardenModel extends EntityModel<WardenRenderState> {
    private void animateWalk(final float animationPos, final float animationSpeed) {
       float speedModifier = Math.min(0.5F, 3.0F * animationSpeed);
       float adjustedPos = animationPos * 0.8662F;
-      float adjustedPosCosine = Mth.cos((double)adjustedPos);
-      float adjustedPosSine = Mth.sin((double)adjustedPos);
+      float adjustedPosCosine = Mth.cos(adjustedPos);
+      float adjustedPosSine = Mth.sin(adjustedPos);
       float speedModifierWithMin = Math.min(0.35F, speedModifier);
       this.head.zRot += 0.3F * adjustedPosSine * speedModifier;
-      this.head.xRot = this.head.xRot + 1.2F * Mth.cos((double)(adjustedPos + (float) (Math.PI / 2))) * speedModifierWithMin;
+      this.head.xRot = this.head.xRot + 1.2F * Mth.cos(adjustedPos + (float) (Math.PI / 2)) * speedModifierWithMin;
       this.body.zRot = 0.1F * adjustedPosSine * speedModifier;
       this.body.xRot = 1.0F * adjustedPosCosine * speedModifierWithMin;
       this.leftLeg.xRot = 1.0F * adjustedPosCosine * speedModifier;
-      this.rightLeg.xRot = 1.0F * Mth.cos((double)(adjustedPos + (float) Math.PI)) * speedModifier;
+      this.rightLeg.xRot = 1.0F * Mth.cos(adjustedPos + (float) Math.PI) * speedModifier;
       this.leftArm.xRot = -(0.8F * adjustedPosCosine * speedModifier);
       this.leftArm.zRot = 0.0F;
       this.rightArm.xRot = -(0.8F * adjustedPosSine * speedModifier);
@@ -183,7 +183,7 @@ public class WardenModel extends EntityModel<WardenRenderState> {
    }
 
    private void animateTendrils(final WardenRenderState state, final float ageInTicks) {
-      float tendrilXRot = state.tendrilAnimation * (float)(Math.cos((double)ageInTicks * 2.25) * Math.PI * 0.1F);
+      float tendrilXRot = state.tendrilAnimation * (float)(Math.cos(ageInTicks * 2.25) * Math.PI * 0.1F);
       this.leftTendril.xRot = tendrilXRot;
       this.rightTendril.xRot = -tendrilXRot;
    }

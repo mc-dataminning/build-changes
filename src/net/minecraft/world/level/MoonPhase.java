@@ -19,7 +19,7 @@ public enum MoonPhase implements StringRepresentable {
    private final int index;
    private final String name;
 
-   private MoonPhase(final int index, final String name) {
+   MoonPhase(final int index, final String name) {
       this.index = index;
       this.name = name;
    }

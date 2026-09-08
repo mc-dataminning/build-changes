@@ -58,11 +58,9 @@ public abstract class ContainerOpenersCounter {
    }
 
    private boolean hasContainerOpen(final Entity entity, final BlockPos blockPos) {
-      if (entity instanceof ContainerUser containerUser && !containerUser.getLivingEntity().isSpectator()) {
-         return containerUser.hasContainerOpen(this, blockPos);
-      }
-
-      return false;
+      return entity instanceof ContainerUser containerUser && !containerUser.getLivingEntity().isSpectator()
+         ? containerUser.hasContainerOpen(this, blockPos)
+         : false;
    }
 
    public void recheckOpeners(final Level level, final BlockPos pos, final BlockState blockState) {

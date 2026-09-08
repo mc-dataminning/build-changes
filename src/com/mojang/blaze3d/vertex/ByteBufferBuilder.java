@@ -4,8 +4,8 @@ import com.mojang.jtracy.MemoryPool;
 import com.mojang.jtracy.TracyClient;
 import com.mojang.logging.LogUtils;
 import java.nio.ByteBuffer;
-import java.util.Objects;
 import net.minecraft.util.Mth;
+import org.jspecify.annotations.Nullable;
 import org.lwjgl.system.MemoryUtil;
 import org.lwjgl.system.MemoryUtil.MemoryAllocator;
 import org.slf4j.Logger;
@@ -26,9 +26,9 @@ public class ByteBufferBuilder implements AutoCloseable {
    private int generation;
 
    public ByteBufferBuilder(final int initialCapacity, final long maxCapacity) {
-      this.capacity = (long)initialCapacity;
+      this.capacity = initialCapacity;
       this.maxCapacity = maxCapacity;
-      this.pointer = ALLOCATOR.malloc((long)initialCapacity);
+      this.pointer = ALLOCATOR.malloc(initialCapacity);
       MEMORY_POOL.malloc(this.pointer, initialCapacity);
       if (this.pointer == 0L) {
          throw new OutOfMemoryError("Failed to allocate " + initialCapacity + " bytes");
@@ -40,12 +40,12 @@ public class ByteBufferBuilder implements AutoCloseable {
    }
 
    public static ByteBufferBuilder exactlySized(final int capacity) {
-      return new ByteBufferBuilder(capacity, (long)capacity);
+      return new ByteBufferBuilder(capacity, capacity);
    }
 
    public long reserve(final int size) {
       long offset = this.writeOffset;
-      long nextOffset = Math.addExact(offset, (long)size);
+      long nextOffset = Math.addExact(offset, size);
       this.ensureCapacity(nextOffset);
       this.writeOffset = nextOffset;
       return Math.addExact(this.pointer, offset);
@@ -70,24 +70,26 @@ public class ByteBufferBuilder implements AutoCloseable {
       LOGGER.debug("Needed to grow BufferBuilder buffer: Old size {} bytes, new size {} bytes.", this.capacity, newCapacity);
       if (this.pointer == 0L) {
          throw new OutOfMemoryError("Failed to resize buffer from " + this.capacity + " bytes to " + newCapacity + " bytes");
-      } else {
-         this.capacity = newCapacity;
       }
+
+      this.capacity = newCapacity;
    }
 
-   public ByteBufferBuilder.Result build() {
+   public ByteBufferBuilder.@Nullable Result build() {
       this.checkOpen();
       long offset = this.nextResultOffset;
       long size = this.writeOffset - offset;
       if (size == 0L) {
          return null;
-      } else if (size > 2147483647L) {
-         throw new IllegalStateException("Cannot build buffer larger than 2147483647 bytes (was " + size + ")");
-      } else {
-         this.nextResultOffset = this.writeOffset;
-         this.resultCount++;
-         return new ByteBufferBuilder.Result(offset, (int)size, this.generation);
       }
+
+      if (size > 2147483647L) {
+         throw new IllegalStateException("Cannot build buffer larger than 2147483647 bytes (was " + size + ")");
+      }
+
+      this.nextResultOffset = this.writeOffset;
+      this.resultCount++;
+      return new ByteBufferBuilder.Result(offset, (int)size, this.generation);
    }
 
    public void clear() {
@@ -150,8 +152,6 @@ public class ByteBufferBuilder implements AutoCloseable {
       private boolean closed;
 
       private Result(final long offset, final int size, final int generation) {
-         Objects.requireNonNull(ByteBufferBuilder.this);
-         super();
          this.offset = offset;
          this.size = size;
          this.generation = generation;

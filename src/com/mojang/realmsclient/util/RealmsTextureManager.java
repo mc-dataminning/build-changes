@@ -20,7 +20,7 @@ public class RealmsTextureManager {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static final Identifier TEMPLATE_ICON_LOCATION = Identifier.withDefaultNamespace("textures/gui/presets/isles.png");
 
-   public static Identifier worldTemplate(final String id, @Nullable final String image) {
+   public static Identifier worldTemplate(final String id, final @Nullable String image) {
       return image == null ? TEMPLATE_ICON_LOCATION : getTexture(id, image);
    }
 
@@ -43,15 +43,14 @@ public class RealmsTextureManager {
       }
    }
 
-   @Nullable
-   private static NativeImage loadImage(final String encodedImage) {
+   private static @Nullable NativeImage loadImage(final String encodedImage) {
       byte[] bytes = Base64.getDecoder().decode(encodedImage);
       ByteBuffer buffer = MemoryUtil.memAlloc(bytes.length);
 
       try {
          return NativeImage.read(buffer.put(bytes).flip());
-      } catch (IOException var7) {
-         LOGGER.warn("Failed to load world image: {}", encodedImage, var7);
+      } catch (IOException e) {
+         LOGGER.warn("Failed to load world image: {}", encodedImage, e);
       } finally {
          MemoryUtil.memFree(buffer);
       }
@@ -59,6 +58,6 @@ public class RealmsTextureManager {
       return null;
    }
 
-   public static record RealmsTexture(String image, Identifier textureId) {
+   public record RealmsTexture(String image, Identifier textureId) {
    }
 }

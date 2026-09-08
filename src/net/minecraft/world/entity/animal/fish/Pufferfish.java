@@ -31,13 +31,9 @@ public class Pufferfish extends AbstractFish {
    private static final EntityDataAccessor<Integer> PUFF_STATE = SynchedEntityData.defineId(Pufferfish.class, EntityDataSerializers.INT);
    private int inflateCounter;
    private int deflateTimer;
-   private static final TargetingConditions.Selector SCARY_MOB = (target, level) -> {
-      if (target instanceof Player player && player.isCreative()) {
-         return false;
-      }
-
-      return !target.is(EntityTypeTags.NOT_SCARY_FOR_PUFFERFISH);
-   };
+   private static final TargetingConditions.Selector SCARY_MOB = (target, level) -> target instanceof Player player && player.isCreative()
+      ? false
+      : !target.is(EntityTypeTags.NOT_SCARY_FOR_PUFFERFISH);
    private static final TargetingConditions TARGETING_CONDITIONS = TargetingConditions.forNonCombat()
       .ignoreInvisibilityTesting()
       .ignoreLineOfSight()
@@ -143,7 +139,7 @@ public class Pufferfish extends AbstractFish {
    private void touch(final ServerLevel level, final Mob mob) {
       if (this.doTeamsAllowDamage(mob)) {
          int puffState = this.getPuffState();
-         if (mob.hurtServer(level, this.damageSources().mobAttack(this), (float)(1 + puffState))) {
+         if (mob.hurtServer(level, this.damageSources().mobAttack(this), 1 + puffState)) {
             mob.addEffect(new MobEffectInstance(MobEffects.POISON, 60 * puffState, 0), this);
             this.playSound(SoundEvents.PUFFER_FISH_STING, 1.0F, 1.0F);
          }
@@ -156,7 +152,7 @@ public class Pufferfish extends AbstractFish {
          int puffState = this.getPuffState();
          if (player instanceof ServerPlayer serverPlayer
             && puffState > 0
-            && player.hurtServer(serverPlayer.level(), this.damageSources().mobAttack(this), (float)(1 + puffState))) {
+            && player.hurtServer(serverPlayer.level(), this.damageSources().mobAttack(this), 1 + puffState)) {
             if (!this.isSilent()) {
                serverPlayer.connection.send(new ClientboundGameEventPacket(ClientboundGameEventPacket.PUFFER_FISH_STING, 0.0F));
             }

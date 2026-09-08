@@ -128,67 +128,67 @@ public class Orientation {
    private static Orientation generateContext(final Orientation self, final Orientation[] lookup) {
       if (lookup[self.getIndex()] != null) {
          return lookup[self.getIndex()];
-      } else {
-         lookup[self.getIndex()] = self;
-
-         for (Orientation.SideBias sideBias : Orientation.SideBias.values()) {
-            self.withSideBias.put(sideBias, generateContext(new Orientation(self.up, self.front, sideBias), lookup));
-         }
-
-         for (Direction facing : Direction.values()) {
-            Direction up = self.up;
-            if (facing == self.up) {
-               up = self.front.getOpposite();
-            }
-
-            if (facing == self.up.getOpposite()) {
-               up = self.front;
-            }
-
-            self.withFront.put(facing, generateContext(new Orientation(up, facing, self.sideBias), lookup));
-         }
-
-         for (Direction facing : Direction.values()) {
-            Direction front = self.front;
-            if (facing == self.front) {
-               front = self.up.getOpposite();
-            }
-
-            if (facing == self.front.getOpposite()) {
-               front = self.up;
-            }
-
-            self.withUp.put(facing, generateContext(new Orientation(facing, front, self.sideBias), lookup));
-         }
-
-         return self;
       }
+
+      lookup[self.getIndex()] = self;
+
+      for (Orientation.SideBias sideBias : Orientation.SideBias.values()) {
+         self.withSideBias.put(sideBias, generateContext(new Orientation(self.up, self.front, sideBias), lookup));
+      }
+
+      for (Direction facing : Direction.values()) {
+         Direction up = self.up;
+         if (facing == self.up) {
+            up = self.front.getOpposite();
+         }
+
+         if (facing == self.up.getOpposite()) {
+            up = self.front;
+         }
+
+         self.withFront.put(facing, generateContext(new Orientation(up, facing, self.sideBias), lookup));
+      }
+
+      for (Direction facing : Direction.values()) {
+         Direction front = self.front;
+         if (facing == self.front) {
+            front = self.up.getOpposite();
+         }
+
+         if (facing == self.front.getOpposite()) {
+            front = self.up;
+         }
+
+         self.withUp.put(facing, generateContext(new Orientation(facing, front, self.sideBias), lookup));
+      }
+
+      return self;
    }
 
    @VisibleForTesting
    protected static int generateIndex(final Direction up, final Direction front, final Orientation.SideBias sideBias) {
       if (up.getAxis() == front.getAxis()) {
          throw new IllegalStateException("Up-vector and front-vector can not be on the same axis");
-      } else {
-         int frontAxisKey;
-         if (up.getAxis() == Direction.Axis.Y) {
-            frontAxisKey = front.getAxis() == Direction.Axis.X ? 1 : 0;
-         } else {
-            frontAxisKey = front.getAxis() == Direction.Axis.Y ? 1 : 0;
-         }
-
-         int frontKey = frontAxisKey << 1 | front.getAxisDirection().ordinal();
-         return ((up.ordinal() << 2) + frontKey << 1) + sideBias.ordinal();
       }
+
+      int frontAxisKey;
+      if (up.getAxis() == Direction.Axis.Y) {
+         frontAxisKey = front.getAxis() == Direction.Axis.X ? 1 : 0;
+      } else {
+         frontAxisKey = front.getAxis() == Direction.Axis.Y ? 1 : 0;
+      }
+
+      int frontKey = frontAxisKey << 1 | front.getAxisDirection().ordinal();
+      return ((up.ordinal() << 2) + frontKey << 1) + sideBias.ordinal();
    }
 
-   public static enum SideBias {
+   public enum SideBias {
       LEFT("left"),
       RIGHT("right");
 
       private final String name;
 
-      private SideBias(final String name) {
+      SideBias(final String name) {
          this.name = name;
       }
 

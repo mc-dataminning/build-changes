@@ -92,26 +92,26 @@ public class TimerQueue<T> extends SavedData {
       );
    }
 
-   public static record Event<T>(long triggerTime, UnsignedLong sequentialId, String id, TimerCallback<T> callback) {
-      public static record Packed<T>(long triggerTime, String id, TimerCallback<T> callback) {
+   public record Event<T>(long triggerTime, UnsignedLong sequentialId, String id, TimerCallback<T> callback) {
+      public record Packed<T>(long triggerTime, String id, TimerCallback<T> callback) {
          public static <T> Codec<TimerQueue.Event.Packed<T>> codec(final Codec<TimerCallback<T>> callbackCodec) {
             return RecordCodecBuilder.create(
                i -> i.group(
-                        Codec.LONG.fieldOf("trigger_time").forGetter(TimerQueue.Event.Packed::triggerTime),
-                        Codec.STRING.fieldOf("id").forGetter(TimerQueue.Event.Packed::id),
-                        callbackCodec.fieldOf("callback").forGetter(TimerQueue.Event.Packed::callback)
-                     )
-                     .apply(i, TimerQueue.Event.Packed::new)
+                     Codec.LONG.fieldOf("trigger_time").forGetter(TimerQueue.Event.Packed::triggerTime),
+                     Codec.STRING.fieldOf("id").forGetter(TimerQueue.Event.Packed::id),
+                     callbackCodec.fieldOf("callback").forGetter(TimerQueue.Event.Packed::callback)
+                  )
+                  .apply(i, TimerQueue.Event.Packed::new)
             );
          }
       }
    }
 
-   public static record Packed<T>(List<TimerQueue.Event.Packed<T>> events) {
+   public record Packed<T>(List<TimerQueue.Event.Packed<T>> events) {
       public static <T> Codec<TimerQueue.Packed<T>> codec(final Codec<TimerCallback<T>> callbackCodec) {
          return RecordCodecBuilder.create(
             i -> i.group(TimerQueue.Event.Packed.codec(callbackCodec).listOf().fieldOf("events").forGetter(TimerQueue.Packed::events))
-                  .apply(i, TimerQueue.Packed::new)
+               .apply(i, TimerQueue.Packed::new)
          );
       }
    }

@@ -19,14 +19,14 @@ public record CatSoundVariant(CatSoundVariant.CatSoundSet adultSounds, CatSoundV
    private static Codec<CatSoundVariant> codec() {
       return RecordCodecBuilder.create(
          i -> i.group(
-                  CatSoundVariant.CatSoundSet.CODEC.fieldOf("adult_sounds").forGetter(CatSoundVariant::adultSounds),
-                  CatSoundVariant.CatSoundSet.CODEC.fieldOf("baby_sounds").forGetter(CatSoundVariant::babySounds)
-               )
-               .apply(i, CatSoundVariant::new)
+               CatSoundVariant.CatSoundSet.CODEC.fieldOf("adult_sounds").forGetter(CatSoundVariant::adultSounds),
+               CatSoundVariant.CatSoundSet.CODEC.fieldOf("baby_sounds").forGetter(CatSoundVariant::babySounds)
+            )
+            .apply(i, CatSoundVariant::new)
       );
    }
 
-   public static record CatSoundSet(
+   public record CatSoundSet(
       Holder<SoundEvent> ambientSound,
       Holder<SoundEvent> strayAmbientSound,
       Holder<SoundEvent> hissSound,
@@ -39,17 +39,17 @@ public record CatSoundVariant(CatSoundVariant.CatSoundSet adultSounds, CatSoundV
    ) {
       private static final Codec<CatSoundVariant.CatSoundSet> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  SoundEvent.CODEC.fieldOf("ambient_sound").forGetter(CatSoundVariant.CatSoundSet::ambientSound),
-                  SoundEvent.CODEC.fieldOf("stray_ambient_sound").forGetter(CatSoundVariant.CatSoundSet::strayAmbientSound),
-                  SoundEvent.CODEC.fieldOf("hiss_sound").forGetter(CatSoundVariant.CatSoundSet::hissSound),
-                  SoundEvent.CODEC.fieldOf("hurt_sound").forGetter(CatSoundVariant.CatSoundSet::hurtSound),
-                  SoundEvent.CODEC.fieldOf("death_sound").forGetter(CatSoundVariant.CatSoundSet::deathSound),
-                  SoundEvent.CODEC.fieldOf("eat_sound").forGetter(CatSoundVariant.CatSoundSet::eatSound),
-                  SoundEvent.CODEC.fieldOf("beg_for_food_sound").forGetter(CatSoundVariant.CatSoundSet::begForFoodSound),
-                  SoundEvent.CODEC.fieldOf("purr_sound").forGetter(CatSoundVariant.CatSoundSet::purrSound),
-                  SoundEvent.CODEC.fieldOf("purreow_sound").forGetter(CatSoundVariant.CatSoundSet::purreowSound)
-               )
-               .apply(i, CatSoundVariant.CatSoundSet::new)
+               SoundEvent.CODEC.fieldOf("ambient_sound").forGetter(CatSoundVariant.CatSoundSet::ambientSound),
+               SoundEvent.CODEC.fieldOf("stray_ambient_sound").forGetter(CatSoundVariant.CatSoundSet::strayAmbientSound),
+               SoundEvent.CODEC.fieldOf("hiss_sound").forGetter(CatSoundVariant.CatSoundSet::hissSound),
+               SoundEvent.CODEC.fieldOf("hurt_sound").forGetter(CatSoundVariant.CatSoundSet::hurtSound),
+               SoundEvent.CODEC.fieldOf("death_sound").forGetter(CatSoundVariant.CatSoundSet::deathSound),
+               SoundEvent.CODEC.fieldOf("eat_sound").forGetter(CatSoundVariant.CatSoundSet::eatSound),
+               SoundEvent.CODEC.fieldOf("beg_for_food_sound").forGetter(CatSoundVariant.CatSoundSet::begForFoodSound),
+               SoundEvent.CODEC.fieldOf("purr_sound").forGetter(CatSoundVariant.CatSoundSet::purrSound),
+               SoundEvent.CODEC.fieldOf("purreow_sound").forGetter(CatSoundVariant.CatSoundSet::purreowSound)
+            )
+            .apply(i, CatSoundVariant.CatSoundSet::new)
       );
    }
 }

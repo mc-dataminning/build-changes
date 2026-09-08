@@ -37,13 +37,13 @@ public record Consumable(
    private static final float CONSUME_EFFECTS_START_FRACTION = 0.21875F;
    public static final Codec<Consumable> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ExtraCodecs.NON_NEGATIVE_FLOAT.optionalFieldOf("consume_seconds", 1.6F).forGetter(Consumable::consumeSeconds),
-               ItemUseAnimation.CODEC.optionalFieldOf("animation", ItemUseAnimation.EAT).forGetter(Consumable::animation),
-               SoundEvent.CODEC.optionalFieldOf("sound", SoundEvents.GENERIC_EAT).forGetter(Consumable::sound),
-               Codec.BOOL.optionalFieldOf("has_consume_particles", true).forGetter(Consumable::hasConsumeParticles),
-               ConsumeEffect.CODEC.listOf().optionalFieldOf("on_consume_effects", List.of()).forGetter(Consumable::onConsumeEffects)
-            )
-            .apply(i, Consumable::new)
+            ExtraCodecs.NON_NEGATIVE_FLOAT.optionalFieldOf("consume_seconds", 1.6F).forGetter(Consumable::consumeSeconds),
+            ItemUseAnimation.CODEC.optionalFieldOf("animation", ItemUseAnimation.EAT).forGetter(Consumable::animation),
+            SoundEvent.CODEC.optionalFieldOf("sound", SoundEvents.GENERIC_EAT).forGetter(Consumable::sound),
+            Codec.BOOL.optionalFieldOf("has_consume_particles", true).forGetter(Consumable::hasConsumeParticles),
+            ConsumeEffect.CODEC.listOf().optionalFieldOf("on_consume_effects", List.of()).forGetter(Consumable::onConsumeEffects)
+         )
+         .apply(i, Consumable::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, Consumable> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.FLOAT,
@@ -118,7 +118,7 @@ public record Consumable(
 
    public boolean shouldEmitParticlesAndSounds(final int useItemRemainingTicks) {
       int itemUsedForTicks = this.consumeTicks() - useItemRemainingTicks;
-      int waitTicksBeforeUseEffects = (int)((float)this.consumeTicks() * 0.21875F);
+      int waitTicksBeforeUseEffects = (int)(this.consumeTicks() * 0.21875F);
       boolean isValidTime = itemUsedForTicks > waitTicksBeforeUseEffects;
       return isValidTime && useItemRemainingTicks % 4 == 0;
    }

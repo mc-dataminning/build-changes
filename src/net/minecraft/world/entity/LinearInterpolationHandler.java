@@ -13,7 +13,7 @@ public class LinearInterpolationHandler extends AbstractInterpolationHandler {
    }
 
    public static InterpolationHandler create(final Entity entity, final int interpolationSteps) {
-      return (InterpolationHandler)(entity.level().isClientSide() ? new LinearInterpolationHandler(entity, interpolationSteps) : InterpolationHandler.NO_OP);
+      return entity.level().isClientSide() ? new LinearInterpolationHandler(entity, interpolationSteps) : InterpolationHandler.NO_OP;
    }
 
    public static InterpolationHandler create(final Entity entity) {
@@ -37,10 +37,10 @@ public class LinearInterpolationHandler extends AbstractInterpolationHandler {
 
    @Override
    protected void doInterpolate() {
-      double alpha = 1.0 / (double)this.interpolationData.remainingSteps;
+      double alpha = 1.0 / this.interpolationData.remainingSteps;
       Vec3 newPosition = this.entity.position().lerp(this.interpolationData.position(), alpha);
-      float newYRot = (float)Mth.rotLerp(alpha, (double)this.entity.getYRot(), (double)this.interpolationData.yRot());
-      float newXRot = (float)Mth.lerp(alpha, (double)this.entity.getXRot(), (double)this.interpolationData.xRot());
+      float newYRot = (float)Mth.rotLerp(alpha, this.entity.getYRot(), this.interpolationData.yRot());
+      float newXRot = (float)Mth.lerp(alpha, this.entity.getXRot(), this.interpolationData.xRot());
       this.entity.setPos(newPosition);
       this.entity.setRot(newYRot, newXRot);
       this.interpolationData.remainingSteps--;

@@ -23,7 +23,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Map.Entry;
 import java.util.concurrent.CompletableFuture;
 import java.util.regex.Matcher;
@@ -78,11 +77,9 @@ public class CommandSuggestions {
    private final List<FormattedCharSequence> commandUsage = Lists.newArrayList();
    private int commandUsagePosition;
    private int commandUsageWidth;
-   @Nullable
-   private ParseResults<ClientSuggestionProvider> currentParse;
-   @Nullable
-   private CompletableFuture<Suggestions> pendingSuggestions;
-   private CommandSuggestions.SuggestionsList suggestions;
+   private @Nullable ParseResults<ClientSuggestionProvider> currentParse;
+   private @Nullable CompletableFuture<Suggestions> pendingSuggestions;
+   private CommandSuggestions.@Nullable SuggestionsList suggestions;
    private boolean currentParseIsCommand;
    private boolean currentParseIsMessage;
    private boolean allowSuggestions;
@@ -136,12 +133,14 @@ public class CommandSuggestions {
       boolean isVisible = this.suggestions != null;
       if (isVisible && this.suggestions.keyPressed(event)) {
          return true;
-      } else if (this.screen.getFocused() != this.input || !event.isCycleFocus() || this.allowHiding && !isVisible) {
-         return false;
-      } else {
-         this.showSuggestions(true);
-         return true;
       }
+
+      if (this.screen.getFocused() != this.input || !event.isCycleFocus() || this.allowHiding && !isVisible) {
+         return false;
+      }
+
+      this.showSuggestions(true);
+      return true;
    }
 
    public boolean mouseScrolled(final double scroll) {
@@ -274,7 +273,7 @@ public class CommandSuggestions {
          public <T> void accept(
             final CommandContextBuilder<ClientSuggestionProvider> context,
             final ArgumentCommandNode<ClientSuggestionProvider, T> argument,
-            @Nullable final ParsedArgument<ClientSuggestionProvider, T> value
+            final @Nullable ParsedArgument<ClientSuggestionProvider, T> value
          ) {
             this.foundMessageArgument = this.foundMessageArgument | (value != null && value.getResult() instanceof MessageArgument.Message);
          }
@@ -288,16 +287,16 @@ public class CommandSuggestions {
    private static int getLastWordIndex(final String text) {
       if (Strings.isNullOrEmpty(text)) {
          return 0;
-      } else {
-         int result = 0;
-         Matcher matcher = WHITESPACE_PATTERN.matcher(text);
-
-         while (matcher.find()) {
-            result = matcher.end();
-         }
-
-         return result;
       }
+
+      int result = 0;
+      Matcher matcher = WHITESPACE_PATTERN.matcher(text);
+
+      while (matcher.find()) {
+         result = matcher.end();
+      }
+
+      return result;
    }
 
    private static FormattedCharSequence getExceptionMessage(final CommandSyntaxException e) {
@@ -392,13 +391,11 @@ public class CommandSuggestions {
       this.commandUsageWidth = longest;
    }
 
-   @Nullable
-   private FormattedCharSequence formatChat(final String text, final int offset) {
+   private @Nullable FormattedCharSequence formatChat(final String text, final int offset) {
       return this.currentParse != null ? formatText(this.currentParse, text, offset) : null;
    }
 
-   @Nullable
-   private static String calculateSuggestionSuffix(final String contents, final String suggestion) {
+   private static @Nullable String calculateSuggestionSuffix(final String contents, final String suggestion) {
       return suggestion.startsWith(contents) ? suggestion.substring(contents.length()) : null;
    }
 
@@ -427,11 +424,11 @@ public class CommandSuggestions {
       }
 
       if (currentParse.getReader().canRead()) {
-         int startx = Math.max(currentParse.getReader().getCursor() - offset, 0);
-         if (startx < text.length()) {
-            int end = Math.min(startx + currentParse.getReader().getRemainingLength(), text.length());
-            parts.add(FormattedCharSequence.forward(text.substring(unformattedStart, startx), LITERAL_STYLE));
-            parts.add(FormattedCharSequence.forward(text.substring(startx, end), UNPARSED_STYLE));
+         int start = Math.max(currentParse.getReader().getCursor() - offset, 0);
+         if (start < text.length()) {
+            int end = Math.min(start + currentParse.getReader().getRemainingLength(), text.length());
+            parts.add(FormattedCharSequence.forward(text.substring(unformattedStart, start), LITERAL_STYLE));
+            parts.add(FormattedCharSequence.forward(text.substring(start, end), UNPARSED_STYLE));
             unformattedStart = end;
          }
       }
@@ -467,7 +464,7 @@ public class CommandSuggestions {
    }
 
    public Component getNarrationMessage() {
-      return (Component)(this.suggestions != null ? CommonComponents.NEW_LINE.copy().append(this.suggestions.getNarrationMessage()) : CommonComponents.EMPTY);
+      return this.suggestions != null ? CommonComponents.NEW_LINE.copy().append(this.suggestions.getNarrationMessage()) : CommonComponents.EMPTY;
    }
 
    public boolean hasAllowedInput() {
@@ -480,14 +477,11 @@ public class CommandSuggestions {
       private final List<Suggestion> suggestionList;
       private int offset;
       private int current;
-      private Vec2 lastMouse;
+      private Vec2 lastMouse = Vec2.ZERO;
       private boolean tabCycles;
       private int lastNarratedEntry;
 
       private SuggestionsList(final int x, final int y, final int width, final List<Suggestion> suggestionList, final boolean immediateNarration) {
-         Objects.requireNonNull(CommandSuggestions.this);
-         super();
-         this.lastMouse = Vec2.ZERO;
          int listX = x - (CommandSuggestions.this.input.isBordered() ? 0 : 1);
          int listY = CommandSuggestions.this.anchorToBottom
             ? y - 3 - Math.min(suggestionList.size(), CommandSuggestions.this.suggestionLineLimit) * 12
@@ -505,9 +499,9 @@ public class CommandSuggestions {
          boolean hasPrevious = this.offset > 0;
          boolean hasNext = this.suggestionList.size() > this.offset + limit;
          boolean limited = hasPrevious || hasNext;
-         boolean mouseMoved = this.lastMouse.x != (float)mouseX || this.lastMouse.y != (float)mouseY;
+         boolean mouseMoved = this.lastMouse.x != mouseX || this.lastMouse.y != mouseY;
          if (mouseMoved) {
-            this.lastMouse = new Vec2((float)mouseX, (float)mouseY);
+            this.lastMouse = new Vec2(mouseX, mouseY);
          }
 
          if (limited) {
@@ -528,12 +522,12 @@ public class CommandSuggestions {
             }
 
             if (hasNext) {
-               for (int xx = 0; xx < this.rect.getWidth(); xx++) {
-                  if (xx % 2 == 0) {
+               for (int x = 0; x < this.rect.getWidth(); x++) {
+                  if (x % 2 == 0) {
                      graphics.fill(
-                        this.rect.getX() + xx,
+                        this.rect.getX() + x,
                         this.rect.getY() + this.rect.getHeight(),
-                        this.rect.getX() + xx + 1,
+                        this.rect.getX() + x + 1,
                         this.rect.getY() + this.rect.getHeight() + 1,
                         -1
                      );
@@ -588,24 +582,22 @@ public class CommandSuggestions {
       public boolean mouseClicked(final int x, final int y) {
          if (!this.rect.contains(x, y)) {
             return false;
-         } else {
-            int line = (y - this.rect.getY()) / 12 + this.offset;
-            if (line >= 0 && line < this.suggestionList.size()) {
-               this.select(line);
-               this.useSuggestion();
-            }
-
-            return true;
          }
+
+         int line = (y - this.rect.getY()) / 12 + this.offset;
+         if (line >= 0 && line < this.suggestionList.size()) {
+            this.select(line);
+            this.useSuggestion();
+         }
+
+         return true;
       }
 
       public boolean mouseScrolled(final double scroll) {
          int mouseX = (int)CommandSuggestions.this.minecraft.mouseHandler.getScaledXPos(CommandSuggestions.this.minecraft.getWindow());
          int mouseY = (int)CommandSuggestions.this.minecraft.mouseHandler.getScaledYPos(CommandSuggestions.this.minecraft.getWindow());
          if (this.rect.contains(mouseX, mouseY)) {
-            this.offset = Mth.clamp(
-               (int)((double)this.offset - scroll), 0, Math.max(this.suggestionList.size() - CommandSuggestions.this.suggestionLineLimit, 0)
-            );
+            this.offset = Mth.clamp((int)(this.offset - scroll), 0, Math.max(this.suggestionList.size() - CommandSuggestions.this.suggestionLineLimit, 0));
             return true;
          } else {
             return false;
@@ -617,11 +609,15 @@ public class CommandSuggestions {
             this.cycle(-1);
             this.tabCycles = false;
             return true;
-         } else if (event.isDown()) {
+         }
+
+         if (event.isDown()) {
             this.cycle(1);
             this.tabCycles = false;
             return true;
-         } else if (event.isCycleFocus()) {
+         }
+
+         if (event.isCycleFocus()) {
             if (this.tabCycles) {
                this.cycle(event.hasShiftDown() ? -1 : 1);
             }

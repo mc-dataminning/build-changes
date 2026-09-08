@@ -121,7 +121,7 @@ public class CamelAi {
 
       protected boolean checkExtraStartConditions(final ServerLevel level, final Camel body) {
          return !body.isInWater()
-            && body.getPoseTime() >= (long)this.minimalPoseTicks
+            && body.getPoseTime() >= this.minimalPoseTicks
             && !body.isLeashed()
             && body.onGround()
             && !body.hasControllingPassenger()

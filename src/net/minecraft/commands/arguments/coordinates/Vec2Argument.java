@@ -60,17 +60,17 @@ public class Vec2Argument implements ArgumentType<Coordinates> {
    public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
       if (!(context.getSource() instanceof SharedSuggestionProvider)) {
          return Suggestions.empty();
-      } else {
-         String remainder = builder.getRemaining();
-         Collection<SharedSuggestionProvider.TextCoordinates> suggestedCoordinates;
-         if (!remainder.isEmpty() && remainder.charAt(0) == '^') {
-            suggestedCoordinates = Collections.singleton(SharedSuggestionProvider.TextCoordinates.DEFAULT_LOCAL);
-         } else {
-            suggestedCoordinates = ((SharedSuggestionProvider)context.getSource()).getAbsoluteCoordinates();
-         }
-
-         return SharedSuggestionProvider.suggest2DCoordinates(remainder, suggestedCoordinates, builder, Commands.createValidator(this::parse));
       }
+
+      String remainder = builder.getRemaining();
+      Collection<SharedSuggestionProvider.TextCoordinates> suggestedCoordinates;
+      if (!remainder.isEmpty() && remainder.charAt(0) == '^') {
+         suggestedCoordinates = Collections.singleton(SharedSuggestionProvider.TextCoordinates.DEFAULT_LOCAL);
+      } else {
+         suggestedCoordinates = ((SharedSuggestionProvider)context.getSource()).getAbsoluteCoordinates();
+      }
+
+      return SharedSuggestionProvider.suggest2DCoordinates(remainder, suggestedCoordinates, builder, Commands.createValidator(this::parse));
    }
 
    public Collection<String> getExamples() {

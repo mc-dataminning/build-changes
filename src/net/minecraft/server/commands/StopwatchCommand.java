@@ -25,8 +25,8 @@ public class StopwatchCommand {
       id -> Component.translatableEscape("commands.stopwatch.does_not_exist", id)
    );
    public static final SuggestionProvider<CommandSourceStack> SUGGEST_STOPWATCHES = (c, p) -> SharedSuggestionProvider.suggestResource(
-         ((CommandSourceStack)c.getSource()).getServer().getStopwatches().ids(), p
-      );
+      ((CommandSourceStack)c.getSource()).getServer().getStopwatches().ids(), p
+   );
 
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
@@ -50,8 +50,8 @@ public class StopwatchCommand {
                                     Commands.argument("scale", DoubleArgumentType.doubleArg())
                                        .executes(
                                           c -> queryStopwatch(
-                                                (CommandSourceStack)c.getSource(), IdentifierArgument.getId(c, "id"), DoubleArgumentType.getDouble(c, "scale")
-                                             )
+                                             (CommandSourceStack)c.getSource(), IdentifierArgument.getId(c, "id"), DoubleArgumentType.getDouble(c, "scale")
+                                          )
                                        )
                                  ))
                               .executes(c -> queryStopwatch((CommandSourceStack)c.getSource(), IdentifierArgument.getId(c, "id"), 1.0))
@@ -82,10 +82,10 @@ public class StopwatchCommand {
       Stopwatch now = new Stopwatch(Stopwatches.currentTime());
       if (!stopwatches.add(id, now)) {
          throw ERROR_ALREADY_EXISTS.create(id);
-      } else {
-         source.sendSuccess(() -> Component.translatable("commands.stopwatch.create.success", Component.translationArg(id)), true);
-         return 1;
       }
+
+      source.sendSuccess(() -> Component.translatable("commands.stopwatch.create.success", Component.translationArg(id)), true);
+      return 1;
    }
 
    private static int queryStopwatch(final CommandSourceStack source, final Identifier id, final double scale) throws CommandSyntaxException {
@@ -94,12 +94,12 @@ public class StopwatchCommand {
       Stopwatch stopwatch = stopwatches.get(id);
       if (stopwatch == null) {
          throw ERROR_DOES_NOT_EXIST.create(id);
-      } else {
-         long currentTime = Stopwatches.currentTime();
-         double elapsedSeconds = stopwatch.elapsedSeconds(currentTime);
-         source.sendSuccess(() -> Component.translatable("commands.stopwatch.query", Component.translationArg(id), elapsedSeconds), true);
-         return (int)(elapsedSeconds * scale);
       }
+
+      long currentTime = Stopwatches.currentTime();
+      double elapsedSeconds = stopwatch.elapsedSeconds(currentTime);
+      source.sendSuccess(() -> Component.translatable("commands.stopwatch.query", Component.translationArg(id), elapsedSeconds), true);
+      return (int)(elapsedSeconds * scale);
    }
 
    private static int restartStopwatch(final CommandSourceStack source, final Identifier id) throws CommandSyntaxException {
@@ -107,10 +107,10 @@ public class StopwatchCommand {
       Stopwatches stopwatches = server.getStopwatches();
       if (!stopwatches.update(id, stopwatch -> new Stopwatch(Stopwatches.currentTime()))) {
          throw ERROR_DOES_NOT_EXIST.create(id);
-      } else {
-         source.sendSuccess(() -> Component.translatable("commands.stopwatch.restart.success", Component.translationArg(id)), true);
-         return 1;
       }
+
+      source.sendSuccess(() -> Component.translatable("commands.stopwatch.restart.success", Component.translationArg(id)), true);
+      return 1;
    }
 
    private static int removeStopwatch(final CommandSourceStack source, final Identifier id) throws CommandSyntaxException {
@@ -118,9 +118,9 @@ public class StopwatchCommand {
       Stopwatches stopwatches = server.getStopwatches();
       if (!stopwatches.remove(id)) {
          throw ERROR_DOES_NOT_EXIST.create(id);
-      } else {
-         source.sendSuccess(() -> Component.translatable("commands.stopwatch.remove.success", Component.translationArg(id)), true);
-         return 1;
       }
+
+      source.sendSuccess(() -> Component.translatable("commands.stopwatch.remove.success", Component.translationArg(id)), true);
+      return 1;
    }
 }

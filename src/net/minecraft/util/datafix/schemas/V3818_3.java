@@ -22,14 +22,14 @@ public class V3818_3 extends NamespacedSchema {
       components.put(
          "minecraft:can_break",
          () -> DSL.optionalFields(
-               "predicates", DSL.list(DSL.optionalFields("blocks", DSL.or(References.BLOCK_NAME.in(schema), DSL.list(References.BLOCK_NAME.in(schema)))))
-            )
+            "predicates", DSL.list(DSL.optionalFields("blocks", DSL.or(References.BLOCK_NAME.in(schema), DSL.list(References.BLOCK_NAME.in(schema)))))
+         )
       );
       components.put(
          "minecraft:can_place_on",
          () -> DSL.optionalFields(
-               "predicates", DSL.list(DSL.optionalFields("blocks", DSL.or(References.BLOCK_NAME.in(schema), DSL.list(References.BLOCK_NAME.in(schema)))))
-            )
+            "predicates", DSL.list(DSL.optionalFields("blocks", DSL.or(References.BLOCK_NAME.in(schema), DSL.list(References.BLOCK_NAME.in(schema)))))
+         )
       );
       components.put("minecraft:charged_projectiles", () -> DSL.list(References.ITEM_STACK.in(schema)));
       components.put("minecraft:container", () -> DSL.list(DSL.optionalFields("item", References.ITEM_STACK.in(schema))));
@@ -42,14 +42,14 @@ public class V3818_3 extends NamespacedSchema {
       components.put(
          "minecraft:written_book_content",
          () -> DSL.optionalFields(
-               "pages",
-               DSL.list(
-                  DSL.or(
-                     DSL.optionalFields("raw", References.TEXT_COMPONENT.in(schema), "filtered", References.TEXT_COMPONENT.in(schema)),
-                     References.TEXT_COMPONENT.in(schema)
-                  )
+            "pages",
+            DSL.list(
+               DSL.or(
+                  DSL.optionalFields("raw", References.TEXT_COMPONENT.in(schema), "filtered", References.TEXT_COMPONENT.in(schema)),
+                  References.TEXT_COMPONENT.in(schema)
                )
             )
+         )
       );
       return components;
    }

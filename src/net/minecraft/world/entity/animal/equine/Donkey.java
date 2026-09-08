@@ -56,9 +56,8 @@ public class Donkey extends AbstractChestedHorse {
       this.playSound(SoundEvents.DONKEY_JUMP, 0.4F, 1.0F);
    }
 
-   @Nullable
    @Override
-   public AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       EntityType<? extends AbstractHorse> babyType = partner instanceof Horse ? EntityTypes.MULE : EntityTypes.DONKEY;
       AbstractHorse baby = babyType.create(level, EntitySpawnReason.BREEDING);
       if (baby != null) {

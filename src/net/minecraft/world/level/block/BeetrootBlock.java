@@ -18,7 +18,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class BeetrootBlock extends CropBlock {
    public static final int MAX_AGE = 3;
    public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
-   private static final VoxelShape[] SHAPES = Block.boxes(3, age -> Block.column(16.0, 0.0, (double)(2 + age * 2)));
+   private static final VoxelShape[] SHAPES = Block.boxes(3, age -> Block.column(16.0, 0.0, 2 + age * 2));
 
    public BeetrootBlock(final BlockBehaviour.Properties properties) {
       super(properties);

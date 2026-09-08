@@ -32,7 +32,7 @@ public enum Quadrant {
    public final OctahedralGroup rotationY;
    public final OctahedralGroup rotationZ;
 
-   private Quadrant(final int shift, final OctahedralGroup rotationX, final OctahedralGroup rotationY, final OctahedralGroup rotationZ) {
+   Quadrant(final int shift, final OctahedralGroup rotationX, final OctahedralGroup rotationY, final OctahedralGroup rotationZ) {
       this.shift = shift;
       this.rotationX = rotationX;
       this.rotationY = rotationY;

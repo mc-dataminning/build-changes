@@ -12,7 +12,7 @@ public interface DeltaTracker {
 
    float getRealtimeDeltaTicks();
 
-   public static class DefaultValue implements DeltaTracker {
+   class DefaultValue implements DeltaTracker {
       private final float value;
 
       private DefaultValue(final float value) {
@@ -35,7 +35,7 @@ public interface DeltaTracker {
       }
    }
 
-   public static class Timer implements DeltaTracker {
+   class Timer implements DeltaTracker {
       private float deltaTicks;
       private float deltaTickResidual;
       private float realtimeDeltaTicks;
@@ -58,7 +58,7 @@ public interface DeltaTracker {
          this.lastMs = currentMs;
          this.deltaTickResidual = this.deltaTickResidual + this.deltaTicks;
          int ticks = (int)this.deltaTickResidual;
-         this.deltaTickResidual -= (float)ticks;
+         this.deltaTickResidual -= ticks;
          return ticks;
       }
 

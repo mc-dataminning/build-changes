@@ -46,39 +46,39 @@ public class EndCityPieces {
       ) {
          if (genDepth > 8) {
             return false;
-         } else {
-            Rotation rotation = parent.placeSettings().getRotation();
-            EndCityPieces.EndCityPiece lastPiece = EndCityPieces.addHelper(
-               pieces, EndCityPieces.addPiece(structureTemplateManager, parent, offset, "base_floor", rotation, true)
-            );
-            int numFloors = random.nextInt(3);
-            if (numFloors == 0) {
-               lastPiece = EndCityPieces.addHelper(
-                  pieces, EndCityPieces.addPiece(structureTemplateManager, lastPiece, new BlockPos(-1, 4, -1), "base_roof", rotation, true)
-               );
-            } else if (numFloors == 1) {
-               lastPiece = EndCityPieces.addHelper(
-                  pieces, EndCityPieces.addPiece(structureTemplateManager, lastPiece, new BlockPos(-1, 0, -1), "second_floor_2", rotation, false)
-               );
-               lastPiece = EndCityPieces.addHelper(
-                  pieces, EndCityPieces.addPiece(structureTemplateManager, lastPiece, new BlockPos(-1, 8, -1), "second_roof", rotation, false)
-               );
-               EndCityPieces.recursiveChildren(structureTemplateManager, EndCityPieces.TOWER_GENERATOR, genDepth + 1, lastPiece, null, pieces, random);
-            } else if (numFloors == 2) {
-               lastPiece = EndCityPieces.addHelper(
-                  pieces, EndCityPieces.addPiece(structureTemplateManager, lastPiece, new BlockPos(-1, 0, -1), "second_floor_2", rotation, false)
-               );
-               lastPiece = EndCityPieces.addHelper(
-                  pieces, EndCityPieces.addPiece(structureTemplateManager, lastPiece, new BlockPos(-1, 4, -1), "third_floor_2", rotation, false)
-               );
-               lastPiece = EndCityPieces.addHelper(
-                  pieces, EndCityPieces.addPiece(structureTemplateManager, lastPiece, new BlockPos(-1, 8, -1), "third_roof", rotation, true)
-               );
-               EndCityPieces.recursiveChildren(structureTemplateManager, EndCityPieces.TOWER_GENERATOR, genDepth + 1, lastPiece, null, pieces, random);
-            }
-
-            return true;
          }
+
+         Rotation rotation = parent.placeSettings().getRotation();
+         EndCityPieces.EndCityPiece lastPiece = EndCityPieces.addHelper(
+            pieces, EndCityPieces.addPiece(structureTemplateManager, parent, offset, "base_floor", rotation, true)
+         );
+         int numFloors = random.nextInt(3);
+         if (numFloors == 0) {
+            lastPiece = EndCityPieces.addHelper(
+               pieces, EndCityPieces.addPiece(structureTemplateManager, lastPiece, new BlockPos(-1, 4, -1), "base_roof", rotation, true)
+            );
+         } else if (numFloors == 1) {
+            lastPiece = EndCityPieces.addHelper(
+               pieces, EndCityPieces.addPiece(structureTemplateManager, lastPiece, new BlockPos(-1, 0, -1), "second_floor_2", rotation, false)
+            );
+            lastPiece = EndCityPieces.addHelper(
+               pieces, EndCityPieces.addPiece(structureTemplateManager, lastPiece, new BlockPos(-1, 8, -1), "second_roof", rotation, false)
+            );
+            EndCityPieces.recursiveChildren(structureTemplateManager, EndCityPieces.TOWER_GENERATOR, genDepth + 1, lastPiece, null, pieces, random);
+         } else if (numFloors == 2) {
+            lastPiece = EndCityPieces.addHelper(
+               pieces, EndCityPieces.addPiece(structureTemplateManager, lastPiece, new BlockPos(-1, 0, -1), "second_floor_2", rotation, false)
+            );
+            lastPiece = EndCityPieces.addHelper(
+               pieces, EndCityPieces.addPiece(structureTemplateManager, lastPiece, new BlockPos(-1, 4, -1), "third_floor_2", rotation, false)
+            );
+            lastPiece = EndCityPieces.addHelper(
+               pieces, EndCityPieces.addPiece(structureTemplateManager, lastPiece, new BlockPos(-1, 8, -1), "third_roof", rotation, true)
+            );
+            EndCityPieces.recursiveChildren(structureTemplateManager, EndCityPieces.TOWER_GENERATOR, genDepth + 1, lastPiece, null, pieces, random);
+         }
+
+         return true;
       }
    };
    private static final List<Pair<Rotation, BlockPos>> TOWER_BRIDGES = List.of(
@@ -102,10 +102,11 @@ public class EndCityPieces {
          final RandomSource random
       ) {
          Rotation rotation = parent.placeSettings().getRotation();
-         EndCityPieces.EndCityPiece lastPiece = EndCityPieces.addHelper(
+         EndCityPieces.EndCityPiece lastPiece = parent;
+         lastPiece = EndCityPieces.addHelper(
             pieces,
             EndCityPieces.addPiece(
-               structureTemplateManager, parent, new BlockPos(3 + random.nextInt(2), -3, 3 + random.nextInt(2)), "tower_base", rotation, true
+               structureTemplateManager, lastPiece, new BlockPos(3 + random.nextInt(2), -3, 3 + random.nextInt(2)), "tower_base", rotation, true
             )
          );
          lastPiece = EndCityPieces.addHelper(
@@ -334,29 +335,29 @@ public class EndCityPieces {
    ) {
       if (genDepth > 8) {
          return false;
-      } else {
-         List<StructurePiece> childPieces = new ArrayList<>();
-         if (generator.generate(structureTemplateManager, genDepth, parent, offset, childPieces, random)) {
-            boolean collision = false;
-            int childTag = random.nextInt();
+      }
 
-            for (StructurePiece child : childPieces) {
-               child.setGenDepth(childTag);
-               StructurePiece collisionPiece = StructurePiece.findCollisionPiece(pieces, child.getBoundingBox());
-               if (collisionPiece != null && collisionPiece.getGenDepth() != parent.getGenDepth()) {
-                  collision = true;
-                  break;
-               }
-            }
+      List<StructurePiece> childPieces = new ArrayList<>();
+      if (generator.generate(structureTemplateManager, genDepth, parent, offset, childPieces, random)) {
+         boolean collision = false;
+         int childTag = random.nextInt();
 
-            if (!collision) {
-               pieces.addAll(childPieces);
-               return true;
+         for (StructurePiece child : childPieces) {
+            child.setGenDepth(childTag);
+            StructurePiece collisionPiece = StructurePiece.findCollisionPiece(pieces, child.getBoundingBox());
+            if (collisionPiece != null && collisionPiece.getGenDepth() != parent.getGenDepth()) {
+               collision = true;
+               break;
             }
          }
 
-         return false;
+         if (!collision) {
+            pieces.addAll(childPieces);
+            return true;
+         }
       }
+
+      return false;
    }
 
    public static class EndCityPiece extends TemplateStructurePiece {
@@ -421,7 +422,7 @@ public class EndCityPieces {
             if (markerId.startsWith("Sentry")) {
                Shulker sentry = EntityTypes.SHULKER.create(level.getLevel(), EntitySpawnReason.STRUCTURE);
                if (sentry != null) {
-                  sentry.setPos((double)position.getX() + 0.5, (double)position.getY(), (double)position.getZ() + 0.5);
+                  sentry.setPos(position.getX() + 0.5, position.getY(), position.getZ() + 0.5);
                   level.addFreshEntity(sentry);
                }
             } else if (markerId.startsWith("Elytra")) {

@@ -23,7 +23,7 @@ public class ObserverBlock extends DirectionalBlock {
 
    public ObserverBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.SOUTH).setValue(POWERED, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.SOUTH).setValue(POWERED, false));
    }
 
    @Override
@@ -44,9 +44,9 @@ public class ObserverBlock extends DirectionalBlock {
    @Override
    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
       if (state.getValue(POWERED)) {
-         level.setBlock(pos, state.setValue(POWERED, Boolean.valueOf(false)), 2);
+         level.setBlock(pos, state.setValue(POWERED, false), 2);
       } else {
-         level.setBlock(pos, state.setValue(POWERED, Boolean.valueOf(true)), 2);
+         level.setBlock(pos, state.setValue(POWERED, true), 2);
          level.scheduleTick(pos, this, 2);
       }
 
@@ -91,7 +91,7 @@ public class ObserverBlock extends DirectionalBlock {
    }
 
    @Override
-   protected boolean shouldRedstoneWireConnectTo(final BlockState state, final BlockGetter level, final BlockPos pos, @Nullable final Direction direction) {
+   protected boolean shouldRedstoneWireConnectTo(final BlockState state, final BlockGetter level, final BlockPos pos, final @Nullable Direction direction) {
       return direction == state.getValue(FACING);
    }
 
@@ -114,7 +114,7 @@ public class ObserverBlock extends DirectionalBlock {
    protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
       if (!state.is(oldState.getBlock())) {
          if (!level.isClientSide() && state.getValue(POWERED) && !level.getBlockTicks().hasScheduledTick(pos, this)) {
-            BlockState newState = state.setValue(POWERED, Boolean.valueOf(false));
+            BlockState newState = state.setValue(POWERED, false);
             level.setBlock(pos, newState, 18);
             this.updateNeighborsInFront(level, pos, newState);
          }
@@ -124,7 +124,7 @@ public class ObserverBlock extends DirectionalBlock {
    @Override
    protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
       if (state.getValue(POWERED) && level.getBlockTicks().hasScheduledTick(pos, this)) {
-         this.updateNeighborsInFront(level, pos, state.setValue(POWERED, Boolean.valueOf(false)));
+         this.updateNeighborsInFront(level, pos, state.setValue(POWERED, false));
       }
    }
 

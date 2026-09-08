@@ -35,7 +35,7 @@ public class ThrownEgg extends ThrowableItemProjectile {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 3) {
          ItemStack item = this.getItem();
          if (!item.isEmpty()) {
@@ -48,9 +48,9 @@ public class ThrownEgg extends ThrowableItemProjectile {
                      this.getX(),
                      this.getY(),
                      this.getZ(),
-                     ((double)this.random.nextFloat() - 0.5) * 0.08,
-                     ((double)this.random.nextFloat() - 0.5) * 0.08,
-                     ((double)this.random.nextFloat() - 0.5) * 0.08
+                     (this.random.nextFloat() - 0.5) * 0.08,
+                     (this.random.nextFloat() - 0.5) * 0.08,
+                     (this.random.nextFloat() - 0.5) * 0.08
                   );
             }
          }

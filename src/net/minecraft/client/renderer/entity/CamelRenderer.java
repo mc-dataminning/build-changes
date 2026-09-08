@@ -58,6 +58,6 @@ public class CamelRenderer extends AgeableMobRenderer<Camel, CamelRenderState, C
    }
 
    private static float getJumpCooldown(final Camel camel, final float partialTicks) {
-      return Math.max((float)camel.getJumpCooldown() - partialTicks, 0.0F);
+      return Math.max(camel.getJumpCooldown() - partialTicks, 0.0F);
    }
 }

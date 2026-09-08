@@ -79,13 +79,7 @@ public class ArmorStand extends LivingEntity {
    public static final EntityDataAccessor<Rotations> DATA_RIGHT_ARM_POSE = SynchedEntityData.defineId(ArmorStand.class, EntityDataSerializers.ROTATIONS);
    public static final EntityDataAccessor<Rotations> DATA_LEFT_LEG_POSE = SynchedEntityData.defineId(ArmorStand.class, EntityDataSerializers.ROTATIONS);
    public static final EntityDataAccessor<Rotations> DATA_RIGHT_LEG_POSE = SynchedEntityData.defineId(ArmorStand.class, EntityDataSerializers.ROTATIONS);
-   private static final Predicate<Entity> RIDABLE_MINECARTS = entity -> {
-      if (entity instanceof AbstractMinecart minecart && minecart.isRideable()) {
-         return true;
-      }
-
-      return false;
-   };
+   private static final Predicate<Entity> RIDABLE_MINECARTS = entity -> entity instanceof AbstractMinecart minecart && minecart.isRideable();
    private static final boolean DEFAULT_INVISIBLE = false;
    private static final int DEFAULT_DISABLED_SLOTS = 0;
    private static final boolean DEFAULT_SMALL = false;
@@ -195,40 +189,44 @@ public class ArmorStand extends LivingEntity {
       ItemStack itemStack = player.getItemInHand(hand);
       if (this.isMarker() || itemStack.is(Items.NAME_TAG)) {
          return super.interact(player, hand, location);
-      } else if (player.isSpectator()) {
+      }
+
+      if (player.isSpectator()) {
          return InteractionResult.SUCCESS;
-      } else if (player.level().isClientSide()) {
+      }
+
+      if (player.level().isClientSide()) {
          return InteractionResult.SUCCESS_SERVER;
+      }
+
+      EquipmentSlot itemInHandSlot = this.getEquipmentSlotForItem(itemStack);
+      if (itemStack.isEmpty()) {
+         EquipmentSlot clickedSlot = this.getClickedSlot(location);
+         EquipmentSlot targetSlot = this.isDisabled(clickedSlot) ? itemInHandSlot : clickedSlot;
+         if (this.hasItemInSlot(targetSlot) && this.swapItem(player, targetSlot, itemStack, hand)) {
+            return InteractionResult.SUCCESS_SERVER;
+         }
       } else {
-         EquipmentSlot itemInHandSlot = this.getEquipmentSlotForItem(itemStack);
-         if (itemStack.isEmpty()) {
-            EquipmentSlot clickedSlot = this.getClickedSlot(location);
-            EquipmentSlot targetSlot = this.isDisabled(clickedSlot) ? itemInHandSlot : clickedSlot;
-            if (this.hasItemInSlot(targetSlot) && this.swapItem(player, targetSlot, itemStack, hand)) {
-               return InteractionResult.SUCCESS_SERVER;
-            }
-         } else {
-            if (this.isDisabled(itemInHandSlot)) {
-               return InteractionResult.FAIL;
-            }
-
-            if (itemInHandSlot.getType() == EquipmentSlot.Type.HAND && !this.showArms()) {
-               return InteractionResult.FAIL;
-            }
-
-            if (this.swapItem(player, itemInHandSlot, itemStack, hand)) {
-               return InteractionResult.SUCCESS_SERVER;
-            }
+         if (this.isDisabled(itemInHandSlot)) {
+            return InteractionResult.FAIL;
          }
 
-         return super.interact(player, hand, location);
+         if (itemInHandSlot.getType() == EquipmentSlot.Type.HAND && !this.showArms()) {
+            return InteractionResult.FAIL;
+         }
+
+         if (this.swapItem(player, itemInHandSlot, itemStack, hand)) {
+            return InteractionResult.SUCCESS_SERVER;
+         }
       }
+
+      return super.interact(player, hand, location);
    }
 
    private EquipmentSlot getClickedSlot(final Vec3 location) {
       EquipmentSlot slotClicked = EquipmentSlot.MAINHAND;
       boolean small = this.isSmall();
-      double clickYPosition = location.y / (double)(this.getScale() * this.getAgeScale());
+      double clickYPosition = location.y / (this.getScale() * this.getAgeScale());
       EquipmentSlot feet = EquipmentSlot.FEET;
       if (clickYPosition >= 0.1 && clickYPosition < 0.1 + (small ? 0.8 : 0.45) && this.hasItemInSlot(feet)) {
          slotClicked = EquipmentSlot.FEET;
@@ -253,39 +251,57 @@ public class ArmorStand extends LivingEntity {
       ItemStack itemStack = this.getItemBySlot(slot);
       if (!itemStack.isEmpty() && (this.disabledSlots & 1 << slot.getFilterBit(8)) != 0) {
          return false;
-      } else if (itemStack.isEmpty() && (this.disabledSlots & 1 << slot.getFilterBit(16)) != 0) {
+      }
+
+      if (itemStack.isEmpty() && (this.disabledSlots & 1 << slot.getFilterBit(16)) != 0) {
          return false;
-      } else if (player.hasInfiniteMaterials() && itemStack.isEmpty() && !playerItemStack.isEmpty()) {
+      }
+
+      if (player.hasInfiniteMaterials() && itemStack.isEmpty() && !playerItemStack.isEmpty()) {
          this.setItemSlot(slot, playerItemStack.copyWithCount(1));
          return true;
-      } else if (playerItemStack.isEmpty() || playerItemStack.getCount() <= 1) {
+      }
+
+      if (playerItemStack.isEmpty() || playerItemStack.getCount() <= 1) {
          this.setItemSlot(slot, playerItemStack);
          player.setItemInHand(hand, itemStack);
          return true;
-      } else if (!itemStack.isEmpty()) {
-         return false;
-      } else {
-         this.setItemSlot(slot, playerItemStack.split(1));
-         return true;
       }
+
+      if (!itemStack.isEmpty()) {
+         return false;
+      }
+
+      this.setItemSlot(slot, playerItemStack.split(1));
+      return true;
    }
 
    @Override
    public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
       if (this.isRemoved()) {
          return false;
-      } else if (!level.getGameRules().get(GameRules.MOB_GRIEFING) && source.getEntity() instanceof Mob) {
+      }
+
+      if (!level.getGameRules().get(GameRules.MOB_GRIEFING) && source.getEntity() instanceof Mob) {
          return false;
-      } else if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
+      }
+
+      if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
          this.kill(level, source.getEntity());
          return false;
-      } else if (this.isInvulnerableTo(level, source) || this.invisible || this.isMarker()) {
+      }
+
+      if (this.isInvulnerableTo(level, source) || this.invisible || this.isMarker()) {
          return false;
-      } else if (source.is(DamageTypeTags.IS_EXPLOSION)) {
+      }
+
+      if (source.is(DamageTypeTags.IS_EXPLOSION)) {
          this.brokenByAnything(level, source);
          this.kill(level, source.getEntity());
          return false;
-      } else if (source.is(DamageTypeTags.IGNITES_ARMOR_STANDS)) {
+      }
+
+      if (source.is(DamageTypeTags.IGNITES_ARMOR_STANDS)) {
          if (this.isOnFire()) {
             this.causeDamage(level, source, 0.15F);
          } else {
@@ -301,36 +317,34 @@ public class ArmorStand extends LivingEntity {
          boolean shouldKill = source.is(DamageTypeTags.ALWAYS_KILLS_ARMOR_STANDS);
          if (!allowIncrementalBreaking && !shouldKill) {
             return false;
+         } else if (source.getEntity() instanceof Player player && !player.getAbilities().mayBuild) {
+            return false;
          } else {
-            if (source.getEntity() instanceof Player player && !player.getAbilities().mayBuild) {
-               return false;
-            }
-
             if (source.isCreativePlayer()) {
                this.playBrokenSound();
                this.showBreakingParticles();
                this.kill(level, source.getEntity());
                return true;
-            } else {
-               long time = level.getGameTime();
-               if (time - this.lastHit > 5L && !shouldKill) {
-                  level.broadcastEntityEvent(this, (byte)32);
-                  this.gameEvent(GameEvent.ENTITY_DAMAGE, source.getEntity());
-                  this.lastHit = time;
-               } else {
-                  this.brokenByPlayer(level, source);
-                  this.showBreakingParticles();
-                  this.kill(level, source.getEntity());
-               }
-
-               return true;
             }
+
+            long time = level.getGameTime();
+            if (time - this.lastHit > 5L && !shouldKill) {
+               level.broadcastEntityEvent(this, (byte)32);
+               this.gameEvent(GameEvent.ENTITY_DAMAGE, source.getEntity());
+               this.lastHit = time;
+            } else {
+               this.brokenByPlayer(level, source);
+               this.showBreakingParticles();
+               this.kill(level, source.getEntity());
+            }
+
+            return true;
          }
       }
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 32) {
          if (this.level().isClientSide()) {
             this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.ARMOR_STAND_HIT, this.getSoundSource(), 0.3F, 1.0F, false);
@@ -361,9 +375,9 @@ public class ArmorStand extends LivingEntity {
                this.getY(0.6666666666666666),
                this.getZ(),
                10,
-               (double)(this.getBbWidth() / 4.0F),
-               (double)(this.getBbHeight() / 4.0F),
-               (double)(this.getBbWidth() / 4.0F),
+               this.getBbWidth() / 4.0F,
+               this.getBbHeight() / 4.0F,
+               this.getBbWidth() / 4.0F,
                0.05
             );
       }
@@ -445,9 +459,9 @@ public class ArmorStand extends LivingEntity {
       return this.isSmall();
    }
 
-   public void kill(final ServerLevel level, @Nullable final Entity attributedTo) {
+   public void kill(final ServerLevel level, final @Nullable Entity attributedTo) {
       this.remove(Entity.RemovalReason.KILLED);
-      this.gameEvent(GameEvent.ENTITY_DIE, (Entity)(attributedTo != null ? attributedTo : this));
+      this.gameEvent(GameEvent.ENTITY_DIE, attributedTo != null ? attributedTo : this);
    }
 
    @Override
@@ -562,11 +576,7 @@ public class ArmorStand extends LivingEntity {
 
    @Override
    public boolean skipAttackInteraction(final Entity source) {
-      if (source instanceof Player playerSource && !this.level().mayInteract(playerSource, this.blockPosition())) {
-         return true;
-      }
-
-      return false;
+      return source instanceof Player playerSource && !this.level().mayInteract(playerSource, this.blockPosition());
    }
 
    @Override
@@ -579,15 +589,13 @@ public class ArmorStand extends LivingEntity {
       return new LivingEntity.Fallsounds(SoundEvents.ARMOR_STAND_FALL, SoundEvents.ARMOR_STAND_FALL);
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
+   protected @Nullable SoundEvent getHurtSound(final DamageSource source) {
       return SoundEvents.ARMOR_STAND_HIT;
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getDeathSound() {
+   protected @Nullable SoundEvent getDeathSound() {
       return SoundEvents.ARMOR_STAND_BREAK;
    }
 
@@ -678,7 +686,7 @@ public class ArmorStand extends LivingEntity {
       );
    }
 
-   public static record ArmorStandPose(Rotations head, Rotations body, Rotations leftArm, Rotations rightArm, Rotations leftLeg, Rotations rightLeg) {
+   public record ArmorStandPose(Rotations head, Rotations body, Rotations leftArm, Rotations rightArm, Rotations leftLeg, Rotations rightLeg) {
       public static final ArmorStand.ArmorStandPose DEFAULT = new ArmorStand.ArmorStandPose(
          ArmorStand.DEFAULT_HEAD_POSE,
          ArmorStand.DEFAULT_BODY_POSE,
@@ -689,14 +697,14 @@ public class ArmorStand extends LivingEntity {
       );
       public static final Codec<ArmorStand.ArmorStandPose> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Rotations.CODEC.optionalFieldOf("Head", ArmorStand.DEFAULT_HEAD_POSE).forGetter(ArmorStand.ArmorStandPose::head),
-                  Rotations.CODEC.optionalFieldOf("Body", ArmorStand.DEFAULT_BODY_POSE).forGetter(ArmorStand.ArmorStandPose::body),
-                  Rotations.CODEC.optionalFieldOf("LeftArm", ArmorStand.DEFAULT_LEFT_ARM_POSE).forGetter(ArmorStand.ArmorStandPose::leftArm),
-                  Rotations.CODEC.optionalFieldOf("RightArm", ArmorStand.DEFAULT_RIGHT_ARM_POSE).forGetter(ArmorStand.ArmorStandPose::rightArm),
-                  Rotations.CODEC.optionalFieldOf("LeftLeg", ArmorStand.DEFAULT_LEFT_LEG_POSE).forGetter(ArmorStand.ArmorStandPose::leftLeg),
-                  Rotations.CODEC.optionalFieldOf("RightLeg", ArmorStand.DEFAULT_RIGHT_LEG_POSE).forGetter(ArmorStand.ArmorStandPose::rightLeg)
-               )
-               .apply(i, ArmorStand.ArmorStandPose::new)
+               Rotations.CODEC.optionalFieldOf("Head", ArmorStand.DEFAULT_HEAD_POSE).forGetter(ArmorStand.ArmorStandPose::head),
+               Rotations.CODEC.optionalFieldOf("Body", ArmorStand.DEFAULT_BODY_POSE).forGetter(ArmorStand.ArmorStandPose::body),
+               Rotations.CODEC.optionalFieldOf("LeftArm", ArmorStand.DEFAULT_LEFT_ARM_POSE).forGetter(ArmorStand.ArmorStandPose::leftArm),
+               Rotations.CODEC.optionalFieldOf("RightArm", ArmorStand.DEFAULT_RIGHT_ARM_POSE).forGetter(ArmorStand.ArmorStandPose::rightArm),
+               Rotations.CODEC.optionalFieldOf("LeftLeg", ArmorStand.DEFAULT_LEFT_LEG_POSE).forGetter(ArmorStand.ArmorStandPose::leftLeg),
+               Rotations.CODEC.optionalFieldOf("RightLeg", ArmorStand.DEFAULT_RIGHT_LEG_POSE).forGetter(ArmorStand.ArmorStandPose::rightLeg)
+            )
+            .apply(i, ArmorStand.ArmorStandPose::new)
       );
    }
 }

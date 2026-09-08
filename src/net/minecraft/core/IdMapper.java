@@ -46,9 +46,8 @@ public class IdMapper<T> implements IdMap<T> {
       return this.tToId.getInt(thing);
    }
 
-   @Nullable
    @Override
-   public final T byId(final int id) {
+   public final @Nullable T byId(final int id) {
       return id >= 0 && id < this.idToT.size() ? this.idToT.get(id) : null;
    }
 

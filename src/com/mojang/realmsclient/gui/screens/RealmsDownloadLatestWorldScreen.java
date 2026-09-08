@@ -36,19 +36,15 @@ public class RealmsDownloadLatestWorldScreen extends RealmsScreen {
    private Button cancelButton;
    private final String worldName;
    private final RealmsDownloadLatestWorldScreen.DownloadStatus downloadStatus;
-   @Nullable
-   private volatile Component errorMessage;
+   private volatile @Nullable Component errorMessage;
    private volatile Component status = Component.translatable("mco.download.preparing");
-   @Nullable
-   private volatile String progress;
+   private volatile @Nullable String progress;
    private volatile boolean cancelled;
    private volatile boolean showDots = true;
    private volatile boolean finished;
    private volatile boolean extracting;
-   @Nullable
-   private Long previousWrittenBytes;
-   @Nullable
-   private Long previousTimeSnapshot;
+   private @Nullable Long previousWrittenBytes;
+   private @Nullable Long previousTimeSnapshot;
    private long bytesPersSecond;
    private int animTick;
    private static final String[] DOTS = new String[]{"", ".", ". .", ". . ."};
@@ -159,7 +155,7 @@ public class RealmsDownloadLatestWorldScreen extends RealmsScreen {
    }
 
    private void extractProgressBar(final GuiGraphicsExtractor graphics) {
-      double percentage = Math.min((double)this.downloadStatus.bytesWritten / (double)this.downloadStatus.totalBytes, 1.0);
+      double percentage = Math.min((double)this.downloadStatus.bytesWritten / this.downloadStatus.totalBytes, 1.0);
       this.progress = String.format(Locale.ROOT, "%.1f", percentage * 100.0);
       int left = (this.width - 200) / 2;
       int right = left + (int)Math.round(200.0 * percentage);
@@ -238,7 +234,7 @@ public class RealmsDownloadLatestWorldScreen extends RealmsScreen {
 
                   try {
                      Thread.sleep(500L);
-                  } catch (InterruptedException var8) {
+                  } catch (InterruptedException ignored) {
                      LOGGER.error("Failed to check Realms backup download status");
                   }
                }
@@ -247,20 +243,20 @@ public class RealmsDownloadLatestWorldScreen extends RealmsScreen {
                this.status = Component.translatable("mco.download.done");
                this.cancelButton.setMessage(CommonComponents.GUI_DONE);
                return;
-            } catch (InterruptedException var9) {
+            } catch (InterruptedException ignored) {
                LOGGER.error("Could not acquire upload lock");
-            } catch (Exception var10) {
+            } catch (Exception e) {
                this.errorMessage = Component.translatable("mco.download.failed");
-               LOGGER.info("Exception while downloading world", var10);
+               LOGGER.info("Exception while downloading world", e);
             }
          } finally {
             if (!DOWNLOAD_LOCK.isHeldByCurrentThread()) {
                return;
-            } else {
-               DOWNLOAD_LOCK.unlock();
-               this.showDots = false;
-               this.finished = true;
             }
+
+            DOWNLOAD_LOCK.unlock();
+            this.showDots = false;
+            this.finished = true;
          }
       }, "Realms world download monitor").start();
    }

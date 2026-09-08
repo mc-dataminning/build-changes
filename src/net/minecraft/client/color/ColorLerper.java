@@ -30,7 +30,7 @@ public class ColorLerper {
       int colorCount = type.colors.length;
       int c1 = value % colorCount;
       int c2 = (value + 1) % colorCount;
-      float subStep = ((float)(tickCount % type.colorDuration) + Mth.frac(tick)) / (float)type.colorDuration;
+      float subStep = (tickCount % type.colorDuration + Mth.frac(tick)) / type.colorDuration;
       int color1 = type.getColor(type.colors[c1]);
       int color2 = type.getColor(type.colors[c2]);
       return ARGB.srgbLerp(subStep, color1, color2);
@@ -39,18 +39,18 @@ public class ColorLerper {
    private static int getModifiedColor(final DyeColor color, final float brightness) {
       if (color == DyeColor.WHITE) {
          return -1644826;
-      } else {
-         int src = color.getTextureDiffuseColor();
-         return ARGB.color(
-            255,
-            Mth.clamp(Mth.floor((float)ARGB.red(src) * brightness), 0, 255),
-            Mth.clamp(Mth.floor((float)ARGB.green(src) * brightness), 0, 255),
-            Mth.clamp(Mth.floor((float)ARGB.blue(src) * brightness), 0, 255)
-         );
       }
+
+      int src = color.getTextureDiffuseColor();
+      return ARGB.color(
+         255,
+         Mth.clamp(Mth.floor(ARGB.red(src) * brightness), 0, 255),
+         Mth.clamp(Mth.floor(ARGB.green(src) * brightness), 0, 255),
+         Mth.clamp(Mth.floor(ARGB.blue(src) * brightness), 0, 255)
+      );
    }
 
-   public static enum Type {
+   public enum Type {
       SHEEP(25, DyeColor.values(), 0.75F),
       MUSIC_NOTE(30, ColorLerper.MUSIC_NOTE_COLORS, 1.25F);
 
@@ -58,7 +58,7 @@ public class ColorLerper {
       private final Map<DyeColor, Integer> colorByDye;
       private final DyeColor[] colors;
 
-      private Type(final int colorDuration, final DyeColor[] colors, final float brightness) {
+      Type(final int colorDuration, final DyeColor[] colors, final float brightness) {
          this.colorDuration = colorDuration;
          this.colorByDye = Maps.newHashMap(
             Arrays.stream(colors).collect(Collectors.toMap(d -> (DyeColor)d, color -> ColorLerper.getModifiedColor(color, brightness)))

@@ -9,7 +9,9 @@ public record DensityVolume(int sizeX, int sizeY, int sizeZ, int minBlockX, int 
    public DensityVolume(int sizeX, int sizeY, int sizeZ, int minBlockX, int minBlockY, int minBlockZ, int stepBlockX, int stepBlockY, int stepBlockZ) {
       if (sizeX <= 0 || sizeY <= 0 || sizeZ <= 0) {
          throw new IllegalArgumentException("Size must be positive, was: " + sizeX + "x" + sizeY + "x" + sizeZ);
-      } else if (stepBlockX > 0 && stepBlockY > 0 && stepBlockZ > 0) {
+      }
+
+      if (stepBlockX > 0 && stepBlockY > 0 && stepBlockZ > 0) {
          this.sizeX = sizeX;
          this.sizeY = sizeY;
          this.sizeZ = sizeZ;

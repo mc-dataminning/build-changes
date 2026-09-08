@@ -1,7 +1,6 @@
 package net.minecraft.world.level.block;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.OptionalInt;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -61,7 +60,7 @@ public class ChiseledBookShelfBlock extends BaseEntityBlock implements Selectabl
       BlockState defaultState = this.stateDefinition.any().setValue(FACING, Direction.NORTH);
 
       for (BooleanProperty property : SLOT_OCCUPIED_PROPERTIES) {
-         defaultState = defaultState.setValue(property, Boolean.valueOf(false));
+         defaultState = defaultState.setValue(property, false);
       }
 
       this.registerDefaultState(defaultState);
@@ -80,17 +79,19 @@ public class ChiseledBookShelfBlock extends BaseEntityBlock implements Selectabl
       if (level.getBlockEntity(pos) instanceof ChiseledBookShelfBlockEntity bookshelfBlock) {
          if (!itemStack.is(ItemTags.BOOKSHELF_BOOKS)) {
             return InteractionResult.TRY_WITH_EMPTY_HAND;
-         } else {
-            OptionalInt hitSlot = this.getHitSlot(hitResult, state.getValue(FACING));
-            if (hitSlot.isEmpty()) {
-               return InteractionResult.PASS;
-            } else if (state.getValue(SLOT_OCCUPIED_PROPERTIES.get(hitSlot.getAsInt()))) {
-               return InteractionResult.TRY_WITH_EMPTY_HAND;
-            } else {
-               addBook(level, pos, player, bookshelfBlock, itemStack, hitSlot.getAsInt());
-               return InteractionResult.SUCCESS;
-            }
          }
+
+         OptionalInt hitSlot = this.getHitSlot(hitResult, state.getValue(FACING));
+         if (hitSlot.isEmpty()) {
+            return InteractionResult.PASS;
+         }
+
+         if (state.getValue(SLOT_OCCUPIED_PROPERTIES.get(hitSlot.getAsInt()))) {
+            return InteractionResult.TRY_WITH_EMPTY_HAND;
+         }
+
+         addBook(level, pos, player, bookshelfBlock, itemStack, hitSlot.getAsInt());
+         return InteractionResult.SUCCESS;
       } else {
          return InteractionResult.PASS;
       }
@@ -104,12 +105,14 @@ public class ChiseledBookShelfBlock extends BaseEntityBlock implements Selectabl
          OptionalInt hitSlot = this.getHitSlot(hitResult, state.getValue(FACING));
          if (hitSlot.isEmpty()) {
             return InteractionResult.PASS;
-         } else if (!state.getValue(SLOT_OCCUPIED_PROPERTIES.get(hitSlot.getAsInt()))) {
-            return InteractionResult.CONSUME;
-         } else {
-            removeBook(level, pos, player, bookshelfBlock, hitSlot.getAsInt());
-            return InteractionResult.SUCCESS;
          }
+
+         if (!state.getValue(SLOT_OCCUPIED_PROPERTIES.get(hitSlot.getAsInt()))) {
+            return InteractionResult.CONSUME;
+         }
+
+         removeBook(level, pos, player, bookshelfBlock, hitSlot.getAsInt());
+         return InteractionResult.SUCCESS;
       } else {
          return InteractionResult.PASS;
       }
@@ -141,19 +144,16 @@ public class ChiseledBookShelfBlock extends BaseEntityBlock implements Selectabl
       }
    }
 
-   @Nullable
    @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
+   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
       return new ChiseledBookShelfBlockEntity(worldPosition, blockState);
    }
 
    @Override
    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
       builder.add(FACING);
-      List var10000 = SLOT_OCCUPIED_PROPERTIES;
-      Objects.requireNonNull(builder);
       StateDefinition.Builder var2 = builder;
-      var10000.forEach(xva$0 -> var2.add(xva$0));
+      SLOT_OCCUPIED_PROPERTIES.forEach(xva$0 -> var2.add(xva$0));
    }
 
    @Override

@@ -28,7 +28,7 @@ public class CodRenderer extends MobRenderer<Cod, LivingEntityRenderState, CodMo
    @Override
    protected void setupRotations(final LivingEntityRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
       super.setupRotations(state, poseStack, bodyRot, entityScale);
-      float bodyZRot = 4.3F * Mth.sin((double)(0.6F * state.ageInTicks));
+      float bodyZRot = 4.3F * Mth.sin(0.6F * state.ageInTicks);
       poseStack.rotateDegrees(Axis.YP, bodyZRot);
       if (!state.isInWater) {
          poseStack.translate(0.1F, 0.1F, -0.1F);

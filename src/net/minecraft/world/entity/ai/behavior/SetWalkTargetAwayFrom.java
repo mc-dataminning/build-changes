@@ -33,36 +33,36 @@ public class SetWalkTargetAwayFrom {
    ) {
       return BehaviorBuilder.create(
          i -> i.group(i.registered(MemoryModuleType.WALK_TARGET), i.present(walkAwayFromMemory))
-               .apply(i, (walkTarget, walkAwayFrom) -> (level, body, timestamp) -> {
-                     Optional<WalkTarget> target = i.tryGet(walkTarget);
-                     if (target.isPresent() && !interruptCurrentWalk) {
-                        return false;
-                     } else {
-                        Vec3 bodyPosition = body.position();
-                        Vec3 avoidPosition = toPosition.apply(i.get(walkAwayFrom));
-                        if (!bodyPosition.closerThan(avoidPosition, (double)desiredDistance)) {
-                           return false;
-                        } else {
-                           if (target.isPresent() && target.get().getSpeedModifier() == speedModifier) {
-                              Vec3 currentDirection = target.get().getTarget().currentPosition().subtract(bodyPosition);
-                              Vec3 avoidDirection = avoidPosition.subtract(bodyPosition);
-                              if (currentDirection.dot(avoidDirection) < 0.0) {
-                                 return false;
-                              }
-                           }
+            .apply(i, (walkTarget, walkAwayFrom) -> (level, body, timestamp) -> {
+               Optional<WalkTarget> target = i.tryGet(walkTarget);
+               if (target.isPresent() && !interruptCurrentWalk) {
+                  return false;
+               }
 
-                           for (int j = 0; j < 10; j++) {
-                              Vec3 fleeToPos = LandRandomPos.getPosAway(body, 16, 7, avoidPosition);
-                              if (fleeToPos != null) {
-                                 walkTarget.set(new WalkTarget(fleeToPos, speedModifier, 0));
-                                 break;
-                              }
-                           }
+               Vec3 bodyPosition = body.position();
+               Vec3 avoidPosition = toPosition.apply(i.get(walkAwayFrom));
+               if (!bodyPosition.closerThan(avoidPosition, desiredDistance)) {
+                  return false;
+               }
 
-                           return true;
-                        }
-                     }
-                  })
+               if (target.isPresent() && target.get().getSpeedModifier() == speedModifier) {
+                  Vec3 currentDirection = target.get().getTarget().currentPosition().subtract(bodyPosition);
+                  Vec3 avoidDirection = avoidPosition.subtract(bodyPosition);
+                  if (currentDirection.dot(avoidDirection) < 0.0) {
+                     return false;
+                  }
+               }
+
+               for (int j = 0; j < 10; j++) {
+                  Vec3 fleeToPos = LandRandomPos.getPosAway(body, 16, 7, avoidPosition);
+                  if (fleeToPos != null) {
+                     walkTarget.set(new WalkTarget(fleeToPos, speedModifier, 0));
+                     break;
+                  }
+               }
+
+               return true;
+            })
       );
    }
 }

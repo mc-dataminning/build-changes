@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
@@ -91,16 +90,13 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
    private static final Component WORLD_EXPERIMENTAL = Component.translatable("selectWorld.experimental");
    private final Screen screen;
    private CompletableFuture<List<LevelSummary>> pendingLevels;
-   @Nullable
-   private List<LevelSummary> currentlyDisplayedLevels;
+   private @Nullable List<LevelSummary> currentlyDisplayedLevels;
    private final WorldSelectionList.LoadingHeader loadingHeader;
    private final WorldSelectionList.EntryType entryType;
    private String filter;
    private boolean hasPolled;
-   @Nullable
-   private final Consumer<LevelSummary> onEntrySelect;
-   @Nullable
-   private final Consumer<WorldSelectionList.WorldListEntry> onEntryInteract;
+   private final @Nullable Consumer<LevelSummary> onEntrySelect;
+   private final @Nullable Consumer<WorldSelectionList.WorldListEntry> onEntryInteract;
 
    private WorldSelectionList(
       final Screen screen,
@@ -108,9 +104,9 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
       final int width,
       final int height,
       final String filter,
-      @Nullable final WorldSelectionList oldList,
-      @Nullable final Consumer<LevelSummary> onEntrySelect,
-      @Nullable final Consumer<WorldSelectionList.WorldListEntry> onEntryInteract,
+      final @Nullable WorldSelectionList oldList,
+      final @Nullable Consumer<LevelSummary> onEntrySelect,
+      final @Nullable Consumer<WorldSelectionList.WorldListEntry> onEntryInteract,
       final WorldSelectionList.EntryType entryType
    ) {
       super(minecraft, width, height, 0, 36);
@@ -136,8 +132,7 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
       super.clearEntries();
    }
 
-   @Nullable
-   private List<LevelSummary> pollLevelsIgnoreErrors() {
+   private @Nullable List<LevelSummary> pollLevelsIgnoreErrors() {
       try {
          List<LevelSummary> completedLevels = this.pendingLevels.getNow(null);
          if (this.entryType == WorldSelectionList.EntryType.UPLOAD_WORLD) {
@@ -150,7 +145,7 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
          }
 
          return completedLevels;
-      } catch (CancellationException | CompletionException var2) {
+      } catch (CompletionException | CancellationException ignore) {
          return null;
       }
    }
@@ -169,7 +164,7 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
       super.extractWidgetRenderState(graphics, mouseX, mouseY, a);
    }
 
-   private void handleNewLevels(@Nullable final List<LevelSummary> levels) {
+   private void handleNewLevels(final @Nullable List<LevelSummary> levels) {
       if (levels != null) {
          if (levels.isEmpty()) {
             switch (this.entryType) {
@@ -199,10 +194,10 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
       LevelStorageSource.LevelCandidates levelCandidates;
       try {
          levelCandidates = this.minecraft.getLevelSource().findLevelCandidates();
-      } catch (LevelStorageException var3) {
-         LOGGER.error("Couldn't load level list", var3);
-         this.handleLevelLoadFailure(var3.getMessageComponent());
-         return CompletableFuture.failedFuture(var3);
+      } catch (LevelStorageException e) {
+         LOGGER.error("Couldn't load level list", e);
+         this.handleLevelLoadFailure(e.getMessageComponent());
+         return CompletableFuture.failedFuture(e);
       }
 
       return this.minecraft.getLevelSource().loadLevelSummaries(levelCandidates).exceptionally(throwable -> {
@@ -231,7 +226,7 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
             this.addEntry(entry);
          }
       });
-      this.setSelected((WorldSelectionList.Entry)entryToSelect);
+      this.setSelected(entryToSelect);
       this.notifyListUpdated();
    }
 
@@ -253,7 +248,7 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
       return 270;
    }
 
-   public void setSelected(@Nullable final WorldSelectionList.Entry selected) {
+   public void setSelected(final WorldSelectionList.@Nullable Entry selected) {
       super.setSelected(selected);
       if (this.onEntrySelect != null) {
          this.onEntrySelect.accept(selected instanceof WorldSelectionList.WorldListEntry entry ? entry.summary : null);
@@ -290,12 +285,9 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
       private int height;
       private String filter = "";
       private WorldSelectionList.EntryType type = WorldSelectionList.EntryType.SINGLEPLAYER;
-      @Nullable
-      private WorldSelectionList oldList = null;
-      @Nullable
-      private Consumer<LevelSummary> onEntrySelect = null;
-      @Nullable
-      private Consumer<WorldSelectionList.WorldListEntry> onEntryInteract = null;
+      private @Nullable WorldSelectionList oldList = null;
+      private @Nullable Consumer<LevelSummary> onEntrySelect = null;
+      private @Nullable Consumer<WorldSelectionList.WorldListEntry> onEntryInteract = null;
 
       public Builder(final Minecraft minecraft, final Screen screen) {
          this.minecraft = minecraft;
@@ -317,7 +309,7 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
          return this;
       }
 
-      public WorldSelectionList.Builder oldList(@Nullable final WorldSelectionList oldList) {
+      public WorldSelectionList.Builder oldList(final @Nullable WorldSelectionList oldList) {
          this.oldList = oldList;
          return this;
       }
@@ -349,13 +341,12 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
       public void close() {
       }
 
-      @Nullable
-      public LevelSummary getLevelSummary() {
+      public @Nullable LevelSummary getLevelSummary() {
          return null;
       }
    }
 
-   public static enum EntryType {
+   public enum EntryType {
       SINGLEPLAYER,
       UPLOAD_WORLD;
    }
@@ -415,12 +406,9 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
       private final StringWidget worldNameText;
       private final StringWidget idAndLastPlayedText;
       private final StringWidget infoText;
-      @Nullable
-      private Path iconFile;
+      private @Nullable Path iconFile;
 
       public WorldListEntry(final WorldSelectionList list, final LevelSummary summary) {
-         Objects.requireNonNull(WorldSelectionList.this);
-         super();
          this.list = list;
          this.minecraft = list.minecraft;
          this.screen = list.getScreen();
@@ -477,10 +465,10 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
                if (!attributes.isRegularFile()) {
                   this.iconFile = null;
                }
-            } catch (NoSuchFileException var3) {
+            } catch (NoSuchFileException e) {
                this.iconFile = null;
-            } catch (IOException var4) {
-               WorldSelectionList.LOGGER.error("could not validate symlink", var4);
+            } catch (IOException e) {
+               WorldSelectionList.LOGGER.error("could not validate symlink", e);
                this.iconFile = null;
             }
          }
@@ -655,9 +643,9 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
 
          try (LevelStorageSource.LevelStorageAccess access = levelSource.createAccess(levelId)) {
             access.deleteLevel();
-         } catch (IOException var8) {
+         } catch (IOException e) {
             SystemToast.onWorldDeleteFailure(this.minecraft, levelId);
-            WorldSelectionList.LOGGER.error("Failed to delete world {}", levelId, var8);
+            WorldSelectionList.LOGGER.error("Failed to delete world {}", levelId, e);
          }
       }
 
@@ -668,13 +656,13 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
          LevelStorageSource.LevelStorageAccess access;
          try {
             access = this.minecraft.getLevelSource().validateAndCreateAccess(levelId);
-         } catch (IOException var6) {
+         } catch (IOException e) {
             SystemToast.onWorldAccessFailure(this.minecraft, levelId);
-            WorldSelectionList.LOGGER.error("Failed to access level {}", levelId, var6);
+            WorldSelectionList.LOGGER.error("Failed to access level {}", levelId, e);
             this.list.reloadWorldList();
             return;
-         } catch (ContentValidationException var7) {
-            WorldSelectionList.LOGGER.warn("{}", var7.getMessage());
+         } catch (ContentValidationException e) {
+            WorldSelectionList.LOGGER.warn("{}", e.getMessage());
             this.minecraft.gui.setScreen(NoticeWithLinkScreen.createWorldSymlinkWarningScreen(() -> this.minecraft.gui.setScreen(this.screen)));
             return;
          }
@@ -685,10 +673,10 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
                access.safeClose();
                this.list.returnToScreen();
             });
-         } catch (NbtException | ReportedNbtException | IOException var5) {
+         } catch (IOException | NbtException | ReportedNbtException e) {
             access.safeClose();
             SystemToast.onWorldAccessFailure(this.minecraft, levelId);
-            WorldSelectionList.LOGGER.error("Failed to load world data {}", levelId, var5);
+            WorldSelectionList.LOGGER.error("Failed to load world data {}", levelId, e);
             this.list.reloadWorldList();
             return;
          }
@@ -711,14 +699,12 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
                   .setScreen(
                      new ConfirmScreen(
                         result -> this.minecraft
-                              .gui
-                              .setScreen(
-                                 (Screen)(result
-                                    ? CreateWorldScreen.createFromExisting(
-                                       this.minecraft, this.list::returnToScreen, levelSettings, creationContext, dataPackDir
-                                    )
-                                    : this.screen)
-                              ),
+                           .gui
+                           .setScreen(
+                              result
+                                 ? CreateWorldScreen.createFromExisting(this.minecraft, this.list::returnToScreen, levelSettings, creationContext, dataPackDir)
+                                 : this.screen
+                           ),
                         Component.translatable("selectWorld.recreate.customized.title"),
                         Component.translatable("selectWorld.recreate.customized.text"),
                         CommonComponents.GUI_PROCEED,
@@ -730,11 +716,11 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
                   .gui
                   .setScreen(CreateWorldScreen.createFromExisting(this.minecraft, this.list::returnToScreen, levelSettings, creationContext, dataPackDir));
             }
-         } catch (ContentValidationException var8) {
-            WorldSelectionList.LOGGER.warn("{}", var8.getMessage());
+         } catch (ContentValidationException e) {
+            WorldSelectionList.LOGGER.warn("{}", e.getMessage());
             this.minecraft.gui.setScreen(NoticeWithLinkScreen.createWorldSymlinkWarningScreen(() -> this.minecraft.gui.setScreen(this.screen)));
-         } catch (Exception var9) {
-            WorldSelectionList.LOGGER.error("Unable to recreate world", var9);
+         } catch (Exception e) {
+            WorldSelectionList.LOGGER.error("Unable to recreate world", e);
             this.minecraft
                .gui
                .setScreen(
@@ -756,8 +742,8 @@ public class WorldSelectionList extends ObjectSelectionList<WorldSelectionList.E
          if (shouldHaveIcon) {
             try (InputStream stream = Files.newInputStream(this.iconFile)) {
                this.icon.upload(NativeImage.read(stream));
-            } catch (Throwable var7) {
-               WorldSelectionList.LOGGER.error("Invalid icon for world {}", this.summary.getLevelId(), var7);
+            } catch (Throwable t) {
+               WorldSelectionList.LOGGER.error("Invalid icon for world {}", this.summary.getLevelId(), t);
                this.iconFile = null;
             }
          } else {

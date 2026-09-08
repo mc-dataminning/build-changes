@@ -21,7 +21,7 @@ public enum Difficulty implements StringRepresentable {
    private final int id;
    private final String key;
 
-   private Difficulty(final int id, final String key) {
+   Difficulty(final int id, final String key) {
       this.id = id;
       this.key = key;
    }
@@ -43,8 +43,7 @@ public enum Difficulty implements StringRepresentable {
       return BY_ID.apply(id);
    }
 
-   @Nullable
-   public static Difficulty byName(final String name) {
+   public static @Nullable Difficulty byName(final String name) {
       return CODEC.byName(name);
    }
 

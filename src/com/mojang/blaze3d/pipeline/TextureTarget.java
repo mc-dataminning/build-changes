@@ -6,7 +6,7 @@ import org.jspecify.annotations.Nullable;
 
 public class TextureTarget extends RenderTarget {
    public TextureTarget(
-      @Nullable final String label, final int width, final int height, @Nullable final GpuFormat colorFormat, @Nullable final GpuFormat depthFormat
+      final @Nullable String label, final int width, final int height, final @Nullable GpuFormat colorFormat, final @Nullable GpuFormat depthFormat
    ) {
       super(label, colorFormat, depthFormat);
       RenderSystem.assertOnRenderThread();

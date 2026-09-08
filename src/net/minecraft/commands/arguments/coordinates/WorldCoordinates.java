@@ -18,7 +18,7 @@ public record WorldCoordinates(WorldCoordinate x, WorldCoordinate y, WorldCoordi
    @Override
    public Vec2 getRotation(final CommandSourceStack sender) {
       Vec2 rot = sender.getRotation();
-      return new Vec2((float)this.x.get((double)rot.x), (float)this.y.get((double)rot.y));
+      return new Vec2((float)this.x.get(rot.x), (float)this.y.get(rot.y));
    }
 
    @Override
@@ -81,8 +81,6 @@ public record WorldCoordinates(WorldCoordinate x, WorldCoordinate y, WorldCoordi
    }
 
    public static WorldCoordinates absolute(final Vec2 rotation) {
-      return new WorldCoordinates(
-         new WorldCoordinate(false, (double)rotation.x), new WorldCoordinate(false, (double)rotation.y), new WorldCoordinate(true, 0.0)
-      );
+      return new WorldCoordinates(new WorldCoordinate(false, rotation.x), new WorldCoordinate(false, rotation.y), new WorldCoordinate(true, 0.0));
    }
 }

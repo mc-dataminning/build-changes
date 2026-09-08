@@ -74,15 +74,15 @@ public class WinScreen extends Screen {
 
    private float calculateScrollSpeed() {
       return this.speedupActive
-         ? this.unmodifiedScrollSpeed * (5.0F + (float)this.speedupModifiers.size() * 15.0F) * (float)this.direction
-         : this.unmodifiedScrollSpeed * (float)this.direction;
+         ? this.unmodifiedScrollSpeed * (5.0F + this.speedupModifiers.size() * 15.0F) * this.direction
+         : this.unmodifiedScrollSpeed * this.direction;
    }
 
    @Override
    public void tick() {
       this.minecraft.getMusicManager().tick();
       this.minecraft.getSoundManager().tick(false);
-      float maxScroll = (float)(this.totalScrollLength + this.height + this.height + 24);
+      float maxScroll = this.totalScrollLength + this.height + this.height + 24;
       if (this.scroll > maxScroll) {
          this.respawn();
       }
@@ -154,8 +154,8 @@ public class WinScreen extends Screen {
    private void wrapCreditsIO(final Identifier file, final WinScreen.CreditsReader creditsReader) {
       try (Reader resource = this.minecraft.getResourceManager().openAsReader(file)) {
          creditsReader.read(resource);
-      } catch (Exception var8) {
-         LOGGER.error("Couldn't load credits from file {}", file, var8);
+      } catch (Exception e) {
+         LOGGER.error("Couldn't load credits from file {}", file, e);
       }
    }
 
@@ -258,13 +258,13 @@ public class WinScreen extends Screen {
 
       for (int i = 0; i < this.lines.size(); i++) {
          if (i == this.lines.size() - 1) {
-            float diff = (float)yPos + yOffs - (float)(this.height / 2 - 6);
+            float diff = yPos + yOffs - (this.height / 2 - 6);
             if (diff < 0.0F) {
                graphics.pose().translate(0.0F, -diff);
             }
          }
 
-         if ((float)yPos + yOffs + 12.0F + 8.0F > 0.0F && (float)yPos + yOffs < (float)this.height) {
+         if (yPos + yOffs + 12.0F + 8.0F > 0.0F && yPos + yOffs < this.height) {
             FormattedCharSequence line = this.lines.get(i);
             if (this.centeredLines.contains(i)) {
                graphics.centeredText(this.font, line, logoX + 128, yPos, -1);

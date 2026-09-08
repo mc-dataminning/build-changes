@@ -15,8 +15,7 @@ public class NearestAttackableTargetGoal<T extends LivingEntity> extends TargetG
    private static final int DEFAULT_RANDOM_INTERVAL = 10;
    protected final Class<T> targetType;
    protected final int randomInterval;
-   @Nullable
-   protected LivingEntity target;
+   protected @Nullable LivingEntity target;
    protected final TargetingConditions targetConditions;
 
    public NearestAttackableTargetGoal(final Mob mob, final Class<T> targetType, final boolean mustSee) {
@@ -37,7 +36,7 @@ public class NearestAttackableTargetGoal<T extends LivingEntity> extends TargetG
       final int randomInterval,
       final boolean mustSee,
       final boolean mustReach,
-      @Nullable final TargetingConditions.Selector selector
+      final TargetingConditions.@Nullable Selector selector
    ) {
       super(mob, mustSee, mustReach);
       this.targetType = targetType;
@@ -50,10 +49,10 @@ public class NearestAttackableTargetGoal<T extends LivingEntity> extends TargetG
    public boolean canUse() {
       if (this.randomInterval > 0 && this.mob.getRandom().nextInt(this.randomInterval) != 0) {
          return false;
-      } else {
-         this.findTarget();
-         return this.target != null;
       }
+
+      this.findTarget();
+      return this.target != null;
    }
 
    protected AABB getTargetSearchArea(final double followDistance) {
@@ -82,7 +81,7 @@ public class NearestAttackableTargetGoal<T extends LivingEntity> extends TargetG
       super.start();
    }
 
-   public void setTarget(@Nullable final LivingEntity target) {
+   public void setTarget(final @Nullable LivingEntity target) {
       this.target = target;
    }
 

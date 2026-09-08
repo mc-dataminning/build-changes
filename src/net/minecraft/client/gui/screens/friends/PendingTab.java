@@ -26,8 +26,7 @@ class PendingTab extends AbstractFriendsTab {
    private final LinearLayout pendingScrollableContent;
    private final LoadingDotsWidget loadingDotsWidget;
    private final ScrollableLayout scrollableLayout;
-   @Nullable
-   private FrameLayout contentFrame;
+   private @Nullable FrameLayout contentFrame;
 
    PendingTab(final Minecraft minecraft, final LoadingDotsWidget loadingDotsWidget, final FriendsOverlayScreen screen, final int width, final int height) {
       super(width, height);

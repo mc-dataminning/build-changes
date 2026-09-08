@@ -7,8 +7,7 @@ import org.jspecify.annotations.Nullable;
 
 public class TimerQuery implements AutoCloseable {
    private static final int ROTATIONS = 3;
-   @Nullable
-   private CommandEncoder activeEncoder;
+   private @Nullable CommandEncoder activeEncoder;
    private final GpuQueryPool queryPool;
    private int currentRotationIndex;
    private TimerQuery.Status status = TimerQuery.Status.NOT_RECORDING;
@@ -21,13 +20,13 @@ public class TimerQuery implements AutoCloseable {
    public void beginProfile() {
       if (this.status != TimerQuery.Status.NOT_RECORDING) {
          throw new IllegalStateException("Current profile not ended");
-      } else {
-         this.currentRotationIndex++;
-         this.currentRotationIndex %= 3;
-         this.activeEncoder = RenderSystem.getDevice().createCommandEncoder();
-         this.activeEncoder.writeTimestamp(this.queryPool, this.currentRotationIndex * 2);
-         this.status = TimerQuery.Status.STARTED;
       }
+
+      this.currentRotationIndex++;
+      this.currentRotationIndex %= 3;
+      this.activeEncoder = RenderSystem.getDevice().createCommandEncoder();
+      this.activeEncoder.writeTimestamp(this.queryPool, this.currentRotationIndex * 2);
+      this.status = TimerQuery.Status.STARTED;
    }
 
    public void endProfile() {
@@ -47,7 +46,7 @@ public class TimerQuery implements AutoCloseable {
          average += this.results[i];
       }
 
-      return average / (long)this.results.length;
+      return average / this.results.length;
    }
 
    @Override
@@ -70,7 +69,7 @@ public class TimerQuery implements AutoCloseable {
       return this.status;
    }
 
-   public static enum Status {
+   public enum Status {
       NOT_RECORDING,
       STARTED,
       AWAITING_VALUES;

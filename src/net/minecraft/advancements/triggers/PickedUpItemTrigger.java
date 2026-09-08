@@ -8,7 +8,6 @@ import net.minecraft.advancements.predicates.entity.EntityPredicate;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.ItemInstance;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.Validatable;
@@ -22,20 +21,20 @@ public class PickedUpItemTrigger extends SimpleCriterionTrigger<PickedUpItemTrig
       return PickedUpItemTrigger.TriggerInstance.CODEC;
    }
 
-   public void trigger(final ServerPlayer player, final ItemStack itemStack, @Nullable final Entity entity) {
+   public void trigger(final ServerPlayer player, final ItemStack itemStack, final @Nullable Entity entity) {
       LootContext context = EntityPredicate.createContext(player, entity);
       this.trigger(player, t -> t.matches(player, itemStack, context));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<ItemPredicate> item, Optional<Holder<LootItemCondition>> entity)
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<ItemPredicate> item, Optional<Holder<LootItemCondition>> entity)
       implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<PickedUpItemTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(PickedUpItemTrigger.TriggerInstance::player),
-                  ItemPredicate.CODEC.optionalFieldOf("item").forGetter(PickedUpItemTrigger.TriggerInstance::item),
-                  LootItemCondition.CODEC.optionalFieldOf("entity").forGetter(PickedUpItemTrigger.TriggerInstance::entity)
-               )
-               .apply(i, PickedUpItemTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(PickedUpItemTrigger.TriggerInstance::player),
+               ItemPredicate.CODEC.optionalFieldOf("item").forGetter(PickedUpItemTrigger.TriggerInstance::item),
+               LootItemCondition.CODEC.optionalFieldOf("entity").forGetter(PickedUpItemTrigger.TriggerInstance::entity)
+            )
+            .apply(i, PickedUpItemTrigger.TriggerInstance::new)
       );
 
       public static Criterion<PickedUpItemTrigger.TriggerInstance> thrownItemPickedUpByEntity(
@@ -51,9 +50,7 @@ public class PickedUpItemTrigger extends SimpleCriterionTrigger<PickedUpItemTrig
       }
 
       public boolean matches(final ServerPlayer player, final ItemStack itemStack, final LootContext pickedUpBy) {
-         return this.item.isPresent() && !this.item.get().test((ItemInstance)itemStack)
-            ? false
-            : !this.entity.isPresent() || this.entity.get().value().test(pickedUpBy);
+         return this.item.isPresent() && !this.item.get().test(itemStack) ? false : !this.entity.isPresent() || this.entity.get().value().test(pickedUpBy);
       }
 
       @Override

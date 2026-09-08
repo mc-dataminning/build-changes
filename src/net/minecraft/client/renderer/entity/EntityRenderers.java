@@ -31,8 +31,8 @@ public class EntityRenderers {
       PROVIDERS.forEach((type, provider) -> {
          try {
             result.put(type, provider.create(context));
-         } catch (Exception var5) {
-            throw new IllegalArgumentException("Failed to create model for " + BuiltInRegistries.ENTITY_TYPE.getKey((EntityType<?>)type), var5);
+         } catch (Exception e) {
+            throw new IllegalArgumentException("Failed to create model for " + BuiltInRegistries.ENTITY_TYPE.getKey((EntityType<?>)type), e);
          }
       });
       return result.build();
@@ -43,8 +43,8 @@ public class EntityRenderers {
    ) {
       try {
          return Map.of(PlayerModelType.WIDE, new AvatarRenderer<>(context, false), PlayerModelType.SLIM, new AvatarRenderer<>(context, true));
-      } catch (Exception var2) {
-         throw new IllegalArgumentException("Failed to create avatar models", var2);
+      } catch (Exception e) {
+         throw new IllegalArgumentException("Failed to create avatar models", e);
       }
    }
 
@@ -102,8 +102,8 @@ public class EntityRenderers {
       register(
          EntityTypes.DONKEY,
          context -> new DonkeyRenderer<>(
-               context, EquipmentClientInfo.LayerType.DONKEY_SADDLE, ModelLayers.DONKEY_SADDLE, DonkeyRenderer.Type.DONKEY, DonkeyRenderer.Type.DONKEY_BABY
-            )
+            context, EquipmentClientInfo.LayerType.DONKEY_SADDLE, ModelLayers.DONKEY_SADDLE, DonkeyRenderer.Type.DONKEY, DonkeyRenderer.Type.DONKEY_BABY
+         )
       );
       register(EntityTypes.DRAGON_FIREBALL, DragonFireballRenderer::new);
       register(EntityTypes.DROWNED, DrownedRenderer::new);
@@ -133,8 +133,8 @@ public class EntityRenderers {
       register(
          EntityTypes.GLOW_SQUID,
          context -> new GlowSquidRenderer(
-               context, new SquidModel(context.bakeLayer(ModelLayers.GLOW_SQUID)), new SquidModel(context.bakeLayer(ModelLayers.GLOW_SQUID_BABY))
-            )
+            context, new SquidModel(context.bakeLayer(ModelLayers.GLOW_SQUID)), new SquidModel(context.bakeLayer(ModelLayers.GLOW_SQUID_BABY))
+         )
       );
       register(EntityTypes.GOAT, GoatRenderer::new);
       register(EntityTypes.GUARDIAN, GuardianRenderer::new);
@@ -164,8 +164,8 @@ public class EntityRenderers {
       register(
          EntityTypes.MULE,
          context -> new DonkeyRenderer<>(
-               context, EquipmentClientInfo.LayerType.MULE_SADDLE, ModelLayers.MULE_SADDLE, DonkeyRenderer.Type.MULE, DonkeyRenderer.Type.MULE_BABY
-            )
+            context, EquipmentClientInfo.LayerType.MULE_SADDLE, ModelLayers.MULE_SADDLE, DonkeyRenderer.Type.MULE, DonkeyRenderer.Type.MULE_BABY
+         )
       );
       register(EntityTypes.NAUTILUS, NautilusRenderer::new);
       register(EntityTypes.OAK_BOAT, context -> new BoatRenderer(context, ModelLayers.OAK_BOAT));
@@ -187,8 +187,8 @@ public class EntityRenderers {
       register(
          EntityTypes.PIGLIN_BRUTE,
          context -> new PiglinRenderer(
-               context, ModelLayers.PIGLIN_BRUTE, ModelLayers.PIGLIN_BRUTE, ModelLayers.PIGLIN_BRUTE_ARMOR, ModelLayers.PIGLIN_BRUTE_ARMOR
-            )
+            context, ModelLayers.PIGLIN_BRUTE, ModelLayers.PIGLIN_BRUTE, ModelLayers.PIGLIN_BRUTE_ARMOR, ModelLayers.PIGLIN_BRUTE_ARMOR
+         )
       );
       register(EntityTypes.PILLAGER, PillagerRenderer::new);
       register(EntityTypes.POLAR_BEAR, PolarBearRenderer::new);
@@ -206,12 +206,12 @@ public class EntityRenderers {
       register(
          EntityTypes.SKELETON_HORSE,
          context -> new UndeadHorseRenderer(
-               context,
-               EquipmentClientInfo.LayerType.SKELETON_HORSE_SADDLE,
-               ModelLayers.SKELETON_HORSE_SADDLE,
-               UndeadHorseRenderer.Type.SKELETON,
-               UndeadHorseRenderer.Type.SKELETON_BABY
-            )
+            context,
+            EquipmentClientInfo.LayerType.SKELETON_HORSE_SADDLE,
+            ModelLayers.SKELETON_HORSE_SADDLE,
+            UndeadHorseRenderer.Type.SKELETON,
+            UndeadHorseRenderer.Type.SKELETON_BABY
+         )
       );
       register(EntityTypes.SLIME, SlimeRenderer::new);
       register(EntityTypes.SMALL_FIREBALL, context -> new ThrownItemRenderer<>(context, 0.75F, true));
@@ -227,8 +227,8 @@ public class EntityRenderers {
       register(
          EntityTypes.SQUID,
          context -> new SquidRenderer<>(
-               context, new SquidModel(context.bakeLayer(ModelLayers.SQUID)), new SquidModel(context.bakeLayer(ModelLayers.SQUID_BABY))
-            )
+            context, new SquidModel(context.bakeLayer(ModelLayers.SQUID)), new SquidModel(context.bakeLayer(ModelLayers.SQUID_BABY))
+         )
       );
       register(EntityTypes.STRAY, StrayRenderer::new);
       register(EntityTypes.STRIDER, StriderRenderer::new);
@@ -257,24 +257,24 @@ public class EntityRenderers {
       register(
          EntityTypes.ZOMBIE_HORSE,
          context -> new UndeadHorseRenderer(
-               context,
-               EquipmentClientInfo.LayerType.ZOMBIE_HORSE_SADDLE,
-               ModelLayers.ZOMBIE_HORSE_SADDLE,
-               UndeadHorseRenderer.Type.ZOMBIE,
-               UndeadHorseRenderer.Type.ZOMBIE_BABY
-            )
+            context,
+            EquipmentClientInfo.LayerType.ZOMBIE_HORSE_SADDLE,
+            ModelLayers.ZOMBIE_HORSE_SADDLE,
+            UndeadHorseRenderer.Type.ZOMBIE,
+            UndeadHorseRenderer.Type.ZOMBIE_BABY
+         )
       );
       register(EntityTypes.ZOMBIE_NAUTILUS, ZombieNautilusRenderer::new);
       register(EntityTypes.ZOMBIE_VILLAGER, ZombieVillagerRenderer::new);
       register(
          EntityTypes.ZOMBIFIED_PIGLIN,
          context -> new ZombifiedPiglinRenderer(
-               context,
-               ModelLayers.ZOMBIFIED_PIGLIN,
-               ModelLayers.ZOMBIFIED_PIGLIN_BABY,
-               ModelLayers.ZOMBIFIED_PIGLIN_ARMOR,
-               ModelLayers.ZOMBIFIED_PIGLIN_BABY_ARMOR
-            )
+            context,
+            ModelLayers.ZOMBIFIED_PIGLIN,
+            ModelLayers.ZOMBIFIED_PIGLIN_BABY,
+            ModelLayers.ZOMBIFIED_PIGLIN_ARMOR,
+            ModelLayers.ZOMBIFIED_PIGLIN_BABY_ARMOR
+         )
       );
    }
 }

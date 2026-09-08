@@ -8,8 +8,7 @@ import org.joml.Vector3fc;
 import org.jspecify.annotations.Nullable;
 
 public final class CubeDefinition {
-   @Nullable
-   private final String comment;
+   private final @Nullable String comment;
    private final Vector3fc origin;
    private final Vector3fc dimensions;
    private final CubeDeformation grow;
@@ -19,7 +18,7 @@ public final class CubeDefinition {
    private final Set<Direction> visibleFaces;
 
    public CubeDefinition(
-      @Nullable final String comment,
+      final @Nullable String comment,
       final float xTexOffs,
       final float yTexOffs,
       final float minX,
@@ -58,8 +57,8 @@ public final class CubeDefinition {
          this.grow.growY,
          this.grow.growZ,
          this.mirror,
-         (float)texScaleX * this.texScale.u(),
-         (float)texScaleY * this.texScale.v(),
+         texScaleX * this.texScale.u(),
+         texScaleY * this.texScale.v(),
          this.visibleFaces
       );
    }

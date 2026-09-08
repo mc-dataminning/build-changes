@@ -39,13 +39,13 @@ public class BeehiveFieldRenameFix extends DataFix {
          entityType,
          newEntityType,
          input -> ExtraDataFixUtils.cast(
-               newEntityType,
-               input.updateTyped(
-                  beehiveF,
-                  beehive -> beehive.update(DSL.remainderFinder(), this::fixBeehive)
-                        .updateTyped(beesF, bees -> bees.updateTyped(beeF, bee -> bee.update(DSL.remainderFinder(), this::fixBee)))
-               )
+            newEntityType,
+            input.updateTyped(
+               beehiveF,
+               beehive -> beehive.update(DSL.remainderFinder(), this::fixBeehive)
+                  .updateTyped(beesF, bees -> bees.updateTyped(beeF, bee -> bee.update(DSL.remainderFinder(), this::fixBee)))
             )
+         )
       );
    }
 }

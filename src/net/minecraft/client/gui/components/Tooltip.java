@@ -16,17 +16,13 @@ import org.jspecify.annotations.Nullable;
 public class Tooltip implements NarrationSupplier {
    private static final int MAX_WIDTH = 170;
    private final Component message;
-   @Nullable
-   private List<FormattedCharSequence> cachedTooltip;
-   @Nullable
-   private Language splitWithLanguage;
-   @Nullable
-   private final Identifier style;
-   @Nullable
-   private final Component narration;
+   private @Nullable List<FormattedCharSequence> cachedTooltip;
+   private @Nullable Language splitWithLanguage;
+   private final @Nullable Identifier style;
+   private final @Nullable Component narration;
    private final Optional<TooltipComponent> component;
 
-   private Tooltip(final Component message, @Nullable final Component narration, final Optional<TooltipComponent> component, @Nullable final Identifier style) {
+   private Tooltip(final Component message, final @Nullable Component narration, final Optional<TooltipComponent> component, final @Nullable Identifier style) {
       this.message = message;
       this.narration = narration;
       this.component = component;
@@ -37,11 +33,11 @@ public class Tooltip implements NarrationSupplier {
       return new Tooltip(message, message, Optional.empty(), null);
    }
 
-   public static Tooltip create(final Component message, @Nullable final Component narration) {
+   public static Tooltip create(final Component message, final @Nullable Component narration) {
       return new Tooltip(message, narration, Optional.empty(), null);
    }
 
-   public static Tooltip create(final Component message, final Optional<TooltipComponent> component, @Nullable final Identifier style) {
+   public static Tooltip create(final Component message, final Optional<TooltipComponent> component, final @Nullable Identifier style) {
       return new Tooltip(message, message, component, style);
    }
 
@@ -49,8 +45,7 @@ public class Tooltip implements NarrationSupplier {
       return this.component;
    }
 
-   @Nullable
-   public Identifier style() {
+   public @Nullable Identifier style() {
       return this.style;
    }
 

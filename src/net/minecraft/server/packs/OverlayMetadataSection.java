@@ -25,7 +25,7 @@ public record OverlayMetadataSection(List<OverlayMetadataSection.OverlayEntry> o
    public static Codec<OverlayMetadataSection> codecForPackType(final PackType packType) {
       return RecordCodecBuilder.create(
          i -> i.group(OverlayMetadataSection.OverlayEntry.listCodecForPackType(packType).fieldOf("entries").forGetter(OverlayMetadataSection::overlays))
-               .apply(i, OverlayMetadataSection::new)
+            .apply(i, OverlayMetadataSection::new)
       );
    }
 
@@ -40,24 +40,24 @@ public record OverlayMetadataSection(List<OverlayMetadataSection.OverlayEntry> o
       return this.overlays.stream().filter(entry -> entry.isApplicable(version)).map(OverlayMetadataSection.OverlayEntry::overlay).toList();
    }
 
-   public static record OverlayEntry(InclusiveRange<PackFormat> format, String overlay) {
+   public record OverlayEntry(InclusiveRange<PackFormat> format, String overlay) {
       private static Codec<List<OverlayMetadataSection.OverlayEntry>> listCodecForPackType(final PackType packType) {
          int lastPreMinorVersion = PackFormat.lastPreMinorVersion(packType);
          return OverlayMetadataSection.OverlayEntry.IntermediateEntry.CODEC
             .listOf()
             .flatXmap(
                list -> PackFormat.validateHolderList(
-                     list, lastPreMinorVersion, (entry, formats) -> new OverlayMetadataSection.OverlayEntry(formats, entry.overlay())
-                  ),
+                  list, lastPreMinorVersion, (entry, formats) -> new OverlayMetadataSection.OverlayEntry(formats, entry.overlay())
+               ),
                list -> DataResult.success(
-                     list.stream()
-                        .map(
-                           entry -> new OverlayMetadataSection.OverlayEntry.IntermediateEntry(
-                                 PackFormat.IntermediaryFormat.fromRange(entry.format(), lastPreMinorVersion), entry.overlay()
-                              )
+                  list.stream()
+                     .map(
+                        entry -> new OverlayMetadataSection.OverlayEntry.IntermediateEntry(
+                           PackFormat.IntermediaryFormat.fromRange(entry.format(), lastPreMinorVersion), entry.overlay()
                         )
-                        .toList()
-                  )
+                     )
+                     .toList()
+               )
             );
       }
 
@@ -65,16 +65,16 @@ public record OverlayMetadataSection(List<OverlayMetadataSection.OverlayEntry> o
          return this.format.isValueInRange(formatToTest);
       }
 
-      private static record IntermediateEntry(PackFormat.IntermediaryFormat format, String overlay) implements PackFormat.IntermediaryFormatHolder {
+      private record IntermediateEntry(PackFormat.IntermediaryFormat format, String overlay) implements PackFormat.IntermediaryFormatHolder {
          private static final Codec<OverlayMetadataSection.OverlayEntry.IntermediateEntry> CODEC = RecordCodecBuilder.create(
             i -> i.group(
-                     PackFormat.IntermediaryFormat.OVERLAY_CODEC.forGetter(OverlayMetadataSection.OverlayEntry.IntermediateEntry::format),
-                     Codec.STRING
-                        .validate(OverlayMetadataSection::validateOverlayDir)
-                        .fieldOf("directory")
-                        .forGetter(OverlayMetadataSection.OverlayEntry.IntermediateEntry::overlay)
-                  )
-                  .apply(i, OverlayMetadataSection.OverlayEntry.IntermediateEntry::new)
+                  PackFormat.IntermediaryFormat.OVERLAY_CODEC.forGetter(OverlayMetadataSection.OverlayEntry.IntermediateEntry::format),
+                  Codec.STRING
+                     .validate(OverlayMetadataSection::validateOverlayDir)
+                     .fieldOf("directory")
+                     .forGetter(OverlayMetadataSection.OverlayEntry.IntermediateEntry::overlay)
+               )
+               .apply(i, OverlayMetadataSection.OverlayEntry.IntermediateEntry::new)
          );
 
          @Override

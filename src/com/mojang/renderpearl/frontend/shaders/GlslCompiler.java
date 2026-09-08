@@ -38,10 +38,10 @@ public class GlslCompiler implements UncheckedAutoCloseable {
       Identifier id = Identifier.tryParse(requestedShader);
       if (id == null) {
          return this.malformedIdResult;
-      } else {
-         ShaderSource.CachedIncludeSource shaderContents = shaderSource.getInclude(id);
-         return shaderContents == null ? this.missingIncludeResult : shaderContents;
       }
+
+      ShaderSource.CachedIncludeSource shaderContents = shaderSource.getInclude(id);
+      return shaderContents == null ? this.missingIncludeResult : shaderContents;
    }
 
    private ShadercIncludeResolve createIncludeResolver(final ShaderSource shaderSource) {

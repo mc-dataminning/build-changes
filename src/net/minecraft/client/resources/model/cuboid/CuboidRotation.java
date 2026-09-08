@@ -41,7 +41,7 @@ public record CuboidRotation(Vector3fc origin, CuboidRotation.RotationValue valu
       return 1.0F / maxComponent;
    }
 
-   public static record EulerXYZRotation(float x, float y, float z) implements CuboidRotation.RotationValue {
+   public record EulerXYZRotation(float x, float y, float z) implements CuboidRotation.RotationValue {
       @Override
       public Matrix4f transformation() {
          return new Matrix4f()
@@ -55,17 +55,17 @@ public record CuboidRotation(Vector3fc origin, CuboidRotation.RotationValue valu
       Matrix4f transformation();
    }
 
-   public static record SingleAxisRotation(Direction.Axis axis, float angle) implements CuboidRotation.RotationValue {
+   public record SingleAxisRotation(Direction.Axis axis, float angle) implements CuboidRotation.RotationValue {
       @Override
       public Matrix4f transformation() {
          Matrix4f result = new Matrix4f();
          if (this.angle == 0.0F) {
             return result;
-         } else {
-            Vector3fc rotateAround = this.axis.getPositive().getUnitVec3f();
-            result.rotation(this.angle * (float) (java.lang.Math.PI / 180.0), rotateAround);
-            return result;
          }
+
+         Vector3fc rotateAround = this.axis.getPositive().getUnitVec3f();
+         result.rotation(this.angle * (float) (java.lang.Math.PI / 180.0), rotateAround);
+         return result;
       }
    }
 }

@@ -7,8 +7,7 @@ import net.minecraft.world.scores.ScoreHolder;
 import org.jspecify.annotations.Nullable;
 
 public interface ScoreboardNameProvider extends LootContextUser {
-   @Nullable
-   ScoreHolder getScoreHolder(LootContext context);
+   @Nullable ScoreHolder getScoreHolder(LootContext context);
 
    MapCodec<? extends ScoreboardNameProvider> codec();
 }

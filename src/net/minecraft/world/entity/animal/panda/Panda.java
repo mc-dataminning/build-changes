@@ -3,7 +3,6 @@ package net.minecraft.world.entity.animal.panda;
 import com.mojang.serialization.Codec;
 import java.util.EnumSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.IntFunction;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ItemParticleOption;
@@ -247,9 +246,8 @@ public class Panda extends Animal {
       this.setHiddenGene(input.<Panda.Gene>read("HiddenGene", Panda.Gene.CODEC).orElse(Panda.Gene.NORMAL));
    }
 
-   @Nullable
    @Override
-   public AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       Panda baby = EntityTypes.PANDA.create(level, EntitySpawnReason.BREEDING);
       if (baby != null) {
          if (partner instanceof Panda partnerPanda) {
@@ -280,7 +278,7 @@ public class Panda extends Animal {
       this.goalSelector.addGoal(12, new Panda.PandaRollGoal(this));
       this.goalSelector.addGoal(13, new FollowParentGoal(this, 1.25));
       this.goalSelector.addGoal(14, new WaterAvoidingRandomStrollGoal(this, 1.0));
-      this.targetSelector.addGoal(1, new Panda.PandaHurtByTargetGoal(this).setAlertOthers(new Class[0]));
+      this.targetSelector.addGoal(1, new Panda.PandaHurtByTargetGoal(this).setAlertOthers());
    }
 
    public static AttributeSupplier.Builder createAttributes() {
@@ -424,21 +422,17 @@ public class Panda extends Animal {
 
    private void addEatingParticles() {
       if (this.getEatCounter() % 5 == 0) {
-         this.playSound(SoundEvents.PANDA_EAT, 0.5F + 0.5F * (float)this.random.nextInt(2), (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
+         this.playSound(SoundEvents.PANDA_EAT, 0.5F + 0.5F * this.random.nextInt(2), (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
          ItemStack heldItem = this.getItemBySlot(EquipmentSlot.MAINHAND);
          if (!heldItem.isEmpty()) {
             ItemParticleOption breakParticle = new ItemParticleOption(ParticleTypes.ITEM, ItemStackTemplate.fromNonEmptyStack(heldItem));
 
             for (int i = 0; i < 6; i++) {
-               Vec3 velocity = new Vec3(
-                     ((double)this.random.nextFloat() - 0.5) * 0.1, (double)this.random.nextFloat() * 0.1 + 0.1, ((double)this.random.nextFloat() - 0.5) * 0.1
-                  )
+               Vec3 velocity = new Vec3((this.random.nextFloat() - 0.5) * 0.1, this.random.nextFloat() * 0.1 + 0.1, (this.random.nextFloat() - 0.5) * 0.1)
                   .xRot(-this.getXRot() * (float) (Math.PI / 180.0))
                   .yRot(-this.getYRot() * (float) (Math.PI / 180.0));
                Vec3 position = new Vec3(
-                     ((double)this.random.nextFloat() - 0.5) * 0.8,
-                     (double)(-this.random.nextFloat()) * 0.6 - 0.3,
-                     1.0 + ((double)this.random.nextFloat() - 0.5) * 0.4
+                     (this.random.nextFloat() - 0.5) * 0.8, -this.random.nextFloat() * 0.6 - 0.3, 1.0 + (this.random.nextFloat() - 0.5) * 0.4
                   )
                   .yRot(-this.yBodyRot * (float) (Math.PI / 180.0))
                   .add(this.getX(), this.getEyeY() + 1.0, this.getZ());
@@ -497,11 +491,9 @@ public class Panda extends Animal {
             if (this.rollCounter == 1) {
                float angle = this.getYRot() * (float) (Math.PI / 180.0);
                float multiplier = this.isBaby() ? 0.1F : 0.2F;
-               this.rollDelta = new Vec3(
-                  movement.x + (double)(-Mth.sin((double)angle) * multiplier), 0.0, movement.z + (double)(Mth.cos((double)angle) * multiplier)
-               );
+               this.rollDelta = new Vec3(movement.x + -Mth.sin(angle) * multiplier, 0.0, movement.z + Mth.cos(angle) * multiplier);
                this.setDeltaMovement(this.rollDelta.add(0.0, 0.27, 0.0));
-            } else if ((float)this.rollCounter != 7.0F && (float)this.rollCounter != 15.0F && (float)this.rollCounter != 23.0F) {
+            } else if (this.rollCounter != 7.0F && this.rollCounter != 15.0F && this.rollCounter != 23.0F) {
                this.setDeltaMovement(this.rollDelta.x, movement.y, this.rollDelta.z);
             } else {
                this.setDeltaMovement(0.0, this.onGround() ? 0.27 : movement.y, 0.0);
@@ -515,9 +507,9 @@ public class Panda extends Animal {
       Level level = this.level();
       level.addParticle(
          ParticleTypes.SNEEZE,
-         this.getX() - (double)(this.getBbWidth() + 1.0F) * 0.5 * (double)Mth.sin((double)(this.yBodyRot * (float) (Math.PI / 180.0))),
+         this.getX() - (this.getBbWidth() + 1.0F) * 0.5 * Mth.sin(this.yBodyRot * (float) (Math.PI / 180.0)),
          this.getEyeY() - 0.1F,
-         this.getZ() + (double)(this.getBbWidth() + 1.0F) * 0.5 * (double)Mth.cos((double)(this.yBodyRot * (float) (Math.PI / 180.0))),
+         this.getZ() + (this.getBbWidth() + 1.0F) * 0.5 * Mth.cos(this.yBodyRot * (float) (Math.PI / 180.0)),
          movement.x,
          0.0,
          movement.z
@@ -553,9 +545,8 @@ public class Panda extends Animal {
       return super.hurtServer(level, source, damage);
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       RandomSource random = level.getRandom();
@@ -569,7 +560,7 @@ public class Panda extends Animal {
       return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
    }
 
-   public void setGeneFromParents(final Panda parent1, @Nullable final Panda parent2) {
+   public void setGeneFromParents(final Panda parent1, final @Nullable Panda parent2) {
       if (parent2 == null) {
          if (this.random.nextBoolean()) {
             this.setMainGene(parent1.getOneOfGenesRandomly());
@@ -622,17 +613,21 @@ public class Panda extends Animal {
       ItemStack interactionItemStack = player.getItemInHand(hand);
       if (this.isScared()) {
          return InteractionResult.PASS;
-      } else if (this.isOnBack()) {
+      }
+
+      if (this.isOnBack()) {
          this.setOnBack(false);
          return InteractionResult.SUCCESS;
-      } else if (this.isFood(interactionItemStack)) {
+      }
+
+      if (this.isFood(interactionItemStack)) {
          if (this.getTarget() != null) {
             this.gotBamboo = true;
          }
 
          if (this.canAgeUp()) {
             this.usePlayerItem(player, hand, interactionItemStack);
-            this.ageUp((int)((float)(-this.getAge() / 20) * 0.1F), true);
+            this.ageUp((int)(-this.getAge() / 20 * 0.1F), true);
          } else {
             if (this.isBaby()) {
                return InteractionResult.PASS;
@@ -660,13 +655,12 @@ public class Panda extends Animal {
 
          return InteractionResult.SUCCESS_SERVER;
       } else {
-         return (InteractionResult)(this.isBaby() && player.isHolding(Items.GOLDEN_DANDELION) ? super.mobInteract(player, hand) : InteractionResult.PASS);
+         return this.isBaby() && player.isHolding(Items.GOLDEN_DANDELION) ? super.mobInteract(player, hand) : InteractionResult.PASS;
       }
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getAmbientSound() {
+   protected @Nullable SoundEvent getAmbientSound() {
       if (this.isAggressive()) {
          return SoundEvents.PANDA_AGGRESSIVE_AMBIENT;
       } else {
@@ -684,15 +678,13 @@ public class Panda extends Animal {
       return itemStack.is(ItemTags.PANDA_FOOD);
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getDeathSound() {
+   protected @Nullable SoundEvent getDeathSound() {
       return SoundEvents.PANDA_DEATH;
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
+   protected @Nullable SoundEvent getHurtSound(final DamageSource source) {
       return SoundEvents.PANDA_HURT;
    }
 
@@ -709,7 +701,7 @@ public class Panda extends Animal {
       return entity.getItem().is(ItemTags.PANDA_EATS_FROM_GROUND) && entity.isAlive() && !entity.hasPickUpDelay();
    }
 
-   public static enum Gene implements StringRepresentable {
+   public enum Gene implements StringRepresentable {
       NORMAL(0, "normal", false),
       LAZY(1, "lazy", false),
       WORRIED(2, "worried", false),
@@ -725,7 +717,7 @@ public class Panda extends Animal {
       private final String name;
       private final boolean isRecessive;
 
-      private Gene(final int id, final String name, final boolean isRecessive) {
+      Gene(final int id, final String name, final boolean isRecessive) {
          this.id = id;
          this.name = name;
          this.isRecessive = isRecessive;
@@ -815,7 +807,9 @@ public class Panda extends Animal {
       public boolean canUse() {
          if (!super.canUse() || this.panda.getUnhappyCounter() != 0) {
             return false;
-         } else if (!this.canFindBamboo()) {
+         }
+
+         if (!this.canFindBamboo()) {
             if (this.unhappyCooldown <= this.panda.tickCount) {
                this.panda.setUnhappyCounter(32);
                this.unhappyCooldown = this.panda.tickCount + 600;
@@ -864,10 +858,10 @@ public class Panda extends Animal {
       public boolean canContinueToUse() {
          if (!this.panda.gotBamboo && !this.panda.didBite) {
             return super.canContinueToUse();
-         } else {
-            this.panda.setTarget(null);
-            return false;
          }
+
+         this.panda.setTarget(null);
+         return false;
       }
 
       @Override
@@ -935,29 +929,27 @@ public class Panda extends Animal {
       public boolean canUse() {
          if (this.mob.getRandom().nextFloat() >= this.probability) {
             return false;
-         } else {
-            if (this.lookAt == null) {
-               ServerLevel level = getServerLevel(this.mob);
-               if (this.lookAtType == Player.class) {
-                  this.lookAt = level.getNearestPlayer(this.lookAtContext, this.mob, this.mob.getX(), this.mob.getEyeY(), this.mob.getZ());
-               } else {
-                  this.lookAt = level.getNearestEntity(
-                     this.mob
-                        .level()
-                        .getEntitiesOfClass(
-                           this.lookAtType, this.mob.getBoundingBox().inflate((double)this.lookDistance, 3.0, (double)this.lookDistance), entity -> true
-                        ),
-                     this.lookAtContext,
-                     this.mob,
-                     this.mob.getX(),
-                     this.mob.getEyeY(),
-                     this.mob.getZ()
-                  );
-               }
-            }
-
-            return this.panda.canPerformAction() && this.lookAt != null;
          }
+
+         if (this.lookAt == null) {
+            ServerLevel level = getServerLevel(this.mob);
+            if (this.lookAtType == Player.class) {
+               this.lookAt = level.getNearestPlayer(this.lookAtContext, this.mob, this.mob.getX(), this.mob.getEyeY(), this.mob.getZ());
+            } else {
+               this.lookAt = level.getNearestEntity(
+                  this.mob
+                     .level()
+                     .getEntitiesOfClass(this.lookAtType, this.mob.getBoundingBox().inflate(this.lookDistance, 3.0, this.lookDistance), entity -> true),
+                  this.lookAtContext,
+                  this.mob,
+                  this.mob.getX(),
+                  this.mob.getEyeY(),
+                  this.mob.getZ()
+               );
+            }
+         }
+
+         return this.panda.canPerformAction() && this.lookAt != null;
       }
 
       @Override
@@ -1015,10 +1007,10 @@ public class Panda extends Animal {
                return false;
             } else {
                float angle = this.panda.getYRot() * (float) (Math.PI / 180.0);
-               float xDir = -Mth.sin((double)angle);
-               float zDir = Mth.cos((double)angle);
-               int xStep = (double)Math.abs(xDir) > 0.5 ? Mth.sign((double)xDir) : 0;
-               int zStep = (double)Math.abs(zDir) > 0.5 ? Mth.sign((double)zDir) : 0;
+               float xDir = -Mth.sin(angle);
+               float zDir = Mth.cos(angle);
+               int xStep = Math.abs(xDir) > 0.5 ? Mth.sign(xDir) : 0;
+               int zStep = Math.abs(zDir) > 0.5 ? Mth.sign(zDir) : 0;
                if (this.panda.level().getBlockState(this.panda.blockPosition().offset(xStep, -1, zStep)).isAir()) {
                   return true;
                } else {
@@ -1052,8 +1044,6 @@ public class Panda extends Animal {
       private int cooldown;
 
       public PandaSitGoal() {
-         Objects.requireNonNull(Panda.this);
-         super();
          this.setFlags(EnumSet.of(Goal.Flag.MOVE));
       }
 

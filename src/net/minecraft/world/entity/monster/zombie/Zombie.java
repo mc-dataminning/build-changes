@@ -2,7 +2,6 @@ package net.minecraft.world.entity.monster.zombie;
 
 import com.google.common.annotations.VisibleForTesting;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Predicate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -109,8 +108,8 @@ public class Zombie extends Monster {
       "DrownedConversionTime",
       300,
       (converted, serverLevel) -> converted.handleAttributes(
-            serverLevel.getCurrentDifficultyAt(converted.blockPosition()).getSpecialMultiplier(), EntitySpawnReason.CONVERSION
-         )
+         serverLevel.getCurrentDifficultyAt(converted.blockPosition()).getSpecialMultiplier(), EntitySpawnReason.CONVERSION
+      )
    );
 
    public Zombie(final EntityType<? extends Zombie> type, final Level level) {
@@ -191,7 +190,7 @@ public class Zombie extends Monster {
    @Override
    protected int getBaseExperienceReward(final ServerLevel level) {
       if (this.isBaby()) {
-         this.xpReward = (int)((double)this.xpReward * 2.5);
+         this.xpReward = (int)(this.xpReward * 2.5);
       }
 
       return super.getBaseExperienceReward(level);
@@ -260,56 +259,56 @@ public class Zombie extends Monster {
    public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
       if (!super.hurtServer(level, source, damage)) {
          return false;
-      } else {
-         LivingEntity target = this.getTarget();
-         if (target == null && source.getEntity() instanceof LivingEntity) {
-            target = (LivingEntity)source.getEntity();
+      }
+
+      LivingEntity target = this.getTarget();
+      if (target == null && source.getEntity() instanceof LivingEntity) {
+         target = (LivingEntity)source.getEntity();
+      }
+
+      if (target != null
+         && level.getDifficulty() == Difficulty.HARD
+         && this.random.nextFloat() < this.getAttributeValue(Attributes.SPAWN_REINFORCEMENTS_CHANCE)
+         && level.isSpawningMonsters()) {
+         int x = Mth.floor(this.getX());
+         int y = Mth.floor(this.getY());
+         int z = Mth.floor(this.getZ());
+         EntityType<? extends Zombie> type = this.getType();
+         Zombie reinforcement = type.create(level, EntitySpawnReason.REINFORCEMENT);
+         if (reinforcement == null) {
+            return true;
          }
 
-         if (target != null
-            && level.getDifficulty() == Difficulty.HARD
-            && (double)this.random.nextFloat() < this.getAttributeValue(Attributes.SPAWN_REINFORCEMENTS_CHANCE)
-            && level.isSpawningMonsters()) {
-            int x = Mth.floor(this.getX());
-            int y = Mth.floor(this.getY());
-            int z = Mth.floor(this.getZ());
-            EntityType<? extends Zombie> type = this.getType();
-            Zombie reinforcement = type.create(level, EntitySpawnReason.REINFORCEMENT);
-            if (reinforcement == null) {
-               return true;
-            }
-
-            for (int i = 0; i < 50; i++) {
-               int xt = x + Mth.nextInt(this.random, 7, 40) * Mth.nextInt(this.random, -1, 1);
-               int yt = y + Mth.nextInt(this.random, 7, 40) * Mth.nextInt(this.random, -1, 1);
-               int zt = z + Mth.nextInt(this.random, 7, 40) * Mth.nextInt(this.random, -1, 1);
-               BlockPos spawnPos = new BlockPos(xt, yt, zt);
-               if (SpawnPlacements.isSpawnPositionOk(type, level, spawnPos)
-                  && SpawnPlacements.checkSpawnRules(type, level, EntitySpawnReason.REINFORCEMENT, spawnPos, level.getRandom())) {
-                  reinforcement.setPos((double)xt, (double)yt, (double)zt);
-                  if (!level.hasNearbyAlivePlayer((double)xt, (double)yt, (double)zt, 7.0)
-                     && level.isUnobstructed(reinforcement)
-                     && level.noCollision(reinforcement)
-                     && (reinforcement.canSpawnInLiquids() || !level.containsAnyLiquid(reinforcement.getBoundingBox()))) {
-                     reinforcement.setTarget(target);
-                     reinforcement.finalizeSpawn(level, level.getCurrentDifficultyAt(reinforcement.blockPosition()), EntitySpawnReason.REINFORCEMENT, null);
-                     level.addFreshEntityWithPassengers(reinforcement);
-                     AttributeInstance attribute = this.getAttribute(Attributes.SPAWN_REINFORCEMENTS_CHANCE);
-                     AttributeModifier modifier = attribute.getModifier(REINFORCEMENT_CALLER_CHARGE_ID);
-                     double existingAmount = modifier != null ? modifier.amount() : 0.0;
-                     attribute.removeModifier(REINFORCEMENT_CALLER_CHARGE_ID);
-                     attribute.addPermanentModifier(
-                        new AttributeModifier(REINFORCEMENT_CALLER_CHARGE_ID, existingAmount - 0.05, AttributeModifier.Operation.ADD_VALUE)
-                     );
-                     reinforcement.getAttribute(Attributes.SPAWN_REINFORCEMENTS_CHANCE).addPermanentModifier(ZOMBIE_REINFORCEMENT_CALLEE_CHARGE);
-                     break;
-                  }
+         for (int i = 0; i < 50; i++) {
+            int xt = x + Mth.nextInt(this.random, 7, 40) * Mth.nextInt(this.random, -1, 1);
+            int yt = y + Mth.nextInt(this.random, 7, 40) * Mth.nextInt(this.random, -1, 1);
+            int zt = z + Mth.nextInt(this.random, 7, 40) * Mth.nextInt(this.random, -1, 1);
+            BlockPos spawnPos = new BlockPos(xt, yt, zt);
+            if (SpawnPlacements.isSpawnPositionOk(type, level, spawnPos)
+               && SpawnPlacements.checkSpawnRules(type, level, EntitySpawnReason.REINFORCEMENT, spawnPos, level.getRandom())) {
+               reinforcement.setPos(xt, yt, zt);
+               if (!level.hasNearbyAlivePlayer(xt, yt, zt, 7.0)
+                  && level.isUnobstructed(reinforcement)
+                  && level.noCollision(reinforcement)
+                  && (reinforcement.canSpawnInLiquids() || !level.containsAnyLiquid(reinforcement.getBoundingBox()))) {
+                  reinforcement.setTarget(target);
+                  reinforcement.finalizeSpawn(level, level.getCurrentDifficultyAt(reinforcement.blockPosition()), EntitySpawnReason.REINFORCEMENT, null);
+                  level.addFreshEntityWithPassengers(reinforcement);
+                  AttributeInstance attribute = this.getAttribute(Attributes.SPAWN_REINFORCEMENTS_CHANCE);
+                  AttributeModifier modifier = attribute.getModifier(REINFORCEMENT_CALLER_CHARGE_ID);
+                  double existingAmount = modifier != null ? modifier.amount() : 0.0;
+                  attribute.removeModifier(REINFORCEMENT_CALLER_CHARGE_ID);
+                  attribute.addPermanentModifier(
+                     new AttributeModifier(REINFORCEMENT_CALLER_CHARGE_ID, existingAmount - 0.05, AttributeModifier.Operation.ADD_VALUE)
+                  );
+                  reinforcement.getAttribute(Attributes.SPAWN_REINFORCEMENTS_CHANCE).addPermanentModifier(ZOMBIE_REINFORCEMENT_CALLEE_CHARGE);
+                  break;
                }
             }
          }
-
-         return true;
       }
+
+      return true;
    }
 
    @Override
@@ -318,7 +317,7 @@ public class Zombie extends Monster {
       if (result) {
          float difficulty = level.getCurrentDifficultyAt(this.blockPosition()).getEffectiveDifficulty();
          if (this.getMainHandItem().isEmpty() && this.isOnFire() && this.random.nextFloat() < difficulty * 0.3F) {
-            target.igniteForSeconds((float)(2 * (int)difficulty));
+            target.igniteForSeconds(2 * (int)difficulty);
          }
       }
 
@@ -344,8 +343,7 @@ public class Zombie extends Monster {
       return SoundEvents.ZOMBIE_STEP;
    }
 
-   @LevelEvent.Value
-   protected int getConversionSound() {
+   protected @LevelEvent.Value int getConversionSound() {
       return 1040;
    }
 
@@ -429,9 +427,8 @@ public class Zombie extends Monster {
       return itemStack.is(Items.GLOW_INK_SAC) ? false : super.wantsToPickUp(level, itemStack);
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       RandomSource random = level.getRandom();
@@ -449,7 +446,7 @@ public class Zombie extends Monster {
          if (zombieData.isBaby) {
             this.setBaby(true);
             if (zombieData.canSpawnJockey) {
-               if ((double)random.nextFloat() < 0.05) {
+               if (random.nextFloat() < 0.05) {
                   List<Chicken> chickens = level.getEntitiesOfClass(
                      Chicken.class, this.getBoundingBox().inflate(5.0, 3.0, 5.0), EntitySelector.ENTITY_NOT_BEING_RIDDEN
                   );
@@ -458,7 +455,7 @@ public class Zombie extends Monster {
                      chicken.setChickenJockey(true);
                      this.startRiding(chicken, false, false);
                   }
-               } else if ((double)random.nextFloat() < 0.05) {
+               } else if (random.nextFloat() < 0.05) {
                   Chicken chicken = EntityTypes.CHICKEN.create(this.level(), EntitySpawnReason.JOCKEY);
                   if (chicken != null) {
                      chicken.snapTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
@@ -513,7 +510,7 @@ public class Zombie extends Monster {
       this.randomizeReinforcementsChance();
       this.getAttribute(Attributes.KNOCKBACK_RESISTANCE)
          .addOrReplacePermanentModifier(new AttributeModifier(RANDOM_SPAWN_BONUS_ID, this.random.nextDouble() * 0.05F, AttributeModifier.Operation.ADD_VALUE));
-      double followRangeModifier = this.random.nextDouble() * 1.5 * (double)difficultyModifier;
+      double followRangeModifier = this.random.nextDouble() * 1.5 * difficultyModifier;
       if (followRangeModifier > 1.0) {
          this.getAttribute(Attributes.FOLLOW_RANGE)
             .addOrReplacePermanentModifier(
@@ -544,7 +541,6 @@ public class Zombie extends Monster {
 
    private class ZombieAttackTurtleEggGoal extends RemoveBlockGoal {
       public ZombieAttackTurtleEggGoal(final PathfinderMob mob, final double speedModifier, final int verticalSearchRange) {
-         Objects.requireNonNull(Zombie.this);
          super(Blocks.TURTLE_EGG, mob, speedModifier, verticalSearchRange);
       }
 

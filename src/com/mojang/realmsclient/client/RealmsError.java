@@ -25,26 +25,28 @@ public interface RealmsError {
    static RealmsError parse(final int httpCode, final String payload) {
       if (httpCode == 429) {
          return RealmsError.CustomError.SERVICE_BUSY;
-      } else if (Strings.isNullOrEmpty(payload)) {
-         return RealmsError.CustomError.noPayload(httpCode);
-      } else {
-         try {
-            JsonObject object = LenientJsonParser.parse(payload).getAsJsonObject();
-            String errorReason = GsonHelper.getAsString(object, "reason", null);
-            String errorMessage = GsonHelper.getAsString(object, "errorMsg", null);
-            int errorCode = GsonHelper.getAsInt(object, "errorCode", -1);
-            if (errorMessage != null || errorReason != null || errorCode != -1) {
-               return new RealmsError.ErrorWithJsonPayload(httpCode, errorCode != -1 ? errorCode : httpCode, errorReason, errorMessage);
-            }
-         } catch (Exception var6) {
-            LOGGER.error("Could not parse RealmsError", var6);
-         }
-
-         return new RealmsError.ErrorWithRawPayload(httpCode, payload);
       }
+
+      if (Strings.isNullOrEmpty(payload)) {
+         return RealmsError.CustomError.noPayload(httpCode);
+      }
+
+      try {
+         JsonObject object = LenientJsonParser.parse(payload).getAsJsonObject();
+         String errorReason = GsonHelper.getAsString(object, "reason", null);
+         String errorMessage = GsonHelper.getAsString(object, "errorMsg", null);
+         int errorCode = GsonHelper.getAsInt(object, "errorCode", -1);
+         if (errorMessage != null || errorReason != null || errorCode != -1) {
+            return new RealmsError.ErrorWithJsonPayload(httpCode, errorCode != -1 ? errorCode : httpCode, errorReason, errorMessage);
+         }
+      } catch (Exception e) {
+         LOGGER.error("Could not parse RealmsError", e);
+      }
+
+      return new RealmsError.ErrorWithRawPayload(httpCode, payload);
    }
 
-   public static record AuthenticationError(String message) implements RealmsError {
+   record AuthenticationError(String message) implements RealmsError {
       public static final int ERROR_CODE = 401;
 
       @Override
@@ -63,7 +65,7 @@ public interface RealmsError {
       }
    }
 
-   public static record CustomError(int httpCode, @Nullable Component payload) implements RealmsError {
+   record CustomError(int httpCode, @Nullable Component payload) implements RealmsError {
       public static final RealmsError.CustomError SERVICE_BUSY = new RealmsError.CustomError(429, Component.translatable("mco.errorMessage.serviceBusy"));
       public static final Component RETRY_MESSAGE = Component.translatable("mco.errorMessage.retry");
       public static final String BODY_TAG = "<body>";
@@ -94,10 +96,10 @@ public interface RealmsError {
          int bodyEnd = payload.indexOf("</body>");
          if (bodyStart >= 0 && bodyEnd > bodyStart) {
             return new RealmsError.CustomError(statusCode, Component.literal(payload.substring(bodyStart + "<body>".length(), bodyEnd).trim()));
-         } else {
-            LOGGER.error("Got an error with an unreadable html body {}", payload);
-            return new RealmsError.CustomError(statusCode, null);
          }
+
+         LOGGER.error("Got an error with an unreadable html body {}", payload);
+         return new RealmsError.CustomError(statusCode, null);
       }
 
       @Override
@@ -118,7 +120,7 @@ public interface RealmsError {
       }
    }
 
-   public static record ErrorWithJsonPayload(int httpCode, int code, @Nullable String reason, @Nullable String message) implements RealmsError {
+   record ErrorWithJsonPayload(int httpCode, int code, @Nullable String reason, @Nullable String message) implements RealmsError {
       @Override
       public int errorCode() {
          return this.code;
@@ -129,16 +131,16 @@ public interface RealmsError {
          String codeTranslationKey = "mco.errorMessage." + this.code;
          if (Language.getInstance().has(codeTranslationKey)) {
             return Component.translatable(codeTranslationKey);
-         } else {
-            if (this.reason != null) {
-               String reasonTranslationKey = "mco.errorReason." + this.reason;
-               if (Language.getInstance().has(reasonTranslationKey)) {
-                  return Component.translatable(reasonTranslationKey);
-               }
-            }
-
-            return (Component)(this.message != null ? Component.literal(this.message) : NO_MESSAGE);
          }
+
+         if (this.reason != null) {
+            String reasonTranslationKey = "mco.errorReason." + this.reason;
+            if (Language.getInstance().has(reasonTranslationKey)) {
+               return Component.translatable(reasonTranslationKey);
+            }
+         }
+
+         return this.message != null ? Component.literal(this.message) : NO_MESSAGE;
       }
 
       @Override
@@ -147,7 +149,7 @@ public interface RealmsError {
       }
    }
 
-   public static record ErrorWithRawPayload(int httpCode, String payload) implements RealmsError {
+   record ErrorWithRawPayload(int httpCode, String payload) implements RealmsError {
       @Override
       public int errorCode() {
          return this.httpCode;

@@ -13,10 +13,10 @@ import net.minecraft.resources.Identifier;
 public record BannerPattern(Identifier assetId, String translationKey) {
    public static final Codec<BannerPattern> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Identifier.CODEC.fieldOf("asset_id").forGetter(BannerPattern::assetId),
-               Codec.STRING.fieldOf("translation_key").forGetter(BannerPattern::translationKey)
-            )
-            .apply(i, BannerPattern::new)
+            Identifier.CODEC.fieldOf("asset_id").forGetter(BannerPattern::assetId),
+            Codec.STRING.fieldOf("translation_key").forGetter(BannerPattern::translationKey)
+         )
+         .apply(i, BannerPattern::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, BannerPattern> DIRECT_STREAM_CODEC = StreamCodec.composite(
       Identifier.STREAM_CODEC, BannerPattern::assetId, ByteBufCodecs.STRING_UTF8, BannerPattern::translationKey, BannerPattern::new

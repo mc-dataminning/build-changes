@@ -1,6 +1,5 @@
 package net.minecraft.world.entity.vehicle.minecart;
 
-import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityEvent;
@@ -17,10 +16,6 @@ import net.minecraft.world.level.storage.ValueOutput;
 
 public class MinecartSpawner extends AbstractMinecart {
    private final BaseSpawner spawner = new BaseSpawner() {
-      {
-         Objects.requireNonNull(MinecartSpawner.this);
-      }
-
       @Override
       public void broadcastEvent(final Level level, final BlockPos pos, final int id) {
          level.broadcastEntityEvent(MinecartSpawner.this, (byte)id);
@@ -67,7 +62,7 @@ public class MinecartSpawner extends AbstractMinecart {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       this.spawner.onEventTriggered(this.level(), id);
    }
 

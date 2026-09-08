@@ -24,8 +24,8 @@ public class SulfurBubbleParticle extends SingleQuadParticle {
       this.gravity = -0.04F;
       this.friction = 0.85F;
       this.setSize(0.02F, 0.02F);
-      this.xd = xa * 0.2F + (double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.02F);
-      this.zd = za * 0.2F + (double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.02F);
+      this.xd = xa * 0.2F + (this.random.nextFloat() * 2.0F - 1.0F) * 0.02F;
+      this.zd = za * 0.2F + (this.random.nextFloat() * 2.0F - 1.0F) * 0.02F;
       this.sizeStart = 0.02F + 0.02F * this.random.nextFloat();
       this.quadSize = this.sizeStart;
       this.lifetime = Integer.MAX_VALUE;
@@ -58,7 +58,7 @@ public class SulfurBubbleParticle extends SingleQuadParticle {
    }
 
    private double randomHorizontalWiggling() {
-      return (double)(this.random.nextFloat() * 0.003F * (float)(this.random.nextBoolean() ? 1 : -1)) * 0.5;
+      return this.random.nextFloat() * 0.003F * (this.random.nextBoolean() ? 1 : -1) * 0.5;
    }
 
    @Override

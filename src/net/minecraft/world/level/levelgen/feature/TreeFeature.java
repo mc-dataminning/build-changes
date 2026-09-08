@@ -8,7 +8,6 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.Set;
@@ -52,20 +51,19 @@ public record TreeFeature(
 ) implements Feature {
    public static final MapCodec<TreeFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BlockStateProvider.CODEC.fieldOf("trunk_provider").forGetter(TreeFeature::trunkProvider),
-               TrunkPlacer.CODEC.fieldOf("trunk_placer").forGetter(TreeFeature::trunkPlacer),
-               BlockStateProvider.CODEC.fieldOf("foliage_provider").forGetter(TreeFeature::foliageProvider),
-               FoliagePlacer.CODEC.fieldOf("foliage_placer").forGetter(TreeFeature::foliagePlacer),
-               RootPlacer.CODEC.optionalFieldOf("root_placer").forGetter(TreeFeature::rootPlacer),
-               FeatureSize.CODEC.fieldOf("minimum_size").forGetter(TreeFeature::minimumSize),
-               TreeDecorator.CODEC.listOf().fieldOf("decorators").forGetter(TreeFeature::decorators),
-               Codec.BOOL.fieldOf("ignore_vines").orElse(false).forGetter(TreeFeature::ignoreVines),
-               BlockStateProvider.CODEC.fieldOf("below_trunk_provider").forGetter(TreeFeature::belowTrunkProvider)
-            )
-            .apply(i, TreeFeature::new)
+            BlockStateProvider.CODEC.fieldOf("trunk_provider").forGetter(TreeFeature::trunkProvider),
+            TrunkPlacer.CODEC.fieldOf("trunk_placer").forGetter(TreeFeature::trunkPlacer),
+            BlockStateProvider.CODEC.fieldOf("foliage_provider").forGetter(TreeFeature::foliageProvider),
+            FoliagePlacer.CODEC.fieldOf("foliage_placer").forGetter(TreeFeature::foliagePlacer),
+            RootPlacer.CODEC.optionalFieldOf("root_placer").forGetter(TreeFeature::rootPlacer),
+            FeatureSize.CODEC.fieldOf("minimum_size").forGetter(TreeFeature::minimumSize),
+            TreeDecorator.CODEC.listOf().fieldOf("decorators").forGetter(TreeFeature::decorators),
+            Codec.BOOL.fieldOf("ignore_vines").orElse(false).forGetter(TreeFeature::ignoreVines),
+            BlockStateProvider.CODEC.fieldOf("below_trunk_provider").forGetter(TreeFeature::belowTrunkProvider)
+         )
+         .apply(i, TreeFeature::new)
    );
-   @Block.UpdateFlags
-   private static final int BLOCK_UPDATE_FLAGS = 19;
+   private static final @Block.UpdateFlags int BLOCK_UPDATE_FLAGS = 19;
 
    @Override
    public MapCodec<TreeFeature> codec() {
@@ -109,15 +107,15 @@ public record TreeFeature(
          if (clippedTreeHeight >= treeHeight || !minClippedHeight.isEmpty() && clippedTreeHeight >= minClippedHeight.getAsInt()) {
             if (this.rootPlacer.isPresent() && !this.rootPlacer.get().placeRoots(level, rootSetter, random, origin, trunkOrigin, this)) {
                return false;
-            } else {
-               List<FoliagePlacer.FoliageAttachment> foliageAttachments = this.trunkPlacer
-                  .placeTrunk(level, trunkSetter, random, clippedTreeHeight, trunkOrigin, this);
-               foliageAttachments.forEach(
-                  foliageAttachment -> this.foliagePlacer
-                        .createFoliage(level, foliageSetter, random, this, clippedTreeHeight, foliageAttachment, foliageHeight, leafRadius)
-               );
-               return true;
             }
+
+            List<FoliagePlacer.FoliageAttachment> foliageAttachments = this.trunkPlacer
+               .placeTrunk(level, trunkSetter, random, clippedTreeHeight, trunkOrigin, this);
+            foliageAttachments.forEach(
+               foliageAttachment -> this.foliagePlacer
+                  .createFoliage(level, foliageSetter, random, this, clippedTreeHeight, foliageAttachment, foliageHeight, leafRadius)
+            );
+            return true;
          } else {
             return false;
          }
@@ -165,10 +163,6 @@ public record TreeFeature(
          level.setBlock(pos, state, 19);
       };
       FoliagePlacer.FoliageSetter foliageSetter = new FoliagePlacer.FoliageSetter() {
-         {
-            Objects.requireNonNull(TreeFeature.this);
-         }
-
          @Override
          public void set(final BlockPos pos, final BlockState state) {
             foliage.add(pos.immutable());
@@ -229,18 +223,18 @@ public record TreeFeature(
             }
 
             Iterator<BlockPos> iterator = toCheck.get(smallestDistance).iterator();
-            BlockPos posx = iterator.next();
+            BlockPos pos = iterator.next();
             iterator.remove();
-            if (bounds.isInside(posx)) {
+            if (bounds.isInside(pos)) {
                if (smallestDistance != 0) {
-                  BlockState state = level.getBlockState(posx);
-                  setBlockKnownShape(level, posx, state.setValue(BlockStateProperties.DISTANCE, Integer.valueOf(smallestDistance)));
+                  BlockState state = level.getBlockState(pos);
+                  setBlockKnownShape(level, pos, state.setValue(BlockStateProperties.DISTANCE, smallestDistance));
                }
 
-               shape.fill(posx.getX() - bounds.minX(), posx.getY() - bounds.minY(), posx.getZ() - bounds.minZ());
+               shape.fill(pos.getX() - bounds.minX(), pos.getY() - bounds.minY(), pos.getZ() - bounds.minZ());
 
                for (Direction direction : Direction.values()) {
-                  neighborPos.setWithOffset(posx, direction);
+                  neighborPos.setWithOffset(pos, direction);
                   if (bounds.isInside(neighborPos)) {
                      int xInShape = neighborPos.getX() - bounds.minX();
                      int yInShape = neighborPos.getY() - bounds.minY();

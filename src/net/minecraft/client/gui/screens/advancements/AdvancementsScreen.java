@@ -42,21 +42,19 @@ public class AdvancementsScreen extends Screen implements ClientAdvancements.Lis
    private static final Component NO_ADVANCEMENTS_LABEL = Component.translatable("advancements.empty");
    private static final Component TITLE = Component.translatable("gui.advancements");
    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-   @Nullable
-   private final Screen lastScreen;
+   private final @Nullable Screen lastScreen;
    private int leftPos;
    private int topPos;
    private final ClientAdvancements advancements;
    private final Map<AdvancementHolder, AdvancementTab> tabs = Maps.newLinkedHashMap();
-   @Nullable
-   private AdvancementTab selectedTab;
+   private @Nullable AdvancementTab selectedTab;
    private boolean isScrolling;
 
    public AdvancementsScreen(final ClientAdvancements advancements) {
       this(advancements, null);
    }
 
-   public AdvancementsScreen(final ClientAdvancements advancements, @Nullable final Screen lastScreen) {
+   public AdvancementsScreen(final ClientAdvancements advancements, final @Nullable Screen lastScreen) {
       super(TITLE);
       this.advancements = advancements;
       this.lastScreen = lastScreen;
@@ -168,15 +166,15 @@ public class AdvancementsScreen extends Screen implements ClientAdvancements.Lis
       if (event.button() != 1) {
          this.isScrolling = false;
          return false;
-      } else {
-         if (!this.isScrolling) {
-            this.isScrolling = true;
-         } else if (this.selectedTab != null) {
-            this.selectedTab.scroll(dx, dy);
-         }
-
-         return true;
       }
+
+      if (!this.isScrolling) {
+         this.isScrolling = true;
+      } else if (this.selectedTab != null) {
+         this.selectedTab.scroll(dx, dy);
+      }
+
+      return true;
    }
 
    @Override
@@ -225,7 +223,7 @@ public class AdvancementsScreen extends Screen implements ClientAdvancements.Lis
    private void extractTooltips(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY) {
       if (this.selectedTab != null) {
          graphics.pose().pushMatrix();
-         graphics.pose().translate((float)(this.leftPos + 9), (float)(this.topPos + 18));
+         graphics.pose().translate(this.leftPos + 9, this.topPos + 18);
          graphics.nextStratum();
          this.selectedTab.extractTooltips(graphics, this.leftPos, this.topPos);
          graphics.pose().popMatrix();
@@ -233,7 +231,7 @@ public class AdvancementsScreen extends Screen implements ClientAdvancements.Lis
 
       if (this.tabs.size() > 1) {
          for (AdvancementTab tab : this.tabs.values()) {
-            if (tab.isMouseOver(this.leftPos, this.topPos, (double)mouseX, (double)mouseY)) {
+            if (tab.isMouseOver(this.leftPos, this.topPos, mouseX, mouseY)) {
                graphics.setTooltipForNextFrame(this.font, tab.getTitle(), mouseX, mouseY);
             }
          }
@@ -288,7 +286,7 @@ public class AdvancementsScreen extends Screen implements ClientAdvancements.Lis
    }
 
    @Override
-   public void onSelectedTabChanged(@Nullable final AdvancementHolder selectedTab) {
+   public void onSelectedTabChanged(final @Nullable AdvancementHolder selectedTab) {
       this.selectedTab = this.tabs.get(selectedTab);
    }
 
@@ -298,14 +296,12 @@ public class AdvancementsScreen extends Screen implements ClientAdvancements.Lis
       this.selectedTab = null;
    }
 
-   @Nullable
-   public AdvancementWidget getAdvancementWidget(final AdvancementNode node) {
+   public @Nullable AdvancementWidget getAdvancementWidget(final AdvancementNode node) {
       AdvancementTab tab = this.getTab(node);
       return tab == null ? null : tab.getWidget(node.holder());
    }
 
-   @Nullable
-   private AdvancementTab getTab(final AdvancementNode node) {
+   private @Nullable AdvancementTab getTab(final AdvancementNode node) {
       AdvancementNode root = node.root();
       return this.tabs.get(root.holder());
    }

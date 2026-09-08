@@ -79,14 +79,14 @@ public class DebugEntityNameGenerator {
    public static String getEntityName(final Entity entity) {
       if (entity instanceof Player) {
          return entity.getPlainTextName();
-      } else {
-         Component customName = entity.getCustomName();
-         return customName != null ? customName.getString() : getEntityName(entity.getUUID());
       }
+
+      Component customName = entity.getCustomName();
+      return customName != null ? customName.getString() : getEntityName(entity.getUUID());
    }
 
    public static String getEntityName(final UUID uuid) {
-      RandomSource random = RandomSource.createThreadLocalInstance((long)(uuid.hashCode() >> 2));
+      RandomSource random = RandomSource.createThreadLocalInstance(uuid.hashCode() >> 2);
       return getRandomString(random, NAMES_FIRST_PART) + getRandomString(random, NAMES_SECOND_PART);
    }
 

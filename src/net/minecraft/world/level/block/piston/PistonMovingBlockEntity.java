@@ -90,15 +90,15 @@ public class PistonMovingBlockEntity extends BlockEntity {
    }
 
    public float getXOff(final float a) {
-      return (float)this.direction.getStepX() * this.getExtendedProgress(this.getProgress(a));
+      return this.direction.getStepX() * this.getExtendedProgress(this.getProgress(a));
    }
 
    public float getYOff(final float a) {
-      return (float)this.direction.getStepY() * this.getExtendedProgress(this.getProgress(a));
+      return this.direction.getStepY() * this.getExtendedProgress(this.getProgress(a));
    }
 
    public float getZOff(final float a) {
-      return (float)this.direction.getStepZ() * this.getExtendedProgress(this.getProgress(a));
+      return this.direction.getStepZ() * this.getExtendedProgress(this.getProgress(a));
    }
 
    private float getExtendedProgress(final float progress) {
@@ -109,7 +109,7 @@ public class PistonMovingBlockEntity extends BlockEntity {
       return !this.isExtending() && this.isSourcePiston() && this.movedState.getBlock() instanceof PistonBaseBlock
          ? Blocks.PISTON_HEAD
             .defaultBlockState()
-            .setValue(PistonHeadBlock.SHORT, Boolean.valueOf(this.progress > 0.25F))
+            .setValue(PistonHeadBlock.SHORT, this.progress > 0.25F)
             .setValue(PistonHeadBlock.TYPE, this.movedState.is(Blocks.STICKY_PISTON) ? PistonType.STICKY : PistonType.DEFAULT)
             .setValue(PistonHeadBlock.FACING, this.movedState.getValue(PistonBaseBlock.FACING))
          : this.movedState;
@@ -117,7 +117,7 @@ public class PistonMovingBlockEntity extends BlockEntity {
 
    private static void moveCollidedEntities(final Level level, final BlockPos pos, final float newProgress, final PistonMovingBlockEntity self) {
       Direction movement = self.getMovementDirection();
-      double deltaProgress = (double)(newProgress - self.progress);
+      double deltaProgress = newProgress - self.progress;
       VoxelShape shape = self.getCollisionRelatedBlockState().getCollisionShape(level, pos);
       if (!shape.isEmpty()) {
          AABB aabb = moveByPositionAndProgress(pos, shape.bounds(), self);
@@ -135,13 +135,13 @@ public class PistonMovingBlockEntity extends BlockEntity {
                      double dz = deltaMovement.z;
                      switch (movement.getAxis()) {
                         case X:
-                           dx = (double)movement.getStepX();
+                           dx = movement.getStepX();
                            break;
                         case Y:
-                           dy = (double)movement.getStepY();
+                           dy = movement.getStepY();
                            break;
                         case Z:
-                           dz = (double)movement.getStepZ();
+                           dz = movement.getStepZ();
                      }
 
                      entity.setDeltaMovement(dx, dy, dz);
@@ -176,7 +176,7 @@ public class PistonMovingBlockEntity extends BlockEntity {
    private static void moveEntityByPiston(final Direction pistonDirection, final Entity entity, final double delta, final Direction movement) {
       NOCLIP.set(pistonDirection);
       Vec3 previousPos = entity.position();
-      entity.move(MoverType.PISTON, new Vec3(delta * (double)movement.getStepX(), delta * (double)movement.getStepY(), delta * (double)movement.getStepZ()));
+      entity.move(MoverType.PISTON, new Vec3(delta * movement.getStepX(), delta * movement.getStepY(), delta * movement.getStepZ()));
       entity.applyEffectsFromBlocks(previousPos, entity.position());
       entity.removeLatestMovementRecording();
       NOCLIP.set(null);
@@ -188,7 +188,7 @@ public class PistonMovingBlockEntity extends BlockEntity {
          if (movement.getAxis().isHorizontal()) {
             double stickyTop = self.movedState.getCollisionShape(level, pos).max(Direction.Axis.Y);
             AABB aabb = moveByPositionAndProgress(pos, new AABB(0.0, stickyTop, 0.0, 1.0, 1.5000010000000001, 1.0), self);
-            double deltaProgress = (double)(newProgress - self.progress);
+            double deltaProgress = newProgress - self.progress;
 
             for (Entity entity : level.getEntities((Entity)null, aabb, entityx -> matchesStickyCritera(aabb, entityx, pos))) {
                moveEntityByPiston(movement, entity, deltaProgress, movement);
@@ -230,11 +230,11 @@ public class PistonMovingBlockEntity extends BlockEntity {
    }
 
    private static AABB moveByPositionAndProgress(final BlockPos pos, final AABB aabb, final PistonMovingBlockEntity entity) {
-      double currentPosition = (double)entity.getExtendedProgress(entity.progress);
+      double currentPosition = entity.getExtendedProgress(entity.progress);
       return aabb.move(
-         (double)pos.getX() + currentPosition * (double)entity.direction.getStepX(),
-         (double)pos.getY() + currentPosition * (double)entity.direction.getStepY(),
-         (double)pos.getZ() + currentPosition * (double)entity.direction.getStepZ()
+         pos.getX() + currentPosition * entity.direction.getStepX(),
+         pos.getY() + currentPosition * entity.direction.getStepY(),
+         pos.getZ() + currentPosition * entity.direction.getStepZ()
       );
    }
 
@@ -304,7 +304,7 @@ public class PistonMovingBlockEntity extends BlockEntity {
                   Block.updateOrDestroy(entity.movedState, newState, level, pos, 3);
                } else {
                   if (newState.hasProperty(BlockStateProperties.WATERLOGGED) && newState.getValue(BlockStateProperties.WATERLOGGED)) {
-                     newState = newState.setValue(BlockStateProperties.WATERLOGGED, Boolean.valueOf(false));
+                     newState = newState.setValue(BlockStateProperties.WATERLOGGED, false);
                   }
 
                   level.setBlock(pos, newState, 67);
@@ -347,31 +347,31 @@ public class PistonMovingBlockEntity extends BlockEntity {
    public VoxelShape getCollisionShape(final BlockGetter level, final BlockPos pos) {
       VoxelShape pistonHeadShape;
       if (!this.extending && this.isSourcePiston && this.movedState.getBlock() instanceof PistonBaseBlock) {
-         pistonHeadShape = this.movedState.setValue(PistonBaseBlock.EXTENDED, Boolean.valueOf(true)).getCollisionShape(level, pos);
+         pistonHeadShape = this.movedState.setValue(PistonBaseBlock.EXTENDED, true).getCollisionShape(level, pos);
       } else {
          pistonHeadShape = Shapes.empty();
       }
 
       Direction noClipDirection = NOCLIP.get();
-      if ((double)this.progress < 1.0 && noClipDirection == this.getMovementDirection()) {
+      if (this.progress < 1.0 && noClipDirection == this.getMovementDirection()) {
          return pistonHeadShape;
-      } else {
-         BlockState blockState;
-         if (this.isSourcePiston()) {
-            blockState = Blocks.PISTON_HEAD
-               .defaultBlockState()
-               .setValue(PistonHeadBlock.FACING, this.direction)
-               .setValue(PistonHeadBlock.SHORT, Boolean.valueOf(this.extending != 1.0F - this.progress < 0.25F));
-         } else {
-            blockState = this.movedState;
-         }
-
-         float extendedProgress = this.getExtendedProgress(this.progress);
-         double dx = (double)((float)this.direction.getStepX() * extendedProgress);
-         double dy = (double)((float)this.direction.getStepY() * extendedProgress);
-         double dz = (double)((float)this.direction.getStepZ() * extendedProgress);
-         return Shapes.or(pistonHeadShape, blockState.getCollisionShape(level, pos).move(dx, dy, dz));
       }
+
+      BlockState blockState;
+      if (this.isSourcePiston()) {
+         blockState = Blocks.PISTON_HEAD
+            .defaultBlockState()
+            .setValue(PistonHeadBlock.FACING, this.direction)
+            .setValue(PistonHeadBlock.SHORT, this.extending != 1.0F - this.progress < 0.25F);
+      } else {
+         blockState = this.movedState;
+      }
+
+      float extendedProgress = this.getExtendedProgress(this.progress);
+      double dx = this.direction.getStepX() * extendedProgress;
+      double dy = this.direction.getStepY() * extendedProgress;
+      double dz = this.direction.getStepZ() * extendedProgress;
+      return Shapes.or(pistonHeadShape, blockState.getCollisionShape(level, pos).move(dx, dy, dz));
    }
 
    public long getLastTicked() {

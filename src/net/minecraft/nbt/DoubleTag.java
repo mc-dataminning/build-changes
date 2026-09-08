@@ -39,11 +39,8 @@ public record DoubleTag(double value) implements NumericTag {
       }
    };
 
-   @Deprecated(
-      forRemoval = true
-   )
-   public DoubleTag(double value) {
-      this.value = value;
+   @Deprecated(forRemoval = true)
+   public DoubleTag {
    }
 
    public static DoubleTag valueOf(final double data) {

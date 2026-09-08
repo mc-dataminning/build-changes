@@ -146,8 +146,8 @@ public class EnderDragonRenderer extends EntityRenderer<EnderDragon, EnderDragon
       float length = Mth.sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
       poseStack.pushPose();
       poseStack.translate(0.0F, 2.0F, 0.0F);
-      poseStack.rotate(Axis.YP, (float)(-Math.atan2((double)deltaZ, (double)deltaX)) - (float) (Math.PI / 2));
-      poseStack.rotate(Axis.XP, (float)(-Math.atan2((double)horizontalLength, (double)deltaY)) - (float) (Math.PI / 2));
+      poseStack.rotate(Axis.YP, (float)(-Math.atan2(deltaZ, deltaX)) - (float) (Math.PI / 2));
+      poseStack.rotate(Axis.XP, (float)(-Math.atan2(horizontalLength, deltaY)) - (float) (Math.PI / 2));
       float v0 = 0.0F - timeInTicks * 0.01F;
       float v1 = length / 32.0F - timeInTicks * 0.01F;
       submitNodeCollector.submitCustomGeometry(
@@ -160,9 +160,9 @@ public class EnderDragonRenderer extends EntityRenderer<EnderDragon, EnderDragon
             float lastU = 0.0F;
 
             for (int i = 1; i <= 8; i++) {
-               float sin = Mth.sin((double)((float)i * (float) (Math.PI * 2) / 8.0F)) * 0.75F;
-               float cos = Mth.cos((double)((float)i * (float) (Math.PI * 2) / 8.0F)) * 0.75F;
-               float u = (float)i / 8.0F;
+               float sin = Mth.sin(i * (float) (Math.PI * 2) / 8.0F) * 0.75F;
+               float cos = Mth.cos(i * (float) (Math.PI * 2) / 8.0F) * 0.75F;
+               float u = i / 8.0F;
                buffer.addVertex(pose, lastSin * 0.2F, lastCos * 0.2F, 0.0F)
                   .setColor(-16777216)
                   .setUv(lastU, v0)
@@ -203,12 +203,11 @@ public class EnderDragonRenderer extends EntityRenderer<EnderDragon, EnderDragon
    public void extractRenderState(final EnderDragon entity, final EnderDragonRenderState state, final float partialTicks) {
       super.extractRenderState(entity, state, partialTicks);
       state.flapTime = Mth.lerp(partialTicks, entity.oFlapTime, entity.flapTime);
-      state.deathTime = entity.dragonDeathTime > 0 ? (float)entity.dragonDeathTime + partialTicks : 0.0F;
+      state.deathTime = entity.dragonDeathTime > 0 ? entity.dragonDeathTime + partialTicks : 0.0F;
       state.hasRedOverlay = entity.hurtTime > 0;
       EndCrystal nearestCrystal = entity.nearestCrystal;
       if (nearestCrystal != null) {
-         Vec3 crystalPosition = nearestCrystal.getPosition(partialTicks)
-            .add(0.0, (double)EndCrystalRenderer.getY((float)nearestCrystal.time + partialTicks), 0.0);
+         Vec3 crystalPosition = nearestCrystal.getPosition(partialTicks).add(0.0, EndCrystalRenderer.getY(nearestCrystal.time + partialTicks), 0.0);
          state.beamOffset = crystalPosition.subtract(entity.getPosition(partialTicks));
       } else {
          state.beamOffset = null;

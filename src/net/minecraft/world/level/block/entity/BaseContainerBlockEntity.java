@@ -34,8 +34,7 @@ import org.jspecify.annotations.Nullable;
 
 public abstract class BaseContainerBlockEntity extends BlockEntity implements Container, MenuProvider, Nameable {
    private LockCode lockKey = LockCode.NO_LOCK;
-   @Nullable
-   private Component name;
+   private @Nullable Component name;
 
    protected BaseContainerBlockEntity(final BlockEntityType<?> type, final BlockPos worldPosition, final BlockState blockState) {
       super(type, worldPosition, blockState);
@@ -65,9 +64,8 @@ public abstract class BaseContainerBlockEntity extends BlockEntity implements Co
       return this.getName();
    }
 
-   @Nullable
    @Override
-   public Component getCustomName() {
+   public @Nullable Component getCustomName() {
       return this.name;
    }
 
@@ -141,15 +139,14 @@ public abstract class BaseContainerBlockEntity extends BlockEntity implements Co
       this.getItems().clear();
    }
 
-   @Nullable
    @Override
-   public AbstractContainerMenu createMenu(final int containerId, final Inventory inventory, final Player player) {
+   public @Nullable AbstractContainerMenu createMenu(final int containerId, final Inventory inventory, final Player player) {
       if (this.canOpen(player)) {
          return this.createMenu(containerId, inventory);
-      } else {
-         sendChestLockedNotifications(Vec3.atCenterOf(this.getBlockPos()), player, this.getDisplayName());
-         return null;
       }
+
+      sendChestLockedNotifications(Vec3.atCenterOf(this.getBlockPos()), player, this.getDisplayName());
+      return null;
    }
 
    protected abstract AbstractContainerMenu createMenu(final int containerId, final Inventory inventory);

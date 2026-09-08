@@ -29,13 +29,11 @@ public class DialogBodyHandlers {
       HANDLERS.put(type, handler);
    }
 
-   @Nullable
-   private static <B extends DialogBody> DialogBodyHandler<B> getHandler(final B body) {
+   private static <B extends DialogBody> @Nullable DialogBodyHandler<B> getHandler(final B body) {
       return (DialogBodyHandler<B>)HANDLERS.get(body.mapCodec());
    }
 
-   @Nullable
-   public static <B extends DialogBody> LayoutElement createBodyElement(final DialogScreen<?> screen, final B body) {
+   public static <B extends DialogBody> @Nullable LayoutElement createBodyElement(final DialogScreen<?> screen, final B body) {
       DialogBodyHandler<B> handler = getHandler(body);
       if (handler == null) {
          LOGGER.warn("Unrecognized dialog body {}", body);
@@ -50,7 +48,7 @@ public class DialogBodyHandlers {
       register(ItemBody.MAP_CODEC, new DialogBodyHandlers.ItemHandler());
    }
 
-   private static void runActionOnParent(final DialogScreen<?> parent, @Nullable final Style clickedStyle) {
+   private static void runActionOnParent(final DialogScreen<?> parent, final @Nullable Style clickedStyle) {
       if (clickedStyle != null) {
          ClickEvent clickEvent = clickedStyle.getClickEvent();
          if (clickEvent != null) {

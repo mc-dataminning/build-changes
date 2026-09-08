@@ -12,7 +12,7 @@ public record Filterable<T>(T raw, Optional<T> filtered) {
    public static <T> Codec<Filterable<T>> codec(final Codec<T> valueCodec) {
       Codec<Filterable<T>> fullCodec = RecordCodecBuilder.create(
          i -> i.group(valueCodec.fieldOf("raw").forGetter(Filterable::raw), valueCodec.optionalFieldOf("filtered").forGetter(Filterable::filtered))
-               .apply(i, Filterable::new)
+            .apply(i, Filterable::new)
       );
       Codec<Filterable<T>> simpleCodec = valueCodec.xmap(Filterable::passThrough, Filterable::raw);
       return Codec.withAlternative(fullCodec, simpleCodec);

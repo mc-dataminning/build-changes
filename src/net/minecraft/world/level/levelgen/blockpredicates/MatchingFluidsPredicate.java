@@ -12,8 +12,8 @@ import net.minecraft.world.level.material.Fluid;
 public class MatchingFluidsPredicate extends StateTestingPredicate {
    public static final MapCodec<MatchingFluidsPredicate> CODEC = RecordCodecBuilder.mapCodec(
       i -> stateTestingCodec(i)
-            .and(RegistryCodecs.holderSet(Registries.FLUID).fieldOf("fluids").forGetter(c -> c.fluids))
-            .apply(i, MatchingFluidsPredicate::new)
+         .and(RegistryCodecs.holderSet(Registries.FLUID).fieldOf("fluids").forGetter(c -> c.fluids))
+         .apply(i, MatchingFluidsPredicate::new)
    );
    private final HolderSet<Fluid> fluids;
 

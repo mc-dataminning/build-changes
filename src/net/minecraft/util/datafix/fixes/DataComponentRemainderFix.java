@@ -28,16 +28,15 @@ public abstract class DataComponentRemainderFix extends DataFix {
    public final TypeRewriteRule makeRule() {
       Type<?> dataComponentsType = this.getInputSchema().getType(References.DATA_COMPONENTS);
       return this.fixTypeEverywhereTyped(this.name, dataComponentsType, components -> components.update(DSL.remainderFinder(), remainder -> {
-            Optional<? extends Dynamic<?>> component = remainder.get(this.componentId).result();
-            if (component.isEmpty()) {
-               return remainder;
-            } else {
-               Dynamic<?> newComponent = this.fixComponent(component.get());
-               return remainder.remove(this.componentId).setFieldIfPresent(this.newComponentId, Optional.ofNullable(newComponent));
-            }
-         }));
+         Optional<? extends Dynamic<?>> component = remainder.get(this.componentId).result();
+         if (component.isEmpty()) {
+            return remainder;
+         }
+
+         Dynamic<?> newComponent = this.fixComponent(component.get());
+         return remainder.remove(this.componentId).setFieldIfPresent(this.newComponentId, Optional.ofNullable(newComponent));
+      }));
    }
 
-   @Nullable
-   protected abstract <T> Dynamic<T> fixComponent(Dynamic<T> input);
+   protected abstract <T> @Nullable Dynamic<T> fixComponent(Dynamic<T> input);
 }

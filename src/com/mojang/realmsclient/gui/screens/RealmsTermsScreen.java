@@ -1,5 +1,6 @@
 package com.mojang.realmsclient.gui.screens;
 
+import com.mojang.blaze3d.Blaze3D;
 import com.mojang.logging.LogUtils;
 import com.mojang.realmsclient.client.RealmsClient;
 import com.mojang.realmsclient.dto.RealmsServer;
@@ -15,7 +16,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.realms.RealmsScreen;
 import net.minecraft.util.CommonLinks;
-import net.minecraft.util.Util;
 import org.slf4j.Logger;
 
 public class RealmsTermsScreen extends RealmsScreen {
@@ -65,8 +65,8 @@ public class RealmsTermsScreen extends RealmsScreen {
       try {
          client.agreeToTos();
          this.minecraft.gui.setScreen(new RealmsLongRunningMcoTaskScreen(this.lastScreen, new GetServerDetailsTask(this.lastScreen, this.realmsServer)));
-      } catch (RealmsServiceException var3) {
-         LOGGER.error("Couldn't agree to TOS", var3);
+      } catch (RealmsServiceException e) {
+         LOGGER.error("Couldn't agree to TOS", e);
       }
    }
 
@@ -74,7 +74,7 @@ public class RealmsTermsScreen extends RealmsScreen {
    public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
       if (this.onLink) {
          this.minecraft.keyboardHandler.setClipboard(CommonLinks.REALMS_TERMS.toString());
-         Util.getPlatform().openUri(CommonLinks.REALMS_TERMS);
+         Blaze3D.openUri(CommonLinks.REALMS_TERMS);
          return true;
       } else {
          return super.mouseClicked(event, doubleClick);

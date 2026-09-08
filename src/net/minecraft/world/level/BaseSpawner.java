@@ -48,30 +48,28 @@ public abstract class BaseSpawner {
    private static final int DEFAULT_SPAWN_RANGE = 4;
    private int spawnDelay = 20;
    private WeightedList<SpawnData> spawnPotentials = WeightedList.of();
-   @Nullable
-   private SpawnData nextSpawnData;
+   private @Nullable SpawnData nextSpawnData;
    private double spin;
    private double oSpin;
    private int minSpawnDelay = 200;
    private int maxSpawnDelay = 800;
    private int spawnCount = 4;
-   @Nullable
-   private Entity displayEntity;
+   private @Nullable Entity displayEntity;
    private int maxNearbyEntities = 6;
    private int requiredPlayerRange = 16;
    private int spawnRange = 4;
 
-   public void setEntityId(final EntityType<?> type, @Nullable final Level level, final RandomSource random, final BlockPos pos) {
+   public void setEntityId(final EntityType<?> type, final @Nullable Level level, final RandomSource random, final BlockPos pos) {
       this.getOrCreateNextSpawnData(level, random, pos).getEntityToSpawn().putString("id", BuiltInRegistries.ENTITY_TYPE.getKey(type).toString());
    }
 
-   public void setEntityData(final TypedEntityData<EntityType<?>> entityData, @Nullable final Level level, final RandomSource random, final BlockPos pos) {
+   public void setEntityData(final TypedEntityData<EntityType<?>> entityData, final @Nullable Level level, final RandomSource random, final BlockPos pos) {
       SpawnData spawnData = this.getOrCreateNextSpawnData(level, random, pos);
       entityData.loadInto(spawnData, BuiltInRegistries.ENTITY_TYPE);
    }
 
    private boolean isNearPlayer(final Level level, final BlockPos pos) {
-      return level.hasNearbyAlivePlayer((double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, (double)this.requiredPlayerRange);
+      return level.hasNearbyAlivePlayer(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, this.requiredPlayerRange);
    }
 
    public void clientTick(final Level level, final BlockPos pos) {
@@ -79,9 +77,9 @@ public abstract class BaseSpawner {
          this.oSpin = this.spin;
       } else if (this.displayEntity != null) {
          RandomSource random = level.getRandom();
-         double xP = (double)pos.getX() + random.nextDouble();
-         double yP = (double)pos.getY() + random.nextDouble();
-         double zP = (double)pos.getZ() + random.nextDouble();
+         double xP = pos.getX() + random.nextDouble();
+         double yP = pos.getY() + random.nextDouble();
+         double zP = pos.getZ() + random.nextDouble();
          level.addParticle(ParticleTypes.SMOKE, xP, yP, zP, 0.0, 0.0, 0.0);
          level.addParticle(ParticleTypes.FLAME, xP, yP, zP, 0.0, 0.0, 0.0);
          if (this.spawnDelay > 0) {
@@ -89,7 +87,7 @@ public abstract class BaseSpawner {
          }
 
          this.oSpin = this.spin;
-         this.spin = (this.spin + (double)(1000.0F / ((float)this.spawnDelay + 200.0F))) % 360.0;
+         this.spin = (this.spin + 1000.0F / (this.spawnDelay + 200.0F)) % 360.0;
       }
    }
 
@@ -118,10 +116,10 @@ public abstract class BaseSpawner {
                   Vec3 spawnPos = input.<Vec3>read("Pos", Vec3.CODEC)
                      .orElseGet(
                         () -> new Vec3(
-                              (double)pos.getX() + (random.nextDouble() - random.nextDouble()) * (double)this.spawnRange + 0.5,
-                              (double)(pos.getY() + random.nextInt(3) - 1),
-                              (double)pos.getZ() + (random.nextDouble() - random.nextDouble()) * (double)this.spawnRange + 0.5
-                           )
+                           pos.getX() + (random.nextDouble() - random.nextDouble()) * this.spawnRange + 0.5,
+                           pos.getY() + random.nextInt(3) - 1,
+                           pos.getZ() + (random.nextDouble() - random.nextDouble()) * this.spawnRange + 0.5
+                        )
                      );
                   if (level.noCollision(entityType.get().getSpawnAABB(spawnPos.x, spawnPos.y, spawnPos.z))) {
                      BlockPos spawnBlockPos = BlockPos.containing(spawnPos);
@@ -149,15 +147,7 @@ public abstract class BaseSpawner {
 
                      int nearBy = level.getEntities(
                            EntityTypeTest.forExactClass(entity.getClass()),
-                           new AABB(
-                                 (double)pos.getX(),
-                                 (double)pos.getY(),
-                                 (double)pos.getZ(),
-                                 (double)(pos.getX() + 1),
-                                 (double)(pos.getY() + 1),
-                                 (double)(pos.getZ() + 1)
-                              )
-                              .inflate((double)this.spawnRange),
+                           new AABB(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1).inflate(this.spawnRange),
                            EntitySelector.NO_SPECTATORS
                         )
                         .size();
@@ -219,7 +209,7 @@ public abstract class BaseSpawner {
       this.broadcastEvent(level, pos, 1);
    }
 
-   public void load(@Nullable final Level level, final BlockPos pos, final ValueInput input) {
+   public void load(final @Nullable Level level, final BlockPos pos, final ValueInput input) {
       this.spawnDelay = input.getShortOr("Delay", (short)20);
       input.<SpawnData>read("SpawnData", SpawnData.CODEC).ifPresent(nextSpawnData -> this.setNextSpawnData(level, pos, nextSpawnData));
       this.spawnPotentials = input.<WeightedList<SpawnData>>read("SpawnPotentials", SpawnData.LIST_CODEC)
@@ -245,8 +235,7 @@ public abstract class BaseSpawner {
       output.store("SpawnPotentials", SpawnData.LIST_CODEC, this.spawnPotentials);
    }
 
-   @Nullable
-   public Entity getOrCreateDisplayEntity(final Level level, final BlockPos pos) {
+   public @Nullable Entity getOrCreateDisplayEntity(final Level level, final BlockPos pos) {
       if (this.displayEntity == null) {
          CompoundTag entityToSpawn = this.getOrCreateNextSpawnData(level, level.getRandom(), pos).getEntityToSpawn();
          if (entityToSpawn.getString("id").isEmpty()) {
@@ -275,17 +264,17 @@ public abstract class BaseSpawner {
       }
    }
 
-   protected void setNextSpawnData(@Nullable final Level level, final BlockPos pos, final SpawnData nextSpawnData) {
+   protected void setNextSpawnData(final @Nullable Level level, final BlockPos pos, final SpawnData nextSpawnData) {
       this.nextSpawnData = nextSpawnData;
    }
 
-   private SpawnData getOrCreateNextSpawnData(@Nullable final Level level, final RandomSource random, final BlockPos pos) {
+   private SpawnData getOrCreateNextSpawnData(final @Nullable Level level, final RandomSource random, final BlockPos pos) {
       if (this.nextSpawnData != null) {
          return this.nextSpawnData;
-      } else {
-         this.setNextSpawnData(level, pos, this.spawnPotentials.getRandom(random).orElseGet(SpawnData::new));
-         return this.nextSpawnData;
       }
+
+      this.setNextSpawnData(level, pos, this.spawnPotentials.getRandom(random).orElseGet(SpawnData::new));
+      return this.nextSpawnData;
    }
 
    public abstract void broadcastEvent(final Level level, final BlockPos pos, int id);

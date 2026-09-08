@@ -23,10 +23,8 @@ public class DynamicGpuData implements AutoCloseable {
    private static final int INITIAL_CAPACITY = 2;
    private final DynamicGpuDataStorageMapped<DynamicGpuData.Transform> transforms;
    private final DynamicGpuDataStorageMapped<DynamicGpuData.TerrainTransform> terrain;
-   @Nullable
-   private DynamicGpuDataStorage<DynamicGpuData.ChunkSectionInfo> chunkSections = null;
-   @Nullable
-   private DynamicGpuDataStorageMapped<DynamicGpuData.IndexedDraw> chunkSectionsCommandBuffer = null;
+   private @Nullable DynamicGpuDataStorage<DynamicGpuData.ChunkSectionInfo> chunkSections = null;
+   private @Nullable DynamicGpuDataStorageMapped<DynamicGpuData.IndexedDraw> chunkSectionsCommandBuffer = null;
 
    public DynamicGpuData() {
       this.transforms = new DynamicGpuDataStorageMapped<>("Dynamic Transforms UBO", TRANSFORM_UBO_SIZE, 128, 2);
@@ -120,14 +118,14 @@ public class DynamicGpuData implements AutoCloseable {
       return this.chunkSectionsCommandBuffer.writeDataBatchedMultiple(draws);
    }
 
-   public static record ChunkSectionInfo(int x, int y, int z, float visibility) implements DynamicGpuDataStorage.DynamicGpuData {
+   public record ChunkSectionInfo(int x, int y, int z, float visibility) implements DynamicGpuDataStorage.DynamicGpuData {
       @Override
       public void write(final ByteBuffer buffer) {
          Std140Builder.intoBuffer(buffer).putIVec3(this.x, this.y, this.z).putFloat(this.visibility);
       }
    }
 
-   public static record IndexedDraw(int indexCount, int instanceCount, int firstIndex, int baseVertex, int baseInstance)
+   public record IndexedDraw(int indexCount, int instanceCount, int firstIndex, int baseVertex, int baseInstance)
       implements DynamicGpuDataStorage.DynamicGpuData {
       @Override
       public void write(final ByteBuffer buffer) {
@@ -135,14 +133,14 @@ public class DynamicGpuData implements AutoCloseable {
       }
    }
 
-   public static record TerrainTransform(Matrix4fc modelView, int textureAtlasWidth, int textureAtlasHeight) implements DynamicGpuDataStorage.DynamicGpuData {
+   public record TerrainTransform(Matrix4fc modelView, int textureAtlasWidth, int textureAtlasHeight) implements DynamicGpuDataStorage.DynamicGpuData {
       @Override
       public void write(final ByteBuffer buffer) {
          Std140Builder.intoBuffer(buffer).putMat4f(this.modelView).putIVec2(this.textureAtlasWidth, this.textureAtlasHeight);
       }
    }
 
-   public static record Transform(Matrix4fc modelView, Vector4fc colorModulator, Vector3fc modelOffset, Matrix4fc textureMatrix)
+   public record Transform(Matrix4fc modelView, Vector4fc colorModulator, Vector3fc modelOffset, Matrix4fc textureMatrix)
       implements DynamicGpuDataStorage.DynamicGpuData {
       @Override
       public void write(final ByteBuffer buffer) {

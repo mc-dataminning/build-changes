@@ -75,9 +75,9 @@ public class VillageSiege implements CustomSpawner {
             if (level.isVillage(center) && !level.getBiome(center).is(BiomeTags.WITHOUT_ZOMBIE_SIEGES)) {
                for (int i = 0; i < 10; i++) {
                   float angle = random.nextFloat() * (float) (Math.PI * 2);
-                  this.spawnX = center.getX() + Mth.floor(Mth.cos((double)angle) * 32.0F);
+                  this.spawnX = center.getX() + Mth.floor(Mth.cos(angle) * 32.0F);
                   this.spawnY = center.getY();
-                  this.spawnZ = center.getZ() + Mth.floor(Mth.sin((double)angle) * 32.0F);
+                  this.spawnZ = center.getZ() + Mth.floor(Mth.sin(angle) * 32.0F);
                   if (this.findRandomSpawnPos(level, new BlockPos(this.spawnX, this.spawnY, this.spawnZ)) != null) {
                      this.nextSpawnTime = 0;
                      this.zombiesToSpawn = 20;
@@ -100,8 +100,8 @@ public class VillageSiege implements CustomSpawner {
          try {
             zombie = new Zombie(level);
             zombie.finalizeSpawn(level, level.getCurrentDifficultyAt(zombie.blockPosition()), EntitySpawnReason.EVENT, null);
-         } catch (Exception var5) {
-            LOGGER.warn("Failed to create zombie for village siege at {}", spawnPos, var5);
+         } catch (Exception e) {
+            LOGGER.warn("Failed to create zombie for village siege at {}", spawnPos, e);
             return;
          }
 
@@ -110,8 +110,7 @@ public class VillageSiege implements CustomSpawner {
       }
    }
 
-   @Nullable
-   private Vec3 findRandomSpawnPos(final ServerLevel level, final BlockPos pos) {
+   private @Nullable Vec3 findRandomSpawnPos(final ServerLevel level, final BlockPos pos) {
       RandomSource random = level.getRandom();
 
       for (int i = 0; i < 10; i++) {
@@ -127,7 +126,7 @@ public class VillageSiege implements CustomSpawner {
       return null;
    }
 
-   private static enum State {
+   private enum State {
       SIEGE_CAN_ACTIVATE,
       SIEGE_TONIGHT,
       SIEGE_DONE;

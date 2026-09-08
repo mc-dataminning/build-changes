@@ -42,7 +42,7 @@ public class ComponentUtils {
          if (inner.isEmpty()) {
             return component.copy().setStyle(style);
          } else {
-            return (Component)(inner.equals(style) ? component : component.copy().setStyle(inner.applyTo(style)));
+            return inner.equals(style) ? component : component.copy().setStyle(inner.applyTo(style));
          }
       }
    }
@@ -73,17 +73,8 @@ public class ComponentUtils {
    }
 
    private static Style resolveStyle(final ResolutionContext context, final Style style, final int recursionDepth) throws CommandSyntaxException {
-      if (style.getHoverEvent() instanceof HoverEvent.ShowText var4) {
-         HoverEvent.ShowText var10000 = var4;
-
-         try {
-            var9 = var10000.value();
-         } catch (Throwable var7) {
-            throw new MatchException(var7.toString(), var7);
-         }
-
-         HoverEvent resolved = var9;
-         resolved = new HoverEvent.ShowText(resolve(context, resolved, recursionDepth + 1));
+      if (style.getHoverEvent() instanceof HoverEvent.ShowText(Component text)) {
+         HoverEvent resolved = new HoverEvent.ShowText(resolve(context, text, recursionDepth + 1));
          return style.withHoverEvent(resolved);
       } else {
          return style;
@@ -97,13 +88,15 @@ public class ComponentUtils {
    public static <T extends Comparable<T>> Component formatAndSortList(final Collection<T> values, final Function<T, Component> formatter) {
       if (values.isEmpty()) {
          return CommonComponents.EMPTY;
-      } else if (values.size() == 1) {
-         return formatter.apply(values.iterator().next());
-      } else {
-         List<T> sorted = Lists.newArrayList(values);
-         sorted.sort(Comparable::compareTo);
-         return formatList(sorted, formatter);
       }
+
+      if (values.size() == 1) {
+         return formatter.apply(values.iterator().next());
+      }
+
+      List<T> sorted = Lists.newArrayList(values);
+      sorted.sort(Comparable::compareTo);
+      return formatList(sorted, formatter);
    }
 
    public static <T> Component formatList(final Collection<? extends T> values, final Function<T, Component> formatter) {
@@ -123,23 +116,25 @@ public class ComponentUtils {
    public static <T> MutableComponent formatList(final Collection<? extends T> values, final Component separator, final Function<T, Component> formatter) {
       if (values.isEmpty()) {
          return Component.empty();
-      } else if (values.size() == 1) {
+      }
+
+      if (values.size() == 1) {
          return formatter.apply((T)values.iterator().next()).copy();
-      } else {
-         MutableComponent result = Component.empty();
-         boolean first = true;
+      }
 
-         for (T value : values) {
-            if (!first) {
-               result.append(separator);
-            }
+      MutableComponent result = Component.empty();
+      boolean first = true;
 
-            result.append(formatter.apply(value));
-            first = false;
+      for (T value : values) {
+         if (!first) {
+            result.append(separator);
          }
 
-         return result;
+         result.append(formatter.apply(value));
+         first = false;
       }
+
+      return result;
    }
 
    public static MutableComponent wrapInSquareBrackets(final Component inner) {
@@ -147,10 +142,10 @@ public class ComponentUtils {
    }
 
    public static Component fromMessage(final Message message) {
-      return (Component)(message instanceof Component ? (Component)message : Component.literal(message.getString()));
+      return message instanceof Component component ? component : Component.literal(message.getString());
    }
 
-   public static boolean isTranslationResolvable(@Nullable final Component component) {
+   public static boolean isTranslationResolvable(final @Nullable Component component) {
       if (component != null && component.getContents() instanceof TranslatableContents translatable) {
          String key = translatable.getKey();
          String fallback = translatable.getFallback();
@@ -165,9 +160,9 @@ public class ComponentUtils {
          Component.literal(text)
             .withStyle(
                s -> s.withColor(ChatFormatting.GREEN)
-                     .withClickEvent(new ClickEvent.CopyToClipboard(text))
-                     .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.copy.click")))
-                     .withInsertion(text)
+                  .withClickEvent(new ClickEvent.CopyToClipboard(text))
+                  .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.copy.click")))
+                  .withInsertion(text)
             )
       );
    }

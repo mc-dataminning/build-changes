@@ -41,7 +41,7 @@ public class FireflyParticle extends SingleQuadParticle {
 
    @Override
    public int getLightCoords(final float a) {
-      return (int)(255.0F * getFadeAmount(this.getLifetimeProgress((float)this.age + a), 0.1F, 0.3F));
+      return (int)(255.0F * getFadeAmount(this.getLifetimeProgress(this.age + a), 0.1F, 0.3F));
    }
 
    @Override
@@ -50,19 +50,15 @@ public class FireflyParticle extends SingleQuadParticle {
       if (!this.level.getBlockState(BlockPos.containing(this.x, this.y, this.z)).isAir()) {
          this.remove();
       } else {
-         this.setAlpha(getFadeAmount(this.getLifetimeProgress((float)this.age), 0.3F, 0.5F));
+         this.setAlpha(getFadeAmount(this.getLifetimeProgress(this.age), 0.3F, 0.5F));
          if (this.random.nextFloat() > 0.95F || this.age == 1) {
-            this.setParticleSpeed(
-               (double)(-0.05F + 0.1F * this.random.nextFloat()),
-               (double)(-0.05F + 0.1F * this.random.nextFloat()),
-               (double)(-0.05F + 0.1F * this.random.nextFloat())
-            );
+            this.setParticleSpeed(-0.05F + 0.1F * this.random.nextFloat(), -0.05F + 0.1F * this.random.nextFloat(), -0.05F + 0.1F * this.random.nextFloat());
          }
       }
    }
 
    private float getLifetimeProgress(final float currentAge) {
-      return Mth.clamp(currentAge / (float)this.lifetime, 0.0F, 1.0F);
+      return Mth.clamp(currentAge / this.lifetime, 0.0F, 1.0F);
    }
 
    private static float getFadeAmount(final float lifetimeProgress, final float fadeInTime, final float fadeOutTime) {

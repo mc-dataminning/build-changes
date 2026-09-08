@@ -79,9 +79,8 @@ public class Husk extends Zombie {
       return true;
    }
 
-   @LevelEvent.Value
    @Override
-   protected int getConversionSound() {
+   protected @LevelEvent.Value int getConversionSound() {
       return 1041;
    }
 
@@ -90,9 +89,8 @@ public class Husk extends Zombie {
       return EntityTypes.ZOMBIE;
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       RandomSource random = level.getRandom();
@@ -109,7 +107,7 @@ public class Husk extends Zombie {
 
       if (groupData instanceof Husk.HuskGroupData huskGroupData && !huskGroupData.triedToSpawnCamelHusk) {
          BlockPos pos = this.blockPosition();
-         if (level.noCollision(EntityTypes.CAMEL_HUSK.getSpawnAABB((double)pos.getX() + 0.5, (double)pos.getY(), (double)pos.getZ() + 0.5))) {
+         if (level.noCollision(EntityTypes.CAMEL_HUSK.getSpawnAABB(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5))) {
             huskGroupData.triedToSpawnCamelHusk = true;
             if (random.nextFloat() < 0.1F) {
                this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SPEAR));

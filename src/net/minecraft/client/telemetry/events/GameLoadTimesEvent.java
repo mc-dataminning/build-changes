@@ -26,11 +26,11 @@ public class GameLoadTimesEvent {
    }
 
    public synchronized void beginStep(final TelemetryProperty<GameLoadTimesEvent.Measurement> property) {
-      this.beginStep(property, (Function<TelemetryProperty<GameLoadTimesEvent.Measurement>, Stopwatch>)(p -> Stopwatch.createStarted(this.timeSource)));
+      this.beginStep(property, p -> Stopwatch.createStarted(this.timeSource));
    }
 
    public synchronized void beginStep(final TelemetryProperty<GameLoadTimesEvent.Measurement> property, final Stopwatch measurement) {
-      this.beginStep(property, (Function<TelemetryProperty<GameLoadTimesEvent.Measurement>, Stopwatch>)(p -> measurement));
+      this.beginStep(property, p -> measurement);
    }
 
    private synchronized void beginStep(
@@ -83,7 +83,7 @@ public class GameLoadTimesEvent {
       this.bootstrapTime = OptionalLong.of(duration);
    }
 
-   public static record Measurement(int millis) {
+   public record Measurement(int millis) {
       public static final Codec<GameLoadTimesEvent.Measurement> CODEC = Codec.INT.xmap(GameLoadTimesEvent.Measurement::new, o -> o.millis);
    }
 }

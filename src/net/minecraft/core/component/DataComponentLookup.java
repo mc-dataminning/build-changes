@@ -20,8 +20,7 @@ public class DataComponentLookup<T> {
       this.elements = elements;
    }
 
-   @Nullable
-   private <C> DataComponentLookup.ComponentStorage<C, T> getFromCache(final DataComponentType<C> type) {
+   private <C> DataComponentLookup.@Nullable ComponentStorage<C, T> getFromCache(final DataComponentType<C> type) {
       return (DataComponentLookup.ComponentStorage<C, T>)this.cache.get(type);
    }
 
@@ -29,17 +28,17 @@ public class DataComponentLookup<T> {
       DataComponentLookup.ComponentStorage<C, T> existingStorage = this.getFromCache(type);
       if (existingStorage != null) {
          return existingStorage;
-      } else {
-         DataComponentLookup.ComponentStorage<C, T> newStorage = this.scanForComponents(type);
-         synchronized (this) {
-            DataComponentLookup.ComponentStorage<C, T> foreignStorage = this.getFromCache(type);
-            if (foreignStorage != null) {
-               return foreignStorage;
-            } else {
-               this.cache = Util.copyAndPut(this.cache, type, newStorage);
-               return newStorage;
-            }
+      }
+
+      DataComponentLookup.ComponentStorage<C, T> newStorage = this.scanForComponents(type);
+      synchronized (this) {
+         DataComponentLookup.ComponentStorage<C, T> foreignStorage = this.getFromCache(type);
+         if (foreignStorage != null) {
+            return foreignStorage;
          }
+
+         this.cache = Util.copyAndPut(this.cache, type, newStorage);
+         return newStorage;
       }
    }
 
@@ -68,7 +67,7 @@ public class DataComponentLookup<T> {
       return this.getOrCreateStorage(type).valueToComponent.values();
    }
 
-   private static record ComponentStorage<C, T>(Multimap<C, Holder<T>> valueToComponent) {
+   private record ComponentStorage<C, T>(Multimap<C, Holder<T>> valueToComponent) {
       public Collection<Holder<T>> findAll(final C value) {
          return this.valueToComponent.get(value);
       }

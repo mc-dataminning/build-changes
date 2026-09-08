@@ -28,8 +28,7 @@ import net.minecraft.world.phys.AABB;
 import org.jspecify.annotations.Nullable;
 
 public interface LevelReader extends BlockAndLightGetter, CollisionGetter, SignalGetter, BiomeResolver {
-   @Nullable
-   ChunkAccess getChunk(final int chunkX, final int chunkZ, final ChunkStatus targetStatus, final boolean loadOrGenerate);
+   @Nullable ChunkAccess getChunk(final int chunkX, final int chunkZ, final ChunkStatus targetStatus, final boolean loadOrGenerate);
 
    @Deprecated
    boolean hasChunk(int chunkX, int chunkZ);
@@ -93,21 +92,21 @@ public interface LevelReader extends BlockAndLightGetter, CollisionGetter, Signa
    default boolean canSeeSkyFromBelowWater(final BlockPos pos) {
       if (pos.getY() >= this.getSeaLevel()) {
          return this.canSeeSky(pos);
-      } else {
-         BlockPos scanPoint = new BlockPos(pos.getX(), this.getSeaLevel(), pos.getZ());
-         if (!this.canSeeSky(scanPoint)) {
-            return false;
-         } else {
-            for (BlockPos var4 = scanPoint.below(); var4.getY() > pos.getY(); var4 = var4.below()) {
-               BlockState state = this.getBlockState(var4);
-               if (state.getLightDampening() > 0 && !state.liquid()) {
-                  return false;
-               }
-            }
+      }
 
-            return true;
+      BlockPos scanPoint = new BlockPos(pos.getX(), this.getSeaLevel(), pos.getZ());
+      if (!this.canSeeSky(scanPoint)) {
+         return false;
+      }
+
+      for (BlockPos var4 = scanPoint.below(); var4.getY() > pos.getY(); var4 = var4.below()) {
+         BlockState state = this.getBlockState(var4);
+         if (state.getLightDampening() > 0 && !state.liquid()) {
+            return false;
          }
       }
+
+      return true;
    }
 
    default float getPathfindingCostFromLightLevels(final BlockPos pos) {
@@ -116,7 +115,7 @@ public interface LevelReader extends BlockAndLightGetter, CollisionGetter, Signa
 
    @Deprecated
    default float getLightLevelDependentMagicValue(final BlockPos pos) {
-      float v = (float)this.getMaxLocalRawBrightness(pos) / 15.0F;
+      float v = this.getMaxLocalRawBrightness(pos) / 15.0F;
       float curvedV = v / (4.0F - 3.0F * v);
       return Mth.lerp(this.dimensionType().ambientLight(), curvedV, 1.0F);
    }
@@ -133,9 +132,8 @@ public interface LevelReader extends BlockAndLightGetter, CollisionGetter, Signa
       return this.getChunk(chunkX, chunkZ, status, true);
    }
 
-   @Nullable
    @Override
-   default BlockGetter getChunkForCollisions(final int chunkX, final int chunkZ) {
+   default @Nullable BlockGetter getChunkForCollisions(final int chunkX, final int chunkZ) {
       return this.getChunk(chunkX, chunkZ, ChunkStatus.EMPTY, false);
    }
 

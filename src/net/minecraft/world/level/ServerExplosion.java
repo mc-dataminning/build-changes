@@ -44,8 +44,7 @@ public class ServerExplosion implements Explosion {
    private final Explosion.BlockInteraction blockInteraction;
    private final ServerLevel level;
    private final Vec3 center;
-   @Nullable
-   private final Entity source;
+   private final @Nullable Entity source;
    private final float radius;
    private final DamageSource damageSource;
    private final ExplosionDamageCalculator damageCalculator;
@@ -53,9 +52,9 @@ public class ServerExplosion implements Explosion {
 
    public ServerExplosion(
       final ServerLevel level,
-      @Nullable final Entity source,
-      @Nullable final DamageSource damageSource,
-      @Nullable final ExplosionDamageCalculator damageCalculator,
+      final @Nullable Entity source,
+      final @Nullable DamageSource damageSource,
+      final @Nullable ExplosionDamageCalculator damageCalculator,
       final Vec3 center,
       final float radius,
       final boolean fire,
@@ -71,8 +70,8 @@ public class ServerExplosion implements Explosion {
       this.damageCalculator = damageCalculator == null ? this.makeDamageCalculator(source) : damageCalculator;
    }
 
-   private ExplosionDamageCalculator makeDamageCalculator(@Nullable final Entity source) {
-      return (ExplosionDamageCalculator)(source == null ? EXPLOSION_DAMAGE_CALCULATOR : new EntityBasedExplosionDamageCalculator(source));
+   private ExplosionDamageCalculator makeDamageCalculator(final @Nullable Entity source) {
+      return source == null ? EXPLOSION_DAMAGE_CALCULATOR : new EntityBasedExplosionDamageCalculator(source);
    }
 
    public static float getSeenPercent(final Vec3 center, final Entity entity) {
@@ -103,7 +102,7 @@ public class ServerExplosion implements Explosion {
             }
          }
 
-         return (float)hits / (float)count;
+         return (float)hits / count;
       } else {
          return 0.0F;
       }
@@ -127,9 +126,9 @@ public class ServerExplosion implements Explosion {
          for (int yy = 0; yy < 16; yy++) {
             for (int zz = 0; zz < 16; zz++) {
                if (xx == 0 || xx == 15 || yy == 0 || yy == 15 || zz == 0 || zz == 15) {
-                  double xd = (double)((float)xx / 15.0F * 2.0F - 1.0F);
-                  double yd = (double)((float)yy / 15.0F * 2.0F - 1.0F);
-                  double zd = (double)((float)zz / 15.0F * 2.0F - 1.0F);
+                  double xd = xx / 15.0F * 2.0F - 1.0F;
+                  double yd = yy / 15.0F * 2.0F - 1.0F;
+                  double zd = zz / 15.0F * 2.0F - 1.0F;
                   double d = Math.sqrt(xd * xd + yd * yd + zd * zd);
                   xd /= d;
                   yd /= d;
@@ -138,8 +137,9 @@ public class ServerExplosion implements Explosion {
                   double xp = this.center.x;
                   double yp = this.center.y;
                   double zp = this.center.z;
+                  float stepSize = 0.3F;
 
-                  for (float stepSize = 0.3F; remainingPower > 0.0F; remainingPower -= 0.22500001F) {
+                  while (remainingPower > 0.0F) {
                      BlockPos pos = BlockPos.containing(xp, yp, zp);
                      BlockState block = this.level.getBlockState(pos);
                      FluidState fluid = this.level.getFluidState(pos);
@@ -159,6 +159,7 @@ public class ServerExplosion implements Explosion {
                      xp += xd * 0.3F;
                      yp += yd * 0.3F;
                      zp += zd * 0.3F;
+                     remainingPower -= 0.22500001F;
                   }
                }
             }
@@ -171,16 +172,16 @@ public class ServerExplosion implements Explosion {
    private void hurtEntities() {
       if (!(this.radius < 1.0E-5F)) {
          float doubleRadius = this.radius * 2.0F;
-         int x0 = Mth.floor(this.center.x - (double)doubleRadius - 1.0);
-         int x1 = Mth.floor(this.center.x + (double)doubleRadius + 1.0);
-         int y0 = Mth.floor(this.center.y - (double)doubleRadius - 1.0);
-         int y1 = Mth.floor(this.center.y + (double)doubleRadius + 1.0);
-         int z0 = Mth.floor(this.center.z - (double)doubleRadius - 1.0);
-         int z1 = Mth.floor(this.center.z + (double)doubleRadius + 1.0);
+         int x0 = Mth.floor(this.center.x - doubleRadius - 1.0);
+         int x1 = Mth.floor(this.center.x + doubleRadius + 1.0);
+         int y0 = Mth.floor(this.center.y - doubleRadius - 1.0);
+         int y1 = Mth.floor(this.center.y + doubleRadius + 1.0);
+         int z0 = Mth.floor(this.center.z - doubleRadius - 1.0);
+         int z1 = Mth.floor(this.center.z + doubleRadius + 1.0);
 
-         for (Entity entity : this.level.getEntities(this.source, new AABB((double)x0, (double)y0, (double)z0, (double)x1, (double)y1, (double)z1))) {
+         for (Entity entity : this.level.getEntities(this.source, new AABB(x0, y0, z0, x1, y1, z1))) {
             if (!entity.ignoreExplosion(this)) {
-               double dist = Math.sqrt(entity.distanceToSqr(this.center)) / (double)doubleRadius;
+               double dist = Math.sqrt(entity.distanceToSqr(this.center)) / doubleRadius;
                if (!(dist > 1.0)) {
                   Vec3 entityOrigin = entity instanceof PrimedTnt ? entity.position() : entity.getEyePosition();
                   Vec3 direction = entityOrigin.subtract(this.center).normalize();
@@ -194,16 +195,13 @@ public class ServerExplosion implements Explosion {
                   double knockbackResistance = entity instanceof LivingEntity livingEntity
                      ? livingEntity.getAttributeValue(Attributes.EXPLOSION_KNOCKBACK_RESISTANCE)
                      : 0.0;
-                  double knockbackPower = (1.0 - dist) * (double)exposure * (double)knockbackMultiplier * (1.0 - knockbackResistance);
+                  double knockbackPower = (1.0 - dist) * exposure * knockbackMultiplier * (1.0 - knockbackResistance);
                   Vec3 knockback = direction.scale(knockbackPower);
                   entity.pushFromExplosion(knockback);
                   if (entity.is(EntityTypeTags.REDIRECTABLE_PROJECTILE) && entity instanceof Projectile projectile) {
                      projectile.setOwner(this.damageSource.getEntity());
-                  } else if (entity instanceof Player) {
-                     Player player = (Player)entity;
-                     if (!player.isSpectator() && (!player.isCreative() || !player.getAbilities().flying)) {
-                        this.hitPlayers.put(player, knockback);
-                     }
+                  } else if (entity instanceof Player player && !player.isSpectator() && (!player.isCreative() || !player.getAbilities().flying)) {
+                     this.hitPlayers.put(player, knockback);
                   }
 
                   entity.onExplosionHit(this.source);
@@ -276,15 +274,13 @@ public class ServerExplosion implements Explosion {
       return this.level;
    }
 
-   @Nullable
    @Override
-   public LivingEntity getIndirectSourceEntity() {
+   public @Nullable LivingEntity getIndirectSourceEntity() {
       return Explosion.getIndirectSourceEntity(this.source);
    }
 
-   @Nullable
    @Override
-   public Entity getDirectSourceEntity() {
+   public @Nullable Entity getDirectSourceEntity() {
       return this.source;
    }
 

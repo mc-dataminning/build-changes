@@ -1,6 +1,5 @@
 package net.minecraft.world.entity.monster.skeleton;
 
-import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -55,10 +54,6 @@ public abstract class AbstractSkeleton extends Monster implements RangedAttackMo
    protected static final int INCREASED_NORMAL_ATTACK_INTERVAL = 70;
    private final RangedBowAttackGoal<AbstractSkeleton> bowGoal = new RangedBowAttackGoal<>(this, 1.0, 20, 15.0F);
    private final MeleeAttackGoal meleeGoal = new MeleeAttackGoal(this, 1.2, false) {
-      {
-         Objects.requireNonNull(AbstractSkeleton.this);
-      }
-
       @Override
       public void stop() {
          super.stop();
@@ -116,9 +111,8 @@ public abstract class AbstractSkeleton extends Monster implements RangedAttackMo
       this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.BOW));
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       groupData = super.finalizeSpawn(level, difficulty, spawnReason, groupData);
@@ -180,7 +174,7 @@ public abstract class AbstractSkeleton extends Monster implements RangedAttackMo
       this.playSound(SoundEvents.SKELETON_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
    }
 
-   protected AbstractArrow getArrow(final ItemStack projectile, final float power, @Nullable final ItemStack firingWeapon) {
+   protected AbstractArrow getArrow(final ItemStack projectile, final float power, final @Nullable ItemStack firingWeapon) {
       return ProjectileUtil.getMobArrow(this, projectile, power, firingWeapon);
    }
 

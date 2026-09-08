@@ -23,10 +23,10 @@ public class StrictJsonParser {
          } else {
             return element;
          }
-      } catch (NumberFormatException | MalformedJsonException var3) {
-         throw new JsonSyntaxException(var3);
-      } catch (IOException var4) {
-         throw new JsonIOException(var4);
+      } catch (MalformedJsonException | NumberFormatException e) {
+         throw new JsonSyntaxException(e);
+      } catch (IOException e) {
+         throw new JsonIOException(e);
       }
    }
 

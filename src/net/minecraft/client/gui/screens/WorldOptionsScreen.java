@@ -92,60 +92,36 @@ public class WorldOptionsScreen extends Screen implements HasGamemasterPermissio
    private static final Component DIFFICULTY_LOCK_TITLE = Component.translatable("difficulty.lock.title");
    private static final Component APPLY_CHANGES = Component.translatable("menu.multiplayerOptions.applyChanges");
    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-   @Nullable
-   private ScrollableLayout scrollArea;
+   private @Nullable ScrollableLayout scrollArea;
    private final WorldOptionsScreen.DifficultyButtons difficultyButtons;
-   @Nullable
-   private Button gameRulesButton;
-   @Nullable
-   private CycleButton<GameType> defaultGameModeButton;
-   @Nullable
-   private CycleButton<GameType> personalGameModeButton;
-   @Nullable
-   private Difficulty initialDifficulty;
-   @Nullable
-   private Difficulty wantedDifficulty;
-   @Nullable
-   private Boolean initialDifficultyLocked;
-   @Nullable
-   private Boolean wantedDifficultyLocked;
-   @Nullable
-   private GameType initialDefaultGameMode;
-   @Nullable
-   private GameType wantedDefaultGameMode;
-   @Nullable
-   private GameType initialPersonalGameMode;
-   @Nullable
-   private GameType wantedPersonalGameMode;
-   @Nullable
-   private Boolean initialAllowCommands;
-   @Nullable
-   private Boolean wantedAllowCommands;
-   @Nullable
-   private MinecraftServer.MultiplayerScope initialMultiplayerScope;
-   @Nullable
-   private MinecraftServer.MultiplayerScope wantedMultiplayerScope;
+   private @Nullable Button gameRulesButton;
+   private @Nullable CycleButton<GameType> defaultGameModeButton;
+   private @Nullable CycleButton<GameType> personalGameModeButton;
+   private @Nullable Difficulty initialDifficulty;
+   private @Nullable Difficulty wantedDifficulty;
+   private @Nullable Boolean initialDifficultyLocked;
+   private @Nullable Boolean wantedDifficultyLocked;
+   private @Nullable GameType initialDefaultGameMode;
+   private @Nullable GameType wantedDefaultGameMode;
+   private @Nullable GameType initialPersonalGameMode;
+   private @Nullable GameType wantedPersonalGameMode;
+   private @Nullable Boolean initialAllowCommands;
+   private @Nullable Boolean wantedAllowCommands;
+   private MinecraftServer.@Nullable MultiplayerScope initialMultiplayerScope;
+   private MinecraftServer.@Nullable MultiplayerScope wantedMultiplayerScope;
    private int port = HttpUtil.getAvailablePort();
    private boolean portValid = true;
-   @Nullable
-   private EditBox portEdit;
+   private @Nullable EditBox portEdit;
    private int initialPort;
-   @Nullable
-   private Boolean initialGuestCommandAccess;
-   @Nullable
-   private Boolean wantedGuestCommandAccess;
-   @Nullable
-   private CycleButton<Boolean> guestCommandAccessButton;
-   @Nullable
-   private Boolean initialForceGameMode;
-   @Nullable
-   private Boolean wantedForceGameMode;
-   @Nullable
-   private CycleButton<Boolean> forceGameModeButton;
+   private @Nullable Boolean initialGuestCommandAccess;
+   private @Nullable Boolean wantedGuestCommandAccess;
+   private @Nullable CycleButton<Boolean> guestCommandAccessButton;
+   private @Nullable Boolean initialForceGameMode;
+   private @Nullable Boolean wantedForceGameMode;
+   private @Nullable CycleButton<Boolean> forceGameModeButton;
    private final Screen lastScreen;
    private final Level level;
-   @Nullable
-   private Button applyChanges;
+   private @Nullable Button applyChanges;
 
    public WorldOptionsScreen(final Screen lastScreen, final Level level) {
       super(TITLE);
@@ -204,7 +180,7 @@ public class WorldOptionsScreen extends Screen implements HasGamemasterPermissio
       return FocusableTextWidget.builder(title, this.font).alwaysShowBorder(false).backgroundFill(FocusableTextWidget.BackgroundFill.ON_FOCUS).build();
    }
 
-   private void generalOptions(final LinearLayout content, @Nullable final IntegratedServer singleplayerServer) {
+   private void generalOptions(final LinearLayout content, final @Nullable IntegratedServer singleplayerServer) {
       GridLayout grid = content.addChild(new GridLayout());
       GridLayout.RowHelper rowHelper = grid.columnSpacing(8).rowSpacing(4).createRowHelper(2);
       rowHelper.defaultCellSetting().alignHorizontallyCenter();
@@ -240,7 +216,7 @@ public class WorldOptionsScreen extends Screen implements HasGamemasterPermissio
       rowHelper.addChild(this.createRestrictionsButton());
    }
 
-   private Button createGameRulesButton(@Nullable final IntegratedServer singleplayerServer) {
+   private Button createGameRulesButton(final @Nullable IntegratedServer singleplayerServer) {
       Button gameRulesButton = Button.builder(GAME_RULES, var1 -> {
          if (this.minecraft.player != null) {
             this.minecraft.gui.setScreen(new InWorldGameRulesScreen(this.minecraft.player.connection, var1x -> this.minecraft.gui.setScreen(this), this));
@@ -292,9 +268,9 @@ public class WorldOptionsScreen extends Screen implements HasGamemasterPermissio
    }
 
    private void updateButton(
-      @Nullable final AbstractWidget widget,
-      @Nullable final IntegratedServer singleplayerServer,
-      @Nullable final Tooltip tooltip,
+      final @Nullable AbstractWidget widget,
+      final @Nullable IntegratedServer singleplayerServer,
+      final @Nullable Tooltip tooltip,
       final Tooltip disabledTooltip,
       final Tooltip hardcoreTooltip
    ) {
@@ -428,7 +404,7 @@ public class WorldOptionsScreen extends Screen implements HasGamemasterPermissio
       return this.hasSettingsChanges() && (!this.portIsRequired() || this.portValid);
    }
 
-   protected void applyChanges(@Nullable final IntegratedServer singleplayerServer) {
+   protected void applyChanges(final @Nullable IntegratedServer singleplayerServer) {
       if (this.wantedDifficulty != null && this.wantedDifficulty != this.initialDifficulty && this.minecraft.getConnection() != null) {
          this.minecraft.getConnection().send(new ServerboundChangeDifficultyPacket(this.wantedDifficulty));
       }
@@ -491,8 +467,8 @@ public class WorldOptionsScreen extends Screen implements HasGamemasterPermissio
          AbstractSelectionList.INWORLD_MENU_LIST_BACKGROUND,
          this.layout.getX(),
          this.layout.getHeaderHeight(),
-         (float)this.width,
-         (float)(this.height - this.layout.getFooterHeight() + (int)this.scrollArea.getScrollAmount()),
+         this.width,
+         this.height - this.layout.getFooterHeight() + (int)this.scrollArea.getScrollAmount(),
          this.width,
          this.layout.getContentHeight(),
          32,
@@ -538,7 +514,7 @@ public class WorldOptionsScreen extends Screen implements HasGamemasterPermissio
    }
 
    private void updatePermissionDependentButtons(
-      @Nullable final IntegratedServer singleplayerServer, final boolean allowCommands, final boolean affectGameRulesButton
+      final @Nullable IntegratedServer singleplayerServer, final boolean allowCommands, final boolean affectGameRulesButton
    ) {
       if (!allowCommands) {
          if (this.defaultGameModeButton != null && this.personalGameModeButton != null && this.initialDefaultGameMode != null) {
@@ -651,7 +627,7 @@ public class WorldOptionsScreen extends Screen implements HasGamemasterPermissio
 
          this.portEdit.setEditable(lanWanted);
          this.portEdit.active = lanWanted;
-         this.portEdit.setHint((Component)(lanWanted ? Component.literal(String.valueOf(this.port)) : PORT_INFO_TEXT));
+         this.portEdit.setHint(lanWanted ? Component.literal(String.valueOf(this.port)) : PORT_INFO_TEXT);
          if (!lanWanted) {
             this.portEdit.setFocused(false);
             this.setPortError(this.portEdit, null);
@@ -659,30 +635,31 @@ public class WorldOptionsScreen extends Screen implements HasGamemasterPermissio
       }
    }
 
-   @Nullable
-   private Component tryParsePort(final String value) {
+   private @Nullable Component tryParsePort(final String value) {
       if (value.isBlank()) {
          this.port = HttpUtil.getAvailablePort();
          return null;
-      } else {
-         try {
-            int parsed = Integer.parseInt(value);
-            if (parsed < 1024 || parsed > 65535) {
-               return INVALID_PORT;
-            } else if (parsed != this.initialPort && !HttpUtil.isPortAvailable(parsed)) {
-               return PORT_UNAVAILABLE;
-            } else {
-               this.port = parsed;
-               return null;
-            }
-         } catch (NumberFormatException var3) {
-            this.port = HttpUtil.getAvailablePort();
+      }
+
+      try {
+         int parsed = Integer.parseInt(value);
+         if (parsed < 1024 || parsed > 65535) {
             return INVALID_PORT;
          }
+
+         if (parsed != this.initialPort && !HttpUtil.isPortAvailable(parsed)) {
+            return PORT_UNAVAILABLE;
+         }
+
+         this.port = parsed;
+         return null;
+      } catch (NumberFormatException e) {
+         this.port = HttpUtil.getAvailablePort();
+         return INVALID_PORT;
       }
    }
 
-   private void setPortError(final EditBox portEdit, @Nullable final Component errorMessage) {
+   private void setPortError(final EditBox portEdit, final @Nullable Component errorMessage) {
       this.portValid = errorMessage == null;
       if (errorMessage == null) {
          portEdit.setTextColor(-2039584);
@@ -693,7 +670,7 @@ public class WorldOptionsScreen extends Screen implements HasGamemasterPermissio
       }
    }
 
-   private static record DifficultyButtons(LayoutElement layout, CycleButton<Difficulty> difficultyButton, LockIconButton lockButton, Level level) {
+   private record DifficultyButtons(LayoutElement layout, CycleButton<Difficulty> difficultyButton, LockIconButton lockButton, Level level) {
       private static final Component DIFFICULTY_TITLE = Component.translatable("options.difficulty");
       private static final Tooltip DIFFICULTY_DISABLED_HARDCORE_TOOLTIP = Tooltip.create(
          Component.translatable("options.worldOptions.difficulty.disabled.hardcore.tooltip")

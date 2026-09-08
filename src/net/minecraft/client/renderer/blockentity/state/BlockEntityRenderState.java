@@ -16,11 +16,10 @@ public class BlockEntityRenderState {
    private BlockState blockState = Blocks.AIR.defaultBlockState();
    public BlockEntityType<?> blockEntityType = BlockEntityTypes.TEST_BLOCK;
    public int lightCoords;
-   @Nullable
-   public ModelFeatureRenderer.CrumblingOverlay breakProgress;
+   public ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress;
 
    public static void extractBase(
-      final BlockEntity blockEntity, final BlockEntityRenderState state, @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final BlockEntity blockEntity, final BlockEntityRenderState state, final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       state.blockPos = blockEntity.getBlockPos();
       state.blockState = blockEntity.getBlockState();

@@ -46,8 +46,7 @@ public class BrainDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
    private static final int PINK = -98404;
    private static final int ORANGE = -23296;
    private final Minecraft minecraft;
-   @Nullable
-   private UUID lastLookedAtUuid;
+   private @Nullable UUID lastLookedAtUuid;
 
    public BrainDebugRenderer(final Minecraft minecraft) {
       this.minecraft = minecraft;

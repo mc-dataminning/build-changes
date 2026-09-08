@@ -25,11 +25,11 @@ public record IntervalSelectFunction(DensityFunction input, FloatList thresholds
    private static final Codec<FloatList> THRESHOLDS_CODEC = DensityFunctions.NOISE_VALUE_CODEC.listOf().xmap(FloatArrayList::new, Function.identity());
    public static final MapCodec<IntervalSelectFunction> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  DensityFunction.CODEC.fieldOf("input").forGetter(IntervalSelectFunction::input),
-                  THRESHOLDS_CODEC.fieldOf("thresholds").forGetter(IntervalSelectFunction::thresholds),
-                  DensityFunction.CODEC.listOf(2, Integer.MAX_VALUE).fieldOf("functions").forGetter(IntervalSelectFunction::functions)
-               )
-               .apply(i, IntervalSelectFunction::new)
+               DensityFunction.CODEC.fieldOf("input").forGetter(IntervalSelectFunction::input),
+               THRESHOLDS_CODEC.fieldOf("thresholds").forGetter(IntervalSelectFunction::thresholds),
+               DensityFunction.CODEC.listOf(2, Integer.MAX_VALUE).fieldOf("functions").forGetter(IntervalSelectFunction::functions)
+            )
+            .apply(i, IntervalSelectFunction::new)
       )
       .validate(IntervalSelectFunction::validate);
 
@@ -80,9 +80,8 @@ public record IntervalSelectFunction(DensityFunction input, FloatList thresholds
       return Interval.encapsulating(Lists.transform(this.functions, DensityFunction::range));
    }
 
-   @DensityFunction.Axes
    @Override
-   public int domainAxes() {
+   public @DensityFunction.Axes int domainAxes() {
       int axes = this.input.domainAxes();
 
       for (DensityFunction function : this.functions) {
@@ -97,18 +96,13 @@ public record IntervalSelectFunction(DensityFunction input, FloatList thresholds
       return CODEC;
    }
 
-   private static record Sampler(DensitySampler input, float[] thresholds, DensitySampler[] samplers) implements DensitySampler {
-      // $VF: Could not verify finally blocks. A semaphore variable has been added to preserve control flow.
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+   private record Sampler(DensitySampler input, float[] thresholds, DensitySampler[] samplers) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          this.input.sampleVolume(context, outputBuffer, volume);
          ScopedDensityBuffer[] buffers = new ScopedDensityBuffer[this.samplers.length];
-         boolean var15 = false /* VF: Semaphore variable */;
 
          try {
-            var15 = true;
-
             for (int i = 0; i < this.samplers.length; i++) {
                ScopedDensityBuffer buffer = context.acquireBuffer(volume);
                buffers[i] = buffer;
@@ -119,32 +113,22 @@ public record IntervalSelectFunction(DensityFunction input, FloatList thresholds
                int samplerIndex = this.selectSamplerIndex(outputBuffer.get(i));
                outputBuffer.set(i, buffers[samplerIndex].get(i));
             }
-
-            var15 = false;
          } finally {
-            if (var15) {
-               ScopedDensityBuffer[] var10 = buffers;
-               int var11 = buffers.length;
-               int var12 = 0;
+            ScopedDensityBuffer[] var10 = buffers;
+            int var11 = var10.length;
+            int var12 = 0;
 
-               while (true) {
-                  if (var12 >= var11) {
-                     ;
-                  } else {
-                     ScopedDensityBuffer buffer = var10[var12];
-                     if (buffer != null) {
-                        buffer.close();
-                     }
-
-                     var12++;
+            while (true) {
+               if (var12 >= var11) {
+                  ;
+               } else {
+                  ScopedDensityBuffer buffer = var10[var12];
+                  if (buffer != null) {
+                     buffer.close();
                   }
-               }
-            }
-         }
 
-         for (ScopedDensityBuffer buffer : buffers) {
-            if (buffer != null) {
-               buffer.close();
+                  var12++;
+               }
             }
          }
       }
@@ -166,8 +150,7 @@ public record IntervalSelectFunction(DensityFunction input, FloatList thresholds
       }
    }
 
-   private static record SingleThresholdSampler(DensitySampler input, float threshold, DensitySampler ifBelow, DensitySampler ifAbove)
-      implements DensitySampler {
+   private record SingleThresholdSampler(DensitySampler input, float threshold, DensitySampler ifBelow, DensitySampler ifAbove) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          this.input.sampleVolume(context, outputBuffer, volume);

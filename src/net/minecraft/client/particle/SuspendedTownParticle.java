@@ -26,7 +26,7 @@ public class SuspendedTownParticle extends SingleQuadParticle {
       this.xd *= 0.02F;
       this.yd *= 0.02F;
       this.zd *= 0.02F;
-      this.lifetime = (int)(20.0 / ((double)this.random.nextFloat() * 0.8 + 0.2));
+      this.lifetime = (int)(20.0 / (this.random.nextFloat() * 0.8 + 0.2));
    }
 
    @Override

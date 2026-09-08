@@ -26,7 +26,7 @@ public interface CommandEncoder {
       final Supplier<String> label,
       final GpuTextureView colorTexture,
       final Optional<Vector4fc> clearColor,
-      @Nullable final GpuTextureView depthTexture,
+      final @Nullable GpuTextureView depthTexture,
       final OptionalDouble clearDepth
    ) {
       return this.createRenderPass(
@@ -38,7 +38,7 @@ public interface CommandEncoder {
       final Supplier<String> label,
       final GpuTextureView colorTexture,
       final Optional<Vector4fc> clearColor,
-      @Nullable final GpuTextureView depthTexture,
+      final @Nullable GpuTextureView depthTexture,
       final OptionalDouble clearDepth,
       final RenderPass.RenderArea renderArea
    ) {

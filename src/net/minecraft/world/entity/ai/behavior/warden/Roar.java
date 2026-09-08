@@ -50,7 +50,7 @@ public class Roar extends Behavior<Warden> {
 
    protected void tick(final ServerLevel level, final Warden body, final long timestamp) {
       if (!body.getBrain().hasMemoryValue(MemoryModuleType.ROAR_SOUND_DELAY) && !body.getBrain().hasMemoryValue(MemoryModuleType.ROAR_SOUND_COOLDOWN)) {
-         body.getBrain().setMemoryWithExpiry(MemoryModuleType.ROAR_SOUND_COOLDOWN, Unit.INSTANCE, (long)(WardenAi.ROAR_DURATION - 25));
+         body.getBrain().setMemoryWithExpiry(MemoryModuleType.ROAR_SOUND_COOLDOWN, Unit.INSTANCE, WardenAi.ROAR_DURATION - 25);
          body.playSound(SoundEvents.WARDEN_ROAR, 3.0F, 1.0F);
       }
    }

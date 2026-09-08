@@ -38,13 +38,7 @@ public class LeavesBlock extends Block implements SimpleWaterloggedBlock {
    public LeavesBlock(final AmbientLeavesBlockSoundPlayer ambientLeavesBlockSoundPlayer, final BlockBehaviour.Properties properties) {
       super(properties);
       this.ambientLeavesBlockSoundPlayer = ambientLeavesBlockSoundPlayer;
-      this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(DISTANCE, Integer.valueOf(7))
-            .setValue(PERSISTENT, Boolean.valueOf(false))
-            .setValue(WATERLOGGED, Boolean.valueOf(false))
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(DISTANCE, 7).setValue(PERSISTENT, false).setValue(WATERLOGGED, false));
    }
 
    @Override
@@ -123,7 +117,7 @@ public class LeavesBlock extends Block implements SimpleWaterloggedBlock {
          }
       }
 
-      return state.setValue(DISTANCE, Integer.valueOf(newDistance));
+      return state.setValue(DISTANCE, newDistance);
    }
 
    private static int getDistanceAt(final BlockState state) {
@@ -172,9 +166,7 @@ public class LeavesBlock extends Block implements SimpleWaterloggedBlock {
    @Override
    public BlockState getStateForPlacement(final BlockPlaceContext context) {
       FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-      BlockState state = this.defaultBlockState()
-         .setValue(PERSISTENT, Boolean.valueOf(true))
-         .setValue(WATERLOGGED, Boolean.valueOf(replacedFluidState.is(Fluids.WATER)));
+      BlockState state = this.defaultBlockState().setValue(PERSISTENT, true).setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
       return updateDistance(state, context.getLevel(), context.getClickedPos());
    }
 }

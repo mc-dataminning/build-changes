@@ -27,15 +27,15 @@ public final class UUIDUtil {
    public static final Codec<UUID> STRING_CODEC = Codec.STRING.comapFlatMap(s -> {
       try {
          return DataResult.success(UUID.fromString(s), Lifecycle.stable());
-      } catch (IllegalArgumentException var2) {
-         return DataResult.error(() -> "Invalid UUID " + s + ": " + var2.getMessage());
+      } catch (IllegalArgumentException e) {
+         return DataResult.error(() -> "Invalid UUID " + s + ": " + e.getMessage());
       }
    }, UUID::toString);
    public static final Codec<UUID> AUTHLIB_CODEC = Codec.withAlternative(Codec.STRING.comapFlatMap(s -> {
       try {
          return DataResult.success(UndashedUuid.fromStringLenient(s), Lifecycle.stable());
-      } catch (IllegalArgumentException var2) {
-         return DataResult.error(() -> "Invalid UUID " + s + ": " + var2.getMessage());
+      } catch (IllegalArgumentException e) {
+         return DataResult.error(() -> "Invalid UUID " + s + ": " + e.getMessage());
       }
    }, UndashedUuid::toString), CODEC);
    public static final Codec<UUID> LENIENT_CODEC = Codec.withAlternative(CODEC, STRING_CODEC);
@@ -55,7 +55,7 @@ public final class UUIDUtil {
    }
 
    public static UUID uuidFromIntArray(final int[] intArray) {
-      return new UUID((long)intArray[0] << 32 | (long)intArray[1] & 4294967295L, (long)intArray[2] << 32 | (long)intArray[3] & 4294967295L);
+      return new UUID((long)intArray[0] << 32 | intArray[1] & 4294967295L, (long)intArray[2] << 32 | intArray[3] & 4294967295L);
    }
 
    public static int[] uuidToIntArray(final UUID uuid) {

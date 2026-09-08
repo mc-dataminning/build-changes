@@ -60,18 +60,18 @@ public class Projection {
    public Matrix4f getMatrix(final Matrix4f dest) {
       if (!this.isMatrixDirty) {
          return dest.set(this.matrix);
-      } else {
-         this.isMatrixDirty = false;
-         this.matrixVersion++;
-         float near = this.zFar;
-         float far = this.zNear;
-         boolean zZeroToOne = RenderSystem.getDevice().getDeviceInfo().isZZeroToOne();
-         return this.projectionType == ProjectionType.PERSPECTIVE
-            ? dest.set(this.matrix.setPerspective(this.perspectiveFov * (float) (Math.PI / 180.0), this.width / this.height, near, far, zZeroToOne))
-            : dest.set(
-               this.matrix.setOrtho(0.0F, this.width, this.orthoInvertY ? this.height : 0.0F, this.orthoInvertY ? 0.0F : this.height, near, far, zZeroToOne)
-            );
       }
+
+      this.isMatrixDirty = false;
+      this.matrixVersion++;
+      float near = this.zFar;
+      float far = this.zNear;
+      boolean zZeroToOne = RenderSystem.getDevice().getDeviceInfo().isZZeroToOne();
+      return this.projectionType == ProjectionType.PERSPECTIVE
+         ? dest.set(this.matrix.setPerspective(this.perspectiveFov * (float) (Math.PI / 180.0), this.width / this.height, near, far, zZeroToOne))
+         : dest.set(
+            this.matrix.setOrtho(0.0F, this.width, this.orthoInvertY ? this.height : 0.0F, this.orthoInvertY ? 0.0F : this.height, near, far, zZeroToOne)
+         );
    }
 
    public long getMatrixVersion() {

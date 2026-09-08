@@ -41,10 +41,9 @@ public class WorldBorderRenderer implements AutoCloseable {
    private double lastBorderMaxX;
    private double lastBorderMinZ;
    private double lastBorderMaxZ;
-   @Nullable
-   private AbstractTexture texture;
+   private @Nullable AbstractTexture texture;
    private final GpuBuffer worldBorderBuffer = RenderSystem.getDevice()
-      .createBuffer(() -> "World border vertex buffer", 40, 16L * (long)DefaultVertexFormat.POSITION_TEX.getVertexSize());
+      .createBuffer(() -> "World border vertex buffer", 40, 16L * DefaultVertexFormat.POSITION_TEX.getVertexSize());
    private final RenderSystem.AutoStorageIndexBuffer indices = RenderSystem.getSequentialBuffer(PrimitiveTopology.QUADS);
    private final TextureManager textureManager;
 
@@ -73,13 +72,13 @@ public class WorldBorderRenderer implements AutoCloseable {
          double borderMaxX = state.maxX - 0.01;
          double borderMinZ = state.minZ + 0.01;
          double borderMaxZ = state.maxZ - 0.01;
-         double minZ = Math.max((double)Mth.floor(cameraZ - renderDistance), borderMinZ);
-         double maxZ = Math.min((double)Mth.ceil(cameraZ + renderDistance), borderMaxZ);
-         float u0z = (float)(Mth.floor(minZ) & 1) * 0.5F;
+         double minZ = Math.max(Mth.floor(cameraZ - renderDistance), borderMinZ);
+         double maxZ = Math.min(Mth.ceil(cameraZ + renderDistance), borderMaxZ);
+         float u0z = (Mth.floor(minZ) & 1) * 0.5F;
          float u1z = (float)(maxZ - minZ) / 2.0F;
-         double minX = Math.max((double)Mth.floor(cameraX - renderDistance), borderMinX);
-         double maxX = Math.min((double)Mth.ceil(cameraX + renderDistance), borderMaxX);
-         float u0x = (float)(Mth.floor(minX) & 1) * 0.5F;
+         double minX = Math.max(Mth.floor(cameraX - renderDistance), borderMinX);
+         double maxX = Math.min(Mth.ceil(cameraX + renderDistance), borderMaxX);
+         float u0x = (Mth.floor(minX) & 1) * 0.5F;
          float u1x = (float)(maxX - minX) / 2.0F;
          BufferBuilder bufferBuilder = new BufferBuilder(byteBufferBuilder, PrimitiveTopology.QUADS, DefaultVertexFormat.POSITION_TEX);
          bufferBuilder.addVertex(0.0F, -halfHeightY, (float)(borderMaxZ - minZ)).setUv(u0x, v1);
@@ -182,9 +181,9 @@ public class WorldBorderRenderer implements AutoCloseable {
    }
 
    private GpuBufferSlice prepareDynamicTransforms(final WorldBorderRenderState state, final Vec3 cameraPos) {
-      float red = (float)ARGB.red(state.tint) / 255.0F;
-      float green = (float)ARGB.green(state.tint) / 255.0F;
-      float blue = (float)ARGB.blue(state.tint) / 255.0F;
+      float red = ARGB.red(state.tint) / 255.0F;
+      float green = ARGB.green(state.tint) / 255.0F;
+      float blue = ARGB.blue(state.tint) / 255.0F;
       float offset = (float)(Util.getMillis() % 3000L) / 3000.0F;
       return RenderSystem.getDynamicUniforms()
          .writeTransform(

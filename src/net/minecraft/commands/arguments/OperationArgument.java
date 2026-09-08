@@ -34,15 +34,15 @@ public class OperationArgument implements ArgumentType<OperationArgument.Operati
    public OperationArgument.Operation parse(final StringReader reader) throws CommandSyntaxException {
       if (!reader.canRead()) {
          throw ERROR_INVALID_OPERATION.createWithContext(reader);
-      } else {
-         int start = reader.getCursor();
-
-         while (reader.canRead() && reader.peek() != ' ') {
-            reader.skip();
-         }
-
-         return getOperation(reader.getString().substring(start, reader.getCursor()));
       }
+
+      int start = reader.getCursor();
+
+      while (reader.canRead() && reader.peek() != ' ') {
+         reader.skip();
+      }
+
+      return getOperation(reader.getString().substring(start, reader.getCursor()));
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
@@ -54,11 +54,11 @@ public class OperationArgument implements ArgumentType<OperationArgument.Operati
    }
 
    private static OperationArgument.Operation getOperation(final String op) throws CommandSyntaxException {
-      return (OperationArgument.Operation)(op.equals("><") ? (a, b) -> {
+      return op.equals("><") ? (a, b) -> {
          int swap = a.get();
          a.set(b.get());
          b.set(swap);
-      } : getSimpleOperation(op));
+      } : getSimpleOperation(op);
    }
 
    private static OperationArgument.SimpleOperation getSimpleOperation(final String op) throws CommandSyntaxException {
@@ -68,19 +68,19 @@ public class OperationArgument implements ArgumentType<OperationArgument.Operati
          case "-=" -> (a, b) -> a - b;
          case "*=" -> (a, b) -> a * b;
          case "/=" -> (a, b) -> {
-         if (b == 0) {
-            throw ERROR_DIVIDE_BY_ZERO.create();
-         } else {
-            return Mth.floorDiv(a, b);
-         }
-      };
+            if (b == 0) {
+               throw ERROR_DIVIDE_BY_ZERO.create();
+            } else {
+               return Mth.floorDiv(a, b);
+            }
+         };
          case "%=" -> (a, b) -> {
-         if (b == 0) {
-            throw ERROR_DIVIDE_BY_ZERO.create();
-         } else {
-            return Mth.positiveModulo(a, b);
-         }
-      };
+            if (b == 0) {
+               throw ERROR_DIVIDE_BY_ZERO.create();
+            } else {
+               return Mth.positiveModulo(a, b);
+            }
+         };
          case "<" -> Math::min;
          case ">" -> Math::max;
          default -> throw ERROR_INVALID_OPERATION.create();

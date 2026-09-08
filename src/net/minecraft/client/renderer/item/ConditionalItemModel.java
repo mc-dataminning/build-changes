@@ -34,8 +34,8 @@ public class ConditionalItemModel implements ItemModel {
       final ItemStack item,
       final ItemModelResolver resolver,
       final ItemDisplayContext displayContext,
-      @Nullable final ClientLevel level,
-      @Nullable final ItemOwner owner,
+      final @Nullable ClientLevel level,
+      final @Nullable ItemOwner owner,
       final int seed
    ) {
       output.appendModelIdentityElement(this);
@@ -43,17 +43,16 @@ public class ConditionalItemModel implements ItemModel {
          .update(output, item, resolver, displayContext, level, owner, seed);
    }
 
-   public static record Unbaked(
-      Optional<Transformation> transformation, ConditionalItemModelProperty property, ItemModel.Unbaked onTrue, ItemModel.Unbaked onFalse
-   ) implements ItemModel.Unbaked {
+   public record Unbaked(Optional<Transformation> transformation, ConditionalItemModelProperty property, ItemModel.Unbaked onTrue, ItemModel.Unbaked onFalse)
+      implements ItemModel.Unbaked {
       public static final MapCodec<ConditionalItemModel.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(ConditionalItemModel.Unbaked::transformation),
-                  ConditionalItemModelProperties.MAP_CODEC.forGetter(ConditionalItemModel.Unbaked::property),
-                  ItemModels.CODEC.fieldOf("on_true").forGetter(ConditionalItemModel.Unbaked::onTrue),
-                  ItemModels.CODEC.fieldOf("on_false").forGetter(ConditionalItemModel.Unbaked::onFalse)
-               )
-               .apply(i, ConditionalItemModel.Unbaked::new)
+               Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(ConditionalItemModel.Unbaked::transformation),
+               ConditionalItemModelProperties.MAP_CODEC.forGetter(ConditionalItemModel.Unbaked::property),
+               ItemModels.CODEC.fieldOf("on_true").forGetter(ConditionalItemModel.Unbaked::onTrue),
+               ItemModels.CODEC.fieldOf("on_false").forGetter(ConditionalItemModel.Unbaked::onFalse)
+            )
+            .apply(i, ConditionalItemModel.Unbaked::new)
       );
 
       @Override
@@ -69,18 +68,16 @@ public class ConditionalItemModel implements ItemModel {
          );
       }
 
-      private ItemModelPropertyTest adaptProperty(final ConditionalItemModelProperty originalProperty, @Nullable final RegistryContextSwapper contextSwapper) {
+      private ItemModelPropertyTest adaptProperty(final ConditionalItemModelProperty originalProperty, final @Nullable RegistryContextSwapper contextSwapper) {
          if (contextSwapper == null) {
             return originalProperty;
-         } else {
-            CacheSlot<ClientLevel, ItemModelPropertyTest> remappedModelCache = new CacheSlot<>(
-               context -> swapContext(originalProperty, contextSwapper, context)
-            );
-            return (itemStack, level, owner, seed, displayContext) -> {
-               ItemModelPropertyTest property = (ItemModelPropertyTest)(level == null ? originalProperty : remappedModelCache.compute(level));
-               return property.get(itemStack, level, owner, seed, displayContext);
-            };
          }
+
+         CacheSlot<ClientLevel, ItemModelPropertyTest> remappedModelCache = new CacheSlot<>(context -> swapContext(originalProperty, contextSwapper, context));
+         return (itemStack, level, owner, seed, displayContext) -> {
+            ItemModelPropertyTest property = level == null ? originalProperty : remappedModelCache.compute(level);
+            return property.get(itemStack, level, owner, seed, displayContext);
+         };
       }
 
       private static <T extends ConditionalItemModelProperty> T swapContext(

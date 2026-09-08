@@ -51,14 +51,10 @@ public class RealmsConfigureWorldScreen extends RealmsScreen {
    private static final Component PLAY_TEXT = Component.translatable("mco.selectServer.play");
    static final int FOOTER_SEPARATOR_HEIGHT = 2;
    private final RealmsMainScreen lastScreen;
-   @Nullable
-   private RealmsServer serverData;
-   @Nullable
-   private PreferredRegionsDto regions;
-   @Nullable
-   private Subscription subscription;
-   @Nullable
-   private RealmTierConfigurationDto tierConfiguration;
+   private @Nullable RealmsServer serverData;
+   private @Nullable PreferredRegionsDto regions;
+   private @Nullable Subscription subscription;
+   private @Nullable RealmTierConfigurationDto tierConfiguration;
    private boolean tierConfigurationFetched;
    private final Map<RealmsRegion, ServiceQuality> regionServiceQuality = new LinkedHashMap<>();
    private final long serverId;
@@ -66,14 +62,12 @@ public class RealmsConfigureWorldScreen extends RealmsScreen {
    private final TabManager tabManager = new TabManager(
       x$0 -> this.addRenderableWidget(x$0), x$0 -> this.removeWidget(x$0), this::onTabSelected, this::onTabDeselected
    );
-   @Nullable
-   private Button playButton;
-   @Nullable
-   private MenuTabBar tabNavigationBar;
+   private @Nullable Button playButton;
+   private @Nullable MenuTabBar tabNavigationBar;
    final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
 
    public RealmsConfigureWorldScreen(
-      final RealmsMainScreen lastScreen, final long serverId, @Nullable final RealmsServer serverData, @Nullable final PreferredRegionsDto regions
+      final RealmsMainScreen lastScreen, final long serverId, final @Nullable RealmsServer serverData, final @Nullable PreferredRegionsDto regions
    ) {
       super(Component.empty());
       this.lastScreen = lastScreen;
@@ -321,9 +315,9 @@ public class RealmsConfigureWorldScreen extends RealmsScreen {
          }
 
          this.stateChanged();
-      } catch (RealmsServiceException var5) {
-         LOGGER.error("Couldn't save slot settings", var5);
-         this.minecraft.gui.setScreen(new RealmsGenericErrorScreen(var5, this));
+      } catch (RealmsServiceException e) {
+         LOGGER.error("Couldn't save slot settings", e);
+         this.minecraft.gui.setScreen(new RealmsGenericErrorScreen(e, this));
          return;
       }
 
@@ -334,9 +328,9 @@ public class RealmsConfigureWorldScreen extends RealmsScreen {
       final String name,
       final String desc,
       final RegionSelectionPreference preference,
-      @Nullable final RealmsRegion region,
-      @Nullable final Integer renderDistance,
-      @Nullable final Integer simulationDistance
+      final @Nullable RealmsRegion region,
+      final @Nullable Integer renderDistance,
+      final @Nullable Integer simulationDistance
    ) {
       String description = StringUtil.isBlank(desc) ? "" : desc;
       String finalName = StringUtil.isBlank(name) ? "" : name;
@@ -349,42 +343,42 @@ public class RealmsConfigureWorldScreen extends RealmsScreen {
          || regionSelection != currentRegionSelection.preferredRegion;
       if (!configurationChanged && renderDistance == null && simulationDistance == null) {
          return true;
-      } else {
-         RealmsClient client = RealmsClient.getOrCreate();
+      }
 
-         try {
-            RegionSelectionPreferenceDto regionSelectionPreference = new RegionSelectionPreferenceDto(preference, regionSelection);
-            if (configurationChanged) {
-               RealmsSlot realmsSlot = this.serverData.slots.get(this.serverData.activeSlot);
-               client.updateConfiguration(
-                  this.serverData.id, finalName, description, regionSelectionPreference, realmsSlot.slotId, realmsSlot.options, realmsSlot.settings
-               );
-            }
+      RealmsClient client = RealmsClient.getOrCreate();
 
-            if (renderDistance != null) {
-               client.updateRenderDistance(this.serverData.id, renderDistance);
-            }
-
-            if (simulationDistance != null) {
-               client.updateSimulationDistance(this.serverData.id, simulationDistance);
-            }
-
-            if (configurationChanged) {
-               this.serverData.regionSelectionPreference = regionSelectionPreference;
-               this.serverData.name = name;
-               this.serverData.motd = description;
-            }
-
-            this.stateChanged();
-         } catch (RealmsServiceException var15) {
-            LOGGER.error("Couldn't save settings", var15);
-            this.minecraft.gui.setScreen(new RealmsGenericErrorScreen(var15, this));
-            return false;
+      try {
+         RegionSelectionPreferenceDto regionSelectionPreference = new RegionSelectionPreferenceDto(preference, regionSelection);
+         if (configurationChanged) {
+            RealmsSlot realmsSlot = this.serverData.slots.get(this.serverData.activeSlot);
+            client.updateConfiguration(
+               this.serverData.id, finalName, description, regionSelectionPreference, realmsSlot.slotId, realmsSlot.options, realmsSlot.settings
+            );
          }
 
-         this.minecraft.gui.setScreen(this);
-         return true;
+         if (renderDistance != null) {
+            client.updateRenderDistance(this.serverData.id, renderDistance);
+         }
+
+         if (simulationDistance != null) {
+            client.updateSimulationDistance(this.serverData.id, simulationDistance);
+         }
+
+         if (configurationChanged) {
+            this.serverData.regionSelectionPreference = regionSelectionPreference;
+            this.serverData.name = name;
+            this.serverData.motd = description;
+         }
+
+         this.stateChanged();
+      } catch (RealmsServiceException e) {
+         LOGGER.error("Couldn't save settings", e);
+         this.minecraft.gui.setScreen(new RealmsGenericErrorScreen(e, this));
+         return false;
       }
+
+      this.minecraft.gui.setScreen(this);
+      return true;
    }
 
    public void openTheWorld(final boolean join) {
@@ -423,8 +417,8 @@ public class RealmsConfigureWorldScreen extends RealmsScreen {
 
          this.stateChanged();
          return true;
-      } catch (RealmsServiceException var6) {
-         LOGGER.error("Couldn't invite user", var6);
+      } catch (RealmsServiceException e) {
+         LOGGER.error("Couldn't invite user", e);
          return false;
       }
    }

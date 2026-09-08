@@ -44,7 +44,7 @@ public abstract class AbstractEndPortalRenderer<T extends TheEndPortalBlockEntit
       final S state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
       state.facesToShow.clear();
@@ -59,8 +59,7 @@ public abstract class AbstractEndPortalRenderer<T extends TheEndPortalBlockEntit
    protected static void submitCube(
       final Collection<Direction> facesToShow, final RenderType renderType, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector
    ) {
-      submitCube(facesToShow, renderType, poseStack, submitNodeCollector, vertex -> {
-      });
+      submitCube(facesToShow, renderType, poseStack, submitNodeCollector, vertex -> {});
    }
 
    private static void submitCube(

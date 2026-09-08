@@ -24,8 +24,7 @@ public class ShapedRecipeBuilder implements RecipeBuilder {
    private final List<String> rows = Lists.newArrayList();
    private final Map<Character, Ingredient> key = Maps.newLinkedHashMap();
    private final RecipeUnlockAdvancementBuilder advancementBuilder = new RecipeUnlockAdvancementBuilder();
-   @Nullable
-   private String group;
+   private @Nullable String group;
    private boolean showNotification = true;
 
    private ShapedRecipeBuilder(final HolderGetter<Item> items, final RecipeCategory category, final ItemStackTemplate result) {
@@ -57,21 +56,23 @@ public class ShapedRecipeBuilder implements RecipeBuilder {
    public ShapedRecipeBuilder define(final Character symbol, final Ingredient ingredient) {
       if (this.key.containsKey(symbol)) {
          throw new IllegalArgumentException("Symbol '" + symbol + "' is already defined!");
-      } else if (symbol == ' ') {
-         throw new IllegalArgumentException("Symbol ' ' (whitespace) is reserved and cannot be defined");
-      } else {
-         this.key.put(symbol, ingredient);
-         return this;
       }
+
+      if (symbol == ' ') {
+         throw new IllegalArgumentException("Symbol ' ' (whitespace) is reserved and cannot be defined");
+      }
+
+      this.key.put(symbol, ingredient);
+      return this;
    }
 
    public ShapedRecipeBuilder pattern(final String row) {
       if (!this.rows.isEmpty() && row.length() != this.rows.get(0).length()) {
          throw new IllegalArgumentException("Pattern must be the same width on every line!");
-      } else {
-         this.rows.add(row);
-         return this;
       }
+
+      this.rows.add(row);
+      return this;
    }
 
    public ShapedRecipeBuilder unlockedBy(final String name, final Criterion<?> criterion) {
@@ -79,7 +80,7 @@ public class ShapedRecipeBuilder implements RecipeBuilder {
       return this;
    }
 
-   public ShapedRecipeBuilder group(@Nullable final String group) {
+   public ShapedRecipeBuilder group(final @Nullable String group) {
       this.group = group;
       return this;
    }

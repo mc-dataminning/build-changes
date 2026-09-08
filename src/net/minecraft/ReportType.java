@@ -122,8 +122,8 @@ public record ReportType(String header, List<String> nuggets) {
 
    public String getErrorComment() {
       try {
-         return this.nuggets.get((int)(Util.getNanos() % (long)this.nuggets.size()));
-      } catch (Throwable var2) {
+         return this.nuggets.get((int)(Util.getNanos() % this.nuggets.size()));
+      } catch (Throwable ignored) {
          return "Witty comment unavailable :(";
       }
    }

@@ -44,9 +44,9 @@ public class SkinReportScreen extends AbstractReportScreen<SkinReport.Builder> {
       this.selectReasonButton = Button.builder(
             SELECT_REASON,
             var1x -> this.minecraft.gui.setScreen(new ReportReasonSelectionScreen(this, this.reportBuilder.reason(), ReportType.SKIN, reason -> {
-                  this.reportBuilder.setReason(reason);
-                  this.onReportChanged();
-               }))
+               this.reportBuilder.setReason(reason);
+               this.onReportChanged();
+            }))
          )
          .width(178)
          .build();

@@ -9,7 +9,7 @@ public enum MobEffectCategory {
 
    private final ChatFormatting tooltipFormatting;
 
-   private MobEffectCategory(final ChatFormatting tooltipFormatting) {
+   MobEffectCategory(final ChatFormatting tooltipFormatting) {
       this.tooltipFormatting = tooltipFormatting;
    }
 

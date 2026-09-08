@@ -20,10 +20,8 @@ public class SetItemDamageFunction extends LootItemConditionalFunction {
    private static final Logger LOGGER = LogUtils.getLogger();
    public static final MapCodec<SetItemDamageFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
-            .and(
-               i.group(ContextFloatProviders.CODEC.fieldOf("damage").forGetter(f -> f.damage), Codec.BOOL.optionalFieldOf("add", false).forGetter(f -> f.add))
-            )
-            .apply(i, SetItemDamageFunction::new)
+         .and(i.group(ContextFloatProviders.CODEC.fieldOf("damage").forGetter(f -> f.damage), Codec.BOOL.optionalFieldOf("add", false).forGetter(f -> f.add)))
+         .apply(i, SetItemDamageFunction::new)
    );
    private final Holder<ContextFloatProvider> damage;
    private final boolean add;
@@ -49,9 +47,9 @@ public class SetItemDamageFunction extends LootItemConditionalFunction {
    public ItemStack run(final ItemStack itemStack, final LootContext context) {
       if (itemStack.isDamageableItem()) {
          int maxDamage = itemStack.getMaxDamage();
-         float base = this.add ? 1.0F - (float)itemStack.getDamageValue() / (float)maxDamage : 0.0F;
+         float base = this.add ? 1.0F - (float)itemStack.getDamageValue() / maxDamage : 0.0F;
          float pct = 1.0F - Mth.clamp(this.damage.value().getFloat(context) + base, 0.0F, 1.0F);
-         itemStack.setDamageValue(Mth.floor(pct * (float)maxDamage));
+         itemStack.setDamageValue(Mth.floor(pct * maxDamage));
       } else {
          LOGGER.warn("Couldn't set damage of loot item {}", itemStack);
       }

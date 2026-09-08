@@ -62,9 +62,7 @@ import net.minecraft.world.level.block.entity.BannerPattern;
 import net.minecraft.world.level.levelgen.structure.Structure;
 
 public class Main {
-   @SuppressForbidden(
-      reason = "System.out needed before bootstrap"
-   )
+   @SuppressForbidden(reason = "System.out needed before bootstrap")
    public static void main(final String[] args) throws IOException {
       SharedConstants.tryDetectVersion();
       OptionParser parser = new OptionParser();
@@ -165,8 +163,8 @@ public class Main {
       );
       tradeRebalancePack.addProvider(
          o -> PackMetadataGenerator.forFeaturePack(
-               o, Component.translatable("dataPack.trade_rebalance.description"), FeatureFlagSet.of(FeatureFlags.TRADE_REBALANCE)
-            )
+            o, Component.translatable("dataPack.trade_rebalance.description"), FeatureFlagSet.of(FeatureFlags.TRADE_REBALANCE)
+         )
       );
       CompletableFuture<HolderLookup.Provider> patchedRegistries = tradeRebalanceWorldRegistries.thenApply(RegistrySetBuilder.PatchedRegistries::full);
       tradeRebalancePack.addProvider(bindRegistries(TradeRebalanceEnchantmentTagsProvider::new, patchedRegistries));
@@ -174,14 +172,14 @@ public class Main {
       serverVanillaPack = generator.getBuiltinDatapack(server, "redstone_experiments");
       serverVanillaPack.addProvider(
          o -> PackMetadataGenerator.forFeaturePack(
-               o, Component.translatable("dataPack.redstone_experiments.description"), FeatureFlagSet.of(FeatureFlags.REDSTONE_EXPERIMENTS)
-            )
+            o, Component.translatable("dataPack.redstone_experiments.description"), FeatureFlagSet.of(FeatureFlags.REDSTONE_EXPERIMENTS)
+         )
       );
       serverVanillaPack = generator.getBuiltinDatapack(server, "minecart_improvements");
       serverVanillaPack.addProvider(
          o -> PackMetadataGenerator.forFeaturePack(
-               o, Component.translatable("dataPack.minecart_improvements.description"), FeatureFlagSet.of(FeatureFlags.MINECART_IMPROVEMENTS)
-            )
+            o, Component.translatable("dataPack.minecart_improvements.description"), FeatureFlagSet.of(FeatureFlags.MINECART_IMPROVEMENTS)
+         )
       );
    }
 }

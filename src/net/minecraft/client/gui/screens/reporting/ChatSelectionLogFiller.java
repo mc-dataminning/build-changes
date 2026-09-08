@@ -16,12 +16,10 @@ public class ChatSelectionLogFiller {
    private final ChatLog log;
    private final ChatReportContextBuilder contextBuilder;
    private final Predicate<LoggedChatMessage.Player> canReport;
-   @Nullable
-   private SignedMessageLink previousLink = null;
+   private @Nullable SignedMessageLink previousLink = null;
    private int eventId;
    private int missedCount;
-   @Nullable
-   private PlayerChatMessage lastMessage;
+   private @Nullable PlayerChatMessage lastMessage;
 
    public ChatSelectionLogFiller(final ReportingContext reportingContext, final Predicate<LoggedChatMessage.Player> canReport) {
       this.log = reportingContext.chatLog();

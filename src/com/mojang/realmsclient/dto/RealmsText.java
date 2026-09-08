@@ -13,10 +13,9 @@ public class RealmsText {
    private static final String TRANSLATION_KEY = "translationKey";
    private static final String ARGS = "args";
    private final String translationKey;
-   @Nullable
-   private final String[] args;
+   private final String @Nullable [] args;
 
-   private RealmsText(final String translationKey, @Nullable final String[] args) {
+   private RealmsText(final String translationKey, final String @Nullable [] args) {
       this.translationKey = translationKey;
       this.args = args;
    }
@@ -25,8 +24,7 @@ public class RealmsText {
       return Objects.requireNonNullElse(this.createComponent(), fallback);
    }
 
-   @Nullable
-   public Component createComponent() {
+   public @Nullable Component createComponent() {
       if (!Language.getInstance().has(this.translationKey)) {
          return null;
       } else {

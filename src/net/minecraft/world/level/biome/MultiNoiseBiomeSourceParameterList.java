@@ -23,7 +23,7 @@ import net.minecraft.resources.ResourceKey;
 public class MultiNoiseBiomeSourceParameterList {
    public static final Codec<MultiNoiseBiomeSourceParameterList> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(MultiNoiseBiomeSourceParameterList.Preset.CODEC.fieldOf("preset").forGetter(e -> e.preset), RegistryOps.retrieveGetter(Registries.BIOME))
-            .apply(i, MultiNoiseBiomeSourceParameterList::new)
+         .apply(i, MultiNoiseBiomeSourceParameterList::new)
    );
    public static final Codec<Holder<MultiNoiseBiomeSourceParameterList>> CODEC = RegistryCodecs.holder(
       Registries.MULTI_NOISE_BIOME_SOURCE_PARAMETER_LIST, DIRECT_CODEC
@@ -47,7 +47,7 @@ public class MultiNoiseBiomeSourceParameterList {
          .collect(Collectors.toMap(e -> (MultiNoiseBiomeSourceParameterList.Preset)e, e -> e.provider().apply(k -> k)));
    }
 
-   public static record Preset(Identifier id, MultiNoiseBiomeSourceParameterList.Preset.SourceProvider provider) {
+   public record Preset(Identifier id, MultiNoiseBiomeSourceParameterList.Preset.SourceProvider provider) {
       public static final MultiNoiseBiomeSourceParameterList.Preset NETHER = new MultiNoiseBiomeSourceParameterList.Preset(
          Identifier.withDefaultNamespace("nether"),
          new MultiNoiseBiomeSourceParameterList.Preset.SourceProvider() {
@@ -78,8 +78,8 @@ public class MultiNoiseBiomeSourceParameterList {
       public static final Codec<MultiNoiseBiomeSourceParameterList.Preset> CODEC = Identifier.CODEC
          .flatXmap(
             name -> Optional.ofNullable(BY_NAME.get(name))
-                  .<DataResult>map(DataResult::success)
-                  .orElseGet(() -> DataResult.error(() -> "Unknown preset: " + name)),
+               .<DataResult>map(DataResult::success)
+               .orElseGet(() -> DataResult.error(() -> "Unknown preset: " + name)),
             p -> DataResult.success(p.id)
          );
 

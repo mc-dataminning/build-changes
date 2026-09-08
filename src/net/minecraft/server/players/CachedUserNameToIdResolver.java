@@ -63,10 +63,10 @@ public class CachedUserNameToIdResolver implements UserNameToIdResolver {
    private Optional<NameAndId> lookupGameProfile(final GameProfileRepository profileRepository, final String name) {
       if (!StringUtil.isValidPlayerName(name)) {
          return this.createUnknownProfile(name);
-      } else {
-         Optional<NameAndId> profile = profileRepository.findProfileByName(name).map(NameAndId::new);
-         return profile.isEmpty() ? this.createUnknownProfile(name) : profile;
       }
+
+      Optional<NameAndId> profile = profileRepository.findProfileByName(name).map(NameAndId::new);
+      return profile.isEmpty() ? this.createUnknownProfile(name) : profile;
    }
 
    private Optional<NameAndId> createUnknownProfile(final String name) {
@@ -136,10 +136,10 @@ public class CachedUserNameToIdResolver implements UserNameToIdResolver {
       CachedUserNameToIdResolver.GameProfileInfo profileInfo = this.profilesByUUID.get(id);
       if (profileInfo == null) {
          return Optional.empty();
-      } else {
-         profileInfo.setLastAccess(this.getNextOperation());
-         return Optional.of(profileInfo.nameAndId());
       }
+
+      profileInfo.setLastAccess(this.getNextOperation());
+      return Optional.of(profileInfo.nameAndId());
    }
 
    private static DateFormat createDateFormat() {
@@ -149,23 +149,17 @@ public class CachedUserNameToIdResolver implements UserNameToIdResolver {
    private List<CachedUserNameToIdResolver.GameProfileInfo> load() {
       List<CachedUserNameToIdResolver.GameProfileInfo> result = Lists.newArrayList();
 
-      try {
-         Object var9;
-         try (Reader reader = Files.newReader(this.file, StandardCharsets.UTF_8)) {
-            JsonArray entryList = (JsonArray)this.gson.fromJson(reader, JsonArray.class);
-            if (entryList != null) {
-               DateFormat dateFormat = createDateFormat();
-               entryList.forEach(element -> readGameProfile(element, dateFormat).ifPresent(result::add));
-               return result;
-            }
-
-            var9 = result;
+      try (Reader reader = Files.newReader(this.file, StandardCharsets.UTF_8)) {
+         JsonArray entryList = (JsonArray)this.gson.fromJson(reader, JsonArray.class);
+         if (entryList == null) {
+            return result;
          }
 
-         return (List<CachedUserNameToIdResolver.GameProfileInfo>)var9;
+         DateFormat dateFormat = createDateFormat();
+         entryList.forEach(element -> readGameProfile(element, dateFormat).ifPresent(result::add));
       } catch (FileNotFoundException var7) {
-      } catch (JsonParseException | IOException var8) {
-         LOGGER.warn("Failed to load profile cache {}", this.file, var8);
+      } catch (IOException | JsonParseException e) {
+         LOGGER.warn("Failed to load profile cache {}", this.file, e);
       }
 
       return result;
@@ -188,7 +182,7 @@ public class CachedUserNameToIdResolver implements UserNameToIdResolver {
       return ImmutableList.copyOf(this.profilesByUUID.values())
          .stream()
          .sorted(Comparator.comparing(CachedUserNameToIdResolver.GameProfileInfo::lastAccess).reversed())
-         .limit((long)limit);
+         .limit(limit);
    }
 
    private static JsonElement writeGameProfile(final CachedUserNameToIdResolver.GameProfileInfo src, final DateFormat dateFormat) {
@@ -210,8 +204,8 @@ public class CachedUserNameToIdResolver implements UserNameToIdResolver {
                try {
                   Date expirationDate = dateFormat.parse(dateAsString);
                   return Optional.of(new CachedUserNameToIdResolver.GameProfileInfo(nameAndId, expirationDate));
-               } catch (ParseException var7) {
-                  LOGGER.warn("Failed to parse date {}", dateAsString, var7);
+               } catch (ParseException e) {
+                  LOGGER.warn("Failed to parse date {}", dateAsString, e);
                }
             }
          }

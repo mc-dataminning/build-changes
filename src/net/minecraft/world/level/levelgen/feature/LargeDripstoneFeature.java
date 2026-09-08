@@ -40,20 +40,18 @@ public record LargeDripstoneFeature(
 ) implements Feature {
    public static final MapCodec<LargeDripstoneFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("replaceable_blocks").forGetter(LargeDripstoneFeature::replaceableBlocks),
-               Codec.intRange(1, 512).optionalFieldOf("floor_to_ceiling_search_range", 30).forGetter(LargeDripstoneFeature::floorToCeilingSearchRange),
-               IntProviders.codec(1, 16).fieldOf("column_radius").forGetter(LargeDripstoneFeature::columnRadius),
-               FloatProviders.codec(0.0F, 20.0F).fieldOf("height_scale").forGetter(LargeDripstoneFeature::heightScale),
-               Codec.floatRange(0.1F, 1.0F)
-                  .fieldOf("max_column_radius_to_cave_height_ratio")
-                  .forGetter(LargeDripstoneFeature::maxColumnRadiusToCaveHeightRatio),
-               FloatProviders.codec(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter(LargeDripstoneFeature::stalactiteBluntness),
-               FloatProviders.codec(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter(LargeDripstoneFeature::stalagmiteBluntness),
-               FloatProviders.codec(0.0F, 2.0F).fieldOf("wind_speed").forGetter(LargeDripstoneFeature::windSpeed),
-               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter(LargeDripstoneFeature::minRadiusForWind),
-               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter(LargeDripstoneFeature::minBluntnessForWind)
-            )
-            .apply(i, LargeDripstoneFeature::new)
+            RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("replaceable_blocks").forGetter(LargeDripstoneFeature::replaceableBlocks),
+            Codec.intRange(1, 512).optionalFieldOf("floor_to_ceiling_search_range", 30).forGetter(LargeDripstoneFeature::floorToCeilingSearchRange),
+            IntProviders.codec(1, 16).fieldOf("column_radius").forGetter(LargeDripstoneFeature::columnRadius),
+            FloatProviders.codec(0.0F, 20.0F).fieldOf("height_scale").forGetter(LargeDripstoneFeature::heightScale),
+            Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter(LargeDripstoneFeature::maxColumnRadiusToCaveHeightRatio),
+            FloatProviders.codec(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter(LargeDripstoneFeature::stalactiteBluntness),
+            FloatProviders.codec(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter(LargeDripstoneFeature::stalagmiteBluntness),
+            FloatProviders.codec(0.0F, 2.0F).fieldOf("wind_speed").forGetter(LargeDripstoneFeature::windSpeed),
+            Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter(LargeDripstoneFeature::minRadiusForWind),
+            Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter(LargeDripstoneFeature::minBluntnessForWind)
+         )
+         .apply(i, LargeDripstoneFeature::new)
    );
 
    @Override
@@ -65,53 +63,55 @@ public record LargeDripstoneFeature(
    public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
       if (!SpeleothemUtils.isEmptyOrWater(level, origin)) {
          return false;
-      } else {
-         Optional<Column> column = Column.scan(
-            level,
-            origin,
-            this.floorToCeilingSearchRange,
-            SpeleothemUtils::isEmptyOrWater,
-            state -> SpeleothemUtils.isBaseOrLava(state, Blocks.DRIPSTONE_BLOCK, this.replaceableBlocks)
-         );
-         if (column.isEmpty() || !(column.get() instanceof Column.Range columnRange)) {
-            return false;
-         } else if (columnRange.height() < 4) {
-            return false;
-         } else {
-            int maxColumnRadiusBasedOnColumnHeight = (int)((float)columnRange.height() * this.maxColumnRadiusToCaveHeightRatio);
-            int maxColumnRadius = Mth.clamp(maxColumnRadiusBasedOnColumnHeight, this.columnRadius.minInclusive(), this.columnRadius.maxInclusive());
-            int radius = Mth.randomBetweenInclusive(random, this.columnRadius.minInclusive(), maxColumnRadius);
-            LargeDripstoneFeature.LargeDripstone stalactite = makeDripstone(
-               origin.atY(columnRange.ceiling() - 1), false, random, radius, this.stalactiteBluntness, this.heightScale
-            );
-            LargeDripstoneFeature.LargeDripstone stalagmite = makeDripstone(
-               origin.atY(columnRange.floor() + 1), true, random, radius, this.stalagmiteBluntness, this.heightScale
-            );
-            LargeDripstoneFeature.WindOffsetter wind;
-            if (stalactite.isSuitableForWind(this.minRadiusForWind, this.minBluntnessForWind)
-               && stalagmite.isSuitableForWind(this.minRadiusForWind, this.minBluntnessForWind)) {
-               wind = new LargeDripstoneFeature.WindOffsetter(origin.getY(), random, this.windSpeed, 16 - radius);
-            } else {
-               wind = LargeDripstoneFeature.WindOffsetter.noWind();
-            }
-
-            boolean stalactiteBaseEmbeddedInStone = stalactite.moveBackUntilBaseIsInsideStoneAndShrinkRadiusIfNecessary(level, wind);
-            boolean stalagmiteBaseEmbeddedInStone = stalagmite.moveBackUntilBaseIsInsideStoneAndShrinkRadiusIfNecessary(level, wind);
-            if (stalactiteBaseEmbeddedInStone) {
-               stalactite.placeBlocks(level, random, wind);
-            }
-
-            if (stalagmiteBaseEmbeddedInStone) {
-               stalagmite.placeBlocks(level, random, wind);
-            }
-
-            if (SharedConstants.DEBUG_LARGE_DRIPSTONE) {
-               this.placeDebugMarkers(level, origin, columnRange, wind);
-            }
-
-            return true;
-         }
       }
+
+      Optional<Column> column = Column.scan(
+         level,
+         origin,
+         this.floorToCeilingSearchRange,
+         SpeleothemUtils::isEmptyOrWater,
+         state -> SpeleothemUtils.isBaseOrLava(state, Blocks.DRIPSTONE_BLOCK, this.replaceableBlocks)
+      );
+      if (!(!column.isEmpty() && column.get() instanceof Column.Range columnRange)) {
+         return false;
+      }
+
+      if (columnRange.height() < 4) {
+         return false;
+      }
+
+      int maxColumnRadiusBasedOnColumnHeight = (int)(columnRange.height() * this.maxColumnRadiusToCaveHeightRatio);
+      int maxColumnRadius = Mth.clamp(maxColumnRadiusBasedOnColumnHeight, this.columnRadius.minInclusive(), this.columnRadius.maxInclusive());
+      int radius = Mth.randomBetweenInclusive(random, this.columnRadius.minInclusive(), maxColumnRadius);
+      LargeDripstoneFeature.LargeDripstone stalactite = makeDripstone(
+         origin.atY(columnRange.ceiling() - 1), false, random, radius, this.stalactiteBluntness, this.heightScale
+      );
+      LargeDripstoneFeature.LargeDripstone stalagmite = makeDripstone(
+         origin.atY(columnRange.floor() + 1), true, random, radius, this.stalagmiteBluntness, this.heightScale
+      );
+      LargeDripstoneFeature.WindOffsetter wind;
+      if (stalactite.isSuitableForWind(this.minRadiusForWind, this.minBluntnessForWind)
+         && stalagmite.isSuitableForWind(this.minRadiusForWind, this.minBluntnessForWind)) {
+         wind = new LargeDripstoneFeature.WindOffsetter(origin.getY(), random, this.windSpeed, 16 - radius);
+      } else {
+         wind = LargeDripstoneFeature.WindOffsetter.noWind();
+      }
+
+      boolean stalactiteBaseEmbeddedInStone = stalactite.moveBackUntilBaseIsInsideStoneAndShrinkRadiusIfNecessary(level, wind);
+      boolean stalagmiteBaseEmbeddedInStone = stalagmite.moveBackUntilBaseIsInsideStoneAndShrinkRadiusIfNecessary(level, wind);
+      if (stalactiteBaseEmbeddedInStone) {
+         stalactite.placeBlocks(level, random, wind);
+      }
+
+      if (stalagmiteBaseEmbeddedInStone) {
+         stalagmite.placeBlocks(level, random, wind);
+      }
+
+      if (SharedConstants.DEBUG_LARGE_DRIPSTONE) {
+         this.placeDebugMarkers(level, origin, columnRange, wind);
+      }
+
+      return true;
    }
 
    private static LargeDripstoneFeature.LargeDripstone makeDripstone(
@@ -122,7 +122,7 @@ public record LargeDripstoneFeature(
       final FloatProvider bluntness,
       final FloatProvider heightScale
    ) {
-      return new LargeDripstoneFeature.LargeDripstone(root, pointingUp, radius, (double)bluntness.sample(random), (double)heightScale.sample(random));
+      return new LargeDripstoneFeature.LargeDripstone(root, pointingUp, radius, bluntness.sample(random), heightScale.sample(random));
    }
 
    private void placeDebugMarkers(final WorldGenLevel level, final BlockPos origin, final Column.Range range, final LargeDripstoneFeature.WindOffsetter wind) {
@@ -181,18 +181,18 @@ public record LargeDripstoneFeature(
       }
 
       private int getHeightAtRadius(final float checkRadius) {
-         return (int)SpeleothemUtils.getSpeleothemHeight((double)checkRadius, (double)this.radius, this.scale, this.bluntness);
+         return (int)SpeleothemUtils.getSpeleothemHeight(checkRadius, this.radius, this.scale, this.bluntness);
       }
 
       private void placeBlocks(final WorldGenLevel level, final RandomSource random, final LargeDripstoneFeature.WindOffsetter wind) {
          for (int dx = -this.radius; dx <= this.radius; dx++) {
             for (int dz = -this.radius; dz <= this.radius; dz++) {
-               float currentRadius = Mth.sqrt((float)(dx * dx + dz * dz));
-               if (!(currentRadius > (float)this.radius)) {
+               float currentRadius = Mth.sqrt(dx * dx + dz * dz);
+               if (!(currentRadius > this.radius)) {
                   int height = this.getHeightAtRadius(currentRadius);
                   if (height > 0) {
-                     if ((double)random.nextFloat() < 0.2) {
-                        height = (int)((float)height * Mth.randomBetween(random, 0.8F, 1.0F));
+                     if (random.nextFloat() < 0.2) {
+                        height = (int)(height * Mth.randomBetween(random, 0.8F, 1.0F));
                      }
 
                      BlockPos.MutableBlockPos pos = this.root.offset(dx, 0, dz).mutable();
@@ -218,14 +218,13 @@ public record LargeDripstoneFeature(
       }
 
       private boolean isSuitableForWind(final int minRadiusForWind, final float minBluntnessForWind) {
-         return this.radius >= minRadiusForWind && this.bluntness >= (double)minBluntnessForWind;
+         return this.radius >= minRadiusForWind && this.bluntness >= minBluntnessForWind;
       }
    }
 
    private static final class WindOffsetter {
       private final int originY;
-      @Nullable
-      private final Vec3 windSpeed;
+      private final @Nullable Vec3 windSpeed;
       private final int maxOffset;
 
       private WindOffsetter(final int originY, final RandomSource random, final FloatProvider windSpeedRange, final int maxOffset) {
@@ -233,7 +232,7 @@ public record LargeDripstoneFeature(
          this.maxOffset = maxOffset;
          float speed = windSpeedRange.sample(random);
          float direction = Mth.randomBetween(random, 0.0F, (float) Math.PI);
-         this.windSpeed = new Vec3((double)(Mth.cos((double)direction) * speed), 0.0, (double)(Mth.sin((double)direction) * speed));
+         this.windSpeed = new Vec3(Mth.cos(direction) * speed, 0.0, Mth.sin(direction) * speed);
       }
 
       private WindOffsetter() {
@@ -249,13 +248,13 @@ public record LargeDripstoneFeature(
       private BlockPos offset(final BlockPos pos) {
          if (this.windSpeed == null) {
             return pos;
-         } else {
-            int dy = this.originY - pos.getY();
-            Vec3 totalWindAdjust = this.windSpeed.scale((double)dy);
-            int dx = Mth.clamp(Mth.floor(totalWindAdjust.x), -this.maxOffset, this.maxOffset);
-            int dz = Mth.clamp(Mth.floor(totalWindAdjust.z), -this.maxOffset, this.maxOffset);
-            return pos.offset(dx, 0, dz);
          }
+
+         int dy = this.originY - pos.getY();
+         Vec3 totalWindAdjust = this.windSpeed.scale(dy);
+         int dx = Mth.clamp(Mth.floor(totalWindAdjust.x), -this.maxOffset, this.maxOffset);
+         int dz = Mth.clamp(Mth.floor(totalWindAdjust.z), -this.maxOffset, this.maxOffset);
+         return pos.offset(dx, 0, dz);
       }
    }
 }

@@ -10,7 +10,7 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 public record StructureCheck(HolderSet<Structure> requiredStructures) implements SpawnCondition {
    public static final MapCodec<StructureCheck> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(RegistryCodecs.holderSet(Registries.STRUCTURE).fieldOf("structures").forGetter(StructureCheck::requiredStructures))
-            .apply(i, StructureCheck::new)
+         .apply(i, StructureCheck::new)
    );
 
    public boolean test(final SpawnContext context) {

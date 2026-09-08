@@ -19,11 +19,11 @@ public interface SpawnPlacementTypes {
       }
    };
    SpawnPlacementType IN_LAVA = (level, blockPos, type) -> type != null && level.getWorldBorder().isWithinBounds(blockPos)
-         ? level.getFluidState(blockPos).is(FluidTags.LAVA)
-         : false;
+      ? level.getFluidState(blockPos).is(FluidTags.LAVA)
+      : false;
    SpawnPlacementType ON_GROUND = new SpawnPlacementType() {
       @Override
-      public boolean isSpawnPositionOk(final LevelReader level, final BlockPos blockPos, @Nullable final EntityType<?> type) {
+      public boolean isSpawnPositionOk(final LevelReader level, final BlockPos blockPos, final @Nullable EntityType<?> type) {
          if (type != null && level.getWorldBorder().isWithinBounds(blockPos)) {
             BlockPos above = blockPos.above();
             BlockPos below = blockPos.below();

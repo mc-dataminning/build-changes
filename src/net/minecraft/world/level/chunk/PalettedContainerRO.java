@@ -33,7 +33,7 @@ public interface PalettedContainerRO<T> {
 
    PalettedContainerRO.PackedData<T> pack(Strategy<T> strategy);
 
-   public static record PackedData<T>(List<T> paletteEntries, Optional<LongStream> storage, int bitsPerEntry) {
+   record PackedData<T>(List<T> paletteEntries, Optional<LongStream> storage, int bitsPerEntry) {
       public static final int UNKNOWN_BITS_PER_ENTRY = -1;
 
       public PackedData(final List<T> paletteEntries, final Optional<LongStream> storage) {
@@ -41,7 +41,7 @@ public interface PalettedContainerRO<T> {
       }
    }
 
-   public interface Unpacker<T, C extends PalettedContainerRO<T>> {
+   interface Unpacker<T, C extends PalettedContainerRO<T>> {
       DataResult<C> read(Strategy<T> strategy, PalettedContainerRO.PackedData<T> discData);
    }
 }

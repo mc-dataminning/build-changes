@@ -20,9 +20,9 @@ public class AdvancementsRenameFix extends DataFix {
    protected TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
          this.name, this.getInputSchema().getType(References.ADVANCEMENTS), input -> input.update(DSL.remainderFinder(), tag -> tag.updateMapValues(entry -> {
-                  String id = ((Dynamic)entry.getFirst()).asString("");
-                  return entry.mapFirst(f -> tag.createString(this.renamer.apply(id)));
-               }))
+            String id = ((Dynamic)entry.getFirst()).asString("");
+            return entry.mapFirst(f -> tag.createString(this.renamer.apply(id)));
+         }))
       );
    }
 }

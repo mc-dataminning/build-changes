@@ -15,7 +15,7 @@ public abstract class RedstoneWireEvaluator {
    }
 
    public abstract void updatePowerStrength(
-      final Level level, final BlockPos pos, final BlockState state, @Nullable final Orientation orientation, final boolean skipShapeUpdates
+      final Level level, final BlockPos pos, final BlockState state, final @Nullable Orientation orientation, final boolean skipShapeUpdates
    );
 
    protected int getBlockSignal(final Level level, final BlockPos pos) {

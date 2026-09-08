@@ -122,15 +122,15 @@ public final class ShapedRecipePattern {
 
       if (pattern.size() == bottom) {
          return new String[0];
-      } else {
-         String[] result = new String[pattern.size() - bottom - top];
-
-         for (int line = 0; line < result.length; line++) {
-            result[line] = pattern.get(line + top).substring(left, right + 1);
-         }
-
-         return result;
       }
+
+      String[] result = new String[pattern.size() - bottom - top];
+
+      for (int line = 0; line < result.length; line++) {
+         result[line] = pattern.get(line + top).substring(left, right + 1);
+      }
+
+      return result;
    }
 
    private static int firstNonEmpty(final String line) {
@@ -156,19 +156,19 @@ public final class ShapedRecipePattern {
    public boolean matches(final CraftingInput input) {
       if (input.ingredientCount() != this.ingredientCount) {
          return false;
-      } else {
-         if (input.width() == this.width && input.height() == this.height) {
-            if (!this.symmetrical && this.matches(input, true)) {
-               return true;
-            }
+      }
 
-            if (this.matches(input, false)) {
-               return true;
-            }
+      if (input.width() == this.width && input.height() == this.height) {
+         if (!this.symmetrical && this.matches(input, true)) {
+            return true;
          }
 
-         return false;
+         if (this.matches(input, false)) {
+            return true;
+         }
       }
+
+      return false;
    }
 
    private boolean matches(final CraftingInput input, final boolean xFlip) {
@@ -203,27 +203,29 @@ public final class ShapedRecipePattern {
       return this.ingredients;
    }
 
-   public static record Data(Map<Character, Ingredient> key, List<String> pattern) {
+   public record Data(Map<Character, Ingredient> key, List<String> pattern) {
       private static final Codec<List<String>> PATTERN_CODEC = Codec.STRING.listOf().comapFlatMap(strings -> {
          if (strings.size() > 3) {
             return DataResult.error(() -> "Invalid pattern: too many rows, 3 is maximum");
-         } else if (strings.isEmpty()) {
+         }
+
+         if (strings.isEmpty()) {
             return DataResult.error(() -> "Invalid pattern: empty pattern not allowed");
-         } else {
-            int firstLength = ((String)strings.getFirst()).length();
+         }
 
-            for (String line : strings) {
-               if (line.length() > 3) {
-                  return DataResult.error(() -> "Invalid pattern: too many columns, 3 is maximum");
-               }
+         int firstLength = ((String)strings.getFirst()).length();
 
-               if (firstLength != line.length()) {
-                  return DataResult.error(() -> "Invalid pattern: each row must be the same width");
-               }
+         for (String line : strings) {
+            if (line.length() > 3) {
+               return DataResult.error(() -> "Invalid pattern: too many columns, 3 is maximum");
             }
 
-            return DataResult.success(strings);
+            if (firstLength != line.length()) {
+               return DataResult.error(() -> "Invalid pattern: each row must be the same width");
+            }
          }
+
+         return DataResult.success(strings);
       }, Function.identity());
       private static final Codec<Character> SYMBOL_CODEC = Codec.STRING.comapFlatMap(symbol -> {
          if (symbol.length() != 1) {
@@ -234,10 +236,10 @@ public final class ShapedRecipePattern {
       }, String::valueOf);
       public static final MapCodec<ShapedRecipePattern.Data> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  ExtraCodecs.strictUnboundedMap(SYMBOL_CODEC, Ingredient.CODEC).fieldOf("key").forGetter(d -> d.key),
-                  PATTERN_CODEC.fieldOf("pattern").forGetter(d -> d.pattern)
-               )
-               .apply(i, ShapedRecipePattern.Data::new)
+               ExtraCodecs.strictUnboundedMap(SYMBOL_CODEC, Ingredient.CODEC).fieldOf("key").forGetter(d -> d.key),
+               PATTERN_CODEC.fieldOf("pattern").forGetter(d -> d.pattern)
+            )
+            .apply(i, ShapedRecipePattern.Data::new)
       );
    }
 }

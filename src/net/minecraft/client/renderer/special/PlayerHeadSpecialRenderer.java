@@ -14,6 +14,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ResolvableProfile;
 import org.joml.Vector3fc;
+import org.jspecify.annotations.Nullable;
 
 public class PlayerHeadSpecialRenderer implements SpecialModelRenderer<PlayerSkinRenderCache.RenderInfo> {
    private final PlayerSkinRenderCache playerSkinRenderCache;
@@ -25,7 +26,7 @@ public class PlayerHeadSpecialRenderer implements SpecialModelRenderer<PlayerSki
    }
 
    public void submit(
-      final PlayerSkinRenderCache.RenderInfo argument,
+      final PlayerSkinRenderCache.@Nullable RenderInfo argument,
       final PoseStack poseStack,
       final SubmitNodeCollector submitNodeCollector,
       final int lightCoords,
@@ -43,12 +44,12 @@ public class PlayerHeadSpecialRenderer implements SpecialModelRenderer<PlayerSki
       this.modelBase.root().getExtentsForGui(poseStack, output);
    }
 
-   public PlayerSkinRenderCache.RenderInfo extractArgument(final ItemStack stack) {
+   public PlayerSkinRenderCache.@Nullable RenderInfo extractArgument(final ItemStack stack) {
       ResolvableProfile profile = stack.get(DataComponents.PROFILE);
       return profile == null ? null : this.playerSkinRenderCache.getOrDefault(profile);
    }
 
-   public static record Unbaked() implements SpecialModelRenderer.Unbaked<PlayerSkinRenderCache.RenderInfo> {
+   public record Unbaked() implements SpecialModelRenderer.Unbaked<PlayerSkinRenderCache.RenderInfo> {
       public static final MapCodec<PlayerHeadSpecialRenderer.Unbaked> MAP_CODEC = MapCodec.unit(PlayerHeadSpecialRenderer.Unbaked::new);
 
       @Override

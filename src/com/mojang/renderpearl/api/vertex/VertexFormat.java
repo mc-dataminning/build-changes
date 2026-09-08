@@ -49,8 +49,7 @@ public class VertexFormat {
       return this.elementValues;
    }
 
-   @Nullable
-   public VertexFormatElement getElement(final String attributeName) {
+   public @Nullable VertexFormatElement getElement(final String attributeName) {
       return this.elements.get(attributeName);
    }
 
@@ -60,15 +59,7 @@ public class VertexFormat {
 
    @Override
    public boolean equals(final Object o) {
-      if (this == o) {
-         return true;
-      } else {
-         if (o instanceof VertexFormat format && this.elements.equals(format.elements) && this.vertexSize == format.vertexSize) {
-            return true;
-         }
-
-         return false;
-      }
+      return this == o ? true : o instanceof VertexFormat format && this.elements.equals(format.elements) && this.vertexSize == format.vertexSize;
    }
 
    @Override
@@ -88,12 +79,14 @@ public class VertexFormat {
       private void createAttribute(final String name, final int offset, final GpuFormat elementFormat) {
          if (this.elements.size() >= 16) {
             throw new IllegalArgumentException("Having more than 16 attributes are not supported");
-         } else if (!Mth.isMultipleOf(offset, elementFormat.byteAlignment())) {
-            throw new IllegalArgumentException(name + " is not aligned to " + elementFormat.byteAlignment() + " as required by " + elementFormat);
-         } else {
-            VertexFormatElement element = new VertexFormatElement(name, offset, elementFormat);
-            this.elements.add(element);
          }
+
+         if (!Mth.isMultipleOf(offset, elementFormat.byteAlignment())) {
+            throw new IllegalArgumentException(name + " is not aligned to " + elementFormat.byteAlignment() + " as required by " + elementFormat);
+         }
+
+         VertexFormatElement element = new VertexFormatElement(name, offset, elementFormat);
+         this.elements.add(element);
       }
 
       private void validateUniqueName(final String name) {

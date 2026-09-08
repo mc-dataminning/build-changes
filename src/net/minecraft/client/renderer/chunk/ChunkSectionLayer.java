@@ -17,7 +17,7 @@ public enum ChunkSectionLayer {
    private final boolean translucent;
    private final String label;
 
-   private ChunkSectionLayer(final RenderPipeline pipeline, final RenderPipeline multiDrawPipeline, final int bufferSize, final boolean translucent) {
+   ChunkSectionLayer(final RenderPipeline pipeline, final RenderPipeline multiDrawPipeline, final int bufferSize, final boolean translucent) {
       this.pipeline = pipeline;
       this.multiDrawPipeline = multiDrawPipeline;
       this.bufferSize = bufferSize;

@@ -35,13 +35,13 @@ public record StringTemplate(List<String> segments, List<String> variables) {
 
       if (start == 0) {
          throw new IllegalArgumentException("No variables in macro");
-      } else {
-         if (start != length) {
-            segments.add(input.substring(start));
-         }
-
-         return new StringTemplate(segments.build(), variables.build());
       }
+
+      if (start != length) {
+         segments.add(input.substring(start));
+      }
+
+      return new StringTemplate(segments.build(), variables.build());
    }
 
    public static boolean isValidVariableName(final String variable) {

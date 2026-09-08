@@ -15,19 +15,19 @@ public record RemoveBinomial(LevelBasedValue chance) implements EnchantmentValue
       float p = this.chance.calculate(level);
       int drop = 0;
       if (!(n <= 128.0F) && !(n * p < 20.0F) && !(n * (1.0F - p) < 20.0F)) {
-         double miu = Math.floor((double)(n * p));
-         double sigma = Math.sqrt((double)(n * p * (1.0F - p)));
+         double miu = Math.floor(n * p);
+         double sigma = Math.sqrt(n * p * (1.0F - p));
          drop = (int)Math.round(miu + random.nextGaussian() * sigma);
-         drop = Math.clamp((long)drop, 0, (int)n);
+         drop = Math.clamp(drop, 0, (int)n);
       } else {
-         for (int y = 0; (float)y < n; y++) {
+         for (int y = 0; y < n; y++) {
             if (random.nextFloat() < p) {
                drop++;
             }
          }
       }
 
-      return n - (float)drop;
+      return n - drop;
    }
 
    @Override

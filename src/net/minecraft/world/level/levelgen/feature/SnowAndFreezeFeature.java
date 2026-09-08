@@ -41,7 +41,7 @@ public record SnowAndFreezeFeature() implements Feature {
                level.setBlock(topPos, Blocks.SNOW.defaultBlockState(), 2);
                BlockState belowState = level.getBlockState(belowPos);
                if (belowState.hasProperty(SnowyBlock.SNOWY)) {
-                  level.setBlock(belowPos, belowState.setValue(SnowyBlock.SNOWY, Boolean.valueOf(true)), 2);
+                  level.setBlock(belowPos, belowState.setValue(SnowyBlock.SNOWY, true), 2);
                }
             }
          }

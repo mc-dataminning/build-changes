@@ -1,6 +1,5 @@
 package net.minecraft.world.entity;
 
-import java.util.Objects;
 import java.util.Optional;
 import net.minecraft.advancements.triggers.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
@@ -71,7 +70,7 @@ public abstract class TamableAnimal extends Animal implements OwnableEntity {
          try {
             this.entityData.set(DATA_OWNERUUID_ID, Optional.of(owner));
             this.setTame(true, false);
-         } catch (Throwable var4) {
+         } catch (Throwable ignored) {
             this.setTame(false, true);
          }
       } else {
@@ -103,7 +102,7 @@ public abstract class TamableAnimal extends Animal implements OwnableEntity {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 7) {
          this.spawnTamingParticles(true);
       } else if (id == 6) {
@@ -136,7 +135,7 @@ public abstract class TamableAnimal extends Animal implements OwnableEntity {
    protected void feed(final Player player, final InteractionHand hand, final ItemStack itemStack, final float healingFactor, final float defaultHeal) {
       FoodProperties foodProperties = itemStack.get(DataComponents.FOOD);
       this.usePlayerItem(player, hand, itemStack);
-      this.heal(foodProperties != null ? healingFactor * (float)foodProperties.nutrition() : defaultHeal);
+      this.heal(foodProperties != null ? healingFactor * foodProperties.nutrition() : defaultHeal);
       this.playEatingSound();
    }
 
@@ -153,17 +152,16 @@ public abstract class TamableAnimal extends Animal implements OwnableEntity {
       }
    }
 
-   @Nullable
    @Override
-   public EntityReference<LivingEntity> getOwnerReference() {
+   public @Nullable EntityReference<LivingEntity> getOwnerReference() {
       return this.entityData.get(DATA_OWNERUUID_ID).orElse(null);
    }
 
-   public void setOwner(@Nullable final LivingEntity owner) {
+   public void setOwner(final @Nullable LivingEntity owner) {
       this.entityData.set(DATA_OWNERUUID_ID, Optional.ofNullable(owner).map(EntityReference::of));
    }
 
-   public void setOwnerReference(@Nullable final EntityReference<LivingEntity> owner) {
+   public void setOwnerReference(final @Nullable EntityReference<LivingEntity> owner) {
       this.entityData.set(DATA_OWNERUUID_ID, Optional.ofNullable(owner));
    }
 
@@ -188,22 +186,21 @@ public abstract class TamableAnimal extends Animal implements OwnableEntity {
       return true;
    }
 
-   @Nullable
    @Override
-   public PlayerTeam getTeam() {
+   public @Nullable PlayerTeam getTeam() {
       PlayerTeam ownTeam = super.getTeam();
       if (ownTeam != null) {
          return ownTeam;
-      } else {
-         if (this.isTame()) {
-            LivingEntity owner = this.getRootOwner();
-            if (owner != null) {
-               return owner.getTeam();
-            }
-         }
-
-         return null;
       }
+
+      if (this.isTame()) {
+         LivingEntity owner = this.getRootOwner();
+         if (owner != null) {
+            return owner.getTeam();
+         }
+      }
+
+      return null;
    }
 
    @Override
@@ -269,26 +266,26 @@ public abstract class TamableAnimal extends Animal implements OwnableEntity {
    private boolean maybeTeleportTo(final int x, final int y, final int z) {
       if (!this.canTeleportTo(new BlockPos(x, y, z))) {
          return false;
-      } else {
-         this.snapTo((double)x + 0.5, (double)y, (double)z + 0.5, this.getYRot(), this.getXRot());
-         this.navigation.stop();
-         return true;
       }
+
+      this.snapTo(x + 0.5, y, z + 0.5, this.getYRot(), this.getXRot());
+      this.navigation.stop();
+      return true;
    }
 
    private boolean canTeleportTo(final BlockPos pos) {
       PathType pathType = WalkNodeEvaluator.getPathTypeStatic(this, pos);
       if (pathType != PathType.WALKABLE) {
          return false;
-      } else {
-         BlockState blockStateBelow = this.level().getBlockState(pos.below());
-         if (!this.canFlyToOwner() && blockStateBelow.getBlock() instanceof LeavesBlock) {
-            return false;
-         } else {
-            BlockPos delta = pos.subtract(this.blockPosition());
-            return this.level().noCollision(this, this.getBoundingBox().move(delta));
-         }
       }
+
+      BlockState blockStateBelow = this.level().getBlockState(pos.below());
+      if (!this.canFlyToOwner() && blockStateBelow.getBlock() instanceof LeavesBlock) {
+         return false;
+      }
+
+      BlockPos delta = pos.subtract(this.blockPosition());
+      return this.level().noCollision(this, this.getBoundingBox().move(delta));
    }
 
    public final boolean unableToMoveToOwner() {
@@ -301,12 +298,10 @@ public abstract class TamableAnimal extends Animal implements OwnableEntity {
 
    public class TamableAnimalPanicGoal extends PanicGoal {
       public TamableAnimalPanicGoal(final double speedModifier, final TagKey<DamageType> panicCausingDamageTypes) {
-         Objects.requireNonNull(TamableAnimal.this);
          super(TamableAnimal.this, speedModifier, panicCausingDamageTypes);
       }
 
       public TamableAnimalPanicGoal(final double speedModifier) {
-         Objects.requireNonNull(TamableAnimal.this);
          super(TamableAnimal.this, speedModifier);
       }
 

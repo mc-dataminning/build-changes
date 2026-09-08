@@ -35,12 +35,11 @@ public record NbtPredicate(CompoundTag tag) {
       return this.matches(getEntityTagToCompare(entity));
    }
 
-   public boolean matches(@Nullable final Tag tag) {
+   public boolean matches(final @Nullable Tag tag) {
       return tag != null && NbtUtils.compareNbt(this.tag, tag, true);
    }
 
    public static CompoundTag getEntityTagToCompare(final Entity entity) {
-      CompoundTag var7;
       try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(entity.problemPath(), LOGGER)) {
          TagValueOutput output = TagValueOutput.createWithContext(reporter, entity.registryAccess());
          entity.saveWithoutId(output);
@@ -51,9 +50,7 @@ public record NbtPredicate(CompoundTag tag) {
             }
          }
 
-         var7 = output.buildResult();
+         return output.buildResult();
       }
-
-      return var7;
    }
 }

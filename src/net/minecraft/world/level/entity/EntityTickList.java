@@ -12,8 +12,7 @@ import org.jspecify.annotations.Nullable;
 public class EntityTickList {
    private Int2ObjectMap<Entity> active = new Int2ObjectLinkedOpenHashMap();
    private Int2ObjectMap<Entity> passive = new Int2ObjectLinkedOpenHashMap();
-   @Nullable
-   private Int2ObjectMap<Entity> iterated;
+   private @Nullable Int2ObjectMap<Entity> iterated;
 
    private void ensureActiveIsNotIterated() {
       if (this.iterated == this.active) {
@@ -48,19 +47,19 @@ public class EntityTickList {
    public void forEach(final Consumer<Entity> output) {
       if (this.iterated != null) {
          throw new UnsupportedOperationException("Only one concurrent iteration supported");
-      } else {
-         this.iterated = this.active;
+      }
 
-         try {
-            ObjectIterator var2 = this.active.values().iterator();
+      this.iterated = this.active;
 
-            while (var2.hasNext()) {
-               Entity entity = (Entity)var2.next();
-               output.accept(entity);
-            }
-         } finally {
-            this.iterated = null;
+      try {
+         ObjectIterator var2 = this.active.values().iterator();
+
+         while (var2.hasNext()) {
+            Entity entity = (Entity)var2.next();
+            output.accept(entity);
          }
+      } finally {
+         this.iterated = null;
       }
    }
 }

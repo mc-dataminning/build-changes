@@ -15,12 +15,12 @@ import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntPr
 public record TradeSet(HolderSet<VillagerTrade> trades, Holder<ContextIntProvider> amount, boolean allowDuplicates, Optional<Identifier> randomSequence) {
    public static final Codec<TradeSet> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               RegistryCodecs.holderSet(Registries.VILLAGER_TRADE).fieldOf("trades").forGetter(TradeSet::trades),
-               ContextIntProviders.CODEC.fieldOf("amount").forGetter(TradeSet::amount),
-               Codec.BOOL.optionalFieldOf("allow_duplicates", false).forGetter(TradeSet::allowDuplicates),
-               Identifier.CODEC.optionalFieldOf("random_sequence").forGetter(TradeSet::randomSequence)
-            )
-            .apply(i, TradeSet::new)
+            RegistryCodecs.holderSet(Registries.VILLAGER_TRADE).fieldOf("trades").forGetter(TradeSet::trades),
+            ContextIntProviders.CODEC.fieldOf("amount").forGetter(TradeSet::amount),
+            Codec.BOOL.optionalFieldOf("allow_duplicates", false).forGetter(TradeSet::allowDuplicates),
+            Identifier.CODEC.optionalFieldOf("random_sequence").forGetter(TradeSet::randomSequence)
+         )
+         .apply(i, TradeSet::new)
    );
 
    public int calculateNumberOfTrades(final LootContext lootContext) {

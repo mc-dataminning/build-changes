@@ -93,8 +93,7 @@ public class Allay extends PathfinderMob implements InventoryCarrier, VibrationS
    private final VibrationSystem.User vibrationUser;
    private final DynamicGameEventListener<Allay.JukeboxListener> dynamicJukeboxListener;
    private final SimpleContainer inventory = new SimpleContainer(1);
-   @Nullable
-   private BlockPos jukeboxPos;
+   private @Nullable BlockPos jukeboxPos;
    private long duplicationCooldown = 0L;
    private float holdingItemAnimationTicks;
    private float holdingItemAnimationTicks0;
@@ -163,7 +162,7 @@ public class Allay extends PathfinderMob implements InventoryCarrier, VibrationS
       return this.isLikedPlayer(other) || super.considersEntityAsAlly(other);
    }
 
-   private boolean isLikedPlayer(@Nullable final Entity other) {
+   private boolean isLikedPlayer(final @Nullable Entity other) {
       if (!(other instanceof Player player)) {
          return false;
       } else {
@@ -289,14 +288,18 @@ public class Allay extends PathfinderMob implements InventoryCarrier, VibrationS
          this.level().playSound(player, this, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.NEUTRAL, 2.0F, 1.0F);
          this.removeInteractionItem(player, interactionItem);
          return InteractionResult.SUCCESS;
-      } else if (itemInHand.isEmpty() && !interactionItem.isEmpty()) {
+      }
+
+      if (itemInHand.isEmpty() && !interactionItem.isEmpty()) {
          ItemStack itemToGive = interactionItem.copyWithCount(1);
          this.setItemInHand(InteractionHand.MAIN_HAND, itemToGive);
          this.removeInteractionItem(player, interactionItem);
          this.level().playSound(player, this, SoundEvents.ALLAY_ITEM_GIVEN, SoundSource.NEUTRAL, 2.0F, 1.0F);
          this.getBrain().setMemory(MemoryModuleType.LIKED_PLAYER, player.getUUID());
          return InteractionResult.SUCCESS;
-      } else if (!itemInHand.isEmpty() && hand == InteractionHand.MAIN_HAND && interactionItem.isEmpty()) {
+      }
+
+      if (!itemInHand.isEmpty() && hand == InteractionHand.MAIN_HAND && interactionItem.isEmpty()) {
          this.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
          this.level().playSound(player, this, SoundEvents.ALLAY_ITEM_TAKEN, SoundSource.NEUTRAL, 2.0F, 1.0F);
          this.swing(InteractionHand.MAIN_HAND, itemInHand.getInteractAnimation());
@@ -384,7 +387,7 @@ public class Allay extends PathfinderMob implements InventoryCarrier, VibrationS
 
    private boolean shouldStopDancing() {
       return this.jukeboxPos == null
-         || !this.jukeboxPos.closerToCenterThan(this.position(), (double)GameEvent.JUKEBOX_PLAY.value().notificationRadius())
+         || !this.jukeboxPos.closerToCenterThan(this.position(), GameEvent.JUKEBOX_PLAY.value().notificationRadius())
          || !this.level().getBlockState(this.jukeboxPos).is(Blocks.JUKEBOX);
    }
 
@@ -435,7 +438,7 @@ public class Allay extends PathfinderMob implements InventoryCarrier, VibrationS
       super.readAdditionalSaveData(input);
       this.readInventoryFromTag(input);
       this.vibrationData = input.<VibrationSystem.Data>read("listener", VibrationSystem.Data.CODEC).orElseGet(VibrationSystem.Data::new);
-      this.setDuplicationCooldown((long)input.getIntOr("DuplicationCooldown", 0));
+      this.setDuplicationCooldown(input.getIntOr("DuplicationCooldown", 0));
    }
 
    @Override
@@ -479,11 +482,11 @@ public class Allay extends PathfinderMob implements InventoryCarrier, VibrationS
 
    @Override
    public Vec3 getLeashOffset() {
-      return new Vec3(0.0, (double)this.getEyeHeight() * 0.6, (double)this.getBbWidth() * 0.1);
+      return new Vec3(0.0, this.getEyeHeight() * 0.6, this.getBbWidth() * 0.1);
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 18) {
          for (int i = 0; i < 3; i++) {
             this.spawnHeartParticle();
@@ -515,8 +518,6 @@ public class Allay extends PathfinderMob implements InventoryCarrier, VibrationS
       private final int listenerRadius;
 
       public JukeboxListener(final PositionSource listenerSource, final int listenerRadius) {
-         Objects.requireNonNull(Allay.this);
-         super();
          this.listenerSource = listenerSource;
          this.listenerRadius = listenerRadius;
       }
@@ -547,13 +548,7 @@ public class Allay extends PathfinderMob implements InventoryCarrier, VibrationS
 
    private class VibrationUser implements VibrationSystem.User {
       private static final int VIBRATION_EVENT_LISTENER_RANGE = 16;
-      private final PositionSource positionSource;
-
-      private VibrationUser() {
-         Objects.requireNonNull(Allay.this);
-         super();
-         this.positionSource = new EntityPositionSource(Allay.this, Allay.this.getEyeHeight());
-      }
+      private final PositionSource positionSource = new EntityPositionSource(Allay.this, Allay.this.getEyeHeight());
 
       @Override
       public int getListenerRadius() {
@@ -569,15 +564,15 @@ public class Allay extends PathfinderMob implements InventoryCarrier, VibrationS
       public boolean canReceiveVibration(final ServerLevel level, final BlockPos pos, final Holder<GameEvent> event, final GameEvent.Context context) {
          if (Allay.this.isNoAi()) {
             return false;
-         } else {
-            Optional<GlobalPos> maybeGlobalPos = Allay.this.getBrain().getMemory(MemoryModuleType.LIKED_NOTEBLOCK_POSITION);
-            if (maybeGlobalPos.isEmpty()) {
-               return true;
-            } else {
-               GlobalPos globalPos = maybeGlobalPos.get();
-               return globalPos.isCloseEnough(level.dimension(), Allay.this.blockPosition(), 1024) && globalPos.pos().equals(pos);
-            }
          }
+
+         Optional<GlobalPos> maybeGlobalPos = Allay.this.getBrain().getMemory(MemoryModuleType.LIKED_NOTEBLOCK_POSITION);
+         if (maybeGlobalPos.isEmpty()) {
+            return true;
+         }
+
+         GlobalPos globalPos = maybeGlobalPos.get();
+         return globalPos.isCloseEnough(level.dimension(), Allay.this.blockPosition(), 1024) && globalPos.pos().equals(pos);
       }
 
       @Override
@@ -585,8 +580,8 @@ public class Allay extends PathfinderMob implements InventoryCarrier, VibrationS
          final ServerLevel level,
          final BlockPos pos,
          final Holder<GameEvent> event,
-         @Nullable final Entity sourceEntity,
-         @Nullable final Entity projectileOwner,
+         final @Nullable Entity sourceEntity,
+         final @Nullable Entity projectileOwner,
          final float receivingDistance
       ) {
          if (event.is(GameEvent.NOTE_BLOCK_PLAY)) {

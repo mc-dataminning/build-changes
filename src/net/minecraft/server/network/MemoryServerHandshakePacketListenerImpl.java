@@ -21,10 +21,10 @@ public class MemoryServerHandshakePacketListenerImpl implements ServerHandshakeP
    public void handleIntention(final ClientIntentionPacket packet) {
       if (packet.intention() != ClientIntent.LOGIN) {
          throw new UnsupportedOperationException("Invalid intention " + packet.intention());
-      } else {
-         this.connection.setupInboundProtocol(LoginProtocols.SERVERBOUND, new ServerLoginPacketListenerImpl(this.server, this.connection, false));
-         this.connection.setupOutboundProtocol(LoginProtocols.CLIENTBOUND);
       }
+
+      this.connection.setupInboundProtocol(LoginProtocols.SERVERBOUND, new ServerLoginPacketListenerImpl(this.server, this.connection, false));
+      this.connection.setupOutboundProtocol(LoginProtocols.CLIENTBOUND);
    }
 
    @Override

@@ -12,10 +12,10 @@ public class HasSturdyFacePredicate implements BlockPredicate {
    private final Direction direction;
    public static final MapCodec<HasSturdyFacePredicate> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Vec3i.offsetCodec(16).optionalFieldOf("offset", Vec3i.ZERO).forGetter(c -> c.offset),
-               Direction.CODEC.fieldOf("direction").forGetter(c -> c.direction)
-            )
-            .apply(i, HasSturdyFacePredicate::new)
+            Vec3i.offsetCodec(16).optionalFieldOf("offset", Vec3i.ZERO).forGetter(c -> c.offset),
+            Direction.CODEC.fieldOf("direction").forGetter(c -> c.direction)
+         )
+         .apply(i, HasSturdyFacePredicate::new)
    );
 
    public HasSturdyFacePredicate(final Vec3i offset, final Direction direction) {

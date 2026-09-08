@@ -46,8 +46,8 @@ public class SpecialModelWrapper<T> implements ItemModel {
       final ItemStack item,
       final ItemModelResolver resolver,
       final ItemDisplayContext displayContext,
-      @Nullable final ClientLevel level,
-      @Nullable final ItemOwner owner,
+      final @Nullable ClientLevel level,
+      final @Nullable ItemOwner owner,
       final int seed
    ) {
       output.appendModelIdentityElement(this);
@@ -70,15 +70,14 @@ public class SpecialModelWrapper<T> implements ItemModel {
       this.properties.applyToLayer(layer, displayContext);
    }
 
-   public static record Unbaked(Identifier base, Optional<Transformation> transformation, SpecialModelRenderer.Unbaked<?> specialModel)
-      implements ItemModel.Unbaked {
+   public record Unbaked(Identifier base, Optional<Transformation> transformation, SpecialModelRenderer.Unbaked<?> specialModel) implements ItemModel.Unbaked {
       public static final MapCodec<SpecialModelWrapper.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Identifier.CODEC.fieldOf("base").forGetter(SpecialModelWrapper.Unbaked::base),
-                  Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(SpecialModelWrapper.Unbaked::transformation),
-                  SpecialModelRenderers.CODEC.fieldOf("model").forGetter(SpecialModelWrapper.Unbaked::specialModel)
-               )
-               .apply(i, SpecialModelWrapper.Unbaked::new)
+               Identifier.CODEC.fieldOf("base").forGetter(SpecialModelWrapper.Unbaked::base),
+               Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(SpecialModelWrapper.Unbaked::transformation),
+               SpecialModelRenderers.CODEC.fieldOf("model").forGetter(SpecialModelWrapper.Unbaked::specialModel)
+            )
+            .apply(i, SpecialModelWrapper.Unbaked::new)
       );
 
       @Override
@@ -92,10 +91,10 @@ public class SpecialModelWrapper<T> implements ItemModel {
          SpecialModelRenderer<?> bakedSpecialModel = this.specialModel.bake(context);
          if (bakedSpecialModel == null) {
             return context.missingItemModel(modelTransform);
-         } else {
-            ModelRenderProperties properties = this.getProperties(context);
-            return new SpecialModelWrapper<>(bakedSpecialModel, properties, modelTransform);
          }
+
+         ModelRenderProperties properties = this.getProperties(context);
+         return new SpecialModelWrapper<>(bakedSpecialModel, properties, modelTransform);
       }
 
       private ModelRenderProperties getProperties(final ItemModel.BakingContext context) {

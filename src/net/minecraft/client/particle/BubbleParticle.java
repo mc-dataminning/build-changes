@@ -21,10 +21,10 @@ public class BubbleParticle extends SingleQuadParticle {
       super(level, x, y, z, sprite);
       this.setSize(0.02F, 0.02F);
       this.quadSize = this.quadSize * (this.random.nextFloat() * 0.6F + 0.2F);
-      this.xd = xa * 0.2F + (double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.02F);
-      this.yd = ya * 0.2F + (double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.02F);
-      this.zd = za * 0.2F + (double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.02F);
-      this.lifetime = (int)(8.0 / ((double)this.random.nextFloat() * 0.8 + 0.2));
+      this.xd = xa * 0.2F + (this.random.nextFloat() * 2.0F - 1.0F) * 0.02F;
+      this.yd = ya * 0.2F + (this.random.nextFloat() * 2.0F - 1.0F) * 0.02F;
+      this.zd = za * 0.2F + (this.random.nextFloat() * 2.0F - 1.0F) * 0.02F;
+      this.lifetime = (int)(8.0 / (this.random.nextFloat() * 0.8 + 0.2));
    }
 
    @Override

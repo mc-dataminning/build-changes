@@ -68,8 +68,7 @@ public class DebugScreenEntries {
       return Map.copyOf(ENTRIES_BY_ID);
    }
 
-   @Nullable
-   public static DebugScreenEntry getEntry(final Identifier id) {
+   public static @Nullable DebugScreenEntry getEntry(final Identifier id) {
       return ENTRIES_BY_ID.get(id);
    }
 

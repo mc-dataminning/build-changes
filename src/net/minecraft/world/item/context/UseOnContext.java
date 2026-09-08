@@ -11,8 +11,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
 public class UseOnContext {
-   @Nullable
-   private final Player player;
+   private final @Nullable Player player;
    private final InteractionHand hand;
    private final BlockHitResult hitResult;
    private final Level level;
@@ -23,7 +22,7 @@ public class UseOnContext {
    }
 
    protected UseOnContext(
-      final Level level, @Nullable final Player player, final InteractionHand hand, final ItemStack itemStack, final BlockHitResult hitResult
+      final Level level, final @Nullable Player player, final InteractionHand hand, final ItemStack itemStack, final BlockHitResult hitResult
    ) {
       this.player = player;
       this.hand = hand;
@@ -56,8 +55,7 @@ public class UseOnContext {
       return this.itemStack;
    }
 
-   @Nullable
-   public Player getPlayer() {
+   public @Nullable Player getPlayer() {
       return this.player;
    }
 

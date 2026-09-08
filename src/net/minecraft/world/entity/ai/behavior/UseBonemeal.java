@@ -29,13 +29,13 @@ public class UseBonemeal extends Behavior<Villager> {
    }
 
    protected boolean checkExtraStartConditions(final ServerLevel level, final Villager body) {
-      if (body.tickCount % 10 == 0 && (this.lastBonemealingSession == 0L || this.lastBonemealingSession + 160L <= (long)body.tickCount)) {
+      if (body.tickCount % 10 == 0 && (this.lastBonemealingSession == 0L || this.lastBonemealingSession + 160L <= body.tickCount)) {
          if (body.getInventory().countItem(Items.BONE_MEAL) <= 0) {
             return false;
-         } else {
-            this.cropPos = this.pickNextTarget(level, body);
-            return this.cropPos.isPresent();
          }
+
+         this.cropPos = this.pickNextTarget(level, body);
+         return this.cropPos.isPresent();
       } else {
          return false;
       }
@@ -69,11 +69,7 @@ public class UseBonemeal extends Behavior<Villager> {
 
    private boolean validPos(final BlockPos blockPos, final ServerLevel level) {
       BlockState state = level.getBlockState(blockPos);
-      if (state.getBlock() instanceof CropBlock cropBlock && !cropBlock.isMaxAge(state)) {
-         return true;
-      }
-
-      return false;
+      return state.getBlock() instanceof CropBlock cropBlock && !cropBlock.isMaxAge(state);
    }
 
    protected void start(final ServerLevel level, final Villager body, final long timestamp) {
@@ -93,7 +89,7 @@ public class UseBonemeal extends Behavior<Villager> {
 
    protected void stop(final ServerLevel level, final Villager body, final long timestamp) {
       body.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
-      this.lastBonemealingSession = (long)body.tickCount;
+      this.lastBonemealingSession = body.tickCount;
    }
 
    protected void tick(final ServerLevel level, final Villager body, final long timestamp) {

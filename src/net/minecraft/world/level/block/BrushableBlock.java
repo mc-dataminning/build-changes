@@ -34,7 +34,7 @@ public class BrushableBlock extends BaseEntityBlock implements Fallable {
       this.turnsInto = turnsInto;
       this.brushSound = brushSound;
       this.brushCompletedSound = brushCompletedSound;
-      this.registerDefaultState(this.stateDefinition.any().setValue(DUSTED, Integer.valueOf(0)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(DUSTED, 0));
    }
 
    @Override
@@ -86,17 +86,16 @@ public class BrushableBlock extends BaseEntityBlock implements Fallable {
       if (random.nextInt(16) == 0) {
          BlockPos below = pos.below();
          if (FallingBlock.isFree(level.getBlockState(below))) {
-            double xx = (double)pos.getX() + random.nextDouble();
-            double yy = (double)pos.getY() - 0.05;
-            double zz = (double)pos.getZ() + random.nextDouble();
+            double xx = pos.getX() + random.nextDouble();
+            double yy = pos.getY() - 0.05;
+            double zz = pos.getZ() + random.nextDouble();
             level.addParticle(new BlockParticleOption(ParticleTypes.FALLING_DUST, state), xx, yy, zz, 0.0, 0.0, 0.0);
          }
       }
    }
 
-   @Nullable
    @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
+   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
       return new BrushableBlockEntity(worldPosition, blockState);
    }
 

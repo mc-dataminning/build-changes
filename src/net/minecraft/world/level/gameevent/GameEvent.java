@@ -89,16 +89,16 @@ public record GameEvent(int notificationRadius) {
       return Registry.registerForHolder(BuiltInRegistries.GAME_EVENT, Identifier.withDefaultNamespace(name), new GameEvent(notificationRadius));
    }
 
-   public static record Context(@Nullable Entity sourceEntity, @Nullable BlockState affectedState) {
-      public static GameEvent.Context of(@Nullable final Entity sourceEntity) {
+   public record Context(@Nullable Entity sourceEntity, @Nullable BlockState affectedState) {
+      public static GameEvent.Context of(final @Nullable Entity sourceEntity) {
          return new GameEvent.Context(sourceEntity, null);
       }
 
-      public static GameEvent.Context of(@Nullable final BlockState state) {
+      public static GameEvent.Context of(final @Nullable BlockState state) {
          return new GameEvent.Context(null, state);
       }
 
-      public static GameEvent.Context of(@Nullable final Entity sourceEntity, @Nullable final BlockState state) {
+      public static GameEvent.Context of(final @Nullable Entity sourceEntity, final @Nullable BlockState state) {
          return new GameEvent.Context(sourceEntity, state);
       }
    }

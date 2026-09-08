@@ -17,9 +17,9 @@ interface PathContents {
       }
    };
 
-   public static record DirectoryContents(Map<String, LinkFSPath> children) implements PathContents {
+   record DirectoryContents(Map<String, LinkFSPath> children) implements PathContents {
    }
 
-   public static record FileContents(Path contents) implements PathContents {
+   record FileContents(Path contents) implements PathContents {
    }
 }

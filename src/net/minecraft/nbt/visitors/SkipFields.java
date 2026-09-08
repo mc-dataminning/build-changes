@@ -24,16 +24,16 @@ public class SkipFields extends CollectToTag {
       FieldTree currentFrame = this.stack.element();
       if (currentFrame.isSelected(type, id)) {
          return StreamTagVisitor.EntryResult.SKIP;
-      } else {
-         if (type == CompoundTag.TYPE) {
-            FieldTree newFrame = currentFrame.fieldsToRecurse().get(id);
-            if (newFrame != null) {
-               this.stack.push(newFrame);
-            }
-         }
-
-         return super.visitEntry(type, id);
       }
+
+      if (type == CompoundTag.TYPE) {
+         FieldTree newFrame = currentFrame.fieldsToRecurse().get(id);
+         if (newFrame != null) {
+            this.stack.push(newFrame);
+         }
+      }
+
+      return super.visitEntry(type, id);
    }
 
    @Override

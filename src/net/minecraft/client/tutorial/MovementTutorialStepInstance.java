@@ -19,10 +19,8 @@ public class MovementTutorialStepInstance implements TutorialStepInstance {
    private static final Component LOOK_TITLE = Component.translatable("tutorial.look.title");
    private static final Component LOOK_DESCRIPTION = Component.translatable("tutorial.look.description");
    private final Tutorial tutorial;
-   @Nullable
-   private TutorialToast moveToast;
-   @Nullable
-   private TutorialToast lookToast;
+   private @Nullable TutorialToast moveToast;
+   private @Nullable TutorialToast lookToast;
    private int timeWaiting;
    private int timeMoved;
    private int timeLooked;
@@ -75,11 +73,11 @@ public class MovementTutorialStepInstance implements TutorialStepInstance {
       }
 
       if (this.moveToast != null) {
-         this.moveToast.updateProgress((float)this.timeMoved / 40.0F);
+         this.moveToast.updateProgress(this.timeMoved / 40.0F);
       }
 
       if (this.lookToast != null) {
-         this.lookToast.updateProgress((float)this.timeLooked / 40.0F);
+         this.lookToast.updateProgress(this.timeLooked / 40.0F);
       }
 
       if (this.timeWaiting >= 100) {

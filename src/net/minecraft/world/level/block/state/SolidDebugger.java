@@ -53,7 +53,7 @@ public class SolidDebugger {
       }
    }
 
-   public static enum Reason {
+   public enum Reason {
       FORCE_SOLID_ON(true, "forceSolidOn called on properties"),
       LARGE_ENOUGH_COLLISION_SHAPE(true, "collision shape bounds size is large enough"),
       HIGH_ENOUGH_COLLISION_SHAPE(true, "collision shape bounds are higher than 1"),
@@ -65,7 +65,7 @@ public class SolidDebugger {
       private final boolean causesSolid;
       private final String message;
 
-      private Reason(final boolean causesSolid, final String message) {
+      Reason(final boolean causesSolid, final String message) {
          this.causesSolid = causesSolid;
          this.message = message;
       }

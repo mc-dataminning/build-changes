@@ -17,7 +17,6 @@ import java.net.URI;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
@@ -60,30 +59,29 @@ public abstract class ServerTextFilter implements AutoCloseable {
       this.chatEncoder = chatEncoder;
    }
 
-   protected static URL getEndpoint(final URI host, @Nullable final JsonObject source, final String id, final String def) throws MalformedURLException {
+   protected static URL getEndpoint(final URI host, final @Nullable JsonObject source, final String id, final String def) throws MalformedURLException {
       String endpointConfig = getEndpointFromConfig(source, id, def);
       return host.resolve("/" + endpointConfig).toURL();
    }
 
-   protected static String getEndpointFromConfig(@Nullable final JsonObject source, final String id, final String def) {
+   protected static String getEndpointFromConfig(final @Nullable JsonObject source, final String id, final String def) {
       return source != null ? GsonHelper.getAsString(source, id, def) : def;
    }
 
-   @Nullable
-   public static ServerTextFilter createFromConfig(final DedicatedServerProperties config) {
+   public static @Nullable ServerTextFilter createFromConfig(final DedicatedServerProperties config) {
       String textFilteringConfig = config.textFilteringConfig;
       if (StringUtil.isBlank(textFilteringConfig)) {
          return null;
-      } else {
-         return switch (config.textFilteringVersion) {
-            case 0 -> LegacyTextFilter.createTextFilterFromConfig(textFilteringConfig);
-            case 1 -> PlayerSafetyServiceTextFilter.createTextFilterFromConfig(textFilteringConfig);
-            default -> {
-               LOGGER.warn("Could not create text filter - unsupported text filtering version used");
-               yield null;
-            }
-         };
       }
+
+      return switch (config.textFilteringVersion) {
+         case 0 -> LegacyTextFilter.createTextFilterFromConfig(textFilteringConfig);
+         case 1 -> PlayerSafetyServiceTextFilter.createTextFilterFromConfig(textFilteringConfig);
+         default -> {
+            LOGGER.warn("Could not create text filter - unsupported text filtering version used");
+            yield null;
+         }
+      };
    }
 
    protected CompletableFuture<FilteredText> requestMessageProcessing(
@@ -95,8 +93,8 @@ public abstract class ServerTextFilter implements AutoCloseable {
          try {
             JsonObject result = this.processRequestResponse(object, this.chatEndpoint);
             return this.filterText(message, ignoreStrategy, result);
-         } catch (Exception var6) {
-            LOGGER.warn("Failed to validate message '{}'", message, var6);
+         } catch (Exception e) {
+            LOGGER.warn("Failed to validate message '{}'", message, e);
             return FilteredText.fullyFiltered(message);
          }
       }, executor);
@@ -107,17 +105,19 @@ public abstract class ServerTextFilter implements AutoCloseable {
    protected FilterMask parseMask(final String message, final JsonArray removedChars, final ServerTextFilter.IgnoreStrategy ignoreStrategy) {
       if (removedChars.isEmpty()) {
          return FilterMask.PASS_THROUGH;
-      } else if (ignoreStrategy.shouldIgnore(message, removedChars.size())) {
-         return FilterMask.FULLY_FILTERED;
-      } else {
-         FilterMask mask = new FilterMask(message.length());
-
-         for (int i = 0; i < removedChars.size(); i++) {
-            mask.setFiltered(removedChars.get(i).getAsInt());
-         }
-
-         return mask;
       }
+
+      if (ignoreStrategy.shouldIgnore(message, removedChars.size())) {
+         return FilterMask.FULLY_FILTERED;
+      }
+
+      FilterMask mask = new FilterMask(message.length());
+
+      for (int i = 0; i < removedChars.size(); i++) {
+         mask.setFiltered(removedChars.get(i).getAsInt());
+      }
+
+      return mask;
    }
 
    @Override
@@ -135,20 +135,17 @@ public abstract class ServerTextFilter implements AutoCloseable {
    private JsonObject processRequestResponse(final JsonObject payload, final URL url) throws IOException {
       HttpURLConnection connection = this.makeRequest(payload, url);
 
-      JsonObject var5;
       try (InputStream is = connection.getInputStream()) {
          if (connection.getResponseCode() == 204) {
             return new JsonObject();
          }
 
          try {
-            var5 = LenientJsonParser.parse(new InputStreamReader(is, StandardCharsets.UTF_8)).getAsJsonObject();
+            return LenientJsonParser.parse(new InputStreamReader(is, StandardCharsets.UTF_8)).getAsJsonObject();
          } finally {
             this.drainStream(is);
          }
       }
-
-      return var5;
    }
 
    protected HttpURLConnection makeRequest(final JsonObject payload, final URL url) throws IOException {
@@ -245,8 +242,6 @@ public abstract class ServerTextFilter implements AutoCloseable {
       protected final Executor streamExecutor;
 
       protected PlayerContext(final GameProfile profile) {
-         Objects.requireNonNull(ServerTextFilter.this);
-         super();
          this.profile = profile;
          ConsecutiveExecutor streamProcessor = new ConsecutiveExecutor(ServerTextFilter.this.workerPool, "chat stream for " + profile.name());
          this.streamExecutor = streamProcessor::schedule;

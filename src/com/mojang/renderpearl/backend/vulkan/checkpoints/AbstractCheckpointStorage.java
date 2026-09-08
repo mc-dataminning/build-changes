@@ -40,8 +40,7 @@ abstract class AbstractCheckpointStorage implements CheckpointExtension.Checkpoi
 
    protected abstract void recordCheckpoint(VkCommandBuffer commandBuffer, int id);
 
-   @Nullable
-   protected AbstractCheckpointStorage.Checkpoint findCheckpoint(final int id) {
+   protected AbstractCheckpointStorage.@Nullable Checkpoint findCheckpoint(final int id) {
       for (AbstractCheckpointStorage.Frame frame : this.checkpointsByFrame) {
          for (AbstractCheckpointStorage.Checkpoint checkpoint : frame.checkpoints) {
             if (checkpoint.id() == id) {
@@ -53,9 +52,9 @@ abstract class AbstractCheckpointStorage implements CheckpointExtension.Checkpoi
       return null;
    }
 
-   protected static record Checkpoint(int id, String label, CheckpointExtension.CheckpointType type) {
+   protected record Checkpoint(int id, String label, CheckpointExtension.CheckpointType type) {
    }
 
-   private static record Frame(List<AbstractCheckpointStorage.Checkpoint> checkpoints) {
+   private record Frame(List<AbstractCheckpointStorage.Checkpoint> checkpoints) {
    }
 }

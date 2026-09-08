@@ -20,27 +20,27 @@ public class V4292 extends NamespacedSchema {
          true,
          References.TEXT_COMPONENT,
          () -> DSL.or(
-               DSL.or(DSL.constType(DSL.string()), DSL.list(References.TEXT_COMPONENT.in(schema))),
-               DSL.optionalFields(
-                  "extra",
-                  DSL.list(References.TEXT_COMPONENT.in(schema)),
-                  "separator",
-                  References.TEXT_COMPONENT.in(schema),
-                  "hover_event",
-                  DSL.taggedChoice(
-                     "action",
-                     DSL.string(),
-                     Map.of(
-                        "show_text",
-                        DSL.optionalFields("value", References.TEXT_COMPONENT.in(schema)),
-                        "show_item",
-                        References.ITEM_STACK.in(schema),
-                        "show_entity",
-                        DSL.optionalFields("id", References.ENTITY_NAME.in(schema), "name", References.TEXT_COMPONENT.in(schema))
-                     )
+            DSL.or(DSL.constType(DSL.string()), DSL.list(References.TEXT_COMPONENT.in(schema))),
+            DSL.optionalFields(
+               "extra",
+               DSL.list(References.TEXT_COMPONENT.in(schema)),
+               "separator",
+               References.TEXT_COMPONENT.in(schema),
+               "hover_event",
+               DSL.taggedChoice(
+                  "action",
+                  DSL.string(),
+                  Map.of(
+                     "show_text",
+                     DSL.optionalFields("value", References.TEXT_COMPONENT.in(schema)),
+                     "show_item",
+                     References.ITEM_STACK.in(schema),
+                     "show_entity",
+                     DSL.optionalFields("id", References.ENTITY_NAME.in(schema), "name", References.TEXT_COMPONENT.in(schema))
                   )
                )
             )
+         )
       );
    }
 }

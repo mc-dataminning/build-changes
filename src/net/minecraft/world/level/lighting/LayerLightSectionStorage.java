@@ -44,34 +44,30 @@ public abstract class LayerLightSectionStorage<M extends DataLayerStorageMap<M>>
       return this.getDataLayer(sectionNode, true) != null;
    }
 
-   @Nullable
-   protected DataLayer getDataLayer(final long sectionNode, final boolean updating) {
+   protected @Nullable DataLayer getDataLayer(final long sectionNode, final boolean updating) {
       return this.getDataLayer(updating ? this.updatingSectionData : this.visibleSectionData, sectionNode);
    }
 
-   @Nullable
-   protected DataLayer getDataLayer(final M sections, final long sectionNode) {
+   protected @Nullable DataLayer getDataLayer(final M sections, final long sectionNode) {
       return sections.getLayer(sectionNode);
    }
 
-   @Nullable
-   protected DataLayer getDataLayerToWrite(final long sectionNode) {
+   protected @Nullable DataLayer getDataLayerToWrite(final long sectionNode) {
       DataLayer dataLayer = this.updatingSectionData.getLayer(sectionNode);
       if (dataLayer == null) {
          return null;
-      } else {
-         if (this.changedSections.add(sectionNode)) {
-            dataLayer = dataLayer.copy();
-            this.updatingSectionData.setLayer(sectionNode, dataLayer);
-            this.updatingSectionData.clearCache();
-         }
-
-         return dataLayer;
       }
+
+      if (this.changedSections.add(sectionNode)) {
+         dataLayer = dataLayer.copy();
+         this.updatingSectionData.setLayer(sectionNode, dataLayer);
+         this.updatingSectionData.clearCache();
+      }
+
+      return dataLayer;
    }
 
-   @Nullable
-   public DataLayer getDataLayerData(final long sectionNode) {
+   public @Nullable DataLayer getDataLayerData(final long sectionNode) {
       DataLayer layer = (DataLayer)this.queuedSections.get(sectionNode);
       return layer != null ? layer : this.getDataLayer(sectionNode, false);
    }
@@ -208,7 +204,7 @@ public abstract class LayerLightSectionStorage<M extends DataLayerStorageMap<M>>
       }
    }
 
-   protected void queueSectionData(final long sectionNode, @Nullable final DataLayer data) {
+   protected void queueSectionData(final long sectionNode, final @Nullable DataLayer data) {
       if (data != null) {
          this.queuedSections.put(sectionNode, data);
          this.hasInconsistencies = true;
@@ -328,14 +324,14 @@ public abstract class LayerLightSectionStorage<M extends DataLayerStorageMap<M>>
       }
    }
 
-   public static enum SectionType {
+   public enum SectionType {
       EMPTY("2"),
       LIGHT_ONLY("1"),
       LIGHT_AND_DATA("0");
 
       private final String display;
 
-      private SectionType(final String display) {
+      SectionType(final String display) {
          this.display = display;
       }
 

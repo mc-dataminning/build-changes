@@ -41,75 +41,74 @@ public class TrappedChestBlockEntityFix extends DataFix {
          Type<?> sectionsType = sectionsFinder.type();
          if (!(sectionsType instanceof ListType)) {
             throw new IllegalStateException("Expecting sections to be a list.");
-         } else {
-            Type<?> sectionType = ((ListType)sectionsType).getElement();
-            OpticFinder<?> sectionFinder = DSL.typeFinder(sectionType);
-            return TypeRewriteRule.seq(
-               new AddNewChoices(this.getOutputSchema(), "AddTrappedChestFix", References.BLOCK_ENTITY).makeRule(),
-               this.fixTypeEverywhereTyped(
-                  "Trapped Chest fix",
-                  chunkType1,
-                  chunk -> chunk.updateTyped(
-                        levelFinder,
-                        level -> {
-                           Optional<? extends Typed<?>> sections = level.getOptionalTyped(sectionsFinder);
-                           if (sections.isEmpty()) {
-                              return level;
-                           } else {
-                              List<? extends Typed<?>> sectionList = sections.get().getAllTyped(sectionFinder);
-                              IntSet chestLocations = new IntOpenHashSet();
+         }
 
-                              for (Typed<?> section : sectionList) {
-                                 TrappedChestBlockEntityFix.TrappedChestSection trappedChestSection = new TrappedChestBlockEntityFix.TrappedChestSection(
-                                    section, this.getInputSchema()
-                                 );
-                                 if (!trappedChestSection.isSkippable()) {
-                                    for (int i = 0; i < 4096; i++) {
-                                       int block = trappedChestSection.getBlock(i);
-                                       if (trappedChestSection.isTrappedChest(block)) {
-                                          chestLocations.add(trappedChestSection.getIndex() << 12 | i);
-                                       }
-                                    }
-                                 }
+         Type<?> sectionType = ((ListType)sectionsType).getElement();
+         OpticFinder<?> sectionFinder = DSL.typeFinder(sectionType);
+         return TypeRewriteRule.seq(
+            new AddNewChoices(this.getOutputSchema(), "AddTrappedChestFix", References.BLOCK_ENTITY).makeRule(),
+            this.fixTypeEverywhereTyped(
+               "Trapped Chest fix",
+               chunkType1,
+               chunk -> chunk.updateTyped(
+                  levelFinder,
+                  level -> {
+                     Optional<? extends Typed<?>> sections = level.getOptionalTyped(sectionsFinder);
+                     if (sections.isEmpty()) {
+                        return level;
+                     }
+
+                     List<? extends Typed<?>> sectionList = sections.get().getAllTyped(sectionFinder);
+                     IntSet chestLocations = new IntOpenHashSet();
+
+                     for (Typed<?> section : sectionList) {
+                        TrappedChestBlockEntityFix.TrappedChestSection trappedChestSection = new TrappedChestBlockEntityFix.TrappedChestSection(
+                           section, this.getInputSchema()
+                        );
+                        if (!trappedChestSection.isSkippable()) {
+                           for (int i = 0; i < 4096; i++) {
+                              int block = trappedChestSection.getBlock(i);
+                              if (trappedChestSection.isTrappedChest(block)) {
+                                 chestLocations.add(trappedChestSection.getIndex() << 12 | i);
                               }
-
-                              Dynamic<?> levelTag = (Dynamic<?>)level.get(DSL.remainderFinder());
-                              int chunkX = levelTag.get("xPos").asInt(0);
-                              int chunkZ = levelTag.get("zPos").asInt(0);
-                              TaggedChoiceType<String> tileEntityChoiceType = this.getInputSchema().findChoiceType(References.BLOCK_ENTITY);
-                              return level.updateTyped(
-                                 tileEntitiesF,
-                                 tileEntities -> tileEntities.updateTyped(
-                                       tileEntityChoiceType.finder(),
-                                       tileEntity -> {
-                                          Dynamic<?> tag = (Dynamic<?>)tileEntity.getOrCreate(DSL.remainderFinder());
-                                          int x = tag.get("x").asInt(0) - (chunkX << 4);
-                                          int y = tag.get("y").asInt(0);
-                                          int z = tag.get("z").asInt(0) - (chunkZ << 4);
-                                          return chestLocations.contains(LeavesFix.getIndex(x, y, z))
-                                             ? tileEntity.update(tileEntityChoiceType.finder(), stringPair -> stringPair.mapFirst(s -> {
-                                                   if (!Objects.equals(s, "minecraft:chest")) {
-                                                      LOGGER.warn("Block Entity was expected to be a chest");
-                                                   }
-
-                                                   return "minecraft:trapped_chest";
-                                                }))
-                                             : tileEntity;
-                                       }
-                                    )
-                              );
                            }
                         }
-                     )
+                     }
+
+                     Dynamic<?> levelTag = (Dynamic<?>)level.get(DSL.remainderFinder());
+                     int chunkX = levelTag.get("xPos").asInt(0);
+                     int chunkZ = levelTag.get("zPos").asInt(0);
+                     TaggedChoiceType<String> tileEntityChoiceType = this.getInputSchema().findChoiceType(References.BLOCK_ENTITY);
+                     return level.updateTyped(
+                        tileEntitiesF,
+                        tileEntities -> tileEntities.updateTyped(
+                           tileEntityChoiceType.finder(),
+                           tileEntity -> {
+                              Dynamic<?> tag = (Dynamic<?>)tileEntity.getOrCreate(DSL.remainderFinder());
+                              int x = tag.get("x").asInt(0) - (chunkX << 4);
+                              int y = tag.get("y").asInt(0);
+                              int z = tag.get("z").asInt(0) - (chunkZ << 4);
+                              return chestLocations.contains(LeavesFix.getIndex(x, y, z))
+                                 ? tileEntity.update(tileEntityChoiceType.finder(), stringPair -> stringPair.mapFirst(s -> {
+                                    if (!Objects.equals(s, "minecraft:chest")) {
+                                       LOGGER.warn("Block Entity was expected to be a chest");
+                                    }
+
+                                    return "minecraft:trapped_chest";
+                                 }))
+                                 : tileEntity;
+                           }
+                        )
+                     );
+                  }
                )
-            );
-         }
+            )
+         );
       }
    }
 
    public static final class TrappedChestSection extends LeavesFix.Section {
-      @Nullable
-      private IntSet chestIds;
+      private @Nullable IntSet chestIds;
 
       public TrappedChestSection(final Typed<?> section, final Schema inputSchema) {
          super(section, inputSchema);

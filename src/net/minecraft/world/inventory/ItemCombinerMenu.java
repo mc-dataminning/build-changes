@@ -1,6 +1,5 @@
 package net.minecraft.world.inventory;
 
-import java.util.Objects;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -17,10 +16,6 @@ public abstract class ItemCombinerMenu extends AbstractContainerMenu {
    protected final Player player;
    protected final Container inputSlots;
    protected final ResultContainer resultSlots = new ResultContainer() {
-      {
-         Objects.requireNonNull(ItemCombinerMenu.this);
-      }
-
       @Override
       public void setChanged() {
          ItemCombinerMenu.this.slotsChanged(this);
@@ -37,7 +32,7 @@ public abstract class ItemCombinerMenu extends AbstractContainerMenu {
    protected abstract boolean isValidBlock(BlockState state);
 
    public ItemCombinerMenu(
-      @Nullable final MenuType<?> menuType,
+      final @Nullable MenuType<?> menuType,
       final int containerId,
       final Inventory inventory,
       final ContainerLevelAccess access,
@@ -56,10 +51,6 @@ public abstract class ItemCombinerMenu extends AbstractContainerMenu {
    private void createInputSlots(final ItemCombinerMenuSlotDefinition itemInputSlots) {
       for (final ItemCombinerMenuSlotDefinition.SlotDefinition slot : itemInputSlots.getSlots()) {
          this.addSlot(new Slot(this.inputSlots, slot.slotIndex(), slot.x(), slot.y()) {
-            {
-               Objects.requireNonNull(ItemCombinerMenu.this);
-            }
-
             @Override
             public boolean mayPlace(final ItemStack itemStack) {
                return slot.mayPlace().test(itemStack);
@@ -71,10 +62,6 @@ public abstract class ItemCombinerMenu extends AbstractContainerMenu {
    private void createResultSlot(final ItemCombinerMenuSlotDefinition itemInputSlots) {
       this.addSlot(
          new Slot(this.resultSlots, itemInputSlots.getResultSlot().slotIndex(), itemInputSlots.getResultSlot().x(), itemInputSlots.getResultSlot().y()) {
-            {
-               Objects.requireNonNull(ItemCombinerMenu.this);
-            }
-
             @Override
             public boolean mayPlace(final ItemStack itemStack) {
                return false;
@@ -97,10 +84,6 @@ public abstract class ItemCombinerMenu extends AbstractContainerMenu {
 
    private SimpleContainer createContainer(final int size) {
       return new SimpleContainer(size) {
-         {
-            Objects.requireNonNull(ItemCombinerMenu.this);
-         }
-
          @Override
          public void setChanged() {
             super.setChanged();

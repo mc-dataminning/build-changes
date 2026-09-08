@@ -79,8 +79,8 @@ public class DataPackCommand {
       id -> Component.translatableEscape("commands.datapack.create.io_failure", id)
    );
    private static final SuggestionProvider<CommandSourceStack> SELECTED_PACKS = (c, p) -> SharedSuggestionProvider.suggest(
-         ((CommandSourceStack)c.getSource()).getServer().getPackRepository().getSelectedIds().stream().map(StringArgumentType::escapeIfRequired), p
-      );
+      ((CommandSourceStack)c.getSource()).getServer().getPackRepository().getSelectedIds().stream().map(StringArgumentType::escapeIfRequired), p
+   );
    private static final SuggestionProvider<CommandSourceStack> UNSELECTED_PACKS = (c, p) -> {
       PackRepository packRepository = ((CommandSourceStack)c.getSource()).getServer().getPackRepository();
       Collection<String> selectedIds = packRepository.getSelectedIds();
@@ -111,10 +111,10 @@ public class DataPackCommand {
                                              .suggests(UNSELECTED_PACKS)
                                              .executes(
                                                 c -> enablePack(
-                                                      (CommandSourceStack)c.getSource(),
-                                                      getPack(c, "name", true),
-                                                      (l, p) -> p.getDefaultPosition().insert(l, p, Pack::selectionConfig, false)
-                                                   )
+                                                   (CommandSourceStack)c.getSource(),
+                                                   getPack(c, "name", true),
+                                                   (l, p) -> p.getDefaultPosition().insert(l, p, Pack::selectionConfig, false)
+                                                )
                                              ))
                                           .then(
                                              Commands.literal("after")
@@ -123,10 +123,10 @@ public class DataPackCommand {
                                                       .suggests(SELECTED_PACKS)
                                                       .executes(
                                                          c -> enablePack(
-                                                               (CommandSourceStack)c.getSource(),
-                                                               getPack(c, "name", true),
-                                                               (l, p) -> l.add(l.indexOf(getPack(c, "existing", false)) + 1, p)
-                                                            )
+                                                            (CommandSourceStack)c.getSource(),
+                                                            getPack(c, "name", true),
+                                                            (l, p) -> l.add(l.indexOf(getPack(c, "existing", false)) + 1, p)
+                                                         )
                                                       )
                                                 )
                                           ))
@@ -137,10 +137,10 @@ public class DataPackCommand {
                                                    .suggests(SELECTED_PACKS)
                                                    .executes(
                                                       c -> enablePack(
-                                                            (CommandSourceStack)c.getSource(),
-                                                            getPack(c, "name", true),
-                                                            (l, p) -> l.add(l.indexOf(getPack(c, "existing", false)), p)
-                                                         )
+                                                         (CommandSourceStack)c.getSource(),
+                                                         getPack(c, "name", true),
+                                                         (l, p) -> l.add(l.indexOf(getPack(c, "existing", false)), p)
+                                                      )
                                                    )
                                              )
                                        ))
@@ -175,10 +175,10 @@ public class DataPackCommand {
                            Commands.argument("description", ComponentArgument.textComponent(context))
                               .executes(
                                  c -> createPack(
-                                       (CommandSourceStack)c.getSource(),
-                                       StringArgumentType.getString(c, "id"),
-                                       ComponentArgument.getResolvedComponent(c, "description")
-                                    )
+                                    (CommandSourceStack)c.getSource(),
+                                    StringArgumentType.getString(c, "id"),
+                                    ComponentArgument.getResolvedComponent(c, "description")
+                                 )
                               )
                         )
                   )
@@ -190,57 +190,59 @@ public class DataPackCommand {
       Path datapackDir = source.getServer().getWorldPath(LevelResource.DATAPACK_DIR);
       if (!FileUtil.isValidPathSegment(id)) {
          throw ERROR_PACK_INVALID_NAME.create(id);
-      } else if (!FileUtil.isPathPartPortable(id)) {
+      }
+
+      if (!FileUtil.isPathPartPortable(id)) {
          throw ERROR_PACK_INVALID_FULL_NAME.create(id);
-      } else {
-         Path packDir = datapackDir.resolve(id);
-         if (Files.exists(packDir)) {
-            throw ERROR_PACK_ALREADY_EXISTS.create(id);
-         } else {
-            PackMetadataSection packMetadataSection = new PackMetadataSection(
-               description, SharedConstants.getCurrentVersion().packVersion(PackType.SERVER_DATA).minorRange()
-            );
-            DataResult<JsonElement> encodedMeta = PackMetadataSection.SERVER_TYPE.codec().encodeStart(JsonOps.INSTANCE, packMetadataSection);
-            Optional<Error<JsonElement>> error = encodedMeta.error();
-            if (error.isPresent()) {
-               throw ERROR_PACK_METADATA_ENCODE_FAILURE.create(id, error.get().message());
-            } else {
-               JsonObject topMcmeta = new JsonObject();
-               topMcmeta.add(PackMetadataSection.SERVER_TYPE.name(), (JsonElement)encodedMeta.getOrThrow());
+      }
 
+      Path packDir = datapackDir.resolve(id);
+      if (Files.exists(packDir)) {
+         throw ERROR_PACK_ALREADY_EXISTS.create(id);
+      }
+
+      PackMetadataSection packMetadataSection = new PackMetadataSection(
+         description, SharedConstants.getCurrentVersion().packVersion(PackType.SERVER_DATA).minorRange()
+      );
+      DataResult<JsonElement> encodedMeta = PackMetadataSection.SERVER_TYPE.codec().encodeStart(JsonOps.INSTANCE, packMetadataSection);
+      Optional<Error<JsonElement>> error = encodedMeta.error();
+      if (error.isPresent()) {
+         throw ERROR_PACK_METADATA_ENCODE_FAILURE.create(id, error.get().message());
+      }
+
+      JsonObject topMcmeta = new JsonObject();
+      topMcmeta.add(PackMetadataSection.SERVER_TYPE.name(), (JsonElement)encodedMeta.getOrThrow());
+
+      try {
+         Files.createDirectory(packDir);
+         Files.createDirectory(packDir.resolve(PackType.SERVER_DATA.getDirectory()));
+
+         try (BufferedWriter mcmetaFile = Files.newBufferedWriter(packDir.resolve("pack.mcmeta"), StandardCharsets.UTF_8)) {
+            JsonWriter jsonWriter = new JsonWriter(mcmetaFile);
+
+            try {
+               jsonWriter.setSerializeNulls(false);
+               jsonWriter.setIndent("  ");
+               GsonHelper.writeValue(jsonWriter, topMcmeta, null);
+            } catch (Throwable var15) {
                try {
-                  Files.createDirectory(packDir);
-                  Files.createDirectory(packDir.resolve(PackType.SERVER_DATA.getDirectory()));
-
-                  try (BufferedWriter mcmetaFile = Files.newBufferedWriter(packDir.resolve("pack.mcmeta"), StandardCharsets.UTF_8)) {
-                     JsonWriter jsonWriter = new JsonWriter(mcmetaFile);
-
-                     try {
-                        jsonWriter.setSerializeNulls(false);
-                        jsonWriter.setIndent("  ");
-                        GsonHelper.writeValue(jsonWriter, topMcmeta, null);
-                     } catch (Throwable var15) {
-                        try {
-                           jsonWriter.close();
-                        } catch (Throwable var14) {
-                           var15.addSuppressed(var14);
-                        }
-
-                        throw var15;
-                     }
-
-                     jsonWriter.close();
-                  }
-               } catch (IOException var17) {
-                  LOGGER.warn("Failed to create pack at {}", datapackDir.toAbsolutePath(), var17);
-                  throw ERROR_PACK_IO_FAILURE.create(id);
+                  jsonWriter.close();
+               } catch (Throwable var14) {
+                  var15.addSuppressed(var14);
                }
 
-               source.sendSuccess(() -> Component.translatable("commands.datapack.create.success", id), true);
-               return 1;
+               throw var15;
             }
+
+            jsonWriter.close();
          }
+      } catch (IOException e) {
+         LOGGER.warn("Failed to create pack at {}", datapackDir.toAbsolutePath(), e);
+         throw ERROR_PACK_IO_FAILURE.create(id);
       }
+
+      source.sendSuccess(() -> Component.translatable("commands.datapack.create.success", id), true);
+      return 1;
    }
 
    private static int enablePack(final CommandSourceStack source, final Pack unopened, final DataPackCommand.Inserter inserter) throws CommandSyntaxException {
@@ -279,8 +281,8 @@ public class DataPackCommand {
       } else {
          source.sendSuccess(
             () -> Component.translatable(
-                  "commands.datapack.list.available.success", unselectedPacks.size(), ComponentUtils.formatList(unselectedPacks, p -> p.getChatLink(false))
-               ),
+               "commands.datapack.list.available.success", unselectedPacks.size(), ComponentUtils.formatList(unselectedPacks, p -> p.getChatLink(false))
+            ),
             false
          );
       }
@@ -297,8 +299,8 @@ public class DataPackCommand {
       } else {
          source.sendSuccess(
             () -> Component.translatable(
-                  "commands.datapack.list.enabled.success", selectedPacks.size(), ComponentUtils.formatList(selectedPacks, p -> p.getChatLink(true))
-               ),
+               "commands.datapack.list.enabled.success", selectedPacks.size(), ComponentUtils.formatList(selectedPacks, p -> p.getChatLink(true))
+            ),
             false
          );
       }

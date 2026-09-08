@@ -5,7 +5,6 @@ import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
 import com.mojang.renderpearl.backend.common.BaseGpuBuffer;
 import java.nio.ByteBuffer;
 import java.nio.LongBuffer;
-import java.util.Objects;
 import java.util.function.Supplier;
 import org.jspecify.annotations.Nullable;
 import org.lwjgl.PointerBuffer;
@@ -18,7 +17,7 @@ import org.lwjgl.vulkan.VkBufferCreateInfo;
 public abstract class VulkanGpuBuffer extends BaseGpuBuffer implements Destroyable {
    private final long vkBuffer;
 
-   public VulkanGpuBuffer(final long vkBuffer, @GpuBuffer.Usage final int usage, final long size) {
+   public VulkanGpuBuffer(final long vkBuffer, final @GpuBuffer.Usage int usage, final long size) {
       super(usage, size);
       this.vkBuffer = vkBuffer;
    }
@@ -35,8 +34,8 @@ public abstract class VulkanGpuBuffer extends BaseGpuBuffer implements Destroyab
 
       public Direct(
          final VulkanDevice device,
-         @Nullable final Supplier<String> label,
-         @GpuBuffer.Usage final int usage,
+         final @Nullable Supplier<String> label,
+         final @GpuBuffer.Usage int usage,
          final long size,
          final boolean forceHostVisibleAllocation
       ) {
@@ -116,9 +115,9 @@ public abstract class VulkanGpuBuffer extends BaseGpuBuffer implements Destroyab
             this.closed = true;
             if (this.mappingRefCount != 0) {
                throw new IllegalStateException("Attempt to close a mapped buffer");
-            } else {
-               this.device.createCommandEncoder().queueForDestroy(this);
             }
+
+            this.device.createCommandEncoder().queueForDestroy(this);
          }
       }
 
@@ -126,13 +125,21 @@ public abstract class VulkanGpuBuffer extends BaseGpuBuffer implements Destroyab
       public GpuBufferSlice.MappedView map(final long offset, final long length, final boolean read, final boolean write) {
          if (this.isClosed()) {
             throw new IllegalStateException("Buffer already closed");
-         } else if (!read && !write) {
+         }
+
+         if (!read && !write) {
             throw new IllegalArgumentException("At least read or write must be true");
-         } else if (read && (this.usage() & 1) == 0) {
+         }
+
+         if (read && (this.usage() & 1) == 0) {
             throw new IllegalStateException("Buffer is not readable");
-         } else if (write && (this.usage() & 2) == 0) {
+         }
+
+         if (write && (this.usage() & 2) == 0) {
             throw new IllegalStateException("Buffer is not writable");
-         } else if (offset + length > this.size()) {
+         }
+
+         if (offset + length > this.size()) {
             throw new IllegalArgumentException(
                "Cannot map more data than this buffer can hold (attempting to map "
                   + length
@@ -142,9 +149,13 @@ public abstract class VulkanGpuBuffer extends BaseGpuBuffer implements Destroyab
                   + this.size()
                   + " size buffer)"
             );
-         } else if (length > 2147483647L) {
+         }
+
+         if (length > 2147483647L) {
             throw new IllegalArgumentException("Mapping buffer slice larger than 2GB is not supported");
-         } else if (offset >= 0L && length >= 0L) {
+         }
+
+         if (offset >= 0L && length >= 0L) {
             this.mappingRefCount++;
             MemoryStack stack = MemoryStack.stackPush();
 
@@ -154,12 +165,7 @@ public abstract class VulkanGpuBuffer extends BaseGpuBuffer implements Destroyab
                VulkanUtils.crashIfFailure(this.device, Vma.vmaMapMemory(this.device.vma(), this.vmaAllocation, pointer), "Failed to map buffer");
                ByteBuffer byteBuffer = MemoryUtil.memByteBuffer(pointer.get(0) + offset, (int)length);
                var10 = new GpuBufferSlice.MappedView(this.slice(offset, length), byteBuffer, new Runnable() {
-                  private boolean closed;
-
-                  {
-                     Objects.requireNonNull(Direct.this);
-                     this.closed = false;
-                  }
+                  private boolean closed = false;
 
                   @Override
                   public void run() {

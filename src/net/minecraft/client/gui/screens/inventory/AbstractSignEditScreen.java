@@ -37,8 +37,7 @@ public abstract class AbstractSignEditScreen extends Screen {
    private long cursorBlinkStartTime;
    private int line;
    private final TextFieldHelper signField;
-   @Nullable
-   private IMEPreeditOverlay preeditOverlay;
+   private @Nullable IMEPreeditOverlay preeditOverlay;
    private final Vector2f cursorPosScratch = new Vector2f();
 
    public AbstractSignEditScreen(final SignBlockEntity sign, final SignTextSlot slot, final boolean shouldFilter) {
@@ -117,7 +116,7 @@ public abstract class AbstractSignEditScreen extends Screen {
    }
 
    @Override
-   public boolean preeditUpdated(@Nullable final PreeditEvent event) {
+   public boolean preeditUpdated(final @Nullable PreeditEvent event) {
       this.preeditOverlay = event != null ? new IMEPreeditOverlay(event, this.font, this.sign.getTextLineHeight()) : null;
       return true;
    }
@@ -162,7 +161,7 @@ public abstract class AbstractSignEditScreen extends Screen {
 
    private void extractSign(final GuiGraphicsExtractor graphics) {
       graphics.pose().pushMatrix();
-      float offsetX = (float)this.width / 2.0F;
+      float offsetX = this.width / 2.0F;
       float offsetY = this.getSignYOffset();
       graphics.pose().translate(offsetX, offsetY);
       graphics.pose().pushMatrix();
@@ -209,36 +208,36 @@ public abstract class AbstractSignEditScreen extends Screen {
             if (!showCursor) {
             }
 
-            int cursorPosition = this.font.width(line.substring(0, Math.clamp((long)cursorPos, 0, line.length())));
+            int cursorPosition = this.font.width(line.substring(0, Math.clamp(cursorPos, 0, line.length())));
             int cursorX = cursorPosition - this.font.width(line) / 2;
             if (cursorPos >= line.length()) {
                if (showCursor) {
                   TextCursorUtils.extractAppendCursor(graphics, this.font, cursorX, cursorY, this.textColor, false);
                }
 
-               cursorPosOutput.set((float)cursorX, (float)cursorY);
+               cursorPosOutput.set(cursorX, cursorY);
             }
          }
       }
 
       for (int i = 0; i < this.messages.length; i++) {
-         String linex = this.messages[i];
+         String line = this.messages[i];
          if (i == this.line && cursorPos >= 0) {
-            int cursorPosition = this.font.width(linex.substring(0, Math.clamp((long)cursorPos, 0, linex.length())));
-            int cursorX = cursorPosition - this.font.width(linex) / 2;
-            if (cursorPos < linex.length()) {
+            int cursorPosition = this.font.width(line.substring(0, Math.clamp(cursorPos, 0, line.length())));
+            int cursorX = cursorPosition - this.font.width(line) / 2;
+            if (cursorPos < line.length()) {
                if (showCursor) {
                   TextCursorUtils.extractInsertCursor(graphics, cursorX, cursorY, ARGB.opaque(this.textColor), this.sign.getTextLineHeight());
                }
 
-               cursorPosOutput.set((float)cursorX, (float)cursorY);
+               cursorPosOutput.set(cursorX, cursorY);
             }
 
             if (selectionPos != cursorPos) {
                int startIndex = Math.min(cursorPos, selectionPos);
                int endIndex = Math.max(cursorPos, selectionPos);
-               int startPosX = this.font.width(linex.substring(0, startIndex)) - this.font.width(linex) / 2;
-               int endPosX = this.font.width(linex.substring(0, endIndex)) - this.font.width(linex) / 2;
+               int startPosX = this.font.width(line.substring(0, startIndex)) - this.font.width(line) / 2;
+               int endPosX = this.font.width(line.substring(0, endIndex)) - this.font.width(line) / 2;
                int fromX = Math.min(startPosX, endPosX);
                int toX = Math.max(startPosX, endPosX);
                graphics.textHighlight(fromX, cursorY, toX, cursorY + this.sign.getTextLineHeight(), true);

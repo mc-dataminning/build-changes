@@ -7,8 +7,7 @@ public interface IdMap<T> extends Iterable<T> {
 
    int getId(T thing);
 
-   @Nullable
-   T byId(int id);
+   @Nullable T byId(int id);
 
    default T byIdOrThrow(final int id) {
       T result = this.byId(id);

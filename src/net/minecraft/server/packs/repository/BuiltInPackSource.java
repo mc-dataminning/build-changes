@@ -45,8 +45,7 @@ public abstract class BuiltInPackSource implements RepositorySource {
       this.listBundledPacks(result);
    }
 
-   @Nullable
-   protected abstract Pack createVanillaPack(final Pack.ResourcesSupplier resources);
+   protected abstract @Nullable Pack createVanillaPack(final Pack.ResourcesSupplier resources);
 
    protected abstract Component getPackTitle(String id);
 
@@ -69,7 +68,7 @@ public abstract class BuiltInPackSource implements RepositorySource {
       this.vanillaPack.listRawPaths(this.packType, this.packDir, path -> this.discoverPacksInPath(path, discoveredPacks));
    }
 
-   protected void discoverPacksInPath(@Nullable final Path targetDir, final BiConsumer<String, Function<String, Pack>> discoveredPacks) {
+   protected void discoverPacksInPath(final @Nullable Path targetDir, final BiConsumer<String, Function<String, @Nullable Pack>> discoveredPacks) {
       if (targetDir != null && Files.isDirectory(targetDir)) {
          try {
             FolderRepositorySource.discoverPacks(
@@ -77,8 +76,8 @@ public abstract class BuiltInPackSource implements RepositorySource {
                this.validator,
                (path, resources) -> discoveredPacks.accept(pathToId(path), id -> this.createBuiltinPack(id, resources, this.getPackTitle(id)))
             );
-         } catch (IOException var4) {
-            LOGGER.warn("Failed to discover packs in {}", targetDir, var4);
+         } catch (IOException e) {
+            LOGGER.warn("Failed to discover packs in {}", targetDir, e);
          }
       }
    }
@@ -87,6 +86,5 @@ public abstract class BuiltInPackSource implements RepositorySource {
       return StringUtils.removeEnd(path.getFileName().toString(), ".zip");
    }
 
-   @Nullable
-   protected abstract Pack createBuiltinPack(final String id, final Pack.ResourcesSupplier resources, final Component name);
+   protected abstract @Nullable Pack createBuiltinPack(final String id, final Pack.ResourcesSupplier resources, final Component name);
 }

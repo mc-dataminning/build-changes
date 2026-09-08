@@ -35,7 +35,7 @@ public class BeaconRenderer<T extends BlockEntity & BeaconBeamOwner> implements 
       final BeaconRenderState state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
       extract(blockEntity, state, partialTicks, cameraPosition);
@@ -44,7 +44,7 @@ public class BeaconRenderer<T extends BlockEntity & BeaconBeamOwner> implements 
    public static <T extends BlockEntity & BeaconBeamOwner> void extract(
       final T blockEntity, final BeaconRenderState state, final float partialTicks, final Vec3 cameraPosition
    ) {
-      state.animationTime = blockEntity.getLevel() != null ? (float)Math.floorMod(blockEntity.getLevel().getGameTime(), 40) + partialTicks : 0.0F;
+      state.animationTime = blockEntity.getLevel() != null ? Math.floorMod(blockEntity.getLevel().getGameTime(), 40) + partialTicks : 0.0F;
       state.sections = blockEntity.getBeamSections().stream().map(section -> new BeaconRenderState.Section(section.getColor(), section.getHeight())).toList();
       float distanceToBeacon = (float)cameraPosition.subtract(Vec3.atCenterOf(state.blockPos)).horizontalDistance();
       LocalPlayer player = Minecraft.getInstance().player;
@@ -99,10 +99,12 @@ public class BeaconRenderer<T extends BlockEntity & BeaconBeamOwner> implements 
       poseStack.pushPose();
       poseStack.translate(0.5, 0.0, 0.5);
       float scroll = height < 0 ? animationTime : -animationTime;
-      float texVOff = Mth.frac(scroll * 0.2F - (float)Mth.floor(scroll * 0.1F));
+      float texVOff = Mth.frac(scroll * 0.2F - Mth.floor(scroll * 0.1F));
       poseStack.pushPose();
       poseStack.rotateDegrees(Axis.YP, animationTime * 2.25F - 45.0F);
       float wnx = 0.0F;
+      float wnz = solidBeamRadius;
+      float enx = solidBeamRadius;
       float enz = 0.0F;
       float wsx = -solidBeamRadius;
       float wsz = 0.0F;
@@ -111,45 +113,29 @@ public class BeaconRenderer<T extends BlockEntity & BeaconBeamOwner> implements 
       float uu1 = 0.0F;
       float uu2 = 1.0F;
       float vv2 = -1.0F + texVOff;
-      float vv1 = (float)height * scale * (0.5F / solidBeamRadius) + vv2;
+      float vv1 = height * scale * (0.5F / solidBeamRadius) + vv2;
       submitNodeCollector.submitCustomGeometry(
          poseStack,
          RenderTypes.beaconBeam(beamLocation, false),
-         (pose, buffer) -> renderPart(
-               pose, buffer, color, beamStart, beamEnd, 0.0F, solidBeamRadius, solidBeamRadius, 0.0F, wsx, 0.0F, 0.0F, esz, 0.0F, 1.0F, vv1, vv2
-            )
+         (pose, buffer) -> renderPart(pose, buffer, color, beamStart, beamEnd, 0.0F, wnz, enx, 0.0F, wsx, 0.0F, 0.0F, esz, 0.0F, 1.0F, vv1, vv2)
       );
       poseStack.popPose();
       wnx = -beamGlowRadius;
-      float wnz = -beamGlowRadius;
+      wnz = -beamGlowRadius;
+      enx = beamGlowRadius;
       enz = -beamGlowRadius;
       wsx = -beamGlowRadius;
+      wsz = beamGlowRadius;
+      esx = beamGlowRadius;
+      esz = beamGlowRadius;
       uu1 = 0.0F;
       uu2 = 1.0F;
       vv2 = -1.0F + texVOff;
-      vv1 = (float)height * scale + vv2;
+      vv1 = height * scale + vv2;
       submitNodeCollector.submitCustomGeometry(
          poseStack,
          RenderTypes.beaconBeam(beamLocation, true),
-         (pose, buffer) -> renderPart(
-               pose,
-               buffer,
-               ARGB.color(32, color),
-               beamStart,
-               beamEnd,
-               wnx,
-               wnz,
-               beamGlowRadius,
-               enz,
-               wsx,
-               beamGlowRadius,
-               beamGlowRadius,
-               beamGlowRadius,
-               0.0F,
-               1.0F,
-               vv1,
-               vv2
-            )
+         (pose, buffer) -> renderPart(pose, buffer, ARGB.color(32, color), beamStart, beamEnd, wnx, wnz, enx, enz, wsx, wsz, esx, esz, 0.0F, 1.0F, vv1, vv2)
       );
       poseStack.popPose();
    }
@@ -203,12 +189,7 @@ public class BeaconRenderer<T extends BlockEntity & BeaconBeamOwner> implements 
    private static void addVertex(
       final PoseStack.Pose pose, final VertexConsumer builder, final int color, final int y, final float x, final float z, final float u, final float v
    ) {
-      builder.addVertex(pose, x, (float)y, z)
-         .setColor(color)
-         .setUv(u, v)
-         .setOverlay(OverlayTexture.NO_OVERLAY)
-         .setLight(15728880)
-         .setNormal(pose, 0.0F, 1.0F, 0.0F);
+      builder.addVertex(pose, x, y, z).setColor(color).setUv(u, v).setOverlay(OverlayTexture.NO_OVERLAY).setLight(15728880).setNormal(pose, 0.0F, 1.0F, 0.0F);
    }
 
    @Override
@@ -223,8 +204,6 @@ public class BeaconRenderer<T extends BlockEntity & BeaconBeamOwner> implements 
 
    @Override
    public boolean shouldRender(final T blockEntity, final Vec3 cameraPosition) {
-      return Vec3.atCenterOf(blockEntity.getBlockPos())
-         .multiply(1.0, 0.0, 1.0)
-         .closerThan(cameraPosition.multiply(1.0, 0.0, 1.0), (double)this.getViewDistance());
+      return Vec3.atCenterOf(blockEntity.getBlockPos()).multiply(1.0, 0.0, 1.0).closerThan(cameraPosition.multiply(1.0, 0.0, 1.0), this.getViewDistance());
    }
 }

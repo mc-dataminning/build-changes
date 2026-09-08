@@ -12,20 +12,20 @@ public interface CheckpointExtension extends UncheckedAutoCloseable {
 
    List<CheckpointExtension.QueueCheckpoints> retrieveCheckpoints(boolean isDeviceLost);
 
-   public interface CheckpointStorage {
+   interface CheckpointStorage {
       void rotate();
 
       void recordCheckpoint(VkCommandBuffer commandBuffer, CheckpointExtension.CheckpointType type, Supplier<String> label);
    }
 
-   public static enum CheckpointType {
+   enum CheckpointType {
       BEGIN_RENDER_PASS,
       END_RENDER_PASS;
    }
 
-   public static record QueueCheckpoints(long queue, List<CheckpointExtension.StageCheckpoint> checkpoints) {
+   record QueueCheckpoints(long queue, List<CheckpointExtension.StageCheckpoint> checkpoints) {
    }
 
-   public static record StageCheckpoint(long stage, CheckpointExtension.CheckpointType type, String label) {
+   record StageCheckpoint(long stage, CheckpointExtension.CheckpointType type, String label) {
    }
 }

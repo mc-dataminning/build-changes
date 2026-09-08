@@ -30,9 +30,8 @@ public class Library {
    private long context;
    private boolean supportsDisconnections;
    private static final Library.ChannelPool EMPTY = new Library.ChannelPool() {
-      @Nullable
       @Override
-      public Channel acquire() {
+      public @Nullable Channel acquire() {
          return null;
       }
 
@@ -59,7 +58,7 @@ public class Library {
    private Library.ChannelPool streamingChannels = EMPTY;
    private final Listener listener = new Listener();
 
-   public void init(@Nullable final String preferredDevice, final DeviceList currentDevices, final boolean useHrtf) {
+   public void init(final @Nullable String preferredDevice, final DeviceList currentDevices, final boolean useHrtf) {
       this.currentDeviceName = "(None)";
       this.currentDevice = openDeviceOrFallback(preferredDevice, currentDevices.defaultDevice());
       this.currentDeviceName = queryDeviceName(this.currentDevice);
@@ -67,55 +66,57 @@ public class Library {
       ALCCapabilities alcCapabilities = ALC.createCapabilities(this.currentDevice);
       if (OpenAlUtil.checkALCError(this.currentDevice, "Get capabilities")) {
          throw new IllegalStateException("Failed to get OpenAL capabilities");
-      } else if (!alcCapabilities.OpenALC11) {
-         throw new IllegalStateException("OpenAL 1.1 not supported");
-      } else {
-         MemoryStack stack = MemoryStack.stackPush();
-
-         try {
-            IntBuffer attr = this.createAttributes(stack, alcCapabilities.ALC_SOFT_HRTF && useHrtf);
-            this.context = ALC10.alcCreateContext(this.currentDevice, attr);
-         } catch (Throwable var10) {
-            if (stack != null) {
-               try {
-                  stack.close();
-               } catch (Throwable var9) {
-                  var10.addSuppressed(var9);
-               }
-            }
-
-            throw var10;
-         }
-
-         if (stack != null) {
-            stack.close();
-         }
-
-         if (OpenAlUtil.checkALCError(this.currentDevice, "Create context")) {
-            throw new IllegalStateException("Unable to create OpenAL context");
-         } else {
-            ALC10.alcMakeContextCurrent(this.context);
-            int totalChannelCount = this.getChannelCount();
-            int streamingChannelCount = Mth.clamp((int)Mth.sqrt((float)totalChannelCount), 2, 8);
-            int staticChannelCount = Mth.clamp(totalChannelCount - streamingChannelCount, 8, 255);
-            this.staticChannels = new Library.CountingChannelPool(staticChannelCount);
-            this.streamingChannels = new Library.CountingChannelPool(streamingChannelCount);
-            ALCapabilities alCapabilities = AL.createCapabilities(alcCapabilities);
-            OpenAlUtil.checkALError("Initialization");
-            if (!alCapabilities.AL_EXT_source_distance_model) {
-               throw new IllegalStateException("AL_EXT_source_distance_model is not supported");
-            } else {
-               AL10.alEnable(512);
-               if (!alCapabilities.AL_EXT_LINEAR_DISTANCE) {
-                  throw new IllegalStateException("AL_EXT_LINEAR_DISTANCE is not supported");
-               } else {
-                  OpenAlUtil.checkALError("Enable per-source distance models");
-                  LOGGER.info("OpenAL initialized on device {}", this.currentDeviceName);
-                  this.supportsDisconnections = ALC10.alcIsExtensionPresent(this.currentDevice, "ALC_EXT_disconnect");
-               }
-            }
-         }
       }
+
+      if (!alcCapabilities.OpenALC11) {
+         throw new IllegalStateException("OpenAL 1.1 not supported");
+      }
+
+      MemoryStack stack = MemoryStack.stackPush();
+
+      try {
+         IntBuffer attr = this.createAttributes(stack, alcCapabilities.ALC_SOFT_HRTF && useHrtf);
+         this.context = ALC10.alcCreateContext(this.currentDevice, attr);
+      } catch (Throwable var10) {
+         if (stack != null) {
+            try {
+               stack.close();
+            } catch (Throwable var9) {
+               var10.addSuppressed(var9);
+            }
+         }
+
+         throw var10;
+      }
+
+      if (stack != null) {
+         stack.close();
+      }
+
+      if (OpenAlUtil.checkALCError(this.currentDevice, "Create context")) {
+         throw new IllegalStateException("Unable to create OpenAL context");
+      }
+
+      ALC10.alcMakeContextCurrent(this.context);
+      int totalChannelCount = this.getChannelCount();
+      int streamingChannelCount = Mth.clamp((int)Mth.sqrt(totalChannelCount), 2, 8);
+      int staticChannelCount = Mth.clamp(totalChannelCount - streamingChannelCount, 8, 255);
+      this.staticChannels = new Library.CountingChannelPool(staticChannelCount);
+      this.streamingChannels = new Library.CountingChannelPool(streamingChannelCount);
+      ALCapabilities alCapabilities = AL.createCapabilities(alcCapabilities);
+      OpenAlUtil.checkALError("Initialization");
+      if (!alCapabilities.AL_EXT_source_distance_model) {
+         throw new IllegalStateException("AL_EXT_source_distance_model is not supported");
+      }
+
+      AL10.alEnable(512);
+      if (!alCapabilities.AL_EXT_LINEAR_DISTANCE) {
+         throw new IllegalStateException("AL_EXT_LINEAR_DISTANCE is not supported");
+      }
+
+      OpenAlUtil.checkALError("Enable per-source distance models");
+      LOGGER.info("OpenAL initialized on device {}", this.currentDeviceName);
+      this.supportsDisconnections = ALC10.alcIsExtensionPresent(this.currentDevice, "ALC_EXT_disconnect");
    }
 
    private IntBuffer createAttributes(final MemoryStack stack, final boolean enableHrtf) {
@@ -188,8 +189,7 @@ public class Library {
       return var7;
    }
 
-   @Nullable
-   public String currentDeviceName() {
+   public @Nullable String currentDeviceName() {
       return this.currentDeviceName;
    }
 
@@ -206,7 +206,7 @@ public class Library {
       return name;
    }
 
-   private static long openDeviceOrFallback(@Nullable final String preferredDevice, @Nullable final String systemDefaultDevice) {
+   private static long openDeviceOrFallback(final @Nullable String preferredDevice, final @Nullable String systemDefaultDevice) {
       OptionalLong device = OptionalLong.empty();
       if (preferredDevice != null) {
          device = tryOpenDevice(preferredDevice);
@@ -227,7 +227,7 @@ public class Library {
       }
    }
 
-   private static OptionalLong tryOpenDevice(@Nullable final String name) {
+   private static OptionalLong tryOpenDevice(final @Nullable String name) {
       long device = ALC10.alcOpenDevice(name);
       return device != 0L && !OpenAlUtil.checkALCError(device, "Open device") ? OptionalLong.of(device) : OptionalLong.empty();
    }
@@ -245,8 +245,7 @@ public class Library {
       return this.listener;
    }
 
-   @Nullable
-   public Channel acquireChannel(final Library.Pool pool) {
+   public @Nullable Channel acquireChannel(final Library.Pool pool) {
       return (pool == Library.Pool.STREAMING ? this.streamingChannels : this.staticChannels).acquire();
    }
 
@@ -283,8 +282,7 @@ public class Library {
    }
 
    private interface ChannelPool {
-      @Nullable
-      Channel acquire();
+      @Nullable Channel acquire();
 
       boolean release(Channel channel);
 
@@ -303,9 +301,8 @@ public class Library {
          this.limit = limit;
       }
 
-      @Nullable
       @Override
-      public Channel acquire() {
+      public @Nullable Channel acquire() {
          if (this.activeChannels.size() >= this.limit) {
             if (SharedConstants.IS_RUNNING_IN_IDE) {
                Library.LOGGER.warn("Maximum sound pool size {} reached", this.limit);
@@ -326,10 +323,10 @@ public class Library {
       public boolean release(final Channel channel) {
          if (!this.activeChannels.remove(channel)) {
             return false;
-         } else {
-            channel.destroy();
-            return true;
          }
+
+         channel.destroy();
+         return true;
       }
 
       @Override
@@ -349,7 +346,7 @@ public class Library {
       }
    }
 
-   public static enum Pool {
+   public enum Pool {
       STATIC,
       STREAMING;
    }

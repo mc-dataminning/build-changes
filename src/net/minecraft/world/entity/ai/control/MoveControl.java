@@ -68,8 +68,8 @@ public class MoveControl<T extends Mob> implements Control {
          dist = speedModified / dist;
          xa *= dist;
          za *= dist;
-         float sin = Mth.sin((double)(this.mob.getYRot() * (float) (Math.PI / 180.0)));
-         float cos = Mth.cos((double)(this.mob.getYRot() * (float) (Math.PI / 180.0)));
+         float sin = Mth.sin(this.mob.getYRot() * (float) (Math.PI / 180.0));
+         float cos = Mth.cos(this.mob.getYRot() * (float) (Math.PI / 180.0));
          float dx = xa * cos - za * sin;
          float dz = za * cos + xa * sin;
          if (!this.isWalkable(dx, dz)) {
@@ -98,9 +98,9 @@ public class MoveControl<T extends Mob> implements Control {
          BlockPos pos = this.mob.blockPosition();
          BlockState blockState = this.mob.level().getBlockState(pos);
          VoxelShape shape = blockState.getCollisionShape(this.mob.level(), pos);
-         if (yd > (double)this.mob.maxUpStep() && xd * xd + zd * zd < (double)Math.max(1.0F, this.mob.getBbWidth())
+         if (yd > this.mob.maxUpStep() && xd * xd + zd * zd < Math.max(1.0F, this.mob.getBbWidth())
             || !shape.isEmpty()
-               && this.mob.getY() < shape.max(Direction.Axis.Y) + (double)pos.getY()
+               && this.mob.getY() < shape.max(Direction.Axis.Y) + pos.getY()
                && !blockState.is(BlockTags.DOORS)
                && !blockState.is(BlockTags.FENCES)) {
             this.mob.getJumpControl().jump();
@@ -121,10 +121,7 @@ public class MoveControl<T extends Mob> implements Control {
       if (pathNavigation != null) {
          NodeEvaluator nodeEvaluator = pathNavigation.getNodeEvaluator();
          if (nodeEvaluator != null
-            && nodeEvaluator.getPathType(
-                  this.mob, BlockPos.containing(this.mob.getX() + (double)dx, (double)this.mob.getBlockY(), this.mob.getZ() + (double)dz)
-               )
-               != PathType.WALKABLE) {
+            && nodeEvaluator.getPathType(this.mob, BlockPos.containing(this.mob.getX() + dx, this.mob.getBlockY(), this.mob.getZ() + dz)) != PathType.WALKABLE) {
             return false;
          }
       }
@@ -168,7 +165,7 @@ public class MoveControl<T extends Mob> implements Control {
       this.operation = MoveControl.Operation.WAIT;
    }
 
-   protected static enum Operation {
+   protected enum Operation {
       WAIT,
       MOVE_TO,
       STRAFE,

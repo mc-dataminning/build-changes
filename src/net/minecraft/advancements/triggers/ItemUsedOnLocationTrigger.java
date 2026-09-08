@@ -51,14 +51,14 @@ public class ItemUsedOnLocationTrigger extends SimpleCriterionTrigger<ItemUsedOn
       this.trigger(player, t -> t.matches(context));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<Holder<LootItemCondition>> location)
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<Holder<LootItemCondition>> location)
       implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<ItemUsedOnLocationTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(ItemUsedOnLocationTrigger.TriggerInstance::player),
-                  LootItemCondition.CODEC.optionalFieldOf("location").forGetter(ItemUsedOnLocationTrigger.TriggerInstance::location)
-               )
-               .apply(i, ItemUsedOnLocationTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(ItemUsedOnLocationTrigger.TriggerInstance::player),
+               LootItemCondition.CODEC.optionalFieldOf("location").forGetter(ItemUsedOnLocationTrigger.TriggerInstance::location)
+            )
+            .apply(i, ItemUsedOnLocationTrigger.TriggerInstance::new)
       );
 
       public static Criterion<ItemUsedOnLocationTrigger.TriggerInstance> placedBlock(final HolderGetter<Block> blocks, final Block block) {

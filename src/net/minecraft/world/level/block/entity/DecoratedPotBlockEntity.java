@@ -29,12 +29,10 @@ public class DecoratedPotBlockEntity extends BlockEntity implements ContainerSin
    public static final String TAG_ITEM = "item";
    public static final int EVENT_POT_WOBBLES = 1;
    public long wobbleStartedAtTick;
-   @Nullable
-   public DecoratedPotBlockEntity.WobbleStyle lastWobbleStyle;
+   public DecoratedPotBlockEntity.@Nullable WobbleStyle lastWobbleStyle;
    private PotDecorations decorations;
    private ItemStack item = ItemStack.EMPTY;
-   @Nullable
-   protected ResourceKey<LootTable> lootTable;
+   protected @Nullable ResourceKey<LootTable> lootTable;
    protected long lootTableSeed;
 
    public DecoratedPotBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
@@ -90,14 +88,13 @@ public class DecoratedPotBlockEntity extends BlockEntity implements ContainerSin
       return createDecoratedPotTemplate(decorations).create();
    }
 
-   @Nullable
    @Override
-   public ResourceKey<LootTable> getLootTable() {
+   public @Nullable ResourceKey<LootTable> getLootTable() {
       return this.lootTable;
    }
 
    @Override
-   public void setLootTable(@Nullable final ResourceKey<LootTable> lootTable) {
+   public void setLootTable(final @Nullable ResourceKey<LootTable> lootTable) {
       this.lootTable = lootTable;
    }
 
@@ -177,13 +174,13 @@ public class DecoratedPotBlockEntity extends BlockEntity implements ContainerSin
       }
    }
 
-   public static enum WobbleStyle {
+   public enum WobbleStyle {
       POSITIVE(7),
       NEGATIVE(10);
 
       public final int duration;
 
-      private WobbleStyle(final int duration) {
+      WobbleStyle(final int duration) {
          this.duration = duration;
       }
    }

@@ -46,7 +46,7 @@ public class VibrationSignalParticle extends SingleQuadParticle {
 
    @Override
    public void extract(final QuadParticleRenderState particleTypeRenderState, final Camera camera, final float partialTickTime) {
-      float randomSway = Mth.sin((double)(((float)this.age + partialTickTime - (float) (Math.PI * 2)) * 0.05F)) * 2.0F;
+      float randomSway = Mth.sin((this.age + partialTickTime - (float) (Math.PI * 2)) * 0.05F) * 2.0F;
       float lerpedRotation = Mth.lerp(partialTickTime, this.rotO, this.rot);
       float lerpedPitch = Mth.lerp(partialTickTime, this.pitchO, this.pitch) + (float) (Math.PI / 2);
       Quaternionf rotation = new Quaternionf();
@@ -79,7 +79,7 @@ public class VibrationSignalParticle extends SingleQuadParticle {
             this.remove();
          } else {
             int ticksRemaining = this.lifetime - this.age;
-            double alpha = 1.0 / (double)ticksRemaining;
+            double alpha = 1.0 / ticksRemaining;
             Vec3 destination = position.get();
             this.x = Mth.lerp(alpha, this.x, destination.x());
             this.y = Mth.lerp(alpha, this.y, destination.y());

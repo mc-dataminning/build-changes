@@ -39,45 +39,37 @@ public class NewVillageFix extends DataFix {
             "NewVillageFix",
             chunkType,
             input -> input.updateTyped(
-                  levelFinder,
-                  level -> level.updateTyped(
-                        structuresFinder,
-                        structures -> structures.updateTyped(
-                                 startsFinder,
-                                 starts -> starts.update(
-                                       listFinder,
-                                       list -> list.stream()
-                                             .filter(pair -> !Objects.equals(pair.getFirst(), "Village"))
-                                             .map(pair -> pair.mapFirst(name -> name.equals("New_Village") ? "Village" : name))
-                                             .collect(Collectors.toList())
-                                    )
-                              )
-                              .update(
-                                 DSL.remainderFinder(),
-                                 tag -> tag.update(
-                                       "References",
-                                       references -> {
-                                          Optional<? extends Dynamic<?>> village = references.get("New_Village").result();
-                                          return ((Dynamic)DataFixUtils.orElse(village.map(v -> references.remove("New_Village").set("Village", v)), references))
-                                             .remove("Village");
-                                       }
-                                    )
-                              )
+               levelFinder,
+               level -> level.updateTyped(
+                  structuresFinder,
+                  structures -> structures.updateTyped(
+                        startsFinder,
+                        starts -> starts.update(
+                           listFinder,
+                           list -> list.stream()
+                              .filter(pair -> !Objects.equals(pair.getFirst(), "Village"))
+                              .map(pair -> pair.mapFirst(name -> name.equals("New_Village") ? "Village" : name))
+                              .collect(Collectors.toList())
+                        )
                      )
+                     .update(DSL.remainderFinder(), tag -> tag.update("References", references -> {
+                        Optional<? extends Dynamic<?>> village = references.get("New_Village").result();
+                        return ((Dynamic)DataFixUtils.orElse(village.map(v -> references.remove("New_Village").set("Village", v)), references))
+                           .remove("Village");
+                     }))
                )
+            )
          ),
          this.fixTypeEverywhereTyped(
             "NewVillageStartFix",
             structureType,
             input -> input.update(
-                  DSL.remainderFinder(),
-                  tag -> tag.update(
-                        "id",
-                        id -> Objects.equals(NamespacedSchema.ensureNamespaced(id.asString("")), "minecraft:new_village")
-                              ? id.createString("minecraft:village")
-                              : id
-                     )
+               DSL.remainderFinder(),
+               tag -> tag.update(
+                  "id",
+                  id -> Objects.equals(NamespacedSchema.ensureNamespaced(id.asString("")), "minecraft:new_village") ? id.createString("minecraft:village") : id
                )
+            )
          )
       );
    }

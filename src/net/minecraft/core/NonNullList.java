@@ -9,8 +9,7 @@ import org.jspecify.annotations.Nullable;
 
 public class NonNullList<E> extends AbstractList<E> {
    private final List<E> list;
-   @Nullable
-   private final E defaultValue;
+   private final @Nullable E defaultValue;
 
    public static <E> NonNullList<E> create() {
       return new NonNullList<>(Lists.newArrayList(), null);
@@ -32,7 +31,7 @@ public class NonNullList<E> extends AbstractList<E> {
       return new NonNullList<>(Arrays.asList(values), defaultValue);
    }
 
-   protected NonNullList(final List<E> list, @Nullable final E defaultValue) {
+   protected NonNullList(final List<E> list, final @Nullable E defaultValue) {
       this.list = list;
       this.defaultValue = defaultValue;
    }

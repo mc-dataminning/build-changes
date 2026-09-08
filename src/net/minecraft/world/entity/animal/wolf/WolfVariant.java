@@ -19,18 +19,18 @@ public record WolfVariant(WolfVariant.AssetInfo adultInfo, WolfVariant.AssetInfo
    implements PriorityProvider<SpawnContext, SpawnCondition> {
    public static final Codec<WolfVariant> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               WolfVariant.AssetInfo.CODEC.fieldOf("assets").forGetter(WolfVariant::adultInfo),
-               WolfVariant.AssetInfo.CODEC.fieldOf("baby_assets").forGetter(WolfVariant::babyInfo),
-               SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(WolfVariant::spawnConditions)
-            )
-            .apply(i, WolfVariant::new)
+            WolfVariant.AssetInfo.CODEC.fieldOf("assets").forGetter(WolfVariant::adultInfo),
+            WolfVariant.AssetInfo.CODEC.fieldOf("baby_assets").forGetter(WolfVariant::babyInfo),
+            SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(WolfVariant::spawnConditions)
+         )
+         .apply(i, WolfVariant::new)
    );
    public static final Codec<WolfVariant> NETWORK_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               WolfVariant.AssetInfo.CODEC.fieldOf("assets").forGetter(WolfVariant::adultInfo),
-               WolfVariant.AssetInfo.CODEC.fieldOf("baby_assets").forGetter(WolfVariant::babyInfo)
-            )
-            .apply(i, WolfVariant::new)
+            WolfVariant.AssetInfo.CODEC.fieldOf("assets").forGetter(WolfVariant::adultInfo),
+            WolfVariant.AssetInfo.CODEC.fieldOf("baby_assets").forGetter(WolfVariant::babyInfo)
+         )
+         .apply(i, WolfVariant::new)
    );
    public static final Codec<Holder<WolfVariant>> CODEC = RegistryCodecs.holder(Registries.WOLF_VARIANT);
    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<WolfVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.WOLF_VARIANT);
@@ -44,14 +44,14 @@ public record WolfVariant(WolfVariant.AssetInfo adultInfo, WolfVariant.AssetInfo
       return this.spawnConditions.selectors();
    }
 
-   public static record AssetInfo(ClientAsset.ResourceTexture wild, ClientAsset.ResourceTexture tame, ClientAsset.ResourceTexture angry) {
+   public record AssetInfo(ClientAsset.ResourceTexture wild, ClientAsset.ResourceTexture tame, ClientAsset.ResourceTexture angry) {
       public static final Codec<WolfVariant.AssetInfo> CODEC = RecordCodecBuilder.create(
          instance -> instance.group(
-                  ClientAsset.ResourceTexture.CODEC.fieldOf("wild").forGetter(WolfVariant.AssetInfo::wild),
-                  ClientAsset.ResourceTexture.CODEC.fieldOf("tame").forGetter(WolfVariant.AssetInfo::tame),
-                  ClientAsset.ResourceTexture.CODEC.fieldOf("angry").forGetter(WolfVariant.AssetInfo::angry)
-               )
-               .apply(instance, WolfVariant.AssetInfo::new)
+               ClientAsset.ResourceTexture.CODEC.fieldOf("wild").forGetter(WolfVariant.AssetInfo::wild),
+               ClientAsset.ResourceTexture.CODEC.fieldOf("tame").forGetter(WolfVariant.AssetInfo::tame),
+               ClientAsset.ResourceTexture.CODEC.fieldOf("angry").forGetter(WolfVariant.AssetInfo::angry)
+            )
+            .apply(instance, WolfVariant.AssetInfo::new)
       );
    }
 }

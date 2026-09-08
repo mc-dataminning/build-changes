@@ -84,9 +84,9 @@ public class ItemFrame extends HangingEntity {
       super.setDirectionRaw(direction);
       if (direction.getAxis().isHorizontal()) {
          this.setXRot(0.0F);
-         this.setYRot((float)(direction.get2DDataValue() * 90));
+         this.setYRot(direction.get2DDataValue() * 90);
       } else {
-         this.setXRot((float)(-90 * direction.getAxisDirection().getStep()));
+         this.setXRot(-90 * direction.getAxisDirection().getStep());
          this.setYRot(0.0F);
       }
 
@@ -117,9 +117,9 @@ public class ItemFrame extends HangingEntity {
       float width = hasFramedMap ? 1.0F : 0.75F;
       float height = hasFramedMap ? 1.0F : 0.75F;
       Direction.Axis axis = direction.getAxis();
-      double xSize = axis == Direction.Axis.X ? 0.0625 : (double)width;
-      double ySize = axis == Direction.Axis.Y ? 0.0625 : (double)height;
-      double zSize = axis == Direction.Axis.Z ? 0.0625 : (double)width;
+      double xSize = axis == Direction.Axis.X ? 0.0625 : width;
+      double ySize = axis == Direction.Axis.Y ? 0.0625 : height;
+      double zSize = axis == Direction.Axis.Z ? 0.0625 : width;
       return AABB.ofSize(position, xSize, ySize, zSize);
    }
 
@@ -127,12 +127,14 @@ public class ItemFrame extends HangingEntity {
    public boolean survives() {
       if (this.fixed) {
          return true;
-      } else if (this.hasLevelCollision(this.getPopBox())) {
-         return false;
-      } else {
-         BlockState state = this.level().getBlockState(this.pos.relative(this.getDirection().getOpposite()));
-         return state.isSolid() || this.getDirection().getAxis().isHorizontal() && DiodeBlock.isDiode(state) ? this.canCoexist(true) : false;
       }
+
+      if (this.hasLevelCollision(this.getPopBox())) {
+         return false;
+      }
+
+      BlockState state = this.level().getBlockState(this.pos.relative(this.getDirection().getOpposite()));
+      return state.isSolid() || this.getDirection().getAxis().isHorizontal() && DiodeBlock.isDiode(state) ? this.canCoexist(true) : false;
    }
 
    @Override
@@ -197,7 +199,7 @@ public class ItemFrame extends HangingEntity {
    }
 
    @Override
-   public void dropItem(final ServerLevel level, @Nullable final Entity causedBy) {
+   public void dropItem(final ServerLevel level, final @Nullable Entity causedBy) {
       this.playSound(this.getBreakSound(), 1.0F, 1.0F);
       this.dropItem(level, causedBy, true);
       this.gameEvent(GameEvent.BLOCK_CHANGE, causedBy);
@@ -216,7 +218,7 @@ public class ItemFrame extends HangingEntity {
       return SoundEvents.ITEM_FRAME_PLACE;
    }
 
-   private void dropItem(final ServerLevel level, @Nullable final Entity causedBy, final boolean withFrame) {
+   private void dropItem(final ServerLevel level, final @Nullable Entity causedBy, final boolean withFrame) {
       if (!this.fixed) {
          ItemStack itemStack = this.getItem();
          this.setItem(ItemStack.EMPTY);
@@ -224,12 +226,9 @@ public class ItemFrame extends HangingEntity {
             if (causedBy == null) {
                this.removeFramedMap(itemStack);
             }
+         } else if (causedBy instanceof Player player && player.hasInfiniteMaterials()) {
+            this.removeFramedMap(itemStack);
          } else {
-            if (causedBy instanceof Player player && player.hasInfiniteMaterials()) {
-               this.removeFramedMap(itemStack);
-               return;
-            }
-
             if (withFrame) {
                this.spawnAtLocation(level, this.getFrameItemStackWithData());
             }
@@ -259,8 +258,7 @@ public class ItemFrame extends HangingEntity {
       return this.getEntityData().get(DATA_ITEM);
    }
 
-   @Nullable
-   public MapId getFramedMapId(final ItemStack itemStack) {
+   public @Nullable MapId getFramedMapId(final ItemStack itemStack) {
       return itemStack.get(DataComponents.MAP_ID);
    }
 
@@ -292,9 +290,8 @@ public class ItemFrame extends HangingEntity {
       return SoundEvents.ITEM_FRAME_ADD_ITEM;
    }
 
-   @Nullable
    @Override
-   public SlotAccess getSlot(final int slot) {
+   public @Nullable SlotAccess getSlot(final int slot) {
       return slot == 0 ? SlotAccess.of(this::getItem, this::setItem) : super.getSlot(slot);
    }
 
@@ -364,18 +361,20 @@ public class ItemFrame extends HangingEntity {
       boolean hasHeldItem = !itemStack.isEmpty();
       if (this.fixed) {
          return InteractionResult.PASS;
-      } else if (!player.level().isClientSide()) {
+      }
+
+      if (!player.level().isClientSide()) {
          if (!frameHasItem) {
             if (hasHeldItem && !this.isRemoved()) {
                MapItemSavedData data = MapItem.getSavedData(itemStack, this.level());
                if (data != null && data.isTrackedCountOverLimit(256)) {
                   return InteractionResult.FAIL;
-               } else {
-                  this.setItem(itemStack);
-                  this.gameEvent(GameEvent.BLOCK_CHANGE, player);
-                  itemStack.consume(1, player);
-                  return InteractionResult.SUCCESS;
                }
+
+               this.setItem(itemStack);
+               this.gameEvent(GameEvent.BLOCK_CHANGE, player);
+               itemStack.consume(1, player);
+               return InteractionResult.SUCCESS;
             } else {
                return InteractionResult.PASS;
             }
@@ -386,7 +385,7 @@ public class ItemFrame extends HangingEntity {
             return InteractionResult.SUCCESS;
          }
       } else {
-         return (InteractionResult)(!frameHasItem && !hasHeldItem ? InteractionResult.PASS : InteractionResult.SUCCESS);
+         return !frameHasItem && !hasHeldItem ? InteractionResult.PASS : InteractionResult.SUCCESS;
       }
    }
 
@@ -429,6 +428,6 @@ public class ItemFrame extends HangingEntity {
    public float getVisualRotationYInDegrees() {
       Direction frameDirection = this.getDirection();
       int rotationCorrection = frameDirection.getAxis().isVertical() ? 90 * frameDirection.getAxisDirection().getStep() : 0;
-      return (float)Mth.wrapDegrees(180 + frameDirection.get2DDataValue() * 90 + this.getRotation() * 45 + rotationCorrection);
+      return Mth.wrapDegrees(180 + frameDirection.get2DDataValue() * 90 + this.getRotation() * 45 + rotationCorrection);
    }
 }

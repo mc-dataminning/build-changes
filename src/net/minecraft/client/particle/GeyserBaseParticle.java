@@ -25,8 +25,8 @@ public class GeyserBaseParticle extends BaseAshSmokeParticle {
       final float burstImpulseBase,
       final SpriteSet sprites
    ) {
-      float burstImpulse = burstImpulseBase + 0.25F * (float)waterBlocks;
-      float size = 3.0F + 0.125F * (float)waterBlocks;
+      float burstImpulse = burstImpulseBase + 0.25F * waterBlocks;
+      float size = 3.0F + 0.125F * waterBlocks;
       super(level, x, y, z, burstImpulse, burstImpulse, burstImpulse, xAux, yAux, zAux, size, sprites, 0.0F, 0, 0.0F, true);
       this.friction = 0.725F;
       this.rCol = 1.0F;
@@ -55,9 +55,9 @@ public class GeyserBaseParticle extends BaseAshSmokeParticle {
          final double zAux,
          final RandomSource random
       ) {
-         double randomX = x + (double)((random.nextFloat() - 0.5F) * 0.5F);
-         double randomY = y + (double)((random.nextFloat() - 0.5F) * 0.5F) + 0.2F;
-         double randomZ = z + (double)((random.nextFloat() - 0.5F) * 0.5F);
+         double randomX = x + (random.nextFloat() - 0.5F) * 0.5F;
+         double randomY = y + (random.nextFloat() - 0.5F) * 0.5F + 0.2F;
+         double randomZ = z + (random.nextFloat() - 0.5F) * 0.5F;
          return new GeyserBaseParticle(level, randomX, randomY, randomZ, xAux, yAux, zAux, options.waterBlocks(), options.burstImpulseBase(), this.sprites);
       }
    }

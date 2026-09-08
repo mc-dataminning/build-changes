@@ -12,20 +12,19 @@ import org.jspecify.annotations.Nullable;
 
 public class DebugSubscription<T> {
    public static final int DOES_NOT_EXPIRE = 0;
-   @Nullable
-   private final StreamCodec<? super RegistryFriendlyByteBuf, T> valueStreamCodec;
+   private final @Nullable StreamCodec<? super RegistryFriendlyByteBuf, T> valueStreamCodec;
    private final int expireAfterTicks;
 
-   public DebugSubscription(@Nullable final StreamCodec<? super RegistryFriendlyByteBuf, T> valueStreamCodec, final int expireAfterTicks) {
+   public DebugSubscription(final @Nullable StreamCodec<? super RegistryFriendlyByteBuf, T> valueStreamCodec, final int expireAfterTicks) {
       this.valueStreamCodec = valueStreamCodec;
       this.expireAfterTicks = expireAfterTicks;
    }
 
-   public DebugSubscription(@Nullable final StreamCodec<? super RegistryFriendlyByteBuf, T> valueStreamCodec) {
+   public DebugSubscription(final @Nullable StreamCodec<? super RegistryFriendlyByteBuf, T> valueStreamCodec) {
       this(valueStreamCodec, 0);
    }
 
-   public DebugSubscription.Update<T> packUpdate(@Nullable final T value) {
+   public DebugSubscription.Update<T> packUpdate(final @Nullable T value) {
       return new DebugSubscription.Update<>(this, Optional.ofNullable(value));
    }
 
@@ -42,8 +41,7 @@ public class DebugSubscription<T> {
       return Util.getRegisteredName(BuiltInRegistries.DEBUG_SUBSCRIPTION, this);
    }
 
-   @Nullable
-   public StreamCodec<? super RegistryFriendlyByteBuf, T> valueStreamCodec() {
+   public @Nullable StreamCodec<? super RegistryFriendlyByteBuf, T> valueStreamCodec() {
       return this.valueStreamCodec;
    }
 
@@ -51,7 +49,7 @@ public class DebugSubscription<T> {
       return this.expireAfterTicks;
    }
 
-   public static record Event<T>(DebugSubscription<T> subscription, T value) {
+   public record Event<T>(DebugSubscription<T> subscription, T value) {
       public static final StreamCodec<RegistryFriendlyByteBuf, DebugSubscription.Event<?>> STREAM_CODEC = ByteBufCodecs.registry(Registries.DEBUG_SUBSCRIPTION)
          .dispatch(DebugSubscription.Event::subscription, DebugSubscription.Event::streamCodec);
 
@@ -61,7 +59,7 @@ public class DebugSubscription<T> {
       }
    }
 
-   public static record Update<T>(DebugSubscription<T> subscription, Optional<T> value) {
+   public record Update<T>(DebugSubscription<T> subscription, Optional<T> value) {
       public static final StreamCodec<RegistryFriendlyByteBuf, DebugSubscription.Update<?>> STREAM_CODEC = ByteBufCodecs.registry(Registries.DEBUG_SUBSCRIPTION)
          .dispatch(DebugSubscription.Update::subscription, DebugSubscription.Update::streamCodec);
 

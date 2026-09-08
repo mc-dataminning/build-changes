@@ -76,11 +76,11 @@ public class DamageSources {
       return new DamageSource(this.damageTypes.getOrThrow(key));
    }
 
-   private DamageSource source(final ResourceKey<DamageType> key, @Nullable final Entity cause) {
+   private DamageSource source(final ResourceKey<DamageType> key, final @Nullable Entity cause) {
       return new DamageSource(this.damageTypes.getOrThrow(key), cause);
    }
 
-   private DamageSource source(final ResourceKey<DamageType> key, @Nullable final Entity directEntity, @Nullable final Entity causingEntity) {
+   private DamageSource source(final ResourceKey<DamageType> key, final @Nullable Entity directEntity, final @Nullable Entity causingEntity) {
       return new DamageSource(this.damageTypes.getOrThrow(key), directEntity, causingEntity);
    }
 
@@ -204,31 +204,31 @@ public class DamageSources {
       return this.source(DamageTypes.PLAYER_ATTACK, player);
    }
 
-   public DamageSource arrow(final AbstractArrow arrow, @Nullable final Entity owner) {
+   public DamageSource arrow(final AbstractArrow arrow, final @Nullable Entity owner) {
       return this.source(DamageTypes.ARROW, arrow, owner);
    }
 
-   public DamageSource trident(final Entity trident, @Nullable final Entity owner) {
+   public DamageSource trident(final Entity trident, final @Nullable Entity owner) {
       return this.source(DamageTypes.TRIDENT, trident, owner);
    }
 
-   public DamageSource mobProjectile(final Entity entity, @Nullable final LivingEntity mob) {
+   public DamageSource mobProjectile(final Entity entity, final @Nullable LivingEntity mob) {
       return this.source(DamageTypes.MOB_PROJECTILE, entity, mob);
    }
 
-   public DamageSource spit(final Entity entity, @Nullable final LivingEntity mob) {
+   public DamageSource spit(final Entity entity, final @Nullable LivingEntity mob) {
       return this.source(DamageTypes.SPIT, entity, mob);
    }
 
-   public DamageSource windCharge(final Entity entity, @Nullable final LivingEntity mob) {
+   public DamageSource windCharge(final Entity entity, final @Nullable LivingEntity mob) {
       return this.source(DamageTypes.WIND_CHARGE, entity, mob);
    }
 
-   public DamageSource fireworks(final FireworkRocketEntity rocket, @Nullable final Entity owner) {
+   public DamageSource fireworks(final FireworkRocketEntity rocket, final @Nullable Entity owner) {
       return this.source(DamageTypes.FIREWORKS, rocket, owner);
    }
 
-   public DamageSource fireball(final Fireball fireball, @Nullable final Entity owner) {
+   public DamageSource fireball(final Fireball fireball, final @Nullable Entity owner) {
       return owner == null ? this.source(DamageTypes.UNATTRIBUTED_FIREBALL, fireball) : this.source(DamageTypes.FIREBALL, fireball, owner);
    }
 
@@ -236,11 +236,11 @@ public class DamageSources {
       return this.source(DamageTypes.WITHER_SKULL, witherSkull, owner);
    }
 
-   public DamageSource thrown(final Entity entity, @Nullable final Entity owner) {
+   public DamageSource thrown(final Entity entity, final @Nullable Entity owner) {
       return this.source(DamageTypes.THROWN, entity, owner);
    }
 
-   public DamageSource indirectMagic(final Entity entity, @Nullable final Entity owner) {
+   public DamageSource indirectMagic(final Entity entity, final @Nullable Entity owner) {
       return this.source(DamageTypes.INDIRECT_MAGIC, entity, owner);
    }
 
@@ -248,11 +248,11 @@ public class DamageSources {
       return this.source(DamageTypes.THORNS, source);
    }
 
-   public DamageSource explosion(@Nullable final Explosion explosion) {
+   public DamageSource explosion(final @Nullable Explosion explosion) {
       return explosion != null ? this.explosion(explosion.getDirectSourceEntity(), explosion.getIndirectSourceEntity()) : this.explosion(null, null);
    }
 
-   public DamageSource explosion(@Nullable final Entity entity, @Nullable final Entity cause) {
+   public DamageSource explosion(final @Nullable Entity entity, final @Nullable Entity cause) {
       return this.source(cause != null && entity != null ? DamageTypes.PLAYER_EXPLOSION : DamageTypes.EXPLOSION, entity, cause);
    }
 

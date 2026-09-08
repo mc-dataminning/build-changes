@@ -25,12 +25,9 @@ public class RealmsJoinRealmWithCodeScreen extends AbstractRealmsCodeScreen {
    private static final Component INVALID_CODE_TEXT = Component.translatable("mco.selectServer.joinCode.invalid").withColor(-65536);
    private final Screen lastScreen;
    private final Runnable onJoin;
-   @Nullable
-   private EditBox joinCode;
-   @Nullable
-   private Button joinButton;
-   @Nullable
-   private Component message;
+   private @Nullable EditBox joinCode;
+   private @Nullable Button joinButton;
+   private @Nullable Component message;
 
    public RealmsJoinRealmWithCodeScreen(final Screen lastScreen, final Runnable onJoin) {
       super(TITLE);

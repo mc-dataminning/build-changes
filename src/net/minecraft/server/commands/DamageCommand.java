@@ -29,11 +29,11 @@ public class DamageCommand {
                      ((RequiredArgumentBuilder)Commands.argument("amount", FloatArgumentType.floatArg(0.0F))
                            .executes(
                               c -> damage(
-                                    (CommandSourceStack)c.getSource(),
-                                    EntityArgument.getEntity(c, "target"),
-                                    FloatArgumentType.getFloat(c, "amount"),
-                                    ((CommandSourceStack)c.getSource()).getLevel().damageSources().generic()
-                                 )
+                                 (CommandSourceStack)c.getSource(),
+                                 EntityArgument.getEntity(c, "target"),
+                                 FloatArgumentType.getFloat(c, "amount"),
+                                 ((CommandSourceStack)c.getSource()).getLevel().damageSources().generic()
+                              )
                            ))
                         .then(
                            ((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument(
@@ -41,11 +41,11 @@ public class DamageCommand {
                                     )
                                     .executes(
                                        c -> damage(
-                                             (CommandSourceStack)c.getSource(),
-                                             EntityArgument.getEntity(c, "target"),
-                                             FloatArgumentType.getFloat(c, "amount"),
-                                             new DamageSource(ResourceArgument.getResource(c, "damageType", Registries.DAMAGE_TYPE))
-                                          )
+                                          (CommandSourceStack)c.getSource(),
+                                          EntityArgument.getEntity(c, "target"),
+                                          FloatArgumentType.getFloat(c, "amount"),
+                                          new DamageSource(ResourceArgument.getResource(c, "damageType", Registries.DAMAGE_TYPE))
+                                       )
                                     ))
                                  .then(
                                     Commands.literal("at")
@@ -53,14 +53,14 @@ public class DamageCommand {
                                           Commands.argument("location", Vec3Argument.vec3())
                                              .executes(
                                                 c -> damage(
-                                                      (CommandSourceStack)c.getSource(),
-                                                      EntityArgument.getEntity(c, "target"),
-                                                      FloatArgumentType.getFloat(c, "amount"),
-                                                      new DamageSource(
-                                                         ResourceArgument.getResource(c, "damageType", Registries.DAMAGE_TYPE),
-                                                         Vec3Argument.getVec3(c, "location")
-                                                      )
+                                                   (CommandSourceStack)c.getSource(),
+                                                   EntityArgument.getEntity(c, "target"),
+                                                   FloatArgumentType.getFloat(c, "amount"),
+                                                   new DamageSource(
+                                                      ResourceArgument.getResource(c, "damageType", Registries.DAMAGE_TYPE),
+                                                      Vec3Argument.getVec3(c, "location")
                                                    )
+                                                )
                                              )
                                        )
                                  ))
@@ -70,14 +70,14 @@ public class DamageCommand {
                                        ((RequiredArgumentBuilder)Commands.argument("entity", EntityArgument.entity())
                                              .executes(
                                                 c -> damage(
-                                                      (CommandSourceStack)c.getSource(),
-                                                      EntityArgument.getEntity(c, "target"),
-                                                      FloatArgumentType.getFloat(c, "amount"),
-                                                      new DamageSource(
-                                                         ResourceArgument.getResource(c, "damageType", Registries.DAMAGE_TYPE),
-                                                         EntityArgument.getEntity(c, "entity")
-                                                      )
+                                                   (CommandSourceStack)c.getSource(),
+                                                   EntityArgument.getEntity(c, "target"),
+                                                   FloatArgumentType.getFloat(c, "amount"),
+                                                   new DamageSource(
+                                                      ResourceArgument.getResource(c, "damageType", Registries.DAMAGE_TYPE),
+                                                      EntityArgument.getEntity(c, "entity")
                                                    )
+                                                )
                                              ))
                                           .then(
                                              Commands.literal("from")
@@ -85,15 +85,15 @@ public class DamageCommand {
                                                    Commands.argument("cause", EntityArgument.entity())
                                                       .executes(
                                                          c -> damage(
-                                                               (CommandSourceStack)c.getSource(),
-                                                               EntityArgument.getEntity(c, "target"),
-                                                               FloatArgumentType.getFloat(c, "amount"),
-                                                               new DamageSource(
-                                                                  ResourceArgument.getResource(c, "damageType", Registries.DAMAGE_TYPE),
-                                                                  EntityArgument.getEntity(c, "entity"),
-                                                                  EntityArgument.getEntity(c, "cause")
-                                                               )
+                                                            (CommandSourceStack)c.getSource(),
+                                                            EntityArgument.getEntity(c, "target"),
+                                                            FloatArgumentType.getFloat(c, "amount"),
+                                                            new DamageSource(
+                                                               ResourceArgument.getResource(c, "damageType", Registries.DAMAGE_TYPE),
+                                                               EntityArgument.getEntity(c, "entity"),
+                                                               EntityArgument.getEntity(c, "cause")
                                                             )
+                                                         )
                                                       )
                                                 )
                                           )

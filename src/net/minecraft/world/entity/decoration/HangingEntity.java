@@ -61,7 +61,7 @@ public abstract class HangingEntity extends BlockAttachedEntity {
       Objects.requireNonNull(direction);
       Validate.isTrue(direction.getAxis().isHorizontal());
       this.setDirectionRaw(direction);
-      this.setYRot((float)(direction.get2DDataValue() * 90));
+      this.setYRot(direction.get2DDataValue() * 90);
       this.yRotO = this.getYRot();
       this.recalculateBoundingBox();
    }
@@ -82,10 +82,10 @@ public abstract class HangingEntity extends BlockAttachedEntity {
    public boolean survives() {
       if (this.hasLevelCollision(this.getPopBox())) {
          return false;
-      } else {
-         boolean isSupported = this.level().findBlocksIn(this.calculateSupportBox()).filterState(HangingEntity::isSupportingBlock).allMatched();
-         return isSupported && this.canCoexist(false);
       }
+
+      boolean isSupported = this.level().findBlocksIn(this.calculateSupportBox()).filterState(HangingEntity::isSupportingBlock).allMatched();
+      return isSupported && this.canCoexist(false);
    }
 
    private static boolean isSupportingBlock(final BlockState state) {
@@ -120,9 +120,9 @@ public abstract class HangingEntity extends BlockAttachedEntity {
    public ItemEntity spawnAtLocation(final ServerLevel level, final ItemStack itemStack, final float yOffs) {
       ItemEntity entity = new ItemEntity(
          this.level(),
-         this.getX() + (double)((float)this.getDirection().getStepX() * 0.15F),
-         this.getY() + (double)yOffs,
-         this.getZ() + (double)((float)this.getDirection().getStepZ() * 0.15F),
+         this.getX() + this.getDirection().getStepX() * 0.15F,
+         this.getY() + yOffs,
+         this.getZ() + this.getDirection().getStepZ() * 0.15F,
          itemStack
       );
       entity.setDefaultPickUpDelay();

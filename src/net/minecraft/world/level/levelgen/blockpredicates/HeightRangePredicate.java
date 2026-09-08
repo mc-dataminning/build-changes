@@ -10,10 +10,10 @@ import net.minecraft.world.level.levelgen.WorldGenerationContext;
 public record HeightRangePredicate(VerticalAnchor minInclusive, VerticalAnchor maxInclusive) implements BlockPredicate {
    public static final MapCodec<HeightRangePredicate> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               VerticalAnchor.CODEC.fieldOf("min_inclusive").forGetter(HeightRangePredicate::minInclusive),
-               VerticalAnchor.CODEC.fieldOf("max_inclusive").forGetter(HeightRangePredicate::maxInclusive)
-            )
-            .apply(i, HeightRangePredicate::new)
+            VerticalAnchor.CODEC.fieldOf("min_inclusive").forGetter(HeightRangePredicate::minInclusive),
+            VerticalAnchor.CODEC.fieldOf("max_inclusive").forGetter(HeightRangePredicate::maxInclusive)
+         )
+         .apply(i, HeightRangePredicate::new)
    );
 
    @Override

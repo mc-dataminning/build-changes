@@ -33,11 +33,11 @@ public final class BelowZeroRetrogen {
       );
    public static final Codec<BelowZeroRetrogen> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               NON_EMPTY_CHUNK_STATUS.fieldOf("target_status").forGetter(BelowZeroRetrogen::targetStatus),
-               BITSET_CODEC.lenientOptionalFieldOf("missing_bedrock")
-                  .forGetter(b -> b.missingBedrock.isEmpty() ? Optional.empty() : Optional.of(b.missingBedrock))
-            )
-            .apply(i, BelowZeroRetrogen::new)
+            NON_EMPTY_CHUNK_STATUS.fieldOf("target_status").forGetter(BelowZeroRetrogen::targetStatus),
+            BITSET_CODEC.lenientOptionalFieldOf("missing_bedrock")
+               .forGetter(b -> b.missingBedrock.isEmpty() ? Optional.empty() : Optional.of(b.missingBedrock))
+         )
+         .apply(i, BelowZeroRetrogen::new)
    );
    private static final Set<ResourceKey<Biome>> RETAINED_RETROGEN_BIOMES = Set.of(Biomes.LUSH_CAVES, Biomes.DRIPSTONE_CAVES, Biomes.DEEP_DARK);
    public static final LevelHeightAccessor UPGRADE_HEIGHT_ACCESSOR = new LevelHeightAccessor() {
@@ -97,12 +97,12 @@ public final class BelowZeroRetrogen {
    public static BiomeResolver getBiomeResolver(final BiomeResolver biomeResolver, final ChunkAccess protoChunk) {
       if (!protoChunk.isUpgrading()) {
          return biomeResolver;
-      } else {
-         Predicate<ResourceKey<Biome>> retainedBiomes = RETAINED_RETROGEN_BIOMES::contains;
-         return (quartX, quartY, quartZ) -> {
-            Holder<Biome> noiseBiome = biomeResolver.getNoiseBiome(quartX, quartY, quartZ);
-            return noiseBiome.is(retainedBiomes) ? noiseBiome : protoChunk.getNoiseBiome(quartX, 0, quartZ);
-         };
       }
+
+      Predicate<ResourceKey<Biome>> retainedBiomes = RETAINED_RETROGEN_BIOMES::contains;
+      return (quartX, quartY, quartZ) -> {
+         Holder<Biome> noiseBiome = biomeResolver.getNoiseBiome(quartX, quartY, quartZ);
+         return noiseBiome.is(retainedBiomes) ? noiseBiome : protoChunk.getNoiseBiome(quartX, 0, quartZ);
+      };
    }
 }

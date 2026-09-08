@@ -14,7 +14,7 @@ public class GoalUtils {
    }
 
    public static boolean mobRestricted(final PathfinderMob mob, final double horizontalDist) {
-      return mob.hasHome() && mob.getHomePosition().closerToCenterThan(mob.position(), (double)mob.getHomeRadius() + horizontalDist + 1.0);
+      return mob.hasHome() && mob.getHomePosition().closerToCenterThan(mob.position(), mob.getHomeRadius() + horizontalDist + 1.0);
    }
 
    public static boolean isOutsideLimits(final BlockPos pos, final PathfinderMob mob) {

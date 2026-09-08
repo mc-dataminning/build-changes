@@ -57,13 +57,13 @@ public class BellBlock extends BaseEntityBlock {
    public BellBlock(final BlockBehaviour.Properties properties) {
       super(properties);
       this.registerDefaultState(
-         this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(ATTACHMENT, BellAttachType.FLOOR).setValue(POWERED, Boolean.valueOf(false))
+         this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(ATTACHMENT, BellAttachType.FLOOR).setValue(POWERED, false)
       );
    }
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       boolean signal = level.hasNeighborSignal(pos);
       if (signal != state.getValue(POWERED)) {
@@ -71,7 +71,7 @@ public class BellBlock extends BaseEntityBlock {
             this.attemptToRing(level, pos, null);
          }
 
-         level.setBlockAndUpdate(pos, state.setValue(POWERED, Boolean.valueOf(signal)));
+         level.setBlockAndUpdate(pos, state.setValue(POWERED, signal));
       }
    }
 
@@ -85,15 +85,15 @@ public class BellBlock extends BaseEntityBlock {
    protected InteractionResult useWithoutItem(
       final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
    ) {
-      return (InteractionResult)(this.onHit(level, state, hitResult, player, true) ? InteractionResult.SUCCESS : InteractionResult.PASS);
+      return this.onHit(level, state, hitResult, player, true) ? InteractionResult.SUCCESS : InteractionResult.PASS;
    }
 
    public boolean onHit(
-      final Level level, final BlockState state, final BlockHitResult hitResult, @Nullable final Player player, final boolean requireHitFromCorrectSide
+      final Level level, final BlockState state, final BlockHitResult hitResult, final @Nullable Player player, final boolean requireHitFromCorrectSide
    ) {
       Direction direction = hitResult.getDirection();
       BlockPos blockPos = hitResult.getBlockPos();
-      boolean properHit = !requireHitFromCorrectSide || this.isProperHit(state, direction, hitResult.getLocation().y - (double)blockPos.getY());
+      boolean properHit = !requireHitFromCorrectSide || this.isProperHit(state, direction, hitResult.getLocation().y - blockPos.getY());
       if (properHit) {
          boolean didRing = this.attemptToRing(player, level, blockPos, direction);
          if (didRing && player != null) {
@@ -122,11 +122,11 @@ public class BellBlock extends BaseEntityBlock {
       }
    }
 
-   public boolean attemptToRing(final Level level, final BlockPos pos, @Nullable final Direction direction) {
+   public boolean attemptToRing(final Level level, final BlockPos pos, final @Nullable Direction direction) {
       return this.attemptToRing(null, level, pos, direction);
    }
 
-   public boolean attemptToRing(@Nullable final Entity ringingEntity, final Level level, final BlockPos pos, @Nullable Direction direction) {
+   public boolean attemptToRing(final @Nullable Entity ringingEntity, final Level level, final BlockPos pos, @Nullable Direction direction) {
       if (!level.isClientSide() && level.getBlockEntity(pos) instanceof BellBlockEntity bellBlockEntity) {
          if (direction == null) {
             direction = level.getBlockState(pos).getValue(FACING);
@@ -162,9 +162,8 @@ public class BellBlock extends BaseEntityBlock {
       return this.getVoxelShape(state);
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       Direction clickedFace = context.getClickedFace();
       BlockPos pos = context.getClickedPos();
       Level level = context.getLevel();
@@ -226,21 +225,21 @@ public class BellBlock extends BaseEntityBlock {
       Direction connectedDirection = getConnectedDirection(state).getOpposite();
       if (connectedDirection == directionToNeighbour && !state.canSurvive(level, pos) && attachment != BellAttachType.DOUBLE_WALL) {
          return Blocks.AIR.defaultBlockState();
-      } else {
-         if (directionToNeighbour.getAxis() == state.getValue(FACING).getAxis()) {
-            if (attachment == BellAttachType.DOUBLE_WALL && !neighbourState.isFaceSturdy(level, neighbourPos, directionToNeighbour)) {
-               return state.setValue(ATTACHMENT, BellAttachType.SINGLE_WALL).setValue(FACING, directionToNeighbour.getOpposite());
-            }
+      }
 
-            if (attachment == BellAttachType.SINGLE_WALL
-               && connectedDirection.getOpposite() == directionToNeighbour
-               && neighbourState.isFaceSturdy(level, neighbourPos, state.getValue(FACING))) {
-               return state.setValue(ATTACHMENT, BellAttachType.DOUBLE_WALL);
-            }
+      if (directionToNeighbour.getAxis() == state.getValue(FACING).getAxis()) {
+         if (attachment == BellAttachType.DOUBLE_WALL && !neighbourState.isFaceSturdy(level, neighbourPos, directionToNeighbour)) {
+            return state.setValue(ATTACHMENT, BellAttachType.SINGLE_WALL).setValue(FACING, directionToNeighbour.getOpposite());
          }
 
-         return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
+         if (attachment == BellAttachType.SINGLE_WALL
+            && connectedDirection.getOpposite() == directionToNeighbour
+            && neighbourState.isFaceSturdy(level, neighbourPos, state.getValue(FACING))) {
+            return state.setValue(ATTACHMENT, BellAttachType.DOUBLE_WALL);
+         }
       }
+
+      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
    }
 
    @Override
@@ -264,15 +263,13 @@ public class BellBlock extends BaseEntityBlock {
       builder.add(FACING, ATTACHMENT, POWERED);
    }
 
-   @Nullable
    @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
+   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
       return new BellBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return createTickerHelper(type, BlockEntityTypes.BELL, level.isClientSide() ? BellBlockEntity::clientTick : BellBlockEntity::serverTick);
    }
 

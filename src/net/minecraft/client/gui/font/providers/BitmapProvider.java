@@ -22,7 +22,6 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.client.gui.font.CodepointMap;
 import net.minecraft.client.gui.font.glyphs.BakedGlyph;
 import net.minecraft.resources.Identifier;
@@ -46,9 +45,8 @@ public class BitmapProvider implements GlyphProvider {
       this.imageData.close();
    }
 
-   @Nullable
    @Override
-   public UnbakedGlyph getGlyph(final int codepoint) {
+   public @Nullable UnbakedGlyph getGlyph(final int codepoint) {
       return this.glyphs.get(codepoint);
    }
 
@@ -57,7 +55,7 @@ public class BitmapProvider implements GlyphProvider {
       return IntSets.unmodifiable(this.glyphs.keySet());
    }
 
-   public static record Definition(Identifier file, int height, int ascent, int[][] codepointGrid) implements GlyphProviderDefinition {
+   public record Definition(Identifier file, int height, int ascent, int[][] codepointGrid) implements GlyphProviderDefinition {
       private static final Codec<int[][]> CODEPOINT_GRID_CODEC = Codec.STRING.listOf().xmap(input -> {
          int lineCount = input.size();
          int[][] result = new int[lineCount][];
@@ -78,12 +76,12 @@ public class BitmapProvider implements GlyphProvider {
       }).validate(BitmapProvider.Definition::validateDimensions);
       public static final MapCodec<BitmapProvider.Definition> CODEC = RecordCodecBuilder.mapCodec(
             i -> i.group(
-                     Identifier.CODEC.fieldOf("file").forGetter(BitmapProvider.Definition::file),
-                     Codec.INT.optionalFieldOf("height", 8).forGetter(BitmapProvider.Definition::height),
-                     Codec.INT.fieldOf("ascent").forGetter(BitmapProvider.Definition::ascent),
-                     CODEPOINT_GRID_CODEC.fieldOf("chars").forGetter(BitmapProvider.Definition::codepointGrid)
-                  )
-                  .apply(i, BitmapProvider.Definition::new)
+                  Identifier.CODEC.fieldOf("file").forGetter(BitmapProvider.Definition::file),
+                  Codec.INT.optionalFieldOf("height", 8).forGetter(BitmapProvider.Definition::height),
+                  Codec.INT.fieldOf("ascent").forGetter(BitmapProvider.Definition::ascent),
+                  CODEPOINT_GRID_CODEC.fieldOf("chars").forGetter(BitmapProvider.Definition::codepointGrid)
+               )
+               .apply(i, BitmapProvider.Definition::new)
          )
          .validate(BitmapProvider.Definition::validate);
 
@@ -91,28 +89,28 @@ public class BitmapProvider implements GlyphProvider {
          int lineCount = grid.length;
          if (lineCount == 0) {
             return DataResult.error(() -> "Expected to find data in codepoint grid");
-         } else {
-            int[] firstLine = grid[0];
-            int lineWidth = firstLine.length;
-            if (lineWidth == 0) {
-               return DataResult.error(() -> "Expected to find data in codepoint grid");
-            } else {
-               for (int i = 1; i < lineCount; i++) {
-                  int[] line = grid[i];
-                  if (line.length != lineWidth) {
-                     return DataResult.error(
-                        () -> "Lines in codepoint grid have to be the same length (found: "
-                              + line.length
-                              + " codepoints, expected: "
-                              + lineWidth
-                              + "), pad with \\u0000"
-                     );
-                  }
-               }
+         }
 
-               return DataResult.success(grid);
+         int[] firstLine = grid[0];
+         int lineWidth = firstLine.length;
+         if (lineWidth == 0) {
+            return DataResult.error(() -> "Expected to find data in codepoint grid");
+         }
+
+         for (int i = 1; i < lineCount; i++) {
+            int[] line = grid[i];
+            if (line.length != lineWidth) {
+               return DataResult.error(
+                  () -> "Lines in codepoint grid have to be the same length (found: "
+                     + line.length
+                     + " codepoints, expected: "
+                     + lineWidth
+                     + "), pad with \\u0000"
+               );
             }
          }
+
+         return DataResult.success(grid);
       }
 
       private static DataResult<BitmapProvider.Definition> validate(final BitmapProvider.Definition builder) {
@@ -134,14 +132,13 @@ public class BitmapProvider implements GlyphProvider {
       private GlyphProvider load(final ResourceManager resourceManager) throws IOException {
          Identifier texture = this.file.withPrefix("textures/");
 
-         BitmapProvider var23;
          try (InputStream resource = resourceManager.open(texture)) {
             NativeImage image = NativeImage.read(resource);
             int w = image.getWidth();
             int h = image.getHeight();
             int glyphWidth = w / this.codepointGrid[0].length;
             int glyphHeight = h / this.codepointGrid.length;
-            float pixelScale = (float)this.height / (float)glyphHeight;
+            float pixelScale = (float)this.height / glyphHeight;
             CodepointMap<BitmapProvider.Glyph> charMap = new CodepointMap<>(BitmapProvider.Glyph[]::new, BitmapProvider.Glyph[][]::new);
             BitmapProvider.ImageDataHolder imageDataHolder = new BitmapProvider.ImageDataHolder(texture, image);
 
@@ -161,7 +158,7 @@ public class BitmapProvider implements GlyphProvider {
                            slotY * glyphHeight,
                            glyphWidth,
                            glyphHeight,
-                           (int)(0.5 + (double)((float)actualGlyphWidth * pixelScale)) + 1,
+                           (int)(0.5 + actualGlyphWidth * pixelScale) + 1,
                            this.ascent
                         )
                      );
@@ -172,10 +169,8 @@ public class BitmapProvider implements GlyphProvider {
                }
             }
 
-            var23 = new BitmapProvider(imageDataHolder, charMap);
+            return new BitmapProvider(imageDataHolder, charMap);
          }
-
-         return var23;
       }
 
       private int getActualGlyphWidth(final NativeImage image, final int glyphWidth, final int glyphHeight, final int xGlyph, final int yGlyph) {
@@ -195,11 +190,11 @@ public class BitmapProvider implements GlyphProvider {
       }
    }
 
-   private static record Glyph(float scale, BitmapProvider.ImageDataHolder imageData, int offsetX, int offsetY, int width, int height, int advance, int ascent)
+   private record Glyph(float scale, BitmapProvider.ImageDataHolder imageData, int offsetX, int offsetY, int width, int height, int advance, int ascent)
       implements UnbakedGlyph {
       @Override
       public GlyphInfo info() {
-         return GlyphInfo.simple((float)this.advance);
+         return GlyphInfo.simple(this.advance);
       }
 
       @Override
@@ -207,10 +202,6 @@ public class BitmapProvider implements GlyphProvider {
          return stitcher.stitch(
             this.info(),
             new GlyphBitmap() {
-               {
-                  Objects.requireNonNull(Glyph.this);
-               }
-
                @Override
                public float getOversample() {
                   return 1.0F / Glyph.this.scale;
@@ -228,7 +219,7 @@ public class BitmapProvider implements GlyphProvider {
 
                @Override
                public float getBearingTop() {
-                  return (float)Glyph.this.ascent;
+                  return Glyph.this.ascent;
                }
 
                @Override
@@ -263,8 +254,7 @@ public class BitmapProvider implements GlyphProvider {
    private static class ImageDataHolder implements AutoCloseable {
       private final Identifier identifier;
       private final NativeImage image;
-      @Nullable
-      private GpuBuffer gpuBuffer = null;
+      private @Nullable GpuBuffer gpuBuffer = null;
 
       private ImageDataHolder(final Identifier identifier, final NativeImage image) {
          this.identifier = identifier;
@@ -274,7 +264,7 @@ public class BitmapProvider implements GlyphProvider {
       private GpuBuffer gpuData() {
          if (this.gpuBuffer == null) {
             ByteBuffer imageBytes = this.image.getPixelBytes();
-            this.gpuBuffer = RenderSystem.getDevice().createBuffer(() -> this.identifier + " staging buffer", 22, (long)imageBytes.remaining());
+            this.gpuBuffer = RenderSystem.getDevice().createBuffer(() -> this.identifier + " staging buffer", 22, imageBytes.remaining());
 
             try (GpuBufferSlice.MappedView mappedView = this.gpuBuffer.map(false, true)) {
                MemoryUtil.memCopy(imageBytes, mappedView.data());

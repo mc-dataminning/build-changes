@@ -7,7 +7,7 @@ public interface UnbakedGlyph {
 
    BakedGlyph bake(UnbakedGlyph.Stitcher stitcher);
 
-   public interface Stitcher {
+   interface Stitcher {
       BakedGlyph stitch(GlyphInfo info, GlyphBitmap glyphBitmap);
 
       BakedGlyph getMissing();

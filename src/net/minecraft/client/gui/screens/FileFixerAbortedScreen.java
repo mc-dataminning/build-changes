@@ -14,10 +14,8 @@ import org.jspecify.annotations.Nullable;
 public class FileFixerAbortedScreen extends Screen {
    protected final LinearLayout layout = LinearLayout.vertical().spacing(8);
    private final Component message;
-   @Nullable
-   protected Button backButton;
-   @Nullable
-   protected Button reportBugButton;
+   protected @Nullable Button backButton;
+   protected @Nullable Button reportBugButton;
    protected final Runnable callback;
 
    public FileFixerAbortedScreen(final Runnable callback, final Component message) {

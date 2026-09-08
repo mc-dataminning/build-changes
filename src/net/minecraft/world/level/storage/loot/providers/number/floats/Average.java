@@ -24,6 +24,6 @@ public record Average(HolderSet<ContextFloatProvider> inputs) implements Context
          count++;
       }
 
-      return sum / (float)count;
+      return sum / count;
    }
 }

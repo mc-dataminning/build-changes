@@ -45,7 +45,7 @@ public interface VulkanDebug {
 
    boolean enabled();
 
-   public static class Disabled implements VulkanDebug {
+   class Disabled implements VulkanDebug {
       @Override
       public void chainCreateInfo(final VkInstanceCreateInfo instanceCreateInfo, final MemoryStack stack) {
       }
@@ -80,7 +80,7 @@ public interface VulkanDebug {
       }
    }
 
-   public static class Enabled implements VulkanDebug {
+   class Enabled implements VulkanDebug {
       private static final StackWalker STACK_WALKER = StackWalker.getInstance(Set.of(Option.RETAIN_CLASS_REFERENCE), 3);
       private static final Logger LOGGER = LogUtils.getLogger();
       public static final int MESSAGE_TYPE_BITMASK = 7;
@@ -207,12 +207,12 @@ public interface VulkanDebug {
                if (message == null || !message.contains("vkDestroyInstance") && !message.contains("vkDestroyDevice")) {
                   String callStack = STACK_WALKER.walk(
                      s -> s.filter(
-                              frame -> frame.getDeclaringClass() != VulkanDebug.Enabled.class
-                                    && !frame.getDeclaringClass().getPackageName().startsWith("org.lwjgl")
-                           )
-                           .limit(5L)
-                           .map(frame -> "\t" + frame)
-                           .collect(Collectors.joining("\n"))
+                           frame -> frame.getDeclaringClass() != VulkanDebug.Enabled.class
+                              && !frame.getDeclaringClass().getPackageName().startsWith("org.lwjgl")
+                        )
+                        .limit(5L)
+                        .map(frame -> "\t" + frame)
+                        .collect(Collectors.joining("\n"))
                   );
                   LOGGER.error("{}\n{}", message, callStack);
                } else {

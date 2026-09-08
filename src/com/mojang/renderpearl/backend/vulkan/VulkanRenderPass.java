@@ -43,18 +43,16 @@ public class VulkanRenderPass implements RenderPassBackend {
    private final VulkanDevice device;
    private final VulkanCommandEncoder encoder;
    private final CheckpointExtension.CheckpointStorage checkpointStorage;
-   @Nullable
-   private final RenderPass.RenderArea renderArea;
+   private final RenderPass.@Nullable RenderArea renderArea;
    private final int outputWidth;
    private final int outputHeight;
    private final boolean hasDepth;
    private final Supplier<String> label;
    protected int pushedDebugGroups = 0;
    private final VkCommandBuffer commandBuffer;
-   @Nullable
-   protected VulkanRenderPipeline pipeline;
+   protected @Nullable VulkanRenderPipeline pipeline;
    private boolean anyDescriptorDirty = false;
-   protected final ReferenceList<Object> uniforms = new ReferenceArrayList();
+   protected final ReferenceList<@Nullable Object> uniforms = new ReferenceArrayList();
 
    public VulkanRenderPass(
       final VulkanDevice device,
@@ -82,8 +80,8 @@ public class VulkanRenderPass implements RenderPassBackend {
          Buffer viewport = VkViewport.calloc(1, stack);
          viewport.x(0.0F);
          viewport.y(0.0F);
-         viewport.width((float)outputWidth);
-         viewport.height((float)outputHeight);
+         viewport.width(outputWidth);
+         viewport.height(outputHeight);
          viewport.minDepth(0.0F);
          viewport.maxDepth(1.0F);
          VK12.vkCmdSetViewport(this.commandBuffer(), 0, viewport);
@@ -119,10 +117,10 @@ public class VulkanRenderPass implements RenderPassBackend {
    public void popDebugGroup() {
       if (this.pushedDebugGroups == 0) {
          throw new IllegalStateException("Can't pop more debug groups than was pushed!");
-      } else {
-         this.pushedDebugGroups--;
-         this.device.instance().debug().endDebugGroup(this.commandBuffer());
       }
+
+      this.pushedDebugGroups--;
+      this.device.instance().debug().endDebugGroup(this.commandBuffer());
    }
 
    @Override
@@ -139,7 +137,7 @@ public class VulkanRenderPass implements RenderPassBackend {
    }
 
    @Override
-   public void setUniform(final int index, @Nullable final Object value) {
+   public void setUniform(final int index, final @Nullable Object value) {
       this.uniforms.set(index, value);
       this.anyDescriptorDirty = true;
    }
@@ -147,7 +145,6 @@ public class VulkanRenderPass implements RenderPassBackend {
    @Override
    public void pushConstants(final ByteBuffer value) {
       assert this.pipeline != null;
-
       VK12.vkCmdPushConstants(this.commandBuffer(), this.pipeline.pipelineLayout(), Integer.MAX_VALUE, 0, value);
    }
 
@@ -191,7 +188,7 @@ public class VulkanRenderPass implements RenderPassBackend {
    }
 
    @Override
-   public void setVertexBuffer(final int slot, @Nullable final GpuBufferSlice vertexBuffer) {
+   public void setVertexBuffer(final int slot, final @Nullable GpuBufferSlice vertexBuffer) {
       if (vertexBuffer != null) {
          MemoryStack stack = MemoryStack.stackPush();
 
@@ -281,7 +278,6 @@ public class VulkanRenderPass implements RenderPassBackend {
    private void pushDescriptors() {
       if (this.anyDescriptorDirty) {
          assert this.pipeline != null;
-
          List<BindGroupLayout.UniformDescription> uniforms = this.pipeline.uniforms();
          MemoryStack stack = MemoryStack.stackPush();
 
@@ -329,7 +325,6 @@ public class VulkanRenderPass implements RenderPassBackend {
 
                   try {
                      assert uniform.gpuFormat() != null;
-
                      VkBufferViewCreateInfo viewCreateInfo = VkBufferViewCreateInfo.calloc(stack).sType$Default();
                      viewCreateInfo.buffer(((VulkanGpuBuffer)value.buffer()).vkBuffer());
                      viewCreateInfo.offset(value.offset());

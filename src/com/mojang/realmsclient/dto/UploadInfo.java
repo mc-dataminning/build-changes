@@ -18,8 +18,7 @@ public record UploadInfo(boolean worldClosed, @Nullable String token, URI upload
    private static final int DEFAULT_PORT = 8080;
    private static final Pattern URI_SCHEMA_PATTERN = Pattern.compile("^[a-zA-Z][-a-zA-Z0-9+.]+:");
 
-   @Nullable
-   public static UploadInfo parse(final String json) {
+   public static @Nullable UploadInfo parse(final String json) {
       try {
          JsonObject jsonObject = LenientJsonParser.parse(json).getAsJsonObject();
          String endpointStr = JsonUtils.getStringOr("uploadEndpoint", jsonObject, null);
@@ -32,16 +31,15 @@ public record UploadInfo(boolean worldClosed, @Nullable String token, URI upload
                return new UploadInfo(worldClosed, token, uploadEndpoint);
             }
          }
-      } catch (Exception var7) {
-         LOGGER.error("Could not parse UploadInfo", var7);
+      } catch (Exception e) {
+         LOGGER.error("Could not parse UploadInfo", e);
       }
 
       return null;
    }
 
    @VisibleForTesting
-   @Nullable
-   public static URI assembleUri(final String endpoint, final int portOverride) {
+   public static @Nullable URI assembleUri(final String endpoint, final int portOverride) {
       Matcher matcher = URI_SCHEMA_PATTERN.matcher(endpoint);
       String endpointWithSchema = ensureEndpointSchema(endpoint, matcher);
 
@@ -51,8 +49,8 @@ public record UploadInfo(boolean worldClosed, @Nullable String token, URI upload
          return selectedPort != result.getPort()
             ? new URI(result.getScheme(), result.getUserInfo(), result.getHost(), selectedPort, result.getPath(), result.getQuery(), result.getFragment())
             : result;
-      } catch (URISyntaxException var6) {
-         LOGGER.warn("Failed to parse URI {}", endpointWithSchema, var6);
+      } catch (URISyntaxException e) {
+         LOGGER.warn("Failed to parse URI {}", endpointWithSchema, e);
          return null;
       }
    }
@@ -69,7 +67,7 @@ public record UploadInfo(boolean worldClosed, @Nullable String token, URI upload
       return matcher.find() ? endpoint : "http://" + endpoint;
    }
 
-   public static String createRequest(@Nullable final String uploadToken) {
+   public static String createRequest(final @Nullable String uploadToken) {
       JsonObject request = new JsonObject();
       if (uploadToken != null) {
          request.addProperty("token", uploadToken);

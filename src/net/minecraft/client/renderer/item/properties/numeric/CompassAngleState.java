@@ -20,10 +20,10 @@ import org.jspecify.annotations.Nullable;
 public class CompassAngleState extends NeedleDirectionHelper {
    public static final MapCodec<CompassAngleState> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.BOOL.optionalFieldOf("wobble", true).forGetter(NeedleDirectionHelper::wobble),
-               CompassAngleState.CompassTarget.CODEC.fieldOf("target").forGetter(CompassAngleState::target)
-            )
-            .apply(i, CompassAngleState::new)
+            Codec.BOOL.optionalFieldOf("wobble", true).forGetter(NeedleDirectionHelper::wobble),
+            CompassAngleState.CompassTarget.CODEC.fieldOf("target").forGetter(CompassAngleState::target)
+         )
+         .apply(i, CompassAngleState::new)
    );
    private final NeedleDirectionHelper.Wobbler wobbler;
    private final NeedleDirectionHelper.Wobbler noTargetWobbler;
@@ -51,27 +51,28 @@ public class CompassAngleState extends NeedleDirectionHelper {
          this.noTargetWobbler.update(gameTime, this.random.nextFloat());
       }
 
-      float targetRotation = this.noTargetWobbler.rotation() + (float)hash(seed) / 2.1474836E9F;
+      float targetRotation = this.noTargetWobbler.rotation() + hash(seed) / 2.1474836E9F;
       return Mth.positiveModulo(targetRotation, 1.0F);
    }
 
    private float getRotationTowardsCompassTarget(final ItemOwner owner, final long gameTime, final BlockPos compassTargetPos) {
       float angleToTarget = (float)getAngleFromEntityToPos(owner, compassTargetPos);
       float ownerYRotation = getWrappedVisualRotationY(owner);
+      float targetRotation;
       if (owner.asLivingEntity() instanceof Player player && player.isLocalPlayer() && player.level().tickRateManager().runsNormally()) {
          if (this.wobbler.shouldUpdate(gameTime)) {
             this.wobbler.update(gameTime, 0.5F - (ownerYRotation - 0.25F));
          }
 
-         float targetRotation = angleToTarget + this.wobbler.rotation();
-         return Mth.positiveModulo(targetRotation, 1.0F);
+         targetRotation = angleToTarget + this.wobbler.rotation();
+      } else {
+         targetRotation = 0.5F - (ownerYRotation - 0.25F - angleToTarget);
       }
 
-      float targetRotation = 0.5F - (ownerYRotation - 0.25F - angleToTarget);
       return Mth.positiveModulo(targetRotation, 1.0F);
    }
 
-   private static boolean isValidCompassTargetPos(final ItemOwner owner, @Nullable final GlobalPos positionToPointTo) {
+   private static boolean isValidCompassTargetPos(final ItemOwner owner, final @Nullable GlobalPos positionToPointTo) {
       return positionToPointTo != null
          && positionToPointTo.dimension() == owner.level().dimension()
          && !(positionToPointTo.pos().distToCenterSqr(owner.position()) < 1.0E-5F);
@@ -95,32 +96,29 @@ public class CompassAngleState extends NeedleDirectionHelper {
       return this.compassTarget;
    }
 
-   public static enum CompassTarget implements StringRepresentable {
+   public enum CompassTarget implements StringRepresentable {
       NONE("none") {
-         @Nullable
          @Override
-         public GlobalPos get(final ClientLevel level, final ItemStack itemStack, @Nullable final ItemOwner owner) {
+         public @Nullable GlobalPos get(final ClientLevel level, final ItemStack itemStack, final @Nullable ItemOwner owner) {
             return null;
          }
       },
       LODESTONE("lodestone") {
-         @Nullable
          @Override
-         public GlobalPos get(final ClientLevel level, final ItemStack itemStack, @Nullable final ItemOwner owner) {
+         public @Nullable GlobalPos get(final ClientLevel level, final ItemStack itemStack, final @Nullable ItemOwner owner) {
             LodestoneTracker tracker = itemStack.get(DataComponents.LODESTONE_TRACKER);
             return tracker != null ? tracker.target().orElse(null) : null;
          }
       },
       SPAWN("spawn") {
          @Override
-         public GlobalPos get(final ClientLevel level, final ItemStack itemStack, @Nullable final ItemOwner owner) {
+         public GlobalPos get(final ClientLevel level, final ItemStack itemStack, final @Nullable ItemOwner owner) {
             return level.getRespawnData().globalPos();
          }
       },
       RECOVERY("recovery") {
-         @Nullable
          @Override
-         public GlobalPos get(final ClientLevel level, final ItemStack itemStack, @Nullable final ItemOwner owner) {
+         public @Nullable GlobalPos get(final ClientLevel level, final ItemStack itemStack, final @Nullable ItemOwner owner) {
             return (owner == null ? null : owner.asLivingEntity()) instanceof Player player ? player.getLastDeathLocation().orElse(null) : null;
          }
       };
@@ -128,7 +126,7 @@ public class CompassAngleState extends NeedleDirectionHelper {
       public static final Codec<CompassAngleState.CompassTarget> CODEC = StringRepresentable.fromEnum(CompassAngleState.CompassTarget::values);
       private final String name;
 
-      private CompassTarget(final String name) {
+      CompassTarget(final String name) {
          this.name = name;
       }
 
@@ -137,7 +135,6 @@ public class CompassAngleState extends NeedleDirectionHelper {
          return this.name;
       }
 
-      @Nullable
-      public abstract GlobalPos get(final ClientLevel level, final ItemStack itemStack, @Nullable final ItemOwner entity);
+      public abstract @Nullable GlobalPos get(final ClientLevel level, final ItemStack itemStack, final @Nullable ItemOwner entity);
    }
 }

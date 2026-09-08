@@ -42,9 +42,7 @@ public class EyeblossomBlock extends FlowerBlock {
       if (this.type.emitSounds() && random.nextInt(700) == 0) {
          BlockState below = level.getBlockState(pos.below());
          if (below.is(Blocks.PALE_MOSS_BLOCK)) {
-            level.playLocalSound(
-               (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), SoundEvents.EYEBLOSSOM_IDLE, SoundSource.AMBIENT, 1.0F, 1.0F, false
-            );
+            level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.EYEBLOSSOM_IDLE, SoundSource.AMBIENT, 1.0F, 1.0F, false);
          }
       }
    }
@@ -71,20 +69,20 @@ public class EyeblossomBlock extends FlowerBlock {
       boolean shouldBeOpen = level.environmentAttributes().getValue(EnvironmentAttributes.EYEBLOSSOM_OPEN, pos).toBoolean(this.type.open);
       if (shouldBeOpen == this.type.open) {
          return false;
-      } else {
-         EyeblossomBlock.Type newType = this.type.transform();
-         level.setBlockAndUpdate(pos, newType.state());
-         level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(state));
-         newType.spawnTransformParticle(level, pos, random);
-         BlockPos minPos = pos.offset(-3, -2, -3);
-         BlockPos maxPos = pos.offset(3, 2, 3);
-         level.findBlocksIn(minPos, maxPos).filterState(nearbyState -> nearbyState == state).forEach((nearbyPos, var5x) -> {
-            double distance = Math.sqrt(pos.distSqr(nearbyPos));
-            int delay = random.nextIntBetweenInclusive((int)(distance * 5.0), (int)(distance * 10.0));
-            level.scheduleTick(nearbyPos, state.getBlock(), delay);
-         });
-         return true;
       }
+
+      EyeblossomBlock.Type newType = this.type.transform();
+      level.setBlockAndUpdate(pos, newType.state());
+      level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(state));
+      newType.spawnTransformParticle(level, pos, random);
+      BlockPos minPos = pos.offset(-3, -2, -3);
+      BlockPos maxPos = pos.offset(3, 2, 3);
+      level.findBlocksIn(minPos, maxPos).filterState(nearbyState -> nearbyState == state).forEach((nearbyPos, var5x) -> {
+         double distance = Math.sqrt(pos.distSqr(nearbyPos));
+         int delay = random.nextIntBetweenInclusive((int)(distance * 5.0), (int)(distance * 10.0));
+         level.scheduleTick(nearbyPos, state.getBlock(), delay);
+      });
+      return true;
    }
 
    @Override
@@ -105,7 +103,7 @@ public class EyeblossomBlock extends FlowerBlock {
       return new MobEffectInstance(MobEffects.POISON, 25);
    }
 
-   public static enum Type {
+   public enum Type {
       OPEN(true, MobEffects.BLINDNESS, 11.0F, SoundEvents.EYEBLOSSOM_OPEN_LONG, SoundEvents.EYEBLOSSOM_OPEN, 16545810),
       CLOSED(false, MobEffects.NAUSEA, 7.0F, SoundEvents.EYEBLOSSOM_CLOSE_LONG, SoundEvents.EYEBLOSSOM_CLOSE, 6250335);
 
@@ -116,7 +114,7 @@ public class EyeblossomBlock extends FlowerBlock {
       private final SoundEvent shortSwitchSound;
       private final int particleColor;
 
-      private Type(
+      Type(
          final boolean open,
          final Holder<MobEffect> effect,
          final float duration,

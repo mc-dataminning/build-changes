@@ -27,14 +27,14 @@ import net.minecraft.world.phys.Vec3;
 public record AttackRange(float minReach, float maxReach, float minCreativeReach, float maxCreativeReach, float hitboxMargin, float mobFactor) {
    public static final Codec<AttackRange> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ExtraCodecs.floatRange(0.0F, 64.0F).optionalFieldOf("min_reach", 0.0F).forGetter(AttackRange::minReach),
-               ExtraCodecs.floatRange(0.0F, 64.0F).optionalFieldOf("max_reach", 3.0F).forGetter(AttackRange::maxReach),
-               ExtraCodecs.floatRange(0.0F, 64.0F).optionalFieldOf("min_creative_reach", 0.0F).forGetter(AttackRange::minCreativeReach),
-               ExtraCodecs.floatRange(0.0F, 64.0F).optionalFieldOf("max_creative_reach", 5.0F).forGetter(AttackRange::maxCreativeReach),
-               ExtraCodecs.floatRange(0.0F, 1.0F).optionalFieldOf("hitbox_margin", 0.3F).forGetter(AttackRange::hitboxMargin),
-               Codec.floatRange(0.0F, 2.0F).optionalFieldOf("mob_factor", 1.0F).forGetter(AttackRange::mobFactor)
-            )
-            .apply(i, AttackRange::new)
+            ExtraCodecs.floatRange(0.0F, 64.0F).optionalFieldOf("min_reach", 0.0F).forGetter(AttackRange::minReach),
+            ExtraCodecs.floatRange(0.0F, 64.0F).optionalFieldOf("max_reach", 3.0F).forGetter(AttackRange::maxReach),
+            ExtraCodecs.floatRange(0.0F, 64.0F).optionalFieldOf("min_creative_reach", 0.0F).forGetter(AttackRange::minCreativeReach),
+            ExtraCodecs.floatRange(0.0F, 64.0F).optionalFieldOf("max_creative_reach", 5.0F).forGetter(AttackRange::maxCreativeReach),
+            ExtraCodecs.floatRange(0.0F, 1.0F).optionalFieldOf("hitbox_margin", 0.3F).forGetter(AttackRange::hitboxMargin),
+            Codec.floatRange(0.0F, 2.0F).optionalFieldOf("mob_factor", 1.0F).forGetter(AttackRange::mobFactor)
+         )
+         .apply(i, AttackRange::new)
    );
    public static final StreamCodec<ByteBuf, AttackRange> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.FLOAT,
@@ -61,28 +61,28 @@ public record AttackRange(float minReach, float maxReach, float minCreativeReach
       Either<BlockHitResult, Collection<EntityHitResult>> result = ProjectileUtil.getHitEntitiesAlong(attacker, this, matching, ClipContext.Block.OUTLINE);
       if (result.left().isPresent()) {
          return (HitResult)result.left().get();
-      } else {
-         Collection<EntityHitResult> targets = (Collection<EntityHitResult>)result.right().get();
-         EntityHitResult entity = null;
-         Vec3 attackerPos = attacker.getEyePosition(partial);
-         double closestDistance = Double.MAX_VALUE;
+      }
 
-         for (EntityHitResult target : targets) {
-            double distance = attackerPos.distanceToSqr(target.getLocation());
-            if (distance < closestDistance) {
-               closestDistance = distance;
-               entity = target;
-            }
-         }
+      Collection<EntityHitResult> targets = (Collection<EntityHitResult>)result.right().get();
+      EntityHitResult entity = null;
+      Vec3 attackerPos = attacker.getEyePosition(partial);
+      double closestDistance = Double.MAX_VALUE;
 
-         if (entity != null) {
-            return entity;
-         } else {
-            Vec3 eyeGaze = attacker.getHeadLookAngle();
-            Vec3 missPosition = attacker.getEyePosition(partial).add(eyeGaze);
-            return BlockHitResult.miss(missPosition, Direction.getApproximateNearest(eyeGaze), BlockPos.containing(missPosition));
+      for (EntityHitResult target : targets) {
+         double distance = attackerPos.distanceToSqr(target.getLocation());
+         if (distance < closestDistance) {
+            closestDistance = distance;
+            entity = target;
          }
       }
+
+      if (entity != null) {
+         return entity;
+      }
+
+      Vec3 eyeGaze = attacker.getHeadLookAngle();
+      Vec3 missPosition = attacker.getEyePosition(partial).add(eyeGaze);
+      return BlockHitResult.miss(missPosition, Direction.getApproximateNearest(eyeGaze), BlockPos.containing(missPosition));
    }
 
    public float effectiveMinRange(final Entity entity) {
@@ -111,8 +111,8 @@ public record AttackRange(float minReach, float maxReach, float minCreativeReach
 
    private boolean isInRange(final LivingEntity attacker, final ToDoubleFunction<Vec3> distanceFunction, final double extraBuffer) {
       double distance = Math.sqrt(distanceFunction.applyAsDouble(attacker.getEyePosition()));
-      double minReach = (double)(this.effectiveMinRange(attacker) - this.hitboxMargin) - extraBuffer;
-      double maxReach = (double)(this.effectiveMaxRange(attacker) + this.hitboxMargin) + extraBuffer;
+      double minReach = this.effectiveMinRange(attacker) - this.hitboxMargin - extraBuffer;
+      double maxReach = this.effectiveMaxRange(attacker) + this.hitboxMargin + extraBuffer;
       return distance >= minReach && distance <= maxReach;
    }
 }

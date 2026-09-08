@@ -8,7 +8,6 @@ import it.unimi.dsi.fastutil.ints.IntSet;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import java.util.Locale;
-import java.util.Objects;
 import net.minecraft.client.gui.font.CodepointMap;
 import net.minecraft.client.gui.font.glyphs.BakedGlyph;
 import net.minecraft.client.gui.font.glyphs.EmptyGlyph;
@@ -23,10 +22,8 @@ import org.lwjgl.util.freetype.FT_Vector;
 import org.lwjgl.util.freetype.FreeType;
 
 public class TrueTypeGlyphProvider implements GlyphProvider {
-   @Nullable
-   private ByteBuffer fontMemory;
-   @Nullable
-   private FT_Face face;
+   private @Nullable ByteBuffer fontMemory;
+   private @Nullable FT_Face face;
    private final float oversample;
    private final CodepointMap<TrueTypeGlyphProvider.GlyphEntry> glyphs = new CodepointMap<>(
       TrueTypeGlyphProvider.GlyphEntry[]::new, TrueTypeGlyphProvider.GlyphEntry[][]::new
@@ -62,7 +59,7 @@ public class TrueTypeGlyphProvider implements GlyphProvider {
                this.glyphs.put(codepoint, new TrueTypeGlyphProvider.GlyphEntry(index));
             }
 
-            codepoint = (int)FreeType.FT_Get_Next_Char(face, (long)codepoint, indexPtr);
+            codepoint = (int)FreeType.FT_Get_Next_Char(face, codepoint, indexPtr);
          }
       } catch (Throwable var18) {
          if (stack != null) {
@@ -81,9 +78,8 @@ public class TrueTypeGlyphProvider implements GlyphProvider {
       }
    }
 
-   @Nullable
    @Override
-   public UnbakedGlyph getGlyph(final int codepoint) {
+   public @Nullable UnbakedGlyph getGlyph(final int codepoint) {
       TrueTypeGlyphProvider.GlyphEntry entry = this.glyphs.get(codepoint);
       return entry != null ? this.getOrLoadGlyphInfo(codepoint, entry) : null;
    }
@@ -113,17 +109,17 @@ public class TrueTypeGlyphProvider implements GlyphProvider {
       FT_GlyphSlot glyph = face.glyph();
       if (glyph == null) {
          throw new NullPointerException(String.format(Locale.ROOT, "Glyph U+%06X not initialized", codepoint));
-      } else {
-         float scaledAdvance = FreeTypeUtil.x(glyph.advance());
-         FT_Bitmap bitmap = glyph.bitmap();
-         int left = glyph.bitmap_left();
-         int top = glyph.bitmap_top();
-         int width = bitmap.width();
-         int height = bitmap.rows();
-         return (UnbakedGlyph)(width > 0 && height > 0
-            ? new TrueTypeGlyphProvider.Glyph((float)left, (float)top, width, height, scaledAdvance, index)
-            : new EmptyGlyph(scaledAdvance / this.oversample));
       }
+
+      float scaledAdvance = FreeTypeUtil.x(glyph.advance());
+      FT_Bitmap bitmap = glyph.bitmap();
+      int left = glyph.bitmap_left();
+      int top = glyph.bitmap_top();
+      int width = bitmap.width();
+      int height = bitmap.rows();
+      return width > 0 && height > 0
+         ? new TrueTypeGlyphProvider.Glyph(left, top, width, height, scaledAdvance, index)
+         : new EmptyGlyph(scaledAdvance / this.oversample);
    }
 
    private FT_Face validateFontOpen() {
@@ -162,8 +158,6 @@ public class TrueTypeGlyphProvider implements GlyphProvider {
       private final int index;
 
       private Glyph(final float left, final float top, final int width, final int height, final float advance, final int index) {
-         Objects.requireNonNull(TrueTypeGlyphProvider.this);
-         super();
          this.width = width;
          this.height = height;
          this.info = GlyphInfo.simple(advance / TrueTypeGlyphProvider.this.oversample);
@@ -180,10 +174,6 @@ public class TrueTypeGlyphProvider implements GlyphProvider {
       @Override
       public BakedGlyph bake(final UnbakedGlyph.Stitcher stitcher) {
          return stitcher.stitch(this.info, new GlyphBitmap() {
-            {
-               Objects.requireNonNull(Glyph.this);
-            }
-
             @Override
             public int getPixelWidth() {
                return Glyph.this.width;
@@ -230,8 +220,7 @@ public class TrueTypeGlyphProvider implements GlyphProvider {
 
    private static class GlyphEntry {
       private final int index;
-      @Nullable
-      private volatile UnbakedGlyph glyph;
+      private volatile @Nullable UnbakedGlyph glyph;
 
       private GlyphEntry(final int index) {
          this.index = index;

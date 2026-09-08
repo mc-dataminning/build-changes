@@ -38,23 +38,23 @@ public record JukeboxPlayable(Holder<JukeboxSong> song) implements TooltipProvid
       JukeboxPlayable jukeboxPlayable = toInsert.get(DataComponents.JUKEBOX_PLAYABLE);
       if (jukeboxPlayable == null) {
          return InteractionResult.TRY_WITH_EMPTY_HAND;
-      } else {
-         BlockState state = level.getBlockState(pos);
-         if (state.is(Blocks.JUKEBOX) && !state.getValue(JukeboxBlock.HAS_RECORD)) {
-            if (!level.isClientSide()) {
-               ItemStack inserted = toInsert.consumeAndReturn(1, player);
-               if (level.getBlockEntity(pos) instanceof JukeboxBlockEntity jukebox) {
-                  jukebox.setTheItem(inserted);
-                  level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, state));
-               }
+      }
 
-               player.awardStat(Stats.PLAY_RECORD);
+      BlockState state = level.getBlockState(pos);
+      if (state.is(Blocks.JUKEBOX) && !state.getValue(JukeboxBlock.HAS_RECORD)) {
+         if (!level.isClientSide()) {
+            ItemStack inserted = toInsert.consumeAndReturn(1, player);
+            if (level.getBlockEntity(pos) instanceof JukeboxBlockEntity jukebox) {
+               jukebox.setTheItem(inserted);
+               level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, state));
             }
 
-            return InteractionResult.SUCCESS;
-         } else {
-            return InteractionResult.TRY_WITH_EMPTY_HAND;
+            player.awardStat(Stats.PLAY_RECORD);
          }
+
+         return InteractionResult.SUCCESS;
+      } else {
+         return InteractionResult.TRY_WITH_EMPTY_HAND;
       }
    }
 }

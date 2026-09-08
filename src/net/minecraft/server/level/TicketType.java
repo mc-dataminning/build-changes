@@ -24,7 +24,7 @@ public record TicketType(long timeout, @TicketType.Flags int flags) {
    public static final TicketType ENDER_PEARL = register("ender_pearl", 40L, 14);
    public static final TicketType UNKNOWN = register("unknown", 1L, 18);
 
-   private static TicketType register(final String name, final long timeout, @TicketType.Flags final int flags) {
+   private static TicketType register(final String name, final long timeout, final @TicketType.Flags int flags) {
       return Registry.register(BuiltInRegistries.TICKET_TYPE, name, new TicketType(timeout, flags));
    }
 
@@ -53,7 +53,7 @@ public record TicketType(long timeout, @TicketType.Flags int flags) {
    }
 
    @Retention(RetentionPolicy.CLASS)
-   @Target({ElementType.TYPE_USE})
+   @Target(ElementType.TYPE_USE)
    public @interface Flags {
    }
 }

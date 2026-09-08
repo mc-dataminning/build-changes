@@ -111,7 +111,7 @@ public class FrameLayout extends AbstractLayout {
    }
 
    public static void alignInDimension(final int pos, final int length, final int widgetLength, final Consumer<Integer> setWidgetPos, final float align) {
-      int offset = (int)Mth.lerp(align, 0.0F, (float)(length - widgetLength));
+      int offset = (int)Mth.lerp(align, 0.0F, length - widgetLength);
       setWidgetPos.accept(pos + offset);
    }
 

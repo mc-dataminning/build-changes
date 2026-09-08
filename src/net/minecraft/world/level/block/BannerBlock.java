@@ -25,7 +25,7 @@ public class BannerBlock extends AbstractBannerBlock {
 
    public BannerBlock(final DyeColor color, final BlockBehaviour.Properties properties) {
       super(color, properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(ROTATION, Integer.valueOf(8)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(ROTATION, 8));
    }
 
    @Override
@@ -40,7 +40,7 @@ public class BannerBlock extends AbstractBannerBlock {
 
    @Override
    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.defaultBlockState().setValue(ROTATION, Integer.valueOf(RotationSegment.convertToSegment(context.getRotation() + 180.0F)));
+      return this.defaultBlockState().setValue(ROTATION, RotationSegment.convertToSegment(context.getRotation() + 180.0F));
    }
 
    @Override
@@ -61,12 +61,12 @@ public class BannerBlock extends AbstractBannerBlock {
 
    @Override
    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(ROTATION, Integer.valueOf(rotation.rotate(state.getValue(ROTATION), 16)));
+      return state.setValue(ROTATION, rotation.rotate(state.getValue(ROTATION), 16));
    }
 
    @Override
    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.setValue(ROTATION, Integer.valueOf(mirror.mirror(state.getValue(ROTATION), 16)));
+      return state.setValue(ROTATION, mirror.mirror(state.getValue(ROTATION), 16));
    }
 
    @Override
@@ -74,14 +74,14 @@ public class BannerBlock extends AbstractBannerBlock {
       builder.add(ROTATION);
    }
 
-   public static enum AttachmentType implements StringRepresentable {
+   public enum AttachmentType implements StringRepresentable {
       WALL("wall"),
       GROUND("ground");
 
       public static final Codec<BannerBlock.AttachmentType> CODEC = StringRepresentable.fromEnum(BannerBlock.AttachmentType::values);
       private final String name;
 
-      private AttachmentType(final String name) {
+      AttachmentType(final String name) {
          this.name = name;
       }
 

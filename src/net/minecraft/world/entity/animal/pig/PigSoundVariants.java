@@ -34,7 +34,7 @@ public class PigSoundVariants {
       return registryAccess.lookupOrThrow(Registries.PIG_SOUND_VARIANT).getRandom(random).orElseThrow();
    }
 
-   public static enum SoundSet {
+   public enum SoundSet {
       CLASSIC("classic", "pig"),
       MINI("mini", "pig_mini"),
       BIG("big", "pig_big");
@@ -42,7 +42,7 @@ public class PigSoundVariants {
       private final String identifier;
       private final String soundEventIdentifier;
 
-      private SoundSet(final String identifier, final String soundEventIdentifier) {
+      SoundSet(final String identifier, final String soundEventIdentifier) {
          this.identifier = identifier;
          this.soundEventIdentifier = soundEventIdentifier;
       }

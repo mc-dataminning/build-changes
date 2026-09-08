@@ -1,7 +1,6 @@
 package net.minecraft.world.inventory;
 
 import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Objects;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
@@ -31,10 +30,6 @@ public class GrindstoneMenu extends AbstractContainerMenu {
    private static final int USE_ROW_SLOT_END = 39;
    private final Container resultSlots = new ResultContainer();
    private final Container repairSlots = new SimpleContainer(2) {
-      {
-         Objects.requireNonNull(GrindstoneMenu.this);
-      }
-
       @Override
       public void setChanged() {
          super.setChanged();
@@ -51,30 +46,18 @@ public class GrindstoneMenu extends AbstractContainerMenu {
       super(MenuType.GRINDSTONE, containerId);
       this.access = access;
       this.addSlot(new Slot(this.repairSlots, 0, 49, 19) {
-         {
-            Objects.requireNonNull(GrindstoneMenu.this);
-         }
-
          @Override
          public boolean mayPlace(final ItemStack itemStack) {
             return itemStack.isDamageableItem() || EnchantmentHelper.hasAnyEnchantments(itemStack);
          }
       });
       this.addSlot(new Slot(this.repairSlots, 1, 49, 40) {
-         {
-            Objects.requireNonNull(GrindstoneMenu.this);
-         }
-
          @Override
          public boolean mayPlace(final ItemStack itemStack) {
             return itemStack.isDamageableItem() || EnchantmentHelper.hasAnyEnchantments(itemStack);
          }
       });
       this.addSlot(new Slot(this.resultSlots, 2, 129, 34) {
-         {
-            Objects.requireNonNull(GrindstoneMenu.this);
-         }
-
          @Override
          public boolean mayPlace(final ItemStack itemStack) {
             return false;
@@ -98,7 +81,7 @@ public class GrindstoneMenu extends AbstractContainerMenu {
             amount += this.getExperienceFromItem(GrindstoneMenu.this.repairSlots.getItem(0));
             amount += this.getExperienceFromItem(GrindstoneMenu.this.repairSlots.getItem(1));
             if (amount > 0) {
-               int halfAmount = (int)Math.ceil((double)amount / 2.0);
+               int halfAmount = (int)Math.ceil(amount / 2.0);
                return halfAmount + level.getRandom().nextInt(halfAmount);
             } else {
                return 0;
@@ -140,7 +123,9 @@ public class GrindstoneMenu extends AbstractContainerMenu {
       boolean hasAnItem = !input.isEmpty() || !additional.isEmpty();
       if (!hasAnItem) {
          return ItemStack.EMPTY;
-      } else if (input.getCount() <= 1 && additional.getCount() <= 1) {
+      }
+
+      if (input.getCount() <= 1 && additional.getCount() <= 1) {
          boolean hasBothItems = !input.isEmpty() && !additional.isEmpty();
          if (!hasBothItems) {
             ItemStack item = !input.isEmpty() ? input : additional;
@@ -156,29 +141,29 @@ public class GrindstoneMenu extends AbstractContainerMenu {
    private ItemStack mergeItems(final ItemStack input, final ItemStack additional) {
       if (!input.is(additional.getItem())) {
          return ItemStack.EMPTY;
-      } else {
-         int durability = Math.max(input.getMaxDamage(), additional.getMaxDamage());
-         int remaining1 = input.getMaxDamage() - input.getDamageValue();
-         int remaining2 = additional.getMaxDamage() - additional.getDamageValue();
-         int remaining = remaining1 + remaining2 + durability * 5 / 100;
-         int count = 1;
-         if (!input.isDamageableItem()) {
-            if (input.getMaxStackSize() < 2 || !ItemStack.matches(input, additional)) {
-               return ItemStack.EMPTY;
-            }
-
-            count = 2;
-         }
-
-         ItemStack newItem = input.copyWithCount(count);
-         if (newItem.isDamageableItem()) {
-            newItem.set(DataComponents.MAX_DAMAGE, durability);
-            newItem.setDamageValue(Math.max(durability - remaining, 0));
-         }
-
-         this.mergeEnchantsFrom(newItem, additional);
-         return this.removeNonCursesFrom(newItem);
       }
+
+      int durability = Math.max(input.getMaxDamage(), additional.getMaxDamage());
+      int remaining1 = input.getMaxDamage() - input.getDamageValue();
+      int remaining2 = additional.getMaxDamage() - additional.getDamageValue();
+      int remaining = remaining1 + remaining2 + durability * 5 / 100;
+      int count = 1;
+      if (!input.isDamageableItem()) {
+         if (input.getMaxStackSize() < 2 || !ItemStack.matches(input, additional)) {
+            return ItemStack.EMPTY;
+         }
+
+         count = 2;
+      }
+
+      ItemStack newItem = input.copyWithCount(count);
+      if (newItem.isDamageableItem()) {
+         newItem.set(DataComponents.MAX_DAMAGE, durability);
+         newItem.setDamageValue(Math.max(durability - remaining, 0));
+      }
+
+      this.mergeEnchantsFrom(newItem, additional);
+      return this.removeNonCursesFrom(newItem);
    }
 
    private void mergeEnchantsFrom(final ItemStack target, final ItemStack source) {

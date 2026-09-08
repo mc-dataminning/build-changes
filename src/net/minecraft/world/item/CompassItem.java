@@ -32,7 +32,7 @@ public class CompassItem extends Item {
    }
 
    @Override
-   public void inventoryTick(final ItemStack itemStack, final ServerLevel level, final Entity owner, @Nullable final EquipmentSlot slot) {
+   public void inventoryTick(final ItemStack itemStack, final ServerLevel level, final Entity owner, final @Nullable EquipmentSlot slot) {
       LodestoneTracker tracker = itemStack.get(DataComponents.LODESTONE_TRACKER);
       if (tracker != null) {
          LodestoneTracker newTracker = tracker.tick(level);
@@ -48,25 +48,25 @@ public class CompassItem extends Item {
       Level level = context.getLevel();
       if (!level.getBlockState(blockPos).is(Blocks.LODESTONE)) {
          return super.useOn(context);
-      } else {
-         level.playSound(null, blockPos, SoundEvents.LODESTONE_COMPASS_LOCK, SoundSource.PLAYERS, 1.0F, 1.0F);
-         Player player = context.getPlayer();
-         ItemStack itemStack = context.getItemInHand();
-         boolean replaceExistingStack = !player.hasInfiniteMaterials() && itemStack.getCount() == 1;
-         LodestoneTracker target = new LodestoneTracker(Optional.of(GlobalPos.of(level.dimension(), blockPos)), true);
-         if (replaceExistingStack) {
-            itemStack.set(DataComponents.LODESTONE_TRACKER, target);
-         } else {
-            ItemStack lodestoneCompass = itemStack.transmuteCopy(Items.COMPASS, 1);
-            itemStack.consume(1, player);
-            lodestoneCompass.set(DataComponents.LODESTONE_TRACKER, target);
-            if (!player.getInventory().add(lodestoneCompass)) {
-               player.drop(lodestoneCompass, false, Prediction.PREDICTED);
-            }
-         }
-
-         return InteractionResult.SUCCESS;
       }
+
+      level.playSound(null, blockPos, SoundEvents.LODESTONE_COMPASS_LOCK, SoundSource.PLAYERS, 1.0F, 1.0F);
+      Player player = context.getPlayer();
+      ItemStack itemStack = context.getItemInHand();
+      boolean replaceExistingStack = !player.hasInfiniteMaterials() && itemStack.getCount() == 1;
+      LodestoneTracker target = new LodestoneTracker(Optional.of(GlobalPos.of(level.dimension(), blockPos)), true);
+      if (replaceExistingStack) {
+         itemStack.set(DataComponents.LODESTONE_TRACKER, target);
+      } else {
+         ItemStack lodestoneCompass = itemStack.transmuteCopy(Items.COMPASS, 1);
+         itemStack.consume(1, player);
+         lodestoneCompass.set(DataComponents.LODESTONE_TRACKER, target);
+         if (!player.getInventory().add(lodestoneCompass)) {
+            player.drop(lodestoneCompass, false, Prediction.PREDICTED);
+         }
+      }
+
+      return InteractionResult.SUCCESS;
    }
 
    @Override

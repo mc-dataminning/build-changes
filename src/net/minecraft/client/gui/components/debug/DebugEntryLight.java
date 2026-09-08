@@ -18,9 +18,9 @@ public class DebugEntryLight implements DebugScreenEntry {
    @Override
    public void display(
       final DebugScreenDisplayer displayer,
-      @Nullable final Level serverOrClientLevel,
-      @Nullable final LevelChunk clientChunk,
-      @Nullable final LevelChunk serverChunk
+      final @Nullable Level serverOrClientLevel,
+      final @Nullable LevelChunk clientChunk,
+      final @Nullable LevelChunk serverChunk
    ) {
       Minecraft minecraft = Minecraft.getInstance();
       Entity entity = minecraft.getCameraEntity();

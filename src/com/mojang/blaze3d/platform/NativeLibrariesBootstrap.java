@@ -91,8 +91,8 @@ public class NativeLibrariesBootstrap {
             NativeLibrariesBootstrap.LibraryLoadEntry e = entries.get(libraryIndex);
             loadLibrary(stopCapturing, e.name(), e.loader());
          }
-      } catch (Throwable var11) {
-         CrashReport crashReport = CrashReport.forThrowable(var11, "Loading libraries");
+      } catch (Throwable t) {
+         CrashReport crashReport = CrashReport.forThrowable(t, "Loading libraries");
          CrashReportCategory librariesLoaded = crashReport.addCategory("Libraries loaded");
          librariesLoaded.setDetail(
             "Loading order", () -> entries.stream().map(NativeLibrariesBootstrap.LibraryLoadEntry::name).collect(Collectors.joining(","))
@@ -138,8 +138,7 @@ public class NativeLibrariesBootstrap {
       }
    }
 
-   @Nullable
-   private static FileLock tryLock(final FileChannel fc) throws IOException {
+   private static @Nullable FileLock tryLock(final FileChannel fc) throws IOException {
       for (int i = 0; i < 5; i++) {
          FileLock lock = fc.tryLock(0L, Long.MAX_VALUE, true);
          if (lock != null) {
@@ -166,9 +165,7 @@ public class NativeLibrariesBootstrap {
       }
    }
 
-   @SuppressForbidden(
-      reason = "System.out needed before bootstrap"
-   )
+   @SuppressForbidden(reason = "System.out needed before bootstrap")
    private static Supplier<String> setupLWJGLCapture() {
       if (Configuration.DEBUG_STREAM.get() == null && !(Boolean)Configuration.DEBUG.get(false)) {
          NativeLibrariesBootstrap.CapturingPrintStream capturingPrintStream = new NativeLibrariesBootstrap.CapturingPrintStream(System.out);
@@ -184,8 +181,8 @@ public class NativeLibrariesBootstrap {
       try {
          LOGGER.debug("Loading {}", name);
          loader.run();
-      } catch (Throwable var11) {
-         CrashReport crashReport = CrashReport.forThrowable(var11, "Loading library " + name);
+      } catch (Throwable t) {
+         CrashReport crashReport = CrashReport.forThrowable(t, "Loading library " + name);
          CrashReportCategory libraryInfoCategory = crashReport.addCategory("Library directory contents");
          String systemPropertyDir = System.getProperty("java.library.path", "");
          String lwjglPropertyDir = (String)Configuration.LIBRARY_PATH.get("");
@@ -202,38 +199,39 @@ public class NativeLibrariesBootstrap {
 
          try {
             lwjglDebugLog.setDetail("Log", debugCapture.get());
-         } catch (Throwable var10) {
-            lwjglDebugLog.setDetail("Log", var10);
+         } catch (Throwable e) {
+            lwjglDebugLog.setDetail("Log", e);
          }
 
          throw new ReportedException(crashReport);
       }
    }
 
-   private static String listLibrariesDirectory(@Nullable final String libraryDirProperty) throws IOException {
+   private static String listLibrariesDirectory(final @Nullable String libraryDirProperty) throws IOException {
       if (libraryDirProperty == null || libraryDirProperty.isEmpty()) {
          return "<not set>";
-      } else if (libraryDirProperty.contains(";")) {
+      }
+
+      if (libraryDirProperty.contains(";")) {
          return "<multiple directories>";
-      } else {
-         Path libraryDirPath = Path.of(libraryDirProperty);
-         if (!Files.isDirectory(libraryDirPath)) {
-            return "<not a directory>";
-         } else {
-            List<Pair<Path, String>> contents = new ArrayList<>();
+      }
 
-            try (DirectoryStream<Path> libraryDir = Files.newDirectoryStream(libraryDirPath)) {
-               for (Path dirEntry : libraryDir) {
-                  contents.add(Pair.of(dirEntry, identifyFileContents(dirEntry)));
-               }
-            }
+      Path libraryDirPath = Path.of(libraryDirProperty);
+      if (!Files.isDirectory(libraryDirPath)) {
+         return "<not a directory>";
+      }
 
-            return contents.isEmpty()
-               ? "<empty>"
-               : "\n"
-                  + contents.stream().map(s -> "\t\t" + ((Path)s.getFirst()).getFileName() + ": " + (String)s.getSecond()).collect(Collectors.joining("\n"));
+      List<Pair<Path, String>> contents = new ArrayList<>();
+
+      try (DirectoryStream<Path> libraryDir = Files.newDirectoryStream(libraryDirPath)) {
+         for (Path dirEntry : libraryDir) {
+            contents.add(Pair.of(dirEntry, identifyFileContents(dirEntry)));
          }
       }
+
+      return contents.isEmpty()
+         ? "<empty>"
+         : "\n" + contents.stream().map(s -> "\t\t" + ((Path)s.getFirst()).getFileName() + ": " + (String)s.getSecond()).collect(Collectors.joining("\n"));
    }
 
    private static String identifyFileContents(final Path path) {
@@ -251,9 +249,9 @@ public class NativeLibrariesBootstrap {
          } else {
             return "not a file";
          }
-      } catch (Throwable var2) {
-         LOGGER.warn("Failed to get details of file {}", path, var2);
-         return "error: " + var2.getMessage();
+      } catch (Throwable e) {
+         LOGGER.warn("Failed to get details of file {}", path, e);
+         return "error: " + e.getMessage();
       }
    }
 
@@ -288,8 +286,8 @@ public class NativeLibrariesBootstrap {
       try {
          VK.create();
          return true;
-      } catch (Throwable var1) {
-         LOGGER.warn("Failed to load Vulkan loader", var1);
+      } catch (Throwable t) {
+         LOGGER.warn("Failed to load Vulkan loader", t);
          return false;
       }
    }
@@ -338,8 +336,7 @@ public class NativeLibrariesBootstrap {
    }
 
    private static class CapturingStream extends OutputStream {
-      @Nullable
-      private ByteArrayOutputStream buffer;
+      private @Nullable ByteArrayOutputStream buffer;
 
       @Override
       public void write(final byte[] b, final int off, final int len) {
@@ -356,6 +353,6 @@ public class NativeLibrariesBootstrap {
       }
    }
 
-   private static record LibraryLoadEntry(String name, Runnable loader) {
+   private record LibraryLoadEntry(String name, Runnable loader) {
    }
 }

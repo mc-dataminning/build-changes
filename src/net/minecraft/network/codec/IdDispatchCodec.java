@@ -29,11 +29,11 @@ public class IdDispatchCodec<B extends ByteBuf, V, T> implements StreamCodec<B, 
 
          try {
             return (V)entry.serializer.decode(input);
-         } catch (Exception var5) {
-            if (var5 instanceof IdDispatchCodec.DontDecorateException) {
-               throw var5;
+         } catch (Exception e) {
+            if (e instanceof IdDispatchCodec.DontDecorateException) {
+               throw e;
             } else {
-               throw new DecoderException("Failed to decode packet '" + entry.type + "'", var5);
+               throw new DecoderException("Failed to decode packet '" + entry.type + "'", e);
             }
          }
       } else {
@@ -46,19 +46,19 @@ public class IdDispatchCodec<B extends ByteBuf, V, T> implements StreamCodec<B, 
       int id = this.toId.getOrDefault(type, -1);
       if (id == -1) {
          throw new EncoderException("Sending unknown packet '" + type + "'");
-      } else {
-         VarInt.write(output, id);
-         IdDispatchCodec.Entry<B, V, T> entry = this.byId.get(id);
+      }
 
-         try {
-            StreamCodec<? super B, V> codec = (StreamCodec<? super B, V>)entry.serializer;
-            codec.encode(output, value);
-         } catch (Exception var7) {
-            if (var7 instanceof IdDispatchCodec.DontDecorateException) {
-               throw var7;
-            } else {
-               throw new EncoderException("Failed to encode packet '" + type + "'", var7);
-            }
+      VarInt.write(output, id);
+      IdDispatchCodec.Entry<B, V, T> entry = this.byId.get(id);
+
+      try {
+         StreamCodec<? super B, V> codec = (StreamCodec<? super B, V>)entry.serializer;
+         codec.encode(output, value);
+      } catch (Exception e) {
+         if (e instanceof IdDispatchCodec.DontDecorateException) {
+            throw e;
+         } else {
+            throw new EncoderException("Failed to encode packet '" + type + "'", e);
          }
       }
    }
@@ -99,6 +99,6 @@ public class IdDispatchCodec<B extends ByteBuf, V, T> implements StreamCodec<B, 
    public interface DontDecorateException {
    }
 
-   private static record Entry<B, V, T>(StreamCodec<? super B, ? extends V> serializer, T type) {
+   private record Entry<B, V, T>(StreamCodec<? super B, ? extends V> serializer, T type) {
    }
 }

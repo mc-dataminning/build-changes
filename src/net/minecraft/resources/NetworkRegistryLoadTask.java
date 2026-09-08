@@ -42,47 +42,47 @@ public class NetworkRegistryLoadTask<T> extends RegistryLoadTask<T> {
       RegistryDataLoader.NetworkedRegistryData registryEntries = this.entries.get(this.registryKey());
       if (registryEntries == null) {
          return CompletableFuture.completedFuture(null);
-      } else {
-         RegistryOps<Tag> nbtOps = RegistryOps.create(NbtOps.INSTANCE, context);
-         RegistryOps<JsonElement> jsonOps = RegistryOps.create(JsonOps.INSTANCE, context);
-         FileToIdConverter knownDataPathConverter = FileToIdConverter.registry(this.registryKey());
-         List<CompletableFuture<RegistryLoadTask.PendingRegistration<T>>> elements = new ArrayList<>(registryEntries.elements().size());
-
-         for (RegistrySynchronization.PackedRegistryEntry entry : registryEntries.elements()) {
-            ResourceKey<T> elementKey = ResourceKey.create(this.registryKey(), entry.id());
-            Optional<Tag> networkContents = entry.data();
-            if (networkContents.isPresent()) {
-               elements.add(
-                  CompletableFuture.supplyAsync(
-                     () -> new RegistryLoadTask.PendingRegistration<>(
-                           elementKey,
-                           RegistryLoadTask.PendingRegistration.loadFromNetwork(this.data.elementCodec(), nbtOps, elementKey, networkContents.get()),
-                           NETWORK_REGISTRATION_INFO
-                        ),
-                     executor
-                  )
-               );
-            } else {
-               elements.add(
-                  CompletableFuture.supplyAsync(
-                     () -> new RegistryLoadTask.PendingRegistration<>(
-                           elementKey,
-                           RegistryLoadTask.PendingRegistration.findAndLoadFromResource(
-                              this.data.elementCodec(), jsonOps, elementKey, knownDataPathConverter, this.knownDataSource
-                           ),
-                           NETWORK_REGISTRATION_INFO
-                        ),
-                     executor
-                  )
-               );
-            }
-         }
-
-         return Util.sequence(elements).thenAcceptAsync(pendingRegistrations -> {
-            this.registerElements(pendingRegistrations.stream());
-            Map<TagKey<T>, List<Holder<T>>> pendingTags = TagLoader.loadTagsFromNetwork(registryEntries.tags(), this.readOnlyRegistry());
-            this.registerTags(pendingTags);
-         }, executor);
       }
+
+      RegistryOps<Tag> nbtOps = RegistryOps.create(NbtOps.INSTANCE, context);
+      RegistryOps<JsonElement> jsonOps = RegistryOps.create(JsonOps.INSTANCE, context);
+      FileToIdConverter knownDataPathConverter = FileToIdConverter.registry(this.registryKey());
+      List<CompletableFuture<RegistryLoadTask.PendingRegistration<T>>> elements = new ArrayList<>(registryEntries.elements().size());
+
+      for (RegistrySynchronization.PackedRegistryEntry entry : registryEntries.elements()) {
+         ResourceKey<T> elementKey = ResourceKey.create(this.registryKey(), entry.id());
+         Optional<Tag> networkContents = entry.data();
+         if (networkContents.isPresent()) {
+            elements.add(
+               CompletableFuture.supplyAsync(
+                  () -> new RegistryLoadTask.PendingRegistration<>(
+                     elementKey,
+                     RegistryLoadTask.PendingRegistration.loadFromNetwork(this.data.elementCodec(), nbtOps, elementKey, networkContents.get()),
+                     NETWORK_REGISTRATION_INFO
+                  ),
+                  executor
+               )
+            );
+         } else {
+            elements.add(
+               CompletableFuture.supplyAsync(
+                  () -> new RegistryLoadTask.PendingRegistration<>(
+                     elementKey,
+                     RegistryLoadTask.PendingRegistration.findAndLoadFromResource(
+                        this.data.elementCodec(), jsonOps, elementKey, knownDataPathConverter, this.knownDataSource
+                     ),
+                     NETWORK_REGISTRATION_INFO
+                  ),
+                  executor
+               )
+            );
+         }
+      }
+
+      return Util.sequence(elements).thenAcceptAsync(pendingRegistrations -> {
+         this.registerElements(pendingRegistrations.stream());
+         Map<TagKey<T>, List<Holder<T>>> pendingTags = TagLoader.loadTagsFromNetwork(registryEntries.tags(), this.readOnlyRegistry());
+         this.registerTags(pendingTags);
+      }, executor);
    }
 }

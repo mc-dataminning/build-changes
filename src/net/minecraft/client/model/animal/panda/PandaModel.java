@@ -49,19 +49,19 @@ public class PandaModel extends QuadrupedModel<PandaRenderState> {
    public void setupAnim(final PandaRenderState state) {
       super.setupAnim(state);
       if (state.isUnhappy) {
-         this.head.yRot = 0.35F * Mth.sin((double)(0.6F * state.ageInTicks));
-         this.head.zRot = 0.35F * Mth.sin((double)(0.6F * state.ageInTicks));
-         this.rightFrontLeg.xRot = -0.75F * Mth.sin((double)(0.3F * state.ageInTicks));
-         this.leftFrontLeg.xRot = 0.75F * Mth.sin((double)(0.3F * state.ageInTicks));
+         this.head.yRot = 0.35F * Mth.sin(0.6F * state.ageInTicks);
+         this.head.zRot = 0.35F * Mth.sin(0.6F * state.ageInTicks);
+         this.rightFrontLeg.xRot = -0.75F * Mth.sin(0.3F * state.ageInTicks);
+         this.leftFrontLeg.xRot = 0.75F * Mth.sin(0.3F * state.ageInTicks);
       } else {
          this.head.zRot = 0.0F;
       }
 
       if (state.isSneezing) {
          if (state.sneezeTime < 15) {
-            this.head.xRot = (float) (-Math.PI / 4) * (float)state.sneezeTime / 14.0F;
+            this.head.xRot = (float) (-Math.PI / 4) * state.sneezeTime / 14.0F;
          } else if (state.sneezeTime < 20) {
-            float internalSneezePos = (float)((state.sneezeTime - 15) / 5);
+            float internalSneezePos = (state.sneezeTime - 15) / 5;
             this.head.xRot = (float) (-Math.PI / 4) + (float) (Math.PI / 4) * internalSneezePos;
          }
       }
@@ -69,9 +69,9 @@ public class PandaModel extends QuadrupedModel<PandaRenderState> {
       if (state.sitAmount > 0.0F) {
          this.animateSitting(state);
          if (state.isEating) {
-            this.head.xRot = (float) (Math.PI / 2) + 0.2F * Mth.sin((double)(state.ageInTicks * 0.6F));
-            this.rightFrontLeg.xRot = -0.4F - 0.2F * Mth.sin((double)(state.ageInTicks * 0.6F));
-            this.leftFrontLeg.xRot = -0.4F - 0.2F * Mth.sin((double)(state.ageInTicks * 0.6F));
+            this.head.xRot = (float) (Math.PI / 2) + 0.2F * Mth.sin(state.ageInTicks * 0.6F);
+            this.rightFrontLeg.xRot = -0.4F - 0.2F * Mth.sin(state.ageInTicks * 0.6F);
+            this.leftFrontLeg.xRot = -0.4F - 0.2F * Mth.sin(state.ageInTicks * 0.6F);
          }
 
          if (state.isScared) {
@@ -87,19 +87,19 @@ public class PandaModel extends QuadrupedModel<PandaRenderState> {
       }
 
       if (state.lieOnBackAmount > 0.0F) {
-         this.rightHindLeg.xRot = -0.6F * Mth.sin((double)(state.ageInTicks * 0.15F));
-         this.leftHindLeg.xRot = 0.6F * Mth.sin((double)(state.ageInTicks * 0.15F));
-         this.rightFrontLeg.xRot = 0.3F * Mth.sin((double)(state.ageInTicks * 0.25F));
-         this.leftFrontLeg.xRot = -0.3F * Mth.sin((double)(state.ageInTicks * 0.25F));
+         this.rightHindLeg.xRot = -0.6F * Mth.sin(state.ageInTicks * 0.15F);
+         this.leftHindLeg.xRot = 0.6F * Mth.sin(state.ageInTicks * 0.15F);
+         this.rightFrontLeg.xRot = 0.3F * Mth.sin(state.ageInTicks * 0.25F);
+         this.leftFrontLeg.xRot = -0.3F * Mth.sin(state.ageInTicks * 0.25F);
          this.head.xRot = Mth.rotLerpRad(state.lieOnBackAmount, this.head.xRot, (float) (Math.PI / 2));
       }
 
       if (state.rollAmount > 0.0F) {
          this.head.xRot = Mth.rotLerpRad(state.rollAmount, this.head.xRot, 2.0561945F);
-         this.rightHindLeg.xRot = -0.5F * Mth.sin((double)(state.ageInTicks * 0.5F));
-         this.leftHindLeg.xRot = 0.5F * Mth.sin((double)(state.ageInTicks * 0.5F));
-         this.rightFrontLeg.xRot = 0.5F * Mth.sin((double)(state.ageInTicks * 0.5F));
-         this.leftFrontLeg.xRot = -0.5F * Mth.sin((double)(state.ageInTicks * 0.5F));
+         this.rightHindLeg.xRot = -0.5F * Mth.sin(state.ageInTicks * 0.5F);
+         this.leftHindLeg.xRot = 0.5F * Mth.sin(state.ageInTicks * 0.5F);
+         this.rightFrontLeg.xRot = 0.5F * Mth.sin(state.ageInTicks * 0.5F);
+         this.leftFrontLeg.xRot = -0.5F * Mth.sin(state.ageInTicks * 0.5F);
       }
    }
 

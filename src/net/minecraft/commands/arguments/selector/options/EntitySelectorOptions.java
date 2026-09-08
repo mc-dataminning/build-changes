@@ -97,10 +97,10 @@ public class EntitySelectorOptions {
             InvertableSetOptionState state = parser.nameOption();
             if (!state.canParseElement(inverted)) {
                throw rollbackAndThrow(parser, start, ERROR_INAPPLICABLE_OPTION, "name");
-            } else {
-               state.markParsedElement(inverted);
-               parser.addPredicate(e -> e.getPlainTextName().equals(name) != inverted);
             }
+
+            state.markParsedElement(inverted);
+            parser.addPredicate(e -> e.getPlainTextName().equals(name) != inverted);
          }, s -> s.nameOption().canParseAny(), Component.translatable("argument.entity.options.name.description"));
          register("distance", parser -> {
             int start = parser.getReader().getCursor();
@@ -163,10 +163,10 @@ public class EntitySelectorOptions {
             int count = parser.getReader().readInt();
             if (count < 1) {
                throw rollbackAndThrow(parser, start, ERROR_LIMIT_TOO_SMALL);
-            } else {
-               parser.setMaxResults(count);
-               parser.limitedOption().markParsed();
             }
+
+            parser.setMaxResults(count);
+            parser.limitedOption().markParsed();
          }, s -> !s.isCurrentEntity() && s.limitedOption().canParse(), Component.translatable("argument.entity.options.limit.description"));
          register("sort", parser -> {
             int start = parser.getReader().getCursor();
@@ -215,24 +215,24 @@ public class EntitySelectorOptions {
             boolean inverted = parser.shouldInvertValue();
             if (!state.canParseElement(inverted)) {
                throw rollbackAndThrow(parser, start, ERROR_INAPPLICABLE_OPTION, "gamemode");
-            } else {
-               String name = parser.getReader().readUnquotedString();
-               GameType expected = GameType.byName(name, null);
-               if (expected == null) {
-                  throw rollbackAndThrow(parser, start, ERROR_GAME_MODE_INVALID, name);
-               } else {
-                  parser.setIncludesEntities(false);
-                  parser.addPredicate(e -> {
-                     if (e instanceof ServerPlayer player) {
-                        GameType current = player.gameMode();
-                        return current == expected ^ inverted;
-                     } else {
-                        return false;
-                     }
-                  });
-                  state.markParsedElement(inverted);
-               }
             }
+
+            String name = parser.getReader().readUnquotedString();
+            GameType expected = GameType.byName(name, null);
+            if (expected == null) {
+               throw rollbackAndThrow(parser, start, ERROR_GAME_MODE_INVALID, name);
+            }
+
+            parser.setIncludesEntities(false);
+            parser.addPredicate(e -> {
+               if (e instanceof ServerPlayer player) {
+                  GameType current = player.gameMode();
+                  return current == expected ^ inverted;
+               } else {
+                  return false;
+               }
+            });
+            state.markParsedElement(inverted);
          }, s -> s.gamemodeOption().canParseAny(), Component.translatable("argument.entity.options.gamemode.description"));
          register("team", parser -> {
             InvertableSetOptionState state = parser.teamOption();
@@ -241,14 +241,14 @@ public class EntitySelectorOptions {
             String expected = parser.getReader().readUnquotedString();
             if (!state.canParseElement(inverted)) {
                throw rollbackAndThrow(parser, start, ERROR_INAPPLICABLE_OPTION, "team");
-            } else {
-               parser.addPredicate(e -> {
-                  Team current = e.getTeam();
-                  String currentName = current == null ? "" : current.getName();
-                  return currentName.equals(expected) != inverted;
-               });
-               state.markParsedElement(inverted);
             }
+
+            parser.addPredicate(e -> {
+               Team current = e.getTeam();
+               String currentName = current == null ? "" : current.getName();
+               return currentName.equals(expected) != inverted;
+            });
+            state.markParsedElement(inverted);
          }, s -> s.teamOption().canParseAny(), Component.translatable("argument.entity.options.team.description"));
          register(
             "type",
@@ -325,7 +325,6 @@ public class EntitySelectorOptions {
             boolean inverted = parser.shouldInvertValue();
             CompoundTag tag = TagParser.parseCompoundAsArgument(parser.getReader());
             parser.addPredicate(e -> {
-               boolean var9;
                try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(e.problemPath(), LOGGER)) {
                   TagValueOutput output = TagValueOutput.createWithContext(reporter, e.registryAccess());
                   e.saveWithoutId(output);
@@ -336,10 +335,8 @@ public class EntitySelectorOptions {
                      }
                   }
 
-                  var9 = NbtUtils.compareNbt(tag, output.buildResult(), true) != inverted;
+                  return NbtUtils.compareNbt(tag, output.buildResult(), true) != inverted;
                }
-
-               return var9;
             });
          }, ALWAYS_AVAILABLE, Component.translatable("argument.entity.options.nbt.description"));
          register("scores", parser -> {
@@ -480,15 +477,15 @@ public class EntitySelectorOptions {
                         Optional<LootItemCondition> condition = level.getServer().reloadableRegistries().lookup().get(id).map(Holder::value);
                         if (condition.isEmpty()) {
                            return false;
-                        } else {
-                           LootParams lootParams = new LootParams.Builder(level)
-                              .withParameter(LootContextParams.THIS_ENTITY, entity)
-                              .withParameter(LootContextParams.ORIGIN, entity.position())
-                              .create(LootContextParamSets.SELECTOR);
-                           LootContext context = new LootContext.Builder(lootParams).create(Optional.empty());
-                           context.pushVisitedElement(LootContext.createVisitedEntry(condition.get()));
-                           return inverted ^ condition.get().test(context);
                         }
+
+                        LootParams lootParams = new LootParams.Builder(level)
+                           .withParameter(LootContextParams.THIS_ENTITY, entity)
+                           .withParameter(LootContextParams.ORIGIN, entity.position())
+                           .create(LootContextParamSets.SELECTOR);
+                        LootContext context = new LootContext.Builder(lootParams).create(Optional.empty());
+                        context.pushVisitedElement(LootContext.createVisitedEntry(condition.get()));
+                        return inverted ^ condition.get().test(context);
                      } else {
                         return false;
                      }
@@ -541,6 +538,6 @@ public class EntitySelectorOptions {
       void handle(EntitySelectorParser parser) throws CommandSyntaxException;
    }
 
-   private static record Option(EntitySelectorOptions.Modifier modifier, Predicate<EntitySelectorParser> canUse, Component description) {
+   private record Option(EntitySelectorOptions.Modifier modifier, Predicate<EntitySelectorParser> canUse, Component description) {
    }
 }

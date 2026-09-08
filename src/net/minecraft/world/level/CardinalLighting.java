@@ -19,7 +19,7 @@ public record CardinalLighting(float down, float up, float north, float south, f
       };
    }
 
-   public static enum Type implements StringRepresentable {
+   public enum Type implements StringRepresentable {
       DEFAULT("default", CardinalLighting.DEFAULT),
       NETHER("nether", CardinalLighting.NETHER);
 
@@ -27,7 +27,7 @@ public record CardinalLighting(float down, float up, float north, float south, f
       private final String name;
       private final CardinalLighting lighting;
 
-      private Type(final String name, final CardinalLighting lighting) {
+      Type(final String name, final CardinalLighting lighting) {
          this.name = name;
          this.lighting = lighting;
       }

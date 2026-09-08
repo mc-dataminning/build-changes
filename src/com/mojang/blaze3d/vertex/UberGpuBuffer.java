@@ -20,8 +20,7 @@ import net.minecraft.util.profiling.Zone;
 import org.jspecify.annotations.Nullable;
 
 public class UberGpuBuffer<T> implements AutoCloseable {
-   @GpuBuffer.Usage
-   private final int bufferUsage;
+   private final @GpuBuffer.Usage int bufferUsage;
    private final int heapSize;
    private final int alignSize;
    private final String name;
@@ -31,7 +30,7 @@ public class UberGpuBuffer<T> implements AutoCloseable {
    private final ObjectOpenHashSet<T> skippedStagedAllocations = new ObjectOpenHashSet(32);
    private final Map<T, TlsfAllocator.Allocation> allocationMap = new HashMap<>(256);
 
-   public UberGpuBuffer(final String name, @GpuBuffer.Usage final int bufferUsage, final int heapSize, final int alignSize, final StagingBuffer stagingBuffer) {
+   public UberGpuBuffer(final String name, final @GpuBuffer.Usage int bufferUsage, final int heapSize, final int alignSize, final StagingBuffer stagingBuffer) {
       this.name = "UberBuffer " + name;
       this.bufferUsage = bufferUsage;
       this.heapSize = heapSize;
@@ -43,16 +42,16 @@ public class UberGpuBuffer<T> implements AutoCloseable {
       StagingBuffer.BufferHandle handle = this.stagingBuffer.tryAppend(buffer);
       if (handle == null) {
          return false;
-      } else {
-         UberGpuBuffer.StagedAllocationEntry<U> entry = new UberGpuBuffer.StagedAllocationEntry<>(handle, callback);
-         UberGpuBuffer.StagedAllocationEntry<? extends T> oldEntry = (UberGpuBuffer.StagedAllocationEntry<? extends T>)this.stagedAllocations
-            .put(allocationKey, entry);
-         if (oldEntry != null) {
-            oldEntry.close();
-         }
-
-         return true;
       }
+
+      UberGpuBuffer.StagedAllocationEntry<U> entry = new UberGpuBuffer.StagedAllocationEntry<>(handle, callback);
+      UberGpuBuffer.StagedAllocationEntry<? extends T> oldEntry = (UberGpuBuffer.StagedAllocationEntry<? extends T>)this.stagedAllocations
+         .put(allocationKey, entry);
+      if (oldEntry != null) {
+         oldEntry.close();
+      }
+
+      return true;
    }
 
    public boolean uploadStagedAllocations(final GpuDevice gpuDevice, final StagingBuffer.Uploader uploader) {
@@ -86,12 +85,9 @@ public class UberGpuBuffer<T> implements AutoCloseable {
 
                   if (allocation == null) {
                      try (Zone var25 = Profiler.get().zone("createNewHeap")) {
-                        assert allocationSize <= (long)this.heapSize;
-
+                        assert allocationSize <= this.heapSize;
                         String heapName = String.format(Locale.ROOT, "%s %d", this.name, this.nodes.size());
-                        UberGpuBuffer.UberGpuBufferHeap newHeap = new UberGpuBuffer.UberGpuBufferHeap(
-                           (long)this.heapSize, gpuDevice, this.bufferUsage, heapName
-                        );
+                        UberGpuBuffer.UberGpuBufferHeap newHeap = new UberGpuBuffer.UberGpuBufferHeap(this.heapSize, gpuDevice, this.bufferUsage, heapName);
                         TlsfAllocator newTlsfAllocator = new TlsfAllocator(newHeap);
                         this.nodes.add(new Pair(newTlsfAllocator, newHeap));
                         allocation = newTlsfAllocator.allocate(allocationSize, this.alignSize);
@@ -117,9 +113,9 @@ public class UberGpuBuffer<T> implements AutoCloseable {
       Iterator<Pair<TlsfAllocator, UberGpuBuffer.UberGpuBufferHeap>> iterator = this.nodes.iterator();
 
       while (iterator.hasNext()) {
-         Pair<TlsfAllocator, UberGpuBuffer.UberGpuBufferHeap> nodex = iterator.next();
-         if (((TlsfAllocator)nodex.getFirst()).isCompletelyFree()) {
-            ((UberGpuBuffer.UberGpuBufferHeap)nodex.getSecond()).gpuBuffer.close();
+         Pair<TlsfAllocator, UberGpuBuffer.UberGpuBufferHeap> node = iterator.next();
+         if (((TlsfAllocator)node.getFirst()).isCompletelyFree()) {
+            ((UberGpuBuffer.UberGpuBufferHeap)node.getSecond()).gpuBuffer.close();
             iterator.remove();
             newHeapCreatedOrDestroyedx = true;
             break;
@@ -135,8 +131,7 @@ public class UberGpuBuffer<T> implements AutoCloseable {
       }
    }
 
-   @Nullable
-   public TlsfAllocator.Allocation getAllocation(final T allocationKey) {
+   public TlsfAllocator.@Nullable Allocation getAllocation(final T allocationKey) {
       return this.allocationMap.get(allocationKey);
    }
 
@@ -183,8 +178,7 @@ public class UberGpuBuffer<T> implements AutoCloseable {
       this.nodes.clear();
    }
 
-   private static record StagedAllocationEntry<T>(StagingBuffer.BufferHandle buffer, @Nullable UberGpuBuffer.UploadCallback<T> callback)
-      implements AutoCloseable {
+   private record StagedAllocationEntry<T>(StagingBuffer.BufferHandle buffer, UberGpuBuffer.@Nullable UploadCallback<T> callback) implements AutoCloseable {
       @Override
       public void close() {
          this.buffer.close();
@@ -194,7 +188,7 @@ public class UberGpuBuffer<T> implements AutoCloseable {
    public static class UberGpuBufferHeap extends TlsfAllocator.Heap {
       private final GpuBuffer gpuBuffer;
 
-      public UberGpuBufferHeap(final long size, final GpuDevice gpuDevice, @GpuBuffer.Usage final int usage, final String name) {
+      public UberGpuBufferHeap(final long size, final GpuDevice gpuDevice, final @GpuBuffer.Usage int usage, final String name) {
          super(size);
          this.gpuBuffer = gpuDevice.createBuffer(() -> name, usage | 8 | 16, size);
       }

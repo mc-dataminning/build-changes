@@ -11,9 +11,9 @@ public record VulkanFeature(VulkanPNextStruct struct, String name, long offset) 
          throw new IllegalArgumentException(
             "Struct name \"" + structClassName + "\" does not contain \"Features\". All Vulkan features structs are expected to have \"Features\" in the name."
          );
-      } else {
-         this(struct, name, struct.fieldOffset(name));
       }
+
+      this(struct, name, struct.fieldOffset(name));
    }
 
    public boolean get(final VkPhysicalDeviceFeatures2 features2) {
@@ -41,10 +41,10 @@ public record VulkanFeature(VulkanPNextStruct struct, String name, long offset) 
       long structAddr = this.struct.findStructInPNextChain(pNextChain);
       if (structAddr == 0L) {
          return false;
-      } else {
-         this.putVkBool32(value, structAddr);
-         return true;
       }
+
+      this.putVkBool32(value, structAddr);
+      return true;
    }
 
    public void set(final VkPhysicalDeviceFeatures2 features2, final boolean value, final MemoryStack stack) {

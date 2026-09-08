@@ -16,13 +16,13 @@ import net.minecraft.util.ExtraCodecs;
 public record Instrument(Holder<SoundEvent> soundEvent, float useDuration, float range, int durabilityDamage, Component description) {
    public static final Codec<Instrument> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               SoundEvent.CODEC.fieldOf("sound_event").forGetter(Instrument::soundEvent),
-               ExtraCodecs.NON_NEGATIVE_FLOAT.fieldOf("use_duration").forGetter(Instrument::useDuration),
-               ExtraCodecs.POSITIVE_FLOAT.fieldOf("range").forGetter(Instrument::range),
-               ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("durability_damage", 0).forGetter(Instrument::durabilityDamage),
-               ComponentSerialization.CODEC.fieldOf("description").forGetter(Instrument::description)
-            )
-            .apply(i, Instrument::new)
+            SoundEvent.CODEC.fieldOf("sound_event").forGetter(Instrument::soundEvent),
+            ExtraCodecs.NON_NEGATIVE_FLOAT.fieldOf("use_duration").forGetter(Instrument::useDuration),
+            ExtraCodecs.POSITIVE_FLOAT.fieldOf("range").forGetter(Instrument::range),
+            ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("durability_damage", 0).forGetter(Instrument::durabilityDamage),
+            ComponentSerialization.CODEC.fieldOf("description").forGetter(Instrument::description)
+         )
+         .apply(i, Instrument::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, Instrument> DIRECT_STREAM_CODEC = StreamCodec.composite(
       SoundEvent.STREAM_CODEC,

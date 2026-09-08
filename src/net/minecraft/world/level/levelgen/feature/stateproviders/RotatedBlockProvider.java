@@ -14,10 +14,10 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 public record RotatedBlockProvider(Holder<BlockStateProvider> state, Optional<Direction> direction) implements BlockStateProvider {
    public static final MapCodec<RotatedBlockProvider> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BlockStateProvider.CODEC.fieldOf("state").forGetter(RotatedBlockProvider::state),
-               Direction.CODEC.optionalFieldOf("direction").forGetter(RotatedBlockProvider::direction)
-            )
-            .apply(i, RotatedBlockProvider::new)
+            BlockStateProvider.CODEC.fieldOf("state").forGetter(RotatedBlockProvider::state),
+            Direction.CODEC.optionalFieldOf("direction").forGetter(RotatedBlockProvider::direction)
+         )
+         .apply(i, RotatedBlockProvider::new)
    );
 
    public RotatedBlockProvider(final BlockStateProvider state) {

@@ -18,7 +18,7 @@ public interface Action {
 
    Optional<ClickEvent> createAction(Map<String, Action.ValueGetter> parameters);
 
-   public interface ValueGetter {
+   interface ValueGetter {
       String asTemplateSubstitution();
 
       Tag asTag();

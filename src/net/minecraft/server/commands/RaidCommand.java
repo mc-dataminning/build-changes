@@ -108,7 +108,7 @@ public class RaidCommand {
       }
    }
 
-   private static int playSound(final CommandSourceStack source, @Nullable final Component type) {
+   private static int playSound(final CommandSourceStack source, final @Nullable Component type) {
       if (type != null && type.getString().equals("local")) {
          ServerLevel level = source.getLevel();
          Vec3 pos = source.getPosition().add(5.0, 0.0, 0.0);
@@ -124,19 +124,19 @@ public class RaidCommand {
       if (player.level().isRaided(pos)) {
          source.sendFailure(Component.literal("Raid already started close by"));
          return -1;
-      } else {
-         Raids raids = player.level().getRaids();
-         Raid raid = raids.createOrExtendRaid(player, player.blockPosition());
-         if (raid != null) {
-            raid.setRaidOmenLevel(raidOmenLevel);
-            raids.setDirty();
-            source.sendSuccess(() -> Component.literal("Created a raid in your local village"), false);
-         } else {
-            source.sendFailure(Component.literal("Failed to create a raid in your local village"));
-         }
-
-         return 1;
       }
+
+      Raids raids = player.level().getRaids();
+      Raid raid = raids.createOrExtendRaid(player, player.blockPosition());
+      if (raid != null) {
+         raid.setRaidOmenLevel(raidOmenLevel);
+         raids.setDirty();
+         source.sendSuccess(() -> Component.literal("Created a raid in your local village"), false);
+      } else {
+         source.sendFailure(Component.literal("Failed to create a raid in your local village"));
+      }
+
+      return 1;
    }
 
    private static int stop(final CommandSourceStack source) throws CommandSyntaxException {
@@ -175,8 +175,7 @@ public class RaidCommand {
       }
    }
 
-   @Nullable
-   private static Raid getRaid(final ServerPlayer player) {
+   private static @Nullable Raid getRaid(final ServerPlayer player) {
       return player.level().getRaidAt(player.blockPosition());
    }
 }

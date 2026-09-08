@@ -34,19 +34,19 @@ public class StatsRenameFix extends DataFix {
       Type<?> customFieldType = (Type<?>)choiceType.types().get("minecraft:custom");
       if (customFieldType == null) {
          throw new IllegalStateException("Failed to find custom criterion type variant");
-      } else {
-         OpticFinder<?> customTypeFinder = DSL.namedChoice("minecraft:custom", customFieldType);
-         OpticFinder<String> idFinder = DSL.fieldFinder("id", NamespacedSchema.namespacedString());
-         return this.fixTypeEverywhereTyped(
-            this.name,
-            inputType,
-            outputType,
-            input -> input.updateTyped(
-                  criteriaTypeFinder,
-                  stats -> stats.updateTyped(customTypeFinder, custom -> custom.update(idFinder, value -> this.renames.getOrDefault(value, value)))
-               )
-         );
       }
+
+      OpticFinder<?> customTypeFinder = DSL.namedChoice("minecraft:custom", customFieldType);
+      OpticFinder<String> idFinder = DSL.fieldFinder("id", NamespacedSchema.namespacedString());
+      return this.fixTypeEverywhereTyped(
+         this.name,
+         inputType,
+         outputType,
+         input -> input.updateTyped(
+            criteriaTypeFinder,
+            stats -> stats.updateTyped(customTypeFinder, custom -> custom.update(idFinder, value -> this.renames.getOrDefault(value, value)))
+         )
+      );
    }
 
    private TypeRewriteRule createStatRule() {
@@ -60,8 +60,8 @@ public class StatsRenameFix extends DataFix {
          inputType,
          outputType,
          input -> input.updateTyped(
-               statsFinder, stats -> stats.updateTyped(customFinder, custom -> custom.update(nameFinder, value -> this.renames.getOrDefault(value, value)))
-            )
+            statsFinder, stats -> stats.updateTyped(customFinder, custom -> custom.update(nameFinder, value -> this.renames.getOrDefault(value, value)))
+         )
       );
    }
 }

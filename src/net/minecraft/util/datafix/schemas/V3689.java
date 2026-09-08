@@ -26,11 +26,11 @@ public class V3689 extends NamespacedSchema {
          map,
          "minecraft:trial_spawner",
          () -> DSL.optionalFields(
-               "spawn_potentials",
-               DSL.list(DSL.fields("data", DSL.fields("entity", References.ENTITY_TREE.in(schema)))),
-               "spawn_data",
-               DSL.fields("entity", References.ENTITY_TREE.in(schema))
-            )
+            "spawn_potentials",
+            DSL.list(DSL.fields("data", DSL.fields("entity", References.ENTITY_TREE.in(schema)))),
+            "spawn_data",
+            DSL.fields("entity", References.ENTITY_TREE.in(schema))
+         )
       );
       return map;
    }

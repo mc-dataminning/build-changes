@@ -17,10 +17,8 @@ public class ConfirmScreen extends Screen {
    protected final LinearLayout layout = LinearLayout.vertical().spacing(8);
    protected Component yesButtonComponent;
    protected Component noButtonComponent;
-   @Nullable
-   protected Button yesButton;
-   @Nullable
-   protected Button noButton;
+   protected @Nullable Button yesButton;
+   protected @Nullable Button noButton;
    private int delayTicker;
    protected final BooleanConsumer callback;
 

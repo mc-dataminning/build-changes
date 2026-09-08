@@ -115,8 +115,7 @@ public class PackRepository {
       return this.selected;
    }
 
-   @Nullable
-   public Pack getPack(final String id) {
+   public @Nullable Pack getPack(final String id) {
       return this.available.get(id);
    }
 

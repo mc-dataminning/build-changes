@@ -56,8 +56,7 @@ public abstract class ClientboundMoveEntityPacket implements MovementPacket<Clie
       return "Entity_" + super.toString();
    }
 
-   @Nullable
-   public Entity getEntity(final Level level) {
+   public @Nullable Entity getEntity(final Level level) {
       return level.getEntity(this.entityId);
    }
 

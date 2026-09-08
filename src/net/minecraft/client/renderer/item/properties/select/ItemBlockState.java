@@ -18,9 +18,8 @@ public record ItemBlockState(String property) implements SelectItemModelProperty
       VALUE_CODEC
    );
 
-   @Nullable
-   public String get(
-      final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final LivingEntity owner, final int seed, final ItemDisplayContext displayContext
+   public @Nullable String get(
+      final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner, final int seed, final ItemDisplayContext displayContext
    ) {
       BlockItemStateProperties blockItemStateProperties = itemStack.get(DataComponents.BLOCK_STATE);
       return blockItemStateProperties == null ? null : blockItemStateProperties.properties().get(this.property);

@@ -117,9 +117,9 @@ public class MobEffectIdFix extends DataFix {
       Type<?> blockEntityType = this.getInputSchema().getType(References.BLOCK_ENTITY);
       return this.fixTypeEverywhereTyped(
          "BlockEntityMobEffectIdFix", blockEntityType, input -> this.updateNamedChoice(input, References.BLOCK_ENTITY, "minecraft:beacon", tag -> {
-               tag = updateMobEffectIdField(tag, "Primary", "primary_effect");
-               return updateMobEffectIdField(tag, "Secondary", "secondary_effect");
-            })
+            tag = updateMobEffectIdField(tag, "Primary", "primary_effect");
+            return updateMobEffectIdField(tag, "Secondary", "secondary_effect");
+         })
       );
    }
 

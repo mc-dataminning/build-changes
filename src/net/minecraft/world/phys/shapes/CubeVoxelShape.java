@@ -17,6 +17,6 @@ public final class CubeVoxelShape extends VoxelShape {
    @Override
    protected int findIndex(final Direction.Axis axis, final double coord) {
       int size = this.shape.getSize(axis);
-      return Mth.floor(Mth.clamp(coord * (double)size, -1.0, (double)size));
+      return Mth.floor(Mth.clamp(coord * size, -1.0, size));
    }
 }

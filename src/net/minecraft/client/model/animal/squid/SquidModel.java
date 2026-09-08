@@ -37,11 +37,11 @@ public class SquidModel extends EntityModel<SquidRenderState> {
       CubeListBuilder tentacle = CubeListBuilder.create().texOffs(48, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
 
       for (int i = 0; i < 8; i++) {
-         double angle = (double)i * Math.PI * 2.0 / 8.0;
+         double angle = i * Math.PI * 2.0 / 8.0;
          float x = (float)Math.cos(angle) * 5.0F;
          float y = 15.0F;
          float z = (float)Math.sin(angle) * 5.0F;
-         angle = (double)i * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
+         angle = i * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
          float yRot = (float)angle;
          root.addOrReplaceChild(createTentacleName(i), tentacle, PartPose.offsetAndRotation(x, 15.0F, z, 0.0F, yRot, 0.0F));
       }

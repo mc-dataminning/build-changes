@@ -15,11 +15,11 @@ import net.minecraft.util.StringRepresentable;
 public record ChatTypeDecoration(String translationKey, List<ChatTypeDecoration.Parameter> parameters, Style style) {
    public static final Codec<ChatTypeDecoration> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.STRING.fieldOf("translation_key").forGetter(ChatTypeDecoration::translationKey),
-               ChatTypeDecoration.Parameter.CODEC.listOf().fieldOf("parameters").forGetter(ChatTypeDecoration::parameters),
-               Style.Serializer.CODEC.optionalFieldOf("style", Style.EMPTY).forGetter(ChatTypeDecoration::style)
-            )
-            .apply(i, ChatTypeDecoration::new)
+            Codec.STRING.fieldOf("translation_key").forGetter(ChatTypeDecoration::translationKey),
+            ChatTypeDecoration.Parameter.CODEC.listOf().fieldOf("parameters").forGetter(ChatTypeDecoration::parameters),
+            Style.Serializer.CODEC.optionalFieldOf("style", Style.EMPTY).forGetter(ChatTypeDecoration::style)
+         )
+         .apply(i, ChatTypeDecoration::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, ChatTypeDecoration> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.STRING_UTF8,
@@ -67,7 +67,7 @@ public record ChatTypeDecoration(String translationKey, List<ChatTypeDecoration.
       return resolved;
    }
 
-   public static enum Parameter implements StringRepresentable {
+   public enum Parameter implements StringRepresentable {
       SENDER(0, "sender", (content, chatType) -> chatType.name()),
       TARGET(1, "target", (content, chatType) -> chatType.targetName().orElse(CommonComponents.EMPTY)),
       CONTENT(2, "content", (content, chatType) -> content);
@@ -79,7 +79,7 @@ public record ChatTypeDecoration(String translationKey, List<ChatTypeDecoration.
       private final String name;
       private final ChatTypeDecoration.Parameter.Selector selector;
 
-      private Parameter(final int id, final String name, final ChatTypeDecoration.Parameter.Selector selector) {
+      Parameter(final int id, final String name, final ChatTypeDecoration.Parameter.Selector selector) {
          this.id = id;
          this.name = name;
          this.selector = selector;

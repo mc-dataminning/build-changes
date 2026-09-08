@@ -57,10 +57,8 @@ public class IntegratedServer extends MinecraftServer {
    private final Minecraft minecraft;
    private boolean paused = true;
    private int publishedPort = -1;
-   @Nullable
-   private LanServerPinger lanPinger;
-   @Nullable
-   private UUID uuid;
+   private @Nullable LanServerPinger lanPinger;
+   private @Nullable UUID uuid;
    private int previousSimulationDistance = 0;
    private volatile List<SimpleGizmoCollector.GizmoInstance> latestTicksGizmos = new ArrayList<>();
    private final SimpleGizmoCollector gizmoCollector = new SimpleGizmoCollector();
@@ -277,7 +275,7 @@ public class IntegratedServer extends MinecraftServer {
    }
 
    @Override
-   public int enforceGameTypeForPlayers(@Nullable final GameType gameType) {
+   public int enforceGameTypeForPlayers(final @Nullable GameType gameType) {
       return gameType == null ? 0 : this.updateGameModeBasedOnPermission();
    }
 
@@ -287,30 +285,29 @@ public class IntegratedServer extends MinecraftServer {
       this.updatePermissions();
    }
 
-   @Nullable
-   public GameType getPersonalGameMode() {
+   public @Nullable GameType getPersonalGameMode() {
       if (this.minecraft.player == null) {
          return null;
-      } else {
-         ServerPlayer serverPlayer = this.getPlayerList().getPlayer(this.minecraft.player.getUUID());
-         return serverPlayer == null ? null : serverPlayer.gameMode();
       }
+
+      ServerPlayer serverPlayer = this.getPlayerList().getPlayer(this.minecraft.player.getUUID());
+      return serverPlayer == null ? null : serverPlayer.gameMode();
    }
 
    private int updateGameModeBasedOnPermission() {
       if (!this.forceGameMode()) {
          return 0;
-      } else {
-         int count = 0;
-
-         for (ServerPlayer player : this.getPlayerList().getPlayers()) {
-            if (!player.permissions().hasPermission(Permissions.COMMANDS_GAMEMASTER) && player.setGameMode(this.getWorldData().getGameType())) {
-               count++;
-            }
-         }
-
-         return count;
       }
+
+      int count = 0;
+
+      for (ServerPlayer player : this.getPlayerList().getPlayers()) {
+         if (!player.permissions().hasPermission(Permissions.COMMANDS_GAMEMASTER) && player.setGameMode(this.getWorldData().getGameType())) {
+            count++;
+         }
+      }
+
+      return count;
    }
 
    @Override
@@ -329,8 +326,7 @@ public class IntegratedServer extends MinecraftServer {
       return super.getProfilePermissions(nameAndId);
    }
 
-   @Nullable
-   protected LevelBasedPermissionSet getCustomPermissionLevel() {
+   protected @Nullable LevelBasedPermissionSet getCustomPermissionLevel() {
       if (this.worldData.isAllowCommands()) {
          return this.guestCommandAccess ? LevelBasedPermissionSet.GAMEMASTER : LevelBasedPermissionSet.ALL;
       } else {
@@ -371,23 +367,23 @@ public class IntegratedServer extends MinecraftServer {
    public boolean unpublishServer() {
       if (!this.isPublished()) {
          return false;
-      } else {
-         if (this.multiplayerScope == MinecraftServer.MultiplayerScope.LAN) {
-            LOGGER.info("Unpublishing integrated server (was on port {})", this.publishedPort);
-         }
-
-         this.getConnection().stopTcpServerListener();
-         Component reason = Component.translatable("multiplayer.disconnect.server_shutdown");
-
-         for (ServerPlayer player : Lists.newArrayList(this.getPlayerList().getPlayers())) {
-            if (!player.getUUID().equals(this.uuid)) {
-               player.connection.disconnect(reason);
-            }
-         }
-
-         this.teardownPublishedState();
-         return true;
       }
+
+      if (this.multiplayerScope == MinecraftServer.MultiplayerScope.LAN) {
+         LOGGER.info("Unpublishing integrated server (was on port {})", this.publishedPort);
+      }
+
+      this.getConnection().stopTcpServerListener();
+      Component reason = Component.translatable("multiplayer.disconnect.server_shutdown");
+
+      for (ServerPlayer player : Lists.newArrayList(this.getPlayerList().getPlayers())) {
+         if (!player.getUUID().equals(this.uuid)) {
+            player.connection.disconnect(reason);
+         }
+      }
+
+      this.teardownPublishedState();
+      return true;
    }
 
    @Override
@@ -447,7 +443,7 @@ public class IntegratedServer extends MinecraftServer {
 
    @Override
    public int getScaledTrackingDistance(final int baseRange) {
-      return (int)(this.minecraft.options.entityDistanceScaling().get() * (double)baseRange);
+      return (int)(this.minecraft.options.entityDistanceScaling().get() * baseRange);
    }
 
    @Override
@@ -455,9 +451,8 @@ public class IntegratedServer extends MinecraftServer {
       return this.minecraft.options.syncWrites;
    }
 
-   @Nullable
    @Override
-   public GameType getForcedGameType() {
+   public @Nullable GameType getForcedGameType() {
       return this.forceGameMode() && this.isPublished() && !this.isHardcore() ? this.worldData.getGameType() : null;
    }
 
@@ -477,23 +472,23 @@ public class IntegratedServer extends MinecraftServer {
       UUID lastSinglePlayerOwnerUUID = this.worldData.getSinglePlayerUUID();
       if (lastSinglePlayerOwnerUUID == null) {
          return super.selectLevelLoadFocusPos();
-      } else {
-         Optional<CompoundTag> playerData = this.playerDataStorage.load(new NameAndId(lastSinglePlayerOwnerUUID, "<single player owner>"));
-         if (playerData.isEmpty()) {
-            return super.selectLevelLoadFocusPos();
-         } else {
-            try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(LOGGER)) {
-               ValueInput input = TagValueInput.create(reporter, this.registryAccess(), playerData.get());
-               ServerPlayer.SavedPosition loadedPosition = input.<ServerPlayer.SavedPosition>read(ServerPlayer.SavedPosition.MAP_CODEC)
-                  .orElse(ServerPlayer.SavedPosition.EMPTY);
-               if (loadedPosition.dimension().isPresent() && loadedPosition.position().isPresent()) {
-                  return new GlobalPos(loadedPosition.dimension().get(), BlockPos.containing(loadedPosition.position().get()));
-               }
-            }
+      }
 
-            return super.selectLevelLoadFocusPos();
+      Optional<CompoundTag> playerData = this.playerDataStorage.load(new NameAndId(lastSinglePlayerOwnerUUID, "<single player owner>"));
+      if (playerData.isEmpty()) {
+         return super.selectLevelLoadFocusPos();
+      }
+
+      try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(LOGGER)) {
+         ValueInput input = TagValueInput.create(reporter, this.registryAccess(), playerData.get());
+         ServerPlayer.SavedPosition loadedPosition = input.<ServerPlayer.SavedPosition>read(ServerPlayer.SavedPosition.MAP_CODEC)
+            .orElse(ServerPlayer.SavedPosition.EMPTY);
+         if (loadedPosition.dimension().isPresent() && loadedPosition.position().isPresent()) {
+            return new GlobalPos(loadedPosition.dimension().get(), BlockPos.containing(loadedPosition.position().get()));
          }
       }
+
+      return super.selectLevelLoadFocusPos();
    }
 
    @Override

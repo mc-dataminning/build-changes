@@ -84,18 +84,13 @@ public class GuiRenderer implements AutoCloseable {
    private final ProjectionMatrixBuffer guiProjectionMatrixBuffer = new ProjectionMatrixBuffer("gui");
    private final FeatureRenderDispatcher featureRenderDispatcher;
    private final Map<Class<? extends PictureInPictureRenderState>, PictureInPictureRenderer<?>> pictureInPictureRenderers;
-   @Nullable
-   private GuiItemAtlas itemAtlas;
+   private @Nullable GuiItemAtlas itemAtlas;
    private int cachedGuiScale;
    private final CubeMap cubeMap = new CubeMap(Identifier.withDefaultNamespace("textures/gui/title/background/panorama"));
-   @Nullable
-   private ScreenRectangle previousScissorArea = null;
-   @Nullable
-   private RenderPipeline previousPipeline = null;
-   @Nullable
-   private TextureSetup previousTextureSetup = null;
-   @Nullable
-   private StagedVertexBuffer.Draw previousDraw;
+   private @Nullable ScreenRectangle previousScissorArea = null;
+   private @Nullable RenderPipeline previousPipeline = null;
+   private @Nullable TextureSetup previousTextureSetup = null;
+   private StagedVertexBuffer.@Nullable Draw previousDraw;
 
    public GuiRenderer(
       final GuiRenderState renderState,
@@ -189,9 +184,7 @@ public class GuiRenderer implements AutoCloseable {
          Minecraft minecraft = Minecraft.getInstance();
          WindowRenderState windowState = minecraft.gameRenderer.gameRenderState().windowRenderState;
          this.guiProjection
-            .setupOrtho(
-               1000.0F, 11000.0F, (float)windowState.width / (float)windowState.guiScale, (float)windowState.height / (float)windowState.guiScale, true
-            );
+            .setupOrtho(1000.0F, 11000.0F, (float)windowState.width / windowState.guiScale, (float)windowState.height / windowState.guiScale, true);
          RenderSystem.setProjectionMatrix(this.guiProjectionMatrixBuffer.getBuffer(this.guiProjection), ProjectionType.ORTHOGRAPHIC);
          RenderTarget mainRenderTarget = minecraft.gameRenderer.mainRenderTarget();
          GpuBufferSlice dynamicTransforms = RenderSystem.getDynamicUniforms().writeTransform(new Matrix4f().setTranslation(0.0F, 0.0F, -11000.0F));
@@ -252,10 +245,6 @@ public class GuiRenderer implements AutoCloseable {
          final Matrix3x2fc pose = text.pose;
          final ScreenRectangle scissor = text.scissor;
          text.ensurePrepared().visit(new Font.GlyphVisitor() {
-            {
-               Objects.requireNonNull(GuiRenderer.this);
-            }
-
             @Override
             public void acceptRenderable(final TextRenderable renderable) {
                GuiRenderer.this.renderState.addGlyphToCurrentLayer(new GlyphRenderState(pose, renderable, scissor));
@@ -337,23 +326,23 @@ public class GuiRenderer implements AutoCloseable {
    private GuiItemAtlas prepareItemAtlas(final Set<Object> itemsInFrame, final int slotTextureSize) {
       if (this.itemAtlas != null && this.itemAtlas.tryPrepareFor(itemsInFrame)) {
          return this.itemAtlas;
-      } else {
-         int newTextureSize = GuiItemAtlas.computeTextureSizeFor(slotTextureSize, itemsInFrame.size());
-         if (this.itemAtlas != null && this.itemAtlas.textureSize() == newTextureSize) {
-            LOGGER.warn(
-               "Too many items ({}) in UI, some will be skipped! (Reached maximum texture size {}x{})",
-               new Object[]{itemsInFrame.size(), newTextureSize, newTextureSize}
-            );
-            return this.itemAtlas;
-         } else {
-            if (this.itemAtlas != null) {
-               this.itemAtlas.close();
-            }
-
-            this.itemAtlas = new GuiItemAtlas(this.featureRenderDispatcher, newTextureSize, slotTextureSize);
-            return this.itemAtlas;
-         }
       }
+
+      int newTextureSize = GuiItemAtlas.computeTextureSizeFor(slotTextureSize, itemsInFrame.size());
+      if (this.itemAtlas != null && this.itemAtlas.textureSize() == newTextureSize) {
+         LOGGER.warn(
+            "Too many items ({}) in UI, some will be skipped! (Reached maximum texture size {}x{})",
+            new Object[]{itemsInFrame.size(), newTextureSize, newTextureSize}
+         );
+         return this.itemAtlas;
+      }
+
+      if (this.itemAtlas != null) {
+         this.itemAtlas.close();
+      }
+
+      this.itemAtlas = new GuiItemAtlas(this.featureRenderDispatcher, newTextureSize, slotTextureSize);
+      return this.itemAtlas;
    }
 
    private int getGuiScaleInvalidatingItemAtlasIfChanged() {
@@ -408,7 +397,7 @@ public class GuiRenderer implements AutoCloseable {
       }
    }
 
-   private boolean scissorChanged(@Nullable final ScreenRectangle newScissor, @Nullable final ScreenRectangle oldScissor) {
+   private boolean scissorChanged(final @Nullable ScreenRectangle newScissor, final @Nullable ScreenRectangle oldScissor) {
       if (newScissor == oldScissor) {
          return false;
       } else {
@@ -419,10 +408,10 @@ public class GuiRenderer implements AutoCloseable {
    private void enableScissor(final ScreenRectangle rectangle, final RenderPass renderPass) {
       WindowRenderState window = Minecraft.getInstance().gameRenderer.gameRenderState().windowRenderState;
       int guiScale = window.guiScale;
-      double left = (double)(rectangle.left() * guiScale);
-      double top = (double)(rectangle.top() * guiScale);
-      double right = (double)Math.min(rectangle.right() * guiScale, window.width);
-      double bottom = (double)Math.min(rectangle.bottom() * guiScale, window.height);
+      double left = rectangle.left() * guiScale;
+      double top = rectangle.top() * guiScale;
+      double right = Math.min(rectangle.right() * guiScale, window.width);
+      double bottom = Math.min(rectangle.bottom() * guiScale, window.height);
       renderPass.enableScissor((int)left, window.height - (int)bottom, Math.max(0, (int)(right - left)), Math.max(0, (int)(bottom - top)));
    }
 
@@ -444,6 +433,6 @@ public class GuiRenderer implements AutoCloseable {
       this.cubeMap.close();
    }
 
-   private static record Draw(StagedVertexBuffer.Draw draw, RenderPipeline pipeline, TextureSetup textureSetup, @Nullable ScreenRectangle scissorArea) {
+   private record Draw(StagedVertexBuffer.Draw draw, RenderPipeline pipeline, TextureSetup textureSetup, @Nullable ScreenRectangle scissorArea) {
    }
 }

@@ -28,7 +28,7 @@ public record ClientboundCustomChatCompletionsPacket(ClientboundCustomChatComple
       listener.handleCustomChatCompletions(this);
    }
 
-   public static enum Action {
+   public enum Action {
       ADD(0),
       REMOVE(1),
       SET(2);
@@ -39,7 +39,7 @@ public record ClientboundCustomChatCompletionsPacket(ClientboundCustomChatComple
       public static final StreamCodec<ByteBuf, ClientboundCustomChatCompletionsPacket.Action> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, a -> a.id);
       private final int id;
 
-      private Action(final int id) {
+      Action(final int id) {
          this.id = id;
       }
    }

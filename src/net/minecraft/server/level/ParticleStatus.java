@@ -19,7 +19,7 @@ public enum ParticleStatus {
    private final int id;
    private final Component caption;
 
-   private ParticleStatus(final int id, final String key) {
+   ParticleStatus(final int id, final String key) {
       this.id = id;
       this.caption = Component.translatable(key);
    }

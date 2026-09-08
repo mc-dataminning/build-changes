@@ -37,7 +37,7 @@ public class HttpUtil {
       final URL url,
       final Map<String, String> headers,
       final HashFunction hashFunction,
-      @Nullable final HashCode requestedHash,
+      final @Nullable HashCode requestedHash,
       final int maxSize,
       final Proxy proxy,
       final HttpUtil.DownloadProgressListener listener
@@ -56,22 +56,21 @@ public class HttpUtil {
                updateModificationTime(targetFile);
                return targetFile;
             }
-         } catch (IOException var35) {
-            LOGGER.warn("Failed to check cached file {}", targetFile, var35);
+         } catch (IOException e) {
+            LOGGER.warn("Failed to check cached file {}", targetFile, e);
          }
 
          try {
             LOGGER.warn("Existing file {} not found or had mismatched hash", targetFile);
             Files.deleteIfExists(targetFile);
-         } catch (IOException var34) {
+         } catch (IOException e) {
             listener.requestFinished(false);
-            throw new UncheckedIOException("Failed to remove existing file " + targetFile, var34);
+            throw new UncheckedIOException("Failed to remove existing file " + targetFile, e);
          }
       } else {
          targetFile = null;
       }
 
-      Path actualHash;
       try {
          connection = (HttpURLConnection)url.openConnection(proxy);
          connection.setInstanceFollowRedirects(true);
@@ -81,17 +80,25 @@ public class HttpUtil {
          OptionalLong size = contentLength != -1L ? OptionalLong.of(contentLength) : OptionalLong.empty();
          FileUtil.createDirectoriesSafe(targetDir);
          listener.downloadStart(size);
-         if (size.isPresent() && size.getAsLong() > (long)maxSize) {
+         if (size.isPresent() && size.getAsLong() > maxSize) {
             throw new IOException("Filesize is bigger than maximum allowed (file is " + size + ", limit is " + maxSize + ")");
          }
 
-         if (targetFile == null) {
+         if (targetFile != null) {
+            HashCode actualHash = downloadAndHash(hashFunction, maxSize, listener, input, targetFile);
+            if (!actualHash.equals(requestedHash)) {
+               throw new IOException("Hash of downloaded file (" + actualHash + ") did not match requested (" + requestedHash + ")");
+            }
+
+            listener.requestFinished(true);
+            return targetFile;
+         } else {
             Path tmpPath = Files.createTempFile(targetDir, "download", ".tmp");
 
             try {
-               HashCode actualHashx = downloadAndHash(hashFunction, maxSize, listener, input, tmpPath);
-               Path actualPath = cachedFilePath(targetDir, actualHashx);
-               if (!checkExistingFile(actualPath, hashFunction, actualHashx)) {
+               HashCode actualHash = downloadAndHash(hashFunction, maxSize, listener, input, tmpPath);
+               Path actualPath = cachedFilePath(targetDir, actualHash);
+               if (!checkExistingFile(actualPath, hashFunction, actualHash)) {
                   Files.move(tmpPath, actualPath, StandardCopyOption.REPLACE_EXISTING);
                } else {
                   updateModificationTime(actualPath);
@@ -103,40 +110,30 @@ public class HttpUtil {
                Files.deleteIfExists(tmpPath);
             }
          }
-
-         HashCode actualHashx = downloadAndHash(hashFunction, maxSize, listener, input, targetFile);
-         if (!actualHashx.equals(requestedHash)) {
-            throw new IOException("Hash of downloaded file (" + actualHashx + ") did not match requested (" + requestedHash + ")");
-         }
-
-         listener.requestFinished(true);
-         actualHash = targetFile;
-      } catch (Throwable var36) {
+      } catch (Throwable t) {
          if (connection != null) {
             InputStream error = connection.getErrorStream();
             if (error != null) {
                try {
                   LOGGER.error("HTTP response error: {}", IOUtils.toString(error, StandardCharsets.UTF_8));
-               } catch (Exception var32) {
+               } catch (Exception e) {
                   LOGGER.error("Failed to read response from server");
                }
             }
          }
 
          listener.requestFinished(false);
-         throw new IllegalStateException("Failed to download file " + url, var36);
+         throw new IllegalStateException("Failed to download file " + url, t);
       } finally {
          IOUtils.closeQuietly(input);
       }
-
-      return actualHash;
    }
 
    private static void updateModificationTime(final Path targetFile) {
       try {
          Files.setLastModifiedTime(targetFile, FileTime.from(Instant.now()));
-      } catch (IOException var2) {
-         LOGGER.warn("Failed to update modification time of {}", targetFile, var2);
+      } catch (IOException e) {
+         LOGGER.warn("Failed to update modification time of {}", targetFile, e);
       }
    }
 
@@ -173,7 +170,6 @@ public class HttpUtil {
    private static HashCode downloadAndHash(
       final HashFunction hashFunction, final int maxSize, final HttpUtil.DownloadProgressListener listener, final InputStream input, final Path downloadFile
    ) throws IOException {
-      HashCode var11;
       try (OutputStream output = Files.newOutputStream(downloadFile, StandardOpenOption.CREATE)) {
          Hasher hasher = hashFunction.newHasher();
          byte[] buffer = new byte[8196];
@@ -181,9 +177,9 @@ public class HttpUtil {
 
          int read;
          while ((read = input.read(buffer)) >= 0) {
-            readSoFar += (long)read;
+            readSoFar += read;
             listener.downloadedBytes(readSoFar);
-            if (readSoFar > (long)maxSize) {
+            if (readSoFar > maxSize) {
                throw new IOException("Filesize was bigger than maximum allowed (got >= " + readSoFar + ", limit was " + maxSize + ")");
             }
 
@@ -196,35 +192,23 @@ public class HttpUtil {
             hasher.putBytes(buffer, 0, read);
          }
 
-         var11 = hasher.hash();
+         return hasher.hash();
       }
-
-      return var11;
    }
 
    public static int getAvailablePort() {
-      try {
-         int var1;
-         try (ServerSocket server = new ServerSocket(0)) {
-            var1 = server.getLocalPort();
-         }
-
-         return var1;
-      } catch (IOException var5) {
+      try (ServerSocket server = new ServerSocket(0)) {
+         return server.getLocalPort();
+      } catch (IOException ignored) {
          return 25564;
       }
    }
 
    public static boolean isPortAvailable(final int port) {
       if (port >= 0 && port <= 65535) {
-         try {
-            boolean var2;
-            try (ServerSocket server = new ServerSocket(port)) {
-               var2 = server.getLocalPort() == port;
-            }
-
-            return var2;
-         } catch (IOException var6) {
+         try (ServerSocket server = new ServerSocket(port)) {
+            return server.getLocalPort() == port;
+         } catch (IOException ignored) {
             return false;
          }
       } else {

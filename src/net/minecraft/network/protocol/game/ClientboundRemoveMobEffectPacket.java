@@ -29,8 +29,7 @@ public record ClientboundRemoveMobEffectPacket(int entityId, Holder<MobEffect> e
       listener.handleRemoveMobEffect(this);
    }
 
-   @Nullable
-   public Entity getEntity(final Level level) {
+   public @Nullable Entity getEntity(final Level level) {
       return level.getEntity(this.entityId);
    }
 }

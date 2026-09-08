@@ -13,10 +13,10 @@ public record ConditionalEffect<T>(T effect, Optional<Holder<LootItemCondition>>
    public static <T> Codec<ConditionalEffect<T>> codec(final Codec<T> effectCodec) {
       return RecordCodecBuilder.create(
          i -> i.group(
-                  effectCodec.fieldOf("effect").forGetter(ConditionalEffect::effect),
-                  LootItemCondition.CODEC.optionalFieldOf("requirements").forGetter(ConditionalEffect::requirements)
-               )
-               .apply(i, ConditionalEffect::new)
+               effectCodec.fieldOf("effect").forGetter(ConditionalEffect::effect),
+               LootItemCondition.CODEC.optionalFieldOf("requirements").forGetter(ConditionalEffect::requirements)
+            )
+            .apply(i, ConditionalEffect::new)
       );
    }
 

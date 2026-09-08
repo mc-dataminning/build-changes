@@ -45,8 +45,8 @@ public abstract class StuckInBodyLayer<M extends PlayerModel, S> extends RenderL
       final int outlineColor
    ) {
       float directionXZ = Mth.sqrt(directionX * directionX + directionZ * directionZ);
-      float yRot = (float)(Math.atan2((double)directionX, (double)directionZ) * 180.0F / (float)Math.PI);
-      float xRot = (float)(Math.atan2((double)directionY, (double)directionXZ) * 180.0F / (float)Math.PI);
+      float yRot = (float)(Math.atan2(directionX, directionZ) * 180.0F / (float)Math.PI);
+      float xRot = (float)(Math.atan2(directionY, directionXZ) * 180.0F / (float)Math.PI);
       poseStack.rotateDegrees(Axis.YP, yRot - 90.0F);
       poseStack.rotateDegrees(Axis.ZP, xRot);
       submitNodeCollector.submitModel(this.model, this.modelState, poseStack, this.texture, lightCoords, OverlayTexture.NO_OVERLAY, outlineColor);
@@ -62,7 +62,7 @@ public abstract class StuckInBodyLayer<M extends PlayerModel, S> extends RenderL
    ) {
       int count = this.numStuck(state);
       if (count > 0) {
-         RandomSource random = RandomSource.createThreadLocalInstance((long)state.id);
+         RandomSource random = RandomSource.createThreadLocalInstance(state.id);
 
          for (int i = 0; i < count; i++) {
             poseStack.pushPose();
@@ -101,7 +101,7 @@ public abstract class StuckInBodyLayer<M extends PlayerModel, S> extends RenderL
       return value > 0.5F ? 1.0F : 0.5F;
    }
 
-   public static enum PlacementStyle {
+   public enum PlacementStyle {
       IN_CUBE,
       ON_SURFACE;
    }

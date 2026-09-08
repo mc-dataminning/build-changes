@@ -257,7 +257,7 @@ public class Breeze extends Monster {
    }
 
    public double getFiringYPosition() {
-      return this.getY() + (double)(this.getBbHeight() / 2.0F) + 0.3F;
+      return this.getY() + this.getBbHeight() / 2.0F + 0.3F;
    }
 
    @Override
@@ -267,7 +267,7 @@ public class Breeze extends Monster {
 
    @Override
    public double getFluidJumpThreshold() {
-      return (double)this.getEyeHeight();
+      return this.getEyeHeight();
    }
 
    @Override
@@ -284,9 +284,8 @@ public class Breeze extends Monster {
       return Entity.MovementEmission.EVENTS;
    }
 
-   @Nullable
    @Override
-   public LivingEntity getTarget() {
+   public @Nullable LivingEntity getTarget() {
       return this.getTargetFromBrain();
    }
 
@@ -296,8 +295,8 @@ public class Breeze extends Monster {
       registration.register(
          DebugSubscriptions.BREEZES,
          () -> new DebugBreezeInfo(
-               this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).map(Entity::getId), this.getBrain().getMemory(MemoryModuleType.BREEZE_JUMP_TARGET)
-            )
+            this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).map(Entity::getId), this.getBrain().getMemory(MemoryModuleType.BREEZE_JUMP_TARGET)
+         )
       );
    }
 }

@@ -19,9 +19,8 @@ public class DialogScreens {
       FACTORIES.put(type, factory);
    }
 
-   @Nullable
-   public static <T extends Dialog> DialogScreen<T> createFromData(
-      final T dialog, @Nullable final Screen previousScreen, final DialogConnectionAccess connectionAccess
+   public static <T extends Dialog> @Nullable DialogScreen<T> createFromData(
+      final T dialog, final @Nullable Screen previousScreen, final DialogConnectionAccess connectionAccess
    ) {
       DialogScreens.Factory<T> factory = (DialogScreens.Factory<T>)FACTORIES.get(dialog.codec());
       return factory != null ? factory.create(previousScreen, dialog, connectionAccess) : null;

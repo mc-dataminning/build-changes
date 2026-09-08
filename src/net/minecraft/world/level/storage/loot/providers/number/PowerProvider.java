@@ -13,7 +13,7 @@ public interface PowerProvider<Value extends Validatable> extends Validatable {
    ) {
       return RecordCodecBuilder.mapCodec(
          i -> i.group(valueCodec.fieldOf("base").forGetter(PowerProvider::base), valueCodec.fieldOf("exponent").forGetter(PowerProvider::exponent))
-               .apply(i, factory::create)
+            .apply(i, factory::create)
       );
    }
 
@@ -28,7 +28,7 @@ public interface PowerProvider<Value extends Validatable> extends Validatable {
    Holder<Value> exponent();
 
    @FunctionalInterface
-   public interface Factory<Value extends Validatable, Self extends PowerProvider<Value>> {
+   interface Factory<Value extends Validatable, Self extends PowerProvider<Value>> {
       Self create(Holder<Value> left, Holder<Value> right);
    }
 }

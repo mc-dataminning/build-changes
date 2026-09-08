@@ -15,9 +15,9 @@ public class LavaParticle extends SingleQuadParticle {
       this.xd *= 0.8F;
       this.yd *= 0.8F;
       this.zd *= 0.8F;
-      this.yd = (double)(this.random.nextFloat() * 0.4F + 0.05F);
+      this.yd = this.random.nextFloat() * 0.4F + 0.05F;
       this.quadSize = this.quadSize * (this.random.nextFloat() * 2.0F + 0.2F);
-      this.lifetime = (int)(16.0 / ((double)this.random.nextFloat() * 0.8 + 0.2));
+      this.lifetime = (int)(16.0 / (this.random.nextFloat() * 0.8 + 0.2));
    }
 
    @Override
@@ -32,7 +32,7 @@ public class LavaParticle extends SingleQuadParticle {
 
    @Override
    public float getQuadSize(final float a) {
-      float s = ((float)this.age + a) / (float)this.lifetime;
+      float s = (this.age + a) / this.lifetime;
       return this.quadSize * (1.0F - s * s);
    }
 
@@ -40,7 +40,7 @@ public class LavaParticle extends SingleQuadParticle {
    public void tick() {
       super.tick();
       if (!this.removed) {
-         float odds = (float)this.age / (float)this.lifetime;
+         float odds = (float)this.age / this.lifetime;
          if (this.random.nextFloat() > odds) {
             this.level.addParticle(ParticleTypes.SMOKE, this.x, this.y, this.z, this.xd, this.yd, this.zd);
          }

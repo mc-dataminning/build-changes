@@ -24,10 +24,10 @@ public class BabyStriderModel extends StriderModel {
    @Override
    protected void customAnimations(final float animationPos, final float animationSpeed, final float ageInTicks) {
       this.body.y = 17.25F;
-      this.body.y = this.body.y - 1.0F * Mth.cos((double)(animationPos * 1.5F)) * 2.0F * animationSpeed;
-      this.leftLeg.y = 20.0F + 2.0F * Mth.sin((double)(animationPos * 1.5F * 0.5F + (float) Math.PI)) * 2.0F * animationSpeed;
-      this.rightLeg.y = 20.0F + 2.0F * Mth.sin((double)(animationPos * 1.5F * 0.5F)) * 2.0F * animationSpeed;
-      float bristleFlow = Mth.cos((double)(animationPos * 1.5F + (float) Math.PI)) * animationSpeed;
+      this.body.y = this.body.y - 1.0F * Mth.cos(animationPos * 1.5F) * 2.0F * animationSpeed;
+      this.leftLeg.y = 20.0F + 2.0F * Mth.sin(animationPos * 1.5F * 0.5F + (float) Math.PI) * 2.0F * animationSpeed;
+      this.rightLeg.y = 20.0F + 2.0F * Mth.sin(animationPos * 1.5F * 0.5F) * 2.0F * animationSpeed;
+      float bristleFlow = Mth.cos(animationPos * 1.5F + (float) Math.PI) * animationSpeed;
       this.animateBristle(
          ageInTicks,
          bristleFlow,

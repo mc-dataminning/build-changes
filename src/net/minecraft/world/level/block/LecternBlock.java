@@ -57,9 +57,7 @@ public class LecternBlock extends BaseEntityBlock {
 
    protected LecternBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, Boolean.valueOf(false)).setValue(HAS_BOOK, Boolean.valueOf(false))
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, false).setValue(HAS_BOOK, false));
    }
 
    @Override
@@ -85,7 +83,7 @@ public class LecternBlock extends BaseEntityBlock {
          }
       }
 
-      return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(HAS_BOOK, Boolean.valueOf(hasBook));
+      return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(HAS_BOOK, hasBook);
    }
 
    @Override
@@ -119,7 +117,7 @@ public class LecternBlock extends BaseEntityBlock {
    }
 
    public static boolean tryPlaceBook(
-      @Nullable final LivingEntity sourceEntity, final Level level, final BlockPos pos, final BlockState state, final ItemStack item
+      final @Nullable LivingEntity sourceEntity, final Level level, final BlockPos pos, final BlockState state, final ItemStack item
    ) {
       if (!state.getValue(HAS_BOOK)) {
          if (!level.isClientSide()) {
@@ -132,7 +130,7 @@ public class LecternBlock extends BaseEntityBlock {
       }
    }
 
-   private static void placeBook(@Nullable final LivingEntity sourceEntity, final Level level, final BlockPos pos, final BlockState state, final ItemStack book) {
+   private static void placeBook(final @Nullable LivingEntity sourceEntity, final Level level, final BlockPos pos, final BlockState state, final ItemStack book) {
       if (level.getBlockEntity(pos) instanceof LecternBlockEntity lectern) {
          lectern.setBook(book.consumeAndReturn(1, sourceEntity));
          resetBookState(sourceEntity, level, pos, state, true);
@@ -140,8 +138,8 @@ public class LecternBlock extends BaseEntityBlock {
       }
    }
 
-   public static void resetBookState(@Nullable final Entity sourceEntity, final Level level, final BlockPos pos, final BlockState state, final boolean hasBook) {
-      BlockState newState = state.setValue(POWERED, Boolean.valueOf(false)).setValue(HAS_BOOK, Boolean.valueOf(hasBook));
+   public static void resetBookState(final @Nullable Entity sourceEntity, final Level level, final BlockPos pos, final BlockState state, final boolean hasBook) {
+      BlockState newState = state.setValue(POWERED, false).setValue(HAS_BOOK, hasBook);
       level.setBlockAndUpdate(pos, newState);
       level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(sourceEntity, newState));
       updateBelow(level, pos, state);
@@ -154,7 +152,7 @@ public class LecternBlock extends BaseEntityBlock {
    }
 
    private static void changePowered(final Level level, final BlockPos pos, final BlockState state, final boolean isPowered) {
-      level.setBlockAndUpdate(pos, state.setValue(POWERED, Boolean.valueOf(isPowered)));
+      level.setBlockAndUpdate(pos, state.setValue(POWERED, isPowered));
       updateBelow(level, pos, state);
    }
 
@@ -215,9 +213,9 @@ public class LecternBlock extends BaseEntityBlock {
       if (state.getValue(HAS_BOOK)) {
          return InteractionResult.TRY_WITH_EMPTY_HAND;
       } else if (itemStack.is(ItemTags.LECTERN_BOOKS)) {
-         return (InteractionResult)(tryPlaceBook(player, level, pos, state, itemStack) ? InteractionResult.SUCCESS : InteractionResult.PASS);
+         return tryPlaceBook(player, level, pos, state, itemStack) ? InteractionResult.SUCCESS : InteractionResult.PASS;
       } else {
-         return (InteractionResult)(itemStack.isEmpty() && hand == InteractionHand.MAIN_HAND ? InteractionResult.PASS : InteractionResult.TRY_WITH_EMPTY_HAND);
+         return itemStack.isEmpty() && hand == InteractionHand.MAIN_HAND ? InteractionResult.PASS : InteractionResult.TRY_WITH_EMPTY_HAND;
       }
    }
 
@@ -236,9 +234,8 @@ public class LecternBlock extends BaseEntityBlock {
       }
    }
 
-   @Nullable
    @Override
-   protected MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
+   protected @Nullable MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
       return !state.getValue(HAS_BOOK) ? null : super.getMenuProvider(state, level, pos);
    }
 

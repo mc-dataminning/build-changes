@@ -37,14 +37,14 @@ public class LootTable implements Validatable {
    public static final long RANDOMIZE_SEED = 0L;
    public static final Codec<LootTable> DIRECT_CODEC = Codec.lazyInitialized(
       () -> RecordCodecBuilder.create(
-            i -> i.group(
-                     LootContextParamSets.CODEC.lenientOptionalFieldOf("type", DEFAULT_PARAM_SET).forGetter(t -> t.paramSet),
-                     Identifier.CODEC.optionalFieldOf("random_sequence").forGetter(t -> t.randomSequence),
-                     LootPool.CODEC.listOf().optionalFieldOf("pools", List.of()).forGetter(t -> t.pools),
-                     LootItemFunctions.CODEC.optionalFieldOf("modifier").forGetter(t -> t.modifier)
-                  )
-                  .apply(i, LootTable::new)
-         )
+         i -> i.group(
+               LootContextParamSets.CODEC.lenientOptionalFieldOf("type", DEFAULT_PARAM_SET).forGetter(t -> t.paramSet),
+               Identifier.CODEC.optionalFieldOf("random_sequence").forGetter(t -> t.randomSequence),
+               LootPool.CODEC.listOf().optionalFieldOf("pools", List.of()).forGetter(t -> t.pools),
+               LootItemFunctions.CODEC.optionalFieldOf("modifier").forGetter(t -> t.modifier)
+            )
+            .apply(i, LootTable::new)
+      )
    );
    public static final Codec<Holder<LootTable>> CODEC = RegistryCodecs.holder(Registries.LOOT_TABLE, DIRECT_CODEC);
    public static final Codec<HolderSet<LootTable>> LIST_CODEC = RegistryCodecs.holderSet(Registries.LOOT_TABLE, DIRECT_CODEC);

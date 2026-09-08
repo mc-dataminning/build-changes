@@ -29,8 +29,8 @@ public class BanListCommands {
                   Commands.literal("ips")
                      .executes(
                         s -> showList(
-                              (CommandSourceStack)s.getSource(), ((CommandSourceStack)s.getSource()).getServer().getPlayerList().getIpBans().getEntries()
-                           )
+                           (CommandSourceStack)s.getSource(), ((CommandSourceStack)s.getSource()).getServer().getPlayerList().getIpBans().getEntries()
+                        )
                      )
                ))
             .then(

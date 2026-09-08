@@ -52,14 +52,12 @@ public class BlockPattern {
    }
 
    @VisibleForTesting
-   @Nullable
-   public BlockPattern.BlockPatternMatch matches(final LevelReader level, final BlockPos origin, final Direction forwards, final Direction up) {
+   public BlockPattern.@Nullable BlockPatternMatch matches(final LevelReader level, final BlockPos origin, final Direction forwards, final Direction up) {
       LoadingCache<BlockPos, BlockInWorld> cache = createLevelCache(level, false);
       return this.matches(origin, forwards, up, cache);
    }
 
-   @Nullable
-   private BlockPattern.BlockPatternMatch matches(
+   private BlockPattern.@Nullable BlockPatternMatch matches(
       final BlockPos origin, final Direction forwards, final Direction up, final LoadingCache<BlockPos, BlockInWorld> cache
    ) {
       for (int x = 0; x < this.width; x++) {
@@ -75,8 +73,7 @@ public class BlockPattern {
       return new BlockPattern.BlockPatternMatch(origin, forwards, up, cache, this.width, this.height, this.depth);
    }
 
-   @Nullable
-   public BlockPattern.BlockPatternMatch find(final LevelReader level, final BlockPos origin) {
+   public BlockPattern.@Nullable BlockPatternMatch find(final LevelReader level, final BlockPos origin) {
       LoadingCache<BlockPos, BlockInWorld> cache = createLevelCache(level, false);
       int dist = Math.max(Math.max(this.width, this.height), this.depth);
 

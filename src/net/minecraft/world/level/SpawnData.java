@@ -17,11 +17,11 @@ public record SpawnData(CompoundTag entityToSpawn, Optional<SpawnData.CustomSpaw
    public static final String ENTITY_TAG = "entity";
    public static final Codec<SpawnData> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               CompoundTag.CODEC.fieldOf("entity").forGetter(s -> s.entityToSpawn),
-               SpawnData.CustomSpawnRules.CODEC.optionalFieldOf("custom_spawn_rules").forGetter(o -> o.customSpawnRules),
-               EquipmentTable.CODEC.optionalFieldOf("equipment").forGetter(o -> o.equipment)
-            )
-            .apply(i, SpawnData::new)
+            CompoundTag.CODEC.fieldOf("entity").forGetter(s -> s.entityToSpawn),
+            SpawnData.CustomSpawnRules.CODEC.optionalFieldOf("custom_spawn_rules").forGetter(o -> o.customSpawnRules),
+            EquipmentTable.CODEC.optionalFieldOf("equipment").forGetter(o -> o.equipment)
+         )
+         .apply(i, SpawnData::new)
    );
    public static final Codec<WeightedList<SpawnData>> LIST_CODEC = WeightedList.codec(CODEC);
 
@@ -29,17 +29,13 @@ public record SpawnData(CompoundTag entityToSpawn, Optional<SpawnData.CustomSpaw
       this(new CompoundTag(), Optional.empty(), Optional.empty());
    }
 
-   public SpawnData(CompoundTag entityToSpawn, Optional<SpawnData.CustomSpawnRules> customSpawnRules, Optional<EquipmentTable> equipment) {
+   public SpawnData {
       Optional<Identifier> id = entityToSpawn.read("id", Identifier.CODEC);
       if (id.isPresent()) {
          entityToSpawn.store("id", Identifier.CODEC, id.get());
       } else {
          entityToSpawn.remove("id");
       }
-
-      this.entityToSpawn = entityToSpawn;
-      this.customSpawnRules = customSpawnRules;
-      this.equipment = equipment;
    }
 
    public CompoundTag getEntityToSpawn() {
@@ -54,11 +50,11 @@ public record SpawnData(CompoundTag entityToSpawn, Optional<SpawnData.CustomSpaw
       return this.equipment;
    }
 
-   public static record CustomSpawnRules(InclusiveRange<Integer> blockLightLimit, InclusiveRange<Integer> skyLightLimit) {
+   public record CustomSpawnRules(InclusiveRange<Integer> blockLightLimit, InclusiveRange<Integer> skyLightLimit) {
       private static final InclusiveRange<Integer> LIGHT_RANGE = new InclusiveRange<>(0, 15);
       public static final Codec<SpawnData.CustomSpawnRules> CODEC = RecordCodecBuilder.create(
          i -> i.group(lightLimit("block_light_limit").forGetter(o -> o.blockLightLimit), lightLimit("sky_light_limit").forGetter(o -> o.skyLightLimit))
-               .apply(i, SpawnData.CustomSpawnRules::new)
+            .apply(i, SpawnData.CustomSpawnRules::new)
       );
 
       private static DataResult<InclusiveRange<Integer>> checkLightBoundaries(final InclusiveRange<Integer> range) {

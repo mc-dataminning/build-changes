@@ -49,9 +49,8 @@ public class WallTorchBlock extends TorchBlock {
       return relativeState.isFaceSturdy(level, relativePos, facing);
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockState state = this.defaultBlockState();
       LevelReader level = context.getLevel();
       BlockPos pos = context.getClickedPos();
@@ -87,14 +86,14 @@ public class WallTorchBlock extends TorchBlock {
    @Override
    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
       Direction direction = state.getValue(FACING);
-      double x = (double)pos.getX() + 0.5;
-      double y = (double)pos.getY() + 0.7;
-      double z = (double)pos.getZ() + 0.5;
+      double x = pos.getX() + 0.5;
+      double y = pos.getY() + 0.7;
+      double z = pos.getZ() + 0.5;
       double h = 0.22;
       double r = 0.27;
       Direction opposite = direction.getOpposite();
-      level.addParticle(ParticleTypes.SMOKE, x + 0.27 * (double)opposite.getStepX(), y + 0.22, z + 0.27 * (double)opposite.getStepZ(), 0.0, 0.0, 0.0);
-      level.addParticle(this.flameParticle, x + 0.27 * (double)opposite.getStepX(), y + 0.22, z + 0.27 * (double)opposite.getStepZ(), 0.0, 0.0, 0.0);
+      level.addParticle(ParticleTypes.SMOKE, x + 0.27 * opposite.getStepX(), y + 0.22, z + 0.27 * opposite.getStepZ(), 0.0, 0.0, 0.0);
+      level.addParticle(this.flameParticle, x + 0.27 * opposite.getStepX(), y + 0.22, z + 0.27 * opposite.getStepZ(), 0.0, 0.0, 0.0);
    }
 
    @Override

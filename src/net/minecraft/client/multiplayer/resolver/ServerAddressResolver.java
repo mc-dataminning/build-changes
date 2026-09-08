@@ -14,8 +14,8 @@ public interface ServerAddressResolver {
       try {
          InetAddress resolvedAddress = InetAddress.getByName(address.getHost());
          return Optional.of(ResolvedServerAddress.from(new InetSocketAddress(resolvedAddress, address.getPort())));
-      } catch (UnknownHostException var2) {
-         LOGGER.debug("Couldn't resolve server {} address", address.getHost(), var2);
+      } catch (UnknownHostException e) {
+         LOGGER.debug("Couldn't resolve server {} address", address.getHost(), e);
          return Optional.empty();
       }
    };

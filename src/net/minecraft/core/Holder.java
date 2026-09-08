@@ -59,7 +59,7 @@ public sealed interface Holder<T> permits Holder.Direct, Holder.Reference {
       return new Holder.Direct<>(value, components);
    }
 
-   public static record Direct<T>(T value, DataComponentMap components) implements Holder<T> {
+   record Direct<T>(T value, DataComponentMap components) implements Holder<T> {
       @Override
       public boolean isBound() {
          return true;
@@ -126,24 +126,20 @@ public sealed interface Holder<T> permits Holder.Direct, Holder.Reference {
       }
    }
 
-   public static enum Kind {
+   enum Kind {
       REFERENCE,
       DIRECT;
    }
 
-   public static non-sealed class Reference<T> implements Holder<T> {
+   non-sealed class Reference<T> implements Holder<T> {
       private final HolderOwner<T> owner;
-      @Nullable
-      private Set<TagKey<T>> tags;
-      @Nullable
-      private DataComponentMap components;
+      private @Nullable Set<TagKey<T>> tags;
+      private @Nullable DataComponentMap components;
       private final Holder.Reference.Type type;
-      @Nullable
-      private ResourceKey<T> key;
-      @Nullable
-      private T value;
+      private @Nullable ResourceKey<T> key;
+      private @Nullable T value;
 
-      protected Reference(final Holder.Reference.Type type, final HolderOwner<T> owner, @Nullable final ResourceKey<T> key, @Nullable final T value) {
+      protected Reference(final Holder.Reference.Type type, final HolderOwner<T> owner, final @Nullable ResourceKey<T> key, final @Nullable T value) {
          this.owner = owner;
          this.type = type;
          this.key = key;
@@ -155,7 +151,7 @@ public sealed interface Holder<T> permits Holder.Direct, Holder.Reference {
       }
 
       @Deprecated
-      public static <T> Holder.Reference<T> createIntrusive(final HolderOwner<T> owner, @Nullable final T value) {
+      public static <T> Holder.Reference<T> createIntrusive(final HolderOwner<T> owner, final @Nullable T value) {
          return new Holder.Reference<>(Holder.Reference.Type.INTRUSIVE, owner, null, value);
       }
 
@@ -242,17 +238,17 @@ public sealed interface Holder<T> permits Holder.Direct, Holder.Reference {
       void bindKey(final ResourceKey<T> key) {
          if (this.key != null && key != this.key) {
             throw new IllegalStateException("Can't change holder key: existing=" + this.key + ", new=" + key);
-         } else {
-            this.key = key;
          }
+
+         this.key = key;
       }
 
       protected void bindValue(final T value) {
          if (this.type == Holder.Reference.Type.INTRUSIVE && this.value != value) {
             throw new IllegalStateException("Can't change holder " + this.key + " value: existing=" + this.value + ", new=" + value);
-         } else {
-            this.value = value;
          }
+
+         this.value = value;
       }
 
       void bindTags(final Collection<TagKey<T>> tags) {
@@ -278,7 +274,7 @@ public sealed interface Holder<T> permits Holder.Direct, Holder.Reference {
          return "Reference{" + this.key + "=" + this.value + "}";
       }
 
-      protected static enum Type {
+      protected enum Type {
          STAND_ALONE,
          INTRUSIVE;
       }

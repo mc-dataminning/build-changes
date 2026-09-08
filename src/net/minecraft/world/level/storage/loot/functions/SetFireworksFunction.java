@@ -16,13 +16,13 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 public class SetFireworksFunction extends LootItemConditionalFunction {
    public static final MapCodec<SetFireworksFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
-            .and(
-               i.group(
-                  ListOperation.StandAlone.codec(FireworkExplosion.CODEC, 256).optionalFieldOf("explosions").forGetter(f -> f.explosions),
-                  ExtraCodecs.UNSIGNED_BYTE.optionalFieldOf("flight_duration").forGetter(f -> f.flightDuration)
-               )
+         .and(
+            i.group(
+               ListOperation.StandAlone.codec(FireworkExplosion.CODEC, 256).optionalFieldOf("explosions").forGetter(f -> f.explosions),
+               ExtraCodecs.UNSIGNED_BYTE.optionalFieldOf("flight_duration").forGetter(f -> f.flightDuration)
             )
-            .apply(i, SetFireworksFunction::new)
+         )
+         .apply(i, SetFireworksFunction::new)
    );
    public static final Fireworks DEFAULT_VALUE = new Fireworks(0, List.of());
    private final Optional<ListOperation.StandAlone<FireworkExplosion>> explosions;

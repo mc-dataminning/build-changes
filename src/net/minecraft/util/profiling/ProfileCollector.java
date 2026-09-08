@@ -8,8 +8,7 @@ import org.jspecify.annotations.Nullable;
 public interface ProfileCollector extends ProfilerFiller {
    ProfileResults getResults();
 
-   @Nullable
-   ActiveProfiler.PathEntry getEntry(final String path);
+   ActiveProfiler.@Nullable PathEntry getEntry(final String path);
 
    Set<Pair<String, MetricCategory>> getChartedPaths();
 }

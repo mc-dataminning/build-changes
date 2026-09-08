@@ -122,9 +122,9 @@ public class ModelProvider implements DataProvider {
             ClientItem donorInfo = this.itemInfos.get(donor);
             if (donorInfo == null) {
                throw new IllegalStateException("Missing donor: " + donor + " -> " + acceptor);
-            } else {
-               this.register(acceptor, donorInfo);
             }
+
+            this.register(acceptor, donorInfo);
          });
          List<Identifier> missingDefinitions = BuiltInRegistries.ITEM
             .listElements()

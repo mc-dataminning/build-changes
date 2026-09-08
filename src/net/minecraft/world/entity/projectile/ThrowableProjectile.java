@@ -24,15 +24,15 @@ public abstract class ThrowableProjectile extends Projectile {
    public boolean shouldRenderAtSqrDistance(final double distance) {
       if (this.tickCount < 2 && distance < 12.25) {
          return false;
-      } else {
-         double size = this.getBoundingBox().getSize() * 4.0;
-         if (Double.isNaN(size)) {
-            size = 4.0;
-         }
-
-         size *= 64.0;
-         return distance < size * size;
       }
+
+      double size = this.getBoundingBox().getSize() * 4.0;
+      if (Double.isNaN(size)) {
+         size = 4.0;
+      }
+
+      size *= 64.0;
+      return distance < size * size;
    }
 
    @Override
@@ -86,7 +86,7 @@ public abstract class ThrowableProjectile extends Projectile {
          inertia = this.getAirDrag();
       }
 
-      this.setDeltaMovement(movement.scale((double)inertia));
+      this.setDeltaMovement(movement.scale(inertia));
    }
 
    @Override

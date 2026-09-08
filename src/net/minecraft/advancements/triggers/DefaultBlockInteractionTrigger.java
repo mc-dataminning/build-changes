@@ -35,14 +35,14 @@ public class DefaultBlockInteractionTrigger extends SimpleCriterionTrigger<Defau
       this.trigger(player, t -> t.matches(context));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<Holder<LootItemCondition>> location)
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<Holder<LootItemCondition>> location)
       implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<DefaultBlockInteractionTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(DefaultBlockInteractionTrigger.TriggerInstance::player),
-                  LootItemCondition.CODEC.optionalFieldOf("location").forGetter(DefaultBlockInteractionTrigger.TriggerInstance::location)
-               )
-               .apply(i, DefaultBlockInteractionTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(DefaultBlockInteractionTrigger.TriggerInstance::player),
+               LootItemCondition.CODEC.optionalFieldOf("location").forGetter(DefaultBlockInteractionTrigger.TriggerInstance::location)
+            )
+            .apply(i, DefaultBlockInteractionTrigger.TriggerInstance::new)
       );
 
       public boolean matches(final LootContext locationContext) {

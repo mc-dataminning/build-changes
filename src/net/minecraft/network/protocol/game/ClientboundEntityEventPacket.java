@@ -14,10 +14,9 @@ public class ClientboundEntityEventPacket implements Packet<ClientGamePacketList
       ClientboundEntityEventPacket::write, ClientboundEntityEventPacket::new
    );
    private final int entityId;
-   @EntityEvent.Value
-   private final byte eventId;
+   private final @EntityEvent.Value byte eventId;
 
-   public ClientboundEntityEventPacket(final Entity entity, @EntityEvent.Value final byte eventId) {
+   public ClientboundEntityEventPacket(final Entity entity, final @EntityEvent.Value byte eventId) {
       this.entityId = entity.getId();
       this.eventId = eventId;
    }
@@ -41,13 +40,11 @@ public class ClientboundEntityEventPacket implements Packet<ClientGamePacketList
       listener.handleEntityEvent(this);
    }
 
-   @Nullable
-   public Entity getEntity(final Level level) {
+   public @Nullable Entity getEntity(final Level level) {
       return level.getEntity(this.entityId);
    }
 
-   @EntityEvent.Value
-   public byte getEventId() {
+   public @EntityEvent.Value byte getEventId() {
       return this.eventId;
    }
 }

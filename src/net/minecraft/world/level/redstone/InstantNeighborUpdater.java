@@ -20,21 +20,21 @@ public class InstantNeighborUpdater implements NeighborUpdater {
       final BlockState neighborState,
       final BlockPos pos,
       final BlockPos neighborPos,
-      @Block.UpdateFlags final int updateFlags,
+      final @Block.UpdateFlags int updateFlags,
       final int updateLimit
    ) {
       NeighborUpdater.executeShapeUpdate(this.level, direction, pos, neighborPos, neighborState, updateFlags, updateLimit - 1);
    }
 
    @Override
-   public void neighborChanged(final BlockPos pos, final Block changedBlock, @Nullable final Orientation orientation) {
+   public void neighborChanged(final BlockPos pos, final Block changedBlock, final @Nullable Orientation orientation) {
       BlockState state = this.level.getBlockState(pos);
       this.neighborChanged(state, pos, changedBlock, orientation, false);
    }
 
    @Override
    public void neighborChanged(
-      final BlockState state, final BlockPos pos, final Block changedBlock, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final BlockPos pos, final Block changedBlock, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       NeighborUpdater.executeUpdate(this.level, state, pos, changedBlock, orientation, movedByPiston);
    }

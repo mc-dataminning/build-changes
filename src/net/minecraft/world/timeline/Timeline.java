@@ -36,14 +36,14 @@ public class Timeline {
    );
    public static final Codec<Timeline> DIRECT_CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  WorldClock.CODEC.fieldOf("clock").forGetter(t -> t.clock),
-                  ExtraCodecs.POSITIVE_INT.optionalFieldOf("period_ticks").forGetter(t -> t.periodTicks),
-                  TRACKS_CODEC.optionalFieldOf("tracks", Map.of()).forGetter(t -> t.tracks),
-                  Codec.unboundedMap(ClockTimeMarker.KEY_CODEC, Timeline.TimeMarkerInfo.CODEC)
-                     .optionalFieldOf("time_markers", Map.of())
-                     .forGetter(t -> t.timeMarkers)
-               )
-               .apply(i, Timeline::new)
+               WorldClock.CODEC.fieldOf("clock").forGetter(t -> t.clock),
+               ExtraCodecs.POSITIVE_INT.optionalFieldOf("period_ticks").forGetter(t -> t.periodTicks),
+               TRACKS_CODEC.optionalFieldOf("tracks", Map.of()).forGetter(t -> t.tracks),
+               Codec.unboundedMap(ClockTimeMarker.KEY_CODEC, Timeline.TimeMarkerInfo.CODEC)
+                  .optionalFieldOf("time_markers", Map.of())
+                  .forGetter(t -> t.timeMarkers)
+            )
+            .apply(i, Timeline::new)
       )
       .validate(Timeline::validateInternal);
    public static final Codec<Timeline> NETWORK_CODEC = DIRECT_CODEC.xmap(Timeline::filterSyncableTracks, Timeline::filterSyncableTracks);
@@ -85,24 +85,24 @@ public class Timeline {
    private static DataResult<Timeline> validateInternal(final Timeline timeline) {
       if (timeline.periodTicks.isEmpty()) {
          return DataResult.success(timeline);
-      } else {
-         int periodTicks = timeline.periodTicks.get();
-
-         for (Entry<ResourceKey<ClockTimeMarker>, Timeline.TimeMarkerInfo> entry : timeline.timeMarkers.entrySet()) {
-            int ticks = entry.getValue().ticks();
-            if (ticks < 0 || ticks >= periodTicks) {
-               return DataResult.error(() -> "Time Marker " + entry.getKey() + " must be in range [0; " + periodTicks + ")");
-            }
-         }
-
-         DataResult<Timeline> result = DataResult.success(timeline);
-
-         for (AttributeTrack<?, ?> track : timeline.tracks.values()) {
-            result = result.apply2stable((t, $) -> t, AttributeTrack.validatePeriod(track, periodTicks));
-         }
-
-         return result;
       }
+
+      int periodTicks = timeline.periodTicks.get();
+
+      for (Entry<ResourceKey<ClockTimeMarker>, Timeline.TimeMarkerInfo> entry : timeline.timeMarkers.entrySet()) {
+         int ticks = entry.getValue().ticks();
+         if (ticks < 0 || ticks >= periodTicks) {
+            return DataResult.error(() -> "Time Marker " + entry.getKey() + " must be in range [0; " + periodTicks + ")");
+         }
+      }
+
+      DataResult<Timeline> result = DataResult.success(timeline);
+
+      for (AttributeTrack<?, ?> track : timeline.tracks.values()) {
+         result = result.apply2stable((t, $) -> t, AttributeTrack.validatePeriod(track, periodTicks));
+      }
+
+      return result;
    }
 
    public static Timeline.Builder builder(final Holder<WorldClock> clock) {
@@ -112,15 +112,15 @@ public class Timeline {
    public int getPeriodCount(final ClockManager clockManager) {
       if (this.periodTicks.isEmpty()) {
          return 0;
-      } else {
-         long totalTicks = this.getTotalTicks(clockManager);
-         return (int)(totalTicks / (long)this.periodTicks.get().intValue());
       }
+
+      long totalTicks = this.getTotalTicks(clockManager);
+      return (int)(totalTicks / this.periodTicks.get().intValue());
    }
 
    public long getCurrentTicks(final ClockManager clockManager) {
       long totalTicks = this.getTotalTicks(clockManager);
-      return this.periodTicks.isEmpty() ? totalTicks : totalTicks % (long)this.periodTicks.get().intValue();
+      return this.periodTicks.isEmpty() ? totalTicks : totalTicks % this.periodTicks.get().intValue();
    }
 
    public long getTotalTicks(final ClockManager clockManager) {
@@ -200,13 +200,13 @@ public class Timeline {
       }
    }
 
-   private static record TimeMarkerInfo(int ticks, boolean showInCommands) {
+   private record TimeMarkerInfo(int ticks, boolean showInCommands) {
       private static final Codec<Timeline.TimeMarkerInfo> FULL_CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  ExtraCodecs.NON_NEGATIVE_INT.fieldOf("ticks").forGetter(Timeline.TimeMarkerInfo::ticks),
-                  Codec.BOOL.optionalFieldOf("show_in_commands", false).forGetter(Timeline.TimeMarkerInfo::showInCommands)
-               )
-               .apply(i, Timeline.TimeMarkerInfo::new)
+               ExtraCodecs.NON_NEGATIVE_INT.fieldOf("ticks").forGetter(Timeline.TimeMarkerInfo::ticks),
+               Codec.BOOL.optionalFieldOf("show_in_commands", false).forGetter(Timeline.TimeMarkerInfo::showInCommands)
+            )
+            .apply(i, Timeline.TimeMarkerInfo::new)
       );
       public static final Codec<Timeline.TimeMarkerInfo> CODEC = Codec.either(ExtraCodecs.NON_NEGATIVE_INT, FULL_CODEC)
          .xmap(

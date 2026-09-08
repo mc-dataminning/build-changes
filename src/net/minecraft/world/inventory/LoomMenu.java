@@ -2,7 +2,6 @@ package net.minecraft.world.inventory;
 
 import com.google.common.collect.ImmutableList;
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
@@ -32,8 +31,7 @@ public class LoomMenu extends AbstractContainerMenu {
    private final ContainerLevelAccess access;
    private final DataSlot selectedBannerPatternIndex = DataSlot.standalone();
    private List<Holder<BannerPattern>> selectablePatterns = List.of();
-   private Runnable slotUpdateListener = () -> {
-   };
+   private Runnable slotUpdateListener = () -> {};
    private final HolderGetter<BannerPattern> patternGetter;
    private final Slot bannerSlot;
    private final Slot dyeSlot;
@@ -41,10 +39,6 @@ public class LoomMenu extends AbstractContainerMenu {
    private final Slot resultSlot;
    private long lastSoundTime;
    private final Container inputContainer = new SimpleContainer(3) {
-      {
-         Objects.requireNonNull(LoomMenu.this);
-      }
-
       @Override
       public void setChanged() {
          super.setChanged();
@@ -53,10 +47,6 @@ public class LoomMenu extends AbstractContainerMenu {
       }
    };
    private final Container outputContainer = new SimpleContainer(1) {
-      {
-         Objects.requireNonNull(LoomMenu.this);
-      }
-
       @Override
       public void setChanged() {
          super.setChanged();
@@ -72,40 +62,24 @@ public class LoomMenu extends AbstractContainerMenu {
       super(MenuType.LOOM, containerId);
       this.access = access;
       this.bannerSlot = this.addSlot(new Slot(this.inputContainer, 0, 13, 26) {
-         {
-            Objects.requireNonNull(LoomMenu.this);
-         }
-
          @Override
          public boolean mayPlace(final ItemStack itemStack) {
             return itemStack.getItem() instanceof BannerItem;
          }
       });
       this.dyeSlot = this.addSlot(new Slot(this.inputContainer, 1, 33, 26) {
-         {
-            Objects.requireNonNull(LoomMenu.this);
-         }
-
          @Override
          public boolean mayPlace(final ItemStack itemStack) {
             return LoomMenu.isDyeItem(itemStack);
          }
       });
       this.patternSlot = this.addSlot(new Slot(this.inputContainer, 2, 23, 45) {
-         {
-            Objects.requireNonNull(LoomMenu.this);
-         }
-
          @Override
          public boolean mayPlace(final ItemStack itemStack) {
             return LoomMenu.isPatternItem(itemStack);
          }
       });
       this.resultSlot = this.addSlot(new Slot(this.outputContainer, 0, 143, 57) {
-         {
-            Objects.requireNonNull(LoomMenu.this);
-         }
-
          @Override
          public boolean mayPlace(final ItemStack itemStack) {
             return false;
@@ -161,10 +135,10 @@ public class LoomMenu extends AbstractContainerMenu {
    private List<Holder<BannerPattern>> getSelectablePatterns(final ItemStack patternStack) {
       if (patternStack.isEmpty()) {
          return this.patternGetter.get(BannerPatternTags.NO_ITEM_REQUIRED).<List<Holder<BannerPattern>>>map(ImmutableList::copyOf).orElse(ImmutableList.of());
-      } else {
-         HolderSet<BannerPattern> itemPatterns = patternStack.get(DataComponents.PROVIDES_BANNER_PATTERNS);
-         return itemPatterns != null ? ImmutableList.copyOf(itemPatterns) : ImmutableList.of();
       }
+
+      HolderSet<BannerPattern> itemPatterns = patternStack.get(DataComponents.PROVIDES_BANNER_PATTERNS);
+      return itemPatterns != null ? ImmutableList.copyOf(itemPatterns) : ImmutableList.of();
    }
 
    private boolean isValidPatternIndex(final int selectedPattern) {

@@ -30,18 +30,18 @@ public record CaveWorldCarver(
 ) implements WorldCarver {
    public static final MapCodec<CaveWorldCarver> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter(c -> c.probability),
-               HeightProvider.CODEC.fieldOf("y").forGetter(c -> c.y),
-               IntProviders.NON_NEGATIVE_CODEC.fieldOf("count").forGetter(c -> c.count),
-               FloatProviders.codec(0.0F).fieldOf("thickness").forGetter(c -> c.thickness),
-               Codec.BOOL.optionalFieldOf("weird_thickness_bias", false).forGetter(c -> c.weirdThicknessBias),
-               FloatProviders.CODEC.fieldOf("room_vertical_radius_multiplier").forGetter(c -> c.roomVerticalRadiusMultiplier),
-               FloatProviders.CODEC.fieldOf("horizontal_radius_multiplier").forGetter(c -> c.horizontalRadiusMultiplier),
-               FloatProviders.CODEC.fieldOf("vertical_radius_multiplier").forGetter(c -> c.verticalRadiusMultiplier),
-               FloatProviders.CODEC.optionalFieldOf("start_vertical_radius_multiplier", ConstantFloat.of(1.0F)).forGetter(c -> c.startVerticalRadiusMultiplier),
-               FloatProviders.codec(-1.0F, 1.0F).fieldOf("floor_level").forGetter(c -> c.floorLevel)
-            )
-            .apply(i, CaveWorldCarver::new)
+            Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter(c -> c.probability),
+            HeightProvider.CODEC.fieldOf("y").forGetter(c -> c.y),
+            IntProviders.NON_NEGATIVE_CODEC.fieldOf("count").forGetter(c -> c.count),
+            FloatProviders.codec(0.0F).fieldOf("thickness").forGetter(c -> c.thickness),
+            Codec.BOOL.optionalFieldOf("weird_thickness_bias", false).forGetter(c -> c.weirdThicknessBias),
+            FloatProviders.CODEC.fieldOf("room_vertical_radius_multiplier").forGetter(c -> c.roomVerticalRadiusMultiplier),
+            FloatProviders.CODEC.fieldOf("horizontal_radius_multiplier").forGetter(c -> c.horizontalRadiusMultiplier),
+            FloatProviders.CODEC.fieldOf("vertical_radius_multiplier").forGetter(c -> c.verticalRadiusMultiplier),
+            FloatProviders.CODEC.optionalFieldOf("start_vertical_radius_multiplier", ConstantFloat.of(1.0F)).forGetter(c -> c.startVerticalRadiusMultiplier),
+            FloatProviders.codec(-1.0F, 1.0F).fieldOf("floor_level").forGetter(c -> c.floorLevel)
+         )
+         .apply(i, CaveWorldCarver::new)
    );
 
    @Override
@@ -57,17 +57,17 @@ public record CaveWorldCarver(
       int caveCount = this.count.sample(random);
 
       for (int cave = 0; cave < caveCount; cave++) {
-         double x = (double)sourceChunkPos.getBlockX(random.nextInt(16));
-         double y = (double)this.y.sample(random, context);
-         double z = (double)sourceChunkPos.getBlockZ(random.nextInt(16));
-         double horizontalRadiusMultiplier = (double)this.horizontalRadiusMultiplier.sample(random);
-         double verticalRadiusMultiplier = (double)this.verticalRadiusMultiplier.sample(random);
-         double startVerticalRadiusMultiplier = (double)this.startVerticalRadiusMultiplier.sample(random);
-         double floorLevel = (double)this.floorLevel.sample(random);
+         double x = sourceChunkPos.getBlockX(random.nextInt(16));
+         double y = this.y.sample(random, context);
+         double z = sourceChunkPos.getBlockZ(random.nextInt(16));
+         double horizontalRadiusMultiplier = this.horizontalRadiusMultiplier.sample(random);
+         double verticalRadiusMultiplier = this.verticalRadiusMultiplier.sample(random);
+         double startVerticalRadiusMultiplier = this.startVerticalRadiusMultiplier.sample(random);
+         double floorLevel = this.floorLevel.sample(random);
          WorldCarver.CarveSkipChecker skipChecker = (xd, yd, zd, worldY) -> shouldSkip(xd, yd, zd, floorLevel);
          int tunnels = 1;
          if (random.nextInt(4) == 0) {
-            double yScale = (double)this.roomVerticalRadiusMultiplier.sample(random);
+            double yScale = this.roomVerticalRadiusMultiplier.sample(random);
             float thickness = 1.0F + random.nextFloat() * 6.0F;
             this.createRoom(chunkPos, x, y, z, thickness, yScale, output, skipChecker);
             tunnels += random.nextInt(4);
@@ -121,7 +121,7 @@ public record CaveWorldCarver(
       final CarverOutput output,
       final WorldCarver.CarveSkipChecker skipChecker
    ) {
-      double horizontalRadius = 1.5 + (double)(Mth.sin((float) (Math.PI / 2)) * thickness);
+      double horizontalRadius = 1.5 + Mth.sin((float) (Math.PI / 2)) * thickness;
       double verticalRadius = horizontalRadius * yScale;
       WorldCarver.carveEllipsoid(chunkPos, x + 1.0, y, z, horizontalRadius, verticalRadius, output, skipChecker);
    }
@@ -150,12 +150,12 @@ public record CaveWorldCarver(
       float xRota = 0.0F;
 
       for (int currentStep = step; currentStep < dist; currentStep++) {
-         double horizontalRadius = 1.5 + (double)(Mth.sin((double)((float) Math.PI * (float)currentStep / (float)dist)) * thickness);
+         double horizontalRadius = 1.5 + Mth.sin((float) Math.PI * currentStep / dist) * thickness;
          double verticalRadius = horizontalRadius * yScale;
-         float cosX = Mth.cos((double)verticalRotation);
-         x += (double)(Mth.cos((double)horizontalRotation) * cosX);
-         y += (double)Mth.sin((double)verticalRotation);
-         z += (double)(Mth.sin((double)horizontalRotation) * cosX);
+         float cosX = Mth.cos(verticalRotation);
+         x += Mth.cos(horizontalRotation) * cosX;
+         y += Mth.sin(verticalRotation);
+         z += Mth.sin(horizontalRotation) * cosX;
          verticalRotation *= steep ? 0.92F : 0.7F;
          verticalRotation += xRota * 0.1F;
          horizontalRotation += yRota * 0.1F;

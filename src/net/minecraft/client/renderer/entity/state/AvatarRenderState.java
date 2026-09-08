@@ -25,10 +25,8 @@ public class AvatarRenderState extends HumanoidRenderState {
    public float fallFlyingTimeInTicks;
    public boolean shouldApplyFlyingYRot;
    public float flyingYRot;
-   @Nullable
-   public Parrot.Variant parrotOnLeftShoulder;
-   @Nullable
-   public Parrot.Variant parrotOnRightShoulder;
+   public Parrot.@Nullable Variant parrotOnLeftShoulder;
+   public Parrot.@Nullable Variant parrotOnRightShoulder;
    public int id;
    public boolean showExtraEars = false;
    public final ItemStackRenderState heldOnHead = new ItemStackRenderState();

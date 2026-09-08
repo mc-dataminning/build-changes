@@ -19,10 +19,10 @@ public record EquipmentTable(ResourceKey<LootTable> lootTable, Map<EquipmentSlot
       });
    public static final Codec<EquipmentTable> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               LootTable.KEY_CODEC.fieldOf("loot_table").forGetter(EquipmentTable::lootTable),
-               DROP_CHANCES_CODEC.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(EquipmentTable::slotDropChances)
-            )
-            .apply(i, EquipmentTable::new)
+            LootTable.KEY_CODEC.fieldOf("loot_table").forGetter(EquipmentTable::lootTable),
+            DROP_CHANCES_CODEC.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(EquipmentTable::slotDropChances)
+         )
+         .apply(i, EquipmentTable::new)
    );
 
    public EquipmentTable(final ResourceKey<LootTable> lootTable, final float dropChance) {

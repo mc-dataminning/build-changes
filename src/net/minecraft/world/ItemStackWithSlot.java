@@ -8,10 +8,10 @@ import net.minecraft.world.item.ItemStack;
 public record ItemStackWithSlot(int slot, ItemStack stack) {
    public static final Codec<ItemStackWithSlot> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ExtraCodecs.optionalAlwaysPresentFieldOf(ExtraCodecs.UNSIGNED_BYTE, "Slot", 0).forGetter(ItemStackWithSlot::slot),
-               ItemStack.MAP_CODEC.forGetter(ItemStackWithSlot::stack)
-            )
-            .apply(i, ItemStackWithSlot::new)
+            ExtraCodecs.optionalAlwaysPresentFieldOf(ExtraCodecs.UNSIGNED_BYTE, "Slot", 0).forGetter(ItemStackWithSlot::slot),
+            ItemStack.MAP_CODEC.forGetter(ItemStackWithSlot::stack)
+         )
+         .apply(i, ItemStackWithSlot::new)
    );
 
    public boolean isValidInContainer(final int containerSize) {

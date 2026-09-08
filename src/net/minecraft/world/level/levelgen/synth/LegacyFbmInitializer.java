@@ -34,25 +34,27 @@ public class LegacyFbmInitializer {
 
       if (Arrays.stream(noiseLevels).filter(Objects::nonNull).count() != amplitudes.stream().filter(a -> a != 0.0).count()) {
          throw new IllegalStateException("Failed to create correct number of noise levels for given non-zero amplitudes");
-      } else if (zeroOctaveIndex < octaves - 1) {
+      }
+
+      if (zeroOctaveIndex < octaves - 1) {
          throw new IllegalArgumentException("Positive octaves are temporarily disabled");
-      } else {
-         double factor = Math.pow(2.0, (double)(-zeroOctaveIndex));
-         double valueFactor = Math.pow(2.0, (double)(octaves - 1)) / (Math.pow(2.0, (double)octaves) - 1.0);
-         NoiseStack.Builder stack = NoiseStack.builder();
+      }
 
-         for (int ix = 0; ix < noiseLevels.length; ix++) {
-            PerlinNoise noise = noiseLevels[ix];
-            if (noise != null) {
-               stack.add(noise, factor, (float)(valueFactor * amplitudes.getDouble(ix)));
-            }
+      double factor = Math.pow(2.0, -zeroOctaveIndex);
+      double valueFactor = Math.pow(2.0, octaves - 1) / (Math.pow(2.0, octaves) - 1.0);
+      NoiseStack.Builder stack = NoiseStack.builder();
 
-            factor *= 2.0;
-            valueFactor /= 2.0;
+      for (int i = 0; i < noiseLevels.length; i++) {
+         PerlinNoise noise = noiseLevels[i];
+         if (noise != null) {
+            stack.add(noise, factor, (float)(valueFactor * amplitudes.getDouble(i)));
          }
 
-         return stack.build();
+         factor *= 2.0;
+         valueFactor /= 2.0;
       }
+
+      return stack.build();
    }
 
    private static void skipOctave(final RandomSource random) {

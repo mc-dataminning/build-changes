@@ -37,28 +37,26 @@ public class TranslatableContents implements ComponentContents {
       );
    public static final MapCodec<TranslatableContents> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.STRING.fieldOf("translate").forGetter(o -> o.key),
-               Codec.STRING.lenientOptionalFieldOf("fallback").forGetter(o -> Optional.ofNullable(o.fallback)),
-               ARG_CODEC.listOf().optionalFieldOf("with").forGetter(o -> adjustArgs(o.args))
-            )
-            .apply(i, TranslatableContents::create)
+            Codec.STRING.fieldOf("translate").forGetter(o -> o.key),
+            Codec.STRING.lenientOptionalFieldOf("fallback").forGetter(o -> Optional.ofNullable(o.fallback)),
+            ARG_CODEC.listOf().optionalFieldOf("with").forGetter(o -> adjustArgs(o.args))
+         )
+         .apply(i, TranslatableContents::create)
    );
    private static final FormattedText TEXT_PERCENT = FormattedText.of("%");
    private static final FormattedText TEXT_NULL = FormattedText.of("null");
    private final String key;
-   @Nullable
-   private final String fallback;
+   private final @Nullable String fallback;
    private final Object[] args;
-   @Nullable
-   private Language decomposedWith;
+   private @Nullable Language decomposedWith;
    private List<FormattedText> decomposedParts = ImmutableList.of();
    private static final Pattern FORMAT_PATTERN = Pattern.compile("%(?:(\\d+)\\$)?([A-Za-z%]|$)");
 
-   private static DataResult<Object> filterAllowedArguments(@Nullable final Object result) {
+   private static DataResult<Object> filterAllowedArguments(final @Nullable Object result) {
       return !isAllowedPrimitiveArgument(result) ? DataResult.error(() -> "This value needs to be parsed as component") : DataResult.success(result);
    }
 
-   public static boolean isAllowedPrimitiveArgument(@Nullable final Object object) {
+   public static boolean isAllowedPrimitiveArgument(final @Nullable Object object) {
       return object instanceof Number || object instanceof Boolean || object instanceof String;
    }
 
@@ -74,7 +72,7 @@ public class TranslatableContents implements ComponentContents {
       return new TranslatableContents(key, fallback.orElse(null), adjustArgs(args));
    }
 
-   public TranslatableContents(final String key, @Nullable final String fallback, final Object[] args) {
+   public TranslatableContents(final String key, final @Nullable String fallback, final Object[] args) {
       this.key = key;
       this.fallback = fallback;
       this.args = args;
@@ -95,7 +93,7 @@ public class TranslatableContents implements ComponentContents {
             Builder<FormattedText> parts = ImmutableList.builder();
             this.decomposeTemplate(format, parts::add);
             this.decomposedParts = parts.build();
-         } catch (TranslatableFormatException var4) {
+         } catch (TranslatableFormatException e) {
             this.decomposedParts = ImmutableList.of(FormattedText.of(format));
          }
       }
@@ -145,16 +143,16 @@ public class TranslatableContents implements ComponentContents {
 
             decomposedParts.accept(FormattedText.of(tail));
          }
-      } catch (IllegalArgumentException var12) {
-         throw new TranslatableFormatException(this, var12);
+      } catch (IllegalArgumentException e) {
+         throw new TranslatableFormatException(this, e);
       }
    }
 
    private FormattedText getArgument(final int index) {
       if (index >= 0 && index < this.args.length) {
          Object arg = this.args[index];
-         if (arg instanceof Component) {
-            return (Component)arg;
+         if (arg instanceof Component componentArg) {
+            return componentArg;
          } else {
             return arg == null ? TEXT_NULL : FormattedText.of(arg.toString());
          }
@@ -209,18 +207,12 @@ public class TranslatableContents implements ComponentContents {
 
    @Override
    public boolean equals(final Object o) {
-      if (this == o) {
-         return true;
-      } else {
-         if (o instanceof TranslatableContents that
+      return this == o
+         ? true
+         : o instanceof TranslatableContents that
             && Objects.equals(this.key, that.key)
             && Objects.equals(this.fallback, that.fallback)
-            && Arrays.equals(this.args, that.args)) {
-            return true;
-         }
-
-         return false;
-      }
+            && Arrays.equals(this.args, that.args);
    }
 
    @Override
@@ -245,8 +237,7 @@ public class TranslatableContents implements ComponentContents {
       return this.key;
    }
 
-   @Nullable
-   public String getFallback() {
+   public @Nullable String getFallback() {
       return this.fallback;
    }
 

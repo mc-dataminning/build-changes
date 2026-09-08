@@ -68,12 +68,14 @@ public class ContainerHelper {
    ) {
       if (itemStack.isEmpty() || !predicate.test(itemStack)) {
          return 0;
-      } else if (countingOnly) {
-         return itemStack.getCount();
-      } else {
-         int amountRemoved = amountToRemove < 0 ? itemStack.getCount() : Math.min(amountToRemove, itemStack.getCount());
-         itemStack.shrink(amountRemoved);
-         return amountRemoved;
       }
+
+      if (countingOnly) {
+         return itemStack.getCount();
+      }
+
+      int amountRemoved = amountToRemove < 0 ? itemStack.getCount() : Math.min(amountToRemove, itemStack.getCount());
+      itemStack.shrink(amountRemoved);
+      return amountRemoved;
    }
 }

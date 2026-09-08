@@ -5,7 +5,6 @@ import com.mojang.realmsclient.gui.RealmsHeader;
 import com.mojang.realmsclient.gui.task.DataFetcher;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -53,10 +52,9 @@ public class RealmsPdpScreen extends RealmsScreen {
    private boolean trialAvailable;
    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
    private final RealmsHeader header;
-   @Nullable
-   private final Runnable openRealmsScreenWhenAvailable;
-   private RealmsPdpScreen.PdpList pdpList;
-   private DataFetcher.Subscription dataSubscription;
+   private final @Nullable Runnable openRealmsScreenWhenAvailable;
+   private RealmsPdpScreen.@Nullable PdpList pdpList;
+   private DataFetcher.@Nullable Subscription dataSubscription;
    private boolean realmsAvailable;
    private boolean redirectedToRealms;
 
@@ -65,7 +63,7 @@ public class RealmsPdpScreen extends RealmsScreen {
    }
 
    public RealmsPdpScreen(
-      final Screen lastScreen, final boolean trialAvailable, final Runnable openJoinRealmScreen, @Nullable final Runnable openRealmsScreenWhenAvailable
+      final Screen lastScreen, final boolean trialAvailable, final Runnable openJoinRealmScreen, final @Nullable Runnable openRealmsScreenWhenAvailable
    ) {
       super(TITLE);
       this.lastScreen = lastScreen;
@@ -156,7 +154,6 @@ public class RealmsPdpScreen extends RealmsScreen {
       private final List<Component> descriptions;
 
       private PdpFeatureEntry(final Identifier image, final Component title, final Component... descriptions) {
-         Objects.requireNonNull(RealmsPdpScreen.this);
          super(title);
          this.image = image;
          this.descriptions = List.of(descriptions);
@@ -203,11 +200,9 @@ public class RealmsPdpScreen extends RealmsScreen {
 
    private class PdpHeaderEntry extends RealmsPdpScreen.AbstractPdpEntry {
       private static final int DESCRIPTION_ICON_SIZE = 8;
-      @Nullable
-      private final RealmsPdpScreen.PdpHeaderEntry.Subtitle subtitle;
+      private final RealmsPdpScreen.PdpHeaderEntry.@Nullable Subtitle subtitle;
 
-      public PdpHeaderEntry(final Component title, @Nullable final RealmsPdpScreen.PdpHeaderEntry.Subtitle subtitle) {
-         Objects.requireNonNull(RealmsPdpScreen.this);
+      public PdpHeaderEntry(final Component title, final RealmsPdpScreen.PdpHeaderEntry.@Nullable Subtitle subtitle) {
          super(title);
          this.subtitle = subtitle;
       }
@@ -253,13 +248,12 @@ public class RealmsPdpScreen extends RealmsScreen {
          return this.getContentXMiddle() - Math.min(182, RealmsPdpScreen.this.font.width(this.title)) / 2;
       }
 
-      private static record Subtitle(Component subTitle, Identifier icon) {
+      private record Subtitle(Component subTitle, Identifier icon) {
       }
    }
 
    private class PdpList extends ObjectSelectionList<RealmsPdpScreen.AbstractPdpEntry> {
       private PdpList(final Minecraft minecraft) {
-         Objects.requireNonNull(RealmsPdpScreen.this);
          super(minecraft, RealmsPdpScreen.this.width, RealmsPdpScreen.this.layout.getContentHeight(), RealmsPdpScreen.this.layout.getHeaderHeight(), 45);
          if (RealmsPdpScreen.this.trialAvailable) {
             this.addHeader(
@@ -282,7 +276,7 @@ public class RealmsPdpScreen extends RealmsScreen {
          );
       }
 
-      private void addHeader(final Component title, @Nullable final RealmsPdpScreen.PdpHeaderEntry.Subtitle subTitle) {
+      private void addHeader(final Component title, final @Nullable RealmsPdpScreen.PdpHeaderEntry.Subtitle subTitle) {
          RealmsPdpScreen.PdpHeaderEntry entry = RealmsPdpScreen.this.new PdpHeaderEntry(title, subTitle);
          this.addEntry(entry, entry.entryHeight());
       }

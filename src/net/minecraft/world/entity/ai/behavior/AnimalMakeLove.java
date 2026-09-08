@@ -54,21 +54,21 @@ public class AnimalMakeLove extends Behavior<Animal> {
       partner.getBrain().setMemory(MemoryModuleType.BREED_TARGET, body);
       BehaviorUtils.lockGazeAndWalkToEachOther(body, partner, this.speedModifier, this.closeEnoughDistance);
       int duration = 60 + body.getRandom().nextInt(50);
-      this.spawnChildAtTime = timestamp + (long)duration;
+      this.spawnChildAtTime = timestamp + duration;
    }
 
    protected boolean canStillUse(final ServerLevel level, final Animal body, final long timestamp) {
       if (!this.hasBreedTargetOfRightType(body)) {
          return false;
-      } else {
-         Animal partner = this.getBreedTarget(body);
-         return partner.isAlive()
-            && body.canMate(partner)
-            && BehaviorUtils.entityIsVisible(body.getBrain(), partner)
-            && timestamp <= this.spawnChildAtTime
-            && !body.isPanicking()
-            && !partner.isPanicking();
       }
+
+      Animal partner = this.getBreedTarget(body);
+      return partner.isAlive()
+         && body.canMate(partner)
+         && BehaviorUtils.entityIsVisible(body.getBrain(), partner)
+         && timestamp <= this.spawnChildAtTime
+         && !body.isPanicking()
+         && !partner.isPanicking();
    }
 
    protected void tick(final ServerLevel level, final Animal body, final long timestamp) {
@@ -100,12 +100,10 @@ public class AnimalMakeLove extends Behavior<Animal> {
    }
 
    private Optional<? extends Animal> findValidBreedPartner(final Animal body) {
-      return body.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES).get().findClosest(entity -> {
-         if (entity.is(this.partnerType) && entity instanceof Animal animal && body.canMate(animal) && !animal.isPanicking()) {
-            return true;
-         }
-
-         return false;
-      }).map(Animal.class::cast);
+      return body.getBrain()
+         .getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
+         .get()
+         .findClosest(entity -> entity.is(this.partnerType) && entity instanceof Animal animal && body.canMate(animal) && !animal.isPanicking())
+         .map(Animal.class::cast);
    }
 }

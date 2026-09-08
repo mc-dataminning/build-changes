@@ -16,9 +16,9 @@ class HealOrHarmMobEffect extends InstantaneousMobEffect {
    @Override
    public boolean applyEffectTick(final ServerLevel level, final LivingEntity mob, final int amplification) {
       if (this.isHarm == mob.isInvertedHealAndHarm()) {
-         mob.heal((float)Math.max(4 << amplification, 0));
+         mob.heal(Math.max(4 << amplification, 0));
       } else {
-         mob.hurtServer(level, mob.damageSources().magic(), (float)(6 << amplification));
+         mob.hurtServer(level, mob.damageSources().magic(), 6 << amplification);
       }
 
       return true;
@@ -27,21 +27,21 @@ class HealOrHarmMobEffect extends InstantaneousMobEffect {
    @Override
    public void applyInstantaneousEffect(
       final ServerLevel serverLevel,
-      @Nullable final Entity source,
-      @Nullable final Entity owner,
+      final @Nullable Entity source,
+      final @Nullable Entity owner,
       final LivingEntity mob,
       final int amplification,
       final double scale
    ) {
       if (this.isHarm == mob.isInvertedHealAndHarm()) {
-         int amount = (int)(scale * (double)(4 << amplification) + 0.5);
-         mob.heal((float)amount);
+         int amount = (int)(scale * (4 << amplification) + 0.5);
+         mob.heal(amount);
       } else {
-         int amount = (int)(scale * (double)(6 << amplification) + 0.5);
+         int amount = (int)(scale * (6 << amplification) + 0.5);
          if (source == null) {
-            mob.hurtServer(serverLevel, mob.damageSources().magic(), (float)amount);
+            mob.hurtServer(serverLevel, mob.damageSources().magic(), amount);
          } else {
-            mob.hurtServer(serverLevel, mob.damageSources().indirectMagic(source, owner), (float)amount);
+            mob.hurtServer(serverLevel, mob.damageSources().indirectMagic(source, owner), amount);
          }
       }
    }

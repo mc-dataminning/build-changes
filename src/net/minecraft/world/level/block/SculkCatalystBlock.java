@@ -25,7 +25,7 @@ public class SculkCatalystBlock extends BaseEntityBlock {
 
    public SculkCatalystBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(PULSE, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(PULSE, false));
    }
 
    @Override
@@ -36,19 +36,17 @@ public class SculkCatalystBlock extends BaseEntityBlock {
    @Override
    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
       if (state.getValue(PULSE)) {
-         level.setBlockAndUpdate(pos, state.setValue(PULSE, Boolean.valueOf(false)));
+         level.setBlockAndUpdate(pos, state.setValue(PULSE, false));
       }
    }
 
-   @Nullable
    @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
+   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
       return new SculkCatalystBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return level.isClientSide() ? null : createTickerHelper(type, BlockEntityTypes.SCULK_CATALYST, SculkCatalystBlockEntity::serverTick);
    }
 

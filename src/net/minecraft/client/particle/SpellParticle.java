@@ -29,7 +29,7 @@ public class SpellParticle extends SingleQuadParticle {
       }
 
       this.quadSize *= 0.75F;
-      this.lifetime = (int)(8.0 / ((double)this.random.nextFloat() * 0.8 + 0.2));
+      this.lifetime = (int)(8.0 / (this.random.nextFloat() * 0.8 + 0.2));
       this.hasPhysics = false;
       this.setSpriteFromAge(sprites);
       if (this.isCloseToScopingPlayer()) {

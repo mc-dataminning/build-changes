@@ -136,21 +136,18 @@ public class Tadpole extends AbstractFish {
       return this.entityData.get(AGE_LOCKED);
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getAmbientSound() {
+   protected @Nullable SoundEvent getAmbientSound() {
       return null;
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
+   protected @Nullable SoundEvent getHurtSound(final DamageSource source) {
       return SoundEvents.TADPOLE_HURT;
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getDeathSound() {
+   protected @Nullable SoundEvent getDeathSound() {
       return SoundEvents.TADPOLE_DEATH;
    }
 

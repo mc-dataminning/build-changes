@@ -42,7 +42,7 @@ public class FireChargeItem extends Item implements ProjectileItem {
          }
       } else {
          this.playSound(level, pos);
-         level.setBlockAndUpdate(pos, blockState.setValue(BlockStateProperties.LIT, Boolean.valueOf(true)));
+         level.setBlockAndUpdate(pos, blockState.setValue(BlockStateProperties.LIT, true));
          level.gameEvent(context.getPlayer(), GameEvent.BLOCK_CHANGE, pos);
          used = true;
       }
@@ -63,9 +63,9 @@ public class FireChargeItem extends Item implements ProjectileItem {
    @Override
    public Projectile asProjectile(final Level level, final Position position, final ItemStack itemStack, final Direction direction) {
       RandomSource random = level.getRandom();
-      double dirX = random.triangle((double)direction.getStepX(), 0.11485000000000001);
-      double dirY = random.triangle((double)direction.getStepY(), 0.11485000000000001);
-      double dirZ = random.triangle((double)direction.getStepZ(), 0.11485000000000001);
+      double dirX = random.triangle(direction.getStepX(), 0.11485000000000001);
+      double dirY = random.triangle(direction.getStepY(), 0.11485000000000001);
+      double dirZ = random.triangle(direction.getStepZ(), 0.11485000000000001);
       Vec3 dir = new Vec3(dirX, dirY, dirZ);
       SmallFireball fireball = new SmallFireball(level, position.x(), position.y(), position.z(), dir.normalize());
       fireball.setItem(itemStack);

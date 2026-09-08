@@ -20,8 +20,7 @@ public final class WeightedList<E> {
    private static final int FLAT_THRESHOLD = 64;
    private final int totalWeight;
    private final List<Weighted<E>> items;
-   @Nullable
-   private final WeightedList.Selector<E> selector;
+   private final WeightedList.@Nullable Selector<E> selector;
 
    private WeightedList(final List<? extends Weighted<E>> items) {
       this.items = List.copyOf(items);
@@ -77,19 +76,19 @@ public final class WeightedList<E> {
    public Optional<E> getRandom(final RandomSource random) {
       if (this.selector == null) {
          return Optional.empty();
-      } else {
-         int selection = random.nextInt(this.totalWeight);
-         return Optional.of(this.selector.get(selection));
       }
+
+      int selection = random.nextInt(this.totalWeight);
+      return Optional.of(this.selector.get(selection));
    }
 
    public E getRandomOrThrow(final RandomSource random) {
       if (this.selector == null) {
          throw new IllegalStateException("Weighted list has no elements");
-      } else {
-         int selection = random.nextInt(this.totalWeight);
-         return this.selector.get(selection);
       }
+
+      int selection = random.nextInt(this.totalWeight);
+      return this.selector.get(selection);
    }
 
    public List<Weighted<E>> unwrap() {
@@ -138,7 +137,7 @@ public final class WeightedList<E> {
    }
 
    @Override
-   public boolean equals(@Nullable final Object obj) {
+   public boolean equals(final @Nullable Object obj) {
       if (this == obj) {
          return true;
       } else {

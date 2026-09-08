@@ -11,13 +11,12 @@ public class CriterionProgress {
    public static final StreamCodec<ByteBuf, CriterionProgress> STREAM_CODEC = ByteBufCodecs.INSTANT
       .apply(ByteBufCodecs::optional)
       .map(obtained -> new CriterionProgress((Instant)obtained.orElse(null)), progress -> Optional.ofNullable(progress.obtained));
-   @Nullable
-   private Instant obtained;
+   private @Nullable Instant obtained;
 
    public CriterionProgress() {
    }
 
-   public CriterionProgress(@Nullable final Instant obtained) {
+   public CriterionProgress(final @Nullable Instant obtained) {
       this.obtained = obtained;
    }
 
@@ -33,8 +32,7 @@ public class CriterionProgress {
       this.obtained = null;
    }
 
-   @Nullable
-   public Instant getObtained() {
+   public @Nullable Instant getObtained() {
       return this.obtained;
    }
 

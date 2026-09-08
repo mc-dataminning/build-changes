@@ -3,7 +3,6 @@ package net.minecraft.world;
 import com.mojang.serialization.Codec;
 import net.minecraft.advancements.predicates.ItemPredicate;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemInstance;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
@@ -14,7 +13,7 @@ public record LockCode(ItemPredicate predicate) {
    public static final String TAG_LOCK = "lock";
 
    public boolean unlocksWith(final ItemStack itemStack) {
-      return this.predicate.test((ItemInstance)itemStack);
+      return this.predicate.test(itemStack);
    }
 
    public void addToTag(final ValueOutput parent) {

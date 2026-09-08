@@ -39,8 +39,8 @@ public class ItemModelResolver {
       final ItemStackRenderState output,
       final ItemStack item,
       final ItemDisplayContext displayContext,
-      @Nullable final Level level,
-      @Nullable final ItemOwner owner,
+      final @Nullable Level level,
+      final @Nullable ItemOwner owner,
       final int seed
    ) {
       output.clear();
@@ -54,8 +54,8 @@ public class ItemModelResolver {
       final ItemStackRenderState output,
       final ItemStack item,
       final ItemDisplayContext displayContext,
-      @Nullable final Level level,
-      @Nullable final ItemOwner owner,
+      final @Nullable Level level,
+      final @Nullable ItemOwner owner,
       final int seed
    ) {
       Identifier modelId = item.get(DataComponents.ITEM_MODEL);

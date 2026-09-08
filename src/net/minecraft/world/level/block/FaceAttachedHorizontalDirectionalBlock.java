@@ -30,9 +30,8 @@ public abstract class FaceAttachedHorizontalDirectionalBlock extends HorizontalD
       return level.getBlockState(relative).isFaceSturdy(level, relative, direction.getOpposite());
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       for (Direction direction : context.getNearestLookingDirections()) {
          BlockState state;
          if (direction.getAxis() == Direction.Axis.Y) {

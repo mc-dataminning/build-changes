@@ -162,9 +162,8 @@ public class TropicalFish extends AbstractSchoolingFish {
       this.setPackedVariant(packVariant(pattern, baseColor, patternColor));
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       if (type == DataComponents.TROPICAL_FISH_PATTERN) {
          return castComponentValue((DataComponentType<T>)type, this.getPattern());
       } else if (type == DataComponents.TROPICAL_FISH_BASE_COLOR) {
@@ -231,9 +230,8 @@ public class TropicalFish extends AbstractSchoolingFish {
       return SoundEvents.TROPICAL_FISH_FLOP;
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       groupData = super.finalizeSpawn(level, difficulty, spawnReason, groupData);
@@ -241,7 +239,7 @@ public class TropicalFish extends AbstractSchoolingFish {
       TropicalFish.Variant variant;
       if (groupData instanceof TropicalFish.TropicalFishGroupData tropicalFishGroupData) {
          variant = tropicalFishGroupData.variant;
-      } else if ((double)random.nextFloat() < 0.9) {
+      } else if (random.nextFloat() < 0.9) {
          variant = Util.getRandom(COMMON_VARIANTS, random);
          groupData = new TropicalFish.TropicalFishGroupData(this, variant);
       } else {
@@ -269,18 +267,18 @@ public class TropicalFish extends AbstractSchoolingFish {
          );
    }
 
-   public static enum Base {
+   public enum Base {
       SMALL(0),
       LARGE(1);
 
       private final int id;
 
-      private Base(final int id) {
+      Base(final int id) {
          this.id = id;
       }
    }
 
-   public static enum Pattern implements StringRepresentable, TooltipProvider {
+   public enum Pattern implements StringRepresentable, TooltipProvider {
       KOB("kob", TropicalFish.Base.SMALL, 0),
       SUNSTREAK("sunstreak", TropicalFish.Base.SMALL, 1),
       SNOOPER("snooper", TropicalFish.Base.SMALL, 2),
@@ -302,7 +300,7 @@ public class TropicalFish extends AbstractSchoolingFish {
       private final TropicalFish.Base base;
       private final int packedId;
 
-      private Pattern(final String name, final TropicalFish.Base base, final int index) {
+      Pattern(final String name, final TropicalFish.Base base, final int index) {
          this.name = name;
          this.base = base;
          this.packedId = base.id | index << 8;
@@ -362,7 +360,7 @@ public class TropicalFish extends AbstractSchoolingFish {
       }
    }
 
-   public static record Variant(TropicalFish.Pattern pattern, DyeColor baseColor, DyeColor patternColor) {
+   public record Variant(TropicalFish.Pattern pattern, DyeColor baseColor, DyeColor patternColor) {
       public static final Codec<TropicalFish.Variant> CODEC = Codec.INT.xmap(TropicalFish.Variant::new, TropicalFish.Variant::getPackedId);
 
       public Variant(final int packedId) {

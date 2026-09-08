@@ -20,12 +20,12 @@ public class RandomLookAround extends Behavior<Mob> {
       super(ImmutableMap.of(MemoryModuleType.LOOK_TARGET, MemoryStatus.VALUE_ABSENT, MemoryModuleType.GAZE_COOLDOWN_TICKS, MemoryStatus.VALUE_ABSENT));
       if (minPitch > maxPitch) {
          throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + minPitch + " > " + maxPitch);
-      } else {
-         this.interval = interval;
-         this.maxYaw = maxYaw;
-         this.minPitch = minPitch;
-         this.pitchRange = maxPitch - minPitch;
       }
+
+      this.interval = interval;
+      this.maxYaw = maxYaw;
+      this.minPitch = minPitch;
+      this.pitchRange = maxPitch - minPitch;
    }
 
    protected void start(final ServerLevel level, final Mob body, final long timestamp) {

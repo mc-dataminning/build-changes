@@ -7,7 +7,7 @@ import org.joml.Vector3fc;
 
 public interface VertexSorting {
    VertexSorting DISTANCE_TO_ORIGIN = byDistance(0.0F, 0.0F, 0.0F);
-   VertexSorting ORTHOGRAPHIC_Z = byDistance((VertexSorting.DistanceFunction)(point -> -point.z()));
+   VertexSorting ORTHOGRAPHIC_Z = byDistance(point -> -point.z());
 
    static VertexSorting byDistance(final float x, final float y, final float z) {
       return byDistance(new Vector3f(x, y, z));
@@ -35,7 +35,7 @@ public interface VertexSorting {
    int[] sort(CompactVectorArray points);
 
    @FunctionalInterface
-   public interface DistanceFunction {
+   interface DistanceFunction {
       float apply(Vector3f value);
    }
 }

@@ -27,13 +27,11 @@ public record ArmorMaterial(
       ItemAttributeModifiers.Builder modifiers = ItemAttributeModifiers.builder();
       EquipmentSlotGroup slotGroup = EquipmentSlotGroup.bySlot(type.getSlot());
       Identifier modifierId = Identifier.withDefaultNamespace("armor." + type.getName());
-      modifiers.add(Attributes.ARMOR, new AttributeModifier(modifierId, (double)defense, AttributeModifier.Operation.ADD_VALUE), slotGroup);
-      modifiers.add(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(modifierId, (double)this.toughness, AttributeModifier.Operation.ADD_VALUE), slotGroup);
+      modifiers.add(Attributes.ARMOR, new AttributeModifier(modifierId, defense, AttributeModifier.Operation.ADD_VALUE), slotGroup);
+      modifiers.add(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(modifierId, this.toughness, AttributeModifier.Operation.ADD_VALUE), slotGroup);
       if (this.knockbackResistance > 0.0F) {
          modifiers.add(
-            Attributes.KNOCKBACK_RESISTANCE,
-            new AttributeModifier(modifierId, (double)this.knockbackResistance, AttributeModifier.Operation.ADD_VALUE),
-            slotGroup
+            Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(modifierId, this.knockbackResistance, AttributeModifier.Operation.ADD_VALUE), slotGroup
          );
       }
 

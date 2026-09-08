@@ -47,36 +47,38 @@ public class EntityRidingToPassengersFix extends DataFix {
       Type<?> newEntityType = outputType.getType(References.ENTITY_TREE);
       if (!Objects.equals(oldEntityType, oldType)) {
          throw new IllegalStateException("Old entity type is not what was expected.");
-      } else if (!newEntityType.equals(newType, true, true)) {
-         throw new IllegalStateException("New entity type is not what was expected.");
-      } else {
-         Type<?> patchedEntityTreeType = ExtraDataFixUtils.patchSubType(oldType, oldType, newType);
-         OpticFinder<Entity> entityFinder = DSL.typeFinder(entityType);
-         OpticFinder<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> newEntityTreeValueFinder = DSL.typeFinder(newType);
-         OpticFinder<NewEntityTree> ridingFinder = DSL.fieldFinder("Riding", newEntityTreeType);
-         Type<?> oldPlayerType = inputSchema.getType(References.PLAYER);
-         Type<?> newPlayerType = outputType.getType(References.PLAYER);
-         return TypeRewriteRule.seq(
-            this.fixTypeEverywhere(
-               "EntityRidingToPassengerFix",
-               oldType,
-               newType,
-               ops -> badlyTypedInput -> {
-                     Typed<?> input = ExtraDataFixUtils.cast(patchedEntityTreeType, badlyTypedInput, ops);
-                     Optional<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> maybeRiding = input.getOptionalTyped(ridingFinder)
-                        .flatMap(t -> t.getOptional(newEntityTreeValueFinder));
-                     Entity entity = (Entity)input.getOptional(entityFinder).orElseThrow();
-                     if (maybeRiding.isEmpty()) {
-                        Either<List<NewEntityTree>, Unit> passengers = Either.right(Unit.INSTANCE);
-                        return Pair.of(References.ENTITY_TREE.typeName(), Pair.of(passengers, entity));
-                     } else {
-                        return addPassengerToTop(maybeRiding.get(), entity, ops, newEntityTreeType, newEntityTreeValueFinder);
-                     }
-                  }
-            ),
-            this.writeAndRead("player RootVehicle injecter", oldPlayerType, newPlayerType)
-         );
       }
+
+      if (!newEntityType.equals(newType, true, true)) {
+         throw new IllegalStateException("New entity type is not what was expected.");
+      }
+
+      Type<?> patchedEntityTreeType = ExtraDataFixUtils.patchSubType(oldType, oldType, newType);
+      OpticFinder<Entity> entityFinder = DSL.typeFinder(entityType);
+      OpticFinder<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> newEntityTreeValueFinder = DSL.typeFinder(newType);
+      OpticFinder<NewEntityTree> ridingFinder = DSL.fieldFinder("Riding", newEntityTreeType);
+      Type<?> oldPlayerType = inputSchema.getType(References.PLAYER);
+      Type<?> newPlayerType = outputType.getType(References.PLAYER);
+      return TypeRewriteRule.seq(
+         this.fixTypeEverywhere(
+            "EntityRidingToPassengerFix",
+            oldType,
+            newType,
+            ops -> badlyTypedInput -> {
+               Typed<?> input = ExtraDataFixUtils.cast(patchedEntityTreeType, badlyTypedInput, ops);
+               Optional<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> maybeRiding = input.getOptionalTyped(ridingFinder)
+                  .flatMap(t -> t.getOptional(newEntityTreeValueFinder));
+               Entity entity = (Entity)input.getOptional(entityFinder).orElseThrow();
+               if (maybeRiding.isEmpty()) {
+                  Either<List<NewEntityTree>, Unit> passengers = Either.right(Unit.INSTANCE);
+                  return Pair.of(References.ENTITY_TREE.typeName(), Pair.of(passengers, entity));
+               } else {
+                  return addPassengerToTop(maybeRiding.get(), entity, ops, newEntityTreeType, newEntityTreeValueFinder);
+               }
+            }
+         ),
+         this.writeAndRead("player RootVehicle injecter", oldPlayerType, newPlayerType)
+      );
    }
 
    private static <Entity, EntityTree> Pair<String, Pair<Either<List<EntityTree>, Unit>, Entity>> addPassengerToTop(

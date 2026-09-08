@@ -19,10 +19,10 @@ public record FrogVariant(ClientAsset.ResourceTexture assetInfo, SpawnPrioritySe
    implements PriorityProvider<SpawnContext, SpawnCondition> {
    public static final Codec<FrogVariant> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ClientAsset.ResourceTexture.DEFAULT_FIELD_CODEC.forGetter(FrogVariant::assetInfo),
-               SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(FrogVariant::spawnConditions)
-            )
-            .apply(i, FrogVariant::new)
+            ClientAsset.ResourceTexture.DEFAULT_FIELD_CODEC.forGetter(FrogVariant::assetInfo),
+            SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(FrogVariant::spawnConditions)
+         )
+         .apply(i, FrogVariant::new)
    );
    public static final Codec<FrogVariant> NETWORK_CODEC = RecordCodecBuilder.create(
       i -> i.group(ClientAsset.ResourceTexture.DEFAULT_FIELD_CODEC.forGetter(FrogVariant::assetInfo)).apply(i, FrogVariant::new)

@@ -16,7 +16,7 @@ public class ClientboundSetDisplayObjectivePacket implements Packet<ClientGamePa
    private final DisplaySlot slot;
    private final String objectiveName;
 
-   public ClientboundSetDisplayObjectivePacket(final DisplaySlot slot, @Nullable final Objective objective) {
+   public ClientboundSetDisplayObjectivePacket(final DisplaySlot slot, final @Nullable Objective objective) {
       this.slot = slot;
       if (objective == null) {
          this.objectiveName = "";
@@ -48,8 +48,7 @@ public class ClientboundSetDisplayObjectivePacket implements Packet<ClientGamePa
       return this.slot;
    }
 
-   @Nullable
-   public String getObjectiveName() {
+   public @Nullable String getObjectiveName() {
       return Objects.equals(this.objectiveName, "") ? null : this.objectiveName;
    }
 }

@@ -36,14 +36,14 @@ public class EndCubeSpecialRenderer implements NoDataSpecialModelRenderer {
       AbstractEndPortalRenderer.getExtents(output);
    }
 
-   public static enum Type implements StringRepresentable {
+   public enum Type implements StringRepresentable {
       PORTAL("portal"),
       GATEWAY("gateway");
 
       public static final Codec<EndCubeSpecialRenderer.Type> CODEC = StringRepresentable.fromEnum(EndCubeSpecialRenderer.Type::values);
       private final String name;
 
-      private Type(final String name) {
+      Type(final String name) {
          this.name = name;
       }
 
@@ -53,10 +53,10 @@ public class EndCubeSpecialRenderer implements NoDataSpecialModelRenderer {
       }
    }
 
-   public static record Unbaked(EndCubeSpecialRenderer.Type effect) implements NoDataSpecialModelRenderer.Unbaked {
+   public record Unbaked(EndCubeSpecialRenderer.Type effect) implements NoDataSpecialModelRenderer.Unbaked {
       public static final MapCodec<EndCubeSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(EndCubeSpecialRenderer.Type.CODEC.fieldOf("effect").forGetter(EndCubeSpecialRenderer.Unbaked::effect))
-               .apply(i, EndCubeSpecialRenderer.Unbaked::new)
+            .apply(i, EndCubeSpecialRenderer.Unbaked::new)
       );
 
       @Override

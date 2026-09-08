@@ -19,8 +19,8 @@ public class EquippableAssetRenameFix extends DataFix {
          "equippable asset rename fix",
          componentsType,
          components -> components.updateTyped(
-               equippableField, equippable -> equippable.update(DSL.remainderFinder(), tag -> tag.renameField("model", "asset_id"))
-            )
+            equippableField, equippable -> equippable.update(DSL.remainderFinder(), tag -> tag.renameField("model", "asset_id"))
+         )
       );
    }
 }

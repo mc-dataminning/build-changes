@@ -50,9 +50,9 @@ public class SporeBlossomBlock extends Block {
       int plantX = pos.getX();
       int plantY = pos.getY();
       int plantZ = pos.getZ();
-      double xFalling = (double)plantX + random.nextDouble();
-      double yFalling = (double)plantY + 0.7;
-      double zFalling = (double)plantZ + random.nextDouble();
+      double xFalling = plantX + random.nextDouble();
+      double yFalling = plantY + 0.7;
+      double zFalling = plantZ + random.nextDouble();
       level.addParticle(ParticleTypes.FALLING_SPORE_BLOSSOM, xFalling, yFalling, zFalling, 0.0, 0.0, 0.0);
       BlockPos.MutableBlockPos ambientPos = new BlockPos.MutableBlockPos();
 
@@ -62,9 +62,9 @@ public class SporeBlossomBlock extends Block {
          if (!particlePosState.isCollisionShapeFullBlock(level, ambientPos)) {
             level.addParticle(
                ParticleTypes.SPORE_BLOSSOM_AIR,
-               (double)ambientPos.getX() + random.nextDouble(),
-               (double)ambientPos.getY() + random.nextDouble(),
-               (double)ambientPos.getZ() + random.nextDouble(),
+               ambientPos.getX() + random.nextDouble(),
+               ambientPos.getY() + random.nextDouble(),
+               ambientPos.getZ() + random.nextDouble(),
                0.0,
                0.0,
                0.0

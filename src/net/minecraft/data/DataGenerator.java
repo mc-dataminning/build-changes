@@ -7,7 +7,6 @@ import java.nio.file.Path;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import net.minecraft.WorldVersion;
@@ -79,8 +78,6 @@ public abstract class DataGenerator {
       private final PackOutput output;
 
       private PackGenerator(final boolean toRun, final String providerPrefix, final PackOutput output) {
-         Objects.requireNonNull(DataGenerator.this);
-         super();
          this.toRun = toRun;
          this.providerPrefix = providerPrefix;
          this.output = output;
@@ -91,13 +88,13 @@ public abstract class DataGenerator {
          String providerId = this.providerPrefix + "/" + provider.getName();
          if (!DataGenerator.this.allProviderIds.add(providerId)) {
             throw new IllegalStateException("Duplicate provider: " + providerId);
-         } else {
-            if (this.toRun) {
-               DataGenerator.this.providersToRun.put(providerId, provider);
-            }
-
-            return provider;
          }
+
+         if (this.toRun) {
+            DataGenerator.this.providersToRun.put(providerId, provider);
+         }
+
+         return provider;
       }
    }
 

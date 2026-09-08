@@ -35,7 +35,7 @@ public class Screenshot {
    }
 
    public static void grab(
-      final File workDir, @Nullable final String forceName, final RenderTarget target, final int downscaleFactor, final Consumer<Component> callback
+      final File workDir, final @Nullable String forceName, final RenderTarget target, final int downscaleFactor, final Consumer<Component> callback
    ) {
       takeScreenshot(
          target,
@@ -53,33 +53,15 @@ public class Screenshot {
             Util.ioPool()
                .execute(
                   () -> {
-                     try {
-                        NativeImage twrVar0$ = image;
-
-                        try {
-                           image.writeToFile(file);
-                           Component component = Component.literal(file.getName())
-                              .withStyle(ChatFormatting.UNDERLINE)
-                              .withStyle(s -> s.withClickEvent(new ClickEvent.OpenFile(file.getAbsoluteFile())));
-                           callback.accept(Component.translatable("screenshot.success", component));
-                        } catch (Throwable var7) {
-                           if (image != null) {
-                              try {
-                                 twrVar0$.close();
-                              } catch (Throwable var6) {
-                                 var7.addSuppressed(var6);
-                              }
-                           }
-
-                           throw var7;
-                        }
-
-                        if (image != null) {
-                           image.close();
-                        }
-                     } catch (Exception var8) {
-                        LOGGER.warn("Couldn't save screenshot", var8);
-                        callback.accept(Component.translatable("screenshot.failure", var8.getMessage()));
+                     try (image) {
+                        image.writeToFile(file);
+                        Component component = Component.literal(file.getName())
+                           .withStyle(ChatFormatting.UNDERLINE)
+                           .withStyle(s -> s.withClickEvent(new ClickEvent.OpenFile(file.getAbsoluteFile())));
+                        callback.accept(Component.translatable("screenshot.success", component));
+                     } catch (Exception e) {
+                        LOGGER.warn("Couldn't save screenshot", e);
+                        callback.accept(Component.translatable("screenshot.failure", e.getMessage()));
                      }
                   }
                );
@@ -97,9 +79,10 @@ public class Screenshot {
       GpuTexture sourceTexture = target.getColorTexture();
       if (sourceTexture == null) {
          throw new IllegalStateException("Tried to capture screenshot of an incomplete framebuffer");
-      } else if (width % downscaleFactor == 0 && height % downscaleFactor == 0) {
-         GpuBuffer buffer = RenderSystem.getDevice()
-            .createBuffer(() -> "Screenshot buffer", 9, (long)width * (long)height * (long)sourceTexture.getFormat().blockSize());
+      }
+
+      if (width % downscaleFactor == 0 && height % downscaleFactor == 0) {
+         GpuBuffer buffer = RenderSystem.getDevice().createBuffer(() -> "Screenshot buffer", 9, (long)width * height * sourceTexture.getFormat().blockSize());
          RenderSystem.getDevice()
             .createCommandEncoder()
             .copyTextureToBuffer(

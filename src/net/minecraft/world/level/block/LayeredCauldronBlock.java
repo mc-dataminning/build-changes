@@ -38,7 +38,7 @@ public class LayeredCauldronBlock extends AbstractCauldronBlock {
    ) {
       super(properties, interactionMap);
       this.precipitationType = precipitationType;
-      this.registerDefaultState(this.stateDefinition.any().setValue(LEVEL, Integer.valueOf(1)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(LEVEL, 1));
    }
 
    @Override
@@ -57,7 +57,7 @@ public class LayeredCauldronBlock extends AbstractCauldronBlock {
    }
 
    private static double getPixelContentHeight(final int level) {
-      return 6.0 + (double)level * 3.0;
+      return 6.0 + level * 3.0;
    }
 
    @Override
@@ -91,7 +91,7 @@ public class LayeredCauldronBlock extends AbstractCauldronBlock {
 
    public static void lowerFillLevel(final BlockState state, final Level level, final BlockPos pos) {
       int newLevel = state.getValue(LEVEL) - 1;
-      BlockState newState = newLevel == 0 ? Blocks.CAULDRON.defaultBlockState() : state.setValue(LEVEL, Integer.valueOf(newLevel));
+      BlockState newState = newLevel == 0 ? Blocks.CAULDRON.defaultBlockState() : state.setValue(LEVEL, newLevel);
       level.setBlockAndUpdate(pos, newState);
       level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(newState));
    }
@@ -118,7 +118,7 @@ public class LayeredCauldronBlock extends AbstractCauldronBlock {
    @Override
    protected void receiveStalactiteDrip(final BlockState state, final Level level, final BlockPos pos, final Fluid fluid) {
       if (!this.isFull(state)) {
-         BlockState newState = state.setValue(LEVEL, Integer.valueOf(state.getValue(LEVEL) + 1));
+         BlockState newState = state.setValue(LEVEL, state.getValue(LEVEL) + 1);
          level.setBlockAndUpdate(pos, newState);
          level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(newState));
          level.levelEvent(1047, pos, 0);

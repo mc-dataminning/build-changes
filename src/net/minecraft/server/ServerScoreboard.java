@@ -94,7 +94,7 @@ public class ServerScoreboard extends Scoreboard {
    }
 
    @Override
-   public void setDisplayObjective(final DisplaySlot slot, @Nullable final Objective objective) {
+   public void setDisplayObjective(final DisplaySlot slot, final @Nullable Objective objective) {
       Objective old = this.getDisplayObjective(slot);
       super.setDisplayObjective(slot, objective);
       if (old != objective && old != null) {

@@ -3,7 +3,6 @@ package net.minecraft.world.level.storage.loot.providers.number.ints;
 import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import io.netty.buffer.ByteBuf;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
 import net.minecraft.core.Holder;
@@ -21,8 +20,6 @@ public sealed interface ResolvableInt permits ResolvableInt.Constant, Resolvable
       .map(Either::unwrap, ResolvableInt::wrap);
 
    private static Either<ResolvableInt.Constant, ResolvableInt.Reference> wrap(final ResolvableInt resolvableNumber) {
-      Objects.requireNonNull(resolvableNumber);
-
       return switch (resolvableNumber) {
          case ResolvableInt.Constant constant -> Either.left(constant);
          case ResolvableInt.Reference reference -> Either.right(reference);
@@ -47,7 +44,7 @@ public sealed interface ResolvableInt permits ResolvableInt.Constant, Resolvable
       return component != null ? getter.apply(component).get(context, defaultValue) : defaultValue;
    }
 
-   public static record Constant(int value) implements ResolvableInt {
+   record Constant(int value) implements ResolvableInt {
       private static final Codec<ResolvableInt.Constant> CODEC = Codec.INT.xmap(ResolvableInt.Constant::new, ResolvableInt.Constant::value);
       private static final StreamCodec<ByteBuf, ResolvableInt.Constant> STREAM_CODEC = ByteBufCodecs.INT
          .map(ResolvableInt.Constant::new, ResolvableInt.Constant::value);
@@ -58,7 +55,7 @@ public sealed interface ResolvableInt permits ResolvableInt.Constant, Resolvable
       }
    }
 
-   public static record Reference(ResourceKey<ContextIntProvider> key) implements ResolvableInt {
+   record Reference(ResourceKey<ContextIntProvider> key) implements ResolvableInt {
       private static final Codec<ResolvableInt.Reference> CODEC = ResourceKey.codec(Registries.CONTEXT_INT_PROVIDER)
          .xmap(ResolvableInt.Reference::new, ResolvableInt.Reference::key);
       private static final StreamCodec<ByteBuf, ResolvableInt.Reference> STREAM_CODEC = ResourceKey.streamCodec(Registries.CONTEXT_INT_PROVIDER)

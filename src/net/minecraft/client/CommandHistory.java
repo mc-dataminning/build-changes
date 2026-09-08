@@ -23,8 +23,8 @@ public class CommandHistory {
       if (Files.exists(this.commandsPath)) {
          try (BufferedReader reader = Files.newBufferedReader(this.commandsPath, StandardCharsets.UTF_8)) {
             this.lastCommands.addAll(reader.lines().toList());
-         } catch (Exception var7) {
-            LOGGER.error("Failed to read {}, command history will be missing", "command_history.txt", var7);
+         } catch (Exception exception) {
+            LOGGER.error("Failed to read {}, command history will be missing", "command_history.txt", exception);
          }
       }
    }
@@ -46,8 +46,8 @@ public class CommandHistory {
             writer.write(command);
             writer.newLine();
          }
-      } catch (IOException var6) {
-         LOGGER.error("Failed to write {}, command history will be missing", "command_history.txt", var6);
+      } catch (IOException exception) {
+         LOGGER.error("Failed to write {}, command history will be missing", "command_history.txt", exception);
       }
    }
 

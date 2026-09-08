@@ -35,35 +35,27 @@ public abstract class VehicleEntity extends Entity {
    public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
       if (this.isRemoved()) {
          return true;
-      } else if (this.isInvulnerableToBase(source)) {
-         return false;
-      } else {
-         boolean var10000;
-         label32: {
-            this.setHurtDir(-this.getHurtDir());
-            this.setHurtTime(10);
-            this.markHurt();
-            this.setDamage(this.getDamage() + damage * 10.0F);
-            this.gameEvent(GameEvent.ENTITY_DAMAGE, source.getEntity());
-            if (source.getEntity() instanceof Player player && player.getAbilities().instabuild) {
-               var10000 = true;
-               break label32;
-            }
-
-            var10000 = false;
-         }
-
-         boolean creativePlayer = var10000;
-         if ((creativePlayer || !(this.getDamage() > 40.0F)) && !this.shouldSourceDestroy(source)) {
-            if (creativePlayer) {
-               this.discard();
-            }
-         } else {
-            this.destroy(level, source);
-         }
-
-         return true;
       }
+
+      if (this.isInvulnerableToBase(source)) {
+         return false;
+      }
+
+      this.setHurtDir(-this.getHurtDir());
+      this.setHurtTime(10);
+      this.markHurt();
+      this.setDamage(this.getDamage() + damage * 10.0F);
+      this.gameEvent(GameEvent.ENTITY_DAMAGE, source.getEntity());
+      boolean creativePlayer = source.getEntity() instanceof Player player && player.getAbilities().instabuild;
+      if ((creativePlayer || !(this.getDamage() > 40.0F)) && !this.shouldSourceDestroy(source)) {
+         if (creativePlayer) {
+            this.discard();
+         }
+      } else {
+         this.destroy(level, source);
+      }
+
+      return true;
    }
 
    protected boolean shouldSourceDestroy(final DamageSource source) {

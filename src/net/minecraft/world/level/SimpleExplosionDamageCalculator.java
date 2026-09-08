@@ -47,17 +47,7 @@ public class SimpleExplosionDamageCalculator extends ExplosionDamageCalculator {
 
    @Override
    public float getKnockbackMultiplier(final Entity entity) {
-      boolean var10000;
-      label17: {
-         if (entity instanceof Player player && player.getAbilities().flying) {
-            var10000 = true;
-            break label17;
-         }
-
-         var10000 = false;
-      }
-
-      boolean creativeFlying = var10000;
+      boolean creativeFlying = entity instanceof Player player && player.getAbilities().flying;
       return creativeFlying ? 0.0F : this.knockbackMultiplier.orElseGet(() -> super.getKnockbackMultiplier(entity));
    }
 }

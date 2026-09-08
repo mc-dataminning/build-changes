@@ -19,18 +19,18 @@ public record CatVariant(ClientAsset.ResourceTexture adultAssetInfo, ClientAsset
    implements PriorityProvider<SpawnContext, SpawnCondition> {
    public static final Codec<CatVariant> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ClientAsset.ResourceTexture.DEFAULT_FIELD_CODEC.forGetter(CatVariant::adultAssetInfo),
-               ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(CatVariant::babyAssetInfo),
-               SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(CatVariant::spawnConditions)
-            )
-            .apply(i, CatVariant::new)
+            ClientAsset.ResourceTexture.DEFAULT_FIELD_CODEC.forGetter(CatVariant::adultAssetInfo),
+            ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(CatVariant::babyAssetInfo),
+            SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(CatVariant::spawnConditions)
+         )
+         .apply(i, CatVariant::new)
    );
    public static final Codec<CatVariant> NETWORK_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ClientAsset.ResourceTexture.DEFAULT_FIELD_CODEC.forGetter(CatVariant::adultAssetInfo),
-               ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(CatVariant::babyAssetInfo)
-            )
-            .apply(i, CatVariant::new)
+            ClientAsset.ResourceTexture.DEFAULT_FIELD_CODEC.forGetter(CatVariant::adultAssetInfo),
+            ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(CatVariant::babyAssetInfo)
+         )
+         .apply(i, CatVariant::new)
    );
    public static final Codec<Holder<CatVariant>> CODEC = RegistryCodecs.holder(Registries.CAT_VARIANT);
    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<CatVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.CAT_VARIANT);

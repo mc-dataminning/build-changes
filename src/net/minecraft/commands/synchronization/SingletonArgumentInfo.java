@@ -2,7 +2,6 @@ package net.minecraft.commands.synchronization;
 
 import com.google.gson.JsonObject;
 import com.mojang.brigadier.arguments.ArgumentType;
-import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import net.minecraft.commands.CommandBuildContext;
@@ -41,8 +40,6 @@ public class SingletonArgumentInfo<A extends ArgumentType<?>> implements Argumen
       private final Function<CommandBuildContext, A> constructor;
 
       public Template(final Function<CommandBuildContext, A> constructor) {
-         Objects.requireNonNull(SingletonArgumentInfo.this);
-         super();
          this.constructor = constructor;
       }
 

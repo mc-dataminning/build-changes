@@ -9,9 +9,9 @@ import net.minecraft.world.item.component.ResolvableProfile;
 public record PlayerSprite(ResolvableProfile player, boolean hat) implements ObjectInfo {
    public static final MapCodec<PlayerSprite> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               ResolvableProfile.CODEC.fieldOf("player").forGetter(PlayerSprite::player), Codec.BOOL.optionalFieldOf("hat", true).forGetter(PlayerSprite::hat)
-            )
-            .apply(i, PlayerSprite::new)
+            ResolvableProfile.CODEC.fieldOf("player").forGetter(PlayerSprite::player), Codec.BOOL.optionalFieldOf("hat", true).forGetter(PlayerSprite::hat)
+         )
+         .apply(i, PlayerSprite::new)
    );
 
    @Override

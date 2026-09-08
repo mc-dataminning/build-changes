@@ -27,14 +27,14 @@ public record ReplaceDisk(
 ) implements EnchantmentEntityEffect {
    public static final MapCodec<ReplaceDisk> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               LevelBasedValue.CODEC.fieldOf("radius").forGetter(ReplaceDisk::radius),
-               LevelBasedValue.CODEC.fieldOf("height").forGetter(ReplaceDisk::height),
-               Vec3i.CODEC.optionalFieldOf("offset", Vec3i.ZERO).forGetter(ReplaceDisk::offset),
-               BlockPredicate.CODEC.optionalFieldOf("predicate").forGetter(ReplaceDisk::predicate),
-               BlockStateProvider.CODEC.fieldOf("block_state").forGetter(ReplaceDisk::blockState),
-               GameEvent.CODEC.optionalFieldOf("trigger_game_event").forGetter(ReplaceDisk::triggerGameEvent)
-            )
-            .apply(i, ReplaceDisk::new)
+            LevelBasedValue.CODEC.fieldOf("radius").forGetter(ReplaceDisk::radius),
+            LevelBasedValue.CODEC.fieldOf("height").forGetter(ReplaceDisk::height),
+            Vec3i.CODEC.optionalFieldOf("offset", Vec3i.ZERO).forGetter(ReplaceDisk::offset),
+            BlockPredicate.CODEC.optionalFieldOf("predicate").forGetter(ReplaceDisk::predicate),
+            BlockStateProvider.CODEC.fieldOf("block_state").forGetter(ReplaceDisk::blockState),
+            GameEvent.CODEC.optionalFieldOf("trigger_game_event").forGetter(ReplaceDisk::triggerGameEvent)
+         )
+         .apply(i, ReplaceDisk::new)
    );
 
    @Override
@@ -45,7 +45,7 @@ public record ReplaceDisk(
       int height = (int)this.height.calculate(enchantmentLevel);
 
       for (BlockPos pos : BlockPos.betweenClosed(centerBlock.offset(-dist, 0, -dist), centerBlock.offset(dist, Math.min(height - 1, 0), dist))) {
-         if (pos.distToCenterSqr(position.x(), (double)pos.getY() + 0.5, position.z()) < (double)Mth.square(dist)
+         if (pos.distToCenterSqr(position.x(), pos.getY() + 0.5, position.z()) < Mth.square(dist)
             && this.predicate.map(p -> p.test(serverLevel, pos)).orElse(true)
             && serverLevel.setBlockAndUpdate(pos, this.blockState.value().getState(serverLevel, random, pos))) {
             this.triggerGameEvent.ifPresent(event -> serverLevel.gameEvent(entity, (Holder<GameEvent>)event, pos));

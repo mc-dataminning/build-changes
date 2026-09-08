@@ -73,13 +73,13 @@ public class CompressionDecoder extends ByteToMessageDecoder {
                   + " is does not match declared size "
                   + uncompressedLength
             );
-         } else {
-            output.writerIndex(output.writerIndex() + actualUncompressedLength);
-            return output;
          }
-      } catch (Exception var7) {
+
+         output.writerIndex(output.writerIndex() + actualUncompressedLength);
+         return output;
+      } catch (Exception e) {
          output.release();
-         throw var7;
+         throw e;
       }
    }
 

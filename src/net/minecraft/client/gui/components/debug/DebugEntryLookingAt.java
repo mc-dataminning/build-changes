@@ -29,12 +29,12 @@ public abstract class DebugEntryLookingAt implements DebugScreenEntry {
    @Override
    public void display(
       final DebugScreenDisplayer displayer,
-      @Nullable final Level serverOrClientLevel,
-      @Nullable final LevelChunk clientChunk,
-      @Nullable final LevelChunk serverChunk
+      final @Nullable Level serverOrClientLevel,
+      final @Nullable LevelChunk clientChunk,
+      final @Nullable LevelChunk serverChunk
    ) {
       Entity cameraEntity = Minecraft.getInstance().getCameraEntity();
-      Level clientOrServerLevel = (Level)(SharedConstants.DEBUG_SHOW_SERVER_DEBUG_VALUES ? serverOrClientLevel : Minecraft.getInstance().level);
+      Level clientOrServerLevel = SharedConstants.DEBUG_SHOW_SERVER_DEBUG_VALUES ? serverOrClientLevel : Minecraft.getInstance().level;
       if (cameraEntity != null && clientOrServerLevel != null) {
          HitResult block = this.getHitResult(cameraEntity);
          List<String> result = new ArrayList<>();

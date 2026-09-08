@@ -32,16 +32,16 @@ public class AdvancementProgress implements Comparable<AdvancementProgress> {
       .xmap(
          map -> Util.mapValues(map, CriterionProgress::new),
          map -> map.entrySet()
-               .stream()
-               .filter(e -> ((CriterionProgress)e.getValue()).isDone())
-               .collect(Collectors.toMap(Entry::getKey, e -> Objects.requireNonNull(((CriterionProgress)e.getValue()).getObtained())))
+            .stream()
+            .filter(e -> ((CriterionProgress)e.getValue()).isDone())
+            .collect(Collectors.toMap(Entry::getKey, e -> Objects.requireNonNull(((CriterionProgress)e.getValue()).getObtained())))
       );
    public static final Codec<AdvancementProgress> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               CRITERIA_CODEC.optionalFieldOf("criteria", Map.of()).forGetter(a -> a.criteria),
-               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "done", true).forGetter(AdvancementProgress::isDone)
-            )
-            .apply(i, (criteria, done) -> new AdvancementProgress(new HashMap<>(criteria)))
+            CRITERIA_CODEC.optionalFieldOf("criteria", Map.of()).forGetter(a -> a.criteria),
+            ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "done", true).forGetter(AdvancementProgress::isDone)
+         )
+         .apply(i, (criteria, done) -> new AdvancementProgress(new HashMap<>(criteria)))
    );
    public static final StreamCodec<ByteBuf, AdvancementProgress> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.map(HashMap::new, ByteBufCodecs.STRING_UTF8, CriterionProgress.STREAM_CODEC), a -> a.criteria, AdvancementProgress::new
@@ -107,8 +107,7 @@ public class AdvancementProgress implements Comparable<AdvancementProgress> {
       return "AdvancementProgress{criteria=" + this.criteria + ", requirements=" + this.requirements + "}";
    }
 
-   @Nullable
-   public CriterionProgress getCriterion(final String id) {
+   public @Nullable CriterionProgress getCriterion(final String id) {
       return this.criteria.get(id);
    }
 
@@ -120,26 +119,25 @@ public class AdvancementProgress implements Comparable<AdvancementProgress> {
    public float getPercent() {
       if (this.criteria.isEmpty()) {
          return 0.0F;
-      } else {
-         float total = (float)this.requirements.size();
-         float complete = (float)this.countCompletedRequirements();
-         return complete / total;
       }
+
+      float total = this.requirements.size();
+      float complete = this.countCompletedRequirements();
+      return complete / total;
    }
 
-   @Nullable
-   public Component getProgressText() {
+   public @Nullable Component getProgressText() {
       if (this.criteria.isEmpty()) {
          return null;
-      } else {
-         int total = this.requirements.size();
-         if (total <= 1) {
-            return null;
-         } else {
-            int complete = this.countCompletedRequirements();
-            return Component.translatable("advancements.progress", complete, total);
-         }
       }
+
+      int total = this.requirements.size();
+      if (total <= 1) {
+         return null;
+      }
+
+      int complete = this.countCompletedRequirements();
+      return Component.translatable("advancements.progress", complete, total);
    }
 
    private int countCompletedRequirements() {
@@ -170,8 +168,7 @@ public class AdvancementProgress implements Comparable<AdvancementProgress> {
       return completed;
    }
 
-   @Nullable
-   public Instant getFirstProgressDate() {
+   public @Nullable Instant getFirstProgressDate() {
       return this.criteria.values().stream().map(CriterionProgress::getObtained).filter(Objects::nonNull).min(Comparator.naturalOrder()).orElse(null);
    }
 

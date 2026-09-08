@@ -33,14 +33,12 @@ public final class ContextMap {
       }
    }
 
-   @Nullable
-   public <T> T get(final ContextKey<T> key) {
+   public <T> @Nullable T get(final ContextKey<T> key) {
       return (T)this.params.get(key);
    }
 
    @Contract("_,!null->!null; _,_->_")
-   @Nullable
-   public <T> T getOrDefault(final ContextKey<T> param, @Nullable final T _default) {
+   public <T> @Nullable T getOrDefault(final ContextKey<T> param, final @Nullable T _default) {
       return (T)this.params.getOrDefault(param, _default);
    }
 
@@ -50,7 +48,7 @@ public final class ContextMap {
       private Builder() {
       }
 
-      public <T> ContextMap.Builder set(final ContextKey<T> param, @Nullable final T value) {
+      public <T> ContextMap.Builder set(final ContextKey<T> param, final @Nullable T value) {
          if (value == null) {
             this.params.remove(param);
          } else {
@@ -60,8 +58,7 @@ public final class ContextMap {
          return this;
       }
 
-      @Nullable
-      public <T> T get(final ContextKey<T> param) {
+      public <T> @Nullable T get(final ContextKey<T> param) {
          return (T)this.params.get(param);
       }
 

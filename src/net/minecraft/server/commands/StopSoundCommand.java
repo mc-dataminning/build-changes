@@ -55,7 +55,7 @@ public class StopSoundCommand {
    }
 
    private static int stopSound(
-      final CommandSourceStack source, final Collection<ServerPlayer> targets, @Nullable final SoundSource soundSource, @Nullable final Identifier sound
+      final CommandSourceStack source, final Collection<ServerPlayer> targets, final @Nullable SoundSource soundSource, final @Nullable Identifier sound
    ) {
       ClientboundStopSoundPacket packet = new ClientboundStopSoundPacket(sound, soundSource);
 

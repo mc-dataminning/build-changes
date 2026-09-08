@@ -17,14 +17,14 @@ public interface ModelBaker {
 
    <T> T compute(ModelBaker.SharedOperationKey<T> key);
 
-   public interface Interner {
+   interface Interner {
       Vector3fc vector(Vector3fc vector);
 
       BakedQuad.MaterialInfo materialInfo(BakedQuad.MaterialInfo material);
    }
 
    @FunctionalInterface
-   public interface SharedOperationKey<T> {
+   interface SharedOperationKey<T> {
       T compute(ModelBaker modelBakery);
    }
 }

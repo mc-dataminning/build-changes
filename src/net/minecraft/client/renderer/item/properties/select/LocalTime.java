@@ -29,11 +29,11 @@ public class LocalTime implements SelectItemModelProperty<String> {
    }, TimeZone::getID);
    private static final MapCodec<LocalTime.Data> DATA_MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.STRING.fieldOf("pattern").forGetter(o -> o.format),
-               Codec.STRING.optionalFieldOf("locale", "").forGetter(o -> o.localeId),
-               TIME_ZONE_CODEC.optionalFieldOf("time_zone").forGetter(o -> o.timeZone)
-            )
-            .apply(i, LocalTime.Data::new)
+            Codec.STRING.fieldOf("pattern").forGetter(o -> o.format),
+            Codec.STRING.optionalFieldOf("locale", "").forGetter(o -> o.localeId),
+            TIME_ZONE_CODEC.optionalFieldOf("time_zone").forGetter(o -> o.timeZone)
+         )
+         .apply(i, LocalTime.Data::new)
    );
    public static final SelectItemModelProperty.Type<LocalTime, String> TYPE = SelectItemModelProperty.Type.create(
       DATA_MAP_CODEC.flatXmap(LocalTime::create, d -> DataResult.success(d.data)), VALUE_CODEC
@@ -61,16 +61,15 @@ public class LocalTime implements SelectItemModelProperty<String> {
 
       try {
          parsedFormat.format(new Date());
-      } catch (Exception var5) {
-         return DataResult.error(() -> "Invalid time format '" + parsedFormat + "': " + var5.getMessage());
+      } catch (Exception e) {
+         return DataResult.error(() -> "Invalid time format '" + parsedFormat + "': " + e.getMessage());
       }
 
       return DataResult.success(new LocalTime(data, parsedFormat));
    }
 
-   @Nullable
-   public String get(
-      final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final LivingEntity owner, final int seed, final ItemDisplayContext displayContext
+   public @Nullable String get(
+      final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner, final int seed, final ItemDisplayContext displayContext
    ) {
       long currentTimeMs = Util.getMillis();
       if (currentTimeMs > this.nextUpdateTimeMs) {
@@ -95,6 +94,6 @@ public class LocalTime implements SelectItemModelProperty<String> {
       return VALUE_CODEC;
    }
 
-   private static record Data(String format, String localeId, Optional<TimeZone> timeZone) {
+   private record Data(String format, String localeId, Optional<TimeZone> timeZone) {
    }
 }

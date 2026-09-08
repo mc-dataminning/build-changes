@@ -22,7 +22,7 @@ import net.minecraft.world.entity.Entity;
 public interface EntityRendererProvider<T extends Entity> {
    EntityRenderer<T, ?> create(EntityRendererProvider.Context context);
 
-   public static class Context {
+   class Context {
       private final EntityRenderDispatcher entityRenderDispatcher;
       private final BlockModelResolver blockModelResolver;
       private final ItemModelResolver itemModelResolver;

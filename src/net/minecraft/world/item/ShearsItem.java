@@ -49,13 +49,13 @@ public class ShearsItem extends Item {
       Tool tool = itemStack.get(DataComponents.TOOL);
       if (tool == null) {
          return false;
-      } else {
-         if (!level.isClientSide() && !state.is(BlockTags.FIRE) && tool.damagePerBlock() > 0) {
-            itemStack.hurtAndBreak(tool.damagePerBlock(), miner, EquipmentSlot.MAINHAND);
-         }
-
-         return true;
       }
+
+      if (!level.isClientSide() && !state.is(BlockTags.FIRE) && tool.damagePerBlock() > 0) {
+         itemStack.hurtAndBreak(tool.damagePerBlock(), miner, EquipmentSlot.MAINHAND);
+      }
+
+      return true;
    }
 
    @Override
@@ -79,8 +79,8 @@ public class ShearsItem extends Item {
          }
 
          return InteractionResult.SUCCESS;
+      } else {
+         return super.useOn(context);
       }
-
-      return super.useOn(context);
    }
 }

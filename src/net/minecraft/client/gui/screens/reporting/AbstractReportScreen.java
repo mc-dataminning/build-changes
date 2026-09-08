@@ -2,7 +2,6 @@ package net.minecraft.client.gui.screens.reporting;
 
 import com.mojang.authlib.minecraft.report.AbuseReportLimits;
 import com.mojang.logging.LogUtils;
-import java.util.Objects;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
@@ -200,7 +199,6 @@ public abstract class AbstractReportScreen<B extends Report.Builder<?>> extends 
       private static final Component DISCARD = Component.translatable("gui.abuseReport.discard.discard");
 
       protected DiscardReportWarningScreen() {
-         Objects.requireNonNull(AbstractReportScreen.this);
          super(TITLE, MESSAGE, MESSAGE);
       }
 

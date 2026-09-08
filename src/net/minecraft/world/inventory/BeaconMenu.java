@@ -1,6 +1,5 @@
 package net.minecraft.world.inventory;
 
-import java.util.Objects;
 import java.util.Optional;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -26,10 +25,6 @@ public class BeaconMenu extends AbstractContainerMenu {
    private static final int USE_ROW_SLOT_END = 37;
    private static final int NO_EFFECT = 0;
    private final Container beacon = new SimpleContainer(1) {
-      {
-         Objects.requireNonNull(BeaconMenu.this);
-      }
-
       @Override
       public boolean canPlaceItem(final int slot, final ItemStack itemStack) {
          return itemStack.is(ItemTags.BEACON_PAYMENT_ITEMS);
@@ -130,22 +125,19 @@ public class BeaconMenu extends AbstractContainerMenu {
       return this.beaconData.get(0);
    }
 
-   public static int encodeEffect(@Nullable final Holder<MobEffect> mobEffect) {
+   public static int encodeEffect(final @Nullable Holder<MobEffect> mobEffect) {
       return mobEffect == null ? 0 : BuiltInRegistries.MOB_EFFECT.asHolderIdMap().getId(mobEffect) + 1;
    }
 
-   @Nullable
-   public static Holder<MobEffect> decodeEffect(final int id) {
+   public static @Nullable Holder<MobEffect> decodeEffect(final int id) {
       return id == 0 ? null : BuiltInRegistries.MOB_EFFECT.asHolderIdMap().byId(id - 1);
    }
 
-   @Nullable
-   public Holder<MobEffect> getPrimaryEffect() {
+   public @Nullable Holder<MobEffect> getPrimaryEffect() {
       return decodeEffect(this.beaconData.get(1));
    }
 
-   @Nullable
-   public Holder<MobEffect> getSecondaryEffect() {
+   public @Nullable Holder<MobEffect> getSecondaryEffect() {
       return decodeEffect(this.beaconData.get(2));
    }
 
@@ -156,13 +148,13 @@ public class BeaconMenu extends AbstractContainerMenu {
          Holder<MobEffect> secondaryEffect = secondary.orElse(null);
          if (!BeaconBlockEntity.validateEffects(primaryEffect, secondaryEffect, levels)) {
             return false;
-         } else {
-            this.beaconData.set(1, encodeEffect(primaryEffect));
-            this.beaconData.set(2, encodeEffect(secondaryEffect));
-            this.paymentSlot.remove(1);
-            this.access.execute(Level::blockEntityChanged);
-            return true;
          }
+
+         this.beaconData.set(1, encodeEffect(primaryEffect));
+         this.beaconData.set(2, encodeEffect(secondaryEffect));
+         this.paymentSlot.remove(1);
+         this.access.execute(Level::blockEntityChanged);
+         return true;
       } else {
          return false;
       }

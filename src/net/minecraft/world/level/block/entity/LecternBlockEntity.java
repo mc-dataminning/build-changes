@@ -1,6 +1,5 @@
 package net.minecraft.world.level.block.entity;
 
-import java.util.Objects;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.BlockPos;
@@ -37,10 +36,6 @@ public class LecternBlockEntity extends BlockEntity implements Clearable, MenuPr
    public static final int SLOT_BOOK = 0;
    public static final int NUM_SLOTS = 1;
    private final Container bookAccess = new Container() {
-      {
-         Objects.requireNonNull(LecternBlockEntity.this);
-      }
-
       @Override
       public int getContainerSize() {
          return 1;
@@ -111,10 +106,6 @@ public class LecternBlockEntity extends BlockEntity implements Clearable, MenuPr
       }
    };
    private final ContainerData dataAccess = new ContainerData() {
-      {
-         Objects.requireNonNull(LecternBlockEntity.this);
-      }
-
       @Override
       public int get(final int dataId) {
          return dataId == 0 ? LecternBlockEntity.this.page : 0;
@@ -158,7 +149,7 @@ public class LecternBlockEntity extends BlockEntity implements Clearable, MenuPr
       LecternBlock.resetBookState(null, this.getLevel(), this.getBlockPos(), this.getBlockState(), false);
    }
 
-   public void setBook(final ItemStack book, @Nullable final Player resolutionContext) {
+   public void setBook(final ItemStack book, final @Nullable Player resolutionContext) {
       this.book = this.resolveBook(book, resolutionContext);
       this.page = 0;
       this.pageCount = getPageCount(this.book);
@@ -179,11 +170,11 @@ public class LecternBlockEntity extends BlockEntity implements Clearable, MenuPr
    }
 
    public int getRedstoneSignal() {
-      float pageProgress = this.pageCount > 1 ? (float)this.getPage() / ((float)this.pageCount - 1.0F) : 1.0F;
+      float pageProgress = this.pageCount > 1 ? this.getPage() / (this.pageCount - 1.0F) : 1.0F;
       return Mth.floor(pageProgress * 14.0F) + (this.hasBook() ? 1 : 0);
    }
 
-   private ItemStack resolveBook(final ItemStack book, @Nullable final Player player) {
+   private ItemStack resolveBook(final ItemStack book, final @Nullable Player player) {
       if (this.level instanceof ServerLevel serverLevel) {
          ResolutionContext context = ResolutionContext.create(this.createCommandSourceStack(player, serverLevel));
          WrittenBookContent.resolveForItem(book, context, this.level.registryAccess());
@@ -192,7 +183,7 @@ public class LecternBlockEntity extends BlockEntity implements Clearable, MenuPr
       return book;
    }
 
-   private CommandSourceStack createCommandSourceStack(@Nullable final Player player, final ServerLevel level) {
+   private CommandSourceStack createCommandSourceStack(final @Nullable Player player, final ServerLevel level) {
       Vec3 pos = Vec3.atCenterOf(this.worldPosition);
       return player != null
          ? new CommandSourceStack(CommandSource.NULL, pos, Vec2.ZERO, level, LevelBasedPermissionSet.GAMEMASTER, level.getServer(), player)
@@ -228,11 +219,9 @@ public class LecternBlockEntity extends BlockEntity implements Clearable, MenuPr
       if (state.getValue(LecternBlock.HAS_BOOK) && this.level != null) {
          Direction direction = state.getValue(LecternBlock.FACING);
          ItemStack book = this.getBook().copy();
-         float xo = 0.25F * (float)direction.getStepX();
-         float zo = 0.25F * (float)direction.getStepZ();
-         ItemEntity entity = new ItemEntity(
-            this.level, (double)pos.getX() + 0.5 + (double)xo, (double)(pos.getY() + 1), (double)pos.getZ() + 0.5 + (double)zo, book
-         );
+         float xo = 0.25F * direction.getStepX();
+         float zo = 0.25F * direction.getStepZ();
+         ItemEntity entity = new ItemEntity(this.level, pos.getX() + 0.5 + xo, pos.getY() + 1, pos.getZ() + 0.5 + zo, book);
          entity.setDefaultPickUpDelay();
          this.level.addFreshEntity(entity);
       }
@@ -252,9 +241,9 @@ public class LecternBlockEntity extends BlockEntity implements Clearable, MenuPr
       WrittenBookContent writtenContent = book.get(DataComponents.WRITTEN_BOOK_CONTENT);
       if (writtenContent != null) {
          return writtenContent.pages().size();
-      } else {
-         WritableBookContent writableContent = book.get(DataComponents.WRITABLE_BOOK_CONTENT);
-         return writableContent != null ? writableContent.pages().size() : 0;
       }
+
+      WritableBookContent writableContent = book.get(DataComponents.WRITABLE_BOOK_CONTENT);
+      return writableContent != null ? writableContent.pages().size() : 0;
    }
 }

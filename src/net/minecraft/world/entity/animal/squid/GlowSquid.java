@@ -42,9 +42,8 @@ public class GlowSquid extends Squid {
       entityData.define(DATA_DARK_TICKS_REMAINING, 0);
    }
 
-   @Nullable
    @Override
-   public AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       return EntityTypes.GLOW_SQUID.create(level, EntitySpawnReason.BREEDING);
    }
 

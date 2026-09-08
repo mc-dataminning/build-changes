@@ -37,6 +37,6 @@ public abstract class NoiseBasedStateProvider implements BlockStateProvider {
    }
 
    protected float getNoiseValue(final BlockPos pos, final double scale) {
-      return this.noise.get((double)pos.getX() * scale, (double)pos.getY() * scale, (double)pos.getZ() * scale);
+      return this.noise.get(pos.getX() * scale, pos.getY() * scale, pos.getZ() * scale);
    }
 }

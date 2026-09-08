@@ -66,7 +66,7 @@ public class LegacyComponentDataFixUtils {
          try {
             StrictJsonParser.parse(string);
             return true;
-         } catch (JsonParseException var2) {
+         } catch (JsonParseException ignored) {
             return false;
          }
       }).isPresent();

@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Renderable;
@@ -38,8 +37,7 @@ public class OverlayRecipeComponent implements GuiEventListener, Renderable {
    private int x;
    private int y;
    private RecipeCollection collection = RecipeCollection.EMPTY;
-   @Nullable
-   private RecipeDisplayId lastRecipeClicked;
+   private @Nullable RecipeDisplayId lastRecipeClicked;
    private final SlotSelectTime slotSelectTime;
    private final boolean isFurnaceMenu;
 
@@ -66,25 +64,25 @@ public class OverlayRecipeComponent implements GuiEventListener, Renderable {
       int craftables = craftable.size();
       int total = craftables + unCraftable.size();
       int maxRow = total <= 16 ? 4 : 5;
-      int rows = (int)Math.ceil((double)((float)total / (float)maxRow));
+      int rows = (int)Math.ceil((float)total / maxRow);
       this.x = buttonX;
       this.y = buttonY;
-      float rightPos = (float)(this.x + Math.min(total, maxRow) * 25);
-      float maxLeftPos = (float)(centerX + 50);
+      float rightPos = this.x + Math.min(total, maxRow) * 25;
+      float maxLeftPos = centerX + 50;
       if (rightPos > maxLeftPos) {
-         this.x = (int)((float)this.x - buttonWidth * (float)((int)((rightPos - maxLeftPos) / buttonWidth)));
+         this.x = (int)(this.x - buttonWidth * (int)((rightPos - maxLeftPos) / buttonWidth));
       }
 
-      float bottomPos = (float)(this.y + rows * 25);
-      float maxBottomPos = (float)(centerY + 50);
+      float bottomPos = this.y + rows * 25;
+      float maxBottomPos = centerY + 50;
       if (bottomPos > maxBottomPos) {
-         this.y = (int)((float)this.y - buttonWidth * (float)Mth.ceil((bottomPos - maxBottomPos) / buttonWidth));
+         this.y = (int)(this.y - buttonWidth * Mth.ceil((bottomPos - maxBottomPos) / buttonWidth));
       }
 
-      float topPos = (float)this.y;
-      float maxTopPos = (float)(centerY - 100);
+      float topPos = this.y;
+      float maxTopPos = centerY - 100;
       if (topPos < maxTopPos) {
-         this.y = (int)((float)this.y - buttonWidth * (float)Mth.ceil((topPos - maxTopPos) / buttonWidth));
+         this.y = (int)(this.y - buttonWidth * Mth.ceil((topPos - maxTopPos) / buttonWidth));
       }
 
       this.isVisible = true;
@@ -109,8 +107,7 @@ public class OverlayRecipeComponent implements GuiEventListener, Renderable {
       return this.collection;
    }
 
-   @Nullable
-   public RecipeDisplayId getLastRecipeClicked() {
+   public @Nullable RecipeDisplayId getLastRecipeClicked() {
       return this.lastRecipeClicked;
    }
 
@@ -118,16 +115,16 @@ public class OverlayRecipeComponent implements GuiEventListener, Renderable {
    public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
       if (event.button() != 1) {
          return false;
-      } else {
-         for (OverlayRecipeComponent.OverlayRecipeButton recipeButton : this.recipeButtons) {
-            if (recipeButton.mouseClicked(event, doubleClick)) {
-               this.lastRecipeClicked = recipeButton.recipe;
-               return true;
-            }
-         }
-
-         return false;
       }
+
+      for (OverlayRecipeComponent.OverlayRecipeButton recipeButton : this.recipeButtons) {
+         if (recipeButton.mouseClicked(event, doubleClick)) {
+            this.lastRecipeClicked = recipeButton.recipe;
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Override
@@ -140,7 +137,7 @@ public class OverlayRecipeComponent implements GuiEventListener, Renderable {
       if (this.isVisible) {
          int maxRow = this.recipeButtons.size() <= 16 ? 4 : 5;
          int width = Math.min(this.recipeButtons.size(), maxRow);
-         int height = Mth.ceil((float)this.recipeButtons.size() / (float)maxRow);
+         int height = Mth.ceil((float)this.recipeButtons.size() / maxRow);
          int border = 4;
          graphics.blitSprite(RenderPipelines.GUI_TEXTURED, OVERLAY_RECIPE_SPRITE, this.x, this.y, width * 25 + 8, height * 25 + 8);
 
@@ -178,13 +175,11 @@ public class OverlayRecipeComponent implements GuiEventListener, Renderable {
       public OverlayCraftingRecipeButton(
          final int x, final int y, final RecipeDisplayId id, final RecipeDisplay recipe, final ContextMap context, final boolean isCraftable
       ) {
-         Objects.requireNonNull(OverlayRecipeComponent.this);
          super(x, y, id, isCraftable, calculateIngredientsPositions(recipe, context));
       }
 
       private static List<OverlayRecipeComponent.OverlayRecipeButton.Pos> calculateIngredientsPositions(final RecipeDisplay recipe, final ContextMap context) {
          List<OverlayRecipeComponent.OverlayRecipeButton.Pos> result = new ArrayList<>();
-         Objects.requireNonNull(recipe);
          switch (recipe) {
             case ShapedCraftingRecipeDisplay shaped:
                PlaceRecipeHelper.placeRecipe(3, 3, shaped.width(), shaped.height(), shaped.ingredients(), (ingredient, gridIndex, gridXPos, gridYPos) -> {
@@ -206,6 +201,7 @@ public class OverlayRecipeComponent implements GuiEventListener, Renderable {
                   }
                   break label19;
                }
+            default:
          }
 
          return result;
@@ -229,7 +225,6 @@ public class OverlayRecipeComponent implements GuiEventListener, Renderable {
       public OverlayRecipeButton(
          final int x, final int y, final RecipeDisplayId recipe, final boolean isCraftable, final List<OverlayRecipeComponent.OverlayRecipeButton.Pos> slots
       ) {
-         Objects.requireNonNull(OverlayRecipeComponent.this);
          super(x, y, 24, 24, CommonComponents.EMPTY);
          this.slots = slots;
          this.recipe = recipe;
@@ -250,12 +245,12 @@ public class OverlayRecipeComponent implements GuiEventListener, Renderable {
       @Override
       public void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
          graphics.blitSprite(RenderPipelines.GUI_TEXTURED, this.getSprite(this.isCraftable), this.getX(), this.getY(), this.width, this.height);
-         float gridPosX = (float)(this.getX() + 2);
-         float gridPosY = (float)(this.getY() + 2);
+         float gridPosX = this.getX() + 2;
+         float gridPosY = this.getY() + 2;
 
          for (OverlayRecipeComponent.OverlayRecipeButton.Pos pos : this.slots) {
             graphics.pose().pushMatrix();
-            graphics.pose().translate(gridPosX + (float)pos.x, gridPosY + (float)pos.y);
+            graphics.pose().translate(gridPosX + pos.x, gridPosY + pos.y);
             graphics.pose().scale(0.375F, 0.375F);
             graphics.pose().translate(-8.0F, -8.0F);
             graphics.item(pos.selectIngredient(OverlayRecipeComponent.this.slotSelectTime.currentIndex()), 0, 0);
@@ -263,14 +258,10 @@ public class OverlayRecipeComponent implements GuiEventListener, Renderable {
          }
       }
 
-      protected static record Pos(int x, int y, List<ItemStack> ingredients) {
-         public Pos(int x, int y, List<ItemStack> ingredients) {
+      protected record Pos(int x, int y, List<ItemStack> ingredients) {
+         public Pos {
             if (ingredients.isEmpty()) {
                throw new IllegalArgumentException("Ingredient list must be non-empty");
-            } else {
-               this.x = x;
-               this.y = y;
-               this.ingredients = ingredients;
             }
          }
 
@@ -289,7 +280,6 @@ public class OverlayRecipeComponent implements GuiEventListener, Renderable {
       public OverlaySmeltingRecipeButton(
          final int x, final int y, final RecipeDisplayId id, final RecipeDisplay recipe, final ContextMap context, final boolean isCraftable
       ) {
-         Objects.requireNonNull(OverlayRecipeComponent.this);
          super(x, y, id, isCraftable, calculateIngredientsPositions(recipe, context));
       }
 

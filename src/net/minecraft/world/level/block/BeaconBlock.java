@@ -31,9 +31,8 @@ public class BeaconBlock extends BaseEntityBlock implements BeaconBeamBlock {
       return new BeaconBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return createTickerHelper(type, BlockEntityTypes.BEACON, BeaconBlockEntity::tick);
    }
 

@@ -10,7 +10,7 @@ public class Clear implements RuleBlockEntityModifier {
    public static final MapCodec<Clear> CODEC = MapCodec.unit(INSTANCE);
 
    @Override
-   public CompoundTag apply(final RandomSource random, @Nullable final CompoundTag existingTag) {
+   public CompoundTag apply(final RandomSource random, final @Nullable CompoundTag existingTag) {
       return new CompoundTag();
    }
 

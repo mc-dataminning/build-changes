@@ -33,13 +33,12 @@ public class ShieldSpecialRenderer implements SpecialModelRenderer<DataComponent
       this.model = model;
    }
 
-   @Nullable
-   public DataComponentMap extractArgument(final ItemStack stack) {
+   public @Nullable DataComponentMap extractArgument(final ItemStack stack) {
       return stack.immutableComponents();
    }
 
    public void submit(
-      @Nullable final DataComponentMap components,
+      final @Nullable DataComponentMap components,
       final PoseStack poseStack,
       final SubmitNodeCollector submitNodeCollector,
       final int lightCoords,
@@ -95,7 +94,7 @@ public class ShieldSpecialRenderer implements SpecialModelRenderer<DataComponent
       this.model.root().getExtentsForGui(poseStack, output);
    }
 
-   public static record Unbaked() implements SpecialModelRenderer.Unbaked<DataComponentMap> {
+   public record Unbaked() implements SpecialModelRenderer.Unbaked<DataComponentMap> {
       public static final ShieldSpecialRenderer.Unbaked INSTANCE = new ShieldSpecialRenderer.Unbaked();
       public static final MapCodec<ShieldSpecialRenderer.Unbaked> MAP_CODEC = MapCodec.unit(INSTANCE);
 

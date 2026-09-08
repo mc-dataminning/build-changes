@@ -14,7 +14,6 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.raid.Raid;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemInstance;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.entity.BannerPattern;
 import net.minecraft.world.phys.Vec3;
@@ -31,15 +30,15 @@ public record EntityEquipmentPredicate(
 ) implements EntitySubPredicate {
    public static final Codec<EntityEquipmentPredicate> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ItemPredicate.CODEC.optionalFieldOf("head").forGetter(EntityEquipmentPredicate::head),
-               ItemPredicate.CODEC.optionalFieldOf("chest").forGetter(EntityEquipmentPredicate::chest),
-               ItemPredicate.CODEC.optionalFieldOf("legs").forGetter(EntityEquipmentPredicate::legs),
-               ItemPredicate.CODEC.optionalFieldOf("feet").forGetter(EntityEquipmentPredicate::feet),
-               ItemPredicate.CODEC.optionalFieldOf("body").forGetter(EntityEquipmentPredicate::body),
-               ItemPredicate.CODEC.optionalFieldOf("mainhand").forGetter(EntityEquipmentPredicate::mainhand),
-               ItemPredicate.CODEC.optionalFieldOf("offhand").forGetter(EntityEquipmentPredicate::offhand)
-            )
-            .apply(i, EntityEquipmentPredicate::new)
+            ItemPredicate.CODEC.optionalFieldOf("head").forGetter(EntityEquipmentPredicate::head),
+            ItemPredicate.CODEC.optionalFieldOf("chest").forGetter(EntityEquipmentPredicate::chest),
+            ItemPredicate.CODEC.optionalFieldOf("legs").forGetter(EntityEquipmentPredicate::legs),
+            ItemPredicate.CODEC.optionalFieldOf("feet").forGetter(EntityEquipmentPredicate::feet),
+            ItemPredicate.CODEC.optionalFieldOf("body").forGetter(EntityEquipmentPredicate::body),
+            ItemPredicate.CODEC.optionalFieldOf("mainhand").forGetter(EntityEquipmentPredicate::mainhand),
+            ItemPredicate.CODEC.optionalFieldOf("offhand").forGetter(EntityEquipmentPredicate::offhand)
+         )
+         .apply(i, EntityEquipmentPredicate::new)
    );
 
    public static EntityEquipmentPredicate captainPredicate(final HolderGetter<Item> items, final HolderGetter<BannerPattern> patternGetter) {
@@ -60,22 +59,22 @@ public record EntityEquipmentPredicate(
          .build();
    }
 
-   public boolean matches(@Nullable final Entity entity) {
+   public boolean matches(final @Nullable Entity entity) {
       if (entity instanceof LivingEntity livingEntity) {
-         if (this.head.isPresent() && !this.head.get().test((ItemInstance)livingEntity.getItemBySlot(EquipmentSlot.HEAD))) {
+         if (this.head.isPresent() && !this.head.get().test(livingEntity.getItemBySlot(EquipmentSlot.HEAD))) {
             return false;
-         } else if (this.chest.isPresent() && !this.chest.get().test((ItemInstance)livingEntity.getItemBySlot(EquipmentSlot.CHEST))) {
+         } else if (this.chest.isPresent() && !this.chest.get().test(livingEntity.getItemBySlot(EquipmentSlot.CHEST))) {
             return false;
-         } else if (this.legs.isPresent() && !this.legs.get().test((ItemInstance)livingEntity.getItemBySlot(EquipmentSlot.LEGS))) {
+         } else if (this.legs.isPresent() && !this.legs.get().test(livingEntity.getItemBySlot(EquipmentSlot.LEGS))) {
             return false;
-         } else if (this.feet.isPresent() && !this.feet.get().test((ItemInstance)livingEntity.getItemBySlot(EquipmentSlot.FEET))) {
+         } else if (this.feet.isPresent() && !this.feet.get().test(livingEntity.getItemBySlot(EquipmentSlot.FEET))) {
             return false;
-         } else if (this.body.isPresent() && !this.body.get().test((ItemInstance)livingEntity.getItemBySlot(EquipmentSlot.BODY))) {
+         } else if (this.body.isPresent() && !this.body.get().test(livingEntity.getItemBySlot(EquipmentSlot.BODY))) {
             return false;
          } else {
-            return this.mainhand.isPresent() && !this.mainhand.get().test((ItemInstance)livingEntity.getItemBySlot(EquipmentSlot.MAINHAND))
+            return this.mainhand.isPresent() && !this.mainhand.get().test(livingEntity.getItemBySlot(EquipmentSlot.MAINHAND))
                ? false
-               : !this.offhand.isPresent() || this.offhand.get().test((ItemInstance)livingEntity.getItemBySlot(EquipmentSlot.OFFHAND));
+               : !this.offhand.isPresent() || this.offhand.get().test(livingEntity.getItemBySlot(EquipmentSlot.OFFHAND));
          }
       } else {
          return false;
@@ -83,7 +82,7 @@ public record EntityEquipmentPredicate(
    }
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
       return this.matches(entity);
    }
 

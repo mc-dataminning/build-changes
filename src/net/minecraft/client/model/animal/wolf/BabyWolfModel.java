@@ -64,6 +64,6 @@ public class BabyWolfModel extends WolfModel {
    @Override
    protected void setSittingPose(final WolfRenderState state) {
       super.setSittingPose(state);
-      this.body.xRot--;
+      this.body.xRot -= (float) (Math.PI / 2);
    }
 }

@@ -31,7 +31,7 @@ public class WardenRenderer extends MobRenderer<Warden, WardenRenderState, Warde
          new LivingEntityEmissiveLayer<>(
             this,
             renderState -> PULSATING_SPOTS_TEXTURE_1,
-            (warden, ageInTicks) -> Math.max(0.0F, Mth.cos((double)(ageInTicks * 0.045F)) * 0.25F),
+            (warden, ageInTicks) -> Math.max(0.0F, Mth.cos(ageInTicks * 0.045F) * 0.25F),
             pulsatingSpotsModel,
             RenderTypes::entityTranslucentEmissive,
             false
@@ -41,7 +41,7 @@ public class WardenRenderer extends MobRenderer<Warden, WardenRenderState, Warde
          new LivingEntityEmissiveLayer<>(
             this,
             renderState -> PULSATING_SPOTS_TEXTURE_2,
-            (warden, ageInTicks) -> Math.max(0.0F, Mth.cos((double)(ageInTicks * 0.045F + (float) Math.PI)) * 0.25F),
+            (warden, ageInTicks) -> Math.max(0.0F, Mth.cos(ageInTicks * 0.045F + (float) Math.PI) * 0.25F),
             pulsatingSpotsModel,
             RenderTypes::entityTranslucentEmissive,
             false

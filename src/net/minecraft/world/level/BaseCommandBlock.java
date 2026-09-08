@@ -27,11 +27,9 @@ public abstract class BaseCommandBlock {
    private boolean updateLastExecution = true;
    private int successCount;
    private boolean trackOutput = true;
-   @Nullable
-   private Component lastOutput;
+   private @Nullable Component lastOutput;
    private String command = "";
-   @Nullable
-   private Component customName;
+   private @Nullable Component customName;
 
    public int getSuccessCount() {
       return this.successCount;
@@ -91,45 +89,47 @@ public abstract class BaseCommandBlock {
    public boolean performCommand(final ServerLevel level) {
       if (level.getGameTime() == this.lastExecution) {
          return false;
-      } else if ("Searge".equalsIgnoreCase(this.command)) {
+      }
+
+      if ("Searge".equalsIgnoreCase(this.command)) {
          this.lastOutput = Component.literal("#itzlipofutzli");
          this.successCount = 1;
          return true;
-      } else {
-         this.successCount = 0;
-         if (level.isCommandBlockEnabled() && !StringUtil.isNullOrEmpty(this.command)) {
-            try {
-               this.lastOutput = null;
-
-               try (BaseCommandBlock.CloseableCommandBlockSource commandSource = this.createSource(level)) {
-                  CommandSource effectiveCommandSource = Objects.requireNonNullElse(commandSource, CommandSource.NULL);
-                  CommandSourceStack commandSourceStack = this.createCommandSourceStack(level, effectiveCommandSource).withCallback((success, result) -> {
-                     if (success) {
-                        this.successCount++;
-                     }
-                  });
-                  level.getServer().getCommands().performPrefixedCommand(commandSourceStack, this.command);
-               }
-            } catch (Throwable var7) {
-               CrashReport report = CrashReport.forThrowable(var7, "Executing command block");
-               CrashReportCategory category = report.addCategory("Command to be executed");
-               category.setDetail("Command", this::getCommand);
-               category.setDetail("Name", () -> this.getName().getString());
-               throw new ReportedException(report);
-            }
-         }
-
-         if (this.updateLastExecution) {
-            this.lastExecution = level.getGameTime();
-         } else {
-            this.lastExecution = -1L;
-         }
-
-         return true;
       }
+
+      this.successCount = 0;
+      if (level.isCommandBlockEnabled() && !StringUtil.isNullOrEmpty(this.command)) {
+         try {
+            this.lastOutput = null;
+
+            try (BaseCommandBlock.CloseableCommandBlockSource commandSource = this.createSource(level)) {
+               CommandSource effectiveCommandSource = Objects.requireNonNullElse(commandSource, CommandSource.NULL);
+               CommandSourceStack commandSourceStack = this.createCommandSourceStack(level, effectiveCommandSource).withCallback((success, result) -> {
+                  if (success) {
+                     this.successCount++;
+                  }
+               });
+               level.getServer().getCommands().performPrefixedCommand(commandSourceStack, this.command);
+            }
+         } catch (Throwable t) {
+            CrashReport report = CrashReport.forThrowable(t, "Executing command block");
+            CrashReportCategory category = report.addCategory("Command to be executed");
+            category.setDetail("Command", this::getCommand);
+            category.setDetail("Name", () -> this.getName().getString());
+            throw new ReportedException(report);
+         }
+      }
+
+      if (this.updateLastExecution) {
+         this.lastExecution = level.getGameTime();
+      } else {
+         this.lastExecution = -1L;
+      }
+
+      return true;
    }
 
-   private BaseCommandBlock.CloseableCommandBlockSource createSource(final ServerLevel level) {
+   private BaseCommandBlock.@Nullable CloseableCommandBlockSource createSource(final ServerLevel level) {
       return this.trackOutput ? new BaseCommandBlock.CloseableCommandBlockSource(level) : null;
    }
 
@@ -137,18 +137,17 @@ public abstract class BaseCommandBlock {
       return this.customName != null ? this.customName : DEFAULT_NAME;
    }
 
-   @Nullable
-   public Component getCustomName() {
+   public @Nullable Component getCustomName() {
       return this.customName;
    }
 
-   public void setCustomName(@Nullable final Component name) {
+   public void setCustomName(final @Nullable Component name) {
       this.customName = name;
    }
 
    public abstract void onUpdated(ServerLevel level);
 
-   public void setLastOutput(@Nullable final Component lastOutput) {
+   public void setLastOutput(final @Nullable Component lastOutput) {
       this.lastOutput = lastOutput;
    }
 
@@ -170,8 +169,6 @@ public abstract class BaseCommandBlock {
       private boolean closed;
 
       protected CloseableCommandBlockSource(final ServerLevel level) {
-         Objects.requireNonNull(BaseCommandBlock.this);
-         super();
          this.level = level;
       }
 

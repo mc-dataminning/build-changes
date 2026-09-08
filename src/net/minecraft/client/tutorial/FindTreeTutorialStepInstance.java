@@ -22,8 +22,7 @@ public class FindTreeTutorialStepInstance implements TutorialStepInstance {
    private static final Component TITLE = Component.translatable("tutorial.find_tree.title");
    private static final Component DESCRIPTION = Component.translatable("tutorial.find_tree.description");
    private final Tutorial tutorial;
-   @Nullable
-   private TutorialToast toast;
+   private @Nullable TutorialToast toast;
    private int timeWaiting;
 
    public FindTreeTutorialStepInstance(final Tutorial tutorial) {

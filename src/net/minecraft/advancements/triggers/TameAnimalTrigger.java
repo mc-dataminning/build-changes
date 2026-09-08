@@ -23,14 +23,14 @@ public class TameAnimalTrigger extends SimpleCriterionTrigger<TameAnimalTrigger.
       this.trigger(player, t -> t.matches(animalContext));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<Holder<LootItemCondition>> entity)
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<Holder<LootItemCondition>> entity)
       implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<TameAnimalTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(TameAnimalTrigger.TriggerInstance::player),
-                  LootItemCondition.CODEC.optionalFieldOf("entity").forGetter(TameAnimalTrigger.TriggerInstance::entity)
-               )
-               .apply(i, TameAnimalTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(TameAnimalTrigger.TriggerInstance::player),
+               LootItemCondition.CODEC.optionalFieldOf("entity").forGetter(TameAnimalTrigger.TriggerInstance::entity)
+            )
+            .apply(i, TameAnimalTrigger.TriggerInstance::new)
       );
 
       public static Criterion<TameAnimalTrigger.TriggerInstance> tamedAnimal() {

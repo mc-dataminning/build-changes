@@ -15,28 +15,17 @@ import org.jspecify.annotations.Nullable;
 public final class Style {
    public static final Style EMPTY = new Style(null, null, null, null, null, null, null, null, null, null, null);
    public static final int NO_SHADOW = 0;
-   @Nullable
-   private final TextColor color;
-   @Nullable
-   private final Integer shadowColor;
-   @Nullable
-   private final Boolean bold;
-   @Nullable
-   private final Boolean italic;
-   @Nullable
-   private final Boolean underlined;
-   @Nullable
-   private final Boolean strikethrough;
-   @Nullable
-   private final Boolean obfuscated;
-   @Nullable
-   private final ClickEvent clickEvent;
-   @Nullable
-   private final HoverEvent hoverEvent;
-   @Nullable
-   private final String insertion;
-   @Nullable
-   private final FontDescription font;
+   private final @Nullable TextColor color;
+   private final @Nullable Integer shadowColor;
+   private final @Nullable Boolean bold;
+   private final @Nullable Boolean italic;
+   private final @Nullable Boolean underlined;
+   private final @Nullable Boolean strikethrough;
+   private final @Nullable Boolean obfuscated;
+   private final @Nullable ClickEvent clickEvent;
+   private final @Nullable HoverEvent hoverEvent;
+   private final @Nullable String insertion;
+   private final @Nullable FontDescription font;
 
    private static Style create(
       final Optional<TextColor> color,
@@ -68,17 +57,17 @@ public final class Style {
    }
 
    private Style(
-      @Nullable final TextColor color,
-      @Nullable final Integer shadowColor,
-      @Nullable final Boolean bold,
-      @Nullable final Boolean italic,
-      @Nullable final Boolean underlined,
-      @Nullable final Boolean strikethrough,
-      @Nullable final Boolean obfuscated,
-      @Nullable final ClickEvent clickEvent,
-      @Nullable final HoverEvent hoverEvent,
-      @Nullable final String insertion,
-      @Nullable final FontDescription font
+      final @Nullable TextColor color,
+      final @Nullable Integer shadowColor,
+      final @Nullable Boolean bold,
+      final @Nullable Boolean italic,
+      final @Nullable Boolean underlined,
+      final @Nullable Boolean strikethrough,
+      final @Nullable Boolean obfuscated,
+      final @Nullable ClickEvent clickEvent,
+      final @Nullable HoverEvent hoverEvent,
+      final @Nullable String insertion,
+      final @Nullable FontDescription font
    ) {
       this.color = color;
       this.shadowColor = shadowColor;
@@ -93,13 +82,11 @@ public final class Style {
       this.font = font;
    }
 
-   @Nullable
-   public TextColor getColor() {
+   public @Nullable TextColor getColor() {
       return this.color;
    }
 
-   @Nullable
-   public Integer getShadowColor() {
+   public @Nullable Integer getShadowColor() {
       return this.shadowColor;
    }
 
@@ -127,30 +114,27 @@ public final class Style {
       return this == EMPTY;
    }
 
-   @Nullable
-   public ClickEvent getClickEvent() {
+   public @Nullable ClickEvent getClickEvent() {
       return this.clickEvent;
    }
 
-   @Nullable
-   public HoverEvent getHoverEvent() {
+   public @Nullable HoverEvent getHoverEvent() {
       return this.hoverEvent;
    }
 
-   @Nullable
-   public String getInsertion() {
+   public @Nullable String getInsertion() {
       return this.insertion;
    }
 
    public FontDescription getFont() {
-      return (FontDescription)(this.font != null ? this.font : FontDescription.DEFAULT);
+      return this.font != null ? this.font : FontDescription.DEFAULT;
    }
 
-   private static <T> Style checkEmptyAfterChange(final Style newStyle, @Nullable final T previous, @Nullable final T next) {
+   private static <T> Style checkEmptyAfterChange(final Style newStyle, final @Nullable T previous, final @Nullable T next) {
       return previous != null && next == null && newStyle.equals(EMPTY) ? EMPTY : newStyle;
    }
 
-   public Style withColor(@Nullable final TextColor color) {
+   public Style withColor(final @Nullable TextColor color) {
       return Objects.equals(this.color, color)
          ? this
          : checkEmptyAfterChange(
@@ -172,7 +156,7 @@ public final class Style {
          );
    }
 
-   public Style withColor(@Nullable final ChatFormatting color) {
+   public Style withColor(final @Nullable ChatFormatting color) {
       return this.withColor(color != null ? TextColor.fromLegacyFormat(color) : null);
    }
 
@@ -206,7 +190,7 @@ public final class Style {
       return this.withShadowColor(0);
    }
 
-   public Style withBold(@Nullable final Boolean bold) {
+   public Style withBold(final @Nullable Boolean bold) {
       return Objects.equals(this.bold, bold)
          ? this
          : checkEmptyAfterChange(
@@ -228,7 +212,7 @@ public final class Style {
          );
    }
 
-   public Style withItalic(@Nullable final Boolean italic) {
+   public Style withItalic(final @Nullable Boolean italic) {
       return Objects.equals(this.italic, italic)
          ? this
          : checkEmptyAfterChange(
@@ -250,7 +234,7 @@ public final class Style {
          );
    }
 
-   public Style withUnderlined(@Nullable final Boolean underlined) {
+   public Style withUnderlined(final @Nullable Boolean underlined) {
       return Objects.equals(this.underlined, underlined)
          ? this
          : checkEmptyAfterChange(
@@ -272,7 +256,7 @@ public final class Style {
          );
    }
 
-   public Style withStrikethrough(@Nullable final Boolean strikethrough) {
+   public Style withStrikethrough(final @Nullable Boolean strikethrough) {
       return Objects.equals(this.strikethrough, strikethrough)
          ? this
          : checkEmptyAfterChange(
@@ -294,7 +278,7 @@ public final class Style {
          );
    }
 
-   public Style withObfuscated(@Nullable final Boolean obfuscated) {
+   public Style withObfuscated(final @Nullable Boolean obfuscated) {
       return Objects.equals(this.obfuscated, obfuscated)
          ? this
          : checkEmptyAfterChange(
@@ -316,7 +300,7 @@ public final class Style {
          );
    }
 
-   public Style withClickEvent(@Nullable final ClickEvent clickEvent) {
+   public Style withClickEvent(final @Nullable ClickEvent clickEvent) {
       return Objects.equals(this.clickEvent, clickEvent)
          ? this
          : checkEmptyAfterChange(
@@ -338,7 +322,7 @@ public final class Style {
          );
    }
 
-   public Style withHoverEvent(@Nullable final HoverEvent hoverEvent) {
+   public Style withHoverEvent(final @Nullable HoverEvent hoverEvent) {
       return Objects.equals(this.hoverEvent, hoverEvent)
          ? this
          : checkEmptyAfterChange(
@@ -360,7 +344,7 @@ public final class Style {
          );
    }
 
-   public Style withInsertion(@Nullable final String insertion) {
+   public Style withInsertion(final @Nullable String insertion) {
       return Objects.equals(this.insertion, insertion)
          ? this
          : checkEmptyAfterChange(
@@ -382,7 +366,7 @@ public final class Style {
          );
    }
 
-   public Style withFont(@Nullable final FontDescription font) {
+   public Style withFont(final @Nullable FontDescription font) {
       return Objects.equals(this.font, font)
          ? this
          : checkEmptyAfterChange(
@@ -543,11 +527,6 @@ public final class Style {
       class Collector {
          private boolean isNotFirst;
 
-         Collector() {
-            Objects.requireNonNull(Style.this);
-            super();
-         }
-
          private void prependSeparator() {
             if (this.isNotFirst) {
                result.append(',');
@@ -556,7 +535,7 @@ public final class Style {
             this.isNotFirst = true;
          }
 
-         private void addFlagString(final String name, @Nullable final Boolean value) {
+         private void addFlagString(final String name, final @Nullable Boolean value) {
             if (value != null) {
                this.prependSeparator();
                if (!value) {
@@ -567,7 +546,7 @@ public final class Style {
             }
          }
 
-         private void addValueString(final String name, @Nullable final Object value) {
+         private void addValueString(final String name, final @Nullable Object value) {
             if (value != null) {
                this.prependSeparator();
                result.append(name);
@@ -633,19 +612,19 @@ public final class Style {
    public static class Serializer {
       public static final MapCodec<Style> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  TextColor.CODEC.optionalFieldOf("color").forGetter(o -> Optional.ofNullable(o.color)),
-                  ExtraCodecs.ARGB_COLOR_CODEC.optionalFieldOf("shadow_color").forGetter(o -> Optional.ofNullable(o.shadowColor)),
-                  Codec.BOOL.optionalFieldOf("bold").forGetter(o -> Optional.ofNullable(o.bold)),
-                  Codec.BOOL.optionalFieldOf("italic").forGetter(o -> Optional.ofNullable(o.italic)),
-                  Codec.BOOL.optionalFieldOf("underlined").forGetter(o -> Optional.ofNullable(o.underlined)),
-                  Codec.BOOL.optionalFieldOf("strikethrough").forGetter(o -> Optional.ofNullable(o.strikethrough)),
-                  Codec.BOOL.optionalFieldOf("obfuscated").forGetter(o -> Optional.ofNullable(o.obfuscated)),
-                  ClickEvent.CODEC.optionalFieldOf("click_event").forGetter(o -> Optional.ofNullable(o.clickEvent)),
-                  HoverEvent.CODEC.optionalFieldOf("hover_event").forGetter(o -> Optional.ofNullable(o.hoverEvent)),
-                  Codec.STRING.optionalFieldOf("insertion").forGetter(o -> Optional.ofNullable(o.insertion)),
-                  FontDescription.CODEC.optionalFieldOf("font").forGetter(o -> Optional.ofNullable(o.font))
-               )
-               .apply(i, Style::create)
+               TextColor.CODEC.optionalFieldOf("color").forGetter(o -> Optional.ofNullable(o.color)),
+               ExtraCodecs.ARGB_COLOR_CODEC.optionalFieldOf("shadow_color").forGetter(o -> Optional.ofNullable(o.shadowColor)),
+               Codec.BOOL.optionalFieldOf("bold").forGetter(o -> Optional.ofNullable(o.bold)),
+               Codec.BOOL.optionalFieldOf("italic").forGetter(o -> Optional.ofNullable(o.italic)),
+               Codec.BOOL.optionalFieldOf("underlined").forGetter(o -> Optional.ofNullable(o.underlined)),
+               Codec.BOOL.optionalFieldOf("strikethrough").forGetter(o -> Optional.ofNullable(o.strikethrough)),
+               Codec.BOOL.optionalFieldOf("obfuscated").forGetter(o -> Optional.ofNullable(o.obfuscated)),
+               ClickEvent.CODEC.optionalFieldOf("click_event").forGetter(o -> Optional.ofNullable(o.clickEvent)),
+               HoverEvent.CODEC.optionalFieldOf("hover_event").forGetter(o -> Optional.ofNullable(o.hoverEvent)),
+               Codec.STRING.optionalFieldOf("insertion").forGetter(o -> Optional.ofNullable(o.insertion)),
+               FontDescription.CODEC.optionalFieldOf("font").forGetter(o -> Optional.ofNullable(o.font))
+            )
+            .apply(i, Style::create)
       );
       public static final Codec<Style> CODEC = MAP_CODEC.codec();
       public static final StreamCodec<RegistryFriendlyByteBuf, Style> TRUSTED_STREAM_CODEC = ByteBufCodecs.fromCodecWithRegistriesTrusted(CODEC);

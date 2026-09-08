@@ -189,10 +189,9 @@ public class Hoglin extends Animal implements Enemy, HoglinBase {
       return !level.getBlockState(pos.below()).is(Blocks.NETHER_WART_BLOCK);
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+   public @Nullable SpawnGroupData finalizeSpawn(
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       if (level.getRandom().nextFloat() < 0.2F) {
          this.setBaby(true);
@@ -226,7 +225,7 @@ public class Hoglin extends Animal implements Enemy, HoglinBase {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 4) {
          this.attackAnimationRemainingTicks = 10;
          this.makeSound(SoundEvents.HOGLIN_ATTACK);
@@ -309,9 +308,8 @@ public class Hoglin extends Animal implements Enemy, HoglinBase {
       return this.isAdult() && !this.cannotBeHunted;
    }
 
-   @Nullable
    @Override
-   public AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       Hoglin offspring = EntityTypes.HOGLIN.create(level, EntitySpawnReason.BREEDING);
       if (offspring != null) {
          offspring.setPersistenceRequired();
@@ -360,9 +358,8 @@ public class Hoglin extends Animal implements Enemy, HoglinBase {
       this.playSound(SoundEvents.HOGLIN_STEP, 0.15F, 1.0F);
    }
 
-   @Nullable
    @Override
-   public LivingEntity getTarget() {
+   public @Nullable LivingEntity getTarget() {
       return this.getTargetFromBrain();
    }
 }

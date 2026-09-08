@@ -32,9 +32,8 @@ public class ContextNbtProvider implements NbtProvider {
       return MAP_CODEC;
    }
 
-   @Nullable
    @Override
-   public Tag get(final LootContext context) {
+   public @Nullable Tag get(final LootContext context) {
       return this.source.get(context);
    }
 
@@ -47,13 +46,13 @@ public class ContextNbtProvider implements NbtProvider {
       return new ContextNbtProvider(new ContextNbtProvider.EntitySource(source.contextParam()));
    }
 
-   private static record BlockEntitySource(ContextKey<? extends BlockEntity> contextParam) implements LootContextArg.Getter<BlockEntity, Tag> {
+   private record BlockEntitySource(ContextKey<? extends BlockEntity> contextParam) implements LootContextArg.Getter<BlockEntity, Tag> {
       public Tag get(final BlockEntity blockEntity) {
          return blockEntity.saveWithFullMetadata(blockEntity.getLevel().registryAccess());
       }
    }
 
-   private static record EntitySource(ContextKey<? extends Entity> contextParam) implements LootContextArg.Getter<Entity, Tag> {
+   private record EntitySource(ContextKey<? extends Entity> contextParam) implements LootContextArg.Getter<Entity, Tag> {
       public Tag get(final Entity entity) {
          return NbtPredicate.getEntityTagToCompare(entity);
       }

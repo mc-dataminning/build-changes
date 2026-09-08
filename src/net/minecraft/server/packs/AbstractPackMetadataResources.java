@@ -9,16 +9,14 @@ import org.jspecify.annotations.Nullable;
 
 public abstract class AbstractPackMetadataResources implements PackMetadataResources {
    private final PackLocationInfo location;
-   @Nullable
-   private ResourceMetadata metadata;
+   private @Nullable ResourceMetadata metadata;
 
    protected AbstractPackMetadataResources(final PackLocationInfo location) {
       this.location = location;
    }
 
-   @Nullable
    @Override
-   public <T> T getMetadataSection(final MetadataSectionType<T> metadataSerializer) throws IOException {
+   public <T> @Nullable T getMetadataSection(final MetadataSectionType<T> metadataSerializer) throws IOException {
       if (this.metadata == null) {
          this.metadata = loadMetadata(this);
       }
@@ -30,13 +28,10 @@ public abstract class AbstractPackMetadataResources implements PackMetadataResou
       IoSupplier<InputStream> metadata = packResources.getRootResource("pack.mcmeta");
       if (metadata == null) {
          return ResourceMetadata.EMPTY;
-      } else {
-         ResourceMetadata var3;
-         try (InputStream resource = metadata.get()) {
-            var3 = ResourceMetadata.fromJsonStream(resource);
-         }
+      }
 
-         return var3;
+      try (InputStream resource = metadata.get()) {
+         return ResourceMetadata.fromJsonStream(resource);
       }
    }
 

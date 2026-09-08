@@ -20,12 +20,12 @@ import net.minecraft.world.level.levelgen.synth.NormalNoise;
 public class DualNoiseProvider extends NoiseProvider {
    public static final MapCodec<DualNoiseProvider> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               InclusiveRange.codec(Codec.INT, 1, 64).fieldOf("variety").forGetter(p -> p.variety),
-               NormalNoise.DIRECT_CODEC.fieldOf("slow_noise").forGetter(p -> p.slowNoiseParameters),
-               ExtraCodecs.POSITIVE_FLOAT.fieldOf("slow_scale").forGetter(p -> p.slowScale)
-            )
-            .and(noiseProviderCodec(i))
-            .apply(i, DualNoiseProvider::new)
+            InclusiveRange.codec(Codec.INT, 1, 64).fieldOf("variety").forGetter(p -> p.variety),
+            NormalNoise.DIRECT_CODEC.fieldOf("slow_noise").forGetter(p -> p.slowNoiseParameters),
+            ExtraCodecs.POSITIVE_FLOAT.fieldOf("slow_scale").forGetter(p -> p.slowScale)
+         )
+         .and(noiseProviderCodec(i))
+         .apply(i, DualNoiseProvider::new)
    );
    private final InclusiveRange<Integer> variety;
    private final NormalNoise slowNoiseParameters;
@@ -55,19 +55,18 @@ public class DualNoiseProvider extends NoiseProvider {
 
    @Override
    public BlockState getState(final LevelAccessor level, final RandomSource random, final BlockPos pos) {
-      double varietyNoise = (double)this.getSlowNoiseValue(pos);
-      int localVariety = (int)Mth.clampedMap(varietyNoise, -1.0, 1.0, (double)this.variety.minInclusive().intValue(), (double)(this.variety.maxInclusive() + 1));
+      double varietyNoise = this.getSlowNoiseValue(pos);
+      int localVariety = (int)Mth.clampedMap(varietyNoise, -1.0, 1.0, this.variety.minInclusive().intValue(), this.variety.maxInclusive() + 1);
       List<BlockState> possibleStates = Lists.newArrayListWithCapacity(localVariety);
 
       for (int i = 0; i < localVariety; i++) {
          possibleStates.add(this.getRandomState(this.states, this.getSlowNoiseValue(pos.offset(i * 54545, 0, i * 34234))));
       }
 
-      return this.getRandomState(possibleStates, pos, (double)this.scale);
+      return this.getRandomState(possibleStates, pos, this.scale);
    }
 
    protected float getSlowNoiseValue(final BlockPos pos) {
-      return this.slowNoise
-         .get((double)((float)pos.getX() * this.slowScale), (double)((float)pos.getY() * this.slowScale), (double)((float)pos.getZ() * this.slowScale));
+      return this.slowNoise.get(pos.getX() * this.slowScale, pos.getY() * this.slowScale, pos.getZ() * this.slowScale);
    }
 }

@@ -14,8 +14,7 @@ import org.jspecify.annotations.Nullable;
 public class JukeboxSongPlayer {
    public static final int PLAY_EVENT_INTERVAL_TICKS = 20;
    private long ticksSinceSongStarted;
-   @Nullable
-   private Holder<JukeboxSong> song;
+   private @Nullable Holder<JukeboxSong> song;
    private final BlockPos blockPos;
    private final JukeboxSongPlayer.OnSongChanged onSongChanged;
 
@@ -28,8 +27,7 @@ public class JukeboxSongPlayer {
       return this.song != null;
    }
 
-   @Nullable
-   public JukeboxSong getSong() {
+   public @Nullable JukeboxSong getSong() {
       return this.song == null ? null : this.song.value();
    }
 
@@ -52,7 +50,7 @@ public class JukeboxSongPlayer {
       this.onSongChanged.notifyChange();
    }
 
-   public void stop(final LevelAccessor level, @Nullable final BlockState blockState) {
+   public void stop(final LevelAccessor level, final @Nullable BlockState blockState) {
       if (this.song != null) {
          this.song = null;
          this.ticksSinceSongStarted = 0L;
@@ -62,7 +60,7 @@ public class JukeboxSongPlayer {
       }
    }
 
-   public void tick(final LevelAccessor level, @Nullable final BlockState blockState) {
+   public void tick(final LevelAccessor level, final @Nullable BlockState blockState) {
       if (this.song != null) {
          if (this.song.value().hasFinished(this.ticksSinceSongStarted)) {
             this.stop(level, blockState);
@@ -84,8 +82,8 @@ public class JukeboxSongPlayer {
    private static void spawnMusicParticles(final LevelAccessor level, final BlockPos blockPos) {
       if (level instanceof ServerLevel serverLevel) {
          Vec3 pos = Vec3.atBottomCenterOf(blockPos).add(0.0, 1.2F, 0.0);
-         float randomColor = (float)level.getRandom().nextInt(4) / 24.0F;
-         serverLevel.sendParticles(ParticleTypes.NOTE, pos.x(), pos.y(), pos.z(), 0, (double)randomColor, 0.0, 0.0, 1.0);
+         float randomColor = level.getRandom().nextInt(4) / 24.0F;
+         serverLevel.sendParticles(ParticleTypes.NOTE, pos.x(), pos.y(), pos.z(), 0, randomColor, 0.0, 0.0, 1.0);
       }
    }
 

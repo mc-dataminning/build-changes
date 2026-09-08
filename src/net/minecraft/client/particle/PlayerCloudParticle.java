@@ -27,8 +27,8 @@ public class PlayerCloudParticle extends SingleQuadParticle {
       this.gCol = col;
       this.bCol = col;
       this.quadSize *= 1.875F;
-      int baseLifetime = (int)(8.0 / ((double)this.random.nextFloat() * 0.8 + 0.3));
-      this.lifetime = (int)Math.max((float)baseLifetime * 2.5F, 1.0F);
+      int baseLifetime = (int)(8.0 / (this.random.nextFloat() * 0.8 + 0.3));
+      this.lifetime = (int)Math.max(baseLifetime * 2.5F, 1.0F);
       this.hasPhysics = false;
       this.setSpriteFromAge(sprites);
    }
@@ -40,7 +40,7 @@ public class PlayerCloudParticle extends SingleQuadParticle {
 
    @Override
    public float getQuadSize(final float a) {
-      return this.quadSize * Mth.clamp(((float)this.age + a) / (float)this.lifetime * 32.0F, 0.0F, 1.0F);
+      return this.quadSize * Mth.clamp((this.age + a) / this.lifetime * 32.0F, 0.0F, 1.0F);
    }
 
    @Override

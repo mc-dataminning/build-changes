@@ -15,10 +15,10 @@ public record AmbientSounds(Optional<Holder<SoundEvent>> loop, Optional<AmbientM
    );
    public static final Codec<AmbientSounds> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               SoundEvent.CODEC.optionalFieldOf("loop").forGetter(AmbientSounds::loop),
-               AmbientMoodSettings.CODEC.optionalFieldOf("mood").forGetter(AmbientSounds::mood),
-               ExtraCodecs.compactListCodec(AmbientAdditionsSettings.CODEC).optionalFieldOf("additions", List.of()).forGetter(AmbientSounds::additions)
-            )
-            .apply(i, AmbientSounds::new)
+            SoundEvent.CODEC.optionalFieldOf("loop").forGetter(AmbientSounds::loop),
+            AmbientMoodSettings.CODEC.optionalFieldOf("mood").forGetter(AmbientSounds::mood),
+            ExtraCodecs.compactListCodec(AmbientAdditionsSettings.CODEC).optionalFieldOf("additions", List.of()).forGetter(AmbientSounds::additions)
+         )
+         .apply(i, AmbientSounds::new)
    );
 }

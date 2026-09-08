@@ -56,13 +56,13 @@ public class EnchantmentHelper {
       ItemEnchantments oldEnchantments = itemStack.get(componentType);
       if (oldEnchantments == null) {
          return ItemEnchantments.EMPTY;
-      } else {
-         ItemEnchantments.Mutable mutableEnchantments = new ItemEnchantments.Mutable(oldEnchantments);
-         consumer.accept(mutableEnchantments);
-         ItemEnchantments newEnchantments = mutableEnchantments.toImmutable();
-         itemStack.set(componentType, newEnchantments);
-         return newEnchantments;
       }
+
+      ItemEnchantments.Mutable mutableEnchantments = new ItemEnchantments.Mutable(oldEnchantments);
+      consumer.accept(mutableEnchantments);
+      ItemEnchantments newEnchantments = mutableEnchantments.toImmutable();
+      itemStack.set(componentType, newEnchantments);
+      return newEnchantments;
    }
 
    public static boolean canStoreEnchantments(final ItemStack itemStack) {
@@ -87,26 +87,26 @@ public class EnchantmentHelper {
    }
 
    public static int processDurabilityChange(final ServerLevel serverLevel, final ItemStack itemStack, final int amount) {
-      MutableFloat modifiedAmount = new MutableFloat((float)amount);
+      MutableFloat modifiedAmount = new MutableFloat(amount);
       runIterationOnItem(itemStack, (enchantment, level) -> enchantment.value().modifyDurabilityChange(serverLevel, level, itemStack, modifiedAmount));
       return modifiedAmount.intValue();
    }
 
    public static int processAmmoUse(final ServerLevel serverLevel, final ItemStack weapon, final ItemStack ammo, final int amount) {
-      MutableFloat modifiedAmount = new MutableFloat((float)amount);
+      MutableFloat modifiedAmount = new MutableFloat(amount);
       runIterationOnItem(weapon, (enchantment, level) -> enchantment.value().modifyAmmoCount(serverLevel, level, ammo, modifiedAmount));
       return modifiedAmount.intValue();
    }
 
    public static int processBlockExperience(final ServerLevel serverLevel, final ItemStack itemStack, final int amount) {
-      MutableFloat modifiedAmount = new MutableFloat((float)amount);
+      MutableFloat modifiedAmount = new MutableFloat(amount);
       runIterationOnItem(itemStack, (enchantment, level) -> enchantment.value().modifyBlockExperience(serverLevel, level, itemStack, modifiedAmount));
       return modifiedAmount.intValue();
    }
 
-   public static int processMobExperience(final ServerLevel serverLevel, @Nullable final Entity killer, final Entity killed, final int amount) {
+   public static int processMobExperience(final ServerLevel serverLevel, final @Nullable Entity killer, final Entity killed, final int amount) {
       if (killer instanceof LivingEntity livingKiller) {
-         MutableFloat modifiedAmount = new MutableFloat((float)amount);
+         MutableFloat modifiedAmount = new MutableFloat(amount);
          runIterationOnEquipment(
             livingKiller, (enchantment, level, item) -> enchantment.value().modifyMobExperience(serverLevel, level, item.itemStack(), killed, modifiedAmount)
          );
@@ -224,7 +224,7 @@ public class EnchantmentHelper {
    }
 
    public static void doPostAttackEffectsWithItemSource(
-      final ServerLevel serverLevel, final Entity victim, final DamageSource damageSource, @Nullable final ItemStack source
+      final ServerLevel serverLevel, final Entity victim, final DamageSource damageSource, final @Nullable ItemStack source
    ) {
       doPostAttackEffectsWithItemSourceOnBreak(serverLevel, victim, damageSource, source, null);
    }
@@ -233,8 +233,8 @@ public class EnchantmentHelper {
       final ServerLevel serverLevel,
       final Entity victim,
       final DamageSource damageSource,
-      @Nullable final ItemStack source,
-      @Nullable final Consumer<ItemStack> attackerlessOnBreak
+      final @Nullable ItemStack source,
+      final @Nullable Consumer<ItemStack> attackerlessOnBreak
    ) {
       if (victim instanceof LivingEntity livingVictim) {
          runIterationOnEquipment(
@@ -295,7 +295,7 @@ public class EnchantmentHelper {
    }
 
    public static int processProjectileCount(final ServerLevel serverLevel, final ItemStack weapon, final Entity shooter, final int count) {
-      MutableFloat modifiedCount = new MutableFloat((float)count);
+      MutableFloat modifiedCount = new MutableFloat(count);
       runIterationOnItem(weapon, (enchantment, level) -> enchantment.value().modifyProjectileCount(serverLevel, level, weapon, shooter, modifiedCount));
       return Math.max(0, modifiedCount.intValue());
    }
@@ -323,9 +323,9 @@ public class EnchantmentHelper {
    public static void onHitBlock(
       final ServerLevel serverLevel,
       final ItemStack weapon,
-      @Nullable final LivingEntity owner,
+      final @Nullable LivingEntity owner,
       final Entity entity,
-      @Nullable final EquipmentSlot slot,
+      final @Nullable EquipmentSlot slot,
       final Vec3 hitLocation,
       final BlockState hitBlock,
       final Consumer<ItemStack> onBreak
@@ -335,7 +335,7 @@ public class EnchantmentHelper {
    }
 
    public static int modifyDurabilityToRepairFromXp(final ServerLevel serverLevel, final ItemStack item, final int durability) {
-      MutableFloat modifiedDurability = new MutableFloat((float)durability);
+      MutableFloat modifiedDurability = new MutableFloat(durability);
       runIterationOnItem(item, (enchantment, level) -> enchantment.value().modifyDurabilityToRepairFromXp(serverLevel, level, item, modifiedDurability));
       return Math.max(0, modifiedDurability.intValue());
    }
@@ -385,18 +385,18 @@ public class EnchantmentHelper {
 
    public static void forEachModifier(final ItemStack itemStack, final EquipmentSlotGroup slot, final BiConsumer<Holder<Attribute>, AttributeModifier> consumer) {
       runIterationOnItem(itemStack, (enchantment, level) -> enchantment.value().getEffects(EnchantmentEffectComponents.ATTRIBUTES).forEach(effect -> {
-            if (((Enchantment)enchantment.value()).definition().slots().contains(slot)) {
-               consumer.accept(effect.attribute(), effect.getModifier(level, slot));
-            }
-         }));
+         if (((Enchantment)enchantment.value()).definition().slots().contains(slot)) {
+            consumer.accept(effect.attribute(), effect.getModifier(level, slot));
+         }
+      }));
    }
 
    public static void forEachModifier(final ItemStack itemStack, final EquipmentSlot slot, final BiConsumer<Holder<Attribute>, AttributeModifier> consumer) {
       runIterationOnItem(itemStack, (enchantment, level) -> enchantment.value().getEffects(EnchantmentEffectComponents.ATTRIBUTES).forEach(effect -> {
-            if (((Enchantment)enchantment.value()).matchingSlot(slot)) {
-               consumer.accept(effect.attribute(), effect.getModifier(level, slot));
-            }
-         }));
+         if (((Enchantment)enchantment.value()).matchingSlot(slot)) {
+            consumer.accept(effect.attribute(), effect.getModifier(level, slot));
+         }
+      }));
    }
 
    public static int getFishingLuckBonus(final ServerLevel serverLevel, final ItemStack rod, final Entity fisher) {
@@ -504,17 +504,17 @@ public class EnchantmentHelper {
       Enchantable enchantable = itemStack.get(DataComponents.ENCHANTABLE);
       if (enchantable == null) {
          return 0;
-      } else {
-         if (bookcases > 15) {
-            bookcases = 15;
-         }
+      }
 
-         int selected = random.nextInt(8) + 1 + (bookcases >> 1) + random.nextInt(bookcases + 1);
-         if (slot == 0) {
-            return Math.max(selected / 3, 1);
-         } else {
-            return slot == 1 ? selected * 2 / 3 + 1 : Math.max(selected, bookcases * 2);
-         }
+      if (bookcases > 15) {
+         bookcases = 15;
+      }
+
+      int selected = random.nextInt(8) + 1 + (bookcases >> 1) + random.nextInt(bookcases + 1);
+      if (slot == 0) {
+         return Math.max(selected / 3, 1);
+      } else {
+         return slot == 1 ? selected * 2 / 3 + 1 : Math.max(selected, bookcases * 2);
       }
    }
 
@@ -553,30 +553,30 @@ public class EnchantmentHelper {
       Enchantable enchantable = itemStack.get(DataComponents.ENCHANTABLE);
       if (enchantable == null) {
          return results;
-      } else {
-         enchantmentCost += 1 + random.nextInt(enchantable.value() / 4 + 1) + random.nextInt(enchantable.value() / 4 + 1);
-         float randomSpan = (random.nextFloat() + random.nextFloat() - 1.0F) * 0.15F;
-         enchantmentCost = Mth.clamp(Math.round((float)enchantmentCost + (float)enchantmentCost * randomSpan), 1, Integer.MAX_VALUE);
-         List<EnchantmentInstance> enchantments = getAvailableEnchantmentResults(enchantmentCost, itemStack, source);
-         if (!enchantments.isEmpty()) {
-            WeightedRandom.getRandomItem(random, enchantments, EnchantmentInstance::weight).ifPresent(results::add);
-
-            while (random.nextInt(50) <= enchantmentCost) {
-               if (!results.isEmpty()) {
-                  filterCompatibleEnchantments(enchantments, results.getLast());
-               }
-
-               if (enchantments.isEmpty()) {
-                  break;
-               }
-
-               WeightedRandom.getRandomItem(random, enchantments, EnchantmentInstance::weight).ifPresent(results::add);
-               enchantmentCost /= 2;
-            }
-         }
-
-         return results;
       }
+
+      enchantmentCost += 1 + random.nextInt(enchantable.value() / 4 + 1) + random.nextInt(enchantable.value() / 4 + 1);
+      float randomSpan = (random.nextFloat() + random.nextFloat() - 1.0F) * 0.15F;
+      enchantmentCost = Mth.clamp(Math.round(enchantmentCost + enchantmentCost * randomSpan), 1, Integer.MAX_VALUE);
+      List<EnchantmentInstance> enchantments = getAvailableEnchantmentResults(enchantmentCost, itemStack, source);
+      if (!enchantments.isEmpty()) {
+         WeightedRandom.getRandomItem(random, enchantments, EnchantmentInstance::weight).ifPresent(results::add);
+
+         while (random.nextInt(50) <= enchantmentCost) {
+            if (!results.isEmpty()) {
+               filterCompatibleEnchantments(enchantments, results.getLast());
+            }
+
+            if (enchantments.isEmpty()) {
+               break;
+            }
+
+            WeightedRandom.getRandomItem(random, enchantments, EnchantmentInstance::weight).ifPresent(results::add);
+            enchantmentCost /= 2;
+         }
+      }
+
+      return results;
    }
 
    public static void filterCompatibleEnchantments(final List<EnchantmentInstance> enchants, final EnchantmentInstance target) {

@@ -39,7 +39,7 @@ public class TryFindLiquidGoal extends Goal {
       }
 
       if (fluidPos != null) {
-         this.mob.getMoveControl().setWantedPosition((double)fluidPos.getX(), (double)fluidPos.getY(), (double)fluidPos.getZ(), 1.0);
+         this.mob.getMoveControl().setWantedPosition(fluidPos.getX(), fluidPos.getY(), fluidPos.getZ(), 1.0);
       }
    }
 }

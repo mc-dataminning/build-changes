@@ -10,28 +10,28 @@ public record ClockTimeMarker(Holder<WorldClock> clock, int ticks, Optional<Inte
 
    public long getRepetitionCount(final long totalTicks) {
       if (this.periodTicks.isEmpty()) {
-         return totalTicks >= (long)this.ticks ? 1L : 0L;
-      } else {
-         int periodTicks = this.periodTicks.get();
-         return totalTicks / (long)periodTicks + (long)(totalTicks % (long)periodTicks >= (long)this.ticks ? 1 : 0);
+         return totalTicks >= this.ticks ? 1L : 0L;
       }
+
+      int periodTicks = this.periodTicks.get();
+      return totalTicks / periodTicks + (totalTicks % periodTicks >= this.ticks ? 1 : 0);
    }
 
    public long resolveTimeToMoveTo(final long totalTicks) {
       if (this.periodTicks.isEmpty()) {
-         return (long)this.ticks;
-      } else {
-         int periodTicks = this.periodTicks.get();
-         return totalTicks + durationToNext(periodTicks, totalTicks % (long)periodTicks, (long)this.ticks);
+         return this.ticks;
       }
+
+      int periodTicks = this.periodTicks.get();
+      return totalTicks + durationToNext(periodTicks, totalTicks % periodTicks, this.ticks);
    }
 
    public boolean occursAt(final long totalTicks) {
-      return this.periodTicks.isEmpty() ? (long)this.ticks == totalTicks : (long)this.ticks == totalTicks % (long)this.periodTicks.get().intValue();
+      return this.periodTicks.isEmpty() ? this.ticks == totalTicks : this.ticks == totalTicks % this.periodTicks.get().intValue();
    }
 
    private static long durationToNext(final int periodTicks, final long from, final long to) {
       long duration = to - from;
-      return duration > 0L ? duration : (long)periodTicks + duration;
+      return duration > 0L ? duration : periodTicks + duration;
    }
 }

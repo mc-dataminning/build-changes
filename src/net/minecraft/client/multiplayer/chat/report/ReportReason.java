@@ -21,7 +21,7 @@ public enum ReportReason {
    private final Component title;
    private final Component description;
 
-   private ReportReason(final String name) {
+   ReportReason(final String name) {
       this.backendName = name.toUpperCase(Locale.ROOT);
       String translationKey = "gui.abuseReport.reason." + name;
       this.title = Component.translatable(translationKey);

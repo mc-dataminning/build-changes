@@ -28,7 +28,7 @@ public class FlowerBedBlock extends VegetationBlock implements BonemealableBlock
    protected FlowerBedBlock(final BlockBehaviour.Properties properties, final int shapeHeight) {
       super(properties);
       this.shapeHeight = shapeHeight;
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(AMOUNT, Integer.valueOf(1)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(AMOUNT, 1));
       this.shapes = this.makeShapes();
    }
 
@@ -58,7 +58,7 @@ public class FlowerBedBlock extends VegetationBlock implements BonemealableBlock
 
    @Override
    public double getShapeHeight() {
-      return (double)this.shapeHeight;
+      return this.shapeHeight;
    }
 
    @Override
@@ -90,7 +90,7 @@ public class FlowerBedBlock extends VegetationBlock implements BonemealableBlock
    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state, final BonemealSource source) {
       int currentAmount = state.getValue(AMOUNT);
       if (currentAmount < 4) {
-         level.setBlock(pos, state.setValue(AMOUNT, Integer.valueOf(currentAmount + 1)), 2);
+         level.setBlock(pos, state.setValue(AMOUNT, currentAmount + 1), 2);
       } else {
          popResource(level, pos, new ItemStack(this));
       }

@@ -33,7 +33,7 @@ public class GateBehavior<E extends LivingEntity> implements BehaviorControl<E> 
       this.exitErasedMemories = exitErasedMemories;
       this.orderPolicy = orderPolicy;
       this.runningPolicy = runningPolicy;
-      behaviors.forEach(entry -> this.behaviors.add((BehaviorControl<? super E>)entry.getFirst(), (Integer)entry.getSecond()));
+      behaviors.forEach(entry -> this.behaviors.add((BehaviorControl)entry.getFirst(), (Integer)entry.getSecond()));
    }
 
    @Override
@@ -101,14 +101,13 @@ public class GateBehavior<E extends LivingEntity> implements BehaviorControl<E> 
       return this.getClass().getSimpleName() + ": " + runningBehaviours;
    }
 
-   public static enum OrderPolicy {
-      ORDERED(t -> {
-      }),
+   public enum OrderPolicy {
+      ORDERED(t -> {}),
       SHUFFLED(ShufflingList::shuffle);
 
       private final Consumer<ShufflingList<?>> consumer;
 
-      private OrderPolicy(final Consumer<ShufflingList<?>> consumer) {
+      OrderPolicy(final Consumer<ShufflingList<?>> consumer) {
          this.consumer = consumer;
       }
 
@@ -117,7 +116,7 @@ public class GateBehavior<E extends LivingEntity> implements BehaviorControl<E> 
       }
    }
 
-   public static enum RunningPolicy {
+   public enum RunningPolicy {
       RUN_ONE {
          @Override
          public <E extends LivingEntity> void apply(

@@ -17,10 +17,10 @@ public record TrimPredicate(Optional<HolderSet<TrimMaterial>> material, Optional
    implements SingleComponentItemPredicate<ArmorTrim> {
    public static final Codec<TrimPredicate> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               RegistryCodecs.holderSet(Registries.TRIM_MATERIAL).optionalFieldOf("material").forGetter(TrimPredicate::material),
-               RegistryCodecs.holderSet(Registries.TRIM_PATTERN).optionalFieldOf("pattern").forGetter(TrimPredicate::pattern)
-            )
-            .apply(i, TrimPredicate::new)
+            RegistryCodecs.holderSet(Registries.TRIM_MATERIAL).optionalFieldOf("material").forGetter(TrimPredicate::material),
+            RegistryCodecs.holderSet(Registries.TRIM_PATTERN).optionalFieldOf("pattern").forGetter(TrimPredicate::pattern)
+         )
+         .apply(i, TrimPredicate::new)
    );
 
    @Override

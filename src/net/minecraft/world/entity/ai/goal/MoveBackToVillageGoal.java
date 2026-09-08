@@ -24,9 +24,8 @@ public class MoveBackToVillageGoal extends RandomStrollGoal {
       return level.isVillage(pos) ? false : super.canUse();
    }
 
-   @Nullable
    @Override
-   protected Vec3 getPosition() {
+   protected @Nullable Vec3 getPosition() {
       ServerLevel level = (ServerLevel)this.mob.level();
       BlockPos pos = this.mob.blockPosition();
       SectionPos sectionPos = SectionPos.of(pos);

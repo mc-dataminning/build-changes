@@ -66,9 +66,7 @@ public class CandleBlock extends AbstractCandleBlock implements SimpleWaterlogge
 
    public CandleBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(CANDLES, Integer.valueOf(1)).setValue(LIT, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false))
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(CANDLES, 1).setValue(LIT, false).setValue(WATERLOGGED, false));
    }
 
    @Override
@@ -101,11 +99,11 @@ public class CandleBlock extends AbstractCandleBlock implements SimpleWaterlogge
       BlockState state = context.getLevel().getBlockState(context.getClickedPos());
       if (state.is(this)) {
          return state.cycle(CANDLES);
-      } else {
-         FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-         boolean isWaterSource = replacedFluidState.is(Fluids.WATER);
-         return super.getStateForPlacement(context).setValue(WATERLOGGED, Boolean.valueOf(isWaterSource));
       }
+
+      FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
+      boolean isWaterSource = replacedFluidState.is(Fluids.WATER);
+      return super.getStateForPlacement(context).setValue(WATERLOGGED, isWaterSource);
    }
 
    @Override
@@ -144,7 +142,7 @@ public class CandleBlock extends AbstractCandleBlock implements SimpleWaterlogge
    @Override
    public boolean placeLiquid(final LevelAccessor level, final BlockPos pos, final BlockState state, final FluidState fluidState) {
       if (!state.getValue(WATERLOGGED) && fluidState.is(Fluids.WATER)) {
-         BlockState newState = state.setValue(WATERLOGGED, Boolean.valueOf(true));
+         BlockState newState = state.setValue(WATERLOGGED, true);
          if (state.getValue(LIT)) {
             extinguish(null, newState, level, pos);
          } else {

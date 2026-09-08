@@ -30,7 +30,7 @@ class InfestedMobEffect extends MobEffect {
          int count = this.spawnedCount.applyAsInt(mob.getRandom());
 
          for (int i = 0; i < count; i++) {
-            this.spawnSilverfish(level, mob, mob.getX(), mob.getY() + (double)mob.getBbHeight() / 2.0, mob.getZ());
+            this.spawnSilverfish(level, mob, mob.getX(), mob.getY() + mob.getBbHeight() / 2.0, mob.getZ());
          }
       }
    }

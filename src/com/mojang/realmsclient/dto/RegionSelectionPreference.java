@@ -16,7 +16,7 @@ public enum RegionSelectionPreference {
    public final int id;
    public final String translationKey;
 
-   private RegionSelectionPreference(final int id, final String translationKey) {
+   RegionSelectionPreference(final int id, final String translationKey) {
       this.id = id;
       this.translationKey = translationKey;
    }
@@ -25,7 +25,7 @@ public enum RegionSelectionPreference {
       private static final Logger LOGGER = LogUtils.getLogger();
 
       public void write(final JsonWriter jsonWriter, final RegionSelectionPreference regionSelectionPreference) throws IOException {
-         jsonWriter.value((long)regionSelectionPreference.id);
+         jsonWriter.value(regionSelectionPreference.id);
       }
 
       public RegionSelectionPreference read(final JsonReader jsonReader) throws IOException {

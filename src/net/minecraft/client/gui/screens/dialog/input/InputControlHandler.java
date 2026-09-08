@@ -10,7 +10,7 @@ public interface InputControlHandler<T extends InputControl> {
    void addControl(T input, Screen screen, InputControlHandler.Output output);
 
    @FunctionalInterface
-   public interface Output {
+   interface Output {
       void accept(LayoutElement element, Action.ValueGetter valueGetter);
    }
 }

@@ -21,54 +21,54 @@ public class V2551 extends NamespacedSchema {
          false,
          References.WORLD_GEN_SETTINGS,
          () -> DSL.fields(
-               "dimensions",
-               DSL.compoundList(
-                  DSL.constType(namespacedString()),
-                  DSL.fields(
-                     "generator",
-                     DSL.taggedChoiceLazy(
-                        "type",
-                        DSL.string(),
-                        ImmutableMap.of(
-                           "minecraft:debug",
-                           DSL::remainder,
-                           "minecraft:flat",
-                           (Supplier<TypeTemplate>)() -> DSL.optionalFields(
-                                 "settings",
-                                 DSL.optionalFields(
-                                    "biome", References.BIOME.in(schema), "layers", DSL.list(DSL.optionalFields("block", References.BLOCK_NAME.in(schema)))
-                                 )
-                              ),
-                           "minecraft:noise",
-                           (Supplier<TypeTemplate>)() -> DSL.optionalFields(
-                                 "biome_source",
-                                 DSL.taggedChoiceLazy(
-                                    "type",
-                                    DSL.string(),
-                                    ImmutableMap.of(
-                                       "minecraft:fixed",
-                                       (Supplier<TypeTemplate>)() -> DSL.fields("biome", References.BIOME.in(schema)),
-                                       "minecraft:multi_noise",
-                                       (Supplier<TypeTemplate>)() -> DSL.list(DSL.fields("biome", References.BIOME.in(schema))),
-                                       "minecraft:checkerboard",
-                                       (Supplier<TypeTemplate>)() -> DSL.fields("biomes", DSL.list(References.BIOME.in(schema))),
-                                       "minecraft:vanilla_layered",
-                                       DSL::remainder,
-                                       "minecraft:the_end",
-                                       DSL::remainder
-                                    )
-                                 ),
-                                 "settings",
-                                 DSL.or(
-                                    DSL.constType(DSL.string()),
-                                    DSL.optionalFields("default_block", References.BLOCK_NAME.in(schema), "default_fluid", References.BLOCK_NAME.in(schema))
-                                 )
+            "dimensions",
+            DSL.compoundList(
+               DSL.constType(namespacedString()),
+               DSL.fields(
+                  "generator",
+                  DSL.taggedChoiceLazy(
+                     "type",
+                     DSL.string(),
+                     ImmutableMap.of(
+                        "minecraft:debug",
+                        DSL::remainder,
+                        "minecraft:flat",
+                        (Supplier<TypeTemplate>)() -> DSL.optionalFields(
+                           "settings",
+                           DSL.optionalFields(
+                              "biome", References.BIOME.in(schema), "layers", DSL.list(DSL.optionalFields("block", References.BLOCK_NAME.in(schema)))
+                           )
+                        ),
+                        "minecraft:noise",
+                        (Supplier<TypeTemplate>)() -> DSL.optionalFields(
+                           "biome_source",
+                           DSL.taggedChoiceLazy(
+                              "type",
+                              DSL.string(),
+                              ImmutableMap.of(
+                                 "minecraft:fixed",
+                                 (Supplier<TypeTemplate>)() -> DSL.fields("biome", References.BIOME.in(schema)),
+                                 "minecraft:multi_noise",
+                                 (Supplier<TypeTemplate>)() -> DSL.list(DSL.fields("biome", References.BIOME.in(schema))),
+                                 "minecraft:checkerboard",
+                                 (Supplier<TypeTemplate>)() -> DSL.fields("biomes", DSL.list(References.BIOME.in(schema))),
+                                 "minecraft:vanilla_layered",
+                                 DSL::remainder,
+                                 "minecraft:the_end",
+                                 DSL::remainder
                               )
+                           ),
+                           "settings",
+                           DSL.or(
+                              DSL.constType(DSL.string()),
+                              DSL.optionalFields("default_block", References.BLOCK_NAME.in(schema), "default_fluid", References.BLOCK_NAME.in(schema))
+                           )
                         )
                      )
                   )
                )
             )
+         )
       );
    }
 }

@@ -9,8 +9,7 @@ import net.minecraft.util.Util;
 import org.jspecify.annotations.Nullable;
 
 public class DebugMemoryUntracker {
-   @Nullable
-   private static final MethodHandle UNTRACK = Util.make(() -> {
+   private static final @Nullable MethodHandle UNTRACK = Util.make(() -> {
       try {
          Lookup lookup = MethodHandles.lookup();
          Class<?> debugAllocator = Class.forName("org.lwjgl.system.MemoryManage$DebugAllocator");
@@ -20,8 +19,8 @@ public class DebugMemoryUntracker {
          allocatorField.setAccessible(true);
          Object allocator = allocatorField.get(null);
          return debugAllocator.isInstance(allocator) ? lookup.unreflect(reflectionUntrack) : null;
-      } catch (NoSuchMethodException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException var5) {
-         throw new RuntimeException(var5);
+      } catch (ClassNotFoundException | NoSuchMethodException | NoSuchFieldException | IllegalAccessException e) {
+         throw new RuntimeException(e);
       }
    });
 
@@ -29,8 +28,8 @@ public class DebugMemoryUntracker {
       if (UNTRACK != null) {
          try {
             UNTRACK.invoke((long)address);
-         } catch (Throwable var3) {
-            throw new RuntimeException(var3);
+         } catch (Throwable throwable) {
+            throw new RuntimeException(throwable);
          }
       }
    }

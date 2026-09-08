@@ -52,11 +52,11 @@ public class WalkNodeEvaluator extends NodeEvaluator {
    public Node getStart() {
       BlockPos.MutableBlockPos reusablePos = new BlockPos.MutableBlockPos();
       int startY = this.mob.getBlockY();
-      BlockState blockState = this.currentContext.getBlockState(reusablePos.set(this.mob.getX(), (double)startY, this.mob.getZ()));
+      BlockState blockState = this.currentContext.getBlockState(reusablePos.set(this.mob.getX(), startY, this.mob.getZ()));
       if (!this.mob.canStandOnFluid(blockState.getFluidState())) {
          if (this.canFloat() && this.mob.isInFloatableFluid()) {
             while (blockState.getFluidState().is(FluidTags.ENTITY_FLOATABLE)) {
-               blockState = this.currentContext.getBlockState(reusablePos.set(this.mob.getX(), (double)(++startY), this.mob.getZ()));
+               blockState = this.currentContext.getBlockState(reusablePos.set(this.mob.getX(), ++startY, this.mob.getZ()));
             }
 
             startY--;
@@ -76,7 +76,7 @@ public class WalkNodeEvaluator extends NodeEvaluator {
          }
       } else {
          while (this.mob.canStandOnFluid(blockState.getFluidState())) {
-            blockState = this.currentContext.getBlockState(reusablePos.set(this.mob.getX(), (double)(++startY), this.mob.getZ()));
+            blockState = this.currentContext.getBlockState(reusablePos.set(this.mob.getX(), ++startY, this.mob.getZ()));
          }
 
          startY--;
@@ -85,10 +85,10 @@ public class WalkNodeEvaluator extends NodeEvaluator {
       BlockPos startPos = this.mob.blockPosition();
       if (!this.canStartAt(reusablePos.set(startPos.getX(), startY, startPos.getZ()))) {
          AABB mobBB = this.mob.getBoundingBox();
-         if (this.canStartAt(reusablePos.set(mobBB.minX, (double)startY, mobBB.minZ))
-            || this.canStartAt(reusablePos.set(mobBB.minX, (double)startY, mobBB.maxZ))
-            || this.canStartAt(reusablePos.set(mobBB.maxX, (double)startY, mobBB.minZ))
-            || this.canStartAt(reusablePos.set(mobBB.maxX, (double)startY, mobBB.maxZ))) {
+         if (this.canStartAt(reusablePos.set(mobBB.minX, startY, mobBB.minZ))
+            || this.canStartAt(reusablePos.set(mobBB.minX, startY, mobBB.maxZ))
+            || this.canStartAt(reusablePos.set(mobBB.maxX, startY, mobBB.minZ))
+            || this.canStartAt(reusablePos.set(mobBB.maxX, startY, mobBB.maxZ))) {
             return this.getStartNode(reusablePos);
          }
       }
@@ -135,16 +135,16 @@ public class WalkNodeEvaluator extends NodeEvaluator {
          }
       }
 
-      for (Direction directionx : Direction.Plane.HORIZONTAL) {
-         Direction secondDirection = directionx.getClockWise();
-         if (this.isDiagonalValid(pos, this.reusableNeighbors[directionx.get2DDataValue()], this.reusableNeighbors[secondDirection.get2DDataValue()])) {
+      for (Direction direction : Direction.Plane.HORIZONTAL) {
+         Direction secondDirection = direction.getClockWise();
+         if (this.isDiagonalValid(pos, this.reusableNeighbors[direction.get2DDataValue()], this.reusableNeighbors[secondDirection.get2DDataValue()])) {
             Node diagonalNode = this.findAcceptedNode(
-               pos.x + directionx.getStepX() + secondDirection.getStepX(),
+               pos.x + direction.getStepX() + secondDirection.getStepX(),
                pos.y,
-               pos.z + directionx.getStepZ() + secondDirection.getStepZ(),
+               pos.z + direction.getStepZ() + secondDirection.getStepZ(),
                jumpSize,
                posHeight,
-               directionx,
+               direction,
                blockPathTypeCurrent
             );
             if (this.isDiagonalValid(diagonalNode)) {
@@ -156,16 +156,18 @@ public class WalkNodeEvaluator extends NodeEvaluator {
       return p;
    }
 
-   protected boolean isNeighborValid(@Nullable final Node neighbor, final Node current) {
+   protected boolean isNeighborValid(final @Nullable Node neighbor, final Node current) {
       return neighbor != null && !neighbor.closed && (neighbor.costMalus >= 0.0F || current.costMalus < 0.0F);
    }
 
-   protected boolean isDiagonalValid(final Node pos, @Nullable final Node ew, @Nullable final Node ns) {
+   protected boolean isDiagonalValid(final Node pos, final @Nullable Node ew, final @Nullable Node ns) {
       if (ns == null || ew == null || ns.y > pos.y || ew.y > pos.y) {
          return false;
-      } else if (ew.type != PathType.WALKABLE_DOOR && ns.type != PathType.WALKABLE_DOOR) {
+      }
+
+      if (ew.type != PathType.WALKABLE_DOOR && ns.type != PathType.WALKABLE_DOOR) {
          if (!(this.mob.getBbWidth() > 1.0F) || !(ew.costMalus > 0.0F) && !(ns.costMalus > 0.0F)) {
-            boolean canPassBetweenPosts = ns.type == PathType.FENCE && ew.type == PathType.FENCE && (double)this.mob.getBbWidth() < 0.5;
+            boolean canPassBetweenPosts = ns.type == PathType.FENCE && ew.type == PathType.FENCE && this.mob.getBbWidth() < 0.5;
             return (ns.y < pos.y || ns.costMalus >= 0.0F || canPassBetweenPosts) && (ew.y < pos.y || ew.costMalus >= 0.0F || canPassBetweenPosts);
          } else {
             return false;
@@ -175,7 +177,7 @@ public class WalkNodeEvaluator extends NodeEvaluator {
       }
    }
 
-   protected boolean isDiagonalValid(@Nullable final Node diagonal) {
+   protected boolean isDiagonalValid(final @Nullable Node diagonal) {
       if (diagonal == null || diagonal.closed) {
          return false;
       } else {
@@ -190,12 +192,10 @@ public class WalkNodeEvaluator extends NodeEvaluator {
    private boolean canReachWithoutCollision(final Node posTo) {
       AABB bb = this.mob.getBoundingBox();
       Vec3 delta = new Vec3(
-         (double)posTo.x - this.mob.getX() + bb.getXsize() / 2.0,
-         (double)posTo.y - this.mob.getY() + bb.getYsize() / 2.0,
-         (double)posTo.z - this.mob.getZ() + bb.getZsize() / 2.0
+         posTo.x - this.mob.getX() + bb.getXsize() / 2.0, posTo.y - this.mob.getY() + bb.getYsize() / 2.0, posTo.z - this.mob.getZ() + bb.getZsize() / 2.0
       );
       int steps = Mth.ceil(delta.length() / bb.getSize());
-      delta = delta.scale((double)(1.0F / (float)steps));
+      delta = delta.scale(1.0F / steps);
 
       for (int i = 1; i <= steps; i++) {
          bb = bb.move(delta);
@@ -209,23 +209,20 @@ public class WalkNodeEvaluator extends NodeEvaluator {
 
    protected double getFloorLevel(final BlockPos pos) {
       BlockGetter level = this.currentContext.level();
-      return (this.canFloat() || this.isAmphibious()) && level.getFluidState(pos).is(FluidTags.ENTITY_FLOATABLE)
-         ? (double)pos.getY() + 0.5
-         : getFloorLevel(level, pos);
+      return (this.canFloat() || this.isAmphibious()) && level.getFluidState(pos).is(FluidTags.ENTITY_FLOATABLE) ? pos.getY() + 0.5 : getFloorLevel(level, pos);
    }
 
    public static double getFloorLevel(final BlockGetter level, final BlockPos pos) {
       BlockPos target = pos.below();
       VoxelShape shape = level.getBlockState(target).getCollisionShape(level, target);
-      return (double)target.getY() + (shape.isEmpty() ? 0.0 : shape.max(Direction.Axis.Y));
+      return target.getY() + (shape.isEmpty() ? 0.0 : shape.max(Direction.Axis.Y));
    }
 
    protected boolean isAmphibious() {
       return false;
    }
 
-   @Nullable
-   protected Node findAcceptedNode(
+   protected @Nullable Node findAcceptedNode(
       final int x, final int y, final int z, final int jumpSize, final double nodeHeight, final Direction travelDirection, final PathType blockPathTypeCurrent
    ) {
       Node best = null;
@@ -233,42 +230,42 @@ public class WalkNodeEvaluator extends NodeEvaluator {
       double maxYTarget = this.getFloorLevel(reusablePos.set(x, y, z));
       if (maxYTarget - nodeHeight > this.getMobJumpHeight()) {
          return null;
+      }
+
+      PathType pathType = this.getCachedPathType(x, y, z);
+      float pathCost = this.mob.getPathfindingMalus(pathType);
+      if (pathCost >= 0.0F) {
+         best = this.getNodeAndUpdateCostToMax(x, y, z, pathType, pathCost);
+      }
+
+      if (doesBlockHavePartialCollision(blockPathTypeCurrent) && best != null && best.costMalus >= 0.0F && !this.canReachWithoutCollision(best)) {
+         best = null;
+      }
+
+      if (pathType != PathType.WALKABLE && (!this.isAmphibious() || pathType != PathType.WATER)) {
+         if ((best == null || best.costMalus < 0.0F)
+            && jumpSize > 0
+            && (pathType != PathType.FENCE || this.canWalkOverFences())
+            && pathType != PathType.UNPASSABLE_RAIL
+            && pathType != PathType.TRAPDOOR
+            && pathType != PathType.POWDER_SNOW) {
+            best = this.tryJumpOn(x, y, z, jumpSize, nodeHeight, travelDirection, blockPathTypeCurrent, reusablePos);
+         } else if (!this.isAmphibious() && pathType == PathType.WATER && !this.canFloat()) {
+            best = this.tryFindFirstNonWaterBelow(x, y, z, best);
+         } else if (pathType == PathType.OPEN) {
+            best = this.tryFindFirstGroundNodeBelow(x, y, z);
+         } else if (doesBlockHavePartialCollision(pathType) && best == null) {
+            best = this.getClosedNode(x, y, z, pathType);
+         }
+
+         return best;
       } else {
-         PathType pathType = this.getCachedPathType(x, y, z);
-         float pathCost = this.mob.getPathfindingMalus(pathType);
-         if (pathCost >= 0.0F) {
-            best = this.getNodeAndUpdateCostToMax(x, y, z, pathType, pathCost);
-         }
-
-         if (doesBlockHavePartialCollision(blockPathTypeCurrent) && best != null && best.costMalus >= 0.0F && !this.canReachWithoutCollision(best)) {
-            best = null;
-         }
-
-         if (pathType != PathType.WALKABLE && (!this.isAmphibious() || pathType != PathType.WATER)) {
-            if ((best == null || best.costMalus < 0.0F)
-               && jumpSize > 0
-               && (pathType != PathType.FENCE || this.canWalkOverFences())
-               && pathType != PathType.UNPASSABLE_RAIL
-               && pathType != PathType.TRAPDOOR
-               && pathType != PathType.POWDER_SNOW) {
-               best = this.tryJumpOn(x, y, z, jumpSize, nodeHeight, travelDirection, blockPathTypeCurrent, reusablePos);
-            } else if (!this.isAmphibious() && pathType == PathType.WATER && !this.canFloat()) {
-               best = this.tryFindFirstNonWaterBelow(x, y, z, best);
-            } else if (pathType == PathType.OPEN) {
-               best = this.tryFindFirstGroundNodeBelow(x, y, z);
-            } else if (doesBlockHavePartialCollision(pathType) && best == null) {
-               best = this.getClosedNode(x, y, z, pathType);
-            }
-
-            return best;
-         } else {
-            return best;
-         }
+         return best;
       }
    }
 
    private double getMobJumpHeight() {
-      return Math.max(1.125, (double)this.mob.maxUpStep());
+      return Math.max(1.125, this.mob.maxUpStep());
    }
 
    private Node getNodeAndUpdateCostToMax(final int x, final int y, final int z, final PathType pathType, final float cost) {
@@ -293,8 +290,7 @@ public class WalkNodeEvaluator extends NodeEvaluator {
       return node;
    }
 
-   @Nullable
-   private Node tryJumpOn(
+   private @Nullable Node tryJumpOn(
       final int x,
       final int y,
       final int z,
@@ -307,28 +303,31 @@ public class WalkNodeEvaluator extends NodeEvaluator {
       Node nodeAbove = this.findAcceptedNode(x, y + 1, z, jumpSize - 1, nodeHeight, travelDirection, blockPathTypeCurrent);
       if (nodeAbove == null) {
          return null;
-      } else if (this.mob.getBbWidth() >= 1.0F) {
-         return nodeAbove;
-      } else if (nodeAbove.type != PathType.OPEN && nodeAbove.type != PathType.WALKABLE) {
-         return nodeAbove;
-      } else {
-         double centerX = (double)(x - travelDirection.getStepX()) + 0.5;
-         double centerZ = (double)(z - travelDirection.getStepZ()) + 0.5;
-         double halfWidth = (double)this.mob.getBbWidth() / 2.0;
-         AABB grow = new AABB(
-            centerX - halfWidth,
-            this.getFloorLevel(reusablePos.set(centerX, (double)(y + 1), centerZ)) + 0.001,
-            centerZ - halfWidth,
-            centerX + halfWidth,
-            (double)this.mob.getBbHeight() + this.getFloorLevel(reusablePos.set((double)nodeAbove.x, (double)nodeAbove.y, (double)nodeAbove.z)) - 0.002,
-            centerZ + halfWidth
-         );
-         return this.hasCollisions(grow) ? null : nodeAbove;
       }
+
+      if (this.mob.getBbWidth() >= 1.0F) {
+         return nodeAbove;
+      }
+
+      if (nodeAbove.type != PathType.OPEN && nodeAbove.type != PathType.WALKABLE) {
+         return nodeAbove;
+      }
+
+      double centerX = x - travelDirection.getStepX() + 0.5;
+      double centerZ = z - travelDirection.getStepZ() + 0.5;
+      double halfWidth = this.mob.getBbWidth() / 2.0;
+      AABB grow = new AABB(
+         centerX - halfWidth,
+         this.getFloorLevel(reusablePos.set(centerX, y + 1, centerZ)) + 0.001,
+         centerZ - halfWidth,
+         centerX + halfWidth,
+         this.mob.getBbHeight() + this.getFloorLevel(reusablePos.set((double)nodeAbove.x, (double)nodeAbove.y, (double)nodeAbove.z)) - 0.002,
+         centerZ + halfWidth
+      );
+      return this.hasCollisions(grow) ? null : nodeAbove;
    }
 
-   @Nullable
-   private Node tryFindFirstNonWaterBelow(final int x, int y, final int z, @Nullable Node best) {
+   private @Nullable Node tryFindFirstNonWaterBelow(final int x, int y, final int z, @Nullable Node best) {
       y--;
 
       while (y > this.mob.level().getMinY()) {
@@ -378,37 +377,41 @@ public class WalkNodeEvaluator extends NodeEvaluator {
       Set<PathType> blockTypes = this.getPathTypeWithinMobBB(context, x, y, z);
       if (blockTypes.size() == 1) {
          return blockTypes.iterator().next();
-      } else if (blockTypes.contains(PathType.FENCE)) {
+      }
+
+      if (blockTypes.contains(PathType.FENCE)) {
          return PathType.FENCE;
-      } else if (blockTypes.contains(PathType.UNPASSABLE_RAIL)) {
+      }
+
+      if (blockTypes.contains(PathType.UNPASSABLE_RAIL)) {
          return PathType.UNPASSABLE_RAIL;
+      }
+
+      PathType highestMalusPathTypeWithinBB = PathType.BLOCKED;
+      float highestMalusWithinBB = mob.getPathfindingMalus(highestMalusPathTypeWithinBB);
+
+      for (PathType pathType : blockTypes) {
+         float malusForPathType = mob.getPathfindingMalus(pathType);
+         if (malusForPathType < 0.0F) {
+            return pathType;
+         }
+
+         if (malusForPathType >= highestMalusWithinBB) {
+            highestMalusWithinBB = malusForPathType;
+            highestMalusPathTypeWithinBB = pathType;
+         }
+      }
+
+      PathType currentNodePathType = this.getPathType(context, x, y, z);
+      boolean isLargeMob = this.entityWidth > 1;
+      if (isLargeMob) {
+         boolean isCurrentNodeCheaper = mob.getPathfindingMalus(currentNodePathType) < highestMalusWithinBB;
+         boolean capMalusDueToCheapNode = isCurrentNodeCheaper && mob.getPathfindingMalus(PathType.BIG_MOBS_CLOSE_TO_DANGER) < highestMalusWithinBB;
+         return capMalusDueToCheapNode ? PathType.BIG_MOBS_CLOSE_TO_DANGER : highestMalusPathTypeWithinBB;
       } else {
-         PathType highestMalusPathTypeWithinBB = PathType.BLOCKED;
-         float highestMalusWithinBB = mob.getPathfindingMalus(highestMalusPathTypeWithinBB);
-
-         for (PathType pathType : blockTypes) {
-            float malusForPathType = mob.getPathfindingMalus(pathType);
-            if (malusForPathType < 0.0F) {
-               return pathType;
-            }
-
-            if (malusForPathType >= highestMalusWithinBB) {
-               highestMalusWithinBB = malusForPathType;
-               highestMalusPathTypeWithinBB = pathType;
-            }
-         }
-
-         PathType currentNodePathType = this.getPathType(context, x, y, z);
-         boolean isLargeMob = this.entityWidth > 1;
-         if (isLargeMob) {
-            boolean isCurrentNodeCheaper = mob.getPathfindingMalus(currentNodePathType) < highestMalusWithinBB;
-            boolean capMalusDueToCheapNode = isCurrentNodeCheaper && mob.getPathfindingMalus(PathType.BIG_MOBS_CLOSE_TO_DANGER) < highestMalusWithinBB;
-            return capMalusDueToCheapNode ? PathType.BIG_MOBS_CLOSE_TO_DANGER : highestMalusPathTypeWithinBB;
-         } else {
-            return currentNodePathType == PathType.OPEN && highestMalusPathTypeWithinBB != PathType.OPEN && highestMalusWithinBB == 0.0F
-               ? PathType.OPEN
-               : highestMalusPathTypeWithinBB;
-         }
+         return currentNodePathType == PathType.OPEN && highestMalusPathTypeWithinBB != PathType.OPEN && highestMalusWithinBB == 0.0F
+            ? PathType.OPEN
+            : highestMalusPathTypeWithinBB;
       }
    }
 
@@ -510,42 +513,64 @@ public class WalkNodeEvaluator extends NodeEvaluator {
       Block block = blockState.getBlock();
       if (blockState.isAir()) {
          return PathType.OPEN;
-      } else if (blockState.is(BlockTags.TRAPDOORS) || blockState.is(Blocks.LILY_PAD) || blockState.is(Blocks.BIG_DRIPLEAF)) {
+      }
+
+      if (blockState.is(BlockTags.TRAPDOORS) || blockState.is(Blocks.LILY_PAD) || blockState.is(Blocks.BIG_DRIPLEAF)) {
          return PathType.TRAPDOOR;
-      } else if (blockState.is(Blocks.POWDER_SNOW)) {
+      }
+
+      if (blockState.is(Blocks.POWDER_SNOW)) {
          return PathType.POWDER_SNOW;
-      } else if (blockState.is(Blocks.CACTUS) || blockState.is(Blocks.SWEET_BERRY_BUSH)) {
+      }
+
+      if (blockState.is(Blocks.CACTUS) || blockState.is(Blocks.SWEET_BERRY_BUSH)) {
          return PathType.DAMAGING;
-      } else if (blockState.is(Blocks.HONEY_BLOCK)) {
+      }
+
+      if (blockState.is(Blocks.HONEY_BLOCK)) {
          return PathType.STICKY_HONEY;
-      } else if (blockState.is(Blocks.COCOA)) {
+      }
+
+      if (blockState.is(Blocks.COCOA)) {
          return PathType.COCOA;
-      } else if (!blockState.is(Blocks.WITHER_ROSE) && !blockState.is(BlockTags.SPELEOTHEMS)) {
+      }
+
+      if (!blockState.is(Blocks.WITHER_ROSE) && !blockState.is(BlockTags.SPELEOTHEMS)) {
          FluidState fluidState = blockState.getFluidState();
          if (fluidState.is(FluidTags.LAVA)) {
             return PathType.LAVA;
-         } else if (isBurningBlock(blockState)) {
+         }
+
+         if (isBurningBlock(blockState)) {
             return PathType.FIRE;
-         } else if (block instanceof DoorBlock door) {
+         }
+
+         if (block instanceof DoorBlock door) {
             if (blockState.getValue(DoorBlock.OPEN)) {
                return PathType.DOOR_OPEN;
             } else {
                return door.type().canOpenByHand() ? PathType.DOOR_WOOD_CLOSED : PathType.DOOR_IRON_CLOSED;
             }
-         } else if (block instanceof BaseRailBlock) {
-            return PathType.RAIL;
-         } else if (block instanceof LeavesBlock) {
-            return PathType.LEAVES;
-         } else if (!blockState.is(BlockTags.FENCES)
-            && !blockState.is(BlockTags.WALLS)
-            && (!(block instanceof FenceGateBlock) || blockState.getValue(FenceGateBlock.OPEN))) {
-            if (!blockState.isPathfindable(PathComputationType.LAND)) {
-               return PathType.BLOCKED;
-            } else {
-               return fluidState.is(FluidTags.WATER) ? PathType.WATER : PathType.OPEN;
-            }
          } else {
-            return PathType.FENCE;
+            if (block instanceof BaseRailBlock) {
+               return PathType.RAIL;
+            }
+
+            if (block instanceof LeavesBlock) {
+               return PathType.LEAVES;
+            }
+
+            if (!blockState.is(BlockTags.FENCES)
+               && !blockState.is(BlockTags.WALLS)
+               && (!(block instanceof FenceGateBlock) || blockState.getValue(FenceGateBlock.OPEN))) {
+               if (!blockState.isPathfindable(PathComputationType.LAND)) {
+                  return PathType.BLOCKED;
+               } else {
+                  return fluidState.is(FluidTags.WATER) ? PathType.WATER : PathType.OPEN;
+               }
+            } else {
+               return PathType.FENCE;
+            }
          }
       } else {
          return PathType.DAMAGE_CAUTIOUS;

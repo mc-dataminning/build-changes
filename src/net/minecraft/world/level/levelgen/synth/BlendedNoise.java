@@ -22,13 +22,13 @@ public record BlendedNoise(double xzScale, double yScale, double xzFactor, doubl
    private static final Codec<Double> SCALE_RANGE = Codec.doubleRange(0.001, 1000.0);
    public static final MapCodec<BlendedNoise> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               SCALE_RANGE.fieldOf("xz_scale").forGetter(BlendedNoise::xzScale),
-               SCALE_RANGE.fieldOf("y_scale").forGetter(BlendedNoise::yScale),
-               SCALE_RANGE.fieldOf("xz_factor").forGetter(BlendedNoise::xzFactor),
-               SCALE_RANGE.fieldOf("y_factor").forGetter(BlendedNoise::yFactor),
-               Codec.doubleRange(1.0, 8.0).fieldOf("smear_scale_multiplier").forGetter(BlendedNoise::smearScaleMultiplier)
-            )
-            .apply(i, BlendedNoise::new)
+            SCALE_RANGE.fieldOf("xz_scale").forGetter(BlendedNoise::xzScale),
+            SCALE_RANGE.fieldOf("y_scale").forGetter(BlendedNoise::yScale),
+            SCALE_RANGE.fieldOf("xz_factor").forGetter(BlendedNoise::xzFactor),
+            SCALE_RANGE.fieldOf("y_factor").forGetter(BlendedNoise::yFactor),
+            Codec.doubleRange(1.0, 8.0).fieldOf("smear_scale_multiplier").forGetter(BlendedNoise::smearScaleMultiplier)
+         )
+         .apply(i, BlendedNoise::new)
    );
    private static final double BASE_SCALE = 684.412;
    private static final double LIMIT_FACTOR = 0.99998474F;
@@ -59,26 +59,26 @@ public record BlendedNoise(double xzScale, double yScale, double xzFactor, doubl
    public static NoiseStack createFbm(final RandomSource random, final int firstOctave, final double smearScaleY, double valueFactor) {
       if (firstOctave > 0) {
          throw new IllegalArgumentException("firstOctave>0");
-      } else {
-         int octaves = -firstOctave + 1;
-         double factor = 1.0;
-         valueFactor /= Math.pow(2.0, (double)octaves) - 1.0;
-         NoiseStack.Builder stack = NoiseStack.builder();
-
-         for (int i = octaves - 1; i >= 0; i--) {
-            stack.add(new SmearedPerlinNoise(random, smearScaleY * factor), factor, (float)valueFactor);
-            factor /= 2.0;
-            valueFactor *= 2.0;
-         }
-
-         return stack.build();
       }
+
+      int octaves = -firstOctave + 1;
+      double factor = 1.0;
+      valueFactor /= Math.pow(2.0, octaves) - 1.0;
+      NoiseStack.Builder stack = NoiseStack.builder();
+
+      for (int i = octaves - 1; i >= 0; i--) {
+         stack.add(new SmearedPerlinNoise(random, smearScaleY * factor), factor, (float)valueFactor);
+         factor /= 2.0;
+         valueFactor *= 2.0;
+      }
+
+      return stack.build();
    }
 
    private static Interval computeFbmRange(final int firstOctave, final double smearScaleY, double valueFactor) {
       int octaves = -firstOctave + 1;
       double factor = 1.0;
-      valueFactor /= Math.pow(2.0, (double)octaves) - 1.0;
+      valueFactor /= Math.pow(2.0, octaves) - 1.0;
       Interval range = Interval.ofExact(0.0F);
 
       for (int i = octaves - 1; i >= 0; i--) {
@@ -113,9 +113,8 @@ public record BlendedNoise(double xzScale, double yScale, double xzFactor, doubl
       return computeFbmRange(-15, this.yMultiplier() * this.smearScaleMultiplier, 0.99998474F);
    }
 
-   @DensityFunction.Axes
    @Override
-   public int domainAxes() {
+   public @DensityFunction.Axes int domainAxes() {
       return 7;
    }
 
@@ -129,7 +128,7 @@ public record BlendedNoise(double xzScale, double yScale, double xzFactor, doubl
       return this;
    }
 
-   public static record FbmSet(NoiseStack minLimitNoise, NoiseStack maxLimitNoise, NoiseStack mainNoise) {
+   public record FbmSet(NoiseStack minLimitNoise, NoiseStack maxLimitNoise, NoiseStack mainNoise) {
       @VisibleForTesting
       public void parityConfigString(final StringBuilder sb) {
          sb.append("BlendedNoise{minLimitNoise=");

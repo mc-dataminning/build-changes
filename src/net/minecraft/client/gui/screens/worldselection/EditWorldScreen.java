@@ -1,5 +1,6 @@
 package net.minecraft.client.gui.screens.worldselection;
 
+import com.mojang.blaze3d.Blaze3D;
 import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.io.IOException;
@@ -79,8 +80,7 @@ public class EditWorldScreen extends Screen {
          levelAccess.getIconFile().ifPresent(p -> FileUtils.deleteQuietly(p.toFile()));
          button.active = false;
       }).width(200).build()).active = levelAccess.getIconFile().filter(x$0 -> Files.isRegularFile(x$0)).isPresent();
-      this.layout
-         .addChild(Button.builder(FOLDER_BUTTON, button -> Util.getPlatform().openPath(levelAccess.getLevelPath(LevelResource.ROOT))).width(200).build());
+      this.layout.addChild(Button.builder(FOLDER_BUTTON, button -> Blaze3D.openPath(levelAccess.getLevelPath(LevelResource.ROOT))).width(200).build());
       this.layout
          .addChild(
             Button.builder(BACKUP_BUTTON, button -> makeBackupAndShowToast(levelAccess).thenAcceptAsync(success -> this.callback.accept(!success), minecraft))
@@ -93,34 +93,32 @@ public class EditWorldScreen extends Screen {
 
          try {
             FileUtil.createDirectoriesSafe(path);
-         } catch (IOException var5x) {
-            throw new RuntimeException(var5x);
+         } catch (IOException e) {
+            throw new RuntimeException(e);
          }
 
-         Util.getPlatform().openPath(path);
+         Blaze3D.openPath(path);
       }).width(200).build());
       this.layout
          .addChild(
             Button.builder(
                   OPTIMIZE_BUTTON,
                   button -> minecraft.gui
-                        .setScreen(
-                           new BackupConfirmScreen(
-                              () -> minecraft.gui.setScreen(this),
-                              (backup, eraseCache) -> conditionallyMakeBackupAndShowToast(backup, levelAccess)
-                                    .thenAcceptAsync(
-                                       var4x -> minecraft.gui
-                                             .setScreen(
-                                                OptimizeWorldScreen.create(minecraft, this.callback, minecraft.getFixerUpper(), levelAccess, eraseCache)
-                                             ),
-                                       minecraft
-                                    ),
-                              OPTIMIZE_TITLE,
-                              OPTIMIZE_DESCRIPTION,
-                              OPTIMIZE_CONFIRMATION,
-                              true
-                           )
+                     .setScreen(
+                        new BackupConfirmScreen(
+                           () -> minecraft.gui.setScreen(this),
+                           (backup, eraseCache) -> conditionallyMakeBackupAndShowToast(backup, levelAccess)
+                              .thenAcceptAsync(
+                                 var4x -> minecraft.gui
+                                    .setScreen(OptimizeWorldScreen.create(minecraft, this.callback, minecraft.getFixerUpper(), levelAccess, eraseCache)),
+                                 minecraft
+                              ),
+                           OPTIMIZE_TITLE,
+                           OPTIMIZE_DESCRIPTION,
+                           OPTIMIZE_CONFIRMATION,
+                           true
                         )
+                     )
                )
                .width(200)
                .build()
@@ -165,8 +163,8 @@ public class EditWorldScreen extends Screen {
    private void onRename(final String newName) {
       try {
          this.levelAccess.renameLevel(newName);
-      } catch (NbtException | ReportedNbtException | IOException var3) {
-         LOGGER.error("Failed to access world '{}'", this.levelAccess.getLevelId(), var3);
+      } catch (IOException | NbtException | ReportedNbtException e) {
+         LOGGER.error("Failed to access world '{}'", this.levelAccess.getLevelId(), e);
          SystemToast.onWorldAccessFailure(this.minecraft, this.levelAccess.getLevelId());
       }
 
@@ -188,12 +186,12 @@ public class EditWorldScreen extends Screen {
       return CompletableFuture.<Long>supplyAsync(() -> {
          try {
             return access.makeWorldBackup();
-         } catch (IOException var2) {
-            throw new RuntimeException(var2);
+         } catch (IOException e) {
+            throw new RuntimeException(e);
          }
       }, Util.backgroundExecutor()).thenApplyAsync(size -> {
          Component title = Component.translatable("selectWorld.edit.backupCreated", access.getLevelId());
-         Component message = Component.translatable("selectWorld.edit.backupSize", Mth.ceil((double)size.longValue() / 1048576.0));
+         Component message = Component.translatable("selectWorld.edit.backupSize", Mth.ceil(size.longValue() / 1048576.0));
          minecraft.gui.toastManager().addToast(new SystemToast(SystemToast.SystemToastId.WORLD_BACKUP, title, message));
          return true;
       }, minecraft).exceptionallyAsync(exception -> {

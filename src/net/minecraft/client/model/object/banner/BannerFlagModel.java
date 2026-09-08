@@ -31,6 +31,6 @@ public class BannerFlagModel extends Model<Float> {
 
    public void setupAnim(final Float phase) {
       super.setupAnim(phase);
-      this.flag.xRot = (-0.0125F + 0.01F * Mth.cos((double)((float) (Math.PI * 2) * phase))) * (float) Math.PI;
+      this.flag.xRot = (-0.0125F + 0.01F * Mth.cos((float) (Math.PI * 2) * phase)) * (float) Math.PI;
    }
 }

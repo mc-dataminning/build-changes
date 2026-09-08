@@ -46,7 +46,7 @@ public class SulfurCubeRenderer extends AbstractCubeMobRenderer<SulfurCube, Sulf
    public void submit(
       final SulfurCubeRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
    ) {
-      this.model = (SulfurCubeModel)(state.isBaby ? this.smallModel : this.normalModel);
+      this.model = state.isBaby ? this.smallModel : this.normalModel;
       super.submit(state, poseStack, submitNodeCollector, camera);
    }
 
@@ -76,23 +76,22 @@ public class SulfurCubeRenderer extends AbstractCubeMobRenderer<SulfurCube, Sulf
 
    public void extractRenderState(final SulfurCube entity, final SulfurCubeRenderState state, final float partialTicks) {
       super.extractRenderState(entity, state, partialTicks);
-      state.fuseRemainingTicks = entity.isPrimed() ? (float)entity.getFuse() - partialTicks + 1.0F : 0.0F;
+      state.fuseRemainingTicks = entity.isPrimed() ? entity.getFuse() - partialTicks + 1.0F : 0.0F;
       ItemStack containedBlock = entity.getBodyArmorItem();
       if (!containedBlock.isEmpty()) {
          if (containedBlock.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof AbstractSkullBlock skullBlock) {
             state.wornHeadType = skullBlock.getType();
             state.wornHeadProfile = containedBlock.get(DataComponents.PROFILE);
-            return;
+         } else {
+            BlockItemStateProperties blockItemState = containedBlock.getOrDefault(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY);
+            BlockState blockState = blockItemState.apply(Block.byItem(containedBlock.getItem()).defaultBlockState());
+            this.blockModelResolver.update(state.containedBlock, blockState, BLOCK_DISPLAY_CONTEXT);
          }
-
-         BlockItemStateProperties blockItemState = containedBlock.getOrDefault(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY);
-         BlockState blockState = blockItemState.apply(Block.byItem(containedBlock.getItem()).defaultBlockState());
-         this.blockModelResolver.update(state.containedBlock, blockState, BLOCK_DISPLAY_CONTEXT);
       }
    }
 
    protected void applySizeAndSquish(final SulfurCubeRenderState state, final PoseStack poseStack) {
-      float size = (float)state.size;
+      float size = state.size;
       float ss = state.containedBlock.isEmpty() ? state.squish / (size * 0.5F + 1.0F) : 0.0F;
       float w = 1.0F / (ss + 1.0F);
       poseStack.scale(w * size, 1.0F / w * size, w * size);

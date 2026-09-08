@@ -86,14 +86,14 @@ public class FetchProfileCommand {
                                     Component.translatable("commands.fetchprofile.give_item")
                                        .withStyle(
                                           s -> s.withClickEvent(
-                                                new ClickEvent.RunCommand("give @s minecraft:player_head[profile=" + encodedProfileAsString + "]")
-                                             )
+                                             new ClickEvent.RunCommand("give @s minecraft:player_head[profile=" + encodedProfileAsString + "]")
+                                          )
                                        ),
                                     Component.translatable("commands.fetchprofile.summon_mannequin")
                                        .withStyle(
                                           s -> s.withClickEvent(
-                                                new ClickEvent.RunCommand("summon minecraft:mannequin ~ ~ ~ {profile:" + encodedProfileAsString + "}")
-                                             )
+                                             new ClickEvent.RunCommand("summon minecraft:mannequin ~ ~ ~ {profile:" + encodedProfileAsString + "}")
+                                          )
                                        ),
                                     Component.translatable("commands.fetchprofile.copy_text", headComponent.withStyle(ChatFormatting.WHITE))
                                        .withStyle(s -> s.withClickEvent(new ClickEvent.CopyToClipboard(encodedComponentAsString)))
@@ -109,8 +109,8 @@ public class FetchProfileCommand {
                   )
                   .ifError(
                      componentEncodingError -> sender.sendFailure(
-                           Component.translatable("commands.fetchprofile.failed_to_serialize", componentEncodingError.message())
-                        )
+                        Component.translatable("commands.fetchprofile.failed_to_serialize", componentEncodingError.message())
+                     )
                   );
             }
          )
@@ -127,9 +127,9 @@ public class FetchProfileCommand {
                Optional<GameProfile> result = resolver.fetchByName(name);
                server.execute(
                   () -> result.ifPresentOrElse(
-                        profile -> reportResolvedProfile(source, profile, "commands.fetchprofile.name.success", nameComponent),
-                        () -> source.sendFailure(Component.translatable("commands.fetchprofile.name.failure", nameComponent))
-                     )
+                     profile -> reportResolvedProfile(source, profile, "commands.fetchprofile.name.success", nameComponent),
+                     () -> source.sendFailure(Component.translatable("commands.fetchprofile.name.failure", nameComponent))
+                  )
                );
             }
          );
@@ -146,9 +146,9 @@ public class FetchProfileCommand {
                Optional<GameProfile> result = resolver.fetchById(id);
                server.execute(
                   () -> result.ifPresentOrElse(
-                        profile -> reportResolvedProfile(source, profile, "commands.fetchprofile.id.success", idComponent),
-                        () -> source.sendFailure(Component.translatable("commands.fetchprofile.id.failure", idComponent))
-                     )
+                     profile -> reportResolvedProfile(source, profile, "commands.fetchprofile.id.success", idComponent),
+                     () -> source.sendFailure(Component.translatable("commands.fetchprofile.id.failure", idComponent))
+                  )
                );
             }
          );

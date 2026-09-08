@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Map.Entry;
 import java.util.function.Supplier;
 import net.minecraft.CrashReport;
@@ -90,15 +89,12 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource {
    private final Map<BlockPos, LevelChunk.RebindableTickingBlockEntityWrapper> tickersInLevel = Maps.newHashMap();
    private boolean loaded;
    private final Level level;
-   @Nullable
-   private Supplier<FullChunkStatus> fullStatus;
-   @Nullable
-   private LevelChunk.PostLoadProcessor postLoad;
+   private @Nullable Supplier<FullChunkStatus> fullStatus;
+   private LevelChunk.@Nullable PostLoadProcessor postLoad;
    private final Int2ObjectMap<GameEventListenerRegistry> gameEventListenerRegistrySections;
    private final LevelChunkTicks<Block> blockTicks;
    private final LevelChunkTicks<Fluid> fluidTicks;
-   private LevelChunk.UnsavedListener unsavedListener = chunkPos -> {
-   };
+   private LevelChunk.UnsavedListener unsavedListener = chunkPos -> {};
 
    public LevelChunk(final Level level, final ChunkPos pos) {
       this(level, pos, UpgradeData.EMPTY, new LevelChunkTicks<>(), new LevelChunkTicks<>(), 0L, null, null, null);
@@ -111,9 +107,9 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource {
       final LevelChunkTicks<Block> blockTicks,
       final LevelChunkTicks<Fluid> fluidTicks,
       final long inhabitedTime,
-      @Nullable final LevelChunkSection[] sections,
-      @Nullable final LevelChunk.PostLoadProcessor postLoad,
-      @Nullable final BlendingData blendingData
+      final LevelChunkSection @Nullable [] sections,
+      final LevelChunk.@Nullable PostLoadProcessor postLoad,
+      final @Nullable BlendingData blendingData
    ) {
       super(pos, upgradeData, level, level.palettedContainerFactory(), inhabitedTime, sections, blendingData);
       this.level = level;
@@ -130,7 +126,7 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource {
       this.fluidTicks = fluidTicks;
    }
 
-   public LevelChunk(final ServerLevel level, final ProtoChunk protoChunk, @Nullable final LevelChunk.PostLoadProcessor postLoad) {
+   public LevelChunk(final ServerLevel level, final ProtoChunk protoChunk, final LevelChunk.@Nullable PostLoadProcessor postLoad) {
       this(
          level,
          protoChunk.getPos(),
@@ -236,8 +232,8 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource {
             }
 
             return Blocks.AIR.defaultBlockState();
-         } catch (Throwable var8) {
-            CrashReport report = CrashReport.forThrowable(var8, "Getting block state");
+         } catch (Throwable t) {
+            CrashReport report = CrashReport.forThrowable(t, "Getting block state");
             CrashReportCategory category = report.addCategory("Block being got");
             category.setDetail("Location", () -> CrashReportCategory.formatLocation(this, x, y, z));
             throw new ReportedException(report);
@@ -261,101 +257,98 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource {
          }
 
          return Fluids.EMPTY.defaultFluidState();
-      } catch (Throwable var7) {
-         CrashReport report = CrashReport.forThrowable(var7, "Getting fluid state");
+      } catch (Throwable t) {
+         CrashReport report = CrashReport.forThrowable(t, "Getting fluid state");
          CrashReportCategory category = report.addCategory("Block being got");
          category.setDetail("Location", () -> CrashReportCategory.formatLocation(this, x, y, z));
          throw new ReportedException(report);
       }
    }
 
-   @Nullable
    @Override
-   public BlockState setBlockState(final BlockPos pos, final BlockState state, @Block.UpdateFlags final int flags) {
+   public @Nullable BlockState setBlockState(final BlockPos pos, final BlockState state, final @Block.UpdateFlags int flags) {
       int y = pos.getY();
       LevelChunkSection section = this.getSection(this.getSectionIndex(y));
       boolean wasEmpty = section.hasOnlyAir();
       if (wasEmpty && state.isAir()) {
          return null;
-      } else {
-         int localX = pos.getX() & 15;
-         int localY = y & 15;
-         int localZ = pos.getZ() & 15;
-         BlockState oldState = section.setBlockState(localX, localY, localZ, state);
-         if (oldState == state) {
-            return null;
-         } else {
-            Block newBlock = state.getBlock();
-            this.heightmaps.get(Heightmap.Types.MOTION_BLOCKING).update(localX, y, localZ, state);
-            this.heightmaps.get(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES).update(localX, y, localZ, state);
-            this.heightmaps.get(Heightmap.Types.OCEAN_FLOOR).update(localX, y, localZ, state);
-            this.heightmaps.get(Heightmap.Types.WORLD_SURFACE).update(localX, y, localZ, state);
-            boolean isEmpty = section.hasOnlyAir();
-            if (wasEmpty != isEmpty) {
-               this.level.getChunkSource().getLightEngine().updateSectionStatus(pos, isEmpty);
-               this.level.getChunkSource().onSectionEmptinessChanged(this.chunkPos.x(), SectionPos.blockToSectionCoord(y), this.chunkPos.z(), isEmpty);
-            }
+      }
 
-            if (LightEngine.hasDifferentLightProperties(oldState, state)) {
-               ProfilerFiller profiler = Profiler.get();
-               profiler.push("updateSkyLightSources");
-               this.skyLightSources.update(this, localX, y, localZ);
-               profiler.popPush("queueCheckLight");
-               this.level.getChunkSource().getLightEngine().checkBlock(pos);
-               profiler.pop();
-            }
+      int localX = pos.getX() & 15;
+      int localY = y & 15;
+      int localZ = pos.getZ() & 15;
+      BlockState oldState = section.setBlockState(localX, localY, localZ, state);
+      if (oldState == state) {
+         return null;
+      }
 
-            boolean blockChanged = !oldState.is(newBlock);
-            boolean movedByPiston = (flags & 64) != 0;
-            boolean sideEffects = (flags & 256) == 0;
-            if (blockChanged && oldState.hasBlockEntity() && !state.shouldChangedStateKeepBlockEntity(oldState)) {
-               if (!this.level.isClientSide() && sideEffects) {
-                  BlockEntity blockEntity = this.level.getBlockEntity(pos);
-                  if (blockEntity != null) {
-                     blockEntity.preRemoveSideEffects(pos, oldState);
-                  }
-               }
+      Block newBlock = state.getBlock();
+      this.heightmaps.get(Heightmap.Types.MOTION_BLOCKING).update(localX, y, localZ, state);
+      this.heightmaps.get(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES).update(localX, y, localZ, state);
+      this.heightmaps.get(Heightmap.Types.OCEAN_FLOOR).update(localX, y, localZ, state);
+      this.heightmaps.get(Heightmap.Types.WORLD_SURFACE).update(localX, y, localZ, state);
+      boolean isEmpty = section.hasOnlyAir();
+      if (wasEmpty != isEmpty) {
+         this.level.getChunkSource().getLightEngine().updateSectionStatus(pos, isEmpty);
+         this.level.getChunkSource().onSectionEmptinessChanged(this.chunkPos.x(), SectionPos.blockToSectionCoord(y), this.chunkPos.z(), isEmpty);
+      }
 
-               this.removeBlockEntity(pos);
-            }
+      if (LightEngine.hasDifferentLightProperties(oldState, state)) {
+         ProfilerFiller profiler = Profiler.get();
+         profiler.push("updateSkyLightSources");
+         this.skyLightSources.update(this, localX, y, localZ);
+         profiler.popPush("queueCheckLight");
+         this.level.getChunkSource().getLightEngine().checkBlock(pos);
+         profiler.pop();
+      }
 
-            if ((blockChanged || newBlock instanceof BaseRailBlock) && this.level instanceof ServerLevel serverLevel && ((flags & 1) != 0 || movedByPiston)) {
-               oldState.affectNeighborsAfterRemoval(serverLevel, pos, movedByPiston);
-            }
-
-            if (!section.getBlockState(localX, localY, localZ).is(newBlock)) {
-               return null;
-            } else {
-               if (!this.level.isClientSide() && (flags & 512) == 0) {
-                  state.onPlace(this.level, pos, oldState, movedByPiston);
-               }
-
-               if (state.hasBlockEntity() && section.getBlockState(localX, localY, localZ).is(newBlock)) {
-                  BlockEntity blockEntity = this.getBlockEntity(pos, LevelChunk.EntityCreationType.CHECK);
-                  if (blockEntity != null && !blockEntity.isValidBlockState(state)) {
-                     LOGGER.warn(
-                        "Found mismatched block entity @ {}: type = {}, state = {}", new Object[]{pos, blockEntity.typeHolder().getRegisteredName(), state}
-                     );
-                     this.removeBlockEntity(pos);
-                     blockEntity = null;
-                  }
-
-                  if (blockEntity == null) {
-                     blockEntity = ((EntityBlock)newBlock).newBlockEntity(pos, state);
-                     if (blockEntity != null) {
-                        this.addAndRegisterBlockEntity(blockEntity);
-                     }
-                  } else {
-                     blockEntity.setBlockState(state);
-                     this.updateBlockEntityTicker(blockEntity);
-                  }
-               }
-
-               this.markUnsaved();
-               return oldState;
+      boolean blockChanged = !oldState.is(newBlock);
+      boolean movedByPiston = (flags & 64) != 0;
+      boolean sideEffects = (flags & 256) == 0;
+      if (blockChanged && oldState.hasBlockEntity() && !state.shouldChangedStateKeepBlockEntity(oldState)) {
+         if (!this.level.isClientSide() && sideEffects) {
+            BlockEntity blockEntity = this.level.getBlockEntity(pos);
+            if (blockEntity != null) {
+               blockEntity.preRemoveSideEffects(pos, oldState);
             }
          }
+
+         this.removeBlockEntity(pos);
       }
+
+      if ((blockChanged || newBlock instanceof BaseRailBlock) && this.level instanceof ServerLevel serverLevel && ((flags & 1) != 0 || movedByPiston)) {
+         oldState.affectNeighborsAfterRemoval(serverLevel, pos, movedByPiston);
+      }
+
+      if (!section.getBlockState(localX, localY, localZ).is(newBlock)) {
+         return null;
+      }
+
+      if (!this.level.isClientSide() && (flags & 512) == 0) {
+         state.onPlace(this.level, pos, oldState, movedByPiston);
+      }
+
+      if (state.hasBlockEntity() && section.getBlockState(localX, localY, localZ).is(newBlock)) {
+         BlockEntity blockEntity = this.getBlockEntity(pos, LevelChunk.EntityCreationType.CHECK);
+         if (blockEntity != null && !blockEntity.isValidBlockState(state)) {
+            LOGGER.warn("Found mismatched block entity @ {}: type = {}, state = {}", new Object[]{pos, blockEntity.typeHolder().getRegisteredName(), state});
+            this.removeBlockEntity(pos);
+            blockEntity = null;
+         }
+
+         if (blockEntity == null) {
+            blockEntity = ((EntityBlock)newBlock).newBlockEntity(pos, state);
+            if (blockEntity != null) {
+               this.addAndRegisterBlockEntity(blockEntity);
+            }
+         } else {
+            blockEntity.setBlockState(state);
+            this.updateBlockEntityTicker(blockEntity);
+         }
+      }
+
+      this.markUnsaved();
+      return oldState;
    }
 
    @Deprecated
@@ -363,20 +356,17 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource {
    public void addEntity(final Entity entity) {
    }
 
-   @Nullable
-   private BlockEntity createBlockEntity(final BlockPos pos) {
+   private @Nullable BlockEntity createBlockEntity(final BlockPos pos) {
       BlockState state = this.getBlockState(pos);
       return !state.hasBlockEntity() ? null : ((EntityBlock)state.getBlock()).newBlockEntity(pos, state);
    }
 
-   @Nullable
    @Override
-   public BlockEntity getBlockEntity(final BlockPos pos) {
+   public @Nullable BlockEntity getBlockEntity(final BlockPos pos) {
       return this.getBlockEntity(pos, LevelChunk.EntityCreationType.CHECK);
    }
 
-   @Nullable
-   public BlockEntity getBlockEntity(final BlockPos pos, final LevelChunk.EntityCreationType creationType) {
+   public @Nullable BlockEntity getBlockEntity(final BlockPos pos, final LevelChunk.EntityCreationType creationType) {
       BlockEntity blockEntity = this.blockEntities.get(pos);
       if (blockEntity == null) {
          CompoundTag tag = this.pendingBlockEntities.remove(pos);
@@ -461,23 +451,22 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource {
       }
    }
 
-   @Nullable
    @Override
-   public CompoundTag getBlockEntityNbtForSaving(final BlockPos blockPos, final HolderLookup.Provider registryAccess) {
+   public @Nullable CompoundTag getBlockEntityNbtForSaving(final BlockPos blockPos, final HolderLookup.Provider registryAccess) {
       BlockEntity blockEntity = this.getBlockEntity(blockPos);
       if (blockEntity != null && !blockEntity.isRemoved()) {
          CompoundTag result = blockEntity.saveWithFullMetadata(this.level.registryAccess());
          result.putBoolean("keepPacked", false);
          return result;
-      } else {
-         CompoundTag result = this.pendingBlockEntities.get(blockPos);
-         if (result != null) {
-            result = result.copy();
-            result.putBoolean("keepPacked", true);
-         }
-
-         return result;
       }
+
+      CompoundTag result = this.pendingBlockEntities.get(blockPos);
+      if (result != null) {
+         result = result.copy();
+         result.putBoolean("keepPacked", true);
+      }
+
+      return result;
    }
 
    @Override
@@ -612,8 +601,7 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource {
       this.upgradeData.upgrade(this);
    }
 
-   @Nullable
-   private BlockEntity promotePendingBlockEntity(final BlockPos pos, final CompoundTag tag) {
+   private @Nullable BlockEntity promotePendingBlockEntity(final BlockPos pos, final CompoundTag tag) {
       BlockState state = this.getBlockState(pos);
       BlockEntity blockEntity;
       if ("DUMMY".equals(tag.getStringOr("id", ""))) {
@@ -750,8 +738,6 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource {
       private boolean loggedInvalidBlockState;
 
       private BoundTickingBlockEntity(final T blockEntity, final BlockEntityTicker<T> ticker) {
-         Objects.requireNonNull(LevelChunk.this);
-         super();
          this.blockEntity = blockEntity;
          this.ticker = ticker;
       }
@@ -778,8 +764,8 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource {
                   }
 
                   profiler.pop();
-               } catch (Throwable var5) {
-                  CrashReport report = CrashReport.forThrowable(var5, "Ticking block entity");
+               } catch (Throwable t) {
+                  CrashReport report = CrashReport.forThrowable(t, "Ticking block entity");
                   CrashReportCategory category = report.addCategory("Block entity being ticked");
                   this.blockEntity.fillCrashReportCategory(category);
                   throw new ReportedException(report);
@@ -809,7 +795,7 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource {
       }
    }
 
-   public static enum EntityCreationType {
+   public enum EntityCreationType {
       IMMEDIATE,
       QUEUED,
       CHECK;

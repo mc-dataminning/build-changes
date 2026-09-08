@@ -83,29 +83,29 @@ public class Heightmap {
       int firstAvailable = this.getFirstAvailable(localX, localZ);
       if (localY <= firstAvailable - 2) {
          return false;
-      } else {
-         if (this.isOpaque.test(state)) {
-            if (localY >= firstAvailable) {
-               this.setHeight(localX, localZ, localY + 1);
-               return true;
-            }
-         } else if (firstAvailable - 1 == localY) {
-            BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+      }
 
-            for (int y = localY - 1; y >= this.chunk.getMinY(); y--) {
-               pos.set(localX, y, localZ);
-               if (this.isOpaque.test(this.chunk.getBlockState(pos))) {
-                  this.setHeight(localX, localZ, y + 1);
-                  return true;
-               }
-            }
-
-            this.setHeight(localX, localZ, this.chunk.getMinY());
+      if (this.isOpaque.test(state)) {
+         if (localY >= firstAvailable) {
+            this.setHeight(localX, localZ, localY + 1);
             return true;
          }
+      } else if (firstAvailable - 1 == localY) {
+         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
 
-         return false;
+         for (int y = localY - 1; y >= this.chunk.getMinY(); y--) {
+            pos.set(localX, y, localZ);
+            if (this.isOpaque.test(this.chunk.getBlockState(pos))) {
+               this.setHeight(localX, localZ, y + 1);
+               return true;
+            }
+         }
+
+         this.setHeight(localX, localZ, this.chunk.getMinY());
+         return true;
       }
+
+      return false;
    }
 
    public int getFirstAvailable(final int x, final int z) {
@@ -144,7 +144,7 @@ public class Heightmap {
       return x + z * 16;
    }
 
-   public static enum Types implements StringRepresentable {
+   public enum Types implements StringRepresentable {
       WORLD_SURFACE_WG(0, "WORLD_SURFACE_WG", Heightmap.Usage.WORLDGEN, Heightmap.NOT_AIR),
       WORLD_SURFACE(1, "WORLD_SURFACE", Heightmap.Usage.CLIENT, Heightmap.NOT_AIR),
       OCEAN_FLOOR_WG(2, "OCEAN_FLOOR_WG", Heightmap.Usage.WORLDGEN, Heightmap.MATERIAL_MOTION_BLOCKING),
@@ -165,7 +165,7 @@ public class Heightmap {
       private final Heightmap.Usage usage;
       private final Predicate<BlockState> isOpaque;
 
-      private Types(final int id, final String serializationKey, final Heightmap.Usage usage, final Predicate<BlockState> isOpaque) {
+      Types(final int id, final String serializationKey, final Heightmap.Usage usage, final Predicate<BlockState> isOpaque) {
          this.id = id;
          this.serializationKey = serializationKey;
          this.usage = usage;
@@ -194,7 +194,7 @@ public class Heightmap {
       }
    }
 
-   public static enum Usage {
+   public enum Usage {
       WORLDGEN,
       LIVE_WORLD,
       CLIENT;

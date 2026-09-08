@@ -29,46 +29,24 @@ public record VoidStartPlatformFeature() implements Feature {
       ChunkPos currentChunkPos = ChunkPos.containing(origin);
       if (checkerboardDistance(currentChunkPos.x(), currentChunkPos.z(), PLATFORM_ORIGIN_CHUNK.x(), PLATFORM_ORIGIN_CHUNK.z()) > 1) {
          return true;
-      } else {
-         BlockPos platformOrigin = PLATFORM_OFFSET.atY(origin.getY() + PLATFORM_OFFSET.getY());
-         BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
+      }
 
-         for (int z = currentChunkPos.getMinBlockZ(); z <= currentChunkPos.getMaxBlockZ(); z++) {
-            for (int x = currentChunkPos.getMinBlockX(); x <= currentChunkPos.getMaxBlockX(); x++) {
-               if (checkerboardDistance(platformOrigin.getX(), platformOrigin.getZ(), x, z) <= 16) {
-                  blockPos.set(x, platformOrigin.getY(), z);
-                  if (blockPos.equals(platformOrigin)) {
-                     level.setBlock(blockPos, Blocks.COBBLESTONE.defaultBlockState(), 2);
-                  } else {
-                     level.setBlock(blockPos, Blocks.STONE.defaultBlockState(), 2);
-                  }
+      BlockPos platformOrigin = PLATFORM_OFFSET.atY(origin.getY() + PLATFORM_OFFSET.getY());
+      BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
+
+      for (int z = currentChunkPos.getMinBlockZ(); z <= currentChunkPos.getMaxBlockZ(); z++) {
+         for (int x = currentChunkPos.getMinBlockX(); x <= currentChunkPos.getMaxBlockX(); x++) {
+            if (checkerboardDistance(platformOrigin.getX(), platformOrigin.getZ(), x, z) <= 16) {
+               blockPos.set(x, platformOrigin.getY(), z);
+               if (blockPos.equals(platformOrigin)) {
+                  level.setBlock(blockPos, Blocks.COBBLESTONE.defaultBlockState(), 2);
+               } else {
+                  level.setBlock(blockPos, Blocks.STONE.defaultBlockState(), 2);
                }
             }
          }
-
-         return true;
       }
-   }
 
-   @Override
-   public final int hashCode() {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.OutOfMemoryError: Java heap space
-      //   at java.base/java.util.HashMap.resize(HashMap.java:711)
-      //   at java.base/java.util.HashMap.putVal(HashMap.java:636)
-      //   at java.base/java.util.HashMap.put(HashMap.java:619)
-      //   at org.jetbrains.java.decompiler.util.collections.PackedMap.putWithKey(PackedMap.java:41)
-      //   at org.jetbrains.java.decompiler.util.collections.PackedMap.putWithKey(PackedMap.java:22)
-      //   at org.jetbrains.java.decompiler.util.collections.FastSparseSetFactory.<init>(FastSparseSetFactory.java:30)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.sforms.SFormsConstructor.splitVariables(SFormsConstructor.java:84)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.simplifyStackVars(StackVarsProcessor.java:52)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.simplifyStackVars(StackVarsProcessor.java:40)
-      //   at org.jetbrains.java.decompiler.main.rels.MethodProcessor.codeToJava(MethodProcessor.java:292)
-      //
-      // Bytecode:
-      // 0: aload 0
-      // 1: invokedynamic hashCode (Lnet/minecraft/world/level/levelgen/feature/VoidStartPlatformFeature;)I bsm=java/lang/runtime/ObjectMethods.bootstrap (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/TypeDescriptor;Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/invoke/MethodHandle;)Ljava/lang/Object; args=[ net/minecraft/world/level/levelgen/feature/VoidStartPlatformFeature, "" ]
-      // 6: ireturn
+      return true;
    }
 }

@@ -31,16 +31,14 @@ public class LightningRodBlock extends RodBlock implements SimpleWaterloggedBloc
 
    public LightningRodBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(FACING, Direction.UP).setValue(WATERLOGGED, Boolean.valueOf(false)).setValue(POWERED, Boolean.valueOf(false))
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.UP).setValue(WATERLOGGED, false).setValue(POWERED, false));
    }
 
    @Override
    public BlockState getStateForPlacement(final BlockPlaceContext context) {
       FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
       boolean isWaterSource = replacedFluidState.is(Fluids.WATER);
-      return this.defaultBlockState().setValue(FACING, context.getClickedFace()).setValue(WATERLOGGED, Boolean.valueOf(isWaterSource));
+      return this.defaultBlockState().setValue(FACING, context.getClickedFace()).setValue(WATERLOGGED, isWaterSource);
    }
 
    @Override
@@ -77,7 +75,7 @@ public class LightningRodBlock extends RodBlock implements SimpleWaterloggedBloc
    }
 
    public void onLightningStrike(final BlockState state, final Level level, final BlockPos pos) {
-      level.setBlockAndUpdate(pos, state.setValue(POWERED, Boolean.valueOf(true)));
+      level.setBlockAndUpdate(pos, state.setValue(POWERED, true));
       this.updateNeighbours(state, level, pos);
       level.scheduleTick(pos, this, 8);
       level.levelEvent(3002, pos, state.getValue(FACING).getAxis().ordinal());
@@ -90,14 +88,14 @@ public class LightningRodBlock extends RodBlock implements SimpleWaterloggedBloc
 
    @Override
    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      level.setBlockAndUpdate(pos, state.setValue(POWERED, Boolean.valueOf(false)));
+      level.setBlockAndUpdate(pos, state.setValue(POWERED, false));
       this.updateNeighbours(state, level, pos);
    }
 
    @Override
    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
       if (level.isThundering()
-         && (long)level.getRandom().nextInt(200) <= level.getGameTime() % 200L
+         && level.getRandom().nextInt(200) <= level.getGameTime() % 200L
          && pos.getY() == level.getHeight(Heightmap.Types.WORLD_SURFACE, pos.getX(), pos.getZ()) - 1) {
          ParticleUtils.spawnParticlesAlongAxis(state.getValue(FACING).getAxis(), level, pos, 0.125, ParticleTypes.ELECTRIC_SPARK, UniformInt.of(1, 2));
       }

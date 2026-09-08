@@ -7,8 +7,7 @@ import org.jspecify.annotations.Nullable;
 public class ArrayItemProvider implements ItemProvider {
    protected final ItemStack[] items;
    protected int position;
-   @Nullable
-   private ItemStack peekedItem;
+   private @Nullable ItemStack peekedItem;
 
    public ArrayItemProvider(final ItemStack[] items) {
       this.items = items;
@@ -28,25 +27,25 @@ public class ArrayItemProvider implements ItemProvider {
    public final ItemStack next() {
       if (!this.hasNext()) {
          throw new NoSuchElementException();
-      } else {
-         ItemStack next = this.peekedItem != null ? this.peekedItem : this.computeNextItem();
-         this.peekedItem = null;
-         this.position++;
-         return next;
       }
+
+      ItemStack next = this.peekedItem != null ? this.peekedItem : this.computeNextItem();
+      this.peekedItem = null;
+      this.position++;
+      return next;
    }
 
    @Override
    public final ItemStack peek() {
       if (!this.hasNext()) {
          throw new NoSuchElementException();
-      } else {
-         if (this.peekedItem == null) {
-            this.peekedItem = this.computeNextItem();
-         }
-
-         return this.peekedItem;
       }
+
+      if (this.peekedItem == null) {
+         this.peekedItem = this.computeNextItem();
+      }
+
+      return this.peekedItem;
    }
 
    protected ItemStack computeNextItem() {

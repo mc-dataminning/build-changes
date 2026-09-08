@@ -46,8 +46,7 @@ public class PlayerSafetyServiceTextFilter extends ServerTextFilter {
       this.connectionReadTimeoutMs = connectionReadTimeoutMs;
    }
 
-   @Nullable
-   public static ServerTextFilter createTextFilterFromConfig(final String textFilteringConfig) {
+   public static @Nullable ServerTextFilter createTextFilterFromConfig(final String textFilteringConfig) {
       JsonObject parsedConfig = GsonHelper.parse(textFilteringConfig);
       URI host = URI.create(GsonHelper.getAsString(parsedConfig, "apiServer"));
       String apiPath = GsonHelper.getAsString(parsedConfig, "apiPath");
@@ -68,8 +67,8 @@ public class PlayerSafetyServiceTextFilter extends ServerTextFilter {
       URL chatEndpoint;
       try {
          chatEndpoint = host.resolve(apiPath).toURL();
-      } catch (MalformedURLException var26) {
-         throw new RuntimeException(var26);
+      } catch (MalformedURLException e) {
+         throw new RuntimeException(e);
       }
 
       ServerTextFilter.MessageEncoder chatEncoder = (sender, message) -> {
@@ -89,7 +88,7 @@ public class PlayerSafetyServiceTextFilter extends ServerTextFilter {
       IClientCertificate certificate;
       try (InputStream inputStream = Files.newInputStream(Path.of(certificatePath))) {
          certificate = ClientCredentialFactory.createFromCertificate(inputStream, certificatePassword);
-      } catch (Exception var28) {
+      } catch (Exception e) {
          LOGGER.warn("Failed to open certificate file");
          return null;
       }
@@ -99,7 +98,7 @@ public class PlayerSafetyServiceTextFilter extends ServerTextFilter {
          client = ((Builder)((Builder)ConfidentialClientApplication.builder(applicationId, certificate).sendX5c(true).executorService(workerPool))
                .authority(String.format(Locale.ROOT, "https://login.microsoftonline.com/%s/", tenantId)))
             .build();
-      } catch (Exception var25) {
+      } catch (Exception e) {
          LOGGER.warn("Failed to create confidential client application");
          return null;
       }
@@ -125,23 +124,23 @@ public class PlayerSafetyServiceTextFilter extends ServerTextFilter {
       JsonObject result = GsonHelper.getAsJsonObject(response, "result", null);
       if (result == null) {
          return FilteredText.fullyFiltered(message);
-      } else {
-         boolean filtered = GsonHelper.getAsBoolean(result, "filtered", true);
-         if (!filtered) {
-            return FilteredText.passThrough(message);
-         } else {
-            for (JsonElement element : GsonHelper.getAsJsonArray(result, "events", new JsonArray())) {
-               JsonObject object = element.getAsJsonObject();
-               String event = GsonHelper.getAsString(object, "id", "");
-               if (this.fullyFilteredEvents.contains(event)) {
-                  return FilteredText.fullyFiltered(message);
-               }
-            }
+      }
 
-            JsonArray redactedTextIndices = GsonHelper.getAsJsonArray(result, "redactedTextIndex", new JsonArray());
-            return new FilteredText(message, this.parseMask(message, redactedTextIndices, ignoreStrategy));
+      boolean filtered = GsonHelper.getAsBoolean(result, "filtered", true);
+      if (!filtered) {
+         return FilteredText.passThrough(message);
+      }
+
+      for (JsonElement element : GsonHelper.getAsJsonArray(result, "events", new JsonArray())) {
+         JsonObject object = element.getAsJsonObject();
+         String event = GsonHelper.getAsString(object, "id", "");
+         if (this.fullyFilteredEvents.contains(event)) {
+            return FilteredText.fullyFiltered(message);
          }
       }
+
+      JsonArray redactedTextIndices = GsonHelper.getAsJsonArray(result, "redactedTextIndex", new JsonArray());
+      return new FilteredText(message, this.parseMask(message, redactedTextIndices, ignoreStrategy));
    }
 
    @Override

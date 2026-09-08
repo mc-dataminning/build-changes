@@ -1,7 +1,6 @@
 package net.minecraft.client.gui.screens.inventory;
 
 import com.mojang.blaze3d.platform.cursor.CursorTypes;
-import java.util.Objects;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.input.MouseButtonEvent;
@@ -128,12 +127,12 @@ public class MerchantScreen extends AbstractContainerScreen<MerchantMenu> {
          int minXp = VillagerData.getMinXpPerLevel(traderLevel);
          if (traderXp >= minXp && VillagerData.canLevelUp(traderLevel)) {
             int progressLength = 102;
-            float multiplier = 102.0F / (float)(VillagerData.getMaxXpPerLevel(traderLevel) - minXp);
-            int w = Math.min(Mth.floor(multiplier * (float)(traderXp - minXp)), 102);
+            float multiplier = 102.0F / (VillagerData.getMaxXpPerLevel(traderLevel) - minXp);
+            int w = Math.min(Mth.floor(multiplier * (traderXp - minXp)), 102);
             graphics.blitSprite(RenderPipelines.GUI_TEXTURED, EXPERIENCE_BAR_CURRENT_SPRITE, 102, 5, 0, 0, xo + 136, yo + 16, w, 5);
             int futureXp = this.menu.getFutureTraderXp();
             if (futureXp > 0) {
-               int futureXpWidth = Math.min(Mth.floor((float)futureXp * multiplier), 102 - w);
+               int futureXpWidth = Math.min(Mth.floor(futureXp * multiplier), 102 - w);
                graphics.blitSprite(RenderPipelines.GUI_TEXTURED, EXPERIENCE_BAR_RESULT_SPRITE, 102, 5, w, 0, xo + 136 + w, yo + 16, futureXpWidth, 5);
             }
          }
@@ -205,7 +204,7 @@ public class MerchantScreen extends AbstractContainerScreen<MerchantMenu> {
             this.extractProgressBar(graphics, xo, yo, selectedOffer);
          }
 
-         if (selectedOffer.isOutOfStock() && this.isHovering(186, 35, 22, 21, (double)mouseX, (double)mouseY) && this.menu.canRestock()) {
+         if (selectedOffer.isOutOfStock() && this.isHovering(186, 35, 22, 21, mouseX, mouseY) && this.menu.canRestock()) {
             graphics.setTooltipForNextFrame(this.font, DEPRECATED_TOOLTIP, mouseX, mouseY);
          }
 
@@ -248,15 +247,15 @@ public class MerchantScreen extends AbstractContainerScreen<MerchantMenu> {
    public boolean mouseScrolled(final double x, final double y, final double scrollX, final double scrollY) {
       if (super.mouseScrolled(x, y, scrollX, scrollY)) {
          return true;
-      } else {
-         int numberOfOffers = this.menu.getOffers().size();
-         if (this.canScroll(numberOfOffers)) {
-            int maxScrollOff = numberOfOffers - 7;
-            this.scrollOff = Mth.clamp((int)((double)this.scrollOff - scrollY), 0, maxScrollOff);
-         }
-
-         return true;
       }
+
+      int numberOfOffers = this.menu.getOffers().size();
+      if (this.canScroll(numberOfOffers)) {
+         int maxScrollOff = numberOfOffers - 7;
+         this.scrollOff = Mth.clamp((int)(this.scrollOff - scrollY), 0, maxScrollOff);
+      }
+
+      return true;
    }
 
    @Override
@@ -266,8 +265,8 @@ public class MerchantScreen extends AbstractContainerScreen<MerchantMenu> {
          int fullScrollTopPos = this.topPos + 18;
          int fullScrollBottomPos = fullScrollTopPos + 139;
          int maxScrollOff = numberOfOffers - 7;
-         float scrolling = ((float)event.y() - (float)fullScrollTopPos - 13.5F) / ((float)(fullScrollBottomPos - fullScrollTopPos) - 27.0F);
-         scrolling = scrolling * (float)maxScrollOff + 0.5F;
+         float scrolling = ((float)event.y() - fullScrollTopPos - 13.5F) / (fullScrollBottomPos - fullScrollTopPos - 27.0F);
+         scrolling = scrolling * maxScrollOff + 0.5F;
          this.scrollOff = Mth.clamp((int)scrolling, 0, maxScrollOff);
          return true;
       } else {
@@ -280,10 +279,10 @@ public class MerchantScreen extends AbstractContainerScreen<MerchantMenu> {
       int xo = (this.width - this.imageWidth) / 2;
       int yo = (this.height - this.imageHeight) / 2;
       if (this.canScroll(this.menu.getOffers().size())
-         && event.x() > (double)(xo + 94)
-         && event.x() < (double)(xo + 94 + 6)
-         && event.y() > (double)(yo + 18)
-         && event.y() <= (double)(yo + 18 + 139 + 1)) {
+         && event.x() > xo + 94
+         && event.x() < xo + 94 + 6
+         && event.y() > yo + 18
+         && event.y() <= yo + 18 + 139 + 1) {
          this.isDragging = true;
       }
 
@@ -300,7 +299,6 @@ public class MerchantScreen extends AbstractContainerScreen<MerchantMenu> {
       private final int index;
 
       public TradeOfferButton(final int x, final int y, final int index, final Button.OnPress onPress) {
-         Objects.requireNonNull(MerchantScreen.this);
          super(x, y, 88, 20, CommonComponents.EMPTY, onPress, DEFAULT_NARRATION);
          this.index = index;
          this.visible = false;

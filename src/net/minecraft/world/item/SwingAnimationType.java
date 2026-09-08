@@ -20,7 +20,7 @@ public enum SwingAnimationType implements StringRepresentable {
    private final int id;
    private final String name;
 
-   private SwingAnimationType(final int id, final String name) {
+   SwingAnimationType(final int id, final String name) {
       this.id = id;
       this.name = name;
    }
@@ -35,8 +35,7 @@ public enum SwingAnimationType implements StringRepresentable {
    }
 
    @Contract("_,!null->!null;_,null->_")
-   @Nullable
-   public static SwingAnimationType byName(final String name, @Nullable final SwingAnimationType defaultAnimation) {
+   public static @Nullable SwingAnimationType byName(final String name, final @Nullable SwingAnimationType defaultAnimation) {
       SwingAnimationType result = CODEC.byName(name);
       return result != null ? result : defaultAnimation;
    }

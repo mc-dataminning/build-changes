@@ -34,23 +34,18 @@ public class RecipeBookPage {
    private static final int TURN_PAGE_SPRITE_WIDTH = 12;
    private static final int TURN_PAGE_SPRITE_HEIGHT = 17;
    private final List<RecipeButton> buttons = Lists.newArrayListWithCapacity(20);
-   @Nullable
-   private RecipeButton hoveredButton;
+   private @Nullable RecipeButton hoveredButton;
    private final OverlayRecipeComponent overlay;
    private Minecraft minecraft;
    private final RecipeBookComponent<?> parent;
    private List<RecipeCollection> recipeCollections = ImmutableList.of();
-   @Nullable
-   private ImageButton forwardButton;
-   @Nullable
-   private ImageButton backButton;
+   private @Nullable ImageButton forwardButton;
+   private @Nullable ImageButton backButton;
    private int totalPages;
    private int currentPage;
    private ClientRecipeBook recipeBook;
-   @Nullable
-   private RecipeDisplayId lastClickedRecipe;
-   @Nullable
-   private RecipeCollection lastClickedRecipeCollection;
+   private @Nullable RecipeDisplayId lastClickedRecipe;
+   private @Nullable RecipeCollection lastClickedRecipeCollection;
    private boolean isFiltering;
 
    public RecipeBookPage(final RecipeBookComponent<?> parent, final SlotSelectTime slotSelectTime, final boolean isFurnaceMenu) {
@@ -79,7 +74,7 @@ public class RecipeBookPage {
    public void updateCollections(final List<RecipeCollection> recipeCollections, final boolean resetPage, final boolean isFiltering) {
       this.recipeCollections = recipeCollections;
       this.isFiltering = isFiltering;
-      this.totalPages = (int)Math.ceil((double)recipeCollections.size() / 20.0);
+      this.totalPages = (int)Math.ceil(recipeCollections.size() / 20.0);
       if (this.totalPages <= this.currentPage || resetPage) {
          this.currentPage = 0;
       }
@@ -151,13 +146,11 @@ public class RecipeBookPage {
       }
    }
 
-   @Nullable
-   public RecipeDisplayId getLastClickedRecipe() {
+   public @Nullable RecipeDisplayId getLastClickedRecipe() {
       return this.lastClickedRecipe;
    }
 
-   @Nullable
-   public RecipeCollection getLastClickedRecipeCollection() {
+   public @Nullable RecipeCollection getLastClickedRecipeCollection() {
       return this.lastClickedRecipeCollection;
    }
 
@@ -177,15 +170,19 @@ public class RecipeBookPage {
          }
 
          return true;
-      } else if (this.forwardButton.mouseClicked(event, doubleClick)) {
-         this.currentPage++;
-         this.updateButtonsForPage();
-         return true;
-      } else if (this.backButton.mouseClicked(event, doubleClick)) {
-         this.currentPage--;
-         this.updateButtonsForPage();
-         return true;
       } else {
+         if (this.forwardButton.mouseClicked(event, doubleClick)) {
+            this.currentPage++;
+            this.updateButtonsForPage();
+            return true;
+         }
+
+         if (this.backButton.mouseClicked(event, doubleClick)) {
+            this.currentPage--;
+            this.updateButtonsForPage();
+            return true;
+         }
+
          ContextMap context = SlotDisplayContext.fromLevel(this.minecraft.level);
 
          for (RecipeButton button : this.buttons) {
@@ -203,7 +200,7 @@ public class RecipeBookPage {
                         button.getY(),
                         xo + imageWidth / 2,
                         yo + 13 + imageHeight / 2,
-                        (float)button.getWidth()
+                        button.getWidth()
                      );
                }
 

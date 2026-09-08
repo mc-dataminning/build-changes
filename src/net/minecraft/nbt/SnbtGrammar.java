@@ -146,8 +146,7 @@ public class SnbtGrammar {
       return DelayedException.create(ERROR_NUMBER_PARSE_FAILURE, ex.getMessage());
    }
 
-   @Nullable
-   public static String escapeControlCharacters(final char c) {
+   public static @Nullable String escapeControlCharacters(final char c) {
       return switch (c) {
          case '\b' -> "b";
          case '\t' -> "t";
@@ -198,14 +197,13 @@ public class SnbtGrammar {
       }
    }
 
-   @Nullable
-   private static <T> T createFloat(
+   private static <T> @Nullable T createFloat(
       final DynamicOps<T> ops,
       final SnbtGrammar.Sign sign,
-      @Nullable final String whole,
-      @Nullable final String fraction,
-      @Nullable final SnbtGrammar.Signed<String> exponent,
-      @Nullable final SnbtGrammar.TypeSuffix typeSuffix,
+      final @Nullable String whole,
+      final @Nullable String fraction,
+      final SnbtGrammar.@Nullable Signed<String> exponent,
+      final SnbtGrammar.@Nullable TypeSuffix typeSuffix,
       final ParseState<?> state
    ) {
       StringBuilder result = new StringBuilder();
@@ -237,14 +235,13 @@ public class SnbtGrammar {
                yield null;
             }
          });
-      } catch (NumberFormatException var11) {
-         state.errorCollector().store(state.mark(), createNumberParseError(var11));
+      } catch (NumberFormatException e) {
+         state.errorCollector().store(state.mark(), createNumberParseError(e));
          return null;
       }
    }
 
-   @Nullable
-   private static <T> T convertFloat(final DynamicOps<T> ops, final ParseState<?> state, final String contents) {
+   private static <T> @Nullable T convertFloat(final DynamicOps<T> ops, final ParseState<?> state, final String contents) {
       float value = Float.parseFloat(contents);
       if (!Float.isFinite(value)) {
          state.errorCollector().store(state.mark(), ERROR_INFINITY_NOT_ALLOWED);
@@ -254,8 +251,7 @@ public class SnbtGrammar {
       }
    }
 
-   @Nullable
-   private static <T> T convertDouble(final DynamicOps<T> ops, final ParseState<?> state, final String contents) {
+   private static <T> @Nullable T convertDouble(final DynamicOps<T> ops, final ParseState<?> state, final String contents) {
       double value = Double.parseDouble(contents);
       if (!Double.isFinite(value)) {
          state.errorCollector().store(state.mark(), ERROR_INFINITY_NOT_ALLOWED);
@@ -373,15 +369,15 @@ public class SnbtGrammar {
             String decimalContents = scope.get(decimalNumeral);
             if (decimalContents != null) {
                return new SnbtGrammar.IntegerLiteral(signValue, SnbtGrammar.Base.DECIMAL, decimalContents, suffix);
-            } else {
-               String hexContents = scope.get(hexNumeral);
-               if (hexContents != null) {
-                  return new SnbtGrammar.IntegerLiteral(signValue, SnbtGrammar.Base.HEX, hexContents, suffix);
-               } else {
-                  String binaryContents = scope.getOrThrow(binaryNumeral);
-                  return new SnbtGrammar.IntegerLiteral(signValue, SnbtGrammar.Base.BINARY, binaryContents, suffix);
-               }
             }
+
+            String hexContents = scope.get(hexNumeral);
+            if (hexContents != null) {
+               return new SnbtGrammar.IntegerLiteral(signValue, SnbtGrammar.Base.HEX, hexContents, suffix);
+            }
+
+            String binaryContents = scope.getOrThrow(binaryNumeral);
+            return new SnbtGrammar.IntegerLiteral(signValue, SnbtGrammar.Base.BINARY, binaryContents, suffix);
          }
       );
       Atom<SnbtGrammar.TypeSuffix> floatTypeSuffix = Atom.of("float_type_suffix");
@@ -469,30 +465,29 @@ public class SnbtGrammar {
             String plainEscape = scope.getAny(stringEscapeSequence);
             if (plainEscape != null) {
                return plainEscape;
-            } else {
-               String hexEscape = scope.getAny(stringHex2, stringHex4, stringHex8);
-               if (hexEscape != null) {
-                  int codePoint = HexFormat.fromHexDigits(hexEscape);
-                  if (!Character.isValidCodePoint(codePoint)) {
-                     state.errorCollector()
-                        .store(state.mark(), DelayedException.create(ERROR_INVALID_CODEPOINT, String.format(Locale.ROOT, "U+%08X", codePoint)));
-                     return null;
-                  } else {
-                     return Character.toString(codePoint);
-                  }
+            }
+
+            String hexEscape = scope.getAny(stringHex2, stringHex4, stringHex8);
+            if (hexEscape != null) {
+               int codePoint = HexFormat.fromHexDigits(hexEscape);
+               if (!Character.isValidCodePoint(codePoint)) {
+                  state.errorCollector().store(state.mark(), DelayedException.create(ERROR_INVALID_CODEPOINT, String.format(Locale.ROOT, "U+%08X", codePoint)));
+                  return null;
                } else {
-                  String character = scope.getOrThrow(stringUnicodeName);
-
-                  int codePoint;
-                  try {
-                     codePoint = Character.codePointOf(character);
-                  } catch (IllegalArgumentException var12x) {
-                     state.errorCollector().store(state.mark(), ERROR_INVALID_CHARACTER_NAME);
-                     return null;
-                  }
-
                   return Character.toString(codePoint);
                }
+            } else {
+               String character = scope.getOrThrow(stringUnicodeName);
+
+               int codePoint;
+               try {
+                  codePoint = Character.codePointOf(character);
+               } catch (IllegalArgumentException e) {
+                  state.errorCollector().store(state.mark(), ERROR_INVALID_CHARACTER_NAME);
+                  return null;
+               }
+
+               return Character.toString(codePoint);
             }
          }
       );
@@ -568,10 +563,10 @@ public class SnbtGrammar {
                   SnbtOperations.BuiltinOperation operation = SnbtOperations.BUILTIN_OPERATIONS.get(key);
                   if (operation != null) {
                      return operation.run(ops, arguments, state);
-                  } else {
-                     state.errorCollector().store(state.mark(), DelayedException.create(ERROR_NO_SUCH_OPERATION, key.toString()));
-                     return null;
                   }
+
+                  state.errorCollector().store(state.mark(), DelayedException.create(ERROR_NO_SUCH_OPERATION, key.toString()));
+                  return null;
                } else if (contents.equalsIgnoreCase("true")) {
                   return trueValue;
                } else {
@@ -612,15 +607,15 @@ public class SnbtGrammar {
          List<Entry<String, T>> entries = scope.getOrThrow(mapEntries);
          if (entries.isEmpty()) {
             return emptyMapValue;
-         } else {
-            Builder<T, T> builder = ImmutableMap.builderWithExpectedSize(entries.size());
-
-            for (Entry<String, T> e : entries) {
-               builder.put(ops.createString(e.getKey()), e.getValue());
-            }
-
-            return (T)ops.createMap(builder.buildKeepingLast());
          }
+
+         Builder<T, T> builder = ImmutableMap.builderWithExpectedSize(entries.size());
+
+         for (Entry<String, T> e : entries) {
+            builder.put(ops.createString(e.getKey()), e.getValue());
+         }
+
+         return (T)ops.createMap(builder.buildKeepingLast());
       });
       Atom<List<T>> listEntries = Atom.of("list_entries");
       rules.put(
@@ -678,16 +673,16 @@ public class SnbtGrammar {
             String quotedString = scope.get(quotedStringLiteral);
             if (quotedString != null) {
                return (T)ops.createString(quotedString);
-            } else {
-               SnbtGrammar.IntegerLiteral integer = scope.get(integerLiteral);
-               return integer != null ? integer.create(ops, state) : scope.getOrThrow(literal);
             }
+
+            SnbtGrammar.IntegerLiteral integer = scope.get(integerLiteral);
+            return integer != null ? integer.create(ops, state) : scope.getOrThrow(literal);
          }
       );
       return new Grammar<>(rules, literalRule);
    }
 
-   private static enum ArrayPrefix {
+   private enum ArrayPrefix {
       BYTE(SnbtGrammar.TypeSuffix.BYTE) {
          private static final ByteBuffer EMPTY_BUFFER = ByteBuffer.wrap(new byte[0]);
 
@@ -696,9 +691,8 @@ public class SnbtGrammar {
             return (T)ops.createByteList(EMPTY_BUFFER);
          }
 
-         @Nullable
          @Override
-         public <T> T create(final DynamicOps<T> ops, final List<SnbtGrammar.IntegerLiteral> entries, final ParseState<?> state) {
+         public <T> @Nullable T create(final DynamicOps<T> ops, final List<SnbtGrammar.IntegerLiteral> entries, final ParseState<?> state) {
             ByteList result = new ByteArrayList();
 
             for (SnbtGrammar.IntegerLiteral entry : entries) {
@@ -719,9 +713,8 @@ public class SnbtGrammar {
             return (T)ops.createIntList(IntStream.empty());
          }
 
-         @Nullable
          @Override
-         public <T> T create(final DynamicOps<T> ops, final List<SnbtGrammar.IntegerLiteral> entries, final ParseState<?> state) {
+         public <T> @Nullable T create(final DynamicOps<T> ops, final List<SnbtGrammar.IntegerLiteral> entries, final ParseState<?> state) {
             java.util.stream.IntStream.Builder result = IntStream.builder();
 
             for (SnbtGrammar.IntegerLiteral entry : entries) {
@@ -742,9 +735,8 @@ public class SnbtGrammar {
             return (T)ops.createLongList(LongStream.empty());
          }
 
-         @Nullable
          @Override
-         public <T> T create(final DynamicOps<T> ops, final List<SnbtGrammar.IntegerLiteral> entries, final ParseState<?> state) {
+         public <T> @Nullable T create(final DynamicOps<T> ops, final List<SnbtGrammar.IntegerLiteral> entries, final ParseState<?> state) {
             java.util.stream.LongStream.Builder result = LongStream.builder();
 
             for (SnbtGrammar.IntegerLiteral entry : entries) {
@@ -763,7 +755,7 @@ public class SnbtGrammar {
       private final SnbtGrammar.TypeSuffix defaultType;
       private final Set<SnbtGrammar.TypeSuffix> additionalTypes;
 
-      private ArrayPrefix(final SnbtGrammar.TypeSuffix defaultType, final SnbtGrammar.TypeSuffix... additionalTypes) {
+      ArrayPrefix(final SnbtGrammar.TypeSuffix defaultType, final SnbtGrammar.TypeSuffix... additionalTypes) {
          this.additionalTypes = Set.of(additionalTypes);
          this.defaultType = defaultType;
       }
@@ -774,11 +766,9 @@ public class SnbtGrammar {
 
       public abstract <T> T create(DynamicOps<T> ops);
 
-      @Nullable
-      public abstract <T> T create(DynamicOps<T> ops, List<SnbtGrammar.IntegerLiteral> entries, ParseState<?> state);
+      public abstract <T> @Nullable T create(DynamicOps<T> ops, List<SnbtGrammar.IntegerLiteral> entries, ParseState<?> state);
 
-      @Nullable
-      protected Number buildNumber(final SnbtGrammar.IntegerLiteral entry, final ParseState<?> state) {
+      protected @Nullable Number buildNumber(final SnbtGrammar.IntegerLiteral entry, final ParseState<?> state) {
          SnbtGrammar.TypeSuffix actualType = this.computeType(entry.suffix);
          if (actualType == null) {
             state.errorCollector().store(state.mark(), SnbtGrammar.ERROR_INVALID_ARRAY_ELEMENT_TYPE);
@@ -788,8 +778,7 @@ public class SnbtGrammar {
          }
       }
 
-      @Nullable
-      private SnbtGrammar.TypeSuffix computeType(final SnbtGrammar.IntegerSuffix value) {
+      private SnbtGrammar.@Nullable TypeSuffix computeType(final SnbtGrammar.IntegerSuffix value) {
          SnbtGrammar.TypeSuffix type = value.type();
          if (type == null) {
             return this.defaultType;
@@ -799,93 +788,91 @@ public class SnbtGrammar {
       }
    }
 
-   private static enum Base {
+   private enum Base {
       BINARY,
       DECIMAL,
       HEX;
    }
 
-   private static record IntegerLiteral(SnbtGrammar.Sign sign, SnbtGrammar.Base base, String digits, SnbtGrammar.IntegerSuffix suffix) {
+   private record IntegerLiteral(SnbtGrammar.Sign sign, SnbtGrammar.Base base, String digits, SnbtGrammar.IntegerSuffix suffix) {
       private SnbtGrammar.SignedPrefix signedOrDefault() {
          if (this.suffix.signed != null) {
             return this.suffix.signed;
-         } else {
-            return switch (this.base) {
-               case BINARY, HEX -> SnbtGrammar.SignedPrefix.UNSIGNED;
-               case DECIMAL -> SnbtGrammar.SignedPrefix.SIGNED;
-            };
          }
+
+         return switch (this.base) {
+            case BINARY, HEX -> SnbtGrammar.SignedPrefix.UNSIGNED;
+            case DECIMAL -> SnbtGrammar.SignedPrefix.SIGNED;
+         };
       }
 
       private String cleanupDigits(final SnbtGrammar.Sign sign) {
          boolean needsUnderscoreRemoval = SnbtGrammar.needsUnderscoreRemoval(this.digits);
          if (sign != SnbtGrammar.Sign.MINUS && !needsUnderscoreRemoval) {
             return this.digits;
-         } else {
-            StringBuilder result = new StringBuilder();
-            sign.append(result);
-            SnbtGrammar.cleanAndAppend(result, this.digits, needsUnderscoreRemoval);
-            return result.toString();
          }
+
+         StringBuilder result = new StringBuilder();
+         sign.append(result);
+         SnbtGrammar.cleanAndAppend(result, this.digits, needsUnderscoreRemoval);
+         return result.toString();
       }
 
-      @Nullable
-      public <T> T create(final DynamicOps<T> ops, final ParseState<?> state) {
+      public <T> @Nullable T create(final DynamicOps<T> ops, final ParseState<?> state) {
          return this.create(ops, Objects.requireNonNullElse(this.suffix.type, SnbtGrammar.TypeSuffix.INT), state);
       }
 
-      @Nullable
-      public <T> T create(final DynamicOps<T> ops, final SnbtGrammar.TypeSuffix type, final ParseState<?> state) {
+      public <T> @Nullable T create(final DynamicOps<T> ops, final SnbtGrammar.TypeSuffix type, final ParseState<?> state) {
          boolean isSigned = this.signedOrDefault() == SnbtGrammar.SignedPrefix.SIGNED;
          if (!isSigned && this.sign == SnbtGrammar.Sign.MINUS) {
             state.errorCollector().store(state.mark(), SnbtGrammar.ERROR_EXPECTED_NON_NEGATIVE_NUMBER);
             return null;
-         } else {
-            String fixedDigits = this.cleanupDigits(this.sign);
+         }
 
-            int radix = switch (this.base) {
-               case BINARY -> 2;
-               case DECIMAL -> 10;
-               case HEX -> 16;
-            };
+         String fixedDigits = this.cleanupDigits(this.sign);
 
-            try {
-               if (isSigned) {
-                  return (T)(switch (type) {
-                     case BYTE -> ops.createByte(Byte.parseByte(fixedDigits, radix));
-                     case SHORT -> ops.createShort(Short.parseShort(fixedDigits, radix));
-                     case INT -> ops.createInt(Integer.parseInt(fixedDigits, radix));
-                     case LONG -> ops.createLong(Long.parseLong(fixedDigits, radix));
-                     default -> {
-                        state.errorCollector().store(state.mark(), SnbtGrammar.ERROR_EXPECTED_INTEGER_TYPE);
-                        yield null;
-                     }
-                  });
-               } else {
-                  return (T)(switch (type) {
-                     case BYTE -> ops.createByte(UnsignedBytes.parseUnsignedByte(fixedDigits, radix));
-                     case SHORT -> ops.createShort(SnbtGrammar.parseUnsignedShort(fixedDigits, radix));
-                     case INT -> ops.createInt(Integer.parseUnsignedInt(fixedDigits, radix));
-                     case LONG -> ops.createLong(Long.parseUnsignedLong(fixedDigits, radix));
-                     default -> {
-                        state.errorCollector().store(state.mark(), SnbtGrammar.ERROR_EXPECTED_INTEGER_TYPE);
-                        yield null;
-                     }
-                  });
-               }
-            } catch (NumberFormatException var8) {
-               state.errorCollector().store(state.mark(), SnbtGrammar.createNumberParseError(var8));
-               return null;
+         int radix = switch (this.base) {
+            case BINARY -> 2;
+            case DECIMAL -> 10;
+            case HEX -> 16;
+         };
+
+         try {
+            if (isSigned) {
+               return (T)(switch (type) {
+                  case BYTE -> ops.createByte(Byte.parseByte(fixedDigits, radix));
+                  case SHORT -> ops.createShort(Short.parseShort(fixedDigits, radix));
+                  case INT -> ops.createInt(Integer.parseInt(fixedDigits, radix));
+                  case LONG -> ops.createLong(Long.parseLong(fixedDigits, radix));
+                  default -> {
+                     state.errorCollector().store(state.mark(), SnbtGrammar.ERROR_EXPECTED_INTEGER_TYPE);
+                     yield null;
+                  }
+               });
+            } else {
+               return (T)(switch (type) {
+                  case BYTE -> ops.createByte(UnsignedBytes.parseUnsignedByte(fixedDigits, radix));
+                  case SHORT -> ops.createShort(SnbtGrammar.parseUnsignedShort(fixedDigits, radix));
+                  case INT -> ops.createInt(Integer.parseUnsignedInt(fixedDigits, radix));
+                  case LONG -> ops.createLong(Long.parseUnsignedLong(fixedDigits, radix));
+                  default -> {
+                     state.errorCollector().store(state.mark(), SnbtGrammar.ERROR_EXPECTED_INTEGER_TYPE);
+                     yield null;
+                  }
+               });
             }
+         } catch (NumberFormatException e) {
+            state.errorCollector().store(state.mark(), SnbtGrammar.createNumberParseError(e));
+            return null;
          }
       }
    }
 
-   private static record IntegerSuffix(@Nullable SnbtGrammar.SignedPrefix signed, @Nullable SnbtGrammar.TypeSuffix type) {
+   private record IntegerSuffix(SnbtGrammar.@Nullable SignedPrefix signed, SnbtGrammar.@Nullable TypeSuffix type) {
       public static final SnbtGrammar.IntegerSuffix EMPTY = new SnbtGrammar.IntegerSuffix(null, null);
    }
 
-   private static enum Sign {
+   private enum Sign {
       PLUS,
       MINUS;
 
@@ -896,10 +883,10 @@ public class SnbtGrammar {
       }
    }
 
-   private static record Signed<T>(SnbtGrammar.Sign sign, T value) {
+   private record Signed<T>(SnbtGrammar.Sign sign, T value) {
    }
 
-   private static enum SignedPrefix {
+   private enum SignedPrefix {
       SIGNED,
       UNSIGNED;
    }
@@ -918,7 +905,7 @@ public class SnbtGrammar {
       }
    }
 
-   private static enum TypeSuffix {
+   private enum TypeSuffix {
       FLOAT,
       DOUBLE,
       BYTE,

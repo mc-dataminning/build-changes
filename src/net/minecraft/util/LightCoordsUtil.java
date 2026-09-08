@@ -56,11 +56,11 @@ public class LightCoordsUtil {
    public static int lightCoordsWithEmission(final int lightCoords, final int emission) {
       if (emission == 0) {
          return lightCoords;
-      } else {
-         int sky = Math.max(sky(lightCoords), emission);
-         int block = Math.max(block(lightCoords), emission);
-         return pack(block, sky);
       }
+
+      int sky = Math.max(sky(lightCoords), emission);
+      int block = Math.max(block(lightCoords), emission);
+      return pack(block, sky);
    }
 
    public static int smoothBlend(int neighbor1, int neighbor2, int neighbor3, final int center) {
@@ -97,15 +97,8 @@ public class LightCoordsUtil {
       final float weight3,
       final float weight4
    ) {
-      int sky = (int)(
-         (float)smoothSky(coords1) * weight1 + (float)smoothSky(coords2) * weight2 + (float)smoothSky(coords3) * weight3 + (float)smoothSky(coords4) * weight4
-      );
-      int block = (int)(
-         (float)smoothBlock(coords1) * weight1
-            + (float)smoothBlock(coords2) * weight2
-            + (float)smoothBlock(coords3) * weight3
-            + (float)smoothBlock(coords4) * weight4
-      );
+      int sky = (int)(smoothSky(coords1) * weight1 + smoothSky(coords2) * weight2 + smoothSky(coords3) * weight3 + smoothSky(coords4) * weight4);
+      int block = (int)(smoothBlock(coords1) * weight1 + smoothBlock(coords2) * weight2 + smoothBlock(coords3) * weight3 + smoothBlock(coords4) * weight4);
       return smoothPack(block, sky);
    }
 
@@ -118,12 +111,12 @@ public class LightCoordsUtil {
    ) {
       if (state.emissiveRendering()) {
          return 15728880;
-      } else {
-         int packedBrightness = brightnessGetter.packedBrightness(level, pos);
-         int block = block(packedBrightness);
-         int blockSelfEmission = state.getLightEmission();
-         return block < blockSelfEmission ? withBlock(packedBrightness, blockSelfEmission) : packedBrightness;
       }
+
+      int packedBrightness = brightnessGetter.packedBrightness(level, pos);
+      int block = block(packedBrightness);
+      int blockSelfEmission = state.getLightEmission();
+      return block < blockSelfEmission ? withBlock(packedBrightness, blockSelfEmission) : packedBrightness;
    }
 
    @FunctionalInterface

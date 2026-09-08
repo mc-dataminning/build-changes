@@ -19,10 +19,10 @@ import net.minecraft.world.scores.Scoreboard;
 public record EntityHasScoreCondition(Map<String, IntRangePredicate> scores, LootContext.EntityTarget entityTarget) implements LootItemCondition {
    public static final MapCodec<EntityHasScoreCondition> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.unboundedMap(Codec.STRING, IntRangePredicate.CODEC).fieldOf("scores").forGetter(EntityHasScoreCondition::scores),
-               LootContext.EntityTarget.CODEC.fieldOf("entity").forGetter(EntityHasScoreCondition::entityTarget)
-            )
-            .apply(i, EntityHasScoreCondition::new)
+            Codec.unboundedMap(Codec.STRING, IntRangePredicate.CODEC).fieldOf("scores").forGetter(EntityHasScoreCondition::scores),
+            LootContext.EntityTarget.CODEC.fieldOf("entity").forGetter(EntityHasScoreCondition::entityTarget)
+         )
+         .apply(i, EntityHasScoreCondition::new)
    );
 
    @Override
@@ -45,17 +45,17 @@ public record EntityHasScoreCondition(Map<String, IntRangePredicate> scores, Loo
       Entity entity = context.getOptional(this.entityTarget.contextParam());
       if (entity == null) {
          return false;
-      } else {
-         Scoreboard scoreboard = context.getLevel().getScoreboard();
-
-         for (Entry<String, IntRangePredicate> entry : this.scores.entrySet()) {
-            if (!this.hasScore(context, entity, scoreboard, entry.getKey(), entry.getValue())) {
-               return false;
-            }
-         }
-
-         return true;
       }
+
+      Scoreboard scoreboard = context.getLevel().getScoreboard();
+
+      for (Entry<String, IntRangePredicate> entry : this.scores.entrySet()) {
+         if (!this.hasScore(context, entity, scoreboard, entry.getKey(), entry.getValue())) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    private boolean hasScore(
@@ -64,10 +64,10 @@ public record EntityHasScoreCondition(Map<String, IntRangePredicate> scores, Loo
       Objective objective = scoreboard.getObjective(objectiveName);
       if (objective == null) {
          return false;
-      } else {
-         ReadOnlyScoreInfo scoreInfo = scoreboard.getPlayerScoreInfo(entity, objective);
-         return scoreInfo == null ? false : range.test(context, scoreInfo.value());
       }
+
+      ReadOnlyScoreInfo scoreInfo = scoreboard.getPlayerScoreInfo(entity, objective);
+      return scoreInfo == null ? false : range.test(context, scoreInfo.value());
    }
 
    public static EntityHasScoreCondition.Builder hasScores(final LootContext.EntityTarget target) {

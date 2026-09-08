@@ -17,20 +17,21 @@ public abstract class ObjectSelectionList<E extends ObjectSelectionList.Entry<E>
       super(minecraft, width, height, y, itemHeight);
    }
 
-   @Nullable
    @Override
-   public ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
+   public @Nullable ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
       if (this.getItemCount() == 0) {
          return null;
-      } else if (this.isFocused() && navigationEvent instanceof FocusNavigationEvent.ArrowNavigation arrowNavigation) {
+      }
+
+      if (this.isFocused() && navigationEvent instanceof FocusNavigationEvent.ArrowNavigation arrowNavigation) {
          E entry = this.nextEntry(arrowNavigation.direction());
          if (entry != null) {
             return ComponentPath.path(this, ComponentPath.leaf(entry));
-         } else {
-            this.setFocused(null);
-            this.setSelected(null);
-            return null;
          }
+
+         this.setFocused(null);
+         this.setSelected(null);
+         return null;
       } else if (!this.isFocused()) {
          E entry = this.getSelected();
          if (entry == null) {

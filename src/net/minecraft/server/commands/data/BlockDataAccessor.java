@@ -25,16 +25,16 @@ public class BlockDataAccessor implements DataAccessor {
       Component.translatable("commands.data.block.invalid")
    );
    public static final ArgProvider.Factory<DataAccessor> PROVIDER = arg -> ArgProvider.create(
-         "block", () -> Commands.argument(arg, BlockPosArgument.blockPos()), context -> {
-            BlockPos pos = BlockPosArgument.getLoadedBlockPos(context, arg);
-            BlockEntity entity = ((CommandSourceStack)context.getSource()).getLevel().getBlockEntity(pos);
-            if (entity == null) {
-               throw ERROR_NOT_A_BLOCK_ENTITY.create();
-            } else {
-               return new BlockDataAccessor(entity, pos);
-            }
+      "block", () -> Commands.argument(arg, BlockPosArgument.blockPos()), context -> {
+         BlockPos pos = BlockPosArgument.getLoadedBlockPos(context, arg);
+         BlockEntity entity = ((CommandSourceStack)context.getSource()).getLevel().getBlockEntity(pos);
+         if (entity == null) {
+            throw ERROR_NOT_A_BLOCK_ENTITY.create();
+         } else {
+            return new BlockDataAccessor(entity, pos);
          }
-      );
+      }
+   );
    private final BlockEntity entity;
    private final BlockPos pos;
 

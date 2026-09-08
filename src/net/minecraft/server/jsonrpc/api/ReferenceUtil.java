@@ -9,8 +9,8 @@ public class ReferenceUtil {
    public static final Codec<URI> REFERENCE_CODEC = Codec.STRING.comapFlatMap(string -> {
       try {
          return DataResult.success(new URI(string));
-      } catch (URISyntaxException var2) {
-         return DataResult.error(var2::getMessage);
+      } catch (URISyntaxException e) {
+         return DataResult.error(e::getMessage);
       }
    }, URI::toString);
 

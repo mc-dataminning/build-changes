@@ -89,7 +89,7 @@ public class ItemFeatureRenderer extends RenderTypeFeatureRenderer<ItemFeatureRe
       return material.isTinted() ? getLayerColorSafe(tintLayers, material.tintIndex()) : -1;
    }
 
-   public static record Submit(
+   public record Submit(
       PoseStack.Pose pose,
       ItemDisplayContext displayContext,
       int lightCoords,

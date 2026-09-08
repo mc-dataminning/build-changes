@@ -17,7 +17,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.BiConsumer;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
@@ -77,95 +76,95 @@ public class DataCommands {
                      targetProvider.wrap(
                         Commands.literal("merge"),
                         p -> p.then(
-                              Commands.argument("nbt", CompoundTagArgument.compoundTag())
-                                 .executes(
-                                    c -> mergeData((CommandSourceStack)c.getSource(), targetProvider.access(c), CompoundTagArgument.getCompoundTag(c, "nbt"))
-                                 )
-                           )
+                           Commands.argument("nbt", CompoundTagArgument.compoundTag())
+                              .executes(
+                                 c -> mergeData((CommandSourceStack)c.getSource(), targetProvider.access(c), CompoundTagArgument.getCompoundTag(c, "nbt"))
+                              )
+                        )
                      )
                   ))
                   .then(
                      targetProvider.wrap(
                         Commands.literal("get"),
                         p -> p.executes(c -> getData((CommandSourceStack)c.getSource(), targetProvider.access(c)))
-                              .then(
-                                 ((RequiredArgumentBuilder)Commands.argument("path", NbtPathArgument.nbtPath())
-                                       .executes(c -> getData((CommandSourceStack)c.getSource(), targetProvider.access(c), NbtPathArgument.getPath(c, "path"))))
-                                    .then(
-                                       Commands.argument("scale", DoubleArgumentType.doubleArg())
-                                          .executes(
-                                             c -> getNumeric(
-                                                   (CommandSourceStack)c.getSource(),
-                                                   targetProvider.access(c),
-                                                   NbtPathArgument.getPath(c, "path"),
-                                                   DoubleArgumentType.getDouble(c, "scale")
-                                                )
+                           .then(
+                              ((RequiredArgumentBuilder)Commands.argument("path", NbtPathArgument.nbtPath())
+                                    .executes(c -> getData((CommandSourceStack)c.getSource(), targetProvider.access(c), NbtPathArgument.getPath(c, "path"))))
+                                 .then(
+                                    Commands.argument("scale", DoubleArgumentType.doubleArg())
+                                       .executes(
+                                          c -> getNumeric(
+                                             (CommandSourceStack)c.getSource(),
+                                             targetProvider.access(c),
+                                             NbtPathArgument.getPath(c, "path"),
+                                             DoubleArgumentType.getDouble(c, "scale")
                                           )
-                                    )
-                              )
+                                       )
+                                 )
+                           )
                      )
                   ))
                .then(
                   targetProvider.wrap(
                      Commands.literal("remove"),
                      p -> p.then(
-                           Commands.argument("path", NbtPathArgument.nbtPath())
-                              .executes(c -> removeData((CommandSourceStack)c.getSource(), targetProvider.access(c), NbtPathArgument.getPath(c, "path")))
-                        )
+                        Commands.argument("path", NbtPathArgument.nbtPath())
+                           .executes(c -> removeData((CommandSourceStack)c.getSource(), targetProvider.access(c), NbtPathArgument.getPath(c, "path")))
+                     )
                   )
                ))
             .then(
                decorateModification(
                   buildContext,
                   (parent, rest) -> parent.then(
-                           Commands.literal("insert")
-                              .then(
-                                 Commands.argument("index", IntegerArgumentType.integer())
-                                    .then(
-                                       rest.create(
-                                          (context, target, targetPath, source) -> targetPath.insert(
-                                                IntegerArgumentType.getInteger(context, "index"), target, source
-                                             )
+                        Commands.literal("insert")
+                           .then(
+                              Commands.argument("index", IntegerArgumentType.integer())
+                                 .then(
+                                    rest.create(
+                                       (context, target, targetPath, source) -> targetPath.insert(
+                                          IntegerArgumentType.getInteger(context, "index"), target, source
                                        )
                                     )
-                              )
-                        )
-                        .then(Commands.literal("prepend").then(rest.create((context, target, targetPath, source) -> targetPath.insert(0, target, source))))
-                        .then(Commands.literal("append").then(rest.create((context, target, targetPath, source) -> targetPath.insert(-1, target, source))))
-                        .then(
-                           Commands.literal("set")
-                              .then(rest.create((context, target, targetPath, source) -> targetPath.set(target, (Tag)Iterables.getLast(source))))
-                        )
-                        .then(Commands.literal("merge").then(rest.create((context, target, targetPath, source) -> {
-                           CompoundTag combinedSources = new CompoundTag();
+                                 )
+                           )
+                     )
+                     .then(Commands.literal("prepend").then(rest.create((context, target, targetPath, source) -> targetPath.insert(0, target, source))))
+                     .then(Commands.literal("append").then(rest.create((context, target, targetPath, source) -> targetPath.insert(-1, target, source))))
+                     .then(
+                        Commands.literal("set")
+                           .then(rest.create((context, target, targetPath, source) -> targetPath.set(target, (Tag)Iterables.getLast(source))))
+                     )
+                     .then(Commands.literal("merge").then(rest.create((context, target, targetPath, source) -> {
+                        CompoundTag combinedSources = new CompoundTag();
 
-                           for (Tag sourceTag : source) {
-                              if (NbtPathArgument.NbtPath.isTooDeep(sourceTag, 0)) {
-                                 throw NbtPathArgument.ERROR_DATA_TOO_DEEP.create();
-                              }
-
-                              if (!(sourceTag instanceof CompoundTag tag)) {
-                                 throw ERROR_EXPECTED_OBJECT.create(sourceTag);
-                              }
-
-                              combinedSources.merge(tag);
+                        for (Tag sourceTag : source) {
+                           if (NbtPathArgument.NbtPath.isTooDeep(sourceTag, 0)) {
+                              throw NbtPathArgument.ERROR_DATA_TOO_DEEP.create();
                            }
 
-                           Collection<Tag> targets = targetPath.getOrCreate(target, CompoundTag::new);
-                           int changedCount = 0;
-
-                           for (Tag targetTag : targets) {
-                              if (!(targetTag instanceof CompoundTag targetObject)) {
-                                 throw ERROR_EXPECTED_OBJECT.create(targetTag);
-                              }
-
-                              CompoundTag originalTarget = targetObject.copy();
-                              targetObject.merge(combinedSources);
-                              changedCount += originalTarget.equals(targetObject) ? 0 : 1;
+                           if (!(sourceTag instanceof CompoundTag tag)) {
+                              throw ERROR_EXPECTED_OBJECT.create(sourceTag);
                            }
 
-                           return changedCount;
-                        })))
+                           combinedSources.merge(tag);
+                        }
+
+                        Collection<Tag> targets = targetPath.getOrCreate(target, CompoundTag::new);
+                        int changedCount = 0;
+
+                        for (Tag targetTag : targets) {
+                           if (!(targetTag instanceof CompoundTag targetObject)) {
+                              throw ERROR_EXPECTED_OBJECT.create(targetTag);
+                           }
+
+                           CompoundTag originalTarget = targetObject.copy();
+                           targetObject.merge(combinedSources);
+                           changedCount += originalTarget.equals(targetObject) ? 0 : 1;
+                        }
+
+                        return changedCount;
+                     })))
                )
             );
       }
@@ -174,21 +173,8 @@ public class DataCommands {
    }
 
    private static String getAsText(final Tag tag) throws CommandSyntaxException {
-      Objects.requireNonNull(tag);
-
       return switch (tag) {
-         case StringTag var3 -> {
-            StringTag var8 = var3;
-
-            try {
-               var9 = var8.value();
-            } catch (Throwable var6) {
-               throw new MatchException(var6.toString(), var6);
-            }
-
-            String var7 = var9;
-            yield var7;
-         }
+         case StringTag(String value) -> value;
          case PrimitiveTag primitiveTag -> primitiveTag.toString();
          default -> throw ERROR_EXPECTED_VALUE.create(tag);
       };
@@ -220,88 +206,85 @@ public class DataCommands {
                   nodeSupplier.accept(
                      targetPathNode,
                      manipulator -> sourceProvider.wrap(
-                           Commands.literal("from"),
-                           s -> s.executes(c -> manipulateData(c, targetProvider, manipulator, getSingletonSource(c, sourceProvider)))
-                                 .then(
-                                    Commands.argument("sourcePath", NbtPathArgument.nbtPath())
-                                       .executes(c -> manipulateData(c, targetProvider, manipulator, resolveSourcePath(c, sourceProvider)))
-                                 )
-                        )
+                        Commands.literal("from"),
+                        s -> s.executes(c -> manipulateData(c, targetProvider, manipulator, getSingletonSource(c, sourceProvider)))
+                           .then(
+                              Commands.argument("sourcePath", NbtPathArgument.nbtPath())
+                                 .executes(c -> manipulateData(c, targetProvider, manipulator, resolveSourcePath(c, sourceProvider)))
+                           )
+                     )
                   );
                   nodeSupplier.accept(
                      targetPathNode,
                      manipulator -> sourceProvider.wrap(
-                           Commands.literal("string"),
-                           s -> s.executes(
-                                    c -> manipulateData(c, targetProvider, manipulator, stringifyTagList(getSingletonSource(c, sourceProvider), str -> str))
-                                 )
+                        Commands.literal("string"),
+                        s -> s.executes(
+                              c -> manipulateData(c, targetProvider, manipulator, stringifyTagList(getSingletonSource(c, sourceProvider), str -> str))
+                           )
+                           .then(
+                              ((RequiredArgumentBuilder)Commands.argument("sourcePath", NbtPathArgument.nbtPath())
+                                    .executes(
+                                       c -> manipulateData(c, targetProvider, manipulator, stringifyTagList(resolveSourcePath(c, sourceProvider), str -> str))
+                                    ))
                                  .then(
-                                    ((RequiredArgumentBuilder)Commands.argument("sourcePath", NbtPathArgument.nbtPath())
+                                    ((RequiredArgumentBuilder)Commands.argument("start", IntegerArgumentType.integer())
                                           .executes(
                                              c -> manipulateData(
-                                                   c, targetProvider, manipulator, stringifyTagList(resolveSourcePath(c, sourceProvider), str -> str)
+                                                c,
+                                                targetProvider,
+                                                manipulator,
+                                                stringifyTagList(
+                                                   resolveSourcePath(c, sourceProvider), str -> substring(str, IntegerArgumentType.getInteger(c, "start"))
                                                 )
+                                             )
                                           ))
                                        .then(
-                                          ((RequiredArgumentBuilder)Commands.argument("start", IntegerArgumentType.integer())
-                                                .executes(
-                                                   c -> manipulateData(
-                                                         c,
-                                                         targetProvider,
-                                                         manipulator,
-                                                         stringifyTagList(
-                                                            resolveSourcePath(c, sourceProvider),
-                                                            str -> substring(str, IntegerArgumentType.getInteger(c, "start"))
-                                                         )
+                                          Commands.argument("end", IntegerArgumentType.integer())
+                                             .executes(
+                                                c -> manipulateData(
+                                                   c,
+                                                   targetProvider,
+                                                   manipulator,
+                                                   stringifyTagList(
+                                                      resolveSourcePath(c, sourceProvider),
+                                                      str -> substring(
+                                                         str, IntegerArgumentType.getInteger(c, "start"), IntegerArgumentType.getInteger(c, "end")
                                                       )
-                                                ))
-                                             .then(
-                                                Commands.argument("end", IntegerArgumentType.integer())
-                                                   .executes(
-                                                      c -> manipulateData(
-                                                            c,
-                                                            targetProvider,
-                                                            manipulator,
-                                                            stringifyTagList(
-                                                               resolveSourcePath(c, sourceProvider),
-                                                               str -> substring(
-                                                                     str, IntegerArgumentType.getInteger(c, "start"), IntegerArgumentType.getInteger(c, "end")
-                                                                  )
-                                                            )
-                                                         )
                                                    )
+                                                )
                                              )
                                        )
                                  )
-                        )
+                           )
+                     )
                   );
                }
 
                nodeSupplier.accept(
                   targetPathNode, manipulator -> LootContextSources.addContextSources(Commands.literal("compute"), (contextDecorator, output) -> {
-                        output.accept(
-                           Commands.literal("float").then(Commands.argument("provider", ResourceOrIdArgument.floatProvider(buildContext)).executes(c -> {
-                              LootContext lootContext = contextDecorator.createContext(c);
-                              Holder<ContextFloatProvider> provider = ResourceOrIdArgument.getFloatProvider(c, "provider");
-                              float value = provider.value().getFloat(lootContext);
-                              return manipulateData(c, targetProvider, manipulator, List.of(FloatTag.valueOf(value)));
-                           }))
-                        );
-                        output.accept(
-                           Commands.literal("integer").then(Commands.argument("provider", ResourceOrIdArgument.intProvider(buildContext)).executes(c -> {
-                              LootContext lootContext = contextDecorator.createContext(c);
-                              Holder<ContextIntProvider> provider = ResourceOrIdArgument.getIntProvider(c, "provider");
-                              int value = provider.value().getInt(lootContext);
-                              return manipulateData(c, targetProvider, manipulator, List.of(IntTag.valueOf(value)));
-                           }))
-                        );
-                     })
+                     output.accept(
+                        Commands.literal("float").then(Commands.argument("provider", ResourceOrIdArgument.floatProvider(buildContext)).executes(c -> {
+                           LootContext lootContext = contextDecorator.createContext(c);
+                           Holder<ContextFloatProvider> provider = ResourceOrIdArgument.getFloatProvider(c, "provider");
+                           float value = provider.value().getFloat(lootContext);
+                           return manipulateData(c, targetProvider, manipulator, List.of(FloatTag.valueOf(value)));
+                        }))
+                     );
+                     output.accept(
+                        Commands.literal("integer").then(Commands.argument("provider", ResourceOrIdArgument.intProvider(buildContext)).executes(c -> {
+                           LootContext lootContext = contextDecorator.createContext(c);
+                           Holder<ContextIntProvider> provider = ResourceOrIdArgument.getIntProvider(c, "provider");
+                           int value = provider.value().getInt(lootContext);
+                           return manipulateData(c, targetProvider, manipulator, List.of(IntTag.valueOf(value)));
+                        }))
+                     );
+                  })
                );
                nodeSupplier.accept(
                   targetPathNode, manipulator -> Commands.literal("value").then(Commands.argument("value", NbtTagArgument.nbtTag()).executes(c -> {
-                        List<Tag> source = Collections.singletonList(NbtTagArgument.getNbtTag(c, "value"));
-                        return manipulateData(c, targetProvider, manipulator, source);
-                     }))
+                     List<Tag> source = Collections.singletonList(NbtTagArgument.getNbtTag(c, "value"));
+                     return manipulateData(c, targetProvider, manipulator, source);
+                  }))
                );
                return t.then(targetPathNode);
             }
@@ -358,11 +341,11 @@ public class DataCommands {
       int result = manipulator.modify(context, targetData, targetPath, source);
       if (result == 0) {
          throw ERROR_MERGE_UNCHANGED.create();
-      } else {
-         target.setData(targetData);
-         ((CommandSourceStack)context.getSource()).sendSuccess(() -> target.getModifiedSuccess(), true);
-         return result;
       }
+
+      target.setData(targetData);
+      ((CommandSourceStack)context.getSource()).sendSuccess(() -> target.getModifiedSuccess(), true);
+      return result;
    }
 
    private static int removeData(final CommandSourceStack source, final DataAccessor accessor, final NbtPathArgument.NbtPath path) throws CommandSyntaxException {
@@ -370,11 +353,11 @@ public class DataCommands {
       int count = path.remove(result);
       if (count == 0) {
          throw ERROR_MERGE_UNCHANGED.create();
-      } else {
-         accessor.setData(result);
-         source.sendSuccess(() -> accessor.getModifiedSuccess(), true);
-         return count;
       }
+
+      accessor.setData(result);
+      source.sendSuccess(() -> accessor.getModifiedSuccess(), true);
+      return count;
    }
 
    public static Tag getSingleTag(final NbtPathArgument.NbtPath path, final DataAccessor accessor) throws CommandSyntaxException {
@@ -390,24 +373,12 @@ public class DataCommands {
 
    private static int getData(final CommandSourceStack source, final DataAccessor accessor, final NbtPathArgument.NbtPath path) throws CommandSyntaxException {
       Tag tag = getSingleTag(path, accessor);
-      Objects.requireNonNull(tag);
 
       int result = switch (tag) {
          case NumericTag numericTag -> Mth.floor(numericTag.doubleValue());
          case CollectionTag collectionTag -> collectionTag.size();
          case CompoundTag compoundTag -> compoundTag.size();
-         case StringTag var10 -> {
-            StringTag var10000 = var10;
-
-            try {
-               var15 = var10000.value();
-            } catch (Throwable var13) {
-               throw new MatchException(var13.toString(), var13);
-            }
-
-            String var14 = var15;
-            yield var14.length();
-         }
+         case StringTag(String value) -> value.length();
          case EndTag ignored -> throw ERROR_GET_NON_EXISTENT.create(path.toString());
          default -> throw new MatchException(null, null);
       };
@@ -435,16 +406,16 @@ public class DataCommands {
       CompoundTag old = accessor.getData();
       if (NbtPathArgument.NbtPath.isTooDeep(nbt, 0)) {
          throw NbtPathArgument.ERROR_DATA_TOO_DEEP.create();
-      } else {
-         CompoundTag result = old.copy().merge(nbt);
-         if (old.equals(result)) {
-            throw ERROR_MERGE_UNCHANGED.create();
-         } else {
-            accessor.setData(result);
-            source.sendSuccess(() -> accessor.getModifiedSuccess(), true);
-            return 1;
-         }
       }
+
+      CompoundTag result = old.copy().merge(nbt);
+      if (old.equals(result)) {
+         throw ERROR_MERGE_UNCHANGED.create();
+      }
+
+      accessor.setData(result);
+      source.sendSuccess(() -> accessor.getModifiedSuccess(), true);
+      return 1;
    }
 
    @FunctionalInterface

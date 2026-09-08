@@ -28,18 +28,11 @@ public class MetricsRegistry {
    }
 
    private static List<MetricSampler> aggregateDuplicates(final Map<String, List<MetricSampler>> potentialDuplicates) {
-      return potentialDuplicates.entrySet()
-         .stream()
-         .map(
-            entry -> {
-               String samplerName = entry.getKey();
-               List<MetricSampler> duplicateSamplers = entry.getValue();
-               return (MetricSampler)(duplicateSamplers.size() > 1
-                  ? new MetricsRegistry.AggregatedMetricSampler(samplerName, duplicateSamplers)
-                  : duplicateSamplers.get(0));
-            }
-         )
-         .collect(Collectors.toList());
+      return potentialDuplicates.entrySet().stream().map(entry -> {
+         String samplerName = entry.getKey();
+         List<MetricSampler> duplicateSamplers = entry.getValue();
+         return duplicateSamplers.size() > 1 ? new MetricsRegistry.AggregatedMetricSampler(samplerName, duplicateSamplers) : duplicateSamplers.get(0);
+      }).collect(Collectors.toList());
    }
 
    private static class AggregatedMetricSampler extends MetricSampler {
@@ -74,21 +67,25 @@ public class MetricsRegistry {
             aggregatedValue += delegate.getSampler().getAsDouble();
          }
 
-         return aggregatedValue / (double)delegates.size();
+         return aggregatedValue / delegates.size();
       }
 
       @Override
-      public boolean equals(@Nullable final Object o) {
+      public boolean equals(final @Nullable Object o) {
          if (this == o) {
             return true;
-         } else if (o == null || this.getClass() != o.getClass()) {
-            return false;
-         } else if (!super.equals(o)) {
-            return false;
-         } else {
-            MetricsRegistry.AggregatedMetricSampler that = (MetricsRegistry.AggregatedMetricSampler)o;
-            return this.delegates.equals(that.delegates);
          }
+
+         if (o == null || this.getClass() != o.getClass()) {
+            return false;
+         }
+
+         if (!super.equals(o)) {
+            return false;
+         }
+
+         MetricsRegistry.AggregatedMetricSampler that = (MetricsRegistry.AggregatedMetricSampler)o;
+         return this.delegates.equals(that.delegates);
       }
 
       @Override

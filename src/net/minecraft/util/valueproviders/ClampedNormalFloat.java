@@ -10,12 +10,12 @@ import net.minecraft.util.RandomSource;
 public record ClampedNormalFloat(float mean, float deviation, float min, float max) implements FloatProvider {
    public static final MapCodec<ClampedNormalFloat> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Codec.FLOAT.fieldOf("mean").forGetter(ClampedNormalFloat::mean),
-                  Codec.FLOAT.fieldOf("deviation").forGetter(ClampedNormalFloat::deviation),
-                  Codec.FLOAT.fieldOf("min").forGetter(ClampedNormalFloat::min),
-                  Codec.FLOAT.fieldOf("max").forGetter(ClampedNormalFloat::max)
-               )
-               .apply(i, ClampedNormalFloat::new)
+               Codec.FLOAT.fieldOf("mean").forGetter(ClampedNormalFloat::mean),
+               Codec.FLOAT.fieldOf("deviation").forGetter(ClampedNormalFloat::deviation),
+               Codec.FLOAT.fieldOf("min").forGetter(ClampedNormalFloat::min),
+               Codec.FLOAT.fieldOf("max").forGetter(ClampedNormalFloat::max)
+            )
+            .apply(i, ClampedNormalFloat::new)
       )
       .validate(c -> c.max < c.min ? DataResult.error(() -> "Max must be larger than min: [" + c.min + ", " + c.max + "]") : DataResult.success(c));
 

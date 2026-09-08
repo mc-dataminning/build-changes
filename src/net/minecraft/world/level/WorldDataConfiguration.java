@@ -10,10 +10,10 @@ public record WorldDataConfiguration(DataPackConfig dataPacks, FeatureFlagSet en
    public static final String ENABLED_FEATURES_ID = "enabled_features";
    public static final MapCodec<WorldDataConfiguration> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               DataPackConfig.CODEC.lenientOptionalFieldOf("DataPacks", DataPackConfig.DEFAULT).forGetter(WorldDataConfiguration::dataPacks),
-               FeatureFlags.CODEC.lenientOptionalFieldOf("enabled_features", FeatureFlags.DEFAULT_FLAGS).forGetter(WorldDataConfiguration::enabledFeatures)
-            )
-            .apply(i, WorldDataConfiguration::new)
+            DataPackConfig.CODEC.lenientOptionalFieldOf("DataPacks", DataPackConfig.DEFAULT).forGetter(WorldDataConfiguration::dataPacks),
+            FeatureFlags.CODEC.lenientOptionalFieldOf("enabled_features", FeatureFlags.DEFAULT_FLAGS).forGetter(WorldDataConfiguration::enabledFeatures)
+         )
+         .apply(i, WorldDataConfiguration::new)
    );
    public static final Codec<WorldDataConfiguration> CODEC = MAP_CODEC.codec();
    public static final WorldDataConfiguration DEFAULT = new WorldDataConfiguration(DataPackConfig.DEFAULT, FeatureFlags.DEFAULT_FLAGS);

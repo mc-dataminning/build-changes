@@ -39,11 +39,11 @@ public interface StringRepresentable {
       return new StringRepresentable.StringRepresentableCodec<>(valueArray, lookupFunction, indexLookup);
    }
 
-   static <T extends StringRepresentable> Function<String, T> createNameLookup(final T[] valueArray) {
+   static <T extends StringRepresentable> Function<String, @Nullable T> createNameLookup(final T[] valueArray) {
       return createNameLookup(valueArray, StringRepresentable::getSerializedName);
    }
 
-   static <T> Function<String, T> createNameLookup(final T[] valueArray, final Function<T, String> converter) {
+   static <T> Function<String, @Nullable T> createNameLookup(final T[] valueArray, final Function<T, String> converter) {
       if (valueArray.length > 16) {
          Map<String, T> byName = Arrays.<T>stream(valueArray).collect(Collectors.toMap(converter, d -> (T)d));
          return byName::get;
@@ -68,16 +68,15 @@ public interface StringRepresentable {
       };
    }
 
-   public static class EnumCodec<E extends Enum<E> & StringRepresentable> extends StringRepresentable.StringRepresentableCodec<E> {
-      private final Function<String, E> resolver;
+   class EnumCodec<E extends Enum<E> & StringRepresentable> extends StringRepresentable.StringRepresentableCodec<E> {
+      private final Function<String, @Nullable E> resolver;
 
       public EnumCodec(final E[] valueArray, final Function<String, E> nameResolver) {
          super(valueArray, nameResolver, rec$ -> rec$.ordinal());
          this.resolver = nameResolver;
       }
 
-      @Nullable
-      public E byName(final String name) {
+      public @Nullable E byName(final String name) {
          return this.resolver.apply(name);
       }
 
@@ -90,10 +89,10 @@ public interface StringRepresentable {
       }
    }
 
-   public static class StringRepresentableCodec<S extends StringRepresentable> implements Codec<S> {
+   class StringRepresentableCodec<S extends StringRepresentable> implements Codec<S> {
       private final Codec<S> codec;
 
-      public StringRepresentableCodec(final S[] valueArray, final Function<String, S> nameResolver, final ToIntFunction<S> idResolver) {
+      public StringRepresentableCodec(final S[] valueArray, final Function<String, @Nullable S> nameResolver, final ToIntFunction<S> idResolver) {
          this.codec = ExtraCodecs.orCompressed(
             Codec.stringResolver(StringRepresentable::getSerializedName, nameResolver),
             ExtraCodecs.idResolverCodec(idResolver, i -> i >= 0 && i < valueArray.length ? valueArray[i] : null, -1)

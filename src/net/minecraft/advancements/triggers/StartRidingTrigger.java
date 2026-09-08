@@ -18,10 +18,10 @@ public class StartRidingTrigger extends SimpleCriterionTrigger<StartRidingTrigge
       this.trigger(player, t -> true);
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player) implements SimpleCriterionTrigger.SimpleInstance {
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player) implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<StartRidingTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(LootItemCondition.CODEC.optionalFieldOf("player").forGetter(StartRidingTrigger.TriggerInstance::player))
-               .apply(i, StartRidingTrigger.TriggerInstance::new)
+            .apply(i, StartRidingTrigger.TriggerInstance::new)
       );
 
       public static Criterion<StartRidingTrigger.TriggerInstance> playerStartsRiding(final EntityPredicate.Builder player) {

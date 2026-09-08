@@ -27,9 +27,8 @@ public class BlockIgnoreProcessor implements StructureProcessor {
       this.toIgnore = ImmutableList.copyOf(toIgnore);
    }
 
-   @Nullable
    @Override
-   public StructureTemplate.StructureBlockInfo processBlock(
+   public StructureTemplate.@Nullable StructureBlockInfo processBlock(
       final LevelReader level,
       final BlockPos targetPosition,
       final BlockPos referencePos,

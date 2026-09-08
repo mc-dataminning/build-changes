@@ -6,10 +6,9 @@ import org.jspecify.annotations.Nullable;
 public class SoundEventRegistration {
    private final List<Sound> sounds;
    private final boolean replace;
-   @Nullable
-   private final String subtitle;
+   private final @Nullable String subtitle;
 
-   public SoundEventRegistration(final List<Sound> sounds, final boolean replace, @Nullable final String subtitle) {
+   public SoundEventRegistration(final List<Sound> sounds, final boolean replace, final @Nullable String subtitle) {
       this.sounds = sounds;
       this.replace = replace;
       this.subtitle = subtitle;
@@ -23,8 +22,7 @@ public class SoundEventRegistration {
       return this.replace;
    }
 
-   @Nullable
-   public String getSubtitle() {
+   public @Nullable String getSubtitle() {
       return this.subtitle;
    }
 }

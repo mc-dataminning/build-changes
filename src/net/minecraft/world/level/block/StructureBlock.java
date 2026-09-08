@@ -37,14 +37,14 @@ public class StructureBlock extends BaseEntityBlock implements GameMasterBlock {
       final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
    ) {
       if (level.getBlockEntity(pos) instanceof StructureBlockEntity structureBlockEntity) {
-         return (InteractionResult)(structureBlockEntity.usedBy(player) ? InteractionResult.SUCCESS : InteractionResult.PASS);
+         return structureBlockEntity.usedBy(player) ? InteractionResult.SUCCESS : InteractionResult.PASS;
       } else {
          return InteractionResult.PASS;
       }
    }
 
    @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, @Nullable final LivingEntity by, final ItemStack itemStack) {
+   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
       if (!level.isClientSide()) {
          if (by != null && level.getBlockEntity(pos) instanceof StructureBlockEntity structureBlockEntity) {
             structureBlockEntity.createdBy(by);
@@ -59,7 +59,7 @@ public class StructureBlock extends BaseEntityBlock implements GameMasterBlock {
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       if (level instanceof ServerLevel serverLevel) {
          if (level.getBlockEntity(pos) instanceof StructureBlockEntity structureBlock) {

@@ -55,7 +55,7 @@ public class ShulkerBoxRenderer implements BlockEntityRenderer<ShulkerBoxBlockEn
       final ShulkerBoxRenderState state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
       state.direction = blockEntity.getBlockState().getValueOrElse(ShulkerBoxBlock.FACING, Direction.UP);
@@ -84,7 +84,7 @@ public class ShulkerBoxRenderer implements BlockEntityRenderer<ShulkerBoxBlockEn
       final int overlayCoords,
       final Direction direction,
       final float progress,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress,
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress,
       final SpriteId sprite,
       final int outlineColor
    ) {
@@ -100,12 +100,12 @@ public class ShulkerBoxRenderer implements BlockEntityRenderer<ShulkerBoxBlockEn
       final int lightCoords,
       final int overlayCoords,
       final float progress,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress,
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress,
       final SpriteId sprite,
       final int outlineColor
    ) {
       this.model.setupAnim(progress);
-      submitNodeCollector.submitModel(this.model, Float.valueOf(progress), poseStack, lightCoords, overlayCoords, -1, sprite, this.sprites, outlineColor);
+      submitNodeCollector.submitModel(this.model, progress, poseStack, lightCoords, overlayCoords, -1, sprite, this.sprites, outlineColor);
       if (breakProgress != null) {
          submitNodeCollector.order(1)
             .submitCrumblingOverlay(this.model, progress, poseStack, sprite.renderType(this.model.renderType()), lightCoords, overlayCoords, -1, breakProgress);

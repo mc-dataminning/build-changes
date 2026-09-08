@@ -78,7 +78,7 @@ public class ItemCombinerMenuSlotDefinition {
       }
    }
 
-   public static record SlotDefinition(int slotIndex, int x, int y, Predicate<ItemStack> mayPlace) {
+   public record SlotDefinition(int slotIndex, int x, int y, Predicate<ItemStack> mayPlace) {
       private static final ItemCombinerMenuSlotDefinition.SlotDefinition EMPTY = new ItemCombinerMenuSlotDefinition.SlotDefinition(0, 0, 0, itemStack -> true);
    }
 }

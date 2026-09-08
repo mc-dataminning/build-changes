@@ -19,18 +19,18 @@ public sealed interface InteractionResult
       return false;
    }
 
-   public static record Fail() implements InteractionResult {
+   record Fail() implements InteractionResult {
    }
 
-   public static record ItemContext(boolean wasItemInteraction, @Nullable ItemStack heldItemTransformedTo) {
+   record ItemContext(boolean wasItemInteraction, @Nullable ItemStack heldItemTransformedTo) {
       public static final InteractionResult.ItemContext NONE = new InteractionResult.ItemContext(false, null);
       public static final InteractionResult.ItemContext DEFAULT = new InteractionResult.ItemContext(true, null);
    }
 
-   public static record Pass() implements InteractionResult {
+   record Pass() implements InteractionResult {
    }
 
-   public static record Success(InteractionResult.SwingSource swingSource, InteractionResult.ItemContext itemContext) implements InteractionResult {
+   record Success(InteractionResult.SwingSource swingSource, InteractionResult.ItemContext itemContext) implements InteractionResult {
       public boolean shouldSwing() {
          return this.swingSource != InteractionResult.SwingSource.NONE;
       }
@@ -52,18 +52,17 @@ public sealed interface InteractionResult
          return this.itemContext.wasItemInteraction;
       }
 
-      @Nullable
-      public ItemStack heldItemTransformedTo() {
+      public @Nullable ItemStack heldItemTransformedTo() {
          return this.itemContext.heldItemTransformedTo;
       }
    }
 
-   public static enum SwingSource {
+   enum SwingSource {
       NONE,
       PREDICTED,
       SERVER_ONLY;
    }
 
-   public static record TryEmptyHandInteraction() implements InteractionResult {
+   record TryEmptyHandInteraction() implements InteractionResult {
    }
 }

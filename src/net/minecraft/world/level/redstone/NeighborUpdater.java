@@ -24,7 +24,7 @@ public interface NeighborUpdater {
    void neighborChanged(BlockState state, BlockPos pos, Block changedBlock, @Nullable Orientation orientation, boolean movedByPiston);
 
    default void updateNeighborsAtExceptFromFacing(
-      final BlockPos pos, final Block block, @Nullable final Direction skipDirection, @Nullable final Orientation orientation
+      final BlockPos pos, final Block block, final @Nullable Direction skipDirection, final @Nullable Orientation orientation
    ) {
       for (Direction direction : UPDATE_ORDER) {
          if (direction != skipDirection) {
@@ -39,7 +39,7 @@ public interface NeighborUpdater {
       final BlockPos pos,
       final BlockPos neighborPos,
       final BlockState neighborState,
-      @Block.UpdateFlags final int updateFlags,
+      final @Block.UpdateFlags int updateFlags,
       final int updateLimit
    ) {
       BlockState currentState = level.getBlockState(pos);
@@ -47,8 +47,8 @@ public interface NeighborUpdater {
          try {
             BlockState newState = currentState.updateShape(level, level, pos, direction, neighborPos, neighborState, level.getRandom());
             Block.updateOrDestroy(currentState, newState, level, pos, updateFlags, updateLimit);
-         } catch (Throwable var12) {
-            CrashReport report = CrashReport.forThrowable(var12, "Exception while updating neighbour shapes");
+         } catch (Throwable t) {
+            CrashReport report = CrashReport.forThrowable(t, "Exception while updating neighbour shapes");
             CrashReportCategory ownCategory = report.addCategory("Block being updated");
             CrashReportCategory.populateBlockDetails(ownCategory, level, pos, currentState);
             CrashReportCategory neighborCategory = report.addCategory("Neighbor block");
@@ -63,13 +63,13 @@ public interface NeighborUpdater {
       final BlockState state,
       final BlockPos pos,
       final Block changedBlock,
-      @Nullable final Orientation orientation,
+      final @Nullable Orientation orientation,
       final boolean movedByPiston
    ) {
       try {
          state.handleNeighborChanged(level, pos, changedBlock, orientation, movedByPiston);
-      } catch (Throwable var9) {
-         CrashReport report = CrashReport.forThrowable(var9, "Exception while updating neighbours");
+      } catch (Throwable t) {
+         CrashReport report = CrashReport.forThrowable(t, "Exception while updating neighbours");
          CrashReportCategory category = report.addCategory("Block being updated");
          category.setDetail(
             "Source block type",
@@ -82,7 +82,7 @@ public interface NeighborUpdater {
                      changedBlock.getDescriptionId(),
                      changedBlock.getClass().getCanonicalName()
                   );
-               } catch (Throwable var2) {
+               } catch (Throwable ignored) {
                   return "ID #" + BuiltInRegistries.BLOCK.getKey(changedBlock);
                }
             }

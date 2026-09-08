@@ -28,8 +28,7 @@ public class CustomBossEvents extends SavedData {
    );
    private final Map<Identifier, CustomBossEvent> events = Maps.newHashMap();
 
-   @Nullable
-   public CustomBossEvent get(final Identifier id) {
+   public @Nullable CustomBossEvent get(final Identifier id) {
       return this.events.get(id);
    }
 

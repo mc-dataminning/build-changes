@@ -42,7 +42,7 @@ public class WolfSoundVariants {
       return registryAccess.lookupOrThrow(Registries.WOLF_SOUND_VARIANT).getRandom(random).orElseThrow();
    }
 
-   public static enum SoundSet {
+   public enum SoundSet {
       CLASSIC("classic", "wolf"),
       PUGLIN("puglin", "wolf_puglin"),
       SAD("sad", "wolf_sad"),
@@ -54,7 +54,7 @@ public class WolfSoundVariants {
       private final String identifier;
       private final String soundEventIdentifier;
 
-      private SoundSet(final String identifier, final String soundEventIdentifier) {
+      SoundSet(final String identifier, final String soundEventIdentifier) {
          this.identifier = identifier;
          this.soundEventIdentifier = soundEventIdentifier;
       }

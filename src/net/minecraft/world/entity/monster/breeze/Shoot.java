@@ -66,7 +66,7 @@ public class Shoot extends Behavior<Breeze> {
 
    protected void start(final ServerLevel level, final Breeze breeze, final long timestamp) {
       breeze.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).ifPresent(target -> breeze.setPose(Pose.SHOOTING));
-      breeze.getBrain().setMemoryWithExpiry(MemoryModuleType.BREEZE_SHOOT_CHARGING, Unit.INSTANCE, (long)SHOOT_INITIAL_DELAY_TICKS);
+      breeze.getBrain().setMemoryWithExpiry(MemoryModuleType.BREEZE_SHOOT_CHARGING, Unit.INSTANCE, SHOOT_INITIAL_DELAY_TICKS);
       breeze.playSound(SoundEvents.BREEZE_INHALE, 1.0F, 1.0F);
    }
 
@@ -75,7 +75,7 @@ public class Shoot extends Behavior<Breeze> {
          breeze.setPose(Pose.STANDING);
       }
 
-      breeze.getBrain().setMemoryWithExpiry(MemoryModuleType.BREEZE_SHOOT_COOLDOWN, Unit.INSTANCE, (long)SHOOT_COOLDOWN_TICKS);
+      breeze.getBrain().setMemoryWithExpiry(MemoryModuleType.BREEZE_SHOOT_COOLDOWN, Unit.INSTANCE, SHOOT_COOLDOWN_TICKS);
       breeze.getBrain().eraseMemory(MemoryModuleType.BREEZE_SHOOT);
    }
 
@@ -85,12 +85,12 @@ public class Shoot extends Behavior<Breeze> {
       if (target != null) {
          breeze.lookAt(EntityAnchorArgument.Anchor.EYES, target.position());
          if (!brain.getMemory(MemoryModuleType.BREEZE_SHOOT_CHARGING).isPresent() && !brain.getMemory(MemoryModuleType.BREEZE_SHOOT_RECOVERING).isPresent()) {
-            brain.setMemoryWithExpiry(MemoryModuleType.BREEZE_SHOOT_RECOVERING, Unit.INSTANCE, (long)SHOOT_RECOVER_DELAY_TICKS);
+            brain.setMemoryWithExpiry(MemoryModuleType.BREEZE_SHOOT_RECOVERING, Unit.INSTANCE, SHOOT_RECOVER_DELAY_TICKS);
             double xd = target.getX() - breeze.getX();
             double yd = target.getY(target.isPassenger() ? 0.8 : 0.3) - breeze.getFiringYPosition();
             double zd = target.getZ() - breeze.getZ();
             Projectile.spawnProjectileUsingShoot(
-               new BreezeWindCharge(breeze, level), level, ItemStack.EMPTY, xd, yd, zd, 0.7F, (float)(5 - level.getDifficulty().getId() * 4)
+               new BreezeWindCharge(breeze, level), level, ItemStack.EMPTY, xd, yd, zd, 0.7F, 5 - level.getDifficulty().getId() * 4
             );
             breeze.playSound(SoundEvents.BREEZE_SHOOT, 1.5F, 1.0F);
          }

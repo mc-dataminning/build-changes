@@ -19,9 +19,9 @@ import net.minecraft.world.entity.Entity;
 public record ChatType(ChatTypeDecoration chat, ChatTypeDecoration narration) {
    public static final Codec<ChatType> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ChatTypeDecoration.CODEC.fieldOf("chat").forGetter(ChatType::chat), ChatTypeDecoration.CODEC.fieldOf("narration").forGetter(ChatType::narration)
-            )
-            .apply(i, ChatType::new)
+            ChatTypeDecoration.CODEC.fieldOf("chat").forGetter(ChatType::chat), ChatTypeDecoration.CODEC.fieldOf("narration").forGetter(ChatType::narration)
+         )
+         .apply(i, ChatType::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, ChatType> DIRECT_STREAM_CODEC = StreamCodec.composite(
       ChatTypeDecoration.STREAM_CODEC, ChatType::chat, ChatTypeDecoration.STREAM_CODEC, ChatType::narration, ChatType::new
@@ -77,7 +77,7 @@ public record ChatType(ChatTypeDecoration chat, ChatTypeDecoration narration) {
       return new ChatType.Bound(registry.getOrThrow(chatType), name);
    }
 
-   public static record Bound(Holder<ChatType> chatType, Component name, Optional<Component> targetName) {
+   public record Bound(Holder<ChatType> chatType, Component name, Optional<Component> targetName) {
       public static final StreamCodec<RegistryFriendlyByteBuf, ChatType.Bound> STREAM_CODEC = StreamCodec.composite(
          ChatType.STREAM_CODEC,
          ChatType.Bound::chatType,

@@ -15,16 +15,16 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 public class SetFireworkExplosionFunction extends LootItemConditionalFunction {
    public static final MapCodec<SetFireworkExplosionFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
-            .and(
-               i.group(
-                  FireworkExplosion.Shape.CODEC.optionalFieldOf("shape").forGetter(f -> f.shape),
-                  FireworkExplosion.COLOR_LIST_CODEC.optionalFieldOf("colors").forGetter(f -> f.colors),
-                  FireworkExplosion.COLOR_LIST_CODEC.optionalFieldOf("fade_colors").forGetter(f -> f.fadeColors),
-                  Codec.BOOL.optionalFieldOf("trail").forGetter(f -> f.trail),
-                  Codec.BOOL.optionalFieldOf("twinkle").forGetter(f -> f.twinkle)
-               )
+         .and(
+            i.group(
+               FireworkExplosion.Shape.CODEC.optionalFieldOf("shape").forGetter(f -> f.shape),
+               FireworkExplosion.COLOR_LIST_CODEC.optionalFieldOf("colors").forGetter(f -> f.colors),
+               FireworkExplosion.COLOR_LIST_CODEC.optionalFieldOf("fade_colors").forGetter(f -> f.fadeColors),
+               Codec.BOOL.optionalFieldOf("trail").forGetter(f -> f.trail),
+               Codec.BOOL.optionalFieldOf("twinkle").forGetter(f -> f.twinkle)
             )
-            .apply(i, SetFireworkExplosionFunction::new)
+         )
+         .apply(i, SetFireworkExplosionFunction::new)
    );
    public static final FireworkExplosion DEFAULT_VALUE = new FireworkExplosion(FireworkExplosion.Shape.SMALL_BALL, IntList.of(), IntList.of(), false, false);
    private final Optional<FireworkExplosion.Shape> shape;

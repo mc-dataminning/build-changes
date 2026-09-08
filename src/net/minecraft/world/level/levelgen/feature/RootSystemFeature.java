@@ -39,23 +39,23 @@ public record RootSystemFeature(
 ) implements Feature {
    public static final MapCodec<RootSystemFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               PlacedFeature.CODEC.fieldOf("feature").forGetter(RootSystemFeature::treeFeature),
-               Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter(RootSystemFeature::requiredVerticalSpaceForTree),
-               Codec.intRange(0, 16).fieldOf("level_test_distance").forGetter(RootSystemFeature::levelTestDistance),
-               Codec.intRange(0, 64).fieldOf("max_level_deviation").forGetter(RootSystemFeature::maxLevelDeviation),
-               Codec.intRange(1, 64).fieldOf("root_radius").forGetter(RootSystemFeature::rootRadius),
-               RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("root_replaceable").forGetter(RootSystemFeature::rootReplaceable),
-               BlockStateProvider.CODEC.fieldOf("root_state_provider").forGetter(RootSystemFeature::rootStateProvider),
-               Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter(RootSystemFeature::rootPlacementAttempts),
-               Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter(RootSystemFeature::rootColumnMaxHeight),
-               Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter(RootSystemFeature::hangingRootRadius),
-               Codec.intRange(1, 16).fieldOf("hanging_roots_vertical_span").forGetter(RootSystemFeature::hangingRootsVerticalSpan),
-               BlockStateProvider.CODEC.fieldOf("hanging_root_state_provider").forGetter(RootSystemFeature::hangingRootStateProvider),
-               Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter(RootSystemFeature::hangingRootPlacementAttempts),
-               Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter(RootSystemFeature::allowedVerticalWaterForTree),
-               BlockPredicate.CODEC.fieldOf("allowed_tree_position").forGetter(RootSystemFeature::allowedTreePosition)
-            )
-            .apply(i, RootSystemFeature::new)
+            PlacedFeature.CODEC.fieldOf("feature").forGetter(RootSystemFeature::treeFeature),
+            Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter(RootSystemFeature::requiredVerticalSpaceForTree),
+            Codec.intRange(0, 16).fieldOf("level_test_distance").forGetter(RootSystemFeature::levelTestDistance),
+            Codec.intRange(0, 64).fieldOf("max_level_deviation").forGetter(RootSystemFeature::maxLevelDeviation),
+            Codec.intRange(1, 64).fieldOf("root_radius").forGetter(RootSystemFeature::rootRadius),
+            RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("root_replaceable").forGetter(RootSystemFeature::rootReplaceable),
+            BlockStateProvider.CODEC.fieldOf("root_state_provider").forGetter(RootSystemFeature::rootStateProvider),
+            Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter(RootSystemFeature::rootPlacementAttempts),
+            Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter(RootSystemFeature::rootColumnMaxHeight),
+            Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter(RootSystemFeature::hangingRootRadius),
+            Codec.intRange(1, 16).fieldOf("hanging_roots_vertical_span").forGetter(RootSystemFeature::hangingRootsVerticalSpan),
+            BlockStateProvider.CODEC.fieldOf("hanging_root_state_provider").forGetter(RootSystemFeature::hangingRootStateProvider),
+            Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter(RootSystemFeature::hangingRootPlacementAttempts),
+            Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter(RootSystemFeature::allowedVerticalWaterForTree),
+            BlockPredicate.CODEC.fieldOf("allowed_tree_position").forGetter(RootSystemFeature::allowedTreePosition)
+         )
+         .apply(i, RootSystemFeature::new)
    );
 
    @Override
@@ -67,14 +67,14 @@ public record RootSystemFeature(
    public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
       if (!level.getBlockState(origin).isAir()) {
          return false;
-      } else {
-         BlockPos.MutableBlockPos workingPos = origin.mutable();
-         if (this.placeDirtAndTree(level, chunkGenerator, random, workingPos, origin)) {
-            this.placeRoots(level, random, origin, workingPos);
-         }
-
-         return true;
       }
+
+      BlockPos.MutableBlockPos workingPos = origin.mutable();
+      if (this.placeDirtAndTree(level, chunkGenerator, random, workingPos, origin)) {
+         this.placeRoots(level, random, origin, workingPos);
+      }
+
+      return true;
    }
 
    private boolean spaceForTree(final WorldGenLevel level, final BlockPos pos) {
@@ -91,8 +91,8 @@ public record RootSystemFeature(
       if (this.levelTestDistance > 0) {
          BlockPos.MutableBlockPos cornerPos = pos.mutable();
 
-         for (int ix = 0; ix < 4; ix++) {
-            cornerPos.move(Direction.from2DDataValue(ix), this.levelTestDistance);
+         for (int i = 0; i < 4; i++) {
+            cornerPos.move(Direction.from2DDataValue(i), this.levelTestDistance);
             BlockState below = level.getBlockState(cornerPos.below(this.maxLevelDeviation));
             BlockState above = level.getBlockState(cornerPos.above(this.maxLevelDeviation));
             if (below.isAir() || !above.isAir()) {
@@ -109,10 +109,10 @@ public record RootSystemFeature(
    private static boolean isAllowedTreeSpace(final BlockState state, final int blocksAboveOrigin, final int allowedVerticalWaterHeight) {
       if (state.isAir()) {
          return true;
-      } else {
-         int blocksAboveGround = blocksAboveOrigin + 1;
-         return blocksAboveGround <= allowedVerticalWaterHeight && state.getFluidState().is(FluidTags.WATER);
       }
+
+      int blocksAboveGround = blocksAboveOrigin + 1;
+      return blocksAboveGround <= allowedVerticalWaterHeight && state.getFluidState().is(FluidTags.WATER);
    }
 
    private boolean placeDirtAndTree(

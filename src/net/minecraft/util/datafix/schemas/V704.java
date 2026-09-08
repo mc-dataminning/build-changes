@@ -169,8 +169,8 @@ public class V704 extends Schema {
          true,
          References.BLOCK_ENTITY,
          () -> DSL.optionalFields(
-               "components", References.DATA_COMPONENTS.in(schema), DSL.taggedChoiceLazy("id", NamespacedSchema.namespacedString(), blockEntityTypes)
-            )
+            "components", References.DATA_COMPONENTS.in(schema), DSL.taggedChoiceLazy("id", NamespacedSchema.namespacedString(), blockEntityTypes)
+         )
       );
       schema.registerType(
          true,

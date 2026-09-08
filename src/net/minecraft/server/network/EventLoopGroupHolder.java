@@ -51,8 +51,7 @@ public abstract class EventLoopGroupHolder {
    private final String type;
    private final Class<? extends Channel> channelCls;
    private final Class<? extends ServerChannel> serverChannelCls;
-   @Nullable
-   private volatile EventLoopGroup group;
+   private volatile @Nullable EventLoopGroup group;
 
    public static EventLoopGroupHolder remote(final boolean allowNativeTransport) {
       if (allowNativeTransport) {

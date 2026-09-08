@@ -38,19 +38,19 @@ public class TeamMsgCommand {
                         PlayerTeam team = entity.getTeam();
                         if (team == null) {
                            throw ERROR_NOT_ON_TEAM.create();
-                        } else {
-                           List<ServerPlayer> receivers = source.getServer()
-                              .getPlayerList()
-                              .getPlayers()
-                              .stream()
-                              .filter(receiver -> receiver == entity || receiver.getTeam() == team)
-                              .toList();
-                           if (!receivers.isEmpty()) {
-                              MessageArgument.resolveChatMessage(c, "message", message -> sendMessage(source, entity, team, receivers, message));
-                           }
-
-                           return receivers.size();
                         }
+
+                        List<ServerPlayer> receivers = source.getServer()
+                           .getPlayerList()
+                           .getPlayers()
+                           .stream()
+                           .filter(receiver -> receiver == entity || receiver.getTeam() == team)
+                           .toList();
+                        if (!receivers.isEmpty()) {
+                           MessageArgument.resolveChatMessage(c, "message", message -> sendMessage(source, entity, team, receivers, message));
+                        }
+
+                        return receivers.size();
                      }
                   )
             )

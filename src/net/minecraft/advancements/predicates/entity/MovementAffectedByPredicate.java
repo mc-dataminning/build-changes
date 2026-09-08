@@ -12,7 +12,7 @@ public record MovementAffectedByPredicate(LocationPredicate predicate) implement
       .xmap(MovementAffectedByPredicate::new, MovementAffectedByPredicate::predicate);
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
       Vec3 onPos = Vec3.atCenterOf(entity.getBlockPosBelowThatAffectsMyMovement());
       return this.predicate.matches(level, onPos.x(), onPos.y(), onPos.z());
    }

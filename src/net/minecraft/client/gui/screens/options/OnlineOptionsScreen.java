@@ -41,20 +41,16 @@ public class OnlineOptionsScreen extends OptionsSubScreen {
    private static final Tooltip ALLOW_FRIEND_REQUESTS_TOOLTIP = Tooltip.create(Component.translatable("options.allowFriendRequests.tooltip"));
    private static final Component IN_GAME_NOTIFICATIONS_LABEL = Component.translatable("options.inGameNotification");
    private static final Tooltip IN_GAME_NOTIFICATIONS_TOOLTIP = Tooltip.create(Component.translatable("options.inGameNotification.tooltip"));
-   @Nullable
-   private CycleButton<Boolean> friendsListButton;
-   @Nullable
-   private CycleButton<Boolean> allowFriendRequestsButton;
-   @Nullable
-   private CycleButton<Boolean> inGameNotificationButton;
-   @Nullable
-   private AbstractWidget presenceWidget;
+   private @Nullable CycleButton<Boolean> friendsListButton;
+   private @Nullable CycleButton<Boolean> allowFriendRequestsButton;
+   private @Nullable CycleButton<Boolean> inGameNotificationButton;
+   private @Nullable AbstractWidget presenceWidget;
 
    public OnlineOptionsScreen(final Screen lastScreen, final Options options) {
       super(lastScreen, options, TITLE);
    }
 
-   public static void confirmFriendsListEnabled(final Minecraft minecraft, final Runnable onEnabled, @Nullable final Screen lastScreen) {
+   public static void confirmFriendsListEnabled(final Minecraft minecraft, final Runnable onEnabled, final @Nullable Screen lastScreen) {
       PlayerSocialManager playerSocialManager = minecraft.getPlayerSocialManager();
       if (playerSocialManager.isFriendListEnabled()) {
          onEnabled.run();
@@ -105,8 +101,8 @@ public class OnlineOptionsScreen extends OptionsSubScreen {
             20,
             ALLOW_FRIEND_REQUESTS_LABEL,
             (var2x, enabled) -> applyFriendSettings(
-                  this.minecraft, playerSocialManager.isFriendListEnabled(), enabled, var1x -> this.updateFriendListDependentButtons()
-               )
+               this.minecraft, playerSocialManager.isFriendListEnabled(), enabled, var1x -> this.updateFriendListDependentButtons()
+            )
          );
       this.list.addSmall(this.friendsListButton, this.allowFriendRequestsButton);
       this.inGameNotificationButton = CycleButton.onOffBuilder(inGameNotificationOpt.get())

@@ -64,10 +64,10 @@ public class Minecart extends AbstractMinecart {
 
    @Override
    public void tick() {
-      double lastKnownYRot = (double)this.getYRot();
+      double lastKnownYRot = this.getYRot();
       Vec3 lastKnownPos = this.position();
       super.tick();
-      double tickDiff = ((double)this.getYRot() - lastKnownYRot) % 360.0;
+      double tickDiff = (this.getYRot() - lastKnownYRot) % 360.0;
       if (this.level().isClientSide() && lastKnownPos.distanceTo(this.position()) > 0.01) {
          this.rotationOffset += (float)tickDiff;
          this.rotationOffset %= 360.0F;
@@ -78,7 +78,7 @@ public class Minecart extends AbstractMinecart {
    protected void positionRider(final Entity passenger, final Entity.MoveFunction moveFunction) {
       super.positionRider(passenger, moveFunction);
       if (this.level().isClientSide() && passenger instanceof Player player && player.shouldRotateWithMinecart() && useExperimentalMovement(this.level())) {
-         float yRot = (float)Mth.rotLerp(0.5, (double)this.playerRotationOffset, (double)this.rotationOffset);
+         float yRot = (float)Mth.rotLerp(0.5, this.playerRotationOffset, this.rotationOffset);
          player.setYRot(player.getYRot() - (yRot - this.playerRotationOffset));
          this.playerRotationOffset = yRot;
       }

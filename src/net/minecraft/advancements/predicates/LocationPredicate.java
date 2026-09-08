@@ -28,41 +28,41 @@ public record LocationPredicate(
 ) {
    public static final Codec<LocationPredicate> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               LocationPredicate.PositionPredicate.CODEC.optionalFieldOf("position").forGetter(LocationPredicate::position),
-               RegistryCodecs.holderSet(Registries.BIOME).optionalFieldOf("biomes").forGetter(LocationPredicate::biomes),
-               RegistryCodecs.holderSet(Registries.STRUCTURE).optionalFieldOf("structures").forGetter(LocationPredicate::structures),
-               ResourceKey.codec(Registries.DIMENSION).optionalFieldOf("dimension").forGetter(LocationPredicate::dimension),
-               Codec.BOOL.optionalFieldOf("smokey").forGetter(LocationPredicate::smokey),
-               LightPredicate.CODEC.optionalFieldOf("light").forGetter(LocationPredicate::light),
-               BlockPredicate.CODEC.optionalFieldOf("block").forGetter(LocationPredicate::block),
-               FluidPredicate.CODEC.optionalFieldOf("fluid").forGetter(LocationPredicate::fluid),
-               Codec.BOOL.optionalFieldOf("can_see_sky").forGetter(LocationPredicate::canSeeSky)
-            )
-            .apply(i, LocationPredicate::new)
+            LocationPredicate.PositionPredicate.CODEC.optionalFieldOf("position").forGetter(LocationPredicate::position),
+            RegistryCodecs.holderSet(Registries.BIOME).optionalFieldOf("biomes").forGetter(LocationPredicate::biomes),
+            RegistryCodecs.holderSet(Registries.STRUCTURE).optionalFieldOf("structures").forGetter(LocationPredicate::structures),
+            ResourceKey.codec(Registries.DIMENSION).optionalFieldOf("dimension").forGetter(LocationPredicate::dimension),
+            Codec.BOOL.optionalFieldOf("smokey").forGetter(LocationPredicate::smokey),
+            LightPredicate.CODEC.optionalFieldOf("light").forGetter(LocationPredicate::light),
+            BlockPredicate.CODEC.optionalFieldOf("block").forGetter(LocationPredicate::block),
+            FluidPredicate.CODEC.optionalFieldOf("fluid").forGetter(LocationPredicate::fluid),
+            Codec.BOOL.optionalFieldOf("can_see_sky").forGetter(LocationPredicate::canSeeSky)
+         )
+         .apply(i, LocationPredicate::new)
    );
 
    public boolean matches(final ServerLevel level, final double x, final double y, final double z) {
       if (this.position.isPresent() && !this.position.get().matches(x, y, z)) {
          return false;
-      } else if (this.dimension.isPresent() && this.dimension.get() != level.dimension()) {
+      }
+
+      if (this.dimension.isPresent() && this.dimension.get() != level.dimension()) {
          return false;
-      } else {
-         BlockPos pos = BlockPos.containing(x, y, z);
-         boolean loaded = level.isLoaded(pos);
-         if (!this.biomes.isPresent() || loaded && this.biomes.get().contains(level.getBiome(pos))) {
-            if (!this.structures.isPresent() || loaded && level.structureManager().getStructureWithPieceAt(pos, this.structures.get()).isValid()) {
-               if (!this.smokey.isPresent() || loaded && this.smokey.get() == CampfireBlock.isSmokeyPos(level, pos)) {
-                  if (this.light.isPresent() && !this.light.get().matches(level, pos)) {
-                     return false;
-                  } else if (this.block.isPresent() && !this.block.get().matches(level, pos)) {
-                     return false;
-                  } else {
-                     return this.fluid.isPresent() && !this.fluid.get().matches(level, pos)
-                        ? false
-                        : !this.canSeeSky.isPresent() || this.canSeeSky.get() == level.canSeeSky(pos);
-                  }
-               } else {
+      }
+
+      BlockPos pos = BlockPos.containing(x, y, z);
+      boolean loaded = level.isLoaded(pos);
+      if (!this.biomes.isPresent() || loaded && this.biomes.get().contains(level.getBiome(pos))) {
+         if (!this.structures.isPresent() || loaded && level.structureManager().getStructureWithPieceAt(pos, this.structures.get()).isValid()) {
+            if (!this.smokey.isPresent() || loaded && this.smokey.get() == CampfireBlock.isSmokeyPos(level, pos)) {
+               if (this.light.isPresent() && !this.light.get().matches(level, pos)) {
                   return false;
+               } else if (this.block.isPresent() && !this.block.get().matches(level, pos)) {
+                  return false;
+               } else {
+                  return this.fluid.isPresent() && !this.fluid.get().matches(level, pos)
+                     ? false
+                     : !this.canSeeSky.isPresent() || this.canSeeSky.get() == level.canSeeSky(pos);
                }
             } else {
                return false;
@@ -70,6 +70,8 @@ public record LocationPredicate(
          } else {
             return false;
          }
+      } else {
+         return false;
       }
    }
 
@@ -167,14 +169,14 @@ public record LocationPredicate(
       }
    }
 
-   private static record PositionPredicate(MinMaxBounds.Doubles x, MinMaxBounds.Doubles y, MinMaxBounds.Doubles z) {
+   private record PositionPredicate(MinMaxBounds.Doubles x, MinMaxBounds.Doubles y, MinMaxBounds.Doubles z) {
       public static final Codec<LocationPredicate.PositionPredicate> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  MinMaxBounds.Doubles.CODEC.optionalFieldOf("x", MinMaxBounds.Doubles.ANY).forGetter(LocationPredicate.PositionPredicate::x),
-                  MinMaxBounds.Doubles.CODEC.optionalFieldOf("y", MinMaxBounds.Doubles.ANY).forGetter(LocationPredicate.PositionPredicate::y),
-                  MinMaxBounds.Doubles.CODEC.optionalFieldOf("z", MinMaxBounds.Doubles.ANY).forGetter(LocationPredicate.PositionPredicate::z)
-               )
-               .apply(i, LocationPredicate.PositionPredicate::new)
+               MinMaxBounds.Doubles.CODEC.optionalFieldOf("x", MinMaxBounds.Doubles.ANY).forGetter(LocationPredicate.PositionPredicate::x),
+               MinMaxBounds.Doubles.CODEC.optionalFieldOf("y", MinMaxBounds.Doubles.ANY).forGetter(LocationPredicate.PositionPredicate::y),
+               MinMaxBounds.Doubles.CODEC.optionalFieldOf("z", MinMaxBounds.Doubles.ANY).forGetter(LocationPredicate.PositionPredicate::z)
+            )
+            .apply(i, LocationPredicate.PositionPredicate::new)
       );
 
       private static Optional<LocationPredicate.PositionPredicate> of(final MinMaxBounds.Doubles x, final MinMaxBounds.Doubles y, final MinMaxBounds.Doubles z) {

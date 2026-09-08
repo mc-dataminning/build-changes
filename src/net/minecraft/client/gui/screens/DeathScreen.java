@@ -23,16 +23,14 @@ public class DeathScreen extends Screen {
    private static final int TITLE_SCALE = 2;
    private static final Identifier DRAFT_REPORT_SPRITE = Identifier.withDefaultNamespace("icon/draft_report");
    private int delayTicker;
-   @Nullable
-   private final Component causeOfDeath;
+   private final @Nullable Component causeOfDeath;
    private final boolean hardcore;
    private final LocalPlayer player;
    private final Component deathScore;
    private final List<Button> exitButtons = Lists.newArrayList();
-   @Nullable
-   private Button exitToTitleButton;
+   private @Nullable Button exitToTitleButton;
 
-   public DeathScreen(@Nullable final Component causeOfDeath, final boolean hardcore, final LocalPlayer player) {
+   public DeathScreen(final @Nullable Component causeOfDeath, final boolean hardcore, final LocalPlayer player) {
       super(Component.translatable(hardcore ? "deathScreen.title.hardcore" : "deathScreen.title"));
       this.causeOfDeath = causeOfDeath;
       this.hardcore = hardcore;

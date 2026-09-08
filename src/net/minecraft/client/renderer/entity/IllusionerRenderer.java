@@ -2,7 +2,6 @@ package net.minecraft.client.renderer.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import java.util.Arrays;
-import java.util.Objects;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.model.monster.illager.IllagerModel;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -22,10 +21,6 @@ public class IllusionerRenderer extends IllagerRenderer<Illusioner, IllusionerRe
       super(context, new IllagerModel<>(context.bakeLayer(ModelLayers.ILLUSIONER)), 0.5F);
       this.addLayer(
          new ItemInHandLayer<IllusionerRenderState, IllagerModel<IllusionerRenderState>>(this) {
-            {
-               Objects.requireNonNull(IllusionerRenderer.this);
-            }
-
             public void submit(
                final PoseStack poseStack,
                final SubmitNodeCollector submitNodeCollector,
@@ -67,9 +62,9 @@ public class IllusionerRenderer extends IllagerRenderer<Illusioner, IllusionerRe
          for (int i = 0; i < offsets.length; i++) {
             poseStack.pushPose();
             poseStack.translate(
-               offsets[i].x + (double)Mth.cos((double)((float)i + state.ageInTicks * 0.5F)) * 0.025,
-               offsets[i].y + (double)Mth.cos((double)((float)i + state.ageInTicks * 0.75F)) * 0.0125,
-               offsets[i].z + (double)Mth.cos((double)((float)i + state.ageInTicks * 0.7F)) * 0.025
+               offsets[i].x + Mth.cos(i + state.ageInTicks * 0.5F) * 0.025,
+               offsets[i].y + Mth.cos(i + state.ageInTicks * 0.75F) * 0.0125,
+               offsets[i].z + Mth.cos(i + state.ageInTicks * 0.7F) * 0.025
             );
             super.submit(state, poseStack, submitNodeCollector, camera);
             poseStack.popPose();

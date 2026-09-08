@@ -20,18 +20,18 @@ public class V1451_1 extends NamespacedSchema {
          false,
          References.CHUNK,
          () -> DSL.fields(
-               "Level",
-               DSL.optionalFields(
-                  "Entities",
-                  DSL.list(References.ENTITY_TREE.in(schema)),
-                  "TileEntities",
-                  DSL.list(DSL.or(References.BLOCK_ENTITY.in(schema), DSL.remainder())),
-                  "TileTicks",
-                  DSL.list(DSL.fields("i", References.BLOCK_NAME.in(schema))),
-                  "Sections",
-                  DSL.list(DSL.optionalFields("Palette", DSL.list(References.BLOCK_STATE.in(schema))))
-               )
+            "Level",
+            DSL.optionalFields(
+               "Entities",
+               DSL.list(References.ENTITY_TREE.in(schema)),
+               "TileEntities",
+               DSL.list(DSL.or(References.BLOCK_ENTITY.in(schema), DSL.remainder())),
+               "TileTicks",
+               DSL.list(DSL.fields("i", References.BLOCK_NAME.in(schema))),
+               "Sections",
+               DSL.list(DSL.optionalFields("Palette", DSL.list(References.BLOCK_STATE.in(schema))))
             )
+         )
       );
    }
 }

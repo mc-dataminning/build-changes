@@ -17,19 +17,19 @@ public class SwingAnimationComponentSplitFix extends DataFix {
          "SwingAnimationComponentSplitFix",
          this.getInputSchema().getType(References.DATA_COMPONENTS),
          input -> input.update(
-               DSL.remainderFinder(),
-               tag -> {
-                  Optional<? extends Dynamic<?>> swingAnimationOpt = tag.get("minecraft:swing_animation").result();
-                  if (swingAnimationOpt.isPresent()) {
-                     Dynamic<?> swingAnimation = (Dynamic<?>)swingAnimationOpt.get();
-                     return tag.remove("minecraft:swing_animation")
-                        .set("minecraft:attack_animation", swingAnimation)
-                        .set("minecraft:interact_animation", swingAnimation);
-                  } else {
-                     return tag;
-                  }
+            DSL.remainderFinder(),
+            tag -> {
+               Optional<? extends Dynamic<?>> swingAnimationOpt = tag.get("minecraft:swing_animation").result();
+               if (swingAnimationOpt.isPresent()) {
+                  Dynamic<?> swingAnimation = (Dynamic<?>)swingAnimationOpt.get();
+                  return tag.remove("minecraft:swing_animation")
+                     .set("minecraft:attack_animation", swingAnimation)
+                     .set("minecraft:interact_animation", swingAnimation);
+               } else {
+                  return tag;
                }
-            )
+            }
+         )
       );
    }
 }

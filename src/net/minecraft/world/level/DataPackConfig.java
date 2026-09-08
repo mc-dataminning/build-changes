@@ -9,7 +9,7 @@ public class DataPackConfig {
    public static final DataPackConfig DEFAULT = new DataPackConfig(ImmutableList.of("vanilla"), ImmutableList.of());
    public static final Codec<DataPackConfig> CODEC = RecordCodecBuilder.create(
       i -> i.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter(o -> o.enabled), Codec.STRING.listOf().fieldOf("Disabled").forGetter(o -> o.disabled))
-            .apply(i, DataPackConfig::new)
+         .apply(i, DataPackConfig::new)
    );
    private final List<String> enabled;
    private final List<String> disabled;

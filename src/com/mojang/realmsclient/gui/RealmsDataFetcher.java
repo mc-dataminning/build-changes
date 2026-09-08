@@ -56,6 +56,6 @@ public class RealmsDataFetcher {
       return this.tasks;
    }
 
-   public static record ServerListData(List<RealmsServer> serverList, List<RealmsServer> availableSnapshotServers) {
+   public record ServerListData(List<RealmsServer> serverList, List<RealmsServer> availableSnapshotServers) {
    }
 }

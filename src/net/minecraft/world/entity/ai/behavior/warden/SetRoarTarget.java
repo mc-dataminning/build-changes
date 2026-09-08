@@ -12,18 +12,18 @@ public class SetRoarTarget {
    public static <E extends Warden> BehaviorControl<E> create(final Function<E, Optional<? extends LivingEntity>> targetFinderFunction) {
       return BehaviorBuilder.create(
          i -> i.group(
-                  i.absent(MemoryModuleType.ROAR_TARGET), i.absent(MemoryModuleType.ATTACK_TARGET), i.registered(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE)
-               )
-               .apply(i, (roarTarget, attackTarget, cantReachSince) -> (level, body, timestamp) -> {
-                     Optional<? extends LivingEntity> target = targetFinderFunction.apply((E)body);
-                     if (target.filter(body::canTargetEntity).isEmpty()) {
-                        return false;
-                     } else {
-                        roarTarget.set(target.get());
-                        cantReachSince.erase();
-                        return true;
-                     }
-                  })
+               i.absent(MemoryModuleType.ROAR_TARGET), i.absent(MemoryModuleType.ATTACK_TARGET), i.registered(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE)
+            )
+            .apply(i, (roarTarget, attackTarget, cantReachSince) -> (level, body, timestamp) -> {
+               Optional<? extends LivingEntity> target = targetFinderFunction.apply((E)body);
+               if (target.filter(body::canTargetEntity).isEmpty()) {
+                  return false;
+               }
+
+               roarTarget.set(target.get());
+               cantReachSince.erase();
+               return true;
+            })
       );
    }
 }

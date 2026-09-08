@@ -43,8 +43,7 @@ public class ConduitBlockEntity extends BlockEntity {
    private boolean isActive;
    private boolean isHunting;
    private final List<BlockPos> effectBlocks = Lists.newArrayList();
-   @Nullable
-   private EntityReference<LivingEntity> destroyTarget;
+   private @Nullable EntityReference<LivingEntity> destroyTarget;
    private long nextAmbientSoundActivation;
 
    public ConduitBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
@@ -113,7 +112,7 @@ public class ConduitBlockEntity extends BlockEntity {
          }
 
          if (gameTime > entity.nextAmbientSoundActivation) {
-            entity.nextAmbientSoundActivation = gameTime + 60L + (long)level.getRandom().nextInt(40);
+            entity.nextAmbientSoundActivation = gameTime + 60L + level.getRandom().nextInt(40);
             level.playSound(null, pos, SoundEvents.CONDUIT_AMBIENT_SHORT, SoundSource.BLOCKS, 1.0F, 1.0F);
          }
       }
@@ -139,12 +138,12 @@ public class ConduitBlockEntity extends BlockEntity {
 
       for (int ox = -2; ox <= 2; ox++) {
          for (int oy = -2; oy <= 2; oy++) {
-            for (int ozx = -2; ozx <= 2; ozx++) {
+            for (int oz = -2; oz <= 2; oz++) {
                int ax = Math.abs(ox);
                int ay = Math.abs(oy);
-               int az = Math.abs(ozx);
-               if ((ax > 1 || ay > 1 || az > 1) && (ox == 0 && (ay == 2 || az == 2) || oy == 0 && (ax == 2 || az == 2) || ozx == 0 && (ax == 2 || ay == 2))) {
-                  BlockPos testPos = worldPosition.offset(ox, oy, ozx);
+               int az = Math.abs(oz);
+               if ((ax > 1 || ay > 1 || az > 1) && (ox == 0 && (ay == 2 || az == 2) || oy == 0 && (ax == 2 || az == 2) || oz == 0 && (ax == 2 || ay == 2))) {
+                  BlockPos testPos = worldPosition.offset(ox, oy, oz);
                   BlockState testBlock = level.getBlockState(testPos);
                   if (testBlock.is(BlockTags.CONDUIT_EFFECT_BLOCK)) {
                      effectBlocks.add(testPos);
@@ -163,13 +162,11 @@ public class ConduitBlockEntity extends BlockEntity {
       int x = worldPosition.getX();
       int y = worldPosition.getY();
       int z = worldPosition.getZ();
-      AABB bb = new AABB((double)x, (double)y, (double)z, (double)(x + 1), (double)(y + 1), (double)(z + 1))
-         .inflate((double)effectRange)
-         .expandTowards(0.0, (double)level.getHeight(), 0.0);
+      AABB bb = new AABB(x, y, z, x + 1, y + 1, z + 1).inflate(effectRange).expandTowards(0.0, level.getHeight(), 0.0);
       List<Player> players = level.getEntitiesOfClass(Player.class, bb);
       if (!players.isEmpty()) {
          for (Player player : players) {
-            if (worldPosition.closerThan(player.blockPosition(), (double)effectRange) && player.isInWaterOrRain()) {
+            if (worldPosition.closerThan(player.blockPosition(), effectRange) && player.isInWaterOrRain()) {
                player.addEffect(new MobEffectInstance(MobEffects.CONDUIT_POWER, 260, 0, true, true));
             }
          }
@@ -192,22 +189,22 @@ public class ConduitBlockEntity extends BlockEntity {
       }
    }
 
-   @Nullable
-   private static EntityReference<LivingEntity> updateDestroyTarget(
-      @Nullable final EntityReference<LivingEntity> target, final ServerLevel level, final BlockPos pos, final boolean isActive
+   private static @Nullable EntityReference<LivingEntity> updateDestroyTarget(
+      final @Nullable EntityReference<LivingEntity> target, final ServerLevel level, final BlockPos pos, final boolean isActive
    ) {
       if (!isActive) {
          return null;
-      } else if (target == null) {
-         return selectNewTarget(level, pos);
-      } else {
-         LivingEntity targetEntity = EntityReference.getLivingEntity(target, level);
-         return targetEntity != null && targetEntity.isAlive() && pos.closerThan(targetEntity.blockPosition(), 8.0) ? target : null;
       }
+
+      if (target == null) {
+         return selectNewTarget(level, pos);
+      }
+
+      LivingEntity targetEntity = EntityReference.getLivingEntity(target, level);
+      return targetEntity != null && targetEntity.isAlive() && pos.closerThan(targetEntity.blockPosition(), 8.0) ? target : null;
    }
 
-   @Nullable
-   private static EntityReference<LivingEntity> selectNewTarget(final ServerLevel level, final BlockPos pos) {
+   private static @Nullable EntityReference<LivingEntity> selectNewTarget(final ServerLevel level, final BlockPos pos) {
       List<LivingEntity> candidates = level.getEntitiesOfClass(
          LivingEntity.class, getDestroyRangeAABB(pos), input -> input instanceof Enemy && input.isInWaterOrRain()
       );
@@ -219,20 +216,20 @@ public class ConduitBlockEntity extends BlockEntity {
    }
 
    private static void animationTick(
-      final Level level, final BlockPos worldPosition, final List<BlockPos> effectBlocks, @Nullable final Entity destroyTarget, final int tickCount
+      final Level level, final BlockPos worldPosition, final List<BlockPos> effectBlocks, final @Nullable Entity destroyTarget, final int tickCount
    ) {
       RandomSource random = level.getRandom();
-      double hh = (double)(Mth.sin((double)((float)(tickCount + 35) * 0.1F)) / 2.0F + 0.5F);
+      double hh = Mth.sin((tickCount + 35) * 0.1F) / 2.0F + 0.5F;
       hh = (hh * hh + hh) * 0.3F;
-      Vec3 particleEnd = new Vec3((double)worldPosition.getX() + 0.5, (double)worldPosition.getY() + 1.5 + hh, (double)worldPosition.getZ() + 0.5);
+      Vec3 particleEnd = new Vec3(worldPosition.getX() + 0.5, worldPosition.getY() + 1.5 + hh, worldPosition.getZ() + 0.5);
 
       for (BlockPos pos : effectBlocks) {
          if (random.nextInt(50) == 0) {
             BlockPos delta = pos.subtract(worldPosition);
-            float dx = -0.5F + random.nextFloat() + (float)delta.getX();
-            float dy = -2.0F + random.nextFloat() + (float)delta.getY();
-            float dz = -0.5F + random.nextFloat() + (float)delta.getZ();
-            level.addParticle(ParticleTypes.NAUTILUS, particleEnd.x, particleEnd.y, particleEnd.z, (double)dx, (double)dy, (double)dz);
+            float dx = -0.5F + random.nextFloat() + delta.getX();
+            float dy = -2.0F + random.nextFloat() + delta.getY();
+            float dz = -0.5F + random.nextFloat() + delta.getZ();
+            level.addParticle(ParticleTypes.NAUTILUS, particleEnd.x, particleEnd.y, particleEnd.z, dx, dy, dz);
          }
       }
 
@@ -241,7 +238,7 @@ public class ConduitBlockEntity extends BlockEntity {
          float randx = (-0.5F + random.nextFloat()) * (3.0F + destroyTarget.getBbWidth());
          float randy = -1.0F + random.nextFloat() * destroyTarget.getBbHeight();
          float randz = (-0.5F + random.nextFloat()) * (3.0F + destroyTarget.getBbWidth());
-         Vec3 velocity = new Vec3((double)randx, (double)randy, (double)randz);
+         Vec3 velocity = new Vec3(randx, randy, randz);
          level.addParticle(ParticleTypes.NAUTILUS, targetPosition.x, targetPosition.y, targetPosition.z, velocity.x, velocity.y, velocity.z);
       }
    }

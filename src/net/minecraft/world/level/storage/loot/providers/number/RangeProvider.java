@@ -13,7 +13,7 @@ public interface RangeProvider<Value extends Validatable> extends Validatable {
    ) {
       return RecordCodecBuilder.mapCodec(
          i -> i.group(valueCodec.fieldOf("min").forGetter(RangeProvider::min), valueCodec.fieldOf("max").forGetter(RangeProvider::max))
-               .apply(i, factory::create)
+            .apply(i, factory::create)
       );
    }
 
@@ -28,7 +28,7 @@ public interface RangeProvider<Value extends Validatable> extends Validatable {
    }
 
    @FunctionalInterface
-   public interface Factory<Value extends Validatable, Self extends RangeProvider<Value>> {
+   interface Factory<Value extends Validatable, Self extends RangeProvider<Value>> {
       Self create(Holder<Value> min, Holder<Value> max);
    }
 }

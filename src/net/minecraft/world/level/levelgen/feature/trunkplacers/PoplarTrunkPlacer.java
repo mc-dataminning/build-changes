@@ -20,13 +20,13 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 public class PoplarTrunkPlacer extends TrunkPlacer {
    public static final MapCodec<PoplarTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(
       i -> trunkPlacerParts(i)
-            .and(
-               i.group(
-                  IntProviders.codec(0, 8).fieldOf("trunk_height_above_branches").forGetter(t -> t.trunkHeightAboveBranches),
-                  IntProviders.codec(1, 4).fieldOf("branch_amount").forGetter(t -> t.branchAmount)
-               )
+         .and(
+            i.group(
+               IntProviders.codec(0, 8).fieldOf("trunk_height_above_branches").forGetter(t -> t.trunkHeightAboveBranches),
+               IntProviders.codec(1, 4).fieldOf("branch_amount").forGetter(t -> t.branchAmount)
             )
-            .apply(i, PoplarTrunkPlacer::new)
+         )
+         .apply(i, PoplarTrunkPlacer::new)
    );
    private final IntProvider trunkHeightAboveBranches;
    private final IntProvider branchAmount;

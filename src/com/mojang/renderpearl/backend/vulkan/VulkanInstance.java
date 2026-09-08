@@ -166,7 +166,7 @@ public class VulkanInstance implements UncheckedAutoCloseable {
    private List<String> getSupportedValidationLayers() throws BackendCreationException {
       MemoryStack stack = MemoryStack.stackPush();
 
-      Object var11;
+      List var11;
       try {
          IntBuffer numLayersArr = stack.callocInt(1);
          VulkanUtils.throwIfFailure(
@@ -206,7 +206,7 @@ public class VulkanInstance implements UncheckedAutoCloseable {
          stack.close();
       }
 
-      return (List<String>)var11;
+      return var11;
    }
 
    @Override

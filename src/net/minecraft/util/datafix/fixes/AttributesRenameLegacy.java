@@ -41,12 +41,12 @@ public class AttributesRenameLegacy extends DataFix {
       return itemStack.update(
          DSL.remainderFinder(),
          tag -> tag.update(
-               "AttributeModifiers",
-               modifiers -> (Dynamic)DataFixUtils.orElse(
-                     modifiers.asStreamOpt().result().map(s -> s.map(modifier -> modifier.update("AttributeName", this::fixName))).map(modifiers::createList),
-                     modifiers
-                  )
+            "AttributeModifiers",
+            modifiers -> (Dynamic)DataFixUtils.orElse(
+               modifiers.asStreamOpt().result().map(s -> s.map(modifier -> modifier.update("AttributeName", this::fixName))).map(modifiers::createList),
+               modifiers
             )
+         )
       );
    }
 
@@ -54,12 +54,12 @@ public class AttributesRenameLegacy extends DataFix {
       return entity.update(
          DSL.remainderFinder(),
          tag -> tag.update(
-               "Attributes",
-               attributeList -> (Dynamic)DataFixUtils.orElse(
-                     attributeList.asStreamOpt().result().map(s -> s.map(attribute -> attribute.update("Name", this::fixName))).map(attributeList::createList),
-                     attributeList
-                  )
+            "Attributes",
+            attributeList -> (Dynamic)DataFixUtils.orElse(
+               attributeList.asStreamOpt().result().map(s -> s.map(attribute -> attribute.update("Name", this::fixName))).map(attributeList::createList),
+               attributeList
             )
+         )
       );
    }
 }

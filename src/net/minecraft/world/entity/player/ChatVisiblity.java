@@ -19,7 +19,7 @@ public enum ChatVisiblity {
    private final int id;
    private final Component caption;
 
-   private ChatVisiblity(final int id, final String key) {
+   ChatVisiblity(final int id, final String key) {
       this.id = id;
       this.caption = Component.translatable(key);
    }

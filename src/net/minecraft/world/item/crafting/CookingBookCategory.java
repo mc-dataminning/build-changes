@@ -19,7 +19,7 @@ public enum CookingBookCategory implements StringRepresentable {
    private final int id;
    private final String name;
 
-   private CookingBookCategory(final int id, final String name) {
+   CookingBookCategory(final int id, final String name) {
       this.id = id;
       this.name = name;
    }

@@ -3,7 +3,6 @@ package net.minecraft.world.level.levelgen;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.ReentrantLock;
 import net.minecraft.core.Holder;
@@ -72,10 +71,6 @@ public final class RandomState {
       this.materialSystem = new MaterialSystem(this, defaultBlock, seaLevel, router.chunkSurfaceLevel(), this.random);
       this.densityFunctionCompiler = new DensityFunctionCompiler(
          new DensityFunction.CompileContext() {
-            {
-               Objects.requireNonNull(RandomState.this);
-            }
-
             private RandomSource newLegacyInstance(final long seedOffset) {
                return new LegacyRandomSource(seed + seedOffset);
             }
@@ -106,10 +101,6 @@ public final class RandomState {
 
    public DensitySamplerSet samplersWithContext(final SamplerContext context) {
       return new DensitySamplerSet() {
-         {
-            Objects.requireNonNull(RandomState.this);
-         }
-
          @Override
          public DensitySampler.Bound get(final DensityFunction function) {
             return RandomState.this.getSampler(function).bind(context);
@@ -150,18 +141,11 @@ public final class RandomState {
    public DensityBufferPool acquireDensityBufferPool() {
       this.densityBufferPoolLock.lock();
 
-      DensityBufferPool var1;
       try {
-         if (!this.densityBufferPools.isEmpty()) {
-            return this.densityBufferPools.removeLast();
-         }
-
-         var1 = new DensityBufferPool(20);
+         return this.densityBufferPools.isEmpty() ? new DensityBufferPool(20) : this.densityBufferPools.removeLast();
       } finally {
          this.densityBufferPoolLock.unlock();
       }
-
-      return var1;
    }
 
    public void releaseDensityBufferPool(final DensityBufferPool pool) {

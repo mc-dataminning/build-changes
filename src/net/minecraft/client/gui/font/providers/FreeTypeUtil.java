@@ -63,8 +63,8 @@ public class FreeTypeUtil {
    }
 
    public static FT_Vector setVector(final FT_Vector vector, final float x, final float y) {
-      long fixedPointX = (long)Math.round(x * 64.0F);
-      long fixedPointY = (long)Math.round(y * 64.0F);
+      long fixedPointX = Math.round(x * 64.0F);
+      long fixedPointY = Math.round(y * 64.0F);
       return vector.set(fixedPointX, fixedPointY);
    }
 

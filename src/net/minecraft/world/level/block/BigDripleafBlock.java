@@ -30,7 +30,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.Tilt;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
@@ -71,15 +70,13 @@ public class BigDripleafBlock extends HorizontalDirectionalBlock implements Simp
 
    protected BigDripleafBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(WATERLOGGED, Boolean.valueOf(false)).setValue(FACING, Direction.NORTH).setValue(TILT, Tilt.NONE)
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false).setValue(FACING, Direction.NORTH).setValue(TILT, Tilt.NONE));
       this.shapes = this.makeShapes();
    }
 
    private Function<BlockState, VoxelShape> makeShapes() {
       Map<Direction, VoxelShape> stems = Shapes.rotateHorizontal(Block.column(6.0, 0.0, 13.0).move(0.0, 0.0, 0.25).optimize());
-      return this.getShapeForEachState(state -> Shapes.or(SHAPE_LEAF.get(state.getValue(TILT)), stems.get(state.getValue(FACING))), new Property[]{WATERLOGGED});
+      return this.getShapeForEachState(state -> Shapes.or(SHAPE_LEAF.get(state.getValue(TILT)), stems.get(state.getValue(FACING))), WATERLOGGED);
    }
 
    public static void placeWithRandomHeight(final LevelAccessor level, final RandomSource random, final BlockPos stemBottomPos, final Direction facing) {
@@ -117,10 +114,7 @@ public class BigDripleafBlock extends HorizontalDirectionalBlock implements Simp
    }
 
    protected static boolean place(final LevelAccessor level, final BlockPos pos, final FluidState fluidState, final Direction facing) {
-      BlockState newState = Blocks.BIG_DRIPLEAF
-         .defaultBlockState()
-         .setValue(WATERLOGGED, Boolean.valueOf(fluidState.isSourceOfType(Fluids.WATER)))
-         .setValue(FACING, facing);
+      BlockState newState = Blocks.BIG_DRIPLEAF.defaultBlockState().setValue(WATERLOGGED, fluidState.isSourceOfType(Fluids.WATER)).setValue(FACING, facing);
       return level.setBlockAndUpdate(pos, newState);
    }
 
@@ -154,15 +148,15 @@ public class BigDripleafBlock extends HorizontalDirectionalBlock implements Simp
    ) {
       if (directionToNeighbour == Direction.DOWN && !state.canSurvive(level, pos)) {
          return Blocks.AIR.defaultBlockState();
-      } else {
-         if (state.getValue(WATERLOGGED)) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-         }
-
-         return directionToNeighbour == Direction.UP && neighbourState.is(this)
-            ? Blocks.BIG_DRIPLEAF_STEM.withPropertiesOf(state)
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
       }
+
+      if (state.getValue(WATERLOGGED)) {
+         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+      }
+
+      return directionToNeighbour == Direction.UP && neighbourState.is(this)
+         ? Blocks.BIG_DRIPLEAF_STEM.withPropertiesOf(state)
+         : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
    }
 
    @Override
@@ -214,7 +208,7 @@ public class BigDripleafBlock extends HorizontalDirectionalBlock implements Simp
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       if (level.hasNeighborSignal(pos)) {
          resetTilt(state, level, pos);
@@ -227,10 +221,10 @@ public class BigDripleafBlock extends HorizontalDirectionalBlock implements Simp
    }
 
    private static boolean canEntityTilt(final BlockPos pos, final Entity entity) {
-      return entity.onGround() && entity.position().y > (double)((float)pos.getY() + 0.6875F);
+      return entity.onGround() && entity.position().y > pos.getY() + 0.6875F;
    }
 
-   private void setTiltAndScheduleTick(final BlockState state, final Level level, final BlockPos pos, final Tilt tilt, @Nullable final SoundEvent sound) {
+   private void setTiltAndScheduleTick(final BlockState state, final Level level, final BlockPos pos, final Tilt tilt, final @Nullable SoundEvent sound) {
       setTilt(state, level, pos, tilt);
       if (sound != null) {
          playTiltSound(level, pos, sound);
@@ -273,7 +267,7 @@ public class BigDripleafBlock extends HorizontalDirectionalBlock implements Simp
       FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
       boolean belowIsDripleafPart = belowState.is(Blocks.BIG_DRIPLEAF) || belowState.is(Blocks.BIG_DRIPLEAF_STEM);
       return this.defaultBlockState()
-         .setValue(WATERLOGGED, Boolean.valueOf(fluidState.isSourceOfType(Fluids.WATER)))
+         .setValue(WATERLOGGED, fluidState.isSourceOfType(Fluids.WATER))
          .setValue(FACING, belowIsDripleafPart ? belowState.getValue(FACING) : context.getHorizontalDirection().getOpposite());
    }
 

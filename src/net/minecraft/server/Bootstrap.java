@@ -33,9 +33,7 @@ import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import org.slf4j.Logger;
 
-@SuppressForbidden(
-   reason = "System.out setup"
-)
+@SuppressForbidden(reason = "System.out setup")
 public class Bootstrap {
    public static final PrintStream STDOUT = System.out;
    private static volatile boolean isBootstrapped;
@@ -48,21 +46,21 @@ public class Bootstrap {
          Instant start = Instant.now();
          if (BuiltInRegistries.REGISTRY.keySet().isEmpty()) {
             throw new IllegalStateException("Unable to load registries");
-         } else {
-            FireBlock.bootStrap();
-            if (EntityType.getKey(EntityTypes.PLAYER) == null) {
-               throw new IllegalStateException("Failed loading EntityTypes");
-            } else {
-               EntitySelectorOptions.bootStrap();
-               DispenseItemBehavior.bootStrap();
-               CauldronInteractions.bootStrap();
-               BuiltInRegistries.bootStrap();
-               CreativeModeTabs.validate();
-               LootContextParamSets.validate();
-               wrapStreams();
-               bootstrapDuration.set(Duration.between(start, Instant.now()).toMillis());
-            }
          }
+
+         FireBlock.bootStrap();
+         if (EntityType.getKey(EntityTypes.PLAYER) == null) {
+            throw new IllegalStateException("Failed loading EntityTypes");
+         }
+
+         EntitySelectorOptions.bootStrap();
+         DispenseItemBehavior.bootStrap();
+         CauldronInteractions.bootStrap();
+         BuiltInRegistries.bootStrap();
+         CreativeModeTabs.validate();
+         LootContextParamSets.validate();
+         wrapStreams();
+         bootstrapDuration.set(Duration.between(start, Instant.now()).toMillis());
       }
    }
 
@@ -111,9 +109,9 @@ public class Bootstrap {
       try {
          String resolvedLocation = location.get();
          return new IllegalArgumentException("Not bootstrapped (called from " + resolvedLocation + ")");
-      } catch (Exception var3) {
+      } catch (Exception e) {
          RuntimeException result = new IllegalArgumentException("Not bootstrapped (failed to resolve location)");
-         result.addSuppressed(var3);
+         result.addSuppressed(e);
          return result;
       }
    }

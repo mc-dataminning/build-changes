@@ -18,22 +18,20 @@ import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
 public abstract class RandomizableContainerBlockEntity extends BaseContainerBlockEntity implements RandomizableContainer {
-   @Nullable
-   protected ResourceKey<LootTable> lootTable;
+   protected @Nullable ResourceKey<LootTable> lootTable;
    protected long lootTableSeed = 0L;
 
    protected RandomizableContainerBlockEntity(final BlockEntityType<?> type, final BlockPos worldPosition, final BlockState blockState) {
       super(type, worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public ResourceKey<LootTable> getLootTable() {
+   public @Nullable ResourceKey<LootTable> getLootTable() {
       return this.lootTable;
    }
 
    @Override
-   public void setLootTable(@Nullable final ResourceKey<LootTable> lootTable) {
+   public void setLootTable(final @Nullable ResourceKey<LootTable> lootTable) {
       this.lootTable = lootTable;
    }
 
@@ -82,19 +80,18 @@ public abstract class RandomizableContainerBlockEntity extends BaseContainerBloc
       return (this.lootTable == null || !player.isSpectator()) && super.canOpen(player);
    }
 
-   @Nullable
    @Override
-   public AbstractContainerMenu createMenu(final int containerId, final Inventory inventory, final Player player) {
+   public @Nullable AbstractContainerMenu createMenu(final int containerId, final Inventory inventory, final Player player) {
       if (this.canOpen(player)) {
          this.unpackLootTable(inventory.player);
          return this.createMenu(containerId, inventory);
-      } else {
-         if (!player.isSpectator()) {
-            BaseContainerBlockEntity.sendChestLockedNotifications(Vec3.atCenterOf(this.getBlockPos()), player, this.getDisplayName());
-         }
-
-         return null;
       }
+
+      if (!player.isSpectator()) {
+         BaseContainerBlockEntity.sendChestLockedNotifications(Vec3.atCenterOf(this.getBlockPos()), player, this.getDisplayName());
+      }
+
+      return null;
    }
 
    @Override

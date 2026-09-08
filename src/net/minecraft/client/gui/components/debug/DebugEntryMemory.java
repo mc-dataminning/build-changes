@@ -17,9 +17,9 @@ public class DebugEntryMemory implements DebugScreenEntry {
    @Override
    public void display(
       final DebugScreenDisplayer displayer,
-      @Nullable final Level serverOrClientLevel,
-      @Nullable final LevelChunk clientChunk,
-      @Nullable final LevelChunk serverChunk
+      final @Nullable Level serverOrClientLevel,
+      final @Nullable LevelChunk clientChunk,
+      final @Nullable LevelChunk serverChunk
    ) {
       long max = Runtime.getRuntime().maxMemory();
       long total = Runtime.getRuntime().totalMemory();
@@ -56,19 +56,19 @@ public class DebugEntryMemory implements DebugScreenEntry {
          long time = System.currentTimeMillis();
          if (time - this.lastTime < 500L) {
             return this.lastRate;
-         } else {
-            long gcCounts = gcCounts();
-            if (this.lastTime != 0L && gcCounts == this.lastGcCounts) {
-               double multiplier = (double)TimeUnit.SECONDS.toMillis(1L) / (double)(time - this.lastTime);
-               long delta = currentHeapUsage - this.lastHeapUsage;
-               this.lastRate = Math.round((double)delta * multiplier);
-            }
-
-            this.lastTime = time;
-            this.lastHeapUsage = currentHeapUsage;
-            this.lastGcCounts = gcCounts;
-            return this.lastRate;
          }
+
+         long gcCounts = gcCounts();
+         if (this.lastTime != 0L && gcCounts == this.lastGcCounts) {
+            double multiplier = (double)TimeUnit.SECONDS.toMillis(1L) / (time - this.lastTime);
+            long delta = currentHeapUsage - this.lastHeapUsage;
+            this.lastRate = Math.round(delta * multiplier);
+         }
+
+         this.lastTime = time;
+         this.lastHeapUsage = currentHeapUsage;
+         this.lastGcCounts = gcCounts;
+         return this.lastRate;
       }
 
       private static long gcCounts() {

@@ -21,8 +21,7 @@ public class Objective {
    private Component formattedDisplayName;
    private ObjectiveCriteria.RenderType renderType;
    private boolean displayAutoUpdate;
-   @Nullable
-   private NumberFormat numberFormat;
+   private @Nullable NumberFormat numberFormat;
 
    public Objective(
       final Scoreboard scoreboard,
@@ -31,7 +30,7 @@ public class Objective {
       final Component displayName,
       final ObjectiveCriteria.RenderType renderType,
       final boolean displayAutoUpdate,
-      @Nullable final NumberFormat numberFormat
+      final @Nullable NumberFormat numberFormat
    ) {
       this.scoreboard = scoreboard;
       this.name = name;
@@ -67,8 +66,7 @@ public class Objective {
       return this.displayAutoUpdate;
    }
 
-   @Nullable
-   public NumberFormat numberFormat() {
+   public @Nullable NumberFormat numberFormat() {
       return this.numberFormat;
    }
 
@@ -106,12 +104,12 @@ public class Objective {
       this.scoreboard.onObjectiveChanged(this);
    }
 
-   public void setNumberFormat(@Nullable final NumberFormat numberFormat) {
+   public void setNumberFormat(final @Nullable NumberFormat numberFormat) {
       this.numberFormat = numberFormat;
       this.scoreboard.onObjectiveChanged(this);
    }
 
-   public static record Packed(
+   public record Packed(
       String name,
       ObjectiveCriteria criteria,
       Component displayName,
@@ -121,16 +119,14 @@ public class Objective {
    ) {
       public static final Codec<Objective.Packed> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Codec.STRING.fieldOf("Name").forGetter(Objective.Packed::name),
-                  ObjectiveCriteria.CODEC.optionalFieldOf("CriteriaName", ObjectiveCriteria.DUMMY).forGetter(Objective.Packed::criteria),
-                  ComponentSerialization.CODEC.fieldOf("DisplayName").forGetter(Objective.Packed::displayName),
-                  ObjectiveCriteria.RenderType.CODEC
-                     .optionalFieldOf("RenderType", ObjectiveCriteria.RenderType.INTEGER)
-                     .forGetter(Objective.Packed::renderType),
-                  Codec.BOOL.optionalFieldOf("display_auto_update", false).forGetter(Objective.Packed::displayAutoUpdate),
-                  NumberFormatTypes.CODEC.optionalFieldOf("format").forGetter(Objective.Packed::numberFormat)
-               )
-               .apply(i, Objective.Packed::new)
+               Codec.STRING.fieldOf("Name").forGetter(Objective.Packed::name),
+               ObjectiveCriteria.CODEC.optionalFieldOf("CriteriaName", ObjectiveCriteria.DUMMY).forGetter(Objective.Packed::criteria),
+               ComponentSerialization.CODEC.fieldOf("DisplayName").forGetter(Objective.Packed::displayName),
+               ObjectiveCriteria.RenderType.CODEC.optionalFieldOf("RenderType", ObjectiveCriteria.RenderType.INTEGER).forGetter(Objective.Packed::renderType),
+               Codec.BOOL.optionalFieldOf("display_auto_update", false).forGetter(Objective.Packed::displayAutoUpdate),
+               NumberFormatTypes.CODEC.optionalFieldOf("format").forGetter(Objective.Packed::numberFormat)
+            )
+            .apply(i, Objective.Packed::new)
       );
    }
 }

@@ -6,9 +6,8 @@ import org.jspecify.annotations.Nullable;
 
 public class LastSeenMessagesValidator {
    private final int lastSeenCount;
-   private final ObjectList<LastSeenTrackedEntry> trackedMessages = new ObjectArrayList();
-   @Nullable
-   private MessageSignature lastPendingMessage;
+   private final ObjectList<@Nullable LastSeenTrackedEntry> trackedMessages = new ObjectArrayList();
+   private @Nullable MessageSignature lastPendingMessage;
 
    public LastSeenMessagesValidator(final int lastSeenCount) {
       this.lastSeenCount = lastSeenCount;
@@ -45,34 +44,34 @@ public class LastSeenMessagesValidator {
          throw new LastSeenMessagesValidator.ValidationException(
             "Last seen update contained " + update.acknowledged().length() + " messages, but maximum window size is " + this.lastSeenCount
          );
-      } else {
-         for (int i = 0; i < this.lastSeenCount; i++) {
-            boolean acknowledged = update.acknowledged().get(i);
-            LastSeenTrackedEntry message = (LastSeenTrackedEntry)this.trackedMessages.get(i);
-            if (acknowledged) {
-               if (message == null) {
-                  throw new LastSeenMessagesValidator.ValidationException("Last seen update acknowledged unknown or previously ignored message at index " + i);
-               }
+      }
 
-               this.trackedMessages.set(i, message.acknowledge());
-               lastSeenEntries.add(message.signature());
-            } else {
-               if (message != null && !message.pending()) {
-                  throw new LastSeenMessagesValidator.ValidationException(
-                     "Last seen update ignored previously acknowledged message at index " + i + " and signature " + message.signature()
-                  );
-               }
-
-               this.trackedMessages.set(i, null);
+      for (int i = 0; i < this.lastSeenCount; i++) {
+         boolean acknowledged = update.acknowledged().get(i);
+         LastSeenTrackedEntry message = (LastSeenTrackedEntry)this.trackedMessages.get(i);
+         if (acknowledged) {
+            if (message == null) {
+               throw new LastSeenMessagesValidator.ValidationException("Last seen update acknowledged unknown or previously ignored message at index " + i);
             }
-         }
 
-         LastSeenMessages lastSeen = new LastSeenMessages(lastSeenEntries);
-         if (!update.verifyChecksum(lastSeen)) {
-            throw new LastSeenMessagesValidator.ValidationException("Checksum mismatch on last seen update: the client and server must have desynced");
+            this.trackedMessages.set(i, message.acknowledge());
+            lastSeenEntries.add(message.signature());
          } else {
-            return lastSeen;
+            if (message != null && !message.pending()) {
+               throw new LastSeenMessagesValidator.ValidationException(
+                  "Last seen update ignored previously acknowledged message at index " + i + " and signature " + message.signature()
+               );
+            }
+
+            this.trackedMessages.set(i, null);
          }
+      }
+
+      LastSeenMessages lastSeen = new LastSeenMessages(lastSeenEntries);
+      if (!update.verifyChecksum(lastSeen)) {
+         throw new LastSeenMessagesValidator.ValidationException("Checksum mismatch on last seen update: the client and server must have desynced");
+      } else {
+         return lastSeen;
       }
    }
 

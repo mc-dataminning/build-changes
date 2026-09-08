@@ -69,7 +69,7 @@ public abstract class AbstractSliderButton extends AbstractWidget.WithInactiveMe
       graphics.blitSprite(
          RenderPipelines.GUI_TEXTURED,
          this.getHandleSprite(),
-         this.getX() + (int)(this.value * (double)(this.width - 8)),
+         this.getX() + (int)(this.value * (this.width - 8)),
          this.getY(),
          8,
          this.getHeight(),
@@ -110,23 +110,23 @@ public abstract class AbstractSliderButton extends AbstractWidget.WithInactiveMe
       if (event.isSelection()) {
          this.canChangeValue = !this.canChangeValue;
          return true;
-      } else {
-         if (this.canChangeValue) {
-            boolean left = event.isLeft();
-            boolean right = event.isRight();
-            if (left || right) {
-               float direction = left ? -1.0F : 1.0F;
-               this.setValue(this.value + (double)(direction / (float)(this.width - 8)));
-               return true;
-            }
-         }
-
-         return false;
       }
+
+      if (this.canChangeValue) {
+         boolean left = event.isLeft();
+         boolean right = event.isRight();
+         if (left || right) {
+            float direction = left ? -1.0F : 1.0F;
+            this.setValue(this.value + direction / (this.width - 8));
+            return true;
+         }
+      }
+
+      return false;
    }
 
    private void setValueFromMouse(final MouseButtonEvent event) {
-      this.setValue((event.x() - (double)(this.getX() + 4)) / (double)(this.width - 8));
+      this.setValue((event.x() - (this.getX() + 4)) / (this.width - 8));
    }
 
    protected void setValue(final double newValue) {

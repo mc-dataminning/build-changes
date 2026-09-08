@@ -40,9 +40,8 @@ public class SeagrassBlock extends VegetationBlock implements BonemealableBlock,
       return state.isFaceSturdy(level, pos, Direction.UP) && !state.is(BlockTags.CANNOT_SUPPORT_SEAGRASS);
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
       return fluidState.is(FluidTags.WATER) && fluidState.isFull() ? super.getStateForPlacement(context) : null;
    }
@@ -91,7 +90,7 @@ public class SeagrassBlock extends VegetationBlock implements BonemealableBlock,
    }
 
    @Override
-   public boolean canPlaceLiquid(@Nullable final LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
+   public boolean canPlaceLiquid(final @Nullable LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
       return false;
    }
 

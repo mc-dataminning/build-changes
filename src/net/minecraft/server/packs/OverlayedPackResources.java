@@ -26,15 +26,13 @@ public class OverlayedPackResources implements PackResources {
       this.packResourcesStack = List.copyOf(stack);
    }
 
-   @Nullable
    @Override
-   public IoSupplier<InputStream> getRootResource(final String... path) {
+   public @Nullable IoSupplier<InputStream> getRootResource(final String... path) {
       return this.primaryPackMetadataResources.getRootResource(path);
    }
 
-   @Nullable
    @Override
-   public IoSupplier<InputStream> getResource(final PackType type, final Identifier location) {
+   public @Nullable IoSupplier<InputStream> getResource(final PackType type, final Identifier location) {
       for (PackResources packResources : this.packResourcesStack) {
          IoSupplier<InputStream> resource = packResources.getResource(type, location);
          if (resource != null) {
@@ -67,9 +65,8 @@ public class OverlayedPackResources implements PackResources {
       return result;
    }
 
-   @Nullable
    @Override
-   public <T> T getMetadataSection(final MetadataSectionType<T> metadataSerializer) throws IOException {
+   public <T> @Nullable T getMetadataSection(final MetadataSectionType<T> metadataSerializer) throws IOException {
       return this.primaryPackMetadataResources.getMetadataSection(metadataSerializer);
    }
 

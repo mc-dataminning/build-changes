@@ -47,7 +47,7 @@ public class ThrownLingeringPotion extends AbstractThrownPotion {
       cloud.setRadiusOnUse(-0.5F);
       cloud.setDuration(600);
       cloud.setWaitTime(10);
-      cloud.setRadiusPerTick(-cloud.getRadius() / (float)cloud.getDuration());
+      cloud.setRadiusPerTick(-cloud.getRadius() / cloud.getDuration());
       cloud.applyComponentsFromItemStack(potionItem);
       level.addFreshEntity(cloud);
    }

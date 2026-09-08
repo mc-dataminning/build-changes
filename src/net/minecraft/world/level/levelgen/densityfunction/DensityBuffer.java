@@ -38,9 +38,9 @@ public class DensityBuffer {
    public void copyFrom(final DensityBuffer other) {
       if (this.size() != other.size()) {
          throw new IllegalArgumentException("Cannot copy from buffer with size=" + other.size() + ", expected" + this.size());
-      } else {
-         System.arraycopy(other.values, 0, this.values, 0, this.size());
       }
+
+      System.arraycopy(other.values, 0, this.values, 0, this.size());
    }
 
    public int capacity() {

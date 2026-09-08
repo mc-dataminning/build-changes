@@ -13,8 +13,7 @@ public class TargetingConditions {
    private double range = -1.0;
    private boolean checkLineOfSight = true;
    private boolean testInvisible = true;
-   @Nullable
-   private TargetingConditions.Selector selector;
+   private TargetingConditions.@Nullable Selector selector;
 
    private TargetingConditions(final boolean isCombat) {
       this.isCombat = isCombat;
@@ -52,44 +51,48 @@ public class TargetingConditions {
       return this;
    }
 
-   public TargetingConditions selector(@Nullable final TargetingConditions.Selector selector) {
+   public TargetingConditions selector(final TargetingConditions.@Nullable Selector selector) {
       this.selector = selector;
       return this;
    }
 
-   public boolean test(final ServerLevel level, @Nullable final LivingEntity targeter, final LivingEntity target) {
+   public boolean test(final ServerLevel level, final @Nullable LivingEntity targeter, final LivingEntity target) {
       if (targeter == target) {
          return false;
-      } else if (!target.canBeSeenByAnyone()) {
+      }
+
+      if (!target.canBeSeenByAnyone()) {
          return false;
-      } else if (this.selector != null && !this.selector.test(target, level)) {
+      }
+
+      if (this.selector != null && !this.selector.test(target, level)) {
          return false;
+      }
+
+      if (targeter == null) {
+         if (this.isCombat && (!target.canBeSeenAsEnemy() || level.getDifficulty() == Difficulty.PEACEFUL)) {
+            return false;
+         }
       } else {
-         if (targeter == null) {
-            if (this.isCombat && (!target.canBeSeenAsEnemy() || level.getDifficulty() == Difficulty.PEACEFUL)) {
-               return false;
-            }
-         } else {
-            if (this.isCombat && (!targeter.canAttack(target) || targeter.isAlliedTo(target))) {
-               return false;
-            }
+         if (this.isCombat && (!targeter.canAttack(target) || targeter.isAlliedTo(target))) {
+            return false;
+         }
 
-            if (this.range > 0.0) {
-               double modifier = this.testInvisible ? target.getVisibilityPercent(level, targeter) : 1.0;
-               double visibilityDistance = Math.max(this.range * modifier, 2.0);
-               double distanceToSqr = targeter.distanceToSqr(target.getX(), target.getY(), target.getZ());
-               if (distanceToSqr > visibilityDistance * visibilityDistance) {
-                  return false;
-               }
-            }
-
-            if (this.checkLineOfSight && targeter instanceof Mob mob && !mob.getSensing().hasLineOfSight(target)) {
+         if (this.range > 0.0) {
+            double modifier = this.testInvisible ? target.getVisibilityPercent(level, targeter) : 1.0;
+            double visibilityDistance = Math.max(this.range * modifier, 2.0);
+            double distanceToSqr = targeter.distanceToSqr(target.getX(), target.getY(), target.getZ());
+            if (distanceToSqr > visibilityDistance * visibilityDistance) {
                return false;
             }
          }
 
-         return true;
+         if (this.checkLineOfSight && targeter instanceof Mob mob && !mob.getSensing().hasLineOfSight(target)) {
+            return false;
+         }
       }
+
+      return true;
    }
 
    @FunctionalInterface

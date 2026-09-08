@@ -49,8 +49,8 @@ public record ColorCollection<T>(
          VALUES,
          ids,
          (color, id) -> (Block)register.apply(
-               id, (Function<BlockBehaviour.Properties, Block>)p -> colorBlockFactory.apply(color, p), propertiesSupplier.apply(color)
-            )
+            id, (Function<BlockBehaviour.Properties, Block>)p -> colorBlockFactory.apply(color, p), propertiesSupplier.apply(color)
+         )
       );
    }
 

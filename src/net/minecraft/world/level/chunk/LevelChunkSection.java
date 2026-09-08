@@ -1,6 +1,5 @@
 package net.minecraft.world.level.chunk;
 
-import java.util.Objects;
 import java.util.function.Predicate;
 import net.minecraft.core.Holder;
 import net.minecraft.network.FriendlyByteBuf;
@@ -125,11 +124,6 @@ public class LevelChunkSection {
          public int fluidCount;
          public int tickingBlockCount;
          public int tickingFluidCount;
-
-         BlockCounter() {
-            Objects.requireNonNull(LevelChunkSection.this);
-            super();
-         }
 
          public void accept(final BlockState state, final int count) {
             if (!state.isAir()) {

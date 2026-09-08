@@ -32,20 +32,20 @@ public class SpeleothemUtils {
    protected static boolean isCircleMostlyEmbeddedInStone(final WorldGenLevel level, final BlockPos center, final int xzRadius) {
       if (isEmptyOrWaterOrLava(level, center)) {
          return false;
-      } else {
-         float arcLength = 6.0F;
-         float angleIncrement = 6.0F / (float)xzRadius;
-
-         for (float angle = 0.0F; angle < (float) (Math.PI * 2); angle += angleIncrement) {
-            int dx = (int)(Mth.cos((double)angle) * (float)xzRadius);
-            int dz = (int)(Mth.sin((double)angle) * (float)xzRadius);
-            if (isEmptyOrWaterOrLava(level, center.offset(dx, 0, dz))) {
-               return false;
-            }
-         }
-
-         return true;
       }
+
+      float arcLength = 6.0F;
+      float angleIncrement = 6.0F / xzRadius;
+
+      for (float angle = 0.0F; angle < (float) (Math.PI * 2); angle += angleIncrement) {
+         int dx = (int)(Mth.cos(angle) * xzRadius);
+         int dz = (int)(Mth.sin(angle) * xzRadius);
+         if (isEmptyOrWaterOrLava(level, center.offset(dx, 0, dz))) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    protected static boolean isEmptyOrWater(final LevelAccessor level, final BlockPos pos) {
@@ -90,7 +90,7 @@ public class SpeleothemUtils {
          BlockPos.MutableBlockPos pos = startPos.mutable();
          buildBaseToTipColumn(tipDirection, height, mergedTip, state -> {
             if (state.is(pointedBlock)) {
-               state = state.setValue(PointedDripstoneBlock.WATERLOGGED, Boolean.valueOf(level.isWaterAt(pos)));
+               state = state.setValue(PointedDripstoneBlock.WATERLOGGED, level.isWaterAt(pos));
             }
 
             level.setBlock(pos, state, 2);

@@ -7,8 +7,8 @@ public record UVPair(float u, float v) {
    }
 
    public static long pack(final float u, final float v) {
-      long high = (long)Float.floatToIntBits(u) & 4294967295L;
-      long low = (long)Float.floatToIntBits(v) & 4294967295L;
+      long high = Float.floatToIntBits(u) & 4294967295L;
+      long low = Float.floatToIntBits(v) & 4294967295L;
       return high << 32 | low;
    }
 

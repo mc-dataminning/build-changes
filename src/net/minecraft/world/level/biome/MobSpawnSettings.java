@@ -40,18 +40,18 @@ public class MobSpawnSettings {
    });
    public static final Codec<MobSpawnSettings> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.simpleMap(
-                     MobCategory.CODEC,
-                     WeightedList.codec(MobSpawnSettings.SpawnerData.CODEC).promotePartial(Util.prefix("Spawn data: ", LOGGER::error)),
-                     StringRepresentable.keys(MobCategory.values())
-                  )
-                  .fieldOf("spawns_by_category")
-                  .forGetter(b -> b.spawnsByCategory),
-               Codec.simpleMap(BuiltInRegistries.ENTITY_TYPE.byNameCodec(), MobSpawnSettings.MobSpawnCost.CODEC, BuiltInRegistries.ENTITY_TYPE)
-                  .fieldOf("spawn_costs")
-                  .forGetter(b -> b.mobSpawnCosts)
-            )
-            .apply(i, MobSpawnSettings::new)
+            Codec.simpleMap(
+                  MobCategory.CODEC,
+                  WeightedList.codec(MobSpawnSettings.SpawnerData.CODEC).promotePartial(Util.prefix("Spawn data: ", LOGGER::error)),
+                  StringRepresentable.keys(MobCategory.values())
+               )
+               .fieldOf("spawns_by_category")
+               .forGetter(b -> b.spawnsByCategory),
+            Codec.simpleMap(BuiltInRegistries.ENTITY_TYPE.byNameCodec(), MobSpawnSettings.MobSpawnCost.CODEC, BuiltInRegistries.ENTITY_TYPE)
+               .fieldOf("spawn_costs")
+               .forGetter(b -> b.mobSpawnCosts)
+         )
+         .apply(i, MobSpawnSettings::new)
    );
    private final Map<MobCategory, WeightedList<MobSpawnSettings.SpawnerData>> spawnsByCategory;
    private final Map<EntityType<?>, MobSpawnSettings.MobSpawnCost> mobSpawnCosts;
@@ -68,8 +68,7 @@ public class MobSpawnSettings {
       return this.spawnsByCategory.getOrDefault(category, EMPTY_MOB_LIST);
    }
 
-   @Nullable
-   public WeightedList<MobSpawnSettings.SpawnerData> getMobsInCategory(final MobCategory category) {
+   public @Nullable WeightedList<MobSpawnSettings.SpawnerData> getMobsInCategory(final MobCategory category) {
       return this.spawnsByCategory.get(category);
    }
 
@@ -77,8 +76,7 @@ public class MobSpawnSettings {
       return this.spawnsByCategory.keySet();
    }
 
-   @Nullable
-   public MobSpawnSettings.MobSpawnCost getMobSpawnCost(final EntityType<?> type) {
+   public MobSpawnSettings.@Nullable MobSpawnCost getMobSpawnCost(final EntityType<?> type) {
       return this.mobSpawnCosts.get(type);
    }
 
@@ -150,26 +148,24 @@ public class MobSpawnSettings {
       }
    }
 
-   public static record MobSpawnCost(double energyBudget, double charge) {
+   public record MobSpawnCost(double energyBudget, double charge) {
       public static final Codec<MobSpawnSettings.MobSpawnCost> CODEC = RecordCodecBuilder.create(
          i -> i.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter(e -> e.energyBudget), Codec.DOUBLE.fieldOf("charge").forGetter(e -> e.charge))
-               .apply(i, MobSpawnSettings.MobSpawnCost::new)
+            .apply(i, MobSpawnSettings.MobSpawnCost::new)
       );
    }
 
-   public static record SpawnerData(EntityType<?> type, IntProvider count) {
+   public record SpawnerData(EntityType<?> type, IntProvider count) {
       public static final MapCodec<MobSpawnSettings.SpawnerData> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  BuiltInRegistries.ENTITY_TYPE.byNameCodec().fieldOf("type").forGetter(MobSpawnSettings.SpawnerData::type),
-                  IntProviders.CODEC.fieldOf("count").forGetter(MobSpawnSettings.SpawnerData::count)
-               )
-               .apply(i, MobSpawnSettings.SpawnerData::new)
+               BuiltInRegistries.ENTITY_TYPE.byNameCodec().fieldOf("type").forGetter(MobSpawnSettings.SpawnerData::type),
+               IntProviders.CODEC.fieldOf("count").forGetter(MobSpawnSettings.SpawnerData::count)
+            )
+            .apply(i, MobSpawnSettings.SpawnerData::new)
       );
 
-      public SpawnerData(EntityType<?> type, IntProvider count) {
+      public SpawnerData {
          type = type.getCategory() == MobCategory.MISC ? EntityTypes.PIG : type;
-         this.type = type;
-         this.count = count;
       }
 
       @Override

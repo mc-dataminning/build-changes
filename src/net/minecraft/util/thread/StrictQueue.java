@@ -7,8 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.jspecify.annotations.Nullable;
 
 public interface StrictQueue<T extends Runnable> {
-   @Nullable
-   Runnable pop();
+   @Nullable Runnable pop();
 
    boolean push(final T t);
 
@@ -16,7 +15,7 @@ public interface StrictQueue<T extends Runnable> {
 
    int size();
 
-   public static final class FixedPriorityQueue implements StrictQueue<StrictQueue.RunnableWithPriority> {
+   final class FixedPriorityQueue implements StrictQueue<StrictQueue.RunnableWithPriority> {
       private final Queue<Runnable>[] queues;
       private final AtomicInteger size = new AtomicInteger();
 
@@ -28,9 +27,8 @@ public interface StrictQueue<T extends Runnable> {
          }
       }
 
-      @Nullable
       @Override
-      public Runnable pop() {
+      public @Nullable Runnable pop() {
          for (Queue<Runnable> queue : this.queues) {
             Runnable task = queue.poll();
             if (task != null) {
@@ -66,16 +64,15 @@ public interface StrictQueue<T extends Runnable> {
       }
    }
 
-   public static final class QueueStrictQueue implements StrictQueue<Runnable> {
+   final class QueueStrictQueue implements StrictQueue<Runnable> {
       private final Queue<Runnable> queue;
 
       public QueueStrictQueue(final Queue<Runnable> queue) {
          this.queue = queue;
       }
 
-      @Nullable
       @Override
-      public Runnable pop() {
+      public @Nullable Runnable pop() {
          return this.queue.poll();
       }
 
@@ -95,7 +92,7 @@ public interface StrictQueue<T extends Runnable> {
       }
    }
 
-   public static record RunnableWithPriority(int priority, Runnable task) implements Runnable {
+   record RunnableWithPriority(int priority, Runnable task) implements Runnable {
       @Override
       public void run() {
          this.task.run();

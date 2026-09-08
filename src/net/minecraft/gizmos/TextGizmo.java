@@ -17,7 +17,7 @@ public record TextGizmo(Vec3 pos, String text, TextGizmo.Style style) implements
       primitives.addText(this.pos, this.text, newStyle);
    }
 
-   public static record Style(int color, float scale, OptionalDouble adjustLeft) {
+   public record Style(int color, float scale, OptionalDouble adjustLeft) {
       public static final float DEFAULT_SCALE = 0.32F;
 
       public static TextGizmo.Style whiteAndCentered() {
@@ -37,7 +37,7 @@ public record TextGizmo(Vec3 pos, String text, TextGizmo.Style style) implements
       }
 
       public TextGizmo.Style withLeftAlignment(final float adjustLeft) {
-         return new TextGizmo.Style(this.color, this.scale, OptionalDouble.of((double)adjustLeft));
+         return new TextGizmo.Style(this.color, this.scale, OptionalDouble.of(adjustLeft));
       }
    }
 }

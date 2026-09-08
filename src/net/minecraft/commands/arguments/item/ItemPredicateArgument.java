@@ -90,16 +90,16 @@ public class ItemPredicateArgument extends ParserBasedArgument<ItemPredicateArgu
       return EXAMPLES;
    }
 
-   private static record ComponentWrapper(Identifier id, Predicate<ItemStack> presenceChecker, Decoder<? extends Predicate<ItemStack>> valueChecker) {
+   private record ComponentWrapper(Identifier id, Predicate<ItemStack> presenceChecker, Decoder<? extends Predicate<ItemStack>> valueChecker) {
       public static <T> ItemPredicateArgument.ComponentWrapper create(final ImmutableStringReader reader, final Identifier id, final DataComponentType<T> type) throws CommandSyntaxException {
          Codec<T> codec = type.codec();
          if (codec == null) {
             throw ItemPredicateArgument.ERROR_UNKNOWN_COMPONENT.createWithContext(reader, id);
          } else {
             return new ItemPredicateArgument.ComponentWrapper(id, itemStack -> itemStack.has(type), codec.map(expected -> itemStack -> {
-                  T actual = itemStack.get(type);
-                  return Objects.equals(expected, actual);
-               }));
+               T actual = itemStack.get(type);
+               return Objects.equals(expected, actual);
+            }));
          }
       }
 
@@ -143,13 +143,13 @@ public class ItemPredicateArgument extends ParserBasedArgument<ItemPredicateArgu
          ItemPredicateArgument.ComponentWrapper wrapper = ItemPredicateArgument.PSEUDO_COMPONENTS.get(componentId);
          if (wrapper != null) {
             return wrapper;
-         } else {
-            DataComponentType<?> componentType = this.components
-               .get(ResourceKey.create(Registries.DATA_COMPONENT_TYPE, componentId))
-               .map(Holder::value)
-               .orElseThrow(() -> ItemPredicateArgument.ERROR_UNKNOWN_COMPONENT.createWithContext(reader, componentId));
-            return ItemPredicateArgument.ComponentWrapper.create(reader, componentId, componentType);
          }
+
+         DataComponentType<?> componentType = this.components
+            .get(ResourceKey.create(Registries.DATA_COMPONENT_TYPE, componentId))
+            .map(Holder::value)
+            .orElseThrow(() -> ItemPredicateArgument.ERROR_UNKNOWN_COMPONENT.createWithContext(reader, componentId));
+         return ItemPredicateArgument.ComponentWrapper.create(reader, componentId, componentType);
       }
 
       public Predicate<ItemStack> createComponentTest(
@@ -171,8 +171,8 @@ public class ItemPredicateArgument extends ParserBasedArgument<ItemPredicateArgu
                .map(ItemPredicateArgument.PredicateWrapper::new)
                .or(
                   () -> this.components
-                        .get(ResourceKey.create(Registries.DATA_COMPONENT_TYPE, componentId))
-                        .map(ItemPredicateArgument::createComponentExistencePredicate)
+                     .get(ResourceKey.create(Registries.DATA_COMPONENT_TYPE, componentId))
+                     .map(ItemPredicateArgument::createComponentExistencePredicate)
                )
                .orElseThrow(() -> ItemPredicateArgument.ERROR_UNKNOWN_PREDICATE.createWithContext(reader, componentId));
       }
@@ -215,7 +215,7 @@ public class ItemPredicateArgument extends ParserBasedArgument<ItemPredicateArgu
       }
    }
 
-   private static record PredicateWrapper(Identifier id, Decoder<? extends Predicate<ItemStack>> type) {
+   private record PredicateWrapper(Identifier id, Decoder<? extends Predicate<ItemStack>> type) {
       public PredicateWrapper(final Holder.Reference<DataComponentPredicate.Type<?>> holder) {
          this(holder.key().identifier(), holder.value().codec().map(v -> v::matches));
       }

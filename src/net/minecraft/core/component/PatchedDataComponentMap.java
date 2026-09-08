@@ -32,11 +32,11 @@ public final class PatchedDataComponentMap implements DataComponentMap {
    public static PatchedDataComponentMap fromPatch(final DataComponentMap prototype, final DataComponentPatch patch) {
       if (isPatchSanitized(prototype, patch.map)) {
          return new PatchedDataComponentMap(prototype, patch.map, true);
-      } else {
-         PatchedDataComponentMap map = new PatchedDataComponentMap(prototype);
-         map.applyPatch(patch);
-         return map;
       }
+
+      PatchedDataComponentMap map = new PatchedDataComponentMap(prototype);
+      map.applyPatch(patch);
+      return map;
    }
 
    private static boolean isPatchSanitized(final DataComponentMap prototype, final Reference2ObjectMap<DataComponentType<?>, Object> patch) {
@@ -58,9 +58,8 @@ public final class PatchedDataComponentMap implements DataComponentMap {
       return true;
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       return DataComponentPatch.getFromPatchAndPrototype(this.patch, this.prototype, type);
    }
 
@@ -68,8 +67,7 @@ public final class PatchedDataComponentMap implements DataComponentMap {
       return this.patch.containsKey(type);
    }
 
-   @Nullable
-   public <T> T set(final DataComponentType<T> type, @Nullable final T value) {
+   public <T> @Nullable T set(final DataComponentType<T> type, final @Nullable T value) {
       this.ensureMapOwnership();
       T defaultValue = this.prototype.get(type);
       Object lastValue;
@@ -82,8 +80,7 @@ public final class PatchedDataComponentMap implements DataComponentMap {
       return lastValue != null ? Objects.requireNonNullElse((T)Removed.removedToNull(lastValue), defaultValue) : defaultValue;
    }
 
-   @Nullable
-   public <T> T set(final TypedDataComponent<T> value) {
+   public <T> @Nullable T set(final TypedDataComponent<T> value) {
       return this.set(value.type(), value.value());
    }
 
@@ -153,48 +150,48 @@ public final class PatchedDataComponentMap implements DataComponentMap {
    public Set<DataComponentType<?>> keySet() {
       if (this.patch.isEmpty()) {
          return this.prototype.keySet();
-      } else {
-         Set<DataComponentType<?>> components = new ReferenceArraySet(this.prototype.keySet());
-         ObjectIterator var2 = Reference2ObjectMaps.fastIterable(this.patch).iterator();
-
-         while (var2.hasNext()) {
-            it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<DataComponentType<?>, Object> entry = (it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<DataComponentType<?>, Object>)var2.next();
-            Object value = entry.getValue();
-            if (Removed.isNotRemoved(value)) {
-               components.add((DataComponentType<?>)entry.getKey());
-            } else {
-               components.remove(entry.getKey());
-            }
-         }
-
-         return components;
       }
+
+      Set<DataComponentType<?>> components = new ReferenceArraySet(this.prototype.keySet());
+      ObjectIterator var2 = Reference2ObjectMaps.fastIterable(this.patch).iterator();
+
+      while (var2.hasNext()) {
+         it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<DataComponentType<?>, Object> entry = (it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<DataComponentType<?>, Object>)var2.next();
+         Object value = entry.getValue();
+         if (Removed.isNotRemoved(value)) {
+            components.add((DataComponentType<?>)entry.getKey());
+         } else {
+            components.remove(entry.getKey());
+         }
+      }
+
+      return components;
    }
 
    @Override
    public Iterator<TypedDataComponent<?>> iterator() {
       if (this.patch.isEmpty()) {
          return this.prototype.iterator();
-      } else {
-         List<TypedDataComponent<?>> components = new ArrayList<>(this.patch.size() + this.prototype.size());
-         ObjectIterator var2 = Reference2ObjectMaps.fastIterable(this.patch).iterator();
-
-         while (var2.hasNext()) {
-            it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<DataComponentType<?>, Object> entry = (it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<DataComponentType<?>, Object>)var2.next();
-            Object value = entry.getValue();
-            if (Removed.isNotRemoved(value)) {
-               components.add(TypedDataComponent.createUnchecked((DataComponentType)entry.getKey(), value));
-            }
-         }
-
-         for (TypedDataComponent<?> component : this.prototype) {
-            if (!this.patch.containsKey(component.type())) {
-               components.add(component);
-            }
-         }
-
-         return components.iterator();
       }
+
+      List<TypedDataComponent<?>> components = new ArrayList<>(this.patch.size() + this.prototype.size());
+      ObjectIterator var2 = Reference2ObjectMaps.fastIterable(this.patch).iterator();
+
+      while (var2.hasNext()) {
+         it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<DataComponentType<?>, Object> entry = (it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<DataComponentType<?>, Object>)var2.next();
+         Object value = entry.getValue();
+         if (Removed.isNotRemoved(value)) {
+            components.add(TypedDataComponent.createUnchecked((DataComponentType)entry.getKey(), value));
+         }
+      }
+
+      for (TypedDataComponent<?> component : this.prototype) {
+         if (!this.patch.containsKey(component.type())) {
+            components.add(component);
+         }
+      }
+
+      return components.iterator();
    }
 
    @Override
@@ -217,10 +214,10 @@ public final class PatchedDataComponentMap implements DataComponentMap {
    public DataComponentPatch asPatch() {
       if (this.patch.isEmpty()) {
          return DataComponentPatch.EMPTY;
-      } else {
-         this.copyOnWrite = true;
-         return new DataComponentPatch(this.patch);
       }
+
+      this.copyOnWrite = true;
+      return new DataComponentPatch(this.patch);
    }
 
    public PatchedDataComponentMap copy() {
@@ -229,20 +226,14 @@ public final class PatchedDataComponentMap implements DataComponentMap {
    }
 
    public DataComponentMap toImmutableMap() {
-      return (DataComponentMap)(this.patch.isEmpty() ? this.prototype : this.copy());
+      return this.patch.isEmpty() ? this.prototype : this.copy();
    }
 
    @Override
    public boolean equals(final Object obj) {
-      if (this == obj) {
-         return true;
-      } else {
-         if (obj instanceof PatchedDataComponentMap otherMap && this.prototype.equals(otherMap.prototype) && this.patch.equals(otherMap.patch)) {
-            return true;
-         }
-
-         return false;
-      }
+      return this == obj
+         ? true
+         : obj instanceof PatchedDataComponentMap otherMap && this.prototype.equals(otherMap.prototype) && this.patch.equals(otherMap.patch);
    }
 
    @Override

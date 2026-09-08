@@ -79,7 +79,7 @@ public class PandaRenderer extends AgeableMobRenderer<Panda, PandaRenderState, P
       state.sitAmount = entity.getSitAmount(partialTicks);
       state.lieOnBackAmount = entity.getLieOnBackAmount(partialTicks);
       state.rollAmount = entity.isBaby() ? 0.0F : entity.getRollAmount(partialTicks);
-      state.rollTime = entity.rollCounter > 0 ? (float)entity.rollCounter + partialTicks : 0.0F;
+      state.rollTime = entity.rollCounter > 0 ? entity.rollCounter + partialTicks : 0.0F;
    }
 
    protected void setupRotations(final PandaRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
@@ -90,30 +90,30 @@ public class PandaRenderer extends AgeableMobRenderer<Panda, PandaRenderState, P
          int nextRollPos = rollPos + 1;
          float divider = 7.0F;
          float y = state.isBaby ? 0.3F : 0.8F;
-         if ((float)rollPos < 8.0F) {
-            float thisAngle = 90.0F * (float)rollPos / 7.0F;
-            float nextAngle = 90.0F * (float)nextRollPos / 7.0F;
+         if (rollPos < 8.0F) {
+            float thisAngle = 90.0F * rollPos / 7.0F;
+            float nextAngle = 90.0F * nextRollPos / 7.0F;
             float angle = this.getAngle(thisAngle, nextAngle, nextRollPos, rollTransitionTime, 8.0F);
             poseStack.translate(0.0F, (y + 0.2F) * (angle / 90.0F), 0.0F);
             poseStack.rotateDegrees(Axis.XP, -angle);
-         } else if ((float)rollPos < 16.0F) {
-            float internalRollCounter = ((float)rollPos - 8.0F) / 7.0F;
+         } else if (rollPos < 16.0F) {
+            float internalRollCounter = (rollPos - 8.0F) / 7.0F;
             float thisAngle = 90.0F + 90.0F * internalRollCounter;
-            float nextAngle = 90.0F + 90.0F * ((float)nextRollPos - 8.0F) / 7.0F;
+            float nextAngle = 90.0F + 90.0F * (nextRollPos - 8.0F) / 7.0F;
             float angle = this.getAngle(thisAngle, nextAngle, nextRollPos, rollTransitionTime, 16.0F);
             poseStack.translate(0.0F, y + 0.2F + (y - 0.2F) * (angle - 90.0F) / 90.0F, 0.0F);
             poseStack.rotateDegrees(Axis.XP, -angle);
-         } else if ((float)rollPos < 24.0F) {
-            float internalRollCounter = ((float)rollPos - 16.0F) / 7.0F;
+         } else if (rollPos < 24.0F) {
+            float internalRollCounter = (rollPos - 16.0F) / 7.0F;
             float thisAngle = 180.0F + 90.0F * internalRollCounter;
-            float nextAngle = 180.0F + 90.0F * ((float)nextRollPos - 16.0F) / 7.0F;
+            float nextAngle = 180.0F + 90.0F * (nextRollPos - 16.0F) / 7.0F;
             float angle = this.getAngle(thisAngle, nextAngle, nextRollPos, rollTransitionTime, 24.0F);
             poseStack.translate(0.0F, y + y * (270.0F - angle) / 90.0F, 0.0F);
             poseStack.rotateDegrees(Axis.XP, -angle);
          } else if (rollPos < 32) {
-            float internalRollCounter = ((float)rollPos - 24.0F) / 7.0F;
+            float internalRollCounter = (rollPos - 24.0F) / 7.0F;
             float thisAngle = 270.0F + 90.0F * internalRollCounter;
-            float nextAngle = 270.0F + 90.0F * ((float)nextRollPos - 24.0F) / 7.0F;
+            float nextAngle = 270.0F + 90.0F * (nextRollPos - 24.0F) / 7.0F;
             float angle = this.getAngle(thisAngle, nextAngle, nextRollPos, rollTransitionTime, 32.0F);
             poseStack.translate(0.0F, y * ((360.0F - angle) / 90.0F), 0.0F);
             poseStack.rotateDegrees(Axis.XP, -angle);
@@ -126,7 +126,7 @@ public class PandaRenderer extends AgeableMobRenderer<Panda, PandaRenderState, P
          poseStack.rotateDegrees(Axis.XP, Mth.lerp(sitAmount, state.xRot, state.xRot + 90.0F));
          poseStack.translate(0.0F, -1.0F * sitAmount, 0.0F);
          if (state.isScared) {
-            float shakeRot = (float)(Math.cos((double)(state.ageInTicks * 1.25F)) * Math.PI * 0.05F);
+            float shakeRot = (float)(Math.cos(state.ageInTicks * 1.25F) * Math.PI * 0.05F);
             poseStack.rotateDegrees(Axis.YP, shakeRot);
             if (state.isBaby) {
                poseStack.translate(0.0F, 0.8F, 0.55F);
@@ -143,6 +143,6 @@ public class PandaRenderer extends AgeableMobRenderer<Panda, PandaRenderState, P
    }
 
    private float getAngle(final float thisAngle, final float nextAngle, final int nextRollPos, final float rollTransitionTime, final float threshold) {
-      return (float)nextRollPos < threshold ? Mth.lerp(rollTransitionTime, thisAngle, nextAngle) : thisAngle;
+      return nextRollPos < threshold ? Mth.lerp(rollTransitionTime, thisAngle, nextAngle) : thisAngle;
    }
 }

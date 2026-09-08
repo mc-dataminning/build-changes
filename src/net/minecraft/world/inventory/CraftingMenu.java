@@ -51,7 +51,7 @@ public class CraftingMenu extends AbstractCraftingMenu {
       final Player player,
       final CraftingContainer container,
       final ResultContainer resultSlots,
-      @Nullable final RecipeHolder<CraftingRecipe> recipeHint
+      final @Nullable RecipeHolder<CraftingRecipe> recipeHint
    ) {
       CraftingInput input = container.asCraftInput();
       ServerPlayer serverPlayer = (ServerPlayer)player;

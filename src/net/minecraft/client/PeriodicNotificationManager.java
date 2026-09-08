@@ -35,22 +35,20 @@ public class PeriodicNotificationManager
       Codec.STRING,
       RecordCodecBuilder.create(
             i -> i.group(
-                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(PeriodicNotificationManager.Notification::delay),
-                     Codec.LONG.fieldOf("period").forGetter(PeriodicNotificationManager.Notification::period),
-                     Codec.STRING.fieldOf("title").forGetter(PeriodicNotificationManager.Notification::title),
-                     Codec.STRING.fieldOf("message").forGetter(PeriodicNotificationManager.Notification::message)
-                  )
-                  .apply(i, PeriodicNotificationManager.Notification::new)
+                  Codec.LONG.optionalFieldOf("delay", 0L).forGetter(PeriodicNotificationManager.Notification::delay),
+                  Codec.LONG.fieldOf("period").forGetter(PeriodicNotificationManager.Notification::period),
+                  Codec.STRING.fieldOf("title").forGetter(PeriodicNotificationManager.Notification::title),
+                  Codec.STRING.fieldOf("message").forGetter(PeriodicNotificationManager.Notification::message)
+               )
+               .apply(i, PeriodicNotificationManager.Notification::new)
          )
          .listOf()
    );
    private static final Logger LOGGER = LogUtils.getLogger();
    private final Identifier notifications;
    private final Object2BooleanFunction<String> selector;
-   @Nullable
-   private Timer timer;
-   @Nullable
-   private PeriodicNotificationManager.NotificationTask notificationTask;
+   private @Nullable Timer timer;
+   private PeriodicNotificationManager.@Nullable NotificationTask notificationTask;
 
    public PeriodicNotificationManager(final Identifier notifications, final Object2BooleanFunction<String> selector) {
       this.notifications = notifications;
@@ -58,15 +56,12 @@ public class PeriodicNotificationManager
    }
 
    protected Map<String, List<PeriodicNotificationManager.Notification>> prepare(final ResourceManager manager, final ProfilerFiller profiler) {
-      try {
-         Map var4;
-         try (Reader reader = manager.openAsReader(this.notifications)) {
-            var4 = (Map)CODEC.parse(JsonOps.INSTANCE, StrictJsonParser.parse(reader)).result().orElseThrow();
-         }
-
-         return var4;
-      } catch (Exception var8) {
-         LOGGER.warn("Failed to load {}", this.notifications, var8);
+      try (Reader reader = manager.openAsReader(this.notifications)) {
+         return (Map<String, List<PeriodicNotificationManager.Notification>>)CODEC.parse(JsonOps.INSTANCE, StrictJsonParser.parse(reader))
+            .result()
+            .orElseThrow();
+      } catch (Exception e) {
+         LOGGER.warn("Failed to load {}", this.notifications, e);
          return ImmutableMap.of();
       }
    }
@@ -124,13 +119,7 @@ public class PeriodicNotificationManager
       return notifications.stream().mapToLong(c -> c.delay).min().orElse(0L);
    }
 
-   public static record Notification(long delay, long period, String title, String message) {
-      public Notification(final long delay, final long period, final String title, final String message) {
-         this.delay = delay != 0L ? delay : period;
-         this.period = period;
-         this.title = title;
-         this.message = message;
-      }
+   public record Notification(long delay, long period, String title, String message) {
    }
 
    private static class NotificationTask extends TimerTask {
@@ -163,11 +152,11 @@ public class PeriodicNotificationManager
                   this.minecraft
                      .execute(
                         () -> SystemToast.add(
-                              Minecraft.getInstance().gui.toastManager(),
-                              SystemToast.SystemToastId.PERIODIC_NOTIFICATION,
-                              Component.translatable(notification.title, elapsedPeriods),
-                              Component.translatable(notification.message, elapsedPeriods)
-                           )
+                           Minecraft.getInstance().gui.toastManager(),
+                           SystemToast.SystemToastId.PERIODIC_NOTIFICATION,
+                           Component.translatable(notification.title, elapsedPeriods),
+                           Component.translatable(notification.message, elapsedPeriods)
+                        )
                      );
                   return;
                }

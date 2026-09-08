@@ -46,7 +46,7 @@ public class PlayerFaceExtractor {
    ) {
       int skinHeadV = 8 + (flip ? 8 : 0);
       int skinHeadHeight = 8 * (flip ? -1 : 1);
-      graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, 8.0F, (float)skinHeadV, size, size, 8, skinHeadHeight, 64, 64, color);
+      graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, 8.0F, skinHeadV, size, size, 8, skinHeadHeight, 64, 64, color);
       if (hat) {
          extractHat(graphics, texture, x, y, size, flip, color);
       }
@@ -57,6 +57,6 @@ public class PlayerFaceExtractor {
    ) {
       int skinHatV = 8 + (flip ? 8 : 0);
       int skinHatHeight = 8 * (flip ? -1 : 1);
-      graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, 40.0F, (float)skinHatV, size, size, 8, skinHatHeight, 64, 64, color);
+      graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, 40.0F, skinHatV, size, size, 8, skinHatHeight, 64, 64, color);
    }
 }

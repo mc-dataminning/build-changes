@@ -61,7 +61,7 @@ public enum DyeColor implements StringRepresentable {
    private final int fireworkColor;
    private final int textColor;
 
-   private DyeColor(
+   DyeColor(
       final int id,
       final String name,
       final int textureDiffuseColor,
@@ -112,14 +112,12 @@ public enum DyeColor implements StringRepresentable {
    }
 
    @Contract("_,!null->!null;_,null->_")
-   @Nullable
-   public static DyeColor byName(final String name, @Nullable final DyeColor def) {
+   public static @Nullable DyeColor byName(final String name, final @Nullable DyeColor def) {
       DyeColor result = CODEC.byName(name);
       return result != null ? result : def;
    }
 
-   @Nullable
-   public static DyeColor byFireworkColor(final int color) {
+   public static @Nullable DyeColor byFireworkColor(final int color) {
       return (DyeColor)BY_FIREWORK_COLOR.get(color);
    }
 
@@ -142,33 +140,32 @@ public enum DyeColor implements StringRepresentable {
       }
    }
 
-   @Nullable
-   private static DyeColor findColorMixInRecipes(final ServerLevel level, final DyeColor dyeColor1, final DyeColor dyeColor2) {
+   private static @Nullable DyeColor findColorMixInRecipes(final ServerLevel level, final DyeColor dyeColor1, final DyeColor dyeColor2) {
       DataComponentLookup<Item> itemComponents = level.registryAccess().lookupOrThrow(Registries.ITEM).componentLookup();
       Collection<Holder<Item>> dye1Items = itemComponents.findAll(DataComponents.DYE, dyeColor1);
       if (dye1Items.isEmpty()) {
          return null;
-      } else {
-         Collection<Holder<Item>> dye2Items = itemComponents.findAll(DataComponents.DYE, dyeColor2);
-         if (dye2Items.isEmpty()) {
-            return null;
-         } else {
-            for (Holder<Item> dye1Item : dye1Items) {
-               for (Holder<Item> dye2Item : dye2Items) {
-                  CraftingInput input = CraftingInput.of(2, 1, List.of(new ItemStack(dye1Item), new ItemStack(dye2Item)));
-                  Optional<RecipeHolder<CraftingRecipe>> foundRecipe = level.recipeAccess().getRecipeFor(RecipeType.CRAFTING, input, level);
-                  if (foundRecipe.isPresent()) {
-                     ItemStack craftingResult = foundRecipe.get().value().assemble(input);
-                     DyeColor craftedDyeColor = craftingResult.get(DataComponents.DYE);
-                     if (craftedDyeColor != null) {
-                        return craftedDyeColor;
-                     }
-                  }
+      }
+
+      Collection<Holder<Item>> dye2Items = itemComponents.findAll(DataComponents.DYE, dyeColor2);
+      if (dye2Items.isEmpty()) {
+         return null;
+      }
+
+      for (Holder<Item> dye1Item : dye1Items) {
+         for (Holder<Item> dye2Item : dye2Items) {
+            CraftingInput input = CraftingInput.of(2, 1, List.of(new ItemStack(dye1Item), new ItemStack(dye2Item)));
+            Optional<RecipeHolder<CraftingRecipe>> foundRecipe = level.recipeAccess().getRecipeFor(RecipeType.CRAFTING, input, level);
+            if (foundRecipe.isPresent()) {
+               ItemStack craftingResult = foundRecipe.get().value().assemble(input);
+               DyeColor craftedDyeColor = craftingResult.get(DataComponents.DYE);
+               if (craftedDyeColor != null) {
+                  return craftedDyeColor;
                }
             }
-
-            return null;
          }
       }
+
+      return null;
    }
 }

@@ -39,8 +39,7 @@ class FriendsTab extends AbstractFriendsTab {
    private final LoadingDotsWidget loadingDotsWidget;
    private final AddFriendWidget addFriendWidget;
    private final ScrollableLayout scrollableLayout;
-   @Nullable
-   private FrameLayout contentFrame;
+   private @Nullable FrameLayout contentFrame;
 
    FriendsTab(final Minecraft minecraft, final LoadingDotsWidget loadingDotsWidget, final FriendsOverlayScreen screen, final int width, final int height) {
       super(width, height);
@@ -84,17 +83,8 @@ class FriendsTab extends AbstractFriendsTab {
       int maxWidth = this.getListContentWidth();
       MultiLineTextWidget textWidget = this.createCenteredText(EMPTY_STATE, this.screen.getFont(), maxWidth);
       textWidget.setComponentClickHandler(style -> {
-         if (style.getClickEvent() instanceof ClickEvent.OpenUrl $b$0) {
-            ClickEvent.OpenUrl var10000 = $b$0;
-
-            try {
-               var7 = var10000.uri();
-            } catch (Throwable var6) {
-               throw new MatchException(var6.toString(), var6);
-            }
-
-            URI patt2$temp = var7;
-            PrivacyConfirmLinkScreen.confirmLinkNow(this.screen, patt2$temp);
+         if (style.getClickEvent() instanceof ClickEvent.OpenUrl(URI uri)) {
+            PrivacyConfirmLinkScreen.confirmLinkNow(this.screen, uri);
          }
       });
       content.addChild(textWidget);
@@ -172,18 +162,9 @@ class FriendsTab extends AbstractFriendsTab {
       int maxWidth = this.getListContentWidth();
       MultiLineTextWidget textWidget = this.createCenteredText(MANAGE_ACCOUNT_FOOTER, this.screen.getFont(), maxWidth);
       textWidget.setComponentClickHandler(style -> {
-         if (style.getClickEvent() instanceof ClickEvent.OpenUrl $b$0) {
-            ClickEvent.OpenUrl var10000 = $b$0;
-
-            try {
-               var7 = var10000.uri();
-            } catch (Throwable var6) {
-               throw new MatchException(var6.toString(), var6);
-            }
-
-            URI patt2$temp = var7;
+         if (style.getClickEvent() instanceof ClickEvent.OpenUrl(URI uri)) {
             AbstractWidget.playButtonClickSound(Minecraft.getInstance().getSoundManager());
-            PrivacyConfirmLinkScreen.confirmLinkNow(this.screen, patt2$temp);
+            PrivacyConfirmLinkScreen.confirmLinkNow(this.screen, uri);
          }
       });
       FrameLayout frame = new FrameLayout(maxWidth, textWidget.getHeight());

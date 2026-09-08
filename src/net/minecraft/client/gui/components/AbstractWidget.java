@@ -55,7 +55,7 @@ public abstract class AbstractWidget implements LayoutElement, Renderable, GuiEv
    @Override
    public final void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
       if (this.visible) {
-         this.isHovered = graphics.containsPointInScissor(mouseX, mouseY) && this.areCoordinatesInRectangle((double)mouseX, (double)mouseY);
+         this.isHovered = graphics.containsPointInScissor(mouseX, mouseY) && this.areCoordinatesInRectangle(mouseX, mouseY);
          this.extractWidgetRenderState(graphics, mouseX, mouseY, a);
          this.extractTooltipForNextRenderPass(graphics, mouseX, mouseY);
       }
@@ -71,7 +71,7 @@ public abstract class AbstractWidget implements LayoutElement, Renderable, GuiEv
       }
    }
 
-   public void setTooltip(@Nullable final Tooltip tooltip) {
+   public void setTooltip(final @Nullable Tooltip tooltip) {
       this.tooltip.set(tooltip);
    }
 
@@ -110,18 +110,18 @@ public abstract class AbstractWidget implements LayoutElement, Renderable, GuiEv
    public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
       if (!this.isActive()) {
          return false;
-      } else {
-         if (this.isValidClickButton(event.buttonInfo())) {
-            boolean isMouseOver = this.isMouseOver(event.x(), event.y());
-            if (isMouseOver) {
-               this.playDownSound(Minecraft.getInstance().getSoundManager());
-               this.onClick(event, doubleClick);
-               return true;
-            }
-         }
-
-         return false;
       }
+
+      if (this.isValidClickButton(event.buttonInfo())) {
+         boolean isMouseOver = this.isMouseOver(event.x(), event.y());
+         if (isMouseOver) {
+            this.playDownSound(Minecraft.getInstance().getSoundManager());
+            this.onClick(event, doubleClick);
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Override
@@ -148,9 +148,8 @@ public abstract class AbstractWidget implements LayoutElement, Renderable, GuiEv
       }
    }
 
-   @Nullable
    @Override
-   public ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
+   public @Nullable ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
       if (!this.isActive()) {
          return null;
       } else {
@@ -295,7 +294,7 @@ public abstract class AbstractWidget implements LayoutElement, Renderable, GuiEv
    }
 
    private boolean areCoordinatesInRectangle(final double x, final double y) {
-      return x >= (double)this.getX() && y >= (double)this.getY() && x < (double)this.getRight() && y < (double)this.getBottom();
+      return x >= this.getX() && y >= this.getY() && x < this.getRight() && y < this.getBottom();
    }
 
    public void setRectangle(final int width, final int height, final int x, final int y) {

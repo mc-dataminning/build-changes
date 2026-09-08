@@ -1,6 +1,5 @@
 package net.minecraft.world.level.blockscan;
 
-import java.util.Objects;
 import java.util.function.BiConsumer;
 import java.util.function.Predicate;
 import net.minecraft.core.BlockPos;
@@ -26,12 +25,7 @@ public class BoxBlockMatcher extends BlockMatcher {
    @Override
    public boolean atLeastMatched(final int n) {
       return BlockScanUtils.findBlocks(this.level, this.from, this.to, this.statePredicate, new BlockStateConsumer() {
-         private int count;
-
-         {
-            Objects.requireNonNull(BoxBlockMatcher.this);
-            this.count = 0;
-         }
+         private int count = 0;
 
          @Override
          public Continuation apply(final BlockPos pos, final BlockState state) {

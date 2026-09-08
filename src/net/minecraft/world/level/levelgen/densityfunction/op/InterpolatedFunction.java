@@ -16,17 +16,17 @@ import net.minecraft.world.level.levelgen.densityfunction.ScopedDensityBuffer;
 public record InterpolatedFunction(DensityFunction input, int cellSizeXz, int cellSizeY) implements DensityFunction {
    public static final MapCodec<InterpolatedFunction> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               DensityFunction.CODEC.fieldOf("input").forGetter(InterpolatedFunction::input),
-               ExtraCodecs.POSITIVE_INT.fieldOf("cell_size_xz").forGetter(InterpolatedFunction::cellSizeXz),
-               ExtraCodecs.POSITIVE_INT.fieldOf("cell_size_y").forGetter(InterpolatedFunction::cellSizeY)
-            )
-            .apply(i, InterpolatedFunction::new)
+            DensityFunction.CODEC.fieldOf("input").forGetter(InterpolatedFunction::input),
+            ExtraCodecs.POSITIVE_INT.fieldOf("cell_size_xz").forGetter(InterpolatedFunction::cellSizeXz),
+            ExtraCodecs.POSITIVE_INT.fieldOf("cell_size_y").forGetter(InterpolatedFunction::cellSizeY)
+         )
+         .apply(i, InterpolatedFunction::new)
    );
 
    @Override
    public DensitySampler compileSampler(final DensityFunction.CompileContext context) {
       return new InterpolatedFunction.Sampler(
-         this.input.compileSampler(context), this.cellSizeXz, this.cellSizeY, 1.0F / (float)this.cellSizeXz, 1.0F / (float)this.cellSizeY
+         this.input.compileSampler(context), this.cellSizeXz, this.cellSizeY, 1.0F / this.cellSizeXz, 1.0F / this.cellSizeY
       );
    }
 
@@ -41,9 +41,8 @@ public record InterpolatedFunction(DensityFunction input, int cellSizeXz, int ce
       return this.input.range();
    }
 
-   @DensityFunction.Axes
    @Override
-   public int domainAxes() {
+   public @DensityFunction.Axes int domainAxes() {
       return this.input.domainAxes();
    }
 
@@ -52,7 +51,7 @@ public record InterpolatedFunction(DensityFunction input, int cellSizeXz, int ce
       return CODEC;
    }
 
-   private static record Sampler(DensitySampler input, int cellSizeXz, int cellSizeY, float cellSizeXzInv, float cellSizeYInv) implements DensitySampler {
+   private record Sampler(DensitySampler input, int cellSizeXz, int cellSizeY, float cellSizeXzInv, float cellSizeYInv) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          if ((volume.stepBlockX() == this.cellSizeXz || volume.sizeX() == 1)
@@ -176,7 +175,7 @@ public record InterpolatedFunction(DensityFunction input, int cellSizeXz, int ce
 
          for (int z = z0; z <= z1; z++) {
             int outputZ = cellOutputZ + z;
-            float alphaZ = (float)z * this.cellSizeXzInv;
+            float alphaZ = z * this.cellSizeXzInv;
             float v00_ = Mth.lerp(alphaZ, v000, v001);
             float v01_ = Mth.lerp(alphaZ, v010, v011);
             float v10_ = Mth.lerp(alphaZ, v100, v101);
@@ -184,11 +183,11 @@ public record InterpolatedFunction(DensityFunction input, int cellSizeXz, int ce
 
             for (int x = x0; x <= x1; x++) {
                int outputX = cellOutputX + x;
-               float alphaX = (float)x * this.cellSizeXzInv;
+               float alphaX = x * this.cellSizeXzInv;
                float v_0_ = Mth.lerp(alphaX, v00_, v10_);
                float v_1_ = Mth.lerp(alphaX, v01_, v11_);
                float valueStep = (v_1_ - v_0_) * this.cellSizeYInv;
-               float value = v_0_ + valueStep * (float)y0;
+               float value = v_0_ + valueStep * y0;
                int outputIndex = outputVolume.indexUnchecked(outputX, cellOutputY + y0, outputZ);
 
                for (int y = y0; y <= y1; y++) {
@@ -206,30 +205,27 @@ public record InterpolatedFunction(DensityFunction input, int cellSizeXz, int ce
          int zInCell = Math.floorMod(blockZ, this.cellSizeXz);
          if (xInCell == 0 && yInCell == 0 && zInCell == 0) {
             return this.input.sampleValue(context, blockX, blockY, blockZ);
-         } else {
-            DensityVolume volume = new DensityVolume(
-               2, 2, 2, blockX - xInCell, blockY - yInCell, blockZ - zInCell, this.cellSizeXz, this.cellSizeY, this.cellSizeXz
+         }
+
+         DensityVolume volume = new DensityVolume(
+            2, 2, 2, blockX - xInCell, blockY - yInCell, blockZ - zInCell, this.cellSizeXz, this.cellSizeY, this.cellSizeXz
+         );
+
+         try (ScopedDensityBuffer inputBuffer = context.acquireBuffer(volume)) {
+            this.input.sampleVolume(context, inputBuffer, volume);
+            return Mth.lerp3(
+               (float)xInCell / this.cellSizeXz,
+               (float)yInCell / this.cellSizeY,
+               (float)zInCell / this.cellSizeXz,
+               inputBuffer.get(volume.indexUnchecked(0, 0, 0)),
+               inputBuffer.get(volume.indexUnchecked(1, 0, 0)),
+               inputBuffer.get(volume.indexUnchecked(0, 1, 0)),
+               inputBuffer.get(volume.indexUnchecked(1, 1, 0)),
+               inputBuffer.get(volume.indexUnchecked(0, 0, 1)),
+               inputBuffer.get(volume.indexUnchecked(1, 0, 1)),
+               inputBuffer.get(volume.indexUnchecked(0, 1, 1)),
+               inputBuffer.get(volume.indexUnchecked(1, 1, 1))
             );
-
-            float var10;
-            try (ScopedDensityBuffer inputBuffer = context.acquireBuffer(volume)) {
-               this.input.sampleVolume(context, inputBuffer, volume);
-               var10 = Mth.lerp3(
-                  (float)xInCell / (float)this.cellSizeXz,
-                  (float)yInCell / (float)this.cellSizeY,
-                  (float)zInCell / (float)this.cellSizeXz,
-                  inputBuffer.get(volume.indexUnchecked(0, 0, 0)),
-                  inputBuffer.get(volume.indexUnchecked(1, 0, 0)),
-                  inputBuffer.get(volume.indexUnchecked(0, 1, 0)),
-                  inputBuffer.get(volume.indexUnchecked(1, 1, 0)),
-                  inputBuffer.get(volume.indexUnchecked(0, 0, 1)),
-                  inputBuffer.get(volume.indexUnchecked(1, 0, 1)),
-                  inputBuffer.get(volume.indexUnchecked(0, 1, 1)),
-                  inputBuffer.get(volume.indexUnchecked(1, 1, 1))
-               );
-            }
-
-            return var10;
          }
       }
    }

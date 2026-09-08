@@ -142,9 +142,8 @@ public class Spider extends Monster {
       this.entityData.set(DATA_FLAGS_ID, flags);
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       groupData = super.finalizeSpawn(level, difficulty, spawnReason, groupData);
@@ -177,7 +176,7 @@ public class Spider extends Monster {
 
    @Override
    public Vec3 getVehicleAttachmentPoint(final Entity vehicle) {
-      return vehicle.getBbWidth() <= this.getBbWidth() ? new Vec3(0.0, 0.3125 * (double)this.getScale(), 0.0) : super.getVehicleAttachmentPoint(vehicle);
+      return vehicle.getBbWidth() <= this.getBbWidth() ? new Vec3(0.0, 0.3125 * this.getScale(), 0.0) : super.getVehicleAttachmentPoint(vehicle);
    }
 
    private static class SpiderAttackGoal extends MeleeAttackGoal {
@@ -203,8 +202,7 @@ public class Spider extends Monster {
    }
 
    public static class SpiderEffectsGroupData implements SpawnGroupData {
-      @Nullable
-      public Holder<MobEffect> effect;
+      public @Nullable Holder<MobEffect> effect;
 
       public void setRandomEffect(final RandomSource random) {
          int selection = random.nextInt(5);

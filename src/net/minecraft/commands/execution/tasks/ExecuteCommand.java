@@ -31,8 +31,8 @@ public class ExecuteCommand<T extends ExecutionCommandSource<T>> implements Unbo
          if (tracer != null) {
             tracer.onReturn(frame.depth(), this.commandInput, result);
          }
-      } catch (CommandSyntaxException var9) {
-         sender.handleError(var9, this.modifiers.isForked(), context.tracer());
+      } catch (CommandSyntaxException e) {
+         sender.handleError(e, this.modifiers.isForked(), context.tracer());
       } finally {
          context.profiler().pop();
       }

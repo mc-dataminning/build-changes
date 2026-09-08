@@ -10,8 +10,7 @@ public class DataLayer {
    public static final int LAYER_SIZE = 128;
    public static final int SIZE = 2048;
    private static final int NIBBLE_SIZE = 4;
-   @Nullable
-   protected byte[] data;
+   protected byte @Nullable [] data;
    private int defaultValue;
 
    public DataLayer() {
@@ -45,11 +44,11 @@ public class DataLayer {
    private int get(final int index) {
       if (this.data == null) {
          return this.defaultValue;
-      } else {
-         int position = getByteIndex(index);
-         int nibble = getNibbleIndex(index);
-         return this.data[position] >> 4 * nibble & 15;
       }
+
+      int position = getByteIndex(index);
+      int nibble = getNibbleIndex(index);
+      return this.data[position] >> 4 * nibble & 15;
    }
 
    private void set(final int index, final int val) {

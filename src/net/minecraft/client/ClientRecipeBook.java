@@ -58,8 +58,8 @@ public class ClientRecipeBook extends RecipeBook {
       Builder<RecipeCollection> all = ImmutableList.builder();
       recipeListsByCategory.forEach(
          (category, categoryRecipes) -> byCategory.put(
-               category, categoryRecipes.stream().map(RecipeCollection::new).peek(all::add).collect(ImmutableList.toImmutableList())
-            )
+            category, (List)categoryRecipes.stream().map(RecipeCollection::new).peek(all::add).collect(ImmutableList.toImmutableList())
+         )
       );
 
       for (SearchRecipeBookCategory searchCategory : SearchRecipeBookCategory.values()) {

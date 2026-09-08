@@ -26,7 +26,7 @@ public interface DistributionProvider<Value extends Validatable> extends Validat
    }
 
    @FunctionalInterface
-   public interface Factory<Value extends Validatable, Self extends DistributionProvider<Value>> {
+   interface Factory<Value extends Validatable, Self extends DistributionProvider<Value>> {
       Self create(WeightedList<Holder<Value>> distribution);
    }
 }

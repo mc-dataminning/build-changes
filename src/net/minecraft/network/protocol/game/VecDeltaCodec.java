@@ -2,8 +2,8 @@ package net.minecraft.network.protocol.game;
 
 import com.google.common.annotations.VisibleForTesting;
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.world.entity.PositionPath;
+import net.minecraft.world.entity.PositionStep;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
@@ -18,7 +18,7 @@ public class VecDeltaCodec {
 
    @VisibleForTesting
    static double decode(final long v) {
-      return (double)v / 4096.0;
+      return v / 4096.0;
    }
 
    public static double encodingPrecisionLoss(final double d) {
@@ -32,70 +32,47 @@ public class VecDeltaCodec {
    public Vec3 decode(final long xa, final long ya, final long za) {
       if (xa == 0L && ya == 0L && za == 0L) {
          return this.base;
-      } else {
-         double x = xa == 0L ? this.base.x : decode(encode(this.base.x) + xa);
-         double y = ya == 0L ? this.base.y : decode(encode(this.base.y) + ya);
-         double z = za == 0L ? this.base.z : decode(encode(this.base.z) + za);
-         return new Vec3(x, y, z);
       }
+
+      double x = xa == 0L ? this.base.x : decode(encode(this.base.x) + xa);
+      double y = ya == 0L ? this.base.y : decode(encode(this.base.y) + ya);
+      double z = za == 0L ? this.base.z : decode(encode(this.base.z) + za);
+      return new Vec3(x, y, z);
    }
 
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
-   @Nullable
-   public VecDelta tryEncode(final PositionPath position) {
-      Objects.requireNonNull(position);
-      Throwable var13;
-      switch (position) {
-         case PositionPath.Linear var4:
-            PositionPath.Linear var17 = var4;
-
-            try {
-               var18 = var17.endPosition();
-            } catch (Throwable var11) {
-               var13 = var11;
-               boolean var20 = false;
-               break;
-            }
-
-            Vec3 var12 = var18;
-            return this.tryEncode(var12);
-         case PositionPath.Stepped var6:
+   public @Nullable VecDelta tryEncode(final PositionPath position) {
+      return switch (position) {
+         case PositionPath.Linear(Vec3 pos) -> this.tryEncode(pos);
+         case PositionPath.Stepped var6 -> {
             PositionPath.Stepped var10000 = var6;
 
             try {
                var10000.endPosition();
             } catch (Throwable var10) {
-               var13 = var10;
-               boolean var10001 = false;
-               break;
+               throw new MatchException(var10.toString(), var10);
             }
 
-            PositionPath.Stepped var14 = var6;
+            var10000 = var6;
 
             try {
-               var15 = var14.steps();
+               var14 = var10000.steps();
             } catch (Throwable var9) {
-               var13 = var9;
-               boolean var19 = false;
-               break;
+               throw new MatchException(var9.toString(), var9);
             }
 
-            List var8 = var15;
-            return VecDelta.Stepped.tryEncode(this, var8);
-         default:
-            throw new MatchException(null, null);
-      }
-
-      Throwable var2 = var13;
-      throw new MatchException(var2.toString(), var2);
+            List var8 = var14;
+            List<PositionStep> steps = var8;
+            yield VecDelta.Stepped.tryEncode(this, steps);
+         }
+         default -> throw new MatchException(null, null);
+      };
    }
 
-   @Nullable
-   public VecDelta tryEncode(final Vec3 pos) {
+   public @Nullable VecDelta tryEncode(final Vec3 pos) {
       long xa = this.encodeX(pos);
       long ya = this.encodeY(pos);
       long za = this.encodeZ(pos);
-      return isDeltaTooBig(xa, ya, za) ? null : new VecDelta.Linear((short)((int)xa), (short)((int)ya), (short)((int)za));
+      return isDeltaTooBig(xa, ya, za) ? null : new VecDelta.Linear((short)xa, (short)ya, (short)za);
    }
 
    public long encodeX(final Vec3 pos) {

@@ -22,9 +22,9 @@ public class PlayerHeadBlockProfileFix extends NamedEntityFix {
       Optional<Dynamic<T>> profile = skullOwner.or(() -> extraType);
       if (profile.isEmpty()) {
          return entity;
-      } else {
-         entity = entity.remove("SkullOwner").remove("ExtraType");
-         return entity.set("profile", ItemStackComponentizationFix.fixProfile(profile.get()));
       }
+
+      entity = entity.remove("SkullOwner").remove("ExtraType");
+      return entity.set("profile", ItemStackComponentizationFix.fixProfile(profile.get()));
    }
 }

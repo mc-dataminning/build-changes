@@ -38,15 +38,15 @@ public class OreFeature extends AbstractOreFeature {
    @Override
    public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
       float dir = random.nextFloat() * (float) Math.PI;
-      float spreadXY = (float)this.size / 8.0F;
-      int maxRadius = Mth.ceil(((float)this.size / 16.0F * 2.0F + 1.0F) / 2.0F);
-      double x0 = (double)origin.getX() + Math.sin((double)dir) * (double)spreadXY;
-      double x1 = (double)origin.getX() - Math.sin((double)dir) * (double)spreadXY;
-      double z0 = (double)origin.getZ() + Math.cos((double)dir) * (double)spreadXY;
-      double z1 = (double)origin.getZ() - Math.cos((double)dir) * (double)spreadXY;
+      float spreadXY = this.size / 8.0F;
+      int maxRadius = Mth.ceil((this.size / 16.0F * 2.0F + 1.0F) / 2.0F);
+      double x0 = origin.getX() + Math.sin(dir) * spreadXY;
+      double x1 = origin.getX() - Math.sin(dir) * spreadXY;
+      double z0 = origin.getZ() + Math.cos(dir) * spreadXY;
+      double z1 = origin.getZ() - Math.cos(dir) * spreadXY;
       int spreadY = 2;
-      double y0 = (double)(origin.getY() + random.nextInt(3) - 2);
-      double y1 = (double)(origin.getY() + random.nextInt(3) - 2);
+      double y0 = origin.getY() + random.nextInt(3) - 2;
+      double y1 = origin.getY() + random.nextInt(3) - 2;
       int xStart = origin.getX() - Mth.ceil(spreadXY) - maxRadius;
       int yStart = origin.getY() - 2 - maxRadius;
       int zStart = origin.getZ() - Mth.ceil(spreadXY) - maxRadius;
@@ -85,12 +85,12 @@ public class OreFeature extends AbstractOreFeature {
       double[] data = new double[this.size * 4];
 
       for (int i = 0; i < this.size; i++) {
-         float step = (float)i / (float)this.size;
-         double xx = Mth.lerp((double)step, x0, x1);
-         double yy = Mth.lerp((double)step, y0, y1);
-         double zz = Mth.lerp((double)step, z0, z1);
-         double ss = random.nextDouble() * (double)this.size / 16.0;
-         double r = ((double)(Mth.sin((double)((float) Math.PI * step)) + 1.0F) * ss + 1.0) / 2.0;
+         float step = (float)i / this.size;
+         double xx = Mth.lerp(step, x0, x1);
+         double yy = Mth.lerp(step, y0, y1);
+         double zz = Mth.lerp(step, z0, z1);
+         double ss = random.nextDouble() * this.size / 16.0;
+         double r = ((Mth.sin((float) Math.PI * step) + 1.0F) * ss + 1.0) / 2.0;
          data[i * 4 + 0] = xx;
          data[i * 4 + 1] = yy;
          data[i * 4 + 2] = zz;
@@ -132,13 +132,13 @@ public class OreFeature extends AbstractOreFeature {
                int zMax = Math.max(Mth.floor(zz + r), zMin);
 
                for (int x = xMin; x <= xMax; x++) {
-                  double xd = ((double)x + 0.5 - xx) / r;
+                  double xd = (x + 0.5 - xx) / r;
                   if (xd * xd < 1.0) {
                      for (int y = yMin; y <= yMax; y++) {
-                        double yd = ((double)y + 0.5 - yy) / r;
+                        double yd = (y + 0.5 - yy) / r;
                         if (xd * xd + yd * yd < 1.0) {
                            for (int z = zMin; z <= zMax; z++) {
-                              double zd = ((double)z + 0.5 - zz) / r;
+                              double zd = (z + 0.5 - zz) / r;
                               if (xd * xd + yd * yd + zd * zd < 1.0 && !level.isOutsideBuildHeight(y)) {
                                  int bitSetIndex = x - xStart + (y - yStart) * sizeXZ + (z - zStart) * sizeXZ * sizeY;
                                  if (!tested.get(bitSetIndex)) {

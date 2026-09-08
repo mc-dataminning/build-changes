@@ -8,7 +8,6 @@ import com.mojang.serialization.Keyable;
 import com.mojang.serialization.Lifecycle;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.Map.Entry;
@@ -39,8 +38,8 @@ public interface Registry<T> extends IdMap<T>, Keyable, HolderLookup.RegistryLoo
       Codec<Holder.Reference<T>> referenceCodec = Identifier.CODEC
          .comapFlatMap(
             name -> this.get(name)
-                  .<DataResult>map(DataResult::success)
-                  .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.key() + ": " + name)),
+               .<DataResult>map(DataResult::success)
+               .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.key() + ": " + name)),
             holder -> holder.key().identifier()
          );
       return ExtraCodecs.overrideLifecycle(
@@ -58,27 +57,24 @@ public interface Registry<T> extends IdMap<T>, Keyable, HolderLookup.RegistryLoo
       return this.keySet().stream().map(k -> (U)ops.createString(k.toString()));
    }
 
-   @Nullable
-   Identifier getKey(T thing);
+   @Nullable Identifier getKey(T thing);
 
    Optional<ResourceKey<T>> getResourceKey(T thing);
 
    @Override
    int getId(@Nullable T thing);
 
-   @Nullable
-   T getValue(@Nullable ResourceKey<T> key);
+   @Nullable T getValue(@Nullable ResourceKey<T> key);
 
-   @Nullable
-   T getValue(@Nullable Identifier key);
+   @Nullable T getValue(@Nullable Identifier key);
 
    Optional<RegistrationInfo> registrationInfo(ResourceKey<T> element);
 
-   default Optional<T> getOptional(@Nullable final Identifier key) {
+   default Optional<T> getOptional(final @Nullable Identifier key) {
       return Optional.ofNullable(this.getValue(key));
    }
 
-   default Optional<T> getOptional(@Nullable final ResourceKey<T> key) {
+   default Optional<T> getOptional(final @Nullable ResourceKey<T> key) {
       return Optional.ofNullable(this.getValue(key));
    }
 
@@ -148,16 +144,11 @@ public interface Registry<T> extends IdMap<T>, Keyable, HolderLookup.RegistryLoo
 
    default IdMap<Holder<T>> asHolderIdMap() {
       return new IdMap<Holder<T>>() {
-         {
-            Objects.requireNonNull(Registry.this);
-         }
-
          public int getId(final Holder<T> thing) {
             return Registry.this.getId(thing.value());
          }
 
-         @Nullable
-         public Holder<T> byId(final int id) {
+         public @Nullable Holder<T> byId(final int id) {
             return (Holder<T>)Registry.this.get(id).orElse(null);
          }
 
@@ -177,7 +168,7 @@ public interface Registry<T> extends IdMap<T>, Keyable, HolderLookup.RegistryLoo
 
    DataComponentLookup<T> componentLookup();
 
-   public interface PendingTags<T> {
+   interface PendingTags<T> {
       ResourceKey<? extends Registry<? extends T>> key();
 
       HolderLookup.RegistryLookup<T> lookup();

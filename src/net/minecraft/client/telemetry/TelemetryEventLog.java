@@ -21,12 +21,12 @@ public class TelemetryEventLog implements AutoCloseable {
 
    public TelemetryEventLogger logger() {
       return event -> this.consecutiveExecutor.schedule(() -> {
-            try {
-               this.log.write(event);
-            } catch (IOException var3) {
-               LOGGER.error("Failed to write telemetry event to log", var3);
-            }
-         });
+         try {
+            this.log.write(event);
+         } catch (IOException e) {
+            LOGGER.error("Failed to write telemetry event to log", e);
+         }
+      });
    }
 
    @Override

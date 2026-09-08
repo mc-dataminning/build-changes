@@ -16,18 +16,17 @@ public interface SpriteSource {
 
    MapCodec<? extends SpriteSource> codec();
 
-   public interface DiscardableLoader extends SpriteSource.Loader {
+   interface DiscardableLoader extends SpriteSource.Loader {
       default void discard() {
       }
    }
 
    @FunctionalInterface
-   public interface Loader {
-      @Nullable
-      SpriteContents get(SpriteResourceLoader loader);
+   interface Loader {
+      @Nullable SpriteContents get(SpriteResourceLoader loader);
    }
 
-   public interface Output {
+   interface Output {
       default void add(final Identifier id, final Resource resource) {
          this.add(id, loader -> loader.loadSprite(id, resource));
       }

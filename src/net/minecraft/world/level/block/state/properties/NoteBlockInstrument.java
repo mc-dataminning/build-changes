@@ -38,7 +38,7 @@ public enum NoteBlockInstrument implements StringRepresentable {
    private final Holder<SoundEvent> soundEvent;
    private final NoteBlockInstrument.Type type;
 
-   private NoteBlockInstrument(final String name, final Holder<SoundEvent> soundEvent, final NoteBlockInstrument.Type type) {
+   NoteBlockInstrument(final String name, final Holder<SoundEvent> soundEvent, final NoteBlockInstrument.Type type) {
       this.name = name;
       this.soundEvent = soundEvent;
       this.type = type;
@@ -65,7 +65,7 @@ public enum NoteBlockInstrument implements StringRepresentable {
       return this.type != NoteBlockInstrument.Type.BASE_BLOCK;
    }
 
-   private static enum Type {
+   private enum Type {
       BASE_BLOCK,
       MOB_HEAD,
       CUSTOM;

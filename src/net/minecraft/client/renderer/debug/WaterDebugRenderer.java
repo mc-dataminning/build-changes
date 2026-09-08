@@ -31,27 +31,20 @@ public class WaterDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
       for (BlockPos blockPos : BlockPos.betweenClosed(pos.offset(-10, -10, -10), pos.offset(10, 10, 10))) {
          FluidState fluidState = level.getFluidState(blockPos);
          if (fluidState.is(FluidTags.WATER)) {
-            double height = (double)((float)blockPos.getY() + fluidState.getHeight(level, blockPos));
+            double height = blockPos.getY() + fluidState.getHeight(level, blockPos);
             Gizmos.cuboid(
-               new AABB(
-                  (double)((float)blockPos.getX() + 0.01F),
-                  (double)((float)blockPos.getY() + 0.01F),
-                  (double)((float)blockPos.getZ() + 0.01F),
-                  (double)((float)blockPos.getX() + 0.99F),
-                  height,
-                  (double)((float)blockPos.getZ() + 0.99F)
-               ),
+               new AABB(blockPos.getX() + 0.01F, blockPos.getY() + 0.01F, blockPos.getZ() + 0.01F, blockPos.getX() + 0.99F, height, blockPos.getZ() + 0.99F),
                GizmoStyle.fill(ARGB.colorFromFloat(0.15F, 0.0F, 1.0F, 0.0F))
             );
          }
       }
 
-      for (BlockPos blockPosx : BlockPos.betweenClosed(pos.offset(-10, -10, -10), pos.offset(10, 10, 10))) {
-         FluidState fluidState = level.getFluidState(blockPosx);
+      for (BlockPos blockPos : BlockPos.betweenClosed(pos.offset(-10, -10, -10), pos.offset(10, 10, 10))) {
+         FluidState fluidState = level.getFluidState(blockPos);
          if (fluidState.is(FluidTags.WATER)) {
             Gizmos.billboardText(
                String.valueOf(fluidState.getAmount()),
-               Vec3.atLowerCornerWithOffset(blockPosx, 0.5, (double)fluidState.getHeight(level, blockPosx), 0.5),
+               Vec3.atLowerCornerWithOffset(blockPos, 0.5, fluidState.getHeight(level, blockPos), 0.5),
                TextGizmo.Style.forColorAndCentered(-16777216)
             );
          }

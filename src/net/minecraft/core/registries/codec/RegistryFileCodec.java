@@ -52,21 +52,21 @@ public final class RegistryFileCodec<E> implements Codec<Holder<E>> {
             return !this.allowInline
                ? DataResult.error(() -> "Inline definitions not allowed here")
                : this.elementCodec.decode(ops, input).map(p -> p.mapFirst(Holder::direct));
-         } else {
-            Optional<HolderGetter<E>> maybeLookup = registryOps.getter(this.registryKey);
-            if (maybeLookup.isEmpty()) {
-               return DataResult.error(() -> "Registry does not exist: " + this.registryKey.identifier());
-            } else {
-               HolderGetter<E> lookup = maybeLookup.get();
-               Pair<Identifier, T> pair = (Pair<Identifier, T>)decoded.result().get();
-               ResourceKey<E> elementKey = ResourceKey.create(this.registryKey, (Identifier)pair.getFirst());
-               return lookup.get(elementKey)
-                  .<DataResult>map(DataResult::success)
-                  .orElseGet(() -> DataResult.error(() -> "Failed to get element " + elementKey.identifier() + " from registry " + elementKey.registry()))
-                  .map(h -> Pair.of(h, pair.getSecond()))
-                  .setLifecycle(Lifecycle.stable());
-            }
          }
+
+         Optional<HolderGetter<E>> maybeLookup = registryOps.getter(this.registryKey);
+         if (maybeLookup.isEmpty()) {
+            return DataResult.error(() -> "Registry does not exist: " + this.registryKey.identifier());
+         }
+
+         HolderGetter<E> lookup = maybeLookup.get();
+         Pair<Identifier, T> pair = (Pair<Identifier, T>)decoded.result().get();
+         ResourceKey<E> elementKey = ResourceKey.create(this.registryKey, (Identifier)pair.getFirst());
+         return lookup.get(elementKey)
+            .<DataResult>map(DataResult::success)
+            .orElseGet(() -> DataResult.error(() -> "Failed to get element " + elementKey.identifier() + " from registry " + elementKey.registry()))
+            .map(h -> Pair.of(h, pair.getSecond()))
+            .setLifecycle(Lifecycle.stable());
       } else {
          return this.elementCodec.decode(ops, input).map(p -> p.mapFirst(Holder::direct));
       }

@@ -16,10 +16,8 @@ import org.jspecify.annotations.Nullable;
 
 public class DragonHoldingPatternPhase extends AbstractDragonPhaseInstance {
    private static final TargetingConditions NEW_TARGET_TARGETING = TargetingConditions.forCombat().ignoreLineOfSight();
-   @Nullable
-   private Path currentPath;
-   @Nullable
-   private Vec3 targetLocation;
+   private @Nullable Path currentPath;
+   private @Nullable Vec3 targetLocation;
    private boolean clockwise;
 
    public DragonHoldingPatternPhase(final EnderDragon dragon) {
@@ -45,9 +43,8 @@ public class DragonHoldingPatternPhase extends AbstractDragonPhaseInstance {
       this.targetLocation = null;
    }
 
-   @Nullable
    @Override
-   public Vec3 getFlyTargetLocation() {
+   public @Nullable Vec3 getFlyTargetLocation() {
       return this.targetLocation;
    }
 
@@ -60,7 +57,7 @@ public class DragonHoldingPatternPhase extends AbstractDragonPhaseInstance {
             return;
          }
 
-         Player playerNearestToEgg = level.getNearestPlayer(NEW_TARGET_TARGETING, this.dragon, (double)egg.getX(), (double)egg.getY(), (double)egg.getZ());
+         Player playerNearestToEgg = level.getNearestPlayer(NEW_TARGET_TARGETING, this.dragon, egg.getX(), egg.getY(), egg.getZ());
          double distSqr;
          if (playerNearestToEgg != null) {
             distSqr = egg.distToCenterSqr(playerNearestToEgg.position()) / 512.0;
@@ -79,7 +76,7 @@ public class DragonHoldingPatternPhase extends AbstractDragonPhaseInstance {
          int targetNodeIndex = currentNodeIndex;
          if (this.dragon.getRandom().nextInt(8) == 0) {
             this.clockwise = !this.clockwise;
-            targetNodeIndex = currentNodeIndex + 6;
+            targetNodeIndex += 6;
          }
 
          if (this.clockwise) {
@@ -117,20 +114,20 @@ public class DragonHoldingPatternPhase extends AbstractDragonPhaseInstance {
       if (this.currentPath != null && !this.currentPath.isDone()) {
          Vec3i current = this.currentPath.getNextNodePos();
          this.currentPath.advance();
-         double xTarget = (double)current.getX();
-         double zTarget = (double)current.getZ();
+         double xTarget = current.getX();
+         double zTarget = current.getZ();
 
          double yTarget;
          do {
-            yTarget = (double)((float)current.getY() + this.dragon.getRandom().nextFloat() * 20.0F);
-         } while (yTarget < (double)current.getY());
+            yTarget = current.getY() + this.dragon.getRandom().nextFloat() * 20.0F;
+         } while (yTarget < current.getY());
 
          this.targetLocation = new Vec3(xTarget, yTarget, zTarget);
       }
    }
 
    @Override
-   public void onCrystalDestroyed(final EndCrystal crystal, final BlockPos pos, final DamageSource source, @Nullable final Player player) {
+   public void onCrystalDestroyed(final EndCrystal crystal, final BlockPos pos, final DamageSource source, final @Nullable Player player) {
       if (player != null && this.dragon.canAttack(player)) {
          this.strafePlayer(player);
       }

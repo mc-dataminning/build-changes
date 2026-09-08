@@ -140,18 +140,15 @@ public class BellBlockEntity extends BlockEntity {
             entity -> {
                float distAway = 1.0F;
                double distBtwn = Math.sqrt(
-                  (entity.getX() - (double)bellPos.getX()) * (entity.getX() - (double)bellPos.getX())
-                     + (entity.getZ() - (double)bellPos.getZ()) * (entity.getZ() - (double)bellPos.getZ())
+                  (entity.getX() - bellPos.getX()) * (entity.getX() - bellPos.getX()) + (entity.getZ() - bellPos.getZ()) * (entity.getZ() - bellPos.getZ())
                );
-               double x3 = (double)((float)bellPos.getX() + 0.5F) + 1.0 / distBtwn * (entity.getX() - (double)bellPos.getX());
-               double z3 = (double)((float)bellPos.getZ() + 0.5F) + 1.0 / distBtwn * (entity.getZ() - (double)bellPos.getZ());
+               double x3 = bellPos.getX() + 0.5F + 1.0 / distBtwn * (entity.getX() - bellPos.getX());
+               double z3 = bellPos.getZ() + 0.5F + 1.0 / distBtwn * (entity.getZ() - bellPos.getZ());
                int particleCount = Mth.clamp((nearbyRaiderCount - 21) / -2, 3, 15);
 
                for (int i = 0; i < particleCount; i++) {
                   int color = particleColor.addAndGet(5);
-                  level.addParticle(
-                     ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, color), x3, (double)((float)bellPos.getY() + 0.5F), z3, 0.0, 0.0, 0.0
-                  );
+                  level.addParticle(ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, color), x3, bellPos.getY() + 0.5F, z3, 0.0, 0.0, 0.0);
                }
             }
          );

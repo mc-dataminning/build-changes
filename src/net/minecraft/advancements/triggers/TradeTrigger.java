@@ -8,7 +8,6 @@ import net.minecraft.advancements.predicates.entity.EntityPredicate;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.npc.villager.AbstractVillager;
-import net.minecraft.world.item.ItemInstance;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.Validatable;
@@ -26,15 +25,15 @@ public class TradeTrigger extends SimpleCriterionTrigger<TradeTrigger.TriggerIns
       this.trigger(player, t -> t.matches(villagerContext, itemStack));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<Holder<LootItemCondition>> villager, Optional<ItemPredicate> item)
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<Holder<LootItemCondition>> villager, Optional<ItemPredicate> item)
       implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<TradeTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(TradeTrigger.TriggerInstance::player),
-                  LootItemCondition.CODEC.optionalFieldOf("villager").forGetter(TradeTrigger.TriggerInstance::villager),
-                  ItemPredicate.CODEC.optionalFieldOf("item").forGetter(TradeTrigger.TriggerInstance::item)
-               )
-               .apply(i, TradeTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(TradeTrigger.TriggerInstance::player),
+               LootItemCondition.CODEC.optionalFieldOf("villager").forGetter(TradeTrigger.TriggerInstance::villager),
+               ItemPredicate.CODEC.optionalFieldOf("item").forGetter(TradeTrigger.TriggerInstance::item)
+            )
+            .apply(i, TradeTrigger.TriggerInstance::new)
       );
 
       public static Criterion<TradeTrigger.TriggerInstance> tradedWithVillager() {
@@ -47,9 +46,7 @@ public class TradeTrigger extends SimpleCriterionTrigger<TradeTrigger.TriggerIns
       }
 
       public boolean matches(final LootContext villager, final ItemStack itemStack) {
-         return this.villager.isPresent() && !this.villager.get().value().test(villager)
-            ? false
-            : !this.item.isPresent() || this.item.get().test((ItemInstance)itemStack);
+         return this.villager.isPresent() && !this.villager.get().value().test(villager) ? false : !this.item.isPresent() || this.item.get().test(itemStack);
       }
 
       @Override

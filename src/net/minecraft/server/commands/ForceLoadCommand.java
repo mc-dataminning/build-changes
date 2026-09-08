@@ -35,28 +35,28 @@ public class ForceLoadCommand {
    private static final CommandResponseTracker.MessagesWithArg<ChunkPos, ForceLoadCommand.ForceLoadParams> RESPONSE_ADD = CommandResponseTracker.messages(
       ERROR_ALL_ADDED,
       (chunkPos, var1, params) -> Component.translatable(
-            "commands.forceload.added.single", Component.translationArg(chunkPos), Component.translationArg(params.dimension().identifier())
-         ),
+         "commands.forceload.added.single", Component.translationArg(chunkPos), Component.translationArg(params.dimension().identifier())
+      ),
       (chunkCount, var1, params) -> Component.translatable(
-            "commands.forceload.added.multiple",
-            chunkCount,
-            Component.translationArg(params.dimension().identifier()),
-            Component.translationArg(params.min()),
-            Component.translationArg(params.max())
-         )
+         "commands.forceload.added.multiple",
+         chunkCount,
+         Component.translationArg(params.dimension().identifier()),
+         Component.translationArg(params.min()),
+         Component.translationArg(params.max())
+      )
    );
    private static final CommandResponseTracker.MessagesWithArg<ChunkPos, ForceLoadCommand.ForceLoadParams> RESPONSE_REMOVE = CommandResponseTracker.messages(
       ERROR_NONE_REMOVED,
       (chunkPos, var1, params) -> Component.translatable(
-            "commands.forceload.removed.single", Component.translationArg(chunkPos), Component.translationArg(params.dimension().identifier())
-         ),
+         "commands.forceload.removed.single", Component.translationArg(chunkPos), Component.translationArg(params.dimension().identifier())
+      ),
       (chunkCount, var1, params) -> Component.translatable(
-            "commands.forceload.removed.multiple",
-            chunkCount,
-            Component.translationArg(params.dimension().identifier()),
-            Component.translationArg(params.min()),
-            Component.translationArg(params.max())
-         )
+         "commands.forceload.removed.multiple",
+         chunkCount,
+         Component.translationArg(params.dimension().identifier()),
+         Component.translationArg(params.min()),
+         Component.translationArg(params.max())
+      )
    );
 
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
@@ -69,21 +69,21 @@ public class ForceLoadCommand {
                            ((RequiredArgumentBuilder)Commands.argument("from", ColumnPosArgument.columnPos())
                                  .executes(
                                     c -> changeForceLoad(
-                                          (CommandSourceStack)c.getSource(),
-                                          ColumnPosArgument.getColumnPos(c, "from"),
-                                          ColumnPosArgument.getColumnPos(c, "from"),
-                                          true
-                                       )
+                                       (CommandSourceStack)c.getSource(),
+                                       ColumnPosArgument.getColumnPos(c, "from"),
+                                       ColumnPosArgument.getColumnPos(c, "from"),
+                                       true
+                                    )
                                  ))
                               .then(
                                  Commands.argument("to", ColumnPosArgument.columnPos())
                                     .executes(
                                        c -> changeForceLoad(
-                                             (CommandSourceStack)c.getSource(),
-                                             ColumnPosArgument.getColumnPos(c, "from"),
-                                             ColumnPosArgument.getColumnPos(c, "to"),
-                                             true
-                                          )
+                                          (CommandSourceStack)c.getSource(),
+                                          ColumnPosArgument.getColumnPos(c, "from"),
+                                          ColumnPosArgument.getColumnPos(c, "to"),
+                                          true
+                                       )
                                     )
                               )
                         )
@@ -94,21 +94,21 @@ public class ForceLoadCommand {
                            ((RequiredArgumentBuilder)Commands.argument("from", ColumnPosArgument.columnPos())
                                  .executes(
                                     c -> changeForceLoad(
-                                          (CommandSourceStack)c.getSource(),
-                                          ColumnPosArgument.getColumnPos(c, "from"),
-                                          ColumnPosArgument.getColumnPos(c, "from"),
-                                          false
-                                       )
+                                       (CommandSourceStack)c.getSource(),
+                                       ColumnPosArgument.getColumnPos(c, "from"),
+                                       ColumnPosArgument.getColumnPos(c, "from"),
+                                       false
+                                    )
                                  ))
                               .then(
                                  Commands.argument("to", ColumnPosArgument.columnPos())
                                     .executes(
                                        c -> changeForceLoad(
-                                             (CommandSourceStack)c.getSource(),
-                                             ColumnPosArgument.getColumnPos(c, "from"),
-                                             ColumnPosArgument.getColumnPos(c, "to"),
-                                             false
-                                          )
+                                          (CommandSourceStack)c.getSource(),
+                                          ColumnPosArgument.getColumnPos(c, "from"),
+                                          ColumnPosArgument.getColumnPos(c, "to"),
+                                          false
+                                       )
                                     )
                               )
                         ))
@@ -132,8 +132,8 @@ public class ForceLoadCommand {
       if (result) {
          source.sendSuccess(
             () -> Component.translatable(
-                  "commands.forceload.query.success", Component.translationArg(chunkPos), Component.translationArg(dimension.identifier())
-               ),
+               "commands.forceload.query.success", Component.translationArg(chunkPos), Component.translationArg(dimension.identifier())
+            ),
             false
          );
          return 1;
@@ -184,30 +184,30 @@ public class ForceLoadCommand {
          int minChunkZ = SectionPos.blockToSectionCoord(minZ);
          int maxChunkX = SectionPos.blockToSectionCoord(maxX);
          int maxChunkZ = SectionPos.blockToSectionCoord(maxZ);
-         long chunkCount = ((long)(maxChunkX - minChunkX) + 1L) * ((long)(maxChunkZ - minChunkZ) + 1L);
+         long chunkCount = (maxChunkX - minChunkX + 1L) * (maxChunkZ - minChunkZ + 1L);
          if (chunkCount > 256L) {
             throw ERROR_TOO_MANY_CHUNKS.create(256, chunkCount);
-         } else {
-            CommandResponseTracker<ChunkPos> tracker = CommandResponseTracker.create();
-            ServerLevel level = source.getLevel();
-            ResourceKey<Level> dimension = level.dimension();
-
-            for (int x = minChunkX; x <= maxChunkX; x++) {
-               for (int z = minChunkZ; z <= maxChunkZ; z++) {
-                  tracker.track(new ChunkPos(x, z), level.setChunkForced(x, z, add));
-               }
-            }
-
-            return tracker.sendFeedback(
-               source, true, add ? RESPONSE_ADD : RESPONSE_REMOVE, new ForceLoadCommand.ForceLoadParams(dimension, minChunkX, minChunkZ, maxChunkX, maxChunkZ)
-            );
          }
+
+         CommandResponseTracker<ChunkPos> tracker = CommandResponseTracker.create();
+         ServerLevel level = source.getLevel();
+         ResourceKey<Level> dimension = level.dimension();
+
+         for (int x = minChunkX; x <= maxChunkX; x++) {
+            for (int z = minChunkZ; z <= maxChunkZ; z++) {
+               tracker.track(new ChunkPos(x, z), level.setChunkForced(x, z, add));
+            }
+         }
+
+         return tracker.sendFeedback(
+            source, true, add ? RESPONSE_ADD : RESPONSE_REMOVE, new ForceLoadCommand.ForceLoadParams(dimension, minChunkX, minChunkZ, maxChunkX, maxChunkZ)
+         );
       } else {
          throw BlockPosArgument.ERROR_OUT_OF_WORLD.create();
       }
    }
 
-   private static record ForceLoadParams(ResourceKey<Level> dimension, int minChunkX, int minChunkZ, int maxChunkX, int maxChunkZ) {
+   private record ForceLoadParams(ResourceKey<Level> dimension, int minChunkX, int minChunkZ, int maxChunkX, int maxChunkZ) {
       public ChunkPos min() {
          return new ChunkPos(this.minChunkX, this.minChunkZ);
       }

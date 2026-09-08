@@ -1,6 +1,5 @@
 package net.minecraft.world.entity.vehicle;
 
-import java.util.Objects;
 import net.minecraft.advancements.triggers.CriteriaTriggers;
 import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceKey;
@@ -35,10 +34,9 @@ public interface ContainerEntity extends Container, MenuProvider {
 
    AABB getBoundingBox();
 
-   @Nullable
-   ResourceKey<LootTable> getContainerLootTable();
+   @Nullable ResourceKey<LootTable> getContainerLootTable();
 
-   void setContainerLootTable(@Nullable final ResourceKey<LootTable> lootTable);
+   void setContainerLootTable(final @Nullable ResourceKey<LootTable> lootTable);
 
    long getContainerLootTableSeed();
 
@@ -92,7 +90,7 @@ public interface ContainerEntity extends Container, MenuProvider {
       return InteractionResult.SUCCESS;
    }
 
-   default void unpackChestVehicleLootTable(@Nullable final Player player) {
+   default void unpackChestVehicleLootTable(final @Nullable Player player) {
       MinecraftServer server = this.level().getServer();
       if (this.getContainerLootTable() != null && server != null) {
          LootTable lootTable = server.reloadableRegistries().getLootTable(this.getContainerLootTable());
@@ -130,10 +128,10 @@ public interface ContainerEntity extends Container, MenuProvider {
       ItemStack itemStack = this.getItemStacks().get(slot);
       if (itemStack.isEmpty()) {
          return ItemStack.EMPTY;
-      } else {
-         this.getItemStacks().set(slot, ItemStack.EMPTY);
-         return itemStack;
       }
+
+      this.getItemStacks().set(slot, ItemStack.EMPTY);
+      return itemStack;
    }
 
    default ItemStack getChestVehicleItem(final int slot) {
@@ -152,13 +150,8 @@ public interface ContainerEntity extends Container, MenuProvider {
       itemStack.limitSize(this.getMaxStackSize(itemStack));
    }
 
-   @Nullable
-   default SlotAccess getChestVehicleSlot(final int slot) {
+   default @Nullable SlotAccess getChestVehicleSlot(final int slot) {
       return slot >= 0 && slot < this.getContainerSize() ? new SlotAccess() {
-         {
-            Objects.requireNonNull(ContainerEntity.this);
-         }
-
          @Override
          public ItemStack get() {
             return ContainerEntity.this.getChestVehicleItem(slot);

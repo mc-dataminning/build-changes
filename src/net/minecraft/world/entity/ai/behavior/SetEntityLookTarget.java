@@ -26,19 +26,19 @@ public class SetEntityLookTarget {
       float maxDistSqr = maxDist * maxDist;
       return BehaviorBuilder.create(
          i -> i.group(i.absent(MemoryModuleType.LOOK_TARGET), i.present(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES))
-               .apply(
-                  i,
-                  (lookTarget, nearestEntities) -> (level, body, timestamp) -> {
-                        Optional<LivingEntity> target = i.<NearestVisibleLivingEntities>get(nearestEntities)
-                           .findClosest(predicate.and(mob -> mob.distanceToSqr(body) <= (double)maxDistSqr && !body.hasPassenger(mob)));
-                        if (target.isEmpty()) {
-                           return false;
-                        } else {
-                           lookTarget.set(new EntityTracker(target.get(), true));
-                           return true;
-                        }
-                     }
-               )
+            .apply(
+               i,
+               (lookTarget, nearestEntities) -> (level, body, timestamp) -> {
+                  Optional<LivingEntity> target = i.<NearestVisibleLivingEntities>get(nearestEntities)
+                     .findClosest(predicate.and(mob -> mob.distanceToSqr(body) <= maxDistSqr && !body.hasPassenger(mob)));
+                  if (target.isEmpty()) {
+                     return false;
+                  }
+
+                  lookTarget.set(new EntityTracker(target.get(), true));
+                  return true;
+               }
+            )
       );
    }
 }

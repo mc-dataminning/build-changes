@@ -37,6 +37,6 @@ public class GameTestBlockHighlightRenderer {
       }
    }
 
-   private static record Marker(int color, String text, long removeAtTime) {
+   private record Marker(int color, String text, long removeAtTime) {
    }
 }

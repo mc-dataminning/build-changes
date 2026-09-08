@@ -19,10 +19,8 @@ public class SignsOpFlagFix extends DataFix {
          "Add allow-op flag to " + entityName,
          this.getInputSchema().getType(References.BLOCK_ENTITY),
          input -> input.updateTyped(
-               entityF,
-               entityType,
-               entity -> entity.update(DSL.remainderFinder(), remainder -> remainder.set("allow_op_features", remainder.createBoolean(true)))
-            )
+            entityF, entityType, entity -> entity.update(DSL.remainderFinder(), remainder -> remainder.set("allow_op_features", remainder.createBoolean(true)))
+         )
       );
    }
 

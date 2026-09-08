@@ -48,9 +48,9 @@ public abstract class AbstractDebugChart {
       graphics.verticalLine(left, bottom - 60, bottom, -1);
       graphics.verticalLine(left + width - 1, bottom - 60, bottom, -1);
       if (sampleCount > 0) {
-         String minText = this.toDisplayString((double)min) + " min";
-         String avgText = this.toDisplayString((double)avg / (double)sampleCount) + " avg";
-         String maxText = this.toDisplayString((double)max) + " max";
+         String minText = this.toDisplayString(min) + " min";
+         String avgText = this.toDisplayString((double)avg / sampleCount) + " avg";
+         String maxText = this.toDisplayString(max) + " max";
          graphics.text(this.font, minText, left + 2, bottom - 60 - 9, -2039584);
          graphics.centeredText(this.font, avgText, left + width / 2, bottom - 60 - 9, -2039584);
          graphics.text(this.font, maxText, left + width - this.font.width(maxText) - 2, bottom - 60 - 9, -2039584);
@@ -66,7 +66,7 @@ public abstract class AbstractDebugChart {
 
    protected void extractMainSampleBar(final GuiGraphicsExtractor graphics, final int bottom, final int currentX, final int sampleIndex) {
       long value = this.sampleStorage.get(sampleIndex);
-      int sampleHeight = this.getSampleHeight((double)value);
+      int sampleHeight = this.getSampleHeight(value);
       int color = this.getSampleColor(value);
       graphics.fill(currentX, bottom - sampleHeight, currentX + 1, bottom, color);
    }

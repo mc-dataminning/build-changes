@@ -99,9 +99,8 @@ public class Squid extends AgeableWaterCreature {
       return Entity.MovementEmission.EVENTS;
    }
 
-   @Nullable
    @Override
-   public AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       return EntityTypes.SQUID.create(level, EntitySpawnReason.BREEDING);
    }
 
@@ -118,7 +117,7 @@ public class Squid extends AgeableWaterCreature {
       this.oldTentacleMovement = this.tentacleMovement;
       this.oldTentacleAngle = this.tentacleAngle;
       this.tentacleMovement = this.tentacleMovement + this.tentacleSpeed;
-      if ((double)this.tentacleMovement > Math.PI * 2) {
+      if (this.tentacleMovement > Math.PI * 2) {
          if (this.level().isClientSide()) {
             this.tentacleMovement = (float) (Math.PI * 2);
          } else {
@@ -134,8 +133,8 @@ public class Squid extends AgeableWaterCreature {
       if (this.isInWater()) {
          if (this.tentacleMovement < (float) Math.PI) {
             float tentacleScale = this.tentacleMovement / (float) Math.PI;
-            this.tentacleAngle = Mth.sin((double)(tentacleScale * tentacleScale * (float) Math.PI)) * (float) Math.PI * 0.25F;
-            if ((double)tentacleScale > 0.75) {
+            this.tentacleAngle = Mth.sin(tentacleScale * tentacleScale * (float) Math.PI) * (float) Math.PI * 0.25F;
+            if (tentacleScale > 0.75) {
                if (this.isLocalInstanceAuthoritative()) {
                   this.setDeltaMovement(this.movementVector);
                }
@@ -160,16 +159,16 @@ public class Squid extends AgeableWaterCreature {
          this.zBodyRot = this.zBodyRot + (float) Math.PI * this.rotateSpeed * 1.5F;
          this.xBodyRot = this.xBodyRot + (-((float)Mth.atan2(horizontalMovement, movement.y)) * (180.0F / (float)Math.PI) - this.xBodyRot) * 0.1F;
       } else {
-         this.tentacleAngle = Mth.abs(Mth.sin((double)this.tentacleMovement)) * (float) Math.PI * 0.25F;
+         this.tentacleAngle = Mth.abs(Mth.sin(this.tentacleMovement)) * (float) Math.PI * 0.25F;
          if (!this.level().isClientSide()) {
             double yd = this.getDeltaMovement().y;
             if (this.hasEffect(MobEffects.LEVITATION)) {
-               yd = 0.05 * (double)(this.getEffect(MobEffects.LEVITATION).getAmplifier() + 1);
+               yd = 0.05 * (this.getEffect(MobEffects.LEVITATION).getAmplifier() + 1);
             } else {
                yd -= this.getGravity();
             }
 
-            this.setDeltaMovement(0.0, yd * (double)this.getAirDrag(), 0.0);
+            this.setDeltaMovement(0.0, yd * this.getAirDrag(), 0.0);
          }
 
          this.xBodyRot = this.xBodyRot + (-90.0F - this.xBodyRot) * 0.02F;
@@ -196,9 +195,9 @@ public class Squid extends AgeableWaterCreature {
       Vec3 pos = this.rotateVector(new Vec3(0.0, -1.0, 0.0)).add(this.getX(), this.getY(), this.getZ());
 
       for (int i = 0; i < 30; i++) {
-         Vec3 dir = this.rotateVector(new Vec3((double)this.random.nextFloat() * 0.6 - 0.3, -1.0, (double)this.random.nextFloat() * 0.6 - 0.3));
+         Vec3 dir = this.rotateVector(new Vec3(this.random.nextFloat() * 0.6 - 0.3, -1.0, this.random.nextFloat() * 0.6 - 0.3));
          float inkPosOffsetScale = this.isBaby() ? 0.1F : 0.3F;
-         Vec3 dirOffset = dir.scale((double)(inkPosOffsetScale + this.random.nextFloat() * 2.0F));
+         Vec3 dirOffset = dir.scale(inkPosOffsetScale + this.random.nextFloat() * 2.0F);
          ((ServerLevel)this.level()).sendParticles(this.getInkParticle(), pos.x, pos.y + 0.5, pos.z, 0, dirOffset.x, dirOffset.y, dirOffset.z, 0.1F);
       }
    }
@@ -213,7 +212,7 @@ public class Squid extends AgeableWaterCreature {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 19) {
          this.tentacleMovement = 0.0F;
       } else {
@@ -225,10 +224,9 @@ public class Squid extends AgeableWaterCreature {
       return this.movementVector.lengthSqr() > 1.0E-5F;
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+   public @Nullable SpawnGroupData finalizeSpawn(
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       SpawnGroupData spawnGroupData = Objects.requireNonNullElseGet(groupData, () -> new AgeableMob.AgeableMobGroupData(0.05F));
       return super.finalizeSpawn(level, difficulty, spawnReason, spawnGroupData);
@@ -244,11 +242,6 @@ public class Squid extends AgeableWaterCreature {
       private static final float SQUID_FLEE_MIN_DISTANCE = 5.0F;
       private static final float SQUID_FLEE_MAX_DISTANCE = 10.0F;
       private int fleeTicks;
-
-      private SquidFleeGoal() {
-         Objects.requireNonNull(Squid.this);
-         super();
-      }
 
       @Override
       public boolean canUse() {
@@ -323,9 +316,7 @@ public class Squid extends AgeableWaterCreature {
             this.squid.movementVector = Vec3.ZERO;
          } else if (this.squid.getRandom().nextInt(reducedTickDelay(50)) == 0 || !this.squid.wasTouchingWater || !this.squid.hasMovementVector()) {
             float angle = this.squid.getRandom().nextFloat() * (float) (Math.PI * 2);
-            this.squid.movementVector = new Vec3(
-               (double)(Mth.cos((double)angle) * 0.2F), (double)(-0.1F + this.squid.getRandom().nextFloat() * 0.2F), (double)(Mth.sin((double)angle) * 0.2F)
-            );
+            this.squid.movementVector = new Vec3(Mth.cos(angle) * 0.2F, -0.1F + this.squid.getRandom().nextFloat() * 0.2F, Mth.sin(angle) * 0.2F);
          }
       }
    }

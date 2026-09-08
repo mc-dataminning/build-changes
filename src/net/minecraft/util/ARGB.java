@@ -10,27 +10,27 @@ public class ARGB {
    private static final int LINEAR_CHANNEL_DEPTH = 1024;
    private static final short[] SRGB_TO_LINEAR = Util.make(new short[256], lookup -> {
       for (int i = 0; i < lookup.length; i++) {
-         float channel = (float)i / 255.0F;
+         float channel = i / 255.0F;
          lookup[i] = (short)Math.round(computeSrgbToLinear(channel) * 1023.0F);
       }
    });
    private static final byte[] LINEAR_TO_SRGB = Util.make(new byte[1024], lookup -> {
       for (int i = 0; i < lookup.length; i++) {
-         float channel = (float)i / 1023.0F;
+         float channel = i / 1023.0F;
          lookup[i] = (byte)Math.round(computeLinearToSrgb(channel) * 255.0F);
       }
    });
 
    private static float computeSrgbToLinear(final float x) {
-      return x >= 0.04045F ? (float)Math.pow(((double)x + 0.055) / 1.055, 2.4) : x / 12.92F;
+      return x >= 0.04045F ? (float)Math.pow((x + 0.055) / 1.055, 2.4) : x / 12.92F;
    }
 
    private static float computeLinearToSrgb(final float x) {
-      return x >= 0.0031308F ? (float)(1.055 * Math.pow((double)x, 0.4166666666666667) - 0.055) : 12.92F * x;
+      return x >= 0.0031308F ? (float)(1.055 * Math.pow(x, 0.4166666666666667) - 0.055) : 12.92F * x;
    }
 
    public static float srgbToLinearChannel(final int srgb) {
-      return (float)SRGB_TO_LINEAR[srgb] / 1023.0F;
+      return SRGB_TO_LINEAR[srgb] / 1023.0F;
    }
 
    public static int linearToSrgbChannel(final float linear) {
@@ -142,9 +142,9 @@ public class ARGB {
    public static int scaleRGB(final int color, final float scaleR, final float scaleG, final float scaleB) {
       return color(
          alpha(color),
-         Math.clamp((long)((int)((float)red(color) * scaleR)), 0, 255),
-         Math.clamp((long)((int)((float)green(color) * scaleG)), 0, 255),
-         Math.clamp((long)((int)((float)blue(color) * scaleB)), 0, 255)
+         Math.clamp((int)(red(color) * scaleR), 0, 255),
+         Math.clamp((int)(green(color) * scaleG), 0, 255),
+         Math.clamp((int)(blue(color) * scaleB), 0, 255)
       );
    }
 
@@ -169,14 +169,14 @@ public class ARGB {
    public static int scaleRGB(final int color, final int scale) {
       return color(
          alpha(color),
-         Math.clamp((long)red(color) * (long)scale / 255L, 0, 255),
-         Math.clamp((long)green(color) * (long)scale / 255L, 0, 255),
-         Math.clamp((long)blue(color) * (long)scale / 255L, 0, 255)
+         Math.clamp((long)red(color) * scale / 255L, 0, 255),
+         Math.clamp((long)green(color) * scale / 255L, 0, 255),
+         Math.clamp((long)blue(color) * scale / 255L, 0, 255)
       );
    }
 
    public static int greyscale(final int color) {
-      int greyscale = (int)((float)red(color) * 0.3F + (float)green(color) * 0.59F + (float)blue(color) * 0.11F);
+      int greyscale = (int)(red(color) * 0.3F + green(color) * 0.59F + blue(color) * 0.11F);
       return color(alpha(color), greyscale, greyscale, greyscale);
    }
 
@@ -195,27 +195,29 @@ public class ARGB {
       int sourceAlpha = alpha(source);
       if (sourceAlpha == 255) {
          return source;
-      } else if (sourceAlpha == 0) {
-         return destination;
-      } else {
-         int alpha = sourceAlpha + destinationAlpha * (255 - sourceAlpha) / 255;
-         return color(
-            alpha,
-            alphaBlendChannel(alpha, sourceAlpha, red(destination), red(source)),
-            alphaBlendChannel(alpha, sourceAlpha, green(destination), green(source)),
-            alphaBlendChannel(alpha, sourceAlpha, blue(destination), blue(source))
-         );
       }
+
+      if (sourceAlpha == 0) {
+         return destination;
+      }
+
+      int alpha = sourceAlpha + destinationAlpha * (255 - sourceAlpha) / 255;
+      return color(
+         alpha,
+         alphaBlendChannel(alpha, sourceAlpha, red(destination), red(source)),
+         alphaBlendChannel(alpha, sourceAlpha, green(destination), green(source)),
+         alphaBlendChannel(alpha, sourceAlpha, blue(destination), blue(source))
+      );
    }
 
    public static Vector3fc alphaBlend(final Vector3fc destination, final Vector4fc source) {
       float sourceAlpha = source.w();
       if (sourceAlpha == 0.0F) {
          return destination;
-      } else {
-         Vector3f sourceRgb = new Vector3f().set(source);
-         return destination.lerp(sourceRgb, sourceAlpha, sourceRgb);
       }
+
+      Vector3f sourceRgb = new Vector3f().set(source);
+      return destination.lerp(sourceRgb, sourceAlpha, sourceRgb);
    }
 
    public static Vector4fc alphaBlend(final Vector4fc destination, final Vector4fc source) {
@@ -223,17 +225,19 @@ public class ARGB {
       float sourceAlpha = source.w();
       if (sourceAlpha == 1.0F) {
          return source;
-      } else if (sourceAlpha == 0.0F) {
-         return destination;
-      } else {
-         float alpha = sourceAlpha + destinationAlpha * (1.0F - sourceAlpha);
-         return new Vector4f(
-            alphaBlendChannel(alpha, sourceAlpha, destination.x(), source.x()),
-            alphaBlendChannel(alpha, sourceAlpha, destination.y(), source.y()),
-            alphaBlendChannel(alpha, sourceAlpha, destination.z(), source.z()),
-            alpha
-         );
       }
+
+      if (sourceAlpha == 0.0F) {
+         return destination;
+      }
+
+      float alpha = sourceAlpha + destinationAlpha * (1.0F - sourceAlpha);
+      return new Vector4f(
+         alphaBlendChannel(alpha, sourceAlpha, destination.x(), source.x()),
+         alphaBlendChannel(alpha, sourceAlpha, destination.y(), source.y()),
+         alphaBlendChannel(alpha, sourceAlpha, destination.z(), source.z()),
+         alpha
+      );
    }
 
    private static int alphaBlendChannel(final int resultAlpha, final int sourceAlpha, final int destination, final int source) {
@@ -355,7 +359,7 @@ public class ARGB {
    }
 
    private static float from8BitChannel(final int value) {
-      return (float)value / 255.0F;
+      return value / 255.0F;
    }
 
    public static int toABGR(final int color) {
@@ -373,10 +377,10 @@ public class ARGB {
       int alpha = alpha(color);
       int rgbMax = Math.max(Math.max(red, green), blue);
       int rgbMin = Math.min(Math.min(red, green), blue);
-      float rgbConstantRange = (float)(rgbMax - rgbMin);
+      float rgbConstantRange = rgbMax - rgbMin;
       float saturation;
       if (rgbMax != 0) {
-         saturation = rgbConstantRange / (float)rgbMax;
+         saturation = rgbConstantRange / rgbMax;
       } else {
          saturation = 0.0F;
       }
@@ -385,9 +389,9 @@ public class ARGB {
       if (saturation == 0.0F) {
          hue = 0.0F;
       } else {
-         float constantRed = (float)(rgbMax - red) / rgbConstantRange;
-         float constantGreen = (float)(rgbMax - green) / rgbConstantRange;
-         float constantBlue = (float)(rgbMax - blue) / rgbConstantRange;
+         float constantRed = (rgbMax - red) / rgbConstantRange;
+         float constantGreen = (rgbMax - green) / rgbConstantRange;
+         float constantBlue = (rgbMax - blue) / rgbConstantRange;
          if (red == rgbMax) {
             hue = constantBlue - constantGreen;
          } else if (green == rgbMax) {
@@ -405,45 +409,45 @@ public class ARGB {
       if (saturation == 0.0F) {
          red = green = blue = Math.round(brightness * 255.0F);
          return color(alpha, red, green, blue);
-      } else {
-         float colorWheelSegment = (hue - (float)Math.floor((double)hue)) * 6.0F;
-         float colorWheelOffset = colorWheelSegment - (float)Math.floor((double)colorWheelSegment);
-         float primaryColor = brightness * (1.0F - saturation);
-         float secondaryColor = brightness * (1.0F - saturation * colorWheelOffset);
-         float tertiaryColor = brightness * (1.0F - saturation * (1.0F - colorWheelOffset));
-         switch ((int)colorWheelSegment) {
-            case 0:
-               red = Math.round(brightness * 255.0F);
-               green = Math.round(tertiaryColor * 255.0F);
-               blue = Math.round(primaryColor * 255.0F);
-               break;
-            case 1:
-               red = Math.round(secondaryColor * 255.0F);
-               green = Math.round(brightness * 255.0F);
-               blue = Math.round(primaryColor * 255.0F);
-               break;
-            case 2:
-               red = Math.round(primaryColor * 255.0F);
-               green = Math.round(brightness * 255.0F);
-               blue = Math.round(tertiaryColor * 255.0F);
-               break;
-            case 3:
-               red = Math.round(primaryColor * 255.0F);
-               green = Math.round(secondaryColor * 255.0F);
-               blue = Math.round(brightness * 255.0F);
-               break;
-            case 4:
-               red = Math.round(tertiaryColor * 255.0F);
-               green = Math.round(primaryColor * 255.0F);
-               blue = Math.round(brightness * 255.0F);
-               break;
-            case 5:
-               red = Math.round(brightness * 255.0F);
-               green = Math.round(primaryColor * 255.0F);
-               blue = Math.round(secondaryColor * 255.0F);
-         }
-
-         return color(alpha, red, green, blue);
       }
+
+      float colorWheelSegment = (hue - (float)Math.floor(hue)) * 6.0F;
+      float colorWheelOffset = colorWheelSegment - (float)Math.floor(colorWheelSegment);
+      float primaryColor = brightness * (1.0F - saturation);
+      float secondaryColor = brightness * (1.0F - saturation * colorWheelOffset);
+      float tertiaryColor = brightness * (1.0F - saturation * (1.0F - colorWheelOffset));
+      switch ((int)colorWheelSegment) {
+         case 0:
+            red = Math.round(brightness * 255.0F);
+            green = Math.round(tertiaryColor * 255.0F);
+            blue = Math.round(primaryColor * 255.0F);
+            break;
+         case 1:
+            red = Math.round(secondaryColor * 255.0F);
+            green = Math.round(brightness * 255.0F);
+            blue = Math.round(primaryColor * 255.0F);
+            break;
+         case 2:
+            red = Math.round(primaryColor * 255.0F);
+            green = Math.round(brightness * 255.0F);
+            blue = Math.round(tertiaryColor * 255.0F);
+            break;
+         case 3:
+            red = Math.round(primaryColor * 255.0F);
+            green = Math.round(secondaryColor * 255.0F);
+            blue = Math.round(brightness * 255.0F);
+            break;
+         case 4:
+            red = Math.round(tertiaryColor * 255.0F);
+            green = Math.round(primaryColor * 255.0F);
+            blue = Math.round(brightness * 255.0F);
+            break;
+         case 5:
+            red = Math.round(brightness * 255.0F);
+            green = Math.round(primaryColor * 255.0F);
+            blue = Math.round(secondaryColor * 255.0F);
+      }
+
+      return color(alpha, red, green, blue);
    }
 }

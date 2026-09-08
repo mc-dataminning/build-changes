@@ -30,8 +30,7 @@ public class TelemetryEventWidget extends AbstractTextAreaWidget {
    private static final Component PROPERTY_TITLE = Component.translatable("telemetry_info.property_title").withStyle(ChatFormatting.UNDERLINE);
    private final Font font;
    private TelemetryEventWidget.Content content;
-   @Nullable
-   private DoubleConsumer onScrolledListener;
+   private @Nullable DoubleConsumer onScrolledListener;
 
    public TelemetryEventWidget(final int x, final int y, final int width, final int height, final Font font) {
       super(x, y, width, height, Component.empty(), AbstractScrollArea.defaultSettings(9));
@@ -66,7 +65,7 @@ public class TelemetryEventWidget extends AbstractTextAreaWidget {
       return content.build();
    }
 
-   public void setOnScrolledListener(@Nullable final DoubleConsumer listener) {
+   public void setOnScrolledListener(final @Nullable DoubleConsumer listener) {
       this.onScrolledListener = listener;
    }
 
@@ -88,7 +87,7 @@ public class TelemetryEventWidget extends AbstractTextAreaWidget {
       int top = this.getInnerTop();
       int left = this.getInnerLeft();
       graphics.pose().pushMatrix();
-      graphics.pose().translate((float)left, (float)top);
+      graphics.pose().translate(left, top);
       this.content.container().visitWidgets(widget -> widget.extractRenderState(graphics, mouseX, mouseY, a));
       graphics.pose().popMatrix();
    }
@@ -99,7 +98,7 @@ public class TelemetryEventWidget extends AbstractTextAreaWidget {
    }
 
    private Component grayOutIfDisabled(final Component component, final boolean isDisabled) {
-      return (Component)(isDisabled ? component.copy().withStyle(ChatFormatting.GRAY) : component);
+      return isDisabled ? component.copy().withStyle(ChatFormatting.GRAY) : component;
    }
 
    private void addEventType(final TelemetryEventWidget.ContentBuilder builder, final TelemetryEventType eventType, final boolean isDisabled) {
@@ -123,7 +122,7 @@ public class TelemetryEventWidget extends AbstractTextAreaWidget {
       return this.width - this.totalInnerPadding();
    }
 
-   private static record Content(Layout container, Component narration) {
+   private record Content(Layout container, Component narration) {
    }
 
    private static class ContentBuilder {

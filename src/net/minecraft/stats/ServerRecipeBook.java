@@ -147,14 +147,14 @@ public class ServerRecipeBook extends RecipeBook {
       void displaysForRecipe(ResourceKey<Recipe<?>> id, Consumer<RecipeDisplayEntry> output);
    }
 
-   public static record Packed(RecipeBookSettings settings, List<ResourceKey<Recipe<?>>> known, List<ResourceKey<Recipe<?>>> highlight) {
+   public record Packed(RecipeBookSettings settings, List<ResourceKey<Recipe<?>>> known, List<ResourceKey<Recipe<?>>> highlight) {
       public static final Codec<ServerRecipeBook.Packed> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  RecipeBookSettings.MAP_CODEC.forGetter(ServerRecipeBook.Packed::settings),
-                  Recipe.KEY_CODEC.listOf().fieldOf("recipes").forGetter(ServerRecipeBook.Packed::known),
-                  Recipe.KEY_CODEC.listOf().fieldOf("toBeDisplayed").forGetter(ServerRecipeBook.Packed::highlight)
-               )
-               .apply(i, ServerRecipeBook.Packed::new)
+               RecipeBookSettings.MAP_CODEC.forGetter(ServerRecipeBook.Packed::settings),
+               Recipe.KEY_CODEC.listOf().fieldOf("recipes").forGetter(ServerRecipeBook.Packed::known),
+               Recipe.KEY_CODEC.listOf().fieldOf("toBeDisplayed").forGetter(ServerRecipeBook.Packed::highlight)
+            )
+            .apply(i, ServerRecipeBook.Packed::new)
       );
    }
 }

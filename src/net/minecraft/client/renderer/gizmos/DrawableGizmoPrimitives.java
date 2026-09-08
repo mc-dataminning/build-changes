@@ -59,7 +59,7 @@ public class DrawableGizmoPrimitives implements GizmoPrimitives {
       return this.isEmpty;
    }
 
-   public static record Group(
+   public record Group(
       boolean opaque,
       List<DrawableGizmoPrimitives.Line> lines,
       List<DrawableGizmoPrimitives.Quad> quads,
@@ -72,18 +72,18 @@ public class DrawableGizmoPrimitives implements GizmoPrimitives {
       }
    }
 
-   public static record Line(Vec3 start, Vec3 end, int color, float width) {
+   public record Line(Vec3 start, Vec3 end, int color, float width) {
    }
 
-   public static record Point(Vec3 pos, int color, float size) {
+   public record Point(Vec3 pos, int color, float size) {
    }
 
-   public static record Quad(Vec3 a, Vec3 b, Vec3 c, Vec3 d, int color) {
+   public record Quad(Vec3 a, Vec3 b, Vec3 c, Vec3 d, int color) {
    }
 
-   public static record Text(Vec3 pos, String text, TextGizmo.Style style) {
+   public record Text(Vec3 pos, String text, TextGizmo.Style style) {
    }
 
-   public static record TriangleFan(Vec3[] points, int color) {
+   public record TriangleFan(Vec3[] points, int color) {
    }
 }

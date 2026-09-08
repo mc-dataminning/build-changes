@@ -14,7 +14,7 @@ public interface ArgumentTypeInfo<A extends ArgumentType<?>, T extends ArgumentT
 
    T unpack(final A argument);
 
-   public interface Template<A extends ArgumentType<?>> {
+   interface Template<A extends ArgumentType<?>> {
       A instantiate(CommandBuildContext context);
 
       ArgumentTypeInfo<A, ?> type();

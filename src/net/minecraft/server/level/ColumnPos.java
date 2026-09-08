@@ -16,7 +16,7 @@ public record ColumnPos(int x, int z) {
    }
 
    public static long asLong(final int x, final int z) {
-      return (long)x & 4294967295L | ((long)z & 4294967295L) << 32;
+      return x & 4294967295L | (z & 4294967295L) << 32;
    }
 
    public static int getX(final long pos) {

@@ -17,12 +17,12 @@ public record HugeRedMushroomFeature(
 ) implements AbstractHugeMushroomFeature {
    public static final MapCodec<HugeRedMushroomFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BlockStateProvider.CODEC.fieldOf("cap_provider").forGetter(HugeRedMushroomFeature::capProvider),
-               BlockStateProvider.CODEC.fieldOf("stem_provider").forGetter(HugeRedMushroomFeature::stemProvider),
-               Codec.INT.optionalFieldOf("foliage_radius", 2).forGetter(HugeRedMushroomFeature::foliageRadius),
-               BlockPredicate.CODEC.fieldOf("can_place_on").forGetter(HugeRedMushroomFeature::canPlaceOn)
-            )
-            .apply(i, HugeRedMushroomFeature::new)
+            BlockStateProvider.CODEC.fieldOf("cap_provider").forGetter(HugeRedMushroomFeature::capProvider),
+            BlockStateProvider.CODEC.fieldOf("stem_provider").forGetter(HugeRedMushroomFeature::stemProvider),
+            Codec.INT.optionalFieldOf("foliage_radius", 2).forGetter(HugeRedMushroomFeature::foliageRadius),
+            BlockPredicate.CODEC.fieldOf("can_place_on").forGetter(HugeRedMushroomFeature::canPlaceOn)
+         )
+         .apply(i, HugeRedMushroomFeature::new)
    );
 
    @Override
@@ -54,11 +54,11 @@ public record HugeRedMushroomFeature(
                      && state.hasProperty(HugeMushroomBlock.NORTH)
                      && state.hasProperty(HugeMushroomBlock.SOUTH)
                      && state.hasProperty(HugeMushroomBlock.UP)) {
-                     state = state.setValue(HugeMushroomBlock.UP, Boolean.valueOf(dy >= treeHeight - 1))
-                        .setValue(HugeMushroomBlock.WEST, Boolean.valueOf(dx < -center))
-                        .setValue(HugeMushroomBlock.EAST, Boolean.valueOf(dx > center))
-                        .setValue(HugeMushroomBlock.NORTH, Boolean.valueOf(dz < -center))
-                        .setValue(HugeMushroomBlock.SOUTH, Boolean.valueOf(dz > center));
+                     state = state.setValue(HugeMushroomBlock.UP, dy >= treeHeight - 1)
+                        .setValue(HugeMushroomBlock.WEST, dx < -center)
+                        .setValue(HugeMushroomBlock.EAST, dx > center)
+                        .setValue(HugeMushroomBlock.NORTH, dz < -center)
+                        .setValue(HugeMushroomBlock.SOUTH, dz > center);
                   }
 
                   this.placeMushroomBlock(level, blockPos, state);

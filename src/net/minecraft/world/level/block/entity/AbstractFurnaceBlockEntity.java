@@ -7,7 +7,6 @@ import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Reference2IntMap.Entry;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -73,10 +72,6 @@ public abstract class AbstractFurnaceBlockEntity extends BaseContainerBlockEntit
    private int cookingTotalTime;
    private float speedMultiplier = 1.0F;
    protected final ContainerData dataAccess = new ContainerData() {
-      {
-         Objects.requireNonNull(AbstractFurnaceBlockEntity.this);
-      }
-
       @Override
       public int get(final int dataId) {
          switch (dataId) {
@@ -183,9 +178,9 @@ public abstract class AbstractFurnaceBlockEntity extends BaseContainerBlockEntit
                      entity.litTotalTime = newLitTime;
                      entity.speedMultiplier = newSpeedMultiplier;
                      if (entity.cookingTotalTime > 0 && entity.cookingTimer < entity.cookingTotalTime) {
-                        float completionRatio = (float)entity.cookingTimer / (float)entity.cookingTotalTime;
+                        float completionRatio = (float)entity.cookingTimer / entity.cookingTotalTime;
                         entity.cookingTotalTime = getTotalCookTime(recipe, entity);
-                        entity.cookingTimer = (int)Math.ceil((double)(completionRatio * (float)entity.cookingTotalTime));
+                        entity.cookingTimer = (int)Math.ceil(completionRatio * entity.cookingTotalTime);
                      }
 
                      if (newLitTime > 0) {
@@ -220,7 +215,7 @@ public abstract class AbstractFurnaceBlockEntity extends BaseContainerBlockEntit
 
       if (wasLit != isLit) {
          changed = true;
-         state = state.setValue(AbstractFurnaceBlock.LIT, Boolean.valueOf(isLit));
+         state = state.setValue(AbstractFurnaceBlock.LIT, isLit);
          level.setBlockAndUpdate(pos, state);
       }
 
@@ -238,7 +233,7 @@ public abstract class AbstractFurnaceBlockEntity extends BaseContainerBlockEntit
          if (fuel.isEmpty()) {
             newFuel = remainder.create();
          } else {
-            Containers.dropItemStack(level, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), remainder.create());
+            Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), remainder.create());
          }
       }
 
@@ -249,13 +244,15 @@ public abstract class AbstractFurnaceBlockEntity extends BaseContainerBlockEntit
       ItemStack resultItemStack = items.get(2);
       if (resultItemStack.isEmpty()) {
          return true;
-      } else if (!ItemStack.isSameItemSameComponents(resultItemStack, burnResult)) {
-         return false;
-      } else {
-         int resultCount = resultItemStack.getCount() + burnResult.count();
-         int maxResultCount = Math.min(maxStackSize, burnResult.getMaxStackSize());
-         return resultCount <= maxResultCount;
       }
+
+      if (!ItemStack.isSameItemSameComponents(resultItemStack, burnResult)) {
+         return false;
+      }
+
+      int resultCount = resultItemStack.getCount() + burnResult.count();
+      int maxResultCount = Math.min(maxStackSize, burnResult.getMaxStackSize());
+      return resultCount <= maxResultCount;
    }
 
    private static void burn(final NonNullList<ItemStack> items, final ItemStack inputItemStack, final ItemStack result) {
@@ -283,7 +280,7 @@ public abstract class AbstractFurnaceBlockEntity extends BaseContainerBlockEntit
 
    private static int getTotalCookTime(final RecipeHolder<? extends AbstractCookingRecipe> recipe, final AbstractFurnaceBlockEntity entity) {
       int cookingTotalTime = recipe.value().cookingTime();
-      return entity.speedMultiplier > 0.0F ? (int)Math.ceil((double)((float)cookingTotalTime / entity.speedMultiplier)) : cookingTotalTime;
+      return entity.speedMultiplier > 0.0F ? (int)Math.ceil(cookingTotalTime / entity.speedMultiplier) : cookingTotalTime;
    }
 
    private static int getTotalCookTime(final ServerLevel level, final AbstractFurnaceBlockEntity entity) {
@@ -304,7 +301,7 @@ public abstract class AbstractFurnaceBlockEntity extends BaseContainerBlockEntit
    }
 
    @Override
-   public boolean canPlaceItemThroughFace(final int slot, final ItemStack itemStack, @Nullable final Direction direction) {
+   public boolean canPlaceItemThroughFace(final int slot, final ItemStack itemStack, final @Nullable Direction direction) {
       return this.canPlaceItem(slot, itemStack);
    }
 
@@ -345,25 +342,26 @@ public abstract class AbstractFurnaceBlockEntity extends BaseContainerBlockEntit
    public boolean canPlaceItem(final int slot, final ItemStack itemStack) {
       if (slot == 2) {
          return false;
-      } else if (slot != 1) {
-         return true;
-      } else {
-         ItemStack fuelSlot = this.items.get(1);
-         return itemStack.has(DataComponents.COOKING_FUEL) || itemStack.is(Items.BUCKET) && !fuelSlot.is(Items.BUCKET);
       }
+
+      if (slot != 1) {
+         return true;
+      }
+
+      ItemStack fuelSlot = this.items.get(1);
+      return itemStack.has(DataComponents.COOKING_FUEL) || itemStack.is(Items.BUCKET) && !fuelSlot.is(Items.BUCKET);
    }
 
    @Override
-   public void setRecipeUsed(@Nullable final RecipeHolder<?> recipeUsed) {
+   public void setRecipeUsed(final @Nullable RecipeHolder<?> recipeUsed) {
       if (recipeUsed != null) {
          ResourceKey<Recipe<?>> id = recipeUsed.id();
          this.recipesUsed.addTo(id, 1);
       }
    }
 
-   @Nullable
    @Override
-   public RecipeHolder<?> getRecipeUsed() {
+   public @Nullable RecipeHolder<?> getRecipeUsed() {
       return null;
    }
 
@@ -398,8 +396,8 @@ public abstract class AbstractFurnaceBlockEntity extends BaseContainerBlockEntit
    }
 
    private static void createExperience(final ServerLevel level, final Vec3 position, final int amount, final float value) {
-      int xpReward = Mth.floor((float)amount * value);
-      float xpFraction = Mth.frac((float)amount * value);
+      int xpReward = Mth.floor(amount * value);
+      float xpFraction = Mth.frac(amount * value);
       if (xpFraction != 0.0F && level.getRandom().nextFloat() < xpFraction) {
          xpReward++;
       }

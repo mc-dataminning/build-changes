@@ -30,12 +30,12 @@ public interface HashedStack {
    boolean matches(ItemStack stack, HashedPatchMap.HashGenerator hasher);
 
    static HashedStack create(final ItemStack itemStack, final HashedPatchMap.HashGenerator hasher) {
-      return (HashedStack)(itemStack.isEmpty()
+      return itemStack.isEmpty()
          ? EMPTY
-         : new HashedStack.ActualItem(itemStack.typeHolder(), itemStack.getCount(), HashedPatchMap.create(itemStack.getComponentsPatch(), hasher)));
+         : new HashedStack.ActualItem(itemStack.typeHolder(), itemStack.getCount(), HashedPatchMap.create(itemStack.getComponentsPatch(), hasher));
    }
 
-   public static record ActualItem(Holder<Item> item, int count, HashedPatchMap components) implements HashedStack {
+   record ActualItem(Holder<Item> item, int count, HashedPatchMap components) implements HashedStack {
       public static final StreamCodec<RegistryFriendlyByteBuf, HashedStack.ActualItem> STREAM_CODEC = StreamCodec.composite(
          ByteBufCodecs.holderRegistry(Registries.ITEM),
          HashedStack.ActualItem::item,

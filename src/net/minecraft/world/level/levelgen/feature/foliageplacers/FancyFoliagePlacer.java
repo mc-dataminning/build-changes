@@ -40,6 +40,6 @@ public class FancyFoliagePlacer extends BlobFoliagePlacer {
 
    @Override
    protected boolean shouldSkipLocation(final RandomSource random, final int dx, final int y, final int dz, final int currentRadius, final boolean doubleTrunk) {
-      return Mth.square((float)dx + 0.5F) + Mth.square((float)dz + 0.5F) > (float)(currentRadius * currentRadius);
+      return Mth.square(dx + 0.5F) + Mth.square(dz + 0.5F) > currentRadius * currentRadius;
    }
 }

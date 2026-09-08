@@ -9,9 +9,8 @@ public class TridentAnimationFix extends DataComponentRemainderFix {
       super(outputSchema, "TridentAnimationFix", "minecraft:consumable");
    }
 
-   @Nullable
    @Override
-   protected <T> Dynamic<T> fixComponent(final Dynamic<T> input) {
+   protected <T> @Nullable Dynamic<T> fixComponent(final Dynamic<T> input) {
       return input.update("animation", animation -> {
          String optional = animation.asString().result().orElse("");
          return "spear".equals(optional) ? animation.createString("trident") : animation;

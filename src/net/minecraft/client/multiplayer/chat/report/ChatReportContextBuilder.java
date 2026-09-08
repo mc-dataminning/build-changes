@@ -7,10 +7,8 @@ import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import net.minecraft.client.multiplayer.chat.ChatLog;
-import net.minecraft.client.multiplayer.chat.LoggedChatEvent;
 import net.minecraft.client.multiplayer.chat.LoggedChatMessage;
 import net.minecraft.network.chat.MessageSignature;
 import net.minecraft.network.chat.PlayerChatMessage;
@@ -27,14 +25,12 @@ public class ChatReportContextBuilder {
       IntSortedSet uncollectedRoots = new IntRBTreeSet(roots);
 
       for (int id = uncollectedRoots.lastInt(); id >= chatLog.start() && (this.isActive() || !uncollectedRoots.isEmpty()); id--) {
-         LoggedChatEvent context = chatLog.lookup(id);
-         if (context instanceof LoggedChatMessage.Player) {
-            LoggedChatMessage.Player event = (LoggedChatMessage.Player)context;
-            boolean contextx = this.acceptContext(event.message());
+         if (chatLog.lookup(id) instanceof LoggedChatMessage.Player event) {
+            boolean context = this.acceptContext(event.message());
             if (uncollectedRoots.remove(id)) {
                this.trackContext(event.message());
                handler.accept(id, event);
-            } else if (contextx) {
+            } else if (context) {
                handler.accept(id, event);
             }
          }
@@ -69,13 +65,10 @@ public class ChatReportContextBuilder {
    private class Collector {
       private final Set<MessageSignature> lastSeenSignatures;
       private PlayerChatMessage lastChainMessage;
-      private boolean collectingChain;
+      private boolean collectingChain = true;
       private int count;
 
       private Collector(final PlayerChatMessage fromMessage) {
-         Objects.requireNonNull(ChatReportContextBuilder.this);
-         super();
-         this.collectingChain = true;
          this.lastSeenSignatures = new ObjectOpenHashSet(fromMessage.signedBody().lastSeen().entries());
          this.lastChainMessage = fromMessage;
       }
@@ -83,23 +76,23 @@ public class ChatReportContextBuilder {
       private boolean accept(final PlayerChatMessage message) {
          if (message.equals(this.lastChainMessage)) {
             return false;
-         } else {
-            boolean selected = this.lastSeenSignatures.remove(message.signature());
-            if (this.collectingChain && this.lastChainMessage.sender().equals(message.sender())) {
-               if (this.lastChainMessage.link().isDescendantOf(message.link())) {
-                  selected = true;
-                  this.lastChainMessage = message;
-               } else {
-                  this.collectingChain = false;
-               }
-            }
-
-            if (selected) {
-               this.count++;
-            }
-
-            return selected;
          }
+
+         boolean selected = this.lastSeenSignatures.remove(message.signature());
+         if (this.collectingChain && this.lastChainMessage.sender().equals(message.sender())) {
+            if (this.lastChainMessage.link().isDescendantOf(message.link())) {
+               selected = true;
+               this.lastChainMessage = message;
+            } else {
+               this.collectingChain = false;
+            }
+         }
+
+         if (selected) {
+            this.count++;
+         }
+
+         return selected;
       }
 
       private boolean isComplete() {

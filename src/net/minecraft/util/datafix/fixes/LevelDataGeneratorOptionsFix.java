@@ -113,17 +113,17 @@ public class LevelDataGeneratorOptionsFix extends DataFix {
          this.getInputSchema().getType(References.LEVEL),
          resultType,
          input -> Util.writeAndReadTypedOrThrow(input, resultType, tag -> {
-               Optional<String> generatorOptions = tag.get("generatorOptions").asString().result();
-               if ("flat".equalsIgnoreCase(tag.get("generatorName").asString(""))) {
-                  String flatOptionString = generatorOptions.orElse("");
-                  return tag.set("generatorOptions", convert(flatOptionString, tag.getOps()));
-               } else if ("buffet".equalsIgnoreCase(tag.get("generatorName").asString("")) && generatorOptions.isPresent()) {
-                  JsonElement legacyOptions = LenientJsonParser.parse(generatorOptions.get());
-                  return tag.set("generatorOptions", new Dynamic(JsonOps.INSTANCE, legacyOptions).convert(tag.getOps()));
-               } else {
-                  return tag;
-               }
-            })
+            Optional<String> generatorOptions = tag.get("generatorOptions").asString().result();
+            if ("flat".equalsIgnoreCase(tag.get("generatorName").asString(""))) {
+               String flatOptionString = generatorOptions.orElse("");
+               return tag.set("generatorOptions", convert(flatOptionString, tag.getOps()));
+            } else if ("buffet".equalsIgnoreCase(tag.get("generatorName").asString("")) && generatorOptions.isPresent()) {
+               JsonElement legacyOptions = LenientJsonParser.parse(generatorOptions.get());
+               return tag.set("generatorOptions", new Dynamic(JsonOps.INSTANCE, legacyOptions).convert(tag.getOps()));
+            } else {
+               return tag;
+            }
+         })
       );
    }
 
@@ -174,13 +174,13 @@ public class LevelDataGeneratorOptionsFix extends DataFix {
          layerList.stream()
             .map(
                layer -> ops.createMap(
-                     ImmutableMap.of(
-                        ops.createString("height"),
-                        ops.createInt((Integer)layer.getFirst()),
-                        ops.createString("block"),
-                        ops.createString((String)layer.getSecond())
-                     )
+                  ImmutableMap.of(
+                     ops.createString("height"),
+                     ops.createInt((Integer)layer.getFirst()),
+                     ops.createString("block"),
+                     ops.createString((String)layer.getSecond())
                   )
+               )
             )
       );
       T structures = (T)ops.createMap(
@@ -188,15 +188,15 @@ public class LevelDataGeneratorOptionsFix extends DataFix {
             .stream()
             .map(
                entry -> Pair.of(
-                     ops.createString(entry.getKey().toLowerCase(Locale.ROOT)),
-                     ops.createMap(
-                        entry.getValue()
-                           .entrySet()
-                           .stream()
-                           .map(option -> Pair.of(ops.createString(option.getKey()), ops.createString(option.getValue())))
-                           .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond))
-                     )
+                  ops.createString(entry.getKey().toLowerCase(Locale.ROOT)),
+                  ops.createMap(
+                     entry.getValue()
+                        .entrySet()
+                        .stream()
+                        .map(option -> Pair.of(ops.createString(option.getKey()), ops.createString(option.getValue())))
+                        .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond))
                   )
+               )
             )
             .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond))
       );
@@ -208,14 +208,13 @@ public class LevelDataGeneratorOptionsFix extends DataFix {
       );
    }
 
-   @Nullable
-   private static Pair<Integer, String> getLayerInfoFromString(final String input) {
+   private static @Nullable Pair<Integer, String> getLayerInfoFromString(final String input) {
       String[] parts = input.split("\\*", 2);
       int height;
       if (parts.length == 2) {
          try {
             height = Integer.parseInt(parts[0]);
-         } catch (NumberFormatException var4) {
+         } catch (NumberFormatException ignored) {
             return null;
          }
       } else {

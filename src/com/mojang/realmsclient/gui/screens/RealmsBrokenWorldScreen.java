@@ -36,8 +36,7 @@ public class RealmsBrokenWorldScreen extends RealmsScreen {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static final int DEFAULT_BUTTON_WIDTH = 80;
    private final Screen lastScreen;
-   @Nullable
-   private RealmsServer serverData;
+   private @Nullable RealmsServer serverData;
    private final long serverId;
    private final Component[] message = new Component[]{
       Component.translatable("mco.brokenworld.message.line1"), Component.translatable("mco.brokenworld.message.line2")
@@ -77,8 +76,8 @@ public class RealmsBrokenWorldScreen extends RealmsScreen {
             playOrDownloadButton = Button.builder(
                   Component.translatable("mco.brokenworld.play"),
                   var2x -> this.minecraft
-                        .gui
-                        .setScreen(new RealmsLongRunningMcoTaskScreen(this.lastScreen, new SwitchSlotTask(this.serverData.id, slot, this::doSwitchOrReset)))
+                     .gui
+                     .setScreen(new RealmsLongRunningMcoTaskScreen(this.lastScreen, new SwitchSlotTask(this.serverData.id, slot, this::doSwitchOrReset)))
                )
                .bounds(this.getFramePositionX(slot), row(8), 80, 20)
                .build();
@@ -87,12 +86,12 @@ public class RealmsBrokenWorldScreen extends RealmsScreen {
             playOrDownloadButton = Button.builder(
                   Component.translatable("mco.brokenworld.download"),
                   button -> this.minecraft
-                        .gui
-                        .setScreen(
-                           RealmsPopups.infoPopupScreen(
-                              this, Component.translatable("mco.configure.world.restore.download.question.line1"), var2x -> this.downloadWorld(slot)
-                           )
+                     .gui
+                     .setScreen(
+                        RealmsPopups.infoPopupScreen(
+                           this, Component.translatable("mco.configure.world.restore.download.question.line1"), var2x -> this.downloadWorld(slot)
                         )
+                     )
                )
                .bounds(this.getFramePositionX(slot), row(8), 80, 20)
                .build();
@@ -182,16 +181,16 @@ public class RealmsBrokenWorldScreen extends RealmsScreen {
                   this.minecraft
                      .execute(
                         () -> this.minecraft
-                              .gui
-                              .setScreen(new RealmsLongRunningMcoTaskScreen(this, new OpenServerTask(this.serverData, this, true, this.minecraft)))
+                           .gui
+                           .setScreen(new RealmsLongRunningMcoTaskScreen(this, new OpenServerTask(this.serverData, this, true, this.minecraft)))
                      );
                } else {
                   try {
                      RealmsServer ownRealm = client.getOwnRealm(this.serverId);
                      this.minecraft.execute(() -> RealmsMainScreen.play(ownRealm, this));
-                  } catch (RealmsServiceException var3) {
-                     LOGGER.error("Couldn't get own world", var3);
-                     this.minecraft.execute(() -> this.minecraft.gui.setScreen(this.createErrorScreen(var3)));
+                  } catch (RealmsServiceException e) {
+                     LOGGER.error("Couldn't get own world", e);
+                     this.minecraft.execute(() -> this.minecraft.gui.setScreen(this.createErrorScreen(e)));
                   }
                }
             },
@@ -217,9 +216,9 @@ public class RealmsBrokenWorldScreen extends RealmsScreen {
             }
          );
          this.minecraft.gui.setScreen(downloadScreen);
-      } catch (RealmsServiceException var5) {
-         LOGGER.error("Couldn't download world data", var5);
-         this.minecraft.gui.setScreen(new RealmsGenericErrorScreen(var5, this));
+      } catch (RealmsServiceException e) {
+         LOGGER.error("Couldn't download world data", e);
+         this.minecraft.gui.setScreen(new RealmsGenericErrorScreen(e, this));
       }
    }
 
@@ -242,7 +241,7 @@ public class RealmsBrokenWorldScreen extends RealmsScreen {
       final String text,
       final int i,
       final long imageId,
-      @Nullable final String image,
+      final @Nullable String image,
       final boolean empty
    ) {
       Identifier texture;
@@ -261,7 +260,7 @@ public class RealmsBrokenWorldScreen extends RealmsScreen {
       }
 
       if (active) {
-         float c = 0.9F + 0.1F * Mth.cos((double)((float)this.animTick * 0.2F));
+         float c = 0.9F + 0.1F * Mth.cos(this.animTick * 0.2F);
          graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x + 3, y + 3, 0.0F, 0.0F, 74, 74, 74, 74, 74, 74, ARGB.colorFromFloat(1.0F, c, c, c));
          graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_FRAME_SPRITE, x, y, 80, 80);
       } else {

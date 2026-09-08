@@ -11,12 +11,12 @@ public record TextureMetadataSection(boolean blur, boolean clamp, MipmapStrategy
    public static final float DEFAULT_ALPHA_CUTOFF_BIAS = 0.0F;
    public static final Codec<TextureMetadataSection> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.BOOL.optionalFieldOf("blur", false).forGetter(TextureMetadataSection::blur),
-               Codec.BOOL.optionalFieldOf("clamp", false).forGetter(TextureMetadataSection::clamp),
-               MipmapStrategy.CODEC.optionalFieldOf("mipmap_strategy", MipmapStrategy.AUTO).forGetter(TextureMetadataSection::mipmapStrategy),
-               Codec.FLOAT.optionalFieldOf("alpha_cutoff_bias", 0.0F).forGetter(TextureMetadataSection::alphaCutoffBias)
-            )
-            .apply(i, TextureMetadataSection::new)
+            Codec.BOOL.optionalFieldOf("blur", false).forGetter(TextureMetadataSection::blur),
+            Codec.BOOL.optionalFieldOf("clamp", false).forGetter(TextureMetadataSection::clamp),
+            MipmapStrategy.CODEC.optionalFieldOf("mipmap_strategy", MipmapStrategy.AUTO).forGetter(TextureMetadataSection::mipmapStrategy),
+            Codec.FLOAT.optionalFieldOf("alpha_cutoff_bias", 0.0F).forGetter(TextureMetadataSection::alphaCutoffBias)
+         )
+         .apply(i, TextureMetadataSection::new)
    );
    public static final MetadataSectionType<TextureMetadataSection> TYPE = new MetadataSectionType<>("texture", CODEC);
 }

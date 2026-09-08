@@ -77,13 +77,13 @@ public record BannerPatternLayers(List<BannerPatternLayers.Layer> layers) implem
       }
    }
 
-   public static record Layer(Holder<BannerPattern> pattern, DyeColor color) {
+   public record Layer(Holder<BannerPattern> pattern, DyeColor color) {
       public static final Codec<BannerPatternLayers.Layer> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  BannerPattern.CODEC.fieldOf("pattern").forGetter(BannerPatternLayers.Layer::pattern),
-                  DyeColor.CODEC.fieldOf("color").forGetter(BannerPatternLayers.Layer::color)
-               )
-               .apply(i, BannerPatternLayers.Layer::new)
+               BannerPattern.CODEC.fieldOf("pattern").forGetter(BannerPatternLayers.Layer::pattern),
+               DyeColor.CODEC.fieldOf("color").forGetter(BannerPatternLayers.Layer::color)
+            )
+            .apply(i, BannerPatternLayers.Layer::new)
       );
       public static final StreamCodec<RegistryFriendlyByteBuf, BannerPatternLayers.Layer> STREAM_CODEC = StreamCodec.composite(
          BannerPattern.STREAM_CODEC,

@@ -29,15 +29,14 @@ public class EntityAttachments {
          List<Vec3> list = new ArrayList<>();
 
          for (Vec3 vec3 : this.attachments.get(attachment)) {
-            list.add(vec3.multiply((double)x, (double)y, (double)z));
+            list.add(vec3.multiply(x, y, z));
          }
 
          return list;
       }));
    }
 
-   @Nullable
-   public Vec3 getNullable(final EntityAttachment attachment, final int index, final float rotY) {
+   public @Nullable Vec3 getNullable(final EntityAttachment attachment, final int index, final float rotY) {
       List<Vec3> points = this.attachments.get(attachment);
       return index >= 0 && index < points.size() ? transformPoint(points.get(index), rotY) : null;
    }
@@ -60,7 +59,7 @@ public class EntityAttachments {
             sum = sum.add(point);
          }
 
-         return sum.scale((double)(1.0F / (float)points.size()));
+         return sum.scale(1.0F / points.size());
       } else {
          throw new IllegalStateException("No attachment points of type: PASSENGER");
       }
@@ -70,10 +69,10 @@ public class EntityAttachments {
       List<Vec3> points = this.attachments.get(attachment);
       if (points.isEmpty()) {
          throw new IllegalStateException("Had no attachment points of type: " + attachment);
-      } else {
-         Vec3 point = points.get(Mth.clamp(index, 0, points.size() - 1));
-         return transformPoint(point, rotY);
       }
+
+      Vec3 point = points.get(Mth.clamp(index, 0, points.size() - 1));
+      return transformPoint(point, rotY);
    }
 
    private static Vec3 transformPoint(final Vec3 point, final float rotY) {
@@ -87,7 +86,7 @@ public class EntityAttachments {
       }
 
       public EntityAttachments.Builder attach(final EntityAttachment attachment, final float x, final float y, final float z) {
-         return this.attach(attachment, new Vec3((double)x, (double)y, (double)z));
+         return this.attach(attachment, new Vec3(x, y, z));
       }
 
       public EntityAttachments.Builder attach(final EntityAttachment attachment, final Vec3 point) {

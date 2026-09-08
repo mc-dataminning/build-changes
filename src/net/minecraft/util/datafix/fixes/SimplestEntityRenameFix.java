@@ -27,15 +27,15 @@ public abstract class SimplestEntityRenameFix extends DataFix {
          throw new IllegalStateException("Entity name type is not what was expected.");
       } else {
          return TypeRewriteRule.seq(this.fixTypeEverywhere(this.name, oldType, newType, ops -> input -> input.mapFirst(oldName -> {
-                  String newName = this.rename(oldName);
-                  Type<?> oldEntityType = (Type<?>)oldType.types().get(oldName);
-                  Type<?> newEntityType = (Type<?>)newType.types().get(newName);
-                  if (!newEntityType.equals(oldEntityType, true, true)) {
-                     throw new IllegalStateException(String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", newEntityType, oldEntityType));
-                  } else {
-                     return newName;
-                  }
-               })), this.fixTypeEverywhere(this.name + " for entity name", entityNameType, ops -> input -> input.mapSecond(this::rename)));
+            String newName = this.rename(oldName);
+            Type<?> oldEntityType = (Type<?>)oldType.types().get(oldName);
+            Type<?> newEntityType = (Type<?>)newType.types().get(newName);
+            if (!newEntityType.equals(oldEntityType, true, true)) {
+               throw new IllegalStateException(String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", newEntityType, oldEntityType));
+            } else {
+               return newName;
+            }
+         })), this.fixTypeEverywhere(this.name + " for entity name", entityNameType, ops -> input -> input.mapSecond(this::rename)));
       }
    }
 

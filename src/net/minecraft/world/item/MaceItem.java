@@ -90,23 +90,23 @@ public class MaceItem extends Item {
       if (damageSource.getDirectEntity() instanceof LivingEntity attacker) {
          if (!canSmashAttack(attacker)) {
             return 0.0F;
-         } else {
-            double fallHeightThreshold1 = 3.0;
-            double fallHeightThreshold2 = 8.0;
-            double fallDistance = attacker.fallDistance;
-            double damage;
-            if (fallDistance <= 3.0) {
-               damage = 4.0 * fallDistance;
-            } else if (fallDistance <= 8.0) {
-               damage = 12.0 + 2.0 * (fallDistance - 3.0);
-            } else {
-               damage = 22.0 + fallDistance - 8.0;
-            }
-
-            return attacker.level() instanceof ServerLevel level
-               ? (float)(damage + (double)EnchantmentHelper.modifyFallBasedDamage(level, attacker.getWeaponItem(), victim, damageSource, 0.0F) * fallDistance)
-               : (float)damage;
          }
+
+         double fallHeightThreshold1 = 3.0;
+         double fallHeightThreshold2 = 8.0;
+         double fallDistance = attacker.fallDistance;
+         double damage;
+         if (fallDistance <= 3.0) {
+            damage = 4.0 * fallDistance;
+         } else if (fallDistance <= 8.0) {
+            damage = 12.0 + 2.0 * (fallDistance - 3.0);
+         } else {
+            damage = 22.0 + fallDistance - 8.0;
+         }
+
+         return attacker.level() instanceof ServerLevel level
+            ? (float)(damage + EnchantmentHelper.modifyFallBasedDamage(level, attacker.getWeaponItem(), victim, damageSource, 0.0F) * fallDistance)
+            : (float)damage;
       } else {
          return 0.0F;
       }
@@ -129,65 +129,29 @@ public class MaceItem extends Item {
 
    private static Predicate<LivingEntity> knockbackPredicate(final Entity attacker, final Entity entity) {
       return nearby -> {
-         boolean notSpectator;
-         boolean notPlayer;
-         boolean notAlliedToPlayer;
-         boolean var10000;
-         label82: {
-            notSpectator = !nearby.isSpectator();
-            notPlayer = nearby != attacker && nearby != entity;
-            notAlliedToPlayer = !attacker.isAlliedTo(nearby);
-            if (nearby instanceof TamableAnimal animal && entity instanceof LivingEntity livingAttacker && animal.isTame() && animal.isOwnedBy(livingAttacker)) {
-               var10000 = true;
-               break label82;
-            }
-
-            var10000 = false;
-         }
-
-         boolean notTamedByPlayer;
-         label74: {
-            notTamedByPlayer = !var10000;
-            if (nearby instanceof ArmorStand armorStand && armorStand.isMarker()) {
-               var10000 = false;
-               break label74;
-            }
-
-            var10000 = true;
-         }
-
-         boolean notArmorStand;
-         boolean withinRange;
-         label68: {
-            notArmorStand = var10000;
-            withinRange = entity.distanceToSqr(nearby) <= Math.pow(3.5, 2.0);
-            if (nearby instanceof Player player && player.isCreative() && player.getAbilities().flying) {
-               var10000 = true;
-               break label68;
-            }
-
-            var10000 = false;
-         }
-
-         boolean notFlyingInCreative = !var10000;
+         boolean notSpectator = !nearby.isSpectator();
+         boolean notPlayer = nearby != attacker && nearby != entity;
+         boolean notAlliedToPlayer = !attacker.isAlliedTo(nearby);
+         boolean notTamedByPlayer = !(
+            nearby instanceof TamableAnimal animal && entity instanceof LivingEntity livingAttacker && animal.isTame() && animal.isOwnedBy(livingAttacker)
+         );
+         boolean notArmorStand = !(nearby instanceof ArmorStand armorStand && armorStand.isMarker());
+         boolean withinRange = entity.distanceToSqr(nearby) <= Math.pow(3.5, 2.0);
+         boolean notFlyingInCreative = !(nearby instanceof Player player && player.isCreative() && player.getAbilities().flying);
          return notSpectator && notPlayer && notAlliedToPlayer && notTamedByPlayer && notArmorStand && withinRange && notFlyingInCreative;
       };
    }
 
    private static double getKnockbackPower(final Entity attacker, final LivingEntity nearby, final Vec3 direction) {
-      return (3.5 - direction.length())
-         * 0.7F
-         * (double)(attacker.fallDistance > 5.0 ? 2 : 1)
-         * (1.0 - nearby.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
+      return (3.5 - direction.length()) * 0.7F * (attacker.fallDistance > 5.0 ? 2 : 1) * (1.0 - nearby.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
    }
 
    public static boolean canSmashAttack(final LivingEntity attacker) {
       return attacker.fallDistance > 1.5 && !attacker.isFallFlying();
    }
 
-   @Nullable
    @Override
-   public DamageSource getItemDamageSource(final LivingEntity attacker) {
+   public @Nullable DamageSource getItemDamageSource(final LivingEntity attacker) {
       return canSmashAttack(attacker) ? attacker.damageSources().mace(attacker) : super.getItemDamageSource(attacker);
    }
 }

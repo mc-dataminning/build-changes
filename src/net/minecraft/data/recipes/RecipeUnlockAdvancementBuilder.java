@@ -22,13 +22,13 @@ public class RecipeUnlockAdvancementBuilder {
    public AdvancementHolder build(final RecipeOutput output, final ResourceKey<Recipe<?>> id, final RecipeCategory category) {
       if (this.criteria.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + id.identifier());
-      } else {
-         Advancement.Builder advancement = output.advancement()
-            .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(output.lookup(Registries.RECIPE).getOrThrow(id)))
-            .rewards(AdvancementRewards.Builder.recipe(id))
-            .requirements(AdvancementRequirements.Strategy.OR);
-         this.criteria.forEach(advancement::addCriterion);
-         return advancement.build(id.identifier().withPrefix("recipes/" + category.getFolderName() + "/"));
       }
+
+      Advancement.Builder advancement = output.advancement()
+         .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(output.lookup(Registries.RECIPE).getOrThrow(id)))
+         .rewards(AdvancementRewards.Builder.recipe(id))
+         .requirements(AdvancementRequirements.Strategy.OR);
+      this.criteria.forEach(advancement::addCriterion);
+      return advancement.build(id.identifier().withPrefix("recipes/" + category.getFolderName() + "/"));
    }
 }

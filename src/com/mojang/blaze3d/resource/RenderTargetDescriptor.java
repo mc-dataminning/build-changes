@@ -10,7 +10,7 @@ import org.joml.Vector4fc;
 import org.jspecify.annotations.Nullable;
 
 public record RenderTargetDescriptor(
-   int width, int height, @Nullable RenderTargetDescriptor.TextureProperties color, @Nullable RenderTargetDescriptor.TextureProperties depth
+   int width, int height, RenderTargetDescriptor.@Nullable TextureProperties color, RenderTargetDescriptor.@Nullable TextureProperties depth
 ) implements ResourceDescriptor<RenderTarget> {
    public RenderTarget allocate() {
       return new TextureTarget(null, this.width, this.height, this.color != null ? this.color.format : null, this.depth != null ? this.depth.format : null);
@@ -20,11 +20,11 @@ public record RenderTargetDescriptor(
       if (this.color != null && this.depth != null && this.color.clearColor != null && this.depth.clearColor != null) {
          RenderSystem.getDevice()
             .createCommandEncoder()
-            .clearColorAndDepthTextures(resource.getColorTexture(), this.color.clearColor, resource.getDepthTexture(), (double)this.depth.clearColor.x());
+            .clearColorAndDepthTextures(resource.getColorTexture(), this.color.clearColor, resource.getDepthTexture(), this.depth.clearColor.x());
       } else if (this.color != null && this.color.clearColor != null) {
          RenderSystem.getDevice().createCommandEncoder().clearColorTexture(resource.getColorTexture(), this.color.clearColor);
       } else if (this.depth != null && this.depth.clearColor != null) {
-         RenderSystem.getDevice().createCommandEncoder().clearDepthTexture(resource.getDepthTexture(), (double)this.depth.clearColor.x());
+         RenderSystem.getDevice().createCommandEncoder().clearDepthTexture(resource.getDepthTexture(), this.depth.clearColor.x());
       }
    }
 
@@ -42,7 +42,7 @@ public record RenderTargetDescriptor(
             && Objects.equals(this.depth, descriptor.depth);
    }
 
-   public static record TextureProperties(@Nullable Vector4fc clearColor, GpuFormat format) {
+   public record TextureProperties(@Nullable Vector4fc clearColor, GpuFormat format) {
       public static final RenderTargetDescriptor.TextureProperties DEFAULT_DEPTH = new RenderTargetDescriptor.TextureProperties(
          new Vector4f(0.0F, 0.0F, 0.0F, 0.0F), GpuFormat.D32_FLOAT
       );

@@ -122,7 +122,7 @@ public abstract class BlockBehaviour implements FeatureElement {
    }
 
    protected void updateIndirectNeighbourShapes(
-      final BlockState state, final LevelAccessor level, final BlockPos pos, @Block.UpdateFlags final int updateFlags, final int updateLimit
+      final BlockState state, final LevelAccessor level, final BlockPos pos, final @Block.UpdateFlags int updateFlags, final int updateLimit
    ) {
    }
 
@@ -153,7 +153,7 @@ public abstract class BlockBehaviour implements FeatureElement {
    }
 
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
    }
 
@@ -267,12 +267,12 @@ public abstract class BlockBehaviour implements FeatureElement {
    protected List<ItemStack> getDrops(final BlockState state, final LootParams.Builder params) {
       if (this.drops.isEmpty()) {
          return Collections.emptyList();
-      } else {
-         LootParams lootParams = params.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
-         ServerLevel level = lootParams.getLevel();
-         LootTable table = level.getServer().reloadableRegistries().getLootTable(this.drops.get());
-         return table.getRandomItems(lootParams);
       }
+
+      LootParams lootParams = params.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
+      ServerLevel level = lootParams.getLevel();
+      LootTable table = level.getServer().reloadableRegistries().getLootTable(this.drops.get());
+      return table.getRandomItems(lootParams);
    }
 
    protected long getSeed(final BlockState state, final BlockPos pos) {
@@ -299,8 +299,7 @@ public abstract class BlockBehaviour implements FeatureElement {
       }
    }
 
-   @Nullable
-   protected MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
+   protected @Nullable MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
       return null;
    }
 
@@ -346,10 +345,10 @@ public abstract class BlockBehaviour implements FeatureElement {
       float destroySpeed = state.getDestroySpeed(level, pos);
       if (destroySpeed == -1.0F) {
          return 0.0F;
-      } else {
-         int modifier = player.hasCorrectToolForDrops(state) ? 30 : 100;
-         return player.getDestroySpeed(state) / destroySpeed / (float)modifier;
       }
+
+      int modifier = player.hasCorrectToolForDrops(state) ? 30 : 100;
+      return player.getDestroySpeed(state) / destroySpeed / modifier;
    }
 
    protected void spawnAfterBreak(final BlockState state, final ServerLevel level, final BlockPos pos, final ItemStack tool, final boolean dropExperience) {
@@ -362,7 +361,7 @@ public abstract class BlockBehaviour implements FeatureElement {
       return false;
    }
 
-   protected boolean shouldRedstoneWireConnectTo(final BlockState state, final BlockGetter level, final BlockPos pos, @Nullable final Direction direction) {
+   protected boolean shouldRedstoneWireConnectTo(final BlockState state, final BlockGetter level, final BlockPos pos, final @Nullable Direction direction) {
       return state.isSignalSource() && direction != null;
    }
 
@@ -444,13 +443,11 @@ public abstract class BlockBehaviour implements FeatureElement {
       private final BlockBehaviour.StateArgumentPredicate<AABB> isViewBlocking;
       private final BlockBehaviour.PostProcess postProcess;
       private final Predicate<BlockState> emissiveRendering;
-      @Nullable
-      private final BlockBehaviour.OffsetFunction offsetFunction;
+      private final BlockBehaviour.@Nullable OffsetFunction offsetFunction;
       private final boolean spawnTerrainParticles;
       private final NoteBlockInstrument instrument;
       private final boolean replaceable;
-      @Nullable
-      private BlockBehaviour.BlockStateBase.Cache cache;
+      private BlockBehaviour.BlockStateBase.@Nullable Cache cache;
       private FluidState fluidState = Fluids.EMPTY.defaultFluidState();
       private boolean isRandomlyTicking;
       private boolean solidRender;
@@ -624,7 +621,7 @@ public abstract class BlockBehaviour implements FeatureElement {
          return this.getBlock().isSignalSource(this.asState());
       }
 
-      public boolean shouldRedstoneWireConnectTo(final BlockGetter level, final BlockPos pos, @Nullable final Direction direction) {
+      public boolean shouldRedstoneWireConnectTo(final BlockGetter level, final BlockPos pos, final @Nullable Direction direction) {
          return this.getBlock().shouldRedstoneWireConnectTo(this.asState(), level, pos, direction);
       }
 
@@ -726,16 +723,16 @@ public abstract class BlockBehaviour implements FeatureElement {
       }
 
       public void handleNeighborChanged(
-         final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+         final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
       ) {
          this.getBlock().neighborChanged(this.asState(), level, pos, block, orientation, movedByPiston);
       }
 
-      public final void updateNeighbourShapes(final LevelAccessor level, final BlockPos pos, @Block.UpdateFlags final int updateFlags) {
+      public final void updateNeighbourShapes(final LevelAccessor level, final BlockPos pos, final @Block.UpdateFlags int updateFlags) {
          this.updateNeighbourShapes(level, pos, updateFlags, 512);
       }
 
-      public final void updateNeighbourShapes(final LevelAccessor level, final BlockPos pos, @Block.UpdateFlags final int updateFlags, final int updateLimit) {
+      public final void updateNeighbourShapes(final LevelAccessor level, final BlockPos pos, final @Block.UpdateFlags int updateFlags, final int updateLimit) {
          BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
 
          for (Direction direction : BlockBehaviour.UPDATE_SHAPE_ORDER) {
@@ -744,11 +741,11 @@ public abstract class BlockBehaviour implements FeatureElement {
          }
       }
 
-      public final void updateIndirectNeighbourShapes(final LevelAccessor level, final BlockPos pos, @Block.UpdateFlags final int updateFlags) {
+      public final void updateIndirectNeighbourShapes(final LevelAccessor level, final BlockPos pos, final @Block.UpdateFlags int updateFlags) {
          this.updateIndirectNeighbourShapes(level, pos, updateFlags, 512);
       }
 
-      public void updateIndirectNeighbourShapes(final LevelAccessor level, final BlockPos pos, @Block.UpdateFlags final int updateFlags, final int updateLimit) {
+      public void updateIndirectNeighbourShapes(final LevelAccessor level, final BlockPos pos, final @Block.UpdateFlags int updateFlags, final int updateLimit) {
          this.getBlock().updateIndirectNeighbourShapes(this.asState(), level, pos, updateFlags, updateLimit);
       }
 
@@ -848,13 +845,11 @@ public abstract class BlockBehaviour implements FeatureElement {
          return this.getBlock().canSurvive(this.asState(), level, pos);
       }
 
-      @Nullable
-      public BlockPos getPostProcessPos(final BlockGetter level, final BlockPos pos) {
+      public @Nullable BlockPos getPostProcessPos(final BlockGetter level, final BlockPos pos) {
          return this.postProcess.getPostProcessPos(this.asState(), level, pos);
       }
 
-      @Nullable
-      public MenuProvider getMenuProvider(final Level level, final BlockPos pos) {
+      public @Nullable MenuProvider getMenuProvider(final Level level, final BlockPos pos) {
          return this.getBlock().getMenuProvider(this.asState(), level, pos);
       }
 
@@ -870,8 +865,7 @@ public abstract class BlockBehaviour implements FeatureElement {
          return this.getBlock().shouldChangedStateKeepBlockEntity(oldState);
       }
 
-      @Nullable
-      public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockEntityType<T> type) {
+      public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockEntityType<T> type) {
          return this.getBlock() instanceof EntityBlock ? ((EntityBlock)this.getBlock()).getTicker(level, this.asState(), type) : null;
       }
 
@@ -958,19 +952,19 @@ public abstract class BlockBehaviour implements FeatureElement {
                      BuiltInRegistries.BLOCK.getKey(block)
                   )
                );
-            } else {
-               this.largeCollisionShape = Arrays.stream(Direction.Axis.values())
-                  .anyMatch(axis -> this.collisionShape.min(axis) < 0.0 || this.collisionShape.max(axis) > 1.0);
-               this.faceSturdy = new boolean[DIRECTIONS.length * SUPPORT_TYPE_COUNT];
-
-               for (Direction direction : DIRECTIONS) {
-                  for (SupportType type : SupportType.values()) {
-                     this.faceSturdy[getFaceSupportIndex(direction, type)] = type.isSupporting(state, EmptyBlockGetter.INSTANCE, BlockPos.ZERO, direction);
-                  }
-               }
-
-               this.isCollisionShapeFullBlock = Block.isShapeFullBlock(state.getCollisionShape(EmptyBlockGetter.INSTANCE, BlockPos.ZERO));
             }
+
+            this.largeCollisionShape = Arrays.stream(Direction.Axis.values())
+               .anyMatch(axis -> this.collisionShape.min(axis) < 0.0 || this.collisionShape.max(axis) > 1.0);
+            this.faceSturdy = new boolean[DIRECTIONS.length * SUPPORT_TYPE_COUNT];
+
+            for (Direction direction : DIRECTIONS) {
+               for (SupportType type : SupportType.values()) {
+                  this.faceSturdy[getFaceSupportIndex(direction, type)] = type.isSupporting(state, EmptyBlockGetter.INSTANCE, BlockPos.ZERO, direction);
+               }
+            }
+
+            this.isCollisionShapeFullBlock = Block.isShapeFullBlock(state.getCollisionShape(EmptyBlockGetter.INSTANCE, BlockPos.ZERO));
          }
 
          public boolean isFaceSturdy(final Direction direction, final SupportType supportType) {
@@ -988,7 +982,7 @@ public abstract class BlockBehaviour implements FeatureElement {
       Vec3 evaluate(BlockState state, BlockPos pos);
    }
 
-   public static enum OffsetType {
+   public enum OffsetType {
       NONE,
       XZ,
       XYZ;
@@ -996,8 +990,7 @@ public abstract class BlockBehaviour implements FeatureElement {
 
    @FunctionalInterface
    public interface PostProcess {
-      @Nullable
-      BlockPos getPostProcessPos(BlockState state, BlockGetter level, BlockPos pos);
+      @Nullable BlockPos getPostProcessPos(BlockState state, BlockGetter level, BlockPos pos);
    }
 
    public static class Properties {
@@ -1013,11 +1006,10 @@ public abstract class BlockBehaviour implements FeatureElement {
       private float speedFactor = 1.0F;
       private float jumpFactor = 1.0F;
       private float bounceRestitution;
-      @Nullable
-      private ResourceKey<Block> id;
+      private @Nullable ResourceKey<Block> id;
       private DependantName<Block, Optional<ResourceKey<LootTable>>> drops = id -> Optional.of(
-            ResourceKey.create(Registries.LOOT_TABLE, id.identifier().withPrefix("blocks/"))
-         );
+         ResourceKey.create(Registries.LOOT_TABLE, id.identifier().withPrefix("blocks/"))
+      );
       private DependantName<Block, String> descriptionId = id -> Util.makeDescriptionId("block", id.identifier());
       private boolean canOcclude = true;
       private boolean isAir;
@@ -1032,19 +1024,18 @@ public abstract class BlockBehaviour implements FeatureElement {
       private NoteBlockInstrument instrument = NoteBlockInstrument.HARP;
       private boolean replaceable;
       private BlockBehaviour.StateArgumentPredicate<EntityType<?>> isValidSpawn = (state, level, pos, entityType) -> state.isFaceSturdy(
-               level, pos, Direction.UP
-            )
-            && state.getLightEmission() < 14;
+            level, pos, Direction.UP
+         )
+         && state.getLightEmission() < 14;
       private BlockBehaviour.StatePredicate isRedstoneConductor = BlockBehaviour.BlockStateBase::isCollisionShapeFullBlock;
       private BlockBehaviour.StatePredicate isSuffocating = (state, level, pos) -> state.is(BlockTags.CAUSES_SUFFOCATION)
-            && state.isCollisionShapeFullBlock(level, pos);
+         && state.isCollisionShapeFullBlock(level, pos);
       private BlockBehaviour.StateArgumentPredicate<AABB> isViewBlocking = (state, level, pos, var4) -> this.isSuffocating.test(state, level, pos);
       private BlockBehaviour.PostProcess postProcess = (state, level, pos) -> null;
       private Predicate<BlockState> emissiveRendering = var0 -> false;
       private boolean dynamicShape;
       private FeatureFlagSet requiredFeatures = FeatureFlags.VANILLA_SET;
-      @Nullable
-      private BlockBehaviour.OffsetFunction offsetFunction;
+      private BlockBehaviour.@Nullable OffsetFunction offsetFunction;
       private float fallDistanceReduction;
 
       private Properties() {
@@ -1278,22 +1269,22 @@ public abstract class BlockBehaviour implements FeatureElement {
          this.offsetFunction = switch (offsetType) {
             case NONE -> null;
             case XZ -> (state, pos) -> {
-            Block block = state.getBlock();
-            long seed = Mth.getSeed(pos.getX(), 0, pos.getZ());
-            float maxHorizontalOffset = block.getMaxHorizontalOffset();
-            double x = Mth.clamp(((double)((float)(seed & 15L) / 15.0F) - 0.5) * 0.5, (double)(-maxHorizontalOffset), (double)maxHorizontalOffset);
-            double z = Mth.clamp(((double)((float)(seed >> 8 & 15L) / 15.0F) - 0.5) * 0.5, (double)(-maxHorizontalOffset), (double)maxHorizontalOffset);
-            return new Vec3(x, 0.0, z);
-         };
+               Block block = state.getBlock();
+               long seed = Mth.getSeed(pos.getX(), 0, pos.getZ());
+               float maxHorizontalOffset = block.getMaxHorizontalOffset();
+               double x = Mth.clamp(((float)(seed & 15L) / 15.0F - 0.5) * 0.5, -maxHorizontalOffset, maxHorizontalOffset);
+               double z = Mth.clamp(((float)(seed >> 8 & 15L) / 15.0F - 0.5) * 0.5, -maxHorizontalOffset, maxHorizontalOffset);
+               return new Vec3(x, 0.0, z);
+            };
             case XYZ -> (state, pos) -> {
-            Block block = state.getBlock();
-            long seed = Mth.getSeed(pos.getX(), 0, pos.getZ());
-            double y = ((double)((float)(seed >> 4 & 15L) / 15.0F) - 1.0) * (double)block.getMaxVerticalOffset();
-            float maxHorizontalOffset = block.getMaxHorizontalOffset();
-            double x = Mth.clamp(((double)((float)(seed & 15L) / 15.0F) - 0.5) * 0.5, (double)(-maxHorizontalOffset), (double)maxHorizontalOffset);
-            double z = Mth.clamp(((double)((float)(seed >> 8 & 15L) / 15.0F) - 0.5) * 0.5, (double)(-maxHorizontalOffset), (double)maxHorizontalOffset);
-            return new Vec3(x, y, z);
-         };
+               Block block = state.getBlock();
+               long seed = Mth.getSeed(pos.getX(), 0, pos.getZ());
+               double y = ((float)(seed >> 4 & 15L) / 15.0F - 1.0) * block.getMaxVerticalOffset();
+               float maxHorizontalOffset = block.getMaxHorizontalOffset();
+               double x = Mth.clamp(((float)(seed & 15L) / 15.0F - 0.5) * 0.5, -maxHorizontalOffset, maxHorizontalOffset);
+               double z = Mth.clamp(((float)(seed >> 8 & 15L) / 15.0F - 0.5) * 0.5, -maxHorizontalOffset, maxHorizontalOffset);
+               return new Vec3(x, y, z);
+            };
          };
          return this;
       }

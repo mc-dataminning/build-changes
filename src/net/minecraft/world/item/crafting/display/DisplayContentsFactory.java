@@ -6,11 +6,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 public interface DisplayContentsFactory<T> {
-   public interface ForRemainders<T> extends DisplayContentsFactory<T> {
+   interface ForRemainders<T> extends DisplayContentsFactory<T> {
       T addRemainder(T entry, List<T> remainders);
    }
 
-   public interface ForStacks<T> extends DisplayContentsFactory<T> {
+   interface ForStacks<T> extends DisplayContentsFactory<T> {
       default T forStack(final Holder<Item> item) {
          return this.forStack(new ItemStack(item));
       }

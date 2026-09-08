@@ -35,8 +35,8 @@ public abstract class ChunkSectionsToRender {
       final RenderPass renderPass,
       @Nullable GpuBuffer defaultIndexBuffer,
       @Nullable IndexType defaultIndexType,
-      @Nullable final RenderPipeline renderPipelineOverride,
-      @Nullable final RenderPipeline renderPipelineOverrideMultidraw
+      final @Nullable RenderPipeline renderPipelineOverride,
+      final @Nullable RenderPipeline renderPipelineOverrideMultidraw
    );
 
    public void renderGroup(
@@ -81,8 +81,8 @@ public abstract class ChunkSectionsToRender {
       final RenderPass renderPass,
       final GpuTextureView atlas,
       final GpuTextureView lightmap,
-      @Nullable final RenderPipeline renderPipelineOverride,
-      @Nullable final RenderPipeline renderPipelineOverrideMultidraw
+      final @Nullable RenderPipeline renderPipelineOverride,
+      final @Nullable RenderPipeline renderPipelineOverrideMultidraw
    ) {
       RenderSystem.AutoStorageIndexBuffer autoIndices = RenderSystem.getSequentialBuffer(PrimitiveTopology.QUADS);
       GpuBuffer defaultIndexBuffer = this.maxIndicesRequired == 0 ? null : autoIndices.getBuffer();
@@ -117,10 +117,10 @@ public abstract class ChunkSectionsToRender {
       protected void render(
          final ChunkSectionLayer layer,
          final RenderPass renderPass,
-         @Nullable final GpuBuffer defaultIndexBuffer,
-         @Nullable final IndexType defaultIndexType,
-         @Nullable final RenderPipeline renderPipelineOverride,
-         @Nullable final RenderPipeline renderPipelineOverrideMultidraw
+         final @Nullable GpuBuffer defaultIndexBuffer,
+         final @Nullable IndexType defaultIndexType,
+         final @Nullable RenderPipeline renderPipelineOverride,
+         final @Nullable RenderPipeline renderPipelineOverrideMultidraw
       ) {
          renderPass.setPipeline(
             RenderSystem.getCompiledPipeline(renderPipelineOverrideMultidraw != null ? renderPipelineOverrideMultidraw : layer.pipeline(true))
@@ -143,7 +143,7 @@ public abstract class ChunkSectionsToRender {
 
                while (remainingDrawCount > 0) {
                   int passDrawCount = Integer.min(remainingDrawCount, maxDrawIndirectDrawCount);
-                  long length = (long)passDrawCount * 20L;
+                  long length = passDrawCount * 20L;
                   GpuBufferSlice passSlice = buffer.slice(startOffset, length);
                   renderPass.drawIndexedIndirect(passSlice, passDrawCount);
                   remainingDrawCount -= passDrawCount;
@@ -173,10 +173,10 @@ public abstract class ChunkSectionsToRender {
       protected void render(
          final ChunkSectionLayer layer,
          final RenderPass renderPass,
-         @Nullable final GpuBuffer defaultIndexBuffer,
-         @Nullable final IndexType defaultIndexType,
-         @Nullable final RenderPipeline renderPipelineOverride,
-         @Nullable final RenderPipeline renderPipelineOverrideMultidraw
+         final @Nullable GpuBuffer defaultIndexBuffer,
+         final @Nullable IndexType defaultIndexType,
+         final @Nullable RenderPipeline renderPipelineOverride,
+         final @Nullable RenderPipeline renderPipelineOverrideMultidraw
       ) {
          renderPass.setPipeline(RenderSystem.getCompiledPipeline(renderPipelineOverride != null ? renderPipelineOverride : layer.pipeline(false)));
          List<RenderPass.Draw<GpuBufferSlice[]>> draws = this.drawsPerLayer.get(layer);
@@ -186,7 +186,7 @@ public abstract class ChunkSectionsToRender {
       }
    }
 
-   public static record GpuMultiDrawIndexedIndirect(
+   public record GpuMultiDrawIndexedIndirect(
       GpuBufferSlice vertexBuffer, @Nullable GpuBufferSlice indexBuffer, @Nullable IndexType indexType, GpuBufferSlice indirectCommandBuffer, int drawCount
    ) {
    }

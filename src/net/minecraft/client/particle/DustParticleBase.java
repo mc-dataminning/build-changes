@@ -25,9 +25,9 @@ public class DustParticleBase<T extends ScalableParticleOptionsBase> extends Sin
       this.xd *= 0.1F;
       this.yd *= 0.1F;
       this.zd *= 0.1F;
-      this.quadSize = this.quadSize * 0.75F * options.getScale();
+      this.quadSize = this.quadSize * (0.75F * options.getScale());
       int baseLifetime = (int)(8.0 / (this.random.nextDouble() * 0.8 + 0.2));
-      this.lifetime = (int)Math.max((float)baseLifetime * options.getScale(), 1.0F);
+      this.lifetime = (int)Math.max(baseLifetime * options.getScale(), 1.0F);
       this.setSpriteFromAge(sprites);
    }
 
@@ -42,7 +42,7 @@ public class DustParticleBase<T extends ScalableParticleOptionsBase> extends Sin
 
    @Override
    public float getQuadSize(final float a) {
-      return this.quadSize * Mth.clamp(((float)this.age + a) / (float)this.lifetime * 32.0F, 0.0F, 1.0F);
+      return this.quadSize * Mth.clamp((this.age + a) / this.lifetime * 32.0F, 0.0F, 1.0F);
    }
 
    @Override

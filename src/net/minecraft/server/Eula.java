@@ -21,16 +21,11 @@ public class Eula {
    }
 
    private boolean readFile() {
-      try {
-         boolean var3;
-         try (InputStream input = Files.newInputStream(this.file)) {
-            Properties properties = new Properties();
-            properties.load(input);
-            var3 = Boolean.parseBoolean(properties.getProperty("eula", "false"));
-         }
-
-         return var3;
-      } catch (Exception var6) {
+      try (InputStream input = Files.newInputStream(this.file)) {
+         Properties properties = new Properties();
+         properties.load(input);
+         return Boolean.parseBoolean(properties.getProperty("eula", "false"));
+      } catch (Exception ignored) {
          LOGGER.warn("Failed to load {}", this.file);
          this.saveDefaults();
          return false;
@@ -47,8 +42,8 @@ public class Eula {
             Properties properties = new Properties();
             properties.setProperty("eula", "false");
             properties.store(output, "By changing the setting below to TRUE you are indicating your agreement to our EULA (" + CommonLinks.EULA + ").");
-         } catch (Exception var6) {
-            LOGGER.warn("Failed to save {}", this.file, var6);
+         } catch (Exception e) {
+            LOGGER.warn("Failed to save {}", this.file, e);
          }
       }
    }

@@ -109,17 +109,7 @@ public record DebugBrainDump(
          inventoryStr = "";
       }
 
-      boolean var10000;
-      label36: {
-         if (entity instanceof Villager villager && villager.wantsToSpawnGolem(gameTime)) {
-            var10000 = true;
-            break label36;
-         }
-
-         var10000 = false;
-      }
-
-      boolean wantsGolem = var10000;
+      boolean wantsGolem = entity instanceof Villager villager && villager.wantsToSpawnGolem(gameTime);
       int angerLevel = entity instanceof Warden warden ? warden.getClientAngerLevel() : -1;
       List<String> activities = brain.getActiveActivities().stream().map(Activity::getName).toList();
       List<String> behaviors = brain.getRunningBehaviors().stream().map(BehaviorControl::debugString).toList();
@@ -194,7 +184,7 @@ public record DebugBrainDump(
       return BuiltInRegistries.MEMORY_MODULE_TYPE.getKey(memoryType).getPath() + ": " + description;
    }
 
-   private static String getShortDescription(final ServerLevel level, @Nullable final Object obj) {
+   private static String getShortDescription(final ServerLevel level, final @Nullable Object obj) {
       return switch (obj) {
          case null -> "-";
          case UUID uuid -> getShortDescription(level, level.getEntity(uuid));
@@ -208,9 +198,9 @@ public record DebugBrainDump(
             yield entity == null ? obj.toString() : getShortDescription(level, entity);
          }
          case NearestVisibleLivingEntities visibleEntities -> getShortDescription(level, visibleEntities.nearbyEntities());
-         case Collection collection -> "["
-         + (String)collection.stream().map(element -> getShortDescription(level, element)).collect(Collectors.joining(", "))
-         + "]";
+         case Collection<?> collection -> "["
+            + (String)collection.stream().map(element -> getShortDescription(level, element)).collect(Collectors.joining(", "))
+            + "]";
          default -> obj.toString();
       };
    }

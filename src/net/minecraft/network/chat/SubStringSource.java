@@ -27,37 +27,37 @@ public class SubStringSource {
    public List<FormattedCharSequence> substring(final int start, final int length, final boolean reverse) {
       if (length == 0) {
          return ImmutableList.of();
-      } else {
-         List<FormattedCharSequence> parts = Lists.newArrayList();
-         Style currentRunStyle = this.charStyles.get(start);
-         int currentRunStart = start;
+      }
 
-         for (int i = 1; i < length; i++) {
-            int actualIndex = start + i;
-            Style charStyle = this.charStyles.get(actualIndex);
-            if (!charStyle.equals(currentRunStyle)) {
-               String currentRunText = this.plainText.substring(currentRunStart, actualIndex);
-               parts.add(
-                  reverse
-                     ? FormattedCharSequence.backward(currentRunText, currentRunStyle, this.reverseCharModifier)
-                     : FormattedCharSequence.forward(currentRunText, currentRunStyle)
-               );
-               currentRunStyle = charStyle;
-               currentRunStart = actualIndex;
-            }
-         }
+      List<FormattedCharSequence> parts = Lists.newArrayList();
+      Style currentRunStyle = this.charStyles.get(start);
+      int currentRunStart = start;
 
-         if (currentRunStart < start + length) {
-            String lastRunText = this.plainText.substring(currentRunStart, start + length);
+      for (int i = 1; i < length; i++) {
+         int actualIndex = start + i;
+         Style charStyle = this.charStyles.get(actualIndex);
+         if (!charStyle.equals(currentRunStyle)) {
+            String currentRunText = this.plainText.substring(currentRunStart, actualIndex);
             parts.add(
                reverse
-                  ? FormattedCharSequence.backward(lastRunText, currentRunStyle, this.reverseCharModifier)
-                  : FormattedCharSequence.forward(lastRunText, currentRunStyle)
+                  ? FormattedCharSequence.backward(currentRunText, currentRunStyle, this.reverseCharModifier)
+                  : FormattedCharSequence.forward(currentRunText, currentRunStyle)
             );
+            currentRunStyle = charStyle;
+            currentRunStart = actualIndex;
          }
-
-         return reverse ? Lists.reverse(parts) : parts;
       }
+
+      if (currentRunStart < start + length) {
+         String lastRunText = this.plainText.substring(currentRunStart, start + length);
+         parts.add(
+            reverse
+               ? FormattedCharSequence.backward(lastRunText, currentRunStyle, this.reverseCharModifier)
+               : FormattedCharSequence.forward(lastRunText, currentRunStyle)
+         );
+      }
+
+      return reverse ? Lists.reverse(parts) : parts;
    }
 
    public static SubStringSource create(final FormattedText text) {

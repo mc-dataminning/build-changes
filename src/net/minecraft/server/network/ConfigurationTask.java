@@ -12,7 +12,7 @@ public interface ConfigurationTask {
 
    ConfigurationTask.Type type();
 
-   public static record Type(String id) {
+   record Type(String id) {
       @Override
       public String toString() {
          return this.id;

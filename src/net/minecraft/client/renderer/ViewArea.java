@@ -5,6 +5,7 @@ import net.minecraft.client.RotatingSectionStorage;
 import net.minecraft.client.renderer.chunk.SectionRenderDispatcher;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
+import org.jspecify.annotations.Nullable;
 
 public class ViewArea {
    private final SectionOcclusionGraph sectionOcclusionGraph;
@@ -26,11 +27,11 @@ public class ViewArea {
       this.maxY = maxY;
       if (!Minecraft.getInstance().isSameThread()) {
          throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
-      } else {
-         this.sections = new RotatingSectionStorage<>(
-            renderDistance, minSectionY, maxSectionY, (index, sectionNode) -> sectionRenderDispatcher.new RenderSection(index, sectionNode)
-         );
       }
+
+      this.sections = new RotatingSectionStorage<>(
+         renderDistance, minSectionY, maxSectionY, (index, sectionNode) -> sectionRenderDispatcher.new RenderSection(index, sectionNode)
+      );
    }
 
    public void releaseAllBuffers() {
@@ -80,11 +81,11 @@ public class ViewArea {
       return this.sections.centerSectionPos();
    }
 
-   public SectionRenderDispatcher.RenderSection getRenderSectionAt(final BlockPos pos) {
+   public SectionRenderDispatcher.@Nullable RenderSection getRenderSectionAt(final BlockPos pos) {
       return this.sections.getValueAt(pos);
    }
 
-   protected SectionRenderDispatcher.RenderSection getRenderSection(final long sectionNode) {
+   protected SectionRenderDispatcher.@Nullable RenderSection getRenderSection(final long sectionNode) {
       return this.sections.getValue(sectionNode);
    }
 }

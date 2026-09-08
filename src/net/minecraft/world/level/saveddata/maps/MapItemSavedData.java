@@ -47,18 +47,18 @@ public class MapItemSavedData extends SavedData {
    private static final String FRAME_PREFIX = "frame-";
    public static final Codec<MapItemSavedData> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Level.RESOURCE_KEY_CODEC.fieldOf("dimension").forGetter(m -> m.dimension),
-               Codec.INT.fieldOf("xCenter").forGetter(m -> m.centerX),
-               Codec.INT.fieldOf("zCenter").forGetter(m -> m.centerZ),
-               Codec.BYTE.optionalFieldOf("scale", (byte)0).forGetter(m -> m.scale),
-               Codec.BYTE_BUFFER.fieldOf("colors").forGetter(m -> ByteBuffer.wrap(m.colors)),
-               Codec.BOOL.optionalFieldOf("trackingPosition", true).forGetter(m -> m.trackingPosition),
-               Codec.BOOL.optionalFieldOf("unlimitedTracking", false).forGetter(m -> m.unlimitedTracking),
-               Codec.BOOL.optionalFieldOf("locked", false).forGetter(m -> m.locked),
-               MapBanner.CODEC.listOf().optionalFieldOf("banners", List.of()).forGetter(m -> List.copyOf(m.bannerMarkers.values())),
-               MapFrame.CODEC.listOf().optionalFieldOf("frames", List.of()).forGetter(m -> List.copyOf(m.frameMarkers.values()))
-            )
-            .apply(i, MapItemSavedData::new)
+            Level.RESOURCE_KEY_CODEC.fieldOf("dimension").forGetter(m -> m.dimension),
+            Codec.INT.fieldOf("xCenter").forGetter(m -> m.centerX),
+            Codec.INT.fieldOf("zCenter").forGetter(m -> m.centerZ),
+            Codec.BYTE.optionalFieldOf("scale", (byte)0).forGetter(m -> m.scale),
+            Codec.BYTE_BUFFER.fieldOf("colors").forGetter(m -> ByteBuffer.wrap(m.colors)),
+            Codec.BOOL.optionalFieldOf("trackingPosition", true).forGetter(m -> m.trackingPosition),
+            Codec.BOOL.optionalFieldOf("unlimitedTracking", false).forGetter(m -> m.unlimitedTracking),
+            Codec.BOOL.optionalFieldOf("locked", false).forGetter(m -> m.locked),
+            MapBanner.CODEC.listOf().optionalFieldOf("banners", List.of()).forGetter(m -> List.copyOf(m.bannerMarkers.values())),
+            MapFrame.CODEC.listOf().optionalFieldOf("frames", List.of()).forGetter(m -> List.copyOf(m.frameMarkers.values()))
+         )
+         .apply(i, MapItemSavedData::new)
    );
    public final int centerX;
    public final int centerZ;
@@ -118,22 +118,12 @@ public class MapItemSavedData extends SavedData {
 
       for (MapBanner banner : banners) {
          this.bannerMarkers.put(banner.getId(), banner);
-         this.addDecoration(
-            banner.getDecoration(), null, banner.getId(), (double)banner.pos().getX(), (double)banner.pos().getZ(), 180.0, banner.name().orElse(null)
-         );
+         this.addDecoration(banner.getDecoration(), null, banner.getId(), banner.pos().getX(), banner.pos().getZ(), 180.0, banner.name().orElse(null));
       }
 
       for (MapFrame frame : frames) {
          this.frameMarkers.put(frame.getId(), frame);
-         this.addDecoration(
-            MapDecorationTypes.FRAME,
-            null,
-            getFrameKey(frame.entityId()),
-            (double)frame.pos().getX(),
-            (double)frame.pos().getZ(),
-            (double)frame.rotation(),
-            null
-         );
+         this.addDecoration(MapDecorationTypes.FRAME, null, getFrameKey(frame.entityId()), frame.pos().getX(), frame.pos().getZ(), frame.rotation(), null);
       }
    }
 
@@ -146,8 +136,8 @@ public class MapItemSavedData extends SavedData {
       final ResourceKey<Level> dimension
    ) {
       int size = 128 * (1 << scale);
-      int areaX = Mth.floor((originX + 64.0) / (double)size);
-      int areaZ = Mth.floor((originY + 64.0) / (double)size);
+      int areaX = Mth.floor((originX + 64.0) / size);
+      int areaZ = Mth.floor((originY + 64.0) / size);
       int x = areaX * size + size / 2 - 64;
       int z = areaZ * size + size / 2 - 64;
       return new MapItemSavedData(x, z, scale, trackingPosition, unlimitedTracking, false, dimension);
@@ -169,9 +159,7 @@ public class MapItemSavedData extends SavedData {
    }
 
    public MapItemSavedData scaled() {
-      return createFresh(
-         (double)this.centerX, (double)this.centerZ, (byte)Mth.clamp(this.scale + 1, 0, 4), this.trackingPosition, this.unlimitedTracking, this.dimension
-      );
+      return createFresh(this.centerX, this.centerZ, (byte)Mth.clamp(this.scale + 1, 0, 4), this.trackingPosition, this.unlimitedTracking, this.dimension);
    }
 
    private static Predicate<ItemStack> mapMatcher(final ItemStack mapStack) {
@@ -179,7 +167,7 @@ public class MapItemSavedData extends SavedData {
       return stack -> stack == mapStack ? true : stack.is(mapStack.getItem()) && Objects.equals(mapId, stack.get(DataComponents.MAP_ID));
    }
 
-   public void tickCarriedBy(final Player tickingPlayer, final ItemStack itemStack, @Nullable final ItemFrame placedInFrame) {
+   public void tickCarriedBy(final Player tickingPlayer, final ItemStack itemStack, final @Nullable ItemFrame placedInFrame) {
       if (!this.carriedByPlayers.containsKey(tickingPlayer)) {
          MapItemSavedData.HoldingPlayer holdingPlayer = new MapItemSavedData.HoldingPlayer(tickingPlayer);
          this.carriedByPlayers.put(tickingPlayer, holdingPlayer);
@@ -198,7 +186,7 @@ public class MapItemSavedData extends SavedData {
          if (!otherPlayer.isRemoved() && (placedInFrame != null || otherPlayer.getInventory().contains(mapMatcher))) {
             if (placedInFrame == null && otherPlayer.level().dimension() == this.dimension && this.trackingPosition) {
                this.addDecoration(
-                  MapDecorationTypes.PLAYER, otherPlayer.level(), otherPlayerName, otherPlayer.getX(), otherPlayer.getZ(), (double)otherPlayer.getYRot(), null
+                  MapDecorationTypes.PLAYER, otherPlayer.level(), otherPlayerName, otherPlayer.getX(), otherPlayer.getZ(), otherPlayer.getYRot(), null
                );
             }
          } else {
@@ -224,9 +212,9 @@ public class MapItemSavedData extends SavedData {
             MapDecorationTypes.FRAME,
             tickingPlayer.level(),
             getFrameKey(placedInFrame.getId()),
-            (double)pos.getX(),
-            (double)pos.getZ(),
-            (double)(placedInFrame.getDirection().get2DDataValue() * 90),
+            pos.getX(),
+            pos.getZ(),
+            placedInFrame.getDirection().get2DDataValue() * 90,
             null
          );
          MapFrame oldFrame = this.frameMarkers.put(mapFrame.getId(), mapFrame);
@@ -239,7 +227,7 @@ public class MapItemSavedData extends SavedData {
       if (!this.decorations.keySet().containsAll(staticDecorations.decorations().keySet())) {
          staticDecorations.decorations().forEach((id, entry) -> {
             if (!this.decorations.containsKey(id)) {
-               this.addDecoration(entry.type(), tickingPlayer.level(), id, entry.x(), entry.z(), (double)entry.rotation(), null);
+               this.addDecoration(entry.type(), tickingPlayer.level(), id, entry.x(), entry.z(), entry.rotation(), null);
             }
          });
       }
@@ -267,22 +255,22 @@ public class MapItemSavedData extends SavedData {
    }
 
    public static void addTargetDecoration(final ItemStack itemStack, final BlockPos position, final String key, final Holder<MapDecorationType> decorationType) {
-      MapDecorations.Entry newDecoration = new MapDecorations.Entry(decorationType, (double)position.getX(), (double)position.getZ(), 180.0F);
+      MapDecorations.Entry newDecoration = new MapDecorations.Entry(decorationType, position.getX(), position.getZ(), 180.0F);
       itemStack.update(DataComponents.MAP_DECORATIONS, MapDecorations.EMPTY, decorations -> decorations.withDecoration(key, newDecoration));
    }
 
    private void addDecoration(
       final Holder<MapDecorationType> type,
-      @Nullable final LevelAccessor level,
+      final @Nullable LevelAccessor level,
       final String key,
       final double xPos,
       final double zPos,
       final double yRot,
-      @Nullable final Component name
+      final @Nullable Component name
    ) {
       int scaling = 1 << this.scale;
-      float xDeltaFromCenter = (float)(xPos - (double)this.centerX) / (float)scaling;
-      float yDeltaFromCenter = (float)(zPos - (double)this.centerZ) / (float)scaling;
+      float xDeltaFromCenter = (float)(xPos - this.centerX) / scaling;
+      float yDeltaFromCenter = (float)(zPos - this.centerZ) / scaling;
       MapItemSavedData.MapDecorationLocation locationAndType = this.calculateDecorationLocationAndType(type, level, yRot, xDeltaFromCenter, yDeltaFromCenter);
       if (locationAndType == null) {
          this.removeDecoration(key);
@@ -305,9 +293,8 @@ public class MapItemSavedData extends SavedData {
       }
    }
 
-   @Nullable
-   private MapItemSavedData.MapDecorationLocation calculateDecorationLocationAndType(
-      final Holder<MapDecorationType> type, @Nullable final LevelAccessor level, final double yRot, final float xDeltaFromCenter, final float yDeltaFromCenter
+   private MapItemSavedData.@Nullable MapDecorationLocation calculateDecorationLocationAndType(
+      final Holder<MapDecorationType> type, final @Nullable LevelAccessor level, final double yRot, final float xDeltaFromCenter, final float yDeltaFromCenter
    ) {
       byte clampedXDeltaFromCenter = clampMapCoordinate(xDeltaFromCenter);
       byte clampedYDeltaFromCenter = clampMapCoordinate(yDeltaFromCenter);
@@ -325,25 +312,24 @@ public class MapItemSavedData extends SavedData {
       }
    }
 
-   @Nullable
-   private Pair<Holder<MapDecorationType>, Byte> playerDecorationTypeAndRotation(
-      final Holder<MapDecorationType> type, @Nullable final LevelAccessor level, final double yRot, final float xDeltaFromCenter, final float yDeltaFromCenter
+   private @Nullable Pair<Holder<MapDecorationType>, Byte> playerDecorationTypeAndRotation(
+      final Holder<MapDecorationType> type, final @Nullable LevelAccessor level, final double yRot, final float xDeltaFromCenter, final float yDeltaFromCenter
    ) {
       if (isInsideMap(xDeltaFromCenter, yDeltaFromCenter)) {
          return Pair.of(type, this.calculateRotation(level, yRot));
-      } else {
-         Holder<MapDecorationType> outsideMapDecorationType = this.decorationTypeForPlayerOutsideMap(xDeltaFromCenter, yDeltaFromCenter);
-         return outsideMapDecorationType == null ? null : Pair.of(outsideMapDecorationType, this.calculateRotation(level, yRot));
       }
+
+      Holder<MapDecorationType> outsideMapDecorationType = this.decorationTypeForPlayerOutsideMap(xDeltaFromCenter, yDeltaFromCenter);
+      return outsideMapDecorationType == null ? null : Pair.of(outsideMapDecorationType, this.calculateRotation(level, yRot));
    }
 
-   private byte calculateRotation(@Nullable final LevelAccessor level, final double yRot) {
+   private byte calculateRotation(final @Nullable LevelAccessor level, final double yRot) {
       if (this.dimension == Level.NETHER && level != null) {
          int s = (int)(level.getGameTime() / 10L);
          return (byte)(s * s * 34187121 + s * 121 >> 15 & 15);
       } else {
          double adjustedYRot = yRot < 0.0 ? yRot - 8.0 : yRot + 8.0;
-         return (byte)((int)(adjustedYRot * 16.0 / 360.0));
+         return (byte)(adjustedYRot * 16.0 / 360.0);
       }
    }
 
@@ -352,8 +338,7 @@ public class MapItemSavedData extends SavedData {
       return xd >= -63.0F && yd >= -63.0F && xd <= 63.0F && yd <= 63.0F;
    }
 
-   @Nullable
-   private Holder<MapDecorationType> decorationTypeForPlayerOutsideMap(final float xDeltaFromCenter, final float yDeltaFromCenter) {
+   private @Nullable Holder<MapDecorationType> decorationTypeForPlayerOutsideMap(final float xDeltaFromCenter, final float yDeltaFromCenter) {
       int rangeLimit = 320;
       boolean isWithinLimits = Math.abs(xDeltaFromCenter) < 320.0F && Math.abs(yDeltaFromCenter) < 320.0F;
       if (isWithinLimits) {
@@ -368,12 +353,11 @@ public class MapItemSavedData extends SavedData {
       if (deltaFromCenter <= -63.0F) {
          return -128;
       } else {
-         return deltaFromCenter >= 63.0F ? 127 : (byte)((int)((double)(deltaFromCenter * 2.0F) + 0.5));
+         return deltaFromCenter >= 63.0F ? 127 : (byte)(deltaFromCenter * 2.0F + 0.5);
       }
    }
 
-   @Nullable
-   public Packet<?> getUpdatePacket(final MapId id, final Player player) {
+   public @Nullable Packet<?> getUpdatePacket(final MapId id, final Player player) {
       MapItemSavedData.HoldingPlayer holdingPlayer = this.carriedByPlayers.get(player);
       return holdingPlayer == null ? null : holdingPlayer.nextUpdatePacket(id);
    }
@@ -402,11 +386,11 @@ public class MapItemSavedData extends SavedData {
    }
 
    public boolean toggleBanner(final LevelAccessor level, final BlockPos pos) {
-      double xPos = (double)pos.getX() + 0.5;
-      double zPos = (double)pos.getZ() + 0.5;
+      double xPos = pos.getX() + 0.5;
+      double zPos = pos.getZ() + 0.5;
       int scale = 1 << this.scale;
-      double xd = (xPos - (double)this.centerX) / (double)scale;
-      double yd = (zPos - (double)this.centerZ) / (double)scale;
+      double xd = (xPos - this.centerX) / scale;
+      double yd = (zPos - this.centerZ) / scale;
       int halfSize = 63;
       if (xd >= -63.0 && yd >= -63.0 && xd <= 63.0 && yd <= 63.0) {
          MapBanner banner = MapBanner.fromWorld(level, pos);
@@ -499,22 +483,16 @@ public class MapItemSavedData extends SavedData {
 
    public class HoldingPlayer {
       public final Player player;
-      private boolean dirtyData;
+      private boolean dirtyData = true;
       private int minDirtyX;
       private int minDirtyY;
-      private int maxDirtyX;
-      private int maxDirtyY;
-      private boolean dirtyDecorations;
+      private int maxDirtyX = 127;
+      private int maxDirtyY = 127;
+      private boolean dirtyDecorations = true;
       private int tick;
       public int step;
 
       private HoldingPlayer(final Player player) {
-         Objects.requireNonNull(MapItemSavedData.this);
-         super();
-         this.dirtyData = true;
-         this.maxDirtyX = 127;
-         this.maxDirtyY = 127;
-         this.dirtyDecorations = true;
          this.player = player;
       }
 
@@ -534,8 +512,7 @@ public class MapItemSavedData extends SavedData {
          return new MapItemSavedData.MapPatch(startX, startY, width, height, patch);
       }
 
-      @Nullable
-      private Packet<?> nextUpdatePacket(final MapId id) {
+      private @Nullable Packet<?> nextUpdatePacket(final MapId id) {
          MapItemSavedData.MapPatch patch;
          if (this.dirtyData) {
             this.dirtyData = false;
@@ -577,10 +554,10 @@ public class MapItemSavedData extends SavedData {
       }
    }
 
-   private static record MapDecorationLocation(Holder<MapDecorationType> type, byte x, byte y, byte rot) {
+   private record MapDecorationLocation(Holder<MapDecorationType> type, byte x, byte y, byte rot) {
    }
 
-   public static record MapPatch(int startX, int startY, int width, int height, byte[] mapColors) {
+   public record MapPatch(int startX, int startY, int width, int height, byte[] mapColors) {
       public static final StreamCodec<ByteBuf, Optional<MapItemSavedData.MapPatch>> STREAM_CODEC = StreamCodec.of(
          MapItemSavedData.MapPatch::write, MapItemSavedData.MapPatch::read
       );

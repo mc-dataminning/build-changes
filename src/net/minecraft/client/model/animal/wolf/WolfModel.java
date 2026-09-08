@@ -32,16 +32,16 @@ public abstract class WolfModel extends EntityModel<WolfRenderState> {
       if (state.isAngry) {
          this.tail.yRot = 0.0F;
       } else {
-         this.tail.yRot = Mth.cos((double)(animationPos * 0.6662F)) * 1.4F * animationSpeed;
+         this.tail.yRot = Mth.cos(animationPos * 0.6662F) * 1.4F * animationSpeed;
       }
 
       if (state.isSitting) {
          this.setSittingPose(state);
       } else {
-         this.rightHindLeg.xRot = Mth.cos((double)(animationPos * 0.6662F)) * 1.4F * animationSpeed;
-         this.leftHindLeg.xRot = Mth.cos((double)(animationPos * 0.6662F + (float) Math.PI)) * 1.4F * animationSpeed;
-         this.rightFrontLeg.xRot = Mth.cos((double)(animationPos * 0.6662F + (float) Math.PI)) * 1.4F * animationSpeed;
-         this.leftFrontLeg.xRot = Mth.cos((double)(animationPos * 0.6662F)) * 1.4F * animationSpeed;
+         this.rightHindLeg.xRot = Mth.cos(animationPos * 0.6662F) * 1.4F * animationSpeed;
+         this.leftHindLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * 1.4F * animationSpeed;
+         this.rightFrontLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * 1.4F * animationSpeed;
+         this.leftFrontLeg.xRot = Mth.cos(animationPos * 0.6662F) * 1.4F * animationSpeed;
       }
 
       this.shakeOffWater(state);

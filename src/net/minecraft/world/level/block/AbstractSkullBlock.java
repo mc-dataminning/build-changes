@@ -24,7 +24,7 @@ public abstract class AbstractSkullBlock extends BaseEntityBlock {
    public AbstractSkullBlock(final SkullBlock.Type type, final BlockBehaviour.Properties properties) {
       super(properties);
       this.type = type;
-      this.registerDefaultState(this.stateDefinition.any().setValue(POWERED, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(POWERED, false));
    }
 
    @Override
@@ -32,9 +32,8 @@ public abstract class AbstractSkullBlock extends BaseEntityBlock {
       return new SkullBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       if (level.isClientSide()) {
          boolean isAnimated = blockState.is(Blocks.DRAGON_HEAD)
             || blockState.is(Blocks.DRAGON_WALL_HEAD)
@@ -64,17 +63,17 @@ public abstract class AbstractSkullBlock extends BaseEntityBlock {
 
    @Override
    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.defaultBlockState().setValue(POWERED, Boolean.valueOf(context.getLevel().hasNeighborSignal(context.getClickedPos())));
+      return this.defaultBlockState().setValue(POWERED, context.getLevel().hasNeighborSignal(context.getClickedPos()));
    }
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       if (!level.isClientSide()) {
          boolean signal = level.hasNeighborSignal(pos);
          if (signal != state.getValue(POWERED)) {
-            level.setBlock(pos, state.setValue(POWERED, Boolean.valueOf(signal)), 2);
+            level.setBlock(pos, state.setValue(POWERED, signal), 2);
          }
       }
    }

@@ -48,7 +48,7 @@ public record ServerboundTestInstanceBlockActionPacket(BlockPos pos, Serverbound
       listener.handleTestInstanceBlockAction(this);
    }
 
-   public static enum Action {
+   public enum Action {
       INIT(0),
       QUERY(1),
       SET(2),
@@ -63,7 +63,7 @@ public record ServerboundTestInstanceBlockActionPacket(BlockPos pos, Serverbound
       public static final StreamCodec<ByteBuf, ServerboundTestInstanceBlockActionPacket.Action> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, e -> e.id);
       private final int id;
 
-      private Action(final int id) {
+      Action(final int id) {
          this.id = id;
       }
    }

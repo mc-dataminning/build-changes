@@ -40,12 +40,11 @@ public class SingleTickProfiler {
       }
    }
 
-   @Nullable
-   public static SingleTickProfiler createTickProfiler(final String name) {
+   public static @Nullable SingleTickProfiler createTickProfiler(final String name) {
       return SharedConstants.DEBUG_MONITOR_TICK_TIMES ? new SingleTickProfiler(Util.timeSource(), name, SharedConstants.MAXIMUM_TICK_TIME_NANOS) : null;
    }
 
-   public static ProfilerFiller decorateFiller(final ProfilerFiller filler, @Nullable final SingleTickProfiler tickProfiler) {
+   public static ProfilerFiller decorateFiller(final ProfilerFiller filler, final @Nullable SingleTickProfiler tickProfiler) {
       return tickProfiler != null ? ProfilerFiller.combine(tickProfiler.startTick(), filler) : filler;
    }
 }

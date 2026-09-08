@@ -99,10 +99,10 @@ public class TestCommand {
       int count = toGameTestInfos(finder.source(), RetryOptions.noRetries(), finder).map(info -> resetGameTestInfo(finder.source(), info)).toList().size();
       if (count == 0) {
          throw CLEAR_NO_TESTS.create();
-      } else {
-         finder.source().sendSuccess(() -> Component.translatable("commands.test.reset.success", count), true);
-         return count;
       }
+
+      finder.source().sendSuccess(() -> Component.translatable("commands.test.reset.success", count), true);
+      return count;
    }
 
    private static int clear(final TestFinder finder) throws CommandSyntaxException {
@@ -122,10 +122,10 @@ public class TestCommand {
 
       if (tests.isEmpty()) {
          throw CLEAR_NO_TESTS.create();
-      } else {
-         source.sendSuccess(() -> Component.translatable("commands.test.clear.success", tests.size()), true);
-         return tests.size();
       }
+
+      source.sendSuccess(() -> Component.translatable("commands.test.clear.success", tests.size()), true);
+      return tests.size();
    }
 
    private static int export(final TestFinder finder) throws CommandSyntaxException {
@@ -147,11 +147,11 @@ public class TestCommand {
 
       if (count == 0) {
          throw NO_STRUCTURES_TO_EXPORT.create();
-      } else {
-         String message = "Exported " + count + " structures";
-         finder.source().sendSuccess(() -> Component.literal(message), true);
-         return allGood ? 0 : 1;
       }
+
+      String message = "Exported " + count + " structures";
+      finder.source().sendSuccess(() -> Component.literal(message), true);
+      return allGood ? 0 : 1;
    }
 
    private static int verify(final TestFinder finder) {
@@ -218,22 +218,22 @@ public class TestCommand {
       Set<ResourceKey<GameTestInstance>> selectedTests = finder.findTests().map(Holder.Reference::key).collect(Collectors.toSet());
       if (selectedTests.isEmpty()) {
          return Stream.empty();
-      } else {
-         CommandSourceStack source = finder.source();
-         MinecraftServer server = source.getServer();
-         BlockPos sourcePos = BlockPos.containing(source.getPosition());
-         List<GlobalPos> matches = new ArrayList<>();
-
-         for (ServerLevel level : server.getAllLevels()) {
-            StructureUtils.findTestBlocks(sourcePos, 250, level)
-               .flatMap(pos -> level.getBlockEntity(pos, BlockEntityTypes.TEST_INSTANCE_BLOCK).stream())
-               .filter(blockEntity -> blockEntity.test().filter(selectedTests::contains).isPresent())
-               .map(blockEntity -> new GlobalPos(level.dimension(), blockEntity.getBlockPos()))
-               .forEach(matches::add);
-         }
-
-         return matches.stream();
       }
+
+      CommandSourceStack source = finder.source();
+      MinecraftServer server = source.getServer();
+      BlockPos sourcePos = BlockPos.containing(source.getPosition());
+      List<GlobalPos> matches = new ArrayList<>();
+
+      for (ServerLevel level : server.getAllLevels()) {
+         StructureUtils.findTestBlocks(sourcePos, 250, level)
+            .flatMap(pos -> level.getBlockEntity(pos, BlockEntityTypes.TEST_INSTANCE_BLOCK).stream())
+            .filter(blockEntity -> blockEntity.test().filter(selectedTests::contains).isPresent())
+            .map(blockEntity -> new GlobalPos(level.dimension(), blockEntity.getBlockPos()))
+            .forEach(matches::add);
+      }
+
+      return matches.stream();
    }
 
    private static int locate(final TestFinder finder) throws CommandSyntaxException {
@@ -265,17 +265,15 @@ public class TestCommand {
                   );
                   int dx = sourcePos.getX() - structurePos.pos().getX();
                   int dz = sourcePos.getZ() - structurePos.pos().getZ();
-                  String distance = structurePos.dimension().equals(sourceDimension)
-                     ? Integer.toString(Mth.floor(Mth.sqrt((float)(dx * dx + dz * dz))))
-                     : "N/A";
+                  String distance = structurePos.dimension().equals(sourceDimension) ? Integer.toString(Mth.floor(Mth.sqrt(dx * dx + dz * dz))) : "N/A";
                   Component coordinates = ComponentUtils.wrapInSquareBrackets(
                         Component.translatable("chat.coordinates", structurePos.pos().getX(), structurePos.pos().getY(), structurePos.pos().getZ())
                            .append(Component.literal(" ->[" + structurePos.dimension().identifier().getPath() + "]"))
                      )
                      .withStyle(
                         s -> s.withColor(ChatFormatting.GREEN)
-                              .withClickEvent(new ClickEvent.SuggestCommand(tpCommand))
-                              .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.coordinates.tooltip")))
+                           .withClickEvent(new ClickEvent.SuggestCommand(tpCommand))
+                           .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.coordinates.tooltip")))
                      );
                   source.sendSuccess(() -> Component.translatable("commands.test.locate.found", coordinates, distance), false);
                   structuresFound.increment();
@@ -285,11 +283,11 @@ public class TestCommand {
       int structures = structuresFound.intValue();
       if (structures == 0) {
          throw NO_TEST_INSTANCES.create();
-      } else {
-         outputPlayerCoordinates(source, foundTestDimensions);
-         source.sendSuccess(() -> Component.translatable("commands.test.locate.done", structures), true);
-         return structures;
       }
+
+      outputPlayerCoordinates(source, foundTestDimensions);
+      source.sendSuccess(() -> Component.translatable("commands.test.locate.done", structures), true);
+      return structures;
    }
 
    private static ArgumentBuilder<CommandSourceStack, ?> runWithRetryOptions(
@@ -306,11 +304,11 @@ public class TestCommand {
                      Commands.argument("untilFailed", BoolArgumentType.bool())
                         .executes(
                            c -> run(
-                                 finder.apply(c),
-                                 new RetryOptions(IntegerArgumentType.getInteger(c, "numberOfTimes"), BoolArgumentType.getBool(c, "untilFailed")),
-                                 0,
-                                 8
-                              )
+                              finder.apply(c),
+                              new RetryOptions(IntegerArgumentType.getInteger(c, "numberOfTimes"), BoolArgumentType.getBool(c, "untilFailed")),
+                              0,
+                              8
+                           )
                         )
                   )
                )
@@ -330,27 +328,27 @@ public class TestCommand {
          runArgument,
          finder,
          then -> then.then(
-               ((RequiredArgumentBuilder)Commands.argument("rotationSteps", IntegerArgumentType.integer())
+            ((RequiredArgumentBuilder)Commands.argument("rotationSteps", IntegerArgumentType.integer())
+                  .executes(
+                     c -> run(
+                        finder.apply(c),
+                        new RetryOptions(IntegerArgumentType.getInteger(c, "numberOfTimes"), BoolArgumentType.getBool(c, "untilFailed")),
+                        IntegerArgumentType.getInteger(c, "rotationSteps"),
+                        8
+                     )
+                  ))
+               .then(
+                  Commands.argument("testsPerRow", IntegerArgumentType.integer())
                      .executes(
                         c -> run(
-                              finder.apply(c),
-                              new RetryOptions(IntegerArgumentType.getInteger(c, "numberOfTimes"), BoolArgumentType.getBool(c, "untilFailed")),
-                              IntegerArgumentType.getInteger(c, "rotationSteps"),
-                              8
-                           )
-                     ))
-                  .then(
-                     Commands.argument("testsPerRow", IntegerArgumentType.integer())
-                        .executes(
-                           c -> run(
-                                 finder.apply(c),
-                                 new RetryOptions(IntegerArgumentType.getInteger(c, "numberOfTimes"), BoolArgumentType.getBool(c, "untilFailed")),
-                                 IntegerArgumentType.getInteger(c, "rotationSteps"),
-                                 IntegerArgumentType.getInteger(c, "testsPerRow")
-                              )
+                           finder.apply(c),
+                           new RetryOptions(IntegerArgumentType.getInteger(c, "numberOfTimes"), BoolArgumentType.getBool(c, "untilFailed")),
+                           IntegerArgumentType.getInteger(c, "rotationSteps"),
+                           IntegerArgumentType.getInteger(c, "testsPerRow")
                         )
-                  )
-            )
+                     )
+               )
+         )
       );
    }
 
@@ -373,7 +371,7 @@ public class TestCommand {
                                                                         )
                                                                         .suggests(TestCommand::suggestTestInstanceIds),
                                                                      c -> TestFinder.builder()
-                                                                           .byResourceSelection(c, ResourceSelectorArgument.getSelectedResources(c, "tests"))
+                                                                        .byResourceSelection(c, ResourceSelectorArgument.getSelectedResources(c, "tests"))
                                                                   )
                                                                )
                                                          ))
@@ -386,7 +384,19 @@ public class TestCommand {
                                                                      .suggests(TestCommand::suggestTestInstanceIds)
                                                                      .executes(
                                                                         c -> run(
+                                                                           TestFinder.builder()
+                                                                              .byResourceSelection(c, ResourceSelectorArgument.getSelectedResources(c, "tests")),
+                                                                           RetryOptions.noRetries(),
+                                                                           0,
+                                                                           8
+                                                                        )
+                                                                     ))
+                                                                  .then(
+                                                                     Commands.argument("amount", IntegerArgumentType.integer())
+                                                                        .executes(
+                                                                           c -> run(
                                                                               TestFinder.builder()
+                                                                                 .createMultipleCopies(IntegerArgumentType.getInteger(c, "amount"))
                                                                                  .byResourceSelection(
                                                                                     c, ResourceSelectorArgument.getSelectedResources(c, "tests")
                                                                                  ),
@@ -394,20 +404,6 @@ public class TestCommand {
                                                                               0,
                                                                               8
                                                                            )
-                                                                     ))
-                                                                  .then(
-                                                                     Commands.argument("amount", IntegerArgumentType.integer())
-                                                                        .executes(
-                                                                           c -> run(
-                                                                                 TestFinder.builder()
-                                                                                    .createMultipleCopies(IntegerArgumentType.getInteger(c, "amount"))
-                                                                                    .byResourceSelection(
-                                                                                       c, ResourceSelectorArgument.getSelectedResources(c, "tests")
-                                                                                    ),
-                                                                                 RetryOptions.noRetries(),
-                                                                                 0,
-                                                                                 8
-                                                                              )
                                                                         )
                                                                   )
                                                             )
@@ -427,9 +423,8 @@ public class TestCommand {
                                                    .suggests(TestCommand::suggestTestInstanceIds)
                                                    .executes(
                                                       c -> verify(
-                                                            TestFinder.builder()
-                                                               .byResourceSelection(c, ResourceSelectorArgument.getSelectedResources(c, "tests"))
-                                                         )
+                                                         TestFinder.builder().byResourceSelection(c, ResourceSelectorArgument.getSelectedResources(c, "tests"))
+                                                      )
                                                    )
                                              )
                                        ))
@@ -440,8 +435,8 @@ public class TestCommand {
                                                 .suggests(TestCommand::suggestTestInstanceIds)
                                                 .executes(
                                                    c -> locate(
-                                                         TestFinder.builder().byResourceSelection(c, ResourceSelectorArgument.getSelectedResources(c, "tests"))
-                                                      )
+                                                      TestFinder.builder().byResourceSelection(c, ResourceSelectorArgument.getSelectedResources(c, "tests"))
+                                                   )
                                                 )
                                           )
                                     ))
@@ -474,12 +469,12 @@ public class TestCommand {
                         ((RequiredArgumentBuilder)Commands.argument("width", IntegerArgumentType.integer())
                               .executes(
                                  c -> createNewStructure(
-                                       (CommandSourceStack)c.getSource(),
-                                       IdentifierArgument.getId(c, "id"),
-                                       IntegerArgumentType.getInteger(c, "width"),
-                                       IntegerArgumentType.getInteger(c, "width"),
-                                       IntegerArgumentType.getInteger(c, "width")
-                                    )
+                                    (CommandSourceStack)c.getSource(),
+                                    IdentifierArgument.getId(c, "id"),
+                                    IntegerArgumentType.getInteger(c, "width"),
+                                    IntegerArgumentType.getInteger(c, "width"),
+                                    IntegerArgumentType.getInteger(c, "width")
+                                 )
                               ))
                            .then(
                               Commands.argument("height", IntegerArgumentType.integer())
@@ -487,12 +482,12 @@ public class TestCommand {
                                     Commands.argument("depth", IntegerArgumentType.integer())
                                        .executes(
                                           c -> createNewStructure(
-                                                (CommandSourceStack)c.getSource(),
-                                                IdentifierArgument.getId(c, "id"),
-                                                IntegerArgumentType.getInteger(c, "width"),
-                                                IntegerArgumentType.getInteger(c, "height"),
-                                                IntegerArgumentType.getInteger(c, "depth")
-                                             )
+                                             (CommandSourceStack)c.getSource(),
+                                             IdentifierArgument.getId(c, "id"),
+                                             IntegerArgumentType.getInteger(c, "width"),
+                                             IntegerArgumentType.getInteger(c, "height"),
+                                             IntegerArgumentType.getInteger(c, "depth")
+                                          )
                                        )
                                  )
                            )
@@ -709,20 +704,20 @@ public class TestCommand {
             )
             .withStyle(
                s -> s.withColor(ChatFormatting.YELLOW)
-                     .withClickEvent(
-                        new ClickEvent.SuggestCommand(
-                           "/execute in "
-                              + testDimension
-                              + " run tp @s "
-                              + testInfo.playerPos.getX()
-                              + " "
-                              + testInfo.surfaceY
-                              + " "
-                              + testInfo.playerPos.getZ()
-                              + " 0 0"
-                        )
+                  .withClickEvent(
+                     new ClickEvent.SuggestCommand(
+                        "/execute in "
+                           + testDimension
+                           + " run tp @s "
+                           + testInfo.playerPos.getX()
+                           + " "
+                           + testInfo.surfaceY
+                           + " "
+                           + testInfo.playerPos.getZ()
+                           + " 0 0"
                      )
-                     .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.coordinates.tooltip")))
+                  )
+                  .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.coordinates.tooltip")))
             );
          source.sendSuccess(() -> testCoordinates, false);
       }
@@ -748,23 +743,23 @@ public class TestCommand {
                )
                .withStyle(
                   s -> s.withColor(ChatFormatting.GOLD)
-                        .withClickEvent(
-                           new ClickEvent.SuggestCommand(
-                              "/execute in "
-                                 + playerDimension
-                                 + " run tp @s "
-                                 + playerInfo.playerPos.getX()
-                                 + " "
-                                 + playerInfo.playerPos.getY()
-                                 + " "
-                                 + playerInfo.playerPos.getZ()
-                                 + " "
-                                 + Mth.floor(playerRotation)
-                                 + " "
-                                 + Mth.floor(playerPitch)
-                           )
+                     .withClickEvent(
+                        new ClickEvent.SuggestCommand(
+                           "/execute in "
+                              + playerDimension
+                              + " run tp @s "
+                              + playerInfo.playerPos.getX()
+                              + " "
+                              + playerInfo.playerPos.getY()
+                              + " "
+                              + playerInfo.playerPos.getZ()
+                              + " "
+                              + Mth.floor(playerRotation)
+                              + " "
+                              + Mth.floor(playerPitch)
                         )
-                        .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.coordinates.tooltip")))
+                     )
+                     .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.coordinates.tooltip")))
                );
             source.sendSuccess(() -> playerCoordinates, false);
          }
@@ -775,16 +770,16 @@ public class TestCommand {
       ServerPlayer player = playerInfo.player;
       if (player == null) {
          return false;
-      } else {
-         ResourceKey<Level> playerDimensionKey = player.level().dimension();
-         return testDimensions.size() <= 1 && testDimensions.contains(playerDimensionKey) && testDimensions.contains(Level.OVERWORLD);
       }
+
+      ResourceKey<Level> playerDimensionKey = player.level().dimension();
+      return testDimensions.size() <= 1 && testDimensions.contains(playerDimensionKey) && testDimensions.contains(Level.OVERWORLD);
    }
 
-   private static record Info(@Nullable ServerPlayer player, BlockPos playerPos, BlockPos testPos, int surfaceY) {
+   private record Info(@Nullable ServerPlayer player, BlockPos playerPos, BlockPos testPos, int surfaceY) {
    }
 
-   private static record TestBatchSummaryDisplayer(CommandSourceStack source) implements GameTestBatchListener {
+   private record TestBatchSummaryDisplayer(CommandSourceStack source) implements GameTestBatchListener {
       @Override
       public void testBatchStarting(final GameTestBatch batch) {
          this.source.sendSuccess(() -> Component.translatable("commands.test.batch.starting", batch.environment().getRegisteredName(), batch.index()), true);

@@ -50,7 +50,7 @@ public interface Recipe<T extends RecipeInput> {
 
    RecipeBookCategory recipeBookCategory();
 
-   public interface BookInfo<CategoryType> {
+   interface BookInfo<CategoryType> {
       CategoryType category();
 
       String group();
@@ -60,10 +60,10 @@ public interface Recipe<T extends RecipeInput> {
       ) {
          return RecordCodecBuilder.mapCodec(
             i -> i.group(
-                     categoryCodec.optionalFieldOf("category", defaultCategory).forGetter(Recipe.BookInfo::category),
-                     Codec.STRING.optionalFieldOf("group", "").forGetter(Recipe.BookInfo::group)
-                  )
-                  .apply(i, constructor)
+                  categoryCodec.optionalFieldOf("category", defaultCategory).forGetter(Recipe.BookInfo::category),
+                  Codec.STRING.optionalFieldOf("group", "").forGetter(Recipe.BookInfo::group)
+               )
+               .apply(i, constructor)
          );
       }
 
@@ -74,11 +74,11 @@ public interface Recipe<T extends RecipeInput> {
       }
 
       @FunctionalInterface
-      public interface Constructor<CategoryType, SelfType extends Recipe.BookInfo<CategoryType>> extends BiFunction<CategoryType, String, SelfType> {
+      interface Constructor<CategoryType, SelfType extends Recipe.BookInfo<CategoryType>> extends BiFunction<CategoryType, String, SelfType> {
       }
    }
 
-   public static record CommonInfo(boolean showNotification) {
+   record CommonInfo(boolean showNotification) {
       public static final MapCodec<Recipe.CommonInfo> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(Codec.BOOL.optionalFieldOf("show_notification", true).forGetter(Recipe.CommonInfo::showNotification)).apply(i, Recipe.CommonInfo::new)
       );

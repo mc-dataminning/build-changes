@@ -42,14 +42,11 @@ public final class CompoundTag implements Tag {
       public CompoundTag load(final DataInput input, final NbtAccounter accounter) throws IOException {
          accounter.pushDepth();
 
-         CompoundTag var3;
          try {
-            var3 = loadCompound(input, accounter);
+            return loadCompound(input, accounter);
          } finally {
             accounter.popDepth();
          }
-
-         return var3;
       }
 
       private static CompoundTag loadCompound(final DataInput input, final NbtAccounter accounter) throws IOException {
@@ -72,14 +69,11 @@ public final class CompoundTag implements Tag {
       public StreamTagVisitor.ValueResult parse(final DataInput input, final StreamTagVisitor output, final NbtAccounter accounter) throws IOException {
          accounter.pushDepth();
 
-         StreamTagVisitor.ValueResult var4;
          try {
-            var4 = parseCompound(input, output, accounter);
+            return parseCompound(input, output, accounter);
          } finally {
             accounter.popDepth();
          }
-
-         return var4;
       }
 
       private static StreamTagVisitor.ValueResult parseCompound(final DataInput input, final StreamTagVisitor output, final NbtAccounter accounter) throws IOException {
@@ -135,7 +129,7 @@ public final class CompoundTag implements Tag {
       private static String readString(final DataInput input, final NbtAccounter accounter) throws IOException {
          String key = input.readUTF();
          accounter.accountBytes(28L);
-         accounter.accountBytes(2L, (long)key.length());
+         accounter.accountBytes(2L, key.length());
          return key;
       }
 
@@ -227,8 +221,7 @@ public final class CompoundTag implements Tag {
       return this.tags.size();
    }
 
-   @Nullable
-   public Tag put(final String name, final Tag tag) {
+   public @Nullable Tag put(final String name, final Tag tag) {
       return this.tags.put(name, tag);
    }
 
@@ -276,8 +269,7 @@ public final class CompoundTag implements Tag {
       this.tags.put(name, ByteTag.valueOf(value));
    }
 
-   @Nullable
-   public Tag get(final String name) {
+   public @Nullable Tag get(final String name) {
       return this.tags.get(name);
    }
 
@@ -342,19 +334,7 @@ public final class CompoundTag implements Tag {
    }
 
    public String getStringOr(final String name, final String defaultValue) {
-      if (this.tags.get(name) instanceof StringTag var3) {
-         StringTag var10000 = var3;
-
-         try {
-            var8 = var10000.value();
-         } catch (Throwable var7) {
-            throw new MatchException(var7.toString(), var7);
-         }
-
-         return var8;
-      } else {
-         return defaultValue;
-      }
+      return this.tags.get(name) instanceof StringTag(String var8) ? var8 : defaultValue;
    }
 
    public Optional<byte[]> getByteArray(final String name) {
@@ -393,8 +373,7 @@ public final class CompoundTag implements Tag {
       return this.getByteOr(string, (byte)(defaultValue ? 1 : 0)) != 0;
    }
 
-   @Nullable
-   public Tag remove(final String name) {
+   public @Nullable Tag remove(final String name) {
       return this.tags.remove(name);
    }
 
@@ -426,15 +405,7 @@ public final class CompoundTag implements Tag {
 
    @Override
    public boolean equals(final Object obj) {
-      if (this == obj) {
-         return true;
-      } else {
-         if (obj instanceof CompoundTag compoundTag && Objects.equals(this.tags, compoundTag.tags)) {
-            return true;
-         }
-
-         return false;
-      }
+      return this == obj ? true : obj instanceof CompoundTag compoundTag && Objects.equals(this.tags, compoundTag.tags);
    }
 
    @Override
@@ -453,8 +424,8 @@ public final class CompoundTag implements Tag {
    private static Tag readNamedTagData(final TagType<?> type, final String name, final DataInput input, final NbtAccounter accounter) {
       try {
          return type.load(input, accounter);
-      } catch (IOException var7) {
-         CrashReport report = CrashReport.forThrowable(var7, "Loading NBT data");
+      } catch (IOException e) {
+         CrashReport report = CrashReport.forThrowable(e, "Loading NBT data");
          CrashReportCategory category = report.addCategory("NBT Tag");
          category.setDetail("Tag name", name);
          category.setDetail("Tag type", type.getName());
@@ -467,10 +438,9 @@ public final class CompoundTag implements Tag {
          Tag otherTag = other.tags.get(tagName);
          if (otherTag instanceof CompoundTag otherCompound && this.tags.get(tagName) instanceof CompoundTag selfCompound) {
             selfCompound.merge(otherCompound);
-            continue;
+         } else {
+            this.put(tagName, otherTag.copy());
          }
-
-         this.put(tagName, otherTag.copy());
       }
 
       return this;
@@ -522,7 +492,7 @@ public final class CompoundTag implements Tag {
       this.store(name, codec, NbtOps.INSTANCE, value);
    }
 
-   public <T> void storeNullable(final String name, final Codec<T> codec, @Nullable final T value) {
+   public <T> void storeNullable(final String name, final Codec<T> codec, final @Nullable T value) {
       if (value != null) {
          this.store(name, codec, value);
       }
@@ -532,7 +502,7 @@ public final class CompoundTag implements Tag {
       this.put(name, (Tag)codec.encodeStart(ops, value).getOrThrow());
    }
 
-   public <T> void storeNullable(final String name, final Codec<T> codec, final DynamicOps<Tag> ops, @Nullable final T value) {
+   public <T> void storeNullable(final String name, final Codec<T> codec, final DynamicOps<Tag> ops, final @Nullable T value) {
       if (value != null) {
          this.store(name, codec, ops, value);
       }

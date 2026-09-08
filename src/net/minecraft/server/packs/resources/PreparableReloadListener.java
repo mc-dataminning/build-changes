@@ -23,11 +23,11 @@ public interface PreparableReloadListener {
    }
 
    @FunctionalInterface
-   public interface PreparationBarrier {
+   interface PreparationBarrier {
       <T> CompletableFuture<T> wait(T t);
    }
 
-   public static final class SharedState {
+   final class SharedState {
       private final ResourceManager manager;
       private final Map<PreparableReloadListener.StateKey<?>, Object> state = new IdentityHashMap<>();
 
@@ -48,6 +48,6 @@ public interface PreparableReloadListener {
       }
    }
 
-   public static final class StateKey<T> {
+   final class StateKey<T> {
    }
 }

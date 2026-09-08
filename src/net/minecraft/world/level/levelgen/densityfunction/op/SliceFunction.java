@@ -16,80 +16,39 @@ import net.minecraft.world.level.levelgen.densityfunction.ScopedDensityBuffer;
 public record SliceFunction(Direction.Axis axis, int coordinate, DensityFunction input) implements DensityFunction {
    public static final MapCodec<SliceFunction> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Direction.Axis.CODEC.fieldOf("axis").forGetter(SliceFunction::axis),
-               Codec.INT.fieldOf("coordinate").forGetter(SliceFunction::coordinate),
-               DensityFunction.CODEC.fieldOf("input").forGetter(SliceFunction::input)
-            )
-            .apply(i, SliceFunction::new)
+            Direction.Axis.CODEC.fieldOf("axis").forGetter(SliceFunction::axis),
+            Codec.INT.fieldOf("coordinate").forGetter(SliceFunction::coordinate),
+            DensityFunction.CODEC.fieldOf("input").forGetter(SliceFunction::input)
+         )
+         .apply(i, SliceFunction::new)
    );
 
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
    @Override
    public DensitySampler compileSampler(final DensityFunction.CompileContext context) {
-      Throwable var18;
-      label60: {
-         if (this.input instanceof SliceFunction input) {
-            SliceFunction var10000 = input;
-
-            try {
-               var19 = var10000.axis();
-            } catch (Throwable var11) {
-               var18 = var11;
-               boolean var10001 = false;
-               break label60;
-            }
-
-            Direction.Axis z = var19;
-            SliceFunction var20 = input;
-
-            try {
-               var21 = var20.coordinate();
-            } catch (Throwable var10) {
-               var18 = var10;
-               boolean var25 = false;
-               break label60;
-            }
-
-            int var15 = var21;
-            if (true) {
-               SliceFunction var22 = input;
-
-               try {
-                  var23 = var22.input();
-               } catch (Throwable var9) {
-                  var18 = var9;
-                  boolean var26 = false;
-                  break label60;
-               }
-
-               DensityFunction var16 = var23;
-               if (this.axis == Direction.Axis.X && z == Direction.Axis.Z || this.axis == Direction.Axis.Z && z == Direction.Axis.X) {
-                  int x;
-                  int zx;
-                  if (this.axis == Direction.Axis.X) {
-                     x = this.coordinate;
-                     zx = var15;
-                  } else {
-                     x = var15;
-                     zx = this.coordinate;
-                  }
-
-                  return new SliceFunction.XzSampler(var16.compileSampler(context), x, zx);
-               }
-            }
-         }
-
+      if (!(
+         this.input instanceof SliceFunction(Direction.Axis innerAxis, int innerCoordinate, DensityFunction innerInput)
+            && (this.axis == Direction.Axis.X && innerAxis == Direction.Axis.Z || this.axis == Direction.Axis.Z && innerAxis == Direction.Axis.X)
+      )) {
          DensitySampler input = this.input.compileSampler(context);
 
-         return (DensitySampler)(switch (this.axis) {
+         return switch (this.axis) {
             case X -> new SliceFunction.XSampler(input, this.coordinate);
             case Y -> new SliceFunction.YSampler(input, this.coordinate);
             case Z -> new SliceFunction.ZSampler(input, this.coordinate);
-         });
-      }
+         };
+      } else {
+         int x;
+         int z;
+         if (this.axis == Direction.Axis.X) {
+            x = this.coordinate;
+            z = innerCoordinate;
+         } else {
+            x = innerCoordinate;
+            z = this.coordinate;
+         }
 
-      Throwable var13 = var18;
-      throw new MatchException(var13.toString(), var13);
+         return new SliceFunction.XzSampler(innerInput.compileSampler(context), x, z);
+      }
    }
 
    @Override
@@ -103,9 +62,8 @@ public record SliceFunction(Direction.Axis axis, int coordinate, DensityFunction
       return this.input.range();
    }
 
-   @DensityFunction.Axes
    @Override
-   public int domainAxes() {
+   public @DensityFunction.Axes int domainAxes() {
       return this.input.domainAxes() & ~DensityFunction.axesFrom(this.axis);
    }
 
@@ -114,7 +72,7 @@ public record SliceFunction(Direction.Axis axis, int coordinate, DensityFunction
       return CODEC;
    }
 
-   public static record XSampler(DensitySampler input, int x) implements DensitySampler {
+   public record XSampler(DensitySampler input, int x) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          if (volume.sizeX() == 1 && volume.minBlockX() == this.x) {
@@ -146,7 +104,7 @@ public record SliceFunction(Direction.Axis axis, int coordinate, DensityFunction
       }
    }
 
-   public static record XzSampler(DensitySampler input, int x, int z) implements DensitySampler {
+   public record XzSampler(DensitySampler input, int x, int z) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          if (volume.sizeX() == 1 && volume.sizeZ() == 1 && volume.minBlockX() == this.x && volume.minBlockZ() == this.z) {
@@ -180,7 +138,7 @@ public record SliceFunction(Direction.Axis axis, int coordinate, DensityFunction
       }
    }
 
-   public static record YSampler(DensitySampler input, int y) implements DensitySampler {
+   public record YSampler(DensitySampler input, int y) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          if (volume.sizeY() == 1 && volume.minBlockY() == this.y) {
@@ -209,7 +167,7 @@ public record SliceFunction(Direction.Axis axis, int coordinate, DensityFunction
       }
    }
 
-   public static record ZSampler(DensitySampler input, int z) implements DensitySampler {
+   public record ZSampler(DensitySampler input, int z) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          if (volume.sizeZ() == 1 && volume.minBlockZ() == this.z) {

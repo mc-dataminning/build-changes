@@ -57,8 +57,7 @@ public class ZombifiedPiglin extends Zombie implements NeutralMob {
    private int playFirstAngerSoundIn;
    private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
    private long persistentAngerEndTime;
-   @Nullable
-   private EntityReference<LivingEntity> persistentAngerTarget;
+   private @Nullable EntityReference<LivingEntity> persistentAngerTarget;
    private static final int ALERT_RANGE_Y = 10;
    private static final UniformInt ALERT_INTERVAL = TimeUtil.rangeOfSeconds(4, 6);
    private int ticksUntilNextAlert;
@@ -154,7 +153,7 @@ public class ZombifiedPiglin extends Zombie implements NeutralMob {
    }
 
    @Override
-   public void setTarget(@Nullable final LivingEntity target) {
+   public void setTarget(final @Nullable LivingEntity target) {
       if (this.getTarget() == null && target != null) {
          this.playFirstAngerSoundIn = FIRST_ANGER_SOUND_DELAY.sample(this.random);
          this.ticksUntilNextAlert = ALERT_INTERVAL.sample(this.random);
@@ -165,7 +164,7 @@ public class ZombifiedPiglin extends Zombie implements NeutralMob {
 
    @Override
    public void startPersistentAngerTimer() {
-      this.setTimeToRemainAngry((long)PERSISTENT_ANGER_TIME.sample(this.random));
+      this.setTimeToRemainAngry(PERSISTENT_ANGER_TIME.sample(this.random));
    }
 
    public static boolean checkZombifiedPiglinSpawnRules(
@@ -202,7 +201,7 @@ public class ZombifiedPiglin extends Zombie implements NeutralMob {
    }
 
    @Override
-   public void setPersistentAngerTarget(@Nullable final EntityReference<LivingEntity> persistentAngerTarget) {
+   public void setPersistentAngerTarget(final @Nullable EntityReference<LivingEntity> persistentAngerTarget) {
       this.persistentAngerTarget = persistentAngerTarget;
    }
 
@@ -231,9 +230,8 @@ public class ZombifiedPiglin extends Zombie implements NeutralMob {
       this.getAttribute(Attributes.SPAWN_REINFORCEMENTS_CHANCE).setBaseValue(0.0);
    }
 
-   @Nullable
    @Override
-   public EntityReference<LivingEntity> getPersistentAngerTarget() {
+   public @Nullable EntityReference<LivingEntity> getPersistentAngerTarget() {
       return this.persistentAngerTarget;
    }
 

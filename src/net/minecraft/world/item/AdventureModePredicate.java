@@ -34,10 +34,8 @@ public class AdventureModePredicate {
    public static final Component CAN_PLACE_HEADER = Component.translatable("item.canPlace").withStyle(ChatFormatting.GRAY);
    private static final Component UNKNOWN_USE = Component.translatable("item.canUse.unknown").withStyle(ChatFormatting.GRAY);
    private final List<BlockPredicate> predicates;
-   @Nullable
-   private List<Component> cachedTooltip;
-   @Nullable
-   private BlockInWorld lastCheckedBlock;
+   private @Nullable List<Component> cachedTooltip;
+   private @Nullable BlockInWorld lastCheckedBlock;
    private boolean lastResult;
    private boolean checksBlockEntity;
 
@@ -45,23 +43,26 @@ public class AdventureModePredicate {
       this.predicates = predicates;
    }
 
-   private static boolean areSameBlocks(final BlockInWorld blockInWorld, @Nullable final BlockInWorld cachedBlock, final boolean checkBlockEntity) {
+   private static boolean areSameBlocks(final BlockInWorld blockInWorld, final @Nullable BlockInWorld cachedBlock, final boolean checkBlockEntity) {
       if (cachedBlock == null || blockInWorld.getState() != cachedBlock.getState()) {
          return false;
-      } else if (!checkBlockEntity) {
+      }
+
+      if (!checkBlockEntity) {
          return true;
-      } else if (blockInWorld.getEntity() == null && cachedBlock.getEntity() == null) {
+      }
+
+      if (blockInWorld.getEntity() == null && cachedBlock.getEntity() == null) {
          return true;
-      } else if (blockInWorld.getEntity() != null && cachedBlock.getEntity() != null) {
-         boolean var7;
+      }
+
+      if (blockInWorld.getEntity() != null && cachedBlock.getEntity() != null) {
          try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(LOGGER)) {
             RegistryAccess registryAccess = blockInWorld.getLevel().registryAccess();
             CompoundTag inWorldTag = saveBlockEntity(blockInWorld.getEntity(), registryAccess, reporter);
             CompoundTag cachedTag = saveBlockEntity(cachedBlock.getEntity(), registryAccess, reporter);
-            var7 = Objects.equals(inWorldTag, cachedTag);
+            return Objects.equals(inWorldTag, cachedTag);
          }
-
-         return var7;
       } else {
          return false;
       }
@@ -76,21 +77,21 @@ public class AdventureModePredicate {
    public boolean test(final BlockInWorld blockInWorld) {
       if (areSameBlocks(blockInWorld, this.lastCheckedBlock, this.checksBlockEntity)) {
          return this.lastResult;
-      } else {
-         this.lastCheckedBlock = blockInWorld;
-         this.checksBlockEntity = false;
-
-         for (BlockPredicate predicate : this.predicates) {
-            if (predicate.matches(blockInWorld)) {
-               this.checksBlockEntity = this.checksBlockEntity | predicate.requiresNbt();
-               this.lastResult = true;
-               return true;
-            }
-         }
-
-         this.lastResult = false;
-         return false;
       }
+
+      this.lastCheckedBlock = blockInWorld;
+      this.checksBlockEntity = false;
+
+      for (BlockPredicate predicate : this.predicates) {
+         if (predicate.matches(blockInWorld)) {
+            this.checksBlockEntity = this.checksBlockEntity | predicate.requiresNbt();
+            this.lastResult = true;
+            return true;
+         }
+      }
+
+      this.lastResult = false;
+      return false;
    }
 
    private List<Component> tooltip() {

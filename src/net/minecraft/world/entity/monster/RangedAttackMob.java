@@ -7,6 +7,6 @@ public interface RangedAttackMob {
    void performRangedAttack(LivingEntity target, float power);
 
    default float rangedAttackUncertainty(final Level level) {
-      return (float)(14 - level.getDifficulty().getId() * 4);
+      return 14 - level.getDifficulty().getId() * 4;
    }
 }

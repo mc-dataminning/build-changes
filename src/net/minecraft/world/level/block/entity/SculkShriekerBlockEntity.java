@@ -2,7 +2,6 @@ package net.minecraft.world.level.block.entity;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Objects;
 import java.util.OptionalInt;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -21,7 +20,6 @@ import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.monster.warden.WardenSpawnTracker;
@@ -87,37 +85,19 @@ public class SculkShriekerBlockEntity extends BlockEntity implements GameEventLi
       output.store("listener", VibrationSystem.Data.CODEC, this.vibrationData);
    }
 
-   @Nullable
-   public static ServerPlayer tryGetPlayer(@Nullable final Entity sourceEntity) {
-      if (sourceEntity instanceof ServerPlayer) {
-         return (ServerPlayer)sourceEntity;
+   public static @Nullable ServerPlayer tryGetPlayer(final @Nullable Entity sourceEntity) {
+      if (sourceEntity instanceof ServerPlayer player) {
+         return player;
+      } else if (sourceEntity != null && sourceEntity.getControllingPassenger() instanceof ServerPlayer player) {
+         return player;
+      } else if (sourceEntity instanceof Projectile projectile && projectile.getOwner() instanceof ServerPlayer player) {
+         return player;
       } else {
-         if (sourceEntity != null) {
-            LivingEntity player = sourceEntity.getControllingPassenger();
-            if (player instanceof ServerPlayer) {
-               return (ServerPlayer)player;
-            }
-         }
-
-         if (sourceEntity instanceof Projectile projectile) {
-            Entity var3 = projectile.getOwner();
-            if (var3 instanceof ServerPlayer) {
-               return (ServerPlayer)var3;
-            }
-         }
-
-         if (sourceEntity instanceof ItemEntity item) {
-            Entity var9 = item.getOwner();
-            if (var9 instanceof ServerPlayer) {
-               return (ServerPlayer)var9;
-            }
-         }
-
-         return null;
+         return sourceEntity instanceof ItemEntity item && item.getOwner() instanceof ServerPlayer player ? player : null;
       }
    }
 
-   public void tryShriek(final ServerLevel level, @Nullable final ServerPlayer player) {
+   public void tryShriek(final ServerLevel level, final @Nullable ServerPlayer player) {
       if (player != null) {
          BlockState state = this.getBlockState();
          if (!state.getValue(SculkShriekerBlock.SHRIEKING)) {
@@ -135,10 +115,10 @@ public class SculkShriekerBlockEntity extends BlockEntity implements GameEventLi
       return maybeWarningLevel.isPresent();
    }
 
-   private void shriek(final ServerLevel level, @Nullable final Entity sourceEntity) {
+   private void shriek(final ServerLevel level, final @Nullable Entity sourceEntity) {
       BlockPos pos = this.getBlockPos();
       BlockState state = this.getBlockState();
-      level.setBlock(pos, state.setValue(SculkShriekerBlock.SHRIEKING, Boolean.valueOf(true)), 2);
+      level.setBlock(pos, state.setValue(SculkShriekerBlock.SHRIEKING, true), 2);
       level.scheduleTick(pos, state.getBlock(), 90);
       level.levelEvent(3007, pos, 0);
       level.gameEvent(GameEvent.SHRIEK, pos, GameEvent.Context.of(sourceEntity));
@@ -175,7 +155,7 @@ public class SculkShriekerBlockEntity extends BlockEntity implements GameEventLi
          int x = pos.getX() + Mth.randomBetweenInclusive(random, -10, 10);
          int y = pos.getY() + Mth.randomBetweenInclusive(random, -10, 10);
          int z = pos.getZ() + Mth.randomBetweenInclusive(random, -10, 10);
-         level.playSound(null, (double)x, (double)y, (double)z, sound, SoundSource.HOSTILE, 5.0F, 1.0F);
+         level.playSound(null, x, y, z, sound, SoundSource.HOSTILE, 5.0F, 1.0F);
       }
    }
 
@@ -194,12 +174,9 @@ public class SculkShriekerBlockEntity extends BlockEntity implements GameEventLi
 
    private class VibrationUser implements VibrationSystem.User {
       private static final int LISTENER_RADIUS = 8;
-      private final PositionSource positionSource;
+      private final PositionSource positionSource = new BlockPositionSource(SculkShriekerBlockEntity.this.worldPosition);
 
       public VibrationUser() {
-         Objects.requireNonNull(SculkShriekerBlockEntity.this);
-         super();
-         this.positionSource = new BlockPositionSource(SculkShriekerBlockEntity.this.worldPosition);
       }
 
       @Override
@@ -228,8 +205,8 @@ public class SculkShriekerBlockEntity extends BlockEntity implements GameEventLi
          final ServerLevel level,
          final BlockPos pos,
          final Holder<GameEvent> event,
-         @Nullable final Entity sourceEntity,
-         @Nullable final Entity projectileOwner,
+         final @Nullable Entity sourceEntity,
+         final @Nullable Entity projectileOwner,
          final float receivingDistance
       ) {
          SculkShriekerBlockEntity.this.tryShriek(level, SculkShriekerBlockEntity.tryGetPlayer(projectileOwner != null ? projectileOwner : sourceEntity));

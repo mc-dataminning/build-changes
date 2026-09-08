@@ -11,9 +11,8 @@ public class WaterAvoidingRandomFlyingGoal extends WaterAvoidingRandomStrollGoal
       super(mob, speedModifier);
    }
 
-   @Nullable
    @Override
-   protected Vec3 getPosition() {
+   protected @Nullable Vec3 getPosition() {
       Vec3 wanderDirection = this.mob.getViewVector(0.0F);
       int xzDist = 8;
       Vec3 groundBasedPosition = HoverRandomPos.getPos(this.mob, 8, 7, wanderDirection.x, wanderDirection.z, (float) (Math.PI / 2), 3, 1);

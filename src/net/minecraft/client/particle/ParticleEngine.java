@@ -46,8 +46,7 @@ public class ParticleEngine {
       this.trackingEmitters.add(new TrackingEmitter(this.level, entity, particle, lifeTime));
    }
 
-   @Nullable
-   public Particle createParticle(
+   public @Nullable Particle createParticle(
       final ParticleOptions options, final double x, final double y, final double z, final double xa, final double ya, final double za
    ) {
       Particle particle = this.makeParticle(options, x, y, z, xa, ya, za);
@@ -59,8 +58,7 @@ public class ParticleEngine {
       }
    }
 
-   @Nullable
-   private <T extends ParticleOptions> Particle makeParticle(
+   private <T extends ParticleOptions> @Nullable Particle makeParticle(
       final T options, final double x, final double y, final double z, final double xa, final double ya, final double za
    ) {
       ParticleProvider<T> provider = (ParticleProvider<T>)this.resourceManager.getProviders().get(BuiltInRegistries.PARTICLE_TYPE.getId(options.getType()));
@@ -114,7 +112,7 @@ public class ParticleEngine {
       } else if (type == ParticleRenderType.ELDER_GUARDIANS) {
          return new ElderGuardianParticleGroup(this);
       } else {
-         return (ParticleGroup<?>)(type == ParticleRenderType.NO_RENDER ? new NoRenderParticleGroup(this) : new QuadParticleGroup(this, type));
+         return type == ParticleRenderType.NO_RENDER ? new NoRenderParticleGroup(this) : new QuadParticleGroup(this, type);
       }
    }
 
@@ -131,7 +129,7 @@ public class ParticleEngine {
       }
    }
 
-   public void setLevel(@Nullable final ClientLevel level) {
+   public void setLevel(final @Nullable ClientLevel level) {
       this.level = level;
       this.clearParticles();
       this.trackingEmitters.clear();

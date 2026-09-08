@@ -17,8 +17,7 @@ public class JumpOnBed extends Behavior<Mob> {
    private static final int MAX_JUMPS = 6;
    private static final int COOLDOWN_BETWEEN_JUMPS = 5;
    private final float speedModifier;
-   @Nullable
-   private BlockPos targetBed;
+   private @Nullable BlockPos targetBed;
    private int remainingTimeToReachBed;
    private int remainingJumps;
    private int remainingCooldownUntilNextJump;

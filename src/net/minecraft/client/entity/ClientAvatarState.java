@@ -61,15 +61,15 @@ public class ClientAvatarState {
    }
 
    public double getInterpolatedCloakX(final float partialTicks) {
-      return Mth.lerp((double)partialTicks, this.xCloakO, this.xCloak);
+      return Mth.lerp(partialTicks, this.xCloakO, this.xCloak);
    }
 
    public double getInterpolatedCloakY(final float partialTicks) {
-      return Mth.lerp((double)partialTicks, this.yCloakO, this.yCloak);
+      return Mth.lerp(partialTicks, this.yCloakO, this.yCloak);
    }
 
    public double getInterpolatedCloakZ(final float partialTicks) {
-      return Mth.lerp((double)partialTicks, this.zCloakO, this.zCloak);
+      return Mth.lerp(partialTicks, this.zCloakO, this.zCloak);
    }
 
    public void updateBob(final float tBob) {

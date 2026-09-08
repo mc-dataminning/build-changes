@@ -14,7 +14,7 @@ import org.slf4j.Logger;
 public abstract class GlDebugLabel {
    private static final Logger LOGGER = LogUtils.getLogger();
 
-   public void applyLabel(final GlBuffer buffer, @Nullable final Supplier<String> label) {
+   public void applyLabel(final GlBuffer buffer, final @Nullable Supplier<String> label) {
    }
 
    public void applyLabel(final GlTexture texture) {
@@ -58,7 +58,7 @@ public abstract class GlDebugLabel {
       private final int maxLabelLength = GL33C.glGetInteger(33512);
 
       @Override
-      public void applyLabel(final GlBuffer buffer, @Nullable final Supplier<String> label) {
+      public void applyLabel(final GlBuffer buffer, final @Nullable Supplier<String> label) {
          if (label != null) {
             KHRDebug.glObjectLabel(33504, buffer.handle(), StringUtil.truncateStringIfNecessary(label.get(), this.maxLabelLength, true));
          }
@@ -100,7 +100,7 @@ public abstract class GlDebugLabel {
 
    private static class Ext extends GlDebugLabel {
       @Override
-      public void applyLabel(final GlBuffer buffer, @Nullable final Supplier<String> label) {
+      public void applyLabel(final GlBuffer buffer, final @Nullable Supplier<String> label) {
          if (label != null) {
             EXTDebugLabel.glLabelObjectEXT(37201, buffer.handle(), StringUtil.truncateStringIfNecessary(label.get(), 256, true));
          }

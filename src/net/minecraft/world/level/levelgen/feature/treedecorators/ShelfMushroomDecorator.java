@@ -76,12 +76,14 @@ public class ShelfMushroomDecorator extends TreeDecorator {
       BlockPos mushroomPos = mushroomPosFor(logPos, facing);
       if (!isBlockReplaceableWithShelfMushroom(context, mushroomPos)) {
          return false;
-      } else if (hasShelfMushroomAt(context, mushroomPos.below())) {
-         return false;
-      } else {
-         placeMushroom(context, mushroomPos, facing, random);
-         return true;
       }
+
+      if (hasShelfMushroomAt(context, mushroomPos.below())) {
+         return false;
+      }
+
+      placeMushroom(context, mushroomPos, facing, random);
+      return true;
    }
 
    private static void tryPlaceMushroomOnFallenTree(
@@ -122,11 +124,7 @@ public class ShelfMushroomDecorator extends TreeDecorator {
 
    private static void placeMushroom(final TreeDecorator.Context context, final BlockPos pos, final Direction facing, final RandomSource random) {
       context.setBlock(
-         pos,
-         Blocks.SHELF_MUSHROOM
-            .defaultBlockState()
-            .setValue(ShelfMushroomBlock.AGE, Integer.valueOf(random.nextInt(2)))
-            .setValue(ShelfMushroomBlock.FACING, facing)
+         pos, Blocks.SHELF_MUSHROOM.defaultBlockState().setValue(ShelfMushroomBlock.AGE, random.nextInt(2)).setValue(ShelfMushroomBlock.FACING, facing)
       );
    }
 

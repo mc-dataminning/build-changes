@@ -34,21 +34,17 @@ public class ShelfMushroomBlock extends HorizontalDirectionalBlock implements Bo
    private static final List<Map<Direction, VoxelShape>> SHAPES = IntStream.rangeClosed(0, 1)
       .mapToObj(
          i -> Shapes.rotateHorizontal(
-               Shapes.or(
-                  Block.column((double)(10 + i * 4), (double)(7 + i * 3), (double)(1 + i), (double)(3 + i * 2))
-                     .move(0.0, (double)(8 - i * 2) / 16.0, -((double)i * 1.5 - 4.5) / 16.0)
-                     .optimize(),
-                  Block.column((double)(6 + i * 2), (double)(4 + i * 2), 0.0, (double)(1 + i))
-                     .move(0.0, (double)(8 - i * 2) / 16.0, (double)(-(i - 6)) / 16.0)
-                     .optimize()
-               )
+            Shapes.or(
+               Block.column(10 + i * 4, 7 + i * 3, 1 + i, 3 + i * 2).move(0.0, (8 - i * 2) / 16.0, -(i * 1.5 - 4.5) / 16.0).optimize(),
+               Block.column(6 + i * 2, 4 + i * 2, 0.0, 1 + i).move(0.0, (8 - i * 2) / 16.0, -(i - 6) / 16.0).optimize()
             )
+         )
       )
       .toList();
 
    public ShelfMushroomBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(AGE, Integer.valueOf(0)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(AGE, 0));
    }
 
    @Override
@@ -64,9 +60,8 @@ public class ShelfMushroomBlock extends HorizontalDirectionalBlock implements Bo
       return SHAPES.get(state.getValue(AGE)).get(state.getValue(FACING));
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockState state = this.defaultBlockState();
       LevelReader level = context.getLevel();
       BlockPos pos = context.getClickedPos();
@@ -118,7 +113,7 @@ public class ShelfMushroomBlock extends HorizontalDirectionalBlock implements Bo
 
    @Override
    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state, final BonemealSource source) {
-      level.setBlock(pos, state.setValue(AGE, Integer.valueOf(state.getValue(AGE) + 1)), 2);
+      level.setBlock(pos, state.setValue(AGE, state.getValue(AGE) + 1), 2);
    }
 
    @Override

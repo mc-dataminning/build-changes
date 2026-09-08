@@ -32,19 +32,19 @@ public record MultifaceGrowthFeature(
 ) implements Feature {
    public static final MapCodec<MultifaceGrowthFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BuiltInRegistries.BLOCK
-                  .byNameCodec()
-                  .validate(MultifaceGrowthFeature::validateBlock)
-                  .fieldOf("block")
-                  .forGetter(MultifaceGrowthFeature::placeBlock),
-               Codec.intRange(1, 64).optionalFieldOf("search_range", 10).forGetter(MultifaceGrowthFeature::searchRange),
-               Codec.BOOL.optionalFieldOf("can_place_on_floor", false).forGetter(MultifaceGrowthFeature::canPlaceOnFloor),
-               Codec.BOOL.optionalFieldOf("can_place_on_ceiling", false).forGetter(MultifaceGrowthFeature::canPlaceOnCeiling),
-               Codec.BOOL.optionalFieldOf("can_place_on_wall", false).forGetter(MultifaceGrowthFeature::canPlaceOnWall),
-               Codec.floatRange(0.0F, 1.0F).optionalFieldOf("chance_of_spreading", 0.5F).forGetter(MultifaceGrowthFeature::chanceOfSpreading),
-               RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("can_be_placed_on").forGetter(MultifaceGrowthFeature::canBePlacedOn)
-            )
-            .apply(i, MultifaceGrowthFeature::new)
+            BuiltInRegistries.BLOCK
+               .byNameCodec()
+               .validate(MultifaceGrowthFeature::validateBlock)
+               .fieldOf("block")
+               .forGetter(MultifaceGrowthFeature::placeBlock),
+            Codec.intRange(1, 64).optionalFieldOf("search_range", 10).forGetter(MultifaceGrowthFeature::searchRange),
+            Codec.BOOL.optionalFieldOf("can_place_on_floor", false).forGetter(MultifaceGrowthFeature::canPlaceOnFloor),
+            Codec.BOOL.optionalFieldOf("can_place_on_ceiling", false).forGetter(MultifaceGrowthFeature::canPlaceOnCeiling),
+            Codec.BOOL.optionalFieldOf("can_place_on_wall", false).forGetter(MultifaceGrowthFeature::canPlaceOnWall),
+            Codec.floatRange(0.0F, 1.0F).optionalFieldOf("chance_of_spreading", 0.5F).forGetter(MultifaceGrowthFeature::chanceOfSpreading),
+            RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("can_be_placed_on").forGetter(MultifaceGrowthFeature::canBePlacedOn)
+         )
+         .apply(i, MultifaceGrowthFeature::new)
    );
 
    private static DataResult<Block> validateBlock(final Block block) {
@@ -68,28 +68,28 @@ public record MultifaceGrowthFeature(
          List var13 = this.getShuffledDirections(random);
          if (this.placeGrowthIfPossible(placerBlock, level, origin, level.getBlockState(origin), random, var13)) {
             return true;
-         } else {
-            BlockPos.MutableBlockPos pos = origin.mutable();
+         }
 
-            for (Direction searchDirection : var13) {
-               pos.set(origin);
-               List<Direction> placementDirections = this.getShuffledDirectionsExcept(random, searchDirection.getOpposite());
+         BlockPos.MutableBlockPos pos = origin.mutable();
 
-               for (int i = 0; i < this.searchRange; i++) {
-                  pos.setWithOffset(origin, searchDirection);
-                  BlockState state = level.getBlockState(pos);
-                  if (!isAirOrWater(state) && !state.is(this.placeBlock)) {
-                     break;
-                  }
+         for (Direction searchDirection : var13) {
+            pos.set(origin);
+            List<Direction> placementDirections = this.getShuffledDirectionsExcept(random, searchDirection.getOpposite());
 
-                  if (this.placeGrowthIfPossible(placerBlock, level, pos, state, random, placementDirections)) {
-                     return true;
-                  }
+            for (int i = 0; i < this.searchRange; i++) {
+               pos.setWithOffset(origin, searchDirection);
+               BlockState state = level.getBlockState(pos);
+               if (!isAirOrWater(state) && !state.is(this.placeBlock)) {
+                  break;
+               }
+
+               if (this.placeGrowthIfPossible(placerBlock, level, pos, state, random, placementDirections)) {
+                  return true;
                }
             }
-
-            return false;
          }
+
+         return false;
       }
    }
 

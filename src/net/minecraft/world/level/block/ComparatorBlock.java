@@ -32,9 +32,7 @@ public class ComparatorBlock extends DiodeBlock implements EntityBlock {
 
    public ComparatorBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, Boolean.valueOf(false)).setValue(MODE, ComparatorMode.COMPARE)
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, false).setValue(MODE, ComparatorMode.COMPARE));
    }
 
    @Override
@@ -82,10 +80,10 @@ public class ComparatorBlock extends DiodeBlock implements EntityBlock {
       int input = this.getInputSignal(level, pos, state);
       if (input == 0) {
          return false;
-      } else {
-         int sideInput = this.getAlternateSignal(level, pos, state);
-         return input > sideInput ? true : input == sideInput && state.getValue(MODE) == ComparatorMode.COMPARE;
       }
+
+      int sideInput = this.getAlternateSignal(level, pos, state);
+      return input > sideInput ? true : input == sideInput && state.getValue(MODE) == ComparatorMode.COMPARE;
    }
 
    @Override
@@ -112,13 +110,10 @@ public class ComparatorBlock extends DiodeBlock implements EntityBlock {
       return resultSignal;
    }
 
-   @Nullable
-   private ItemFrame getItemFrame(final Level level, final Direction direction, final BlockPos tPos) {
+   private @Nullable ItemFrame getItemFrame(final Level level, final Direction direction, final BlockPos tPos) {
       List<ItemFrame> itemFrames = level.getEntitiesOfClass(
          ItemFrame.class,
-         new AABB(
-            (double)tPos.getX(), (double)tPos.getY(), (double)tPos.getZ(), (double)(tPos.getX() + 1), (double)(tPos.getY() + 1), (double)(tPos.getZ() + 1)
-         ),
+         new AABB(tPos.getX(), tPos.getY(), tPos.getZ(), tPos.getX() + 1, tPos.getY() + 1, tPos.getZ() + 1),
          entity -> entity.getDirection() == direction
       );
       return itemFrames.size() == 1 ? itemFrames.get(0) : null;
@@ -128,17 +123,17 @@ public class ComparatorBlock extends DiodeBlock implements EntityBlock {
    protected InteractionResult useWithoutItem(BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult) {
       if (!player.getAbilities().mayBuild) {
          return InteractionResult.PASS;
-      } else {
-         state = state.cycle(MODE);
-         float pitch = state.getValue(MODE) == ComparatorMode.SUBTRACT ? 0.55F : 0.5F;
-         level.playSound(player, pos, SoundEvents.COMPARATOR_CLICK, SoundSource.BLOCKS, 0.3F, pitch);
-         level.setBlock(pos, state, 2);
-         if (level.getBlockState(pos).is(this)) {
-            this.refreshOutputState(level, pos, state);
-         }
-
-         return InteractionResult.SUCCESS;
       }
+
+      state = state.cycle(MODE);
+      float pitch = state.getValue(MODE) == ComparatorMode.SUBTRACT ? 0.55F : 0.5F;
+      level.playSound(player, pos, SoundEvents.COMPARATOR_CLICK, SoundSource.BLOCKS, 0.3F, pitch);
+      level.setBlock(pos, state, 2);
+      if (level.getBlockState(pos).is(this)) {
+         this.refreshOutputState(level, pos, state);
+      }
+
+      return InteractionResult.SUCCESS;
    }
 
    @Override
@@ -166,9 +161,9 @@ public class ComparatorBlock extends DiodeBlock implements EntityBlock {
          boolean sourceOn = this.shouldTurnOn(level, pos, state);
          boolean isOn = state.getValue(POWERED);
          if (isOn && !sourceOn) {
-            level.setBlock(pos, state.setValue(POWERED, Boolean.valueOf(false)), 2);
+            level.setBlock(pos, state.setValue(POWERED, false), 2);
          } else if (!isOn && sourceOn) {
-            level.setBlock(pos, state.setValue(POWERED, Boolean.valueOf(true)), 2);
+            level.setBlock(pos, state.setValue(POWERED, true), 2);
          }
 
          this.updateNeighborsInFront(level, pos, state);

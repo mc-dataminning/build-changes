@@ -5,11 +5,10 @@ import org.jspecify.annotations.Nullable;
 
 public class MemorySlot<T> {
    private static final long NEVER_EXPIRE = Long.MAX_VALUE;
-   @Nullable
-   private T value;
+   private @Nullable T value;
    private long timeToLive;
 
-   private MemorySlot(@Nullable final T value, final long timeToLive) {
+   private MemorySlot(final @Nullable T value, final long timeToLive) {
       this.value = value;
       this.timeToLive = timeToLive;
    }
@@ -46,8 +45,7 @@ public class MemorySlot<T> {
       return this.value != null;
    }
 
-   @Nullable
-   public T value() {
+   public @Nullable T value() {
       return this.value;
    }
 

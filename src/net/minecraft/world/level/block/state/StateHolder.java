@@ -24,7 +24,6 @@ public abstract class StateHolder<O, S> {
 
    protected StateHolder(final O owner, final Property<?>[] propertyKeys, final Comparable<?>[] propertyValues) {
       assert propertyKeys.length == propertyValues.length;
-
       this.owner = owner;
       this.propertyKeys = propertyKeys;
       this.propertyValues = propertyValues;
@@ -80,8 +79,7 @@ public abstract class StateHolder<O, S> {
       return this.valueIndex(property) != -1;
    }
 
-   @Nullable
-   private <T extends Comparable<T>> T getNullableValue(final Property<T> property) {
+   private <T extends Comparable<T>> @Nullable T getNullableValue(final Property<T> property) {
       int index = this.valueIndex(property);
       return index == -1 ? null : property.getValueClass().cast(this.propertyValues[index]);
    }
@@ -129,9 +127,9 @@ public abstract class StateHolder<O, S> {
    void initializeNeighbors(final S[][] neighbors) {
       if (this.neighbors != null) {
          throw new IllegalStateException();
-      } else {
-         this.neighbors = neighbors;
       }
+
+      this.neighbors = neighbors;
    }
 
    public boolean isSingletonState() {

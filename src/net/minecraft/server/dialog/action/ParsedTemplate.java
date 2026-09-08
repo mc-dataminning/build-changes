@@ -22,8 +22,8 @@ public class ParsedTemplate {
       StringTemplate template;
       try {
          template = StringTemplate.fromString(value);
-      } catch (Exception var3) {
-         return DataResult.error(() -> "Failed to parse template " + value + ": " + var3.getMessage());
+      } catch (Exception e) {
+         return DataResult.error(() -> "Failed to parse template " + value + ": " + e.getMessage());
       }
 
       return DataResult.success(new ParsedTemplate(value, template));

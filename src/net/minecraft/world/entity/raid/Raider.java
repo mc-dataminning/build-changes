@@ -45,12 +45,11 @@ import org.jspecify.annotations.Nullable;
 public abstract class Raider extends PatrollingMonster {
    protected static final EntityDataAccessor<Boolean> IS_CELEBRATING = SynchedEntityData.defineId(Raider.class, EntityDataSerializers.BOOLEAN);
    private static final Predicate<ItemEntity> ALLOWED_ITEMS = e -> !e.hasPickUpDelay()
-         && e.isAlive()
-         && ItemStack.matches(e.getItem(), Raid.getOminousBannerInstance(e.registryAccess().lookupOrThrow(Registries.BANNER_PATTERN)));
+      && e.isAlive()
+      && ItemStack.matches(e.getItem(), Raid.getOminousBannerInstance(e.registryAccess().lookupOrThrow(Registries.BANNER_PATTERN)));
    private static final int DEFAULT_WAVE = 0;
    private static final boolean DEFAULT_CAN_JOIN_RAID = false;
-   @Nullable
-   protected Raid raid;
+   protected @Nullable Raid raid;
    private int wave = 0;
    private boolean canJoinRaid = false;
    private int ticksOutsideRaid;
@@ -139,12 +138,11 @@ public abstract class Raider extends PatrollingMonster {
       return !this.hasActiveRaid();
    }
 
-   public void setCurrentRaid(@Nullable final Raid raid) {
+   public void setCurrentRaid(final @Nullable Raid raid) {
       this.raid = raid;
    }
 
-   @Nullable
-   public Raid getCurrentRaid() {
+   public @Nullable Raid getCurrentRaid() {
       return this.raid;
    }
 
@@ -217,8 +215,8 @@ public abstract class Raider extends PatrollingMonster {
          && ItemStack.matches(itemStack, Raid.getOminousBannerInstance(this.registryAccess().lookupOrThrow(Registries.BANNER_PATTERN)))) {
          EquipmentSlot slot = EquipmentSlot.HEAD;
          ItemStack current = this.getItemBySlot(slot);
-         double dropChance = (double)this.getDropChances().byEquipment(slot);
-         if (!current.isEmpty() && (double)Math.max(this.random.nextFloat() - 0.1F, 0.0F) < dropChance) {
+         double dropChance = this.getDropChances().byEquipment(slot);
+         if (!current.isEmpty() && Math.max(this.random.nextFloat() - 0.1F, 0.0F) < dropChance) {
             this.spawnAtLocation(level, current);
          }
 
@@ -260,10 +258,9 @@ public abstract class Raider extends PatrollingMonster {
       return super.hurtServer(level, source, damage);
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+   public @Nullable SpawnGroupData finalizeSpawn(
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       this.setCanJoinRaid(!this.is(EntityTypes.WITCH) || spawnReason != EntitySpawnReason.NATURAL);
       return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
@@ -327,7 +324,7 @@ public abstract class Raider extends PatrollingMonster {
       public void tick() {
          LivingEntity target = this.mob.getTarget();
          if (target != null) {
-            if (this.mob.distanceToSqr(target) > (double)this.hostileRadiusSqr) {
+            if (this.mob.distanceToSqr(target) > this.hostileRadiusSqr) {
                this.mob.getLookControl().setLookAt(target, 30.0F, 30.0F);
                if (this.mob.random.nextInt(50) == 0) {
                   this.mob.playAmbientSound();
@@ -343,16 +340,11 @@ public abstract class Raider extends PatrollingMonster {
 
    public class ObtainRaidLeaderBannerGoal<T extends Raider> extends Goal {
       private final T mob;
-      private Int2LongOpenHashMap unreachableBannerCache;
-      @Nullable
-      private Path pathToBanner;
-      @Nullable
-      private ItemEntity pursuedBannerItemEntity;
+      private Int2LongOpenHashMap unreachableBannerCache = new Int2LongOpenHashMap();
+      private @Nullable Path pathToBanner;
+      private @Nullable ItemEntity pursuedBannerItemEntity;
 
       public ObtainRaidLeaderBannerGoal(final T mob) {
-         Objects.requireNonNull(Raider.this);
-         super();
-         this.unreachableBannerCache = new Int2LongOpenHashMap();
          this.mob = mob;
          this.setFlags(EnumSet.of(Goal.Flag.MOVE));
       }
@@ -361,31 +353,31 @@ public abstract class Raider extends PatrollingMonster {
       public boolean canUse() {
          if (this.cannotPickUpBanner()) {
             return false;
-         } else {
-            Int2LongOpenHashMap tempCache = new Int2LongOpenHashMap();
-            double followRange = Raider.this.getAttributeValue(Attributes.FOLLOW_RANGE);
-
-            for (ItemEntity banner : this.mob
-               .level()
-               .getEntitiesOfClass(ItemEntity.class, this.mob.getBoundingBox().inflate(followRange, 8.0, followRange), Raider.ALLOWED_ITEMS)) {
-               long unreachableUntilTime = this.unreachableBannerCache.getOrDefault(banner.getId(), Long.MIN_VALUE);
-               if (Raider.this.level().getGameTime() < unreachableUntilTime) {
-                  tempCache.put(banner.getId(), unreachableUntilTime);
-               } else {
-                  Path path = this.mob.getNavigation().createPath(banner, 1);
-                  if (path != null && path.canReach()) {
-                     this.pathToBanner = path;
-                     this.pursuedBannerItemEntity = banner;
-                     return true;
-                  }
-
-                  tempCache.put(banner.getId(), Raider.this.level().getGameTime() + 600L);
-               }
-            }
-
-            this.unreachableBannerCache = tempCache;
-            return false;
          }
+
+         Int2LongOpenHashMap tempCache = new Int2LongOpenHashMap();
+         double followRange = Raider.this.getAttributeValue(Attributes.FOLLOW_RANGE);
+
+         for (ItemEntity banner : this.mob
+            .level()
+            .getEntitiesOfClass(ItemEntity.class, this.mob.getBoundingBox().inflate(followRange, 8.0, followRange), Raider.ALLOWED_ITEMS)) {
+            long unreachableUntilTime = this.unreachableBannerCache.getOrDefault(banner.getId(), Long.MIN_VALUE);
+            if (Raider.this.level().getGameTime() < unreachableUntilTime) {
+               tempCache.put(banner.getId(), unreachableUntilTime);
+            } else {
+               Path path = this.mob.getNavigation().createPath(banner, 1);
+               if (path != null && path.canReach()) {
+                  this.pathToBanner = path;
+                  this.pursuedBannerItemEntity = banner;
+                  return true;
+               }
+
+               tempCache.put(banner.getId(), Raider.this.level().getGameTime() + 600L);
+            }
+         }
+
+         this.unreachableBannerCache = tempCache;
+         return false;
       }
 
       @Override
@@ -402,18 +394,24 @@ public abstract class Raider extends PatrollingMonster {
       private boolean cannotPickUpBanner() {
          if (!this.mob.hasActiveRaid()) {
             return true;
-         } else if (this.mob.getCurrentRaid().isOver()) {
+         }
+
+         if (this.mob.getCurrentRaid().isOver()) {
             return true;
-         } else if (!this.mob.canBeLeader()) {
+         }
+
+         if (!this.mob.canBeLeader()) {
             return true;
-         } else if (ItemStack.matches(
+         }
+
+         if (ItemStack.matches(
             this.mob.getItemBySlot(EquipmentSlot.HEAD), Raid.getOminousBannerInstance(this.mob.registryAccess().lookupOrThrow(Registries.BANNER_PATTERN))
          )) {
             return true;
-         } else {
-            Raider leader = Raider.this.raid.getLeader(this.mob.getWave());
-            return leader != null && leader.isAlive();
          }
+
+         Raider leader = Raider.this.raid.getLeader(this.mob.getWave());
+         return leader != null && leader.isAlive();
       }
 
       @Override
@@ -439,8 +437,6 @@ public abstract class Raider extends PatrollingMonster {
       private final Raider mob;
 
       public RaiderCelebration(final Raider mob) {
-         Objects.requireNonNull(Raider.this);
-         super();
          this.mob = mob;
          this.setFlags(EnumSet.of(Goal.Flag.MOVE));
       }
@@ -509,10 +505,10 @@ public abstract class Raider extends PatrollingMonster {
             .getRandom(p -> p.is(PoiTypes.HOME), this::hasNotVisited, PoiManager.Occupancy.ANY, pos, 48, this.raider.random);
          if (homePos.isEmpty()) {
             return false;
-         } else {
-            this.poiPos = homePos.get().immutable();
-            return true;
          }
+
+         this.poiPos = homePos.get().immutable();
+         return true;
       }
 
       @Override
@@ -520,13 +516,13 @@ public abstract class Raider extends PatrollingMonster {
          return this.raider.getNavigation().isDone()
             ? false
             : this.raider.getTarget() == null
-               && !this.poiPos.closerToCenterThan(this.raider.position(), (double)(this.raider.getBbWidth() + (float)this.distanceToPoi))
+               && !this.poiPos.closerToCenterThan(this.raider.position(), this.raider.getBbWidth() + this.distanceToPoi)
                && !this.stuck;
       }
 
       @Override
       public void stop() {
-         if (this.poiPos.closerToCenterThan(this.raider.position(), (double)this.distanceToPoi)) {
+         if (this.poiPos.closerToCenterThan(this.raider.position(), this.distanceToPoi)) {
             this.visited.add(this.poiPos);
          }
       }
@@ -535,7 +531,7 @@ public abstract class Raider extends PatrollingMonster {
       public void start() {
          super.start();
          this.raider.setNoActionTime(0);
-         this.raider.getNavigation().moveTo((double)this.poiPos.getX(), (double)this.poiPos.getY(), (double)this.poiPos.getZ(), this.speedModifier);
+         this.raider.getNavigation().moveTo(this.poiPos.getX(), this.poiPos.getY(), this.poiPos.getZ(), this.speedModifier);
          this.stuck = false;
       }
 

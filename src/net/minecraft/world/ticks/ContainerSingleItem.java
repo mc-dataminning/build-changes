@@ -55,7 +55,7 @@ public interface ContainerSingleItem extends Container {
       }
    }
 
-   public interface BlockContainerSingleItem extends ContainerSingleItem {
+   interface BlockContainerSingleItem extends ContainerSingleItem {
       BlockEntity getContainerBlockEntity();
 
       @Override

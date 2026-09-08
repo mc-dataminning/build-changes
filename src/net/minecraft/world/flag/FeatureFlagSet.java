@@ -8,11 +8,10 @@ import org.jspecify.annotations.Nullable;
 public final class FeatureFlagSet {
    private static final FeatureFlagSet EMPTY = new FeatureFlagSet(null, 0L);
    public static final int MAX_CONTAINER_SIZE = 64;
-   @Nullable
-   private final FeatureFlagUniverse universe;
+   private final @Nullable FeatureFlagUniverse universe;
    private final long mask;
 
-   private FeatureFlagSet(@Nullable final FeatureFlagUniverse universe, final long mask) {
+   private FeatureFlagSet(final @Nullable FeatureFlagUniverse universe, final long mask) {
       this.universe = universe;
       this.mask = mask;
    }
@@ -20,10 +19,10 @@ public final class FeatureFlagSet {
    static FeatureFlagSet create(final FeatureFlagUniverse universe, final Collection<FeatureFlag> flags) {
       if (flags.isEmpty()) {
          return EMPTY;
-      } else {
-         long mask = computeMask(universe, 0L, flags);
-         return new FeatureFlagSet(universe, mask);
       }
+
+      long mask = computeMask(universe, 0L, flags);
+      return new FeatureFlagSet(universe, mask);
    }
 
    public static FeatureFlagSet of() {
@@ -86,25 +85,19 @@ public final class FeatureFlagSet {
    public FeatureFlagSet subtract(final FeatureFlagSet other) {
       if (this.universe == null || other.universe == null) {
          return this;
-      } else if (this.universe != other.universe) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.universe + "' != '" + other.universe + "'");
-      } else {
-         long newMask = this.mask & ~other.mask;
-         return newMask == 0L ? EMPTY : new FeatureFlagSet(this.universe, newMask);
       }
+
+      if (this.universe != other.universe) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.universe + "' != '" + other.universe + "'");
+      }
+
+      long newMask = this.mask & ~other.mask;
+      return newMask == 0L ? EMPTY : new FeatureFlagSet(this.universe, newMask);
    }
 
    @Override
    public boolean equals(final Object o) {
-      if (this == o) {
-         return true;
-      } else {
-         if (o instanceof FeatureFlagSet that && this.universe == that.universe && this.mask == that.mask) {
-            return true;
-         }
-
-         return false;
-      }
+      return this == o ? true : o instanceof FeatureFlagSet that && this.universe == that.universe && this.mask == that.mask;
    }
 
    @Override

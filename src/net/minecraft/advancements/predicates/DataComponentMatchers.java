@@ -17,10 +17,10 @@ public record DataComponentMatchers(DataComponentExactPredicate exact, Map<DataC
    public static final DataComponentMatchers ANY = new DataComponentMatchers(DataComponentExactPredicate.EMPTY, Map.of());
    public static final MapCodec<DataComponentMatchers> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               DataComponentExactPredicate.CODEC.optionalFieldOf("components", DataComponentExactPredicate.EMPTY).forGetter(DataComponentMatchers::exact),
-               DataComponentPredicate.CODEC.optionalFieldOf("predicates", Map.of()).forGetter(DataComponentMatchers::partial)
-            )
-            .apply(i, DataComponentMatchers::new)
+            DataComponentExactPredicate.CODEC.optionalFieldOf("components", DataComponentExactPredicate.EMPTY).forGetter(DataComponentMatchers::exact),
+            DataComponentPredicate.CODEC.optionalFieldOf("predicates", Map.of()).forGetter(DataComponentMatchers::partial)
+         )
+         .apply(i, DataComponentMatchers::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, DataComponentMatchers> STREAM_CODEC = StreamCodec.composite(
       DataComponentExactPredicate.STREAM_CODEC,
@@ -33,15 +33,15 @@ public record DataComponentMatchers(DataComponentExactPredicate exact, Map<DataC
    public boolean test(final DataComponentGetter values) {
       if (!this.exact.test(values)) {
          return false;
-      } else {
-         for (DataComponentPredicate predicate : this.partial.values()) {
-            if (!predicate.matches(values)) {
-               return false;
-            }
-         }
-
-         return true;
       }
+
+      for (DataComponentPredicate predicate : this.partial.values()) {
+         if (!predicate.matches(values)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    public boolean isEmpty() {

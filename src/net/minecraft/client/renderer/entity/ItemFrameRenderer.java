@@ -50,14 +50,14 @@ public class ItemFrameRenderer<T extends ItemFrame> extends EntityRenderer<T, It
       Vec3 renderOffset = this.getRenderOffset(state);
       poseStack.translate(-renderOffset.x(), -renderOffset.y(), -renderOffset.z());
       double offs = 0.46875;
-      poseStack.translate((double)direction.getStepX() * 0.46875, (double)direction.getStepY() * 0.46875, (double)direction.getStepZ() * 0.46875);
+      poseStack.translate(direction.getStepX() * 0.46875, direction.getStepY() * 0.46875, direction.getStepZ() * 0.46875);
       float xRot;
       float yRot;
       if (direction.getAxis().isHorizontal()) {
          xRot = 0.0F;
          yRot = 180.0F - direction.toYRot();
       } else {
-         xRot = (float)(-90 * direction.getAxisDirection().getStep());
+         xRot = -90 * direction.getAxisDirection().getStep();
          yRot = 180.0F;
       }
 
@@ -78,7 +78,7 @@ public class ItemFrameRenderer<T extends ItemFrame> extends EntityRenderer<T, It
 
       if (state.mapId != null) {
          int rotation = state.rotation % 4 * 2;
-         poseStack.rotateDegrees(Axis.ZP, (float)rotation * 360.0F / 8.0F);
+         poseStack.rotateDegrees(Axis.ZP, rotation * 360.0F / 8.0F);
          poseStack.rotateDegrees(Axis.ZP, 180.0F);
          float s = 0.0078125F;
          poseStack.scale(0.0078125F, 0.0078125F, 0.0078125F);
@@ -87,7 +87,7 @@ public class ItemFrameRenderer<T extends ItemFrame> extends EntityRenderer<T, It
          int lightCoords = this.getLightCoords(state.isGlowFrame, 15728850, state.lightCoords);
          this.mapRenderer.render(state.mapRenderState, poseStack, submitNodeCollector, true, lightCoords);
       } else if (!state.item.isEmpty()) {
-         poseStack.rotateDegrees(Axis.ZP, (float)state.rotation * 360.0F / 8.0F);
+         poseStack.rotateDegrees(Axis.ZP, state.rotation * 360.0F / 8.0F);
          int lightVal = this.getLightCoords(state.isGlowFrame, 15728880, state.lightCoords);
          poseStack.scale(0.5F, 0.5F, 0.5F);
          state.item.submit(poseStack, submitNodeCollector, lightVal, OverlayTexture.NO_OVERLAY, state.outlineColor);
@@ -101,7 +101,7 @@ public class ItemFrameRenderer<T extends ItemFrame> extends EntityRenderer<T, It
    }
 
    public Vec3 getRenderOffset(final ItemFrameRenderState state) {
-      return new Vec3((double)((float)state.direction.getStepX() * 0.3F), -0.25, (double)((float)state.direction.getStepZ() * 0.3F));
+      return new Vec3(state.direction.getStepX() * 0.3F, -0.25, state.direction.getStepZ() * 0.3F);
    }
 
    protected boolean shouldShowName(final T entity, final double distanceToCameraSq) {

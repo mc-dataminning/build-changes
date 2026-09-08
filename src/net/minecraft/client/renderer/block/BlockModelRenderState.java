@@ -20,21 +20,14 @@ import org.jspecify.annotations.Nullable;
 
 public class BlockModelRenderState {
    public static final int[] EMPTY_TINTS = new int[0];
-   @Nullable
-   private List<BlockStateModelPart> modelParts;
-   @Nullable
-   private Matrix4fc transformation;
-   @Nullable
-   private RenderType renderType;
-   @Nullable
-   private SpecialModelRenderer<?> specialRenderer;
-   @Nullable
-   private Matrix4fc specialRendererTransformation;
-   @Nullable
-   private IntList tintLayers;
+   private @Nullable List<BlockStateModelPart> modelParts;
+   private @Nullable Matrix4fc transformation;
+   private @Nullable RenderType renderType;
+   private @Nullable SpecialModelRenderer<?> specialRenderer;
+   private @Nullable Matrix4fc specialRendererTransformation;
+   private @Nullable IntList tintLayers;
    public int blockLightCoords;
-   @Nullable
-   private RandomSource randomSource;
+   private @Nullable RandomSource randomSource;
 
    public void clear() {
       this.modelParts = null;
@@ -90,8 +83,7 @@ public class BlockModelRenderState {
       }
    }
 
-   @Nullable
-   private static Matrix4fc identityToNull(final Matrix4fc transformation) {
+   private static @Nullable Matrix4fc identityToNull(final Matrix4fc transformation) {
       return MatrixUtil.checkPropertyRaw(transformation, 4) ? null : transformation;
    }
 

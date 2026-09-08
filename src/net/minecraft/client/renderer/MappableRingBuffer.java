@@ -5,27 +5,28 @@ import com.mojang.renderpearl.api.buffers.GpuBuffer;
 import com.mojang.renderpearl.api.commands.GpuFence;
 import com.mojang.renderpearl.api.device.GpuDevice;
 import java.util.function.Supplier;
+import org.jspecify.annotations.Nullable;
 
 public class MappableRingBuffer implements AutoCloseable {
    private static final int BUFFER_COUNT = 3;
    private final GpuBuffer[] buffers = new GpuBuffer[3];
-   private final GpuFence[] fences = new GpuFence[3];
+   private final @Nullable GpuFence[] fences = new GpuFence[3];
    private final int size;
    private int current = 0;
 
-   public MappableRingBuffer(final Supplier<String> label, @GpuBuffer.Usage final int usage, final int size) {
+   public MappableRingBuffer(final Supplier<String> label, final @GpuBuffer.Usage int usage, final int size) {
       GpuDevice device = RenderSystem.getDevice();
       if ((usage & 1) == 0 && (usage & 2) == 0) {
          throw new IllegalArgumentException("MappableRingBuffer requires at least one of USAGE_MAP_READ or USAGE_MAP_WRITE");
-      } else {
-         for (int i = 0; i < 3; i++) {
-            int finalI = i;
-            this.buffers[i] = device.createBuffer(() -> label.get() + " #" + finalI, usage, (long)size);
-            this.fences[i] = null;
-         }
-
-         this.size = size;
       }
+
+      for (int i = 0; i < 3; i++) {
+         int finalI = i;
+         this.buffers[i] = device.createBuffer(() -> label.get() + " #" + finalI, usage, size);
+         this.fences[i] = null;
+      }
+
+      this.size = size;
    }
 
    public int size() {

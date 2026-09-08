@@ -45,25 +45,18 @@ public class FriendsOverlayScreen extends Screen {
    private static final int OVERLAY_WIDTH = 220;
    public static final int TAB_BUTTON_WIDTH = 110;
    private static final int TAB_BUTTON_HEIGHT = 20;
-   @Nullable
-   private final Screen backgroundScreen;
-   @Nullable
-   private FriendsTab friendsTab;
-   @Nullable
-   private PendingTab pendingTab;
-   @Nullable
-   private TabNavigationBar tabNavigationBar;
-   @Nullable
-   private LinearLayout layout;
-   @Nullable
-   private LinearLayout contentLayout;
-   @Nullable
-   private FriendsOverlayTabButton pendingTabButton;
+   private final @Nullable Screen backgroundScreen;
+   private @Nullable FriendsTab friendsTab;
+   private @Nullable PendingTab pendingTab;
+   private @Nullable TabNavigationBar tabNavigationBar;
+   private @Nullable LinearLayout layout;
+   private @Nullable LinearLayout contentLayout;
+   private @Nullable FriendsOverlayTabButton pendingTabButton;
    private final TabManager tabManager;
    private final Runnable friendListUpdateListener = this::onFriendListUpdate;
    private final Set<UUID> pendingFriendRemovals = new HashSet<>();
 
-   public FriendsOverlayScreen(@Nullable final Screen backgroundScreen) {
+   public FriendsOverlayScreen(final @Nullable Screen backgroundScreen) {
       super(TITLE);
       this.backgroundScreen = backgroundScreen;
       this.tabManager = new TabManager(x$0 -> this.addRenderableWidget(x$0), x$0 -> this.removeWidget(x$0), this::selectTab, this::deselectTab);
@@ -179,12 +172,12 @@ public class FriendsOverlayScreen extends Screen {
       int panelRight = this.layout.getX() + this.layout.getWidth() + 8;
       int panelTop = this.tabNavigationBar.getY();
       int panelBottom = this.layout.getY() + this.layout.getHeight() + 16;
-      if (!(event.x() < (double)panelLeft) && !(event.x() > (double)panelRight) && !(event.y() < (double)panelTop) && !(event.y() > (double)panelBottom)) {
+      if (!(event.x() < panelLeft) && !(event.x() > panelRight) && !(event.y() < panelTop) && !(event.y() > panelBottom)) {
          return super.mouseClicked(event, doubleClick);
-      } else {
-         this.minecraft.gui.setScreen(this.backgroundScreen);
-         return true;
       }
+
+      this.minecraft.gui.setScreen(this.backgroundScreen);
+      return true;
    }
 
    @Override
@@ -308,15 +301,15 @@ public class FriendsOverlayScreen extends Screen {
                      this,
                      incomingRequest,
                      () -> this.minecraft
-                           .getPlayerSocialManager()
-                           .acceptIncomingFriendRequest(incomingRequest.id())
-                           .thenAcceptAsync(var1x -> this.refreshLists(), this.minecraft)
-                           .exceptionally(this::onActionFailed),
+                        .getPlayerSocialManager()
+                        .acceptIncomingFriendRequest(incomingRequest.id())
+                        .thenAcceptAsync(var1x -> this.refreshLists(), this.minecraft)
+                        .exceptionally(this::onActionFailed),
                      () -> this.minecraft
-                           .getPlayerSocialManager()
-                           .declineIncomingFriendRequest(incomingRequest.id())
-                           .thenRunAsync(this::refreshLists, this.minecraft)
-                           .exceptionally(this::onActionFailed)
+                        .getPlayerSocialManager()
+                        .declineIncomingFriendRequest(incomingRequest.id())
+                        .thenRunAsync(this::refreshLists, this.minecraft)
+                        .exceptionally(this::onActionFailed)
                   )
                );
             }
@@ -331,10 +324,10 @@ public class FriendsOverlayScreen extends Screen {
                      this,
                      outgoingRequest,
                      () -> this.minecraft
-                           .getPlayerSocialManager()
-                           .revokeOutgoingFriendRequest(outgoingRequest.id())
-                           .thenRunAsync(this::refreshLists, this.minecraft)
-                           .exceptionally(this::onActionFailed)
+                        .getPlayerSocialManager()
+                        .revokeOutgoingFriendRequest(outgoingRequest.id())
+                        .thenRunAsync(this::refreshLists, this.minecraft)
+                        .exceptionally(this::onActionFailed)
                   )
                );
             }
@@ -353,8 +346,7 @@ public class FriendsOverlayScreen extends Screen {
       this.pendingTab.disable();
    }
 
-   @Nullable
-   private Void onActionFailed(final Throwable ex) {
+   private @Nullable Void onActionFailed(final Throwable ex) {
       LOGGER.error("Friend action failed", ex);
       this.minecraft.execute(() -> {
          SystemToast.addOrUpdate(this.minecraft.gui.toastManager(), SystemToast.SystemToastId.FRIEND_SYSTEM_NOTIFICATION, ERROR_TOAST_GENERIC, null);

@@ -1,7 +1,6 @@
 package net.minecraft.world.entity.animal.happyghast;
 
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.game.ClientboundEntityPositionSyncPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -109,8 +108,8 @@ public class HappyGhast extends Animal {
                this,
                1.0,
                itemStack -> !this.isWearingBodyArmor() && !this.isBaby()
-                     ? itemStack.is(ItemTags.HAPPY_GHAST_TEMPT_ITEMS)
-                     : itemStack.is(ItemTags.HAPPY_GHAST_FOOD),
+                  ? itemStack.is(ItemTags.HAPPY_GHAST_TEMPT_ITEMS)
+                  : itemStack.is(ItemTags.HAPPY_GHAST_FOOD),
                false,
                7.0
             )
@@ -248,9 +247,8 @@ public class HappyGhast extends Animal {
       return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
    }
 
-   @Nullable
    @Override
-   public AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       return EntityTypes.HAPPY_GHAST.create(level, EntitySpawnReason.BREEDING);
    }
 
@@ -283,21 +281,21 @@ public class HappyGhast extends Animal {
    public InteractionResult mobInteract(final Player player, final InteractionHand hand) {
       if (this.isBaby()) {
          return super.mobInteract(player, hand);
-      } else {
-         ItemStack itemStack = player.getItemInHand(hand);
-         if (!itemStack.isEmpty()) {
-            InteractionResult interactionResult = itemStack.interactLivingEntity(player, this, hand);
-            if (interactionResult.consumesAction()) {
-               return interactionResult;
-            }
-         }
+      }
 
-         if (this.isWearingBodyArmor() && !player.isSecondaryUseActive()) {
-            this.doPlayerRide(player);
-            return InteractionResult.SUCCESS;
-         } else {
-            return super.mobInteract(player, hand);
+      ItemStack itemStack = player.getItemInHand(hand);
+      if (!itemStack.isEmpty()) {
+         InteractionResult interactionResult = itemStack.interactLivingEntity(player, this, hand);
+         if (interactionResult.consumesAction()) {
+            return interactionResult;
          }
+      }
+
+      if (this.isWearingBodyArmor() && !player.isSecondaryUseActive()) {
+         this.doPlayerRide(player);
+         return InteractionResult.SUCCESS;
+      } else {
+         return super.mobInteract(player, hand);
       }
    }
 
@@ -341,13 +339,11 @@ public class HappyGhast extends Animal {
       return this.getPassengers().size() < 4;
    }
 
-   @Nullable
    @Override
-   public LivingEntity getControllingPassenger() {
-      Entity firstPassenger = this.getFirstPassenger();
-      return (LivingEntity)(this.isWearingBodyArmor() && !this.isOnStillTimeout() && firstPassenger instanceof Player
-         ? (Player)firstPassenger
-         : super.getControllingPassenger());
+   public @Nullable LivingEntity getControllingPassenger() {
+      return this.isWearingBodyArmor() && !this.isOnStillTimeout() && this.getFirstPassenger() instanceof Player player
+         ? player
+         : super.getControllingPassenger();
    }
 
    @Override
@@ -356,8 +352,8 @@ public class HappyGhast extends Animal {
       float forward = 0.0F;
       float up = 0.0F;
       if (controller.zza != 0.0F) {
-         float forwardLook = Mth.cos((double)(controller.getXRot() * (float) (Math.PI / 180.0)));
-         float upLook = -Mth.sin((double)(controller.getXRot() * (float) (Math.PI / 180.0)));
+         float forwardLook = Mth.cos(controller.getXRot() * (float) (Math.PI / 180.0));
+         float upLook = -Mth.sin(controller.getXRot() * (float) (Math.PI / 180.0));
          if (controller.zza < 0.0F) {
             forwardLook *= -0.5F;
             upLook *= -0.5F;
@@ -371,7 +367,7 @@ public class HappyGhast extends Animal {
          up += 0.5F;
       }
 
-      return new Vec3((double)strafe, (double)up, (double)forward).scale(3.9F * this.getAttributeValue(Attributes.FLYING_SPEED));
+      return new Vec3(strafe, up, forward).scale(3.9F * this.getAttributeValue(Attributes.FLYING_SPEED));
    }
 
    protected Vec2 getRiddenRotation(final LivingEntity controller) {
@@ -456,7 +452,7 @@ public class HappyGhast extends Animal {
    private void checkRestriction() {
       if (!this.isLeashed() && !this.isVehicle()) {
          int radius = this.getHappyGhastRestrictionRadius();
-         if (!this.hasHome() || !this.getHomePosition().closerThan(this.blockPosition(), (double)(radius + 16)) || radius != this.getHomeRadius()) {
+         if (!this.hasHome() || !this.getHomePosition().closerThan(this.blockPosition(), radius + 16) || radius != this.getHomeRadius()) {
             this.setHomeTo(this.blockPosition(), radius);
          }
       }
@@ -468,8 +464,6 @@ public class HappyGhast extends Animal {
          if (this.tickCount % (isFastHealing ? 20 : 600) == 0) {
             this.heal(1.0F);
          }
-
-         return;
       }
    }
 
@@ -579,7 +573,7 @@ public class HappyGhast extends Animal {
    }
 
    @Override
-   public boolean canBeCollidedWith(@Nullable final Entity other) {
+   public boolean canBeCollidedWith(final @Nullable Entity other) {
       if (!this.isBaby() && this.isAlive()) {
          if (this.level().isClientSide() && other instanceof Player && other.position().y >= this.getBoundingBox().maxY) {
             return true;
@@ -617,7 +611,6 @@ public class HappyGhast extends Animal {
 
    private class HappyGhastBodyRotationControl extends BodyRotationControl {
       public HappyGhastBodyRotationControl() {
-         Objects.requireNonNull(HappyGhast.this);
          super(HappyGhast.this);
       }
 
@@ -634,7 +627,6 @@ public class HappyGhast extends Animal {
 
    private class HappyGhastFloatGoal extends FloatGoal {
       public HappyGhastFloatGoal() {
-         Objects.requireNonNull(HappyGhast.this);
          super(HappyGhast.this);
       }
 
@@ -646,7 +638,6 @@ public class HappyGhast extends Animal {
 
    private class HappyGhastLookControl extends LookControl {
       private HappyGhastLookControl() {
-         Objects.requireNonNull(HappyGhast.this);
          super(HappyGhast.this);
       }
 

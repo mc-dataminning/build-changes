@@ -39,8 +39,7 @@ public final class SkyLightEngine extends LightEngine<SkyLightSectionStorage.Sky
       return sources == null ? defaultValue : sources.getLowestSourceY(SectionPos.sectionRelative(x), SectionPos.sectionRelative(z));
    }
 
-   @Nullable
-   private ChunkSkyLightSources getChunkSources(final int chunkX, final int chunkZ) {
+   private @Nullable ChunkSkyLightSources getChunkSources(final int chunkX, final int chunkZ) {
       LightChunk chunk = this.chunkSource.getChunkForLighting(chunkX, chunkZ);
       return chunk != null ? chunk.getSkyLightSources() : null;
    }
@@ -204,29 +203,29 @@ public final class SkyLightEngine extends LightEngine<SkyLightSectionStorage.Sky
       int localY = SectionPos.sectionRelative(y);
       if (localY != 0) {
          return 0;
-      } else {
-         int x = BlockPos.getX(blockNode);
-         int z = BlockPos.getZ(blockNode);
-         int localX = SectionPos.sectionRelative(x);
-         int localZ = SectionPos.sectionRelative(z);
-         if (localX != 0 && localX != 15 && localZ != 0 && localZ != 15) {
-            return 0;
-         } else {
-            int sectionX = SectionPos.blockToSectionCoord(x);
-            int sectionY = SectionPos.blockToSectionCoord(y);
-            int sectionZ = SectionPos.blockToSectionCoord(z);
-            int emptySectionsBelow = 0;
-
-            while (
-               !this.storage.storingLightForSection(SectionPos.asLong(sectionX, sectionY - emptySectionsBelow - 1, sectionZ))
-                  && this.storage.hasLightDataAtOrBelow(sectionY - emptySectionsBelow - 1)
-            ) {
-               emptySectionsBelow++;
-            }
-
-            return emptySectionsBelow;
-         }
       }
+
+      int x = BlockPos.getX(blockNode);
+      int z = BlockPos.getZ(blockNode);
+      int localX = SectionPos.sectionRelative(x);
+      int localZ = SectionPos.sectionRelative(z);
+      if (localX != 0 && localX != 15 && localZ != 0 && localZ != 15) {
+         return 0;
+      }
+
+      int sectionX = SectionPos.blockToSectionCoord(x);
+      int sectionY = SectionPos.blockToSectionCoord(y);
+      int sectionZ = SectionPos.blockToSectionCoord(z);
+      int emptySectionsBelow = 0;
+
+      while (
+         !this.storage.storingLightForSection(SectionPos.asLong(sectionX, sectionY - emptySectionsBelow - 1, sectionZ))
+            && this.storage.hasLightDataAtOrBelow(sectionY - emptySectionsBelow - 1)
+      ) {
+         emptySectionsBelow++;
+      }
+
+      return emptySectionsBelow;
    }
 
    private void propagateFromEmptySections(

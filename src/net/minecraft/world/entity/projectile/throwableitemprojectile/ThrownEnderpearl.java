@@ -47,7 +47,7 @@ public class ThrownEnderpearl extends ThrowableItemProjectile {
    }
 
    @Override
-   protected void setOwner(@Nullable final EntityReference<Entity> owner) {
+   protected void setOwner(final @Nullable EntityReference<Entity> owner) {
       this.deregisterFromCurrentOwner();
       super.setOwner(owner);
       this.registerToCurrentOwner();
@@ -65,16 +65,14 @@ public class ThrownEnderpearl extends ThrowableItemProjectile {
       }
    }
 
-   @Nullable
    @Override
-   public Entity getOwner() {
+   public @Nullable Entity getOwner() {
       return this.owner != null && this.level() instanceof ServerLevel serverLevel ? this.owner.getEntity(serverLevel, Entity.class) : super.getOwner();
    }
 
-   @Nullable
-   private static Entity findOwnerIncludingDeadPlayer(final ServerLevel serverLevel, final UUID uuid) {
+   private static @Nullable Entity findOwnerIncludingDeadPlayer(final ServerLevel serverLevel, final UUID uuid) {
       Entity owner = serverLevel.getEntityInAnyDimension(uuid);
-      return (Entity)(owner != null ? owner : serverLevel.getServer().getPlayerList().getPlayer(uuid));
+      return owner != null ? owner : serverLevel.getServer().getPlayerList().getPlayer(uuid);
    }
 
    @Override
@@ -145,11 +143,9 @@ public class ThrownEnderpearl extends ThrowableItemProjectile {
             }
 
             this.discard();
-            return;
+         } else {
+            this.discard();
          }
-
-         this.discard();
-         return;
       }
    }
 
@@ -164,21 +160,15 @@ public class ThrownEnderpearl extends ThrowableItemProjectile {
    @Override
    public void tick() {
       if (this.level() instanceof ServerLevel serverLevel) {
-         int previousChunkZ;
-         Entity owner;
-         int var7;
-         label39: {
-            var7 = SectionPos.blockToSectionCoord(this.position().x());
-            previousChunkZ = SectionPos.blockToSectionCoord(this.position().z());
-            owner = this.owner != null ? findOwnerIncludingDeadPlayer(serverLevel, this.owner.getUUID()) : null;
-            if (owner instanceof ServerPlayer serverPlayer
-               && !owner.isAlive()
-               && !serverPlayer.wonGame
-               && serverPlayer.level().getGameRules().get(GameRules.ENDER_PEARLS_VANISH_ON_DEATH)) {
-               this.discard();
-               break label39;
-            }
-
+         int var7 = SectionPos.blockToSectionCoord(this.position().x());
+         int previousChunkZ = SectionPos.blockToSectionCoord(this.position().z());
+         Entity owner = this.owner != null ? findOwnerIncludingDeadPlayer(serverLevel, this.owner.getUUID()) : null;
+         if (owner instanceof ServerPlayer serverPlayer
+            && !owner.isAlive()
+            && !serverPlayer.wonGame
+            && serverPlayer.level().getGameRules().get(GameRules.ENDER_PEARLS_VANISH_ON_DEATH)) {
+            this.discard();
+         } else {
             super.tick();
          }
 
@@ -202,9 +192,8 @@ public class ThrownEnderpearl extends ThrowableItemProjectile {
       level.playSound(null, position.x, position.y, position.z, SoundEvents.PLAYER_TELEPORT, SoundSource.PLAYERS);
    }
 
-   @Nullable
    @Override
-   public Entity teleport(final TeleportTransition transition) {
+   public @Nullable Entity teleport(final TeleportTransition transition) {
       Entity newEntity = super.teleport(transition);
       if (newEntity != null) {
          newEntity.placePortalTicket(BlockPos.containing(newEntity.position()));

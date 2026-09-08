@@ -66,10 +66,9 @@ public class BlockPredicateArgument implements ArgumentType<BlockPredicateArgume
    private static class BlockPredicate implements BlockPredicateArgument.Result {
       private final BlockState state;
       private final Set<Property<?>> properties;
-      @Nullable
-      private final CompoundTag nbt;
+      private final @Nullable CompoundTag nbt;
 
-      public BlockPredicate(final BlockState state, final Set<Property<?>> properties, @Nullable final CompoundTag nbt) {
+      public BlockPredicate(final BlockState state, final Set<Property<?>> properties, final @Nullable CompoundTag nbt) {
          this.state = state;
          this.properties = properties;
          this.nbt = nbt;
@@ -79,20 +78,20 @@ public class BlockPredicateArgument implements ArgumentType<BlockPredicateArgume
          BlockState state = blockInWorld.getState();
          if (!state.is(this.state.getBlock())) {
             return false;
-         } else {
-            for (Property<?> property : this.properties) {
-               if (state.getValue(property) != this.state.getValue(property)) {
-                  return false;
-               }
-            }
+         }
 
-            if (this.nbt == null) {
-               return true;
-            } else {
-               BlockEntity entity = blockInWorld.getEntity();
-               return entity != null && NbtUtils.compareNbt(this.nbt, entity.saveWithFullMetadata(blockInWorld.getLevel().registryAccess()), true);
+         for (Property<?> property : this.properties) {
+            if (state.getValue(property) != this.state.getValue(property)) {
+               return false;
             }
          }
+
+         if (this.nbt == null) {
+            return true;
+         }
+
+         BlockEntity entity = blockInWorld.getEntity();
+         return entity != null && NbtUtils.compareNbt(this.nbt, entity.saveWithFullMetadata(blockInWorld.getLevel().registryAccess()), true);
       }
 
       @Override
@@ -107,11 +106,10 @@ public class BlockPredicateArgument implements ArgumentType<BlockPredicateArgume
 
    private static class TagPredicate implements BlockPredicateArgument.Result {
       private final HolderSet<Block> tag;
-      @Nullable
-      private final CompoundTag nbt;
+      private final @Nullable CompoundTag nbt;
       private final Map<String, String> vagueProperties;
 
-      private TagPredicate(final HolderSet<Block> tag, final Map<String, String> vagueProperties, @Nullable final CompoundTag nbt) {
+      private TagPredicate(final HolderSet<Block> tag, final Map<String, String> vagueProperties, final @Nullable CompoundTag nbt) {
          this.tag = tag;
          this.vagueProperties = vagueProperties;
          this.nbt = nbt;
@@ -121,30 +119,30 @@ public class BlockPredicateArgument implements ArgumentType<BlockPredicateArgume
          BlockState state = blockInWorld.getState();
          if (!state.is(this.tag)) {
             return false;
-         } else {
-            for (Entry<String, String> entry : this.vagueProperties.entrySet()) {
-               Property<?> property = state.getBlock().getStateDefinition().getProperty(entry.getKey());
-               if (property == null) {
-                  return false;
-               }
+         }
 
-               Comparable<?> value = (Comparable<?>)property.getValue(entry.getValue()).orElse(null);
-               if (value == null) {
-                  return false;
-               }
-
-               if (state.getValue(property) != value) {
-                  return false;
-               }
+         for (Entry<String, String> entry : this.vagueProperties.entrySet()) {
+            Property<?> property = state.getBlock().getStateDefinition().getProperty(entry.getKey());
+            if (property == null) {
+               return false;
             }
 
-            if (this.nbt == null) {
-               return true;
-            } else {
-               BlockEntity entity = blockInWorld.getEntity();
-               return entity != null && NbtUtils.compareNbt(this.nbt, entity.saveWithFullMetadata(blockInWorld.getLevel().registryAccess()), true);
+            Comparable<?> value = (Comparable<?>)property.getValue(entry.getValue()).orElse(null);
+            if (value == null) {
+               return false;
+            }
+
+            if (state.getValue(property) != value) {
+               return false;
             }
          }
+
+         if (this.nbt == null) {
+            return true;
+         }
+
+         BlockEntity entity = blockInWorld.getEntity();
+         return entity != null && NbtUtils.compareNbt(this.nbt, entity.saveWithFullMetadata(blockInWorld.getLevel().registryAccess()), true);
       }
 
       @Override

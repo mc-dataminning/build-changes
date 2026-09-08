@@ -56,7 +56,7 @@ public class DebugCrosshairRenderer implements AutoCloseable {
       modelViewStack.translate(0.0F, 0.0F, -1.0F);
       modelViewStack.rotateX(cameraState.xRot * (float) (Math.PI / 180.0));
       modelViewStack.rotateY(cameraState.yRot * (float) (Math.PI / 180.0));
-      float crosshairScale = 0.01F * (float)guiScale;
+      float crosshairScale = 0.01F * guiScale;
       modelViewStack.scale(-crosshairScale, crosshairScale, -crosshairScale);
       RenderPipeline renderPipelineOutline = RenderPipelines.LINES;
       RenderPipeline renderPipelineFill = RenderPipelines.LINES_DEPTH_BIAS;

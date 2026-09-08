@@ -74,12 +74,12 @@ public class BoneMealItem extends Item {
          }
 
          return true;
+      } else {
+         return false;
       }
-
-      return false;
    }
 
-   public static boolean growWaterPlant(final ItemStack itemStack, final Level level, final BlockPos pos, @Nullable final Direction clickedFace) {
+   public static boolean growWaterPlant(final ItemStack itemStack, final Level level, final BlockPos pos, final @Nullable Direction clickedFace) {
       if (level.getBlockState(pos).is(Blocks.WATER) && level.getFluidState(pos).isFull()) {
          if (!(level instanceof ServerLevel serverLevel)) {
             return true;

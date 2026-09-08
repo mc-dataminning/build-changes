@@ -18,8 +18,7 @@ public interface Nameable {
       return this.getName();
    }
 
-   @Nullable
-   default Component getCustomName() {
+   default @Nullable Component getCustomName() {
       return null;
    }
 }

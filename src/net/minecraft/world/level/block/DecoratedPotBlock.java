@@ -54,13 +54,7 @@ public class DecoratedPotBlock extends BaseEntityBlock implements SimpleWaterlog
 
    protected DecoratedPotBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(HORIZONTAL_FACING, Direction.NORTH)
-            .setValue(WATERLOGGED, Boolean.valueOf(false))
-            .setValue(CRACKED, Boolean.valueOf(false))
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH).setValue(WATERLOGGED, false).setValue(CRACKED, false));
    }
 
    @Override
@@ -86,8 +80,8 @@ public class DecoratedPotBlock extends BaseEntityBlock implements SimpleWaterlog
       FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
       return this.defaultBlockState()
          .setValue(HORIZONTAL_FACING, context.getHorizontalDirection())
-         .setValue(WATERLOGGED, Boolean.valueOf(replacedFluidState.is(Fluids.WATER)))
-         .setValue(CRACKED, Boolean.valueOf(false));
+         .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER))
+         .setValue(CRACKED, false);
    }
 
    @Override
@@ -103,35 +97,33 @@ public class DecoratedPotBlock extends BaseEntityBlock implements SimpleWaterlog
       if (level.getBlockEntity(pos) instanceof DecoratedPotBlockEntity decoratedPot) {
          if (level.isClientSide()) {
             return InteractionResult.SUCCESS;
-         } else {
-            ItemStack potItem = decoratedPot.getTheItem();
-            if (!itemStack.isEmpty()
-               && (potItem.isEmpty() || ItemStack.isSameItemSameComponents(potItem, itemStack) && potItem.getCount() < potItem.getMaxStackSize())) {
-               decoratedPot.wobble(DecoratedPotBlockEntity.WobbleStyle.POSITIVE);
-               player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
-               ItemStack awardedItem = itemStack.consumeAndReturn(1, player);
-               float pitchBend;
-               if (decoratedPot.isEmpty()) {
-                  decoratedPot.setTheItem(awardedItem);
-                  pitchBend = (float)awardedItem.getCount() / (float)awardedItem.getMaxStackSize();
-               } else {
-                  potItem.grow(1);
-                  pitchBend = (float)potItem.getCount() / (float)potItem.getMaxStackSize();
-               }
+         }
 
-               level.playSound(null, pos, SoundEvents.DECORATED_POT_INSERT, SoundSource.BLOCKS, 1.0F, 0.7F + 0.5F * pitchBend);
-               if (level instanceof ServerLevel serverLevel) {
-                  serverLevel.sendParticles(
-                     ParticleTypes.DUST_PLUME, (double)pos.getX() + 0.5, (double)pos.getY() + 1.2, (double)pos.getZ() + 0.5, 7, 0.0, 0.0, 0.0, 0.0
-                  );
-               }
-
-               decoratedPot.setChanged();
-               level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-               return InteractionResult.SUCCESS;
+         ItemStack potItem = decoratedPot.getTheItem();
+         if (!itemStack.isEmpty()
+            && (potItem.isEmpty() || ItemStack.isSameItemSameComponents(potItem, itemStack) && potItem.getCount() < potItem.getMaxStackSize())) {
+            decoratedPot.wobble(DecoratedPotBlockEntity.WobbleStyle.POSITIVE);
+            player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
+            ItemStack awardedItem = itemStack.consumeAndReturn(1, player);
+            float pitchBend;
+            if (decoratedPot.isEmpty()) {
+               decoratedPot.setTheItem(awardedItem);
+               pitchBend = (float)awardedItem.getCount() / awardedItem.getMaxStackSize();
             } else {
-               return InteractionResult.TRY_WITH_EMPTY_HAND;
+               potItem.grow(1);
+               pitchBend = (float)potItem.getCount() / potItem.getMaxStackSize();
             }
+
+            level.playSound(null, pos, SoundEvents.DECORATED_POT_INSERT, SoundSource.BLOCKS, 1.0F, 0.7F + 0.5F * pitchBend);
+            if (level instanceof ServerLevel serverLevel) {
+               serverLevel.sendParticles(ParticleTypes.DUST_PLUME, pos.getX() + 0.5, pos.getY() + 1.2, pos.getZ() + 0.5, 7, 0.0, 0.0, 0.0, 0.0);
+            }
+
+            decoratedPot.setChanged();
+            level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+            return InteractionResult.SUCCESS;
+         } else {
+            return InteractionResult.TRY_WITH_EMPTY_HAND;
          }
       } else {
          return InteractionResult.PASS;
@@ -167,9 +159,8 @@ public class DecoratedPotBlock extends BaseEntityBlock implements SimpleWaterlog
       builder.add(HORIZONTAL_FACING, WATERLOGGED, CRACKED);
    }
 
-   @Nullable
    @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
+   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
       return new DecoratedPotBlockEntity(worldPosition, blockState);
    }
 
@@ -198,7 +189,7 @@ public class DecoratedPotBlock extends BaseEntityBlock implements SimpleWaterlog
       ItemStack destroyedWith = player.getMainHandItem();
       BlockState nextState = state;
       if (destroyedWith.is(ItemTags.BREAKS_DECORATED_POTS) && !EnchantmentHelper.hasTag(destroyedWith, EnchantmentTags.PREVENTS_DECORATED_POT_SHATTERING)) {
-         nextState = state.setValue(CRACKED, Boolean.valueOf(true));
+         nextState = state.setValue(CRACKED, true);
          level.setBlock(pos, nextState, 260);
       }
 
@@ -219,7 +210,7 @@ public class DecoratedPotBlock extends BaseEntityBlock implements SimpleWaterlog
    protected void onProjectileHit(final Level level, final BlockState state, final BlockHitResult blockHit, final Projectile projectile) {
       BlockPos pos = blockHit.getBlockPos();
       if (level instanceof ServerLevel serverLevel && projectile.mayInteract(serverLevel, pos) && projectile.mayBreak(serverLevel, pos)) {
-         level.setBlock(pos, state.setValue(CRACKED, Boolean.valueOf(true)), 260);
+         level.setBlock(pos, state.setValue(CRACKED, true), 260);
          level.destroyBlock(pos, true, projectile);
       }
    }

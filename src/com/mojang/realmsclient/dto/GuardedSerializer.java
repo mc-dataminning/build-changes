@@ -27,8 +27,7 @@ public class GuardedSerializer {
       return this.gson.toJson(jsonElement);
    }
 
-   @Nullable
-   public <T extends ReflectionBasedSerialization> T fromJson(final String contents, final Class<T> cls) {
+   public <T extends ReflectionBasedSerialization> @Nullable T fromJson(final String contents, final Class<T> cls) {
       return (T)this.gson.fromJson(contents, cls);
    }
 }

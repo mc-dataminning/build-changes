@@ -32,16 +32,16 @@ public record SteppedColumnClusterFeature(
 ) implements Feature {
    public static final MapCodec<SteppedColumnClusterFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BlockStateProvider.CODEC.fieldOf("block").forGetter(SteppedColumnClusterFeature::block),
-               BlockPredicate.CODEC.fieldOf("continue_through").forGetter(SteppedColumnClusterFeature::continueThrough),
-               BlockPredicate.CODEC.fieldOf("can_replace").forGetter(SteppedColumnClusterFeature::canReplace),
-               RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("cannot_place_on").forGetter(SteppedColumnClusterFeature::cannotPlaceOn),
-               IntProviders.codec(0, 13).fieldOf("cluster_reach").forGetter(SteppedColumnClusterFeature::clusterReach),
-               IntProviders.codec(1, 150).fieldOf("column_count").forGetter(SteppedColumnClusterFeature::columnCount),
-               IntProviders.codec(0, 3).fieldOf("column_reach").forGetter(SteppedColumnClusterFeature::columnReach),
-               IntProviders.codec(1, 10).fieldOf("height").forGetter(SteppedColumnClusterFeature::height)
-            )
-            .apply(i, SteppedColumnClusterFeature::new)
+            BlockStateProvider.CODEC.fieldOf("block").forGetter(SteppedColumnClusterFeature::block),
+            BlockPredicate.CODEC.fieldOf("continue_through").forGetter(SteppedColumnClusterFeature::continueThrough),
+            BlockPredicate.CODEC.fieldOf("can_replace").forGetter(SteppedColumnClusterFeature::canReplace),
+            RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("cannot_place_on").forGetter(SteppedColumnClusterFeature::cannotPlaceOn),
+            IntProviders.codec(0, 13).fieldOf("cluster_reach").forGetter(SteppedColumnClusterFeature::clusterReach),
+            IntProviders.codec(1, 150).fieldOf("column_count").forGetter(SteppedColumnClusterFeature::columnCount),
+            IntProviders.codec(0, 3).fieldOf("column_reach").forGetter(SteppedColumnClusterFeature::columnReach),
+            IntProviders.codec(1, 10).fieldOf("height").forGetter(SteppedColumnClusterFeature::height)
+         )
+         .apply(i, SteppedColumnClusterFeature::new)
    );
 
    @Override
@@ -54,30 +54,30 @@ public record SteppedColumnClusterFeature(
       int lavaSeaLevel = chunkGenerator.getSeaLevel();
       if (!this.canPlaceAt(level, origin.mutable())) {
          return false;
-      } else {
-         int columnHeight = this.height.sample(random);
-         int clusterReach = Math.min(columnHeight, this.clusterReach.sample(random));
-         int count = this.columnCount.sample(random);
-         boolean placed = false;
-
-         for (BlockPos pos : BlockPos.randomBetweenClosed(
-            random,
-            count,
-            origin.getX() - clusterReach,
-            origin.getY(),
-            origin.getZ() - clusterReach,
-            origin.getX() + clusterReach,
-            origin.getY(),
-            origin.getZ() + clusterReach
-         )) {
-            int blocksToPlaceY = columnHeight - pos.distManhattan(origin);
-            if (blocksToPlaceY >= 0) {
-               placed |= this.placeColumn(level, random, lavaSeaLevel, pos, blocksToPlaceY, this.columnReach.sample(random));
-            }
-         }
-
-         return placed;
       }
+
+      int columnHeight = this.height.sample(random);
+      int clusterReach = Math.min(columnHeight, this.clusterReach.sample(random));
+      int count = this.columnCount.sample(random);
+      boolean placed = false;
+
+      for (BlockPos pos : BlockPos.randomBetweenClosed(
+         random,
+         count,
+         origin.getX() - clusterReach,
+         origin.getY(),
+         origin.getZ() - clusterReach,
+         origin.getX() + clusterReach,
+         origin.getY(),
+         origin.getZ() + clusterReach
+      )) {
+         int blocksToPlaceY = columnHeight - pos.distManhattan(origin);
+         if (blocksToPlaceY >= 0) {
+            placed |= this.placeColumn(level, random, lavaSeaLevel, pos, blocksToPlaceY, this.columnReach.sample(random));
+         }
+      }
+
+      return placed;
    }
 
    private boolean placeColumn(
@@ -94,8 +94,9 @@ public record SteppedColumnClusterFeature(
             : this.findAir(level, pos.mutable(), stepLimit);
          if (columnPos != null) {
             int blocksY = columnHeight - stepLimit / 2;
+            BlockPos.MutableBlockPos cursor = columnPos.mutable();
 
-            for (BlockPos.MutableBlockPos cursor = columnPos.mutable(); blocksY >= 0; blocksY--) {
+            while (blocksY >= 0) {
                if (this.canReplace.test(level, cursor)) {
                   this.setBlock(level, cursor, this.block.value().getState(level, random, cursor));
                   cursor.move(Direction.UP);
@@ -107,6 +108,8 @@ public record SteppedColumnClusterFeature(
 
                   cursor.move(Direction.UP);
                }
+
+               blocksY--;
             }
          }
       }
@@ -114,8 +117,7 @@ public record SteppedColumnClusterFeature(
       return placedAny;
    }
 
-   @Nullable
-   private BlockPos findSurface(final WorldGenLevel level, final int lavaSeaLevel, final BlockPos.MutableBlockPos cursor, int limit) {
+   private @Nullable BlockPos findSurface(final WorldGenLevel level, final int lavaSeaLevel, final BlockPos.MutableBlockPos cursor, int limit) {
       while (cursor.getY() > level.getMinY() + 1 && limit > 0) {
          limit--;
          if (this.canPlaceAt(level, cursor)) {
@@ -131,15 +133,14 @@ public record SteppedColumnClusterFeature(
    private boolean canPlaceAt(final WorldGenLevel level, final BlockPos.MutableBlockPos cursor) {
       if (!this.canReplace.test(level, cursor)) {
          return false;
-      } else {
-         BlockState blockState = level.getBlockState(cursor.move(Direction.DOWN));
-         cursor.move(Direction.UP);
-         return !blockState.isAir() && !blockState.is(this.cannotPlaceOn);
       }
+
+      BlockState blockState = level.getBlockState(cursor.move(Direction.DOWN));
+      cursor.move(Direction.UP);
+      return !blockState.isAir() && !blockState.is(this.cannotPlaceOn);
    }
 
-   @Nullable
-   private BlockPos findAir(final LevelAccessor level, final BlockPos.MutableBlockPos cursor, int limit) {
+   private @Nullable BlockPos findAir(final LevelAccessor level, final BlockPos.MutableBlockPos cursor, int limit) {
       while (cursor.getY() <= level.getMaxY() && limit > 0) {
          limit--;
          BlockState blockState = level.getBlockState(cursor);

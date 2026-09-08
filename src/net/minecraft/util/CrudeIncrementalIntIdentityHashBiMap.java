@@ -11,9 +11,9 @@ public class CrudeIncrementalIntIdentityHashBiMap<K> implements IdMap<K> {
    private static final int NOT_FOUND = -1;
    private static final Object EMPTY_SLOT = null;
    private static final float LOADFACTOR = 0.8F;
-   private K[] keys;
+   private @Nullable K[] keys;
    private int[] values;
-   private K[] byId;
+   private @Nullable K[] byId;
    private int nextId;
    private int size;
 
@@ -32,17 +32,16 @@ public class CrudeIncrementalIntIdentityHashBiMap<K> implements IdMap<K> {
    }
 
    public static <A> CrudeIncrementalIntIdentityHashBiMap<A> create(final int initialCapacity) {
-      return new CrudeIncrementalIntIdentityHashBiMap((int)((float)initialCapacity / 0.8F));
+      return new CrudeIncrementalIntIdentityHashBiMap((int)(initialCapacity / 0.8F));
    }
 
    @Override
-   public int getId(@Nullable final K thing) {
+   public int getId(final @Nullable K thing) {
       return this.getValue(this.indexOf(thing, this.hash(thing)));
    }
 
-   @Nullable
    @Override
-   public K byId(final int id) {
+   public @Nullable K byId(final int id) {
       return id >= 0 && id < this.byId.length ? this.byId[id] : null;
    }
 
@@ -92,7 +91,7 @@ public class CrudeIncrementalIntIdentityHashBiMap<K> implements IdMap<K> {
 
    public void addMapping(final K key, final int id) {
       int minSize = Math.max(id, this.size + 1);
-      if ((float)minSize >= (float)this.keys.length * 0.8F) {
+      if (minSize >= this.keys.length * 0.8F) {
          int newSize = this.keys.length << 1;
 
          while (newSize < id) {
@@ -112,11 +111,11 @@ public class CrudeIncrementalIntIdentityHashBiMap<K> implements IdMap<K> {
       }
    }
 
-   private int hash(@Nullable final K key) {
+   private int hash(final @Nullable K key) {
       return (Mth.murmurHash3Mixer(System.identityHashCode(key)) & 2147483647) % this.keys.length;
    }
 
-   private int indexOf(@Nullable final K key, final int startFrom) {
+   private int indexOf(final @Nullable K key, final int startFrom) {
       for (int i = startFrom; i < this.keys.length; i++) {
          if (this.keys[i] == key) {
             return i;
@@ -147,9 +146,9 @@ public class CrudeIncrementalIntIdentityHashBiMap<K> implements IdMap<K> {
          }
       }
 
-      for (int ix = 0; ix < startFrom; ix++) {
-         if (this.keys[ix] == EMPTY_SLOT) {
-            return ix;
+      for (int i = 0; i < startFrom; i++) {
+         if (this.keys[i] == EMPTY_SLOT) {
+            return i;
          }
       }
 

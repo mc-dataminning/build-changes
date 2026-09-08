@@ -25,13 +25,12 @@ public class SingleVariant implements BlockStateModel {
       return this.model.particleMaterial();
    }
 
-   @BakedQuad.MaterialFlags
    @Override
-   public int materialFlags() {
+   public @BakedQuad.MaterialFlags int materialFlags() {
       return this.model.materialFlags();
    }
 
-   public static record Unbaked(Variant variant) implements BlockStateModel.Unbaked {
+   public record Unbaked(Variant variant) implements BlockStateModel.Unbaked {
       public static final Codec<SingleVariant.Unbaked> CODEC = Variant.CODEC.xmap(SingleVariant.Unbaked::new, SingleVariant.Unbaked::variant);
 
       @Override

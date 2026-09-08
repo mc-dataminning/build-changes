@@ -19,19 +19,19 @@ public record VillagerData(Holder<VillagerType> type, Holder<VillagerProfession>
    private static final int[] NEXT_LEVEL_XP_THRESHOLDS = new int[]{0, 10, 70, 150, 250};
    public static final Codec<VillagerData> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               BuiltInRegistries.VILLAGER_TYPE
-                  .holderByNameCodec()
-                  .fieldOf("type")
-                  .orElseGet(() -> BuiltInRegistries.VILLAGER_TYPE.getOrThrow(DEFAULT_TYPE))
-                  .forGetter(d -> d.type),
-               BuiltInRegistries.VILLAGER_PROFESSION
-                  .holderByNameCodec()
-                  .fieldOf("profession")
-                  .orElseGet(() -> BuiltInRegistries.VILLAGER_PROFESSION.getOrThrow(VillagerProfession.NONE))
-                  .forGetter(d -> d.profession),
-               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.INT, "level", 1).forGetter(d -> d.level)
-            )
-            .apply(i, VillagerData::new)
+            BuiltInRegistries.VILLAGER_TYPE
+               .holderByNameCodec()
+               .fieldOf("type")
+               .orElseGet(() -> BuiltInRegistries.VILLAGER_TYPE.getOrThrow(DEFAULT_TYPE))
+               .forGetter(d -> d.type),
+            BuiltInRegistries.VILLAGER_PROFESSION
+               .holderByNameCodec()
+               .fieldOf("profession")
+               .orElseGet(() -> BuiltInRegistries.VILLAGER_PROFESSION.getOrThrow(VillagerProfession.NONE))
+               .forGetter(d -> d.profession),
+            ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.INT, "level", 1).forGetter(d -> d.level)
+         )
+         .apply(i, VillagerData::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, VillagerData> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.holderRegistry(Registries.VILLAGER_TYPE),
@@ -43,11 +43,8 @@ public record VillagerData(Holder<VillagerType> type, Holder<VillagerProfession>
       VillagerData::new
    );
 
-   public VillagerData(Holder<VillagerType> type, Holder<VillagerProfession> profession, int level) {
+   public VillagerData {
       level = Math.max(1, level);
-      this.type = type;
-      this.profession = profession;
-      this.level = level;
    }
 
    public VillagerData withType(final Holder<VillagerType> type) {

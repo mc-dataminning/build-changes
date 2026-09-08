@@ -6,7 +6,7 @@ public enum IndexType {
 
    public final int bytes;
 
-   private IndexType(final int bytes) {
+   IndexType(final int bytes) {
       this.bytes = bytes;
    }
 

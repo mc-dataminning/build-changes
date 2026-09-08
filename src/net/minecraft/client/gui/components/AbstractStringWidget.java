@@ -11,8 +11,7 @@ import net.minecraft.network.chat.Style;
 import org.jspecify.annotations.Nullable;
 
 public abstract class AbstractStringWidget extends AbstractWidget {
-   @Nullable
-   private Consumer<Style> componentClickHandler = null;
+   private @Nullable Consumer<Style> componentClickHandler = null;
    private final Font font;
 
    public AbstractStringWidget(final int x, final int y, final int width, final int height, final Component message, final Font font) {
@@ -67,7 +66,7 @@ public abstract class AbstractStringWidget extends AbstractWidget {
       this.setWidth(this.getFont().width(message.getVisualOrderText()));
    }
 
-   public AbstractStringWidget setComponentClickHandler(@Nullable final Consumer<Style> clickEventConsumer) {
+   public AbstractStringWidget setComponentClickHandler(final @Nullable Consumer<Style> clickEventConsumer) {
       this.componentClickHandler = clickEventConsumer;
       return this;
    }

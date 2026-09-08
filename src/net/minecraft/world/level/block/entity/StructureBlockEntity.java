@@ -56,8 +56,7 @@ public class StructureBlockEntity extends BlockEntity implements BoundingBoxRend
    private static final boolean DEFAULT_SHOW_BOUNDING_BOX = true;
    private static final float DEFAULT_INTEGRITY = 1.0F;
    private static final long DEFAULT_SEED = 0L;
-   @Nullable
-   private Identifier structureName;
+   private @Nullable Identifier structureName;
    private String author = "";
    private String metaData = "";
    private BlockPos structurePos = DEFAULT_POS;
@@ -151,13 +150,13 @@ public class StructureBlockEntity extends BlockEntity implements BoundingBoxRend
    public boolean usedBy(final Player player) {
       if (!player.canUseGameMasterBlocks()) {
          return false;
-      } else {
-         if (player.level().isClientSide()) {
-            player.openStructureBlock(this);
-         }
-
-         return true;
       }
+
+      if (player.level().isClientSide()) {
+         player.openStructureBlock(this);
+      }
+
+      return true;
    }
 
    public String getStructureName() {
@@ -168,11 +167,11 @@ public class StructureBlockEntity extends BlockEntity implements BoundingBoxRend
       return this.structureName != null;
    }
 
-   public void setStructureName(@Nullable final String structureName) {
+   public void setStructureName(final @Nullable String structureName) {
       this.setStructureName(StringUtil.isNullOrEmpty(structureName) ? null : Identifier.tryParse(structureName));
    }
 
-   public void setStructureName(@Nullable final Identifier structureName) {
+   public void setStructureName(final @Nullable Identifier structureName) {
       this.structureName = structureName;
    }
 
@@ -267,24 +266,24 @@ public class StructureBlockEntity extends BlockEntity implements BoundingBoxRend
    public boolean detectSize() {
       if (this.mode != StructureMode.SAVE) {
          return false;
-      } else {
-         BlockPos pos = this.getBlockPos();
-         return getEnclosingBoundingBox(this.level, pos, this.structureName).filter(bb -> {
-            int deltaX = bb.maxX() - bb.minX();
-            int deltaY = bb.maxY() - bb.minY();
-            int deltaZ = bb.maxZ() - bb.minZ();
-            if (deltaX > 1 && deltaY > 1 && deltaZ > 1) {
-               this.structurePos = new BlockPos(bb.minX() - pos.getX() + 1, bb.minY() - pos.getY() + 1, bb.minZ() - pos.getZ() + 1);
-               this.structureSize = new Vec3i(deltaX - 1, deltaY - 1, deltaZ - 1);
-               this.setChanged();
-               BlockState state = this.level.getBlockState(pos);
-               this.level.sendBlockUpdated(pos, state, state, 3);
-               return true;
-            } else {
-               return false;
-            }
-         }).isPresent();
       }
+
+      BlockPos pos = this.getBlockPos();
+      return getEnclosingBoundingBox(this.level, pos, this.structureName).filter(bb -> {
+         int deltaX = bb.maxX() - bb.minX();
+         int deltaY = bb.maxY() - bb.minY();
+         int deltaZ = bb.maxZ() - bb.minZ();
+         if (deltaX > 1 && deltaY > 1 && deltaZ > 1) {
+            this.structurePos = new BlockPos(bb.minX() - pos.getX() + 1, bb.minY() - pos.getY() + 1, bb.minZ() - pos.getZ() + 1);
+            this.structureSize = new Vec3i(deltaX - 1, deltaY - 1, deltaZ - 1);
+            this.setChanged();
+            BlockState state = this.level.getBlockState(pos);
+            this.level.sendBlockUpdated(pos, state, state, 3);
+            return true;
+         } else {
+            return false;
+         }
+      }).isPresent();
    }
 
    private static Optional<BoundingBox> getEnclosingBoundingBox(final Level level, final BlockPos selfPos, final Identifier structureName) {
@@ -295,16 +294,16 @@ public class StructureBlockEntity extends BlockEntity implements BoundingBoxRend
       level.findBlocksIn(corner1, corner2)
          .filterState(state -> state.is(Blocks.STRUCTURE_BLOCK))
          .forEach((pos, var5x) -> level.getBlockEntity(pos, BlockEntityTypes.STRUCTURE_BLOCK).ifPresent(blockEntity -> {
-               if (blockEntity.mode == StructureMode.CORNER && Objects.equals(structureName, blockEntity.structureName)) {
-                  cornerCount.increment();
-                  BoundingBox boundingBox = (BoundingBox)result.get();
-                  if (boundingBox == null) {
-                     result.setValue(new BoundingBox(pos));
-                  } else {
-                     boundingBox.encapsulate(pos);
-                  }
+            if (blockEntity.mode == StructureMode.CORNER && Objects.equals(structureName, blockEntity.structureName)) {
+               cornerCount.increment();
+               BoundingBox boundingBox = (BoundingBox)result.get();
+               if (boundingBox == null) {
+                  result.setValue(new BoundingBox(pos));
+               } else {
+                  boundingBox.encapsulate(pos);
                }
-            }));
+            }
+         }));
 
       return switch (((Number)cornerCount.get()).intValue()) {
          case 0 -> Optional.empty();
@@ -341,7 +340,7 @@ public class StructureBlockEntity extends BlockEntity implements BoundingBoxRend
       StructureTemplate structureTemplate;
       try {
          structureTemplate = manager.getOrCreate(structureName);
-      } catch (IdentifierException var12) {
+      } catch (IdentifierException e) {
          return false;
       }
 
@@ -352,7 +351,7 @@ public class StructureBlockEntity extends BlockEntity implements BoundingBoxRend
       if (saveToDisk) {
          try {
             return manager.save(structureName);
-         } catch (IdentifierException var11) {
+         } catch (IdentifierException e) {
             return false;
          }
       } else {
@@ -385,10 +384,10 @@ public class StructureBlockEntity extends BlockEntity implements BoundingBoxRend
       StructureTemplate template = this.getStructureTemplate(level);
       if (template == null) {
          return false;
-      } else {
-         this.loadStructureInfo(template);
-         return true;
       }
+
+      this.loadStructureInfo(template);
+      return true;
    }
 
    private void loadStructureInfo(final StructureTemplate structureTemplate) {
@@ -404,8 +403,7 @@ public class StructureBlockEntity extends BlockEntity implements BoundingBoxRend
       }
    }
 
-   @Nullable
-   private StructureTemplate getStructureTemplate(final ServerLevel level) {
+   private @Nullable StructureTemplate getStructureTemplate(final ServerLevel level) {
       return this.structureName == null ? null : level.getStructureTemplateManager().get(this.structureName).orElse(null);
    }
 
@@ -443,7 +441,7 @@ public class StructureBlockEntity extends BlockEntity implements BoundingBoxRend
 
          try {
             return manager.get(this.structureName).isPresent();
-         } catch (IdentifierException var4) {
+         } catch (IdentifierException e) {
             return false;
          }
       } else {
@@ -543,7 +541,7 @@ public class StructureBlockEntity extends BlockEntity implements BoundingBoxRend
       return BoundingBoxRenderable.RenderableBox.fromCorners(x0, y0, z0, x1, y1, z1);
    }
 
-   public static enum UpdateType {
+   public enum UpdateType {
       UPDATE_DATA,
       SAVE_AREA,
       LOAD_AREA,

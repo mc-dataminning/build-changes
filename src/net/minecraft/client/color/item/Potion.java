@@ -21,7 +21,7 @@ public record Potion(int defaultColor) implements ItemTintSource {
    }
 
    @Override
-   public int calculate(final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final LivingEntity owner) {
+   public int calculate(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner) {
       PotionContents contents = itemStack.get(DataComponents.POTION_CONTENTS);
       return contents != null ? ARGB.opaque(contents.getColorOr(this.defaultColor)) : ARGB.opaque(this.defaultColor);
    }

@@ -48,7 +48,7 @@ import org.jspecify.annotations.Nullable;
 public class Ravager extends Raider {
    private static final Predicate<Entity> ROAR_TARGET_WITH_GRIEFING = entity -> !(entity instanceof Ravager) && entity.isAlive();
    private static final Predicate<Entity> ROAR_TARGET_WITHOUT_GRIEFING = entity -> ROAR_TARGET_WITH_GRIEFING.test(entity)
-         && !entity.is(EntityTypes.ARMOR_STAND);
+      && !entity.is(EntityTypes.ARMOR_STAND);
    private static final Predicate<LivingEntity> ROAR_TARGET_ON_CLIENT = e -> !(e instanceof Ravager) && e.isAlive() && e.isLocalInstanceAuthoritative();
    private static final double BASE_MOVEMENT_SPEED = 0.3;
    private static final double ATTACK_MOVEMENT_SPEED = 0.35;
@@ -187,13 +187,9 @@ public class Ravager extends Raider {
 
    private void stunEffect() {
       if (this.random.nextInt(6) == 0) {
-         double headX = this.getX()
-            - (double)this.getBbWidth() * Math.sin((double)(this.yBodyRot * (float) (Math.PI / 180.0)))
-            + (this.random.nextDouble() * 0.6 - 0.3);
-         double headY = this.getY() + (double)this.getBbHeight() - 0.3;
-         double headZ = this.getZ()
-            + (double)this.getBbWidth() * Math.cos((double)(this.yBodyRot * (float) (Math.PI / 180.0)))
-            + (this.random.nextDouble() * 0.6 - 0.3);
+         double headX = this.getX() - this.getBbWidth() * Math.sin(this.yBodyRot * (float) (Math.PI / 180.0)) + (this.random.nextDouble() * 0.6 - 0.3);
+         double headY = this.getY() + this.getBbHeight() - 0.3;
+         double headZ = this.getZ() + this.getBbWidth() * Math.cos(this.yBodyRot * (float) (Math.PI / 180.0)) + (this.random.nextDouble() * 0.6 - 0.3);
          this.level()
             .addParticle(ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, 0.49803922F, 0.5137255F, 0.57254905F), headX, headY, headZ, 0.0, 0.0, 0.0);
       }
@@ -258,7 +254,7 @@ public class Ravager extends Raider {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 4) {
          this.attackTick = 10;
          this.playSound(SoundEvents.RAVAGER_ATTACK, 1.0F, 1.0F);
@@ -303,9 +299,8 @@ public class Ravager extends Raider {
       return super.doHurtTarget(level, target);
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getAmbientSound() {
+   protected @Nullable SoundEvent getAmbientSound() {
       return SoundEvents.RAVAGER_AMBIENT;
    }
 

@@ -93,7 +93,7 @@ public interface AttributeModifier<Subject, Argument> {
 
    LerpFunction<Argument> argumentKeyframeLerp(EnvironmentAttribute<Subject> attribute);
 
-   public static enum OperationId implements StringRepresentable {
+   enum OperationId implements StringRepresentable {
       OVERRIDE("override"),
       ALPHA_BLEND("alpha_blend"),
       ADD("add"),
@@ -114,7 +114,7 @@ public interface AttributeModifier<Subject, Argument> {
       public static final Codec<AttributeModifier.OperationId> CODEC = StringRepresentable.fromEnum(AttributeModifier.OperationId::values);
       private final String name;
 
-      private OperationId(final String name) {
+      OperationId(final String name) {
          this.name = name;
       }
 
@@ -124,7 +124,7 @@ public interface AttributeModifier<Subject, Argument> {
       }
    }
 
-   public static record OverrideModifier<Value>() implements AttributeModifier<Value, Value> {
+   record OverrideModifier<Value>() implements AttributeModifier<Value, Value> {
       private static final AttributeModifier.OverrideModifier<?> INSTANCE = new AttributeModifier.OverrideModifier();
 
       @Override

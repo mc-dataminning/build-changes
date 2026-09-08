@@ -50,20 +50,18 @@ public class Abilities {
       this.walkingSpeed = packed.walkingSpeed;
    }
 
-   public static record Packed(
-      boolean invulnerable, boolean flying, boolean mayFly, boolean instabuild, boolean mayBuild, float flyingSpeed, float walkingSpeed
-   ) {
+   public record Packed(boolean invulnerable, boolean flying, boolean mayFly, boolean instabuild, boolean mayBuild, float flyingSpeed, float walkingSpeed) {
       public static final Codec<Abilities.Packed> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "invulnerable", false).forGetter(Abilities.Packed::invulnerable),
-                  ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "flying", false).forGetter(Abilities.Packed::flying),
-                  ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "mayfly", false).forGetter(Abilities.Packed::mayFly),
-                  ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "instabuild", false).forGetter(Abilities.Packed::instabuild),
-                  ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "mayBuild", true).forGetter(Abilities.Packed::mayBuild),
-                  ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.FLOAT, "flySpeed", 0.05F).forGetter(Abilities.Packed::flyingSpeed),
-                  ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.FLOAT, "walkSpeed", 0.1F).forGetter(Abilities.Packed::walkingSpeed)
-               )
-               .apply(i, Abilities.Packed::new)
+               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "invulnerable", false).forGetter(Abilities.Packed::invulnerable),
+               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "flying", false).forGetter(Abilities.Packed::flying),
+               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "mayfly", false).forGetter(Abilities.Packed::mayFly),
+               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "instabuild", false).forGetter(Abilities.Packed::instabuild),
+               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "mayBuild", true).forGetter(Abilities.Packed::mayBuild),
+               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.FLOAT, "flySpeed", 0.05F).forGetter(Abilities.Packed::flyingSpeed),
+               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.FLOAT, "walkSpeed", 0.1F).forGetter(Abilities.Packed::walkingSpeed)
+            )
+            .apply(i, Abilities.Packed::new)
       );
    }
 }

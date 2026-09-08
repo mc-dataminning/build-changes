@@ -3,7 +3,6 @@ package net.minecraft.world.level.storage.loot.providers.number.floats;
 import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import io.netty.buffer.ByteBuf;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
 import net.minecraft.core.Holder;
@@ -21,8 +20,6 @@ public sealed interface ResolvableFloat permits ResolvableFloat.Constant, Resolv
       .map(Either::unwrap, ResolvableFloat::wrap);
 
    private static Either<ResolvableFloat.Constant, ResolvableFloat.Reference> wrap(final ResolvableFloat resolvableNumber) {
-      Objects.requireNonNull(resolvableNumber);
-
       return switch (resolvableNumber) {
          case ResolvableFloat.Constant constant -> Either.left(constant);
          case ResolvableFloat.Reference reference -> Either.right(reference);
@@ -47,7 +44,7 @@ public sealed interface ResolvableFloat permits ResolvableFloat.Constant, Resolv
       return component != null ? getter.apply(component).get(context, defaultValue) : defaultValue;
    }
 
-   public static record Constant(float value) implements ResolvableFloat {
+   record Constant(float value) implements ResolvableFloat {
       private static final Codec<ResolvableFloat.Constant> CODEC = Codec.FLOAT.xmap(ResolvableFloat.Constant::new, ResolvableFloat.Constant::value);
       private static final StreamCodec<ByteBuf, ResolvableFloat.Constant> STREAM_CODEC = ByteBufCodecs.FLOAT
          .map(ResolvableFloat.Constant::new, ResolvableFloat.Constant::value);
@@ -58,7 +55,7 @@ public sealed interface ResolvableFloat permits ResolvableFloat.Constant, Resolv
       }
    }
 
-   public static record Reference(ResourceKey<ContextFloatProvider> key) implements ResolvableFloat {
+   record Reference(ResourceKey<ContextFloatProvider> key) implements ResolvableFloat {
       private static final Codec<ResolvableFloat.Reference> CODEC = ResourceKey.codec(Registries.CONTEXT_FLOAT_PROVIDER)
          .xmap(ResolvableFloat.Reference::new, ResolvableFloat.Reference::key);
       private static final StreamCodec<ByteBuf, ResolvableFloat.Reference> STREAM_CODEC = ResourceKey.streamCodec(Registries.CONTEXT_FLOAT_PROVIDER)

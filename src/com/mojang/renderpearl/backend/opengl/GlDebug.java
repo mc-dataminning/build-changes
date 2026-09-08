@@ -22,8 +22,7 @@ public class GlDebug {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static final int CIRCULAR_LOG_SIZE = 10;
    private final Queue<GlDebug.LogEntry> MESSAGE_BUFFER = EvictingQueue.create(10);
-   @Nullable
-   private volatile GlDebug.LogEntry lastEntry;
+   private volatile GlDebug.@Nullable LogEntry lastEntry;
    private static final List<Integer> DEBUG_LEVELS = ImmutableList.of(37190, 37191, 37192, 33387);
    private static final List<Integer> DEBUG_LEVELS_ARB = ImmutableList.of(37190, 37191, 37192);
 
@@ -95,44 +94,43 @@ public class GlDebug {
       }
    }
 
-   @Nullable
-   public static GlDebug enableDebugCallback(final int verbosity, final boolean debugSynchronousGlLogs, final Set<String> enabledExtensions) {
+   public static @Nullable GlDebug enableDebugCallback(final int verbosity, final boolean debugSynchronousGlLogs, final Set<String> enabledExtensions) {
       if (verbosity <= 0) {
          return null;
-      } else {
-         GLCapabilities caps = GL.getCapabilities();
-         if (caps.GL_KHR_debug && GlDevice.USE_GL_KHR_debug) {
-            GlDebug debug = new GlDebug();
-            enabledExtensions.add("GL_KHR_debug");
-            GL33C.glEnable(37600);
-            if (debugSynchronousGlLogs) {
-               GL33C.glEnable(33346);
-            }
+      }
 
-            for (int i = 0; i < DEBUG_LEVELS.size(); i++) {
-               boolean isEnabled = i < verbosity;
-               KHRDebug.glDebugMessageControl(4352, 4352, DEBUG_LEVELS.get(i), (int[])null, isEnabled);
-            }
-
-            KHRDebug.glDebugMessageCallback(GLDebugMessageCallback.create(debug::printDebugLog), 0L);
-            return debug;
-         } else if (caps.GL_ARB_debug_output && GlDevice.USE_GL_ARB_debug_output) {
-            GlDebug debug = new GlDebug();
-            enabledExtensions.add("GL_ARB_debug_output");
-            if (debugSynchronousGlLogs) {
-               GL33C.glEnable(33346);
-            }
-
-            for (int i = 0; i < DEBUG_LEVELS_ARB.size(); i++) {
-               boolean isEnabled = i < verbosity;
-               ARBDebugOutput.glDebugMessageControlARB(4352, 4352, DEBUG_LEVELS_ARB.get(i), (int[])null, isEnabled);
-            }
-
-            ARBDebugOutput.glDebugMessageCallbackARB(GLDebugMessageARBCallback.create(debug::printDebugLog), 0L);
-            return debug;
-         } else {
-            return null;
+      GLCapabilities caps = GL.getCapabilities();
+      if (caps.GL_KHR_debug && GlDevice.USE_GL_KHR_debug) {
+         GlDebug debug = new GlDebug();
+         enabledExtensions.add("GL_KHR_debug");
+         GL33C.glEnable(37600);
+         if (debugSynchronousGlLogs) {
+            GL33C.glEnable(33346);
          }
+
+         for (int i = 0; i < DEBUG_LEVELS.size(); i++) {
+            boolean isEnabled = i < verbosity;
+            KHRDebug.glDebugMessageControl(4352, 4352, DEBUG_LEVELS.get(i), (int[])null, isEnabled);
+         }
+
+         KHRDebug.glDebugMessageCallback(GLDebugMessageCallback.create(debug::printDebugLog), 0L);
+         return debug;
+      } else if (caps.GL_ARB_debug_output && GlDevice.USE_GL_ARB_debug_output) {
+         GlDebug debug = new GlDebug();
+         enabledExtensions.add("GL_ARB_debug_output");
+         if (debugSynchronousGlLogs) {
+            GL33C.glEnable(33346);
+         }
+
+         for (int i = 0; i < DEBUG_LEVELS_ARB.size(); i++) {
+            boolean isEnabled = i < verbosity;
+            ARBDebugOutput.glDebugMessageControlARB(4352, 4352, DEBUG_LEVELS_ARB.get(i), (int[])null, isEnabled);
+         }
+
+         ARBDebugOutput.glDebugMessageCallbackARB(GLDebugMessageARBCallback.create(debug::printDebugLog), 0L);
+         return debug;
+      } else {
+         return null;
       }
    }
 

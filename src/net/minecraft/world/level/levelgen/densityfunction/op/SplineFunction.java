@@ -18,6 +18,7 @@ import net.minecraft.world.level.levelgen.densityfunction.SamplerContext;
 import net.minecraft.world.level.levelgen.densityfunction.ScopedDensityBuffer;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.apache.commons.lang3.mutable.MutableInt;
+import org.jspecify.annotations.Nullable;
 
 public record SplineFunction(CubicSpline<SplineFunction.Coordinate> spline) implements DensityFunction {
    private static final Codec<CubicSpline<SplineFunction.Coordinate>> SPLINE_CODEC = CubicSpline.codec(SplineFunction.Coordinate.CODEC);
@@ -33,9 +34,8 @@ public record SplineFunction(CubicSpline<SplineFunction.Coordinate> spline) impl
       return this.spline.range();
    }
 
-   @DensityFunction.Axes
    @Override
-   public int domainAxes() {
+   public @DensityFunction.Axes int domainAxes() {
       MutableInt axes = new MutableInt(0);
       this.spline.forEachCoordinate(coordinate -> axes.setValue(axes.intValue() | coordinate.function().domainAxes()));
       return axes.intValue();
@@ -70,7 +70,7 @@ public record SplineFunction(CubicSpline<SplineFunction.Coordinate> spline) impl
    private static class BufferSplineInput implements SplineFunction.SplineInput, AutoCloseable {
       private final SamplerContext context;
       private final DensityVolume volume;
-      private final ScopedDensityBuffer[] buffers;
+      private final @Nullable ScopedDensityBuffer[] buffers;
       private int index;
 
       private BufferSplineInput(final SamplerContext context, final DensityVolume volume, final int coordinateCount) {
@@ -101,7 +101,7 @@ public record SplineFunction(CubicSpline<SplineFunction.Coordinate> spline) impl
       }
    }
 
-   public static record Coordinate(DensityFunction function) implements BoundedFloatFunction<Unit> {
+   public record Coordinate(DensityFunction function) implements BoundedFloatFunction<Unit> {
       public static final Codec<SplineFunction.Coordinate> CODEC = DensityFunction.CODEC
          .xmap(SplineFunction.Coordinate::new, SplineFunction.Coordinate::function);
 
@@ -136,11 +136,11 @@ public record SplineFunction(CubicSpline<SplineFunction.Coordinate> spline) impl
          float cachedValue = this.cachedValues[coordinateIndex];
          if (!Float.isNaN(cachedValue)) {
             return cachedValue;
-         } else {
-            float value = coordinateSampler.sampleValue(this.context, this.blockX, this.blockY, this.blockZ);
-            this.cachedValues[coordinateIndex] = value;
-            return value;
          }
+
+         float value = coordinateSampler.sampleValue(this.context, this.blockX, this.blockY, this.blockZ);
+         this.cachedValues[coordinateIndex] = value;
+         return value;
       }
    }
 
@@ -151,10 +151,10 @@ public record SplineFunction(CubicSpline<SplineFunction.Coordinate> spline) impl
       public Sampler(final DensityFunction.CompileContext context, final CubicSpline<SplineFunction.Coordinate> spline) {
          Map<DensityFunction, SplineFunction.SamplerCoordinate> coordinates = new HashMap<>();
          this.sampler = CubicSpline.asSampler(spline.mapCoordinates(coordinate -> coordinates.computeIfAbsent(coordinate.function(), function -> {
-               int index = coordinates.size();
-               DensitySampler sampler = function.compileSampler(context);
-               return new SplineFunction.SamplerCoordinate(sampler, index, function.range());
-            })));
+            int index = coordinates.size();
+            DensitySampler sampler = function.compileSampler(context);
+            return new SplineFunction.SamplerCoordinate(sampler, index, function.range());
+         })));
          this.coordinateCount = coordinates.size();
       }
 
@@ -174,7 +174,7 @@ public record SplineFunction(CubicSpline<SplineFunction.Coordinate> spline) impl
       }
    }
 
-   private static record SamplerCoordinate(DensitySampler sampler, int index, Interval range) implements BoundedFloatFunction<SplineFunction.SplineInput> {
+   private record SamplerCoordinate(DensitySampler sampler, int index, Interval range) implements BoundedFloatFunction<SplineFunction.SplineInput> {
       public float apply(final SplineFunction.SplineInput input) {
          return input.sampleCoordinate(this.sampler, this.index);
       }

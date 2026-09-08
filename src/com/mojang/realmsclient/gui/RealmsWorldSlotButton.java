@@ -59,7 +59,7 @@ public class RealmsWorldSlotButton extends Button {
       return this.state;
    }
 
-   private void setTooltipAndNarration(final RealmsWorldSlotButton.State state, @Nullable final String minigameName) {
+   private void setTooltipAndNarration(final RealmsWorldSlotButton.State state, final @Nullable String minigameName) {
       Component tooltipComponent = switch (state.action) {
          case SWITCH_SLOT -> state.minigame ? SWITCH_TO_MINIGAME_SLOT_TOOLTIP : SWITCH_TO_WORLD_SLOT_TOOLTIP;
          default -> null;
@@ -151,7 +151,7 @@ public class RealmsWorldSlotButton extends Button {
       this.slotNameWidget.setMessage(Component.literal(this.state.slotName));
    }
 
-   public static enum Action {
+   public enum Action {
       NOTHING,
       SWITCH_SLOT;
    }
@@ -161,8 +161,7 @@ public class RealmsWorldSlotButton extends Button {
       private final String slotVersion;
       private final RealmsServer.Compatibility compatibility;
       private final long imageId;
-      @Nullable
-      private final String image;
+      private final @Nullable String image;
       public final boolean empty;
       public final boolean minigame;
       public final RealmsWorldSlotButton.Action action;
@@ -173,7 +172,7 @@ public class RealmsWorldSlotButton extends Button {
          this.minigame = slotIndex == 4;
          if (this.minigame) {
             this.slotName = RealmsWorldSlotButton.MINIGAME.getString();
-            this.imageId = (long)serverData.minigameId;
+            this.imageId = serverData.minigameId;
             this.image = serverData.minigameImage;
             this.empty = serverData.minigameId == -1;
             this.slotVersion = "";

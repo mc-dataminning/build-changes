@@ -25,18 +25,15 @@ public class TargetBlockTrigger extends SimpleCriterionTrigger<TargetBlockTrigge
       this.trigger(player, t -> t.matches(projectileContext, hitPosition, signalStrength));
    }
 
-   public static record TriggerInstance(
-      Optional<Holder<LootItemCondition>> player, MinMaxBounds.Ints signalStrength, Optional<Holder<LootItemCondition>> projectile
-   ) implements SimpleCriterionTrigger.SimpleInstance {
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, MinMaxBounds.Ints signalStrength, Optional<Holder<LootItemCondition>> projectile)
+      implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<TargetBlockTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(TargetBlockTrigger.TriggerInstance::player),
-                  MinMaxBounds.Ints.CODEC
-                     .optionalFieldOf("signal_strength", MinMaxBounds.Ints.ANY)
-                     .forGetter(TargetBlockTrigger.TriggerInstance::signalStrength),
-                  LootItemCondition.CODEC.optionalFieldOf("projectile").forGetter(TargetBlockTrigger.TriggerInstance::projectile)
-               )
-               .apply(i, TargetBlockTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(TargetBlockTrigger.TriggerInstance::player),
+               MinMaxBounds.Ints.CODEC.optionalFieldOf("signal_strength", MinMaxBounds.Ints.ANY).forGetter(TargetBlockTrigger.TriggerInstance::signalStrength),
+               LootItemCondition.CODEC.optionalFieldOf("projectile").forGetter(TargetBlockTrigger.TriggerInstance::projectile)
+            )
+            .apply(i, TargetBlockTrigger.TriggerInstance::new)
       );
 
       public static Criterion<TargetBlockTrigger.TriggerInstance> targetHit(

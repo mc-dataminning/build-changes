@@ -29,7 +29,7 @@ public class AABB {
    }
 
    public AABB(final BlockPos pos) {
-      this((double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), (double)(pos.getX() + 1), (double)(pos.getY() + 1), (double)(pos.getZ() + 1));
+      this(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1);
    }
 
    public AABB(final Vec3 begin, final Vec3 end) {
@@ -37,7 +37,7 @@ public class AABB {
    }
 
    public static AABB of(final BoundingBox box) {
-      return new AABB((double)box.minX(), (double)box.minY(), (double)box.minZ(), (double)(box.maxX() + 1), (double)(box.maxY() + 1), (double)(box.maxZ() + 1));
+      return new AABB(box.minX(), box.minY(), box.minZ(), box.maxX() + 1, box.maxY() + 1, box.maxZ() + 1);
    }
 
    public static AABB unitCubeFromLowerCorner(final Vec3 pos) {
@@ -46,12 +46,12 @@ public class AABB {
 
    public static AABB encapsulatingFullBlocks(final BlockPos pos0, final BlockPos pos1) {
       return new AABB(
-         (double)Math.min(pos0.getX(), pos1.getX()),
-         (double)Math.min(pos0.getY(), pos1.getY()),
-         (double)Math.min(pos0.getZ(), pos1.getZ()),
-         (double)(Math.max(pos0.getX(), pos1.getX()) + 1),
-         (double)(Math.max(pos0.getY(), pos1.getY()) + 1),
-         (double)(Math.max(pos0.getZ(), pos1.getZ()) + 1)
+         Math.min(pos0.getX(), pos1.getX()),
+         Math.min(pos0.getY(), pos1.getY()),
+         Math.min(pos0.getZ(), pos1.getZ()),
+         Math.max(pos0.getX(), pos1.getX()) + 1,
+         Math.max(pos0.getY(), pos1.getY()) + 1,
+         Math.max(pos0.getZ(), pos1.getZ()) + 1
       );
    }
 
@@ -91,7 +91,9 @@ public class AABB {
    public boolean equals(final Object o) {
       if (this == o) {
          return true;
-      } else if (o instanceof AABB aabb) {
+      }
+
+      if (o instanceof AABB aabb) {
          if (Double.compare(aabb.minX, this.minX) != 0) {
             return false;
          } else if (Double.compare(aabb.minY, this.minY) != 0) {
@@ -224,12 +226,7 @@ public class AABB {
 
    public AABB move(final BlockPos pos) {
       return new AABB(
-         this.minX + (double)pos.getX(),
-         this.minY + (double)pos.getY(),
-         this.minZ + (double)pos.getZ(),
-         this.maxX + (double)pos.getX(),
-         this.maxY + (double)pos.getY(),
-         this.maxZ + (double)pos.getZ()
+         this.minX + pos.getX(), this.minY + pos.getY(), this.minZ + pos.getZ(), this.maxX + pos.getX(), this.maxY + pos.getY(), this.maxZ + pos.getZ()
       );
    }
 
@@ -238,7 +235,7 @@ public class AABB {
    }
 
    public AABB move(final Vector3f pos) {
-      return this.move((double)pos.x, (double)pos.y, (double)pos.z);
+      return this.move(pos.x, pos.y, pos.z);
    }
 
    public boolean intersects(final AABB aabb) {
@@ -256,9 +253,7 @@ public class AABB {
    }
 
    public boolean intersects(final BlockPos pos) {
-      return this.intersects(
-         (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), (double)(pos.getX() + 1), (double)(pos.getY() + 1), (double)(pos.getZ() + 1)
-      );
+      return this.intersects(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1);
    }
 
    public boolean contains(final Vec3 vec) {
@@ -310,14 +305,13 @@ public class AABB {
       Direction direction = getDirection(minX, minY, minZ, maxX, maxY, maxZ, from, scaleReference, null, dx, dy, dz);
       if (direction == null) {
          return Optional.empty();
-      } else {
-         double scale = scaleReference[0];
-         return Optional.of(from.add(scale * dx, scale * dy, scale * dz));
       }
+
+      double scale = scaleReference[0];
+      return Optional.of(from.add(scale * dx, scale * dy, scale * dz));
    }
 
-   @Nullable
-   public static BlockHitResult clip(final Iterable<AABB> aabBs, final Vec3 from, final Vec3 to, final BlockPos pos) {
+   public static @Nullable BlockHitResult clip(final Iterable<AABB> aabBs, final Vec3 from, final Vec3 to, final BlockPos pos) {
       double[] scaleReference = new double[]{1.0};
       Direction direction = null;
       double dx = to.x - from.x;
@@ -330,21 +324,19 @@ public class AABB {
 
       if (direction == null) {
          return null;
-      } else {
-         double scale = scaleReference[0];
-         return new BlockHitResult(from.add(scale * dx, scale * dy, scale * dz), direction, pos, false);
       }
+
+      double scale = scaleReference[0];
+      return new BlockHitResult(from.add(scale * dx, scale * dy, scale * dz), direction, pos, false);
    }
 
-   @Nullable
-   private static Direction getDirection(
-      final AABB aabb, final Vec3 from, final double[] scaleReference, @Nullable final Direction direction, final double dx, final double dy, final double dz
+   private static @Nullable Direction getDirection(
+      final AABB aabb, final Vec3 from, final double[] scaleReference, final @Nullable Direction direction, final double dx, final double dy, final double dz
    ) {
       return getDirection(aabb.minX, aabb.minY, aabb.minZ, aabb.maxX, aabb.maxY, aabb.maxZ, from, scaleReference, direction, dx, dy, dz);
    }
 
-   @Nullable
-   private static Direction getDirection(
+   private static @Nullable Direction getDirection(
       final double minX,
       final double minY,
       final double minZ,
@@ -379,10 +371,9 @@ public class AABB {
       return direction;
    }
 
-   @Nullable
-   private static Direction clipPoint(
+   private static @Nullable Direction clipPoint(
       final double[] scaleReference,
-      @Nullable final Direction direction,
+      final @Nullable Direction direction,
       final double da,
       final double db,
       final double dc,
@@ -508,7 +499,7 @@ public class AABB {
          if (!this.defined) {
             throw new IllegalStateException("Cannot build an undefined AABB. Include at least one point.");
          } else {
-            return new AABB((double)this.minX, (double)this.minY, (double)this.minZ, (double)this.maxX, (double)this.maxY, (double)this.maxZ);
+            return new AABB(this.minX, this.minY, this.minZ, this.maxX, this.maxY, this.maxZ);
          }
       }
    }

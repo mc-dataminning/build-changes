@@ -12,8 +12,8 @@ import net.minecraft.world.level.block.state.BlockState;
 public class MatchingBlocksPredicate extends StateTestingPredicate {
    public static final MapCodec<MatchingBlocksPredicate> CODEC = RecordCodecBuilder.mapCodec(
       i -> stateTestingCodec(i)
-            .and(RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("blocks").forGetter(c -> c.blocks))
-            .apply(i, MatchingBlocksPredicate::new)
+         .and(RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("blocks").forGetter(c -> c.blocks))
+         .apply(i, MatchingBlocksPredicate::new)
    );
    private final HolderSet<Block> blocks;
 

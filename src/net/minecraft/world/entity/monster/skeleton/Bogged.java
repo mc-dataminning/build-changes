@@ -104,7 +104,7 @@ public class Bogged extends AbstractSkeleton implements Shearable {
    }
 
    @Override
-   protected AbstractArrow getArrow(final ItemStack projectile, final float power, @Nullable final ItemStack firingWeapon) {
+   protected AbstractArrow getArrow(final ItemStack projectile, final float power, final @Nullable ItemStack firingWeapon) {
       AbstractArrow abstractArrow = super.getArrow(projectile, power, firingWeapon);
       if (abstractArrow instanceof Arrow arrow) {
          arrow.addEffect(new MobEffectInstance(MobEffects.POISON, 100));

@@ -144,8 +144,9 @@ public class HoglinAi {
    }
 
    private static void retreatFromNearestTarget(final Hoglin body, final LivingEntity newAvoidTarget) {
+      LivingEntity nearest = newAvoidTarget;
       Brain<Hoglin> brain = body.getBrain();
-      LivingEntity nearest = BehaviorUtils.getNearestTarget(body, brain.getMemory(MemoryModuleType.AVOID_TARGET), newAvoidTarget);
+      nearest = BehaviorUtils.getNearestTarget(body, brain.getMemory(MemoryModuleType.AVOID_TARGET), nearest);
       nearest = BehaviorUtils.getNearestTarget(body, brain.getMemory(MemoryModuleType.ATTACK_TARGET), nearest);
       setAvoidTarget(body, nearest);
    }
@@ -153,7 +154,7 @@ public class HoglinAi {
    private static void setAvoidTarget(final Hoglin body, final LivingEntity avoidTarget) {
       body.getBrain().eraseMemory(MemoryModuleType.ATTACK_TARGET);
       body.getBrain().eraseMemory(MemoryModuleType.WALK_TARGET);
-      body.getBrain().setMemoryWithExpiry(MemoryModuleType.AVOID_TARGET, avoidTarget, (long)RETREAT_DURATION.sample(body.level().getRandom()));
+      body.getBrain().setMemoryWithExpiry(MemoryModuleType.AVOID_TARGET, avoidTarget, RETREAT_DURATION.sample(body.level().getRandom()));
    }
 
    private static Optional<? extends LivingEntity> findNearestValidAttackTarget(final ServerLevel level, final Hoglin body) {
@@ -172,11 +173,11 @@ public class HoglinAi {
    private static boolean piglinsOutnumberHoglins(final Hoglin body) {
       if (body.isBaby()) {
          return false;
-      } else {
-         int piglinCount = body.getBrain().getMemory(MemoryModuleType.VISIBLE_ADULT_PIGLIN_COUNT).orElse(0);
-         int hoglinCount = body.getBrain().getMemory(MemoryModuleType.VISIBLE_ADULT_HOGLIN_COUNT).orElse(0) + 1;
-         return piglinCount > hoglinCount;
       }
+
+      int piglinCount = body.getBrain().getMemory(MemoryModuleType.VISIBLE_ADULT_PIGLIN_COUNT).orElse(0);
+      int hoglinCount = body.getBrain().getMemory(MemoryModuleType.VISIBLE_ADULT_HOGLIN_COUNT).orElse(0) + 1;
+      return piglinCount > hoglinCount;
    }
 
    protected static void wasHurtBy(final ServerLevel level, final Hoglin body, final LivingEntity attacker) {

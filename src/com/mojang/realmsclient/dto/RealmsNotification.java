@@ -2,8 +2,10 @@ package com.mojang.realmsclient.dto;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.mojang.blaze3d.Blaze3D;
 import com.mojang.logging.LogUtils;
 import com.mojang.realmsclient.util.JsonUtils;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -17,7 +19,6 @@ import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.LenientJsonParser;
-import net.minecraft.util.Util;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 
@@ -61,8 +62,8 @@ public class RealmsNotification {
          for (JsonElement element : LenientJsonParser.parse(json).getAsJsonObject().get("notifications").getAsJsonArray()) {
             result.add(parse(element.getAsJsonObject()));
          }
-      } catch (Exception var5) {
-         LOGGER.error("Could not parse list of RealmsNotifications", var5);
+      } catch (Exception e) {
+         LOGGER.error("Could not parse list of RealmsNotifications", e);
       }
 
       return result;
@@ -72,18 +73,18 @@ public class RealmsNotification {
       UUID uuid = JsonUtils.getUuidOr("notificationUuid", jsonObject, null);
       if (uuid == null) {
          throw new IllegalStateException("Missing required property notificationUuid");
-      } else {
-         boolean dismissable = JsonUtils.getBooleanOr("dismissable", jsonObject, true);
-         boolean seen = JsonUtils.getBooleanOr("seen", jsonObject, false);
-         String type = JsonUtils.getRequiredString("type", jsonObject);
-         RealmsNotification base = new RealmsNotification(uuid, dismissable, seen, type);
-
-         return (RealmsNotification)(switch (type) {
-            case "visitUrl" -> RealmsNotification.VisitUrl.parse(base, jsonObject);
-            case "infoPopup" -> RealmsNotification.InfoPopup.parse(base, jsonObject);
-            default -> base;
-         });
       }
+
+      boolean dismissable = JsonUtils.getBooleanOr("dismissable", jsonObject, true);
+      boolean seen = JsonUtils.getBooleanOr("seen", jsonObject, false);
+      String type = JsonUtils.getRequiredString("type", jsonObject);
+      RealmsNotification base = new RealmsNotification(uuid, dismissable, seen, type);
+
+      return switch (type) {
+         case "visitUrl" -> RealmsNotification.VisitUrl.parse(base, jsonObject);
+         case "infoPopup" -> RealmsNotification.InfoPopup.parse(base, jsonObject);
+         default -> base;
+      };
    }
 
    public static class InfoPopup extends RealmsNotification {
@@ -94,15 +95,14 @@ public class RealmsNotification {
       private final RealmsText title;
       private final RealmsText message;
       private final Identifier image;
-      @Nullable
-      private final RealmsNotification.UrlButton urlButton;
+      private final RealmsNotification.@Nullable UrlButton urlButton;
 
       private InfoPopup(
          final RealmsNotification base,
          final RealmsText title,
          final RealmsText message,
          final Identifier image,
-         @Nullable final RealmsNotification.UrlButton urlButton
+         final RealmsNotification.@Nullable UrlButton urlButton
       ) {
          super(base.uuid, base.dismissable, base.seen, base.type);
          this.title = title;
@@ -119,47 +119,46 @@ public class RealmsNotification {
          return new RealmsNotification.InfoPopup(base, title, message, image, urlButton);
       }
 
-      @Nullable
-      public PopupScreen buildScreen(final Screen parentScreen, final Consumer<UUID> dismiss) {
+      public @Nullable PopupScreen buildScreen(final Screen parentScreen, final Consumer<UUID> dismiss) {
          Component title = this.title.createComponent();
          if (title == null) {
             RealmsNotification.LOGGER.warn("Realms info popup had title with no available translation: {}", this.title);
             return null;
-         } else {
-            PopupScreen.Builder builder = new PopupScreen.Builder(parentScreen, title)
-               .setImage(this.image)
-               .addMessage(this.message.createComponent(CommonComponents.EMPTY));
-            if (this.urlButton != null) {
-               builder.addButton(this.urlButton.urlText.createComponent(RealmsNotification.BUTTON_TEXT_FALLBACK), popup -> {
-                  Minecraft minecraft = Minecraft.getInstance();
-                  minecraft.gui.setScreen(new ConfirmLinkScreen(result -> {
-                     if (result) {
-                        Util.getPlatform().openUri(this.urlButton.url);
-                        minecraft.gui.setScreen(parentScreen);
-                     } else {
-                        minecraft.gui.setScreen(popup);
-                     }
-                  }, this.urlButton.url, true));
-                  dismiss.accept(this.uuid());
-               });
-            }
+         }
 
-            builder.addButton(CommonComponents.GUI_OK, popup -> {
-               popup.onClose();
+         PopupScreen.Builder builder = new PopupScreen.Builder(parentScreen, title)
+            .setImage(this.image)
+            .addMessage(this.message.createComponent(CommonComponents.EMPTY));
+         if (this.urlButton != null) {
+            builder.addButton(this.urlButton.urlText.createComponent(RealmsNotification.BUTTON_TEXT_FALLBACK), popup -> {
+               Minecraft minecraft = Minecraft.getInstance();
+               minecraft.gui.setScreen(new ConfirmLinkScreen(result -> {
+                  if (result) {
+                     Blaze3D.openUri(this.urlButton.url);
+                     minecraft.gui.setScreen(parentScreen);
+                  } else {
+                     minecraft.gui.setScreen(popup);
+                  }
+               }, this.urlButton.url, true));
                dismiss.accept(this.uuid());
             });
-            builder.onClose(() -> dismiss.accept(this.uuid()));
-            return builder.build();
          }
+
+         builder.addButton(CommonComponents.GUI_OK, popup -> {
+            popup.onClose();
+            dismiss.accept(this.uuid());
+         });
+         builder.onClose(() -> dismiss.accept(this.uuid()));
+         return builder.build();
       }
    }
 
-   private static record UrlButton(String url, RealmsText urlText) {
+   private record UrlButton(URI url, RealmsText urlText) {
       private static final String URL = "url";
       private static final String URL_TEXT = "urlText";
 
       public static RealmsNotification.UrlButton parse(final JsonObject jsonObject) {
-         String url = JsonUtils.getRequiredString("url", jsonObject);
+         URI url = URI.create(JsonUtils.getRequiredString("url", jsonObject));
          RealmsText urlText = JsonUtils.getRequired("urlText", jsonObject, RealmsText::parse);
          return new RealmsNotification.UrlButton(url, urlText);
       }
@@ -169,11 +168,11 @@ public class RealmsNotification {
       private static final String URL = "url";
       private static final String BUTTON_TEXT = "buttonText";
       private static final String MESSAGE = "message";
-      private final String url;
+      private final URI url;
       private final RealmsText buttonText;
       private final RealmsText message;
 
-      private VisitUrl(final RealmsNotification base, final String url, final RealmsText buttonText, final RealmsText message) {
+      private VisitUrl(final RealmsNotification base, final URI url, final RealmsText buttonText, final RealmsText message) {
          super(base.uuid, base.dismissable, base.seen, base.type);
          this.url = url;
          this.buttonText = buttonText;
@@ -181,7 +180,7 @@ public class RealmsNotification {
       }
 
       public static RealmsNotification.VisitUrl parse(final RealmsNotification base, final JsonObject jsonObject) {
-         String url = JsonUtils.getRequiredString("url", jsonObject);
+         URI url = JsonUtils.getRequiredUri("url", jsonObject);
          RealmsText buttonText = JsonUtils.getRequired("buttonText", jsonObject, RealmsText::parse);
          RealmsText message = JsonUtils.getRequired("message", jsonObject, RealmsText::parse);
          return new RealmsNotification.VisitUrl(base, url, buttonText, message);

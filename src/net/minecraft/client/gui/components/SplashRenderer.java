@@ -26,10 +26,10 @@ public class SplashRenderer {
    public void extractRenderState(final GuiGraphicsExtractor graphics, final int screenWidth, final Font font, final float alpha) {
       int textWidth = font.width(this.splash);
       ActiveTextCollector textRenderer = graphics.textRenderer();
-      float textPhase = 1.8F - Mth.abs(Mth.sin((double)((float)(Util.getMillis() % 1000L) / 1000.0F * (float) (Math.PI * 2))) * 0.1F);
-      float textScale = textPhase * 100.0F / (float)(textWidth + 32);
+      float textPhase = 1.8F - Mth.abs(Mth.sin((float)(Util.getMillis() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
+      float textScale = textPhase * 100.0F / (textWidth + 32);
       Matrix3x2f transform = new Matrix3x2f(textRenderer.defaultParameters().pose())
-         .translate((float)screenWidth / 2.0F + 123.0F, 69.0F)
+         .translate(screenWidth / 2.0F + 123.0F, 69.0F)
          .rotate((float) (-Math.PI / 9))
          .scale(textScale);
       ActiveTextCollector.Parameters renderParameters = textRenderer.defaultParameters().withOpacity(alpha).withPose(transform);

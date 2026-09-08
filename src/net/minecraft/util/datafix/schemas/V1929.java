@@ -18,20 +18,15 @@ public class V1929 extends NamespacedSchema {
          map,
          "minecraft:wandering_trader",
          name -> DSL.optionalFields(
-               "Inventory", DSL.list(References.ITEM_STACK.in(schema)), "Offers", DSL.optionalFields("Recipes", DSL.list(References.VILLAGER_TRADE.in(schema)))
-            )
+            "Inventory", DSL.list(References.ITEM_STACK.in(schema)), "Offers", DSL.optionalFields("Recipes", DSL.list(References.VILLAGER_TRADE.in(schema)))
+         )
       );
       schema.register(
          map,
          "minecraft:trader_llama",
          name -> DSL.optionalFields(
-               "Items",
-               DSL.list(References.ITEM_STACK.in(schema)),
-               "SaddleItem",
-               References.ITEM_STACK.in(schema),
-               "DecorItem",
-               References.ITEM_STACK.in(schema)
-            )
+            "Items", DSL.list(References.ITEM_STACK.in(schema)), "SaddleItem", References.ITEM_STACK.in(schema), "DecorItem", References.ITEM_STACK.in(schema)
+         )
       );
       return map;
    }

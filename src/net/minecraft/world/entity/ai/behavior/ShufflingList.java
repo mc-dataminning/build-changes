@@ -69,7 +69,7 @@ public class ShufflingList<U> implements Iterable<U> {
       }
 
       private void setRandom(final float random) {
-         this.randWeight = -Math.pow((double)random, (double)(1.0F / (float)this.weight));
+         this.randWeight = -Math.pow(random, 1.0F / this.weight);
       }
 
       public T getData() {

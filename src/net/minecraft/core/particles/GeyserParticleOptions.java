@@ -11,7 +11,7 @@ public record GeyserParticleOptions(ParticleType<GeyserParticleOptions> type, in
    public static MapCodec<GeyserParticleOptions> codec(final ParticleType<GeyserParticleOptions> type) {
       return RecordCodecBuilder.mapCodec(
          i -> i.group(ExtraCodecs.POSITIVE_INT.fieldOf("water_blocks").forGetter(o -> o.waterBlocks))
-               .apply(i, waterBlocks -> new GeyserParticleOptions(type, waterBlocks))
+            .apply(i, waterBlocks -> new GeyserParticleOptions(type, waterBlocks))
       );
    }
 

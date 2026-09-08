@@ -12,7 +12,6 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import com.mojang.datafixers.util.Either;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Predicate;
@@ -56,12 +55,12 @@ public class ResourceOrTagArgument<T> implements ArgumentType<ResourceOrTagArgum
       ResourceOrTagArgument.Result<?> argument = (ResourceOrTagArgument.Result<?>)context.getArgument(name, ResourceOrTagArgument.Result.class);
       Optional<ResourceOrTagArgument.Result<T>> value = argument.cast(registryKey);
       return value.orElseThrow(() -> (CommandSyntaxException)argument.unwrap().map(element -> {
-            ResourceKey<?> elementKey = element.key();
-            return ResourceArgument.ERROR_INVALID_RESOURCE_TYPE.create(elementKey.identifier(), elementKey.registry(), registryKey.identifier());
-         }, tag -> {
-            TagKey<?> tagKey = tag.key();
-            return ERROR_INVALID_TAG_TYPE.create(tagKey.location(), tagKey.registry(), registryKey.identifier());
-         }));
+         ResourceKey<?> elementKey = element.key();
+         return ResourceArgument.ERROR_INVALID_RESOURCE_TYPE.create(elementKey.identifier(), elementKey.registry(), registryKey.identifier());
+      }, tag -> {
+         TagKey<?> tagKey = tag.key();
+         return ERROR_INVALID_TAG_TYPE.create(tagKey.location(), tagKey.registry(), registryKey.identifier());
+      }));
    }
 
    public ResourceOrTagArgument.Result<T> parse(final StringReader reader) throws CommandSyntaxException {
@@ -76,9 +75,9 @@ public class ResourceOrTagArgument<T> implements ArgumentType<ResourceOrTagArgum
                .get(tagKey)
                .orElseThrow(() -> ERROR_UNKNOWN_TAG.createWithContext(reader, tagId, this.registryKey.identifier()));
             return new ResourceOrTagArgument.TagResult<>(holderSet);
-         } catch (CommandSyntaxException var6) {
+         } catch (CommandSyntaxException e) {
             reader.setCursor(cursor);
-            throw var6;
+            throw e;
          }
       } else {
          Identifier resourceId = Identifier.read(reader);
@@ -119,8 +118,6 @@ public class ResourceOrTagArgument<T> implements ArgumentType<ResourceOrTagArgum
          private final ResourceKey<? extends Registry<T>> registryKey;
 
          private Template(final ResourceKey<? extends Registry<T>> registryKey) {
-            Objects.requireNonNull(Info.this);
-            super();
             this.registryKey = registryKey;
          }
 
@@ -135,7 +132,7 @@ public class ResourceOrTagArgument<T> implements ArgumentType<ResourceOrTagArgum
       }
    }
 
-   private static record ResourceResult<T>(Holder.Reference<T> value) implements ResourceOrTagArgument.Result<T> {
+   private record ResourceResult<T>(Holder.Reference<T> value) implements ResourceOrTagArgument.Result<T> {
       @Override
       public Either<Holder.Reference<T>, HolderSet.Named<T>> unwrap() {
          return Either.left(this.value);
@@ -164,7 +161,7 @@ public class ResourceOrTagArgument<T> implements ArgumentType<ResourceOrTagArgum
       String asPrintable();
    }
 
-   private static record TagResult<T>(HolderSet.Named<T> tag) implements ResourceOrTagArgument.Result<T> {
+   private record TagResult<T>(HolderSet.Named<T> tag) implements ResourceOrTagArgument.Result<T> {
       @Override
       public Either<Holder.Reference<T>, HolderSet.Named<T>> unwrap() {
          return Either.right(this.tag);

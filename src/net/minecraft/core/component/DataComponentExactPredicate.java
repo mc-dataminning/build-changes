@@ -16,9 +16,9 @@ public final class DataComponentExactPredicate implements Predicate<DataComponen
       .xmap(
          map -> new DataComponentExactPredicate(map.entrySet().stream().map(TypedDataComponent::fromEntryUnchecked).collect(Collectors.toList())),
          predicate -> predicate.expectedComponents
-               .stream()
-               .filter(e -> !e.type().isTransient())
-               .collect(Collectors.toMap(TypedDataComponent::type, TypedDataComponent::value))
+            .stream()
+            .filter(e -> !e.type().isTransient())
+            .collect(Collectors.toMap(TypedDataComponent::type, TypedDataComponent::value))
       );
    public static final StreamCodec<RegistryFriendlyByteBuf, DataComponentExactPredicate> STREAM_CODEC = TypedDataComponent.STREAM_CODEC
       .apply(ByteBufCodecs.list())
@@ -61,11 +61,7 @@ public final class DataComponentExactPredicate implements Predicate<DataComponen
 
    @Override
    public boolean equals(final Object obj) {
-      if (obj instanceof DataComponentExactPredicate predicate && this.expectedComponents.equals(predicate.expectedComponents)) {
-         return true;
-      }
-
-      return false;
+      return obj instanceof DataComponentExactPredicate predicate && this.expectedComponents.equals(predicate.expectedComponents);
    }
 
    @Override

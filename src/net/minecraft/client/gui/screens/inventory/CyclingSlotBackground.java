@@ -53,7 +53,7 @@ public class CyclingSlotBackground {
    }
 
    private float getIconTransitionTransparency(final float a) {
-      float elapsedTransitionTime = (float)(this.tick % 30) + a;
+      float elapsedTransitionTime = this.tick % 30 + a;
       return Math.min(elapsedTransitionTime, 4.0F) / 4.0F;
    }
 }

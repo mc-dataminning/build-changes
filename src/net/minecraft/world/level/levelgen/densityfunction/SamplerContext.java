@@ -13,8 +13,7 @@ public class SamplerContext {
    private static final int CACHE_SIZE_STEP = 16;
    private final ContextMap userFields;
    private final DensityBufferArena bufferArena;
-   @Nullable
-   private SamplerContext.CacheCell[] cacheCells;
+   private SamplerContext.CacheCell @Nullable [] cacheCells;
 
    private SamplerContext(final ContextMap userFields, final DensityBufferArena bufferArena, final boolean enableCaches) {
       this.userFields = userFields;
@@ -26,8 +25,7 @@ public class SamplerContext {
       return new SamplerContext.Builder();
    }
 
-   @Nullable
-   public <T> T getField(final ContextKey<T> key) {
+   public <T> @Nullable T getField(final ContextKey<T> key) {
       return this.userFields.get(key);
    }
 
@@ -39,23 +37,22 @@ public class SamplerContext {
       return this.bufferArena.acquire(volume.size());
    }
 
-   @Nullable
-   private SamplerContext.CacheCell getCacheCell(final int cacheId) {
+   private SamplerContext.@Nullable CacheCell getCacheCell(final int cacheId) {
       if (this.cacheCells == null) {
          return null;
-      } else {
-         int oldSize = this.cacheCells.length;
-         if (cacheId >= oldSize) {
-            int newSize = Mth.roundToward(cacheId + 1, 16);
-            this.cacheCells = Arrays.copyOf(this.cacheCells, newSize);
-
-            for (int i = oldSize; i < newSize; i++) {
-               this.cacheCells[i] = new SamplerContext.CacheCell();
-            }
-         }
-
-         return this.cacheCells[cacheId];
       }
+
+      int oldSize = this.cacheCells.length;
+      if (cacheId >= oldSize) {
+         int newSize = Mth.roundToward(cacheId + 1, 16);
+         this.cacheCells = Arrays.copyOf(this.cacheCells, newSize);
+
+         for (int i = oldSize; i < newSize; i++) {
+            this.cacheCells[i] = new SamplerContext.CacheCell();
+         }
+      }
+
+      return this.cacheCells[cacheId];
    }
 
    void sampleVolumeCached(final int cacheId, final DensitySampler input, final DensityBuffer outputBuffer, final DensityVolume volume) {
@@ -81,24 +78,24 @@ public class SamplerContext {
       SamplerContext.CacheCell cell = this.getCacheCell(cacheId);
       if (cell == null) {
          return input.sampleValue(this, blockX, blockY, blockZ);
-      } else {
-         long cacheKey = BlockPos.asLong(blockX, blockY, blockZ);
-         if (cell.valueKey == cacheKey && !Float.isNaN(cell.value)) {
-            return cell.value;
-         } else {
-            if (cell.buffer != null && cell.volume != null) {
-               int index = cell.volume.indexOfBlock(blockX, blockY, blockZ);
-               if (index != -1) {
-                  return cell.buffer.get(index);
-               }
-            }
+      }
 
-            float value = input.sampleValue(this, blockX, blockY, blockZ);
-            cell.valueKey = cacheKey;
-            cell.value = value;
-            return value;
+      long cacheKey = BlockPos.asLong(blockX, blockY, blockZ);
+      if (cell.valueKey == cacheKey && !Float.isNaN(cell.value)) {
+         return cell.value;
+      }
+
+      if (cell.buffer != null && cell.volume != null) {
+         int index = cell.volume.indexOfBlock(blockX, blockY, blockZ);
+         if (index != -1) {
+            return cell.buffer.get(index);
          }
       }
+
+      float value = input.sampleValue(this, blockX, blockY, blockZ);
+      cell.valueKey = cacheKey;
+      cell.value = value;
+      return value;
    }
 
    public static class Builder {
@@ -130,10 +127,8 @@ public class SamplerContext {
    }
 
    private static class CacheCell {
-      @Nullable
-      private DensityVolume volume;
-      @Nullable
-      private ScopedDensityBuffer buffer;
+      private @Nullable DensityVolume volume;
+      private @Nullable ScopedDensityBuffer buffer;
       private long valueKey;
       private float value = Float.NaN;
    }

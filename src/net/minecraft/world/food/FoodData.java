@@ -18,7 +18,7 @@ public class FoodData {
 
    private void add(final int food, final float saturation) {
       this.foodLevel = Mth.clamp(food + this.foodLevel, 0, 20);
-      this.saturationLevel = Mth.clamp(saturation + this.saturationLevel, 0.0F, (float)this.foodLevel);
+      this.saturationLevel = Mth.clamp(saturation + this.saturationLevel, 0.0F, this.foodLevel);
    }
 
    public void eat(final int food, final float saturationModifier) {
@@ -90,7 +90,7 @@ public class FoodData {
    }
 
    public boolean hasEnoughFood() {
-      return (float)this.getFoodLevel() > 6.0F;
+      return this.getFoodLevel() > 6.0F;
    }
 
    public boolean needsFood() {

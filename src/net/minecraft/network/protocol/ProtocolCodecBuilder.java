@@ -16,10 +16,10 @@ public class ProtocolCodecBuilder<B extends ByteBuf, L extends PacketListener> {
    public <T extends Packet<? super L>> ProtocolCodecBuilder<B, L> add(final PacketType<T> type, final StreamCodec<? super B, T> serializer) {
       if (type.flow() != this.flow) {
          throw new IllegalArgumentException("Invalid packet flow for packet " + type + ", expected " + this.flow.name());
-      } else {
-         this.dispatchBuilder.add(type, serializer);
-         return this;
       }
+
+      this.dispatchBuilder.add(type, serializer);
+      return this;
    }
 
    public StreamCodec<B, Packet<? super L>> build() {

@@ -39,24 +39,24 @@ public class GuardianRenderer extends MobRenderer<Guardian, GuardianRenderState,
    public boolean shouldRender(final Guardian entity, final Frustum culler, final double camX, final double camY, final double camZ, final float partialTicks) {
       if (super.shouldRender(entity, culler, camX, camY, camZ, partialTicks)) {
          return true;
-      } else {
-         if (entity.hasActiveAttackTarget()) {
-            LivingEntity lookAtEntity = entity.getActiveAttackTarget();
-            if (lookAtEntity != null) {
-               Vec3 targetPos = this.getPosition(lookAtEntity, (double)lookAtEntity.getBbHeight() * 0.5, 1.0F);
-               Vec3 startPos = this.getPosition(entity, (double)entity.getEyeHeight(), 1.0F);
-               return culler.isVisible(new AABB(startPos.x, startPos.y, startPos.z, targetPos.x, targetPos.y, targetPos.z));
-            }
-         }
-
-         return false;
       }
+
+      if (entity.hasActiveAttackTarget()) {
+         LivingEntity lookAtEntity = entity.getActiveAttackTarget();
+         if (lookAtEntity != null) {
+            Vec3 targetPos = this.getPosition(lookAtEntity, lookAtEntity.getBbHeight() * 0.5, 1.0F);
+            Vec3 startPos = this.getPosition(entity, entity.getEyeHeight(), 1.0F);
+            return culler.isVisible(new AABB(startPos.x, startPos.y, startPos.z, targetPos.x, targetPos.y, targetPos.z));
+         }
+      }
+
+      return false;
    }
 
    private Vec3 getPosition(final LivingEntity entity, final double yOffset, final float partialTicks) {
-      double sx = Mth.lerp((double)partialTicks, entity.xOld, entity.getX());
-      double sy = Mth.lerp((double)partialTicks, entity.yOld, entity.getY()) + yOffset;
-      double sz = Mth.lerp((double)partialTicks, entity.zOld, entity.getZ());
+      double sx = Mth.lerp(partialTicks, entity.xOld, entity.getX());
+      double sy = Mth.lerp(partialTicks, entity.yOld, entity.getY()) + yOffset;
+      double sz = Mth.lerp(partialTicks, entity.zOld, entity.getZ());
       return new Vec3(sx, sy, sz);
    }
 
@@ -93,40 +93,41 @@ public class GuardianRenderer extends MobRenderer<Guardian, GuardianRenderState,
       int blue = 128 - (int)(colorScale * 64.0F);
       float rr1 = 0.2F;
       float rr2 = 0.282F;
-      float wnx = Mth.cos((double)(rot + (float) (Math.PI * 3.0 / 4.0))) * 0.282F;
-      float wnz = Mth.sin((double)(rot + (float) (Math.PI * 3.0 / 4.0))) * 0.282F;
-      float enx = Mth.cos((double)(rot + (float) (Math.PI / 4))) * 0.282F;
-      float enz = Mth.sin((double)(rot + (float) (Math.PI / 4))) * 0.282F;
-      float wsx = Mth.cos((double)(rot + ((float) Math.PI * 5.0F / 4.0F))) * 0.282F;
-      float wsz = Mth.sin((double)(rot + ((float) Math.PI * 5.0F / 4.0F))) * 0.282F;
-      float esx = Mth.cos((double)(rot + ((float) Math.PI * 7.0F / 4.0F))) * 0.282F;
-      float esz = Mth.sin((double)(rot + ((float) Math.PI * 7.0F / 4.0F))) * 0.282F;
-      float wx = Mth.cos((double)(rot + (float) Math.PI)) * 0.2F;
-      float wz = Mth.sin((double)(rot + (float) Math.PI)) * 0.2F;
-      float ex = Mth.cos((double)(rot + 0.0F)) * 0.2F;
-      float ez = Mth.sin((double)(rot + 0.0F)) * 0.2F;
-      float nx = Mth.cos((double)(rot + (float) (Math.PI / 2))) * 0.2F;
-      float nz = Mth.sin((double)(rot + (float) (Math.PI / 2))) * 0.2F;
-      float sx = Mth.cos((double)(rot + (float) (Math.PI * 3.0 / 2.0))) * 0.2F;
-      float sz = Mth.sin((double)(rot + (float) (Math.PI * 3.0 / 2.0))) * 0.2F;
+      float wnx = Mth.cos(rot + (float) (Math.PI * 3.0 / 4.0)) * 0.282F;
+      float wnz = Mth.sin(rot + (float) (Math.PI * 3.0 / 4.0)) * 0.282F;
+      float enx = Mth.cos(rot + (float) (Math.PI / 4)) * 0.282F;
+      float enz = Mth.sin(rot + (float) (Math.PI / 4)) * 0.282F;
+      float wsx = Mth.cos(rot + ((float) Math.PI * 5.0F / 4.0F)) * 0.282F;
+      float wsz = Mth.sin(rot + ((float) Math.PI * 5.0F / 4.0F)) * 0.282F;
+      float esx = Mth.cos(rot + ((float) Math.PI * 7.0F / 4.0F)) * 0.282F;
+      float esz = Mth.sin(rot + ((float) Math.PI * 7.0F / 4.0F)) * 0.282F;
+      float wx = Mth.cos(rot + (float) Math.PI) * 0.2F;
+      float wz = Mth.sin(rot + (float) Math.PI) * 0.2F;
+      float ex = Mth.cos(rot + 0.0F) * 0.2F;
+      float ez = Mth.sin(rot + 0.0F) * 0.2F;
+      float nx = Mth.cos(rot + (float) (Math.PI / 2)) * 0.2F;
+      float nz = Mth.sin(rot + (float) (Math.PI / 2)) * 0.2F;
+      float sx = Mth.cos(rot + (float) (Math.PI * 3.0 / 2.0)) * 0.2F;
+      float sz = Mth.sin(rot + (float) (Math.PI * 3.0 / 2.0)) * 0.2F;
+      float top = length;
       float minU = 0.0F;
       float maxU = 0.4999F;
       float minV = -1.0F + texVOff;
       float maxV = minV + length * 2.5F;
       submitNodeCollector.submitCustomGeometry(poseStack, BEAM_RENDER_TYPE, (pose, buffer) -> {
-         vertex(buffer, pose, wx, length, wz, red, green, blue, 0.4999F, maxV);
+         vertex(buffer, pose, wx, top, wz, red, green, blue, 0.4999F, maxV);
          vertex(buffer, pose, wx, 0.0F, wz, red, green, blue, 0.4999F, minV);
          vertex(buffer, pose, ex, 0.0F, ez, red, green, blue, 0.0F, minV);
-         vertex(buffer, pose, ex, length, ez, red, green, blue, 0.0F, maxV);
-         vertex(buffer, pose, nx, length, nz, red, green, blue, 0.4999F, maxV);
+         vertex(buffer, pose, ex, top, ez, red, green, blue, 0.0F, maxV);
+         vertex(buffer, pose, nx, top, nz, red, green, blue, 0.4999F, maxV);
          vertex(buffer, pose, nx, 0.0F, nz, red, green, blue, 0.4999F, minV);
          vertex(buffer, pose, sx, 0.0F, sz, red, green, blue, 0.0F, minV);
-         vertex(buffer, pose, sx, length, sz, red, green, blue, 0.0F, maxV);
+         vertex(buffer, pose, sx, top, sz, red, green, blue, 0.0F, maxV);
          float vBase = Mth.floor(timeInTicks) % 2 == 0 ? 0.5F : 0.0F;
-         vertex(buffer, pose, wnx, length, wnz, red, green, blue, 0.5F, vBase + 0.5F);
-         vertex(buffer, pose, enx, length, enz, red, green, blue, 1.0F, vBase + 0.5F);
-         vertex(buffer, pose, esx, length, esz, red, green, blue, 1.0F, vBase);
-         vertex(buffer, pose, wsx, length, wsz, red, green, blue, 0.5F, vBase);
+         vertex(buffer, pose, wnx, top, wnz, red, green, blue, 0.5F, vBase + 0.5F);
+         vertex(buffer, pose, enx, top, enz, red, green, blue, 1.0F, vBase + 0.5F);
+         vertex(buffer, pose, esx, top, esz, red, green, blue, 1.0F, vBase);
+         vertex(buffer, pose, wsx, top, wsz, red, green, blue, 0.5F, vBase);
       });
    }
 
@@ -176,15 +177,14 @@ public class GuardianRenderer extends MobRenderer<Guardian, GuardianRenderState,
       if (targetEntity != null) {
          state.attackScale = entity.getAttackAnimationScale(partialTicks);
          state.attackTime = entity.getClientSideAttackTime() + partialTicks;
-         state.attackTargetPosition = this.getPosition(targetEntity, (double)targetEntity.getBbHeight() * 0.5, partialTicks);
+         state.attackTargetPosition = this.getPosition(targetEntity, targetEntity.getBbHeight() * 0.5, partialTicks);
       } else {
          state.attackTargetPosition = null;
       }
    }
 
-   @Nullable
-   private static Entity getEntityToLookAt(final Guardian entity) {
+   private static @Nullable Entity getEntityToLookAt(final Guardian entity) {
       Entity lookAtEntity = Minecraft.getInstance().getCameraEntity();
-      return (Entity)(entity.hasActiveAttackTarget() ? entity.getActiveAttackTarget() : lookAtEntity);
+      return entity.hasActiveAttackTarget() ? entity.getActiveAttackTarget() : lookAtEntity;
    }
 }

@@ -8,10 +8,10 @@ import net.minecraft.util.datafix.DataFixTypes;
 public class WanderingTraderData extends SavedData {
    public static final Codec<WanderingTraderData> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.INT.optionalFieldOf("spawn_delay", 24000).forGetter(data -> data.spawnDelay),
-               Codec.INT.optionalFieldOf("spawn_chance", 25).forGetter(data -> data.spawnChance)
-            )
-            .apply(i, WanderingTraderData::new)
+            Codec.INT.optionalFieldOf("spawn_delay", 24000).forGetter(data -> data.spawnDelay),
+            Codec.INT.optionalFieldOf("spawn_chance", 25).forGetter(data -> data.spawnChance)
+         )
+         .apply(i, WanderingTraderData::new)
    );
    public static final SavedDataType<WanderingTraderData> TYPE = new SavedDataType<>(
       Identifier.withDefaultNamespace("wandering_trader"), WanderingTraderData::new, CODEC, DataFixTypes.SAVED_DATA_WANDERING_TRADER

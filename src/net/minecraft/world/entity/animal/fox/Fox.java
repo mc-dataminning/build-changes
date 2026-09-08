@@ -4,7 +4,6 @@ import com.mojang.serialization.Codec;
 import io.netty.buffer.ByteBuf;
 import java.util.EnumSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
@@ -126,8 +125,8 @@ public class Fox extends Animal {
    );
    private static final Predicate<ItemEntity> ALLOWED_ITEMS = e -> !e.hasPickUpDelay() && e.isAlive();
    private static final Predicate<Entity> TRUSTED_TARGET_SELECTOR = entity -> !(entity instanceof LivingEntity livingEntity)
-         ? false
-         : livingEntity.getLastHurtMob() != null && livingEntity.getLastHurtMobTimestamp() < livingEntity.tickCount + 600;
+      ? false
+      : livingEntity.getLastHurtMob() != null && livingEntity.getLastHurtMobTimestamp() < livingEntity.tickCount + 600;
    private static final Predicate<Entity> STALKABLE_PREY = entity -> entity instanceof Chicken || entity instanceof Rabbit;
    private static final Predicate<Entity> AVOID_PLAYERS = entity -> !entity.isDiscrete() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(entity);
    private static final int MIN_TICKS_BEFORE_EAT = 600;
@@ -284,14 +283,14 @@ public class Fox extends Animal {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 45) {
          ItemStack mouthItem = this.getItemBySlot(EquipmentSlot.MAINHAND);
          if (!mouthItem.isEmpty()) {
             ItemParticleOption breakParticle = new ItemParticleOption(ParticleTypes.ITEM, ItemStackTemplate.fromNonEmptyStack(mouthItem));
 
             for (int i = 0; i < 8; i++) {
-               Vec3 direction = new Vec3(((double)this.random.nextFloat() - 0.5) * 0.1, (double)this.random.nextFloat() * 0.1 + 0.1, 0.0)
+               Vec3 direction = new Vec3((this.random.nextFloat() - 0.5) * 0.1, this.random.nextFloat() * 0.1 + 0.1, 0.0)
                   .xRot(-this.getXRot() * (float) (Math.PI / 180.0))
                   .yRot(-this.getYRot() * (float) (Math.PI / 180.0));
                this.level()
@@ -320,8 +319,7 @@ public class Fox extends Animal {
          .add(Attributes.FOLLOW_RANGE, 32.0);
    }
 
-   @Nullable
-   public Fox getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable Fox getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       Fox baby = EntityTypes.FOX.create(level, EntitySpawnReason.BREEDING);
       if (baby != null) {
          baby.setVariant(this.random.nextBoolean() ? this.getVariant() : ((Fox)partner).getVariant());
@@ -336,9 +334,8 @@ public class Fox extends Animal {
       return level.getBlockState(pos.below()).is(BlockTags.FOXES_SPAWNABLE_ON) && isBrightEnoughToSpawn(level, pos);
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       Holder<Biome> biome = level.getBiome(this.blockPosition());
@@ -396,9 +393,8 @@ public class Fox extends Animal {
       this.entityData.set(DATA_TYPE_ID, variant.getId());
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       return type == DataComponents.FOX_VARIANT ? castComponentValue((DataComponentType<T>)type, this.getVariant()) : super.get(type);
    }
 
@@ -641,7 +637,7 @@ public class Fox extends Animal {
    }
 
    @Override
-   public void setTarget(@Nullable final LivingEntity target) {
+   public void setTarget(final @Nullable LivingEntity target) {
       if (this.isDefending() && target == null) {
          this.setDefending(false);
       }
@@ -676,33 +672,30 @@ public class Fox extends Animal {
       }
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getAmbientSound() {
+   protected @Nullable SoundEvent getAmbientSound() {
       if (this.isSleeping()) {
          return SoundEvents.FOX_SLEEP;
-      } else {
-         if (!this.level().isBrightOutside() && this.random.nextFloat() < 0.1F) {
-            List<Player> nearbyEntities = this.level()
-               .getEntitiesOfClass(Player.class, this.getBoundingBox().inflate(16.0, 16.0, 16.0), EntitySelector.NO_SPECTATORS);
-            if (nearbyEntities.isEmpty()) {
-               return SoundEvents.FOX_SCREECH;
-            }
-         }
-
-         return SoundEvents.FOX_AMBIENT;
       }
+
+      if (!this.level().isBrightOutside() && this.random.nextFloat() < 0.1F) {
+         List<Player> nearbyEntities = this.level()
+            .getEntitiesOfClass(Player.class, this.getBoundingBox().inflate(16.0, 16.0, 16.0), EntitySelector.NO_SPECTATORS);
+         if (nearbyEntities.isEmpty()) {
+            return SoundEvents.FOX_SCREECH;
+         }
+      }
+
+      return SoundEvents.FOX_AMBIENT;
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
+   protected @Nullable SoundEvent getHurtSound(final DamageSource source) {
       return SoundEvents.FOX_HURT;
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getDeathSound() {
+   protected @Nullable SoundEvent getDeathSound() {
       return SoundEvents.FOX_DEATH;
    }
 
@@ -728,11 +721,11 @@ public class Fox extends Animal {
       int increments = 6;
 
       for (int i = 0; i < 6; i++) {
-         double z = slope == 0.0 ? 0.0 : zdiff * (double)((float)i / 6.0F);
-         double x = slope == 0.0 ? xdiff * (double)((float)i / 6.0F) : z / slope;
+         double z = slope == 0.0 ? 0.0 : zdiff * (i / 6.0F);
+         double x = slope == 0.0 ? xdiff * (i / 6.0F) : z / slope;
 
          for (int j = 1; j < 4; j++) {
-            if (!fox.level().getBlockState(BlockPos.containing(fox.getX() + x, fox.getY() + (double)j, fox.getZ() + z)).canBeReplaced()) {
+            if (!fox.level().getBlockState(BlockPos.containing(fox.getX() + x, fox.getY() + j, fox.getZ() + z)).canBeReplaced()) {
                return false;
             }
          }
@@ -743,20 +736,17 @@ public class Fox extends Animal {
 
    @Override
    public Vec3 getLeashOffset() {
-      return new Vec3(0.0, (double)(0.55F * this.getEyeHeight()), (double)(this.getBbWidth() * 0.4F));
+      return new Vec3(0.0, 0.55F * this.getEyeHeight(), this.getBbWidth() * 0.4F);
    }
 
    private class DefendTrustedTargetGoal extends NearestAttackableTargetGoal<LivingEntity> {
-      @Nullable
-      private LivingEntity trustedLastHurtBy;
-      @Nullable
-      private LivingEntity trustedLastHurt;
+      private @Nullable LivingEntity trustedLastHurtBy;
+      private @Nullable LivingEntity trustedLastHurt;
       private int timestamp;
 
       public DefendTrustedTargetGoal(
-         final Class<LivingEntity> targetType, final boolean mustSee, final boolean mustReach, @Nullable final TargetingConditions.Selector subselector
+         final Class<LivingEntity> targetType, final boolean mustSee, final boolean mustReach, final TargetingConditions.@Nullable Selector subselector
       ) {
-         Objects.requireNonNull(Fox.this);
          super(Fox.this, targetType, 10, mustSee, mustReach, subselector);
       }
 
@@ -764,21 +754,21 @@ public class Fox extends Animal {
       public boolean canUse() {
          if (this.randomInterval > 0 && this.mob.getRandom().nextInt(this.randomInterval) != 0) {
             return false;
-         } else {
-            ServerLevel level = getServerLevel(Fox.this.level());
-
-            for (EntityReference<LivingEntity> trustedReference : Fox.this.getTrustedEntities().toList()) {
-               LivingEntity trustedEntity = trustedReference.getEntity(level, LivingEntity.class);
-               if (trustedEntity != null) {
-                  this.trustedLastHurt = trustedEntity;
-                  this.trustedLastHurtBy = trustedEntity.getLastHurtByMob();
-                  int timestamp = trustedEntity.getLastHurtByMobTimestamp();
-                  return timestamp != this.timestamp && this.canAttack(this.trustedLastHurtBy, this.targetConditions);
-               }
-            }
-
-            return false;
          }
+
+         ServerLevel level = getServerLevel(Fox.this.level());
+
+         for (EntityReference<LivingEntity> trustedReference : Fox.this.getTrustedEntities().toList()) {
+            LivingEntity trustedEntity = trustedReference.getEntity(level, LivingEntity.class);
+            if (trustedEntity != null) {
+               this.trustedLastHurt = trustedEntity;
+               this.trustedLastHurtBy = trustedEntity.getLastHurtByMob();
+               int timestamp = trustedEntity.getLastHurtByMobTimestamp();
+               return timestamp != this.timestamp && this.canAttack(this.trustedLastHurtBy, this.targetConditions);
+            }
+         }
+
+         return false;
       }
 
       @Override
@@ -800,8 +790,6 @@ public class Fox extends Animal {
       private int countdown;
 
       public FaceplantGoal() {
-         Objects.requireNonNull(Fox.this);
-         super();
          this.setFlags(EnumSet.of(Goal.Flag.LOOK, Goal.Flag.JUMP, Goal.Flag.MOVE));
       }
 
@@ -832,11 +820,6 @@ public class Fox extends Animal {
    }
 
    public class FoxAlertableEntitiesSelector implements TargetingConditions.Selector {
-      public FoxAlertableEntitiesSelector() {
-         Objects.requireNonNull(Fox.this);
-         super();
-      }
-
       @Override
       public boolean test(final LivingEntity target, final ServerLevel level) {
          if (target instanceof Fox) {
@@ -845,24 +828,19 @@ public class Fox extends Animal {
             return true;
          } else if (target instanceof TamableAnimal tamableAnimal) {
             return !tamableAnimal.isTame();
+         } else if (target instanceof Player player && (player.isSpectator() || player.isCreative())) {
+            return false;
          } else {
-            if (target instanceof Player player && (player.isSpectator() || player.isCreative())) {
-               return false;
-            }
-
             return Fox.this.trusts(target) ? false : !target.isSleeping() && !target.isDiscrete();
          }
       }
    }
 
    private abstract class FoxBehaviorGoal extends Goal {
-      private final TargetingConditions alertableTargeting;
-
-      private FoxBehaviorGoal() {
-         Objects.requireNonNull(Fox.this);
-         super();
-         this.alertableTargeting = TargetingConditions.forCombat().range(12.0).ignoreLineOfSight().selector(Fox.this.new FoxAlertableEntitiesSelector());
-      }
+      private final TargetingConditions alertableTargeting = TargetingConditions.forCombat()
+         .range(12.0)
+         .ignoreLineOfSight()
+         .selector(Fox.this.new FoxAlertableEntitiesSelector());
 
       protected boolean hasShelter() {
          BlockPos foxPos = BlockPos.containing(Fox.this.getX(), Fox.this.getBoundingBox().maxY, Fox.this.getZ());
@@ -878,7 +856,6 @@ public class Fox extends Animal {
 
    private class FoxBreedGoal extends BreedGoal {
       public FoxBreedGoal(final double speedModifier) {
-         Objects.requireNonNull(Fox.this);
          super(Fox.this, speedModifier);
       }
 
@@ -934,7 +911,6 @@ public class Fox extends Animal {
       protected int ticksWaited;
 
       public FoxEatBerriesGoal(final double speedModifier, final int searchRange, final int verticalSearchRange) {
-         Objects.requireNonNull(Fox.this);
          super(Fox.this, speedModifier, searchRange, verticalSearchRange);
       }
 
@@ -986,7 +962,7 @@ public class Fox extends Animal {
 
       private void pickSweetBerries(final BlockState state) {
          int age = state.getValue(SweetBerryBushBlock.AGE);
-         state.setValue(SweetBerryBushBlock.AGE, Integer.valueOf(1));
+         state.setValue(SweetBerryBushBlock.AGE, 1);
          int count = 1 + Fox.this.level().getRandom().nextInt(2) + (age == 3 ? 1 : 0);
          ItemStack heldItem = Fox.this.getItemBySlot(EquipmentSlot.MAINHAND);
          if (heldItem.isEmpty()) {
@@ -999,7 +975,7 @@ public class Fox extends Animal {
          }
 
          Fox.this.playSound(SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, 1.0F, 1.0F);
-         Fox.this.level().setBlock(this.blockPos, state.setValue(SweetBerryBushBlock.AGE, Integer.valueOf(1)), 2);
+         Fox.this.level().setBlock(this.blockPos, state.setValue(SweetBerryBushBlock.AGE, 1), 2);
          Fox.this.level().gameEvent(GameEvent.BLOCK_CHANGE, this.blockPos, GameEvent.Context.of(Fox.this));
       }
 
@@ -1018,7 +994,6 @@ public class Fox extends Animal {
 
    private class FoxFloatGoal extends FloatGoal {
       public FoxFloatGoal() {
-         Objects.requireNonNull(Fox.this);
          super(Fox.this);
       }
 
@@ -1070,7 +1045,6 @@ public class Fox extends Animal {
 
    private class FoxLookAtPlayerGoal extends LookAtPlayerGoal {
       public FoxLookAtPlayerGoal(final Mob mob, final Class<? extends LivingEntity> lookAtType, final float lookDistance) {
-         Objects.requireNonNull(Fox.this);
          super(mob, lookAtType, lookDistance);
       }
 
@@ -1087,7 +1061,6 @@ public class Fox extends Animal {
 
    public class FoxLookControl extends LookControl {
       public FoxLookControl() {
-         Objects.requireNonNull(Fox.this);
          super(Fox.this);
       }
 
@@ -1106,7 +1079,6 @@ public class Fox extends Animal {
 
    private class FoxMeleeAttackGoal extends MeleeAttackGoal {
       public FoxMeleeAttackGoal(final double speedModifier, final boolean trackTarget) {
-         Objects.requireNonNull(Fox.this);
          super(Fox.this, speedModifier, trackTarget);
       }
 
@@ -1146,7 +1118,6 @@ public class Fox extends Animal {
 
    private class FoxPanicGoal extends PanicGoal {
       public FoxPanicGoal(final double speedModifier) {
-         Objects.requireNonNull(Fox.this);
          super(Fox.this, speedModifier);
       }
 
@@ -1157,33 +1128,28 @@ public class Fox extends Animal {
    }
 
    public class FoxPounceGoal extends JumpGoal {
-      public FoxPounceGoal() {
-         Objects.requireNonNull(Fox.this);
-         super();
-      }
-
       @Override
       public boolean canUse() {
          if (!Fox.this.isFullyCrouched()) {
             return false;
-         } else {
-            LivingEntity target = Fox.this.getTarget();
-            if (target != null && target.isAlive()) {
-               if (target.getMotionDirection() != target.getDirection()) {
-                  return false;
-               } else {
-                  boolean hasClearPath = Fox.isPathClear(Fox.this, target);
-                  if (!hasClearPath) {
-                     Fox.this.getNavigation().createPath(target, 0);
-                     Fox.this.setIsCrouching(false);
-                     Fox.this.setIsInterested(false);
-                  }
+         }
 
-                  return hasClearPath;
-               }
-            } else {
+         LivingEntity target = Fox.this.getTarget();
+         if (target != null && target.isAlive()) {
+            if (target.getMotionDirection() != target.getDirection()) {
                return false;
             }
+
+            boolean hasClearPath = Fox.isPathClear(Fox.this, target);
+            if (!hasClearPath) {
+               Fox.this.getNavigation().createPath(target, 0);
+               Fox.this.setIsCrouching(false);
+               Fox.this.setIsInterested(false);
+            }
+
+            return hasClearPath;
+         } else {
+            return false;
          }
       }
 
@@ -1241,7 +1207,7 @@ public class Fox extends Animal {
             } else {
                double direction = movement.horizontalDistance();
                float upwardsBias = Fox.this.jumping && movement.y > 0.0 ? 6.5F : 1.0F;
-               double biasedY = movement.y * (double)upwardsBias;
+               double biasedY = movement.y * upwardsBias;
                double len = Math.sqrt(direction * direction + biasedY * biasedY);
                if (len > 1.0E-5F) {
                   double rotation = Math.signum(-biasedY) * Math.acos(direction / len) * 180.0F / (float)Math.PI;
@@ -1265,8 +1231,6 @@ public class Fox extends Animal {
 
    private class FoxSearchForItemsGoal extends Goal {
       public FoxSearchForItemsGoal() {
-         Objects.requireNonNull(Fox.this);
-         super();
          this.setFlags(EnumSet.of(Goal.Flag.MOVE));
       }
 
@@ -1274,16 +1238,22 @@ public class Fox extends Animal {
       public boolean canUse() {
          if (!Fox.this.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty()) {
             return false;
-         } else if (Fox.this.getTarget() != null || Fox.this.getLastHurtByMob() != null) {
-            return false;
-         } else if (!Fox.this.canMove()) {
-            return false;
-         } else if (Fox.this.getRandom().nextInt(reducedTickDelay(10)) != 0) {
-            return false;
-         } else {
-            List<ItemEntity> items = Fox.this.level().getEntitiesOfClass(ItemEntity.class, Fox.this.getBoundingBox().inflate(8.0, 8.0, 8.0), Fox.ALLOWED_ITEMS);
-            return !items.isEmpty() && Fox.this.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty();
          }
+
+         if (Fox.this.getTarget() != null || Fox.this.getLastHurtByMob() != null) {
+            return false;
+         }
+
+         if (!Fox.this.canMove()) {
+            return false;
+         }
+
+         if (Fox.this.getRandom().nextInt(reducedTickDelay(10)) != 0) {
+            return false;
+         }
+
+         List<ItemEntity> items = Fox.this.level().getEntitiesOfClass(ItemEntity.class, Fox.this.getBoundingBox().inflate(8.0, 8.0, 8.0), Fox.ALLOWED_ITEMS);
+         return !items.isEmpty() && Fox.this.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty();
       }
 
       @Override
@@ -1306,7 +1276,6 @@ public class Fox extends Animal {
 
    private class FoxStrollThroughVillageGoal extends StrollThroughVillageGoal {
       public FoxStrollThroughVillageGoal(final int searchRadius, final int interval) {
-         Objects.requireNonNull(Fox.this);
          super(Fox.this, interval);
       }
 
@@ -1338,8 +1307,6 @@ public class Fox extends Animal {
       private int looksRemaining;
 
       public PerchAndSearchGoal() {
-         Objects.requireNonNull(Fox.this);
-         super();
          this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
       }
 
@@ -1382,9 +1349,7 @@ public class Fox extends Animal {
          }
 
          Fox.this.getLookControl()
-            .setLookAt(
-               Fox.this.getX() + this.relX, Fox.this.getEyeY(), Fox.this.getZ() + this.relZ, (float)Fox.this.getMaxHeadYRot(), (float)Fox.this.getMaxHeadXRot()
-            );
+            .setLookAt(Fox.this.getX() + this.relX, Fox.this.getEyeY(), Fox.this.getZ() + this.relZ, Fox.this.getMaxHeadYRot(), Fox.this.getMaxHeadXRot());
       }
 
       private void resetLook() {
@@ -1396,12 +1361,10 @@ public class Fox extends Animal {
    }
 
    private class SeekShelterGoal extends FleeSunGoal {
-      private int interval;
+      private int interval = reducedTickDelay(100);
 
       public SeekShelterGoal(final double speedModifier) {
-         Objects.requireNonNull(Fox.this);
          super(Fox.this, speedModifier);
-         this.interval = reducedTickDelay(100);
       }
 
       @Override
@@ -1434,12 +1397,9 @@ public class Fox extends Animal {
 
    private class SleepGoal extends Fox.FoxBehaviorGoal {
       private static final int WAIT_TIME_BEFORE_SLEEP = reducedTickDelay(140);
-      private int countdown;
+      private int countdown = Fox.this.random.nextInt(WAIT_TIME_BEFORE_SLEEP);
 
       public SleepGoal() {
-         Objects.requireNonNull(Fox.this);
-         super();
-         this.countdown = Fox.this.random.nextInt(WAIT_TIME_BEFORE_SLEEP);
          this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK, Goal.Flag.JUMP));
       }
 
@@ -1482,8 +1442,6 @@ public class Fox extends Animal {
 
    private class StalkPreyGoal extends Goal {
       public StalkPreyGoal() {
-         Objects.requireNonNull(Fox.this);
-         super();
          this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
       }
 
@@ -1491,16 +1449,16 @@ public class Fox extends Animal {
       public boolean canUse() {
          if (Fox.this.isSleeping()) {
             return false;
-         } else {
-            LivingEntity target = Fox.this.getTarget();
-            return target != null
-               && target.isAlive()
-               && Fox.STALKABLE_PREY.test(target)
-               && Fox.this.distanceToSqr(target) > 36.0
-               && !Fox.this.isCrouching()
-               && !Fox.this.isInterested()
-               && !Fox.this.jumping;
          }
+
+         LivingEntity target = Fox.this.getTarget();
+         return target != null
+            && target.isAlive()
+            && Fox.STALKABLE_PREY.test(target)
+            && Fox.this.distanceToSqr(target) > 36.0
+            && !Fox.this.isCrouching()
+            && !Fox.this.isInterested()
+            && !Fox.this.jumping;
       }
 
       @Override
@@ -1516,7 +1474,7 @@ public class Fox extends Animal {
             Fox.this.setIsInterested(true);
             Fox.this.setIsCrouching(true);
             Fox.this.getNavigation().stop();
-            Fox.this.getLookControl().setLookAt(target, (float)Fox.this.getMaxHeadYRot(), (float)Fox.this.getMaxHeadXRot());
+            Fox.this.getLookControl().setLookAt(target, Fox.this.getMaxHeadYRot(), Fox.this.getMaxHeadXRot());
          } else {
             Fox.this.setIsInterested(false);
             Fox.this.setIsCrouching(false);
@@ -1527,7 +1485,7 @@ public class Fox extends Animal {
       public void tick() {
          LivingEntity target = Fox.this.getTarget();
          if (target != null) {
-            Fox.this.getLookControl().setLookAt(target, (float)Fox.this.getMaxHeadYRot(), (float)Fox.this.getMaxHeadXRot());
+            Fox.this.getLookControl().setLookAt(target, Fox.this.getMaxHeadYRot(), Fox.this.getMaxHeadXRot());
             if (Fox.this.distanceToSqr(target) <= 36.0) {
                Fox.this.setIsInterested(true);
                Fox.this.setIsCrouching(true);
@@ -1539,7 +1497,7 @@ public class Fox extends Animal {
       }
    }
 
-   public static enum Variant implements StringRepresentable {
+   public enum Variant implements StringRepresentable {
       RED(0, "red"),
       SNOW(1, "snow");
 
@@ -1550,7 +1508,7 @@ public class Fox extends Animal {
       private final int id;
       private final String name;
 
-      private Variant(final int id, final String name) {
+      Variant(final int id, final String name) {
          this.id = id;
          this.name = name;
       }

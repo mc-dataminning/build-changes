@@ -41,8 +41,7 @@ public class FlowerBlock extends VegetationBlock implements SuspiciousEffectHold
       return this.suspiciousStewEffects;
    }
 
-   @Nullable
-   public MobEffectInstance getBeeInteractionEffect() {
+   public @Nullable MobEffectInstance getBeeInteractionEffect() {
       return null;
    }
 }

@@ -22,8 +22,7 @@ public class RandomPos {
       return new BlockPos(xt, yt, zt);
    }
 
-   @Nullable
-   public static BlockPos generateRandomDirectionWithinRadians(
+   public static @Nullable BlockPos generateRandomDirectionWithinRadians(
       final RandomSource random,
       final double minHorizontalDist,
       final double maxHorizontalDist,
@@ -34,13 +33,13 @@ public class RandomPos {
       final double maxXzRadiansFromDir
    ) {
       double yRadiansCenter = Mth.atan2(zDir, xDir) - (float) (Math.PI / 2);
-      double yRadians = yRadiansCenter + (double)(2.0F * random.nextFloat() - 1.0F) * maxXzRadiansFromDir;
-      double dist = Mth.lerp(Math.sqrt(random.nextDouble()), minHorizontalDist, maxHorizontalDist) * (double)Mth.SQRT_OF_TWO;
+      double yRadians = yRadiansCenter + (2.0F * random.nextFloat() - 1.0F) * maxXzRadiansFromDir;
+      double dist = Mth.lerp(Math.sqrt(random.nextDouble()), minHorizontalDist, maxHorizontalDist) * Mth.SQRT_OF_TWO;
       double xt = -dist * Math.sin(yRadians);
       double zt = dist * Math.cos(yRadians);
       if (!(Math.abs(xt) > maxHorizontalDist) && !(Math.abs(zt) > maxHorizontalDist)) {
          int yt = random.nextInt(2 * verticalDist + 1) - verticalDist + flyingHeight;
-         return BlockPos.containing(xt, (double)yt, zt);
+         return BlockPos.containing(xt, yt, zt);
       } else {
          return null;
       }
@@ -50,51 +49,51 @@ public class RandomPos {
    public static BlockPos moveUpOutOfSolid(final BlockPos pos, final int maxY, final Predicate<BlockPos> solidityTester) {
       if (!solidityTester.test(pos)) {
          return pos;
-      } else {
-         BlockPos.MutableBlockPos onGroundPos = pos.mutable().move(Direction.UP);
-
-         while (onGroundPos.getY() <= maxY && solidityTester.test(onGroundPos)) {
-            onGroundPos.move(Direction.UP);
-         }
-
-         return onGroundPos.immutable();
       }
+
+      BlockPos.MutableBlockPos onGroundPos = pos.mutable().move(Direction.UP);
+
+      while (onGroundPos.getY() <= maxY && solidityTester.test(onGroundPos)) {
+         onGroundPos.move(Direction.UP);
+      }
+
+      return onGroundPos.immutable();
    }
 
    @VisibleForTesting
    public static BlockPos moveUpToAboveSolid(final BlockPos pos, final int aboveSolidAmount, final int maxY, final Predicate<BlockPos> solidityTester) {
       if (aboveSolidAmount < 0) {
          throw new IllegalArgumentException("aboveSolidAmount was " + aboveSolidAmount + ", expected >= 0");
-      } else if (!solidityTester.test(pos)) {
-         return pos;
-      } else {
-         BlockPos.MutableBlockPos mutablePos = pos.mutable().move(Direction.UP);
-
-         while (mutablePos.getY() <= maxY && solidityTester.test(mutablePos)) {
-            mutablePos.move(Direction.UP);
-         }
-
-         int firstNonSolidY = mutablePos.getY();
-
-         while (mutablePos.getY() <= maxY && mutablePos.getY() - firstNonSolidY < aboveSolidAmount) {
-            mutablePos.move(Direction.UP);
-            if (solidityTester.test(mutablePos)) {
-               mutablePos.move(Direction.DOWN);
-               break;
-            }
-         }
-
-         return mutablePos.immutable();
       }
+
+      if (!solidityTester.test(pos)) {
+         return pos;
+      }
+
+      BlockPos.MutableBlockPos mutablePos = pos.mutable().move(Direction.UP);
+
+      while (mutablePos.getY() <= maxY && solidityTester.test(mutablePos)) {
+         mutablePos.move(Direction.UP);
+      }
+
+      int firstNonSolidY = mutablePos.getY();
+
+      while (mutablePos.getY() <= maxY && mutablePos.getY() - firstNonSolidY < aboveSolidAmount) {
+         mutablePos.move(Direction.UP);
+         if (solidityTester.test(mutablePos)) {
+            mutablePos.move(Direction.DOWN);
+            break;
+         }
+      }
+
+      return mutablePos.immutable();
    }
 
-   @Nullable
-   public static Vec3 generateRandomPos(final PathfinderMob mob, final Supplier<BlockPos> posSupplier) {
+   public static @Nullable Vec3 generateRandomPos(final PathfinderMob mob, final Supplier<@Nullable BlockPos> posSupplier) {
       return generateRandomPos(posSupplier, mob::getWalkTargetValue);
    }
 
-   @Nullable
-   public static Vec3 generateRandomPos(final Supplier<BlockPos> posSupplier, final ToDoubleFunction<BlockPos> positionWeightFunction) {
+   public static @Nullable Vec3 generateRandomPos(final Supplier<@Nullable BlockPos> posSupplier, final ToDoubleFunction<BlockPos> positionWeightFunction) {
       double bestWeight = Double.NEGATIVE_INFINITY;
       BlockPos bestPos = null;
 
@@ -113,23 +112,23 @@ public class RandomPos {
    }
 
    public static BlockPos generateRandomPosTowardDirection(final PathfinderMob mob, final double xzDist, final RandomSource random, final BlockPos direction) {
-      double xt = (double)direction.getX();
-      double zt = (double)direction.getZ();
+      double xt = direction.getX();
+      double zt = direction.getZ();
       if (mob.hasHome() && xzDist > 1.0) {
          BlockPos center = mob.getHomePosition();
-         if (mob.getX() > (double)center.getX()) {
+         if (mob.getX() > center.getX()) {
             xt -= random.nextDouble() * xzDist / 2.0;
          } else {
             xt += random.nextDouble() * xzDist / 2.0;
          }
 
-         if (mob.getZ() > (double)center.getZ()) {
+         if (mob.getZ() > center.getZ()) {
             zt -= random.nextDouble() * xzDist / 2.0;
          } else {
             zt += random.nextDouble() * xzDist / 2.0;
          }
       }
 
-      return BlockPos.containing(xt + mob.getX(), (double)direction.getY() + mob.getY(), zt + mob.getZ());
+      return BlockPos.containing(xt + mob.getX(), direction.getY() + mob.getY(), zt + mob.getZ());
    }
 }

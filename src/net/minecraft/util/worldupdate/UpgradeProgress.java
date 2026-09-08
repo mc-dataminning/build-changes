@@ -30,11 +30,9 @@ public class UpgradeProgress {
    private final AtomicInteger skipped = new AtomicInteger();
    private final Reference2FloatMap<ResourceKey<Level>> progressMap = Reference2FloatMaps.synchronize(new Reference2FloatOpenHashMap());
    private volatile boolean canceled = false;
-   @Nullable
-   private volatile DataFixTypes dataFixType;
+   private volatile @Nullable DataFixTypes dataFixType;
    private volatile UpgradeProgress.Status status = UpgradeProgress.Status.COUNTING;
-   @Nullable
-   private volatile UpgradeProgress.Type type;
+   private volatile UpgradeProgress.@Nullable Type type;
    private final AtomicLong lastLoggedProgressTime = new AtomicLong();
    private final NotificationService notificationService;
 
@@ -137,8 +135,7 @@ public class UpgradeProgress {
       this.status = status;
    }
 
-   @Nullable
-   public DataFixTypes getDataFixType() {
+   public @Nullable DataFixTypes getDataFixType() {
       return this.dataFixType;
    }
 
@@ -147,8 +144,7 @@ public class UpgradeProgress {
       this.typeFileFixStats.reset();
    }
 
-   @Nullable
-   public UpgradeProgress.Type getType() {
+   public UpgradeProgress.@Nullable Type getType() {
       return this.type;
    }
 
@@ -172,7 +168,7 @@ public class UpgradeProgress {
    public void logProgress() {
       long now = Util.getMillis();
       if (now >= this.lastLoggedProgressTime.get() + 1000L) {
-         float progress = (float)this.totalFileFixStats.finishedOperations() / (float)this.totalFileFixStats.totalOperations();
+         float progress = (float)this.totalFileFixStats.finishedOperations() / this.totalFileFixStats.totalOperations();
          this.lastLoggedProgressTime.set(now);
          LOGGER.info("Upgrading progress: {}%", (int)(progress * 100.0F));
          this.notificationService.worldUpgradeProgress(progress);
@@ -201,7 +197,7 @@ public class UpgradeProgress {
       }
 
       public float getProgress() {
-         return this.totalOperations() == 0 ? 0.0F : Mth.clamp((float)this.finishedOperations() / (float)this.totalOperations(), 0.0F, 1.0F);
+         return this.totalOperations() == 0 ? 0.0F : Mth.clamp((float)this.finishedOperations() / this.totalOperations(), 0.0F, 1.0F);
       }
    }
 
@@ -263,14 +259,14 @@ public class UpgradeProgress {
       }
    }
 
-   public static enum Status {
+   public enum Status {
       COUNTING,
       FAILED,
       FINISHED,
       UPGRADING;
    }
 
-   public static enum Type implements StringRepresentable {
+   public enum Type implements StringRepresentable {
       FILES("files"),
       LEGACY_STRUCTURES("legacy_structures"),
       REGIONS("regions");
@@ -278,7 +274,7 @@ public class UpgradeProgress {
       private final String id;
       private final Component label;
 
-      private Type(final String id) {
+      Type(final String id) {
          this.id = id;
          this.label = Component.translatable("upgradeWorld.progress.type." + this.getSerializedName());
       }

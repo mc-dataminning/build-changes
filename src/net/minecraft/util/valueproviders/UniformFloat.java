@@ -10,7 +10,7 @@ import net.minecraft.util.RandomSource;
 public record UniformFloat(float min, float max) implements FloatProvider {
    public static final MapCodec<UniformFloat> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter(UniformFloat::min), Codec.FLOAT.fieldOf("max_exclusive").forGetter(UniformFloat::max))
-               .apply(i, UniformFloat::new)
+            .apply(i, UniformFloat::new)
       )
       .validate(u -> u.max <= u.min ? DataResult.error(() -> "Max must be larger than min, min: " + u.min + ", max: " + u.max) : DataResult.success(u));
 

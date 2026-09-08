@@ -27,9 +27,8 @@ public class EmptyLevelChunk extends LevelChunk {
       return Blocks.VOID_AIR.defaultBlockState();
    }
 
-   @Nullable
    @Override
-   public BlockState setBlockState(final BlockPos pos, final BlockState state, @Block.UpdateFlags final int flags) {
+   public @Nullable BlockState setBlockState(final BlockPos pos, final BlockState state, final @Block.UpdateFlags int flags) {
       return null;
    }
 
@@ -43,9 +42,8 @@ public class EmptyLevelChunk extends LevelChunk {
       return 0;
    }
 
-   @Nullable
    @Override
-   public BlockEntity getBlockEntity(final BlockPos pos, final LevelChunk.EntityCreationType creationType) {
+   public @Nullable BlockEntity getBlockEntity(final BlockPos pos, final LevelChunk.EntityCreationType creationType) {
       return null;
    }
 

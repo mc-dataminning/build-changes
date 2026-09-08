@@ -83,7 +83,7 @@ public class RangedBowAttackGoal<T extends Monster & RangedAttackMob> extends Go
             this.seeTime--;
          }
 
-         if (!(targetDistSqr > (double)this.attackRadiusSqr) && this.seeTime >= 20) {
+         if (!(targetDistSqr > this.attackRadiusSqr) && this.seeTime >= 20) {
             this.mob.getNavigation().stop();
             this.strafingTime++;
          } else {
@@ -92,11 +92,11 @@ public class RangedBowAttackGoal<T extends Monster & RangedAttackMob> extends Go
          }
 
          if (this.strafingTime >= 20) {
-            if ((double)this.mob.getRandom().nextFloat() < 0.3) {
+            if (this.mob.getRandom().nextFloat() < 0.3) {
                this.strafingClockwise = !this.strafingClockwise;
             }
 
-            if ((double)this.mob.getRandom().nextFloat() < 0.3) {
+            if (this.mob.getRandom().nextFloat() < 0.3) {
                this.strafingBackwards = !this.strafingBackwards;
             }
 
@@ -104,9 +104,9 @@ public class RangedBowAttackGoal<T extends Monster & RangedAttackMob> extends Go
          }
 
          if (this.strafingTime > -1) {
-            if (targetDistSqr > (double)(this.attackRadiusSqr * 0.75F)) {
+            if (targetDistSqr > this.attackRadiusSqr * 0.75F) {
                this.strafingBackwards = false;
-            } else if (targetDistSqr < (double)(this.attackRadiusSqr * 0.25F)) {
+            } else if (targetDistSqr < this.attackRadiusSqr * 0.25F) {
                this.strafingBackwards = true;
             }
 

@@ -58,7 +58,7 @@ public interface EasingType {
 
    float apply(float x);
 
-   public static final class CubicBezier implements EasingType {
+   final class CubicBezier implements EasingType {
       public static final Codec<EasingType.CubicBezier> CODEC = RecordCodecBuilder.create(
          i -> i.group(EasingType.CubicBezierControls.CODEC.fieldOf("cubic_bezier").forGetter(b -> b.controls)).apply(i, EasingType.CubicBezier::new)
       );
@@ -126,11 +126,7 @@ public interface EasingType {
 
       @Override
       public boolean equals(final Object obj) {
-         if (obj instanceof EasingType.CubicBezier bezier && this.controls.equals(bezier.controls)) {
-            return true;
-         }
-
-         return false;
+         return obj instanceof EasingType.CubicBezier bezier && this.controls.equals(bezier.controls);
       }
 
       @Override
@@ -143,7 +139,7 @@ public interface EasingType {
          return "CubicBezier(" + this.controls.x1 + ", " + this.controls.y1 + ", " + this.controls.x2 + ", " + this.controls.y2 + ")";
       }
 
-      private static record CubicCurve(float a, float b, float c) {
+      private record CubicCurve(float a, float b, float c) {
          public float sample(final float t) {
             return ((this.a * t + this.b) * t + this.c) * t;
          }
@@ -154,7 +150,7 @@ public interface EasingType {
       }
    }
 
-   public static record CubicBezierControls(float x1, float y1, float x2, float y2) {
+   record CubicBezierControls(float x1, float y1, float x2, float y2) {
       public static final Codec<EasingType.CubicBezierControls> CODEC = Codec.FLOAT
          .listOf(4, 4)
          .xmap(

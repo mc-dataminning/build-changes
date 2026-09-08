@@ -71,7 +71,7 @@ public interface PriorityProvider<Context, Condition extends PriorityProvider.Se
       return List.of(new PriorityProvider.Selector<>(Optional.empty(), priority));
    }
 
-   public static record Selector<Context, Condition extends PriorityProvider.SelectorCondition<Context>>(Optional<Condition> condition, int priority) {
+   record Selector<Context, Condition extends PriorityProvider.SelectorCondition<Context>>(Optional<Condition> condition, int priority) {
       public Selector(final Condition condition, final int priority) {
          this(Optional.of(condition), priority);
       }
@@ -85,22 +85,22 @@ public interface PriorityProvider<Context, Condition extends PriorityProvider.Se
       ) {
          return RecordCodecBuilder.create(
             i -> i.group(
-                     conditionCodec.optionalFieldOf("condition").forGetter(PriorityProvider.Selector::condition),
-                     Codec.INT.fieldOf("priority").forGetter(PriorityProvider.Selector::priority)
-                  )
-                  .apply(i, PriorityProvider.Selector::new)
+                  conditionCodec.optionalFieldOf("condition").forGetter(PriorityProvider.Selector::condition),
+                  Codec.INT.fieldOf("priority").forGetter(PriorityProvider.Selector::priority)
+               )
+               .apply(i, PriorityProvider.Selector::new)
          );
       }
    }
 
    @FunctionalInterface
-   public interface SelectorCondition<C> extends Predicate<C> {
+   interface SelectorCondition<C> extends Predicate<C> {
       static <C> PriorityProvider.SelectorCondition<C> alwaysTrue() {
          return context -> true;
       }
    }
 
-   public static record UnpackedEntry<C, T>(T entry, int priority, PriorityProvider.SelectorCondition<C> condition) {
+   record UnpackedEntry<C, T>(T entry, int priority, PriorityProvider.SelectorCondition<C> condition) {
       public static final Comparator<PriorityProvider.UnpackedEntry<?, ?>> HIGHEST_PRIORITY_FIRST = Comparator.comparingInt(
             PriorityProvider.UnpackedEntry::priority
          )

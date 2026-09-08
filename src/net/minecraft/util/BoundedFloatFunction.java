@@ -1,6 +1,5 @@
 package net.minecraft.util;
 
-import java.util.Objects;
 import java.util.function.Function;
 
 public interface BoundedFloatFunction<C> {
@@ -37,10 +36,6 @@ public interface BoundedFloatFunction<C> {
    default <C2> BoundedFloatFunction<C2> comap(final Function<C2, C> function) {
       final BoundedFloatFunction<C> outer = this;
       return new BoundedFloatFunction<C2>() {
-         {
-            Objects.requireNonNull(BoundedFloatFunction.this);
-         }
-
          @Override
          public float apply(final C2 c2) {
             return outer.apply(function.apply(c2));

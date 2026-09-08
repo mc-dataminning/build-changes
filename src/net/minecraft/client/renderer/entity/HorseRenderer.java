@@ -98,6 +98,6 @@ public final class HorseRenderer extends AbstractHorseRenderer<Horse, HorseRende
       state.bodyArmorItem = entity.getBodyArmorItem().copy();
    }
 
-   private static record HorseTextures(Identifier adult, Identifier baby) {
+   private record HorseTextures(Identifier adult, Identifier baby) {
    }
 }

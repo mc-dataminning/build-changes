@@ -33,8 +33,8 @@ public class FloatProviders {
    public static Codec<FloatProvider> codec(final float minValue) {
       return CODEC.validate(
          value -> value.min() < minValue
-               ? DataResult.error(() -> "Value provider too low: " + minValue + " [" + value.min() + "-" + value.max() + "]")
-               : DataResult.success(value)
+            ? DataResult.error(() -> "Value provider too low: " + minValue + " [" + value.min() + "-" + value.max() + "]")
+            : DataResult.success(value)
       );
    }
 

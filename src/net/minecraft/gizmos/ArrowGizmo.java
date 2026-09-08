@@ -23,7 +23,7 @@ public record ArrowGizmo(Vec3 start, Vec3 end, int color, float width) implement
       };
 
       for (Vector3f tip : tips) {
-         primitives.addLine(this.end.add((double)tip.x, (double)tip.y, (double)tip.z), this.end, color, this.width);
+         primitives.addLine(this.end.add(tip.x, tip.y, tip.z), this.end, color, this.width);
       }
    }
 }

@@ -14,10 +14,9 @@ public record SingleFile(Identifier resourceId, Optional<Identifier> spriteId) i
    private static final Logger LOGGER = LogUtils.getLogger();
    public static final MapCodec<SingleFile> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Identifier.CODEC.fieldOf("resource").forGetter(SingleFile::resourceId),
-               Identifier.CODEC.optionalFieldOf("sprite").forGetter(SingleFile::spriteId)
-            )
-            .apply(i, SingleFile::new)
+            Identifier.CODEC.fieldOf("resource").forGetter(SingleFile::resourceId), Identifier.CODEC.optionalFieldOf("sprite").forGetter(SingleFile::spriteId)
+         )
+         .apply(i, SingleFile::new)
    );
 
    public SingleFile(final Identifier resourceId) {

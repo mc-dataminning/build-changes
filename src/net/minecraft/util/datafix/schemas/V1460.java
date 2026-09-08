@@ -89,13 +89,8 @@ public class V1460 extends NamespacedSchema {
          map,
          "minecraft:llama",
          name -> DSL.optionalFields(
-               "Items",
-               DSL.list(References.ITEM_STACK.in(schema)),
-               "SaddleItem",
-               References.ITEM_STACK.in(schema),
-               "DecorItem",
-               References.ITEM_STACK.in(schema)
-            )
+            "Items", DSL.list(References.ITEM_STACK.in(schema)), "SaddleItem", References.ITEM_STACK.in(schema), "DecorItem", References.ITEM_STACK.in(schema)
+         )
       );
       schema.registerSimple(map, "minecraft:llama_spit");
       registerMob(schema, map, "minecraft:magma_cube");
@@ -137,8 +132,8 @@ public class V1460 extends NamespacedSchema {
          map,
          "minecraft:villager",
          name -> DSL.optionalFields(
-               "Inventory", DSL.list(References.ITEM_STACK.in(schema)), "Offers", DSL.optionalFields("Recipes", DSL.list(References.VILLAGER_TRADE.in(schema)))
-            )
+            "Inventory", DSL.list(References.ITEM_STACK.in(schema)), "Offers", DSL.optionalFields("Recipes", DSL.list(References.VILLAGER_TRADE.in(schema)))
+         )
       );
       registerMob(schema, map, "minecraft:villager_golem");
       registerMob(schema, map, "minecraft:vindication_illager");
@@ -194,8 +189,8 @@ public class V1460 extends NamespacedSchema {
          false,
          References.LEVEL,
          () -> DSL.optionalFields(
-               "CustomBossEvents", DSL.compoundList(DSL.optionalFields("Name", References.TEXT_COMPONENT.in(schema))), References.LIGHTWEIGHT_LEVEL.in(schema)
-            )
+            "CustomBossEvents", DSL.compoundList(DSL.optionalFields("Name", References.TEXT_COMPONENT.in(schema))), References.LIGHTWEIGHT_LEVEL.in(schema)
+         )
       );
       schema.registerType(false, References.LIGHTWEIGHT_LEVEL, DSL::remainder);
       schema.registerType(false, References.RECIPE, () -> DSL.constType(namespacedString()));
@@ -203,36 +198,35 @@ public class V1460 extends NamespacedSchema {
          false,
          References.PLAYER,
          () -> DSL.optionalFields(
-               new Pair[]{
-                  Pair.of("RootVehicle", DSL.optionalFields("Entity", References.ENTITY_TREE.in(schema))),
-                  Pair.of("ender_pearls", DSL.list(References.ENTITY_TREE.in(schema))),
-                  Pair.of("Inventory", DSL.list(References.ITEM_STACK.in(schema))),
-                  Pair.of("EnderItems", DSL.list(References.ITEM_STACK.in(schema))),
-                  Pair.of("ShoulderEntityLeft", References.ENTITY_TREE.in(schema)),
-                  Pair.of("ShoulderEntityRight", References.ENTITY_TREE.in(schema)),
-                  Pair.of(
-                     "recipeBook",
-                     DSL.optionalFields("recipes", DSL.list(References.RECIPE.in(schema)), "toBeDisplayed", DSL.list(References.RECIPE.in(schema)))
-                  )
-               }
-            )
+            new Pair[]{
+               Pair.of("RootVehicle", DSL.optionalFields("Entity", References.ENTITY_TREE.in(schema))),
+               Pair.of("ender_pearls", DSL.list(References.ENTITY_TREE.in(schema))),
+               Pair.of("Inventory", DSL.list(References.ITEM_STACK.in(schema))),
+               Pair.of("EnderItems", DSL.list(References.ITEM_STACK.in(schema))),
+               Pair.of("ShoulderEntityLeft", References.ENTITY_TREE.in(schema)),
+               Pair.of("ShoulderEntityRight", References.ENTITY_TREE.in(schema)),
+               Pair.of(
+                  "recipeBook", DSL.optionalFields("recipes", DSL.list(References.RECIPE.in(schema)), "toBeDisplayed", DSL.list(References.RECIPE.in(schema)))
+               )
+            }
+         )
       );
       schema.registerType(
          false,
          References.CHUNK,
          () -> DSL.fields(
-               "Level",
-               DSL.optionalFields(
-                  "Entities",
-                  DSL.list(References.ENTITY_TREE.in(schema)),
-                  "TileEntities",
-                  DSL.list(DSL.or(References.BLOCK_ENTITY.in(schema), DSL.remainder())),
-                  "TileTicks",
-                  DSL.list(DSL.fields("i", References.BLOCK_NAME.in(schema))),
-                  "Sections",
-                  DSL.list(DSL.optionalFields("Palette", DSL.list(References.BLOCK_STATE.in(schema))))
-               )
+            "Level",
+            DSL.optionalFields(
+               "Entities",
+               DSL.list(References.ENTITY_TREE.in(schema)),
+               "TileEntities",
+               DSL.list(DSL.or(References.BLOCK_ENTITY.in(schema), DSL.remainder())),
+               "TileTicks",
+               DSL.list(DSL.fields("i", References.BLOCK_NAME.in(schema))),
+               "Sections",
+               DSL.list(DSL.optionalFields("Palette", DSL.list(References.BLOCK_STATE.in(schema))))
             )
+         )
       );
       schema.registerType(
          true,
@@ -246,9 +240,9 @@ public class V1460 extends NamespacedSchema {
          true,
          References.ENTITY,
          () -> DSL.and(
-               References.ENTITY_EQUIPMENT.in(schema),
-               DSL.optionalFields("CustomName", References.TEXT_COMPONENT.in(schema), DSL.taggedChoiceLazy("id", namespacedString(), entityTypes))
-            )
+            References.ENTITY_EQUIPMENT.in(schema),
+            DSL.optionalFields("CustomName", References.TEXT_COMPONENT.in(schema), DSL.taggedChoiceLazy("id", namespacedString(), entityTypes))
+         )
       );
       schema.registerType(
          true,
@@ -261,15 +255,15 @@ public class V1460 extends NamespacedSchema {
          false,
          References.STRUCTURE,
          () -> DSL.optionalFields(
-               "entities",
-               DSL.list(DSL.optionalFields("nbt", References.ENTITY_TREE.in(schema))),
-               "blocks",
-               DSL.list(DSL.optionalFields("nbt", References.BLOCK_ENTITY.in(schema))),
-               "palette",
-               DSL.list(References.BLOCK_STATE.in(schema)),
-               "palettes",
-               DSL.list(DSL.list(References.BLOCK_STATE.in(schema)))
-            )
+            "entities",
+            DSL.list(DSL.optionalFields("nbt", References.ENTITY_TREE.in(schema))),
+            "blocks",
+            DSL.list(DSL.optionalFields("nbt", References.BLOCK_ENTITY.in(schema))),
+            "palette",
+            DSL.list(References.BLOCK_STATE.in(schema)),
+            "palettes",
+            DSL.list(DSL.list(References.BLOCK_STATE.in(schema)))
+         )
       );
       schema.registerType(false, References.BLOCK_NAME, () -> DSL.constType(namespacedString()));
       schema.registerType(false, References.ITEM_NAME, () -> DSL.constType(namespacedString()));
@@ -280,21 +274,21 @@ public class V1460 extends NamespacedSchema {
          false,
          References.STATS,
          () -> DSL.optionalFields(
-               "stats",
-               DSL.optionalFields(
-                  new Pair[]{
-                     Pair.of("minecraft:mined", DSL.compoundList(References.BLOCK_NAME.in(schema), DSL.constType(DSL.intType()))),
-                     Pair.of("minecraft:crafted", itemStats.get()),
-                     Pair.of("minecraft:used", itemStats.get()),
-                     Pair.of("minecraft:broken", itemStats.get()),
-                     Pair.of("minecraft:picked_up", itemStats.get()),
-                     Pair.of("minecraft:dropped", itemStats.get()),
-                     Pair.of("minecraft:killed", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.intType()))),
-                     Pair.of("minecraft:killed_by", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.intType()))),
-                     Pair.of("minecraft:custom", DSL.compoundList(DSL.constType(namespacedString()), DSL.constType(DSL.intType())))
-                  }
-               )
+            "stats",
+            DSL.optionalFields(
+               new Pair[]{
+                  Pair.of("minecraft:mined", DSL.compoundList(References.BLOCK_NAME.in(schema), DSL.constType(DSL.intType()))),
+                  Pair.of("minecraft:crafted", itemStats.get()),
+                  Pair.of("minecraft:used", itemStats.get()),
+                  Pair.of("minecraft:broken", itemStats.get()),
+                  Pair.of("minecraft:picked_up", itemStats.get()),
+                  Pair.of("minecraft:dropped", itemStats.get()),
+                  Pair.of("minecraft:killed", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.intType()))),
+                  Pair.of("minecraft:killed_by", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.intType()))),
+                  Pair.of("minecraft:custom", DSL.compoundList(DSL.constType(namespacedString()), DSL.constType(DSL.intType())))
+               }
             )
+         )
       );
       schema.registerType(false, References.SAVED_DATA_COMMAND_STORAGE, DSL::remainder);
       schema.registerType(
@@ -318,16 +312,16 @@ public class V1460 extends NamespacedSchema {
          false,
          References.SAVED_DATA_SCOREBOARD,
          () -> DSL.optionalFields(
-               "data",
-               DSL.optionalFields(
-                  "Objectives",
-                  DSL.list(References.OBJECTIVE.in(schema)),
-                  "Teams",
-                  DSL.list(References.TEAM.in(schema)),
-                  "PlayerScores",
-                  DSL.list(DSL.optionalFields("display", References.TEXT_COMPONENT.in(schema)))
-               )
+            "data",
+            DSL.optionalFields(
+               "Objectives",
+               DSL.list(References.OBJECTIVE.in(schema)),
+               "Teams",
+               DSL.list(References.TEAM.in(schema)),
+               "PlayerScores",
+               DSL.list(DSL.optionalFields("display", References.TEXT_COMPONENT.in(schema)))
             )
+         )
       );
       schema.registerType(false, References.SAVED_DATA_STOPWATCHES, DSL::remainder);
       schema.registerType(
@@ -347,45 +341,43 @@ public class V1460 extends NamespacedSchema {
          false,
          References.OBJECTIVE,
          () -> DSL.hook(
-               DSL.optionalFields(
-                  "CriteriaType", DSL.taggedChoiceLazy("type", DSL.string(), criterionTypes), "DisplayName", References.TEXT_COMPONENT.in(schema)
-               ),
-               V1451_6.UNPACK_OBJECTIVE_ID,
-               V1451_6.REPACK_OBJECTIVE_ID
-            )
+            DSL.optionalFields("CriteriaType", DSL.taggedChoiceLazy("type", DSL.string(), criterionTypes), "DisplayName", References.TEXT_COMPONENT.in(schema)),
+            V1451_6.UNPACK_OBJECTIVE_ID,
+            V1451_6.REPACK_OBJECTIVE_ID
+         )
       );
       schema.registerType(
          false,
          References.TEAM,
          () -> DSL.optionalFields(
-               "MemberNamePrefix",
-               References.TEXT_COMPONENT.in(schema),
-               "MemberNameSuffix",
-               References.TEXT_COMPONENT.in(schema),
-               "DisplayName",
-               References.TEXT_COMPONENT.in(schema)
-            )
+            "MemberNamePrefix",
+            References.TEXT_COMPONENT.in(schema),
+            "MemberNameSuffix",
+            References.TEXT_COMPONENT.in(schema),
+            "DisplayName",
+            References.TEXT_COMPONENT.in(schema)
+         )
       );
       schema.registerType(
          true,
          References.UNTAGGED_SPAWNER,
          () -> DSL.optionalFields(
-               "SpawnPotentials", DSL.list(DSL.fields("Entity", References.ENTITY_TREE.in(schema))), "SpawnData", References.ENTITY_TREE.in(schema)
-            )
+            "SpawnPotentials", DSL.list(DSL.fields("Entity", References.ENTITY_TREE.in(schema))), "SpawnData", References.ENTITY_TREE.in(schema)
+         )
       );
       schema.registerType(
          false,
          References.ADVANCEMENTS,
          () -> DSL.optionalFields(
-               "minecraft:adventure/adventuring_time",
-               DSL.optionalFields("criteria", DSL.compoundList(References.BIOME.in(schema), DSL.constType(DSL.string()))),
-               "minecraft:adventure/kill_a_mob",
-               DSL.optionalFields("criteria", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.string()))),
-               "minecraft:adventure/kill_all_mobs",
-               DSL.optionalFields("criteria", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.string()))),
-               "minecraft:husbandry/bred_all_animals",
-               DSL.optionalFields("criteria", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.string())))
-            )
+            "minecraft:adventure/adventuring_time",
+            DSL.optionalFields("criteria", DSL.compoundList(References.BIOME.in(schema), DSL.constType(DSL.string()))),
+            "minecraft:adventure/kill_a_mob",
+            DSL.optionalFields("criteria", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.string()))),
+            "minecraft:adventure/kill_all_mobs",
+            DSL.optionalFields("criteria", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.string()))),
+            "minecraft:husbandry/bred_all_animals",
+            DSL.optionalFields("criteria", DSL.compoundList(References.ENTITY_NAME.in(schema), DSL.constType(DSL.string())))
+         )
       );
       schema.registerType(false, References.BIOME, () -> DSL.constType(namespacedString()));
       schema.registerType(false, References.ENTITY_NAME, () -> DSL.constType(namespacedString()));
@@ -404,13 +396,13 @@ public class V1460 extends NamespacedSchema {
          true,
          References.ENTITY_EQUIPMENT,
          () -> DSL.and(
-               DSL.optional(DSL.field("ArmorItems", DSL.list(References.ITEM_STACK.in(schema)))),
-               new TypeTemplate[]{
-                  DSL.optional(DSL.field("HandItems", DSL.list(References.ITEM_STACK.in(schema)))),
-                  DSL.optional(DSL.field("body_armor_item", References.ITEM_STACK.in(schema))),
-                  DSL.optional(DSL.field("saddle", References.ITEM_STACK.in(schema)))
-               }
-            )
+            DSL.optional(DSL.field("ArmorItems", DSL.list(References.ITEM_STACK.in(schema)))),
+            new TypeTemplate[]{
+               DSL.optional(DSL.field("HandItems", DSL.list(References.ITEM_STACK.in(schema)))),
+               DSL.optional(DSL.field("body_armor_item", References.ITEM_STACK.in(schema))),
+               DSL.optional(DSL.field("saddle", References.ITEM_STACK.in(schema)))
+            }
+         )
       );
    }
 }

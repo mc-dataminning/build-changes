@@ -2,6 +2,7 @@ package com.mojang.realmsclient.util;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
+import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -49,26 +50,26 @@ public class TextRenderingUtils {
    public static List<String> split(final String line, final String delimiter) {
       if (delimiter.isEmpty()) {
          throw new IllegalArgumentException("Delimiter cannot be the empty string");
-      } else {
-         List<String> parts = Lists.newArrayList();
-         int searchStart = 0;
-
-         int matchIndex;
-         while ((matchIndex = line.indexOf(delimiter, searchStart)) != -1) {
-            if (matchIndex > searchStart) {
-               parts.add(line.substring(searchStart, matchIndex));
-            }
-
-            parts.add(delimiter);
-            searchStart = matchIndex + delimiter.length();
-         }
-
-         if (searchStart < line.length()) {
-            parts.add(line.substring(searchStart));
-         }
-
-         return parts;
       }
+
+      List<String> parts = Lists.newArrayList();
+      int searchStart = 0;
+
+      int matchIndex;
+      while ((matchIndex = line.indexOf(delimiter, searchStart)) != -1) {
+         if (matchIndex > searchStart) {
+            parts.add(line.substring(searchStart, matchIndex));
+         }
+
+         parts.add(delimiter);
+         searchStart = matchIndex + delimiter.length();
+      }
+
+      if (searchStart < line.length()) {
+         parts.add(line.substring(searchStart));
+      }
+
+      return parts;
    }
 
    public static class Line {
@@ -107,10 +108,8 @@ public class TextRenderingUtils {
 
    public static class LineSegment {
       private final String fullText;
-      @Nullable
-      private final String linkTitle;
-      @Nullable
-      private final String linkUrl;
+      private final @Nullable String linkTitle;
+      private final @Nullable URI linkUrl;
 
       private LineSegment(final String fullText) {
          this.fullText = fullText;
@@ -118,7 +117,7 @@ public class TextRenderingUtils {
          this.linkUrl = null;
       }
 
-      private LineSegment(final String fullText, @Nullable final String linkTitle, @Nullable final String linkUrl) {
+      private LineSegment(final String fullText, final @Nullable String linkTitle, final @Nullable URI linkUrl) {
          this.fullText = fullText;
          this.linkTitle = linkTitle;
          this.linkUrl = linkUrl;
@@ -156,7 +155,7 @@ public class TextRenderingUtils {
          return this.linkTitle != null;
       }
 
-      public String getLinkUrl() {
+      public URI getLinkUrl() {
          if (!this.isLink()) {
             throw new IllegalStateException("Not a link: " + this);
          } else {
@@ -164,7 +163,7 @@ public class TextRenderingUtils {
          }
       }
 
-      public static TextRenderingUtils.LineSegment link(final String linkTitle, final String linkUrl) {
+      public static TextRenderingUtils.LineSegment link(final String linkTitle, final URI linkUrl) {
          return new TextRenderingUtils.LineSegment(null, linkTitle, linkUrl);
       }
 

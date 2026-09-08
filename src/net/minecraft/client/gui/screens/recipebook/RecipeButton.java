@@ -56,18 +56,18 @@ public class RecipeButton extends AbstractWidget {
       Iterator<ItemStack> itemsIterator = entries.stream().flatMap(e -> e.displayItems().stream()).iterator();
       if (!itemsIterator.hasNext()) {
          return true;
-      } else {
-         ItemStack firstItem = itemsIterator.next();
-
-         while (itemsIterator.hasNext()) {
-            ItemStack nextItem = itemsIterator.next();
-            if (!ItemStack.isSameItemSameComponents(firstItem, nextItem)) {
-               return false;
-            }
-         }
-
-         return true;
       }
+
+      ItemStack firstItem = itemsIterator.next();
+
+      while (itemsIterator.hasNext()) {
+         ItemStack nextItem = itemsIterator.next();
+         if (!ItemStack.isSameItemSameComponents(firstItem, nextItem)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    public RecipeCollection getCollection() {
@@ -91,11 +91,11 @@ public class RecipeButton extends AbstractWidget {
 
       boolean shouldAnimate = this.animationTime > 0.0F;
       if (shouldAnimate) {
-         float squeeze = 1.0F + 0.1F * (float)Math.sin((double)(this.animationTime / 15.0F * (float) Math.PI));
+         float squeeze = 1.0F + 0.1F * (float)Math.sin(this.animationTime / 15.0F * (float) Math.PI);
          graphics.pose().pushMatrix();
-         graphics.pose().translate((float)(this.getX() + 8), (float)(this.getY() + 12));
+         graphics.pose().translate(this.getX() + 8, this.getY() + 12);
          graphics.pose().scale(squeeze, squeeze);
-         graphics.pose().translate((float)(-(this.getX() + 8)), (float)(-(this.getY() + 12)));
+         graphics.pose().translate(-(this.getX() + 8), -(this.getY() + 12));
          this.animationTime -= a;
       }
 
@@ -163,14 +163,14 @@ public class RecipeButton extends AbstractWidget {
       return buttonInfo.button() == 1 || buttonInfo.button() == 3;
    }
 
-   private static record ResolvedEntry(RecipeDisplayId id, List<ItemStack> displayItems) {
+   private record ResolvedEntry(RecipeDisplayId id, List<ItemStack> displayItems) {
       public ItemStack selectItem(final int index) {
          if (this.displayItems.isEmpty()) {
             return ItemStack.EMPTY;
-         } else {
-            int offset = index % this.displayItems.size();
-            return this.displayItems.get(offset);
          }
+
+         int offset = index % this.displayItems.size();
+         return this.displayItems.get(offset);
       }
    }
 }

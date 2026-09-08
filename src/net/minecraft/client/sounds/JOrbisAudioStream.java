@@ -40,27 +40,27 @@ public class JOrbisAudioStream implements FloatSampleSource {
       Page firstPage = this.readPage();
       if (firstPage == null) {
          throw new IOException("Invalid Ogg file - can't find first page");
-      } else {
-         Packet firstPacket = this.readIdentificationPacket(firstPage);
+      }
+
+      Packet firstPacket = this.readIdentificationPacket(firstPage);
+      if (isError(this.info.synthesis_headerin(comment, firstPacket))) {
+         throw new IOException("Invalid Ogg identification packet");
+      }
+
+      for (int headerPacketCount = 0; headerPacketCount < 2; headerPacketCount++) {
+         firstPacket = this.readPacket();
+         if (firstPacket == null) {
+            throw new IOException("Unexpected end of Ogg stream");
+         }
+
          if (isError(this.info.synthesis_headerin(comment, firstPacket))) {
-            throw new IOException("Invalid Ogg identification packet");
-         } else {
-            for (int headerPacketCount = 0; headerPacketCount < 2; headerPacketCount++) {
-               firstPacket = this.readPacket();
-               if (firstPacket == null) {
-                  throw new IOException("Unexpected end of Ogg stream");
-               }
-
-               if (isError(this.info.synthesis_headerin(comment, firstPacket))) {
-                  throw new IOException("Invalid Ogg header packet " + headerPacketCount);
-               }
-            }
-
-            this.dspState.synthesis_init(this.info);
-            this.block.init(this.dspState);
-            this.audioFormat = new AudioFormat((float)this.info.rate, 16, this.info.channels, true, false);
+            throw new IOException("Invalid Ogg header packet " + headerPacketCount);
          }
       }
+
+      this.dspState.synthesis_init(this.info);
+      this.block.init(this.dspState);
+      this.audioFormat = new AudioFormat(this.info.rate, 16, this.info.channels, true, false);
    }
 
    private static boolean isError(final int value) {
@@ -78,14 +78,13 @@ public class JOrbisAudioStream implements FloatSampleSource {
       int bytes = this.input.read(buffer, offset, 8192);
       if (bytes == -1) {
          return false;
-      } else {
-         this.syncState.wrote(bytes);
-         return true;
       }
+
+      this.syncState.wrote(bytes);
+      return true;
    }
 
-   @Nullable
-   private Page readPage() throws IOException {
+   private @Nullable Page readPage() throws IOException {
       while (true) {
          int pageOutResult = this.syncState.pageout(this.page);
          switch (pageOutResult) {
@@ -123,8 +122,7 @@ public class JOrbisAudioStream implements FloatSampleSource {
       }
    }
 
-   @Nullable
-   private Packet readPacket() throws IOException {
+   private @Nullable Packet readPacket() throws IOException {
       while (true) {
          int packetOutResult = this.streamState.packetout(this.packet);
          switch (packetOutResult) {
@@ -150,14 +148,14 @@ public class JOrbisAudioStream implements FloatSampleSource {
    }
 
    private long getSamplesToWrite(final int samples) {
-      long samplesAfterWrite = this.samplesWritten + (long)samples;
+      long samplesAfterWrite = this.samplesWritten + samples;
       long samplesToWrite;
       if (samplesAfterWrite > this.totalSamplesInStream) {
          samplesToWrite = this.totalSamplesInStream - this.samplesWritten;
          this.samplesWritten = this.totalSamplesInStream;
       } else {
          this.samplesWritten = samplesAfterWrite;
-         samplesToWrite = (long)samples;
+         samplesToWrite = samples;
       }
 
       return samplesToWrite;
@@ -170,35 +168,37 @@ public class JOrbisAudioStream implements FloatSampleSource {
       Packet packet = this.readPacket();
       if (packet == null) {
          return false;
-      } else if (isError(this.block.synthesis(packet))) {
+      }
+
+      if (isError(this.block.synthesis(packet))) {
          throw new IOException("Can't decode audio packet");
-      } else {
-         this.dspState.synthesis_blockin(this.block);
+      }
 
-         int samples;
-         while ((samples = this.dspState.synthesis_pcmout(pcmSampleOutput, pcmOffsetOutput)) > 0) {
-            float[][] channelSamples = pcmSampleOutput[0];
-            long samplesToWrite = this.getSamplesToWrite(samples);
-            switch (this.info.channels) {
-               case 1:
-                  copyMono(channelSamples[0], pcmOffsetOutput[0], samplesToWrite, consumer);
-                  break;
-               case 2:
-                  copyStereo(channelSamples[0], pcmOffsetOutput[0], channelSamples[1], pcmOffsetOutput[1], samplesToWrite, consumer);
-                  break;
-               default:
-                  copyAnyChannels(channelSamples, this.info.channels, pcmOffsetOutput, samplesToWrite, consumer);
-            }
+      this.dspState.synthesis_blockin(this.block);
 
-            this.dspState.synthesis_read(samples);
+      int samples;
+      while ((samples = this.dspState.synthesis_pcmout(pcmSampleOutput, pcmOffsetOutput)) > 0) {
+         float[][] channelSamples = pcmSampleOutput[0];
+         long samplesToWrite = this.getSamplesToWrite(samples);
+         switch (this.info.channels) {
+            case 1:
+               copyMono(channelSamples[0], pcmOffsetOutput[0], samplesToWrite, consumer);
+               break;
+            case 2:
+               copyStereo(channelSamples[0], pcmOffsetOutput[0], channelSamples[1], pcmOffsetOutput[1], samplesToWrite, consumer);
+               break;
+            default:
+               copyAnyChannels(channelSamples, this.info.channels, pcmOffsetOutput, samplesToWrite, consumer);
          }
 
-         return true;
+         this.dspState.synthesis_read(samples);
       }
+
+      return true;
    }
 
    private static void copyAnyChannels(final float[][] samples, final int channelCount, final int[] offsets, final long count, final FloatConsumer output) {
-      for (int j = 0; (long)j < count; j++) {
+      for (int j = 0; j < count; j++) {
          for (int channel = 0; channel < channelCount; channel++) {
             int offset = offsets[channel];
             float val = samples[channel][offset + j];
@@ -208,7 +208,7 @@ public class JOrbisAudioStream implements FloatSampleSource {
    }
 
    private static void copyMono(final float[] samples, final int offset, final long count, final FloatConsumer output) {
-      for (int i = offset; (long)i < (long)offset + count; i++) {
+      for (int i = offset; i < offset + count; i++) {
          output.accept(samples[i]);
       }
    }
@@ -216,7 +216,7 @@ public class JOrbisAudioStream implements FloatSampleSource {
    private static void copyStereo(
       final float[] samples1, final int offset1, final float[] samples2, final int offset2, final long count, final FloatConsumer output
    ) {
-      for (int i = 0; (long)i < count; i++) {
+      for (int i = 0; i < count; i++) {
          output.accept(samples1[offset1 + i]);
          output.accept(samples2[offset2 + i]);
       }

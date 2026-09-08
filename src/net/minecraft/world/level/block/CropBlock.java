@@ -26,11 +26,11 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class CropBlock extends VegetationBlock implements BonemealableBlock {
    public static final int MAX_AGE = 7;
    public static final IntegerProperty AGE = BlockStateProperties.AGE_7;
-   private static final VoxelShape[] SHAPES = Block.boxes(7, age -> Block.column(16.0, 0.0, (double)(2 + age * 2)));
+   private static final VoxelShape[] SHAPES = Block.boxes(7, age -> Block.column(16.0, 0.0, 2 + age * 2));
 
    protected CropBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(this.getAgeProperty(), Integer.valueOf(0)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(this.getAgeProperty(), 0));
    }
 
    @Override
@@ -56,7 +56,7 @@ public class CropBlock extends VegetationBlock implements BonemealableBlock {
    }
 
    public BlockState getStateForAge(final int age) {
-      return this.defaultBlockState().setValue(this.getAgeProperty(), Integer.valueOf(age));
+      return this.defaultBlockState().setValue(this.getAgeProperty(), age);
    }
 
    public final boolean isMaxAge(final BlockState state) {
@@ -100,7 +100,7 @@ public class CropBlock extends VegetationBlock implements BonemealableBlock {
             BlockState blockState = level.getBlockState(below.offset(xx, 0, zz));
             if (blockState.is(BlockTags.GROWS_CROPS)) {
                blockSpeed = 1.0F;
-               if (blockState.getValueOrElse(FarmlandBlock.MOISTURE, Integer.valueOf(0)) > 0) {
+               if (blockState.getValueOrElse(FarmlandBlock.MOISTURE, 0) > 0) {
                   blockSpeed = 3.0F;
                }
             }

@@ -55,8 +55,8 @@ public abstract class CompositeEntryBase extends LootPoolEntryContainer {
    public static <T extends CompositeEntryBase> MapCodec<T> createCodec(final CompositeEntryBase.CompositeEntryConstructor<T> constructor) {
       return RecordCodecBuilder.mapCodec(
          i -> i.group(LootPoolEntries.CODEC.listOf().optionalFieldOf("children", List.of()).forGetter(e -> e.children))
-               .and(commonFields(i))
-               .apply(i, constructor::create)
+            .and(commonFields(i))
+            .apply(i, constructor::create)
       );
    }
 

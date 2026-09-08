@@ -33,9 +33,9 @@ public class PerlinNoise extends GradientNoise {
       int floorX = Mth.floor(x);
       int floorY = Mth.floor(y);
       int floorZ = Mth.floor(z);
-      float relativeX = (float)(x - (double)floorX);
-      float relativeY = (float)(y - (double)floorY);
-      float relativeZ = (float)(z - (double)floorZ);
+      float relativeX = (float)(x - floorX);
+      float relativeY = (float)(y - floorY);
+      float relativeZ = (float)(z - floorZ);
       return this.sampleAndLerp(floorX, floorY, floorZ, relativeX, relativeY, relativeZ, relativeY);
    }
 
@@ -46,9 +46,9 @@ public class PerlinNoise extends GradientNoise {
       int floorX = Mth.floor(x);
       int floorY = Mth.floor(y);
       int floorZ = Mth.floor(z);
-      float relativeX = (float)(x - (double)floorX);
-      float relativeY = (float)(y - (double)floorY);
-      float relativeZ = (float)(z - (double)floorZ);
+      float relativeX = (float)(x - floorX);
+      float relativeY = (float)(y - floorY);
+      float relativeZ = (float)(z - floorZ);
       return this.sampleWithDerivative(floorX, floorY, floorZ, relativeX, relativeY, relativeZ, derivativeOut);
    }
 
@@ -96,24 +96,24 @@ public class PerlinNoise extends GradientNoise {
       int index = 0;
 
       for (int indexZ = 0; indexZ < volume.sizeZ(); indexZ++) {
-         double z = wrap((double)volume.blockZ(indexZ) * xzScale) + this.offsetZ;
+         double z = wrap(volume.blockZ(indexZ) * xzScale) + this.offsetZ;
          int floorZ = Mth.floor(z);
-         float relativeZ = (float)(z - (double)floorZ);
+         float relativeZ = (float)(z - floorZ);
          float alphaZ = Mth.smoothstep(relativeZ);
 
          for (int indexX = 0; indexX < volume.sizeX(); indexX++) {
-            double x = wrap((double)volume.blockX(indexX) * xzScale) + this.offsetX;
+            double x = wrap(volume.blockX(indexX) * xzScale) + this.offsetX;
             int floorX = Mth.floor(x);
-            float relativeX = (float)(x - (double)floorX);
+            float relativeX = (float)(x - floorX);
             int x0 = this.permute(floorX);
             int x1 = this.permute(floorX + 1);
             float alphaX = Mth.smoothstep(relativeX);
             int lastFloorY = Integer.MIN_VALUE;
 
             for (int indexY = 0; indexY < volume.sizeY(); indexY++) {
-               double y = wrap((double)volume.blockY(indexY) * yScale) + this.offsetY;
+               double y = wrap(volume.blockY(indexY) * yScale) + this.offsetY;
                int floorY = Mth.floor(y);
-               float relativeY = (float)(y - (double)floorY);
+               float relativeY = (float)(y - floorY);
                float alphaY = Mth.smoothstep(relativeY);
                if (lastFloorY != floorY) {
                   int xy00 = this.permute(x0 + floorY);
@@ -122,28 +122,28 @@ public class PerlinNoise extends GradientNoise {
                   int xy11 = this.permute(x1 + floorY + 1);
                   GradientNoise.Gradient g000 = this.permuteToGrad(xy00 + floorZ);
                   d000xz = g000.dotXz(relativeX, relativeZ);
-                  g000y = (float)g000.y();
+                  g000y = g000.y();
                   GradientNoise.Gradient g100 = this.permuteToGrad(xy10 + floorZ);
                   d100xz = g100.dotXz(relativeX - 1.0F, relativeZ);
-                  g100y = (float)g100.y();
+                  g100y = g100.y();
                   GradientNoise.Gradient g010 = this.permuteToGrad(xy01 + floorZ);
                   d010xz = g010.dotXz(relativeX, relativeZ);
-                  g010y = (float)g010.y();
+                  g010y = g010.y();
                   GradientNoise.Gradient g110 = this.permuteToGrad(xy11 + floorZ);
                   d110xz = g110.dotXz(relativeX - 1.0F, relativeZ);
-                  g110y = (float)g110.y();
+                  g110y = g110.y();
                   GradientNoise.Gradient g001 = this.permuteToGrad(xy00 + floorZ + 1);
                   d001xz = g001.dotXz(relativeX, relativeZ - 1.0F);
-                  g001y = (float)g001.y();
+                  g001y = g001.y();
                   GradientNoise.Gradient g101 = this.permuteToGrad(xy10 + floorZ + 1);
                   d101xz = g101.dotXz(relativeX - 1.0F, relativeZ - 1.0F);
-                  g101y = (float)g101.y();
+                  g101y = g101.y();
                   GradientNoise.Gradient g011 = this.permuteToGrad(xy01 + floorZ + 1);
                   d011xz = g011.dotXz(relativeX, relativeZ - 1.0F);
-                  g011y = (float)g011.y();
+                  g011y = g011.y();
                   GradientNoise.Gradient g111 = this.permuteToGrad(xy11 + floorZ + 1);
                   d111xz = g111.dotXz(relativeX - 1.0F, relativeZ - 1.0F);
-                  g111y = (float)g111.y();
+                  g111y = g111.y();
                   lastFloorY = floorY;
                }
 
@@ -196,45 +196,9 @@ public class PerlinNoise extends GradientNoise {
       float xAlpha = Mth.smoothstep(xr);
       float yAlpha = Mth.smoothstep(yr);
       float zAlpha = Mth.smoothstep(zr);
-      float d1x = Mth.lerp3(
-         xAlpha,
-         yAlpha,
-         zAlpha,
-         (float)g000.x(),
-         (float)g100.x(),
-         (float)g010.x(),
-         (float)g110.x(),
-         (float)g001.x(),
-         (float)g101.x(),
-         (float)g011.x(),
-         (float)g111.x()
-      );
-      float d1y = Mth.lerp3(
-         xAlpha,
-         yAlpha,
-         zAlpha,
-         (float)g000.y(),
-         (float)g100.y(),
-         (float)g010.y(),
-         (float)g110.y(),
-         (float)g001.y(),
-         (float)g101.y(),
-         (float)g011.y(),
-         (float)g111.y()
-      );
-      float d1z = Mth.lerp3(
-         xAlpha,
-         yAlpha,
-         zAlpha,
-         (float)g000.z(),
-         (float)g100.z(),
-         (float)g010.z(),
-         (float)g110.z(),
-         (float)g001.z(),
-         (float)g101.z(),
-         (float)g011.z(),
-         (float)g111.z()
-      );
+      float d1x = Mth.lerp3(xAlpha, yAlpha, zAlpha, g000.x(), g100.x(), g010.x(), g110.x(), g001.x(), g101.x(), g011.x(), g111.x());
+      float d1y = Mth.lerp3(xAlpha, yAlpha, zAlpha, g000.y(), g100.y(), g010.y(), g110.y(), g001.y(), g101.y(), g011.y(), g111.y());
+      float d1z = Mth.lerp3(xAlpha, yAlpha, zAlpha, g000.z(), g100.z(), g010.z(), g110.z(), g001.z(), g101.z(), g011.z(), g111.z());
       float d2x = Mth.lerp2(yAlpha, zAlpha, d100 - d000, d110 - d010, d101 - d001, d111 - d011);
       float d2y = Mth.lerp2(zAlpha, xAlpha, d010 - d000, d011 - d001, d110 - d100, d111 - d101);
       float d2z = Mth.lerp2(xAlpha, yAlpha, d001 - d000, d101 - d100, d011 - d010, d111 - d110);

@@ -63,8 +63,7 @@ public class PiglinSpecificSensor extends Sensor<LivingEntity> {
          .orElse(NearestVisibleLivingEntities.empty());
 
       for (LivingEntity entity : visibleLivingEntities.findAll(ignored -> true)) {
-         if (entity instanceof Hoglin) {
-            Hoglin hoglin = (Hoglin)entity;
+         if (entity instanceof Hoglin hoglin) {
             if (hoglin.isBaby() && babyHoglin.isEmpty()) {
                babyHoglin = Optional.of(hoglin);
             } else if (hoglin.isAdult()) {
@@ -75,15 +74,13 @@ public class PiglinSpecificSensor extends Sensor<LivingEntity> {
             }
          } else if (entity instanceof PiglinBrute piglinBrute) {
             visibleAdultPiglins.add(piglinBrute);
-         } else if (entity instanceof Piglin) {
-            Piglin piglin = (Piglin)entity;
+         } else if (entity instanceof Piglin piglin) {
             if (piglin.isBaby() && babyPiglin.isEmpty()) {
                babyPiglin = Optional.of(piglin);
             } else if (piglin.isAdult()) {
                visibleAdultPiglins.add(piglin);
             }
-         } else if (entity instanceof Player) {
-            Player player = (Player)entity;
+         } else if (entity instanceof Player player) {
             if (playerNotWearingGold.isEmpty() && !PiglinAi.isWearingSafeArmor(player) && body.canAttack(entity)) {
                playerNotWearingGold = Optional.of(player);
             }

@@ -54,13 +54,13 @@ public class BreathAirGoal extends Goal {
          destinationPos = BlockPos.containing(this.mob.getX(), this.mob.getY() + 8.0, this.mob.getZ());
       }
 
-      this.mob.getNavigation().moveTo((double)destinationPos.getX(), (double)(destinationPos.getY() + 1), (double)destinationPos.getZ(), 1.0);
+      this.mob.getNavigation().moveTo(destinationPos.getX(), destinationPos.getY() + 1, destinationPos.getZ(), 1.0);
    }
 
    @Override
    public void tick() {
       this.findAirPosition();
-      this.mob.moveRelative(0.02F, new Vec3((double)this.mob.xxa, (double)this.mob.yya, (double)this.mob.zza));
+      this.mob.moveRelative(0.02F, new Vec3(this.mob.xxa, this.mob.yya, this.mob.zza));
       this.mob.move(MoverType.SELF, this.mob.getDeltaMovement());
    }
 

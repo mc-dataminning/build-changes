@@ -14,7 +14,7 @@ import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 public record RandomGroupPoolAlias(WeightedList<List<PoolAliasBinding>> groups) implements PoolAliasBinding {
    public static final MapCodec<RandomGroupPoolAlias> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(WeightedList.nonEmptyCodec(Codec.list(PoolAliasBinding.CODEC)).fieldOf("groups").forGetter(RandomGroupPoolAlias::groups))
-            .apply(i, RandomGroupPoolAlias::new)
+         .apply(i, RandomGroupPoolAlias::new)
    );
 
    @Override

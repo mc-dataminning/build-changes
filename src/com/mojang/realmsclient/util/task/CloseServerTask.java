@@ -36,19 +36,19 @@ public class CloseServerTask extends LongRunningTask {
                setScreen(this.configureScreen);
                break;
             }
-         } catch (RetryCallException var4) {
+         } catch (RetryCallException e) {
             if (this.aborted()) {
                return;
             }
 
-            pause((long)var4.delaySeconds);
-         } catch (Exception var5) {
+            pause(e.delaySeconds);
+         } catch (Exception e) {
             if (this.aborted()) {
                return;
             }
 
-            LOGGER.error("Failed to close server", var5);
-            this.error(var5);
+            LOGGER.error("Failed to close server", e);
+            this.error(e);
          }
       }
    }

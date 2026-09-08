@@ -23,6 +23,6 @@ public class MultipliedFloats implements SampledFloat {
 
    @Override
    public String toString() {
-      return "MultipliedFloats" + Arrays.toString((Object[])this.values);
+      return "MultipliedFloats" + Arrays.toString(this.values);
    }
 }

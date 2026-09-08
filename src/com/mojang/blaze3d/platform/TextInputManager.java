@@ -9,8 +9,7 @@ import org.lwjgl.system.MemoryStack;
 public class TextInputManager {
    private final Window window;
    private boolean textInputEnabled;
-   @Nullable
-   private Object owner;
+   private @Nullable Object owner;
    private boolean hasTextInputArea;
    private int areaX;
    private int areaY;
@@ -22,11 +21,11 @@ public class TextInputManager {
    }
 
    public void setTextInputArea(final int x0, final int y0, final int x1, final int y1) {
-      double windowScale = (double)this.window.getGuiScale() / (double)this.window.getPixelDensity();
-      int x = (int)Math.round((double)x0 * windowScale);
-      int y = (int)Math.round((double)y0 * windowScale);
-      int width = Math.max(1, (int)Math.round((double)(x1 - x0) * windowScale));
-      int height = Math.max(1, (int)Math.round((double)(y1 - y0) * windowScale));
+      double windowScale = (double)this.window.getGuiScale() / this.window.getPixelDensity();
+      int x = (int)Math.round(x0 * windowScale);
+      int y = (int)Math.round(y0 * windowScale);
+      int width = Math.max(1, (int)Math.round((x1 - x0) * windowScale));
+      int height = Math.max(1, (int)Math.round((y1 - y0) * windowScale));
       if (!this.hasTextInputArea || x != this.areaX || y != this.areaY || width != this.areaWidth || height != this.areaHeight) {
          this.areaX = x;
          this.areaY = y;

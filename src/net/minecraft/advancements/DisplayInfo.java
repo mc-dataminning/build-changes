@@ -22,16 +22,16 @@ public record DisplayInfo(
 ) {
    public static final Codec<DisplayInfo> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ItemStackTemplate.CODEC.fieldOf("icon").forGetter(DisplayInfo::icon),
-               ComponentSerialization.CODEC.fieldOf("title").forGetter(DisplayInfo::title),
-               ComponentSerialization.CODEC.fieldOf("description").forGetter(DisplayInfo::description),
-               ClientAsset.ResourceTexture.CODEC.optionalFieldOf("background").forGetter(DisplayInfo::background),
-               AdvancementType.CODEC.optionalFieldOf("frame", AdvancementType.TASK).forGetter(DisplayInfo::type),
-               Codec.BOOL.optionalFieldOf("show_toast", true).forGetter(DisplayInfo::showToast),
-               Codec.BOOL.optionalFieldOf("announce_to_chat", true).forGetter(DisplayInfo::announceToChat),
-               Codec.BOOL.optionalFieldOf("hidden", false).forGetter(DisplayInfo::hidden)
-            )
-            .apply(i, DisplayInfo::new)
+            ItemStackTemplate.CODEC.fieldOf("icon").forGetter(DisplayInfo::icon),
+            ComponentSerialization.CODEC.fieldOf("title").forGetter(DisplayInfo::title),
+            ComponentSerialization.CODEC.fieldOf("description").forGetter(DisplayInfo::description),
+            ClientAsset.ResourceTexture.CODEC.optionalFieldOf("background").forGetter(DisplayInfo::background),
+            AdvancementType.CODEC.optionalFieldOf("frame", AdvancementType.TASK).forGetter(DisplayInfo::type),
+            Codec.BOOL.optionalFieldOf("show_toast", true).forGetter(DisplayInfo::showToast),
+            Codec.BOOL.optionalFieldOf("announce_to_chat", true).forGetter(DisplayInfo::announceToChat),
+            Codec.BOOL.optionalFieldOf("hidden", false).forGetter(DisplayInfo::hidden)
+         )
+         .apply(i, DisplayInfo::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, DisplayInfo> STREAM_CODEC = StreamCodec.ofMember(
       DisplayInfo::serializeToNetwork, DisplayInfo::fromNetwork

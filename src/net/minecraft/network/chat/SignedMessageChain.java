@@ -2,7 +2,6 @@ package net.minecraft.network.chat;
 
 import com.mojang.logging.LogUtils;
 import java.time.Instant;
-import java.util.Objects;
 import java.util.UUID;
 import java.util.function.BooleanSupplier;
 import net.minecraft.util.SignatureValidator;
@@ -13,8 +12,7 @@ import org.slf4j.Logger;
 
 public class SignedMessageChain {
    private static final Logger LOGGER = LogUtils.getLogger();
-   @Nullable
-   private SignedMessageLink nextLink;
+   private @Nullable SignedMessageLink nextLink;
    private Instant lastTimeStamp = Instant.EPOCH;
 
    public SignedMessageChain(final UUID profileId, final UUID sessionId) {
@@ -26,49 +24,49 @@ public class SignedMessageChain {
          SignedMessageLink link = this.nextLink;
          if (link == null) {
             return null;
-         } else {
-            this.nextLink = link.advance();
-            return new MessageSignature(signer.sign(output -> PlayerChatMessage.updateSignature(output, link, body)));
          }
+
+         this.nextLink = link.advance();
+         return new MessageSignature(signer.sign(output -> PlayerChatMessage.updateSignature(output, link, body)));
       };
    }
 
    public SignedMessageChain.Decoder decoder(final ProfilePublicKey profilePublicKey) {
       final SignatureValidator signatureValidator = profilePublicKey.createSignatureValidator();
       return new SignedMessageChain.Decoder() {
-         {
-            Objects.requireNonNull(SignedMessageChain.this);
-         }
-
          @Override
-         public PlayerChatMessage unpack(@Nullable final MessageSignature signature, final SignedMessageBody body) throws SignedMessageChain.DecodeException {
+         public PlayerChatMessage unpack(final @Nullable MessageSignature signature, final SignedMessageBody body) throws SignedMessageChain.DecodeException {
             if (signature == null) {
                throw new SignedMessageChain.DecodeException(SignedMessageChain.DecodeException.MISSING_PROFILE_KEY);
-            } else if (profilePublicKey.data().hasExpired()) {
-               throw new SignedMessageChain.DecodeException(SignedMessageChain.DecodeException.EXPIRED_PROFILE_KEY);
-            } else {
-               SignedMessageLink link = SignedMessageChain.this.nextLink;
-               if (link == null) {
-                  throw new SignedMessageChain.DecodeException(SignedMessageChain.DecodeException.CHAIN_BROKEN);
-               } else if (body.timeStamp().isBefore(SignedMessageChain.this.lastTimeStamp)) {
-                  this.setChainBroken();
-                  throw new SignedMessageChain.DecodeException(SignedMessageChain.DecodeException.OUT_OF_ORDER_CHAT);
-               } else {
-                  SignedMessageChain.this.lastTimeStamp = body.timeStamp();
-                  PlayerChatMessage unpacked = new PlayerChatMessage(link, signature, body, null, FilterMask.PASS_THROUGH);
-                  if (!unpacked.verify(signatureValidator)) {
-                     this.setChainBroken();
-                     throw new SignedMessageChain.DecodeException(SignedMessageChain.DecodeException.INVALID_SIGNATURE);
-                  } else {
-                     if (unpacked.hasExpiredServer(Instant.now())) {
-                        SignedMessageChain.LOGGER.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", body.content());
-                     }
-
-                     SignedMessageChain.this.nextLink = link.advance();
-                     return unpacked;
-                  }
-               }
             }
+
+            if (profilePublicKey.data().hasExpired()) {
+               throw new SignedMessageChain.DecodeException(SignedMessageChain.DecodeException.EXPIRED_PROFILE_KEY);
+            }
+
+            SignedMessageLink link = SignedMessageChain.this.nextLink;
+            if (link == null) {
+               throw new SignedMessageChain.DecodeException(SignedMessageChain.DecodeException.CHAIN_BROKEN);
+            }
+
+            if (body.timeStamp().isBefore(SignedMessageChain.this.lastTimeStamp)) {
+               this.setChainBroken();
+               throw new SignedMessageChain.DecodeException(SignedMessageChain.DecodeException.OUT_OF_ORDER_CHAT);
+            }
+
+            SignedMessageChain.this.lastTimeStamp = body.timeStamp();
+            PlayerChatMessage unpacked = new PlayerChatMessage(link, signature, body, null, FilterMask.PASS_THROUGH);
+            if (!unpacked.verify(signatureValidator)) {
+               this.setChainBroken();
+               throw new SignedMessageChain.DecodeException(SignedMessageChain.DecodeException.INVALID_SIGNATURE);
+            }
+
+            if (unpacked.hasExpiredServer(Instant.now())) {
+               SignedMessageChain.LOGGER.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", body.content());
+            }
+
+            SignedMessageChain.this.nextLink = link.advance();
+            return unpacked;
          }
 
          @Override
@@ -112,7 +110,6 @@ public class SignedMessageChain {
    public interface Encoder {
       SignedMessageChain.Encoder UNSIGNED = body -> null;
 
-      @Nullable
-      MessageSignature pack(SignedMessageBody body);
+      @Nullable MessageSignature pack(SignedMessageBody body);
    }
 }

@@ -7,9 +7,7 @@ public record FeatureRendererType<Submit extends SubmitNode>(int id, String name
    private static final AtomicInteger NEXT_ID = new AtomicInteger();
 
    @Deprecated
-   public FeatureRendererType(int id, String name) {
-      this.id = id;
-      this.name = name;
+   public FeatureRendererType {
    }
 
    public static <Submit extends SubmitNode> FeatureRendererType<Submit> create(final String name) {

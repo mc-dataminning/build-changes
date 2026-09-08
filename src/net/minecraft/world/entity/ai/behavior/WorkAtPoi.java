@@ -21,13 +21,15 @@ public class WorkAtPoi extends Behavior<Villager> {
    protected boolean checkExtraStartConditions(final ServerLevel level, final Villager body) {
       if (level.getGameTime() - this.lastCheck < 300L) {
          return false;
-      } else if (level.getRandom().nextInt(2) != 0) {
-         return false;
-      } else {
-         this.lastCheck = level.getGameTime();
-         GlobalPos target = body.getBrain().getMemory(MemoryModuleType.JOB_SITE).get();
-         return target.dimension() == level.dimension() && target.pos().closerToCenterThan(body.position(), 1.73);
       }
+
+      if (level.getRandom().nextInt(2) != 0) {
+         return false;
+      }
+
+      this.lastCheck = level.getGameTime();
+      GlobalPos target = body.getBrain().getMemory(MemoryModuleType.JOB_SITE).get();
+      return target.dimension() == level.dimension() && target.pos().closerToCenterThan(body.position(), 1.73);
    }
 
    protected void start(final ServerLevel level, final Villager body, final long timestamp) {
@@ -48,9 +50,9 @@ public class WorkAtPoi extends Behavior<Villager> {
       Optional<GlobalPos> jobSiteMemory = body.getBrain().getMemory(MemoryModuleType.JOB_SITE);
       if (jobSiteMemory.isEmpty()) {
          return false;
-      } else {
-         GlobalPos target = jobSiteMemory.get();
-         return target.dimension() == level.dimension() && target.pos().closerToCenterThan(body.position(), 1.73);
       }
+
+      GlobalPos target = jobSiteMemory.get();
+      return target.dimension() == level.dimension() && target.pos().closerToCenterThan(body.position(), 1.73);
    }
 }

@@ -105,10 +105,10 @@ public class PlayerSocialManager {
    public boolean isBlocked(final UUID id) {
       if (!this.onlineMode) {
          return false;
-      } else {
-         this.pendingBlockListRefresh.join();
-         return this.service.isBlockedPlayer(id);
       }
+
+      this.pendingBlockListRefresh.join();
+      return this.service.isBlockedPlayer(id);
    }
 
    public Set<UUID> getHiddenPlayers() {
@@ -165,8 +165,8 @@ public class PlayerSocialManager {
          }, Util.ioPool())
          .thenComposeAsync(
             result -> result == ResultCode.SUCCESS
-                  ? this.remoteFriendListUpdateHandler.forceUpdate().thenApply(var1x -> result)
-                  : CompletableFuture.completedFuture(result),
+               ? this.remoteFriendListUpdateHandler.forceUpdate().thenApply(var1x -> result)
+               : CompletableFuture.completedFuture(result),
             Util.ioPool()
          );
    }
@@ -233,6 +233,6 @@ public class PlayerSocialManager {
       return friends.stream().map(friend -> new PlayerSocialManager.PlayerData(friend.profileId(), friend.name())).toList();
    }
 
-   public static record PlayerData(UUID id, String name) {
+   public record PlayerData(UUID id, String name) {
    }
 }

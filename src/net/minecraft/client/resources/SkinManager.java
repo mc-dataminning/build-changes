@@ -15,7 +15,6 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.nio.file.Path;
 import java.time.Duration;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
@@ -51,23 +50,19 @@ public class SkinManager {
          .expireAfterAccess(Duration.ofSeconds(15L))
          .build(
             new CacheLoader<SkinManager.CacheKey, CompletableFuture<Optional<PlayerSkin>>>() {
-               {
-                  Objects.requireNonNull(SkinManager.this);
-               }
-
                public CompletableFuture<Optional<PlayerSkin>> load(final SkinManager.CacheKey key) {
                   return CompletableFuture.<MinecraftProfileTextures>supplyAsync(() -> {
                         Property packedTextures = key.packedTextures();
                         if (packedTextures == null) {
                            return MinecraftProfileTextures.EMPTY;
-                        } else {
-                           MinecraftProfileTextures textures = services.sessionService().unpackTextures(packedTextures);
-                           if (textures.signatureState() == SignatureState.INVALID) {
-                              SkinManager.LOGGER.warn("Profile contained invalid signature for textures property (profile id: {})", key.profileId());
-                           }
-
-                           return textures;
                         }
+
+                        MinecraftProfileTextures textures = services.sessionService().unpackTextures(packedTextures);
+                        if (textures.signatureState() == SignatureState.INVALID) {
+                           SkinManager.LOGGER.warn("Profile contained invalid signature for textures property (profile id: {})", key.profileId());
+                        }
+
+                        return textures;
                      }, Util.backgroundExecutor().forName("unpackSkinTextures"))
                      .thenComposeAsync(textures -> SkinManager.this.registerTextures(key.profileId(), textures), mainThreadExecutor)
                      .handle((playerSkin, throwable) -> {
@@ -133,18 +128,15 @@ public class SkinManager {
          );
    }
 
-   private static record CacheKey(UUID profileId, @Nullable Property packedTextures) {
+   private record CacheKey(UUID profileId, @Nullable Property packedTextures) {
    }
 
    private class TextureCache {
       private final Path root;
       private final Type type;
-      private final Map<String, CompletableFuture<ClientAsset.Texture>> textures;
+      private final Map<String, CompletableFuture<ClientAsset.Texture>> textures = new Object2ObjectOpenHashMap();
 
       private TextureCache(final Path root, final Type type) {
-         Objects.requireNonNull(SkinManager.this);
-         super();
-         this.textures = new Object2ObjectOpenHashMap();
          this.root = root;
          this.type = type;
       }

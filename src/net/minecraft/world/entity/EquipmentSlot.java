@@ -30,7 +30,7 @@ public enum EquipmentSlot implements StringRepresentable {
    private final int id;
    private final String name;
 
-   private EquipmentSlot(final EquipmentSlot.Type type, final int index, final int countLimit, final int id, final String name) {
+   EquipmentSlot(final EquipmentSlot.Type type, final int index, final int countLimit, final int id, final String name) {
       this.type = type;
       this.index = index;
       this.countLimit = countLimit;
@@ -38,7 +38,7 @@ public enum EquipmentSlot implements StringRepresentable {
       this.name = name;
    }
 
-   private EquipmentSlot(final EquipmentSlot.Type type, final int index, final int filterFlag, final String name) {
+   EquipmentSlot(final EquipmentSlot.Type type, final int index, final int filterFlag, final String name) {
       this(type, index, 0, filterFlag, name);
    }
 
@@ -92,7 +92,7 @@ public enum EquipmentSlot implements StringRepresentable {
       }
    }
 
-   public static enum Type {
+   public enum Type {
       HAND,
       HUMANOID_ARMOR,
       ANIMAL_ARMOR,

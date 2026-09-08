@@ -13,10 +13,9 @@ import org.jspecify.annotations.Nullable;
 
 public class WeighedSoundEvents implements Weighted<Sound> {
    private final List<Weighted<Sound>> list = Lists.newArrayList();
-   @Nullable
-   private final Component subtitle;
+   private final @Nullable Component subtitle;
 
-   public WeighedSoundEvents(final Identifier location, @Nullable final String subtitle) {
+   public WeighedSoundEvents(final Identifier location, final @Nullable String subtitle) {
       if (SharedConstants.DEBUG_SUBTITLES) {
          MutableComponent components = Component.literal(location.getPath());
          if ("FOR THE DEBUG!".equals(subtitle)) {
@@ -62,8 +61,7 @@ public class WeighedSoundEvents implements Weighted<Sound> {
       this.list.add(sound);
    }
 
-   @Nullable
-   public Component getSubtitle() {
+   public @Nullable Component getSubtitle() {
       return this.subtitle;
    }
 

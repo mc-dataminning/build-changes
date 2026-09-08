@@ -15,37 +15,37 @@ public class AssignProfessionFromJobSite {
    public static BehaviorControl<Villager> create() {
       return BehaviorBuilder.create(
          i -> i.group(i.present(MemoryModuleType.POTENTIAL_JOB_SITE), i.registered(MemoryModuleType.JOB_SITE))
-               .apply(
-                  i,
-                  (potentialJobSite, jobSite) -> (level, body, timestamp) -> {
-                        GlobalPos pos = i.get(potentialJobSite);
-                        if (!pos.pos().closerToCenterThan(body.position(), 2.0)) {
-                           return false;
-                        } else {
-                           potentialJobSite.erase();
-                           jobSite.set(pos);
-                           level.broadcastEntityEvent(body, (byte)14);
-                           if (!body.getVillagerData().profession().is(VillagerProfession.NONE)) {
-                              return true;
-                           } else {
-                              MinecraftServer server = level.getServer();
-                              Optional.ofNullable(server.getLevel(pos.dimension()))
-                                 .flatMap(l -> l.getPoiManager().getType(pos.pos()))
-                                 .flatMap(
-                                    poiType -> BuiltInRegistries.VILLAGER_PROFESSION
-                                          .listElements()
-                                          .filter(profession -> profession.value().heldJobSite().test((Holder<PoiType>)poiType))
-                                          .findFirst()
-                                 )
-                                 .ifPresent(profession -> {
-                                    body.setVillagerData(body.getVillagerData().withProfession(profession));
-                                    body.refreshBrain(level);
-                                 });
-                              return true;
-                           }
-                        }
-                     }
-               )
+            .apply(
+               i,
+               (potentialJobSite, jobSite) -> (level, body, timestamp) -> {
+                  GlobalPos pos = i.get(potentialJobSite);
+                  if (!pos.pos().closerToCenterThan(body.position(), 2.0)) {
+                     return false;
+                  }
+
+                  potentialJobSite.erase();
+                  jobSite.set(pos);
+                  level.broadcastEntityEvent(body, (byte)14);
+                  if (!body.getVillagerData().profession().is(VillagerProfession.NONE)) {
+                     return true;
+                  }
+
+                  MinecraftServer server = level.getServer();
+                  Optional.ofNullable(server.getLevel(pos.dimension()))
+                     .flatMap(l -> l.getPoiManager().getType(pos.pos()))
+                     .flatMap(
+                        poiType -> BuiltInRegistries.VILLAGER_PROFESSION
+                           .listElements()
+                           .filter(profession -> profession.value().heldJobSite().test((Holder<PoiType>)poiType))
+                           .findFirst()
+                     )
+                     .ifPresent(profession -> {
+                        body.setVillagerData(body.getVillagerData().withProfession(profession));
+                        body.refreshBrain(level);
+                     });
+                  return true;
+               }
+            )
       );
    }
 }

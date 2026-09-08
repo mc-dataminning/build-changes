@@ -1,7 +1,6 @@
 package net.minecraft.client.gui.screens.dialog;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Supplier;
 import net.minecraft.client.Minecraft;
@@ -40,15 +39,13 @@ public abstract class DialogScreen<T extends Dialog> extends Screen {
    );
    private final T dialog;
    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-   @Nullable
-   private final Screen previousScreen;
-   @Nullable
-   private ScrollableLayout bodyScroll;
+   private final @Nullable Screen previousScreen;
+   private @Nullable ScrollableLayout bodyScroll;
    private Button warningButton;
    private final DialogConnectionAccess connectionAccess;
    private Supplier<Optional<ClickEvent>> onClose = DialogControlSet.EMPTY_ACTION;
 
-   public DialogScreen(@Nullable final Screen previousScreen, final T dialog, final DialogConnectionAccess connectionAccess) {
+   public DialogScreen(final @Nullable Screen previousScreen, final T dialog, final DialogConnectionAccess connectionAccess) {
       super(dialog.common().title());
       this.dialog = dialog;
       this.previousScreen = previousScreen;
@@ -159,11 +156,11 @@ public abstract class DialogScreen<T extends Dialog> extends Screen {
    }
 
    public void runAction(final Optional<ClickEvent> closeAction, final DialogAction afterAction) {
-      Screen screenToActivate = (Screen)(switch (afterAction) {
+      Screen screenToActivate = switch (afterAction) {
          case NONE -> this;
          case CLOSE -> this.previousScreen;
          case WAIT_FOR_RESPONSE -> new WaitingForResponseScreen(this.previousScreen);
-      });
+      };
       if (closeAction.isPresent()) {
          this.handleDialogClickEvent(closeAction.get(), screenToActivate);
       } else {
@@ -171,20 +168,10 @@ public abstract class DialogScreen<T extends Dialog> extends Screen {
       }
    }
 
-   private void handleDialogClickEvent(final ClickEvent event, @Nullable final Screen activeScreen) {
-      Objects.requireNonNull(event);
+   private void handleDialogClickEvent(final ClickEvent event, final @Nullable Screen activeScreen) {
       switch (event) {
-         case ClickEvent.RunCommand var5:
-            ClickEvent.RunCommand var10000 = var5;
-
-            try {
-               var11 = var10000.command();
-            } catch (Throwable var9) {
-               throw new MatchException(var9.toString(), var9);
-            }
-
-            String var10 = var11;
-            this.connectionAccess.runCommand(Commands.trimOptionalPrefix(var10), activeScreen);
+         case ClickEvent.RunCommand(String command):
+            this.connectionAccess.runCommand(Commands.trimOptionalPrefix(command), activeScreen);
             break;
          case ClickEvent.ShowDialog dialog:
             this.connectionAccess.openDialog(dialog.dialog(), activeScreen);
@@ -198,8 +185,7 @@ public abstract class DialogScreen<T extends Dialog> extends Screen {
       }
    }
 
-   @Nullable
-   public Screen previousScreen() {
+   public @Nullable Screen previousScreen() {
       return this.previousScreen;
    }
 
@@ -230,7 +216,7 @@ public abstract class DialogScreen<T extends Dialog> extends Screen {
    }
 
    public static class WarningScreen extends ConfirmScreen {
-      private final MutableObject<Screen> returnScreen;
+      private final MutableObject<@Nullable Screen> returnScreen;
 
       public static Screen create(final Minecraft minecraft, final DialogConnectionAccess connectionAccess, final Screen returnScreen) {
          return new DialogScreen.WarningScreen(minecraft, connectionAccess, new MutableObject(returnScreen));
@@ -253,12 +239,11 @@ public abstract class DialogScreen<T extends Dialog> extends Screen {
          this.returnScreen = returnScreen;
       }
 
-      @Nullable
-      public Screen returnScreen() {
+      public @Nullable Screen returnScreen() {
          return (Screen)this.returnScreen.get();
       }
 
-      public void updateReturnScreen(@Nullable final Screen newReturnScreen) {
+      public void updateReturnScreen(final @Nullable Screen newReturnScreen) {
          this.returnScreen.setValue(newReturnScreen);
       }
    }

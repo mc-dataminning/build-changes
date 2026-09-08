@@ -56,9 +56,7 @@ public class FenceGateBlock extends HorizontalDirectionalBlock {
    public FenceGateBlock(final WoodType type, final BlockBehaviour.Properties properties) {
       super(properties.sound(type.soundType()));
       this.type = type;
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(OPEN, Boolean.valueOf(false)).setValue(POWERED, Boolean.valueOf(false)).setValue(IN_WALL, Boolean.valueOf(false))
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(OPEN, false).setValue(POWERED, false).setValue(IN_WALL, false));
    }
 
    @Override
@@ -81,10 +79,10 @@ public class FenceGateBlock extends HorizontalDirectionalBlock {
       Direction.Axis axis = directionToNeighbour.getAxis();
       if (state.getValue(FACING).getClockWise().getAxis() != axis) {
          return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-      } else {
-         boolean inWall = this.isWall(neighbourState) || this.isWall(level.getBlockState(pos.relative(directionToNeighbour.getOpposite())));
-         return state.setValue(IN_WALL, Boolean.valueOf(inWall));
       }
+
+      boolean inWall = this.isWall(neighbourState) || this.isWall(level.getBlockState(pos.relative(directionToNeighbour.getOpposite())));
+      return state.setValue(IN_WALL, inWall);
    }
 
    @Override
@@ -124,11 +122,7 @@ public class FenceGateBlock extends HorizontalDirectionalBlock {
       Direction.Axis axis = direction.getAxis();
       boolean inWall = axis == Direction.Axis.Z && (this.isWall(level.getBlockState(pos.west())) || this.isWall(level.getBlockState(pos.east())))
          || axis == Direction.Axis.X && (this.isWall(level.getBlockState(pos.north())) || this.isWall(level.getBlockState(pos.south())));
-      return this.defaultBlockState()
-         .setValue(FACING, direction)
-         .setValue(OPEN, Boolean.valueOf(isOpen))
-         .setValue(POWERED, Boolean.valueOf(isOpen))
-         .setValue(IN_WALL, Boolean.valueOf(inWall));
+      return this.defaultBlockState().setValue(FACING, direction).setValue(OPEN, isOpen).setValue(POWERED, isOpen).setValue(IN_WALL, inWall);
    }
 
    private boolean isWall(final BlockState state) {
@@ -138,7 +132,7 @@ public class FenceGateBlock extends HorizontalDirectionalBlock {
    @Override
    protected InteractionResult useWithoutItem(BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult) {
       if (state.getValue(OPEN)) {
-         state = state.setValue(OPEN, Boolean.valueOf(false));
+         state = state.setValue(OPEN, false);
          level.setBlock(pos, state, 10);
       } else {
          Direction direction = player.getDirection();
@@ -146,7 +140,7 @@ public class FenceGateBlock extends HorizontalDirectionalBlock {
             state = state.setValue(FACING, direction);
          }
 
-         state = state.setValue(OPEN, Boolean.valueOf(true));
+         state = state.setValue(OPEN, true);
          level.setBlock(pos, state, 10);
       }
 
@@ -164,7 +158,7 @@ public class FenceGateBlock extends HorizontalDirectionalBlock {
    ) {
       if (explosion.canTriggerBlocks() && !state.getValue(POWERED)) {
          boolean open = state.getValue(OPEN);
-         level.setBlockAndUpdate(pos, state.setValue(OPEN, Boolean.valueOf(!open)));
+         level.setBlockAndUpdate(pos, state.setValue(OPEN, !open));
          level.playSound(
             null, pos, open ? this.type.fenceGateClose() : this.type.fenceGateOpen(), SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F
          );
@@ -176,12 +170,12 @@ public class FenceGateBlock extends HorizontalDirectionalBlock {
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       if (!level.isClientSide()) {
          boolean hasPower = level.hasNeighborSignal(pos);
          if (state.getValue(POWERED) != hasPower) {
-            level.setBlock(pos, state.setValue(POWERED, Boolean.valueOf(hasPower)).setValue(OPEN, Boolean.valueOf(hasPower)), 2);
+            level.setBlock(pos, state.setValue(POWERED, hasPower).setValue(OPEN, hasPower), 2);
             if (state.getValue(OPEN) != hasPower) {
                level.playSound(
                   null,

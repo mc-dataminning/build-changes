@@ -33,8 +33,8 @@ public interface WorldCarver {
       final CarverOutput output,
       final WorldCarver.CarveSkipChecker skipChecker
    ) {
-      double centerX = (double)chunkPos.getMiddleBlockX();
-      double centerZ = (double)chunkPos.getMiddleBlockZ();
+      double centerX = chunkPos.getMiddleBlockX();
+      double centerZ = chunkPos.getMiddleBlockZ();
       double maxDelta = 16.0 + horizontalRadius * 2.0;
       if (!(Math.abs(x - centerX) > maxDelta) && !(Math.abs(z - centerZ) > maxDelta)) {
          int chunkMinX = chunkPos.getMinBlockX();
@@ -48,14 +48,14 @@ public interface WorldCarver {
 
          for (int xIndex = minXIndex; xIndex <= maxXIndex; xIndex++) {
             int worldX = chunkPos.getBlockX(xIndex);
-            double xd = ((double)worldX + 0.5 - x) / horizontalRadius;
+            double xd = (worldX + 0.5 - x) / horizontalRadius;
 
             for (int zIndex = minZIndex; zIndex <= maxZIndex; zIndex++) {
                int worldZ = chunkPos.getBlockZ(zIndex);
-               double zd = ((double)worldZ + 0.5 - z) / horizontalRadius;
+               double zd = (worldZ + 0.5 - z) / horizontalRadius;
                if (!(xd * xd + zd * zd >= 1.0)) {
                   for (int worldY = maxY; worldY > minY; worldY--) {
-                     double yd = ((double)worldY - 0.5 - y) / verticalRadius;
+                     double yd = (worldY - 0.5 - y) / verticalRadius;
                      if (!skipChecker.shouldSkip(xd, yd, zd, worldY)) {
                         output.carve(xIndex, worldY, zIndex);
                      }
@@ -73,16 +73,16 @@ public interface WorldCarver {
    MapCodec<? extends WorldCarver> codec();
 
    static boolean canReach(final ChunkPos chunkPos, final double x, final double z, final int currentStep, final int totalSteps, final float thickness) {
-      double xMid = (double)chunkPos.getMiddleBlockX();
-      double zMid = (double)chunkPos.getMiddleBlockZ();
+      double xMid = chunkPos.getMiddleBlockX();
+      double zMid = chunkPos.getMiddleBlockZ();
       double xd = x - xMid;
       double zd = z - zMid;
-      double remaining = (double)(totalSteps - currentStep);
-      double rr = (double)(thickness + 2.0F + 16.0F);
+      double remaining = totalSteps - currentStep;
+      double rr = thickness + 2.0F + 16.0F;
       return xd * xd + zd * zd - remaining * remaining <= rr * rr;
    }
 
-   public interface CarveSkipChecker {
+   interface CarveSkipChecker {
       boolean shouldSkip(double xd, double yd, double zd, int y);
    }
 }

@@ -1,6 +1,5 @@
 package net.minecraft.client.gui.screens.packs;
 
-import java.util.Objects;
 import java.util.stream.Stream;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -19,6 +18,7 @@ import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.repository.PackCompatibility;
+import org.jspecify.annotations.Nullable;
 
 public class TransferableSelectionList extends ObjectSelectionList<TransferableSelectionList.Entry> {
    private static final Identifier SELECT_HIGHLIGHTED_SPRITE = Identifier.withDefaultNamespace("transferable_list/select_highlighted");
@@ -57,7 +57,7 @@ public class TransferableSelectionList extends ObjectSelectionList<TransferableS
       return this.getSelected() != null ? this.getSelected().keyPressed(event) : super.keyPressed(event);
    }
 
-   public void updateList(final Stream<PackSelectionModel.Entry> entries, final PackSelectionModel.EntryBase transferredEntry) {
+   public void updateList(final Stream<PackSelectionModel.Entry> entries, final PackSelectionModel.@Nullable EntryBase transferredEntry) {
       this.clearEntries();
       Component header = Component.empty().append(this.title).withStyle(ChatFormatting.UNDERLINE, ChatFormatting.BOLD);
       this.addEntry(new TransferableSelectionList.HeaderEntry(this.minecraft.font, header), (int)(9.0F * 1.5F));
@@ -74,11 +74,6 @@ public class TransferableSelectionList extends ObjectSelectionList<TransferableS
    }
 
    public abstract class Entry extends ObjectSelectionList.Entry<TransferableSelectionList.Entry> {
-      public Entry() {
-         Objects.requireNonNull(TransferableSelectionList.this);
-         super();
-      }
-
       @Override
       public int getWidth() {
          return super.getWidth() - (TransferableSelectionList.this.scrollable() ? TransferableSelectionList.this.scrollbarWidth() : 0);
@@ -92,8 +87,6 @@ public class TransferableSelectionList extends ObjectSelectionList<TransferableS
       private final Component text;
 
       public HeaderEntry(final Font font, final Component text) {
-         Objects.requireNonNull(TransferableSelectionList.this);
-         super();
          this.font = font;
          this.text = text;
       }
@@ -124,8 +117,6 @@ public class TransferableSelectionList extends ObjectSelectionList<TransferableS
       private final MultiLineTextWidget descriptionWidget;
 
       public PackEntry(final Minecraft minecraft, final TransferableSelectionList parent, final PackSelectionModel.Entry pack) {
-         Objects.requireNonNull(TransferableSelectionList.this);
-         super();
          this.minecraft = minecraft;
          this.pack = pack;
          this.parent = parent;
@@ -261,21 +252,21 @@ public class TransferableSelectionList extends ObjectSelectionList<TransferableS
          if (event.isConfirmation()) {
             this.keyboardSelection();
             return true;
-         } else {
-            if (event.hasShiftDown()) {
-               if (event.isUp()) {
-                  this.keyboardMoveUp();
-                  return true;
-               }
+         }
 
-               if (event.isDown()) {
-                  this.keyboardMoveDown();
-                  return true;
-               }
+         if (event.hasShiftDown()) {
+            if (event.isUp()) {
+               this.keyboardMoveUp();
+               return true;
             }
 
-            return super.keyPressed(event);
+            if (event.isDown()) {
+               this.keyboardMoveDown();
+               return true;
+            }
          }
+
+         return super.keyPressed(event);
       }
 
       private boolean showHoverOverlay() {

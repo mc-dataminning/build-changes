@@ -25,20 +25,22 @@ public class Sensing {
       int targetId = target.getId();
       if (this.seen.contains(targetId)) {
          return true;
-      } else if (this.unseen.contains(targetId)) {
-         return false;
-      } else {
-         ProfilerFiller profiler = Profiler.get();
-         profiler.push("hasLineOfSight");
-         boolean hasLineOfSight = this.mob.hasLineOfSight(target);
-         profiler.pop();
-         if (hasLineOfSight) {
-            this.seen.add(targetId);
-         } else {
-            this.unseen.add(targetId);
-         }
-
-         return hasLineOfSight;
       }
+
+      if (this.unseen.contains(targetId)) {
+         return false;
+      }
+
+      ProfilerFiller profiler = Profiler.get();
+      profiler.push("hasLineOfSight");
+      boolean hasLineOfSight = this.mob.hasLineOfSight(target);
+      profiler.pop();
+      if (hasLineOfSight) {
+         this.seen.add(targetId);
+      } else {
+         this.unseen.add(targetId);
+      }
+
+      return hasLineOfSight;
    }
 }

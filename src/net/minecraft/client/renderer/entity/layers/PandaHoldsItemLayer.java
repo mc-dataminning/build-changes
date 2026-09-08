@@ -27,8 +27,8 @@ public class PandaHoldsItemLayer extends RenderLayer<PandaRenderState, PandaMode
          float z = -0.6F;
          float y = 1.4F;
          if (state.isEating) {
-            z -= 0.2F * Mth.sin((double)(state.ageInTicks * 0.6F)) + 0.2F;
-            y -= 0.09F * Mth.sin((double)(state.ageInTicks * 0.6F));
+            z -= 0.2F * Mth.sin(state.ageInTicks * 0.6F) + 0.2F;
+            y -= 0.09F * Mth.sin(state.ageInTicks * 0.6F);
          }
 
          poseStack.pushPose();

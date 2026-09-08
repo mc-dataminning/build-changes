@@ -68,7 +68,7 @@ public interface RenderPass extends UncheckedAutoCloseable {
 
    void drawIndirect(GpuBufferSlice commands, final int drawCount);
 
-   public static record Draw<T>(
+   record Draw<T>(
       int slot,
       GpuBuffer vertexBuffer,
       @Nullable GpuBuffer indexBuffer,
@@ -91,13 +91,13 @@ public interface RenderPass extends UncheckedAutoCloseable {
       }
    }
 
-   public static record RenderArea(int x, int y, int width, int height) {
+   record RenderArea(int x, int y, int width, int height) {
       public boolean fillsTexture(final GpuTextureView texture) {
          return this.x == 0 && this.y == 0 && this.width == texture.getWidth(0) && this.height == texture.getHeight(0);
       }
    }
 
-   public interface UniformUploader {
+   interface UniformUploader {
       void setUniform(String name, GpuBufferSlice buffer);
 
       void pushConstants(ByteBuffer buffer);

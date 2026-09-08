@@ -65,8 +65,7 @@ public class Mannequin extends Avatar {
       this(EntityTypes.MANNEQUIN, level);
    }
 
-   @Nullable
-   public static Mannequin create(final EntityType<Mannequin> type, final Level level) {
+   public static @Nullable Mannequin create(final EntityType<Mannequin> type, final Level level) {
       return constructor.create(type, level);
    }
 
@@ -95,8 +94,7 @@ public class Mannequin extends Avatar {
       this.entityData.set(DATA_IMMOVABLE, immovable);
    }
 
-   @Nullable
-   protected Component getDescription() {
+   protected @Nullable Component getDescription() {
       return this.entityData.get(DATA_DESCRIPTION).orElse(null);
    }
 
@@ -154,9 +152,8 @@ public class Mannequin extends Avatar {
       this.setDescription(input.<Component>read("description", ComponentSerialization.CODEC).orElse(DEFAULT_DESCRIPTION));
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       return type == DataComponents.PROFILE ? castComponentValue((DataComponentType<T>)type, this.getProfile()) : super.get(type);
    }
 

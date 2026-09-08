@@ -11,7 +11,6 @@ import java.awt.event.FocusEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Collection;
-import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -77,8 +76,8 @@ public class MinecraftServerGui extends JComponent {
       try {
          this.add(this.buildChatPanel(), "Center");
          this.add(this.buildInfoPanel(), "West");
-      } catch (Exception var3) {
-         LOGGER.error("Couldn't build server GUI", var3);
+      } catch (Exception e) {
+         LOGGER.error("Couldn't build server GUI", e);
       }
    }
 
@@ -119,10 +118,6 @@ public class MinecraftServerGui extends JComponent {
          chatField.setText("");
       });
       chatArea.addFocusListener(new FocusAdapter() {
-         {
-            Objects.requireNonNull(MinecraftServerGui.this);
-         }
-
          @Override
          public void focusGained(final FocusEvent arg0) {
          }
@@ -163,7 +158,7 @@ public class MinecraftServerGui extends JComponent {
          JScrollBar scrollBar = scrollPane.getVerticalScrollBar();
          boolean shouldScroll = false;
          if (scrollPane.getViewport().getView() == console) {
-            shouldScroll = (double)scrollBar.getValue() + scrollBar.getSize().getHeight() + (double)(MONOSPACED.getSize() * 4) > (double)scrollBar.getMaximum();
+            shouldScroll = scrollBar.getValue() + scrollBar.getSize().getHeight() + MONOSPACED.getSize() * 4 > scrollBar.getMaximum();
          }
 
          try {

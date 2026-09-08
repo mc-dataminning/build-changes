@@ -33,19 +33,19 @@ public class ContextKeySet {
       public ContextKeySet.Builder required(final ContextKey<?> param) {
          if (this.optional.contains(param)) {
             throw new IllegalArgumentException("Parameter " + param.name() + " is already optional");
-         } else {
-            this.required.add(param);
-            return this;
          }
+
+         this.required.add(param);
+         return this;
       }
 
       public ContextKeySet.Builder optional(final ContextKey<?> param) {
          if (this.required.contains(param)) {
             throw new IllegalArgumentException("Parameter " + param.name() + " is already required");
-         } else {
-            this.optional.add(param);
-            return this;
          }
+
+         this.optional.add(param);
+         return this;
       }
 
       public ContextKeySet build() {

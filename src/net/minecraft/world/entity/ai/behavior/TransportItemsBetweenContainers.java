@@ -58,11 +58,9 @@ public class TransportItemsBetweenContainers extends Behavior<PathfinderMob> {
    private final Predicate<TransportItemsBetweenContainers.TransportItemTarget> shouldQueueForTarget;
    private final Consumer<PathfinderMob> onStartTravelling;
    private final Map<TransportItemsBetweenContainers.ContainerInteractionState, TransportItemsBetweenContainers.OnTargetReachedInteraction> onTargetInteractionActions;
-   @Nullable
-   private TransportItemsBetweenContainers.TransportItemTarget target = null;
+   private TransportItemsBetweenContainers.@Nullable TransportItemTarget target = null;
    private TransportItemsBetweenContainers.TransportItemState state;
-   @Nullable
-   private TransportItemsBetweenContainers.ContainerInteractionState interactionState;
+   private TransportItemsBetweenContainers.@Nullable ContainerInteractionState interactionState;
    private int ticksSinceReachingTarget;
 
    public TransportItemsBetweenContainers(
@@ -284,8 +282,7 @@ public class TransportItemsBetweenContainers extends Behavior<PathfinderMob> {
          LevelChunk levelChunk = level.getChunkSource().getChunkNow(chunkPos.x(), chunkPos.z());
          if (levelChunk != null) {
             for (BlockEntity potentialTarget : levelChunk.getBlockEntities().values()) {
-               if (potentialTarget instanceof ChestBlockEntity) {
-                  ChestBlockEntity chestBlockEntity = (ChestBlockEntity)potentialTarget;
+               if (potentialTarget instanceof ChestBlockEntity chestBlockEntity) {
                   double distance = chestBlockEntity.getBlockPos().distToCenterSqr(body.position());
                   if (distance < closestDistance) {
                      TransportItemsBetweenContainers.TransportItemTarget targetValidToPick = this.isTargetValidToPick(
@@ -304,8 +301,7 @@ public class TransportItemsBetweenContainers extends Behavior<PathfinderMob> {
       return target == null ? Optional.empty() : Optional.of(target);
    }
 
-   @Nullable
-   private TransportItemsBetweenContainers.TransportItemTarget isTargetValidToPick(
+   private TransportItemsBetweenContainers.@Nullable TransportItemTarget isTargetValidToPick(
       final PathfinderMob body,
       final Level level,
       final BlockEntity blockEntity,
@@ -314,30 +310,26 @@ public class TransportItemsBetweenContainers extends Behavior<PathfinderMob> {
       final AABB targetBlockSearchArea
    ) {
       BlockPos blockPos = blockEntity.getBlockPos();
-      boolean isWithinSearchArea = targetBlockSearchArea.contains((double)blockPos.getX(), (double)blockPos.getY(), (double)blockPos.getZ());
+      boolean isWithinSearchArea = targetBlockSearchArea.contains(blockPos.getX(), blockPos.getY(), blockPos.getZ());
       if (!isWithinSearchArea) {
          return null;
-      } else {
-         TransportItemsBetweenContainers.TransportItemTarget transportItemTarget = TransportItemsBetweenContainers.TransportItemTarget.tryCreatePossibleTarget(
-            blockEntity, level
-         );
-         if (transportItemTarget == null) {
-            return null;
-         } else {
-            boolean isValidTarget = this.isWantedBlock(body, transportItemTarget.state)
-               && !this.isPositionAlreadyVisited(visitedPositions, unreachablePositions, transportItemTarget, level)
-               && !this.isContainerLocked(transportItemTarget);
-            return isValidTarget ? transportItemTarget : null;
-         }
       }
+
+      TransportItemsBetweenContainers.TransportItemTarget transportItemTarget = TransportItemsBetweenContainers.TransportItemTarget.tryCreatePossibleTarget(
+         blockEntity, level
+      );
+      if (transportItemTarget == null) {
+         return null;
+      }
+
+      boolean isValidTarget = this.isWantedBlock(body, transportItemTarget.state)
+         && !this.isPositionAlreadyVisited(visitedPositions, unreachablePositions, transportItemTarget, level)
+         && !this.isContainerLocked(transportItemTarget);
+      return isValidTarget ? transportItemTarget : null;
    }
 
    private boolean isContainerLocked(final TransportItemsBetweenContainers.TransportItemTarget transportItemTarget) {
-      if (transportItemTarget.blockEntity instanceof BaseContainerBlockEntity blockEntity && blockEntity.isLocked()) {
-         return true;
-      }
-
-      return false;
+      return transportItemTarget.blockEntity instanceof BaseContainerBlockEntity blockEntity && blockEntity.isLocked();
    }
 
    private boolean hasValidTarget(final Level level, final PathfinderMob body) {
@@ -365,7 +357,7 @@ public class TransportItemsBetweenContainers extends Behavior<PathfinderMob> {
       return hasNotYetCreatedPathToTarget || this.targetIsReachableFromPosition(level, canReachTarget, posFromWhichToReachTarget, target, body);
    }
 
-   private Vec3 getPositionToReachTargetFrom(@Nullable final Path path, final PathfinderMob body) {
+   private Vec3 getPositionToReachTargetFrom(final @Nullable Path path, final PathfinderMob body) {
       boolean haveNoValidPath = path == null || path.getEndNode() == null;
       Vec3 bottomCenter = haveNoValidPath ? body.position() : Vec3.atBottomCenterOf(path.getEndNode().asBlockPos());
       return this.setMiddleYPosition(body, bottomCenter);
@@ -398,8 +390,7 @@ public class TransportItemsBetweenContainers extends Behavior<PathfinderMob> {
 
    private AABB getTargetSearchArea(final PathfinderMob mob) {
       int horizontalSearchDistance = this.getHorizontalSearchDistance(mob);
-      return new AABB(mob.blockPosition())
-         .inflate((double)horizontalSearchDistance, (double)this.getVerticalSearchDistance(mob), (double)horizontalSearchDistance);
+      return new AABB(mob.blockPosition()).inflate(horizontalSearchDistance, this.getVerticalSearchDistance(mob), horizontalSearchDistance);
    }
 
    private int getHorizontalSearchDistance(final PathfinderMob mob) {
@@ -487,7 +478,7 @@ public class TransportItemsBetweenContainers extends Behavior<PathfinderMob> {
    ) {
       Vec3 center = Vec3.atCenterOf(target.pos);
       return Direction.stream()
-         .map(direction -> center.add(0.5 * (double)direction.getStepX(), 0.5 * (double)direction.getStepY(), 0.5 * (double)direction.getStepZ()))
+         .map(direction -> center.add(0.5 * direction.getStepX(), 0.5 * direction.getStepY(), 0.5 * direction.getStepZ()))
          .map(hitTarget -> level.clip(new ClipContext(eyePosition, hitTarget, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, body)))
          .anyMatch(hitResult -> hitResult.getType() == HitResult.Type.BLOCK && hitResult.getBlockPos().equals(target.pos));
    }
@@ -615,7 +606,7 @@ public class TransportItemsBetweenContainers extends Behavior<PathfinderMob> {
       mob.setDeltaMovement(0.0, mob.getDeltaMovement().y, 0.0);
    }
 
-   public static enum ContainerInteractionState {
+   public enum ContainerInteractionState {
       PICKUP_ITEM,
       PICKUP_NO_ITEM,
       PLACE_ITEM,
@@ -626,33 +617,32 @@ public class TransportItemsBetweenContainers extends Behavior<PathfinderMob> {
    public interface OnTargetReachedInteraction extends TriConsumer<PathfinderMob, TransportItemsBetweenContainers.TransportItemTarget, Integer> {
    }
 
-   public static enum TransportItemState {
+   public enum TransportItemState {
       TRAVELLING,
       QUEUING,
       INTERACTING;
    }
 
-   public static record TransportItemTarget(BlockPos pos, Container container, BlockEntity blockEntity, BlockState state) {
-      @Nullable
-      public static TransportItemsBetweenContainers.TransportItemTarget tryCreatePossibleTarget(final BlockEntity blockEntity, final Level level) {
+   public record TransportItemTarget(BlockPos pos, Container container, BlockEntity blockEntity, BlockState state) {
+      public static TransportItemsBetweenContainers.@Nullable TransportItemTarget tryCreatePossibleTarget(final BlockEntity blockEntity, final Level level) {
          BlockPos blockPos = blockEntity.getBlockPos();
          BlockState blockState = blockEntity.getBlockState();
          Container container = getBlockEntityContainer(blockEntity, blockState, level, blockPos);
          return container != null ? new TransportItemsBetweenContainers.TransportItemTarget(blockPos, container, blockEntity, blockState) : null;
       }
 
-      @Nullable
-      public static TransportItemsBetweenContainers.TransportItemTarget tryCreatePossibleTarget(final BlockPos blockPos, final Level level) {
+      public static TransportItemsBetweenContainers.@Nullable TransportItemTarget tryCreatePossibleTarget(final BlockPos blockPos, final Level level) {
          BlockEntity blockEntity = level.getBlockEntity(blockPos);
          return blockEntity == null ? null : tryCreatePossibleTarget(blockEntity, level);
       }
 
-      @Nullable
-      private static Container getBlockEntityContainer(final BlockEntity blockEntity, final BlockState blockState, final Level level, final BlockPos blockPos) {
+      private static @Nullable Container getBlockEntityContainer(
+         final BlockEntity blockEntity, final BlockState blockState, final Level level, final BlockPos blockPos
+      ) {
          if (blockState.getBlock() instanceof ChestBlock chestBlock) {
             return ChestBlock.getContainer(chestBlock, blockState, level, blockPos, false);
          } else {
-            return blockEntity instanceof Container ? (Container)blockEntity : null;
+            return blockEntity instanceof Container container ? container : null;
          }
       }
    }

@@ -36,8 +36,7 @@ public class ServerboundTeleportToEntityPacket implements Packet<ServerGamePacke
       listener.handleTeleportToEntityPacket(this);
    }
 
-   @Nullable
-   public Entity getEntity(final ServerLevel level) {
+   public @Nullable Entity getEntity(final ServerLevel level) {
       return level.getEntity(this.uuid);
    }
 }

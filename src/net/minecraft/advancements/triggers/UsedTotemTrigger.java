@@ -8,7 +8,6 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemInstance;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
@@ -23,14 +22,13 @@ public class UsedTotemTrigger extends SimpleCriterionTrigger<UsedTotemTrigger.Tr
       this.trigger(player, t -> t.matches(itemStack));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<ItemPredicate> item)
-      implements SimpleCriterionTrigger.SimpleInstance {
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<ItemPredicate> item) implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<UsedTotemTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(UsedTotemTrigger.TriggerInstance::player),
-                  ItemPredicate.CODEC.optionalFieldOf("item").forGetter(UsedTotemTrigger.TriggerInstance::item)
-               )
-               .apply(i, UsedTotemTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(UsedTotemTrigger.TriggerInstance::player),
+               ItemPredicate.CODEC.optionalFieldOf("item").forGetter(UsedTotemTrigger.TriggerInstance::item)
+            )
+            .apply(i, UsedTotemTrigger.TriggerInstance::new)
       );
 
       public static Criterion<UsedTotemTrigger.TriggerInstance> usedTotem(final ItemPredicate item) {
@@ -43,7 +41,7 @@ public class UsedTotemTrigger extends SimpleCriterionTrigger<UsedTotemTrigger.Tr
       }
 
       public boolean matches(final ItemStack itemStack) {
-         return this.item.isEmpty() || this.item.get().test((ItemInstance)itemStack);
+         return this.item.isEmpty() || this.item.get().test(itemStack);
       }
    }
 }

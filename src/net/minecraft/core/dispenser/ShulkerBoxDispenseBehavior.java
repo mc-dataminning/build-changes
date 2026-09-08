@@ -22,8 +22,8 @@ public class ShulkerBoxDispenseBehavior extends OptionalDispenseItemBehavior {
 
          try {
             this.setSuccess(blockItem.place(new DirectionalPlaceContext(source.level(), relativePos, facing, dispensed, clickedFace)).consumesAction());
-         } catch (Exception var9) {
-            LOGGER.error("Error trying to place shulker box at {}", relativePos, var9);
+         } catch (Exception e) {
+            LOGGER.error("Error trying to place shulker box at {}", relativePos, e);
          }
       }
 

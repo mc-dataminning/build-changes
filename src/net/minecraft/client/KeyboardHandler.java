@@ -69,8 +69,7 @@ public class KeyboardHandler {
    private long debugCrashKeyReportedTime = -1L;
    private long debugCrashKeyReportedCount = -1L;
    private boolean usedDebugKeyAsModifier;
-   @Nullable
-   private PreeditEvent lastPreeditEvent;
+   private @Nullable PreeditEvent lastPreeditEvent;
 
    public KeyboardHandler(final Minecraft minecraft) {
       this.minecraft = minecraft;
@@ -176,185 +175,187 @@ public class KeyboardHandler {
    private boolean handleDebugKeys(final KeyEvent event) {
       if (this.debugCrashKeyTime > 0L && this.debugCrashKeyTime < Util.getMillis() - 100L) {
          return true;
-      } else if (SharedConstants.DEBUG_HOTKEYS && this.handleChunkDebugKeys(event)) {
+      }
+
+      if (SharedConstants.DEBUG_HOTKEYS && this.handleChunkDebugKeys(event)) {
          return true;
-      } else {
-         if (SharedConstants.DEBUG_FEATURE_COUNT) {
-            switch (event.shortcutKey()) {
-               case 108:
-                  FeatureCountTracker.logCounts();
-                  return true;
-               case 114:
-                  FeatureCountTracker.clearCounts();
-                  return true;
-            }
+      }
+
+      if (SharedConstants.DEBUG_FEATURE_COUNT) {
+         switch (event.shortcutKey()) {
+            case 108:
+               FeatureCountTracker.logCounts();
+               return true;
+            case 114:
+               FeatureCountTracker.clearCounts();
+               return true;
+         }
+      }
+
+      Options options = this.minecraft.options;
+      boolean debugAction = false;
+      if (options.keyDebugReloadChunk.matches(event)) {
+         this.minecraft.levelExtractor.allChanged();
+         this.debugFeedbackTranslated("debug.reload_chunks.message");
+         debugAction = true;
+      }
+
+      if (options.keyDebugShowHitboxes.matches(event) && this.minecraft.player != null && !this.minecraft.player.isReducedDebugInfo()) {
+         boolean renderHitBoxes = this.minecraft.debugEntries.toggleStatus(DebugScreenEntries.ENTITY_HITBOXES);
+         this.debugFeedbackTranslated(renderHitBoxes ? "debug.show_hitboxes.on" : "debug.show_hitboxes.off");
+         debugAction = true;
+      }
+
+      if (options.keyDebugClearChat.matches(event)) {
+         this.minecraft.gui.hud.getChat().clearMessages(false);
+         debugAction = true;
+      }
+
+      if (options.keyDebugShowChunkBorders.matches(event) && this.minecraft.player != null && !this.minecraft.player.isReducedDebugInfo()) {
+         boolean displayChunkborder = this.minecraft.debugEntries.toggleStatus(DebugScreenEntries.CHUNK_BORDERS);
+         this.debugFeedbackTranslated(displayChunkborder ? "debug.chunk_boundaries.on" : "debug.chunk_boundaries.off");
+         debugAction = true;
+      }
+
+      if (options.keyDebugShowAdvancedTooltips.matches(event)) {
+         options.advancedItemTooltips = !options.advancedItemTooltips;
+         this.debugFeedbackTranslated(options.advancedItemTooltips ? "debug.advanced_tooltips.on" : "debug.advanced_tooltips.off");
+         options.save();
+         debugAction = true;
+      }
+
+      if (options.keyDebugCopyRecreateCommand.matches(event)) {
+         if (this.minecraft.player != null && !this.minecraft.player.isReducedDebugInfo()) {
+            this.copyRecreateCommand(this.minecraft.player.permissions().hasPermission(Permissions.COMMANDS_GAMEMASTER), !event.hasShiftDown());
          }
 
-         Options options = this.minecraft.options;
-         boolean debugAction = false;
-         if (options.keyDebugReloadChunk.matches(event)) {
-            this.minecraft.levelExtractor.allChanged();
-            this.debugFeedbackTranslated("debug.reload_chunks.message");
-            debugAction = true;
+         debugAction = true;
+      }
+
+      if (options.keyDebugSpectate.matches(event)) {
+         if (this.minecraft.player == null || !GameModeCommand.PERMISSION_CHECK.check(this.minecraft.player.permissions())) {
+            this.debugFeedbackTranslated("debug.creative_spectator.error");
+         } else if (!this.minecraft.player.isSpectator()) {
+            this.minecraft.player.connection.send(new ServerboundChangeGameModePacket(GameType.SPECTATOR));
+         } else {
+            GameType newGameType = (GameType)MoreObjects.firstNonNull(this.minecraft.gameMode.getPreviousPlayerMode(), GameType.CREATIVE);
+            this.minecraft.player.connection.send(new ServerboundChangeGameModePacket(newGameType));
          }
 
-         if (options.keyDebugShowHitboxes.matches(event) && this.minecraft.player != null && !this.minecraft.player.isReducedDebugInfo()) {
-            boolean renderHitBoxes = this.minecraft.debugEntries.toggleStatus(DebugScreenEntries.ENTITY_HITBOXES);
-            this.debugFeedbackTranslated(renderHitBoxes ? "debug.show_hitboxes.on" : "debug.show_hitboxes.off");
-            debugAction = true;
+         debugAction = true;
+      }
+
+      if (options.keyDebugSwitchGameMode.matches(event) && this.minecraft.level != null && this.minecraft.gui.screen() == null) {
+         if (this.minecraft.canSwitchGameMode() && GameModeCommand.PERMISSION_CHECK.check(this.minecraft.player.permissions())) {
+            this.minecraft.gui.setScreen(new GameModeSwitcherScreen());
+         } else {
+            this.debugFeedbackTranslated("debug.gamemodes.error");
          }
 
-         if (options.keyDebugClearChat.matches(event)) {
-            this.minecraft.gui.hud.getChat().clearMessages(false);
-            debugAction = true;
-         }
+         debugAction = true;
+      }
 
-         if (options.keyDebugShowChunkBorders.matches(event) && this.minecraft.player != null && !this.minecraft.player.isReducedDebugInfo()) {
-            boolean displayChunkborder = this.minecraft.debugEntries.toggleStatus(DebugScreenEntries.CHUNK_BORDERS);
-            this.debugFeedbackTranslated(displayChunkborder ? "debug.chunk_boundaries.on" : "debug.chunk_boundaries.off");
-            debugAction = true;
-         }
-
-         if (options.keyDebugShowAdvancedTooltips.matches(event)) {
-            options.advancedItemTooltips = !options.advancedItemTooltips;
-            this.debugFeedbackTranslated(options.advancedItemTooltips ? "debug.advanced_tooltips.on" : "debug.advanced_tooltips.off");
-            options.save();
-            debugAction = true;
-         }
-
-         if (options.keyDebugCopyRecreateCommand.matches(event)) {
-            if (this.minecraft.player != null && !this.minecraft.player.isReducedDebugInfo()) {
-               this.copyRecreateCommand(this.minecraft.player.permissions().hasPermission(Permissions.COMMANDS_GAMEMASTER), !event.hasShiftDown());
-            }
-
-            debugAction = true;
-         }
-
-         if (options.keyDebugSpectate.matches(event)) {
-            if (this.minecraft.player == null || !GameModeCommand.PERMISSION_CHECK.check(this.minecraft.player.permissions())) {
-               this.debugFeedbackTranslated("debug.creative_spectator.error");
-            } else if (!this.minecraft.player.isSpectator()) {
-               this.minecraft.player.connection.send(new ServerboundChangeGameModePacket(GameType.SPECTATOR));
-            } else {
-               GameType newGameType = (GameType)MoreObjects.firstNonNull(this.minecraft.gameMode.getPreviousPlayerMode(), GameType.CREATIVE);
-               this.minecraft.player.connection.send(new ServerboundChangeGameModePacket(newGameType));
-            }
-
-            debugAction = true;
-         }
-
-         if (options.keyDebugSwitchGameMode.matches(event) && this.minecraft.level != null && this.minecraft.gui.screen() == null) {
-            if (this.minecraft.canSwitchGameMode() && GameModeCommand.PERMISSION_CHECK.check(this.minecraft.player.permissions())) {
-               this.minecraft.gui.setScreen(new GameModeSwitcherScreen());
-            } else {
-               this.debugFeedbackTranslated("debug.gamemodes.error");
-            }
-
-            debugAction = true;
-         }
-
-         if (options.keyDebugDebugOptions.matches(event)) {
-            if (this.minecraft.gui.screen() instanceof DebugOptionsScreen) {
+      if (options.keyDebugDebugOptions.matches(event)) {
+         if (this.minecraft.gui.screen() instanceof DebugOptionsScreen) {
+            this.minecraft.gui.screen().onClose();
+         } else if (this.minecraft.canInterruptScreen()) {
+            if (this.minecraft.gui.screen() != null) {
                this.minecraft.gui.screen().onClose();
-            } else if (this.minecraft.canInterruptScreen()) {
-               if (this.minecraft.gui.screen() != null) {
-                  this.minecraft.gui.screen().onClose();
-               }
-
-               this.minecraft.gui.setScreen(new DebugOptionsScreen());
             }
 
-            debugAction = true;
+            this.minecraft.gui.setScreen(new DebugOptionsScreen());
          }
 
-         if (options.keyDebugFocusPause.matches(event)) {
-            options.pauseOnLostFocus = !options.pauseOnLostFocus;
-            options.save();
-            this.debugFeedbackTranslated(options.pauseOnLostFocus ? "debug.pause_focus.on" : "debug.pause_focus.off");
-            debugAction = true;
-         }
+         debugAction = true;
+      }
 
-         if (options.keyDebugDumpDynamicTextures.matches(event)) {
-            Path gameDirectory = this.minecraft.gameDirectory.toPath().toAbsolutePath();
-            Path debugTexturePath = TextureUtil.getDebugTexturePath(gameDirectory);
-            this.minecraft.getTextureManager().dumpAllSheets(debugTexturePath);
-            Component pathComponent = Component.literal(gameDirectory.relativize(debugTexturePath).toString())
-               .withStyle(ChatFormatting.UNDERLINE)
-               .withStyle(s -> s.withClickEvent(new ClickEvent.OpenFile(debugTexturePath)));
-            this.debugFeedbackComponent(Component.translatable("debug.dump_dynamic_textures", pathComponent));
-            debugAction = true;
-         }
+      if (options.keyDebugFocusPause.matches(event)) {
+         options.pauseOnLostFocus = !options.pauseOnLostFocus;
+         options.save();
+         this.debugFeedbackTranslated(options.pauseOnLostFocus ? "debug.pause_focus.on" : "debug.pause_focus.off");
+         debugAction = true;
+      }
 
-         if (options.keyDebugReloadResourcePacks.matches(event)) {
-            this.debugFeedbackTranslated("debug.reload_resourcepacks.message");
-            this.minecraft.reloadResourcePacks();
-            debugAction = true;
-         }
+      if (options.keyDebugDumpDynamicTextures.matches(event)) {
+         Path gameDirectory = this.minecraft.gameDirectory.toPath().toAbsolutePath();
+         Path debugTexturePath = TextureUtil.getDebugTexturePath(gameDirectory);
+         this.minecraft.getTextureManager().dumpAllSheets(debugTexturePath);
+         Component pathComponent = Component.literal(gameDirectory.relativize(debugTexturePath).toString())
+            .withStyle(ChatFormatting.UNDERLINE)
+            .withStyle(s -> s.withClickEvent(new ClickEvent.OpenFile(debugTexturePath)));
+         this.debugFeedbackComponent(Component.translatable("debug.dump_dynamic_textures", pathComponent));
+         debugAction = true;
+      }
 
-         if (options.keyDebugProfiling.matches(event)) {
-            if (this.minecraft.debugClientMetricsStart(this::debugFeedbackComponent)) {
-               this.debugFeedbackComponent(
-                  Component.translatable(
-                     "debug.profiling.start", 10, options.keyDebugModifier.getTranslatedKeyMessage(), options.keyDebugProfiling.getTranslatedKeyMessage()
-                  )
-               );
-            }
+      if (options.keyDebugReloadResourcePacks.matches(event)) {
+         this.debugFeedbackTranslated("debug.reload_resourcepacks.message");
+         this.minecraft.reloadResourcePacks();
+         debugAction = true;
+      }
 
-            debugAction = true;
-         }
-
-         if (options.keyDebugCopyLocation.matches(event) && this.minecraft.player != null && !this.minecraft.player.isReducedDebugInfo()) {
-            this.debugFeedbackTranslated("debug.copy_location.message");
-            this.setClipboard(
-               String.format(
-                  Locale.ROOT,
-                  "/execute in %s run tp @s %.2f %.2f %.2f %.2f %.2f",
-                  this.minecraft.player.level().dimension().identifier(),
-                  this.minecraft.player.getX(),
-                  this.minecraft.player.getY(),
-                  this.minecraft.player.getZ(),
-                  this.minecraft.player.getYRot(),
-                  this.minecraft.player.getXRot()
+      if (options.keyDebugProfiling.matches(event)) {
+         if (this.minecraft.debugClientMetricsStart(this::debugFeedbackComponent)) {
+            this.debugFeedbackComponent(
+               Component.translatable(
+                  "debug.profiling.start", 10, options.keyDebugModifier.getTranslatedKeyMessage(), options.keyDebugProfiling.getTranslatedKeyMessage()
                )
             );
-            debugAction = true;
          }
 
-         if (options.keyDebugDumpVersion.matches(event)) {
-            this.debugFeedbackTranslated("debug.version.header");
-            VersionCommand.dumpVersion(this.minecraft::showDebugChat);
-            debugAction = true;
-         }
-
-         if (options.keyDebugPofilingChart.matches(event)) {
-            this.minecraft.getDebugOverlay().toggleProfilerChart();
-            debugAction = true;
-         }
-
-         if (options.keyDebugFpsCharts.matches(event)) {
-            this.minecraft.getDebugOverlay().toggleFpsCharts();
-            debugAction = true;
-         }
-
-         if (options.keyDebugNetworkCharts.matches(event)) {
-            this.minecraft.getDebugOverlay().toggleNetworkCharts();
-            debugAction = true;
-         }
-
-         if (options.keyDebugLightmapTexture.matches(event)) {
-            this.minecraft.getDebugOverlay().toggleLightmapTexture();
-            debugAction = true;
-         }
-
-         if (options.keyDebugSwitchTranslucencyMode.matches(event)) {
-            options.improvedTransparency().set(!this.minecraft.options.improvedTransparency().get());
-            options.save();
-            this.debugFeedbackTranslated(options.improvedTransparency().get() ? "debug.improvedTransparency.on" : "debug.improvedTransparency.off");
-            debugAction = true;
-         }
-
-         return debugAction;
+         debugAction = true;
       }
+
+      if (options.keyDebugCopyLocation.matches(event) && this.minecraft.player != null && !this.minecraft.player.isReducedDebugInfo()) {
+         this.debugFeedbackTranslated("debug.copy_location.message");
+         this.setClipboard(
+            String.format(
+               Locale.ROOT,
+               "/execute in %s run tp @s %.2f %.2f %.2f %.2f %.2f",
+               this.minecraft.player.level().dimension().identifier(),
+               this.minecraft.player.getX(),
+               this.minecraft.player.getY(),
+               this.minecraft.player.getZ(),
+               this.minecraft.player.getYRot(),
+               this.minecraft.player.getXRot()
+            )
+         );
+         debugAction = true;
+      }
+
+      if (options.keyDebugDumpVersion.matches(event)) {
+         this.debugFeedbackTranslated("debug.version.header");
+         VersionCommand.dumpVersion(this.minecraft::showDebugChat);
+         debugAction = true;
+      }
+
+      if (options.keyDebugPofilingChart.matches(event)) {
+         this.minecraft.getDebugOverlay().toggleProfilerChart();
+         debugAction = true;
+      }
+
+      if (options.keyDebugFpsCharts.matches(event)) {
+         this.minecraft.getDebugOverlay().toggleFpsCharts();
+         debugAction = true;
+      }
+
+      if (options.keyDebugNetworkCharts.matches(event)) {
+         this.minecraft.getDebugOverlay().toggleNetworkCharts();
+         debugAction = true;
+      }
+
+      if (options.keyDebugLightmapTexture.matches(event)) {
+         this.minecraft.getDebugOverlay().toggleLightmapTexture();
+         debugAction = true;
+      }
+
+      if (options.keyDebugSwitchTranslucencyMode.matches(event)) {
+         options.improvedTransparency().set(!this.minecraft.options.improvedTransparency().get());
+         options.save();
+         this.debugFeedbackTranslated(options.improvedTransparency().get() ? "debug.improvedTransparency.on" : "debug.improvedTransparency.off");
+         debugAction = true;
+      }
+
+      return debugAction;
    }
 
    private void copyRecreateCommand(final boolean addNbt, final boolean pullFromServer) {
@@ -408,7 +409,7 @@ public class KeyboardHandler {
       }
    }
 
-   private void copyCreateBlockCommand(final BlockState state, final BlockPos blockPos, @Nullable final CompoundTag entityTag) {
+   private void copyCreateBlockCommand(final BlockState state, final BlockPos blockPos, final @Nullable CompoundTag entityTag) {
       StringBuilder description = new StringBuilder(BlockStateParser.serialize(state));
       if (entityTag != null) {
          description.append(entityTag);
@@ -418,7 +419,7 @@ public class KeyboardHandler {
       this.setClipboard(command);
    }
 
-   private void copyCreateEntityCommand(final Identifier id, final Vec3 pos, @Nullable final CompoundTag entityTag) {
+   private void copyCreateEntityCommand(final Identifier id, final Vec3 pos, final @Nullable CompoundTag entityTag) {
       String command;
       if (entityTag != null) {
          entityTag.remove("UUID");
@@ -432,7 +433,7 @@ public class KeyboardHandler {
       this.setClipboard(command);
    }
 
-   public void keyPress(final long handle, @KeyEvent.Action final int action, final KeyEvent event) {
+   public void keyPress(final long handle, final @KeyEvent.Action int action, final KeyEvent event) {
       Window window = this.minecraft.getWindow();
       if (handle != 0L && handle == window.handle()) {
          this.minecraft.getFramerateLimitTracker().onInputReceived();
@@ -507,8 +508,8 @@ public class KeyboardHandler {
                         return;
                      }
                   }
-               } catch (Throwable var17) {
-                  CrashReport report = CrashReport.forThrowable(var17, "keyPressed event handler");
+               } catch (Throwable t) {
+                  CrashReport report = CrashReport.forThrowable(t, "keyPressed event handler");
                   CrashReportCategory keyDetails = report.addCategory("Key");
                   keyDetails.setDetail("Scancode", event.key());
                   keyDetails.setDetail("Keycode", event.keycode());
@@ -580,8 +581,8 @@ public class KeyboardHandler {
          if (screen != null && this.minecraft.gui.overlay() == null) {
             try {
                screen.charTyped(event);
-            } catch (Throwable var8) {
-               CrashReport report = CrashReport.forThrowable(var8, "charTyped event handler");
+            } catch (Throwable t) {
+               CrashReport report = CrashReport.forThrowable(t, "charTyped event handler");
                CrashReportCategory keyDetails = report.addCategory("Key");
                keyDetails.setDetail("Codepoint", event.codepoint());
                throw new ReportedException(report);
@@ -595,7 +596,7 @@ public class KeyboardHandler {
       text.codePoints().forEach(codepoint -> this.charTyped(handle, new CharacterEvent(codepoint)));
    }
 
-   public void textEditing(final long handle, @Nullable final PreeditEvent event) {
+   public void textEditing(final long handle, final @Nullable PreeditEvent event) {
       if (handle != 0L && handle == this.minecraft.getWindow().handle()) {
          this.lastPreeditEvent = event;
          Screen screen = this.minecraft.gui.screen();
@@ -609,11 +610,11 @@ public class KeyboardHandler {
       submitPreeditEvent(screen, this.lastPreeditEvent);
    }
 
-   public static void submitPreeditEvent(final GuiEventListener element, @Nullable final PreeditEvent event) {
+   public static void submitPreeditEvent(final GuiEventListener element, final @Nullable PreeditEvent event) {
       try {
          element.preeditUpdated(event);
-      } catch (Throwable var5) {
-         CrashReport report = CrashReport.forThrowable(var5, "IME pre-edit event handler");
+      } catch (Throwable t) {
+         CrashReport report = CrashReport.forThrowable(t, "IME pre-edit event handler");
          CrashReportCategory keyDetails = report.addCategory("Event");
          keyDetails.setDetail("Contents", () -> String.valueOf(event));
          throw new ReportedException(report);

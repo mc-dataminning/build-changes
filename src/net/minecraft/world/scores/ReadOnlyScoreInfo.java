@@ -10,8 +10,7 @@ public interface ReadOnlyScoreInfo {
 
    boolean isLocked();
 
-   @Nullable
-   NumberFormat numberFormat();
+   @Nullable NumberFormat numberFormat();
 
    default MutableComponent formatValue(final NumberFormat defaultFormat) {
       return Objects.requireNonNullElse(this.numberFormat(), defaultFormat).format(this.value());

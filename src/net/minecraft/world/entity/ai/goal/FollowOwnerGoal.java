@@ -11,8 +11,7 @@ import org.jspecify.annotations.Nullable;
 
 public class FollowOwnerGoal extends Goal {
    private final TamableAnimal tamable;
-   @Nullable
-   private LivingEntity owner;
+   private @Nullable LivingEntity owner;
    private final double speedModifier;
    private final PathNavigation navigation;
    private int timeToRecalcPath;
@@ -37,14 +36,18 @@ public class FollowOwnerGoal extends Goal {
       LivingEntity owner = this.tamable.getOwner();
       if (owner == null) {
          return false;
-      } else if (this.tamable.unableToMoveToOwner()) {
-         return false;
-      } else if (this.tamable.distanceToSqr(owner) < (double)(this.startDistance * this.startDistance)) {
-         return false;
-      } else {
-         this.owner = owner;
-         return true;
       }
+
+      if (this.tamable.unableToMoveToOwner()) {
+         return false;
+      }
+
+      if (this.tamable.distanceToSqr(owner) < this.startDistance * this.startDistance) {
+         return false;
+      }
+
+      this.owner = owner;
+      return true;
    }
 
    @Override
@@ -52,7 +55,7 @@ public class FollowOwnerGoal extends Goal {
       if (this.navigation.isDone()) {
          return false;
       } else {
-         return this.tamable.unableToMoveToOwner() ? false : !(this.tamable.distanceToSqr(this.owner) <= (double)(this.stopDistance * this.stopDistance));
+         return this.tamable.unableToMoveToOwner() ? false : !(this.tamable.distanceToSqr(this.owner) <= this.stopDistance * this.stopDistance);
       }
    }
 
@@ -74,7 +77,7 @@ public class FollowOwnerGoal extends Goal {
    public void tick() {
       boolean isOwnerFarAway = this.tamable.shouldTryTeleportToOwner();
       if (!isOwnerFarAway) {
-         this.tamable.getLookControl().setLookAt(this.owner, 10.0F, (float)this.tamable.getMaxHeadXRot());
+         this.tamable.getLookControl().setLookAt(this.owner, 10.0F, this.tamable.getMaxHeadXRot());
       }
 
       if (--this.timeToRecalcPath <= 0) {

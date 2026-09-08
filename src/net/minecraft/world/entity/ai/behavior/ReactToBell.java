@@ -9,12 +9,12 @@ import net.minecraft.world.entity.schedule.Activity;
 public class ReactToBell {
    public static BehaviorControl<LivingEntity> create() {
       return BehaviorBuilder.create(i -> i.group(i.present(MemoryModuleType.HEARD_BELL_TIME)).apply(i, heartTime -> (level, body, timestamp) -> {
-               Raid nearbyRaid = level.getRaidAt(body.blockPosition());
-               if (nearbyRaid == null) {
-                  body.getBrain().setActiveActivityIfPossible(Activity.HIDE);
-               }
+         Raid nearbyRaid = level.getRaidAt(body.blockPosition());
+         if (nearbyRaid == null) {
+            body.getBrain().setActiveActivityIfPossible(Activity.HIDE);
+         }
 
-               return true;
-            }));
+         return true;
+      }));
    }
 }

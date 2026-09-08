@@ -19,9 +19,9 @@ public abstract class RisingParticle extends SingleQuadParticle {
       this.xd = this.xd * 0.01F + xd;
       this.yd = this.yd * 0.01F + yd;
       this.zd = this.zd * 0.01F + zd;
-      this.x = this.x + (double)((this.random.nextFloat() - this.random.nextFloat()) * 0.05F);
-      this.y = this.y + (double)((this.random.nextFloat() - this.random.nextFloat()) * 0.05F);
-      this.z = this.z + (double)((this.random.nextFloat() - this.random.nextFloat()) * 0.05F);
-      this.lifetime = (int)(8.0 / ((double)this.random.nextFloat() * 0.8 + 0.2)) + 4;
+      this.x = this.x + (this.random.nextFloat() - this.random.nextFloat()) * 0.05F;
+      this.y = this.y + (this.random.nextFloat() - this.random.nextFloat()) * 0.05F;
+      this.z = this.z + (this.random.nextFloat() - this.random.nextFloat()) * 0.05F;
+      this.lifetime = (int)(8.0 / (this.random.nextFloat() * 0.8 + 0.2)) + 4;
    }
 }

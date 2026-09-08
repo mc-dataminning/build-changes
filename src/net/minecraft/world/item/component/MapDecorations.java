@@ -16,15 +16,15 @@ public record MapDecorations(Map<String, MapDecorations.Entry> decorations) {
       return new MapDecorations(Util.copyAndPut(this.decorations, id, entry));
    }
 
-   public static record Entry(Holder<MapDecorationType> type, double x, double z, float rotation) {
+   public record Entry(Holder<MapDecorationType> type, double x, double z, float rotation) {
       public static final Codec<MapDecorations.Entry> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  MapDecorationType.CODEC.fieldOf("type").forGetter(MapDecorations.Entry::type),
-                  Codec.DOUBLE.fieldOf("x").forGetter(MapDecorations.Entry::x),
-                  Codec.DOUBLE.fieldOf("z").forGetter(MapDecorations.Entry::z),
-                  Codec.FLOAT.fieldOf("rotation").forGetter(MapDecorations.Entry::rotation)
-               )
-               .apply(i, MapDecorations.Entry::new)
+               MapDecorationType.CODEC.fieldOf("type").forGetter(MapDecorations.Entry::type),
+               Codec.DOUBLE.fieldOf("x").forGetter(MapDecorations.Entry::x),
+               Codec.DOUBLE.fieldOf("z").forGetter(MapDecorations.Entry::z),
+               Codec.FLOAT.fieldOf("rotation").forGetter(MapDecorations.Entry::rotation)
+            )
+            .apply(i, MapDecorations.Entry::new)
       );
    }
 }

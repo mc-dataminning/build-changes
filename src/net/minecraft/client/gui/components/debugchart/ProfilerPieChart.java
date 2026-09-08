@@ -19,8 +19,7 @@ public class ProfilerPieChart {
    private static final int WIDTH = 260;
    private static final int SUBSEQUENT_LINES_INDENT = 10;
    private final Font font;
-   @Nullable
-   private ProfileResults profilerPieChartResults;
+   private @Nullable ProfileResults profilerPieChartResults;
    private String profilerTreePath = "root";
    private int bottomOffset = 0;
 
@@ -28,7 +27,7 @@ public class ProfilerPieChart {
       this.font = font;
    }
 
-   public void setPieChartResults(@Nullable final ProfileResults results) {
+   public void setPieChartResults(final @Nullable ProfileResults results) {
       this.profilerPieChartResults = results;
    }
 

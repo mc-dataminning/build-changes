@@ -8,13 +8,13 @@ public class CubePointRange extends AbstractDoubleList {
    public CubePointRange(final int parts) {
       if (parts <= 0) {
          throw new IllegalArgumentException("Need at least 1 part");
-      } else {
-         this.parts = parts;
       }
+
+      this.parts = parts;
    }
 
    public double getDouble(final int index) {
-      return (double)index / (double)this.parts;
+      return (double)index / this.parts;
    }
 
    public int size() {

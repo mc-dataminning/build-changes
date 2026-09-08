@@ -6,8 +6,7 @@ import net.minecraft.network.chat.Component;
 import org.jspecify.annotations.Nullable;
 
 public class GenericMessageScreen extends Screen {
-   @Nullable
-   private FocusableTextWidget textWidget;
+   private @Nullable FocusableTextWidget textWidget;
 
    public GenericMessageScreen(final Component title) {
       super(title);

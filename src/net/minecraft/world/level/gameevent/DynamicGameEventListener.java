@@ -10,8 +10,7 @@ import org.jspecify.annotations.Nullable;
 
 public class DynamicGameEventListener<T extends GameEventListener> {
    private final T listener;
-   @Nullable
-   private SectionPos lastSection;
+   private @Nullable SectionPos lastSection;
 
    public DynamicGameEventListener(final T listener) {
       this.listener = listener;
@@ -39,7 +38,7 @@ public class DynamicGameEventListener<T extends GameEventListener> {
       });
    }
 
-   private static void ifChunkExists(final LevelReader level, @Nullable final SectionPos sectionPos, final Consumer<GameEventListenerRegistry> action) {
+   private static void ifChunkExists(final LevelReader level, final @Nullable SectionPos sectionPos, final Consumer<GameEventListenerRegistry> action) {
       if (sectionPos != null) {
          ChunkAccess chunk = level.getChunk(sectionPos.x(), sectionPos.z(), ChunkStatus.FULL, false);
          if (chunk != null) {

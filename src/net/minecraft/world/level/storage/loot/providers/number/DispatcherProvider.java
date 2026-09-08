@@ -16,10 +16,10 @@ public interface DispatcherProvider<Value extends Validatable> extends Validatab
    ) {
       return RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  DispatcherProvider.Case.codec(valueCodec).listOf().fieldOf("cases").forGetter(DispatcherProvider::cases),
-                  valueCodec.optionalFieldOf("default", defaultCase).forGetter(DispatcherProvider::defaultValue)
-               )
-               .apply(i, factory::create)
+               DispatcherProvider.Case.codec(valueCodec).listOf().fieldOf("cases").forGetter(DispatcherProvider::cases),
+               valueCodec.optionalFieldOf("default", defaultCase).forGetter(DispatcherProvider::defaultValue)
+            )
+            .apply(i, factory::create)
       );
    }
 
@@ -43,14 +43,14 @@ public interface DispatcherProvider<Value extends Validatable> extends Validatab
       Validatable.validateHolder(context, "default", this.defaultValue());
    }
 
-   public static record Case<Value extends Validatable>(Holder<LootItemCondition> condition, Holder<Value> value) implements Validatable {
+   record Case<Value extends Validatable>(Holder<LootItemCondition> condition, Holder<Value> value) implements Validatable {
       public static <Value extends Validatable> Codec<DispatcherProvider.Case<Value>> codec(final Codec<Holder<Value>> valueCodec) {
          return RecordCodecBuilder.create(
             i -> i.group(
-                     LootItemCondition.CODEC.fieldOf("condition").forGetter(DispatcherProvider.Case::condition),
-                     valueCodec.fieldOf("value").forGetter(DispatcherProvider.Case::value)
-                  )
-                  .apply(i, DispatcherProvider.Case::new)
+                  LootItemCondition.CODEC.fieldOf("condition").forGetter(DispatcherProvider.Case::condition),
+                  valueCodec.fieldOf("value").forGetter(DispatcherProvider.Case::value)
+               )
+               .apply(i, DispatcherProvider.Case::new)
          );
       }
 
@@ -66,7 +66,7 @@ public interface DispatcherProvider<Value extends Validatable> extends Validatab
    }
 
    @FunctionalInterface
-   public interface Factory<Value extends Validatable, Self extends DispatcherProvider<Value>> {
+   interface Factory<Value extends Validatable, Self extends DispatcherProvider<Value>> {
       Self create(List<DispatcherProvider.Case<Value>> cases, Holder<Value> defaultValue);
    }
 }

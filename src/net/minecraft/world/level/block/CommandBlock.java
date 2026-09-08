@@ -36,7 +36,7 @@ public class CommandBlock extends BaseEntityBlock implements GameMasterBlock {
 
    public CommandBlock(final boolean automatic, final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(CONDITIONAL, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(CONDITIONAL, false));
       this.automatic = automatic;
    }
 
@@ -49,7 +49,7 @@ public class CommandBlock extends BaseEntityBlock implements GameMasterBlock {
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       if (!level.isClientSide()) {
          if (level.getBlockEntity(pos) instanceof CommandBlockEntity commandBlock) {
@@ -120,9 +120,9 @@ public class CommandBlock extends BaseEntityBlock implements GameMasterBlock {
       if (level.getBlockEntity(pos) instanceof CommandBlockEntity commandBlockEntity && player.canUseGameMasterBlocks()) {
          player.openCommandBlock(commandBlockEntity);
          return InteractionResult.SUCCESS;
+      } else {
+         return InteractionResult.PASS;
       }
-
-      return InteractionResult.PASS;
    }
 
    @Override
@@ -136,7 +136,7 @@ public class CommandBlock extends BaseEntityBlock implements GameMasterBlock {
    }
 
    @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, @Nullable final LivingEntity by, final ItemStack itemStack) {
+   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
       if (level.getBlockEntity(pos) instanceof CommandBlockEntity commandBlockEntity) {
          BaseCommandBlock commandBlock = commandBlockEntity.getCommandBlock();
          if (level instanceof ServerLevel serverLevel) {

@@ -14,7 +14,7 @@ public enum MusicToastDisplayState implements StringRepresentable {
    private final Component text;
    private final Component tooltip;
 
-   private MusicToastDisplayState(final String name, final String translationKey) {
+   MusicToastDisplayState(final String name, final String translationKey) {
       this.name = name;
       this.text = Component.translatable(translationKey);
       this.tooltip = Component.translatable(translationKey + ".tooltip");

@@ -11,14 +11,13 @@ import org.jspecify.annotations.Nullable;
 public class DebugQueryHandler {
    private final ClientPacketListener connection;
    private int transactionId = -1;
-   @Nullable
-   private Consumer<CompoundTag> callback;
+   private @Nullable Consumer<CompoundTag> callback;
 
    public DebugQueryHandler(final ClientPacketListener connection) {
       this.connection = connection;
    }
 
-   public boolean handleResponse(final int transactionId, @Nullable final CompoundTag tag) {
+   public boolean handleResponse(final int transactionId, final @Nullable CompoundTag tag) {
       if (this.transactionId == transactionId && this.callback != null) {
          this.callback.accept(tag);
          this.callback = null;

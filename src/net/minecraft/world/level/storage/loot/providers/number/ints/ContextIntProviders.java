@@ -101,19 +101,19 @@ public class ContextIntProviders {
    private static ContextIntProvider compostable(final HolderGetter<Block> blocks, final int layerIncreaseChance) {
       if (layerIncreaseChance >= 100) {
          return new ConstantValue(1);
-      } else {
-         DispatcherProvider.Case<ContextIntProvider> emptyCase = new DispatcherProvider.Case<>(
-            Holder.direct(
-               MatchBlock.blockMatches(blocks, Blocks.COMPOSTER, StatePropertiesPredicate.Builder.properties().hasProperty(ComposterBlock.LEVEL, 0)).build()
-            ),
-            exactly(1)
-         );
-         WeightedList<Holder<ContextIntProvider>> cases = WeightedList.<Holder<ContextIntProvider>>builder()
-            .add(exactly(1), layerIncreaseChance)
-            .add(exactly(0), 100 - layerIncreaseChance)
-            .build();
-         return new NumberDispatcher(List.of(emptyCase), weighted(cases));
       }
+
+      DispatcherProvider.Case<ContextIntProvider> emptyCase = new DispatcherProvider.Case<>(
+         Holder.direct(
+            MatchBlock.blockMatches(blocks, Blocks.COMPOSTER, StatePropertiesPredicate.Builder.properties().hasProperty(ComposterBlock.LEVEL, 0)).build()
+         ),
+         exactly(1)
+      );
+      WeightedList<Holder<ContextIntProvider>> cases = WeightedList.<Holder<ContextIntProvider>>builder()
+         .add(exactly(1), layerIncreaseChance)
+         .add(exactly(0), 100 - layerIncreaseChance)
+         .build();
+      return new NumberDispatcher(List.of(emptyCase), weighted(cases));
    }
 
    private static ContextIntProvider cooking(

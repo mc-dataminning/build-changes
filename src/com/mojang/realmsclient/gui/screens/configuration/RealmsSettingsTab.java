@@ -49,10 +49,8 @@ public class RealmsSettingsTab extends GridLayoutTab implements RealmsConfigurat
    private final Button closeOpenButton;
    private final EditBox descEdit;
    private final EditBox nameEdit;
-   @Nullable
-   private final OptionInstance<Integer> renderDistanceOption;
-   @Nullable
-   private final OptionInstance<Integer> simulationDistanceOption;
+   private final @Nullable OptionInstance<Integer> renderDistanceOption;
+   private final @Nullable OptionInstance<Integer> simulationDistanceOption;
    private int initialRenderDistance;
    private int initialSimulationDistance;
    private final StringWidget selectedRegionStringWidget;
@@ -63,7 +61,7 @@ public class RealmsSettingsTab extends GridLayoutTab implements RealmsConfigurat
       final RealmsConfigureWorldScreen configurationScreen,
       final Minecraft minecraft,
       final RealmsServer serverData,
-      @Nullable final RealmTierConfigurationDto tierConfiguration,
+      final @Nullable RealmTierConfigurationDto tierConfiguration,
       final Map<RealmsRegion, ServiceQuality> regionServiceQuality
    ) {
       super(TITLE);
@@ -167,8 +165,7 @@ public class RealmsSettingsTab extends GridLayoutTab implements RealmsConfigurat
          (var0, value) -> Component.translatable("options.chunks", value),
          new OptionInstance.IntRange(range.min(), range.max()),
          initialValue,
-         var0 -> {
-         }
+         var0 -> {}
       );
    }
 
@@ -206,7 +203,7 @@ public class RealmsSettingsTab extends GridLayoutTab implements RealmsConfigurat
          );
    }
 
-   private void applyRegionPreferenceSelection(final RegionSelectionPreference preference, @Nullable final RealmsRegion region) {
+   private void applyRegionPreferenceSelection(final RegionSelectionPreference preference, final @Nullable RealmsRegion region) {
       this.preferredRegionSelection = new RealmsSettingsTab.RegionSelection(preference, region);
       this.updateRegionPreferenceValues();
    }
@@ -274,27 +271,27 @@ public class RealmsSettingsTab extends GridLayoutTab implements RealmsConfigurat
          && updatedRenderDistance == null
          && updatedSimulationDistance == null) {
          return true;
-      } else {
-         this.initialRenderDistance = renderDistance;
-         this.initialSimulationDistance = simulationDistance;
-         boolean saved = this.configurationScreen
-            .saveSettings(
-               realmName,
-               this.descEdit.getValue(),
-               this.preferredRegionSelection.preference(),
-               this.preferredRegionSelection.region(),
-               updatedRenderDistance,
-               updatedSimulationDistance
-            );
-         if (!saved) {
-            this.initialRenderDistance = previousRenderDistance;
-            this.initialSimulationDistance = previousSimulationDistance;
-         }
-
-         return saved;
       }
+
+      this.initialRenderDistance = renderDistance;
+      this.initialSimulationDistance = simulationDistance;
+      boolean saved = this.configurationScreen
+         .saveSettings(
+            realmName,
+            this.descEdit.getValue(),
+            this.preferredRegionSelection.preference(),
+            this.preferredRegionSelection.region(),
+            updatedRenderDistance,
+            updatedSimulationDistance
+         );
+      if (!saved) {
+         this.initialRenderDistance = previousRenderDistance;
+         this.initialSimulationDistance = previousSimulationDistance;
+      }
+
+      return saved;
    }
 
-   public static record RegionSelection(RegionSelectionPreference preference, @Nullable RealmsRegion region) {
+   public record RegionSelection(RegionSelectionPreference preference, @Nullable RealmsRegion region) {
    }
 }

@@ -16,11 +16,7 @@ public class BlockHitResult extends HitResult {
          boolean inside = input.readBoolean();
          boolean worldBorder = input.readBoolean();
          return new BlockHitResult(
-            new Vec3((double)pos.getX() + (double)clickX, (double)pos.getY() + (double)clickY, (double)pos.getZ() + (double)clickZ),
-            face,
-            pos,
-            inside,
-            worldBorder
+            new Vec3((double)pos.getX() + clickX, (double)pos.getY() + clickY, (double)pos.getZ() + clickZ), face, pos, inside, worldBorder
          );
       }
 
@@ -29,9 +25,9 @@ public class BlockHitResult extends HitResult {
          BlockPos.STREAM_CODEC.encode(output, blockPos);
          Direction.STREAM_CODEC.encode(output, blockHit.getDirection());
          Vec3 location = blockHit.getLocation();
-         output.writeFloat((float)(location.x - (double)blockPos.getX()));
-         output.writeFloat((float)(location.y - (double)blockPos.getY()));
-         output.writeFloat((float)(location.z - (double)blockPos.getZ()));
+         output.writeFloat((float)(location.x - blockPos.getX()));
+         output.writeFloat((float)(location.y - blockPos.getY()));
+         output.writeFloat((float)(location.z - blockPos.getZ()));
          output.writeBoolean(blockHit.isInside());
          output.writeBoolean(blockHit.isWorldBorderHit());
       }

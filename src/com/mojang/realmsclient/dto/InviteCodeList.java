@@ -28,8 +28,8 @@ public record InviteCodeList(List<InviteCode> inviteCodes) {
                }
             }
          }
-      } catch (Exception var7) {
-         LOGGER.error("Could not parse InviteCodeList", var7);
+      } catch (Exception e) {
+         LOGGER.error("Could not parse InviteCodeList", e);
       }
 
       return new InviteCodeList(List.copyOf(codes));
@@ -38,9 +38,9 @@ public record InviteCodeList(List<InviteCode> inviteCodes) {
    private static JsonArray getInviteCodesArray(final JsonElement root) {
       if (root.isJsonArray()) {
          return root.getAsJsonArray();
-      } else {
-         JsonObject object = root.getAsJsonObject();
-         return object.has("result") && object.get("result").isJsonArray() ? object.getAsJsonArray("result") : new JsonArray();
       }
+
+      JsonObject object = root.getAsJsonObject();
+      return object.has("result") && object.get("result").isJsonArray() ? object.getAsJsonArray("result") : new JsonArray();
    }
 }

@@ -13,12 +13,11 @@ import org.jspecify.annotations.Nullable;
 public record ProtectedBlockProcessor(HolderSet<Block> cannotReplace) implements StructureProcessor {
    public static final MapCodec<ProtectedBlockProcessor> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("value").forGetter(ProtectedBlockProcessor::cannotReplace))
-            .apply(i, ProtectedBlockProcessor::new)
+         .apply(i, ProtectedBlockProcessor::new)
    );
 
-   @Nullable
    @Override
-   public StructureTemplate.StructureBlockInfo processBlock(
+   public StructureTemplate.@Nullable StructureBlockInfo processBlock(
       final LevelReader level,
       final BlockPos targetPosition,
       final BlockPos referencePos,

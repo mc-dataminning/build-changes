@@ -93,7 +93,7 @@ public class TestInstanceBlockEntity extends BlockEntity implements BoundingBoxR
    }
 
    public AABB getTestBounds() {
-      return this.getStructureBounds().inflate((double)this.getPadding());
+      return this.getStructureBounds().inflate(this.getPadding());
    }
 
    private static Optional<StructureTemplate> getStructureTemplate(final ServerLevel level, final ResourceKey<GameTestInstance> testKey) {
@@ -200,8 +200,8 @@ public class TestInstanceBlockEntity extends BlockEntity implements BoundingBoxR
          case CLEARED -> BEAM_CLEARED;
          case RUNNING -> BEAM_RUNNING;
          case FINISHED -> this.errorMessage().isEmpty()
-         ? BEAM_SUCCESS
-         : (this.getTestHolder().map(Holder::value).map(GameTestInstance::required).orElse(true) ? BEAM_REQUIRED_FAILED : BEAM_OPTIONAL_FAILED);
+            ? BEAM_SUCCESS
+            : (this.getTestHolder().map(Holder::value).map(GameTestInstance::required).orElse(true) ? BEAM_REQUIRED_FAILED : BEAM_OPTIONAL_FAILED);
       };
    }
 
@@ -240,15 +240,15 @@ public class TestInstanceBlockEntity extends BlockEntity implements BoundingBoxR
             Component.translatable("test_instance_block.error.unable_to_save", pos.getX(), pos.getY(), pos.getZ()).withStyle(ChatFormatting.RED)
          );
          return identifier;
-      } else {
-         if (this.level instanceof ServerLevel serverLevel) {
-            StructureBlockEntity.saveStructure(
-               serverLevel, identifier.get(), this.getStructurePos(), this.getSize(), this.ignoreEntities(), "", true, List.of(Blocks.AIR)
-            );
-         }
-
-         return identifier;
       }
+
+      if (this.level instanceof ServerLevel serverLevel) {
+         StructureBlockEntity.saveStructure(
+            serverLevel, identifier.get(), this.getStructurePos(), this.getSize(), this.ignoreEntities(), "", true, List.of(Blocks.AIR)
+         );
+      }
+
+      return identifier;
    }
 
    public boolean exportTest(final Consumer<Component> feedbackOutput) {
@@ -262,26 +262,26 @@ public class TestInstanceBlockEntity extends BlockEntity implements BoundingBoxR
       if (testTemplatePathFactory == null) {
          feedbackOutput.accept(Component.literal("Test structure exporting is disabled").withStyle(ChatFormatting.RED));
          return true;
-      } else {
-         Optional<StructureTemplate> structureTemplate = structureManager.get(structureId);
-         if (structureTemplate.isEmpty()) {
-            feedbackOutput.accept(Component.literal("Could not find structure " + structureId).withStyle(ChatFormatting.RED));
-            return true;
-         } else {
-            Path outputFile = testTemplatePathFactory.createAndValidatePathToStructure(structureId, StructureTemplateManager.RESOURCE_TEXT_STRUCTURE_LISTER);
-
-            try {
-               StructureTemplateManager.save(outputFile, structureTemplate.get(), true);
-            } catch (Exception var8) {
-               LOGGER.error("Failed to save structure file {} to {}", new Object[]{structureId, outputFile, var8});
-               feedbackOutput.accept(Component.literal("Failed to save structure file " + structureId + " to " + outputFile).withStyle(ChatFormatting.RED));
-               return true;
-            }
-
-            feedbackOutput.accept(Component.literal("Exported " + structureId + " to " + outputFile.toAbsolutePath()));
-            return false;
-         }
       }
+
+      Optional<StructureTemplate> structureTemplate = structureManager.get(structureId);
+      if (structureTemplate.isEmpty()) {
+         feedbackOutput.accept(Component.literal("Could not find structure " + structureId).withStyle(ChatFormatting.RED));
+         return true;
+      }
+
+      Path outputFile = testTemplatePathFactory.createAndValidatePathToStructure(structureId, StructureTemplateManager.RESOURCE_TEXT_STRUCTURE_LISTER);
+
+      try {
+         StructureTemplateManager.save(outputFile, structureTemplate.get(), true);
+      } catch (Exception e) {
+         LOGGER.error("Failed to save structure file {} to {}", new Object[]{structureId, outputFile, e});
+         feedbackOutput.accept(Component.literal("Failed to save structure file " + structureId + " to " + outputFile).withStyle(ChatFormatting.RED));
+         return true;
+      }
+
+      feedbackOutput.accept(Component.literal("Exported " + structureId + " to " + outputFile.toAbsolutePath()));
+      return false;
    }
 
    public void runTest(final Consumer<Component> feedbackOutput) {
@@ -414,7 +414,7 @@ public class TestInstanceBlockEntity extends BlockEntity implements BoundingBoxR
       return this.errorMarkers;
    }
 
-   public static record Data(
+   public record Data(
       Optional<ResourceKey<GameTestInstance>> test,
       Vec3i size,
       Rotation rotation,
@@ -424,14 +424,14 @@ public class TestInstanceBlockEntity extends BlockEntity implements BoundingBoxR
    ) {
       public static final Codec<TestInstanceBlockEntity.Data> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  ResourceKey.codec(Registries.TEST_INSTANCE).optionalFieldOf("test").forGetter(TestInstanceBlockEntity.Data::test),
-                  Vec3i.CODEC.fieldOf("size").forGetter(TestInstanceBlockEntity.Data::size),
-                  Rotation.CODEC.fieldOf("rotation").forGetter(TestInstanceBlockEntity.Data::rotation),
-                  Codec.BOOL.fieldOf("ignore_entities").forGetter(TestInstanceBlockEntity.Data::ignoreEntities),
-                  TestInstanceBlockEntity.Status.CODEC.fieldOf("status").forGetter(TestInstanceBlockEntity.Data::status),
-                  ComponentSerialization.CODEC.optionalFieldOf("error_message").forGetter(TestInstanceBlockEntity.Data::errorMessage)
-               )
-               .apply(i, TestInstanceBlockEntity.Data::new)
+               ResourceKey.codec(Registries.TEST_INSTANCE).optionalFieldOf("test").forGetter(TestInstanceBlockEntity.Data::test),
+               Vec3i.CODEC.fieldOf("size").forGetter(TestInstanceBlockEntity.Data::size),
+               Rotation.CODEC.fieldOf("rotation").forGetter(TestInstanceBlockEntity.Data::rotation),
+               Codec.BOOL.fieldOf("ignore_entities").forGetter(TestInstanceBlockEntity.Data::ignoreEntities),
+               TestInstanceBlockEntity.Status.CODEC.fieldOf("status").forGetter(TestInstanceBlockEntity.Data::status),
+               ComponentSerialization.CODEC.optionalFieldOf("error_message").forGetter(TestInstanceBlockEntity.Data::errorMessage)
+            )
+            .apply(i, TestInstanceBlockEntity.Data::new)
       );
       public static final StreamCodec<RegistryFriendlyByteBuf, TestInstanceBlockEntity.Data> STREAM_CODEC = StreamCodec.composite(
          ByteBufCodecs.optional(ResourceKey.streamCodec(Registries.TEST_INSTANCE)),
@@ -464,18 +464,18 @@ public class TestInstanceBlockEntity extends BlockEntity implements BoundingBoxR
       }
    }
 
-   public static record ErrorMarker(BlockPos pos, Component text) {
+   public record ErrorMarker(BlockPos pos, Component text) {
       public static final Codec<TestInstanceBlockEntity.ErrorMarker> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  BlockPos.CODEC.fieldOf("pos").forGetter(TestInstanceBlockEntity.ErrorMarker::pos),
-                  ComponentSerialization.CODEC.fieldOf("text").forGetter(TestInstanceBlockEntity.ErrorMarker::text)
-               )
-               .apply(i, TestInstanceBlockEntity.ErrorMarker::new)
+               BlockPos.CODEC.fieldOf("pos").forGetter(TestInstanceBlockEntity.ErrorMarker::pos),
+               ComponentSerialization.CODEC.fieldOf("text").forGetter(TestInstanceBlockEntity.ErrorMarker::text)
+            )
+            .apply(i, TestInstanceBlockEntity.ErrorMarker::new)
       );
       public static final Codec<List<TestInstanceBlockEntity.ErrorMarker>> LIST_CODEC = CODEC.listOf();
    }
 
-   public static enum Status implements StringRepresentable {
+   public enum Status implements StringRepresentable {
       CLEARED("cleared", 0),
       RUNNING("running", 1),
       FINISHED("finished", 2);
@@ -488,7 +488,7 @@ public class TestInstanceBlockEntity extends BlockEntity implements BoundingBoxR
       private final String id;
       private final int index;
 
-      private Status(final String id, final int index) {
+      Status(final String id, final int index) {
          this.id = id;
          this.index = index;
       }

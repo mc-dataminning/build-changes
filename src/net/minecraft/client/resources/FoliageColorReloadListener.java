@@ -13,8 +13,8 @@ public class FoliageColorReloadListener extends SimplePreparableReloadListener<i
    protected int[] prepare(final ResourceManager manager, final ProfilerFiller profiler) {
       try {
          return LegacyStuffWrapper.getPixels(manager, LOCATION);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load foliage color texture", var4);
+      } catch (IOException e) {
+         throw new IllegalStateException("Failed to load foliage color texture", e);
       }
    }
 

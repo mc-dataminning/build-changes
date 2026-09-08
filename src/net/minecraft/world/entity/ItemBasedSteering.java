@@ -26,12 +26,12 @@ public class ItemBasedSteering {
    public boolean boost(final RandomSource random) {
       if (this.boosting) {
          return false;
-      } else {
-         this.boosting = true;
-         this.boostTime = 0;
-         this.entityData.set(this.boostTimeAccessor, random.nextInt(841) + 140);
-         return true;
       }
+
+      this.boosting = true;
+      this.boostTime = 0;
+      this.entityData.set(this.boostTimeAccessor, random.nextInt(841) + 140);
+      return true;
    }
 
    public void tickBoost() {
@@ -41,7 +41,7 @@ public class ItemBasedSteering {
    }
 
    public float boostFactor() {
-      return this.boosting ? 1.0F + 1.15F * Mth.sin((double)((float)this.boostTime / (float)this.boostTimeTotal() * (float) Math.PI)) : 1.0F;
+      return this.boosting ? 1.0F + 1.15F * Mth.sin((float)this.boostTime / this.boostTimeTotal() * (float) Math.PI) : 1.0F;
    }
 
    private int boostTimeTotal() {

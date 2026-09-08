@@ -14,6 +14,6 @@ public interface PlayerRideableJumping extends PlayerRideable {
    }
 
    default float getPlayerJumpPendingScale(final int jumpAmount) {
-      return jumpAmount >= 90 ? 1.0F : 0.4F + 0.4F * (float)jumpAmount / 90.0F;
+      return jumpAmount >= 90 ? 1.0F : 0.4F + 0.4F * jumpAmount / 90.0F;
    }
 }

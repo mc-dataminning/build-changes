@@ -33,31 +33,31 @@ public class TransferCommand {
                ((RequiredArgumentBuilder)Commands.argument("hostname", StringArgumentType.string())
                      .executes(
                         c -> transfer(
-                              (CommandSourceStack)c.getSource(),
-                              StringArgumentType.getString(c, "hostname"),
-                              25565,
-                              List.of(((CommandSourceStack)c.getSource()).getPlayerOrException())
-                           )
+                           (CommandSourceStack)c.getSource(),
+                           StringArgumentType.getString(c, "hostname"),
+                           25565,
+                           List.of(((CommandSourceStack)c.getSource()).getPlayerOrException())
+                        )
                      ))
                   .then(
                      ((RequiredArgumentBuilder)Commands.argument("port", IntegerArgumentType.integer(1, 65535))
                            .executes(
                               c -> transfer(
-                                    (CommandSourceStack)c.getSource(),
-                                    StringArgumentType.getString(c, "hostname"),
-                                    IntegerArgumentType.getInteger(c, "port"),
-                                    List.of(((CommandSourceStack)c.getSource()).getPlayerOrException())
-                                 )
+                                 (CommandSourceStack)c.getSource(),
+                                 StringArgumentType.getString(c, "hostname"),
+                                 IntegerArgumentType.getInteger(c, "port"),
+                                 List.of(((CommandSourceStack)c.getSource()).getPlayerOrException())
+                              )
                            ))
                         .then(
                            Commands.argument("players", EntityArgument.players())
                               .executes(
                                  c -> transfer(
-                                       (CommandSourceStack)c.getSource(),
-                                       StringArgumentType.getString(c, "hostname"),
-                                       IntegerArgumentType.getInteger(c, "port"),
-                                       EntityArgument.getPlayers(c, "players")
-                                    )
+                                    (CommandSourceStack)c.getSource(),
+                                    StringArgumentType.getString(c, "hostname"),
+                                    IntegerArgumentType.getInteger(c, "port"),
+                                    EntityArgument.getPlayers(c, "players")
+                                 )
                               )
                         )
                   )

@@ -20,15 +20,15 @@ public class LevitationTrigger extends SimpleCriterionTrigger<LevitationTrigger.
       this.trigger(player, t -> t.matches(player, start, duration));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<DistancePredicate> distance, MinMaxBounds.Ints duration)
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<DistancePredicate> distance, MinMaxBounds.Ints duration)
       implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<LevitationTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(LevitationTrigger.TriggerInstance::player),
-                  DistancePredicate.CODEC.optionalFieldOf("distance").forGetter(LevitationTrigger.TriggerInstance::distance),
-                  MinMaxBounds.Ints.CODEC.optionalFieldOf("duration", MinMaxBounds.Ints.ANY).forGetter(LevitationTrigger.TriggerInstance::duration)
-               )
-               .apply(i, LevitationTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(LevitationTrigger.TriggerInstance::player),
+               DistancePredicate.CODEC.optionalFieldOf("distance").forGetter(LevitationTrigger.TriggerInstance::distance),
+               MinMaxBounds.Ints.CODEC.optionalFieldOf("duration", MinMaxBounds.Ints.ANY).forGetter(LevitationTrigger.TriggerInstance::duration)
+            )
+            .apply(i, LevitationTrigger.TriggerInstance::new)
       );
 
       public static Criterion<LevitationTrigger.TriggerInstance> levitated(final DistancePredicate distance) {

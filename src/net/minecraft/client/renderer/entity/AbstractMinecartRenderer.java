@@ -50,14 +50,14 @@ public abstract class AbstractMinecartRenderer<T extends AbstractMinecart, S ext
 
       float hurt = state.hurtTime;
       if (hurt > 0.0F) {
-         poseStack.rotateDegrees(Axis.XP, Mth.sin((double)hurt) * hurt * state.damageTime / 10.0F * (float)state.hurtDir);
+         poseStack.rotateDegrees(Axis.XP, Mth.sin(hurt) * hurt * state.damageTime / 10.0F * state.hurtDir);
       }
 
       BlockModelRenderState displayBlockModel = state.displayBlockModel;
       if (!displayBlockModel.isEmpty()) {
          poseStack.pushPose();
          poseStack.scale(0.75F, 0.75F, 0.75F);
-         poseStack.translate(-0.5F, (float)(state.displayOffset - 8) / 16.0F, 0.5F);
+         poseStack.translate(-0.5F, (state.displayOffset - 8) / 16.0F, 0.5F);
          poseStack.rotateDegrees(Axis.YP, 90.0F);
          this.submitMinecartContents(state, displayBlockModel, poseStack, submitNodeCollector, state.lightCoords);
          poseStack.popPose();
@@ -107,9 +107,9 @@ public abstract class AbstractMinecartRenderer<T extends AbstractMinecart, S ext
          state.isNewRender = false;
       }
 
-      long seed = (long)entity.getId() * 493286711L;
+      long seed = entity.getId() * 493286711L;
       state.offsetSeed = seed * seed * 4392167121L + seed * 98761L;
-      state.hurtTime = (float)entity.getHurtTime() - partialTicks;
+      state.hurtTime = entity.getHurtTime() - partialTicks;
       state.hurtDir = entity.getHurtDir();
       state.damageTime = Math.max(entity.getDamage() - partialTicks, 0.0F);
       state.displayOffset = entity.getDisplayOffset();
@@ -161,7 +161,7 @@ public abstract class AbstractMinecartRenderer<T extends AbstractMinecart, S ext
 
    protected AABB getBoundingBoxForCulling(final T entity, final float partialTicks) {
       AABB aabb = super.getBoundingBoxForCulling(entity, partialTicks);
-      return !entity.getDisplayBlockState().isAir() ? aabb.expandTowards(0.0, (double)((float)entity.getDisplayOffset() * 0.75F / 16.0F), 0.0) : aabb;
+      return !entity.getDisplayBlockState().isAir() ? aabb.expandTowards(0.0, entity.getDisplayOffset() * 0.75F / 16.0F, 0.0) : aabb;
    }
 
    public Vec3 getRenderOffset(final S state) {

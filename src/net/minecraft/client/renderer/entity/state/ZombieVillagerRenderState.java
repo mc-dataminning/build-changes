@@ -4,12 +4,10 @@ import net.minecraft.world.entity.npc.villager.VillagerData;
 import org.jspecify.annotations.Nullable;
 
 public class ZombieVillagerRenderState extends ZombieRenderState implements VillagerDataHolderRenderState {
-   @Nullable
-   public VillagerData villagerData;
+   public @Nullable VillagerData villagerData;
 
-   @Nullable
    @Override
-   public VillagerData getVillagerData() {
+   public @Nullable VillagerData getVillagerData() {
       return this.villagerData;
    }
 }

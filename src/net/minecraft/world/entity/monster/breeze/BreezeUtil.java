@@ -15,7 +15,7 @@ public class BreezeUtil {
       int spreadDegrees = 90;
       float viewAngle = enemy.yHeadRot + 180.0F + (float)random.nextGaussian() * 90.0F / 2.0F;
       float r = Mth.lerp(random.nextFloat(), 4.0F, 8.0F);
-      Vec3 direction = Vec3.directionFromRotation(0.0F, viewAngle).scale((double)r);
+      Vec3 direction = Vec3.directionFromRotation(0.0F, viewAngle).scale(r);
       return enemy.position().add(direction);
    }
 

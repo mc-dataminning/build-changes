@@ -18,9 +18,9 @@ public class IntegratedPlayerList extends PlayerList {
 
    @Override
    public Component canPlayerLogin(final SocketAddress address, final NameAndId nameAndId) {
-      return (Component)(this.getServer().isSingleplayerOwner(nameAndId) && this.getPlayerByName(nameAndId.name()) != null
+      return this.getServer().isSingleplayerOwner(nameAndId) && this.getPlayerByName(nameAndId.name()) != null
          ? Component.translatable("multiplayer.disconnect.name_taken")
-         : super.canPlayerLogin(address, nameAndId));
+         : super.canPlayerLogin(address, nameAndId);
    }
 
    public IntegratedServer getServer() {

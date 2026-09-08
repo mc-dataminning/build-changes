@@ -22,8 +22,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jspecify.annotations.Nullable;
 
 public interface BlockGetter extends LevelHeightAccessor {
-   @Nullable
-   BlockEntity getBlockEntity(BlockPos pos);
+   @Nullable BlockEntity getBlockEntity(BlockPos pos);
 
    default <T extends BlockEntity> Optional<T> getBlockEntity(final BlockPos pos, final BlockEntityType<T> type) {
       BlockEntity blockEntity = this.getBlockEntity(pos);
@@ -80,8 +79,7 @@ public interface BlockGetter extends LevelHeightAccessor {
       });
    }
 
-   @Nullable
-   default BlockHitResult clipWithInteractionOverride(
+   default @Nullable BlockHitResult clipWithInteractionOverride(
       final Vec3 from, final Vec3 to, final BlockPos pos, final VoxelShape blockShape, final BlockState blockState
    ) {
       BlockHitResult result = blockShape.clip(from, to, pos);
@@ -98,10 +96,10 @@ public interface BlockGetter extends LevelHeightAccessor {
    default double getBlockFloorHeight(final VoxelShape blockShape, final Supplier<VoxelShape> belowBlockShape) {
       if (!blockShape.isEmpty()) {
          return blockShape.max(Direction.Axis.Y);
-      } else {
-         double belowFloor = belowBlockShape.get().max(Direction.Axis.Y);
-         return belowFloor >= 1.0 ? belowFloor - 1.0 : Double.NEGATIVE_INFINITY;
       }
+
+      double belowFloor = belowBlockShape.get().max(Direction.Axis.Y);
+      return belowFloor >= 1.0 ? belowFloor - 1.0 : Double.NEGATIVE_INFINITY;
    }
 
    default double getBlockFloorHeight(final BlockPos pos) {
@@ -111,68 +109,70 @@ public interface BlockGetter extends LevelHeightAccessor {
       });
    }
 
-   static <T, C> T traverseBlocks(final Vec3 from, final Vec3 to, final C context, final BiFunction<C, BlockPos, T> consumer, final Function<C, T> missFactory) {
+   static <T, C> T traverseBlocks(
+      final Vec3 from, final Vec3 to, final C context, final BiFunction<C, BlockPos, @Nullable T> consumer, final Function<C, T> missFactory
+   ) {
       if (from.equals(to)) {
          return missFactory.apply(context);
-      } else {
-         double toX = Mth.lerp(-1.0E-7, to.x, from.x);
-         double toY = Mth.lerp(-1.0E-7, to.y, from.y);
-         double toZ = Mth.lerp(-1.0E-7, to.z, from.z);
-         double fromX = Mth.lerp(-1.0E-7, from.x, to.x);
-         double fromY = Mth.lerp(-1.0E-7, from.y, to.y);
-         double fromZ = Mth.lerp(-1.0E-7, from.z, to.z);
-         int currentBlockX = Mth.floor(fromX);
-         int currentBlockY = Mth.floor(fromY);
-         int currentBlockZ = Mth.floor(fromZ);
-         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(currentBlockX, currentBlockY, currentBlockZ);
-         T first = consumer.apply(context, pos);
-         if (first != null) {
-            return first;
-         } else {
-            double dx = toX - fromX;
-            double dy = toY - fromY;
-            double dz = toZ - fromZ;
-            int signX = Mth.sign(dx);
-            int signY = Mth.sign(dy);
-            int signZ = Mth.sign(dz);
-            double tDeltaX = signX == 0 ? Double.MAX_VALUE : (double)signX / dx;
-            double tDeltaY = signY == 0 ? Double.MAX_VALUE : (double)signY / dy;
-            double tDeltaZ = signZ == 0 ? Double.MAX_VALUE : (double)signZ / dz;
-            double tX = tDeltaX * (signX > 0 ? 1.0 - Mth.frac(fromX) : Mth.frac(fromX));
-            double tY = tDeltaY * (signY > 0 ? 1.0 - Mth.frac(fromY) : Mth.frac(fromY));
-            double tZ = tDeltaZ * (signZ > 0 ? 1.0 - Mth.frac(fromZ) : Mth.frac(fromZ));
+      }
 
-            while (tX <= 1.0 || tY <= 1.0 || tZ <= 1.0) {
-               if (tX < tY) {
-                  if (tX < tZ) {
-                     currentBlockX += signX;
-                     tX += tDeltaX;
-                  } else {
-                     currentBlockZ += signZ;
-                     tZ += tDeltaZ;
-                  }
-               } else if (tY < tZ) {
-                  currentBlockY += signY;
-                  tY += tDeltaY;
-               } else {
-                  currentBlockZ += signZ;
-                  tZ += tDeltaZ;
-               }
+      double toX = Mth.lerp(-1.0E-7, to.x, from.x);
+      double toY = Mth.lerp(-1.0E-7, to.y, from.y);
+      double toZ = Mth.lerp(-1.0E-7, to.z, from.z);
+      double fromX = Mth.lerp(-1.0E-7, from.x, to.x);
+      double fromY = Mth.lerp(-1.0E-7, from.y, to.y);
+      double fromZ = Mth.lerp(-1.0E-7, from.z, to.z);
+      int currentBlockX = Mth.floor(fromX);
+      int currentBlockY = Mth.floor(fromY);
+      int currentBlockZ = Mth.floor(fromZ);
+      BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(currentBlockX, currentBlockY, currentBlockZ);
+      T first = consumer.apply(context, pos);
+      if (first != null) {
+         return first;
+      }
 
-               T result = consumer.apply(context, pos.set(currentBlockX, currentBlockY, currentBlockZ));
-               if (result != null) {
-                  return result;
-               }
+      double dx = toX - fromX;
+      double dy = toY - fromY;
+      double dz = toZ - fromZ;
+      int signX = Mth.sign(dx);
+      int signY = Mth.sign(dy);
+      int signZ = Mth.sign(dz);
+      double tDeltaX = signX == 0 ? Double.MAX_VALUE : signX / dx;
+      double tDeltaY = signY == 0 ? Double.MAX_VALUE : signY / dy;
+      double tDeltaZ = signZ == 0 ? Double.MAX_VALUE : signZ / dz;
+      double tX = tDeltaX * (signX > 0 ? 1.0 - Mth.frac(fromX) : Mth.frac(fromX));
+      double tY = tDeltaY * (signY > 0 ? 1.0 - Mth.frac(fromY) : Mth.frac(fromY));
+      double tZ = tDeltaZ * (signZ > 0 ? 1.0 - Mth.frac(fromZ) : Mth.frac(fromZ));
+
+      while (tX <= 1.0 || tY <= 1.0 || tZ <= 1.0) {
+         if (tX < tY) {
+            if (tX < tZ) {
+               currentBlockX += signX;
+               tX += tDeltaX;
+            } else {
+               currentBlockZ += signZ;
+               tZ += tDeltaZ;
             }
+         } else if (tY < tZ) {
+            currentBlockY += signY;
+            tY += tDeltaY;
+         } else {
+            currentBlockZ += signZ;
+            tZ += tDeltaZ;
+         }
 
-            return missFactory.apply(context);
+         T result = consumer.apply(context, pos.set(currentBlockX, currentBlockY, currentBlockZ));
+         if (result != null) {
+            return result;
          }
       }
+
+      return missFactory.apply(context);
    }
 
    static boolean forEachBlockIntersectedBetween(final Vec3 from, final Vec3 to, final AABB aabbAtTarget, final BlockGetter.BlockStepVisitor visitor) {
       Vec3 travel = to.subtract(from);
-      if (travel.lengthSqr() < (double)Mth.square(1.0E-5F)) {
+      if (travel.lengthSqr() < Mth.square(1.0E-5F)) {
          for (BlockPos blockPos : BlockPos.betweenClosed(aabbAtTarget)) {
             if (!visitor.visit(blockPos, 0)) {
                return false;
@@ -183,26 +183,26 @@ public interface BlockGetter extends LevelHeightAccessor {
       } else {
          LongSet visitedBlocks = new LongOpenHashSet();
 
-         for (BlockPos blockPosx : BlockPos.betweenCornersInDirection(aabbAtTarget.move(travel.scale(-1.0)), travel)) {
-            if (!visitor.visit(blockPosx, 0)) {
+         for (BlockPos blockPos : BlockPos.betweenCornersInDirection(aabbAtTarget.move(travel.scale(-1.0)), travel)) {
+            if (!visitor.visit(blockPos, 0)) {
                return false;
             }
 
-            visitedBlocks.add(blockPosx.asLong());
+            visitedBlocks.add(blockPos.asLong());
          }
 
          int iterations = addCollisionsAlongTravel(visitedBlocks, travel, aabbAtTarget, visitor);
          if (iterations < 0) {
             return false;
-         } else {
-            for (BlockPos blockPosx : BlockPos.betweenCornersInDirection(aabbAtTarget, travel)) {
-               if (visitedBlocks.add(blockPosx.asLong()) && !visitor.visit(blockPosx, iterations + 1)) {
-                  return false;
-               }
-            }
-
-            return true;
          }
+
+         for (BlockPos blockPos : BlockPos.betweenCornersInDirection(aabbAtTarget, travel)) {
+            if (visitedBlocks.add(blockPos.asLong()) && !visitor.visit(blockPos, iterations + 1)) {
+               return false;
+            }
+         }
+
+         return true;
       }
    }
 
@@ -215,9 +215,7 @@ public interface BlockGetter extends LevelHeightAccessor {
       Vec3i cornerDir = getFurthestCorner(deltaMove);
       Vec3 toCenter = aabbAtTarget.getCenter();
       Vec3 toCorner = new Vec3(
-         toCenter.x() + boxSizeX * 0.5 * (double)cornerDir.getX(),
-         toCenter.y() + boxSizeY * 0.5 * (double)cornerDir.getY(),
-         toCenter.z() + boxSizeZ * 0.5 * (double)cornerDir.getZ()
+         toCenter.x() + boxSizeX * 0.5 * cornerDir.getX(), toCenter.y() + boxSizeY * 0.5 * cornerDir.getY(), toCenter.z() + boxSizeZ * 0.5 * cornerDir.getZ()
       );
       Vec3 fromCorner = toCorner.subtract(deltaMove);
       int cornerVisitedBlockX = Mth.floor(fromCorner.x);
@@ -226,9 +224,9 @@ public interface BlockGetter extends LevelHeightAccessor {
       int signX = Mth.sign(deltaMove.x);
       int signY = Mth.sign(deltaMove.y);
       int signZ = Mth.sign(deltaMove.z);
-      double tDeltaX = signX == 0 ? Double.MAX_VALUE : (double)signX / deltaMove.x;
-      double tDeltaY = signY == 0 ? Double.MAX_VALUE : (double)signY / deltaMove.y;
-      double tDeltaZ = signZ == 0 ? Double.MAX_VALUE : (double)signZ / deltaMove.z;
+      double tDeltaX = signX == 0 ? Double.MAX_VALUE : signX / deltaMove.x;
+      double tDeltaY = signY == 0 ? Double.MAX_VALUE : signY / deltaMove.y;
+      double tDeltaZ = signZ == 0 ? Double.MAX_VALUE : signZ / deltaMove.z;
       double tX = tDeltaX * (signX > 0 ? 1.0 - Mth.frac(fromCorner.x) : Mth.frac(fromCorner.x));
       double tY = tDeltaY * (signY > 0 ? 1.0 - Mth.frac(fromCorner.y) : Mth.frac(fromCorner.y));
       double tZ = tDeltaZ * (signZ > 0 ? 1.0 - Mth.frac(fromCorner.z) : Mth.frac(fromCorner.z));
@@ -252,24 +250,24 @@ public interface BlockGetter extends LevelHeightAccessor {
          }
 
          Optional<Vec3> hitPointOpt = AABB.clip(
-            (double)cornerVisitedBlockX,
-            (double)cornerVisitedBlockY,
-            (double)cornerVisitedBlockZ,
-            (double)(cornerVisitedBlockX + 1),
-            (double)(cornerVisitedBlockY + 1),
-            (double)(cornerVisitedBlockZ + 1),
+            cornerVisitedBlockX,
+            cornerVisitedBlockY,
+            cornerVisitedBlockZ,
+            cornerVisitedBlockX + 1,
+            cornerVisitedBlockY + 1,
+            cornerVisitedBlockZ + 1,
             fromCorner,
             toCorner
          );
          if (!hitPointOpt.isEmpty()) {
             iterations++;
             Vec3 hitPoint = hitPointOpt.get();
-            double cornerHitX = Mth.clamp(hitPoint.x, (double)cornerVisitedBlockX + 1.0E-5F, (double)cornerVisitedBlockX + 1.0 - 1.0E-5F);
-            double cornerHitY = Mth.clamp(hitPoint.y, (double)cornerVisitedBlockY + 1.0E-5F, (double)cornerVisitedBlockY + 1.0 - 1.0E-5F);
-            double cornerHitZ = Mth.clamp(hitPoint.z, (double)cornerVisitedBlockZ + 1.0E-5F, (double)cornerVisitedBlockZ + 1.0 - 1.0E-5F);
-            int oppositeCornerX = Mth.floor(cornerHitX - boxSizeX * (double)cornerDir.getX());
-            int oppositeCornerY = Mth.floor(cornerHitY - boxSizeY * (double)cornerDir.getY());
-            int oppositeCornerZ = Mth.floor(cornerHitZ - boxSizeZ * (double)cornerDir.getZ());
+            double cornerHitX = Mth.clamp(hitPoint.x, cornerVisitedBlockX + 1.0E-5F, cornerVisitedBlockX + 1.0 - 1.0E-5F);
+            double cornerHitY = Mth.clamp(hitPoint.y, cornerVisitedBlockY + 1.0E-5F, cornerVisitedBlockY + 1.0 - 1.0E-5F);
+            double cornerHitZ = Mth.clamp(hitPoint.z, cornerVisitedBlockZ + 1.0E-5F, cornerVisitedBlockZ + 1.0 - 1.0E-5F);
+            int oppositeCornerX = Mth.floor(cornerHitX - boxSizeX * cornerDir.getX());
+            int oppositeCornerY = Mth.floor(cornerHitY - boxSizeY * cornerDir.getY());
+            int oppositeCornerZ = Mth.floor(cornerHitZ - boxSizeZ * cornerDir.getZ());
             int currentIteration = iterations;
 
             for (BlockPos pos : BlockPos.betweenCornersInDirection(
@@ -300,7 +298,7 @@ public interface BlockGetter extends LevelHeightAccessor {
    }
 
    @FunctionalInterface
-   public interface BlockStepVisitor {
+   interface BlockStepVisitor {
       boolean visit(BlockPos pos, int iteration);
    }
 }

@@ -43,34 +43,34 @@ public class SummonCommand {
                      .suggests(SuggestionProviders.cast(SuggestionProviders.SUMMONABLE_ENTITIES))
                      .executes(
                         c -> spawnEntity(
-                              (CommandSourceStack)c.getSource(),
-                              ResourceArgument.getSummonableEntityType(c, "entity"),
-                              ((CommandSourceStack)c.getSource()).getPosition(),
-                              new CompoundTag(),
-                              true
-                           )
+                           (CommandSourceStack)c.getSource(),
+                           ResourceArgument.getSummonableEntityType(c, "entity"),
+                           ((CommandSourceStack)c.getSource()).getPosition(),
+                           new CompoundTag(),
+                           true
+                        )
                      ))
                   .then(
                      ((RequiredArgumentBuilder)Commands.argument("pos", Vec3Argument.vec3())
                            .executes(
                               c -> spawnEntity(
-                                    (CommandSourceStack)c.getSource(),
-                                    ResourceArgument.getSummonableEntityType(c, "entity"),
-                                    Vec3Argument.getVec3(c, "pos"),
-                                    new CompoundTag(),
-                                    true
-                                 )
+                                 (CommandSourceStack)c.getSource(),
+                                 ResourceArgument.getSummonableEntityType(c, "entity"),
+                                 Vec3Argument.getVec3(c, "pos"),
+                                 new CompoundTag(),
+                                 true
+                              )
                            ))
                         .then(
                            Commands.argument("nbt", CompoundTagArgument.compoundTag())
                               .executes(
                                  c -> spawnEntity(
-                                       (CommandSourceStack)c.getSource(),
-                                       ResourceArgument.getSummonableEntityType(c, "entity"),
-                                       Vec3Argument.getVec3(c, "pos"),
-                                       CompoundTagArgument.getCompoundTag(c, "nbt"),
-                                       false
-                                    )
+                                    (CommandSourceStack)c.getSource(),
+                                    ResourceArgument.getSummonableEntityType(c, "entity"),
+                                    Vec3Argument.getVec3(c, "pos"),
+                                    CompoundTagArgument.getCompoundTag(c, "nbt"),
+                                    false
+                                 )
                               )
                         )
                   )
@@ -84,29 +84,31 @@ public class SummonCommand {
       BlockPos blockPos = BlockPos.containing(pos);
       if (!Level.isInSpawnableBounds(blockPos)) {
          throw INVALID_POSITION.create();
-      } else if (source.getLevel().getDifficulty() == Difficulty.PEACEFUL && !type.value().isAllowedInPeaceful()) {
-         throw ERROR_FAILED_PEACEFUL.create();
-      } else {
-         CompoundTag entityTag = nbt.copy();
-         entityTag.putString("id", type.key().identifier().toString());
-         ServerLevel level = source.getLevel();
-         Entity entity = EntityType.loadEntityRecursive(entityTag, level, new EntitySpawnRequest(EntitySpawnReason.COMMAND, false), e -> {
-            e.snapTo(pos.x, pos.y, pos.z, e.getYRot(), e.getXRot());
-            return e;
-         });
-         if (entity == null) {
-            throw ERROR_FAILED.create();
-         } else {
-            if (finalize && entity instanceof Mob mob) {
-               mob.finalizeSpawn(source.getLevel(), source.getLevel().getCurrentDifficultyAt(entity.blockPosition()), EntitySpawnReason.COMMAND, null);
-            }
+      }
 
-            if (!level.tryAddFreshEntityWithPassengers(entity)) {
-               throw ERROR_DUPLICATE_UUID.create();
-            } else {
-               return entity;
-            }
-         }
+      if (source.getLevel().getDifficulty() == Difficulty.PEACEFUL && !type.value().isAllowedInPeaceful()) {
+         throw ERROR_FAILED_PEACEFUL.create();
+      }
+
+      CompoundTag entityTag = nbt.copy();
+      entityTag.putString("id", type.key().identifier().toString());
+      ServerLevel level = source.getLevel();
+      Entity entity = EntityType.loadEntityRecursive(entityTag, level, new EntitySpawnRequest(EntitySpawnReason.COMMAND, false), e -> {
+         e.snapTo(pos.x, pos.y, pos.z, e.getYRot(), e.getXRot());
+         return e;
+      });
+      if (entity == null) {
+         throw ERROR_FAILED.create();
+      }
+
+      if (finalize && entity instanceof Mob mob) {
+         mob.finalizeSpawn(source.getLevel(), source.getLevel().getCurrentDifficultyAt(entity.blockPosition()), EntitySpawnReason.COMMAND, null);
+      }
+
+      if (!level.tryAddFreshEntityWithPassengers(entity)) {
+         throw ERROR_DUPLICATE_UUID.create();
+      } else {
+         return entity;
       }
    }
 

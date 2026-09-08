@@ -12,10 +12,9 @@ public class UseItemGoal<T extends Mob> extends Goal {
    private final T mob;
    private final ItemStack item;
    private final Predicate<? super T> canUseSelector;
-   @Nullable
-   private final SoundEvent finishUsingSound;
+   private final @Nullable SoundEvent finishUsingSound;
 
-   public UseItemGoal(final T mob, final ItemStack item, @Nullable final SoundEvent finishUsingSound, final Predicate<? super T> canUseSelector) {
+   public UseItemGoal(final T mob, final ItemStack item, final @Nullable SoundEvent finishUsingSound, final Predicate<? super T> canUseSelector) {
       this.mob = mob;
       this.item = item;
       this.finishUsingSound = finishUsingSound;

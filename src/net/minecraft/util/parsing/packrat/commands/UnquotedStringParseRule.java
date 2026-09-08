@@ -16,8 +16,7 @@ public class UnquotedStringParseRule implements Rule<StringReader, String> {
       this.error = error;
    }
 
-   @Nullable
-   public String parse(final ParseState<StringReader> state) {
+   public @Nullable String parse(final ParseState<StringReader> state) {
       state.input().skipWhitespace();
       int cursor = state.mark();
       String value = state.input().readUnquotedString();

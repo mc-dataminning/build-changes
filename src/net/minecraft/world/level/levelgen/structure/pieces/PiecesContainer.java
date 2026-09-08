@@ -69,8 +69,8 @@ public record PiecesContainer(List<StructurePiece> pieces) {
             try {
                StructurePiece piece = pieceType.load(context, pieceTag);
                pieces.add(piece);
-            } catch (Exception var10) {
-               LOGGER.error("Exception loading structure piece with id {}", pieceId, var10);
+            } catch (Exception e) {
+               LOGGER.error("Exception loading structure piece with id {}", pieceId, e);
             }
          }
       }

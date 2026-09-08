@@ -2,7 +2,6 @@ package net.minecraft.client.gui.screens.social;
 
 import java.util.Collection;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -51,10 +50,8 @@ public class SocialInteractionsScreen extends Screen {
    private static final int BUTTON_HEIGHT = 20;
    private static final int ITEM_HEIGHT = 36;
    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-   @Nullable
-   private final Screen lastScreen;
-   @Nullable
-   private SocialInteractionsPlayerList socialInteractionsPlayerList;
+   private final @Nullable Screen lastScreen;
+   private @Nullable SocialInteractionsPlayerList socialInteractionsPlayerList;
    private EditBox searchBox;
    private String lastSearch = "";
    private SocialInteractionsScreen.Page page = SocialInteractionsScreen.Page.ALL;
@@ -62,15 +59,14 @@ public class SocialInteractionsScreen extends Screen {
    private Button hiddenButton;
    private Button blockedButton;
    private Button blockingHintButton;
-   @Nullable
-   private Component serverLabel;
+   private @Nullable Component serverLabel;
    private int playerCount;
 
    public SocialInteractionsScreen() {
       this(null);
    }
 
-   public SocialInteractionsScreen(@Nullable final Screen lastScreen) {
+   public SocialInteractionsScreen(final @Nullable Screen lastScreen) {
       super(TITLE);
       this.lastScreen = lastScreen;
       this.updateServerLabel(Minecraft.getInstance());
@@ -90,9 +86,7 @@ public class SocialInteractionsScreen extends Screen {
 
    @Override
    public Component getNarrationMessage() {
-      return (Component)(this.serverLabel != null
-         ? CommonComponents.joinForNarration(super.getNarrationMessage(), this.serverLabel)
-         : super.getNarrationMessage());
+      return this.serverLabel != null ? CommonComponents.joinForNarration(super.getNarrationMessage(), this.serverLabel) : super.getNarrationMessage();
    }
 
    @Override
@@ -118,10 +112,6 @@ public class SocialInteractionsScreen extends Screen {
       String oldEdit = this.searchBox != null ? this.searchBox.getValue() : "";
       this.searchBox = this.addRenderableWidget(
          new EditBox(this.font, this.marginX() + 28, 74, 200, 15, SEARCH_HINT) {
-            {
-               Objects.requireNonNull(SocialInteractionsScreen.this);
-            }
-
             @Override
             protected MutableComponent createNarrationMessage() {
                return !SocialInteractionsScreen.this.searchBox.getValue().isEmpty() && SocialInteractionsScreen.this.socialInteractionsPlayerList.isEmpty()
@@ -305,7 +295,7 @@ public class SocialInteractionsScreen extends Screen {
       this.socialInteractionsPlayerList.removePlayer(id);
    }
 
-   public static enum Page {
+   public enum Page {
       ALL,
       HIDDEN,
       BLOCKED;

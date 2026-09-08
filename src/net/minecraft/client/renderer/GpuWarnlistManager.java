@@ -56,23 +56,19 @@ public class GpuWarnlistManager extends SimplePreparableReloadListener<GpuWarnli
       this.warningDismissed = false;
    }
 
-   @Nullable
-   public String getRendererWarnings() {
+   public @Nullable String getRendererWarnings() {
       return (String)this.warnings.get("renderer");
    }
 
-   @Nullable
-   public String getVersionWarnings() {
+   public @Nullable String getVersionWarnings() {
       return (String)this.warnings.get("version");
    }
 
-   @Nullable
-   public String getVendorWarnings() {
+   public @Nullable String getVendorWarnings() {
       return (String)this.warnings.get("vendor");
    }
 
-   @Nullable
-   public String getAllWarnings() {
+   public @Nullable String getAllWarnings() {
       StringBuilder sb = new StringBuilder();
       this.warnings.forEach((k, v) -> sb.append(k).append(": ").append(v));
       return sb.isEmpty() ? null : sb.toString();
@@ -102,20 +98,14 @@ public class GpuWarnlistManager extends SimplePreparableReloadListener<GpuWarnli
       jsonArray.forEach(e -> patternList.add(Pattern.compile(e.getAsString(), 2)));
    }
 
-   @Nullable
-   private static JsonObject parseJson(final ResourceManager manager, final ProfilerFiller profiler) {
-      try {
-         JsonObject var4;
-         try (
-            Zone ignored = profiler.zone("parse_json");
-            Reader resource = manager.openAsReader(GPU_WARNLIST_LOCATION);
-         ) {
-            var4 = StrictJsonParser.parse(resource).getAsJsonObject();
-         }
-
-         return var4;
-      } catch (JsonSyntaxException | IOException var10) {
-         LOGGER.warn("Failed to load GPU warnlist", var10);
+   private static @Nullable JsonObject parseJson(final ResourceManager manager, final ProfilerFiller profiler) {
+      try (
+         Zone ignored = profiler.zone("parse_json");
+         Reader resource = manager.openAsReader(GPU_WARNLIST_LOCATION);
+      ) {
+         return StrictJsonParser.parse(resource).getAsJsonObject();
+      } catch (IOException | JsonSyntaxException e) {
+         LOGGER.warn("Failed to load GPU warnlist", e);
          return null;
       }
    }

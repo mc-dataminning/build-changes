@@ -62,9 +62,8 @@ public class CamelHusk extends Camel {
       return false;
    }
 
-   @Nullable
    @Override
-   public Camel getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable Camel getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       return null;
    }
 

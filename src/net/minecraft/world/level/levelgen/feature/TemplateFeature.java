@@ -26,10 +26,10 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 public record TemplateFeature(WeightedList<TemplateFeature.TemplateEntry> templates, Optional<Holder<StructureProcessorList>> processors) implements Feature {
    public static final MapCodec<TemplateFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               WeightedList.codec(TemplateFeature.TemplateEntry.CODEC).fieldOf("templates").forGetter(TemplateFeature::templates),
-               StructureProcessorType.LIST_CODEC.optionalFieldOf("processors").forGetter(TemplateFeature::processors)
-            )
-            .apply(i, TemplateFeature::new)
+            WeightedList.codec(TemplateFeature.TemplateEntry.CODEC).fieldOf("templates").forGetter(TemplateFeature::templates),
+            StructureProcessorType.LIST_CODEC.optionalFieldOf("processors").forGetter(TemplateFeature::processors)
+         )
+         .apply(i, TemplateFeature::new)
    );
 
    public TemplateFeature(final WeightedList<TemplateFeature.TemplateEntry> templates) {
@@ -72,13 +72,13 @@ public record TemplateFeature(WeightedList<TemplateFeature.TemplateEntry> templa
       return rotation.rotate(axis.getNegative()).getUnitVec3i().multiply(template.getSize().get(axis) / 2);
    }
 
-   public static record TemplateEntry(Identifier template, List<Rotation> rotations) {
+   public record TemplateEntry(Identifier template, List<Rotation> rotations) {
       public static final Codec<TemplateFeature.TemplateEntry> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Identifier.CODEC.fieldOf("id").forGetter(TemplateFeature.TemplateEntry::template),
-                  Rotation.CODEC.listOf().optionalFieldOf("rotations", List.of(Rotation.values())).forGetter(TemplateFeature.TemplateEntry::rotations)
-               )
-               .apply(i, TemplateFeature.TemplateEntry::new)
+               Identifier.CODEC.fieldOf("id").forGetter(TemplateFeature.TemplateEntry::template),
+               Rotation.CODEC.listOf().optionalFieldOf("rotations", List.of(Rotation.values())).forGetter(TemplateFeature.TemplateEntry::rotations)
+            )
+            .apply(i, TemplateFeature.TemplateEntry::new)
       );
 
       public static TemplateFeature.TemplateEntry of(final Identifier template) {

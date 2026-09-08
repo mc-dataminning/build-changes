@@ -8,6 +8,6 @@ public record LevelDataAndDimensions(LevelDataAndDimensions.WorldDataAndGenSetti
       return new LevelDataAndDimensions(new LevelDataAndDimensions.WorldDataAndGenSettings(data, genSettings), dimensions);
    }
 
-   public static record WorldDataAndGenSettings(WorldData data, WorldGenSettings genSettings) {
+   public record WorldDataAndGenSettings(WorldData data, WorldGenSettings genSettings) {
    }
 }

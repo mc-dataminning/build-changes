@@ -28,14 +28,14 @@ public class StructureTemplatePool {
    private static final MutableObject<Codec<Holder<StructureTemplatePool>>> CODEC_REFERENCE = new MutableObject();
    public static final Codec<StructureTemplatePool> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.lazyInitialized(CODEC_REFERENCE).fieldOf("fallback").forGetter(StructureTemplatePool::getFallback),
-               Codec.mapPair(StructurePoolElement.CODEC.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight"))
-                  .codec()
-                  .listOf()
-                  .fieldOf("elements")
-                  .forGetter(p -> p.rawTemplates)
-            )
-            .apply(i, StructureTemplatePool::new)
+            Codec.lazyInitialized(CODEC_REFERENCE).fieldOf("fallback").forGetter(StructureTemplatePool::getFallback),
+            Codec.mapPair(StructurePoolElement.CODEC.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight"))
+               .codec()
+               .listOf()
+               .fieldOf("elements")
+               .forGetter(p -> p.rawTemplates)
+         )
+         .apply(i, StructureTemplatePool::new)
    );
    public static final Codec<Holder<StructureTemplatePool>> CODEC = Util.make(
       RegistryCodecs.holder(Registries.TEMPLATE_POOL, DIRECT_CODEC), CODEC_REFERENCE::setValue
@@ -103,9 +103,7 @@ public class StructureTemplatePool {
    }
 
    public StructurePoolElement getRandomTemplate(final RandomSource random) {
-      return (StructurePoolElement)(this.templates.isEmpty()
-         ? EmptyPoolElement.INSTANCE
-         : (StructurePoolElement)this.templates.get(random.nextInt(this.templates.size())));
+      return this.templates.isEmpty() ? EmptyPoolElement.INSTANCE : (StructurePoolElement)this.templates.get(random.nextInt(this.templates.size()));
    }
 
    public List<StructurePoolElement> getShuffledTemplates(final RandomSource random) {
@@ -116,7 +114,7 @@ public class StructureTemplatePool {
       return this.templates.size();
    }
 
-   public static enum Projection implements StringRepresentable {
+   public enum Projection implements StringRepresentable {
       TERRAIN_MATCHING("terrain_matching", ImmutableList.of(new GravityProcessor(Heightmap.Types.WORLD_SURFACE_WG, -1))),
       RIGID("rigid", ImmutableList.of());
 
@@ -126,7 +124,7 @@ public class StructureTemplatePool {
       private final String name;
       private final ImmutableList<StructureProcessor> processors;
 
-      private Projection(final String name, final ImmutableList<StructureProcessor> processors) {
+      Projection(final String name, final ImmutableList<StructureProcessor> processors) {
          this.name = name;
          this.processors = processors;
       }

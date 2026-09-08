@@ -28,7 +28,7 @@ public interface FloatModifier<Argument> extends AttributeModifier<Float, Argume
    FloatModifier<Float> MAXIMUM = Math::max;
 
    @FunctionalInterface
-   public interface Simple extends FloatModifier<Float> {
+   interface Simple extends FloatModifier<Float> {
       @Override
       default Codec<Float> argumentCodec(final EnvironmentAttribute<Float> type) {
          return Codec.FLOAT;

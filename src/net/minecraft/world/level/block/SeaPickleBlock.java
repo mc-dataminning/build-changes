@@ -34,20 +34,19 @@ public class SeaPickleBlock extends VegetationBlock implements SimpleWaterlogged
 
    protected SeaPickleBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(PICKLES, Integer.valueOf(1)).setValue(WATERLOGGED, Boolean.valueOf(true)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(PICKLES, 1).setValue(WATERLOGGED, true));
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockState state = context.getLevel().getBlockState(context.getClickedPos());
       if (state.is(this)) {
-         return state.setValue(PICKLES, Integer.valueOf(Math.min(4, state.getValue(PICKLES) + 1)));
-      } else {
-         FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-         boolean isWaterSource = replacedFluidState.is(Fluids.WATER);
-         return super.getStateForPlacement(context).setValue(WATERLOGGED, Boolean.valueOf(isWaterSource));
+         return state.setValue(PICKLES, Math.min(4, state.getValue(PICKLES) + 1));
       }
+
+      FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
+      boolean isWaterSource = replacedFluidState.is(Fluids.WATER);
+      return super.getStateForPlacement(context).setValue(WATERLOGGED, isWaterSource);
    }
 
    public static boolean isDead(final BlockState state) {
@@ -78,13 +77,13 @@ public class SeaPickleBlock extends VegetationBlock implements SimpleWaterlogged
    ) {
       if (!state.canSurvive(level, pos)) {
          return Blocks.AIR.defaultBlockState();
-      } else {
-         if (state.getValue(WATERLOGGED)) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-         }
-
-         return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
       }
+
+      if (state.getValue(WATERLOGGED)) {
+         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+      }
+
+      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
    }
 
    @Override
@@ -142,7 +141,7 @@ public class SeaPickleBlock extends VegetationBlock implements SimpleWaterlogged
                if (!position.equals(pos) && random.nextInt(6) == 0 && level.getBlockState(position).is(Blocks.WATER)) {
                   BlockState belowState = level.getBlockState(position.below());
                   if (belowState.is(BlockTags.CORAL_BLOCKS)) {
-                     level.setBlockAndUpdate(position, Blocks.SEA_PICKLE.defaultBlockState().setValue(PICKLES, Integer.valueOf(random.nextInt(4) + 1)));
+                     level.setBlockAndUpdate(position, Blocks.SEA_PICKLE.defaultBlockState().setValue(PICKLES, random.nextInt(4) + 1));
                   }
                }
             }
@@ -159,7 +158,7 @@ public class SeaPickleBlock extends VegetationBlock implements SimpleWaterlogged
          count++;
       }
 
-      level.setBlock(pos, state.setValue(PICKLES, Integer.valueOf(4)), 2);
+      level.setBlock(pos, state.setValue(PICKLES, 4), 2);
    }
 
    @Override

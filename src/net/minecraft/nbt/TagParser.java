@@ -26,8 +26,8 @@ public class TagParser<T> {
                return result instanceof CompoundTag compoundTag
                   ? DataResult.success(compoundTag, Lifecycle.stable())
                   : DataResult.error(() -> "Expected compound tag, got " + result);
-            } catch (CommandSyntaxException var3) {
-               return DataResult.error(var3::getMessage);
+            } catch (CommandSyntaxException e) {
+               return DataResult.error(e::getMessage);
             }
          },
          CompoundTag::toString
@@ -50,8 +50,8 @@ public class TagParser<T> {
    }
 
    private static CompoundTag castToCompoundOrThrow(final StringReader reader, final Tag result) throws CommandSyntaxException {
-      if (result instanceof CompoundTag) {
-         return (CompoundTag)result;
+      if (result instanceof CompoundTag compoundTag) {
+         return compoundTag;
       } else {
          throw ERROR_EXPECTED_COMPOUND.createWithContext(reader);
       }

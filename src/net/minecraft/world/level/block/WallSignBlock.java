@@ -27,7 +27,7 @@ public class WallSignBlock extends SignBlock implements PlainSignBlock {
 
    public WallSignBlock(final WoodType type, final BlockBehaviour.Properties properties) {
       super(type, properties.sound(type.soundType()));
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false));
    }
 
    @Override
@@ -40,9 +40,8 @@ public class WallSignBlock extends SignBlock implements PlainSignBlock {
       return level.getBlockState(pos.relative(state.getValue(FACING).getOpposite())).isSolid();
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockState state = this.defaultBlockState();
       FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
       LevelReader level = context.getLevel();
@@ -54,7 +53,7 @@ public class WallSignBlock extends SignBlock implements PlainSignBlock {
             Direction facing = direction.getOpposite();
             state = state.setValue(FACING, facing);
             if (state.canSurvive(level, pos)) {
-               return state.setValue(WATERLOGGED, Boolean.valueOf(replacedFluidState.is(Fluids.WATER)));
+               return state.setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
             }
          }
       }

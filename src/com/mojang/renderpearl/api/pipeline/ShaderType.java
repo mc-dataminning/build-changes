@@ -12,13 +12,12 @@ public enum ShaderType {
    private final String name;
    private final String extension;
 
-   private ShaderType(final String name, final String extension) {
+   ShaderType(final String name, final String extension) {
       this.name = name;
       this.extension = extension;
    }
 
-   @Nullable
-   public static ShaderType byLocation(final Identifier location) {
+   public static @Nullable ShaderType byLocation(final Identifier location) {
       for (ShaderType type : TYPES) {
          if (location.getPath().endsWith(type.extension)) {
             return type;

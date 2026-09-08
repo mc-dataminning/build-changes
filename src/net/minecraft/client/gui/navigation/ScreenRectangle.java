@@ -65,8 +65,7 @@ public record ScreenRectangle(ScreenPosition position, int width, int height) {
       return (this.getBoundInDirection(axis.getPositive()) + this.getBoundInDirection(axis.getNegative())) / 2;
    }
 
-   @Nullable
-   public ScreenRectangle intersection(final ScreenRectangle other) {
+   public @Nullable ScreenRectangle intersection(final ScreenRectangle other) {
       int left = Math.max(this.left(), other.left());
       int top = Math.max(this.top(), other.top());
       int right = Math.min(this.right(), other.right());
@@ -103,16 +102,16 @@ public record ScreenRectangle(ScreenPosition position, int width, int height) {
    }
 
    public ScreenRectangle transformAxisAligned(final Matrix3x2fc matrix) {
-      Vector2f topLeft = matrix.transformPosition((float)this.left(), (float)this.top(), new Vector2f());
-      Vector2f bottomRight = matrix.transformPosition((float)this.right(), (float)this.bottom(), new Vector2f());
+      Vector2f topLeft = matrix.transformPosition(this.left(), this.top(), new Vector2f());
+      Vector2f bottomRight = matrix.transformPosition(this.right(), this.bottom(), new Vector2f());
       return new ScreenRectangle(Mth.floor(topLeft.x), Mth.floor(topLeft.y), Mth.floor(bottomRight.x - topLeft.x), Mth.floor(bottomRight.y - topLeft.y));
    }
 
    public ScreenRectangle transformMaxBounds(final Matrix3x2fc matrix) {
-      Vector2f topLeft = matrix.transformPosition((float)this.left(), (float)this.top(), new Vector2f());
-      Vector2f topRight = matrix.transformPosition((float)this.right(), (float)this.top(), new Vector2f());
-      Vector2f bottomLeft = matrix.transformPosition((float)this.left(), (float)this.bottom(), new Vector2f());
-      Vector2f bottomRight = matrix.transformPosition((float)this.right(), (float)this.bottom(), new Vector2f());
+      Vector2f topLeft = matrix.transformPosition(this.left(), this.top(), new Vector2f());
+      Vector2f topRight = matrix.transformPosition(this.right(), this.top(), new Vector2f());
+      Vector2f bottomLeft = matrix.transformPosition(this.left(), this.bottom(), new Vector2f());
+      Vector2f bottomRight = matrix.transformPosition(this.right(), this.bottom(), new Vector2f());
       float minX = Math.min(Math.min(topLeft.x(), bottomLeft.x()), Math.min(topRight.x(), bottomRight.x()));
       float maxX = Math.max(Math.max(topLeft.x(), bottomLeft.x()), Math.max(topRight.x(), bottomRight.x()));
       float minY = Math.min(Math.min(topLeft.y(), bottomLeft.y()), Math.min(topRight.y(), bottomRight.y()));

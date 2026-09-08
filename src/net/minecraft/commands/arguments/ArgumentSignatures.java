@@ -25,7 +25,7 @@ public record ArgumentSignatures(List<ArgumentSignatures.Entry> entries) {
       return new ArgumentSignatures(entries);
    }
 
-   public static record Entry(String name, MessageSignature signature) {
+   public record Entry(String name, MessageSignature signature) {
       public static final StreamCodec<ByteBuf, ArgumentSignatures.Entry> STREAM_CODEC = StreamCodec.composite(
          ByteBufCodecs.stringUtf8(16),
          ArgumentSignatures.Entry::name,
@@ -37,7 +37,6 @@ public record ArgumentSignatures(List<ArgumentSignatures.Entry> entries) {
 
    @FunctionalInterface
    public interface Signer {
-      @Nullable
-      MessageSignature sign(String content);
+      @Nullable MessageSignature sign(String content);
    }
 }

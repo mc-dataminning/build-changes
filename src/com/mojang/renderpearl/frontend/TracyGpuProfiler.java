@@ -22,7 +22,7 @@ public class TracyGpuProfiler {
    public TracyGpuProfiler(final FrontendGpuDevice device) {
       this.queries = device.createTimestampQueryPool(1024);
       this.context = TracyClient.createGpuContext(GpuApi.OPENGL, System.nanoTime(), 1.0F);
-      this.period = (double)device.getDeviceInfo().timestampPeriod();
+      this.period = device.getDeviceInfo().timestampPeriod();
       this.device = device;
       this.lastCalibrationTime = System.nanoTime();
       this.calibrationOffset = device.getTimestampCalibrationOffset();
@@ -59,7 +59,7 @@ public class TracyGpuProfiler {
                return;
             }
 
-            this.context.submitQueryTimestamp(this.tail, (long)((double)timestamp.getAsLong() * this.period) + this.calibrationOffset);
+            this.context.submitQueryTimestamp(this.tail, (long)(timestamp.getAsLong() * this.period) + this.calibrationOffset);
             this.tail = (this.tail + 1) % 1024;
          }
       }
@@ -73,7 +73,7 @@ public class TracyGpuProfiler {
                return;
             }
 
-            this.context.submitQueryTimestamp(this.tail, (long)((double)timestamp.getAsLong() * this.period) + this.calibrationOffset);
+            this.context.submitQueryTimestamp(this.tail, (long)(timestamp.getAsLong() * this.period) + this.calibrationOffset);
             this.tail = (this.tail + 1) % 1024;
          }
       }

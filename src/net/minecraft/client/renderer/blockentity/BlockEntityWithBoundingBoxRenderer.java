@@ -35,7 +35,7 @@ public class BlockEntityWithBoundingBoxRenderer<T extends BlockEntity & Bounding
       final BlockEntityWithBoundingBoxRenderState state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
       extract(blockEntity, state);
@@ -97,8 +97,7 @@ public class BlockEntityWithBoundingBoxRenderer<T extends BlockEntity & Bounding
                float lineRGB = 0.9F;
                BlockPos far = pos.offset(size);
                Gizmos.cuboid(
-                  new AABB((double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), (double)far.getX(), (double)far.getY(), (double)far.getZ())
-                     .move(state.blockPos),
+                  new AABB(pos.getX(), pos.getY(), pos.getZ(), far.getX(), far.getY(), far.getZ()).move(state.blockPos),
                   GizmoStyle.stroke(ARGB.colorFromFloat(1.0F, 0.9F, 0.9F, 0.9F)),
                   true
                );
@@ -120,12 +119,12 @@ public class BlockEntityWithBoundingBoxRenderer<T extends BlockEntity & Bounding
                   BlockEntityWithBoundingBoxRenderState.InvisibleBlockType invisibleBlockType = state.invisibleBlocks[index];
                   if (invisibleBlockType != null) {
                      float scale = invisibleBlockType == BlockEntityWithBoundingBoxRenderState.InvisibleBlockType.AIR ? 0.05F : 0.0F;
-                     double renderX0 = (double)((float)(startingPos.getX() + x) + 0.45F - scale);
-                     double renderY0 = (double)((float)(startingPos.getY() + y) + 0.45F - scale);
-                     double renderZ0 = (double)((float)(startingPos.getZ() + z) + 0.45F - scale);
-                     double renderX1 = (double)((float)(startingPos.getX() + x) + 0.55F + scale);
-                     double renderY1 = (double)((float)(startingPos.getY() + y) + 0.55F + scale);
-                     double renderZ1 = (double)((float)(startingPos.getZ() + z) + 0.55F + scale);
+                     double renderX0 = startingPos.getX() + x + 0.45F - scale;
+                     double renderY0 = startingPos.getY() + y + 0.45F - scale;
+                     double renderZ0 = startingPos.getZ() + z + 0.45F - scale;
+                     double renderX1 = startingPos.getX() + x + 0.55F + scale;
+                     double renderY1 = startingPos.getY() + y + 0.55F + scale;
+                     double renderZ1 = startingPos.getZ() + z + 0.55F + scale;
                      AABB aabb = new AABB(renderX0, renderY0, renderZ0, renderX1, renderY1, renderZ1);
                      if (invisibleBlockType == BlockEntityWithBoundingBoxRenderState.InvisibleBlockType.AIR) {
                         Gizmos.cuboid(aabb, GizmoStyle.stroke(ARGB.colorFromFloat(1.0F, 0.5F, 0.5F, 1.0F)));
@@ -158,20 +157,16 @@ public class BlockEntityWithBoundingBoxRenderer<T extends BlockEntity & Bounding
             }
          }
 
-         shape.forAllFaces(
-            (direction, xx, yx, zx) -> {
-               float scale = 0.48F;
-               float x0 = (float)(xx + startingPosition.getX()) + 0.5F - 0.48F;
-               float y0 = (float)(yx + startingPosition.getY()) + 0.5F - 0.48F;
-               float z0 = (float)(zx + startingPosition.getZ()) + 0.5F - 0.48F;
-               float x1 = (float)(xx + startingPosition.getX()) + 0.5F + 0.48F;
-               float y1 = (float)(yx + startingPosition.getY()) + 0.5F + 0.48F;
-               float z1 = (float)(zx + startingPosition.getZ()) + 0.5F + 0.48F;
-               Gizmos.rect(
-                  new Vec3((double)x0, (double)y0, (double)z0), new Vec3((double)x1, (double)y1, (double)z1), direction, GizmoStyle.fill(STRUCTURE_VOIDS_COLOR)
-               );
-            }
-         );
+         shape.forAllFaces((direction, xx, yx, zx) -> {
+            float scale = 0.48F;
+            float x0 = xx + startingPosition.getX() + 0.5F - 0.48F;
+            float y0 = yx + startingPosition.getY() + 0.5F - 0.48F;
+            float z0 = zx + startingPosition.getZ() + 0.5F - 0.48F;
+            float x1 = xx + startingPosition.getX() + 0.5F + 0.48F;
+            float y1 = yx + startingPosition.getY() + 0.5F + 0.48F;
+            float z1 = zx + startingPosition.getZ() + 0.5F + 0.48F;
+            Gizmos.rect(new Vec3(x0, y0, z0), new Vec3(x1, y1, z1), direction, GizmoStyle.fill(STRUCTURE_VOIDS_COLOR));
+         });
       }
    }
 

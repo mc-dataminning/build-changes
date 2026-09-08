@@ -16,7 +16,7 @@ public class TlsfAllocator {
    private static final int ALIGN_SIZE = 32;
    private int firstLevelBitmap = 0;
    private final int[] secondLevelBitmap = new int[32];
-   private final TlsfAllocator.Block[] freeLists = new TlsfAllocator.Block[256];
+   private final TlsfAllocator.@Nullable Block[] freeLists = new TlsfAllocator.Block[256];
    private final long totalMemorySize;
    private static final Logger LOGGER = LogUtils.getLogger();
 
@@ -32,12 +32,11 @@ public class TlsfAllocator {
       this.totalMemorySize = alignedHeapSize;
    }
 
-   @Nullable
-   private TlsfAllocator.Block getBlockFromFreeList(final int firstLevelIndex, final int secondLevelIndex) {
+   private TlsfAllocator.@Nullable Block getBlockFromFreeList(final int firstLevelIndex, final int secondLevelIndex) {
       return this.freeLists[firstLevelIndex * 8 + secondLevelIndex];
    }
 
-   private void setBlockFreeList(final int firstLevelIndex, final int secondLevelIndex, @Nullable final TlsfAllocator.Block block) {
+   private void setBlockFreeList(final int firstLevelIndex, final int secondLevelIndex, final TlsfAllocator.@Nullable Block block) {
       this.freeLists[firstLevelIndex * 8 + secondLevelIndex] = block;
    }
 
@@ -74,7 +73,7 @@ public class TlsfAllocator {
       long roundedSize = size;
       if (Long.compareUnsigned(size, 256L) >= 0) {
          long round = (1L << findLastSignificantBit(size) - 3) - 1L;
-         roundedSize = size + round;
+         roundedSize += round;
       }
 
       return this.getLevelIndex(roundedSize);
@@ -125,7 +124,6 @@ public class TlsfAllocator {
          TlsfAllocator.Block next = block.nextPhysicalBlock;
          if (next != null) {
             assert next.previousPhysicalBlock == block;
-
             next.previousPhysicalBlock = remainingBlock;
          }
 
@@ -136,20 +134,17 @@ public class TlsfAllocator {
       }
    }
 
-   @Nullable
-   public TlsfAllocator.Allocation allocate(final long size, final int align) {
+   public TlsfAllocator.@Nullable Allocation allocate(final long size, final int align) {
       boolean isPowerOfTwo = Mth.isPowerOfTwo(align);
       int sizePadding = isPowerOfTwo && align <= 32 ? 0 : align;
-      long alignedSize = alignUp(size + (long)sizePadding, 32L);
-
+      long alignedSize = alignUp(size + sizePadding, 32L);
       assert alignedSize <= 549755813888L;
-
       TlsfAllocator.IndexPair levelIndex = this.mappingSearch(alignedSize);
       int firstLevelIndex = levelIndex.firstLevelIndex;
       int secondLevelIndex = levelIndex.secondLevelIndex;
       long firstLevelSize = 1L << firstLevelIndex + 8 - 1;
       long secondLevelInterval = firstLevelSize / 8L;
-      long slotSize = firstLevelSize + (long)secondLevelIndex * secondLevelInterval;
+      long slotSize = firstLevelSize + secondLevelIndex * secondLevelInterval;
       if (firstLevelIndex < 32) {
          int slBitmap = this.secondLevelBitmap[firstLevelIndex] & -1 << secondLevelIndex;
          if (slBitmap == 0) {
@@ -164,14 +159,12 @@ public class TlsfAllocator {
 
          secondLevelIndex = findFirstSignificantBit(slBitmap);
          TlsfAllocator.Block block = this.getBlockFromFreeList(firstLevelIndex, secondLevelIndex);
-
          assert block != null && block.getSize() >= alignedSize;
-
          this.removeFreeBlock(block, firstLevelIndex, secondLevelIndex);
          this.trimBlock(block, slotSize);
          block.setUsed();
-         long gap = Long.remainderUnsigned(block.offsetFromHeap, (long)align);
-         long alignmentOffset = gap == 0L ? 0L : (long)align - gap;
+         long gap = Long.remainderUnsigned(block.offsetFromHeap, align);
+         long alignmentOffset = gap == 0L ? 0L : align - gap;
          long allocationOffset = block.offsetFromHeap + alignmentOffset;
          return new TlsfAllocator.Allocation(block, allocationOffset);
       } else {
@@ -183,15 +176,12 @@ public class TlsfAllocator {
       TlsfAllocator.Block previous = block.previousPhysicalBlock;
       if (previous != null && previous.isFree()) {
          assert previous.offsetFromHeap + previous.getSize() == block.offsetFromHeap;
-
          assert previous.nextPhysicalBlock == block;
-
          TlsfAllocator.IndexPair levelIndex = this.getLevelIndex(previous.getSize());
          this.removeFreeBlock(previous, levelIndex.firstLevelIndex, levelIndex.secondLevelIndex);
          TlsfAllocator.Block prevprev = previous.previousPhysicalBlock;
          if (prevprev != null) {
             assert prevprev.nextPhysicalBlock == previous;
-
             prevprev.nextPhysicalBlock = block;
          }
 
@@ -209,15 +199,12 @@ public class TlsfAllocator {
       TlsfAllocator.Block next = block.nextPhysicalBlock;
       if (next != null && next.isFree()) {
          assert next.offsetFromHeap - block.getSize() == block.offsetFromHeap;
-
          assert next.previousPhysicalBlock == block;
-
          TlsfAllocator.IndexPair levelIndex = this.getLevelIndex(next.getSize());
          this.removeFreeBlock(next, levelIndex.firstLevelIndex, levelIndex.secondLevelIndex);
          TlsfAllocator.Block nextnext = next.nextPhysicalBlock;
          if (nextnext != null) {
             assert nextnext.previousPhysicalBlock == next;
-
             nextnext.previousPhysicalBlock = block;
          }
 
@@ -242,10 +229,10 @@ public class TlsfAllocator {
    }
 
    public boolean isCompletelyFree() {
-      if (Long.bitCount((long)this.firstLevelBitmap) == 1) {
+      if (Long.bitCount(this.firstLevelBitmap) == 1) {
          int firstLevelIndex = findFirstSignificantBit(this.firstLevelBitmap);
          int slBitmap = this.secondLevelBitmap[firstLevelIndex];
-         if (Long.bitCount((long)slBitmap) == 1) {
+         if (Long.bitCount(slBitmap) == 1) {
             int secondLevelIndex = findFirstSignificantBit(slBitmap);
             TlsfAllocator.Block freeBlock = this.getBlockFromFreeList(firstLevelIndex, secondLevelIndex);
             return freeBlock != null && freeBlock.getSize() == this.totalMemorySize;
@@ -274,7 +261,7 @@ public class TlsfAllocator {
          }
       }
 
-      double unusedPercent = (double)freeMemorySize / (double)this.totalMemorySize * 100.0;
+      double unusedPercent = (double)freeMemorySize / this.totalMemorySize * 100.0;
       LOGGER.debug(
          "Uber buffer {}, size: {} -- free-listed memory: {} -- free-block count:{}", new Object[]{name, this.totalMemorySize, unusedPercent, freeBlockCount}
       );
@@ -311,24 +298,20 @@ public class TlsfAllocator {
       private long size = 0L;
       public final TlsfAllocator.Heap heap;
       public long offsetFromHeap;
-      @Nullable
-      public TlsfAllocator.Block nextFreeBlock;
-      @Nullable
-      public TlsfAllocator.Block previousFreeBlock;
-      @Nullable
-      public TlsfAllocator.Block nextPhysicalBlock;
-      @Nullable
-      public TlsfAllocator.Block previousPhysicalBlock;
+      public TlsfAllocator.@Nullable Block nextFreeBlock;
+      public TlsfAllocator.@Nullable Block previousFreeBlock;
+      public TlsfAllocator.@Nullable Block nextPhysicalBlock;
+      public TlsfAllocator.@Nullable Block previousPhysicalBlock;
       private static final int BLOCK_HEADER_FREE_BIT = 1;
 
       private Block(
          final long size,
          final TlsfAllocator.Heap heap,
          final long offsetFromHeap,
-         @Nullable final TlsfAllocator.Block nextFreeBlock,
-         @Nullable final TlsfAllocator.Block previousFreeBlock,
-         @Nullable final TlsfAllocator.Block nextPhysicalBlock,
-         @Nullable final TlsfAllocator.Block previousPhysicalBlock
+         final TlsfAllocator.@Nullable Block nextFreeBlock,
+         final TlsfAllocator.@Nullable Block previousFreeBlock,
+         final TlsfAllocator.@Nullable Block nextPhysicalBlock,
+         final TlsfAllocator.@Nullable Block previousPhysicalBlock
       ) {
          this.heap = heap;
          this.offsetFromHeap = offsetFromHeap;
@@ -369,6 +352,6 @@ public class TlsfAllocator {
       }
    }
 
-   private static record IndexPair(int firstLevelIndex, int secondLevelIndex) {
+   private record IndexPair(int firstLevelIndex, int secondLevelIndex) {
    }
 }

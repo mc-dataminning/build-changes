@@ -9,23 +9,23 @@ import net.minecraft.world.entity.schedule.Activity;
 public class SetRaidStatus {
    public static BehaviorControl<LivingEntity> create() {
       return BehaviorBuilder.create(i -> i.point((level, body, timestamp) -> {
-            if (level.getRandom().nextInt(20) != 0) {
-               return false;
-            } else {
-               Brain<?> brain = body.getBrain();
-               Raid nearbyRaid = level.getRaidAt(body.blockPosition());
-               if (nearbyRaid != null) {
-                  if (nearbyRaid.hasFirstWaveSpawned() && !nearbyRaid.isBetweenWaves()) {
-                     brain.setDefaultActivity(Activity.RAID);
-                     brain.setActiveActivityIfPossible(Activity.RAID);
-                  } else {
-                     brain.setDefaultActivity(Activity.PRE_RAID);
-                     brain.setActiveActivityIfPossible(Activity.PRE_RAID);
-                  }
-               }
+         if (level.getRandom().nextInt(20) != 0) {
+            return false;
+         }
 
-               return true;
+         Brain<?> brain = body.getBrain();
+         Raid nearbyRaid = level.getRaidAt(body.blockPosition());
+         if (nearbyRaid != null) {
+            if (nearbyRaid.hasFirstWaveSpawned() && !nearbyRaid.isBetweenWaves()) {
+               brain.setDefaultActivity(Activity.RAID);
+               brain.setActiveActivityIfPossible(Activity.RAID);
+            } else {
+               brain.setDefaultActivity(Activity.PRE_RAID);
+               brain.setActiveActivityIfPossible(Activity.PRE_RAID);
             }
-         }));
+         }
+
+         return true;
+      }));
    }
 }

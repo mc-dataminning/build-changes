@@ -44,9 +44,8 @@ public class EnderDragonPart extends Entity {
       return true;
    }
 
-   @Nullable
    @Override
-   public ItemStack getPickResult() {
+   public @Nullable ItemStack getPickResult() {
       return this.parentMob.getPickResult();
    }
 

@@ -9,18 +9,15 @@ import org.jspecify.annotations.Nullable;
 public interface UnbakedModel {
    String PARTICLE_TEXTURE_REFERENCE = "particle";
 
-   @Nullable
-   default Boolean ambientOcclusion() {
+   default @Nullable Boolean ambientOcclusion() {
       return null;
    }
 
-   @Nullable
-   default UnbakedModel.GuiLight guiLight() {
+   default UnbakedModel.@Nullable GuiLight guiLight() {
       return null;
    }
 
-   @Nullable
-   default ItemTransforms transforms() {
+   default @Nullable ItemTransforms transforms() {
       return null;
    }
 
@@ -28,23 +25,21 @@ public interface UnbakedModel {
       return TextureSlots.Data.EMPTY;
    }
 
-   @Nullable
-   default UnbakedGeometry geometry() {
+   default @Nullable UnbakedGeometry geometry() {
       return null;
    }
 
-   @Nullable
-   default Identifier parent() {
+   default @Nullable Identifier parent() {
       return null;
    }
 
-   public static enum GuiLight {
+   enum GuiLight {
       FRONT("front"),
       SIDE("side");
 
       private final String name;
 
-      private GuiLight(final String name) {
+      GuiLight(final String name) {
          this.name = name;
       }
 

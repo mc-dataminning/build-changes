@@ -92,12 +92,12 @@ public class ConduitRenderer implements BlockEntityRenderer<ConduitBlockEntity, 
       final ConduitRenderState state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
       state.isActive = blockEntity.isActive();
       state.activeRotation = blockEntity.getActiveRotation(blockEntity.isActive() ? partialTicks : 0.0F);
-      state.animTime = (float)blockEntity.tickCount + partialTicks;
+      state.animTime = blockEntity.tickCount + partialTicks;
       state.animationPhase = blockEntity.tickCount / 66 % 3;
       state.isHunting = blockEntity.isHunting();
    }
@@ -119,7 +119,7 @@ public class ConduitRenderer implements BlockEntityRenderer<ConduitBlockEntity, 
          poseStack.popPose();
       } else {
          float rotation = state.activeRotation * (180.0F / (float)Math.PI);
-         float hh = Mth.sin((double)(state.animTime * 0.1F)) / 2.0F + 0.5F;
+         float hh = Mth.sin(state.animTime * 0.1F) / 2.0F + 0.5F;
          hh = hh * hh + hh;
          poseStack.pushPose();
          poseStack.translate(0.5F, 0.3F + hh * 0.2F, 0.5F);

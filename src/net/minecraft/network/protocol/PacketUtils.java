@@ -36,7 +36,7 @@ public class PacketUtils {
       }
    }
 
-   public static <T extends PacketListener> void fillCrashReport(final CrashReport report, final T listener, @Nullable final Packet<T> packet) {
+   public static <T extends PacketListener> void fillCrashReport(final CrashReport report, final T listener, final @Nullable Packet<T> packet) {
       if (packet != null) {
          CrashReportCategory details = report.addCategory("Incoming Packet");
          details.setDetail("Type", () -> packet.type().toString());

@@ -85,7 +85,7 @@ public class CustomHeadLayer<S extends LivingEntityRenderState, M extends Entity
       poseStack.scale(0.625F, -0.625F, -0.625F);
    }
 
-   public static record Transforms(
+   public record Transforms(
       float yOffset,
       float skullYOffset,
       float horizontalScale,
@@ -94,8 +94,8 @@ public class CustomHeadLayer<S extends LivingEntityRenderState, M extends Entity
    ) {
       public static final Function<PlayerSkinRenderCache.RenderInfo, RenderType> TRANSLUCENT_PLAYER_SKIN_RESOLVER = PlayerSkinRenderCache.RenderInfo::renderType;
       public static final Function<PlayerSkinRenderCache.RenderInfo, RenderType> CUTOUT_PLAYER_SKIN_RESOLVER = renderInfo -> SkullBlockRenderer.getPlayerSkinRenderTypeCutout(
-            renderInfo.playerSkin().body().texturePath()
-         );
+         renderInfo.playerSkin().body().texturePath()
+      );
       public static final CustomHeadLayer.Transforms DEFAULT = new CustomHeadLayer.Transforms(0.0F, 0.0F, 1.0F, 1.0F);
 
       public Transforms(final float yOffset, final float skullYOffset, final float horizontalScale, final float verticalScale) {

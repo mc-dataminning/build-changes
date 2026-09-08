@@ -46,23 +46,23 @@ public class BottleItem extends Item {
          BlockHitResult hitResult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.SOURCE_ONLY);
          if (hitResult.getType() == HitResult.Type.MISS) {
             return InteractionResult.PASS;
-         } else {
-            if (hitResult.getType() == HitResult.Type.BLOCK) {
-               BlockPos pos = hitResult.getBlockPos();
-               if (!level.mayInteract(player, pos)) {
-                  return InteractionResult.PASS;
-               }
+         }
 
-               if (level.getFluidState(pos).is(FluidTags.WATER)) {
-                  level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.BOTTLE_FILL, SoundSource.NEUTRAL, 1.0F, 1.0F);
-                  level.gameEvent(player, GameEvent.FLUID_PICKUP, pos);
-                  return InteractionResult.SUCCESS
-                     .heldItemTransformedTo(this.turnBottleIntoItem(itemStack, player, PotionContents.createItemStack(Items.POTION, Potions.WATER)));
-               }
+         if (hitResult.getType() == HitResult.Type.BLOCK) {
+            BlockPos pos = hitResult.getBlockPos();
+            if (!level.mayInteract(player, pos)) {
+               return InteractionResult.PASS;
             }
 
-            return InteractionResult.PASS;
+            if (level.getFluidState(pos).is(FluidTags.WATER)) {
+               level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.BOTTLE_FILL, SoundSource.NEUTRAL, 1.0F, 1.0F);
+               level.gameEvent(player, GameEvent.FLUID_PICKUP, pos);
+               return InteractionResult.SUCCESS
+                  .heldItemTransformedTo(this.turnBottleIntoItem(itemStack, player, PotionContents.createItemStack(Items.POTION, Potions.WATER)));
+            }
          }
+
+         return InteractionResult.PASS;
       }
    }
 

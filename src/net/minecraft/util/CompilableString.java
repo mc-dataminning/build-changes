@@ -32,11 +32,7 @@ public class CompilableString<T> {
 
    @Override
    public boolean equals(final Object o) {
-      if (o instanceof CompilableString<?> that && Objects.equals(this.source, that.source)) {
-         return true;
-      }
-
-      return false;
+      return o instanceof CompilableString<?> that && Objects.equals(this.source, that.source);
    }
 
    @Override
@@ -66,8 +62,8 @@ public class CompilableString<T> {
             } else {
                return DataResult.success(result);
             }
-         } catch (CommandSyntaxException var6) {
-            return DataResult.error(() -> this.errorMessage(contents, var6));
+         } catch (CommandSyntaxException ex) {
+            return DataResult.error(() -> this.errorMessage(contents, ex));
          }
       }
 

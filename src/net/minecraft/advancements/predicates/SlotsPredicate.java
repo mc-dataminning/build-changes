@@ -8,7 +8,6 @@ import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.SlotProvider;
 import net.minecraft.world.inventory.SlotRange;
 import net.minecraft.world.inventory.SlotRanges;
-import net.minecraft.world.item.ItemInstance;
 
 public record SlotsPredicate(Map<SlotRange, ItemPredicate> slots) {
    public static final Codec<SlotsPredicate> CODEC = Codec.unboundedMap(SlotRanges.CODEC, ItemPredicate.CODEC).xmap(SlotsPredicate::new, SlotsPredicate::slots);
@@ -27,7 +26,7 @@ public record SlotsPredicate(Map<SlotRange, ItemPredicate> slots) {
       for (int i = 0; i < slots.size(); i++) {
          int slotId = slots.getInt(i);
          SlotAccess slot = slotProvider.getSlot(slotId);
-         if (slot != null && test.test((ItemInstance)slot.get())) {
+         if (slot != null && test.test(slot.get())) {
             return true;
          }
       }

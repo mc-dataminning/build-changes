@@ -30,12 +30,9 @@ public record ItemLore(List<Component> lines, List<Component> styledLines) imple
       this(lines, Lists.transform(lines, component -> ComponentUtils.mergeStyles(component, LORE_STYLE)));
    }
 
-   public ItemLore(List<Component> lines, List<Component> styledLines) {
+   public ItemLore {
       if (lines.size() > 256) {
          throw new IllegalArgumentException("Got " + lines.size() + " lines, but maximum is 256");
-      } else {
-         this.lines = lines;
-         this.styledLines = styledLines;
       }
    }
 

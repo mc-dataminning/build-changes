@@ -10,7 +10,7 @@ public enum BedPart implements StringRepresentable {
    public static final Codec<BedPart> CODEC = StringRepresentable.fromEnum(BedPart::values);
    private final String name;
 
-   private BedPart(final String name) {
+   BedPart(final String name) {
       this.name = name;
    }
 

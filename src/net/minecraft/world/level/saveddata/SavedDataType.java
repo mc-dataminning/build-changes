@@ -8,11 +8,7 @@ import net.minecraft.util.datafix.DataFixTypes;
 public record SavedDataType<T extends SavedData>(Identifier id, Supplier<T> constructor, Codec<T> codec, DataFixTypes dataFixType) {
    @Override
    public boolean equals(final Object obj) {
-      if (obj instanceof SavedDataType<?> type && this.id.equals(type.id)) {
-         return true;
-      }
-
-      return false;
+      return obj instanceof SavedDataType<?> type && this.id.equals(type.id);
    }
 
    @Override

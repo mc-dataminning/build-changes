@@ -12,7 +12,6 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
@@ -135,16 +134,11 @@ public class EntityArgument implements ArgumentType<EntitySelector> {
          } catch (CommandSyntaxException var7) {
          }
 
-         return parser.fillSuggestions(
-            builder,
-            suggestions -> {
-               Collection<String> onlinePlayerNames = source.getOnlinePlayerNames();
-               Iterable<String> suggestedNames = (Iterable<String>)(this.playersOnly
-                  ? onlinePlayerNames
-                  : Iterables.concat(onlinePlayerNames, source.getSelectedEntities()));
-               SharedSuggestionProvider.suggest(suggestedNames, suggestions);
-            }
-         );
+         return parser.fillSuggestions(builder, suggestions -> {
+            Collection<String> onlinePlayerNames = source.getOnlinePlayerNames();
+            Iterable<String> suggestedNames = this.playersOnly ? onlinePlayerNames : Iterables.concat(onlinePlayerNames, source.getSelectedEntities());
+            SharedSuggestionProvider.suggest(suggestedNames, suggestions);
+         });
       } else {
          return Suggestions.empty();
       }
@@ -190,8 +184,6 @@ public class EntityArgument implements ArgumentType<EntitySelector> {
          private final boolean playersOnly;
 
          private Template(final boolean single, final boolean playersOnly) {
-            Objects.requireNonNull(Info.this);
-            super();
             this.single = single;
             this.playersOnly = playersOnly;
          }

@@ -9,8 +9,7 @@ import net.minecraft.util.Unit;
 public class NarrationThunk<T> {
    private final T contents;
    private final BiConsumer<Consumer<String>, T> converter;
-   public static final NarrationThunk<?> EMPTY = new NarrationThunk<>(Unit.INSTANCE, (o, c) -> {
-   });
+   public static final NarrationThunk<?> EMPTY = new NarrationThunk<>(Unit.INSTANCE, (o, c) -> {});
 
    private NarrationThunk(final T contents, final BiConsumer<Consumer<String>, T> converter) {
       this.contents = contents;

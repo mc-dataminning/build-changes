@@ -25,17 +25,12 @@ public class LavaFogEnvironment extends FogEnvironment {
       if (camera.entity().isSpectator()) {
          fog.environmentalStart = -8.0F;
          fog.environmentalEnd = renderDistance * 0.5F;
+      } else if (camera.entity() instanceof LivingEntity livingEntity && livingEntity.hasEffect(MobEffects.FIRE_RESISTANCE)) {
+         fog.environmentalStart = 0.0F;
+         fog.environmentalEnd = 5.0F;
       } else {
-         label14: {
-            if (camera.entity() instanceof LivingEntity livingEntity && livingEntity.hasEffect(MobEffects.FIRE_RESISTANCE)) {
-               fog.environmentalStart = 0.0F;
-               fog.environmentalEnd = 5.0F;
-               break label14;
-            }
-
-            fog.environmentalStart = 0.25F;
-            fog.environmentalEnd = 1.0F;
-         }
+         fog.environmentalStart = 0.25F;
+         fog.environmentalEnd = 1.0F;
       }
 
       fog.skyEnd = fog.environmentalEnd;
@@ -43,7 +38,7 @@ public class LavaFogEnvironment extends FogEnvironment {
    }
 
    @Override
-   public boolean isApplicable(@Nullable final FogType fogType, final Entity entity) {
+   public boolean isApplicable(final @Nullable FogType fogType, final Entity entity) {
       return fogType == FogType.LAVA;
    }
 }

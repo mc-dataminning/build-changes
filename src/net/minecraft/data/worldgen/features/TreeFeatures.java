@@ -379,17 +379,9 @@ public class TreeFeatures {
          HUGE_BROWN_MUSHROOM,
          new HugeBrownMushroomFeature(
             BlockStateProvider.holderOf(
-               Blocks.BROWN_MUSHROOM_BLOCK
-                  .defaultBlockState()
-                  .setValue(HugeMushroomBlock.UP, Boolean.valueOf(true))
-                  .setValue(HugeMushroomBlock.DOWN, Boolean.valueOf(false))
+               Blocks.BROWN_MUSHROOM_BLOCK.defaultBlockState().setValue(HugeMushroomBlock.UP, true).setValue(HugeMushroomBlock.DOWN, false)
             ),
-            BlockStateProvider.holderOf(
-               Blocks.MUSHROOM_STEM
-                  .defaultBlockState()
-                  .setValue(HugeMushroomBlock.UP, Boolean.valueOf(false))
-                  .setValue(HugeMushroomBlock.DOWN, Boolean.valueOf(false))
-            ),
+            BlockStateProvider.holderOf(Blocks.MUSHROOM_STEM.defaultBlockState().setValue(HugeMushroomBlock.UP, false).setValue(HugeMushroomBlock.DOWN, false)),
             3,
             BlockPredicate.matchesTag(BlockTags.HUGE_BROWN_MUSHROOM_CAN_PLACE_ON)
          )
@@ -397,13 +389,8 @@ public class TreeFeatures {
       context.register(
          HUGE_RED_MUSHROOM,
          new HugeRedMushroomFeature(
-            BlockStateProvider.holderOf(Blocks.RED_MUSHROOM_BLOCK.defaultBlockState().setValue(HugeMushroomBlock.DOWN, Boolean.valueOf(false))),
-            BlockStateProvider.holderOf(
-               Blocks.MUSHROOM_STEM
-                  .defaultBlockState()
-                  .setValue(HugeMushroomBlock.UP, Boolean.valueOf(false))
-                  .setValue(HugeMushroomBlock.DOWN, Boolean.valueOf(false))
-            ),
+            BlockStateProvider.holderOf(Blocks.RED_MUSHROOM_BLOCK.defaultBlockState().setValue(HugeMushroomBlock.DOWN, false)),
+            BlockStateProvider.holderOf(Blocks.MUSHROOM_STEM.defaultBlockState().setValue(HugeMushroomBlock.UP, false).setValue(HugeMushroomBlock.DOWN, false)),
             2,
             BlockPredicate.matchesTag(BlockTags.HUGE_RED_MUSHROOM_CAN_PLACE_ON)
          )

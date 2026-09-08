@@ -13,10 +13,9 @@ import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntPr
 public record IntValueCheck(Holder<ContextIntProvider> value, IntRangePredicate range) implements LootItemCondition {
    public static final MapCodec<IntValueCheck> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               ContextIntProviders.CODEC.fieldOf("value").forGetter(IntValueCheck::value),
-               IntRangePredicate.CODEC.fieldOf("test").forGetter(IntValueCheck::range)
-            )
-            .apply(i, IntValueCheck::new)
+            ContextIntProviders.CODEC.fieldOf("value").forGetter(IntValueCheck::value), IntRangePredicate.CODEC.fieldOf("test").forGetter(IntValueCheck::range)
+         )
+         .apply(i, IntValueCheck::new)
    );
 
    @Override

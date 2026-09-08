@@ -1,7 +1,6 @@
 package net.minecraft.world.entity.npc.wanderingtrader;
 
 import java.util.EnumSet;
-import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -50,8 +49,7 @@ import org.jspecify.annotations.Nullable;
 
 public class WanderingTrader extends AbstractVillager implements Consumable.OverrideConsumeSound {
    private static final int DEFAULT_DESPAWN_DELAY = 0;
-   @Nullable
-   private BlockPos wanderTarget;
+   private @Nullable BlockPos wanderTarget;
    private int despawnDelay = 0;
 
    public WanderingTrader(final EntityType<? extends WanderingTrader> type, final Level level) {
@@ -95,9 +93,8 @@ public class WanderingTrader extends AbstractVillager implements Consumable.Over
       this.goalSelector.addGoal(10, new LookAtPlayerGoal(this, Mob.class, 8.0F));
    }
 
-   @Nullable
    @Override
-   public AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       return null;
    }
 
@@ -217,12 +214,11 @@ public class WanderingTrader extends AbstractVillager implements Consumable.Over
       }
    }
 
-   public void setWanderTarget(@Nullable final BlockPos pos) {
+   public void setWanderTarget(final @Nullable BlockPos pos) {
       this.wanderTarget = pos;
    }
 
-   @Nullable
-   private BlockPos getWanderTarget() {
+   private @Nullable BlockPos getWanderTarget() {
       return this.wanderTarget;
    }
 
@@ -232,8 +228,6 @@ public class WanderingTrader extends AbstractVillager implements Consumable.Over
       private final double speedModifier;
 
       public WanderToPositionGoal(final WanderingTrader trader, final double stopDistance, final double speedModifier) {
-         Objects.requireNonNull(WanderingTrader.this);
-         super();
          this.trader = trader;
          this.stopDistance = stopDistance;
          this.speedModifier = speedModifier;
@@ -258,16 +252,13 @@ public class WanderingTrader extends AbstractVillager implements Consumable.Over
          if (wanderPosition != null && WanderingTrader.this.navigation.isDone()) {
             if (this.isTooFarAway(wanderPosition, 10.0)) {
                Vec3 dir = new Vec3(
-                     (double)wanderPosition.getX() - this.trader.getX(),
-                     (double)wanderPosition.getY() - this.trader.getY(),
-                     (double)wanderPosition.getZ() - this.trader.getZ()
+                     wanderPosition.getX() - this.trader.getX(), wanderPosition.getY() - this.trader.getY(), wanderPosition.getZ() - this.trader.getZ()
                   )
                   .normalize();
                Vec3 targetPos = dir.scale(10.0).add(this.trader.getX(), this.trader.getY(), this.trader.getZ());
                WanderingTrader.this.navigation.moveTo(targetPos.x, targetPos.y, targetPos.z, this.speedModifier);
             } else {
-               WanderingTrader.this.navigation
-                  .moveTo((double)wanderPosition.getX(), (double)wanderPosition.getY(), (double)wanderPosition.getZ(), this.speedModifier);
+               WanderingTrader.this.navigation.moveTo(wanderPosition.getX(), wanderPosition.getY(), wanderPosition.getZ(), this.speedModifier);
             }
          }
       }

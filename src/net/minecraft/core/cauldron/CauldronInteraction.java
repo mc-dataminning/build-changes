@@ -19,7 +19,7 @@ public interface CauldronInteraction {
 
    InteractionResult interact(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack itemInHand);
 
-   public static class Dispatcher {
+   class Dispatcher {
       private final Map<TagKey<Item>, CauldronInteraction> tags = new HashMap<>();
       private final Map<Item, CauldronInteraction> items = new HashMap<>();
 

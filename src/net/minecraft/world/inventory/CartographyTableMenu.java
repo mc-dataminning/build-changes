@@ -1,6 +1,5 @@
 package net.minecraft.world.inventory;
 
-import java.util.Objects;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -27,10 +26,6 @@ public class CartographyTableMenu extends AbstractContainerMenu {
    private final ContainerLevelAccess access;
    private long lastSoundTime;
    public final Container container = new SimpleContainer(2) {
-      {
-         Objects.requireNonNull(CartographyTableMenu.this);
-      }
-
       @Override
       public void setChanged() {
          CartographyTableMenu.this.slotsChanged(this);
@@ -38,10 +33,6 @@ public class CartographyTableMenu extends AbstractContainerMenu {
       }
    };
    private final ResultContainer resultContainer = new ResultContainer() {
-      {
-         Objects.requireNonNull(CartographyTableMenu.this);
-      }
-
       @Override
       public void setChanged() {
          CartographyTableMenu.this.slotsChanged(this);
@@ -57,30 +48,18 @@ public class CartographyTableMenu extends AbstractContainerMenu {
       super(MenuType.CARTOGRAPHY_TABLE, containerId);
       this.access = access;
       this.addSlot(new Slot(this.container, 0, 15, 15) {
-         {
-            Objects.requireNonNull(CartographyTableMenu.this);
-         }
-
          @Override
          public boolean mayPlace(final ItemStack itemStack) {
             return itemStack.has(DataComponents.MAP_ID);
          }
       });
       this.addSlot(new Slot(this.container, 1, 15, 52) {
-         {
-            Objects.requireNonNull(CartographyTableMenu.this);
-         }
-
          @Override
          public boolean mayPlace(final ItemStack itemStack) {
             return itemStack.is(Items.PAPER) || itemStack.is(Items.MAP) || itemStack.is(Items.GLASS_PANE);
          }
       });
       this.addSlot(new Slot(this.resultContainer, 2, 145, 39) {
-         {
-            Objects.requireNonNull(CartographyTableMenu.this);
-         }
-
          @Override
          public boolean mayPlace(final ItemStack itemStack) {
             return false;

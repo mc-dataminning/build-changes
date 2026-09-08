@@ -13,7 +13,7 @@ import org.jspecify.annotations.Nullable;
 public abstract class ButtonListDialogScreen<T extends ButtonListDialog> extends DialogScreen<T> {
    public static final int FOOTER_MARGIN = 5;
 
-   public ButtonListDialogScreen(@Nullable final Screen previousScreen, final T dialog, final DialogConnectionAccess connectionAccess) {
+   public ButtonListDialogScreen(final @Nullable Screen previousScreen, final T dialog, final DialogConnectionAccess connectionAccess) {
       super(previousScreen, dialog, connectionAccess);
    }
 

@@ -9,7 +9,7 @@ public enum WallSide implements StringRepresentable {
 
    private final String name;
 
-   private WallSide(final String name) {
+   WallSide(final String name) {
       this.name = name;
    }
 

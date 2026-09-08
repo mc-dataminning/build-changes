@@ -15,10 +15,10 @@ import net.minecraft.resources.Identifier;
 public record TrimMaterial(Identifier paletteId, Component description) {
    public static final Codec<TrimMaterial> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Identifier.CODEC.fieldOf("palette_id").forGetter(TrimMaterial::paletteId),
-               ComponentSerialization.CODEC.fieldOf("description").forGetter(TrimMaterial::description)
-            )
-            .apply(i, TrimMaterial::new)
+            Identifier.CODEC.fieldOf("palette_id").forGetter(TrimMaterial::paletteId),
+            ComponentSerialization.CODEC.fieldOf("description").forGetter(TrimMaterial::description)
+         )
+         .apply(i, TrimMaterial::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, TrimMaterial> DIRECT_STREAM_CODEC = StreamCodec.composite(
       Identifier.STREAM_CODEC, TrimMaterial::paletteId, ComponentSerialization.STREAM_CODEC, TrimMaterial::description, TrimMaterial::new

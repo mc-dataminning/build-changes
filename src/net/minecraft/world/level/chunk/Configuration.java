@@ -11,7 +11,7 @@ public interface Configuration {
 
    <T> Palette<T> createPalette(Strategy<T> strategy, List<T> paletteEntries);
 
-   public static record Global(int bitsInMemory, int bitsInStorage) implements Configuration {
+   record Global(int bitsInMemory, int bitsInStorage) implements Configuration {
       @Override
       public boolean alwaysRepack() {
          return true;
@@ -23,7 +23,7 @@ public interface Configuration {
       }
    }
 
-   public static record Simple(Palette.Factory factory, int bits) implements Configuration {
+   record Simple(Palette.Factory factory, int bits) implements Configuration {
       @Override
       public boolean alwaysRepack() {
          return false;

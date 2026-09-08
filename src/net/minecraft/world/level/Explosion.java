@@ -10,17 +10,16 @@ import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
 public interface Explosion {
-   static DamageSource getDefaultDamageSource(final Level level, @Nullable final Entity source) {
+   static DamageSource getDefaultDamageSource(final Level level, final @Nullable Entity source) {
       return level.damageSources().explosion(source, getIndirectSourceEntity(source));
    }
 
-   @Nullable
-   static LivingEntity getIndirectSourceEntity(@Nullable final Entity source) {
+   static @Nullable LivingEntity getIndirectSourceEntity(final @Nullable Entity source) {
       return switch (source) {
-         case null, default -> null;
          case PrimedTnt primedTnt -> primedTnt.getOwner();
-         case LivingEntity livingEntityx -> livingEntityx;
+         case LivingEntity livingEntity -> livingEntity;
          case Projectile projectile when projectile.getOwner() instanceof LivingEntity livingEntity -> livingEntity;
+         case null, default -> null;
       };
    }
 
@@ -28,11 +27,9 @@ public interface Explosion {
 
    Explosion.BlockInteraction getBlockInteraction();
 
-   @Nullable
-   LivingEntity getIndirectSourceEntity();
+   @Nullable LivingEntity getIndirectSourceEntity();
 
-   @Nullable
-   Entity getDirectSourceEntity();
+   @Nullable Entity getDirectSourceEntity();
 
    float radius();
 
@@ -42,7 +39,7 @@ public interface Explosion {
 
    boolean shouldAffectBlocklikeEntities();
 
-   public static enum BlockInteraction {
+   enum BlockInteraction {
       KEEP(false),
       DESTROY(true),
       DESTROY_WITH_DECAY(true),
@@ -50,7 +47,7 @@ public interface Explosion {
 
       private final boolean shouldAffectBlocklikeEntities;
 
-      private BlockInteraction(final boolean shouldAffectBlocklikeEntities) {
+      BlockInteraction(final boolean shouldAffectBlocklikeEntities) {
          this.shouldAffectBlocklikeEntities = shouldAffectBlocklikeEntities;
       }
 

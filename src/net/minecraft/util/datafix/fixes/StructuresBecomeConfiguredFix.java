@@ -161,8 +161,8 @@ public class StructuresBecomeConfiguredFix extends DataFix {
                   newMap.compute(
                      newKey,
                      (k, oldRefList) -> oldRefList == null
-                           ? refList
-                           : refList.createLongList(LongStream.concat(oldRefList.asLongStream(), refList.asLongStream()))
+                        ? refList
+                        : refList.createLongList(LongStream.concat(oldRefList.asLongStream(), refList.asLongStream()))
                   );
                }
             }
@@ -171,40 +171,39 @@ public class StructuresBecomeConfiguredFix extends DataFix {
       return chunk.createMap(newMap);
    }
 
-   @Nullable
-   private Dynamic<?> findUpdatedStructureType(final Dynamic<?> dynamicKey, final Dynamic<?> chunk) {
+   private @Nullable Dynamic<?> findUpdatedStructureType(final Dynamic<?> dynamicKey, final Dynamic<?> chunk) {
       String key = dynamicKey.asString("UNKNOWN").toLowerCase(Locale.ROOT);
       StructuresBecomeConfiguredFix.Conversion conversion = CONVERSION_MAP.get(key);
       if (conversion == null) {
          return null;
-      } else {
-         String resultingId = conversion.fallback;
-         if (!conversion.biomeMapping().isEmpty()) {
-            Optional<String> result = this.guessConfiguration(chunk, conversion);
-            if (result.isPresent()) {
-               resultingId = result.get();
-            }
-         }
-
-         return chunk.createString(resultingId);
       }
+
+      String resultingId = conversion.fallback;
+      if (!conversion.biomeMapping().isEmpty()) {
+         Optional<String> result = this.guessConfiguration(chunk, conversion);
+         if (result.isPresent()) {
+            resultingId = result.get();
+         }
+      }
+
+      return chunk.createString(resultingId);
    }
 
    private Optional<String> guessConfiguration(final Dynamic<?> chunk, final StructuresBecomeConfiguredFix.Conversion conversion) {
       Object2IntArrayMap<String> matches = new Object2IntArrayMap();
       chunk.get("sections").asList(Function.identity()).forEach(s -> s.get("biomes").get("palette").asList(Function.identity()).forEach(biome -> {
-            String mapping = conversion.biomeMapping().get(biome.asString(""));
-            if (mapping != null) {
-               matches.mergeInt(mapping, 1, Integer::sum);
-            }
-         }));
+         String mapping = conversion.biomeMapping().get(biome.asString(""));
+         if (mapping != null) {
+            matches.mergeInt(mapping, 1, Integer::sum);
+         }
+      }));
       return matches.object2IntEntrySet()
          .stream()
          .max(Comparator.comparingInt(it.unimi.dsi.fastutil.objects.Object2IntMap.Entry::getIntValue))
          .map(Entry::getKey);
    }
 
-   private static record Conversion(Map<String, String> biomeMapping, String fallback) {
+   private record Conversion(Map<String, String> biomeMapping, String fallback) {
       public static StructuresBecomeConfiguredFix.Conversion trivial(final String result) {
          return new StructuresBecomeConfiguredFix.Conversion(Map.of(), result);
       }

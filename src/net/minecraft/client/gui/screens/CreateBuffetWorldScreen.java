@@ -24,6 +24,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
+import org.jspecify.annotations.Nullable;
 
 public class CreateBuffetWorldScreen extends Screen {
    private static final Component SEARCH_HINT = Component.translatable("createWorld.customize.buffet.search").withStyle(EditBox.SEARCH_HINT_STYLE);
@@ -85,7 +86,6 @@ public class CreateBuffetWorldScreen extends Screen {
 
    private class BiomeList extends ObjectSelectionList<CreateBuffetWorldScreen.BiomeList.Entry> {
       private BiomeList() {
-         Objects.requireNonNull(CreateBuffetWorldScreen.this);
          super(
             CreateBuffetWorldScreen.this.minecraft,
             CreateBuffetWorldScreen.this.width,
@@ -109,7 +109,7 @@ public class CreateBuffetWorldScreen extends Screen {
          this.refreshScrollAmount();
       }
 
-      public void setSelected(final CreateBuffetWorldScreen.BiomeList.Entry selected) {
+      public void setSelected(final CreateBuffetWorldScreen.BiomeList.@Nullable Entry selected) {
          super.setSelected(selected);
          if (selected != null) {
             CreateBuffetWorldScreen.this.biome = selected.biome;
@@ -123,8 +123,6 @@ public class CreateBuffetWorldScreen extends Screen {
          private final Component name;
 
          public Entry(final Holder.Reference<Biome> biome) {
-            Objects.requireNonNull(BiomeList.this);
-            super();
             this.biome = biome;
             Identifier id = biome.key().identifier();
             String translationKey = id.toLanguageKey("biome");

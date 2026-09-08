@@ -38,8 +38,7 @@ public final class Path {
       }
    );
    private final List<Node> nodes;
-   @Nullable
-   private Path.DebugData debugData;
+   private Path.@Nullable DebugData debugData;
    private int nextNodeIndex;
    private final BlockPos target;
    private final float distToTarget;
@@ -64,8 +63,7 @@ public final class Path {
       return this.nextNodeIndex >= this.nodes.size();
    }
 
-   @Nullable
-   public Node getEndNode() {
+   public @Nullable Node getEndNode() {
       return !this.nodes.isEmpty() ? this.nodes.get(this.nodes.size() - 1) : null;
    }
 
@@ -97,9 +95,9 @@ public final class Path {
 
    public Vec3 getEntityPosAtNode(final Entity entity, final int index) {
       Node node = this.nodes.get(index);
-      double x = (double)node.x + (double)((int)(entity.getBbWidth() + 1.0F)) * 0.5;
-      double y = (double)node.y;
-      double z = (double)node.z + (double)((int)(entity.getBbWidth() + 1.0F)) * 0.5;
+      double x = node.x + (int)(entity.getBbWidth() + 1.0F) * 0.5;
+      double y = node.y;
+      double z = node.z + (int)(entity.getBbWidth() + 1.0F) * 0.5;
       return new Vec3(x, y, z);
    }
 
@@ -119,12 +117,11 @@ public final class Path {
       return this.nodes.get(this.nextNodeIndex);
    }
 
-   @Nullable
-   public Node getPreviousNode() {
+   public @Nullable Node getPreviousNode() {
       return this.nextNodeIndex > 0 ? this.nodes.get(this.nextNodeIndex - 1) : null;
    }
 
-   public boolean sameAs(@Nullable final Path path) {
+   public boolean sameAs(final @Nullable Path path) {
       return path != null && this.nodes.equals(path.nodes);
    }
 
@@ -153,8 +150,7 @@ public final class Path {
       this.debugData = new Path.DebugData(openSet, closedSet, targets);
    }
 
-   @Nullable
-   public Path.DebugData debugData() {
+   public Path.@Nullable DebugData debugData() {
       return this.debugData;
    }
 
@@ -178,7 +174,7 @@ public final class Path {
       return result;
    }
 
-   public static record DebugData(List<Node> openSet, List<Node> closedSet, Set<Target> targetNodes) {
+   public record DebugData(List<Node> openSet, List<Node> closedSet, Set<Target> targetNodes) {
       public static final StreamCodec<ByteBuf, Path.DebugData> STREAM_CODEC = StreamCodec.composite(
          Node.DEBUG_STREAM_CODEC.apply(ByteBufCodecs.list()),
          Path.DebugData::openSet,

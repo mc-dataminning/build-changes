@@ -24,8 +24,7 @@ import org.jspecify.annotations.Nullable;
 
 public abstract class AbstractMinecartContainer extends AbstractMinecart implements ContainerEntity {
    private NonNullList<ItemStack> itemStacks = NonNullList.withSize(36, ItemStack.EMPTY);
-   @Nullable
-   private ResourceKey<LootTable> lootTable;
+   private @Nullable ResourceKey<LootTable> lootTable;
    private long lootTableSeed;
 
    protected AbstractMinecartContainer(final EntityType<?> type, final Level level) {
@@ -103,14 +102,14 @@ public abstract class AbstractMinecartContainer extends AbstractMinecart impleme
       float keep = 0.98F;
       if (this.lootTable == null) {
          int emptiness = 15 - AbstractContainerMenu.getRedstoneSignalFromContainer(this);
-         keep += (float)emptiness * 0.001F;
+         keep += emptiness * 0.001F;
       }
 
       if (this.isInWater()) {
          keep *= 0.95F;
       }
 
-      return deltaMovement.multiply((double)keep, 0.0, (double)keep);
+      return deltaMovement.multiply(keep, 0.0, keep);
    }
 
    @Override
@@ -123,27 +122,25 @@ public abstract class AbstractMinecartContainer extends AbstractMinecart impleme
       this.lootTableSeed = seed;
    }
 
-   @Nullable
    @Override
-   public AbstractContainerMenu createMenu(final int containerId, final Inventory inventory, final Player player) {
+   public @Nullable AbstractContainerMenu createMenu(final int containerId, final Inventory inventory, final Player player) {
       if (this.lootTable != null && player.isSpectator()) {
          return null;
-      } else {
-         this.unpackChestVehicleLootTable(inventory.player);
-         return this.createMenu(containerId, inventory);
       }
+
+      this.unpackChestVehicleLootTable(inventory.player);
+      return this.createMenu(containerId, inventory);
    }
 
    protected abstract AbstractContainerMenu createMenu(final int containerId, final Inventory inventory);
 
-   @Nullable
    @Override
-   public ResourceKey<LootTable> getContainerLootTable() {
+   public @Nullable ResourceKey<LootTable> getContainerLootTable() {
       return this.lootTable;
    }
 
    @Override
-   public void setContainerLootTable(@Nullable final ResourceKey<LootTable> lootTable) {
+   public void setContainerLootTable(final @Nullable ResourceKey<LootTable> lootTable) {
       this.lootTable = lootTable;
    }
 

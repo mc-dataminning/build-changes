@@ -8,8 +8,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import org.jspecify.annotations.Nullable;
 
 public interface StructureProcessor {
-   @Nullable
-   default StructureTemplate.StructureBlockInfo processBlock(
+   default StructureTemplate.@Nullable StructureBlockInfo processBlock(
       final LevelReader level,
       final BlockPos targetPosition,
       final BlockPos referencePos,

@@ -37,9 +37,8 @@ public interface ListAndDeque<T> extends List<T>, RandomAccess, Cloneable, Seria
       return this.removeFirst();
    }
 
-   @Nullable
    @Override
-   default T poll() {
+   default @Nullable T poll() {
       return this.pollFirst();
    }
 
@@ -48,9 +47,8 @@ public interface ListAndDeque<T> extends List<T>, RandomAccess, Cloneable, Seria
       return this.getFirst();
    }
 
-   @Nullable
    @Override
-   default T peek() {
+   default @Nullable T peek() {
       return this.peekFirst();
    }
 

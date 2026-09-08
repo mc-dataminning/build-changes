@@ -40,8 +40,7 @@ public class OptimizeWorldScreen extends Screen {
    private final BooleanConsumer callback;
    private final WorldUpgrader upgrader;
 
-   @Nullable
-   public static OptimizeWorldScreen create(
+   public static @Nullable OptimizeWorldScreen create(
       final Minecraft minecraft,
       final BooleanConsumer callback,
       final DataFixer dataFixer,
@@ -55,21 +54,18 @@ public class OptimizeWorldScreen extends Screen {
          int dataVersion = NbtUtils.getDataVersion(unfixedDataTag);
          if (DataFixers.getFileFixer().requiresFileFixing(dataVersion)) {
             throw new IllegalStateException("Can't optimize world before file fixing; shouldn't be able to get here");
-         } else {
-            Dynamic<?> dataTag = DataFixTypes.LEVEL.updateToCurrentVersion(DataFixers.getDataFixer(), unfixedDataTag, dataVersion);
-
-            OptimizeWorldScreen var13;
-            try (WorldStem worldStem = worldOpenFlows.loadWorldStem(levelSourceAccess, dataTag, false, packRepository)) {
-               WorldData worldData = worldStem.worldDataAndGenSettings().data();
-               RegistryAccess.Frozen registryAccess = worldStem.registries().compositeAccess();
-               levelSourceAccess.saveDataTag(worldData);
-               var13 = new OptimizeWorldScreen(callback, dataFixer, levelSourceAccess, worldData, eraseCache, registryAccess);
-            }
-
-            return var13;
          }
-      } catch (Exception var16) {
-         LOGGER.warn("Failed to load datapacks, can't optimize world", var16);
+
+         Dynamic<?> dataTag = DataFixTypes.LEVEL.updateToCurrentVersion(DataFixers.getDataFixer(), unfixedDataTag, dataVersion);
+
+         try (WorldStem worldStem = worldOpenFlows.loadWorldStem(levelSourceAccess, dataTag, false, packRepository)) {
+            WorldData worldData = worldStem.worldDataAndGenSettings().data();
+            RegistryAccess.Frozen registryAccess = worldStem.registries().compositeAccess();
+            levelSourceAccess.saveDataTag(worldData);
+            return new OptimizeWorldScreen(callback, dataFixer, levelSourceAccess, worldData, eraseCache, registryAccess);
+         }
+      } catch (Exception e) {
+         LOGGER.warn("Failed to load datapacks, can't optimize world", e);
          return null;
       }
    }
@@ -136,7 +132,7 @@ public class OptimizeWorldScreen extends Screen {
          int progress = 0;
 
          for (ResourceKey<Level> dimension : this.upgrader.levels()) {
-            int length = Mth.floor(this.upgrader.dimensionProgress(dimension) * (float)(x1 - x0));
+            int length = Mth.floor(this.upgrader.dimensionProgress(dimension) * (x1 - x0));
             graphics.fill(x0 + progress, y0, x0 + progress + length, y1, DIMENSION_COLORS.applyAsInt(dimension));
             progress += length;
          }

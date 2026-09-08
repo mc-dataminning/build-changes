@@ -136,7 +136,7 @@ public class ItemModelGenerators {
          ItemModel.Unbaked overrideModel = ItemModelUtils.plainModel(
             this.createFlatItemModel(compass, String.format(Locale.ROOT, "_%02d", textureIndex), ModelTemplates.FLAT_ITEM)
          );
-         overrides.add(ItemModelUtils.override(overrideModel, (float)i - 0.5F));
+         overrides.add(ItemModelUtils.override(overrideModel, i - 0.5F));
       }
 
       overrides.add(ItemModelUtils.override(base, 31.5F));
@@ -172,7 +172,7 @@ public class ItemModelGenerators {
          ItemModel.Unbaked overrideModel = ItemModelUtils.plainModel(
             this.createFlatItemModel(clock, String.format(Locale.ROOT, "_%02d", i), ModelTemplates.FLAT_ITEM)
          );
-         overrides.add(ItemModelUtils.override(overrideModel, (float)i - 0.5F));
+         overrides.add(ItemModelUtils.override(overrideModel, i - 0.5F));
       }
 
       overrides.add(ItemModelUtils.override(base, 63.5F));
@@ -918,6 +918,6 @@ public class ItemModelGenerators {
       this.declareCustomModelItem(Items.LEAD);
    }
 
-   public static record TrimMaterialData(TrimMaterials.Palette palette, ResourceKey<TrimMaterial> materialKey) {
+   public record TrimMaterialData(TrimMaterials.Palette palette, ResourceKey<TrimMaterial> materialKey) {
    }
 }

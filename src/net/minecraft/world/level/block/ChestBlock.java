@@ -3,7 +3,6 @@ package net.minecraft.world.level.block;
 import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.BiPredicate;
 import java.util.function.Supplier;
@@ -83,27 +82,22 @@ public class ChestBlock extends AbstractChestBlock<ChestBlockEntity> implements 
       public Optional<MenuProvider> acceptDouble(final ChestBlockEntity first, final ChestBlockEntity second) {
          final Container container = new CompoundContainer(first, second);
          return Optional.of(new MenuProvider() {
-            {
-               Objects.requireNonNull(<VAR_NAMELESS_ENCLOSURE>);
-            }
-
-            @Nullable
             @Override
-            public AbstractContainerMenu createMenu(final int containerId, final Inventory inventory, final Player player) {
+            public @Nullable AbstractContainerMenu createMenu(final int containerId, final Inventory inventory, final Player player) {
                if (first.canOpen(player) && second.canOpen(player)) {
                   first.unpackLootTable(inventory.player);
                   second.unpackLootTable(inventory.player);
                   return ChestMenu.sixRows(containerId, inventory, container);
-               } else {
-                  if (!player.isSpectator()) {
-                     Direction connectedDirection = ChestBlock.getConnectedDirection(first.getBlockState());
-                     Vec3 firstCenter = Vec3.atCenterOf(first.getBlockPos());
-                     Vec3 centerBetweenChests = firstCenter.add((double)connectedDirection.getStepX() / 2.0, 0.0, (double)connectedDirection.getStepZ() / 2.0);
-                     BaseContainerBlockEntity.sendChestLockedNotifications(centerBetweenChests, player, this.getDisplayName());
-                  }
-
-                  return null;
                }
+
+               if (!player.isSpectator()) {
+                  Direction connectedDirection = ChestBlock.getConnectedDirection(first.getBlockState());
+                  Vec3 firstCenter = Vec3.atCenterOf(first.getBlockPos());
+                  Vec3 centerBetweenChests = firstCenter.add(connectedDirection.getStepX() / 2.0, 0.0, connectedDirection.getStepZ() / 2.0);
+                  BaseContainerBlockEntity.sendChestLockedNotifications(centerBetweenChests, player, this.getDisplayName());
+               }
+
+               return null;
             }
 
             @Override
@@ -111,7 +105,7 @@ public class ChestBlock extends AbstractChestBlock<ChestBlockEntity> implements 
                if (first.hasCustomName()) {
                   return first.getDisplayName();
                } else {
-                  return (Component)(second.hasCustomName() ? second.getDisplayName() : Component.translatable("container.chestDouble"));
+                  return second.hasCustomName() ? second.getDisplayName() : Component.translatable("container.chestDouble");
                }
             }
          });
@@ -135,9 +129,7 @@ public class ChestBlock extends AbstractChestBlock<ChestBlockEntity> implements 
       super(properties, blockEntityType);
       this.openSound = openSound;
       this.closeSound = closeSound;
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(TYPE, ChestType.SINGLE).setValue(WATERLOGGED, Boolean.valueOf(false))
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(TYPE, ChestType.SINGLE).setValue(WATERLOGGED, false));
    }
 
    public static DoubleBlockCombiner.BlockType getBlockType(final BlockState state) {
@@ -212,7 +204,7 @@ public class ChestBlock extends AbstractChestBlock<ChestBlockEntity> implements 
          Direction neighbourFacing = this.candidatePartnerFacing(context.getLevel(), context.getClickedPos(), clickedFace.getOpposite());
          if (neighbourFacing != null && neighbourFacing.getAxis() != clickedFace.getAxis()) {
             facingDirection = neighbourFacing;
-            type = neighbourFacing.getCounterClockWise() == clickedFace.getOpposite() ? ChestType.RIGHT : ChestType.LEFT;
+            type = facingDirection.getCounterClockWise() == clickedFace.getOpposite() ? ChestType.RIGHT : ChestType.LEFT;
          }
       }
 
@@ -220,10 +212,7 @@ public class ChestBlock extends AbstractChestBlock<ChestBlockEntity> implements 
          type = this.getChestType(context.getLevel(), context.getClickedPos(), facingDirection);
       }
 
-      return this.defaultBlockState()
-         .setValue(FACING, facingDirection)
-         .setValue(TYPE, type)
-         .setValue(WATERLOGGED, Boolean.valueOf(replacedFluidState.is(Fluids.WATER)));
+      return this.defaultBlockState().setValue(FACING, facingDirection).setValue(TYPE, type).setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
    }
 
    protected ChestType getChestType(final Level level, final BlockPos pos, final Direction facingDirection) {
@@ -239,8 +228,7 @@ public class ChestBlock extends AbstractChestBlock<ChestBlockEntity> implements 
       return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
    }
 
-   @Nullable
-   private Direction candidatePartnerFacing(final Level level, final BlockPos pos, final Direction neighbourDirection) {
+   private @Nullable Direction candidatePartnerFacing(final Level level, final BlockPos pos, final Direction neighbourDirection) {
       BlockState state = level.getBlockState(pos.relative(neighbourDirection));
       return this.chestCanConnectTo(state) && state.getValue(TYPE) == ChestType.SINGLE ? state.getValue(FACING) : null;
    }
@@ -274,8 +262,9 @@ public class ChestBlock extends AbstractChestBlock<ChestBlockEntity> implements 
       return this.blockEntityType.get();
    }
 
-   @Nullable
-   public static Container getContainer(final ChestBlock block, final BlockState state, final Level level, final BlockPos pos, final boolean ignoreBeingBlocked) {
+   public static @Nullable Container getContainer(
+      final ChestBlock block, final BlockState state, final Level level, final BlockPos pos, final boolean ignoreBeingBlocked
+   ) {
       return block.combine(state, level, pos, ignoreBeingBlocked).apply(CHEST_COMBINER).orElse(null);
    }
 
@@ -295,9 +284,8 @@ public class ChestBlock extends AbstractChestBlock<ChestBlockEntity> implements 
       );
    }
 
-   @Nullable
    @Override
-   protected MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
+   protected @Nullable MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
       return this.combine(state, level, pos, false).apply(MENU_PROVIDER_COMBINER).orElse(null);
    }
 
@@ -322,9 +310,8 @@ public class ChestBlock extends AbstractChestBlock<ChestBlockEntity> implements 
       return new ChestBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return level.isClientSide() ? createTickerHelper(type, this.blockEntityType(), ChestBlockEntity::lidAnimateTick) : null;
    }
 
@@ -338,12 +325,7 @@ public class ChestBlock extends AbstractChestBlock<ChestBlockEntity> implements 
    }
 
    private static boolean isCatSittingOnChest(final LevelAccessor level, final BlockPos pos) {
-      List<Cat> cats = level.getEntitiesOfClass(
-         Cat.class,
-         new AABB(
-            (double)pos.getX(), (double)(pos.getY() + 1), (double)pos.getZ(), (double)(pos.getX() + 1), (double)(pos.getY() + 2), (double)(pos.getZ() + 1)
-         )
-      );
+      List<Cat> cats = level.getEntitiesOfClass(Cat.class, new AABB(pos.getX(), pos.getY() + 1, pos.getZ(), pos.getX() + 1, pos.getY() + 2, pos.getZ() + 1));
       if (!cats.isEmpty()) {
          for (Cat cat : cats) {
             if (cat.isInSittingPose()) {

@@ -14,9 +14,9 @@ public class DustParticleOptions extends ScalableParticleOptionsBase {
    public static final DustParticleOptions REDSTONE = new DustParticleOptions(16711680, 1.0F);
    public static final MapCodec<DustParticleOptions> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               ExtraCodecs.RGB_COLOR_CODEC.fieldOf("color").forGetter(o -> o.color), SCALE.fieldOf("scale").forGetter(ScalableParticleOptionsBase::getScale)
-            )
-            .apply(i, DustParticleOptions::new)
+            ExtraCodecs.RGB_COLOR_CODEC.fieldOf("color").forGetter(o -> o.color), SCALE.fieldOf("scale").forGetter(ScalableParticleOptionsBase::getScale)
+         )
+         .apply(i, DustParticleOptions::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, DustParticleOptions> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.INT, o -> o.color, ByteBufCodecs.FLOAT, ScalableParticleOptionsBase::getScale, DustParticleOptions::new

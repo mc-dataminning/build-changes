@@ -27,7 +27,7 @@ public class GlowParticle extends SingleQuadParticle {
 
    @Override
    public int getLightCoords(final float a) {
-      return LightCoordsUtil.addSmoothBlockEmission(super.getLightCoords(a), ((float)this.age + a) / (float)this.lifetime);
+      return LightCoordsUtil.addSmoothBlockEmission(super.getLightCoords(a), (this.age + a) / this.lifetime);
    }
 
    @Override

@@ -6,13 +6,11 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import it.unimi.dsi.fastutil.ints.IntList;
 import it.unimi.dsi.fastutil.ints.IntLists;
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.lang.runtime.SwitchBootstraps;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 import net.minecraft.commands.ExecutionCommandSource;
 import net.minecraft.commands.FunctionInstantiationException;
 import net.minecraft.commands.execution.UnboundEntryAction;
@@ -51,162 +49,48 @@ public class MacroFunction<T extends ExecutionCommandSource<T>> implements Comma
    }
 
    @Override
-   public InstantiatedFunction<T> instantiate(@Nullable final CompoundTag arguments, final CommandDispatcher<T> dispatcher) throws FunctionInstantiationException {
+   public InstantiatedFunction<T> instantiate(final @Nullable CompoundTag arguments, final CommandDispatcher<T> dispatcher) throws FunctionInstantiationException {
       if (arguments == null) {
          throw new FunctionInstantiationException(Component.translatable("commands.function.error.missing_arguments", Component.translationArg(this.id())));
-      } else {
-         List<String> parameterValues = new ArrayList<>(this.parameters.size());
-
-         for (String argument : this.parameters) {
-            Tag argumentValue = arguments.get(argument);
-            if (argumentValue == null) {
-               throw new FunctionInstantiationException(
-                  Component.translatable("commands.function.error.missing_argument", Component.translationArg(this.id()), argument)
-               );
-            }
-
-            parameterValues.add(stringify(argumentValue));
-         }
-
-         InstantiatedFunction<T> cachedFunction = (InstantiatedFunction<T>)this.cache.getAndMoveToLast(parameterValues);
-         if (cachedFunction != null) {
-            return cachedFunction;
-         } else {
-            if (this.cache.size() >= 8) {
-               this.cache.removeFirst();
-            }
-
-            InstantiatedFunction<T> function = this.substituteAndParse(this.parameters, parameterValues, dispatcher);
-            this.cache.put(parameterValues, function);
-            return function;
-         }
       }
+
+      List<String> parameterValues = new ArrayList<>(this.parameters.size());
+
+      for (String argument : this.parameters) {
+         Tag argumentValue = arguments.get(argument);
+         if (argumentValue == null) {
+            throw new FunctionInstantiationException(
+               Component.translatable("commands.function.error.missing_argument", Component.translationArg(this.id()), argument)
+            );
+         }
+
+         parameterValues.add(stringify(argumentValue));
+      }
+
+      InstantiatedFunction<T> cachedFunction = (InstantiatedFunction<T>)this.cache.getAndMoveToLast(parameterValues);
+      if (cachedFunction != null) {
+         return cachedFunction;
+      }
+
+      if (this.cache.size() >= 8) {
+         this.cache.removeFirst();
+      }
+
+      InstantiatedFunction<T> function = this.substituteAndParse(this.parameters, parameterValues, dispatcher);
+      this.cache.put(parameterValues, function);
+      return function;
    }
 
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
    private static String stringify(final Tag tag) {
-      Objects.requireNonNull(tag);
-      Tag var1 = tag;
-      byte var2 = 0;
-
-      while (true) {
-         Throwable var32;
-         switch (SwitchBootstraps.typeSwitch<"typeSwitch",FloatTag,DoubleTag,ByteTag,ShortTag,LongTag,StringTag>(var1, var2)) {
-            case 0:
-               FloatTag var3 = (FloatTag)var1;
-               FloatTag var42 = var3;
-
-               try {
-                  var43 = var42.value();
-               } catch (Throwable var24) {
-                  var32 = var24;
-                  boolean var48 = false;
-                  break;
-               }
-
-               float var26 = var43;
-               if (true) {
-                  return DECIMAL_FORMAT.format((double)var26);
-               }
-
-               var2 = 1;
-               continue;
-            case 1:
-               DoubleTag var5 = (DoubleTag)var1;
-               DoubleTag var40 = var5;
-
-               try {
-                  var41 = var40.value();
-               } catch (Throwable var23) {
-                  var32 = var23;
-                  boolean var47 = false;
-                  break;
-               }
-
-               double var27 = var41;
-               if (true) {
-                  return DECIMAL_FORMAT.format(var27);
-               }
-
-               var2 = 2;
-               continue;
-            case 2:
-               ByteTag var8 = (ByteTag)var1;
-               ByteTag var38 = var8;
-
-               try {
-                  var39 = var38.value();
-               } catch (Throwable var22) {
-                  var32 = var22;
-                  boolean var46 = false;
-                  break;
-               }
-
-               byte var28 = var39;
-               if (true) {
-                  return String.valueOf((int)var28);
-               }
-
-               var2 = 3;
-               continue;
-            case 3:
-               ShortTag var10 = (ShortTag)var1;
-               ShortTag var36 = var10;
-
-               try {
-                  var37 = var36.value();
-               } catch (Throwable var21) {
-                  var32 = var21;
-                  boolean var45 = false;
-                  break;
-               }
-
-               short var29 = var37;
-               if (true) {
-                  return String.valueOf((int)var29);
-               }
-
-               var2 = 4;
-               continue;
-            case 4:
-               LongTag var12 = (LongTag)var1;
-               LongTag var34 = var12;
-
-               try {
-                  var35 = var34.value();
-               } catch (Throwable var20) {
-                  var32 = var20;
-                  boolean var44 = false;
-                  break;
-               }
-
-               long var30 = var35;
-               if (true) {
-                  return String.valueOf(var30);
-               }
-
-               var2 = 5;
-               continue;
-            case 5:
-               StringTag var15 = (StringTag)var1;
-               StringTag var31 = var15;
-
-               try {
-                  var33 = var31.value();
-               } catch (Throwable var19) {
-                  var32 = var19;
-                  boolean var10001 = false;
-                  break;
-               }
-
-               return var33;
-            default:
-               return tag.toString();
-         }
-
-         Throwable var25 = var32;
-         throw new MatchException(var25.toString(), var25);
-      }
+      return switch (tag) {
+         case FloatTag(float value) -> DECIMAL_FORMAT.format(value);
+         case DoubleTag(double value) -> DECIMAL_FORMAT.format(value);
+         case ByteTag(byte value) -> String.valueOf(value);
+         case ShortTag(short value) -> String.valueOf(value);
+         case LongTag(long value) -> String.valueOf(value);
+         case StringTag(String value) -> value;
+         default -> tag.toString();
+      };
    }
 
    private static void lookupValues(final List<String> values, final IntList indicesToSelect, final List<String> selectedValuesOutput) {
@@ -254,9 +138,9 @@ public class MacroFunction<T extends ExecutionCommandSource<T>> implements Comma
 
          try {
             return CommandFunction.parseCommand(dispatcher, this.compilationContext, new StringReader(command));
-         } catch (CommandSyntaxException var6) {
+         } catch (CommandSyntaxException e) {
             throw new FunctionInstantiationException(
-               Component.translatable("commands.function.error.parse", Component.translationArg(functionId), command, var6.getMessage())
+               Component.translatable("commands.function.error.parse", Component.translationArg(functionId), command, e.getMessage())
             );
          }
       }

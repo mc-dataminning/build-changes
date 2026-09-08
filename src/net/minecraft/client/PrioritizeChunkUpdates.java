@@ -15,7 +15,7 @@ public enum PrioritizeChunkUpdates {
    private final int id;
    private final Component caption;
 
-   private PrioritizeChunkUpdates(final int id, final String key) {
+   PrioritizeChunkUpdates(final int id, final String key) {
       this.id = id;
       this.caption = Component.translatable(key);
    }

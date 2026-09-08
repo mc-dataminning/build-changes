@@ -32,17 +32,16 @@ public interface ProblemReporter {
 
    void report(ProblemReporter.Problem problem);
 
-   public static record CollectionReferencePathElement(TagKey<?> id) implements ProblemReporter.PathElement {
+   record CollectionReferencePathElement(TagKey<?> id) implements ProblemReporter.PathElement {
       @Override
       public String get() {
          return "->{#" + this.id.location() + "@" + this.id.registry() + "}";
       }
    }
 
-   public static class Collector implements ProblemReporter {
+   class Collector implements ProblemReporter {
       public static final ProblemReporter.PathElement EMPTY_ROOT = () -> "";
-      @Nullable
-      private final ProblemReporter.Collector parent;
+      private final ProblemReporter.@Nullable Collector parent;
       private final ProblemReporter.PathElement element;
       private final Set<ProblemReporter.Collector.Entry> problems;
 
@@ -113,9 +112,9 @@ public interface ProblemReporter {
             .stream()
             .map(
                entry -> " at "
-                     + (String)entry.getKey()
-                     + ": "
-                     + ((Collection)entry.getValue()).stream().map(ProblemReporter.Problem::description).collect(Collectors.joining("; "))
+                  + (String)entry.getKey()
+                  + ": "
+                  + ((Collection)entry.getValue()).stream().map(ProblemReporter.Problem::description).collect(Collectors.joining("; "))
             )
             .collect(Collectors.joining("\n"));
       }
@@ -142,10 +141,10 @@ public interface ProblemReporter {
          return String.join("\n", root.getLines());
       }
 
-      private static record Entry(ProblemReporter.Collector source, ProblemReporter.Problem problem) {
+      private record Entry(ProblemReporter.Collector source, ProblemReporter.Problem problem) {
       }
 
-      private static record ProblemTreeNode(
+      private record ProblemTreeNode(
          ProblemReporter.PathElement element,
          List<ProblemReporter.Problem> problems,
          Map<ProblemReporter.PathElement, ProblemReporter.Collector.ProblemTreeNode> children
@@ -163,58 +162,62 @@ public interface ProblemReporter {
             int childrenCount = this.children.size();
             if (problemCount == 0 && childrenCount == 0) {
                return List.of();
-            } else if (problemCount == 0 && childrenCount == 1) {
+            }
+
+            if (problemCount == 0 && childrenCount == 1) {
                List<String> lines = new ArrayList<>();
                this.children.forEach((element, child) -> lines.addAll(child.getLines()));
                lines.set(0, this.element.get() + lines.get(0));
                return lines;
-            } else if (problemCount == 1 && childrenCount == 0) {
-               return List.of(this.element.get() + ": " + this.problems.getFirst().description());
-            } else {
-               List<String> lines = new ArrayList<>();
-               this.children.forEach((element, child) -> lines.addAll(child.getLines()));
-               lines.replaceAll(s -> "  " + s);
-
-               for (ProblemReporter.Problem problem : this.problems) {
-                  lines.add("  " + problem.description());
-               }
-
-               lines.addFirst(this.element.get() + ":");
-               return lines;
             }
+
+            if (problemCount == 1 && childrenCount == 0) {
+               return List.of(this.element.get() + ": " + this.problems.getFirst().description());
+            }
+
+            List<String> lines = new ArrayList<>();
+            this.children.forEach((element, child) -> lines.addAll(child.getLines()));
+            lines.replaceAll(s -> "  " + s);
+
+            for (ProblemReporter.Problem problem : this.problems) {
+               lines.add("  " + problem.description());
+            }
+
+            lines.addFirst(this.element.get() + ":");
+            return lines;
          }
       }
    }
 
-   public static record ElementReferencePathElement(ResourceKey<?> id) implements ProblemReporter.PathElement {
+   record ElementReferencePathElement(ResourceKey<?> id) implements ProblemReporter.PathElement {
       @Override
       public String get() {
          return "->{" + this.id.identifier() + "@" + this.id.registry() + "}";
       }
    }
 
-   public static record FieldPathElement(String name) implements ProblemReporter.PathElement {
+   record FieldPathElement(String name) implements ProblemReporter.PathElement {
       @Override
       public String get() {
          return "." + this.name;
       }
    }
 
-   public static record IndexedFieldPathElement(String name, int index) implements ProblemReporter.PathElement {
+   record IndexedFieldPathElement(String name, int index) implements ProblemReporter.PathElement {
       @Override
       public String get() {
          return "." + this.name + "[" + this.index + "]";
       }
    }
 
-   public static record IndexedPathElement(int index) implements ProblemReporter.PathElement {
+   record IndexedPathElement(int index) implements ProblemReporter.PathElement {
       @Override
       public String get() {
          return "[" + this.index + "]";
       }
    }
 
-   public static record MapEntryPathElement(String name, String key) implements ProblemReporter.PathElement {
+   record MapEntryPathElement(String name, String key) implements ProblemReporter.PathElement {
       @Override
       public String get() {
          return "." + this.name + "[" + this.key + "]";
@@ -222,11 +225,11 @@ public interface ProblemReporter {
    }
 
    @FunctionalInterface
-   public interface PathElement {
+   interface PathElement {
       String get();
    }
 
-   public interface Problem {
+   interface Problem {
       String description();
 
       default boolean isFatal() {
@@ -234,21 +237,21 @@ public interface ProblemReporter {
       }
    }
 
-   public static record RootElementPathElement(ResourceKey<?> id) implements ProblemReporter.PathElement {
+   record RootElementPathElement(ResourceKey<?> id) implements ProblemReporter.PathElement {
       @Override
       public String get() {
          return "{" + this.id.identifier() + "@" + this.id.registry() + "}";
       }
    }
 
-   public static record RootFieldPathElement(String name) implements ProblemReporter.PathElement {
+   record RootFieldPathElement(String name) implements ProblemReporter.PathElement {
       @Override
       public String get() {
          return this.name;
       }
    }
 
-   public static class ScopedCollector extends ProblemReporter.Collector implements AutoCloseable {
+   class ScopedCollector extends ProblemReporter.Collector implements AutoCloseable {
       private final Logger logger;
 
       public ScopedCollector(final Logger logger) {

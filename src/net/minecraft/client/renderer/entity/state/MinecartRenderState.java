@@ -14,12 +14,8 @@ public class MinecartRenderState extends EntityRenderState {
    public int displayOffset;
    public BlockModelRenderState displayBlockModel = new BlockModelRenderState();
    public boolean isNewRender;
-   @Nullable
-   public Vec3 renderPos;
-   @Nullable
-   public Vec3 posOnRail;
-   @Nullable
-   public Vec3 frontPos;
-   @Nullable
-   public Vec3 backPos;
+   public @Nullable Vec3 renderPos;
+   public @Nullable Vec3 posOnRail;
+   public @Nullable Vec3 frontPos;
+   public @Nullable Vec3 backPos;
 }

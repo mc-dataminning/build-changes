@@ -37,15 +37,15 @@ public abstract class PathfinderMob extends Mob {
    public boolean isPanicking() {
       if (!this.brain.isBrainDead() && this.brain.hasMemoryValue(MemoryModuleType.IS_PANICKING)) {
          return this.brain.getMemory(MemoryModuleType.IS_PANICKING).isPresent();
-      } else {
-         for (WrappedGoal wrappedGoal : this.goalSelector.getAvailableGoals()) {
-            if (wrappedGoal.isRunning() && wrappedGoal.getGoal() instanceof PanicGoal) {
-               return true;
-            }
-         }
-
-         return false;
       }
+
+      for (WrappedGoal wrappedGoal : this.goalSelector.getAvailableGoals()) {
+         if (wrappedGoal.isRunning() && wrappedGoal.getGoal() instanceof PanicGoal) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    protected boolean shouldStayCloseToLeashHolder() {
@@ -61,7 +61,7 @@ public abstract class PathfinderMob extends Mob {
          float distanceTo = this.distanceTo(leashHolder);
          Vec3 delta = new Vec3(leashHolder.getX() - this.getX(), leashHolder.getY() - this.getY(), leashHolder.getZ() - this.getZ())
             .normalize()
-            .scale((double)Math.max(distanceTo - 2.0F, 0.0F));
+            .scale(Math.max(distanceTo - 2.0F, 0.0F));
          this.getNavigation().moveTo(this.getX() + delta.x, this.getY() + delta.y, this.getZ() + delta.z, this.followLeashSpeed());
       }
    }

@@ -1,6 +1,5 @@
 package net.minecraft.world.entity.animal.equine;
 
-import java.util.Objects;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -44,7 +43,7 @@ public abstract class AbstractChestedHorse extends AbstractHorse {
 
    @Override
    protected void randomizeAttributes(final RandomSource random) {
-      this.getAttribute(Attributes.MAX_HEALTH).setBaseValue((double)generateMaxHealth(random::nextInt));
+      this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(generateMaxHealth(random::nextInt));
    }
 
    @Override
@@ -109,14 +108,9 @@ public abstract class AbstractChestedHorse extends AbstractHorse {
       }
    }
 
-   @Nullable
    @Override
-   public SlotAccess getSlot(final int slot) {
+   public @Nullable SlotAccess getSlot(final int slot) {
       return slot == 499 ? new SlotAccess() {
-         {
-            Objects.requireNonNull(AbstractChestedHorse.this);
-         }
-
          @Override
          public ItemStack get() {
             return AbstractChestedHorse.this.hasChest() ? new ItemStack(Items.CHEST) : ItemStack.EMPTY;

@@ -37,8 +37,8 @@ public class NonOverlappingMerger extends AbstractDoubleList implements IndexMer
 
       int upperSize = this.upper.size() - 1;
 
-      for (int ix = 0; ix < upperSize; ix++) {
-         if (!consumer.merge(lowerSize - 1, ix, lowerSize + ix)) {
+      for (int i = 0; i < upperSize; i++) {
+         if (!consumer.merge(lowerSize - 1, i, lowerSize + i)) {
             return false;
          }
       }

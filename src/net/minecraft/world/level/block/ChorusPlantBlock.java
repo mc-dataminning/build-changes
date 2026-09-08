@@ -20,12 +20,12 @@ public class ChorusPlantBlock extends PipeBlock {
       this.registerDefaultState(
          this.stateDefinition
             .any()
-            .setValue(NORTH, Boolean.valueOf(false))
-            .setValue(EAST, Boolean.valueOf(false))
-            .setValue(SOUTH, Boolean.valueOf(false))
-            .setValue(WEST, Boolean.valueOf(false))
-            .setValue(UP, Boolean.valueOf(false))
-            .setValue(DOWN, Boolean.valueOf(false))
+            .setValue(NORTH, false)
+            .setValue(EAST, false)
+            .setValue(SOUTH, false)
+            .setValue(WEST, false)
+            .setValue(UP, false)
+            .setValue(DOWN, false)
       );
    }
 
@@ -42,12 +42,12 @@ public class ChorusPlantBlock extends PipeBlock {
       BlockState south = level.getBlockState(pos.south());
       BlockState west = level.getBlockState(pos.west());
       Block block = defaultState.getBlock();
-      return defaultState.trySetValue(DOWN, Boolean.valueOf(down.is(block) || down.is(Blocks.CHORUS_FLOWER) || down.is(BlockTags.SUPPORTS_CHORUS_PLANT)))
-         .trySetValue(UP, Boolean.valueOf(up.is(block) || up.is(Blocks.CHORUS_FLOWER)))
-         .trySetValue(NORTH, Boolean.valueOf(north.is(block) || north.is(Blocks.CHORUS_FLOWER)))
-         .trySetValue(EAST, Boolean.valueOf(east.is(block) || east.is(Blocks.CHORUS_FLOWER)))
-         .trySetValue(SOUTH, Boolean.valueOf(south.is(block) || south.is(Blocks.CHORUS_FLOWER)))
-         .trySetValue(WEST, Boolean.valueOf(west.is(block) || west.is(Blocks.CHORUS_FLOWER)));
+      return defaultState.trySetValue(DOWN, down.is(block) || down.is(Blocks.CHORUS_FLOWER) || down.is(BlockTags.SUPPORTS_CHORUS_PLANT))
+         .trySetValue(UP, up.is(block) || up.is(Blocks.CHORUS_FLOWER))
+         .trySetValue(NORTH, north.is(block) || north.is(Blocks.CHORUS_FLOWER))
+         .trySetValue(EAST, east.is(block) || east.is(Blocks.CHORUS_FLOWER))
+         .trySetValue(SOUTH, south.is(block) || south.is(Blocks.CHORUS_FLOWER))
+         .trySetValue(WEST, west.is(block) || west.is(Blocks.CHORUS_FLOWER));
    }
 
    @Override
@@ -68,7 +68,7 @@ public class ChorusPlantBlock extends PipeBlock {
          boolean connect = neighbourState.is(this)
             || neighbourState.is(Blocks.CHORUS_FLOWER)
             || directionToNeighbour == Direction.DOWN && neighbourState.is(BlockTags.SUPPORTS_CHORUS_PLANT);
-         return state.setValue(PROPERTY_BY_DIRECTION.get(directionToNeighbour), Boolean.valueOf(connect));
+         return state.setValue(PROPERTY_BY_DIRECTION.get(directionToNeighbour), connect);
       }
    }
 

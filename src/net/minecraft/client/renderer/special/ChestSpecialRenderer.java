@@ -55,9 +55,7 @@ public class ChestSpecialRenderer implements NoDataSpecialModelRenderer {
       final boolean hasFoil,
       final int outlineColor
    ) {
-      submitNodeCollector.submitModel(
-         this.model, Float.valueOf(this.openness), poseStack, lightCoords, overlayCoords, -1, this.sprite, this.sprites, outlineColor
-      );
+      submitNodeCollector.submitModel(this.model, this.openness, poseStack, lightCoords, overlayCoords, -1, this.sprite, this.sprites, outlineColor);
    }
 
    @Override
@@ -67,14 +65,14 @@ public class ChestSpecialRenderer implements NoDataSpecialModelRenderer {
       this.model.root().getExtentsForGui(poseStack, output);
    }
 
-   public static record Unbaked(Identifier texture, float openness, ChestType chestType) implements NoDataSpecialModelRenderer.Unbaked {
+   public record Unbaked(Identifier texture, float openness, ChestType chestType) implements NoDataSpecialModelRenderer.Unbaked {
       public static final MapCodec<ChestSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Identifier.CODEC.fieldOf("texture").forGetter(ChestSpecialRenderer.Unbaked::texture),
-                  Codec.FLOAT.optionalFieldOf("openness", 0.0F).forGetter(ChestSpecialRenderer.Unbaked::openness),
-                  ChestType.CODEC.optionalFieldOf("chest_type", ChestType.SINGLE).forGetter(ChestSpecialRenderer.Unbaked::chestType)
-               )
-               .apply(i, ChestSpecialRenderer.Unbaked::new)
+               Identifier.CODEC.fieldOf("texture").forGetter(ChestSpecialRenderer.Unbaked::texture),
+               Codec.FLOAT.optionalFieldOf("openness", 0.0F).forGetter(ChestSpecialRenderer.Unbaked::openness),
+               ChestType.CODEC.optionalFieldOf("chest_type", ChestType.SINGLE).forGetter(ChestSpecialRenderer.Unbaked::chestType)
+            )
+            .apply(i, ChestSpecialRenderer.Unbaked::new)
       );
 
       public Unbaked(final Identifier texture, final ChestType chestType) {

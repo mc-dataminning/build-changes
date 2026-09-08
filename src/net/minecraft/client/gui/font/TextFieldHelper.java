@@ -63,48 +63,54 @@ public class TextFieldHelper {
       if (event.isSelectAll()) {
          this.selectAll();
          return true;
-      } else if (event.isCopy()) {
+      }
+
+      if (event.isCopy()) {
          this.copy();
          return true;
-      } else if (event.isPaste()) {
+      }
+
+      if (event.isPaste()) {
          this.paste();
          return true;
-      } else if (event.isCut()) {
+      }
+
+      if (event.isCut()) {
          this.cut();
          return true;
+      }
+
+      TextFieldHelper.CursorStep cursorStep = event.hasControlDownWithQuirk() ? TextFieldHelper.CursorStep.WORD : TextFieldHelper.CursorStep.CHARACTER;
+      if (event.shortcutKey() == 8) {
+         this.removeFromCursor(-1, cursorStep);
+         return true;
+      }
+
+      if (event.shortcutKey() == 127) {
+         this.removeFromCursor(1, cursorStep);
       } else {
-         TextFieldHelper.CursorStep cursorStep = event.hasControlDownWithQuirk() ? TextFieldHelper.CursorStep.WORD : TextFieldHelper.CursorStep.CHARACTER;
-         if (event.shortcutKey() == 8) {
-            this.removeFromCursor(-1, cursorStep);
+         if (event.isLeft()) {
+            this.moveBy(-1, event.hasShiftDown(), cursorStep);
             return true;
-         } else {
-            if (event.shortcutKey() == 127) {
-               this.removeFromCursor(1, cursorStep);
-            } else {
-               if (event.isLeft()) {
-                  this.moveBy(-1, event.hasShiftDown(), cursorStep);
-                  return true;
-               }
+         }
 
-               if (event.isRight()) {
-                  this.moveBy(1, event.hasShiftDown(), cursorStep);
-                  return true;
-               }
+         if (event.isRight()) {
+            this.moveBy(1, event.hasShiftDown(), cursorStep);
+            return true;
+         }
 
-               if (event.shortcutKey() == 1073741898) {
-                  this.setCursorToStart(event.hasShiftDown());
-                  return true;
-               }
+         if (event.shortcutKey() == 1073741898) {
+            this.setCursorToStart(event.hasShiftDown());
+            return true;
+         }
 
-               if (event.shortcutKey() == 1073741901) {
-                  this.setCursorToEnd(event.hasShiftDown());
-                  return true;
-               }
-            }
-
-            return false;
+         if (event.shortcutKey() == 1073741901) {
+            this.setCursorToEnd(event.hasShiftDown());
+            return true;
          }
       }
+
+      return false;
    }
 
    private int clampToMsgLength(final int value) {
@@ -226,13 +232,13 @@ public class TextFieldHelper {
    private String deleteSelection(final String message) {
       if (this.selectionPos == this.cursorPos) {
          return message;
-      } else {
-         int startIndex = Math.min(this.cursorPos, this.selectionPos);
-         int endIndex = Math.max(this.cursorPos, this.selectionPos);
-         String updatedText = message.substring(0, startIndex) + message.substring(endIndex);
-         this.selectionPos = this.cursorPos = startIndex;
-         return updatedText;
       }
+
+      int startIndex = Math.min(this.cursorPos, this.selectionPos);
+      int endIndex = Math.max(this.cursorPos, this.selectionPos);
+      String updatedText = message.substring(0, startIndex) + message.substring(endIndex);
+      this.selectionPos = this.cursorPos = startIndex;
+      return updatedText;
    }
 
    public void setCursorToStart() {
@@ -284,7 +290,7 @@ public class TextFieldHelper {
       return this.cursorPos != this.selectionPos;
    }
 
-   public static enum CursorStep {
+   public enum CursorStep {
       CHARACTER,
       WORD;
    }

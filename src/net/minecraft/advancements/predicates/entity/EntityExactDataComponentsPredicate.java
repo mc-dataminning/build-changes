@@ -2,7 +2,6 @@ package net.minecraft.advancements.predicates.entity;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.component.DataComponentExactPredicate;
-import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.phys.Vec3;
@@ -13,7 +12,7 @@ public record EntityExactDataComponentsPredicate(DataComponentExactPredicate pre
       .xmap(EntityExactDataComponentsPredicate::new, EntityExactDataComponentsPredicate::predicate);
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
-      return this.predicate.test((DataComponentGetter)entity);
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
+      return this.predicate.test(entity);
    }
 }

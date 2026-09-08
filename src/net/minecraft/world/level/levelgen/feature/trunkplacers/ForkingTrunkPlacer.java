@@ -72,11 +72,11 @@ public class ForkingTrunkPlacer extends TrunkPlacer {
 
          for (int yo = branchPos; yo < treeHeight && branchSteps > 0; branchSteps--) {
             if (yo >= 1) {
-               int yyx = origin.getY() + yo;
+               int yy = origin.getY() + yo;
                tx += branchDirection.getStepX();
                tz += branchDirection.getStepZ();
-               if (this.placeLog(level, trunkSetter, random, logPos.set(tx, yyx, tz), tree)) {
-                  ey = OptionalInt.of(yyx + 1);
+               if (this.placeLog(level, trunkSetter, random, logPos.set(tx, yy, tz), tree)) {
+                  ey = OptionalInt.of(yy + 1);
                }
             }
 

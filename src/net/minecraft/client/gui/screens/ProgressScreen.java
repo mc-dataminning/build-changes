@@ -7,10 +7,8 @@ import net.minecraft.util.ProgressListener;
 import org.jspecify.annotations.Nullable;
 
 public class ProgressScreen extends Screen implements ProgressListener {
-   @Nullable
-   private Component header;
-   @Nullable
-   private Component stage;
+   private @Nullable Component header;
+   private @Nullable Component stage;
    private int progress;
    private boolean stop;
    private final boolean clearScreenAfterStop;

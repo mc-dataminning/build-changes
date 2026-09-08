@@ -5,6 +5,5 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jspecify.annotations.Nullable;
 
 public interface SelectBlockModelProperty<T> {
-   @Nullable
-   T get(BlockState blockState, BlockDisplayContext displayContext);
+   @Nullable T get(BlockState blockState, BlockDisplayContext displayContext);
 }

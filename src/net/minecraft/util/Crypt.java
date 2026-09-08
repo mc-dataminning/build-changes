@@ -43,15 +43,15 @@ public class Crypt {
    public static final Codec<PublicKey> PUBLIC_KEY_CODEC = Codec.STRING.comapFlatMap(rsaString -> {
       try {
          return DataResult.success(stringToRsaPublicKey(rsaString));
-      } catch (CryptException var2) {
-         return DataResult.error(var2::getMessage);
+      } catch (CryptException e) {
+         return DataResult.error(e::getMessage);
       }
    }, Crypt::rsaPublicKeyToString);
    public static final Codec<PrivateKey> PRIVATE_KEY_CODEC = Codec.STRING.comapFlatMap(rsaString -> {
       try {
          return DataResult.success(stringToPemRsaPrivateKey(rsaString));
-      } catch (CryptException var2) {
-         return DataResult.error(var2::getMessage);
+      } catch (CryptException e) {
+         return DataResult.error(e::getMessage);
       }
    }, Crypt::pemRsaPrivateKeyToString);
 
@@ -60,8 +60,8 @@ public class Crypt {
          KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
          keyGenerator.init(128);
          return keyGenerator.generateKey();
-      } catch (Exception var1) {
-         throw new CryptException(var1);
+      } catch (Exception e) {
+         throw new CryptException(e);
       }
    }
 
@@ -70,16 +70,16 @@ public class Crypt {
          KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
          generator.initialize(1024);
          return generator.generateKeyPair();
-      } catch (Exception var1) {
-         throw new CryptException(var1);
+      } catch (Exception e) {
+         throw new CryptException(e);
       }
    }
 
    public static byte[] digestData(final String serverId, final PublicKey publicKey, final SecretKey sharedKey) throws CryptException {
       try {
          return digestData(serverId.getBytes("ISO_8859_1"), sharedKey.getEncoded(), publicKey.getEncoded());
-      } catch (Exception var4) {
-         throw new CryptException(var4);
+      } catch (Exception e) {
+         throw new CryptException(e);
       }
    }
 
@@ -103,8 +103,8 @@ public class Crypt {
 
       try {
          return byteArrayToKey.apply(Base64.getMimeDecoder().decode(input));
-      } catch (IllegalArgumentException var6) {
-         throw new CryptException(var6);
+      } catch (IllegalArgumentException e) {
+         throw new CryptException(e);
       }
    }
 
@@ -137,8 +137,8 @@ public class Crypt {
          EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(keyData);
          KeyFactory keyFactory = KeyFactory.getInstance("RSA");
          return keyFactory.generatePrivate(keySpec);
-      } catch (Exception var3) {
-         throw new CryptException(var3);
+      } catch (Exception e) {
+         throw new CryptException(e);
       }
    }
 
@@ -147,8 +147,8 @@ public class Crypt {
          EncodedKeySpec keySpec = new X509EncodedKeySpec(keyData);
          KeyFactory keyFactory = KeyFactory.getInstance("RSA");
          return keyFactory.generatePublic(keySpec);
-      } catch (Exception var3) {
-         throw new CryptException(var3);
+      } catch (Exception e) {
+         throw new CryptException(e);
       }
    }
 
@@ -157,8 +157,8 @@ public class Crypt {
 
       try {
          return new SecretKeySpec(key, "AES");
-      } catch (Exception var4) {
-         throw new CryptException(var4);
+      } catch (Exception e) {
+         throw new CryptException(e);
       }
    }
 
@@ -173,8 +173,8 @@ public class Crypt {
    private static byte[] cipherData(final int cipherOpMode, final Key key, final byte[] input) throws CryptException {
       try {
          return setupCipher(cipherOpMode, key.getAlgorithm(), key).doFinal(input);
-      } catch (Exception var4) {
-         throw new CryptException(var4);
+      } catch (Exception e) {
+         throw new CryptException(e);
       }
    }
 
@@ -189,8 +189,8 @@ public class Crypt {
          Cipher cip = Cipher.getInstance("AES/CFB8/NoPadding");
          cip.init(opMode, key, new IvParameterSpec(key.getEncoded()));
          return cip;
-      } catch (Exception var3) {
-         throw new CryptException(var3);
+      } catch (Exception e) {
+         throw new CryptException(e);
       }
    }
 
@@ -198,7 +198,7 @@ public class Crypt {
       T apply(final byte[] input) throws CryptException;
    }
 
-   public static record SaltSignaturePair(long salt, byte[] signature) {
+   public record SaltSignaturePair(long salt, byte[] signature) {
       public static final Crypt.SaltSignaturePair EMPTY = new Crypt.SaltSignaturePair(0L, ByteArrays.EMPTY_ARRAY);
 
       public SaltSignaturePair(final FriendlyByteBuf input) {

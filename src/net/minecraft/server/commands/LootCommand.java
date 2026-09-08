@@ -61,121 +61,119 @@ public class LootCommand {
    );
    private static final CommandResponseTracker.MessagesWithArg<ItemStack, ResourceKey<LootTable>> RESPONSE_WITH_LOOT_TABLE = CommandResponseTracker.messages(
       (drop, var1, key) -> Component.translatable(
-            "commands.drop.success.single_with_table", drop.getCount(), drop.getDisplayName(), Component.translationArg(key.identifier())
-         ),
+         "commands.drop.success.single_with_table", drop.getCount(), drop.getDisplayName(), Component.translationArg(key.identifier())
+      ),
       (dropCount, var1, key) -> Component.translatable("commands.drop.success.multiple_with_table", dropCount, Component.translationArg(key.identifier()))
    );
 
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
       dispatcher.register(
          addTargets(
-            (LiteralArgumentBuilder)Commands.literal("loot").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)),
+            (LiteralArgumentBuilder & ArgumentBuilder)Commands.literal("loot").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)),
             (target, output) -> target.then(
-                     Commands.literal("fish")
-                        .then(
-                           Commands.argument("loot_table", ResourceOrIdArgument.lootTable(context))
-                              .then(
-                                 ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument(
-                                                "pos", BlockPosArgument.blockPos()
-                                             )
-                                             .executes(
-                                                c -> dropFishingLoot(
-                                                      c,
-                                                      ResourceOrIdArgument.getLootTable(c, "loot_table"),
-                                                      BlockPosArgument.getLoadedBlockPos(c, "pos"),
-                                                      ItemStack.EMPTY,
-                                                      output
-                                                   )
-                                             ))
-                                          .then(
-                                             Commands.argument("tool", ItemArgument.item(context))
-                                                .executes(
-                                                   c -> dropFishingLoot(
-                                                         c,
-                                                         ResourceOrIdArgument.getLootTable(c, "loot_table"),
-                                                         BlockPosArgument.getLoadedBlockPos(c, "pos"),
-                                                         ItemArgument.getItem(c, "tool").createItemStack(1),
-                                                         output
-                                                      )
-                                                )
-                                          ))
-                                       .then(
-                                          Commands.literal("mainhand")
-                                             .executes(
-                                                c -> dropFishingLoot(
-                                                      c,
-                                                      ResourceOrIdArgument.getLootTable(c, "loot_table"),
-                                                      BlockPosArgument.getLoadedBlockPos(c, "pos"),
-                                                      getSourceHandItem((CommandSourceStack)c.getSource(), EquipmentSlot.MAINHAND),
-                                                      output
-                                                   )
-                                             )
-                                       ))
-                                    .then(
-                                       Commands.literal("offhand")
+                  Commands.literal("fish")
+                     .then(
+                        Commands.argument("loot_table", ResourceOrIdArgument.lootTable(context))
+                           .then(
+                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument(
+                                             "pos", BlockPosArgument.blockPos()
+                                          )
                                           .executes(
                                              c -> dropFishingLoot(
+                                                c,
+                                                ResourceOrIdArgument.getLootTable(c, "loot_table"),
+                                                BlockPosArgument.getLoadedBlockPos(c, "pos"),
+                                                ItemStack.EMPTY,
+                                                output
+                                             )
+                                          ))
+                                       .then(
+                                          Commands.argument("tool", ItemArgument.item(context))
+                                             .executes(
+                                                c -> dropFishingLoot(
                                                    c,
                                                    ResourceOrIdArgument.getLootTable(c, "loot_table"),
                                                    BlockPosArgument.getLoadedBlockPos(c, "pos"),
-                                                   getSourceHandItem((CommandSourceStack)c.getSource(), EquipmentSlot.OFFHAND),
+                                                   ItemArgument.getItem(c, "tool").createItemStack(1),
                                                    output
                                                 )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-                  .then(
-                     Commands.literal("loot")
-                        .then(
-                           Commands.argument("loot_table", ResourceOrIdArgument.lootTable(context))
-                              .executes(c -> dropChestLoot(c, ResourceOrIdArgument.getLootTable(c, "loot_table"), output))
-                        )
-                  )
-                  .then(
-                     Commands.literal("kill")
-                        .then(
-                           Commands.argument("target", EntityArgument.entity()).executes(c -> dropKillLoot(c, EntityArgument.getEntity(c, "target"), output))
-                        )
-                  )
-                  .then(
-                     Commands.literal("mine")
-                        .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument("pos", BlockPosArgument.blockPos())
-                                       .executes(c -> dropBlockLoot(c, BlockPosArgument.getLoadedBlockPos(c, "pos"), ItemStack.EMPTY, output)))
+                                             )
+                                       ))
                                     .then(
-                                       Commands.argument("tool", ItemArgument.item(context))
+                                       Commands.literal("mainhand")
                                           .executes(
-                                             c -> dropBlockLoot(
-                                                   c, BlockPosArgument.getLoadedBlockPos(c, "pos"), ItemArgument.getItem(c, "tool").createItemStack(1), output
-                                                )
-                                          )
-                                    ))
-                                 .then(
-                                    Commands.literal("mainhand")
-                                       .executes(
-                                          c -> dropBlockLoot(
+                                             c -> dropFishingLoot(
                                                 c,
+                                                ResourceOrIdArgument.getLootTable(c, "loot_table"),
                                                 BlockPosArgument.getLoadedBlockPos(c, "pos"),
                                                 getSourceHandItem((CommandSourceStack)c.getSource(), EquipmentSlot.MAINHAND),
                                                 output
                                              )
-                                       )
-                                 ))
-                              .then(
-                                 Commands.literal("offhand")
-                                    .executes(
-                                       c -> dropBlockLoot(
+                                          )
+                                    ))
+                                 .then(
+                                    Commands.literal("offhand")
+                                       .executes(
+                                          c -> dropFishingLoot(
                                              c,
+                                             ResourceOrIdArgument.getLootTable(c, "loot_table"),
                                              BlockPosArgument.getLoadedBlockPos(c, "pos"),
                                              getSourceHandItem((CommandSourceStack)c.getSource(), EquipmentSlot.OFFHAND),
                                              output
                                           )
+                                       )
+                                 )
+                           )
+                     )
+               )
+               .then(
+                  Commands.literal("loot")
+                     .then(
+                        Commands.argument("loot_table", ResourceOrIdArgument.lootTable(context))
+                           .executes(c -> dropChestLoot(c, ResourceOrIdArgument.getLootTable(c, "loot_table"), output))
+                     )
+               )
+               .then(
+                  Commands.literal("kill")
+                     .then(Commands.argument("target", EntityArgument.entity()).executes(c -> dropKillLoot(c, EntityArgument.getEntity(c, "target"), output)))
+               )
+               .then(
+                  Commands.literal("mine")
+                     .then(
+                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument("pos", BlockPosArgument.blockPos())
+                                    .executes(c -> dropBlockLoot(c, BlockPosArgument.getLoadedBlockPos(c, "pos"), ItemStack.EMPTY, output)))
+                                 .then(
+                                    Commands.argument("tool", ItemArgument.item(context))
+                                       .executes(
+                                          c -> dropBlockLoot(
+                                             c, BlockPosArgument.getLoadedBlockPos(c, "pos"), ItemArgument.getItem(c, "tool").createItemStack(1), output
+                                          )
+                                       )
+                                 ))
+                              .then(
+                                 Commands.literal("mainhand")
+                                    .executes(
+                                       c -> dropBlockLoot(
+                                          c,
+                                          BlockPosArgument.getLoadedBlockPos(c, "pos"),
+                                          getSourceHandItem((CommandSourceStack)c.getSource(), EquipmentSlot.MAINHAND),
+                                          output
+                                       )
                                     )
-                              )
-                        )
-                  )
+                              ))
+                           .then(
+                              Commands.literal("offhand")
+                                 .executes(
+                                    c -> dropBlockLoot(
+                                       c,
+                                       BlockPosArgument.getLoadedBlockPos(c, "pos"),
+                                       getSourceHandItem((CommandSourceStack)c.getSource(), EquipmentSlot.OFFHAND),
+                                       output
+                                    )
+                                 )
+                           )
+                     )
+               )
          )
       );
    }
@@ -191,19 +189,19 @@ public class LootCommand {
                                  tail.construct(
                                        Commands.argument("slot", SlotArgument.slot()),
                                        (c, drops, usedItems) -> entityReplace(
-                                             EntityArgument.getEntities(c, "entities"), SlotArgument.getSlot(c, "slot"), drops.size(), drops, usedItems
-                                          )
+                                          EntityArgument.getEntities(c, "entities"), SlotArgument.getSlot(c, "slot"), drops.size(), drops, usedItems
+                                       )
                                     )
                                     .then(
                                        tail.construct(
                                           Commands.argument("count", IntegerArgumentType.integer(0)),
                                           (c, drops, usedItems) -> entityReplace(
-                                                EntityArgument.getEntities(c, "entities"),
-                                                SlotArgument.getSlot(c, "slot"),
-                                                IntegerArgumentType.getInteger(c, "count"),
-                                                drops,
-                                                usedItems
-                                             )
+                                             EntityArgument.getEntities(c, "entities"),
+                                             SlotArgument.getSlot(c, "slot"),
+                                             IntegerArgumentType.getInteger(c, "count"),
+                                             drops,
+                                             usedItems
+                                          )
                                        )
                                     )
                               )
@@ -217,25 +215,25 @@ public class LootCommand {
                               tail.construct(
                                     Commands.argument("slot", SlotArgument.slot()),
                                     (c, drops, usedItems) -> blockReplace(
-                                          (CommandSourceStack)c.getSource(),
-                                          BlockPosArgument.getLoadedBlockPos(c, "targetPos"),
-                                          SlotArgument.getSlot(c, "slot"),
-                                          drops.size(),
-                                          drops,
-                                          usedItems
-                                       )
+                                       (CommandSourceStack)c.getSource(),
+                                       BlockPosArgument.getLoadedBlockPos(c, "targetPos"),
+                                       SlotArgument.getSlot(c, "slot"),
+                                       drops.size(),
+                                       drops,
+                                       usedItems
+                                    )
                                  )
                                  .then(
                                     tail.construct(
                                        Commands.argument("count", IntegerArgumentType.integer(0)),
                                        (c, drops, usedItems) -> blockReplace(
-                                             (CommandSourceStack)c.getSource(),
-                                             BlockPosArgument.getLoadedBlockPos(c, "targetPos"),
-                                             IntegerArgumentType.getInteger(c, "slot"),
-                                             IntegerArgumentType.getInteger(c, "count"),
-                                             drops,
-                                             usedItems
-                                          )
+                                          (CommandSourceStack)c.getSource(),
+                                          BlockPosArgument.getLoadedBlockPos(c, "targetPos"),
+                                          IntegerArgumentType.getInteger(c, "slot"),
+                                          IntegerArgumentType.getInteger(c, "count"),
+                                          drops,
+                                          usedItems
+                                       )
                                     )
                                  )
                            )
@@ -248,8 +246,8 @@ public class LootCommand {
                   tail.construct(
                      Commands.argument("targetPos", BlockPosArgument.blockPos()),
                      (c, drops, usedItems) -> blockDistribute(
-                           (CommandSourceStack)c.getSource(), BlockPosArgument.getLoadedBlockPos(c, "targetPos"), drops, usedItems
-                        )
+                        (CommandSourceStack)c.getSource(), BlockPosArgument.getLoadedBlockPos(c, "targetPos"), drops, usedItems
+                     )
                   )
                )
          )
@@ -409,44 +407,44 @@ public class LootCommand {
       Optional<ResourceKey<LootTable>> lootTable = blockState.getBlock().getLootTable();
       if (lootTable.isEmpty()) {
          throw ERROR_NO_BLOCK_LOOT_TABLE.create(blockState.getBlock().getName());
-      } else {
-         LootParams.Builder lootParams = new LootParams.Builder(level)
-            .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
-            .withParameter(LootContextParams.BLOCK_STATE, blockState)
-            .withOptionalParameter(LootContextParams.BLOCK_ENTITY, blockEntity)
-            .withOptionalParameter(LootContextParams.THIS_ENTITY, source.getEntity())
-            .withParameter(LootContextParams.TOOL, tool);
-         List<ItemStack> drops = blockState.getDrops(lootParams);
-         CommandResponseTracker<ItemStack> usedItems = CommandResponseTracker.create();
-         output.accept(context, drops, usedItems);
-         return usedItems.sendFeedback(source, false, RESPONSE_WITH_LOOT_TABLE, lootTable.get());
       }
+
+      LootParams.Builder lootParams = new LootParams.Builder(level)
+         .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
+         .withParameter(LootContextParams.BLOCK_STATE, blockState)
+         .withOptionalParameter(LootContextParams.BLOCK_ENTITY, blockEntity)
+         .withOptionalParameter(LootContextParams.THIS_ENTITY, source.getEntity())
+         .withParameter(LootContextParams.TOOL, tool);
+      List<ItemStack> drops = blockState.getDrops(lootParams);
+      CommandResponseTracker<ItemStack> usedItems = CommandResponseTracker.create();
+      output.accept(context, drops, usedItems);
+      return usedItems.sendFeedback(source, false, RESPONSE_WITH_LOOT_TABLE, lootTable.get());
    }
 
    private static int dropKillLoot(final CommandContext<CommandSourceStack> context, final Entity target, final LootCommand.DropConsumer output) throws CommandSyntaxException {
       Optional<ResourceKey<LootTable>> lootTableId = target.getLootTable();
       if (lootTableId.isEmpty()) {
          throw ERROR_NO_ENTITY_LOOT_TABLE.create(target.getDisplayName());
-      } else {
-         CommandSourceStack source = (CommandSourceStack)context.getSource();
-         LootParams.Builder builder = new LootParams.Builder(source.getLevel());
-         Entity killer = source.getEntity();
-         if (killer instanceof Player player) {
-            builder.withParameter(LootContextParams.LAST_DAMAGE_PLAYER, player);
-         }
-
-         builder.withParameter(LootContextParams.DAMAGE_SOURCE, target.damageSources().magic());
-         builder.withOptionalParameter(LootContextParams.DIRECT_ATTACKING_ENTITY, killer);
-         builder.withOptionalParameter(LootContextParams.ATTACKING_ENTITY, killer);
-         builder.withParameter(LootContextParams.THIS_ENTITY, target);
-         builder.withParameter(LootContextParams.ORIGIN, source.getPosition());
-         LootParams lootParams = builder.create(LootContextParamSets.ENTITY);
-         LootTable lootTable = source.getServer().reloadableRegistries().getLootTable(lootTableId.get());
-         List<ItemStack> drops = lootTable.getRandomItems(lootParams);
-         CommandResponseTracker<ItemStack> usedItems = CommandResponseTracker.create();
-         output.accept(context, drops, usedItems);
-         return usedItems.sendFeedback(source, false, RESPONSE_WITH_LOOT_TABLE, lootTableId.get());
       }
+
+      CommandSourceStack source = (CommandSourceStack)context.getSource();
+      LootParams.Builder builder = new LootParams.Builder(source.getLevel());
+      Entity killer = source.getEntity();
+      if (killer instanceof Player player) {
+         builder.withParameter(LootContextParams.LAST_DAMAGE_PLAYER, player);
+      }
+
+      builder.withParameter(LootContextParams.DAMAGE_SOURCE, target.damageSources().magic());
+      builder.withOptionalParameter(LootContextParams.DIRECT_ATTACKING_ENTITY, killer);
+      builder.withOptionalParameter(LootContextParams.ATTACKING_ENTITY, killer);
+      builder.withParameter(LootContextParams.THIS_ENTITY, target);
+      builder.withParameter(LootContextParams.ORIGIN, source.getPosition());
+      LootParams lootParams = builder.create(LootContextParamSets.ENTITY);
+      LootTable lootTable = source.getServer().reloadableRegistries().getLootTable(lootTableId.get());
+      List<ItemStack> drops = lootTable.getRandomItems(lootParams);
+      CommandResponseTracker<ItemStack> usedItems = CommandResponseTracker.create();
+      output.accept(context, drops, usedItems);
+      return usedItems.sendFeedback(source, false, RESPONSE_WITH_LOOT_TABLE, lootTableId.get());
    }
 
    private static int dropChestLoot(final CommandContext<CommandSourceStack> context, final Holder<LootTable> lootTable, final LootCommand.DropConsumer output) throws CommandSyntaxException {

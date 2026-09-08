@@ -53,12 +53,9 @@ public class DebugScreenOverlay {
    private static final int MARGIN_TOP = 2;
    private final Minecraft minecraft;
    private final Font font;
-   @Nullable
-   private ChunkPos lastPos;
-   @Nullable
-   private LevelChunk clientChunk;
-   @Nullable
-   private CompletableFuture<LevelChunk> serverChunk;
+   private @Nullable ChunkPos lastPos;
+   private @Nullable LevelChunk clientChunk;
+   private @Nullable CompletableFuture<LevelChunk> serverChunk;
    private boolean renderProfilerChart;
    private boolean renderFpsCharts;
    private boolean renderNetworkCharts;
@@ -117,10 +114,6 @@ public class DebugScreenOverlay {
             final Map<Identifier, Collection<String>> groups = new LinkedHashMap<>();
             final List<String> regularLines = new ArrayList<>();
             DebugScreenDisplayer displayer = new DebugScreenDisplayer() {
-               {
-                  Objects.requireNonNull(DebugScreenOverlay.this);
-               }
-
                @Override
                public void addPriorityLine(final String line) {
                   if (leftLines.size() > rightLines.size()) {
@@ -230,7 +223,7 @@ public class DebugScreenOverlay {
             int scaledScreenHeight;
             int scaledScreenWidth;
             if (newScale < standardGuiScale && newScale > 0) {
-               graphics.pose().scale((float)newScale / (float)standardGuiScale, (float)newScale / (float)standardGuiScale);
+               graphics.pose().scale((float)newScale / standardGuiScale, (float)newScale / standardGuiScale);
                scaledScreenWidth = window.getWidth() / newScale;
                scaledScreenHeight = window.getHeight() / newScale;
             } else {
@@ -318,29 +311,27 @@ public class DebugScreenOverlay {
          }
       }
 
-      for (int ix = 0; ix < lines.size(); ix++) {
-         String line = lines.get(ix);
+      for (int i = 0; i < lines.size(); i++) {
+         String line = lines.get(i);
          if (!Strings.isNullOrEmpty(line)) {
             int width = this.font.width(line);
             int left = alignLeft ? 2 : scaledScreenWidth - 2 - width;
-            int top = 2 + height * ix;
+            int top = 2 + height * i;
             graphics.text(this.font, line, left, top, -2039584, false);
          }
       }
    }
 
-   @Nullable
-   private ServerLevel getServerLevel() {
+   private @Nullable ServerLevel getServerLevel() {
       if (this.minecraft.level == null) {
          return null;
-      } else {
-         IntegratedServer server = this.minecraft.getSingleplayerServer();
-         return server != null ? server.getLevel(this.minecraft.level.dimension()) : null;
       }
+
+      IntegratedServer server = this.minecraft.getSingleplayerServer();
+      return server != null ? server.getLevel(this.minecraft.level.dimension()) : null;
    }
 
-   @Nullable
-   private Level getLevel() {
+   private @Nullable Level getLevel() {
       return this.minecraft.level == null
          ? null
          : (Level)DataFixUtils.orElse(
@@ -349,8 +340,7 @@ public class DebugScreenOverlay {
          );
    }
 
-   @Nullable
-   private LevelChunk getServerChunk() {
+   private @Nullable LevelChunk getServerChunk() {
       if (this.minecraft.level != null && this.lastPos != null) {
          if (this.serverChunk == null) {
             ServerLevel level = this.getServerLevel();
@@ -369,8 +359,7 @@ public class DebugScreenOverlay {
       }
    }
 
-   @Nullable
-   private LevelChunk getClientChunk() {
+   private @Nullable LevelChunk getClientChunk() {
       if (this.minecraft.level != null && this.lastPos != null) {
          if (this.clientChunk == null) {
             this.clientChunk = this.minecraft.level.getChunk(this.lastPos.x(), this.lastPos.z());

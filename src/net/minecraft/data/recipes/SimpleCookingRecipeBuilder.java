@@ -23,8 +23,7 @@ public class SimpleCookingRecipeBuilder implements RecipeBuilder {
    private final float experience;
    private final int cookingTime;
    private final RecipeUnlockAdvancementBuilder advancementBuilder = new RecipeUnlockAdvancementBuilder();
-   @Nullable
-   private String group;
+   private @Nullable String group;
    private final AbstractCookingRecipe.Factory<?> factory;
 
    private SimpleCookingRecipeBuilder(
@@ -108,7 +107,7 @@ public class SimpleCookingRecipeBuilder implements RecipeBuilder {
       return this;
    }
 
-   public SimpleCookingRecipeBuilder group(@Nullable final String group) {
+   public SimpleCookingRecipeBuilder group(final @Nullable String group) {
       this.group = group;
       return this;
    }

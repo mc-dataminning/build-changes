@@ -60,7 +60,7 @@ public class LevelEventHandler {
       this.level = level;
    }
 
-   public void globalLevelEvent(@LevelEvent.Value final int type, final BlockPos pos, final int data) {
+   public void globalLevelEvent(final @LevelEvent.Value int type, final BlockPos pos, final int data) {
       switch (type) {
          case 1023:
          case 1028:
@@ -80,7 +80,7 @@ public class LevelEventHandler {
       }
    }
 
-   public void levelEvent(@LevelEvent.Value final int eventType, final BlockPos pos, final int data) {
+   public void levelEvent(final @LevelEvent.Value int eventType, final BlockPos pos, final int data) {
       RandomSource random = this.level.getRandom();
       switch (eventType) {
          case 1000:
@@ -251,15 +251,7 @@ public class LevelEventHandler {
 
             for (int i = 0; i < 8; i++) {
                this.level
-                  .addParticle(
-                     ParticleTypes.LARGE_SMOKE,
-                     (double)pos.getX() + random.nextDouble(),
-                     (double)pos.getY() + 1.2,
-                     (double)pos.getZ() + random.nextDouble(),
-                     0.0,
-                     0.0,
-                     0.0
-                  );
+                  .addParticle(ParticleTypes.LARGE_SMOKE, pos.getX() + random.nextDouble(), pos.getY() + 1.2, pos.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
             }
             break;
          case 1502:
@@ -269,9 +261,9 @@ public class LevelEventHandler {
                );
 
             for (int i = 0; i < 5; i++) {
-               double x = (double)pos.getX() + random.nextDouble() * 0.6 + 0.2;
-               double y = (double)pos.getY() + random.nextDouble() * 0.6 + 0.2;
-               double z = (double)pos.getZ() + random.nextDouble() * 0.6 + 0.2;
+               double x = pos.getX() + random.nextDouble() * 0.6 + 0.2;
+               double y = pos.getY() + random.nextDouble() * 0.6 + 0.2;
+               double z = pos.getZ() + random.nextDouble() * 0.6 + 0.2;
                this.level.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0, 0.0, 0.0);
             }
             break;
@@ -279,9 +271,9 @@ public class LevelEventHandler {
             this.level.playLocalSound(pos, SoundEvents.END_PORTAL_FRAME_FILL, SoundSource.BLOCKS, 1.0F, 1.0F, false);
 
             for (int i = 0; i < 16; i++) {
-               double x = (double)pos.getX() + (5.0 + random.nextDouble() * 6.0) / 16.0;
-               double y = (double)pos.getY() + 0.8125;
-               double z = (double)pos.getZ() + (5.0 + random.nextDouble() * 6.0) / 16.0;
+               double x = pos.getX() + (5.0 + random.nextDouble() * 6.0) / 16.0;
+               double y = pos.getY() + 0.8125;
+               double z = pos.getZ() + (5.0 + random.nextDouble() * 6.0) / 16.0;
                this.level.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0, 0.0, 0.0);
             }
             break;
@@ -309,9 +301,9 @@ public class LevelEventHandler {
             this.potionSplashParticles(ParticleTypes.EFFECT, pos, data, random);
             break;
          case 2003:
-            double x = (double)pos.getX() + 0.5;
-            double y = (double)pos.getY();
-            double z = (double)pos.getZ() + 0.5;
+            double x = pos.getX() + 0.5;
+            double y = pos.getY();
+            double z = pos.getZ() + 0.5;
             ItemParticleOption breakParticle = new ItemParticleOption(ParticleTypes.ITEM, Items.ENDER_EYE);
 
             for (int i = 0; i < 8; i++) {
@@ -331,9 +323,9 @@ public class LevelEventHandler {
             break;
          case 2004:
             for (int i = 0; i < 20; i++) {
-               double x = (double)pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
-               double y = (double)pos.getY() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
-               double z = (double)pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
+               double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
+               double y = pos.getY() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
+               double z = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
                this.level.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0, 0.0, 0.0);
                this.level.addParticle(ParticleTypes.FLAME, x, y, z, 0.0, 0.0, 0.0);
             }
@@ -342,15 +334,15 @@ public class LevelEventHandler {
             for (int i = 0; i < 200; i++) {
                float dist = random.nextFloat() * 4.0F;
                float angle = random.nextFloat() * (float) (Math.PI * 2);
-               double velocityX = (double)(Mth.cos((double)angle) * dist);
+               double velocityX = Mth.cos(angle) * dist;
                double velocityY = 0.01 + random.nextDouble() * 0.5;
-               double velocityZ = (double)(Mth.sin((double)angle) * dist);
+               double velocityZ = Mth.sin(angle) * dist;
                this.level
                   .addParticle(
                      PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, dist),
-                     (double)pos.getX() + velocityX * 0.1,
-                     (double)pos.getY() + 0.3,
-                     (double)pos.getZ() + velocityZ * 0.1,
+                     pos.getX() + velocityX * 0.1,
+                     pos.getY() + 0.3,
+                     pos.getZ() + velocityZ * 0.1,
                      velocityX,
                      velocityY,
                      velocityZ
@@ -365,20 +357,11 @@ public class LevelEventHandler {
             this.potionSplashParticles(ParticleTypes.INSTANT_EFFECT, pos, data, random);
             break;
          case 2008:
-            this.level.addParticle(ParticleTypes.EXPLOSION, (double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, 0.0, 0.0, 0.0);
+            this.level.addParticle(ParticleTypes.EXPLOSION, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 0.0, 0.0, 0.0);
             break;
          case 2009:
             for (int i = 0; i < 8; i++) {
-               this.level
-                  .addParticle(
-                     ParticleTypes.CLOUD,
-                     (double)pos.getX() + random.nextDouble(),
-                     (double)pos.getY() + 1.2,
-                     (double)pos.getZ() + random.nextDouble(),
-                     0.0,
-                     0.0,
-                     0.0
-                  );
+               this.level.addParticle(ParticleTypes.CLOUD, pos.getX() + random.nextDouble(), pos.getY() + 1.2, pos.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
             }
             break;
          case 2010:
@@ -421,10 +404,10 @@ public class LevelEventHandler {
                float velocityX = (random.nextFloat() - 0.5F) * 0.2F;
                float velocityY = (random.nextFloat() - 0.5F) * 0.2F;
                float velocityZ = (random.nextFloat() - 0.5F) * 0.2F;
-               double x = Mth.lerp(randomDistance, (double)toPos.getX(), (double)pos.getX()) + (random.nextDouble() - 0.5) * (double)bbWidth * 2.0;
-               double y = Mth.lerp(randomDistance, (double)toPos.getY(), (double)pos.getY()) + random.nextDouble() * (double)bbHeight;
-               double z = Mth.lerp(randomDistance, (double)toPos.getZ(), (double)pos.getZ()) + (random.nextDouble() - 0.5) * (double)bbWidth * 2.0;
-               this.level.addParticle(ParticleTypes.PORTAL, x, y, z, (double)velocityX, (double)velocityY, (double)velocityZ);
+               double x = Mth.lerp(randomDistance, toPos.getX(), pos.getX()) + (random.nextDouble() - 0.5) * bbWidth * 2.0;
+               double y = Mth.lerp(randomDistance, toPos.getY(), pos.getY()) + random.nextDouble() * bbHeight;
+               double z = Mth.lerp(randomDistance, toPos.getZ(), pos.getZ()) + (random.nextDouble() - 0.5) * bbWidth * 2.0;
+               this.level.addParticle(ParticleTypes.PORTAL, x, y, z, velocityX, velocityY, velocityZ);
             }
             break;
          }
@@ -435,10 +418,7 @@ public class LevelEventHandler {
             this.level.addBreakingBlockEffects(pos, directions[ordinal], eventType == 2020);
             break;
          case 3000:
-            this.level
-               .addAlwaysVisibleParticle(
-                  ParticleTypes.EXPLOSION_EMITTER, true, (double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, 0.0, 0.0, 0.0
-               );
+            this.level.addAlwaysVisibleParticle(ParticleTypes.EXPLOSION_EMITTER, true, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 0.0, 0.0, 0.0);
             this.level
                .playLocalSound(
                   pos, SoundEvents.END_GATEWAY_SPAWN, SoundSource.BLOCKS, 10.0F, (1.0F + (random.nextFloat() - random.nextFloat()) * 0.2F) * 0.7F, false
@@ -466,9 +446,9 @@ public class LevelEventHandler {
          case 3006:
             int count = data >> 6;
             if (count > 0) {
-               if (random.nextFloat() < 0.3F + (float)count * 0.1F) {
-                  float volume = 0.15F + 0.02F * (float)count * (float)count * random.nextFloat();
-                  float pitch = 0.4F + 0.3F * (float)count * random.nextFloat();
+               if (random.nextFloat() < 0.3F + count * 0.1F) {
+                  float volume = 0.15F + 0.02F * count * count * random.nextFloat();
+                  float pitch = 0.4F + 0.3F * count * random.nextFloat();
                   this.level.playLocalSound(pos, SoundEvents.SCULK_BLOCK_CHARGE, SoundSource.BLOCKS, volume, pitch, false);
                }
 
@@ -476,8 +456,8 @@ public class LevelEventHandler {
                IntProvider repetition = UniformInt.of(0, count);
                float speedVar = 0.005F;
                Supplier<Vec3> speedSupplier = () -> new Vec3(
-                     Mth.nextDouble(random, -0.005F, 0.005F), Mth.nextDouble(random, -0.005F, 0.005F), Mth.nextDouble(random, -0.005F, 0.005F)
-                  );
+                  Mth.nextDouble(random, -0.005F, 0.005F), Mth.nextDouble(random, -0.005F, 0.005F), Mth.nextDouble(random, -0.005F, 0.005F)
+               );
                if (particleData == 0) {
                   for (Direction direction : Direction.values()) {
                      float fullBlockRotation = direction == Direction.DOWN ? (float) Math.PI : 0.0F;
@@ -509,12 +489,12 @@ public class LevelEventHandler {
                   this.level
                      .addParticle(
                         ParticleTypes.SCULK_CHARGE_POP,
-                        (double)pos.getX() + 0.5 + (double)(velocityX * spread),
-                        (double)pos.getY() + 0.5 + (double)(velocityY * spread),
-                        (double)pos.getZ() + 0.5 + (double)(velocityZ * spread),
-                        (double)(velocityX * 0.07F),
-                        (double)(velocityY * 0.07F),
-                        (double)(velocityZ * 0.07F)
+                        pos.getX() + 0.5 + velocityX * spread,
+                        pos.getY() + 0.5 + velocityY * spread,
+                        pos.getZ() + 0.5 + velocityZ * spread,
+                        velocityX * 0.07F,
+                        velocityY * 0.07F,
+                        velocityZ * 0.07F
                      );
                }
             }
@@ -522,15 +502,7 @@ public class LevelEventHandler {
          case 3007:
             for (int i = 0; i < 10; i++) {
                this.level
-                  .addParticle(
-                     new ShriekParticleOption(i * 5),
-                     (double)pos.getX() + 0.5,
-                     (double)pos.getY() + SculkShriekerBlock.TOP_Y,
-                     (double)pos.getZ() + 0.5,
-                     0.0,
-                     0.0,
-                     0.0
-                  );
+                  .addParticle(new ShriekParticleOption(i * 5), pos.getX() + 0.5, pos.getY() + SculkShriekerBlock.TOP_Y, pos.getZ() + 0.5, 0.0, 0.0, 0.0);
             }
 
             BlockState state = this.level.getBlockState(pos);
@@ -538,9 +510,9 @@ public class LevelEventHandler {
             if (!isWaterlogged) {
                this.level
                   .playLocalSound(
-                     (double)pos.getX() + 0.5,
-                     (double)pos.getY() + SculkShriekerBlock.TOP_Y,
-                     (double)pos.getZ() + 0.5,
+                     pos.getX() + 0.5,
+                     pos.getY() + SculkShriekerBlock.TOP_Y,
+                     pos.getZ() + 0.5,
                      SoundEvents.SCULK_SHRIEKER_SHRIEK,
                      SoundSource.BLOCKS,
                      2.0F,
@@ -613,9 +585,9 @@ public class LevelEventHandler {
                this.level
                   .addParticle(
                      ParticleTypes.POOF,
-                     (double)pos.getX() + random.nextDouble(),
-                     (double)pos.getY() + random.nextDouble(),
-                     (double)pos.getZ() + random.nextDouble(),
+                     pos.getX() + random.nextDouble(),
+                     pos.getY() + random.nextDouble(),
+                     pos.getZ() + random.nextDouble(),
                      velocityX,
                      velocityY,
                      velocityZ
@@ -659,10 +631,10 @@ public class LevelEventHandler {
          float velocityX = (random.nextFloat() - 0.5F) * 0.2F;
          float velocityY = (random.nextFloat() - 0.5F) * 0.2F;
          float velocityZ = (random.nextFloat() - 0.5F) * 0.2F;
-         double x = Mth.lerp(randomDistance, (double)toPos.getX(), (double)pos.getX()) + (random.nextDouble() - 0.5) + 0.5;
-         double y = Mth.lerp(randomDistance, (double)toPos.getY(), (double)pos.getY()) + random.nextDouble() - 0.5;
-         double z = Mth.lerp(randomDistance, (double)toPos.getZ(), (double)pos.getZ()) + (random.nextDouble() - 0.5) + 0.5;
-         this.level.addParticle(ParticleTypes.PORTAL, x, y, z, (double)velocityX, (double)velocityY, (double)velocityZ);
+         double x = Mth.lerp(randomDistance, toPos.getX(), pos.getX()) + (random.nextDouble() - 0.5) + 0.5;
+         double y = Mth.lerp(randomDistance, toPos.getY(), pos.getY()) + random.nextDouble() - 0.5;
+         double z = Mth.lerp(randomDistance, toPos.getZ(), pos.getZ()) + (random.nextDouble() - 0.5) + 0.5;
+         this.level.addParticle(ParticleTypes.PORTAL, x, y, z, velocityX, velocityY, velocityZ);
       }
    }
 
@@ -674,12 +646,12 @@ public class LevelEventHandler {
 
       for (int i = 0; i < 10; i++) {
          double pow = random.nextDouble() * 0.2 + 0.01;
-         double x = (double)pos.getX() + (double)normalX * 0.6 + 0.5 + (double)normalX * 0.01 + (random.nextDouble() - 0.5) * (double)normalZ * 0.5;
-         double y = (double)pos.getY() + (double)normalY * 0.6 + 0.5 + (double)normalY * 0.01 + (random.nextDouble() - 0.5) * (double)normalY * 0.5;
-         double z = (double)pos.getZ() + (double)normalZ * 0.6 + 0.5 + (double)normalZ * 0.01 + (random.nextDouble() - 0.5) * (double)normalX * 0.5;
-         double velocityX = (double)normalX * pow + random.nextGaussian() * 0.01;
-         double velocityY = (double)normalY * pow + random.nextGaussian() * 0.01;
-         double velocityZ = (double)normalZ * pow + random.nextGaussian() * 0.01;
+         double x = pos.getX() + normalX * 0.6 + 0.5 + normalX * 0.01 + (random.nextDouble() - 0.5) * normalZ * 0.5;
+         double y = pos.getY() + normalY * 0.6 + 0.5 + normalY * 0.01 + (random.nextDouble() - 0.5) * normalY * 0.5;
+         double z = pos.getZ() + normalZ * 0.6 + 0.5 + normalZ * 0.01 + (random.nextDouble() - 0.5) * normalX * 0.5;
+         double velocityX = normalX * pow + random.nextGaussian() * 0.01;
+         double velocityY = normalY * pow + random.nextGaussian() * 0.01;
+         double velocityZ = normalZ * pow + random.nextGaussian() * 0.01;
          this.level.addParticle(particle, x, y, z, velocityX, velocityY, velocityZ);
       }
    }
@@ -730,9 +702,9 @@ public class LevelEventHandler {
             );
       }
 
-      float red = (float)(data >> 16 & 0xFF) / 255.0F;
-      float green = (float)(data >> 8 & 0xFF) / 255.0F;
-      float blue = (float)(data >> 0 & 0xFF) / 255.0F;
+      float red = (data >> 16 & 0xFF) / 255.0F;
+      float green = (data >> 8 & 0xFF) / 255.0F;
+      float blue = (data >> 0 & 0xFF) / 255.0F;
 
       for (int i = 0; i < 100; i++) {
          double dist = random.nextDouble() * 4.0;

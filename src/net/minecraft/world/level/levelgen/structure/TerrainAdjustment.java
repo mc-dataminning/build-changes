@@ -13,7 +13,7 @@ public enum TerrainAdjustment implements StringRepresentable {
    public static final Codec<TerrainAdjustment> CODEC = StringRepresentable.fromEnum(TerrainAdjustment::values);
    private final String id;
 
-   private TerrainAdjustment(final String id) {
+   TerrainAdjustment(final String id) {
       this.id = id;
    }
 

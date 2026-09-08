@@ -29,8 +29,8 @@ public class Vec3i implements Comparable<Vec3i> {
    public static Codec<Vec3i> offsetCodec(final int maxOffsetPerAxis) {
       return CODEC.validate(
          value -> Math.abs(value.getX()) <= maxOffsetPerAxis && Math.abs(value.getY()) <= maxOffsetPerAxis && Math.abs(value.getZ()) <= maxOffsetPerAxis
-               ? DataResult.success(value)
-               : DataResult.error(() -> "Position out of range, expected at most " + maxOffsetPerAxis + ": " + value)
+            ? DataResult.success(value)
+            : DataResult.error(() -> "Position out of range, expected at most " + maxOffsetPerAxis + ": " + value)
       );
    }
 
@@ -174,12 +174,12 @@ public class Vec3i implements Comparable<Vec3i> {
    public Vec3i relative(final Direction.Axis axis, final int steps) {
       if (steps == 0) {
          return this;
-      } else {
-         int xStep = axis == Direction.Axis.X ? steps : 0;
-         int yStep = axis == Direction.Axis.Y ? steps : 0;
-         int zStep = axis == Direction.Axis.Z ? steps : 0;
-         return new Vec3i(this.getX() + xStep, this.getY() + yStep, this.getZ() + zStep);
       }
+
+      int xStep = axis == Direction.Axis.X ? steps : 0;
+      int yStep = axis == Direction.Axis.Y ? steps : 0;
+      int zStep = axis == Direction.Axis.Z ? steps : 0;
+      return new Vec3i(this.getX() + xStep, this.getY() + yStep, this.getZ() + zStep);
    }
 
    public Vec3i cross(final Vec3i upVector) {
@@ -199,7 +199,7 @@ public class Vec3i implements Comparable<Vec3i> {
    }
 
    public double distSqr(final Vec3i pos) {
-      return this.distToLowCornerSqr((double)pos.getX(), (double)pos.getY(), (double)pos.getZ());
+      return this.distToLowCornerSqr(pos.getX(), pos.getY(), pos.getZ());
    }
 
    public double distToCenterSqr(final Position pos) {
@@ -207,23 +207,23 @@ public class Vec3i implements Comparable<Vec3i> {
    }
 
    public double distToCenterSqr(final double x, final double y, final double z) {
-      double dx = (double)this.getX() + 0.5 - x;
-      double dy = (double)this.getY() + 0.5 - y;
-      double dz = (double)this.getZ() + 0.5 - z;
+      double dx = this.getX() + 0.5 - x;
+      double dy = this.getY() + 0.5 - y;
+      double dz = this.getZ() + 0.5 - z;
       return dx * dx + dy * dy + dz * dz;
    }
 
    public double distToLowCornerSqr(final double x, final double y, final double z) {
-      double dx = (double)this.getX() - x;
-      double dy = (double)this.getY() - y;
-      double dz = (double)this.getZ() - z;
+      double dx = this.getX() - x;
+      double dy = this.getY() - y;
+      double dz = this.getZ() - z;
       return dx * dx + dy * dy + dz * dz;
    }
 
    public int distManhattan(final Vec3i pos) {
-      float xd = (float)Math.abs(pos.getX() - this.getX());
-      float yd = (float)Math.abs(pos.getY() - this.getY());
-      float zd = (float)Math.abs(pos.getZ() - this.getZ());
+      float xd = Math.abs(pos.getX() - this.getX());
+      float yd = Math.abs(pos.getY() - this.getY());
+      float zd = Math.abs(pos.getZ() - this.getZ());
       return (int)(xd + yd + zd);
    }
 

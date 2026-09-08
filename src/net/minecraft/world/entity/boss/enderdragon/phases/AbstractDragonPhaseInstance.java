@@ -30,7 +30,7 @@ public abstract class AbstractDragonPhaseInstance implements DragonPhaseInstance
    }
 
    @Override
-   public void onCrystalDestroyed(final EndCrystal crystal, final BlockPos pos, final DamageSource source, @Nullable final Player player) {
+   public void onCrystalDestroyed(final EndCrystal crystal, final BlockPos pos, final DamageSource source, final @Nullable Player player) {
    }
 
    @Override
@@ -46,9 +46,8 @@ public abstract class AbstractDragonPhaseInstance implements DragonPhaseInstance
       return 0.6F;
    }
 
-   @Nullable
    @Override
-   public Vec3 getFlyTargetLocation() {
+   public @Nullable Vec3 getFlyTargetLocation() {
       return null;
    }
 

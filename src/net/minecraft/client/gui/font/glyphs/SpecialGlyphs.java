@@ -5,7 +5,6 @@ import com.mojang.blaze3d.font.GlyphInfo;
 import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.renderpearl.api.textures.GpuTexture;
-import java.util.Objects;
 import java.util.function.Supplier;
 import net.minecraft.client.gui.font.GlyphStitcher;
 import org.jspecify.annotations.Nullable;
@@ -36,22 +35,17 @@ public enum SpecialGlyphs implements GlyphInfo {
       return result;
    }
 
-   private SpecialGlyphs(final Supplier<NativeImage> image) {
+   SpecialGlyphs(final Supplier<NativeImage> image) {
       this.image = image.get();
    }
 
    @Override
    public float getAdvance() {
-      return (float)(this.image.getWidth() + 1);
+      return this.image.getWidth() + 1;
    }
 
-   @Nullable
-   public BakedSheetGlyph bake(final GlyphStitcher stitcher) {
+   public @Nullable BakedSheetGlyph bake(final GlyphStitcher stitcher) {
       return stitcher.stitch(this, new GlyphBitmap() {
-         {
-            Objects.requireNonNull(SpecialGlyphs.this);
-         }
-
          @Override
          public int getPixelWidth() {
             return SpecialGlyphs.this.image.getWidth();

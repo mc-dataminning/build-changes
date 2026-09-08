@@ -59,7 +59,7 @@ public enum FaceInfo {
       return BY_FACING.get(direction);
    }
 
-   private FaceInfo(final FaceInfo.VertexInfo... infos) {
+   FaceInfo(final FaceInfo.VertexInfo... infos) {
       this.infos = infos;
    }
 
@@ -67,7 +67,7 @@ public enum FaceInfo {
       return this.infos[index];
    }
 
-   public static enum Extent {
+   public enum Extent {
       MIN_X,
       MIN_Y,
       MIN_Z,
@@ -98,7 +98,7 @@ public enum FaceInfo {
       }
    }
 
-   public static record VertexInfo(FaceInfo.Extent xFace, FaceInfo.Extent yFace, FaceInfo.Extent zFace) {
+   public record VertexInfo(FaceInfo.Extent xFace, FaceInfo.Extent yFace, FaceInfo.Extent zFace) {
       public Vector3f select(final Vector3fc min, final Vector3fc max) {
          return new Vector3f(this.xFace.select(min, max), this.yFace.select(min, max), this.zFace.select(min, max));
       }

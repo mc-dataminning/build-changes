@@ -58,7 +58,7 @@ public class TntRenderer extends EntityRenderer<PrimedTnt, TntRenderState> {
 
    public void extractRenderState(final PrimedTnt entity, final TntRenderState state, final float partialTicks) {
       super.extractRenderState(entity, state, partialTicks);
-      state.fuseRemainingInTicks = (float)entity.getFuse() - partialTicks + 1.0F;
+      state.fuseRemainingInTicks = entity.getFuse() - partialTicks + 1.0F;
       this.blockModelResolver.update(state.blockState, entity.getBlockState(), BLOCK_DISPLAY_CONTEXT);
    }
 }

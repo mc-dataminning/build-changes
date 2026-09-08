@@ -16,7 +16,6 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
@@ -244,10 +243,6 @@ public abstract class PlayerList {
 
    public void addWorldborderListener(final ServerLevel level) {
       level.getWorldBorder().addListener(new BorderChangeListener() {
-         {
-            Objects.requireNonNull(PlayerList.this);
-         }
-
          @Override
          public void onSetSize(final WorldBorder border, final double newSize) {
             PlayerList.this.broadcastAll(new ClientboundSetBorderSizePacket(border), level.dimension());
@@ -341,8 +336,7 @@ public abstract class PlayerList {
       this.broadcastAll(new ClientboundPlayerInfoRemovePacket(List.of(player.getUUID())));
    }
 
-   @Nullable
-   public Component canPlayerLogin(final SocketAddress address, final NameAndId nameAndId) {
+   public @Nullable Component canPlayerLogin(final SocketAddress address, final NameAndId nameAndId) {
       if (this.bans.isBanned(nameAndId)) {
          UserBanListEntry ban = this.bans.get(nameAndId);
          MutableComponent reason = Component.translatable("multiplayer.disconnect.banned.reason", ban.getReasonMessage());
@@ -351,20 +345,24 @@ public abstract class PlayerList {
          }
 
          return reason;
-      } else if (!this.isWhiteListed(nameAndId)) {
-         return Component.translatable("multiplayer.disconnect.not_whitelisted");
-      } else if (this.ipBans.isBanned(address)) {
-         IpBanListEntry ban = this.ipBans.get(address);
-         MutableComponent reason = Component.translatable("multiplayer.disconnect.banned_ip.reason", ban.getReasonMessage());
-         if (ban.getExpires() != null) {
-            reason.append(Component.translatable("multiplayer.disconnect.banned_ip.expiration", BAN_DATE_FORMAT.format(ban.getExpires())));
+      } else {
+         if (!this.isWhiteListed(nameAndId)) {
+            return Component.translatable("multiplayer.disconnect.not_whitelisted");
          }
 
-         return reason;
-      } else {
-         return this.players.size() >= this.getMaxPlayers() && !this.canBypassPlayerLimit(nameAndId)
-            ? Component.translatable("multiplayer.disconnect.server_full")
-            : null;
+         if (this.ipBans.isBanned(address)) {
+            IpBanListEntry ban = this.ipBans.get(address);
+            MutableComponent reason = Component.translatable("multiplayer.disconnect.banned_ip.reason", ban.getReasonMessage());
+            if (ban.getExpires() != null) {
+               reason.append(Component.translatable("multiplayer.disconnect.banned_ip.expiration", BAN_DATE_FORMAT.format(ban.getExpires())));
+            }
+
+            return reason;
+         } else {
+            return this.players.size() >= this.getMaxPlayers() && !this.canBypassPlayerLimit(nameAndId)
+               ? Component.translatable("multiplayer.disconnect.server_full")
+               : null;
+         }
       }
    }
 
@@ -382,8 +380,8 @@ public abstract class PlayerList {
          dupes.add(serverPlayer);
       }
 
-      for (ServerPlayer playerx : dupes) {
-         playerx.connection.disconnect(DUPLICATE_LOGIN_DISCONNECT_MESSAGE);
+      for (ServerPlayer player : dupes) {
+         player.connection.disconnect(DUPLICATE_LOGIN_DISCONNECT_MESSAGE);
       }
 
       return !dupes.isEmpty();
@@ -447,9 +445,9 @@ public abstract class PlayerList {
                      new ClientboundSoundPacket(
                         SoundEvents.RESPAWN_ANCHOR_DEPLETE,
                         SoundSource.BLOCKS,
-                        (double)respawnPosition.getX(),
-                        (double)respawnPosition.getY(),
-                        (double)respawnPosition.getZ(),
+                        respawnPosition.getX(),
+                        respawnPosition.getY(),
+                        respawnPosition.getZ(),
                         1.0F,
                         1.0F,
                         level.getRandom().nextLong()
@@ -595,8 +593,7 @@ public abstract class PlayerList {
       }
    }
 
-   @Nullable
-   public ServerPlayer getPlayerByName(final String name) {
+   public @Nullable ServerPlayer getPlayerByName(final String name) {
       int size = this.players.size();
 
       for (int i = 0; i < size; i++) {
@@ -610,7 +607,7 @@ public abstract class PlayerList {
    }
 
    public void broadcast(
-      @Nullable final Player except,
+      final @Nullable Player except,
       final double x,
       final double y,
       final double z,
@@ -743,7 +740,7 @@ public abstract class PlayerList {
    }
 
    private void broadcastChatMessage(
-      final PlayerChatMessage message, final Predicate<ServerPlayer> isFiltered, @Nullable final ServerPlayer senderPlayer, final ChatType.Bound chatType
+      final PlayerChatMessage message, final Predicate<ServerPlayer> isFiltered, final @Nullable ServerPlayer senderPlayer, final ChatType.Bound chatType
    ) {
       boolean trusted = this.verifyChatTrusted(message);
       this.server.logChatMessage(message.decoratedContent(), chatType, trusted ? null : "Not Secure");
@@ -778,22 +775,22 @@ public abstract class PlayerList {
       Path uuidStatsFile = statFolder.resolve(gameProfile.id() + ".json");
       if (Files.exists(uuidStatsFile)) {
          return uuidStatsFile;
-      } else {
-         String playerNameStatsFile = gameProfile.name() + ".json";
-         if (FileUtil.isValidPathSegment(playerNameStatsFile)) {
-            Path playerNameStatsPath = statFolder.resolve(playerNameStatsFile);
-            if (Files.isRegularFile(playerNameStatsPath)) {
-               try {
-                  return Files.move(playerNameStatsPath, uuidStatsFile);
-               } catch (IOException var7) {
-                  LOGGER.warn("Failed to copy file {} to {}", playerNameStatsFile, uuidStatsFile);
-                  return playerNameStatsPath;
-               }
+      }
+
+      String playerNameStatsFile = gameProfile.name() + ".json";
+      if (FileUtil.isValidPathSegment(playerNameStatsFile)) {
+         Path playerNameStatsPath = statFolder.resolve(playerNameStatsFile);
+         if (Files.isRegularFile(playerNameStatsPath)) {
+            try {
+               return Files.move(playerNameStatsPath, uuidStatsFile);
+            } catch (IOException e) {
+               LOGGER.warn("Failed to copy file {} to {}", playerNameStatsFile, uuidStatsFile);
+               return playerNameStatsPath;
             }
          }
-
-         return uuidStatsFile;
       }
+
+      return uuidStatsFile;
    }
 
    public PlayerAdvancements getPlayerAdvancements(final ServerPlayer player) {
@@ -835,13 +832,11 @@ public abstract class PlayerList {
       return this.playersByUUID;
    }
 
-   @Nullable
-   public ServerPlayer getPlayer(final UUID uuid) {
+   public @Nullable ServerPlayer getPlayer(final UUID uuid) {
       return this.playersByUUID.get(uuid);
    }
 
-   @Nullable
-   public ServerPlayer getPlayer(final String playerName) {
+   public @Nullable ServerPlayer getPlayer(final String playerName) {
       for (ServerPlayer player : this.players) {
          if (player.getGameProfile().name().equalsIgnoreCase(playerName)) {
             return player;

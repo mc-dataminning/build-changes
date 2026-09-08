@@ -17,11 +17,11 @@ import org.jspecify.annotations.Nullable;
 public record ReplaceBlobsFeature(BlockState targetState, BlockState replaceState, IntProvider radius) implements Feature {
    public static final MapCodec<ReplaceBlobsFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BlockState.CODEC.fieldOf("target").forGetter(ReplaceBlobsFeature::targetState),
-               BlockState.CODEC.fieldOf("state").forGetter(ReplaceBlobsFeature::replaceState),
-               IntProviders.codec(0, 12).fieldOf("radius").forGetter(ReplaceBlobsFeature::radius)
-            )
-            .apply(i, ReplaceBlobsFeature::new)
+            BlockState.CODEC.fieldOf("target").forGetter(ReplaceBlobsFeature::targetState),
+            BlockState.CODEC.fieldOf("state").forGetter(ReplaceBlobsFeature::replaceState),
+            IntProviders.codec(0, 12).fieldOf("radius").forGetter(ReplaceBlobsFeature::radius)
+         )
+         .apply(i, ReplaceBlobsFeature::new)
    );
 
    @Override
@@ -35,31 +35,30 @@ public record ReplaceBlobsFeature(BlockState targetState, BlockState replaceStat
       BlockPos centerPos = findTarget(level, origin.mutable().clamp(Direction.Axis.Y, level.getMinY() + 1, level.getMaxY()), targetBlock);
       if (centerPos == null) {
          return false;
-      } else {
-         int radiusX = this.radius.sample(random);
-         int radiusY = this.radius.sample(random);
-         int radiusZ = this.radius.sample(random);
-         int maximumRadius = Math.max(radiusX, Math.max(radiusY, radiusZ));
-         boolean replacedAny = false;
+      }
 
-         for (BlockPos pos : BlockPos.withinBoxByManhattanDistance(centerPos, radiusX, radiusY, radiusZ)) {
-            if (pos.distManhattan(centerPos) > maximumRadius) {
-               break;
-            }
+      int radiusX = this.radius.sample(random);
+      int radiusY = this.radius.sample(random);
+      int radiusZ = this.radius.sample(random);
+      int maximumRadius = Math.max(radiusX, Math.max(radiusY, radiusZ));
+      boolean replacedAny = false;
 
-            BlockState blockState = level.getBlockState(pos);
-            if (blockState.is(targetBlock)) {
-               this.setBlock(level, pos, this.replaceState);
-               replacedAny = true;
-            }
+      for (BlockPos pos : BlockPos.withinBoxByManhattanDistance(centerPos, radiusX, radiusY, radiusZ)) {
+         if (pos.distManhattan(centerPos) > maximumRadius) {
+            break;
          }
 
-         return replacedAny;
+         BlockState blockState = level.getBlockState(pos);
+         if (blockState.is(targetBlock)) {
+            this.setBlock(level, pos, this.replaceState);
+            replacedAny = true;
+         }
       }
+
+      return replacedAny;
    }
 
-   @Nullable
-   private static BlockPos findTarget(final LevelAccessor level, final BlockPos.MutableBlockPos cursor, final Block target) {
+   private static @Nullable BlockPos findTarget(final LevelAccessor level, final BlockPos.MutableBlockPos cursor, final Block target) {
       while (cursor.getY() > level.getMinY() + 1) {
          BlockState blockState = level.getBlockState(cursor);
          if (blockState.is(target)) {

@@ -12,9 +12,9 @@ import net.minecraft.world.level.block.state.BlockState;
 public class RandomBlockMatchTest extends RuleTest {
    public static final MapCodec<RandomBlockMatchTest> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BuiltInRegistries.BLOCK.byNameCodec().fieldOf("block").forGetter(t -> t.block), Codec.FLOAT.fieldOf("probability").forGetter(t -> t.probability)
-            )
-            .apply(i, RandomBlockMatchTest::new)
+            BuiltInRegistries.BLOCK.byNameCodec().fieldOf("block").forGetter(t -> t.block), Codec.FLOAT.fieldOf("probability").forGetter(t -> t.probability)
+         )
+         .apply(i, RandomBlockMatchTest::new)
    );
    private final Block block;
    private final float probability;

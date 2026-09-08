@@ -22,10 +22,8 @@ public class SetWorldSpawnCommand {
                   .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
                .executes(
                   c -> setSpawn(
-                        (CommandSourceStack)c.getSource(),
-                        BlockPos.containing(((CommandSourceStack)c.getSource()).getPosition()),
-                        WorldCoordinates.ZERO_ROTATION
-                     )
+                     (CommandSourceStack)c.getSource(), BlockPos.containing(((CommandSourceStack)c.getSource()).getPosition()), WorldCoordinates.ZERO_ROTATION
+                  )
                ))
             .then(
                ((RequiredArgumentBuilder)Commands.argument("pos", BlockPosArgument.blockPos())
@@ -34,8 +32,8 @@ public class SetWorldSpawnCommand {
                      Commands.argument("rotation", RotationArgument.rotation())
                         .executes(
                            c -> setSpawn(
-                                 (CommandSourceStack)c.getSource(), BlockPosArgument.getSpawnablePos(c, "pos"), RotationArgument.getRotation(c, "rotation")
-                              )
+                              (CommandSourceStack)c.getSource(), BlockPosArgument.getSpawnablePos(c, "pos"), RotationArgument.getRotation(c, "rotation")
+                           )
                         )
                   )
             )
@@ -51,14 +49,14 @@ public class SetWorldSpawnCommand {
       level.setRespawnData(respawnData);
       source.sendSuccess(
          () -> Component.translatable(
-               "commands.setworldspawn.success",
-               pos.getX(),
-               pos.getY(),
-               pos.getZ(),
-               respawnData.yaw(),
-               respawnData.pitch(),
-               level.dimension().identifier().toString()
-            ),
+            "commands.setworldspawn.success",
+            pos.getX(),
+            pos.getY(),
+            pos.getZ(),
+            respawnData.yaw(),
+            respawnData.pitch(),
+            level.dimension().identifier().toString()
+         ),
          true
       );
       return 1;

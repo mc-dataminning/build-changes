@@ -10,10 +10,10 @@ import net.minecraft.world.level.dimension.DimensionType;
 public record NoiseSettings(int minY, int height) {
    public static final Codec<NoiseSettings> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Codec.intRange(DimensionType.MIN_Y, DimensionType.MAX_Y).fieldOf("min_y").forGetter(NoiseSettings::minY),
-                  Codec.intRange(0, DimensionType.Y_SIZE).fieldOf("height").forGetter(NoiseSettings::height)
-               )
-               .apply(i, NoiseSettings::new)
+               Codec.intRange(DimensionType.MIN_Y, DimensionType.MAX_Y).fieldOf("min_y").forGetter(NoiseSettings::minY),
+               Codec.intRange(0, DimensionType.Y_SIZE).fieldOf("height").forGetter(NoiseSettings::height)
+            )
+            .apply(i, NoiseSettings::new)
       )
       .comapFlatMap(NoiseSettings::guardY, Function.identity());
    static final NoiseSettings OVERWORLD_NOISE_SETTINGS = create(-64, 384);

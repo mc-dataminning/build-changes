@@ -6,7 +6,6 @@ import com.mojang.serialization.Codec;
 import io.netty.buffer.ByteBuf;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.IntFunction;
 import net.minecraft.core.BlockPos;
@@ -165,23 +164,23 @@ public class Axolotl extends Animal implements Bucketable {
       boolean isBaby = false;
       if (spawnReason == EntitySpawnReason.BUCKET) {
          return groupData;
-      } else {
-         RandomSource random = level.getRandom();
-         if (groupData instanceof Axolotl.AxolotlGroupData) {
-            if (((Axolotl.AxolotlGroupData)groupData).getGroupSize() >= 2) {
-               isBaby = true;
-            }
-         } else {
-            groupData = new Axolotl.AxolotlGroupData(Axolotl.Variant.getCommonSpawnVariant(random), Axolotl.Variant.getCommonSpawnVariant(random));
-         }
-
-         this.setVariant(((Axolotl.AxolotlGroupData)groupData).getVariant(random));
-         if (isBaby) {
-            this.setAge(-24000);
-         }
-
-         return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
       }
+
+      RandomSource random = level.getRandom();
+      if (groupData instanceof Axolotl.AxolotlGroupData) {
+         if (((Axolotl.AxolotlGroupData)groupData).getGroupSize() >= 2) {
+            isBaby = true;
+         }
+      } else {
+         groupData = new Axolotl.AxolotlGroupData(Axolotl.Variant.getCommonSpawnVariant(random), Axolotl.Variant.getCommonSpawnVariant(random));
+      }
+
+      this.setVariant(((Axolotl.AxolotlGroupData)groupData).getVariant(random));
+      if (isBaby) {
+         this.setAge(-24000);
+      }
+
+      return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
    }
 
    @Override
@@ -290,9 +289,8 @@ public class Axolotl extends Animal implements Bucketable {
       this.entityData.set(DATA_VARIANT, variant.getId());
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       return type == DataComponents.AXOLOTL_VARIANT ? castComponentValue((DataComponentType<T>)type, this.getVariant()) : super.get(type);
    }
 
@@ -344,9 +342,8 @@ public class Axolotl extends Animal implements Bucketable {
       this.entityData.set(FROM_BUCKET, fromBucket);
    }
 
-   @Nullable
    @Override
-   public AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       Axolotl baby = EntityTypes.AXOLOTL.create(level, EntitySpawnReason.BREEDING);
       if (baby != null) {
          Axolotl.Variant variant;
@@ -411,7 +408,7 @@ public class Axolotl extends Animal implements Bucketable {
       float currentHealth = this.getHealth();
       if (!this.isNoAi()
          && this.random.nextInt(3) == 0
-         && ((float)this.random.nextInt(3) < damage || currentHealth / this.getMaxHealth() < 0.5F)
+         && (this.random.nextInt(3) < damage || currentHealth / this.getMaxHealth() < 0.5F)
          && damage < currentHealth
          && this.isInWater()
          && (source.getEntity() != null || source.getDirectEntity() != null)
@@ -511,15 +508,13 @@ public class Axolotl extends Animal implements Bucketable {
       return SoundEvents.AXOLOTL_HURT;
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getDeathSound() {
+   protected @Nullable SoundEvent getDeathSound() {
       return SoundEvents.AXOLOTL_DEATH;
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getAmbientSound() {
+   protected @Nullable SoundEvent getAmbientSound() {
       return this.isInWater() ? SoundEvents.AXOLOTL_IDLE_WATER : SoundEvents.AXOLOTL_IDLE_AIR;
    }
 
@@ -564,9 +559,8 @@ public class Axolotl extends Animal implements Bucketable {
       return !this.fromBucket() && !this.hasCustomName();
    }
 
-   @Nullable
    @Override
-   public LivingEntity getTarget() {
+   public @Nullable LivingEntity getTarget() {
       return this.getTargetFromBrain();
    }
 
@@ -585,7 +579,7 @@ public class Axolotl extends Animal implements Bucketable {
       return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
    }
 
-   public static enum AxolotlAnimationState {
+   public enum AxolotlAnimationState {
       PLAYING_DEAD,
       IN_WATER,
       ON_GROUND,
@@ -607,7 +601,6 @@ public class Axolotl extends Animal implements Bucketable {
 
    private class AxolotlLookControl extends SmoothSwimmingLookControl {
       public AxolotlLookControl(final Axolotl axolotl, final int maxYRotFromCenter) {
-         Objects.requireNonNull(Axolotl.this);
          super(axolotl, maxYRotFromCenter);
       }
 
@@ -632,7 +625,7 @@ public class Axolotl extends Animal implements Bucketable {
       }
    }
 
-   public static enum Variant implements StringRepresentable {
+   public enum Variant implements StringRepresentable {
       LUCY(0, "lucy", true),
       WILD(1, "wild", true),
       GOLD(2, "gold", true),
@@ -649,7 +642,7 @@ public class Axolotl extends Animal implements Bucketable {
       private final String name;
       private final boolean common;
 
-      private Variant(final int id, final String name, final boolean common) {
+      Variant(final int id, final String name, final boolean common) {
          this.id = id;
          this.name = name;
          this.common = common;

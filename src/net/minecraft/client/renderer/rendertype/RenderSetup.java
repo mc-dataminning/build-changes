@@ -21,13 +21,11 @@ import org.jspecify.annotations.Nullable;
 
 public final class RenderSetup {
    final RenderPipeline pipeline;
-   @Nullable
-   final OitPipelineSet oitPipelineSet;
+   final @Nullable OitPipelineSet oitPipelineSet;
    final Map<String, RenderSetup.TextureBinding> textures;
    final TextureTransform textureTransform;
    final RenderSetup.OutlineProperty outlineProperty;
-   @Nullable
-   final String outlineTextureName;
+   final @Nullable String outlineTextureName;
    final boolean useLightmap;
    final boolean useOverlay;
    final boolean affectsCrumbling;
@@ -37,14 +35,14 @@ public final class RenderSetup {
 
    private RenderSetup(
       final RenderPipeline pipeline,
-      @Nullable final OitPipelineSet oitPipelineSet,
+      final @Nullable OitPipelineSet oitPipelineSet,
       final Map<String, RenderSetup.TextureBinding> textures,
       final boolean useLightmap,
       final boolean useOverlay,
       final LayeringTransform layeringTransform,
       final TextureTransform textureTransform,
       final RenderSetup.OutlineProperty outlineProperty,
-      @Nullable final String outlineTextureName,
+      final @Nullable String outlineTextureName,
       final boolean affectsCrumbling,
       final boolean sortOnUpload,
       final boolean forceSolidModelPhase
@@ -89,36 +87,36 @@ public final class RenderSetup {
    ) {
       if (this.textures.isEmpty() && !this.useOverlay && !this.useLightmap) {
          return List.of();
-      } else {
-         Builder<PreparedRenderType.Texture> textures = ImmutableList.builderWithExpectedSize(this.textures.size() + 2);
-         if (this.useOverlay) {
-            textures.add(new PreparedRenderType.Texture("Sampler1", overlayTexture, samplerCache.getClampToEdge(FilterMode.LINEAR)));
-         }
-
-         if (this.useLightmap) {
-            textures.add(new PreparedRenderType.Texture("Sampler2", lightmapTexture, samplerCache.getClampToEdge(FilterMode.LINEAR)));
-         }
-
-         for (Entry<String, RenderSetup.TextureBinding> entry : this.textures.entrySet()) {
-            AbstractTexture texture = textureManager.getTexture(entry.getValue().location);
-            GpuSampler samplerOverride = entry.getValue().sampler().get();
-            textures.add(
-               new PreparedRenderType.Texture(entry.getKey(), texture.getTextureView(), samplerOverride != null ? samplerOverride : texture.getSampler())
-            );
-         }
-
-         return textures.build();
       }
+
+      Builder<PreparedRenderType.Texture> textures = ImmutableList.builderWithExpectedSize(this.textures.size() + 2);
+      if (this.useOverlay) {
+         textures.add(new PreparedRenderType.Texture("Sampler1", overlayTexture, samplerCache.getClampToEdge(FilterMode.LINEAR)));
+      }
+
+      if (this.useLightmap) {
+         textures.add(new PreparedRenderType.Texture("Sampler2", lightmapTexture, samplerCache.getClampToEdge(FilterMode.LINEAR)));
+      }
+
+      for (Entry<String, RenderSetup.TextureBinding> entry : this.textures.entrySet()) {
+         AbstractTexture texture = textureManager.getTexture(entry.getValue().location);
+         GpuSampler samplerOverride = entry.getValue().sampler().get();
+         textures.add(
+            new PreparedRenderType.Texture(entry.getKey(), texture.getTextureView(), samplerOverride != null ? samplerOverride : texture.getSampler())
+         );
+      }
+
+      return textures.build();
    }
 
-   public static enum OutlineProperty {
+   public enum OutlineProperty {
       NONE("none"),
       IS_OUTLINE("is_outline"),
       AFFECTS_OUTLINE("affects_outline");
 
       private final String name;
 
-      private OutlineProperty(final String name) {
+      OutlineProperty(final String name) {
          this.name = name;
       }
 
@@ -130,8 +128,7 @@ public final class RenderSetup {
 
    public static class RenderSetupBuilder {
       private final RenderPipeline pipeline;
-      @Nullable
-      private OitPipelineSet oitPipelineSet;
+      private @Nullable OitPipelineSet oitPipelineSet;
       private boolean useLightmap = false;
       private boolean useOverlay = false;
       private LayeringTransform layeringTransform = LayeringTransform.NO_LAYERING;
@@ -139,8 +136,7 @@ public final class RenderSetup {
       private boolean affectsCrumbling = false;
       private boolean sortOnUpload = false;
       private RenderSetup.OutlineProperty outlineProperty = RenderSetup.OutlineProperty.NONE;
-      @Nullable
-      private String outlineTextureName;
+      private @Nullable String outlineTextureName;
       private final Map<String, RenderSetup.TextureBinding> textures = new HashMap<>();
       private boolean forceSolidModelPhase;
 
@@ -153,7 +149,7 @@ public final class RenderSetup {
          return this;
       }
 
-      public RenderSetup.RenderSetupBuilder withTexture(final String name, final Identifier texture, @Nullable final Supplier<GpuSampler> sampler) {
+      public RenderSetup.RenderSetupBuilder withTexture(final String name, final Identifier texture, final @Nullable Supplier<GpuSampler> sampler) {
          this.textures.put(name, new RenderSetup.TextureBinding(texture, Suppliers.memoize(() -> sampler == null ? null : sampler.get())));
          return this;
       }
@@ -228,6 +224,6 @@ public final class RenderSetup {
       }
    }
 
-   static record TextureBinding(Identifier location, Supplier<GpuSampler> sampler) {
+   record TextureBinding(Identifier location, Supplier<@Nullable GpuSampler> sampler) {
    }
 }

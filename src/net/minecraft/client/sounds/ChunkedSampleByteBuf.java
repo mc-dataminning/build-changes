@@ -34,13 +34,13 @@ public class ChunkedSampleByteBuf implements FloatConsumer {
       this.currentBuffer.flip();
       if (this.buffers.isEmpty()) {
          return this.currentBuffer;
-      } else {
-         ByteBuffer result = BufferUtils.createByteBuffer(this.byteCount);
-         this.buffers.forEach(result::put);
-         result.put(this.currentBuffer);
-         result.flip();
-         return result;
       }
+
+      ByteBuffer result = BufferUtils.createByteBuffer(this.byteCount);
+      this.buffers.forEach(result::put);
+      result.put(this.currentBuffer);
+      result.flip();
+      return result;
    }
 
    public int size() {

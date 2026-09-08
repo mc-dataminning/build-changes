@@ -26,7 +26,7 @@ public record ClientboundRecipeBookAddPacket(List<ClientboundRecipeBookAddPacket
       listener.handleRecipeBookAdd(this);
    }
 
-   public static record Entry(RecipeDisplayEntry contents, byte flags) {
+   public record Entry(RecipeDisplayEntry contents, byte flags) {
       public static final byte FLAG_NOTIFICATION = 1;
       public static final byte FLAG_HIGHLIGHT = 2;
       public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundRecipeBookAddPacket.Entry> STREAM_CODEC = StreamCodec.composite(

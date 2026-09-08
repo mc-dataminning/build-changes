@@ -68,11 +68,11 @@ public abstract class AbstractSignRenderer<S extends SignRenderState> implements
 
       for (int i = 0; i < formattedLines.length; i++) {
          FormattedCharSequence actualLine = formattedLines[i];
-         float x1 = (float)(-this.font.width(actualLine) / 2);
+         float x1 = -this.font.width(actualLine) / 2;
          submitNodeCollector.submitText(
             poseStack,
             x1,
-            (float)(i * state.textLineHeight - signMidpoint),
+            i * state.textLineHeight - signMidpoint,
             actualLine,
             false,
             Font.DisplayMode.POLYGON_OFFSET,
@@ -89,10 +89,10 @@ public abstract class AbstractSignRenderer<S extends SignRenderState> implements
       LocalPlayer player = minecraft.player;
       if (player != null && minecraft.options.getCameraType().isFirstPerson() && player.isScoping()) {
          return true;
-      } else {
-         Entity camera = minecraft.getCameraEntity();
-         return camera != null && camera.distanceToSqr(Vec3.atCenterOf(pos)) < (double)OUTLINE_RENDER_DISTANCE;
       }
+
+      Entity camera = minecraft.getCameraEntity();
+      return camera != null && camera.distanceToSqr(Vec3.atCenterOf(pos)) < OUTLINE_RENDER_DISTANCE;
    }
 
    public static int getDarkColor(final SignText signText) {
@@ -105,7 +105,7 @@ public abstract class AbstractSignRenderer<S extends SignRenderState> implements
       final S state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
       state.maxTextLineWidth = blockEntity.getMaxTextLineWidth();

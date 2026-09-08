@@ -41,9 +41,9 @@ public class DeOpCommands {
 
       if (count == 0) {
          throw ERROR_NOT_OP.create();
-      } else {
-         source.getServer().kickUnlistedPlayers();
-         return count;
       }
+
+      source.getServer().kickUnlistedPlayers();
+      return count;
    }
 }

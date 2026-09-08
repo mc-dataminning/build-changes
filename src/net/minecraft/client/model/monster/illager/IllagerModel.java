@@ -98,16 +98,16 @@ public class IllagerModel<S extends IllagerRenderState> extends EntityModel<S> i
       } else {
          float animationSpeed = state.walkAnimationSpeed;
          float animationPos = state.walkAnimationPos;
-         this.rightArm.xRot = Mth.cos((double)(animationPos * 0.6662F + (float) Math.PI)) * 2.0F * animationSpeed * 0.5F;
+         this.rightArm.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * 2.0F * animationSpeed * 0.5F;
          this.rightArm.yRot = 0.0F;
          this.rightArm.zRot = 0.0F;
-         this.leftArm.xRot = Mth.cos((double)(animationPos * 0.6662F)) * 2.0F * animationSpeed * 0.5F;
+         this.leftArm.xRot = Mth.cos(animationPos * 0.6662F) * 2.0F * animationSpeed * 0.5F;
          this.leftArm.yRot = 0.0F;
          this.leftArm.zRot = 0.0F;
-         this.rightLeg.xRot = Mth.cos((double)(animationPos * 0.6662F)) * 1.4F * animationSpeed * 0.5F;
+         this.rightLeg.xRot = Mth.cos(animationPos * 0.6662F) * 1.4F * animationSpeed * 0.5F;
          this.rightLeg.yRot = 0.0F;
          this.rightLeg.zRot = 0.0F;
-         this.leftLeg.xRot = Mth.cos((double)(animationPos * 0.6662F + (float) Math.PI)) * 1.4F * animationSpeed * 0.5F;
+         this.leftLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * 1.4F * animationSpeed * 0.5F;
          this.leftLeg.yRot = 0.0F;
          this.leftLeg.zRot = 0.0F;
       }
@@ -125,8 +125,8 @@ public class IllagerModel<S extends IllagerRenderState> extends EntityModel<S> i
          this.rightArm.x = -5.0F;
          this.leftArm.z = 0.0F;
          this.leftArm.x = 5.0F;
-         this.rightArm.xRot = Mth.cos((double)(state.ageInTicks * 0.6662F)) * 0.25F;
-         this.leftArm.xRot = Mth.cos((double)(state.ageInTicks * 0.6662F)) * 0.25F;
+         this.rightArm.xRot = Mth.cos(state.ageInTicks * 0.6662F) * 0.25F;
+         this.leftArm.xRot = Mth.cos(state.ageInTicks * 0.6662F) * 0.25F;
          this.rightArm.zRot = (float) (Math.PI * 3.0 / 4.0);
          this.leftArm.zRot = (float) (-Math.PI * 3.0 / 4.0);
          this.rightArm.yRot = 0.0F;
@@ -140,16 +140,16 @@ public class IllagerModel<S extends IllagerRenderState> extends EntityModel<S> i
       } else if (pose == AbstractIllager.IllagerArmPose.CROSSBOW_HOLD) {
          AnimationUtils.animateCrossbowHold(this.rightArm, this.leftArm, this.head, true);
       } else if (pose == AbstractIllager.IllagerArmPose.CROSSBOW_CHARGE) {
-         AnimationUtils.animateCrossbowCharge(this.rightArm, this.leftArm, (float)state.maxCrossbowChargeDuration, state.ticksUsingItem, true);
+         AnimationUtils.animateCrossbowCharge(this.rightArm, this.leftArm, state.maxCrossbowChargeDuration, state.ticksUsingItem, true);
       } else if (pose == AbstractIllager.IllagerArmPose.CELEBRATING) {
          this.rightArm.z = 0.0F;
          this.rightArm.x = -5.0F;
-         this.rightArm.xRot = Mth.cos((double)(state.ageInTicks * 0.6662F)) * 0.05F;
+         this.rightArm.xRot = Mth.cos(state.ageInTicks * 0.6662F) * 0.05F;
          this.rightArm.zRot = 2.670354F;
          this.rightArm.yRot = 0.0F;
          this.leftArm.z = 0.0F;
          this.leftArm.x = 5.0F;
-         this.leftArm.xRot = Mth.cos((double)(state.ageInTicks * 0.6662F)) * 0.05F;
+         this.leftArm.xRot = Mth.cos(state.ageInTicks * 0.6662F) * 0.05F;
          this.leftArm.zRot = (float) (-Math.PI * 3.0 / 4.0);
          this.leftArm.yRot = 0.0F;
       }

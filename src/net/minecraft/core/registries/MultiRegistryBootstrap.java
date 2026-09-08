@@ -10,7 +10,7 @@ public interface MultiRegistryBootstrap {
 
    void run(MultiRegistryBootstrap.BootstrapGetter registries);
 
-   public interface BootstrapGetter {
+   interface BootstrapGetter {
       <T> BootstrapContext<T> get(ResourceKey<? extends Registry<T>> key);
    }
 }

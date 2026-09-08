@@ -19,12 +19,12 @@ public class VaultServerData {
    public static final String TAG_NAME = "server_data";
    public static final Codec<VaultServerData> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               UUIDUtil.CODEC_LINKED_SET.lenientOptionalFieldOf("rewarded_players", Set.of()).forGetter(vault -> vault.rewardedPlayers),
-               Codec.LONG.lenientOptionalFieldOf("state_updating_resumes_at", 0L).forGetter(vault -> vault.stateUpdatingResumesAt),
-               ItemStack.CODEC.listOf().lenientOptionalFieldOf("items_to_eject", List.of()).forGetter(vault -> vault.itemsToEject),
-               Codec.INT.lenientOptionalFieldOf("total_ejections_needed", 0).forGetter(vault -> vault.totalEjectionsNeeded)
-            )
-            .apply(i, VaultServerData::new)
+            UUIDUtil.CODEC_LINKED_SET.lenientOptionalFieldOf("rewarded_players", Set.of()).forGetter(vault -> vault.rewardedPlayers),
+            Codec.LONG.lenientOptionalFieldOf("state_updating_resumes_at", 0L).forGetter(vault -> vault.stateUpdatingResumesAt),
+            ItemStack.CODEC.listOf().lenientOptionalFieldOf("items_to_eject", List.of()).forGetter(vault -> vault.itemsToEject),
+            Codec.INT.lenientOptionalFieldOf("total_ejections_needed", 0).forGetter(vault -> vault.totalEjectionsNeeded)
+         )
+         .apply(i, VaultServerData::new)
    );
    private static final int MAX_REWARD_PLAYERS = 128;
    private final Set<UUID> rewardedPlayers = new ObjectLinkedOpenHashSet();
@@ -108,10 +108,10 @@ public class VaultServerData {
    ItemStack popNextItemToEject() {
       if (this.itemsToEject.isEmpty()) {
          return ItemStack.EMPTY;
-      } else {
-         this.markChanged();
-         return Objects.requireNonNullElse(this.itemsToEject.remove(this.itemsToEject.size() - 1), ItemStack.EMPTY);
       }
+
+      this.markChanged();
+      return Objects.requireNonNullElse(this.itemsToEject.remove(this.itemsToEject.size() - 1), ItemStack.EMPTY);
    }
 
    void set(final VaultServerData from) {
@@ -127,6 +127,6 @@ public class VaultServerData {
    }
 
    public float ejectionProgress() {
-      return this.totalEjectionsNeeded == 1 ? 1.0F : 1.0F - Mth.inverseLerp((float)this.getItemsToEject().size(), 1.0F, (float)this.totalEjectionsNeeded);
+      return this.totalEjectionsNeeded == 1 ? 1.0F : 1.0F - Mth.inverseLerp(this.getItemsToEject().size(), 1.0F, this.totalEjectionsNeeded);
    }
 }

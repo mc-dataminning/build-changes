@@ -112,19 +112,19 @@ public class MultiNoiseBiomeSource extends BiomeSource {
       float temperature = Climate.unquantizeCoord(sampleQuantized.temperature());
       float humidity = Climate.unquantizeCoord(sampleQuantized.humidity());
       float weirdness = Climate.unquantizeCoord(sampleQuantized.weirdness());
-      double peaksAndValleys = (double)NoiseRouterData.peaksAndValleys(weirdness);
+      double peaksAndValleys = NoiseRouterData.peaksAndValleys(weirdness);
       OverworldBiomeBuilder biomeBuilder = new OverworldBiomeBuilder();
       result.add(
          "Biome builder PV: "
             + OverworldBiomeBuilder.getDebugStringForPeaksAndValleys(peaksAndValleys)
             + " C: "
-            + biomeBuilder.getDebugStringForContinentalness((double)continentalness)
+            + biomeBuilder.getDebugStringForContinentalness(continentalness)
             + " E: "
-            + biomeBuilder.getDebugStringForErosion((double)erosion)
+            + biomeBuilder.getDebugStringForErosion(erosion)
             + " T: "
-            + biomeBuilder.getDebugStringForTemperature((double)temperature)
+            + biomeBuilder.getDebugStringForTemperature(temperature)
             + " H: "
-            + biomeBuilder.getDebugStringForHumidity((double)humidity)
+            + biomeBuilder.getDebugStringForHumidity(humidity)
       );
    }
 }

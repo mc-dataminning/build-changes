@@ -75,7 +75,7 @@ public abstract class LivingEntityRenderer<T extends LivingEntity, S extends Liv
          Direction bedOrientation = state.bedOrientation;
          if (bedOrientation != null) {
             float headOffset = state.eyeHeight - 0.1F;
-            poseStack.translate((float)(-bedOrientation.getStepX()) * headOffset, 0.0F, (float)(-bedOrientation.getStepZ()) * headOffset);
+            poseStack.translate(-bedOrientation.getStepX() * headOffset, 0.0F, -bedOrientation.getStepZ() * headOffset);
          }
       }
 
@@ -117,8 +117,7 @@ public abstract class LivingEntityRenderer<T extends LivingEntity, S extends Liv
 
    public abstract Identifier getTextureLocation(final S state);
 
-   @Nullable
-   protected RenderType getRenderType(final S state, final boolean isBodyVisible, final boolean forceTransparent, final boolean appearGlowing) {
+   protected @Nullable RenderType getRenderType(final S state, final boolean isBodyVisible, final boolean forceTransparent, final boolean appearGlowing) {
       Identifier texture = this.getTextureLocation(state);
       if (forceTransparent) {
          return RenderTypes.entityTranslucentCull(texture);
@@ -153,7 +152,7 @@ public abstract class LivingEntityRenderer<T extends LivingEntity, S extends Liv
 
    protected void setupRotations(final S state, final PoseStack poseStack, float bodyRot, final float entityScale) {
       if (this.isShaking(state)) {
-         bodyRot += (float)(Math.cos((double)((float)Mth.floor(state.ageInTicks) * 3.25F)) * Math.PI * 0.4F);
+         bodyRot += (float)(Math.cos(Mth.floor(state.ageInTicks) * 3.25F) * Math.PI * 0.4F);
       }
 
       if (!state.hasPose(Pose.SLEEPING)) {
@@ -215,8 +214,8 @@ public abstract class LivingEntityRenderer<T extends LivingEntity, S extends Liv
                case ALWAYS -> isVisibleToPlayer;
                case NEVER -> false;
                case HIDE_FOR_OTHER_TEAMS -> myTeam == null
-               ? isVisibleToPlayer
-               : team.isAlliedTo(myTeam) && (team.canSeeFriendlyInvisibles() || isVisibleToPlayer);
+                  ? isVisibleToPlayer
+                  : team.isAlliedTo(myTeam) && (team.canSeeFriendlyInvisibles() || isVisibleToPlayer);
                case HIDE_FOR_OWN_TEAM -> myTeam == null ? isVisibleToPlayer : !team.isAlliedTo(myTeam) && isVisibleToPlayer;
             };
          }
@@ -272,21 +271,18 @@ public abstract class LivingEntityRenderer<T extends LivingEntity, S extends Liv
          state.eyeHeight = entity.getEyeHeight(Pose.STANDING);
       }
 
-      label48: {
-         state.isFullyFrozen = entity.isFullyFrozen();
-         state.isBaby = entity.isBaby();
-         state.isInWater = entity.isInWater();
-         state.isAutoSpinAttack = entity.isAutoSpinAttack();
-         state.ticksSinceKineticHitFeedback = entity.getTicksSinceLastKineticHitFeedback(partialTicks);
-         state.hasRedOverlay = entity.hurtTime > 0 || entity.deathTime > 0;
-         ItemStack headItem = entity.getItemBySlot(EquipmentSlot.HEAD);
-         if (headItem.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof AbstractSkullBlock skullBlock) {
-            state.wornHeadType = skullBlock.getType();
-            state.wornHeadProfile = headItem.get(DataComponents.PROFILE);
-            state.headItem.clear();
-            break label48;
-         }
-
+      state.isFullyFrozen = entity.isFullyFrozen();
+      state.isBaby = entity.isBaby();
+      state.isInWater = entity.isInWater();
+      state.isAutoSpinAttack = entity.isAutoSpinAttack();
+      state.ticksSinceKineticHitFeedback = entity.getTicksSinceLastKineticHitFeedback(partialTicks);
+      state.hasRedOverlay = entity.hurtTime > 0 || entity.deathTime > 0;
+      ItemStack headItem = entity.getItemBySlot(EquipmentSlot.HEAD);
+      if (headItem.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof AbstractSkullBlock skullBlock) {
+         state.wornHeadType = skullBlock.getType();
+         state.wornHeadProfile = headItem.get(DataComponents.PROFILE);
+         state.headItem.clear();
+      } else {
          state.wornHeadType = null;
          state.wornHeadProfile = null;
          if (!HumanoidArmorLayer.shouldRender(headItem, EquipmentSlot.HEAD)) {
@@ -296,7 +292,7 @@ public abstract class LivingEntityRenderer<T extends LivingEntity, S extends Liv
          }
       }
 
-      state.deathTime = entity.deathTime > 0 ? (float)entity.deathTime + partialTicks : 0.0F;
+      state.deathTime = entity.deathTime > 0 ? entity.deathTime + partialTicks : 0.0F;
       Minecraft minecraft = Minecraft.getInstance();
       state.isInvisibleToPlayer = state.isInvisible && entity.isInvisibleTo(minecraft.player);
    }

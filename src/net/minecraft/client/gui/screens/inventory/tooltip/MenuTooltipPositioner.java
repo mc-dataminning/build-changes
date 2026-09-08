@@ -38,6 +38,6 @@ public class MenuTooltipPositioner implements ClientTooltipPositioner {
 
    private static int getOffset(final int mouseY, final int widgetY, final int widgetHeight) {
       int distance = Math.min(Math.abs(mouseY - widgetY), widgetHeight);
-      return Math.round(Mth.lerp((float)distance / (float)widgetHeight, (float)(widgetHeight - 3), 5.0F));
+      return Math.round(Mth.lerp((float)distance / widgetHeight, widgetHeight - 3, 5.0F));
    }
 }

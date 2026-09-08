@@ -111,9 +111,8 @@ public class Salmon extends AbstractSchoolingFish {
       return Salmon.Variant.BY_ID.apply(this.entityData.get(DATA_TYPE));
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       return type == DataComponents.SALMON_SIZE ? castComponentValue((DataComponentType<T>)type, this.getVariant()) : super.get(type);
    }
 
@@ -133,10 +132,9 @@ public class Salmon extends AbstractSchoolingFish {
       }
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+   public @Nullable SpawnGroupData finalizeSpawn(
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       WeightedList.Builder<Salmon.Variant> builder = WeightedList.builder();
       builder.add(Salmon.Variant.SMALL, 30);
@@ -155,7 +153,7 @@ public class Salmon extends AbstractSchoolingFish {
       return super.getDefaultDimensions(pose).scale(this.getSalmonScale());
    }
 
-   public static enum Variant implements StringRepresentable {
+   public enum Variant implements StringRepresentable {
       SMALL("small", 0, 0.5F),
       MEDIUM("medium", 1, 1.0F),
       LARGE("large", 2, 1.5F);
@@ -168,7 +166,7 @@ public class Salmon extends AbstractSchoolingFish {
       private final int id;
       private final float boundingBoxScale;
 
-      private Variant(final String name, final int id, final float boundingBoxScale) {
+      Variant(final String name, final int id, final float boundingBoxScale) {
          this.name = name;
          this.id = id;
          this.boundingBoxScale = boundingBoxScale;

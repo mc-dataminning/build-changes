@@ -24,15 +24,15 @@ public class SlideDownBlockTrigger extends SimpleCriterionTrigger<SlideDownBlock
       this.trigger(player, t -> t.matches(state));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<HolderSet<Block>> block, Optional<StatePropertiesPredicate> state)
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<HolderSet<Block>> block, Optional<StatePropertiesPredicate> state)
       implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<SlideDownBlockTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(SlideDownBlockTrigger.TriggerInstance::player),
-                  RegistryCodecs.holderSet(Registries.BLOCK).optionalFieldOf("blocks").forGetter(SlideDownBlockTrigger.TriggerInstance::block),
-                  StatePropertiesPredicate.CODEC.optionalFieldOf("state").forGetter(SlideDownBlockTrigger.TriggerInstance::state)
-               )
-               .apply(i, SlideDownBlockTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(SlideDownBlockTrigger.TriggerInstance::player),
+               RegistryCodecs.holderSet(Registries.BLOCK).optionalFieldOf("blocks").forGetter(SlideDownBlockTrigger.TriggerInstance::block),
+               StatePropertiesPredicate.CODEC.optionalFieldOf("state").forGetter(SlideDownBlockTrigger.TriggerInstance::state)
+            )
+            .apply(i, SlideDownBlockTrigger.TriggerInstance::new)
       );
 
       public static Criterion<SlideDownBlockTrigger.TriggerInstance> slidesDownBlock(final HolderGetter<Block> blocks, final Block block) {

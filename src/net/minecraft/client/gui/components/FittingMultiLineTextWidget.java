@@ -43,7 +43,7 @@ public class FittingMultiLineTextWidget extends AbstractTextAreaWidget {
    @Override
    protected void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
       graphics.pose().pushMatrix();
-      graphics.pose().translate((float)this.getInnerLeft(), (float)this.getInnerTop());
+      graphics.pose().translate(this.getInnerLeft(), this.getInnerTop());
       this.multilineWidget.extractRenderState(graphics, mouseX, mouseY, a);
       graphics.pose().popMatrix();
    }

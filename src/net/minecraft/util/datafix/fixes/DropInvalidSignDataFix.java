@@ -37,15 +37,15 @@ public class DropInvalidSignDataFix extends DataFix {
       Optional<Stream<Dynamic<T>>> filteredLines = tag.get("filtered_messages").asStreamOpt().result();
       if (filteredLines.isEmpty()) {
          return tag;
-      } else {
-         Dynamic<T> emptyComponent = LegacyComponentDataFixUtils.createEmptyComponent(tag.getOps());
-         List<Dynamic<T>> lines = tag.get("messages").asStreamOpt().result().orElse(Stream.of()).toList();
-         List<Dynamic<T>> newFilteredLines = Streams.mapWithIndex(filteredLines.get(), (line, index) -> {
-            Dynamic<T> fallbackLine = index < (long)lines.size() ? lines.get((int)index) : emptyComponent;
-            return line.equals(emptyComponent) ? fallbackLine : line;
-         }).toList();
-         return newFilteredLines.equals(lines) ? tag.remove("filtered_messages") : tag.set("filtered_messages", tag.createList(newFilteredLines.stream()));
       }
+
+      Dynamic<T> emptyComponent = LegacyComponentDataFixUtils.createEmptyComponent(tag.getOps());
+      List<Dynamic<T>> lines = tag.get("messages").asStreamOpt().result().orElse(Stream.of()).toList();
+      List<Dynamic<T>> newFilteredLines = Streams.mapWithIndex(filteredLines.get(), (line, index) -> {
+         Dynamic<T> fallbackLine = index < lines.size() ? lines.get((int)index) : emptyComponent;
+         return line.equals(emptyComponent) ? fallbackLine : line;
+      }).toList();
+      return newFilteredLines.equals(lines) ? tag.remove("filtered_messages") : tag.set("filtered_messages", tag.createList(newFilteredLines.stream()));
    }
 
    public TypeRewriteRule makeRule() {
@@ -56,15 +56,15 @@ public class DropInvalidSignDataFix extends DataFix {
          "DropInvalidSignDataFix for " + this.entityName,
          entityType,
          input -> input.updateTyped(
-               entityF,
-               entityChoiceType,
-               entity -> {
-                  boolean filteredCorrect = ((Dynamic)entity.get(DSL.remainderFinder())).get("_filtered_correct").asBoolean(false);
-                  return filteredCorrect
-                     ? entity.update(DSL.remainderFinder(), remainder -> remainder.remove("_filtered_correct"))
-                     : Util.writeAndReadTypedOrThrow(entity, entityChoiceType, this::fix);
-               }
-            )
+            entityF,
+            entityChoiceType,
+            entity -> {
+               boolean filteredCorrect = ((Dynamic)entity.get(DSL.remainderFinder())).get("_filtered_correct").asBoolean(false);
+               return filteredCorrect
+                  ? entity.update(DSL.remainderFinder(), remainder -> remainder.remove("_filtered_correct"))
+                  : Util.writeAndReadTypedOrThrow(entity, entityChoiceType, this::fix);
+            }
+         )
       );
    }
 }

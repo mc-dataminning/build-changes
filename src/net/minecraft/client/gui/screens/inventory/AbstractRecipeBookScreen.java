@@ -113,7 +113,7 @@ public abstract class AbstractRecipeBookScreen<T extends RecipeBookMenu> extends
 
    @Override
    protected boolean hasClickedOutside(final double mx, final double my, final int xo, final int yo) {
-      boolean clickedOutside = mx < (double)xo || my < (double)yo || mx >= (double)(xo + this.imageWidth) || my >= (double)(yo + this.imageHeight);
+      boolean clickedOutside = mx < xo || my < yo || mx >= xo + this.imageWidth || my >= yo + this.imageHeight;
       return this.recipeBookComponent.hasClickedOutside(mx, my, this.leftPos, this.topPos, this.imageWidth, this.imageHeight) && clickedOutside;
    }
 

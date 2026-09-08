@@ -33,8 +33,7 @@ public class PlayerService {
       return kicked;
    }
 
-   @Nullable
-   private static ServerPlayer getServerPlayer(final MinecraftApi minecraftApi, final PlayerDto playerDto) {
+   private static @Nullable ServerPlayer getServerPlayer(final MinecraftApi minecraftApi, final PlayerDto playerDto) {
       if (playerDto.id().isPresent()) {
          return minecraftApi.playerListService().getPlayer(playerDto.id().get());
       } else {
@@ -42,13 +41,13 @@ public class PlayerService {
       }
    }
 
-   public static record KickDto(PlayerDto player, Optional<Message> message) {
+   public record KickDto(PlayerDto player, Optional<Message> message) {
       public static final MapCodec<PlayerService.KickDto> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  PlayerDto.CODEC.codec().fieldOf("player").forGetter(PlayerService.KickDto::player),
-                  Message.CODEC.optionalFieldOf("message").forGetter(PlayerService.KickDto::message)
-               )
-               .apply(i, PlayerService.KickDto::new)
+               PlayerDto.CODEC.codec().fieldOf("player").forGetter(PlayerService.KickDto::player),
+               Message.CODEC.optionalFieldOf("message").forGetter(PlayerService.KickDto::message)
+            )
+            .apply(i, PlayerService.KickDto::new)
       );
    }
 }

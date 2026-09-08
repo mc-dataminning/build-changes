@@ -31,7 +31,7 @@ public class SpongeBlock extends Block {
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       this.tryAbsorbWater(level, pos);
       super.neighborChanged(state, level, pos, block, orientation, movedByPiston);
@@ -57,11 +57,9 @@ public class SpongeBlock extends Block {
             FluidState fluidState = level.getFluidState(pos);
             if (!fluidState.is(FluidTags.WATER)) {
                return BlockPos.TraversalNodeStatus.SKIP;
+            } else if (state.getBlock() instanceof BucketPickup bucketPickup && !bucketPickup.pickupBlock(null, level, pos, state).isEmpty()) {
+               return BlockPos.TraversalNodeStatus.ACCEPT;
             } else {
-               if (state.getBlock() instanceof BucketPickup bucketPickup && !bucketPickup.pickupBlock(null, level, pos, state).isEmpty()) {
-                  return BlockPos.TraversalNodeStatus.ACCEPT;
-               }
-
                if (state.getBlock() instanceof LiquidBlock) {
                   level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
                } else {

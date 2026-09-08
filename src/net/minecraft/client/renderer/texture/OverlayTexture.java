@@ -20,7 +20,7 @@ public class OverlayTexture implements AutoCloseable {
             if (y < 8) {
                pixels.setPixel(x, y, -1291911168);
             } else {
-               int a = (int)((1.0F - (float)x / 15.0F * 0.75F) * 255.0F);
+               int a = (int)((1.0F - x / 15.0F * 0.75F) * 255.0F);
                pixels.setPixel(x, y, ARGB.white(a));
             }
          }

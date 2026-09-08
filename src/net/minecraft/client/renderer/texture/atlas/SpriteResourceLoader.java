@@ -33,16 +33,16 @@ public interface SpriteResourceLoader {
             animationInfo = metadata.getSection(AnimationMetadataSection.TYPE);
             textureInfo = metadata.getSection(TextureMetadataSection.TYPE);
             additionalMetadata = metadata.getTypedSections(additionalMetadataSections);
-         } catch (Exception var11) {
-            LOGGER.error("Unable to parse metadata from {}", spriteLocation, var11);
+         } catch (Exception e) {
+            LOGGER.error("Unable to parse metadata from {}", spriteLocation, e);
             return null;
          }
 
          NativeImage image;
          try (InputStream is = resource.open()) {
             image = NativeImage.read(is);
-         } catch (IOException var13) {
-            LOGGER.error("Using missing texture, unable to load {}", spriteLocation, var13);
+         } catch (IOException e) {
+            LOGGER.error("Using missing texture, unable to load {}", spriteLocation, e);
             return null;
          }
 
@@ -65,6 +65,5 @@ public interface SpriteResourceLoader {
       };
    }
 
-   @Nullable
-   SpriteContents loadSprite(Identifier spriteLocation, Resource resource);
+   @Nullable SpriteContents loadSprite(Identifier spriteLocation, Resource resource);
 }

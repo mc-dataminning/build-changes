@@ -8,10 +8,8 @@ import org.jspecify.annotations.Nullable;
 
 public class OutboundPlayer implements ReflectionBasedSerialization {
    @SerializedName("name")
-   @Nullable
-   public String name;
+   public @Nullable String name;
    @SerializedName("uuid")
    @JsonAdapter(UUIDTypeAdapter.class)
-   @Nullable
-   public UUID uuid;
+   public @Nullable UUID uuid;
 }

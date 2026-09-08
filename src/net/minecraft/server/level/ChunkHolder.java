@@ -40,7 +40,7 @@ public class ChunkHolder extends GenerationChunkHolder {
    private int ticketLevel;
    private int queueLevel;
    private boolean hasChangedSections;
-   private final ShortSet[] changedBlocksPerSection;
+   private final @Nullable ShortSet[] changedBlocksPerSection;
    private final BitSet blockChangedLightSectionFilter = new BitSet();
    private final BitSet skyChangedLightSectionFilter = new BitSet();
    private final LevelLightEngine lightEngine;
@@ -83,13 +83,11 @@ public class ChunkHolder extends GenerationChunkHolder {
       return this.fullChunkFuture;
    }
 
-   @Nullable
-   public LevelChunk getTickingChunk() {
+   public @Nullable LevelChunk getTickingChunk() {
       return this.getTickingChunkFuture().getNow(UNLOADED_LEVEL_CHUNK).orElse(null);
    }
 
-   @Nullable
-   public LevelChunk getChunkToSend() {
+   public @Nullable LevelChunk getChunkToSend() {
       return !this.sendSync.isDone() ? null : this.getTickingChunk();
    }
 
@@ -126,46 +124,46 @@ public class ChunkHolder extends GenerationChunkHolder {
       LevelChunk chunk = this.getTickingChunk();
       if (chunk == null) {
          return false;
-      } else {
-         boolean hadChangedSections = this.hasChangedSections;
-         int sectionIndex = this.levelHeightAccessor.getSectionIndex(pos.getY());
-         ShortSet changedBlocksInSection = this.changedBlocksPerSection[sectionIndex];
-         if (changedBlocksInSection == null) {
-            this.hasChangedSections = true;
-            changedBlocksInSection = new ShortOpenHashSet();
-            this.changedBlocksPerSection[sectionIndex] = changedBlocksInSection;
-         }
-
-         changedBlocksInSection.add(SectionPos.sectionRelativePos(pos));
-         return !hadChangedSections;
       }
+
+      boolean hadChangedSections = this.hasChangedSections;
+      int sectionIndex = this.levelHeightAccessor.getSectionIndex(pos.getY());
+      ShortSet changedBlocksInSection = this.changedBlocksPerSection[sectionIndex];
+      if (changedBlocksInSection == null) {
+         this.hasChangedSections = true;
+         changedBlocksInSection = new ShortOpenHashSet();
+         this.changedBlocksPerSection[sectionIndex] = changedBlocksInSection;
+      }
+
+      changedBlocksInSection.add(SectionPos.sectionRelativePos(pos));
+      return !hadChangedSections;
    }
 
    public boolean sectionLightChanged(final LightLayer layer, final int chunkY) {
       ChunkAccess chunk = this.getChunkIfPresent(ChunkStatus.INITIALIZE_LIGHT);
       if (chunk == null) {
          return false;
-      } else {
-         chunk.markUnsaved();
-         LevelChunk tickingChunk = this.getTickingChunk();
-         if (tickingChunk == null) {
-            return false;
+      }
+
+      chunk.markUnsaved();
+      LevelChunk tickingChunk = this.getTickingChunk();
+      if (tickingChunk == null) {
+         return false;
+      }
+
+      int minLightSection = this.lightEngine.getMinLightSection();
+      int maxLightSection = this.lightEngine.getMaxLightSection();
+      if (chunkY >= minLightSection && chunkY <= maxLightSection) {
+         BitSet filter = layer == LightLayer.SKY ? this.skyChangedLightSectionFilter : this.blockChangedLightSectionFilter;
+         int index = chunkY - minLightSection;
+         if (!filter.get(index)) {
+            filter.set(index);
+            return true;
          } else {
-            int minLightSection = this.lightEngine.getMinLightSection();
-            int maxLightSection = this.lightEngine.getMaxLightSection();
-            if (chunkY >= minLightSection && chunkY <= maxLightSection) {
-               BitSet filter = layer == LightLayer.SKY ? this.skyChangedLightSectionFilter : this.blockChangedLightSectionFilter;
-               int index = chunkY - minLightSection;
-               if (!filter.get(index)) {
-                  filter.set(index);
-                  return true;
-               } else {
-                  return false;
-               }
-            } else {
-               return false;
-            }
+            return false;
          }
+      } else {
+         return false;
       }
    }
 

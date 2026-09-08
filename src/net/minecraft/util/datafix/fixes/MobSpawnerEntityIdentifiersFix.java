@@ -21,39 +21,39 @@ public class MobSpawnerEntityIdentifiersFix extends DataFix {
    private Dynamic<?> fix(Dynamic<?> input) {
       if (!"MobSpawner".equals(input.get("id").asString(""))) {
          return input;
-      } else {
-         Optional<String> entityId = input.get("EntityId").asString().result();
-         if (entityId.isPresent()) {
-            Dynamic<?> spawnData = (Dynamic<?>)DataFixUtils.orElse(input.get("SpawnData").result(), input.emptyMap());
-            spawnData = spawnData.set("id", spawnData.createString(entityId.get().isEmpty() ? "Pig" : entityId.get()));
-            input = input.set("SpawnData", spawnData);
-            input = input.remove("EntityId");
-         }
-
-         Optional<? extends Stream<? extends Dynamic<?>>> spawnPotentials = input.get("SpawnPotentials").asStreamOpt().result();
-         if (spawnPotentials.isPresent()) {
-            input = input.set(
-               "SpawnPotentials",
-               input.createList(
-                  spawnPotentials.get()
-                     .map(
-                        spawnPotential -> {
-                           Optional<String> type = spawnPotential.get("Type").asString().result();
-                           if (type.isPresent()) {
-                              Dynamic<?> spawnData = ((Dynamic)DataFixUtils.orElse(spawnPotential.get("Properties").result(), spawnPotential.emptyMap()))
-                                 .set("id", spawnPotential.createString(type.get()));
-                              return spawnPotential.set("Entity", spawnData).remove("Type").remove("Properties");
-                           } else {
-                              return (Dynamic)spawnPotential;
-                           }
-                        }
-                     )
-               )
-            );
-         }
-
-         return input;
       }
+
+      Optional<String> entityId = input.get("EntityId").asString().result();
+      if (entityId.isPresent()) {
+         Dynamic<?> spawnData = (Dynamic<?>)DataFixUtils.orElse(input.get("SpawnData").result(), input.emptyMap());
+         spawnData = spawnData.set("id", spawnData.createString(entityId.get().isEmpty() ? "Pig" : entityId.get()));
+         input = input.set("SpawnData", spawnData);
+         input = input.remove("EntityId");
+      }
+
+      Optional<? extends Stream<? extends Dynamic<?>>> spawnPotentials = input.get("SpawnPotentials").asStreamOpt().result();
+      if (spawnPotentials.isPresent()) {
+         input = input.set(
+            "SpawnPotentials",
+            input.createList(
+               spawnPotentials.get()
+                  .map(
+                     spawnPotential -> {
+                        Optional<String> type = spawnPotential.get("Type").asString().result();
+                        if (type.isPresent()) {
+                           Dynamic<?> spawnData = ((Dynamic)DataFixUtils.orElse(spawnPotential.get("Properties").result(), spawnPotential.emptyMap()))
+                              .set("id", spawnPotential.createString(type.get()));
+                           return spawnPotential.set("Entity", spawnData).remove("Type").remove("Properties");
+                        } else {
+                           return (Dynamic)spawnPotential;
+                        }
+                     }
+                  )
+            )
+         );
+      }
+
+      return input;
    }
 
    public TypeRewriteRule makeRule() {

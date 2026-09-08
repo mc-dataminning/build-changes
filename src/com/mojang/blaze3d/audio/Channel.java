@@ -18,11 +18,9 @@ public class Channel {
    private final int source;
    private final AtomicBoolean initialized = new AtomicBoolean(true);
    private int streamingBufferSize = 16384;
-   @Nullable
-   private AudioStream stream;
+   private @Nullable AudioStream stream;
 
-   @Nullable
-   static Channel create() {
+   static @Nullable Channel create() {
       int[] newId = new int[1];
       AL10.alGenSources(newId);
       return OpenAlUtil.checkALError("Allocate new source") ? null : new Channel(newId[0]);
@@ -39,8 +37,8 @@ public class Channel {
          if (this.stream != null) {
             try {
                this.stream.close();
-            } catch (IOException var2) {
-               LOGGER.error("Failed to close audio stream", var2);
+            } catch (IOException e) {
+               LOGGER.error("Failed to close audio stream", e);
             }
 
             this.removeProcessedBuffers();
@@ -130,7 +128,7 @@ public class Channel {
    }
 
    private static int calculateBufferSize(final AudioFormat format, final int seconds) {
-      return (int)((float)(seconds * format.getSampleSizeInBits()) / 8.0F * (float)format.getChannels() * format.getSampleRate());
+      return (int)(seconds * format.getSampleSizeInBits() / 8.0F * format.getChannels() * format.getSampleRate());
    }
 
    private void pumpBuffers(final int size) {
@@ -144,8 +142,8 @@ public class Channel {
                      .ifPresent(bufferId -> AL10.alSourceQueueBuffers(this.source, new int[]{bufferId}));
                }
             }
-         } catch (IOException var4) {
-            LOGGER.error("Failed to read from audio stream", var4);
+         } catch (IOException e) {
+            LOGGER.error("Failed to read from audio stream", e);
          }
       }
    }

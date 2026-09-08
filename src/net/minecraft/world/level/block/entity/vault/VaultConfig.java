@@ -25,13 +25,13 @@ public record VaultConfig(
    public static final VaultConfig DEFAULT = new VaultConfig();
    public static final Codec<VaultConfig> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootTable.KEY_CODEC.lenientOptionalFieldOf("loot_table", DEFAULT.lootTable()).forGetter(VaultConfig::lootTable),
-                  Codec.DOUBLE.lenientOptionalFieldOf("activation_range", DEFAULT.activationRange()).forGetter(VaultConfig::activationRange),
-                  Codec.DOUBLE.lenientOptionalFieldOf("deactivation_range", DEFAULT.deactivationRange()).forGetter(VaultConfig::deactivationRange),
-                  ItemStack.lenientOptionalFieldOf("key_item").forGetter(VaultConfig::keyItem),
-                  LootTable.KEY_CODEC.lenientOptionalFieldOf("override_loot_table_to_display").forGetter(VaultConfig::overrideLootTableToDisplay)
-               )
-               .apply(i, VaultConfig::new)
+               LootTable.KEY_CODEC.lenientOptionalFieldOf("loot_table", DEFAULT.lootTable()).forGetter(VaultConfig::lootTable),
+               Codec.DOUBLE.lenientOptionalFieldOf("activation_range", DEFAULT.activationRange()).forGetter(VaultConfig::activationRange),
+               Codec.DOUBLE.lenientOptionalFieldOf("deactivation_range", DEFAULT.deactivationRange()).forGetter(VaultConfig::deactivationRange),
+               ItemStack.lenientOptionalFieldOf("key_item").forGetter(VaultConfig::keyItem),
+               LootTable.KEY_CODEC.lenientOptionalFieldOf("override_loot_table_to_display").forGetter(VaultConfig::overrideLootTableToDisplay)
+            )
+            .apply(i, VaultConfig::new)
       )
       .validate(VaultConfig::validate);
 

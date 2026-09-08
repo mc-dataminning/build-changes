@@ -16,7 +16,7 @@ public record CustomModelDataProperty(int index) implements RangeSelectItemModel
    );
 
    @Override
-   public float get(final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final ItemOwner owner, final int seed) {
+   public float get(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable ItemOwner owner, final int seed) {
       CustomModelData customModelData = itemStack.get(DataComponents.CUSTOM_MODEL_DATA);
       if (customModelData != null) {
          Float value = customModelData.getFloat(this.index);

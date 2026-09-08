@@ -11,9 +11,8 @@ import org.jspecify.annotations.Nullable;
 public enum EmptyBlockGetter implements BlockGetter {
    INSTANCE;
 
-   @Nullable
    @Override
-   public BlockEntity getBlockEntity(final BlockPos pos) {
+   public @Nullable BlockEntity getBlockEntity(final BlockPos pos) {
       return null;
    }
 

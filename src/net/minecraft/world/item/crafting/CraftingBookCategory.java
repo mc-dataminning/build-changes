@@ -20,7 +20,7 @@ public enum CraftingBookCategory implements StringRepresentable {
    private final String name;
    private final int id;
 
-   private CraftingBookCategory(final String name, final int id) {
+   CraftingBookCategory(final String name, final int id) {
       this.name = name;
       this.id = id;
    }

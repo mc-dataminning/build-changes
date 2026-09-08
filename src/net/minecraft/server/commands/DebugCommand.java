@@ -15,7 +15,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Locale;
-import java.util.Objects;
 import net.minecraft.commands.CommandResultCallback;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
@@ -73,29 +72,29 @@ public class DebugCommand {
       MinecraftServer server = source.getServer();
       if (server.isTimeProfilerRunning()) {
          throw ERROR_ALREADY_RUNNING.create();
-      } else {
-         server.startTimeProfiler();
-         source.sendSuccess(() -> Component.translatable("commands.debug.started"), true);
-         return 0;
       }
+
+      server.startTimeProfiler();
+      source.sendSuccess(() -> Component.translatable("commands.debug.started"), true);
+      return 0;
    }
 
    private static int stop(final CommandSourceStack source) throws CommandSyntaxException {
       MinecraftServer server = source.getServer();
       if (!server.isTimeProfilerRunning()) {
          throw ERROR_NOT_RUNNING.create();
-      } else {
-         ProfileResults results = server.stopTimeProfiler();
-         double seconds = (double)results.getNanoDuration() / (double)TimeUtil.NANOSECONDS_PER_SECOND;
-         double tps = (double)results.getTickDuration() / seconds;
-         source.sendSuccess(
-            () -> Component.translatable(
-                  "commands.debug.stopped", String.format(Locale.ROOT, "%.2f", seconds), results.getTickDuration(), String.format(Locale.ROOT, "%.2f", tps)
-               ),
-            true
-         );
-         return (int)tps;
       }
+
+      ProfileResults results = server.stopTimeProfiler();
+      double seconds = (double)results.getNanoDuration() / TimeUtil.NANOSECONDS_PER_SECOND;
+      double tps = results.getTickDuration() / seconds;
+      source.sendSuccess(
+         () -> Component.translatable(
+            "commands.debug.stopped", String.format(Locale.ROOT, "%.2f", seconds), results.getTickDuration(), String.format(Locale.ROOT, "%.2f", tps)
+         ),
+         true
+      );
+      return (int)tps;
    }
 
    private static class TraceCustomExecutor
@@ -103,8 +102,8 @@ public class DebugCommand {
       implements CustomCommandExecutor.CommandAdapter<CommandSourceStack> {
       private static final CommandResponseTracker.DispatchWithArg<Component, CommandFunction<CommandSourceStack>, String> RESPONSE_TRACE = new CommandResponseTracker.DispatchWithArg<>(
          (function, totalValue, outputName) -> Component.translatable(
-               "commands.debug.function.success.single", totalValue, Component.translationArg(function.id()), outputName
-            ),
+            "commands.debug.function.success.single", totalValue, Component.translationArg(function.id()), outputName
+         ),
          (functionCount, totalValue, outputName) -> Component.translatable("commands.debug.function.success.multiple", totalValue, functionCount, outputName)
       );
 
@@ -116,51 +115,47 @@ public class DebugCommand {
       ) throws CommandSyntaxException {
          if (modifiers.isReturn()) {
             throw DebugCommand.NO_RETURN_RUN.create();
-         } else if (context.tracer() != null) {
-            throw DebugCommand.NO_RECURSIVE_TRACES.create();
-         } else {
-            CommandContext<CommandSourceStack> currentContext = currentStep.getTopContext();
-            Collection<CommandFunction<CommandSourceStack>> functions = FunctionArgument.getFunctions(currentContext, "name");
-            MinecraftServer server = source.getServer();
-            String outputName = "debug-trace-" + Util.getFilenameFormattedDateTime() + ".txt";
-            CommandDispatcher<CommandSourceStack> dispatcher = source.getServer().getFunctions().getDispatcher();
-            CommandResponseTracker<CommandFunction<CommandSourceStack>> tracker = CommandResponseTracker.create();
-
-            try {
-               Path dirPath = server.getFile("debug");
-               Files.createDirectories(dirPath);
-               final PrintWriter output = new PrintWriter(Files.newBufferedWriter(dirPath.resolve(outputName), StandardCharsets.UTF_8));
-               DebugCommand.Tracer tracer = new DebugCommand.Tracer(output);
-               context.tracer(tracer);
-
-               for (final CommandFunction<CommandSourceStack> function : functions) {
-                  try {
-                     CommandSourceStack functionSource = source.withSource(tracer).withMaximumPermission(LevelBasedPermissionSet.GAMEMASTER);
-                     InstantiatedFunction<CommandSourceStack> instantiatedFunction = function.instantiate(null, dispatcher);
-                     context.queueNext((new CallFunction<CommandSourceStack>(instantiatedFunction, CommandResultCallback.EMPTY, false) {
-                        {
-                           Objects.requireNonNull(TraceCustomExecutor.this);
-                        }
-
-                        public void execute(final CommandSourceStack sender, final ExecutionContext<CommandSourceStack> context, final Frame frame) {
-                           output.println(function.id());
-                           super.execute(sender, context, frame);
-                        }
-                     }).bind(functionSource));
-                     tracker.track(function, instantiatedFunction.entries().size());
-                  } catch (FunctionInstantiationException var18) {
-                     source.sendFailure(var18.messageComponent());
-                  }
-               }
-            } catch (IOException | UncheckedIOException var19) {
-               DebugCommand.LOGGER.warn("Tracing failed", var19);
-               source.sendFailure(Component.translatable("commands.debug.function.traceFailed"));
-            }
-
-            context.queueNext(
-               (var3, var4) -> source.sendSuccess(() -> tracker.dispatch(CommandResponseTracker.ElementType.ANY, RESPONSE_TRACE, outputName), true)
-            );
          }
+
+         if (context.tracer() != null) {
+            throw DebugCommand.NO_RECURSIVE_TRACES.create();
+         }
+
+         CommandContext<CommandSourceStack> currentContext = currentStep.getTopContext();
+         Collection<CommandFunction<CommandSourceStack>> functions = FunctionArgument.getFunctions(currentContext, "name");
+         MinecraftServer server = source.getServer();
+         String outputName = "debug-trace-" + Util.getFilenameFormattedDateTime() + ".txt";
+         CommandDispatcher<CommandSourceStack> dispatcher = source.getServer().getFunctions().getDispatcher();
+         CommandResponseTracker<CommandFunction<CommandSourceStack>> tracker = CommandResponseTracker.create();
+
+         try {
+            Path dirPath = server.getFile("debug");
+            Files.createDirectories(dirPath);
+            final PrintWriter output = new PrintWriter(Files.newBufferedWriter(dirPath.resolve(outputName), StandardCharsets.UTF_8));
+            DebugCommand.Tracer tracer = new DebugCommand.Tracer(output);
+            context.tracer(tracer);
+
+            for (final CommandFunction<CommandSourceStack> function : functions) {
+               try {
+                  CommandSourceStack functionSource = source.withSource(tracer).withMaximumPermission(LevelBasedPermissionSet.GAMEMASTER);
+                  InstantiatedFunction<CommandSourceStack> instantiatedFunction = function.instantiate(null, dispatcher);
+                  context.queueNext((new CallFunction<CommandSourceStack>(instantiatedFunction, CommandResultCallback.EMPTY, false) {
+                     public void execute(final CommandSourceStack sender, final ExecutionContext<CommandSourceStack> contextx, final Frame frame) {
+                        output.println(function.id());
+                        super.execute(sender, contextx, frame);
+                     }
+                  }).bind(functionSource));
+                  tracker.track(function, instantiatedFunction.entries().size());
+               } catch (FunctionInstantiationException exception) {
+                  source.sendFailure(exception.messageComponent());
+               }
+            }
+         } catch (UncheckedIOException | IOException e) {
+            DebugCommand.LOGGER.warn("Tracing failed", e);
+            source.sendFailure(Component.translatable("commands.debug.function.traceFailed"));
+         }
+
+         context.queueNext((var3, var4) -> source.sendSuccess(() -> tracker.dispatch(CommandResponseTracker.ElementType.ANY, RESPONSE_TRACE, outputName), true));
       }
    }
 

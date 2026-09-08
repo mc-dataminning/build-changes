@@ -15,7 +15,7 @@ public class PackedBitStorage {
    }
 
    public PackedBitStorage(final int bits, final int size, final long[] data) {
-      Validate.inclusiveBetween(1L, 32L, (long)bits);
+      Validate.inclusiveBetween(1L, 32L, bits);
       this.size = size;
       this.bits = bits;
       this.data = data;
@@ -27,32 +27,32 @@ public class PackedBitStorage {
    }
 
    public void set(final int index, final int value) {
-      Validate.inclusiveBetween(0L, (long)(this.size - 1), (long)index);
-      Validate.inclusiveBetween(0L, this.mask, (long)value);
+      Validate.inclusiveBetween(0L, this.size - 1, index);
+      Validate.inclusiveBetween(0L, this.mask, value);
       int position = index * this.bits;
       int startData = position >> 6;
       int endData = (index + 1) * this.bits - 1 >> 6;
       int startBit = position ^ startData << 6;
-      this.data[startData] = this.data[startData] & ~(this.mask << startBit) | ((long)value & this.mask) << startBit;
+      this.data[startData] = this.data[startData] & ~(this.mask << startBit) | (value & this.mask) << startBit;
       if (startData != endData) {
          int shiftBits = 64 - startBit;
          int wantedBits = this.bits - shiftBits;
-         this.data[endData] = this.data[endData] >>> wantedBits << wantedBits | ((long)value & this.mask) >> shiftBits;
+         this.data[endData] = this.data[endData] >>> wantedBits << wantedBits | (value & this.mask) >> shiftBits;
       }
    }
 
    public int get(final int index) {
-      Validate.inclusiveBetween(0L, (long)(this.size - 1), (long)index);
+      Validate.inclusiveBetween(0L, this.size - 1, index);
       int position = index * this.bits;
       int startData = position >> 6;
       int endData = (index + 1) * this.bits - 1 >> 6;
       int startBit = position ^ startData << 6;
       if (startData == endData) {
          return (int)(this.data[startData] >>> startBit & this.mask);
-      } else {
-         int shiftBits = 64 - startBit;
-         return (int)((this.data[startData] >>> startBit | this.data[endData] << shiftBits) & this.mask);
       }
+
+      int shiftBits = 64 - startBit;
+      return (int)((this.data[startData] >>> startBit | this.data[endData] << shiftBits) & this.mask);
    }
 
    public long[] getRaw() {

@@ -111,8 +111,8 @@ public class ComponentPredicateParser {
                      ? context.createComponentTest((ImmutableStringReader)state.input(), component, value)
                      : context.createComponentTest((ImmutableStringReader)state.input(), component);
                }
-            } catch (CommandSyntaxException var9x) {
-               state.errorCollector().store(state.mark(), var9x);
+            } catch (CommandSyntaxException e) {
+               state.errorCollector().store(state.mark(), e);
                return null;
             }
          }

@@ -44,15 +44,12 @@ public class AttributesRenameFix extends DataFix {
       return components.update(
          DSL.remainderFinder(),
          componentData -> componentData.update(
-               "minecraft:attribute_modifiers",
-               attributeModifiers -> (Dynamic)DataFixUtils.orElse(
-                     attributeModifiers.asStreamOpt()
-                        .result()
-                        .map(modifierStream -> modifierStream.map(this::fixTypeField))
-                        .map(attributeModifiers::createList),
-                     attributeModifiers
-                  )
+            "minecraft:attribute_modifiers",
+            attributeModifiers -> (Dynamic)DataFixUtils.orElse(
+               attributeModifiers.asStreamOpt().result().map(modifierStream -> modifierStream.map(this::fixTypeField)).map(attributeModifiers::createList),
+               attributeModifiers
             )
+         )
       );
    }
 
@@ -60,14 +57,14 @@ public class AttributesRenameFix extends DataFix {
       return components.update(
          DSL.remainderFinder(),
          componentData -> componentData.update(
-               "minecraft:attribute_modifiers",
-               attributeModifiers -> attributeModifiers.update(
-                     "modifiers",
-                     modifiers -> (Dynamic)DataFixUtils.orElse(
-                           modifiers.asStreamOpt().result().map(modifierStream -> modifierStream.map(this::fixTypeField)).map(modifiers::createList), modifiers
-                        )
-                  )
+            "minecraft:attribute_modifiers",
+            attributeModifiers -> attributeModifiers.update(
+               "modifiers",
+               modifiers -> (Dynamic)DataFixUtils.orElse(
+                  modifiers.asStreamOpt().result().map(modifierStream -> modifierStream.map(this::fixTypeField)).map(modifiers::createList), modifiers
+               )
             )
+         )
       );
    }
 
@@ -75,11 +72,11 @@ public class AttributesRenameFix extends DataFix {
       return entity.update(
          DSL.remainderFinder(),
          tag -> tag.update(
-               "attributes",
-               attributeList -> (Dynamic)DataFixUtils.orElse(
-                     attributeList.asStreamOpt().result().map(s -> s.map(this::fixIdField)).map(attributeList::createList), attributeList
-                  )
+            "attributes",
+            attributeList -> (Dynamic)DataFixUtils.orElse(
+               attributeList.asStreamOpt().result().map(s -> s.map(this::fixIdField)).map(attributeList::createList), attributeList
             )
+         )
       );
    }
 

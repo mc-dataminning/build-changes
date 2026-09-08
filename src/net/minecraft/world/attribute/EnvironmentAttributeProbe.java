@@ -2,7 +2,6 @@ package net.minecraft.world.attribute;
 
 import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.function.Function;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -11,12 +10,10 @@ import org.jspecify.annotations.Nullable;
 public class EnvironmentAttributeProbe {
    private final Map<EnvironmentAttribute<?>, EnvironmentAttributeProbe.ValueProbe<?>> valueProbes = new Reference2ObjectOpenHashMap();
    private final Function<EnvironmentAttribute<?>, EnvironmentAttributeProbe.ValueProbe<?>> valueProbeFactory = x$0 -> new EnvironmentAttributeProbe.ValueProbe<>(
-         x$0
-      );
-   @Nullable
-   private Level level;
-   @Nullable
-   private Vec3 position;
+      x$0
+   );
+   private @Nullable Level level;
+   private @Nullable Vec3 position;
    private final SpatialAttributeInterpolator biomeInterpolator = new SpatialAttributeInterpolator();
 
    public void reset() {
@@ -46,12 +43,9 @@ public class EnvironmentAttributeProbe {
 
    private class ValueProbe<Value> {
       private Value lastValue;
-      @Nullable
-      private Value newValue;
+      private @Nullable Value newValue;
 
       public ValueProbe(final EnvironmentAttribute<Value> attribute) {
-         Objects.requireNonNull(EnvironmentAttributeProbe.this);
-         super();
          Value value = this.getValueFromLevel(attribute);
          this.lastValue = value;
          this.newValue = value;
@@ -68,11 +62,11 @@ public class EnvironmentAttributeProbe {
       public boolean tick() {
          if (this.newValue == null) {
             return true;
-         } else {
-            this.lastValue = this.newValue;
-            this.newValue = null;
-            return false;
          }
+
+         this.lastValue = this.newValue;
+         this.newValue = null;
+         return false;
       }
 
       public Value get(final EnvironmentAttribute<Value> attribute, final float partialTicks) {

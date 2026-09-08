@@ -37,13 +37,11 @@ public class Snowball extends ThrowableItemProjectile {
 
    private ParticleOptions getParticle() {
       ItemStack item = this.getItem();
-      return (ParticleOptions)(item.isEmpty()
-         ? ParticleTypes.ITEM_SNOWBALL
-         : new ItemParticleOption(ParticleTypes.ITEM, ItemStackTemplate.fromNonEmptyStack(item)));
+      return item.isEmpty() ? ParticleTypes.ITEM_SNOWBALL : new ItemParticleOption(ParticleTypes.ITEM, ItemStackTemplate.fromNonEmptyStack(item));
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 3) {
          ParticleOptions particle = this.getParticle();
 
@@ -58,7 +56,7 @@ public class Snowball extends ThrowableItemProjectile {
       super.onHitEntity(hitResult);
       Entity entity = hitResult.getEntity();
       int damage = entity instanceof Blaze ? 3 : 0;
-      entity.hurt(this.damageSources().thrown(this, this.getOwner()), (float)damage);
+      entity.hurt(this.damageSources().thrown(this, this.getOwner()), damage);
    }
 
    @Override

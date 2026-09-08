@@ -217,10 +217,10 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
    }
 
    private void forContainersInArea(final BoundingBox bb, final LevelTicks.PosAndContainerConsumer<T> ouput) {
-      int xMin = SectionPos.posToSectionCoord((double)bb.minX());
-      int zMin = SectionPos.posToSectionCoord((double)bb.minZ());
-      int xMax = SectionPos.posToSectionCoord((double)bb.maxX());
-      int zMax = SectionPos.posToSectionCoord((double)bb.maxZ());
+      int xMin = SectionPos.posToSectionCoord(bb.minX());
+      int zMin = SectionPos.posToSectionCoord(bb.minZ());
+      int xMax = SectionPos.posToSectionCoord(bb.maxX());
+      int zMax = SectionPos.posToSectionCoord(bb.maxZ());
 
       for (int x = xMin; x <= xMax; x++) {
          for (int z = zMin; z <= zMax; z++) {
@@ -266,10 +266,8 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
       long maxSubTick = info.getMax();
       ticksToAdd.forEach(
          tick -> this.schedule(
-               new ScheduledTick<>(
-                  tick.type(), tick.pos().offset(offset), tick.triggerTick(), tick.priority(), tick.subTickOrder() - minSubTick + maxSubTick + 1L
-               )
-            )
+            new ScheduledTick<>(tick.type(), tick.pos().offset(offset), tick.triggerTick(), tick.priority(), tick.subTickOrder() - minSubTick + maxSubTick + 1L)
+         )
       );
    }
 

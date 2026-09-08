@@ -75,15 +75,15 @@ public class ThrownTrident extends AbstractArrow {
 
             this.discard();
          } else {
-            if (!(currentOwner instanceof Player) && this.position().distanceTo(currentOwner.getEyePosition()) < (double)currentOwner.getBbWidth() + 1.0) {
+            if (!(currentOwner instanceof Player) && this.position().distanceTo(currentOwner.getEyePosition()) < currentOwner.getBbWidth() + 1.0) {
                this.discard();
                return;
             }
 
             this.setNoPhysics(true);
             Vec3 vec = currentOwner.getEyePosition().subtract(this.position());
-            this.setPosRaw(this.getX(), this.getY() + vec.y * 0.015 * (double)loyalty, this.getZ());
-            double accel = 0.05 * (double)loyalty;
+            this.setPosRaw(this.getX(), this.getY() + vec.y * 0.015 * loyalty, this.getZ());
+            double accel = 0.05 * loyalty;
             this.setDeltaMovement(this.getDeltaMovement().scale(0.95).add(vec.normalize().scale(accel)));
             if (this.clientSideReturnTridentTickCount == 0) {
                this.playSound(SoundEvents.TRIDENT_RETURN, 10.0F, 1.0F);
@@ -105,9 +105,8 @@ public class ThrownTrident extends AbstractArrow {
       return this.entityData.get(ID_FOIL);
    }
 
-   @Nullable
    @Override
-   protected EntityHitResult findHitEntity(final Vec3 from, final Vec3 to) {
+   protected @Nullable EntityHitResult findHitEntity(final Vec3 from, final Vec3 to) {
       return this.dealtDamage ? null : super.findHitEntity(from, to);
    }
 
@@ -122,7 +121,7 @@ public class ThrownTrident extends AbstractArrow {
       Entity entity = hitResult.getEntity();
       float dmg = 8.0F;
       Entity currentOwner = this.getOwner();
-      DamageSource damageSource = this.damageSources().trident(this, (Entity)(currentOwner == null ? this : currentOwner));
+      DamageSource damageSource = this.damageSources().trident(this, currentOwner == null ? this : currentOwner);
       if (this.level() instanceof ServerLevel serverLevel) {
          dmg = EnchantmentHelper.modifyDamage(serverLevel, this.getWeaponItem(), entity, damageSource, dmg);
       }

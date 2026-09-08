@@ -14,8 +14,7 @@ import org.jspecify.annotations.Nullable;
 public class LookAtPlayerGoal extends Goal {
    public static final float DEFAULT_PROBABILITY = 0.02F;
    protected final Mob mob;
-   @Nullable
-   protected Entity lookAt;
+   protected @Nullable Entity lookAt;
    protected final float lookDistance;
    private int lookTime;
    protected final float probability;
@@ -42,9 +41,9 @@ public class LookAtPlayerGoal extends Goal {
       this.setFlags(EnumSet.of(Goal.Flag.LOOK));
       if (lookAtType == Player.class) {
          Predicate<Entity> selector = EntitySelector.notRiding(mob);
-         this.lookAtContext = TargetingConditions.forNonCombat().range((double)lookDistance).selector((target, level) -> selector.test(target));
+         this.lookAtContext = TargetingConditions.forNonCombat().range(lookDistance).selector((target, level) -> selector.test(target));
       } else {
-         this.lookAtContext = TargetingConditions.forNonCombat().range((double)lookDistance);
+         this.lookAtContext = TargetingConditions.forNonCombat().range(lookDistance);
       }
    }
 
@@ -52,31 +51,27 @@ public class LookAtPlayerGoal extends Goal {
    public boolean canUse() {
       if (this.mob.getRandom().nextFloat() >= this.probability) {
          return false;
-      } else {
-         if (this.mob.getTarget() != null) {
-            this.lookAt = this.mob.getTarget();
-         }
-
-         ServerLevel level = getServerLevel(this.mob);
-         if (this.lookAtType == Player.class) {
-            this.lookAt = level.getNearestPlayer(this.lookAtContext, this.mob, this.mob.getX(), this.mob.getEyeY(), this.mob.getZ());
-         } else {
-            this.lookAt = level.getNearestEntity(
-               this.mob
-                  .level()
-                  .getEntitiesOfClass(
-                     this.lookAtType, this.mob.getBoundingBox().inflate((double)this.lookDistance, 3.0, (double)this.lookDistance), entity -> true
-                  ),
-               this.lookAtContext,
-               this.mob,
-               this.mob.getX(),
-               this.mob.getEyeY(),
-               this.mob.getZ()
-            );
-         }
-
-         return this.lookAt != null;
       }
+
+      if (this.mob.getTarget() != null) {
+         this.lookAt = this.mob.getTarget();
+      }
+
+      ServerLevel level = getServerLevel(this.mob);
+      if (this.lookAtType == Player.class) {
+         this.lookAt = level.getNearestPlayer(this.lookAtContext, this.mob, this.mob.getX(), this.mob.getEyeY(), this.mob.getZ());
+      } else {
+         this.lookAt = level.getNearestEntity(
+            this.mob.level().getEntitiesOfClass(this.lookAtType, this.mob.getBoundingBox().inflate(this.lookDistance, 3.0, this.lookDistance), entity -> true),
+            this.lookAtContext,
+            this.mob,
+            this.mob.getX(),
+            this.mob.getEyeY(),
+            this.mob.getZ()
+         );
+      }
+
+      return this.lookAt != null;
    }
 
    @Override
@@ -84,7 +79,7 @@ public class LookAtPlayerGoal extends Goal {
       if (!this.lookAt.isAlive()) {
          return false;
       } else {
-         return this.mob.distanceToSqr(this.lookAt) > (double)(this.lookDistance * this.lookDistance) ? false : this.lookTime > 0;
+         return this.mob.distanceToSqr(this.lookAt) > this.lookDistance * this.lookDistance ? false : this.lookTime > 0;
       }
    }
 

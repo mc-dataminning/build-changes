@@ -14,7 +14,7 @@ public interface EnvironmentAttributeReader {
       }
 
       @Override
-      public <Value> Value getValue(final EnvironmentAttribute<Value> attribute, final Vec3 pos, @Nullable final SpatialAttributeInterpolator biomeInterpolator) {
+      public <Value> Value getValue(final EnvironmentAttribute<Value> attribute, final Vec3 pos, final @Nullable SpatialAttributeInterpolator biomeInterpolator) {
          return attribute.defaultValue();
       }
    };

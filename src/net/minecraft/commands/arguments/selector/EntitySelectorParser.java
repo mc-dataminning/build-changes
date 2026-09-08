@@ -65,11 +65,11 @@ public class EntitySelectorParser {
       name -> Component.translatableEscape("argument.entity.options.valueless", name)
    );
    public static final BiConsumer<Vec3, List<? extends Entity>> ORDER_NEAREST = (p, c) -> c.sort(
-         (a, b) -> Doubles.compare(a.distanceToSqr(p), b.distanceToSqr(p))
-      );
+      (a, b) -> Doubles.compare(a.distanceToSqr(p), b.distanceToSqr(p))
+   );
    public static final BiConsumer<Vec3, List<? extends Entity>> ORDER_FURTHEST = (p, c) -> c.sort(
-         (a, b) -> Doubles.compare(b.distanceToSqr(p), a.distanceToSqr(p))
-      );
+      (a, b) -> Doubles.compare(b.distanceToSqr(p), a.distanceToSqr(p))
+   );
    public static final BiConsumer<Vec3, List<? extends Entity>> ORDER_RANDOM = (p, c) -> Collections.shuffle(c);
    public static final BiFunction<SuggestionsBuilder, Consumer<SuggestionsBuilder>, CompletableFuture<Suggestions>> SUGGEST_NOTHING = (b, s) -> b.buildFuture();
    private final StringReader reader;
@@ -77,42 +77,29 @@ public class EntitySelectorParser {
    private int maxResults;
    private boolean includesEntities;
    private boolean worldLimited;
-   @Nullable
-   private MinMaxBounds.Doubles distance;
-   @Nullable
-   private MinMaxBounds.Ints level;
-   @Nullable
-   private Double x;
-   @Nullable
-   private Double y;
-   @Nullable
-   private Double z;
-   @Nullable
-   private Double deltaX;
-   @Nullable
-   private Double deltaY;
-   @Nullable
-   private Double deltaZ;
-   @Nullable
-   private MinMaxBounds.FloatDegrees rotX;
-   @Nullable
-   private MinMaxBounds.FloatDegrees rotY;
+   private MinMaxBounds.@Nullable Doubles distance;
+   private MinMaxBounds.@Nullable Ints level;
+   private @Nullable Double x;
+   private @Nullable Double y;
+   private @Nullable Double z;
+   private @Nullable Double deltaX;
+   private @Nullable Double deltaY;
+   private @Nullable Double deltaZ;
+   private MinMaxBounds.@Nullable FloatDegrees rotX;
+   private MinMaxBounds.@Nullable FloatDegrees rotY;
    private final List<Predicate<Entity>> predicates = new ArrayList<>();
    private BiConsumer<Vec3, List<? extends Entity>> order = EntitySelector.ORDER_ARBITRARY;
    private boolean currentEntity;
-   @Nullable
-   private String playerName;
+   private @Nullable String playerName;
    private int startPosition;
-   @Nullable
-   private UUID entityUUID;
+   private @Nullable UUID entityUUID;
    private BiFunction<SuggestionsBuilder, Consumer<SuggestionsBuilder>, CompletableFuture<Suggestions>> suggestions = SUGGEST_NOTHING;
    private final InvertableSetOptionState nameOption = new InvertableSetOptionState();
    private final SetOnceOptionState limitedOption = new SetOnceOptionState();
    private final SetOnceOptionState sortedOption = new SetOnceOptionState();
    private final InvertableSetOptionState gamemodeOption = new InvertableSetOptionState();
    private final InvertableSetOptionState teamOption = new InvertableSetOptionState();
-   @Nullable
-   private EntityType<?> type;
+   private @Nullable EntityType<?> type;
    private final InvertableSetOptionState typeOption = new InvertableSetOptionState();
    private final SetOnceOptionState scoresOption = new SetOnceOptionState();
    private final SetOnceOptionState advancementsOption = new SetOnceOptionState();
@@ -124,11 +111,7 @@ public class EntitySelectorParser {
    }
 
    public static <S> boolean allowSelectors(final S source) {
-      if (source instanceof PermissionSetSupplier sender && sender.permissions().hasPermission(Permissions.COMMANDS_ENTITY_SELECTORS)) {
-         return true;
-      }
-
-      return false;
+      return source instanceof PermissionSetSupplier sender && sender.permissions().hasPermission(Permissions.COMMANDS_ENTITY_SELECTORS);
    }
 
    @Deprecated
@@ -196,13 +179,7 @@ public class EntitySelectorParser {
       }
 
       if (this.level != null) {
-         this.predicates.add(e -> {
-            if (e instanceof ServerPlayer serverPlayer && this.level.matches(serverPlayer.experienceLevel)) {
-               return true;
-            }
-
-            return false;
-         });
+         this.predicates.add(e -> e instanceof ServerPlayer serverPlayer && this.level.matches(serverPlayer.experienceLevel));
       }
    }
 
@@ -220,64 +197,64 @@ public class EntitySelectorParser {
       this.suggestions = this::suggestSelector;
       if (!this.reader.canRead()) {
          throw ERROR_MISSING_SELECTOR_TYPE.createWithContext(this.reader);
-      } else {
-         int start = this.reader.getCursor();
-         char type = this.reader.read();
+      }
 
-         if (switch (type) {
-            case 'a' -> {
-               this.maxResults = Integer.MAX_VALUE;
-               this.includesEntities = false;
-               this.order = EntitySelector.ORDER_ARBITRARY;
-               this.limitToType(EntityTypes.PLAYER);
-               yield false;
-            }
-            default -> {
-               this.reader.setCursor(start);
-               throw ERROR_UNKNOWN_SELECTOR_TYPE.createWithContext(this.reader, "@" + type);
-            }
-            case 'e' -> {
-               this.maxResults = Integer.MAX_VALUE;
-               this.includesEntities = true;
-               this.order = EntitySelector.ORDER_ARBITRARY;
-               yield true;
-            }
-            case 'n' -> {
-               this.maxResults = 1;
-               this.includesEntities = true;
-               this.order = ORDER_NEAREST;
-               yield true;
-            }
-            case 'p' -> {
-               this.maxResults = 1;
-               this.includesEntities = false;
-               this.order = ORDER_NEAREST;
-               this.limitToType(EntityTypes.PLAYER);
-               yield false;
-            }
-            case 'r' -> {
-               this.maxResults = 1;
-               this.includesEntities = false;
-               this.order = ORDER_RANDOM;
-               this.limitToType(EntityTypes.PLAYER);
-               yield false;
-            }
-            case 's' -> {
-               this.maxResults = 1;
-               this.includesEntities = true;
-               this.currentEntity = true;
-               yield false;
-            }
-         }) {
-            this.predicates.add(Entity::isAlive);
-         }
+      int start = this.reader.getCursor();
+      char type = this.reader.read();
 
-         this.suggestions = this::suggestOpenOptions;
-         if (this.reader.canRead() && this.reader.peek() == '[') {
-            this.reader.skip();
-            this.suggestions = this::suggestOptionsKeyOrClose;
-            this.parseOptions();
+      if (switch (type) {
+         case 'a' -> {
+            this.maxResults = Integer.MAX_VALUE;
+            this.includesEntities = false;
+            this.order = EntitySelector.ORDER_ARBITRARY;
+            this.limitToType(EntityTypes.PLAYER);
+            yield false;
          }
+         default -> {
+            this.reader.setCursor(start);
+            throw ERROR_UNKNOWN_SELECTOR_TYPE.createWithContext(this.reader, "@" + type);
+         }
+         case 'e' -> {
+            this.maxResults = Integer.MAX_VALUE;
+            this.includesEntities = true;
+            this.order = EntitySelector.ORDER_ARBITRARY;
+            yield true;
+         }
+         case 'n' -> {
+            this.maxResults = 1;
+            this.includesEntities = true;
+            this.order = ORDER_NEAREST;
+            yield true;
+         }
+         case 'p' -> {
+            this.maxResults = 1;
+            this.includesEntities = false;
+            this.order = ORDER_NEAREST;
+            this.limitToType(EntityTypes.PLAYER);
+            yield false;
+         }
+         case 'r' -> {
+            this.maxResults = 1;
+            this.includesEntities = false;
+            this.order = ORDER_RANDOM;
+            this.limitToType(EntityTypes.PLAYER);
+            yield false;
+         }
+         case 's' -> {
+            this.maxResults = 1;
+            this.includesEntities = true;
+            this.currentEntity = true;
+            yield false;
+         }
+      }) {
+         this.predicates.add(Entity::isAlive);
+      }
+
+      this.suggestions = this::suggestOpenOptions;
+      if (this.reader.canRead() && this.reader.peek() == '[') {
+         this.reader.skip();
+         this.suggestions = this::suggestOptionsKeyOrClose;
+         this.parseOptions();
       }
    }
 
@@ -292,7 +269,7 @@ public class EntitySelectorParser {
       try {
          this.entityUUID = UUID.fromString(name);
          this.includesEntities = true;
-      } catch (IllegalArgumentException var4) {
+      } catch (IllegalArgumentException ex) {
          if (name.isEmpty() || name.length() > 16) {
             this.reader.setCursor(start);
             throw ERROR_INVALID_NAME_OR_UUID.createWithContext(this.reader);
@@ -381,8 +358,7 @@ public class EntitySelectorParser {
       this.worldLimited = true;
    }
 
-   @Nullable
-   public MinMaxBounds.Doubles getDistance() {
+   public MinMaxBounds.@Nullable Doubles getDistance() {
       return this.distance;
    }
 
@@ -390,8 +366,7 @@ public class EntitySelectorParser {
       this.distance = distance;
    }
 
-   @Nullable
-   public MinMaxBounds.Ints getLevel() {
+   public MinMaxBounds.@Nullable Ints getLevel() {
       return this.level;
    }
 
@@ -399,8 +374,7 @@ public class EntitySelectorParser {
       this.level = level;
    }
 
-   @Nullable
-   public MinMaxBounds.FloatDegrees getRotX() {
+   public MinMaxBounds.@Nullable FloatDegrees getRotX() {
       return this.rotX;
    }
 
@@ -408,8 +382,7 @@ public class EntitySelectorParser {
       this.rotX = rotX;
    }
 
-   @Nullable
-   public MinMaxBounds.FloatDegrees getRotY() {
+   public MinMaxBounds.@Nullable FloatDegrees getRotY() {
       return this.rotY;
    }
 
@@ -417,18 +390,15 @@ public class EntitySelectorParser {
       this.rotY = rotY;
    }
 
-   @Nullable
-   public Double getX() {
+   public @Nullable Double getX() {
       return this.x;
    }
 
-   @Nullable
-   public Double getY() {
+   public @Nullable Double getY() {
       return this.y;
    }
 
-   @Nullable
-   public Double getZ() {
+   public @Nullable Double getZ() {
       return this.z;
    }
 
@@ -456,18 +426,15 @@ public class EntitySelectorParser {
       this.deltaZ = deltaZ;
    }
 
-   @Nullable
-   public Double getDeltaX() {
+   public @Nullable Double getDeltaX() {
       return this.deltaX;
    }
 
-   @Nullable
-   public Double getDeltaY() {
+   public @Nullable Double getDeltaY() {
       return this.deltaY;
    }
 
-   @Nullable
-   public Double getDeltaZ() {
+   public @Nullable Double getDeltaZ() {
       return this.deltaZ;
    }
 

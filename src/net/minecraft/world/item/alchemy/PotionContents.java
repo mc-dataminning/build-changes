@@ -47,12 +47,12 @@ public record PotionContents(Optional<Holder<Potion>> potion, Optional<Integer> 
    public static final int BASE_POTION_COLOR = -13083194;
    private static final Codec<PotionContents> FULL_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Potion.CODEC.optionalFieldOf("potion").forGetter(PotionContents::potion),
-               Codec.INT.optionalFieldOf("custom_color").forGetter(PotionContents::customColor),
-               MobEffectInstance.CODEC.listOf().optionalFieldOf("custom_effects", List.of()).forGetter(PotionContents::customEffects),
-               Codec.STRING.optionalFieldOf("custom_name").forGetter(PotionContents::customName)
-            )
-            .apply(i, PotionContents::new)
+            Potion.CODEC.optionalFieldOf("potion").forGetter(PotionContents::potion),
+            Codec.INT.optionalFieldOf("custom_color").forGetter(PotionContents::customColor),
+            MobEffectInstance.CODEC.listOf().optionalFieldOf("custom_effects", List.of()).forGetter(PotionContents::customEffects),
+            Codec.STRING.optionalFieldOf("custom_name").forGetter(PotionContents::customName)
+         )
+         .apply(i, PotionContents::new)
    );
    public static final Codec<PotionContents> CODEC = Codec.withAlternative(FULL_CODEC, Potion.CODEC, PotionContents::new);
    public static final StreamCodec<RegistryFriendlyByteBuf, PotionContents> STREAM_CODEC = StreamCodec.composite(
@@ -93,9 +93,9 @@ public record PotionContents(Optional<Holder<Potion>> potion, Optional<Integer> 
       if (this.potion.isEmpty()) {
          return this.customEffects;
       } else {
-         return (Iterable<MobEffectInstance>)(this.customEffects.isEmpty()
+         return this.customEffects.isEmpty()
             ? this.potion.get().value().getEffects()
-            : Iterables.concat(this.potion.get().value().getEffects(), this.customEffects));
+            : Iterables.concat(this.potion.get().value().getEffects(), this.customEffects);
       }
    }
 
@@ -242,7 +242,7 @@ public record PotionContents(Optional<Holder<Potion>> potion, Optional<Integer> 
 
    @Override
    public void onConsume(final Level level, final LivingEntity user, final ItemStack stack, final Consumable consumable) {
-      this.applyToLivingEntity(user, stack.getOrDefault(DataComponents.POTION_DURATION_SCALE, Float.valueOf(1.0F)));
+      this.applyToLivingEntity(user, stack.getOrDefault(DataComponents.POTION_DURATION_SCALE, 1.0F));
    }
 
    @Override

@@ -27,7 +27,7 @@ public interface ContextIntProvider extends Validatable {
 
    static int longToIntSafe(final long value) {
       int result = (int)value;
-      if ((long)result != value) {
+      if (result != value) {
          throw new ArithmeticException("Value " + value + " can't be safely converted to int");
       } else {
          return result;

@@ -12,7 +12,7 @@ public class ArgumentVisitor {
    public static <S> void visitArguments(final ParseResults<S> command, final ArgumentVisitor.Output<S> output, final boolean rejectRootRedirects) {
       CommandContextBuilder<S> rootContext = command.getContext();
       CommandContextBuilder<S> context = rootContext;
-      visitNodeArguments(rootContext, output);
+      visitNodeArguments(context, output);
 
       CommandContextBuilder<S> child;
       while ((child = context.getChild()) != null && (!rejectRootRedirects || child.getRootNode() != rootContext.getRootNode())) {
@@ -36,13 +36,13 @@ public class ArgumentVisitor {
       final CommandContextBuilder<S> context,
       final ArgumentVisitor.Output<S> output,
       final ArgumentCommandNode<S, T> argument,
-      @Nullable final ParsedArgument<S, ?> value
+      final @Nullable ParsedArgument<S, ?> value
    ) {
       output.accept(context, argument, (ParsedArgument<S, T>)value);
    }
 
    @FunctionalInterface
    public interface Output<S> {
-      <T> void accept(CommandContextBuilder<S> context, ArgumentCommandNode<S, T> argument, @Nullable final ParsedArgument<S, T> value);
+      <T> void accept(CommandContextBuilder<S> context, ArgumentCommandNode<S, T> argument, final @Nullable ParsedArgument<S, T> value);
    }
 }

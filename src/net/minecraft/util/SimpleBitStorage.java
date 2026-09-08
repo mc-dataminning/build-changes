@@ -219,7 +219,7 @@ public class SimpleBitStorage implements BitStorage {
 
          for (int indexInLong = this.valuesPerLong - 1; indexInLong >= 0; indexInLong--) {
             packedValue <<= bits;
-            packedValue |= (long)values[inputOffset + indexInLong] & this.mask;
+            packedValue |= values[inputOffset + indexInLong] & this.mask;
          }
 
          this.data[outputIndex++] = packedValue;
@@ -231,7 +231,7 @@ public class SimpleBitStorage implements BitStorage {
 
          for (int indexInLong = remainderCount - 1; indexInLong >= 0; indexInLong--) {
             lastPackedValue <<= bits;
-            lastPackedValue |= (long)values[inputOffset + indexInLong] & this.mask;
+            lastPackedValue |= values[inputOffset + indexInLong] & this.mask;
          }
 
          this.data[outputIndex] = lastPackedValue;
@@ -242,8 +242,8 @@ public class SimpleBitStorage implements BitStorage {
       this(bits, size, (long[])null);
    }
 
-   public SimpleBitStorage(final int bits, final int size, @Nullable final long[] data) {
-      Validate.inclusiveBetween(1L, 32L, (long)bits);
+   public SimpleBitStorage(final int bits, final int size, final long @Nullable [] data) {
+      Validate.inclusiveBetween(1L, 32L, bits);
       this.size = size;
       this.bits = bits;
       this.mask = (1L << bits) - 1L;
@@ -267,35 +267,35 @@ public class SimpleBitStorage implements BitStorage {
    private int cellIndex(final int bitIndex) {
       long mul = Integer.toUnsignedLong(this.divideMul);
       long add = Integer.toUnsignedLong(this.divideAdd);
-      return (int)((long)bitIndex * mul + add >> 32 >> this.divideShift);
+      return (int)(bitIndex * mul + add >> 32 >> this.divideShift);
    }
 
    @Override
    public int getAndSet(final int index, final int value) {
-      Validate.inclusiveBetween(0L, (long)(this.size - 1), (long)index);
-      Validate.inclusiveBetween(0L, this.mask, (long)value);
+      Validate.inclusiveBetween(0L, this.size - 1, index);
+      Validate.inclusiveBetween(0L, this.mask, value);
       int cellIndex = this.cellIndex(index);
       long cellValue = this.data[cellIndex];
       int bitIndex = (index - cellIndex * this.valuesPerLong) * this.bits;
       int oldValue = (int)(cellValue >> bitIndex & this.mask);
-      this.data[cellIndex] = cellValue & ~(this.mask << bitIndex) | ((long)value & this.mask) << bitIndex;
+      this.data[cellIndex] = cellValue & ~(this.mask << bitIndex) | (value & this.mask) << bitIndex;
       return oldValue;
    }
 
    @Override
    public void set(final int index, final int value) {
-      Validate.inclusiveBetween(0L, (long)(this.size - 1), (long)index);
-      Validate.inclusiveBetween(0L, this.mask, (long)value);
+      Validate.inclusiveBetween(0L, this.size - 1, index);
+      Validate.inclusiveBetween(0L, this.mask, value);
       int cellIndex = this.cellIndex(index);
       long cellValue = this.data[cellIndex];
       int bitIndex = (index - cellIndex * this.valuesPerLong) * this.bits;
-      this.data[cellIndex] = cellValue & ~(this.mask << bitIndex) | ((long)value & this.mask) << bitIndex;
+      this.data[cellIndex] = cellValue & ~(this.mask << bitIndex) | (value & this.mask) << bitIndex;
    }
 
    @Override
    public void fill(final int value) {
-      Validate.inclusiveBetween(0L, this.mask, (long)value);
-      long cellValue = (long)value & this.mask;
+      Validate.inclusiveBetween(0L, this.mask, value);
+      long cellValue = value & this.mask;
       int offset = this.bits;
 
       do {
@@ -308,7 +308,7 @@ public class SimpleBitStorage implements BitStorage {
 
    @Override
    public int get(final int index) {
-      Validate.inclusiveBetween(0L, (long)(this.size - 1), (long)index);
+      Validate.inclusiveBetween(0L, this.size - 1, index);
       int cellIndex = this.cellIndex(index);
       long cellValue = this.data[cellIndex];
       int bitIndex = (index - cellIndex * this.valuesPerLong) * this.bits;

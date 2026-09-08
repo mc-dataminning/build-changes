@@ -12,7 +12,7 @@ public record PlayerScoreEntry(String owner, int value, @Nullable Component disp
    }
 
    public Component ownerName() {
-      return (Component)(this.display != null ? this.display : Component.literal(this.owner()));
+      return this.display != null ? this.display : Component.literal(this.owner());
    }
 
    public MutableComponent formatValue(final NumberFormat _default) {

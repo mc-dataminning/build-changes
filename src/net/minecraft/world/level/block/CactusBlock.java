@@ -33,7 +33,7 @@ public class CactusBlock extends Block {
 
    protected CactusBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(0)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
    }
 
    @Override
@@ -63,13 +63,13 @@ public class CactusBlock extends Block {
             }
          } else if (age == 15 && height < 3) {
             level.setBlockAndUpdate(above, this.defaultBlockState());
-            BlockState aboveBlock = state.setValue(AGE, Integer.valueOf(0));
+            BlockState aboveBlock = state.setValue(AGE, 0);
             level.setBlock(pos, aboveBlock, 260);
             level.neighborChanged(aboveBlock, above, this, null, false);
          }
 
          if (age < 15) {
-            level.setBlock(pos, state.setValue(AGE, Integer.valueOf(age + 1)), 260);
+            level.setBlock(pos, state.setValue(AGE, age + 1), 260);
          }
       }
    }

@@ -34,7 +34,7 @@ public class FarmlandBlock extends Block {
 
    protected FarmlandBlock(final Block baseBlock, final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(MOISTURE, Integer.valueOf(0)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(MOISTURE, 0));
       this.baseBlock = baseBlock;
    }
 
@@ -91,18 +91,18 @@ public class FarmlandBlock extends Block {
       int moisture = state.getValue(MOISTURE);
       if (!isNearWater(level, pos) && !level.isRainingAt(pos.above())) {
          if (moisture > 0) {
-            level.setBlock(pos, state.setValue(MOISTURE, Integer.valueOf(moisture - 1)), 2);
+            level.setBlock(pos, state.setValue(MOISTURE, moisture - 1), 2);
          } else if (!shouldMaintainFarmland(level, pos)) {
             this.turnToBaseBlock(null, state, level, pos);
          }
       } else if (moisture < 7) {
-         level.setBlock(pos, state.setValue(MOISTURE, Integer.valueOf(7)), 2);
+         level.setBlock(pos, state.setValue(MOISTURE, 7), 2);
       }
    }
 
    @Override
    public void fallOn(final Level level, final BlockState state, final BlockPos pos, final Entity entity, final double fallDistance) {
-      if (level instanceof ServerLevel serverLevel && (double)level.getRandom().nextFloat() < fallDistance - 0.5 && entity instanceof LivingEntity) {
+      if (level instanceof ServerLevel serverLevel && level.getRandom().nextFloat() < fallDistance - 0.5 && entity instanceof LivingEntity) {
          boolean canTrample = entity instanceof Player player
             ? !level.getServer().isUnderSpawnProtection(serverLevel, pos, player)
             : serverLevel.getGameRules().get(GameRules.MOB_GRIEFING);
@@ -114,7 +114,7 @@ public class FarmlandBlock extends Block {
       super.fallOn(level, state, pos, entity, fallDistance);
    }
 
-   public void turnToBaseBlock(@Nullable final Entity sourceEntity, final BlockState state, final Level level, final BlockPos pos) {
+   public void turnToBaseBlock(final @Nullable Entity sourceEntity, final BlockState state, final Level level, final BlockPos pos) {
       BlockState newState = pushEntitiesUp(state, this.baseBlock.defaultBlockState(), level, pos);
       level.setBlockAndUpdate(pos, newState);
       level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(sourceEntity, newState));

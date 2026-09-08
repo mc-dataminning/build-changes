@@ -16,8 +16,7 @@ public class MovingBlockRenderState implements BlockAndTintGetter {
    public BlockPos randomSeedPos = BlockPos.ZERO;
    public BlockPos blockPos = BlockPos.ZERO;
    public BlockState blockState = Blocks.AIR.defaultBlockState();
-   @Nullable
-   public Holder<Biome> biome;
+   public @Nullable Holder<Biome> biome;
    public CardinalLighting cardinalLighting = CardinalLighting.DEFAULT;
    public LevelLightEngine lightEngine = LevelLightEngine.EMPTY;
 
@@ -33,12 +32,11 @@ public class MovingBlockRenderState implements BlockAndTintGetter {
 
    @Override
    public int getBlockTint(final BlockPos pos, final ColorResolver color) {
-      return this.biome == null ? -1 : color.getColor(this.biome.value(), (double)pos.getX(), (double)pos.getZ());
+      return this.biome == null ? -1 : color.getColor(this.biome.value(), pos.getX(), pos.getZ());
    }
 
-   @Nullable
    @Override
-   public BlockEntity getBlockEntity(final BlockPos pos) {
+   public @Nullable BlockEntity getBlockEntity(final BlockPos pos) {
       return null;
    }
 

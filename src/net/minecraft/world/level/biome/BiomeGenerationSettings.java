@@ -28,10 +28,10 @@ public class BiomeGenerationSettings {
    public static final BiomeGenerationSettings EMPTY = new BiomeGenerationSettings(HolderSet.empty(), List.of());
    public static final MapCodec<BiomeGenerationSettings> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               WorldCarver.LIST_CODEC.promotePartial(Util.prefix("Carver: ", LOGGER::error)).fieldOf("carvers").forGetter(b -> b.carvers),
-               PlacedFeature.LIST_OF_LISTS_CODEC.promotePartial(Util.prefix("Features: ", LOGGER::error)).fieldOf("features").forGetter(b -> b.features)
-            )
-            .apply(i, BiomeGenerationSettings::new)
+            WorldCarver.LIST_CODEC.promotePartial(Util.prefix("Carver: ", LOGGER::error)).fieldOf("carvers").forGetter(b -> b.carvers),
+            PlacedFeature.LIST_OF_LISTS_CODEC.promotePartial(Util.prefix("Features: ", LOGGER::error)).fieldOf("features").forGetter(b -> b.features)
+         )
+         .apply(i, BiomeGenerationSettings::new)
    );
    private final HolderSet<WorldCarver> carvers;
    private final List<HolderSet<PlacedFeature>> features;
@@ -43,11 +43,11 @@ public class BiomeGenerationSettings {
       this.features = features;
       this.boneMealFeatures = Suppliers.memoize(
          () -> features.stream()
-               .flatMap(HolderSet::stream)
-               .flatMap(feature -> ((PlacedFeature)feature.value()).getFeatures())
-               .filter(feature -> feature.is(FeatureTags.CAN_SPAWN_FROM_BONE_MEAL))
-               .map(Holder::value)
-               .collect(ImmutableList.toImmutableList())
+            .flatMap(HolderSet::stream)
+            .flatMap(feature -> ((PlacedFeature)feature.value()).getFeatures())
+            .filter(feature -> feature.is(FeatureTags.CAN_SPAWN_FROM_BONE_MEAL))
+            .map(Holder::value)
+            .collect(ImmutableList.toImmutableList())
       );
       this.featureSet = Suppliers.memoize(() -> features.stream().flatMap(HolderSet::stream).map(Holder::value).collect(Collectors.toSet()));
    }

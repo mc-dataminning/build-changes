@@ -157,7 +157,7 @@ public abstract class ServerCommonPacketListenerImpl implements ServerCommonPack
       this.send(packet, null);
    }
 
-   public void send(final Packet<?> packet, @Nullable final ChannelFutureListener listener) {
+   public void send(final Packet<?> packet, final @Nullable ChannelFutureListener listener) {
       if (packet.isTerminal()) {
          this.close();
       }
@@ -166,8 +166,8 @@ public abstract class ServerCommonPacketListenerImpl implements ServerCommonPack
 
       try {
          this.connection.send(packet, listener, flush);
-      } catch (Throwable var7) {
-         CrashReport report = CrashReport.forThrowable(var7, "Sending packet");
+      } catch (Throwable t) {
+         CrashReport report = CrashReport.forThrowable(t, "Sending packet");
          CrashReportCategory category = report.addCategory("Packet being sent");
          category.setDetail("Packet class", () -> packet.getClass().getCanonicalName());
          throw new ReportedException(report);

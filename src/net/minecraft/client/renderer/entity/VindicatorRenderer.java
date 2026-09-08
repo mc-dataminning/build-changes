@@ -1,7 +1,6 @@
 package net.minecraft.client.renderer.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.Objects;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.model.monster.illager.IllagerModel;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -17,10 +16,6 @@ public class VindicatorRenderer extends IllagerRenderer<Vindicator, IllagerRende
       super(context, new IllagerModel<>(context.bakeLayer(ModelLayers.VINDICATOR)), 0.5F);
       this.addLayer(
          new ItemInHandLayer<IllagerRenderState, IllagerModel<IllagerRenderState>>(this) {
-            {
-               Objects.requireNonNull(VindicatorRenderer.this);
-            }
-
             public void submit(
                final PoseStack poseStack,
                final SubmitNodeCollector submitNodeCollector,

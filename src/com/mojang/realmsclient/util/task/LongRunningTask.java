@@ -18,9 +18,9 @@ public abstract class LongRunningTask implements Runnable {
    protected static void pause(final long seconds) {
       try {
          Thread.sleep(seconds * 1000L);
-      } catch (InterruptedException var3) {
+      } catch (InterruptedException e) {
          Thread.currentThread().interrupt();
-         LOGGER.error("", var3);
+         LOGGER.error("", e);
       }
    }
 

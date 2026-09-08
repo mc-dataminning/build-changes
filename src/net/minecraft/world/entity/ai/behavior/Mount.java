@@ -12,21 +12,21 @@ public class Mount {
    public static BehaviorControl<LivingEntity> create(final float speedModifier) {
       return BehaviorBuilder.create(
          i -> i.group(i.registered(MemoryModuleType.LOOK_TARGET), i.absent(MemoryModuleType.WALK_TARGET), i.present(MemoryModuleType.RIDE_TARGET))
-               .apply(i, (lookTarget, walkTarget, rideTarget) -> (level, body, timestamp) -> {
-                     if (body.isPassenger()) {
-                        return false;
-                     } else {
-                        Entity ridableEntity = i.get(rideTarget);
-                        if (ridableEntity.closerThan(body, 1.0)) {
-                           body.startRiding(ridableEntity);
-                        } else {
-                           lookTarget.set(new EntityTracker(ridableEntity, true));
-                           walkTarget.set(new WalkTarget(new EntityTracker(ridableEntity, false), speedModifier, 1));
-                        }
+            .apply(i, (lookTarget, walkTarget, rideTarget) -> (level, body, timestamp) -> {
+               if (body.isPassenger()) {
+                  return false;
+               }
 
-                        return true;
-                     }
-                  })
+               Entity ridableEntity = i.get(rideTarget);
+               if (ridableEntity.closerThan(body, 1.0)) {
+                  body.startRiding(ridableEntity);
+               } else {
+                  lookTarget.set(new EntityTracker(ridableEntity, true));
+                  walkTarget.set(new WalkTarget(new EntityTracker(ridableEntity, false), speedModifier, 1));
+               }
+
+               return true;
+            })
       );
    }
 }

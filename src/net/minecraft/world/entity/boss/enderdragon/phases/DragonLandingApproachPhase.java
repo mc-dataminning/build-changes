@@ -15,10 +15,8 @@ import org.jspecify.annotations.Nullable;
 
 public class DragonLandingApproachPhase extends AbstractDragonPhaseInstance {
    private static final TargetingConditions NEAR_EGG_TARGETING = TargetingConditions.forCombat().ignoreLineOfSight();
-   @Nullable
-   private Path currentPath;
-   @Nullable
-   private Vec3 targetLocation;
+   private @Nullable Path currentPath;
+   private @Nullable Vec3 targetLocation;
 
    public DragonLandingApproachPhase(final EnderDragon dragon) {
       super(dragon);
@@ -43,9 +41,8 @@ public class DragonLandingApproachPhase extends AbstractDragonPhaseInstance {
       }
    }
 
-   @Nullable
    @Override
-   public Vec3 getFlyTargetLocation() {
+   public @Nullable Vec3 getFlyTargetLocation() {
       return this.targetLocation;
    }
 
@@ -53,13 +50,13 @@ public class DragonLandingApproachPhase extends AbstractDragonPhaseInstance {
       if (this.currentPath == null || this.currentPath.isDone()) {
          int currentNodeIndex = this.dragon.findClosestNode();
          BlockPos egg = level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, EnderDragonFight.getPodiumLocation(this.dragon.getFightOrigin()));
-         Player playerNearestToEgg = level.getNearestPlayer(NEAR_EGG_TARGETING, this.dragon, (double)egg.getX(), (double)egg.getY(), (double)egg.getZ());
+         Player playerNearestToEgg = level.getNearestPlayer(NEAR_EGG_TARGETING, this.dragon, egg.getX(), egg.getY(), egg.getZ());
          int targetNodeIndex;
          if (playerNearestToEgg != null) {
             Vec3 aim = new Vec3(playerNearestToEgg.getX(), 0.0, playerNearestToEgg.getZ()).normalize();
             targetNodeIndex = this.dragon.findClosestNode(-aim.x * 40.0, 105.0, -aim.z * 40.0);
          } else {
-            targetNodeIndex = this.dragon.findClosestNode(40.0, (double)egg.getY(), 0.0);
+            targetNodeIndex = this.dragon.findClosestNode(40.0, egg.getY(), 0.0);
          }
 
          Node finalNode = new Node(egg.getX(), egg.getY(), egg.getZ());
@@ -79,13 +76,13 @@ public class DragonLandingApproachPhase extends AbstractDragonPhaseInstance {
       if (this.currentPath != null && !this.currentPath.isDone()) {
          Vec3i current = this.currentPath.getNextNodePos();
          this.currentPath.advance();
-         double xTarget = (double)current.getX();
-         double zTarget = (double)current.getZ();
+         double xTarget = current.getX();
+         double zTarget = current.getZ();
 
          double yTarget;
          do {
-            yTarget = (double)((float)current.getY() + this.dragon.getRandom().nextFloat() * 20.0F);
-         } while (yTarget < (double)current.getY());
+            yTarget = current.getY() + this.dragon.getRandom().nextFloat() * 20.0F;
+         } while (yTarget < current.getY());
 
          this.targetLocation = new Vec3(xTarget, yTarget, zTarget);
       }

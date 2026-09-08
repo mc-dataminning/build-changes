@@ -27,7 +27,7 @@ public abstract class AbstractBoatRenderer extends EntityRenderer<AbstractBoat, 
       poseStack.rotateDegrees(Axis.YP, 180.0F - state.yRot);
       float hurt = state.hurtTime;
       if (hurt > 0.0F) {
-         poseStack.rotateDegrees(Axis.XP, Mth.sin((double)hurt) * hurt * state.damageTime / 10.0F * (float)state.hurtDir);
+         poseStack.rotateDegrees(Axis.XP, Mth.sin(hurt) * hurt * state.damageTime / 10.0F * state.hurtDir);
       }
 
       if (!state.isUnderWater && !Mth.equal(state.bubbleAngle, 0.0F)) {
@@ -56,7 +56,7 @@ public abstract class AbstractBoatRenderer extends EntityRenderer<AbstractBoat, 
    public void extractRenderState(final AbstractBoat entity, final BoatRenderState state, final float partialTicks) {
       super.extractRenderState(entity, state, partialTicks);
       state.yRot = entity.getYRot(partialTicks);
-      state.hurtTime = (float)entity.getHurtTime() - partialTicks;
+      state.hurtTime = entity.getHurtTime() - partialTicks;
       state.hurtDir = entity.getHurtDir();
       state.damageTime = Math.max(entity.getDamage() - partialTicks, 0.0F);
       state.bubbleAngle = entity.getBubbleAngle(partialTicks);

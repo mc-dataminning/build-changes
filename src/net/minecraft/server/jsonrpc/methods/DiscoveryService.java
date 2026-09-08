@@ -35,28 +35,28 @@ public class DiscoveryService {
       return new DiscoveryService.DiscoverResponse("1.3.2", discoverInfo, methods, new DiscoveryService.DiscoverComponents(schemas));
    }
 
-   public static record DiscoverComponents(Map<String, Schema<?>> schemas) {
+   public record DiscoverComponents(Map<String, Schema<?>> schemas) {
       public static final MapCodec<DiscoveryService.DiscoverComponents> CODEC = typedSchema();
 
       private static MapCodec<DiscoveryService.DiscoverComponents> typedSchema() {
          return RecordCodecBuilder.mapCodec(
             i -> i.group(Codec.unboundedMap(Codec.STRING, Schema.CODEC).fieldOf("schemas").forGetter(DiscoveryService.DiscoverComponents::schemas))
-                  .apply(i, DiscoveryService.DiscoverComponents::new)
+               .apply(i, DiscoveryService.DiscoverComponents::new)
          );
       }
    }
 
-   public static record DiscoverInfo(String title, String version) {
+   public record DiscoverInfo(String title, String version) {
       public static final MapCodec<DiscoveryService.DiscoverInfo> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Codec.STRING.fieldOf("title").forGetter(DiscoveryService.DiscoverInfo::title),
-                  Codec.STRING.fieldOf("version").forGetter(DiscoveryService.DiscoverInfo::version)
-               )
-               .apply(i, DiscoveryService.DiscoverInfo::new)
+               Codec.STRING.fieldOf("title").forGetter(DiscoveryService.DiscoverInfo::title),
+               Codec.STRING.fieldOf("version").forGetter(DiscoveryService.DiscoverInfo::version)
+            )
+            .apply(i, DiscoveryService.DiscoverInfo::new)
       );
    }
 
-   public static record DiscoverResponse(
+   public record DiscoverResponse(
       String jsonRpcProtocolVersion,
       DiscoveryService.DiscoverInfo discoverInfo,
       List<MethodInfo.Named<?, ?>> methods,
@@ -64,12 +64,12 @@ public class DiscoveryService {
    ) {
       public static final MapCodec<DiscoveryService.DiscoverResponse> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Codec.STRING.fieldOf("openrpc").forGetter(DiscoveryService.DiscoverResponse::jsonRpcProtocolVersion),
-                  DiscoveryService.DiscoverInfo.CODEC.codec().fieldOf("info").forGetter(DiscoveryService.DiscoverResponse::discoverInfo),
-                  Codec.list(MethodInfo.Named.CODEC).fieldOf("methods").forGetter(DiscoveryService.DiscoverResponse::methods),
-                  DiscoveryService.DiscoverComponents.CODEC.codec().fieldOf("components").forGetter(DiscoveryService.DiscoverResponse::components)
-               )
-               .apply(i, DiscoveryService.DiscoverResponse::new)
+               Codec.STRING.fieldOf("openrpc").forGetter(DiscoveryService.DiscoverResponse::jsonRpcProtocolVersion),
+               DiscoveryService.DiscoverInfo.CODEC.codec().fieldOf("info").forGetter(DiscoveryService.DiscoverResponse::discoverInfo),
+               Codec.list(MethodInfo.Named.CODEC).fieldOf("methods").forGetter(DiscoveryService.DiscoverResponse::methods),
+               DiscoveryService.DiscoverComponents.CODEC.codec().fieldOf("components").forGetter(DiscoveryService.DiscoverResponse::components)
+            )
+            .apply(i, DiscoveryService.DiscoverResponse::new)
       );
    }
 }

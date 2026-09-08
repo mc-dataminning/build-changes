@@ -27,20 +27,13 @@ public class MangrovePropaguleBlock extends SaplingBlock implements SimpleWaterl
    public static final IntegerProperty AGE = BlockStateProperties.AGE_4;
    public static final int MAX_AGE = 4;
    private static final int[] SHAPE_MIN_Y = new int[]{13, 10, 7, 3, 0};
-   private static final VoxelShape[] SHAPE_PER_AGE = Block.boxes(4, age -> Block.column(2.0, (double)SHAPE_MIN_Y[age], 16.0));
+   private static final VoxelShape[] SHAPE_PER_AGE = Block.boxes(4, age -> Block.column(2.0, SHAPE_MIN_Y[age], 16.0));
    private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
    public static final BooleanProperty HANGING = BlockStateProperties.HANGING;
 
    public MangrovePropaguleBlock(final TreeGrower treeGrower, final BlockBehaviour.Properties properties) {
       super(treeGrower, properties);
-      this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(STAGE, Integer.valueOf(0))
-            .setValue(AGE, Integer.valueOf(0))
-            .setValue(WATERLOGGED, Boolean.valueOf(false))
-            .setValue(HANGING, Boolean.valueOf(false))
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, 0).setValue(AGE, 0).setValue(WATERLOGGED, false).setValue(HANGING, false));
    }
 
    @Override
@@ -53,12 +46,11 @@ public class MangrovePropaguleBlock extends SaplingBlock implements SimpleWaterl
       return state.is(BlockTags.SUPPORTS_MANGROVE_PROPAGULE);
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
       boolean isWaterSource = replacedFluidState.is(Fluids.WATER);
-      return super.getStateForPlacement(context).setValue(WATERLOGGED, Boolean.valueOf(isWaterSource)).setValue(AGE, Integer.valueOf(4));
+      return super.getStateForPlacement(context).setValue(WATERLOGGED, isWaterSource).setValue(AGE, 4);
    }
 
    @Override
@@ -142,6 +134,6 @@ public class MangrovePropaguleBlock extends SaplingBlock implements SimpleWaterl
    }
 
    public static BlockState createNewHangingPropagule(final int age) {
-      return Blocks.MANGROVE_PROPAGULE.defaultBlockState().setValue(HANGING, Boolean.valueOf(true)).setValue(AGE, Integer.valueOf(age));
+      return Blocks.MANGROVE_PROPAGULE.defaultBlockState().setValue(HANGING, true).setValue(AGE, age);
    }
 }

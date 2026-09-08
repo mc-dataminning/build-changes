@@ -49,15 +49,11 @@ public class EditBox extends AbstractWidget {
    private int highlightPos;
    private int textColor = -2039584;
    private int textColorUneditable = -9408400;
-   @Nullable
-   private String suggestion;
-   @Nullable
-   private Consumer<String> responder;
+   private @Nullable String suggestion;
+   private @Nullable Consumer<String> responder;
    private final List<EditBox.TextFormatter> formatters = new ArrayList<>();
-   @Nullable
-   private Component hint;
-   @Nullable
-   private IMEPreeditOverlay preeditOverlay;
+   private @Nullable Component hint;
+   private @Nullable IMEPreeditOverlay preeditOverlay;
    private long focusedTime = Util.getMillis();
    private int textX;
    private int textY;
@@ -74,7 +70,7 @@ public class EditBox extends AbstractWidget {
       this(font, x, y, width, height, null, narration);
    }
 
-   public EditBox(final Font font, final int x, final int y, final int width, final int height, @Nullable final EditBox oldBox, final Component narration) {
+   public EditBox(final Font font, final int x, final int y, final int width, final int height, final @Nullable EditBox oldBox, final Component narration) {
       super(x, y, width, height, narration);
       this.font = font;
       if (oldBox != null) {
@@ -351,7 +347,9 @@ public class EditBox extends AbstractWidget {
    public boolean charTyped(final CharacterEvent event) {
       if (!this.canConsumeInput()) {
          return false;
-      } else if (event.isAllowedChatCharacter()) {
+      }
+
+      if (event.isAllowedChatCharacter()) {
          if (this.isEditable) {
             this.insertText(event.codepointAsString());
          }
@@ -363,7 +361,7 @@ public class EditBox extends AbstractWidget {
    }
 
    @Override
-   public boolean preeditUpdated(@Nullable final PreeditEvent event) {
+   public boolean preeditUpdated(final @Nullable PreeditEvent event) {
       this.preeditOverlay = event != null ? new IMEPreeditOverlay(event, this.font, 9 + 1) : null;
       return true;
    }
@@ -427,7 +425,7 @@ public class EditBox extends AbstractWidget {
          if (!cursorOnScreen) {
             cursorX = relCursorPos > 0 ? this.textX + this.width : this.textX;
          } else if (insert) {
-            cursorX = drawX - 1;
+            cursorX--;
             drawX--;
          }
 
@@ -613,7 +611,7 @@ public class EditBox extends AbstractWidget {
       this.visible = visible;
    }
 
-   public void setSuggestion(@Nullable final String suggestion) {
+   public void setSuggestion(final @Nullable String suggestion) {
       this.suggestion = suggestion;
    }
 
@@ -628,12 +626,11 @@ public class EditBox extends AbstractWidget {
 
    public void setHint(final Component hint) {
       boolean hasNoStyle = hint.getStyle().equals(Style.EMPTY);
-      this.hint = (Component)(hasNoStyle ? hint.copy().withStyle(DEFAULT_HINT_STYLE) : hint);
+      this.hint = hasNoStyle ? hint.copy().withStyle(DEFAULT_HINT_STYLE) : hint;
    }
 
    @FunctionalInterface
    public interface TextFormatter {
-      @Nullable
-      FormattedCharSequence format(final String text, final int offset);
+      @Nullable FormattedCharSequence format(final String text, final int offset);
    }
 }

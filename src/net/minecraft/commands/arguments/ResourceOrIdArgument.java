@@ -81,10 +81,10 @@ public class ResourceOrIdArgument<T> implements ArgumentType<Holder<T>> {
          Identifier parsedId = scope.get(id);
          if (parsedId != null) {
             return new ResourceOrIdArgument.ReferenceResult<>(ResourceKey.create(registryKey, parsedId));
-         } else {
-            O parsedInline = scope.getOrThrow(value);
-            return new ResourceOrIdArgument.InlineResult<>(parsedInline);
          }
+
+         O parsedInline = scope.getOrThrow(value);
+         return new ResourceOrIdArgument.InlineResult<>(parsedInline);
       });
       return new Grammar<>(rules, topRule);
    }
@@ -149,13 +149,11 @@ public class ResourceOrIdArgument<T> implements ArgumentType<Holder<T>> {
       return (Holder<T>)context.getArgument(name, Holder.class);
    }
 
-   @Nullable
-   public Holder<T> parse(final StringReader reader) throws CommandSyntaxException {
+   public @Nullable Holder<T> parse(final StringReader reader) throws CommandSyntaxException {
       return this.parse(reader, this.grammar, OPS);
    }
 
-   @Nullable
-   private <O> Holder<T> parse(final StringReader reader, final Grammar<ResourceOrIdArgument.Result<T, O>> grammar, final DynamicOps<O> ops) throws CommandSyntaxException {
+   private <O> @Nullable Holder<T> parse(final StringReader reader, final Grammar<ResourceOrIdArgument.Result<T, O>> grammar, final DynamicOps<O> ops) throws CommandSyntaxException {
       ResourceOrIdArgument.Result<T, O> contents = grammar.parseForCommands(reader);
       return this.elementLookup.isEmpty()
          ? null
@@ -194,7 +192,7 @@ public class ResourceOrIdArgument<T> implements ArgumentType<Holder<T>> {
       }
    }
 
-   public static record InlineResult<T, O>(O value) implements ResourceOrIdArgument.Result<T, O> {
+   public record InlineResult<T, O>(O value) implements ResourceOrIdArgument.Result<T, O> {
       @Override
       public Holder<T> parse(
          final ImmutableStringReader reader,
@@ -228,7 +226,7 @@ public class ResourceOrIdArgument<T> implements ArgumentType<Holder<T>> {
       }
    }
 
-   public static record ReferenceResult<T, O>(ResourceKey<T> key) implements ResourceOrIdArgument.Result<T, O> {
+   public record ReferenceResult<T, O>(ResourceKey<T> key) implements ResourceOrIdArgument.Result<T, O> {
       @Override
       public Holder<T> parse(
          final ImmutableStringReader reader,

@@ -61,28 +61,30 @@ public abstract class EntityRenderer<T extends Entity, S extends EntityRenderSta
    public boolean shouldRender(final T entity, final Frustum culler, final double camX, final double camY, final double camZ, final float partialTicks) {
       if (!entity.shouldRender(camX, camY, camZ)) {
          return false;
-      } else if (!this.affectedByCulling(entity)) {
+      }
+
+      if (!this.affectedByCulling(entity)) {
          return true;
-      } else {
-         AABB boundingBox = this.getBoundingBoxForCulling(entity, partialTicks).inflate(0.5);
-         if (boundingBox.hasNaN() || boundingBox.getSize() == 0.0) {
-            boundingBox = new AABB(entity.getX() - 2.0, entity.getY() - 2.0, entity.getZ() - 2.0, entity.getX() + 2.0, entity.getY() + 2.0, entity.getZ() + 2.0);
-         }
+      }
 
-         if (culler.isVisible(boundingBox)) {
-            return true;
-         } else {
-            if (entity instanceof Leashable leashable) {
-               Entity leashHolder = leashable.getLeashHolder();
-               if (leashHolder != null) {
-                  AABB leasherBox = this.entityRenderDispatcher.getRenderer(leashHolder).getBoundingBoxForCulling(leashHolder, partialTicks);
-                  return culler.isVisible(leasherBox) || culler.isVisible(boundingBox.minmax(leasherBox));
-               }
-            }
+      AABB boundingBox = this.getBoundingBoxForCulling(entity, partialTicks).inflate(0.5);
+      if (boundingBox.hasNaN() || boundingBox.getSize() == 0.0) {
+         boundingBox = new AABB(entity.getX() - 2.0, entity.getY() - 2.0, entity.getZ() - 2.0, entity.getX() + 2.0, entity.getY() + 2.0, entity.getZ() + 2.0);
+      }
 
-            return false;
+      if (culler.isVisible(boundingBox)) {
+         return true;
+      }
+
+      if (entity instanceof Leashable leashable) {
+         Entity leashHolder = leashable.getLeashHolder();
+         if (leashHolder != null) {
+            AABB leasherBox = this.entityRenderDispatcher.getRenderer(leashHolder).getBoundingBoxForCulling(leashHolder, partialTicks);
+            return culler.isVisible(leasherBox) || culler.isVisible(boundingBox.minmax(leasherBox));
          }
       }
+
+      return false;
    }
 
    protected AABB getBoundingBoxForCulling(final T entity, final float partialTicks) {
@@ -135,8 +137,7 @@ public abstract class EntityRenderer<T extends Entity, S extends EntityRenderSta
       poseStack.popPose();
    }
 
-   @Nullable
-   protected Component getNameTag(final T entity) {
+   protected @Nullable Component getNameTag(final T entity) {
       return entity.getDisplayName();
    }
 
@@ -159,11 +160,11 @@ public abstract class EntityRenderer<T extends Entity, S extends EntityRenderSta
 
    public void extractRenderState(final T entity, final S state, final float partialTicks) {
       state.entityType = entity.getType();
-      state.x = Mth.lerp((double)partialTicks, entity.xOld, entity.getX());
-      state.y = Mth.lerp((double)partialTicks, entity.yOld, entity.getY());
-      state.z = Mth.lerp((double)partialTicks, entity.zOld, entity.getZ());
+      state.x = Mth.lerp(partialTicks, entity.xOld, entity.getX());
+      state.y = Mth.lerp(partialTicks, entity.yOld, entity.getY());
+      state.z = Mth.lerp(partialTicks, entity.zOld, entity.getZ());
       state.isInvisible = entity.isInvisible();
-      state.ageInTicks = (float)entity.tickCount + partialTicks;
+      state.ageInTicks = entity.tickCount + partialTicks;
       state.boundingBoxWidth = entity.getBbWidth();
       state.boundingBoxHeight = entity.getBbHeight();
       state.eyeHeight = entity.getEyeHeight();
@@ -171,75 +172,66 @@ public abstract class EntityRenderer<T extends Entity, S extends EntityRenderSta
          && entity.getVehicle() instanceof AbstractMinecart minecart
          && minecart.getBehavior() instanceof NewMinecartBehavior behavior
          && behavior.cartHasPosRotLerp()) {
-         double cartLerpX = Mth.lerp((double)partialTicks, minecart.xOld, minecart.getX());
-         double cartLerpY = Mth.lerp((double)partialTicks, minecart.yOld, minecart.getY());
-         double cartLerpZ = Mth.lerp((double)partialTicks, minecart.zOld, minecart.getZ());
+         double cartLerpX = Mth.lerp(partialTicks, minecart.xOld, minecart.getX());
+         double cartLerpY = Mth.lerp(partialTicks, minecart.yOld, minecart.getY());
+         double cartLerpZ = Mth.lerp(partialTicks, minecart.zOld, minecart.getZ());
          state.passengerOffset = behavior.getCartLerpPosition(partialTicks).subtract(new Vec3(cartLerpX, cartLerpY, cartLerpZ));
       } else {
          state.passengerOffset = null;
       }
 
-      label63: {
-         this.extractNameTags(entity, state, partialTicks);
-         state.isDiscrete = entity.isDiscrete();
-         Level level = entity.level();
-         if (entity instanceof Leashable leashable && leashable.getLeashHolder() != null) {
-            Entity roper = leashable.getLeashHolder();
-            float entityYRot = entity.getPreciseBodyRotation(partialTicks) * (float) (Math.PI / 180.0);
-            Vec3 attachOffset = leashable.getLeashOffset(partialTicks);
-            BlockPos entityEyePos = BlockPos.containing(entity.getEyePosition(partialTicks));
-            BlockPos roperEyePos = BlockPos.containing(roper.getEyePosition(partialTicks));
-            int startBlockLight = this.getBlockLightLevel(entity, entityEyePos);
-            int endBlockLight = this.entityRenderDispatcher.getRenderer(roper).getBlockLightLevel(roper, roperEyePos);
-            int startSkyLight = level.getBrightness(LightLayer.SKY, entityEyePos);
-            int endSkyLight = level.getBrightness(LightLayer.SKY, roperEyePos);
-            boolean quadConnection = roper.supportQuadLeashAsHolder() && leashable.supportQuadLeash();
-            int leashCount = quadConnection ? 4 : 1;
-            if (state.leashStates == null || state.leashStates.size() != leashCount) {
-               state.leashStates = new ArrayList<>(leashCount);
+      this.extractNameTags(entity, state, partialTicks);
+      state.isDiscrete = entity.isDiscrete();
+      Level level = entity.level();
+      if (entity instanceof Leashable leashable && leashable.getLeashHolder() != null) {
+         Entity roper = leashable.getLeashHolder();
+         float entityYRot = entity.getPreciseBodyRotation(partialTicks) * (float) (Math.PI / 180.0);
+         Vec3 attachOffset = leashable.getLeashOffset(partialTicks);
+         BlockPos entityEyePos = BlockPos.containing(entity.getEyePosition(partialTicks));
+         BlockPos roperEyePos = BlockPos.containing(roper.getEyePosition(partialTicks));
+         int startBlockLight = this.getBlockLightLevel(entity, entityEyePos);
+         int endBlockLight = this.entityRenderDispatcher.getRenderer(roper).getBlockLightLevel(roper, roperEyePos);
+         int startSkyLight = level.getBrightness(LightLayer.SKY, entityEyePos);
+         int endSkyLight = level.getBrightness(LightLayer.SKY, roperEyePos);
+         boolean quadConnection = roper.supportQuadLeashAsHolder() && leashable.supportQuadLeash();
+         int leashCount = quadConnection ? 4 : 1;
+         if (state.leashStates == null || state.leashStates.size() != leashCount) {
+            state.leashStates = new ArrayList<>(leashCount);
 
-               for (int i = 0; i < leashCount; i++) {
-                  state.leashStates.add(new EntityRenderState.LeashState());
-               }
+            for (int i = 0; i < leashCount; i++) {
+               state.leashStates.add(new EntityRenderState.LeashState());
             }
+         }
 
-            if (quadConnection) {
-               float roperYRot = roper.getPreciseBodyRotation(partialTicks) * (float) (Math.PI / 180.0);
-               Vec3 holderPos = roper.getPosition(partialTicks);
-               Vec3[] leashableAttachmentPoints = leashable.getQuadLeashOffsets();
-               Vec3[] roperAttachmentPoints = roper.getQuadLeashHolderOffsets();
-               int i = 0;
+         if (quadConnection) {
+            float roperYRot = roper.getPreciseBodyRotation(partialTicks) * (float) (Math.PI / 180.0);
+            Vec3 holderPos = roper.getPosition(partialTicks);
+            Vec3[] leashableAttachmentPoints = leashable.getQuadLeashOffsets();
+            Vec3[] roperAttachmentPoints = roper.getQuadLeashHolderOffsets();
 
-               while (true) {
-                  if (i >= leashCount) {
-                     break label63;
-                  }
-
-                  EntityRenderState.LeashState leashState = state.leashStates.get(i);
-                  leashState.offset = leashableAttachmentPoints[i].yRot(-entityYRot);
-                  leashState.start = entity.getPosition(partialTicks).add(leashState.offset);
-                  leashState.end = holderPos.add(roperAttachmentPoints[i].yRot(-roperYRot));
-                  leashState.startBlockLight = startBlockLight;
-                  leashState.endBlockLight = endBlockLight;
-                  leashState.startSkyLight = startSkyLight;
-                  leashState.endSkyLight = endSkyLight;
-                  leashState.slack = false;
-                  i++;
-               }
-            } else {
-               Vec3 rotatedAttachOffset = attachOffset.yRot(-entityYRot);
-               EntityRenderState.LeashState leashState = state.leashStates.getFirst();
-               leashState.offset = rotatedAttachOffset;
-               leashState.start = entity.getPosition(partialTicks).add(rotatedAttachOffset);
-               leashState.end = roper.getRopeHoldPosition(partialTicks);
+            for (int i = 0; i < leashCount; i++) {
+               EntityRenderState.LeashState leashState = state.leashStates.get(i);
+               leashState.offset = leashableAttachmentPoints[i].yRot(-entityYRot);
+               leashState.start = entity.getPosition(partialTicks).add(leashState.offset);
+               leashState.end = holderPos.add(roperAttachmentPoints[i].yRot(-roperYRot));
                leashState.startBlockLight = startBlockLight;
                leashState.endBlockLight = endBlockLight;
                leashState.startSkyLight = startSkyLight;
                leashState.endSkyLight = endSkyLight;
-               break label63;
+               leashState.slack = false;
             }
+         } else {
+            Vec3 rotatedAttachOffset = attachOffset.yRot(-entityYRot);
+            EntityRenderState.LeashState leashState = state.leashStates.getFirst();
+            leashState.offset = rotatedAttachOffset;
+            leashState.start = entity.getPosition(partialTicks).add(rotatedAttachOffset);
+            leashState.end = roper.getRopeHoldPosition(partialTicks);
+            leashState.startBlockLight = startBlockLight;
+            leashState.endBlockLight = endBlockLight;
+            leashState.startSkyLight = startSkyLight;
+            leashState.endSkyLight = endSkyLight;
          }
-
+      } else {
          state.leashStates = null;
       }
 
@@ -286,14 +278,14 @@ public abstract class EntityRenderer<T extends Entity, S extends EntityRenderSta
          state.shadowRadius = shadowRadius;
          if (shadowRadius > 0.0F) {
             double distSq = state.distanceToCameraSq;
-            float pow = (float)((1.0 - distSq / 256.0) * (double)this.getShadowStrength(state));
+            float pow = (float)((1.0 - distSq / 256.0) * this.getShadowStrength(state));
             if (pow > 0.0F) {
-               int x0 = Mth.floor(state.x - (double)shadowRadius);
-               int x1 = Mth.floor(state.x + (double)shadowRadius);
-               int z0 = Mth.floor(state.z - (double)shadowRadius);
-               int z1 = Mth.floor(state.z + (double)shadowRadius);
+               int x0 = Mth.floor(state.x - shadowRadius);
+               int x1 = Mth.floor(state.x + shadowRadius);
+               int z0 = Mth.floor(state.z - shadowRadius);
+               int z1 = Mth.floor(state.z + shadowRadius);
                float depth = Math.min(pow / 0.5F - 1.0F, shadowRadius);
-               int y0 = Mth.floor(state.y - (double)depth);
+               int y0 = Mth.floor(state.y - depth);
                int y1 = Mth.floor(state.y);
                BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
 
@@ -316,7 +308,7 @@ public abstract class EntityRenderer<T extends Entity, S extends EntityRenderSta
    }
 
    private void extractShadowPiece(final S state, final Level level, final float pow, final BlockPos.MutableBlockPos pos, final ChunkAccess chunk) {
-      float powerAtDepth = pow - (float)(state.y - (double)pos.getY()) * 0.5F;
+      float powerAtDepth = pow - (float)(state.y - pos.getY()) * 0.5F;
       BlockPos belowPos = pos.below();
       BlockState belowState = chunk.getBlockState(belowPos);
       if (belowState.getRenderShape() != RenderShape.INVISIBLE) {
@@ -326,9 +318,9 @@ public abstract class EntityRenderer<T extends Entity, S extends EntityRenderSta
                VoxelShape belowShape = belowState.getShape(chunk, belowPos);
                if (!belowShape.isEmpty()) {
                   float alpha = Mth.clamp(powerAtDepth * 0.5F * Lightmap.getBrightness(level.dimensionType(), brightness), 0.0F, 1.0F);
-                  float relativeX = (float)((double)pos.getX() - state.x);
-                  float relativeY = (float)((double)pos.getY() - state.y);
-                  float relativeZ = (float)((double)pos.getZ() - state.z);
+                  float relativeX = (float)(pos.getX() - state.x);
+                  float relativeY = (float)(pos.getY() - state.y);
+                  float relativeZ = (float)(pos.getZ() - state.z);
                   state.shadowPieces.add(new EntityRenderState.ShadowPiece(relativeX, relativeY, relativeZ, belowShape, alpha));
                }
             }
@@ -336,8 +328,7 @@ public abstract class EntityRenderer<T extends Entity, S extends EntityRenderSta
       }
    }
 
-   @Nullable
-   private static Entity getServerSideEntity(final Entity entity) {
+   private static @Nullable Entity getServerSideEntity(final Entity entity) {
       IntegratedServer server = Minecraft.getInstance().getSingleplayerServer();
       if (server != null) {
          ServerLevel level = server.getLevel(entity.level().dimension());

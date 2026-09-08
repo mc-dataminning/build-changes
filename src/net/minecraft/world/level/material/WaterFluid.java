@@ -50,9 +50,9 @@ public abstract class WaterFluid extends FlowingFluid {
       if (!fluidState.isSource() && !fluidState.getValue(FALLING)) {
          if (random.nextInt(64) == 0) {
             level.playLocalSound(
-               (double)pos.getX() + 0.5,
-               (double)pos.getY() + 0.5,
-               (double)pos.getZ() + 0.5,
+               pos.getX() + 0.5,
+               pos.getY() + 0.5,
+               pos.getZ() + 0.5,
                SoundEvents.WATER_AMBIENT,
                SoundSource.AMBIENT,
                random.nextFloat() * 0.25F + 0.75F,
@@ -62,20 +62,13 @@ public abstract class WaterFluid extends FlowingFluid {
          }
       } else if (random.nextInt(10) == 0) {
          level.addParticle(
-            ParticleTypes.UNDERWATER,
-            (double)pos.getX() + random.nextDouble(),
-            (double)pos.getY() + random.nextDouble(),
-            (double)pos.getZ() + random.nextDouble(),
-            0.0,
-            0.0,
-            0.0
+            ParticleTypes.UNDERWATER, pos.getX() + random.nextDouble(), pos.getY() + random.nextDouble(), pos.getZ() + random.nextDouble(), 0.0, 0.0, 0.0
          );
       }
    }
 
-   @Nullable
    @Override
-   public ParticleOptions getDripParticle() {
+   public @Nullable ParticleOptions getDripParticle() {
       return ParticleTypes.DRIPPING_WATER;
    }
 
@@ -102,7 +95,7 @@ public abstract class WaterFluid extends FlowingFluid {
 
    @Override
    public BlockState createLegacyBlock(final FluidState fluidState) {
-      return Blocks.WATER.defaultBlockState().setValue(LiquidBlock.LEVEL, Integer.valueOf(getLegacyLevel(fluidState)));
+      return Blocks.WATER.defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(fluidState));
    }
 
    @Override

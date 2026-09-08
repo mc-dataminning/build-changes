@@ -9,7 +9,6 @@ import it.unimi.dsi.fastutil.longs.LongSet;
 import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
@@ -69,8 +68,7 @@ public class PoiManager extends SectionStorage<PoiSection, PoiSection.Packed> {
       this.distanceTracker = new PoiManager.DistanceTracker();
    }
 
-   @Nullable
-   public PoiRecord add(final BlockPos pos, final Holder<PoiType> type) {
+   public @Nullable PoiRecord add(final BlockPos pos, final Holder<PoiType> type) {
       return this.getOrCreate(SectionPos.asLong(pos)).add(pos, type);
    }
 
@@ -100,7 +98,7 @@ public class PoiManager extends SectionStorage<PoiSection, PoiSection.Packed> {
       final Predicate<Holder<PoiType>> predicate, final BlockPos center, final int radius, final PoiManager.Occupancy occupancy
    ) {
       int radiusSqr = radius * radius;
-      return this.getInSquare(predicate, center, radius, occupancy).filter(r -> r.getPos().distSqr(center) <= (double)radiusSqr);
+      return this.getInSquare(predicate, center, radius, occupancy).filter(r -> r.getPos().distSqr(center) <= radiusSqr);
    }
 
    @VisibleForDebug
@@ -219,8 +217,7 @@ public class PoiManager extends SectionStorage<PoiSection, PoiSection.Packed> {
    }
 
    @VisibleForDebug
-   @Nullable
-   public DebugPoiInfo getDebugPoiInfo(final BlockPos pos) {
+   public @Nullable DebugPoiInfo getDebugPoiInfo(final BlockPos pos) {
       return this.getOrLoad(SectionPos.asLong(pos)).flatMap(section -> section.getDebugPoiInfo(pos)).orElse(null);
    }
 
@@ -255,10 +252,10 @@ public class PoiManager extends SectionStorage<PoiSection, PoiSection.Packed> {
 
    public void checkConsistencyWithBlocks(final SectionPos sectionPos, final LevelChunkSection blockSection) {
       Util.ifElse(this.getOrLoad(sectionPos.asLong()), section -> section.refresh(output -> {
-            if (mayHavePoi(blockSection)) {
-               this.updateFromSection(blockSection, sectionPos, output);
-            }
-         }), () -> {
+         if (mayHavePoi(blockSection)) {
+            this.updateFromSection(blockSection, sectionPos, output);
+         }
+      }), () -> {
          if (mayHavePoi(blockSection)) {
             PoiSection newSection = this.getOrCreate(sectionPos.asLong());
             this.updateFromSection(blockSection, sectionPos, newSection::add);
@@ -294,12 +291,10 @@ public class PoiManager extends SectionStorage<PoiSection, PoiSection.Packed> {
    }
 
    private final class DistanceTracker extends SectionTracker {
-      private final Long2ByteMap levels;
+      private final Long2ByteMap levels = new Long2ByteOpenHashMap();
 
       DistanceTracker() {
-         Objects.requireNonNull(PoiManager.this);
          super(7, 16, 256);
-         this.levels = new Long2ByteOpenHashMap();
          this.levels.defaultReturnValue((byte)7);
       }
 
@@ -327,14 +322,14 @@ public class PoiManager extends SectionStorage<PoiSection, PoiSection.Packed> {
       }
    }
 
-   public static enum Occupancy {
+   public enum Occupancy {
       HAS_SPACE(PoiRecord::hasSpace),
       IS_OCCUPIED(PoiRecord::isOccupied),
       ANY(poiRecord -> true);
 
       private final Predicate<? super PoiRecord> test;
 
-      private Occupancy(final Predicate<? super PoiRecord> test) {
+      Occupancy(final Predicate<? super PoiRecord> test) {
          this.test = test;
       }
 

@@ -12,8 +12,7 @@ import org.jspecify.annotations.Nullable;
 public class CustomCraftingRecipeBuilder {
    private final RecipeCategory category;
    private final RecipeUnlockAdvancementBuilder advancementBuilder = new RecipeUnlockAdvancementBuilder();
-   @Nullable
-   private String group;
+   private @Nullable String group;
    private final CustomCraftingRecipeBuilder.Factory factory;
 
    public CustomCraftingRecipeBuilder(final RecipeCategory category, final CustomCraftingRecipeBuilder.Factory factory) {
@@ -30,7 +29,7 @@ public class CustomCraftingRecipeBuilder {
       return this;
    }
 
-   public CustomCraftingRecipeBuilder group(@Nullable final String group) {
+   public CustomCraftingRecipeBuilder group(final @Nullable String group) {
       this.group = group;
       return this;
    }

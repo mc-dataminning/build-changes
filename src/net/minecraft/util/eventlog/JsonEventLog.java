@@ -12,7 +12,6 @@ import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.jspecify.annotations.Nullable;
 
@@ -44,36 +43,28 @@ public class JsonEventLog<T> implements Closeable {
    public JsonEventLogReader<T> openReader() throws IOException {
       if (this.referenceCount.get() <= 0) {
          throw new IOException("Event log has already been closed");
-      } else {
-         this.referenceCount.incrementAndGet();
-         final JsonEventLogReader<T> reader = JsonEventLogReader.create(this.codec, Channels.newReader(this.channel, StandardCharsets.UTF_8));
-         return new JsonEventLogReader<T>() {
-            private volatile long position;
-
-            {
-               Objects.requireNonNull(JsonEventLog.this);
-            }
-
-            @Nullable
-            @Override
-            public T next() throws IOException {
-               Object var1;
-               try {
-                  JsonEventLog.this.channel.position(this.position);
-                  var1 = reader.next();
-               } finally {
-                  this.position = JsonEventLog.this.channel.position();
-               }
-
-               return (T)var1;
-            }
-
-            @Override
-            public void close() throws IOException {
-               JsonEventLog.this.releaseReference();
-            }
-         };
       }
+
+      this.referenceCount.incrementAndGet();
+      final JsonEventLogReader<T> reader = JsonEventLogReader.create(this.codec, Channels.newReader(this.channel, StandardCharsets.UTF_8));
+      return new JsonEventLogReader<T>() {
+         private volatile long position;
+
+         @Override
+         public @Nullable T next() throws IOException {
+            try {
+               JsonEventLog.this.channel.position(this.position);
+               return reader.next();
+            } finally {
+               this.position = JsonEventLog.this.channel.position();
+            }
+         }
+
+         @Override
+         public void close() throws IOException {
+            JsonEventLog.this.releaseReference();
+         }
+      };
    }
 
    @Override

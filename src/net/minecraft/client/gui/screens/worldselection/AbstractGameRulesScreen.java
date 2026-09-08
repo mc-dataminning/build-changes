@@ -10,7 +10,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Consumer;
@@ -48,11 +47,9 @@ public abstract class AbstractGameRulesScreen extends Screen {
    private final Consumer<Optional<GameRules>> exitCallback;
    protected final HeaderAndFooterLayout layout;
    protected final GameRules gameRules;
-   @Nullable
-   protected EditBox searchBox;
-   protected AbstractGameRulesScreen.RuleList ruleList;
-   @Nullable
-   protected Button doneButton;
+   protected @Nullable EditBox searchBox;
+   protected AbstractGameRulesScreen.@Nullable RuleList ruleList;
+   protected @Nullable Button doneButton;
 
    public AbstractGameRulesScreen(final GameRules gameRules, final Consumer<Optional<GameRules>> exitCallback) {
       super(TITLE);
@@ -136,7 +133,6 @@ public abstract class AbstractGameRulesScreen extends Screen {
       private final CycleButton<Boolean> checkbox;
 
       public BooleanRuleEntry(final Component name, final List<FormattedCharSequence> tooltip, final String narration, final GameRule<Boolean> gameRule) {
-         Objects.requireNonNull(AbstractGameRulesScreen.this);
          super(tooltip, name);
          this.checkbox = CycleButton.onOffBuilder(AbstractGameRulesScreen.this.gameRules.get(gameRule))
             .displayOnlyValue()
@@ -158,7 +154,6 @@ public abstract class AbstractGameRulesScreen extends Screen {
       private final FocusableTextWidget widget;
 
       public CategoryRuleEntry(final Component label) {
-         Objects.requireNonNull(AbstractGameRulesScreen.this);
          super(null);
          this.widget = FocusableTextWidget.builder(label, AbstractGameRulesScreen.this.minecraft.font)
             .alwaysShowBorder(false)
@@ -190,12 +185,10 @@ public abstract class AbstractGameRulesScreen extends Screen {
 
    public abstract class GameRuleEntry extends AbstractGameRulesScreen.RuleEntry {
       private final List<FormattedCharSequence> label;
-      protected final List<AbstractWidget> children;
+      protected final List<AbstractWidget> children = Lists.newArrayList();
 
-      public GameRuleEntry(@Nullable final List<FormattedCharSequence> tooltip, final Component label) {
-         Objects.requireNonNull(AbstractGameRulesScreen.this);
+      public GameRuleEntry(final @Nullable List<FormattedCharSequence> tooltip, final Component label) {
          super(tooltip);
-         this.children = Lists.newArrayList();
          this.label = AbstractGameRulesScreen.this.minecraft.font.split(label, 170);
       }
 
@@ -223,7 +216,6 @@ public abstract class AbstractGameRulesScreen extends Screen {
       private final EditBox input;
 
       public IntegerRuleEntry(final Component label, final List<FormattedCharSequence> tooltip, final String narration, final GameRule<Integer> gameRule) {
-         Objects.requireNonNull(AbstractGameRulesScreen.this);
          super(tooltip, label);
          this.input = new EditBox(AbstractGameRulesScreen.this.minecraft.font, 10, 5, 44, 20, label.copy().append("\n").append(narration).append("\n"));
          this.input.setValue(AbstractGameRulesScreen.this.gameRules.getAsString(gameRule));
@@ -251,10 +243,9 @@ public abstract class AbstractGameRulesScreen extends Screen {
    }
 
    public abstract static class RuleEntry extends ContainerObjectSelectionList.Entry<AbstractGameRulesScreen.RuleEntry> {
-      @Nullable
-      private final List<FormattedCharSequence> tooltip;
+      private final @Nullable List<FormattedCharSequence> tooltip;
 
-      public RuleEntry(@Nullable final List<FormattedCharSequence> tooltip) {
+      public RuleEntry(final @Nullable List<FormattedCharSequence> tooltip) {
          this.tooltip = tooltip;
       }
    }
@@ -264,7 +255,6 @@ public abstract class AbstractGameRulesScreen extends Screen {
       private final GameRules gameRules;
 
       public RuleList(final GameRules gameRules) {
-         Objects.requireNonNull(AbstractGameRulesScreen.this);
          super(
             Minecraft.getInstance(),
             AbstractGameRulesScreen.this.width,
@@ -283,10 +273,6 @@ public abstract class AbstractGameRulesScreen extends Screen {
          this.gameRules
             .visitGameRuleTypes(
                new GameRuleTypeVisitor() {
-                  {
-                     Objects.requireNonNull(RuleList.this);
-                  }
-
                   @Override
                   public void visitBoolean(final GameRule<Boolean> gameRule) {
                      this.addEntry(gameRule, (x$0, x$1, x$2, x$3) -> AbstractGameRulesScreen.this.new BooleanRuleEntry(x$0, x$1, x$2, x$3));

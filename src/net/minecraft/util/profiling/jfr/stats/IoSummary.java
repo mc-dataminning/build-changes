@@ -22,11 +22,11 @@ public final class IoSummary<T> {
    }
 
    public double getCountsPerSecond() {
-      return (double)this.totalCountAndSize.totalCount / (double)this.recordingDuration.getSeconds();
+      return (double)this.totalCountAndSize.totalCount / this.recordingDuration.getSeconds();
    }
 
    public double getSizePerSecond() {
-      return (double)this.totalCountAndSize.totalSize / (double)this.recordingDuration.getSeconds();
+      return (double)this.totalCountAndSize.totalSize / this.recordingDuration.getSeconds();
    }
 
    public long getTotalCount() {
@@ -41,7 +41,7 @@ public final class IoSummary<T> {
       return this.largestSizeContributors;
    }
 
-   public static record CountAndSize(long totalCount, long totalSize) {
+   public record CountAndSize(long totalCount, long totalSize) {
       private static final Comparator<IoSummary.CountAndSize> SIZE_THEN_COUNT = Comparator.comparing(IoSummary.CountAndSize::totalSize)
          .thenComparing(IoSummary.CountAndSize::totalCount)
          .reversed();

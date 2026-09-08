@@ -35,7 +35,7 @@ public interface AttributeTypes {
    AttributeType<Integer> INTEGER = register(
       "integer",
       AttributeType.ofInterpolated(
-         Codec.INT, AttributeModifier.INTEGER_LIBRARY, LerpFunction.ofInteger(), LerpFunction.ofInteger(), value -> (float)value.intValue(), value -> value
+         Codec.INT, AttributeModifier.INTEGER_LIBRARY, LerpFunction.ofInteger(), LerpFunction.ofInteger(), value -> value.intValue(), value -> value
       )
    );
    AttributeType<MoonPhase> MOON_PHASE = register("moon_phase", AttributeType.ofNotInterpolated(MoonPhase.CODEC));

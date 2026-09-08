@@ -61,12 +61,12 @@ public class EnchantingTableBlock extends BaseEntityBlock {
          if (random.nextInt(16) == 0 && isValidBookShelf(level, pos, offset)) {
             level.addParticle(
                ParticleTypes.ENCHANT,
-               (double)pos.getX() + 0.5,
-               (double)pos.getY() + 2.0,
-               (double)pos.getZ() + 0.5,
-               (double)((float)offset.getX() + random.nextFloat()) - 0.5,
-               (double)((float)offset.getY() - random.nextFloat() - 1.0F),
-               (double)((float)offset.getZ() + random.nextFloat()) - 0.5
+               pos.getX() + 0.5,
+               pos.getY() + 2.0,
+               pos.getZ() + 0.5,
+               offset.getX() + random.nextFloat() - 0.5,
+               offset.getY() - random.nextFloat() - 1.0F,
+               offset.getZ() + random.nextFloat() - 0.5
             );
          }
       }
@@ -77,9 +77,8 @@ public class EnchantingTableBlock extends BaseEntityBlock {
       return new EnchantingTableBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return level.isClientSide() ? createTickerHelper(type, BlockEntityTypes.ENCHANTING_TABLE, EnchantingTableBlockEntity::bookAnimationTick) : null;
    }
 
@@ -94,9 +93,8 @@ public class EnchantingTableBlock extends BaseEntityBlock {
       return InteractionResult.SUCCESS;
    }
 
-   @Nullable
    @Override
-   protected MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
+   protected @Nullable MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
       if (level.getBlockEntity(pos) instanceof EnchantingTableBlockEntity enchantingTable) {
          Component title = enchantingTable.getDisplayName();
          return new SimpleMenuProvider(

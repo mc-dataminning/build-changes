@@ -38,8 +38,7 @@ public class PrimaryLevelData implements ServerLevelData, WorldData {
    private final Lifecycle worldGenSettingsLifecycle;
    private LevelData.RespawnData respawnData;
    private long gameTime;
-   @Nullable
-   private final UUID singlePlayerUUID;
+   private final @Nullable UUID singlePlayerUUID;
    private final int version;
    private boolean initialized;
    private final Set<String> knownServerBrands;
@@ -48,7 +47,7 @@ public class PrimaryLevelData implements ServerLevelData, WorldData {
    private List<Integer> versionHistory;
 
    private PrimaryLevelData(
-      @Nullable final UUID singlePlayerUUID,
+      final @Nullable UUID singlePlayerUUID,
       final boolean wasModded,
       final LevelData.RespawnData respawnData,
       final long gameTime,
@@ -127,7 +126,7 @@ public class PrimaryLevelData implements ServerLevelData, WorldData {
       return tag;
    }
 
-   private void setTagData(final CompoundTag tag, @Nullable final UUID singlePlayerUUID) {
+   private void setTagData(final CompoundTag tag, final @Nullable UUID singlePlayerUUID) {
       tag.put("ServerBrands", stringCollectionToTag(this.knownServerBrands));
       tag.putBoolean("WasModded", this.wasModded);
       if (!this.removedFeatureFlags.isEmpty()) {
@@ -206,9 +205,8 @@ public class PrimaryLevelData implements ServerLevelData, WorldData {
       return this.gameTime;
    }
 
-   @Nullable
    @Override
-   public UUID getSinglePlayerUUID() {
+   public @Nullable UUID getSinglePlayerUUID() {
       return this.singlePlayerUUID;
    }
 
@@ -350,7 +348,7 @@ public class PrimaryLevelData implements ServerLevelData, WorldData {
    }
 
    @Deprecated
-   public static enum SpecialWorldProperty {
+   public enum SpecialWorldProperty {
       NONE,
       FLAT,
       DEBUG;

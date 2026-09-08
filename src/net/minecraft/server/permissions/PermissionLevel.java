@@ -18,7 +18,7 @@ public enum PermissionLevel implements StringRepresentable {
    private final String name;
    private final int id;
 
-   private PermissionLevel(final String name, final int id) {
+   PermissionLevel(final String name, final int id) {
       this.name = name;
       this.id = id;
    }

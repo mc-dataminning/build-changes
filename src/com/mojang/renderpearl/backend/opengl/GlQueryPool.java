@@ -30,15 +30,15 @@ public class GlQueryPool implements GpuQueryPool {
          throw new IndexOutOfBoundsException(
             "getValues would read out-of-bounds for an array of " + count + " starting at " + index + ", when total size is " + this.handles.length
          );
-      } else {
-         OptionalLong[] result = new OptionalLong[count];
-
-         for (int i = 0; i < count; i++) {
-            result[i] = this.getValue(index + i);
-         }
-
-         return result;
       }
+
+      OptionalLong[] result = new OptionalLong[count];
+
+      for (int i = 0; i < count; i++) {
+         result[i] = this.getValue(index + i);
+      }
+
+      return result;
    }
 
    protected void writeTimestamp(final int index) {

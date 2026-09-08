@@ -1,6 +1,5 @@
 package net.minecraft.client.gui.screens.inventory;
 
-import java.util.Objects;
 import net.minecraft.client.GameNarrator;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
@@ -45,10 +44,6 @@ public abstract class AbstractCommandBlockEditScreen extends Screen {
    protected void init() {
       boolean trackOutput = this.getCommandBlock().isTrackOutput();
       this.commandEdit = new EditBox(this.font, this.width / 2 - 150, 50, 300, 20, Component.translatable("advMode.command")) {
-         {
-            Objects.requireNonNull(AbstractCommandBlockEditScreen.this);
-         }
-
          @Override
          protected MutableComponent createNarrationMessage() {
             return super.createNarrationMessage().append(AbstractCommandBlockEditScreen.this.commandSuggestions.getNarrationMessage());

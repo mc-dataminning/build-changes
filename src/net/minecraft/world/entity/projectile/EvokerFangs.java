@@ -27,8 +27,7 @@ public class EvokerFangs extends Entity implements TraceableEntity {
    private boolean sentSpikeEvent;
    private int lifeTicks = 22;
    private boolean clientSideAttackStarted;
-   @Nullable
-   private EntityReference<LivingEntity> owner;
+   private @Nullable EntityReference<LivingEntity> owner;
 
    public EvokerFangs(final EntityType<? extends EvokerFangs> type, final Level level) {
       super(type, level);
@@ -48,12 +47,11 @@ public class EvokerFangs extends Entity implements TraceableEntity {
    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
    }
 
-   public void setOwner(@Nullable final LivingEntity owner) {
+   public void setOwner(final @Nullable LivingEntity owner) {
       this.owner = EntityReference.of(owner);
    }
 
-   @Nullable
-   public LivingEntity getOwner() {
+   public @Nullable LivingEntity getOwner() {
       return EntityReference.getLivingEntity(this.owner, this.level());
    }
 
@@ -77,9 +75,9 @@ public class EvokerFangs extends Entity implements TraceableEntity {
             this.lifeTicks--;
             if (this.lifeTicks == 14) {
                for (int i = 0; i < 12; i++) {
-                  double x = this.getX() + (this.random.nextDouble() * 2.0 - 1.0) * (double)this.getBbWidth() * 0.5;
+                  double x = this.getX() + (this.random.nextDouble() * 2.0 - 1.0) * this.getBbWidth() * 0.5;
                   double y = this.getY() + 0.05 + this.random.nextDouble();
-                  double z = this.getZ() + (this.random.nextDouble() * 2.0 - 1.0) * (double)this.getBbWidth() * 0.5;
+                  double z = this.getZ() + (this.random.nextDouble() * 2.0 - 1.0) * this.getBbWidth() * 0.5;
                   double xd = (this.random.nextDouble() * 2.0 - 1.0) * 0.3;
                   double yd = 0.3 + this.random.nextDouble() * 0.3;
                   double zd = (this.random.nextDouble() * 2.0 - 1.0) * 0.3;
@@ -124,7 +122,7 @@ public class EvokerFangs extends Entity implements TraceableEntity {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       super.handleEntityEvent(id);
       if (id == 4) {
          this.clientSideAttackStarted = true;
@@ -147,10 +145,10 @@ public class EvokerFangs extends Entity implements TraceableEntity {
    public float getAnimationProgress(final float a) {
       if (!this.clientSideAttackStarted) {
          return 0.0F;
-      } else {
-         int remainingLife = this.lifeTicks - 2;
-         return remainingLife <= 0 ? 1.0F : 1.0F - ((float)remainingLife - a) / 20.0F;
       }
+
+      int remainingLife = this.lifeTicks - 2;
+      return remainingLife <= 0 ? 1.0F : 1.0F - (remainingLife - a) / 20.0F;
    }
 
    @Override

@@ -32,9 +32,9 @@ public class WetSpongeBlock extends Block {
          BlockPos relativePos = pos.relative(direction);
          BlockState blockState = level.getBlockState(relativePos);
          if (!state.canOcclude() || !blockState.isFaceSturdy(level, relativePos, direction.getOpposite())) {
-            double xx = (double)pos.getX();
-            double yy = (double)pos.getY();
-            double zz = (double)pos.getZ();
+            double xx = pos.getX();
+            double yy = pos.getY();
+            double zz = pos.getZ();
             if (direction == Direction.DOWN) {
                yy -= 0.05;
                xx += random.nextDouble();
@@ -44,14 +44,14 @@ public class WetSpongeBlock extends Block {
                if (direction.getAxis() == Direction.Axis.X) {
                   zz += random.nextDouble();
                   if (direction == Direction.EAST) {
-                     xx++;
+                     xx += 1.1;
                   } else {
                      xx += 0.05;
                   }
                } else {
                   xx += random.nextDouble();
                   if (direction == Direction.SOUTH) {
-                     zz++;
+                     zz += 1.1;
                   } else {
                      zz += 0.05;
                   }

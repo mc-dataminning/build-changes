@@ -28,9 +28,9 @@ public class SmoothSwimmingLookControl extends LookControl {
       }
 
       float headDiffBody = Mth.wrapDegrees(this.mob.yHeadRot - this.mob.yBodyRot);
-      if (headDiffBody < (float)(-this.maxYRotFromCenter)) {
+      if (headDiffBody < -this.maxYRotFromCenter) {
          this.mob.yBodyRot -= 4.0F;
-      } else if (headDiffBody > (float)this.maxYRotFromCenter) {
+      } else if (headDiffBody > this.maxYRotFromCenter) {
          this.mob.yBodyRot += 4.0F;
       }
    }

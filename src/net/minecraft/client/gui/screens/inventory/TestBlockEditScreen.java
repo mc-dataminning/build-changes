@@ -22,8 +22,7 @@ public class TestBlockEditScreen extends Screen {
    private final BlockPos position;
    private TestBlockMode mode;
    private String message;
-   @Nullable
-   private EditBox messageEdit;
+   private @Nullable EditBox messageEdit;
 
    public TestBlockEditScreen(final TestBlockEntity block) {
       super(TITLE);

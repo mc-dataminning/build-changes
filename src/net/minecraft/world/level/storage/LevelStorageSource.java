@@ -105,8 +105,8 @@ public class LevelStorageSource {
 
       try {
          FileUtil.createDirectoriesSafe(baseDir);
-      } catch (IOException var6) {
-         throw new UncheckedIOException(var6);
+      } catch (IOException e) {
+         throw new UncheckedIOException(e);
       }
 
       this.baseDir = baseDir;
@@ -116,15 +116,10 @@ public class LevelStorageSource {
 
    public static DirectoryValidator parseValidator(final Path configPath) {
       if (Files.exists(configPath)) {
-         try {
-            DirectoryValidator var2;
-            try (BufferedReader reader = Files.newBufferedReader(configPath)) {
-               var2 = new DirectoryValidator(PathAllowList.readPlain(reader));
-            }
-
-            return var2;
-         } catch (Exception var6) {
-            LOGGER.error("Failed to parse {}, disallowing all symbolic links", "allowed_symlinks.txt", var6);
+         try (BufferedReader reader = Files.newBufferedReader(configPath)) {
+            return new DirectoryValidator(PathAllowList.readPlain(reader));
+         } catch (Exception e) {
+            LOGGER.error("Failed to parse {}, disallowing all symbolic links", "allowed_symlinks.txt", e);
          }
       }
 
@@ -153,24 +148,24 @@ public class LevelStorageSource {
    ) {
       if (DataFixers.getFileFixer().requiresFileFixing(NbtUtils.getDataVersion(levelDataTag))) {
          throw new IllegalStateException("Cannot get level data without file fixing first");
-      } else {
-         Dynamic<?> dataTag = RegistryOps.injectRegistryContext(levelDataTag, registryAccess);
-         WorldGenSettings worldGenSettings = (WorldGenSettings)readExistingSavedData(worldAccess, registryAccess, WorldGenSettings.TYPE)
-            .mapOrElse(
-               Function.identity(),
-               error -> {
-                  LOGGER.error(
-                     "Unable to read or access the world gen settings file! Falling back to the default settings with a random world seed. {}", error.message()
-                  );
-                  return new WorldGenSettings(WorldOptions.defaultWithRandomSeed(), new WorldDimensions(datapackDimensions));
-               }
-            );
-         LevelSettings settings = LevelSettings.parse(dataTag, dataConfiguration);
-         WorldDimensions.Complete dimensions = worldGenSettings.dimensions().bake(datapackDimensions);
-         Lifecycle lifecycle = dimensions.lifecycle().add(registryAccess.allRegistriesLifecycle());
-         PrimaryLevelData worldData = PrimaryLevelData.parse(dataTag, settings, dimensions.specialWorldProperty(), lifecycle);
-         return LevelDataAndDimensions.create(worldData, worldGenSettings, dimensions);
       }
+
+      Dynamic<?> dataTag = RegistryOps.injectRegistryContext(levelDataTag, registryAccess);
+      WorldGenSettings worldGenSettings = (WorldGenSettings)readExistingSavedData(worldAccess, registryAccess, WorldGenSettings.TYPE)
+         .mapOrElse(
+            Function.identity(),
+            error -> {
+               LOGGER.error(
+                  "Unable to read or access the world gen settings file! Falling back to the default settings with a random world seed. {}", error.message()
+               );
+               return new WorldGenSettings(WorldOptions.defaultWithRandomSeed(), new WorldDimensions(datapackDimensions));
+            }
+         );
+      LevelSettings settings = LevelSettings.parse(dataTag, dataConfiguration);
+      WorldDimensions.Complete dimensions = worldGenSettings.dimensions().bake(datapackDimensions);
+      Lifecycle lifecycle = dimensions.lifecycle().add(registryAccess.allRegistriesLifecycle());
+      PrimaryLevelData worldData = PrimaryLevelData.parse(dataTag, settings, dimensions.specialWorldProperty(), lifecycle);
+      return LevelDataAndDimensions.create(worldData, worldGenSettings, dimensions);
    }
 
    public static <T extends SavedData> DataResult<T> readExistingSavedData(
@@ -181,8 +176,8 @@ public class LevelStorageSource {
       CompoundTag fileContents;
       try {
          fileContents = NbtIo.readCompressed(dataLocation, NbtAccounter.unlimitedHeap());
-      } catch (IOException var6) {
-         return DataResult.error(var6::getMessage);
+      } catch (IOException e) {
+         return DataResult.error(e::getMessage);
       }
 
       return savedDataType.codec().parse(RegistryOps.create(NbtOps.INSTANCE, registryAccess), fileContents.getCompoundOrEmpty("data"));
@@ -216,25 +211,20 @@ public class LevelStorageSource {
       if (!Files.exists(this.baseDir)) {
          try {
             Files.createDirectory(this.baseDir);
-         } catch (IOException var5) {
-            throw new LevelStorageException(LOAD_FOLDER_ACCESS_MESSAGE, var5);
+         } catch (IOException e) {
+            throw new LevelStorageException(LOAD_FOLDER_ACCESS_MESSAGE, e);
          }
       } else if (!Files.isDirectory(this.baseDir)) {
          throw new LevelStorageException(LOAD_FOLDER_ACCESS_MESSAGE);
       }
 
-      try {
-         LevelStorageSource.LevelCandidates var3;
-         try (Stream<Path> paths = Files.list(this.baseDir)) {
-            List<LevelStorageSource.LevelDirectory> candidates = paths.filter(x$0 -> Files.isDirectory(x$0))
-               .map(LevelStorageSource.LevelDirectory::new)
-               .filter(directory -> Files.isRegularFile(directory.dataFile()) || Files.isRegularFile(directory.oldDataFile()))
-               .toList();
-            var3 = new LevelStorageSource.LevelCandidates(candidates);
-         }
-
-         return var3;
-      } catch (IOException var7) {
+      try (Stream<Path> paths = Files.list(this.baseDir)) {
+         List<LevelStorageSource.LevelDirectory> candidates = paths.filter(x$0 -> Files.isDirectory(x$0))
+            .map(LevelStorageSource.LevelDirectory::new)
+            .filter(directory -> Files.isRegularFile(directory.dataFile()) || Files.isRegularFile(directory.oldDataFile()))
+            .toList();
+         return new LevelStorageSource.LevelCandidates(candidates);
+      } catch (IOException e) {
          throw new LevelStorageException(LOAD_FOLDER_ACCESS_MESSAGE);
       }
    }
@@ -247,19 +237,19 @@ public class LevelStorageSource {
             boolean locked;
             try {
                locked = DirectoryLock.isLocked(level.path());
-            } catch (Exception var13) {
-               LOGGER.warn("Failed to read {} lock", level.path(), var13);
+            } catch (Exception e) {
+               LOGGER.warn("Failed to read {} lock", level.path(), e);
                return null;
             }
 
             try {
                return this.readLevelSummary(level, locked);
-            } catch (OutOfMemoryError var12) {
+            } catch (OutOfMemoryError e) {
                MemoryReserve.release();
                String detailedMessage = "Ran out of memory trying to read summary of world folder \"" + level.directoryName() + "\"";
                LOGGER.error(LogUtils.FATAL_MARKER, "{}", detailedMessage);
                OutOfMemoryError detailedException = new OutOfMemoryError("Ran out of memory reading level data");
-               detailedException.initCause(var12);
+               detailedException.initCause(e);
                CrashReport crashReport = CrashReport.forThrowable(detailedException, detailedMessage);
                CrashReportCategory worldDetails = crashReport.addCategory("World details");
                worldDetails.setDetail("Folder Name", level.directoryName());
@@ -267,8 +257,8 @@ public class LevelStorageSource {
                try {
                   long size = Files.size(level.dataFile());
                   worldDetails.setDetail("level.dat size", size);
-               } catch (IOException var11) {
-                  worldDetails.setDetailError("level.dat size", var11);
+               } catch (IOException ex) {
+                  worldDetails.setDetailError("level.dat size", ex);
                }
 
                throw new ReportedException(crashReport);
@@ -307,8 +297,8 @@ public class LevelStorageSource {
             }
 
             LOGGER.warn("Invalid root tag in {}", dataFile);
-         } catch (Exception var9) {
-            LOGGER.error("Exception reading {}", dataFile, var9);
+         } catch (Exception e) {
+            LOGGER.error("Exception reading {}", dataFile, e);
          }
       }
 
@@ -324,8 +314,7 @@ public class LevelStorageSource {
       return timeStamp == null ? -1L : timeStamp.toEpochMilli();
    }
 
-   @Nullable
-   private static Instant getFileModificationTime(final Path path) {
+   private static @Nullable Instant getFileModificationTime(final Path path) {
       try {
          return Files.getLastModifiedTime(path).toInstant();
       } catch (IOException var2) {
@@ -340,18 +329,16 @@ public class LevelStorageSource {
       int levelDataVersion = levelVersion.levelDataVersion();
       if (levelDataVersion != 19132 && levelDataVersion != 19133) {
          throw new NbtFormatException("Unknown data version: " + Integer.toHexString(levelDataVersion));
-      } else {
-         boolean requiresManualConversion = levelDataVersion != this.getStorageVersion();
-         boolean requiresFileFixing = DataFixers.getFileFixer().requiresFileFixing(dataVersion);
-         Path icon = levelDirectory.iconFile();
-         WorldDataConfiguration dataConfiguration = readDataConfig(dataTag);
-         LevelSettings settings = LevelSettings.parse(dataTag, dataConfiguration);
-         FeatureFlagSet enabledFeatureFlags = parseFeatureFlagsFromSummary(dataTag);
-         boolean experimental = FeatureFlags.isExperimental(enabledFeatureFlags);
-         return new LevelSummary(
-            settings, levelVersion, levelDirectory.directoryName(), requiresManualConversion, requiresFileFixing, locked, experimental, icon
-         );
       }
+
+      boolean requiresManualConversion = levelDataVersion != this.getStorageVersion();
+      boolean requiresFileFixing = DataFixers.getFileFixer().requiresFileFixing(dataVersion);
+      Path icon = levelDirectory.iconFile();
+      WorldDataConfiguration dataConfiguration = readDataConfig(dataTag);
+      LevelSettings settings = LevelSettings.parse(dataTag, dataConfiguration);
+      FeatureFlagSet enabledFeatureFlags = parseFeatureFlagsFromSummary(dataTag);
+      boolean experimental = FeatureFlags.isExperimental(enabledFeatureFlags);
+      return new LevelSummary(settings, levelVersion, levelDirectory.directoryName(), requiresManualConversion, requiresFileFixing, locked, experimental, icon);
    }
 
    private static FeatureFlagSet parseFeatureFlagsFromSummary(final Dynamic<?> tag) {
@@ -359,12 +346,10 @@ public class LevelStorageSource {
          .asStream()
          .flatMap(entry -> entry.asString().result().map(Identifier::tryParse).stream())
          .collect(Collectors.toSet());
-      return FeatureFlags.REGISTRY.fromNames(enabledFlags, unknownId -> {
-      });
+      return FeatureFlags.REGISTRY.fromNames(enabledFlags, unknownId -> {});
    }
 
-   @Nullable
-   private static Tag readLightweightData(final Path dataFile) throws IOException {
+   private static @Nullable Tag readLightweightData(final Path dataFile) throws IOException {
       SkipFields parser = new SkipFields(new FieldSelector("Data", CompoundTag.TYPE, "Player"), new FieldSelector("Data", CompoundTag.TYPE, "WorldGenSettings"));
       NbtIo.parseCompressed(dataFile, parser, NbtAccounter.uncompressedQuota());
       return parser.getResult();
@@ -376,7 +361,7 @@ public class LevelStorageSource {
          Files.createDirectory(fullPath);
          Files.deleteIfExists(fullPath);
          return true;
-      } catch (IOException var3) {
+      } catch (IOException e) {
          return false;
       }
    }
@@ -384,7 +369,7 @@ public class LevelStorageSource {
    public boolean levelExists(final String levelId) {
       try {
          return Files.isDirectory(this.getLevelPath(levelId));
-      } catch (InvalidPathException var3) {
+      } catch (InvalidPathException e) {
          return false;
       }
    }
@@ -420,7 +405,7 @@ public class LevelStorageSource {
       return this.worldDirValidator;
    }
 
-   public static record LevelCandidates(List<LevelStorageSource.LevelDirectory> levels) implements Iterable<LevelStorageSource.LevelDirectory> {
+   public record LevelCandidates(List<LevelStorageSource.LevelDirectory> levels) implements Iterable<LevelStorageSource.LevelDirectory> {
       public boolean isEmpty() {
          return this.levels.isEmpty();
       }
@@ -431,7 +416,7 @@ public class LevelStorageSource {
       }
    }
 
-   public static record LevelDirectory(Path path) {
+   public record LevelDirectory(Path path) {
       public String directoryName() {
          return this.path.getFileName().toString();
       }
@@ -469,12 +454,9 @@ public class LevelStorageSource {
       private DirectoryLock lock;
       private final LevelStorageSource.LevelDirectory levelDirectory;
       private final String levelId;
-      private final Map<LevelResource, Path> resources;
+      private final Map<LevelResource, Path> resources = Maps.newHashMap();
 
       private LevelStorageAccess(final String levelId, final Path path) throws IOException {
-         Objects.requireNonNull(LevelStorageSource.this);
-         super();
-         this.resources = Maps.newHashMap();
          this.levelId = levelId;
          this.levelDirectory = new LevelStorageSource.LevelDirectory(path);
          this.createLock();
@@ -497,7 +479,7 @@ public class LevelStorageSource {
       public long estimateDiskSpace() {
          try {
             return Files.getFileStore(this.levelDirectory.path).getUsableSpace();
-         } catch (Exception var2) {
+         } catch (Exception ignored) {
             return Long.MAX_VALUE;
          }
       }
@@ -509,8 +491,8 @@ public class LevelStorageSource {
       public void safeClose() {
          try {
             this.close();
-         } catch (IOException var2) {
-            LevelStorageSource.LOGGER.warn("Failed to unlock access to level {}", this.getLevelId(), var2);
+         } catch (IOException e) {
+            LevelStorageSource.LOGGER.warn("Failed to unlock access to level {}", this.getLevelId(), e);
          }
       }
 
@@ -569,8 +551,8 @@ public class LevelStorageSource {
          Dynamic<?> unfixedDataTag;
          try {
             unfixedDataTag = this.getUnfixedDataTag(false);
-         } catch (NbtException | ReportedNbtException | IOException var3) {
-            LevelStorageSource.LOGGER.warn("Failed to load world data from {}", this.levelDirectory.dataFile(), var3);
+         } catch (IOException | NbtException | ReportedNbtException e) {
+            LevelStorageSource.LOGGER.warn("Failed to load world data from {}", this.levelDirectory.dataFile(), e);
             LevelStorageSource.LOGGER.info("Attempting to use fallback {}", this.levelDirectory.oldDataFile());
             unfixedDataTag = this.getUnfixedDataTag(true);
             this.restoreLevelDataFromOld();
@@ -594,7 +576,7 @@ public class LevelStorageSource {
          this.saveDataTag(levelData, null);
       }
 
-      public void saveDataTag(final WorldData levelData, @Nullable final UUID singleplayerUUID) {
+      public void saveDataTag(final WorldData levelData, final @Nullable UUID singleplayerUUID) {
          CompoundTag dataTag = levelData.createTag(singleplayerUUID);
          CompoundTag root = new CompoundTag();
          root.put("Data", dataTag);
@@ -617,8 +599,8 @@ public class LevelStorageSource {
             Path oldDataFile = this.levelDirectory.oldDataFile();
             Path currentFile = this.levelDirectory.dataFile();
             Util.safeReplaceFile(currentFile, dataFile, oldDataFile);
-         } catch (Exception var6) {
-            LevelStorageSource.LOGGER.error("Failed to save level {}", worldDir, var6);
+         } catch (Exception e) {
+            LevelStorageSource.LOGGER.error("Failed to save level {}", worldDir, e);
          }
       }
 
@@ -636,10 +618,6 @@ public class LevelStorageSource {
 
             try {
                Files.walkFileTree(this.levelDirectory.path(), new SimpleFileVisitor<Path>() {
-                  {
-                     Objects.requireNonNull(LevelStorageAccess.this);
-                  }
-
                   public FileVisitResult visitFile(final Path file, final BasicFileAttributes attrs) throws IOException {
                      if (!file.equals(lockPath)) {
                         LevelStorageSource.LOGGER.debug("Deleting {}", file);
@@ -649,27 +627,27 @@ public class LevelStorageSource {
                      return FileVisitResult.CONTINUE;
                   }
 
-                  public FileVisitResult postVisitDirectory(final Path dir, @Nullable final IOException exc) throws IOException {
+                  public FileVisitResult postVisitDirectory(final Path dir, final @Nullable IOException exc) throws IOException {
                      if (exc != null) {
                         throw exc;
-                     } else {
-                        if (dir.equals(LevelStorageAccess.this.levelDirectory.path())) {
-                           LevelStorageAccess.this.lock.close();
-                           Files.deleteIfExists(lockPath);
-                        }
-
-                        Files.deleteIfExists(dir);
-                        return FileVisitResult.CONTINUE;
                      }
+
+                     if (dir.equals(LevelStorageAccess.this.levelDirectory.path())) {
+                        LevelStorageAccess.this.lock.close();
+                        Files.deleteIfExists(lockPath);
+                     }
+
+                     Files.deleteIfExists(dir);
+                     return FileVisitResult.CONTINUE;
                   }
                });
                break;
-            } catch (IOException var6) {
+            } catch (IOException e) {
                if (attempt >= 5) {
-                  throw var6;
+                  throw e;
                }
 
-               LevelStorageSource.LOGGER.warn("Failed to delete {}", this.levelDirectory.path(), var6);
+               LevelStorageSource.LOGGER.warn("Failed to delete {}", this.levelDirectory.path(), e);
 
                try {
                   Thread.sleep(500L);
@@ -704,8 +682,8 @@ public class LevelStorageSource {
 
          try {
             FileUtil.createDirectoriesSafe(root);
-         } catch (IOException var9) {
-            throw new RuntimeException(var9);
+         } catch (IOException e) {
+            throw new RuntimeException(e);
          }
 
          Path zipFilePath = root.resolve(FileUtil.findAvailableName(root, zipFilePrefix, ".zip"));
@@ -713,21 +691,17 @@ public class LevelStorageSource {
          try (final ZipOutputStream stream = new ZipOutputStream(new BufferedOutputStream(Files.newOutputStream(zipFilePath)))) {
             final Path rootPath = Paths.get(this.levelId);
             Files.walkFileTree(this.levelDirectory.path(), new SimpleFileVisitor<Path>() {
-               {
-                  Objects.requireNonNull(LevelStorageAccess.this);
-               }
-
                public FileVisitResult visitFile(final Path path, final BasicFileAttributes attrs) throws IOException {
                   if (path.endsWith("session.lock")) {
                      return FileVisitResult.CONTINUE;
-                  } else {
-                     String entryPath = rootPath.resolve(LevelStorageAccess.this.levelDirectory.path().relativize(path)).toString().replace('\\', '/');
-                     ZipEntry entry = new ZipEntry(entryPath);
-                     stream.putNextEntry(entry);
-                     com.google.common.io.Files.asByteSource(path.toFile()).copyTo(stream);
-                     stream.closeEntry();
-                     return FileVisitResult.CONTINUE;
                   }
+
+                  String entryPath = rootPath.resolve(LevelStorageAccess.this.levelDirectory.path().relativize(path)).toString().replace('\\', '/');
+                  ZipEntry entry = new ZipEntry(entryPath);
+                  stream.putNextEntry(entry);
+                  com.google.common.io.Files.asByteSource(path.toFile()).copyTo(stream);
+                  stream.closeEntry();
+                  return FileVisitResult.CONTINUE;
                }
             });
          }
@@ -750,8 +724,7 @@ public class LevelStorageSource {
          );
       }
 
-      @Nullable
-      public Instant getFileModificationTime(final boolean fallback) {
+      public @Nullable Instant getFileModificationTime(final boolean fallback) {
          return LevelStorageSource.getFileModificationTime(this.getDataFile(fallback));
       }
    }

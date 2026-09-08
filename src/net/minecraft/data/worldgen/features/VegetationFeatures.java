@@ -168,8 +168,7 @@ public class VegetationFeatures {
       context.register(SUNFLOWER, new SimpleBlockFeature(BlockStateProvider.of(Blocks.SUNFLOWER)));
       context.register(PUMPKIN, new SimpleBlockFeature(BlockStateProvider.of(Blocks.PUMPKIN)));
       context.register(
-         BERRY_BUSH,
-         new SimpleBlockFeature(BlockStateProvider.of(Blocks.SWEET_BERRY_BUSH.defaultBlockState().setValue(SweetBerryBushBlock.AGE, Integer.valueOf(3))))
+         BERRY_BUSH, new SimpleBlockFeature(BlockStateProvider.of(Blocks.SWEET_BERRY_BUSH.defaultBlockState().setValue(SweetBerryBushBlock.AGE, 3)))
       );
       context.register(
          TAIGA_GRASS,
@@ -485,7 +484,7 @@ public class VegetationFeatures {
 
       for (int amount = minState; amount <= maxState; amount++) {
          for (Direction direction : Direction.Plane.HORIZONTAL) {
-            segmentedBlockBuild.add(block.defaultBlockState().setValue(amountProperty, Integer.valueOf(amount)).setValue(directionProperty, direction), 1);
+            segmentedBlockBuild.add(block.defaultBlockState().setValue(amountProperty, amount).setValue(directionProperty, direction), 1);
          }
       }
 

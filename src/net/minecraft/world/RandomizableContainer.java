@@ -22,10 +22,9 @@ public interface RandomizableContainer extends Container {
    String LOOT_TABLE_TAG = "LootTable";
    String LOOT_TABLE_SEED_TAG = "LootTableSeed";
 
-   @Nullable
-   ResourceKey<LootTable> getLootTable();
+   @Nullable ResourceKey<LootTable> getLootTable();
 
-   void setLootTable(@Nullable final ResourceKey<LootTable> lootTable);
+   void setLootTable(final @Nullable ResourceKey<LootTable> lootTable);
 
    default void setLootTable(final ResourceKey<LootTable> lootTable, final long seed) {
       this.setLootTable(lootTable);
@@ -38,8 +37,7 @@ public interface RandomizableContainer extends Container {
 
    BlockPos getBlockPos();
 
-   @Nullable
-   Level getLevel();
+   @Nullable Level getLevel();
 
    static void setBlockEntityLootTable(
       final BlockGetter level, final RandomSource random, final BlockPos blockEntityPos, final ResourceKey<LootTable> lootTable
@@ -60,18 +58,18 @@ public interface RandomizableContainer extends Container {
       ResourceKey<LootTable> lootTable = this.getLootTable();
       if (lootTable == null) {
          return false;
-      } else {
-         base.store("LootTable", LootTable.KEY_CODEC, lootTable);
-         long lootTableSeed = this.getLootTableSeed();
-         if (lootTableSeed != 0L) {
-            base.putLong("LootTableSeed", lootTableSeed);
-         }
-
-         return true;
       }
+
+      base.store("LootTable", LootTable.KEY_CODEC, lootTable);
+      long lootTableSeed = this.getLootTableSeed();
+      if (lootTableSeed != 0L) {
+         base.putLong("LootTableSeed", lootTableSeed);
+      }
+
+      return true;
    }
 
-   default void unpackLootTable(@Nullable final Player player) {
+   default void unpackLootTable(final @Nullable Player player) {
       Level level = this.getLevel();
       BlockPos worldPosition = this.getBlockPos();
       ResourceKey<LootTable> lootTableKey = this.getLootTable();

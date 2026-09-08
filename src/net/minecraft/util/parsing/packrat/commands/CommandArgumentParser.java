@@ -8,7 +8,6 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.DynamicOps;
-import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
@@ -19,10 +18,6 @@ public interface CommandArgumentParser<T> {
 
    default <S> CommandArgumentParser<S> mapResult(final Function<T, S> mapper) {
       return new CommandArgumentParser<S>() {
-         {
-            Objects.requireNonNull(CommandArgumentParser.this);
-         }
-
          @Override
          public S parseForCommands(final StringReader reader) throws CommandSyntaxException {
             return mapper.apply((T)CommandArgumentParser.this.parseForCommands(reader));
@@ -39,10 +34,6 @@ public interface CommandArgumentParser<T> {
       final DynamicOps<O> ops, final CommandArgumentParser<O> valueParser, final Codec<T> codec, final DynamicCommandExceptionType exceptionType
    ) {
       return new CommandArgumentParser<T>() {
-         {
-            Objects.requireNonNull(CommandArgumentParser.this);
-         }
-
          @Override
          public T parseForCommands(final StringReader reader) throws CommandSyntaxException {
             int cursor = reader.getCursor();

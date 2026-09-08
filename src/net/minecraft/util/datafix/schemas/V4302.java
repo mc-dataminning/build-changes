@@ -19,11 +19,11 @@ public class V4302 extends NamespacedSchema {
          map,
          "minecraft:test_instance_block",
          () -> DSL.optionalFields(
-               "data",
-               DSL.optionalFields("error_message", References.TEXT_COMPONENT.in(schema)),
-               "errors",
-               DSL.list(DSL.optionalFields("text", References.TEXT_COMPONENT.in(schema)))
-            )
+            "data",
+            DSL.optionalFields("error_message", References.TEXT_COMPONENT.in(schema)),
+            "errors",
+            DSL.list(DSL.optionalFields("text", References.TEXT_COMPONENT.in(schema)))
+         )
       );
       return map;
    }

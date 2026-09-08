@@ -42,8 +42,7 @@ public class ParticleResources implements PreparableReloadListener {
    private static final FileToIdConverter PARTICLE_LISTER = FileToIdConverter.json("particles");
    private final Map<Identifier, ParticleResources.MutableSpriteSet> spriteSets = Maps.newHashMap();
    private final Int2ObjectMap<ParticleProvider<?>> providers = new Int2ObjectOpenHashMap();
-   @Nullable
-   private Runnable onReload;
+   private @Nullable Runnable onReload;
 
    public ParticleResources() {
       this.registerProviders();
@@ -271,18 +270,13 @@ public class ParticleResources implements PreparableReloadListener {
       if (!this.spriteSets.containsKey(id)) {
          LOGGER.debug("Redundant texture list for particle: {}", id);
          return Optional.empty();
-      } else {
-         try {
-            Optional var5;
-            try (Reader reader = resource.openAsReader()) {
-               ParticleDescription description = ParticleDescription.fromJson(GsonHelper.parse(reader));
-               var5 = Optional.of(description.getTextures());
-            }
+      }
 
-            return var5;
-         } catch (IOException var8) {
-            throw new IllegalStateException("Failed to load description for particle " + id, var8);
-         }
+      try (Reader reader = resource.openAsReader()) {
+         ParticleDescription description = ParticleDescription.fromJson(GsonHelper.parse(reader));
+         return Optional.of(description.getTextures());
+      } catch (IOException e) {
+         throw new IllegalStateException("Failed to load description for particle " + id, e);
       }
    }
 

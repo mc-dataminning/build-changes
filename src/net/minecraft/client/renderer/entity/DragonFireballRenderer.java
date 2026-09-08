@@ -48,9 +48,9 @@ public class DragonFireballRenderer extends EntityRenderer<DragonFireball, Entit
    private static void vertex(
       final VertexConsumer builder, final PoseStack.Pose pose, final int lightCoords, final float x, final int y, final int u, final int v, final int color
    ) {
-      builder.addVertex(pose, x - 0.5F, (float)y - 0.25F, 0.0F)
+      builder.addVertex(pose, x - 0.5F, y - 0.25F, 0.0F)
          .setColor(color)
-         .setUv((float)u, (float)v)
+         .setUv(u, v)
          .setOverlay(OverlayTexture.NO_OVERLAY)
          .setLight(lightCoords)
          .setNormal(pose, 0.0F, 1.0F, 0.0F);

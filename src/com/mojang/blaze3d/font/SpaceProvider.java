@@ -23,9 +23,8 @@ public class SpaceProvider implements GlyphProvider {
       advances.forEach((codepoint, advance) -> this.glyphs.put(codepoint, new EmptyGlyph(advance)));
    }
 
-   @Nullable
    @Override
-   public UnbakedGlyph getGlyph(final int codepoint) {
+   public @Nullable UnbakedGlyph getGlyph(final int codepoint) {
       return (UnbakedGlyph)this.glyphs.get(codepoint);
    }
 
@@ -34,10 +33,10 @@ public class SpaceProvider implements GlyphProvider {
       return IntSets.unmodifiable(this.glyphs.keySet());
    }
 
-   public static record Definition(Map<Integer, Float> advances) implements GlyphProviderDefinition {
+   public record Definition(Map<Integer, Float> advances) implements GlyphProviderDefinition {
       public static final MapCodec<SpaceProvider.Definition> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(Codec.unboundedMap(ExtraCodecs.CODEPOINT, Codec.FLOAT).fieldOf("advances").forGetter(SpaceProvider.Definition::advances))
-               .apply(i, SpaceProvider.Definition::new)
+            .apply(i, SpaceProvider.Definition::new)
       );
 
       @Override

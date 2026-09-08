@@ -7,15 +7,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 public interface InputWithModifiers {
-   @InputConstants.Value
-   int input();
+   @InputConstants.Value int input();
 
    default int shortcutKey() {
       return this.input();
    }
 
-   @InputWithModifiers.Modifiers
-   int modifiers();
+   @InputWithModifiers.Modifiers int modifiers();
 
    default boolean isSelection() {
       return this.input() == 40 || this.input() == 44 || this.input() == 88;
@@ -82,7 +80,7 @@ public interface InputWithModifiers {
    }
 
    @Retention(RetentionPolicy.CLASS)
-   @Target({ElementType.TYPE_USE})
-   public @interface Modifiers {
+   @Target(ElementType.TYPE_USE)
+   @interface Modifiers {
    }
 }

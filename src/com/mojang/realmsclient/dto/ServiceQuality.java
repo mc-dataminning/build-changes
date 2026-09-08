@@ -19,13 +19,12 @@ public enum ServiceQuality {
    private final int value;
    private final Identifier icon;
 
-   private ServiceQuality(final int value, final String iconPath) {
+   ServiceQuality(final int value, final String iconPath) {
       this.value = value;
       this.icon = Identifier.withDefaultNamespace(iconPath);
    }
 
-   @Nullable
-   public static ServiceQuality byValue(final int value) {
+   public static @Nullable ServiceQuality byValue(final int value) {
       for (ServiceQuality quality : values()) {
          if (quality.getValue() == value) {
             return quality;
@@ -47,7 +46,7 @@ public enum ServiceQuality {
       private static final Logger LOGGER = LogUtils.getLogger();
 
       public void write(final JsonWriter jsonWriter, final ServiceQuality quality) throws IOException {
-         jsonWriter.value((long)quality.value);
+         jsonWriter.value(quality.value);
       }
 
       public ServiceQuality read(final JsonReader jsonReader) throws IOException {

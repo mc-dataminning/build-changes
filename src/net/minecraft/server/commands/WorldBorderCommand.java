@@ -60,22 +60,22 @@ public class WorldBorderCommand {
                                     ((RequiredArgumentBuilder)Commands.argument("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
                                           .executes(
                                              c -> setSize(
-                                                   (CommandSourceStack)c.getSource(),
-                                                   ((CommandSourceStack)c.getSource()).getLevel().getWorldBorder().getSize()
-                                                      + DoubleArgumentType.getDouble(c, "distance"),
-                                                   0L
-                                                )
+                                                (CommandSourceStack)c.getSource(),
+                                                ((CommandSourceStack)c.getSource()).getLevel().getWorldBorder().getSize()
+                                                   + DoubleArgumentType.getDouble(c, "distance"),
+                                                0L
+                                             )
                                           ))
                                        .then(
                                           Commands.argument("time", TimeArgument.time(0))
                                              .executes(
                                                 c -> setSize(
-                                                      (CommandSourceStack)c.getSource(),
-                                                      ((CommandSourceStack)c.getSource()).getLevel().getWorldBorder().getSize()
-                                                         + DoubleArgumentType.getDouble(c, "distance"),
-                                                      ((CommandSourceStack)c.getSource()).getLevel().getWorldBorder().getLerpTime()
-                                                         + (long)IntegerArgumentType.getInteger(c, "time")
-                                                   )
+                                                   (CommandSourceStack)c.getSource(),
+                                                   ((CommandSourceStack)c.getSource()).getLevel().getWorldBorder().getSize()
+                                                      + DoubleArgumentType.getDouble(c, "distance"),
+                                                   ((CommandSourceStack)c.getSource()).getLevel().getWorldBorder().getLerpTime()
+                                                      + IntegerArgumentType.getInteger(c, "time")
+                                                )
                                              )
                                        )
                                  )
@@ -89,10 +89,10 @@ public class WorldBorderCommand {
                                        Commands.argument("time", TimeArgument.time(0))
                                           .executes(
                                              c -> setSize(
-                                                   (CommandSourceStack)c.getSource(),
-                                                   DoubleArgumentType.getDouble(c, "distance"),
-                                                   (long)IntegerArgumentType.getInteger(c, "time")
-                                                )
+                                                (CommandSourceStack)c.getSource(),
+                                                DoubleArgumentType.getDouble(c, "distance"),
+                                                IntegerArgumentType.getInteger(c, "time")
+                                             )
                                           )
                                     )
                               )
@@ -144,48 +144,46 @@ public class WorldBorderCommand {
 
    private static int setDamageBuffer(final CommandSourceStack source, final float distance) throws CommandSyntaxException {
       WorldBorder border = source.getLevel().getWorldBorder();
-      if (border.getSafeZone() == (double)distance) {
+      if (border.getSafeZone() == distance) {
          throw ERROR_SAME_DAMAGE_BUFFER.create();
-      } else {
-         border.setSafeZone((double)distance);
-         source.sendSuccess(() -> Component.translatable("commands.worldborder.damage.buffer.success", String.format(Locale.ROOT, "%.2f", distance)), true);
-         return (int)distance;
       }
+
+      border.setSafeZone(distance);
+      source.sendSuccess(() -> Component.translatable("commands.worldborder.damage.buffer.success", String.format(Locale.ROOT, "%.2f", distance)), true);
+      return (int)distance;
    }
 
    private static int setDamageAmount(final CommandSourceStack source, final float damagePerBlock) throws CommandSyntaxException {
       WorldBorder border = source.getLevel().getWorldBorder();
-      if (border.getDamagePerBlock() == (double)damagePerBlock) {
+      if (border.getDamagePerBlock() == damagePerBlock) {
          throw ERROR_SAME_DAMAGE_AMOUNT.create();
-      } else {
-         border.setDamagePerBlock((double)damagePerBlock);
-         source.sendSuccess(
-            () -> Component.translatable("commands.worldborder.damage.amount.success", String.format(Locale.ROOT, "%.2f", damagePerBlock)), true
-         );
-         return (int)damagePerBlock;
       }
+
+      border.setDamagePerBlock(damagePerBlock);
+      source.sendSuccess(() -> Component.translatable("commands.worldborder.damage.amount.success", String.format(Locale.ROOT, "%.2f", damagePerBlock)), true);
+      return (int)damagePerBlock;
    }
 
    private static int setWarningTime(final CommandSourceStack source, final int ticks) throws CommandSyntaxException {
       WorldBorder border = source.getLevel().getWorldBorder();
       if (border.getWarningTime() == ticks) {
          throw ERROR_SAME_WARNING_TIME.create();
-      } else {
-         border.setWarningTime(ticks);
-         source.sendSuccess(() -> Component.translatable("commands.worldborder.warning.time.success", formatTicksToSeconds((long)ticks)), true);
-         return ticks;
       }
+
+      border.setWarningTime(ticks);
+      source.sendSuccess(() -> Component.translatable("commands.worldborder.warning.time.success", formatTicksToSeconds(ticks)), true);
+      return ticks;
    }
 
    private static int setWarningDistance(final CommandSourceStack source, final int distance) throws CommandSyntaxException {
       WorldBorder border = source.getLevel().getWorldBorder();
       if (border.getWarningBlocks() == distance) {
          throw ERROR_SAME_WARNING_DISTANCE.create();
-      } else {
-         border.setWarningBlocks(distance);
-         source.sendSuccess(() -> Component.translatable("commands.worldborder.warning.distance.success", distance), true);
-         return distance;
       }
+
+      border.setWarningBlocks(distance);
+      source.sendSuccess(() -> Component.translatable("commands.worldborder.warning.distance.success", distance), true);
+      return distance;
    }
 
    private static int getSize(final CommandSourceStack source) {
@@ -196,14 +194,14 @@ public class WorldBorderCommand {
 
    private static int setCenter(final CommandSourceStack source, final Vec2 center) throws CommandSyntaxException {
       WorldBorder border = source.getLevel().getWorldBorder();
-      if (border.getCenterX() == (double)center.x && border.getCenterZ() == (double)center.y) {
+      if (border.getCenterX() == center.x && border.getCenterZ() == center.y) {
          throw ERROR_SAME_CENTER.create();
-      } else if (!((double)Math.abs(center.x) > 2.9999984E7) && !((double)Math.abs(center.y) > 2.9999984E7)) {
-         border.setCenter((double)center.x, (double)center.y);
+      } else if (!(Math.abs(center.x) > 2.9999984E7) && !(Math.abs(center.y) > 2.9999984E7)) {
+         border.setCenter(center.x, center.y);
          source.sendSuccess(
             () -> Component.translatable(
-                  "commands.worldborder.center.success", String.format(Locale.ROOT, "%.2f", center.x), String.format(Locale.ROOT, "%.2f", center.y)
-               ),
+               "commands.worldborder.center.success", String.format(Locale.ROOT, "%.2f", center.x), String.format(Locale.ROOT, "%.2f", center.y)
+            ),
             true
          );
          return 0;
@@ -218,29 +216,33 @@ public class WorldBorderCommand {
       double current = border.getSize();
       if (current == distance) {
          throw ERROR_SAME_SIZE.create();
-      } else if (distance < 1.0) {
-         throw ERROR_TOO_SMALL.create();
-      } else if (distance > 5.999997E7F) {
-         throw ERROR_TOO_BIG.create();
-      } else {
-         String formattedDistance = String.format(Locale.ROOT, "%.1f", distance);
-         if (ticks > 0L) {
-            border.lerpSizeBetween(current, distance, ticks, level.getGameTime());
-            if (distance > current) {
-               source.sendSuccess(() -> Component.translatable("commands.worldborder.set.grow", formattedDistance, formatTicksToSeconds(ticks)), true);
-            } else {
-               source.sendSuccess(() -> Component.translatable("commands.worldborder.set.shrink", formattedDistance, formatTicksToSeconds(ticks)), true);
-            }
-         } else {
-            border.setSize(distance);
-            source.sendSuccess(() -> Component.translatable("commands.worldborder.set.immediate", formattedDistance), true);
-         }
-
-         return (int)(distance - current);
       }
+
+      if (distance < 1.0) {
+         throw ERROR_TOO_SMALL.create();
+      }
+
+      if (distance > 5.999997E7F) {
+         throw ERROR_TOO_BIG.create();
+      }
+
+      String formattedDistance = String.format(Locale.ROOT, "%.1f", distance);
+      if (ticks > 0L) {
+         border.lerpSizeBetween(current, distance, ticks, level.getGameTime());
+         if (distance > current) {
+            source.sendSuccess(() -> Component.translatable("commands.worldborder.set.grow", formattedDistance, formatTicksToSeconds(ticks)), true);
+         } else {
+            source.sendSuccess(() -> Component.translatable("commands.worldborder.set.shrink", formattedDistance, formatTicksToSeconds(ticks)), true);
+         }
+      } else {
+         border.setSize(distance);
+         source.sendSuccess(() -> Component.translatable("commands.worldborder.set.immediate", formattedDistance), true);
+      }
+
+      return (int)(distance - current);
    }
 
    private static String formatTicksToSeconds(final long ticks) {
-      return String.format(Locale.ROOT, "%.2f", (double)ticks / 20.0);
+      return String.format(Locale.ROOT, "%.2f", ticks / 20.0);
    }
 }

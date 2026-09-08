@@ -31,28 +31,28 @@ public record SulfurCubeArchetype(
 ) {
    public static final Codec<SulfurCubeArchetype> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               RegistryCodecs.holderSet(Registries.ITEM).fieldOf("items").forGetter(SulfurCubeArchetype::items),
-               SulfurCubeArchetype.AttributeEntry.CODEC.listOf().fieldOf("attribute_modifiers").forGetter(SulfurCubeArchetype::attributeModifiers),
-               Codec.BOOL.optionalFieldOf("buoyant", false).forGetter(SulfurCubeArchetype::buoyant),
-               SulfurCubeArchetype.ExplosionData.CODEC.optionalFieldOf("explosion").forGetter(SulfurCubeArchetype::explosion),
-               SulfurCubeArchetype.ContactDamage.CODEC.optionalFieldOf("contact_damage").forGetter(SulfurCubeArchetype::contactDamage),
-               SulfurCubeArchetype.KnockbackModifiers.CODEC.fieldOf("knockback_modifiers").forGetter(SulfurCubeArchetype::knockbackModifiers),
-               SulfurCubeArchetype.SoundSettings.CODEC.fieldOf("sound_settings").forGetter(SulfurCubeArchetype::soundSettings)
-            )
-            .apply(i, SulfurCubeArchetype::new)
+            RegistryCodecs.holderSet(Registries.ITEM).fieldOf("items").forGetter(SulfurCubeArchetype::items),
+            SulfurCubeArchetype.AttributeEntry.CODEC.listOf().fieldOf("attribute_modifiers").forGetter(SulfurCubeArchetype::attributeModifiers),
+            Codec.BOOL.optionalFieldOf("buoyant", false).forGetter(SulfurCubeArchetype::buoyant),
+            SulfurCubeArchetype.ExplosionData.CODEC.optionalFieldOf("explosion").forGetter(SulfurCubeArchetype::explosion),
+            SulfurCubeArchetype.ContactDamage.CODEC.optionalFieldOf("contact_damage").forGetter(SulfurCubeArchetype::contactDamage),
+            SulfurCubeArchetype.KnockbackModifiers.CODEC.fieldOf("knockback_modifiers").forGetter(SulfurCubeArchetype::knockbackModifiers),
+            SulfurCubeArchetype.SoundSettings.CODEC.fieldOf("sound_settings").forGetter(SulfurCubeArchetype::soundSettings)
+         )
+         .apply(i, SulfurCubeArchetype::new)
    );
    public static SulfurCubeArchetype.KnockbackModifiers DEFAULT_KNOCKBACK_MODIFIERS = new SulfurCubeArchetype.KnockbackModifiers(0.33F, 0.06F);
    public static SulfurCubeArchetype.SoundSettings DEFAULT_SOUND_SETTINGS = new SulfurCubeArchetype.SoundSettings(
       SoundEvents.SULFUR_CUBE_REGULAR_HIT, SoundEvents.SULFUR_CUBE_REGULAR_PUSH, 0.2F, 0.5F
    );
 
-   public static record AttributeEntry(Holder<Attribute> attribute, AttributeModifier modifier) {
+   public record AttributeEntry(Holder<Attribute> attribute, AttributeModifier modifier) {
       public static final Codec<SulfurCubeArchetype.AttributeEntry> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Attribute.CODEC.fieldOf("attribute").forGetter(SulfurCubeArchetype.AttributeEntry::attribute),
-                  AttributeModifier.MAP_CODEC.forGetter(SulfurCubeArchetype.AttributeEntry::modifier)
-               )
-               .apply(i, SulfurCubeArchetype.AttributeEntry::new)
+               Attribute.CODEC.fieldOf("attribute").forGetter(SulfurCubeArchetype.AttributeEntry::attribute),
+               AttributeModifier.MAP_CODEC.forGetter(SulfurCubeArchetype.AttributeEntry::modifier)
+            )
+            .apply(i, SulfurCubeArchetype.AttributeEntry::new)
       );
 
       public static SulfurCubeArchetype.AttributeEntry add(
@@ -82,47 +82,47 @@ public record SulfurCubeArchetype(
       }
    }
 
-   public static record ContactDamage(Holder<DamageType> damageType, FloatProvider amount, boolean attributeToSource) {
+   public record ContactDamage(Holder<DamageType> damageType, FloatProvider amount, boolean attributeToSource) {
       public static final Codec<SulfurCubeArchetype.ContactDamage> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  DamageType.CODEC.fieldOf("damage_type").forGetter(SulfurCubeArchetype.ContactDamage::damageType),
-                  FloatProviders.codec(0.0F).fieldOf("amount").forGetter(SulfurCubeArchetype.ContactDamage::amount),
-                  Codec.BOOL.fieldOf("attribute_to_source").forGetter(SulfurCubeArchetype.ContactDamage::attributeToSource)
-               )
-               .apply(i, SulfurCubeArchetype.ContactDamage::new)
+               DamageType.CODEC.fieldOf("damage_type").forGetter(SulfurCubeArchetype.ContactDamage::damageType),
+               FloatProviders.codec(0.0F).fieldOf("amount").forGetter(SulfurCubeArchetype.ContactDamage::amount),
+               Codec.BOOL.fieldOf("attribute_to_source").forGetter(SulfurCubeArchetype.ContactDamage::attributeToSource)
+            )
+            .apply(i, SulfurCubeArchetype.ContactDamage::new)
       );
    }
 
-   public static record ExplosionData(int power, boolean causesFire, int fuse) {
+   public record ExplosionData(int power, boolean causesFire, int fuse) {
       public static final Codec<SulfurCubeArchetype.ExplosionData> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  ExtraCodecs.NON_NEGATIVE_INT.fieldOf("power").forGetter(SulfurCubeArchetype.ExplosionData::power),
-                  Codec.BOOL.fieldOf("causes_fire").forGetter(SulfurCubeArchetype.ExplosionData::causesFire),
-                  ExtraCodecs.POSITIVE_INT.fieldOf("fuse").forGetter(SulfurCubeArchetype.ExplosionData::fuse)
-               )
-               .apply(i, SulfurCubeArchetype.ExplosionData::new)
+               ExtraCodecs.NON_NEGATIVE_INT.fieldOf("power").forGetter(SulfurCubeArchetype.ExplosionData::power),
+               Codec.BOOL.fieldOf("causes_fire").forGetter(SulfurCubeArchetype.ExplosionData::causesFire),
+               ExtraCodecs.POSITIVE_INT.fieldOf("fuse").forGetter(SulfurCubeArchetype.ExplosionData::fuse)
+            )
+            .apply(i, SulfurCubeArchetype.ExplosionData::new)
       );
    }
 
-   public static record KnockbackModifiers(float horizontalPower, float verticalPower) {
+   public record KnockbackModifiers(float horizontalPower, float verticalPower) {
       public static final Codec<SulfurCubeArchetype.KnockbackModifiers> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Codec.FLOAT.fieldOf("horizontal_power").forGetter(SulfurCubeArchetype.KnockbackModifiers::horizontalPower),
-                  Codec.FLOAT.fieldOf("vertical_power").forGetter(SulfurCubeArchetype.KnockbackModifiers::verticalPower)
-               )
-               .apply(i, SulfurCubeArchetype.KnockbackModifiers::new)
+               Codec.FLOAT.fieldOf("horizontal_power").forGetter(SulfurCubeArchetype.KnockbackModifiers::horizontalPower),
+               Codec.FLOAT.fieldOf("vertical_power").forGetter(SulfurCubeArchetype.KnockbackModifiers::verticalPower)
+            )
+            .apply(i, SulfurCubeArchetype.KnockbackModifiers::new)
       );
    }
 
-   public static record SoundSettings(Holder<SoundEvent> hitSound, Holder<SoundEvent> pushSound, float pushSoundImpulseThreshold, float pushSoundCooldown) {
+   public record SoundSettings(Holder<SoundEvent> hitSound, Holder<SoundEvent> pushSound, float pushSoundImpulseThreshold, float pushSoundCooldown) {
       public static final Codec<SulfurCubeArchetype.SoundSettings> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  SoundEvent.CODEC.fieldOf("hit_sound").forGetter(SulfurCubeArchetype.SoundSettings::hitSound),
-                  SoundEvent.CODEC.fieldOf("push_sound").forGetter(SulfurCubeArchetype.SoundSettings::pushSound),
-                  Codec.FLOAT.fieldOf("push_sound_impulse_threshold").forGetter(SulfurCubeArchetype.SoundSettings::pushSoundImpulseThreshold),
-                  Codec.FLOAT.fieldOf("push_sound_cooldown").forGetter(SulfurCubeArchetype.SoundSettings::pushSoundCooldown)
-               )
-               .apply(i, SulfurCubeArchetype.SoundSettings::new)
+               SoundEvent.CODEC.fieldOf("hit_sound").forGetter(SulfurCubeArchetype.SoundSettings::hitSound),
+               SoundEvent.CODEC.fieldOf("push_sound").forGetter(SulfurCubeArchetype.SoundSettings::pushSound),
+               Codec.FLOAT.fieldOf("push_sound_impulse_threshold").forGetter(SulfurCubeArchetype.SoundSettings::pushSoundImpulseThreshold),
+               Codec.FLOAT.fieldOf("push_sound_cooldown").forGetter(SulfurCubeArchetype.SoundSettings::pushSoundCooldown)
+            )
+            .apply(i, SulfurCubeArchetype.SoundSettings::new)
       );
    }
 }

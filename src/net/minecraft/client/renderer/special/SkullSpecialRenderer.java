@@ -47,14 +47,14 @@ public class SkullSpecialRenderer implements NoDataSpecialModelRenderer {
       this.model.root().getExtentsForGui(poseStack, output);
    }
 
-   public static record Unbaked(SkullBlock.Type kind, Optional<Identifier> textureOverride, float animation) implements NoDataSpecialModelRenderer.Unbaked {
+   public record Unbaked(SkullBlock.Type kind, Optional<Identifier> textureOverride, float animation) implements NoDataSpecialModelRenderer.Unbaked {
       public static final MapCodec<SkullSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  SkullBlock.Type.CODEC.fieldOf("kind").forGetter(SkullSpecialRenderer.Unbaked::kind),
-                  Identifier.CODEC.optionalFieldOf("texture").forGetter(SkullSpecialRenderer.Unbaked::textureOverride),
-                  Codec.FLOAT.optionalFieldOf("animation", 0.0F).forGetter(SkullSpecialRenderer.Unbaked::animation)
-               )
-               .apply(i, SkullSpecialRenderer.Unbaked::new)
+               SkullBlock.Type.CODEC.fieldOf("kind").forGetter(SkullSpecialRenderer.Unbaked::kind),
+               Identifier.CODEC.optionalFieldOf("texture").forGetter(SkullSpecialRenderer.Unbaked::textureOverride),
+               Codec.FLOAT.optionalFieldOf("animation", 0.0F).forGetter(SkullSpecialRenderer.Unbaked::animation)
+            )
+            .apply(i, SkullSpecialRenderer.Unbaked::new)
       );
 
       public Unbaked(final SkullBlock.Type kind) {
@@ -66,16 +66,15 @@ public class SkullSpecialRenderer implements NoDataSpecialModelRenderer {
          return MAP_CODEC;
       }
 
-      @Nullable
-      public SkullSpecialRenderer bake(final SpecialModelRenderer.BakingContext context) {
+      public @Nullable SkullSpecialRenderer bake(final SpecialModelRenderer.BakingContext context) {
          SkullModelBase model = SkullBlockRenderer.createModel(context.entityModelSet(), this.kind);
          Identifier textureOverride = this.textureOverride.<Identifier>map(t -> t.withPath(p -> "textures/entity/" + p + ".png")).orElse(null);
          if (model == null) {
             return null;
-         } else {
-            RenderType renderType = SkullBlockRenderer.getSkullRenderType(this.kind, textureOverride);
-            return new SkullSpecialRenderer(model, this.animation, renderType);
          }
+
+         RenderType renderType = SkullBlockRenderer.getSkullRenderType(this.kind, textureOverride);
+         return new SkullSpecialRenderer(model, this.animation, renderType);
       }
    }
 }

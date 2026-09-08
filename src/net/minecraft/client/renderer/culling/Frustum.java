@@ -35,20 +35,20 @@ public class Frustum {
    }
 
    public Frustum offset(final float offset) {
-      this.camX = this.camX + (double)(this.viewVector.x * offset);
-      this.camY = this.camY + (double)(this.viewVector.y * offset);
-      this.camZ = this.camZ + (double)(this.viewVector.z * offset);
+      this.camX = this.camX + this.viewVector.x * offset;
+      this.camY = this.camY + this.viewVector.y * offset;
+      this.camZ = this.camZ + this.viewVector.z * offset;
       return this;
    }
 
    public Frustum offsetToFullyIncludeCameraCube(final int cubeSize) {
-      double camX1 = Math.floor(this.camX / (double)cubeSize) * (double)cubeSize;
-      double camY1 = Math.floor(this.camY / (double)cubeSize) * (double)cubeSize;
-      double camZ1 = Math.floor(this.camZ / (double)cubeSize) * (double)cubeSize;
-      double camX2 = Math.ceil(this.camX / (double)cubeSize) * (double)cubeSize;
-      double camY2 = Math.ceil(this.camY / (double)cubeSize) * (double)cubeSize;
+      double camX1 = Math.floor(this.camX / cubeSize) * cubeSize;
+      double camY1 = Math.floor(this.camY / cubeSize) * cubeSize;
+      double camZ1 = Math.floor(this.camZ / cubeSize) * cubeSize;
+      double camX2 = Math.ceil(this.camX / cubeSize) * cubeSize;
+      double camY2 = Math.ceil(this.camY / cubeSize) * cubeSize;
 
-      for (double camZ2 = Math.ceil(this.camZ / (double)cubeSize) * (double)cubeSize;
+      for (double camZ2 = Math.ceil(this.camZ / cubeSize) * cubeSize;
          this.intersection
                .intersectAab(
                   (float)(camX1 - this.camX),
@@ -59,10 +59,10 @@ public class Frustum {
                   (float)(camZ2 - this.camZ)
                )
             != -2;
-         this.camZ = this.camZ - (double)(this.viewVector.z() * 4.0F)
+         this.camZ = this.camZ - this.viewVector.z() * 4.0F
       ) {
-         this.camX = this.camX - (double)(this.viewVector.x() * 4.0F);
-         this.camY = this.camY - (double)(this.viewVector.y() * 4.0F);
+         this.camX = this.camX - this.viewVector.x() * 4.0F;
+         this.camY = this.camY - this.viewVector.y() * 4.0F;
       }
 
       return this;
@@ -86,9 +86,7 @@ public class Frustum {
    }
 
    public int cubeInFrustum(final BoundingBox bb) {
-      return this.cubeInFrustum(
-         (double)bb.minX(), (double)bb.minY(), (double)bb.minZ(), (double)(bb.maxX() + 1), (double)(bb.maxY() + 1), (double)(bb.maxZ() + 1)
-      );
+      return this.cubeInFrustum(bb.minX(), bb.minY(), bb.minZ(), bb.maxX() + 1, bb.maxY() + 1, bb.maxZ() + 1);
    }
 
    private int cubeInFrustum(final double minX, final double minY, final double minZ, final double maxX, final double maxY, final double maxZ) {

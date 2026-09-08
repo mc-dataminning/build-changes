@@ -7,11 +7,9 @@ import net.minecraft.world.phys.AABB;
 import org.jspecify.annotations.Nullable;
 
 public interface LevelEntityGetter<T extends EntityAccess> {
-   @Nullable
-   T get(final int id);
+   @Nullable T get(final int id);
 
-   @Nullable
-   T get(final UUID id);
+   @Nullable T get(final UUID id);
 
    Iterable<T> getAll();
 

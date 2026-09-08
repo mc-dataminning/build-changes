@@ -39,7 +39,7 @@ public interface ItemProvider {
       return cycle(items.toArray(new ItemStack[0]));
    }
 
-   public static class FallbackItemProvider implements ItemProvider {
+   class FallbackItemProvider implements ItemProvider {
       private final ItemProvider itemProvider;
       private final ItemStack fallbackItem;
       private boolean isUsingFallback;

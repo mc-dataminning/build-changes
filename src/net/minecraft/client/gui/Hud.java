@@ -148,8 +148,7 @@ public class Hud {
    private final WaypointStyleManager waypointStyles = new WaypointStyleManager();
    private boolean isHidden;
    private int tickCount;
-   @Nullable
-   private Component overlayMessageString;
+   private @Nullable Component overlayMessageString;
    private int overlayMessageTime;
    private boolean animateOverlayMessageColor;
    public float vignetteBrightness = 1.0F;
@@ -161,10 +160,8 @@ public class Hud {
    private final PlayerTabOverlay tabList;
    private final BossHealthOverlay bossOverlay;
    private int titleTime;
-   @Nullable
-   private Component title;
-   @Nullable
-   private Component subtitle;
+   private @Nullable Component title;
+   private @Nullable Component subtitle;
    private int titleFadeInTime;
    private int titleStayTime;
    private int titleFadeOutTime;
@@ -173,8 +170,7 @@ public class Hud {
    private long lastHealthTime;
    private long healthBlinkTime;
    private int lastBubblePopSoundPlayed;
-   @Nullable
-   private Runnable deferredSubtitles;
+   private @Nullable Runnable deferredSubtitles;
    private float autosaveIndicatorValue;
    private float lastAutosaveIndicatorValue;
    private Pair<Hud.ContextualInfo, ContextualBar> contextualInfoBar = Pair.of(Hud.ContextualInfo.EMPTY, ContextualBar.EMPTY);
@@ -317,7 +313,7 @@ public class Hud {
       if (this.minecraft.player.getSleepTimer() > 0) {
          Profiler.get().push("sleep");
          graphics.nextStratum();
-         float sleepTimer = (float)this.minecraft.player.getSleepTimer();
+         float sleepTimer = this.minecraft.player.getSleepTimer();
          float amount = sleepTimer / 100.0F;
          if (amount > 1.0F) {
             amount = 1.0F - (sleepTimer - 100.0F) / 10.0F;
@@ -333,7 +329,7 @@ public class Hud {
       Font font = this.getFont();
       if (this.overlayMessageString != null && this.overlayMessageTime > 0) {
          Profiler.get().push("overlayMessage");
-         float t = (float)this.overlayMessageTime - deltaTracker.getGameTimeDeltaPartialTick(false);
+         float t = this.overlayMessageTime - deltaTracker.getGameTimeDeltaPartialTick(false);
          int alpha = (int)(t * 255.0F / 20.0F);
          if (alpha > 255) {
             alpha = 255;
@@ -342,7 +338,7 @@ public class Hud {
          if (alpha > 0) {
             graphics.nextStratum();
             graphics.pose().pushMatrix();
-            graphics.pose().translate((float)(graphics.guiWidth() / 2), (float)(graphics.guiHeight() - 68));
+            graphics.pose().translate(graphics.guiWidth() / 2, graphics.guiHeight() - 68);
             int color;
             if (this.animateOverlayMessageColor) {
                color = Mth.hsvToArgb(t / 50.0F, 0.7F, 0.6F, alpha);
@@ -363,22 +359,22 @@ public class Hud {
       if (this.title != null && this.titleTime > 0) {
          Font font = this.getFont();
          Profiler.get().push("titleAndSubtitle");
-         float t = (float)this.titleTime - deltaTracker.getGameTimeDeltaPartialTick(false);
+         float t = this.titleTime - deltaTracker.getGameTimeDeltaPartialTick(false);
          int alpha = 255;
          if (this.titleTime > this.titleFadeOutTime + this.titleStayTime) {
-            float time = (float)(this.titleFadeInTime + this.titleStayTime + this.titleFadeOutTime) - t;
-            alpha = (int)(time * 255.0F / (float)this.titleFadeInTime);
+            float time = this.titleFadeInTime + this.titleStayTime + this.titleFadeOutTime - t;
+            alpha = (int)(time * 255.0F / this.titleFadeInTime);
          }
 
          if (this.titleTime <= this.titleFadeOutTime) {
-            alpha = (int)(t * 255.0F / (float)this.titleFadeOutTime);
+            alpha = (int)(t * 255.0F / this.titleFadeOutTime);
          }
 
          alpha = Mth.clamp(alpha, 0, 255);
          if (alpha > 0) {
             graphics.nextStratum();
             graphics.pose().pushMatrix();
-            graphics.pose().translate((float)(graphics.guiWidth() / 2), (float)(graphics.guiHeight() / 2));
+            graphics.pose().translate(graphics.guiWidth() / 2, graphics.guiHeight() / 2);
             graphics.pose().pushMatrix();
             graphics.pose().scale(4.0F, 4.0F);
             int titleWidth = font.width(this.title);
@@ -474,7 +470,7 @@ public class Hud {
       }
    }
 
-   private boolean canRenderCrosshairForSpectator(@Nullable final HitResult hitResult) {
+   private boolean canRenderCrosshairForSpectator(final @Nullable HitResult hitResult) {
       if (hitResult == null) {
          return false;
       } else if (hitResult.getType() == HitResult.Type.ENTITY) {
@@ -522,8 +518,8 @@ public class Hud {
                   if (instance.endsWithin(200)) {
                      int remainingDuration = instance.getDuration();
                      int usedSeconds = 10 - remainingDuration / 20;
-                     alpha = Mth.clamp((float)remainingDuration / 10.0F / 5.0F * 0.5F, 0.0F, 0.5F)
-                        + Mth.cos((double)((float)remainingDuration * (float) Math.PI / 5.0F)) * Mth.clamp((float)usedSeconds / 10.0F * 0.25F, 0.0F, 0.25F);
+                     alpha = Mth.clamp(remainingDuration / 10.0F / 5.0F * 0.5F, 0.0F, 0.5F)
+                        + Mth.cos(remainingDuration * (float) Math.PI / 5.0F) * Mth.clamp(usedSeconds / 10.0F * 0.25F, 0.0F, 0.25F);
                      alpha = Mth.clamp(alpha, 0.0F, 1.0F);
                   }
                }
@@ -643,7 +639,7 @@ public class Hud {
             y += 14;
          }
 
-         int alpha = (int)((float)this.toolHighlightTimer * 256.0F / 10.0F);
+         int alpha = (int)(this.toolHighlightTimer * 256.0F / 10.0F);
          if (alpha > 255) {
             alpha = 255;
          }
@@ -706,18 +702,19 @@ public class Hud {
          biggestWidth = Math.max(biggestWidth, this.getFont().width(entry.name) + (entry.scoreWidth > 0 ? spacerWidth + entry.scoreWidth : 0));
       }
 
+      int width = biggestWidth;
       int entriesCount = entriesToDisplay.length;
       int height = entriesCount * 9;
       int bottom = graphics.guiHeight() / 2 + height / 3;
       int rightPadding = 3;
-      int left = graphics.guiWidth() - biggestWidth - 3;
+      int left = graphics.guiWidth() - width - 3;
       int right = graphics.guiWidth() - 3 + 2;
       int backgroundColor = this.minecraft.options.getBackgroundColor(0.3F);
       int headerBackgroundColor = this.minecraft.options.getBackgroundColor(0.4F);
       int headerY = bottom - entriesCount * 9;
       graphics.fill(left - 2, headerY - 9 - 1, right, headerY - 1, headerBackgroundColor);
       graphics.fill(left - 2, headerY - 1, right, bottom, backgroundColor);
-      graphics.text(this.getFont(), objectiveDisplayName, left + biggestWidth / 2 - objectiveDisplayNameWidth / 2, headerY - 9, -1, false);
+      graphics.text(this.getFont(), objectiveDisplayName, left + width / 2 - objectiveDisplayNameWidth / 2, headerY - 9, -1, false);
 
       for (int i = 0; i < entriesCount; i++) {
          DisplayEntry e = entriesToDisplay[i];
@@ -727,13 +724,11 @@ public class Hud {
       }
    }
 
-   @Nullable
-   private Player getCameraPlayer() {
+   private @Nullable Player getCameraPlayer() {
       return this.minecraft.getCameraEntity() instanceof Player player ? player : null;
    }
 
-   @Nullable
-   private LivingEntity getPlayerVehicleWithHealth() {
+   private @Nullable LivingEntity getPlayerVehicleWithHealth() {
       Player player = this.getCameraPlayer();
       if (player != null) {
          Entity vehicle = player.getVehicle();
@@ -741,15 +736,15 @@ public class Hud {
             return null;
          }
 
-         if (vehicle instanceof LivingEntity) {
-            return (LivingEntity)vehicle;
+         if (vehicle instanceof LivingEntity livingEntity) {
+            return livingEntity;
          }
       }
 
       return null;
    }
 
-   private int getVehicleMaxHearts(@Nullable final LivingEntity vehicle) {
+   private int getVehicleMaxHearts(final @Nullable LivingEntity vehicle) {
       if (vehicle != null && vehicle.showVehicleHealth()) {
          float maxVehicleHealth = vehicle.getMaxHealth();
          int hearts = (int)(maxVehicleHealth + 0.5F) / 2;
@@ -764,21 +759,21 @@ public class Hud {
    }
 
    private int getVisibleVehicleHeartRows(final int hearts) {
-      return (int)Math.ceil((double)hearts / 10.0);
+      return (int)Math.ceil(hearts / 10.0);
    }
 
    private void extractPlayerHealth(final GuiGraphicsExtractor graphics) {
       Player player = this.getCameraPlayer();
       if (player != null) {
          int currentHealth = Mth.ceil(player.getHealth());
-         boolean blink = this.healthBlinkTime > (long)this.tickCount && (this.healthBlinkTime - (long)this.tickCount) / 3L % 2L == 1L;
+         boolean blink = this.healthBlinkTime > this.tickCount && (this.healthBlinkTime - this.tickCount) / 3L % 2L == 1L;
          long timeMillis = Util.getMillis();
          if (currentHealth < this.lastHealth && player.damageCooldownTime > 0) {
             this.lastHealthTime = timeMillis;
-            this.healthBlinkTime = (long)(this.tickCount + 20);
+            this.healthBlinkTime = this.tickCount + 20;
          } else if (currentHealth > this.lastHealth && player.damageCooldownTime > 0) {
             this.lastHealthTime = timeMillis;
-            this.healthBlinkTime = (long)(this.tickCount + 10);
+            this.healthBlinkTime = this.tickCount + 10;
          }
 
          if (timeMillis - this.lastHealthTime > 1000L) {
@@ -788,13 +783,13 @@ public class Hud {
 
          this.lastHealth = currentHealth;
          int oldHealth = this.displayHealth;
-         this.random.setSeed((long)(this.tickCount * 312871));
+         this.random.setSeed(this.tickCount * 312871);
          int xLeft = graphics.guiWidth() / 2 - 91;
          int xRight = graphics.guiWidth() / 2 + 91;
          int yLineBase = graphics.guiHeight() - 39;
-         float maxHealth = Math.max((float)player.getAttributeValue(Attributes.MAX_HEALTH), (float)Math.max(oldHealth, currentHealth));
+         float maxHealth = Math.max((float)player.getAttributeValue(Attributes.MAX_HEALTH), Math.max(oldHealth, currentHealth));
          int totalAbsorption = Mth.ceil(player.getAbsorptionAmount());
-         int numHealthRows = Mth.ceil((maxHealth + (float)totalAbsorption) / 2.0F / 10.0F);
+         int numHealthRows = Mth.ceil((maxHealth + totalAbsorption) / 2.0F / 10.0F);
          int healthRowHeight = Math.max(10 - (numHealthRows - 2), 3);
          int yLineAir = yLineBase - 10;
          int heartOffsetIndex = -1;
@@ -859,8 +854,8 @@ public class Hud {
    ) {
       Hud.HeartType type = Hud.HeartType.forPlayer(player);
       boolean isHardcore = player.level().getLevelData().isHardcore();
-      int healthContainerCount = Mth.ceil((double)maxHealth / 2.0);
-      int absorptionContainerCount = Mth.ceil((double)absorption / 2.0);
+      int healthContainerCount = Mth.ceil(maxHealth / 2.0);
+      int absorptionContainerCount = Mth.ceil(absorption / 2.0);
       int maxHealthHalvesCount = healthContainerCount * 2;
 
       for (int containerIndex = healthContainerCount + absorptionContainerCount - 1; containerIndex >= 0; containerIndex--) {
@@ -913,7 +908,7 @@ public class Hud {
 
    private void extractAirBubbles(final GuiGraphicsExtractor graphics, final Player player, final int vehicleHearts, int yLineAir, final int xRight) {
       int maxAirSupplyTicks = player.getMaxAirSupply();
-      int currentAirSupplyTicks = Math.clamp((long)player.getAirSupply(), 0, maxAirSupplyTicks);
+      int currentAirSupplyTicks = Math.clamp(player.getAirSupply(), 0, maxAirSupplyTicks);
       boolean isUnderWater = player.isEyeInFluid(FluidTags.WATER);
       if (isUnderWater || currentAirSupplyTicks < maxAirSupplyTicks) {
          yLineAir = this.getAirBubbleYLine(vehicleHearts, yLineAir);
@@ -947,7 +942,7 @@ public class Hud {
    }
 
    private static int getCurrentAirSupplyBubble(final int currentAirSupplyTicks, final int maxAirSupplyTicks, final int tickOffset) {
-      return Mth.ceil((float)((currentAirSupplyTicks + tickOffset) * 10) / (float)maxAirSupplyTicks);
+      return Mth.ceil((float)((currentAirSupplyTicks + tickOffset) * 10) / maxAirSupplyTicks);
    }
 
    private static int getEmptyBubbleDelayDuration(final int currentAirSupplyTicks, final boolean isUnderWater) {
@@ -956,8 +951,8 @@ public class Hud {
 
    private void playAirBubblePoppedSound(final int bubble, final Player player, final int emptyAirBubbles) {
       if (this.lastBubblePopSoundPlayed != bubble) {
-         float soundVolume = 0.5F + 0.1F * (float)Math.max(0, emptyAirBubbles - 3 + 1);
-         float soundPitch = 1.0F + 0.1F * (float)Math.max(0, emptyAirBubbles - 5 + 1);
+         float soundVolume = 0.5F + 0.1F * Math.max(0, emptyAirBubbles - 3 + 1);
+         float soundPitch = 1.0F + 0.1F * Math.max(0, emptyAirBubbles - 5 + 1);
          player.playSound(SoundEvents.BUBBLE_POP, soundVolume, soundPitch);
          this.lastBubblePopSoundPlayed = bubble;
       }
@@ -983,7 +978,7 @@ public class Hud {
          }
 
          if (player.getFoodData().getSaturationLevel() <= 0.0F && this.tickCount % (food * 3 + 1) == 0) {
-            yo = yLineBase + (this.random.nextInt(3) - 1);
+            yo += this.random.nextInt(3) - 1;
          }
 
          int xo = xRight - i * 8 - 9;
@@ -1003,7 +998,7 @@ public class Hud {
       if (vehicleWithHearts != null) {
          int hearts = this.getVehicleMaxHearts(vehicleWithHearts);
          if (hearts != 0) {
-            int currentHealth = (int)Math.ceil((double)vehicleWithHearts.getHealth());
+            int currentHealth = (int)Math.ceil(vehicleWithHearts.getHealth());
             Profiler.get().popPush("mountHealth");
             int yLine1 = graphics.guiHeight() - 39;
             int xRight = graphics.guiWidth() / 2 + 91;
@@ -1039,10 +1034,11 @@ public class Hud {
    }
 
    private void extractSpyglassOverlay(final GuiGraphicsExtractor graphics, final float scale) {
-      float srcWidth = (float)Math.min(graphics.guiWidth(), graphics.guiHeight());
-      float ratio = Math.min((float)graphics.guiWidth() / srcWidth, (float)graphics.guiHeight() / srcWidth) * scale;
+      float srcWidth = Math.min(graphics.guiWidth(), graphics.guiHeight());
+      float srcHeight = srcWidth;
+      float ratio = Math.min(graphics.guiWidth() / srcWidth, graphics.guiHeight() / srcHeight) * scale;
       int width = Mth.floor(srcWidth * ratio);
-      int height = Mth.floor(srcWidth * ratio);
+      int height = Mth.floor(srcHeight * ratio);
       int left = (graphics.guiWidth() - width) / 2;
       int top = (graphics.guiHeight() - height) / 2;
       int right = left + width;
@@ -1061,17 +1057,17 @@ public class Hud {
       this.vignetteBrightness = this.vignetteBrightness + (brightness - this.vignetteBrightness) * 0.01F;
    }
 
-   private void extractVignette(final GuiGraphicsExtractor graphics, @Nullable final Entity camera) {
+   private void extractVignette(final GuiGraphicsExtractor graphics, final @Nullable Entity camera) {
       WorldBorder worldBorder = this.minecraft.level.getWorldBorder();
       float borderWarningStrength = 0.0F;
       if (camera != null) {
          float distToBorder = (float)worldBorder.getDistanceToBorder(camera);
          double movingBlocksThreshold = Math.min(
-            worldBorder.getLerpSpeed() * (double)worldBorder.getWarningTime(), Math.abs(worldBorder.getLerpTarget() - worldBorder.getSize())
+            worldBorder.getLerpSpeed() * worldBorder.getWarningTime(), Math.abs(worldBorder.getLerpTarget() - worldBorder.getSize())
          );
-         double warningDistance = Math.max((double)worldBorder.getWarningBlocks(), movingBlocksThreshold);
-         if ((double)distToBorder < warningDistance) {
-            borderWarningStrength = 1.0F - (float)((double)distToBorder / warningDistance);
+         double warningDistance = Math.max(worldBorder.getWarningBlocks(), movingBlocksThreshold);
+         if (distToBorder < warningDistance) {
+            borderWarningStrength = 1.0F - (float)(distToBorder / warningDistance);
          }
       }
 
@@ -1118,9 +1114,9 @@ public class Hud {
       int screenHeight = graphics.guiHeight();
       graphics.pose().pushMatrix();
       float size = Mth.lerp(strength, 2.0F, 1.0F);
-      graphics.pose().translate((float)screenWidth / 2.0F, (float)screenHeight / 2.0F);
+      graphics.pose().translate(screenWidth / 2.0F, screenHeight / 2.0F);
       graphics.pose().scale(size, size);
-      graphics.pose().translate((float)(-screenWidth) / 2.0F, (float)(-screenHeight) / 2.0F);
+      graphics.pose().translate(-screenWidth / 2.0F, -screenHeight / 2.0F);
       float red = 0.2F * strength;
       float green = 0.4F * strength;
       float blue = 0.2F * strength;
@@ -1150,13 +1146,13 @@ public class Hud {
       final int seed
    ) {
       if (!itemStack.isEmpty()) {
-         float pop = (float)itemStack.getPopTime() - deltaTracker.getGameTimeDeltaPartialTick(false);
+         float pop = itemStack.getPopTime() - deltaTracker.getGameTimeDeltaPartialTick(false);
          if (pop > 0.0F) {
             float squeeze = 1.0F + pop / 5.0F;
             graphics.pose().pushMatrix();
-            graphics.pose().translate((float)(x + 8), (float)(y + 12));
+            graphics.pose().translate(x + 8, y + 12);
             graphics.pose().scale(1.0F / squeeze, (squeeze + 1.0F) / 2.0F);
-            graphics.pose().translate((float)(-(x + 8)), (float)(-(y + 12)));
+            graphics.pose().translate(-(x + 8), -(y + 12));
          }
 
          graphics.item(player, itemStack, x, y, seed);
@@ -1353,14 +1349,14 @@ public class Hud {
       }
    }
 
-   private static enum ContextualInfo {
+   private enum ContextualInfo {
       EMPTY,
       EXPERIENCE,
       LOCATOR,
       JUMPABLE_VEHICLE;
    }
 
-   private static enum HeartType {
+   private enum HeartType {
       CONTAINER(
          Identifier.withDefaultNamespace("hud/heart/container"),
          Identifier.withDefaultNamespace("hud/heart/container_blinking"),
@@ -1431,7 +1427,7 @@ public class Hud {
       private final Identifier hardcoreHalf;
       private final Identifier hardcoreHalfBlinking;
 
-      private HeartType(
+      HeartType(
          final Identifier full,
          final Identifier fullBlinking,
          final Identifier half,

@@ -12,7 +12,7 @@ public class StringUtil {
    private static final Pattern LINE_END_PATTERN = Pattern.compile("(?:\\r\\n|\\v)$");
 
    public static String formatTickDuration(final int ticks, final float tickrate) {
-      int seconds = Mth.floor((float)ticks / tickrate);
+      int seconds = Mth.floor(ticks / tickrate);
       int minutes = seconds / 60;
       seconds %= 60;
       int hours = minutes / 60;
@@ -24,7 +24,7 @@ public class StringUtil {
       return STRIP_COLOR_PATTERN.matcher(input).replaceAll("");
    }
 
-   public static boolean isNullOrEmpty(@Nullable final String s) {
+   public static boolean isNullOrEmpty(final @Nullable String s) {
       return StringUtils.isEmpty(s);
    }
 
@@ -39,16 +39,16 @@ public class StringUtil {
    public static int lineCount(final String s) {
       if (s.isEmpty()) {
          return 0;
-      } else {
-         Matcher matcher = LINE_PATTERN.matcher(s);
-         int count = 1;
-
-         while (matcher.find()) {
-            count++;
-         }
-
-         return count;
       }
+
+      Matcher matcher = LINE_PATTERN.matcher(s);
+      int count = 1;
+
+      while (matcher.find()) {
+         count++;
+      }
+
+      return count;
    }
 
    public static boolean endsWithNewLine(final String s) {
@@ -89,7 +89,7 @@ public class StringUtil {
       return Character.isWhitespace(codepoint) || Character.isSpaceChar(codepoint);
    }
 
-   public static boolean isBlank(@Nullable final String string) {
+   public static boolean isBlank(final @Nullable String string) {
       return string != null && !string.isEmpty() ? string.chars().allMatch(StringUtil::isWhitespace) : true;
    }
 }

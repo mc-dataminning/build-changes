@@ -23,10 +23,10 @@ public class RavagerRenderer extends MobRenderer<Ravager, RavagerRenderState, Ra
 
    public void extractRenderState(final Ravager entity, final RavagerRenderState state, final float partialTicks) {
       super.extractRenderState(entity, state, partialTicks);
-      state.stunnedTicksRemaining = (float)entity.getStunnedTick() > 0.0F ? (float)entity.getStunnedTick() - partialTicks : 0.0F;
-      state.attackTicksRemaining = (float)entity.getAttackTick() > 0.0F ? (float)entity.getAttackTick() - partialTicks : 0.0F;
+      state.stunnedTicksRemaining = entity.getStunnedTick() > 0.0F ? entity.getStunnedTick() - partialTicks : 0.0F;
+      state.attackTicksRemaining = entity.getAttackTick() > 0.0F ? entity.getAttackTick() - partialTicks : 0.0F;
       if (entity.getRoarTick() > 0) {
-         state.roarAnimation = ((float)(20 - entity.getRoarTick()) + partialTicks) / 20.0F;
+         state.roarAnimation = (20 - entity.getRoarTick() + partialTicks) / 20.0F;
       } else {
          state.roarAnimation = 0.0F;
       }

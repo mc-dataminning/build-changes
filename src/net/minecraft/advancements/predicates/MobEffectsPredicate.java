@@ -25,11 +25,7 @@ public record MobEffectsPredicate(Map<Holder<MobEffect>, MobEffectsPredicate.Mob
       .map(MobEffectsPredicate::new, MobEffectsPredicate::effectMap);
 
    public boolean matches(final Entity entity) {
-      if (entity instanceof LivingEntity living && this.matches(living.getActiveEffectsMap())) {
-         return true;
-      }
-
-      return false;
+      return entity instanceof LivingEntity living && this.matches(living.getActiveEffectsMap());
    }
 
    public boolean matches(final LivingEntity entity) {
@@ -74,21 +70,15 @@ public record MobEffectsPredicate(Map<Holder<MobEffect>, MobEffectsPredicate.Mob
       }
    }
 
-   public static record MobEffectInstancePredicate(
-      MinMaxBounds.Ints amplifier, MinMaxBounds.Ints duration, Optional<Boolean> ambient, Optional<Boolean> visible
-   ) {
+   public record MobEffectInstancePredicate(MinMaxBounds.Ints amplifier, MinMaxBounds.Ints duration, Optional<Boolean> ambient, Optional<Boolean> visible) {
       public static final Codec<MobEffectsPredicate.MobEffectInstancePredicate> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  MinMaxBounds.Ints.CODEC
-                     .optionalFieldOf("amplifier", MinMaxBounds.Ints.ANY)
-                     .forGetter(MobEffectsPredicate.MobEffectInstancePredicate::amplifier),
-                  MinMaxBounds.Ints.CODEC
-                     .optionalFieldOf("duration", MinMaxBounds.Ints.ANY)
-                     .forGetter(MobEffectsPredicate.MobEffectInstancePredicate::duration),
-                  Codec.BOOL.optionalFieldOf("ambient").forGetter(MobEffectsPredicate.MobEffectInstancePredicate::ambient),
-                  Codec.BOOL.optionalFieldOf("visible").forGetter(MobEffectsPredicate.MobEffectInstancePredicate::visible)
-               )
-               .apply(i, MobEffectsPredicate.MobEffectInstancePredicate::new)
+               MinMaxBounds.Ints.CODEC.optionalFieldOf("amplifier", MinMaxBounds.Ints.ANY).forGetter(MobEffectsPredicate.MobEffectInstancePredicate::amplifier),
+               MinMaxBounds.Ints.CODEC.optionalFieldOf("duration", MinMaxBounds.Ints.ANY).forGetter(MobEffectsPredicate.MobEffectInstancePredicate::duration),
+               Codec.BOOL.optionalFieldOf("ambient").forGetter(MobEffectsPredicate.MobEffectInstancePredicate::ambient),
+               Codec.BOOL.optionalFieldOf("visible").forGetter(MobEffectsPredicate.MobEffectInstancePredicate::visible)
+            )
+            .apply(i, MobEffectsPredicate.MobEffectInstancePredicate::new)
       );
       public static final StreamCodec<RegistryFriendlyByteBuf, MobEffectsPredicate.MobEffectInstancePredicate> STREAM_CODEC = StreamCodec.composite(
          MinMaxBounds.Ints.STREAM_CODEC,
@@ -109,7 +99,7 @@ public record MobEffectsPredicate(Map<Holder<MobEffect>, MobEffectsPredicate.Mob
          this(MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.ANY, Optional.empty(), Optional.empty());
       }
 
-      public boolean matches(@Nullable final MobEffectInstance instance) {
+      public boolean matches(final @Nullable MobEffectInstance instance) {
          if (instance == null) {
             return false;
          } else if (!this.amplifier.matches(instance.getAmplifier())) {

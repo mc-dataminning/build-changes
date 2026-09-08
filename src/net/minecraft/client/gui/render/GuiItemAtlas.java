@@ -56,7 +56,7 @@ public class GuiItemAtlas implements AutoCloseable {
       int preferredSlotCount = requiredSlotCount + requiredSlotCount / 2;
       int atlasSize = Mth.smallestSquareSide(preferredSlotCount);
       return Math.clamp(
-         (long)Mth.smallestEncompassingPowerOfTwo(atlasSize * slotTextureSize),
+         Mth.smallestEncompassingPowerOfTwo(atlasSize * slotTextureSize),
          512,
          RenderSystem.getDevice().getDeviceInfo().limits().maxTextureSizeForFormat(GpuFormat.RGBA8_UNORM)
       );
@@ -70,26 +70,25 @@ public class GuiItemAtlas implements AutoCloseable {
       return this.allocator.hasSpaceForAll(items) ? true : this.allocator.reclaimSpaceFor(items);
    }
 
-   @Nullable
-   public GuiItemAtlas.SlotView getOrUpdate(final TrackingItemStackRenderState item) {
+   public GuiItemAtlas.@Nullable SlotView getOrUpdate(final TrackingItemStackRenderState item) {
       DynamicAtlasAllocator.Slot slot = this.allocator.getOrAllocate(item.getModelIdentity(), item.isAnimated());
       if (slot == null) {
          return null;
-      } else {
-         switch (slot.state()) {
-            case EMPTY:
-               this.drawToSlot(slot.x(), slot.y(), false, item);
-               break;
-            case STALE:
-               this.drawToSlot(slot.x(), slot.y(), true, item);
-            case READY:
-         }
-
-         float slotUvSize = (float)this.slotTextureSize / (float)this.textureSize;
-         float u0 = (float)slot.x() * slotUvSize;
-         float v0 = 1.0F - (float)slot.y() * slotUvSize;
-         return new GuiItemAtlas.SlotView(this.textureView, u0, v0, u0 + slotUvSize, v0 - slotUvSize);
       }
+
+      switch (slot.state()) {
+         case EMPTY:
+            this.drawToSlot(slot.x(), slot.y(), false, item);
+            break;
+         case STALE:
+            this.drawToSlot(slot.x(), slot.y(), true, item);
+         case READY:
+      }
+
+      float slotUvSize = (float)this.slotTextureSize / this.textureSize;
+      float u0 = slot.x() * slotUvSize;
+      float v0 = 1.0F - slot.y() * slotUvSize;
+      return new GuiItemAtlas.SlotView(this.textureView, u0, v0, u0 + slotUvSize, v0 - slotUvSize);
    }
 
    private void drawToSlot(final int slotX, final int slotY, final boolean clear, final ItemStackRenderState item) {
@@ -105,9 +104,9 @@ public class GuiItemAtlas implements AutoCloseable {
       }
 
       this.poseStack.pushPose();
-      this.poseStack.translate((float)left + (float)this.slotTextureSize / 2.0F, (float)top + (float)this.slotTextureSize / 2.0F, 0.0F);
-      this.poseStack.scale((float)this.slotTextureSize, (float)(-this.slotTextureSize), (float)this.slotTextureSize);
-      this.projection.setupOrtho(-1000.0F, 1000.0F, (float)this.textureSize, (float)this.textureSize, true);
+      this.poseStack.translate(left + this.slotTextureSize / 2.0F, top + this.slotTextureSize / 2.0F, 0.0F);
+      this.poseStack.scale(this.slotTextureSize, -this.slotTextureSize, this.slotTextureSize);
+      this.projection.setupOrtho(-1000.0F, 1000.0F, this.textureSize, this.textureSize, true);
       RenderSystem.setProjectionMatrix(this.projectionMatrixBuffer.getBuffer(this.projection), ProjectionType.ORTHOGRAPHIC);
       RenderSystem.enableScissorForRenderTypeDraws(left, this.textureSize - bottom, this.slotTextureSize, this.slotTextureSize);
       Lighting.Entry lighting = item.usesBlockLight() ? Lighting.Entry.ITEMS_3D : Lighting.Entry.ITEMS_FLAT;
@@ -141,6 +140,6 @@ public class GuiItemAtlas implements AutoCloseable {
       this.projectionMatrixBuffer.close();
    }
 
-   public static record SlotView(GpuTextureView textureView, float u0, float v0, float u1, float v1) {
+   public record SlotView(GpuTextureView textureView, float u0, float v0, float u1, float v1) {
    }
 }

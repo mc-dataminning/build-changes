@@ -29,12 +29,12 @@ public class SystemToast implements Toast {
    private boolean forceHide;
    private Toast.Visibility wantedVisibility = Toast.Visibility.HIDE;
 
-   public SystemToast(final SystemToast.SystemToastId id, final Component title, @Nullable final Component message) {
+   public SystemToast(final SystemToast.SystemToastId id, final Component title, final @Nullable Component message) {
       this.id = id;
       this.update(title, message);
    }
 
-   private static List<FormattedCharSequence> nullToEmpty(@Nullable final Component text) {
+   private static List<FormattedCharSequence> nullToEmpty(final @Nullable Component text) {
       return (List<FormattedCharSequence>)(text == null ? ImmutableList.of() : splitToLength(text));
    }
 
@@ -70,9 +70,9 @@ public class SystemToast implements Toast {
          this.changed = false;
       }
 
-      double timeToDisplayUpdate = (double)this.id.displayTime * manager.getNotificationDisplayTimeMultiplier();
+      double timeToDisplayUpdate = this.id.displayTime * manager.getNotificationDisplayTimeMultiplier();
       long timeSinceUpdate = fullyVisibleForMs - this.lastChanged;
-      this.wantedVisibility = !this.forceHide && (double)timeSinceUpdate < timeToDisplayUpdate ? Toast.Visibility.SHOW : Toast.Visibility.HIDE;
+      this.wantedVisibility = !this.forceHide && timeSinceUpdate < timeToDisplayUpdate ? Toast.Visibility.SHOW : Toast.Visibility.HIDE;
    }
 
    @Override
@@ -94,12 +94,12 @@ public class SystemToast implements Toast {
       }
    }
 
-   public void reset(final Component title, @Nullable final Component message) {
+   public void reset(final Component title, final @Nullable Component message) {
       this.update(title, message);
       this.changed = true;
    }
 
-   private void update(final Component title, @Nullable final Component message) {
+   private void update(final Component title, final @Nullable Component message) {
       this.titleLines = splitToLength(title);
       this.messageLines = nullToEmpty(message);
       this.recalculateWidth();
@@ -116,11 +116,11 @@ public class SystemToast implements Toast {
       return this.id;
    }
 
-   public static void add(final ToastManager toastManager, final SystemToast.SystemToastId id, final Component title, @Nullable final Component message) {
+   public static void add(final ToastManager toastManager, final SystemToast.SystemToastId id, final Component title, final @Nullable Component message) {
       toastManager.addToast(new SystemToast(id, title, message));
    }
 
-   public static void addOrUpdate(final ToastManager toastManager, final SystemToast.SystemToastId id, final Component title, @Nullable final Component message) {
+   public static void addOrUpdate(final ToastManager toastManager, final SystemToast.SystemToastId id, final Component title, final @Nullable Component message) {
       SystemToast toast = toastManager.getToast(SystemToast.class, id);
       if (toast == null) {
          add(toastManager, id, title, message);

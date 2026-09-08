@@ -10,8 +10,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import org.jspecify.annotations.Nullable;
 
 public class SpecialRecipeBuilder {
-   @Nullable
-   private RecipeUnlockAdvancementBuilder advancementBuilder;
+   private @Nullable RecipeUnlockAdvancementBuilder advancementBuilder;
    private final Supplier<Recipe<?>> factory;
 
    public SpecialRecipeBuilder(final Supplier<Recipe<?>> factory) {

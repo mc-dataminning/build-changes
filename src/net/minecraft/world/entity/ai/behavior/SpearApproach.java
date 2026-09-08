@@ -35,8 +35,7 @@ public class SpearApproach extends Behavior<PathfinderMob> {
       super.start(level, body, timestamp);
    }
 
-   @Nullable
-   private LivingEntity getTarget(final PathfinderMob mob) {
+   private @Nullable LivingEntity getTarget(final PathfinderMob mob) {
       return mob.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).orElse(null);
    }
 
@@ -47,7 +46,7 @@ public class SpearApproach extends Behavior<PathfinderMob> {
    private boolean farEnough(final PathfinderMob mob) {
       LivingEntity target = this.getTarget(mob);
       double targetDistSqr = mob.distanceToSqr(target.getX(), target.getY(), target.getZ());
-      return targetDistSqr > (double)this.approachDistanceSq;
+      return targetDistSqr > this.approachDistanceSq;
    }
 
    protected void tick(final ServerLevel level, final PathfinderMob mob, final long timestamp) {
@@ -59,7 +58,7 @@ public class SpearApproach extends Behavior<PathfinderMob> {
       }
 
       mob.getBrain().setMemory(MemoryModuleType.LOOK_TARGET, new EntityTracker(target, true));
-      mob.getNavigation().moveTo(target, (double)speedModifier * this.speedModifierWhenRepositioning);
+      mob.getNavigation().moveTo(target, speedModifier * this.speedModifierWhenRepositioning);
    }
 
    protected void stop(final ServerLevel level, final PathfinderMob body, final long timestamp) {

@@ -33,7 +33,7 @@ public enum ChatFormatting {
    private final char code;
    private final String toString;
 
-   private ChatFormatting(final char code) {
+   ChatFormatting(final char code) {
       this.code = code;
       this.toString = "§" + code;
    }
@@ -44,13 +44,11 @@ public enum ChatFormatting {
    }
 
    @Contract("!null->!null;_->_")
-   @Nullable
-   public static String stripFormatting(@Nullable final String input) {
+   public static @Nullable String stripFormatting(final @Nullable String input) {
       return input == null ? null : STRIP_FORMATTING_PATTERN.matcher(input).replaceAll("");
    }
 
-   @Nullable
-   public static ChatFormatting getByCode(final char code) {
+   public static @Nullable ChatFormatting getByCode(final char code) {
       char sanitized = Character.toLowerCase(code);
 
       for (ChatFormatting format : values()) {

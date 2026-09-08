@@ -36,64 +36,64 @@ public class DedicatedPlayerList extends PlayerList {
    private void saveIpBanList() {
       try {
          this.getIpBans().save();
-      } catch (IOException var2) {
-         LOGGER.warn("Failed to save ip banlist: ", var2);
+      } catch (IOException e) {
+         LOGGER.warn("Failed to save ip banlist: ", e);
       }
    }
 
    private void saveUserBanList() {
       try {
          this.getBans().save();
-      } catch (IOException var2) {
-         LOGGER.warn("Failed to save user banlist: ", var2);
+      } catch (IOException e) {
+         LOGGER.warn("Failed to save user banlist: ", e);
       }
    }
 
    private void loadIpBanList() {
       try {
          this.getIpBans().load();
-      } catch (IOException var2) {
-         LOGGER.warn("Failed to load ip banlist: ", var2);
+      } catch (IOException e) {
+         LOGGER.warn("Failed to load ip banlist: ", e);
       }
    }
 
    private void loadUserBanList() {
       try {
          this.getBans().load();
-      } catch (IOException var2) {
-         LOGGER.warn("Failed to load user banlist: ", var2);
+      } catch (IOException e) {
+         LOGGER.warn("Failed to load user banlist: ", e);
       }
    }
 
    private void loadOps() {
       try {
          this.getOps().load();
-      } catch (Exception var2) {
-         LOGGER.warn("Failed to load operators list: ", var2);
+      } catch (Exception e) {
+         LOGGER.warn("Failed to load operators list: ", e);
       }
    }
 
    private void saveOps() {
       try {
          this.getOps().save();
-      } catch (Exception var2) {
-         LOGGER.warn("Failed to save operators list: ", var2);
+      } catch (Exception e) {
+         LOGGER.warn("Failed to save operators list: ", e);
       }
    }
 
    private void loadWhiteList() {
       try {
          this.getWhiteList().load();
-      } catch (Exception var2) {
-         LOGGER.warn("Failed to load white-list: ", var2);
+      } catch (Exception e) {
+         LOGGER.warn("Failed to load white-list: ", e);
       }
    }
 
    private void saveWhiteList() {
       try {
          this.getWhiteList().save();
-      } catch (Exception var2) {
-         LOGGER.warn("Failed to save white-list: ", var2);
+      } catch (Exception e) {
+         LOGGER.warn("Failed to save white-list: ", e);
       }
    }
 

@@ -20,15 +20,15 @@ public class V135 extends Schema {
          false,
          References.PLAYER,
          () -> DSL.optionalFields(
-               "RootVehicle",
-               DSL.optionalFields("Entity", References.ENTITY_TREE.in(schema)),
-               "ender_pearls",
-               DSL.list(References.ENTITY_TREE.in(schema)),
-               "Inventory",
-               DSL.list(References.ITEM_STACK.in(schema)),
-               "EnderItems",
-               DSL.list(References.ITEM_STACK.in(schema))
-            )
+            "RootVehicle",
+            DSL.optionalFields("Entity", References.ENTITY_TREE.in(schema)),
+            "ender_pearls",
+            DSL.list(References.ENTITY_TREE.in(schema)),
+            "Inventory",
+            DSL.list(References.ITEM_STACK.in(schema)),
+            "EnderItems",
+            DSL.list(References.ITEM_STACK.in(schema))
+         )
       );
       schema.registerType(
          true, References.ENTITY_TREE, () -> DSL.optionalFields("Passengers", DSL.list(References.ENTITY_TREE.in(schema)), References.ENTITY.in(schema))

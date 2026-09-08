@@ -21,47 +21,49 @@ public record BlueIceFeature() implements Feature {
    public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
       if (origin.getY() > level.getSeaLevel() - 1) {
          return false;
-      } else if (!level.getBlockState(origin).is(Blocks.WATER) && !level.getBlockState(origin.below()).is(Blocks.WATER)) {
-         return false;
-      } else {
-         boolean foundPackedIce = false;
+      }
 
-         for (Direction direction : Direction.values()) {
-            if (direction != Direction.DOWN && level.getBlockState(origin.relative(direction)).is(Blocks.PACKED_ICE)) {
-               foundPackedIce = true;
-               break;
-            }
+      if (!level.getBlockState(origin).is(Blocks.WATER) && !level.getBlockState(origin.below()).is(Blocks.WATER)) {
+         return false;
+      }
+
+      boolean foundPackedIce = false;
+
+      for (Direction direction : Direction.values()) {
+         if (direction != Direction.DOWN && level.getBlockState(origin.relative(direction)).is(Blocks.PACKED_ICE)) {
+            foundPackedIce = true;
+            break;
+         }
+      }
+
+      if (!foundPackedIce) {
+         return false;
+      }
+
+      level.setBlock(origin, Blocks.BLUE_ICE.defaultBlockState(), 2);
+
+      for (int i = 0; i < 200; i++) {
+         int yOff = random.nextInt(5) - random.nextInt(6);
+         int xzDiff = 3;
+         if (yOff < 2) {
+            xzDiff += yOff / 2;
          }
 
-         if (!foundPackedIce) {
-            return false;
-         } else {
-            level.setBlock(origin, Blocks.BLUE_ICE.defaultBlockState(), 2);
-
-            for (int i = 0; i < 200; i++) {
-               int yOff = random.nextInt(5) - random.nextInt(6);
-               int xzDiff = 3;
-               if (yOff < 2) {
-                  xzDiff += yOff / 2;
-               }
-
-               if (xzDiff >= 1) {
-                  BlockPos placePos = origin.offset(random.nextInt(xzDiff) - random.nextInt(xzDiff), yOff, random.nextInt(xzDiff) - random.nextInt(xzDiff));
-                  BlockState placeState = level.getBlockState(placePos);
-                  if (placeState.isAir() || placeState.is(Blocks.WATER) || placeState.is(Blocks.PACKED_ICE) || placeState.is(Blocks.ICE)) {
-                     for (Direction directionx : Direction.values()) {
-                        BlockState relativeBlockState = level.getBlockState(placePos.relative(directionx));
-                        if (relativeBlockState.is(Blocks.BLUE_ICE)) {
-                           level.setBlock(placePos, Blocks.BLUE_ICE.defaultBlockState(), 2);
-                           break;
-                        }
-                     }
+         if (xzDiff >= 1) {
+            BlockPos placePos = origin.offset(random.nextInt(xzDiff) - random.nextInt(xzDiff), yOff, random.nextInt(xzDiff) - random.nextInt(xzDiff));
+            BlockState placeState = level.getBlockState(placePos);
+            if (placeState.isAir() || placeState.is(Blocks.WATER) || placeState.is(Blocks.PACKED_ICE) || placeState.is(Blocks.ICE)) {
+               for (Direction direction : Direction.values()) {
+                  BlockState relativeBlockState = level.getBlockState(placePos.relative(direction));
+                  if (relativeBlockState.is(Blocks.BLUE_ICE)) {
+                     level.setBlock(placePos, Blocks.BLUE_ICE.defaultBlockState(), 2);
+                     break;
                   }
                }
             }
-
-            return true;
          }
       }
+
+      return true;
    }
 }

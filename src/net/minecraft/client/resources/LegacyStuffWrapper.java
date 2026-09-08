@@ -9,14 +9,11 @@ import net.minecraft.server.packs.resources.ResourceManager;
 public class LegacyStuffWrapper {
    @Deprecated
    public static int[] getPixels(final ResourceManager resourceManager, final Identifier location) throws IOException {
-      int[] var4;
       try (
          InputStream resource = resourceManager.open(location);
          NativeImage image = NativeImage.read(resource);
       ) {
-         var4 = image.makePixelArray();
+         return image.makePixelArray();
       }
-
-      return var4;
    }
 }

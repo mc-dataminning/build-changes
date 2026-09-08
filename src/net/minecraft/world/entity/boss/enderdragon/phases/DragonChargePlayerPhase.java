@@ -10,8 +10,7 @@ import org.slf4j.Logger;
 public class DragonChargePlayerPhase extends AbstractDragonPhaseInstance {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static final int CHARGE_RECOVERY_TIME = 10;
-   @Nullable
-   private Vec3 targetLocation;
+   private @Nullable Vec3 targetLocation;
    private int timeSinceCharge;
 
    public DragonChargePlayerPhase(final EnderDragon dragon) {
@@ -48,9 +47,8 @@ public class DragonChargePlayerPhase extends AbstractDragonPhaseInstance {
       return 3.0F;
    }
 
-   @Nullable
    @Override
-   public Vec3 getFlyTargetLocation() {
+   public @Nullable Vec3 getFlyTargetLocation() {
       return this.targetLocation;
    }
 

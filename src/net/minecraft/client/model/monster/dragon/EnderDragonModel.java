@@ -99,11 +99,11 @@ public class EnderDragonModel extends EntityModel<EnderDragonRenderState> {
          .addBox("scale", -1.0F, -9.0F, -3.0F, 2, 4, 6, 48, 0);
 
       for (int i = 0; i < 5; i++) {
-         root.addOrReplaceChild(neckName(i), spineCubes, PartPose.offset(0.0F, 20.0F, -12.0F - (float)i * 10.0F));
+         root.addOrReplaceChild(neckName(i), spineCubes, PartPose.offset(0.0F, 20.0F, -12.0F - i * 10.0F));
       }
 
       for (int i = 0; i < 12; i++) {
-         root.addOrReplaceChild(tailName(i), spineCubes, PartPose.offset(0.0F, 10.0F, 60.0F + (float)i * 10.0F));
+         root.addOrReplaceChild(tailName(i), spineCubes, PartPose.offset(0.0F, 10.0F, 60.0F + i * 10.0F));
       }
 
       PartDefinition body = root.addOrReplaceChild(
@@ -201,8 +201,8 @@ public class EnderDragonModel extends EntityModel<EnderDragonRenderState> {
    public void setupAnim(final EnderDragonRenderState state) {
       super.setupAnim(state);
       float flapTime = state.flapTime * (float) (Math.PI * 2);
-      this.jaw.xRot = (Mth.sin((double)flapTime) + 1.0F) * 0.2F;
-      float bounce = Mth.sin((double)(flapTime - 1.0F)) + 1.0F;
+      this.jaw.xRot = (Mth.sin(flapTime) + 1.0F) * 0.2F;
+      float bounce = Mth.sin(flapTime - 1.0F) + 1.0F;
       bounce = (bounce * bounce + bounce * 2.0F) * 0.05F;
       this.root.y = (bounce - 2.0F) * 16.0F;
       this.root.z = -48.0F;
@@ -218,16 +218,16 @@ public class EnderDragonModel extends EntityModel<EnderDragonRenderState> {
       for (int i = 0; i < 5; i++) {
          ModelPart neck = this.neckParts[i];
          DragonFlightHistory.Sample point = state.getHistoricalPos(5 - i);
-         float neckXRot = Mth.cos((double)((float)i * 0.45F + flapTime)) * 0.15F;
+         float neckXRot = Mth.cos(i * 0.45F + flapTime) * 0.15F;
          neck.yRot = Mth.wrapDegrees(point.yRot() - start.yRot()) * (float) (Math.PI / 180.0) * 1.5F;
          neck.xRot = neckXRot + state.getHeadPartYOffset(i, start, point) * (float) (Math.PI / 180.0) * 1.5F * 5.0F;
          neck.zRot = -Mth.wrapDegrees(point.yRot() - rot) * (float) (Math.PI / 180.0) * 1.5F;
          neck.y = yy;
          neck.z = zz;
          neck.x = xx;
-         xx -= Mth.sin((double)neck.yRot) * Mth.cos((double)neck.xRot) * 10.0F;
-         yy += Mth.sin((double)neck.xRot) * 10.0F;
-         zz -= Mth.cos((double)neck.yRot) * Mth.cos((double)neck.xRot) * 10.0F;
+         xx -= Mth.sin(neck.yRot) * Mth.cos(neck.xRot) * 10.0F;
+         yy += Mth.sin(neck.xRot) * 10.0F;
+         zz -= Mth.cos(neck.yRot) * Mth.cos(neck.xRot) * 10.0F;
       }
 
       this.head.y = yy;
@@ -238,10 +238,10 @@ public class EnderDragonModel extends EntityModel<EnderDragonRenderState> {
       this.head.xRot = Mth.wrapDegrees(state.getHeadPartYOffset(6, start, current)) * (float) (Math.PI / 180.0) * 1.5F * 5.0F;
       this.head.zRot = -Mth.wrapDegrees(current.yRot() - rot) * (float) (Math.PI / 180.0);
       this.body.zRot = -rot2 * 1.5F * (float) (Math.PI / 180.0);
-      this.leftWing.xRot = 0.125F - Mth.cos((double)flapTime) * 0.2F;
+      this.leftWing.xRot = 0.125F - Mth.cos(flapTime) * 0.2F;
       this.leftWing.yRot = -0.25F;
-      this.leftWing.zRot = -(Mth.sin((double)flapTime) + 0.125F) * 0.8F;
-      this.leftWingTip.zRot = (Mth.sin((double)(flapTime + 2.0F)) + 0.5F) * 0.75F;
+      this.leftWing.zRot = -(Mth.sin(flapTime) + 0.125F) * 0.8F;
+      this.leftWingTip.zRot = (Mth.sin(flapTime + 2.0F) + 0.5F) * 0.75F;
       this.rightWing.xRot = this.leftWing.xRot;
       this.rightWing.yRot = -this.leftWing.yRot;
       this.rightWing.zRot = -this.leftWing.zRot;
@@ -256,7 +256,7 @@ public class EnderDragonModel extends EntityModel<EnderDragonRenderState> {
 
       for (int i = 0; i < 12; i++) {
          DragonFlightHistory.Sample point = state.getHistoricalPos(12 + i);
-         tailXRot += Mth.sin((double)((float)i * 0.45F + flapTime)) * 0.05F;
+         tailXRot += Mth.sin(i * 0.45F + flapTime) * 0.05F;
          ModelPart tail = this.tailParts[i];
          tail.yRot = (Mth.wrapDegrees(point.yRot() - start.yRot()) * 1.5F + 180.0F) * (float) (Math.PI / 180.0);
          tail.xRot = tailXRot + (float)(point.y() - start.y()) * (float) (Math.PI / 180.0) * 1.5F * 5.0F;
@@ -264,9 +264,9 @@ public class EnderDragonModel extends EntityModel<EnderDragonRenderState> {
          tail.y = yy;
          tail.z = zz;
          tail.x = xx;
-         yy += Mth.sin((double)tail.xRot) * 10.0F;
-         zz -= Mth.cos((double)tail.yRot) * Mth.cos((double)tail.xRot) * 10.0F;
-         xx -= Mth.sin((double)tail.yRot) * Mth.cos((double)tail.xRot) * 10.0F;
+         yy += Mth.sin(tail.xRot) * 10.0F;
+         zz -= Mth.cos(tail.yRot) * Mth.cos(tail.xRot) * 10.0F;
+         xx -= Mth.sin(tail.yRot) * Mth.cos(tail.xRot) * 10.0F;
       }
    }
 

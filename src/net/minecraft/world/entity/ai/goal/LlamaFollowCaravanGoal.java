@@ -41,8 +41,8 @@ public class LlamaFollowCaravanGoal extends Goal {
          }
 
          if (closest == null) {
-            for (Entity entityx : llamas) {
-               Llama candidate = (Llama)entityx;
+            for (Entity entity : llamas) {
+               Llama candidate = (Llama)entity;
                if (candidate.isLeashed() && !candidate.hasCaravanTail()) {
                   double distSquare = this.llama.distanceToSqr(candidate);
                   if (!(distSquare > closestDistSquare)) {
@@ -55,14 +55,18 @@ public class LlamaFollowCaravanGoal extends Goal {
 
          if (closest == null) {
             return false;
-         } else if (closestDistSquare < 4.0) {
-            return false;
-         } else if (!closest.isLeashed() && !this.firstIsLeashed(closest, 1)) {
-            return false;
-         } else {
-            this.llama.joinCaravan(closest);
-            return true;
          }
+
+         if (closestDistSquare < 4.0) {
+            return false;
+         }
+
+         if (!closest.isLeashed() && !this.firstIsLeashed(closest, 1)) {
+            return false;
+         }
+
+         this.llama.joinCaravan(closest);
+         return true;
       } else {
          return false;
       }
@@ -105,7 +109,7 @@ public class LlamaFollowCaravanGoal extends Goal {
       if (this.llama.inCaravan()) {
          if (!(this.llama.getLeashHolder() instanceof LeashFenceKnotEntity)) {
             Llama follows = this.llama.getCaravanHead();
-            double distanceTo = (double)this.llama.distanceTo(follows);
+            double distanceTo = this.llama.distanceTo(follows);
             float wantedDistance = 2.0F;
             Vec3 delta = new Vec3(follows.getX() - this.llama.getX(), follows.getY() - this.llama.getY(), follows.getZ() - this.llama.getZ())
                .normalize()

@@ -15,12 +15,12 @@ public interface GameEventListener {
       return GameEventListener.DeliveryMode.UNSPECIFIED;
    }
 
-   public static enum DeliveryMode {
+   enum DeliveryMode {
       UNSPECIFIED,
       BY_DISTANCE;
    }
 
-   public interface Provider<T extends GameEventListener> {
+   interface Provider<T extends GameEventListener> {
       T getListener();
    }
 }

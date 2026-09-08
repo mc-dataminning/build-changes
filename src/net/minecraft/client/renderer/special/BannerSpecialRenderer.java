@@ -26,13 +26,12 @@ public class BannerSpecialRenderer implements SpecialModelRenderer<BannerPattern
       this.attachment = attachment;
    }
 
-   @Nullable
-   public BannerPatternLayers extractArgument(final ItemStack stack) {
+   public @Nullable BannerPatternLayers extractArgument(final ItemStack stack) {
       return stack.get(DataComponents.BANNER_PATTERNS);
    }
 
    public void submit(
-      @Nullable final BannerPatternLayers patterns,
+      final @Nullable BannerPatternLayers patterns,
       final PoseStack poseStack,
       final SubmitNodeCollector submitNodeCollector,
       final int lightCoords,
@@ -58,15 +57,15 @@ public class BannerSpecialRenderer implements SpecialModelRenderer<BannerPattern
       this.bannerRenderer.getExtents(output);
    }
 
-   public static record Unbaked(DyeColor baseColor, BannerBlock.AttachmentType attachment) implements SpecialModelRenderer.Unbaked<BannerPatternLayers> {
+   public record Unbaked(DyeColor baseColor, BannerBlock.AttachmentType attachment) implements SpecialModelRenderer.Unbaked<BannerPatternLayers> {
       public static final MapCodec<BannerSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  DyeColor.CODEC.fieldOf("color").forGetter(BannerSpecialRenderer.Unbaked::baseColor),
-                  BannerBlock.AttachmentType.CODEC
-                     .optionalFieldOf("attachment", BannerBlock.AttachmentType.GROUND)
-                     .forGetter(BannerSpecialRenderer.Unbaked::attachment)
-               )
-               .apply(i, BannerSpecialRenderer.Unbaked::new)
+               DyeColor.CODEC.fieldOf("color").forGetter(BannerSpecialRenderer.Unbaked::baseColor),
+               BannerBlock.AttachmentType.CODEC
+                  .optionalFieldOf("attachment", BannerBlock.AttachmentType.GROUND)
+                  .forGetter(BannerSpecialRenderer.Unbaked::attachment)
+            )
+            .apply(i, BannerSpecialRenderer.Unbaked::new)
       );
 
       @Override

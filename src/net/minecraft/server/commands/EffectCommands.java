@@ -34,11 +34,11 @@ public class EffectCommands {
    private static final CommandResponseTracker.MessagesWithArgs<LivingEntity, MobEffect, Integer> RESPONSE_GIVE = CommandResponseTracker.messages(
       ERROR_GIVE_FAILED,
       (entity, var1, effect, duration) -> Component.translatable(
-            "commands.effect.give.success.single", effect.getDisplayName(), entity.getDisplayName(), duration / 20
-         ),
+         "commands.effect.give.success.single", effect.getDisplayName(), entity.getDisplayName(), duration / 20
+      ),
       (entityCount, var1, effect, duration) -> Component.translatable(
-            "commands.effect.give.success.multiple", effect.getDisplayName(), entityCount, duration / 20
-         )
+         "commands.effect.give.success.multiple", effect.getDisplayName(), entityCount, duration / 20
+      )
    );
    private static final CommandResponseTracker.Messages<Entity> RESPONSE_CLEAR_ALL = CommandResponseTracker.messages(
       ERROR_CLEAR_EVERYTHING_FAILED,
@@ -67,10 +67,8 @@ public class EffectCommands {
                               Commands.argument("effect", ResourceArgument.resource(context, Registries.MOB_EFFECT))
                                  .executes(
                                     c -> clearEffect(
-                                          (CommandSourceStack)c.getSource(),
-                                          EntityArgument.getEntities(c, "targets"),
-                                          ResourceArgument.getMobEffect(c, "effect")
-                                       )
+                                       (CommandSourceStack)c.getSource(), EntityArgument.getEntities(c, "targets"), ResourceArgument.getMobEffect(c, "effect")
+                                    )
                                  )
                            )
                      )
@@ -85,49 +83,49 @@ public class EffectCommands {
                                     )
                                     .executes(
                                        c -> giveEffect(
-                                             (CommandSourceStack)c.getSource(),
-                                             EntityArgument.getEntities(c, "targets"),
-                                             ResourceArgument.getMobEffect(c, "effect"),
-                                             null,
-                                             0,
-                                             true
-                                          )
+                                          (CommandSourceStack)c.getSource(),
+                                          EntityArgument.getEntities(c, "targets"),
+                                          ResourceArgument.getMobEffect(c, "effect"),
+                                          null,
+                                          0,
+                                          true
+                                       )
                                     ))
                                  .then(
                                     ((RequiredArgumentBuilder)Commands.argument("seconds", IntegerArgumentType.integer(1, 1000000))
                                           .executes(
                                              c -> giveEffect(
-                                                   (CommandSourceStack)c.getSource(),
-                                                   EntityArgument.getEntities(c, "targets"),
-                                                   ResourceArgument.getMobEffect(c, "effect"),
-                                                   IntegerArgumentType.getInteger(c, "seconds"),
-                                                   0,
-                                                   true
-                                                )
+                                                (CommandSourceStack)c.getSource(),
+                                                EntityArgument.getEntities(c, "targets"),
+                                                ResourceArgument.getMobEffect(c, "effect"),
+                                                IntegerArgumentType.getInteger(c, "seconds"),
+                                                0,
+                                                true
+                                             )
                                           ))
                                        .then(
                                           ((RequiredArgumentBuilder)Commands.argument("amplifier", IntegerArgumentType.integer(0, 255))
                                                 .executes(
                                                    c -> giveEffect(
-                                                         (CommandSourceStack)c.getSource(),
-                                                         EntityArgument.getEntities(c, "targets"),
-                                                         ResourceArgument.getMobEffect(c, "effect"),
-                                                         IntegerArgumentType.getInteger(c, "seconds"),
-                                                         IntegerArgumentType.getInteger(c, "amplifier"),
-                                                         true
-                                                      )
+                                                      (CommandSourceStack)c.getSource(),
+                                                      EntityArgument.getEntities(c, "targets"),
+                                                      ResourceArgument.getMobEffect(c, "effect"),
+                                                      IntegerArgumentType.getInteger(c, "seconds"),
+                                                      IntegerArgumentType.getInteger(c, "amplifier"),
+                                                      true
+                                                   )
                                                 ))
                                              .then(
                                                 Commands.argument("hideParticles", BoolArgumentType.bool())
                                                    .executes(
                                                       c -> giveEffect(
-                                                            (CommandSourceStack)c.getSource(),
-                                                            EntityArgument.getEntities(c, "targets"),
-                                                            ResourceArgument.getMobEffect(c, "effect"),
-                                                            IntegerArgumentType.getInteger(c, "seconds"),
-                                                            IntegerArgumentType.getInteger(c, "amplifier"),
-                                                            !BoolArgumentType.getBool(c, "hideParticles")
-                                                         )
+                                                         (CommandSourceStack)c.getSource(),
+                                                         EntityArgument.getEntities(c, "targets"),
+                                                         ResourceArgument.getMobEffect(c, "effect"),
+                                                         IntegerArgumentType.getInteger(c, "seconds"),
+                                                         IntegerArgumentType.getInteger(c, "amplifier"),
+                                                         !BoolArgumentType.getBool(c, "hideParticles")
+                                                      )
                                                    )
                                              )
                                        )
@@ -136,37 +134,37 @@ public class EffectCommands {
                                  ((LiteralArgumentBuilder)Commands.literal("infinite")
                                        .executes(
                                           c -> giveEffect(
-                                                (CommandSourceStack)c.getSource(),
-                                                EntityArgument.getEntities(c, "targets"),
-                                                ResourceArgument.getMobEffect(c, "effect"),
-                                                -1,
-                                                0,
-                                                true
-                                             )
+                                             (CommandSourceStack)c.getSource(),
+                                             EntityArgument.getEntities(c, "targets"),
+                                             ResourceArgument.getMobEffect(c, "effect"),
+                                             -1,
+                                             0,
+                                             true
+                                          )
                                        ))
                                     .then(
                                        ((RequiredArgumentBuilder)Commands.argument("amplifier", IntegerArgumentType.integer(0, 255))
                                              .executes(
                                                 c -> giveEffect(
-                                                      (CommandSourceStack)c.getSource(),
-                                                      EntityArgument.getEntities(c, "targets"),
-                                                      ResourceArgument.getMobEffect(c, "effect"),
-                                                      -1,
-                                                      IntegerArgumentType.getInteger(c, "amplifier"),
-                                                      true
-                                                   )
+                                                   (CommandSourceStack)c.getSource(),
+                                                   EntityArgument.getEntities(c, "targets"),
+                                                   ResourceArgument.getMobEffect(c, "effect"),
+                                                   -1,
+                                                   IntegerArgumentType.getInteger(c, "amplifier"),
+                                                   true
+                                                )
                                              ))
                                           .then(
                                              Commands.argument("hideParticles", BoolArgumentType.bool())
                                                 .executes(
                                                    c -> giveEffect(
-                                                         (CommandSourceStack)c.getSource(),
-                                                         EntityArgument.getEntities(c, "targets"),
-                                                         ResourceArgument.getMobEffect(c, "effect"),
-                                                         -1,
-                                                         IntegerArgumentType.getInteger(c, "amplifier"),
-                                                         !BoolArgumentType.getBool(c, "hideParticles")
-                                                      )
+                                                      (CommandSourceStack)c.getSource(),
+                                                      EntityArgument.getEntities(c, "targets"),
+                                                      ResourceArgument.getMobEffect(c, "effect"),
+                                                      -1,
+                                                      IntegerArgumentType.getInteger(c, "amplifier"),
+                                                      !BoolArgumentType.getBool(c, "hideParticles")
+                                                   )
                                                 )
                                           )
                                     )
@@ -181,7 +179,7 @@ public class EffectCommands {
       final CommandSourceStack source,
       final Collection<? extends Entity> entities,
       final Holder<MobEffect> effectHolder,
-      @Nullable final Integer seconds,
+      final @Nullable Integer seconds,
       final int amplifier,
       final boolean particles
    ) throws CommandSyntaxException {
@@ -199,7 +197,7 @@ public class EffectCommands {
       return tracker.sendFeedback(source, true, RESPONSE_GIVE, effect, duration);
    }
 
-   private static int computeDurationInTicks(@Nullable final Integer seconds, final MobEffect effect) {
+   private static int computeDurationInTicks(final @Nullable Integer seconds, final MobEffect effect) {
       if (seconds != null) {
          if (effect.isInstantaneous()) {
             return seconds;

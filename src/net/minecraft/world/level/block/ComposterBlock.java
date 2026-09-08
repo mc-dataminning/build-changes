@@ -54,7 +54,7 @@ public class ComposterBlock extends Block implements WorldlyContainerHolder {
    private static final VoxelShape[] SHAPES = Util.make(
       () -> {
          VoxelShape[] shapes = Block.boxes(
-            8, level -> Shapes.join(Shapes.block(), Block.column(12.0, (double)Math.clamp((long)(1 + level * 2), 2, 16), 16.0), BooleanOp.ONLY_FIRST)
+            8, level -> Shapes.join(Shapes.block(), Block.column(12.0, Math.clamp(1 + level * 2, 2, 16), 16.0), BooleanOp.ONLY_FIRST)
          );
          shapes[8] = shapes[7];
          return shapes;
@@ -63,7 +63,7 @@ public class ComposterBlock extends Block implements WorldlyContainerHolder {
 
    public ComposterBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(LEVEL, Integer.valueOf(0)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(LEVEL, 0));
    }
 
    public static void handleFill(final Level level, final BlockPos pos, final boolean success) {
@@ -81,9 +81,9 @@ public class ComposterBlock extends Block implements WorldlyContainerHolder {
          double za = random.nextGaussian() * 0.02;
          level.addParticle(
             ParticleTypes.COMPOSTER,
-            (double)pos.getX() + 0.1875 + 0.625 * (double)random.nextFloat(),
-            (double)pos.getY() + centerHeight + (double)random.nextFloat() * (1.0 - centerHeight),
-            (double)pos.getZ() + 0.1875 + 0.625 * (double)random.nextFloat(),
+            pos.getX() + 0.1875 + 0.625 * random.nextFloat(),
+            pos.getY() + centerHeight + random.nextFloat() * (1.0 - centerHeight),
+            pos.getZ() + 0.1875 + 0.625 * random.nextFloat(),
             xa,
             ya,
             za
@@ -179,15 +179,15 @@ public class ComposterBlock extends Block implements WorldlyContainerHolder {
       return emptyState;
    }
 
-   private static BlockState empty(@Nullable final Entity sourceEntity, final BlockState state, final LevelAccessor level, final BlockPos pos) {
-      BlockState newState = state.setValue(LEVEL, Integer.valueOf(0));
+   private static BlockState empty(final @Nullable Entity sourceEntity, final BlockState state, final LevelAccessor level, final BlockPos pos) {
+      BlockState newState = state.setValue(LEVEL, 0);
       level.setBlockAndUpdate(pos, newState);
       level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(sourceEntity, newState));
       return newState;
    }
 
    private static BlockState addLayer(
-      @Nullable final Entity sourceEntity, final BlockState state, final ServerLevel level, final BlockPos pos, final Compostable compostable
+      final @Nullable Entity sourceEntity, final BlockState state, final ServerLevel level, final BlockPos pos, final Compostable compostable
    ) {
       int fillLevel = state.getValue(LEVEL);
       LootContext lootContext = new LootContext.Builder(
@@ -201,7 +201,7 @@ public class ComposterBlock extends Block implements WorldlyContainerHolder {
       int layersToAdd = compostable.layers().get(lootContext, 0);
       if (layersToAdd > 0) {
          int newLevel = Mth.clamp(fillLevel + layersToAdd, 0, 7);
-         BlockState newState = state.setValue(LEVEL, Integer.valueOf(newLevel));
+         BlockState newState = state.setValue(LEVEL, newLevel);
          level.setBlockAndUpdate(pos, newState);
          level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(sourceEntity, newState));
          if (newLevel == 7) {
@@ -248,7 +248,7 @@ public class ComposterBlock extends Block implements WorldlyContainerHolder {
       if (contentLevel == 8) {
          return new ComposterBlock.OutputContainer(state, level, pos, new ItemStack(Items.BONE_MEAL));
       } else {
-         return (WorldlyContainer)(contentLevel < 7 ? new ComposterBlock.InputContainer(state, level, pos) : new ComposterBlock.EmptyContainer());
+         return contentLevel < 7 ? new ComposterBlock.InputContainer(state, level, pos) : new ComposterBlock.EmptyContainer();
       }
    }
 
@@ -263,7 +263,7 @@ public class ComposterBlock extends Block implements WorldlyContainerHolder {
       }
 
       @Override
-      public boolean canPlaceItemThroughFace(final int slot, final ItemStack itemStack, @Nullable final Direction direction) {
+      public boolean canPlaceItemThroughFace(final int slot, final ItemStack itemStack, final @Nullable Direction direction) {
          return false;
       }
 
@@ -297,7 +297,7 @@ public class ComposterBlock extends Block implements WorldlyContainerHolder {
       }
 
       @Override
-      public boolean canPlaceItemThroughFace(final int slot, final ItemStack itemStack, @Nullable final Direction direction) {
+      public boolean canPlaceItemThroughFace(final int slot, final ItemStack itemStack, final @Nullable Direction direction) {
          return !this.changed && direction == Direction.UP && itemStack.has(DataComponents.COMPOSTABLE);
       }
 
@@ -343,7 +343,7 @@ public class ComposterBlock extends Block implements WorldlyContainerHolder {
       }
 
       @Override
-      public boolean canPlaceItemThroughFace(final int slot, final ItemStack itemStack, @Nullable final Direction direction) {
+      public boolean canPlaceItemThroughFace(final int slot, final ItemStack itemStack, final @Nullable Direction direction) {
          return false;
       }
 

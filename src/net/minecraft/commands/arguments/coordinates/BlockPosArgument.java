@@ -59,23 +59,23 @@ public class BlockPosArgument implements ArgumentType<Coordinates> {
    }
 
    public Coordinates parse(final StringReader reader) throws CommandSyntaxException {
-      return (Coordinates)(reader.canRead() && reader.peek() == '^' ? LocalCoordinates.parse(reader) : WorldCoordinates.parseInt(reader));
+      return reader.canRead() && reader.peek() == '^' ? LocalCoordinates.parse(reader) : WorldCoordinates.parseInt(reader);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> context, final SuggestionsBuilder builder) {
       if (!(context.getSource() instanceof SharedSuggestionProvider)) {
          return Suggestions.empty();
-      } else {
-         String remainder = builder.getRemaining();
-         Collection<SharedSuggestionProvider.TextCoordinates> suggestedCoordinates;
-         if (!remainder.isEmpty() && remainder.charAt(0) == '^') {
-            suggestedCoordinates = Collections.singleton(SharedSuggestionProvider.TextCoordinates.DEFAULT_LOCAL);
-         } else {
-            suggestedCoordinates = ((SharedSuggestionProvider)context.getSource()).getRelevantCoordinates();
-         }
-
-         return SharedSuggestionProvider.suggestCoordinates(remainder, suggestedCoordinates, builder, Commands.createValidator(this::parse));
       }
+
+      String remainder = builder.getRemaining();
+      Collection<SharedSuggestionProvider.TextCoordinates> suggestedCoordinates;
+      if (!remainder.isEmpty() && remainder.charAt(0) == '^') {
+         suggestedCoordinates = Collections.singleton(SharedSuggestionProvider.TextCoordinates.DEFAULT_LOCAL);
+      } else {
+         suggestedCoordinates = ((SharedSuggestionProvider)context.getSource()).getRelevantCoordinates();
+      }
+
+      return SharedSuggestionProvider.suggestCoordinates(remainder, suggestedCoordinates, builder, Commands.createValidator(this::parse));
    }
 
    public Collection<String> getExamples() {

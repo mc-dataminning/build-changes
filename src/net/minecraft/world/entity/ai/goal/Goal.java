@@ -62,7 +62,7 @@ public abstract class Goal {
       return (ServerLevel)level;
    }
 
-   public static enum Flag {
+   public enum Flag {
       MOVE,
       LOOK,
       JUMP,

@@ -30,8 +30,7 @@ public class RealmsWorldUpload {
    private final long realmId;
    private final RealmsWorldUploadStatusTracker statusCallback;
    private volatile boolean cancelled;
-   @Nullable
-   private volatile CompletableFuture<?> uploadTask;
+   private volatile @Nullable CompletableFuture<?> uploadTask;
 
    public RealmsWorldUpload(
       final Path worldFolder, final RealmsSlot realmsSlot, final User user, final long realmId, final RealmsWorldUploadStatusTracker statusCallback
@@ -69,8 +68,8 @@ public class RealmsWorldUpload {
                      UploadResult join;
                      try {
                         join = uploadTask.join();
-                     } catch (CompletionException var17) {
-                        throw var17.getCause();
+                     } catch (CompletionException e) {
+                        throw e.getCause();
                      }
 
                      String errorMessage = join.getSimplifiedErrorMessage();
@@ -85,18 +84,18 @@ public class RealmsWorldUpload {
 
                   uploadTask.cancel(true);
                }
-            } catch (RealmsServiceException var19) {
-               throw new RealmsUploadFailedException(var19.realmsError.errorMessage());
-            } catch (CancellationException | InterruptedException var20) {
+            } catch (RealmsServiceException e) {
+               throw new RealmsUploadFailedException(e.realmsError.errorMessage());
+            } catch (InterruptedException | CancellationException e) {
                throw new RealmsUploadCanceledException();
-            } catch (RealmsUploadException var21) {
-               throw var21;
-            } catch (Throwable var22) {
-               if (var22 instanceof Error error) {
+            } catch (RealmsUploadException e) {
+               throw e;
+            } catch (Throwable e) {
+               if (e instanceof Error error) {
                   throw error;
                }
 
-               throw new RealmsUploadFailedException(var22.getMessage());
+               throw new RealmsUploadFailedException(e.getMessage());
             } finally {
                if (archive != null) {
                   LOGGER.debug("Deleting file {}", archive.getAbsolutePath());
@@ -131,8 +130,8 @@ public class RealmsWorldUpload {
 
                return uploadInfo;
             }
-         } catch (RetryCallException var3) {
-            Thread.sleep((long)var3.delaySeconds * 1000L);
+         } catch (RetryCallException e) {
+            Thread.sleep(e.delaySeconds * 1000L);
          }
       }
 

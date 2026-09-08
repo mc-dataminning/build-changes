@@ -60,7 +60,7 @@ public class GhostSlots {
    }
 
    public void extractTooltip(
-      final GuiGraphicsExtractor graphics, final Minecraft minecraft, final int mouseX, final int mouseY, @Nullable final Slot hoveredSlot
+      final GuiGraphicsExtractor graphics, final Minecraft minecraft, final int mouseX, final int mouseY, final @Nullable Slot hoveredSlot
    ) {
       if (hoveredSlot != null) {
          GhostSlots.GhostSlot hoveredGhostSlot = (GhostSlots.GhostSlot)this.ingredients.get(hoveredSlot);
@@ -73,7 +73,7 @@ public class GhostSlots {
       }
    }
 
-   private static record GhostSlot(List<ItemStack> items, boolean isResultSlot) {
+   private record GhostSlot(List<ItemStack> items, boolean isResultSlot) {
       public ItemStack getItem(final int itemIndex) {
          int size = this.items.size();
          return size == 0 ? ItemStack.EMPTY : this.items.get(itemIndex % size);

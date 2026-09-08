@@ -154,8 +154,7 @@ public class LocalPlayer extends AbstractClientPlayer {
    private final ItemActivation itemActivation;
    private final FirstPersonHandsAndItems firstPersonHandsAndItems = new FirstPersonHandsAndItems();
    private boolean startedUsingItem;
-   @Nullable
-   private InteractionHand usingItemHand;
+   private @Nullable InteractionHand usingItemHand;
    private boolean handsBusy;
    private boolean autoJumpEnabled = true;
    private int autoJumpTime;
@@ -197,24 +196,24 @@ public class LocalPlayer extends AbstractClientPlayer {
    public boolean startRiding(final Entity entity, final boolean force, final boolean sendEventAndTriggers) {
       if (!super.startRiding(entity, force, sendEventAndTriggers)) {
          return false;
-      } else {
-         if (entity instanceof AbstractMinecart minecart) {
-            this.minecraft
-               .getSoundManager()
-               .play(new RidingMinecartSoundInstance(this, minecart, true, SoundEvents.MINECART_INSIDE_UNDERWATER, 0.0F, 0.75F, 1.0F));
-            this.minecraft.getSoundManager().play(new RidingMinecartSoundInstance(this, minecart, false, SoundEvents.MINECART_INSIDE, 0.0F, 0.75F, 1.0F));
-         } else if (entity instanceof HappyGhast happyGhast) {
-            this.minecraft
-               .getSoundManager()
-               .play(new RidingEntitySoundInstance(this, happyGhast, false, SoundEvents.HAPPY_GHAST_RIDING, happyGhast.getSoundSource(), 0.0F, 1.0F, 5.0F));
-         } else if (entity instanceof AbstractNautilus nautilus) {
-            this.minecraft
-               .getSoundManager()
-               .play(new RidingEntitySoundInstance(this, nautilus, true, SoundEvents.NAUTILUS_RIDING, nautilus.getSoundSource(), 0.0F, 1.0F, 5.0F));
-         }
-
-         return true;
       }
+
+      if (entity instanceof AbstractMinecart minecart) {
+         this.minecraft
+            .getSoundManager()
+            .play(new RidingMinecartSoundInstance(this, minecart, true, SoundEvents.MINECART_INSIDE_UNDERWATER, 0.0F, 0.75F, 1.0F));
+         this.minecraft.getSoundManager().play(new RidingMinecartSoundInstance(this, minecart, false, SoundEvents.MINECART_INSIDE, 0.0F, 0.75F, 1.0F));
+      } else if (entity instanceof HappyGhast happyGhast) {
+         this.minecraft
+            .getSoundManager()
+            .play(new RidingEntitySoundInstance(this, happyGhast, false, SoundEvents.HAPPY_GHAST_RIDING, happyGhast.getSoundSource(), 0.0F, 1.0F, 5.0F));
+      } else if (entity instanceof AbstractNautilus nautilus) {
+         this.minecraft
+            .getSoundManager()
+            .play(new RidingEntitySoundInstance(this, nautilus, true, SoundEvents.NAUTILUS_RIDING, nautilus.getSoundSource(), 0.0F, 1.0F, 5.0F));
+      }
+
+      return true;
    }
 
    @Override
@@ -297,8 +296,8 @@ public class LocalPlayer extends AbstractClientPlayer {
          double deltaX = this.getX() - this.xLast;
          double deltaY = this.getY() - this.yLast;
          double deltaZ = this.getZ() - this.zLast;
-         double deltaYRot = (double)(this.getYRot() - this.yRotLast);
-         double deltaXRot = (double)(this.getXRot() - this.xRotLast);
+         double deltaYRot = this.getYRot() - this.yRotLast;
+         double deltaXRot = this.getXRot() - this.xRotLast;
          this.positionReminder++;
          boolean move = Mth.lengthSquared(deltaX, deltaY, deltaZ) > Mth.square(2.0E-4) || this.positionReminder >= 20;
          boolean rot = deltaYRot != 0.0 || deltaXRot != 0.0;
@@ -465,8 +464,8 @@ public class LocalPlayer extends AbstractClientPlayer {
    private void moveTowardsClosestSpace(final double x, final double z) {
       BlockPos pos = BlockPos.containing(x, this.getY(), z);
       if (this.suffocatesAt(pos)) {
-         double xd = x - (double)pos.getX();
-         double zd = z - (double)pos.getZ();
+         double xd = x - pos.getX();
+         double zd = z - pos.getZ();
          Direction dir = null;
          double closest = Double.MAX_VALUE;
          Direction[] directions = new Direction[]{Direction.WEST, Direction.EAST, Direction.NORTH, Direction.SOUTH};
@@ -483,9 +482,9 @@ public class LocalPlayer extends AbstractClientPlayer {
          if (dir != null) {
             Vec3 oldMovement = this.getDeltaMovement();
             if (dir.getAxis() == Direction.Axis.X) {
-               this.setDeltaMovement(0.1 * (double)dir.getStepX(), oldMovement.y, oldMovement.z);
+               this.setDeltaMovement(0.1 * dir.getStepX(), oldMovement.y, oldMovement.z);
             } else {
-               this.setDeltaMovement(oldMovement.x, oldMovement.y, 0.1 * (double)dir.getStepZ());
+               this.setDeltaMovement(oldMovement.x, oldMovement.y, 0.1 * dir.getStepZ());
             }
          }
       }
@@ -493,8 +492,7 @@ public class LocalPlayer extends AbstractClientPlayer {
 
    private boolean suffocatesAt(final BlockPos pos) {
       AABB boundingBox = this.getBoundingBox();
-      AABB testArea = new AABB((double)pos.getX(), boundingBox.minY, (double)pos.getZ(), (double)pos.getX() + 1.0, boundingBox.maxY, (double)pos.getZ() + 1.0)
-         .deflate(1.0E-7);
+      AABB testArea = new AABB(pos.getX(), boundingBox.minY, pos.getZ(), pos.getX() + 1.0, boundingBox.maxY, pos.getZ() + 1.0).deflate(1.0E-7);
       return this.level().collidesWithSuffocatingBlock(this, testArea);
    }
 
@@ -517,7 +515,7 @@ public class LocalPlayer extends AbstractClientPlayer {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       switch (id) {
          case 24:
             this.setPermissions(PermissionSet.NO_PERMISSIONS);
@@ -612,13 +610,10 @@ public class LocalPlayer extends AbstractClientPlayer {
       }
    }
 
-   @Nullable
-   public PlayerRideableJumping jumpableVehicle() {
-      if (this.getControlledVehicle() instanceof PlayerRideableJumping playerRideableJumping && playerRideableJumping.canJump()) {
-         return playerRideableJumping;
-      }
-
-      return null;
+   public @Nullable PlayerRideableJumping jumpableVehicle() {
+      return this.getControlledVehicle() instanceof PlayerRideableJumping playerRideableJumping && playerRideableJumping.canJump()
+         ? playerRideableJumping
+         : null;
    }
 
    public float getJumpRidingScale() {
@@ -725,31 +720,31 @@ public class LocalPlayer extends AbstractClientPlayer {
    private Vec2 modifyInput(final Vec2 input) {
       if (input.lengthSquared() == 0.0F) {
          return input;
-      } else {
-         Vec2 newInput = input.scale(0.98F);
-         if (this.isUsingItem() && !this.isPassenger()) {
-            newInput = newInput.scale(this.itemUseSpeedMultiplier());
-         }
-
-         if (this.isMovingSlowly()) {
-            float sneakingMovementFactor = (float)this.getAttributeValue(Attributes.SNEAKING_SPEED);
-            newInput = newInput.scale(sneakingMovementFactor);
-         }
-
-         return modifyInputSpeedForSquareMovement(newInput);
       }
+
+      Vec2 newInput = input.scale(0.98F);
+      if (this.isUsingItem() && !this.isPassenger()) {
+         newInput = newInput.scale(this.itemUseSpeedMultiplier());
+      }
+
+      if (this.isMovingSlowly()) {
+         float sneakingMovementFactor = (float)this.getAttributeValue(Attributes.SNEAKING_SPEED);
+         newInput = newInput.scale(sneakingMovementFactor);
+      }
+
+      return modifyInputSpeedForSquareMovement(newInput);
    }
 
    private static Vec2 modifyInputSpeedForSquareMovement(final Vec2 input) {
       float length = input.length();
       if (length <= 0.0F) {
          return input;
-      } else {
-         Vec2 direction = input.scale(1.0F / length);
-         float distanceToUnitSquare = distanceToUnitSquare(direction);
-         float modifiedLength = Math.min(length * distanceToUnitSquare, 1.0F);
-         return direction.scale(modifiedLength);
       }
+
+      Vec2 direction = input.scale(1.0F / length);
+      float distanceToUnitSquare = distanceToUnitSquare(direction);
+      float modifiedLength = Math.min(length * distanceToUnitSquare, 1.0F);
+      return direction.scale(modifiedLength);
    }
 
    private static float distanceToUnitSquare(final Vec2 direction) {
@@ -766,7 +761,7 @@ public class LocalPlayer extends AbstractClientPlayer {
    public void resetPos() {
       this.setPose(Pose.STANDING);
       if (this.level() != null) {
-         for (double testY = this.getY(); testY > (double)this.level().getMinY() && testY <= (double)this.level().getMaxY(); testY++) {
+         for (double testY = this.getY(); testY > this.level().getMinY() && testY <= this.level().getMaxY(); testY++) {
             this.setPos(this.getX(), testY, this.getZ());
             if (this.level().noCollision(this)) {
                break;
@@ -812,10 +807,10 @@ public class LocalPlayer extends AbstractClientPlayer {
       }
 
       if (!this.noPhysics && !this.isPassenger()) {
-         this.moveTowardsClosestSpace(this.getX() - (double)this.getBbWidth() * 0.35, this.getZ() + (double)this.getBbWidth() * 0.35);
-         this.moveTowardsClosestSpace(this.getX() - (double)this.getBbWidth() * 0.35, this.getZ() - (double)this.getBbWidth() * 0.35);
-         this.moveTowardsClosestSpace(this.getX() + (double)this.getBbWidth() * 0.35, this.getZ() - (double)this.getBbWidth() * 0.35);
-         this.moveTowardsClosestSpace(this.getX() + (double)this.getBbWidth() * 0.35, this.getZ() + (double)this.getBbWidth() * 0.35);
+         this.moveTowardsClosestSpace(this.getX() - this.getBbWidth() * 0.35, this.getZ() + this.getBbWidth() * 0.35);
+         this.moveTowardsClosestSpace(this.getX() - this.getBbWidth() * 0.35, this.getZ() - this.getBbWidth() * 0.35);
+         this.moveTowardsClosestSpace(this.getX() + this.getBbWidth() * 0.35, this.getZ() - this.getBbWidth() * 0.35);
+         this.moveTowardsClosestSpace(this.getX() + this.getBbWidth() * 0.35, this.getZ() + this.getBbWidth() * 0.35);
       }
 
       if (wasShiftKeyDown || this.isSlowDueToUsingItem() && !this.isPassenger() || this.input.keyPresses.backward()) {
@@ -898,7 +893,7 @@ public class LocalPlayer extends AbstractClientPlayer {
          }
 
          if (inputYa != 0) {
-            this.setDeltaMovement(this.getDeltaMovement().add(0.0, (double)((float)inputYa * abilities.getFlyingSpeed() * 3.0F), 0.0));
+            this.setDeltaMovement(this.getDeltaMovement().add(0.0, inputYa * abilities.getFlyingSpeed() * 3.0F, 0.0));
          }
       }
 
@@ -921,9 +916,9 @@ public class LocalPlayer extends AbstractClientPlayer {
          } else if (wasJumping) {
             this.jumpRidingTicks++;
             if (this.jumpRidingTicks < 10) {
-               this.jumpRidingScale = (float)this.jumpRidingTicks * 0.1F;
+               this.jumpRidingScale = this.jumpRidingTicks * 0.1F;
             } else {
-               this.jumpRidingScale = 0.8F + 2.0F / (float)(this.jumpRidingTicks - 9) * 0.1F;
+               this.jumpRidingScale = 0.8F + 2.0F / (this.jumpRidingTicks - 9) * 0.1F;
             }
          }
       } else {
@@ -1039,17 +1034,17 @@ public class LocalPlayer extends AbstractClientPlayer {
    protected void updateAutoJump(final float xa, final float za) {
       if (this.canAutoJump()) {
          Vec3 moveBegin = this.position();
-         Vec3 moveEnd = moveBegin.add((double)xa, 0.0, (double)za);
-         Vec3 moveDiff = new Vec3((double)xa, 0.0, (double)za);
+         Vec3 moveEnd = moveBegin.add(xa, 0.0, za);
+         Vec3 moveDiff = new Vec3(xa, 0.0, za);
          float currentSpeed = this.getSpeed();
          float moveDistSq = (float)moveDiff.lengthSqr();
          if (moveDistSq <= 0.001F) {
             Vec2 move = this.input.getMoveVector();
             float inputXa = currentSpeed * move.x;
             float inputZa = currentSpeed * move.y;
-            float sin = Mth.sin((double)(this.getYRot() * (float) (Math.PI / 180.0)));
-            float cos = Mth.cos((double)(this.getYRot() * (float) (Math.PI / 180.0)));
-            moveDiff = new Vec3((double)(inputXa * cos - inputZa * sin), moveDiff.y, (double)(inputZa * cos + inputXa * sin));
+            float sin = Mth.sin(this.getYRot() * (float) (Math.PI / 180.0));
+            float cos = Mth.cos(this.getYRot() * (float) (Math.PI / 180.0));
+            moveDiff = new Vec3(inputXa * cos - inputZa * sin, moveDiff.y, inputZa * cos + inputXa * sin);
             moveDistSq = (float)moveDiff.lengthSqr();
             if (moveDistSq <= 0.001F) {
                return;
@@ -1057,7 +1052,7 @@ public class LocalPlayer extends AbstractClientPlayer {
          }
 
          float moveDistInverted = Mth.invSqrt(moveDistSq);
-         Vec3 moveDir = moveDiff.scale((double)moveDistInverted);
+         Vec3 moveDir = moveDiff.scale(moveDistInverted);
          Vec3 facingDir3 = this.getForward();
          float facingVsMovingDotProduct2 = (float)(facingDir3.x * moveDir.x + facingDir3.z * moveDir.z);
          if (!(facingVsMovingDotProduct2 < -0.15F)) {
@@ -1071,18 +1066,19 @@ public class LocalPlayer extends AbstractClientPlayer {
                   float lookAheadSteps = 7.0F;
                   float jumpHeight = 1.2F;
                   if (this.hasEffect(MobEffects.JUMP_BOOST)) {
-                     jumpHeight += (float)(this.getEffect(MobEffects.JUMP_BOOST).getAmplifier() + 1) * 0.75F;
+                     jumpHeight += (this.getEffect(MobEffects.JUMP_BOOST).getAmplifier() + 1) * 0.75F;
                   }
 
                   float lookAheadDist = Math.max(currentSpeed * 7.0F, 1.0F / moveDistInverted);
-                  Vec3 segEnd = moveEnd.add(moveDir.scale((double)lookAheadDist));
+                  Vec3 segBegin = moveBegin;
+                  Vec3 segEnd = moveEnd.add(moveDir.scale(lookAheadDist));
                   float playerWidth = this.getBbWidth();
                   float playerHeight = this.getBbHeight();
-                  AABB testBox = new AABB(moveBegin, segEnd.add(0.0, (double)playerHeight, 0.0)).inflate((double)playerWidth, 0.0, (double)playerWidth);
-                  Vec3 segBegin = moveBegin.add(0.0, 0.51F, 0.0);
+                  AABB testBox = new AABB(segBegin, segEnd.add(0.0, playerHeight, 0.0)).inflate(playerWidth, 0.0, playerWidth);
+                  segBegin = segBegin.add(0.0, 0.51F, 0.0);
                   segEnd = segEnd.add(0.0, 0.51F, 0.0);
                   Vec3 rightDir = moveDir.cross(new Vec3(0.0, 1.0, 0.0));
-                  Vec3 rightOffset = rightDir.scale((double)(playerWidth * 0.5F));
+                  Vec3 rightOffset = rightDir.scale(playerWidth * 0.5F);
                   Vec3 leftSegBegin = segBegin.subtract(rightOffset);
                   Vec3 leftSegEnd = segEnd.subtract(rightOffset);
                   Vec3 rightSegBegin = segBegin.add(rightOffset);
@@ -1098,13 +1094,13 @@ public class LocalPlayer extends AbstractClientPlayer {
                         Vec3 obstacleShapeCenter = box.getCenter();
                         BlockPos obstacleBlockPos = BlockPos.containing(obstacleShapeCenter);
 
-                        for (int steps = 1; (float)steps < jumpHeight; steps++) {
+                        for (int steps = 1; steps < jumpHeight; steps++) {
                            BlockPos abovePos1 = obstacleBlockPos.above(steps);
                            BlockState aboveBlock = this.level().getBlockState(abovePos1);
                            VoxelShape blockShape;
                            if (!(blockShape = aboveBlock.getCollisionShape(this.level(), abovePos1, context)).isEmpty()) {
-                              obstacleHeight = (float)blockShape.max(Direction.Axis.Y) + (float)abovePos1.getY();
-                              if ((double)obstacleHeight - this.getY() > (double)jumpHeight) {
+                              obstacleHeight = (float)blockShape.max(Direction.Axis.Y) + abovePos1.getY();
+                              if (obstacleHeight - this.getY() > jumpHeight) {
                                  return;
                               }
                            }
@@ -1122,7 +1118,7 @@ public class LocalPlayer extends AbstractClientPlayer {
                   }
 
                   if (obstacleHeight != Float.MIN_VALUE) {
-                     float ydelta = (float)((double)obstacleHeight - this.getY());
+                     float ydelta = (float)(obstacleHeight - this.getY());
                      if (!(ydelta <= 0.5F) && !(ydelta > jumpHeight)) {
                         this.autoJumpTime = 1;
                      }
@@ -1136,10 +1132,10 @@ public class LocalPlayer extends AbstractClientPlayer {
    @Override
    protected boolean isHorizontalCollisionMinor(final Vec3 movement) {
       float yRotInRadians = this.getYRot() * (float) (Math.PI / 180.0);
-      double yRotSin = (double)Mth.sin((double)yRotInRadians);
-      double yRotCos = (double)Mth.cos((double)yRotInRadians);
-      double globalXA = (double)this.xxa * yRotCos - (double)this.zza * yRotSin;
-      double globalZA = (double)this.zza * yRotCos + (double)this.xxa * yRotSin;
+      double yRotSin = Mth.sin(yRotInRadians);
+      double yRotCos = Mth.cos(yRotInRadians);
+      double globalXA = this.xxa * yRotCos - this.zza * yRotSin;
+      double globalZA = this.zza * yRotCos + this.xxa * yRotSin;
       double aLengthSquared = Mth.square(globalXA) + Mth.square(globalZA);
       double movementLengthSquared = Mth.square(movement.x) + Mth.square(movement.z);
       if (!(aLengthSquared < 1.0E-5F) && !(movementLengthSquared < 1.0E-5F)) {
@@ -1158,7 +1154,7 @@ public class LocalPlayer extends AbstractClientPlayer {
          && !this.isStayingOnGroundSurface()
          && !this.isPassenger()
          && this.isMoving()
-         && (double)this.getBlockJumpFactor() >= 1.0;
+         && this.getBlockJumpFactor() >= 1.0;
    }
 
    private boolean isMoving() {
@@ -1187,17 +1183,17 @@ public class LocalPlayer extends AbstractClientPlayer {
    public float getWaterVision() {
       if (!this.isEyeInFluid(FluidTags.WATER)) {
          return 0.0F;
-      } else {
-         float max = 600.0F;
-         float mid = 100.0F;
-         if ((float)this.waterVisionTime >= 600.0F) {
-            return 1.0F;
-         } else {
-            float a = Mth.clamp((float)this.waterVisionTime / 100.0F, 0.0F, 1.0F);
-            float b = (float)this.waterVisionTime < 100.0F ? 0.0F : Mth.clamp(((float)this.waterVisionTime - 100.0F) / 500.0F, 0.0F, 1.0F);
-            return a * 0.6F + b * 0.39999998F;
-         }
       }
+
+      float max = 600.0F;
+      float mid = 100.0F;
+      if (this.waterVisionTime >= 600.0F) {
+         return 1.0F;
+      }
+
+      float a = Mth.clamp(this.waterVisionTime / 100.0F, 0.0F, 1.0F);
+      float b = this.waterVisionTime < 100.0F ? 0.0F : Mth.clamp((this.waterVisionTime - 100.0F) / 500.0F, 0.0F, 1.0F);
+      return a * 0.6F + b * 0.39999998F;
    }
 
    public void onGameModeChanged(final GameType gameType) {
@@ -1217,18 +1213,18 @@ public class LocalPlayer extends AbstractClientPlayer {
       boolean newIsUnderwater = super.updateIsUnderwater();
       if (this.isSpectator()) {
          return this.wasUnderwater;
-      } else {
-         if (!oldIsUnderwater && newIsUnderwater) {
-            this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.AMBIENT_UNDERWATER_ENTER, SoundSource.AMBIENT, 1.0F, 1.0F, false);
-            this.minecraft.getSoundManager().play(UnderLiquidAmbientSoundInstance.underwater(this));
-         }
-
-         if (oldIsUnderwater && !newIsUnderwater) {
-            this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.AMBIENT_UNDERWATER_EXIT, SoundSource.AMBIENT, 1.0F, 1.0F, false);
-         }
-
-         return this.wasUnderwater;
       }
+
+      if (!oldIsUnderwater && newIsUnderwater) {
+         this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.AMBIENT_UNDERWATER_ENTER, SoundSource.AMBIENT, 1.0F, 1.0F, false);
+         this.minecraft.getSoundManager().play(UnderLiquidAmbientSoundInstance.underwater(this));
+      }
+
+      if (oldIsUnderwater && !newIsUnderwater) {
+         this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.AMBIENT_UNDERWATER_EXIT, SoundSource.AMBIENT, 1.0F, 1.0F, false);
+      }
+
+      return this.wasUnderwater;
    }
 
    @Override
@@ -1300,7 +1296,7 @@ public class LocalPlayer extends AbstractClientPlayer {
       double blockDistanceSq = blockHitResult.getLocation().distanceToSqr(from);
       if (blockHitResult.getType() != HitResult.Type.MISS) {
          maxDistanceSq = blockDistanceSq;
-         maxDistance = Math.sqrt(blockDistanceSq);
+         maxDistance = Math.sqrt(maxDistanceSq);
       }
 
       Vec3 direction = cameraEntity.getViewVector(partialTicks);

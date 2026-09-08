@@ -14,7 +14,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.OptionalLong;
 import java.util.concurrent.CompletableFuture;
@@ -104,49 +103,46 @@ public class CreateWorldScreen extends Screen {
    private final DirectoryValidator packValidator;
    private final CreateWorldCallback createWorldCallback;
    private final Runnable onClose;
-   @Nullable
-   private Path tempDataPackDir;
-   @Nullable
-   private PackRepository tempDataPackRepository;
-   @Nullable
-   private MenuTabBar tabNavigationBar;
+   private @Nullable Path tempDataPackDir;
+   private @Nullable PackRepository tempDataPackRepository;
+   private @Nullable MenuTabBar tabNavigationBar;
 
    public static void openFresh(final Minecraft minecraft, final Runnable onClose) {
       openFresh(
          minecraft,
          onClose,
          (createWorldScreen, finalLayers, worldDataAndGenSettings, gameRules, tempDataPackDir) -> createWorldScreen.createNewWorld(
-               finalLayers, worldDataAndGenSettings, gameRules
-            )
+            finalLayers, worldDataAndGenSettings, gameRules
+         )
       );
    }
 
    public static void openFresh(final Minecraft minecraft, final Runnable onClose, final CreateWorldCallback createWorld) {
       WorldCreationContextMapper worldCreationContext = (managers, registries, cookie) -> new WorldCreationContext(
-            cookie.worldGenSettings(), registries, managers, cookie.dataConfiguration()
-         );
+         cookie.worldGenSettings(), registries, managers, cookie.dataConfiguration()
+      );
       Function<WorldLoader.DataLoadContext, WorldGenSettings> worldGenSettings = context -> new WorldGenSettings(
-            WorldOptions.defaultWithRandomSeed(), WorldPresets.createNormalWorldDimensions(context.datapackWorldRegistries())
-         );
+         WorldOptions.defaultWithRandomSeed(), WorldPresets.createNormalWorldDimensions(context.datapackWorldRegistries())
+      );
       openCreateWorldScreen(minecraft, onClose, worldGenSettings, worldCreationContext, WorldPresets.NORMAL, createWorld);
    }
 
    public static void testWorld(final Minecraft minecraft, final Runnable onClose) {
       WorldCreationContextMapper worldCreationContext = (managers, registries, cookie) -> new WorldCreationContext(
-            cookie.worldGenSettings().options(),
-            cookie.worldGenSettings().dimensions(),
-            registries,
-            managers,
-            cookie.dataConfiguration(),
-            new InitialWorldCreationOptions(
-               WorldCreationUiState.SelectedGameMode.CREATIVE,
-               new GameRuleMap.Builder().set(GameRules.ADVANCE_TIME, false).set(GameRules.ADVANCE_WEATHER, false).set(GameRules.SPAWN_MOBS, false).build(),
-               null
-            )
-         );
+         cookie.worldGenSettings().options(),
+         cookie.worldGenSettings().dimensions(),
+         registries,
+         managers,
+         cookie.dataConfiguration(),
+         new InitialWorldCreationOptions(
+            WorldCreationUiState.SelectedGameMode.CREATIVE,
+            new GameRuleMap.Builder().set(GameRules.ADVANCE_TIME, false).set(GameRules.ADVANCE_WEATHER, false).set(GameRules.SPAWN_MOBS, false).build(),
+            null
+         )
+      );
       Function<WorldLoader.DataLoadContext, WorldGenSettings> worldGenSettings = context -> new WorldGenSettings(
-            WorldOptions.testWorldWithRandomSeed(), WorldPresets.createTestWorldDimensions(context.datapackWorldRegistries())
-         );
+         WorldOptions.testWorldWithRandomSeed(), WorldPresets.createTestWorldDimensions(context.datapackWorldRegistries())
+      );
       openCreateWorldScreen(
          minecraft,
          onClose,
@@ -154,8 +150,8 @@ public class CreateWorldScreen extends Screen {
          worldCreationContext,
          WorldPresets.FLAT_ALL_DIMENSIONS,
          (createWorldScreen, finalLayers, worldDataAndGenSettings, gameRules, tempDataPackDir) -> createWorldScreen.createNewWorld(
-               finalLayers, worldDataAndGenSettings, gameRules
-            )
+            finalLayers, worldDataAndGenSettings, gameRules
+         )
       );
    }
 
@@ -177,8 +173,8 @@ public class CreateWorldScreen extends Screen {
       CompletableFuture<WorldCreationContext> loadResult = WorldLoader.load(
          loadConfig,
          context -> new WorldLoader.DataLoadOutput<>(
-               new DataPackReloadCookie(worldGenSettings.apply(context), context.dataConfiguration()), context.datapackDimensions()
-            ),
+            new DataPackReloadCookie(worldGenSettings.apply(context), context.dataConfiguration()), context.datapackDimensions()
+         ),
          (resources, managers, registries, cookie) -> {
             resources.close();
             return worldCreationContext.apply(managers, registries, cookie);
@@ -197,7 +193,7 @@ public class CreateWorldScreen extends Screen {
       final Runnable onClose,
       final LevelSettings levelSettings,
       final WorldCreationContext worldCreationContext,
-      @Nullable final Path newDataPackDir
+      final @Nullable Path newDataPackDir
    ) {
       CreateWorldScreen result = new CreateWorldScreen(
          minecraft,
@@ -206,8 +202,8 @@ public class CreateWorldScreen extends Screen {
          WorldPresets.fromSettings(worldCreationContext.selectedDimensions()),
          OptionalLong.of(worldCreationContext.options().seed()),
          (createWorldScreen, finalLayers, worldDataAndGenSettings, gameRules, tempDataPackDir) -> createWorldScreen.createNewWorld(
-               finalLayers, worldDataAndGenSettings, gameRules
-            )
+            finalLayers, worldDataAndGenSettings, gameRules
+         )
       );
       result.recreated = true;
       result.uiState.setName(levelSettings.levelName());
@@ -396,13 +392,12 @@ public class CreateWorldScreen extends Screen {
       this.extractMenuBackground(graphics, 0, this.layout.getHeaderHeight(), this.width, this.height);
    }
 
-   @Nullable
-   private Path getOrCreateTempDataPackDir() {
+   private @Nullable Path getOrCreateTempDataPackDir() {
       if (this.tempDataPackDir == null) {
          try {
             this.tempDataPackDir = Files.createTempDirectory("mcworld-");
-         } catch (IOException var2) {
-            LOGGER.warn("Failed to create temporary dir", var2);
+         } catch (IOException e) {
+            LOGGER.warn("Failed to create temporary dir", e);
             SystemToast.onPackCopyFailure(this.minecraft, this.uiState.getTargetFolder());
             this.popScreen();
          }
@@ -472,19 +467,21 @@ public class CreateWorldScreen extends Screen {
             context -> {
                if (context.datapackWorldRegistries().lookupOrThrow(Registries.WORLD_PRESET).listElements().findAny().isEmpty()) {
                   throw new IllegalStateException("Needs at least one world preset to continue");
-               } else if (context.datapackWorldRegistries().lookupOrThrow(Registries.BIOME).listElements().findAny().isEmpty()) {
-                  throw new IllegalStateException("Needs at least one biome continue");
-               } else {
-                  WorldCreationContext existingContext = this.uiState.getSettings();
-                  DynamicOps<JsonElement> writeOps = existingContext.worldgenLoadContext().createSerializationContext(JsonOps.INSTANCE);
-                  DataResult<JsonElement> encoded = WorldGenSettings.CODEC
-                     .encodeStart(writeOps, new WorldGenSettings(existingContext.options(), existingContext.selectedDimensions()))
-                     .setLifecycle(Lifecycle.stable());
-                  DynamicOps<JsonElement> readOps = context.datapackWorldRegistries().createSerializationContext(JsonOps.INSTANCE);
-                  WorldGenSettings settings = (WorldGenSettings)encoded.flatMap(r -> WorldGenSettings.CODEC.parse(readOps, r))
-                     .getOrThrow(error -> new IllegalStateException("Error parsing worldgen settings after loading data packs: " + error));
-                  return new WorldLoader.DataLoadOutput<>(new DataPackReloadCookie(settings, context.dataConfiguration()), context.datapackDimensions());
                }
+
+               if (context.datapackWorldRegistries().lookupOrThrow(Registries.BIOME).listElements().findAny().isEmpty()) {
+                  throw new IllegalStateException("Needs at least one biome continue");
+               }
+
+               WorldCreationContext existingContext = this.uiState.getSettings();
+               DynamicOps<JsonElement> writeOps = existingContext.worldgenLoadContext().createSerializationContext(JsonOps.INSTANCE);
+               DataResult<JsonElement> encoded = WorldGenSettings.CODEC
+                  .encodeStart(writeOps, new WorldGenSettings(existingContext.options(), existingContext.selectedDimensions()))
+                  .setLifecycle(Lifecycle.stable());
+               DynamicOps<JsonElement> readOps = context.datapackWorldRegistries().createSerializationContext(JsonOps.INSTANCE);
+               WorldGenSettings settings = (WorldGenSettings)encoded.flatMap(r -> WorldGenSettings.CODEC.parse(readOps, r))
+                  .getOrThrow(error -> new IllegalStateException("Error parsing worldgen settings after loading data packs: " + error));
+               return new WorldLoader.DataLoadOutput<>(new DataPackReloadCookie(settings, context.dataConfiguration()), context.datapackDimensions());
             },
             (resources, managers, registries, cookie) -> {
                resources.close();
@@ -540,11 +537,11 @@ public class CreateWorldScreen extends Screen {
             files.sorted(Comparator.reverseOrder()).forEach(path -> {
                try {
                   Files.delete(path);
-               } catch (IOException var2) {
-                  LOGGER.warn("Failed to remove temporary file {}", path, var2);
+               } catch (IOException e) {
+                  LOGGER.warn("Failed to remove temporary file {}", path, ex);
                }
             });
-         } catch (IOException var6) {
+         } catch (IOException e) {
             LOGGER.warn("Failed to list temporary dir {}", this.tempDataPackDir);
          }
       }
@@ -555,14 +552,14 @@ public class CreateWorldScreen extends Screen {
    private static void copyBetweenDirs(final Path sourceDir, final Path targetDir, final Path sourcePath) {
       try {
          Util.copyBetweenDirs(sourceDir, targetDir, sourcePath);
-      } catch (IOException var4) {
+      } catch (IOException e) {
          LOGGER.warn("Failed to copy datapack file from {} to {}", sourcePath, targetDir);
-         throw new UncheckedIOException(var4);
+         throw new UncheckedIOException(e);
       }
    }
 
    private static Optional<LevelStorageSource.LevelStorageAccess> createNewWorldDirectory(
-      final Minecraft minecraft, final String worldFolder, @Nullable final Path tempDataPackDir
+      final Minecraft minecraft, final String worldFolder, final @Nullable Path tempDataPackDir
    ) {
       try {
          LevelStorageSource.LevelStorageAccess access = minecraft.getLevelSource().createAccess(worldFolder);
@@ -570,22 +567,17 @@ public class CreateWorldScreen extends Screen {
             return Optional.of(access);
          }
 
-         try {
-            Optional var6;
-            try (Stream<Path> files = Files.walk(tempDataPackDir)) {
-               Path targetDir = access.getLevelPath(LevelResource.DATAPACK_DIR);
-               FileUtil.createDirectoriesSafe(targetDir);
-               files.filter(f -> !f.equals(tempDataPackDir)).forEach(source -> copyBetweenDirs(tempDataPackDir, targetDir, source));
-               var6 = Optional.of(access);
-            }
-
-            return var6;
-         } catch (UncheckedIOException | IOException var9) {
-            LOGGER.warn("Failed to copy datapacks to world {}", worldFolder, var9);
+         try (Stream<Path> files = Files.walk(tempDataPackDir)) {
+            Path targetDir = access.getLevelPath(LevelResource.DATAPACK_DIR);
+            FileUtil.createDirectoriesSafe(targetDir);
+            files.filter(f -> !f.equals(tempDataPackDir)).forEach(source -> copyBetweenDirs(tempDataPackDir, targetDir, source));
+            return Optional.of(access);
+         } catch (IOException | UncheckedIOException e) {
+            LOGGER.warn("Failed to copy datapacks to world {}", worldFolder, e);
             access.close();
          }
-      } catch (UncheckedIOException | IOException var10) {
-         LOGGER.warn("Failed to create access for {}", worldFolder, var10);
+      } catch (IOException | UncheckedIOException e) {
+         LOGGER.warn("Failed to create access for {}", worldFolder, e);
       }
 
       return Optional.empty();
@@ -600,9 +592,9 @@ public class CreateWorldScreen extends Screen {
             if (targetDir == null) {
                try {
                   targetDir = Files.createTempDirectory("mcworld-");
-               } catch (IOException var5) {
+               } catch (IOException e) {
                   LOGGER.warn("Failed to create temporary dir");
-                  throw new UncheckedIOException(var5);
+                  throw new UncheckedIOException(ex);
                }
 
                tempDataPackDir.setValue(targetDir);
@@ -610,8 +602,8 @@ public class CreateWorldScreen extends Screen {
 
             copyBetweenDirs(sourcePackDir, targetDir, source);
          });
-      } catch (UncheckedIOException | IOException var8) {
-         LOGGER.warn("Failed to copy datapacks from world {}", sourcePackDir, var8);
+      } catch (IOException | UncheckedIOException e) {
+         LOGGER.warn("Failed to copy datapacks from world {}", sourcePackDir, e);
          SystemToast.onPackCopyFailure(minecraft, sourcePackDir.toString());
          return null;
       }
@@ -619,8 +611,7 @@ public class CreateWorldScreen extends Screen {
       return (Path)tempDataPackDir.get();
    }
 
-   @Nullable
-   private Pair<Path, PackRepository> getDataPackSelectionSettings(final WorldDataConfiguration dataConfiguration) {
+   private @Nullable Pair<Path, PackRepository> getDataPackSelectionSettings(final WorldDataConfiguration dataConfiguration) {
       Path dataPackDir = this.getOrCreateTempDataPackDir();
       if (dataPackDir != null) {
          if (this.tempDataPackRepository == null) {
@@ -641,7 +632,6 @@ public class CreateWorldScreen extends Screen {
       private final EditBox nameEdit;
 
       private GameTab() {
-         Objects.requireNonNull(CreateWorldScreen.this);
          super(TITLE);
          GridLayout.RowHelper helper = this.layout.rowSpacing(8).createRowHelper(1);
          LayoutSettings buttonLayoutSettings = helper.newCellSettings();
@@ -651,11 +641,11 @@ public class CreateWorldScreen extends Screen {
          CreateWorldScreen.this.uiState
             .addListener(
                uiState -> this.nameEdit
-                     .setTooltip(
-                        Tooltip.create(
-                           Component.translatable("selectWorld.targetFolder", Component.literal(uiState.getTargetFolder()).withStyle(ChatFormatting.ITALIC))
-                        )
+                  .setTooltip(
+                     Tooltip.create(
+                        Component.translatable("selectWorld.targetFolder", Component.literal(uiState.getTargetFolder()).withStyle(ChatFormatting.ITALIC))
                      )
+                  )
             );
          CreateWorldScreen.this.setInitialFocus(this.nameEdit);
          helper.addChild(
@@ -718,7 +708,6 @@ public class CreateWorldScreen extends Screen {
       private static final Component DATA_PACKS_LABEL = Component.translatable("selectWorld.dataPacks");
 
       private MoreTab() {
-         Objects.requireNonNull(CreateWorldScreen.this);
          super(TITLE);
          GridLayout.RowHelper helper = this.layout.rowSpacing(8).createRowHelper(1);
          helper.addChild(Button.builder(GAME_RULES_LABEL, b -> this.openGameRulesScreen()).width(210).build());
@@ -767,7 +756,6 @@ public class CreateWorldScreen extends Screen {
       private final Button customizeTypeButton;
 
       private WorldTab() {
-         Objects.requireNonNull(CreateWorldScreen.this);
          super(TITLE);
          GridLayout.RowHelper helper = this.layout.columnSpacing(10).rowSpacing(8).createRowHelper(2);
          CycleButton<WorldCreationUiState.WorldTypeEntry> typeButton = helper.addChild(
@@ -792,10 +780,6 @@ public class CreateWorldScreen extends Screen {
          this.customizeTypeButton = helper.addChild(Button.builder(Component.translatable("selectWorld.customizeType"), b -> this.openPresetEditor()).build());
          CreateWorldScreen.this.uiState.addListener(data -> this.customizeTypeButton.active = !data.isDebug() && data.getPresetEditor() != null);
          this.seedEdit = new EditBox(CreateWorldScreen.this.font, 308, 20, Component.translatable("selectWorld.enterSeed")) {
-            {
-               Objects.requireNonNull(WorldTab.this);
-            }
-
             @Override
             protected MutableComponent createNarrationMessage() {
                return super.createNarrationMessage().append(CommonComponents.NARRATION_SEPARATOR).append(CreateWorldScreen.WorldTab.SEED_EMPTY_HINT);
@@ -827,10 +811,6 @@ public class CreateWorldScreen extends Screen {
 
       private CycleButton.ValueListSupplier<WorldCreationUiState.WorldTypeEntry> createWorldTypeValueSupplier() {
          return new CycleButton.ValueListSupplier<WorldCreationUiState.WorldTypeEntry>() {
-            {
-               Objects.requireNonNull(WorldTab.this);
-            }
-
             @Override
             public List<WorldCreationUiState.WorldTypeEntry> getSelectedList() {
                return CycleButton.DEFAULT_ALT_LIST_SELECTOR.getAsBoolean()

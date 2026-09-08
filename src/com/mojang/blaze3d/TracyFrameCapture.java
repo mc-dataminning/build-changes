@@ -36,11 +36,11 @@ public class TracyFrameCapture implements AutoCloseable {
       GpuDevice device = RenderSystem.getDevice();
       this.frameBuffer = device.createTexture("Tracy Frame Capture", 10, GpuFormat.RGBA8_UNORM, this.width, this.height, 1, 1);
       this.frameBufferView = device.createTextureView(this.frameBuffer);
-      this.pixelbuffer = device.createBuffer(() -> "Tracy Frame Capture buffer", 9, (long)(this.width * this.height) * 4L);
+      this.pixelbuffer = device.createBuffer(() -> "Tracy Frame Capture buffer", 9, this.width * this.height * 4L);
    }
 
    private void resize(int width, int height) {
-      float aspectRatio = (float)width / (float)height;
+      float aspectRatio = (float)width / height;
       if (width > 320) {
          width = 320;
          height = (int)(320.0F / aspectRatio);
@@ -62,7 +62,7 @@ public class TracyFrameCapture implements AutoCloseable {
          this.frameBufferView.close();
          this.frameBufferView = device.createTextureView(this.frameBuffer);
          this.pixelbuffer.close();
-         this.pixelbuffer = device.createBuffer(() -> "Tracy Frame Capture buffer", 9, (long)(width * height) * 4L);
+         this.pixelbuffer = device.createBuffer(() -> "Tracy Frame Capture buffer", 9, width * height * 4L);
       }
    }
 
@@ -115,7 +115,7 @@ public class TracyFrameCapture implements AutoCloseable {
       this.pixelbuffer.close();
    }
 
-   private static enum Status {
+   private enum Status {
       WAITING_FOR_CAPTURE,
       WAITING_FOR_COPY,
       WAITING_FOR_UPLOAD;

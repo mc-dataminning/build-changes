@@ -1,7 +1,6 @@
 package net.minecraft.world.level.block.entity;
 
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -31,10 +30,6 @@ public class ChestBlockEntity extends RandomizableContainerBlockEntity implement
    private static final Component DEFAULT_NAME = Component.translatable("container.chest");
    private NonNullList<ItemStack> items = NonNullList.withSize(27, ItemStack.EMPTY);
    private final ContainerOpenersCounter openersCounter = new ContainerOpenersCounter() {
-      {
-         Objects.requireNonNull(ChestBlockEntity.this);
-      }
-
       @Override
       protected void onOpen(final Level level, final BlockPos pos, final BlockState blockState) {
          if (blockState.getBlock() instanceof ChestBlock chestBlock) {
@@ -58,18 +53,11 @@ public class ChestBlockEntity extends RandomizableContainerBlockEntity implement
       public boolean isOwnContainer(final Player player) {
          if (!(player.containerMenu instanceof ChestMenu)) {
             return false;
-         } else {
-            Container container = ((ChestMenu)player.containerMenu).getContainer();
-            if (container == ChestBlockEntity.this) {
-               return true;
-            } else {
-               if (container instanceof CompoundContainer compoundContainer && compoundContainer.contains(ChestBlockEntity.this)) {
-                  return true;
-               }
-
-               return false;
-            }
          }
+
+         Container container = ((ChestMenu)player.containerMenu).getContainer();
+         return container == ChestBlockEntity.this
+            || container instanceof CompoundContainer compoundContainer && compoundContainer.contains(ChestBlockEntity.this);
       }
    };
    private final ChestLidController chestLidController = new ChestLidController();
@@ -116,13 +104,13 @@ public class ChestBlockEntity extends RandomizableContainerBlockEntity implement
    private static void playSound(final Level level, final BlockPos worldPosition, final BlockState blockState, final SoundEvent event) {
       ChestType type = blockState.getValue(ChestBlock.TYPE);
       if (type != ChestType.LEFT) {
-         double x = (double)worldPosition.getX() + 0.5;
-         double y = (double)worldPosition.getY() + 0.5;
-         double z = (double)worldPosition.getZ() + 0.5;
+         double x = worldPosition.getX() + 0.5;
+         double y = worldPosition.getY() + 0.5;
+         double z = worldPosition.getZ() + 0.5;
          if (type == ChestType.RIGHT) {
             Direction direction = ChestBlock.getConnectedDirection(blockState);
-            x += (double)direction.getStepX() * 0.5;
-            z += (double)direction.getStepZ() * 0.5;
+            x += direction.getStepX() * 0.5;
+            z += direction.getStepZ() * 0.5;
          }
 
          level.playSound(null, x, y, z, event, SoundSource.BLOCKS, 0.5F, level.getRandom().nextFloat() * 0.1F + 0.9F);

@@ -3,7 +3,6 @@ package net.minecraft.client.renderer.entity;
 import com.google.common.collect.ImmutableMap;
 import com.mojang.blaze3d.vertex.PoseStack;
 import java.util.Map;
-import java.util.Objects;
 import java.util.function.Supplier;
 import net.minecraft.CrashReport;
 import net.minecraft.CrashReportCategory;
@@ -45,8 +44,7 @@ public class EntityRenderDispatcher implements ResourceManagerReloadListener {
    private Map<PlayerModelType, AvatarRenderer<AbstractClientPlayer>> playerRenderers = Map.of();
    private Map<PlayerModelType, AvatarRenderer<ClientMannequin>> mannequinRenderers = Map.of();
    public final TextureManager textureManager;
-   @Nullable
-   public Camera camera;
+   public @Nullable Camera camera;
    public Entity crosshairPickEntity;
    private final BlockModelResolver blockModelResolver;
    private final ItemModelResolver itemModelResolver;
@@ -90,13 +88,11 @@ public class EntityRenderDispatcher implements ResourceManagerReloadListener {
    }
 
    public <T extends Entity> EntityRenderer<? super T, ?> getRenderer(final T entity) {
-      Objects.requireNonNull(entity);
-
-      return (EntityRenderer<? super T, ?>)(switch (entity) {
-         case AbstractClientPlayer player -> this.getAvatarRenderer(this.playerRenderers, player);
-         case ClientMannequin mannequin -> this.getAvatarRenderer(this.mannequinRenderers, mannequin);
+      return switch (entity) {
+         case AbstractClientPlayer player -> this.getAvatarRenderer((Map<PlayerModelType, AvatarRenderer<T>>)this.playerRenderers, (T)player);
+         case ClientMannequin mannequin -> this.getAvatarRenderer((Map<PlayerModelType, AvatarRenderer<T>>)this.mannequinRenderers, (T)mannequin);
          default -> (EntityRenderer)this.renderers.get(entity.getType());
-      });
+      };
    }
 
    private <T extends Avatar & ClientAvatarEntity> AvatarRenderer<T> getAvatarRenderer(final Map<PlayerModelType, AvatarRenderer<T>> renderers, final T entity) {
@@ -111,9 +107,9 @@ public class EntityRenderDispatcher implements ResourceManagerReloadListener {
    }
 
    public <S extends EntityRenderState> EntityRenderer<?, ? super S> getRenderer(final S entityRenderState) {
-      return (EntityRenderer<?, ? super S>)(entityRenderState instanceof AvatarRenderState avatarRenderState
+      return entityRenderState instanceof AvatarRenderState avatarRenderState
          ? this.getRenderer(avatarRenderState)
-         : (EntityRenderer)this.renderers.get(entityRenderState.entityType));
+         : (EntityRenderer)this.renderers.get(entityRenderState.entityType);
    }
 
    public void prepare(final Camera camera, final Entity crosshairPickEntity) {
@@ -133,8 +129,8 @@ public class EntityRenderDispatcher implements ResourceManagerReloadListener {
 
       try {
          return renderer.createRenderState(entity, partialTicks);
-      } catch (Throwable var8) {
-         CrashReport report = CrashReport.forThrowable(var8, "Extracting render state for an entity in world");
+      } catch (Throwable t) {
+         CrashReport report = CrashReport.forThrowable(t, "Extracting render state for an entity in world");
          CrashReportCategory entityCat = report.addCategory("Entity being extracted");
          entity.fillCrashReportCategory(entityCat);
          CrashReportCategory rendererCategory = this.fillRendererDetails(renderer, report);
@@ -179,8 +175,8 @@ public class EntityRenderDispatcher implements ResourceManagerReloadListener {
          }
 
          poseStack.popPose();
-      } catch (Throwable var19) {
-         CrashReport report = CrashReport.forThrowable(var19, "Rendering entity in world");
+      } catch (Throwable t) {
+         CrashReport report = CrashReport.forThrowable(t, "Rendering entity in world");
          CrashReportCategory entityCat = report.addCategory("EntityRenderState being rendered");
          renderState.fillCrashReportCategory(entityCat);
          this.fillRendererDetails(renderer, report);

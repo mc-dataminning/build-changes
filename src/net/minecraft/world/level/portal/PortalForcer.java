@@ -146,8 +146,8 @@ public class PortalForcer {
       BlockState portalBlockState = Blocks.NETHER_PORTAL.defaultBlockState().setValue(NetherPortalBlock.AXIS, portalAxis);
 
       for (int width = 0; width < 2; width++) {
-         for (int heightx = 0; heightx < 3; heightx++) {
-            mutable.setWithOffset(closestFullPosition, width * direction.getStepX(), heightx, width * direction.getStepZ());
+         for (int height = 0; height < 3; height++) {
+            mutable.setWithOffset(closestFullPosition, width * direction.getStepX(), height, width * direction.getStepZ());
             this.level.setBlock(mutable, portalBlockState, 18);
          }
       }

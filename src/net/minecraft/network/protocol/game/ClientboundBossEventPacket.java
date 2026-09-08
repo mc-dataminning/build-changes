@@ -196,7 +196,7 @@ public class ClientboundBossEventPacket implements Packet<ClientGamePacketListen
       void write(RegistryFriendlyByteBuf output);
    }
 
-   private static enum OperationType {
+   private enum OperationType {
       ADD(ClientboundBossEventPacket.AddOperation::new),
       REMOVE(input -> ClientboundBossEventPacket.REMOVE_OPERATION),
       UPDATE_PROGRESS(ClientboundBossEventPacket.UpdateProgressOperation::new),
@@ -206,12 +206,12 @@ public class ClientboundBossEventPacket implements Packet<ClientGamePacketListen
 
       private final StreamDecoder<RegistryFriendlyByteBuf, ClientboundBossEventPacket.Operation> reader;
 
-      private OperationType(final StreamDecoder<RegistryFriendlyByteBuf, ClientboundBossEventPacket.Operation> reader) {
+      OperationType(final StreamDecoder<RegistryFriendlyByteBuf, ClientboundBossEventPacket.Operation> reader) {
          this.reader = reader;
       }
    }
 
-   private static record UpdateNameOperation(Component name) implements ClientboundBossEventPacket.Operation {
+   private record UpdateNameOperation(Component name) implements ClientboundBossEventPacket.Operation {
       private UpdateNameOperation(final RegistryFriendlyByteBuf input) {
          this(ComponentSerialization.TRUSTED_STREAM_CODEC.decode(input));
       }
@@ -232,7 +232,7 @@ public class ClientboundBossEventPacket implements Packet<ClientGamePacketListen
       }
    }
 
-   private static record UpdateProgressOperation(float progress) implements ClientboundBossEventPacket.Operation {
+   private record UpdateProgressOperation(float progress) implements ClientboundBossEventPacket.Operation {
       private UpdateProgressOperation(final RegistryFriendlyByteBuf input) {
          this(input.readFloat());
       }

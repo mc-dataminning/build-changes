@@ -73,7 +73,7 @@ public enum AdvancementTabType {
    private final int height;
    private final int max;
 
-   private AdvancementTabType(
+   AdvancementTabType(
       final AdvancementTabType.Sprites selectedSprites, final AdvancementTabType.Sprites unselectedSprites, final int width, final int height, final int max
    ) {
       this.selectedSprites = selectedSprites;
@@ -154,9 +154,9 @@ public enum AdvancementTabType {
    public boolean isMouseOver(final int xo, final int yo, final int index, final double mx, final double my) {
       int x = xo + this.getX(index);
       int y = yo + this.getY(index);
-      return mx > (double)x && mx < (double)(x + this.width) && my > (double)y && my < (double)(y + this.height);
+      return mx > x && mx < x + this.width && my > y && my < y + this.height;
    }
 
-   private static record Sprites(Identifier first, Identifier middle, Identifier last) {
+   private record Sprites(Identifier first, Identifier middle, Identifier last) {
    }
 }

@@ -11,13 +11,12 @@ public class ClientboundLevelEventPacket implements Packet<ClientGamePacketListe
    public static final StreamCodec<FriendlyByteBuf, ClientboundLevelEventPacket> STREAM_CODEC = Packet.codec(
       ClientboundLevelEventPacket::write, ClientboundLevelEventPacket::new
    );
-   @LevelEvent.Value
-   private final int type;
+   private final @LevelEvent.Value int type;
    private final BlockPos pos;
    private final int data;
    private final boolean globalEvent;
 
-   public ClientboundLevelEventPacket(@LevelEvent.Value final int type, final BlockPos pos, final int data, final boolean globalEvent) {
+   public ClientboundLevelEventPacket(final @LevelEvent.Value int type, final BlockPos pos, final int data, final boolean globalEvent) {
       this.type = type;
       this.pos = pos.immutable();
       this.data = data;
@@ -51,8 +50,7 @@ public class ClientboundLevelEventPacket implements Packet<ClientGamePacketListe
       return this.globalEvent;
    }
 
-   @LevelEvent.Value
-   public int getType() {
+   public @LevelEvent.Value int getType() {
       return this.type;
    }
 

@@ -108,7 +108,7 @@ public class FirstPersonHandsAndItemsRenderer {
    private float calculateMapTilt(final float xRot) {
       float tilt = 1.0F - xRot / 45.0F + 0.1F;
       tilt = Mth.clamp(tilt, 0.0F, 1.0F);
-      return -Mth.cos((double)(tilt * (float) Math.PI)) * 0.5F + 0.5F;
+      return -Mth.cos(tilt * (float) Math.PI) * 0.5F + 0.5F;
    }
 
    private void renderPlayerHand(
@@ -172,10 +172,10 @@ public class FirstPersonHandsAndItemsRenderer {
          poseStack.pushPose();
          poseStack.translate(invert * 0.51F, -0.08F + inverseArmHeight * -1.2F, -0.75F);
          float sqrtAttackValue = Mth.sqrt(attackValue);
-         float xSwing = Mth.sin((double)(sqrtAttackValue * (float) Math.PI));
+         float xSwing = Mth.sin(sqrtAttackValue * (float) Math.PI);
          float xSwingPosition = -0.5F * xSwing;
-         float ySwingPosition = 0.4F * Mth.sin((double)(sqrtAttackValue * (float) (Math.PI * 2)));
-         float zSwingPosition = -0.3F * Mth.sin((double)(attackValue * (float) Math.PI));
+         float ySwingPosition = 0.4F * Mth.sin(sqrtAttackValue * (float) (Math.PI * 2));
+         float zSwingPosition = -0.3F * Mth.sin(attackValue * (float) Math.PI);
          poseStack.translate(invert * xSwingPosition, ySwingPosition - 0.3F * xSwing, zSwingPosition);
          poseStack.rotateDegrees(Axis.XP, xSwing * -45.0F);
          poseStack.rotateDegrees(Axis.YP, invert * xSwing * -30.0F);
@@ -195,8 +195,8 @@ public class FirstPersonHandsAndItemsRenderer {
       final FirstPersonHandsAndItemsRenderState state
    ) {
       float sqrtAttackValue = Mth.sqrt(attackValue);
-      float ySwingPosition = -0.2F * Mth.sin((double)(attackValue * (float) Math.PI));
-      float zSwingPosition = -0.4F * Mth.sin((double)(sqrtAttackValue * (float) Math.PI));
+      float ySwingPosition = -0.2F * Mth.sin(attackValue * (float) Math.PI);
+      float zSwingPosition = -0.4F * Mth.sin(sqrtAttackValue * (float) Math.PI);
       poseStack.translate(0.0F, -ySwingPosition / 2.0F, zSwingPosition);
       float mapTilt = this.calculateMapTilt(xRot);
       poseStack.translate(0.0F, 0.04F + inverseArmHeight * -1.2F + mapTilt * -0.5F, -0.72F);
@@ -211,7 +211,7 @@ public class FirstPersonHandsAndItemsRenderer {
             poseStack.popPose();
          }
 
-         float xzSwingRotation = Mth.sin((double)(sqrtAttackValue * (float) Math.PI));
+         float xzSwingRotation = Mth.sin(sqrtAttackValue * (float) Math.PI);
          poseStack.rotateDegrees(Axis.XP, xzSwingRotation * 20.0F);
          poseStack.scale(2.0F, 2.0F, 2.0F);
          this.renderMap(poseStack, submitNodeCollector, lightCoords, state.mainHandItem, true, state);
@@ -257,13 +257,13 @@ public class FirstPersonHandsAndItemsRenderer {
       boolean isRightArm = arm != HumanoidArm.LEFT;
       float invert = isRightArm ? 1.0F : -1.0F;
       float sqrtAttackValue = Mth.sqrt(attackValue);
-      float xSwingPosition = -0.3F * Mth.sin((double)(sqrtAttackValue * (float) Math.PI));
-      float ySwingPosition = 0.4F * Mth.sin((double)(sqrtAttackValue * (float) (Math.PI * 2)));
-      float zSwingPosition = -0.4F * Mth.sin((double)(attackValue * (float) Math.PI));
+      float xSwingPosition = -0.3F * Mth.sin(sqrtAttackValue * (float) Math.PI);
+      float ySwingPosition = 0.4F * Mth.sin(sqrtAttackValue * (float) (Math.PI * 2));
+      float zSwingPosition = -0.4F * Mth.sin(attackValue * (float) Math.PI);
       poseStack.translate(invert * (xSwingPosition + 0.64000005F), ySwingPosition + -0.6F + inverseArmHeight * -0.6F, zSwingPosition + -0.71999997F);
       poseStack.rotateDegrees(Axis.YP, invert * 45.0F);
-      float zSwingRotation = Mth.sin((double)(attackValue * attackValue * (float) Math.PI));
-      float ySwingRotation = Mth.sin((double)(sqrtAttackValue * (float) Math.PI));
+      float zSwingRotation = Mth.sin(attackValue * attackValue * (float) Math.PI);
+      float ySwingRotation = Mth.sin(sqrtAttackValue * (float) Math.PI);
       poseStack.rotateDegrees(Axis.YP, invert * ySwingRotation * 70.0F);
       poseStack.rotateDegrees(Axis.ZP, invert * zSwingRotation * -20.0F);
       poseStack.translate(invert * -1.0F, 3.6F, 3.5F);
@@ -278,18 +278,18 @@ public class FirstPersonHandsAndItemsRenderer {
       final PoseStack poseStack, final float partialTicks, final HumanoidArm arm, final float useItemRemainingTicks, final int useDuration
    ) {
       float currUsageTime = useItemRemainingTicks - partialTicks + 1.0F;
-      float scaledUsageTime = currUsageTime / (float)useDuration;
+      float scaledUsageTime = currUsageTime / useDuration;
       if (scaledUsageTime < 0.8F) {
-         float extraHeightOffset = Mth.abs(Mth.cos((double)(currUsageTime / 4.0F * (float) Math.PI)) * 0.1F);
+         float extraHeightOffset = Mth.abs(Mth.cos(currUsageTime / 4.0F * (float) Math.PI) * 0.1F);
          poseStack.translate(0.0F, extraHeightOffset, 0.0F);
       }
 
-      float eatJiggle = 1.0F - (float)Math.pow((double)scaledUsageTime, 27.0);
+      float eatJiggle = 1.0F - (float)Math.pow(scaledUsageTime, 27.0);
       int invert = arm == HumanoidArm.RIGHT ? 1 : -1;
-      poseStack.translate(eatJiggle * 0.6F * (float)invert, eatJiggle * -0.5F, eatJiggle * 0.0F);
-      poseStack.rotateDegrees(Axis.YP, (float)invert * eatJiggle * 90.0F);
+      poseStack.translate(eatJiggle * 0.6F * invert, eatJiggle * -0.5F, eatJiggle * 0.0F);
+      poseStack.rotateDegrees(Axis.YP, invert * eatJiggle * 90.0F);
       poseStack.rotateDegrees(Axis.XP, eatJiggle * 10.0F);
-      poseStack.rotateDegrees(Axis.ZP, (float)invert * eatJiggle * 30.0F);
+      poseStack.rotateDegrees(Axis.ZP, invert * eatJiggle * 30.0F);
    }
 
    private void applyBrushTransform(final PoseStack poseStack, final float partialTicks, final HumanoidArm arm, final float useItemRemainingTicks) {
@@ -301,7 +301,7 @@ public class FirstPersonHandsAndItemsRenderer {
       float swipeRange = 150.0F;
       float swipeCenter = -15.0F;
       int swipeSpeed = 2;
-      float currentSwipeAngle = -15.0F + 75.0F * Mth.cos((double)(scaledUsageTime * 2.0F * (float) Math.PI));
+      float currentSwipeAngle = -15.0F + 75.0F * Mth.cos(scaledUsageTime * 2.0F * (float) Math.PI);
       if (arm != HumanoidArm.RIGHT) {
          poseStack.translate(0.1, 0.83, 0.35);
          poseStack.rotateDegrees(Axis.XP, -80.0F);
@@ -319,17 +319,17 @@ public class FirstPersonHandsAndItemsRenderer {
 
    private void applyItemArmAttackTransform(final PoseStack poseStack, final HumanoidArm arm, final float attackValue) {
       int invert = arm == HumanoidArm.RIGHT ? 1 : -1;
-      float ySwingRotation = Mth.sin((double)(attackValue * attackValue * (float) Math.PI));
-      poseStack.rotateDegrees(Axis.YP, (float)invert * (45.0F + ySwingRotation * -20.0F));
-      float xzSwingRotation = Mth.sin((double)(Mth.sqrt(attackValue) * (float) Math.PI));
-      poseStack.rotateDegrees(Axis.ZP, (float)invert * xzSwingRotation * -20.0F);
+      float ySwingRotation = Mth.sin(attackValue * attackValue * (float) Math.PI);
+      poseStack.rotateDegrees(Axis.YP, invert * (45.0F + ySwingRotation * -20.0F));
+      float xzSwingRotation = Mth.sin(Mth.sqrt(attackValue) * (float) Math.PI);
+      poseStack.rotateDegrees(Axis.ZP, invert * xzSwingRotation * -20.0F);
       poseStack.rotateDegrees(Axis.XP, xzSwingRotation * -80.0F);
-      poseStack.rotateDegrees(Axis.YP, (float)invert * -45.0F);
+      poseStack.rotateDegrees(Axis.YP, invert * -45.0F);
    }
 
    private void applyItemArmTransform(final PoseStack poseStack, final HumanoidArm arm, final float inverseArmHeight) {
       int invert = arm == HumanoidArm.RIGHT ? 1 : -1;
-      poseStack.translate((float)invert * 0.56F, -0.52F + inverseArmHeight * -0.6F, -0.72F);
+      poseStack.translate(invert * 0.56F, -0.52F + inverseArmHeight * -0.6F, -0.72F);
    }
 
    public void submitHandsWithItems(
@@ -421,18 +421,18 @@ public class FirstPersonHandsAndItemsRenderer {
                boolean isRightArm = arm == HumanoidArm.RIGHT;
                int invert = isRightArm ? 1 : -1;
                if (avatarRenderState.isUsingItem && state.useItemRemainingTicks > 0 && avatarRenderState.useItemHand == hand && !charged) {
-                  poseStack.translate((float)invert * -0.4785682F, -0.094387F, 0.05731531F);
+                  poseStack.translate(invert * -0.4785682F, -0.094387F, 0.05731531F);
                   poseStack.rotateDegrees(Axis.XP, -11.935F);
-                  poseStack.rotateDegrees(Axis.YP, (float)invert * 65.3F);
-                  poseStack.rotateDegrees(Axis.ZP, (float)invert * -9.785F);
-                  float timeHeld = (float)useDuration - ((float)state.useItemRemainingTicks - partialTicks + 1.0F);
-                  float power = timeHeld / (float)chargeDuration;
+                  poseStack.rotateDegrees(Axis.YP, invert * 65.3F);
+                  poseStack.rotateDegrees(Axis.ZP, invert * -9.785F);
+                  float timeHeld = useDuration - (state.useItemRemainingTicks - partialTicks + 1.0F);
+                  float power = timeHeld / chargeDuration;
                   if (power > 1.0F) {
                      power = 1.0F;
                   }
 
                   if (power > 0.1F) {
-                     float shakeOffset = Mth.sin((double)((timeHeld - 0.1F) * 1.3F));
+                     float shakeOffset = Mth.sin((timeHeld - 0.1F) * 1.3F);
                      float shakeIntensity = power - 0.1F;
                      float shake = shakeOffset * shakeIntensity;
                      poseStack.translate(shake * 0.0F, shake * 0.004F, shake * 0.0F);
@@ -440,12 +440,12 @@ public class FirstPersonHandsAndItemsRenderer {
 
                   poseStack.translate(power * 0.0F, power * 0.0F, power * 0.04F);
                   poseStack.scale(1.0F, 1.0F, 1.0F + power * 0.2F);
-                  poseStack.rotateDegrees(Axis.YN, (float)invert * 45.0F);
+                  poseStack.rotateDegrees(Axis.YN, invert * 45.0F);
                } else {
                   this.swingArm(attack, poseStack, invert, arm);
                   if (charged && attack < 0.001F && isMainHand) {
-                     poseStack.translate((float)invert * -0.641864F, 0.0F, 0.0F);
-                     poseStack.rotateDegrees(Axis.YP, (float)invert * 10.0F);
+                     poseStack.translate(invert * -0.641864F, 0.0F, 0.0F);
+                     poseStack.rotateDegrees(Axis.YP, invert * 10.0F);
                   }
                }
 
@@ -466,78 +466,81 @@ public class FirstPersonHandsAndItemsRenderer {
                         break;
                      case EAT:
                      case DRINK:
-                        this.applyEatTransform(poseStack, partialTicks, arm, (float)state.useItemRemainingTicks, useDuration);
+                        this.applyEatTransform(poseStack, partialTicks, arm, state.useItemRemainingTicks, useDuration);
                         this.applyItemArmTransform(poseStack, arm, inverseArmHeight);
                         break;
                      case BLOCK:
                         if (!(itemStack.getItem() instanceof ShieldItem)) {
-                           poseStack.translate((float)invert * -0.14142136F, 0.08F, 0.14142136F);
+                           poseStack.translate(invert * -0.14142136F, 0.08F, 0.14142136F);
                            poseStack.rotateDegrees(Axis.XP, -102.25F);
-                           poseStack.rotateDegrees(Axis.YP, (float)invert * 13.365F);
-                           poseStack.rotateDegrees(Axis.ZP, (float)invert * 78.05F);
+                           poseStack.rotateDegrees(Axis.YP, invert * 13.365F);
+                           poseStack.rotateDegrees(Axis.ZP, invert * 78.05F);
                         }
                         break;
-                     case BOW:
-                        poseStack.translate((float)invert * -0.2785682F, 0.18344387F, 0.15731531F);
+                     case BOW: {
+                        poseStack.translate(invert * -0.2785682F, 0.18344387F, 0.15731531F);
                         poseStack.rotateDegrees(Axis.XP, -13.935F);
-                        poseStack.rotateDegrees(Axis.YP, (float)invert * 35.3F);
-                        poseStack.rotateDegrees(Axis.ZP, (float)invert * -9.785F);
-                        float timeHeldxxx = (float)useDuration - ((float)state.useItemRemainingTicks - partialTicks + 1.0F);
-                        float powerxx = timeHeldxxx / 20.0F;
-                        powerxx = (powerxx * powerxx + powerxx * 2.0F) / 3.0F;
-                        if (powerxx > 1.0F) {
-                           powerxx = 1.0F;
+                        poseStack.rotateDegrees(Axis.YP, invert * 35.3F);
+                        poseStack.rotateDegrees(Axis.ZP, invert * -9.785F);
+                        float timeHeld = useDuration - (state.useItemRemainingTicks - partialTicks + 1.0F);
+                        float power = timeHeld / 20.0F;
+                        power = (power * power + power * 2.0F) / 3.0F;
+                        if (power > 1.0F) {
+                           power = 1.0F;
                         }
 
-                        if (powerxx > 0.1F) {
-                           float shakeOffset = Mth.sin((double)((timeHeldxxx - 0.1F) * 1.3F));
-                           float shakeIntensity = powerxx - 0.1F;
+                        if (power > 0.1F) {
+                           float shakeOffset = Mth.sin((timeHeld - 0.1F) * 1.3F);
+                           float shakeIntensity = power - 0.1F;
                            float shake = shakeOffset * shakeIntensity;
                            poseStack.translate(shake * 0.0F, shake * 0.004F, shake * 0.0F);
                         }
 
-                        poseStack.translate(powerxx * 0.0F, powerxx * 0.0F, powerxx * 0.04F);
-                        poseStack.scale(1.0F, 1.0F, 1.0F + powerxx * 0.2F);
-                        poseStack.rotateDegrees(Axis.YN, (float)invert * 45.0F);
+                        poseStack.translate(power * 0.0F, power * 0.0F, power * 0.04F);
+                        poseStack.scale(1.0F, 1.0F, 1.0F + power * 0.2F);
+                        poseStack.rotateDegrees(Axis.YN, invert * 45.0F);
                         break;
-                     case TRIDENT:
-                        poseStack.translate((float)invert * -0.5F, 0.7F, 0.1F);
+                     }
+                     case TRIDENT: {
+                        poseStack.translate(invert * -0.5F, 0.7F, 0.1F);
                         poseStack.rotateDegrees(Axis.XP, -55.0F);
-                        poseStack.rotateDegrees(Axis.YP, (float)invert * 35.3F);
-                        poseStack.rotateDegrees(Axis.ZP, (float)invert * -9.785F);
-                        float timeHeldxx = (float)useDuration - ((float)state.useItemRemainingTicks - partialTicks + 1.0F);
-                        float powerx = timeHeldxx / 10.0F;
-                        if (powerx > 1.0F) {
-                           powerx = 1.0F;
+                        poseStack.rotateDegrees(Axis.YP, invert * 35.3F);
+                        poseStack.rotateDegrees(Axis.ZP, invert * -9.785F);
+                        float timeHeld = useDuration - (state.useItemRemainingTicks - partialTicks + 1.0F);
+                        float power = timeHeld / 10.0F;
+                        if (power > 1.0F) {
+                           power = 1.0F;
                         }
 
-                        if (powerx > 0.1F) {
-                           float shakeOffset = Mth.sin((double)((timeHeldxx - 0.1F) * 1.3F));
-                           float shakeIntensity = powerx - 0.1F;
+                        if (power > 0.1F) {
+                           float shakeOffset = Mth.sin((timeHeld - 0.1F) * 1.3F);
+                           float shakeIntensity = power - 0.1F;
                            float shake = shakeOffset * shakeIntensity;
                            poseStack.translate(shake * 0.0F, shake * 0.004F, shake * 0.0F);
                         }
 
-                        poseStack.translate(0.0F, 0.0F, powerx * 0.2F);
-                        poseStack.scale(1.0F, 1.0F, 1.0F + powerx * 0.2F);
-                        poseStack.rotateDegrees(Axis.YN, (float)invert * 45.0F);
+                        poseStack.translate(0.0F, 0.0F, power * 0.2F);
+                        poseStack.scale(1.0F, 1.0F, 1.0F + power * 0.2F);
+                        poseStack.rotateDegrees(Axis.YN, invert * 45.0F);
                         break;
+                     }
                      case BRUSH:
-                        this.applyBrushTransform(poseStack, partialTicks, arm, (float)state.useItemRemainingTicks);
+                        this.applyBrushTransform(poseStack, partialTicks, arm, state.useItemRemainingTicks);
                         break;
                      case BUNDLE:
                         this.swingArm(attack, poseStack, invert, arm);
                         break;
-                     case SPEAR:
-                        poseStack.translate((float)invert * 0.56F, -0.52F, -0.72F);
-                        float timeHeldx = (float)useDuration - ((float)state.useItemRemainingTicks - partialTicks + 1.0F);
-                        SpearAnimations.firstPersonUse(avatarRenderState.ticksSinceKineticHitFeedback, poseStack, timeHeldx, arm, itemStack);
+                     case SPEAR: {
+                        poseStack.translate(invert * 0.56F, -0.52F, -0.72F);
+                        float timeHeld = useDuration - (state.useItemRemainingTicks - partialTicks + 1.0F);
+                        SpearAnimations.firstPersonUse(avatarRenderState.ticksSinceKineticHitFeedback, poseStack, timeHeld, arm, itemStack);
+                     }
                   }
                } else if (avatarRenderState.isAutoSpinAttack) {
                   this.applyItemArmTransform(poseStack, arm, inverseArmHeight);
-                  poseStack.translate((float)invert * -0.4F, 0.8F, 0.3F);
-                  poseStack.rotateDegrees(Axis.YP, (float)invert * 65.0F);
-                  poseStack.rotateDegrees(Axis.ZP, (float)invert * -85.0F);
+                  poseStack.translate(invert * -0.4F, 0.8F, 0.3F);
+                  poseStack.rotateDegrees(Axis.YP, invert * 65.0F);
+                  poseStack.rotateDegrees(Axis.ZP, invert * -85.0F);
                } else {
                   this.applyItemArmTransform(poseStack, arm, inverseArmHeight);
                   LivingEntity.SwingDescription currentSwing = avatarRenderState.currentSwing;
@@ -565,10 +568,10 @@ public class FirstPersonHandsAndItemsRenderer {
    }
 
    private void swingArm(final float animation, final PoseStack poseStack, final int invert, final HumanoidArm arm) {
-      float xSwingPosition = -0.4F * Mth.sin((double)(Mth.sqrt(animation) * (float) Math.PI));
-      float ySwingPosition = 0.2F * Mth.sin((double)(Mth.sqrt(animation) * (float) (Math.PI * 2)));
-      float zSwingPosition = -0.2F * Mth.sin((double)(animation * (float) Math.PI));
-      poseStack.translate((float)invert * xSwingPosition, ySwingPosition, zSwingPosition);
+      float xSwingPosition = -0.4F * Mth.sin(Mth.sqrt(animation) * (float) Math.PI);
+      float ySwingPosition = 0.2F * Mth.sin(Mth.sqrt(animation) * (float) (Math.PI * 2));
+      float zSwingPosition = -0.2F * Mth.sin(animation * (float) Math.PI);
+      poseStack.translate(invert * xSwingPosition, ySwingPosition, zSwingPosition);
       this.applyItemArmAttackTransform(poseStack, arm, animation);
    }
 }

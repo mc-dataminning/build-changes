@@ -96,7 +96,7 @@ public class LinearLayout implements Layout {
       return new LinearLayout(LinearLayout.Orientation.HORIZONTAL);
    }
 
-   public static enum Orientation {
+   public enum Orientation {
       HORIZONTAL,
       VERTICAL;
 

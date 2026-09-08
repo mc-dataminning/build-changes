@@ -15,8 +15,7 @@ public final class ReportingContext {
    private final AbuseReportSender sender;
    private final ReportEnvironment environment;
    private final ChatLog chatLog;
-   @Nullable
-   private Report draftReport;
+   private @Nullable Report draftReport;
 
    public ReportingContext(final AbuseReportSender sender, final ReportEnvironment environment, final ChatLog chatLog) {
       this.sender = sender;
@@ -67,7 +66,7 @@ public final class ReportingContext {
       return Objects.equals(this.environment, environment);
    }
 
-   public void setReportDraft(@Nullable final Report draftReport) {
+   public void setReportDraft(final @Nullable Report draftReport) {
       this.draftReport = draftReport;
    }
 

@@ -50,54 +50,54 @@ public abstract class ScatteredFeaturePiece extends StructurePiece {
    protected boolean updateAverageGroundHeight(final LevelAccessor level, final BoundingBox chunkBB, final int offset) {
       if (this.heightPosition >= 0) {
          return true;
-      } else {
-         int total = 0;
-         int count = 0;
-         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+      }
 
-         for (int z = this.boundingBox.minZ(); z <= this.boundingBox.maxZ(); z++) {
-            for (int x = this.boundingBox.minX(); x <= this.boundingBox.maxX(); x++) {
-               pos.set(x, 64, z);
-               if (chunkBB.isInside(pos)) {
-                  total += level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, pos).getY();
-                  count++;
-               }
+      int total = 0;
+      int count = 0;
+      BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+
+      for (int z = this.boundingBox.minZ(); z <= this.boundingBox.maxZ(); z++) {
+         for (int x = this.boundingBox.minX(); x <= this.boundingBox.maxX(); x++) {
+            pos.set(x, 64, z);
+            if (chunkBB.isInside(pos)) {
+               total += level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, pos).getY();
+               count++;
             }
          }
-
-         if (count == 0) {
-            return false;
-         } else {
-            this.heightPosition = total / count;
-            this.boundingBox.move(0, this.heightPosition - this.boundingBox.minY() + offset, 0);
-            return true;
-         }
       }
+
+      if (count == 0) {
+         return false;
+      }
+
+      this.heightPosition = total / count;
+      this.boundingBox.move(0, this.heightPosition - this.boundingBox.minY() + offset, 0);
+      return true;
    }
 
    protected boolean updateHeightPositionToLowestGroundHeight(final LevelAccessor level, final int offset) {
       if (this.heightPosition >= 0) {
          return true;
-      } else {
-         int lowestGroundHeight = level.getMaxY() + 1;
-         boolean foundPositionWithinBoundingBox = false;
-         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+      }
 
-         for (int z = this.boundingBox.minZ(); z <= this.boundingBox.maxZ(); z++) {
-            for (int x = this.boundingBox.minX(); x <= this.boundingBox.maxX(); x++) {
-               pos.set(x, 0, z);
-               lowestGroundHeight = Math.min(lowestGroundHeight, level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, pos).getY());
-               foundPositionWithinBoundingBox = true;
-            }
-         }
+      int lowestGroundHeight = level.getMaxY() + 1;
+      boolean foundPositionWithinBoundingBox = false;
+      BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
 
-         if (!foundPositionWithinBoundingBox) {
-            return false;
-         } else {
-            this.heightPosition = lowestGroundHeight;
-            this.boundingBox.move(0, this.heightPosition - this.boundingBox.minY() + offset, 0);
-            return true;
+      for (int z = this.boundingBox.minZ(); z <= this.boundingBox.maxZ(); z++) {
+         for (int x = this.boundingBox.minX(); x <= this.boundingBox.maxX(); x++) {
+            pos.set(x, 0, z);
+            lowestGroundHeight = Math.min(lowestGroundHeight, level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, pos).getY());
+            foundPositionWithinBoundingBox = true;
          }
       }
+
+      if (!foundPositionWithinBoundingBox) {
+         return false;
+      }
+
+      this.heightPosition = lowestGroundHeight;
+      this.boundingBox.move(0, this.heightPosition - this.boundingBox.minY() + offset, 0);
+      return true;
    }
 }

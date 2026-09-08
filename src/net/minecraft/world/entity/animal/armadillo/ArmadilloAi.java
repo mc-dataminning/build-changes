@@ -46,13 +46,13 @@ public class ArmadilloAi {
    private static final UniformInt ADULT_FOLLOW_RANGE = UniformInt.of(5, 16);
    private static final OneShot<Armadillo> ARMADILLO_ROLLING_OUT = BehaviorBuilder.create(
       i -> i.group(i.absent(MemoryModuleType.DANGER_DETECTED_RECENTLY)).apply(i, location -> (level, body, timestamp) -> {
-               if (body.isScared()) {
-                  body.rollOut();
-                  return true;
-               } else {
-                  return false;
-               }
-            })
+         if (body.isScared()) {
+            body.rollOut();
+            return true;
+         } else {
+            return false;
+         }
+      })
    );
 
    protected static List<ActivityData<Armadillo>> getActivities() {
@@ -70,11 +70,7 @@ public class ArmadilloAi {
             new MoveToTargetSink() {
                @Override
                protected boolean checkExtraStartConditions(final ServerLevel level, final Mob body) {
-                  if (body instanceof Armadillo armadillo && armadillo.isScared()) {
-                     return false;
-                  }
-
-                  return super.checkExtraStartConditions(level, body);
+                  return body instanceof Armadillo armadillo && armadillo.isScared() ? false : super.checkExtraStartConditions(level, body);
                }
             },
             new CountDownCooldownTicks(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS),
@@ -164,11 +160,11 @@ public class ArmadilloAi {
                   this.nextPeekTimer = this.pickNextPeekTimer(body);
                }
 
-               if (dangerTickCounter < (long)Armadillo.ArmadilloState.UNROLLING.animationDuration()) {
+               if (dangerTickCounter < Armadillo.ArmadilloState.UNROLLING.animationDuration()) {
                   body.playSound(SoundEvents.ARMADILLO_UNROLL_START);
                   body.switchToState(Armadillo.ArmadilloState.UNROLLING);
                }
-            } else if (state == Armadillo.ArmadilloState.UNROLLING && dangerTickCounter > (long)Armadillo.ArmadilloState.UNROLLING.animationDuration()) {
+            } else if (state == Armadillo.ArmadilloState.UNROLLING && dangerTickCounter > Armadillo.ArmadilloState.UNROLLING.animationDuration()) {
                body.switchToState(Armadillo.ArmadilloState.SCARED);
             }
          }

@@ -31,8 +31,7 @@ public abstract class DirectStateAccess {
 
    public abstract void bufferStorage(int buffer, ByteBuffer data, @GpuBuffer.Usage int usage);
 
-   @Nullable
-   public abstract ByteBuffer mapBufferRange(int buffer, long offset, long length, int access, @GpuBuffer.Usage int usage);
+   public abstract @Nullable ByteBuffer mapBufferRange(int buffer, long offset, long length, int access, @GpuBuffer.Usage int usage);
 
    public abstract void unmapBuffer(int buffer, @GpuBuffer.Usage int usage);
 
@@ -48,7 +47,7 @@ public abstract class DirectStateAccess {
       int source, int dest, int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, int mask, int filter
    );
 
-   public abstract void flushMappedBufferRange(final int handle, final long offset, final long length, @GpuBuffer.Usage final int usage);
+   public abstract void flushMappedBufferRange(final int handle, final long offset, final long length, final @GpuBuffer.Usage int usage);
 
    public abstract void copyBufferSubData(int source, int target, long sourceOffset, long targetOffset, long length);
 
@@ -60,38 +59,37 @@ public abstract class DirectStateAccess {
       }
 
       @Override
-      public void bufferData(final int buffer, final long size, @GpuBuffer.Usage final int usage) {
+      public void bufferData(final int buffer, final long size, final @GpuBuffer.Usage int usage) {
          ARBDirectStateAccess.glNamedBufferData(buffer, size, GlConst.bufferUsageToGlEnum(usage));
       }
 
       @Override
-      public void bufferData(final int buffer, final ByteBuffer data, @GpuBuffer.Usage final int usage) {
+      public void bufferData(final int buffer, final ByteBuffer data, final @GpuBuffer.Usage int usage) {
          ARBDirectStateAccess.glNamedBufferData(buffer, data, GlConst.bufferUsageToGlEnum(usage));
       }
 
       @Override
-      public void bufferSubData(final int buffer, final long offset, final ByteBuffer data, @GpuBuffer.Usage final int usage) {
+      public void bufferSubData(final int buffer, final long offset, final ByteBuffer data, final @GpuBuffer.Usage int usage) {
          ARBDirectStateAccess.glNamedBufferSubData(buffer, offset, data);
       }
 
       @Override
-      public void bufferStorage(final int buffer, final long size, @GpuBuffer.Usage final int usage) {
+      public void bufferStorage(final int buffer, final long size, final @GpuBuffer.Usage int usage) {
          ARBDirectStateAccess.glNamedBufferStorage(buffer, size, GlConst.bufferUsageToGlFlag(usage));
       }
 
       @Override
-      public void bufferStorage(final int buffer, final ByteBuffer data, @GpuBuffer.Usage final int usage) {
+      public void bufferStorage(final int buffer, final ByteBuffer data, final @GpuBuffer.Usage int usage) {
          ARBDirectStateAccess.glNamedBufferStorage(buffer, data, GlConst.bufferUsageToGlFlag(usage));
       }
 
-      @Nullable
       @Override
-      public ByteBuffer mapBufferRange(final int buffer, final long offset, final long length, final int flags, @GpuBuffer.Usage final int usage) {
+      public @Nullable ByteBuffer mapBufferRange(final int buffer, final long offset, final long length, final int flags, final @GpuBuffer.Usage int usage) {
          return ARBDirectStateAccess.glMapNamedBufferRange(buffer, offset, length, flags);
       }
 
       @Override
-      public void unmapBuffer(final int buffer, @GpuBuffer.Usage final int usage) {
+      public void unmapBuffer(final int buffer, final @GpuBuffer.Usage int usage) {
          ARBDirectStateAccess.glUnmapNamedBuffer(buffer);
       }
 
@@ -133,7 +131,7 @@ public abstract class DirectStateAccess {
       }
 
       @Override
-      public void flushMappedBufferRange(final int handle, final long offset, final long length, @GpuBuffer.Usage final int usage) {
+      public void flushMappedBufferRange(final int handle, final long offset, final long length, final @GpuBuffer.Usage int usage) {
          ARBDirectStateAccess.glFlushMappedNamedBufferRange(handle, offset, length);
       }
 
@@ -150,7 +148,7 @@ public abstract class DirectStateAccess {
       }
 
       @Override
-      public void bufferData(final int buffer, final long size, @GpuBuffer.Usage final int usage) {
+      public void bufferData(final int buffer, final long size, final @GpuBuffer.Usage int usage) {
          int target = GlUtil.selectBufferBindTarget(usage);
          GlStateManager._glBindBuffer(target, buffer);
          GlStateManager._glBufferData(target, size, GlConst.bufferUsageToGlEnum(usage));
@@ -158,7 +156,7 @@ public abstract class DirectStateAccess {
       }
 
       @Override
-      public void bufferData(final int buffer, final ByteBuffer data, @GpuBuffer.Usage final int usage) {
+      public void bufferData(final int buffer, final ByteBuffer data, final @GpuBuffer.Usage int usage) {
          int target = GlUtil.selectBufferBindTarget(usage);
          GlStateManager._glBindBuffer(target, buffer);
          GlStateManager._glBufferData(target, data, GlConst.bufferUsageToGlEnum(usage));
@@ -166,7 +164,7 @@ public abstract class DirectStateAccess {
       }
 
       @Override
-      public void bufferSubData(final int buffer, final long offset, final ByteBuffer data, @GpuBuffer.Usage final int usage) {
+      public void bufferSubData(final int buffer, final long offset, final ByteBuffer data, final @GpuBuffer.Usage int usage) {
          int target = GlUtil.selectBufferBindTarget(usage);
          GlStateManager._glBindBuffer(target, buffer);
          GlStateManager._glBufferSubData(target, offset, data);
@@ -174,7 +172,7 @@ public abstract class DirectStateAccess {
       }
 
       @Override
-      public void bufferStorage(final int buffer, final long size, @GpuBuffer.Usage final int usage) {
+      public void bufferStorage(final int buffer, final long size, final @GpuBuffer.Usage int usage) {
          int target = GlUtil.selectBufferBindTarget(usage);
          GlStateManager._glBindBuffer(target, buffer);
          ARBBufferStorage.glBufferStorage(target, size, GlConst.bufferUsageToGlFlag(usage));
@@ -182,16 +180,15 @@ public abstract class DirectStateAccess {
       }
 
       @Override
-      public void bufferStorage(final int buffer, final ByteBuffer data, @GpuBuffer.Usage final int usage) {
+      public void bufferStorage(final int buffer, final ByteBuffer data, final @GpuBuffer.Usage int usage) {
          int target = GlUtil.selectBufferBindTarget(usage);
          GlStateManager._glBindBuffer(target, buffer);
          ARBBufferStorage.glBufferStorage(target, data, GlConst.bufferUsageToGlFlag(usage));
          GlStateManager._glBindBuffer(target, 0);
       }
 
-      @Nullable
       @Override
-      public ByteBuffer mapBufferRange(final int buffer, final long offset, final long length, final int access, @GpuBuffer.Usage final int usage) {
+      public @Nullable ByteBuffer mapBufferRange(final int buffer, final long offset, final long length, final int access, final @GpuBuffer.Usage int usage) {
          int target = GlUtil.selectBufferBindTarget(usage);
          GlStateManager._glBindBuffer(target, buffer);
          ByteBuffer byteBuffer = GlStateManager._glMapBufferRange(target, offset, length, access);
@@ -200,7 +197,7 @@ public abstract class DirectStateAccess {
       }
 
       @Override
-      public void unmapBuffer(final int buffer, @GpuBuffer.Usage final int usage) {
+      public void unmapBuffer(final int buffer, final @GpuBuffer.Usage int usage) {
          int target = GlUtil.selectBufferBindTarget(usage);
          GlStateManager._glBindBuffer(target, buffer);
          GlStateManager._glUnmapBuffer(target);
@@ -208,7 +205,7 @@ public abstract class DirectStateAccess {
       }
 
       @Override
-      public void flushMappedBufferRange(final int buffer, final long offset, final long length, @GpuBuffer.Usage final int usage) {
+      public void flushMappedBufferRange(final int buffer, final long offset, final long length, final @GpuBuffer.Usage int usage) {
          int target = GlUtil.selectBufferBindTarget(usage);
          GlStateManager._glBindBuffer(target, buffer);
          GL33C.glFlushMappedBufferRange(target, offset, length);
@@ -233,7 +230,7 @@ public abstract class DirectStateAccess {
       public void bindFrameBufferTextures(
          final int fbo, final int[] color, final int[] colorMipLevels, final int depth, final int depthMipLevel, final int bindSlot
       ) {
-         int tempBindSlot = bindSlot == 0 ? '販' : bindSlot;
+         int tempBindSlot = bindSlot == 0 ? 36009 : bindSlot;
          int oldFbo = GlStateManager.getFrameBuffer(tempBindSlot);
          GlStateManager._glBindFramebuffer(tempBindSlot, fbo);
 

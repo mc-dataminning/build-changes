@@ -14,7 +14,7 @@ public class NearestAttackableWitchTargetGoal<T extends LivingEntity> extends Ne
       final int randomInterval,
       final boolean mustSee,
       final boolean mustReach,
-      @Nullable final TargetingConditions.Selector subselector
+      final TargetingConditions.@Nullable Selector subselector
    ) {
       super(raider, targetType, randomInterval, mustSee, mustReach, subselector);
    }

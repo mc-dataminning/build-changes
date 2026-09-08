@@ -28,8 +28,8 @@ public class LoadingOverlay extends Overlay {
    private static final int LOGO_BACKGROUND_COLOR = ARGB.color(255, 239, 50, 61);
    private static final int LOGO_BACKGROUND_COLOR_DARK = ARGB.color(255, 0, 0, 0);
    private static final IntSupplier BRAND_BACKGROUND = () -> Minecraft.getInstance().options.darkMojangStudiosBackground().get()
-         ? LOGO_BACKGROUND_COLOR_DARK
-         : LOGO_BACKGROUND_COLOR;
+      ? LOGO_BACKGROUND_COLOR_DARK
+      : LOGO_BACKGROUND_COLOR;
    private static final int LOGO_SCALE = 240;
    private static final float LOGO_QUARTER_FLOAT = 60.0F;
    private static final int LOGO_QUARTER = 60;
@@ -91,7 +91,7 @@ public class LoadingOverlay extends Overlay {
             this.minecraft.gui.hud.extractDeferredSubtitles();
          }
 
-         int alpha = Mth.ceil(Mth.clamp((double)fadeInAnim, 0.15, 1.0) * 255.0);
+         int alpha = Mth.ceil(Mth.clamp(fadeInAnim, 0.15, 1.0) * 255.0);
          graphics.nextStratum();
          graphics.fill(0, 0, width, height, replaceAlpha(BRAND_BACKGROUND.getAsInt(), alpha));
          logoAlpha = Mth.clamp(fadeInAnim, 0.0F, 1.0F);
@@ -100,9 +100,9 @@ public class LoadingOverlay extends Overlay {
          logoAlpha = 1.0F;
       }
 
-      int contentX = (int)((double)graphics.guiWidth() * 0.5);
-      int logoY = (int)((double)graphics.guiHeight() * 0.5);
-      double logoHeight = Math.min((double)graphics.guiWidth() * 0.75, (double)graphics.guiHeight()) * 0.25;
+      int contentX = (int)(graphics.guiWidth() * 0.5);
+      int logoY = (int)(graphics.guiHeight() * 0.5);
+      double logoHeight = Math.min(graphics.guiWidth() * 0.75, graphics.guiHeight()) * 0.25;
       int logoHeightHalf = (int)(logoHeight * 0.5);
       double contentWidth = logoHeight * 4.0;
       int logoWidthHalf = (int)(contentWidth * 0.5);
@@ -137,7 +137,7 @@ public class LoadingOverlay extends Overlay {
          120,
          color
       );
-      int barY = (int)((double)graphics.guiHeight() * 0.8325);
+      int barY = (int)(graphics.guiHeight() * 0.8325);
       float actualProgress = this.reload.getActualProgress();
       this.currentProgress = Mth.clamp(this.currentProgress * 0.95F + actualProgress * 0.050000012F, 0.0F, 1.0F);
       if (fadeOutAnim < 1.0F) {
@@ -155,8 +155,8 @@ public class LoadingOverlay extends Overlay {
          try {
             this.reload.checkExceptions();
             this.onFinish.accept(Optional.empty());
-         } catch (Throwable var2) {
-            this.onFinish.accept(Optional.of(var2));
+         } catch (Throwable t) {
+            this.onFinish.accept(Optional.of(t));
          }
 
          this.fadeOutStart = Util.getMillis();
@@ -172,7 +172,7 @@ public class LoadingOverlay extends Overlay {
    }
 
    private void extractProgressBar(final GuiGraphicsExtractor graphics, final int x0, final int y0, final int x1, final int y1, final float fade) {
-      int width = Mth.ceil((float)(x1 - x0 - 2) * this.currentProgress);
+      int width = Mth.ceil((x1 - x0 - 2) * this.currentProgress);
       int alpha = Math.round(fade * 255.0F);
       int white = ARGB.color(alpha, 255, 255, 255);
       graphics.fill(x0 + 2, y0 + 2, x0 + width, y1 - 2, white);
@@ -191,12 +191,9 @@ public class LoadingOverlay extends Overlay {
       public TextureContents loadContents(final ResourceManager resourceManager) throws IOException {
          ResourceProvider vanillaProvider = Minecraft.getInstance().getVanillaPackResources().asResourceManager();
 
-         TextureContents var4;
          try (InputStream resource = vanillaProvider.open(LoadingOverlay.MOJANG_STUDIOS_LOGO_LOCATION)) {
-            var4 = new TextureContents(NativeImage.read(resource), new TextureMetadataSection(true, true, MipmapStrategy.MEAN, 0.0F));
+            return new TextureContents(NativeImage.read(resource), new TextureMetadataSection(true, true, MipmapStrategy.MEAN, 0.0F));
          }
-
-         return var4;
       }
    }
 }

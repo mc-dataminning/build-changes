@@ -14,15 +14,11 @@ public class TabManager {
    private final Consumer<AbstractWidget> removeWidget;
    private final Consumer<Tab> onSelected;
    private final Consumer<Tab> onDeselected;
-   @Nullable
-   private Tab currentTab;
-   @Nullable
-   private ScreenRectangle tabArea;
+   private @Nullable Tab currentTab;
+   private @Nullable ScreenRectangle tabArea;
 
    public TabManager(final Consumer<AbstractWidget> addWidget, final Consumer<AbstractWidget> removeWidget) {
-      this(addWidget, removeWidget, t -> {
-      }, t -> {
-      });
+      this(addWidget, removeWidget, t -> {}, t -> {});
    }
 
    public TabManager(
@@ -71,8 +67,7 @@ public class TabManager {
       }
    }
 
-   @Nullable
-   public Tab getCurrentTab() {
+   public @Nullable Tab getCurrentTab() {
       return this.currentTab;
    }
 }

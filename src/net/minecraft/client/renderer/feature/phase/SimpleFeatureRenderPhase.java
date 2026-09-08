@@ -16,7 +16,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.jspecify.annotations.Nullable;
 
 public class SimpleFeatureRenderPhase implements FeatureRenderPhase<SubmitNode> {
-   private SimpleFeatureRenderPhase.FeatureSubmits<?>[] submitsByFeature = new SimpleFeatureRenderPhase.FeatureSubmits[0];
+   private SimpleFeatureRenderPhase.@Nullable FeatureSubmits<?>[] submitsByFeature = new SimpleFeatureRenderPhase.FeatureSubmits[0];
 
    @Override
    public void submit(final SubmitNode submit) {
@@ -121,23 +121,22 @@ public class SimpleFeatureRenderPhase implements FeatureRenderPhase<SubmitNode> 
          }
       }
 
-      @Nullable
-      private static Object batchKey(final SubmitNode submit) {
+      private static @Nullable Object batchKey(final SubmitNode submit) {
          return submit instanceof BatchableSubmit batchable ? batchable.batchKey() : null;
       }
 
       public boolean isEmpty() {
          if (!this.unbatched.isEmpty()) {
             return false;
-         } else {
-            for (List<Submit> submits : this.batches.values()) {
-               if (!submits.isEmpty()) {
-                  return false;
-               }
-            }
-
-            return true;
          }
+
+         for (List<Submit> submits : this.batches.values()) {
+            if (!submits.isEmpty()) {
+               return false;
+            }
+         }
+
+         return true;
       }
 
       public void clear() {
@@ -145,10 +144,10 @@ public class SimpleFeatureRenderPhase implements FeatureRenderPhase<SubmitNode> 
          this.batches.values().removeIf(submits -> {
             if (submits.isEmpty()) {
                return true;
-            } else {
-               submits.clear();
-               return false;
             }
+
+            submits.clear();
+            return false;
          });
       }
    }

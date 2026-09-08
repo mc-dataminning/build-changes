@@ -3,7 +3,6 @@ package net.minecraft.client.gui.screens;
 import com.mojang.logging.LogUtils;
 import io.netty.channel.ChannelFuture;
 import java.net.InetSocketAddress;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import net.minecraft.DefaultUncaughtExceptionHandler;
@@ -39,10 +38,8 @@ public class ConnectScreen extends Screen {
    private static final long NARRATION_DELAY_MS = 2000L;
    public static final Component ABORT_CONNECTION = Component.translatable("connect.aborted");
    public static final Component UNKNOWN_HOST_MESSAGE = Component.translatable("disconnect.genericReason", Component.translatable("disconnect.unknownHost"));
-   @Nullable
-   private volatile Connection connection;
-   @Nullable
-   private ChannelFuture channelFuture;
+   private volatile @Nullable Connection connection;
+   private @Nullable ChannelFuture channelFuture;
    private volatile boolean aborted;
    private final Screen parent;
    private Component status = Component.translatable("connect.connecting");
@@ -61,7 +58,7 @@ public class ConnectScreen extends Screen {
       final ServerAddress hostAndPort,
       final ServerData data,
       final boolean isQuickPlay,
-      @Nullable final TransferState transferState
+      final @Nullable TransferState transferState
    ) {
       if (minecraft.gui.screen() instanceof ConnectScreen) {
          LOGGER.error("Attempt to connect while already connecting");
@@ -89,13 +86,9 @@ public class ConnectScreen extends Screen {
       }
    }
 
-   private void connect(final Minecraft minecraft, final ServerAddress hostAndPort, final ServerData server, @Nullable final TransferState transferState) {
+   private void connect(final Minecraft minecraft, final ServerAddress hostAndPort, final ServerData server, final @Nullable TransferState transferState) {
       LOGGER.info("Connecting to {}, {}", hostAndPort.getHost(), hostAndPort.getPort());
       Thread thread = new Thread("Server Connector #" + UNIQUE_THREAD_ID.incrementAndGet()) {
-         {
-            Objects.requireNonNull(ConnectScreen.this);
-         }
-
          @Override
          public void run() {
             InetSocketAddress address = null;
@@ -115,9 +108,7 @@ public class ConnectScreen extends Screen {
                if (resolvedAddress.isEmpty()) {
                   minecraft.execute(
                      () -> minecraft.gui
-                           .setScreen(
-                              new DisconnectedScreen(ConnectScreen.this.parent, ConnectScreen.this.connectFailedTitle, ConnectScreen.UNKNOWN_HOST_MESSAGE)
-                           )
+                        .setScreen(new DisconnectedScreen(ConnectScreen.this.parent, ConnectScreen.this.connectFailedTitle, ConnectScreen.UNKNOWN_HOST_MESSAGE))
                   );
                   return;
                }
@@ -167,29 +158,29 @@ public class ConnectScreen extends Screen {
                      transferState != null
                   );
                ConnectScreen.this.connection.send(new ServerboundHelloPacket(minecraft.getUser().getName(), minecraft.getUser().getProfileId()));
-            } catch (Exception var9) {
+            } catch (Exception exception) {
                if (ConnectScreen.this.aborted) {
                   return;
                }
 
                Exception cause;
-               if (var9.getCause() instanceof Exception originalCause) {
+               if (exception.getCause() instanceof Exception originalCause) {
                   cause = originalCause;
                } else {
-                  cause = var9;
+                  cause = exception;
                }
 
-               ConnectScreen.LOGGER.error("Couldn't connect to server", var9);
+               ConnectScreen.LOGGER.error("Couldn't connect to server", exception);
                String message = address == null
                   ? cause.getMessage()
                   : cause.getMessage().replaceAll(address.getHostName() + ":" + address.getPort(), "").replaceAll(address.toString(), "");
                minecraft.execute(
                   () -> minecraft.gui
-                        .setScreen(
-                           new DisconnectedScreen(
-                              ConnectScreen.this.parent, ConnectScreen.this.connectFailedTitle, Component.translatable("disconnect.genericReason", message)
-                           )
+                     .setScreen(
+                        new DisconnectedScreen(
+                           ConnectScreen.this.parent, ConnectScreen.this.connectFailedTitle, Component.translatable("disconnect.genericReason", message)
                         )
+                     )
                );
             }
          }

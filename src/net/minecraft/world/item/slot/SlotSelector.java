@@ -28,7 +28,7 @@ public sealed interface SlotSelector permits SlotSelector.FilteringSelector, Slo
       return tracking(ANY_SLOT, selectedCount);
    }
 
-   public static record FilteringSelector(@Nullable Predicate<? super ItemStack> filter) implements SlotSelector {
+   record FilteringSelector(@Nullable Predicate<? super ItemStack> filter) implements SlotSelector {
       @Override
       public boolean trySelectSlot(final ItemStack itemInSlot) {
          return this.filter == null || this.filter.test(itemInSlot);
@@ -47,7 +47,7 @@ public sealed interface SlotSelector permits SlotSelector.FilteringSelector, Slo
       }
    }
 
-   public static record TrackingSelector(SlotSelector slotSelector, int limit, MutableInt selectedCount) implements SlotSelector {
+   record TrackingSelector(SlotSelector slotSelector, int limit, MutableInt selectedCount) implements SlotSelector {
       @Override
       public boolean trySelectSlot(final ItemStack itemInSlot) {
          if (this.selectedCount.intValue() < this.limit && this.slotSelector.trySelectSlot(itemInSlot)) {

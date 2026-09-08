@@ -101,8 +101,8 @@ public class IOWorker implements AutoCloseable, ChunkScanAccess {
 
                      try {
                         this.scanChunk(pos, collectFields).join();
-                     } catch (Exception var7) {
-                        LOGGER.warn("Failed to scan chunk {}", pos, var7);
+                     } catch (Exception e) {
+                        LOGGER.warn("Failed to scan chunk {}", pos, e);
                         return;
                      }
 
@@ -140,14 +140,14 @@ public class IOWorker implements AutoCloseable, ChunkScanAccess {
          IOWorker.PendingStore pendingStore = this.pendingWrites.get(pos);
          if (pendingStore != null) {
             return Optional.ofNullable(pendingStore.copyData());
-         } else {
-            try {
-               CompoundTag data = this.storage.read(pos);
-               return Optional.ofNullable(data);
-            } catch (Exception var4) {
-               LOGGER.warn("Failed to read chunk {}", pos, var4);
-               throw var4;
-            }
+         }
+
+         try {
+            CompoundTag data = this.storage.read(pos);
+            return Optional.ofNullable(data);
+         } catch (Exception e) {
+            LOGGER.warn("Failed to read chunk {}", pos, e);
+            throw e;
          }
       });
    }
@@ -158,14 +158,14 @@ public class IOWorker implements AutoCloseable, ChunkScanAccess {
          )
          .thenCompose(Function.identity());
       return flush ? currentWrites.thenCompose(ignore -> this.submitThrowingTask(() -> {
-            try {
-               this.storage.flush();
-               return null;
-            } catch (Exception var2x) {
-               LOGGER.warn("Failed to synchronize chunks", var2x);
-               throw var2x;
-            }
-         })) : currentWrites.thenCompose(ignore -> this.submitTask(() -> null));
+         try {
+            this.storage.flush();
+            return null;
+         } catch (Exception e) {
+            LOGGER.warn("Failed to synchronize chunks", e);
+            throw e;
+         }
+      })) : currentWrites.thenCompose(ignore -> this.submitTask(() -> null));
    }
 
    @Override
@@ -182,9 +182,9 @@ public class IOWorker implements AutoCloseable, ChunkScanAccess {
             }
 
             return null;
-         } catch (Exception var4) {
-            LOGGER.warn("Failed to bulk scan chunk {}", pos, var4);
-            throw var4;
+         } catch (Exception e) {
+            LOGGER.warn("Failed to bulk scan chunk {}", pos, e);
+            throw e;
          }
       });
    }
@@ -194,8 +194,8 @@ public class IOWorker implements AutoCloseable, ChunkScanAccess {
          if (!this.shutdownRequested.get()) {
             try {
                future.complete(task.get());
-            } catch (Exception var4) {
-               future.completeExceptionally(var4);
+            } catch (Exception e) {
+               future.completeExceptionally(e);
             }
          }
 
@@ -229,9 +229,9 @@ public class IOWorker implements AutoCloseable, ChunkScanAccess {
       try {
          this.storage.write(pos, write.data);
          write.result.complete(null);
-      } catch (Exception var4) {
-         LOGGER.error("Failed to store chunk {}", pos, var4);
-         write.result.completeExceptionally(var4);
+      } catch (Exception e) {
+         LOGGER.error("Failed to store chunk {}", pos, e);
+         write.result.completeExceptionally(e);
       }
    }
 
@@ -243,8 +243,8 @@ public class IOWorker implements AutoCloseable, ChunkScanAccess {
 
          try {
             this.storage.close();
-         } catch (Exception var2) {
-            LOGGER.error("Failed to close storage", var2);
+         } catch (Exception e) {
+            LOGGER.error("Failed to close storage", e);
          }
       }
    }
@@ -258,22 +258,20 @@ public class IOWorker implements AutoCloseable, ChunkScanAccess {
    }
 
    private static class PendingStore {
-      @Nullable
-      private CompoundTag data;
+      private @Nullable CompoundTag data;
       private final CompletableFuture<Void> result = new CompletableFuture<>();
 
-      public PendingStore(@Nullable final CompoundTag data) {
+      public PendingStore(final @Nullable CompoundTag data) {
          this.data = data;
       }
 
-      @Nullable
-      private CompoundTag copyData() {
+      private @Nullable CompoundTag copyData() {
          CompoundTag data = this.data;
          return data == null ? null : data.copy();
       }
    }
 
-   private static enum Priority {
+   private enum Priority {
       FOREGROUND,
       BACKGROUND,
       SHUTDOWN;
@@ -281,7 +279,6 @@ public class IOWorker implements AutoCloseable, ChunkScanAccess {
 
    @FunctionalInterface
    private interface ThrowingSupplier<T> {
-      @Nullable
-      T get() throws Exception;
+      @Nullable T get() throws Exception;
    }
 }

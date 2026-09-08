@@ -9,7 +9,7 @@ public enum ChunkSectionLayerGroup {
    private final String label;
    private final ChunkSectionLayer[] layers;
 
-   private ChunkSectionLayerGroup(final ChunkSectionLayer... layers) {
+   ChunkSectionLayerGroup(final ChunkSectionLayer... layers) {
       this.layers = layers;
       this.label = this.toString().toLowerCase(Locale.ROOT);
    }

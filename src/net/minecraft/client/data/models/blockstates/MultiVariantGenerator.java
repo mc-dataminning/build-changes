@@ -30,7 +30,9 @@ public class MultiVariantGenerator implements BlockModelDefinitionGenerator {
       addedProperties.forEach(property -> {
          if (block.getStateDefinition().getProperty(property.getName()) != property) {
             throw new IllegalStateException("Property " + property + " is not defined for block " + block);
-         } else if (seenProperties.contains(property)) {
+         }
+
+         if (seenProperties.contains(property)) {
             throw new IllegalStateException("Values of property " + property + " already defined for block " + block);
          }
       });
@@ -92,7 +94,7 @@ public class MultiVariantGenerator implements BlockModelDefinitionGenerator {
       }
    }
 
-   private static record Entry(PropertyValueList properties, MultiVariant variant) {
+   private record Entry(PropertyValueList properties, MultiVariant variant) {
       public Stream<MultiVariantGenerator.Entry> apply(final PropertyDispatch<VariantMutator> stage) {
          return stage.getEntries().entrySet().stream().map(property -> {
             PropertyValueList newSelector = this.properties.extend(property.getKey());

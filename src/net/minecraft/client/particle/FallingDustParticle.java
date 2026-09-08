@@ -26,8 +26,8 @@ public class FallingDustParticle extends SingleQuadParticle {
       this.bCol = b;
       float scale = 0.9F;
       this.quadSize *= 0.67499995F;
-      int baseLifetime = (int)(32.0 / ((double)this.random.nextFloat() * 0.8 + 0.2));
-      this.lifetime = (int)Math.max((float)baseLifetime * 0.9F, 1.0F);
+      int baseLifetime = (int)(32.0 / (this.random.nextFloat() * 0.8 + 0.2));
+      this.lifetime = (int)Math.max(baseLifetime * 0.9F, 1.0F);
       this.setSpriteFromAge(sprites);
       this.rotSpeed = (this.random.nextFloat() - 0.5F) * 0.1F;
       this.roll = this.random.nextFloat() * (float) (Math.PI * 2);
@@ -40,7 +40,7 @@ public class FallingDustParticle extends SingleQuadParticle {
 
    @Override
    public float getQuadSize(final float a) {
-      return this.quadSize * Mth.clamp(((float)this.age + a) / (float)this.lifetime * 32.0F, 0.0F, 1.0F);
+      return this.quadSize * Mth.clamp((this.age + a) / this.lifetime * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
@@ -71,8 +71,7 @@ public class FallingDustParticle extends SingleQuadParticle {
          this.sprite = sprite;
       }
 
-      @Nullable
-      public Particle createParticle(
+      public @Nullable Particle createParticle(
          final BlockParticleOption options,
          final ClientLevel level,
          final double x,
@@ -86,25 +85,25 @@ public class FallingDustParticle extends SingleQuadParticle {
          BlockState blockState = options.getState();
          if (!blockState.isAir() && blockState.getRenderShape() == RenderShape.INVISIBLE) {
             return null;
-         } else {
-            BlockPos pos = BlockPos.containing(x, y, z);
-            int tintColor;
-            if (blockState.getBlock() instanceof FallingBlock fallingBlock) {
-               tintColor = fallingBlock.getDustColor(blockState, level, pos);
-            } else {
-               BlockTintSource tintSource = Minecraft.getInstance().getBlockColors().getTintSource(blockState, 0);
-               if (tintSource != null) {
-                  tintColor = tintSource.colorAsTerrainParticle(blockState, level, pos);
-               } else {
-                  tintColor = blockState.getMapColor(level, pos).col;
-               }
-            }
-
-            float r = (float)(tintColor >> 16 & 0xFF) / 255.0F;
-            float g = (float)(tintColor >> 8 & 0xFF) / 255.0F;
-            float b = (float)(tintColor & 0xFF) / 255.0F;
-            return new FallingDustParticle(level, x, y, z, r, g, b, this.sprite);
          }
+
+         BlockPos pos = BlockPos.containing(x, y, z);
+         int tintColor;
+         if (blockState.getBlock() instanceof FallingBlock fallingBlock) {
+            tintColor = fallingBlock.getDustColor(blockState, level, pos);
+         } else {
+            BlockTintSource tintSource = Minecraft.getInstance().getBlockColors().getTintSource(blockState, 0);
+            if (tintSource != null) {
+               tintColor = tintSource.colorAsTerrainParticle(blockState, level, pos);
+            } else {
+               tintColor = blockState.getMapColor(level, pos).col;
+            }
+         }
+
+         float r = (tintColor >> 16 & 0xFF) / 255.0F;
+         float g = (tintColor >> 8 & 0xFF) / 255.0F;
+         float b = (tintColor & 0xFF) / 255.0F;
+         return new FallingDustParticle(level, x, y, z, r, g, b, this.sprite);
       }
    }
 }

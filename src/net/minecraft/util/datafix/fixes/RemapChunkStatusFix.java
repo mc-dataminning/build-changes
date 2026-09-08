@@ -25,10 +25,10 @@ public class RemapChunkStatusFix extends DataFix {
          this.name,
          this.getInputSchema().getType(References.CHUNK),
          input -> input.update(
-               DSL.remainderFinder(),
-               data -> data.update("Status", this::fixStatus)
-                     .update("below_zero_retrogen", belowZeroRetrogen -> belowZeroRetrogen.update("target_status", this::fixStatus))
-            )
+            DSL.remainderFinder(),
+            data -> data.update("Status", this::fixStatus)
+               .update("below_zero_retrogen", belowZeroRetrogen -> belowZeroRetrogen.update("target_status", this::fixStatus))
+         )
       );
    }
 

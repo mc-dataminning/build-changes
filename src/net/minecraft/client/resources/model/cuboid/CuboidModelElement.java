@@ -71,8 +71,7 @@ public record CuboidModelElement(
          return new CuboidModelElement(from, to, faces, rotation, shadeDirectionOverride, lightEmission);
       }
 
-      @Nullable
-      private Direction getShadeDirectionOverride(final JsonObject object) {
+      private @Nullable Direction getShadeDirectionOverride(final JsonObject object) {
          if (!object.has("shade_direction_override")) {
             return null;
          } else {
@@ -86,33 +85,32 @@ public record CuboidModelElement(
          }
       }
 
-      @Nullable
-      private CuboidRotation getRotation(final JsonObject object) {
+      private @Nullable CuboidRotation getRotation(final JsonObject object) {
          if (!object.has("rotation")) {
             return null;
-         } else {
-            JsonObject rotationObject = GsonHelper.getAsJsonObject(object, "rotation");
-            Vector3f origin = getVector3f(rotationObject, "origin");
-            origin.mul(0.0625F);
-            CuboidRotation.RotationValue rotationValue;
-            if (!rotationObject.has("axis") && !rotationObject.has("angle")) {
-               if (!rotationObject.has("x") && !rotationObject.has("y") && !rotationObject.has("z")) {
-                  throw new JsonParseException("Missing rotation value, expected either 'axis' and 'angle' or 'x', 'y' and 'z'");
-               }
+         }
 
-               float x = GsonHelper.getAsFloat(rotationObject, "x", 0.0F);
-               float y = GsonHelper.getAsFloat(rotationObject, "y", 0.0F);
-               float z = GsonHelper.getAsFloat(rotationObject, "z", 0.0F);
-               rotationValue = new CuboidRotation.EulerXYZRotation(x, y, z);
-            } else {
-               Direction.Axis axis = this.getAxis(rotationObject);
-               float angle = GsonHelper.getAsFloat(rotationObject, "angle");
-               rotationValue = new CuboidRotation.SingleAxisRotation(axis, angle);
+         JsonObject rotationObject = GsonHelper.getAsJsonObject(object, "rotation");
+         Vector3f origin = getVector3f(rotationObject, "origin");
+         origin.mul(0.0625F);
+         CuboidRotation.RotationValue rotationValue;
+         if (!rotationObject.has("axis") && !rotationObject.has("angle")) {
+            if (!rotationObject.has("x") && !rotationObject.has("y") && !rotationObject.has("z")) {
+               throw new JsonParseException("Missing rotation value, expected either 'axis' and 'angle' or 'x', 'y' and 'z'");
             }
 
-            boolean rescale = GsonHelper.getAsBoolean(rotationObject, "rescale", false);
-            return new CuboidRotation(origin, rotationValue, rescale);
+            float x = GsonHelper.getAsFloat(rotationObject, "x", 0.0F);
+            float y = GsonHelper.getAsFloat(rotationObject, "y", 0.0F);
+            float z = GsonHelper.getAsFloat(rotationObject, "z", 0.0F);
+            rotationValue = new CuboidRotation.EulerXYZRotation(x, y, z);
+         } else {
+            Direction.Axis axis = this.getAxis(rotationObject);
+            float angle = GsonHelper.getAsFloat(rotationObject, "angle");
+            rotationValue = new CuboidRotation.SingleAxisRotation(axis, angle);
          }
+
+         boolean rescale = GsonHelper.getAsBoolean(rotationObject, "rescale", false);
+         return new CuboidRotation(origin, rotationValue, rescale);
       }
 
       private Direction.Axis getAxis(final JsonObject object) {
@@ -168,15 +166,15 @@ public record CuboidModelElement(
          JsonArray vecArray = GsonHelper.getAsJsonArray(object, key);
          if (vecArray.size() != 3) {
             throw new JsonParseException("Expected 3 " + key + " values, found: " + vecArray.size());
-         } else {
-            float[] elements = new float[3];
-
-            for (int i = 0; i < elements.length; i++) {
-               elements[i] = GsonHelper.convertToFloat(vecArray.get(i), key + "[" + i + "]");
-            }
-
-            return new Vector3f(elements[0], elements[1], elements[2]);
          }
+
+         float[] elements = new float[3];
+
+         for (int i = 0; i < elements.length; i++) {
+            elements[i] = GsonHelper.convertToFloat(vecArray.get(i), key + "[" + i + "]");
+         }
+
+         return new Vector3f(elements[0], elements[1], elements[2]);
       }
    }
 }

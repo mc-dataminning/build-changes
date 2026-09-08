@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
 import java.util.stream.Stream;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
@@ -59,21 +60,16 @@ public class SnbtToNbt implements DataProvider {
       List<CompletableFuture<?>> tasks = Lists.newArrayList();
 
       for (Path input : this.inputFolders) {
-         tasks.add(CompletableFuture.<CompletableFuture>supplyAsync(() -> {
-            try {
-               CompletableFuture t$;
-               try (Stream<Path> files = Files.walk(input)) {
-                  t$ = CompletableFuture.allOf(files.filter(path -> path.toString().endsWith(".snbt")).map(path -> CompletableFuture.runAsync(() -> {
-                        SnbtToNbt.TaskResult structure = this.readStructure(path, this.getName(input, path));
-                        this.storeStructureIfChanged(cache, structure, output);
-                     }, Util.backgroundExecutor().forName("SnbtToNbt"))).toArray(CompletableFuture[]::new));
-               }
-
-               return t$;
-            } catch (Exception var9) {
-               throw new RuntimeException("Failed to read structure input directory, aborting", var9);
+         tasks.add(CompletableFuture.<CompletableFuture<Void>>supplyAsync(() -> {
+            try (Stream<Path> files = Files.walk(input)) {
+               return CompletableFuture.allOf(files.filter(path -> path.toString().endsWith(".snbt")).map(path -> CompletableFuture.runAsync(() -> {
+                  SnbtToNbt.TaskResult structure = this.readStructure(path, this.getName(input, path));
+                  this.storeStructureIfChanged(cache, structure, output);
+               }, Util.backgroundExecutor().forName("SnbtToNbt"))).toArray(CompletableFuture[]::new));
+            } catch (Exception e) {
+               throw new RuntimeException("Failed to read structure input directory, aborting", e);
             }
-         }, Util.backgroundExecutor().forName("SnbtToNbt")).thenCompose(v -> v));
+         }, Util.backgroundExecutor().forName("SnbtToNbt")).thenCompose(v -> (CompletionStage<Void>)v));
       }
 
       return Util.sequenceFailFast(tasks);
@@ -90,22 +86,17 @@ public class SnbtToNbt implements DataProvider {
    }
 
    private SnbtToNbt.TaskResult readStructure(final Path path, final String name) {
-      try {
-         SnbtToNbt.TaskResult var10;
-         try (BufferedReader reader = Files.newBufferedReader(path)) {
-            String input = IOUtils.toString(reader);
-            CompoundTag updated = this.applyFilters(name, NbtUtils.snbtToStructure(input));
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            HashingOutputStream hos = new HashingOutputStream(Hashing.sha1(), bos);
-            NbtIo.writeCompressed(updated, hos);
-            byte[] bytes = bos.toByteArray();
-            HashCode hash = hos.hash();
-            var10 = new SnbtToNbt.TaskResult(name, bytes, hash);
-         }
-
-         return var10;
-      } catch (Throwable var13) {
-         throw new SnbtToNbt.StructureConversionException(path, var13);
+      try (BufferedReader reader = Files.newBufferedReader(path)) {
+         String input = IOUtils.toString(reader);
+         CompoundTag updated = this.applyFilters(name, NbtUtils.snbtToStructure(input));
+         ByteArrayOutputStream bos = new ByteArrayOutputStream();
+         HashingOutputStream hos = new HashingOutputStream(Hashing.sha1(), bos);
+         NbtIo.writeCompressed(updated, hos);
+         byte[] bytes = bos.toByteArray();
+         HashCode hash = hos.hash();
+         return new SnbtToNbt.TaskResult(name, bytes, hash);
+      } catch (Throwable t) {
+         throw new SnbtToNbt.StructureConversionException(path, t);
       }
    }
 
@@ -114,8 +105,8 @@ public class SnbtToNbt implements DataProvider {
 
       try {
          cache.writeIfNeeded(destination, task.payload, task.hash);
-      } catch (IOException var6) {
-         LOGGER.error("Couldn't write structure {} at {}", new Object[]{task.name, destination, var6});
+      } catch (IOException e) {
+         LOGGER.error("Couldn't write structure {} at {}", new Object[]{task.name, destination, e});
       }
    }
 
@@ -130,6 +121,6 @@ public class SnbtToNbt implements DataProvider {
       }
    }
 
-   private static record TaskResult(String name, byte[] payload, HashCode hash) {
+   private record TaskResult(String name, byte[] payload, HashCode hash) {
    }
 }

@@ -11,6 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
+import net.minecraft.network.protocol.game.ClientboundAddTransientBlockPacket;
 import net.minecraft.network.protocol.game.ClientboundBlockUpdatePacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -70,8 +71,7 @@ public class FallingBlockEntity extends Entity {
    private boolean hurtEntities;
    private int fallDamageMax = 40;
    private float fallDamagePerDistance = 0.0F;
-   @Nullable
-   public CompoundTag blockData;
+   public @Nullable CompoundTag blockData;
    public boolean forceTickAfterTeleportToDuplicate;
    protected static final EntityDataAccessor<BlockPos> DATA_START_POS = SynchedEntityData.defineId(FallingBlockEntity.class, EntityDataSerializers.BLOCK_POS);
 
@@ -94,10 +94,10 @@ public class FallingBlockEntity extends Entity {
    public static FallingBlockEntity fall(final Level level, final BlockPos pos, final BlockState state) {
       FallingBlockEntity entity = new FallingBlockEntity(
          level,
-         (double)pos.getX() + 0.5,
-         (double)pos.getY(),
-         (double)pos.getZ() + 0.5,
-         state.hasProperty(BlockStateProperties.WATERLOGGED) ? state.setValue(BlockStateProperties.WATERLOGGED, Boolean.valueOf(false)) : state
+         pos.getX() + 0.5,
+         pos.getY(),
+         pos.getZ() + 0.5,
+         state.hasProperty(BlockStateProperties.WATERLOGGED) ? state.setValue(BlockStateProperties.WATERLOGGED, false) : state
       );
       level.setBlockAndUpdate(pos, state.getFluidState().createLegacyBlock());
       level.addFreshEntity(entity);
@@ -191,13 +191,16 @@ public class FallingBlockEntity extends Entity {
                      boolean wouldSurvive = this.blockState.canSurvive(this.level(), pos) && !wouldContinueFalling;
                      if (mayReplace && wouldSurvive) {
                         if (this.blockState.hasProperty(BlockStateProperties.WATERLOGGED) && this.level().getFluidState(pos).is(Fluids.WATER)) {
-                           this.blockState = this.blockState.setValue(BlockStateProperties.WATERLOGGED, Boolean.valueOf(true));
+                           this.blockState = this.blockState.setValue(BlockStateProperties.WATERLOGGED, true);
                         }
 
                         if (this.level().setBlockAndUpdate(pos, this.blockState)) {
                            serverLevel.getChunkSource()
                               .chunkMap
                               .sendToTrackingPlayers(this, new ClientboundBlockUpdatePacket(pos, this.level().getBlockState(pos)));
+                           serverLevel.getChunkSource()
+                              .chunkMap
+                              .sendToTrackingPlayers(this, new ClientboundAddTransientBlockPacket(pos, this.level().getBlockState(pos)));
                            this.discard();
                            if (block instanceof Fallable fallable) {
                               fallable.onLand(this.level(), pos, this.blockState, currentState, this);
@@ -213,8 +216,8 @@ public class FallingBlockEntity extends Entity {
                                     CompoundTag merged = output.buildResult();
                                     this.blockData.forEach((name, tag) -> merged.put(name, tag.copy()));
                                     blockEntity.loadWithComponents(TagValueInput.create(reporter, registryAccess, merged));
-                                 } catch (Exception var19) {
-                                    LOGGER.error("Failed to load block entity from falling block", var19);
+                                 } catch (Exception e) {
+                                    LOGGER.error("Failed to load block entity from falling block", e);
                                  }
 
                                  blockEntity.setChanged();
@@ -240,7 +243,7 @@ public class FallingBlockEntity extends Entity {
             }
          }
 
-         this.setDeltaMovement(this.getDeltaMovement().scale((double)this.getAirDrag()));
+         this.setDeltaMovement(this.getDeltaMovement().scale(this.getAirDrag()));
          this.setRequiresPrecisePosition(this.horizontalCollision || this.verticalCollision);
       }
    }
@@ -255,30 +258,30 @@ public class FallingBlockEntity extends Entity {
    public boolean causeFallDamage(final double fallDistance, final float damageModifier, final DamageSource damageSource) {
       if (!this.hurtEntities) {
          return false;
-      } else {
-         int fallDistanceInt = Mth.ceil(fallDistance - 1.0);
-         if (fallDistanceInt < 0) {
-            return false;
-         } else {
-            Predicate<Entity> entitySelector = EntitySelector.NO_CREATIVE_OR_SPECTATOR.and(EntitySelector.LIVING_ENTITY_STILL_ALIVE);
-            DamageSource actualDamageSource = this.blockState.getBlock() instanceof Fallable fallable
-               ? fallable.getFallDamageSource(this)
-               : this.damageSources().fallingBlock(this);
-            float damage = (float)Math.min(Mth.floor((float)fallDistanceInt * this.fallDamagePerDistance), this.fallDamageMax);
-            this.level().getEntities(this, this.getBoundingBox(), entitySelector).forEach(entity -> entity.hurt(actualDamageSource, damage));
-            boolean isAnvil = this.blockState.is(BlockTags.ANVIL);
-            if (isAnvil && damage > 0.0F && this.random.nextFloat() < 0.05F + (float)fallDistanceInt * 0.05F) {
-               BlockState newBlockState = AnvilBlock.damage(this.blockState);
-               if (newBlockState == null) {
-                  this.cancelDrop = true;
-               } else {
-                  this.blockState = newBlockState;
-               }
-            }
+      }
 
-            return false;
+      int fallDistanceInt = Mth.ceil(fallDistance - 1.0);
+      if (fallDistanceInt < 0) {
+         return false;
+      }
+
+      Predicate<Entity> entitySelector = EntitySelector.NO_CREATIVE_OR_SPECTATOR.and(EntitySelector.LIVING_ENTITY_STILL_ALIVE);
+      DamageSource actualDamageSource = this.blockState.getBlock() instanceof Fallable fallable
+         ? fallable.getFallDamageSource(this)
+         : this.damageSources().fallingBlock(this);
+      float damage = Math.min(Mth.floor(fallDistanceInt * this.fallDamagePerDistance), this.fallDamageMax);
+      this.level().getEntities(this, this.getBoundingBox(), entitySelector).forEach(entity -> entity.hurt(actualDamageSource, damage));
+      boolean isAnvil = this.blockState.is(BlockTags.ANVIL);
+      if (isAnvil && damage > 0.0F && this.random.nextFloat() < 0.05F + fallDistanceInt * 0.05F) {
+         BlockState newBlockState = AnvilBlock.damage(this.blockState);
+         if (newBlockState == null) {
+            this.cancelDrop = true;
+         } else {
+            this.blockState = newBlockState;
          }
       }
+
+      return false;
    }
 
    @Override
@@ -356,9 +359,8 @@ public class FallingBlockEntity extends Entity {
       this.setStartPos(this.blockPosition());
    }
 
-   @Nullable
    @Override
-   public Entity teleport(final TeleportTransition transition) {
+   public @Nullable Entity teleport(final TeleportTransition transition) {
       ResourceKey<Level> newDimension = transition.newLevel().dimension();
       ResourceKey<Level> oldDimension = this.level().dimension();
       boolean fromOrToEnd = (oldDimension == Level.END || newDimension == Level.END) && oldDimension != newDimension;

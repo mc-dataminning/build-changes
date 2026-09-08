@@ -20,13 +20,13 @@ import net.minecraft.world.level.Level;
 public class DyeRecipe extends NormalCraftingRecipe {
    public static final MapCodec<DyeRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
-               CraftingRecipe.CraftingBookInfo.MAP_CODEC.forGetter(o -> o.bookInfo),
-               Ingredient.CODEC.fieldOf("target").forGetter(o -> o.target),
-               Ingredient.CODEC.fieldOf("dye").forGetter(o -> o.dye),
-               ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
-            )
-            .apply(i, DyeRecipe::new)
+            Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
+            CraftingRecipe.CraftingBookInfo.MAP_CODEC.forGetter(o -> o.bookInfo),
+            Ingredient.CODEC.fieldOf("target").forGetter(o -> o.target),
+            Ingredient.CODEC.fieldOf("dye").forGetter(o -> o.dye),
+            ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
+         )
+         .apply(i, DyeRecipe::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, DyeRecipe> STREAM_CODEC = StreamCodec.composite(
       Recipe.CommonInfo.STREAM_CODEC,
@@ -62,31 +62,31 @@ public class DyeRecipe extends NormalCraftingRecipe {
    public boolean matches(final CraftingInput input, final Level level) {
       if (input.ingredientCount() < 2) {
          return false;
-      } else {
-         boolean hasTarget = false;
-         boolean hasDyes = false;
+      }
 
-         for (int slot = 0; slot < input.size(); slot++) {
-            ItemStack itemStack = input.getItem(slot);
-            if (!itemStack.isEmpty()) {
-               if (this.target.test(itemStack)) {
-                  if (hasTarget) {
-                     return false;
-                  }
+      boolean hasTarget = false;
+      boolean hasDyes = false;
 
-                  hasTarget = true;
-               } else {
-                  if (!this.dye.test(itemStack) || !itemStack.has(DataComponents.DYE)) {
-                     return false;
-                  }
-
-                  hasDyes = true;
+      for (int slot = 0; slot < input.size(); slot++) {
+         ItemStack itemStack = input.getItem(slot);
+         if (!itemStack.isEmpty()) {
+            if (this.target.test(itemStack)) {
+               if (hasTarget) {
+                  return false;
                }
+
+               hasTarget = true;
+            } else {
+               if (!this.dye.test(itemStack) || !itemStack.has(DataComponents.DYE)) {
+                  return false;
+               }
+
+               hasDyes = true;
             }
          }
-
-         return hasDyes && hasTarget;
       }
+
+      return hasDyes && hasTarget;
    }
 
    public ItemStack assemble(final CraftingInput input) {

@@ -40,9 +40,9 @@ public class AddFieldFix extends DataFix {
    private Dynamic<?> addField(final Dynamic<?> dynamic, final int pathIndex) {
       if (pathIndex >= this.path.length) {
          return dynamic.set(this.fieldName, this.fieldGenerator.apply(dynamic));
-      } else {
-         Optional<? extends Dynamic<?>> field = dynamic.get(this.path[pathIndex]).result();
-         return field.isEmpty() ? dynamic : this.addField((Dynamic<?>)field.get(), pathIndex + 1);
       }
+
+      Optional<? extends Dynamic<?>> field = dynamic.get(this.path[pathIndex]).result();
+      return field.isEmpty() ? dynamic : this.addField((Dynamic<?>)field.get(), pathIndex + 1);
    }
 }

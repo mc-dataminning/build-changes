@@ -58,7 +58,7 @@ public class EquipmentLayerRenderer {
       final PoseStack poseStack,
       final SubmitNodeCollector submitNodeCollector,
       final int lightCoords,
-      @Nullable final Identifier playerTextureOverride,
+      final @Nullable Identifier playerTextureOverride,
       final int outlineColor,
       final int order
    ) {
@@ -109,10 +109,10 @@ public class EquipmentLayerRenderer {
       }
    }
 
-   private static record LayerTextureKey(EquipmentClientInfo.LayerType layerType, EquipmentClientInfo.Layer layer) {
+   private record LayerTextureKey(EquipmentClientInfo.LayerType layerType, EquipmentClientInfo.Layer layer) {
    }
 
-   private static record TrimTextureKey(ArmorTrim trim, EquipmentClientInfo.LayerType layerType, EquipmentClientInfo equipmentInfo) {
+   private record TrimTextureKey(ArmorTrim trim, EquipmentClientInfo.LayerType layerType, EquipmentClientInfo equipmentInfo) {
       private PalettedTextureManager.Handle getOrPrepareTexture(final PalettedTextureManager palettedTextures) {
          Identifier textureId = this.trim.pattern().value().assetId();
          Identifier paletteId = this.trim.material().value().paletteId();

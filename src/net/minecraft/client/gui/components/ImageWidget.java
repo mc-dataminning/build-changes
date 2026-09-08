@@ -38,9 +38,8 @@ public abstract class ImageWidget extends AbstractWidget {
 
    public abstract void updateResource(Identifier identifier);
 
-   @Nullable
    @Override
-   public ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
+   public @Nullable ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
       return null;
    }
 

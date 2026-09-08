@@ -12,15 +12,7 @@ public record RecipeHolder<T extends Recipe<?>>(ResourceKey<Recipe<?>> id, T val
 
    @Override
    public boolean equals(final Object obj) {
-      if (this == obj) {
-         return true;
-      } else {
-         if (obj instanceof RecipeHolder<?> holder && this.id == holder.id) {
-            return true;
-         }
-
-         return false;
-      }
+      return this == obj ? true : obj instanceof RecipeHolder<?> holder && this.id == holder.id;
    }
 
    @Override

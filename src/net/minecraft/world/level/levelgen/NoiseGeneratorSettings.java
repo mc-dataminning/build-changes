@@ -36,21 +36,21 @@ public record NoiseGeneratorSettings(
 ) {
    public static final Codec<NoiseGeneratorSettings> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               NoiseSettings.CODEC.fieldOf("noise").forGetter(NoiseGeneratorSettings::noiseSettings),
-               BlockState.CODEC.fieldOf("default_block").forGetter(NoiseGeneratorSettings::defaultBlock),
-               BlockState.CODEC.fieldOf("default_fluid").forGetter(NoiseGeneratorSettings::defaultFluid),
-               NoiseRouter.CODEC.fieldOf("noise_router").forGetter(NoiseGeneratorSettings::noiseRouter),
-               MaterialRule.HOLDER_CODEC.fieldOf("material_rule").forGetter(NoiseGeneratorSettings::materialRule),
-               SpawnTargetPoint.CODEC.listOf().fieldOf("spawn_target").forGetter(NoiseGeneratorSettings::spawnTarget),
-               Codec.INT.fieldOf("sea_level").forGetter(NoiseGeneratorSettings::seaLevel),
-               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(NoiseGeneratorSettings::disableMobGeneration),
-               Aquifer.Config.CODEC.optionalFieldOf("aquifers").forGetter(NoiseGeneratorSettings::aquifers),
-               Codec.BOOL.fieldOf("legacy_random_source").forGetter(NoiseGeneratorSettings::useLegacyRandomSource),
-               NoiseGeneratorSettings.DebugFunctions.CODEC
-                  .optionalFieldOf("debug_functions", NoiseGeneratorSettings.DebugFunctions.EMPTY)
-                  .forGetter(NoiseGeneratorSettings::debugFunctions)
-            )
-            .apply(i, NoiseGeneratorSettings::new)
+            NoiseSettings.CODEC.fieldOf("noise").forGetter(NoiseGeneratorSettings::noiseSettings),
+            BlockState.CODEC.fieldOf("default_block").forGetter(NoiseGeneratorSettings::defaultBlock),
+            BlockState.CODEC.fieldOf("default_fluid").forGetter(NoiseGeneratorSettings::defaultFluid),
+            NoiseRouter.CODEC.fieldOf("noise_router").forGetter(NoiseGeneratorSettings::noiseRouter),
+            MaterialRule.HOLDER_CODEC.fieldOf("material_rule").forGetter(NoiseGeneratorSettings::materialRule),
+            SpawnTargetPoint.CODEC.listOf().fieldOf("spawn_target").forGetter(NoiseGeneratorSettings::spawnTarget),
+            Codec.INT.fieldOf("sea_level").forGetter(NoiseGeneratorSettings::seaLevel),
+            Codec.BOOL.fieldOf("disable_mob_generation").forGetter(NoiseGeneratorSettings::disableMobGeneration),
+            Aquifer.Config.CODEC.optionalFieldOf("aquifers").forGetter(NoiseGeneratorSettings::aquifers),
+            Codec.BOOL.fieldOf("legacy_random_source").forGetter(NoiseGeneratorSettings::useLegacyRandomSource),
+            NoiseGeneratorSettings.DebugFunctions.CODEC
+               .optionalFieldOf("debug_functions", NoiseGeneratorSettings.DebugFunctions.EMPTY)
+               .forGetter(NoiseGeneratorSettings::debugFunctions)
+         )
+         .apply(i, NoiseGeneratorSettings::new)
    );
    public static final Codec<Holder<NoiseGeneratorSettings>> CODEC = RegistryCodecs.holder(Registries.NOISE_SETTINGS, DIRECT_CODEC);
    public static final ResourceKey<NoiseGeneratorSettings> OVERWORLD = ResourceKey.create(
@@ -203,17 +203,17 @@ public record NoiseGeneratorSettings(
       );
    }
 
-   public static record DebugFunctionEntry(String label, DensityFunction function) {
+   public record DebugFunctionEntry(String label, DensityFunction function) {
       public static final Codec<NoiseGeneratorSettings.DebugFunctionEntry> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Codec.STRING.fieldOf("label").forGetter(NoiseGeneratorSettings.DebugFunctionEntry::label),
-                  DensityFunction.CODEC.fieldOf("function").forGetter(NoiseGeneratorSettings.DebugFunctionEntry::function)
-               )
-               .apply(i, NoiseGeneratorSettings.DebugFunctionEntry::new)
+               Codec.STRING.fieldOf("label").forGetter(NoiseGeneratorSettings.DebugFunctionEntry::label),
+               DensityFunction.CODEC.fieldOf("function").forGetter(NoiseGeneratorSettings.DebugFunctionEntry::function)
+            )
+            .apply(i, NoiseGeneratorSettings.DebugFunctionEntry::new)
       );
    }
 
-   public static record DebugFunctions(List<NoiseGeneratorSettings.DebugFunctionEntry> functions) {
+   public record DebugFunctions(List<NoiseGeneratorSettings.DebugFunctionEntry> functions) {
       public static final NoiseGeneratorSettings.DebugFunctions EMPTY = new NoiseGeneratorSettings.DebugFunctions(List.of());
       public static final Codec<NoiseGeneratorSettings.DebugFunctions> CODEC = NoiseGeneratorSettings.DebugFunctionEntry.CODEC
          .listOf()

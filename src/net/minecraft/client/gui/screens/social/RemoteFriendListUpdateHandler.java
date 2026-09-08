@@ -41,8 +41,7 @@ public final class RemoteFriendListUpdateHandler {
    private volatile Set<FriendDto> knownFriends = new HashSet<>();
    private volatile Set<FriendDto> knownIncoming = new HashSet<>();
    private volatile Set<FriendDto> knownOutgoing = new HashSet<>();
-   @Nullable
-   private ScheduledFuture<?> scheduledTick;
+   private @Nullable ScheduledFuture<?> scheduledTick;
 
    public RemoteFriendListUpdateHandler(final FriendsService friendsService, final Minecraft minecraft) {
       this.friendsService = friendsService;
@@ -109,8 +108,8 @@ public final class RemoteFriendListUpdateHandler {
 
             LOGGER.warn("Friends List update failed with result code: {}", resultCode);
             shouldNotifyListeners = true;
-         } catch (Throwable var12) {
-            LOGGER.warn("Failed to update friend data", var12);
+         } catch (Throwable e) {
+            LOGGER.warn("Failed to update friend data", e);
             return;
          } finally {
             this.updateInProgress.set(false);
@@ -142,8 +141,8 @@ public final class RemoteFriendListUpdateHandler {
             for (Runnable listener : this.updateListeners) {
                try {
                   listener.run();
-               } catch (Throwable var4) {
-                  LOGGER.warn("Friends List callback failed", var4);
+               } catch (Throwable e) {
+                  LOGGER.warn("Friends List callback failed", e);
                }
             }
          });
@@ -159,39 +158,39 @@ public final class RemoteFriendListUpdateHandler {
          this.knownIncoming = currentIncoming;
          this.knownOutgoing = currentOutgoing;
          return true;
-      } else {
-         if (!this.isInGameAndToastsDisabled()) {
-            for (FriendDto friendDto : currentFriends) {
-               if (!this.knownFriends.contains(friendDto)) {
-                  if (!this.knownOutgoing.contains(friendDto) && !this.knownIncoming.contains(friendDto)) {
-                     this.emitToastWithSkin(friendDto.profileId(), friendDto.name(), FriendToast::showFriendAdded);
-                  } else {
-                     this.emitToastWithSkin(friendDto.profileId(), friendDto.name(), FriendToast::showFriendRequestAccepted);
-                  }
-               }
-            }
+      }
 
-            for (FriendDto friendDtox : currentIncoming) {
-               if (!this.knownIncoming.contains(friendDtox) && !currentFriends.contains(friendDtox)) {
-                  this.emitToastWithSkin(friendDtox.profileId(), friendDtox.name(), FriendToast::showFriendRequestReceived);
-               }
-            }
-
-            for (FriendDto friendDtoxx : currentOutgoing) {
-               if (!this.knownOutgoing.contains(friendDtoxx) && !currentFriends.contains(friendDtoxx)) {
-                  this.minecraft.execute(() -> FriendToast.showFriendRequestSent(this.minecraft, friendDto.name()));
+      if (!this.isInGameAndToastsDisabled()) {
+         for (FriendDto friendDto : currentFriends) {
+            if (!this.knownFriends.contains(friendDto)) {
+               if (!this.knownOutgoing.contains(friendDto) && !this.knownIncoming.contains(friendDto)) {
+                  this.emitToastWithSkin(friendDto.profileId(), friendDto.name(), FriendToast::showFriendAdded);
+               } else {
+                  this.emitToastWithSkin(friendDto.profileId(), friendDto.name(), FriendToast::showFriendRequestAccepted);
                }
             }
          }
 
-         boolean hasChanges = !this.knownFriends.equals(currentFriends)
-            || !this.knownIncoming.equals(currentIncoming)
-            || !this.knownOutgoing.equals(currentOutgoing);
-         this.knownFriends = currentFriends;
-         this.knownIncoming = currentIncoming;
-         this.knownOutgoing = currentOutgoing;
-         return hasChanges;
+         for (FriendDto friendDto : currentIncoming) {
+            if (!this.knownIncoming.contains(friendDto) && !currentFriends.contains(friendDto)) {
+               this.emitToastWithSkin(friendDto.profileId(), friendDto.name(), FriendToast::showFriendRequestReceived);
+            }
+         }
+
+         for (FriendDto friendDto : currentOutgoing) {
+            if (!this.knownOutgoing.contains(friendDto) && !currentFriends.contains(friendDto)) {
+               this.minecraft.execute(() -> FriendToast.showFriendRequestSent(this.minecraft, friendDto.name()));
+            }
+         }
       }
+
+      boolean hasChanges = !this.knownFriends.equals(currentFriends)
+         || !this.knownIncoming.equals(currentIncoming)
+         || !this.knownOutgoing.equals(currentOutgoing);
+      this.knownFriends = currentFriends;
+      this.knownIncoming = currentIncoming;
+      this.knownOutgoing = currentOutgoing;
+      return hasChanges;
    }
 
    private boolean isInGameAndToastsDisabled() {
@@ -214,8 +213,8 @@ public final class RemoteFriendListUpdateHandler {
                   future.complete(null);
                }
             });
-         } catch (Throwable var3) {
-            LOGGER.warn("Failed to schedule forced Friends List update", var3);
+         } catch (Throwable e) {
+            LOGGER.warn("Failed to schedule forced Friends List update", e);
             future.complete(null);
          }
 
@@ -248,7 +247,7 @@ public final class RemoteFriendListUpdateHandler {
       this.scheduler.shutdownNow();
    }
 
-   public static enum State {
+   public enum State {
       LOADING,
       UPGRADE_NEEDED,
       CONNECTION_ISSUE,

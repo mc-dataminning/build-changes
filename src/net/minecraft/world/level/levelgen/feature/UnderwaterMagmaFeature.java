@@ -24,13 +24,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public record UnderwaterMagmaFeature(int floorSearchRange, int placementRadiusAroundFloor, float placementProbabilityPerValidPosition) implements Feature {
    public static final MapCodec<UnderwaterMagmaFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter(UnderwaterMagmaFeature::floorSearchRange),
-               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter(UnderwaterMagmaFeature::placementRadiusAroundFloor),
-               Codec.floatRange(0.0F, 1.0F)
-                  .fieldOf("placement_probability_per_valid_position")
-                  .forGetter(UnderwaterMagmaFeature::placementProbabilityPerValidPosition)
-            )
-            .apply(i, UnderwaterMagmaFeature::new)
+            Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter(UnderwaterMagmaFeature::floorSearchRange),
+            Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter(UnderwaterMagmaFeature::placementRadiusAroundFloor),
+            Codec.floatRange(0.0F, 1.0F)
+               .fieldOf("placement_probability_per_valid_position")
+               .forGetter(UnderwaterMagmaFeature::placementProbabilityPerValidPosition)
+         )
+         .apply(i, UnderwaterMagmaFeature::new)
    );
 
    @Override
@@ -43,20 +43,20 @@ public record UnderwaterMagmaFeature(int floorSearchRange, int placementRadiusAr
       OptionalInt floorY = this.getFloorY(level, origin);
       if (floorY.isEmpty()) {
          return false;
-      } else {
-         BlockPos floorPos = origin.atY(floorY.getAsInt());
-         Vec3i radius = new Vec3i(this.placementRadiusAroundFloor, this.placementRadiusAroundFloor, this.placementRadiusAroundFloor);
-         BoundingBox bounds = BoundingBox.fromCorners(floorPos.subtract(radius), floorPos.offset(radius));
-         return BlockPos.betweenClosedStream(bounds)
-               .filter(pos -> random.nextFloat() < this.placementProbabilityPerValidPosition)
-               .filter(pos -> this.isValidPlacement(level, pos))
-               .mapToInt(pos -> {
-                  level.setBlock(pos, Blocks.MAGMA_BLOCK.defaultBlockState(), 2);
-                  return 1;
-               })
-               .sum()
-            > 0;
       }
+
+      BlockPos floorPos = origin.atY(floorY.getAsInt());
+      Vec3i radius = new Vec3i(this.placementRadiusAroundFloor, this.placementRadiusAroundFloor, this.placementRadiusAroundFloor);
+      BoundingBox bounds = BoundingBox.fromCorners(floorPos.subtract(radius), floorPos.offset(radius));
+      return BlockPos.betweenClosedStream(bounds)
+            .filter(pos -> random.nextFloat() < this.placementProbabilityPerValidPosition)
+            .filter(pos -> this.isValidPlacement(level, pos))
+            .mapToInt(pos -> {
+               level.setBlock(pos, Blocks.MAGMA_BLOCK.defaultBlockState(), 2);
+               return 1;
+            })
+            .sum()
+         > 0;
    }
 
    private OptionalInt getFloorY(final WorldGenLevel level, final BlockPos origin) {

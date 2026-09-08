@@ -48,7 +48,7 @@ public interface JukeboxSongs {
       context.register(
          registryKey,
          new JukeboxSong(
-            soundEvent, Component.translatable(Util.makeDescriptionId("jukebox_song", registryKey.identifier())), (float)lengthInSeconds, comparatorOutput
+            soundEvent, Component.translatable(Util.makeDescriptionId("jukebox_song", registryKey.identifier())), lengthInSeconds, comparatorOutput
          )
       );
    }

@@ -73,15 +73,15 @@ public class PlacementUtils {
 
    public static PlacementModifier countExtra(final int count, final float chance, final int extra) {
       float weight = 1.0F / chance;
-      if (Math.abs(weight - (float)((int)weight)) > 1.0E-5F) {
+      if (Math.abs(weight - (int)weight) > 1.0E-5F) {
          throw new IllegalStateException("Chance data cannot be represented as list weight");
-      } else {
-         WeightedList<IntProvider> distribution = WeightedList.<IntProvider>builder()
-            .add(ConstantInt.of(count), (int)weight - 1)
-            .add(ConstantInt.of(count + extra), 1)
-            .build();
-         return CountPlacement.of(new WeightedListInt(distribution));
       }
+
+      WeightedList<IntProvider> distribution = WeightedList.<IntProvider>builder()
+         .add(ConstantInt.of(count), (int)weight - 1)
+         .add(ConstantInt.of(count + extra), 1)
+         .build();
+      return CountPlacement.of(new WeightedListInt(distribution));
    }
 
    public static PlacementFilter isEmpty() {

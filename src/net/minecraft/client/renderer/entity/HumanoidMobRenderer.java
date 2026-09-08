@@ -65,7 +65,7 @@ public abstract class HumanoidMobRenderer<T extends Mob, S extends HumanoidRende
       if (state.isFallFlying) {
          state.speedValue = (float)entity.getDeltaMovement().lengthSqr();
          state.speedValue /= 0.2F;
-         state.speedValue = state.speedValue * state.speedValue * state.speedValue;
+         state.speedValue = state.speedValue * (state.speedValue * state.speedValue);
       }
 
       if (state.speedValue < 1.0F) {
@@ -74,7 +74,7 @@ public abstract class HumanoidMobRenderer<T extends Mob, S extends HumanoidRende
 
       state.swimAmount = entity.getSwimAmount(partialTicks);
       state.useItemHand = entity.getUsedItemHand();
-      state.maxCrossbowChargeDuration = (float)CrossbowItem.getChargeDuration(entity.getUseItem(), entity);
+      state.maxCrossbowChargeDuration = CrossbowItem.getChargeDuration(entity.getUseItem(), entity);
       state.ticksUsingItem = entity.getTicksUsingItem(partialTicks);
       state.isUsingItem = entity.isUsingItem();
       state.elytraRotX = entity.elytraAnimationState.getRotX(partialTicks);

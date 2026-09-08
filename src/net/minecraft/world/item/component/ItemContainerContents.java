@@ -38,10 +38,10 @@ public final class ItemContainerContents implements ContainerComponent<ItemConta
    private ItemContainerContents(final List<Optional<ItemStackTemplate>> items) {
       if (items.size() > 256) {
          throw new IllegalArgumentException("Got " + items.size() + " items, but maximum is 256");
-      } else {
-         this.items = items;
-         this.hashCode = items.hashCode();
       }
+
+      this.items = items;
+      this.hashCode = items.hashCode();
    }
 
    private static List<Optional<ItemStackTemplate>> emptyContents(final int size) {
@@ -52,33 +52,33 @@ public final class ItemContainerContents implements ContainerComponent<ItemConta
       OptionalInt maxSlotIndex = slots.stream().mapToInt(ItemContainerContents.Slot::index).max();
       if (maxSlotIndex.isEmpty()) {
          return EMPTY;
-      } else {
-         List<Optional<ItemStackTemplate>> items = emptyContents(maxSlotIndex.getAsInt() + 1);
-
-         for (ItemContainerContents.Slot slot : slots) {
-            items.set(slot.index(), Optional.of(slot.item()));
-         }
-
-         return new ItemContainerContents(items);
       }
+
+      List<Optional<ItemStackTemplate>> items = emptyContents(maxSlotIndex.getAsInt() + 1);
+
+      for (ItemContainerContents.Slot slot : slots) {
+         items.set(slot.index(), Optional.of(slot.item()));
+      }
+
+      return new ItemContainerContents(items);
    }
 
    public static ItemContainerContents fromItems(final List<ItemStack> itemStacks) {
       int lastNonEmptySlot = findLastNonEmptySlot(itemStacks);
       if (lastNonEmptySlot == -1) {
          return EMPTY;
-      } else {
-         List<Optional<ItemStackTemplate>> items = emptyContents(lastNonEmptySlot + 1);
-
-         for (int i = 0; i <= lastNonEmptySlot; i++) {
-            ItemStack sourceStack = itemStacks.get(i);
-            if (!sourceStack.isEmpty()) {
-               items.set(i, Optional.of(ItemStackTemplate.fromNonEmptyStack(sourceStack)));
-            }
-         }
-
-         return new ItemContainerContents(items);
       }
+
+      List<Optional<ItemStackTemplate>> items = emptyContents(lastNonEmptySlot + 1);
+
+      for (int i = 0; i <= lastNonEmptySlot; i++) {
+         ItemStack sourceStack = itemStacks.get(i);
+         if (!sourceStack.isEmpty()) {
+            items.set(i, Optional.of(ItemStackTemplate.fromNonEmptyStack(sourceStack)));
+         }
+      }
+
+      return new ItemContainerContents(items);
    }
 
    private static int findLastNonEmptySlot(final List<ItemStack> itemStacks) {
@@ -163,15 +163,7 @@ public final class ItemContainerContents implements ContainerComponent<ItemConta
 
    @Override
    public boolean equals(final Object obj) {
-      if (this == obj) {
-         return true;
-      } else {
-         if (obj instanceof ItemContainerContents contents && this.items.equals(contents.items)) {
-            return true;
-         }
-
-         return false;
-      }
+      return this == obj ? true : obj instanceof ItemContainerContents contents && this.items.equals(contents.items);
    }
 
    @Override
@@ -215,13 +207,13 @@ public final class ItemContainerContents implements ContainerComponent<ItemConta
       }
    }
 
-   private static record Slot(int index, ItemStackTemplate item) {
+   private record Slot(int index, ItemStackTemplate item) {
       public static final Codec<ItemContainerContents.Slot> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Codec.intRange(0, 255).fieldOf("slot").forGetter(ItemContainerContents.Slot::index),
-                  ItemStackTemplate.CODEC.fieldOf("item").forGetter(ItemContainerContents.Slot::item)
-               )
-               .apply(i, ItemContainerContents.Slot::new)
+               Codec.intRange(0, 255).fieldOf("slot").forGetter(ItemContainerContents.Slot::index),
+               ItemStackTemplate.CODEC.fieldOf("item").forGetter(ItemContainerContents.Slot::item)
+            )
+            .apply(i, ItemContainerContents.Slot::new)
       );
    }
 }

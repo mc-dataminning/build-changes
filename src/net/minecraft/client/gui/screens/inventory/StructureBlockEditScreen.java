@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableList;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
-import java.util.Objects;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.CycleButton;
@@ -173,10 +172,6 @@ public class StructureBlockEditScreen extends Screen {
          this.updateDirectionButtons();
       }).bounds(this.width / 2 + 1 + 40 + 1 + 20, 185, 40, 20).build());
       this.nameEdit = new EditBox(this.font, this.width / 2 - 152, 40, 300, 20, Component.translatable("structure_block.structure_name")) {
-         {
-            Objects.requireNonNull(StructureBlockEditScreen.this);
-         }
-
          @Override
          public boolean charTyped(final CharacterEvent event) {
             return !StructureBlockEditScreen.this.isValidCharacterForName(this.getValue(), event.codepoint(), this.getCursorPosition())
@@ -215,7 +210,7 @@ public class StructureBlockEditScreen extends Screen {
       this.addWidget(this.sizeZEdit);
       this.integrityEdit = new EditBox(this.font, this.width / 2 - 152, 120, 80, 20, Component.translatable("structure_block.integrity.integrity"));
       this.integrityEdit.setMaxLength(15);
-      this.integrityEdit.setValue(this.decimalFormat.format((double)this.structure.getIntegrity()));
+      this.integrityEdit.setValue(this.decimalFormat.format(this.structure.getIntegrity()));
       this.addWidget(this.integrityEdit);
       this.seedEdit = new EditBox(this.font, this.width / 2 - 72, 120, 80, 20, Component.translatable("structure_block.integrity.seed"));
       this.seedEdit.setMaxLength(31);
@@ -379,7 +374,7 @@ public class StructureBlockEditScreen extends Screen {
    private long parseSeed(final String value) {
       try {
          return Long.valueOf(value);
-      } catch (NumberFormatException var3) {
+      } catch (NumberFormatException ignored) {
          return 0L;
       }
    }
@@ -387,7 +382,7 @@ public class StructureBlockEditScreen extends Screen {
    private float parseIntegrity(final String value) {
       try {
          return Float.valueOf(value);
-      } catch (NumberFormatException var3) {
+      } catch (NumberFormatException ignored) {
          return 1.0F;
       }
    }
@@ -395,7 +390,7 @@ public class StructureBlockEditScreen extends Screen {
    private int parseCoordinate(final String value) {
       try {
          return Integer.parseInt(value);
-      } catch (NumberFormatException var3) {
+      } catch (NumberFormatException ignored) {
          return 0;
       }
    }

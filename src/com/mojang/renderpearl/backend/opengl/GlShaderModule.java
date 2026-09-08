@@ -21,11 +21,11 @@ public class GlShaderModule implements UncheckedAutoCloseable {
    public void close() {
       if (this.shaderId == -1) {
          throw new IllegalStateException("Already closed");
-      } else {
-         RenderSystem.assertOnRenderThread();
-         GlStateManager.glDeleteShader(this.shaderId);
-         this.shaderId = -1;
       }
+
+      RenderSystem.assertOnRenderThread();
+      GlStateManager.glDeleteShader(this.shaderId);
+      this.shaderId = -1;
    }
 
    public String getLabel() {

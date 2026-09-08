@@ -66,8 +66,7 @@ public class StrongholdPieces {
       }
    };
    private static List<StrongholdPieces.PieceWeight> currentPieces;
-   @Nullable
-   private static Class<? extends StrongholdPieces.StrongholdPiece> imposedPiece;
+   private static @Nullable Class<? extends StrongholdPieces.StrongholdPiece> imposedPiece;
    private static int totalWeight;
    private static final StrongholdPieces.SmoothStoneSelector SMOOTH_STONE_SELECTOR = new StrongholdPieces.SmoothStoneSelector();
 
@@ -97,8 +96,7 @@ public class StrongholdPieces {
       return hasAnyPieces;
    }
 
-   @Nullable
-   private static StrongholdPieces.StrongholdPiece findAndCreatePieceFactory(
+   private static StrongholdPieces.@Nullable StrongholdPiece findAndCreatePieceFactory(
       final Class<? extends StrongholdPieces.StrongholdPiece> pieceClass,
       final StructurePiecesBuilder builder,
       final RandomSource random,
@@ -136,8 +134,7 @@ public class StrongholdPieces {
       return strongholdPiece;
    }
 
-   @Nullable
-   private static StrongholdPieces.StrongholdPiece generatePieceFromSmallDoor(
+   private static StrongholdPieces.@Nullable StrongholdPiece generatePieceFromSmallDoor(
       final StrongholdPieces.StartPiece startPiece,
       final StructurePiecesBuilder builder,
       final RandomSource random,
@@ -149,51 +146,50 @@ public class StrongholdPieces {
    ) {
       if (!updatePieceWeight()) {
          return null;
-      } else {
-         if (imposedPiece != null) {
-            StrongholdPieces.StrongholdPiece strongholdPiece = findAndCreatePieceFactory(imposedPiece, builder, random, footX, footY, footZ, direction, depth);
-            imposedPiece = null;
-            if (strongholdPiece != null) {
-               return strongholdPiece;
-            }
+      }
+
+      if (imposedPiece != null) {
+         StrongholdPieces.StrongholdPiece strongholdPiece = findAndCreatePieceFactory(imposedPiece, builder, random, footX, footY, footZ, direction, depth);
+         imposedPiece = null;
+         if (strongholdPiece != null) {
+            return strongholdPiece;
          }
+      }
 
-         int numAttempts = 0;
+      int numAttempts = 0;
 
-         while (numAttempts < 5) {
-            numAttempts++;
-            int weightSelection = random.nextInt(totalWeight);
+      while (numAttempts < 5) {
+         numAttempts++;
+         int weightSelection = random.nextInt(totalWeight);
 
-            for (StrongholdPieces.PieceWeight piece : currentPieces) {
-               weightSelection -= piece.weight;
-               if (weightSelection < 0) {
-                  if (!piece.doPlace(depth) || piece == startPiece.previousPiece) {
-                     break;
+         for (StrongholdPieces.PieceWeight piece : currentPieces) {
+            weightSelection -= piece.weight;
+            if (weightSelection < 0) {
+               if (!piece.doPlace(depth) || piece == startPiece.previousPiece) {
+                  break;
+               }
+
+               StrongholdPieces.StrongholdPiece strongholdPiece = findAndCreatePieceFactory(
+                  piece.pieceClass, builder, random, footX, footY, footZ, direction, depth
+               );
+               if (strongholdPiece != null) {
+                  piece.placeCount++;
+                  startPiece.previousPiece = piece;
+                  if (!piece.isValid()) {
+                     currentPieces.remove(piece);
                   }
 
-                  StrongholdPieces.StrongholdPiece strongholdPiece = findAndCreatePieceFactory(
-                     piece.pieceClass, builder, random, footX, footY, footZ, direction, depth
-                  );
-                  if (strongholdPiece != null) {
-                     piece.placeCount++;
-                     startPiece.previousPiece = piece;
-                     if (!piece.isValid()) {
-                        currentPieces.remove(piece);
-                     }
-
-                     return strongholdPiece;
-                  }
+                  return strongholdPiece;
                }
             }
          }
-
-         BoundingBox box = StrongholdPieces.FillerCorridor.findPieceBox(builder, random, footX, footY, footZ, direction);
-         return box != null && box.minY() > 1 ? new StrongholdPieces.FillerCorridor(depth, box, direction) : null;
       }
+
+      BoundingBox box = StrongholdPieces.FillerCorridor.findPieceBox(builder, random, footX, footY, footZ, direction);
+      return box != null && box.minY() > 1 ? new StrongholdPieces.FillerCorridor(depth, box, direction) : null;
    }
 
-   @Nullable
-   private static StructurePiece generateAndAddPiece(
+   private static @Nullable StructurePiece generateAndAddPiece(
       final StrongholdPieces.StartPiece startPiece,
       final StructurePiecesBuilder builder,
       final RandomSource random,
@@ -205,7 +201,9 @@ public class StrongholdPieces {
    ) {
       if (depth > 50) {
          return null;
-      } else if (Math.abs(footX - startPiece.getBoundingBox().minX()) <= 112 && Math.abs(footZ - startPiece.getBoundingBox().minZ()) <= 112) {
+      }
+
+      if (Math.abs(footX - startPiece.getBoundingBox().minX()) <= 112 && Math.abs(footZ - startPiece.getBoundingBox().minZ()) <= 112) {
          StructurePiece newPiece = generatePieceFromSmallDoor(startPiece, builder, random, footX, footY, footZ, direction, depth + 1);
          if (newPiece != null) {
             builder.addPiece(newPiece);
@@ -246,8 +244,7 @@ public class StrongholdPieces {
          this.generateSmallDoorChildForward((StrongholdPieces.StartPiece)startPiece, builder, random, 1, 1);
       }
 
-      @Nullable
-      public static StrongholdPieces.ChestCorridor createPiece(
+      public static StrongholdPieces.@Nullable ChestCorridor createPiece(
          final StructurePiecesBuilder builder,
          final RandomSource random,
          final int footX,
@@ -310,8 +307,7 @@ public class StrongholdPieces {
          tag.putInt("Steps", this.steps);
       }
 
-      @Nullable
-      public static BoundingBox findPieceBox(
+      public static @Nullable BoundingBox findPieceBox(
          final StructurePiecesBuilder builder, final RandomSource random, final int footX, final int footY, final int footZ, final Direction direction
       ) {
          int maxLength = 3;
@@ -319,18 +315,18 @@ public class StrongholdPieces {
          StructurePiece collisionPiece = builder.findCollisionPiece(box);
          if (collisionPiece == null) {
             return null;
-         } else {
-            if (collisionPiece.getBoundingBox().minY() == box.minY()) {
-               for (int depth = 2; depth >= 1; depth--) {
-                  box = BoundingBox.orientBox(footX, footY, footZ, -1, -1, 0, 5, 5, depth, direction);
-                  if (!collisionPiece.getBoundingBox().intersects(box)) {
-                     return BoundingBox.orientBox(footX, footY, footZ, -1, -1, 0, 5, 5, depth + 1, direction);
-                  }
+         }
+
+         if (collisionPiece.getBoundingBox().minY() == box.minY()) {
+            for (int depth = 2; depth >= 1; depth--) {
+               box = BoundingBox.orientBox(footX, footY, footZ, -1, -1, 0, 5, 5, depth, direction);
+               if (!collisionPiece.getBoundingBox().intersects(box)) {
+                  return BoundingBox.orientBox(footX, footY, footZ, -1, -1, 0, 5, 5, depth + 1, direction);
                }
             }
-
-            return null;
          }
+
+         return null;
       }
 
       @Override
@@ -431,8 +427,7 @@ public class StrongholdPieces {
          }
       }
 
-      @Nullable
-      public static StrongholdPieces.FiveCrossing createPiece(
+      public static StrongholdPieces.@Nullable FiveCrossing createPiece(
          final StructurePiecesBuilder builder,
          final RandomSource random,
          final int footX,
@@ -524,8 +519,7 @@ public class StrongholdPieces {
          }
       }
 
-      @Nullable
-      public static StrongholdPieces.LeftTurn createPiece(
+      public static StrongholdPieces.@Nullable LeftTurn createPiece(
          final StructurePiecesBuilder builder,
          final RandomSource random,
          final int footX,
@@ -584,8 +578,7 @@ public class StrongholdPieces {
          tag.putBoolean("Tall", this.isTall);
       }
 
-      @Nullable
-      public static StrongholdPieces.Library createPiece(
+      public static StrongholdPieces.@Nullable Library createPiece(
          final StructurePiecesBuilder builder,
          final RandomSource random,
          final int footX,
@@ -648,10 +641,10 @@ public class StrongholdPieces {
             }
          }
 
-         for (int dx = 3; dx < 12; dx += 2) {
-            this.generateBox(level, chunkBB, 3, 1, dx, 4, 3, dx, Blocks.BOOKSHELF.defaultBlockState(), Blocks.BOOKSHELF.defaultBlockState(), false);
-            this.generateBox(level, chunkBB, 6, 1, dx, 7, 3, dx, Blocks.BOOKSHELF.defaultBlockState(), Blocks.BOOKSHELF.defaultBlockState(), false);
-            this.generateBox(level, chunkBB, 9, 1, dx, 10, 3, dx, Blocks.BOOKSHELF.defaultBlockState(), Blocks.BOOKSHELF.defaultBlockState(), false);
+         for (int d = 3; d < 12; d += 2) {
+            this.generateBox(level, chunkBB, 3, 1, d, 4, 3, d, Blocks.BOOKSHELF.defaultBlockState(), Blocks.BOOKSHELF.defaultBlockState(), false);
+            this.generateBox(level, chunkBB, 6, 1, d, 7, 3, d, Blocks.BOOKSHELF.defaultBlockState(), Blocks.BOOKSHELF.defaultBlockState(), false);
+            this.generateBox(level, chunkBB, 9, 1, d, 10, 3, d, Blocks.BOOKSHELF.defaultBlockState(), Blocks.BOOKSHELF.defaultBlockState(), false);
          }
 
          if (this.isTall) {
@@ -662,60 +655,23 @@ public class StrongholdPieces {
             this.placeBlock(level, Blocks.OAK_PLANKS.defaultBlockState(), 9, 5, 11, chunkBB);
             this.placeBlock(level, Blocks.OAK_PLANKS.defaultBlockState(), 8, 5, 11, chunkBB);
             this.placeBlock(level, Blocks.OAK_PLANKS.defaultBlockState(), 9, 5, 10, chunkBB);
-            BlockState weFence = Blocks.OAK_FENCE
-               .defaultBlockState()
-               .setValue(FenceBlock.WEST, Boolean.valueOf(true))
-               .setValue(FenceBlock.EAST, Boolean.valueOf(true));
-            BlockState nsFence = Blocks.OAK_FENCE
-               .defaultBlockState()
-               .setValue(FenceBlock.NORTH, Boolean.valueOf(true))
-               .setValue(FenceBlock.SOUTH, Boolean.valueOf(true));
+            BlockState weFence = Blocks.OAK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, true).setValue(FenceBlock.EAST, true);
+            BlockState nsFence = Blocks.OAK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, true).setValue(FenceBlock.SOUTH, true);
             this.generateBox(level, chunkBB, 3, 6, 3, 3, 6, 11, nsFence, nsFence, false);
             this.generateBox(level, chunkBB, 10, 6, 3, 10, 6, 9, nsFence, nsFence, false);
             this.generateBox(level, chunkBB, 4, 6, 2, 9, 6, 2, weFence, weFence, false);
             this.generateBox(level, chunkBB, 4, 6, 12, 7, 6, 12, weFence, weFence, false);
-            this.placeBlock(
-               level,
-               Blocks.OAK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, Boolean.valueOf(true)).setValue(FenceBlock.EAST, Boolean.valueOf(true)),
-               3,
-               6,
-               2,
-               chunkBB
-            );
-            this.placeBlock(
-               level,
-               Blocks.OAK_FENCE.defaultBlockState().setValue(FenceBlock.SOUTH, Boolean.valueOf(true)).setValue(FenceBlock.EAST, Boolean.valueOf(true)),
-               3,
-               6,
-               12,
-               chunkBB
-            );
-            this.placeBlock(
-               level,
-               Blocks.OAK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, Boolean.valueOf(true)).setValue(FenceBlock.WEST, Boolean.valueOf(true)),
-               10,
-               6,
-               2,
-               chunkBB
-            );
+            this.placeBlock(level, Blocks.OAK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, true).setValue(FenceBlock.EAST, true), 3, 6, 2, chunkBB);
+            this.placeBlock(level, Blocks.OAK_FENCE.defaultBlockState().setValue(FenceBlock.SOUTH, true).setValue(FenceBlock.EAST, true), 3, 6, 12, chunkBB);
+            this.placeBlock(level, Blocks.OAK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, true).setValue(FenceBlock.WEST, true), 10, 6, 2, chunkBB);
 
             for (int i = 0; i <= 2; i++) {
                this.placeBlock(
-                  level,
-                  Blocks.OAK_FENCE.defaultBlockState().setValue(FenceBlock.SOUTH, Boolean.valueOf(true)).setValue(FenceBlock.WEST, Boolean.valueOf(true)),
-                  8 + i,
-                  6,
-                  12 - i,
-                  chunkBB
+                  level, Blocks.OAK_FENCE.defaultBlockState().setValue(FenceBlock.SOUTH, true).setValue(FenceBlock.WEST, true), 8 + i, 6, 12 - i, chunkBB
                );
                if (i != 2) {
                   this.placeBlock(
-                     level,
-                     Blocks.OAK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, Boolean.valueOf(true)).setValue(FenceBlock.EAST, Boolean.valueOf(true)),
-                     8 + i,
-                     6,
-                     11 - i,
-                     chunkBB
+                     level, Blocks.OAK_FENCE.defaultBlockState().setValue(FenceBlock.NORTH, true).setValue(FenceBlock.EAST, true), 8 + i, 6, 11 - i, chunkBB
                   );
                }
             }
@@ -730,21 +686,21 @@ public class StrongholdPieces {
             this.placeBlock(level, ladder, 10, 7, 13, chunkBB);
             int x = 7;
             int z = 7;
-            BlockState eFence = Blocks.OAK_FENCE.defaultBlockState().setValue(FenceBlock.EAST, Boolean.valueOf(true));
+            BlockState eFence = Blocks.OAK_FENCE.defaultBlockState().setValue(FenceBlock.EAST, true);
             this.placeBlock(level, eFence, 6, 9, 7, chunkBB);
-            BlockState wFence = Blocks.OAK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, Boolean.valueOf(true));
+            BlockState wFence = Blocks.OAK_FENCE.defaultBlockState().setValue(FenceBlock.WEST, true);
             this.placeBlock(level, wFence, 7, 9, 7, chunkBB);
             this.placeBlock(level, eFence, 6, 8, 7, chunkBB);
             this.placeBlock(level, wFence, 7, 8, 7, chunkBB);
-            BlockState nsweFence = nsFence.setValue(FenceBlock.WEST, Boolean.valueOf(true)).setValue(FenceBlock.EAST, Boolean.valueOf(true));
+            BlockState nsweFence = nsFence.setValue(FenceBlock.WEST, true).setValue(FenceBlock.EAST, true);
             this.placeBlock(level, nsweFence, 6, 7, 7, chunkBB);
             this.placeBlock(level, nsweFence, 7, 7, 7, chunkBB);
             this.placeBlock(level, eFence, 5, 7, 7, chunkBB);
             this.placeBlock(level, wFence, 8, 7, 7, chunkBB);
-            this.placeBlock(level, eFence.setValue(FenceBlock.NORTH, Boolean.valueOf(true)), 6, 7, 6, chunkBB);
-            this.placeBlock(level, eFence.setValue(FenceBlock.SOUTH, Boolean.valueOf(true)), 6, 7, 8, chunkBB);
-            this.placeBlock(level, wFence.setValue(FenceBlock.NORTH, Boolean.valueOf(true)), 7, 7, 6, chunkBB);
-            this.placeBlock(level, wFence.setValue(FenceBlock.SOUTH, Boolean.valueOf(true)), 7, 7, 8, chunkBB);
+            this.placeBlock(level, eFence.setValue(FenceBlock.NORTH, true), 6, 7, 6, chunkBB);
+            this.placeBlock(level, eFence.setValue(FenceBlock.SOUTH, true), 6, 7, 8, chunkBB);
+            this.placeBlock(level, wFence.setValue(FenceBlock.NORTH, true), 7, 7, 6, chunkBB);
+            this.placeBlock(level, wFence.setValue(FenceBlock.SOUTH, true), 7, 7, 8, chunkBB);
             BlockState torch = Blocks.TORCH.defaultBlockState();
             this.placeBlock(level, torch, 5, 8, 7, chunkBB);
             this.placeBlock(level, torch, 8, 8, 7, chunkBB);
@@ -812,8 +768,7 @@ public class StrongholdPieces {
          }
       }
 
-      @Nullable
-      public static StrongholdPieces.PortalRoom createPiece(
+      public static StrongholdPieces.@Nullable PortalRoom createPiece(
          final StructurePiecesBuilder builder, final int footX, final int footY, final int footZ, final Direction direction, final int genDepth
       ) {
          BoundingBox box = BoundingBox.orientBox(footX, footY, footZ, -4, -1, 0, 11, 8, 16, direction);
@@ -843,14 +798,8 @@ public class StrongholdPieces {
          this.generateBox(level, chunkBB, 9, 1, 1, 9, 1, 3, Blocks.LAVA.defaultBlockState(), Blocks.LAVA.defaultBlockState(), false);
          this.generateBox(level, chunkBB, 3, 1, 8, 7, 1, 12, false, random, StrongholdPieces.SMOOTH_STONE_SELECTOR);
          this.generateBox(level, chunkBB, 4, 1, 9, 6, 1, 11, Blocks.LAVA.defaultBlockState(), Blocks.LAVA.defaultBlockState(), false);
-         BlockState nsBars = Blocks.IRON_BARS
-            .defaultBlockState()
-            .setValue(IronBarsBlock.NORTH, Boolean.valueOf(true))
-            .setValue(IronBarsBlock.SOUTH, Boolean.valueOf(true));
-         BlockState weBars = Blocks.IRON_BARS
-            .defaultBlockState()
-            .setValue(IronBarsBlock.WEST, Boolean.valueOf(true))
-            .setValue(IronBarsBlock.EAST, Boolean.valueOf(true));
+         BlockState nsBars = Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.NORTH, true).setValue(IronBarsBlock.SOUTH, true);
+         BlockState weBars = Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.WEST, true).setValue(IronBarsBlock.EAST, true);
 
          for (int z = 3; z < 14; z += 2) {
             this.generateBox(level, chunkBB, 0, 3, z, 0, 4, z, nsBars, nsBars, false);
@@ -884,18 +833,18 @@ public class StrongholdPieces {
             allEyes &= eyes[i];
          }
 
-         this.placeBlock(level, northFrame.setValue(EndPortalFrameBlock.HAS_EYE, Boolean.valueOf(eyes[0])), 4, 3, 8, chunkBB);
-         this.placeBlock(level, northFrame.setValue(EndPortalFrameBlock.HAS_EYE, Boolean.valueOf(eyes[1])), 5, 3, 8, chunkBB);
-         this.placeBlock(level, northFrame.setValue(EndPortalFrameBlock.HAS_EYE, Boolean.valueOf(eyes[2])), 6, 3, 8, chunkBB);
-         this.placeBlock(level, southFrame.setValue(EndPortalFrameBlock.HAS_EYE, Boolean.valueOf(eyes[3])), 4, 3, 12, chunkBB);
-         this.placeBlock(level, southFrame.setValue(EndPortalFrameBlock.HAS_EYE, Boolean.valueOf(eyes[4])), 5, 3, 12, chunkBB);
-         this.placeBlock(level, southFrame.setValue(EndPortalFrameBlock.HAS_EYE, Boolean.valueOf(eyes[5])), 6, 3, 12, chunkBB);
-         this.placeBlock(level, eastFrame.setValue(EndPortalFrameBlock.HAS_EYE, Boolean.valueOf(eyes[6])), 3, 3, 9, chunkBB);
-         this.placeBlock(level, eastFrame.setValue(EndPortalFrameBlock.HAS_EYE, Boolean.valueOf(eyes[7])), 3, 3, 10, chunkBB);
-         this.placeBlock(level, eastFrame.setValue(EndPortalFrameBlock.HAS_EYE, Boolean.valueOf(eyes[8])), 3, 3, 11, chunkBB);
-         this.placeBlock(level, westFrame.setValue(EndPortalFrameBlock.HAS_EYE, Boolean.valueOf(eyes[9])), 7, 3, 9, chunkBB);
-         this.placeBlock(level, westFrame.setValue(EndPortalFrameBlock.HAS_EYE, Boolean.valueOf(eyes[10])), 7, 3, 10, chunkBB);
-         this.placeBlock(level, westFrame.setValue(EndPortalFrameBlock.HAS_EYE, Boolean.valueOf(eyes[11])), 7, 3, 11, chunkBB);
+         this.placeBlock(level, northFrame.setValue(EndPortalFrameBlock.HAS_EYE, eyes[0]), 4, 3, 8, chunkBB);
+         this.placeBlock(level, northFrame.setValue(EndPortalFrameBlock.HAS_EYE, eyes[1]), 5, 3, 8, chunkBB);
+         this.placeBlock(level, northFrame.setValue(EndPortalFrameBlock.HAS_EYE, eyes[2]), 6, 3, 8, chunkBB);
+         this.placeBlock(level, southFrame.setValue(EndPortalFrameBlock.HAS_EYE, eyes[3]), 4, 3, 12, chunkBB);
+         this.placeBlock(level, southFrame.setValue(EndPortalFrameBlock.HAS_EYE, eyes[4]), 5, 3, 12, chunkBB);
+         this.placeBlock(level, southFrame.setValue(EndPortalFrameBlock.HAS_EYE, eyes[5]), 6, 3, 12, chunkBB);
+         this.placeBlock(level, eastFrame.setValue(EndPortalFrameBlock.HAS_EYE, eyes[6]), 3, 3, 9, chunkBB);
+         this.placeBlock(level, eastFrame.setValue(EndPortalFrameBlock.HAS_EYE, eyes[7]), 3, 3, 10, chunkBB);
+         this.placeBlock(level, eastFrame.setValue(EndPortalFrameBlock.HAS_EYE, eyes[8]), 3, 3, 11, chunkBB);
+         this.placeBlock(level, westFrame.setValue(EndPortalFrameBlock.HAS_EYE, eyes[9]), 7, 3, 9, chunkBB);
+         this.placeBlock(level, westFrame.setValue(EndPortalFrameBlock.HAS_EYE, eyes[10]), 7, 3, 10, chunkBB);
+         this.placeBlock(level, westFrame.setValue(EndPortalFrameBlock.HAS_EYE, eyes[11]), 7, 3, 11, chunkBB);
          if (allEyes) {
             BlockState portal = Blocks.END_PORTAL.defaultBlockState();
             this.placeBlock(level, portal, 4, 3, 9, chunkBB);
@@ -942,8 +891,7 @@ public class StrongholdPieces {
          this.generateSmallDoorChildForward((StrongholdPieces.StartPiece)startPiece, builder, random, 1, 1);
       }
 
-      @Nullable
-      public static StrongholdPieces.PrisonHall createPiece(
+      public static StrongholdPieces.@Nullable PrisonHall createPiece(
          final StructurePiecesBuilder builder,
          final RandomSource random,
          final int footX,
@@ -976,75 +924,26 @@ public class StrongholdPieces {
 
          for (int y = 1; y <= 3; y++) {
             this.placeBlock(
-               level,
-               Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.NORTH, Boolean.valueOf(true)).setValue(IronBarsBlock.SOUTH, Boolean.valueOf(true)),
-               4,
-               y,
-               4,
-               chunkBB
+               level, Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.NORTH, true).setValue(IronBarsBlock.SOUTH, true), 4, y, 4, chunkBB
             );
             this.placeBlock(
                level,
-               Blocks.IRON_BARS
-                  .defaultBlockState()
-                  .setValue(IronBarsBlock.NORTH, Boolean.valueOf(true))
-                  .setValue(IronBarsBlock.SOUTH, Boolean.valueOf(true))
-                  .setValue(IronBarsBlock.EAST, Boolean.valueOf(true)),
+               Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.NORTH, true).setValue(IronBarsBlock.SOUTH, true).setValue(IronBarsBlock.EAST, true),
                4,
                y,
                5,
                chunkBB
             );
             this.placeBlock(
-               level,
-               Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.NORTH, Boolean.valueOf(true)).setValue(IronBarsBlock.SOUTH, Boolean.valueOf(true)),
-               4,
-               y,
-               6,
-               chunkBB
+               level, Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.NORTH, true).setValue(IronBarsBlock.SOUTH, true), 4, y, 6, chunkBB
             );
-            this.placeBlock(
-               level,
-               Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.WEST, Boolean.valueOf(true)).setValue(IronBarsBlock.EAST, Boolean.valueOf(true)),
-               5,
-               y,
-               5,
-               chunkBB
-            );
-            this.placeBlock(
-               level,
-               Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.WEST, Boolean.valueOf(true)).setValue(IronBarsBlock.EAST, Boolean.valueOf(true)),
-               6,
-               y,
-               5,
-               chunkBB
-            );
-            this.placeBlock(
-               level,
-               Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.WEST, Boolean.valueOf(true)).setValue(IronBarsBlock.EAST, Boolean.valueOf(true)),
-               7,
-               y,
-               5,
-               chunkBB
-            );
+            this.placeBlock(level, Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.WEST, true).setValue(IronBarsBlock.EAST, true), 5, y, 5, chunkBB);
+            this.placeBlock(level, Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.WEST, true).setValue(IronBarsBlock.EAST, true), 6, y, 5, chunkBB);
+            this.placeBlock(level, Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.WEST, true).setValue(IronBarsBlock.EAST, true), 7, y, 5, chunkBB);
          }
 
-         this.placeBlock(
-            level,
-            Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.NORTH, Boolean.valueOf(true)).setValue(IronBarsBlock.SOUTH, Boolean.valueOf(true)),
-            4,
-            3,
-            2,
-            chunkBB
-         );
-         this.placeBlock(
-            level,
-            Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.NORTH, Boolean.valueOf(true)).setValue(IronBarsBlock.SOUTH, Boolean.valueOf(true)),
-            4,
-            3,
-            8,
-            chunkBB
-         );
+         this.placeBlock(level, Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.NORTH, true).setValue(IronBarsBlock.SOUTH, true), 4, 3, 2, chunkBB);
+         this.placeBlock(level, Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.NORTH, true).setValue(IronBarsBlock.SOUTH, true), 4, 3, 8, chunkBB);
          BlockState doorBottom = Blocks.IRON_DOOR.defaultBlockState().setValue(DoorBlock.FACING, Direction.WEST);
          BlockState doorTop = Blocks.IRON_DOOR.defaultBlockState().setValue(DoorBlock.FACING, Direction.WEST).setValue(DoorBlock.HALF, DoubleBlockHalf.UPPER);
          this.placeBlock(level, doorBottom, 4, 1, 2, chunkBB);
@@ -1075,8 +974,7 @@ public class StrongholdPieces {
          }
       }
 
-      @Nullable
-      public static StrongholdPieces.RightTurn createPiece(
+      public static StrongholdPieces.@Nullable RightTurn createPiece(
          final StructurePiecesBuilder builder,
          final RandomSource random,
          final int footX,
@@ -1141,8 +1039,7 @@ public class StrongholdPieces {
          this.generateSmallDoorChildRight((StrongholdPieces.StartPiece)startPiece, builder, random, 1, 4);
       }
 
-      @Nullable
-      public static StrongholdPieces.RoomCrossing createPiece(
+      public static StrongholdPieces.@Nullable RoomCrossing createPiece(
          final StructurePiecesBuilder builder,
          final RandomSource random,
          final int footX,
@@ -1316,8 +1213,7 @@ public class StrongholdPieces {
          this.generateSmallDoorChildForward((StrongholdPieces.StartPiece)startPiece, builder, random, 1, 1);
       }
 
-      @Nullable
-      public static StrongholdPieces.StairsDown createPiece(
+      public static StrongholdPieces.@Nullable StairsDown createPiece(
          final StructurePiecesBuilder builder,
          final RandomSource random,
          final int footX,
@@ -1364,10 +1260,8 @@ public class StrongholdPieces {
    }
 
    public static class StartPiece extends StrongholdPieces.StairsDown {
-      @Nullable
-      public StrongholdPieces.PieceWeight previousPiece;
-      @Nullable
-      public StrongholdPieces.PortalRoom portalRoomPiece;
+      public StrongholdPieces.@Nullable PieceWeight previousPiece;
+      public StrongholdPieces.@Nullable PortalRoom portalRoomPiece;
       public final List<StructurePiece> pendingChildren = Lists.newArrayList();
 
       public StartPiece(final RandomSource random, final int west, final int north) {
@@ -1424,8 +1318,7 @@ public class StrongholdPieces {
          }
       }
 
-      @Nullable
-      public static StrongholdPieces.Straight createPiece(
+      public static StrongholdPieces.@Nullable Straight createPiece(
          final StructurePiecesBuilder builder,
          final RandomSource random,
          final int footX,
@@ -1487,8 +1380,7 @@ public class StrongholdPieces {
          this.generateSmallDoorChildForward((StrongholdPieces.StartPiece)startPiece, builder, random, 1, 1);
       }
 
-      @Nullable
-      public static StrongholdPieces.StraightStairsDown createPiece(
+      public static StrongholdPieces.@Nullable StraightStairsDown createPiece(
          final StructurePiecesBuilder builder,
          final RandomSource random,
          final int footX,
@@ -1574,13 +1466,11 @@ public class StrongholdPieces {
             case GRATES:
                this.placeBlock(level, Blocks.CAVE_AIR.defaultBlockState(), footX + 1, footY, footZ, chunkBB);
                this.placeBlock(level, Blocks.CAVE_AIR.defaultBlockState(), footX + 1, footY + 1, footZ, chunkBB);
-               this.placeBlock(level, Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.WEST, Boolean.valueOf(true)), footX, footY, footZ, chunkBB);
-               this.placeBlock(
-                  level, Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.WEST, Boolean.valueOf(true)), footX, footY + 1, footZ, chunkBB
-               );
+               this.placeBlock(level, Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.WEST, true), footX, footY, footZ, chunkBB);
+               this.placeBlock(level, Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.WEST, true), footX, footY + 1, footZ, chunkBB);
                this.placeBlock(
                   level,
-                  Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.EAST, Boolean.valueOf(true)).setValue(IronBarsBlock.WEST, Boolean.valueOf(true)),
+                  Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.EAST, true).setValue(IronBarsBlock.WEST, true),
                   footX,
                   footY + 2,
                   footZ,
@@ -1588,7 +1478,7 @@ public class StrongholdPieces {
                );
                this.placeBlock(
                   level,
-                  Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.EAST, Boolean.valueOf(true)).setValue(IronBarsBlock.WEST, Boolean.valueOf(true)),
+                  Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.EAST, true).setValue(IronBarsBlock.WEST, true),
                   footX + 1,
                   footY + 2,
                   footZ,
@@ -1596,18 +1486,14 @@ public class StrongholdPieces {
                );
                this.placeBlock(
                   level,
-                  Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.EAST, Boolean.valueOf(true)).setValue(IronBarsBlock.WEST, Boolean.valueOf(true)),
+                  Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.EAST, true).setValue(IronBarsBlock.WEST, true),
                   footX + 2,
                   footY + 2,
                   footZ,
                   chunkBB
                );
-               this.placeBlock(
-                  level, Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.EAST, Boolean.valueOf(true)), footX + 2, footY + 1, footZ, chunkBB
-               );
-               this.placeBlock(
-                  level, Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.EAST, Boolean.valueOf(true)), footX + 2, footY, footZ, chunkBB
-               );
+               this.placeBlock(level, Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.EAST, true), footX + 2, footY + 1, footZ, chunkBB);
+               this.placeBlock(level, Blocks.IRON_BARS.defaultBlockState().setValue(IronBarsBlock.EAST, true), footX + 2, footY, footZ, chunkBB);
                break;
             case IRON_DOOR:
                this.placeBlock(level, Blocks.STONE_BRICKS.defaultBlockState(), footX, footY, footZ, chunkBB);
@@ -1646,8 +1532,7 @@ public class StrongholdPieces {
          }
       }
 
-      @Nullable
-      protected StructurePiece generateSmallDoorChildForward(
+      protected @Nullable StructurePiece generateSmallDoorChildForward(
          final StrongholdPieces.StartPiece startPiece, final StructurePiecesBuilder builder, final RandomSource random, final int xOff, final int yOff
       ) {
          Direction orientation = this.getOrientation();
@@ -1703,8 +1588,7 @@ public class StrongholdPieces {
          return null;
       }
 
-      @Nullable
-      protected StructurePiece generateSmallDoorChildLeft(
+      protected @Nullable StructurePiece generateSmallDoorChildLeft(
          final StrongholdPieces.StartPiece startPiece, final StructurePiecesBuilder builder, final RandomSource random, final int yOff, final int zOff
       ) {
          Direction orientation = this.getOrientation();
@@ -1760,8 +1644,7 @@ public class StrongholdPieces {
          return null;
       }
 
-      @Nullable
-      protected StructurePiece generateSmallDoorChildRight(
+      protected @Nullable StructurePiece generateSmallDoorChildRight(
          final StrongholdPieces.StartPiece startPiece, final StructurePiecesBuilder builder, final RandomSource random, final int yOff, final int zOff
       ) {
          Direction orientation = this.getOrientation();
@@ -1821,7 +1704,7 @@ public class StrongholdPieces {
          return box.minY() > 10;
       }
 
-      protected static enum SmallDoorType {
+      protected enum SmallDoorType {
          OPENING,
          WOOD_DOOR,
          GRATES,

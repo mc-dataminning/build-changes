@@ -17,12 +17,12 @@ public record HugeBrownMushroomFeature(
 ) implements AbstractHugeMushroomFeature {
    public static final MapCodec<HugeBrownMushroomFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BlockStateProvider.CODEC.fieldOf("cap_provider").forGetter(HugeBrownMushroomFeature::capProvider),
-               BlockStateProvider.CODEC.fieldOf("stem_provider").forGetter(HugeBrownMushroomFeature::stemProvider),
-               Codec.INT.optionalFieldOf("foliage_radius", 2).forGetter(HugeBrownMushroomFeature::foliageRadius),
-               BlockPredicate.CODEC.fieldOf("can_place_on").forGetter(HugeBrownMushroomFeature::canPlaceOn)
-            )
-            .apply(i, HugeBrownMushroomFeature::new)
+            BlockStateProvider.CODEC.fieldOf("cap_provider").forGetter(HugeBrownMushroomFeature::capProvider),
+            BlockStateProvider.CODEC.fieldOf("stem_provider").forGetter(HugeBrownMushroomFeature::stemProvider),
+            Codec.INT.optionalFieldOf("foliage_radius", 2).forGetter(HugeBrownMushroomFeature::foliageRadius),
+            BlockPredicate.CODEC.fieldOf("can_place_on").forGetter(HugeBrownMushroomFeature::canPlaceOn)
+         )
+         .apply(i, HugeBrownMushroomFeature::new)
    );
 
    @Override
@@ -53,10 +53,10 @@ public record HugeBrownMushroomFeature(
                   && state.hasProperty(HugeMushroomBlock.EAST)
                   && state.hasProperty(HugeMushroomBlock.NORTH)
                   && state.hasProperty(HugeMushroomBlock.SOUTH)) {
-                  state = state.setValue(HugeMushroomBlock.WEST, Boolean.valueOf(west))
-                     .setValue(HugeMushroomBlock.EAST, Boolean.valueOf(east))
-                     .setValue(HugeMushroomBlock.NORTH, Boolean.valueOf(north))
-                     .setValue(HugeMushroomBlock.SOUTH, Boolean.valueOf(south));
+                  state = state.setValue(HugeMushroomBlock.WEST, west)
+                     .setValue(HugeMushroomBlock.EAST, east)
+                     .setValue(HugeMushroomBlock.NORTH, north)
+                     .setValue(HugeMushroomBlock.SOUTH, south);
                }
 
                this.placeMushroomBlock(level, blockPos, state);

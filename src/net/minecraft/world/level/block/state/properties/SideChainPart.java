@@ -10,7 +10,7 @@ public enum SideChainPart implements StringRepresentable {
 
    private final String name;
 
-   private SideChainPart(final String name) {
+   SideChainPart(final String name) {
       this.name = name;
    }
 

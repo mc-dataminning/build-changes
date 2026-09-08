@@ -17,20 +17,14 @@ public abstract class RenderTarget {
    public int width;
    public int height;
    protected final String label;
-   @Nullable
-   protected final GpuFormat colorFormat;
-   @Nullable
-   protected final GpuFormat depthFormat;
-   @Nullable
-   protected GpuTexture colorTexture;
-   @Nullable
-   protected GpuTextureView colorTextureView;
-   @Nullable
-   protected GpuTexture depthTexture;
-   @Nullable
-   protected GpuTextureView depthTextureView;
+   protected final @Nullable GpuFormat colorFormat;
+   protected final @Nullable GpuFormat depthFormat;
+   protected @Nullable GpuTexture colorTexture;
+   protected @Nullable GpuTextureView colorTextureView;
+   protected @Nullable GpuTexture depthTexture;
+   protected @Nullable GpuTextureView depthTextureView;
 
-   public RenderTarget(@Nullable final String label, @Nullable final GpuFormat colorFormat, @Nullable final GpuFormat depthFormat) {
+   public RenderTarget(final @Nullable String label, final @Nullable GpuFormat colorFormat, final @Nullable GpuFormat depthFormat) {
       this.label = label == null ? "FBO " + UNNAMED_RENDER_TARGETS++ : label;
       this.colorFormat = colorFormat;
       this.depthFormat = depthFormat;
@@ -69,22 +63,26 @@ public abstract class RenderTarget {
       RenderSystem.assertOnRenderThread();
       if (this.depthTexture == null) {
          throw new IllegalStateException("Trying to copy depth texture to a RenderTarget without a depth texture");
-      } else if (source.depthTexture == null) {
-         throw new IllegalStateException("Trying to copy depth texture from a RenderTarget without a depth texture");
-      } else {
-         RenderSystem.getDevice().createCommandEncoder().copyTextureToTexture(source.depthTexture, this.depthTexture, 0, 0, 0, 0, 0, this.width, this.height);
       }
+
+      if (source.depthTexture == null) {
+         throw new IllegalStateException("Trying to copy depth texture from a RenderTarget without a depth texture");
+      }
+
+      RenderSystem.getDevice().createCommandEncoder().copyTextureToTexture(source.depthTexture, this.depthTexture, 0, 0, 0, 0, 0, this.width, this.height);
    }
 
    public void copyColorFrom(final RenderTarget source) {
       RenderSystem.assertOnRenderThread();
       if (this.colorTexture == null) {
          throw new IllegalStateException("Trying to copy color texture to a RenderTarget without a color texture");
-      } else if (source.colorTexture == null) {
-         throw new IllegalStateException("Trying to copy color texture from a RenderTarget without a color texture");
-      } else {
-         RenderSystem.getDevice().createCommandEncoder().copyTextureToTexture(source.colorTexture, this.colorTexture, 0, 0, 0, 0, 0, this.width, this.height);
       }
+
+      if (source.colorTexture == null) {
+         throw new IllegalStateException("Trying to copy color texture from a RenderTarget without a color texture");
+      }
+
+      RenderSystem.getDevice().createCommandEncoder().copyTextureToTexture(source.colorTexture, this.colorTexture, 0, 0, 0, 0, 0, this.width, this.height);
    }
 
    public void createBuffers(final int width, final int height) {
@@ -121,23 +119,19 @@ public abstract class RenderTarget {
       }
    }
 
-   @Nullable
-   public GpuTexture getColorTexture() {
+   public @Nullable GpuTexture getColorTexture() {
       return this.colorTexture;
    }
 
-   @Nullable
-   public GpuTextureView getColorTextureView() {
+   public @Nullable GpuTextureView getColorTextureView() {
       return this.colorTextureView;
    }
 
-   @Nullable
-   public GpuTexture getDepthTexture() {
+   public @Nullable GpuTexture getDepthTexture() {
       return this.depthTexture;
    }
 
-   @Nullable
-   public GpuTextureView getDepthTextureView() {
+   public @Nullable GpuTextureView getDepthTextureView() {
       return this.depthTextureView;
    }
 

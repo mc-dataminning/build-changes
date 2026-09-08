@@ -28,14 +28,13 @@ public class RecipeUnlockedTrigger extends SimpleCriterionTrigger<RecipeUnlocked
       return CriteriaTriggers.RECIPE_UNLOCKED.createCriterion(new RecipeUnlockedTrigger.TriggerInstance(Optional.empty(), recipe));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, HolderSet<Recipe<?>> recipes)
-      implements SimpleCriterionTrigger.SimpleInstance {
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, HolderSet<Recipe<?>> recipes) implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<RecipeUnlockedTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(RecipeUnlockedTrigger.TriggerInstance::player),
-                  Recipe.LIST_CODEC.fieldOf("recipes").forGetter(RecipeUnlockedTrigger.TriggerInstance::recipes)
-               )
-               .apply(i, RecipeUnlockedTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(RecipeUnlockedTrigger.TriggerInstance::player),
+               Recipe.LIST_CODEC.fieldOf("recipes").forGetter(RecipeUnlockedTrigger.TriggerInstance::recipes)
+            )
+            .apply(i, RecipeUnlockedTrigger.TriggerInstance::new)
       );
 
       public boolean matches(final RecipeHolder<?> recipe) {

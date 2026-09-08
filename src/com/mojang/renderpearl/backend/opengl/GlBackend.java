@@ -16,8 +16,7 @@ public class GlBackend implements GpuBackend {
    private static final int VERSION_MAJOR = 3;
    private static final int VERSION_MINOR = 3;
    private boolean libraryLoaded;
-   @Nullable
-   private BackendCreationException libraryLoadFailure;
+   private @Nullable BackendCreationException libraryLoadFailure;
 
    @Override
    public String getName() {
@@ -29,18 +28,22 @@ public class GlBackend implements GpuBackend {
       if (!this.libraryLoaded) {
          if (this.libraryLoadFailure != null) {
             throw this.libraryLoadFailure;
-         } else if (!SDLVideo.SDL_GL_LoadLibrary(((SharedLibrary)GL.getFunctionProvider()).getPath())) {
+         }
+
+         if (!SDLVideo.SDL_GL_LoadLibrary(((SharedLibrary)GL.getFunctionProvider()).getPath())) {
             this.libraryLoadFailure = new BackendCreationException(
                "OpenGL is not supported: " + Objects.requireNonNullElse(SDLError.SDL_GetError(), "<no error>"), BackendCreationException.Reason.OPENGL_MISSING
             );
             throw this.libraryLoadFailure;
-         } else if (GL.getFunctionProvider().getFunctionAddress("glGetError") != SDLVideo.SDL_GL_GetProcAddress("glGetError")) {
+         }
+
+         if (GL.getFunctionProvider().getFunctionAddress("glGetError") != SDLVideo.SDL_GL_GetProcAddress("glGetError")) {
             this.libraryLoadFailure = new BackendCreationException("glGetError mismatch", BackendCreationException.Reason.OPENGL_MISSING);
             SDLVideo.SDL_GL_UnloadLibrary();
             throw this.libraryLoadFailure;
-         } else {
-            this.libraryLoaded = true;
          }
+
+         this.libraryLoaded = true;
       }
    }
 
@@ -53,7 +56,7 @@ public class GlBackend implements GpuBackend {
    }
 
    @Override
-   public long createWindow(@Nullable final String title, final int width, final int height, final long flags) {
+   public long createWindow(final @Nullable String title, final int width, final int height, final long flags) {
       SDLVideo.SDL_GL_SetAttribute(17, 3);
       SDLVideo.SDL_GL_SetAttribute(18, 3);
       SDLVideo.SDL_GL_SetAttribute(20, 1);

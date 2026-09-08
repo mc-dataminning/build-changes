@@ -46,10 +46,10 @@ public class TropicalFishPatternLayer extends RenderLayer<TropicalFishRenderStat
    ) {
       TropicalFish.Pattern variant = state.pattern;
 
-      EntityModel<TropicalFishRenderState> model = (EntityModel<TropicalFishRenderState>)(switch (variant.base()) {
+      EntityModel<TropicalFishRenderState> model = switch (variant.base()) {
          case SMALL -> this.modelSmall;
          case LARGE -> this.modelLarge;
-      });
+      };
 
       Identifier patternTexture = switch (variant) {
          case KOB -> KOB_TEXTURE;

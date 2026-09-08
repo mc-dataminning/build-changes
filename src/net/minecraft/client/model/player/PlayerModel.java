@@ -124,7 +124,7 @@ public class PlayerModel extends HumanoidModel<AvatarRenderState> {
       this.root().translateAndRotate(poseStack);
       ModelPart part = this.getArm(arm);
       if (this.slim) {
-         float offset = 0.5F * (float)(arm == HumanoidArm.RIGHT ? 1 : -1);
+         float offset = 0.5F * (arm == HumanoidArm.RIGHT ? 1 : -1);
          part.x += offset;
          part.translateAndRotate(poseStack);
          part.x -= offset;

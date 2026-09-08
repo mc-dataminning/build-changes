@@ -31,7 +31,7 @@ public class MobBucketItem extends BucketItem {
    }
 
    @Override
-   public void checkExtraContent(@Nullable final LivingEntity user, final Level level, final ItemStack itemStack, final BlockPos pos) {
+   public void checkExtraContent(final @Nullable LivingEntity user, final Level level, final ItemStack itemStack, final BlockPos pos) {
       if (level instanceof ServerLevel serverLevel) {
          this.spawn(serverLevel, itemStack, pos);
          level.gameEvent(user, GameEvent.ENTITY_PLACE, pos);
@@ -39,7 +39,7 @@ public class MobBucketItem extends BucketItem {
    }
 
    @Override
-   protected void playEmptySound(@Nullable final LivingEntity user, final LevelAccessor level, final BlockPos pos) {
+   protected void playEmptySound(final @Nullable LivingEntity user, final LevelAccessor level, final BlockPos pos) {
       level.playSound(user, pos, this.emptySound, SoundSource.NEUTRAL, 1.0F, 1.0F);
    }
 
@@ -58,7 +58,7 @@ public class MobBucketItem extends BucketItem {
    }
 
    @Override
-   public boolean emptyContents(@Nullable final LivingEntity user, final Level level, final BlockPos pos, @Nullable final BlockHitResult hitResult) {
+   public boolean emptyContents(final @Nullable LivingEntity user, final Level level, final BlockPos pos, final @Nullable BlockHitResult hitResult) {
       if (this.content == Fluids.EMPTY) {
          this.playEmptySound(user, level, pos);
          return true;

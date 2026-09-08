@@ -4,9 +4,7 @@ import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import it.unimi.dsi.fastutil.floats.FloatList;
-import java.lang.runtime.SwitchBootstraps;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Function;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -47,33 +45,10 @@ public final class DensityFunctions {
       .dispatch(DensityFunction::codec, Function.identity());
    public static final Codec<DensityFunction> DIRECT_CODEC = Codec.either(NOISE_VALUE_CODEC, FULL_DIRECT_CODEC)
       .xmap(either -> (DensityFunction)either.map(DensityFunctions::constant, Function.identity()), function -> {
-         Objects.requireNonNull(function);
-         DensityFunction selector1$temp = function;
-         int index$2 = 0;
-
-         while (true) {
-            switch (SwitchBootstraps.typeSwitch<"typeSwitch",ConstantFunction>(selector1$temp, index$2)) {
-               case 0:
-                  ConstantFunction $b$0 = (ConstantFunction)selector1$temp;
-                  ConstantFunction var8 = $b$0;
-
-                  try {
-                     var9 = var8.value();
-                  } catch (Throwable var7) {
-                     throw new MatchException(var7.toString(), var7);
-                  }
-
-                  float patt3$temp = var9;
-                  if (true) {
-                     return Either.left(patt3$temp);
-                  }
-
-                  index$2 = 1;
-                  break;
-               default:
-                  return Either.right(function);
-            }
-         }
+         return switch (function) {
+            case ConstantFunction(float value) -> Either.left(value);
+            default -> Either.right(function);
+         };
       });
    private static final ConstantFunction ZERO = new ConstantFunction(0.0F);
 
@@ -383,7 +358,7 @@ public final class DensityFunctions {
       return remap(input.clamp(fromMin, fromMax), fromMin, fromMax, toMin, toMax);
    }
 
-   public static record HolderHolder(Holder<DensityFunction> function) implements DensityFunction {
+   public record HolderHolder(Holder<DensityFunction> function) implements DensityFunction {
       @Override
       public DensitySampler compileSampler(final DensityFunction.CompileContext context) {
          return this.function.value().compileSampler(context);
@@ -392,7 +367,7 @@ public final class DensityFunctions {
       @Override
       public DensityFunction rewriteChildren(final DfRewriteRule rule) {
          DensityFunction newFunction = rule.rewrite(this.function.value());
-         return (DensityFunction)(newFunction == this.function.value() ? this : newFunction);
+         return newFunction == this.function.value() ? this : newFunction;
       }
 
       @Override
@@ -400,9 +375,8 @@ public final class DensityFunctions {
          return this.function.value().range();
       }
 
-      @DensityFunction.Axes
       @Override
-      public int domainAxes() {
+      public @DensityFunction.Axes int domainAxes() {
          return this.function.value().domainAxes();
       }
 

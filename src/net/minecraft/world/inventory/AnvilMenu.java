@@ -29,8 +29,7 @@ public class AnvilMenu extends ItemCombinerMenu {
    private static final boolean DEBUG_COST = false;
    public static final int MAX_NAME_LENGTH = 50;
    private int repairItemCountCost;
-   @Nullable
-   private String itemName;
+   private @Nullable String itemName;
    private final DataSlot cost = DataSlot.standalone();
    private boolean onlyRenaming = false;
    private static final int COST_FAIL = 0;
@@ -127,8 +126,7 @@ public class AnvilMenu extends ItemCombinerMenu {
          ItemStack result = input.copy();
          ItemStack addition = this.inputSlots.getItem(1);
          ItemEnchantments.Mutable enchantments = new ItemEnchantments.Mutable(EnchantmentHelper.getEnchantmentsForCrafting(result));
-         tax += (long)input.getOrDefault(DataComponents.REPAIR_COST, Integer.valueOf(0)).intValue()
-            + (long)addition.getOrDefault(DataComponents.REPAIR_COST, Integer.valueOf(0)).intValue();
+         tax += (long)input.getOrDefault(DataComponents.REPAIR_COST, 0).intValue() + addition.getOrDefault(DataComponents.REPAIR_COST, 0).intValue();
          this.repairItemCountCost = 0;
          if (!addition.isEmpty()) {
             boolean usingBook = addition.has(DataComponents.STORED_ENCHANTMENTS);
@@ -235,7 +233,7 @@ public class AnvilMenu extends ItemCombinerMenu {
             result.remove(DataComponents.CUSTOM_NAME);
          }
 
-         int finalPrice = price <= 0 ? 0 : (int)Mth.clamp(tax + (long)price, 0L, 2147483647L);
+         int finalPrice = price <= 0 ? 0 : (int)Mth.clamp(tax + price, 0L, 2147483647L);
          this.cost.set(finalPrice);
          if (price <= 0) {
             result = ItemStack.EMPTY;
@@ -254,9 +252,9 @@ public class AnvilMenu extends ItemCombinerMenu {
          }
 
          if (!result.isEmpty()) {
-            int baseCost = result.getOrDefault(DataComponents.REPAIR_COST, Integer.valueOf(0));
-            if (baseCost < addition.getOrDefault(DataComponents.REPAIR_COST, Integer.valueOf(0))) {
-               baseCost = addition.getOrDefault(DataComponents.REPAIR_COST, Integer.valueOf(0));
+            int baseCost = result.getOrDefault(DataComponents.REPAIR_COST, 0);
+            if (baseCost < addition.getOrDefault(DataComponents.REPAIR_COST, 0)) {
+               baseCost = addition.getOrDefault(DataComponents.REPAIR_COST, 0);
             }
 
             if (namingCost != price || namingCost == 0) {
@@ -276,7 +274,7 @@ public class AnvilMenu extends ItemCombinerMenu {
    }
 
    public static int calculateIncreasedRepairCost(final int baseCost) {
-      return (int)Math.min((long)baseCost * 2L + 1L, 2147483647L);
+      return (int)Math.min(baseCost * 2L + 1L, 2147483647L);
    }
 
    public boolean setItemName(final String name) {
@@ -299,8 +297,7 @@ public class AnvilMenu extends ItemCombinerMenu {
       }
    }
 
-   @Nullable
-   private static String validateName(final String name) {
+   private static @Nullable String validateName(final String name) {
       String filteredName = StringUtil.filterText(name);
       return filteredName.length() <= 50 ? filteredName : null;
    }

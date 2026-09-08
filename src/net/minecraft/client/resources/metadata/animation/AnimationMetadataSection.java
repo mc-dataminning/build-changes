@@ -12,13 +12,13 @@ public record AnimationMetadataSection(
 ) {
    public static final Codec<AnimationMetadataSection> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               AnimationFrame.CODEC.listOf().optionalFieldOf("frames").forGetter(AnimationMetadataSection::frames),
-               ExtraCodecs.POSITIVE_INT.optionalFieldOf("width").forGetter(AnimationMetadataSection::frameWidth),
-               ExtraCodecs.POSITIVE_INT.optionalFieldOf("height").forGetter(AnimationMetadataSection::frameHeight),
-               ExtraCodecs.POSITIVE_INT.optionalFieldOf("frametime", 1).forGetter(AnimationMetadataSection::defaultFrameTime),
-               Codec.BOOL.optionalFieldOf("interpolate", false).forGetter(AnimationMetadataSection::interpolatedFrames)
-            )
-            .apply(i, AnimationMetadataSection::new)
+            AnimationFrame.CODEC.listOf().optionalFieldOf("frames").forGetter(AnimationMetadataSection::frames),
+            ExtraCodecs.POSITIVE_INT.optionalFieldOf("width").forGetter(AnimationMetadataSection::frameWidth),
+            ExtraCodecs.POSITIVE_INT.optionalFieldOf("height").forGetter(AnimationMetadataSection::frameHeight),
+            ExtraCodecs.POSITIVE_INT.optionalFieldOf("frametime", 1).forGetter(AnimationMetadataSection::defaultFrameTime),
+            Codec.BOOL.optionalFieldOf("interpolate", false).forGetter(AnimationMetadataSection::interpolatedFrames)
+         )
+         .apply(i, AnimationMetadataSection::new)
    );
    public static final MetadataSectionType<AnimationMetadataSection> TYPE = new MetadataSectionType<>("animation", CODEC);
 
@@ -27,11 +27,13 @@ public record AnimationMetadataSection(
          return this.frameHeight.isPresent()
             ? new FrameSize(this.frameWidth.get(), this.frameHeight.get())
             : new FrameSize(this.frameWidth.get(), spriteHeight);
-      } else if (this.frameHeight.isPresent()) {
-         return new FrameSize(spriteWidth, this.frameHeight.get());
-      } else {
-         int minDimension = Math.min(spriteWidth, spriteHeight);
-         return new FrameSize(minDimension, minDimension);
       }
+
+      if (this.frameHeight.isPresent()) {
+         return new FrameSize(spriteWidth, this.frameHeight.get());
+      }
+
+      int minDimension = Math.min(spriteWidth, spriteHeight);
+      return new FrameSize(minDimension, minDimension);
    }
 }

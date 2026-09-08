@@ -46,7 +46,7 @@ public class ClientboundAddEntityPacket implements Packet<ClientGamePacketListen
          entity.getType(),
          data,
          serverEntity.getLastSentMovement(),
-         (double)serverEntity.getLastSentYHeadRot()
+         serverEntity.getLastSentYHeadRot()
       );
    }
 
@@ -54,15 +54,15 @@ public class ClientboundAddEntityPacket implements Packet<ClientGamePacketListen
       this(
          entity.getId(),
          entity.getUUID(),
-         (double)pos.getX(),
-         (double)pos.getY(),
-         (double)pos.getZ(),
+         pos.getX(),
+         pos.getY(),
+         pos.getZ(),
          entity.getXRot(),
          entity.getYRot(),
          entity.getType(),
          data,
          entity.getDeltaMovement(),
-         (double)entity.getYHeadRot()
+         entity.getYHeadRot()
       );
    }
 

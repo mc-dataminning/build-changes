@@ -1517,8 +1517,8 @@ public class VillagerTrades {
          SHEPHERD_2_EMERALD_CARPETS,
          Items.CARPET,
          (name, carpet) -> register(
-               context, name, VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(carpet, 4), 16, 5, 0.05F).build()
-            )
+            context, name, VillagerTrade.builder(new TradeCost(Items.EMERALD, 1), new ItemStackTemplate(carpet, 4), 16, 5, 0.05F).build()
+         )
       );
    }
 

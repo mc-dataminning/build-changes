@@ -27,22 +27,22 @@ public record BlockPileFeature(Holder<BlockStateProvider> stateProvider) impleme
    public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
       if (origin.getY() < level.getMinY() + 5) {
          return false;
-      } else {
-         int xr = 2 + random.nextInt(2);
-         int zr = 2 + random.nextInt(2);
-
-         for (BlockPos blockPos : BlockPos.betweenClosed(origin.offset(-xr, 0, -zr), origin.offset(xr, 1, zr))) {
-            int xd = origin.getX() - blockPos.getX();
-            int zd = origin.getZ() - blockPos.getZ();
-            if ((float)(xd * xd + zd * zd) <= random.nextFloat() * 10.0F - random.nextFloat() * 6.0F) {
-               this.tryPlaceBlock(level, blockPos, random);
-            } else if ((double)random.nextFloat() < 0.031) {
-               this.tryPlaceBlock(level, blockPos, random);
-            }
-         }
-
-         return true;
       }
+
+      int xr = 2 + random.nextInt(2);
+      int zr = 2 + random.nextInt(2);
+
+      for (BlockPos blockPos : BlockPos.betweenClosed(origin.offset(-xr, 0, -zr), origin.offset(xr, 1, zr))) {
+         int xd = origin.getX() - blockPos.getX();
+         int zd = origin.getZ() - blockPos.getZ();
+         if (xd * xd + zd * zd <= random.nextFloat() * 10.0F - random.nextFloat() * 6.0F) {
+            this.tryPlaceBlock(level, blockPos, random);
+         } else if (random.nextFloat() < 0.031) {
+            this.tryPlaceBlock(level, blockPos, random);
+         }
+      }
+
+      return true;
    }
 
    private boolean mayPlaceOn(final LevelAccessor level, final BlockPos blockPos, final RandomSource random) {

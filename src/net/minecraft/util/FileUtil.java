@@ -50,8 +50,8 @@ public class FileUtil {
          if (count != 0) {
             String countSuffix = " (" + count + ")";
             int length = 255 - countSuffix.length();
-            if (baseName.length() > length) {
-               nameToTest = baseName.substring(0, length);
+            if (nameToTest.length() > length) {
+               nameToTest = nameToTest.substring(0, length);
             }
 
             nameToTest = nameToTest + countSuffix;
@@ -64,7 +64,7 @@ public class FileUtil {
             Path created = Files.createDirectory(fullPath);
             Files.deleteIfExists(created);
             return baseDir.relativize(created).toString();
-         } catch (FileAlreadyExistsException var8) {
+         } catch (FileAlreadyExistsException e) {
             count++;
          }
       }
@@ -161,11 +161,11 @@ public class FileUtil {
    public static void validatePath(final String... path) {
       if (path.length == 0) {
          throw new IllegalArgumentException("Path must have at least one element");
-      } else {
-         for (String segment : path) {
-            if (!isValidPathSegment(segment)) {
-               throw new IllegalArgumentException("Illegal segment " + segment + " in path " + Arrays.toString((Object[])path));
-            }
+      }
+
+      for (String segment : path) {
+         if (!isValidPathSegment(segment)) {
+            throw new IllegalArgumentException("Illegal segment " + segment + " in path " + Arrays.toString(path));
          }
       }
    }

@@ -51,9 +51,9 @@ public class UnsupportedGraphicsWarningScreen extends Screen {
       int contentWidth = buttonAdvancex * this.buttonOptions.size();
       this.messageLines = MultiLineLabel.create(this.font, contentWidth, this.message.toArray(new Component[0]));
       int messageHeight = this.messageLines.getLineCount() * 9;
-      this.contentTop = (int)((double)this.height / 2.0 - (double)messageHeight / 2.0);
+      this.contentTop = (int)(this.height / 2.0 - messageHeight / 2.0);
       int buttonTop = this.contentTop + messageHeight + 9 * 2;
-      int x = (int)((double)this.width / 2.0 - (double)contentWidth / 2.0);
+      int x = (int)(this.width / 2.0 - contentWidth / 2.0);
 
       for (UnmodifiableIterator var6 = this.buttonOptions.iterator(); var6.hasNext(); x += buttonAdvancex) {
          UnsupportedGraphicsWarningScreen.ButtonOption buttonOption = (UnsupportedGraphicsWarningScreen.ButtonOption)var6.next();

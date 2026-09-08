@@ -217,8 +217,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
    private final List<BlockEventData> blockEventsToReschedule = new ArrayList<>(64);
    private boolean handlingTick;
    private final List<CustomSpawner> customSpawners;
-   @Nullable
-   private EnderDragonFight dragonFight;
+   private @Nullable EnderDragonFight dragonFight;
    private final Int2ObjectMap<EnderDragonPart> dragonParts = new Int2ObjectOpenHashMap();
    private final BiomeResolver uncachedBiomeResolver;
    private final StructureManager structureManager;
@@ -323,7 +322,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
 
    @Deprecated
    @VisibleForTesting
-   public void setDragonFight(@Nullable final EnderDragonFight fight) {
+   public void setDragonFight(final @Nullable EnderDragonFight fight) {
       this.dragonFight = fight;
    }
 
@@ -523,7 +522,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
                int sectionY = chunk.getSectionYFromSectionIndex(sectionIndex);
                int minYInSection = SectionPos.sectionToBlockCoord(sectionY);
 
-               for (int ix = 0; ix < tickSpeed; ix++) {
+               for (int i = 0; i < tickSpeed; i++) {
                   BlockPos pos = this.getBlockRandomPos(minX, minYInSection, minZ, 15);
                   profiler.push("randomTick");
                   BlockState blockState = section.getBlockState(pos.getX() - minX, pos.getY() - minYInSection, pos.getZ() - minZ);
@@ -557,14 +556,14 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
          if (this.isRainingAt(pos)) {
             DifficultyInstance difficulty = this.getCurrentDifficultyAt(pos);
             boolean isTrap = this.getGameRules().get(GameRules.SPAWN_MOBS)
-               && this.random.nextDouble() < (double)difficulty.getEffectiveDifficulty() * 0.01
+               && this.random.nextDouble() < difficulty.getEffectiveDifficulty() * 0.01
                && !this.getBlockState(pos.below()).is(BlockTags.LIGHTNING_RODS);
             if (isTrap) {
                SkeletonHorse horse = EntityTypes.SKELETON_HORSE.create(this, EntitySpawnReason.EVENT);
                if (horse != null) {
                   horse.setTrap(true);
                   horse.setAge(0);
-                  horse.setPos((double)pos.getX(), (double)pos.getY(), (double)pos.getZ());
+                  horse.setPos(pos.getX(), pos.getY(), pos.getZ());
                   this.addFreshEntity(horse);
                }
             }
@@ -597,7 +596,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
             if (state.is(Blocks.SNOW)) {
                int currentLayers = state.getValue(SnowLayerBlock.LAYERS);
                if (currentLayers < Math.min(maxHeight, 8)) {
-                  BlockState newState = state.setValue(SnowLayerBlock.LAYERS, Integer.valueOf(currentLayers + 1));
+                  BlockState newState = state.setValue(SnowLayerBlock.LAYERS, currentLayers + 1);
                   Block.pushEntitiesUp(state, newState, this, topPos);
                   this.setBlockAndUpdate(topPos, newState);
                }
@@ -631,19 +630,19 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
       Optional<BlockPos> lightningRodTarget = this.findLightningRod(center);
       if (lightningRodTarget.isPresent()) {
          return lightningRodTarget.get();
-      } else {
-         AABB search = AABB.encapsulatingFullBlocks(center, center.atY(this.getMaxY() + 1)).inflate(3.0);
-         List<LivingEntity> entities = this.getEntitiesOfClass(LivingEntity.class, search, input -> input.isAlive() && this.canSeeSky(input.blockPosition()));
-         if (!entities.isEmpty()) {
-            return entities.get(this.random.nextInt(entities.size())).blockPosition();
-         } else {
-            if (center.getY() == this.getMinY() - 1) {
-               center = center.above(2);
-            }
-
-            return center;
-         }
       }
+
+      AABB search = AABB.encapsulatingFullBlocks(center, center.atY(this.getMaxY() + 1)).inflate(3.0);
+      List<LivingEntity> entities = this.getEntitiesOfClass(LivingEntity.class, search, input -> input.isAlive() && this.canSeeSky(input.blockPosition()));
+      if (!entities.isEmpty()) {
+         return entities.get(this.random.nextInt(entities.size())).blockPosition();
+      }
+
+      if (center.getY() == this.getMinY() - 1) {
+         center = center.above(2);
+      }
+
+      return center;
    }
 
    public boolean isHandlingTick() {
@@ -874,14 +873,10 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
 
    @Override
    public boolean mayInteract(final Entity entity, final BlockPos pos) {
-      if (entity instanceof Player player && (this.server.isUnderSpawnProtection(this, pos, player) || !this.getWorldBorder().isWithinBounds(pos))) {
-         return false;
-      }
-
-      return true;
+      return !(entity instanceof Player player && (this.server.isUnderSpawnProtection(this, pos, player) || !this.getWorldBorder().isWithinBounds(pos)));
    }
 
-   public void save(@Nullable final ProgressListener progressListener, final boolean flush, final boolean noSave) {
+   public void save(final @Nullable ProgressListener progressListener, final boolean flush, final boolean noSave) {
       ServerChunkCache chunkSource = this.getChunkSource();
       if (!noSave) {
          if (progressListener != null) {
@@ -959,8 +954,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
       return result;
    }
 
-   @Nullable
-   public ServerPlayer getRandomPlayer() {
+   public @Nullable ServerPlayer getRandomPlayer() {
       List<ServerPlayer> players = this.getPlayers(LivingEntity::isAlive);
       return players.isEmpty() ? null : players.get(this.random.nextInt(players.size()));
    }
@@ -1013,10 +1007,10 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
    public boolean tryAddFreshEntityWithPassengers(final Entity entity) {
       if (entity.getSelfAndPassengers().map(Entity::getUUID).anyMatch(this.entityManager::isLoaded)) {
          return false;
-      } else {
-         this.addFreshEntityWithPassengers(entity);
-         return true;
       }
+
+      this.addFreshEntityWithPassengers(entity);
+      return true;
    }
 
    public void unload(final LevelChunk levelChunk) {
@@ -1033,9 +1027,9 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
    public void destroyBlockProgress(final int id, final BlockPos blockPos, final int progress) {
       for (ServerPlayer player : this.server.getPlayerList().getPlayers()) {
          if (player.level() == this && player.getId() != id) {
-            double xd = (double)blockPos.getX() - player.getX();
-            double yd = (double)blockPos.getY() - player.getY();
-            double zd = (double)blockPos.getZ() - player.getZ();
+            double xd = blockPos.getX() - player.getX();
+            double yd = blockPos.getY() - player.getY();
+            double zd = blockPos.getZ() - player.getZ();
             if (xd * xd + yd * yd + zd * zd < 1024.0) {
                player.connection.send(new ClientboundBlockDestructionPacket(id, blockPos, progress));
             }
@@ -1045,7 +1039,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
 
    @Override
    public void playSeededSound(
-      @Nullable final Entity except,
+      final @Nullable Entity except,
       final double x,
       final double y,
       final double z,
@@ -1062,7 +1056,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
             x,
             y,
             z,
-            (double)sound.value().getRange(volume),
+            sound.value().getRange(volume),
             this.dimension(),
             new ClientboundSoundPacket(sound, source, x, y, z, volume, pitch, seed)
          );
@@ -1070,7 +1064,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
 
    @Override
    public void playSeededSound(
-      @Nullable final Entity except,
+      final @Nullable Entity except,
       final Entity sourceEntity,
       final Holder<SoundEvent> sound,
       final SoundSource source,
@@ -1085,20 +1079,20 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
             sourceEntity.getX(),
             sourceEntity.getY(),
             sourceEntity.getZ(),
-            (double)sound.value().getRange(volume),
+            sound.value().getRange(volume),
             this.dimension(),
             new ClientboundSoundEntityPacket(sound, source, sourceEntity, volume, pitch, seed)
          );
    }
 
    @Override
-   public void globalLevelEvent(@LevelEvent.Value final int type, final BlockPos pos, final int data) {
+   public void globalLevelEvent(final @LevelEvent.Value int type, final BlockPos pos, final int data) {
       if (this.getGameRules().get(GameRules.GLOBAL_SOUND_EVENTS)) {
          this.server.getPlayerList().getPlayers().forEach(player -> {
             Vec3 soundPos;
             if (player.level() == this) {
                Vec3 centerOfBlock = Vec3.atCenterOf(pos);
-               if (player.distanceToSqr(centerOfBlock) < (double)Mth.square(32)) {
+               if (player.distanceToSqr(centerOfBlock) < Mth.square(32)) {
                   soundPos = centerOfBlock;
                } else {
                   Vec3 directionToEvent = centerOfBlock.subtract(player.position()).normalize();
@@ -1116,14 +1110,14 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
    }
 
    @Override
-   public void levelEvent(@Nullable final Entity source, @LevelEvent.Value final int type, final BlockPos pos, final int data) {
+   public void levelEvent(final @Nullable Entity source, final @LevelEvent.Value int type, final BlockPos pos, final int data) {
       this.server
          .getPlayerList()
          .broadcast(
             source instanceof Player player ? player : null,
-            (double)pos.getX(),
-            (double)pos.getY(),
-            (double)pos.getZ(),
+            pos.getX(),
+            pos.getY(),
+            pos.getZ(),
             64.0,
             this.dimension(),
             new ClientboundLevelEventPacket(type, pos, data, false)
@@ -1140,7 +1134,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
    }
 
    @Override
-   public void sendBlockUpdated(final BlockPos pos, final BlockState old, final BlockState current, @Block.UpdateFlags final int updateFlags) {
+   public void sendBlockUpdated(final BlockPos pos, final BlockState old, final BlockState current, final @Block.UpdateFlags int updateFlags) {
       if (this.isUpdatingNavigations) {
          String message = "recursive call to sendBlockUpdated";
          Util.logAndPauseIfInIde("recursive call to sendBlockUpdated", new IllegalStateException("recursive call to sendBlockUpdated"));
@@ -1178,31 +1172,31 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
    }
 
    @Override
-   public void updateNeighborsAt(final BlockPos pos, final Block sourceBlock, @Nullable final Orientation orientation) {
+   public void updateNeighborsAt(final BlockPos pos, final Block sourceBlock, final @Nullable Orientation orientation) {
       this.neighborUpdater.updateNeighborsAtExceptFromFacing(pos, sourceBlock, null, orientation);
    }
 
    @Override
    public void updateNeighborsAtExceptFromFacing(
-      final BlockPos pos, final Block blockObject, final Direction skipDirection, @Nullable final Orientation orientation
+      final BlockPos pos, final Block blockObject, final Direction skipDirection, final @Nullable Orientation orientation
    ) {
       this.neighborUpdater.updateNeighborsAtExceptFromFacing(pos, blockObject, skipDirection, orientation);
    }
 
    @Override
-   public void neighborChanged(final BlockPos pos, final Block changedBlock, @Nullable final Orientation orientation) {
+   public void neighborChanged(final BlockPos pos, final Block changedBlock, final @Nullable Orientation orientation) {
       this.neighborUpdater.neighborChanged(pos, changedBlock, orientation);
    }
 
    @Override
    public void neighborChanged(
-      final BlockState state, final BlockPos pos, final Block changedBlock, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final BlockPos pos, final Block changedBlock, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       this.neighborUpdater.neighborChanged(state, pos, changedBlock, orientation, movedByPiston);
    }
 
    @Override
-   public void broadcastEntityEvent(final Entity entity, @EntityEvent.Value final byte event) {
+   public void broadcastEntityEvent(final Entity entity, final @EntityEvent.Value byte event) {
       this.getChunkSource().sendToTrackingPlayersAndSelf(entity, new ClientboundEntityEventPacket(entity, event));
    }
 
@@ -1217,9 +1211,9 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
 
    @Override
    public void explode(
-      @Nullable final Entity source,
-      @Nullable final DamageSource damageSource,
-      @Nullable final ExplosionDamageCalculator damageCalculator,
+      final @Nullable Entity source,
+      final @Nullable DamageSource damageSource,
+      final @Nullable ExplosionDamageCalculator damageCalculator,
       final double x,
       final double y,
       final double z,
@@ -1235,8 +1229,8 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
          case NONE -> Explosion.BlockInteraction.KEEP;
          case BLOCK -> this.getDestroyType(GameRules.BLOCK_EXPLOSION_DROP_DECAY);
          case MOB -> this.getGameRules().get(GameRules.MOB_GRIEFING)
-         ? this.getDestroyType(GameRules.MOB_EXPLOSION_DROP_DECAY)
-         : Explosion.BlockInteraction.KEEP;
+            ? this.getDestroyType(GameRules.MOB_EXPLOSION_DROP_DECAY)
+            : Explosion.BlockInteraction.KEEP;
          case TNT -> this.getDestroyType(GameRules.TNT_EXPLOSION_DROP_DECAY);
          case TRIGGER -> Explosion.BlockInteraction.TRIGGER_BLOCK;
       };
@@ -1278,9 +1272,9 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
                   .getPlayerList()
                   .broadcast(
                      null,
-                     (double)eventData.pos().getX(),
-                     (double)eventData.pos().getY(),
-                     (double)eventData.pos().getZ(),
+                     eventData.pos().getX(),
+                     eventData.pos().getY(),
+                     eventData.pos().getZ(),
                      64.0,
                      this.dimension(),
                      new ClientboundBlockEventPacket(eventData.pos(), eventData.block(), eventData.paramA(), eventData.paramB())
@@ -1512,41 +1506,37 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
       }
    }
 
-   @Nullable
    @Override
-   public Entity getEntity(final int id) {
+   public @Nullable Entity getEntity(final int id) {
       return this.getEntities().get(id);
    }
 
-   @Nullable
    @Override
-   public Entity getEntityInAnyDimension(final UUID uuid) {
+   public @Nullable Entity getEntityInAnyDimension(final UUID uuid) {
       Entity entity = this.getEntity(uuid);
       if (entity != null) {
          return entity;
-      } else {
-         for (ServerLevel otherLevel : this.getServer().getAllLevels()) {
-            if (otherLevel != this) {
-               Entity otherEntity = otherLevel.getEntity(uuid);
-               if (otherEntity != null) {
-                  return otherEntity;
-               }
+      }
+
+      for (ServerLevel otherLevel : this.getServer().getAllLevels()) {
+         if (otherLevel != this) {
+            Entity otherEntity = otherLevel.getEntity(uuid);
+            if (otherEntity != null) {
+               return otherEntity;
             }
          }
-
-         return null;
       }
+
+      return null;
    }
 
-   @Nullable
    @Override
-   public Player getPlayerInAnyDimension(final UUID uuid) {
+   public @Nullable Player getPlayerInAnyDimension(final UUID uuid) {
       return this.getServer().getPlayerList().getPlayer(uuid);
    }
 
    @Deprecated
-   @Nullable
-   public Entity getEntityOrPart(final int id) {
+   public @Nullable Entity getEntityOrPart(final int id) {
       Entity entity = this.getEntities().get(id);
       return entity != null ? entity : (Entity)this.dragonParts.get(id);
    }
@@ -1556,16 +1546,14 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
       return this.dragonParts.values();
    }
 
-   @Nullable
-   public BlockPos findNearestMapStructure(
+   public @Nullable BlockPos findNearestMapStructure(
       final TagKey<Structure> structureTag, final BlockPos origin, final int maxSearchRadius, final boolean createReference
    ) {
       Optional<HolderSet.Named<Structure>> tag = this.registryAccess().lookupOrThrow(Registries.STRUCTURE).get(structureTag);
       return tag.isEmpty() ? null : this.findNearestMapStructure(tag.get(), origin, maxSearchRadius, createReference);
    }
 
-   @Nullable
-   public BlockPos findNearestMapStructure(
+   public @Nullable BlockPos findNearestMapStructure(
       final HolderSet<Structure> structureTag, final BlockPos origin, final int maxSearchRadius, final boolean createReference
    ) {
       Pair<BlockPos, Holder<Structure>> result = this.getChunkSource()
@@ -1574,8 +1562,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
       return result != null ? (BlockPos)result.getFirst() : null;
    }
 
-   @Nullable
-   public Pair<BlockPos, Holder<Biome>> findClosestBiome3d(
+   public @Nullable Pair<BlockPos, Holder<Biome>> findClosestBiome3d(
       final Predicate<Holder<Biome>> biomeTest,
       final BlockPos origin,
       final int maxSearchRadius,
@@ -1615,9 +1602,8 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
       return this.getChunkSource().getDataStorage();
    }
 
-   @Nullable
    @Override
-   public MapItemSavedData getMapData(final MapId id) {
+   public @Nullable MapItemSavedData getMapData(final MapId id) {
       return this.getServer().getDataStorage().get(MapItemSavedData.type(id));
    }
 
@@ -1664,15 +1650,15 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
       if (!Objects.equals(oldType, newType)) {
          BlockPos immutable = pos.immutable();
          oldType.ifPresent(poiType -> this.getServer().execute(() -> {
-               this.getPoiManager().remove(immutable);
-               this.debugSynchronizers.dropPoi(immutable);
-            }));
+            this.getPoiManager().remove(immutable);
+            this.debugSynchronizers.dropPoi(immutable);
+         }));
          newType.ifPresent(poiType -> this.getServer().execute(() -> {
-               PoiRecord record = this.getPoiManager().add(immutable, (Holder<PoiType>)poiType);
-               if (record != null) {
-                  this.debugSynchronizers.registerPoi(record);
-               }
-            }));
+            PoiRecord record = this.getPoiManager().add(immutable, (Holder<PoiType>)poiType);
+            if (record != null) {
+               this.debugSynchronizers.registerPoi(record);
+            }
+         }));
       }
    }
 
@@ -1700,8 +1686,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
       return this.raids;
    }
 
-   @Nullable
-   public Raid getRaidAt(final BlockPos pos) {
+   public @Nullable Raid getRaidAt(final BlockPos pos) {
       return this.raids.getNearbyRaid(pos, 9216);
    }
 
@@ -1828,8 +1813,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
       return this.server.getWorldGenSettings().options().seed();
    }
 
-   @Nullable
-   public EnderDragonFight getDragonFight() {
+   public @Nullable EnderDragonFight getDragonFight() {
       return this.dragonFight;
    }
 
@@ -1874,7 +1858,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
             .limit(5L)
             .map(ex -> (String)ex.getKey() + ":" + ex.getIntValue())
             .collect(Collectors.joining(","));
-      } catch (Exception var6) {
+      } catch (Exception e) {
          return "";
       }
    }
@@ -1984,13 +1968,13 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
       category.setDetail(
          "Server weather",
          () -> String.format(
-               Locale.ROOT,
-               "Rain time: %d (now: %b), thunder time: %d (now: %b)",
-               weatherData.getRainTime(),
-               this.isRaining(),
-               weatherData.getThunderTime(),
-               this.isThundering()
-            )
+            Locale.ROOT,
+            "Rain time: %d (now: %b), thunder time: %d (now: %b)",
+            weatherData.getRainTime(),
+            this.isRaining(),
+            weatherData.getThunderTime(),
+            this.isThundering()
+         )
       );
       return category;
    }
@@ -2027,11 +2011,6 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
    }
 
    private final class EntityCallbacks implements LevelCallback<Entity> {
-      private EntityCallbacks() {
-         Objects.requireNonNull(ServerLevel.this);
-         super();
-      }
-
       public void onCreated(final Entity entity) {
          if (entity instanceof WaypointTransmitter waypoint && waypoint.isTransmittingWaypoint()) {
             ServerLevel.this.getWaypointManager().trackWaypoint(waypoint);

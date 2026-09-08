@@ -1,7 +1,6 @@
 package net.minecraft.world.level.storage.loot.entries;
 
 import com.mojang.serialization.MapCodec;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
 import net.minecraft.core.Holder;
@@ -12,10 +11,6 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 
 public abstract class SingleEntryContainerBase extends UniformContainerBase {
    private final LootPoolEntry entry = new UniformContainerBase.EntryBase() {
-      {
-         Objects.requireNonNull(SingleEntryContainerBase.this);
-      }
-
       @Override
       public void createItemStack(final Consumer<ItemStack> output, final LootContext context) {
          SingleEntryContainerBase.this.createItemStack(output, context);

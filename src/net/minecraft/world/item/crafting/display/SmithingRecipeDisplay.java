@@ -9,13 +9,13 @@ public record SmithingRecipeDisplay(SlotDisplay template, SlotDisplay base, Slot
    implements RecipeDisplay {
    public static final MapCodec<SmithingRecipeDisplay> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               SlotDisplay.CODEC.fieldOf("template").forGetter(SmithingRecipeDisplay::template),
-               SlotDisplay.CODEC.fieldOf("base").forGetter(SmithingRecipeDisplay::base),
-               SlotDisplay.CODEC.fieldOf("addition").forGetter(SmithingRecipeDisplay::addition),
-               SlotDisplay.CODEC.fieldOf("result").forGetter(SmithingRecipeDisplay::result),
-               SlotDisplay.CODEC.fieldOf("crafting_station").forGetter(SmithingRecipeDisplay::craftingStation)
-            )
-            .apply(i, SmithingRecipeDisplay::new)
+            SlotDisplay.CODEC.fieldOf("template").forGetter(SmithingRecipeDisplay::template),
+            SlotDisplay.CODEC.fieldOf("base").forGetter(SmithingRecipeDisplay::base),
+            SlotDisplay.CODEC.fieldOf("addition").forGetter(SmithingRecipeDisplay::addition),
+            SlotDisplay.CODEC.fieldOf("result").forGetter(SmithingRecipeDisplay::result),
+            SlotDisplay.CODEC.fieldOf("crafting_station").forGetter(SmithingRecipeDisplay::craftingStation)
+         )
+         .apply(i, SmithingRecipeDisplay::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, SmithingRecipeDisplay> STREAM_CODEC = StreamCodec.composite(
       SlotDisplay.STREAM_CODEC,

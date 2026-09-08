@@ -13,8 +13,7 @@ import org.slf4j.Logger;
 
 public class ResourceLoadStateTracker {
    private static final Logger LOGGER = LogUtils.getLogger();
-   @Nullable
-   private ResourceLoadStateTracker.ReloadState reloadState;
+   private ResourceLoadStateTracker.@Nullable ReloadState reloadState;
    private int reloadCount;
 
    public void startReload(final ResourceLoadStateTracker.ReloadReason reloadReason, final List<PackResources> packs) {
@@ -70,14 +69,14 @@ public class ResourceLoadStateTracker {
       }
    }
 
-   public static enum ReloadReason {
+   public enum ReloadReason {
       INITIAL("initial"),
       MANUAL("manual"),
       UNKNOWN("unknown");
 
       private final String name;
 
-      private ReloadReason(final String name) {
+      ReloadReason(final String name) {
          this.name = name;
       }
    }
@@ -85,8 +84,7 @@ public class ResourceLoadStateTracker {
    private static class ReloadState {
       private final ResourceLoadStateTracker.ReloadReason reloadReason;
       private final List<String> packs;
-      @Nullable
-      private ResourceLoadStateTracker.RecoveryInfo recoveryReloadInfo;
+      private ResourceLoadStateTracker.@Nullable RecoveryInfo recoveryReloadInfo;
       private boolean finished;
 
       private ReloadState(final ResourceLoadStateTracker.ReloadReason reloadReason, final List<String> packs) {

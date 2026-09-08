@@ -21,8 +21,7 @@ public class HurtByTargetGoal extends TargetGoal {
    private boolean alertSameType;
    private int timestamp;
    private final Class<?>[] toIgnoreDamage;
-   @Nullable
-   private Class<?>[] toIgnoreAlert;
+   private Class<?> @Nullable [] toIgnoreAlert;
 
    public HurtByTargetGoal(final PathfinderMob mob, final Class<?>... ignoreDamageFromTheseTypes) {
       super(mob, true);
@@ -37,15 +36,15 @@ public class HurtByTargetGoal extends TargetGoal {
       if (timestamp != this.timestamp && lastHurtByMob != null) {
          if (lastHurtByMob.is(EntityTypes.PLAYER) && getServerLevel(this.mob).getGameRules().get(GameRules.UNIVERSAL_ANGER)) {
             return false;
-         } else {
-            for (Class<?> ignoreClass : this.toIgnoreDamage) {
-               if (ignoreClass.isAssignableFrom(lastHurtByMob.getClass())) {
-                  return false;
-               }
-            }
-
-            return this.canAttack(lastHurtByMob, HURT_BY_TARGETING);
          }
+
+         for (Class<?> ignoreClass : this.toIgnoreDamage) {
+            if (ignoreClass.isAssignableFrom(lastHurtByMob.getClass())) {
+               return false;
+            }
+         }
+
+         return this.canAttack(lastHurtByMob, HURT_BY_TARGETING);
       } else {
          return false;
       }

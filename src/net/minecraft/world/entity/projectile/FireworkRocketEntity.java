@@ -48,8 +48,7 @@ public class FireworkRocketEntity extends Projectile implements ItemSupplier {
    private static final boolean DEFAULT_SHOT_AT_ANGLE = false;
    private int life = 0;
    private int lifetime = 0;
-   @Nullable
-   private LivingEntity attachedToEntity;
+   private @Nullable LivingEntity attachedToEntity;
 
    public FireworkRocketEntity(final EntityType<? extends FireworkRocketEntity> type, final Level level) {
       super(type, level);
@@ -70,7 +69,7 @@ public class FireworkRocketEntity extends Projectile implements ItemSupplier {
       this.lifetime = 10 * flightCount + this.random.nextInt(6) + this.random.nextInt(7);
    }
 
-   public FireworkRocketEntity(final Level level, @Nullable final Entity owner, final double x, final double y, final double z, final ItemStack sourceItemStack) {
+   public FireworkRocketEntity(final Level level, final @Nullable Entity owner, final double x, final double y, final double z, final ItemStack sourceItemStack) {
       this(level, x, y, z, sourceItemStack);
       this.setOwner(owner);
    }
@@ -224,12 +223,12 @@ public class FireworkRocketEntity extends Projectile implements ItemSupplier {
       float damageAmount = 0.0F;
       List<FireworkExplosion> explosions = this.getExplosions();
       if (!explosions.isEmpty()) {
-         damageAmount = 5.0F + (float)(explosions.size() * 2);
+         damageAmount = 5.0F + explosions.size() * 2;
       }
 
       if (damageAmount > 0.0F) {
          if (this.attachedToEntity != null) {
-            this.attachedToEntity.hurtServer(level, this.damageSources().fireworks(this, this.getOwner()), 5.0F + (float)(explosions.size() * 2));
+            this.attachedToEntity.hurtServer(level, this.damageSources().fireworks(this, this.getOwner()), 5.0F + explosions.size() * 2);
          }
 
          double radius = 5.0;
@@ -240,7 +239,7 @@ public class FireworkRocketEntity extends Projectile implements ItemSupplier {
                boolean canSee = false;
 
                for (int testStep = 0; testStep < 2; testStep++) {
-                  Vec3 to = new Vec3(target.getX(), target.getY(0.5 * (double)testStep), target.getZ());
+                  Vec3 to = new Vec3(target.getX(), target.getY(0.5 * testStep), target.getZ());
                   HitResult clip = this.level().clip(new ClipContext(rocketPos, to, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
                   if (clip.getType() == HitResult.Type.MISS) {
                      canSee = true;
@@ -249,7 +248,7 @@ public class FireworkRocketEntity extends Projectile implements ItemSupplier {
                }
 
                if (canSee) {
-                  float damage = damageAmount * (float)Math.sqrt((5.0 - (double)this.distanceTo(target)) / 5.0);
+                  float damage = damageAmount * (float)Math.sqrt((5.0 - this.distanceTo(target)) / 5.0);
                   target.hurtServer(level, this.damageSources().fireworks(this, this.getOwner()), damage);
                }
             }
@@ -266,7 +265,7 @@ public class FireworkRocketEntity extends Projectile implements ItemSupplier {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 17 && this.level().isClientSide()) {
          Vec3 movement = this.getDeltaMovement();
          this.level().createFireworks(this.getX(), this.getY(), this.getZ(), movement.x, movement.y, movement.z, this.getExplosions(), !this.isSilent());

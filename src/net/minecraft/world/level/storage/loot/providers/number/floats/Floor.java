@@ -15,6 +15,6 @@ public record Floor(Holder<ContextFloatProvider> input) implements ContextFloatP
 
    @Override
    public float getFloatUnsafe(final LootContext context) {
-      return (float)Math.floor((double)this.input().value().getFloatUnsafe(context));
+      return (float)Math.floor(this.input().value().getFloatUnsafe(context));
    }
 }

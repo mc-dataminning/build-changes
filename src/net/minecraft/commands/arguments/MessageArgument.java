@@ -79,7 +79,7 @@ public class MessageArgument implements SignedArgument<MessageArgument.Message> 
       return MessageArgument.Message.parseText(reader, true);
    }
 
-   public <S> MessageArgument.Message parse(final StringReader reader, @Nullable final S source) throws CommandSyntaxException {
+   public <S> MessageArgument.Message parse(final StringReader reader, final @Nullable S source) throws CommandSyntaxException {
       return MessageArgument.Message.parseText(reader, EntitySelectorParser.allowSelectors(source));
    }
 
@@ -87,7 +87,7 @@ public class MessageArgument implements SignedArgument<MessageArgument.Message> 
       return EXAMPLES;
    }
 
-   public static record Message(String text, MessageArgument.Part[] parts) {
+   public record Message(String text, MessageArgument.Part[] parts) {
       private Component resolveComponent(final CommandSourceStack sender) throws CommandSyntaxException {
          return this.toComponent(sender, sender.permissions().hasPermission(Permissions.COMMANDS_ENTITY_SELECTORS));
       }
@@ -120,51 +120,50 @@ public class MessageArgument implements SignedArgument<MessageArgument.Message> 
       public static MessageArgument.Message parseText(final StringReader reader, final boolean allowSelectors) throws CommandSyntaxException {
          if (reader.getRemainingLength() > 256) {
             throw MessageArgument.TOO_LONG.create(reader.getRemainingLength(), 256);
-         } else {
-            String text = reader.getRemaining();
-            if (!allowSelectors) {
-               reader.setCursor(reader.getTotalLength());
-               return new MessageArgument.Message(text, new MessageArgument.Part[0]);
-            } else {
-               List<MessageArgument.Part> result = Lists.newArrayList();
-               int offset = reader.getCursor();
+         }
 
-               while (true) {
-                  int start;
-                  EntitySelector parse;
-                  while (true) {
-                     if (!reader.canRead()) {
-                        return new MessageArgument.Message(text, result.toArray(new MessageArgument.Part[0]));
+         String text = reader.getRemaining();
+         if (!allowSelectors) {
+            reader.setCursor(reader.getTotalLength());
+            return new MessageArgument.Message(text, new MessageArgument.Part[0]);
+         }
+
+         List<MessageArgument.Part> result = Lists.newArrayList();
+         int offset = reader.getCursor();
+
+         while (true) {
+            int start;
+            EntitySelector parse;
+            while (true) {
+               if (!reader.canRead()) {
+                  return new MessageArgument.Message(text, result.toArray(new MessageArgument.Part[0]));
+               }
+
+               if (reader.peek() == '@') {
+                  start = reader.getCursor();
+
+                  try {
+                     EntitySelectorParser parser = new EntitySelectorParser(reader, true);
+                     parse = parser.parse();
+                     break;
+                  } catch (CommandSyntaxException ex) {
+                     if (ex.getType() != EntitySelectorParser.ERROR_MISSING_SELECTOR_TYPE && ex.getType() != EntitySelectorParser.ERROR_UNKNOWN_SELECTOR_TYPE) {
+                        throw ex;
                      }
 
-                     if (reader.peek() == '@') {
-                        start = reader.getCursor();
-
-                        try {
-                           EntitySelectorParser parser = new EntitySelectorParser(reader, true);
-                           parse = parser.parse();
-                           break;
-                        } catch (CommandSyntaxException var8) {
-                           if (var8.getType() != EntitySelectorParser.ERROR_MISSING_SELECTOR_TYPE
-                              && var8.getType() != EntitySelectorParser.ERROR_UNKNOWN_SELECTOR_TYPE) {
-                              throw var8;
-                           }
-
-                           reader.setCursor(start + 1);
-                        }
-                     } else {
-                        reader.skip();
-                     }
+                     reader.setCursor(start + 1);
                   }
-
-                  result.add(new MessageArgument.Part(start - offset, reader.getCursor() - offset, parse));
+               } else {
+                  reader.skip();
                }
             }
+
+            result.add(new MessageArgument.Part(start - offset, reader.getCursor() - offset, parse));
          }
       }
    }
 
-   public static record Part(int start, int end, EntitySelector selector) {
+   public record Part(int start, int end, EntitySelector selector) {
       public Component toComponent(final CommandSourceStack sender) throws CommandSyntaxException {
          return EntitySelector.joinNames(this.selector.findEntities(sender));
       }

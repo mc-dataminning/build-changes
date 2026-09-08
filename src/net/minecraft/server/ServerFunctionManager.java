@@ -68,8 +68,8 @@ public class ServerFunctionManager {
          InstantiatedFunction<CommandSourceStack> function = functionIn.instantiate(null, this.getDispatcher());
          Commands.executeCommandInContext(sender, context -> ExecutionContext.queueInitialFunctionCall(context, function, sender, CommandResultCallback.EMPTY));
       } catch (FunctionInstantiationException var9) {
-      } catch (Exception var10) {
-         LOGGER.warn("Failed to execute function {}", functionIn.id(), var10);
+      } catch (Exception e) {
+         LOGGER.warn("Failed to execute function {}", functionIn.id(), e);
       } finally {
          profiler.pop();
       }

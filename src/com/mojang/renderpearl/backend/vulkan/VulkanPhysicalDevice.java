@@ -37,12 +37,9 @@ public class VulkanPhysicalDevice implements UncheckedAutoCloseable {
    private final VkPhysicalDeviceDriverProperties vkPhysicalDeviceDriverProperties;
    private final VkPhysicalDeviceMultiDrawPropertiesEXT vkPhysicalDeviceMultiDrawPropertiesEXT;
    private final Int2IntMap queueFamilyCreateInfoMap;
-   @Nullable
-   private final IntIntPair graphicsQueueFamilyAndIndex;
-   @Nullable
-   private final IntIntPair computeQueueFamilyAndIndex;
-   @Nullable
-   private final IntIntPair transferQueueFamilyAndIndex;
+   private final @Nullable IntIntPair graphicsQueueFamilyAndIndex;
+   private final @Nullable IntIntPair computeQueueFamilyAndIndex;
+   private final @Nullable IntIntPair transferQueueFamilyAndIndex;
 
    public VulkanPhysicalDevice(final VkPhysicalDevice vkPhysicalDevice) throws BackendCreationException {
       MemoryStack stack = MemoryStack.stackPush();
@@ -207,18 +204,15 @@ public class VulkanPhysicalDevice implements UncheckedAutoCloseable {
       return this.queueFamilyCreateInfoMap;
    }
 
-   @Nullable
-   public IntIntPair graphicsQueueFamilyAndIndex() {
+   public @Nullable IntIntPair graphicsQueueFamilyAndIndex() {
       return this.graphicsQueueFamilyAndIndex;
    }
 
-   @Nullable
-   public IntIntPair computeQueueFamilyAndIndex() {
+   public @Nullable IntIntPair computeQueueFamilyAndIndex() {
       return this.computeQueueFamilyAndIndex;
    }
 
-   @Nullable
-   public IntIntPair transferQueueFamilyAndIndex() {
+   public @Nullable IntIntPair transferQueueFamilyAndIndex() {
       return this.transferQueueFamilyAndIndex;
    }
 

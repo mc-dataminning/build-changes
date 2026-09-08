@@ -56,9 +56,9 @@ public class LeashFeatureRenderer extends RenderTypeFeatureRenderer<LeashFeature
       final boolean backwards,
       final EntityRenderState.LeashState state
    ) {
-      float progress = (float)k / 24.0F;
-      int block = (int)Mth.lerp(progress, (float)state.startBlockLight, (float)state.endBlockLight);
-      int sky = (int)Mth.lerp(progress, (float)state.startSkyLight, (float)state.endSkyLight);
+      float progress = k / 24.0F;
+      int block = (int)Mth.lerp(progress, state.startBlockLight, state.endBlockLight);
+      int sky = (int)Mth.lerp(progress, state.startSkyLight, state.endSkyLight);
       int lightCoords = LightCoordsUtil.pack(block, sky);
       float colorModifier = k % 2 == (backwards ? 1 : 0) ? 0.7F : 1.0F;
       float r = 0.5F * colorModifier;
@@ -77,7 +77,7 @@ public class LeashFeatureRenderer extends RenderTypeFeatureRenderer<LeashFeature
       builder.addVertex(pose, x + dxOff, y + 0.05F - fudge, z - dzOff).setColor(r, g, b, 1.0F).setLight(lightCoords);
    }
 
-   public static record Submit(Matrix4f pose, EntityRenderState.LeashState leashState) implements SubmitNode {
+   public record Submit(Matrix4f pose, EntityRenderState.LeashState leashState) implements SubmitNode {
       @Override
       public FeatureRendererType<LeashFeatureRenderer.Submit> featureType() {
          return LeashFeatureRenderer.TYPE;

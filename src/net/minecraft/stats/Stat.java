@@ -28,7 +28,7 @@ public class Stat<T> extends ObjectiveCriteria {
       return locationToKey(BuiltInRegistries.STAT_TYPE.getKey(type)) + ":" + locationToKey(type.getRegistry().getKey(value));
    }
 
-   private static String locationToKey(@Nullable final Identifier location) {
+   private static String locationToKey(final @Nullable Identifier location) {
       return location.toString().replace(':', '.');
    }
 

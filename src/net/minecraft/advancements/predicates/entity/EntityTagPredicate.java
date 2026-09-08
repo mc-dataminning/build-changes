@@ -13,11 +13,11 @@ import org.jspecify.annotations.Nullable;
 public record EntityTagPredicate(Optional<List<String>> anyOf, Optional<List<String>> allOf, Optional<List<String>> noneOf) implements EntitySubPredicate {
    public static final Codec<EntityTagPredicate> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.STRING.listOf().optionalFieldOf("any_of").forGetter(EntityTagPredicate::anyOf),
-               Codec.STRING.listOf().optionalFieldOf("all_of").forGetter(EntityTagPredicate::allOf),
-               Codec.STRING.listOf().optionalFieldOf("none_of").forGetter(EntityTagPredicate::noneOf)
-            )
-            .apply(i, EntityTagPredicate::new)
+            Codec.STRING.listOf().optionalFieldOf("any_of").forGetter(EntityTagPredicate::anyOf),
+            Codec.STRING.listOf().optionalFieldOf("all_of").forGetter(EntityTagPredicate::allOf),
+            Codec.STRING.listOf().optionalFieldOf("none_of").forGetter(EntityTagPredicate::noneOf)
+         )
+         .apply(i, EntityTagPredicate::new)
    );
 
    public boolean matches(final Set<String> tags) {
@@ -31,7 +31,7 @@ public record EntityTagPredicate(Optional<List<String>> anyOf, Optional<List<Str
    }
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
       return this.matches(entity.entityTags());
    }
 

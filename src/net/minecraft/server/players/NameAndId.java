@@ -11,7 +11,7 @@ import org.jspecify.annotations.Nullable;
 public record NameAndId(UUID id, String name) {
    public static final Codec<NameAndId> CODEC = RecordCodecBuilder.create(
       i -> i.group(UUIDUtil.STRING_CODEC.fieldOf("id").forGetter(NameAndId::id), Codec.STRING.fieldOf("name").forGetter(NameAndId::name))
-            .apply(i, NameAndId::new)
+         .apply(i, NameAndId::new)
    );
 
    public NameAndId(final GameProfile profile) {
@@ -22,15 +22,14 @@ public record NameAndId(UUID id, String name) {
       this(profile.id(), profile.name());
    }
 
-   @Nullable
-   public static NameAndId fromJson(final JsonObject object) {
+   public static @Nullable NameAndId fromJson(final JsonObject object) {
       if (object.has("uuid") && object.has("name")) {
          String uuidString = object.get("uuid").getAsString();
 
          UUID uuid;
          try {
             uuid = UUID.fromString(uuidString);
-         } catch (Throwable var4) {
+         } catch (Throwable ignored) {
             return null;
          }
 

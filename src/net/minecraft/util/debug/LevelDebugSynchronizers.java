@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -84,10 +83,6 @@ public class LevelDebugSynchronizers {
    public void registerChunk(final LevelChunk chunk) {
       if (!this.sleeping) {
          chunk.registerDebugValues(this.level, new DebugValueSource.Registration() {
-            {
-               Objects.requireNonNull(LevelDebugSynchronizers.this);
-            }
-
             @Override
             public <T> void register(final DebugSubscription<T> subscription, final DebugValueSource.ValueGetter<T> getter) {
                LevelDebugSynchronizers.this.getSourceSynchronizer(subscription).registerChunk(chunk.getPos(), getter);
@@ -108,10 +103,6 @@ public class LevelDebugSynchronizers {
    public void registerBlockEntity(final BlockEntity blockEntity) {
       if (!this.sleeping) {
          blockEntity.registerDebugValues(this.level, new DebugValueSource.Registration() {
-            {
-               Objects.requireNonNull(LevelDebugSynchronizers.this);
-            }
-
             @Override
             public <T> void register(final DebugSubscription<T> subscription, final DebugValueSource.ValueGetter<T> getter) {
                LevelDebugSynchronizers.this.getSourceSynchronizer(subscription).registerBlockEntity(blockEntity.getBlockPos(), getter);
@@ -131,10 +122,6 @@ public class LevelDebugSynchronizers {
    public void registerEntity(final Entity entity) {
       if (!this.sleeping) {
          entity.registerDebugValues(this.level, new DebugValueSource.Registration() {
-            {
-               Objects.requireNonNull(LevelDebugSynchronizers.this);
-            }
-
             @Override
             public <T> void register(final DebugSubscription<T> subscription, final DebugValueSource.ValueGetter<T> getter) {
                LevelDebugSynchronizers.this.getSourceSynchronizer(subscription).registerEntity(entity.getUUID(), getter);

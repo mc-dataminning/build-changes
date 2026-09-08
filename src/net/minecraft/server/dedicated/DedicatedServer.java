@@ -20,7 +20,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.BooleanSupplier;
 import java.util.stream.Stream;
@@ -78,23 +77,17 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface 
    private static final int CONVERSION_RETRY_DELAY_MS = 5000;
    private static final int CONVERSION_RETRIES = 2;
    private final List<ConsoleInput> consoleInput = Collections.synchronizedList(Lists.newArrayList());
-   @Nullable
-   private QueryThreadGs4 queryThreadGs4;
+   private @Nullable QueryThreadGs4 queryThreadGs4;
    private final RconConsoleSource rconConsoleSource;
-   @Nullable
-   private RconThread rconThread;
+   private @Nullable RconThread rconThread;
    private final DedicatedServerSettings settings;
-   @Nullable
-   private MinecraftServerGui gui;
-   @Nullable
-   private final ServerTextFilter serverTextFilter;
-   @Nullable
-   private RemoteSampleLogger tickTimeLogger;
+   private @Nullable MinecraftServerGui gui;
+   private final @Nullable ServerTextFilter serverTextFilter;
+   private @Nullable RemoteSampleLogger tickTimeLogger;
    private boolean isTickTimeLoggingEnabled;
    private final ServerLinks serverLinks;
    private final Map<String, String> codeOfConductTexts;
-   @Nullable
-   private final ManagementServer jsonRpcServer;
+   private final @Nullable ManagementServer jsonRpcServer;
 
    public DedicatedServer(
       final Thread serverThread,
@@ -105,7 +98,7 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface 
       final DedicatedServerSettings settings,
       final DataFixer fixerUpper,
       final Services services,
-      @Nullable final ManagementServer jsonRpcServer,
+      final @Nullable ManagementServer jsonRpcServer,
       final NotificationManager notificationManager
    ) {
       super(
@@ -137,45 +130,41 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface 
       Path path = Path.of("codeofconduct");
       if (!Files.isDirectory(path, LinkOption.NOFOLLOW_LINKS)) {
          throw new IllegalArgumentException("Code of Conduct folder does not exist: " + path);
-      } else {
-         try {
-            Builder<String, String> builder = ImmutableMap.builder();
+      }
 
-            try (Stream<Path> files = Files.list(path)) {
-               for (Path file : files.toList()) {
-                  String filename = file.getFileName().toString();
-                  if (filename.endsWith(".txt")) {
-                     String language = filename.substring(0, filename.length() - 4).toLowerCase(Locale.ROOT);
-                     if (!file.toRealPath().getParent().equals(path.toAbsolutePath())) {
-                        throw new IllegalArgumentException(
-                           "Failed to read Code of Conduct file \"" + filename + "\" because it links to a file outside the allowed directory"
-                        );
-                     }
+      try {
+         Builder<String, String> builder = ImmutableMap.builder();
 
-                     try {
-                        String codeOfConduct = String.join("\n", Files.readAllLines(file, StandardCharsets.UTF_8));
-                        builder.put(language, StringUtil.stripColor(codeOfConduct));
-                     } catch (IOException var9) {
-                        throw new IllegalArgumentException("Failed to read Code of Conduct file " + filename, var9);
-                     }
+         try (Stream<Path> files = Files.list(path)) {
+            for (Path file : files.toList()) {
+               String filename = file.getFileName().toString();
+               if (filename.endsWith(".txt")) {
+                  String language = filename.substring(0, filename.length() - 4).toLowerCase(Locale.ROOT);
+                  if (!file.toRealPath().getParent().equals(path.toAbsolutePath())) {
+                     throw new IllegalArgumentException(
+                        "Failed to read Code of Conduct file \"" + filename + "\" because it links to a file outside the allowed directory"
+                     );
+                  }
+
+                  try {
+                     String codeOfConduct = String.join("\n", Files.readAllLines(file, StandardCharsets.UTF_8));
+                     builder.put(language, StringUtil.stripColor(codeOfConduct));
+                  } catch (IOException e) {
+                     throw new IllegalArgumentException("Failed to read Code of Conduct file " + filename, e);
                   }
                }
             }
-
-            return builder.build();
-         } catch (IOException var11) {
-            throw new IllegalArgumentException("Failed to read Code of Conduct folder", var11);
          }
+
+         return builder.build();
+      } catch (IOException e) {
+         throw new IllegalArgumentException("Failed to read Code of Conduct folder", e);
       }
    }
 
    @Override
    protected boolean initServer() throws IOException {
       Thread consoleThread = new Thread("Server console handler") {
-         {
-            Objects.requireNonNull(DedicatedServer.this);
-         }
-
          @Override
          public void run() {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
@@ -185,8 +174,8 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface 
                while (!DedicatedServer.this.isStopped() && DedicatedServer.this.isRunning() && (line = reader.readLine()) != null) {
                   DedicatedServer.this.handleConsoleInput(line, DedicatedServer.this.createCommandSourceStack());
                }
-            } catch (IOException var4) {
-               DedicatedServer.LOGGER.error("Exception handling console input", var4);
+            } catch (IOException e) {
+               DedicatedServer.LOGGER.error("Exception handling console input", e);
             }
          }
       };
@@ -224,9 +213,9 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface 
 
       try {
          this.getConnection().startTcpServerListener(localAddress, this.getPort());
-      } catch (IOException var10) {
+      } catch (IOException e) {
          LOGGER.warn("**** FAILED TO BIND TO PORT!");
-         LOGGER.warn("The exception was: {}", var10.toString());
+         LOGGER.warn("The exception was: {}", e.toString());
          LOGGER.warn("Perhaps a server is already running on that port?");
          return false;
       }
@@ -246,46 +235,46 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface 
 
       if (!OldUsersConverter.areOldUserlistsRemoved()) {
          return false;
-      } else {
-         this.setPlayerList(new DedicatedPlayerList(this, this.registries(), this.playerDataStorage));
-         this.tickTimeLogger = new RemoteSampleLogger(TpsDebugDimensions.values().length, this.debugSubscribers(), RemoteDebugSampleType.TICK_TIME);
-         long levelNanoTime = Util.getNanos();
-         this.services.nameToIdCache().resolveOfflineUsers(!this.usesAuthentication());
-         LOGGER.info("Preparing level \"{}\"", this.getLevelIdName());
-         this.loadLevel();
-         long elapsed = Util.getNanos() - levelNanoTime;
-         String time = String.format(Locale.ROOT, "%.3fs", (double)elapsed / 1.0E9);
-         LOGGER.info("Done ({})! For help, type \"help\"", time);
-         if (properties.announcePlayerAchievements != null) {
-            this.getGameRules().set(GameRules.SHOW_ADVANCEMENT_MESSAGES, properties.announcePlayerAchievements, this);
-         }
-
-         if (properties.enableQuery) {
-            LOGGER.info("Starting GS4 status listener");
-            this.queryThreadGs4 = QueryThreadGs4.create(this);
-         }
-
-         if (properties.enableRcon) {
-            LOGGER.info("Starting remote control listener");
-            this.rconThread = RconThread.create(this);
-         }
-
-         if (this.getMaxTickLength() > 0L) {
-            Thread watchdog = new Thread(new ServerWatchdog(this), "Server Watchdog");
-            watchdog.setUncaughtExceptionHandler(new DefaultUncaughtExceptionHandlerWithName(LOGGER));
-            watchdog.setDaemon(true);
-            watchdog.start();
-         }
-
-         if (properties.enableJmxMonitoring) {
-            MinecraftServerStatistics.registerJmxMonitoring(this);
-            LOGGER.info("JMX monitoring enabled");
-         }
-
-         this.saveEverything(false, true, true);
-         this.notificationManager().serverStarted();
-         return true;
       }
+
+      this.setPlayerList(new DedicatedPlayerList(this, this.registries(), this.playerDataStorage));
+      this.tickTimeLogger = new RemoteSampleLogger(TpsDebugDimensions.values().length, this.debugSubscribers(), RemoteDebugSampleType.TICK_TIME);
+      long levelNanoTime = Util.getNanos();
+      this.services.nameToIdCache().resolveOfflineUsers(!this.usesAuthentication());
+      LOGGER.info("Preparing level \"{}\"", this.getLevelIdName());
+      this.loadLevel();
+      long elapsed = Util.getNanos() - levelNanoTime;
+      String time = String.format(Locale.ROOT, "%.3fs", elapsed / 1.0E9);
+      LOGGER.info("Done ({})! For help, type \"help\"", time);
+      if (properties.announcePlayerAchievements != null) {
+         this.getGameRules().set(GameRules.SHOW_ADVANCEMENT_MESSAGES, properties.announcePlayerAchievements, this);
+      }
+
+      if (properties.enableQuery) {
+         LOGGER.info("Starting GS4 status listener");
+         this.queryThreadGs4 = QueryThreadGs4.create(this);
+      }
+
+      if (properties.enableRcon) {
+         LOGGER.info("Starting remote control listener");
+         this.rconThread = RconThread.create(this);
+      }
+
+      if (this.getMaxTickLength() > 0L) {
+         Thread watchdog = new Thread(new ServerWatchdog(this), "Server Watchdog");
+         watchdog.setUncaughtExceptionHandler(new DefaultUncaughtExceptionHandlerWithName(LOGGER));
+         watchdog.setDaemon(true);
+         watchdog.start();
+      }
+
+      if (properties.enableJmxMonitoring) {
+         MinecraftServerStatistics.registerJmxMonitoring(this);
+         LOGGER.info("JMX monitoring enabled");
+      }
+
+      this.saveEverything(false, true, true);
+      this.notificationManager().serverStarted();
+      return true;
    }
 
    @Override
@@ -424,8 +413,8 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface 
       if (this.jsonRpcServer != null) {
          try {
             this.jsonRpcServer.stop(true);
-         } catch (InterruptedException var2) {
-            LOGGER.error("Interrupted while stopping the management server", var2);
+         } catch (InterruptedException e) {
+            LOGGER.error("Interrupted while stopping the management server", e);
          }
       }
    }
@@ -524,19 +513,25 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface 
       LevelData.RespawnData respawnData = level.getRespawnData();
       if (level.dimension() != respawnData.dimension()) {
          return false;
-      } else if (this.getPlayerList().getOps().isEmpty()) {
-         return false;
-      } else if (this.getPlayerList().isOp(player.nameAndId())) {
-         return false;
-      } else if (this.spawnProtectionRadius() <= 0) {
-         return false;
-      } else {
-         BlockPos spawnPos = respawnData.pos();
-         int xd = Mth.abs(pos.getX() - spawnPos.getX());
-         int zd = Mth.abs(pos.getZ() - spawnPos.getZ());
-         int dist = Math.max(xd, zd);
-         return dist <= this.spawnProtectionRadius();
       }
+
+      if (this.getPlayerList().getOps().isEmpty()) {
+         return false;
+      }
+
+      if (this.getPlayerList().isOp(player.nameAndId())) {
+         return false;
+      }
+
+      if (this.spawnProtectionRadius() <= 0) {
+         return false;
+      }
+
+      BlockPos spawnPos = respawnData.pos();
+      int xd = Mth.abs(pos.getX() - spawnPos.getX());
+      int zd = Mth.abs(pos.getZ() - spawnPos.getZ());
+      int dist = Math.max(xd, zd);
+      return dist <= this.spawnProtectionRadius();
    }
 
    @Override
@@ -586,7 +581,7 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface 
    }
 
    public boolean setStatusHeartbeatInterval(final int statusHeartbeatInterval) {
-      if (this.jsonRpcServer != null && this.jsonRpcServer.scheduleHeartbeat(this.notificationManager(), (long)statusHeartbeatInterval)) {
+      if (this.jsonRpcServer != null && this.jsonRpcServer.scheduleHeartbeat(this.notificationManager(), statusHeartbeatInterval)) {
          this.settings.update(p -> p.statusHeartbeatInterval.update(this.registryAccess(), statusHeartbeatInterval));
          return true;
       } else {
@@ -697,7 +692,7 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface 
    private void waitForRetry() {
       try {
          Thread.sleep(5000L);
-      } catch (InterruptedException var2) {
+      } catch (InterruptedException ignored) {
       }
    }
 
@@ -762,9 +757,8 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface 
       return this.serverTextFilter != null ? this.serverTextFilter.createContext(player.getGameProfile()) : TextFilter.DUMMY;
    }
 
-   @Nullable
    @Override
-   public GameType getForcedGameType() {
+   public @Nullable GameType getForcedGameType() {
       return this.forceGameMode() ? this.worldData.getGameType() : null;
    }
 
@@ -843,13 +837,13 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface 
       String bugReportLink = properties.bugReportLink;
       if (bugReportLink.isEmpty()) {
          return Optional.empty();
-      } else {
-         try {
-            return Optional.of(Util.parseAndValidateUntrustedUri(bugReportLink));
-         } catch (Exception var3) {
-            LOGGER.warn("Failed to parse bug link {}", bugReportLink, var3);
-            return Optional.empty();
-         }
+      }
+
+      try {
+         return Optional.of(Util.parseAndValidateUntrustedUri(bugReportLink));
+      } catch (Exception e) {
+         LOGGER.warn("Failed to parse bug link {}", bugReportLink, e);
+         return Optional.empty();
       }
    }
 

@@ -49,9 +49,8 @@ public class NameReport extends Report {
          return StringUtils.isNotEmpty(this.comments());
       }
 
-      @Nullable
       @Override
-      public Report.CannotBuildReason checkBuildable() {
+      public Report.@Nullable CannotBuildReason checkBuildable() {
          return this.report.comments.length() > this.limits.maxOpinionCommentsLength() ? Report.CannotBuildReason.COMMENT_TOO_LONG : super.checkBuildable();
       }
 
@@ -60,11 +59,11 @@ public class NameReport extends Report {
          Report.CannotBuildReason error = this.checkBuildable();
          if (error != null) {
             return Either.right(error);
-         } else {
-            ReportedEntity reportedEntity = new ReportedEntity(this.report.reportedProfileId);
-            AbuseReport abuseReport = AbuseReport.name(this.report.comments, reportedEntity, this.report.createdAt);
-            return Either.left(new Report.Result(this.report.reportId, ReportType.USERNAME, abuseReport));
          }
+
+         ReportedEntity reportedEntity = new ReportedEntity(this.report.reportedProfileId);
+         AbuseReport abuseReport = AbuseReport.name(this.report.comments, reportedEntity, this.report.createdAt);
+         return Either.left(new Report.Result(this.report.reportId, ReportType.USERNAME, abuseReport));
       }
    }
 }

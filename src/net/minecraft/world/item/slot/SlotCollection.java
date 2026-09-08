@@ -98,40 +98,40 @@ public interface SlotCollection {
          case 0 -> EMPTY;
          case 1 -> of(slots.iterator().next());
          default -> new SlotCollection() {
-         @Override
-         public Stream<ItemStack> itemCopies() {
-            return slots.stream().map(SlotAccess::get).map(ItemStack::copy);
-         }
-
-         @Override
-         public int size() {
-            return slots.size();
-         }
-
-         @Override
-         public int replaceSlotItems(final ItemProvider items, final SlotSelector slotSelector) {
-            Iterator<? extends SlotAccess> iterator = slots.iterator();
-            int successCount = 0;
-
-            while (iterator.hasNext() && items.hasNext()) {
-               SlotAccess slot = iterator.next();
-               if (slotSelector.trySelectSlot(slot.get()) && slot.set(items.next())) {
-                  successCount++;
-               }
+            @Override
+            public Stream<ItemStack> itemCopies() {
+               return slots.stream().map(SlotAccess::get).map(ItemStack::copy);
             }
 
-            return successCount;
-         }
+            @Override
+            public int size() {
+               return slots.size();
+            }
 
-         @Override
-         public void modifySlots(final Consumer<? super SlotAccess> consumer, final SlotSelector slotSelector) {
-            for (SlotAccess slot : slots) {
-               if (slotSelector.trySelectSlot(slot.get())) {
-                  consumer.accept(slot);
+            @Override
+            public int replaceSlotItems(final ItemProvider items, final SlotSelector slotSelector) {
+               Iterator<? extends SlotAccess> iterator = slots.iterator();
+               int successCount = 0;
+
+               while (iterator.hasNext() && items.hasNext()) {
+                  SlotAccess slot = iterator.next();
+                  if (slotSelector.trySelectSlot(slot.get()) && slot.set(items.next())) {
+                     successCount++;
+                  }
+               }
+
+               return successCount;
+            }
+
+            @Override
+            public void modifySlots(final Consumer<? super SlotAccess> consumer, final SlotSelector slotSelector) {
+               for (SlotAccess slot : slots) {
+                  if (slotSelector.trySelectSlot(slot.get())) {
+                     consumer.accept(slot);
+                  }
                }
             }
-         }
-      };
+         };
       };
    }
 
@@ -168,38 +168,38 @@ public interface SlotCollection {
          case 1 -> (SlotCollection)terms.getFirst();
          case 2 -> concat(terms.get(0), terms.get(1));
          default -> new SlotCollection() {
-         @Override
-         public Stream<ItemStack> itemCopies() {
-            return terms.stream().flatMap(SlotCollection::itemCopies);
-         }
-
-         @Override
-         public int size() {
-            return terms.stream().mapToInt(SlotCollection::size).sum();
-         }
-
-         @Override
-         public int replaceSlotItems(final ItemProvider items, final SlotSelector slotSelector) {
-            int successCount = 0;
-
-            for (SlotCollection slots : terms) {
-               successCount += slots.replaceSlotItems(items, slotSelector);
+            @Override
+            public Stream<ItemStack> itemCopies() {
+               return terms.stream().flatMap(SlotCollection::itemCopies);
             }
 
-            return successCount;
-         }
-
-         @Override
-         public void modifySlots(final Consumer<? super SlotAccess> consumer, final SlotSelector slotSelector) {
-            for (SlotCollection slots : terms) {
-               slots.modifySlots(consumer, slotSelector);
+            @Override
+            public int size() {
+               return terms.stream().mapToInt(SlotCollection::size).sum();
             }
-         }
-      };
+
+            @Override
+            public int replaceSlotItems(final ItemProvider items, final SlotSelector slotSelector) {
+               int successCount = 0;
+
+               for (SlotCollection slots : terms) {
+                  successCount += slots.replaceSlotItems(items, slotSelector);
+               }
+
+               return successCount;
+            }
+
+            @Override
+            public void modifySlots(final Consumer<? super SlotAccess> consumer, final SlotSelector slotSelector) {
+               for (SlotCollection slots : terms) {
+                  slots.modifySlots(consumer, slotSelector);
+               }
+            }
+         };
       };
    }
 
-   public static record Filtered(SlotCollection slots, Predicate<? super ItemStack> filter) implements SlotCollection {
+   record Filtered(SlotCollection slots, Predicate<? super ItemStack> filter) implements SlotCollection {
       @Override
       public Stream<ItemStack> itemCopies() {
          return this.slots.itemCopies().filter(this.filter);
@@ -227,7 +227,7 @@ public interface SlotCollection {
       }
    }
 
-   public static record FlatMapped(SlotCollection slots, Function<ItemStack, ? extends SlotCollection> mapper) implements SlotCollection {
+   record FlatMapped(SlotCollection slots, Function<ItemStack, ? extends SlotCollection> mapper) implements SlotCollection {
       @Override
       public Stream<ItemStack> itemCopies() {
          return this.slots.itemCopies().map(this.mapper).flatMap(SlotCollection::itemCopies);
@@ -257,10 +257,10 @@ public interface SlotCollection {
       }
    }
 
-   public static record Limited(SlotCollection slots, int limit) implements SlotCollection {
+   record Limited(SlotCollection slots, int limit) implements SlotCollection {
       @Override
       public Stream<ItemStack> itemCopies() {
-         return this.slots.itemCopies().limit((long)this.limit);
+         return this.slots.itemCopies().limit(this.limit);
       }
 
       @Override

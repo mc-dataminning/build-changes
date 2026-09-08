@@ -3,7 +3,6 @@ package net.minecraft.client.renderer.block;
 import com.mojang.blaze3d.vertex.QuadInstance;
 import it.unimi.dsi.fastutil.longs.Long2FloatLinkedOpenHashMap;
 import it.unimi.dsi.fastutil.longs.Long2IntLinkedOpenHashMap;
-import java.util.Objects;
 import net.minecraft.client.resources.model.geometry.BakedQuad;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -205,7 +204,7 @@ public class BlockModelLighter {
    ) {
       if (lightCoords == -1) {
          this.prepareQuadShape(level, state, pos, quad, false);
-         BlockPos lightPos = (BlockPos)(this.faceCubic ? this.scratchPos.setWithOffset(pos, quad.direction()) : pos);
+         BlockPos lightPos = this.faceCubic ? this.scratchPos.setWithOffset(pos, quad.direction()) : pos;
          outputInstance.setLightCoords(this.cache.getLightCoords(state, level, lightPos));
       } else {
          outputInstance.setLightCoords(lightCoords);
@@ -285,7 +284,7 @@ public class BlockModelLighter {
       CACHE.get().disable();
    }
 
-   private static enum AdjacencyInfo {
+   private enum AdjacencyInfo {
       DOWN(
          new Direction[]{Direction.WEST, Direction.EAST, Direction.NORTH, Direction.SOUTH},
          0.5F,
@@ -572,7 +571,7 @@ public class BlockModelLighter {
          map[Direction.EAST.get3DDataValue()] = EAST;
       });
 
-      private AdjacencyInfo(
+      AdjacencyInfo(
          final Direction[] corners,
          final float shadeWeight,
          final boolean doNonCubicWeight,
@@ -594,7 +593,7 @@ public class BlockModelLighter {
       }
    }
 
-   private static enum AmbientVertexRemap {
+   private enum AmbientVertexRemap {
       DOWN(0, 1, 2, 3),
       UP(2, 3, 0, 1),
       NORTH(3, 0, 1, 2),
@@ -615,7 +614,7 @@ public class BlockModelLighter {
          map[Direction.EAST.get3DDataValue()] = EAST;
       });
 
-      private AmbientVertexRemap(final int vert0, final int vert1, final int vert2, final int vert3) {
+      AmbientVertexRemap(final int vert0, final int vert1, final int vert2, final int vert3) {
          this.vert0 = vert0;
          this.vert1 = vert1;
          this.vert2 = vert2;
@@ -631,10 +630,6 @@ public class BlockModelLighter {
       private boolean enabled;
       private final Long2IntLinkedOpenHashMap colorCache = Util.make(() -> {
          Long2IntLinkedOpenHashMap map = new Long2IntLinkedOpenHashMap(100, 0.25F) {
-            {
-               Objects.requireNonNull(Cache.this);
-            }
-
             protected void rehash(final int newN) {
             }
          };
@@ -643,10 +638,6 @@ public class BlockModelLighter {
       });
       private final Long2FloatLinkedOpenHashMap brightnessCache = Util.make(() -> {
          Long2FloatLinkedOpenHashMap map = new Long2FloatLinkedOpenHashMap(100, 0.25F) {
-            {
-               Objects.requireNonNull(Cache.this);
-            }
-
             protected void rehash(final int newN) {
             }
          };
@@ -658,15 +649,15 @@ public class BlockModelLighter {
          int cached = this.colorCache.get(key);
          if (cached != Integer.MAX_VALUE) {
             return cached;
-         } else {
-            int value = LightCoordsUtil.BrightnessGetter.DEFAULT.packedBrightness(level, pos);
-            if (this.colorCache.size() == 100) {
-               this.colorCache.removeFirstInt();
-            }
-
-            this.colorCache.put(key, value);
-            return value;
          }
+
+         int value = LightCoordsUtil.BrightnessGetter.DEFAULT.packedBrightness(level, pos);
+         if (this.colorCache.size() == 100) {
+            this.colorCache.removeFirstInt();
+         }
+
+         this.colorCache.put(key, value);
+         return value;
       };
 
       public void enable() {
@@ -705,7 +696,7 @@ public class BlockModelLighter {
       }
    }
 
-   private static enum SizeInfo {
+   private enum SizeInfo {
       DOWN(0),
       UP(1),
       NORTH(2),
@@ -722,7 +713,7 @@ public class BlockModelLighter {
       public static final int COUNT = values().length;
       private final int index;
 
-      private SizeInfo(final int index) {
+      SizeInfo(final int index) {
          this.index = index;
       }
    }

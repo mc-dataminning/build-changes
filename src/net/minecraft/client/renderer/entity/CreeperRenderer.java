@@ -19,7 +19,7 @@ public class CreeperRenderer extends MobRenderer<Creeper, CreeperRenderState, Cr
 
    protected void scale(final CreeperRenderState state, final PoseStack poseStack) {
       float g = state.swelling;
-      float wobble = 1.0F + Mth.sin((double)(g * 100.0F)) * g * 0.01F;
+      float wobble = 1.0F + Mth.sin(g * 100.0F) * g * 0.01F;
       g = Mth.clamp(g, 0.0F, 1.0F);
       g *= g;
       g *= g;

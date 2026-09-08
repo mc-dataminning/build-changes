@@ -47,28 +47,28 @@ public class RandomCommand {
                               ((RequiredArgumentBuilder)Commands.argument("seed", IntegerArgumentType.integer())
                                     .executes(
                                        c -> resetAllSequencesAndSetNewDefaults(
-                                             (CommandSourceStack)c.getSource(), IntegerArgumentType.getInteger(c, "seed"), true, true
-                                          )
+                                          (CommandSourceStack)c.getSource(), IntegerArgumentType.getInteger(c, "seed"), true, true
+                                       )
                                     ))
                                  .then(
                                     ((RequiredArgumentBuilder)Commands.argument("includeWorldSeed", BoolArgumentType.bool())
                                           .executes(
                                              c -> resetAllSequencesAndSetNewDefaults(
-                                                   (CommandSourceStack)c.getSource(),
-                                                   IntegerArgumentType.getInteger(c, "seed"),
-                                                   BoolArgumentType.getBool(c, "includeWorldSeed"),
-                                                   true
-                                                )
+                                                (CommandSourceStack)c.getSource(),
+                                                IntegerArgumentType.getInteger(c, "seed"),
+                                                BoolArgumentType.getBool(c, "includeWorldSeed"),
+                                                true
+                                             )
                                           ))
                                        .then(
                                           Commands.argument("includeSequenceId", BoolArgumentType.bool())
                                              .executes(
                                                 c -> resetAllSequencesAndSetNewDefaults(
-                                                      (CommandSourceStack)c.getSource(),
-                                                      IntegerArgumentType.getInteger(c, "seed"),
-                                                      BoolArgumentType.getBool(c, "includeWorldSeed"),
-                                                      BoolArgumentType.getBool(c, "includeSequenceId")
-                                                   )
+                                                   (CommandSourceStack)c.getSource(),
+                                                   IntegerArgumentType.getInteger(c, "seed"),
+                                                   BoolArgumentType.getBool(c, "includeWorldSeed"),
+                                                   BoolArgumentType.getBool(c, "includeSequenceId")
+                                                )
                                              )
                                        )
                                  )
@@ -82,34 +82,34 @@ public class RandomCommand {
                            ((RequiredArgumentBuilder)Commands.argument("seed", IntegerArgumentType.integer())
                                  .executes(
                                     c -> resetSequence(
-                                          (CommandSourceStack)c.getSource(),
-                                          IdentifierArgument.getId(c, "sequence"),
-                                          IntegerArgumentType.getInteger(c, "seed"),
-                                          true,
-                                          true
-                                       )
+                                       (CommandSourceStack)c.getSource(),
+                                       IdentifierArgument.getId(c, "sequence"),
+                                       IntegerArgumentType.getInteger(c, "seed"),
+                                       true,
+                                       true
+                                    )
                                  ))
                               .then(
                                  ((RequiredArgumentBuilder)Commands.argument("includeWorldSeed", BoolArgumentType.bool())
                                        .executes(
                                           c -> resetSequence(
-                                                (CommandSourceStack)c.getSource(),
-                                                IdentifierArgument.getId(c, "sequence"),
-                                                IntegerArgumentType.getInteger(c, "seed"),
-                                                BoolArgumentType.getBool(c, "includeWorldSeed"),
-                                                true
-                                             )
+                                             (CommandSourceStack)c.getSource(),
+                                             IdentifierArgument.getId(c, "sequence"),
+                                             IntegerArgumentType.getInteger(c, "seed"),
+                                             BoolArgumentType.getBool(c, "includeWorldSeed"),
+                                             true
+                                          )
                                        ))
                                     .then(
                                        Commands.argument("includeSequenceId", BoolArgumentType.bool())
                                           .executes(
                                              c -> resetSequence(
-                                                   (CommandSourceStack)c.getSource(),
-                                                   IdentifierArgument.getId(c, "sequence"),
-                                                   IntegerArgumentType.getInteger(c, "seed"),
-                                                   BoolArgumentType.getBool(c, "includeWorldSeed"),
-                                                   BoolArgumentType.getBool(c, "includeSequenceId")
-                                                )
+                                                (CommandSourceStack)c.getSource(),
+                                                IdentifierArgument.getId(c, "sequence"),
+                                                IntegerArgumentType.getInteger(c, "seed"),
+                                                BoolArgumentType.getBool(c, "includeWorldSeed"),
+                                                BoolArgumentType.getBool(c, "includeSequenceId")
+                                             )
                                           )
                                     )
                               )
@@ -130,8 +130,8 @@ public class RandomCommand {
                         .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
                      .executes(
                         c -> randomSample(
-                              (CommandSourceStack)c.getSource(), RangeArgument.Ints.getRange(c, "range"), IdentifierArgument.getId(c, "sequence"), announce
-                           )
+                           (CommandSourceStack)c.getSource(), RangeArgument.Ints.getRange(c, "range"), IdentifierArgument.getId(c, "sequence"), announce
+                        )
                      )
                )
          );
@@ -143,7 +143,7 @@ public class RandomCommand {
       return SharedSuggestionProvider.suggest(result, builder);
    }
 
-   private static int randomSample(final CommandSourceStack source, final MinMaxBounds.Ints range, @Nullable final Identifier sequence, final boolean announce) throws CommandSyntaxException {
+   private static int randomSample(final CommandSourceStack source, final MinMaxBounds.Ints range, final @Nullable Identifier sequence, final boolean announce) throws CommandSyntaxException {
       RandomSource random;
       if (sequence != null) {
          random = source.getServer().getRandomSequence(sequence);
@@ -153,23 +153,25 @@ public class RandomCommand {
 
       int min = range.min().orElse(Integer.MIN_VALUE);
       int max = range.max().orElse(Integer.MAX_VALUE);
-      long span = (long)max - (long)min;
+      long span = (long)max - min;
       if (span == 0L) {
          throw ERROR_RANGE_TOO_SMALL.create();
-      } else if (span >= 2147483647L) {
-         throw ERROR_RANGE_TOO_LARGE.create();
-      } else {
-         int value = Mth.randomBetweenInclusive(random, min, max);
-         if (announce) {
-            source.getServer()
-               .getPlayerList()
-               .broadcastSystemMessage(Component.translatable("commands.random.roll", source.getDisplayName(), value, min, max), false);
-         } else {
-            source.sendSuccess(() -> Component.translatable("commands.random.sample.success", value), false);
-         }
-
-         return value;
       }
+
+      if (span >= 2147483647L) {
+         throw ERROR_RANGE_TOO_LARGE.create();
+      }
+
+      int value = Mth.randomBetweenInclusive(random, min, max);
+      if (announce) {
+         source.getServer()
+            .getPlayerList()
+            .broadcastSystemMessage(Component.translatable("commands.random.roll", source.getDisplayName(), value, min, max), false);
+      } else {
+         source.sendSuccess(() -> Component.translatable("commands.random.sample.success", value), false);
+      }
+
+      return value;
    }
 
    private static int resetSequence(final CommandSourceStack source, final Identifier sequence) throws CommandSyntaxException {

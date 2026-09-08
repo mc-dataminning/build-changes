@@ -38,27 +38,24 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
    private final DeviceFeatures deviceFeatures;
    private final DeviceLimits deviceLimits;
    private final Runnable onFinish;
-   @Nullable
-   private final RenderPass.RenderArea renderArea;
-   private final List<RenderPassDescriptor.Attachment<Optional<Vector4fc>>> colorAttachments;
+   private final RenderPass.@Nullable RenderArea renderArea;
+   private final List<RenderPassDescriptor.@Nullable Attachment<Optional<Vector4fc>>> colorAttachments;
    private final boolean hasDepthAttachment;
    private boolean isClosed;
    private int pushedDebugGroups;
-   @Nullable
-   private FrontendRenderPipeline boundPipeline;
-   private final GpuBufferSlice[] vertexBuffers = new GpuBufferSlice[16];
-   @Nullable
-   protected GpuBuffer indexBuffer;
+   private @Nullable FrontendRenderPipeline boundPipeline;
+   private final @Nullable GpuBufferSlice[] vertexBuffers = new GpuBufferSlice[16];
+   protected @Nullable GpuBuffer indexBuffer;
    protected final HashMap<String, Object> uniforms = new HashMap<>();
    private boolean constantsPushed = false;
 
    public FrontendRenderPass(
       final RenderPassBackend backend,
       final GpuDeviceBackend device,
-      final List<RenderPassDescriptor.Attachment<Optional<Vector4fc>>> colorAttachments,
+      final List<RenderPassDescriptor.@Nullable Attachment<Optional<Vector4fc>>> colorAttachments,
       final boolean hasDepthAttachment,
       final Runnable onFinish,
-      @Nullable final RenderPass.RenderArea renderArea
+      final RenderPass.@Nullable RenderArea renderArea
    ) {
       this.backend = backend;
       this.device = device;
@@ -74,22 +71,24 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
    public void pushDebugGroup(final Supplier<String> label) {
       if (this.isClosed) {
          throw new IllegalStateException("Can't use a closed render pass");
-      } else {
-         this.pushedDebugGroups++;
-         this.backend.pushDebugGroup(label);
       }
+
+      this.pushedDebugGroups++;
+      this.backend.pushDebugGroup(label);
    }
 
    @Override
    public void popDebugGroup() {
       if (this.isClosed) {
          throw new IllegalStateException("Can't use a closed render pass");
-      } else if (this.pushedDebugGroups == 0) {
-         throw new IllegalStateException("Can't pop more debug groups than was pushed!");
-      } else {
-         this.pushedDebugGroups--;
-         this.backend.popDebugGroup();
       }
+
+      if (this.pushedDebugGroups == 0) {
+         throw new IllegalStateException("Can't pop more debug groups than was pushed!");
+      }
+
+      this.pushedDebugGroups--;
+      this.backend.popDebugGroup();
    }
 
    @Override
@@ -109,27 +108,27 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
          List<ColorTargetState> colorTargetStates = frontendPipeline.colorTargetStates();
          if (colorTargetStates.size() != this.colorAttachments.size()) {
             throw new IllegalStateException("Render pass color attachment count must match pipeline color target state count.");
-         } else {
-            for (int i = 0; i < this.colorAttachments.size(); i++) {
-               RenderPassDescriptor.Attachment<Optional<Vector4fc>> attachment = this.colorAttachments.get(i);
-               if (attachment != null) {
-                  ColorTargetState colorTargetState = colorTargetStates.get(i);
-                  if (colorTargetState == null || colorTargetState.format() != attachment.textureView().texture().getFormat()) {
-                     throw new IllegalStateException("Render pass color attachment " + i + " format doesn't match pipeline format.");
-                  }
+         }
+
+         for (int i = 0; i < this.colorAttachments.size(); i++) {
+            RenderPassDescriptor.Attachment<Optional<Vector4fc>> attachment = this.colorAttachments.get(i);
+            if (attachment != null) {
+               ColorTargetState colorTargetState = colorTargetStates.get(i);
+               if (colorTargetState == null || colorTargetState.format() != attachment.textureView().texture().getFormat()) {
+                  throw new IllegalStateException("Render pass color attachment " + i + " format doesn't match pipeline format.");
                }
             }
-
-            this.boundPipeline = frontendPipeline;
-            this.backend.setPipeline(frontendPipeline.backendRenderPipeline());
-            this.uniforms.forEach(this::setUniform);
-            this.constantsPushed = false;
          }
+
+         this.boundPipeline = frontendPipeline;
+         this.backend.setPipeline(frontendPipeline.backendRenderPipeline());
+         this.uniforms.forEach(this::setUniform);
+         this.constantsPushed = false;
       }
    }
 
    @Override
-   public void setUniform(final String name, @Nullable final GpuTextureView textureView, @Nullable final GpuSampler sampler) {
+   public void setUniform(final String name, final @Nullable GpuTextureView textureView, final @Nullable GpuSampler sampler) {
       if (textureView != null && sampler != null) {
          TextureViewAndSampler pair = new TextureViewAndSampler(textureView, sampler);
          this.setUniform(name, pair);
@@ -138,7 +137,7 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
             throw new IllegalArgumentException("textureView and sampler must both or neither be null");
          }
 
-         this.setUniform(name, null);
+         this.setUniform(name, (Object)null);
       }
    }
 
@@ -150,14 +149,14 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
    @Override
    public void setUniform(final String name, final GpuBufferSlice value) {
       int alignment = this.device.getDeviceInfo().limits().minUniformOffsetAlignment();
-      if (value.offset() % (long)alignment > 0L) {
+      if (value.offset() % alignment > 0L) {
          throw new IllegalArgumentException("Uniform buffer offset must be aligned to " + alignment);
-      } else {
-         this.setUniform(name, (Object)value);
       }
+
+      this.setUniform(name, (Object)value);
    }
 
-   private void setUniform(final String name, @Nullable final Object value) {
+   private void setUniform(final String name, final @Nullable Object value) {
       if (value == null) {
          this.uniforms.remove(name);
       } else {
@@ -176,12 +175,14 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
    public void pushConstants(final ByteBuffer value) {
       if (this.boundPipeline == null) {
          throw new IllegalStateException("Must bind pipeline before pushing constants");
-      } else if (value.remaining() < this.boundPipeline.pushConstantSize()) {
-         throw new IllegalArgumentException("Not enough values for push constant range");
-      } else {
-         this.constantsPushed = true;
-         this.backend.pushConstants(value);
       }
+
+      if (value.remaining() < this.boundPipeline.pushConstantSize()) {
+         throw new IllegalArgumentException("Not enough values for push constant range");
+      }
+
+      this.constantsPushed = true;
+      this.backend.pushConstants(value);
    }
 
    @Override
@@ -208,17 +209,21 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
    }
 
    @Override
-   public void setVertexBuffer(final int slot, @Nullable final GpuBufferSlice vertexBuffer) {
+   public void setVertexBuffer(final int slot, final @Nullable GpuBufferSlice vertexBuffer) {
       if (slot < 0 || slot >= 16) {
          throw new IllegalArgumentException("Vertex buffer slot is out of range: " + slot);
-      } else if (vertexBuffer != null && vertexBuffer.buffer().isClosed()) {
-         throw new IllegalStateException("Vertex buffer at slot " + slot + " has been closed!");
-      } else if (vertexBuffer != null && (vertexBuffer.buffer().usage() & 32) == 0) {
-         throw new IllegalStateException("Vertex buffer at slot " + slot + " doesn't have GpuBuffer.USAGE_VERTEX flag!");
-      } else {
-         this.vertexBuffers[slot] = vertexBuffer;
-         this.backend.setVertexBuffer(slot, vertexBuffer);
       }
+
+      if (vertexBuffer != null && vertexBuffer.buffer().isClosed()) {
+         throw new IllegalStateException("Vertex buffer at slot " + slot + " has been closed!");
+      }
+
+      if (vertexBuffer != null && (vertexBuffer.buffer().usage() & 32) == 0) {
+         throw new IllegalStateException("Vertex buffer at slot " + slot + " doesn't have GpuBuffer.USAGE_VERTEX flag!");
+      }
+
+      this.vertexBuffers[slot] = vertexBuffer;
+      this.backend.setVertexBuffer(slot, vertexBuffer);
    }
 
    @Override
@@ -231,140 +236,164 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
    public void drawIndexed(final int indexCount, final int instanceCount, final int firstIndex, final int vertexOffset, final int firstInstance) {
       if (this.isClosed) {
          throw new IllegalStateException("Can't use a closed render pass");
-      } else if (firstInstance != 0 && !this.deviceFeatures.nonZeroFirstInstance()) {
-         throw new UnsupportedOperationException("firstInstance must be zero on when device does not support nonZeroFirstInstance");
-      } else {
-         this.validateDraw(List.of(), false, true);
-         this.backend.drawIndexed(indexCount, instanceCount, firstIndex, vertexOffset, firstInstance);
       }
+
+      if (firstInstance != 0 && !this.deviceFeatures.nonZeroFirstInstance()) {
+         throw new UnsupportedOperationException("firstInstance must be zero on when device does not support nonZeroFirstInstance");
+      }
+
+      this.validateDraw(List.of(), false, true);
+      this.backend.drawIndexed(indexCount, instanceCount, firstIndex, vertexOffset, firstInstance);
    }
 
    @Override
    public void multiDrawIndexed(final IntBuffer drawParameters, final int instanceCount, final int firstInstance, final int drawCount) {
       if (this.isClosed) {
          throw new IllegalStateException("Can't use a closed render pass");
-      } else if (!this.deviceFeatures.multiDrawDirectInterleaved()) {
-         throw new UnsupportedOperationException("device does not support multiDrawDirectInterleaved");
-      } else if (firstInstance != 0 && !this.deviceFeatures.nonZeroFirstInstance()) {
-         throw new UnsupportedOperationException("firstInstance must be zero on when device does not support nonZeroFirstInstance");
-      } else if (drawCount > this.deviceLimits.maxMultiDrawDirectInterleavedDrawCount()) {
-         throw new IllegalArgumentException("May not exceed maxMultiDrawDirectInterleavedDrawCount draws in a single multiDrawDirectInterleaved call");
-      } else if (drawParameters.remaining() < drawCount * 3) {
-         throw new IllegalArgumentException("Not enough elements in drawParameters for drawCount draws");
-      } else {
-         this.validateDraw(List.of(), false, true);
-         this.backend.multiDrawIndexed(drawParameters, instanceCount, firstInstance, drawCount);
       }
+
+      if (!this.deviceFeatures.multiDrawDirectInterleaved()) {
+         throw new UnsupportedOperationException("device does not support multiDrawDirectInterleaved");
+      }
+
+      if (firstInstance != 0 && !this.deviceFeatures.nonZeroFirstInstance()) {
+         throw new UnsupportedOperationException("firstInstance must be zero on when device does not support nonZeroFirstInstance");
+      }
+
+      if (drawCount > this.deviceLimits.maxMultiDrawDirectInterleavedDrawCount()) {
+         throw new IllegalArgumentException("May not exceed maxMultiDrawDirectInterleavedDrawCount draws in a single multiDrawDirectInterleaved call");
+      }
+
+      if (drawParameters.remaining() < drawCount * 3) {
+         throw new IllegalArgumentException("Not enough elements in drawParameters for drawCount draws");
+      }
+
+      this.validateDraw(List.of(), false, true);
+      this.backend.multiDrawIndexed(drawParameters, instanceCount, firstInstance, drawCount);
    }
 
    @Override
    public void multiDrawIndexed(final PointerBuffer firstIndexOffsets, final IntBuffer indexCounts, final IntBuffer vertexOffsets, final int drawCount) {
       if (this.isClosed) {
          throw new IllegalStateException("Can't use a closed render pass");
-      } else if (!this.deviceFeatures.multiDrawDirectSeparate()) {
-         throw new UnsupportedOperationException("device does not support multiDrawDirectSeparate");
-      } else if (firstIndexOffsets.remaining() < drawCount) {
-         throw new IllegalArgumentException("firstIndexOffsets does not contain enough elements for drawCount draws");
-      } else if (indexCounts.remaining() < drawCount) {
-         throw new IllegalArgumentException("indexCounts does not contain enough elements for drawCount draws");
-      } else if (vertexOffsets.remaining() < drawCount) {
-         throw new IllegalArgumentException("vertexOffsets does not contain enough elements for drawCount draws");
-      } else {
-         this.validateDraw(List.of(), false, true);
-         this.backend.multiDrawIndexed(firstIndexOffsets, indexCounts, vertexOffsets, drawCount);
       }
+
+      if (!this.deviceFeatures.multiDrawDirectSeparate()) {
+         throw new UnsupportedOperationException("device does not support multiDrawDirectSeparate");
+      }
+
+      if (firstIndexOffsets.remaining() < drawCount) {
+         throw new IllegalArgumentException("firstIndexOffsets does not contain enough elements for drawCount draws");
+      }
+
+      if (indexCounts.remaining() < drawCount) {
+         throw new IllegalArgumentException("indexCounts does not contain enough elements for drawCount draws");
+      }
+
+      if (vertexOffsets.remaining() < drawCount) {
+         throw new IllegalArgumentException("vertexOffsets does not contain enough elements for drawCount draws");
+      }
+
+      this.validateDraw(List.of(), false, true);
+      this.backend.multiDrawIndexed(firstIndexOffsets, indexCounts, vertexOffsets, drawCount);
    }
 
    @Override
    public void drawIndexedIndirect(final GpuBufferSlice commands, final int drawCount) {
       if (this.isClosed) {
          throw new IllegalStateException("Can't use a closed render pass");
-      } else if (!this.deviceFeatures.drawIndirect()) {
-         throw new UnsupportedOperationException("device does not support drawIndirect");
-      } else if (drawCount > 1 && !this.deviceFeatures.multiDrawIndirect()) {
-         throw new UnsupportedOperationException("drawCount must be one when device does not support multiDrawIndirect");
-      } else if ((commands.buffer().usage() & 512) == 0) {
-         throw new IllegalArgumentException("Indirect commands buffer must have GpuBuffer.USAGE_INDIRECT_PARAMETERS flag");
-      } else if (commands.length() < (long)drawCount * (long)VkDrawIndexedIndirectCommand.SIZEOF) {
-         throw new IllegalArgumentException("Commands buffer is not large enough to hold requested draw count at the given offset");
-      } else if (commands.offset() % 4L != 0L) {
-         throw new IllegalArgumentException("Commands offset must be multiple of 4");
-      } else {
-         this.validateDraw(List.of(), false, true);
-         this.backend.drawIndexedIndirect(commands, drawCount);
       }
+
+      if (!this.deviceFeatures.drawIndirect()) {
+         throw new UnsupportedOperationException("device does not support drawIndirect");
+      }
+
+      if (drawCount > 1 && !this.deviceFeatures.multiDrawIndirect()) {
+         throw new UnsupportedOperationException("drawCount must be one when device does not support multiDrawIndirect");
+      }
+
+      if ((commands.buffer().usage() & 512) == 0) {
+         throw new IllegalArgumentException("Indirect commands buffer must have GpuBuffer.USAGE_INDIRECT_PARAMETERS flag");
+      }
+
+      if (commands.length() < (long)drawCount * VkDrawIndexedIndirectCommand.SIZEOF) {
+         throw new IllegalArgumentException("Commands buffer is not large enough to hold requested draw count at the given offset");
+      }
+
+      if (commands.offset() % 4L != 0L) {
+         throw new IllegalArgumentException("Commands offset must be multiple of 4");
+      }
+
+      this.validateDraw(List.of(), false, true);
+      this.backend.drawIndexedIndirect(commands, drawCount);
    }
 
    @Override
    public <T> void drawMultipleIndexed(
       final Collection<RenderPass.Draw<T>> draws,
-      @Nullable final GpuBuffer defaultIndexBuffer,
-      @Nullable final IndexType defaultIndexType,
+      final @Nullable GpuBuffer defaultIndexBuffer,
+      final @Nullable IndexType defaultIndexType,
       final Collection<String> dynamicUniforms,
       final T uniformArgument
    ) {
       if (this.isClosed) {
          throw new IllegalStateException("Can't use a closed render pass");
-      } else {
-         this.validateDraw(dynamicUniforms, true, false);
-         GpuBuffer lastIndexBuffer = null;
-         IndexType lastIndexType = null;
+      }
 
-         for (RenderPass.Draw<T> draw : draws) {
-            BiConsumer<T, RenderPass.UniformUploader> uniformUploaderConsumer = draw.uniformUploaderConsumer();
-            if (uniformUploaderConsumer != null) {
-               uniformUploaderConsumer.accept(uniformArgument, this);
-            }
+      this.validateDraw(dynamicUniforms, true, false);
+      GpuBuffer lastIndexBuffer = null;
+      IndexType lastIndexType = null;
 
-            IndexType indexType = draw.indexType() == null ? defaultIndexType : draw.indexType();
-            GpuBuffer indexBuffer = draw.indexBuffer() == null ? defaultIndexBuffer : draw.indexBuffer();
-
-            assert indexBuffer != null;
-
-            assert indexType != null;
-
-            this.setVertexBuffer(draw.slot(), draw.vertexBuffer().slice());
-            if (FrontendGpuDevice.STRICT_VALIDATION) {
-               if (indexBuffer == null) {
-                  throw new IllegalStateException("Missing index buffer");
-               }
-
-               ((BaseGpuBuffer)indexBuffer).checkCanBeUsed();
-               if (indexBuffer.isClosed()) {
-                  throw new IllegalStateException("Index buffer has been closed!");
-               }
-
-               if (draw.slot() < 0 || draw.slot() >= 16) {
-                  throw new IllegalStateException("Vertex buffer slot must be between 0 and 16");
-               }
-
-               if (this.vertexBuffers[draw.slot()] != null) {
-                  ((BaseGpuBuffer)this.vertexBuffers[draw.slot()].buffer()).checkCanBeUsed();
-               }
-
-               if (this.vertexBuffers[draw.slot()] == null) {
-                  throw new IllegalStateException("Missing vertex buffer at slot " + draw.slot());
-               }
-
-               if (this.vertexBuffers[draw.slot()].buffer().isClosed()) {
-                  throw new IllegalStateException("Vertex buffer at slot " + draw.slot() + " has been closed!");
-               }
-            }
-
-            if (indexBuffer != lastIndexBuffer || indexType != lastIndexType) {
-               this.setIndexBuffer(indexBuffer, indexType);
-               lastIndexBuffer = indexBuffer;
-               lastIndexType = indexType;
-            }
-
-            assert this.boundPipeline != null;
-
-            if (this.boundPipeline.pushConstantSize() > 0 && !this.constantsPushed) {
-               throw new IllegalStateException("Missing push constants");
-            }
-
-            this.backend.drawIndexed(draw.indexCount(), 1, draw.firstIndex(), draw.baseVertex(), 0);
+      for (RenderPass.Draw<T> draw : draws) {
+         BiConsumer<T, RenderPass.UniformUploader> uniformUploaderConsumer = draw.uniformUploaderConsumer();
+         if (uniformUploaderConsumer != null) {
+            uniformUploaderConsumer.accept(uniformArgument, this);
          }
+
+         IndexType indexType = draw.indexType() == null ? defaultIndexType : draw.indexType();
+         GpuBuffer indexBuffer = draw.indexBuffer() == null ? defaultIndexBuffer : draw.indexBuffer();
+         assert indexBuffer != null;
+         assert indexType != null;
+         this.setVertexBuffer(draw.slot(), draw.vertexBuffer().slice());
+         if (FrontendGpuDevice.STRICT_VALIDATION) {
+            if (indexBuffer == null) {
+               throw new IllegalStateException("Missing index buffer");
+            }
+
+            ((BaseGpuBuffer)indexBuffer).checkCanBeUsed();
+            if (indexBuffer.isClosed()) {
+               throw new IllegalStateException("Index buffer has been closed!");
+            }
+
+            if (draw.slot() < 0 || draw.slot() >= 16) {
+               throw new IllegalStateException("Vertex buffer slot must be between 0 and 16");
+            }
+
+            if (this.vertexBuffers[draw.slot()] != null) {
+               ((BaseGpuBuffer)this.vertexBuffers[draw.slot()].buffer()).checkCanBeUsed();
+            }
+
+            if (this.vertexBuffers[draw.slot()] == null) {
+               throw new IllegalStateException("Missing vertex buffer at slot " + draw.slot());
+            }
+
+            if (this.vertexBuffers[draw.slot()].buffer().isClosed()) {
+               throw new IllegalStateException("Vertex buffer at slot " + draw.slot() + " has been closed!");
+            }
+         }
+
+         if (indexBuffer != lastIndexBuffer || indexType != lastIndexType) {
+            this.setIndexBuffer(indexBuffer, indexType);
+            lastIndexBuffer = indexBuffer;
+            lastIndexType = indexType;
+         }
+
+         assert this.boundPipeline != null;
+         if (this.boundPipeline.pushConstantSize() > 0 && !this.constantsPushed) {
+            throw new IllegalStateException("Missing push constants");
+         }
+
+         this.backend.drawIndexed(draw.indexCount(), 1, draw.firstIndex(), draw.baseVertex(), 0);
       }
    }
 
@@ -372,66 +401,92 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
    public void draw(final int vertexCount, final int instanceCount, final int firstVertex, final int firstInstance) {
       if (this.isClosed) {
          throw new IllegalStateException("Can't use a closed render pass");
-      } else if (firstInstance != 0 && !this.deviceFeatures.nonZeroFirstInstance()) {
-         throw new UnsupportedOperationException("firstInstance must be zero on when device does not support nonZeroFirstInstance");
-      } else {
-         this.validateDraw(List.of(), false, false);
-         this.backend.draw(vertexCount, instanceCount, firstVertex, firstInstance);
       }
+
+      if (firstInstance != 0 && !this.deviceFeatures.nonZeroFirstInstance()) {
+         throw new UnsupportedOperationException("firstInstance must be zero on when device does not support nonZeroFirstInstance");
+      }
+
+      this.validateDraw(List.of(), false, false);
+      this.backend.draw(vertexCount, instanceCount, firstVertex, firstInstance);
    }
 
    @Override
    public void multiDraw(final IntBuffer drawParameters, final int instanceCount, final int firstInstance, final int drawCount) {
       if (this.isClosed) {
          throw new IllegalStateException("Can't use a closed render pass");
-      } else if (!this.deviceFeatures.multiDrawDirectInterleaved()) {
-         throw new UnsupportedOperationException("device does not support multiDrawDirectInterleaved");
-      } else if (firstInstance != 0 && !this.deviceFeatures.nonZeroFirstInstance()) {
-         throw new UnsupportedOperationException("firstInstance must be zero on when device does not support nonZeroFirstInstance");
-      } else if (drawCount > this.deviceLimits.maxMultiDrawDirectInterleavedDrawCount()) {
-         throw new IllegalArgumentException("May not exceed maxMultiDrawDirectInterleavedDrawCount draws in a single multiDrawDirectInterleaved call");
-      } else if (drawParameters.remaining() < drawCount * 2) {
-         throw new IllegalArgumentException("Not enough elements in drawParameters for drawCount draws");
-      } else {
-         this.validateDraw(List.of(), false, false);
-         this.backend.multiDraw(drawParameters, instanceCount, firstInstance, drawCount);
       }
+
+      if (!this.deviceFeatures.multiDrawDirectInterleaved()) {
+         throw new UnsupportedOperationException("device does not support multiDrawDirectInterleaved");
+      }
+
+      if (firstInstance != 0 && !this.deviceFeatures.nonZeroFirstInstance()) {
+         throw new UnsupportedOperationException("firstInstance must be zero on when device does not support nonZeroFirstInstance");
+      }
+
+      if (drawCount > this.deviceLimits.maxMultiDrawDirectInterleavedDrawCount()) {
+         throw new IllegalArgumentException("May not exceed maxMultiDrawDirectInterleavedDrawCount draws in a single multiDrawDirectInterleaved call");
+      }
+
+      if (drawParameters.remaining() < drawCount * 2) {
+         throw new IllegalArgumentException("Not enough elements in drawParameters for drawCount draws");
+      }
+
+      this.validateDraw(List.of(), false, false);
+      this.backend.multiDraw(drawParameters, instanceCount, firstInstance, drawCount);
    }
 
    @Override
    public void multiDraw(final IntBuffer firstVertices, final IntBuffer vertexCounts, final int drawCount) {
       if (this.isClosed) {
          throw new IllegalStateException("Can't use a closed render pass");
-      } else if (!this.deviceFeatures.multiDrawDirectSeparate()) {
-         throw new UnsupportedOperationException("device does not support multiDrawDirectSeparate");
-      } else if (firstVertices.remaining() < drawCount) {
-         throw new IllegalArgumentException("firstVertices does not contain enough elements for drawCount draws");
-      } else if (vertexCounts.remaining() < drawCount) {
-         throw new IllegalArgumentException("vertexCounts does not contain enough elements for drawCount draws");
-      } else {
-         this.validateDraw(List.of(), false, false);
-         this.backend.multiDraw(firstVertices, vertexCounts, drawCount);
       }
+
+      if (!this.deviceFeatures.multiDrawDirectSeparate()) {
+         throw new UnsupportedOperationException("device does not support multiDrawDirectSeparate");
+      }
+
+      if (firstVertices.remaining() < drawCount) {
+         throw new IllegalArgumentException("firstVertices does not contain enough elements for drawCount draws");
+      }
+
+      if (vertexCounts.remaining() < drawCount) {
+         throw new IllegalArgumentException("vertexCounts does not contain enough elements for drawCount draws");
+      }
+
+      this.validateDraw(List.of(), false, false);
+      this.backend.multiDraw(firstVertices, vertexCounts, drawCount);
    }
 
    @Override
    public void drawIndirect(final GpuBufferSlice commands, final int drawCount) {
       if (this.isClosed) {
          throw new IllegalStateException("Can't use a closed render pass");
-      } else if (!this.deviceFeatures.drawIndirect()) {
-         throw new UnsupportedOperationException("device does not support drawIndirect");
-      } else if (drawCount > 1 && !this.deviceFeatures.multiDrawIndirect()) {
-         throw new UnsupportedOperationException("drawCount must be one when device does not support multiDrawIndirect");
-      } else if ((commands.buffer().usage() & 512) == 0) {
-         throw new IllegalArgumentException("Indirect commands buffer must have GpuBuffer.USAGE_INDIRECT_PARAMETERS flag");
-      } else if (commands.length() < (long)drawCount * (long)VkDrawIndirectCommand.SIZEOF) {
-         throw new IllegalArgumentException("Commands buffer is not large enough to hold requested draw count at the given offset");
-      } else if (commands.offset() % 4L != 0L) {
-         throw new IllegalArgumentException("Commands offset must be multiple of 4");
-      } else {
-         this.validateDraw(List.of(), false, false);
-         this.backend.drawIndirect(commands, drawCount);
       }
+
+      if (!this.deviceFeatures.drawIndirect()) {
+         throw new UnsupportedOperationException("device does not support drawIndirect");
+      }
+
+      if (drawCount > 1 && !this.deviceFeatures.multiDrawIndirect()) {
+         throw new UnsupportedOperationException("drawCount must be one when device does not support multiDrawIndirect");
+      }
+
+      if ((commands.buffer().usage() & 512) == 0) {
+         throw new IllegalArgumentException("Indirect commands buffer must have GpuBuffer.USAGE_INDIRECT_PARAMETERS flag");
+      }
+
+      if (commands.length() < (long)drawCount * VkDrawIndirectCommand.SIZEOF) {
+         throw new IllegalArgumentException("Commands buffer is not large enough to hold requested draw count at the given offset");
+      }
+
+      if (commands.offset() % 4L != 0L) {
+         throw new IllegalArgumentException("Commands offset must be multiple of 4");
+      }
+
+      this.validateDraw(List.of(), false, false);
+      this.backend.drawIndirect(commands, drawCount);
    }
 
    @Override
@@ -446,174 +501,128 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
       }
    }
 
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
    private void validateDraw(final Collection<String> dynamicUniforms, final boolean dynamicVertexBuffer, final boolean indexed) {
       if (this.boundPipeline == null) {
          throw new IllegalStateException("Can't draw without a render pipeline");
-      } else if (FrontendGpuDevice.STRICT_VALIDATION) {
+      }
+
+      if (FrontendGpuDevice.STRICT_VALIDATION) {
          if (this.boundPipeline.pushConstantSize() > 0 && !this.constantsPushed) {
             throw new IllegalStateException("Missing push constants");
-         } else {
-            if (indexed) {
-               if (this.indexBuffer == null) {
-                  throw new IllegalStateException("Missing index buffer");
-               }
+         }
 
-               ((BaseGpuBuffer)this.indexBuffer).checkCanBeUsed();
-               if (this.indexBuffer.isClosed()) {
-                  throw new IllegalStateException("Index buffer has been closed!");
-               }
-
-               if ((this.indexBuffer.usage() & 64) == 0) {
-                  throw new IllegalStateException("Index buffer must have GpuBuffer.USAGE_INDEX!");
-               }
+         if (indexed) {
+            if (this.indexBuffer == null) {
+               throw new IllegalStateException("Missing index buffer");
             }
 
-            if (!dynamicVertexBuffer) {
-               for (int i = 0; i < 16; i++) {
-                  if (this.vertexBuffers[i] == null && this.boundPipeline.vertexFormats().get(i) != null) {
-                     throw new IllegalStateException("Vertex format contains elements but vertex buffer at slot " + i + " is null");
-                  }
-
-                  if (this.vertexBuffers[i] != null) {
-                     ((BaseGpuBuffer)this.vertexBuffers[i].buffer()).checkCanBeUsed();
-                  }
-               }
+            ((BaseGpuBuffer)this.indexBuffer).checkCanBeUsed();
+            if (this.indexBuffer.isClosed()) {
+               throw new IllegalStateException("Index buffer has been closed!");
             }
 
-            for (BindGroupLayout.UniformDescription uniform : this.boundPipeline.uniforms()) {
-               Object value = this.uniforms.get(uniform.name());
-               if (!dynamicUniforms.contains(uniform.name())) {
-                  if (value == null) {
-                     throw new IllegalStateException("Missing uniform " + uniform.name() + " (should be " + uniform.type() + ")");
-                  }
+            if ((this.indexBuffer.usage() & 64) == 0) {
+               throw new IllegalStateException("Index buffer must have GpuBuffer.USAGE_INDEX!");
+            }
+         }
 
-                  Throwable var29;
-                  switch (uniform.type()) {
-                     case UNIFORM_BUFFER:
-                        if (!(value instanceof GpuBufferSlice valueSlice)) {
-                           throw new IllegalArgumentException("UBO value must be GpuBufferSlice");
-                        }
+         if (!dynamicVertexBuffer) {
+            for (int i = 0; i < 16; i++) {
+               if (this.vertexBuffers[i] == null && this.boundPipeline.vertexFormats().get(i) != null) {
+                  throw new IllegalStateException("Vertex format contains elements but vertex buffer at slot " + i + " is null");
+               }
 
-                        ((BaseGpuBuffer)valueSlice.buffer()).checkCanBeUsed();
-                        if (valueSlice.buffer().isClosed()) {
-                           throw new IllegalStateException("Uniform buffer " + uniform.name() + " is already closed");
-                        }
+               if (this.vertexBuffers[i] != null) {
+                  ((BaseGpuBuffer)this.vertexBuffers[i].buffer()).checkCanBeUsed();
+               }
+            }
+         }
 
-                        if ((valueSlice.buffer().usage() & 128) == 0) {
-                           throw new IllegalStateException("Uniform buffer " + uniform.name() + " must have GpuBuffer.USAGE_UNIFORM");
-                        }
-                        continue;
-                     case TEXEL_BUFFER:
-                        if (value instanceof GpuBufferSlice var12) {
-                           GpuBufferSlice var33 = var12;
+         for (BindGroupLayout.UniformDescription uniform : this.boundPipeline.uniforms()) {
+            Object value = this.uniforms.get(uniform.name());
+            if (!dynamicUniforms.contains(uniform.name())) {
+               if (value == null) {
+                  throw new IllegalStateException("Missing uniform " + uniform.name() + " (should be " + uniform.type() + ")");
+               }
 
-                           try {
-                              var34 = var33.buffer();
-                           } catch (Throwable var21) {
-                              var29 = var21;
-                              boolean var40 = false;
-                              break;
+               switch (uniform.type()) {
+                  case UNIFORM_BUFFER:
+                     if (!(value instanceof GpuBufferSlice valueSlice)) {
+                        throw new IllegalArgumentException("UBO value must be GpuBufferSlice");
+                     }
+
+                     ((BaseGpuBuffer)valueSlice.buffer()).checkCanBeUsed();
+                     if (valueSlice.buffer().isClosed()) {
+                        throw new IllegalStateException("Uniform buffer " + uniform.name() + " is already closed");
+                     }
+
+                     if ((valueSlice.buffer().usage() & 128) == 0) {
+                        throw new IllegalStateException("Uniform buffer " + uniform.name() + " must have GpuBuffer.USAGE_UNIFORM");
+                     }
+                     break;
+                  case TEXEL_BUFFER:
+                     if (value instanceof GpuBufferSlice(GpuBuffer buffer, long offset, long length)) {
+                        if (offset == 0L && length == buffer.size()) {
+                           if ((buffer.usage() & 256) == 0) {
+                              throw new IllegalStateException("Uniform texel buffer " + uniform.name() + " must have GpuBuffer.USAGE_UNIFORM_TEXEL_BUFFER");
                            }
 
-                           GpuBuffer var13 = var34;
-                           GpuBufferSlice var35 = var12;
-
-                           try {
-                              var36 = var35.offset();
-                           } catch (Throwable var20) {
-                              var29 = var20;
-                              boolean var41 = false;
-                              break;
+                           if (uniform.gpuFormat() == null) {
+                              throw new IllegalStateException("Invalid uniform texel buffer " + uniform.name() + " (missing a texture format)");
                            }
-
-                           long var27 = var36;
-                           if (true) {
-                              GpuBufferSlice var37 = var12;
-
-                              try {
-                                 var38 = var37.length();
-                              } catch (Throwable var19) {
-                                 var29 = var19;
-                                 boolean var42 = false;
-                                 break;
-                              }
-
-                              long var28 = var38;
-                              if (true) {
-                                 if (var27 == 0L && var28 == var13.size()) {
-                                    if ((var13.usage() & 256) == 0) {
-                                       throw new IllegalStateException(
-                                          "Uniform texel buffer " + uniform.name() + " must have GpuBuffer.USAGE_UNIFORM_TEXEL_BUFFER"
-                                       );
-                                    }
-
-                                    if (uniform.gpuFormat() == null) {
-                                       throw new IllegalStateException("Invalid uniform texel buffer " + uniform.name() + " (missing a texture format)");
-                                    }
-                                    continue;
-                                 }
-
-                                 throw new IllegalStateException("Uniform texel buffers do not support a slice of a buffer, must be entire buffer");
-                              }
-                           }
-                        }
-
-                        throw new IllegalArgumentException("UTB value must be GpuBufferSlice");
-                     case COMBINED_IMAGE_SAMPLER:
-                        if (!(value instanceof TextureViewAndSampler var9)) {
-                           throw new IllegalArgumentException("Sampler value must be TextureViewAndSampler");
-                        }
-
-                        TextureViewAndSampler var10000 = var9;
-
-                        try {
-                           var30 = var10000.view();
-                        } catch (Throwable var18) {
-                           var29 = var18;
-                           boolean var10001 = false;
                            break;
                         }
 
-                        GpuTextureView length = var30;
-                        TextureViewAndSampler var31 = var9;
+                        throw new IllegalStateException("Uniform texel buffers do not support a slice of a buffer, must be entire buffer");
+                     }
 
-                        try {
-                           var32 = var31.sampler();
-                        } catch (Throwable var17) {
-                           var29 = var17;
-                           boolean var39 = false;
-                           break;
-                        }
+                     throw new IllegalArgumentException("UTB value must be GpuBufferSlice");
+                  case COMBINED_IMAGE_SAMPLER:
+                     if (!(value instanceof TextureViewAndSampler var9)) {
+                        throw new IllegalArgumentException("Sampler value must be TextureViewAndSampler");
+                     }
 
-                        GpuSampler var26 = var32;
-                        if (length.isClosed()) {
-                           throw new IllegalStateException("Texture view " + uniform.name() + " (" + length.texture().getLabel() + ") has been closed!");
-                        }
+                     TextureViewAndSampler var10000 = var9;
 
-                        if ((length.texture().usage() & 4) == 0) {
-                           throw new IllegalStateException(
-                              "Texture view " + uniform.name() + " (" + length.texture().getLabel() + ") must have USAGE_TEXTURE_BINDING!"
-                           );
-                        }
+                     try {
+                        var30 = var10000.view();
+                     } catch (Throwable var18) {
+                        throw new MatchException(var18.toString(), var18);
+                     }
 
-                        if (var26.isClosed()) {
-                           throw new IllegalStateException("Sampler for " + uniform.name() + " (" + length.texture().getLabel() + ") has been closed!");
-                        }
-                     default:
-                        continue;
-                  }
+                     GpuTextureView length = var30;
+                     GpuTextureView textureView = length;
+                     var10000 = var9;
 
-                  Throwable var23 = var29;
-                  throw new MatchException(var23.toString(), var23);
+                     try {
+                        var32 = var10000.sampler();
+                     } catch (Throwable var17) {
+                        throw new MatchException(var17.toString(), var17);
+                     }
+
+                     GpuSampler var26 = var32;
+                     GpuSampler sampler = var26;
+                     if (textureView.isClosed()) {
+                        throw new IllegalStateException("Texture view " + uniform.name() + " (" + textureView.texture().getLabel() + ") has been closed!");
+                     }
+
+                     if ((textureView.texture().usage() & 4) == 0) {
+                        throw new IllegalStateException(
+                           "Texture view " + uniform.name() + " (" + textureView.texture().getLabel() + ") must have USAGE_TEXTURE_BINDING!"
+                        );
+                     }
+
+                     if (sampler.isClosed()) {
+                        throw new IllegalStateException("Sampler for " + uniform.name() + " (" + textureView.texture().getLabel() + ") has been closed!");
+                     }
                }
             }
+         }
 
-            if (this.boundPipeline.wantsDepthTexture() && !this.hasDepthAttachment) {
-               throw new IllegalStateException(
-                  String.format(Locale.ROOT, "Render pipeline %s wants a depth texture but none was provided", this.boundPipeline.name())
-               );
-            }
+         if (this.boundPipeline.wantsDepthTexture() && !this.hasDepthAttachment) {
+            throw new IllegalStateException(
+               String.format(Locale.ROOT, "Render pipeline %s wants a depth texture but none was provided", this.boundPipeline.name())
+            );
          }
       }
    }

@@ -19,7 +19,7 @@ public enum TriState implements StringRepresentable {
       });
    private final String name;
 
-   private TriState(final String name) {
+   TriState(final String name) {
       this.name = name;
    }
 

@@ -40,13 +40,13 @@ public interface ValueOutput {
 
    boolean isEmpty();
 
-   public interface TypedOutputList<T> {
+   interface TypedOutputList<T> {
       void add(T value);
 
       boolean isEmpty();
    }
 
-   public interface ValueOutputList {
+   interface ValueOutputList {
       ValueOutput addChild();
 
       void discardLast();

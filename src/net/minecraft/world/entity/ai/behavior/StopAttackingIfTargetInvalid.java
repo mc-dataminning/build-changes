@@ -15,13 +15,11 @@ public class StopAttackingIfTargetInvalid {
    }
 
    public static <E extends Mob> BehaviorControl<E> create(final StopAttackingIfTargetInvalid.StopAttackCondition stopAttackingWhen) {
-      return create(stopAttackingWhen, (level, body, target) -> {
-      }, true);
+      return create(stopAttackingWhen, (level, body, target) -> {}, true);
    }
 
    public static <E extends Mob> BehaviorControl<E> create() {
-      return create((level, entity) -> false, (level, body, target) -> {
-      }, true);
+      return create((level, entity) -> false, (level, body, target) -> {}, true);
    }
 
    public static <E extends Mob> BehaviorControl<E> create(
@@ -31,23 +29,23 @@ public class StopAttackingIfTargetInvalid {
    ) {
       return BehaviorBuilder.create(
          i -> i.group(i.present(MemoryModuleType.ATTACK_TARGET), i.registered(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE))
-               .apply(
-                  i,
-                  (attackTarget, cantReachSince) -> (level, body, timestamp) -> {
-                        LivingEntity target = i.get(attackTarget);
-                        if (body.canAttack(target)
-                           && (!canGrowTiredOfTryingToReachTarget || !isTiredOfTryingToReachTarget(body, i.tryGet(cantReachSince)))
-                           && target.isAlive()
-                           && target.level() == body.level()
-                           && !stopAttackingWhen.test(level, target)) {
-                           return true;
-                        } else {
-                           onTargetErased.accept(level, (E)body, target);
-                           attackTarget.erase();
-                           return true;
-                        }
-                     }
-               )
+            .apply(
+               i,
+               (attackTarget, cantReachSince) -> (level, body, timestamp) -> {
+                  LivingEntity target = i.get(attackTarget);
+                  if (body.canAttack(target)
+                     && (!canGrowTiredOfTryingToReachTarget || !isTiredOfTryingToReachTarget(body, i.tryGet(cantReachSince)))
+                     && target.isAlive()
+                     && target.level() == body.level()
+                     && !stopAttackingWhen.test(level, target)) {
+                     return true;
+                  }
+
+                  onTargetErased.accept(level, (E)body, target);
+                  attackTarget.erase();
+                  return true;
+               }
+            )
       );
    }
 

@@ -27,12 +27,14 @@ public abstract class SpreadingSnowyBlock extends SnowyBlock {
       BlockState aboveState = level.getBlockState(above);
       if (aboveState.is(Blocks.SNOW) && aboveState.getValue(SnowLayerBlock.LAYERS) == 1) {
          return true;
-      } else if (aboveState.getFluidState().isFull()) {
-         return false;
-      } else {
-         int lightDampeningTopFace = LightEngine.getLightDampeningInto(state, aboveState, Direction.UP, aboveState.getLightDampening());
-         return lightDampeningTopFace < 15;
       }
+
+      if (aboveState.getFluidState().isFull()) {
+         return false;
+      }
+
+      int lightDampeningTopFace = LightEngine.getLightDampeningInto(state, aboveState, Direction.UP, aboveState.getLightDampening());
+      return lightDampeningTopFace < 15;
    }
 
    private static boolean canPropagate(final BlockState state, final LevelReader level, final BlockPos pos) {
@@ -54,7 +56,7 @@ public abstract class SpreadingSnowyBlock extends SnowyBlock {
                for (int i = 0; i < 4; i++) {
                   BlockPos testPos = pos.offset(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
                   if (level.getBlockState(testPos).is(baseBlock.get()) && canPropagate(defaultBlockState, level, testPos)) {
-                     level.setBlockAndUpdate(testPos, defaultBlockState.setValue(SNOWY, Boolean.valueOf(isSnowySetting(level.getBlockState(testPos.above())))));
+                     level.setBlockAndUpdate(testPos, defaultBlockState.setValue(SNOWY, isSnowySetting(level.getBlockState(testPos.above()))));
                   }
                }
             }

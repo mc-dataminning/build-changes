@@ -102,9 +102,9 @@ public class SnowGolem extends AbstractGolem implements RangedAttackMob, Shearab
          BlockState snow = Blocks.SNOW.defaultBlockState();
 
          for (int i = 0; i < 4; i++) {
-            int xx = Mth.floor(this.getX() + (double)((float)(i % 2 * 2 - 1) * 0.25F));
+            int xx = Mth.floor(this.getX() + (i % 2 * 2 - 1) * 0.25F);
             int yy = Mth.floor(this.getY());
-            int zz = Mth.floor(this.getZ() + (double)((float)(i / 2 % 2 * 2 - 1) * 0.25F));
+            int zz = Mth.floor(this.getZ() + (i / 2 % 2 * 2 - 1) * 0.25F);
             BlockPos snowPos = new BlockPos(xx, yy, zz);
             if (this.level().getBlockState(snowPos).isAir() && snow.canSurvive(this.level(), snowPos)) {
                this.level().setBlockAndUpdate(snowPos, snow);
@@ -179,26 +179,23 @@ public class SnowGolem extends AbstractGolem implements RangedAttackMob, Shearab
       }
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getAmbientSound() {
+   protected @Nullable SoundEvent getAmbientSound() {
       return SoundEvents.SNOW_GOLEM_AMBIENT;
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getHurtSound(final DamageSource source) {
+   protected @Nullable SoundEvent getHurtSound(final DamageSource source) {
       return SoundEvents.SNOW_GOLEM_HURT;
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getDeathSound() {
+   protected @Nullable SoundEvent getDeathSound() {
       return SoundEvents.SNOW_GOLEM_DEATH;
    }
 
    @Override
    public Vec3 getLeashOffset() {
-      return new Vec3(0.0, (double)(0.75F * this.getEyeHeight()), (double)(this.getBbWidth() * 0.4F));
+      return new Vec3(0.0, 0.75F * this.getEyeHeight(), this.getBbWidth() * 0.4F);
    }
 }

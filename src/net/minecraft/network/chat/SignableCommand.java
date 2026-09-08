@@ -20,7 +20,7 @@ public record SignableCommand<S>(List<SignableCommand.Argument<S>> arguments) {
       final List<SignableCommand.Argument<S>> arguments = new ArrayList<>();
       ArgumentVisitor.visitArguments(command, new ArgumentVisitor.Output<S>() {
          @Override
-         public <T> void accept(final CommandContextBuilder<S> context, final ArgumentCommandNode<S, T> argument, @Nullable final ParsedArgument<S, T> value) {
+         public <T> void accept(final CommandContextBuilder<S> context, final ArgumentCommandNode<S, T> argument, final @Nullable ParsedArgument<S, T> value) {
             if (value != null && argument.getType() instanceof SignedArgument) {
                String stringValue = value.getRange().get(commandString);
                arguments.add(new SignableCommand.Argument<>(argument, stringValue));
@@ -30,8 +30,7 @@ public record SignableCommand<S>(List<SignableCommand.Argument<S>> arguments) {
       return new SignableCommand<>(arguments);
    }
 
-   @Nullable
-   public SignableCommand.Argument<S> getArgument(final String name) {
+   public SignableCommand.@Nullable Argument<S> getArgument(final String name) {
       for (SignableCommand.Argument<S> argument : this.arguments) {
          if (name.equals(argument.name())) {
             return argument;
@@ -41,7 +40,7 @@ public record SignableCommand<S>(List<SignableCommand.Argument<S>> arguments) {
       return null;
    }
 
-   public static record Argument<S>(ArgumentCommandNode<S, ?> node, String value) {
+   public record Argument<S>(ArgumentCommandNode<S, ?> node, String value) {
       public String name() {
          return this.node.getName();
       }

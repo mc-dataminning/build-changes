@@ -43,8 +43,7 @@ public class ServerAdvancementManager {
       }
    }
 
-   @Nullable
-   public AdvancementHolder get(final Identifier id) {
+   public @Nullable AdvancementHolder get(final Identifier id) {
       return this.advancements.get(id);
    }
 

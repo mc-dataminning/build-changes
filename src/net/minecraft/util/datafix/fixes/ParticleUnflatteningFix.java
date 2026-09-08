@@ -37,25 +37,25 @@ public class ParticleUnflatteningFix extends DataFix {
       Optional<String> maybeString = input.asString().result();
       if (maybeString.isEmpty()) {
          return input;
-      } else {
-         String particleDescription = maybeString.get();
-         String[] parts = particleDescription.split(" ", 2);
-         String id = NamespacedSchema.ensureNamespaced(parts[0]);
-         Dynamic<T> result = input.createMap(Map.of(input.createString("type"), input.createString(id)));
+      }
 
-         return switch (id) {
-            case "minecraft:item" -> parts.length > 1 ? this.updateItem(result, parts[1]) : result;
-            case "minecraft:block", "minecraft:block_marker", "minecraft:falling_dust", "minecraft:dust_pillar" -> parts.length > 1
+      String particleDescription = maybeString.get();
+      String[] parts = particleDescription.split(" ", 2);
+      String id = NamespacedSchema.ensureNamespaced(parts[0]);
+      Dynamic<T> result = input.createMap(Map.of(input.createString("type"), input.createString(id)));
+
+      return switch (id) {
+         case "minecraft:item" -> parts.length > 1 ? this.updateItem(result, parts[1]) : result;
+         case "minecraft:block", "minecraft:block_marker", "minecraft:falling_dust", "minecraft:dust_pillar" -> parts.length > 1
             ? this.updateBlock(result, parts[1])
             : result;
-            case "minecraft:dust" -> parts.length > 1 ? this.updateDust(result, parts[1]) : result;
-            case "minecraft:dust_color_transition" -> parts.length > 1 ? this.updateDustTransition(result, parts[1]) : result;
-            case "minecraft:sculk_charge" -> parts.length > 1 ? this.updateSculkCharge(result, parts[1]) : result;
-            case "minecraft:vibration" -> parts.length > 1 ? this.updateVibration(result, parts[1]) : result;
-            case "minecraft:shriek" -> parts.length > 1 ? this.updateShriek(result, parts[1]) : result;
-            default -> result;
-         };
-      }
+         case "minecraft:dust" -> parts.length > 1 ? this.updateDust(result, parts[1]) : result;
+         case "minecraft:dust_color_transition" -> parts.length > 1 ? this.updateDustTransition(result, parts[1]) : result;
+         case "minecraft:sculk_charge" -> parts.length > 1 ? this.updateSculkCharge(result, parts[1]) : result;
+         case "minecraft:vibration" -> parts.length > 1 ? this.updateVibration(result, parts[1]) : result;
+         case "minecraft:shriek" -> parts.length > 1 ? this.updateShriek(result, parts[1]) : result;
+         default -> result;
+      };
    }
 
    private <T> Dynamic<T> updateItem(final Dynamic<T> result, final String contents) {
@@ -74,12 +74,11 @@ public class ParticleUnflatteningFix extends DataFix {
       return result.set("item", itemStack);
    }
 
-   @Nullable
-   private static <T> Dynamic<T> parseTag(final DynamicOps<T> ops, final String contents) {
+   private static <T> @Nullable Dynamic<T> parseTag(final DynamicOps<T> ops, final String contents) {
       try {
          return new Dynamic(ops, TagParser.create(ops).parseFully(contents));
-      } catch (Exception var3) {
-         LOGGER.warn("Failed to parse tag: {}", contents, var3);
+      } catch (Exception e) {
+         LOGGER.warn("Failed to parse tag: {}", contents, e);
          return null;
       }
    }
@@ -127,8 +126,8 @@ public class ParticleUnflatteningFix extends DataFix {
 
          reader.expect(']');
          return result;
-      } catch (Exception var6) {
-         LOGGER.warn("Failed to parse block properties: {}", contents, var6);
+      } catch (Exception e) {
+         LOGGER.warn("Failed to parse block properties: {}", contents, e);
          return Map.of();
       }
    }
@@ -149,8 +148,8 @@ public class ParticleUnflatteningFix extends DataFix {
          reader.expect(' ');
          float scale = reader.readFloat();
          return result.set("color", vector).set("scale", result.createFloat(scale));
-      } catch (Exception var6) {
-         LOGGER.warn("Failed to parse particle options: {}", contents, var6);
+      } catch (Exception e) {
+         LOGGER.warn("Failed to parse particle options: {}", contents, e);
          return result;
       }
    }
@@ -164,8 +163,8 @@ public class ParticleUnflatteningFix extends DataFix {
          reader.expect(' ');
          Dynamic<T> to = readVector(result, reader);
          return result.set("from_color", from).set("to_color", to).set("scale", result.createFloat(scale));
-      } catch (Exception var7) {
-         LOGGER.warn("Failed to parse particle options: {}", contents, var7);
+      } catch (Exception e) {
+         LOGGER.warn("Failed to parse particle options: {}", contents, e);
          return result;
       }
    }
@@ -175,8 +174,8 @@ public class ParticleUnflatteningFix extends DataFix {
          StringReader reader = new StringReader(contents);
          float roll = reader.readFloat();
          return result.set("roll", result.createFloat(roll));
-      } catch (Exception var5) {
-         LOGGER.warn("Failed to parse particle options: {}", contents, var5);
+      } catch (Exception e) {
+         LOGGER.warn("Failed to parse particle options: {}", contents, e);
          return result;
       }
    }
@@ -196,8 +195,8 @@ public class ParticleUnflatteningFix extends DataFix {
             Map.of(result.createString("type"), result.createString("minecraft:block"), result.createString("pos"), blockPos)
          );
          return result.set("destination", positionSource).set("arrival_in_ticks", result.createInt(arrivalInTicks));
-      } catch (Exception var10) {
-         LOGGER.warn("Failed to parse particle options: {}", contents, var10);
+      } catch (Exception e) {
+         LOGGER.warn("Failed to parse particle options: {}", contents, e);
          return result;
       }
    }
@@ -207,8 +206,8 @@ public class ParticleUnflatteningFix extends DataFix {
          StringReader reader = new StringReader(contents);
          int delay = reader.readInt();
          return result.set("delay", result.createInt(delay));
-      } catch (Exception var5) {
-         LOGGER.warn("Failed to parse particle options: {}", contents, var5);
+      } catch (Exception e) {
+         LOGGER.warn("Failed to parse particle options: {}", contents, e);
          return result;
       }
    }

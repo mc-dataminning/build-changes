@@ -41,8 +41,7 @@ public class ServerPlayerGameMode {
    protected ServerLevel level;
    protected final ServerPlayer player;
    private GameType gameModeForPlayer = GameType.DEFAULT_MODE;
-   @Nullable
-   private GameType previousGameModeForPlayer;
+   private @Nullable GameType previousGameModeForPlayer;
    private boolean isDestroyingBlock;
    private int destroyProgressStart;
    private BlockPos destroyPos = BlockPos.ZERO;
@@ -61,28 +60,28 @@ public class ServerPlayerGameMode {
    public boolean changeGameModeForPlayer(final GameType gameModeForPlayer) {
       if (gameModeForPlayer == this.gameModeForPlayer) {
          return false;
-      } else {
-         Abilities abilities = this.player.getAbilities();
-         this.setGameModeForPlayer(gameModeForPlayer, this.gameModeForPlayer);
-         if (abilities.flying && gameModeForPlayer != GameType.SPECTATOR && this.isInRangeOfGround()) {
-            abilities.flying = false;
-         }
-
-         this.player.onUpdateAbilities();
-         this.level
-            .getServer()
-            .getPlayerList()
-            .broadcastAll(new ClientboundPlayerInfoUpdatePacket(ClientboundPlayerInfoUpdatePacket.Action.UPDATE_GAME_MODE, this.player));
-         this.level.updateSleepingPlayerList();
-         if (gameModeForPlayer == GameType.CREATIVE) {
-            this.player.resetCurrentImpulseContext();
-         }
-
-         return true;
       }
+
+      Abilities abilities = this.player.getAbilities();
+      this.setGameModeForPlayer(gameModeForPlayer, this.gameModeForPlayer);
+      if (abilities.flying && gameModeForPlayer != GameType.SPECTATOR && this.isInRangeOfGround()) {
+         abilities.flying = false;
+      }
+
+      this.player.onUpdateAbilities();
+      this.level
+         .getServer()
+         .getPlayerList()
+         .broadcastAll(new ClientboundPlayerInfoUpdatePacket(ClientboundPlayerInfoUpdatePacket.Action.UPDATE_GAME_MODE, this.player));
+      this.level.updateSleepingPlayerList();
+      if (gameModeForPlayer == GameType.CREATIVE) {
+         this.player.resetCurrentImpulseContext();
+      }
+
+      return true;
    }
 
-   protected void setGameModeForPlayer(final GameType gameModeForPlayer, @Nullable final GameType previousGameModeForPlayer) {
+   protected void setGameModeForPlayer(final GameType gameModeForPlayer, final @Nullable GameType previousGameModeForPlayer) {
       this.previousGameModeForPlayer = previousGameModeForPlayer;
       this.gameModeForPlayer = gameModeForPlayer;
       Abilities abilities = this.player.getAbilities();
@@ -98,8 +97,7 @@ public class ServerPlayerGameMode {
       return this.gameModeForPlayer;
    }
 
-   @Nullable
-   public GameType getPreviousGameModeForPlayer() {
+   public @Nullable GameType getPreviousGameModeForPlayer() {
       return this.previousGameModeForPlayer;
    }
 
@@ -146,7 +144,7 @@ public class ServerPlayerGameMode {
    }
 
    private float incrementDestroyProgress(final BlockState blockState, final BlockPos delayedDestroyPos, final int ticksSpentDestroying) {
-      float destroyProgress = blockState.getDestroyProgress(this.player, this.player.level(), delayedDestroyPos) * (float)(ticksSpentDestroying + 1);
+      float destroyProgress = blockState.getDestroyProgress(this.player, this.player.level(), delayedDestroyPos) * (ticksSpentDestroying + 1);
       int state = (int)(destroyProgress * 10.0F);
       if (state != this.lastSentState) {
          this.level.destroyBlockProgress(this.player.getId(), delayedDestroyPos, state);
@@ -166,6 +164,10 @@ public class ServerPlayerGameMode {
       final BlockPos pos, final ServerboundPlayerActionPacket.Action action, final Direction direction, final int maxY, final int sequence
    ) {
       if (!this.player.isWithinBlockInteractionRange(pos, 1.0)) {
+         if (this.isDestroyingBlock && action == ServerboundPlayerActionPacket.Action.ABORT_DESTROY_BLOCK) {
+            this.abortDestroyBlock(pos, sequence);
+         }
+
          this.debugLogging(pos, false, sequence, "too far");
       } else if (pos.getY() > maxY) {
          this.player.connection.send(new ClientboundBlockUpdatePacket(pos, this.level.getBlockState(pos)));
@@ -236,7 +238,7 @@ public class ServerPlayerGameMode {
                int ticksSpentDestroying = this.gameTicks - this.destroyProgressStart;
                BlockState state = this.level.getBlockState(pos);
                if (!state.isAir()) {
-                  float destroyProgress = state.getDestroyProgress(this.player, this.player.level(), pos) * (float)(ticksSpentDestroying + 1);
+                  float destroyProgress = state.getDestroyProgress(this.player, this.player.level(), pos) * (ticksSpentDestroying + 1);
                   if (destroyProgress >= 0.7F) {
                      this.isDestroyingBlock = false;
                      this.level.destroyBlockProgress(this.player.getId(), pos, -1);
@@ -255,17 +257,21 @@ public class ServerPlayerGameMode {
 
             this.debugLogging(pos, true, sequence, "stopped destroying");
          } else if (action == ServerboundPlayerActionPacket.Action.ABORT_DESTROY_BLOCK) {
-            this.isDestroyingBlock = false;
-            if (!Objects.equals(this.destroyPos, pos)) {
-               LOGGER.warn("Mismatch in destroy block pos: {} {}", this.destroyPos, pos);
-               this.level.destroyBlockProgress(this.player.getId(), this.destroyPos, -1);
-               this.debugLogging(pos, true, sequence, "aborted mismatched destroying");
-            }
-
-            this.level.destroyBlockProgress(this.player.getId(), pos, -1);
-            this.debugLogging(pos, true, sequence, "aborted destroying");
+            this.abortDestroyBlock(pos, sequence);
          }
       }
+   }
+
+   private void abortDestroyBlock(final BlockPos pos, final int sequence) {
+      this.isDestroyingBlock = false;
+      if (!Objects.equals(this.destroyPos, pos)) {
+         LOGGER.warn("Mismatch in destroy block pos: {} {}", this.destroyPos, pos);
+         this.level.destroyBlockProgress(this.player.getId(), this.destroyPos, -1);
+         this.debugLogging(pos, true, sequence, "aborted mismatched destroying");
+      }
+
+      this.level.destroyBlockProgress(this.player.getId(), pos, -1);
+      this.debugLogging(pos, true, sequence, "aborted destroying");
    }
 
    public void destroyAndAck(final BlockPos pos, final int sequence, final String exitId) {
@@ -281,81 +287,87 @@ public class ServerPlayerGameMode {
       BlockState state = this.level.getBlockState(pos);
       if (!this.player.getMainHandItem().canDestroyBlock(state, this.level, pos, this.player)) {
          return false;
-      } else {
-         BlockEntity blockEntity = this.level.getBlockEntity(pos);
-         Block block = state.getBlock();
-         if (block instanceof GameMasterBlock && !this.player.canUseGameMasterBlocks()) {
-            this.level.sendBlockUpdated(pos, state, state, 3);
-            return false;
-         } else if (this.player.blockActionRestricted(this.level, pos, this.gameModeForPlayer)) {
-            return false;
-         } else {
-            BlockState adjustedState = block.playerWillDestroy(this.level, pos, state, this.player);
-            boolean changed = this.level.removeBlock(pos, false);
-            if (SharedConstants.DEBUG_BLOCK_BREAK) {
-               LOGGER.info("server broke {} {} -> {}", new Object[]{pos, adjustedState, this.level.getBlockState(pos)});
-            }
-
-            if (changed) {
-               block.destroy(this.level, pos, adjustedState);
-            }
-
-            if (this.player.preventsBlockDrops()) {
-               return true;
-            } else {
-               ItemStack itemStack = this.player.getMainHandItem();
-               ItemStack destroyedWith = itemStack.copy();
-               boolean canDestroy = this.player.hasCorrectToolForDrops(adjustedState);
-               itemStack.mineBlock(this.level, adjustedState, pos, this.player);
-               if (changed && canDestroy) {
-                  block.playerDestroy(this.level, this.player, pos, adjustedState, blockEntity, destroyedWith);
-               }
-
-               return true;
-            }
-         }
       }
+
+      BlockEntity blockEntity = this.level.getBlockEntity(pos);
+      Block block = state.getBlock();
+      if (block instanceof GameMasterBlock && !this.player.canUseGameMasterBlocks()) {
+         this.level.sendBlockUpdated(pos, state, state, 3);
+         return false;
+      }
+
+      if (this.player.blockActionRestricted(this.level, pos, this.gameModeForPlayer)) {
+         return false;
+      }
+
+      BlockState adjustedState = block.playerWillDestroy(this.level, pos, state, this.player);
+      boolean changed = this.level.removeBlock(pos, false);
+      if (SharedConstants.DEBUG_BLOCK_BREAK) {
+         LOGGER.info("server broke {} {} -> {}", new Object[]{pos, adjustedState, this.level.getBlockState(pos)});
+      }
+
+      if (changed) {
+         block.destroy(this.level, pos, adjustedState);
+      }
+
+      if (this.player.preventsBlockDrops()) {
+         return true;
+      }
+
+      ItemStack itemStack = this.player.getMainHandItem();
+      ItemStack destroyedWith = itemStack.copy();
+      boolean canDestroy = this.player.hasCorrectToolForDrops(adjustedState);
+      itemStack.mineBlock(this.level, adjustedState, pos, this.player);
+      if (changed && canDestroy) {
+         block.playerDestroy(this.level, this.player, pos, adjustedState, blockEntity, destroyedWith);
+      }
+
+      return true;
    }
 
    public InteractionResult useItem(final ServerPlayer player, final Level level, final ItemStack itemStack, final InteractionHand hand) {
       if (this.gameModeForPlayer == GameType.SPECTATOR) {
          return InteractionResult.PASS;
-      } else if (player.getCooldowns().isOnCooldown(itemStack)) {
-         return InteractionResult.PASS;
-      } else {
-         int oldCount = itemStack.getCount();
-         int oldDamage = itemStack.getDamageValue();
-         InteractionResult result = itemStack.use(level, player, hand);
-         ItemStack resultStack;
-         if (result instanceof InteractionResult.Success success) {
-            resultStack = Objects.requireNonNullElse(success.heldItemTransformedTo(), player.getItemInHand(hand));
-         } else {
-            resultStack = player.getItemInHand(hand);
-         }
-
-         if (resultStack == itemStack
-            && resultStack.getCount() == oldCount
-            && resultStack.getUseDuration(player) <= 0
-            && resultStack.getDamageValue() == oldDamage) {
-            return result;
-         } else if (result instanceof InteractionResult.Fail && resultStack.getUseDuration(player) > 0 && !player.isUsingItem()) {
-            return result;
-         } else {
-            if (itemStack != resultStack) {
-               player.setItemInHand(hand, resultStack);
-            }
-
-            if (resultStack.isEmpty()) {
-               player.setItemInHand(hand, ItemStack.EMPTY);
-            }
-
-            if (!player.isUsingItem()) {
-               player.inventoryMenu.sendAllDataToRemote();
-            }
-
-            return result;
-         }
       }
+
+      if (player.getCooldowns().isOnCooldown(itemStack)) {
+         return InteractionResult.PASS;
+      }
+
+      int oldCount = itemStack.getCount();
+      int oldDamage = itemStack.getDamageValue();
+      InteractionResult result = itemStack.use(level, player, hand);
+      ItemStack resultStack;
+      if (result instanceof InteractionResult.Success success) {
+         resultStack = Objects.requireNonNullElse(success.heldItemTransformedTo(), player.getItemInHand(hand));
+      } else {
+         resultStack = player.getItemInHand(hand);
+      }
+
+      if (resultStack == itemStack
+         && resultStack.getCount() == oldCount
+         && resultStack.getUseDuration(player) <= 0
+         && resultStack.getDamageValue() == oldDamage) {
+         return result;
+      }
+
+      if (result instanceof InteractionResult.Fail && resultStack.getUseDuration(player) > 0 && !player.isUsingItem()) {
+         return result;
+      }
+
+      if (itemStack != resultStack) {
+         player.setItemInHand(hand, resultStack);
+      }
+
+      if (resultStack.isEmpty()) {
+         player.setItemInHand(hand, ItemStack.EMPTY);
+      }
+
+      if (!player.isUsingItem()) {
+         player.inventoryMenu.sendAllDataToRemote();
+      }
+
+      return result;
    }
 
    public InteractionResult useItemOn(
@@ -365,12 +377,16 @@ public class ServerPlayerGameMode {
       BlockState state = level.getBlockState(pos);
       if (!state.getBlock().isEnabled(level.enabledFeatures())) {
          return InteractionResult.FAIL;
-      } else if (this.gameModeForPlayer == GameType.SPECTATOR) {
+      }
+
+      if (this.gameModeForPlayer == GameType.SPECTATOR) {
          MenuProvider menuProvider = state.getMenuProvider(level, pos);
          if (menuProvider != null) {
             player.openMenu(menuProvider);
             return InteractionResult.CONSUME;
-         } else if (state.getBlock() instanceof Portal portal) {
+         }
+
+         if (state.getBlock() instanceof Portal portal) {
             ServerLevel serverLevel = player.level();
             TeleportTransition teleportTransition = portal.getPortalDestination(serverLevel, player, pos);
             if (teleportTransition != null) {

@@ -63,7 +63,7 @@ public class SoundEngineExecutor extends BlockableEventLoop<Runnable> {
 
       try {
          this.thread.join();
-      } catch (InterruptedException var2) {
+      } catch (InterruptedException e) {
          Thread.currentThread().interrupt();
       }
    }

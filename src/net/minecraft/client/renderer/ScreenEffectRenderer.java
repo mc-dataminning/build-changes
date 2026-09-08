@@ -73,24 +73,22 @@ public class ScreenEffectRenderer {
       PlayerRenderState.ItemActivationRenderState itemActivation = playerRenderState.itemActivation;
       if (itemActivation != null) {
          int tick = 40 - itemActivation.ticks;
-         float scale = ((float)tick + partialTicks) / 40.0F;
+         float scale = (tick + partialTicks) / 40.0F;
          float ts = scale * scale;
          float tc = scale * ts;
          float smoothScale = 10.25F * tc * ts - 24.95F * ts * ts + 25.5F * tc - 13.8F * ts + 4.0F * scale;
          float piScale = smoothScale * (float) Math.PI;
          WindowRenderState windowState = this.gameRenderer.gameRenderState().windowRenderState;
-         float aspectRatio = (float)windowState.width / (float)windowState.height;
+         float aspectRatio = (float)windowState.width / windowState.height;
          float offX = itemActivation.offX * 0.3F * aspectRatio;
          float offY = itemActivation.offY * 0.3F;
          poseStack.pushPose();
-         poseStack.translate(
-            offX * Mth.abs(Mth.sin((double)(piScale * 2.0F))), offY * Mth.abs(Mth.sin((double)(piScale * 2.0F))), -10.0F + 9.0F * Mth.sin((double)piScale)
-         );
+         poseStack.translate(offX * Mth.abs(Mth.sin(piScale * 2.0F)), offY * Mth.abs(Mth.sin(piScale * 2.0F)), -10.0F + 9.0F * Mth.sin(piScale));
          float size = 0.8F;
          poseStack.scale(0.8F, 0.8F, 0.8F);
-         poseStack.rotateDegrees(Axis.YP, 900.0F * Mth.abs(Mth.sin((double)piScale)));
-         poseStack.rotateDegrees(Axis.XP, 6.0F * Mth.cos((double)(scale * 8.0F)));
-         poseStack.rotateDegrees(Axis.ZP, 6.0F * Mth.cos((double)(scale * 8.0F)));
+         poseStack.rotateDegrees(Axis.YP, 900.0F * Mth.abs(Mth.sin(piScale)));
+         poseStack.rotateDegrees(Axis.XP, 6.0F * Mth.cos(scale * 8.0F));
+         poseStack.rotateDegrees(Axis.ZP, 6.0F * Mth.cos(scale * 8.0F));
          this.gameRenderer.lighting().setupFor(Lighting.Entry.ITEMS_3D);
          itemActivation.itemState.submit(poseStack, submitNodeCollector, 15728880, OverlayTexture.NO_OVERLAY, 0);
          poseStack.popPose();

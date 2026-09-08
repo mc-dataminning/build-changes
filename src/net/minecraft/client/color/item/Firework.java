@@ -22,28 +22,30 @@ public record Firework(int defaultColor) implements ItemTintSource {
    }
 
    @Override
-   public int calculate(final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final LivingEntity owner) {
+   public int calculate(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner) {
       FireworkExplosion explosion = itemStack.get(DataComponents.FIREWORK_EXPLOSION);
       IntList explosionColors = explosion != null ? explosion.colors() : IntList.of();
       int colorCount = explosionColors.size();
       if (colorCount == 0) {
          return this.defaultColor;
-      } else if (colorCount == 1) {
-         return ARGB.opaque(explosionColors.getInt(0));
-      } else {
-         int totalRed = 0;
-         int totalGreen = 0;
-         int totalBlue = 0;
-
-         for (int i = 0; i < colorCount; i++) {
-            int color = explosionColors.getInt(i);
-            totalRed += ARGB.red(color);
-            totalGreen += ARGB.green(color);
-            totalBlue += ARGB.blue(color);
-         }
-
-         return ARGB.color(totalRed / colorCount, totalGreen / colorCount, totalBlue / colorCount);
       }
+
+      if (colorCount == 1) {
+         return ARGB.opaque(explosionColors.getInt(0));
+      }
+
+      int totalRed = 0;
+      int totalGreen = 0;
+      int totalBlue = 0;
+
+      for (int i = 0; i < colorCount; i++) {
+         int color = explosionColors.getInt(i);
+         totalRed += ARGB.red(color);
+         totalGreen += ARGB.green(color);
+         totalBlue += ARGB.blue(color);
+      }
+
+      return ARGB.color(totalRed / colorCount, totalGreen / colorCount, totalBlue / colorCount);
    }
 
    @Override

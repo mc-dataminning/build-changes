@@ -35,7 +35,7 @@ public class CatCollarLayer extends RenderLayer<CatRenderState, AbstractFelineMo
       DyeColor collarColor = state.collarColor;
       if (collarColor != null) {
          int color = collarColor.getTextureDiffuseColor();
-         AbstractFelineModel<CatRenderState> model = (AbstractFelineModel<CatRenderState>)(state.isBaby ? this.babyModel : this.adultModel);
+         AbstractFelineModel<CatRenderState> model = state.isBaby ? this.babyModel : this.adultModel;
          Identifier texture = state.isBaby ? CAT_BABY_COLLAR_LOCATION : CAT_COLLAR_LOCATION;
          coloredCutoutModelCopyLayerRender(model, texture, poseStack, submitNodeCollector, lightCoords, state, color, 1);
       }

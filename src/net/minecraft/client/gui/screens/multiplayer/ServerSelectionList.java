@@ -8,7 +8,6 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.ThreadPoolExecutor;
 import net.minecraft.ChatFormatting;
@@ -100,7 +99,7 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
       }
    }
 
-   public void setSelected(@Nullable final ServerSelectionList.Entry selected) {
+   public void setSelected(final ServerSelectionList.@Nullable Entry selected) {
       super.setSelected(selected);
       this.screen.onSelectedChange();
    }
@@ -239,11 +238,7 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
 
       @Override
       protected boolean matches(final ServerSelectionList.Entry other) {
-         if (other instanceof ServerSelectionList.NetworkServerEntry networkServerEntry && networkServerEntry.serverData == this.serverData) {
-            return true;
-         }
-
-         return false;
+         return other instanceof ServerSelectionList.NetworkServerEntry networkServerEntry && networkServerEntry.serverData == this.serverData;
       }
    }
 
@@ -256,18 +251,12 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
       private final Minecraft minecraft;
       private final ServerData serverData;
       private final FaviconTexture icon;
-      @Nullable
-      private byte[] lastIconBytes;
-      @Nullable
-      private List<Component> onlinePlayersTooltip;
-      @Nullable
-      private Identifier statusIcon;
-      @Nullable
-      private Component statusIconTooltip;
+      private byte @Nullable [] lastIconBytes;
+      private @Nullable List<Component> onlinePlayersTooltip;
+      private @Nullable Identifier statusIcon;
+      private @Nullable Component statusIconTooltip;
 
       protected OnlineServerEntry(final JoinMultiplayerScreen screen, final ServerData serverData) {
-         Objects.requireNonNull(ServerSelectionList.this);
-         super();
          this.screen = screen;
          this.serverData = serverData;
          this.minecraft = Minecraft.getInstance();
@@ -301,11 +290,11 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
                               },
                               EventLoopGroupHolder.remote(this.minecraft.options.useNativeTransport())
                            );
-                     } catch (UnknownHostException var2) {
+                     } catch (UnknownHostException ignored) {
                         this.serverData.setState(ServerData.State.UNREACHABLE);
                         this.serverData.motd = ServerSelectionList.CANT_RESOLVE_TEXT;
                         this.minecraft.execute(this::refreshStatus);
-                     } catch (Exception var3) {
+                     } catch (Exception ignored) {
                         this.serverData.setState(ServerData.State.UNREACHABLE);
                         this.serverData.motd = ServerSelectionList.CANT_CONNECT_TEXT;
                         this.minecraft.execute(this::refreshStatus);
@@ -324,7 +313,7 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
          this.extractIcon(graphics, this.getContentX(), this.getContentY(), this.icon.textureLocation());
          int index = ServerSelectionList.this.children().indexOf(this);
          if (this.serverData.state() == ServerData.State.PINGING) {
-            int iconIndex = (int)(Util.getMillis() / 100L + (long)(index * 2) & 7L);
+            int iconIndex = (int)(Util.getMillis() / 100L + index * 2 & 7L);
             if (iconIndex > 4) {
                iconIndex = 8 - iconIndex;
             }
@@ -352,9 +341,9 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
             }
          }
 
-         Component status = (Component)(this.serverData.state() == ServerData.State.INCOMPATIBLE
+         Component status = this.serverData.state() == ServerData.State.INCOMPATIBLE
             ? this.serverData.version.copy().withStyle(ChatFormatting.RED)
-            : this.serverData.status);
+            : this.serverData.status;
          int statusWidth = this.minecraft.font.width(status);
          int statusX = statusIconX - statusWidth - 5;
          graphics.text(this.minecraft.font, status, statusX, this.getContentY() + 1, -8355712);
@@ -450,14 +439,14 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
          graphics.blit(RenderPipelines.GUI_TEXTURED, location, rowLeft, rowTop, 0.0F, 0.0F, 32, 32, 32, 32);
       }
 
-      private boolean uploadServerIcon(@Nullable final byte[] serverIconBytes) {
+      private boolean uploadServerIcon(final byte @Nullable [] serverIconBytes) {
          if (serverIconBytes == null) {
             this.icon.clear();
          } else {
             try {
                this.icon.upload(NativeImage.read(serverIconBytes));
-            } catch (Throwable var3) {
-               ServerSelectionList.LOGGER.error("Invalid icon for server {} ({})", new Object[]{this.serverData.name, this.serverData.ip, var3});
+            } catch (Throwable t) {
+               ServerSelectionList.LOGGER.error("Invalid icon for server {} ({})", new Object[]{this.serverData.name, this.serverData.ip, t});
                return false;
             }
          }
@@ -470,22 +459,22 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
          if (event.isSelection()) {
             this.join();
             return true;
-         } else {
-            if (event.hasShiftDown()) {
-               ServerSelectionList list = this.screen.serverSelectionList;
-               int currentIndex = list.children().indexOf(this);
-               if (currentIndex == -1) {
-                  return true;
-               }
+         }
 
-               if (event.isDown() && currentIndex < this.screen.getServers().size() - 1 || event.isUp() && currentIndex > 0) {
-                  this.swap(currentIndex, event.isDown() ? currentIndex + 1 : currentIndex - 1);
-                  return true;
-               }
+         if (event.hasShiftDown()) {
+            ServerSelectionList list = this.screen.serverSelectionList;
+            int currentIndex = list.children().indexOf(this);
+            if (currentIndex == -1) {
+               return true;
             }
 
-            return super.keyPressed(event);
+            if (event.isDown() && currentIndex < this.screen.getServers().size() - 1 || event.isUp() && currentIndex > 0) {
+               this.swap(currentIndex, event.isDown() ? currentIndex + 1 : currentIndex - 1);
+               return true;
+            }
          }
+
+         return super.keyPressed(event);
       }
 
       @Override
@@ -505,22 +494,24 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
          if (this.mouseOverRightHalf(relX, relY, 32)) {
             this.join();
             return true;
-         } else {
-            int currentIndex = this.screen.serverSelectionList.children().indexOf(this);
-            if (currentIndex > 0 && this.mouseOverTopLeftQuarter(relX, relY, 32)) {
-               this.swap(currentIndex, currentIndex - 1);
-               return true;
-            } else if (currentIndex < this.screen.getServers().size() - 1 && this.mouseOverBottomLeftQuarter(relX, relY, 32)) {
-               this.swap(currentIndex, currentIndex + 1);
-               return true;
-            } else {
-               if (doubleClick) {
-                  this.join();
-               }
-
-               return super.mouseClicked(event, doubleClick);
-            }
          }
+
+         int currentIndex = this.screen.serverSelectionList.children().indexOf(this);
+         if (currentIndex > 0 && this.mouseOverTopLeftQuarter(relX, relY, 32)) {
+            this.swap(currentIndex, currentIndex - 1);
+            return true;
+         }
+
+         if (currentIndex < this.screen.getServers().size() - 1 && this.mouseOverBottomLeftQuarter(relX, relY, 32)) {
+            this.swap(currentIndex, currentIndex + 1);
+            return true;
+         }
+
+         if (doubleClick) {
+            this.join();
+         }
+
+         return super.mouseClicked(event, doubleClick);
       }
 
       public ServerData getServerData() {
@@ -572,11 +563,7 @@ public class ServerSelectionList extends ObjectSelectionList<ServerSelectionList
 
       @Override
       protected boolean matches(final ServerSelectionList.Entry other) {
-         if (other instanceof ServerSelectionList.OnlineServerEntry onlineServerEntry && onlineServerEntry.serverData == this.serverData) {
-            return true;
-         }
-
-         return false;
+         return other instanceof ServerSelectionList.OnlineServerEntry onlineServerEntry && onlineServerEntry.serverData == this.serverData;
       }
    }
 }

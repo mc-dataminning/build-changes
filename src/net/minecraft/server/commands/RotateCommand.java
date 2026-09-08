@@ -34,21 +34,21 @@ public class RotateCommand {
                                     ((RequiredArgumentBuilder)Commands.argument("facingEntity", EntityArgument.entity())
                                           .executes(
                                              c -> rotate(
-                                                   (CommandSourceStack)c.getSource(),
-                                                   EntityArgument.getEntity(c, "target"),
-                                                   new LookAt.LookAtEntity(EntityArgument.getEntity(c, "facingEntity"), EntityAnchorArgument.Anchor.FEET)
-                                                )
+                                                (CommandSourceStack)c.getSource(),
+                                                EntityArgument.getEntity(c, "target"),
+                                                new LookAt.LookAtEntity(EntityArgument.getEntity(c, "facingEntity"), EntityAnchorArgument.Anchor.FEET)
+                                             )
                                           ))
                                        .then(
                                           Commands.argument("facingAnchor", EntityAnchorArgument.anchor())
                                              .executes(
                                                 c -> rotate(
-                                                      (CommandSourceStack)c.getSource(),
-                                                      EntityArgument.getEntity(c, "target"),
-                                                      new LookAt.LookAtEntity(
-                                                         EntityArgument.getEntity(c, "facingEntity"), EntityAnchorArgument.getAnchor(c, "facingAnchor")
-                                                      )
+                                                   (CommandSourceStack)c.getSource(),
+                                                   EntityArgument.getEntity(c, "target"),
+                                                   new LookAt.LookAtEntity(
+                                                      EntityArgument.getEntity(c, "facingEntity"), EntityAnchorArgument.getAnchor(c, "facingAnchor")
                                                    )
+                                                )
                                              )
                                        )
                                  )
@@ -57,10 +57,10 @@ public class RotateCommand {
                            Commands.argument("facingLocation", Vec3Argument.vec3())
                               .executes(
                                  c -> rotate(
-                                       (CommandSourceStack)c.getSource(),
-                                       EntityArgument.getEntity(c, "target"),
-                                       new LookAt.LookAtPosition(Vec3Argument.getVec3(c, "facingLocation"))
-                                    )
+                                    (CommandSourceStack)c.getSource(),
+                                    EntityArgument.getEntity(c, "target"),
+                                    new LookAt.LookAtPosition(Vec3Argument.getVec3(c, "facingLocation"))
+                                 )
                               )
                         )
                   )

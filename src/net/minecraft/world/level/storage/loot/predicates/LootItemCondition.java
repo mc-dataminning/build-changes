@@ -19,7 +19,7 @@ public interface LootItemCondition extends LootContextUser, Predicate<LootContex
    MapCodec<? extends LootItemCondition> codec();
 
    @FunctionalInterface
-   public interface Builder {
+   interface Builder {
       LootItemCondition build();
 
       default LootItemCondition.Builder invert() {

@@ -20,8 +20,7 @@ public abstract class AbstractButton extends AbstractWidget.WithInactiveMessage 
       Identifier.withDefaultNamespace("widget/button_disabled"),
       Identifier.withDefaultNamespace("widget/button_highlighted")
    );
-   @Nullable
-   private Supplier<Boolean> overrideRenderHighlightedSprite;
+   private @Nullable Supplier<Boolean> overrideRenderHighlightedSprite;
 
    public AbstractButton(final int x, final int y, final int width, final int height, final Component message) {
       super(x, y, width, height, message);

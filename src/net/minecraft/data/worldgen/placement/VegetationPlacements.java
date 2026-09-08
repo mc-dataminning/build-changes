@@ -133,7 +133,7 @@ public class VegetationPlacements {
       return List.of(CountPlacement.of(count), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
    }
 
-   private static List<PlacementModifier> getMushroomPlacement(final int rarity, @Nullable final PlacementModifier prefix) {
+   private static List<PlacementModifier> getMushroomPlacement(final int rarity, final @Nullable PlacementModifier prefix) {
       Builder<PlacementModifier> builder = ImmutableList.builder();
       if (prefix != null) {
          builder.add(prefix);

@@ -23,66 +23,59 @@ public record EntityFlagsPredicate(
 ) implements EntitySubPredicate {
    public static final Codec<EntityFlagsPredicate> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.BOOL.optionalFieldOf("is_on_ground").forGetter(EntityFlagsPredicate::isOnGround),
-               Codec.BOOL.optionalFieldOf("is_on_fire").forGetter(EntityFlagsPredicate::isOnFire),
-               Codec.BOOL.optionalFieldOf("is_sneaking").forGetter(EntityFlagsPredicate::isCrouching),
-               Codec.BOOL.optionalFieldOf("is_sprinting").forGetter(EntityFlagsPredicate::isSprinting),
-               Codec.BOOL.optionalFieldOf("is_swimming").forGetter(EntityFlagsPredicate::isSwimming),
-               Codec.BOOL.optionalFieldOf("is_flying").forGetter(EntityFlagsPredicate::isFlying),
-               Codec.BOOL.optionalFieldOf("is_baby").forGetter(EntityFlagsPredicate::isBaby),
-               Codec.BOOL.optionalFieldOf("is_in_water").forGetter(EntityFlagsPredicate::isInWater),
-               Codec.BOOL.optionalFieldOf("is_fall_flying").forGetter(EntityFlagsPredicate::isFallFlying)
-            )
-            .apply(i, EntityFlagsPredicate::new)
+            Codec.BOOL.optionalFieldOf("is_on_ground").forGetter(EntityFlagsPredicate::isOnGround),
+            Codec.BOOL.optionalFieldOf("is_on_fire").forGetter(EntityFlagsPredicate::isOnFire),
+            Codec.BOOL.optionalFieldOf("is_sneaking").forGetter(EntityFlagsPredicate::isCrouching),
+            Codec.BOOL.optionalFieldOf("is_sprinting").forGetter(EntityFlagsPredicate::isSprinting),
+            Codec.BOOL.optionalFieldOf("is_swimming").forGetter(EntityFlagsPredicate::isSwimming),
+            Codec.BOOL.optionalFieldOf("is_flying").forGetter(EntityFlagsPredicate::isFlying),
+            Codec.BOOL.optionalFieldOf("is_baby").forGetter(EntityFlagsPredicate::isBaby),
+            Codec.BOOL.optionalFieldOf("is_in_water").forGetter(EntityFlagsPredicate::isInWater),
+            Codec.BOOL.optionalFieldOf("is_fall_flying").forGetter(EntityFlagsPredicate::isFallFlying)
+         )
+         .apply(i, EntityFlagsPredicate::new)
    );
 
    public boolean matches(final Entity entity) {
       if (this.isOnGround.isPresent() && entity.onGround() != this.isOnGround.get()) {
          return false;
-      } else if (this.isOnFire.isPresent() && entity.isOnFire() != this.isOnFire.get()) {
+      }
+
+      if (this.isOnFire.isPresent() && entity.isOnFire() != this.isOnFire.get()) {
          return false;
-      } else if (this.isCrouching.isPresent() && entity.isCrouching() != this.isCrouching.get()) {
+      }
+
+      if (this.isCrouching.isPresent() && entity.isCrouching() != this.isCrouching.get()) {
          return false;
-      } else if (this.isSprinting.isPresent() && entity.isSprinting() != this.isSprinting.get()) {
+      }
+
+      if (this.isSprinting.isPresent() && entity.isSprinting() != this.isSprinting.get()) {
          return false;
-      } else if (this.isSwimming.isPresent() && entity.isSwimming() != this.isSwimming.get()) {
+      }
+
+      if (this.isSwimming.isPresent() && entity.isSwimming() != this.isSwimming.get()) {
+         return false;
+      }
+
+      if (this.isFlying.isPresent()) {
+         boolean entityIsFlying = entity instanceof LivingEntity living
+            && (living.isFallFlying() || living instanceof Player player && player.getAbilities().flying);
+         if (entityIsFlying != this.isFlying.get()) {
+            return false;
+         }
+      }
+
+      if (this.isInWater.isPresent() && entity.isInWater() != this.isInWater.get()) {
          return false;
       } else {
-         if (this.isFlying.isPresent()) {
-            boolean var10000;
-            label67: {
-               if (entity instanceof LivingEntity living && (living.isFallFlying() || living instanceof Player player && player.getAbilities().flying)) {
-                  var10000 = true;
-                  break label67;
-               }
-
-               var10000 = false;
-            }
-
-            boolean entityIsFlying = var10000;
-            if (entityIsFlying != this.isFlying.get()) {
-               return false;
-            }
-         }
-
-         if (this.isInWater.isPresent() && entity.isInWater() != this.isInWater.get()) {
-            return false;
-         } else {
-            if (this.isFallFlying.isPresent() && entity instanceof LivingEntity living && living.isFallFlying() != this.isFallFlying.get()) {
-               return false;
-            }
-
-            if (this.isBaby.isPresent() && entity instanceof LivingEntity living && living.isBaby() != this.isBaby.get()) {
-               return false;
-            }
-
-            return true;
-         }
+         return this.isFallFlying.isPresent() && entity instanceof LivingEntity living && living.isFallFlying() != this.isFallFlying.get()
+            ? false
+            : !(this.isBaby.isPresent() && entity instanceof LivingEntity living) || living.isBaby() == this.isBaby.get();
       }
    }
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
       return this.matches(entity);
    }
 

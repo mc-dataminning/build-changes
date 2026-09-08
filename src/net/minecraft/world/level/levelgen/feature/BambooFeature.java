@@ -18,11 +18,10 @@ import net.minecraft.world.level.levelgen.Heightmap;
 public record BambooFeature(float probability) implements Feature {
    private static final BlockState BAMBOO_TRUNK = Blocks.BAMBOO
       .defaultBlockState()
-      .setValue(BambooStalkBlock.AGE, Integer.valueOf(1))
+      .setValue(BambooStalkBlock.AGE, 1)
       .setValue(BambooStalkBlock.LEAVES, BambooLeaves.NONE)
-      .setValue(BambooStalkBlock.STAGE, Integer.valueOf(0));
-   private static final BlockState BAMBOO_FINAL_LARGE = BAMBOO_TRUNK.setValue(BambooStalkBlock.LEAVES, BambooLeaves.LARGE)
-      .setValue(BambooStalkBlock.STAGE, Integer.valueOf(1));
+      .setValue(BambooStalkBlock.STAGE, 0);
+   private static final BlockState BAMBOO_FINAL_LARGE = BAMBOO_TRUNK.setValue(BambooStalkBlock.LEAVES, BambooLeaves.LARGE).setValue(BambooStalkBlock.STAGE, 1);
    private static final BlockState BAMBOO_TOP_LARGE = BAMBOO_TRUNK.setValue(BambooStalkBlock.LEAVES, BambooLeaves.LARGE);
    private static final BlockState BAMBOO_TOP_SMALL = BAMBOO_TRUNK.setValue(BambooStalkBlock.LEAVES, BambooLeaves.SMALL);
    public static final MapCodec<BambooFeature> CODEC = RecordCodecBuilder.mapCodec(

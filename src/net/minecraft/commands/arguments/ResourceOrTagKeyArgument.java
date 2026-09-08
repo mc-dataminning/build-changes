@@ -11,7 +11,6 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import com.mojang.datafixers.util.Either;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Predicate;
@@ -57,9 +56,9 @@ public class ResourceOrTagKeyArgument<T> implements ArgumentType<ResourceOrTagKe
             reader.skip();
             Identifier tagId = Identifier.read(reader);
             return new ResourceOrTagKeyArgument.TagResult<>(TagKey.create(this.registryKey, tagId));
-         } catch (CommandSyntaxException var4) {
+         } catch (CommandSyntaxException e) {
             reader.setCursor(cursor);
-            throw var4;
+            throw e;
          }
       } else {
          Identifier resourceId = Identifier.read(reader);
@@ -96,8 +95,6 @@ public class ResourceOrTagKeyArgument<T> implements ArgumentType<ResourceOrTagKe
          private final ResourceKey<? extends Registry<T>> registryKey;
 
          private Template(final ResourceKey<? extends Registry<T>> registryKey) {
-            Objects.requireNonNull(Info.this);
-            super();
             this.registryKey = registryKey;
          }
 
@@ -112,7 +109,7 @@ public class ResourceOrTagKeyArgument<T> implements ArgumentType<ResourceOrTagKe
       }
    }
 
-   private static record ResourceResult<T>(ResourceKey<T> key) implements ResourceOrTagKeyArgument.Result<T> {
+   private record ResourceResult<T>(ResourceKey<T> key) implements ResourceOrTagKeyArgument.Result<T> {
       @Override
       public Either<ResourceKey<T>, TagKey<T>> unwrap() {
          return Either.left(this.key);
@@ -141,7 +138,7 @@ public class ResourceOrTagKeyArgument<T> implements ArgumentType<ResourceOrTagKe
       String asPrintable();
    }
 
-   private static record TagResult<T>(TagKey<T> key) implements ResourceOrTagKeyArgument.Result<T> {
+   private record TagResult<T>(TagKey<T> key) implements ResourceOrTagKeyArgument.Result<T> {
       @Override
       public Either<ResourceKey<T>, TagKey<T>> unwrap() {
          return Either.right(this.key);

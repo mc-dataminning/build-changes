@@ -14,13 +14,15 @@ public class ScopedDensityBuffer extends DensityBuffer implements AutoCloseable 
    void restore(final int size) {
       if (size > this.values.length) {
          throw new IllegalArgumentException("Cannot set size larger than buffer capacity");
-      } else if (!this.closed) {
-         throw new IllegalArgumentException("Buffer is already in use");
-      } else {
-         this.age = 0;
-         this.closed = false;
-         this.size = size;
       }
+
+      if (!this.closed) {
+         throw new IllegalArgumentException("Buffer is already in use");
+      }
+
+      this.age = 0;
+      this.closed = false;
+      this.size = size;
    }
 
    int incrementAge() {

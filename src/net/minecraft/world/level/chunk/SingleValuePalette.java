@@ -9,12 +9,11 @@ import org.apache.commons.lang3.Validate;
 import org.jspecify.annotations.Nullable;
 
 public class SingleValuePalette<T> implements Palette<T> {
-   @Nullable
-   private T value;
+   private @Nullable T value;
 
    public SingleValuePalette(final List<T> paletteEntries) {
       if (!paletteEntries.isEmpty()) {
-         Validate.isTrue(paletteEntries.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)paletteEntries.size());
+         Validate.isTrue(paletteEntries.size() <= 1, "Can't initialize SingleValuePalette with %d values.", paletteEntries.size());
          this.value = paletteEntries.getFirst();
       }
    }
@@ -27,10 +26,10 @@ public class SingleValuePalette<T> implements Palette<T> {
    public int idFor(final T value, final PaletteResize<T> resizeHandler) {
       if (this.value != null && this.value != value) {
          return resizeHandler.onResize(1, value);
-      } else {
-         this.value = value;
-         return 0;
       }
+
+      this.value = value;
+      return 0;
    }
 
    @Override
@@ -60,9 +59,9 @@ public class SingleValuePalette<T> implements Palette<T> {
    public void write(final FriendlyByteBuf buffer, final IdMap<T> globalMap) {
       if (this.value == null) {
          throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         buffer.writeVarInt(globalMap.getId(this.value));
       }
+
+      buffer.writeVarInt(globalMap.getId(this.value));
    }
 
    @Override

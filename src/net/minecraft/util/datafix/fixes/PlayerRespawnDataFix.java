@@ -15,15 +15,15 @@ public class PlayerRespawnDataFix extends DataFix {
          "PlayerRespawnDataFix",
          this.getInputSchema().getType(References.PLAYER),
          input -> input.update(
-               DSL.remainderFinder(),
-               tag -> tag.update(
-                     "respawn",
-                     respawnTag -> respawnTag.set("dimension", respawnTag.createString(respawnTag.get("dimension").asString("minecraft:overworld")))
-                           .set("yaw", respawnTag.createFloat(respawnTag.get("angle").asFloat(0.0F)))
-                           .set("pitch", respawnTag.createFloat(0.0F))
-                           .remove("angle")
-                  )
+            DSL.remainderFinder(),
+            tag -> tag.update(
+               "respawn",
+               respawnTag -> respawnTag.set("dimension", respawnTag.createString(respawnTag.get("dimension").asString("minecraft:overworld")))
+                  .set("yaw", respawnTag.createFloat(respawnTag.get("angle").asFloat(0.0F)))
+                  .set("pitch", respawnTag.createFloat(0.0F))
+                  .remove("angle")
             )
+         )
       );
    }
 }

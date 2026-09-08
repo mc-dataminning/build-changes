@@ -25,30 +25,25 @@ public class SoundBufferLibrary {
 
    public CompletableFuture<SoundBuffer> getCompleteBuffer(final Identifier location) {
       return this.cache.computeIfAbsent(location, l -> CompletableFuture.supplyAsync(() -> {
-            try {
-               SoundBuffer x2;
-               try (
-                  InputStream is = this.resourceManager.open(l);
-                  FiniteAudioStream as = new JOrbisAudioStream(is);
-               ) {
-                  ByteBuffer data = as.readAll();
-                  x2 = new SoundBuffer(data, as.getFormat());
-               }
-
-               return x2;
-            } catch (IOException var10) {
-               throw new CompletionException(var10);
-            }
-         }, Util.nonCriticalIoPool()));
+         try (
+            InputStream is = this.resourceManager.open(l);
+            FiniteAudioStream as = new JOrbisAudioStream(is);
+         ) {
+            ByteBuffer data = as.readAll();
+            return new SoundBuffer(data, as.getFormat());
+         } catch (IOException e) {
+            throw new CompletionException(e);
+         }
+      }, Util.nonCriticalIoPool()));
    }
 
    public CompletableFuture<AudioStream> getStream(final Identifier location, final boolean looping) {
       return CompletableFuture.supplyAsync(() -> {
          try {
             InputStream is = this.resourceManager.open(location);
-            return (AudioStream)(looping ? new LoopingAudioStream(JOrbisAudioStream::new, is) : new JOrbisAudioStream(is));
-         } catch (IOException var4) {
-            throw new CompletionException(var4);
+            return looping ? new LoopingAudioStream(JOrbisAudioStream::new, is) : new JOrbisAudioStream(is);
+         } catch (IOException e) {
+            throw new CompletionException(e);
          }
       }, Util.nonCriticalIoPool());
    }
@@ -74,14 +69,14 @@ public class SoundBufferLibrary {
    public interface DebugOutput {
       void accountBuffer(Identifier id, int size, AudioFormat format);
 
-      public static class Counter implements SoundBufferLibrary.DebugOutput {
+      class Counter implements SoundBufferLibrary.DebugOutput {
          private int totalCount;
          private long totalSize;
 
          @Override
          public void accountBuffer(final Identifier id, final int size, final AudioFormat format) {
             this.totalCount++;
-            this.totalSize += (long)size;
+            this.totalSize += size;
          }
 
          public int totalCount() {

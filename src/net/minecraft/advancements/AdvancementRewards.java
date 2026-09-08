@@ -31,12 +31,12 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 public record AdvancementRewards(int experience, HolderSet<LootTable> loot, List<ResourceKey<Recipe<?>>> recipes, Optional<CacheableFunction> function) {
    public static final Codec<AdvancementRewards> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.INT.optionalFieldOf("experience", 0).forGetter(AdvancementRewards::experience),
-               LootTable.LIST_CODEC.optionalFieldOf("loot", HolderSet.empty()).forGetter(AdvancementRewards::loot),
-               Recipe.KEY_CODEC.listOf().optionalFieldOf("recipes", List.of()).forGetter(AdvancementRewards::recipes),
-               CacheableFunction.CODEC.optionalFieldOf("function").forGetter(AdvancementRewards::function)
-            )
-            .apply(i, AdvancementRewards::new)
+            Codec.INT.optionalFieldOf("experience", 0).forGetter(AdvancementRewards::experience),
+            LootTable.LIST_CODEC.optionalFieldOf("loot", HolderSet.empty()).forGetter(AdvancementRewards::loot),
+            Recipe.KEY_CODEC.listOf().optionalFieldOf("recipes", List.of()).forGetter(AdvancementRewards::recipes),
+            CacheableFunction.CODEC.optionalFieldOf("function").forGetter(AdvancementRewards::function)
+         )
+         .apply(i, AdvancementRewards::new)
    );
    public static final AdvancementRewards EMPTY = new AdvancementRewards(0, HolderSet.empty(), List.of(), Optional.empty());
 
@@ -89,10 +89,10 @@ public record AdvancementRewards(int experience, HolderSet<LootTable> loot, List
          .flatMap(function -> function.get(server.getFunctions()))
          .ifPresent(
             function -> server.getFunctions()
-                  .execute(
-                     (CommandFunction<CommandSourceStack>)function,
-                     player.createCommandSourceStack().withSuppressedOutput().withPermission(LevelBasedPermissionSet.GAMEMASTER)
-                  )
+               .execute(
+                  (CommandFunction<CommandSourceStack>)function,
+                  player.createCommandSourceStack().withSuppressedOutput().withPermission(LevelBasedPermissionSet.GAMEMASTER)
+               )
          );
    }
 

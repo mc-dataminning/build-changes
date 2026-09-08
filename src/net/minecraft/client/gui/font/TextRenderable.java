@@ -24,7 +24,7 @@ public interface TextRenderable {
 
    float bottom();
 
-   public interface Styled extends TextRenderable, ActiveArea {
+   interface Styled extends TextRenderable, ActiveArea {
       @Override
       default float activeLeft() {
          return this.left();

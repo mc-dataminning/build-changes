@@ -27,12 +27,12 @@ public class PhantomRenderer extends MobRenderer<Phantom, PhantomRenderState, Ph
 
    public void extractRenderState(final Phantom entity, final PhantomRenderState state, final float partialTicks) {
       super.extractRenderState(entity, state, partialTicks);
-      state.flapTime = (float)entity.getUniqueFlapTickOffset() + state.ageInTicks;
+      state.flapTime = entity.getUniqueFlapTickOffset() + state.ageInTicks;
       state.size = entity.getPhantomSize();
    }
 
    protected void scale(final PhantomRenderState state, final PoseStack poseStack) {
-      float scale = 1.0F + 0.15F * (float)state.size;
+      float scale = 1.0F + 0.15F * state.size;
       poseStack.scale(scale, scale, scale);
       poseStack.translate(0.0F, 1.3125F, 0.1875F);
    }

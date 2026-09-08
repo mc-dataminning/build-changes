@@ -18,37 +18,32 @@ public record VibrationInfo(
 ) {
    public static final Codec<VibrationInfo> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               GameEvent.CODEC.fieldOf("game_event").forGetter(VibrationInfo::gameEvent),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(VibrationInfo::distance),
-               Vec3.CODEC.fieldOf("pos").forGetter(VibrationInfo::pos),
-               UUIDUtil.CODEC.lenientOptionalFieldOf("source").forGetter(o -> Optional.ofNullable(o.uuid())),
-               UUIDUtil.CODEC.lenientOptionalFieldOf("projectile_owner").forGetter(o -> Optional.ofNullable(o.projectileOwnerUuid()))
+            GameEvent.CODEC.fieldOf("game_event").forGetter(VibrationInfo::gameEvent),
+            Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(VibrationInfo::distance),
+            Vec3.CODEC.fieldOf("pos").forGetter(VibrationInfo::pos),
+            UUIDUtil.CODEC.lenientOptionalFieldOf("source").forGetter(o -> Optional.ofNullable(o.uuid())),
+            UUIDUtil.CODEC.lenientOptionalFieldOf("projectile_owner").forGetter(o -> Optional.ofNullable(o.projectileOwnerUuid()))
+         )
+         .apply(
+            i,
+            (event, distance, pos, source, projectileOwner) -> new VibrationInfo(
+               event, distance, pos, (UUID)source.orElse(null), (UUID)projectileOwner.orElse(null)
             )
-            .apply(
-               i,
-               (event, distance, pos, source, projectileOwner) -> new VibrationInfo(
-                     event, distance, pos, (UUID)source.orElse(null), (UUID)projectileOwner.orElse(null)
-                  )
-            )
+         )
    );
 
    public VibrationInfo(
-      final Holder<GameEvent> gameEvent, final float distance, final Vec3 pos, @Nullable final UUID uuid, @Nullable final UUID projectileOwnerUuid
+      final Holder<GameEvent> gameEvent, final float distance, final Vec3 pos, final @Nullable UUID uuid, final @Nullable UUID projectileOwnerUuid
    ) {
       this(gameEvent, distance, pos, uuid, projectileOwnerUuid, null);
    }
 
-   public VibrationInfo(final Holder<GameEvent> gameEvent, final float distance, final Vec3 pos, @Nullable final Entity entity) {
+   public VibrationInfo(final Holder<GameEvent> gameEvent, final float distance, final Vec3 pos, final @Nullable Entity entity) {
       this(gameEvent, distance, pos, entity == null ? null : entity.getUUID(), getProjectileOwner(entity), entity);
    }
 
-   @Nullable
-   private static UUID getProjectileOwner(@Nullable final Entity entity) {
-      if (entity instanceof Projectile projectile && projectile.getOwner() != null) {
-         return projectile.getOwner().getUUID();
-      }
-
-      return null;
+   private static @Nullable UUID getProjectileOwner(final @Nullable Entity entity) {
+      return entity instanceof Projectile projectile && projectile.getOwner() != null ? projectile.getOwner().getUUID() : null;
    }
 
    public Optional<Entity> getEntity(final ServerLevel level) {

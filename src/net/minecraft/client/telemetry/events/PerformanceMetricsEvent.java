@@ -28,7 +28,7 @@ public final class PerformanceMetricsEvent extends AggregatedTelemetryEvent {
 
    @Override
    public void takeSample() {
-      this.fpsSamples.add((long)Minecraft.getInstance().getFps());
+      this.fpsSamples.add(Minecraft.getInstance().getFps());
       this.takeUsedMemorySample();
       this.frameTimeSamples.add(Minecraft.getInstance().getFrameTimeNs());
    }

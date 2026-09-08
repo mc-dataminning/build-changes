@@ -11,7 +11,7 @@ public record TeamPredicate(String team) implements EntitySubPredicate {
    public static final Codec<TeamPredicate> CODEC = Codec.STRING.xmap(TeamPredicate::new, TeamPredicate::team);
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
       Team team = entity.getTeam();
       return team != null && this.team.equals(team.getName());
    }

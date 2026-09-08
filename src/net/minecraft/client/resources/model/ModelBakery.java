@@ -7,7 +7,6 @@ import com.mojang.logging.LogUtils;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executor;
@@ -99,8 +98,8 @@ public class ModelBakery {
          this.unbakedBlockStateModels, (blockState, model) -> {
             try {
                return model.bake(blockState, baker);
-            } catch (Exception var4x) {
-               LOGGER.warn("Unable to bake model: '{}'", blockState, var4x);
+            } catch (Exception e) {
+               LOGGER.warn("Unable to bake model: '{}'", blockState, e);
                return null;
             }
          }, taskExecutor
@@ -116,8 +115,8 @@ public class ModelBakery {
                      ),
                      IDENTITY
                   );
-            } catch (Exception var6x) {
-               LOGGER.warn("Unable to bake item model: '{}'", location, var6x);
+            } catch (Exception e) {
+               LOGGER.warn("Unable to bake item model: '{}'", location, e);
                return null;
             }
          },
@@ -133,15 +132,12 @@ public class ModelBakery {
       return bakedBlockStateModelFuture.thenCombine(
          bakedItemStackModelFuture,
          (bakedBlockStateModels, bakedItemStateModels) -> new ModelBakery.BakingResult(
-               missingModels,
-               (Map<BlockState, BlockStateModel>)bakedBlockStateModels,
-               (Map<Identifier, ItemModel>)bakedItemStateModels,
-               itemStackModelProperties
-            )
+            missingModels, (Map<BlockState, BlockStateModel>)bakedBlockStateModels, (Map<Identifier, ItemModel>)bakedItemStateModels, itemStackModelProperties
+         )
       );
    }
 
-   public static record BakingResult(
+   public record BakingResult(
       ModelBakery.MissingModels missingModels,
       Map<BlockState, BlockStateModel> blockStateModels,
       Map<Identifier, ItemModel> itemStackModels,
@@ -167,7 +163,7 @@ public class ModelBakery {
       }
    }
 
-   public static record MissingModels(BlockStateModelPart blockPart, BlockStateModel block, MissingItemModel item, FluidModel fluid) {
+   public record MissingModels(BlockStateModelPart blockPart, BlockStateModel block, MissingItemModel item, FluidModel fluid) {
       public static ModelBakery.MissingModels bake(final ResolvedModel unbaked, final MaterialBaker materials, final ModelBaker.Interner interner) {
          ModelBaker missingModelBakery = new ModelBaker() {
             @Override
@@ -203,14 +199,14 @@ public class ModelBakery {
          Multimap<Identifier, Identifier> forbiddenSprites = SimpleModelWrapper.findNonBlockSprites(geometry);
          if (forbiddenSprites != null) {
             throw new IllegalStateException("Missing block contains sprites from outside of block atlas: " + forbiddenSprites);
-         } else {
-            Material.Baked particleMaterial = unbaked.resolveParticleMaterial(textureSlots, missingModelBakery);
-            SimpleModelWrapper missingModelPart = new SimpleModelWrapper(geometry, hasAmbientOcclusion, particleMaterial);
-            BlockStateModel bakedBlockModel = new SingleVariant(missingModelPart);
-            MissingItemModel bakedItemModel = new MissingItemModel(geometry.getAll(), new ModelRenderProperties(usesBlockLight, particleMaterial, transforms));
-            FluidModel bakedFluidModel = new FluidModel(ChunkSectionLayer.SOLID, particleMaterial, particleMaterial, null, null);
-            return new ModelBakery.MissingModels(missingModelPart, bakedBlockModel, bakedItemModel, bakedFluidModel);
          }
+
+         Material.Baked particleMaterial = unbaked.resolveParticleMaterial(textureSlots, missingModelBakery);
+         SimpleModelWrapper missingModelPart = new SimpleModelWrapper(geometry, hasAmbientOcclusion, particleMaterial);
+         BlockStateModel bakedBlockModel = new SingleVariant(missingModelPart);
+         MissingItemModel bakedItemModel = new MissingItemModel(geometry.getAll(), new ModelRenderProperties(usesBlockLight, particleMaterial, transforms));
+         FluidModel bakedFluidModel = new FluidModel(ChunkSectionLayer.SOLID, particleMaterial, particleMaterial, null, null);
+         return new ModelBakery.MissingModels(missingModelPart, bakedBlockModel, bakedItemModel, bakedFluidModel);
       }
    }
 
@@ -218,14 +214,10 @@ public class ModelBakery {
       private final MaterialBaker materials;
       private final ModelBaker.Interner interner;
       private final ModelBakery.MissingModels missingModels;
-      private final Map<ModelBaker.SharedOperationKey<Object>, Object> operationCache;
-      private final Function<ModelBaker.SharedOperationKey<Object>, Object> cacheComputeFunction;
+      private final Map<ModelBaker.SharedOperationKey<Object>, Object> operationCache = new ConcurrentHashMap<>();
+      private final Function<ModelBaker.SharedOperationKey<Object>, Object> cacheComputeFunction = k -> k.compute(this);
 
       private ModelBakerImpl(final MaterialBaker materials, final ModelBaker.Interner interner, final ModelBakery.MissingModels missingModels) {
-         Objects.requireNonNull(ModelBakery.this);
-         super();
-         this.operationCache = new ConcurrentHashMap<>();
-         this.cacheComputeFunction = k -> k.compute(this);
          this.materials = materials;
          this.interner = interner;
          this.missingModels = missingModels;

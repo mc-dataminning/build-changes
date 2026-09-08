@@ -12,6 +12,6 @@ public interface ItemInstance extends TypedInstance<Item>, DataComponentGetter {
    int count();
 
    default int getMaxStackSize() {
-      return this.getOrDefault(DataComponents.MAX_STACK_SIZE, Integer.valueOf(1));
+      return this.getOrDefault(DataComponents.MAX_STACK_SIZE, 1);
    }
 }

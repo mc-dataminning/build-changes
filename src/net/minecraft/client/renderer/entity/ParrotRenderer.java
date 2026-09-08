@@ -31,7 +31,7 @@ public class ParrotRenderer extends MobRenderer<Parrot, ParrotRenderState, Parro
       state.variant = entity.getVariant();
       float flap = Mth.lerp(partialTicks, entity.oFlap, entity.flap);
       float flapSpeed = Mth.lerp(partialTicks, entity.oFlapSpeed, entity.flapSpeed);
-      state.flapAngle = (Mth.sin((double)flap) + 1.0F) * flapSpeed;
+      state.flapAngle = (Mth.sin(flap) + 1.0F) * flapSpeed;
       state.pose = ParrotModel.getPose(entity);
    }
 

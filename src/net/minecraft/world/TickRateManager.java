@@ -14,7 +14,7 @@ public class TickRateManager {
 
    public void setTickRate(final float rate) {
       this.tickrate = Math.max(rate, 1.0F);
-      this.nanosecondsPerTick = (long)((double)TimeUtil.NANOSECONDS_PER_SECOND / (double)this.tickrate);
+      this.nanosecondsPerTick = (long)((double)TimeUtil.NANOSECONDS_PER_SECOND / this.tickrate);
    }
 
    public float tickrate() {

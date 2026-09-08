@@ -13,20 +13,17 @@ import org.jspecify.annotations.Nullable;
 public abstract class WarningScreen extends Screen {
    private static final int MESSAGE_PADDING = 100;
    private final Component message;
-   @Nullable
-   private final Component check;
+   private final @Nullable Component check;
    private final Component narration;
-   @Nullable
-   protected Checkbox stopShowing;
-   @Nullable
-   private FittingMultiLineTextWidget messageWidget;
+   protected @Nullable Checkbox stopShowing;
+   private @Nullable FittingMultiLineTextWidget messageWidget;
    private final FrameLayout layout;
 
    protected WarningScreen(final Component title, final Component message, final Component narration) {
       this(title, message, null, narration);
    }
 
-   protected WarningScreen(final Component title, final Component message, @Nullable final Component check, final Component narration) {
+   protected WarningScreen(final Component title, final Component message, final @Nullable Component check, final Component narration) {
       super(title);
       this.message = message;
       this.check = check;

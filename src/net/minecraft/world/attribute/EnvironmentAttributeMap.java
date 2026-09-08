@@ -18,7 +18,7 @@ public final class EnvironmentAttributeMap {
    public static final EnvironmentAttributeMap EMPTY = new EnvironmentAttributeMap(Map.of());
    public static final Codec<EnvironmentAttributeMap> CODEC = Codec.lazyInitialized(
       () -> Codec.dispatchedMap(EnvironmentAttributes.CODEC, Util.memoize(EnvironmentAttributeMap.Entry::createCodec))
-            .xmap(EnvironmentAttributeMap::new, v -> v.entries)
+         .xmap(EnvironmentAttributeMap::new, v -> v.entries)
    );
    public static final Codec<EnvironmentAttributeMap> NETWORK_CODEC = CODEC.xmap(
       EnvironmentAttributeMap::filterSyncable, EnvironmentAttributeMap::filterSyncable
@@ -45,8 +45,7 @@ public final class EnvironmentAttributeMap {
       return new EnvironmentAttributeMap.Builder();
    }
 
-   @Nullable
-   public <Value> EnvironmentAttributeMap.Entry<Value, ?> get(final EnvironmentAttribute<Value> attribute) {
+   public <Value> EnvironmentAttributeMap.@Nullable Entry<Value, ?> get(final EnvironmentAttribute<Value> attribute) {
       return (EnvironmentAttributeMap.Entry<Value, ?>)this.entries.get(attribute);
    }
 
@@ -65,15 +64,7 @@ public final class EnvironmentAttributeMap {
 
    @Override
    public boolean equals(final Object obj) {
-      if (obj == this) {
-         return true;
-      } else {
-         if (obj instanceof EnvironmentAttributeMap attributes && this.entries.equals(attributes.entries)) {
-            return true;
-         }
-
-         return false;
-      }
+      return obj == this ? true : obj instanceof EnvironmentAttributeMap attributes && this.entries.equals(attributes.entries);
    }
 
    @Override
@@ -114,7 +105,7 @@ public final class EnvironmentAttributeMap {
       }
    }
 
-   public static record Entry<Value, Argument>(Argument argument, AttributeModifier<Value, Argument> modifier) {
+   public record Entry<Value, Argument>(Argument argument, AttributeModifier<Value, Argument> modifier) {
       private static <Value> Codec<EnvironmentAttributeMap.Entry<Value, ?>> createCodec(final EnvironmentAttribute<Value> attribute) {
          Codec<EnvironmentAttributeMap.Entry<Value, ?>> fullCodec = attribute.type()
             .modifierCodec()
@@ -131,7 +122,7 @@ public final class EnvironmentAttributeMap {
       ) {
          return RecordCodecBuilder.mapCodec(
             i -> i.group(modifier.argumentCodec(attribute).fieldOf("argument").forGetter(EnvironmentAttributeMap.Entry::argument))
-                  .apply(i, value -> new EnvironmentAttributeMap.Entry<>(value, modifier))
+               .apply(i, value -> new EnvironmentAttributeMap.Entry<>(value, modifier))
          );
       }
 

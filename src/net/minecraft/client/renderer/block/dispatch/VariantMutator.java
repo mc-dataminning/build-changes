@@ -17,7 +17,7 @@ public interface VariantMutator extends UnaryOperator<Variant> {
    }
 
    @FunctionalInterface
-   public interface VariantProperty<T> {
+   interface VariantProperty<T> {
       Variant apply(Variant input, T value);
 
       default VariantMutator withValue(final T value) {

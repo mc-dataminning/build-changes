@@ -17,10 +17,10 @@ public class SaveOffCommand {
             boolean success = source.getServer().setAutoSave(false);
             if (!success) {
                throw ERROR_ALREADY_OFF.create();
-            } else {
-               source.sendSuccess(() -> Component.translatable("commands.save.disabled"), true);
-               return 1;
             }
+
+            source.sendSuccess(() -> Component.translatable("commands.save.disabled"), true);
+            return 1;
          })
       );
    }

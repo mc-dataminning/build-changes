@@ -27,8 +27,8 @@ public class PostEffectCommand {
    private static final CommandResponseTracker.MessagesWithArg<ServerPlayer, Identifier> RESPONSE_ADD = CommandResponseTracker.messages(
       ERROR_ADD_FAILED,
       (entity, var1, posteffect) -> Component.translatable(
-            "commands.posteffect.add.success.single", Component.translationArg(posteffect), entity.getDisplayName()
-         ),
+         "commands.posteffect.add.success.single", Component.translationArg(posteffect), entity.getDisplayName()
+      ),
       (entityCount, var1, posteffect) -> Component.translatable("commands.posteffect.add.success.multiple", Component.translationArg(posteffect), entityCount)
    );
    private static final CommandResponseTracker.Messages<ServerPlayer> RESPONSE_CLEAR = CommandResponseTracker.messages(
@@ -39,11 +39,11 @@ public class PostEffectCommand {
    private static final CommandResponseTracker.MessagesWithArg<ServerPlayer, Identifier> RESPONSE_REMOVE = CommandResponseTracker.messages(
       ERROR_REMOVE_FAILED,
       (entity, var1, posteffect) -> Component.translatable(
-            "commands.posteffect.remove.success.single", Component.translationArg(posteffect), entity.getDisplayName()
-         ),
+         "commands.posteffect.remove.success.single", Component.translationArg(posteffect), entity.getDisplayName()
+      ),
       (entityCount, var1, posteffect) -> Component.translatable(
-            "commands.posteffect.remove.success.multiple", Component.translationArg(posteffect), entityCount
-         )
+         "commands.posteffect.remove.success.multiple", Component.translationArg(posteffect), entityCount
+      )
    );
 
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
@@ -61,10 +61,10 @@ public class PostEffectCommand {
                                        .suggests(SuggestionProviders.cast(SuggestionProviders.POST_EFFECTS))
                                        .executes(
                                           c -> addPostEffect(
-                                                (CommandSourceStack)c.getSource(),
-                                                EntityArgument.getPlayers(c, "targets"),
-                                                IdentifierArgument.getId(c, "posteffect")
-                                             )
+                                             (CommandSourceStack)c.getSource(),
+                                             EntityArgument.getPlayers(c, "targets"),
+                                             IdentifierArgument.getId(c, "posteffect")
+                                          )
                                        )
                                  )
                            )
@@ -92,8 +92,8 @@ public class PostEffectCommand {
                               .suggests(SuggestionProviders.cast(SuggestionProviders.POST_EFFECTS))
                               .executes(
                                  c -> removePostEffect(
-                                       (CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets"), IdentifierArgument.getId(c, "posteffect")
-                                    )
+                                    (CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets"), IdentifierArgument.getId(c, "posteffect")
+                                 )
                               )
                         )
                   )

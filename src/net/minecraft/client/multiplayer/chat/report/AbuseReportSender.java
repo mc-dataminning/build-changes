@@ -27,13 +27,13 @@ public interface AbuseReportSender {
       return AbuseReportLimits.DEFAULTS;
    }
 
-   public static class SendException extends ThrowingComponent {
+   class SendException extends ThrowingComponent {
       public SendException(final Component component, final Throwable cause) {
          super(component, cause);
       }
    }
 
-   public static record Services(ReportEnvironment environment, UserApiService userApiService) implements AbuseReportSender {
+   record Services(ReportEnvironment environment, UserApiService userApiService) implements AbuseReportSender {
       private static final Component SERVICE_UNAVAILABLE_TEXT = Component.translatable("gui.abuseReport.send.service_unavailable");
       private static final Component HTTP_ERROR_TEXT = Component.translatable("gui.abuseReport.send.http_error");
       private static final Component JSON_ERROR_TEXT = Component.translatable("gui.abuseReport.send.json_error");
@@ -49,12 +49,12 @@ public interface AbuseReportSender {
                try {
                   this.userApiService.reportAbuse(request);
                   return Unit.INSTANCE;
-               } catch (MinecraftClientHttpException var7) {
-                  Component description = this.getHttpErrorDescription(var7);
-                  throw new CompletionException(new AbuseReportSender.SendException(description, var7));
-               } catch (MinecraftClientException var8) {
-                  Component descriptionx = this.getErrorDescription(var8);
-                  throw new CompletionException(new AbuseReportSender.SendException(descriptionx, var8));
+               } catch (MinecraftClientHttpException e) {
+                  Component description = this.getHttpErrorDescription(e);
+                  throw new CompletionException(new AbuseReportSender.SendException(description, e));
+               } catch (MinecraftClientException e) {
+                  Component description = this.getErrorDescription(e);
+                  throw new CompletionException(new AbuseReportSender.SendException(description, e));
                }
             },
             Util.ioPool()

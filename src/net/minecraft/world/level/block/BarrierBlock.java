@@ -26,7 +26,7 @@ public class BarrierBlock extends Block implements SimpleWaterloggedBlock {
 
    protected BarrierBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, Boolean.valueOf(false)));
+      this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, false));
    }
 
    @Override
@@ -67,10 +67,9 @@ public class BarrierBlock extends Block implements SimpleWaterloggedBlock {
       return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.defaultBlockState().setValue(WATERLOGGED, Boolean.valueOf(context.getLevel().getFluidState(context.getClickedPos()).is(Fluids.WATER)));
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
+      return this.defaultBlockState().setValue(WATERLOGGED, context.getLevel().getFluidState(context.getClickedPos()).is(Fluids.WATER));
    }
 
    @Override
@@ -79,20 +78,12 @@ public class BarrierBlock extends Block implements SimpleWaterloggedBlock {
    }
 
    @Override
-   public ItemStack pickupBlock(@Nullable final LivingEntity user, final LevelAccessor level, final BlockPos pos, final BlockState state) {
-      if (user instanceof Player player && player.isCreative()) {
-         return SimpleWaterloggedBlock.super.pickupBlock(user, level, pos, state);
-      }
-
-      return ItemStack.EMPTY;
+   public ItemStack pickupBlock(final @Nullable LivingEntity user, final LevelAccessor level, final BlockPos pos, final BlockState state) {
+      return user instanceof Player player && player.isCreative() ? SimpleWaterloggedBlock.super.pickupBlock(user, level, pos, state) : ItemStack.EMPTY;
    }
 
    @Override
-   public boolean canPlaceLiquid(@Nullable final LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
-      if (user instanceof Player player && player.isCreative()) {
-         return SimpleWaterloggedBlock.super.canPlaceLiquid(user, level, pos, state, type);
-      }
-
-      return false;
+   public boolean canPlaceLiquid(final @Nullable LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
+      return user instanceof Player player && player.isCreative() ? SimpleWaterloggedBlock.super.canPlaceLiquid(user, level, pos, state, type) : false;
    }
 }

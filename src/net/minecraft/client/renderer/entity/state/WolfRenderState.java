@@ -15,8 +15,7 @@ public class WolfRenderState extends LivingEntityRenderState {
    public float shakeAnim;
    public float wetShade = 1.0F;
    public Identifier texture = DEFAULT_TEXTURE;
-   @Nullable
-   public DyeColor collarColor;
+   public @Nullable DyeColor collarColor;
    public ItemStack bodyArmorItem = ItemStack.EMPTY;
 
    public float getBodyRollAngle(final float offset) {
@@ -27,6 +26,6 @@ public class WolfRenderState extends LivingEntityRenderState {
          progress = 1.0F;
       }
 
-      return Mth.sin((double)(progress * (float) Math.PI)) * Mth.sin((double)(progress * (float) Math.PI * 11.0F)) * 0.15F * (float) Math.PI;
+      return Mth.sin(progress * (float) Math.PI) * Mth.sin(progress * (float) Math.PI * 11.0F) * 0.15F * (float) Math.PI;
    }
 }

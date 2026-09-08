@@ -27,9 +27,9 @@ public class MinecartDispenseItemBehavior extends DefaultDispenseItemBehavior {
       Direction direction = source.state().getValue(DispenserBlock.FACING);
       ServerLevel level = source.level();
       Vec3 center = source.center();
-      double spawnX = center.x() + (double)direction.getStepX() * 1.125;
-      double spawnY = Math.floor(center.y()) + (double)direction.getStepY();
-      double spawnZ = center.z() + (double)direction.getStepZ() * 1.125;
+      double spawnX = center.x() + direction.getStepX() * 1.125;
+      double spawnY = Math.floor(center.y()) + direction.getStepY();
+      double spawnZ = center.z() + direction.getStepZ() * 1.125;
       BlockPos front = source.pos().relative(direction);
       BlockState blockFront = level.getBlockState(front);
       double yOffset;

@@ -9,7 +9,7 @@ import net.minecraft.tags.TagKey;
 
 public record EmptyTagLookupWrapper<T>(HolderLookup.RegistryLookup<T> parent) implements HolderLookup.RegistryLookup.Delegate<T> {
    public static <T> HolderLookup.RegistryLookup<T> wrap(final HolderLookup.RegistryLookup<T> registryLookup) {
-      return (HolderLookup.RegistryLookup<T>)(registryLookup instanceof EmptyTagLookupWrapper ? registryLookup : new EmptyTagLookupWrapper<>(registryLookup));
+      return registryLookup instanceof EmptyTagLookupWrapper ? registryLookup : new EmptyTagLookupWrapper<>(registryLookup);
    }
 
    public static HolderLookup.Provider wrap(final HolderLookup.Provider provider) {

@@ -21,7 +21,7 @@ public interface ClickEvent {
 
    ClickEvent.Action action();
 
-   public static enum Action implements StringRepresentable {
+   enum Action implements StringRepresentable {
       OPEN_URL("open_url", true, ClickEvent.OpenUrl.CODEC),
       OPEN_FILE("open_file", false, ClickEvent.OpenFile.CODEC),
       RUN_COMMAND("run_command", true, ClickEvent.RunCommand.CODEC),
@@ -37,7 +37,7 @@ public interface ClickEvent {
       private final String name;
       private final MapCodec<? extends ClickEvent> codec;
 
-      private Action(final String name, final boolean allowFromServer, final MapCodec<? extends ClickEvent> codec) {
+      Action(final String name, final boolean allowFromServer, final MapCodec<? extends ClickEvent> codec) {
          this.name = name;
          this.allowFromServer = allowFromServer;
          this.codec = codec;
@@ -63,7 +63,7 @@ public interface ClickEvent {
       }
    }
 
-   public static record ChangePage(int page) implements ClickEvent {
+   record ChangePage(int page) implements ClickEvent {
       public static final MapCodec<ClickEvent.ChangePage> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(ExtraCodecs.POSITIVE_INT.fieldOf("page").forGetter(ClickEvent.ChangePage::page)).apply(i, ClickEvent.ChangePage::new)
       );
@@ -74,7 +74,7 @@ public interface ClickEvent {
       }
    }
 
-   public static record CopyToClipboard(String value) implements ClickEvent {
+   record CopyToClipboard(String value) implements ClickEvent {
       public static final MapCodec<ClickEvent.CopyToClipboard> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(Codec.STRING.fieldOf("value").forGetter(ClickEvent.CopyToClipboard::value)).apply(i, ClickEvent.CopyToClipboard::new)
       );
@@ -85,13 +85,13 @@ public interface ClickEvent {
       }
    }
 
-   public static record Custom(Identifier id, Optional<Tag> payload) implements ClickEvent {
+   record Custom(Identifier id, Optional<Tag> payload) implements ClickEvent {
       public static final MapCodec<ClickEvent.Custom> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Identifier.CODEC.fieldOf("id").forGetter(ClickEvent.Custom::id),
-                  ExtraCodecs.NBT.optionalFieldOf("payload").forGetter(ClickEvent.Custom::payload)
-               )
-               .apply(i, ClickEvent.Custom::new)
+               Identifier.CODEC.fieldOf("id").forGetter(ClickEvent.Custom::id),
+               ExtraCodecs.NBT.optionalFieldOf("payload").forGetter(ClickEvent.Custom::payload)
+            )
+            .apply(i, ClickEvent.Custom::new)
       );
 
       @Override
@@ -100,7 +100,7 @@ public interface ClickEvent {
       }
    }
 
-   public static record OpenFile(String path) implements ClickEvent {
+   record OpenFile(String path) implements ClickEvent {
       public static final MapCodec<ClickEvent.OpenFile> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(Codec.STRING.fieldOf("path").forGetter(ClickEvent.OpenFile::path)).apply(i, ClickEvent.OpenFile::new)
       );
@@ -123,7 +123,7 @@ public interface ClickEvent {
       }
    }
 
-   public static record OpenUrl(URI uri) implements ClickEvent {
+   record OpenUrl(URI uri) implements ClickEvent {
       public static final MapCodec<ClickEvent.OpenUrl> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(ExtraCodecs.UNTRUSTED_URI.fieldOf("url").forGetter(ClickEvent.OpenUrl::uri)).apply(i, ClickEvent.OpenUrl::new)
       );
@@ -134,7 +134,7 @@ public interface ClickEvent {
       }
    }
 
-   public static record RunCommand(String command) implements ClickEvent {
+   record RunCommand(String command) implements ClickEvent {
       public static final MapCodec<ClickEvent.RunCommand> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(ExtraCodecs.CHAT_STRING.fieldOf("command").forGetter(ClickEvent.RunCommand::command)).apply(i, ClickEvent.RunCommand::new)
       );
@@ -145,7 +145,7 @@ public interface ClickEvent {
       }
    }
 
-   public static record ShowDialog(Holder<Dialog> dialog) implements ClickEvent {
+   record ShowDialog(Holder<Dialog> dialog) implements ClickEvent {
       public static final MapCodec<ClickEvent.ShowDialog> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(Dialog.CODEC.fieldOf("dialog").forGetter(ClickEvent.ShowDialog::dialog)).apply(i, ClickEvent.ShowDialog::new)
       );
@@ -156,7 +156,7 @@ public interface ClickEvent {
       }
    }
 
-   public static record SuggestCommand(String command) implements ClickEvent {
+   record SuggestCommand(String command) implements ClickEvent {
       public static final MapCodec<ClickEvent.SuggestCommand> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(ExtraCodecs.CHAT_STRING.fieldOf("command").forGetter(ClickEvent.SuggestCommand::command)).apply(i, ClickEvent.SuggestCommand::new)
       );

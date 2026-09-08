@@ -20,18 +20,13 @@ public class RealmsNotificationsScreen extends RealmsScreen {
    private static final Identifier INVITE_SPRITE = Identifier.withDefaultNamespace("icon/invite");
    private static final Identifier TRIAL_AVAILABLE_SPRITE = Identifier.withDefaultNamespace("icon/trial_available");
    private final CompletableFuture<Boolean> validClient = RealmsAvailability.get().thenApply(result -> result.type() == RealmsAvailability.Type.SUCCESS);
-   private DataFetcher.Subscription realmsDataSubscription;
-   @Nullable
-   private RealmsNotificationsScreen.DataFetcherConfiguration currentConfiguration;
+   private DataFetcher.@Nullable Subscription realmsDataSubscription;
+   private RealmsNotificationsScreen.@Nullable DataFetcherConfiguration currentConfiguration;
    private volatile int numberOfPendingInvites;
    private static boolean trialAvailable;
    private static boolean hasUnreadNews;
    private static boolean hasUnseenNotifications;
    private final RealmsNotificationsScreen.DataFetcherConfiguration showAll = new RealmsNotificationsScreen.DataFetcherConfiguration() {
-      {
-         Objects.requireNonNull(RealmsNotificationsScreen.this);
-      }
-
       @Override
       public DataFetcher.Subscription initDataFetcher(final RealmsDataFetcher dataSource) {
          DataFetcher.Subscription result = dataSource.dataFetcher.createSubscription();
@@ -46,10 +41,6 @@ public class RealmsNotificationsScreen extends RealmsScreen {
       }
    };
    private final RealmsNotificationsScreen.DataFetcherConfiguration onlyNotifications = new RealmsNotificationsScreen.DataFetcherConfiguration() {
-      {
-         Objects.requireNonNull(RealmsNotificationsScreen.this);
-      }
-
       @Override
       public DataFetcher.Subscription initDataFetcher(final RealmsDataFetcher dataSource) {
          DataFetcher.Subscription result = dataSource.dataFetcher.createSubscription();
@@ -80,8 +71,7 @@ public class RealmsNotificationsScreen extends RealmsScreen {
       this.minecraft.realmsDataFetcher().notificationsTask.reset();
    }
 
-   @Nullable
-   private RealmsNotificationsScreen.DataFetcherConfiguration getConfiguration() {
+   private RealmsNotificationsScreen.@Nullable DataFetcherConfiguration getConfiguration() {
       boolean realmsEnabled = this.inTitleScreen() && this.validClient.getNow(false);
       if (!realmsEnabled) {
          return null;

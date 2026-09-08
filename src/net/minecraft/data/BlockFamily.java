@@ -14,10 +14,8 @@ public class BlockFamily {
    private boolean generateCraftingRecipe = true;
    private boolean generateSmeltingRecipe = true;
    private boolean generateStonecutterRecipe = false;
-   @Nullable
-   private String recipeGroupPrefix;
-   @Nullable
-   private String recipeUnlockedBy;
+   private @Nullable String recipeGroupPrefix;
+   private @Nullable String recipeUnlockedBy;
 
    private BlockFamily(final Block baseBlock) {
       this.baseBlock = baseBlock;
@@ -234,7 +232,7 @@ public class BlockFamily {
       }
    }
 
-   public static enum Variant {
+   public enum Variant {
       BUTTON("button"),
       CARPET("carpet"),
       CHISELED("chiseled") {
@@ -287,7 +285,7 @@ public class BlockFamily {
 
       private final String recipeGroup;
 
-      private Variant(final String recipeGroup) {
+      Variant(final String recipeGroup) {
          this.recipeGroup = recipeGroup;
       }
 
@@ -299,8 +297,7 @@ public class BlockFamily {
          return prefix + "_" + this.getRecipeGroup();
       }
 
-      @Nullable
-      public BlockFamily.Variant getBaseVariantForCrafting() {
+      public BlockFamily.@Nullable Variant getBaseVariantForCrafting() {
          return null;
       }
    }

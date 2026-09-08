@@ -14,14 +14,14 @@ public record EnvironmentScanPlacement(Direction directionOfSearch, BlockPredica
    implements PlacementModifier {
    public static final MapCodec<EnvironmentScanPlacement> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Direction.VERTICAL_CODEC.fieldOf("direction_of_search").forGetter(EnvironmentScanPlacement::directionOfSearch),
-               BlockPredicate.CODEC.fieldOf("target_condition").forGetter(EnvironmentScanPlacement::targetCondition),
-               BlockPredicate.CODEC
-                  .optionalFieldOf("allowed_search_condition", BlockPredicate.alwaysTrue())
-                  .forGetter(EnvironmentScanPlacement::allowedSearchCondition),
-               Codec.intRange(1, 32).fieldOf("max_steps").forGetter(EnvironmentScanPlacement::maxSteps)
-            )
-            .apply(i, EnvironmentScanPlacement::new)
+            Direction.VERTICAL_CODEC.fieldOf("direction_of_search").forGetter(EnvironmentScanPlacement::directionOfSearch),
+            BlockPredicate.CODEC.fieldOf("target_condition").forGetter(EnvironmentScanPlacement::targetCondition),
+            BlockPredicate.CODEC
+               .optionalFieldOf("allowed_search_condition", BlockPredicate.alwaysTrue())
+               .forGetter(EnvironmentScanPlacement::allowedSearchCondition),
+            Codec.intRange(1, 32).fieldOf("max_steps").forGetter(EnvironmentScanPlacement::maxSteps)
+         )
+         .apply(i, EnvironmentScanPlacement::new)
    );
 
    public static EnvironmentScanPlacement scanningFor(

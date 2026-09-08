@@ -12,9 +12,9 @@ import org.jspecify.annotations.Nullable;
 public class IntLimit implements Validatable {
    public static final Codec<IntLimit> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ContextIntProviders.CODEC.optionalFieldOf("min").forGetter(r -> r.min), ContextIntProviders.CODEC.optionalFieldOf("max").forGetter(r -> r.max)
-            )
-            .apply(i, IntLimit::new)
+            ContextIntProviders.CODEC.optionalFieldOf("min").forGetter(r -> r.min), ContextIntProviders.CODEC.optionalFieldOf("max").forGetter(r -> r.max)
+         )
+         .apply(i, IntLimit::new)
    );
    private final Optional<Holder<ContextIntProvider>> min;
    private final Optional<Holder<ContextIntProvider>> max;
@@ -26,7 +26,7 @@ public class IntLimit implements Validatable {
       this.limiter = createLimiter(min.orElse(null), max.orElse(null));
    }
 
-   private static IntLimit.IntLimiter createLimiter(@Nullable final Holder<ContextIntProvider> min, @Nullable final Holder<ContextIntProvider> max) {
+   private static IntLimit.IntLimiter createLimiter(final @Nullable Holder<ContextIntProvider> min, final @Nullable Holder<ContextIntProvider> max) {
       if (min == null) {
          return max == null ? (var0, input) -> input : (context, input) -> Math.min(max.value().getInt(context), input);
       } else {

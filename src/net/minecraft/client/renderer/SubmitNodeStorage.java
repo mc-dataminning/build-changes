@@ -68,7 +68,7 @@ public class SubmitNodeStorage implements SubmitNodeCollector {
    @Override
    public void submitNameTag(
       final PoseStack poseStack,
-      @Nullable final Vec3 nameTagAttachment,
+      final @Nullable Vec3 nameTagAttachment,
       final int offset,
       final Component name,
       final boolean seeThrough,
@@ -127,7 +127,7 @@ public class SubmitNodeStorage implements SubmitNodeCollector {
       final int lightCoords,
       final int overlayCoords,
       final int tintedColor,
-      @Nullable final UvMapping uvMapping,
+      final @Nullable UvMapping uvMapping,
       final int outlineColor
    ) {
       this.order(0).submitModel(model, state, poseStack, renderType, lightCoords, overlayCoords, tintedColor, uvMapping, outlineColor);

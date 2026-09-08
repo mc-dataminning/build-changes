@@ -32,7 +32,8 @@ public class OverworldBiomes {
    public static final int SWAMP_SKELETON_WEIGHT = 70;
 
    public static int calculateSkyColor(final float temperature) {
-      float temp = temperature / 3.0F;
+      float temp = temperature;
+      temp /= 3.0F;
       temp = Mth.clamp(temp, -1.0F, 1.0F);
       return ARGB.opaque(Mth.hsvToRgb(0.62222224F - temp * 0.05F, 0.5F + temp * 0.1F, 1.0F));
    }

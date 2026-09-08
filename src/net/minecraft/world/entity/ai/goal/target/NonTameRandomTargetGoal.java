@@ -9,7 +9,7 @@ public class NonTameRandomTargetGoal<T extends LivingEntity> extends NearestAtta
    private final TamableAnimal tamableMob;
 
    public NonTameRandomTargetGoal(
-      final TamableAnimal mob, final Class<T> targetType, final boolean mustSee, @Nullable final TargetingConditions.Selector subselector
+      final TamableAnimal mob, final Class<T> targetType, final boolean mustSee, final TargetingConditions.@Nullable Selector subselector
    ) {
       super(mob, targetType, 10, mustSee, false, subselector);
       this.tamableMob = mob;

@@ -38,12 +38,12 @@ public abstract class Sensor<E extends LivingEntity> {
    }
 
    public void randomlyDelayStart(final RandomSource randomSource) {
-      this.timeToTick = (long)randomSource.nextInt(this.scanRate);
+      this.timeToTick = randomSource.nextInt(this.scanRate);
    }
 
    public final void tick(final ServerLevel level, final E body) {
       if (--this.timeToTick <= 0L) {
-         this.timeToTick = (long)this.scanRate;
+         this.timeToTick = this.scanRate;
          this.updateTargetingConditionRanges(body);
          this.doTick(level, body);
       }

@@ -19,9 +19,8 @@ public record MessageSignature(byte[] bytes) {
    public static final StreamCodec<ByteBuf, MessageSignature> STREAM_CODEC = StreamCodec.of(MessageSignature::write, MessageSignature::read);
    public static final int BYTES = 256;
 
-   public MessageSignature(byte[] bytes) {
+   public MessageSignature {
       Preconditions.checkState(bytes.length == 256, "Invalid message signature size");
-      this.bytes = bytes;
    }
 
    private static MessageSignature read(final ByteBuf input) {
@@ -44,15 +43,7 @@ public record MessageSignature(byte[] bytes) {
 
    @Override
    public boolean equals(final Object o) {
-      if (this == o) {
-         return true;
-      } else {
-         if (o instanceof MessageSignature that && Arrays.equals(this.bytes, that.bytes)) {
-            return true;
-         }
-
-         return false;
-      }
+      return this == o || o instanceof MessageSignature that && Arrays.equals(this.bytes, that.bytes);
    }
 
    @Override
@@ -65,7 +56,7 @@ public record MessageSignature(byte[] bytes) {
       return Base64.getEncoder().encodeToString(this.bytes);
    }
 
-   public static String describe(@Nullable final MessageSignature signature) {
+   public static String describe(final @Nullable MessageSignature signature) {
       return signature == null ? "<no signature>" : signature.toString();
    }
 
@@ -78,7 +69,7 @@ public record MessageSignature(byte[] bytes) {
       return Arrays.hashCode(this.bytes);
    }
 
-   public static record Packed(int id, @Nullable MessageSignature fullSignature) {
+   public record Packed(int id, @Nullable MessageSignature fullSignature) {
       public static final int FULL_SIGNATURE = -1;
       public static final StreamCodec<ByteBuf, MessageSignature.Packed> STREAM_CODEC = StreamCodec.of(
          MessageSignature.Packed::write, MessageSignature.Packed::read

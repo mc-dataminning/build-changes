@@ -220,8 +220,7 @@ public abstract class Entity
    public boolean blocksBuilding;
    private ImmutableList<Entity> passengers = ImmutableList.of();
    protected int boardingCooldown;
-   @Nullable
-   private Entity vehicle;
+   private @Nullable Entity vehicle;
    private Level level;
    public double xo;
    public double yo;
@@ -241,8 +240,7 @@ public abstract class Entity
    public boolean verticalCollisionBelow;
    public boolean minorHorizontalCollision;
    protected Vec3 stuckSpeedMultiplier = Vec3.ZERO;
-   @Nullable
-   private Entity.RemovalReason removalReason;
+   private Entity.@Nullable RemovalReason removalReason;
    public static final float DEFAULT_BB_WIDTH = 0.6F;
    public static final float DEFAULT_BB_HEIGHT = 1.8F;
    public float moveDist;
@@ -284,8 +282,7 @@ public abstract class Entity
    public boolean needsSync;
    public boolean syncPosition;
    public boolean syncVelocity;
-   @Nullable
-   public PortalProcessor portalProcess;
+   public @Nullable PortalProcessor portalProcess;
    private int portalCooldown;
    private boolean permanentlyInvulnerable;
    protected UUID uuid = Mth.createInsecureUUID(this.random);
@@ -304,10 +301,8 @@ public abstract class Entity
    private int lastCrystalSoundPlayTick;
    private boolean hasVisualFire;
    private Vec3 lastKnownSpeed = Vec3.ZERO;
-   @Nullable
-   private Vec3 lastKnownPosition;
-   @Nullable
-   private BlockState inBlockState = null;
+   private @Nullable Vec3 lastKnownPosition;
+   private @Nullable BlockState inBlockState = null;
    public static final int MAX_MOVEMENTS_HANDELED_PER_TICK = 100;
    private final ArrayDeque<Entity.Movement> movementThisTick = new ArrayDeque<>(100);
    private final List<Entity.Movement> finalMovementsThisTick = new ObjectArrayList();
@@ -586,8 +581,8 @@ public abstract class Entity
       }
 
       this.firstTick = false;
-      if (this.level() instanceof ServerLevel serverLevelx && this instanceof Leashable) {
-         Leashable.tickLeash(serverLevelx, (Entity)((Leashable)this));
+      if (this.level() instanceof ServerLevel serverLevel && this instanceof Leashable) {
+         Leashable.tickLeash(serverLevel, (Entity & Leashable)this);
       }
 
       profiler.pop();
@@ -607,7 +602,7 @@ public abstract class Entity
    }
 
    public void checkBelowWorld() {
-      if (this.getY() < (double)(this.level().getMinY() - 64)) {
+      if (this.getY() < this.level().getMinY() - 64) {
          this.onBelowWorld();
       }
    }
@@ -712,7 +707,7 @@ public abstract class Entity
       return this.mainSupportingBlockPos.isPresent() && this.mainSupportingBlockPos.get().equals(pos);
    }
 
-   protected void checkSupportingBlock(final boolean onGround, @Nullable final Vec3 movement) {
+   protected void checkSupportingBlock(final boolean onGround, final @Nullable Vec3 movement) {
       if (onGround) {
          AABB boundingBox = this.getBoundingBox();
          AABB testArea = new AABB(boundingBox.minX, boundingBox.minY - 1.0E-6, boundingBox.minZ, boundingBox.maxX, boundingBox.minY, boundingBox.maxZ);
@@ -743,7 +738,9 @@ public abstract class Entity
          throw (IllegalStateException)Util.pauseInIde(
             new IllegalStateException("Attempted to move entity on a logical side not permitted to simulate movement")
          );
-      } else if (this.noPhysics) {
+      }
+
+      if (this.noPhysics) {
          this.setPos(this.getX() + delta.x, this.getY() + delta.y, this.getZ() + delta.z);
          this.recordMovement(moverType, delta);
          this.horizontalCollision = false;
@@ -829,7 +826,7 @@ public abstract class Entity
             }
 
             float blockSpeedFactor = this.getBlockSpeedFactor();
-            this.setDeltaMovement(this.getDeltaMovement().multiply((double)blockSpeedFactor, 1.0, (double)blockSpeedFactor));
+            this.setDeltaMovement(this.getDeltaMovement().multiply(blockSpeedFactor, 1.0, blockSpeedFactor));
             profiler.pop();
          }
       }
@@ -846,7 +843,7 @@ public abstract class Entity
       Vec3 currentMovement = this.getDeltaMovement();
       Vec3 movementAfterBounce = currentMovement;
       if (xCollision) {
-         movementAfterBounce = currentMovement.with(Direction.Axis.X, -currentMovement.x * restitution);
+         movementAfterBounce = movementAfterBounce.with(Direction.Axis.X, -currentMovement.x * restitution);
       }
 
       if (zCollision) {
@@ -866,7 +863,7 @@ public abstract class Entity
          if (restitution > 0.0) {
             double portionWithMovement = movement.y / currentMovement.y;
             gravityCompensation = portionWithMovement * this.getEffectiveGravity();
-            effectiveDrag = Mth.lerp(portionWithMovement, 1.0, (double)this.getAirDrag());
+            effectiveDrag = Mth.lerp(portionWithMovement, 1.0, this.getAirDrag());
             bounced = true;
          } else {
             gravityCompensation = 0.0;
@@ -891,7 +888,7 @@ public abstract class Entity
          blockBounciness *= 0.8F;
       }
 
-      return (double)blockBounciness;
+      return blockBounciness;
    }
 
    protected double getEntityBounciness() {
@@ -1030,21 +1027,21 @@ public abstract class Entity
    ) {
       if (blockState.isAir()) {
          return false;
-      } else {
-         boolean isClimbable = this.isStateClimbable(blockState);
-         if ((this.onGround() || isClimbable || this.isCrouching() && clippedMovement.y == 0.0 || this.isOnRails()) && !this.isSwimming()) {
-            if (shouldSound) {
-               this.walkingStepSound(pos, blockState);
-            }
+      }
 
-            if (shouldVibrate) {
-               this.level().gameEvent(GameEvent.STEP, this.position(), GameEvent.Context.of(this, blockState));
-            }
-
-            return true;
-         } else {
-            return false;
+      boolean isClimbable = this.isStateClimbable(blockState);
+      if ((this.onGround() || isClimbable || this.isCrouching() && clippedMovement.y == 0.0 || this.isOnRails()) && !this.isSwimming()) {
+         if (shouldSound) {
+            this.walkingStepSound(pos, blockState);
          }
+
+         if (shouldVibrate) {
+            this.level().gameEvent(GameEvent.STEP, this.position(), GameEvent.Context.of(this, blockState));
+         }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
@@ -1103,17 +1100,15 @@ public abstract class Entity
          BlockPos getOnPos = this.mainSupportingBlockPos.get();
          if (!(offset > 1.0E-5F)) {
             return getOnPos;
-         } else {
-            BlockState belowState = this.level().getBlockState(getOnPos);
-            return (!((double)offset <= 0.5) || !belowState.is(BlockTags.FENCES))
-                  && !belowState.is(BlockTags.WALLS)
-                  && !(belowState.getBlock() instanceof FenceGateBlock)
-               ? getOnPos.atY(Mth.floor(this.position.y - (double)offset))
-               : getOnPos;
          }
+
+         BlockState belowState = this.level().getBlockState(getOnPos);
+         return (!(offset <= 0.5) || !belowState.is(BlockTags.FENCES)) && !belowState.is(BlockTags.WALLS) && !(belowState.getBlock() instanceof FenceGateBlock)
+            ? getOnPos.atY(Mth.floor(this.position.y - offset))
+            : getOnPos;
       } else {
          int xTruncated = Mth.floor(this.position.x);
-         int yTruncatedBelow = Mth.floor(this.position.y - (double)offset);
+         int yTruncatedBelow = Mth.floor(this.position.y - offset);
          int zTruncated = Mth.floor(this.position.z);
          return new BlockPos(xTruncated, yTruncatedBelow, zTruncated);
       }
@@ -1122,16 +1117,14 @@ public abstract class Entity
    protected float getBlockJumpFactor() {
       float jumpFactorHere = this.level().getBlockState(this.blockPosition()).getBlock().getJumpFactor();
       float jumpFactorBelow = this.level().getBlockState(this.getBlockPosBelowThatAffectsMyMovement()).getBlock().getJumpFactor();
-      return (double)jumpFactorHere == 1.0 ? jumpFactorBelow : jumpFactorHere;
+      return jumpFactorHere == 1.0 ? jumpFactorBelow : jumpFactorHere;
    }
 
    protected float getBlockSpeedFactor() {
       BlockState state = this.level().getBlockState(this.blockPosition());
       float speedFactorHere = state.getBlock().getSpeedFactor();
       if (!state.is(Blocks.WATER) && !state.is(Blocks.BUBBLE_COLUMN)) {
-         return (double)speedFactorHere == 1.0
-            ? this.level().getBlockState(this.getBlockPosBelowThatAffectsMyMovement()).getBlock().getSpeedFactor()
-            : speedFactorHere;
+         return speedFactorHere == 1.0 ? this.level().getBlockState(this.getBlockPosBelowThatAffectsMyMovement()).getBlock().getSpeedFactor() : speedFactorHere;
       } else {
          return speedFactorHere;
       }
@@ -1144,25 +1137,25 @@ public abstract class Entity
    protected Vec3 limitPistonMovement(final Vec3 vec) {
       if (vec.lengthSqr() <= 1.0E-7) {
          return vec;
-      } else {
-         long currentGameTime = this.level().getGameTime();
-         if (currentGameTime != this.pistonDeltasGameTime) {
-            Arrays.fill(this.pistonDeltas, 0.0);
-            this.pistonDeltasGameTime = currentGameTime;
-         }
+      }
 
-         if (vec.x != 0.0) {
-            double xa = this.applyPistonMovementRestriction(Direction.Axis.X, vec.x);
-            return Math.abs(xa) <= 1.0E-5F ? Vec3.ZERO : new Vec3(xa, 0.0, 0.0);
-         } else if (vec.y != 0.0) {
-            double ya = this.applyPistonMovementRestriction(Direction.Axis.Y, vec.y);
-            return Math.abs(ya) <= 1.0E-5F ? Vec3.ZERO : new Vec3(0.0, ya, 0.0);
-         } else if (vec.z != 0.0) {
-            double za = this.applyPistonMovementRestriction(Direction.Axis.Z, vec.z);
-            return Math.abs(za) <= 1.0E-5F ? Vec3.ZERO : new Vec3(0.0, 0.0, za);
-         } else {
-            return Vec3.ZERO;
-         }
+      long currentGameTime = this.level().getGameTime();
+      if (currentGameTime != this.pistonDeltasGameTime) {
+         Arrays.fill(this.pistonDeltas, 0.0);
+         this.pistonDeltasGameTime = currentGameTime;
+      }
+
+      if (vec.x != 0.0) {
+         double xa = this.applyPistonMovementRestriction(Direction.Axis.X, vec.x);
+         return Math.abs(xa) <= 1.0E-5F ? Vec3.ZERO : new Vec3(xa, 0.0, 0.0);
+      } else if (vec.y != 0.0) {
+         double ya = this.applyPistonMovementRestriction(Direction.Axis.Y, vec.y);
+         return Math.abs(ya) <= 1.0E-5F ? Vec3.ZERO : new Vec3(0.0, ya, 0.0);
+      } else if (vec.z != 0.0) {
+         double za = this.applyPistonMovementRestriction(Direction.Axis.Z, vec.z);
+         return Math.abs(za) <= 1.0E-5F ? Vec3.ZERO : new Vec3(0.0, 0.0, za);
+      } else {
+         return Vec3.ZERO;
       }
    }
 
@@ -1183,7 +1176,7 @@ public abstract class Entity
 
    private Vec3 collide(final Vec3 movement) {
       AABB aabb = this.getBoundingBox();
-      List<VoxelShape> entityColliders = this.level().getEntityCollisions(this, aabb.expandTowards(movement).expandTowards(0.0, (double)this.maxUpStep(), 0.0));
+      List<VoxelShape> entityColliders = this.level().getEntityCollisions(this, aabb.expandTowards(movement).expandTowards(0.0, this.maxUpStep(), 0.0));
       Vec3 movementStep = movement.lengthSqr() == 0.0 ? movement : collideBoundingBox(this, movement, aabb, this.level(), entityColliders);
       boolean xCollision = movement.x != movementStep.x;
       boolean yCollision = movement.y != movementStep.y;
@@ -1191,7 +1184,7 @@ public abstract class Entity
       boolean onGroundAfterCollision = yCollision && movement.y < 0.0;
       if (this.maxUpStep() > 0.0F && (onGroundAfterCollision || this.onGround()) && (xCollision || zCollision)) {
          AABB groundedAABB = onGroundAfterCollision ? aabb.move(0.0, movementStep.y, 0.0) : aabb;
-         AABB stepUpAABB = groundedAABB.expandTowards(movement.x, (double)this.maxUpStep(), movement.z);
+         AABB stepUpAABB = groundedAABB.expandTowards(movement.x, this.maxUpStep(), movement.z);
          if (!onGroundAfterCollision) {
             stepUpAABB = stepUpAABB.expandTowards(0.0, -1.0E-5F, 0.0);
          }
@@ -1201,7 +1194,7 @@ public abstract class Entity
          float[] candidateStepUpHeights = collectCandidateStepUpHeights(groundedAABB, colliders, this.maxUpStep(), stepHeightToSkip);
 
          for (float candidateStepUpHeight : candidateStepUpHeights) {
-            Vec3 stepFromGround = collideWithShapes(new Vec3(movement.x, (double)candidateStepUpHeight, movement.z), groundedAABB, colliders);
+            Vec3 stepFromGround = collideWithShapes(new Vec3(movement.x, candidateStepUpHeight, movement.z), groundedAABB, colliders);
             if (stepFromGround.horizontalDistanceSqr() > movementStep.horizontalDistanceSqr()) {
                double distanceToGround = aabb.minY - groundedAABB.minY;
                return stepFromGround.subtract(0.0, distanceToGround, 0.0);
@@ -1253,13 +1246,13 @@ public abstract class Entity
       return collideWithShapes(movement, boundingBox, colliders);
    }
 
-   public static List<VoxelShape> collectAllColliders(@Nullable final Entity source, final Level level, final AABB boundingBox) {
+   public static List<VoxelShape> collectAllColliders(final @Nullable Entity source, final Level level, final AABB boundingBox) {
       List<VoxelShape> entityColliders = level.getEntityCollisions(source, boundingBox);
       return collectCollidersIgnoringWorldBorder(source, level, entityColliders, boundingBox);
    }
 
    private static List<VoxelShape> collectCollidersIgnoringWorldBorder(
-      @Nullable final Entity source, final Level level, final List<VoxelShape> entityColliders, final AABB boundingBox
+      final @Nullable Entity source, final Level level, final List<VoxelShape> entityColliders, final AABB boundingBox
    ) {
       Builder<VoxelShape> colliders = ImmutableList.builderWithExpectedSize(entityColliders.size() + 1);
       if (!entityColliders.isEmpty()) {
@@ -1291,25 +1284,25 @@ public abstract class Entity
    private static Vec3 collideWithShapes(final Vec3 movement, final AABB boundingBox, final List<VoxelShape> shapes) {
       if (shapes.isEmpty()) {
          return movement;
-      } else {
-         Vec3 resolvedMovement = Vec3.ZERO;
-         UnmodifiableIterator var4 = Direction.axisStepOrder(movement).iterator();
-
-         while (var4.hasNext()) {
-            Direction.Axis axis = (Direction.Axis)var4.next();
-            double axisMovement = movement.get(axis);
-            if (axisMovement != 0.0) {
-               double collision = Shapes.collide(axis, boundingBox.move(resolvedMovement), shapes, axisMovement);
-               resolvedMovement = resolvedMovement.with(axis, collision);
-            }
-         }
-
-         return resolvedMovement;
       }
+
+      Vec3 resolvedMovement = Vec3.ZERO;
+      UnmodifiableIterator var4 = Direction.axisStepOrder(movement).iterator();
+
+      while (var4.hasNext()) {
+         Direction.Axis axis = (Direction.Axis)var4.next();
+         double axisMovement = movement.get(axis);
+         if (axisMovement != 0.0) {
+            double collision = Shapes.collide(axis, boundingBox.move(resolvedMovement), shapes, axisMovement);
+            resolvedMovement = resolvedMovement.with(axis, collision);
+         }
+      }
+
+      return resolvedMovement;
    }
 
    protected float nextStep() {
-      return (float)((int)this.moveDist + 1);
+      return (int)this.moveDist + 1;
    }
 
    protected SoundEvent getSwimSound() {
@@ -1364,22 +1357,10 @@ public abstract class Entity
       final LongSet visitedBlocks,
       final int maxMovementIterations
    ) {
-      AABB deflatedBoundingBoxAtTarget;
-      boolean movedFar;
-      boolean var10000;
-      label16: {
-         deflatedBoundingBoxAtTarget = this.makeBoundingBox(to).deflate(1.0E-5F);
-         movedFar = from.distanceToSqr(to) > Mth.square(0.9999900000002526);
-         if (this.level instanceof ServerLevel serverLevel
-            && serverLevel.getServer().debugSubscribers().hasAnySubscriberFor(DebugSubscriptions.ENTITY_BLOCK_INTERSECTIONS)) {
-            var10000 = true;
-            break label16;
-         }
-
-         var10000 = false;
-      }
-
-      boolean debugEntityBlockIntersections = var10000;
+      AABB deflatedBoundingBoxAtTarget = this.makeBoundingBox(to).deflate(1.0E-5F);
+      boolean movedFar = from.distanceToSqr(to) > Mth.square(0.9999900000002526);
+      boolean debugEntityBlockIntersections = this.level instanceof ServerLevel serverLevel
+         && serverLevel.getServer().debugSubscribers().hasAnySubscriberFor(DebugSubscriptions.ENTITY_BLOCK_INTERSECTIONS);
       AtomicInteger iterations = new AtomicInteger();
       BlockGetter.forEachBlockIntersectedBetween(
          from,
@@ -1388,52 +1369,54 @@ public abstract class Entity
          (blockIntersection, iteration) -> {
             if (!this.isAlive()) {
                return false;
-            } else if (iteration >= maxMovementIterations) {
+            }
+
+            if (iteration >= maxMovementIterations) {
                return false;
+            }
+
+            iterations.set(iteration);
+            BlockState state = this.level().getBlockState(blockIntersection);
+            if (state.isAir()) {
+               if (debugEntityBlockIntersections) {
+                  this.debugBlockIntersection((ServerLevel)this.level(), blockIntersection.immutable(), false, false);
+               }
+
+               return true;
             } else {
-               iterations.set(iteration);
-               BlockState state = this.level().getBlockState(blockIntersection);
-               if (state.isAir()) {
+               VoxelShape intersectShape = state.getEntityInsideCollisionShape(this.level(), blockIntersection, this);
+               boolean insideBlock = intersectShape == Shapes.block()
+                  || this.collidedWithShapeMovingFrom(from, to, intersectShape.move(new Vec3(blockIntersection)).toAabbs());
+               boolean insideFluid = this.collidedWithFluid(state.getFluidState(), blockIntersection, from, to);
+               if ((insideBlock || insideFluid) && visitedBlocks.add(blockIntersection.asLong())) {
+                  if (insideBlock) {
+                     try {
+                        boolean isPrecise = movedFar || deflatedBoundingBoxAtTarget.intersects(blockIntersection);
+                        effectCollector.advanceStep(iteration);
+                        state.entityInside(this.level(), blockIntersection, this, effectCollector, isPrecise);
+                        this.onInsideBlock(state);
+                     } catch (Throwable t) {
+                        CrashReport report = CrashReport.forThrowable(t, "Colliding entity with block");
+                        CrashReportCategory category = report.addCategory("Block being collided with");
+                        CrashReportCategory.populateBlockDetails(category, this.level(), blockIntersection, state);
+                        CrashReportCategory entityCategory = report.addCategory("Entity being checked for collision");
+                        this.fillCrashReportCategory(entityCategory);
+                        throw new ReportedException(report);
+                     }
+                  }
+
+                  if (insideFluid) {
+                     effectCollector.advanceStep(iteration);
+                     state.getFluidState().entityInside(this.level(), blockIntersection, this, effectCollector);
+                  }
+
                   if (debugEntityBlockIntersections) {
-                     this.debugBlockIntersection((ServerLevel)this.level(), blockIntersection.immutable(), false, false);
+                     this.debugBlockIntersection((ServerLevel)this.level(), blockIntersection.immutable(), insideBlock, insideFluid);
                   }
 
                   return true;
                } else {
-                  VoxelShape intersectShape = state.getEntityInsideCollisionShape(this.level(), blockIntersection, this);
-                  boolean insideBlock = intersectShape == Shapes.block()
-                     || this.collidedWithShapeMovingFrom(from, to, intersectShape.move(new Vec3(blockIntersection)).toAabbs());
-                  boolean insideFluid = this.collidedWithFluid(state.getFluidState(), blockIntersection, from, to);
-                  if ((insideBlock || insideFluid) && visitedBlocks.add(blockIntersection.asLong())) {
-                     if (insideBlock) {
-                        try {
-                           boolean isPrecise = movedFar || deflatedBoundingBoxAtTarget.intersects(blockIntersection);
-                           effectCollector.advanceStep(iteration);
-                           state.entityInside(this.level(), blockIntersection, this, effectCollector, isPrecise);
-                           this.onInsideBlock(state);
-                        } catch (Throwable var20) {
-                           CrashReport report = CrashReport.forThrowable(var20, "Colliding entity with block");
-                           CrashReportCategory category = report.addCategory("Block being collided with");
-                           CrashReportCategory.populateBlockDetails(category, this.level(), blockIntersection, state);
-                           CrashReportCategory entityCategory = report.addCategory("Entity being checked for collision");
-                           this.fillCrashReportCategory(entityCategory);
-                           throw new ReportedException(report);
-                        }
-                     }
-
-                     if (insideFluid) {
-                        effectCollector.advanceStep(iteration);
-                        state.getFluidState().entityInside(this.level(), blockIntersection, this, effectCollector);
-                     }
-
-                     if (debugEntityBlockIntersections) {
-                        this.debugBlockIntersection((ServerLevel)this.level(), blockIntersection.immutable(), insideBlock, insideFluid);
-                     }
-
-                     return true;
-                  } else {
-                     return true;
-                  }
+                  return true;
                }
             }
          }
@@ -1472,10 +1455,10 @@ public abstract class Entity
       BlockPos spawnBlockPos = level.getRespawnData().pos();
       Vec3 spawnPos = Vec3.atCenterOf(spawnBlockPos);
       int spawnHeight = level.getChunkAt(spawnBlockPos).getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, spawnBlockPos.getX(), spawnBlockPos.getZ()) + 1;
-      return BlockPos.containing(spawnPos.x, (double)spawnHeight, spawnPos.z);
+      return BlockPos.containing(spawnPos.x, spawnHeight, spawnPos.z);
    }
 
-   public void gameEvent(final Holder<GameEvent> event, @Nullable final Entity sourceEntity) {
+   public void gameEvent(final Holder<GameEvent> event, final @Nullable Entity sourceEntity) {
       this.level().gameEvent(sourceEntity, event, this.position);
    }
 
@@ -1529,7 +1512,7 @@ public abstract class Entity
    }
 
    private void playAmethystStepSound() {
-      this.crystalSoundIntensity = this.crystalSoundIntensity * (float)Math.pow(0.997, (double)(this.tickCount - this.lastCrystalSoundPlayTick));
+      this.crystalSoundIntensity = this.crystalSoundIntensity * (float)Math.pow(0.997, this.tickCount - this.lastCrystalSoundPlayTick);
       this.crystalSoundIntensity = Math.min(1.0F, this.crystalSoundIntensity + 0.07F);
       float pitch = 0.5F + this.crystalSoundIntensity * this.random.nextFloat() * 1.2F;
       float volume = 0.1F + this.crystalSoundIntensity * 1.2F;
@@ -1614,7 +1597,7 @@ public abstract class Entity
 
    protected void checkFallDamage(final double ya, final boolean onGround, final BlockState onState, final BlockPos pos) {
       if (!this.isInWater() && ya < 0.0) {
-         this.fallDistance -= (double)((float)ya);
+         this.fallDistance -= (float)ya;
       }
 
       if (onGround) {
@@ -1639,10 +1622,10 @@ public abstract class Entity
    public boolean causeFallDamage(final double fallDistance, final float damageModifier, final DamageSource damageSource) {
       if (this.is(EntityTypeTags.FALL_DAMAGE_IMMUNE)) {
          return false;
-      } else {
-         this.propagateFallToPassengers(fallDistance, damageModifier, damageSource);
-         return false;
       }
+
+      this.propagateFallToPassengers(fallDistance, damageModifier, damageSource);
+      return false;
    }
 
    protected void propagateFallToPassengers(final double fallDistance, final float damageModifier, final DamageSource damageSource) {
@@ -1659,7 +1642,7 @@ public abstract class Entity
 
    private boolean isInRain() {
       BlockPos pos = this.blockPosition();
-      return this.level().isRainingAt(pos) || this.level().isRainingAt(BlockPos.containing((double)pos.getX(), this.getBoundingBox().maxY, (double)pos.getZ()));
+      return this.level().isRainingAt(pos) || this.level().isRainingAt(BlockPos.containing(pos.getX(), this.getBoundingBox().maxY, pos.getZ()));
    }
 
    public boolean isInWaterOrRain() {
@@ -1685,15 +1668,15 @@ public abstract class Entity
    public boolean isInClouds() {
       if (this.level.environmentAttributes().getValue(EnvironmentAttributes.CLOUD_COLOR, this.position()).w() == 0.0F) {
          return false;
-      } else {
-         float cloudBottom = this.level.environmentAttributes().getValue(EnvironmentAttributes.CLOUD_HEIGHT, this.position());
-         if (this.getY() + (double)this.getBbHeight() < (double)cloudBottom) {
-            return false;
-         } else {
-            float cloudTop = cloudBottom + 4.0F;
-            return this.getY() <= (double)cloudTop;
-         }
       }
+
+      float cloudBottom = this.level.environmentAttributes().getValue(EnvironmentAttributes.CLOUD_HEIGHT, this.position());
+      if (this.getY() + this.getBbHeight() < cloudBottom) {
+         return false;
+      }
+
+      float cloudTop = cloudBottom + 4.0F;
+      return this.getY() <= cloudTop;
    }
 
    public void updateSwimming() {
@@ -1743,27 +1726,21 @@ public abstract class Entity
          this.playSound(this.getSwimHighSpeedSplashSound(), speed, 1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.4F);
       }
 
-      float yt = (float)Mth.floor(this.getY());
+      float yt = Mth.floor(this.getY());
 
-      for (int i = 0; (float)i < 1.0F + this.dimensions.width() * 20.0F; i++) {
-         double xo = (this.random.nextDouble() * 2.0 - 1.0) * (double)this.dimensions.width();
-         double zo = (this.random.nextDouble() * 2.0 - 1.0) * (double)this.dimensions.width();
+      for (int i = 0; i < 1.0F + this.dimensions.width() * 20.0F; i++) {
+         double xo = (this.random.nextDouble() * 2.0 - 1.0) * this.dimensions.width();
+         double zo = (this.random.nextDouble() * 2.0 - 1.0) * this.dimensions.width();
          this.level()
             .addParticle(
-               ParticleTypes.BUBBLE,
-               this.getX() + xo,
-               (double)(yt + 1.0F),
-               this.getZ() + zo,
-               movement.x,
-               movement.y - this.random.nextDouble() * 0.2F,
-               movement.z
+               ParticleTypes.BUBBLE, this.getX() + xo, yt + 1.0F, this.getZ() + zo, movement.x, movement.y - this.random.nextDouble() * 0.2F, movement.z
             );
       }
 
-      for (int i = 0; (float)i < 1.0F + this.dimensions.width() * 20.0F; i++) {
-         double xo = (this.random.nextDouble() * 2.0 - 1.0) * (double)this.dimensions.width();
-         double zo = (this.random.nextDouble() * 2.0 - 1.0) * (double)this.dimensions.width();
-         this.level().addParticle(ParticleTypes.SPLASH, this.getX() + xo, (double)(yt + 1.0F), this.getZ() + zo, movement.x, movement.y, movement.z);
+      for (int i = 0; i < 1.0F + this.dimensions.width() * 20.0F; i++) {
+         double xo = (this.random.nextDouble() * 2.0 - 1.0) * this.dimensions.width();
+         double zo = (this.random.nextDouble() * 2.0 - 1.0) * this.dimensions.width();
+         this.level().addParticle(ParticleTypes.SPLASH, this.getX() + xo, yt + 1.0F, this.getZ() + zo, movement.x, movement.y, movement.z);
       }
 
       this.gameEvent(GameEvent.SPLASH);
@@ -1788,14 +1765,14 @@ public abstract class Entity
       if (blockState.getRenderShape() != RenderShape.INVISIBLE) {
          Vec3 movement = this.getDeltaMovement();
          BlockPos entityPosition = this.blockPosition();
-         double x = this.getX() + (this.random.nextDouble() - 0.5) * (double)this.dimensions.width();
-         double z = this.getZ() + (this.random.nextDouble() - 0.5) * (double)this.dimensions.width();
+         double x = this.getX() + (this.random.nextDouble() - 0.5) * this.dimensions.width();
+         double z = this.getZ() + (this.random.nextDouble() - 0.5) * this.dimensions.width();
          if (entityPosition.getX() != pos.getX()) {
-            x = Mth.clamp(x, (double)pos.getX(), (double)pos.getX() + 1.0);
+            x = Mth.clamp(x, pos.getX(), pos.getX() + 1.0);
          }
 
          if (entityPosition.getZ() != pos.getZ()) {
-            z = Mth.clamp(z, (double)pos.getZ(), (double)pos.getZ() + 1.0);
+            z = Mth.clamp(z, pos.getZ(), pos.getZ() + 1.0);
          }
 
          this.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, blockState), x, this.getY() + 0.1, z, movement.x * -4.0, 1.5, movement.z * -4.0);
@@ -1819,12 +1796,12 @@ public abstract class Entity
       double length = input.lengthSqr();
       if (length < 1.0E-7) {
          return Vec3.ZERO;
-      } else {
-         Vec3 movement = (length > 1.0 ? input.normalize() : input).scale((double)speed);
-         float sin = Mth.sin((double)(yRot * (float) (Math.PI / 180.0)));
-         float cos = Mth.cos((double)(yRot * (float) (Math.PI / 180.0)));
-         return new Vec3(movement.x * (double)cos - movement.z * (double)sin, movement.y, movement.z * (double)cos + movement.x * (double)sin);
       }
+
+      Vec3 movement = (length > 1.0 ? input.normalize() : input).scale(speed);
+      float sin = Mth.sin(yRot * (float) (Math.PI / 180.0));
+      float cos = Mth.cos(yRot * (float) (Math.PI / 180.0));
+      return new Vec3(movement.x * cos - movement.z * sin, movement.y, movement.z * cos + movement.x * sin);
    }
 
    @Deprecated
@@ -2037,11 +2014,11 @@ public abstract class Entity
    public static Vec3 calculateViewVector(final float xRot, final float yRot) {
       float realXRot = xRot * (float) (Math.PI / 180.0);
       float realYRot = -yRot * (float) (Math.PI / 180.0);
-      float yCos = Mth.cos((double)realYRot);
-      float ySin = Mth.sin((double)realYRot);
-      float xCos = Mth.cos((double)realXRot);
-      float xSin = Mth.sin((double)realXRot);
-      return new Vec3((double)(ySin * xCos), (double)(-xSin), (double)(yCos * xCos));
+      float yCos = Mth.cos(realYRot);
+      float ySin = Mth.sin(realYRot);
+      float xCos = Mth.cos(realXRot);
+      float xSin = Mth.sin(realXRot);
+      return new Vec3(ySin * xCos, -xSin, yCos * xCos);
    }
 
    public static Quaternionf calculateViewQuaternion(final float xRot, final float yRot) {
@@ -2061,9 +2038,9 @@ public abstract class Entity
    }
 
    public final Vec3 getEyePosition(final float partialTickTime) {
-      double x = Mth.lerp((double)partialTickTime, this.xo, this.getX());
-      double y = Mth.lerp((double)partialTickTime, this.yo, this.getY()) + (double)this.getEyeHeight();
-      double z = Mth.lerp((double)partialTickTime, this.zo, this.getZ());
+      double x = Mth.lerp(partialTickTime, this.xo, this.getX());
+      double y = Mth.lerp(partialTickTime, this.yo, this.getY()) + this.getEyeHeight();
+      double z = Mth.lerp(partialTickTime, this.zo, this.getZ());
       return new Vec3(x, y, z);
    }
 
@@ -2072,9 +2049,9 @@ public abstract class Entity
    }
 
    public final Vec3 getPosition(final float partialTickTime) {
-      double endX = Mth.lerp((double)partialTickTime, this.xo, this.getX());
-      double endY = Mth.lerp((double)partialTickTime, this.yo, this.getY());
-      double endZ = Mth.lerp((double)partialTickTime, this.zo, this.getZ());
+      double endX = Mth.lerp(partialTickTime, this.xo, this.getX());
+      double endY = Mth.lerp(partialTickTime, this.yo, this.getY());
+      double endZ = Mth.lerp(partialTickTime, this.zo, this.getZ());
       return new Vec3(endX, endY, endZ);
    }
 
@@ -2128,16 +2105,16 @@ public abstract class Entity
    public boolean saveAsPassenger(final ValueOutput output) {
       if (this.removalReason != null && !this.removalReason.shouldSave()) {
          return false;
-      } else {
-         String id = this.getEncodeId();
-         if (id == null) {
-            return false;
-         } else {
-            output.putString("id", id);
-            this.saveWithoutId(output);
-            return true;
-         }
       }
+
+      String id = this.getEncodeId();
+      if (id == null) {
+         return false;
+      }
+
+      output.putString("id", id);
+      this.saveWithoutId(output);
+      return true;
    }
 
    public boolean save(final ValueOutput output) {
@@ -2214,8 +2191,8 @@ public abstract class Entity
                output.discard("Passengers");
             }
          }
-      } catch (Throwable var7) {
-         CrashReport report = CrashReport.forThrowable(var7, "Saving entity NBT");
+      } catch (Throwable t) {
+         CrashReport report = CrashReport.forThrowable(t, "Saving entity NBT");
          CrashReportCategory category = report.addCategory("Entity being saved");
          this.fillCrashReportCategory(category);
          throw new ReportedException(report);
@@ -2251,7 +2228,9 @@ public abstract class Entity
          });
          if (!Double.isFinite(this.getX()) || !Double.isFinite(this.getY()) || !Double.isFinite(this.getZ())) {
             throw new IllegalStateException("Entity has invalid position");
-         } else if (Double.isFinite((double)this.getYRot()) && Double.isFinite((double)this.getXRot())) {
+         }
+
+         if (Double.isFinite(this.getYRot()) && Double.isFinite(this.getXRot())) {
             this.reapplyPosition();
             this.setRot(this.getYRot(), this.getXRot());
             this.setCustomName(input.<Component>read("CustomName", ComponentSerialization.CODEC).orElse(null));
@@ -2279,8 +2258,8 @@ public abstract class Entity
          } else {
             throw new IllegalStateException("Entity has invalid rotation");
          }
-      } catch (Throwable var7) {
-         CrashReport report = CrashReport.forThrowable(var7, "Loading entity NBT");
+      } catch (Throwable t) {
+         CrashReport report = CrashReport.forThrowable(t, "Loading entity NBT");
          CrashReportCategory category = report.addCategory("Entity being loaded");
          this.fillCrashReportCategory(category);
          throw new ReportedException(report);
@@ -2294,45 +2273,40 @@ public abstract class Entity
       return true;
    }
 
-   @Nullable
-   protected final String getEncodeId() {
+   protected final @Nullable String getEncodeId() {
       if (!this.getType().canSerialize()) {
          return null;
-      } else {
-         ResourceKey<EntityType<?>> typeId = this.typeHolder().unwrapKey().orElseThrow(() -> new IllegalStateException("Unregistered entity"));
-         return typeId.identifier().toString();
       }
+
+      ResourceKey<EntityType<?>> typeId = this.typeHolder().unwrapKey().orElseThrow(() -> new IllegalStateException("Unregistered entity"));
+      return typeId.identifier().toString();
    }
 
    protected abstract void readAdditionalSaveData(ValueInput input);
 
    protected abstract void addAdditionalSaveData(ValueOutput output);
 
-   @Nullable
-   public ItemEntity spawnAtLocation(final ServerLevel level, final ItemLike resource) {
+   public @Nullable ItemEntity spawnAtLocation(final ServerLevel level, final ItemLike resource) {
       return this.spawnAtLocation(level, new ItemStack(resource), 0.0F);
    }
 
-   @Nullable
-   public ItemEntity spawnAtLocation(final ServerLevel level, final ItemStack itemStack) {
+   public @Nullable ItemEntity spawnAtLocation(final ServerLevel level, final ItemStack itemStack) {
       return this.spawnAtLocation(level, itemStack, 0.0F);
    }
 
-   @Nullable
-   public ItemEntity spawnAtLocation(final ServerLevel level, final ItemStack itemStack, final Vec3 offset) {
+   public @Nullable ItemEntity spawnAtLocation(final ServerLevel level, final ItemStack itemStack, final Vec3 offset) {
       if (itemStack.isEmpty()) {
          return null;
-      } else {
-         ItemEntity entity = new ItemEntity(level, this.getX() + offset.x, this.getY() + offset.y, this.getZ() + offset.z, itemStack);
-         entity.setDefaultPickUpDelay();
-         level.addFreshEntity(entity);
-         return entity;
       }
+
+      ItemEntity entity = new ItemEntity(level, this.getX() + offset.x, this.getY() + offset.y, this.getZ() + offset.z, itemStack);
+      entity.setDefaultPickUpDelay();
+      level.addFreshEntity(entity);
+      return entity;
    }
 
-   @Nullable
-   public ItemEntity spawnAtLocation(final ServerLevel level, final ItemStack itemStack, final float offset) {
-      return this.spawnAtLocation(level, itemStack, new Vec3(0.0, (double)offset, 0.0));
+   public @Nullable ItemEntity spawnAtLocation(final ServerLevel level, final ItemStack itemStack, final float offset) {
+      return this.spawnAtLocation(level, itemStack, new Vec3(0.0, offset, 0.0));
    }
 
    public boolean isAlive() {
@@ -2342,28 +2316,28 @@ public abstract class Entity
    public boolean isInWall() {
       if (this.noPhysics) {
          return false;
-      } else {
-         float checkWidth = this.dimensions.width() * 0.8F;
-         AABB eyeBb = AABB.ofSize(this.getEyePosition(), (double)checkWidth, 1.0E-6, (double)checkWidth);
-         return BlockPos.betweenClosedStream(eyeBb)
-            .anyMatch(
-               pos -> {
-                  BlockState state = this.level().getBlockState(pos);
-                  return !state.isAir()
-                     && state.isSuffocating(this.level(), pos)
-                     && Shapes.joinIsNotEmpty(state.getCollisionShape(this.level(), pos).move(pos), Shapes.create(eyeBb), BooleanOp.AND);
-               }
-            );
       }
+
+      float checkWidth = this.dimensions.width() * 0.8F;
+      AABB eyeBb = AABB.ofSize(this.getEyePosition(), checkWidth, 1.0E-6, checkWidth);
+      return BlockPos.betweenClosedStream(eyeBb)
+         .anyMatch(
+            pos -> {
+               BlockState state = this.level().getBlockState(pos);
+               return !state.isAir()
+                  && state.isSuffocating(this.level(), pos)
+                  && Shapes.joinIsNotEmpty(state.getCollisionShape(this.level(), pos).move(pos), Shapes.create(eyeBb), BooleanOp.AND);
+            }
+         );
    }
 
    public InteractionResult interact(final Player player, final InteractionHand hand, final Vec3 location) {
-      label88:
-      if (!this.level().isClientSide() && player.isSecondaryUseActive() && this instanceof Leashable leashable && leashable.canBeLeashed() && this.isAlive()) {
-         if (this instanceof LivingEntity le && le.isBaby()) {
-            break label88;
-         }
-
+      if (!this.level().isClientSide()
+         && player.isSecondaryUseActive()
+         && this instanceof Leashable leashable
+         && leashable.canBeLeashed()
+         && this.isAlive()
+         && !(this instanceof LivingEntity le && le.isBaby())) {
          List<Leashable> mobsToLeash = Leashable.leashableInArea(this, l -> l.getLeashHolder() == player);
          if (!mobsToLeash.isEmpty()) {
             boolean anyLeashed = false;
@@ -2387,15 +2361,13 @@ public abstract class Entity
       if (heldItem.is(Items.SHEARS) && this.shearOffAllLeashConnections(player)) {
          heldItem.hurtAndBreak(1, player, hand);
          return InteractionResult.SUCCESS;
+      } else if (this instanceof Mob target
+         && heldItem.is(Items.SHEARS)
+         && target.canShearEquipment(player)
+         && !player.isSecondaryUseActive()
+         && target.attemptToShearEquipment(player, hand, heldItem)) {
+         return InteractionResult.SUCCESS;
       } else {
-         if (this instanceof Mob target
-            && heldItem.is(Items.SHEARS)
-            && target.canShearEquipment(player)
-            && !player.isSecondaryUseActive()
-            && target.attemptToShearEquipment(player, hand, heldItem)) {
-            return InteractionResult.SUCCESS;
-         }
-
          if (this.isAlive() && this instanceof Leashable leashable) {
             if (leashable.getLeashHolder() == player) {
                if (!this.level().isClientSide()) {
@@ -2435,7 +2407,7 @@ public abstract class Entity
       }
    }
 
-   public boolean shearOffAllLeashConnections(@Nullable final Player player) {
+   public boolean shearOffAllLeashConnections(final @Nullable Player player) {
       boolean dropped = this.dropAllLeashConnections(player);
       if (dropped && this.level() instanceof ServerLevel serverLevel) {
          serverLevel.playSound(null, this.blockPosition(), SoundEvents.SHEARS_SNIP, player != null ? player.getSoundSource() : this.getSoundSource());
@@ -2444,7 +2416,7 @@ public abstract class Entity
       return dropped;
    }
 
-   public boolean dropAllLeashConnections(@Nullable final Player player) {
+   public boolean dropAllLeashConnections(final @Nullable Player player) {
       List<Leashable> leashables = Leashable.leashableLeashedTo(this);
       boolean dropped = !leashables.isEmpty();
       if (this instanceof Leashable leashableThis && leashableThis.isLeashed()) {
@@ -2468,7 +2440,7 @@ public abstract class Entity
       return entity.canBeCollidedWith(this) && !this.isPassengerOfSameVehicle(entity);
    }
 
-   public boolean canBeCollidedWith(@Nullable final Entity other) {
+   public boolean canBeCollidedWith(final @Nullable Entity other) {
       return false;
    }
 
@@ -2523,36 +2495,40 @@ public abstract class Entity
    public boolean startRiding(final Entity entityToRide, final boolean force, final boolean sendEventAndTriggers) {
       if (entityToRide == this.vehicle) {
          return false;
-      } else if (!entityToRide.couldAcceptPassenger()) {
+      }
+
+      if (!entityToRide.couldAcceptPassenger()) {
          return false;
-      } else if (!this.level().isClientSide() && !entityToRide.type.canSerialize()) {
+      }
+
+      if (!this.level().isClientSide() && !entityToRide.type.canSerialize()) {
          return false;
-      } else {
-         for (Entity vehicleEntity = entityToRide; vehicleEntity.vehicle != null; vehicleEntity = vehicleEntity.vehicle) {
-            if (vehicleEntity.vehicle == this) {
-               return false;
-            }
-         }
+      }
 
-         if (force || this.canRide(entityToRide) && entityToRide.canAddPassenger(this)) {
-            if (this.isPassenger()) {
-               this.stopRiding();
-            }
-
-            this.setPose(Pose.STANDING);
-            this.vehicle = entityToRide;
-            this.vehicle.addPassenger(this);
-            if (sendEventAndTriggers) {
-               this.level().gameEvent(this, GameEvent.ENTITY_MOUNT, this.vehicle.position);
-               entityToRide.getIndirectPassengersStream()
-                  .filter(e -> e instanceof ServerPlayer)
-                  .forEach(player -> CriteriaTriggers.START_RIDING_TRIGGER.trigger((ServerPlayer)player));
-            }
-
-            return true;
-         } else {
+      for (Entity vehicleEntity = entityToRide; vehicleEntity.vehicle != null; vehicleEntity = vehicleEntity.vehicle) {
+         if (vehicleEntity.vehicle == this) {
             return false;
          }
+      }
+
+      if (force || this.canRide(entityToRide) && entityToRide.canAddPassenger(this)) {
+         if (this.isPassenger()) {
+            this.stopRiding();
+         }
+
+         this.setPose(Pose.STANDING);
+         this.vehicle = entityToRide;
+         this.vehicle.addPassenger(this);
+         if (sendEventAndTriggers) {
+            this.level().gameEvent(this, GameEvent.ENTITY_MOUNT, this.vehicle.position);
+            entityToRide.getIndirectPassengersStream()
+               .filter(e -> e instanceof ServerPlayer)
+               .forEach(player -> CriteriaTriggers.START_RIDING_TRIGGER.trigger((ServerPlayer)player));
+         }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
@@ -2595,34 +2571,34 @@ public abstract class Entity
    protected void addPassenger(final Entity passenger) {
       if (passenger.getVehicle() != this) {
          throw new IllegalStateException("Use x.startRiding(y), not y.addPassenger(x)");
-      } else {
-         if (this.passengers.isEmpty()) {
-            this.passengers = ImmutableList.of(passenger);
-         } else {
-            List<Entity> newPassengers = Lists.newArrayList(this.passengers);
-            if (!this.level().isClientSide() && passenger instanceof Player && !(this.getFirstPassenger() instanceof Player)) {
-               newPassengers.add(0, passenger);
-            } else {
-               newPassengers.add(passenger);
-            }
+      }
 
-            this.passengers = ImmutableList.copyOf(newPassengers);
+      if (this.passengers.isEmpty()) {
+         this.passengers = ImmutableList.of(passenger);
+      } else {
+         List<Entity> newPassengers = Lists.newArrayList(this.passengers);
+         if (!this.level().isClientSide() && passenger instanceof Player && !(this.getFirstPassenger() instanceof Player)) {
+            newPassengers.add(0, passenger);
+         } else {
+            newPassengers.add(passenger);
          }
+
+         this.passengers = ImmutableList.copyOf(newPassengers);
       }
    }
 
    protected void removePassenger(final Entity passenger) {
       if (passenger.getVehicle() == this) {
          throw new IllegalStateException("Use x.stopRiding(y), not y.removePassenger(x)");
-      } else {
-         if (this.passengers.size() == 1 && this.passengers.get(0) == passenger) {
-            this.passengers = ImmutableList.of();
-         } else {
-            this.passengers = this.passengers.stream().filter(p -> p != passenger).collect(ImmutableList.toImmutableList());
-         }
-
-         passenger.boardingCooldown = 60;
       }
+
+      if (this.passengers.size() == 1 && this.passengers.get(0) == passenger) {
+         this.passengers = ImmutableList.of();
+      } else {
+         this.passengers = this.passengers.stream().filter(p -> p != passenger).collect(ImmutableList.toImmutableList());
+      }
+
+      passenger.boardingCooldown = 60;
    }
 
    protected boolean canAddPassenger(final Entity passenger) {
@@ -2653,7 +2629,7 @@ public abstract class Entity
       this.moveOrInterpolateTo(position, 0.0F, 0.0F, false);
    }
 
-   public final void moveOrInterpolateTo(@Nullable final PositionPath position, final float yRot, final float xRot, final boolean hasRotation) {
+   public final void moveOrInterpolateTo(final @Nullable PositionPath position, final float yRot, final float xRot, final boolean hasRotation) {
       if (!this.interpolationHandler.interpolateTo(position, yRot, xRot, hasRotation)) {
          if (position != null) {
             this.setPos(position.endPosition());
@@ -2702,7 +2678,7 @@ public abstract class Entity
       } else {
          boolean itemOnlyInOffhand = player.getOffhandItem().is(item) && !player.getMainHandItem().is(item);
          HumanoidArm itemArm = itemOnlyInOffhand ? player.getMainArm().getOpposite() : player.getMainArm();
-         return calculateViewVector(0.0F, this.getYRot() + (float)(itemArm == HumanoidArm.RIGHT ? 80 : -80)).scale(0.5);
+         return calculateViewVector(0.0F, this.getYRot() + (itemArm == HumanoidArm.RIGHT ? 80 : -80)).scale(0.5);
       }
    }
 
@@ -2767,7 +2743,7 @@ public abstract class Entity
    public void handleDamageEvent(final DamageSource source) {
    }
 
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       switch (id) {
          case 53:
             HoneyBlock.showSlideParticles(this);
@@ -2870,10 +2846,10 @@ public abstract class Entity
    public boolean isInvisibleTo(final Player player) {
       if (player.isSpectator()) {
          return false;
-      } else {
-         Team team = this.getTeam();
-         return team != null && player != null && player.getTeam() == team && team.canSeeFriendlyInvisibles() ? false : this.isInvisible();
       }
+
+      Team team = this.getTeam();
+      return team != null && player != null && player.getTeam() == team && team.canSeeFriendlyInvisibles() ? false : this.isInvisible();
    }
 
    public boolean isOnRails() {
@@ -2883,12 +2859,11 @@ public abstract class Entity
    public void updateDynamicGameEventListener(final BiConsumer<DynamicGameEventListener<?>, ServerLevel> action) {
    }
 
-   @Nullable
-   public PlayerTeam getTeam() {
+   public @Nullable PlayerTeam getTeam() {
       return this.level().getScoreboard().getPlayersTeam(this.getScoreboardName());
    }
 
-   public final boolean isAlliedTo(@Nullable final Entity other) {
+   public final boolean isAlliedTo(final @Nullable Entity other) {
       return other == null ? false : this == other || this.considersEntityAsAlly(other) || other.considersEntityAsAlly(this);
    }
 
@@ -2896,7 +2871,7 @@ public abstract class Entity
       return this.isAlliedTo(other.getTeam());
    }
 
-   public boolean isAlliedTo(@Nullable final Team other) {
+   public boolean isAlliedTo(final @Nullable Team other) {
       return this.getTeam() != null ? this.getTeam().isAlliedTo(other) : false;
    }
 
@@ -2904,11 +2879,11 @@ public abstract class Entity
       this.setSharedFlag(5, invisible);
    }
 
-   protected boolean getSharedFlag(@Entity.Flags final int flag) {
+   protected boolean getSharedFlag(final @Entity.Flags int flag) {
       return (this.entityData.get(DATA_SHARED_FLAGS_ID) & 1 << flag) != 0;
    }
 
-   protected void setSharedFlag(@Entity.Flags final int flag, final boolean value) {
+   protected void setSharedFlag(final @Entity.Flags int flag, final boolean value) {
       byte currentValue = this.entityData.get(DATA_SHARED_FLAGS_ID);
       if (value) {
          this.entityData.set(DATA_SHARED_FLAGS_ID, (byte)(currentValue | 1 << flag));
@@ -2943,7 +2918,7 @@ public abstract class Entity
 
    public float getPercentFrozen() {
       int ticksToFreeze = this.getTicksRequiredToFreeze();
-      return (float)Math.min(this.getTicksFrozen(), ticksToFreeze) / (float)ticksToFreeze;
+      return (float)Math.min(this.getTicksFrozen(), ticksToFreeze) / ticksToFreeze;
    }
 
    public boolean isFullyFrozen() {
@@ -2989,26 +2964,10 @@ public abstract class Entity
 
          for (int i = 0; i < 2; i++) {
             serverLevel.sendParticles(
-               ParticleTypes.SPLASH,
-               (double)pos.getX() + random.nextDouble(),
-               (double)(pos.getY() + 1),
-               (double)pos.getZ() + random.nextDouble(),
-               1,
-               0.0,
-               0.0,
-               0.0,
-               1.0
+               ParticleTypes.SPLASH, pos.getX() + random.nextDouble(), pos.getY() + 1, pos.getZ() + random.nextDouble(), 1, 0.0, 0.0, 0.0, 1.0
             );
             serverLevel.sendParticles(
-               ParticleTypes.BUBBLE,
-               (double)pos.getX() + random.nextDouble(),
-               (double)(pos.getY() + 1),
-               (double)pos.getZ() + random.nextDouble(),
-               1,
-               0.0,
-               0.01,
-               0.0,
-               0.2
+               ParticleTypes.BUBBLE, pos.getX() + random.nextDouble(), pos.getY() + 1, pos.getZ() + random.nextDouble(), 1, 0.0, 0.01, 0.0, 0.2
             );
          }
       }
@@ -3054,7 +3013,7 @@ public abstract class Entity
 
    protected void moveTowardsClosestSpace(final double x, final double y, final double z) {
       BlockPos pos = BlockPos.containing(x, y, z);
-      Vec3 delta = new Vec3(x - (double)pos.getX(), y - (double)pos.getY(), z - (double)pos.getZ());
+      Vec3 delta = new Vec3(x - pos.getX(), y - pos.getY(), z - pos.getZ());
       BlockPos.MutableBlockPos neighborPos = new BlockPos.MutableBlockPos();
       Direction closestDirection = Direction.UP;
       double closest = Double.MAX_VALUE;
@@ -3072,14 +3031,14 @@ public abstract class Entity
       }
 
       float speed = this.random.nextFloat() * 0.2F + 0.1F;
-      float step = (float)closestDirection.getAxisDirection().getStep();
+      float step = closestDirection.getAxisDirection().getStep();
       Vec3 scaledMovement = this.getDeltaMovement().scale(0.75);
       if (closestDirection.getAxis() == Direction.Axis.X) {
-         this.setDeltaMovement((double)(step * speed), scaledMovement.y, scaledMovement.z);
+         this.setDeltaMovement(step * speed, scaledMovement.y, scaledMovement.z);
       } else if (closestDirection.getAxis() == Direction.Axis.Y) {
-         this.setDeltaMovement(scaledMovement.x, (double)(step * speed), scaledMovement.z);
+         this.setDeltaMovement(scaledMovement.x, step * speed, scaledMovement.z);
       } else if (closestDirection.getAxis() == Direction.Axis.Z) {
-         this.setDeltaMovement(scaledMovement.x, scaledMovement.y, (double)(step * speed));
+         this.setDeltaMovement(scaledMovement.x, scaledMovement.y, step * speed);
       }
    }
 
@@ -3201,8 +3160,7 @@ public abstract class Entity
       this.portalProcess = oldEntity.portalProcess;
    }
 
-   @Nullable
-   public Entity teleport(final TeleportTransition transition) {
+   public @Nullable Entity teleport(final TeleportTransition transition) {
       if (this.level() instanceof ServerLevel serverLevel && !this.isRemoved()) {
          ServerLevel newLevel = transition.newLevel();
          boolean otherDimension = newLevel.dimension() != serverLevel.dimension();
@@ -3210,14 +3168,10 @@ public abstract class Entity
             this.stopRiding();
          }
 
-         if (otherDimension) {
-            return this.teleportCrossDimension(serverLevel, newLevel, transition);
-         }
-
-         return this.teleportSameDimension(serverLevel, transition);
+         return otherDimension ? this.teleportCrossDimension(serverLevel, newLevel, transition) : this.teleportSameDimension(serverLevel, transition);
+      } else {
+         return null;
       }
-
-      return null;
    }
 
    private Entity teleportSameDimension(final ServerLevel level, final TeleportTransition transition) {
@@ -3237,8 +3191,7 @@ public abstract class Entity
       return this;
    }
 
-   @Nullable
-   private Entity teleportCrossDimension(final ServerLevel oldLevel, final ServerLevel newLevel, final TeleportTransition transition) {
+   private @Nullable Entity teleportCrossDimension(final ServerLevel oldLevel, final ServerLevel newLevel, final TeleportTransition transition) {
       List<Entity> oldPassengers = this.getPassengers();
       List<Entity> newPassengers = new ArrayList<>(oldPassengers.size());
       this.ejectPassengers();
@@ -3256,22 +3209,22 @@ public abstract class Entity
       if (newEntity == null) {
          profiler.pop();
          return null;
-      } else {
-         newEntity.restoreFrom(this);
-         this.removeAfterChangingDimensions();
-         newEntity.teleportSetPosition(PositionMoveRotation.of(this), PositionMoveRotation.of(transition), transition.relatives());
-         newLevel.addDuringTeleport(newEntity);
-
-         for (Entity newPassenger : newPassengers) {
-            newPassenger.startRiding(newEntity, true, false);
-         }
-
-         newLevel.resetEmptyTime();
-         transition.postTeleportTransition().onTransition(newEntity);
-         this.teleportSpectators(transition, oldLevel);
-         profiler.pop();
-         return newEntity;
       }
+
+      newEntity.restoreFrom(this);
+      this.removeAfterChangingDimensions();
+      newEntity.teleportSetPosition(PositionMoveRotation.of(this), PositionMoveRotation.of(transition), transition.relatives());
+      newLevel.addDuringTeleport(newEntity);
+
+      for (Entity newPassenger : newPassengers) {
+         newPassenger.startRiding(newEntity, true, false);
+      }
+
+      newLevel.resetEmptyTime();
+      transition.postTeleportTransition().onTransition(newEntity);
+      this.teleportSpectators(transition, oldLevel);
+      profiler.pop();
+      return newEntity;
    }
 
    protected void teleportSpectators(final TeleportTransition transition, final ServerLevel oldLevel) {
@@ -3301,8 +3254,7 @@ public abstract class Entity
       List<Entity> passengers = this.getIndirectPassengersStream().toList();
 
       for (Entity passenger : passengers) {
-         if (passenger instanceof ServerPlayer) {
-            ServerPlayer player = (ServerPlayer)passenger;
+         if (passenger instanceof ServerPlayer player) {
             if (controller != null && player.getId() == controller.getId()) {
                player.connection
                   .send(ClientboundTeleportEntityPacket.teleport(this.getId(), PositionMoveRotation.of(transition), transition.relatives(), this.onGround));
@@ -3459,13 +3411,12 @@ public abstract class Entity
          .withStyle(s -> s.withHoverEvent(this.createHoverEvent()).withInsertion(this.getStringUUID()));
    }
 
-   public void setCustomName(@Nullable final Component name) {
+   public void setCustomName(final @Nullable Component name) {
       this.entityData.set(DATA_CUSTOM_NAME, Optional.ofNullable(name));
    }
 
-   @Nullable
    @Override
-   public Component getCustomName() {
+   public @Nullable Component getCustomName() {
       return this.entityData.get(DATA_CUSTOM_NAME).orElse(null);
    }
 
@@ -3482,8 +3433,7 @@ public abstract class Entity
       return this.entityData.get(DATA_CUSTOM_NAME_VISIBLE);
    }
 
-   @Nullable
-   public Component belowNameDisplay() {
+   public @Nullable Component belowNameDisplay() {
       Scoreboard scoreboard = this.level().getScoreboard();
       Objective objective = scoreboard.getDisplayObjective(DisplaySlot.BELOW_NAME);
       if (objective != null) {
@@ -3580,34 +3530,32 @@ public abstract class Entity
 
    public boolean fudgePositionAfterSizeChange(final EntityDimensions previousDimensions) {
       EntityDimensions newDimensions = this.getDimensions(this.getPose());
-      Vec3 oldCenter = this.position().add(0.0, (double)previousDimensions.height() / 2.0, 0.0);
-      double widthDelta = (double)Math.max(0.0F, newDimensions.width() - previousDimensions.width()) + 1.0E-6;
-      double heightDelta = (double)Math.max(0.0F, newDimensions.height() - previousDimensions.height()) + 1.0E-6;
+      Vec3 oldCenter = this.position().add(0.0, previousDimensions.height() / 2.0, 0.0);
+      double widthDelta = Math.max(0.0F, newDimensions.width() - previousDimensions.width()) + 1.0E-6;
+      double heightDelta = Math.max(0.0F, newDimensions.height() - previousDimensions.height()) + 1.0E-6;
       VoxelShape allowedCenters = Shapes.create(AABB.ofSize(oldCenter, widthDelta, heightDelta, widthDelta));
       Optional<Vec3> freePosition = this.level
-         .findFreePosition(this, allowedCenters, oldCenter, (double)newDimensions.width(), (double)newDimensions.height(), (double)newDimensions.width());
+         .findFreePosition(this, allowedCenters, oldCenter, newDimensions.width(), newDimensions.height(), newDimensions.width());
       if (freePosition.isPresent()) {
-         this.setPos(freePosition.get().add(0.0, (double)(-newDimensions.height()) / 2.0, 0.0));
+         this.setPos(freePosition.get().add(0.0, -newDimensions.height() / 2.0, 0.0));
          return true;
-      } else {
-         if (newDimensions.width() > previousDimensions.width() && newDimensions.height() > previousDimensions.height()) {
-            VoxelShape allowedCentersIgnoringY = Shapes.create(AABB.ofSize(oldCenter, widthDelta, 1.0E-6, widthDelta));
-            Optional<Vec3> freePositionIgnoreVertical = this.level
-               .findFreePosition(
-                  this, allowedCentersIgnoringY, oldCenter, (double)newDimensions.width(), (double)previousDimensions.height(), (double)newDimensions.width()
-               );
-            if (freePositionIgnoreVertical.isPresent()) {
-               this.setPos(freePositionIgnoreVertical.get().add(0.0, (double)(-previousDimensions.height()) / 2.0 + 1.0E-6, 0.0));
-               return true;
-            }
-         }
-
-         return false;
       }
+
+      if (newDimensions.width() > previousDimensions.width() && newDimensions.height() > previousDimensions.height()) {
+         VoxelShape allowedCentersIgnoringY = Shapes.create(AABB.ofSize(oldCenter, widthDelta, 1.0E-6, widthDelta));
+         Optional<Vec3> freePositionIgnoreVertical = this.level
+            .findFreePosition(this, allowedCentersIgnoringY, oldCenter, newDimensions.width(), previousDimensions.height(), newDimensions.width());
+         if (freePositionIgnoreVertical.isPresent()) {
+            this.setPos(freePositionIgnoreVertical.get().add(0.0, -previousDimensions.height() / 2.0 + 1.0E-6, 0.0));
+            return true;
+         }
+      }
+
+      return false;
    }
 
    public Direction getDirection() {
-      return Direction.fromYRot((double)this.getYRot());
+      return Direction.fromYRot(this.getYRot());
    }
 
    public Direction getMotionDirection() {
@@ -3632,9 +3580,9 @@ public abstract class Entity
          ? this.bb
          : this.bb
             .move(
-               Mth.lerp((double)partialTicks, this.xOld, this.getX()) - this.getX(),
-               Mth.lerp((double)partialTicks, this.yOld, this.getY()) - this.getY(),
-               Mth.lerp((double)partialTicks, this.zOld, this.getZ()) - this.getZ()
+               Mth.lerp(partialTicks, this.xOld, this.getX()) - this.getX(),
+               Mth.lerp(partialTicks, this.yOld, this.getY()) - this.getY(),
+               Mth.lerp(partialTicks, this.zOld, this.getZ()) - this.getZ()
             );
    }
 
@@ -3650,9 +3598,8 @@ public abstract class Entity
       return this.eyeHeight;
    }
 
-   @Nullable
    @Override
-   public SlotAccess getSlot(final int slot) {
+   public @Nullable SlotAccess getSlot(final int slot) {
       return null;
    }
 
@@ -3691,8 +3638,7 @@ public abstract class Entity
       return this.is(EntityTypeTags.DEFLECTS_PROJECTILES) ? ProjectileDeflection.REVERSE : ProjectileDeflection.NONE;
    }
 
-   @Nullable
-   public LivingEntity getControllingPassenger() {
+   public @Nullable LivingEntity getControllingPassenger() {
       return null;
    }
 
@@ -3704,8 +3650,7 @@ public abstract class Entity
       return this.passengers;
    }
 
-   @Nullable
-   public Entity getFirstPassenger() {
+   public @Nullable Entity getFirstPassenger() {
       return this.passengers.isEmpty() ? null : (Entity)this.passengers.get(0);
    }
 
@@ -3769,10 +3714,10 @@ public abstract class Entity
    public boolean hasIndirectPassenger(final Entity entity) {
       if (!entity.isPassenger()) {
          return false;
-      } else {
-         Entity ridden = entity.getVehicle();
-         return ridden == this ? true : this.hasIndirectPassenger(ridden);
       }
+
+      Entity ridden = entity.getVehicle();
+      return ridden == this ? true : this.hasIndirectPassenger(ridden);
    }
 
    public final boolean isLocalInstanceAuthoritative() {
@@ -3807,23 +3752,21 @@ public abstract class Entity
 
    protected static Vec3 getCollisionHorizontalEscapeVector(final double colliderWidth, final double collidingWidth, final float directionDegrees) {
       double distance = (colliderWidth + collidingWidth + 1.0E-5F) / 2.0;
-      float directionX = -Mth.sin((double)(directionDegrees * (float) (Math.PI / 180.0)));
-      float directionZ = Mth.cos((double)(directionDegrees * (float) (Math.PI / 180.0)));
+      float directionX = -Mth.sin(directionDegrees * (float) (Math.PI / 180.0));
+      float directionZ = Mth.cos(directionDegrees * (float) (Math.PI / 180.0));
       float scale = Math.max(Math.abs(directionX), Math.abs(directionZ));
-      return new Vec3((double)directionX * distance / (double)scale, 0.0, (double)directionZ * distance / (double)scale);
+      return new Vec3(directionX * distance / scale, 0.0, directionZ * distance / scale);
    }
 
    public Vec3 getDismountLocationForPassenger(final LivingEntity passenger) {
       return new Vec3(this.getX(), this.getBoundingBox().maxY, this.getZ());
    }
 
-   @Nullable
-   public Entity getVehicle() {
+   public @Nullable Entity getVehicle() {
       return this.vehicle;
    }
 
-   @Nullable
-   public Entity getControlledVehicle() {
+   public @Nullable Entity getControlledVehicle() {
       return this.vehicle != null && this.vehicle.getControllingPassenger() == this ? this.vehicle : null;
    }
 
@@ -3874,7 +3817,7 @@ public abstract class Entity
    }
 
    public double getFluidJumpThreshold() {
-      return (double)this.getEyeHeight() < 0.4 ? 0.0 : 0.4;
+      return this.getEyeHeight() < 0.4 ? 0.0 : 0.4;
    }
 
    public final float getBbWidth() {
@@ -3952,7 +3895,7 @@ public abstract class Entity
    }
 
    public double getX(final double progress) {
-      return this.position.x + (double)this.getBbWidth() * progress;
+      return this.position.x + this.getBbWidth() * progress;
    }
 
    public double getRandomX(final double spread) {
@@ -3968,7 +3911,7 @@ public abstract class Entity
    }
 
    public double getY(final double progress) {
-      return this.position.y + (double)this.getBbHeight() * progress;
+      return this.position.y + this.getBbHeight() * progress;
    }
 
    public double getRandomY(final double spread) {
@@ -3980,7 +3923,7 @@ public abstract class Entity
    }
 
    public double getEyeY() {
-      return this.position.y + (double)this.eyeHeight;
+      return this.position.y + this.eyeHeight;
    }
 
    public final int getBlockZ() {
@@ -3992,7 +3935,7 @@ public abstract class Entity
    }
 
    public double getZ(final double progress) {
-      return this.position.z + (double)this.getBbWidth() * progress;
+      return this.position.z + this.getBbWidth() * progress;
    }
 
    public double getRandomZ(final double spread) {
@@ -4044,7 +3987,7 @@ public abstract class Entity
    }
 
    public Vec3 getRopeHoldPosition(final float partialTickTime) {
-      return this.getPosition(partialTickTime).add(0.0, (double)this.eyeHeight * 0.7, 0.0);
+      return this.getPosition(partialTickTime).add(0.0, this.eyeHeight * 0.7, 0.0);
    }
 
    public void recreateFromPacket(final ClientboundAddEntityPacket packet) {
@@ -4059,8 +4002,7 @@ public abstract class Entity
       this.setDeltaMovement(packet.getMovement());
    }
 
-   @Nullable
-   public ItemStack getPickResult() {
+   public @Nullable ItemStack getPickResult() {
       return null;
    }
 
@@ -4126,7 +4068,7 @@ public abstract class Entity
       return 0.0F;
    }
 
-   public void onExplosionHit(@Nullable final Entity explosionCausedBy) {
+   public void onExplosionHit(final @Nullable Entity explosionCausedBy) {
    }
 
    @Override
@@ -4134,8 +4076,7 @@ public abstract class Entity
       return this.removalReason != null;
    }
 
-   @Nullable
-   public Entity.RemovalReason getRemovalReason() {
+   public Entity.@Nullable RemovalReason getRemovalReason() {
       return this.removalReason;
    }
 
@@ -4205,12 +4146,12 @@ public abstract class Entity
    protected void lerpPositionAndRotationStep(
       final int stepsToTarget, final double targetX, final double targetY, final double targetZ, final double targetYRot, final double targetXRot
    ) {
-      double alpha = 1.0 / (double)stepsToTarget;
+      double alpha = 1.0 / stepsToTarget;
       double x = Mth.lerp(alpha, this.getX(), targetX);
       double y = Mth.lerp(alpha, this.getY(), targetY);
       double z = Mth.lerp(alpha, this.getZ(), targetZ);
-      float yRot = (float)Mth.rotLerp(alpha, (double)this.getYRot(), targetYRot);
-      float xRot = (float)Mth.lerp(alpha, (double)this.getXRot(), targetXRot);
+      float yRot = (float)Mth.rotLerp(alpha, this.getYRot(), targetYRot);
+      float xRot = (float)Mth.lerp(alpha, this.getXRot(), targetXRot);
       this.setPos(x, y, z);
       this.setRot(yRot, xRot);
    }
@@ -4220,23 +4161,14 @@ public abstract class Entity
    }
 
    public Vec3 getKnownMovement() {
-      if (this.getControllingPassenger() instanceof Player controller && this.isAlive()) {
-         return controller.getKnownMovement();
-      }
-
-      return this.getDeltaMovement();
+      return this.getControllingPassenger() instanceof Player controller && this.isAlive() ? controller.getKnownMovement() : this.getDeltaMovement();
    }
 
    public Vec3 getKnownSpeed() {
-      if (this.getControllingPassenger() instanceof Player controller && this.isAlive()) {
-         return controller.getKnownSpeed();
-      }
-
-      return this.lastKnownSpeed;
+      return this.getControllingPassenger() instanceof Player controller && this.isAlive() ? controller.getKnownSpeed() : this.lastKnownSpeed;
    }
 
-   @Nullable
-   public ItemStack getWeaponItem() {
+   public @Nullable ItemStack getWeaponItem() {
       return null;
    }
 
@@ -4253,9 +4185,8 @@ public abstract class Entity
       this.applyImplicitComponents(stack.getComponents());
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       if (type == DataComponents.CUSTOM_NAME) {
          return castComponentValue((DataComponentType<T>)type, this.getCustomName());
       } else {
@@ -4264,8 +4195,7 @@ public abstract class Entity
    }
 
    @Contract("_,!null->!null;_,_->_")
-   @Nullable
-   protected static <T> T castComponentValue(final DataComponentType<T> type, @Nullable final Object value) {
+   protected static <T> @Nullable T castComponentValue(final DataComponentType<T> type, final @Nullable Object value) {
       return (T)value;
    }
 
@@ -4298,8 +4228,7 @@ public abstract class Entity
    public void registerDebugValues(final ServerLevel level, final DebugValueSource.Registration registration) {
    }
 
-   @Nullable
-   public AABB getFluidInteractionBox() {
+   public @Nullable AABB getFluidInteractionBox() {
       double margin = 0.001;
       AABB box = this.getBoundingBox().deflate(0.001);
       Entity vehicle = this.getVehicle();
@@ -4318,12 +4247,11 @@ public abstract class Entity
       return this.invulnerableTime;
    }
 
-   @Nullable
-   protected AABB modifyPassengerFluidInteractionBox(final AABB passengerBox) {
+   protected @Nullable AABB modifyPassengerFluidInteractionBox(final AABB passengerBox) {
       return passengerBox;
    }
 
-   private static record EntityPathElement(Entity entity) implements ProblemReporter.PathElement {
+   private record EntityPathElement(Entity entity) implements ProblemReporter.PathElement {
       @Override
       public String get() {
          return this.entity.toString();
@@ -4331,7 +4259,7 @@ public abstract class Entity
    }
 
    @Retention(RetentionPolicy.CLASS)
-   @Target({ElementType.TYPE_USE})
+   @Target(ElementType.TYPE_USE)
    public @interface Flags {
    }
 
@@ -4340,7 +4268,7 @@ public abstract class Entity
       void accept(Entity target, double x, double y, double z);
    }
 
-   private static record Movement(Vec3 from, Vec3 to, Optional<Vec3> axisDependentOriginalMovement) {
+   private record Movement(Vec3 from, Vec3 to, Optional<Vec3> axisDependentOriginalMovement) {
       public Movement(final Vec3 from, final Vec3 to, final Vec3 axisDependentOriginalMovement) {
          this(from, to, Optional.of(axisDependentOriginalMovement));
       }
@@ -4350,7 +4278,7 @@ public abstract class Entity
       }
    }
 
-   public static enum MovementEmission {
+   public enum MovementEmission {
       NONE(false, false),
       SOUNDS(true, false),
       EVENTS(false, true),
@@ -4359,7 +4287,7 @@ public abstract class Entity
       private final boolean sounds;
       private final boolean events;
 
-      private MovementEmission(final boolean sounds, final boolean events) {
+      MovementEmission(final boolean sounds, final boolean events) {
          this.sounds = sounds;
          this.events = events;
       }
@@ -4377,7 +4305,7 @@ public abstract class Entity
       }
    }
 
-   public static enum RemovalReason {
+   public enum RemovalReason {
       KILLED(true, false),
       DISCARDED(true, false),
       UNLOADED_TO_CHUNK(false, true),
@@ -4387,7 +4315,7 @@ public abstract class Entity
       private final boolean destroy;
       private final boolean save;
 
-      private RemovalReason(final boolean destroy, final boolean save) {
+      RemovalReason(final boolean destroy, final boolean save) {
          this.destroy = destroy;
          this.save = save;
       }

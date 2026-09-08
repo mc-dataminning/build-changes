@@ -37,9 +37,7 @@ public class MagmaCubeModel extends EntityModel<SlimeRenderState> {
             v += 9 * i - 36;
          }
 
-         root.addOrReplaceChild(
-            getSegmentName(i), CubeListBuilder.create().texOffs(u, v).addBox(-4.0F, (float)(16 + i), -4.0F, 8.0F, 1.0F, 8.0F), PartPose.ZERO
-         );
+         root.addOrReplaceChild(getSegmentName(i), CubeListBuilder.create().texOffs(u, v).addBox(-4.0F, 16 + i, -4.0F, 8.0F, 1.0F, 8.0F), PartPose.ZERO);
       }
 
       root.addOrReplaceChild("inside_cube", CubeListBuilder.create().texOffs(24, 40).addBox(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), PartPose.ZERO);
@@ -51,7 +49,7 @@ public class MagmaCubeModel extends EntityModel<SlimeRenderState> {
       float slimeSquish = Math.max(0.0F, state.squish);
 
       for (int i = 0; i < this.bodyCubes.length; i++) {
-         this.bodyCubes[i].y = (float)(-(4 - i)) * slimeSquish * 1.7F;
+         this.bodyCubes[i].y = -(4 - i) * slimeSquish * 1.7F;
       }
    }
 }

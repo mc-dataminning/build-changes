@@ -32,7 +32,7 @@ public class SimpleVerticalParticle extends SingleQuadParticle {
       return SingleQuadParticle.Layer.OPAQUE;
    }
 
-   public static record PauseMobGrowthProvider(SpriteSet sprite) implements ParticleProvider<SimpleParticleType> {
+   public record PauseMobGrowthProvider(SpriteSet sprite) implements ParticleProvider<SimpleParticleType> {
       public Particle createParticle(
          final SimpleParticleType options,
          final ClientLevel level,
@@ -48,7 +48,7 @@ public class SimpleVerticalParticle extends SingleQuadParticle {
       }
    }
 
-   public static record ResetMobGrowthProvider(SpriteSet sprite) implements ParticleProvider<SimpleParticleType> {
+   public record ResetMobGrowthProvider(SpriteSet sprite) implements ParticleProvider<SimpleParticleType> {
       public Particle createParticle(
          final SimpleParticleType options,
          final ClientLevel level,

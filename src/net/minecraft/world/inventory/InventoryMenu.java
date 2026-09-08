@@ -2,7 +2,6 @@ package net.minecraft.world.inventory;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Prediction;
@@ -62,10 +61,6 @@ public class InventoryMenu extends AbstractCraftingMenu {
 
       this.addStandardInventorySlots(inventory, 8, 84);
       this.addSlot(new Slot(inventory, 40, 77, 62) {
-         {
-            Objects.requireNonNull(InventoryMenu.this);
-         }
-
          @Override
          public void setByPlayer(final ItemStack itemStack, final ItemStack previous) {
             owner.onEquipItem(EquipmentSlot.OFFHAND, previous, itemStack);

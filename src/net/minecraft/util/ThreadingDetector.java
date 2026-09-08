@@ -19,10 +19,8 @@ public class ThreadingDetector {
    private final String name;
    private final Semaphore lock = new Semaphore(1);
    private final Lock stackTraceLock = new ReentrantLock();
-   @Nullable
-   private volatile Thread threadThatFailedToAcquire;
-   @Nullable
-   private volatile ReportedException fullException;
+   private volatile @Nullable Thread threadThatFailedToAcquire;
+   private volatile @Nullable ReportedException fullException;
 
    public ThreadingDetector(final String name) {
       this.name = name;
@@ -40,7 +38,7 @@ public class ThreadingDetector {
 
             try {
                this.lock.acquire();
-            } catch (InterruptedException var6) {
+            } catch (InterruptedException ignored) {
                Thread.currentThread().interrupt();
             }
 
@@ -70,7 +68,7 @@ public class ThreadingDetector {
       }
    }
 
-   public static ReportedException makeThreadingException(final String name, @Nullable final Thread threadThatFailedToAcquire) {
+   public static ReportedException makeThreadingException(final String name, final @Nullable Thread threadThatFailedToAcquire) {
       String threads = Stream.of(Thread.currentThread(), threadThatFailedToAcquire)
          .filter(Objects::nonNull)
          .map(ThreadingDetector::stackTrace)

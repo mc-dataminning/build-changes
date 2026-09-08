@@ -2500,7 +2500,7 @@ public class VanillaChestLoot implements LootTableSubProvider {
    }
 
    private UniformContainerBase.Builder<?> explorationMapItem(
-      final TagKey<Structure> structureTag, final Holder<MapDecorationType> decoration, final Item mapItem, @Nullable final String translationKey
+      final TagKey<Structure> structureTag, final Holder<MapDecorationType> decoration, final Item mapItem, final @Nullable String translationKey
    ) {
       UniformContainerBase.Builder<?> entry = LootItem.lootTableItem(mapItem).setWeight(1);
       if (translationKey != null) {

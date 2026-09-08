@@ -19,7 +19,7 @@ public class AppendLoot implements RuleBlockEntityModifier {
    }
 
    @Override
-   public CompoundTag apply(final RandomSource random, @Nullable final CompoundTag existingTag) {
+   public CompoundTag apply(final RandomSource random, final @Nullable CompoundTag existingTag) {
       CompoundTag result = existingTag == null ? new CompoundTag() : existingTag.copy();
       result.store("LootTable", LootTable.KEY_CODEC, this.lootTable);
       result.putLong("LootTableSeed", random.nextLong());

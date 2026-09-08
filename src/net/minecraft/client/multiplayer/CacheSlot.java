@@ -5,10 +5,8 @@ import org.jspecify.annotations.Nullable;
 
 public class CacheSlot<C extends CacheSlot.Cleaner<C>, D> {
    private final Function<C, D> operation;
-   @Nullable
-   private C context;
-   @Nullable
-   private D value;
+   private @Nullable C context;
+   private @Nullable D value;
 
    public CacheSlot(final Function<C, D> operation) {
       this.operation = operation;
@@ -17,13 +15,13 @@ public class CacheSlot<C extends CacheSlot.Cleaner<C>, D> {
    public D compute(final C context) {
       if (context == this.context && this.value != null) {
          return this.value;
-      } else {
-         D newValue = this.operation.apply(context);
-         this.value = newValue;
-         this.context = context;
-         context.registerForCleaning(this);
-         return newValue;
       }
+
+      D newValue = this.operation.apply(context);
+      this.value = newValue;
+      this.context = context;
+      context.registerForCleaning(this);
+      return newValue;
    }
 
    public void clear() {

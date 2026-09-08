@@ -45,13 +45,13 @@ public class WorldgenRandom extends LegacyRandomSource {
       this.setSeed(seed);
       long xScale = this.nextLong() | 1L;
       long zScale = this.nextLong() | 1L;
-      long result = (long)chunkX * xScale + (long)chunkZ * zScale ^ seed;
+      long result = chunkX * xScale + chunkZ * zScale ^ seed;
       this.setSeed(result);
       return result;
    }
 
    public void setFeatureSeed(final long seed, final int index, final int step) {
-      long result = seed + (long)index + (long)(10000 * step);
+      long result = seed + index + 10000 * step;
       this.setSeed(result);
    }
 
@@ -59,26 +59,26 @@ public class WorldgenRandom extends LegacyRandomSource {
       this.setSeed(seed);
       long xScale = this.nextLong();
       long zScale = this.nextLong();
-      long result = (long)chunkX * xScale ^ (long)chunkZ * zScale ^ seed;
+      long result = chunkX * xScale ^ chunkZ * zScale ^ seed;
       this.setSeed(result);
    }
 
    public void setLargeFeatureWithSalt(final long seed, final int x, final int z, final int blend) {
-      long result = (long)x * 341873128712L + (long)z * 132897987541L + seed + (long)blend;
+      long result = x * 341873128712L + z * 132897987541L + seed + blend;
       this.setSeed(result);
    }
 
    public static RandomSource seedSlimeChunk(final int x, final int z, final long seed, final long salt) {
-      return RandomSource.createThreadLocalInstance(seed + (long)(x * x * 4987142) + (long)(x * 5947611) + (long)(z * z) * 4392871L + (long)(z * 389711) ^ salt);
+      return RandomSource.createThreadLocalInstance(seed + x * x * 4987142 + x * 5947611 + z * z * 4392871L + z * 389711 ^ salt);
    }
 
-   public static enum Algorithm {
+   public enum Algorithm {
       LEGACY(LegacyRandomSource::new),
       XOROSHIRO(XoroshiroRandomSource::new);
 
       private final LongFunction<RandomSource> constructor;
 
-      private Algorithm(final LongFunction<RandomSource> constructor) {
+      Algorithm(final LongFunction<RandomSource> constructor) {
          this.constructor = constructor;
       }
 

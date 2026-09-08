@@ -147,10 +147,9 @@ public class ModelDiscovery {
       private static final int SLOT_COUNT = 7;
       private final Identifier id;
       private boolean valid;
-      @Nullable
-      private ModelDiscovery.ModelWrapper parent;
+      private ModelDiscovery.@Nullable ModelWrapper parent;
       private final UnbakedModel wrapped;
-      private final AtomicReferenceArray<Object> fixedSlots = new AtomicReferenceArray<>(7);
+      private final AtomicReferenceArray<@Nullable Object> fixedSlots = new AtomicReferenceArray<>(7);
       private final Map<ModelState, QuadCollection> modelBakeCache = new ConcurrentHashMap<>();
 
       private static <T> ModelDiscovery.Slot<T> slot(final int index) {
@@ -169,9 +168,8 @@ public class ModelDiscovery {
          return this.wrapped;
       }
 
-      @Nullable
       @Override
-      public ResolvedModel parent() {
+      public @Nullable ResolvedModel parent() {
          return this.parent;
       }
 
@@ -180,8 +178,7 @@ public class ModelDiscovery {
          return this.id.toString();
       }
 
-      @Nullable
-      private <T> T getSlot(final ModelDiscovery.Slot<T> key) {
+      private <T> @Nullable T getSlot(final ModelDiscovery.Slot<T> key) {
          return (T)this.fixedSlots.get(key.index);
       }
 
@@ -240,6 +237,6 @@ public class ModelDiscovery {
       }
    }
 
-   private static record Slot<T>(int index) {
+   private record Slot<T>(int index) {
    }
 }

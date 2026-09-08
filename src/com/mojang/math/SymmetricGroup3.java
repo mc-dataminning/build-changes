@@ -41,7 +41,7 @@ public enum SymmetricGroup3 {
       return Arrays.stream(values).map(f -> Arrays.stream(values()).filter(s -> f.compose(s) == P123).findAny().get()).toArray(SymmetricGroup3[]::new);
    });
 
-   private SymmetricGroup3(final int p0, final int p1, final int p2) {
+   SymmetricGroup3(final int p0, final int p1, final int p2) {
       this.p0 = p0;
       this.p1 = p1;
       this.p2 = p2;

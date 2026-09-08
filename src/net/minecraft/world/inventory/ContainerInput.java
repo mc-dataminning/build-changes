@@ -19,7 +19,7 @@ public enum ContainerInput {
    public static final StreamCodec<ByteBuf, ContainerInput> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, ContainerInput::id);
    private final int id;
 
-   private ContainerInput(final int id) {
+   ContainerInput(final int id) {
       this.id = id;
    }
 

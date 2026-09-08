@@ -43,8 +43,8 @@ public class MegaJungleTrunkPlacer extends GiantTrunkPlacer {
          int bz = 0;
 
          for (int b = 0; b < 5; b++) {
-            bx = (int)(1.5F + Mth.cos((double)angle) * (float)b);
-            bz = (int)(1.5F + Mth.sin((double)angle) * (float)b);
+            bx = (int)(1.5F + Mth.cos(angle) * b);
+            bz = (int)(1.5F + Mth.sin(angle) * b);
             BlockPos pos = origin.offset(bx, branchHeight - 3 + b / 2, bz);
             this.placeLog(level, trunkSetter, random, pos, tree);
          }

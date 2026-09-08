@@ -9,8 +9,7 @@ import org.jspecify.annotations.Nullable;
 public interface ChunkLoadStatusView {
    void moveTo(ResourceKey<Level> dimension, ChunkPos centerChunk);
 
-   @Nullable
-   ChunkStatus get(int x, int z);
+   @Nullable ChunkStatus get(int x, int z);
 
    int radius();
 }

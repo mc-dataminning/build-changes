@@ -17,16 +17,16 @@ public class EntityMinecartIdentifiersFix extends EntityRenameFix {
    protected Pair<String, Typed<?>> fix(final String name, final Typed<?> entity) {
       if (!name.equals("Minecart")) {
          return Pair.of(name, entity);
-      } else {
-         int id = ((Dynamic)entity.getOrCreate(DSL.remainderFinder())).get("Type").asInt(0);
-
-         String newName = switch (id) {
-            case 1 -> "MinecartChest";
-            case 2 -> "MinecartFurnace";
-            default -> "MinecartRideable";
-         };
-         Type<?> newType = (Type<?>)this.getOutputSchema().findChoiceType(References.ENTITY).types().get(newName);
-         return Pair.of(newName, Util.writeAndReadTypedOrThrow(entity, newType, dynamic -> dynamic.remove("Type")));
       }
+
+      int id = ((Dynamic)entity.getOrCreate(DSL.remainderFinder())).get("Type").asInt(0);
+
+      String newName = switch (id) {
+         case 1 -> "MinecartChest";
+         case 2 -> "MinecartFurnace";
+         default -> "MinecartRideable";
+      };
+      Type<?> newType = (Type<?>)this.getOutputSchema().findChoiceType(References.ENTITY).types().get(newName);
+      return Pair.of(newName, Util.writeAndReadTypedOrThrow(entity, newType, dynamic -> dynamic.remove("Type")));
    }
 }

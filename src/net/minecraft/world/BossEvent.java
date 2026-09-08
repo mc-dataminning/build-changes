@@ -87,7 +87,7 @@ public abstract class BossEvent {
       return this.createWorldFog;
    }
 
-   public static enum BossBarColor implements StringRepresentable {
+   public enum BossBarColor implements StringRepresentable {
       PINK("pink", ChatFormatting.RED),
       BLUE("blue", ChatFormatting.BLUE),
       RED("red", ChatFormatting.DARK_RED),
@@ -100,7 +100,7 @@ public abstract class BossEvent {
       private final String name;
       private final ChatFormatting formatting;
 
-      private BossBarColor(final String name, final ChatFormatting formatting) {
+      BossBarColor(final String name, final ChatFormatting formatting) {
          this.name = name;
          this.formatting = formatting;
       }
@@ -119,7 +119,7 @@ public abstract class BossEvent {
       }
    }
 
-   public static enum BossBarOverlay implements StringRepresentable {
+   public enum BossBarOverlay implements StringRepresentable {
       PROGRESS("progress"),
       NOTCHED_6("notched_6"),
       NOTCHED_10("notched_10"),
@@ -129,7 +129,7 @@ public abstract class BossEvent {
       public static final Codec<BossEvent.BossBarOverlay> CODEC = StringRepresentable.fromEnum(BossEvent.BossBarOverlay::values);
       private final String name;
 
-      private BossBarOverlay(final String name) {
+      BossBarOverlay(final String name) {
          this.name = name;
       }
 

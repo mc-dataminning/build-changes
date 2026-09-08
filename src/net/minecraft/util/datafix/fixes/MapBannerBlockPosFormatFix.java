@@ -23,14 +23,14 @@ public class MapBannerBlockPosFormatFix extends DataFix {
          "MapBannerBlockPosFormatFix",
          type,
          input -> input.updateTyped(
-               dataF,
-               data -> data.updateTyped(
-                     bannersF,
-                     banners -> banners.updateTyped(
-                           bannerF, banner -> banner.update(DSL.remainderFinder(), bannerTag -> bannerTag.update("Pos", ExtraDataFixUtils::fixBlockPos))
-                        )
-                  )
+            dataF,
+            data -> data.updateTyped(
+               bannersF,
+               banners -> banners.updateTyped(
+                  bannerF, banner -> banner.update(DSL.remainderFinder(), bannerTag -> bannerTag.update("Pos", ExtraDataFixUtils::fixBlockPos))
+               )
             )
+         )
       );
    }
 }

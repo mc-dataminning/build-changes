@@ -47,24 +47,24 @@ public class SimpleRegionStorage implements AutoCloseable {
       return this.worker.store(pos, supplier);
    }
 
-   public CompoundTag upgradeChunkTag(CompoundTag chunkTag, final int defaultVersion, @Nullable final CompoundTag dataFixContextTag, final int targetVersion) {
+   public CompoundTag upgradeChunkTag(CompoundTag chunkTag, final int defaultVersion, final @Nullable CompoundTag dataFixContextTag, final int targetVersion) {
       int version = NbtUtils.getDataVersion(chunkTag, defaultVersion);
       if (version >= targetVersion) {
          return chunkTag;
-      } else {
-         try {
-            injectDatafixingContext(chunkTag, dataFixContextTag);
-            chunkTag = this.dataFixType.update(this.fixerUpper, chunkTag, version, targetVersion);
-            removeDatafixingContext(chunkTag);
-            NbtUtils.addDataVersion(chunkTag, targetVersion);
-            return chunkTag;
-         } catch (Exception var9) {
-            CrashReport report = CrashReport.forThrowable(var9, "Updated chunk");
-            CrashReportCategory details = report.addCategory("Updated chunk details");
-            details.setDetail("Data version", version);
-            details.setDetail("Target version", targetVersion);
-            throw new ReportedException(report);
-         }
+      }
+
+      try {
+         injectDatafixingContext(chunkTag, dataFixContextTag);
+         chunkTag = this.dataFixType.update(this.fixerUpper, chunkTag, version, targetVersion);
+         removeDatafixingContext(chunkTag);
+         NbtUtils.addDataVersion(chunkTag, targetVersion);
+         return chunkTag;
+      } catch (Exception e) {
+         CrashReport report = CrashReport.forThrowable(e, "Updated chunk");
+         CrashReportCategory details = report.addCategory("Updated chunk details");
+         details.setDetail("Data version", version);
+         details.setDetail("Target version", targetVersion);
+         throw new ReportedException(report);
       }
    }
 
@@ -79,7 +79,7 @@ public class SimpleRegionStorage implements AutoCloseable {
       );
    }
 
-   public static void injectDatafixingContext(final CompoundTag chunkTag, @Nullable final CompoundTag contextTag) {
+   public static void injectDatafixingContext(final CompoundTag chunkTag, final @Nullable CompoundTag contextTag) {
       if (contextTag != null) {
          chunkTag.put("__context", contextTag);
       }

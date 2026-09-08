@@ -25,12 +25,12 @@ public class PacketDecoder<T extends PacketListener> extends ByteToMessageDecode
       Packet<? super T> packet;
       try {
          packet = this.protocolInfo.codec().decode(input);
-      } catch (Exception var7) {
-         if (var7 instanceof SkipPacketException) {
+      } catch (Exception e) {
+         if (e instanceof SkipPacketException) {
             input.skipBytes(input.readableBytes());
          }
 
-         throw var7;
+         throw e;
       }
 
       PacketType<? extends Packet<? super T>> packetId = packet.type();
@@ -48,17 +48,17 @@ public class PacketDecoder<T extends PacketListener> extends ByteToMessageDecode
                + " bytes extra whilst reading packet "
                + packetId
          );
-      } else {
-         out.add(packet);
-         if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug(
-               Connection.PACKET_RECEIVED_MARKER,
-               " IN: [{}:{}] {} -> {} bytes",
-               new Object[]{this.protocolInfo.id().id(), packetId, packet.getClass().getName(), readableBytes}
-            );
-         }
-
-         ProtocolSwapHandler.handleInboundTerminalPacket(ctx, packet);
       }
+
+      out.add(packet);
+      if (LOGGER.isDebugEnabled()) {
+         LOGGER.debug(
+            Connection.PACKET_RECEIVED_MARKER,
+            " IN: [{}:{}] {} -> {} bytes",
+            new Object[]{this.protocolInfo.id().id(), packetId, packet.getClass().getName(), readableBytes}
+         );
+      }
+
+      ProtocolSwapHandler.handleInboundTerminalPacket(ctx, packet);
    }
 }

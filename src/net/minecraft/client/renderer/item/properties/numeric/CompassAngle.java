@@ -19,7 +19,7 @@ public class CompassAngle implements RangeSelectItemModelProperty {
    }
 
    @Override
-   public float get(final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final ItemOwner owner, final int seed) {
+   public float get(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable ItemOwner owner, final int seed) {
       return this.state.get(itemStack, level, owner, seed);
    }
 

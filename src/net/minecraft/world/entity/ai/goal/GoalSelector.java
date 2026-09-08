@@ -77,15 +77,15 @@ public class GoalSelector {
       profiler.pop();
       profiler.push("goalUpdate");
 
-      for (WrappedGoal goalx : this.availableGoals) {
-         if (!goalx.isRunning() && !goalContainsAnyFlags(goalx, this.disabledFlags) && goalCanBeReplacedForAllFlags(goalx, this.lockedFlags) && goalx.canUse()) {
-            for (Goal.Flag flag : goalx.getFlags()) {
+      for (WrappedGoal goal : this.availableGoals) {
+         if (!goal.isRunning() && !goalContainsAnyFlags(goal, this.disabledFlags) && goalCanBeReplacedForAllFlags(goal, this.lockedFlags) && goal.canUse()) {
+            for (Goal.Flag flag : goal.getFlags()) {
                WrappedGoal currentGoal = this.lockedFlags.getOrDefault(flag, NO_GOAL);
                currentGoal.stop();
-               this.lockedFlags.put(flag, goalx);
+               this.lockedFlags.put(flag, goal);
             }
 
-            goalx.start();
+            goal.start();
          }
       }
 

@@ -17,12 +17,12 @@ import net.minecraft.world.level.levelgen.densityfunction.SamplerContext;
 public record FindTopSurfaceFunction(DensityFunction density, DensityFunction upperBound, int lowerBound, int cellHeight) implements DensityFunction {
    public static final MapCodec<FindTopSurfaceFunction> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               DensityFunction.CODEC.fieldOf("density").forGetter(FindTopSurfaceFunction::density),
-               DensityFunction.CODEC.fieldOf("upper_bound").forGetter(FindTopSurfaceFunction::upperBound),
-               Codec.intRange(DimensionType.MIN_Y * 2, DimensionType.MAX_Y * 2).fieldOf("lower_bound").forGetter(FindTopSurfaceFunction::lowerBound),
-               ExtraCodecs.POSITIVE_INT.fieldOf("cell_height").forGetter(FindTopSurfaceFunction::cellHeight)
-            )
-            .apply(i, FindTopSurfaceFunction::new)
+            DensityFunction.CODEC.fieldOf("density").forGetter(FindTopSurfaceFunction::density),
+            DensityFunction.CODEC.fieldOf("upper_bound").forGetter(FindTopSurfaceFunction::upperBound),
+            Codec.intRange(DimensionType.MIN_Y * 2, DimensionType.MAX_Y * 2).fieldOf("lower_bound").forGetter(FindTopSurfaceFunction::lowerBound),
+            ExtraCodecs.POSITIVE_INT.fieldOf("cell_height").forGetter(FindTopSurfaceFunction::cellHeight)
+         )
+         .apply(i, FindTopSurfaceFunction::new)
    );
 
    @Override
@@ -44,12 +44,11 @@ public record FindTopSurfaceFunction(DensityFunction density, DensityFunction up
 
    @Override
    public Interval range() {
-      return Interval.of((float)this.lowerBound, Math.max((float)this.lowerBound, this.upperBound.range().max()));
+      return Interval.of(this.lowerBound, Math.max(this.lowerBound, this.upperBound.range().max()));
    }
 
-   @DensityFunction.Axes
    @Override
-   public int domainAxes() {
+   public @DensityFunction.Axes int domainAxes() {
       return (this.density.domainAxes() | this.upperBound.domainAxes()) & -3;
    }
 
@@ -58,24 +57,24 @@ public record FindTopSurfaceFunction(DensityFunction density, DensityFunction up
       return CODEC;
    }
 
-   private static record Sampler(DensitySampler density, DensitySampler upperBound, int lowerBound, int cellHeight) implements DensitySampler {
+   private record Sampler(DensitySampler density, DensitySampler upperBound, int lowerBound, int cellHeight) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          if (volume.sizeY() != 1) {
             throw new IllegalArgumentException("Cannot sample with sizeY=" + volume.sizeY());
-         } else {
-            this.upperBound.sampleVolume(context, outputBuffer, volume);
-            int index = 0;
+         }
 
-            for (int z = 0; z < volume.sizeZ(); z++) {
-               int blockZ = volume.blockZ(z);
+         this.upperBound.sampleVolume(context, outputBuffer, volume);
+         int index = 0;
 
-               for (int x = 0; x < volume.sizeX(); x++) {
-                  int blockX = volume.blockX(x);
-                  float upperBound = outputBuffer.get(index);
-                  outputBuffer.set(index, (float)this.findSurfaceFrom(context, blockX, blockZ, upperBound));
-                  index++;
-               }
+         for (int z = 0; z < volume.sizeZ(); z++) {
+            int blockZ = volume.blockZ(z);
+
+            for (int x = 0; x < volume.sizeX(); x++) {
+               int blockX = volume.blockX(x);
+               float upperBound = outputBuffer.get(index);
+               outputBuffer.set(index, this.findSurfaceFrom(context, blockX, blockZ, upperBound));
+               index++;
             }
          }
       }
@@ -83,22 +82,22 @@ public record FindTopSurfaceFunction(DensityFunction density, DensityFunction up
       @Override
       public float sampleValue(final SamplerContext context, final int blockX, final int blockY, final int blockZ) {
          float upperBound = this.upperBound.sampleValue(context, blockX, blockY, blockZ);
-         return (float)this.findSurfaceFrom(context, blockX, blockZ, upperBound);
+         return this.findSurfaceFrom(context, blockX, blockZ, upperBound);
       }
 
       private int findSurfaceFrom(final SamplerContext context, final int x, final int z, final float upperBound) {
-         int topY = Mth.floor(upperBound / (float)this.cellHeight) * this.cellHeight;
+         int topY = Mth.floor(upperBound / this.cellHeight) * this.cellHeight;
          if (topY <= this.lowerBound) {
             return this.lowerBound;
-         } else {
-            for (int probeY = topY; probeY >= this.lowerBound; probeY -= this.cellHeight) {
-               if (this.density.sampleValue(context, x, probeY, z) > 0.0F) {
-                  return probeY;
-               }
-            }
-
-            return this.lowerBound;
          }
+
+         for (int probeY = topY; probeY >= this.lowerBound; probeY -= this.cellHeight) {
+            if (this.density.sampleValue(context, x, probeY, z) > 0.0F) {
+               return probeY;
+            }
+         }
+
+         return this.lowerBound;
       }
    }
 }

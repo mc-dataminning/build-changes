@@ -18,9 +18,9 @@ import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 
 public interface JvmProfiler {
-   JvmProfiler INSTANCE = (JvmProfiler)(Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() && FlightRecorder.isAvailable()
+   JvmProfiler INSTANCE = Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() && FlightRecorder.isAvailable()
       ? JfrProfiler.getInstance()
-      : new JvmProfiler.NoOpProfiler());
+      : new JvmProfiler.NoOpProfiler();
 
    boolean start(Environment environment);
 
@@ -42,19 +42,15 @@ public interface JvmProfiler {
 
    void onRegionFileWrite(RegionStorageInfo info, ChunkPos pos, RegionFileVersion version, int writtenBytes);
 
-   @Nullable
-   ProfiledDuration onWorldLoadedStarted();
+   @Nullable ProfiledDuration onWorldLoadedStarted();
 
-   @Nullable
-   ProfiledDuration onChunkGenerate(ChunkPos pos, ResourceKey<Level> dimension, String name);
+   @Nullable ProfiledDuration onChunkGenerate(ChunkPos pos, ResourceKey<Level> dimension, String name);
 
-   @Nullable
-   ProfiledDuration onStructureGenerate(ChunkPos sourceChunkPos, ResourceKey<Level> dimension, Holder<Structure> structure);
+   @Nullable ProfiledDuration onStructureGenerate(ChunkPos sourceChunkPos, ResourceKey<Level> dimension, Holder<Structure> structure);
 
-   public static class NoOpProfiler implements JvmProfiler {
+   class NoOpProfiler implements JvmProfiler {
       private static final Logger LOGGER = LogUtils.getLogger();
-      private static final ProfiledDuration NO_OP_COMMIT = ignored -> {
-      };
+      private static final ProfiledDuration NO_OP_COMMIT = ignored -> {};
 
       @Override
       public boolean start(final Environment environment) {
@@ -106,9 +102,8 @@ public interface JvmProfiler {
          return NO_OP_COMMIT;
       }
 
-      @Nullable
       @Override
-      public ProfiledDuration onChunkGenerate(final ChunkPos pos, final ResourceKey<Level> dimension, final String name) {
+      public @Nullable ProfiledDuration onChunkGenerate(final ChunkPos pos, final ResourceKey<Level> dimension, final String name) {
          return null;
       }
 

@@ -31,20 +31,20 @@ public class GoToWantedItem {
                .apply(
                   i,
                   (lookTarget, walkTarget, wantedItem, cooldown) -> (level, body, timestamp) -> {
-                        ItemEntity item = i.get(wantedItem);
-                        if (i.tryGet(cooldown).isEmpty()
-                           && predicate.test((E)body)
-                           && item.closerThan(body, (double)maxDistToWalk)
-                           && body.level().getWorldBorder().isWithinBounds(item.blockPosition())
-                           && body.canPickUpLoot()) {
-                           WalkTarget target = new WalkTarget(new EntityTracker(item, false), speedModifier, 0);
-                           lookTarget.set(new EntityTracker(item, true));
-                           walkTarget.set(target);
-                           return true;
-                        } else {
-                           return false;
-                        }
+                     ItemEntity item = i.get(wantedItem);
+                     if (i.tryGet(cooldown).isEmpty()
+                        && predicate.test((E)body)
+                        && item.closerThan(body, maxDistToWalk)
+                        && body.level().getWorldBorder().isWithinBounds(item.blockPosition())
+                        && body.canPickUpLoot()) {
+                        WalkTarget target = new WalkTarget(new EntityTracker(item, false), speedModifier, 0);
+                        lookTarget.set(new EntityTracker(item, true));
+                        walkTarget.set(target);
+                        return true;
+                     } else {
+                        return false;
                      }
+                  }
                );
          }
       );

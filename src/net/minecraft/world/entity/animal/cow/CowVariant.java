@@ -21,18 +21,18 @@ public record CowVariant(ModelAndTexture<CowVariant.ModelType> modelAndTexture, 
    implements PriorityProvider<SpawnContext, SpawnCondition> {
    public static final Codec<CowVariant> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ModelAndTexture.codec(CowVariant.ModelType.CODEC, CowVariant.ModelType.NORMAL).forGetter(CowVariant::modelAndTexture),
-               ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(CowVariant::babyTexture),
-               SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(CowVariant::spawnConditions)
-            )
-            .apply(i, CowVariant::new)
+            ModelAndTexture.codec(CowVariant.ModelType.CODEC, CowVariant.ModelType.NORMAL).forGetter(CowVariant::modelAndTexture),
+            ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(CowVariant::babyTexture),
+            SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(CowVariant::spawnConditions)
+         )
+         .apply(i, CowVariant::new)
    );
    public static final Codec<CowVariant> NETWORK_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ModelAndTexture.codec(CowVariant.ModelType.CODEC, CowVariant.ModelType.NORMAL).forGetter(CowVariant::modelAndTexture),
-               ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(CowVariant::babyTexture)
-            )
-            .apply(i, CowVariant::new)
+            ModelAndTexture.codec(CowVariant.ModelType.CODEC, CowVariant.ModelType.NORMAL).forGetter(CowVariant::modelAndTexture),
+            ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(CowVariant::babyTexture)
+         )
+         .apply(i, CowVariant::new)
    );
    public static final Codec<Holder<CowVariant>> CODEC = RegistryCodecs.holder(Registries.COW_VARIANT);
    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<CowVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.COW_VARIANT);
@@ -46,7 +46,7 @@ public record CowVariant(ModelAndTexture<CowVariant.ModelType> modelAndTexture, 
       return this.spawnConditions.selectors();
    }
 
-   public static enum ModelType implements StringRepresentable {
+   public enum ModelType implements StringRepresentable {
       NORMAL("normal"),
       COLD("cold"),
       WARM("warm");
@@ -54,7 +54,7 @@ public record CowVariant(ModelAndTexture<CowVariant.ModelType> modelAndTexture, 
       public static final Codec<CowVariant.ModelType> CODEC = StringRepresentable.fromEnum(CowVariant.ModelType::values);
       private final String name;
 
-      private ModelType(final String name) {
+      ModelType(final String name) {
          this.name = name;
       }
 

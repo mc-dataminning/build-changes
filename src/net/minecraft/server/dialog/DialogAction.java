@@ -19,7 +19,7 @@ public enum DialogAction implements StringRepresentable {
    private final int id;
    private final String name;
 
-   private DialogAction(final int id, final String name) {
+   DialogAction(final int id, final String name) {
       this.id = id;
       this.name = name;
    }

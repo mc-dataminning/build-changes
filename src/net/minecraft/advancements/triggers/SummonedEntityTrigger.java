@@ -23,14 +23,14 @@ public class SummonedEntityTrigger extends SimpleCriterionTrigger<SummonedEntity
       this.trigger(player, t -> t.matches(context));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<Holder<LootItemCondition>> entity)
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<Holder<LootItemCondition>> entity)
       implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<SummonedEntityTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(SummonedEntityTrigger.TriggerInstance::player),
-                  LootItemCondition.CODEC.optionalFieldOf("entity").forGetter(SummonedEntityTrigger.TriggerInstance::entity)
-               )
-               .apply(i, SummonedEntityTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(SummonedEntityTrigger.TriggerInstance::player),
+               LootItemCondition.CODEC.optionalFieldOf("entity").forGetter(SummonedEntityTrigger.TriggerInstance::entity)
+            )
+            .apply(i, SummonedEntityTrigger.TriggerInstance::new)
       );
 
       public static Criterion<SummonedEntityTrigger.TriggerInstance> summonedEntity(final EntityPredicate.Builder predicate) {

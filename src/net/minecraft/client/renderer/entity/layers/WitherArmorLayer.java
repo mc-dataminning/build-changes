@@ -23,7 +23,7 @@ public class WitherArmorLayer extends EnergySwirlLayer<WitherRenderState, Wither
 
    @Override
    protected float xOffset(final float t) {
-      return Mth.cos((double)(t * 0.02F)) * 3.0F;
+      return Mth.cos(t * 0.02F) * 3.0F;
    }
 
    @Override

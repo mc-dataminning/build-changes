@@ -26,10 +26,8 @@ public class KickCommand {
                ((RequiredArgumentBuilder)Commands.argument("targets", EntityArgument.players())
                      .executes(
                         c -> kickPlayers(
-                              (CommandSourceStack)c.getSource(),
-                              EntityArgument.getPlayers(c, "targets"),
-                              Component.translatable("multiplayer.disconnect.kicked")
-                           )
+                           (CommandSourceStack)c.getSource(), EntityArgument.getPlayers(c, "targets"), Component.translatable("multiplayer.disconnect.kicked")
+                        )
                      ))
                   .then(
                      Commands.argument("reason", MessageArgument.message())
@@ -44,22 +42,22 @@ public class KickCommand {
    private static int kickPlayers(final CommandSourceStack source, final Collection<ServerPlayer> players, final Component reason) throws CommandSyntaxException {
       if (!source.getServer().isPublished()) {
          throw ERROR_SINGLEPLAYER.create();
+      }
+
+      int count = 0;
+
+      for (ServerPlayer player : players) {
+         if (!source.getServer().isSingleplayerOwner(player.nameAndId())) {
+            player.connection.disconnect(reason);
+            source.sendSuccess(() -> Component.translatable("commands.kick.success", player.getDisplayName(), reason), true);
+            count++;
+         }
+      }
+
+      if (count == 0) {
+         throw ERROR_KICKING_OWNER.create();
       } else {
-         int count = 0;
-
-         for (ServerPlayer player : players) {
-            if (!source.getServer().isSingleplayerOwner(player.nameAndId())) {
-               player.connection.disconnect(reason);
-               source.sendSuccess(() -> Component.translatable("commands.kick.success", player.getDisplayName(), reason), true);
-               count++;
-            }
-         }
-
-         if (count == 0) {
-            throw ERROR_KICKING_OWNER.create();
-         } else {
-            return count;
-         }
+         return count;
       }
    }
 }

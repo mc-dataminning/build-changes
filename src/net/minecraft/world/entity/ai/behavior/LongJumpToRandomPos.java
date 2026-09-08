@@ -39,8 +39,7 @@ public class LongJumpToRandomPos<E extends Mob> extends Behavior<E> {
    protected final float maxJumpVelocityMultiplier;
    protected List<LongJumpToRandomPos.PossibleJump> jumpCandidates = Lists.newArrayList();
    protected Optional<Vec3> initialPosition = Optional.empty();
-   @Nullable
-   protected Vec3 chosenJump;
+   protected @Nullable Vec3 chosenJump;
    protected int findJumpTries;
    protected long prepareJumpStart;
    private final Function<E, SoundEvent> getJumpSound;
@@ -141,7 +140,7 @@ public class LongJumpToRandomPos<E extends Mob> extends Behavior<E> {
             body.setYRot(body.yBodyRot);
             body.setDiscardFriction(true);
             double orgLength = this.chosenJump.length();
-            double lengthWithJumpBoost = orgLength + (double)body.getJumpBoostPower();
+            double lengthWithJumpBoost = orgLength + body.getJumpBoostPower();
             body.setDeltaMovement(this.chosenJump.scale(lengthWithJumpBoost / orgLength));
             body.getBrain().setMemory(MemoryModuleType.LONG_JUMP_MID_JUMP, true);
             level.playSound(null, body, this.getJumpSound.apply(body), SoundSource.NEUTRAL, 1.0F, 1.0F);
@@ -191,11 +190,10 @@ public class LongJumpToRandomPos<E extends Mob> extends Behavior<E> {
       return mobX == targetPos.getX() && mobZ == targetPos.getZ() ? false : this.acceptableLandingSpot.test(body, targetPos);
    }
 
-   @Nullable
-   protected Vec3 calculateOptimalJumpVector(final Mob body, final Vec3 targetPos) {
+   protected @Nullable Vec3 calculateOptimalJumpVector(final Mob body, final Vec3 targetPos) {
       List<Integer> allowedAngles = Lists.newArrayList(ALLOWED_ANGLES);
       Collections.shuffle(allowedAngles);
-      float maxJumpVelocity = (float)(body.getAttributeValue(Attributes.JUMP_STRENGTH) * (double)this.maxJumpVelocityMultiplier);
+      float maxJumpVelocity = (float)(body.getAttributeValue(Attributes.JUMP_STRENGTH) * this.maxJumpVelocityMultiplier);
 
       for (int angle : allowedAngles) {
          Optional<Vec3> velocityVector = LongJumpUtil.calculateJumpVectorForAngle(body, targetPos, maxJumpVelocity, angle, true);
@@ -207,6 +205,6 @@ public class LongJumpToRandomPos<E extends Mob> extends Behavior<E> {
       return null;
    }
 
-   public static record PossibleJump(BlockPos targetPos, int weight) {
+   public record PossibleJump(BlockPos targetPos, int weight) {
    }
 }

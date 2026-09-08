@@ -13,8 +13,7 @@ public abstract class SingleItemRecipe implements Recipe<SingleRecipeInput> {
    protected final Recipe.CommonInfo commonInfo;
    private final Ingredient input;
    private final ItemStackTemplate result;
-   @Nullable
-   private PlacementInfo placementInfo;
+   private @Nullable PlacementInfo placementInfo;
 
    public SingleItemRecipe(final Recipe.CommonInfo commonInfo, final Ingredient input, final ItemStackTemplate result) {
       this.commonInfo = commonInfo;
@@ -61,11 +60,11 @@ public abstract class SingleItemRecipe implements Recipe<SingleRecipeInput> {
    public static <T extends SingleItemRecipe> MapCodec<T> simpleMapCodec(final SingleItemRecipe.Factory<T> factory) {
       return RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
-                  Ingredient.CODEC.fieldOf("ingredient").forGetter(SingleItemRecipe::input),
-                  ItemStackTemplate.CODEC.fieldOf("result").forGetter(SingleItemRecipe::result)
-               )
-               .apply(i, factory::create)
+               Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
+               Ingredient.CODEC.fieldOf("ingredient").forGetter(SingleItemRecipe::input),
+               ItemStackTemplate.CODEC.fieldOf("result").forGetter(SingleItemRecipe::result)
+            )
+            .apply(i, factory::create)
       );
    }
 

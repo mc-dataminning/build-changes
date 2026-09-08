@@ -9,7 +9,6 @@ import com.mojang.realmsclient.gui.screens.AbstractRealmsCodeScreen;
 import com.mojang.realmsclient.gui.screens.RealmsGenericErrorScreen;
 import com.mojang.realmsclient.util.RealmsUtil;
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
@@ -42,17 +41,12 @@ public class RealmsInviteCodesScreen extends AbstractRealmsCodeScreen {
    private static final int ENTRY_HEIGHT = 28;
    private final RealmsConfigureWorldScreen configureScreen;
    private final long realmId;
-   @Nullable
-   private Button copyButton;
-   @Nullable
-   private Button editButton;
-   @Nullable
-   private Button deleteButton;
-   @Nullable
-   private Button createButton;
-   @Nullable
-   private Button backButton;
-   private RealmsInviteCodesScreen.InviteCodeSelectionList inviteCodeList;
+   private @Nullable Button copyButton;
+   private @Nullable Button editButton;
+   private @Nullable Button deleteButton;
+   private @Nullable Button createButton;
+   private @Nullable Button backButton;
+   private RealmsInviteCodesScreen.@Nullable InviteCodeSelectionList inviteCodeList;
    private List<InviteCode> inviteCodes = List.of();
    private boolean fetchedInviteCodes = false;
 
@@ -67,9 +61,9 @@ public class RealmsInviteCodesScreen extends AbstractRealmsCodeScreen {
       this.layout.removeChildren();
       LinearLayout header = this.layout.addToHeader(LinearLayout.vertical().spacing(8));
       header.defaultCellSetting().alignHorizontallyCenter();
-      Component headerTitle = (Component)(this.fetchedInviteCodes
+      Component headerTitle = this.fetchedInviteCodes
          ? Component.translatable("mco.configure.world.invite_codes.title", this.inviteCodes.size(), 5)
-         : this.getTitle());
+         : this.getTitle();
       header.addChild(new StringWidget(headerTitle, this.font));
       int headerHeight = 33;
       if (this.fetchedInviteCodes && this.inviteCodes.isEmpty()) {
@@ -108,7 +102,7 @@ public class RealmsInviteCodesScreen extends AbstractRealmsCodeScreen {
 
    private void fetchInviteCodes() {
       this.setControlsActive(false);
-      Screen errorReturnScreen = (Screen)(this.fetchedInviteCodes ? this : this.configureScreen);
+      Screen errorReturnScreen = this.fetchedInviteCodes ? this : this.configureScreen;
       RealmsUtil.<InviteCodeList>supplyAsync(
             client -> client.inviteCodes(this.realmId), exception -> this.handleFailure(exception, "Couldn't get invite codes", errorReturnScreen)
          )
@@ -192,7 +186,7 @@ public class RealmsInviteCodesScreen extends AbstractRealmsCodeScreen {
 
    @Override
    public Component getNarrationMessage() {
-      return (Component)(this.fetchedInviteCodes ? super.getNarrationMessage() : CommonComponents.joinForNarration(super.getNarrationMessage(), LOADING_TEXT));
+      return this.fetchedInviteCodes ? super.getNarrationMessage() : CommonComponents.joinForNarration(super.getNarrationMessage(), LOADING_TEXT);
    }
 
    @Override
@@ -265,7 +259,7 @@ public class RealmsInviteCodesScreen extends AbstractRealmsCodeScreen {
 
    void refreshInviteCodes() {
       if (this.inviteCodeList != null) {
-         this.inviteCodeList.setSelected(null);
+         this.inviteCodeList.setSelected((RealmsInviteCodesScreen.InviteCodeSelectionList.Entry)null);
       }
 
       this.fetchInviteCodes();
@@ -273,7 +267,6 @@ public class RealmsInviteCodesScreen extends AbstractRealmsCodeScreen {
 
    private class InviteCodeSelectionList extends ObjectSelectionList<RealmsInviteCodesScreen.InviteCodeSelectionList.Entry> {
       public InviteCodeSelectionList(final List<InviteCode> inviteCodes) {
-         Objects.requireNonNull(RealmsInviteCodesScreen.this);
          super(
             Minecraft.getInstance(),
             RealmsInviteCodesScreen.this.width,
@@ -284,13 +277,12 @@ public class RealmsInviteCodesScreen extends AbstractRealmsCodeScreen {
          inviteCodes.forEach(inviteCode -> this.addEntry(new RealmsInviteCodesScreen.InviteCodeSelectionList.Entry(inviteCode)));
       }
 
-      @Nullable
-      public InviteCode getSelectedCode() {
+      public @Nullable InviteCode getSelectedCode() {
          RealmsInviteCodesScreen.InviteCodeSelectionList.Entry selected = this.getSelected();
          return selected == null ? null : selected.inviteCode;
       }
 
-      public void setSelected(final RealmsInviteCodesScreen.InviteCodeSelectionList.Entry entry) {
+      public void setSelected(final RealmsInviteCodesScreen.InviteCodeSelectionList.@Nullable Entry entry) {
          super.setSelected(entry);
          RealmsInviteCodesScreen.this.updateButtonStates();
       }
@@ -304,8 +296,6 @@ public class RealmsInviteCodesScreen extends AbstractRealmsCodeScreen {
          private final InviteCode inviteCode;
 
          public Entry(final InviteCode inviteCode) {
-            Objects.requireNonNull(InviteCodeSelectionList.this);
-            super();
             this.inviteCode = inviteCode;
          }
 

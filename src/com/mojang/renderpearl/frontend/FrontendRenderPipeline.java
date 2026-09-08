@@ -7,14 +7,15 @@ import com.mojang.renderpearl.api.vertex.VertexFormat;
 import com.mojang.renderpearl.backend.api.BackendRenderPipeline;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import java.util.List;
+import org.jspecify.annotations.Nullable;
 
 public record FrontendRenderPipeline(
    String name,
    BackendRenderPipeline backendRenderPipeline,
-   List<VertexFormat> vertexFormats,
+   List<@Nullable VertexFormat> vertexFormats,
    Object2IntMap<String> uniformIndices,
    List<BindGroupLayout.UniformDescription> uniforms,
-   List<ColorTargetState> colorTargetStates,
+   List<@Nullable ColorTargetState> colorTargetStates,
    boolean wantsDepthTexture,
    int pushConstantSize
 ) implements CompiledRenderPipeline {

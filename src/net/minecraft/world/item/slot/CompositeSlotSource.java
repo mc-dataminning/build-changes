@@ -32,19 +32,20 @@ public abstract class CompositeSlotSource implements SlotSource {
 
             return SlotCollection.concat(collections);
          };
-      } else {
-         return switch (terms.size()) {
-            case 0 -> var0 -> SlotCollection.EMPTY;
-            case 1 -> {
-               Holder<SlotSource> term = terms.get(0);
-               yield context -> term.value().provide(context);
-            }
-            case 2 -> {
-               Holder<SlotSource> first = terms.get(0);
-               Holder<SlotSource> second = terms.get(1);
-               yield context -> SlotCollection.concat(first.value().provide(context), second.value().provide(context));
-            }
-            default -> context -> {
+      }
+
+      return switch (terms.size()) {
+         case 0 -> var0 -> SlotCollection.EMPTY;
+         case 1 -> {
+            Holder<SlotSource> term = terms.get(0);
+            yield context -> term.value().provide(context);
+         }
+         case 2 -> {
+            Holder<SlotSource> first = terms.get(0);
+            Holder<SlotSource> second = terms.get(1);
+            yield context -> SlotCollection.concat(first.value().provide(context), second.value().provide(context));
+         }
+         default -> context -> {
             List<SlotCollection> collections = new ArrayList<>();
 
             for (Holder<SlotSource> term : terms) {
@@ -53,8 +54,7 @@ public abstract class CompositeSlotSource implements SlotSource {
 
             return SlotCollection.concat(collections);
          };
-         };
-      }
+      };
    }
 
    protected static <T extends CompositeSlotSource> MapCodec<T> createCodec(final Function<HolderSet<SlotSource>, T> factory) {

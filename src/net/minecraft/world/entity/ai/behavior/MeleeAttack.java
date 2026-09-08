@@ -16,29 +16,29 @@ public class MeleeAttack {
    public static <T extends Mob> OneShot<T> create(final Predicate<T> canAttackPredicate, final int cooldownBetweenAttacks) {
       return BehaviorBuilder.create(
          i -> i.group(
-                  i.registered(MemoryModuleType.LOOK_TARGET),
-                  i.present(MemoryModuleType.ATTACK_TARGET),
-                  i.absent(MemoryModuleType.ATTACK_COOLING_DOWN),
-                  i.present(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-               )
-               .apply(
-                  i,
-                  (lookTarget, attackTarget, attackCoolingDown, nearestEntities) -> (level, body, timestamp) -> {
-                        LivingEntity target = i.get(attackTarget);
-                        if (canAttackPredicate.test((T)body)
-                           && !isHoldingUsableNonMeleeWeapon(body)
-                           && body.isWithinMeleeAttackRange(target)
-                           && i.<NearestVisibleLivingEntities>get(nearestEntities).contains(target)) {
-                           lookTarget.set(new EntityTracker(target, true));
-                           body.swingForAttack(InteractionHand.MAIN_HAND);
-                           body.doHurtTarget(level, target);
-                           attackCoolingDown.setWithExpiry(true, (long)cooldownBetweenAttacks);
-                           return true;
-                        } else {
-                           return false;
-                        }
-                     }
-               )
+               i.registered(MemoryModuleType.LOOK_TARGET),
+               i.present(MemoryModuleType.ATTACK_TARGET),
+               i.absent(MemoryModuleType.ATTACK_COOLING_DOWN),
+               i.present(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
+            )
+            .apply(
+               i,
+               (lookTarget, attackTarget, attackCoolingDown, nearestEntities) -> (level, body, timestamp) -> {
+                  LivingEntity target = i.get(attackTarget);
+                  if (canAttackPredicate.test((T)body)
+                     && !isHoldingUsableNonMeleeWeapon(body)
+                     && body.isWithinMeleeAttackRange(target)
+                     && i.<NearestVisibleLivingEntities>get(nearestEntities).contains(target)) {
+                     lookTarget.set(new EntityTracker(target, true));
+                     body.swingForAttack(InteractionHand.MAIN_HAND);
+                     body.doHurtTarget(level, target);
+                     attackCoolingDown.setWithExpiry(true, cooldownBetweenAttacks);
+                     return true;
+                  } else {
+                     return false;
+                  }
+               }
+            )
       );
    }
 

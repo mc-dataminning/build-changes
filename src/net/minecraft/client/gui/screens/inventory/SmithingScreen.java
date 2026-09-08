@@ -127,13 +127,6 @@ public class SmithingScreen extends ItemCombinerScreen<SmithingMenu> {
          EquipmentSlot slot = equippable != null ? equippable.slot() : null;
          ItemModelResolver itemModelResolver = this.minecraft.getItemModelResolver();
          switch (slot) {
-            case null:
-            default:
-               this.armorStandPreview.leftHandItemStack = itemStack.copy();
-               itemModelResolver.updateForTopItem(
-                  this.armorStandPreview.leftHandItemState, itemStack, ItemDisplayContext.THIRD_PERSON_LEFT_HAND, this.minecraft.level, null, 0
-               );
-               break;
             case HEAD:
                if (HumanoidArmorLayer.shouldRender(itemStack, EquipmentSlot.HEAD)) {
                   this.armorStandPreview.headEquipment = itemStack.copy();
@@ -149,6 +142,13 @@ public class SmithingScreen extends ItemCombinerScreen<SmithingMenu> {
                break;
             case FEET:
                this.armorStandPreview.feetEquipment = itemStack.copy();
+               break;
+            case null:
+            default:
+               this.armorStandPreview.leftHandItemStack = itemStack.copy();
+               itemModelResolver.updateForTopItem(
+                  this.armorStandPreview.leftHandItemState, itemStack, ItemDisplayContext.THIRD_PERSON_LEFT_HAND, this.minecraft.level, null, 0
+               );
          }
       }
    }
@@ -162,7 +162,7 @@ public class SmithingScreen extends ItemCombinerScreen<SmithingMenu> {
 
    private void extractOnboardingTooltips(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY) {
       Optional<Component> tooltip = Optional.empty();
-      if (this.hasRecipeError() && this.isHovering(65, 46, 28, 21, (double)mouseX, (double)mouseY)) {
+      if (this.hasRecipeError() && this.isHovering(65, 46, 28, 21, mouseX, mouseY)) {
          tooltip = Optional.of(ERROR_TOOLTIP);
       }
 

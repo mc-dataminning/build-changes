@@ -3,7 +3,6 @@ package net.minecraft.client.gui.components;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Consumer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -68,7 +67,7 @@ public class ScrollableLayout implements Layout {
          case BOTH -> 2 * this.container.scrollbarReserve();
       };
       this.container.setWidth(Math.max(contentWidth, this.minWidth) + scrollbarReserve);
-      this.container.setHeight(Math.clamp((long)this.container.getHeight(), this.minHeight, this.maxHeight));
+      this.container.setHeight(Math.clamp(this.container.getHeight(), this.minHeight, this.maxHeight));
       this.container.refreshChildren();
       this.container.refreshScrollAmount();
    }
@@ -120,12 +119,10 @@ public class ScrollableLayout implements Layout {
 
    private class Container extends AbstractContainerWidget {
       private final Minecraft minecraft;
-      private final List<AbstractWidget> children;
+      private final List<AbstractWidget> children = new ArrayList<>();
 
       public Container(final Minecraft minecraft, final int width, final int height, final AbstractScrollArea.ScrollbarSettings scrollbarSettings) {
-         Objects.requireNonNull(ScrollableLayout.this);
          super(0, 0, width, height, CommonComponents.EMPTY, scrollbarSettings);
-         this.children = new ArrayList<>();
          this.minecraft = minecraft;
          this.refreshChildren();
       }
@@ -165,7 +162,7 @@ public class ScrollableLayout implements Layout {
       }
 
       @Override
-      public void setFocused(@Nullable final GuiEventListener focused) {
+      public void setFocused(final @Nullable GuiEventListener focused) {
          super.setFocused(focused);
          if (focused != null && this.minecraft.getLastInputType().isKeyboard()) {
             ScreenRectangle area = this.getRectangle();
@@ -174,9 +171,9 @@ public class ScrollableLayout implements Layout {
             int bottomDelta = focusedRect.bottom() - area.bottom();
             double scrollRate = this.scrollRate();
             if (topDelta < 0) {
-               this.setScrollAmount(this.scrollAmount() + (double)topDelta - scrollRate);
+               this.setScrollAmount(this.scrollAmount() + topDelta - scrollRate);
             } else if (bottomDelta > 0) {
-               this.setScrollAmount(this.scrollAmount() + (double)bottomDelta + scrollRate);
+               this.setScrollAmount(this.scrollAmount() + bottomDelta + scrollRate);
             }
          }
       }
@@ -214,7 +211,7 @@ public class ScrollableLayout implements Layout {
       }
    }
 
-   public static enum ReserveStrategy {
+   public enum ReserveStrategy {
       RIGHT,
       BOTH;
    }

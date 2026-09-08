@@ -23,10 +23,10 @@ public interface GpuSurface extends UncheckedAutoCloseable {
 
    void present();
 
-   public static record Configuration(int width, int height, GpuSurface.PresentMode presentMode) {
+   record Configuration(int width, int height, GpuSurface.PresentMode presentMode) {
    }
 
-   public static enum PresentMode {
+   enum PresentMode {
       IMMEDIATE,
       MAILBOX,
       FIFO,

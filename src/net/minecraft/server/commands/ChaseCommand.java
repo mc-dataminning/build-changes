@@ -26,10 +26,8 @@ public class ChaseCommand {
    private static final int DEFAULT_PORT = 10000;
    private static final int BROADCAST_INTERVAL_MS = 100;
    public static final BiMap<String, ResourceKey<Level>> DIMENSION_NAMES = ImmutableBiMap.of("o", Level.OVERWORLD, "n", Level.NETHER, "e", Level.END);
-   @Nullable
-   private static ChaseServer chaseServer;
-   @Nullable
-   private static ChaseClient chaseClient;
+   private static @Nullable ChaseServer chaseServer;
+   private static @Nullable ChaseClient chaseClient;
 
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
       dispatcher.register(
@@ -43,10 +41,10 @@ public class ChaseCommand {
                                     Commands.argument("port", IntegerArgumentType.integer(1, 65535))
                                        .executes(
                                           c -> follow(
-                                                (CommandSourceStack)c.getSource(),
-                                                StringArgumentType.getString(c, "host"),
-                                                IntegerArgumentType.getInteger(c, "port")
-                                             )
+                                             (CommandSourceStack)c.getSource(),
+                                             StringArgumentType.getString(c, "host"),
+                                             IntegerArgumentType.getInteger(c, "port")
+                                          )
                                        )
                                  )
                            ))
@@ -61,10 +59,10 @@ public class ChaseCommand {
                                  Commands.argument("port", IntegerArgumentType.integer(1024, 65535))
                                     .executes(
                                        c -> lead(
-                                             (CommandSourceStack)c.getSource(),
-                                             StringArgumentType.getString(c, "bind_address"),
-                                             IntegerArgumentType.getInteger(c, "port")
-                                          )
+                                          (CommandSourceStack)c.getSource(),
+                                          StringArgumentType.getString(c, "bind_address"),
+                                          IntegerArgumentType.getInteger(c, "port")
+                                       )
                                     )
                               )
                         ))
@@ -105,41 +103,41 @@ public class ChaseCommand {
    private static int lead(final CommandSourceStack source, final String serverBindAddress, final int port) {
       if (alreadyRunning(source)) {
          return 0;
-      } else {
-         chaseServer = new ChaseServer(serverBindAddress, port, source.getServer().getPlayerList(), 100);
-
-         try {
-            chaseServer.start();
-            source.sendSuccess(
-               () -> Component.literal("Chase server is now running on port " + port + ". Clients can follow you using /chase follow <ip> <port>"), false
-            );
-         } catch (IOException var4) {
-            LOGGER.error("Failed to start chase server", var4);
-            source.sendFailure(Component.literal("Failed to start chase server on port " + port));
-            chaseServer = null;
-         }
-
-         return 0;
       }
+
+      chaseServer = new ChaseServer(serverBindAddress, port, source.getServer().getPlayerList(), 100);
+
+      try {
+         chaseServer.start();
+         source.sendSuccess(
+            () -> Component.literal("Chase server is now running on port " + port + ". Clients can follow you using /chase follow <ip> <port>"), false
+         );
+      } catch (IOException e) {
+         LOGGER.error("Failed to start chase server", e);
+         source.sendFailure(Component.literal("Failed to start chase server on port " + port));
+         chaseServer = null;
+      }
+
+      return 0;
    }
 
    private static int follow(final CommandSourceStack source, final String host, final int port) {
       if (alreadyRunning(source)) {
          return 0;
-      } else {
-         chaseClient = new ChaseClient(host, port, source.getServer());
-         chaseClient.start();
-         source.sendSuccess(
-            () -> Component.literal(
-                  "You are now chasing "
-                     + host
-                     + ":"
-                     + port
-                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
-               ),
-            false
-         );
-         return 0;
       }
+
+      chaseClient = new ChaseClient(host, port, source.getServer());
+      chaseClient.start();
+      source.sendSuccess(
+         () -> Component.literal(
+            "You are now chasing "
+               + host
+               + ":"
+               + port
+               + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
+         ),
+         false
+      );
+      return 0;
    }
 }

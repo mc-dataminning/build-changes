@@ -18,16 +18,16 @@ public class EntityRedundantChanceTagsFix extends DataFix {
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
          "EntityRedundantChanceTagsFix", this.getInputSchema().getType(References.ENTITY), input -> input.update(DSL.remainderFinder(), tag -> {
-               if (isZeroList(tag.get("HandDropChances"), 2)) {
-                  tag = tag.remove("HandDropChances");
-               }
+            if (isZeroList(tag.get("HandDropChances"), 2)) {
+               tag = tag.remove("HandDropChances");
+            }
 
-               if (isZeroList(tag.get("ArmorDropChances"), 4)) {
-                  tag = tag.remove("ArmorDropChances");
-               }
+            if (isZeroList(tag.get("ArmorDropChances"), 4)) {
+               tag = tag.remove("ArmorDropChances");
+            }
 
-               return tag;
-            })
+            return tag;
+         })
       );
    }
 

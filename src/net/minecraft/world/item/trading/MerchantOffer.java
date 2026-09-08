@@ -11,18 +11,18 @@ import net.minecraft.world.item.ItemStack;
 public class MerchantOffer {
    public static final Codec<MerchantOffer> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ItemCost.CODEC.fieldOf("buy").forGetter(o -> o.baseCostA),
-               ItemCost.CODEC.lenientOptionalFieldOf("buyB").forGetter(o -> o.costB),
-               ItemStack.CODEC.fieldOf("sell").forGetter(o -> o.result),
-               Codec.INT.lenientOptionalFieldOf("uses", 0).forGetter(o -> o.uses),
-               Codec.INT.lenientOptionalFieldOf("maxUses", 4).forGetter(o -> o.maxUses),
-               Codec.BOOL.lenientOptionalFieldOf("rewardExp", true).forGetter(o -> o.rewardExp),
-               Codec.INT.lenientOptionalFieldOf("specialPrice", 0).forGetter(o -> o.specialPriceDiff),
-               Codec.INT.lenientOptionalFieldOf("demand", 0).forGetter(o -> o.demand),
-               Codec.FLOAT.lenientOptionalFieldOf("priceMultiplier", 0.0F).forGetter(o -> o.priceMultiplier),
-               Codec.INT.lenientOptionalFieldOf("xp", 1).forGetter(o -> o.xp)
-            )
-            .apply(i, MerchantOffer::new)
+            ItemCost.CODEC.fieldOf("buy").forGetter(o -> o.baseCostA),
+            ItemCost.CODEC.lenientOptionalFieldOf("buyB").forGetter(o -> o.costB),
+            ItemStack.CODEC.fieldOf("sell").forGetter(o -> o.result),
+            Codec.INT.lenientOptionalFieldOf("uses", 0).forGetter(o -> o.uses),
+            Codec.INT.lenientOptionalFieldOf("maxUses", 4).forGetter(o -> o.maxUses),
+            Codec.BOOL.lenientOptionalFieldOf("rewardExp", true).forGetter(o -> o.rewardExp),
+            Codec.INT.lenientOptionalFieldOf("specialPrice", 0).forGetter(o -> o.specialPriceDiff),
+            Codec.INT.lenientOptionalFieldOf("demand", 0).forGetter(o -> o.demand),
+            Codec.FLOAT.lenientOptionalFieldOf("priceMultiplier", 0.0F).forGetter(o -> o.priceMultiplier),
+            Codec.INT.lenientOptionalFieldOf("xp", 1).forGetter(o -> o.xp)
+         )
+         .apply(i, MerchantOffer::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, MerchantOffer> STREAM_CODEC = StreamCodec.of(
       MerchantOffer::writeToStream, MerchantOffer::createFromStream
@@ -122,7 +122,7 @@ public class MerchantOffer {
 
    private int getModifiedCostCount(final ItemCost cost) {
       int basePrice = cost.count();
-      int demandDiff = Math.max(0, Mth.floor((float)(basePrice * this.demand) * this.priceMultiplier));
+      int demandDiff = Math.max(0, Mth.floor(basePrice * this.demand * this.priceMultiplier));
       return Mth.clamp(basePrice + demandDiff + this.specialPriceDiff, 1, cost.itemStack().getMaxStackSize());
    }
 
@@ -221,14 +221,14 @@ public class MerchantOffer {
    public boolean take(final ItemStack buyA, final ItemStack buyB) {
       if (!this.satisfiedBy(buyA, buyB)) {
          return false;
-      } else {
-         buyA.shrink(this.getCostA().getCount());
-         if (!this.getCostB().isEmpty()) {
-            buyB.shrink(this.getCostB().getCount());
-         }
-
-         return true;
       }
+
+      buyA.shrink(this.getCostA().getCount());
+      if (!this.getCostB().isEmpty()) {
+         buyB.shrink(this.getCostB().getCount());
+      }
+
+      return true;
    }
 
    public MerchantOffer copy() {

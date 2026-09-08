@@ -16,15 +16,15 @@ import net.minecraft.world.phys.Vec3;
 public record LocationCheck(Optional<LocationPredicate> predicate, Vec3i offset) implements LootItemCondition {
    private static final MapCodec<Vec3i> OFFSET_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(Vec3i::getX),
-               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(Vec3i::getY),
-               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(Vec3i::getZ)
-            )
-            .apply(i, Vec3i::new)
+            Codec.INT.optionalFieldOf("offsetX", 0).forGetter(Vec3i::getX),
+            Codec.INT.optionalFieldOf("offsetY", 0).forGetter(Vec3i::getY),
+            Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(Vec3i::getZ)
+         )
+         .apply(i, Vec3i::new)
    );
    public static final MapCodec<LocationCheck> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(LocationPredicate.CODEC.optionalFieldOf("predicate").forGetter(LocationCheck::predicate), OFFSET_CODEC.forGetter(LocationCheck::offset))
-            .apply(i, LocationCheck::new)
+         .apply(i, LocationCheck::new)
    );
 
    @Override
@@ -37,9 +37,7 @@ public record LocationCheck(Optional<LocationPredicate> predicate, Vec3i offset)
       return pos != null
          && (
             this.predicate.isEmpty()
-               || this.predicate
-                  .get()
-                  .matches(context.getLevel(), pos.x() + (double)this.offset.getX(), pos.y() + (double)this.offset.getY(), pos.z() + (double)this.offset.getZ())
+               || this.predicate.get().matches(context.getLevel(), pos.x() + this.offset.getX(), pos.y() + this.offset.getY(), pos.z() + this.offset.getZ())
          );
    }
 

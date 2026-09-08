@@ -10,7 +10,7 @@ public record DebugGoalInfo(List<DebugGoalInfo.DebugGoal> goals) {
       DebugGoalInfo.DebugGoal.STREAM_CODEC.apply(ByteBufCodecs.list()), DebugGoalInfo::goals, DebugGoalInfo::new
    );
 
-   public static record DebugGoal(int priority, boolean isRunning, String name) {
+   public record DebugGoal(int priority, boolean isRunning, String name) {
       public static final StreamCodec<ByteBuf, DebugGoalInfo.DebugGoal> STREAM_CODEC = StreamCodec.composite(
          ByteBufCodecs.VAR_INT,
          DebugGoalInfo.DebugGoal::priority,

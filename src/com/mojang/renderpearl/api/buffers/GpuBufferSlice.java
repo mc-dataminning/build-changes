@@ -26,7 +26,7 @@ public record GpuBufferSlice(GpuBuffer buffer, long offset, long length) {
       return this.buffer.map(this.offset, this.length, read, write);
    }
 
-   public static record MappedView(GpuBufferSlice slice, ByteBuffer data, Runnable onClose) implements UncheckedAutoCloseable {
+   public record MappedView(GpuBufferSlice slice, ByteBuffer data, Runnable onClose) implements UncheckedAutoCloseable {
       @Override
       public void close() {
          this.onClose.run();

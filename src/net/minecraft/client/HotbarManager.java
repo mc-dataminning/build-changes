@@ -46,8 +46,8 @@ public class HotbarManager {
                .resultOrPartial(error -> LOGGER.warn("Failed to parse hotbar: {}", error))
                .orElseGet(Hotbar::new);
          }
-      } catch (Exception var4) {
-         LOGGER.error("Failed to load creative mode options", var4);
+      } catch (Exception e) {
+         LOGGER.error("Failed to load creative mode options", e);
       }
    }
 
@@ -62,8 +62,8 @@ public class HotbarManager {
          }
 
          NbtIo.write(tag, this.optionsFile);
-      } catch (Exception var5) {
-         LOGGER.error("Failed to save creative mode options", var5);
+      } catch (Exception e) {
+         LOGGER.error("Failed to save creative mode options", e);
       }
    }
 

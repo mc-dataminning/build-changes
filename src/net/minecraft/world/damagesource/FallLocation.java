@@ -32,8 +32,7 @@ public record FallLocation(String id) {
       }
    }
 
-   @Nullable
-   public static FallLocation getCurrentFallLocation(final LivingEntity mob) {
+   public static @Nullable FallLocation getCurrentFallLocation(final LivingEntity mob) {
       Optional<BlockPos> lastClimbablePos = mob.getLastClimbablePos();
       if (lastClimbablePos.isPresent()) {
          BlockState blockState = mob.level().getBlockState(lastClimbablePos.get());

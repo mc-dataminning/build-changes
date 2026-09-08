@@ -12,11 +12,11 @@ public record ParamInfo<Param>(String name, Schema<Param> schema, boolean requir
    public static <Param> MapCodec<ParamInfo<Param>> typedCodec() {
       return RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Codec.STRING.fieldOf("name").forGetter(ParamInfo::name),
-                  Schema.typedCodec().fieldOf("schema").forGetter(ParamInfo::schema),
-                  Codec.BOOL.fieldOf("required").forGetter(ParamInfo::required)
-               )
-               .apply(i, ParamInfo::new)
+               Codec.STRING.fieldOf("name").forGetter(ParamInfo::name),
+               Schema.typedCodec().fieldOf("schema").forGetter(ParamInfo::schema),
+               Codec.BOOL.fieldOf("required").forGetter(ParamInfo::required)
+            )
+            .apply(i, ParamInfo::new)
       );
    }
 }

@@ -33,14 +33,13 @@ public class QuickPlayLog {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static final Gson GSON = new GsonBuilder().create();
    private final Path path;
-   @Nullable
-   private QuickPlayLog.QuickPlayWorld worldData;
+   private QuickPlayLog.@Nullable QuickPlayWorld worldData;
 
    private QuickPlayLog(final String quickPlayPath) {
       this.path = Minecraft.getInstance().gameDirectory.toPath().resolve(quickPlayPath);
    }
 
-   public static QuickPlayLog of(@Nullable final String path) {
+   public static QuickPlayLog of(final @Nullable String path) {
       return path == null ? INACTIVE : new QuickPlayLog(path);
    }
 
@@ -55,8 +54,8 @@ public class QuickPlayLog {
                () -> {
                   try {
                      Files.deleteIfExists(this.path);
-                  } catch (IOException var3) {
-                     LOGGER.error("Failed to delete quickplay log file {}", this.path, var3);
+                  } catch (IOException e) {
+                     LOGGER.error("Failed to delete quickplay log file {}", this.path, e);
                   }
 
                   QuickPlayLog.QuickPlayEntry quickPlayEntry = new QuickPlayLog.QuickPlayEntry(
@@ -69,8 +68,8 @@ public class QuickPlayLog {
                         try {
                            Files.createDirectories(this.path.getParent());
                            Files.writeString(this.path, GSON.toJson(json));
-                        } catch (IOException var3x) {
-                           LOGGER.error("Failed to write to quickplay log file {}", this.path, var3x);
+                        } catch (IOException e) {
+                           LOGGER.error("Failed to write to quickplay log file {}", this.path, e);
                         }
                      });
                }
@@ -80,29 +79,29 @@ public class QuickPlayLog {
       }
    }
 
-   private static record QuickPlayEntry(QuickPlayLog.QuickPlayWorld quickPlayWorld, Instant lastPlayedTime, GameType gamemode) {
+   private record QuickPlayEntry(QuickPlayLog.QuickPlayWorld quickPlayWorld, Instant lastPlayedTime, GameType gamemode) {
       public static final Codec<QuickPlayLog.QuickPlayEntry> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  QuickPlayLog.QuickPlayWorld.MAP_CODEC.forGetter(QuickPlayLog.QuickPlayEntry::quickPlayWorld),
-                  ExtraCodecs.INSTANT_ISO8601.fieldOf("lastPlayedTime").forGetter(QuickPlayLog.QuickPlayEntry::lastPlayedTime),
-                  GameType.CODEC.fieldOf("gamemode").forGetter(QuickPlayLog.QuickPlayEntry::gamemode)
-               )
-               .apply(i, QuickPlayLog.QuickPlayEntry::new)
+               QuickPlayLog.QuickPlayWorld.MAP_CODEC.forGetter(QuickPlayLog.QuickPlayEntry::quickPlayWorld),
+               ExtraCodecs.INSTANT_ISO8601.fieldOf("lastPlayedTime").forGetter(QuickPlayLog.QuickPlayEntry::lastPlayedTime),
+               GameType.CODEC.fieldOf("gamemode").forGetter(QuickPlayLog.QuickPlayEntry::gamemode)
+            )
+            .apply(i, QuickPlayLog.QuickPlayEntry::new)
       );
    }
 
-   private static record QuickPlayWorld(QuickPlayLog.Type type, String id, String name) {
+   private record QuickPlayWorld(QuickPlayLog.Type type, String id, String name) {
       public static final MapCodec<QuickPlayLog.QuickPlayWorld> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  QuickPlayLog.Type.CODEC.fieldOf("type").forGetter(QuickPlayLog.QuickPlayWorld::type),
-                  ExtraCodecs.ESCAPED_STRING.fieldOf("id").forGetter(QuickPlayLog.QuickPlayWorld::id),
-                  Codec.STRING.fieldOf("name").forGetter(QuickPlayLog.QuickPlayWorld::name)
-               )
-               .apply(i, QuickPlayLog.QuickPlayWorld::new)
+               QuickPlayLog.Type.CODEC.fieldOf("type").forGetter(QuickPlayLog.QuickPlayWorld::type),
+               ExtraCodecs.ESCAPED_STRING.fieldOf("id").forGetter(QuickPlayLog.QuickPlayWorld::id),
+               Codec.STRING.fieldOf("name").forGetter(QuickPlayLog.QuickPlayWorld::name)
+            )
+            .apply(i, QuickPlayLog.QuickPlayWorld::new)
       );
    }
 
-   public static enum Type implements StringRepresentable {
+   public enum Type implements StringRepresentable {
       SINGLEPLAYER("singleplayer"),
       MULTIPLAYER("multiplayer"),
       REALMS("realms");
@@ -110,7 +109,7 @@ public class QuickPlayLog {
       private static final Codec<QuickPlayLog.Type> CODEC = StringRepresentable.fromEnum(QuickPlayLog.Type::values);
       private final String name;
 
-      private Type(final String name) {
+      Type(final String name) {
          this.name = name;
       }
 

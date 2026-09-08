@@ -3,13 +3,11 @@ package net.minecraft.gametest.framework;
 import org.jspecify.annotations.Nullable;
 
 public class GameTestEvent {
-   @Nullable
-   public final Long expectedDelay;
-   @Nullable
-   public final Long minimumDelay;
+   public final @Nullable Long expectedDelay;
+   public final @Nullable Long minimumDelay;
    public final Runnable assertion;
 
-   private GameTestEvent(@Nullable final Long expectedDelay, @Nullable final Long minimumDelay, final Runnable assertion) {
+   private GameTestEvent(final @Nullable Long expectedDelay, final @Nullable Long minimumDelay, final Runnable assertion) {
       this.expectedDelay = expectedDelay;
       this.minimumDelay = minimumDelay;
       this.assertion = assertion;

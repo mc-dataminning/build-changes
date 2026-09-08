@@ -47,7 +47,7 @@ public class ConduitSpecialRenderer implements NoDataSpecialModelRenderer {
       this.model.getExtentsForGui(poseStack, output);
    }
 
-   public static record Unbaked() implements NoDataSpecialModelRenderer.Unbaked {
+   public record Unbaked() implements NoDataSpecialModelRenderer.Unbaked {
       public static final MapCodec<ConduitSpecialRenderer.Unbaked> MAP_CODEC = MapCodec.unit(new ConduitSpecialRenderer.Unbaked());
 
       @Override

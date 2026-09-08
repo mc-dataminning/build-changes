@@ -25,7 +25,7 @@ public record GuiBannerResultRenderState(
       final int y0,
       final int x1,
       final int y1,
-      @Nullable final ScreenRectangle scissorArea
+      final @Nullable ScreenRectangle scissorArea
    ) {
       this(flag, baseColor, resultBannerPatterns, x0, y0, x1, y1, scissorArea, PictureInPictureRenderState.getBounds(x0, y0, x1, y1, scissorArea));
    }

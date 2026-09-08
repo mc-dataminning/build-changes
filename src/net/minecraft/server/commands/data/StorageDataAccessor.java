@@ -19,10 +19,10 @@ import net.minecraft.world.level.storage.CommandStorage;
 public class StorageDataAccessor implements DataAccessor {
    private static final SuggestionProvider<CommandSourceStack> SUGGEST_STORAGE = (c, p) -> SharedSuggestionProvider.suggestResource(getGlobalTags(c).keys(), p);
    public static final ArgProvider.Factory<DataAccessor> PROVIDER = arg -> ArgProvider.create(
-         "storage",
-         () -> Commands.argument(arg, IdentifierArgument.id()).suggests(SUGGEST_STORAGE),
-         c -> new StorageDataAccessor(getGlobalTags(c), IdentifierArgument.getId(c, arg))
-      );
+      "storage",
+      () -> Commands.argument(arg, IdentifierArgument.id()).suggests(SUGGEST_STORAGE),
+      c -> new StorageDataAccessor(getGlobalTags(c), IdentifierArgument.getId(c, arg))
+   );
    private final CommandStorage storage;
    private final Identifier id;
 

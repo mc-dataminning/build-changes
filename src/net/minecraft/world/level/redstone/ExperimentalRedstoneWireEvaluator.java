@@ -31,7 +31,7 @@ public class ExperimentalRedstoneWireEvaluator extends RedstoneWireEvaluator {
       final Level level,
       final BlockPos initialPos,
       final BlockState ignored,
-      @Nullable final Orientation orientation,
+      final @Nullable Orientation orientation,
       final boolean shapeUpdateWiresAroundInitialPosition
    ) {
       Orientation initialOrientation = getInitialOrientation(level, orientation);
@@ -50,7 +50,7 @@ public class ExperimentalRedstoneWireEvaluator extends RedstoneWireEvaluator {
                updateFlags |= 128;
             }
 
-            level.setBlock(pos, state.setValue(RedstoneWireBlock.POWER, Integer.valueOf(newLevel)), updateFlags);
+            level.setBlock(pos, state.setValue(RedstoneWireBlock.POWER, newLevel), updateFlags);
          } else {
             iterator.remove();
          }
@@ -84,7 +84,7 @@ public class ExperimentalRedstoneWireEvaluator extends RedstoneWireEvaluator {
          this.updatedWires
             .forEach(
                (wirePos, packed) -> serverLevel.debugSynchronizers()
-                     .sendBlockValue(wirePos, DebugSubscriptions.REDSTONE_WIRE_ORIENTATIONS, unpackOrientation(packed))
+                  .sendBlockValue(wirePos, DebugSubscriptions.REDSTONE_WIRE_ORIENTATIONS, unpackOrientation(packed))
             );
       }
    }
@@ -94,7 +94,7 @@ public class ExperimentalRedstoneWireEvaluator extends RedstoneWireEvaluator {
       return property == null ? direction == Direction.DOWN : state.getValue(property).isConnected();
    }
 
-   private static Orientation getInitialOrientation(final Level level, @Nullable final Orientation incomingOrigination) {
+   private static Orientation getInitialOrientation(final Level level, final @Nullable Orientation incomingOrigination) {
       Orientation orientation;
       if (incomingOrigination != null) {
          orientation = incomingOrigination;
@@ -141,20 +141,20 @@ public class ExperimentalRedstoneWireEvaluator extends RedstoneWireEvaluator {
       }
 
       while (!this.wiresToTurnOn.isEmpty()) {
-         BlockPos posx = this.wiresToTurnOn.removeFirst();
-         int packedx = this.updatedWires.getInt(posx);
-         int oldPowerx = unpackPower(packedx);
-         int blockPowerx = this.getBlockSignal(level, posx);
-         int wirePowerx = this.getIncomingWireSignal(level, posx);
-         int newPowerx = Math.max(blockPowerx, wirePowerx);
-         Orientation orientationx = unpackOrientation(packedx);
-         if (newPowerx > oldPowerx) {
-            this.setPower(posx, newPowerx, orientationx);
-         } else if (newPowerx < oldPowerx) {
+         BlockPos pos = this.wiresToTurnOn.removeFirst();
+         int packed = this.updatedWires.getInt(pos);
+         int oldPower = unpackPower(packed);
+         int blockPower = this.getBlockSignal(level, pos);
+         int wirePower = this.getIncomingWireSignal(level, pos);
+         int newPower = Math.max(blockPower, wirePower);
+         Orientation orientation = unpackOrientation(packed);
+         if (newPower > oldPower) {
+            this.setPower(pos, newPower, orientation);
+         } else if (newPower < oldPower) {
             throw new IllegalStateException("Turning off wire while trying to turn it on. Should not happen.");
          }
 
-         this.propagateChangeToNeighbors(level, posx, newPowerx, orientationx, false);
+         this.propagateChangeToNeighbors(level, pos, newPower, orientation, false);
       }
    }
 

@@ -17,8 +17,7 @@ public class EntityCollisionContext implements CollisionContext {
    private final boolean placement;
    private final ItemStack heldItem;
    private final boolean alwaysCollideWithFluid;
-   @Nullable
-   private final Entity entity;
+   private final @Nullable Entity entity;
 
    protected EntityCollisionContext(
       final boolean descending,
@@ -26,7 +25,7 @@ public class EntityCollisionContext implements CollisionContext {
       final double entityBottom,
       final ItemStack heldItem,
       final boolean alwaysCollideWithFluid,
-      @Nullable final Entity entity
+      final @Nullable Entity entity
    ) {
       this.descending = descending;
       this.placement = placement;
@@ -77,11 +76,10 @@ public class EntityCollisionContext implements CollisionContext {
 
    @Override
    public boolean isAbove(final VoxelShape shape, final BlockPos pos, final boolean defaultValue) {
-      return this.entityBottom > (double)pos.getY() + shape.max(Direction.Axis.Y) - 1.0E-5F;
+      return this.entityBottom > pos.getY() + shape.max(Direction.Axis.Y) - 1.0E-5F;
    }
 
-   @Nullable
-   public Entity getEntity() {
+   public @Nullable Entity getEntity() {
       return this.entity;
    }
 

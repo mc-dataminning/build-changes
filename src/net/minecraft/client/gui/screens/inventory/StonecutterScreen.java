@@ -139,8 +139,8 @@ public class StonecutterScreen extends AbstractContainerScreen<StonecutterMenu> 
 
          for (int index = this.startIndex; index < endIndex; index++) {
             int posIndex = index - this.startIndex;
-            double xx = event.x() - (double)(xo + posIndex % 4 * 16);
-            double yy = event.y() - (double)(yo + posIndex / 4 * 18);
+            double xx = event.x() - (xo + posIndex % 4 * 16);
+            double yy = event.y() - (yo + posIndex / 4 * 18);
             if (xx >= 0.0 && yy >= 0.0 && xx < 16.0 && yy < 18.0 && this.menu.clickMenuButton(this.minecraft.player, index)) {
                Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_STONECUTTER_SELECT_RECIPE, 1.0F));
                this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, index);
@@ -150,7 +150,7 @@ public class StonecutterScreen extends AbstractContainerScreen<StonecutterMenu> 
 
          xo = this.leftPos + 119;
          yo = this.topPos + 9;
-         if (event.x() >= (double)xo && event.x() < (double)(xo + 12) && event.y() >= (double)yo && event.y() < (double)(yo + 54)) {
+         if (event.x() >= xo && event.x() < xo + 12 && event.y() >= yo && event.y() < yo + 54) {
             this.scrolling = true;
          }
       }
@@ -163,9 +163,9 @@ public class StonecutterScreen extends AbstractContainerScreen<StonecutterMenu> 
       if (this.scrolling && this.isScrollBarActive()) {
          int yscr = this.topPos + 14;
          int yscr2 = yscr + 54;
-         this.scrollOffs = ((float)event.y() - (float)yscr - 7.5F) / ((float)(yscr2 - yscr) - 15.0F);
+         this.scrollOffs = ((float)event.y() - yscr - 7.5F) / (yscr2 - yscr - 15.0F);
          this.scrollOffs = Mth.clamp(this.scrollOffs, 0.0F, 1.0F);
-         this.startIndex = (int)((double)(this.scrollOffs * (float)this.getOffscreenRows()) + 0.5) * 4;
+         this.startIndex = (int)(this.scrollOffs * this.getOffscreenRows() + 0.5) * 4;
          return true;
       } else {
          return super.mouseDragged(event, dx, dy);
@@ -182,16 +182,16 @@ public class StonecutterScreen extends AbstractContainerScreen<StonecutterMenu> 
    public boolean mouseScrolled(final double x, final double y, final double scrollX, final double scrollY) {
       if (super.mouseScrolled(x, y, scrollX, scrollY)) {
          return true;
-      } else {
-         if (this.isScrollBarActive()) {
-            int offscreenRows = this.getOffscreenRows();
-            float scrolledDelta = (float)scrollY / (float)offscreenRows;
-            this.scrollOffs = Mth.clamp(this.scrollOffs - scrolledDelta, 0.0F, 1.0F);
-            this.startIndex = (int)((double)(this.scrollOffs * (float)offscreenRows) + 0.5) * 4;
-         }
-
-         return true;
       }
+
+      if (this.isScrollBarActive()) {
+         int offscreenRows = this.getOffscreenRows();
+         float scrolledDelta = (float)scrollY / offscreenRows;
+         this.scrollOffs = Mth.clamp(this.scrollOffs - scrolledDelta, 0.0F, 1.0F);
+         this.startIndex = (int)(this.scrollOffs * offscreenRows + 0.5) * 4;
+      }
+
+      return true;
    }
 
    private boolean isScrollBarActive() {

@@ -3,7 +3,6 @@ package net.minecraft.world.level.block;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.UnmodifiableIterator;
 import com.google.common.collect.ImmutableList.Builder;
-import java.util.Objects;
 import java.util.Optional;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -66,7 +65,7 @@ public class RespawnAnchorBlock extends Block {
 
    public RespawnAnchorBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(CHARGE, Integer.valueOf(0)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(CHARGE, 0));
    }
 
    @Override
@@ -84,9 +83,9 @@ public class RespawnAnchorBlock extends Block {
          itemStack.consume(1, player);
          return InteractionResult.SUCCESS;
       } else {
-         return (InteractionResult)(hand == InteractionHand.MAIN_HAND && isRespawnFuel(player.getItemInHand(InteractionHand.OFF_HAND)) && canBeCharged(state)
+         return hand == InteractionHand.MAIN_HAND && isRespawnFuel(player.getItemInHand(InteractionHand.OFF_HAND)) && canBeCharged(state)
             ? InteractionResult.PASS
-            : InteractionResult.TRY_WITH_EMPTY_HAND);
+            : InteractionResult.TRY_WITH_EMPTY_HAND;
       }
    }
 
@@ -96,34 +95,29 @@ public class RespawnAnchorBlock extends Block {
    ) {
       if (state.getValue(CHARGE) == 0) {
          return InteractionResult.PASS;
-      } else if (level instanceof ServerLevel serverLevel) {
+      }
+
+      if (level instanceof ServerLevel serverLevel) {
          if (!canSetSpawn(serverLevel, pos)) {
             this.explode(state, serverLevel, pos);
             return InteractionResult.SUCCESS_SERVER;
-         } else {
-            if (player instanceof ServerPlayer serverPlayer) {
-               ServerPlayer.RespawnConfig respawnConfig = serverPlayer.getRespawnConfig();
-               ServerPlayer.RespawnConfig newRespawnConfig = new ServerPlayer.RespawnConfig(
-                  LevelData.RespawnData.of(serverLevel.dimension(), pos, 0.0F, 0.0F), false
-               );
-               if (respawnConfig == null || !respawnConfig.isSamePosition(newRespawnConfig)) {
-                  serverPlayer.setRespawnPosition(newRespawnConfig, true);
-                  serverLevel.playSound(
-                     null,
-                     (double)pos.getX() + 0.5,
-                     (double)pos.getY() + 0.5,
-                     (double)pos.getZ() + 0.5,
-                     SoundEvents.RESPAWN_ANCHOR_SET_SPAWN,
-                     SoundSource.BLOCKS,
-                     1.0F,
-                     1.0F
-                  );
-                  return InteractionResult.SUCCESS_SERVER;
-               }
-            }
-
-            return InteractionResult.CONSUME;
          }
+
+         if (player instanceof ServerPlayer serverPlayer) {
+            ServerPlayer.RespawnConfig respawnConfig = serverPlayer.getRespawnConfig();
+            ServerPlayer.RespawnConfig newRespawnConfig = new ServerPlayer.RespawnConfig(
+               LevelData.RespawnData.of(serverLevel.dimension(), pos, 0.0F, 0.0F), false
+            );
+            if (respawnConfig == null || !respawnConfig.isSamePosition(newRespawnConfig)) {
+               serverPlayer.setRespawnPosition(newRespawnConfig, true);
+               serverLevel.playSound(
+                  null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.RESPAWN_ANCHOR_SET_SPAWN, SoundSource.BLOCKS, 1.0F, 1.0F
+               );
+               return InteractionResult.SUCCESS_SERVER;
+            }
+         }
+
+         return InteractionResult.CONSUME;
       } else {
          return InteractionResult.CONSUME;
       }
@@ -141,17 +135,19 @@ public class RespawnAnchorBlock extends Block {
       FluidState fluid = level.getFluidState(pos);
       if (!fluid.is(FluidTags.WATER)) {
          return false;
-      } else if (fluid.isSource()) {
-         return true;
-      } else {
-         float amount = (float)fluid.getAmount();
-         if (amount < 2.0F) {
-            return false;
-         } else {
-            FluidState fluidBelow = level.getFluidState(pos.below());
-            return !fluidBelow.is(FluidTags.WATER);
-         }
       }
+
+      if (fluid.isSource()) {
+         return true;
+      }
+
+      float amount = fluid.getAmount();
+      if (amount < 2.0F) {
+         return false;
+      }
+
+      FluidState fluidBelow = level.getFluidState(pos.below());
+      return !fluidBelow.is(FluidTags.WATER);
    }
 
    private void explode(final BlockState state, final ServerLevel level, final BlockPos pos) {
@@ -159,17 +155,13 @@ public class RespawnAnchorBlock extends Block {
       boolean anyWaterNeighbors = Direction.Plane.HORIZONTAL.stream().map(pos::relative).anyMatch(neighborPos -> isWaterThatWouldFlow(neighborPos, level));
       final boolean inWater = anyWaterNeighbors || level.getFluidState(pos.above()).is(FluidTags.WATER);
       ExplosionDamageCalculator damageCalculator = new ExplosionDamageCalculator() {
-         {
-            Objects.requireNonNull(RespawnAnchorBlock.this);
-         }
-
          @Override
          public Optional<Float> getBlockExplosionResistance(
-            final Explosion explosion, final BlockGetter level, final BlockPos testPos, final BlockState block, final FluidState fluid
+            final Explosion explosion, final BlockGetter levelx, final BlockPos testPos, final BlockState block, final FluidState fluid
          ) {
             return testPos.equals(pos) && inWater
                ? Optional.of(Blocks.WATER.getExplosionResistance())
-               : super.getBlockExplosionResistance(explosion, level, testPos, block, fluid);
+               : super.getBlockExplosionResistance(explosion, levelx, testPos, block, fluid);
          }
       };
       Vec3 boomPos = Vec3.atCenterOf(pos);
@@ -180,13 +172,11 @@ public class RespawnAnchorBlock extends Block {
       return level.environmentAttributes().getValue(EnvironmentAttributes.RESPAWN_ANCHOR_WORKS, pos);
    }
 
-   public static void charge(@Nullable final Entity sourceEntity, final Level level, final BlockPos pos, final BlockState state) {
-      BlockState newState = state.setValue(CHARGE, Integer.valueOf(state.getValue(CHARGE) + 1));
+   public static void charge(final @Nullable Entity sourceEntity, final Level level, final BlockPos pos, final BlockState state) {
+      BlockState newState = state.setValue(CHARGE, state.getValue(CHARGE) + 1);
       level.setBlockAndUpdate(pos, newState);
       level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(sourceEntity, newState));
-      level.playSound(
-         null, (double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, SoundEvents.RESPAWN_ANCHOR_CHARGE, SoundSource.BLOCKS, 1.0F, 1.0F
-      );
+      level.playSound(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.RESPAWN_ANCHOR_CHARGE, SoundSource.BLOCKS, 1.0F, 1.0F);
    }
 
    @Override
@@ -196,10 +186,10 @@ public class RespawnAnchorBlock extends Block {
             level.playLocalSound(pos, SoundEvents.RESPAWN_ANCHOR_AMBIENT, SoundSource.BLOCKS, 1.0F, 1.0F, false);
          }
 
-         double x = (double)pos.getX() + 0.5 + (0.5 - random.nextDouble());
-         double y = (double)pos.getY() + 1.0;
-         double z = (double)pos.getZ() + 0.5 + (0.5 - random.nextDouble());
-         double ya = (double)random.nextFloat() * 0.04;
+         double x = pos.getX() + 0.5 + (0.5 - random.nextDouble());
+         double y = pos.getY() + 1.0;
+         double z = pos.getZ() + 0.5 + (0.5 - random.nextDouble());
+         double ya = random.nextFloat() * 0.04;
          level.addParticle(ParticleTypes.REVERSE_PORTAL, x, y, z, 0.0, ya, 0.0);
       }
    }
@@ -215,7 +205,7 @@ public class RespawnAnchorBlock extends Block {
    }
 
    public static int getScaledChargeLevel(final BlockState state, final int maximum) {
-      return Mth.floor((float)(state.getValue(CHARGE) - 0) / 4.0F * (float)maximum);
+      return Mth.floor((state.getValue(CHARGE) - 0) / 4.0F * maximum);
    }
 
    @Override

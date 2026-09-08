@@ -11,7 +11,7 @@ public enum ChestType implements StringRepresentable {
    public static final Codec<ChestType> CODEC = StringRepresentable.fromEnum(ChestType::values);
    private final String name;
 
-   private ChestType(final String name) {
+   ChestType(final String name) {
       this.name = name;
    }
 

@@ -36,23 +36,8 @@ public record ServerboundContainerClickPacket(
       ServerboundContainerClickPacket::new
    );
 
-   public ServerboundContainerClickPacket(
-      int containerId,
-      int stateId,
-      short slotNum,
-      byte buttonNum,
-      ContainerInput containerInput,
-      Int2ObjectMap<HashedStack> changedSlots,
-      HashedStack carriedItem
-   ) {
+   public ServerboundContainerClickPacket {
       changedSlots = Int2ObjectMaps.unmodifiable(changedSlots);
-      this.containerId = containerId;
-      this.stateId = stateId;
-      this.slotNum = slotNum;
-      this.buttonNum = buttonNum;
-      this.containerInput = containerInput;
-      this.changedSlots = changedSlots;
-      this.carriedItem = carriedItem;
    }
 
    @Override

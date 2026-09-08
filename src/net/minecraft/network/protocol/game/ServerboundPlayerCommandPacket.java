@@ -57,7 +57,7 @@ public class ServerboundPlayerCommandPacket implements Packet<ServerGamePacketLi
       return this.data;
    }
 
-   public static enum Action {
+   public enum Action {
       STOP_SLEEPING,
       START_SPRINTING,
       STOP_SPRINTING,

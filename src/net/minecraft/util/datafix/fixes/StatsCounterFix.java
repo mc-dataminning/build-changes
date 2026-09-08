@@ -188,8 +188,7 @@ public class StatsCounterFix extends DataFix {
       super(outputSchema, changesType);
    }
 
-   @Nullable
-   private static StatsCounterFix.StatType unpackLegacyKey(final String key) {
+   private static StatsCounterFix.@Nullable StatType unpackLegacyKey(final String key) {
       if (SKIP.contains(key)) {
          return null;
       } else {
@@ -263,19 +262,18 @@ public class StatsCounterFix extends DataFix {
       return this.fixTypeEverywhereTyped("ObjectiveStatFix", inputType, outputType, input -> {
          Dynamic<?> tag = (Dynamic<?>)input.get(DSL.remainderFinder());
          Dynamic<?> updatedTag = tag.update("CriteriaName", name -> (Dynamic)DataFixUtils.orElse(name.asString().result().map(key -> {
-               if (SPECIAL_OBJECTIVE_CRITERIA.contains(key)) {
-                  return (String)key;
-               } else {
-                  StatsCounterFix.StatType statType = unpackLegacyKey(key);
-                  return statType == null ? "dummy" : V1451_6.packNamespacedWithDot(statType.type) + ":" + V1451_6.packNamespacedWithDot(statType.typeKey);
-               }
-            }).map(name::createString), name));
+            if (SPECIAL_OBJECTIVE_CRITERIA.contains(key)) {
+               return (String)key;
+            }
+
+            StatsCounterFix.StatType statType = unpackLegacyKey(key);
+            return statType == null ? "dummy" : V1451_6.packNamespacedWithDot(statType.type) + ":" + V1451_6.packNamespacedWithDot(statType.typeKey);
+         }).map(name::createString), name));
          return Util.readTypedOrThrow(outputType, updatedTag);
       });
    }
 
-   @Nullable
-   private static String upgradeItem(final String name) {
+   private static @Nullable String upgradeItem(final String name) {
       return ItemStackTheFlatteningFix.updateItem(name, 0);
    }
 
@@ -283,6 +281,6 @@ public class StatsCounterFix extends DataFix {
       return BlockStateData.upgradeBlock(name);
    }
 
-   private static record StatType(String type, String typeKey) {
+   private record StatType(String type, String typeKey) {
    }
 }

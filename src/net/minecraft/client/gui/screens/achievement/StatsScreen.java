@@ -7,7 +7,6 @@ import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -65,8 +64,7 @@ public class StatsScreen extends Screen {
    private static final int LIST_WIDTH = 280;
    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
    private final TabManager tabManager = new TabManager(x$0 -> this.addRenderableWidget(x$0), x$0 -> this.removeWidget(x$0));
-   @Nullable
-   private MenuTabBar tabNavigationBar;
+   private @Nullable MenuTabBar tabNavigationBar;
    private final StatsCounter stats;
    private boolean isLoading = true;
 
@@ -125,17 +123,7 @@ public class StatsScreen extends Screen {
 
    private void setTabActiveStateAndTooltip(final int index) {
       if (this.tabNavigationBar != null) {
-         boolean var10000;
-         label20: {
-            if (this.tabNavigationBar.getTabs().get(index) instanceof StatsScreen.StatisticsTab statsTab && !statsTab.list.children().isEmpty()) {
-               var10000 = true;
-               break label20;
-            }
-
-            var10000 = false;
-         }
-
-         boolean active = var10000;
+         boolean active = this.tabNavigationBar.getTabs().get(index) instanceof StatsScreen.StatisticsTab statsTab && !statsTab.list.children().isEmpty();
          this.tabNavigationBar.setTabActiveState(index, active);
          if (active) {
             this.tabNavigationBar.setTabTooltip(index, null);
@@ -186,7 +174,6 @@ public class StatsScreen extends Screen {
 
    private class GeneralStatisticsList extends ObjectSelectionList<StatsScreen.GeneralStatisticsList.Entry> {
       public GeneralStatisticsList(final Minecraft minecraft) {
-         Objects.requireNonNull(StatsScreen.this);
          super(minecraft, StatsScreen.this.width, StatsScreen.this.layout.getContentHeight(), 33, 14);
          ObjectArrayList<Stat<Identifier>> stats = new ObjectArrayList(Stats.CUSTOM.iterator());
          stats.sort(Comparator.comparing(k -> I18n.get(StatsScreen.getTranslationKey((Stat<Identifier>)k))));
@@ -216,8 +203,6 @@ public class StatsScreen extends Screen {
          private final Component statDisplay;
 
          private Entry(final Stat<Identifier> stat) {
-            Objects.requireNonNull(GeneralStatisticsList.this);
-            super();
             this.stat = stat;
             this.statDisplay = Component.translatable(StatsScreen.getTranslationKey(stat));
          }
@@ -254,15 +239,12 @@ public class StatsScreen extends Screen {
       private static final int SORT_UP = 1;
       protected final List<StatType<Block>> blockColumns;
       protected final List<StatType<Item>> itemColumns;
-      protected final Comparator<StatsScreen.ItemStatisticsList.ItemRow> itemStatSorter;
-      @Nullable
-      protected StatType<?> sortColumn;
+      protected final Comparator<StatsScreen.ItemStatisticsList.ItemRow> itemStatSorter = new StatsScreen.ItemStatisticsList.ItemRowComparator();
+      protected @Nullable StatType<?> sortColumn;
       protected int sortOrder;
 
       public ItemStatisticsList(final Minecraft minecraft) {
-         Objects.requireNonNull(StatsScreen.this);
          super(minecraft, StatsScreen.this.width, StatsScreen.this.layout.getContentHeight(), 33, 22);
-         this.itemStatSorter = new StatsScreen.ItemStatisticsList.ItemRowComparator();
          this.blockColumns = Lists.newArrayList();
          this.blockColumns.add(Stats.BLOCK_MINED);
          this.itemColumns = Lists.newArrayList(new StatType[]{Stats.ITEM_BROKEN, Stats.ITEM_CRAFTED, Stats.ITEM_USED, Stats.ITEM_PICKED_UP, Stats.ITEM_DROPPED});
@@ -285,8 +267,8 @@ public class StatsScreen extends Screen {
          for (Block block : BuiltInRegistries.BLOCK) {
             boolean addToList = false;
 
-            for (StatType<Block> typex : this.blockColumns) {
-               if (typex.contains(block) && StatsScreen.this.stats.getValue(typex.get(block)) > 0) {
+            for (StatType<Block> type : this.blockColumns) {
+               if (type.contains(block) && StatsScreen.this.stats.getValue(type.get(block)) > 0) {
                   addToList = true;
                }
             }
@@ -327,10 +309,10 @@ public class StatsScreen extends Screen {
          int i = this.blockColumns.indexOf(column);
          if (i >= 0) {
             return i;
-         } else {
-            int j = this.itemColumns.indexOf(column);
-            return j >= 0 ? j + this.blockColumns.size() : -1;
          }
+
+         int j = this.itemColumns.indexOf(column);
+         return j >= 0 ? j + this.blockColumns.size() : -1;
       }
 
       protected void sortByColumn(final StatType<?> column) {
@@ -387,12 +369,9 @@ public class StatsScreen extends Screen {
          private final StatsScreen.ItemStatisticsList.HeaderEntry.StatSortButton itemUsed;
          private final StatsScreen.ItemStatisticsList.HeaderEntry.StatSortButton itemPickedUp;
          private final StatsScreen.ItemStatisticsList.HeaderEntry.StatSortButton itemDropped;
-         private final List<AbstractWidget> children;
+         private final List<AbstractWidget> children = new ArrayList<>();
 
          private HeaderEntry() {
-            Objects.requireNonNull(ItemStatisticsList.this);
-            super();
-            this.children = new ArrayList<>();
             this.blockMined = new StatsScreen.ItemStatisticsList.HeaderEntry.StatSortButton(0, BLOCK_MINED_SPRITE);
             this.itemBroken = new StatsScreen.ItemStatisticsList.HeaderEntry.StatSortButton(1, ITEM_BROKEN_SPRITE);
             this.itemCrafted = new StatsScreen.ItemStatisticsList.HeaderEntry.StatSortButton(2, ITEM_CRAFTED_SPRITE);
@@ -462,8 +441,6 @@ public class StatsScreen extends Screen {
          private final StatsScreen.ItemStatisticsList.ItemRow.ItemRowWidget itemRowWidget;
 
          private ItemRow(final Item item) {
-            Objects.requireNonNull(ItemStatisticsList.this);
-            super();
             this.item = item;
             this.itemRowWidget = new StatsScreen.ItemStatisticsList.ItemRow.ItemRowWidget(item.getDefaultInstance());
          }
@@ -501,8 +478,8 @@ public class StatsScreen extends Screen {
             }
          }
 
-         protected void extractStat(final GuiGraphicsExtractor graphics, @Nullable final Stat<?> stat, final int x, final int y, final boolean shaded) {
-            Component msg = (Component)(stat == null ? StatsScreen.NO_VALUE_DISPLAY : Component.literal(stat.format(StatsScreen.this.stats.getValue(stat))));
+         protected void extractStat(final GuiGraphicsExtractor graphics, final @Nullable Stat<?> stat, final int x, final int y, final boolean shaded) {
+            Component msg = stat == null ? StatsScreen.NO_VALUE_DISPLAY : Component.literal(stat.format(StatsScreen.this.stats.getValue(stat)));
             graphics.text(StatsScreen.this.font, msg, x - StatsScreen.this.font.width(msg), y, shaded ? -1 : -4539718);
          }
 
@@ -518,7 +495,6 @@ public class StatsScreen extends Screen {
 
          private class ItemRowWidget extends ItemDisplayWidget {
             private ItemRowWidget(final ItemStack itemStack) {
-               Objects.requireNonNull(ItemRow.this);
                super(ItemStatisticsList.this.minecraft, 1, 1, 18, 18, itemStack.getHoverName(), itemStack, false, true);
             }
 
@@ -536,11 +512,6 @@ public class StatsScreen extends Screen {
       }
 
       private class ItemRowComparator implements Comparator<StatsScreen.ItemStatisticsList.ItemRow> {
-         private ItemRowComparator() {
-            Objects.requireNonNull(ItemStatisticsList.this);
-            super();
-         }
-
          public int compare(final StatsScreen.ItemStatisticsList.ItemRow one, final StatsScreen.ItemStatisticsList.ItemRow two) {
             Item item1 = one.getItem();
             Item item2 = two.getItem();
@@ -552,7 +523,7 @@ public class StatsScreen extends Screen {
             } else if (ItemStatisticsList.this.blockColumns.contains(ItemStatisticsList.this.sortColumn)) {
                StatType<Block> type = (StatType<Block>)ItemStatisticsList.this.sortColumn;
                key1 = item1 instanceof BlockItem blockItem ? StatsScreen.this.stats.getValue(type, blockItem.getBlock()) : -1;
-               key2 = item2 instanceof BlockItem blockItemx ? StatsScreen.this.stats.getValue(type, blockItemx.getBlock()) : -1;
+               key2 = item2 instanceof BlockItem blockItem ? StatsScreen.this.stats.getValue(type, blockItem.getBlock()) : -1;
             } else {
                StatType<Item> type = (StatType<Item>)ItemStatisticsList.this.sortColumn;
                key1 = StatsScreen.this.stats.getValue(type, item1);
@@ -568,7 +539,6 @@ public class StatsScreen extends Screen {
 
    private class MobsStatisticsList extends ObjectSelectionList<StatsScreen.MobsStatisticsList.MobRow> {
       public MobsStatisticsList(final Minecraft minecraft) {
-         Objects.requireNonNull(StatsScreen.this);
          super(minecraft, StatsScreen.this.width, StatsScreen.this.layout.getContentHeight(), 33, 9 * 4);
 
          for (EntityType<?> type : BuiltInRegistries.ENTITY_TYPE) {
@@ -599,8 +569,6 @@ public class StatsScreen extends Screen {
          private final boolean wasKilledBy;
 
          public MobRow(final EntityType<?> type) {
-            Objects.requireNonNull(MobsStatisticsList.this);
-            super();
             this.mobName = type.getDescription();
             int kills = StatsScreen.this.stats.getValue(Stats.ENTITY_KILLED.get(type));
             if (kills == 0) {
@@ -641,7 +609,6 @@ public class StatsScreen extends Screen {
       protected final AbstractSelectionList<?> list;
 
       public StatisticsTab(final Component title, final AbstractSelectionList<?> list) {
-         Objects.requireNonNull(StatsScreen.this);
          super(title);
          this.layout.addChild(list, 1, 1);
          this.list = list;

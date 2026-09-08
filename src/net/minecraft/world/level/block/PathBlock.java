@@ -62,7 +62,7 @@ public class PathBlock extends Block {
       this.turnToBaseBlock(null, state, level, pos);
    }
 
-   public void turnToBaseBlock(@Nullable final Entity sourceEntity, final BlockState state, final Level level, final BlockPos pos) {
+   public void turnToBaseBlock(final @Nullable Entity sourceEntity, final BlockState state, final Level level, final BlockPos pos) {
       BlockState newState = pushEntitiesUp(state, this.baseBlock.defaultBlockState(), level, pos);
       level.setBlockAndUpdate(pos, newState);
       level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(sourceEntity, newState));

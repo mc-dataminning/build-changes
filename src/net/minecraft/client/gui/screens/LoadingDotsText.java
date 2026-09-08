@@ -5,7 +5,7 @@ public class LoadingDotsText {
    private static final long INTERVAL_MS = 300L;
 
    public static String get(final long timeMs) {
-      int index = (int)(timeMs / 300L % (long)FRAMES.length);
+      int index = (int)(timeMs / 300L % FRAMES.length);
       return FRAMES[index];
    }
 }

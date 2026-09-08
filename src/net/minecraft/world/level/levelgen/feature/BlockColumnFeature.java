@@ -19,12 +19,12 @@ public record BlockColumnFeature(List<BlockColumnFeature.Layer> layers, Directio
    implements Feature {
    public static final MapCodec<BlockColumnFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BlockColumnFeature.Layer.CODEC.listOf().fieldOf("layers").forGetter(BlockColumnFeature::layers),
-               Direction.CODEC.fieldOf("direction").forGetter(BlockColumnFeature::direction),
-               BlockPredicate.CODEC.fieldOf("allowed_placement").forGetter(BlockColumnFeature::allowedPlacement),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(BlockColumnFeature::prioritizeTip)
-            )
-            .apply(i, BlockColumnFeature::new)
+            BlockColumnFeature.Layer.CODEC.listOf().fieldOf("layers").forGetter(BlockColumnFeature::layers),
+            Direction.CODEC.fieldOf("direction").forGetter(BlockColumnFeature::direction),
+            BlockPredicate.CODEC.fieldOf("allowed_placement").forGetter(BlockColumnFeature::allowedPlacement),
+            Codec.BOOL.fieldOf("prioritize_tip").forGetter(BlockColumnFeature::prioritizeTip)
+         )
+         .apply(i, BlockColumnFeature::new)
    );
 
    public static BlockColumnFeature.Layer layer(final IntProvider height, final Holder<BlockStateProvider> state) {
@@ -57,33 +57,33 @@ public record BlockColumnFeature(List<BlockColumnFeature.Layer> layers, Directio
 
       if (totalHeight == 0) {
          return false;
-      } else {
-         BlockPos.MutableBlockPos placePos = origin.mutable();
-         BlockPos.MutableBlockPos nextPos = placePos.mutable().move(this.direction);
-
-         for (int y = 0; y < totalHeight; y++) {
-            if (!this.allowedPlacement.test(level, nextPos)) {
-               truncate(layerHeights, totalHeight, y, this.prioritizeTip);
-               break;
-            }
-
-            nextPos.move(this.direction);
-         }
-
-         for (int i = 0; i < layerCount; i++) {
-            int count = layerHeights[i];
-            if (count != 0) {
-               BlockColumnFeature.Layer layer = this.layers.get(i);
-
-               for (int y = 0; y < count; y++) {
-                  level.setBlock(placePos, layer.state().value().getState(level, random, placePos), 2);
-                  placePos.move(this.direction);
-               }
-            }
-         }
-
-         return true;
       }
+
+      BlockPos.MutableBlockPos placePos = origin.mutable();
+      BlockPos.MutableBlockPos nextPos = placePos.mutable().move(this.direction);
+
+      for (int y = 0; y < totalHeight; y++) {
+         if (!this.allowedPlacement.test(level, nextPos)) {
+            truncate(layerHeights, totalHeight, y, this.prioritizeTip);
+            break;
+         }
+
+         nextPos.move(this.direction);
+      }
+
+      for (int i = 0; i < layerCount; i++) {
+         int count = layerHeights[i];
+         if (count != 0) {
+            BlockColumnFeature.Layer layer = this.layers.get(i);
+
+            for (int y = 0; y < count; y++) {
+               level.setBlock(placePos, layer.state().value().getState(level, random, placePos), 2);
+               placePos.move(this.direction);
+            }
+         }
+      }
+
+      return true;
    }
 
    private static void truncate(final int[] layerHeights, final int totalHeight, final int newHeight, final boolean prioritizeTip) {
@@ -100,13 +100,13 @@ public record BlockColumnFeature(List<BlockColumnFeature.Layer> layers, Directio
       }
    }
 
-   public static record Layer(IntProvider height, Holder<BlockStateProvider> state) {
+   public record Layer(IntProvider height, Holder<BlockStateProvider> state) {
       public static final Codec<BlockColumnFeature.Layer> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  IntProviders.NON_NEGATIVE_CODEC.fieldOf("height").forGetter(BlockColumnFeature.Layer::height),
-                  BlockStateProvider.CODEC.fieldOf("provider").forGetter(BlockColumnFeature.Layer::state)
-               )
-               .apply(i, BlockColumnFeature.Layer::new)
+               IntProviders.NON_NEGATIVE_CODEC.fieldOf("height").forGetter(BlockColumnFeature.Layer::height),
+               BlockStateProvider.CODEC.fieldOf("provider").forGetter(BlockColumnFeature.Layer::state)
+            )
+            .apply(i, BlockColumnFeature.Layer::new)
       );
    }
 }

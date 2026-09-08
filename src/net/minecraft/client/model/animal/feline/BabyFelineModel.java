@@ -78,25 +78,25 @@ public class BabyFelineModel<S extends FelineRenderState> extends AbstractFeline
          float animationSpeed = state.walkAnimationSpeed;
          float animationPos = state.walkAnimationPos;
          if (state.isSprinting) {
-            this.leftHindLeg.xRot = Mth.cos((double)(animationPos * 0.6662F)) * animationSpeed;
-            this.rightHindLeg.xRot = Mth.cos((double)(animationPos * 0.6662F + 0.3F)) * animationSpeed;
-            this.leftFrontLeg.xRot = Mth.cos((double)(animationPos * 0.6662F + (float) Math.PI + 0.3F)) * animationSpeed;
-            this.rightFrontLeg.xRot = Mth.cos((double)(animationPos * 0.6662F + (float) Math.PI)) * animationSpeed;
-            this.tail2.xRot = 1.7278761F + (float) (Math.PI / 10) * Mth.cos((double)animationPos) * animationSpeed;
+            this.leftHindLeg.xRot = Mth.cos(animationPos * 0.6662F) * animationSpeed;
+            this.rightHindLeg.xRot = Mth.cos(animationPos * 0.6662F + 0.3F) * animationSpeed;
+            this.leftFrontLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI + 0.3F) * animationSpeed;
+            this.rightFrontLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * animationSpeed;
+            this.tail2.xRot = 1.7278761F + (float) (Math.PI / 10) * Mth.cos(animationPos) * animationSpeed;
          } else {
-            this.leftHindLeg.xRot = Mth.cos((double)(animationPos * 0.6662F)) * animationSpeed;
-            this.rightHindLeg.xRot = Mth.cos((double)(animationPos * 0.6662F + (float) Math.PI)) * animationSpeed;
-            this.leftFrontLeg.xRot = Mth.cos((double)(animationPos * 0.6662F + (float) Math.PI)) * animationSpeed;
-            this.rightFrontLeg.xRot = Mth.cos((double)(animationPos * 0.6662F)) * animationSpeed;
+            this.leftHindLeg.xRot = Mth.cos(animationPos * 0.6662F) * animationSpeed;
+            this.rightHindLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * animationSpeed;
+            this.leftFrontLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * animationSpeed;
+            this.rightFrontLeg.xRot = Mth.cos(animationPos * 0.6662F) * animationSpeed;
             if (!state.isCrouching) {
-               this.tail2.xRot = 1.7278761F + (float) (Math.PI / 4) * Mth.cos((double)animationPos) * animationSpeed;
+               this.tail2.xRot = 1.7278761F + (float) (Math.PI / 4) * Mth.cos(animationPos) * animationSpeed;
             } else {
-               this.tail2.xRot = 1.7278761F + 0.47123894F * Mth.cos((double)animationPos) * animationSpeed;
+               this.tail2.xRot = 1.7278761F + 0.47123894F * Mth.cos(animationPos) * animationSpeed;
             }
          }
       } else if (state.isSitting) {
          this.body.xRot += -0.43633232F;
-         this.body.y++;
+         this.body.y += 1.25F;
          this.head.z += 0.75F;
          this.tail1.xRot += 0.5454154F;
          this.tail1.y += 4.0F;
@@ -109,7 +109,7 @@ public class BabyFelineModel<S extends FelineRenderState> extends AbstractFeline
          this.body.x++;
          this.head.xRot = Mth.rotLerp(state.lieDownAmount, this.head.xRot, (float) (Math.PI / 18));
          this.head.zRot = Mth.rotLerp(state.lieDownAmount, this.head.zRot, (float) (-Math.PI * 5.0 / 12.0));
-         this.head.x++;
+         this.head.x += 1.5F;
          this.head.y += 0.75F;
          this.head.z -= 0.5F;
          this.rightFrontLeg.xRot = (float) (-Math.PI / 4);
@@ -117,7 +117,7 @@ public class BabyFelineModel<S extends FelineRenderState> extends AbstractFeline
          this.rightFrontLeg.y -= 0.5F;
          this.rightFrontLeg.z += 0.0F;
          this.leftFrontLeg.xRot = (float) (-Math.PI / 2);
-         this.leftFrontLeg.x++;
+         this.leftFrontLeg.x += 1.5F;
          this.leftFrontLeg.y--;
          this.leftFrontLeg.z -= 2.0F;
          this.rightHindLeg.xRot = (float) (Math.PI * 2.0 / 9.0);
@@ -126,7 +126,7 @@ public class BabyFelineModel<S extends FelineRenderState> extends AbstractFeline
          this.rightHindLeg.x += 2.5F;
          this.rightHindLeg.y -= 0.25F;
          this.rightHindLeg.z += 0.5F;
-         this.leftHindLeg.x++;
+         this.leftHindLeg.x += 1.5F;
          this.leftHindLeg.z--;
          this.tail1.xRot = this.tail1.xRot + Mth.rotLerp(state.lieDownAmountTail, this.tail1.xRot, (float) (-Math.PI / 6));
          this.tail1.yRot = this.tail1.yRot + Mth.rotLerp(state.lieDownAmountTail, this.tail1.yRot, 0.0F);

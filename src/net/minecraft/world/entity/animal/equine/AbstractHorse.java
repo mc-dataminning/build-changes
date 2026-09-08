@@ -1,7 +1,6 @@
 package net.minecraft.world.entity.animal.equine;
 
 import com.google.common.collect.UnmodifiableIterator;
-import java.util.Objects;
 import java.util.function.DoubleSupplier;
 import java.util.function.IntUnaryOperator;
 import net.minecraft.advancements.triggers.CriteriaTriggers;
@@ -91,13 +90,7 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
    private static final float MAX_HEALTH = generateMaxHealth(i -> i - 1);
    private static final float BACKWARDS_MOVE_SPEED_FACTOR = 0.25F;
    private static final float SIDEWAYS_MOVE_SPEED_FACTOR = 0.5F;
-   private static final TargetingConditions.Selector PARENT_HORSE_SELECTOR = (target, level) -> {
-      if (target instanceof AbstractHorse horse && horse.isBred()) {
-         return true;
-      }
-
-      return false;
-   };
+   private static final TargetingConditions.Selector PARENT_HORSE_SELECTOR = (target, level) -> target instanceof AbstractHorse horse && horse.isBred();
    private static final TargetingConditions MOMMY_TARGETING = TargetingConditions.forNonCombat()
       .range(16.0)
       .ignoreLineOfSight()
@@ -131,8 +124,7 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
    private float mouthAnimO;
    protected boolean canGallop = true;
    protected int gallopSoundCounter;
-   @Nullable
-   private EntityReference<LivingEntity> owner;
+   private @Nullable EntityReference<LivingEntity> owner;
 
    protected AbstractHorse(final EntityType<? extends AbstractHorse> type, final Level level) {
       super(type, level);
@@ -183,13 +175,12 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
       return this.getFlag(2);
    }
 
-   @Nullable
    @Override
-   public EntityReference<LivingEntity> getOwnerReference() {
+   public @Nullable EntityReference<LivingEntity> getOwnerReference() {
       return this.owner;
    }
 
-   public void setOwner(@Nullable final LivingEntity owner) {
+   public void setOwner(final @Nullable LivingEntity owner) {
       this.owner = EntityReference.of(owner);
    }
 
@@ -295,12 +286,12 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
       int dmg = this.calculateFallDamage(fallDistance, damageModifier);
       if (dmg <= 0) {
          return false;
-      } else {
-         this.hurt(damageSource, (float)dmg);
-         this.propagateFallToPassengers(fallDistance, damageModifier, damageSource);
-         this.playBlockFallSound();
-         return true;
       }
+
+      this.hurt(damageSource, dmg);
+      this.propagateFallToPassengers(fallDistance, damageModifier, damageSource);
+      this.playBlockFallSound();
+      return true;
    }
 
    public final int getInventorySize() {
@@ -324,7 +315,7 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
 
    @Override
    protected Holder<SoundEvent> getEquipSound(final EquipmentSlot slot, final ItemStack stack, final Equippable equippable) {
-      return (Holder<SoundEvent>)(slot == EquipmentSlot.SADDLE ? SoundEvents.HORSE_SADDLE : super.getEquipSound(slot, stack, equippable));
+      return slot == EquipmentSlot.SADDLE ? SoundEvents.HORSE_SADDLE : super.getEquipSound(slot, stack, equippable);
    }
 
    @Override
@@ -341,13 +332,11 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
       return true;
    }
 
-   @Nullable
-   protected SoundEvent getEatingSound() {
+   protected @Nullable SoundEvent getEatingSound() {
       return null;
    }
 
-   @Nullable
-   protected SoundEvent getAngrySound() {
+   protected @Nullable SoundEvent getAngrySound() {
       return null;
    }
 
@@ -429,7 +418,7 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
          itemStack.consume(1, player);
       }
 
-      return (InteractionResult)(!ateFood && !this.level().isClientSide() ? InteractionResult.PASS : InteractionResult.SUCCESS_SERVER);
+      return !ateFood && !this.level().isClientSide() ? InteractionResult.PASS : InteractionResult.SUCCESS_SERVER;
    }
 
    protected boolean handleEating(final Player player, final ItemStack itemStack) {
@@ -568,7 +557,6 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
          }
 
          this.followMommy(level);
-         return;
       }
    }
 
@@ -612,7 +600,7 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
 
       this.eatAnimO = this.eatAnim;
       if (this.isEating()) {
-         this.eatAnim = this.eatAnim + (1.0F - this.eatAnim) * 0.4F + 0.05F;
+         this.eatAnim = this.eatAnim + ((1.0F - this.eatAnim) * 0.4F + 0.05F);
          if (this.eatAnim > 1.0F) {
             this.eatAnim = 1.0F;
          }
@@ -627,7 +615,7 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
       if (this.isStanding()) {
          this.eatAnim = 0.0F;
          this.eatAnimO = this.eatAnim;
-         this.standAnim = this.standAnim + (1.0F - this.standAnim) * 0.4F + 0.05F;
+         this.standAnim = this.standAnim + ((1.0F - this.standAnim) * 0.4F + 0.05F);
          if (this.standAnim > 1.0F) {
             this.standAnim = 1.0F;
          }
@@ -641,7 +629,7 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
 
       this.mouthAnimO = this.mouthAnim;
       if (this.getFlag(64)) {
-         this.mouthAnim = this.mouthAnim + (1.0F - this.mouthAnim) * 0.7F + 0.05F;
+         this.mouthAnim = this.mouthAnim + ((1.0F - this.mouthAnim) * 0.7F + 0.05F);
          if (this.mouthAnim > 1.0F) {
             this.mouthAnim = 1.0F;
          }
@@ -657,26 +645,28 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
    public InteractionResult mobInteract(final Player player, final InteractionHand hand) {
       if (this.isVehicle() || this.isBaby()) {
          return super.mobInteract(player, hand);
-      } else if (this.isTamed() && player.isSecondaryUseActive()) {
+      }
+
+      if (this.isTamed() && player.isSecondaryUseActive()) {
          this.openCustomInventoryScreen(player);
          return InteractionResult.SUCCESS;
-      } else {
-         ItemStack itemStack = player.getItemInHand(hand);
-         if (!itemStack.isEmpty()) {
-            InteractionResult interactionResult = itemStack.interactLivingEntity(player, this, hand);
-            if (interactionResult.consumesAction()) {
-               return interactionResult;
-            }
+      }
 
-            if (this.isEquippableInSlot(itemStack, EquipmentSlot.BODY) && !this.isWearingBodyArmor()) {
-               this.equipBodyArmor(player, itemStack);
-               return InteractionResult.SUCCESS;
-            }
+      ItemStack itemStack = player.getItemInHand(hand);
+      if (!itemStack.isEmpty()) {
+         InteractionResult interactionResult = itemStack.interactLivingEntity(player, this, hand);
+         if (interactionResult.consumesAction()) {
+            return interactionResult;
          }
 
-         this.doPlayerRide(player);
-         return InteractionResult.SUCCESS;
+         if (this.isEquippableInSlot(itemStack, EquipmentSlot.BODY) && !this.isWearingBodyArmor()) {
+            this.equipBodyArmor(player, itemStack);
+            return InteractionResult.SUCCESS;
+         }
       }
+
+      this.doPlayerRide(player);
+      return InteractionResult.SUCCESS;
    }
 
    private void openMouth() {
@@ -701,8 +691,7 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
       this.standCounter = 0;
    }
 
-   @Nullable
-   public SoundEvent getAmbientStandSound() {
+   public @Nullable SoundEvent getAmbientStandSound() {
       return this.getAmbientSound();
    }
 
@@ -765,15 +754,15 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
    protected Vec3 getRiddenInput(final Player controller, final Vec3 selfInput) {
       if (this.onGround() && this.playerJumpPendingScale == 0.0F && this.isStanding() && !this.allowStandSliding) {
          return Vec3.ZERO;
-      } else {
-         float sideways = controller.xxa * 0.5F;
-         float forward = controller.zza;
-         if (forward <= 0.0F) {
-            forward *= 0.25F;
-         }
-
-         return new Vec3((double)sideways, 0.0, (double)forward);
       }
+
+      float sideways = controller.xxa * 0.5F;
+      float forward = controller.zza;
+      if (forward <= 0.0F) {
+         forward *= 0.25F;
+      }
+
+      return new Vec3(sideways, 0.0, forward);
    }
 
    @Override
@@ -782,14 +771,14 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
    }
 
    protected void executeRidersJump(final float amount, final Vec3 input) {
-      double impulse = (double)this.getJumpPower(amount);
+      double impulse = this.getJumpPower(amount);
       Vec3 movement = this.getDeltaMovement();
       this.setDeltaMovement(movement.x, impulse, movement.z);
       this.needsSync = true;
       if (input.z > 0.0) {
-         float sin = Mth.sin((double)(this.getYRot() * (float) (Math.PI / 180.0)));
-         float cos = Mth.cos((double)(this.getYRot() * (float) (Math.PI / 180.0)));
-         this.setDeltaMovement(this.getDeltaMovement().add((double)(-0.4F * sin * amount), 0.0, (double)(0.4F * cos * amount)));
+         float sin = Mth.sin(this.getYRot() * (float) (Math.PI / 180.0));
+         float cos = Mth.cos(this.getYRot() * (float) (Math.PI / 180.0));
+         this.setDeltaMovement(this.getDeltaMovement().add(-0.4F * sin * amount, 0.0, 0.4F * cos * amount));
       }
    }
 
@@ -830,16 +819,15 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
       return false;
    }
 
-   @Nullable
    @Override
-   public AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       return null;
    }
 
    protected void setOffspringAttributes(final AgeableMob partner, final AbstractHorse baby) {
-      this.setOffspringAttribute(partner, baby, Attributes.MAX_HEALTH, (double)MIN_HEALTH, (double)MAX_HEALTH);
-      this.setOffspringAttribute(partner, baby, Attributes.JUMP_STRENGTH, (double)MIN_JUMP_STRENGTH, (double)MAX_JUMP_STRENGTH);
-      this.setOffspringAttribute(partner, baby, Attributes.MOVEMENT_SPEED, (double)MIN_MOVEMENT_SPEED, (double)MAX_MOVEMENT_SPEED);
+      this.setOffspringAttribute(partner, baby, Attributes.MAX_HEALTH, MIN_HEALTH, MAX_HEALTH);
+      this.setOffspringAttribute(partner, baby, Attributes.JUMP_STRENGTH, MIN_JUMP_STRENGTH, MAX_JUMP_STRENGTH);
+      this.setOffspringAttribute(partner, baby, Attributes.MOVEMENT_SPEED, MIN_MOVEMENT_SPEED, MAX_MOVEMENT_SPEED);
    }
 
    private void setOffspringAttribute(
@@ -930,7 +918,7 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 7) {
          this.spawnTamingParticles(true);
       } else if (id == 6) {
@@ -949,7 +937,7 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
    }
 
    protected static float generateMaxHealth(final IntUnaryOperator integerByBoundProvider) {
-      return 15.0F + (float)integerByBoundProvider.applyAsInt(8) + (float)integerByBoundProvider.applyAsInt(9);
+      return 15.0F + integerByBoundProvider.applyAsInt(8) + integerByBoundProvider.applyAsInt(9);
    }
 
    protected static double generateJumpStrength(final DoubleSupplier probabilityProvider) {
@@ -965,28 +953,18 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
       return false;
    }
 
-   @Nullable
    @Override
-   public SlotAccess getSlot(final int slot) {
+   public @Nullable SlotAccess getSlot(final int slot) {
       int inventorySlot = slot - 500;
       return inventorySlot >= 0 && inventorySlot < this.inventory.getContainerSize() ? this.inventory.getSlot(inventorySlot) : super.getSlot(slot);
    }
 
-   @Nullable
    @Override
-   public LivingEntity getControllingPassenger() {
-      if (this.isSaddled()) {
-         Entity var2 = this.getFirstPassenger();
-         if (var2 instanceof Player) {
-            return (Player)var2;
-         }
-      }
-
-      return super.getControllingPassenger();
+   public @Nullable LivingEntity getControllingPassenger() {
+      return this.isSaddled() && this.getFirstPassenger() instanceof Player passenger ? passenger : super.getControllingPassenger();
    }
 
-   @Nullable
-   private Vec3 getDismountLocationInDirection(final Vec3 direction, final LivingEntity passenger) {
+   private @Nullable Vec3 getDismountLocationInDirection(final Vec3 direction, final LivingEntity passenger) {
       double targetX = this.getX() + direction.x;
       double targetY = this.getBoundingBox().minY;
       double targetZ = this.getZ() + direction.z;
@@ -1000,13 +978,13 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
 
          do {
             double blockFloorHeight = this.level().getBlockFloorHeight(targetBlockPos);
-            if ((double)targetBlockPos.getY() + blockFloorHeight > dismountJumpLimit) {
+            if (targetBlockPos.getY() + blockFloorHeight > dismountJumpLimit) {
                break;
             }
 
             if (DismountHelper.isBlockFloorValid(blockFloorHeight)) {
                AABB poseCollisionBox = passenger.getLocalBoundsForPose(dismountPose);
-               Vec3 location = new Vec3(targetX, (double)targetBlockPos.getY() + blockFloorHeight, targetZ);
+               Vec3 location = new Vec3(targetX, targetBlockPos.getY() + blockFloorHeight, targetZ);
                if (DismountHelper.canDismountTo(this.level(), passenger, poseCollisionBox.move(location))) {
                   passenger.setPose(dismountPose);
                   return location;
@@ -1014,7 +992,7 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
             }
 
             targetBlockPos.move(Direction.UP);
-         } while (!((double)targetBlockPos.getY() < dismountJumpLimit));
+         } while (targetBlockPos.getY() < dismountJumpLimit);
       }
 
       return null;
@@ -1023,26 +1001,25 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
    @Override
    public Vec3 getDismountLocationForPassenger(final LivingEntity passenger) {
       Vec3 mainHandDirection = getCollisionHorizontalEscapeVector(
-         (double)this.getBbWidth(), (double)passenger.getBbWidth(), this.getYRot() + (passenger.getMainArm() == HumanoidArm.RIGHT ? 90.0F : -90.0F)
+         this.getBbWidth(), passenger.getBbWidth(), this.getYRot() + (passenger.getMainArm() == HumanoidArm.RIGHT ? 90.0F : -90.0F)
       );
       Vec3 mainHandLocation = this.getDismountLocationInDirection(mainHandDirection, passenger);
       if (mainHandLocation != null) {
          return mainHandLocation;
-      } else {
-         Vec3 offHandDirection = getCollisionHorizontalEscapeVector(
-            (double)this.getBbWidth(), (double)passenger.getBbWidth(), this.getYRot() + (passenger.getMainArm() == HumanoidArm.LEFT ? 90.0F : -90.0F)
-         );
-         Vec3 offHandLocation = this.getDismountLocationInDirection(offHandDirection, passenger);
-         return offHandLocation != null ? offHandLocation : this.position();
       }
+
+      Vec3 offHandDirection = getCollisionHorizontalEscapeVector(
+         this.getBbWidth(), passenger.getBbWidth(), this.getYRot() + (passenger.getMainArm() == HumanoidArm.LEFT ? 90.0F : -90.0F)
+      );
+      Vec3 offHandLocation = this.getDismountLocationInDirection(offHandDirection, passenger);
+      return offHandLocation != null ? offHandLocation : this.position();
    }
 
    protected void randomizeAttributes(final RandomSource random) {
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       if (groupData == null) {
@@ -1064,10 +1041,7 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
    @Override
    protected Vec3 getPassengerAttachmentPoint(final Entity passenger, final EntityDimensions dimensions, final float scale) {
       return super.getPassengerAttachmentPoint(passenger, dimensions, scale)
-         .add(
-            new Vec3(0.0, 0.15 * (double)this.standAnimO * (double)scale, -0.7 * (double)this.standAnimO * (double)scale)
-               .yRot(-this.getYRot() * (float) (Math.PI / 180.0))
-         );
+         .add(new Vec3(0.0, 0.15 * this.standAnimO * scale, -0.7 * this.standAnimO * scale).yRot(-this.getYRot() * (float) (Math.PI / 180.0)));
    }
 
    public int getInventoryColumns() {
@@ -1076,7 +1050,6 @@ public abstract class AbstractHorse extends Animal implements PlayerRideableJump
 
    private class MountPanicGoal extends PanicGoal {
       public MountPanicGoal(final double speedModifier) {
-         Objects.requireNonNull(AbstractHorse.this);
          super(AbstractHorse.this, speedModifier);
       }
 

@@ -71,16 +71,16 @@ public class SimpleContainer implements Container, StackedContentsCompatible {
    public ItemStack addItem(final ItemStack itemStack) {
       if (itemStack.isEmpty()) {
          return ItemStack.EMPTY;
-      } else {
-         ItemStack remainingItems = itemStack.copy();
-         this.moveItemToOccupiedSlotsWithSameType(remainingItems);
-         if (remainingItems.isEmpty()) {
-            return ItemStack.EMPTY;
-         } else {
-            this.moveItemToEmptySlots(remainingItems);
-            return remainingItems.isEmpty() ? ItemStack.EMPTY : remainingItems;
-         }
       }
+
+      ItemStack remainingItems = itemStack.copy();
+      this.moveItemToOccupiedSlotsWithSameType(remainingItems);
+      if (remainingItems.isEmpty()) {
+         return ItemStack.EMPTY;
+      }
+
+      this.moveItemToEmptySlots(remainingItems);
+      return remainingItems.isEmpty() ? ItemStack.EMPTY : remainingItems;
    }
 
    public boolean canAddItem(final ItemStack itemStack) {
@@ -101,10 +101,10 @@ public class SimpleContainer implements Container, StackedContentsCompatible {
       ItemStack itemStack = this.items.get(slot);
       if (itemStack.isEmpty()) {
          return ItemStack.EMPTY;
-      } else {
-         this.items.set(slot, ItemStack.EMPTY);
-         return itemStack;
       }
+
+      this.items.set(slot, ItemStack.EMPTY);
+      return itemStack;
    }
 
    @Override

@@ -18,7 +18,6 @@ import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import it.unimi.dsi.fastutil.objects.ObjectSet;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
-import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
@@ -59,11 +58,9 @@ public abstract class DistanceManager {
 
    protected abstract boolean isChunkToRemove(final long node);
 
-   @Nullable
-   protected abstract ChunkHolder getChunk(final long node);
+   protected abstract @Nullable ChunkHolder getChunk(final long node);
 
-   @Nullable
-   protected abstract ChunkHolder updateChunkScheduling(final long node, final int level, @Nullable final ChunkHolder chunk, final int oldLevel);
+   protected abstract @Nullable ChunkHolder updateChunkScheduling(final long node, final int level, final @Nullable ChunkHolder chunk, final int oldLevel);
 
    public boolean runAllUpdates(final ChunkMap scheduler) {
       this.naturalSpawnChunkCounter.runAllUpdates();
@@ -99,8 +96,7 @@ public abstract class DistanceManager {
                   }
 
                   CompletableFuture<ChunkResult<LevelChunk>> future = chunk.getEntityTickingChunkFuture();
-                  future.thenAccept(c -> this.mainThreadExecutor.execute(() -> this.ticketDispatcher.release(pos, () -> {
-                        }, false)));
+                  future.thenAccept(c -> this.mainThreadExecutor.execute(() -> this.ticketDispatcher.release(pos, () -> {}, false)));
                }
             }
 
@@ -202,13 +198,11 @@ public abstract class DistanceManager {
    }
 
    private class FixedPlayerDistanceChunkTracker extends ChunkTracker {
-      protected final Long2ByteMap chunks;
+      protected final Long2ByteMap chunks = new Long2ByteOpenHashMap();
       protected final int maxDistance;
 
       protected FixedPlayerDistanceChunkTracker(final int maxDistance) {
-         Objects.requireNonNull(DistanceManager.this);
          super(maxDistance + 2, 16, 256);
-         this.chunks = new Long2ByteOpenHashMap();
          this.maxDistance = maxDistance;
          this.chunks.defaultReturnValue((byte)(maxDistance + 2));
       }
@@ -250,14 +244,11 @@ public abstract class DistanceManager {
 
    private class PlayerTicketTracker extends DistanceManager.FixedPlayerDistanceChunkTracker {
       private int viewDistance;
-      private final Long2IntMap queueLevels;
-      private final LongSet toUpdate;
+      private final Long2IntMap queueLevels = Long2IntMaps.synchronize(new Long2IntOpenHashMap());
+      private final LongSet toUpdate = new LongOpenHashSet();
 
       protected PlayerTicketTracker(final int maxDistance) {
-         Objects.requireNonNull(DistanceManager.this);
          super(maxDistance);
-         this.queueLevels = Long2IntMaps.synchronize(new Long2IntOpenHashMap());
-         this.toUpdate = new LongOpenHashSet();
          this.viewDistance = 0;
          this.queueLevels.defaultReturnValue(maxDistance + 2);
       }
@@ -285,14 +276,13 @@ public abstract class DistanceManager {
             Ticket ticket = new Ticket(TicketType.PLAYER_LOADING, DistanceManager.PLAYER_TICKET_LEVEL);
             if (sees) {
                DistanceManager.this.ticketDispatcher.submit(() -> DistanceManager.this.mainThreadExecutor.execute(() -> {
-                     if (this.haveTicketFor(this.getLevel(key))) {
-                        DistanceManager.this.ticketStorage.addTicket(key, ticket);
-                        DistanceManager.this.ticketsToRelease.add(key);
-                     } else {
-                        DistanceManager.this.ticketDispatcher.release(key, () -> {
-                        }, false);
-                     }
-                  }), key, () -> level);
+                  if (this.haveTicketFor(this.getLevel(key))) {
+                     DistanceManager.this.ticketStorage.addTicket(key, ticket);
+                     DistanceManager.this.ticketsToRelease.add(key);
+                  } else {
+                     DistanceManager.this.ticketDispatcher.release(key, () -> {}, false);
+                  }
+               }), key, () -> level);
             } else {
                DistanceManager.this.ticketDispatcher
                   .release(key, () -> DistanceManager.this.mainThreadExecutor.execute(() -> DistanceManager.this.ticketStorage.removeTicket(key, ticket)), true);

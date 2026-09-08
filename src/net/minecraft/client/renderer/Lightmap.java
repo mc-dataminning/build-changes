@@ -90,7 +90,7 @@ public class Lightmap implements AutoCloseable {
    }
 
    public static float getBrightness(final DimensionType dimensionType, final int level) {
-      float v = (float)level / 15.0F;
+      float v = level / 15.0F;
       float curvedV = v / (4.0F - 3.0F * v);
       return Mth.lerp(dimensionType.ambientLight(), curvedV, 1.0F);
    }

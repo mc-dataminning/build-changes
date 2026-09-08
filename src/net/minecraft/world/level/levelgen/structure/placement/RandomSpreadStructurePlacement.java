@@ -14,14 +14,14 @@ import net.minecraft.world.level.levelgen.WorldgenRandom;
 public class RandomSpreadStructurePlacement extends AbstractSpreadingStructurePlacement {
    public static final MapCodec<RandomSpreadStructurePlacement> CODEC = RecordCodecBuilder.mapCodec(
          i -> placementCodec(i)
-               .and(
-                  i.group(
-                     Codec.intRange(0, 4096).fieldOf("spacing").forGetter(RandomSpreadStructurePlacement::spacing),
-                     Codec.intRange(0, 4096).fieldOf("separation").forGetter(RandomSpreadStructurePlacement::separation),
-                     RandomSpreadType.CODEC.optionalFieldOf("spread_type", RandomSpreadType.LINEAR).forGetter(RandomSpreadStructurePlacement::spreadType)
-                  )
+            .and(
+               i.group(
+                  Codec.intRange(0, 4096).fieldOf("spacing").forGetter(RandomSpreadStructurePlacement::spacing),
+                  Codec.intRange(0, 4096).fieldOf("separation").forGetter(RandomSpreadStructurePlacement::separation),
+                  RandomSpreadType.CODEC.optionalFieldOf("spread_type", RandomSpreadType.LINEAR).forGetter(RandomSpreadStructurePlacement::spreadType)
                )
-               .apply(i, RandomSpreadStructurePlacement::new)
+            )
+            .apply(i, RandomSpreadStructurePlacement::new)
       )
       .validate(RandomSpreadStructurePlacement::validate);
    private final int spacing;

@@ -15,7 +15,7 @@ public interface Spawner {
 
    void setEntityData(final TypedEntityData<EntityType<?>> entityData, final RandomSource random);
 
-   static void appendHoverText(@Nullable final TypedEntityData<BlockEntityType<?>> data, final Consumer<Component> consumer, final String nextSpawnDataTagKey) {
+   static void appendHoverText(final @Nullable TypedEntityData<BlockEntityType<?>> data, final Consumer<Component> consumer, final String nextSpawnDataTagKey) {
       Component displayName = getSpawnEntityDisplayName(data, nextSpawnDataTagKey);
       if (displayName != null) {
          consumer.accept(displayName);
@@ -26,8 +26,7 @@ public interface Spawner {
       }
    }
 
-   @Nullable
-   static Component getSpawnEntityDisplayName(@Nullable final TypedEntityData<BlockEntityType<?>> data, final String nextSpawnDataTagKey) {
+   static @Nullable Component getSpawnEntityDisplayName(final @Nullable TypedEntityData<BlockEntityType<?>> data, final String nextSpawnDataTagKey) {
       return data == null
          ? null
          : data.getUnsafe()

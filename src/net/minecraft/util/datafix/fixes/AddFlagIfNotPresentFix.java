@@ -29,9 +29,9 @@ public class AddFlagIfNotPresentFix extends DataFix {
          this.name,
          worldGenSettingsType,
          settings -> settings.update(
-               DSL.remainderFinder(),
-               tag -> tag.set(this.flagKey, (Dynamic)DataFixUtils.orElseGet(tag.get(this.flagKey).result(), () -> tag.createBoolean(this.flagValue)))
-            )
+            DSL.remainderFinder(),
+            tag -> tag.set(this.flagKey, (Dynamic)DataFixUtils.orElseGet(tag.get(this.flagKey).result(), () -> tag.createBoolean(this.flagValue)))
+         )
       );
    }
 }

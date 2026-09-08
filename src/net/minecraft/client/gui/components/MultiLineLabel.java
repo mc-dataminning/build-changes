@@ -46,10 +46,8 @@ public interface MultiLineLabel {
       return messages.length == 0
          ? EMPTY
          : new MultiLineLabel() {
-            @Nullable
-            private List<MultiLineLabel.TextAndWidth> cachedTextAndWidth;
-            @Nullable
-            private Language splitWithLanguage;
+            private @Nullable List<MultiLineLabel.TextAndWidth> cachedTextAndWidth;
+            private @Nullable Language splitWithLanguage;
 
             @Override
             public int visitLines(final TextAlignment align, final int anchorX, final int topY, final int lineHeight, final ActiveTextCollector output) {
@@ -68,35 +66,35 @@ public interface MultiLineLabel {
                Language currentLanguage = Language.getInstance();
                if (this.cachedTextAndWidth != null && currentLanguage == this.splitWithLanguage) {
                   return this.cachedTextAndWidth;
-               } else {
-                  this.splitWithLanguage = currentLanguage;
-                  List<FormattedText> splitMessage = new ArrayList<>();
-
-                  for (Component message : messages) {
-                     splitMessage.addAll(font.splitIgnoringLanguage(message, maxWidth));
-                  }
-
-                  this.cachedTextAndWidth = new ArrayList<>();
-                  int actualMaxLines = Math.min(splitMessage.size(), maxLines);
-                  List<FormattedText> linesToAdd = splitMessage.subList(0, actualMaxLines);
-
-                  for (int i = 0; i < linesToAdd.size(); i++) {
-                     FormattedText formattedText = linesToAdd.get(i);
-                     FormattedCharSequence formattedCharSequence = Language.getInstance().getVisualOrder(formattedText);
-                     if (i == linesToAdd.size() - 1 && actualMaxLines == maxLines && actualMaxLines != splitMessage.size()) {
-                        FormattedText clippedText = font.substrByWidth(formattedText, font.width(formattedText) - font.width(CommonComponents.ELLIPSIS));
-                        FormattedText withEllipsis = FormattedText.composite(
-                           clippedText, CommonComponents.ELLIPSIS.copy().withStyle(messages[messages.length - 1].getStyle())
-                        );
-                        this.cachedTextAndWidth
-                           .add(new MultiLineLabel.TextAndWidth(Language.getInstance().getVisualOrder(withEllipsis), font.width(withEllipsis)));
-                     } else {
-                        this.cachedTextAndWidth.add(new MultiLineLabel.TextAndWidth(formattedCharSequence, font.width(formattedCharSequence)));
-                     }
-                  }
-
-                  return this.cachedTextAndWidth;
                }
+
+               this.splitWithLanguage = currentLanguage;
+               List<FormattedText> splitMessage = new ArrayList<>();
+
+               for (Component message : messages) {
+                  splitMessage.addAll(font.splitIgnoringLanguage(message, maxWidth));
+               }
+
+               this.cachedTextAndWidth = new ArrayList<>();
+               int actualMaxLines = Math.min(splitMessage.size(), maxLines);
+               List<FormattedText> linesToAdd = splitMessage.subList(0, actualMaxLines);
+
+               for (int i = 0; i < linesToAdd.size(); i++) {
+                  FormattedText formattedText = linesToAdd.get(i);
+                  FormattedCharSequence formattedCharSequence = Language.getInstance().getVisualOrder(formattedText);
+                  if (i == linesToAdd.size() - 1 && actualMaxLines == maxLines && actualMaxLines != splitMessage.size()) {
+                     FormattedText clippedText = font.substrByWidth(formattedText, font.width(formattedText) - font.width(CommonComponents.ELLIPSIS));
+                     FormattedText withEllipsis = FormattedText.composite(
+                        clippedText, CommonComponents.ELLIPSIS.copy().withStyle(messages[messages.length - 1].getStyle())
+                     );
+                     this.cachedTextAndWidth
+                        .add(new MultiLineLabel.TextAndWidth(Language.getInstance().getVisualOrder(withEllipsis), font.width(withEllipsis)));
+                  } else {
+                     this.cachedTextAndWidth.add(new MultiLineLabel.TextAndWidth(formattedCharSequence, font.width(formattedCharSequence)));
+                  }
+               }
+
+               return this.cachedTextAndWidth;
             }
 
             @Override
@@ -117,6 +115,6 @@ public interface MultiLineLabel {
 
    int getWidth();
 
-   public static record TextAndWidth(FormattedCharSequence text, int width) {
+   record TextAndWidth(FormattedCharSequence text, int width) {
    }
 }

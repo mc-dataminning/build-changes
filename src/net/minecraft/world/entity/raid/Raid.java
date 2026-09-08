@@ -67,20 +67,20 @@ public class Raid {
    public static final SpawnPlacementType RAVAGER_SPAWN_PLACEMENT_TYPE = SpawnPlacements.getPlacementType(EntityTypes.RAVAGER);
    public static final MapCodec<Raid> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.BOOL.fieldOf("started").forGetter(r -> r.started),
-               Codec.BOOL.fieldOf("active").forGetter(r -> r.active),
-               Codec.LONG.fieldOf("ticks_active").forGetter(r -> r.ticksActive),
-               Codec.INT.fieldOf("raid_omen_level").forGetter(r -> r.raidOmenLevel),
-               Codec.INT.fieldOf("groups_spawned").forGetter(r -> r.groupsSpawned),
-               Codec.INT.fieldOf("cooldown_ticks").forGetter(r -> r.raidCooldownTicks),
-               Codec.INT.fieldOf("post_raid_ticks").forGetter(r -> r.postRaidTicks),
-               Codec.FLOAT.fieldOf("total_health").forGetter(r -> r.totalHealth),
-               Codec.INT.fieldOf("group_count").forGetter(r -> r.numGroups),
-               Raid.RaidStatus.CODEC.fieldOf("status").forGetter(r -> r.status),
-               BlockPos.CODEC.fieldOf("center").forGetter(r -> r.center),
-               UUIDUtil.CODEC_SET.fieldOf("heroes_of_the_village").forGetter(r -> r.heroesOfTheVillage)
-            )
-            .apply(i, Raid::new)
+            Codec.BOOL.fieldOf("started").forGetter(r -> r.started),
+            Codec.BOOL.fieldOf("active").forGetter(r -> r.active),
+            Codec.LONG.fieldOf("ticks_active").forGetter(r -> r.ticksActive),
+            Codec.INT.fieldOf("raid_omen_level").forGetter(r -> r.raidOmenLevel),
+            Codec.INT.fieldOf("groups_spawned").forGetter(r -> r.groupsSpawned),
+            Codec.INT.fieldOf("cooldown_ticks").forGetter(r -> r.raidCooldownTicks),
+            Codec.INT.fieldOf("post_raid_ticks").forGetter(r -> r.postRaidTicks),
+            Codec.FLOAT.fieldOf("total_health").forGetter(r -> r.totalHealth),
+            Codec.INT.fieldOf("group_count").forGetter(r -> r.numGroups),
+            Raid.RaidStatus.CODEC.fieldOf("status").forGetter(r -> r.status),
+            BlockPos.CODEC.fieldOf("center").forGetter(r -> r.center),
+            UUIDUtil.CODEC_SET.fieldOf("heroes_of_the_village").forGetter(r -> r.heroesOfTheVillage)
+         )
+         .apply(i, Raid::new)
    );
    private static final int ALLOW_SPAWNING_WITHIN_VILLAGE_SECONDS_THRESHOLD = 7;
    private static final int SECTION_RADIUS_FOR_FINDING_NEW_VILLAGE_CENTER = 2;
@@ -225,9 +225,9 @@ public class Raid {
          }
       }
 
-      for (ServerPlayer playerx : currentPlayersInRaid) {
-         if (!newPlayersInRaid.contains(playerx)) {
-            this.raidEvent.removePlayer(playerx);
+      for (ServerPlayer player : currentPlayersInRaid) {
+         if (!newPlayersInRaid.contains(player)) {
+            this.raidEvent.removePlayer(player);
          }
       }
    }
@@ -248,16 +248,16 @@ public class Raid {
       MobEffectInstance effect = player.getEffect(MobEffects.RAID_OMEN);
       if (effect == null) {
          return false;
-      } else {
-         this.raidOmenLevel = this.raidOmenLevel + effect.getAmplifier() + 1;
-         this.raidOmenLevel = Mth.clamp(this.raidOmenLevel, 0, this.getMaxRaidOmenLevel());
-         if (!this.hasFirstWaveSpawned()) {
-            player.awardStat(Stats.RAID_TRIGGER);
-            CriteriaTriggers.RAID_OMEN.trigger(player);
-         }
-
-         return true;
       }
+
+      this.raidOmenLevel = this.raidOmenLevel + effect.getAmplifier() + 1;
+      this.raidOmenLevel = Mth.clamp(this.raidOmenLevel, 0, this.getMaxRaidOmenLevel());
+      if (!this.hasFirstWaveSpawned()) {
+         player.awardStat(Stats.RAID_TRIGGER);
+         CriteriaTriggers.RAID_OMEN.trigger(player);
+      }
+
+      return true;
    }
 
    public void stop() {
@@ -326,7 +326,7 @@ public class Raid {
                   }
 
                   this.raidCooldownTicks--;
-                  this.raidEvent.setProgress(Mth.clamp((float)(300 - this.raidCooldownTicks) / 300.0F, 0.0F, 1.0F));
+                  this.raidEvent.setProgress(Mth.clamp((300 - this.raidCooldownTicks) / 300.0F, 0.0F, 1.0F));
                }
             }
 
@@ -397,14 +397,11 @@ public class Raid {
 
                   for (UUID heroUUID : this.heroesOfTheVillage) {
                      Entity entity = level.getEntity(heroUUID);
-                     if (entity instanceof LivingEntity) {
-                        LivingEntity hero = (LivingEntity)entity;
-                        if (!entity.isSpectator()) {
-                           hero.addEffect(new MobEffectInstance(MobEffects.HERO_OF_THE_VILLAGE, 48000, this.raidOmenLevel - 1, false, false, true));
-                           if (hero instanceof ServerPlayer playerHero) {
-                              playerHero.awardStat(Stats.RAID_WIN);
-                              CriteriaTriggers.RAID_WIN.trigger(playerHero);
-                           }
+                     if (entity instanceof LivingEntity hero && !entity.isSpectator()) {
+                        hero.addEffect(new MobEffectInstance(MobEffects.HERO_OF_THE_VILLAGE, 48000, this.raidOmenLevel - 1, false, false, true));
+                        if (hero instanceof ServerPlayer playerHero) {
+                           playerHero.awardStat(Stats.RAID_WIN);
+                           CriteriaTriggers.RAID_WIN.trigger(playerHero);
                         }
                      }
                   }
@@ -493,10 +490,10 @@ public class Raid {
          }
       }
 
-      for (Raider raiderx : toRemove) {
-         this.removeFromRaid(level, raiderx, true);
-         if (raiderx.isPatrolLeader()) {
-            this.removeLeader(raiderx.getWave());
+      for (Raider raider : toRemove) {
+         this.removeFromRaid(level, raider, true);
+         if (raider.isPatrolLeader()) {
+            this.removeLeader(raider.getWave());
          }
       }
    }
@@ -572,7 +569,7 @@ public class Raid {
       this.setDirty(level);
    }
 
-   public void joinRaid(final ServerLevel level, final int groupNumber, final Raider raider, @Nullable final BlockPos pos, final boolean exists) {
+   public void joinRaid(final ServerLevel level, final int groupNumber, final Raider raider, final @Nullable BlockPos pos, final boolean exists) {
       boolean added = this.addWaveMob(level, groupNumber, raider);
       if (added) {
          raider.setCurrentRaid(this);
@@ -580,7 +577,7 @@ public class Raid {
          raider.setCanJoinRaid(true);
          raider.setTicksOutsideRaid(0);
          if (!exists && pos != null) {
-            raider.setPos((double)pos.getX() + 0.5, (double)pos.getY() + 1.0, (double)pos.getZ() + 0.5);
+            raider.setPos(pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5);
             raider.finalizeSpawn(level, level.getCurrentDifficultyAt(pos), EntitySpawnReason.EVENT, null);
             raider.applyRaidBuffs(level, groupNumber, false);
             raider.setOnGround(true);
@@ -660,22 +657,20 @@ public class Raid {
       return getOminousBannerTemplate(patternGetter).create();
    }
 
-   @Nullable
-   public Raider getLeader(final int wave) {
+   public @Nullable Raider getLeader(final int wave) {
       return this.groupToLeaderMap.get(wave);
    }
 
-   @Nullable
-   private BlockPos findRandomSpawnPos(final ServerLevel level, final int maxTries) {
+   private @Nullable BlockPos findRandomSpawnPos(final ServerLevel level, final int maxTries) {
       int secondsRemaining = this.raidCooldownTicks / 20;
-      float howFar = 0.22F * (float)secondsRemaining - 0.24F;
+      float howFar = 0.22F * secondsRemaining - 0.24F;
       BlockPos.MutableBlockPos spawnPos = new BlockPos.MutableBlockPos();
       float startAngle = this.random.nextFloat() * (float) (Math.PI * 2);
 
       for (int i = 0; i < maxTries; i++) {
-         float angle = startAngle + (float) Math.PI * (float)i / 8.0F;
-         int spawnX = this.center.getX() + Mth.floor(Mth.cos((double)angle) * 32.0F * howFar) + this.random.nextInt(3) * Mth.floor(howFar);
-         int spawnZ = this.center.getZ() + Mth.floor(Mth.sin((double)angle) * 32.0F * howFar) + this.random.nextInt(3) * Mth.floor(howFar);
+         float angle = startAngle + (float) Math.PI * i / 8.0F;
+         int spawnX = this.center.getX() + Mth.floor(Mth.cos(angle) * 32.0F * howFar) + this.random.nextInt(3) * Mth.floor(howFar);
+         int spawnZ = this.center.getZ() + Mth.floor(Mth.sin(angle) * 32.0F * howFar) + this.random.nextInt(3) * Mth.floor(howFar);
          int spawnY = level.getHeight(Heightmap.Types.WORLD_SURFACE, spawnX, spawnZ);
          if (Mth.abs(spawnY - this.center.getY()) <= 96) {
             spawnPos.set(spawnX, spawnY, spawnZ);
@@ -814,7 +809,7 @@ public class Raid {
       this.heroesOfTheVillage.add(killer.getUUID());
    }
 
-   private static enum RaidStatus implements StringRepresentable {
+   private enum RaidStatus implements StringRepresentable {
       ONGOING("ongoing"),
       VICTORY("victory"),
       LOSS("loss"),
@@ -823,7 +818,7 @@ public class Raid {
       public static final Codec<Raid.RaidStatus> CODEC = StringRepresentable.fromEnum(Raid.RaidStatus::values);
       private final String name;
 
-      private RaidStatus(final String name) {
+      RaidStatus(final String name) {
          this.name = name;
       }
 
@@ -833,7 +828,7 @@ public class Raid {
       }
    }
 
-   private static enum RaiderType {
+   private enum RaiderType {
       VINDICATOR(EntityTypes.VINDICATOR, new int[]{0, 0, 2, 0, 1, 4, 2, 5}),
       EVOKER(EntityTypes.EVOKER, new int[]{0, 0, 0, 0, 0, 1, 1, 2}),
       PILLAGER(EntityTypes.PILLAGER, new int[]{0, 4, 3, 3, 4, 4, 4, 2}),
@@ -844,7 +839,7 @@ public class Raid {
       private final EntityType<? extends Raider> entityType;
       private final int[] spawnsPerWaveBeforeBonus;
 
-      private RaiderType(final EntityType<? extends Raider> entityType, final int[] spawnsPerWaveBeforeBonus) {
+      RaiderType(final EntityType<? extends Raider> entityType, final int[] spawnsPerWaveBeforeBonus) {
          this.entityType = entityType;
          this.spawnsPerWaveBeforeBonus = spawnsPerWaveBeforeBonus;
       }

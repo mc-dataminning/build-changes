@@ -13,10 +13,10 @@ import net.minecraft.world.level.dimension.DimensionType;
 public record FillLayerFeature(int height, BlockState state) implements Feature {
    public static final MapCodec<FillLayerFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.intRange(0, DimensionType.Y_SIZE).fieldOf("height").forGetter(FillLayerFeature::height),
-               BlockState.CODEC.fieldOf("state").forGetter(FillLayerFeature::state)
-            )
-            .apply(i, FillLayerFeature::new)
+            Codec.intRange(0, DimensionType.Y_SIZE).fieldOf("height").forGetter(FillLayerFeature::height),
+            BlockState.CODEC.fieldOf("state").forGetter(FillLayerFeature::state)
+         )
+         .apply(i, FillLayerFeature::new)
    );
 
    @Override

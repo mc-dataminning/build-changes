@@ -22,6 +22,7 @@ import net.minecraft.client.User;
 import net.minecraft.util.LenientJsonParser;
 import net.minecraft.util.Util;
 import org.apache.commons.io.input.CountingInputStream;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 
 public class FileUpload implements AutoCloseable {
@@ -76,8 +77,8 @@ public class FileUpload implements AutoCloseable {
       BodyPublisher publisher = inputStreamPublisherWithSize(() -> {
          try {
             return new FileUpload.UploadCountingInputStream(new FileInputStream(this.file), this.uploadStatus);
-         } catch (IOException var2) {
-            LOGGER.warn("Failed to open file {}", this.file, var2);
+         } catch (IOException e) {
+            LOGGER.warn("Failed to open file {}", this.file, e);
             return null;
          }
       }, fileSize);
@@ -104,7 +105,7 @@ public class FileUpload implements AutoCloseable {
       });
    }
 
-   private static BodyPublisher inputStreamPublisherWithSize(final Supplier<InputStream> inputStreamSupplier, final long fileSize) {
+   private static BodyPublisher inputStreamPublisherWithSize(final Supplier<@Nullable InputStream> inputStreamSupplier, final long fileSize) {
       return BodyPublishers.fromPublisher(BodyPublishers.ofInputStream(inputStreamSupplier), fileSize);
    }
 
@@ -135,8 +136,8 @@ public class FileUpload implements AutoCloseable {
             if (errorMsgElement != null) {
                errorMessage = errorMsgElement.getAsString();
             }
-         } catch (Exception var6) {
-            LOGGER.warn("Failed to parse response {}", body, var6);
+         } catch (Exception e) {
+            LOGGER.warn("Failed to parse response {}", body, e);
          }
       }
 

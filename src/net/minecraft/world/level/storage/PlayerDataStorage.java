@@ -41,7 +41,7 @@ public class PlayerDataStorage {
          Path realFile = playerDirPath.resolve(player.getStringUUID() + ".dat");
          Path oldFile = playerDirPath.resolve(player.getStringUUID() + ".dat_old");
          Util.safeReplaceFile(realFile, tmpFile, oldFile);
-      } catch (Exception var11) {
+      } catch (Exception ignored) {
          LOGGER.warn("Failed to save player data for {}", player.getPlainTextName());
       }
    }
@@ -54,8 +54,8 @@ public class PlayerDataStorage {
       if (Files.isRegularFile(realPath)) {
          try {
             Files.copy(realPath, backupPath, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
-         } catch (Exception var8) {
-            LOGGER.warn("Failed to copy the player.dat file for {}", nameAndId.name(), var8);
+         } catch (Exception e) {
+            LOGGER.warn("Failed to copy the player.dat file for {}", nameAndId.name(), e);
          }
       }
    }
@@ -65,7 +65,7 @@ public class PlayerDataStorage {
       if (realFile.exists() && realFile.isFile()) {
          try {
             return Optional.of(NbtIo.readCompressed(realFile.toPath(), NbtAccounter.unlimitedHeap()));
-         } catch (Exception var5) {
+         } catch (Exception ignored) {
             LOGGER.warn("Failed to load player data for {}", nameAndId.name());
          }
       }

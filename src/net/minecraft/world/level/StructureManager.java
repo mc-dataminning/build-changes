@@ -82,8 +82,7 @@ public class StructureManager {
       }
    }
 
-   @Nullable
-   public StructureStart getStartForStructure(final Structure structure, final StructureAccess chunk) {
+   public @Nullable StructureStart getStartForStructure(final Structure structure, final StructureAccess chunk) {
       return chunk.getStartForStructure(structure);
    }
 

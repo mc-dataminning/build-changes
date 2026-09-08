@@ -50,8 +50,8 @@ public class GoatAi {
    private static final TargetingConditions RAM_TARGET_CONDITIONS = TargetingConditions.forCombat()
       .selector(
          (target, level) -> !target.is(EntityTypes.GOAT)
-               && (level.getGameRules().get(GameRules.MOB_GRIEFING) || !target.is(EntityTypes.ARMOR_STAND))
-               && level.getWorldBorder().isWithinBounds(target.getBoundingBox())
+            && (level.getGameRules().get(GameRules.MOB_GRIEFING) || !target.is(EntityTypes.ARMOR_STAND))
+            && level.getWorldBorder().isWithinBounds(target.getBoundingBox())
       );
    private static final float SPEED_MULTIPLIER_WHEN_RAMMING = 3.0F;
    public static final int RAM_MIN_DISTANCE = 4;

@@ -52,8 +52,8 @@ public class DebugConfigCommand {
                            Commands.argument("dialog", ResourceOrIdArgument.dialog(context))
                               .executes(
                                  c -> showDialog(
-                                       (CommandSourceStack)c.getSource(), UuidArgument.getUuid(c, "target"), ResourceOrIdArgument.getDialog(c, "dialog")
-                                    )
+                                    (CommandSourceStack)c.getSource(), UuidArgument.getUuid(c, "target"), ResourceOrIdArgument.getDialog(c, "dialog")
+                                 )
                               )
                         )
                   )
@@ -80,8 +80,7 @@ public class DebugConfigCommand {
       return 1;
    }
 
-   @Nullable
-   private static ServerConfigurationPacketListenerImpl findConfigPlayer(final MinecraftServer server, final UUID target) {
+   private static @Nullable ServerConfigurationPacketListenerImpl findConfigPlayer(final MinecraftServer server, final UUID target) {
       for (Connection connection : server.getConnection().getConnections()) {
          if (connection.getPacketListener() instanceof ServerConfigurationPacketListenerImpl configListener && configListener.getOwner().id().equals(target)) {
             return configListener;

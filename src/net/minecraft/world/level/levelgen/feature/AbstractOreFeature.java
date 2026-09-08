@@ -27,11 +27,11 @@ public abstract class AbstractOreFeature implements Feature {
    protected static <T extends AbstractOreFeature> MapCodec<T> makeCodec(final Function3<List<BlockReplacement>, Integer, Float, T> constructor) {
       return RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Codec.list(BlockReplacement.CODEC).fieldOf("targets").forGetter(AbstractOreFeature::targetStates),
-                  Codec.intRange(0, 64).fieldOf("size").forGetter(AbstractOreFeature::size),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter(AbstractOreFeature::discardChanceOnAirExposure)
-               )
-               .apply(i, constructor)
+               Codec.list(BlockReplacement.CODEC).fieldOf("targets").forGetter(AbstractOreFeature::targetStates),
+               Codec.intRange(0, 64).fieldOf("size").forGetter(AbstractOreFeature::size),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter(AbstractOreFeature::discardChanceOnAirExposure)
+            )
+            .apply(i, constructor)
       );
    }
 

@@ -9,10 +9,8 @@ import net.minecraft.world.entity.animal.cow.CowSoundVariants;
 import org.jspecify.annotations.Nullable;
 
 public final class SoundPreviewHandler {
-   @Nullable
-   private static SoundInstance activePreview;
-   @Nullable
-   private static SoundSource previousCategory;
+   private static @Nullable SoundInstance activePreview;
+   private static @Nullable SoundSource previousCategory;
 
    public static void preview(final SoundManager soundManager, final SoundSource category, final float volume) {
       stopOtherCategoryPreview(soundManager, category);

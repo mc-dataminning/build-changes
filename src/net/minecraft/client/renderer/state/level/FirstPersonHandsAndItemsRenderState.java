@@ -35,7 +35,7 @@ public class FirstPersonHandsAndItemsRenderState {
    public boolean hasOffHandMapData;
 
    @VisibleForTesting
-   public static enum HandRenderSelection {
+   public enum HandRenderSelection {
       RENDER_BOTH_HANDS(true, true),
       RENDER_MAIN_HAND_ONLY(true, false),
       RENDER_OFF_HAND_ONLY(false, true);
@@ -43,7 +43,7 @@ public class FirstPersonHandsAndItemsRenderState {
       public final boolean renderMainHand;
       public final boolean renderOffHand;
 
-      private HandRenderSelection(final boolean renderMainHand, final boolean renderOffHand) {
+      HandRenderSelection(final boolean renderMainHand, final boolean renderOffHand) {
          this.renderMainHand = renderMainHand;
          this.renderOffHand = renderOffHand;
       }

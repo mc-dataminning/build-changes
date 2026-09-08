@@ -41,8 +41,7 @@ public class Beardifier implements DensitySampler {
    public static final Beardifier EMPTY = new Beardifier(List.of(), List.of(), null);
    private final List<Beardifier.Rigid> pieces;
    private final List<JigsawJunction> junctions;
-   @Nullable
-   private final BoundingBox affectedBox;
+   private final @Nullable BoundingBox affectedBox;
 
    public static Beardifier forStructuresInChunk(final StructureManager structureManager, final ChunkPos chunkPos) {
       List<StructureStart> structureStarts = structureManager.startsForStructure(
@@ -50,61 +49,60 @@ public class Beardifier implements DensitySampler {
       );
       if (structureStarts.isEmpty()) {
          return EMPTY;
-      } else {
-         int chunkStartBlockX = chunkPos.getMinBlockX();
-         int chunkStartBlockZ = chunkPos.getMinBlockZ();
-         List<Beardifier.Rigid> rigids = new ArrayList<>();
-         List<JigsawJunction> junctions = new ArrayList<>();
-         BoundingBox anyPieceBoundingBox = null;
+      }
 
-         for (StructureStart start : structureStarts) {
-            TerrainAdjustment terrainAdjustment = start.getStructure().terrainAdaptation();
+      int chunkStartBlockX = chunkPos.getMinBlockX();
+      int chunkStartBlockZ = chunkPos.getMinBlockZ();
+      List<Beardifier.Rigid> rigids = new ArrayList<>();
+      List<JigsawJunction> junctions = new ArrayList<>();
+      BoundingBox anyPieceBoundingBox = null;
 
-            for (StructurePiece piece : start.getPieces()) {
-               if (piece.isCloseToChunk(chunkPos, 12)) {
-                  if (piece instanceof PoolElementStructurePiece) {
-                     PoolElementStructurePiece poolPiece = (PoolElementStructurePiece)piece;
-                     StructureTemplatePool.Projection projection = poolPiece.getElement().getProjection();
-                     if (projection == StructureTemplatePool.Projection.RIGID) {
-                        rigids.add(new Beardifier.Rigid(poolPiece.getBoundingBox(), terrainAdjustment, poolPiece.getGroundLevelDelta()));
-                        anyPieceBoundingBox = includeBoundingBox(anyPieceBoundingBox, piece.getBoundingBox());
-                     }
+      for (StructureStart start : structureStarts) {
+         TerrainAdjustment terrainAdjustment = start.getStructure().terrainAdaptation();
 
-                     for (JigsawJunction junction : poolPiece.getJunctions()) {
-                        int junctionX = junction.getSourceX();
-                        int junctionZ = junction.getSourceZ();
-                        if (junctionX > chunkStartBlockX - 12
-                           && junctionZ > chunkStartBlockZ - 12
-                           && junctionX < chunkStartBlockX + 15 + 12
-                           && junctionZ < chunkStartBlockZ + 15 + 12) {
-                           junctions.add(junction);
-                           BoundingBox junctionBox = new BoundingBox(new BlockPos(junctionX, junction.getSourceGroundY(), junctionZ));
-                           anyPieceBoundingBox = includeBoundingBox(anyPieceBoundingBox, junctionBox);
-                        }
-                     }
-                  } else {
-                     rigids.add(new Beardifier.Rigid(piece.getBoundingBox(), terrainAdjustment, 0));
+         for (StructurePiece piece : start.getPieces()) {
+            if (piece.isCloseToChunk(chunkPos, 12)) {
+               if (piece instanceof PoolElementStructurePiece poolPiece) {
+                  StructureTemplatePool.Projection projection = poolPiece.getElement().getProjection();
+                  if (projection == StructureTemplatePool.Projection.RIGID) {
+                     rigids.add(new Beardifier.Rigid(poolPiece.getBoundingBox(), terrainAdjustment, poolPiece.getGroundLevelDelta()));
                      anyPieceBoundingBox = includeBoundingBox(anyPieceBoundingBox, piece.getBoundingBox());
                   }
+
+                  for (JigsawJunction junction : poolPiece.getJunctions()) {
+                     int junctionX = junction.getSourceX();
+                     int junctionZ = junction.getSourceZ();
+                     if (junctionX > chunkStartBlockX - 12
+                        && junctionZ > chunkStartBlockZ - 12
+                        && junctionX < chunkStartBlockX + 15 + 12
+                        && junctionZ < chunkStartBlockZ + 15 + 12) {
+                        junctions.add(junction);
+                        BoundingBox junctionBox = new BoundingBox(new BlockPos(junctionX, junction.getSourceGroundY(), junctionZ));
+                        anyPieceBoundingBox = includeBoundingBox(anyPieceBoundingBox, junctionBox);
+                     }
+                  }
+               } else {
+                  rigids.add(new Beardifier.Rigid(piece.getBoundingBox(), terrainAdjustment, 0));
+                  anyPieceBoundingBox = includeBoundingBox(anyPieceBoundingBox, piece.getBoundingBox());
                }
             }
          }
-
-         if (anyPieceBoundingBox == null) {
-            return EMPTY;
-         } else {
-            BoundingBox affectedBox = anyPieceBoundingBox.inflatedBy(24);
-            return new Beardifier(List.copyOf(rigids), List.copyOf(junctions), affectedBox);
-         }
       }
+
+      if (anyPieceBoundingBox == null) {
+         return EMPTY;
+      }
+
+      BoundingBox affectedBox = anyPieceBoundingBox.inflatedBy(24);
+      return new Beardifier(List.copyOf(rigids), List.copyOf(junctions), affectedBox);
    }
 
-   private static BoundingBox includeBoundingBox(@Nullable final BoundingBox encompassingBox, final BoundingBox newBox) {
+   private static BoundingBox includeBoundingBox(final @Nullable BoundingBox encompassingBox, final BoundingBox newBox) {
       return encompassingBox == null ? newBox : BoundingBox.encapsulating(encompassingBox, newBox);
    }
 
    @VisibleForTesting
-   public Beardifier(final List<Beardifier.Rigid> pieces, final List<JigsawJunction> junctions, @Nullable final BoundingBox affectedBox) {
+   public Beardifier(final List<Beardifier.Rigid> pieces, final List<JigsawJunction> junctions, final @Nullable BoundingBox affectedBox) {
       this.pieces = pieces;
       this.junctions = junctions;
       this.affectedBox = affectedBox;
@@ -162,9 +160,9 @@ public class Beardifier implements DensitySampler {
 
          noiseValue += switch (rigid.terrainAdjustment()) {
             case NONE -> 0.0F;
-            case BURY -> getBuryContribution((float)dx, (float)dy / 2.0F, (float)dz);
+            case BURY -> getBuryContribution(dx, dy / 2.0F, dz);
             case BEARD_THIN, BEARD_BOX -> getBeardContribution(dx, dy, dz, dyToGround) * 0.8F;
-            case ENCAPSULATE -> getBuryContribution((float)dx / 2.0F, (float)dy / 2.0F, (float)dz / 2.0F) * 0.8F;
+            case ENCAPSULATE -> getBuryContribution(dx / 2.0F, dy / 2.0F, dz / 2.0F) * 0.8F;
          };
       }
 
@@ -188,9 +186,9 @@ public class Beardifier implements DensitySampler {
       int yi = dy + 12;
       int zi = dz + 12;
       if (isInKernelRange(xi) && isInKernelRange(yi) && isInKernelRange(zi)) {
-         float dyWithOffset = (float)yToGround + 0.5F;
-         float distanceSqr = Mth.lengthSquared((float)dx, dyWithOffset, (float)dz);
-         float value = -dyWithOffset * (float)Mth.fastInvSqrt((double)(distanceSqr / 2.0F)) / 2.0F;
+         float dyWithOffset = yToGround + 0.5F;
+         float distanceSqr = Mth.lengthSquared(dx, dyWithOffset, dz);
+         float value = -dyWithOffset * (float)Mth.fastInvSqrt(distanceSqr / 2.0F) / 2.0F;
          return value * BEARD_KERNEL[zi * 24 * 24 + xi * 24 + yi];
       } else {
          return 0.0F;
@@ -202,15 +200,15 @@ public class Beardifier implements DensitySampler {
    }
 
    private static double computeBeardContribution(final int dx, final int dy, final int dz) {
-      return computeBeardContribution(dx, (double)dy + 0.5, dz);
+      return computeBeardContribution(dx, dy + 0.5, dz);
    }
 
    private static double computeBeardContribution(final int dx, final double dy, final int dz) {
-      double distanceSqr = Mth.lengthSquared((double)dx, dy, (double)dz);
+      double distanceSqr = Mth.lengthSquared(dx, dy, dz);
       return Math.pow(Math.E, -distanceSqr / 16.0);
    }
 
    @VisibleForTesting
-   public static record Rigid(BoundingBox box, TerrainAdjustment terrainAdjustment, int groundLevelDelta) {
+   public record Rigid(BoundingBox box, TerrainAdjustment terrainAdjustment, int groundLevelDelta) {
    }
 }

@@ -2,7 +2,6 @@ package net.minecraft.client;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import java.util.Objects;
 import java.util.Spliterator;
 import java.util.Spliterators;
 import java.util.function.Consumer;
@@ -42,30 +41,30 @@ public class RotatingSectionStorage<T extends RotatingSectionStorage.Value> impl
    public boolean repositionCenter(final SectionPos newCenterSectionPos) {
       if (newCenterSectionPos.equals(this.centerSectionPos)) {
          return false;
-      } else {
-         int lowestX = newCenterSectionPos.x() - this.radius;
-         int lowestZ = newCenterSectionPos.z() - this.radius;
+      }
 
-         for (int gridX = 0; gridX < this.sectionGridSizeXZ; gridX++) {
-            int newSectionX = lowestX + Math.floorMod(gridX - lowestX, this.sectionGridSizeXZ);
+      int lowestX = newCenterSectionPos.x() - this.radius;
+      int lowestZ = newCenterSectionPos.z() - this.radius;
 
-            for (int gridZ = 0; gridZ < this.sectionGridSizeXZ; gridZ++) {
-               int newSectionZ = lowestZ + Math.floorMod(gridZ - lowestZ, this.sectionGridSizeXZ);
+      for (int gridX = 0; gridX < this.sectionGridSizeXZ; gridX++) {
+         int newSectionX = lowestX + Math.floorMod(gridX - lowestX, this.sectionGridSizeXZ);
 
-               for (int gridY = 0; gridY < this.sectionGridSizeY; gridY++) {
-                  int newSectionY = this.minY + gridY;
-                  T value = this.nodes[this.getSectionIndex(gridX, gridY, gridZ)].value;
-                  long sectionNode = value.getSectionNode();
-                  if (sectionNode != SectionPos.asLong(newSectionX, newSectionY, newSectionZ)) {
-                     value.setSectionNode(SectionPos.asLong(newSectionX, newSectionY, newSectionZ));
-                  }
+         for (int gridZ = 0; gridZ < this.sectionGridSizeXZ; gridZ++) {
+            int newSectionZ = lowestZ + Math.floorMod(gridZ - lowestZ, this.sectionGridSizeXZ);
+
+            for (int gridY = 0; gridY < this.sectionGridSizeY; gridY++) {
+               int newSectionY = this.minY + gridY;
+               T value = this.nodes[this.getSectionIndex(gridX, gridY, gridZ)].value;
+               long sectionNode = value.getSectionNode();
+               if (sectionNode != SectionPos.asLong(newSectionX, newSectionY, newSectionZ)) {
+                  value.setSectionNode(SectionPos.asLong(newSectionX, newSectionY, newSectionZ));
                }
             }
          }
-
-         this.centerSectionPos = newCenterSectionPos;
-         return true;
       }
+
+      this.centerSectionPos = newCenterSectionPos;
+      return true;
    }
 
    public int radius() {
@@ -88,29 +87,26 @@ public class RotatingSectionStorage<T extends RotatingSectionStorage.Value> impl
       return this.centerSectionPos;
    }
 
-   @Nullable
-   public T getValueAt(final BlockPos pos) {
+   public @Nullable T getValueAt(final BlockPos pos) {
       return this.getValue(SectionPos.asLong(pos));
    }
 
-   @Nullable
-   public T getValue(final long sectionNode) {
+   public @Nullable T getValue(final long sectionNode) {
       int sectionX = SectionPos.x(sectionNode);
       int sectionY = SectionPos.y(sectionNode);
       int sectionZ = SectionPos.z(sectionNode);
       return this.getValue(sectionX, sectionY, sectionZ);
    }
 
-   @Nullable
-   public T getValue(final int sectionX, final int sectionY, final int sectionZ) {
+   public @Nullable T getValue(final int sectionX, final int sectionY, final int sectionZ) {
       if (!this.containsSection(sectionX, sectionY, sectionZ)) {
          return null;
-      } else {
-         int y = sectionY - this.minY;
-         int x = Math.floorMod(sectionX, this.sectionGridSizeXZ);
-         int z = Math.floorMod(sectionZ, this.sectionGridSizeXZ);
-         return this.nodes[this.getSectionIndex(x, y, z)].value;
       }
+
+      int y = sectionY - this.minY;
+      int x = Math.floorMod(sectionX, this.sectionGridSizeXZ);
+      int z = Math.floorMod(sectionZ, this.sectionGridSizeXZ);
+      return this.nodes[this.getSectionIndex(x, y, z)].value;
    }
 
    private boolean containsSection(final int sectionX, final int sectionY, final int sectionZ) {
@@ -131,10 +127,6 @@ public class RotatingSectionStorage<T extends RotatingSectionStorage.Value> impl
    public Iterator<T> iterator() {
       return new Iterator<T>() {
          private int i;
-
-         {
-            Objects.requireNonNull(RotatingSectionStorage.this);
-         }
 
          @Override
          public boolean hasNext() {
@@ -160,14 +152,14 @@ public class RotatingSectionStorage<T extends RotatingSectionStorage.Value> impl
 
    @Override
    public Spliterator<T> spliterator() {
-      return Spliterators.spliterator(this.iterator(), (long)this.nodes.length, 0);
+      return Spliterators.spliterator(this.iterator(), this.nodes.length, 0);
    }
 
    public int size() {
       return this.nodes.length;
    }
 
-   private static record Node<T>(T value) {
+   private record Node<T>(T value) {
    }
 
    public interface Value {

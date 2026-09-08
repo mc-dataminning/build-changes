@@ -45,8 +45,7 @@ public abstract class Animal extends AgeableMob {
    protected static final int PARENT_AGE_AFTER_BREEDING = 6000;
    private static final int DEFAULT_IN_LOVE_TIME = 0;
    private int inLove = 0;
-   @Nullable
-   private EntityReference<ServerPlayer> loveCause;
+   private @Nullable EntityReference<ServerPlayer> loveCause;
 
    protected Animal(final EntityType<? extends Animal> type, final Level level) {
       super(type, level);
@@ -172,7 +171,7 @@ public abstract class Animal extends AgeableMob {
       return this.inLove <= 0;
    }
 
-   public void setInLove(@Nullable final Player player) {
+   public void setInLove(final @Nullable Player player) {
       this.inLove = 600;
       if (player instanceof ServerPlayer serverPlayer) {
          this.loveCause = EntityReference.of(serverPlayer);
@@ -189,8 +188,7 @@ public abstract class Animal extends AgeableMob {
       return this.inLove;
    }
 
-   @Nullable
-   public ServerPlayer getLoveCause() {
+   public @Nullable ServerPlayer getLoveCause() {
       return EntityReference.get(this.loveCause, this.level(), ServerPlayer.class);
    }
 
@@ -220,7 +218,7 @@ public abstract class Animal extends AgeableMob {
       }
    }
 
-   public void finalizeSpawnChildFromBreeding(final ServerLevel level, final Animal partner, @Nullable final AgeableMob offspring) {
+   public void finalizeSpawnChildFromBreeding(final ServerLevel level, final Animal partner, final @Nullable AgeableMob offspring) {
       Optional.ofNullable(this.getLoveCause()).or(() -> Optional.ofNullable(partner.getLoveCause())).ifPresent(cause -> {
          cause.awardStat(Stats.ANIMALS_BRED);
          CriteriaTriggers.BRED_ANIMALS.trigger(cause, this, partner, offspring);
@@ -236,7 +234,7 @@ public abstract class Animal extends AgeableMob {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 18) {
          for (int i = 0; i < 7; i++) {
             double xa = this.random.nextGaussian() * 0.02;
@@ -254,30 +252,30 @@ public abstract class Animal extends AgeableMob {
       Direction forward = this.getMotionDirection();
       if (forward.getAxis() == Direction.Axis.Y) {
          return super.getDismountLocationForPassenger(passenger);
-      } else {
-         int[][] offsets = DismountHelper.offsetsForDirection(forward);
-         BlockPos vehicleBlockPos = this.blockPosition();
-         BlockPos.MutableBlockPos targetBlockPos = new BlockPos.MutableBlockPos();
-         UnmodifiableIterator var6 = passenger.getDismountPoses().iterator();
+      }
 
-         while (var6.hasNext()) {
-            Pose dismountPose = (Pose)var6.next();
-            AABB poseCollisionBox = passenger.getLocalBoundsForPose(dismountPose);
+      int[][] offsets = DismountHelper.offsetsForDirection(forward);
+      BlockPos vehicleBlockPos = this.blockPosition();
+      BlockPos.MutableBlockPos targetBlockPos = new BlockPos.MutableBlockPos();
+      UnmodifiableIterator var6 = passenger.getDismountPoses().iterator();
 
-            for (int[] offsetXZ : offsets) {
-               targetBlockPos.set(vehicleBlockPos.getX() + offsetXZ[0], vehicleBlockPos.getY(), vehicleBlockPos.getZ() + offsetXZ[1]);
-               double blockFloorHeight = this.level().getBlockFloorHeight(targetBlockPos);
-               if (DismountHelper.isBlockFloorValid(blockFloorHeight)) {
-                  Vec3 location = Vec3.upFromBottomCenterOf(targetBlockPos, blockFloorHeight);
-                  if (DismountHelper.canDismountTo(this.level(), passenger, poseCollisionBox.move(location))) {
-                     passenger.setPose(dismountPose);
-                     return location;
-                  }
+      while (var6.hasNext()) {
+         Pose dismountPose = (Pose)var6.next();
+         AABB poseCollisionBox = passenger.getLocalBoundsForPose(dismountPose);
+
+         for (int[] offsetXZ : offsets) {
+            targetBlockPos.set(vehicleBlockPos.getX() + offsetXZ[0], vehicleBlockPos.getY(), vehicleBlockPos.getZ() + offsetXZ[1]);
+            double blockFloorHeight = this.level().getBlockFloorHeight(targetBlockPos);
+            if (DismountHelper.isBlockFloorValid(blockFloorHeight)) {
+               Vec3 location = Vec3.upFromBottomCenterOf(targetBlockPos, blockFloorHeight);
+               if (DismountHelper.canDismountTo(this.level(), passenger, poseCollisionBox.move(location))) {
+                  passenger.setPose(dismountPose);
+                  return location;
                }
             }
          }
-
-         return super.getDismountLocationForPassenger(passenger);
       }
+
+      return super.getDismountLocationForPassenger(passenger);
    }
 }

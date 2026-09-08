@@ -54,9 +54,9 @@ public class DoorBlock extends Block {
          this.stateDefinition
             .any()
             .setValue(FACING, Direction.NORTH)
-            .setValue(OPEN, Boolean.valueOf(false))
+            .setValue(OPEN, false)
             .setValue(HINGE, DoorHingeSide.LEFT)
-            .setValue(POWERED, Boolean.valueOf(false))
+            .setValue(POWERED, false)
             .setValue(HALF, DoubleBlockHalf.LOWER)
       );
    }
@@ -125,9 +125,8 @@ public class DoorBlock extends Block {
       };
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockPos pos = context.getClickedPos();
       Level level = context.getLevel();
       if (pos.getY() < level.getMaxY() && level.getBlockState(pos.above()).canBeReplaced(context)) {
@@ -135,8 +134,8 @@ public class DoorBlock extends Block {
          return this.defaultBlockState()
             .setValue(FACING, context.getHorizontalDirection())
             .setValue(HINGE, this.getHinge(context))
-            .setValue(POWERED, Boolean.valueOf(powered))
-            .setValue(OPEN, Boolean.valueOf(powered))
+            .setValue(POWERED, powered)
+            .setValue(OPEN, powered)
             .setValue(HALF, DoubleBlockHalf.LOWER);
       } else {
          return null;
@@ -144,7 +143,7 @@ public class DoorBlock extends Block {
    }
 
    @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, @Nullable final LivingEntity by, final ItemStack itemStack) {
+   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
       level.setBlockAndUpdate(pos.above(), state.setValue(HALF, DoubleBlockHalf.UPPER));
    }
 
@@ -174,8 +173,8 @@ public class DoorBlock extends Block {
             int stepX = placeDirection.getStepX();
             int stepZ = placeDirection.getStepZ();
             Vec3 clickLocation = context.getClickLocation();
-            double clickX = clickLocation.x - (double)pos.getX();
-            double clickZ = clickLocation.z - (double)pos.getZ();
+            double clickX = clickLocation.x - pos.getX();
+            double clickZ = clickLocation.z - pos.getZ();
             return (stepX >= 0 || !(clickZ < 0.5)) && (stepX <= 0 || !(clickZ > 0.5)) && (stepZ >= 0 || !(clickX > 0.5)) && (stepZ <= 0 || !(clickX < 0.5))
                ? DoorHingeSide.LEFT
                : DoorHingeSide.RIGHT;
@@ -191,22 +190,22 @@ public class DoorBlock extends Block {
    protected InteractionResult useWithoutItem(BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult) {
       if (!this.type.canOpenByHand()) {
          return InteractionResult.PASS;
-      } else {
-         state = state.cycle(OPEN);
-         level.setBlock(pos, state, 10);
-         this.playSound(player, level, pos, state.getValue(OPEN));
-         level.gameEvent(player, this.isOpen(state) ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
-         return InteractionResult.SUCCESS;
       }
+
+      state = state.cycle(OPEN);
+      level.setBlock(pos, state, 10);
+      this.playSound(player, level, pos, state.getValue(OPEN));
+      level.gameEvent(player, this.isOpen(state) ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
+      return InteractionResult.SUCCESS;
    }
 
    public boolean isOpen(final BlockState state) {
       return state.getValue(OPEN);
    }
 
-   public void setOpen(@Nullable final Entity sourceEntity, final Level level, final BlockState state, final BlockPos pos, final boolean shouldOpen) {
+   public void setOpen(final @Nullable Entity sourceEntity, final Level level, final BlockState state, final BlockPos pos, final boolean shouldOpen) {
       if (state.is(this) && state.getValue(OPEN) != shouldOpen) {
-         level.setBlock(pos, state.setValue(OPEN, Boolean.valueOf(shouldOpen)), 10);
+         level.setBlock(pos, state.setValue(OPEN, shouldOpen), 10);
          this.playSound(sourceEntity, level, pos, shouldOpen);
          level.gameEvent(sourceEntity, shouldOpen ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
       }
@@ -214,7 +213,7 @@ public class DoorBlock extends Block {
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       boolean signal = level.hasNeighborSignal(pos)
          || level.hasNeighborSignal(pos.relative(state.getValue(HALF) == DoubleBlockHalf.LOWER ? Direction.UP : Direction.DOWN));
@@ -224,7 +223,7 @@ public class DoorBlock extends Block {
             level.gameEvent(null, signal ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
          }
 
-         level.setBlock(pos, state.setValue(POWERED, Boolean.valueOf(signal)).setValue(OPEN, Boolean.valueOf(signal)), 2);
+         level.setBlock(pos, state.setValue(POWERED, signal).setValue(OPEN, signal), 2);
       }
    }
 
@@ -235,7 +234,7 @@ public class DoorBlock extends Block {
       return state.getValue(HALF) == DoubleBlockHalf.LOWER ? belowState.isFaceSturdy(level, below, Direction.UP) : belowState.is(this);
    }
 
-   private void playSound(@Nullable final Entity entity, final Level level, final BlockPos pos, final boolean open) {
+   private void playSound(final @Nullable Entity entity, final Level level, final BlockPos pos, final boolean open) {
       level.playSound(entity, pos, open ? this.type.doorOpen() : this.type.doorClose(), SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
    }
 
@@ -264,10 +263,6 @@ public class DoorBlock extends Block {
    }
 
    public static boolean isWoodenDoor(final BlockState state) {
-      if (state.getBlock() instanceof DoorBlock door && door.type().canOpenByHand()) {
-         return true;
-      }
-
-      return false;
+      return state.getBlock() instanceof DoorBlock door && door.type().canOpenByHand();
    }
 }

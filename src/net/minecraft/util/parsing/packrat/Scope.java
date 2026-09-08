@@ -16,7 +16,7 @@ public final class Scope {
       }
    };
    private static final int ENTRY_STRIDE = 2;
-   private Object[] stack = new Object[128];
+   private @Nullable Object[] stack = new Object[128];
    private int topEntryKeyIndex = 0;
    private int topMarkerKeyIndex = 0;
 
@@ -28,9 +28,7 @@ public final class Scope {
    private int valueIndex(final Atom<?> atom) {
       for (int i = this.topEntryKeyIndex; i > this.topMarkerKeyIndex; i -= 2) {
          Object key = this.stack[i];
-
          assert key instanceof Atom;
-
          if (key == atom) {
             return i + 1;
          }
@@ -42,7 +40,6 @@ public final class Scope {
    public int valueIndexForAny(final Atom<?>... atoms) {
       for (int i = this.topEntryKeyIndex; i > this.topMarkerKeyIndex; i -= 2) {
          Object key = this.stack[i];
-
          assert key instanceof Atom;
 
          for (Atom<?> atom : atoms) {
@@ -79,7 +76,6 @@ public final class Scope {
    public void pushFrame() {
       this.ensureCapacity(1);
       this.setupNewFrame();
-
       assert this.validateStructure();
    }
 
@@ -89,10 +85,8 @@ public final class Scope {
 
    public void popFrame() {
       assert this.topMarkerKeyIndex != 0;
-
       this.topEntryKeyIndex = this.topMarkerKeyIndex - 2;
       this.topMarkerKeyIndex = this.getPreviousMarkerIndex(this.topMarkerKeyIndex);
-
       assert this.validateStructure();
    }
 
@@ -107,23 +101,19 @@ public final class Scope {
       for (int i = 0; i < nonMarkerEntriesInFrame; i++) {
          targetCursor += 2;
          Object key = this.stack[sourceCursor];
-
          assert key != null;
-
          this.stack[targetCursor] = key;
          this.stack[targetCursor + 1] = null;
          sourceCursor += 2;
       }
 
       this.topEntryKeyIndex = targetCursor;
-
       assert this.validateStructure();
    }
 
    public void clearFrameValues() {
       for (int i = this.topEntryKeyIndex; i > this.topMarkerKeyIndex; i -= 2) {
          assert this.stack[i] instanceof Atom;
-
          this.stack[i + 1] = null;
       }
 
@@ -139,9 +129,7 @@ public final class Scope {
          previousFrameCursor += 2;
          currentFrameCursor += 2;
          Object newKey = this.stack[currentFrameCursor];
-
          assert newKey instanceof Atom;
-
          Object newValue = this.stack[currentFrameCursor + 1];
          Object oldKey = this.stack[previousFrameCursor];
          if (oldKey != newKey) {
@@ -154,11 +142,10 @@ public final class Scope {
 
       this.topEntryKeyIndex = previousFrameCursor;
       this.topMarkerKeyIndex = previousMarkerIndex;
-
       assert this.validateStructure();
    }
 
-   public <T> void put(final Atom<T> name, @Nullable final T value) {
+   public <T> void put(final Atom<T> name, final @Nullable T value) {
       int valueIndex = this.valueIndex(name);
       if (valueIndex != -1) {
          this.stack[valueIndex] = value;
@@ -172,8 +159,7 @@ public final class Scope {
       assert this.validateStructure();
    }
 
-   @Nullable
-   public <T> T get(final Atom<T> name) {
+   public <T> @Nullable T get(final Atom<T> name) {
       int valueIndex = this.valueIndex(name);
       return (T)(valueIndex != -1 ? this.stack[valueIndex] : null);
    }
@@ -193,8 +179,7 @@ public final class Scope {
    }
 
    @SafeVarargs
-   @Nullable
-   public final <T> T getAny(final Atom<? extends T>... names) {
+   public final <T> @Nullable T getAny(final Atom<? extends T>... names) {
       int valueIndex = this.valueIndexForAny(names);
       return (T)(valueIndex != -1 ? this.stack[valueIndex] : null);
    }
@@ -203,7 +188,7 @@ public final class Scope {
    public final <T> T getAnyOrThrow(final Atom<? extends T>... names) {
       int valueIndex = this.valueIndexForAny(names);
       if (valueIndex == -1) {
-         throw new IllegalArgumentException("No value for atoms " + Arrays.toString((Object[])names));
+         throw new IllegalArgumentException("No value for atoms " + Arrays.toString(names));
       } else {
          return (T)this.stack[valueIndex];
       }
@@ -262,7 +247,6 @@ public final class Scope {
 
    private boolean validateStructure() {
       assert this.topMarkerKeyIndex >= 0;
-
       assert this.topEntryKeyIndex >= this.topMarkerKeyIndex;
 
       for (int i = 0; i <= this.topEntryKeyIndex; i += 2) {

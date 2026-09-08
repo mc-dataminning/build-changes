@@ -15,10 +15,9 @@ public enum InviteCodeExpiration {
    NEVER(Component.translatable("mco.configure.world.invite_codes.expiration.never"), null);
 
    private final Component label;
-   @Nullable
-   private final Duration duration;
+   private final @Nullable Duration duration;
 
-   private InviteCodeExpiration(final Component label, @Nullable final Duration duration) {
+   InviteCodeExpiration(final Component label, final @Nullable Duration duration) {
       this.label = label;
       this.duration = duration;
    }
@@ -27,16 +26,15 @@ public enum InviteCodeExpiration {
       return this.label;
    }
 
-   @Nullable
-   static Instant resolveExpirationDate(
-      @Nullable final Instant currentExpirationDate, final InviteCodeExpiration selectedExpiration, final boolean expirationChanged, final Instant now
+   static @Nullable Instant resolveExpirationDate(
+      final @Nullable Instant currentExpirationDate, final InviteCodeExpiration selectedExpiration, final boolean expirationChanged, final Instant now
    ) {
       if (!expirationChanged) {
          return currentExpirationDate;
-      } else {
-         Duration duration = selectedExpiration.duration;
-         return duration != null ? now.plus(duration) : null;
       }
+
+      Duration duration = selectedExpiration.duration;
+      return duration != null ? now.plus(duration) : null;
    }
 
    public static InviteCodeExpiration closestTo(final Instant expirationDate) {

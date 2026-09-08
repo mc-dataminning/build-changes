@@ -35,9 +35,9 @@ public class ShulkerBulletRenderer extends EntityRenderer<ShulkerBullet, Shulker
       poseStack.pushPose();
       float tc = state.ageInTicks;
       poseStack.translate(0.0F, 0.15F, 0.0F);
-      poseStack.rotateDegrees(Axis.YP, Mth.sin((double)(tc * 0.1F)) * 180.0F);
-      poseStack.rotateDegrees(Axis.XP, Mth.cos((double)(tc * 0.1F)) * 180.0F);
-      poseStack.rotateDegrees(Axis.ZP, Mth.sin((double)(tc * 0.15F)) * 360.0F);
+      poseStack.rotateDegrees(Axis.YP, Mth.sin(tc * 0.1F) * 180.0F);
+      poseStack.rotateDegrees(Axis.XP, Mth.cos(tc * 0.1F) * 180.0F);
+      poseStack.rotateDegrees(Axis.ZP, Mth.sin(tc * 0.15F) * 360.0F);
       poseStack.scale(-0.5F, -0.5F, 0.5F);
       submitNodeCollector.submitModel(this.model, state, poseStack, TEXTURE_LOCATION, state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
       poseStack.scale(1.5F, 1.5F, 1.5F);

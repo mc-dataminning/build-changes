@@ -123,7 +123,7 @@ public abstract class AbstractHurtingProjectile extends Projectile {
          inertia = this.getInertia();
       }
 
-      this.setDeltaMovement(movement.add(movement.normalize().scale(this.accelerationPower)).scale((double)inertia));
+      this.setDeltaMovement(movement.add(movement.normalize().scale(this.accelerationPower)).scale(inertia));
    }
 
    private void createParticleTrail() {
@@ -148,8 +148,7 @@ public abstract class AbstractHurtingProjectile extends Projectile {
       return true;
    }
 
-   @Nullable
-   protected ParticleOptions getTrailParticle() {
+   protected @Nullable ParticleOptions getTrailParticle() {
       return ParticleTypes.SMOKE;
    }
 

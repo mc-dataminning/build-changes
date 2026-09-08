@@ -22,8 +22,8 @@ public record Ops(Set<String> ops) {
                ops.add(opsElement.getAsString());
             }
          }
-      } catch (Exception var6) {
-         LOGGER.error("Could not parse Ops", var6);
+      } catch (Exception e) {
+         LOGGER.error("Could not parse Ops", e);
       }
 
       return new Ops(ops);

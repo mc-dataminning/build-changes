@@ -71,20 +71,18 @@ public class MainTarget extends RenderTarget {
       );
    }
 
-   @Nullable
-   private GpuTexture allocateColorAttachment(final MainTarget.Dimension dimension) {
+   private @Nullable GpuTexture allocateColorAttachment(final MainTarget.Dimension dimension) {
       try {
          return RenderSystem.getDevice().createTexture(() -> this.label + " / Color", 15, this.colorFormat, dimension.width, dimension.height, 1, 1);
-      } catch (GpuOutOfMemoryException var3) {
+      } catch (GpuOutOfMemoryException ignored) {
          return null;
       }
    }
 
-   @Nullable
-   private GpuTexture allocateDepthAttachment(final MainTarget.Dimension dimension) {
+   private @Nullable GpuTexture allocateDepthAttachment(final MainTarget.Dimension dimension) {
       try {
          return RenderSystem.getDevice().createTexture(() -> this.label + " / Depth", 15, this.depthFormat, dimension.width, dimension.height, 1, 1);
-      } catch (GpuOutOfMemoryException var3) {
+      } catch (GpuOutOfMemoryException ignored) {
          return null;
       }
    }

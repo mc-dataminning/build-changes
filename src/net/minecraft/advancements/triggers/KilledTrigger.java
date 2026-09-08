@@ -25,16 +25,16 @@ public class KilledTrigger extends SimpleCriterionTrigger<KilledTrigger.TriggerI
       this.trigger(player, t -> t.matches(player, entityContext, killingBlow));
    }
 
-   public static record TriggerInstance(
+   public record TriggerInstance(
       Optional<Holder<LootItemCondition>> player, Optional<Holder<LootItemCondition>> entity, Optional<DamageSourcePredicate> killingBlow
    ) implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<KilledTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(KilledTrigger.TriggerInstance::player),
-                  LootItemCondition.CODEC.optionalFieldOf("entity").forGetter(KilledTrigger.TriggerInstance::entity),
-                  DamageSourcePredicate.CODEC.optionalFieldOf("killing_blow").forGetter(KilledTrigger.TriggerInstance::killingBlow)
-               )
-               .apply(i, KilledTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(KilledTrigger.TriggerInstance::player),
+               LootItemCondition.CODEC.optionalFieldOf("entity").forGetter(KilledTrigger.TriggerInstance::entity),
+               DamageSourcePredicate.CODEC.optionalFieldOf("killing_blow").forGetter(KilledTrigger.TriggerInstance::killingBlow)
+            )
+            .apply(i, KilledTrigger.TriggerInstance::new)
       );
 
       public static Criterion<KilledTrigger.TriggerInstance> playerKilledEntity(final Optional<EntityPredicate> entity) {

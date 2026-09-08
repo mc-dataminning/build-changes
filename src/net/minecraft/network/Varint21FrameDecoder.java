@@ -11,10 +11,9 @@ import org.jspecify.annotations.Nullable;
 public class Varint21FrameDecoder extends ByteToMessageDecoder {
    private static final int MAX_VARINT21_BYTES = 3;
    private final ByteBuf helperBuf = Unpooled.directBuffer(3);
-   @Nullable
-   private final BandwidthDebugMonitor monitor;
+   private final @Nullable BandwidthDebugMonitor monitor;
 
-   public Varint21FrameDecoder(@Nullable final BandwidthDebugMonitor monitor) {
+   public Varint21FrameDecoder(final @Nullable BandwidthDebugMonitor monitor) {
       this.monitor = monitor;
    }
 
@@ -47,7 +46,9 @@ public class Varint21FrameDecoder extends ByteToMessageDecoder {
          int length = VarInt.read(this.helperBuf);
          if (length == 0) {
             throw new CorruptedFrameException("Frame length cannot be zero");
-         } else if (in.readableBytes() < length) {
+         }
+
+         if (in.readableBytes() < length) {
             in.resetReaderIndex();
          } else {
             if (this.monitor != null) {

@@ -12,7 +12,7 @@ public record PeriodicEntityTickPredicate(int periodicTick) implements EntitySub
       .xmap(PeriodicEntityTickPredicate::new, PeriodicEntityTickPredicate::periodicTick);
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
       return entity.tickCount % this.periodicTick == 0;
    }
 }

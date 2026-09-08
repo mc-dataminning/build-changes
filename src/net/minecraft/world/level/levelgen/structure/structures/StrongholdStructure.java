@@ -3,7 +3,6 @@ package net.minecraft.world.level.levelgen.structure.structures;
 import com.mojang.serialization.MapCodec;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructurePiece;
 import net.minecraft.world.level.levelgen.structure.StructureType;
@@ -18,9 +17,7 @@ public class StrongholdStructure extends Structure {
 
    @Override
    public Optional<Structure.GenerationStub> findGenerationPoint(final Structure.GenerationContext context) {
-      return Optional.of(
-         new Structure.GenerationStub(context.chunkPos().getWorldPosition(), (Consumer<StructurePiecesBuilder>)(builder -> generatePieces(builder, context)))
-      );
+      return Optional.of(new Structure.GenerationStub(context.chunkPos().getWorldPosition(), builder -> generatePieces(builder, context)));
    }
 
    private static void generatePieces(final StructurePiecesBuilder builder, final Structure.GenerationContext context) {
@@ -29,7 +26,7 @@ public class StrongholdStructure extends Structure {
       StrongholdPieces.StartPiece startRoom;
       do {
          builder.clear();
-         context.random().setLargeFeatureSeed(context.seed() + (long)(tries++), context.chunkPos().x(), context.chunkPos().z());
+         context.random().setLargeFeatureSeed(context.seed() + tries++, context.chunkPos().x(), context.chunkPos().z());
          StrongholdPieces.resetPieces();
          startRoom = new StrongholdPieces.StartPiece(context.random(), context.chunkPos().getBlockX(2), context.chunkPos().getBlockZ(2));
          builder.addPiece(startRoom);

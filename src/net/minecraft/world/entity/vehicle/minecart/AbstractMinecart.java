@@ -121,8 +121,7 @@ public abstract class AbstractMinecart extends VehicleEntity {
       this.zo = z;
    }
 
-   @Nullable
-   public static <T extends AbstractMinecart> T createMinecart(
+   public static <T extends AbstractMinecart> @Nullable T createMinecart(
       final Level level,
       final double x,
       final double y,
@@ -130,7 +129,7 @@ public abstract class AbstractMinecart extends VehicleEntity {
       final EntityType<T> type,
       final EntitySpawnReason reason,
       final ItemStack itemStack,
-      @Nullable final Player player
+      final @Nullable Player player
    ) {
       T entity = (T)type.create(level, reason);
       if (entity != null) {
@@ -188,67 +187,62 @@ public abstract class AbstractMinecart extends VehicleEntity {
       Direction forward = this.getMotionDirection();
       if (forward.getAxis() == Direction.Axis.Y) {
          return super.getDismountLocationForPassenger(passenger);
-      } else {
-         int[][] offsets = DismountHelper.offsetsForDirection(forward);
-         BlockPos vehicleBlockPos = this.blockPosition();
-         BlockPos.MutableBlockPos targetBlockPos = new BlockPos.MutableBlockPos();
-         ImmutableList<Pose> dismountPoses = passenger.getDismountPoses();
-         UnmodifiableIterator vehicleTop = dismountPoses.iterator();
+      }
 
-         while (vehicleTop.hasNext()) {
-            Pose pose = (Pose)vehicleTop.next();
-            EntityDimensions passengerDimensions = passenger.getDimensions(pose);
-            float dismountAreaReach = Math.min(passengerDimensions.width(), 1.0F) / 2.0F;
-            UnmodifiableIterator poseHeight = ((ImmutableList)POSE_DISMOUNT_HEIGHTS.get(pose)).iterator();
+      int[][] offsets = DismountHelper.offsetsForDirection(forward);
+      BlockPos vehicleBlockPos = this.blockPosition();
+      BlockPos.MutableBlockPos targetBlockPos = new BlockPos.MutableBlockPos();
+      ImmutableList<Pose> dismountPoses = passenger.getDismountPoses();
+      UnmodifiableIterator vehicleTop = dismountPoses.iterator();
 
-            while (poseHeight.hasNext()) {
-               int offsetY = (Integer)poseHeight.next();
+      while (vehicleTop.hasNext()) {
+         Pose pose = (Pose)vehicleTop.next();
+         EntityDimensions passengerDimensions = passenger.getDimensions(pose);
+         float dismountAreaReach = Math.min(passengerDimensions.width(), 1.0F) / 2.0F;
+         UnmodifiableIterator poseHeight = ((ImmutableList)POSE_DISMOUNT_HEIGHTS.get(pose)).iterator();
 
-               for (int[] offsetXZ : offsets) {
-                  targetBlockPos.set(vehicleBlockPos.getX() + offsetXZ[0], vehicleBlockPos.getY() + offsetY, vehicleBlockPos.getZ() + offsetXZ[1]);
-                  double blockFloorHeight = this.level()
-                     .getBlockFloorHeight(
-                        DismountHelper.nonClimbableShape(this.level(), targetBlockPos),
-                        () -> DismountHelper.nonClimbableShape(this.level(), targetBlockPos.below())
-                     );
-                  if (DismountHelper.isBlockFloorValid(blockFloorHeight)) {
-                     AABB dismountCollisionBox = new AABB(
-                        (double)(-dismountAreaReach),
-                        0.0,
-                        (double)(-dismountAreaReach),
-                        (double)dismountAreaReach,
-                        (double)passengerDimensions.height(),
-                        (double)dismountAreaReach
-                     );
-                     Vec3 location = Vec3.upFromBottomCenterOf(targetBlockPos, blockFloorHeight);
-                     if (DismountHelper.canDismountTo(this.level(), passenger, dismountCollisionBox.move(location))) {
-                        passenger.setPose(pose);
-                        return location;
-                     }
+         while (poseHeight.hasNext()) {
+            int offsetY = (Integer)poseHeight.next();
+
+            for (int[] offsetXZ : offsets) {
+               targetBlockPos.set(vehicleBlockPos.getX() + offsetXZ[0], vehicleBlockPos.getY() + offsetY, vehicleBlockPos.getZ() + offsetXZ[1]);
+               double blockFloorHeight = this.level()
+                  .getBlockFloorHeight(
+                     DismountHelper.nonClimbableShape(this.level(), targetBlockPos),
+                     () -> DismountHelper.nonClimbableShape(this.level(), targetBlockPos.below())
+                  );
+               if (DismountHelper.isBlockFloorValid(blockFloorHeight)) {
+                  AABB dismountCollisionBox = new AABB(
+                     -dismountAreaReach, 0.0, -dismountAreaReach, dismountAreaReach, passengerDimensions.height(), dismountAreaReach
+                  );
+                  Vec3 location = Vec3.upFromBottomCenterOf(targetBlockPos, blockFloorHeight);
+                  if (DismountHelper.canDismountTo(this.level(), passenger, dismountCollisionBox.move(location))) {
+                     passenger.setPose(pose);
+                     return location;
                   }
                }
             }
          }
-
-         double vehicleTopx = this.getBoundingBox().maxY;
-         targetBlockPos.set((double)vehicleBlockPos.getX(), vehicleTopx, (double)vehicleBlockPos.getZ());
-         UnmodifiableIterator var22 = dismountPoses.iterator();
-
-         while (var22.hasNext()) {
-            Pose pose = (Pose)var22.next();
-            double poseHeight = (double)passenger.getDimensions(pose).height();
-            int blockCoverageY = Mth.ceil(vehicleTopx - (double)targetBlockPos.getY() + poseHeight);
-            double ceilingAboveVehicle = DismountHelper.findCeilingFrom(
-               targetBlockPos, blockCoverageY, pos -> this.level().getBlockState(pos).getCollisionShape(this.level(), pos)
-            );
-            if (vehicleTopx + poseHeight <= ceilingAboveVehicle) {
-               passenger.setPose(pose);
-               break;
-            }
-         }
-
-         return super.getDismountLocationForPassenger(passenger);
       }
+
+      double vehicleTopx = this.getBoundingBox().maxY;
+      targetBlockPos.set(vehicleBlockPos.getX(), vehicleTopx, vehicleBlockPos.getZ());
+      UnmodifiableIterator var22 = dismountPoses.iterator();
+
+      while (var22.hasNext()) {
+         Pose pose = (Pose)var22.next();
+         double poseHeight = passenger.getDimensions(pose).height();
+         int blockCoverageY = Mth.ceil(vehicleTopx - targetBlockPos.getY() + poseHeight);
+         double ceilingAboveVehicle = DismountHelper.findCeilingFrom(
+            targetBlockPos, blockCoverageY, pos -> this.level().getBlockState(pos).getCollisionShape(this.level(), pos)
+         );
+         if (vehicleTopx + poseHeight <= ceilingAboveVehicle) {
+            passenger.setPose(pose);
+            break;
+         }
+      }
+
+      return super.getDismountLocationForPassenger(passenger);
    }
 
    @Override
@@ -317,7 +311,7 @@ public abstract class AbstractMinecart extends VehicleEntity {
       int zt = Mth.floor(this.getZ());
       if (useExperimentalMovement(this.level())) {
          double y = this.getY() - 0.1 - 1.0E-5F;
-         if (this.level().getBlockState(BlockPos.containing((double)xt, y, (double)zt)).is(BlockTags.RAILS)) {
+         if (this.level().getBlockState(BlockPos.containing(xt, y, zt)).is(BlockTags.RAILS)) {
             yt = Mth.floor(y);
          }
       } else if (this.level().getBlockState(new BlockPos(xt, yt - 1, zt)).is(BlockTags.RAILS)) {
@@ -396,7 +390,7 @@ public abstract class AbstractMinecart extends VehicleEntity {
 
       this.move(MoverType.SELF, this.getDeltaMovement());
       if (!this.onGround()) {
-         this.setDeltaMovement(this.getDeltaMovement().scale((double)this.getAirDrag()));
+         this.setDeltaMovement(this.getDeltaMovement().scale(this.getAirDrag()));
       }
    }
 
@@ -564,10 +558,7 @@ public abstract class AbstractMinecart extends VehicleEntity {
       }
 
       Vec3 dir = new Vec3(xo, 0.0, zo).normalize();
-      Vec3 facing = new Vec3(
-            (double)Mth.cos((double)(this.getYRot() * (float) (Math.PI / 180.0))), 0.0, (double)Mth.sin((double)(this.getYRot() * (float) (Math.PI / 180.0)))
-         )
-         .normalize();
+      Vec3 facing = new Vec3(Mth.cos(this.getYRot() * (float) (Math.PI / 180.0)), 0.0, Mth.sin(this.getYRot() * (float) (Math.PI / 180.0))).normalize();
       double dot = Math.abs(dir.dot(facing));
       if (!(dot < 0.8F) || useExperimentalMovement(this.level())) {
          Vec3 movement = this.getDeltaMovement();

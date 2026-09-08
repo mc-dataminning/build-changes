@@ -69,9 +69,8 @@ public abstract class Fireball extends AbstractHurtingProjectile implements Item
       return new ItemStack(Items.FIRE_CHARGE);
    }
 
-   @Nullable
    @Override
-   public SlotAccess getSlot(final int slot) {
+   public @Nullable SlotAccess getSlot(final int slot) {
       return slot == 0 ? SlotAccess.of(this::getItem, this::setItem) : super.getSlot(slot);
    }
 

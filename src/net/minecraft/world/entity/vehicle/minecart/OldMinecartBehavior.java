@@ -74,7 +74,7 @@ public class OldMinecartBehavior extends MinecartBehavior {
             }
          }
 
-         double rotDiff = (double)Mth.wrapDegrees(this.getYRot() - this.minecart.yRotO);
+         double rotDiff = Mth.wrapDegrees(this.getYRot() - this.minecart.yRotO);
          if (rotDiff < -170.0 || rotDiff >= 170.0) {
             this.setYRot(this.getYRot() + 180.0F);
             this.minecart.setFlipped(!this.minecart.isFlipped());
@@ -101,7 +101,7 @@ public class OldMinecartBehavior extends MinecartBehavior {
       double y = this.minecart.getY();
       double z = this.minecart.getZ();
       Vec3 oldPos = this.getPos(x, y, z);
-      y = (double)pos.getY();
+      y = pos.getY();
       boolean powerTrack = false;
       boolean haltTrack = false;
       if (state.is(Blocks.POWERED_RAIL)) {
@@ -138,8 +138,8 @@ public class OldMinecartBehavior extends MinecartBehavior {
       Pair<Vec3i, Vec3i> exits = AbstractMinecart.exits(shape);
       Vec3i exit0 = (Vec3i)exits.getFirst();
       Vec3i exit1 = (Vec3i)exits.getSecond();
-      double xD = (double)(exit1.getX() - exit0.getX());
-      double zD = (double)(exit1.getZ() - exit0.getZ());
+      double xD = exit1.getX() - exit0.getX();
+      double zD = exit1.getZ() - exit0.getZ();
       double length = Math.sqrt(xD * xD + zD * zD);
       double flip = movement.x * xD + movement.z * zD;
       if (flip < 0.0) {
@@ -176,17 +176,17 @@ public class OldMinecartBehavior extends MinecartBehavior {
          }
       }
 
-      double x0 = (double)pos.getX() + 0.5 + (double)exit0.getX() * 0.5;
-      double z0 = (double)pos.getZ() + 0.5 + (double)exit0.getZ() * 0.5;
-      double x1 = (double)pos.getX() + 0.5 + (double)exit1.getX() * 0.5;
-      double z1 = (double)pos.getZ() + 0.5 + (double)exit1.getZ() * 0.5;
+      double x0 = pos.getX() + 0.5 + exit0.getX() * 0.5;
+      double z0 = pos.getZ() + 0.5 + exit0.getZ() * 0.5;
+      double x1 = pos.getX() + 0.5 + exit1.getX() * 0.5;
+      double z1 = pos.getZ() + 0.5 + exit1.getZ() * 0.5;
       xD = x1 - x0;
       zD = z1 - z0;
       double progress;
       if (xD == 0.0) {
-         progress = z - (double)pos.getZ();
+         progress = z - pos.getZ();
       } else if (zD == 0.0) {
-         progress = x - (double)pos.getX();
+         progress = x - pos.getX();
       } else {
          double xx = x - x0;
          double zz = z - z0;
@@ -201,11 +201,11 @@ public class OldMinecartBehavior extends MinecartBehavior {
       movement = this.getDeltaMovement();
       this.minecart.move(MoverType.SELF, new Vec3(Mth.clamp(scale * movement.x, -maxSpeed, maxSpeed), 0.0, Mth.clamp(scale * movement.z, -maxSpeed, maxSpeed)));
       if (exit0.getY() != 0 && Mth.floor(this.minecart.getX()) - pos.getX() == exit0.getX() && Mth.floor(this.minecart.getZ()) - pos.getZ() == exit0.getZ()) {
-         this.setPos(this.minecart.getX(), this.minecart.getY() + (double)exit0.getY(), this.minecart.getZ());
+         this.setPos(this.minecart.getX(), this.minecart.getY() + exit0.getY(), this.minecart.getZ());
       } else if (exit1.getY() != 0
          && Mth.floor(this.minecart.getX()) - pos.getX() == exit1.getX()
          && Mth.floor(this.minecart.getZ()) - pos.getZ() == exit1.getZ()) {
-         this.setPos(this.minecart.getX(), this.minecart.getY() + (double)exit1.getY(), this.minecart.getZ());
+         this.setPos(this.minecart.getX(), this.minecart.getY() + exit1.getY(), this.minecart.getZ());
       }
 
       this.setDeltaMovement(this.minecart.applyNaturalSlowdown(this.getDeltaMovement()));
@@ -226,7 +226,7 @@ public class OldMinecartBehavior extends MinecartBehavior {
       if (xn != pos.getX() || zn != pos.getZ()) {
          Vec3 vec3 = this.getDeltaMovement();
          double otherPow = vec3.horizontalDistance();
-         this.setDeltaMovement(otherPow * (double)(xn - pos.getX()), vec3.y, otherPow * (double)(zn - pos.getZ()));
+         this.setDeltaMovement(otherPow * (xn - pos.getX()), vec3.y, otherPow * (zn - pos.getZ()));
       }
 
       if (powerTrack) {
@@ -262,8 +262,7 @@ public class OldMinecartBehavior extends MinecartBehavior {
       }
    }
 
-   @Nullable
-   public Vec3 getPosOffs(double x, double y, double z, final double offs) {
+   public @Nullable Vec3 getPosOffs(double x, double y, double z, final double offs) {
       int xt = Mth.floor(x);
       int yt = Mth.floor(y);
       int zt = Mth.floor(z);
@@ -274,25 +273,25 @@ public class OldMinecartBehavior extends MinecartBehavior {
       BlockState state = this.level().getBlockState(new BlockPos(xt, yt, zt));
       if (BaseRailBlock.isRail(state)) {
          RailShape shape = state.getValue(((BaseRailBlock)state.getBlock()).getShapeProperty());
-         y = (double)yt;
+         y = yt;
          if (shape.isSlope()) {
-            y = (double)(yt + 1);
+            y = yt + 1;
          }
 
          Pair<Vec3i, Vec3i> exits = AbstractMinecart.exits(shape);
          Vec3i exit0 = (Vec3i)exits.getFirst();
          Vec3i exit1 = (Vec3i)exits.getSecond();
-         double xD = (double)(exit1.getX() - exit0.getX());
-         double zD = (double)(exit1.getZ() - exit0.getZ());
+         double xD = exit1.getX() - exit0.getX();
+         double zD = exit1.getZ() - exit0.getZ();
          double dd = Math.sqrt(xD * xD + zD * zD);
          xD /= dd;
          zD /= dd;
          x += xD * offs;
          z += zD * offs;
          if (exit0.getY() != 0 && Mth.floor(x) - xt == exit0.getX() && Mth.floor(z) - zt == exit0.getZ()) {
-            y += (double)exit0.getY();
+            y += exit0.getY();
          } else if (exit1.getY() != 0 && Mth.floor(x) - xt == exit1.getX() && Mth.floor(z) - zt == exit1.getZ()) {
-            y += (double)exit1.getY();
+            y += exit1.getY();
          }
 
          return this.getPos(x, y, z);
@@ -301,8 +300,7 @@ public class OldMinecartBehavior extends MinecartBehavior {
       }
    }
 
-   @Nullable
-   public Vec3 getPos(double x, double y, double z) {
+   public @Nullable Vec3 getPos(double x, double y, double z) {
       int xt = Mth.floor(x);
       int yt = Mth.floor(y);
       int zt = Mth.floor(z);
@@ -316,20 +314,20 @@ public class OldMinecartBehavior extends MinecartBehavior {
          Pair<Vec3i, Vec3i> exits = AbstractMinecart.exits(shape);
          Vec3i exit0 = (Vec3i)exits.getFirst();
          Vec3i exit1 = (Vec3i)exits.getSecond();
-         double x0 = (double)xt + 0.5 + (double)exit0.getX() * 0.5;
-         double y0 = (double)yt + 0.0625 + (double)exit0.getY() * 0.5;
-         double z0 = (double)zt + 0.5 + (double)exit0.getZ() * 0.5;
-         double x1 = (double)xt + 0.5 + (double)exit1.getX() * 0.5;
-         double y1 = (double)yt + 0.0625 + (double)exit1.getY() * 0.5;
-         double z1 = (double)zt + 0.5 + (double)exit1.getZ() * 0.5;
+         double x0 = xt + 0.5 + exit0.getX() * 0.5;
+         double y0 = yt + 0.0625 + exit0.getY() * 0.5;
+         double z0 = zt + 0.5 + exit0.getZ() * 0.5;
+         double x1 = xt + 0.5 + exit1.getX() * 0.5;
+         double y1 = yt + 0.0625 + exit1.getY() * 0.5;
+         double z1 = zt + 0.5 + exit1.getZ() * 0.5;
          double xD = x1 - x0;
          double yD = (y1 - y0) * 2.0;
          double zD = z1 - z0;
          double progress;
          if (xD == 0.0) {
-            progress = z - (double)zt;
+            progress = z - zt;
          } else if (zD == 0.0) {
-            progress = x - (double)xt;
+            progress = x - xt;
          } else {
             double xx = x - x0;
             double zz = z - z0;
@@ -375,9 +373,9 @@ public class OldMinecartBehavior extends MinecartBehavior {
             }
          }
       } else {
-         for (Entity entityx : this.level().getEntities(this.minecart, hitbox)) {
-            if (!this.minecart.hasPassenger(entityx) && entityx.isPushable() && entityx instanceof AbstractMinecart) {
-               entityx.push(this.minecart);
+         for (Entity entity : this.level().getEntities(this.minecart, hitbox)) {
+            if (!this.minecart.hasPassenger(entity) && entity.isPushable() && entity instanceof AbstractMinecart) {
+               entity.push(this.minecart);
             }
          }
       }

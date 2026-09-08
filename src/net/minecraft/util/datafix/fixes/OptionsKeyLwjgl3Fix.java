@@ -137,30 +137,30 @@ public class OptionsKeyLwjgl3Fix extends DataFix {
          "OptionsKeyLwjgl3Fix",
          this.getInputSchema().getType(References.OPTIONS),
          input -> input.update(DSL.remainderFinder(), tag -> tag.getMapValues().map(map1 -> tag.createMap(map1.entrySet().stream().map(entry -> {
-                     if (((Dynamic)entry.getKey()).asString("").startsWith("key_")) {
-                        int oldValue = Integer.parseInt(((Dynamic)entry.getValue()).asString(""));
-                        if (oldValue < 0) {
-                           int button = oldValue + 100;
-                           String name;
-                           if (button == 0) {
-                              name = "key.mouse.left";
-                           } else if (button == 1) {
-                              name = "key.mouse.right";
-                           } else if (button == 2) {
-                              name = "key.mouse.middle";
-                           } else {
-                              name = "key.mouse." + (button + 1);
-                           }
+            if (((Dynamic)entry.getKey()).asString("").startsWith("key_")) {
+               int oldValue = Integer.parseInt(((Dynamic)entry.getValue()).asString(""));
+               if (oldValue < 0) {
+                  int button = oldValue + 100;
+                  String name;
+                  if (button == 0) {
+                     name = "key.mouse.left";
+                  } else if (button == 1) {
+                     name = "key.mouse.right";
+                  } else if (button == 2) {
+                     name = "key.mouse.middle";
+                  } else {
+                     name = "key.mouse." + (button + 1);
+                  }
 
-                           return Pair.of((Dynamic)entry.getKey(), ((Dynamic)entry.getValue()).createString(name));
-                        } else {
-                           String name = (String)MAP.getOrDefault(oldValue, "key.unknown");
-                           return Pair.of((Dynamic)entry.getKey(), ((Dynamic)entry.getValue()).createString(name));
-                        }
-                     } else {
-                        return Pair.of((Dynamic)entry.getKey(), (Dynamic)entry.getValue());
-                     }
-                  }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)))).result().orElse(tag))
+                  return Pair.of((Dynamic)entry.getKey(), ((Dynamic)entry.getValue()).createString(name));
+               } else {
+                  String name = (String)MAP.getOrDefault(oldValue, "key.unknown");
+                  return Pair.of((Dynamic)entry.getKey(), ((Dynamic)entry.getValue()).createString(name));
+               }
+            } else {
+               return Pair.of((Dynamic)entry.getKey(), (Dynamic)entry.getValue());
+            }
+         }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)))).result().orElse(tag))
       );
    }
 }

@@ -1,6 +1,5 @@
 package net.minecraft.world.entity.vehicle.minecart;
 
-import java.util.Objects;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.CommonComponents;
@@ -90,13 +89,13 @@ public class MinecartCommandBlock extends AbstractMinecart {
    public InteractionResult interact(final Player player, final InteractionHand hand, final Vec3 location) {
       if (!player.canUseGameMasterBlocks()) {
          return InteractionResult.PASS;
-      } else {
-         if (player.level().isClientSide()) {
-            player.openMinecartCommandBlock(this);
-         }
-
-         return InteractionResult.SUCCESS;
       }
+
+      if (player.level().isClientSide()) {
+         player.openMinecartCommandBlock(this);
+      }
+
+      return InteractionResult.SUCCESS;
    }
 
    @Override
@@ -113,11 +112,6 @@ public class MinecartCommandBlock extends AbstractMinecart {
    }
 
    private class MinecartCommandBase extends BaseCommandBlock {
-      private MinecartCommandBase() {
-         Objects.requireNonNull(MinecartCommandBlock.this);
-         super();
-      }
-
       @Override
       public void onUpdated(final ServerLevel level) {
          MinecartCommandBlock.this.getEntityData().set(MinecartCommandBlock.DATA_ID_COMMAND_NAME, this.getCommand());

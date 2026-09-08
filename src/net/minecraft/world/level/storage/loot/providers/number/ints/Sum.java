@@ -19,7 +19,7 @@ public record Sum(HolderSet<ContextIntProvider> inputs) implements ContextIntPro
       long value = 0L;
 
       for (Holder<ContextIntProvider> input : this.inputs()) {
-         value += (long)input.value().getIntUnsafe(context);
+         value += input.value().getIntUnsafe(context);
       }
 
       return ContextIntProvider.longToIntSafe(value);

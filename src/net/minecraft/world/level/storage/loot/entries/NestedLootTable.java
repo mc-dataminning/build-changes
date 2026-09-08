@@ -2,7 +2,6 @@ package net.minecraft.world.level.storage.loot.entries;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
 import net.minecraft.core.Holder;
@@ -42,10 +41,6 @@ public class NestedLootTable extends ExpandableContainerBase {
    protected boolean addExpandedEntries(final Consumer<LootPoolEntry> output) {
       for (final Holder<LootTable> table : this.value) {
          output.accept(new UniformContainerBase.EntryBase() {
-            {
-               Objects.requireNonNull(NestedLootTable.this);
-            }
-
             @Override
             public void createItemStack(final Consumer<ItemStack> output, final LootContext context) {
                table.value().getRandomItemsRaw(context, output);
@@ -59,10 +54,6 @@ public class NestedLootTable extends ExpandableContainerBase {
    @Override
    protected boolean addUnexpandedEntry(final Consumer<LootPoolEntry> output) {
       output.accept(new UniformContainerBase.EntryBase() {
-         {
-            Objects.requireNonNull(NestedLootTable.this);
-         }
-
          @Override
          public void createItemStack(final Consumer<ItemStack> output, final LootContext context) {
             NestedLootTable.this.value.forEach(t -> t.value().getRandomItemsRaw(context, output));

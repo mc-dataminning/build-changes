@@ -18,8 +18,8 @@ public class FileSystemUtil {
       try {
          return Paths.get(probeUri);
       } catch (FileSystemNotFoundException var3) {
-      } catch (Throwable var4) {
-         LOGGER.warn("Unable to get path for: {}", probeUri, var4);
+      } catch (Throwable t) {
+         LOGGER.warn("Unable to get path for: {}", probeUri, t);
       }
 
       try {

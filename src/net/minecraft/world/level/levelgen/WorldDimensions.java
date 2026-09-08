@@ -37,16 +37,14 @@ import net.minecraft.world.level.storage.PrimaryLevelData;
 public record WorldDimensions(Map<ResourceKey<LevelStem>, LevelStem> dimensions) {
    public static final MapCodec<WorldDimensions> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(Codec.unboundedMap(ResourceKey.codec(Registries.LEVEL_STEM), LevelStem.CODEC).fieldOf("dimensions").forGetter(WorldDimensions::dimensions))
-            .apply(i, i.stable(WorldDimensions::new))
+         .apply(i, i.stable(WorldDimensions::new))
    );
    private static final Set<ResourceKey<LevelStem>> BUILTIN_ORDER = ImmutableSet.of(LevelStem.OVERWORLD, LevelStem.NETHER, LevelStem.END);
 
-   public WorldDimensions(Map<ResourceKey<LevelStem>, LevelStem> dimensions) {
+   public WorldDimensions {
       LevelStem overworld = dimensions.get(LevelStem.OVERWORLD);
       if (overworld == null) {
          throw new IllegalStateException("Overworld settings missing");
-      } else {
-         this.dimensions = dimensions;
       }
    }
 
@@ -68,7 +66,7 @@ public record WorldDimensions(Map<ResourceKey<LevelStem>, LevelStem> dimensions)
       final HolderLookup<DimensionType> dimensionTypes, final Map<ResourceKey<LevelStem>, LevelStem> dimensions, final ChunkGenerator generator
    ) {
       LevelStem stem = dimensions.get(LevelStem.OVERWORLD);
-      Holder<DimensionType> type = (Holder<DimensionType>)(stem == null ? dimensionTypes.getOrThrow(BuiltinDimensionTypes.OVERWORLD) : stem.type());
+      Holder<DimensionType> type = stem == null ? dimensionTypes.getOrThrow(BuiltinDimensionTypes.OVERWORLD) : stem.type();
       return withOverworld(dimensions, type, generator);
    }
 
@@ -129,16 +127,12 @@ public record WorldDimensions(Map<ResourceKey<LevelStem>, LevelStem> dimensions)
 
    private static boolean isStableOverworld(final LevelStem dimension) {
       Holder<DimensionType> dimensionType = dimension.type();
-      if (!dimensionType.is(BuiltinDimensionTypes.OVERWORLD) && !dimensionType.is(BuiltinDimensionTypes.OVERWORLD_CAVES)) {
-         return false;
-      } else {
-         if (dimension.generator().getBiomeSource() instanceof MultiNoiseBiomeSource biomeSource
-            && !biomeSource.stable(MultiNoiseBiomeSourceParameterLists.OVERWORLD)) {
-            return false;
-         }
-
-         return true;
-      }
+      return !dimensionType.is(BuiltinDimensionTypes.OVERWORLD) && !dimensionType.is(BuiltinDimensionTypes.OVERWORLD_CAVES)
+         ? false
+         : !(
+            dimension.generator().getBiomeSource() instanceof MultiNoiseBiomeSource biomeSource
+               && !biomeSource.stable(MultiNoiseBiomeSourceParameterLists.OVERWORLD)
+         );
    }
 
    private static boolean isStableNether(final LevelStem dimension) {
@@ -169,8 +163,8 @@ public record WorldDimensions(Map<ResourceKey<LevelStem>, LevelStem> dimensions)
       keysInOrder(knownDimensions)
          .forEach(
             key -> baseDimensions.getOptional((ResourceKey<LevelStem>)key)
-                  .or(() -> Optional.ofNullable(this.dimensions.get(key)))
-                  .ifPresent(levelStem -> results.add(new Entry(key, levelStem)))
+               .or(() -> Optional.ofNullable(this.dimensions.get(key)))
+               .ifPresent(levelStem -> results.add(new Entry(key, levelStem)))
          );
       Lifecycle initialStability = knownDimensions.containsAll(BUILTIN_ORDER) ? Lifecycle.stable() : Lifecycle.experimental();
       WritableRegistry<LevelStem> writableDimensions = new MappedRegistry<>(Registries.LEVEL_STEM, initialStability);
@@ -180,7 +174,7 @@ public record WorldDimensions(Map<ResourceKey<LevelStem>, LevelStem> dimensions)
       return new WorldDimensions.Complete(newDimensions.freeze(), specialWorldProperty);
    }
 
-   public static record Complete(Registry<LevelStem> dimensions, PrimaryLevelData.SpecialWorldProperty specialWorldProperty) {
+   public record Complete(Registry<LevelStem> dimensions, PrimaryLevelData.SpecialWorldProperty specialWorldProperty) {
       public Lifecycle lifecycle() {
          return this.dimensions.registryLifecycle();
       }

@@ -32,18 +32,18 @@ public class ExperienceOrbRenderer extends EntityRenderer<ExperienceOrb, Experie
    ) {
       poseStack.pushPose();
       int icon = state.icon;
-      float u0 = (float)(icon % 4 * 16 + 0) / 64.0F;
-      float u1 = (float)(icon % 4 * 16 + 16) / 64.0F;
-      float v0 = (float)(icon / 4 * 16 + 0) / 64.0F;
-      float v1 = (float)(icon / 4 * 16 + 16) / 64.0F;
+      float u0 = (icon % 4 * 16 + 0) / 64.0F;
+      float u1 = (icon % 4 * 16 + 16) / 64.0F;
+      float v0 = (icon / 4 * 16 + 0) / 64.0F;
+      float v1 = (icon / 4 * 16 + 16) / 64.0F;
       float r = 1.0F;
       float xo = 0.5F;
       float yo = 0.25F;
       float br = 255.0F;
       float rr = state.ageInTicks / 2.0F;
-      int rc = (int)((Mth.sin((double)(rr + 0.0F)) + 1.0F) * 0.5F * 255.0F);
+      int rc = (int)((Mth.sin(rr + 0.0F) + 1.0F) * 0.5F * 255.0F);
       int gc = 255;
-      int bc = (int)((Mth.sin((double)(rr + (float) (Math.PI * 4.0 / 3.0))) + 1.0F) * 0.1F * 255.0F);
+      int bc = (int)((Mth.sin(rr + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
       poseStack.translate(0.0F, 0.1F, 0.0F);
       poseStack.rotate(camera.orientation);
       float s = 0.3F;

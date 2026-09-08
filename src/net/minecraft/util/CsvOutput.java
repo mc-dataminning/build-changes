@@ -25,19 +25,19 @@ public class CsvOutput {
       return new CsvOutput.Builder();
    }
 
-   public void writeRow(final Object... values) throws IOException {
+   public void writeRow(final @Nullable Object... values) throws IOException {
       if (values.length != this.columnCount) {
          throw new IllegalArgumentException("Invalid number of columns, expected " + this.columnCount + ", but got " + values.length);
-      } else {
-         this.writeLine(Stream.of(values));
       }
+
+      this.writeLine(Stream.of(values));
    }
 
-   private void writeLine(final Stream<? extends Object> values) throws IOException {
+   private void writeLine(final Stream<? extends @Nullable Object> values) throws IOException {
       this.output.write(values.map(CsvOutput::getStringValue).collect(Collectors.joining(",")) + "\r\n");
    }
 
-   private static String getStringValue(@Nullable final Object value) {
+   private static String getStringValue(final @Nullable Object value) {
       return StringEscapeUtils.escapeCsv(value != null ? value.toString() : "[null]");
    }
 

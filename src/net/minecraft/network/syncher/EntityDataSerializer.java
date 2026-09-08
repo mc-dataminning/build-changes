@@ -16,7 +16,7 @@ public interface EntityDataSerializer<T> {
       return () -> codec;
    }
 
-   public interface ForValueType<T> extends EntityDataSerializer<T> {
+   interface ForValueType<T> extends EntityDataSerializer<T> {
       @Override
       default T copy(final T value) {
          return value;

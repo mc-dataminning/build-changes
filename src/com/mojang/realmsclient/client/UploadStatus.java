@@ -41,7 +41,7 @@ public class UploadStatus {
    }
 
    public double getPercentage() {
-      return Math.min((double)this.getBytesWritten() / (double)this.getTotalBytes(), 1.0);
+      return Math.min((double)this.getBytesWritten() / this.getTotalBytes(), 1.0);
    }
 
    public void refreshBytesPerSecond() {

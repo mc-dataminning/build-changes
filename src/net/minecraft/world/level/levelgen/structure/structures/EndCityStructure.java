@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.block.Rotation;
@@ -28,15 +27,13 @@ public class EndCityStructure extends Structure {
       int blockZ = chunkPos.getBlockZ(7);
       if (!context.couldValidBiomeExistInTerrainColumn(blockX, blockZ)) {
          return Optional.empty();
-      } else {
-         Rotation rotation = Rotation.getRandom(context.random());
-         BlockPos startPos = this.getLowestYIn5by5Box(context, blockX, blockZ, rotation);
-         return startPos.getY() < 60
-            ? Optional.empty()
-            : Optional.of(
-               new Structure.GenerationStub(startPos, (Consumer<StructurePiecesBuilder>)(builder -> this.generatePieces(builder, startPos, rotation, context)))
-            );
       }
+
+      Rotation rotation = Rotation.getRandom(context.random());
+      BlockPos startPos = this.getLowestYIn5by5Box(context, blockX, blockZ, rotation);
+      return startPos.getY() < 60
+         ? Optional.empty()
+         : Optional.of(new Structure.GenerationStub(startPos, builder -> this.generatePieces(builder, startPos, rotation, context)));
    }
 
    private void generatePieces(

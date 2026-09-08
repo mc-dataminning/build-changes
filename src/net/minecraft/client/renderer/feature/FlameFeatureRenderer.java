@@ -36,11 +36,12 @@ public class FlameFeatureRenderer extends RenderTypeFeatureRenderer<FlameFeature
       float h = state.boundingBoxHeight / s;
       float yo = 0.0F;
       pose.rotate(submit.rotation());
-      pose.translate(0.0F, 0.0F, 0.3F - (float)((int)h) * 0.02F);
+      pose.translate(0.0F, 0.0F, 0.3F - (int)h * 0.02F);
       float zo = 0.0F;
       int ss = 0;
+      int lightCoords = LightCoordsUtil.withBlock(state.lightCoords, 15);
 
-      for (int lightCoords = LightCoordsUtil.withBlock(state.lightCoords, 15); h > 0.0F; ss++) {
+      while (h > 0.0F) {
          TextureAtlasSprite tex = ss % 2 == 0 ? fire1 : fire2;
          float u0 = tex.getU0();
          float v0 = tex.getV0();
@@ -60,6 +61,7 @@ public class FlameFeatureRenderer extends RenderTypeFeatureRenderer<FlameFeature
          yo -= 0.45F;
          r *= 0.9F;
          zo -= 0.03F;
+         ss++;
       }
    }
 
@@ -69,7 +71,7 @@ public class FlameFeatureRenderer extends RenderTypeFeatureRenderer<FlameFeature
       buffer.addVertex(pose, x, y, z).setColor(-1).setUv(u, v).setUv1(0, 10).setLight(lightCoords).setNormal(pose, 0.0F, 1.0F, 0.0F);
    }
 
-   public static record Submit(PoseStack.Pose pose, EntityRenderState entityRenderState, Quaternionf rotation) implements SubmitNode {
+   public record Submit(PoseStack.Pose pose, EntityRenderState entityRenderState, Quaternionf rotation) implements SubmitNode {
       @Override
       public FeatureRendererType<FlameFeatureRenderer.Submit> featureType() {
          return FlameFeatureRenderer.TYPE;

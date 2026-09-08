@@ -37,19 +37,19 @@ public class FlyNodeEvaluator extends WalkNodeEvaluator {
       int startY;
       if (this.canFloat() && this.mob.isInWater()) {
          startY = this.mob.getBlockY();
-         BlockPos.MutableBlockPos reusableBlockPos = new BlockPos.MutableBlockPos(this.mob.getX(), (double)startY, this.mob.getZ());
+         BlockPos.MutableBlockPos reusableBlockPos = new BlockPos.MutableBlockPos(this.mob.getX(), startY, this.mob.getZ());
 
          for (BlockState state = this.currentContext.getBlockState(reusableBlockPos);
             state.is(Blocks.WATER);
             state = this.currentContext.getBlockState(reusableBlockPos)
          ) {
-            reusableBlockPos.set(this.mob.getX(), (double)(++startY), this.mob.getZ());
+            reusableBlockPos.set(this.mob.getX(), ++startY, this.mob.getZ());
          }
       } else {
          startY = Mth.floor(this.mob.getY() + 0.5);
       }
 
-      BlockPos startPos = BlockPos.containing(this.mob.getX(), (double)startY, this.mob.getZ());
+      BlockPos startPos = BlockPos.containing(this.mob.getX(), startY, this.mob.getZ());
       if (!this.canStartAt(startPos)) {
          for (BlockPos testedPosition : this.iteratePathfindingStartNodeCandidatePositions(this.mob)) {
             if (this.canStartAt(testedPosition)) {
@@ -256,16 +256,15 @@ public class FlyNodeEvaluator extends WalkNodeEvaluator {
       return count;
    }
 
-   private boolean hasMalus(@Nullable final Node node) {
+   private boolean hasMalus(final @Nullable Node node) {
       return node != null && node.costMalus >= 0.0F;
    }
 
-   private boolean isOpen(@Nullable final Node node) {
+   private boolean isOpen(final @Nullable Node node) {
       return node != null && !node.closed;
    }
 
-   @Nullable
-   protected Node findAcceptedNode(final int x, final int y, final int z) {
+   protected @Nullable Node findAcceptedNode(final int x, final int y, final int z) {
       Node best = null;
       PathType pathType = this.getCachedPathType(x, y, z);
       float pathCost = this.mob.getPathfindingMalus(pathType);
@@ -319,26 +318,26 @@ public class FlyNodeEvaluator extends WalkNodeEvaluator {
       boolean isSmallMob = boundingBox.getSize() < 1.0;
       if (!isSmallMob) {
          return List.of(
-            BlockPos.containing(boundingBox.minX, (double)mob.getBlockY(), boundingBox.minZ),
-            BlockPos.containing(boundingBox.minX, (double)mob.getBlockY(), boundingBox.maxZ),
-            BlockPos.containing(boundingBox.maxX, (double)mob.getBlockY(), boundingBox.minZ),
-            BlockPos.containing(boundingBox.maxX, (double)mob.getBlockY(), boundingBox.maxZ)
-         );
-      } else {
-         double zPadding = Math.max(0.0, 1.1F - boundingBox.getZsize());
-         double xPadding = Math.max(0.0, 1.1F - boundingBox.getXsize());
-         double yPadding = Math.max(0.0, 1.1F - boundingBox.getYsize());
-         AABB inflatedBoundingBox = boundingBox.inflate(xPadding, yPadding, zPadding);
-         return BlockPos.randomBetweenClosed(
-            mob.getRandom(),
-            10,
-            Mth.floor(inflatedBoundingBox.minX),
-            Mth.floor(inflatedBoundingBox.minY),
-            Mth.floor(inflatedBoundingBox.minZ),
-            Mth.floor(inflatedBoundingBox.maxX),
-            Mth.floor(inflatedBoundingBox.maxY),
-            Mth.floor(inflatedBoundingBox.maxZ)
+            BlockPos.containing(boundingBox.minX, mob.getBlockY(), boundingBox.minZ),
+            BlockPos.containing(boundingBox.minX, mob.getBlockY(), boundingBox.maxZ),
+            BlockPos.containing(boundingBox.maxX, mob.getBlockY(), boundingBox.minZ),
+            BlockPos.containing(boundingBox.maxX, mob.getBlockY(), boundingBox.maxZ)
          );
       }
+
+      double zPadding = Math.max(0.0, 1.1F - boundingBox.getZsize());
+      double xPadding = Math.max(0.0, 1.1F - boundingBox.getXsize());
+      double yPadding = Math.max(0.0, 1.1F - boundingBox.getYsize());
+      AABB inflatedBoundingBox = boundingBox.inflate(xPadding, yPadding, zPadding);
+      return BlockPos.randomBetweenClosed(
+         mob.getRandom(),
+         10,
+         Mth.floor(inflatedBoundingBox.minX),
+         Mth.floor(inflatedBoundingBox.minY),
+         Mth.floor(inflatedBoundingBox.minZ),
+         Mth.floor(inflatedBoundingBox.maxX),
+         Mth.floor(inflatedBoundingBox.maxY),
+         Mth.floor(inflatedBoundingBox.maxZ)
+      );
    }
 }

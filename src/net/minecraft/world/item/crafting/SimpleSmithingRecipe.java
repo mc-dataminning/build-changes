@@ -4,8 +4,7 @@ import org.jspecify.annotations.Nullable;
 
 public abstract class SimpleSmithingRecipe implements SmithingRecipe {
    protected final Recipe.CommonInfo commonInfo;
-   @Nullable
-   private PlacementInfo placementInfo;
+   private @Nullable PlacementInfo placementInfo;
 
    protected SimpleSmithingRecipe(final Recipe.CommonInfo commonInfo) {
       this.commonInfo = commonInfo;

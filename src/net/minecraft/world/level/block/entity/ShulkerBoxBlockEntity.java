@@ -47,10 +47,9 @@ public class ShulkerBoxBlockEntity extends RandomizableContainerBlockEntity impl
    private ShulkerBoxBlockEntity.AnimationStatus animationStatus = ShulkerBoxBlockEntity.AnimationStatus.CLOSED;
    private float progress;
    private float progressOld;
-   @Nullable
-   private final DyeColor color;
+   private final @Nullable DyeColor color;
 
-   public ShulkerBoxBlockEntity(@Nullable final DyeColor color, final BlockPos worldPosition, final BlockState blockState) {
+   public ShulkerBoxBlockEntity(final @Nullable DyeColor color, final BlockPos worldPosition, final BlockState blockState) {
       super(BlockEntityTypes.SHULKER_BOX, worldPosition, blockState);
       this.color = color;
    }
@@ -121,9 +120,9 @@ public class ShulkerBoxBlockEntity extends RandomizableContainerBlockEntity impl
                   entity.move(
                      MoverType.SHULKER_BOX,
                      new Vec3(
-                        (aabb.getXsize() + 0.01) * (double)direction.getStepX(),
-                        (aabb.getYsize() + 0.01) * (double)direction.getStepY(),
-                        (aabb.getZsize() + 0.01) * (double)direction.getStepZ()
+                        (aabb.getXsize() + 0.01) * direction.getStepX(),
+                        (aabb.getYsize() + 0.01) * direction.getStepY(),
+                        (aabb.getZsize() + 0.01) * direction.getStepZ()
                      )
                   );
                }
@@ -236,7 +235,7 @@ public class ShulkerBoxBlockEntity extends RandomizableContainerBlockEntity impl
    }
 
    @Override
-   public boolean canPlaceItemThroughFace(final int slot, final ItemStack itemStack, @Nullable final Direction direction) {
+   public boolean canPlaceItemThroughFace(final int slot, final ItemStack itemStack, final @Nullable Direction direction) {
       return !(Block.byItem(itemStack.getItem()) instanceof ShulkerBoxBlock);
    }
 
@@ -249,8 +248,7 @@ public class ShulkerBoxBlockEntity extends RandomizableContainerBlockEntity impl
       return Mth.lerp(a, this.progressOld, this.progress);
    }
 
-   @Nullable
-   public DyeColor getColor() {
+   public @Nullable DyeColor getColor() {
       return this.color;
    }
 
@@ -263,7 +261,7 @@ public class ShulkerBoxBlockEntity extends RandomizableContainerBlockEntity impl
       return this.animationStatus == ShulkerBoxBlockEntity.AnimationStatus.CLOSED;
    }
 
-   public static enum AnimationStatus {
+   public enum AnimationStatus {
       CLOSED,
       OPENING,
       OPENED,

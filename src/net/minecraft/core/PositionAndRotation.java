@@ -33,14 +33,14 @@ public interface PositionAndRotation {
       return new PositionAndRotation.Immutable(position, yRot, xRot);
    }
 
-   public static record Immutable(Vec3 position, float yRot, float xRot) implements PositionAndRotation {
+   record Immutable(Vec3 position, float yRot, float xRot) implements PositionAndRotation {
       @Override
       public PositionAndRotation immutable() {
          return this;
       }
    }
 
-   public static class Mutable implements PositionAndRotation {
+   class Mutable implements PositionAndRotation {
       private Vec3 position = Vec3.ZERO;
       private float yRot;
       private float xRot;

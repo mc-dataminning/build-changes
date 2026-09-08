@@ -19,20 +19,20 @@ public class GoToTargetLocation {
    public static <E extends Mob> OneShot<E> create(final MemoryModuleType<BlockPos> locationMemory, final int closeEnoughDist, final float speedModifier) {
       return BehaviorBuilder.create(
          i -> i.group(
-                  i.present(locationMemory),
-                  i.absent(MemoryModuleType.ATTACK_TARGET),
-                  i.absent(MemoryModuleType.WALK_TARGET),
-                  i.registered(MemoryModuleType.LOOK_TARGET)
-               )
-               .apply(i, (location, attackTarget, walkTarget, lookTarget) -> (level, body, timestamp) -> {
-                     BlockPos celebrateLocation = i.get(location);
-                     boolean closeEnoughToTarget = celebrateLocation.closerThan(body.blockPosition(), (double)closeEnoughDist);
-                     if (!closeEnoughToTarget) {
-                        BehaviorUtils.setWalkAndLookTargetMemories(body, getNearbyPos(body, celebrateLocation), speedModifier, closeEnoughDist);
-                     }
+               i.present(locationMemory),
+               i.absent(MemoryModuleType.ATTACK_TARGET),
+               i.absent(MemoryModuleType.WALK_TARGET),
+               i.registered(MemoryModuleType.LOOK_TARGET)
+            )
+            .apply(i, (location, attackTarget, walkTarget, lookTarget) -> (level, body, timestamp) -> {
+               BlockPos celebrateLocation = i.get(location);
+               boolean closeEnoughToTarget = celebrateLocation.closerThan(body.blockPosition(), closeEnoughDist);
+               if (!closeEnoughToTarget) {
+                  BehaviorUtils.setWalkAndLookTargetMemories(body, getNearbyPos(body, celebrateLocation), speedModifier, closeEnoughDist);
+               }
 
-                     return true;
-                  })
+               return true;
+            })
       );
    }
 }

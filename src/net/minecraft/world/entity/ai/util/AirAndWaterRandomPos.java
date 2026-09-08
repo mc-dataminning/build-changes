@@ -6,8 +6,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
 public class AirAndWaterRandomPos {
-   @Nullable
-   public static Vec3 getPos(
+   public static @Nullable Vec3 getPos(
       final PathfinderMob mob,
       final int horizontalDist,
       final int verticalDist,
@@ -16,14 +15,13 @@ public class AirAndWaterRandomPos {
       final double zDir,
       final double maxXzRadiansDifference
    ) {
-      boolean restrict = GoalUtils.mobRestricted(mob, (double)horizontalDist);
+      boolean restrict = GoalUtils.mobRestricted(mob, horizontalDist);
       return RandomPos.generateRandomPos(
          mob, () -> generateRandomPos(mob, horizontalDist, verticalDist, flyingHeight, xDir, zDir, maxXzRadiansDifference, restrict)
       );
    }
 
-   @Nullable
-   public static BlockPos generateRandomPos(
+   public static @Nullable BlockPos generateRandomPos(
       final PathfinderMob mob,
       final int horizontalDist,
       final int verticalDist,
@@ -34,12 +32,12 @@ public class AirAndWaterRandomPos {
       final boolean restrict
    ) {
       BlockPos direction = RandomPos.generateRandomDirectionWithinRadians(
-         mob.getRandom(), 0.0, (double)horizontalDist, verticalDist, flyingHeight, xDir, zDir, maxXzRadiansDifference
+         mob.getRandom(), 0.0, horizontalDist, verticalDist, flyingHeight, xDir, zDir, maxXzRadiansDifference
       );
       if (direction == null) {
          return null;
       } else {
-         BlockPos pos = RandomPos.generateRandomPosTowardDirection(mob, (double)horizontalDist, mob.getRandom(), direction);
+         BlockPos pos = RandomPos.generateRandomPosTowardDirection(mob, horizontalDist, mob.getRandom(), direction);
          if (!GoalUtils.isOutsideLimits(pos, mob) && !GoalUtils.isRestricted(restrict, mob, pos)) {
             pos = RandomPos.moveUpOutOfSolid(pos, mob.level().getMaxY(), blockPos -> GoalUtils.isSolid(mob, blockPos));
             return GoalUtils.hasMalus(mob, pos) ? null : pos;

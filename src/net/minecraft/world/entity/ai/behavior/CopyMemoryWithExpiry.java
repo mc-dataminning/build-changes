@@ -11,12 +11,12 @@ public class CopyMemoryWithExpiry {
       final Predicate<E> copyIfTrue, final MemoryModuleType<? extends T> sourceMemory, final MemoryModuleType<T> targetMemory, final UniformInt durationOfCopy
    ) {
       return BehaviorBuilder.create(i -> i.group(i.present(sourceMemory), i.absent(targetMemory)).apply(i, (source, target) -> (level, body, timestamp) -> {
-               if (!copyIfTrue.test((E)body)) {
-                  return false;
-               } else {
-                  target.setWithExpiry(i.get(source), (long)durationOfCopy.sample(level.getRandom()));
-                  return true;
-               }
-            }));
+         if (!copyIfTrue.test((E)body)) {
+            return false;
+         }
+
+         target.setWithExpiry(i.get(source), durationOfCopy.sample(level.getRandom()));
+         return true;
+      }));
    }
 }

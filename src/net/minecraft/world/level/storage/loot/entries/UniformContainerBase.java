@@ -5,7 +5,6 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Objects;
 import java.util.Optional;
 import net.minecraft.core.Holder;
 import net.minecraft.util.Mth;
@@ -84,14 +83,9 @@ public abstract class UniformContainerBase extends LootPoolEntryContainer {
    }
 
    protected abstract class EntryBase implements LootPoolEntry {
-      protected EntryBase() {
-         Objects.requireNonNull(UniformContainerBase.this);
-         super();
-      }
-
       @Override
       public int getWeight(final float luck) {
-         return Math.max(Mth.floor((float)UniformContainerBase.this.weight + (float)UniformContainerBase.this.quality * luck), 0);
+         return Math.max(Mth.floor(UniformContainerBase.this.weight + UniformContainerBase.this.quality * luck), 0);
       }
    }
 

@@ -15,7 +15,7 @@ public enum PackCompatibility {
    private final Component description;
    private final Component confirmation;
 
-   private PackCompatibility(final String key) {
+   PackCompatibility(final String key) {
       this.description = Component.translatable("pack.incompatible." + key).withStyle(ChatFormatting.GRAY);
       this.confirmation = Component.translatable("pack.incompatible.confirm." + key);
    }

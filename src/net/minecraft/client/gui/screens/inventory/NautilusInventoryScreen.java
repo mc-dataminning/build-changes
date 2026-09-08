@@ -25,9 +25,8 @@ public class NautilusInventoryScreen extends AbstractMountInventoryScreen<Nautil
       return SLOT_SPRITE;
    }
 
-   @Nullable
    @Override
-   protected Identifier getChestSlotsSpriteLocation() {
+   protected @Nullable Identifier getChestSlotsSpriteLocation() {
       return null;
    }
 

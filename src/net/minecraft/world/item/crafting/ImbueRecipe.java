@@ -17,13 +17,13 @@ import net.minecraft.world.level.Level;
 public class ImbueRecipe extends NormalCraftingRecipe {
    public static final MapCodec<ImbueRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
-               CraftingRecipe.CraftingBookInfo.MAP_CODEC.forGetter(o -> o.bookInfo),
-               Ingredient.CODEC.fieldOf("source").forGetter(o -> o.source),
-               Ingredient.CODEC.fieldOf("material").forGetter(o -> o.material),
-               ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
-            )
-            .apply(i, ImbueRecipe::new)
+            Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
+            CraftingRecipe.CraftingBookInfo.MAP_CODEC.forGetter(o -> o.bookInfo),
+            Ingredient.CODEC.fieldOf("source").forGetter(o -> o.source),
+            Ingredient.CODEC.fieldOf("material").forGetter(o -> o.material),
+            ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
+         )
+         .apply(i, ImbueRecipe::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, ImbueRecipe> STREAM_CODEC = StreamCodec.composite(
       Recipe.CommonInfo.STREAM_CODEC,

@@ -10,8 +10,7 @@ public class OpenInventoryTutorialStep implements TutorialStepInstance {
    private static final Component TITLE = Component.translatable("tutorial.open_inventory.title");
    private static final Component DESCRIPTION = Component.translatable("tutorial.open_inventory.description", Tutorial.key("inventory"));
    private final Tutorial tutorial;
-   @Nullable
-   private TutorialToast toast;
+   private @Nullable TutorialToast toast;
    private int timeWaiting;
 
    public OpenInventoryTutorialStep(final Tutorial tutorial) {

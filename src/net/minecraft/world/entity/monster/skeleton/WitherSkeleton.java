@@ -79,10 +79,9 @@ public class WitherSkeleton extends AbstractSkeleton {
    protected void populateDefaultEquipmentEnchantments(final ServerLevelAccessor level, final RandomSource random, final DifficultyInstance localDifficulty) {
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+   public @Nullable SpawnGroupData finalizeSpawn(
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       SpawnGroupData spawnGroupData = super.finalizeSpawn(level, difficulty, spawnReason, groupData);
       this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(4.0);
@@ -94,17 +93,17 @@ public class WitherSkeleton extends AbstractSkeleton {
    public boolean doHurtTarget(final ServerLevel level, final Entity target) {
       if (!super.doHurtTarget(level, target)) {
          return false;
-      } else {
-         if (target instanceof LivingEntity livingEntity) {
-            livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 200), this);
-         }
-
-         return true;
       }
+
+      if (target instanceof LivingEntity livingEntity) {
+         livingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 200), this);
+      }
+
+      return true;
    }
 
    @Override
-   protected AbstractArrow getArrow(final ItemStack projectile, final float power, @Nullable final ItemStack firingWeapon) {
+   protected AbstractArrow getArrow(final ItemStack projectile, final float power, final @Nullable ItemStack firingWeapon) {
       AbstractArrow arrow = super.getArrow(projectile, power, firingWeapon);
       arrow.igniteForSeconds(100.0F);
       return arrow;

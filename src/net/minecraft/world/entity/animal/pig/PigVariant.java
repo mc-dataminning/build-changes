@@ -21,18 +21,18 @@ public record PigVariant(ModelAndTexture<PigVariant.ModelType> modelAndTexture, 
    implements PriorityProvider<SpawnContext, SpawnCondition> {
    public static final Codec<PigVariant> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ModelAndTexture.codec(PigVariant.ModelType.CODEC, PigVariant.ModelType.NORMAL).forGetter(PigVariant::modelAndTexture),
-               ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(PigVariant::babyTexture),
-               SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(PigVariant::spawnConditions)
-            )
-            .apply(i, PigVariant::new)
+            ModelAndTexture.codec(PigVariant.ModelType.CODEC, PigVariant.ModelType.NORMAL).forGetter(PigVariant::modelAndTexture),
+            ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(PigVariant::babyTexture),
+            SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(PigVariant::spawnConditions)
+         )
+         .apply(i, PigVariant::new)
    );
    public static final Codec<PigVariant> NETWORK_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ModelAndTexture.codec(PigVariant.ModelType.CODEC, PigVariant.ModelType.NORMAL).forGetter(PigVariant::modelAndTexture),
-               ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(PigVariant::babyTexture)
-            )
-            .apply(i, PigVariant::new)
+            ModelAndTexture.codec(PigVariant.ModelType.CODEC, PigVariant.ModelType.NORMAL).forGetter(PigVariant::modelAndTexture),
+            ClientAsset.ResourceTexture.CODEC.fieldOf("baby_asset_id").forGetter(PigVariant::babyTexture)
+         )
+         .apply(i, PigVariant::new)
    );
    public static final Codec<Holder<PigVariant>> CODEC = RegistryCodecs.holder(Registries.PIG_VARIANT);
    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<PigVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.PIG_VARIANT);
@@ -46,14 +46,14 @@ public record PigVariant(ModelAndTexture<PigVariant.ModelType> modelAndTexture, 
       return this.spawnConditions.selectors();
    }
 
-   public static enum ModelType implements StringRepresentable {
+   public enum ModelType implements StringRepresentable {
       NORMAL("normal"),
       COLD("cold");
 
       public static final Codec<PigVariant.ModelType> CODEC = StringRepresentable.fromEnum(PigVariant.ModelType::values);
       private final String name;
 
-      private ModelType(final String name) {
+      ModelType(final String name) {
          this.name = name;
       }
 

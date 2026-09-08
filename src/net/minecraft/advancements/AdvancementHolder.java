@@ -18,15 +18,7 @@ public record AdvancementHolder(Identifier id, Advancement value) {
 
    @Override
    public boolean equals(final Object obj) {
-      if (this == obj) {
-         return true;
-      } else {
-         if (obj instanceof AdvancementHolder holder && this.id.equals(holder.id)) {
-            return true;
-         }
-
-         return false;
-      }
+      return this == obj ? true : obj instanceof AdvancementHolder holder && this.id.equals(holder.id);
    }
 
    @Override

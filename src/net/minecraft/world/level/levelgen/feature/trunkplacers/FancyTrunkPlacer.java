@@ -43,10 +43,10 @@ public class FancyTrunkPlacer extends TrunkPlacer {
    ) {
       int assumedFoliageHeight = 5;
       int height = treeHeight + 2;
-      int trunkHeight = Mth.floor((double)height * 0.618);
+      int trunkHeight = Mth.floor(height * 0.618);
       placeBelowTrunkBlock(level, trunkSetter, random, origin.below(), tree);
       double foliageDensity = 1.0;
-      int clustersPerY = Math.min(1, Mth.floor(1.382 + Math.pow(1.0 * (double)height / 13.0, 2.0)));
+      int clustersPerY = Math.min(1, Mth.floor(1.382 + Math.pow(1.0 * height / 13.0, 2.0)));
       int trunkTop = origin.getY() + trunkHeight;
       int relativeY = height - 5;
       List<FancyTrunkPlacer.FoliageCoords> foliageCoords = Lists.newArrayList();
@@ -57,8 +57,8 @@ public class FancyTrunkPlacer extends TrunkPlacer {
          if (!(treeShape < 0.0F)) {
             for (int i = 0; i < clustersPerY; i++) {
                double widthScale = 1.0;
-               double radius = 1.0 * (double)treeShape * ((double)random.nextFloat() + 0.328);
-               double angle = (double)(random.nextFloat() * 2.0F) * Math.PI;
+               double radius = 1.0 * treeShape * (random.nextFloat() + 0.328);
+               double angle = random.nextFloat() * 2.0F * Math.PI;
                double x = radius * Math.sin(angle) + 0.5;
                double z = radius * Math.cos(angle) + 0.5;
                BlockPos checkStart = origin.offset(Mth.floor(x), relativeY - 1, Mth.floor(z));
@@ -66,8 +66,8 @@ public class FancyTrunkPlacer extends TrunkPlacer {
                if (this.makeLimb(level, trunkSetter, random, checkStart, checkEnd, false, tree)) {
                   int dx = origin.getX() - checkStart.getX();
                   int dz = origin.getZ() - checkStart.getZ();
-                  double branchHeight = (double)checkStart.getY() - Math.sqrt((double)(dx * dx + dz * dz)) * 0.381;
-                  int branchTop = branchHeight > (double)trunkTop ? trunkTop : (int)branchHeight;
+                  double branchHeight = checkStart.getY() - Math.sqrt(dx * dx + dz * dz) * 0.381;
+                  int branchTop = branchHeight > trunkTop ? trunkTop : (int)branchHeight;
                   BlockPos checkBranchBase = new BlockPos(origin.getX(), branchTop, origin.getZ());
                   if (this.makeLimb(level, trunkSetter, random, checkBranchBase, checkStart, false, tree)) {
                      foliageCoords.add(new FancyTrunkPlacer.FoliageCoords(checkStart, checkBranchBase.getY()));
@@ -101,26 +101,24 @@ public class FancyTrunkPlacer extends TrunkPlacer {
    ) {
       if (!doPlace && Objects.equals(startPos, endPos)) {
          return true;
-      } else {
-         BlockPos delta = endPos.offset(-startPos.getX(), -startPos.getY(), -startPos.getZ());
-         int steps = this.getSteps(delta);
-         float dx = (float)delta.getX() / (float)steps;
-         float dy = (float)delta.getY() / (float)steps;
-         float dz = (float)delta.getZ() / (float)steps;
-
-         for (int i = 0; i <= steps; i++) {
-            BlockPos blockPos = startPos.offset(Mth.floor(0.5F + (float)i * dx), Mth.floor(0.5F + (float)i * dy), Mth.floor(0.5F + (float)i * dz));
-            if (doPlace) {
-               this.placeLog(
-                  level, trunkSetter, random, blockPos, tree, state -> state.trySetValue(RotatedPillarBlock.AXIS, this.getLogAxis(startPos, blockPos))
-               );
-            } else if (!this.isFree(level, blockPos)) {
-               return false;
-            }
-         }
-
-         return true;
       }
+
+      BlockPos delta = endPos.offset(-startPos.getX(), -startPos.getY(), -startPos.getZ());
+      int steps = this.getSteps(delta);
+      float dx = (float)delta.getX() / steps;
+      float dy = (float)delta.getY() / steps;
+      float dz = (float)delta.getZ() / steps;
+
+      for (int i = 0; i <= steps; i++) {
+         BlockPos blockPos = startPos.offset(Mth.floor(0.5F + i * dx), Mth.floor(0.5F + i * dy), Mth.floor(0.5F + i * dz));
+         if (doPlace) {
+            this.placeLog(level, trunkSetter, random, blockPos, tree, state -> state.trySetValue(RotatedPillarBlock.AXIS, this.getLogAxis(startPos, blockPos)));
+         } else if (!this.isFree(level, blockPos)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    private int getSteps(final BlockPos pos) {
@@ -147,7 +145,7 @@ public class FancyTrunkPlacer extends TrunkPlacer {
    }
 
    private boolean trimBranches(final int height, final int localY) {
-      return (double)localY >= (double)height * 0.2;
+      return localY >= height * 0.2;
    }
 
    private void makeBranches(
@@ -169,20 +167,20 @@ public class FancyTrunkPlacer extends TrunkPlacer {
    }
 
    private static float treeShape(final int height, final int y) {
-      if ((float)y < (float)height * 0.3F) {
+      if (y < height * 0.3F) {
          return -1.0F;
-      } else {
-         float radius = (float)height / 2.0F;
-         float adjacent = radius - (float)y;
-         float distance = Mth.sqrt(radius * radius - adjacent * adjacent);
-         if (adjacent == 0.0F) {
-            distance = radius;
-         } else if (Math.abs(adjacent) >= radius) {
-            return 0.0F;
-         }
-
-         return distance * 0.5F;
       }
+
+      float radius = height / 2.0F;
+      float adjacent = radius - y;
+      float distance = Mth.sqrt(radius * radius - adjacent * adjacent);
+      if (adjacent == 0.0F) {
+         distance = radius;
+      } else if (Math.abs(adjacent) >= radius) {
+         return 0.0F;
+      }
+
+      return distance * 0.5F;
    }
 
    private static class FoliageCoords {

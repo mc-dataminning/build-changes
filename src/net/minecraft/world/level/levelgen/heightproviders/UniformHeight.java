@@ -14,10 +14,10 @@ import org.slf4j.Logger;
 public class UniformHeight extends HeightProvider {
    public static final MapCodec<UniformHeight> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               VerticalAnchor.CODEC.fieldOf("min_inclusive").forGetter(u -> u.minInclusive),
-               VerticalAnchor.CODEC.fieldOf("max_inclusive").forGetter(u -> u.maxInclusive)
-            )
-            .apply(i, UniformHeight::new)
+            VerticalAnchor.CODEC.fieldOf("min_inclusive").forGetter(u -> u.minInclusive),
+            VerticalAnchor.CODEC.fieldOf("max_inclusive").forGetter(u -> u.maxInclusive)
+         )
+         .apply(i, UniformHeight::new)
    );
    private static final Logger LOGGER = LogUtils.getLogger();
    private final VerticalAnchor minInclusive;
@@ -38,7 +38,7 @@ public class UniformHeight extends HeightProvider {
       int min = this.minInclusive.resolveY(context);
       int max = this.maxInclusive.resolveY(context);
       if (min > max) {
-         if (this.warnedFor.add((long)min << 32 | (long)max)) {
+         if (this.warnedFor.add((long)min << 32 | max)) {
             LOGGER.warn("Empty height range: {}", this);
          }
 

@@ -136,6 +136,6 @@ public class HoneycombItem extends Item implements SignApplicator {
       WAXED_RECIPES = builder.build();
    }
 
-   private static record WaxedRecipeGroup(WeatheringCopperCollection<Block> block, Function<Block, Pair<RecipeCategory, String>> recipeIdProvider) {
+   private record WaxedRecipeGroup(WeatheringCopperCollection<Block> block, Function<Block, Pair<RecipeCategory, String>> recipeIdProvider) {
    }
 }

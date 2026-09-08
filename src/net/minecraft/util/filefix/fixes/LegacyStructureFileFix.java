@@ -234,7 +234,7 @@ public class LegacyStructureFileFix extends FileFix {
       upgradeProgress.incrementFinishedOperationsBy(futures.waitForAll());
    }
 
-   private static record DimensionFixEntry(
+   private record DimensionFixEntry(
       ResourceKey<Level> dimensionKey,
       List<FileAccess<SavedDataNbt>> structureFileAccess,
       FileAccess<ChunkNbt> chunkFileAccess,
@@ -276,7 +276,7 @@ public class LegacyStructureFileFix extends FileFix {
       }
    }
 
-   public static record LegacyStructureData(Map<String, Dynamic<?>> starts, Map<String, LongList> indexes) {
+   public record LegacyStructureData(Map<String, Dynamic<?>> starts, Map<String, LongList> indexes) {
       public LegacyStructureData() {
          this(new HashMap<>(), new HashMap<>());
       }

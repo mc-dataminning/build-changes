@@ -26,21 +26,15 @@ import org.slf4j.Logger;
 
 public class SelectWorldScreen extends Screen {
    private static final Logger LOGGER = LogUtils.getLogger();
-   public static final WorldOptions TEST_OPTIONS = new WorldOptions((long)"test1".hashCode(), true, false);
+   public static final WorldOptions TEST_OPTIONS = new WorldOptions("test1".hashCode(), true, false);
    protected final Screen lastScreen;
    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this, 8 + 9 + 8 + 20 + 4, 60);
-   @Nullable
-   private Button deleteButton;
-   @Nullable
-   private Button playWorldButton;
-   @Nullable
-   private Button editButton;
-   @Nullable
-   private Button recreateButton;
-   @Nullable
-   protected EditBox searchBox;
-   @Nullable
-   private WorldSelectionList list;
+   private @Nullable Button deleteButton;
+   private @Nullable Button playWorldButton;
+   private @Nullable Button editButton;
+   private @Nullable Button recreateButton;
+   protected @Nullable EditBox searchBox;
+   private @Nullable WorldSelectionList list;
 
    public SelectWorldScreen(final Screen lastScreen) {
       super(Component.translatable("selectWorld.title"));
@@ -132,8 +126,8 @@ public class SelectWorldScreen extends Screen {
                   this.minecraft
                      .createWorldOpenFlows()
                      .createFreshLevel(resultFolder, levelSettings, TEST_OPTIONS, WorldPresets::createNormalWorldDimensions, this);
-               } catch (IOException var5) {
-                  LOGGER.error("Failed to recreate the debug world", var5);
+               } catch (IOException e) {
+                  LOGGER.error("Failed to recreate the debug world", e);
                }
             }
          )
@@ -162,7 +156,7 @@ public class SelectWorldScreen extends Screen {
       this.minecraft.gui.setScreen(this.lastScreen);
    }
 
-   public void updateButtonStatus(@Nullable final LevelSummary summary) {
+   public void updateButtonStatus(final @Nullable LevelSummary summary) {
       if (this.playWorldButton != null && this.editButton != null && this.recreateButton != null && this.deleteButton != null) {
          if (summary == null) {
             this.playWorldButton.setMessage(LevelSummary.PLAY_WORLD);

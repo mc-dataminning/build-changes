@@ -19,13 +19,13 @@ public record MangroveRootPlacement(
 ) {
    public static final Codec<MangroveRootPlacement> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("can_grow_through").forGetter(c -> c.canGrowThrough),
-               RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("muddy_roots_in").forGetter(c -> c.muddyRootsIn),
-               BlockStateProvider.CODEC.fieldOf("muddy_roots_provider").forGetter(c -> c.muddyRootsProvider),
-               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter(p -> p.maxRootWidth),
-               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter(p -> p.maxRootLength),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter(p -> p.randomSkewChance)
-            )
-            .apply(i, MangroveRootPlacement::new)
+            RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("can_grow_through").forGetter(c -> c.canGrowThrough),
+            RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("muddy_roots_in").forGetter(c -> c.muddyRootsIn),
+            BlockStateProvider.CODEC.fieldOf("muddy_roots_provider").forGetter(c -> c.muddyRootsProvider),
+            Codec.intRange(1, 12).fieldOf("max_root_width").forGetter(p -> p.maxRootWidth),
+            Codec.intRange(1, 64).fieldOf("max_root_length").forGetter(p -> p.maxRootLength),
+            Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter(p -> p.randomSkewChance)
+         )
+         .apply(i, MangroveRootPlacement::new)
    );
 }

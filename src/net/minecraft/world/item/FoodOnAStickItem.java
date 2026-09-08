@@ -31,10 +31,10 @@ public class FoodOnAStickItem<T extends Entity & ItemSteerable> extends Item {
             EquipmentSlot slot = hand.asEquipmentSlot();
             ItemStack result = itemStack.hurtAndConvertOnBreak(this.consumeItemDamage, Items.FISHING_ROD, player, slot);
             return InteractionResult.SUCCESS_SERVER.heldItemTransformedTo(result);
+         } else {
+            player.awardStat(Stats.ITEM_USED.get(this));
+            return InteractionResult.PASS;
          }
-
-         player.awardStat(Stats.ITEM_USED.get(this));
-         return InteractionResult.PASS;
       }
    }
 }

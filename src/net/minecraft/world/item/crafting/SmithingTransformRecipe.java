@@ -16,13 +16,13 @@ import net.minecraft.world.item.crafting.display.SmithingRecipeDisplay;
 public class SmithingTransformRecipe extends SimpleSmithingRecipe {
    public static final MapCodec<SmithingTransformRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
-               Ingredient.CODEC.optionalFieldOf("template").forGetter(o -> o.template),
-               Ingredient.CODEC.fieldOf("base").forGetter(o -> o.base),
-               Ingredient.CODEC.optionalFieldOf("addition").forGetter(o -> o.addition),
-               ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
-            )
-            .apply(i, SmithingTransformRecipe::new)
+            Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
+            Ingredient.CODEC.optionalFieldOf("template").forGetter(o -> o.template),
+            Ingredient.CODEC.fieldOf("base").forGetter(o -> o.base),
+            Ingredient.CODEC.optionalFieldOf("addition").forGetter(o -> o.addition),
+            ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
+         )
+         .apply(i, SmithingTransformRecipe::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, SmithingTransformRecipe> STREAM_CODEC = StreamCodec.composite(
       Recipe.CommonInfo.STREAM_CODEC,

@@ -153,10 +153,9 @@ public class Pillager extends AbstractIllager implements CrossbowAttackMob, Inve
       return 1;
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+   public @Nullable SpawnGroupData finalizeSpawn(
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       RandomSource random = level.getRandom();
       this.populateDefaultEquipmentSlots(random, difficulty);
@@ -225,9 +224,8 @@ public class Pillager extends AbstractIllager implements CrossbowAttackMob, Inve
       return this.hasActiveRaid() && itemStack.is(Items.BANNER.white());
    }
 
-   @Nullable
    @Override
-   public SlotAccess getSlot(final int slot) {
+   public @Nullable SlotAccess getSlot(final int slot) {
       int inventorySlot = slot - 300;
       return inventorySlot >= 0 && inventorySlot < this.inventory.getContainerSize() ? this.inventory.getSlot(inventorySlot) : super.getSlot(slot);
    }

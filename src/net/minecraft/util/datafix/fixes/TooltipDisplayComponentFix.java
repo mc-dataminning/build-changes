@@ -135,17 +135,17 @@ public class TooltipDisplayComponentFix extends DataFix {
       final Typed<?> typedComponents, final OpticFinder<?> componentFinder, final Type<?> newType, final String componentId, final Set<String> hiddenTooltips
    ) {
       return typedComponents.updateTyped(componentFinder, newType, typedComponent -> Util.writeAndReadTypedOrThrow(typedComponent, newType, component -> {
-            OptionalDynamic<?> predicates = component.get("predicates");
-            if (predicates.result().isEmpty()) {
-               return component;
-            } else {
-               boolean showInTooltip = component.get("show_in_tooltip").asBoolean(true);
-               if (!showInTooltip) {
-                  hiddenTooltips.add(componentId);
-               }
+         OptionalDynamic<?> predicates = component.get("predicates");
+         if (predicates.result().isEmpty()) {
+            return component;
+         }
 
-               return (Dynamic)predicates.result().get();
-            }
-         }));
+         boolean showInTooltip = component.get("show_in_tooltip").asBoolean(true);
+         if (!showInTooltip) {
+            hiddenTooltips.add(componentId);
+         }
+
+         return (Dynamic)predicates.result().get();
+      }));
    }
 }

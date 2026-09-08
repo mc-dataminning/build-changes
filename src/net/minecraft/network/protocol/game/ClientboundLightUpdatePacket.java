@@ -24,8 +24,8 @@ public record ClientboundLightUpdatePacket(int x, int z, ClientboundLightUpdateP
    public ClientboundLightUpdatePacket(
       final ChunkPos pos,
       final LevelLightEngine lightEngine,
-      @Nullable final BitSet skyChangedLightSectionFilter,
-      @Nullable final BitSet blockChangedLightSectionFilter
+      final @Nullable BitSet skyChangedLightSectionFilter,
+      final @Nullable BitSet blockChangedLightSectionFilter
    ) {
       this(pos.x(), pos.z(), new ClientboundLightUpdatePacketData(pos, lightEngine, skyChangedLightSectionFilter, blockChangedLightSectionFilter));
    }

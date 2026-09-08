@@ -18,11 +18,11 @@ public class V3083 extends NamespacedSchema {
          map,
          "minecraft:allay",
          () -> DSL.optionalFields(
-               "Inventory",
-               DSL.list(References.ITEM_STACK.in(schema)),
-               "listener",
-               DSL.optionalFields("event", DSL.optionalFields("game_event", References.GAME_EVENT_NAME.in(schema)))
-            )
+            "Inventory",
+            DSL.list(References.ITEM_STACK.in(schema)),
+            "listener",
+            DSL.optionalFields("event", DSL.optionalFields("game_event", References.GAME_EVENT_NAME.in(schema)))
+         )
       );
       return map;
    }

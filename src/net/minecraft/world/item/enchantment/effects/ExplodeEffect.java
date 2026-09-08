@@ -41,20 +41,20 @@ public record ExplodeEffect(
 ) implements EnchantmentEntityEffect {
    public static final MapCodec<ExplodeEffect> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.BOOL.optionalFieldOf("attribute_to_user", false).forGetter(ExplodeEffect::attributeToUser),
-               DamageType.CODEC.optionalFieldOf("damage_type").forGetter(ExplodeEffect::damageType),
-               LevelBasedValue.CODEC.optionalFieldOf("knockback_multiplier").forGetter(ExplodeEffect::knockbackMultiplier),
-               RegistryCodecs.holderSet(Registries.BLOCK).optionalFieldOf("immune_blocks").forGetter(ExplodeEffect::immuneBlocks),
-               Vec3.CODEC.optionalFieldOf("offset", Vec3.ZERO).forGetter(ExplodeEffect::offset),
-               LevelBasedValue.CODEC.fieldOf("radius").forGetter(ExplodeEffect::radius),
-               Codec.BOOL.optionalFieldOf("create_fire", false).forGetter(ExplodeEffect::createFire),
-               Level.ExplosionInteraction.CODEC.fieldOf("block_interaction").forGetter(ExplodeEffect::blockInteraction),
-               ParticleTypes.CODEC.fieldOf("small_particle").forGetter(ExplodeEffect::smallParticle),
-               ParticleTypes.CODEC.fieldOf("large_particle").forGetter(ExplodeEffect::largeParticle),
-               WeightedList.codec(ExplosionParticleInfo.CODEC).optionalFieldOf("block_particles", WeightedList.of()).forGetter(ExplodeEffect::blockParticles),
-               SoundEvent.CODEC.fieldOf("sound").forGetter(ExplodeEffect::sound)
-            )
-            .apply(i, ExplodeEffect::new)
+            Codec.BOOL.optionalFieldOf("attribute_to_user", false).forGetter(ExplodeEffect::attributeToUser),
+            DamageType.CODEC.optionalFieldOf("damage_type").forGetter(ExplodeEffect::damageType),
+            LevelBasedValue.CODEC.optionalFieldOf("knockback_multiplier").forGetter(ExplodeEffect::knockbackMultiplier),
+            RegistryCodecs.holderSet(Registries.BLOCK).optionalFieldOf("immune_blocks").forGetter(ExplodeEffect::immuneBlocks),
+            Vec3.CODEC.optionalFieldOf("offset", Vec3.ZERO).forGetter(ExplodeEffect::offset),
+            LevelBasedValue.CODEC.fieldOf("radius").forGetter(ExplodeEffect::radius),
+            Codec.BOOL.optionalFieldOf("create_fire", false).forGetter(ExplodeEffect::createFire),
+            Level.ExplosionInteraction.CODEC.fieldOf("block_interaction").forGetter(ExplodeEffect::blockInteraction),
+            ParticleTypes.CODEC.fieldOf("small_particle").forGetter(ExplodeEffect::smallParticle),
+            ParticleTypes.CODEC.fieldOf("large_particle").forGetter(ExplodeEffect::largeParticle),
+            WeightedList.codec(ExplosionParticleInfo.CODEC).optionalFieldOf("block_particles", WeightedList.of()).forGetter(ExplodeEffect::blockParticles),
+            SoundEvent.CODEC.fieldOf("sound").forGetter(ExplodeEffect::sound)
+         )
+         .apply(i, ExplodeEffect::new)
    );
 
    @Override
@@ -82,8 +82,7 @@ public record ExplodeEffect(
       );
    }
 
-   @Nullable
-   private DamageSource getDamageSource(final Entity entity, final Vec3 position) {
+   private @Nullable DamageSource getDamageSource(final Entity entity, final Vec3 position) {
       if (this.damageType.isEmpty()) {
          return null;
       } else {

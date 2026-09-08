@@ -13,11 +13,9 @@ public record Enchantable(int value) {
    );
    public static final StreamCodec<ByteBuf, Enchantable> STREAM_CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT, Enchantable::value, Enchantable::new);
 
-   public Enchantable(int value) {
+   public Enchantable {
       if (value <= 0) {
          throw new IllegalArgumentException("Enchantment value must be positive, but was " + value);
-      } else {
-         this.value = value;
       }
    }
 }

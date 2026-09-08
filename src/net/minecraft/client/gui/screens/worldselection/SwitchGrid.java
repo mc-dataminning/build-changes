@@ -96,10 +96,10 @@ class SwitchGrid {
       }
    }
 
-   private static record InfoUnderneathSettings(int maxInfoRows, boolean alwaysMaxHeight) {
+   private record InfoUnderneathSettings(int maxInfoRows, boolean alwaysMaxHeight) {
    }
 
-   private static record LabeledSwitch(CycleButton<Boolean> button, BooleanSupplier stateSupplier, @Nullable BooleanSupplier isActiveCondition) {
+   private record LabeledSwitch(CycleButton<Boolean> button, BooleanSupplier stateSupplier, @Nullable BooleanSupplier isActiveCondition) {
       public void refreshState() {
          this.button.setValue(this.stateSupplier.getAsBoolean());
          if (this.isActiveCondition != null) {
@@ -112,10 +112,8 @@ class SwitchGrid {
       private final Component label;
       private final BooleanSupplier stateSupplier;
       private final Consumer<Boolean> onClicked;
-      @Nullable
-      private Component info;
-      @Nullable
-      private BooleanSupplier isActiveCondition;
+      private @Nullable Component info;
+      private @Nullable BooleanSupplier isActiveCondition;
       private final int buttonWidth;
 
       private SwitchBuilder(final Component label, final BooleanSupplier stateSupplier, final Consumer<Boolean> onClicked, final int buttonWidth) {

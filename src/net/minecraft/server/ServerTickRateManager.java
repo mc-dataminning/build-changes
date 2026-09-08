@@ -41,11 +41,11 @@ public class ServerTickRateManager extends TickRateManager {
    public boolean stepGameIfPaused(final int ticks) {
       if (!this.isFrozen()) {
          return false;
-      } else {
-         this.frozenTicksToRun = ticks;
-         this.updateStepTicks();
-         return true;
       }
+
+      this.frozenTicksToRun = ticks;
+      this.updateStepTicks();
+      return true;
    }
 
    public boolean stopStepping() {
@@ -70,8 +70,8 @@ public class ServerTickRateManager extends TickRateManager {
    public boolean requestGameToSprint(final int time) {
       boolean interrupted = this.remainingSprintTicks > 0L;
       this.sprintTimeSpend = 0L;
-      this.scheduledCurrentSprintTicks = (long)time;
-      this.remainingSprintTicks = (long)time;
+      this.scheduledCurrentSprintTicks = time;
+      this.remainingSprintTicks = time;
       this.previousIsFrozen = this.isFrozen();
       this.setFrozen(false);
       return interrupted;
@@ -79,10 +79,10 @@ public class ServerTickRateManager extends TickRateManager {
 
    private void finishTickSprint() {
       long completedTicks = this.scheduledCurrentSprintTicks - this.remainingSprintTicks;
-      double millisecondsToComplete = Math.max(1.0, (double)this.sprintTimeSpend) / (double)TimeUtil.NANOSECONDS_PER_MILLISECOND;
-      int ticksPerSecond = (int)((double)(TimeUtil.MILLISECONDS_PER_SECOND * completedTicks) / millisecondsToComplete);
+      double millisecondsToComplete = Math.max(1.0, this.sprintTimeSpend) / TimeUtil.NANOSECONDS_PER_MILLISECOND;
+      int ticksPerSecond = (int)(TimeUtil.MILLISECONDS_PER_SECOND * completedTicks / millisecondsToComplete);
       String millisecondsPerTick = String.format(
-         Locale.ROOT, "%.2f", completedTicks == 0L ? (double)this.millisecondsPerTick() : millisecondsToComplete / (double)completedTicks
+         Locale.ROOT, "%.2f", completedTicks == 0L ? this.millisecondsPerTick() : millisecondsToComplete / completedTicks
       );
       this.scheduledCurrentSprintTicks = 0L;
       this.sprintTimeSpend = 0L;

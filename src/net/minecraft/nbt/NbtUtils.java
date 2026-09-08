@@ -59,58 +59,64 @@ public final class NbtUtils {
    }
 
    @VisibleForTesting
-   public static boolean compareNbt(@Nullable final Tag expected, @Nullable final Tag actual, final boolean partialListMatches) {
+   public static boolean compareNbt(final @Nullable Tag expected, final @Nullable Tag actual, final boolean partialListMatches) {
       if (expected == actual) {
          return true;
-      } else if (expected == null) {
+      }
+
+      if (expected == null) {
          return true;
-      } else if (actual == null) {
+      }
+
+      if (actual == null) {
          return false;
-      } else if (!expected.getClass().equals(actual.getClass())) {
+      }
+
+      if (!expected.getClass().equals(actual.getClass())) {
          return false;
-      } else if (expected instanceof CompoundTag expectedCompound) {
+      }
+
+      if (expected instanceof CompoundTag expectedCompound) {
          CompoundTag actualCompound = (CompoundTag)actual;
          if (actualCompound.size() < expectedCompound.size()) {
             return false;
-         } else {
-            for (Entry<String, Tag> entry : expectedCompound.entrySet()) {
-               Tag tag = entry.getValue();
-               if (!compareNbt(tag, actualCompound.get(entry.getKey()), partialListMatches)) {
-                  return false;
-               }
-            }
-
-            return true;
          }
-      } else {
-         if (expected instanceof ListTag expectedList && partialListMatches) {
-            ListTag actualList = (ListTag)actual;
-            if (expectedList.isEmpty()) {
-               return actualList.isEmpty();
-            }
 
-            if (actualList.size() < expectedList.size()) {
+         for (Entry<String, Tag> entry : expectedCompound.entrySet()) {
+            Tag tag = entry.getValue();
+            if (!compareNbt(tag, actualCompound.get(entry.getKey()), partialListMatches)) {
                return false;
             }
+         }
 
-            for (Tag tag : expectedList) {
-               boolean found = false;
+         return true;
+      } else if (expected instanceof ListTag expectedList && partialListMatches) {
+         ListTag actualList = (ListTag)actual;
+         if (expectedList.isEmpty()) {
+            return actualList.isEmpty();
+         }
 
-               for (Tag value : actualList) {
-                  if (compareNbt(tag, value, partialListMatches)) {
-                     found = true;
-                     break;
-                  }
-               }
+         if (actualList.size() < expectedList.size()) {
+            return false;
+         }
 
-               if (!found) {
-                  return false;
+         for (Tag tag : expectedList) {
+            boolean found = false;
+
+            for (Tag value : actualList) {
+               if (compareNbt(tag, value, partialListMatches)) {
+                  found = true;
+                  break;
                }
             }
 
-            return true;
+            if (!found) {
+               return false;
+            }
          }
 
+         return true;
+      } else {
          return expected.equals(actual);
       }
    }
@@ -119,23 +125,23 @@ public final class NbtUtils {
       Optional<? extends Holder<Block>> blockHolder = tag.<ResourceKey<T>>read("id", BLOCK_NAME_CODEC).flatMap(blocks::get);
       if (blockHolder.isEmpty()) {
          return Blocks.AIR.defaultBlockState();
-      } else {
-         Block block = blockHolder.get().value();
-         BlockState result = block.defaultBlockState();
-         Optional<CompoundTag> properties = tag.getCompound("properties");
-         if (properties.isPresent()) {
-            StateDefinition<Block, BlockState> definition = block.getStateDefinition();
+      }
 
-            for (String key : properties.get().keySet()) {
-               Property<?> property = definition.getProperty(key);
-               if (property != null) {
-                  result = setValueHelper(result, property, key, properties.get(), tag);
-               }
+      Block block = blockHolder.get().value();
+      BlockState result = block.defaultBlockState();
+      Optional<CompoundTag> properties = tag.getCompound("properties");
+      if (properties.isPresent()) {
+         StateDefinition<Block, BlockState> definition = block.getStateDefinition();
+
+         for (String key : properties.get().keySet()) {
+            Property<?> property = definition.getProperty(key);
+            if (property != null) {
+               result = setValueHelper(result, property, key, properties.get(), tag);
             }
          }
-
-         return result;
       }
+
+      return result;
    }
 
    private static <S extends StateHolder<?, S>, T extends Comparable<T>> S setValueHelper(
@@ -144,10 +150,10 @@ public final class NbtUtils {
       Optional<T> value = properties.getString(key).flatMap(property::getValue);
       if (value.isPresent()) {
          return result.setValue(property, value.get());
-      } else {
-         LOGGER.warn("Unable to read property: {} with value: {} for blockstate: {}", new Object[]{key, properties.get(key), tag});
-         return result;
       }
+
+      LOGGER.warn("Unable to read property: {} with value: {} for blockstate: {}", new Object[]{key, properties.get(key), tag});
+      return result;
    }
 
    private static void writeStateProperties(final StateHolder<?, ?> state, final CompoundTag tag) {
@@ -242,10 +248,10 @@ public final class NbtUtils {
                .compoundStream()
                .map(
                   oldPalette -> palette.keySet()
-                        .stream()
-                        .map(key -> oldPalette.getString(key).orElseThrow())
-                        .map(compound -> unpackBlockState(compound, templateVersion))
-                        .collect(Collectors.toCollection(ListTag::new))
+                     .stream()
+                     .map(key -> oldPalette.getString(key).orElseThrow())
+                     .map(compound -> unpackBlockState(compound, templateVersion))
+                     .collect(Collectors.toCollection(ListTag::new))
                )
                .collect(Collectors.toCollection(ListTag::new))
          );

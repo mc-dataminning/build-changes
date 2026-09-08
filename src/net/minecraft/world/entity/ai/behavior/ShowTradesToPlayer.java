@@ -18,8 +18,7 @@ import org.jspecify.annotations.Nullable;
 public class ShowTradesToPlayer extends Behavior<Villager> {
    private static final int MAX_LOOK_TIME = 900;
    private static final int STARTING_LOOK_TIME = 40;
-   @Nullable
-   private ItemStack playerItemStack;
+   private @Nullable ItemStack playerItemStack;
    private final List<ItemStack> displayItems = Lists.newArrayList();
    private int cycleCounter;
    private int displayIndex;
@@ -33,10 +32,10 @@ public class ShowTradesToPlayer extends Behavior<Villager> {
       Brain<?> brain = body.getBrain();
       if (brain.getMemory(MemoryModuleType.INTERACTION_TARGET).isEmpty()) {
          return false;
-      } else {
-         LivingEntity target = brain.getMemory(MemoryModuleType.INTERACTION_TARGET).get();
-         return target.is(EntityTypes.PLAYER) && body.isAlive() && target.isAlive() && !body.isBaby() && body.distanceToSqr(target) <= 17.0;
       }
+
+      LivingEntity target = brain.getMemory(MemoryModuleType.INTERACTION_TARGET).get();
+      return target.is(EntityTypes.PLAYER) && body.isAlive() && target.isAlive() && !body.isBaby() && body.distanceToSqr(target) <= 17.0;
    }
 
    public boolean canStillUse(final ServerLevel level, final Villager body, final long timestamp) {

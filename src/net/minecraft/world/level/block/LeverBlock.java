@@ -23,7 +23,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.redstone.ExperimentalRedstoneUtils;
 import net.minecraft.world.level.redstone.Orientation;
@@ -39,15 +38,13 @@ public class LeverBlock extends FaceAttachedHorizontalDirectionalBlock {
 
    protected LeverBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, Boolean.valueOf(false)).setValue(FACE, AttachFace.WALL)
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, false).setValue(FACE, AttachFace.WALL));
       this.shapes = this.makeShapes();
    }
 
    private Function<BlockState, VoxelShape> makeShapes() {
       Map<AttachFace, Map<Direction, VoxelShape>> attachFace = Shapes.rotateAttachFace(Block.boxZ(6.0, 8.0, 10.0, 16.0));
-      return this.getShapeForEachState(state -> attachFace.get(state.getValue(FACE)).get(state.getValue(FACING)), new Property[]{POWERED});
+      return this.getShapeForEachState(state -> attachFace.get(state.getValue(FACE)).get(state.getValue(FACING)), POWERED);
    }
 
    @Override
@@ -82,7 +79,7 @@ public class LeverBlock extends FaceAttachedHorizontalDirectionalBlock {
       super.onExplosionHit(state, level, pos, explosion, onHit);
    }
 
-   public void pull(BlockState state, final Level level, final BlockPos pos, @Nullable final Player player) {
+   public void pull(BlockState state, final Level level, final BlockPos pos, final @Nullable Player player) {
       state = state.cycle(POWERED);
       level.setBlockAndUpdate(pos, state);
       this.updateNeighbours(state, level, pos);
@@ -90,7 +87,7 @@ public class LeverBlock extends FaceAttachedHorizontalDirectionalBlock {
       level.gameEvent(player, state.getValue(POWERED) ? GameEvent.BLOCK_ACTIVATE : GameEvent.BLOCK_DEACTIVATE, pos);
    }
 
-   protected static void playSound(@Nullable final Player player, final LevelAccessor level, final BlockPos pos, final BlockState stateAfter) {
+   protected static void playSound(final @Nullable Player player, final LevelAccessor level, final BlockPos pos, final BlockState stateAfter) {
       float pitch = stateAfter.getValue(POWERED) ? 0.6F : 0.5F;
       level.playSound(player, pos, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 0.3F, pitch);
    }
@@ -98,9 +95,9 @@ public class LeverBlock extends FaceAttachedHorizontalDirectionalBlock {
    private static void makeParticle(final BlockState state, final LevelAccessor level, final BlockPos pos, final float scale) {
       Direction opposite = state.getValue(FACING).getOpposite();
       Direction oppositeConnect = getConnectedDirection(state).getOpposite();
-      double x = (double)pos.getX() + 0.5 + 0.1 * (double)opposite.getStepX() + 0.2 * (double)oppositeConnect.getStepX();
-      double y = (double)pos.getY() + 0.5 + 0.1 * (double)opposite.getStepY() + 0.2 * (double)oppositeConnect.getStepY();
-      double z = (double)pos.getZ() + 0.5 + 0.1 * (double)opposite.getStepZ() + 0.2 * (double)oppositeConnect.getStepZ();
+      double x = pos.getX() + 0.5 + 0.1 * opposite.getStepX() + 0.2 * oppositeConnect.getStepX();
+      double y = pos.getY() + 0.5 + 0.1 * opposite.getStepY() + 0.2 * oppositeConnect.getStepY();
+      double z = pos.getZ() + 0.5 + 0.1 * opposite.getStepZ() + 0.2 * oppositeConnect.getStepZ();
       level.addParticle(new DustParticleOptions(16711680, scale), x, y, z, 0.0, 0.0, 0.0);
    }
 

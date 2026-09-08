@@ -23,7 +23,7 @@ public class ReversePortalParticle extends PortalParticle {
 
    @Override
    public float getQuadSize(final float a) {
-      float s = 1.0F - ((float)this.age + a) / ((float)this.lifetime * 1.5F);
+      float s = 1.0F - (this.age + a) / (this.lifetime * 1.5F);
       return this.quadSize * s;
    }
 
@@ -35,10 +35,10 @@ public class ReversePortalParticle extends PortalParticle {
       if (this.age++ >= this.lifetime) {
          this.remove();
       } else {
-         float speedMultiplier = (float)this.age / (float)this.lifetime;
-         this.x = this.x + this.xd * (double)speedMultiplier;
-         this.y = this.y + this.yd * (double)speedMultiplier;
-         this.z = this.z + this.zd * (double)speedMultiplier;
+         float speedMultiplier = (float)this.age / this.lifetime;
+         this.x = this.x + this.xd * speedMultiplier;
+         this.y = this.y + this.yd * speedMultiplier;
+         this.z = this.z + this.zd * speedMultiplier;
       }
    }
 

@@ -15,26 +15,24 @@ import org.jspecify.annotations.Nullable;
 public interface ServerEntityGetter extends EntityGetter {
    ServerLevel getLevel();
 
-   @Nullable
-   default Player getNearestPlayer(final TargetingConditions targetConditions, final LivingEntity source) {
+   default @Nullable Player getNearestPlayer(final TargetingConditions targetConditions, final LivingEntity source) {
       return this.getNearestEntity(this.players(), targetConditions, source, source.getX(), source.getY(), source.getZ());
    }
 
-   @Nullable
-   default Player getNearestPlayer(final TargetingConditions targetConditions, final LivingEntity source, final double x, final double y, final double z) {
+   default @Nullable Player getNearestPlayer(
+      final TargetingConditions targetConditions, final LivingEntity source, final double x, final double y, final double z
+   ) {
       return this.getNearestEntity(this.players(), targetConditions, source, x, y, z);
    }
 
-   @Nullable
-   default Player getNearestPlayer(final TargetingConditions targetConditions, final double x, final double y, final double z) {
+   default @Nullable Player getNearestPlayer(final TargetingConditions targetConditions, final double x, final double y, final double z) {
       return this.getNearestEntity(this.players(), targetConditions, null, x, y, z);
    }
 
-   @Nullable
-   default <T extends LivingEntity> T getNearestEntity(
+   default <T extends LivingEntity> @Nullable T getNearestEntity(
       final Class<? extends T> type,
       final TargetingConditions targetConditions,
-      @Nullable final LivingEntity source,
+      final @Nullable LivingEntity source,
       final double x,
       final double y,
       final double z,
@@ -43,11 +41,10 @@ public interface ServerEntityGetter extends EntityGetter {
       return this.getNearestEntity(this.getEntitiesOfClass(type, bb, entity -> true), targetConditions, source, x, y, z);
    }
 
-   @Nullable
-   default LivingEntity getNearestEntity(
+   default @Nullable LivingEntity getNearestEntity(
       final TagKey<EntityType<?>> tag,
       final TargetingConditions targetConditions,
-      @Nullable final LivingEntity source,
+      final @Nullable LivingEntity source,
       final double x,
       final double y,
       final double z,
@@ -69,8 +66,7 @@ public interface ServerEntityGetter extends EntityGetter {
       return nearestEntity;
    }
 
-   @Nullable
-   default <T extends Entity> T getNearestEntity(final List<? extends T> entities, final double x, final double y, final double z) {
+   default <T extends Entity> @Nullable T getNearestEntity(final List<? extends T> entities, final double x, final double y, final double z) {
       double best = -1.0;
       T result = null;
 
@@ -85,11 +81,10 @@ public interface ServerEntityGetter extends EntityGetter {
       return result;
    }
 
-   @Nullable
-   default <T extends LivingEntity> T getNearestEntity(
+   default <T extends LivingEntity> @Nullable T getNearestEntity(
       final List<? extends T> entities,
       final TargetingConditions targetConditions,
-      @Nullable final LivingEntity source,
+      final @Nullable LivingEntity source,
       final double x,
       final double y,
       final double z

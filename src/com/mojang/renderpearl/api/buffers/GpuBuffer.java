@@ -20,8 +20,7 @@ public interface GpuBuffer extends UncheckedAutoCloseable {
 
    long size();
 
-   @GpuBuffer.Usage
-   int usage();
+   @GpuBuffer.Usage int usage();
 
    boolean isClosed();
 
@@ -46,7 +45,7 @@ public interface GpuBuffer extends UncheckedAutoCloseable {
    GpuBufferSlice.MappedView map(long offset, long length, boolean read, boolean write);
 
    @Retention(RetentionPolicy.CLASS)
-   @Target({ElementType.TYPE_USE})
-   public @interface Usage {
+   @Target(ElementType.TYPE_USE)
+   @interface Usage {
    }
 }

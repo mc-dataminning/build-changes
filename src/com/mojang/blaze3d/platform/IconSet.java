@@ -14,7 +14,7 @@ public enum IconSet {
 
    private final String[] path;
 
-   private IconSet(final String... path) {
+   IconSet(final String... path) {
       this.path = path;
    }
 

@@ -22,8 +22,8 @@ public class MultiLineTextWidget extends AbstractStringWidget {
       super(x, y, 0, 0, message, font);
       this.cache = Util.singleKeyCache(
          key -> key.maxRows.isPresent()
-               ? MultiLineLabel.create(font, key.maxWidth, key.maxRows.getAsInt(), key.message)
-               : MultiLineLabel.create(font, key.message, key.maxWidth)
+            ? MultiLineLabel.create(font, key.maxWidth, key.maxRows.getAsInt(), key.message)
+            : MultiLineLabel.create(font, key.message, key.maxWidth)
       );
       this.active = false;
    }
@@ -79,6 +79,6 @@ public class MultiLineTextWidget extends AbstractStringWidget {
       return new MultiLineTextWidget.CacheKey(this.getMessage(), this.maxWidth.orElse(Integer.MAX_VALUE), this.maxRows);
    }
 
-   private static record CacheKey(Component message, int maxWidth, OptionalInt maxRows) {
+   private record CacheKey(Component message, int maxWidth, OptionalInt maxRows) {
    }
 }

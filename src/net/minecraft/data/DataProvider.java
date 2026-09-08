@@ -46,7 +46,7 @@ public interface DataProvider {
    }
 
    static <T, E> CompletableFuture<?> saveAll(final CachedOutput cache, final Codec<E> codec, final Function<T, Path> pathGetter, final Map<T, E> contents) {
-      return saveAll(cache, (Function<Object, JsonElement>)(e -> (JsonElement)codec.encodeStart(JsonOps.INSTANCE, e).getOrThrow()), pathGetter, contents);
+      return saveAll(cache, e -> (JsonElement)codec.encodeStart(JsonOps.INSTANCE, e).getOrThrow(), pathGetter, contents);
    }
 
    static <T, E> CompletableFuture<?> saveAll(
@@ -88,26 +88,26 @@ public interface DataProvider {
                jsonWriter.setSerializeNulls(false);
                jsonWriter.setIndent("  ");
                GsonHelper.writeValue(jsonWriter, root, KEY_COMPARATOR);
-            } catch (Throwable var9) {
+            } catch (Throwable t$) {
                try {
                   jsonWriter.close();
-               } catch (Throwable var8) {
-                  var9.addSuppressed(var8);
+               } catch (Throwable x2) {
+                  t$.addSuppressed(x2);
                }
 
-               throw var9;
+               throw t$;
             }
 
             jsonWriter.close();
             cache.writeIfNeeded(path, bytes.toByteArray(), hashedBytes.hash());
-         } catch (IOException var10) {
-            LOGGER.error("Failed to save file to {}", path, var10);
+         } catch (IOException e) {
+            LOGGER.error("Failed to save file to {}", path, e);
          }
       }, Util.backgroundExecutor().forName("saveStable"));
    }
 
    @FunctionalInterface
-   public interface Factory<T extends DataProvider> {
+   interface Factory<T extends DataProvider> {
       T create(PackOutput output);
    }
 }

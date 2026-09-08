@@ -130,16 +130,16 @@ public class AquaticFeatures {
                Stream.of(tubeCoralBlock, brainCoralBlock, bubbleCoralBlock, fireCoralBlock, hornCoralBlock)
                   .flatMap(
                      blockFeature -> Stream.of(
-                           PlacementUtils.inlinePlaced(new CoralTreeFeature(PlacementUtils.inlinePlaced(blockFeature, coralAllowed))),
-                           PlacementUtils.inlinePlaced(new CoralClawFeature(PlacementUtils.inlinePlaced(blockFeature, coralAllowed))),
-                           PlacementUtils.inlinePlaced(
-                              blockFeature,
-                              OffsetPlacement.vertical(UniformInt.of(-3, -1)),
-                              new CuboidPlacement(UniformInt.of(3, 5), UniformInt.of(3, 5), false, false),
-                              new RandomChancePlacement(0.9F),
-                              coralAllowed
-                           )
+                        PlacementUtils.inlinePlaced(new CoralTreeFeature(PlacementUtils.inlinePlaced(blockFeature, coralAllowed))),
+                        PlacementUtils.inlinePlaced(new CoralClawFeature(PlacementUtils.inlinePlaced(blockFeature, coralAllowed))),
+                        PlacementUtils.inlinePlaced(
+                           blockFeature,
+                           OffsetPlacement.vertical(UniformInt.of(-3, -1)),
+                           new CuboidPlacement(UniformInt.of(3, 5), UniformInt.of(3, 5), false, false),
+                           new RandomChancePlacement(0.9F),
+                           coralAllowed
                         )
+                     )
                   )
                   .toList()
             )

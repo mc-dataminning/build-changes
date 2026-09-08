@@ -8,12 +8,12 @@ import net.minecraft.util.ExtraCodecs;
 public record ServerLinksDialog(CommonDialogData common, Optional<ActionButton> exitAction, int columns, int buttonWidth) implements ButtonListDialog {
    public static final MapCodec<ServerLinksDialog> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               CommonDialogData.MAP_CODEC.forGetter(ServerLinksDialog::common),
-               ActionButton.CODEC.optionalFieldOf("exit_action").forGetter(ServerLinksDialog::exitAction),
-               ExtraCodecs.POSITIVE_INT.optionalFieldOf("columns", 2).forGetter(ServerLinksDialog::columns),
-               WIDTH_CODEC.optionalFieldOf("button_width", 150).forGetter(ServerLinksDialog::buttonWidth)
-            )
-            .apply(i, ServerLinksDialog::new)
+            CommonDialogData.MAP_CODEC.forGetter(ServerLinksDialog::common),
+            ActionButton.CODEC.optionalFieldOf("exit_action").forGetter(ServerLinksDialog::exitAction),
+            ExtraCodecs.POSITIVE_INT.optionalFieldOf("columns", 2).forGetter(ServerLinksDialog::columns),
+            WIDTH_CODEC.optionalFieldOf("button_width", 150).forGetter(ServerLinksDialog::buttonWidth)
+         )
+         .apply(i, ServerLinksDialog::new)
    );
 
    @Override

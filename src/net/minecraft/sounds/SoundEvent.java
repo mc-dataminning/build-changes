@@ -15,10 +15,9 @@ import net.minecraft.resources.Identifier;
 public record SoundEvent(Identifier location, Optional<Float> fixedRange) {
    public static final Codec<SoundEvent> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Identifier.CODEC.fieldOf("sound_id").forGetter(SoundEvent::location),
-               Codec.FLOAT.lenientOptionalFieldOf("range").forGetter(SoundEvent::fixedRange)
-            )
-            .apply(i, SoundEvent::create)
+            Identifier.CODEC.fieldOf("sound_id").forGetter(SoundEvent::location), Codec.FLOAT.lenientOptionalFieldOf("range").forGetter(SoundEvent::fixedRange)
+         )
+         .apply(i, SoundEvent::create)
    );
    public static final Codec<Holder<SoundEvent>> CODEC = RegistryCodecs.holder(Registries.SOUND_EVENT, DIRECT_CODEC);
    public static final StreamCodec<ByteBuf, SoundEvent> DIRECT_STREAM_CODEC = StreamCodec.composite(

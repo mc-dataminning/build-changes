@@ -21,8 +21,7 @@ public class ExecutionContext<T> implements AutoCloseable {
    private final int commandLimit;
    private final int forkLimit;
    private final ProfilerFiller profiler;
-   @Nullable
-   private TraceCallbacks tracer;
+   private @Nullable TraceCallbacks tracer;
    private int commandQuota;
    private boolean queueOverflow;
    private final Deque<CommandQueueEntry<T>> commandQueue = Queues.newArrayDeque();
@@ -39,10 +38,10 @@ public class ExecutionContext<T> implements AutoCloseable {
    private static <T extends ExecutionCommandSource<T>> Frame createTopFrame(final ExecutionContext<T> context, final CommandResultCallback frameResult) {
       if (context.currentFrameDepth == 0) {
          return new Frame(0, frameResult, context.commandQueue::clear);
-      } else {
-         int reentrantFrameDepth = context.currentFrameDepth + 1;
-         return new Frame(reentrantFrameDepth, frameResult, context.frameControlForDepth(reentrantFrameDepth));
       }
+
+      int reentrantFrameDepth = context.currentFrameDepth + 1;
+      return new Frame(reentrantFrameDepth, frameResult, context.frameControlForDepth(reentrantFrameDepth));
    }
 
    public static <T extends ExecutionCommandSource<T>> void queueInitialFunctionCall(
@@ -118,12 +117,11 @@ public class ExecutionContext<T> implements AutoCloseable {
       this.newTopCommands.clear();
    }
 
-   public void tracer(@Nullable final TraceCallbacks tracer) {
+   public void tracer(final @Nullable TraceCallbacks tracer) {
       this.tracer = tracer;
    }
 
-   @Nullable
-   public TraceCallbacks tracer() {
+   public @Nullable TraceCallbacks tracer() {
       return this.tracer;
    }
 

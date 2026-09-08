@@ -10,7 +10,7 @@ public enum Visibility {
    private final boolean accessible;
    private final boolean ticking;
 
-   private Visibility(final boolean accessible, final boolean ticking) {
+   Visibility(final boolean accessible, final boolean ticking) {
       this.accessible = accessible;
       this.ticking = ticking;
    }

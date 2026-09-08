@@ -39,8 +39,7 @@ public class AccessibilityOnboardingScreen extends Screen {
    private float timer;
    private final Runnable onClose;
    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this, this.initTitleYPos(), 33);
-   @Nullable
-   private FocusableTextWidget focusableTextWidget;
+   private @Nullable FocusableTextWidget focusableTextWidget;
    private float fadeInStart;
    private boolean fadingIn = true;
    private float fadeOutStart;

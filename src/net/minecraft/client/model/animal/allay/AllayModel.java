@@ -77,17 +77,17 @@ public class AllayModel extends EntityModel<AllayRenderState> implements ArmedMo
       float animationSpeed = state.walkAnimationSpeed;
       float animationPos = state.walkAnimationPos;
       float flapSpeed = state.ageInTicks * 20.0F * (float) (Math.PI / 180.0) + animationPos;
-      float flapAmount = Mth.cos((double)flapSpeed) * (float) Math.PI * 0.15F + animationSpeed;
+      float flapAmount = Mth.cos(flapSpeed) * (float) Math.PI * 0.15F + animationSpeed;
       float idleBobSpeed = state.ageInTicks * 9.0F * (float) (Math.PI / 180.0);
       float flyingFactor = Math.min(animationSpeed / 0.3F, 1.0F);
       float idleBobFactor = 1.0F - flyingFactor;
       float holdingItemFactor = state.holdingAnimationProgress;
       if (state.isDancing) {
          float danceSpeed = state.ageInTicks * 8.0F * (float) (Math.PI / 180.0) + animationSpeed;
-         float danceFrequency = Mth.cos((double)danceSpeed) * 16.0F * (float) (Math.PI / 180.0);
+         float danceFrequency = Mth.cos(danceSpeed) * 16.0F * (float) (Math.PI / 180.0);
          float spinningRotation = state.spinningProgress;
-         float headTiltZ = Mth.cos((double)danceSpeed) * 14.0F * (float) (Math.PI / 180.0);
-         float headTiltY = Mth.cos((double)danceSpeed) * 30.0F * (float) (Math.PI / 180.0);
+         float headTiltZ = Mth.cos(danceSpeed) * 14.0F * (float) (Math.PI / 180.0);
+         float headTiltY = Mth.cos(danceSpeed) * 30.0F * (float) (Math.PI / 180.0);
          this.root.yRot = state.isSpinning ? (float) (Math.PI * 4) * spinningRotation : this.root.yRot;
          this.root.zRot = danceFrequency * (1.0F - spinningRotation);
          this.head.yRot = headTiltY * (1.0F - spinningRotation);
@@ -103,11 +103,11 @@ public class AllayModel extends EntityModel<AllayRenderState> implements ArmedMo
       this.left_wing.yRot = (float) (Math.PI / 4) - flapAmount;
       this.body.xRot = flyingFactor * (float) (Math.PI / 4);
       float armFlyingRotX = holdingItemFactor * Mth.lerp(flyingFactor, (float) (-Math.PI / 3), -1.134464F);
-      this.root.y = this.root.y + (float)Math.cos((double)idleBobSpeed) * 0.25F * idleBobFactor;
+      this.root.y = this.root.y + (float)Math.cos(idleBobSpeed) * 0.25F * idleBobFactor;
       this.right_arm.xRot = armFlyingRotX;
       this.left_arm.xRot = armFlyingRotX;
       float armIdleBobFactor = idleBobFactor * (1.0F - holdingItemFactor);
-      float armIdleBobAmount = 0.43633232F - Mth.cos((double)(idleBobSpeed + (float) (Math.PI * 3.0 / 2.0))) * (float) Math.PI * 0.075F * armIdleBobFactor;
+      float armIdleBobAmount = 0.43633232F - Mth.cos(idleBobSpeed + (float) (Math.PI * 3.0 / 2.0)) * (float) Math.PI * 0.075F * armIdleBobFactor;
       this.left_arm.zRot = -armIdleBobAmount;
       this.right_arm.zRot = armIdleBobAmount;
       this.right_arm.yRot = 0.27925268F * holdingItemFactor;

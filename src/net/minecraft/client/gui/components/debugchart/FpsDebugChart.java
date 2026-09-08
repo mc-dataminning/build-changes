@@ -21,7 +21,7 @@ public class FpsDebugChart extends AbstractDebugChart {
       graphics.horizontalLine(left, left + width - 1, bottom - 30, -1);
       int framerateLimit = Minecraft.getInstance().options.framerateLimit().get();
       if (framerateLimit > 0 && framerateLimit <= 250) {
-         graphics.horizontalLine(left, left + width - 1, bottom - this.getSampleHeight(1.0E9 / (double)framerateLimit) - 1, -16711681);
+         graphics.horizontalLine(left, left + width - 1, bottom - this.getSampleHeight(1.0E9 / framerateLimit) - 1, -16711681);
       }
    }
 
@@ -37,7 +37,7 @@ public class FpsDebugChart extends AbstractDebugChart {
 
    @Override
    protected int getSampleColor(final long nanos) {
-      return this.getSampleColor(toMilliseconds((double)nanos), 0.0, -16711936, 28.0, -256, 56.0, -65536);
+      return this.getSampleColor(toMilliseconds(nanos), 0.0, -16711936, 28.0, -256, 56.0, -65536);
    }
 
    private static double toMilliseconds(final double nanos) {

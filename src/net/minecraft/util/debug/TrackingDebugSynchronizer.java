@@ -22,7 +22,6 @@ import net.minecraft.util.Unit;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
 import net.minecraft.world.entity.ai.village.poi.PoiRecord;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ChunkPos;
 import org.jspecify.annotations.Nullable;
 
@@ -67,12 +66,8 @@ public abstract class TrackingDebugSynchronizer<T> {
       ChunkMap chunkMap = level.getChunkSource().chunkMap;
 
       for (UUID playerId : this.subscribedPlayers) {
-         Player var8 = level.getPlayerByUUID(playerId);
-         if (var8 instanceof ServerPlayer) {
-            ServerPlayer player = (ServerPlayer)var8;
-            if (chunkMap.isChunkTracked(player, trackedChunk.x(), trackedChunk.z())) {
-               player.connection.send(packet);
-            }
+         if (level.getPlayerByUUID(playerId) instanceof ServerPlayer player && chunkMap.isChunkTracked(player, trackedChunk.x(), trackedChunk.z())) {
+            player.connection.send(packet);
          }
       }
    }
@@ -168,19 +163,19 @@ public abstract class TrackingDebugSynchronizer<T> {
             }
          }
 
-         for (Entry<BlockPos, TrackingDebugSynchronizer.ValueSource<T>> entryx : this.blockEntitySources.entrySet()) {
-            DebugSubscription.Update<T> update = entryx.getValue().pollUpdate(this.subscription);
+         for (Entry<BlockPos, TrackingDebugSynchronizer.ValueSource<T>> entry : this.blockEntitySources.entrySet()) {
+            DebugSubscription.Update<T> update = entry.getValue().pollUpdate(this.subscription);
             if (update != null) {
-               BlockPos blockPos = entryx.getKey();
+               BlockPos blockPos = entry.getKey();
                ChunkPos chunkPos = ChunkPos.containing(blockPos);
                this.sendToPlayersTrackingChunk(level, chunkPos, new ClientboundDebugBlockValuePacket(blockPos, update));
             }
          }
 
-         for (Entry<UUID, TrackingDebugSynchronizer.ValueSource<T>> entryxx : this.entitySources.entrySet()) {
-            DebugSubscription.Update<T> update = entryxx.getValue().pollUpdate(this.subscription);
+         for (Entry<UUID, TrackingDebugSynchronizer.ValueSource<T>> entry : this.entitySources.entrySet()) {
+            DebugSubscription.Update<T> update = entry.getValue().pollUpdate(this.subscription);
             if (update != null) {
-               Entity entity = Objects.requireNonNull(level.getEntity(entryxx.getKey()));
+               Entity entity = Objects.requireNonNull(level.getEntity(entry.getKey()));
                this.sendToPlayersTrackingEntity(level, entity, new ClientboundDebugEntityValuePacket(entity.getId(), update));
             }
          }
@@ -244,15 +239,13 @@ public abstract class TrackingDebugSynchronizer<T> {
 
    private static class ValueSource<T> {
       private final DebugValueSource.ValueGetter<T> getter;
-      @Nullable
-      private T lastSyncedValue;
+      private @Nullable T lastSyncedValue;
 
       private ValueSource(final DebugValueSource.ValueGetter<T> getter) {
          this.getter = getter;
       }
 
-      @Nullable
-      public DebugSubscription.Update<T> pollUpdate(final DebugSubscription<T> subscription) {
+      public DebugSubscription.@Nullable Update<T> pollUpdate(final DebugSubscription<T> subscription) {
          T newValue = this.getter.get();
          if (!Objects.equals(newValue, this.lastSyncedValue)) {
             this.lastSyncedValue = newValue;

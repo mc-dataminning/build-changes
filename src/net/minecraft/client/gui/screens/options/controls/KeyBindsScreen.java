@@ -17,8 +17,7 @@ import org.jspecify.annotations.Nullable;
 
 public class KeyBindsScreen extends OptionsSubScreen {
    private static final Component TITLE = Component.translatable("controls.keybinds.title");
-   @Nullable
-   public KeyMapping selectedKey;
+   public @Nullable KeyMapping selectedKey;
    public long lastKeySelection;
    private KeyBindsList keyBindsList;
    private Button resetButton;

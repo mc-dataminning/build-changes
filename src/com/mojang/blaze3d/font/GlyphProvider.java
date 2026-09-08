@@ -11,14 +11,13 @@ public interface GlyphProvider extends AutoCloseable {
    default void close() {
    }
 
-   @Nullable
-   default UnbakedGlyph getGlyph(final int codepoint) {
+   default @Nullable UnbakedGlyph getGlyph(final int codepoint) {
       return null;
    }
 
    IntSet getSupportedGlyphs();
 
-   public static record Conditional(GlyphProvider provider, FontOption.Filter filter) implements AutoCloseable {
+   record Conditional(GlyphProvider provider, FontOption.Filter filter) implements AutoCloseable {
       @Override
       public void close() {
          this.provider.close();

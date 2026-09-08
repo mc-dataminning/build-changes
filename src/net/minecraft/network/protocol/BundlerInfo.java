@@ -2,7 +2,6 @@ package net.minecraft.network.protocol;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import net.minecraft.network.PacketListener;
@@ -27,28 +26,24 @@ public interface BundlerInfo {
             }
          }
 
-         @Nullable
          @Override
-         public BundlerInfo.Bundler startPacketBundling(final Packet<?> packet) {
+         public BundlerInfo.@Nullable Bundler startPacketBundling(final Packet<?> packet) {
             return packet == delimiterPacket ? new BundlerInfo.Bundler() {
-               private final List<Packet<? super T>> bundlePackets;
+               private final List<Packet<? super T>> bundlePackets = new ArrayList<>();
 
-               {
-                  Objects.requireNonNull(<VAR_NAMELESS_ENCLOSURE>);
-                  this.bundlePackets = new ArrayList<>();
-               }
-
-               @Nullable
                @Override
-               public Packet<?> addPacket(final Packet<?> packet) {
+               public @Nullable Packet<?> addPacket(final Packet<?> packet) {
                   if (packet == delimiterPacket) {
                      return constructor.apply(this.bundlePackets);
-                  } else if (this.bundlePackets.size() >= 4096) {
-                     throw new IllegalStateException("Too many packets in a bundle");
-                  } else {
-                     this.bundlePackets.add((Packet<? super T>)packet);
-                     return null;
                   }
+
+                  Packet<T> castPacket = (Packet<T>)packet;
+                  if (this.bundlePackets.size() >= 4096) {
+                     throw new IllegalStateException("Too many packets in a bundle");
+                  }
+
+                  this.bundlePackets.add(castPacket);
+                  return null;
                }
             } : null;
          }
@@ -57,11 +52,9 @@ public interface BundlerInfo {
 
    void unbundlePacket(Packet<?> packet, Consumer<Packet<?>> output);
 
-   @Nullable
-   BundlerInfo.Bundler startPacketBundling(Packet<?> packet);
+   BundlerInfo.@Nullable Bundler startPacketBundling(Packet<?> packet);
 
-   public interface Bundler {
-      @Nullable
-      Packet<?> addPacket(Packet<?> packet);
+   interface Bundler {
+      @Nullable Packet<?> addPacket(Packet<?> packet);
    }
 }

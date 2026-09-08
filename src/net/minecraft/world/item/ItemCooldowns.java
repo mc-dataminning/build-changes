@@ -22,8 +22,8 @@ public class ItemCooldowns {
       Identifier group = this.getCooldownGroup(item);
       ItemCooldowns.CooldownInstance cooldown = this.cooldowns.get(group);
       if (cooldown != null) {
-         float duration = (float)(cooldown.endTime - cooldown.startTime);
-         float remaining = (float)cooldown.endTime - ((float)this.tickCount + a);
+         float duration = cooldown.endTime - cooldown.startTime;
+         float remaining = cooldown.endTime - (this.tickCount + a);
          return Mth.clamp(remaining / duration, 0.0F, 1.0F);
       } else {
          return 0.0F;
@@ -71,6 +71,6 @@ public class ItemCooldowns {
    protected void onCooldownEnded(final Identifier cooldownGroup) {
    }
 
-   private static record CooldownInstance(int startTime, int endTime) {
+   private record CooldownInstance(int startTime, int endTime) {
    }
 }

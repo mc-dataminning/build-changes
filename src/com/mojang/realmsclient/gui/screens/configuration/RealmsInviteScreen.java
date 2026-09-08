@@ -22,14 +22,11 @@ public class RealmsInviteScreen extends RealmsScreen {
    private static final Component NO_SUCH_PLAYER_ERROR_TEXT = Component.translatable("mco.configure.world.players.error").withColor(-65536);
    private static final Component DUPLICATE_PLAYER_TEXT = Component.translatable("mco.configure.world.players.invite.duplicate").withColor(-65536);
    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-   @Nullable
-   private EditBox profileName;
-   @Nullable
-   private Button inviteButton;
+   private @Nullable EditBox profileName;
+   private @Nullable Button inviteButton;
    private final RealmsServer serverData;
    private final RealmsConfigureWorldScreen configureScreen;
-   @Nullable
-   private Component message;
+   private @Nullable Component message;
 
    public RealmsInviteScreen(final RealmsConfigureWorldScreen configureScreen, final RealmsServer serverData) {
       super(TITLE);

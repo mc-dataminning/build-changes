@@ -35,9 +35,9 @@ public class DebugEntryHeightmap implements DebugScreenEntry {
    @Override
    public void display(
       final DebugScreenDisplayer displayer,
-      @Nullable final Level serverOrClientLevel,
-      @Nullable final LevelChunk clientChunk,
-      @Nullable final LevelChunk serverChunk
+      final @Nullable Level serverOrClientLevel,
+      final @Nullable LevelChunk clientChunk,
+      final @Nullable LevelChunk serverChunk
    ) {
       Minecraft minecraft = Minecraft.getInstance();
       Entity entity = minecraft.getCameraEntity();
@@ -56,11 +56,11 @@ public class DebugEntryHeightmap implements DebugScreenEntry {
          heightmaps.setLength(0);
          heightmaps.append("SH");
 
-         for (Heightmap.Types typex : Heightmap.Types.values()) {
-            if (typex.keepAfterWorldgen()) {
-               heightmaps.append(" ").append(HEIGHTMAP_NAMES.get(typex)).append(": ");
+         for (Heightmap.Types type : Heightmap.Types.values()) {
+            if (type.keepAfterWorldgen()) {
+               heightmaps.append(" ").append(HEIGHTMAP_NAMES.get(type)).append(": ");
                if (serverChunk != null) {
-                  heightmaps.append(serverChunk.getHeight(typex, feetPos.getX(), feetPos.getZ()));
+                  heightmaps.append(serverChunk.getHeight(type, feetPos.getX(), feetPos.getZ()));
                } else {
                   heightmaps.append("??");
                }

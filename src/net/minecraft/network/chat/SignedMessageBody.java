@@ -18,12 +18,12 @@ import net.minecraft.util.SignatureUpdater;
 public record SignedMessageBody(String content, Instant timeStamp, long salt, LastSeenMessages lastSeen) {
    public static final MapCodec<SignedMessageBody> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.STRING.fieldOf("content").forGetter(SignedMessageBody::content),
-               ExtraCodecs.INSTANT_ISO8601.fieldOf("time_stamp").forGetter(SignedMessageBody::timeStamp),
-               Codec.LONG.fieldOf("salt").forGetter(SignedMessageBody::salt),
-               LastSeenMessages.CODEC.optionalFieldOf("last_seen", LastSeenMessages.EMPTY).forGetter(SignedMessageBody::lastSeen)
-            )
-            .apply(i, SignedMessageBody::new)
+            Codec.STRING.fieldOf("content").forGetter(SignedMessageBody::content),
+            ExtraCodecs.INSTANT_ISO8601.fieldOf("time_stamp").forGetter(SignedMessageBody::timeStamp),
+            Codec.LONG.fieldOf("salt").forGetter(SignedMessageBody::salt),
+            LastSeenMessages.CODEC.optionalFieldOf("last_seen", LastSeenMessages.EMPTY).forGetter(SignedMessageBody::lastSeen)
+         )
+         .apply(i, SignedMessageBody::new)
    );
 
    public static SignedMessageBody unsigned(final String content) {
@@ -43,7 +43,7 @@ public record SignedMessageBody(String content, Instant timeStamp, long salt, La
       return new SignedMessageBody.Packed(this.content, this.timeStamp, this.salt, this.lastSeen.pack(cache));
    }
 
-   public static record Packed(String content, Instant timeStamp, long salt, LastSeenMessages.Packed lastSeen) {
+   public record Packed(String content, Instant timeStamp, long salt, LastSeenMessages.Packed lastSeen) {
       public static final StreamCodec<ByteBuf, SignedMessageBody.Packed> STREAM_CODEC = StreamCodec.composite(
          ByteBufCodecs.stringUtf8(256),
          SignedMessageBody.Packed::content,

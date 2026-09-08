@@ -12,10 +12,10 @@ import net.minecraft.resources.ResourceKey;
 public class FunctionGameTestInstance extends GameTestInstance {
    public static final MapCodec<FunctionGameTestInstance> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               ResourceKey.codec(Registries.TEST_FUNCTION).fieldOf("function").forGetter(FunctionGameTestInstance::function),
-               TestData.CODEC.forGetter(GameTestInstance::info)
-            )
-            .apply(i, FunctionGameTestInstance::new)
+            ResourceKey.codec(Registries.TEST_FUNCTION).fieldOf("function").forGetter(FunctionGameTestInstance::function),
+            TestData.CODEC.forGetter(GameTestInstance::info)
+         )
+         .apply(i, FunctionGameTestInstance::new)
    );
    private final ResourceKey<Consumer<GameTestHelper>> function;
 

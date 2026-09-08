@@ -2,7 +2,6 @@ package net.minecraft.server.packs;
 
 import java.nio.file.Path;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 import net.minecraft.resources.Identifier;
@@ -29,10 +28,6 @@ public class VanillaPackResources {
 
    public Pack.ResourcesSupplier asResourcesSupplier() {
       return new Pack.ResourcesSupplier() {
-         {
-            Objects.requireNonNull(VanillaPackResources.this);
-         }
-
          @Override
          public PackMetadataResources openMetadata(final PackLocationInfo location) {
             return VanillaPackResources.this.fullResources;

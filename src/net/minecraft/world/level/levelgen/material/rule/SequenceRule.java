@@ -20,23 +20,23 @@ public record SequenceRule(List<MaterialRule> sequence) implements MaterialRule 
    public RuleEvaluator compile(final MaterialRuleContext context) {
       if (this.sequence.size() == 1) {
          return this.sequence.getFirst().compile(context);
-      } else {
-         RuleEvaluator[] sequence = new RuleEvaluator[this.sequence.size()];
+      }
 
-         for (int i = 0; i < sequence.length; i++) {
-            sequence[i] = this.sequence.get(i).compile(context);
+      RuleEvaluator[] sequence = new RuleEvaluator[this.sequence.size()];
+
+      for (int i = 0; i < sequence.length; i++) {
+         sequence[i] = this.sequence.get(i).compile(context);
+      }
+
+      return (blockX, blockY, blockZ) -> {
+         for (RuleEvaluator rule : sequence) {
+            BlockState state = rule.tryApply(blockX, blockY, blockZ);
+            if (state != null) {
+               return state;
+            }
          }
 
-         return (blockX, blockY, blockZ) -> {
-            for (RuleEvaluator rule : sequence) {
-               BlockState state = rule.tryApply(blockX, blockY, blockZ);
-               if (state != null) {
-                  return state;
-               }
-            }
-
-            return null;
-         };
-      }
+         return null;
+      };
    }
 }

@@ -65,8 +65,8 @@ public class OldUsersConverter {
          if (bans.getFile().exists()) {
             try {
                bans.load();
-            } catch (IOException var6) {
-               LOGGER.warn("Could not load existing file {}", bans.getFile().getName(), var6);
+            } catch (IOException e) {
+               LOGGER.warn("Could not load existing file {}", bans.getFile().getName(), e);
             }
          }
 
@@ -81,13 +81,13 @@ public class OldUsersConverter {
                   if (userDef == null) {
                      OldUsersConverter.LOGGER.warn("Could not convert user banlist entry for {}", profile.name());
                      throw new OldUsersConverter.ConversionError("Profile not in the conversionlist");
-                  } else {
-                     Date created = userDef.length > 1 ? OldUsersConverter.parseDate(userDef[1], null) : null;
-                     String source = userDef.length > 2 ? userDef[2] : null;
-                     Date expires = userDef.length > 3 ? OldUsersConverter.parseDate(userDef[3], null) : null;
-                     String reason = userDef.length > 4 ? userDef[4] : null;
-                     bans.add(new UserBanListEntry(profile, created, source, expires, reason));
                   }
+
+                  Date created = userDef.length > 1 ? OldUsersConverter.parseDate(userDef[1], null) : null;
+                  String source = userDef.length > 2 ? userDef[2] : null;
+                  Date expires = userDef.length > 3 ? OldUsersConverter.parseDate(userDef[3], null) : null;
+                  String reason = userDef.length > 4 ? userDef[4] : null;
+                  bans.add(new UserBanListEntry(profile, created, source, expires, reason));
                }
 
                public void onProfileLookupFailed(final String profileName, final Exception exception) {
@@ -101,11 +101,11 @@ public class OldUsersConverter {
             bans.save();
             renameOldFile(OLD_USERBANLIST);
             return true;
-         } catch (IOException var4) {
-            LOGGER.warn("Could not read old user banlist to convert it!", var4);
+         } catch (IOException e) {
+            LOGGER.warn("Could not read old user banlist to convert it!", e);
             return false;
-         } catch (OldUsersConverter.ConversionError var5) {
-            LOGGER.error("Conversion failed, please try again later", var5);
+         } catch (OldUsersConverter.ConversionError e) {
+            LOGGER.error("Conversion failed, please try again later", e);
             return false;
          }
       } else {
@@ -119,8 +119,8 @@ public class OldUsersConverter {
          if (ipBans.getFile().exists()) {
             try {
                ipBans.load();
-            } catch (IOException var11) {
-               LOGGER.warn("Could not load existing file {}", ipBans.getFile().getName(), var11);
+            } catch (IOException e) {
+               LOGGER.warn("Could not load existing file {}", ipBans.getFile().getName(), e);
             }
          }
 
@@ -140,8 +140,8 @@ public class OldUsersConverter {
             ipBans.save();
             renameOldFile(OLD_IPBANLIST);
             return true;
-         } catch (IOException var10) {
-            LOGGER.warn("Could not parse old ip banlist to convert it!", var10);
+         } catch (IOException e) {
+            LOGGER.warn("Could not parse old ip banlist to convert it!", e);
             return false;
          }
       } else {
@@ -155,8 +155,8 @@ public class OldUsersConverter {
          if (opsList.getFile().exists()) {
             try {
                opsList.load();
-            } catch (IOException var6) {
-               LOGGER.warn("Could not load existing file {}", opsList.getFile().getName(), var6);
+            } catch (IOException e) {
+               LOGGER.warn("Could not load existing file {}", opsList.getFile().getName(), e);
             }
          }
 
@@ -180,11 +180,11 @@ public class OldUsersConverter {
             opsList.save();
             renameOldFile(OLD_OPLIST);
             return true;
-         } catch (IOException var4) {
-            LOGGER.warn("Could not read old oplist to convert it!", var4);
+         } catch (IOException e) {
+            LOGGER.warn("Could not read old oplist to convert it!", e);
             return false;
-         } catch (OldUsersConverter.ConversionError var5) {
-            LOGGER.error("Conversion failed, please try again later", var5);
+         } catch (OldUsersConverter.ConversionError e) {
+            LOGGER.error("Conversion failed, please try again later", e);
             return false;
          }
       } else {
@@ -198,8 +198,8 @@ public class OldUsersConverter {
          if (whitelist.getFile().exists()) {
             try {
                whitelist.load();
-            } catch (IOException var6) {
-               LOGGER.warn("Could not load existing file {}", whitelist.getFile().getName(), var6);
+            } catch (IOException e) {
+               LOGGER.warn("Could not load existing file {}", whitelist.getFile().getName(), e);
             }
          }
 
@@ -223,11 +223,11 @@ public class OldUsersConverter {
             whitelist.save();
             renameOldFile(OLD_WHITELIST);
             return true;
-         } catch (IOException var4) {
-            LOGGER.warn("Could not read old whitelist to convert it!", var4);
+         } catch (IOException e) {
+            LOGGER.warn("Could not read old whitelist to convert it!", e);
             return false;
-         } catch (OldUsersConverter.ConversionError var5) {
-            LOGGER.error("Conversion failed, please try again later", var5);
+         } catch (OldUsersConverter.ConversionError e) {
+            LOGGER.error("Conversion failed, please try again later", e);
             return false;
          }
       } else {
@@ -235,8 +235,7 @@ public class OldUsersConverter {
       }
    }
 
-   @Nullable
-   public static UUID convertMobOwnerIfNecessary(final MinecraftServer server, final String owner) {
+   public static @Nullable UUID convertMobOwnerIfNecessary(final MinecraftServer server, final String owner) {
       if (!StringUtil.isNullOrEmpty(owner) && owner.length() <= 16) {
          Optional<UUID> profileId = server.services().nameToIdCache().get(owner).map(NameAndId::id);
          if (profileId.isPresent()) {
@@ -244,8 +243,8 @@ public class OldUsersConverter {
          } else if (!server.isSingleplayer() && server.usesAuthentication()) {
             final List<NameAndId> profiles = new ArrayList<>();
             ProfileLookupCallback callback = new ProfileLookupCallback() {
-               public void onProfileLookupSucceeded(final String profileName, final UUID profileId) {
-                  NameAndId profile = new NameAndId(profileId, profileName);
+               public void onProfileLookupSucceeded(final String profileName, final UUID profileIdx) {
+                  NameAndId profile = new NameAndId(profileIdx, profileName);
                   server.services().nameToIdCache().add(profile);
                   profiles.add(profile);
                }
@@ -262,7 +261,7 @@ public class OldUsersConverter {
       } else {
          try {
             return UUID.fromString(owner);
-         } catch (IllegalArgumentException var5) {
+         } catch (IllegalArgumentException ignored) {
             return null;
          }
       }
@@ -333,8 +332,8 @@ public class OldUsersConverter {
             };
             lookupPlayers(server, Lists.newArrayList(names), callback);
             return true;
-         } catch (OldUsersConverter.ConversionError var12) {
-            LOGGER.error("Conversion failed, please try again later", var12);
+         } catch (OldUsersConverter.ConversionError e) {
+            LOGGER.error("Conversion failed, please try again later", e);
             return false;
          }
       } else {
@@ -375,27 +374,27 @@ public class OldUsersConverter {
 
       if (!foundUserBanlist && !foundIpBanlist && !foundOpList && !foundWhitelist) {
          return true;
-      } else {
-         LOGGER.warn("**** FAILED TO START THE SERVER AFTER ACCOUNT CONVERSION!");
-         LOGGER.warn("** please remove the following files and restart the server:");
-         if (foundUserBanlist) {
-            LOGGER.warn("* {}", OLD_USERBANLIST.getName());
-         }
-
-         if (foundIpBanlist) {
-            LOGGER.warn("* {}", OLD_IPBANLIST.getName());
-         }
-
-         if (foundOpList) {
-            LOGGER.warn("* {}", OLD_OPLIST.getName());
-         }
-
-         if (foundWhitelist) {
-            LOGGER.warn("* {}", OLD_WHITELIST.getName());
-         }
-
-         return false;
       }
+
+      LOGGER.warn("**** FAILED TO START THE SERVER AFTER ACCOUNT CONVERSION!");
+      LOGGER.warn("** please remove the following files and restart the server:");
+      if (foundUserBanlist) {
+         LOGGER.warn("* {}", OLD_USERBANLIST.getName());
+      }
+
+      if (foundIpBanlist) {
+         LOGGER.warn("* {}", OLD_IPBANLIST.getName());
+      }
+
+      if (foundOpList) {
+         LOGGER.warn("* {}", OLD_OPLIST.getName());
+      }
+
+      if (foundWhitelist) {
+         LOGGER.warn("* {}", OLD_WHITELIST.getName());
+      }
+
+      return false;
    }
 
    private static void renameOldFile(final File file) {
@@ -407,7 +406,7 @@ public class OldUsersConverter {
       Date parsedDate;
       try {
          parsedDate = BanListEntry.DATE_FORMAT.parse(dateString);
-      } catch (ParseException var4) {
+      } catch (ParseException ignored) {
          parsedDate = defaultValue;
       }
 

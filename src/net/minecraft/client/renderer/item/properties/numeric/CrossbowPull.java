@@ -12,16 +12,18 @@ public class CrossbowPull implements RangeSelectItemModelProperty {
    public static final MapCodec<CrossbowPull> MAP_CODEC = MapCodec.unit(new CrossbowPull());
 
    @Override
-   public float get(final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final ItemOwner owner, final int seed) {
+   public float get(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable ItemOwner owner, final int seed) {
       LivingEntity entity = owner == null ? null : owner.asLivingEntity();
       if (entity == null) {
          return 0.0F;
-      } else if (CrossbowItem.isCharged(itemStack)) {
-         return 0.0F;
-      } else {
-         int chargeDuration = CrossbowItem.getChargeDuration(itemStack, entity);
-         return (float)UseDuration.useDuration(itemStack, entity) / (float)chargeDuration;
       }
+
+      if (CrossbowItem.isCharged(itemStack)) {
+         return 0.0F;
+      }
+
+      int chargeDuration = CrossbowItem.getChargeDuration(itemStack, entity);
+      return (float)UseDuration.useDuration(itemStack, entity) / chargeDuration;
    }
 
    @Override

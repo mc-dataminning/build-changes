@@ -20,11 +20,11 @@ import net.minecraft.world.level.Level;
 public record FoodProperties(int nutrition, float saturation, boolean canAlwaysEat) implements ConsumableListener {
    public static final Codec<FoodProperties> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ExtraCodecs.NON_NEGATIVE_INT.fieldOf("nutrition").forGetter(FoodProperties::nutrition),
-               Codec.FLOAT.fieldOf("saturation").forGetter(FoodProperties::saturation),
-               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(FoodProperties::canAlwaysEat)
-            )
-            .apply(i, FoodProperties::new)
+            ExtraCodecs.NON_NEGATIVE_INT.fieldOf("nutrition").forGetter(FoodProperties::nutrition),
+            Codec.FLOAT.fieldOf("saturation").forGetter(FoodProperties::saturation),
+            Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(FoodProperties::canAlwaysEat)
+         )
+         .apply(i, FoodProperties::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, FoodProperties> DIRECT_STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.VAR_INT,

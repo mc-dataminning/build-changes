@@ -17,9 +17,7 @@ import net.minecraft.server.Bootstrap;
 import net.minecraft.util.Util;
 
 public class Main {
-   @SuppressForbidden(
-      reason = "System.out needed before bootstrap"
-   )
+   @SuppressForbidden(reason = "System.out needed before bootstrap")
    public static void main(final String[] args) throws IOException {
       SharedConstants.tryDetectVersion();
       OptionParser parser = new OptionParser();

@@ -11,8 +11,7 @@ import org.jspecify.annotations.Nullable;
 public interface CrossbowAttackMob extends RangedAttackMob {
    void setChargingCrossbow(final boolean isCharging);
 
-   @Nullable
-   LivingEntity getTarget();
+   @Nullable LivingEntity getTarget();
 
    void onCrossbowAttackPerformed();
 

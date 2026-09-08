@@ -53,23 +53,23 @@ public class SwingCommand {
             ((RequiredArgumentBuilder)Commands.argument("animation", SwingAnimationArgument.swingAnimationType())
                   .executes(
                      c -> swing(
-                           (CommandSourceStack)c.getSource(),
-                           EntityArgument.getEntities(c, "targets"),
-                           hand,
-                           SwingAnimationArgument.getSwingAnimationType(c, "animation"),
-                           SwingAnimation.DEFAULT.duration()
-                        )
+                        (CommandSourceStack)c.getSource(),
+                        EntityArgument.getEntities(c, "targets"),
+                        hand,
+                        SwingAnimationArgument.getSwingAnimationType(c, "animation"),
+                        SwingAnimation.DEFAULT.duration()
+                     )
                   ))
                .then(
                   Commands.argument("duration", TimeArgument.time(1))
                      .executes(
                         c -> swing(
-                              (CommandSourceStack)c.getSource(),
-                              EntityArgument.getEntities(c, "targets"),
-                              hand,
-                              SwingAnimationArgument.getSwingAnimationType(c, "animation"),
-                              IntegerArgumentType.getInteger(c, "duration")
-                           )
+                           (CommandSourceStack)c.getSource(),
+                           EntityArgument.getEntities(c, "targets"),
+                           hand,
+                           SwingAnimationArgument.getSwingAnimationType(c, "animation"),
+                           IntegerArgumentType.getInteger(c, "duration")
+                        )
                      )
                )
          );

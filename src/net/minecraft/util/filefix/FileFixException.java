@@ -6,10 +6,9 @@ import net.minecraft.ReportedException;
 import org.jspecify.annotations.Nullable;
 
 public class FileFixException extends RuntimeException {
-   @Nullable
-   protected final FileSystemCapabilities fileSystemCapabilities;
+   protected final @Nullable FileSystemCapabilities fileSystemCapabilities;
 
-   public FileFixException(@Nullable final Exception cause, @Nullable final FileSystemCapabilities fileSystemCapabilities) {
+   public FileFixException(final @Nullable Exception cause, final @Nullable FileSystemCapabilities fileSystemCapabilities) {
       super(cause);
       this.fileSystemCapabilities = fileSystemCapabilities;
    }

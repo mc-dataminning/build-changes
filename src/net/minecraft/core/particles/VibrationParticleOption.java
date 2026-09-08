@@ -15,10 +15,10 @@ public class VibrationParticleOption implements ParticleOptions {
       .validate(e -> e instanceof EntityPositionSource ? DataResult.error(() -> "Entity position sources are not allowed") : DataResult.success(e));
    public static final MapCodec<VibrationParticleOption> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               SAFE_POSITION_SOURCE_CODEC.fieldOf("destination").forGetter(VibrationParticleOption::getDestination),
-               Codec.INT.fieldOf("arrival_in_ticks").forGetter(VibrationParticleOption::getArrivalInTicks)
-            )
-            .apply(i, VibrationParticleOption::new)
+            SAFE_POSITION_SOURCE_CODEC.fieldOf("destination").forGetter(VibrationParticleOption::getDestination),
+            Codec.INT.fieldOf("arrival_in_ticks").forGetter(VibrationParticleOption::getArrivalInTicks)
+         )
+         .apply(i, VibrationParticleOption::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, VibrationParticleOption> STREAM_CODEC = StreamCodec.composite(
       PositionSource.STREAM_CODEC,

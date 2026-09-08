@@ -37,10 +37,10 @@ public interface SlotAccess {
          public boolean set(final ItemStack itemStack) {
             if (!validator.test(itemStack)) {
                return false;
-            } else {
-               entity.setItemSlot(slot, itemStack);
-               return true;
             }
+
+            entity.setItemSlot(slot, itemStack);
+            return true;
          }
       };
    }

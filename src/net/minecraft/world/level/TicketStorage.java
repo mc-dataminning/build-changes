@@ -43,10 +43,8 @@ public class TicketStorage extends SavedData {
    private final Long2ObjectOpenHashMap<List<Ticket>> tickets;
    private final Long2ObjectOpenHashMap<List<Ticket>> deactivatedTickets;
    private LongSet chunksWithForcedTickets = new LongOpenHashSet();
-   @Nullable
-   private TicketStorage.ChunkUpdated loadingChunkUpdatedListener;
-   @Nullable
-   private TicketStorage.ChunkUpdated simulationChunkUpdatedListener;
+   private TicketStorage.@Nullable ChunkUpdated loadingChunkUpdatedListener;
+   private TicketStorage.@Nullable ChunkUpdated simulationChunkUpdatedListener;
 
    private TicketStorage(final Long2ObjectOpenHashMap<List<Ticket>> tickets, final Long2ObjectOpenHashMap<List<Ticket>> deactivatedTickets) {
       this.tickets = tickets;
@@ -112,11 +110,11 @@ public class TicketStorage extends SavedData {
       this.deactivatedTickets.clear();
    }
 
-   public void setLoadingChunkUpdatedListener(@Nullable final TicketStorage.ChunkUpdated loadingChunkUpdatedListener) {
+   public void setLoadingChunkUpdatedListener(final TicketStorage.@Nullable ChunkUpdated loadingChunkUpdatedListener) {
       this.loadingChunkUpdatedListener = loadingChunkUpdatedListener;
    }
 
-   public void setSimulationChunkUpdatedListener(@Nullable final TicketStorage.ChunkUpdated simulationChunkUpdatedListener) {
+   public void setSimulationChunkUpdatedListener(final TicketStorage.@Nullable ChunkUpdated simulationChunkUpdatedListener) {
       this.simulationChunkUpdatedListener = simulationChunkUpdatedListener;
    }
 
@@ -204,25 +202,24 @@ public class TicketStorage extends SavedData {
       return lowestTicket == null ? ChunkLevel.MAX_LEVEL + 1 : lowestTicket.getTicketLevel();
    }
 
-   @Nullable
-   private static Ticket getLowestTicket(@Nullable final List<Ticket> tickets, final boolean simulation) {
+   private static @Nullable Ticket getLowestTicket(final @Nullable List<Ticket> tickets, final boolean simulation) {
       if (tickets == null) {
          return null;
-      } else {
-         Ticket t = null;
+      }
 
-         for (Ticket ticket : tickets) {
-            if (t == null || ticket.getTicketLevel() < t.getTicketLevel()) {
-               if (simulation && ticket.getType().doesSimulate()) {
-                  t = ticket;
-               } else if (!simulation && ticket.getType().doesLoad()) {
-                  t = ticket;
-               }
+      Ticket t = null;
+
+      for (Ticket ticket : tickets) {
+         if (t == null || ticket.getTicketLevel() < t.getTicketLevel()) {
+            if (simulation && ticket.getType().doesSimulate()) {
+               t = ticket;
+            } else if (!simulation && ticket.getType().doesLoad()) {
+               t = ticket;
             }
          }
-
-         return t;
       }
+
+      return t;
    }
 
    public void removeTicketWithRadius(final TicketType type, final ChunkPos chunkPos, final int radius) {
@@ -238,46 +235,46 @@ public class TicketStorage extends SavedData {
       List<Ticket> tickets = (List<Ticket>)this.tickets.get(key);
       if (tickets == null) {
          return false;
-      } else {
-         boolean found = false;
-         Iterator<Ticket> iterator = tickets.iterator();
+      }
 
-         while (iterator.hasNext()) {
-            Ticket t = iterator.next();
-            if (isTicketSameTypeAndLevel(ticket, t)) {
-               iterator.remove();
-               if (SharedConstants.DEBUG_VERBOSE_SERVER_EVENTS) {
-                  LOGGER.debug("RTI {} {}", ChunkPos.unpack(key), t);
-               }
+      boolean found = false;
+      Iterator<Ticket> iterator = tickets.iterator();
 
-               found = true;
-               break;
-            }
-         }
-
-         if (!found) {
-            return false;
-         } else {
-            if (tickets.isEmpty()) {
-               this.tickets.remove(key);
+      while (iterator.hasNext()) {
+         Ticket t = iterator.next();
+         if (isTicketSameTypeAndLevel(ticket, t)) {
+            iterator.remove();
+            if (SharedConstants.DEBUG_VERBOSE_SERVER_EVENTS) {
+               LOGGER.debug("RTI {} {}", ChunkPos.unpack(key), t);
             }
 
-            if (ticket.getType().doesSimulate() && this.simulationChunkUpdatedListener != null) {
-               this.simulationChunkUpdatedListener.update(key, getTicketLevelAt(tickets, true), false);
-            }
-
-            if (ticket.getType().doesLoad() && this.loadingChunkUpdatedListener != null) {
-               this.loadingChunkUpdatedListener.update(key, getTicketLevelAt(tickets, false), false);
-            }
-
-            if (ticket.getType().equals(TicketType.FORCED)) {
-               this.updateForcedChunks();
-            }
-
-            this.setDirty();
-            return true;
+            found = true;
+            break;
          }
       }
+
+      if (!found) {
+         return false;
+      }
+
+      if (tickets.isEmpty()) {
+         this.tickets.remove(key);
+      }
+
+      if (ticket.getType().doesSimulate() && this.simulationChunkUpdatedListener != null) {
+         this.simulationChunkUpdatedListener.update(key, getTicketLevelAt(tickets, true), false);
+      }
+
+      if (ticket.getType().doesLoad() && this.loadingChunkUpdatedListener != null) {
+         this.loadingChunkUpdatedListener.update(key, getTicketLevelAt(tickets, false), false);
+      }
+
+      if (ticket.getType().equals(TicketType.FORCED)) {
+         this.updateForcedChunks();
+      }
+
+      this.setDirty();
+      return true;
    }
 
    private void updateForcedChunks() {
@@ -305,19 +302,21 @@ public class TicketStorage extends SavedData {
    private boolean canTicketExpire(final ChunkMap chunkMap, final Ticket ticket, final long chunkPos) {
       if (!ticket.getType().hasTimeout()) {
          return false;
-      } else if (ticket.getType().canExpireIfUnloaded()) {
-         return true;
-      } else {
-         ChunkHolder updatingChunk = chunkMap.getUpdatingChunkIfPresent(chunkPos);
-         return updatingChunk == null || updatingChunk.isReadyForSaving();
       }
+
+      if (ticket.getType().canExpireIfUnloaded()) {
+         return true;
+      }
+
+      ChunkHolder updatingChunk = chunkMap.getUpdatingChunkIfPresent(chunkPos);
+      return updatingChunk == null || updatingChunk.isReadyForSaving();
    }
 
    public void deactivateTicketsOnClosing() {
       this.removeTicketIf((ticket, chunkPos) -> ticket.getType() != TicketType.UNKNOWN, this.deactivatedTickets);
    }
 
-   public void removeTicketIf(final TicketStorage.TicketPredicate predicate, @Nullable final Long2ObjectOpenHashMap<List<Ticket>> removedTickets) {
+   public void removeTicketIf(final TicketStorage.TicketPredicate predicate, final @Nullable Long2ObjectOpenHashMap<List<Ticket>> removedTickets) {
       ObjectIterator<Entry<List<Ticket>>> ticketsPerChunkIterator = this.tickets.long2ObjectEntrySet().fastIterator();
       boolean removedForced = false;
 
@@ -388,9 +387,9 @@ public class TicketStorage extends SavedData {
 
       for (Pair<Ticket, Long> pair : affectedTickets) {
          Long key = (Long)pair.getSecond();
-         Ticket ticketx = (Ticket)pair.getFirst();
-         this.removeTicket(key, ticketx);
-         TicketType type = ticketx.getType();
+         Ticket ticket = (Ticket)pair.getFirst();
+         this.removeTicket(key, ticket);
+         TicketType type = ticket.getType();
          this.addTicket(key, new Ticket(type, newLevel));
       }
    }

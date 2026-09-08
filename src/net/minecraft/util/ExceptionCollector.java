@@ -3,8 +3,7 @@ package net.minecraft.util;
 import org.jspecify.annotations.Nullable;
 
 public class ExceptionCollector<T extends Throwable> {
-   @Nullable
-   private T result;
+   private @Nullable T result;
 
    public void add(final T throwable) {
       if (this.result == null) {

@@ -20,14 +20,13 @@ public class WaterloggedTransparentBlock extends TransparentBlock implements Sim
 
    protected WaterloggedTransparentBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, Boolean.valueOf(false)));
+      this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, false));
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-      return super.getStateForPlacement(context).setValue(WATERLOGGED, Boolean.valueOf(replacedFluidState.is(Fluids.WATER)));
+      return super.getStateForPlacement(context).setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
    }
 
    @Override

@@ -69,8 +69,7 @@ public class Cow extends AbstractCow {
          .ifPresent(this::setSoundVariant);
    }
 
-   @Nullable
-   public Cow getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable Cow getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       Cow baby = EntityTypes.COW.create(level, EntitySpawnReason.BREEDING);
       if (baby != null && partner instanceof Cow partnerCow) {
          baby.setVariant(this.random.nextBoolean() ? this.getVariant() : partnerCow.getVariant());
@@ -81,7 +80,7 @@ public class Cow extends AbstractCow {
 
    @Override
    public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       VariantUtils.selectVariantToSpawn(SpawnContext.create(level, this.blockPosition()), Registries.COW_VARIANT).ifPresent(this::setVariant);
       this.setSoundVariant(CowSoundVariants.pickRandomSoundVariant(this.registryAccess(), level.getRandom()));
@@ -114,9 +113,8 @@ public class Cow extends AbstractCow {
       return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       if (type == DataComponents.COW_VARIANT) {
          return castComponentValue((DataComponentType<T>)type, this.getVariant());
       } else {

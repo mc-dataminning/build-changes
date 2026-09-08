@@ -44,10 +44,8 @@ public class Camera implements TrackedWaypoint.Camera {
    private static final Vector3fc LEFT = new Vector3f(-1.0F, 0.0F, 0.0F);
    public static final float BASE_HUD_FOV = 70.0F;
    private boolean initialized;
-   @Nullable
-   private Level level;
-   @Nullable
-   private Entity entity;
+   private @Nullable Level level;
+   private @Nullable Entity entity;
    private Vec3 position = Vec3.ZERO;
    private final BlockPos.MutableBlockPos blockPosition = new BlockPos.MutableBlockPos();
    private final Vector3f forwards = new Vector3f(FORWARDS);
@@ -62,8 +60,7 @@ public class Camera implements TrackedWaypoint.Camera {
    private float eyeHeightOld;
    private final Projection projection = new Projection();
    private Frustum cullFrustum = new Frustum(new Matrix4f(), new Matrix4f());
-   @Nullable
-   private Frustum capturedFrustum;
+   private @Nullable Frustum capturedFrustum;
    private boolean captureFrustum;
    private final Matrix4f cachedViewRotMatrix = new Matrix4f();
    private final Matrix4f cachedViewRotProjMatrix = new Matrix4f();
@@ -91,8 +88,8 @@ public class Camera implements TrackedWaypoint.Camera {
    }
 
    public void update(final DeltaTracker deltaTracker) {
-      float renderDistance = (float)(this.minecraft.options.getEffectiveRenderDistance() * 16);
-      this.depthFar = Math.max(renderDistance * 4.0F, (float)(this.minecraft.options.cloudRange().get() * 16));
+      float renderDistance = this.minecraft.options.getEffectiveRenderDistance() * 16;
+      this.depthFar = Math.max(renderDistance * 4.0F, this.minecraft.options.cloudRange().get() * 16);
       LocalPlayer player = this.minecraft.player;
       if (player != null && this.level != null) {
          if (this.entity == null) {
@@ -104,8 +101,8 @@ public class Camera implements TrackedWaypoint.Camera {
          this.fov = this.calculateFov(partialTicks);
          this.hudFov = this.calculateHudFov(partialTicks);
          this.prepareCullFrustum(this.getViewRotationMatrix(this.cachedViewRotMatrix), this.createProjectionMatrixForCulling(), this.position);
-         float windowWidth = (float)this.minecraft.getWindow().getWidth();
-         float windowHeight = (float)this.minecraft.getWindow().getHeight();
+         float windowWidth = this.minecraft.getWindow().getWidth();
+         float windowHeight = this.minecraft.getWindow().getHeight();
          this.setupPerspective(0.05F, this.depthFar, this.fov, windowWidth, windowHeight);
          this.initialized = true;
       }
@@ -141,8 +138,8 @@ public class Camera implements TrackedWaypoint.Camera {
          cameraState.entityRenderState.doesMobEffectBlockSky = livingEntity.hasEffect(MobEffects.BLINDNESS) || livingEntity.hasEffect(MobEffects.DARKNESS);
          cameraState.entityRenderState.isDeadOrDying = livingEntity.isDeadOrDying();
          cameraState.entityRenderState.hurtDir = livingEntity.getHurtDir();
-         cameraState.entityRenderState.hurtTime = (float)livingEntity.hurtTime - cameraState.cameraEntityPartialTicks;
-         cameraState.entityRenderState.deathTime = (float)livingEntity.deathTime + cameraState.cameraEntityPartialTicks;
+         cameraState.entityRenderState.hurtTime = livingEntity.hurtTime - cameraState.cameraEntityPartialTicks;
+         cameraState.entityRenderState.deathTime = livingEntity.deathTime + cameraState.cameraEntityPartialTicks;
          cameraState.entityRenderState.hurtDuration = livingEntity.hurtDuration;
       } else {
          cameraState.entityRenderState.isLiving = false;
@@ -181,11 +178,11 @@ public class Camera implements TrackedWaypoint.Camera {
    }
 
    private Matrix4f createProjectionMatrixForCulling() {
-      float fovForCulling = Math.max(this.fov, (float)this.minecraft.options.fov().get().intValue());
+      float fovForCulling = Math.max(this.fov, this.minecraft.options.fov().get().intValue());
       Matrix4f projection = new Matrix4f();
       return projection.perspective(
          fovForCulling * (float) (Math.PI / 180.0),
-         (float)this.minecraft.getWindow().getWidth() / (float)this.minecraft.getWindow().getHeight(),
+         (float)this.minecraft.getWindow().getWidth() / this.minecraft.getWindow().getHeight(),
          0.05F,
          this.depthFar,
          RenderSystem.getDevice().getDeviceInfo().isZZeroToOne()
@@ -210,8 +207,7 @@ public class Camera implements TrackedWaypoint.Camera {
       }
    }
 
-   @Nullable
-   public Frustum getCapturedFrustum() {
+   public @Nullable Frustum getCapturedFrustum() {
       return this.capturedFrustum;
    }
 
@@ -226,10 +222,10 @@ public class Camera implements TrackedWaypoint.Camera {
    private float calculateFov(final float partialTicks) {
       if (this.isPanoramicMode) {
          return 90.0F;
-      } else {
-         float fov = (float)this.minecraft.options.fov().get().intValue() * Mth.lerp(partialTicks, this.oldFovModifier, this.fovModifier);
-         return this.modifyFovBasedOnDeathOrFluid(partialTicks, fov);
       }
+
+      float fov = this.minecraft.options.fov().get().intValue() * Mth.lerp(partialTicks, this.oldFovModifier, this.fovModifier);
+      return this.modifyFovBasedOnDeathOrFluid(partialTicks, fov);
    }
 
    private float calculateHudFov(final float partialTicks) {
@@ -238,7 +234,7 @@ public class Camera implements TrackedWaypoint.Camera {
 
    private float modifyFovBasedOnDeathOrFluid(final float partialTicks, float fov) {
       if (this.entity instanceof LivingEntity cameraEntity && cameraEntity.isDeadOrDying()) {
-         float duration = Math.min((float)cameraEntity.deathTime + partialTicks, 20.0F);
+         float duration = Math.min(cameraEntity.deathTime + partialTicks, 20.0F);
          fov /= (1.0F - 500.0F / (duration + 500.0F)) * 2.0F + 1.0F;
       }
 
@@ -259,15 +255,15 @@ public class Camera implements TrackedWaypoint.Camera {
          Vec3 positionOffset = minecart.getPassengerRidingPosition(this.entity)
             .subtract(minecart.position())
             .subtract(this.entity.getVehicleAttachmentPoint(minecart))
-            .add(new Vec3(0.0, (double)Mth.lerp(partialTicks, this.eyeHeightOld, this.eyeHeight), 0.0));
+            .add(new Vec3(0.0, Mth.lerp(partialTicks, this.eyeHeightOld, this.eyeHeight), 0.0));
          this.setRotation(this.entity.getViewYRot(partialTicks), this.entity.getViewXRot(partialTicks));
          this.setPosition(behavior.getCartLerpPosition(partialTicks).add(positionOffset));
       } else {
          this.setRotation(this.entity.getViewYRot(partialTicks), this.entity.getViewXRot(partialTicks));
          this.setPosition(
-            Mth.lerp((double)partialTicks, this.entity.xo, this.entity.getX()),
-            Mth.lerp((double)partialTicks, this.entity.yo, this.entity.getY()) + (double)Mth.lerp(partialTicks, this.eyeHeightOld, this.eyeHeight),
-            Mth.lerp((double)partialTicks, this.entity.zo, this.entity.getZ())
+            Mth.lerp(partialTicks, this.entity.xo, this.entity.getX()),
+            Mth.lerp(partialTicks, this.entity.yo, this.entity.getY()) + Mth.lerp(partialTicks, this.eyeHeightOld, this.eyeHeight),
+            Mth.lerp(partialTicks, this.entity.zo, this.entity.getZ())
          );
       }
 
@@ -303,11 +299,11 @@ public class Camera implements TrackedWaypoint.Camera {
       float jitterScale = 0.1F;
 
       for (int i = 0; i < 8; i++) {
-         float offsetX = (float)((i & 1) * 2 - 1);
-         float offsetY = (float)((i >> 1 & 1) * 2 - 1);
-         float offsetZ = (float)((i >> 2 & 1) * 2 - 1);
-         Vec3 from = this.position.add((double)(offsetX * 0.1F), (double)(offsetY * 0.1F), (double)(offsetZ * 0.1F));
-         Vec3 to = from.add(new Vec3(this.forwards).scale((double)(-cameraDist)));
+         float offsetX = (i & 1) * 2 - 1;
+         float offsetY = (i >> 1 & 1) * 2 - 1;
+         float offsetZ = (i >> 2 & 1) * 2 - 1;
+         Vec3 from = this.position.add(offsetX * 0.1F, offsetY * 0.1F, offsetZ * 0.1F);
+         Vec3 to = from.add(new Vec3(this.forwards).scale(-cameraDist));
          HitResult hitResult = this.level.clip(new ClipContext(from, to, ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, this.entity));
          if (hitResult.getType() != HitResult.Type.MISS) {
             float distSq = (float)hitResult.getLocation().distanceToSqr(this.position);
@@ -338,7 +334,7 @@ public class Camera implements TrackedWaypoint.Camera {
 
    protected void move(final float forwards, final float up, final float right) {
       Vector3f offset = new Vector3f(right, up, -forwards).rotate(this.rotation);
-      this.setPosition(new Vec3(this.position.x + (double)offset.x, this.position.y + (double)offset.y, this.position.z + (double)offset.z));
+      this.setPosition(new Vec3(this.position.x + offset.x, this.position.y + offset.y, this.position.z + offset.z));
    }
 
    protected void setRotation(final float yRot, final float xRot) {
@@ -409,8 +405,7 @@ public class Camera implements TrackedWaypoint.Camera {
       return dest.set(this.cachedViewRotProjMatrix);
    }
 
-   @Nullable
-   public Entity entity() {
+   public @Nullable Entity entity() {
       return this.entity;
    }
 
@@ -431,10 +426,10 @@ public class Camera implements TrackedWaypoint.Camera {
    }
 
    public Camera.NearPlane getNearPlane(final float fov) {
-      double aspectRatio = (double)this.projection.width() / (double)this.projection.height();
-      double planeHeight = Math.tan((double)(fov * (float) (Math.PI / 180.0)) / 2.0) * (double)this.projection.zNear();
+      double aspectRatio = (double)this.projection.width() / this.projection.height();
+      double planeHeight = Math.tan(fov * (float) (Math.PI / 180.0) / 2.0) * this.projection.zNear();
       double planeWidth = planeHeight * aspectRatio;
-      Vec3 forwardsVec3 = new Vec3(this.forwards).scale((double)this.projection.zNear());
+      Vec3 forwardsVec3 = new Vec3(this.forwards).scale(this.projection.zNear());
       Vec3 leftVec3 = new Vec3(this.left).scale(planeWidth);
       Vec3 upVec3 = new Vec3(this.up).scale(planeHeight);
       return new Camera.NearPlane(forwardsVec3, leftVec3, upVec3);
@@ -443,33 +438,32 @@ public class Camera implements TrackedWaypoint.Camera {
    public FogType getFluidInCamera() {
       if (!this.initialized) {
          return FogType.NONE;
-      } else {
-         FluidState fluidState1 = this.level.getFluidState(this.blockPosition);
-         if (fluidState1.is(FluidTags.WATER)
-            && this.position.y < (double)((float)this.blockPosition.getY() + fluidState1.getHeightForCamera(this.level, this.blockPosition))) {
-            return FogType.WATER;
-         } else {
-            Camera.NearPlane plane = this.getNearPlane((float)this.minecraft.options.fov().get().intValue());
+      }
 
-            for (Vec3 point : Arrays.asList(plane.forward, plane.getTopLeft(), plane.getTopRight(), plane.getBottomLeft(), plane.getBottomRight())) {
-               Vec3 offsetPos = this.position.add(point);
-               BlockPos checkPos = BlockPos.containing(offsetPos);
-               FluidState fluidState = this.level.getFluidState(checkPos);
-               if (fluidState.is(FluidTags.LAVA)) {
-                  if (offsetPos.y <= (double)(fluidState.getHeightForCamera(this.level, checkPos) + (float)checkPos.getY())) {
-                     return FogType.LAVA;
-                  }
-               } else {
-                  BlockState state = this.level.getBlockState(checkPos);
-                  if (state.is(Blocks.POWDER_SNOW)) {
-                     return FogType.POWDER_SNOW;
-                  }
-               }
+      FluidState fluidState1 = this.level.getFluidState(this.blockPosition);
+      if (fluidState1.is(FluidTags.WATER) && this.position.y < this.blockPosition.getY() + fluidState1.getHeightForCamera(this.level, this.blockPosition)) {
+         return FogType.WATER;
+      }
+
+      Camera.NearPlane plane = this.getNearPlane(this.minecraft.options.fov().get().intValue());
+
+      for (Vec3 point : Arrays.asList(plane.forward, plane.getTopLeft(), plane.getTopRight(), plane.getBottomLeft(), plane.getBottomRight())) {
+         Vec3 offsetPos = this.position.add(point);
+         BlockPos checkPos = BlockPos.containing(offsetPos);
+         FluidState fluidState = this.level.getFluidState(checkPos);
+         if (fluidState.is(FluidTags.LAVA)) {
+            if (offsetPos.y <= fluidState.getHeightForCamera(this.level, checkPos) + checkPos.getY()) {
+               return FogType.LAVA;
             }
-
-            return FogType.NONE;
+         } else {
+            BlockState state = this.level.getBlockState(checkPos);
+            if (state.is(Blocks.POWDER_SNOW)) {
+               return FogType.POWDER_SNOW;
+            }
          }
       }
+
+      return FogType.NONE;
    }
 
    public Vector3fc forwardVector() {
@@ -495,7 +489,7 @@ public class Camera implements TrackedWaypoint.Camera {
       this.initialized = false;
    }
 
-   public void setLevel(@Nullable final ClientLevel level) {
+   public void setLevel(final @Nullable ClientLevel level) {
       this.level = level;
    }
 
@@ -536,7 +530,7 @@ public class Camera implements TrackedWaypoint.Camera {
       }
 
       public Vec3 getPointOnPlane(final float x, final float y) {
-         return this.forward.add(this.up.scale((double)y)).subtract(this.left.scale((double)x));
+         return this.forward.add(this.up.scale(y)).subtract(this.left.scale(x));
       }
    }
 }

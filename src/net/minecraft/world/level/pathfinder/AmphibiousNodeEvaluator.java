@@ -80,7 +80,7 @@ public class AmphibiousNodeEvaluator extends WalkNodeEvaluator {
       return numValidNeighbors;
    }
 
-   private boolean isVerticalNeighborValid(@Nullable final Node verticalNode, final Node pos) {
+   private boolean isVerticalNeighborValid(final @Nullable Node verticalNode, final Node pos) {
       return this.isNeighborValid(verticalNode, pos) && verticalNode.type == PathType.WATER;
    }
 

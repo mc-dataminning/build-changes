@@ -13,13 +13,13 @@ public record ShapedCraftingRecipeDisplay(int width, int height, List<SlotDispla
    implements RecipeDisplay {
    public static final MapCodec<ShapedCraftingRecipeDisplay> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.INT.fieldOf("width").forGetter(ShapedCraftingRecipeDisplay::width),
-               Codec.INT.fieldOf("height").forGetter(ShapedCraftingRecipeDisplay::height),
-               SlotDisplay.CODEC.listOf().fieldOf("ingredients").forGetter(ShapedCraftingRecipeDisplay::ingredients),
-               SlotDisplay.CODEC.fieldOf("result").forGetter(ShapedCraftingRecipeDisplay::result),
-               SlotDisplay.CODEC.fieldOf("crafting_station").forGetter(ShapedCraftingRecipeDisplay::craftingStation)
-            )
-            .apply(i, ShapedCraftingRecipeDisplay::new)
+            Codec.INT.fieldOf("width").forGetter(ShapedCraftingRecipeDisplay::width),
+            Codec.INT.fieldOf("height").forGetter(ShapedCraftingRecipeDisplay::height),
+            SlotDisplay.CODEC.listOf().fieldOf("ingredients").forGetter(ShapedCraftingRecipeDisplay::ingredients),
+            SlotDisplay.CODEC.fieldOf("result").forGetter(ShapedCraftingRecipeDisplay::result),
+            SlotDisplay.CODEC.fieldOf("crafting_station").forGetter(ShapedCraftingRecipeDisplay::craftingStation)
+         )
+         .apply(i, ShapedCraftingRecipeDisplay::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, ShapedCraftingRecipeDisplay> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.VAR_INT,
@@ -36,15 +36,9 @@ public record ShapedCraftingRecipeDisplay(int width, int height, List<SlotDispla
    );
    public static final RecipeDisplay.Type<ShapedCraftingRecipeDisplay> TYPE = new RecipeDisplay.Type<>(MAP_CODEC, STREAM_CODEC);
 
-   public ShapedCraftingRecipeDisplay(int width, int height, List<SlotDisplay> ingredients, SlotDisplay result, SlotDisplay craftingStation) {
+   public ShapedCraftingRecipeDisplay {
       if (ingredients.size() != width * height) {
          throw new IllegalArgumentException("Invalid shaped recipe display contents");
-      } else {
-         this.width = width;
-         this.height = height;
-         this.ingredients = ingredients;
-         this.result = result;
-         this.craftingStation = craftingStation;
       }
    }
 

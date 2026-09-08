@@ -39,7 +39,7 @@ public class GuiEntityRenderer extends PictureInPictureRenderer<GuiEntityRenderS
 
    @Override
    protected float getTranslateY(final int height, final int guiScale) {
-      return (float)height / 2.0F;
+      return height / 2.0F;
    }
 
    @Override

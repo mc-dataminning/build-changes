@@ -4,7 +4,6 @@ import com.mojang.serialization.Lifecycle;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
@@ -83,9 +82,8 @@ public class BootstrapRegistry<T> implements HolderLookup.RegistryLookup<T> {
          throw new UnsupportedOperationException("Registry is already frozen");
       }
 
-      @Nullable
       @Override
-      public Holder.Reference<T> get(final ResourceKey<T> id) {
+      public Holder.@Nullable Reference<T> get(final ResourceKey<T> id) {
          return this.holders.get(id);
       }
 
@@ -94,9 +92,8 @@ public class BootstrapRegistry<T> implements HolderLookup.RegistryLookup<T> {
          return this.holders.values();
       }
 
-      @Nullable
       @Override
-      public HolderSet.Named<T> get(final TagKey<T> id) {
+      public HolderSet.@Nullable Named<T> get(final TagKey<T> id) {
          return this.holderSets.get(id);
       }
 
@@ -107,15 +104,8 @@ public class BootstrapRegistry<T> implements HolderLookup.RegistryLookup<T> {
    }
 
    private class RegistrationStorage implements BootstrapRegistry.Storage<T> {
-      private final Map<ResourceKey<T>, Holder.Reference<T>> holders;
-      private final Map<TagKey<T>, HolderSet.Named<T>> holderSets;
-
-      private RegistrationStorage() {
-         Objects.requireNonNull(BootstrapRegistry.this);
-         super();
-         this.holders = new HashMap<>();
-         this.holderSets = new HashMap<>();
-      }
+      private final Map<ResourceKey<T>, Holder.Reference<T>> holders = new HashMap<>();
+      private final Map<TagKey<T>, HolderSet.Named<T>> holderSets = new HashMap<>();
 
       @Override
       public BootstrapRegistry.Storage<T> freeze() {
@@ -153,13 +143,11 @@ public class BootstrapRegistry<T> implements HolderLookup.RegistryLookup<T> {
 
       void removeIf(Predicate<Holder.Reference<T>> predicate);
 
-      @Nullable
-      Holder.Reference<T> get(ResourceKey<T> id);
+      Holder.@Nullable Reference<T> get(ResourceKey<T> id);
 
       Collection<Holder.Reference<T>> listElements();
 
-      @Nullable
-      HolderSet.Named<T> get(TagKey<T> id);
+      HolderSet.@Nullable Named<T> get(TagKey<T> id);
 
       Collection<HolderSet.Named<T>> listTags();
    }

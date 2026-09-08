@@ -22,9 +22,9 @@ public record ItemInput(Holder<Item> item, DataComponentPatch components) {
       ItemStack result = new ItemStack(this.item, count, this.components);
       if (count > result.getMaxStackSize()) {
          throw ERROR_STACK_TOO_BIG.create(this.item.getRegisteredName(), result.getMaxStackSize());
-      } else {
-         DataResult<ItemStack> validationResult = ItemStack.validateStrict(result);
-         return (ItemStack)validationResult.getOrThrow(ERROR_MALFORMED_ITEM::create);
       }
+
+      DataResult<ItemStack> validationResult = ItemStack.validateStrict(result);
+      return (ItemStack)validationResult.getOrThrow(ERROR_MALFORMED_ITEM::create);
    }
 }

@@ -14,11 +14,11 @@ import net.minecraft.util.StringRepresentable;
 public record AttributeModifier(Identifier id, double amount, AttributeModifier.Operation operation) {
    public static final MapCodec<AttributeModifier> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Identifier.CODEC.fieldOf("id").forGetter(AttributeModifier::id),
-               Codec.DOUBLE.fieldOf("amount").forGetter(AttributeModifier::amount),
-               AttributeModifier.Operation.CODEC.fieldOf("operation").forGetter(AttributeModifier::operation)
-            )
-            .apply(i, AttributeModifier::new)
+            Identifier.CODEC.fieldOf("id").forGetter(AttributeModifier::id),
+            Codec.DOUBLE.fieldOf("amount").forGetter(AttributeModifier::amount),
+            AttributeModifier.Operation.CODEC.fieldOf("operation").forGetter(AttributeModifier::operation)
+         )
+         .apply(i, AttributeModifier::new)
    );
    public static final Codec<AttributeModifier> CODEC = MAP_CODEC.codec();
    public static final StreamCodec<ByteBuf, AttributeModifier> STREAM_CODEC = StreamCodec.composite(
@@ -35,7 +35,7 @@ public record AttributeModifier(Identifier id, double amount, AttributeModifier.
       return id.equals(this.id);
    }
 
-   public static enum Operation implements StringRepresentable {
+   public enum Operation implements StringRepresentable {
       ADD_VALUE("add_value", 0),
       ADD_MULTIPLIED_BASE("add_multiplied_base", 1),
       ADD_MULTIPLIED_TOTAL("add_multiplied_total", 2);
@@ -48,7 +48,7 @@ public record AttributeModifier(Identifier id, double amount, AttributeModifier.
       private final String name;
       private final int id;
 
-      private Operation(final String name, final int id) {
+      Operation(final String name, final int id) {
          this.name = name;
          this.id = id;
       }

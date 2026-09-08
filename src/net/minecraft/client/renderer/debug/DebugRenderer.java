@@ -149,20 +149,20 @@ public class DebugRenderer {
       }
    }
 
-   public static Optional<Entity> getTargetedEntity(@Nullable final Entity cameraEntity, final int maxTargetingRange) {
+   public static Optional<Entity> getTargetedEntity(final @Nullable Entity cameraEntity, final int maxTargetingRange) {
       if (cameraEntity == null) {
          return Optional.empty();
       } else {
          Vec3 from = cameraEntity.getEyePosition();
-         Vec3 pick = cameraEntity.getViewVector(1.0F).scale((double)maxTargetingRange);
+         Vec3 pick = cameraEntity.getViewVector(1.0F).scale(maxTargetingRange);
          Vec3 to = from.add(pick);
          AABB box = cameraEntity.getBoundingBox().expandTowards(pick).inflate(1.0);
          int rangeSquared = maxTargetingRange * maxTargetingRange;
-         EntityHitResult hitResult = ProjectileUtil.getEntityHitResult(cameraEntity, from, to, box, EntitySelector.CAN_BE_PICKED, (double)rangeSquared);
+         EntityHitResult hitResult = ProjectileUtil.getEntityHitResult(cameraEntity, from, to, box, EntitySelector.CAN_BE_PICKED, rangeSquared);
          if (hitResult == null) {
             return Optional.empty();
          } else {
-            return from.distanceToSqr(hitResult.getLocation()) > (double)rangeSquared ? Optional.empty() : Optional.of(hitResult.getEntity());
+            return from.distanceToSqr(hitResult.getLocation()) > rangeSquared ? Optional.empty() : Optional.of(hitResult.getEntity());
          }
       }
    }
@@ -170,23 +170,23 @@ public class DebugRenderer {
    private static Vec3 mixColor(final float hueShift) {
       float regions = 5.99999F;
       int region = (int)(Mth.clamp(hueShift, 0.0F, 1.0F) * 5.99999F);
-      float progress = hueShift * 5.99999F - (float)region;
+      float progress = hueShift * 5.99999F - region;
 
       return switch (region) {
-         case 0 -> new Vec3(1.0, (double)progress, 0.0);
-         case 1 -> new Vec3((double)(1.0F - progress), 1.0, 0.0);
-         case 2 -> new Vec3(0.0, 1.0, (double)progress);
-         case 3 -> new Vec3(0.0, 1.0 - (double)progress, 1.0);
-         case 4 -> new Vec3((double)progress, 0.0, 1.0);
-         case 5 -> new Vec3(1.0, 0.0, 1.0 - (double)progress);
+         case 0 -> new Vec3(1.0, progress, 0.0);
+         case 1 -> new Vec3(1.0F - progress, 1.0, 0.0);
+         case 2 -> new Vec3(0.0, 1.0, progress);
+         case 3 -> new Vec3(0.0, 1.0 - progress, 1.0);
+         case 4 -> new Vec3(progress, 0.0, 1.0);
+         case 5 -> new Vec3(1.0, 0.0, 1.0 - progress);
          default -> throw new IllegalStateException("Unexpected value: " + region);
       };
    }
 
    private static Vec3 shiftHue(final float r, final float g, final float b, final float hs) {
-      Vec3 rshifted = mixColor(hs).scale((double)r);
-      Vec3 gshifted = mixColor((hs + 0.33333334F) % 1.0F).scale((double)g);
-      Vec3 bshifted = mixColor((hs + 0.6666667F) % 1.0F).scale((double)b);
+      Vec3 rshifted = mixColor(hs).scale(r);
+      Vec3 gshifted = mixColor((hs + 0.33333334F) % 1.0F).scale(g);
+      Vec3 bshifted = mixColor((hs + 0.6666667F) % 1.0F).scale(b);
       Vec3 combined = rshifted.add(gshifted).add(bshifted);
       double max = Math.max(Math.max(1.0, combined.x), Math.max(combined.y, combined.z));
       return new Vec3(combined.x / max, combined.y / max, combined.z / max);

@@ -10,7 +10,6 @@ import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
@@ -112,8 +111,6 @@ public class ResourceSelectorArgument<T> implements ArgumentType<Collection<Hold
          private final ResourceKey<? extends Registry<T>> registryKey;
 
          private Template(final ResourceKey<? extends Registry<T>> registryKey) {
-            Objects.requireNonNull(Info.this);
-            super();
             this.registryKey = registryKey;
          }
 

@@ -35,8 +35,7 @@ public record SimpleModelWrapper(QuadCollection quads, boolean useAmbientOcclusi
       }
    }
 
-   @Nullable
-   public static Multimap<Identifier, Identifier> findNonBlockSprites(final QuadCollection geometry) {
+   public static @Nullable Multimap<Identifier, Identifier> findNonBlockSprites(final QuadCollection geometry) {
       Multimap<Identifier, Identifier> forbiddenSprites = null;
 
       for (BakedQuad bakedQuad : geometry.getAll()) {
@@ -54,7 +53,7 @@ public record SimpleModelWrapper(QuadCollection quads, boolean useAmbientOcclusi
    }
 
    @Override
-   public List<BakedQuad> getQuads(@Nullable final Direction direction) {
+   public List<BakedQuad> getQuads(final @Nullable Direction direction) {
       return this.quads.getQuads(direction);
    }
 

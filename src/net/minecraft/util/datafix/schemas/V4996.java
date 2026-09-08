@@ -18,15 +18,15 @@ public class V4996 extends NamespacedSchema {
       components.put(
          "minecraft:pot_decorations",
          () -> DSL.optionalFields(
-               "back",
-               References.ITEM_STACK.in(schema),
-               "left",
-               References.ITEM_STACK.in(schema),
-               "right",
-               References.ITEM_STACK.in(schema),
-               "front",
-               References.ITEM_STACK.in(schema)
-            )
+            "back",
+            References.ITEM_STACK.in(schema),
+            "left",
+            References.ITEM_STACK.in(schema),
+            "right",
+            References.ITEM_STACK.in(schema),
+            "front",
+            References.ITEM_STACK.in(schema)
+         )
       );
       return components;
    }

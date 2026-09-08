@@ -17,10 +17,10 @@ public record TooltipDisplay(boolean hideTooltip, SequencedSet<DataComponentType
       .xmap(ReferenceLinkedOpenHashSet::new, List::copyOf);
    public static final Codec<TooltipDisplay> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.BOOL.optionalFieldOf("hide_tooltip", false).forGetter(TooltipDisplay::hideTooltip),
-               COMPONENT_SET_CODEC.optionalFieldOf("hidden_components", ReferenceSortedSets.emptySet()).forGetter(TooltipDisplay::hiddenComponents)
-            )
-            .apply(i, TooltipDisplay::new)
+            Codec.BOOL.optionalFieldOf("hide_tooltip", false).forGetter(TooltipDisplay::hideTooltip),
+            COMPONENT_SET_CODEC.optionalFieldOf("hidden_components", ReferenceSortedSets.emptySet()).forGetter(TooltipDisplay::hiddenComponents)
+         )
+         .apply(i, TooltipDisplay::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, TooltipDisplay> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.BOOL,
@@ -34,16 +34,16 @@ public record TooltipDisplay(boolean hideTooltip, SequencedSet<DataComponentType
    public TooltipDisplay withHidden(final DataComponentType<?> component, final boolean hidden) {
       if (this.hiddenComponents.contains(component) == hidden) {
          return this;
-      } else {
-         SequencedSet<DataComponentType<?>> newHiddenComponents = new ReferenceLinkedOpenHashSet(this.hiddenComponents);
-         if (hidden) {
-            newHiddenComponents.add(component);
-         } else {
-            newHiddenComponents.remove(component);
-         }
-
-         return new TooltipDisplay(this.hideTooltip, newHiddenComponents);
       }
+
+      SequencedSet<DataComponentType<?>> newHiddenComponents = new ReferenceLinkedOpenHashSet(this.hiddenComponents);
+      if (hidden) {
+         newHiddenComponents.add(component);
+      } else {
+         newHiddenComponents.remove(component);
+      }
+
+      return new TooltipDisplay(this.hideTooltip, newHiddenComponents);
    }
 
    public boolean shows(final DataComponentType<?> component) {

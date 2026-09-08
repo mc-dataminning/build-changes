@@ -40,9 +40,9 @@ public final class ProjectileUtil {
    ) {
       Vec3 look = attacker.getHeadLookAngle();
       Vec3 eyePosition = attacker.getEyePosition();
-      Vec3 from = eyePosition.add(look.scale((double)attackRange.effectiveMinRange(attacker)));
+      Vec3 from = eyePosition.add(look.scale(attackRange.effectiveMinRange(attacker)));
       double movementComponent = attacker.getKnownMovement().dot(look);
-      Vec3 to = eyePosition.add(look.scale((double)attackRange.effectiveMaxRange(attacker) + Math.max(0.0, movementComponent)));
+      Vec3 to = eyePosition.add(look.scale(attackRange.effectiveMaxRange(attacker) + Math.max(0.0, movementComponent)));
       return getHitEntitiesAlong(attacker, eyePosition, from, matching, to, attackRange.hitboxMargin(), blockClipType);
    }
 
@@ -101,13 +101,12 @@ public final class ProjectileUtil {
          }
       }
 
-      AABB searchArea = AABB.ofSize(from, (double)entityMargin, (double)entityMargin, (double)entityMargin).expandTowards(to.subtract(from)).inflate(1.0);
+      AABB searchArea = AABB.ofSize(from, entityMargin, entityMargin, entityMargin).expandTowards(to.subtract(from)).inflate(1.0);
       Collection<EntityHitResult> entityHit = getManyEntityHitResult(level, source, from, to, searchArea, matching, entityMargin, clipType, true, true);
       return !entityHit.isEmpty() ? Either.right(entityHit) : Either.left(hitResult);
    }
 
-   @Nullable
-   public static EntityHitResult getEntityHitResult(
+   public static @Nullable EntityHitResult getEntityHitResult(
       final Entity except, final Vec3 from, final Vec3 to, final AABB box, final Predicate<Entity> matching, final double maxValue
    ) {
       Level level = except.level();
@@ -116,7 +115,7 @@ public final class ProjectileUtil {
       Vec3 hoveredPos = null;
 
       for (Entity entity : level.getEntities(except, box, matching)) {
-         AABB bb = entity.getBoundingBox().inflate((double)entity.getPickRadius());
+         AABB bb = entity.getBoundingBox().inflate(entity.getPickRadius());
          Optional<Vec3> clipPoint = bb.clip(from, to);
          if (bb.contains(from)) {
             if (nearest >= 0.0 && entity.canBePickedFromInside()) {
@@ -145,19 +144,17 @@ public final class ProjectileUtil {
       return hovered == null ? null : new EntityHitResult(hovered, hoveredPos);
    }
 
-   @Nullable
-   public static EntityHitResult getEntityHitResult(
+   public static @Nullable EntityHitResult getEntityHitResult(
       final Level level, final Projectile source, final Vec3 from, final Vec3 to, final AABB targetSearchArea, final Predicate<Entity> matching
    ) {
       return getEntityHitResult(level, source, from, to, targetSearchArea, matching, computeMargin(source));
    }
 
    public static float computeMargin(final Entity source) {
-      return Math.max(0.0F, Math.min(0.3F, (float)(source.tickCount - 2) / 20.0F));
+      return Math.max(0.0F, Math.min(0.3F, (source.tickCount - 2) / 20.0F));
    }
 
-   @Nullable
-   public static EntityHitResult getEntityHitResult(
+   public static @Nullable EntityHitResult getEntityHitResult(
       final Level level,
       final Entity source,
       final Vec3 from,
@@ -171,7 +168,7 @@ public final class ProjectileUtil {
       Entity hitEntity = null;
 
       for (Entity entity : level.getEntities(source, targetSearchArea, matching)) {
-         AABB bb = entity.getBoundingBox().inflate((double)entityMargin);
+         AABB bb = entity.getBoundingBox().inflate(entityMargin);
          Optional<Vec3> location = bb.clip(from, to);
          if (location.isPresent()) {
             double dd = from.distanceToSqr(location.get());
@@ -223,8 +220,8 @@ public final class ProjectileUtil {
             Optional<Vec3> exactHit = entityBB.clip(from, to);
             if (exactHit.isPresent()) {
                collector.add(new EntityHitResult(entity, exactHit.get()));
-            } else if (!((double)entityMargin <= 0.0)) {
-               Optional<Vec3> outsideHit = entityBB.inflate((double)entityMargin).clip(from, to);
+            } else if (!(entityMargin <= 0.0)) {
+               Optional<Vec3> outsideHit = entityBB.inflate(entityMargin).clip(from, to);
                if (!outsideHit.isEmpty()) {
                   Vec3 outsideHitPosition = outsideHit.get();
                   Vec3 towardsTarget = entityBB.getCenter();
@@ -279,7 +276,7 @@ public final class ProjectileUtil {
       return mob.getMainHandItem().is(weaponItem) ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
    }
 
-   public static AbstractArrow getMobArrow(final LivingEntity mob, final ItemStack projectile, final float power, @Nullable final ItemStack firedFromWeapon) {
+   public static AbstractArrow getMobArrow(final LivingEntity mob, final ItemStack projectile, final float power, final @Nullable ItemStack firedFromWeapon) {
       ArrowItem arrowItem = (ArrowItem)(projectile.getItem() instanceof ArrowItem ? projectile.getItem() : Items.ARROW);
       AbstractArrow arrow = arrowItem.createArrow(mob.level(), projectile, mob, firedFromWeapon);
       arrow.setBaseDamageFromMob(power);

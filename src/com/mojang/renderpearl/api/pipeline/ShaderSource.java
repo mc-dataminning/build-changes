@@ -6,16 +6,14 @@ import org.lwjgl.system.MemoryUtil;
 import org.lwjgl.util.shaderc.ShadercIncludeResult;
 
 public interface ShaderSource extends AutoCloseable {
-   @Nullable
-   String getShader(Identifier id, ShaderType type);
+   @Nullable String getShader(Identifier id, ShaderType type);
 
-   @Nullable
-   ShaderSource.CachedIncludeSource getInclude(Identifier id);
+   ShaderSource.@Nullable CachedIncludeSource getInclude(Identifier id);
 
    @Override
    void close();
 
-   public static record CachedIncludeSource(long includeResultPtr) implements AutoCloseable {
+   record CachedIncludeSource(long includeResultPtr) implements AutoCloseable {
       public static ShaderSource.CachedIncludeSource create(final Identifier id, final String source) {
          ShadercIncludeResult result = ShadercIncludeResult.calloc();
          result.source_name(MemoryUtil.memUTF8(id.toString(), false));
@@ -32,8 +30,8 @@ public interface ShaderSource extends AutoCloseable {
 
       @Override
       public void close() {
-         MemoryUtil.nmemFree(MemoryUtil.memGetAddress(this.includeResultPtr + (long)ShadercIncludeResult.SOURCE_NAME));
-         MemoryUtil.nmemFree(MemoryUtil.memGetAddress(this.includeResultPtr + (long)ShadercIncludeResult.CONTENT));
+         MemoryUtil.nmemFree(MemoryUtil.memGetAddress(this.includeResultPtr + ShadercIncludeResult.SOURCE_NAME));
+         MemoryUtil.nmemFree(MemoryUtil.memGetAddress(this.includeResultPtr + ShadercIncludeResult.CONTENT));
          MemoryUtil.nmemFree(this.includeResultPtr);
       }
    }

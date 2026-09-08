@@ -21,9 +21,9 @@ public class GlFence implements GpuFence {
    public boolean awaitCompletion(final long timeoutNS) {
       if (this.closedOrCompleted) {
          return true;
-      } else {
-         this.closedOrCompleted = this.encoder.awaitSubmit(this.submitIndex, timeoutNS);
-         return this.closedOrCompleted;
       }
+
+      this.closedOrCompleted = this.encoder.awaitSubmit(this.submitIndex, timeoutNS);
+      return this.closedOrCompleted;
    }
 }

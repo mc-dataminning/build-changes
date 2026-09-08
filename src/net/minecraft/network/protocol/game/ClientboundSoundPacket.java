@@ -82,15 +82,15 @@ public class ClientboundSoundPacket implements Packet<ClientGamePacketListener> 
    }
 
    public double getX() {
-      return (double)((float)this.x / 8.0F);
+      return this.x / 8.0F;
    }
 
    public double getY() {
-      return (double)((float)this.y / 8.0F);
+      return this.y / 8.0F;
    }
 
    public double getZ() {
-      return (double)((float)this.z / 8.0F);
+      return this.z / 8.0F;
    }
 
    public float getVolume() {

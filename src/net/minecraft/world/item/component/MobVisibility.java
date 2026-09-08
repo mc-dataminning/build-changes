@@ -16,10 +16,10 @@ public record MobVisibility(HolderSet<EntityType<?>> targetingEntityTypes, float
    public static final float MAX_VISIBILITY = 10.0F;
    public static final Codec<MobVisibility> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               RegistryCodecs.holderSet(Registries.ENTITY_TYPE).fieldOf("targeting_entity_types").forGetter(MobVisibility::targetingEntityTypes),
-               ExtraCodecs.floatRange(0.0F, 10.0F).fieldOf("visibility").forGetter(MobVisibility::visibility)
-            )
-            .apply(i, MobVisibility::new)
+            RegistryCodecs.holderSet(Registries.ENTITY_TYPE).fieldOf("targeting_entity_types").forGetter(MobVisibility::targetingEntityTypes),
+            ExtraCodecs.floatRange(0.0F, 10.0F).fieldOf("visibility").forGetter(MobVisibility::visibility)
+         )
+         .apply(i, MobVisibility::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, MobVisibility> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.holderSet(Registries.ENTITY_TYPE), MobVisibility::targetingEntityTypes, ByteBufCodecs.FLOAT, MobVisibility::visibility, MobVisibility::new

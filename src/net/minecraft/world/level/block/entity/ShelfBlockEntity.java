@@ -60,15 +60,12 @@ public class ShelfBlockEntity extends BlockEntity implements ListBackedContainer
 
    @Override
    public CompoundTag getUpdateTag(final HolderLookup.Provider registries) {
-      CompoundTag var4;
       try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(this.problemPath(), LOGGER)) {
          TagValueOutput output = TagValueOutput.createWithContext(reporter, registries);
          ContainerHelper.saveAllItems(output, this.items, true);
          output.putBoolean("align_items_to_bottom", this.alignItemsToBottom);
-         var4 = output.buildResult();
+         return output.buildResult();
       }
-
-      return var4;
    }
 
    @Override
@@ -87,7 +84,7 @@ public class ShelfBlockEntity extends BlockEntity implements ListBackedContainer
       return retrievedItem;
    }
 
-   public void setChanged(@Nullable final Holder.Reference<GameEvent> event) {
+   public void setChanged(final Holder.@Nullable Reference<GameEvent> event) {
       super.setChanged();
       if (this.level != null) {
          if (event != null) {

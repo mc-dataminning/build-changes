@@ -23,12 +23,12 @@ public record Unstitcher(Identifier resource, List<Unstitcher.Region> regions, d
    private static final Logger LOGGER = LogUtils.getLogger();
    public static final MapCodec<Unstitcher> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Identifier.CODEC.fieldOf("resource").forGetter(Unstitcher::resource),
-               ExtraCodecs.nonEmptyList(Unstitcher.Region.CODEC.listOf()).fieldOf("regions").forGetter(Unstitcher::regions),
-               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter(Unstitcher::xDivisor),
-               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter(Unstitcher::yDivisor)
-            )
-            .apply(i, Unstitcher::new)
+            Identifier.CODEC.fieldOf("resource").forGetter(Unstitcher::resource),
+            ExtraCodecs.nonEmptyList(Unstitcher.Region.CODEC.listOf()).fieldOf("regions").forGetter(Unstitcher::regions),
+            Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter(Unstitcher::xDivisor),
+            Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter(Unstitcher::yDivisor)
+         )
+         .apply(i, Unstitcher::new)
    );
 
    @Override
@@ -51,16 +51,16 @@ public record Unstitcher(Identifier resource, List<Unstitcher.Region> regions, d
       return MAP_CODEC;
    }
 
-   public static record Region(Identifier sprite, double x, double y, double width, double height) {
+   public record Region(Identifier sprite, double x, double y, double width, double height) {
       public static final Codec<Unstitcher.Region> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Identifier.CODEC.fieldOf("sprite").forGetter(Unstitcher.Region::sprite),
-                  Codec.DOUBLE.fieldOf("x").forGetter(Unstitcher.Region::x),
-                  Codec.DOUBLE.fieldOf("y").forGetter(Unstitcher.Region::y),
-                  Codec.DOUBLE.fieldOf("width").forGetter(Unstitcher.Region::width),
-                  Codec.DOUBLE.fieldOf("height").forGetter(Unstitcher.Region::height)
-               )
-               .apply(i, Unstitcher.Region::new)
+               Identifier.CODEC.fieldOf("sprite").forGetter(Unstitcher.Region::sprite),
+               Codec.DOUBLE.fieldOf("x").forGetter(Unstitcher.Region::x),
+               Codec.DOUBLE.fieldOf("y").forGetter(Unstitcher.Region::y),
+               Codec.DOUBLE.fieldOf("width").forGetter(Unstitcher.Region::width),
+               Codec.DOUBLE.fieldOf("height").forGetter(Unstitcher.Region::height)
+            )
+            .apply(i, Unstitcher.Region::new)
       );
    }
 
@@ -81,8 +81,8 @@ public record Unstitcher(Identifier resource, List<Unstitcher.Region> regions, d
       public SpriteContents get(final SpriteResourceLoader loader) {
          try {
             NativeImage fullImage = this.image.get();
-            double xScale = (double)fullImage.getWidth() / this.xDivisor;
-            double yScale = (double)fullImage.getHeight() / this.yDivisor;
+            double xScale = fullImage.getWidth() / this.xDivisor;
+            double yScale = fullImage.getHeight() / this.yDivisor;
             int x = Mth.floor(this.region.x * xScale);
             int y = Mth.floor(this.region.y * yScale);
             int width = Mth.floor(this.region.width * xScale);
@@ -90,8 +90,8 @@ public record Unstitcher(Identifier resource, List<Unstitcher.Region> regions, d
             NativeImage target = new NativeImage(NativeImage.Format.RGBA, width, height, false);
             fullImage.copyRect(target, x, y, 0, 0, width, height, false, false);
             return new SpriteContents(this.region.sprite, new FrameSize(width, height), target);
-         } catch (Exception var16) {
-            Unstitcher.LOGGER.error("Failed to unstitch region {}", this.region.sprite, var16);
+         } catch (Exception e) {
+            Unstitcher.LOGGER.error("Failed to unstitch region {}", this.region.sprite, e);
          } finally {
             this.image.release();
          }

@@ -27,9 +27,7 @@ public class BandwidthDebugChart extends AbstractDebugChart {
    }
 
    private void extractLabeledLineAtValue(final GuiGraphicsExtractor graphics, final int left, final int width, final int bottom, final int bytesPerSecond) {
-      this.extractLineWithLabel(
-         graphics, left, width, bottom - getSampleHeightInternal((double)bytesPerSecond), toDisplayStringInternal((double)bytesPerSecond)
-      );
+      this.extractLineWithLabel(graphics, left, width, bottom - getSampleHeightInternal(bytesPerSecond), toDisplayStringInternal(bytesPerSecond));
    }
 
    private void extractLineWithLabel(final GuiGraphicsExtractor graphics, final int x, final int width, final int y, final String label) {
@@ -63,7 +61,7 @@ public class BandwidthDebugChart extends AbstractDebugChart {
 
    @Override
    protected int getSampleColor(final long bytesPerTick) {
-      return this.getSampleColor(toBytesPerSecond((double)bytesPerTick), 0.0, -16711681, 8192.0, -6250241, 1.048576E7, -65536);
+      return this.getSampleColor(toBytesPerSecond(bytesPerTick), 0.0, -16711681, 8192.0, -6250241, 1.048576E7, -65536);
    }
 
    private static double toBytesPerSecond(final double bytesPerTick) {

@@ -28,12 +28,12 @@ public class SignText {
    public static final int LINES = 4;
    public static final Codec<SignText> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  ComponentSerialization.CODEC.listOf(4, 4).fieldOf("messages").forGetter(o -> o.messages),
-                  ComponentSerialization.CODEC.listOf(4, 4).lenientOptionalFieldOf("filtered_messages").forGetter(SignText::filteredMessagesForSerialization),
-                  ExtraCodecs.optionalAlwaysPresentFieldOf(DyeColor.CODEC, "color", DyeColor.BLACK).forGetter(o -> o.color),
-                  ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "has_glowing_text", false).forGetter(o -> o.hasGlowingText)
-               )
-               .apply(i, SignText::load)
+               ComponentSerialization.CODEC.listOf(4, 4).fieldOf("messages").forGetter(o -> o.messages),
+               ComponentSerialization.CODEC.listOf(4, 4).lenientOptionalFieldOf("filtered_messages").forGetter(SignText::filteredMessagesForSerialization),
+               ExtraCodecs.optionalAlwaysPresentFieldOf(DyeColor.CODEC, "color", DyeColor.BLACK).forGetter(o -> o.color),
+               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "has_glowing_text", false).forGetter(o -> o.hasGlowingText)
+            )
+            .apply(i, SignText::load)
       )
       .validate(SignText::validateLineCounts);
    public static final StreamCodec<RegistryFriendlyByteBuf, SignText> STREAM_CODEC = StreamCodec.composite(
@@ -55,8 +55,7 @@ public class SignText {
    private final List<Component> filteredMessages;
    private final DyeColor color;
    private final boolean hasGlowingText;
-   @Nullable
-   private FormattedCharSequence[] renderMessages;
+   private FormattedCharSequence @Nullable [] renderMessages;
    private boolean renderMessagedFiltered;
 
    public SignText(final List<Component> messages, final List<Component> filteredMessages, final DyeColor color, final boolean hasGlowingText) {
@@ -162,14 +161,13 @@ public class SignText {
    }
 
    public static TooltipProvider.Getter<SignText> createTooltip(final Component title) {
-      return component -> component.equals(EMPTY) ? (var0x, var1x, var2, var3) -> {
-         } : (var2, consumer, var4, var5) -> {
-            consumer.accept(title);
+      return component -> component.equals(EMPTY) ? (var0x, var1x, var2, var3) -> {} : (var2, consumer, var4, var5) -> {
+         consumer.accept(title);
 
-            for (Component message : component.messages) {
-               consumer.accept(Component.literal("  ").append(message));
-            }
-         };
+         for (Component message : component.messages) {
+            consumer.accept(Component.literal("  ").append(message));
+         }
+      };
    }
 
    public static class Mutable {

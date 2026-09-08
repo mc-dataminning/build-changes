@@ -37,7 +37,7 @@ public class LightmapRenderStateExtractor {
 
    private float calculateDarknessScale(final LivingEntity camera, final float darknessGamma, final float partialTickTime) {
       float darkness = 0.45F * darknessGamma;
-      return Math.max(0.0F, Mth.cos((double)(((float)camera.tickCount - partialTickTime) * (float) Math.PI * 0.025F)) * darkness);
+      return Math.max(0.0F, Mth.cos((camera.tickCount - partialTickTime) * (float) Math.PI * 0.025F) * darkness);
    }
 
    public void extract(final LightmapRenderState renderState, final float partialTicks) {

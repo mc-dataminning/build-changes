@@ -14,7 +14,7 @@ import net.minecraft.util.StringRepresentable;
 import org.jspecify.annotations.Nullable;
 
 public abstract class Team {
-   public boolean isAlliedTo(@Nullable final Team other) {
+   public boolean isAlliedTo(final @Nullable Team other) {
       return other == null ? false : this == other;
    }
 
@@ -36,7 +36,7 @@ public abstract class Team {
 
    public abstract Team.CollisionRule getCollisionRule();
 
-   public static enum CollisionRule implements StringRepresentable {
+   public enum CollisionRule implements StringRepresentable {
       ALWAYS("always", 0),
       NEVER("never", 1),
       PUSH_OTHER_TEAMS("pushOtherTeams", 2),
@@ -48,7 +48,7 @@ public abstract class Team {
       public final String name;
       public final int id;
 
-      private CollisionRule(final String name, final int id) {
+      CollisionRule(final String name, final int id) {
          this.name = name;
          this.id = id;
       }
@@ -63,7 +63,7 @@ public abstract class Team {
       }
    }
 
-   public static enum Visibility implements StringRepresentable {
+   public enum Visibility implements StringRepresentable {
       ALWAYS("always", 0),
       NEVER("never", 1),
       HIDE_FOR_OTHER_TEAMS("hideForOtherTeams", 2),
@@ -75,7 +75,7 @@ public abstract class Team {
       public final String name;
       public final int id;
 
-      private Visibility(final String name, final int id) {
+      Visibility(final String name, final int id) {
          this.name = name;
          this.id = id;
       }

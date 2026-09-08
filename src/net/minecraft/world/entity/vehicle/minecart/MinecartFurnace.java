@@ -155,6 +155,6 @@ public class MinecartFurnace extends AbstractMinecart {
 
    @Override
    public BlockState getDefaultDisplayBlockState() {
-      return Blocks.FURNACE.defaultBlockState().setValue(FurnaceBlock.FACING, Direction.NORTH).setValue(FurnaceBlock.LIT, Boolean.valueOf(this.hasFuel()));
+      return Blocks.FURNACE.defaultBlockState().setValue(FurnaceBlock.FACING, Direction.NORTH).setValue(FurnaceBlock.LIT, this.hasFuel());
    }
 }

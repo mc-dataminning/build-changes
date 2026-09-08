@@ -32,18 +32,18 @@ public class FeatureFlagRemoveFix extends DataFix {
       List<Dynamic<T>> inactiveFeatures = tag.get("removed_features").asStream().collect(Collectors.toCollection(ArrayList::new));
       Dynamic<T> result = tag.update(
          "enabled_features", features -> (Dynamic)DataFixUtils.orElse(features.asStreamOpt().result().map(s -> s.filter(feature -> {
-                  Optional<String> asString = feature.asString().result();
-                  if (asString.isEmpty()) {
-                     return true;
-                  } else {
-                     boolean shouldRemove = this.flagsToRemove.contains(asString.get());
-                     if (shouldRemove) {
-                        inactiveFeatures.add(tag.createString(asString.get()));
-                     }
+            Optional<String> asString = feature.asString().result();
+            if (asString.isEmpty()) {
+               return true;
+            }
 
-                     return !shouldRemove;
-                  }
-               })).map(tag::createList), features)
+            boolean shouldRemove = this.flagsToRemove.contains(asString.get());
+            if (shouldRemove) {
+               inactiveFeatures.add(tag.createString(asString.get()));
+            }
+
+            return !shouldRemove;
+         })).map(tag::createList), features)
       );
       if (!inactiveFeatures.isEmpty()) {
          result = result.set("removed_features", tag.createList(inactiveFeatures.stream()));

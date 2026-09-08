@@ -19,15 +19,15 @@ public abstract class PiglinModel extends AbstractPiglinModel<PiglinRenderState>
       PiglinArmPose pose = state.armPose;
       if (pose == PiglinArmPose.DANCING) {
          float dancePos = state.ageInTicks / 60.0F;
-         this.rightEar.zRot = (float) (Math.PI / 6) + (float) (Math.PI / 180.0) * Mth.sin((double)(dancePos * 30.0F)) * 10.0F;
-         this.leftEar.zRot = (float) (-Math.PI / 6) - (float) (Math.PI / 180.0) * Mth.cos((double)(dancePos * 30.0F)) * 10.0F;
-         this.head.x = this.head.x + Mth.sin((double)(dancePos * 10.0F));
-         this.head.y = this.head.y + Mth.sin((double)(dancePos * 40.0F)) + 0.4F;
-         this.rightArm.zRot = (float) (Math.PI / 180.0) * (70.0F + Mth.cos((double)(dancePos * 40.0F)) * 10.0F);
+         this.rightEar.zRot = (float) (Math.PI / 6) + (float) (Math.PI / 180.0) * Mth.sin(dancePos * 30.0F) * 10.0F;
+         this.leftEar.zRot = (float) (-Math.PI / 6) - (float) (Math.PI / 180.0) * Mth.cos(dancePos * 30.0F) * 10.0F;
+         this.head.x = this.head.x + Mth.sin(dancePos * 10.0F);
+         this.head.y = this.head.y + (Mth.sin(dancePos * 40.0F) + 0.4F);
+         this.rightArm.zRot = (float) (Math.PI / 180.0) * (70.0F + Mth.cos(dancePos * 40.0F) * 10.0F);
          this.leftArm.zRot = this.rightArm.zRot * -1.0F;
-         this.rightArm.y = this.rightArm.y + (Mth.sin((double)(dancePos * 40.0F)) * 0.5F - 0.5F);
-         this.leftArm.y = this.leftArm.y + Mth.sin((double)(dancePos * 40.0F)) * 0.5F + 0.5F;
-         this.body.y = this.body.y + Mth.sin((double)(dancePos * 40.0F)) * 0.35F;
+         this.rightArm.y = this.rightArm.y + (Mth.sin(dancePos * 40.0F) * 0.5F - 0.5F);
+         this.leftArm.y = this.leftArm.y + (Mth.sin(dancePos * 40.0F) * 0.5F + 0.5F);
+         this.body.y = this.body.y + Mth.sin(dancePos * 40.0F) * 0.35F;
       } else if (pose == PiglinArmPose.ATTACKING_WITH_MELEE_WEAPON && swingAnimation == 0.0F) {
          this.holdWeaponHigh(state);
       } else if (pose == PiglinArmPose.CROSSBOW_HOLD) {

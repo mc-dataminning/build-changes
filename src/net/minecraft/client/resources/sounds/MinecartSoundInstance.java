@@ -21,9 +21,9 @@ public class MinecartSoundInstance extends AbstractTickableSoundInstance {
       this.looping = true;
       this.delay = 0;
       this.volume = 0.0F;
-      this.x = (double)((float)minecart.getX());
-      this.y = (double)((float)minecart.getY());
-      this.z = (double)((float)minecart.getZ());
+      this.x = (float)minecart.getX();
+      this.y = (float)minecart.getY();
+      this.z = (float)minecart.getZ();
    }
 
    @Override
@@ -41,9 +41,9 @@ public class MinecartSoundInstance extends AbstractTickableSoundInstance {
       if (this.minecart.isRemoved()) {
          this.stop();
       } else {
-         this.x = (double)((float)this.minecart.getX());
-         this.y = (double)((float)this.minecart.getY());
-         this.z = (double)((float)this.minecart.getZ());
+         this.x = (float)this.minecart.getX();
+         this.y = (float)this.minecart.getY();
+         this.z = (float)this.minecart.getZ();
          float speed = (float)this.minecart.getDeltaMovement().horizontalDistance();
          boolean offRail = !this.minecart.isOnRails() && this.minecart.getBehavior() instanceof NewMinecartBehavior;
          if (speed >= 0.01F && this.minecart.level().tickRateManager().runsNormally() && !offRail) {

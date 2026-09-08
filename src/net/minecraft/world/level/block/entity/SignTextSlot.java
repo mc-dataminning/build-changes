@@ -14,7 +14,7 @@ public enum SignTextSlot {
    private static final IntFunction<SignTextSlot> BY_ID = ByIdMap.continuous(h -> h.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
    public static final StreamCodec<ByteBuf, SignTextSlot> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, h -> h.id);
 
-   private SignTextSlot(final int id) {
+   SignTextSlot(final int id) {
       this.id = id;
    }
 }

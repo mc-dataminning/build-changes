@@ -17,14 +17,14 @@ public class SetWalkTargetFromLookTarget {
    ) {
       return BehaviorBuilder.create(
          i -> i.group(i.absent(MemoryModuleType.WALK_TARGET), i.present(MemoryModuleType.LOOK_TARGET))
-               .apply(i, (walkTarget, lookTarget) -> (level, body, timestamp) -> {
-                     if (!canSetWalkTargetPredicate.test(body)) {
-                        return false;
-                     } else {
-                        walkTarget.set(new WalkTarget(i.get(lookTarget), speedModifier.apply(body), closeEnoughDistance));
-                        return true;
-                     }
-                  })
+            .apply(i, (walkTarget, lookTarget) -> (level, body, timestamp) -> {
+               if (!canSetWalkTargetPredicate.test(body)) {
+                  return false;
+               }
+
+               walkTarget.set(new WalkTarget(i.get(lookTarget), speedModifier.apply(body), closeEnoughDistance));
+               return true;
+            })
       );
    }
 }

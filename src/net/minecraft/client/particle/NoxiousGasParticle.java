@@ -22,16 +22,16 @@ public class NoxiousGasParticle extends BaseAshSmokeParticle {
       this.rCol = 1.0F;
       this.gCol = 1.0F;
       this.bCol = 1.0F;
-      this.lifetime = (int)(6.0 / ((double)this.random.nextFloat() * 0.5 + 0.5) * (double)scale);
-      this.fadeOutStartingPoint = (float)this.lifetime / 2.0F;
+      this.lifetime = (int)(6.0 / (this.random.nextFloat() * 0.5 + 0.5) * scale);
+      this.fadeOutStartingPoint = this.lifetime / 2.0F;
    }
 
    @Override
    public void tick() {
       super.tick();
-      if ((float)this.age > this.fadeOutStartingPoint) {
-         float framesSinceFadeOutStart = (float)this.age - this.fadeOutStartingPoint;
-         this.setAlpha(((float)this.lifetime - framesSinceFadeOutStart) / (float)this.lifetime);
+      if (this.age > this.fadeOutStartingPoint) {
+         float framesSinceFadeOutStart = this.age - this.fadeOutStartingPoint;
+         this.setAlpha((this.lifetime - framesSinceFadeOutStart) / this.lifetime);
       }
    }
 

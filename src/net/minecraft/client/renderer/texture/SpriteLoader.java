@@ -44,7 +44,6 @@ public class SpriteLoader {
    }
 
    private SpriteLoader.Preparations stitch(final List<SpriteContents> sprites, final int maxMipmapLevels, final Executor executor) {
-      SpriteLoader.Preparations var19;
       try (Zone ignored = Profiler.get().zone(() -> "stitch " + this.location)) {
          int maxTextureSize = this.maxSupportedTextureSize;
          int minTexelSize = Integer.MAX_VALUE;
@@ -78,21 +77,18 @@ public class SpriteLoader {
          int anisotropyBit = options.textureFiltering().get() != TextureFilteringMethod.ANISOTROPIC ? 0 : options.maxAnisotropyBit().get();
          Stitcher<SpriteContents> stitcher = new Stitcher<>(maxTextureSize, maxTextureSize, mipLevel, anisotropyBit);
 
-         for (SpriteContents spriteInfox : sprites) {
-            stitcher.registerSprite(spriteInfox);
+         for (SpriteContents spriteInfo : sprites) {
+            stitcher.registerSprite(spriteInfo);
          }
 
          try {
             stitcher.stitch();
-         } catch (StitcherException var21) {
-            CrashReport report = CrashReport.forThrowable(var21, "Stitching");
+         } catch (StitcherException e) {
+            CrashReport report = CrashReport.forThrowable(e, "Stitching");
             CrashReportCategory category = report.addCategory("Stitcher");
             category.setDetail(
                "Sprites",
-               var21.getAllSprites()
-                  .stream()
-                  .map(s -> String.format(Locale.ROOT, "%s[%dx%d]", s.name(), s.width(), s.height()))
-                  .collect(Collectors.joining(","))
+               e.getAllSprites().stream().map(s -> String.format(Locale.ROOT, "%s[%dx%d]", s.name(), s.width(), s.height())).collect(Collectors.joining(","))
             );
             category.setDetail("Max Texture Size", maxTextureSize);
             throw new ReportedException(report);
@@ -105,10 +101,8 @@ public class SpriteLoader {
          CompletableFuture<Void> readyForUpload = CompletableFuture.runAsync(
             () -> result.values().forEach(s -> s.contents().increaseMipLevel(mipLevel)), executor
          );
-         var19 = new SpriteLoader.Preparations(width, height, mipLevel, missingSprite, result, readyForUpload);
+         return new SpriteLoader.Preparations(width, height, mipLevel, missingSprite, result, readyForUpload);
       }
-
-      return var19;
    }
 
    private static CompletableFuture<List<SpriteContents>> runSpriteSuppliers(
@@ -141,11 +135,10 @@ public class SpriteLoader {
       return result;
    }
 
-   public static record Preparations(
+   public record Preparations(
       int width, int height, int mipLevel, TextureAtlasSprite missing, Map<Identifier, TextureAtlasSprite> regions, CompletableFuture<Void> readyForUpload
    ) {
-      @Nullable
-      public TextureAtlasSprite getSprite(final Identifier id) {
+      public @Nullable TextureAtlasSprite getSprite(final Identifier id) {
          return this.regions.get(id);
       }
    }

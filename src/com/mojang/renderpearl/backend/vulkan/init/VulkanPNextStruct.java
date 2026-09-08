@@ -27,8 +27,8 @@ public record VulkanPNextStruct(Class<?> pNextStructClass, int sType, int struct
          sType$DefaultFunction = pNextStructClass.getMethod("sType$Default");
          pNextOffsetField = pNextStructClass.getField("PNEXT");
          sTypeOffsetField = pNextStructClass.getField("STYPE");
-      } catch (NoSuchMethodException | NoSuchFieldException var15) {
-         throw new IllegalArgumentException("Struct class " + structClassName + " does not have required member " + var15.getMessage());
+      } catch (NoSuchFieldException | NoSuchMethodException e) {
+         throw new IllegalArgumentException("Struct class " + structClassName + " does not have required member " + e.getMessage());
       }
 
       int sType;
@@ -66,8 +66,8 @@ public record VulkanPNextStruct(Class<?> pNextStructClass, int sType, int struct
          if (stack != null) {
             stack.close();
          }
-      } catch (InvocationTargetException | IllegalAccessException var17) {
-         throw new IllegalArgumentException(var17);
+      } catch (IllegalAccessException | InvocationTargetException e) {
+         throw new IllegalArgumentException(e);
       }
 
       this(pNextStructClass, sType, structSize);
@@ -104,14 +104,14 @@ public record VulkanPNextStruct(Class<?> pNextStructClass, int sType, int struct
          Method method = sourceClass.getMethod(name);
          if (method.getReturnType() != boolean.class) {
             throw new IllegalArgumentException("Only booleans are supported for struct methods");
-         } else {
-            Field offsetField = sourceClass.getField(name.toUpperCase(Locale.ROOT));
-            return (long)(sourceClassOffset + (Integer)offsetField.get(null));
          }
-      } catch (NoSuchMethodException | NoSuchFieldException var6) {
+
+         Field offsetField = sourceClass.getField(name.toUpperCase(Locale.ROOT));
+         return sourceClassOffset + (Integer)offsetField.get(null);
+      } catch (NoSuchFieldException | NoSuchMethodException e) {
          throw new IllegalArgumentException("Could not find field " + name + " in struct " + this.pNextStructClass.getSimpleName());
-      } catch (IllegalAccessException var7) {
-         throw new IllegalArgumentException(var7);
+      } catch (IllegalAccessException e) {
+         throw new IllegalArgumentException(e);
       }
    }
 
@@ -127,13 +127,13 @@ public record VulkanPNextStruct(Class<?> pNextStructClass, int sType, int struct
       long foundStruct = findStructInPNextChain(pNextChain, this.sType);
       if (foundStruct != 0L) {
          return foundStruct;
-      } else {
-         long newStruct = stack.ncalloc(Pointer.POINTER_SIZE, 1, this.structSize);
-         sType(newStruct, this.sType);
-         pNext(newStruct, pNext(pNextChain));
-         pNext(pNextChain, newStruct);
-         return newStruct;
       }
+
+      long newStruct = stack.ncalloc(Pointer.POINTER_SIZE, 1, this.structSize);
+      sType(newStruct, this.sType);
+      pNext(newStruct, pNext(pNextChain));
+      pNext(pNextChain, newStruct);
+      return newStruct;
    }
 
    public long findStructInPNextChain(final long pNextChain) {

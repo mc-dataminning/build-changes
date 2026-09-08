@@ -51,10 +51,8 @@ public class TrialSpawnerStateData {
    int totalMobsSpawned;
    Optional<SpawnData> nextSpawnData = Optional.empty();
    Optional<ResourceKey<LootTable>> ejectingLootTable = Optional.empty();
-   @Nullable
-   private Entity displayEntity;
-   @Nullable
-   private WeightedList<ItemStack> dispensing;
+   private @Nullable Entity displayEntity;
+   private @Nullable WeightedList<ItemStack> dispensing;
    double spin;
    double oSpin;
 
@@ -125,7 +123,7 @@ public class TrialSpawnerStateData {
       if (!isThrottled) {
          if (!trialSpawner.getState().equals(TrialSpawnerState.COOLDOWN) || !trialSpawner.isOminous()) {
             List<UUID> inLineOfSightPlayers = trialSpawner.getPlayerDetector()
-               .detect(level, trialSpawner.getEntitySelector(), pos, (double)trialSpawner.getRequiredPlayerRange(), true);
+               .detect(level, trialSpawner.getEntitySelector(), pos, trialSpawner.getRequiredPlayerRange(), true);
             boolean becameOminous;
             if (!trialSpawner.isOminous() && !inLineOfSightPlayers.isEmpty()) {
                Optional<Pair<Player, Holder<MobEffect>>> playerWithOminousEffect = findPlayerWithOminousEffect(level, inLineOfSightPlayers);
@@ -147,7 +145,7 @@ public class TrialSpawnerStateData {
                boolean isSearchingForFirstPlayer = trialSpawner.getStateData().detectedPlayers.isEmpty();
                List<UUID> foundPlayers = isSearchingForFirstPlayer
                   ? inLineOfSightPlayers
-                  : trialSpawner.getPlayerDetector().detect(level, trialSpawner.getEntitySelector(), pos, (double)trialSpawner.getRequiredPlayerRange(), false);
+                  : trialSpawner.getPlayerDetector().detect(level, trialSpawner.getEntitySelector(), pos, trialSpawner.getRequiredPlayerRange(), false);
                if (this.detectedPlayers.addAll(foundPlayers)) {
                   this.nextMobSpawnsAt = Math.max(level.getGameTime() + 40L, this.nextMobSpawnsAt);
                   if (!becameOminous) {
@@ -197,7 +195,7 @@ public class TrialSpawnerStateData {
 
       this.totalMobsSpawned = 0;
       this.currentMobs.clear();
-      this.nextMobSpawnsAt = level.getGameTime() + (long)trialSpawner.ominousConfig().ticksBetweenSpawn();
+      this.nextMobSpawnsAt = level.getGameTime() + trialSpawner.ominousConfig().ticksBetweenSpawn();
       trialSpawner.markUpdated();
       this.cooldownEndsAt = level.getGameTime() + trialSpawner.ominousConfig().ticksBetweenItemSpawners();
    }
@@ -213,12 +211,12 @@ public class TrialSpawnerStateData {
    }
 
    public boolean isReadyToOpenShutter(final ServerLevel serverLevel, final float delayBeforeOpen, final int targetCooldownLength) {
-      long cooldownStartedAt = this.cooldownEndsAt - (long)targetCooldownLength;
+      long cooldownStartedAt = this.cooldownEndsAt - targetCooldownLength;
       return (float)serverLevel.getGameTime() >= (float)cooldownStartedAt + delayBeforeOpen;
    }
 
    public boolean isReadyToEjectItems(final ServerLevel serverLevel, final float timeBetweenEjections, final int targetCooldownLength) {
-      long cooldownStartedAt = this.cooldownEndsAt - (long)targetCooldownLength;
+      long cooldownStartedAt = this.cooldownEndsAt - targetCooldownLength;
       return (float)(serverLevel.getGameTime() - cooldownStartedAt) % timeBetweenEjections == 0.0F;
    }
 
@@ -229,31 +227,30 @@ public class TrialSpawnerStateData {
    protected SpawnData getOrCreateNextSpawnData(final TrialSpawner trialSpawner, final RandomSource random) {
       if (this.nextSpawnData.isPresent()) {
          return this.nextSpawnData.get();
-      } else {
-         WeightedList<SpawnData> spawnPotentials = trialSpawner.activeConfig().spawnPotentialsDefinition();
-         Optional<SpawnData> selected = spawnPotentials.isEmpty() ? this.nextSpawnData : spawnPotentials.getRandom(random);
-         this.nextSpawnData = Optional.of(selected.orElseGet(SpawnData::new));
-         trialSpawner.markUpdated();
-         return this.nextSpawnData.get();
       }
+
+      WeightedList<SpawnData> spawnPotentials = trialSpawner.activeConfig().spawnPotentialsDefinition();
+      Optional<SpawnData> selected = spawnPotentials.isEmpty() ? this.nextSpawnData : spawnPotentials.getRandom(random);
+      this.nextSpawnData = Optional.of(selected.orElseGet(SpawnData::new));
+      trialSpawner.markUpdated();
+      return this.nextSpawnData.get();
    }
 
-   @Nullable
-   public Entity getOrCreateDisplayEntity(final TrialSpawner trialSpawner, final Level level, final TrialSpawnerState state) {
+   public @Nullable Entity getOrCreateDisplayEntity(final TrialSpawner trialSpawner, final Level level, final TrialSpawnerState state) {
       if (!state.hasSpinningMob()) {
          return null;
-      } else {
-         if (this.displayEntity == null) {
-            CompoundTag entityToSpawn = this.getOrCreateNextSpawnData(trialSpawner, level.getRandom()).getEntityToSpawn();
-            if (entityToSpawn.getString("id").isPresent()) {
-               this.displayEntity = EntityType.loadEntityRecursive(
-                  entityToSpawn, level, new EntitySpawnRequest(EntitySpawnReason.TRIAL_SPAWNER, true), BaseSpawner.SET_DISPLAY_ENTITY_ID
-               );
-            }
-         }
-
-         return this.displayEntity;
       }
+
+      if (this.displayEntity == null) {
+         CompoundTag entityToSpawn = this.getOrCreateNextSpawnData(trialSpawner, level.getRandom()).getEntityToSpawn();
+         if (entityToSpawn.getString("id").isPresent()) {
+            this.displayEntity = EntityType.loadEntityRecursive(
+               entityToSpawn, level, new EntitySpawnRequest(EntitySpawnReason.TRIAL_SPAWNER, true), BaseSpawner.SET_DISPLAY_ENTITY_ID
+            );
+         }
+      }
+
+      return this.displayEntity;
    }
 
    public CompoundTag getUpdateTag(final TrialSpawnerState state) {
@@ -277,36 +274,34 @@ public class TrialSpawnerStateData {
    public WeightedList<ItemStack> getDispensingItems(final ServerLevel level, final TrialSpawnerConfig config, final BlockPos pos) {
       if (this.dispensing != null) {
          return this.dispensing;
-      } else {
-         LootTable lootTable = level.getServer().reloadableRegistries().getLootTable(config.itemsToDropWhenOminous());
-         LootParams params = new LootParams.Builder(level).create(LootContextParamSets.EMPTY);
-         long simplePositionalSeed = lowResolutionPosition(level, pos);
-         ObjectArrayList<ItemStack> lootDrops = lootTable.getRandomItems(params, simplePositionalSeed);
-         if (lootDrops.isEmpty()) {
-            return WeightedList.of();
-         } else {
-            WeightedList.Builder<ItemStack> builder = WeightedList.builder();
-            ObjectListIterator var10 = lootDrops.iterator();
-
-            while (var10.hasNext()) {
-               ItemStack drop = (ItemStack)var10.next();
-               builder.add(drop.copyWithCount(1), drop.getCount());
-            }
-
-            this.dispensing = builder.build();
-            return this.dispensing;
-         }
       }
+
+      LootTable lootTable = level.getServer().reloadableRegistries().getLootTable(config.itemsToDropWhenOminous());
+      LootParams params = new LootParams.Builder(level).create(LootContextParamSets.EMPTY);
+      long simplePositionalSeed = lowResolutionPosition(level, pos);
+      ObjectArrayList<ItemStack> lootDrops = lootTable.getRandomItems(params, simplePositionalSeed);
+      if (lootDrops.isEmpty()) {
+         return WeightedList.of();
+      }
+
+      WeightedList.Builder<ItemStack> builder = WeightedList.builder();
+      ObjectListIterator var10 = lootDrops.iterator();
+
+      while (var10.hasNext()) {
+         ItemStack drop = (ItemStack)var10.next();
+         builder.add(drop.copyWithCount(1), drop.getCount());
+      }
+
+      this.dispensing = builder.build();
+      return this.dispensing;
    }
 
    private static long lowResolutionPosition(final ServerLevel level, final BlockPos pos) {
-      BlockPos lowResolutionPosition = new BlockPos(
-         Mth.floor((float)pos.getX() / 30.0F), Mth.floor((float)pos.getY() / 20.0F), Mth.floor((float)pos.getZ() / 30.0F)
-      );
+      BlockPos lowResolutionPosition = new BlockPos(Mth.floor(pos.getX() / 30.0F), Mth.floor(pos.getY() / 20.0F), Mth.floor(pos.getZ() / 30.0F));
       return level.getSeed() + lowResolutionPosition.asLong();
    }
 
-   public static record Packed(
+   public record Packed(
       Set<UUID> detectedPlayers,
       Set<UUID> currentMobs,
       long cooldownEndsAt,
@@ -317,17 +312,15 @@ public class TrialSpawnerStateData {
    ) {
       public static final MapCodec<TrialSpawnerStateData.Packed> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  UUIDUtil.CODEC_SET.lenientOptionalFieldOf("registered_players", Set.of()).forGetter(TrialSpawnerStateData.Packed::detectedPlayers),
-                  UUIDUtil.CODEC_SET.lenientOptionalFieldOf("current_mobs", Set.of()).forGetter(TrialSpawnerStateData.Packed::currentMobs),
-                  Codec.LONG.lenientOptionalFieldOf("cooldown_ends_at", 0L).forGetter(TrialSpawnerStateData.Packed::cooldownEndsAt),
-                  Codec.LONG.lenientOptionalFieldOf("next_mob_spawns_at", 0L).forGetter(TrialSpawnerStateData.Packed::nextMobSpawnsAt),
-                  Codec.intRange(0, Integer.MAX_VALUE)
-                     .lenientOptionalFieldOf("total_mobs_spawned", 0)
-                     .forGetter(TrialSpawnerStateData.Packed::totalMobsSpawned),
-                  SpawnData.CODEC.lenientOptionalFieldOf("spawn_data").forGetter(TrialSpawnerStateData.Packed::nextSpawnData),
-                  LootTable.KEY_CODEC.lenientOptionalFieldOf("ejecting_loot_table").forGetter(TrialSpawnerStateData.Packed::ejectingLootTable)
-               )
-               .apply(i, TrialSpawnerStateData.Packed::new)
+               UUIDUtil.CODEC_SET.lenientOptionalFieldOf("registered_players", Set.of()).forGetter(TrialSpawnerStateData.Packed::detectedPlayers),
+               UUIDUtil.CODEC_SET.lenientOptionalFieldOf("current_mobs", Set.of()).forGetter(TrialSpawnerStateData.Packed::currentMobs),
+               Codec.LONG.lenientOptionalFieldOf("cooldown_ends_at", 0L).forGetter(TrialSpawnerStateData.Packed::cooldownEndsAt),
+               Codec.LONG.lenientOptionalFieldOf("next_mob_spawns_at", 0L).forGetter(TrialSpawnerStateData.Packed::nextMobSpawnsAt),
+               Codec.intRange(0, Integer.MAX_VALUE).lenientOptionalFieldOf("total_mobs_spawned", 0).forGetter(TrialSpawnerStateData.Packed::totalMobsSpawned),
+               SpawnData.CODEC.lenientOptionalFieldOf("spawn_data").forGetter(TrialSpawnerStateData.Packed::nextSpawnData),
+               LootTable.KEY_CODEC.lenientOptionalFieldOf("ejecting_loot_table").forGetter(TrialSpawnerStateData.Packed::ejectingLootTable)
+            )
+            .apply(i, TrialSpawnerStateData.Packed::new)
       );
    }
 }

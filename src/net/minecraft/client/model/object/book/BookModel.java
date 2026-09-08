@@ -61,15 +61,15 @@ public class BookModel extends Model<BookModel.State> {
       this.rightPages.yRot = -openness;
       this.flipPage1.yRot = openness - openness * 2.0F * state.pageFlip1;
       this.flipPage2.yRot = openness - openness * 2.0F * state.pageFlip2;
-      this.leftPages.x = Mth.sin((double)openness);
-      this.rightPages.x = Mth.sin((double)openness);
-      this.flipPage1.x = Mth.sin((double)openness);
-      this.flipPage2.x = Mth.sin((double)openness);
+      this.leftPages.x = Mth.sin(openness);
+      this.rightPages.x = Mth.sin(openness);
+      this.flipPage1.x = Mth.sin(openness);
+      this.flipPage2.x = Mth.sin(openness);
    }
 
-   public static record State(float openness, float pageFlip1, float pageFlip2) {
+   public record State(float openness, float pageFlip1, float pageFlip2) {
       public static BookModel.State forAnimation(final float progress, final float pageFlip1, final float pageFlip2, final float openness) {
-         return new BookModel.State((Mth.sin((double)(progress * 0.02F)) * 0.1F + 1.25F) * openness, pageFlip1, pageFlip2);
+         return new BookModel.State((Mth.sin(progress * 0.02F) * 0.1F + 1.25F) * openness, pageFlip1, pageFlip2);
       }
    }
 }

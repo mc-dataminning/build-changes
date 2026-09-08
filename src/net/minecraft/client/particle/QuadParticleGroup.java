@@ -23,8 +23,8 @@ public class QuadParticleGroup extends ParticleGroup<SingleQuadParticle> {
          if (frustum.pointInFrustum(particle.x, particle.y, particle.z)) {
             try {
                particle.extract(this.particleTypeRenderState, camera, partialTickTime);
-            } catch (Throwable var9) {
-               CrashReport report = CrashReport.forThrowable(var9, "Rendering Particle");
+            } catch (Throwable throwable) {
+               CrashReport report = CrashReport.forThrowable(throwable, "Rendering Particle");
                CrashReportCategory category = report.addCategory("Particle being rendered");
                category.setDetail("Particle", particle::toString);
                category.setDetail("Particle Type", this.particleType::toString);

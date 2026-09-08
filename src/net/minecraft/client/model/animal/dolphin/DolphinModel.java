@@ -65,9 +65,9 @@ public class DolphinModel extends EntityModel<DolphinRenderState> {
       this.body.xRot = state.xRot * (float) (Math.PI / 180.0);
       this.body.yRot = state.yRot * (float) (Math.PI / 180.0);
       if (state.isMoving) {
-         this.body.xRot = this.body.xRot + (-0.05F - 0.05F * Mth.cos((double)(state.ageInTicks * 0.3F)));
-         this.tail.xRot = -0.1F * Mth.cos((double)(state.ageInTicks * 0.3F));
-         this.tailFin.xRot = -0.2F * Mth.cos((double)(state.ageInTicks * 0.3F));
+         this.body.xRot = this.body.xRot + (-0.05F - 0.05F * Mth.cos(state.ageInTicks * 0.3F));
+         this.tail.xRot = -0.1F * Mth.cos(state.ageInTicks * 0.3F);
+         this.tailFin.xRot = -0.2F * Mth.cos(state.ageInTicks * 0.3F);
       }
    }
 }

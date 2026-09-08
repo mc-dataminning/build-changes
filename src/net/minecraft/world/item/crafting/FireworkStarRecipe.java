@@ -23,16 +23,16 @@ import org.jspecify.annotations.Nullable;
 public class FireworkStarRecipe extends CustomRecipe {
    public static final MapCodec<FireworkStarRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.simpleMap(FireworkExplosion.Shape.CODEC, Ingredient.CODEC, StringRepresentable.keys(FireworkExplosion.Shape.values()))
-                  .fieldOf("shapes")
-                  .forGetter(o -> o.shapes),
-               Ingredient.CODEC.fieldOf("trail").forGetter(o -> o.trail),
-               Ingredient.CODEC.fieldOf("twinkle").forGetter(o -> o.twinkle),
-               Ingredient.CODEC.fieldOf("fuel").forGetter(o -> o.fuel),
-               Ingredient.CODEC.fieldOf("dye").forGetter(o -> o.dye),
-               ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
-            )
-            .apply(i, FireworkStarRecipe::new)
+            Codec.simpleMap(FireworkExplosion.Shape.CODEC, Ingredient.CODEC, StringRepresentable.keys(FireworkExplosion.Shape.values()))
+               .fieldOf("shapes")
+               .forGetter(o -> o.shapes),
+            Ingredient.CODEC.fieldOf("trail").forGetter(o -> o.trail),
+            Ingredient.CODEC.fieldOf("twinkle").forGetter(o -> o.twinkle),
+            Ingredient.CODEC.fieldOf("fuel").forGetter(o -> o.fuel),
+            Ingredient.CODEC.fieldOf("dye").forGetter(o -> o.dye),
+            ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
+         )
+         .apply(i, FireworkStarRecipe::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, FireworkStarRecipe> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.map(HashMap::new, FireworkExplosion.Shape.STREAM_CODEC, Ingredient.CONTENTS_STREAM_CODEC),
@@ -73,8 +73,7 @@ public class FireworkStarRecipe extends CustomRecipe {
       this.result = result;
    }
 
-   @Nullable
-   private FireworkExplosion.Shape findShape(final ItemStack itemStack) {
+   private FireworkExplosion.@Nullable Shape findShape(final ItemStack itemStack) {
       for (Entry<FireworkExplosion.Shape, Ingredient> e : this.shapes.entrySet()) {
          if (e.getValue().test(itemStack)) {
             return e.getKey();
@@ -87,53 +86,53 @@ public class FireworkStarRecipe extends CustomRecipe {
    public boolean matches(final CraftingInput input, final Level level) {
       if (input.ingredientCount() < 2) {
          return false;
-      } else {
-         boolean hasFuel = false;
-         boolean hasDye = false;
-         boolean hasShape = false;
-         boolean hasTrail = false;
-         boolean hasTwinkle = false;
+      }
 
-         for (int slot = 0; slot < input.size(); slot++) {
-            ItemStack itemStack = input.getItem(slot);
-            if (!itemStack.isEmpty()) {
-               if (this.twinkle.test(itemStack)) {
-                  if (hasTwinkle) {
-                     return false;
-                  }
+      boolean hasFuel = false;
+      boolean hasDye = false;
+      boolean hasShape = false;
+      boolean hasTrail = false;
+      boolean hasTwinkle = false;
 
-                  hasTwinkle = true;
-               } else if (this.trail.test(itemStack)) {
-                  if (hasTrail) {
-                     return false;
-                  }
-
-                  hasTrail = true;
-               } else if (this.fuel.test(itemStack)) {
-                  if (hasFuel) {
-                     return false;
-                  }
-
-                  hasFuel = true;
-               } else if (this.dye.test(itemStack) && itemStack.has(DataComponents.DYE)) {
-                  hasDye = true;
-               } else {
-                  FireworkExplosion.Shape shape = this.findShape(itemStack);
-                  if (shape == null) {
-                     return false;
-                  }
-
-                  if (hasShape) {
-                     return false;
-                  }
-
-                  hasShape = true;
+      for (int slot = 0; slot < input.size(); slot++) {
+         ItemStack itemStack = input.getItem(slot);
+         if (!itemStack.isEmpty()) {
+            if (this.twinkle.test(itemStack)) {
+               if (hasTwinkle) {
+                  return false;
                }
+
+               hasTwinkle = true;
+            } else if (this.trail.test(itemStack)) {
+               if (hasTrail) {
+                  return false;
+               }
+
+               hasTrail = true;
+            } else if (this.fuel.test(itemStack)) {
+               if (hasFuel) {
+                  return false;
+               }
+
+               hasFuel = true;
+            } else if (this.dye.test(itemStack) && itemStack.has(DataComponents.DYE)) {
+               hasDye = true;
+            } else {
+               FireworkExplosion.Shape shape = this.findShape(itemStack);
+               if (shape == null) {
+                  return false;
+               }
+
+               if (hasShape) {
+                  return false;
+               }
+
+               hasShape = true;
             }
          }
-
-         return hasFuel && hasDye;
       }
+
+      return hasFuel && hasDye;
    }
 
    public ItemStack assemble(final CraftingInput input) {

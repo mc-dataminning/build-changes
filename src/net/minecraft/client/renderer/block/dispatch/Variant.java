@@ -12,7 +12,7 @@ import net.minecraft.resources.Identifier;
 public record Variant(Identifier modelLocation, Variant.SimpleModelState modelState) implements BlockStateModelPart.Unbaked {
    public static final MapCodec<Variant> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(Identifier.CODEC.fieldOf("model").forGetter(Variant::modelLocation), Variant.SimpleModelState.MAP_CODEC.forGetter(Variant::modelState))
-            .apply(i, Variant::new)
+         .apply(i, Variant::new)
    );
    public static final Codec<Variant> CODEC = MAP_CODEC.codec();
 
@@ -58,21 +58,21 @@ public record Variant(Identifier modelLocation, Variant.SimpleModelState modelSt
       resolver.markDependency(this.modelLocation);
    }
 
-   public static record SimpleModelState(Quadrant x, Quadrant y, Quadrant z, boolean uvLock) {
+   public record SimpleModelState(Quadrant x, Quadrant y, Quadrant z, boolean uvLock) {
       public static final MapCodec<Variant.SimpleModelState> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Quadrant.CODEC.optionalFieldOf("x", Quadrant.R0).forGetter(Variant.SimpleModelState::x),
-                  Quadrant.CODEC.optionalFieldOf("y", Quadrant.R0).forGetter(Variant.SimpleModelState::y),
-                  Quadrant.CODEC.optionalFieldOf("z", Quadrant.R0).forGetter(Variant.SimpleModelState::z),
-                  Codec.BOOL.optionalFieldOf("uvlock", false).forGetter(Variant.SimpleModelState::uvLock)
-               )
-               .apply(i, Variant.SimpleModelState::new)
+               Quadrant.CODEC.optionalFieldOf("x", Quadrant.R0).forGetter(Variant.SimpleModelState::x),
+               Quadrant.CODEC.optionalFieldOf("y", Quadrant.R0).forGetter(Variant.SimpleModelState::y),
+               Quadrant.CODEC.optionalFieldOf("z", Quadrant.R0).forGetter(Variant.SimpleModelState::z),
+               Codec.BOOL.optionalFieldOf("uvlock", false).forGetter(Variant.SimpleModelState::uvLock)
+            )
+            .apply(i, Variant.SimpleModelState::new)
       );
       public static final Variant.SimpleModelState DEFAULT = new Variant.SimpleModelState(Quadrant.R0, Quadrant.R0, Quadrant.R0, false);
 
       public ModelState asModelState() {
          BlockModelRotation rotation = BlockModelRotation.get(Quadrant.fromXYZAngles(this.x, this.y, this.z));
-         return (ModelState)(this.uvLock ? rotation.withUvLock() : rotation);
+         return this.uvLock ? rotation.withUvLock() : rotation;
       }
 
       public Variant.SimpleModelState withX(final Quadrant x) {

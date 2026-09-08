@@ -23,13 +23,13 @@ public class FallAfterExplosionTrigger extends SimpleCriterionTrigger<FallAfterE
       return FallAfterExplosionTrigger.TriggerInstance.CODEC;
    }
 
-   public void trigger(final ServerPlayer player, final Vec3 startPosition, @Nullable final Entity cause) {
+   public void trigger(final ServerPlayer player, final Vec3 startPosition, final @Nullable Entity cause) {
       Vec3 playerPosition = player.position();
       LootContext wrappedCause = cause != null ? EntityPredicate.createContext(player, cause) : null;
       this.trigger(player, t -> t.matches(player.level(), startPosition, playerPosition, wrappedCause));
    }
 
-   public static record TriggerInstance(
+   public record TriggerInstance(
       Optional<Holder<LootItemCondition>> player,
       Optional<LocationPredicate> startPosition,
       Optional<DistancePredicate> distance,
@@ -37,12 +37,12 @@ public class FallAfterExplosionTrigger extends SimpleCriterionTrigger<FallAfterE
    ) implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<FallAfterExplosionTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(FallAfterExplosionTrigger.TriggerInstance::player),
-                  LocationPredicate.CODEC.optionalFieldOf("start_position").forGetter(FallAfterExplosionTrigger.TriggerInstance::startPosition),
-                  DistancePredicate.CODEC.optionalFieldOf("distance").forGetter(FallAfterExplosionTrigger.TriggerInstance::distance),
-                  LootItemCondition.CODEC.optionalFieldOf("cause").forGetter(FallAfterExplosionTrigger.TriggerInstance::cause)
-               )
-               .apply(i, FallAfterExplosionTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(FallAfterExplosionTrigger.TriggerInstance::player),
+               LocationPredicate.CODEC.optionalFieldOf("start_position").forGetter(FallAfterExplosionTrigger.TriggerInstance::startPosition),
+               DistancePredicate.CODEC.optionalFieldOf("distance").forGetter(FallAfterExplosionTrigger.TriggerInstance::distance),
+               LootItemCondition.CODEC.optionalFieldOf("cause").forGetter(FallAfterExplosionTrigger.TriggerInstance::cause)
+            )
+            .apply(i, FallAfterExplosionTrigger.TriggerInstance::new)
       );
 
       public static Criterion<FallAfterExplosionTrigger.TriggerInstance> fallAfterExplosion(
@@ -62,7 +62,7 @@ public class FallAfterExplosionTrigger extends SimpleCriterionTrigger<FallAfterE
          Validatable.validateHolder(validator.entityContext(), "cause", this.cause);
       }
 
-      public boolean matches(final ServerLevel level, final Vec3 enteredPosition, final Vec3 playerPosition, @Nullable final LootContext cause) {
+      public boolean matches(final ServerLevel level, final Vec3 enteredPosition, final Vec3 playerPosition, final @Nullable LootContext cause) {
          if (this.startPosition.isPresent() && !this.startPosition.get().matches(level, enteredPosition.x, enteredPosition.y, enteredPosition.z)) {
             return false;
          } else {

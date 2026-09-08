@@ -31,8 +31,8 @@ public class SpinAttackEffectModel extends EntityModel<AvatarRenderState> {
       PartDefinition root = mesh.getRoot();
 
       for (int i = 0; i < 2; i++) {
-         float yOffset = -3.2F + 9.6F * (float)(i + 1);
-         float scale = 0.75F * (float)(i + 1);
+         float yOffset = -3.2F + 9.6F * (i + 1);
+         float scale = 0.75F * (i + 1);
          root.addOrReplaceChild(
             boxName(i), CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -16.0F + yOffset, -8.0F, 16.0F, 32.0F, 16.0F), PartPose.ZERO.withScale(scale)
          );
@@ -45,7 +45,7 @@ public class SpinAttackEffectModel extends EntityModel<AvatarRenderState> {
       super.setupAnim(state);
 
       for (int i = 0; i < this.boxes.length; i++) {
-         float angle = state.ageInTicks * (float)(-(45 + (i + 1) * 5));
+         float angle = state.ageInTicks * -(45 + (i + 1) * 5);
          this.boxes[i].yRot = Mth.wrapDegrees(angle) * (float) (Math.PI / 180.0);
       }
    }

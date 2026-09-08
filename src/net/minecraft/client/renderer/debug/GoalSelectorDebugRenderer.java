@@ -29,9 +29,9 @@ public class GoalSelectorDebugRenderer implements DebugRenderer.SimpleDebugRende
          if (playerPos.closerThan(entity.blockPosition(), 160.0)) {
             for (int i = 0; i < goalInfo.goals().size(); i++) {
                DebugGoalInfo.DebugGoal goal = goalInfo.goals().get(i);
-               double x = (double)entity.getBlockX() + 0.5;
-               double y = entity.getY() + 2.0 + (double)i * 0.25;
-               double z = (double)entity.getBlockZ() + 0.5;
+               double x = entity.getBlockX() + 0.5;
+               double y = entity.getY() + 2.0 + i * 0.25;
+               double z = entity.getBlockZ() + 0.5;
                int color = goal.isRunning() ? -16711936 : -3355444;
                Gizmos.billboardText(goal.name(), new Vec3(x, y, z), TextGizmo.Style.forColorAndCentered(color));
             }

@@ -22,7 +22,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -57,12 +56,12 @@ public class FireBlock extends BaseFireBlock {
       this.registerDefaultState(
          this.stateDefinition
             .any()
-            .setValue(AGE, Integer.valueOf(0))
-            .setValue(NORTH, Boolean.valueOf(false))
-            .setValue(EAST, Boolean.valueOf(false))
-            .setValue(SOUTH, Boolean.valueOf(false))
-            .setValue(WEST, Boolean.valueOf(false))
-            .setValue(UP, Boolean.valueOf(false))
+            .setValue(AGE, 0)
+            .setValue(NORTH, false)
+            .setValue(EAST, false)
+            .setValue(SOUTH, false)
+            .setValue(WEST, false)
+            .setValue(UP, false)
       );
       this.shapes = this.makeShapes();
    }
@@ -79,7 +78,7 @@ public class FireBlock extends BaseFireBlock {
          }
 
          return shape.isEmpty() ? SHAPE : shape;
-      }, new Property[]{AGE});
+      }, AGE);
    }
 
    @Override
@@ -115,7 +114,7 @@ public class FireBlock extends BaseFireBlock {
          for (Direction direction : Direction.values()) {
             BooleanProperty property = PROPERTY_BY_DIRECTION.get(direction);
             if (property != null) {
-               result = result.setValue(property, Boolean.valueOf(this.canBurn(level.getBlockState(pos.relative(direction)))));
+               result = result.setValue(property, this.canBurn(level.getBlockState(pos.relative(direction))));
             }
          }
 
@@ -142,12 +141,12 @@ public class FireBlock extends BaseFireBlock {
          BlockState belowState = level.getBlockState(pos.below());
          boolean infiniBurn = belowState.is(level.dimensionType().infiniburn());
          int age = state.getValue(AGE);
-         if (!infiniBurn && level.isRaining() && this.isNearRain(level, pos) && random.nextFloat() < 0.2F + (float)age * 0.03F) {
+         if (!infiniBurn && level.isRaining() && this.isNearRain(level, pos) && random.nextFloat() < 0.2F + age * 0.03F) {
             level.removeBlock(pos, false);
          } else {
             int newAge = Math.min(15, age + random.nextInt(3) / 2);
             if (age != newAge) {
-               state = state.setValue(AGE, Integer.valueOf(newAge));
+               state = state.setValue(AGE, newAge);
                level.setBlock(pos, state, 260);
             }
 
@@ -247,7 +246,7 @@ public class FireBlock extends BaseFireBlock {
 
    private BlockState getStateWithAge(final LevelReader level, final BlockPos pos, final int age) {
       BlockState stateForPlacement = getState(level, pos);
-      return stateForPlacement.is(Blocks.FIRE) ? stateForPlacement.setValue(AGE, Integer.valueOf(age)) : stateForPlacement;
+      return stateForPlacement.is(Blocks.FIRE) ? stateForPlacement.setValue(AGE, age) : stateForPlacement;
    }
 
    private boolean isValidFireLocation(final BlockGetter level, final BlockPos pos) {
@@ -263,16 +262,16 @@ public class FireBlock extends BaseFireBlock {
    private int getIgniteOdds(final LevelReader level, final BlockPos pos) {
       if (!level.isEmptyBlock(pos)) {
          return 0;
-      } else {
-         int odds = 0;
-
-         for (Direction direction : Direction.values()) {
-            BlockState blockState = level.getBlockState(pos.relative(direction));
-            odds = Math.max(this.getIgniteOdds(blockState), odds);
-         }
-
-         return odds;
       }
+
+      int odds = 0;
+
+      for (Direction direction : Direction.values()) {
+         BlockState blockState = level.getBlockState(pos.relative(direction));
+         odds = Math.max(this.getIgniteOdds(blockState), odds);
+      }
+
+      return odds;
    }
 
    @Override

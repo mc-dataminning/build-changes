@@ -412,29 +412,28 @@ public class ItemStackTheFlatteningFix extends DataFix {
          Optional<Pair<String, String>> id = input.getOptional(idF);
          if (id.isEmpty()) {
             return input;
-         } else {
-            Typed<?> output = input;
-            Dynamic<?> rest = (Dynamic<?>)input.get(DSL.remainderFinder());
-            int data = rest.get("Damage").asInt(0);
-            String newValue = updateItem((String)id.get().getSecond(), data);
-            if (newValue != null) {
-               output = input.set(idF, Pair.of(References.ITEM_NAME.typeName(), newValue));
-            }
-
-            if (DAMAGE_IDS.contains(id.get().getSecond())) {
-               Typed<?> tag = input.getOrCreateTyped(tagF);
-               Dynamic<?> tagRest = (Dynamic<?>)tag.get(DSL.remainderFinder());
-               tagRest = tagRest.set("Damage", tagRest.createInt(data));
-               output = output.set(tagF, tag.set(DSL.remainderFinder(), tagRest));
-            }
-
-            return output.set(DSL.remainderFinder(), rest.remove("Damage"));
          }
+
+         Typed<?> output = input;
+         Dynamic<?> rest = (Dynamic<?>)input.get(DSL.remainderFinder());
+         int data = rest.get("Damage").asInt(0);
+         String newValue = updateItem((String)id.get().getSecond(), data);
+         if (newValue != null) {
+            output = output.set(idF, Pair.of(References.ITEM_NAME.typeName(), newValue));
+         }
+
+         if (DAMAGE_IDS.contains(id.get().getSecond())) {
+            Typed<?> tag = input.getOrCreateTyped(tagF);
+            Dynamic<?> tagRest = (Dynamic<?>)tag.get(DSL.remainderFinder());
+            tagRest = tagRest.set("Damage", tagRest.createInt(data));
+            output = output.set(tagF, tag.set(DSL.remainderFinder(), tagRest));
+         }
+
+         return output.set(DSL.remainderFinder(), rest.remove("Damage"));
       });
    }
 
-   @Nullable
-   public static String updateItem(@Nullable final String name, final int data) {
+   public static @Nullable String updateItem(final @Nullable String name, final int data) {
       if (IDS.contains(name)) {
          String newName = MAP.get(name + "." + data);
          return newName == null ? MAP.get(name + ".0") : newName;

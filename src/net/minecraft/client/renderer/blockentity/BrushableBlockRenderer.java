@@ -32,7 +32,7 @@ public class BrushableBlockRenderer implements BlockEntityRenderer<BrushableBloc
       final BrushableBlockRenderState state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
       state.hitDirection = blockEntity.getHitDirection();
@@ -59,7 +59,7 @@ public class BrushableBlockRenderer implements BlockEntityRenderer<BrushableBloc
          poseStack.translate(translations[0], translations[1], translations[2]);
          poseStack.rotateDegrees(Axis.YP, 75.0F);
          boolean eastWest = state.hitDirection == Direction.EAST || state.hitDirection == Direction.WEST;
-         poseStack.rotateDegrees(Axis.YP, (float)((eastWest ? 90 : 0) + 11));
+         poseStack.rotateDegrees(Axis.YP, (eastWest ? 90 : 0) + 11);
          poseStack.scale(0.5F, 0.5F, 0.5F);
          state.itemState.submit(poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
          poseStack.popPose();
@@ -68,7 +68,7 @@ public class BrushableBlockRenderer implements BlockEntityRenderer<BrushableBloc
 
    private float[] translations(final Direction direction, final int completionState) {
       float[] xyzTranslations = new float[]{0.5F, 0.0F, 0.5F};
-      float completionOffset = (float)completionState / 10.0F * 0.75F;
+      float completionOffset = completionState / 10.0F * 0.75F;
       switch (direction) {
          case EAST:
             xyzTranslations[0] = 0.73F + completionOffset;

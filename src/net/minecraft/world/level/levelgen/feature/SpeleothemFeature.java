@@ -27,15 +27,15 @@ public record SpeleothemFeature(
 ) implements Feature {
    public static final MapCodec<SpeleothemFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BlockState.CODEC.fieldOf("base_block").forGetter(SpeleothemFeature::baseBlock),
-               BlockState.CODEC.fieldOf("pointed_block").forGetter(SpeleothemFeature::pointedBlock),
-               RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("replaceable_blocks").forGetter(SpeleothemFeature::replaceableBlocks),
-               Codec.floatRange(0.0F, 1.0F).optionalFieldOf("chance_of_taller_generation", 0.2F).forGetter(SpeleothemFeature::chanceOfTallerGeneration),
-               Codec.floatRange(0.0F, 1.0F).optionalFieldOf("chance_of_directional_spread", 0.7F).forGetter(SpeleothemFeature::chanceOfDirectionalSpread),
-               Codec.floatRange(0.0F, 1.0F).optionalFieldOf("chance_of_spread_radius2", 0.5F).forGetter(SpeleothemFeature::chanceOfSpreadRadius2),
-               Codec.floatRange(0.0F, 1.0F).optionalFieldOf("chance_of_spread_radius3", 0.5F).forGetter(SpeleothemFeature::chanceOfSpreadRadius3)
-            )
-            .apply(i, SpeleothemFeature::new)
+            BlockState.CODEC.fieldOf("base_block").forGetter(SpeleothemFeature::baseBlock),
+            BlockState.CODEC.fieldOf("pointed_block").forGetter(SpeleothemFeature::pointedBlock),
+            RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("replaceable_blocks").forGetter(SpeleothemFeature::replaceableBlocks),
+            Codec.floatRange(0.0F, 1.0F).optionalFieldOf("chance_of_taller_generation", 0.2F).forGetter(SpeleothemFeature::chanceOfTallerGeneration),
+            Codec.floatRange(0.0F, 1.0F).optionalFieldOf("chance_of_directional_spread", 0.7F).forGetter(SpeleothemFeature::chanceOfDirectionalSpread),
+            Codec.floatRange(0.0F, 1.0F).optionalFieldOf("chance_of_spread_radius2", 0.5F).forGetter(SpeleothemFeature::chanceOfSpreadRadius2),
+            Codec.floatRange(0.0F, 1.0F).optionalFieldOf("chance_of_spread_radius3", 0.5F).forGetter(SpeleothemFeature::chanceOfSpreadRadius3)
+         )
+         .apply(i, SpeleothemFeature::new)
    );
 
    @Override
@@ -48,18 +48,18 @@ public record SpeleothemFeature(
       Optional<Direction> tipDirection = this.getTipDirection(level, origin, random);
       if (tipDirection.isEmpty()) {
          return false;
-      } else {
-         BlockPos rootPos = origin.relative(tipDirection.get().getOpposite());
-         this.createPatchOfBaseBlocks(level, random, rootPos);
-         int height = random.nextFloat() < this.chanceOfTallerGeneration
-               && SpeleothemUtils.isEmptyOrWater(level.getBlockState(origin.relative(tipDirection.get())))
-            ? 2
-            : 1;
-         SpeleothemUtils.growSpeleothem(
-            level, origin, tipDirection.get(), height, false, this.baseBlock.getBlock(), this.pointedBlock.getBlock(), this.replaceableBlocks
-         );
-         return true;
       }
+
+      BlockPos rootPos = origin.relative(tipDirection.get().getOpposite());
+      this.createPatchOfBaseBlocks(level, random, rootPos);
+      int height = random.nextFloat() < this.chanceOfTallerGeneration
+            && SpeleothemUtils.isEmptyOrWater(level.getBlockState(origin.relative(tipDirection.get())))
+         ? 2
+         : 1;
+      SpeleothemUtils.growSpeleothem(
+         level, origin, tipDirection.get(), height, false, this.baseBlock.getBlock(), this.pointedBlock.getBlock(), this.replaceableBlocks
+      );
+      return true;
    }
 
    private Optional<Direction> getTipDirection(final LevelAccessor level, final BlockPos pos, final RandomSource random) {

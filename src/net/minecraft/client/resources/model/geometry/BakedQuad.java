@@ -52,11 +52,11 @@ public record BakedQuad(
    }
 
    @Retention(RetentionPolicy.CLASS)
-   @Target({ElementType.TYPE_USE})
+   @Target(ElementType.TYPE_USE)
    public @interface MaterialFlags {
    }
 
-   public static record MaterialInfo(
+   public record MaterialInfo(
       TextureAtlasSprite sprite,
       ChunkSectionLayer layer,
       RenderType itemRenderType,
@@ -70,7 +70,7 @@ public record BakedQuad(
          final Material.Baked material,
          final Transparency transparency,
          final int tintIndex,
-         @Nullable final Direction shadeDirectionOverride,
+         final @Nullable Direction shadeDirectionOverride,
          final int lightEmission
       ) {
          ChunkSectionLayer layer = ChunkSectionLayer.byTransparency(transparency);
@@ -98,8 +98,7 @@ public record BakedQuad(
          return this.tintIndex != -1;
       }
 
-      @BakedQuad.MaterialFlags
-      public int flags() {
+      public @BakedQuad.MaterialFlags int flags() {
          int flags = 0;
          flags |= this.layer.translucent() ? 1 : 0;
          return flags | (this.sprite.contents().isAnimated() ? 2 : 0);

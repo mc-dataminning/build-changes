@@ -40,9 +40,8 @@ public class ItemModelGenerator implements UnbakedModel {
       return ItemModelGenerator::bake;
    }
 
-   @Nullable
    @Override
-   public UnbakedModel.GuiLight guiLight() {
+   public UnbakedModel.@Nullable GuiLight guiLight() {
       return UnbakedModel.GuiLight.FRONT;
    }
 
@@ -92,14 +91,14 @@ public class ItemModelGenerator implements UnbakedModel {
       final QuadCollection.Builder builder, final ModelBaker.Interner interner, final ModelState modelState, final BakedQuad.MaterialInfo materialInfo
    ) {
       SpriteContents sprite = materialInfo.sprite().contents();
-      float xScale = 16.0F / (float)sprite.width();
-      float yScale = 16.0F / (float)sprite.height();
+      float xScale = 16.0F / sprite.width();
+      float yScale = 16.0F / sprite.height();
       Vector3f from = new Vector3f();
       Vector3f to = new Vector3f();
 
       for (ItemModelGenerator.SideFace sideFace : getSideFaces(sprite)) {
-         float x = (float)sideFace.x();
-         float y = (float)sideFace.y();
+         float x = sideFace.x();
+         float y = sideFace.y();
          ItemModelGenerator.SideDirection sideDirection = sideFace.facing();
          float u0 = x + 0.1F;
          float u1 = x + 1.0F - 0.1F;
@@ -119,20 +118,20 @@ public class ItemModelGenerator implements UnbakedModel {
          float endY = y;
          switch (sideDirection) {
             case UP:
-               endX = x + 1.0F;
+               endX++;
                break;
             case DOWN:
-               endX = x + 1.0F;
-               startY = y + 1.0F;
-               endY = y + 1.0F;
+               endX++;
+               startY++;
+               endY++;
                break;
             case LEFT:
-               endY = y + 1.0F;
+               endY++;
                break;
             case RIGHT:
-               startX = x + 1.0F;
-               endX = x + 1.0F;
-               endY = y + 1.0F;
+               startX++;
+               endX++;
+               endY++;
          }
 
          startX *= xScale;
@@ -206,7 +205,7 @@ public class ItemModelGenerator implements UnbakedModel {
       return x >= 0 && y >= 0 && x < width && y < height ? sprite.isTransparent(frame, x, y) : true;
    }
 
-   private static record ItemLayerKey(Material.Baked material, ModelState modelState, int layerIndex) implements ModelBaker.SharedOperationKey<QuadCollection> {
+   private record ItemLayerKey(Material.Baked material, ModelState modelState, int layerIndex) implements ModelBaker.SharedOperationKey<QuadCollection> {
       public QuadCollection compute(final ModelBaker modelBakery) {
          QuadCollection.Builder builder = new QuadCollection.Builder();
          BakedQuad.MaterialInfo materialInfo = modelBakery.interner()
@@ -216,7 +215,7 @@ public class ItemModelGenerator implements UnbakedModel {
       }
    }
 
-   private static enum SideDirection {
+   private enum SideDirection {
       UP(Direction.UP),
       DOWN(Direction.DOWN),
       LEFT(Direction.EAST),
@@ -224,7 +223,7 @@ public class ItemModelGenerator implements UnbakedModel {
 
       private final Direction direction;
 
-      private SideDirection(final Direction direction) {
+      SideDirection(final Direction direction) {
          this.direction = direction;
       }
 
@@ -237,6 +236,6 @@ public class ItemModelGenerator implements UnbakedModel {
       }
    }
 
-   private static record SideFace(ItemModelGenerator.SideDirection facing, int x, int y) {
+   private record SideFace(ItemModelGenerator.SideDirection facing, int x, int y) {
    }
 }

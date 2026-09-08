@@ -39,18 +39,20 @@ public class NearestBedSensor extends Sensor<Mob> {
    protected void doTick(final ServerLevel level, final Mob body) {
       if (body.isBaby()) {
          this.triedCount = 0;
-         this.lastUpdate = level.getGameTime() + (long)level.getRandom().nextInt(20);
+         this.lastUpdate = level.getGameTime() + level.getRandom().nextInt(20);
          PoiManager poiManager = level.getPoiManager();
          Predicate<BlockPos> cacheTest = pos -> {
             long key = pos.asLong();
             if (this.batchCache.containsKey(key)) {
                return false;
-            } else if (++this.triedCount >= 5) {
-               return false;
-            } else {
-               this.batchCache.put(key, this.lastUpdate + 40L);
-               return true;
             }
+
+            if (++this.triedCount >= 5) {
+               return false;
+            }
+
+            this.batchCache.put(key, this.lastUpdate + 40L);
+            return true;
          };
          Set<Pair<Holder<PoiType>, BlockPos>> pois = poiManager.findAllWithType(
                e -> e.is(PoiTypes.HOME), cacheTest, body.blockPosition(), 48, PoiManager.Occupancy.ANY

@@ -36,31 +36,31 @@ public class VillagerRebuildLevelAndXpFix extends DataFix {
          "Villager level and xp rebuild",
          this.getInputSchema().getType(References.ENTITY),
          input -> input.updateTyped(
-               entityF,
-               villagerType,
-               villager -> {
-                  Dynamic<?> remainder = (Dynamic<?>)villager.get(DSL.remainderFinder());
-                  int level = remainder.get("VillagerData").get("level").asInt(0);
-                  Typed<?> modifiedVillager = villager;
-                  if (level == 0 || level == 1) {
-                     int offerCount = villager.getOptionalTyped(offersF)
-                        .flatMap(o -> o.getOptionalTyped(recipeListF))
-                        .map(recipeList -> recipeList.getAllTyped(recipeF).size())
-                        .orElse(0);
-                     level = Mth.clamp(offerCount / 2, 1, 5);
-                     if (level > 1) {
-                        modifiedVillager = addLevel(villager, level);
-                     }
+            entityF,
+            villagerType,
+            villager -> {
+               Dynamic<?> remainder = (Dynamic<?>)villager.get(DSL.remainderFinder());
+               int level = remainder.get("VillagerData").get("level").asInt(0);
+               Typed<?> modifiedVillager = villager;
+               if (level == 0 || level == 1) {
+                  int offerCount = villager.getOptionalTyped(offersF)
+                     .flatMap(o -> o.getOptionalTyped(recipeListF))
+                     .map(recipeList -> recipeList.getAllTyped(recipeF).size())
+                     .orElse(0);
+                  level = Mth.clamp(offerCount / 2, 1, 5);
+                  if (level > 1) {
+                     modifiedVillager = addLevel(modifiedVillager, level);
                   }
-
-                  Optional<Number> xp = remainder.get("Xp").asNumber().result();
-                  if (xp.isEmpty()) {
-                     modifiedVillager = addXpFromLevel(modifiedVillager, level);
-                  }
-
-                  return modifiedVillager;
                }
-            )
+
+               Optional<Number> xp = remainder.get("Xp").asNumber().result();
+               if (xp.isEmpty()) {
+                  modifiedVillager = addXpFromLevel(modifiedVillager, level);
+               }
+
+               return modifiedVillager;
+            }
+         )
       );
    }
 

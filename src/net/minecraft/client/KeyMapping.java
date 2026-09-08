@@ -62,11 +62,8 @@ public class KeyMapping implements Comparable<KeyMapping> {
 
    public static void restoreToggleStatesOnScreenClosed() {
       for (KeyMapping keyMapping : ALL.values()) {
-         if (keyMapping instanceof ToggleKeyMapping) {
-            ToggleKeyMapping toggleKeyMapping = (ToggleKeyMapping)keyMapping;
-            if (toggleKeyMapping.shouldRestoreStateOnScreenClosed()) {
-               toggleKeyMapping.setDown(true);
-            }
+         if (keyMapping instanceof ToggleKeyMapping toggleKeyMapping && toggleKeyMapping.shouldRestoreStateOnScreenClosed()) {
+            toggleKeyMapping.setDown(true);
          }
       }
    }
@@ -116,10 +113,10 @@ public class KeyMapping implements Comparable<KeyMapping> {
    public boolean consumeClick() {
       if (this.clickCount == 0) {
          return false;
-      } else {
-         this.clickCount--;
-         return true;
       }
+
+      this.clickCount--;
+      return true;
    }
 
    protected void release() {
@@ -196,12 +193,11 @@ public class KeyMapping implements Comparable<KeyMapping> {
       MAP.computeIfAbsent(key, k -> new ArrayList<>()).add(this);
    }
 
-   @Nullable
-   public static KeyMapping get(final String name) {
+   public static @Nullable KeyMapping get(final String name) {
       return ALL.get(name);
    }
 
-   public static record Category(Identifier id) {
+   public record Category(Identifier id) {
       private static final List<KeyMapping.Category> SORT_ORDER = new ArrayList<>();
       public static final KeyMapping.Category MOVEMENT = register("movement");
       public static final KeyMapping.Category MISC = register("misc");
@@ -220,10 +216,10 @@ public class KeyMapping implements Comparable<KeyMapping> {
          KeyMapping.Category category = new KeyMapping.Category(id);
          if (SORT_ORDER.contains(category)) {
             throw new IllegalArgumentException(String.format(Locale.ROOT, "Category '%s' is already registered.", id));
-         } else {
-            SORT_ORDER.add(category);
-            return category;
          }
+
+         SORT_ORDER.add(category);
+         return category;
       }
 
       public Component label() {

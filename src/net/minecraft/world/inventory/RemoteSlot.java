@@ -27,12 +27,10 @@ public interface RemoteSlot {
 
    boolean matches(ItemStack local);
 
-   public static class Synchronized implements RemoteSlot {
+   class Synchronized implements RemoteSlot {
       private final HashedPatchMap.HashGenerator hasher;
-      @Nullable
-      private ItemStack remoteStack = null;
-      @Nullable
-      private HashedStack remoteHash = null;
+      private @Nullable ItemStack remoteStack = null;
+      private @Nullable HashedStack remoteHash = null;
 
       public Synchronized(final HashedPatchMap.HashGenerator hasher) {
          this.hasher = hasher;

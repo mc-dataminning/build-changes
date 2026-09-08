@@ -10,7 +10,7 @@ public record PassengerPredicate(EntityPredicate passenger) implements EntitySub
    public static final Codec<PassengerPredicate> CODEC = EntityPredicate.CODEC.xmap(PassengerPredicate::new, PassengerPredicate::passenger);
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
       for (Entity passenger : entity.getPassengers()) {
          if (this.passenger.matches(level, position, passenger)) {
             return true;

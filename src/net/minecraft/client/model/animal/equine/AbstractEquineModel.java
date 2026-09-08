@@ -110,7 +110,7 @@ public abstract class AbstractEquineModel<T extends EquineRenderState> extends E
       float animationSpeed = state.walkAnimationSpeed;
       float animationPos = state.walkAnimationPos;
       if (animationSpeed > 0.2F) {
-         headRotXRad += Mth.cos((double)(animationPos * 0.8F)) * 0.15F * animationSpeed;
+         headRotXRad += Mth.cos(animationPos * 0.8F) * 0.15F * animationSpeed;
       }
 
       float eating = state.eatAnimation;
@@ -121,13 +121,10 @@ public abstract class AbstractEquineModel<T extends EquineRenderState> extends E
       this.headParts.xRot = (float) (Math.PI / 6) + headRotXRad;
       this.headParts.yRot = clampedYRot * (float) (Math.PI / 180.0);
       float waterMultiplier = state.isInWater ? 0.2F : 1.0F;
-      float legAnim1 = Mth.cos((double)(waterMultiplier * animationPos * 0.6662F + (float) Math.PI));
+      float legAnim1 = Mth.cos(waterMultiplier * animationPos * 0.6662F + (float) Math.PI);
       float legXRotAnim = legAnim1 * 0.8F * animationSpeed;
-      float baseHeadAngle = (1.0F - Math.max(standing, eating))
-         * ((float) (Math.PI / 6) + headRotXRad + feedingAnim * Mth.sin((double)state.ageInTicks) * 0.05F);
-      this.headParts.xRot = standing * ((float) (Math.PI / 12) + headRotXRad)
-         + eating * (2.1816616F + Mth.sin((double)state.ageInTicks) * 0.05F)
-         + baseHeadAngle;
+      float baseHeadAngle = (1.0F - Math.max(standing, eating)) * ((float) (Math.PI / 6) + headRotXRad + feedingAnim * Mth.sin(state.ageInTicks) * 0.05F);
+      this.headParts.xRot = standing * ((float) (Math.PI / 12) + headRotXRad) + eating * (2.1816616F + Mth.sin(state.ageInTicks) * 0.05F) + baseHeadAngle;
       this.headParts.yRot = standing * clampedYRot * (float) (Math.PI / 180.0) + (1.0F - Math.max(standing, eating)) * this.headParts.yRot;
       this.animateHeadPartsPlacement(eating, standing);
       this.body.xRot = standing * (float) (-Math.PI / 4) + iStanding * this.body.xRot;
@@ -136,7 +133,7 @@ public abstract class AbstractEquineModel<T extends EquineRenderState> extends E
       this.rightFrontLeg.y = this.leftFrontLeg.y;
       this.rightFrontLeg.z = this.leftFrontLeg.z;
       float standAngle = this.getLegStandAngle() * standing;
-      float bobValue = Mth.cos((double)(state.ageInTicks * 0.6F + (float) Math.PI));
+      float bobValue = Mth.cos(state.ageInTicks * 0.6F + (float) Math.PI);
       float legStandingXRotOffset = this.getLegStandingXRotOffset();
       float rlegRot = (legStandingXRotOffset + bobValue) * standing + legXRotAnim * iStanding;
       float llegRot = (legStandingXRotOffset - bobValue) * standing - legXRotAnim * iStanding;
@@ -150,7 +147,7 @@ public abstract class AbstractEquineModel<T extends EquineRenderState> extends E
       this.tail.y += animationSpeed * ageScale;
       this.tail.z += animationSpeed * 2.0F * ageScale;
       if (animateTail) {
-         this.tail.yRot = Mth.cos((double)(state.ageInTicks * 0.7F));
+         this.tail.yRot = Mth.cos(state.ageInTicks * 0.7F);
       } else {
          this.tail.yRot = 0.0F;
       }

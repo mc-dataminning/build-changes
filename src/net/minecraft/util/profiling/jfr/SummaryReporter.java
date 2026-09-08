@@ -20,7 +20,7 @@ public class SummaryReporter {
       this.onDeregistration = onDeregistration;
    }
 
-   public void recordingStopped(@Nullable final Path result) {
+   public void recordingStopped(final @Nullable Path result) {
       if (result != null) {
          this.onDeregistration.run();
          infoWithFallback(() -> "Dumped flight recorder profiling to " + result);
@@ -28,8 +28,8 @@ public class SummaryReporter {
          JfrStatsResult statsResult;
          try {
             statsResult = JfrStatsParser.parse(result);
-         } catch (Throwable var5) {
-            warnWithFallback(() -> "Failed to parse JFR recording", var5);
+         } catch (Throwable t) {
+            warnWithFallback(() -> "Failed to parse JFR recording", t);
             return;
          }
 
@@ -38,8 +38,8 @@ public class SummaryReporter {
             Path jsonReport = result.resolveSibling("jfr-report-" + StringUtils.substringBefore(result.getFileName().toString(), ".jfr") + ".json");
             Files.writeString(jsonReport, statsResult.asJson(), StandardOpenOption.CREATE);
             infoWithFallback(() -> "Dumped recording summary to " + jsonReport);
-         } catch (Throwable var4) {
-            warnWithFallback(() -> "Failed to output JFR report", var4);
+         } catch (Throwable t) {
+            warnWithFallback(() -> "Failed to output JFR report", t);
          }
       }
    }

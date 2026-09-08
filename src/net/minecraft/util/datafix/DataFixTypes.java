@@ -7,7 +7,6 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.DynamicOps;
-import java.util.Objects;
 import java.util.Set;
 import net.minecraft.SharedConstants;
 import net.minecraft.nbt.CompoundTag;
@@ -50,7 +49,7 @@ public enum DataFixTypes {
    public static final Set<TypeReference> TYPES_FOR_LEVEL_LIST;
    private final TypeReference type;
 
-   private DataFixTypes(final TypeReference type) {
+   DataFixTypes(final TypeReference type) {
       this.type = type;
    }
 
@@ -60,10 +59,6 @@ public enum DataFixTypes {
 
    public <A> Codec<A> wrapCodec(final Codec<A> codec, final DataFixer dataFixer, final int defaultVersion) {
       return new Codec<A>() {
-         {
-            Objects.requireNonNull(DataFixTypes.this);
-         }
-
          public <T> DataResult<T> encode(final A input, final DynamicOps<T> ops, final T prefix) {
             return codec.encode(input, ops, prefix)
                .flatMap(data -> ops.mergeToMap(data, ops.createString("DataVersion"), ops.createInt(DataFixTypes.currentVersion())));

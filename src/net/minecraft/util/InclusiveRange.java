@@ -7,12 +7,9 @@ import java.util.function.Function;
 public record InclusiveRange<T extends Comparable<T>>(T minInclusive, T maxInclusive) {
    public static final Codec<InclusiveRange<Integer>> INT = codec(Codec.INT);
 
-   public InclusiveRange(T minInclusive, T maxInclusive) {
+   public InclusiveRange {
       if (minInclusive.compareTo(maxInclusive) > 0) {
          throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
-      } else {
-         this.minInclusive = minInclusive;
-         this.maxInclusive = maxInclusive;
       }
    }
 

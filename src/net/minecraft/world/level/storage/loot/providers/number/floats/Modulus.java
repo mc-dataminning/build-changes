@@ -2,7 +2,6 @@ package net.minecraft.world.level.storage.loot.providers.number.floats;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Holder;
-import net.minecraft.util.Mth;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.providers.number.BinaryProvider;
 
@@ -19,6 +18,6 @@ public record Modulus(Holder<ContextFloatProvider> left, Holder<ContextFloatProv
    @Override
    public float getFloatUnsafe(final LootContext context) {
       float rightValue = this.right().value().getFloatUnsafe(context);
-      return rightValue == 0.0F ? Float.NaN : Mth.positiveModulo(this.left().value().getFloatUnsafe(context), rightValue);
+      return rightValue == 0.0F ? Float.NaN : this.left().value().getFloatUnsafe(context) % rightValue;
    }
 }

@@ -50,9 +50,8 @@ public class StonecutterBlock extends Block {
       return InteractionResult.SUCCESS;
    }
 
-   @Nullable
    @Override
-   protected MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
+   protected @Nullable MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
       return new SimpleMenuProvider(
          (containerId, inventory, player) -> new StonecutterMenu(containerId, inventory, ContainerLevelAccess.create(level, pos)), CONTAINER_TITLE
       );

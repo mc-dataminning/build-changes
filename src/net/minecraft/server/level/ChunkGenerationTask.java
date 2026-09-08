@@ -16,8 +16,7 @@ import org.jspecify.annotations.Nullable;
 public class ChunkGenerationTask {
    private final GeneratingChunkMap chunkMap;
    private final ChunkPos pos;
-   @Nullable
-   private ChunkStatus scheduledStatus = null;
+   private @Nullable ChunkStatus scheduledStatus = null;
    public final ChunkStatus targetStatus;
    private volatile boolean markedForCancellation;
    private final List<CompletableFuture<ChunkResult<ChunkAccess>>> scheduledLayer = new ArrayList<>();
@@ -41,8 +40,7 @@ public class ChunkGenerationTask {
       return new ChunkGenerationTask(chunkMap, targetStatus, pos, cache);
    }
 
-   @Nullable
-   public CompletableFuture<?> runUntilWait() {
+   public @Nullable CompletableFuture<?> runUntilWait() {
       while (true) {
          CompletableFuture<?> waitingFor = this.waitForScheduledLayer();
          if (waitingFor != null) {
@@ -86,27 +84,27 @@ public class ChunkGenerationTask {
    private boolean canLoadWithoutGeneration() {
       if (this.targetStatus == ChunkStatus.EMPTY) {
          return true;
-      } else {
-         ChunkStatus highestGeneratedStatus = this.cache.get(this.pos.x(), this.pos.z()).getPersistedStatus();
-         if (highestGeneratedStatus != null && !highestGeneratedStatus.isBefore(this.targetStatus)) {
-            ChunkDependencies dependencies = ChunkPyramid.LOADING_PYRAMID.getStepTo(this.targetStatus).accumulatedDependencies();
-            int range = dependencies.getRadius();
+      }
 
-            for (int x = this.pos.x() - range; x <= this.pos.x() + range; x++) {
-               for (int z = this.pos.z() - range; z <= this.pos.z() + range; z++) {
-                  int distance = this.pos.getChessboardDistance(x, z);
-                  ChunkStatus requiredStatus = dependencies.get(distance);
-                  ChunkStatus persistedStatus = this.cache.get(x, z).getPersistedStatus();
-                  if (persistedStatus == null || persistedStatus.isBefore(requiredStatus)) {
-                     return false;
-                  }
+      ChunkStatus highestGeneratedStatus = this.cache.get(this.pos.x(), this.pos.z()).getPersistedStatus();
+      if (highestGeneratedStatus != null && !highestGeneratedStatus.isBefore(this.targetStatus)) {
+         ChunkDependencies dependencies = ChunkPyramid.LOADING_PYRAMID.getStepTo(this.targetStatus).accumulatedDependencies();
+         int range = dependencies.getRadius();
+
+         for (int x = this.pos.x() - range; x <= this.pos.x() + range; x++) {
+            for (int z = this.pos.z() - range; z <= this.pos.z() + range; z++) {
+               int distance = this.pos.getChessboardDistance(x, z);
+               ChunkStatus requiredStatus = dependencies.get(distance);
+               ChunkStatus persistedStatus = this.cache.get(x, z).getPersistedStatus();
+               if (persistedStatus == null || persistedStatus.isBefore(requiredStatus)) {
+                  return false;
                }
             }
-
-            return true;
-         } else {
-            return false;
          }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
@@ -141,23 +139,24 @@ public class ChunkGenerationTask {
       ChunkPyramid pyramid = generate ? ChunkPyramid.GENERATION_PYRAMID : ChunkPyramid.LOADING_PYRAMID;
       if (generate && !needsGeneration) {
          throw new IllegalStateException("Can't load chunk, but didn't expect to need to generate");
-      } else {
-         CompletableFuture<ChunkResult<ChunkAccess>> future = chunkHolder.applyStep(pyramid.getStepTo(status), this.chunkMap, this.cache);
-         ChunkResult<ChunkAccess> now = future.getNow(null);
-         if (now == null) {
-            this.scheduledLayer.add(future);
-            return true;
-         } else if (now.isSuccess()) {
-            return true;
-         } else {
-            this.markForCancellation();
-            return false;
-         }
       }
+
+      CompletableFuture<ChunkResult<ChunkAccess>> future = chunkHolder.applyStep(pyramid.getStepTo(status), this.chunkMap, this.cache);
+      ChunkResult<ChunkAccess> now = future.getNow(null);
+      if (now == null) {
+         this.scheduledLayer.add(future);
+         return true;
+      }
+
+      if (now.isSuccess()) {
+         return true;
+      }
+
+      this.markForCancellation();
+      return false;
    }
 
-   @Nullable
-   private CompletableFuture<?> waitForScheduledLayer() {
+   private @Nullable CompletableFuture<?> waitForScheduledLayer() {
       while (!this.scheduledLayer.isEmpty()) {
          CompletableFuture<ChunkResult<ChunkAccess>> lastFuture = this.scheduledLayer.getLast();
          ChunkResult<ChunkAccess> resultNow = lastFuture.getNow(null);

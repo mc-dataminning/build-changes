@@ -12,7 +12,7 @@ import org.lwjgl.system.MemoryUtil;
 
 public class MeshData implements AutoCloseable {
    private final ByteBufferBuilder.Result vertexBuffer;
-   private ByteBufferBuilder.Result indexBuffer;
+   private ByteBufferBuilder.@Nullable Result indexBuffer;
    private final MeshData.DrawState drawState;
 
    public MeshData(final ByteBufferBuilder.Result vertexBuffer, final MeshData.DrawState drawState) {
@@ -26,26 +26,26 @@ public class MeshData implements AutoCloseable {
       VertexFormatElement positionElement = format.getElement("Position");
       if (positionElement == null) {
          throw new IllegalArgumentException("Cannot identify quad centers with no position element");
-      } else {
-         int positionOffset = vertexBuffer.position() + positionElement.offset();
-         int vertexStride = format.getVertexSize();
-         int quadStride = vertexStride * 4;
-         int quadCount = vertexCount / 4;
+      }
 
-         for (int i = 0; i < quadCount; i++) {
-            int firstPosOffset = i * quadStride + positionOffset;
-            int secondPosOffset = firstPosOffset + vertexStride * 2;
-            float x0 = vertexBuffer.getFloat(firstPosOffset + 0);
-            float y0 = vertexBuffer.getFloat(firstPosOffset + 4);
-            float z0 = vertexBuffer.getFloat(firstPosOffset + 8);
-            float x1 = vertexBuffer.getFloat(secondPosOffset + 0);
-            float y1 = vertexBuffer.getFloat(secondPosOffset + 4);
-            float z1 = vertexBuffer.getFloat(secondPosOffset + 8);
-            float xMid = (x0 + x1) / 2.0F;
-            float yMid = (y0 + y1) / 2.0F;
-            float zMid = (z0 + z1) / 2.0F;
-            output.set(outputIndex + i, xMid, yMid, zMid);
-         }
+      int positionOffset = vertexBuffer.position() + positionElement.offset();
+      int vertexStride = format.getVertexSize();
+      int quadStride = vertexStride * 4;
+      int quadCount = vertexCount / 4;
+
+      for (int i = 0; i < quadCount; i++) {
+         int firstPosOffset = i * quadStride + positionOffset;
+         int secondPosOffset = firstPosOffset + vertexStride * 2;
+         float x0 = vertexBuffer.getFloat(firstPosOffset + 0);
+         float y0 = vertexBuffer.getFloat(firstPosOffset + 4);
+         float z0 = vertexBuffer.getFloat(firstPosOffset + 8);
+         float x1 = vertexBuffer.getFloat(secondPosOffset + 0);
+         float y1 = vertexBuffer.getFloat(secondPosOffset + 4);
+         float z1 = vertexBuffer.getFloat(secondPosOffset + 8);
+         float xMid = (x0 + x1) / 2.0F;
+         float yMid = (y0 + y1) / 2.0F;
+         float zMid = (z0 + z1) / 2.0F;
+         output.set(outputIndex + i, xMid, yMid, zMid);
       }
    }
 
@@ -53,8 +53,7 @@ public class MeshData implements AutoCloseable {
       return this.vertexBuffer.byteBuffer();
    }
 
-   @Nullable
-   public ByteBuffer indexBuffer() {
+   public @Nullable ByteBuffer indexBuffer() {
       return this.indexBuffer != null ? this.indexBuffer.byteBuffer() : null;
    }
 
@@ -66,17 +65,16 @@ public class MeshData implements AutoCloseable {
       return this.drawState;
    }
 
-   @Nullable
-   public MeshData.SortState sortQuads(final ByteBufferBuilder indexBufferTarget, final VertexSorting sorting) {
+   public MeshData.@Nullable SortState sortQuads(final ByteBufferBuilder indexBufferTarget, final VertexSorting sorting) {
       if (this.drawState.primitiveTopology() != PrimitiveTopology.QUADS) {
          return null;
-      } else {
-         CompactVectorArray centroids = new CompactVectorArray(this.drawState.vertexCount() / 4);
-         decodeQuadCentroids(this.vertexBuffer.byteBuffer(), this.drawState.vertexCount(), this.drawState.format(), centroids, 0);
-         MeshData.SortState sortState = new MeshData.SortState(centroids, this.drawState.indexType());
-         this.indexBuffer = sortState.buildSortedIndexBuffer(indexBufferTarget, sorting);
-         return sortState;
       }
+
+      CompactVectorArray centroids = new CompactVectorArray(this.drawState.vertexCount() / 4);
+      decodeQuadCentroids(this.vertexBuffer.byteBuffer(), this.drawState.vertexCount(), this.drawState.format(), centroids, 0);
+      MeshData.SortState sortState = new MeshData.SortState(centroids, this.drawState.indexType());
+      this.indexBuffer = sortState.buildSortedIndexBuffer(indexBufferTarget, sorting);
+      return sortState;
    }
 
    @Override
@@ -87,11 +85,11 @@ public class MeshData implements AutoCloseable {
       }
    }
 
-   public static record DrawState(VertexFormat format, int vertexCount, int indexCount, PrimitiveTopology primitiveTopology, IndexType indexType) {
+   public record DrawState(VertexFormat format, int vertexCount, int indexCount, PrimitiveTopology primitiveTopology, IndexType indexType) {
    }
 
-   public static record SortState(CompactVectorArray centroids, IndexType indexType) {
-      public ByteBufferBuilder.Result buildSortedIndexBuffer(final ByteBufferBuilder target, final VertexSorting sorting) {
+   public record SortState(CompactVectorArray centroids, IndexType indexType) {
+      public ByteBufferBuilder.@Nullable Result buildSortedIndexBuffer(final ByteBufferBuilder target, final VertexSorting sorting) {
          int[] startIndices = sorting.sort(this.centroids);
          long pointer = target.reserve(startIndices.length * 6 * this.indexType.bytes);
          writeIndices(startIndices, this.indexWriter(pointer, this.indexType));

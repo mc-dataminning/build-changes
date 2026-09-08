@@ -17,10 +17,10 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 public record SimpleBlockFeature(Holder<BlockStateProvider> toPlace, boolean scheduleTick) implements Feature {
    public static final MapCodec<SimpleBlockFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BlockStateProvider.CODEC.fieldOf("to_place").forGetter(SimpleBlockFeature::toPlace),
-               Codec.BOOL.optionalFieldOf("schedule_tick", false).forGetter(SimpleBlockFeature::scheduleTick)
-            )
-            .apply(i, SimpleBlockFeature::new)
+            BlockStateProvider.CODEC.fieldOf("to_place").forGetter(SimpleBlockFeature::toPlace),
+            Codec.BOOL.optionalFieldOf("schedule_tick", false).forGetter(SimpleBlockFeature::scheduleTick)
+         )
+         .apply(i, SimpleBlockFeature::new)
    );
 
    public SimpleBlockFeature(final Holder<BlockStateProvider> toPlace) {
@@ -41,27 +41,29 @@ public record SimpleBlockFeature(Holder<BlockStateProvider> toPlace, boolean sch
       BlockState stateToPlace = this.toPlace.value().getOptionalState(level, random, origin);
       if (stateToPlace == null) {
          return false;
-      } else if (!stateToPlace.canSurvive(level, origin)) {
-         return false;
-      } else {
-         if (stateToPlace.getBlock() instanceof DoublePlantBlock) {
-            BlockState aboveState = level.getBlockState(origin.above());
-            if (!aboveState.isAir() && (!Objects.equals(stateToPlace.getFluidState(), aboveState.getFluidState()) || !aboveState.canBeReplaced())) {
-               return false;
-            }
-
-            DoublePlantBlock.placeAt(level, stateToPlace, origin, 2);
-         } else if (stateToPlace.getBlock() instanceof MossyCarpetBlock) {
-            MossyCarpetBlock.placeAt(level, origin, level.getRandom(), 2);
-         } else {
-            level.setBlock(origin, stateToPlace, 2);
-         }
-
-         if (this.scheduleTick) {
-            level.scheduleTick(origin, level.getBlockState(origin).getBlock(), 1);
-         }
-
-         return true;
       }
+
+      if (!stateToPlace.canSurvive(level, origin)) {
+         return false;
+      }
+
+      if (stateToPlace.getBlock() instanceof DoublePlantBlock) {
+         BlockState aboveState = level.getBlockState(origin.above());
+         if (!aboveState.isAir() && (!Objects.equals(stateToPlace.getFluidState(), aboveState.getFluidState()) || !aboveState.canBeReplaced())) {
+            return false;
+         }
+
+         DoublePlantBlock.placeAt(level, stateToPlace, origin, 2);
+      } else if (stateToPlace.getBlock() instanceof MossyCarpetBlock) {
+         MossyCarpetBlock.placeAt(level, origin, level.getRandom(), 2);
+      } else {
+         level.setBlock(origin, stateToPlace, 2);
+      }
+
+      if (this.scheduleTick) {
+         level.scheduleTick(origin, level.getBlockState(origin).getBlock(), 1);
+      }
+
+      return true;
    }
 }

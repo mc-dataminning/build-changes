@@ -10,7 +10,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class CarrotBlock extends CropBlock {
-   private static final VoxelShape[] SHAPES = Block.boxes(7, age -> Block.column(16.0, 0.0, (double)(2 + age)));
+   private static final VoxelShape[] SHAPES = Block.boxes(7, age -> Block.column(16.0, 0.0, 2 + age));
 
    public CarrotBlock(final BlockBehaviour.Properties properties) {
       super(properties);

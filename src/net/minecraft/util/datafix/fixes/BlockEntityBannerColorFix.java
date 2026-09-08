@@ -16,12 +16,12 @@ public class BlockEntityBannerColorFix extends NamedEntityFix {
       return input.update(
          "Patterns",
          list -> (Dynamic)DataFixUtils.orElse(
-               list.asStreamOpt()
-                  .map(stream -> stream.map(pattern -> pattern.update("Color", color -> color.createInt(15 - color.asInt(0)))))
-                  .map(list::createList)
-                  .result(),
-               list
-            )
+            list.asStreamOpt()
+               .map(stream -> stream.map(pattern -> pattern.update("Color", color -> color.createInt(15 - color.asInt(0)))))
+               .map(list::createList)
+               .result(),
+            list
+         )
       );
    }
 

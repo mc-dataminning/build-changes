@@ -29,7 +29,7 @@ public interface InsideBlockEffectApplier {
 
    void runAfter(InsideBlockEffectType type, Consumer<Entity> effect);
 
-   public static class StepBasedCollector implements InsideBlockEffectApplier {
+   class StepBasedCollector implements InsideBlockEffectApplier {
       private static final InsideBlockEffectType[] APPLY_ORDER = InsideBlockEffectType.values();
       private static final int NO_STEP = -1;
       private final Set<InsideBlockEffectType> effectsInStep = EnumSet.noneOf(InsideBlockEffectType.class);

@@ -17,12 +17,9 @@ public class DragonStrafePlayerPhase extends AbstractDragonPhaseInstance {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static final int FIREBALL_CHARGE_AMOUNT = 5;
    private int fireballCharge;
-   @Nullable
-   private Path currentPath;
-   @Nullable
-   private Vec3 targetLocation;
-   @Nullable
-   private LivingEntity attackTarget;
+   private @Nullable Path currentPath;
+   private @Nullable Vec3 targetLocation;
+   private @Nullable LivingEntity attackTarget;
    private boolean holdingPatternClockwise;
 
    public DragonStrafePlayerPhase(final EnderDragon dragon) {
@@ -57,14 +54,10 @@ public class DragonStrafePlayerPhase extends AbstractDragonPhaseInstance {
             if (this.dragon.hasLineOfSight(this.attackTarget)) {
                this.fireballCharge++;
                Vec3 aim = new Vec3(this.attackTarget.getX() - this.dragon.getX(), 0.0, this.attackTarget.getZ() - this.dragon.getZ()).normalize();
-               Vec3 dir = new Vec3(
-                     (double)Mth.sin((double)(this.dragon.getYRot() * (float) (Math.PI / 180.0))),
-                     0.0,
-                     (double)(-Mth.cos((double)(this.dragon.getYRot() * (float) (Math.PI / 180.0))))
-                  )
+               Vec3 dir = new Vec3(Mth.sin(this.dragon.getYRot() * (float) (Math.PI / 180.0)), 0.0, -Mth.cos(this.dragon.getYRot() * (float) (Math.PI / 180.0)))
                   .normalize();
                float dot = (float)dir.dot(aim);
-               float angleDegs = (float)(Math.acos((double)dot) * 180.0F / (float)Math.PI);
+               float angleDegs = (float)(Math.acos(dot) * 180.0F / (float)Math.PI);
                angleDegs += 0.5F;
                if (this.fireballCharge >= 5 && angleDegs >= 0.0F && angleDegs < 10.0F) {
                   double d = 1.0;
@@ -107,7 +100,7 @@ public class DragonStrafePlayerPhase extends AbstractDragonPhaseInstance {
          int targetNodeIndex = currentNodeIndex;
          if (this.dragon.getRandom().nextInt(8) == 0) {
             this.holdingPatternClockwise = !this.holdingPatternClockwise;
-            targetNodeIndex = currentNodeIndex + 6;
+            targetNodeIndex += 6;
          }
 
          if (this.holdingPatternClockwise) {
@@ -140,13 +133,13 @@ public class DragonStrafePlayerPhase extends AbstractDragonPhaseInstance {
       if (this.currentPath != null && !this.currentPath.isDone()) {
          Vec3i current = this.currentPath.getNextNodePos();
          this.currentPath.advance();
-         double xTarget = (double)current.getX();
-         double zTarget = (double)current.getZ();
+         double xTarget = current.getX();
+         double zTarget = current.getZ();
 
          double yTarget;
          do {
-            yTarget = (double)((float)current.getY() + this.dragon.getRandom().nextFloat() * 20.0F);
-         } while (yTarget < (double)current.getY());
+            yTarget = current.getY() + this.dragon.getRandom().nextFloat() * 20.0F;
+         } while (yTarget < current.getY());
 
          this.targetLocation = new Vec3(xTarget, yTarget, zTarget);
       }
@@ -166,8 +159,8 @@ public class DragonStrafePlayerPhase extends AbstractDragonPhaseInstance {
       int targetNodeIndex = this.dragon.findClosestNode(this.attackTarget.getX(), this.attackTarget.getY(), this.attackTarget.getZ());
       int finalXTarget = this.attackTarget.getBlockX();
       int finalZTarget = this.attackTarget.getBlockZ();
-      double xd = (double)finalXTarget - this.dragon.getX();
-      double zd = (double)finalZTarget - this.dragon.getZ();
+      double xd = finalXTarget - this.dragon.getX();
+      double zd = finalZTarget - this.dragon.getZ();
       double sd = Math.sqrt(xd * xd + zd * zd);
       double ho = Math.min(0.4F + sd / 80.0 - 1.0, 10.0);
       int finalYTarget = Mth.floor(this.attackTarget.getY() + ho);
@@ -179,9 +172,8 @@ public class DragonStrafePlayerPhase extends AbstractDragonPhaseInstance {
       }
    }
 
-   @Nullable
    @Override
-   public Vec3 getFlyTargetLocation() {
+   public @Nullable Vec3 getFlyTargetLocation() {
       return this.targetLocation;
    }
 

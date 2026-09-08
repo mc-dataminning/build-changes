@@ -40,7 +40,7 @@ public class ChiseledBookShelfBlockEntity extends BlockEntity implements ListBac
          for (int slot = 0; slot < ChiseledBookShelfBlock.SLOT_OCCUPIED_PROPERTIES.size(); slot++) {
             boolean slotIsOccupied = !this.getItem(slot).isEmpty();
             BooleanProperty slotProperty = ChiseledBookShelfBlock.SLOT_OCCUPIED_PROPERTIES.get(slot);
-            updatedState = updatedState.setValue(slotProperty, Boolean.valueOf(slotIsOccupied));
+            updatedState = updatedState.setValue(slotProperty, slotIsOccupied);
          }
 
          Objects.requireNonNull(this.level).setBlockAndUpdate(this.worldPosition, updatedState);
@@ -100,8 +100,8 @@ public class ChiseledBookShelfBlockEntity extends BlockEntity implements ListBac
    public boolean canTakeItem(final Container into, final int slot, final ItemStack itemStack) {
       return into.hasAnyMatching(
          toItem -> toItem.isEmpty()
-               ? true
-               : ItemStack.isSameItemSameComponents(itemStack, toItem) && toItem.getCount() + itemStack.getCount() <= into.getMaxStackSize(toItem)
+            ? true
+            : ItemStack.isSameItemSameComponents(itemStack, toItem) && toItem.getCount() + itemStack.getCount() <= into.getMaxStackSize(toItem)
       );
    }
 

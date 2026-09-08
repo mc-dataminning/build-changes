@@ -24,8 +24,8 @@ public record PendingInvitesList(List<PendingInvite> pendingInvites) {
                }
             }
          }
-      } catch (Exception var6) {
-         LOGGER.error("Could not parse PendingInvitesList", var6);
+      } catch (Exception e) {
+         LOGGER.error("Could not parse PendingInvitesList", e);
       }
 
       return new PendingInvitesList(pendingInvites);

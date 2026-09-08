@@ -16,8 +16,7 @@ public class StrollThroughVillageGoal extends Goal {
    private static final int DISTANCE_THRESHOLD = 10;
    private final PathfinderMob mob;
    private final int interval;
-   @Nullable
-   private BlockPos wantedPos;
+   private @Nullable BlockPos wantedPos;
 
    public StrollThroughVillageGoal(final PathfinderMob mob, final int interval) {
       this.mob = mob;
@@ -29,21 +28,25 @@ public class StrollThroughVillageGoal extends Goal {
    public boolean canUse() {
       if (this.mob.hasControllingPassenger()) {
          return false;
-      } else if (this.mob.level().isBrightOutside()) {
-         return false;
-      } else if (this.mob.getRandom().nextInt(this.interval) != 0) {
-         return false;
-      } else {
-         ServerLevel level = (ServerLevel)this.mob.level();
-         BlockPos pos = this.mob.blockPosition();
-         if (!level.isCloseToVillage(pos, 6)) {
-            return false;
-         } else {
-            Vec3 landPos = LandRandomPos.getPos(this.mob, 15, 7, p -> (double)(-level.sectionsToVillage(SectionPos.of(p))));
-            this.wantedPos = landPos == null ? null : BlockPos.containing(landPos);
-            return this.wantedPos != null;
-         }
       }
+
+      if (this.mob.level().isBrightOutside()) {
+         return false;
+      }
+
+      if (this.mob.getRandom().nextInt(this.interval) != 0) {
+         return false;
+      }
+
+      ServerLevel level = (ServerLevel)this.mob.level();
+      BlockPos pos = this.mob.blockPosition();
+      if (!level.isCloseToVillage(pos, 6)) {
+         return false;
+      }
+
+      Vec3 landPos = LandRandomPos.getPos(this.mob, 15, 7, p -> -level.sectionsToVillage(SectionPos.of(p)));
+      this.wantedPos = landPos == null ? null : BlockPos.containing(landPos);
+      return this.wantedPos != null;
    }
 
    @Override
@@ -63,7 +66,7 @@ public class StrollThroughVillageGoal extends Goal {
             Vec3 moveTarget = longDistanceTarget.subtract(selfVector).normalize().scale(10.0).add(selfVector);
             BlockPos pathTarget = BlockPos.containing(moveTarget);
             pathTarget = this.mob.level().getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, pathTarget);
-            if (!navigation.moveTo((double)pathTarget.getX(), (double)pathTarget.getY(), (double)pathTarget.getZ(), 1.0)) {
+            if (!navigation.moveTo(pathTarget.getX(), pathTarget.getY(), pathTarget.getZ(), 1.0)) {
                this.moveRandomly();
             }
          }
@@ -75,6 +78,6 @@ public class StrollThroughVillageGoal extends Goal {
       BlockPos pathTarget = this.mob
          .level()
          .getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, this.mob.blockPosition().offset(-8 + random.nextInt(16), 0, -8 + random.nextInt(16)));
-      this.mob.getNavigation().moveTo((double)pathTarget.getX(), (double)pathTarget.getY(), (double)pathTarget.getZ(), 1.0);
+      this.mob.getNavigation().moveTo(pathTarget.getX(), pathTarget.getY(), pathTarget.getZ(), 1.0);
    }
 }

@@ -19,10 +19,10 @@ import net.minecraft.world.phys.Vec3;
 public class EntityPositionSource implements PositionSource {
    public static final MapCodec<EntityPositionSource> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               UUIDUtil.CODEC.fieldOf("source_entity").forGetter(EntityPositionSource::getUuid),
-               Codec.FLOAT.optionalFieldOf("y_offset", 0.0F).forGetter(o -> o.yOffset)
-            )
-            .apply(i, (uuid, offset) -> new EntityPositionSource(Either.right(Either.left(uuid)), offset))
+            UUIDUtil.CODEC.fieldOf("source_entity").forGetter(EntityPositionSource::getUuid),
+            Codec.FLOAT.optionalFieldOf("y_offset", 0.0F).forGetter(o -> o.yOffset)
+         )
+         .apply(i, (uuid, offset) -> new EntityPositionSource(Either.right(Either.left(uuid)), offset))
    );
    public static final StreamCodec<ByteBuf, EntityPositionSource> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.VAR_INT,
@@ -49,7 +49,7 @@ public class EntityPositionSource implements PositionSource {
          this.resolveEntity(level);
       }
 
-      return this.entityOrUuidOrId.left().map(entity -> entity.position().add(0.0, (double)this.yOffset, 0.0));
+      return this.entityOrUuidOrId.left().map(entity -> entity.position().add(0.0, this.yOffset, 0.0));
    }
 
    private void resolveEntity(final Level level) {
@@ -57,22 +57,22 @@ public class EntityPositionSource implements PositionSource {
             .map(
                Optional::of,
                uuidOrId -> Optional.ofNullable(
-                     (Entity)uuidOrId.map(uuid -> level instanceof ServerLevel serverLevel ? serverLevel.getEntity(uuid) : null, level::getEntity)
-                  )
+                  (Entity)uuidOrId.map(uuid -> level instanceof ServerLevel serverLevel ? serverLevel.getEntity(uuid) : null, level::getEntity)
+               )
             ))
          .ifPresent(entity -> this.entityOrUuidOrId = Either.left(entity));
    }
 
    public UUID getUuid() {
       return (UUID)this.entityOrUuidOrId.map(Entity::getUUID, uuidOrId -> (UUID)uuidOrId.map(Function.identity(), id -> {
-            throw new RuntimeException("Unable to get entityId from uuid");
-         }));
+         throw new RuntimeException("Unable to get entityId from uuid");
+      }));
    }
 
    private int getId() {
       return (Integer)this.entityOrUuidOrId.map(Entity::getId, uuidOrId -> (Integer)uuidOrId.map(uuid -> {
-            throw new IllegalStateException("Unable to get entityId from uuid");
-         }, Function.identity()));
+         throw new IllegalStateException("Unable to get entityId from uuid");
+      }, Function.identity()));
    }
 
    @Override

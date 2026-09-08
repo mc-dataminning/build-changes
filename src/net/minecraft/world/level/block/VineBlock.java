@@ -40,13 +40,7 @@ public class VineBlock extends Block {
    public VineBlock(final BlockBehaviour.Properties properties) {
       super(properties);
       this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(UP, Boolean.valueOf(false))
-            .setValue(NORTH, Boolean.valueOf(false))
-            .setValue(EAST, Boolean.valueOf(false))
-            .setValue(SOUTH, Boolean.valueOf(false))
-            .setValue(WEST, Boolean.valueOf(false))
+         this.stateDefinition.any().setValue(UP, false).setValue(NORTH, false).setValue(EAST, false).setValue(SOUTH, false).setValue(WEST, false)
       );
       this.shapes = this.makeShapes();
    }
@@ -100,18 +94,20 @@ public class VineBlock extends Block {
    private boolean canSupportAtFace(final BlockGetter level, final BlockPos pos, final Direction direction) {
       if (direction == Direction.DOWN) {
          return false;
-      } else {
-         BlockPos relative = pos.relative(direction);
-         if (isAcceptableNeighbour(level, relative, direction)) {
-            return true;
-         } else if (direction.getAxis() == Direction.Axis.Y) {
-            return false;
-         } else {
-            BooleanProperty property = PROPERTY_BY_DIRECTION.get(direction);
-            BlockState aboveState = level.getBlockState(pos.above());
-            return aboveState.is(this) && aboveState.getValue(property);
-         }
       }
+
+      BlockPos relative = pos.relative(direction);
+      if (isAcceptableNeighbour(level, relative, direction)) {
+         return true;
+      }
+
+      if (direction.getAxis() == Direction.Axis.Y) {
+         return false;
+      }
+
+      BooleanProperty property = PROPERTY_BY_DIRECTION.get(direction);
+      BlockState aboveState = level.getBlockState(pos.above());
+      return aboveState.is(this) && aboveState.getValue(property);
    }
 
    public static boolean isAcceptableNeighbour(final BlockGetter level, final BlockPos neighbourPos, final Direction directionToNeighbour) {
@@ -121,7 +117,7 @@ public class VineBlock extends Block {
    private BlockState getUpdatedState(BlockState state, final BlockGetter level, final BlockPos pos) {
       BlockPos abovePos = pos.above();
       if (state.getValue(UP)) {
-         state = state.setValue(UP, Boolean.valueOf(isAcceptableNeighbour(level, abovePos, Direction.DOWN)));
+         state = state.setValue(UP, isAcceptableNeighbour(level, abovePos, Direction.DOWN));
       }
 
       BlockState aboveState = null;
@@ -138,7 +134,7 @@ public class VineBlock extends Block {
                canSupport = aboveState.is(this) && aboveState.getValue(property);
             }
 
-            state = state.setValue(property, Boolean.valueOf(canSupport));
+            state = state.setValue(property, canSupport);
          }
       }
 
@@ -158,10 +154,10 @@ public class VineBlock extends Block {
    ) {
       if (directionToNeighbour == Direction.DOWN) {
          return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-      } else {
-         BlockState blockState = this.getUpdatedState(state, level, pos);
-         return !this.hasFaces(blockState) ? Blocks.AIR.defaultBlockState() : blockState;
       }
+
+      BlockState blockState = this.getUpdatedState(state, level, pos);
+      return !this.hasFaces(blockState) ? Blocks.AIR.defaultBlockState() : blockState;
    }
 
    @Override
@@ -182,29 +178,29 @@ public class VineBlock extends Block {
                      BlockPos cwTestPos = testPos.relative(cwDirection);
                      BlockPos ccwTestPos = testPos.relative(ccwDirection);
                      if (cwHasConnectingFace && isAcceptableNeighbour(level, cwTestPos, cwDirection)) {
-                        level.setBlock(testPos, this.defaultBlockState().setValue(getPropertyForFace(cwDirection), Boolean.valueOf(true)), 2);
+                        level.setBlock(testPos, this.defaultBlockState().setValue(getPropertyForFace(cwDirection), true), 2);
                      } else if (ccwHasConnectingFace && isAcceptableNeighbour(level, ccwTestPos, ccwDirection)) {
-                        level.setBlock(testPos, this.defaultBlockState().setValue(getPropertyForFace(ccwDirection), Boolean.valueOf(true)), 2);
+                        level.setBlock(testPos, this.defaultBlockState().setValue(getPropertyForFace(ccwDirection), true), 2);
                      } else {
                         Direction opposite = testDirection.getOpposite();
                         if (cwHasConnectingFace && level.isEmptyBlock(cwTestPos) && isAcceptableNeighbour(level, pos.relative(cwDirection), opposite)) {
-                           level.setBlock(cwTestPos, this.defaultBlockState().setValue(getPropertyForFace(opposite), Boolean.valueOf(true)), 2);
+                           level.setBlock(cwTestPos, this.defaultBlockState().setValue(getPropertyForFace(opposite), true), 2);
                         } else if (ccwHasConnectingFace && level.isEmptyBlock(ccwTestPos) && isAcceptableNeighbour(level, pos.relative(ccwDirection), opposite)
                            )
                          {
-                           level.setBlock(ccwTestPos, this.defaultBlockState().setValue(getPropertyForFace(opposite), Boolean.valueOf(true)), 2);
-                        } else if ((double)random.nextFloat() < 0.05 && isAcceptableNeighbour(level, testPos.above(), Direction.UP)) {
-                           level.setBlock(testPos, this.defaultBlockState().setValue(UP, Boolean.valueOf(true)), 2);
+                           level.setBlock(ccwTestPos, this.defaultBlockState().setValue(getPropertyForFace(opposite), true), 2);
+                        } else if (random.nextFloat() < 0.05 && isAcceptableNeighbour(level, testPos.above(), Direction.UP)) {
+                           level.setBlock(testPos, this.defaultBlockState().setValue(UP, true), 2);
                         }
                      }
                   } else if (isAcceptableNeighbour(level, testPos, testDirection)) {
-                     level.setBlock(pos, state.setValue(getPropertyForFace(testDirection), Boolean.valueOf(true)), 2);
+                     level.setBlock(pos, state.setValue(getPropertyForFace(testDirection), true), 2);
                   }
                }
             } else {
                if (testDirection == Direction.UP && pos.getY() < level.getMaxY()) {
                   if (this.canSupportAtFace(level, pos, testDirection)) {
-                     level.setBlock(pos, state.setValue(UP, Boolean.valueOf(true)), 2);
+                     level.setBlock(pos, state.setValue(UP, true), 2);
                      return;
                   }
 
@@ -217,7 +213,7 @@ public class VineBlock extends Block {
 
                      for (Direction direction : Direction.Plane.HORIZONTAL) {
                         if (random.nextBoolean() || !isAcceptableNeighbour(level, abovePos.relative(direction), direction)) {
-                           aboveState = aboveState.setValue(getPropertyForFace(direction), Boolean.valueOf(false));
+                           aboveState = aboveState.setValue(getPropertyForFace(direction), false);
                         }
                      }
 
@@ -250,7 +246,7 @@ public class VineBlock extends Block {
          if (random.nextBoolean()) {
             BooleanProperty propertyForFace = getPropertyForFace(direction);
             if (from.getValue(propertyForFace)) {
-               to = to.setValue(propertyForFace, Boolean.valueOf(true));
+               to = to.setValue(propertyForFace, true);
             }
          }
       }
@@ -274,9 +270,8 @@ public class VineBlock extends Block {
       return clickedState.is(this) ? this.countFaces(clickedState) < PROPERTY_BY_DIRECTION.size() : super.canBeReplaced(state, context);
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockState clickedState = context.getLevel().getBlockState(context.getClickedPos());
       boolean clickedVine = clickedState.is(this);
       BlockState result = clickedVine ? clickedState : this.defaultBlockState();
@@ -286,7 +281,7 @@ public class VineBlock extends Block {
             BooleanProperty face = getPropertyForFace(direction);
             boolean faceOccupied = clickedVine && clickedState.getValue(face);
             if (!faceOccupied && this.canSupportAtFace(context.getLevel(), context.getClickedPos(), direction)) {
-               return result.setValue(face, Boolean.valueOf(true));
+               return result.setValue(face, true);
             }
          }
       }
@@ -303,17 +298,17 @@ public class VineBlock extends Block {
    protected BlockState rotate(final BlockState state, final Rotation rotation) {
       return switch (rotation) {
          case CLOCKWISE_180 -> (BlockState)state.setValue(NORTH, state.getValue(SOUTH))
-         .setValue(EAST, state.getValue(WEST))
-         .setValue(SOUTH, state.getValue(NORTH))
-         .setValue(WEST, state.getValue(EAST));
+            .setValue(EAST, state.getValue(WEST))
+            .setValue(SOUTH, state.getValue(NORTH))
+            .setValue(WEST, state.getValue(EAST));
          case COUNTERCLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(EAST))
-         .setValue(EAST, state.getValue(SOUTH))
-         .setValue(SOUTH, state.getValue(WEST))
-         .setValue(WEST, state.getValue(NORTH));
+            .setValue(EAST, state.getValue(SOUTH))
+            .setValue(SOUTH, state.getValue(WEST))
+            .setValue(WEST, state.getValue(NORTH));
          case CLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(WEST))
-         .setValue(EAST, state.getValue(NORTH))
-         .setValue(SOUTH, state.getValue(EAST))
-         .setValue(WEST, state.getValue(SOUTH));
+            .setValue(EAST, state.getValue(NORTH))
+            .setValue(SOUTH, state.getValue(EAST))
+            .setValue(WEST, state.getValue(SOUTH));
          default -> state;
       };
    }

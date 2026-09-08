@@ -143,7 +143,7 @@ public interface OrderedSubmitNodeCollector {
       final RenderType renderType,
       final int lightCoords,
       final int overlayCoords,
-      @Nullable final UvMapping uvMapping
+      final @Nullable UvMapping uvMapping
    ) {
       this.submitModelPart(modelPart, poseStack, renderType, lightCoords, overlayCoords, uvMapping, -1, 0);
    }
@@ -154,7 +154,7 @@ public interface OrderedSubmitNodeCollector {
       final RenderType renderType,
       final int lightCoords,
       final int overlayCoords,
-      @Nullable final UvMapping uvMapping,
+      final @Nullable UvMapping uvMapping,
       final int tintedColor
    ) {
       this.submitModelPart(modelPart, poseStack, renderType, lightCoords, overlayCoords, uvMapping, tintedColor, 0);
@@ -166,7 +166,7 @@ public interface OrderedSubmitNodeCollector {
       final RenderType renderType,
       final int lightCoords,
       final int overlayCoords,
-      @Nullable final UvMapping uvMapping,
+      final @Nullable UvMapping uvMapping,
       final int tintedColor,
       final int outlineColor
    ) {

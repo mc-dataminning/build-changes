@@ -17,11 +17,11 @@ import net.minecraft.world.phys.Vec3;
 public class WardenSpawnTracker {
    public static final Codec<WardenSpawnTracker> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ExtraCodecs.optionalAlwaysPresentFieldOf(ExtraCodecs.NON_NEGATIVE_INT, "ticks_since_last_warning", 0).forGetter(o -> o.ticksSinceLastWarning),
-               ExtraCodecs.optionalAlwaysPresentFieldOf(ExtraCodecs.NON_NEGATIVE_INT, "warning_level", 0).forGetter(o -> o.warningLevel),
-               ExtraCodecs.optionalAlwaysPresentFieldOf(ExtraCodecs.NON_NEGATIVE_INT, "cooldown_ticks", 0).forGetter(o -> o.cooldownTicks)
-            )
-            .apply(i, WardenSpawnTracker::new)
+            ExtraCodecs.optionalAlwaysPresentFieldOf(ExtraCodecs.NON_NEGATIVE_INT, "ticks_since_last_warning", 0).forGetter(o -> o.ticksSinceLastWarning),
+            ExtraCodecs.optionalAlwaysPresentFieldOf(ExtraCodecs.NON_NEGATIVE_INT, "warning_level", 0).forGetter(o -> o.warningLevel),
+            ExtraCodecs.optionalAlwaysPresentFieldOf(ExtraCodecs.NON_NEGATIVE_INT, "cooldown_ticks", 0).forGetter(o -> o.cooldownTicks)
+         )
+         .apply(i, WardenSpawnTracker::new)
    );
    public static final int MAX_WARNING_LEVEL = 4;
    private static final double PLAYER_SEARCH_RADIUS = 16.0;
@@ -64,26 +64,26 @@ public class WardenSpawnTracker {
    public static OptionalInt tryWarn(final ServerLevel level, final BlockPos pos, final ServerPlayer triggerPlayer) {
       if (hasNearbyWarden(level, pos)) {
          return OptionalInt.empty();
-      } else {
-         List<ServerPlayer> players = getNearbyPlayers(level, pos);
-         if (!players.contains(triggerPlayer)) {
-            players.add(triggerPlayer);
-         }
+      }
 
-         if (players.stream().anyMatch(player -> player.getWardenSpawnTracker().onCooldown())) {
-            return OptionalInt.empty();
+      List<ServerPlayer> players = getNearbyPlayers(level, pos);
+      if (!players.contains(triggerPlayer)) {
+         players.add(triggerPlayer);
+      }
+
+      if (players.stream().anyMatch(player -> player.getWardenSpawnTracker().onCooldown())) {
+         return OptionalInt.empty();
+      } else {
+         Optional<WardenSpawnTracker> highestWarningSpawnTracker = players.stream()
+            .map(ServerPlayer::getWardenSpawnTracker)
+            .max(Comparator.comparingInt(WardenSpawnTracker::getWarningLevel));
+         if (highestWarningSpawnTracker.isPresent()) {
+            WardenSpawnTracker spawnTracker = highestWarningSpawnTracker.get();
+            spawnTracker.increaseWarningLevel();
+            players.forEach(player -> player.getWardenSpawnTracker().copyData(spawnTracker));
+            return OptionalInt.of(spawnTracker.warningLevel);
          } else {
-            Optional<WardenSpawnTracker> highestWarningSpawnTracker = players.stream()
-               .map(ServerPlayer::getWardenSpawnTracker)
-               .max(Comparator.comparingInt(WardenSpawnTracker::getWarningLevel));
-            if (highestWarningSpawnTracker.isPresent()) {
-               WardenSpawnTracker spawnTracker = highestWarningSpawnTracker.get();
-               spawnTracker.increaseWarningLevel();
-               players.forEach(player -> player.getWardenSpawnTracker().copyData(spawnTracker));
-               return OptionalInt.of(spawnTracker.warningLevel);
-            } else {
-               return OptionalInt.empty();
-            }
+            return OptionalInt.empty();
          }
       }
    }

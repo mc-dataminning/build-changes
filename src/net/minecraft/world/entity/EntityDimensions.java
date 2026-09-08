@@ -19,7 +19,7 @@ public record EntityDimensions(float width, float height, float eyeHeight, Entit
    public AABB makeBoundingBox(final double x, final double y, final double z) {
       float w = this.width / 2.0F;
       float h = this.height;
-      return new AABB(x - (double)w, y, z - (double)w, x + (double)w, y + (double)h, z + (double)w);
+      return new AABB(x - w, y, z - w, x + w, y + h, z + w);
    }
 
    public EntityDimensions scale(final float scaleFactor) {

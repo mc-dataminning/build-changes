@@ -15,26 +15,25 @@ import net.minecraft.util.context.ContextKeySet;
 
 public class LootContextParamSets {
    public static final Codec<ContextKeySet> CODEC = BuiltInRegistries.CONTEXT_KEY_SET.byNameCodec();
-   public static final ContextKeySet EMPTY = register("empty", var0 -> {
-   });
+   public static final ContextKeySet EMPTY = register("empty", var0 -> {});
    public static final ContextKeySet ALL_PARAMS = register(
       "generic",
       builder -> builder.required(LootContextParams.THIS_ENTITY)
-            .required(LootContextParams.LAST_DAMAGE_PLAYER)
-            .required(LootContextParams.DAMAGE_SOURCE)
-            .required(LootContextParams.ATTACKING_ENTITY)
-            .required(LootContextParams.DIRECT_ATTACKING_ENTITY)
-            .required(LootContextParams.ORIGIN)
-            .required(LootContextParams.BLOCK_STATE)
-            .required(LootContextParams.BLOCK_ENTITY)
-            .required(LootContextParams.TOOL)
-            .required(LootContextParams.EXPLOSION_RADIUS)
-            .required(LootContextParams.ADDITIONAL_COST_COMPONENT_ALLOWED)
-            .required(LootContextParams.CONTAINER)
-            .required(LootContextParams.INTERACTING_ENTITY)
-            .required(LootContextParams.TARGET_ENTITY)
-            .required(LootContextParams.ENCHANTMENT_ACTIVE)
-            .required(LootContextParams.ENCHANTMENT_LEVEL)
+         .required(LootContextParams.LAST_DAMAGE_PLAYER)
+         .required(LootContextParams.DAMAGE_SOURCE)
+         .required(LootContextParams.ATTACKING_ENTITY)
+         .required(LootContextParams.DIRECT_ATTACKING_ENTITY)
+         .required(LootContextParams.ORIGIN)
+         .required(LootContextParams.BLOCK_STATE)
+         .required(LootContextParams.BLOCK_ENTITY)
+         .required(LootContextParams.TOOL)
+         .required(LootContextParams.EXPLOSION_RADIUS)
+         .required(LootContextParams.ADDITIONAL_COST_COMPONENT_ALLOWED)
+         .required(LootContextParams.CONTAINER)
+         .required(LootContextParams.INTERACTING_ENTITY)
+         .required(LootContextParams.TARGET_ENTITY)
+         .required(LootContextParams.ENCHANTMENT_ACTIVE)
+         .required(LootContextParams.ENCHANTMENT_LEVEL)
    );
    public static final ContextKeySet CHEST = register("chest", builder -> builder.required(LootContextParams.ORIGIN).optional(LootContextParams.THIS_ENTITY));
    public static final ContextKeySet COMMAND = register(
@@ -50,9 +49,9 @@ public class LootContextParamSets {
    public static final ContextKeySet COMMAND_COMPUTE_POSITION = register(
       "command_compute_position",
       builder -> builder.optional(LootContextParams.THIS_ENTITY)
-            .required(LootContextParams.ORIGIN)
-            .required(LootContextParams.BLOCK_STATE)
-            .optional(LootContextParams.BLOCK_ENTITY)
+         .required(LootContextParams.ORIGIN)
+         .required(LootContextParams.BLOCK_STATE)
+         .optional(LootContextParams.BLOCK_ENTITY)
    );
    public static final ContextKeySet COMMAND_COMPUTE_ENTITY = register(
       "command_compute_entity",
@@ -64,8 +63,8 @@ public class LootContextParamSets {
    public static final ContextKeySet VILLAGER_TRADE = register(
       "villager_trade",
       builder -> builder.required(LootContextParams.ORIGIN)
-            .required(LootContextParams.THIS_ENTITY)
-            .required(LootContextParams.ADDITIONAL_COST_COMPONENT_ALLOWED)
+         .required(LootContextParams.THIS_ENTITY)
+         .required(LootContextParams.ADDITIONAL_COST_COMPONENT_ALLOWED)
    );
    public static final ContextKeySet FISHING = register(
       "fishing", builder -> builder.required(LootContextParams.ORIGIN).required(LootContextParams.TOOL).optional(LootContextParams.THIS_ENTITY)
@@ -73,11 +72,11 @@ public class LootContextParamSets {
    public static final ContextKeySet ENTITY = register(
       "entity",
       builder -> builder.required(LootContextParams.THIS_ENTITY)
-            .required(LootContextParams.ORIGIN)
-            .required(LootContextParams.DAMAGE_SOURCE)
-            .optional(LootContextParams.ATTACKING_ENTITY)
-            .optional(LootContextParams.DIRECT_ATTACKING_ENTITY)
-            .optional(LootContextParams.LAST_DAMAGE_PLAYER)
+         .required(LootContextParams.ORIGIN)
+         .required(LootContextParams.DAMAGE_SOURCE)
+         .optional(LootContextParams.ATTACKING_ENTITY)
+         .optional(LootContextParams.DIRECT_ATTACKING_ENTITY)
+         .optional(LootContextParams.LAST_DAMAGE_PLAYER)
    );
    public static final ContextKeySet EQUIPMENT = register(
       "equipment", builder -> builder.required(LootContextParams.ORIGIN).required(LootContextParams.THIS_ENTITY)
@@ -99,10 +98,10 @@ public class LootContextParamSets {
    public static final ContextKeySet ADVANCEMENT_LOCATION = register(
       "advancement_location",
       builder -> builder.required(LootContextParams.THIS_ENTITY)
-            .required(LootContextParams.ORIGIN)
-            .required(LootContextParams.TOOL)
-            .required(LootContextParams.BLOCK_STATE)
-            .optional(LootContextParams.BLOCK_ENTITY)
+         .required(LootContextParams.ORIGIN)
+         .required(LootContextParams.TOOL)
+         .required(LootContextParams.BLOCK_STATE)
+         .optional(LootContextParams.BLOCK_ENTITY)
    );
    public static final ContextKeySet BLOCK_USE = register(
       "block_use", builder -> builder.required(LootContextParams.THIS_ENTITY).required(LootContextParams.ORIGIN).required(LootContextParams.BLOCK_STATE)
@@ -110,11 +109,11 @@ public class LootContextParamSets {
    public static final ContextKeySet BLOCK = register(
       "block",
       builder -> builder.required(LootContextParams.BLOCK_STATE)
-            .required(LootContextParams.ORIGIN)
-            .required(LootContextParams.TOOL)
-            .optional(LootContextParams.THIS_ENTITY)
-            .optional(LootContextParams.BLOCK_ENTITY)
-            .optional(LootContextParams.EXPLOSION_RADIUS)
+         .required(LootContextParams.ORIGIN)
+         .required(LootContextParams.TOOL)
+         .optional(LootContextParams.THIS_ENTITY)
+         .optional(LootContextParams.BLOCK_ENTITY)
+         .optional(LootContextParams.EXPLOSION_RADIUS)
    );
    public static final ContextKeySet SHEARING = register(
       "shearing", builder -> builder.required(LootContextParams.ORIGIN).required(LootContextParams.THIS_ENTITY).required(LootContextParams.TOOL)
@@ -126,26 +125,26 @@ public class LootContextParamSets {
    public static final ContextKeySet BLOCK_INTERACT = register(
       "block_interact",
       builder -> builder.required(LootContextParams.BLOCK_STATE)
-            .required(LootContextParams.ORIGIN)
-            .optional(LootContextParams.BLOCK_ENTITY)
-            .optional(LootContextParams.INTERACTING_ENTITY)
-            .optional(LootContextParams.TOOL)
+         .required(LootContextParams.ORIGIN)
+         .optional(LootContextParams.BLOCK_ENTITY)
+         .optional(LootContextParams.INTERACTING_ENTITY)
+         .optional(LootContextParams.TOOL)
    );
    public static final ContextKeySet CONTAINER_PROCESS = register(
       "container_process",
       builder -> builder.required(LootContextParams.BLOCK_ENTITY)
-            .required(LootContextParams.BLOCK_STATE)
-            .required(LootContextParams.CONTAINER)
-            .required(LootContextParams.ORIGIN)
+         .required(LootContextParams.BLOCK_STATE)
+         .required(LootContextParams.CONTAINER)
+         .required(LootContextParams.ORIGIN)
    );
    public static final ContextKeySet ENCHANTED_DAMAGE = register(
       "enchanted_damage",
       builder -> builder.required(LootContextParams.THIS_ENTITY)
-            .required(LootContextParams.ENCHANTMENT_LEVEL)
-            .required(LootContextParams.ORIGIN)
-            .required(LootContextParams.DAMAGE_SOURCE)
-            .optional(LootContextParams.DIRECT_ATTACKING_ENTITY)
-            .optional(LootContextParams.ATTACKING_ENTITY)
+         .required(LootContextParams.ENCHANTMENT_LEVEL)
+         .required(LootContextParams.ORIGIN)
+         .required(LootContextParams.DAMAGE_SOURCE)
+         .optional(LootContextParams.DIRECT_ATTACKING_ENTITY)
+         .optional(LootContextParams.ATTACKING_ENTITY)
    );
    public static final ContextKeySet ENCHANTED_ITEM = register(
       "enchanted_item", builder -> builder.required(LootContextParams.TOOL).required(LootContextParams.ENCHANTMENT_LEVEL)
@@ -153,9 +152,9 @@ public class LootContextParamSets {
    public static final ContextKeySet ENCHANTED_LOCATION = register(
       "enchanted_location",
       builder -> builder.required(LootContextParams.THIS_ENTITY)
-            .required(LootContextParams.ENCHANTMENT_LEVEL)
-            .required(LootContextParams.ORIGIN)
-            .required(LootContextParams.ENCHANTMENT_ACTIVE)
+         .required(LootContextParams.ENCHANTMENT_LEVEL)
+         .required(LootContextParams.ORIGIN)
+         .required(LootContextParams.ENCHANTMENT_ACTIVE)
    );
    public static final ContextKeySet ENCHANTED_ENTITY = register(
       "enchanted_entity",
@@ -164,9 +163,9 @@ public class LootContextParamSets {
    public static final ContextKeySet HIT_BLOCK = register(
       "hit_block",
       builder -> builder.required(LootContextParams.THIS_ENTITY)
-            .required(LootContextParams.ENCHANTMENT_LEVEL)
-            .required(LootContextParams.ORIGIN)
-            .required(LootContextParams.BLOCK_STATE)
+         .required(LootContextParams.ENCHANTMENT_LEVEL)
+         .required(LootContextParams.ORIGIN)
+         .required(LootContextParams.BLOCK_STATE)
    );
 
    private static ContextKeySet register(final String name, final Consumer<ContextKeySet.Builder> consumer) {

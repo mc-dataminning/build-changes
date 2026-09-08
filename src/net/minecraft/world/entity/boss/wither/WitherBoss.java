@@ -3,7 +3,6 @@ package net.minecraft.world.entity.boss.wither;
 import com.google.common.collect.ImmutableList;
 import java.util.EnumSet;
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -78,7 +77,7 @@ public class WitherBoss extends Monster implements RangedAttackMob {
       e -> e.setDarkenScreen(true)
    );
    private static final TargetingConditions.Selector LIVING_ENTITY_SELECTOR = (target, level) -> !target.is(EntityTypeTags.WITHER_FRIENDS)
-         && target.attackable();
+      && target.attackable();
    private static final TargetingConditions TARGETING_CONDITIONS = TargetingConditions.forCombat().range(20.0).selector(LIVING_ENTITY_SELECTOR);
 
    public WitherBoss(final EntityType<? extends WitherBoss> type, final Level level) {
@@ -132,7 +131,7 @@ public class WitherBoss extends Monster implements RangedAttackMob {
    }
 
    @Override
-   public void setCustomName(@Nullable final Component name) {
+   public void setCustomName(final @Nullable Component name) {
       super.setCustomName(name);
       this.bossEvent.setName(this.getDisplayName());
    }
@@ -197,11 +196,11 @@ public class WitherBoss extends Monster implements RangedAttackMob {
             double hy = this.getHeadY(i + 1);
             double hz = this.getHeadZ(i + 1);
             double xd = entity.getX() - hx;
-            double ydx = entity.getEyeY() - hy;
+            double yd = entity.getEyeY() - hy;
             double zd = entity.getZ() - hz;
             double sd = Math.sqrt(xd * xd + zd * zd);
             float yRotD = (float)(Mth.atan2(zd, xd) * 180.0F / (float)Math.PI) - 90.0F;
-            float xRotD = (float)(-(Mth.atan2(ydx, sd) * 180.0F / (float)Math.PI));
+            float xRotD = (float)(-(Mth.atan2(yd, sd) * 180.0F / (float)Math.PI));
             this.xRotHeads[i] = this.rotlerp(this.xRotHeads[i], xRotD, 40.0F);
             this.yRotHeads[i] = this.rotlerp(this.yRotHeads[i], yRotD, 10.0F);
          } else {
@@ -219,9 +218,9 @@ public class WitherBoss extends Monster implements RangedAttackMob {
          this.level()
             .addParticle(
                ParticleTypes.SMOKE,
-               hx + this.random.nextGaussian() * (double)radius,
-               hy + this.random.nextGaussian() * (double)radius,
-               hz + this.random.nextGaussian() * (double)radius,
+               hx + this.random.nextGaussian() * radius,
+               hy + this.random.nextGaussian() * radius,
+               hz + this.random.nextGaussian() * radius,
                0.0,
                0.0,
                0.0
@@ -230,9 +229,9 @@ public class WitherBoss extends Monster implements RangedAttackMob {
             this.level()
                .addParticle(
                   ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, 0.7F, 0.7F, 0.5F),
-                  hx + this.random.nextGaussian() * (double)radius,
-                  hy + this.random.nextGaussian() * (double)radius,
-                  hz + this.random.nextGaussian() * (double)radius,
+                  hx + this.random.nextGaussian() * radius,
+                  hy + this.random.nextGaussian() * radius,
+                  hz + this.random.nextGaussian() * radius,
                   0.0,
                   0.0,
                   0.0
@@ -243,12 +242,12 @@ public class WitherBoss extends Monster implements RangedAttackMob {
       if (this.getInvulnerableTicks() > 0) {
          float height = 3.3F * this.getScale();
 
-         for (int ix = 0; ix < 3; ix++) {
+         for (int i = 0; i < 3; i++) {
             this.level()
                .addParticle(
                   ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, 0.7F, 0.7F, 0.9F),
                   this.getX() + this.random.nextGaussian(),
-                  this.getY() + (double)(this.random.nextFloat() * height),
+                  this.getY() + this.random.nextFloat() * height,
                   this.getZ() + this.random.nextGaussian(),
                   0.0,
                   0.0,
@@ -262,7 +261,7 @@ public class WitherBoss extends Monster implements RangedAttackMob {
    protected void customServerAiStep(final ServerLevel level) {
       if (this.getInvulnerableTicks() > 0) {
          int newCount = this.getInvulnerableTicks() - 1;
-         this.bossEvent.setProgress(1.0F - (float)newCount / 220.0F);
+         this.bossEvent.setProgress(1.0F - newCount / 220.0F);
          if (newCount <= 0) {
             level.explode(this, this.getX(), this.getEyeY(), this.getZ(), 7.0F, false, Level.ExplosionInteraction.MOB);
             if (!this.isSilent()) {
@@ -382,26 +381,26 @@ public class WitherBoss extends Monster implements RangedAttackMob {
    private double getHeadX(final int index) {
       if (index <= 0) {
          return this.getX();
-      } else {
-         float headAngle = (this.yBodyRot + (float)(180 * (index - 1))) * (float) (Math.PI / 180.0);
-         float cos = Mth.cos((double)headAngle);
-         return this.getX() + (double)cos * 1.3 * (double)this.getScale();
       }
+
+      float headAngle = (this.yBodyRot + 180 * (index - 1)) * (float) (Math.PI / 180.0);
+      float cos = Mth.cos(headAngle);
+      return this.getX() + cos * 1.3 * this.getScale();
    }
 
    private double getHeadY(final int index) {
       float height = index <= 0 ? 3.0F : 2.2F;
-      return this.getY() + (double)(height * this.getScale());
+      return this.getY() + height * this.getScale();
    }
 
    private double getHeadZ(final int index) {
       if (index <= 0) {
          return this.getZ();
-      } else {
-         float headAngle = (this.yBodyRot + (float)(180 * (index - 1))) * (float) (Math.PI / 180.0);
-         float sin = Mth.sin((double)headAngle);
-         return this.getZ() + (double)sin * 1.3 * (double)this.getScale();
       }
+
+      float headAngle = (this.yBodyRot + 180 * (index - 1)) * (float) (Math.PI / 180.0);
+      float sin = Mth.sin(headAngle);
+      return this.getZ() + sin * 1.3 * this.getScale();
    }
 
    private float rotlerp(final float a, final float b, final float max) {
@@ -418,9 +417,7 @@ public class WitherBoss extends Monster implements RangedAttackMob {
    }
 
    private void performRangedAttack(final int head, final LivingEntity target) {
-      this.performRangedAttack(
-         head, target.getX(), target.getY() + (double)target.getEyeHeight() * 0.5, target.getZ(), head == 0 && this.random.nextFloat() < 0.001F
-      );
+      this.performRangedAttack(head, target.getX(), target.getY() + target.getEyeHeight() * 0.5, target.getZ(), head == 0 && this.random.nextFloat() < 0.001F);
    }
 
    private void performRangedAttack(final int head, final double tx, final double ty, final double tz, final boolean dangerous) {
@@ -454,33 +451,37 @@ public class WitherBoss extends Monster implements RangedAttackMob {
    public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
       if (this.isInvulnerableTo(level, source)) {
          return false;
-      } else if (source.is(DamageTypeTags.WITHER_IMMUNE_TO) || source.getEntity() instanceof WitherBoss) {
-         return false;
-      } else if (this.getInvulnerableTicks() > 0 && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
-         return false;
-      } else {
-         if (this.isPowered()) {
-            Entity directEntity = source.getDirectEntity();
-            if (directEntity instanceof AbstractArrow || directEntity instanceof WindCharge) {
-               return false;
-            }
-         }
+      }
 
-         Entity sourceEntity = source.getEntity();
-         if (sourceEntity != null && sourceEntity.is(EntityTypeTags.WITHER_FRIENDS)) {
+      if (source.is(DamageTypeTags.WITHER_IMMUNE_TO) || source.getEntity() instanceof WitherBoss) {
+         return false;
+      }
+
+      if (this.getInvulnerableTicks() > 0 && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
+         return false;
+      }
+
+      if (this.isPowered()) {
+         Entity directEntity = source.getDirectEntity();
+         if (directEntity instanceof AbstractArrow || directEntity instanceof WindCharge) {
             return false;
-         } else {
-            if (this.destroyBlocksTick <= 0) {
-               this.destroyBlocksTick = 20;
-            }
-
-            for (int i = 0; i < this.idleHeadUpdates.length; i++) {
-               this.idleHeadUpdates[i] = this.idleHeadUpdates[i] + 3;
-            }
-
-            return super.hurtServer(level, source, damage);
          }
       }
+
+      Entity sourceEntity = source.getEntity();
+      if (sourceEntity != null && sourceEntity.is(EntityTypeTags.WITHER_FRIENDS)) {
+         return false;
+      }
+
+      if (this.destroyBlocksTick <= 0) {
+         this.destroyBlocksTick = 20;
+      }
+
+      for (int i = 0; i < this.idleHeadUpdates.length; i++) {
+         this.idleHeadUpdates[i] = this.idleHeadUpdates[i] + 3;
+      }
+
+      return super.hurtServer(level, source, damage);
    }
 
    @Override
@@ -502,7 +503,7 @@ public class WitherBoss extends Monster implements RangedAttackMob {
    }
 
    @Override
-   public boolean addEffect(final MobEffectInstance newEffect, @Nullable final Entity source) {
+   public boolean addEffect(final MobEffectInstance newEffect, final @Nullable Entity source) {
       return false;
    }
 
@@ -560,8 +561,6 @@ public class WitherBoss extends Monster implements RangedAttackMob {
 
    private class WitherDoNothingGoal extends Goal {
       public WitherDoNothingGoal() {
-         Objects.requireNonNull(WitherBoss.this);
-         super();
          this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.JUMP, Goal.Flag.LOOK));
       }
 

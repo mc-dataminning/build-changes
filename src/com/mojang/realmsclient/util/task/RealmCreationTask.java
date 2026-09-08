@@ -25,12 +25,12 @@ public class RealmCreationTask extends LongRunningTask {
 
       try {
          client.initializeRealm(this.realmId, this.name, this.motd);
-      } catch (RealmsServiceException var3) {
-         LOGGER.error("Couldn't create world", var3);
-         this.error(var3);
-      } catch (Exception var4) {
-         LOGGER.error("Could not create world", var4);
-         this.error(var4);
+      } catch (RealmsServiceException e) {
+         LOGGER.error("Couldn't create world", e);
+         this.error(e);
+      } catch (Exception e) {
+         LOGGER.error("Could not create world", e);
+         this.error(e);
       }
    }
 

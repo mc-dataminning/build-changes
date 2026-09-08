@@ -41,7 +41,7 @@ public class KelpBlock extends GrowingPlantHeadBlock implements LiquidBlockConta
    }
 
    @Override
-   public boolean canPlaceLiquid(@Nullable final LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
+   public boolean canPlaceLiquid(final @Nullable LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
       return false;
    }
 
@@ -55,9 +55,8 @@ public class KelpBlock extends GrowingPlantHeadBlock implements LiquidBlockConta
       return 1;
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
       return fluidState.is(FluidTags.WATER) && fluidState.isFull() ? super.getStateForPlacement(context) : null;
    }

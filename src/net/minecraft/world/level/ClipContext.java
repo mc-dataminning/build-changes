@@ -53,7 +53,7 @@ public class ClipContext {
       return this.fluid.canPick(fluidState) ? fluidState.getShape(level, pos) : Shapes.empty();
    }
 
-   public static enum Block implements ClipContext.ShapeGetter {
+   public enum Block implements ClipContext.ShapeGetter {
       COLLIDER(BlockBehaviour.BlockStateBase::getCollisionShape),
       OUTLINE(BlockBehaviour.BlockStateBase::getShape),
       VISUAL(BlockBehaviour.BlockStateBase::getVisualShape),
@@ -61,29 +61,29 @@ public class ClipContext {
          (state, level, pos, collisionContext) -> {
             if (state.is(BlockTags.FALL_DAMAGE_RESETTING)) {
                return Shapes.block();
-            } else {
-               if (collisionContext instanceof EntityCollisionContext entityCollisionContext
-                  && entityCollisionContext.getEntity() != null
-                  && entityCollisionContext.getEntity().is(EntityTypes.PLAYER)) {
-                  if (state.is(Blocks.END_GATEWAY) || state.is(Blocks.END_PORTAL)) {
-                     return Shapes.block();
-                  }
+            }
 
-                  if (level instanceof ServerLevel serverLevel
-                     && state.is(Blocks.NETHER_PORTAL)
-                     && serverLevel.getGameRules().get(GameRules.PLAYERS_NETHER_PORTAL_DEFAULT_DELAY) == 0) {
-                     return Shapes.block();
-                  }
+            if (collisionContext instanceof EntityCollisionContext entityCollisionContext
+               && entityCollisionContext.getEntity() != null
+               && entityCollisionContext.getEntity().is(EntityTypes.PLAYER)) {
+               if (state.is(Blocks.END_GATEWAY) || state.is(Blocks.END_PORTAL)) {
+                  return Shapes.block();
                }
 
-               return Shapes.empty();
+               if (level instanceof ServerLevel serverLevel
+                  && state.is(Blocks.NETHER_PORTAL)
+                  && serverLevel.getGameRules().get(GameRules.PLAYERS_NETHER_PORTAL_DEFAULT_DELAY) == 0) {
+                  return Shapes.block();
+               }
             }
+
+            return Shapes.empty();
          }
       );
 
       private final ClipContext.ShapeGetter shapeGetter;
 
-      private Block(final ClipContext.ShapeGetter getShape) {
+      Block(final ClipContext.ShapeGetter getShape) {
          this.shapeGetter = getShape;
       }
 
@@ -93,7 +93,7 @@ public class ClipContext {
       }
    }
 
-   public static enum Fluid {
+   public enum Fluid {
       NONE(state -> false),
       SOURCE_ONLY(FluidState::isSource),
       ANY(state -> !state.isEmpty()),
@@ -101,7 +101,7 @@ public class ClipContext {
 
       private final Predicate<FluidState> canPick;
 
-      private Fluid(final Predicate<FluidState> canPick) {
+      Fluid(final Predicate<FluidState> canPick) {
          this.canPick = canPick;
       }
 

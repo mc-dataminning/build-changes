@@ -11,7 +11,6 @@ import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class DirectoryValidator {
    private final PathMatcher symlinkTargetAllowList;
@@ -39,33 +38,29 @@ public class DirectoryValidator {
       BasicFileAttributes targetAttributes;
       try {
          targetAttributes = Files.readAttributes(directory, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      } catch (NoSuchFileException var6) {
+      } catch (NoSuchFileException e) {
          return issues;
       }
 
       if (targetAttributes.isRegularFile()) {
          throw new IOException("Path " + directory + " is not a directory");
-      } else {
-         if (targetAttributes.isSymbolicLink()) {
-            if (!allowTopSymlink) {
-               this.validateSymlink(directory, issues);
-               return issues;
-            }
+      }
 
-            directory = Files.readSymbolicLink(directory);
+      if (targetAttributes.isSymbolicLink()) {
+         if (!allowTopSymlink) {
+            this.validateSymlink(directory, issues);
+            return issues;
          }
 
-         this.validateKnownDirectory(directory, issues);
-         return issues;
+         directory = Files.readSymbolicLink(directory);
       }
+
+      this.validateKnownDirectory(directory, issues);
+      return issues;
    }
 
    public void validateKnownDirectory(final Path directory, final List<ForbiddenSymlinkInfo> issues) throws IOException {
       Files.walkFileTree(directory, new SimpleFileVisitor<Path>() {
-         {
-            Objects.requireNonNull(DirectoryValidator.this);
-         }
-
          private void validateSymlink(final Path path, final BasicFileAttributes attrs) throws IOException {
             if (attrs.isSymbolicLink()) {
                DirectoryValidator.this.validateSymlink(path, issues);

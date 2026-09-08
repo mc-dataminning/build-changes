@@ -30,11 +30,11 @@ public class CriteriaRenameFix extends DataFix {
       return tag.update(
          this.advancementId,
          advancement -> advancement.update(
-               "criteria",
-               criteria -> criteria.updateMapValues(
-                     e -> e.mapFirst(k -> (Dynamic)DataFixUtils.orElse(k.asString().map(s -> k.createString(this.conversions.apply(s))).result(), k))
-                  )
+            "criteria",
+            criteria -> criteria.updateMapValues(
+               e -> e.mapFirst(k -> (Dynamic)DataFixUtils.orElse(k.asString().map(s -> k.createString(this.conversions.apply(s))).result(), k))
             )
+         )
       );
    }
 }

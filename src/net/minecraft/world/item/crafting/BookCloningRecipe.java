@@ -20,12 +20,12 @@ public class BookCloningRecipe extends CustomRecipe {
       .validate(MinMaxBounds.validateContainedInRange(ALLOWED_BOOK_GENERATION_RANGES));
    public static final MapCodec<BookCloningRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Ingredient.CODEC.fieldOf("source").forGetter(o -> o.source),
-               Ingredient.CODEC.fieldOf("material").forGetter(o -> o.material),
-               ALLOWED_GENERATION_CODEC.optionalFieldOf("allowed_generations", DEFAULT_BOOK_GENERATION_RANGES).forGetter(o -> o.allowedGenerations),
-               ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
-            )
-            .apply(i, BookCloningRecipe::new)
+            Ingredient.CODEC.fieldOf("source").forGetter(o -> o.source),
+            Ingredient.CODEC.fieldOf("material").forGetter(o -> o.material),
+            ALLOWED_GENERATION_CODEC.optionalFieldOf("allowed_generations", DEFAULT_BOOK_GENERATION_RANGES).forGetter(o -> o.allowedGenerations),
+            ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
+         )
+         .apply(i, BookCloningRecipe::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, BookCloningRecipe> STREAM_CODEC = StreamCodec.composite(
       Ingredient.CONTENTS_STREAM_CODEC,
@@ -58,36 +58,36 @@ public class BookCloningRecipe extends CustomRecipe {
    public boolean matches(final CraftingInput input, final Level level) {
       if (input.ingredientCount() < 2) {
          return false;
-      } else {
-         boolean hasMaterial = false;
-         boolean hasSource = false;
+      }
 
-         for (int slot = 0; slot < input.size(); slot++) {
-            ItemStack itemStack = input.getItem(slot);
-            if (!itemStack.isEmpty()) {
-               if (this.source.test(itemStack)) {
-                  WrittenBookContent writtenBookContent = itemStack.get(DataComponents.WRITTEN_BOOK_CONTENT);
-                  if (writtenBookContent == null || !this.canCraftCopy(writtenBookContent)) {
-                     return false;
-                  }
+      boolean hasMaterial = false;
+      boolean hasSource = false;
 
-                  if (hasSource) {
-                     return false;
-                  }
-
-                  hasSource = true;
-               } else {
-                  if (!this.material.test(itemStack)) {
-                     return false;
-                  }
-
-                  hasMaterial = true;
+      for (int slot = 0; slot < input.size(); slot++) {
+         ItemStack itemStack = input.getItem(slot);
+         if (!itemStack.isEmpty()) {
+            if (this.source.test(itemStack)) {
+               WrittenBookContent writtenBookContent = itemStack.get(DataComponents.WRITTEN_BOOK_CONTENT);
+               if (writtenBookContent == null || !this.canCraftCopy(writtenBookContent)) {
+                  return false;
                }
+
+               if (hasSource) {
+                  return false;
+               }
+
+               hasSource = true;
+            } else {
+               if (!this.material.test(itemStack)) {
+                  return false;
+               }
+
+               hasMaterial = true;
             }
          }
-
-         return hasSource && hasMaterial;
       }
+
+      return hasSource && hasMaterial;
    }
 
    public ItemStack assemble(final CraftingInput input) {
@@ -116,12 +116,12 @@ public class BookCloningRecipe extends CustomRecipe {
       WrittenBookContent sourceContent = source.get(DataComponents.WRITTEN_BOOK_CONTENT);
       if (sourceContent == null) {
          return ItemStack.EMPTY;
-      } else {
-         WrittenBookContent copiedContent = sourceContent.craftCopy();
-         ItemStack result = TransmuteRecipe.createWithOriginalComponents(this.result, source, count - 1);
-         result.set(DataComponents.WRITTEN_BOOK_CONTENT, copiedContent);
-         return result;
       }
+
+      WrittenBookContent copiedContent = sourceContent.craftCopy();
+      ItemStack result = TransmuteRecipe.createWithOriginalComponents(this.result, source, count - 1);
+      result.set(DataComponents.WRITTEN_BOOK_CONTENT, copiedContent);
+      return result;
    }
 
    @Override

@@ -67,10 +67,6 @@ public class ItemParser {
       final MutableObject<Holder<Item>> itemResult = new MutableObject();
       final DataComponentPatch.Builder componentsBuilder = DataComponentPatch.builder();
       this.parse(reader, new ItemParser.Visitor() {
-         {
-            Objects.requireNonNull(ItemParser.this);
-         }
-
          @Override
          public void visitItem(final Holder<Item> item) {
             itemResult.setValue(item);
@@ -96,9 +92,9 @@ public class ItemParser {
 
       try {
          new ItemParser.State(reader, visitor).parse();
-      } catch (CommandSyntaxException var5) {
+      } catch (CommandSyntaxException e) {
          reader.setCursor(cursor);
-         throw var5;
+         throw e;
       }
    }
 
@@ -121,8 +117,6 @@ public class ItemParser {
       private final ItemParser.Visitor visitor;
 
       private State(final StringReader reader, final ItemParser.Visitor visitor) {
-         Objects.requireNonNull(ItemParser.this);
-         super();
          this.reader = reader;
          this.visitor = visitor;
       }
@@ -199,17 +193,17 @@ public class ItemParser {
       public static DataComponentType<?> readComponentType(final StringReader reader) throws CommandSyntaxException {
          if (!reader.canRead()) {
             throw ItemParser.ERROR_EXPECTED_COMPONENT.createWithContext(reader);
-         } else {
-            int cursor = reader.getCursor();
-            Identifier id = Identifier.read(reader);
-            DataComponentType<?> component = BuiltInRegistries.DATA_COMPONENT_TYPE.getValue(id);
-            if (component != null && !component.isTransient()) {
-               return component;
-            } else {
-               reader.setCursor(cursor);
-               throw ItemParser.ERROR_UNKNOWN_COMPONENT.createWithContext(reader, id);
-            }
          }
+
+         int cursor = reader.getCursor();
+         Identifier id = Identifier.read(reader);
+         DataComponentType<?> component = BuiltInRegistries.DATA_COMPONENT_TYPE.getValue(id);
+         if (component != null && !component.isTransient()) {
+            return component;
+         }
+
+         reader.setCursor(cursor);
+         throw ItemParser.ERROR_UNKNOWN_COMPONENT.createWithContext(reader, id);
       }
 
       private <T, O> void readComponent(final TagParser<O> tagParser, final RegistryOps<O> registryOps, final DataComponentType<T> componentType) throws CommandSyntaxException {

@@ -18,7 +18,7 @@ public enum GraphicsPreset implements StringRepresentable {
    private final String key;
    public static final Codec<GraphicsPreset> CODEC = StringRepresentable.fromEnum(GraphicsPreset::values);
 
-   private GraphicsPreset(final String serializedName, final String key) {
+   GraphicsPreset(final String serializedName, final String key) {
       this.serializedName = serializedName;
       this.key = key;
    }
@@ -105,7 +105,7 @@ public enum GraphicsPreset implements StringRepresentable {
       }
    }
 
-   private static <T> void set(@Nullable final OptionsSubScreen screen, final OptionInstance<T> option, final T value) {
+   private static <T> void set(final @Nullable OptionsSubScreen screen, final OptionInstance<T> option, final T value) {
       if (option.get() != value) {
          option.set(value);
          if (screen != null) {

@@ -32,13 +32,13 @@ public interface Waypoint {
       );
    }
 
-   public static class Icon {
+   class Icon {
       public static final Codec<Waypoint.Icon> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  ResourceKey.codec(WaypointStyleAssets.ROOT_ID).fieldOf("style").forGetter(icon -> icon.style),
-                  ExtraCodecs.RGB_COLOR_CODEC.optionalFieldOf("color").forGetter(icon -> icon.color)
-               )
-               .apply(i, Waypoint.Icon::new)
+               ResourceKey.codec(WaypointStyleAssets.ROOT_ID).fieldOf("style").forGetter(icon -> icon.style),
+               ExtraCodecs.RGB_COLOR_CODEC.optionalFieldOf("color").forGetter(icon -> icon.color)
+            )
+            .apply(i, Waypoint.Icon::new)
       );
       public static final StreamCodec<ByteBuf, Waypoint.Icon> STREAM_CODEC = StreamCodec.composite(
          ResourceKey.streamCodec(WaypointStyleAssets.ROOT_ID),
@@ -68,8 +68,8 @@ public interface Waypoint {
          Optional<Integer> colorOverride = this.color
             .or(
                () -> Optional.ofNullable(livingEntity.getTeam())
-                     .flatMap(t -> t.getColor())
-                     .map(teamColor -> teamColor == TeamColor.BLACK ? -13619152 : teamColor.rgb())
+                  .flatMap(t -> t.getColor())
+                  .map(teamColor -> teamColor == TeamColor.BLACK ? -13619152 : teamColor.rgb())
             );
          return overrideStyle == this.style && colorOverride.isEmpty() ? this : new Waypoint.Icon(overrideStyle, colorOverride);
       }

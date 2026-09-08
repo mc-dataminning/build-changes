@@ -13,7 +13,6 @@ public class ItemFrameRenderState extends EntityRenderState {
    public final ItemStackRenderState item = new ItemStackRenderState();
    public int rotation;
    public boolean isGlowFrame;
-   @Nullable
-   public MapId mapId;
+   public @Nullable MapId mapId;
    public final MapRenderState mapRenderState = new MapRenderState();
 }

@@ -27,6 +27,6 @@ public class WorldBorderRenderState {
       this.alpha = 0.0;
    }
 
-   public static record DistancePerDirection(Direction direction, double distance) {
+   public record DistancePerDirection(Direction direction, double distance) {
    }
 }

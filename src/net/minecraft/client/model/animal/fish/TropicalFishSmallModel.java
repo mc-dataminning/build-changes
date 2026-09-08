@@ -48,6 +48,6 @@ public class TropicalFishSmallModel extends EntityModel<TropicalFishRenderState>
    public void setupAnim(final TropicalFishRenderState state) {
       super.setupAnim(state);
       float amplitudeMultiplier = state.isInWater ? 1.0F : 1.5F;
-      this.tail.yRot = -amplitudeMultiplier * 0.45F * Mth.sin((double)(0.6F * state.ageInTicks));
+      this.tail.yRot = -amplitudeMultiplier * 0.45F * Mth.sin(0.6F * state.ageInTicks);
    }
 }

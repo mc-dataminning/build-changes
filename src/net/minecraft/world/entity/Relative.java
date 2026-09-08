@@ -82,7 +82,7 @@ public enum Relative {
       return relatives;
    }
 
-   private Relative(final int bit) {
+   Relative(final int bit) {
       this.bit = bit;
    }
 

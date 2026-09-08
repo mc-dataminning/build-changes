@@ -195,8 +195,8 @@ public class ExecuteCommand {
                                                    .redirect(
                                                       execute,
                                                       c -> ((CommandSourceStack)c.getSource())
-                                                            .withPosition(Vec3Argument.getVec3(c, "pos"))
-                                                            .withAnchor(EntityAnchorArgument.Anchor.FEET)
+                                                         .withPosition(Vec3Argument.getVec3(c, "pos"))
+                                                         .withAnchor(EntityAnchorArgument.Anchor.FEET)
                                                    )
                                              ))
                                           .then(Commands.literal("as").then(Commands.argument("targets", EntityArgument.entities()).fork(execute, c -> {
@@ -217,10 +217,10 @@ public class ExecuteCommand {
                                                 double z = position.z();
                                                 if (!level.hasChunk(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z))) {
                                                    throw BlockPosArgument.ERROR_NOT_LOADED.create();
-                                                } else {
-                                                   int height = level.getHeight(HeightmapTypeArgument.getHeightmap(c, "heightmap"), Mth.floor(x), Mth.floor(z));
-                                                   return ((CommandSourceStack)c.getSource()).withPosition(new Vec3(x, (double)height, z));
                                                 }
+
+                                                int height = level.getHeight(HeightmapTypeArgument.getHeightmap(c, "heightmap"), Mth.floor(x), Mth.floor(z));
+                                                return ((CommandSourceStack)c.getSource()).withPosition(new Vec3(x, height, z));
                                              }))
                                        )
                                  ))
@@ -231,7 +231,7 @@ public class ExecuteCommand {
                                              .redirect(
                                                 execute,
                                                 c -> ((CommandSourceStack)c.getSource())
-                                                      .withRotation(RotationArgument.getRotation(c, "rot").getRotation((CommandSourceStack)c.getSource()))
+                                                   .withRotation(RotationArgument.getRotation(c, "rot").getRotation((CommandSourceStack)c.getSource()))
                                              )
                                        ))
                                     .then(Commands.literal("as").then(Commands.argument("targets", EntityArgument.entities()).fork(execute, c -> {
@@ -274,7 +274,7 @@ public class ExecuteCommand {
                                     .redirect(
                                        execute,
                                        c -> ((CommandSourceStack)c.getSource())
-                                             .withPosition(((CommandSourceStack)c.getSource()).getPosition().align(SwizzleArgument.getSwizzle(c, "axes")))
+                                          .withPosition(((CommandSourceStack)c.getSource()).getPosition().align(SwizzleArgument.getSwizzle(c, "axes")))
                                     )
                               )
                         ))
@@ -319,11 +319,11 @@ public class ExecuteCommand {
                         .redirect(
                            execute,
                            c -> storeValue(
-                                 (CommandSourceStack)c.getSource(),
-                                 ScoreHolderArgument.getNamesWithDefaultWildcard(c, "targets"),
-                                 ObjectiveArgument.getObjective(c, "objective"),
-                                 storeResult
-                              )
+                              (CommandSourceStack)c.getSource(),
+                              ScoreHolderArgument.getNamesWithDefaultWildcard(c, "targets"),
+                              ObjectiveArgument.getObjective(c, "objective"),
+                              storeResult
+                           )
                         )
                   )
             )
@@ -348,106 +348,106 @@ public class ExecuteCommand {
          provider.wrap(
             literal,
             p -> p.then(
-                  ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument(
-                                       "path", NbtPathArgument.nbtPath()
-                                    )
-                                    .then(
-                                       Commands.literal("int")
-                                          .then(
-                                             Commands.argument("scale", DoubleArgumentType.doubleArg())
-                                                .redirect(
-                                                   execute,
-                                                   c -> storeData(
-                                                         (CommandSourceStack)c.getSource(),
-                                                         provider.access(c),
-                                                         NbtPathArgument.getPath(c, "path"),
-                                                         v -> IntTag.valueOf((int)((double)v * DoubleArgumentType.getDouble(c, "scale"))),
-                                                         storeResult
-                                                      )
-                                                )
-                                          )
-                                    ))
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument(
+                                    "path", NbtPathArgument.nbtPath()
+                                 )
                                  .then(
-                                    Commands.literal("float")
+                                    Commands.literal("int")
                                        .then(
                                           Commands.argument("scale", DoubleArgumentType.doubleArg())
                                              .redirect(
                                                 execute,
                                                 c -> storeData(
-                                                      (CommandSourceStack)c.getSource(),
-                                                      provider.access(c),
-                                                      NbtPathArgument.getPath(c, "path"),
-                                                      v -> FloatTag.valueOf((float)((double)v * DoubleArgumentType.getDouble(c, "scale"))),
-                                                      storeResult
-                                                   )
+                                                   (CommandSourceStack)c.getSource(),
+                                                   provider.access(c),
+                                                   NbtPathArgument.getPath(c, "path"),
+                                                   v -> IntTag.valueOf((int)(v * DoubleArgumentType.getDouble(c, "scale"))),
+                                                   storeResult
+                                                )
                                              )
                                        )
                                  ))
                               .then(
-                                 Commands.literal("short")
+                                 Commands.literal("float")
                                     .then(
                                        Commands.argument("scale", DoubleArgumentType.doubleArg())
                                           .redirect(
                                              execute,
                                              c -> storeData(
-                                                   (CommandSourceStack)c.getSource(),
-                                                   provider.access(c),
-                                                   NbtPathArgument.getPath(c, "path"),
-                                                   v -> ShortTag.valueOf((short)((int)((double)v * DoubleArgumentType.getDouble(c, "scale")))),
-                                                   storeResult
-                                                )
+                                                (CommandSourceStack)c.getSource(),
+                                                provider.access(c),
+                                                NbtPathArgument.getPath(c, "path"),
+                                                v -> FloatTag.valueOf((float)(v * DoubleArgumentType.getDouble(c, "scale"))),
+                                                storeResult
+                                             )
                                           )
                                     )
                               ))
                            .then(
-                              Commands.literal("long")
+                              Commands.literal("short")
                                  .then(
                                     Commands.argument("scale", DoubleArgumentType.doubleArg())
                                        .redirect(
                                           execute,
                                           c -> storeData(
-                                                (CommandSourceStack)c.getSource(),
-                                                provider.access(c),
-                                                NbtPathArgument.getPath(c, "path"),
-                                                v -> LongTag.valueOf((long)((double)v * DoubleArgumentType.getDouble(c, "scale"))),
-                                                storeResult
-                                             )
+                                             (CommandSourceStack)c.getSource(),
+                                             provider.access(c),
+                                             NbtPathArgument.getPath(c, "path"),
+                                             v -> ShortTag.valueOf((short)(v * DoubleArgumentType.getDouble(c, "scale"))),
+                                             storeResult
+                                          )
                                        )
                                  )
                            ))
                         .then(
-                           Commands.literal("double")
+                           Commands.literal("long")
                               .then(
                                  Commands.argument("scale", DoubleArgumentType.doubleArg())
                                     .redirect(
                                        execute,
                                        c -> storeData(
-                                             (CommandSourceStack)c.getSource(),
-                                             provider.access(c),
-                                             NbtPathArgument.getPath(c, "path"),
-                                             v -> DoubleTag.valueOf((double)v * DoubleArgumentType.getDouble(c, "scale")),
-                                             storeResult
-                                          )
+                                          (CommandSourceStack)c.getSource(),
+                                          provider.access(c),
+                                          NbtPathArgument.getPath(c, "path"),
+                                          v -> LongTag.valueOf((long)(v * DoubleArgumentType.getDouble(c, "scale"))),
+                                          storeResult
+                                       )
                                     )
                               )
                         ))
                      .then(
-                        Commands.literal("byte")
+                        Commands.literal("double")
                            .then(
                               Commands.argument("scale", DoubleArgumentType.doubleArg())
                                  .redirect(
                                     execute,
                                     c -> storeData(
-                                          (CommandSourceStack)c.getSource(),
-                                          provider.access(c),
-                                          NbtPathArgument.getPath(c, "path"),
-                                          v -> ByteTag.valueOf((byte)((int)((double)v * DoubleArgumentType.getDouble(c, "scale")))),
-                                          storeResult
-                                       )
+                                       (CommandSourceStack)c.getSource(),
+                                       provider.access(c),
+                                       NbtPathArgument.getPath(c, "path"),
+                                       v -> DoubleTag.valueOf(v * DoubleArgumentType.getDouble(c, "scale")),
+                                       storeResult
+                                    )
                                  )
                            )
-                     )
-               )
+                     ))
+                  .then(
+                     Commands.literal("byte")
+                        .then(
+                           Commands.argument("scale", DoubleArgumentType.doubleArg())
+                              .redirect(
+                                 execute,
+                                 c -> storeData(
+                                    (CommandSourceStack)c.getSource(),
+                                    provider.access(c),
+                                    NbtPathArgument.getPath(c, "path"),
+                                    v -> ByteTag.valueOf((byte)(v * DoubleArgumentType.getDouble(c, "scale"))),
+                                    storeResult
+                                 )
+                              )
+                        )
+                  )
+            )
          );
       }
 
@@ -520,13 +520,11 @@ public class ExecuteCommand {
                                                    Commands.argument("block", BlockPredicateArgument.blockPredicate(context)),
                                                    expected,
                                                    c -> BlockPredicateArgument.getBlockPredicate(c, "block")
-                                                         .test(
-                                                            new BlockInWorld(
-                                                               ((CommandSourceStack)c.getSource()).getLevel(),
-                                                               BlockPosArgument.getLoadedBlockPos(c, "pos"),
-                                                               true
-                                                            )
+                                                      .test(
+                                                         new BlockInWorld(
+                                                            ((CommandSourceStack)c.getSource()).getLevel(), BlockPosArgument.getLoadedBlockPos(c, "pos"), true
                                                          )
+                                                      )
                                                 )
                                              )
                                        )
@@ -541,11 +539,9 @@ public class ExecuteCommand {
                                                    Commands.argument("biome", ResourceOrTagArgument.resourceOrTag(context, Registries.BIOME)),
                                                    expected,
                                                    c -> ResourceOrTagArgument.getResourceOrTag(c, "biome", Registries.BIOME)
-                                                         .test(
-                                                            ((CommandSourceStack)c.getSource())
-                                                               .getLevel()
-                                                               .getBiome(BlockPosArgument.getLoadedBlockPos(c, "pos"))
-                                                         )
+                                                      .test(
+                                                         ((CommandSourceStack)c.getSource()).getLevel().getBiome(BlockPosArgument.getLoadedBlockPos(c, "pos"))
+                                                      )
                                                 )
                                              )
                                        )
@@ -732,10 +728,10 @@ public class ExecuteCommand {
             provider.wrap(
                Commands.literal("data"),
                p -> p.then(
-                     ((RequiredArgumentBuilder)Commands.argument("path", NbtPathArgument.nbtPath())
-                           .fork(execute, c -> expect(c, expected, checkMatchingData(provider.access(c), NbtPathArgument.getPath(c, "path")) > 0)))
-                        .executes(createNumericConditionalHandler(expected, c -> checkMatchingData(provider.access(c), NbtPathArgument.getPath(c, "path"))))
-                  )
+                  ((RequiredArgumentBuilder)Commands.argument("path", NbtPathArgument.nbtPath())
+                        .fork(execute, c -> expect(c, expected, checkMatchingData(provider.access(c), NbtPathArgument.getPath(c, "path")) > 0)))
+                     .executes(createNumericConditionalHandler(expected, c -> checkMatchingData(provider.access(c), NbtPathArgument.getPath(c, "path"))))
+               )
             )
          );
       }
@@ -745,57 +741,57 @@ public class ExecuteCommand {
                provider.wrap(
                   Commands.literal("items"),
                   p -> p.then(
-                        Commands.argument("slots", SlotSourceArgument.slotSource(context))
-                           .then(
-                              ((RequiredArgumentBuilder)Commands.argument("item_predicate", ItemPredicateArgument.itemPredicate(context))
-                                    .fork(
-                                       execute,
-                                       c -> expect(
-                                             c,
-                                             expected,
-                                             countItems(
-                                                   (CommandSourceStack)c.getSource(),
-                                                   provider.access(c),
-                                                   SlotSourceArgument.getSlotSource(c, "slots"),
-                                                   ItemPredicateArgument.getItemPredicate(c, "item_predicate")
-                                                )
-                                                > 0
-                                          )
-                                    ))
-                                 .executes(
-                                    createNumericConditionalHandler(
+                     Commands.argument("slots", SlotSourceArgument.slotSource(context))
+                        .then(
+                           ((RequiredArgumentBuilder)Commands.argument("item_predicate", ItemPredicateArgument.itemPredicate(context))
+                                 .fork(
+                                    execute,
+                                    c -> expect(
+                                       c,
                                        expected,
-                                       c -> countItems(
+                                       countItems(
                                              (CommandSourceStack)c.getSource(),
                                              provider.access(c),
                                              SlotSourceArgument.getSlotSource(c, "slots"),
                                              ItemPredicateArgument.getItemPredicate(c, "item_predicate")
                                           )
+                                          > 0
+                                    )
+                                 ))
+                              .executes(
+                                 createNumericConditionalHandler(
+                                    expected,
+                                    c -> countItems(
+                                       (CommandSourceStack)c.getSource(),
+                                       provider.access(c),
+                                       SlotSourceArgument.getSlotSource(c, "slots"),
+                                       ItemPredicateArgument.getItemPredicate(c, "item_predicate")
                                     )
                                  )
-                           )
-                     )
+                              )
+                        )
+                  )
                )
             ))
             .then(
                provider.wrap(
                   Commands.literal("slots"),
                   p -> p.then(
-                        ((RequiredArgumentBuilder)Commands.argument("slots", SlotSourceArgument.slotSource(context))
-                              .fork(
-                                 execute,
-                                 c -> expect(
-                                       c,
-                                       expected,
-                                       countSlots((CommandSourceStack)c.getSource(), provider.access(c), SlotSourceArgument.getSlotSource(c, "slots")) > 0
-                                    )
-                              ))
-                           .executes(
-                              createNumericConditionalHandler(
-                                 expected, c -> countSlots((CommandSourceStack)c.getSource(), provider.access(c), SlotSourceArgument.getSlotSource(c, "slots"))
+                     ((RequiredArgumentBuilder)Commands.argument("slots", SlotSourceArgument.slotSource(context))
+                           .fork(
+                              execute,
+                              c -> expect(
+                                 c,
+                                 expected,
+                                 countSlots((CommandSourceStack)c.getSource(), provider.access(c), SlotSourceArgument.getSlotSource(c, "slots")) > 0
                               )
+                           ))
+                        .executes(
+                           createNumericConditionalHandler(
+                              expected, c -> countSlots((CommandSourceStack)c.getSource(), provider.access(c), SlotSourceArgument.getSlotSource(c, "slots"))
                            )
-                     )
+                        )
+                  )
                )
             );
       }
@@ -864,11 +860,11 @@ public class ExecuteCommand {
       Stopwatch stopwatch = stopwatches.get(id);
       if (stopwatch == null) {
          throw StopwatchCommand.ERROR_DOES_NOT_EXIST.create(id);
-      } else {
-         long currentTime = Stopwatches.currentTime();
-         double elapsedSeconds = stopwatch.elapsedSeconds(currentTime);
-         return range.matches(elapsedSeconds);
       }
+
+      long currentTime = Stopwatches.currentTime();
+      double elapsedSeconds = stopwatch.elapsedSeconds(currentTime);
+      return range.matches(elapsedSeconds);
    }
 
    private static boolean checkCustomPredicate(final CommandSourceStack source, final Holder<LootItemCondition> predicate) {
@@ -883,7 +879,7 @@ public class ExecuteCommand {
    }
 
    private static Collection<CommandSourceStack> expect(final CommandContext<CommandSourceStack> context, final boolean expected, final boolean result) {
-      return (Collection<CommandSourceStack>)(result == expected ? Collections.singleton((CommandSourceStack)context.getSource()) : Collections.emptyList());
+      return result == expected ? Collections.singleton((CommandSourceStack)context.getSource()) : Collections.emptyList();
    }
 
    private static ArgumentBuilder<CommandSourceStack, ?> addConditional(
@@ -924,10 +920,10 @@ public class ExecuteCommand {
       OptionalInt count = checkRegions(context, skipAir);
       if (count.isPresent()) {
          throw ERROR_CONDITIONAL_FAILED_COUNT.create(count.getAsInt());
-      } else {
-         ((CommandSourceStack)context.getSource()).sendSuccess(() -> Component.translatable("commands.execute.conditional.pass"), false);
-         return 1;
       }
+
+      ((CommandSourceStack)context.getSource()).sendSuccess(() -> Component.translatable("commands.execute.conditional.pass"), false);
+      return 1;
    }
 
    private static OptionalInt checkRegions(final CommandContext<CommandSourceStack> context, final boolean skipAir) throws CommandSyntaxException {
@@ -946,71 +942,69 @@ public class ExecuteCommand {
       BoundingBox from = BoundingBox.fromCorners(startPos, endPos);
       BoundingBox destination = BoundingBox.fromCorners(destPos, destPos.offset(from.getLength()));
       BlockPos offset = new BlockPos(destination.minX() - from.minX(), destination.minY() - from.minY(), destination.minZ() - from.minZ());
-      long area = (long)from.getXSpan() * (long)from.getYSpan() * (long)from.getZSpan();
+      long area = (long)from.getXSpan() * from.getYSpan() * from.getZSpan();
       if (area > 32768L) {
          throw ERROR_AREA_TOO_LARGE.create(32768, area);
-      } else {
-         int count = 0;
-         RegistryAccess registryAccess = level.registryAccess();
+      }
 
-         try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(LOGGER)) {
-            for (int z = from.minZ(); z <= from.maxZ(); z++) {
-               for (int y = from.minY(); y <= from.maxY(); y++) {
-                  for (int x = from.minX(); x <= from.maxX(); x++) {
-                     BlockPos sourcePos = new BlockPos(x, y, z);
-                     BlockPos destinationPos = sourcePos.offset(offset);
-                     BlockState sourceBlock = level.getBlockState(sourcePos);
-                     if (!skipAir || !sourceBlock.is(Blocks.AIR)) {
-                        if (sourceBlock != level.getBlockState(destinationPos)) {
+      int count = 0;
+      RegistryAccess registryAccess = level.registryAccess();
+
+      try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(LOGGER)) {
+         for (int z = from.minZ(); z <= from.maxZ(); z++) {
+            for (int y = from.minY(); y <= from.maxY(); y++) {
+               for (int x = from.minX(); x <= from.maxX(); x++) {
+                  BlockPos sourcePos = new BlockPos(x, y, z);
+                  BlockPos destinationPos = sourcePos.offset(offset);
+                  BlockState sourceBlock = level.getBlockState(sourcePos);
+                  if (!skipAir || !sourceBlock.is(Blocks.AIR)) {
+                     if (sourceBlock != level.getBlockState(destinationPos)) {
+                        return OptionalInt.empty();
+                     }
+
+                     BlockEntity sourceBlockEntity = level.getBlockEntity(sourcePos);
+                     BlockEntity destinationBlockEntity = level.getBlockEntity(destinationPos);
+                     if (sourceBlockEntity != null) {
+                        if (destinationBlockEntity == null) {
                            return OptionalInt.empty();
                         }
 
-                        BlockEntity sourceBlockEntity = level.getBlockEntity(sourcePos);
-                        BlockEntity destinationBlockEntity = level.getBlockEntity(destinationPos);
-                        if (sourceBlockEntity != null) {
-                           if (destinationBlockEntity == null) {
-                              return OptionalInt.empty();
-                           }
-
-                           if (destinationBlockEntity.getType() != sourceBlockEntity.getType()) {
-                              return OptionalInt.empty();
-                           }
-
-                           if (!sourceBlockEntity.components().equals(destinationBlockEntity.components())) {
-                              return OptionalInt.empty();
-                           }
-
-                           TagValueOutput sourceOutput = TagValueOutput.createWithContext(reporter.forChild(sourceBlockEntity.problemPath()), registryAccess);
-                           sourceBlockEntity.saveCustomOnly(sourceOutput);
-                           CompoundTag sourceTag = sourceOutput.buildResult();
-                           TagValueOutput destinationOutput = TagValueOutput.createWithContext(
-                              reporter.forChild(destinationBlockEntity.problemPath()), registryAccess
-                           );
-                           destinationBlockEntity.saveCustomOnly(destinationOutput);
-                           CompoundTag destinationTag = destinationOutput.buildResult();
-                           if (!sourceTag.equals(destinationTag)) {
-                              return OptionalInt.empty();
-                           }
+                        if (destinationBlockEntity.getType() != sourceBlockEntity.getType()) {
+                           return OptionalInt.empty();
                         }
 
-                        count++;
+                        if (!sourceBlockEntity.components().equals(destinationBlockEntity.components())) {
+                           return OptionalInt.empty();
+                        }
+
+                        TagValueOutput sourceOutput = TagValueOutput.createWithContext(reporter.forChild(sourceBlockEntity.problemPath()), registryAccess);
+                        sourceBlockEntity.saveCustomOnly(sourceOutput);
+                        CompoundTag sourceTag = sourceOutput.buildResult();
+                        TagValueOutput destinationOutput = TagValueOutput.createWithContext(
+                           reporter.forChild(destinationBlockEntity.problemPath()), registryAccess
+                        );
+                        destinationBlockEntity.saveCustomOnly(destinationOutput);
+                        CompoundTag destinationTag = destinationOutput.buildResult();
+                        if (!sourceTag.equals(destinationTag)) {
+                           return OptionalInt.empty();
+                        }
                      }
+
+                     count++;
                   }
                }
             }
          }
-
-         return OptionalInt.of(count);
       }
+
+      return OptionalInt.of(count);
    }
 
    private static RedirectModifier<CommandSourceStack> expandOneToOneEntityRelation(final Function<Entity, Optional<Entity>> unpacker) {
       return context -> {
          CommandSourceStack source = (CommandSourceStack)context.getSource();
          Entity entity = source.getEntity();
-         return (Collection)(entity == null
-            ? List.of()
-            : unpacker.apply(entity).filter(e -> !e.isRemoved()).map(e -> List.of(source.withEntity(e))).orElse(List.of()));
+         return entity == null ? List.of() : unpacker.apply(entity).filter(e -> !e.isRemoved()).map(e -> List.of(source.withEntity(e))).orElse(List.of());
       };
    }
 
@@ -1084,7 +1078,7 @@ public class ExecuteCommand {
       final Function<T, T> functionContextModifier,
       final IntPredicate check,
       final ContextChain<T> currentStep,
-      @Nullable final CompoundTag parameters,
+      final @Nullable CompoundTag parameters,
       final ExecutionControl<T> output,
       final InCommandFunction<CommandContext<T>, Collection<CommandFunction<T>>> functionGetter,
       final ChainModifiers modifiers
@@ -1094,8 +1088,8 @@ public class ExecuteCommand {
       Collection<CommandFunction<T>> functionsToRun;
       try {
          functionsToRun = functionGetter.apply(currentStep.getTopContext().copyFor(originalSource));
-      } catch (CommandSyntaxException var18) {
-         originalSource.handleError(var18, modifiers.isForked(), output.tracer());
+      } catch (CommandSyntaxException e) {
+         originalSource.handleError(e, modifiers.isForked(), output.tracer());
          return;
       }
 
@@ -1107,12 +1101,12 @@ public class ExecuteCommand {
             for (CommandFunction<T> function : functionsToRun) {
                try {
                   instantiatedFunctions.add(function.instantiate(parameters, originalSource.dispatcher()));
-               } catch (FunctionInstantiationException var17) {
-                  throw ERROR_FUNCTION_CONDITION_INSTANTATION_FAILURE.create(function.id(), var17.messageComponent());
+               } catch (FunctionInstantiationException e) {
+                  throw ERROR_FUNCTION_CONDITION_INSTANTATION_FAILURE.create(function.id(), e.messageComponent());
                }
             }
-         } catch (CommandSyntaxException var19) {
-            originalSource.handleError(var19, modifiers.isForked(), output.tracer());
+         } catch (CommandSyntaxException e) {
+            originalSource.handleError(e, modifiers.isForked(), output.tracer());
          }
 
          for (T source : currentSources) {

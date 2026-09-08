@@ -43,7 +43,7 @@ public class TurtleEggBlock extends Block {
 
    public TurtleEggBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(HATCH, Integer.valueOf(0)).setValue(EGGS, Integer.valueOf(1)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(HATCH, 0).setValue(EGGS, 1));
    }
 
    @Override
@@ -79,7 +79,7 @@ public class TurtleEggBlock extends Block {
       if (numberOfEggs <= 1) {
          level.destroyBlock(pos, false);
       } else {
-         level.setBlock(pos, state.setValue(EGGS, Integer.valueOf(numberOfEggs - 1)), 2);
+         level.setBlock(pos, state.setValue(EGGS, numberOfEggs - 1), 2);
          level.gameEvent(GameEvent.BLOCK_DESTROY, pos, GameEvent.Context.of(state));
          level.levelEvent(2001, pos, Block.getId(state));
       }
@@ -91,7 +91,7 @@ public class TurtleEggBlock extends Block {
          int hatch = state.getValue(HATCH);
          if (hatch < 2) {
             level.playSound(null, pos, SoundEvents.TURTLE_EGG_CRACK, SoundSource.BLOCKS, 0.7F, 0.9F + random.nextFloat() * 0.2F);
-            level.setBlock(pos, state.setValue(HATCH, Integer.valueOf(hatch + 1)), 2);
+            level.setBlock(pos, state.setValue(HATCH, hatch + 1), 2);
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(state));
          } else {
             level.playSound(null, pos, SoundEvents.TURTLE_EGG_HATCH, SoundSource.BLOCKS, 0.7F, 0.9F + random.nextFloat() * 0.2F);
@@ -104,7 +104,7 @@ public class TurtleEggBlock extends Block {
                if (turtle != null) {
                   turtle.setAge(-24000);
                   turtle.setHomePos(pos);
-                  turtle.snapTo((double)pos.getX() + 0.3 + (double)i * 0.2, (double)pos.getY(), (double)pos.getZ() + 0.3, 0.0F, 0.0F);
+                  turtle.snapTo(pos.getX() + 0.3 + i * 0.2, pos.getY(), pos.getZ() + 0.3, 0.0F, 0.0F);
                   level.addFreshEntity(turtle);
                }
             }
@@ -138,7 +138,7 @@ public class TurtleEggBlock extends Block {
       final ServerPlayer player,
       final BlockPos pos,
       final BlockState state,
-      @Nullable final BlockEntity blockEntity,
+      final @Nullable BlockEntity blockEntity,
       final ItemStack destroyedWith
    ) {
       super.playerDestroy(level, player, pos, state, blockEntity, destroyedWith);
@@ -152,11 +152,10 @@ public class TurtleEggBlock extends Block {
          : super.canBeReplaced(state, context);
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockState state = context.getLevel().getBlockState(context.getClickedPos());
-      return state.is(this) ? state.setValue(EGGS, Integer.valueOf(Math.min(4, state.getValue(EGGS) + 1))) : super.getStateForPlacement(context);
+      return state.is(this) ? state.setValue(EGGS, Math.min(4, state.getValue(EGGS) + 1)) : super.getStateForPlacement(context);
    }
 
    @Override

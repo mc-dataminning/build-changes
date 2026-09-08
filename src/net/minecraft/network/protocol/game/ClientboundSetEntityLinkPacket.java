@@ -14,7 +14,7 @@ public class ClientboundSetEntityLinkPacket implements Packet<ClientGamePacketLi
    private final int sourceId;
    private final int destId;
 
-   public ClientboundSetEntityLinkPacket(final Entity sourceEntity, @Nullable final Entity destEntity) {
+   public ClientboundSetEntityLinkPacket(final Entity sourceEntity, final @Nullable Entity destEntity) {
       this.sourceId = sourceEntity.getId();
       this.destId = destEntity != null ? destEntity.getId() : 0;
    }

@@ -1,7 +1,6 @@
 package net.minecraft.world.inventory;
 
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.recipebook.ServerPlaceRecipe;
 import net.minecraft.resources.ResourceKey;
@@ -145,7 +144,7 @@ public abstract class AbstractFurnaceMenu extends RecipeBookMenu {
    public float getBurnProgress() {
       int current = this.data.get(2);
       int total = this.data.get(3);
-      return total != 0 && current != 0 ? Mth.clamp((float)current / (float)total, 0.0F, 1.0F) : 0.0F;
+      return total != 0 && current != 0 ? Mth.clamp((float)current / total, 0.0F, 1.0F) : 0.0F;
    }
 
    public float getLitProgress() {
@@ -154,7 +153,7 @@ public abstract class AbstractFurnaceMenu extends RecipeBookMenu {
          litDuration = 200;
       }
 
-      return Mth.clamp((float)this.data.get(0) / (float)litDuration, 0.0F, 1.0F);
+      return Mth.clamp((float)this.data.get(0) / litDuration, 0.0F, 1.0F);
    }
 
    public boolean isLit() {
@@ -171,11 +170,8 @@ public abstract class AbstractFurnaceMenu extends RecipeBookMenu {
       final boolean useMaxItems, final boolean allowDroppingItemsToClear, final RecipeHolder<?> recipe, final ServerLevel level, final Inventory inventory
    ) {
       final List<Slot> slotsToClear = List.of(this.getSlot(0), this.getSlot(2));
+      RecipeHolder<AbstractCookingRecipe> typedRecipe = (RecipeHolder<AbstractCookingRecipe>)recipe;
       return ServerPlaceRecipe.placeRecipe(new ServerPlaceRecipe.CraftingMenuAccess<AbstractCookingRecipe>() {
-         {
-            Objects.requireNonNull(AbstractFurnaceMenu.this);
-         }
-
          @Override
          public void fillCraftSlotsStackedContents(final StackedItemContents stackedContents) {
             AbstractFurnaceMenu.this.fillCraftSlotsStackedContents(stackedContents);
@@ -190,6 +186,6 @@ public abstract class AbstractFurnaceMenu extends RecipeBookMenu {
          public boolean recipeMatches(final RecipeHolder<AbstractCookingRecipe> recipe) {
             return recipe.value().matches(new SingleRecipeInput(AbstractFurnaceMenu.this.container.getItem(0)), level);
          }
-      }, 1, 1, List.of(this.getSlot(0)), slotsToClear, inventory, (RecipeHolder<AbstractCookingRecipe>)recipe, useMaxItems, allowDroppingItemsToClear);
+      }, 1, 1, List.of(this.getSlot(0)), slotsToClear, inventory, typedRecipe, useMaxItems, allowDroppingItemsToClear);
    }
 }

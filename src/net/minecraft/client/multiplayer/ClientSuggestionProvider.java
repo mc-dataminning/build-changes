@@ -35,8 +35,7 @@ public class ClientSuggestionProvider implements SharedSuggestionProvider {
    private final ClientPacketListener connection;
    private final Minecraft minecraft;
    private int pendingSuggestionsId = -1;
-   @Nullable
-   private CompletableFuture<Suggestions> pendingSuggestionsFuture;
+   private @Nullable CompletableFuture<Suggestions> pendingSuggestionsFuture;
    private final Set<String> customCompletionSuggestions = new HashSet<>();
    private final PermissionSet permissions;
 
@@ -61,18 +60,18 @@ public class ClientSuggestionProvider implements SharedSuggestionProvider {
    public Collection<String> getCustomTabSuggestions() {
       if (this.customCompletionSuggestions.isEmpty()) {
          return this.getOnlinePlayerNames();
-      } else {
-         Set<String> result = new HashSet<>(this.getOnlinePlayerNames());
-         result.addAll(this.customCompletionSuggestions);
-         return result;
       }
+
+      Set<String> result = new HashSet<>(this.getOnlinePlayerNames());
+      result.addAll(this.customCompletionSuggestions);
+      return result;
    }
 
    @Override
    public Collection<String> getSelectedEntities() {
-      return (Collection<String>)(this.minecraft.hitResult != null && this.minecraft.hitResult.getType() == HitResult.Type.ENTITY
+      return this.minecraft.hitResult != null && this.minecraft.hitResult.getType() == HitResult.Type.ENTITY
          ? Collections.singleton(((EntityHitResult)this.minecraft.hitResult).getEntity().getStringUUID())
-         : Collections.emptyList());
+         : Collections.emptyList();
    }
 
    @Override

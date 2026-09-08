@@ -73,7 +73,7 @@ public class GsonHelper {
       return !isValidNode(node, name) ? false : node.get(name).isJsonPrimitive();
    }
 
-   public static boolean isValidNode(@Nullable final JsonObject node, final String name) {
+   public static boolean isValidNode(final @Nullable JsonObject node, final String name) {
       return node == null ? false : node.get(name) != null;
    }
 
@@ -103,8 +103,7 @@ public class GsonHelper {
    }
 
    @Contract("_,_,!null->!null;_,_,null->_")
-   @Nullable
-   public static String getAsString(final JsonObject object, final String name, @Nullable final String def) {
+   public static @Nullable String getAsString(final JsonObject object, final String name, final @Nullable String def) {
       return object.has(name) ? convertToString(object.get(name), name) : def;
    }
 
@@ -128,8 +127,7 @@ public class GsonHelper {
    }
 
    @Contract("_,_,!null->!null;_,_,null->_")
-   @Nullable
-   public static Holder<Item> getAsItem(final JsonObject object, final String name, @Nullable final Holder<Item> def) {
+   public static @Nullable Holder<Item> getAsItem(final JsonObject object, final String name, final @Nullable Holder<Item> def) {
       return object.has(name) ? convertToItem(object.get(name), name) : def;
    }
 
@@ -350,8 +348,7 @@ public class GsonHelper {
    }
 
    @Contract("_,_,!null->!null;_,_,null->_")
-   @Nullable
-   public static JsonObject getAsJsonObject(final JsonObject object, final String name, @Nullable final JsonObject def) {
+   public static @Nullable JsonObject getAsJsonObject(final JsonObject object, final String name, final @Nullable JsonObject def) {
       return object.has(name) ? convertToJsonObject(object.get(name), name) : def;
    }
 
@@ -372,13 +369,12 @@ public class GsonHelper {
    }
 
    @Contract("_,_,!null->!null;_,_,null->_")
-   @Nullable
-   public static JsonArray getAsJsonArray(final JsonObject object, final String name, @Nullable final JsonArray def) {
+   public static @Nullable JsonArray getAsJsonArray(final JsonObject object, final String name, final @Nullable JsonArray def) {
       return object.has(name) ? convertToJsonArray(object.get(name), name) : def;
    }
 
    public static <T> T convertToObject(
-      @Nullable final JsonElement element, final String name, final JsonDeserializationContext context, final Class<? extends T> clazz
+      final @Nullable JsonElement element, final String name, final JsonDeserializationContext context, final Class<? extends T> clazz
    ) {
       if (element != null) {
          return (T)context.deserialize(element, clazz);
@@ -396,37 +392,42 @@ public class GsonHelper {
    }
 
    @Contract("_,_,!null,_,_->!null;_,_,null,_,_->_")
-   @Nullable
-   public static <T> T getAsObject(
-      final JsonObject object, final String name, @Nullable final T def, final JsonDeserializationContext context, final Class<? extends T> clazz
+   public static <T> @Nullable T getAsObject(
+      final JsonObject object, final String name, final @Nullable T def, final JsonDeserializationContext context, final Class<? extends T> clazz
    ) {
       return object.has(name) ? convertToObject(object.get(name), name, context, clazz) : def;
    }
 
-   public static String getType(@Nullable final JsonElement element) {
+   public static String getType(final @Nullable JsonElement element) {
       String value = StringUtils.abbreviateMiddle(String.valueOf(element), "...", 10);
       if (element == null) {
          return "null (missing)";
-      } else if (element.isJsonNull()) {
-         return "null (json)";
-      } else if (element.isJsonArray()) {
-         return "an array (" + value + ")";
-      } else if (element.isJsonObject()) {
-         return "an object (" + value + ")";
-      } else {
-         if (element.isJsonPrimitive()) {
-            JsonPrimitive primitive = element.getAsJsonPrimitive();
-            if (primitive.isNumber()) {
-               return "a number (" + value + ")";
-            }
+      }
 
-            if (primitive.isBoolean()) {
-               return "a boolean (" + value + ")";
-            }
+      if (element.isJsonNull()) {
+         return "null (json)";
+      }
+
+      if (element.isJsonArray()) {
+         return "an array (" + value + ")";
+      }
+
+      if (element.isJsonObject()) {
+         return "an object (" + value + ")";
+      }
+
+      if (element.isJsonPrimitive()) {
+         JsonPrimitive primitive = element.getAsJsonPrimitive();
+         if (primitive.isNumber()) {
+            return "a number (" + value + ")";
          }
 
-         return value;
+         if (primitive.isBoolean()) {
+            return "a boolean (" + value + ")";
+         }
       }
+
+      return value;
    }
 
    public static <T> T fromJson(final Gson gson, final Reader reader, final Class<T> type) {
@@ -439,19 +440,18 @@ public class GsonHelper {
          } else {
             return result;
          }
-      } catch (IOException var5) {
-         throw new JsonParseException(var5);
+      } catch (IOException e) {
+         throw new JsonParseException(e);
       }
    }
 
-   @Nullable
-   public static <T> T fromNullableJson(final Gson gson, final Reader reader, final TypeToken<T> type) {
+   public static <T> @Nullable T fromNullableJson(final Gson gson, final Reader reader, final TypeToken<T> type) {
       try {
          JsonReader jsonReader = new JsonReader(reader);
          jsonReader.setStrictness(Strictness.STRICT);
          return (T)gson.getAdapter(type).read(jsonReader);
-      } catch (IOException var4) {
-         throw new JsonParseException(var4);
+      } catch (IOException e) {
+         throw new JsonParseException(e);
       }
    }
 
@@ -464,8 +464,7 @@ public class GsonHelper {
       }
    }
 
-   @Nullable
-   public static <T> T fromNullableJson(final Gson gson, final String string, final TypeToken<T> type) {
+   public static <T> @Nullable T fromNullableJson(final Gson gson, final String string, final TypeToken<T> type) {
       return fromNullableJson(gson, new StringReader(string), type);
    }
 
@@ -495,14 +494,14 @@ public class GsonHelper {
 
       try {
          writeValue(jsonWriter, jsonElement, Comparator.naturalOrder());
-      } catch (IOException var4) {
-         throw new AssertionError(var4);
+      } catch (IOException e) {
+         throw new AssertionError(e);
       }
 
       return stringWriter.toString();
    }
 
-   public static void writeValue(final JsonWriter out, @Nullable final JsonElement value, @Nullable final Comparator<String> keyComparator) throws IOException {
+   public static void writeValue(final JsonWriter out, final @Nullable JsonElement value, final @Nullable Comparator<String> keyComparator) throws IOException {
       if (value == null || value.isJsonNull()) {
          out.nullValue();
       } else if (value.isJsonPrimitive()) {
@@ -539,25 +538,25 @@ public class GsonHelper {
    }
 
    private static Collection<Entry<String, JsonElement>> sortByKeyIfNeeded(
-      final Collection<Entry<String, JsonElement>> elements, @Nullable final Comparator<String> keyComparator
+      final Collection<Entry<String, JsonElement>> elements, final @Nullable Comparator<String> keyComparator
    ) {
       if (keyComparator == null) {
          return elements;
-      } else {
-         List<Entry<String, JsonElement>> sorted = new ArrayList<>(elements);
-         sorted.sort(Entry.comparingByKey(keyComparator));
-         return sorted;
       }
+
+      List<Entry<String, JsonElement>> sorted = new ArrayList<>(elements);
+      sorted.sort(Entry.comparingByKey(keyComparator));
+      return sorted;
    }
 
    public static boolean encodesLongerThan(final JsonElement element, final int limit) {
       try {
          Streams.write(element, new JsonWriter(Streams.writerForAppendable(new GsonHelper.CountedAppendable(limit))));
          return false;
-      } catch (IllegalStateException var3) {
+      } catch (IllegalStateException e) {
          return true;
-      } catch (IOException var4) {
-         throw new UncheckedIOException(var4);
+      } catch (IOException e) {
+         throw new UncheckedIOException(e);
       }
    }
 

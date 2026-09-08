@@ -18,10 +18,10 @@ import org.jspecify.annotations.Nullable;
 public record RuleBasedStateProvider(@Nullable Holder<BlockStateProvider> fallback, List<RuleBasedStateProvider.Rule> rules) implements BlockStateProvider {
    public static final MapCodec<RuleBasedStateProvider> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BlockStateProvider.CODEC.optionalFieldOf("fallback").forGetter(provider -> Optional.ofNullable(provider.fallback)),
-               RuleBasedStateProvider.Rule.CODEC.listOf().fieldOf("rules").forGetter(p -> p.rules)
-            )
-            .apply(i, RuleBasedStateProvider::new)
+            BlockStateProvider.CODEC.optionalFieldOf("fallback").forGetter(provider -> Optional.ofNullable(provider.fallback)),
+            RuleBasedStateProvider.Rule.CODEC.listOf().fieldOf("rules").forGetter(p -> p.rules)
+         )
+         .apply(i, RuleBasedStateProvider::new)
    );
 
    private RuleBasedStateProvider(final Optional<Holder<BlockStateProvider>> fallback, final List<RuleBasedStateProvider.Rule> rules) {
@@ -47,9 +47,8 @@ public record RuleBasedStateProvider(@Nullable Holder<BlockStateProvider> fallba
       return result != null ? result : level.getBlockState(pos);
    }
 
-   @Nullable
    @Override
-   public BlockState getOptionalState(final LevelAccessor level, final RandomSource random, final BlockPos pos) {
+   public @Nullable BlockState getOptionalState(final LevelAccessor level, final RandomSource random, final BlockPos pos) {
       for (RuleBasedStateProvider.Rule rule : this.rules) {
          if (rule.ifTrue().test(level, pos)) {
             BlockState optionalState = rule.then().value().getOptionalState(level, random, pos);
@@ -66,16 +65,15 @@ public record RuleBasedStateProvider(@Nullable Holder<BlockStateProvider> fallba
       return new RuleBasedStateProvider.Builder(null);
    }
 
-   public static RuleBasedStateProvider.Builder builder(@Nullable final BlockStateProvider fallback) {
+   public static RuleBasedStateProvider.Builder builder(final @Nullable BlockStateProvider fallback) {
       return new RuleBasedStateProvider.Builder(fallback);
    }
 
    public static class Builder {
-      @Nullable
-      private final BlockStateProvider fallback;
+      private final @Nullable BlockStateProvider fallback;
       private final List<RuleBasedStateProvider.Rule> rules = new ArrayList<>();
 
-      public Builder(@Nullable final BlockStateProvider fallback) {
+      public Builder(final @Nullable BlockStateProvider fallback) {
          this.fallback = fallback;
       }
 
@@ -99,13 +97,13 @@ public record RuleBasedStateProvider(@Nullable Holder<BlockStateProvider> fallba
       }
    }
 
-   public static record Rule(BlockPredicate ifTrue, Holder<BlockStateProvider> then) {
+   public record Rule(BlockPredicate ifTrue, Holder<BlockStateProvider> then) {
       public static final Codec<RuleBasedStateProvider.Rule> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  BlockPredicate.CODEC.fieldOf("if_true").forGetter(RuleBasedStateProvider.Rule::ifTrue),
-                  BlockStateProvider.CODEC.fieldOf("then").forGetter(RuleBasedStateProvider.Rule::then)
-               )
-               .apply(i, RuleBasedStateProvider.Rule::new)
+               BlockPredicate.CODEC.fieldOf("if_true").forGetter(RuleBasedStateProvider.Rule::ifTrue),
+               BlockStateProvider.CODEC.fieldOf("then").forGetter(RuleBasedStateProvider.Rule::then)
+            )
+            .apply(i, RuleBasedStateProvider.Rule::new)
       );
    }
 }

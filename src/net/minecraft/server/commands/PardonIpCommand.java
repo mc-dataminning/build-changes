@@ -32,15 +32,15 @@ public class PardonIpCommand {
    private static int unban(final CommandSourceStack source, final String ip) throws CommandSyntaxException {
       if (!InetAddresses.isInetAddress(ip)) {
          throw ERROR_INVALID.create();
-      } else {
-         IpBanList bans = source.getServer().getPlayerList().getIpBans();
-         if (!bans.isBanned(ip)) {
-            throw ERROR_NOT_BANNED.create();
-         } else {
-            bans.remove(ip);
-            source.sendSuccess(() -> Component.translatable("commands.pardonip.success", ip), true);
-            return 1;
-         }
       }
+
+      IpBanList bans = source.getServer().getPlayerList().getIpBans();
+      if (!bans.isBanned(ip)) {
+         throw ERROR_NOT_BANNED.create();
+      }
+
+      bans.remove(ip);
+      source.sendSuccess(() -> Component.translatable("commands.pardonip.success", ip), true);
+      return 1;
    }
 }

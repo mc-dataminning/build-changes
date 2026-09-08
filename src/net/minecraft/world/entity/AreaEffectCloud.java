@@ -45,8 +45,7 @@ public class AreaEffectCloud extends Entity implements TraceableEntity {
    private static final int DEFAULT_WAIT_TIME = 20;
    private static final int DEFAULT_REAPPLICATION_DELAY = 20;
    private static final ColorParticleOption DEFAULT_PARTICLE = ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, -1);
-   @Nullable
-   private ParticleOptions customParticle;
+   private @Nullable ParticleOptions customParticle;
    private PotionContents potionContents = PotionContents.EMPTY;
    private float potionDurationScale = 1.0F;
    private final Map<Entity, Integer> victims = Maps.newHashMap();
@@ -56,8 +55,7 @@ public class AreaEffectCloud extends Entity implements TraceableEntity {
    private int durationOnUse = 0;
    private float radiusOnUse = 0.0F;
    private float radiusPerTick = 0.0F;
-   @Nullable
-   private EntityReference<LivingEntity> owner;
+   private @Nullable EntityReference<LivingEntity> owner;
 
    public AreaEffectCloud(final EntityType<? extends AreaEffectCloud> type, final Level level) {
       super(type, level);
@@ -100,7 +98,7 @@ public class AreaEffectCloud extends Entity implements TraceableEntity {
       this.updateParticle();
    }
 
-   public void setCustomParticle(@Nullable final ParticleOptions customParticle) {
+   public void setCustomParticle(final @Nullable ParticleOptions customParticle) {
       this.customParticle = customParticle;
       this.updateParticle();
    }
@@ -170,9 +168,9 @@ public class AreaEffectCloud extends Entity implements TraceableEntity {
          for (int i = 0; i < particleCount; i++) {
             float angle = this.random.nextFloat() * (float) (Math.PI * 2);
             float distance = Mth.sqrt(this.random.nextFloat()) * particleRadius;
-            double x = this.getX() + (double)(Mth.cos((double)angle) * distance);
+            double x = this.getX() + Mth.cos(angle) * distance;
             double y = this.getY();
-            double z = this.getZ() + (double)(Mth.sin((double)angle) * distance);
+            double z = this.getZ() + Mth.sin(angle) * distance;
             if (particle.getType() == ParticleTypes.ENTITY_EFFECT) {
                if (isWaiting && this.random.nextBoolean()) {
                   this.level().addAlwaysVisibleParticle(DEFAULT_PARTICLE, x, y, z, 0.0, 0.0, 0.0);
@@ -225,7 +223,7 @@ public class AreaEffectCloud extends Entity implements TraceableEntity {
                            double xd = entity.getX() - this.getX();
                            double zd = entity.getZ() - this.getZ();
                            double dist = xd * xd + zd * zd;
-                           if (dist <= (double)(radius * radius)) {
+                           if (dist <= radius * radius) {
                               this.victims.put(entity, this.tickCount + this.reapplicationDelay);
 
                               for (MobEffectInstance effect : allEffects) {
@@ -295,12 +293,11 @@ public class AreaEffectCloud extends Entity implements TraceableEntity {
       this.waitTime = waitTime;
    }
 
-   public void setOwner(@Nullable final LivingEntity owner) {
+   public void setOwner(final @Nullable LivingEntity owner) {
       this.owner = EntityReference.of(owner);
    }
 
-   @Nullable
-   public LivingEntity getOwner() {
+   public @Nullable LivingEntity getOwner() {
       return EntityReference.getLivingEntity(this.owner, this.level());
    }
 
@@ -365,15 +362,12 @@ public class AreaEffectCloud extends Entity implements TraceableEntity {
       return false;
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       if (type == DataComponents.POTION_CONTENTS) {
          return castComponentValue((DataComponentType<T>)type, this.potionContents);
       } else {
-         return type == DataComponents.POTION_DURATION_SCALE
-            ? castComponentValue((DataComponentType<T>)type, Float.valueOf(this.potionDurationScale))
-            : super.get(type);
+         return type == DataComponents.POTION_DURATION_SCALE ? castComponentValue((DataComponentType<T>)type, this.potionDurationScale) : super.get(type);
       }
    }
 

@@ -13,13 +13,11 @@ import net.minecraft.core.registries.codec.RegistryCodecs;
 public class LootItemFunctions {
    public static final Codec<LootItemFunction> TYPED_CODEC = BuiltInRegistries.LOOT_FUNCTION_TYPE.byNameCodec().dispatch(LootItemFunction::codec, c -> c);
    public static final Codec<LootItemFunction> DIRECT_CODEC = Codec.lazyInitialized(
-      () -> Codec.either(TYPED_CODEC, SequenceFunction.INLINE_CODEC).xmap(typedOrList -> (LootItemFunction)typedOrList.map(f -> f, f -> f), function -> {
-            if (function instanceof SequenceFunction sequence && sequence.canUseInlineCodec()) {
-               return Either.right(sequence);
-            }
-
-            return Either.left(function);
-         })
+      () -> Codec.either(TYPED_CODEC, SequenceFunction.INLINE_CODEC)
+         .xmap(
+            typedOrList -> (LootItemFunction)typedOrList.map(f -> f, f -> f),
+            function -> function instanceof SequenceFunction sequence && sequence.canUseInlineCodec() ? Either.right(sequence) : Either.left(function)
+         )
    );
    public static final Codec<Holder<LootItemFunction>> CODEC = RegistryCodecs.holder(Registries.ITEM_MODIFIER, DIRECT_CODEC);
    public static final Codec<HolderSet<LootItemFunction>> LIST_CODEC = RegistryCodecs.holderSet(Registries.ITEM_MODIFIER, TYPED_CODEC);

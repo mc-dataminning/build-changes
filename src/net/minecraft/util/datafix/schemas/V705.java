@@ -237,8 +237,8 @@ public class V705 extends NamespacedSchema {
          map,
          "minecraft:villager",
          name -> DSL.optionalFields(
-               "Inventory", DSL.list(References.ITEM_STACK.in(schema)), "Offers", DSL.optionalFields("Recipes", DSL.list(References.VILLAGER_TRADE.in(schema)))
-            )
+            "Inventory", DSL.list(References.ITEM_STACK.in(schema)), "Offers", DSL.optionalFields("Recipes", DSL.list(References.VILLAGER_TRADE.in(schema)))
+         )
       );
       registerMob(schema, map, "minecraft:villager_golem");
       registerMob(schema, map, "minecraft:witch");
@@ -261,13 +261,8 @@ public class V705 extends NamespacedSchema {
          map,
          "minecraft:llama",
          name -> DSL.optionalFields(
-               "Items",
-               DSL.list(References.ITEM_STACK.in(schema)),
-               "SaddleItem",
-               References.ITEM_STACK.in(schema),
-               "DecorItem",
-               References.ITEM_STACK.in(schema)
-            )
+            "Items", DSL.list(References.ITEM_STACK.in(schema)), "SaddleItem", References.ITEM_STACK.in(schema), "DecorItem", References.ITEM_STACK.in(schema)
+         )
       );
       schema.registerSimple(map, "minecraft:llama_spit");
       registerMob(schema, map, "minecraft:vex");
@@ -283,9 +278,9 @@ public class V705 extends NamespacedSchema {
          true,
          References.ENTITY,
          () -> DSL.and(
-               References.ENTITY_EQUIPMENT.in(schema),
-               DSL.optionalFields("CustomName", DSL.constType(DSL.string()), DSL.taggedChoiceLazy("id", namespacedString(), entityTypes))
-            )
+            References.ENTITY_EQUIPMENT.in(schema),
+            DSL.optionalFields("CustomName", DSL.constType(DSL.string()), DSL.taggedChoiceLazy("id", namespacedString(), entityTypes))
+         )
       );
       schema.registerType(
          true,

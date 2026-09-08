@@ -74,14 +74,14 @@ public abstract class AbstractCookingRecipe extends SingleItemRecipe {
    public static <T extends AbstractCookingRecipe> MapCodec<T> cookingMapCodec(final AbstractCookingRecipe.Factory<T> factory) {
       return RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
-                  AbstractCookingRecipe.CookingBookInfo.MAP_CODEC.forGetter(o -> o.bookInfo),
-                  Ingredient.CODEC.fieldOf("ingredient").forGetter(SingleItemRecipe::input),
-                  ItemStackTemplate.CODEC.fieldOf("result").forGetter(SingleItemRecipe::result),
-                  Codec.FLOAT.optionalFieldOf("experience", 0.0F).forGetter(AbstractCookingRecipe::experience),
-                  Codec.INT.fieldOf("cookingtime").forGetter(AbstractCookingRecipe::cookingTime)
-               )
-               .apply(i, factory::create)
+               Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
+               AbstractCookingRecipe.CookingBookInfo.MAP_CODEC.forGetter(o -> o.bookInfo),
+               Ingredient.CODEC.fieldOf("ingredient").forGetter(SingleItemRecipe::input),
+               ItemStackTemplate.CODEC.fieldOf("result").forGetter(SingleItemRecipe::result),
+               Codec.FLOAT.optionalFieldOf("experience", 0.0F).forGetter(AbstractCookingRecipe::experience),
+               Codec.INT.fieldOf("cookingtime").forGetter(AbstractCookingRecipe::cookingTime)
+            )
+            .apply(i, factory::create)
       );
    }
 
@@ -103,7 +103,7 @@ public abstract class AbstractCookingRecipe extends SingleItemRecipe {
       );
    }
 
-   public static record CookingBookInfo(CookingBookCategory category, String group) implements Recipe.BookInfo<CookingBookCategory> {
+   public record CookingBookInfo(CookingBookCategory category, String group) implements Recipe.BookInfo<CookingBookCategory> {
       public static final MapCodec<AbstractCookingRecipe.CookingBookInfo> MAP_CODEC = Recipe.BookInfo.mapCodec(
          CookingBookCategory.CODEC, CookingBookCategory.MISC, AbstractCookingRecipe.CookingBookInfo::new
       );

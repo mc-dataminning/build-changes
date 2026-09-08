@@ -18,14 +18,13 @@ public abstract class PackDetector<T> {
       this.validator = validator;
    }
 
-   @Nullable
-   public T detectPackResources(final Path content, final List<ForbiddenSymlinkInfo> issues) throws IOException {
+   public @Nullable T detectPackResources(final Path content, final List<ForbiddenSymlinkInfo> issues) throws IOException {
       Path targetContext = content;
 
       BasicFileAttributes attributes;
       try {
          attributes = Files.readAttributes(content, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      } catch (NoSuchFileException var6) {
+      } catch (NoSuchFileException e) {
          return null;
       }
 
@@ -51,9 +50,7 @@ public abstract class PackDetector<T> {
       }
    }
 
-   @Nullable
-   protected abstract T createZipPack(final Path content) throws IOException;
+   protected abstract @Nullable T createZipPack(final Path content) throws IOException;
 
-   @Nullable
-   protected abstract T createDirectoryPack(final Path content) throws IOException;
+   protected abstract @Nullable T createDirectoryPack(final Path content) throws IOException;
 }

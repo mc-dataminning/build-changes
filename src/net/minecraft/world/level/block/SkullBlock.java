@@ -26,7 +26,7 @@ public class SkullBlock extends AbstractSkullBlock {
 
    protected SkullBlock(final SkullBlock.Type type, final BlockBehaviour.Properties properties) {
       super(type, properties);
-      this.registerDefaultState(this.defaultBlockState().setValue(ROTATION, Integer.valueOf(0)));
+      this.registerDefaultState(this.defaultBlockState().setValue(ROTATION, 0));
    }
 
    @Override
@@ -41,17 +41,17 @@ public class SkullBlock extends AbstractSkullBlock {
 
    @Override
    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return super.getStateForPlacement(context).setValue(ROTATION, Integer.valueOf(RotationSegment.convertToSegment(context.getRotation())));
+      return super.getStateForPlacement(context).setValue(ROTATION, RotationSegment.convertToSegment(context.getRotation()));
    }
 
    @Override
    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(ROTATION, Integer.valueOf(rotation.rotate(state.getValue(ROTATION), ROTATIONS)));
+      return state.setValue(ROTATION, rotation.rotate(state.getValue(ROTATION), ROTATIONS));
    }
 
    @Override
    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.setValue(ROTATION, Integer.valueOf(mirror.mirror(state.getValue(ROTATION), ROTATIONS)));
+      return state.setValue(ROTATION, mirror.mirror(state.getValue(ROTATION), ROTATIONS));
    }
 
    @Override
@@ -65,7 +65,7 @@ public class SkullBlock extends AbstractSkullBlock {
       Codec<SkullBlock.Type> CODEC = Codec.stringResolver(StringRepresentable::getSerializedName, TYPES::get);
    }
 
-   public static enum Types implements SkullBlock.Type {
+   public enum Types implements SkullBlock.Type {
       SKELETON("skeleton"),
       WITHER_SKELETON("wither_skeleton"),
       PLAYER("player"),
@@ -76,7 +76,7 @@ public class SkullBlock extends AbstractSkullBlock {
 
       private final String name;
 
-      private Types(final String name) {
+      Types(final String name) {
          this.name = name;
          TYPES.put(name, this);
       }

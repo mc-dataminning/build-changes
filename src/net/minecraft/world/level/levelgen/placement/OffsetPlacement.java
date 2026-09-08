@@ -14,11 +14,11 @@ import net.minecraft.util.valueproviders.TrapezoidInt;
 public record OffsetPlacement(IntProvider x, IntProvider y, IntProvider z) implements PlacementModifier {
    public static final MapCodec<OffsetPlacement> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               IntProviders.codec(-16, 16).fieldOf("x").forGetter(OffsetPlacement::x),
-               IntProviders.codec(-16, 16).fieldOf("y").forGetter(OffsetPlacement::y),
-               IntProviders.codec(-16, 16).fieldOf("z").forGetter(OffsetPlacement::z)
-            )
-            .apply(i, OffsetPlacement::new)
+            IntProviders.codec(-16, 16).fieldOf("x").forGetter(OffsetPlacement::x),
+            IntProviders.codec(-16, 16).fieldOf("y").forGetter(OffsetPlacement::y),
+            IntProviders.codec(-16, 16).fieldOf("z").forGetter(OffsetPlacement::z)
+         )
+         .apply(i, OffsetPlacement::new)
    );
 
    public static OffsetPlacement of(final IntProvider xzSpread, final IntProvider ySpread) {

@@ -37,15 +37,15 @@ public record Schema<T>(
    public static final Codec<? extends Schema<?>> CODEC = Codec.recursive(
          "Schema",
          subCodec -> RecordCodecBuilder.create(
-               i -> i.group(
-                        ReferenceUtil.REFERENCE_CODEC.optionalFieldOf("$ref").forGetter(Schema::reference),
-                        ExtraCodecs.compactListCodec(Codec.STRING).optionalFieldOf("type", List.of()).forGetter(Schema::type),
-                        subCodec.optionalFieldOf("items").forGetter(Schema::items),
-                        Codec.unboundedMap(Codec.STRING, subCodec).optionalFieldOf("properties", Map.of()).forGetter(Schema::properties),
-                        Codec.STRING.listOf().optionalFieldOf("enum", List.of()).forGetter(Schema::enumValues)
-                     )
-                     .apply(i, (ref, type, items, properties, enumValues) -> null)
-            )
+            i -> i.group(
+                  ReferenceUtil.REFERENCE_CODEC.optionalFieldOf("$ref").forGetter(Schema::reference),
+                  ExtraCodecs.compactListCodec(Codec.STRING).optionalFieldOf("type", List.of()).forGetter(Schema::type),
+                  subCodec.optionalFieldOf("items").forGetter(Schema::items),
+                  Codec.unboundedMap(Codec.STRING, subCodec).optionalFieldOf("properties", Map.of()).forGetter(Schema::properties),
+                  Codec.STRING.listOf().optionalFieldOf("enum", List.of()).forGetter(Schema::enumValues)
+               )
+               .apply(i, (ref, type, items, properties, enumValues) -> null)
+         )
       )
       .validate(schema -> schema == null ? DataResult.error(() -> "Should not deserialize schema") : DataResult.success(schema));
    private static final List<SchemaComponent<?>> SCHEMA_REGISTRY = new ArrayList<>();

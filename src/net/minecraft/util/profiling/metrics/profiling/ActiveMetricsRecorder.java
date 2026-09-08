@@ -29,8 +29,7 @@ import org.jspecify.annotations.Nullable;
 
 public class ActiveMetricsRecorder implements MetricsRecorder {
    public static final int PROFILING_MAX_DURATION_SECONDS = 10;
-   @Nullable
-   private static Consumer<Path> globalOnReportFinished = null;
+   private static @Nullable Consumer<Path> globalOnReportFinished = null;
    private final Map<MetricSampler, List<RecordedDeviation>> deviationsBySampler = new Object2ObjectOpenHashMap();
    private final ContinuousProfiler taskProfiler;
    private final Executor ioExecutor;

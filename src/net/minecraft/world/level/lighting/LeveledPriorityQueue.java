@@ -1,7 +1,6 @@
 package net.minecraft.world.level.lighting;
 
 import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
-import java.util.Objects;
 
 public class LeveledPriorityQueue {
    private final int levelCount;
@@ -14,10 +13,6 @@ public class LeveledPriorityQueue {
 
       for (int i = 0; i < levelCount; i++) {
          this.queues[i] = new LongLinkedOpenHashSet(minSize, 0.5F) {
-            {
-               Objects.requireNonNull(LeveledPriorityQueue.this);
-            }
-
             protected void rehash(final int newN) {
                if (newN > minSize) {
                   super.rehash(newN);

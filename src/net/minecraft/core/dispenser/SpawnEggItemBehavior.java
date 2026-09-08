@@ -18,22 +18,22 @@ public class SpawnEggItemBehavior extends DefaultDispenseItemBehavior {
       EntityType<?> type = SpawnEggItem.getType(dispensed);
       if (type == null) {
          return dispensed;
-      } else {
-         try {
-            Entity spawned = type.spawn(
-               source.level(), dispensed, null, source.pos().relative(direction), EntitySpawnReason.DISPENSER, direction != Direction.UP, false
-            );
-            if (spawned == null) {
-               return dispensed;
-            }
-         } catch (Exception var6) {
-            LOGGER.error("Error while dispensing spawn egg from dispenser at {}", source.pos(), var6);
-            return ItemStack.EMPTY;
-         }
-
-         dispensed.shrink(1);
-         source.level().gameEvent(null, GameEvent.ENTITY_PLACE, source.pos());
-         return dispensed;
       }
+
+      try {
+         Entity spawned = type.spawn(
+            source.level(), dispensed, null, source.pos().relative(direction), EntitySpawnReason.DISPENSER, direction != Direction.UP, false
+         );
+         if (spawned == null) {
+            return dispensed;
+         }
+      } catch (Exception e) {
+         LOGGER.error("Error while dispensing spawn egg from dispenser at {}", source.pos(), e);
+         return ItemStack.EMPTY;
+      }
+
+      dispensed.shrink(1);
+      source.level().gameEvent(null, GameEvent.ENTITY_PLACE, source.pos());
+      return dispensed;
    }
 }

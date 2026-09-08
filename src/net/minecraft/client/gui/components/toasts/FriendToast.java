@@ -23,17 +23,16 @@ public class FriendToast implements Toast {
    private static final int PADDING_BOTTOM = 3;
    private static final int LINE_SPACING = 11;
    private static final long DEFAULT_DISPLAY_TIME_MS = 5000L;
-   @Nullable
-   private final ResolvableProfile skinProfile;
+   private final @Nullable ResolvableProfile skinProfile;
    private final List<FormattedCharSequence> messageLines;
    private final long displayTimeMs;
    private Toast.Visibility visibility = Toast.Visibility.SHOW;
 
-   public FriendToast(final Font font, @Nullable final ResolvableProfile skinProfile, final Component message) {
+   public FriendToast(final Font font, final @Nullable ResolvableProfile skinProfile, final Component message) {
       this(font, skinProfile, message, 5000L);
    }
 
-   public FriendToast(final Font font, @Nullable final ResolvableProfile skinProfile, final Component message, final long displayTimeMs) {
+   public FriendToast(final Font font, final @Nullable ResolvableProfile skinProfile, final Component message, final long displayTimeMs) {
       this.skinProfile = skinProfile;
       int textLeft = skinProfile != null ? 30 : 7;
       this.messageLines = font.split(message, 160 - textLeft - 4);
@@ -47,7 +46,7 @@ public class FriendToast implements Toast {
 
    @Override
    public void update(final ToastManager manager, final long fullyVisibleForMs) {
-      if ((double)fullyVisibleForMs >= (double)this.displayTimeMs * manager.getNotificationDisplayTimeMultiplier()) {
+      if (fullyVisibleForMs >= this.displayTimeMs * manager.getNotificationDisplayTimeMultiplier()) {
          this.visibility = Toast.Visibility.HIDE;
       }
    }
@@ -85,11 +84,11 @@ public class FriendToast implements Toast {
       this.visibility = Toast.Visibility.HIDE;
    }
 
-   public static void add(final ToastManager toastManager, final Font font, @Nullable final ResolvableProfile skinProfile, final Component message) {
+   public static void add(final ToastManager toastManager, final Font font, final @Nullable ResolvableProfile skinProfile, final Component message) {
       toastManager.addToast(new FriendToast(font, skinProfile, message));
    }
 
-   private static void add(final Minecraft minecraft, @Nullable final ResolvableProfile skinProfile, final Component message) {
+   private static void add(final Minecraft minecraft, final @Nullable ResolvableProfile skinProfile, final Component message) {
       add(minecraft.gui.toastManager(), minecraft.font, skinProfile, message);
    }
 

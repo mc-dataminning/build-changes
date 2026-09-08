@@ -20,7 +20,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.IntBuffer;
 import java.util.List;
-import java.util.Objects;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import net.minecraft.client.gui.font.CodepointMap;
@@ -47,9 +46,8 @@ public class UnihexProvider implements GlyphProvider {
       this.glyphs = glyphs;
    }
 
-   @Nullable
    @Override
-   public UnbakedGlyph getGlyph(final int codepoint) {
+   public @Nullable UnbakedGlyph getGlyph(final int codepoint) {
       return this.glyphs.get(codepoint);
    }
 
@@ -112,8 +110,8 @@ public class UnihexProvider implements GlyphProvider {
             case 96 -> UnihexProvider.IntContents.read24(line, buffer);
             case 128 -> UnihexProvider.IntContents.read32(line, buffer);
             default -> throw new IllegalArgumentException(
-            "Invalid entry at line " + line + ": expected hex number describing (8,16,24,32) x 16 bitmap, followed by a new line"
-         );
+               "Invalid entry at line " + line + ": expected hex number describing (8,16,24,32) x 16 bitmap, followed by a new line"
+            );
          };
          output.accept(codepoint, contents);
          line++;
@@ -162,7 +160,7 @@ public class UnihexProvider implements GlyphProvider {
       }
    }
 
-   private static record ByteContents(byte[] contents) implements UnihexProvider.LineData {
+   private record ByteContents(byte[] contents) implements UnihexProvider.LineData {
       @Override
       public int line(final int index) {
          return this.contents[index] << 24;
@@ -191,10 +189,10 @@ public class UnihexProvider implements GlyphProvider {
    public static class Definition implements GlyphProviderDefinition {
       public static final MapCodec<UnihexProvider.Definition> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Identifier.CODEC.fieldOf("hex_file").forGetter(o -> o.hexFile),
-                  UnihexProvider.OverrideRange.CODEC.listOf().optionalFieldOf("size_overrides", List.of()).forGetter(o -> o.sizeOverrides)
-               )
-               .apply(i, UnihexProvider.Definition::new)
+               Identifier.CODEC.fieldOf("hex_file").forGetter(o -> o.hexFile),
+               UnihexProvider.OverrideRange.CODEC.listOf().optionalFieldOf("size_overrides", List.of()).forGetter(o -> o.sizeOverrides)
+            )
+            .apply(i, UnihexProvider.Definition::new)
       );
       private final Identifier hexFile;
       private final List<UnihexProvider.OverrideRange> sizeOverrides;
@@ -215,19 +213,15 @@ public class UnihexProvider implements GlyphProvider {
       }
 
       private GlyphProvider load(final ResourceManager resourceManager) throws IOException {
-         UnihexProvider var3;
          try (InputStream raw = resourceManager.open(this.hexFile)) {
-            var3 = this.loadData(raw);
+            return this.loadData(raw);
          }
-
-         return var3;
       }
 
       private UnihexProvider loadData(final InputStream zipFile) throws IOException {
          CodepointMap<UnihexProvider.LineData> bits = new CodepointMap<>(UnihexProvider.LineData[]::new, UnihexProvider.LineData[][]::new);
          UnihexProvider.ReaderOutput output = bits::put;
 
-         UnihexProvider var17;
          try (ZipInputStream zis = new ZipInputStream(zipFile)) {
             ZipEntry entry;
             while ((entry = zis.getNextEntry()) != null) {
@@ -259,19 +253,17 @@ public class UnihexProvider implements GlyphProvider {
                int right = UnihexProvider.Dimensions.right(packedSize);
                glyphs.put(codepoint, new UnihexProvider.Glyph(glyphBits, left, right));
             });
-            var17 = new UnihexProvider(glyphs);
+            return new UnihexProvider(glyphs);
          }
-
-         return var17;
       }
    }
 
-   public static record Dimensions(int left, int right) {
+   public record Dimensions(int left, int right) {
       public static final MapCodec<UnihexProvider.Dimensions> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Codec.INT.fieldOf("left").forGetter(UnihexProvider.Dimensions::left), Codec.INT.fieldOf("right").forGetter(UnihexProvider.Dimensions::right)
-               )
-               .apply(i, UnihexProvider.Dimensions::new)
+               Codec.INT.fieldOf("left").forGetter(UnihexProvider.Dimensions::left), Codec.INT.fieldOf("right").forGetter(UnihexProvider.Dimensions::right)
+            )
+            .apply(i, UnihexProvider.Dimensions::new)
       );
       public static final Codec<UnihexProvider.Dimensions> CODEC = MAP_CODEC.codec();
 
@@ -292,7 +284,7 @@ public class UnihexProvider implements GlyphProvider {
       }
    }
 
-   private static record Glyph(UnihexProvider.LineData contents, int left, int right) implements UnbakedGlyph {
+   private record Glyph(UnihexProvider.LineData contents, int left, int right) implements UnbakedGlyph {
       public int width() {
          return this.right - this.left + 1;
       }
@@ -300,13 +292,9 @@ public class UnihexProvider implements GlyphProvider {
       @Override
       public GlyphInfo info() {
          return new GlyphInfo() {
-            {
-               Objects.requireNonNull(Glyph.this);
-            }
-
             @Override
             public float getAdvance() {
-               return (float)(Glyph.this.width() / 2 + 1);
+               return Glyph.this.width() / 2 + 1;
             }
 
             @Override
@@ -326,10 +314,6 @@ public class UnihexProvider implements GlyphProvider {
          return stitcher.stitch(
             this.info(),
             new GlyphBitmap() {
-               {
-                  Objects.requireNonNull(Glyph.this);
-               }
-
                @Override
                public float getOversample() {
                   return 2.0F;
@@ -365,7 +349,7 @@ public class UnihexProvider implements GlyphProvider {
       }
    }
 
-   private static record IntContents(int[] contents, int bitWidth) implements UnihexProvider.LineData {
+   private record IntContents(int[] contents, int bitWidth) implements UnihexProvider.LineData {
       private static final int SIZE_24 = 24;
 
       @Override
@@ -448,14 +432,14 @@ public class UnihexProvider implements GlyphProvider {
       }
    }
 
-   private static record OverrideRange(int from, int to, UnihexProvider.Dimensions dimensions) {
+   private record OverrideRange(int from, int to, UnihexProvider.Dimensions dimensions) {
       private static final Codec<UnihexProvider.OverrideRange> RAW_CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  ExtraCodecs.CODEPOINT.fieldOf("from").forGetter(UnihexProvider.OverrideRange::from),
-                  ExtraCodecs.CODEPOINT.fieldOf("to").forGetter(UnihexProvider.OverrideRange::to),
-                  UnihexProvider.Dimensions.MAP_CODEC.forGetter(UnihexProvider.OverrideRange::dimensions)
-               )
-               .apply(i, UnihexProvider.OverrideRange::new)
+               ExtraCodecs.CODEPOINT.fieldOf("from").forGetter(UnihexProvider.OverrideRange::from),
+               ExtraCodecs.CODEPOINT.fieldOf("to").forGetter(UnihexProvider.OverrideRange::to),
+               UnihexProvider.Dimensions.MAP_CODEC.forGetter(UnihexProvider.OverrideRange::dimensions)
+            )
+            .apply(i, UnihexProvider.OverrideRange::new)
       );
       public static final Codec<UnihexProvider.OverrideRange> CODEC = RAW_CODEC.validate(
          o -> o.from >= o.to ? DataResult.error(() -> "Invalid range: [" + o.from + ";" + o.to + "]") : DataResult.success(o)
@@ -467,7 +451,7 @@ public class UnihexProvider implements GlyphProvider {
       void accept(int codepoint, UnihexProvider.LineData glyph);
    }
 
-   private static record ShortContents(short[] contents) implements UnihexProvider.LineData {
+   private record ShortContents(short[] contents) implements UnihexProvider.LineData {
       @Override
       public int line(final int index) {
          return this.contents[index] << 16;

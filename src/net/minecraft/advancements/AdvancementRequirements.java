@@ -38,15 +38,15 @@ public record AdvancementRequirements(List<List<String>> requirements) {
    public boolean test(final Predicate<String> predicate) {
       if (this.requirements.isEmpty()) {
          return false;
-      } else {
-         for (List<String> set : this.requirements) {
-            if (!anyMatch(set, predicate)) {
-               return false;
-            }
-         }
-
-         return true;
       }
+
+      for (List<String> set : this.requirements) {
+         if (!anyMatch(set, predicate)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    public int count(final Predicate<String> predicate) {

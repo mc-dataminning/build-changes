@@ -5,7 +5,6 @@ import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReferenceArray;
 import java.util.function.BooleanSupplier;
 import net.minecraft.client.Minecraft;
@@ -45,13 +44,13 @@ public class ClientChunkCache extends ChunkSource {
       return this.lightEngine;
    }
 
-   private static boolean isValidChunk(@Nullable final LevelChunk chunk, final int x, final int z) {
+   private static boolean isValidChunk(final @Nullable LevelChunk chunk, final int x, final int z) {
       if (chunk == null) {
          return false;
-      } else {
-         ChunkPos pos = chunk.getPos();
-         return pos.x() == x && pos.z() == z;
       }
+
+      ChunkPos pos = chunk.getPos();
+      return pos.x() == x && pos.z() == z;
    }
 
    public void drop(final ChunkPos pos) {
@@ -64,8 +63,7 @@ public class ClientChunkCache extends ChunkSource {
       }
    }
 
-   @Nullable
-   public LevelChunk getChunk(final int x, final int z, final ChunkStatus targetStatus, final boolean loadOrGenerate) {
+   public @Nullable LevelChunk getChunk(final int x, final int z, final ChunkStatus targetStatus, final boolean loadOrGenerate) {
       if (this.storage.inRange(x, z)) {
          LevelChunk chunk = this.storage.getChunk(this.storage.getIndex(x, z));
          if (isValidChunk(chunk, x, z)) {
@@ -95,27 +93,26 @@ public class ClientChunkCache extends ChunkSource {
       }
    }
 
-   @Nullable
-   public LevelChunk replaceWithPacketData(final int chunkX, final int chunkZ, final ClientboundLevelChunkPacketData chunkData) {
+   public @Nullable LevelChunk replaceWithPacketData(final int chunkX, final int chunkZ, final ClientboundLevelChunkPacketData chunkData) {
       if (!this.storage.inRange(chunkX, chunkZ)) {
          LOGGER.warn("Ignoring chunk since it's not in the view range: {}, {}", chunkX, chunkZ);
          return null;
-      } else {
-         int index = this.storage.getIndex(chunkX, chunkZ);
-         LevelChunk chunk = this.storage.chunks.get(index);
-         ChunkPos pos = new ChunkPos(chunkX, chunkZ);
-         if (!isValidChunk(chunk, chunkX, chunkZ)) {
-            chunk = new LevelChunk(this.level, pos);
-            chunk.replaceWithPacketData(chunkX, chunkZ, chunkData);
-            this.storage.replace(index, chunk);
-         } else {
-            chunk.replaceWithPacketData(chunkX, chunkZ, chunkData);
-            this.storage.refreshEmptySections(chunk);
-         }
-
-         this.level.onChunkLoaded(pos);
-         return chunk;
       }
+
+      int index = this.storage.getIndex(chunkX, chunkZ);
+      LevelChunk chunk = this.storage.chunks.get(index);
+      ChunkPos pos = new ChunkPos(chunkX, chunkZ);
+      if (!isValidChunk(chunk, chunkX, chunkZ)) {
+         chunk = new LevelChunk(this.level, pos);
+         chunk.replaceWithPacketData(chunkX, chunkZ, chunkData);
+         this.storage.replace(index, chunk);
+      } else {
+         chunk.replaceWithPacketData(chunkX, chunkZ, chunkData);
+         this.storage.refreshEmptySections(chunk);
+      }
+
+      this.level.onChunkLoaded(pos);
+      return chunk;
    }
 
    @Override
@@ -199,11 +196,11 @@ public class ClientChunkCache extends ChunkSource {
 
    private final class Storage {
       private static final int UPDATE_TRACKING_BUFFERS = 2;
-      private final AtomicReferenceArray<LevelChunk> chunks;
-      private final LongOpenHashSet[] addedEmptySections;
-      private final LongOpenHashSet[] removedEmptySections;
-      private final LongOpenHashSet[] addedLoadedChunks;
-      private final LongOpenHashSet[] removedLoadedChunks;
+      private final AtomicReferenceArray<@Nullable LevelChunk> chunks;
+      private final LongOpenHashSet[] addedEmptySections = new LongOpenHashSet[2];
+      private final LongOpenHashSet[] removedEmptySections = new LongOpenHashSet[2];
+      private final LongOpenHashSet[] addedLoadedChunks = new LongOpenHashSet[2];
+      private final LongOpenHashSet[] removedLoadedChunks = new LongOpenHashSet[2];
       private int updatingSetsIndex;
       private final int chunkRadius;
       private final int viewRange;
@@ -212,12 +209,6 @@ public class ClientChunkCache extends ChunkSource {
       private int chunkCount;
 
       private Storage(final int chunkRadius) {
-         Objects.requireNonNull(ClientChunkCache.this);
-         super();
-         this.addedEmptySections = new LongOpenHashSet[2];
-         this.removedEmptySections = new LongOpenHashSet[2];
-         this.addedLoadedChunks = new LongOpenHashSet[2];
-         this.removedLoadedChunks = new LongOpenHashSet[2];
          this.chunkRadius = chunkRadius;
          this.viewRange = chunkRadius * 2 + 1;
          this.chunks = new AtomicReferenceArray<>(this.viewRange * this.viewRange);
@@ -234,7 +225,7 @@ public class ClientChunkCache extends ChunkSource {
          return Math.floorMod(chunkZ, this.viewRange) * this.viewRange + Math.floorMod(chunkX, this.viewRange);
       }
 
-      private void replace(final int index, @Nullable final LevelChunk newChunk) {
+      private void replace(final int index, final @Nullable LevelChunk newChunk) {
          LevelChunk removedChunk = this.chunks.getAndSet(index, newChunk);
          if (removedChunk != null) {
             this.chunkCount--;
@@ -327,8 +318,7 @@ public class ClientChunkCache extends ChunkSource {
          return Math.abs(chunkX - this.viewCenterX) <= this.chunkRadius && Math.abs(chunkZ - this.viewCenterZ) <= this.chunkRadius;
       }
 
-      @Nullable
-      public LevelChunk getChunk(final int index) {
+      public @Nullable LevelChunk getChunk(final int index) {
          return this.chunks.get(index);
       }
 
@@ -345,8 +335,8 @@ public class ClientChunkCache extends ChunkSource {
                   }
                }
             }
-         } catch (IOException var10) {
-            ClientChunkCache.LOGGER.error("Failed to dump chunks to file {}", file, var10);
+         } catch (IOException e) {
+            ClientChunkCache.LOGGER.error("Failed to dump chunks to file {}", file, e);
          }
       }
    }

@@ -37,7 +37,7 @@ public record DyedItemColor(int rgb) implements TooltipProvider {
       return result;
    }
 
-   public static DyedItemColor applyDyes(@Nullable final DyedItemColor currentDye, final List<DyeColor> dyes) {
+   public static DyedItemColor applyDyes(final @Nullable DyedItemColor currentDye, final List<DyeColor> dyes) {
       int redTotal = 0;
       int greenTotal = 0;
       int blueTotal = 0;
@@ -69,11 +69,11 @@ public record DyedItemColor(int rgb) implements TooltipProvider {
       int red = redTotal / colorCount;
       int green = greenTotal / colorCount;
       int blue = blueTotal / colorCount;
-      float averageIntensity = (float)intensityTotal / (float)colorCount;
-      float resultIntensity = (float)Math.max(red, Math.max(green, blue));
-      red = (int)((float)red * averageIntensity / resultIntensity);
-      green = (int)((float)green * averageIntensity / resultIntensity);
-      blue = (int)((float)blue * averageIntensity / resultIntensity);
+      float averageIntensity = (float)intensityTotal / colorCount;
+      float resultIntensity = Math.max(red, Math.max(green, blue));
+      red = (int)(red * averageIntensity / resultIntensity);
+      green = (int)(green * averageIntensity / resultIntensity);
+      blue = (int)(blue * averageIntensity / resultIntensity);
       int rgb = ARGB.color(0, red, green, blue);
       return new DyedItemColor(rgb);
    }

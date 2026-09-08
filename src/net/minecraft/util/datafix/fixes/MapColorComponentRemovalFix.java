@@ -9,9 +9,8 @@ public class MapColorComponentRemovalFix extends DataComponentRemainderFix {
       super(outputSchema, "MapColorComponentRemovalFix", "minecraft:map_color");
    }
 
-   @Nullable
    @Override
-   protected <T> Dynamic<T> fixComponent(final Dynamic<T> input) {
+   protected <T> @Nullable Dynamic<T> fixComponent(final Dynamic<T> input) {
       return null;
    }
 }

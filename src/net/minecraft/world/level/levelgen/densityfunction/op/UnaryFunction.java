@@ -16,7 +16,7 @@ public record UnaryFunction(UnaryFunction.Type type, DensityFunction input) impl
    public DensitySampler compileSampler(final DensityFunction.CompileContext context) {
       DensitySampler input = this.input.compileSampler(context);
 
-      return (DensitySampler)(switch (this.type) {
+      return switch (this.type) {
          case ABS -> new UnaryFunction.AbsSampler(input);
          case SQUARE -> new UnaryFunction.SquareSampler(input);
          case CUBE -> new UnaryFunction.CubeSampler(input);
@@ -28,7 +28,7 @@ public record UnaryFunction(UnaryFunction.Type type, DensityFunction input) impl
          case SQUEEZE -> new UnaryFunction.SqueezeSampler(input);
          case LOG -> new UnaryFunction.LogSampler(input);
          case SIGN -> new UnaryFunction.SignSampler(input);
-      });
+      };
    }
 
    public UnaryFunction rewriteChildren(final DfRewriteRule rule) {
@@ -60,13 +60,12 @@ public record UnaryFunction(UnaryFunction.Type type, DensityFunction input) impl
       };
    }
 
-   @DensityFunction.Axes
    @Override
-   public int domainAxes() {
+   public @DensityFunction.Axes int domainAxes() {
       return this.input.domainAxes();
    }
 
-   public static record AbsSampler(DensitySampler input) implements DensitySampler {
+   public record AbsSampler(DensitySampler input) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          this.input.sampleVolume(context, outputBuffer, volume);
@@ -82,7 +81,7 @@ public record UnaryFunction(UnaryFunction.Type type, DensityFunction input) impl
       }
    }
 
-   public static record CubeSampler(DensitySampler input) implements DensitySampler {
+   public record CubeSampler(DensitySampler input) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          this.input.sampleVolume(context, outputBuffer, volume);
@@ -98,7 +97,7 @@ public record UnaryFunction(UnaryFunction.Type type, DensityFunction input) impl
       }
    }
 
-   public static record LeakyReLUSampler(DensitySampler input, float negativeFactor) implements DensitySampler {
+   public record LeakyReLUSampler(DensitySampler input, float negativeFactor) implements DensitySampler {
       private static float apply(final float negativeFactor, final float input) {
          return input > 0.0F ? input : input * negativeFactor;
       }
@@ -118,23 +117,23 @@ public record UnaryFunction(UnaryFunction.Type type, DensityFunction input) impl
       }
    }
 
-   public static record LogSampler(DensitySampler input) implements DensitySampler {
+   public record LogSampler(DensitySampler input) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          this.input.sampleVolume(context, outputBuffer, volume);
 
          for (int i = 0; i < outputBuffer.size(); i++) {
-            outputBuffer.set(i, (float)Math.log((double)outputBuffer.get(i)));
+            outputBuffer.set(i, (float)Math.log(outputBuffer.get(i)));
          }
       }
 
       @Override
       public float sampleValue(final SamplerContext context, final int blockX, final int blockY, final int blockZ) {
-         return (float)Math.log((double)this.input.sampleValue(context, blockX, blockY, blockZ));
+         return (float)Math.log(this.input.sampleValue(context, blockX, blockY, blockZ));
       }
    }
 
-   public static record NegateSampler(DensitySampler input) implements DensitySampler {
+   public record NegateSampler(DensitySampler input) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          this.input.sampleVolume(context, outputBuffer, volume);
@@ -150,7 +149,7 @@ public record UnaryFunction(UnaryFunction.Type type, DensityFunction input) impl
       }
    }
 
-   public static record ReciprocalSampler(DensitySampler input) implements DensitySampler {
+   public record ReciprocalSampler(DensitySampler input) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          this.input.sampleVolume(context, outputBuffer, volume);
@@ -166,7 +165,7 @@ public record UnaryFunction(UnaryFunction.Type type, DensityFunction input) impl
       }
    }
 
-   public static record SignSampler(DensitySampler input) implements DensitySampler {
+   public record SignSampler(DensitySampler input) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          this.input.sampleVolume(context, outputBuffer, volume);
@@ -182,7 +181,7 @@ public record UnaryFunction(UnaryFunction.Type type, DensityFunction input) impl
       }
    }
 
-   public static record SqrtSampler(DensitySampler input) implements DensitySampler {
+   public record SqrtSampler(DensitySampler input) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          this.input.sampleVolume(context, outputBuffer, volume);
@@ -198,7 +197,7 @@ public record UnaryFunction(UnaryFunction.Type type, DensityFunction input) impl
       }
    }
 
-   public static record SquareSampler(DensitySampler input) implements DensitySampler {
+   public record SquareSampler(DensitySampler input) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          this.input.sampleVolume(context, outputBuffer, volume);
@@ -214,7 +213,7 @@ public record UnaryFunction(UnaryFunction.Type type, DensityFunction input) impl
       }
    }
 
-   public static record SqueezeSampler(DensitySampler input) implements DensitySampler {
+   public record SqueezeSampler(DensitySampler input) implements DensitySampler {
       private static float apply(final float input) {
          float clampedInput = Mth.clamp(input, -1.0F, 1.0F);
          return clampedInput / 2.0F - Mth.cube(clampedInput) / 24.0F;
@@ -235,7 +234,7 @@ public record UnaryFunction(UnaryFunction.Type type, DensityFunction input) impl
       }
    }
 
-   public static enum Type {
+   public enum Type {
       ABS("abs"),
       SQUARE("square"),
       CUBE("cube"),
@@ -253,7 +252,7 @@ public record UnaryFunction(UnaryFunction.Type type, DensityFunction input) impl
          i -> i.group(DensityFunction.CODEC.fieldOf("input").forGetter(UnaryFunction::input)).apply(i, input -> new UnaryFunction(this, input))
       );
 
-      private Type(final String id) {
+      Type(final String id) {
          this.id = id;
       }
    }

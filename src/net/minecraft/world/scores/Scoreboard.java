@@ -37,8 +37,7 @@ public class Scoreboard {
    private final Object2ObjectMap<String, PlayerTeam> teamsByName = new Object2ObjectOpenHashMap();
    private final Object2ObjectMap<String, PlayerTeam> teamsByPlayer = new Object2ObjectOpenHashMap();
 
-   @Nullable
-   public Objective getObjective(@Nullable final String name) {
+   public @Nullable Objective getObjective(final @Nullable String name) {
       return (Objective)this.objectivesByName.get(name);
    }
 
@@ -48,17 +47,17 @@ public class Scoreboard {
       final Component displayName,
       final ObjectiveCriteria.RenderType renderType,
       final boolean displayAutoUpdate,
-      @Nullable final NumberFormat numberFormat
+      final @Nullable NumberFormat numberFormat
    ) {
       if (this.objectivesByName.containsKey(name)) {
          throw new IllegalArgumentException("An objective with the name '" + name + "' already exists!");
-      } else {
-         Objective objective = new Objective(this, name, criteria, displayName, renderType, displayAutoUpdate, numberFormat);
-         ((List)this.objectivesByCriteria.computeIfAbsent(criteria, k -> Lists.newArrayList())).add(objective);
-         this.objectivesByName.put(name, objective);
-         this.onObjectiveAdded(objective);
-         return objective;
       }
+
+      Objective objective = new Objective(this, name, criteria, displayName, renderType, displayAutoUpdate, numberFormat);
+      ((List)this.objectivesByCriteria.computeIfAbsent(criteria, k -> Lists.newArrayList())).add(objective);
+      this.objectivesByName.put(name, objective);
+      this.onObjectiveAdded(objective);
+      return objective;
    }
 
    public final void forAllObjectives(final ObjectiveCriteria criteria, final ScoreHolder name, final Consumer<ScoreAccess> operation) {
@@ -80,10 +79,6 @@ public class Scoreboard {
       final MutableBoolean requiresSync = new MutableBoolean();
       final Score score = playerScore.getOrCreate(objective, newScore -> requiresSync.setTrue());
       return new ScoreAccess() {
-         {
-            Objects.requireNonNull(Scoreboard.this);
-         }
-
          @Override
          public int get() {
             return score.value();
@@ -93,35 +88,34 @@ public class Scoreboard {
          public void set(final int value) {
             if (!canModify) {
                throw new IllegalStateException("Cannot modify read-only score");
-            } else {
-               boolean hasChanged = requiresSync.isTrue();
-               if (objective.displayAutoUpdate()) {
-                  Component newDisplay = scoreHolder.getDisplayName();
-                  if (newDisplay != null && !newDisplay.equals(score.display())) {
-                     score.display(newDisplay);
-                     hasChanged = true;
-                  }
-               }
+            }
 
-               if (value != score.value()) {
-                  score.value(value);
+            boolean hasChanged = requiresSync.isTrue();
+            if (objective.displayAutoUpdate()) {
+               Component newDisplay = scoreHolder.getDisplayName();
+               if (newDisplay != null && !newDisplay.equals(score.display())) {
+                  score.display(newDisplay);
                   hasChanged = true;
                }
+            }
 
-               if (hasChanged) {
-                  this.sendScoreToPlayers();
-               }
+            if (value != score.value()) {
+               score.value(value);
+               hasChanged = true;
+            }
+
+            if (hasChanged) {
+               this.sendScoreToPlayers();
             }
          }
 
-         @Nullable
          @Override
-         public Component display() {
+         public @Nullable Component display() {
             return score.display();
          }
 
          @Override
-         public void display(@Nullable final Component display) {
+         public void display(final @Nullable Component display) {
             if (requiresSync.isTrue() || !Objects.equals(display, score.display())) {
                score.display(display);
                this.sendScoreToPlayers();
@@ -129,7 +123,7 @@ public class Scoreboard {
          }
 
          @Override
-         public void numberFormatOverride(@Nullable final NumberFormat numberFormat) {
+         public void numberFormatOverride(final @Nullable NumberFormat numberFormat) {
             score.numberFormat(numberFormat);
             this.sendScoreToPlayers();
          }
@@ -165,8 +159,7 @@ public class Scoreboard {
       };
    }
 
-   @Nullable
-   public ReadOnlyScoreInfo getPlayerScoreInfo(final ScoreHolder name, final Objective objective) {
+   public @Nullable ReadOnlyScoreInfo getPlayerScoreInfo(final ScoreHolder name, final Objective objective) {
       PlayerScores playerScore = this.playerScores.get(name.getScoreboardName());
       return playerScore != null ? playerScore.get(objective) : null;
    }
@@ -242,17 +235,15 @@ public class Scoreboard {
       this.onObjectiveRemoved(objective);
    }
 
-   public void setDisplayObjective(final DisplaySlot slot, @Nullable final Objective objective) {
+   public void setDisplayObjective(final DisplaySlot slot, final @Nullable Objective objective) {
       this.displayObjectives.put(slot, objective);
    }
 
-   @Nullable
-   public Objective getDisplayObjective(final DisplaySlot slot) {
+   public @Nullable Objective getDisplayObjective(final DisplaySlot slot) {
       return this.displayObjectives.get(slot);
    }
 
-   @Nullable
-   public PlayerTeam getPlayerTeam(final String name) {
+   public @Nullable PlayerTeam getPlayerTeam(final String name) {
       return (PlayerTeam)this.teamsByName.get(name);
    }
 
@@ -301,10 +292,10 @@ public class Scoreboard {
    public void removePlayerFromTeam(final String player, final PlayerTeam team) {
       if (this.getPlayersTeam(player) != team) {
          throw new IllegalStateException("Player is either on another team or not on any team. Cannot remove from team '" + team.getName() + "'.");
-      } else {
-         this.teamsByPlayer.remove(player);
-         team.getPlayers().remove(player);
       }
+
+      this.teamsByPlayer.remove(player);
+      team.getPlayers().remove(player);
    }
 
    public Collection<String> getTeamNames() {
@@ -315,8 +306,7 @@ public class Scoreboard {
       return this.teamsByName.values();
    }
 
-   @Nullable
-   public PlayerTeam getPlayersTeam(final String name) {
+   public @Nullable PlayerTeam getPlayersTeam(final String name) {
       return (PlayerTeam)this.teamsByPlayer.get(name);
    }
 
@@ -432,14 +422,14 @@ public class Scoreboard {
       return displaySlots;
    }
 
-   public static record PackedScore(String owner, String objective, Score.Packed score) {
+   public record PackedScore(String owner, String objective, Score.Packed score) {
       public static final Codec<Scoreboard.PackedScore> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Codec.STRING.fieldOf("Name").forGetter(Scoreboard.PackedScore::owner),
-                  Codec.STRING.fieldOf("Objective").forGetter(Scoreboard.PackedScore::objective),
-                  Score.Packed.MAP_CODEC.forGetter(Scoreboard.PackedScore::score)
-               )
-               .apply(i, Scoreboard.PackedScore::new)
+               Codec.STRING.fieldOf("Name").forGetter(Scoreboard.PackedScore::owner),
+               Codec.STRING.fieldOf("Objective").forGetter(Scoreboard.PackedScore::objective),
+               Score.Packed.MAP_CODEC.forGetter(Scoreboard.PackedScore::score)
+            )
+            .apply(i, Scoreboard.PackedScore::new)
       );
    }
 }

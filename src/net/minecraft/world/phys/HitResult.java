@@ -22,7 +22,7 @@ public abstract class HitResult {
       return this.location;
    }
 
-   public static enum Type {
+   public enum Type {
       MISS,
       BLOCK,
       ENTITY;

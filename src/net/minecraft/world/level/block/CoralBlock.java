@@ -58,9 +58,8 @@ public class CoralBlock extends Block {
       return false;
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       if (!this.scanForWater(context.getLevel(), context.getClickedPos())) {
          context.getLevel().scheduleTick(context.getClickedPos(), this, 60 + context.getLevel().getRandom().nextInt(40));
       }

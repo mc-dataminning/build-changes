@@ -27,12 +27,7 @@ public class RepeaterBlock extends DiodeBlock {
    protected RepeaterBlock(final BlockBehaviour.Properties properties) {
       super(properties);
       this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(FACING, Direction.NORTH)
-            .setValue(DELAY, Integer.valueOf(1))
-            .setValue(LOCKED, Boolean.valueOf(false))
-            .setValue(POWERED, Boolean.valueOf(false))
+         this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(DELAY, 1).setValue(LOCKED, false).setValue(POWERED, false)
       );
    }
 
@@ -42,10 +37,10 @@ public class RepeaterBlock extends DiodeBlock {
    ) {
       if (!player.getAbilities().mayBuild) {
          return InteractionResult.PASS;
-      } else {
-         level.setBlockAndUpdate(pos, state.cycle(DELAY));
-         return InteractionResult.SUCCESS;
       }
+
+      level.setBlockAndUpdate(pos, state.cycle(DELAY));
+      return InteractionResult.SUCCESS;
    }
 
    @Override
@@ -56,7 +51,7 @@ public class RepeaterBlock extends DiodeBlock {
    @Override
    public BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockState state = super.getStateForPlacement(context);
-      return state.setValue(LOCKED, Boolean.valueOf(this.isLocked(context.getLevel(), context.getClickedPos(), state)));
+      return state.setValue(LOCKED, this.isLocked(context.getLevel(), context.getClickedPos(), state));
    }
 
    @Override
@@ -74,13 +69,13 @@ public class RepeaterBlock extends DiodeBlock {
          return Blocks.AIR.defaultBlockState();
       } else {
          return !level.isClientSide() && directionToNeighbour.getAxis() != state.getValue(FACING).getAxis()
-            ? state.setValue(LOCKED, Boolean.valueOf(this.isLocked(level, pos, state)))
+            ? state.setValue(LOCKED, this.isLocked(level, pos, state))
             : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
       }
    }
 
    @Override
-   protected boolean shouldRedstoneWireConnectTo(final BlockState state, final BlockGetter level, final BlockPos pos, @Nullable final Direction direction) {
+   protected boolean shouldRedstoneWireConnectTo(final BlockState state, final BlockGetter level, final BlockPos pos, final @Nullable Direction direction) {
       Direction repeaterDirection = state.getValue(FACING);
       return repeaterDirection == direction || repeaterDirection.getOpposite() == direction;
    }
@@ -99,17 +94,17 @@ public class RepeaterBlock extends DiodeBlock {
    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
       if (state.getValue(POWERED)) {
          Direction direction = state.getValue(FACING);
-         double x = (double)pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.2;
-         double y = (double)pos.getY() + 0.4 + (random.nextDouble() - 0.5) * 0.2;
-         double z = (double)pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.2;
+         double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.2;
+         double y = pos.getY() + 0.4 + (random.nextDouble() - 0.5) * 0.2;
+         double z = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.2;
          float offset = -5.0F;
          if (random.nextBoolean()) {
-            offset = (float)(state.getValue(DELAY) * 2 - 1);
+            offset = state.getValue(DELAY) * 2 - 1;
          }
 
          offset /= 16.0F;
-         double xo = (double)(offset * (float)direction.getStepX());
-         double zo = (double)(offset * (float)direction.getStepZ());
+         double xo = offset * direction.getStepX();
+         double zo = offset * direction.getStepZ();
          level.addParticle(DustParticleOptions.REDSTONE, x + xo, y, z + zo, 0.0, 0.0, 0.0);
       }
    }

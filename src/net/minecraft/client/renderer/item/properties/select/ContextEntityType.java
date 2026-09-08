@@ -17,9 +17,8 @@ public record ContextEntityType() implements SelectItemModelProperty<ResourceKey
       MapCodec.unit(new ContextEntityType()), VALUE_CODEC
    );
 
-   @Nullable
-   public ResourceKey<EntityType<?>> get(
-      final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final LivingEntity owner, final int seed, final ItemDisplayContext displayContext
+   public @Nullable ResourceKey<EntityType<?>> get(
+      final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner, final int seed, final ItemDisplayContext displayContext
    ) {
       return owner == null ? null : owner.typeHolder().unwrapKey().orElse(null);
    }

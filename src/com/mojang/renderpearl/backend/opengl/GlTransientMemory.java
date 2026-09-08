@@ -10,9 +10,9 @@ import it.unimi.dsi.fastutil.ints.IntComparator;
 import it.unimi.dsi.fastutil.objects.ReferenceArrayList;
 import java.nio.ByteBuffer;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.IntStream;
 import net.minecraft.util.Mth;
+import org.jspecify.annotations.Nullable;
 import org.lwjgl.opengl.ARBBufferStorage;
 import org.lwjgl.opengl.GL33C;
 import org.lwjgl.system.MemoryUtil;
@@ -45,7 +45,6 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
    @Override
    public ByteBuffer allocateCpu(final long size, final long alignment, final long minimumAllocation, final long elementSize) {
       assert size <= 2147483647L;
-
       TransientBlockAllocator.Allocation<TransientBlockAllocator.Allocator.CpuBlock> alloc = this.cpuBlockAllocator
          .allocate(size, alignment, minimumAllocation, elementSize);
       return MemoryUtil.memByteBuffer(alloc.block().address() + alloc.offset(), (int)alloc.size());
@@ -88,7 +87,7 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
 
       @Override
       public GpuBufferSlice.MappedView allocateStaging(
-         final long size, final long alignment, @GpuBuffer.Usage final int usage, final long minimumAllocation, final long elementSize
+         final long size, final long alignment, final @GpuBuffer.Usage int usage, final long minimumAllocation, final long elementSize
       ) {
          TransientBlockAllocator.Allocation<GlTransientMemory.Fallback.GlAllocation> allocation = this.blockAllocator
             .allocate(size, alignment, minimumAllocation, elementSize);
@@ -101,18 +100,18 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
             slice,
             hostBuffer,
             () -> this.dsa
-                  .bufferSubData(
-                     transientBuffer.handle(),
-                     slice.offset(),
-                     MemoryUtil.memByteBuffer(allocation.block().hostBuffer + allocation.offset(), (int)allocation.size()),
-                     usage
-                  )
+               .bufferSubData(
+                  transientBuffer.handle(),
+                  slice.offset(),
+                  MemoryUtil.memByteBuffer(allocation.block().hostBuffer + allocation.offset(), (int)allocation.size()),
+                  usage
+               )
          );
       }
 
       @Override
       public GpuBufferSlice allocateGpu(
-         final long size, final long alignment, @GpuBuffer.Usage final int usage, final long minimumAllocation, final long elementSize
+         final long size, final long alignment, final @GpuBuffer.Usage int usage, final long minimumAllocation, final long elementSize
       ) {
          TransientBlockAllocator.Allocation<GlTransientMemory.Fallback.GlAllocation> allocation = this.blockAllocator
             .allocate(size, alignment, minimumAllocation, elementSize);
@@ -124,26 +123,26 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
 
       @Override
       public GpuBufferSlice.MappedView allocateGpuMapped(
-         final long size, final long alignment, @GpuBuffer.Usage final int usage, final long minimumAllocation, final long elementSize
+         final long size, final long alignment, final @GpuBuffer.Usage int usage, final long minimumAllocation, final long elementSize
       ) {
          return this.allocateStaging(size, alignment, usage, minimumAllocation, elementSize);
       }
 
       @Override
       public GpuBufferSlice uploadStaging(
-         final List<ByteBuffer> data, final long alignment, @GpuBuffer.Usage final int usage, final long minimumAllocation, final long elementSize
+         final List<ByteBuffer> data, final long alignment, final @GpuBuffer.Usage int usage, final long minimumAllocation, final long elementSize
       ) {
          return this.uploadGpu(data, alignment, usage, minimumAllocation, elementSize);
       }
 
       @Override
       public GpuBufferSlice uploadGpu(
-         final List<ByteBuffer> data, final long alignment, @GpuBuffer.Usage final int usage, final long minimumAllocation, final long elementSize
+         final List<ByteBuffer> data, final long alignment, final @GpuBuffer.Usage int usage, final long minimumAllocation, final long elementSize
       ) {
          long totalSize = 0L;
 
          for (int i = 0; i < data.size(); i++) {
-            totalSize += (long)data.get(i).remaining();
+            totalSize += data.get(i).remaining();
             totalSize = Mth.roundToward(totalSize, alignment);
          }
 
@@ -155,8 +154,8 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
 
          for (int i = 0; i < data.size(); i++) {
             ByteBuffer buffer = data.get(i);
-            MemoryUtil.memCopy(MemoryUtil.memAddress(buffer), ptr + offset, (long)buffer.remaining());
-            offset += (long)buffer.remaining();
+            MemoryUtil.memCopy(MemoryUtil.memAddress(buffer), ptr + offset, buffer.remaining());
+            offset += buffer.remaining();
             offset = Mth.roundToward(offset, alignment);
          }
 
@@ -166,12 +165,12 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
       }
 
       @Override
-      public List<GpuBufferSlice> multiUploadStaging(final List<ByteBuffer> data, final long alignment, @GpuBuffer.Usage final int usage) {
+      public List<GpuBufferSlice> multiUploadStaging(final List<ByteBuffer> data, final long alignment, final @GpuBuffer.Usage int usage) {
          return this.multiUploadGpu(data, alignment, usage);
       }
 
       @Override
-      public List<GpuBufferSlice> multiUploadGpu(final List<ByteBuffer> data, final long alignment, @GpuBuffer.Usage final int usage) {
+      public List<GpuBufferSlice> multiUploadGpu(final List<ByteBuffer> data, final long alignment, final @GpuBuffer.Usage int usage) {
          ReferenceArrayList<GpuBufferSlice> uploadedBuffers = new ReferenceArrayList();
          uploadedBuffers.size(data.size());
          IntArrayList sortedDataIndices = IntArrayList.toList(IntStream.range(0, data.size()));
@@ -184,9 +183,9 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
             for (int i = sortedDataIndices.size() - 1; i >= 0; i--) {
                int bufferIndex = sortedDataIndices.getInt(i);
                ByteBuffer currentBuffer = data.get(bufferIndex);
-               if (this.blockAllocator.canAllocateInCurrentBlock((long)currentBuffer.remaining(), alignment)) {
+               if (this.blockAllocator.canAllocateInCurrentBlock(currentBuffer.remaining(), alignment)) {
                   sortedDataIndices.removeInt(i);
-                  GpuBufferSlice bufferSlice = this.allocateGpu((long)currentBuffer.remaining(), alignment, usage);
+                  GpuBufferSlice bufferSlice = this.allocateGpu(currentBuffer.remaining(), alignment, usage);
                   uploadedBuffers.set(bufferIndex, bufferSlice);
                   GlStateManager._glBindBuffer(target, ((GlBuffer)bufferSlice.buffer()).handle());
                   long ptr = GL33C.nglMapBufferRange(target, bufferSlice.offset(), bufferSlice.length(), 38);
@@ -200,7 +199,7 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
             if (!allocatedAnything) {
                int bufferIndex = sortedDataIndices.popInt();
                ByteBuffer currentBuffer = data.get(bufferIndex);
-               GpuBufferSlice bufferSlice = this.allocateGpu((long)currentBuffer.remaining(), alignment, usage);
+               GpuBufferSlice bufferSlice = this.allocateGpu(currentBuffer.remaining(), alignment, usage);
                uploadedBuffers.set(bufferIndex, bufferSlice);
                GlStateManager._glBindBuffer(target, ((GlBuffer)bufferSlice.buffer()).handle());
                long ptr = GL33C.nglMapBufferRange(target, bufferSlice.offset(), bufferSlice.length(), 38);
@@ -213,7 +212,7 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
          return uploadedBuffers;
       }
 
-      private static record GlAllocation(GlBuffer glBuffer, long hostBuffer) implements TransientBlockAllocator.Allocator.Block {
+      private record GlAllocation(GlBuffer glBuffer, long hostBuffer) implements TransientBlockAllocator.Allocator.Block {
          @Override
          public boolean suboptimal() {
             return false;
@@ -225,7 +224,7 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
       private final TransientBlockAllocator<GlTransientMemory.PersistentMapping.GlAllocation> stagingBlockAllocator;
       private final TransientBlockAllocator<GlTransientMemory.PersistentMapping.GlAllocation> gpuBlockAllocator;
       private final TransientBlockAllocator<GlTransientMemory.PersistentMapping.GlAllocation> gpuMappedBlockAllocator;
-      private final GlTransientMemory.PersistentMapping.Rotation[] rotations = new GlTransientMemory.PersistentMapping.Rotation[2];
+      private final GlTransientMemory.PersistentMapping.@Nullable Rotation[] rotations = new GlTransientMemory.PersistentMapping.Rotation[2];
 
       PersistentMapping(final GlDevice device, final GlCommandEncoder encoder) {
          super(device, encoder);
@@ -303,60 +302,49 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
 
       @Override
       public GpuBufferSlice.MappedView allocateStaging(
-         final long size, final long alignment, @GpuBuffer.Usage final int usage, final long minimumAllocation, final long elementSize
+         final long size, final long alignment, final @GpuBuffer.Usage int usage, final long minimumAllocation, final long elementSize
       ) {
          assert size <= 2147483647L;
-
          TransientBlockAllocator.Allocation<GlTransientMemory.PersistentMapping.GlAllocation> alloc = this.stagingBlockAllocator
             .allocate(size, alignment, minimumAllocation, elementSize);
-         GlTransientMemory.TransientGpuBuffer apiBuffer = new GlTransientMemory.TransientGpuBuffer(
-            alloc.block().glBuffer, usage, (long)((int)alloc.block().size)
-         );
+         GlTransientMemory.TransientGpuBuffer apiBuffer = new GlTransientMemory.TransientGpuBuffer(alloc.block().glBuffer, usage, (int)alloc.block().size);
          ByteBuffer cpuBuffer = MemoryUtil.memByteBuffer(alloc.block().hostPtr + alloc.offset(), (int)alloc.size());
-         return new GpuBufferSlice.MappedView(new GpuBufferSlice(apiBuffer, alloc.offset(), alloc.size()), cpuBuffer, () -> {
-         });
+         return new GpuBufferSlice.MappedView(new GpuBufferSlice(apiBuffer, alloc.offset(), alloc.size()), cpuBuffer, () -> {});
       }
 
       @Override
       public GpuBufferSlice allocateGpu(
-         final long size, final long alignment, @GpuBuffer.Usage final int usage, final long minimumAllocation, final long elementSize
+         final long size, final long alignment, final @GpuBuffer.Usage int usage, final long minimumAllocation, final long elementSize
       ) {
          assert size <= 2147483647L;
-
          TransientBlockAllocator.Allocation<GlTransientMemory.PersistentMapping.GlAllocation> alloc = this.gpuBlockAllocator
             .allocate(size, alignment, minimumAllocation, elementSize);
-         GlTransientMemory.TransientGpuBuffer apiBuffer = new GlTransientMemory.TransientGpuBuffer(
-            alloc.block().glBuffer, usage, (long)((int)alloc.block().size)
-         );
+         GlTransientMemory.TransientGpuBuffer apiBuffer = new GlTransientMemory.TransientGpuBuffer(alloc.block().glBuffer, usage, (int)alloc.block().size);
          return new GpuBufferSlice(apiBuffer, alloc.offset(), alloc.size());
       }
 
       @Override
       public GpuBufferSlice.MappedView allocateGpuMapped(
-         final long size, final long alignment, @GpuBuffer.Usage final int usage, final long minimumAllocation, final long elementSize
+         final long size, final long alignment, final @GpuBuffer.Usage int usage, final long minimumAllocation, final long elementSize
       ) {
          assert size <= 2147483647L;
-
          TransientBlockAllocator.Allocation<GlTransientMemory.PersistentMapping.GlAllocation> alloc = this.gpuMappedBlockAllocator
             .allocate(size, alignment, minimumAllocation, elementSize);
-         GlTransientMemory.TransientGpuBuffer apiBuffer = new GlTransientMemory.TransientGpuBuffer(
-            alloc.block().glBuffer, usage, (long)((int)alloc.block().size)
-         );
+         GlTransientMemory.TransientGpuBuffer apiBuffer = new GlTransientMemory.TransientGpuBuffer(alloc.block().glBuffer, usage, (int)alloc.block().size);
          ByteBuffer cpuBuffer = MemoryUtil.memByteBuffer(alloc.block().hostPtr + alloc.offset(), (int)alloc.size());
-         return new GpuBufferSlice.MappedView(new GpuBufferSlice(apiBuffer, alloc.offset(), alloc.size()), cpuBuffer, () -> {
-         });
+         return new GpuBufferSlice.MappedView(new GpuBufferSlice(apiBuffer, alloc.offset(), alloc.size()), cpuBuffer, () -> {});
       }
 
       @Override
       public GpuBufferSlice uploadStaging(
-         final List<ByteBuffer> data, final long alignment, @GpuBuffer.Usage final int usage, final long minimumAllocation, final long elementSize
+         final List<ByteBuffer> data, final long alignment, final @GpuBuffer.Usage int usage, final long minimumAllocation, final long elementSize
       ) {
          return this.upload(data, alignment, usage, minimumAllocation, elementSize, true);
       }
 
       @Override
       public GpuBufferSlice uploadGpu(
-         final List<ByteBuffer> data, final long alignment, @GpuBuffer.Usage final int usage, final long minimumAllocation, final long elementSize
+         final List<ByteBuffer> data, final long alignment, final @GpuBuffer.Usage int usage, final long minimumAllocation, final long elementSize
       ) {
          return this.upload(data, alignment, usage, minimumAllocation, elementSize, false);
       }
@@ -364,7 +352,7 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
       public GpuBufferSlice upload(
          final List<ByteBuffer> data,
          final long alignment,
-         @GpuBuffer.Usage final int usage,
+         final @GpuBuffer.Usage int usage,
          final long minimumAllocation,
          final long elementSize,
          final boolean staging
@@ -372,11 +360,10 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
          long totalSize = 0L;
 
          for (ByteBuffer buffer : data) {
-            totalSize += (long)buffer.remaining();
+            totalSize += buffer.remaining();
             totalSize = Mth.roundToward(totalSize, alignment);
          }
 
-         GpuBufferSlice var25;
          try (GpuBufferSlice.MappedView mapped = staging
                ? this.allocateStaging(totalSize, alignment, usage, minimumAllocation, elementSize)
                : this.allocateGpuMapped(totalSize, alignment, usage, minimumAllocation, elementSize)) {
@@ -384,31 +371,29 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
             long offset = 0L;
 
             for (ByteBuffer buffer : data) {
-               MemoryUtil.memCopy(MemoryUtil.memAddress(buffer), mappedPtr + offset, Math.min(mapped.slice().length() - offset, (long)buffer.remaining()));
-               offset += (long)buffer.remaining();
+               MemoryUtil.memCopy(MemoryUtil.memAddress(buffer), mappedPtr + offset, Math.min(mapped.slice().length() - offset, buffer.remaining()));
+               offset += buffer.remaining();
                offset = Mth.roundToward(offset, alignment);
                if (offset >= mapped.slice().length()) {
                   break;
                }
             }
 
-            var25 = mapped.slice();
+            return mapped.slice();
          }
-
-         return var25;
       }
 
       @Override
-      public List<GpuBufferSlice> multiUploadStaging(final List<ByteBuffer> data, final long alignment, @GpuBuffer.Usage final int usage) {
+      public List<GpuBufferSlice> multiUploadStaging(final List<ByteBuffer> data, final long alignment, final @GpuBuffer.Usage int usage) {
          return this.multiUpload(data, alignment, usage, true);
       }
 
       @Override
-      public List<GpuBufferSlice> multiUploadGpu(final List<ByteBuffer> data, final long alignment, @GpuBuffer.Usage final int usage) {
+      public List<GpuBufferSlice> multiUploadGpu(final List<ByteBuffer> data, final long alignment, final @GpuBuffer.Usage int usage) {
          return this.multiUpload(data, alignment, usage, false);
       }
 
-      public List<GpuBufferSlice> multiUpload(final List<ByteBuffer> data, final long alignment, @GpuBuffer.Usage final int usage, final boolean staging) {
+      public List<GpuBufferSlice> multiUpload(final List<ByteBuffer> data, final long alignment, final @GpuBuffer.Usage int usage, final boolean staging) {
          ReferenceArrayList<GpuBufferSlice> uploadedBuffers = new ReferenceArrayList();
          uploadedBuffers.size(data.size());
          TransientBlockAllocator<?> allocatorInUse = staging ? this.stagingBlockAllocator : this.gpuMappedBlockAllocator;
@@ -421,12 +406,12 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
             for (int i = sortedDataIndices.size() - 1; i >= 0; i--) {
                int bufferIndex = sortedDataIndices.getInt(i);
                ByteBuffer currentBuffer = data.get(bufferIndex);
-               if (allocatorInUse.canAllocateInCurrentBlock((long)currentBuffer.remaining(), alignment)) {
+               if (allocatorInUse.canAllocateInCurrentBlock(currentBuffer.remaining(), alignment)) {
                   sortedDataIndices.removeInt(i);
 
                   try (GpuBufferSlice.MappedView view = staging
-                        ? this.allocateStaging((long)currentBuffer.remaining(), alignment, usage)
-                        : this.allocateGpuMapped((long)currentBuffer.remaining(), alignment, usage)) {
+                        ? this.allocateStaging(currentBuffer.remaining(), alignment, usage)
+                        : this.allocateGpuMapped(currentBuffer.remaining(), alignment, usage)) {
                      MemoryUtil.memCopy(currentBuffer, view.data());
                      uploadedBuffers.set(bufferIndex, view.slice());
                   }
@@ -440,7 +425,7 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
                int bufferIndex = sortedDataIndices.popInt();
                ByteBuffer currentBuffer = data.get(bufferIndex);
 
-               try (GpuBufferSlice.MappedView view = this.allocateGpuMapped((long)currentBuffer.remaining(), alignment, usage)) {
+               try (GpuBufferSlice.MappedView view = this.allocateGpuMapped(currentBuffer.remaining(), alignment, usage)) {
                   MemoryUtil.memCopy(currentBuffer, view.data());
                   uploadedBuffers.set(bufferIndex, view.slice());
                }
@@ -450,14 +435,14 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
          return uploadedBuffers;
       }
 
-      private static record GlAllocation(int glBuffer, long hostPtr, long size) implements TransientBlockAllocator.Allocator.Block {
+      private record GlAllocation(int glBuffer, long hostPtr, long size) implements TransientBlockAllocator.Allocator.Block {
          @Override
          public boolean suboptimal() {
             return false;
          }
       }
 
-      private static record Rotation(Runnable staging, Runnable gpu, Runnable gpuMapped) implements Runnable {
+      private record Rotation(Runnable staging, Runnable gpu, Runnable gpuMapped) implements Runnable {
          @Override
          public void run() {
             this.staging.run();
@@ -468,24 +453,21 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
    }
 
    private class TransientGpuBuffer extends GlBuffer {
-      private boolean closed;
-      private final long bufferSubmitIndex;
+      private boolean closed = false;
+      private final long bufferSubmitIndex = GlTransientMemory.this.encoder.currentSubmitIndex();
 
-      protected TransientGpuBuffer(final int handle, @GpuBuffer.Usage final int usage, final long size) {
-         Objects.requireNonNull(GlTransientMemory.this);
+      protected TransientGpuBuffer(final int handle, final @GpuBuffer.Usage int usage, final long size) {
          super(usage, size, handle, true);
-         this.closed = false;
-         this.bufferSubmitIndex = GlTransientMemory.this.encoder.currentSubmitIndex();
       }
 
       @Override
       public boolean isClosed() {
          if (this.closed) {
             return true;
-         } else {
-            this.closed = this.bufferSubmitIndex < GlTransientMemory.this.encoder.currentSubmitIndex();
-            return this.closed;
          }
+
+         this.closed = this.bufferSubmitIndex < GlTransientMemory.this.encoder.currentSubmitIndex();
+         return this.closed;
       }
 
       @Override

@@ -15,9 +15,9 @@ public record Count(boolean normalize) implements RangeSelectItemModelProperty {
    );
 
    @Override
-   public float get(final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final ItemOwner owner, final int seed) {
-      float count = (float)itemStack.getCount();
-      float maxCount = (float)itemStack.getMaxStackSize();
+   public float get(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable ItemOwner owner, final int seed) {
+      float count = itemStack.getCount();
+      float maxCount = itemStack.getMaxStackSize();
       return this.normalize ? Mth.clamp(count / maxCount, 0.0F, 1.0F) : Mth.clamp(count, 0.0F, maxCount);
    }
 

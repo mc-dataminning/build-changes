@@ -9,27 +9,27 @@ public record ItemQuads(List<BakedQuad> all, List<BakedQuad> solid, List<BakedQu
    public static ItemQuads split(final List<BakedQuad> quads) {
       if (quads.isEmpty()) {
          return EMPTY;
-      } else {
-         List<BakedQuad> solid = new ArrayList<>();
-         List<BakedQuad> translucent = new ArrayList<>();
+      }
 
-         for (BakedQuad quad : quads) {
-            if (quad.materialInfo().itemRenderType().hasBlending()) {
-               translucent.add(quad);
-            } else {
-               solid.add(quad);
-            }
-         }
+      List<BakedQuad> solid = new ArrayList<>();
+      List<BakedQuad> translucent = new ArrayList<>();
 
-         if (translucent.isEmpty()) {
-            List<BakedQuad> all = List.copyOf(quads);
-            return new ItemQuads(all, all, List.of());
-         } else if (solid.isEmpty()) {
-            List<BakedQuad> all = List.copyOf(quads);
-            return new ItemQuads(all, List.of(), all);
+      for (BakedQuad quad : quads) {
+         if (quad.materialInfo().itemRenderType().hasBlending()) {
+            translucent.add(quad);
          } else {
-            return new ItemQuads(List.copyOf(quads), List.copyOf(solid), List.copyOf(translucent));
+            solid.add(quad);
          }
+      }
+
+      if (translucent.isEmpty()) {
+         List<BakedQuad> all = List.copyOf(quads);
+         return new ItemQuads(all, all, List.of());
+      } else if (solid.isEmpty()) {
+         List<BakedQuad> all = List.copyOf(quads);
+         return new ItemQuads(all, List.of(), all);
+      } else {
+         return new ItemQuads(List.copyOf(quads), List.copyOf(solid), List.copyOf(translucent));
       }
    }
 

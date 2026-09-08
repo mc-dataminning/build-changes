@@ -14,11 +14,11 @@ import org.jspecify.annotations.Nullable;
 public record SignedMessageLink(int index, UUID sender, UUID sessionId) {
    public static final Codec<SignedMessageLink> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ExtraCodecs.NON_NEGATIVE_INT.fieldOf("index").forGetter(SignedMessageLink::index),
-               UUIDUtil.CODEC.fieldOf("sender").forGetter(SignedMessageLink::sender),
-               UUIDUtil.CODEC.fieldOf("session_id").forGetter(SignedMessageLink::sessionId)
-            )
-            .apply(i, SignedMessageLink::new)
+            ExtraCodecs.NON_NEGATIVE_INT.fieldOf("index").forGetter(SignedMessageLink::index),
+            UUIDUtil.CODEC.fieldOf("sender").forGetter(SignedMessageLink::sender),
+            UUIDUtil.CODEC.fieldOf("session_id").forGetter(SignedMessageLink::sessionId)
+         )
+         .apply(i, SignedMessageLink::new)
    );
 
    public static SignedMessageLink unsigned(final UUID sender) {
@@ -39,8 +39,7 @@ public record SignedMessageLink(int index, UUID sender, UUID sessionId) {
       return this.index > link.index() && this.sender.equals(link.sender()) && this.sessionId.equals(link.sessionId());
    }
 
-   @Nullable
-   public SignedMessageLink advance() {
+   public @Nullable SignedMessageLink advance() {
       return this.index == Integer.MAX_VALUE ? null : new SignedMessageLink(this.index + 1, this.sender, this.sessionId);
    }
 }

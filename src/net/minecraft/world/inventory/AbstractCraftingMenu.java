@@ -1,7 +1,6 @@
 package net.minecraft.world.inventory;
 
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.recipebook.ServerPlaceRecipe;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Inventory;
@@ -42,14 +41,9 @@ public abstract class AbstractCraftingMenu extends RecipeBookMenu {
       RecipeHolder<CraftingRecipe> typedRecipe = (RecipeHolder<CraftingRecipe>)recipe;
       this.beginPlacingRecipe();
 
-      RecipeBookMenu.PostPlaceAction var8;
       try {
          List<Slot> inputSlots = this.getInputGridSlots();
-         var8 = ServerPlaceRecipe.placeRecipe(new ServerPlaceRecipe.CraftingMenuAccess<CraftingRecipe>() {
-            {
-               Objects.requireNonNull(AbstractCraftingMenu.this);
-            }
-
+         return ServerPlaceRecipe.placeRecipe(new ServerPlaceRecipe.CraftingMenuAccess<CraftingRecipe>() {
             @Override
             public void fillCraftSlotsStackedContents(final StackedItemContents stackedContents) {
                AbstractCraftingMenu.this.fillCraftSlotsStackedContents(stackedContents);
@@ -67,10 +61,8 @@ public abstract class AbstractCraftingMenu extends RecipeBookMenu {
             }
          }, this.width, this.height, inputSlots, inputSlots, inventory, typedRecipe, useMaxItems, allowDroppingItemsToClear);
       } finally {
-         this.finishPlacingRecipe(level, (RecipeHolder<CraftingRecipe>)recipe);
+         this.finishPlacingRecipe(level, typedRecipe);
       }
-
-      return var8;
    }
 
    protected void beginPlacingRecipe() {

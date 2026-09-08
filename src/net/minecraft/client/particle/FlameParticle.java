@@ -33,13 +33,13 @@ public class FlameParticle extends RisingParticle {
 
    @Override
    public float getQuadSize(final float a) {
-      float s = ((float)this.age + a) / (float)this.lifetime;
+      float s = (this.age + a) / this.lifetime;
       return this.quadSize * (1.0F - s * s * 0.5F);
    }
 
    @Override
    public int getLightCoords(final float a) {
-      return LightCoordsUtil.addSmoothBlockEmission(super.getLightCoords(a), ((float)this.age + a) / (float)this.lifetime);
+      return LightCoordsUtil.addSmoothBlockEmission(super.getLightCoords(a), (this.age + a) / this.lifetime);
    }
 
    public static class Provider implements ParticleProvider<SimpleParticleType> {

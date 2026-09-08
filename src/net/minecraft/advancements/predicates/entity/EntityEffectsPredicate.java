@@ -11,7 +11,7 @@ public record EntityEffectsPredicate(MobEffectsPredicate effects) implements Ent
    public static final Codec<EntityEffectsPredicate> CODEC = MobEffectsPredicate.CODEC.xmap(EntityEffectsPredicate::new, EntityEffectsPredicate::effects);
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
       return this.effects.matches(entity);
    }
 }

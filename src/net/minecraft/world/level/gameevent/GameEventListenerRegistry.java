@@ -35,7 +35,7 @@ public interface GameEventListenerRegistry {
    boolean visitInRangeListeners(Holder<GameEvent> event, Vec3 sourcePosition, GameEvent.Context context, GameEventListenerRegistry.ListenerVisitor action);
 
    @FunctionalInterface
-   public interface ListenerVisitor {
+   interface ListenerVisitor {
       void visit(GameEventListener listener, Vec3 position);
    }
 }

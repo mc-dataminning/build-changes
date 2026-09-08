@@ -4,15 +4,13 @@ import com.google.gson.JsonObject;
 import org.jspecify.annotations.Nullable;
 
 public abstract class StoredUserEntry<T> {
-   @Nullable
-   private final T user;
+   private final @Nullable T user;
 
-   public StoredUserEntry(@Nullable final T user) {
+   public StoredUserEntry(final @Nullable T user) {
       this.user = user;
    }
 
-   @Nullable
-   public T getUser() {
+   public @Nullable T getUser() {
       return this.user;
    }
 

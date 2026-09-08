@@ -10,10 +10,9 @@ import net.minecraft.world.level.gamerules.GameRules;
 import org.jspecify.annotations.Nullable;
 
 public interface RecipeCraftingHolder {
-   void setRecipeUsed(@Nullable final RecipeHolder<?> recipeUsed);
+   void setRecipeUsed(final @Nullable RecipeHolder<?> recipeUsed);
 
-   @Nullable
-   RecipeHolder<?> getRecipeUsed();
+   @Nullable RecipeHolder<?> getRecipeUsed();
 
    default void awardUsedRecipes(final Player player, final List<ItemStack> itemStacks) {
       RecipeHolder<?> recipeUsed = this.getRecipeUsed();
@@ -29,9 +28,9 @@ public interface RecipeCraftingHolder {
    default boolean setRecipeUsed(final ServerPlayer player, final RecipeHolder<?> recipe) {
       if (!recipe.value().isSpecial() && player.level().getGameRules().get(GameRules.LIMITED_CRAFTING) && !player.getRecipeBook().contains(recipe.id())) {
          return false;
-      } else {
-         this.setRecipeUsed(recipe);
-         return true;
       }
+
+      this.setRecipeUsed(recipe);
+      return true;
    }
 }

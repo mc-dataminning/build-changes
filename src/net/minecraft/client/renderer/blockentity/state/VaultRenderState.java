@@ -4,7 +4,6 @@ import net.minecraft.client.renderer.entity.state.ItemClusterRenderState;
 import org.jspecify.annotations.Nullable;
 
 public class VaultRenderState extends BlockEntityRenderState {
-   @Nullable
-   public ItemClusterRenderState displayItem;
+   public @Nullable ItemClusterRenderState displayItem;
    public float spin;
 }

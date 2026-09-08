@@ -14,8 +14,8 @@ public class PlayerHeadItem extends StandingAndWallBlockItem {
    @Override
    public Component getName(final ItemStack itemStack) {
       ResolvableProfile profile = itemStack.get(DataComponents.PROFILE);
-      return (Component)(profile != null && profile.name().isPresent()
+      return profile != null && profile.name().isPresent()
          ? Component.translatable(this.descriptionId + ".named", profile.name().get())
-         : super.getName(itemStack));
+         : super.getName(itemStack);
    }
 }

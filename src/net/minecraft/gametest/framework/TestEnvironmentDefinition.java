@@ -57,7 +57,7 @@ public interface TestEnvironmentDefinition<SavedDataType> {
       return new TestEnvironmentDefinition.Activation<>(environment.setup(level), environment, level);
    }
 
-   public static class Activation<T> {
+   class Activation<T> {
       private final T value;
       private final TestEnvironmentDefinition<T> definition;
       private final ServerLevel level;
@@ -73,11 +73,11 @@ public interface TestEnvironmentDefinition<SavedDataType> {
       }
    }
 
-   public static record AllOf(List<Holder<TestEnvironmentDefinition<?>>> definitions)
+   record AllOf(List<Holder<TestEnvironmentDefinition<?>>> definitions)
       implements TestEnvironmentDefinition<List<? extends TestEnvironmentDefinition.Activation<?>>> {
       public static final MapCodec<TestEnvironmentDefinition.AllOf> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(TestEnvironmentDefinition.CODEC.listOf().fieldOf("definitions").forGetter(TestEnvironmentDefinition.AllOf::definitions))
-               .apply(i, TestEnvironmentDefinition.AllOf::new)
+            .apply(i, TestEnvironmentDefinition.AllOf::new)
       );
 
       public AllOf(final TestEnvironmentDefinition<?>... defs) {
@@ -102,19 +102,19 @@ public interface TestEnvironmentDefinition<SavedDataType> {
       }
    }
 
-   public static record ClockTime(Holder<WorldClock> clock, int time) implements TestEnvironmentDefinition<Long> {
+   record ClockTime(Holder<WorldClock> clock, int time) implements TestEnvironmentDefinition<Long> {
       public static final MapCodec<TestEnvironmentDefinition.ClockTime> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  WorldClock.CODEC.fieldOf("clock").forGetter(TestEnvironmentDefinition.ClockTime::clock),
-                  ExtraCodecs.NON_NEGATIVE_INT.fieldOf("time").forGetter(TestEnvironmentDefinition.ClockTime::time)
-               )
-               .apply(i, TestEnvironmentDefinition.ClockTime::new)
+               WorldClock.CODEC.fieldOf("clock").forGetter(TestEnvironmentDefinition.ClockTime::clock),
+               ExtraCodecs.NON_NEGATIVE_INT.fieldOf("time").forGetter(TestEnvironmentDefinition.ClockTime::time)
+            )
+            .apply(i, TestEnvironmentDefinition.ClockTime::new)
       );
 
       public Long setup(final ServerLevel level) {
          MinecraftServer server = level.getServer();
          long previous = server.clockManager().getInstance(this.clock).totalTicks();
-         server.clockManager().setTotalTicks(this.clock, (long)this.time);
+         server.clockManager().setTotalTicks(this.clock, this.time);
          return previous;
       }
 
@@ -129,14 +129,14 @@ public interface TestEnvironmentDefinition<SavedDataType> {
       }
    }
 
-   public static record Functions(Optional<Identifier> setupFunction, Optional<Identifier> teardownFunction) implements TestEnvironmentDefinition<Unit> {
+   record Functions(Optional<Identifier> setupFunction, Optional<Identifier> teardownFunction) implements TestEnvironmentDefinition<Unit> {
       private static final Logger LOGGER = LogUtils.getLogger();
       public static final MapCodec<TestEnvironmentDefinition.Functions> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Identifier.CODEC.optionalFieldOf("setup").forGetter(TestEnvironmentDefinition.Functions::setupFunction),
-                  Identifier.CODEC.optionalFieldOf("teardown").forGetter(TestEnvironmentDefinition.Functions::teardownFunction)
-               )
-               .apply(i, TestEnvironmentDefinition.Functions::new)
+               Identifier.CODEC.optionalFieldOf("setup").forGetter(TestEnvironmentDefinition.Functions::setupFunction),
+               Identifier.CODEC.optionalFieldOf("teardown").forGetter(TestEnvironmentDefinition.Functions::teardownFunction)
+            )
+            .apply(i, TestEnvironmentDefinition.Functions::new)
       );
 
       public Unit setup(final ServerLevel level) {
@@ -169,10 +169,10 @@ public interface TestEnvironmentDefinition<SavedDataType> {
       }
    }
 
-   public static record SetDifficulty(Difficulty difficulty) implements TestEnvironmentDefinition<Difficulty> {
+   record SetDifficulty(Difficulty difficulty) implements TestEnvironmentDefinition<Difficulty> {
       public static final MapCodec<TestEnvironmentDefinition.SetDifficulty> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(Difficulty.CODEC.fieldOf("difficulty").forGetter(TestEnvironmentDefinition.SetDifficulty::difficulty))
-               .apply(i, TestEnvironmentDefinition.SetDifficulty::new)
+            .apply(i, TestEnvironmentDefinition.SetDifficulty::new)
       );
 
       public Difficulty setup(final ServerLevel level) {
@@ -191,10 +191,10 @@ public interface TestEnvironmentDefinition<SavedDataType> {
       }
    }
 
-   public static record SetGameRules(GameRuleMap gameRulesMap) implements TestEnvironmentDefinition<GameRuleMap> {
+   record SetGameRules(GameRuleMap gameRulesMap) implements TestEnvironmentDefinition<GameRuleMap> {
       public static final MapCodec<TestEnvironmentDefinition.SetGameRules> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(GameRuleMap.CODEC.fieldOf("rules").forGetter(TestEnvironmentDefinition.SetGameRules::gameRulesMap))
-               .apply(i, TestEnvironmentDefinition.SetGameRules::new)
+            .apply(i, TestEnvironmentDefinition.SetGameRules::new)
       );
 
       public GameRuleMap setup(final ServerLevel level) {
@@ -219,10 +219,10 @@ public interface TestEnvironmentDefinition<SavedDataType> {
       }
    }
 
-   public static record Timelines(List<Holder<Timeline>> timelines) implements TestEnvironmentDefinition<EnvironmentAttributeSystem> {
+   record Timelines(List<Holder<Timeline>> timelines) implements TestEnvironmentDefinition<EnvironmentAttributeSystem> {
       public static final MapCodec<TestEnvironmentDefinition.Timelines> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(Timeline.CODEC.listOf().fieldOf("timelines").forGetter(TestEnvironmentDefinition.Timelines::timelines))
-               .apply(i, TestEnvironmentDefinition.Timelines::new)
+            .apply(i, TestEnvironmentDefinition.Timelines::new)
       );
 
       public EnvironmentAttributeSystem setup(final ServerLevel level) {
@@ -245,10 +245,10 @@ public interface TestEnvironmentDefinition<SavedDataType> {
       }
    }
 
-   public static record Weather(TestEnvironmentDefinition.Weather.Type weather) implements TestEnvironmentDefinition<TestEnvironmentDefinition.Weather.Type> {
+   record Weather(TestEnvironmentDefinition.Weather.Type weather) implements TestEnvironmentDefinition<TestEnvironmentDefinition.Weather.Type> {
       public static final MapCodec<TestEnvironmentDefinition.Weather> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(TestEnvironmentDefinition.Weather.Type.CODEC.fieldOf("weather").forGetter(TestEnvironmentDefinition.Weather::weather))
-               .apply(i, TestEnvironmentDefinition.Weather::new)
+            .apply(i, TestEnvironmentDefinition.Weather::new)
       );
 
       public TestEnvironmentDefinition.Weather.Type setup(final ServerLevel level) {
@@ -275,7 +275,7 @@ public interface TestEnvironmentDefinition<SavedDataType> {
          return CODEC;
       }
 
-      public static enum Type implements StringRepresentable {
+      public enum Type implements StringRepresentable {
          CLEAR("clear", 100000, 0, false, false),
          RAIN("rain", 0, 100000, true, false),
          THUNDER("thunder", 0, 100000, true, true);
@@ -287,7 +287,7 @@ public interface TestEnvironmentDefinition<SavedDataType> {
          private final boolean raining;
          private final boolean thundering;
 
-         private Type(final String id, final int clearTime, final int rainTime, final boolean raining, final boolean thundering) {
+         Type(final String id, final int clearTime, final int rainTime, final boolean raining, final boolean thundering) {
             this.id = id;
             this.clearTime = clearTime;
             this.rainTime = rainTime;

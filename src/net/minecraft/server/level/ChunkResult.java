@@ -20,17 +20,14 @@ public interface ChunkResult<T> {
 
    boolean isSuccess();
 
-   @Nullable
-   T orElse(@Nullable T orElse);
+   @Nullable T orElse(@Nullable T orElse);
 
-   @Nullable
-   static <R> R orElse(final ChunkResult<? extends R> chunkResult, @Nullable final R orElse) {
+   static <R> @Nullable R orElse(final ChunkResult<? extends R> chunkResult, final @Nullable R orElse) {
       R result = (R)chunkResult.orElse(null);
       return result != null ? result : orElse;
    }
 
-   @Nullable
-   String getError();
+   @Nullable String getError();
 
    ChunkResult<T> ifSuccess(Consumer<T> consumer);
 
@@ -38,15 +35,14 @@ public interface ChunkResult<T> {
 
    <E extends Throwable> T orElseThrow(Supplier<E> exceptionSupplier) throws E;
 
-   public static record Fail<T>(Supplier<String> error) implements ChunkResult<T> {
+   record Fail<T>(Supplier<String> error) implements ChunkResult<T> {
       @Override
       public boolean isSuccess() {
          return false;
       }
 
-      @Nullable
       @Override
-      public T orElse(@Nullable final T orElse) {
+      public @Nullable T orElse(final @Nullable T orElse) {
          return orElse;
       }
 
@@ -71,20 +67,19 @@ public interface ChunkResult<T> {
       }
    }
 
-   public static record Success<T>(T value) implements ChunkResult<T> {
+   record Success<T>(T value) implements ChunkResult<T> {
       @Override
       public boolean isSuccess() {
          return true;
       }
 
       @Override
-      public T orElse(@Nullable final T orElse) {
+      public T orElse(final @Nullable T orElse) {
          return this.value;
       }
 
-      @Nullable
       @Override
-      public String getError() {
+      public @Nullable String getError() {
          return null;
       }
 

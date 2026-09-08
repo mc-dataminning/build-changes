@@ -26,8 +26,7 @@ import org.jspecify.annotations.Nullable;
 public abstract class PatrollingMonster extends Monster {
    private static final boolean DEFAULT_PATROL_LEADER = false;
    private static final boolean DEFAULT_PATROLLING = false;
-   @Nullable
-   private BlockPos patrolTarget;
+   private @Nullable BlockPos patrolTarget;
    private boolean patrolLeader = false;
    private boolean patrolling = false;
 
@@ -61,10 +60,9 @@ public abstract class PatrollingMonster extends Monster {
       return true;
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+   public @Nullable SpawnGroupData finalizeSpawn(
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       if (spawnReason != EntitySpawnReason.PATROL
          && spawnReason != EntitySpawnReason.EVENT
@@ -106,8 +104,7 @@ public abstract class PatrollingMonster extends Monster {
       this.patrolling = true;
    }
 
-   @Nullable
-   public BlockPos getPatrolTarget() {
+   public @Nullable BlockPos getPatrolTarget() {
       return this.patrolTarget;
    }
 
@@ -188,9 +185,7 @@ public abstract class PatrollingMonster extends Monster {
                Vec3 moveTarget = longDistanceTarget.subtract(selfVector).normalize().scale(10.0).add(selfVector);
                BlockPos pathTarget = BlockPos.containing(moveTarget);
                pathTarget = this.mob.level().getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, pathTarget);
-               if (!navigation.moveTo(
-                  (double)pathTarget.getX(), (double)pathTarget.getY(), (double)pathTarget.getZ(), patrolLeader ? this.leaderSpeedModifier : this.speedModifier
-               )) {
+               if (!navigation.moveTo(pathTarget.getX(), pathTarget.getY(), pathTarget.getZ(), patrolLeader ? this.leaderSpeedModifier : this.speedModifier)) {
                   this.moveRandomly();
                   this.cooldownUntil = this.mob.level().getGameTime() + 200L;
                } else if (patrolLeader) {
@@ -213,7 +208,7 @@ public abstract class PatrollingMonster extends Monster {
          BlockPos pathTarget = this.mob
             .level()
             .getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, this.mob.blockPosition().offset(-8 + random.nextInt(16), 0, -8 + random.nextInt(16)));
-         return this.mob.getNavigation().moveTo((double)pathTarget.getX(), (double)pathTarget.getY(), (double)pathTarget.getZ(), this.speedModifier);
+         return this.mob.getNavigation().moveTo(pathTarget.getX(), pathTarget.getY(), pathTarget.getZ(), this.speedModifier);
       }
    }
 }

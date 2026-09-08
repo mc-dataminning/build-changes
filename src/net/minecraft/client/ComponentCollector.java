@@ -12,8 +12,7 @@ public class ComponentCollector {
       this.parts.add(component);
    }
 
-   @Nullable
-   public FormattedText getResult() {
+   public @Nullable FormattedText getResult() {
       if (this.parts.isEmpty()) {
          return null;
       } else {

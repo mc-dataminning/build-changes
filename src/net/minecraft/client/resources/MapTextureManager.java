@@ -4,7 +4,6 @@ import com.mojang.blaze3d.platform.NativeImage;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Objects;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.resources.Identifier;
@@ -45,10 +44,10 @@ public class MapTextureManager implements AutoCloseable {
       return (MapTextureManager.MapInstance)this.maps.compute(id.id(), (k, instance) -> {
          if (instance == null) {
             return new MapTextureManager.MapInstance(k, data);
-         } else {
-            instance.replaceMapData(data);
-            return instance;
          }
+
+         instance.replaceMapData(data);
+         return instance;
       });
    }
 
@@ -60,13 +59,10 @@ public class MapTextureManager implements AutoCloseable {
    private class MapInstance implements AutoCloseable {
       private MapItemSavedData data;
       private final DynamicTexture texture;
-      private boolean requiresUpload;
+      private boolean requiresUpload = true;
       private final Identifier location;
 
       private MapInstance(final int id, final MapItemSavedData data) {
-         Objects.requireNonNull(MapTextureManager.this);
-         super();
-         this.requiresUpload = true;
          this.data = data;
          this.texture = new DynamicTexture(() -> "Map " + id, 128, 128, true);
          this.location = Identifier.withDefaultNamespace("map/" + id);

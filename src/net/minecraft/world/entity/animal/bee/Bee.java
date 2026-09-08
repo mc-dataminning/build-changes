@@ -5,7 +5,6 @@ import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
 import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -129,8 +128,7 @@ public class Bee extends Animal implements NeutralMob {
    private static final int DEFAULT_CANNOT_ENTER_HIVE_TICKS = 0;
    private static final int DEFAULT_CROPS_GROWN_SINCE_POLLINATION = 0;
    private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
-   @Nullable
-   private EntityReference<LivingEntity> persistentAngerTarget;
+   private @Nullable EntityReference<LivingEntity> persistentAngerTarget;
    private float rollAmount;
    private float rollAmountO;
    private int timeSinceSting;
@@ -143,10 +141,8 @@ public class Bee extends Animal implements NeutralMob {
    private static final int MIN_FIND_FLOWER_RETRY_COOLDOWN = 20;
    private static final int MAX_FIND_FLOWER_RETRY_COOLDOWN = 60;
    private int remainingCooldownBeforeLocatingNewFlower = Mth.nextInt(this.random, 20, 60);
-   @Nullable
-   private BlockPos savedFlowerPos;
-   @Nullable
-   private BlockPos hivePos;
+   private @Nullable BlockPos savedFlowerPos;
+   private @Nullable BlockPos hivePos;
    private Bee.BeePollinateGoal beePollinateGoal;
    private Bee.BeeGoToHiveGoal goToHiveGoal;
    private Bee.BeeGoToKnownFlowerGoal goToKnownFlowerGoal;
@@ -194,7 +190,7 @@ public class Bee extends Animal implements NeutralMob {
       this.goalSelector.addGoal(7, new Bee.BeeGrowCropGoal());
       this.goalSelector.addGoal(8, new Bee.BeeWanderGoal());
       this.goalSelector.addGoal(9, new FloatGoal(this));
-      this.targetSelector.addGoal(1, new Bee.BeeHurtByOtherGoal(this).setAlertOthers(new Class[0]));
+      this.targetSelector.addGoal(1, new Bee.BeeHurtByOtherGoal(this).setAlertOthers());
       this.targetSelector.addGoal(2, new Bee.BeeBecomeAngryTargetGoal(this));
       this.targetSelector.addGoal(3, new ResetUniversalAngerTargetGoal<>(this, true));
    }
@@ -228,7 +224,7 @@ public class Bee extends Animal implements NeutralMob {
    @Override
    public boolean doHurtTarget(final ServerLevel level, final Entity target) {
       DamageSource damageSource = this.damageSources().sting(this);
-      boolean wasHurt = target.hurtServer(level, damageSource, (float)((int)this.getAttributeValue(Attributes.ATTACK_DAMAGE)));
+      boolean wasHurt = target.hurtServer(level, damageSource, (int)this.getAttributeValue(Attributes.ATTACK_DAMAGE));
       if (wasHurt) {
          EnchantmentHelper.doPostAttackEffects(level, target, damageSource);
          if (target instanceof LivingEntity livingTarget) {
@@ -299,8 +295,7 @@ public class Bee extends Animal implements NeutralMob {
       }
    }
 
-   @Nullable
-   public BlockPos getSavedFlowerPos() {
+   public @Nullable BlockPos getSavedFlowerPos() {
       return this.savedFlowerPos;
    }
 
@@ -410,20 +405,19 @@ public class Bee extends Animal implements NeutralMob {
       this.entityData.set(DATA_ANGER_END_TIME, endTime);
    }
 
-   @Nullable
    @Override
-   public EntityReference<LivingEntity> getPersistentAngerTarget() {
+   public @Nullable EntityReference<LivingEntity> getPersistentAngerTarget() {
       return this.persistentAngerTarget;
    }
 
    @Override
-   public void setPersistentAngerTarget(@Nullable final EntityReference<LivingEntity> persistentAngerTarget) {
+   public void setPersistentAngerTarget(final @Nullable EntityReference<LivingEntity> persistentAngerTarget) {
       this.persistentAngerTarget = persistentAngerTarget;
    }
 
    @Override
    public void startPersistentAngerTimer() {
-      this.setTimeToRemainAngry((long)PERSISTENT_ANGER_TIME.sample(this.random));
+      this.setTimeToRemainAngry(PERSISTENT_ANGER_TIME.sample(this.random));
    }
 
    private boolean doesHiveHaveSpace(final BlockPos hivePos) {
@@ -436,8 +430,7 @@ public class Bee extends Animal implements NeutralMob {
    }
 
    @VisibleForDebug
-   @Nullable
-   public BlockPos getHivePos() {
+   public @Nullable BlockPos getHivePos() {
       return this.hivePos;
    }
 
@@ -477,8 +470,7 @@ public class Bee extends Animal implements NeutralMob {
       }
    }
 
-   @Nullable
-   private BeehiveBlockEntity getBeehiveBlockEntity() {
+   private @Nullable BeehiveBlockEntity getBeehiveBlockEntity() {
       if (this.hivePos == null) {
          return null;
       } else {
@@ -545,10 +537,6 @@ public class Bee extends Animal implements NeutralMob {
    @Override
    protected PathNavigation createNavigation(final Level level) {
       FlyingPathNavigation flyingPathNavigation = new FlyingPathNavigation(this, level) {
-         {
-            Objects.requireNonNull(Bee.this);
-         }
-
          @Override
          public boolean isStableDestination(final BlockPos pos) {
             return !this.level.getBlockState(pos.below()).isAir();
@@ -614,8 +602,7 @@ public class Bee extends Animal implements NeutralMob {
       return 0.4F;
    }
 
-   @Nullable
-   public Bee getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable Bee getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       return EntityTypes.BEE.create(level, EntitySpawnReason.BREEDING);
    }
 
@@ -646,10 +633,10 @@ public class Bee extends Animal implements NeutralMob {
    public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
       if (this.isInvulnerableTo(level, source)) {
          return false;
-      } else {
-         this.beePollinateGoal.stopPollinating();
-         return super.hurtServer(level, source, damage);
       }
+
+      this.beePollinateGoal.stopPollinating();
+      return super.hurtServer(level, source, damage);
    }
 
    @Override
@@ -659,11 +646,11 @@ public class Bee extends Animal implements NeutralMob {
 
    @Override
    public Vec3 getLeashOffset() {
-      return new Vec3(0.0, (double)(0.5F * this.getEyeHeight()), (double)(this.getBbWidth() * 0.2F));
+      return new Vec3(0.0, 0.5F * this.getEyeHeight(), this.getBbWidth() * 0.2F);
    }
 
    private boolean closerThan(final BlockPos targetPos, final int distance) {
-      return targetPos.closerThan(this.blockPosition(), (double)distance);
+      return targetPos.closerThan(this.blockPosition(), distance);
    }
 
    public void setHivePos(final BlockPos hivePos) {
@@ -672,7 +659,7 @@ public class Bee extends Animal implements NeutralMob {
 
    public static boolean attractsBees(final BlockState state) {
       if (state.is(BlockTags.BEE_ATTRACTIVE)) {
-         if (state.getValueOrElse(BlockStateProperties.WATERLOGGED, Boolean.valueOf(false))) {
+         if (state.getValueOrElse(BlockStateProperties.WATERLOGGED, false)) {
             return false;
          } else {
             return state.is(Blocks.SUNFLOWER) ? state.getValue(DoublePlantBlock.HALF) == DoubleBlockHalf.UPPER : true;
@@ -688,17 +675,12 @@ public class Bee extends Animal implements NeutralMob {
       registration.register(
          DebugSubscriptions.BEES,
          () -> new DebugBeeInfo(
-               Optional.ofNullable(this.getHivePos()), Optional.ofNullable(this.getSavedFlowerPos()), this.getTravellingTicks(), this.getBlacklistedHives()
-            )
+            Optional.ofNullable(this.getHivePos()), Optional.ofNullable(this.getSavedFlowerPos()), this.getTravellingTicks(), this.getBlacklistedHives()
+         )
       );
    }
 
    private abstract class BaseBeeGoal extends Goal {
-      private BaseBeeGoal() {
-         Objects.requireNonNull(Bee.this);
-         super();
-      }
-
       public abstract boolean canBeeUse();
 
       public abstract boolean canBeeContinueToUse();
@@ -716,7 +698,6 @@ public class Bee extends Animal implements NeutralMob {
 
    private class BeeAttackGoal extends MeleeAttackGoal {
       public BeeAttackGoal(final PathfinderMob mob, final double speedModifier, final boolean trackTarget) {
-         Objects.requireNonNull(Bee.this);
          super(mob, speedModifier, trackTarget);
       }
 
@@ -746,10 +727,10 @@ public class Bee extends Animal implements NeutralMob {
          boolean beeCanTarget = this.beeCanTarget();
          if (beeCanTarget && this.mob.getTarget() != null) {
             return super.canContinueToUse();
-         } else {
-            this.targetMob = null;
-            return false;
          }
+
+         this.targetMob = null;
+         return false;
       }
 
       private boolean beeCanTarget() {
@@ -759,11 +740,6 @@ public class Bee extends Animal implements NeutralMob {
    }
 
    private class BeeEnterHiveGoal extends Bee.BaseBeeGoal {
-      private BeeEnterHiveGoal() {
-         Objects.requireNonNull(Bee.this);
-         super();
-      }
-
       @Override
       public boolean canBeeUse() {
          if (Bee.this.hivePos != null && Bee.this.wantsToEnterHive() && Bee.this.hivePos.closerToCenterThan(Bee.this.position(), 2.0)) {
@@ -799,16 +775,12 @@ public class Bee extends Animal implements NeutralMob {
       public static final int MAX_TRAVELLING_TICKS = 2400;
       private int travellingTicks;
       private static final int MAX_BLACKLISTED_TARGETS = 3;
-      private final List<BlockPos> blacklistedTargets;
-      @Nullable
-      private Path lastPath;
+      private final List<BlockPos> blacklistedTargets = Lists.newArrayList();
+      private @Nullable Path lastPath;
       private static final int TICKS_BEFORE_HIVE_DROP = 60;
       private int ticksStuck;
 
       public BeeGoToHiveGoal() {
-         Objects.requireNonNull(Bee.this);
-         super();
-         this.blacklistedTargets = Lists.newArrayList();
          this.setFlags(EnumSet.of(Goal.Flag.MOVE));
       }
 
@@ -876,7 +848,7 @@ public class Bee extends Animal implements NeutralMob {
       private boolean pathfindDirectlyTowards(final BlockPos targetPos) {
          int closeEnough = Bee.this.closerThan(targetPos, 3) ? 1 : 2;
          Bee.this.navigation.setMaxVisitedNodesMultiplier(10.0F);
-         Bee.this.navigation.moveTo((double)targetPos.getX(), (double)targetPos.getY(), (double)targetPos.getZ(), closeEnough, 1.0);
+         Bee.this.navigation.moveTo(targetPos.getX(), targetPos.getY(), targetPos.getZ(), closeEnough, 1.0);
          return Bee.this.navigation.getPath() != null && Bee.this.navigation.getPath().canReach();
       }
 
@@ -907,10 +879,10 @@ public class Bee extends Animal implements NeutralMob {
       private boolean hasReachedTarget(final BlockPos targetPos) {
          if (Bee.this.closerThan(targetPos, 2)) {
             return true;
-         } else {
-            Path path = Bee.this.navigation.getPath();
-            return path != null && path.getTarget().equals(targetPos) && path.canReach() && path.isDone();
          }
+
+         Path path = Bee.this.navigation.getPath();
+         return path != null && path.getTarget().equals(targetPos) && path.canReach() && path.isDone();
       }
    }
 
@@ -919,8 +891,6 @@ public class Bee extends Animal implements NeutralMob {
       private int travellingTicks;
 
       public BeeGoToKnownFlowerGoal() {
-         Objects.requireNonNull(Bee.this);
-         super();
          this.setFlags(EnumSet.of(Goal.Flag.MOVE));
       }
 
@@ -971,11 +941,6 @@ public class Bee extends Animal implements NeutralMob {
    private class BeeGrowCropGoal extends Bee.BaseBeeGoal {
       private static final int GROW_CHANCE = 30;
 
-      private BeeGrowCropGoal() {
-         Objects.requireNonNull(Bee.this);
-         super();
-      }
-
       @Override
       public boolean canBeeUse() {
          if (Bee.this.getCropsGrownSincePollination() >= 10) {
@@ -999,20 +964,19 @@ public class Bee extends Animal implements NeutralMob {
                Block belowBlock = belowState.getBlock();
                BlockState growState = null;
                if (belowState.is(BlockTags.BEE_GROWABLES)) {
-                  if (belowBlock instanceof CropBlock) {
-                     CropBlock cropBlockBelow = (CropBlock)belowBlock;
+                  if (belowBlock instanceof CropBlock cropBlockBelow) {
                      if (!cropBlockBelow.isMaxAge(belowState)) {
                         growState = cropBlockBelow.getStateForAge(cropBlockBelow.getAge(belowState) + 1);
                      }
                   } else if (belowBlock instanceof StemBlock) {
                      int age = belowState.getValue(StemBlock.AGE);
                      if (age < 7) {
-                        growState = belowState.setValue(StemBlock.AGE, Integer.valueOf(age + 1));
+                        growState = belowState.setValue(StemBlock.AGE, age + 1);
                      }
                   } else if (belowState.is(Blocks.SWEET_BERRY_BUSH)) {
                      int age = belowState.getValue(SweetBerryBushBlock.AGE);
                      if (age < 3) {
-                        growState = belowState.setValue(SweetBerryBushBlock.AGE, Integer.valueOf(age + 1));
+                        growState = belowState.setValue(SweetBerryBushBlock.AGE, age + 1);
                      }
                   } else if (belowState.is(Blocks.CAVE_VINES) || belowState.is(Blocks.CAVE_VINES_PLANT)) {
                      BonemealableBlock bonemealableBlock = (BonemealableBlock)belowState.getBlock();
@@ -1035,7 +999,6 @@ public class Bee extends Animal implements NeutralMob {
 
    private class BeeHurtByOtherGoal extends HurtByTargetGoal {
       public BeeHurtByOtherGoal(final Bee bee) {
-         Objects.requireNonNull(Bee.this);
          super(bee);
       }
 
@@ -1053,11 +1016,6 @@ public class Bee extends Animal implements NeutralMob {
    }
 
    private class BeeLocateHiveGoal extends Bee.BaseBeeGoal {
-      private BeeLocateHiveGoal() {
-         Objects.requireNonNull(Bee.this);
-         super();
-      }
-
       @Override
       public boolean canBeeUse() {
          return Bee.this.remainingCooldownBeforeLocatingNewHive == 0 && !Bee.this.hasHive() && Bee.this.wantsToEnterHive();
@@ -1098,7 +1056,6 @@ public class Bee extends Animal implements NeutralMob {
 
    private class BeeLookControl extends LookControl {
       public BeeLookControl(final Mob mob) {
-         Objects.requireNonNull(Bee.this);
          super(mob);
       }
 
@@ -1126,16 +1083,12 @@ public class Bee extends Animal implements NeutralMob {
       private int successfulPollinatingTicks;
       private int lastSoundPlayedTick;
       private boolean pollinating;
-      @Nullable
-      private Vec3 hoverPos;
+      private @Nullable Vec3 hoverPos;
       private int pollinatingTicks;
       private static final int MAX_POLLINATING_TICKS = 600;
-      private Long2LongOpenHashMap unreachableFlowerCache;
+      private Long2LongOpenHashMap unreachableFlowerCache = new Long2LongOpenHashMap();
 
       public BeePollinateGoal() {
-         Objects.requireNonNull(Bee.this);
-         super();
-         this.unreachableFlowerCache = new Long2LongOpenHashMap();
          this.setFlags(EnumSet.of(Goal.Flag.MOVE));
       }
 
@@ -1152,12 +1105,7 @@ public class Bee extends Animal implements NeutralMob {
             if (nearbyPos.isPresent()) {
                Bee.this.savedFlowerPos = nearbyPos.get();
                Bee.this.navigation
-                  .moveTo(
-                     (double)Bee.this.savedFlowerPos.getX() + 0.5,
-                     (double)Bee.this.savedFlowerPos.getY() + 0.5,
-                     (double)Bee.this.savedFlowerPos.getZ() + 0.5,
-                     1.2F
-                  );
+                  .moveTo(Bee.this.savedFlowerPos.getX() + 0.5, Bee.this.savedFlowerPos.getY() + 0.5, Bee.this.savedFlowerPos.getZ() + 0.5, 1.2F);
                return true;
             } else {
                Bee.this.remainingCooldownBeforeLocatingNewFlower = Mth.nextInt(Bee.this.random, 20, 60);
@@ -1242,7 +1190,7 @@ public class Bee extends Animal implements NeutralMob {
                      if (arrivedAtHoverPos) {
                         boolean shouldChangeHoverPositions = Bee.this.random.nextInt(25) == 0;
                         if (shouldChangeHoverPositions) {
-                           this.hoverPos = new Vec3(flowerPos.x() + (double)this.getOffset(), flowerPos.y(), flowerPos.z() + (double)this.getOffset());
+                           this.hoverPos = new Vec3(flowerPos.x() + this.getOffset(), flowerPos.y(), flowerPos.z() + this.getOffset());
                            Bee.this.navigation.stop();
                         } else {
                            shouldSetWantedPos = false;
@@ -1284,15 +1232,15 @@ public class Bee extends Animal implements NeutralMob {
                if (Bee.this.level().getGameTime() < unreachableUntilTime) {
                   tempCache.put(pos.asLong(), unreachableUntilTime);
                   return false;
-               } else {
-                  Path path = Bee.this.navigation.createPath(pos, 1);
-                  if (path != null && path.canReach()) {
-                     return true;
-                  } else {
-                     tempCache.put(pos.asLong(), Bee.this.level().getGameTime() + 600L);
-                     return false;
-                  }
                }
+
+               Path path = Bee.this.navigation.createPath(pos, 1);
+               if (path != null && path.canReach()) {
+                  return true;
+               }
+
+               tempCache.put(pos.asLong(), Bee.this.level().getGameTime() + 600L);
+               return false;
             });
          this.unreachableFlowerCache = tempCache;
          return result;
@@ -1301,8 +1249,6 @@ public class Bee extends Animal implements NeutralMob {
 
    private class BeeWanderGoal extends Goal {
       public BeeWanderGoal() {
-         Objects.requireNonNull(Bee.this);
-         super();
          this.setFlags(EnumSet.of(Goal.Flag.MOVE));
       }
 
@@ -1324,8 +1270,7 @@ public class Bee extends Animal implements NeutralMob {
          }
       }
 
-      @Nullable
-      private Vec3 findPos() {
+      private @Nullable Vec3 findPos() {
          Vec3 wanderDirection;
          if (Bee.this.isHiveValid() && !Bee.this.closerThan(Bee.this.hivePos, this.getWanderThreshold())) {
             Vec3 hivePosVec = Vec3.atCenterOf(Bee.this.hivePos);
@@ -1348,15 +1293,8 @@ public class Bee extends Animal implements NeutralMob {
    }
 
    private class ValidateFlowerGoal extends Bee.BaseBeeGoal {
-      private final int validateFlowerCooldown;
-      private long lastValidateTick;
-
-      private ValidateFlowerGoal() {
-         Objects.requireNonNull(Bee.this);
-         super();
-         this.validateFlowerCooldown = Mth.nextInt(Bee.this.random, 20, 40);
-         this.lastValidateTick = -1L;
-      }
+      private final int validateFlowerCooldown = Mth.nextInt(Bee.this.random, 20, 40);
+      private long lastValidateTick = -1L;
 
       @Override
       public void start() {
@@ -1369,7 +1307,7 @@ public class Bee extends Animal implements NeutralMob {
 
       @Override
       public boolean canBeeUse() {
-         return Bee.this.level().getGameTime() > this.lastValidateTick + (long)this.validateFlowerCooldown;
+         return Bee.this.level().getGameTime() > this.lastValidateTick + this.validateFlowerCooldown;
       }
 
       @Override
@@ -1383,15 +1321,8 @@ public class Bee extends Animal implements NeutralMob {
    }
 
    private class ValidateHiveGoal extends Bee.BaseBeeGoal {
-      private final int VALIDATE_HIVE_COOLDOWN;
-      private long lastValidateTick;
-
-      private ValidateHiveGoal() {
-         Objects.requireNonNull(Bee.this);
-         super();
-         this.VALIDATE_HIVE_COOLDOWN = Mth.nextInt(Bee.this.random, 20, 40);
-         this.lastValidateTick = -1L;
-      }
+      private final int VALIDATE_HIVE_COOLDOWN = Mth.nextInt(Bee.this.random, 20, 40);
+      private long lastValidateTick = -1L;
 
       @Override
       public void start() {
@@ -1404,7 +1335,7 @@ public class Bee extends Animal implements NeutralMob {
 
       @Override
       public boolean canBeeUse() {
-         return Bee.this.level().getGameTime() > this.lastValidateTick + (long)this.VALIDATE_HIVE_COOLDOWN;
+         return Bee.this.level().getGameTime() > this.lastValidateTick + this.VALIDATE_HIVE_COOLDOWN;
       }
 
       @Override

@@ -155,21 +155,16 @@ public class V99 extends Schema {
          map,
          "EntityHorse",
          name -> DSL.optionalFields(
-               "Items",
-               DSL.list(References.ITEM_STACK.in(schema)),
-               "ArmorItem",
-               References.ITEM_STACK.in(schema),
-               "SaddleItem",
-               References.ITEM_STACK.in(schema)
-            )
+            "Items", DSL.list(References.ITEM_STACK.in(schema)), "ArmorItem", References.ITEM_STACK.in(schema), "SaddleItem", References.ITEM_STACK.in(schema)
+         )
       );
       schema.registerSimple(map, "Rabbit");
       schema.register(
          map,
          "Villager",
          name -> DSL.optionalFields(
-               "Inventory", DSL.list(References.ITEM_STACK.in(schema)), "Offers", DSL.optionalFields("Recipes", DSL.list(References.VILLAGER_TRADE.in(schema)))
-            )
+            "Inventory", DSL.list(References.ITEM_STACK.in(schema)), "Offers", DSL.optionalFields("Recipes", DSL.list(References.VILLAGER_TRADE.in(schema)))
+         )
       );
       schema.registerSimple(map, "EnderCrystal");
       schema.register(map, "AreaEffectCloud", name -> DSL.optionalFields("Particle", References.PARTICLE.in(schema)));
@@ -229,8 +224,8 @@ public class V99 extends Schema {
          false,
          References.LEVEL,
          () -> DSL.optionalFields(
-               "CustomBossEvents", DSL.compoundList(DSL.optionalFields("Name", References.TEXT_COMPONENT.in(schema))), References.LIGHTWEIGHT_LEVEL.in(schema)
-            )
+            "CustomBossEvents", DSL.compoundList(DSL.optionalFields("Name", References.TEXT_COMPONENT.in(schema))), References.LIGHTWEIGHT_LEVEL.in(schema)
+         )
       );
       schema.registerType(false, References.LIGHTWEIGHT_LEVEL, DSL::remainder);
       schema.registerType(
@@ -242,16 +237,16 @@ public class V99 extends Schema {
          false,
          References.CHUNK,
          () -> DSL.fields(
-               "Level",
-               DSL.optionalFields(
-                  "Entities",
-                  DSL.list(References.ENTITY_TREE.in(schema)),
-                  "TileEntities",
-                  DSL.list(DSL.or(References.BLOCK_ENTITY.in(schema), DSL.remainder())),
-                  "TileTicks",
-                  DSL.list(DSL.fields("i", References.BLOCK_NAME.in(schema)))
-               )
+            "Level",
+            DSL.optionalFields(
+               "Entities",
+               DSL.list(References.ENTITY_TREE.in(schema)),
+               "TileEntities",
+               DSL.list(DSL.or(References.BLOCK_ENTITY.in(schema), DSL.remainder())),
+               "TileTicks",
+               DSL.list(DSL.fields("i", References.BLOCK_NAME.in(schema)))
             )
+         )
       );
       schema.registerType(
          true,
@@ -264,18 +259,18 @@ public class V99 extends Schema {
          true,
          References.ENTITY,
          () -> DSL.and(
-               References.ENTITY_EQUIPMENT.in(schema),
-               DSL.optionalFields("CustomName", DSL.constType(DSL.string()), DSL.taggedChoiceLazy("id", DSL.string(), entityTypes))
-            )
+            References.ENTITY_EQUIPMENT.in(schema),
+            DSL.optionalFields("CustomName", DSL.constType(DSL.string()), DSL.taggedChoiceLazy("id", DSL.string(), entityTypes))
+         )
       );
       schema.registerType(
          true,
          References.ITEM_STACK,
          () -> DSL.hook(
-               DSL.optionalFields("id", DSL.or(DSL.constType(DSL.intType()), References.ITEM_NAME.in(schema)), "tag", itemStackTag(schema)),
-               ADD_NAMES,
-               HookFunction.IDENTITY
-            )
+            DSL.optionalFields("id", DSL.or(DSL.constType(DSL.intType()), References.ITEM_NAME.in(schema)), "tag", itemStackTag(schema)),
+            ADD_NAMES,
+            HookFunction.IDENTITY
+         )
       );
       schema.registerType(false, References.OPTIONS, DSL::remainder);
       schema.registerType(false, References.BLOCK_NAME, () -> DSL.or(DSL.constType(DSL.intType()), DSL.constType(NamespacedSchema.namespacedString())));
@@ -303,16 +298,16 @@ public class V99 extends Schema {
          false,
          References.SAVED_DATA_SCOREBOARD,
          () -> DSL.optionalFields(
-               "data",
-               DSL.optionalFields(
-                  "Objectives",
-                  DSL.list(References.OBJECTIVE.in(schema)),
-                  "Teams",
-                  DSL.list(References.TEAM.in(schema)),
-                  "PlayerScores",
-                  DSL.list(DSL.optionalFields("display", References.TEXT_COMPONENT.in(schema)))
-               )
+            "data",
+            DSL.optionalFields(
+               "Objectives",
+               DSL.list(References.OBJECTIVE.in(schema)),
+               "Teams",
+               DSL.list(References.TEAM.in(schema)),
+               "PlayerScores",
+               DSL.list(DSL.optionalFields("display", References.TEXT_COMPONENT.in(schema)))
             )
+         )
       );
       schema.registerType(false, References.SAVED_DATA_STOPWATCHES, DSL::remainder);
       schema.registerType(
@@ -332,13 +327,13 @@ public class V99 extends Schema {
          false,
          References.TEAM,
          () -> DSL.optionalFields(
-               "MemberNamePrefix",
-               References.TEXT_COMPONENT.in(schema),
-               "MemberNameSuffix",
-               References.TEXT_COMPONENT.in(schema),
-               "DisplayName",
-               References.TEXT_COMPONENT.in(schema)
-            )
+            "MemberNamePrefix",
+            References.TEXT_COMPONENT.in(schema),
+            "MemberNameSuffix",
+            References.TEXT_COMPONENT.in(schema),
+            "DisplayName",
+            References.TEXT_COMPONENT.in(schema)
+         )
       );
       schema.registerType(true, References.UNTAGGED_SPAWNER, DSL::remainder);
       schema.registerType(false, References.POI_CHUNK, DSL::remainder);
@@ -356,15 +351,15 @@ public class V99 extends Schema {
          false,
          References.STRUCTURE,
          () -> DSL.optionalFields(
-               "entities",
-               DSL.list(DSL.optionalFields("nbt", References.ENTITY_TREE.in(schema))),
-               "blocks",
-               DSL.list(DSL.optionalFields("nbt", References.BLOCK_ENTITY.in(schema))),
-               "palette",
-               DSL.list(References.BLOCK_STATE.in(schema)),
-               "palettes",
-               DSL.list(DSL.list(References.BLOCK_STATE.in(schema)))
-            )
+            "entities",
+            DSL.list(DSL.optionalFields("nbt", References.ENTITY_TREE.in(schema))),
+            "blocks",
+            DSL.list(DSL.optionalFields("nbt", References.BLOCK_ENTITY.in(schema))),
+            "palette",
+            DSL.list(References.BLOCK_STATE.in(schema)),
+            "palettes",
+            DSL.list(DSL.list(References.BLOCK_STATE.in(schema)))
+         )
       );
       schema.registerType(false, References.BLOCK_STATE, DSL::remainder);
       schema.registerType(false, References.FLAT_BLOCK_STATE, DSL::remainder);
@@ -389,25 +384,25 @@ public class V99 extends Schema {
 
    protected static <T> T addNames(final Dynamic<T> input, final Map<String, String> itemToBlockEntityMap, final Map<String, String> itemToEntityMap) {
       return (T)input.update("tag", itemStackTag -> itemStackTag.update("BlockEntityTag", blockEntity -> {
-            String itemId = input.get("id").asString().result().map(NamespacedSchema::ensureNamespaced).orElse("minecraft:air");
-            if (!"minecraft:air".equals(itemId)) {
-               String expectedId = itemToBlockEntityMap.get(itemId);
-               if (expectedId != null) {
-                  return blockEntity.set("id", input.createString(expectedId));
-               }
-
-               LOGGER.warn("Unable to resolve BlockEntity for ItemStack: {}", itemId);
+         String itemId = input.get("id").asString().result().map(NamespacedSchema::ensureNamespaced).orElse("minecraft:air");
+         if (!"minecraft:air".equals(itemId)) {
+            String expectedId = itemToBlockEntityMap.get(itemId);
+            if (expectedId != null) {
+               return blockEntity.set("id", input.createString(expectedId));
             }
 
-            return blockEntity;
-         }).update("EntityTag", entity -> {
-            if (entity.get("id").result().isPresent()) {
-               return entity;
-            } else {
-               String itemId = NamespacedSchema.ensureNamespaced(input.get("id").asString(""));
-               String expectedId = itemToEntityMap.get(itemId);
-               return expectedId != null ? entity.set("id", input.createString(expectedId)) : entity;
-            }
-         })).getValue();
+            LOGGER.warn("Unable to resolve BlockEntity for ItemStack: {}", itemId);
+         }
+
+         return blockEntity;
+      }).update("EntityTag", entity -> {
+         if (entity.get("id").result().isPresent()) {
+            return entity;
+         }
+
+         String itemId = NamespacedSchema.ensureNamespaced(input.get("id").asString(""));
+         String expectedId = itemToEntityMap.get(itemId);
+         return expectedId != null ? entity.set("id", input.createString(expectedId)) : entity;
+      })).getValue();
    }
 }

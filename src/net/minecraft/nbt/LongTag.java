@@ -37,11 +37,8 @@ public record LongTag(long value) implements NumericTag {
       }
    };
 
-   @Deprecated(
-      forRemoval = true
-   )
-   public LongTag(long value) {
-      this.value = value;
+   @Deprecated(forRemoval = true)
+   public LongTag {
    }
 
    public static LongTag valueOf(final long i) {
@@ -89,17 +86,17 @@ public record LongTag(long value) implements NumericTag {
 
    @Override
    public short shortValue() {
-      return (short)((int)(this.value & 65535L));
+      return (short)(this.value & 65535L);
    }
 
    @Override
    public byte byteValue() {
-      return (byte)((int)(this.value & 255L));
+      return (byte)(this.value & 255L);
    }
 
    @Override
    public double doubleValue() {
-      return (double)this.value;
+      return this.value;
    }
 
    @Override
@@ -131,7 +128,7 @@ public record LongTag(long value) implements NumericTag {
 
       static {
          for (int i = 0; i < cache.length; i++) {
-            cache[i] = new LongTag((long)(-128 + i));
+            cache[i] = new LongTag(-128 + i);
          }
       }
    }

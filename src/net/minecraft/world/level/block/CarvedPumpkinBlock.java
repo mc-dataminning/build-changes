@@ -29,18 +29,12 @@ import org.jspecify.annotations.Nullable;
 
 public class CarvedPumpkinBlock extends HorizontalDirectionalBlock {
    public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-   @Nullable
-   private BlockPattern snowGolemBase;
-   @Nullable
-   private BlockPattern snowGolemFull;
-   @Nullable
-   private BlockPattern ironGolemBase;
-   @Nullable
-   private BlockPattern ironGolemFull;
-   @Nullable
-   private BlockPattern copperGolemBase;
-   @Nullable
-   private BlockPattern copperGolemFull;
+   private @Nullable BlockPattern snowGolemBase;
+   private @Nullable BlockPattern snowGolemFull;
+   private @Nullable BlockPattern ironGolemBase;
+   private @Nullable BlockPattern ironGolemFull;
+   private @Nullable BlockPattern copperGolemBase;
+   private @Nullable BlockPattern copperGolemFull;
    private static final Predicate<BlockState> PUMPKINS_PREDICATE = input -> input.is(Blocks.CARVED_PUMPKIN) || input.is(Blocks.JACK_O_LANTERN);
 
    protected CarvedPumpkinBlock(final BlockBehaviour.Properties properties) {
@@ -105,7 +99,7 @@ public class CarvedPumpkinBlock extends HorizontalDirectionalBlock {
 
    private static void spawnGolemInWorld(final Level level, final BlockPattern.BlockPatternMatch match, final Entity golem, final BlockPos spawnPos) {
       clearPatternBlocks(level, match);
-      golem.snapTo((double)spawnPos.getX() + 0.5, (double)spawnPos.getY() + 0.05, (double)spawnPos.getZ() + 0.5, 0.0F, 0.0F);
+      golem.snapTo(spawnPos.getX() + 0.5, spawnPos.getY() + 0.05, spawnPos.getZ() + 0.5, 0.0F, 0.0F);
       level.addFreshEntity(golem);
 
       for (ServerPlayer player : level.getEntitiesOfClass(ServerPlayer.class, golem.getBoundingBox().inflate(5.0))) {

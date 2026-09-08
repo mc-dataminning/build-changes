@@ -52,30 +52,30 @@ public class DirectoryTemplateSource extends TemplateSource {
    public Optional<StructureTemplate> load(final Identifier id) {
       if (!Files.isDirectory(this.sourceDir)) {
          return Optional.empty();
-      } else {
-         IoSupplier<InputStream> resource = PathPackResources.getResource(this.sourceDir, this.fileToIdConverter.idToFile(id));
-         return resource == null
-            ? Optional.empty()
-            : this.load(resource, this.loadAsText, e -> LOGGER.error("Couldn't load structure from {}:{}", new Object[]{this.sourceDir, id, e}));
       }
+
+      IoSupplier<InputStream> resource = PathPackResources.getResource(this.sourceDir, this.fileToIdConverter.idToFile(id));
+      return resource == null
+         ? Optional.empty()
+         : this.load(resource, this.loadAsText, e -> LOGGER.error("Couldn't load structure from {}:{}", new Object[]{this.sourceDir, id, e}));
    }
 
    @Override
    public Stream<Identifier> list() {
       if (!Files.isDirectory(this.sourceDir)) {
          return Stream.empty();
-      } else {
-         Builder<Identifier> resultBuilder = Stream.builder();
-
-         for (String namespace : PathPackResources.getNamespaces(this.sourceDir)) {
-            PathPackResources.listResources(this.sourceDir, namespace, this.fileToIdConverter.prefix(), (id, var3) -> {
-               if (this.fileToIdConverter.extensionMatches(id)) {
-                  resultBuilder.accept(this.fileToIdConverter.fileToId(id));
-               }
-            });
-         }
-
-         return resultBuilder.build();
       }
+
+      Builder<Identifier> resultBuilder = Stream.builder();
+
+      for (String namespace : PathPackResources.getNamespaces(this.sourceDir)) {
+         PathPackResources.listResources(this.sourceDir, namespace, this.fileToIdConverter.prefix(), (id, var3) -> {
+            if (this.fileToIdConverter.extensionMatches(id)) {
+               resultBuilder.accept(this.fileToIdConverter.fileToId(id));
+            }
+         });
+      }
+
+      return resultBuilder.build();
    }
 }

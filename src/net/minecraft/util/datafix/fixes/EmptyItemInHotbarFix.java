@@ -24,12 +24,12 @@ public class EmptyItemInHotbarFix extends DataFix {
          "EmptyItemInHotbarFix",
          this.getInputSchema().getType(References.HOTBAR),
          input -> input.update(itemStackF, namedStack -> namedStack.mapSecond(itemStack -> {
-                  Optional<String> id = ((Either)itemStack.getFirst()).left().map(Pair::getSecond);
-                  Dynamic<?> remainder = (Dynamic<?>)((Pair)itemStack.getSecond()).getSecond();
-                  boolean isAir = id.isEmpty() || id.get().equals("minecraft:air");
-                  boolean isEmpty = remainder.get("Count").asInt(0) <= 0;
-                  return !isAir && !isEmpty ? itemStack : Pair.of(Either.right(Unit.INSTANCE), Pair.of(Either.right(Unit.INSTANCE), remainder.emptyMap()));
-               }))
+            Optional<String> id = ((Either)itemStack.getFirst()).left().map(Pair::getSecond);
+            Dynamic<?> remainder = (Dynamic<?>)((Pair)itemStack.getSecond()).getSecond();
+            boolean isAir = id.isEmpty() || id.get().equals("minecraft:air");
+            boolean isEmpty = remainder.get("Count").asInt(0) <= 0;
+            return !isAir && !isEmpty ? itemStack : Pair.of(Either.right(Unit.INSTANCE), Pair.of(Either.right(Unit.INSTANCE), remainder.emptyMap()));
+         }))
       );
    }
 }

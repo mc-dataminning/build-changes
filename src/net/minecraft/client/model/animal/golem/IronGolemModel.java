@@ -70,7 +70,7 @@ public class IronGolemModel extends EntityModel<IronGolemRenderState> {
       } else {
          int offerFlowerTick = state.offerFlowerTick;
          if (offerFlowerTick > 0) {
-            this.rightArm.xRot = -0.8F + 0.025F * Mth.triangleWave((float)offerFlowerTick, 70.0F);
+            this.rightArm.xRot = -0.8F + 0.025F * Mth.triangleWave(offerFlowerTick, 70.0F);
             this.leftArm.xRot = 0.0F;
          } else {
             this.rightArm.xRot = (-0.2F + 1.5F * Mth.triangleWave(animationPos, 13.0F)) * animationSpeed;

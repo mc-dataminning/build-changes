@@ -44,7 +44,7 @@ public class CubeMap implements AutoCloseable {
    public void render(final float rotXInDegrees, final float rotYInDegrees) {
       Minecraft minecraft = Minecraft.getInstance();
       WindowRenderState windowState = minecraft.gameRenderer.gameRenderState().windowRenderState;
-      this.projection.setupPerspective(0.05F, 10.0F, 85.0F, (float)windowState.width, (float)windowState.height);
+      this.projection.setupPerspective(0.05F, 10.0F, 85.0F, windowState.width, windowState.height);
       RenderSystem.setProjectionMatrix(this.projectionMatrixUbo.getBuffer(this.projection), ProjectionType.PERSPECTIVE);
       RenderPipeline renderPipeline = RenderPipelines.PANORAMA;
       RenderTarget mainRenderTarget = Minecraft.getInstance().gameRenderer.mainRenderTarget();
@@ -75,7 +75,6 @@ public class CubeMap implements AutoCloseable {
    }
 
    private static GpuBuffer initializeVertices() {
-      GpuBuffer var3;
       try (ByteBufferBuilder byteBufferBuilder = ByteBufferBuilder.exactlySized(DefaultVertexFormat.POSITION.getVertexSize() * 4 * 6)) {
          BufferBuilder bufferBuilder = new BufferBuilder(byteBufferBuilder, PrimitiveTopology.QUADS, DefaultVertexFormat.POSITION);
          bufferBuilder.addVertex(-1.0F, -1.0F, 1.0F);
@@ -104,11 +103,9 @@ public class CubeMap implements AutoCloseable {
          bufferBuilder.addVertex(1.0F, 1.0F, 1.0F);
 
          try (MeshData meshData = bufferBuilder.buildOrThrow()) {
-            var3 = RenderSystem.getDevice().createBuffer(() -> "Cube map vertex buffer", 32, meshData.vertexBuffer());
+            return RenderSystem.getDevice().createBuffer(() -> "Cube map vertex buffer", 32, meshData.vertexBuffer());
          }
       }
-
-      return var3;
    }
 
    public void registerTextures(final TextureManager textureManager) {

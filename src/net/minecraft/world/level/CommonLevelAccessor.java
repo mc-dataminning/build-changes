@@ -18,12 +18,12 @@ public interface CommonLevelAccessor extends LevelReader, LevelSimulatedRW, Enti
    }
 
    @Override
-   default List<VoxelShape> getEntityCollisions(@Nullable final Entity source, final AABB testArea) {
+   default List<VoxelShape> getEntityCollisions(final @Nullable Entity source, final AABB testArea) {
       return EntityGetter.super.getEntityCollisions(source, testArea);
    }
 
    @Override
-   default boolean isUnobstructed(@Nullable final Entity source, final VoxelShape shape) {
+   default boolean isUnobstructed(final @Nullable Entity source, final VoxelShape shape) {
       return EntityGetter.super.isUnobstructed(source, shape);
    }
 

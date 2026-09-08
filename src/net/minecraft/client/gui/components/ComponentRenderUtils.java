@@ -32,7 +32,7 @@ public class ComponentRenderUtils {
          FormattedCharSequence reorderedText = Language.getInstance().getVisualOrder(text);
          result.add(wrapped ? FormattedCharSequence.composite(INDENT, reorderedText) : reorderedText);
       });
-      return (List<FormattedCharSequence>)(result.isEmpty() ? Lists.newArrayList(new FormattedCharSequence[]{FormattedCharSequence.EMPTY}) : result);
+      return result.isEmpty() ? Lists.newArrayList(new FormattedCharSequence[]{FormattedCharSequence.EMPTY}) : result;
    }
 
    public static FormattedCharSequence clipText(final Component text, final Font font, final int width) {

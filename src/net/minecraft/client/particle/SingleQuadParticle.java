@@ -64,9 +64,9 @@ public abstract class SingleQuadParticle extends Particle {
       final QuadParticleRenderState particleTypeRenderState, final Camera camera, final Quaternionf rotation, final float partialTickTime
    ) {
       Vec3 pos = camera.position();
-      float x = (float)(Mth.lerp((double)partialTickTime, this.xo, this.x) - pos.x());
-      float y = (float)(Mth.lerp((double)partialTickTime, this.yo, this.y) - pos.y());
-      float z = (float)(Mth.lerp((double)partialTickTime, this.zo, this.z) - pos.z());
+      float x = (float)(Mth.lerp(partialTickTime, this.xo, this.x) - pos.x());
+      float y = (float)(Mth.lerp(partialTickTime, this.yo, this.y) - pos.y());
+      float z = (float)(Mth.lerp(partialTickTime, this.zo, this.z) - pos.z());
       this.extractRotatedQuad(particleTypeRenderState, rotation, x, y, z, partialTickTime);
    }
 
@@ -178,7 +178,7 @@ public abstract class SingleQuadParticle extends Particle {
       void setRotation(final Quaternionf target, final Camera camera, final float partialTickTime);
    }
 
-   public static record Layer(boolean translucent, Identifier textureAtlasLocation, RenderPipeline pipeline, @Nullable OitPipelineSet oitPipelineSet) {
+   public record Layer(boolean translucent, Identifier textureAtlasLocation, RenderPipeline pipeline, @Nullable OitPipelineSet oitPipelineSet) {
       public static final SingleQuadParticle.Layer OPAQUE_TERRAIN = new SingleQuadParticle.Layer(
          false, TextureAtlas.LOCATION_BLOCKS, RenderPipelines.OPAQUE_PARTICLE
       );

@@ -29,6 +29,6 @@ public class PingDebugChart extends AbstractDebugChart {
 
    @Override
    protected int getSampleColor(final long millis) {
-      return this.getSampleColor((double)millis, 0.0, -16711936, 250.0, -256, 500.0, -65536);
+      return this.getSampleColor(millis, 0.0, -16711936, 250.0, -256, 500.0, -65536);
    }
 }

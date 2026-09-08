@@ -21,8 +21,8 @@ public interface Signer {
             signer.initSign(privateKey);
             updater.update(signer::update);
             return signer.sign();
-         } catch (Exception var4) {
-            throw new IllegalStateException("Failed to sign message", var4);
+         } catch (Exception e) {
+            throw new IllegalStateException("Failed to sign message", e);
          }
       };
    }

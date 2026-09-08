@@ -22,9 +22,8 @@ import org.jspecify.annotations.Nullable;
 
 public interface DataComponentMap extends Iterable<TypedDataComponent<?>>, DataComponentGetter {
    DataComponentMap EMPTY = new DataComponentMap() {
-      @Nullable
       @Override
-      public <T> T get(final DataComponentType<? extends T> type) {
+      public <T> @Nullable T get(final DataComponentType<? extends T> type) {
          return null;
       }
 
@@ -49,25 +48,24 @@ public interface DataComponentMap extends Iterable<TypedDataComponent<?>>, DataC
          int size = components.size();
          if (size == 0) {
             return DataResult.success(Reference2ObjectMaps.emptyMap());
-         } else {
-            Reference2ObjectMap<DataComponentType<?>, Object> map = new Reference2ObjectArrayMap(size);
-
-            for (TypedDataComponent<?> entry : components) {
-               if (!entry.type().isTransient()) {
-                  map.put(entry.type(), entry.value());
-               }
-            }
-
-            return DataResult.success(map);
          }
+
+         Reference2ObjectMap<DataComponentType<?>, Object> map = new Reference2ObjectArrayMap(size);
+
+         for (TypedDataComponent<?> entry : components) {
+            if (!entry.type().isTransient()) {
+               map.put(entry.type(), entry.value());
+            }
+         }
+
+         return DataResult.success(map);
       });
    }
 
    static DataComponentMap composite(final DataComponentMap prototype, final DataComponentMap overrides) {
       return new DataComponentMap() {
-         @Nullable
          @Override
-         public <T> T get(final DataComponentType<? extends T> type) {
+         public <T> @Nullable T get(final DataComponentType<? extends T> type) {
             T value = overrides.get(type);
             return value != null ? value : prototype.get(type);
          }
@@ -95,7 +93,7 @@ public interface DataComponentMap extends Iterable<TypedDataComponent<?>>, DataC
    }
 
    default Stream<TypedDataComponent<?>> stream() {
-      return StreamSupport.stream(Spliterators.spliterator(this.iterator(), (long)this.size(), 1345), false);
+      return StreamSupport.stream(Spliterators.spliterator(this.iterator(), this.size(), 1345), false);
    }
 
    default int size() {
@@ -108,13 +106,8 @@ public interface DataComponentMap extends Iterable<TypedDataComponent<?>>, DataC
 
    default DataComponentMap filter(final Predicate<DataComponentType<?>> predicate) {
       return new DataComponentMap() {
-         {
-            Objects.requireNonNull(DataComponentMap.this);
-         }
-
-         @Nullable
          @Override
-         public <T> T get(final DataComponentType<? extends T> type) {
+         public <T> @Nullable T get(final DataComponentType<? extends T> type) {
             return predicate.test(type) ? DataComponentMap.this.get(type) : null;
          }
 
@@ -125,20 +118,19 @@ public interface DataComponentMap extends Iterable<TypedDataComponent<?>>, DataC
       };
    }
 
-   public static class Builder {
+   class Builder {
       private final Reference2ObjectMap<DataComponentType<?>, Object> map = new Reference2ObjectArrayMap();
-      private Consumer<DataComponentMap> validator = components -> {
-      };
+      private Consumer<DataComponentMap> validator = components -> {};
 
       private Builder() {
       }
 
-      public <T> DataComponentMap.Builder set(final DataComponentType<T> type, @Nullable final T value) {
+      public <T> DataComponentMap.Builder set(final DataComponentType<T> type, final @Nullable T value) {
          this.setUnchecked(type, value);
          return this;
       }
 
-      <T> void setUnchecked(final DataComponentType<T> type, @Nullable final Object value) {
+      <T> void setUnchecked(final DataComponentType<T> type, final @Nullable Object value) {
          if (value != null) {
             this.map.put(type, value);
          } else {
@@ -175,10 +167,9 @@ public interface DataComponentMap extends Iterable<TypedDataComponent<?>>, DataC
          }
       }
 
-      private static record SimpleMap(Reference2ObjectMap<DataComponentType<?>, Object> map) implements DataComponentMap {
-         @Nullable
+      private record SimpleMap(Reference2ObjectMap<DataComponentType<?>, Object> map) implements DataComponentMap {
          @Override
-         public <T> T get(final DataComponentType<? extends T> type) {
+         public <T> @Nullable T get(final DataComponentType<? extends T> type) {
             return (T)this.map.get(type);
          }
 

@@ -88,7 +88,7 @@ public class Sound implements Weighted<Sound> {
    }
 
    public float getAttenuationDistance(final float volume) {
-      return Math.max(volume, 1.0F) * (float)this.attenuationDistance;
+      return Math.max(volume, 1.0F) * this.attenuationDistance;
    }
 
    @Override
@@ -96,18 +96,17 @@ public class Sound implements Weighted<Sound> {
       return "Sound[" + this.location + "]";
    }
 
-   public static enum Type {
+   public enum Type {
       FILE("file"),
       SOUND_EVENT("event");
 
       private final String name;
 
-      private Type(final String name) {
+      Type(final String name) {
          this.name = name;
       }
 
-      @Nullable
-      public static Sound.Type getByName(final String name) {
+      public static Sound.@Nullable Type getByName(final String name) {
          for (Sound.Type type : values()) {
             if (type.name.equals(name)) {
                return type;

@@ -64,8 +64,7 @@ public class GeyserEruptionParticle extends NoRenderParticle {
    }
 
    public static class Provider implements ParticleProvider<GeyserParticleOptions> {
-      @Nullable
-      public Particle createParticle(
+      public @Nullable Particle createParticle(
          final GeyserParticleOptions options,
          final ClientLevel level,
          final double x,

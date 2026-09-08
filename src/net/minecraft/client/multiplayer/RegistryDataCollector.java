@@ -29,10 +29,8 @@ import org.slf4j.Logger;
 
 public class RegistryDataCollector {
    private static final Logger LOGGER = LogUtils.getLogger();
-   @Nullable
-   private RegistryDataCollector.ContentsCollector contentsCollector;
-   @Nullable
-   private RegistryDataCollector.TagCollector tagCollector;
+   private RegistryDataCollector.@Nullable ContentsCollector contentsCollector;
+   private RegistryDataCollector.@Nullable TagCollector tagCollector;
 
    public void appendContents(final ResourceKey<? extends Registry<?>> registry, final List<RegistrySynchronization.PackedRegistryEntry> elementData) {
       if (this.contentsCollector == null) {
@@ -66,11 +64,11 @@ public class RegistryDataCollector {
       contentsCollector.elements
          .forEach(
             (registryKey, elements) -> entriesToLoad.put(
-                  (ResourceKey<? extends Registry<?>>)registryKey,
-                  new RegistryDataLoader.NetworkedRegistryData(
-                     (List<RegistrySynchronization.PackedRegistryEntry>)elements, TagNetworkSerialization.NetworkPayload.EMPTY
-                  )
+               (ResourceKey<? extends Registry<?>>)registryKey,
+               new RegistryDataLoader.NetworkedRegistryData(
+                  (List<RegistrySynchronization.PackedRegistryEntry>)elements, TagNetworkSerialization.NetworkPayload.EMPTY
                )
+            )
          );
       List<Registry.PendingTags<?>> pendingStaticTags = new ArrayList<>();
       if (this.tagCollector != null) {
@@ -99,8 +97,8 @@ public class RegistryDataCollector {
             .join();
          long end = Util.getMillis();
          LOGGER.debug("Loading network data took {} ms", end - start);
-      } catch (Exception var15) {
-         CrashReport report = CrashReport.forThrowable(var15, "Network Registry Load");
+      } catch (Exception e) {
+         CrashReport report = CrashReport.forThrowable(e, "Network Registry Load");
          addCrashDetails(report, entriesToLoad, pendingStaticTags);
          throw new ReportedException(report);
       }
@@ -119,25 +117,21 @@ public class RegistryDataCollector {
       details.setDetail(
          "Dynamic Registries",
          () -> dynamicRegistries.entrySet()
-               .stream()
-               .sorted(Comparator.comparing(entry -> entry.getKey().identifier()))
-               .map(
-                  entry -> String.format(
-                        Locale.ROOT,
-                        "\n\t\t%s: elements=%d tags=%d",
-                        entry.getKey().identifier(),
-                        entry.getValue().elements().size(),
-                        entry.getValue().tags().size()
-                     )
+            .stream()
+            .sorted(Comparator.comparing(entry -> entry.getKey().identifier()))
+            .map(
+               entry -> String.format(
+                  Locale.ROOT, "\n\t\t%s: elements=%d tags=%d", entry.getKey().identifier(), entry.getValue().elements().size(), entry.getValue().tags().size()
                )
-               .collect(Collectors.joining())
+            )
+            .collect(Collectors.joining())
       );
       details.setDetail(
          "Static Registries",
          () -> staticRegistries.stream()
-               .sorted(Comparator.comparing(entry -> entry.key().identifier()))
-               .map(entry -> String.format(Locale.ROOT, "\n\t\t%s: tags=%d", entry.key().identifier(), entry.size()))
-               .collect(Collectors.joining())
+            .sorted(Comparator.comparing(entry -> entry.key().identifier()))
+            .map(entry -> String.format(Locale.ROOT, "\n\t\t%s: tags=%d", entry.key().identifier(), entry.size()))
+            .collect(Collectors.joining())
       );
    }
 

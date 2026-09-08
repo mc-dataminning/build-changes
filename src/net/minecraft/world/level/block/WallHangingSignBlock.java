@@ -44,7 +44,7 @@ public class WallHangingSignBlock extends SignBlock implements HangingSignBlock 
 
    public WallHangingSignBlock(final WoodType type, final BlockBehaviour.Properties properties) {
       super(type, properties.sound(type.hangingSignSoundType()));
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false));
    }
 
    @Override
@@ -57,12 +57,10 @@ public class WallHangingSignBlock extends SignBlock implements HangingSignBlock 
       final InteractionHand hand,
       final BlockHitResult hitResult
    ) {
-      if (level.getBlockEntity(pos) instanceof SignBlockEntity signEntity
-         && this.shouldTryToChainAnotherHangingSign(state, player, hitResult, signEntity, itemStack)) {
-         return InteractionResult.PASS;
-      }
-
-      return super.useItemOn(itemStack, state, level, pos, player, hand, hitResult);
+      return level.getBlockEntity(pos) instanceof SignBlockEntity signEntity
+            && this.shouldTryToChainAnotherHangingSign(state, player, hitResult, signEntity, itemStack)
+         ? InteractionResult.PASS
+         : super.useItemOn(itemStack, state, level, pos, player, hand, hitResult);
    }
 
    private boolean shouldTryToChainAnotherHangingSign(
@@ -106,9 +104,8 @@ public class WallHangingSignBlock extends SignBlock implements HangingSignBlock 
          : attachState.isFaceSturdy(level, attachPos, attachFace, SupportType.FULL);
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockState state = this.defaultBlockState();
       FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
       LevelReader level = context.getLevel();
@@ -119,7 +116,7 @@ public class WallHangingSignBlock extends SignBlock implements HangingSignBlock 
             Direction facing = direction.getOpposite();
             state = state.setValue(FACING, facing);
             if (state.canSurvive(level, pos) && this.canPlace(state, level, pos)) {
-               return state.setValue(WATERLOGGED, Boolean.valueOf(replacedFluidState.is(Fluids.WATER)));
+               return state.setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
             }
          }
       }
@@ -173,9 +170,8 @@ public class WallHangingSignBlock extends SignBlock implements HangingSignBlock 
       return false;
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return createTickerHelper(type, BlockEntityTypes.HANGING_SIGN, SignBlockEntity::tick);
    }
 

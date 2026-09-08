@@ -64,7 +64,7 @@ public class RealmsGenericErrorScreen extends RealmsScreen {
       this.splitDetail.visitLines(TextAlignment.CENTER, this.width / 2, 100, 9, textRenderer);
    }
 
-   private static record ErrorMessage(Component title, Component detail) {
+   private record ErrorMessage(Component title, Component detail) {
       private static RealmsGenericErrorScreen.ErrorMessage forServiceError(final RealmsServiceException realmsServiceException) {
          RealmsError errorDetails = realmsServiceException.realmsError;
          return new RealmsGenericErrorScreen.ErrorMessage(

@@ -85,10 +85,10 @@ public class SpawnArmorTrimsCommand {
                Commands.argument("pattern", ResourceKeyArgument.key(Registries.TRIM_PATTERN))
                   .executes(
                      c -> spawnArmorTrim(
-                           (CommandSourceStack)c.getSource(),
-                           ((CommandSourceStack)c.getSource()).getPlayerOrException(),
-                           ResourceKeyArgument.getRegistryKey(c, "pattern", Registries.TRIM_PATTERN, ERROR_INVALID_PATTERN)
-                        )
+                        (CommandSourceStack)c.getSource(),
+                        ((CommandSourceStack)c.getSource()).getPlayerOrException(),
+                        ResourceKeyArgument.getRegistryKey(c, "pattern", Registries.TRIM_PATTERN, ERROR_INVALID_PATTERN)
+                     )
                   )
             )
       );
@@ -123,9 +123,9 @@ public class SpawnArmorTrimsCommand {
 
             for (int itemIndex = 0; itemIndex < equippableItems.size(); itemIndex++) {
                Holder.Reference<Item> equippableItem = equippableItems.get(itemIndex);
-               double x = (double)origin.getX() + 0.5 - (double)itemIndex * 3.0;
-               double y = (double)origin.getY() + 0.5 + (double)materialIndex * 3.0;
-               double z = (double)origin.getZ() + 0.5 + (double)(patternIndex * 10);
+               double x = origin.getX() + 0.5 - itemIndex * 3.0;
+               double y = origin.getY() + 0.5 + materialIndex * 3.0;
+               double z = origin.getZ() + 0.5 + patternIndex * 10;
                ArmorStand armorStand = new ArmorStand(level, x, y, z);
                armorStand.setYRot(180.0F);
                armorStand.setNoGravity(true);

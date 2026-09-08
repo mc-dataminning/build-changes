@@ -42,8 +42,8 @@ public class UnflattenTextComponentFix extends DataFix {
          if (!json.isJsonNull()) {
             return new Dynamic(ops, JsonOps.INSTANCE.convertTo(ops, json));
          }
-      } catch (Exception var3) {
-         LOGGER.error("Failed to unflatten text component json: {}", jsonString, var3);
+      } catch (Exception e) {
+         LOGGER.error("Failed to unflatten text component json: {}", jsonString, e);
       }
 
       return new Dynamic(ops, ops.createString(jsonString));

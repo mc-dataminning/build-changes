@@ -21,7 +21,7 @@ public class PositionCollisionContext implements CollisionContext {
 
    @Override
    public boolean isAbove(final VoxelShape shape, final BlockPos pos, final boolean defaultValue) {
-      return this.y > (double)pos.getY() + shape.max(Direction.Axis.Y) - 1.0E-5F;
+      return this.y > pos.getY() + shape.max(Direction.Axis.Y) - 1.0E-5F;
    }
 
    @Override

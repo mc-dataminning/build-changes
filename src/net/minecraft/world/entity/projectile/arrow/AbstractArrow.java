@@ -66,21 +66,17 @@ public abstract class AbstractArrow extends Projectile {
    private static final EntityDataAccessor<Boolean> IN_GROUND = SynchedEntityData.defineId(AbstractArrow.class, EntityDataSerializers.BOOLEAN);
    private static final int FLAG_CRIT = 1;
    private static final int FLAG_NOPHYSICS = 2;
-   @Nullable
-   private BlockState lastState;
+   private @Nullable BlockState lastState;
    protected int inGroundTime;
    public AbstractArrow.Pickup pickup = AbstractArrow.Pickup.DISALLOWED;
    public int shakeTime = 0;
    private int life = 0;
    private double baseDamage = 2.0;
    private SoundEvent soundEvent = this.getDefaultHitGroundSoundEvent();
-   @Nullable
-   private IntOpenHashSet piercingIgnoreEntityIds;
-   @Nullable
-   private List<Entity> piercedAndKilledEntities;
+   private @Nullable IntOpenHashSet piercingIgnoreEntityIds;
+   private @Nullable List<Entity> piercedAndKilledEntities;
    private ItemStack pickupItemStack = this.getDefaultPickupItem();
-   @Nullable
-   private ItemStack firedFromWeapon = null;
+   private @Nullable ItemStack firedFromWeapon = null;
 
    protected AbstractArrow(final EntityType<? extends AbstractArrow> type, final Level level) {
       super(type, level);
@@ -93,7 +89,7 @@ public abstract class AbstractArrow extends Projectile {
       final double z,
       final Level level,
       final ItemStack pickupItemStack,
-      @Nullable final ItemStack firedFromWeapon
+      final @Nullable ItemStack firedFromWeapon
    ) {
       this(type, level);
       this.pickupItemStack = pickupItemStack.copy();
@@ -122,7 +118,7 @@ public abstract class AbstractArrow extends Projectile {
       final LivingEntity mob,
       final Level level,
       final ItemStack pickupItemStack,
-      @Nullable final ItemStack firedFromWeapon
+      final @Nullable ItemStack firedFromWeapon
    ) {
       this(type, mob.getX(), mob.getEyeY() - 0.1F, mob.getZ(), level, pickupItemStack, firedFromWeapon);
       this.setOwner(mob);
@@ -232,9 +228,9 @@ public abstract class AbstractArrow extends Projectile {
                this.level()
                   .addParticle(
                      ParticleTypes.CRIT,
-                     originalPosition.x + movement.x * (double)i / 4.0,
-                     originalPosition.y + movement.y * (double)i / 4.0,
-                     originalPosition.z + movement.z * (double)i / 4.0,
+                     originalPosition.x + movement.x * i / 4.0,
+                     originalPosition.y + movement.y * i / 4.0,
+                     originalPosition.z + movement.z * i / 4.0,
                      -movement.x,
                      -movement.y + 0.2,
                      -movement.z
@@ -322,7 +318,7 @@ public abstract class AbstractArrow extends Projectile {
 
    private void applyInertia(final float inertia) {
       Vec3 movement = this.getDeltaMovement();
-      this.setDeltaMovement(movement.scale((double)inertia));
+      this.setDeltaMovement(movement.scale(inertia));
    }
 
    private void addBubbleParticles(final Vec3 position) {
@@ -355,9 +351,7 @@ public abstract class AbstractArrow extends Projectile {
    private void startFalling() {
       this.setInGround(false);
       Vec3 deltaMovement = this.getDeltaMovement();
-      this.setDeltaMovement(
-         deltaMovement.multiply((double)(this.random.nextFloat() * 0.2F), (double)(this.random.nextFloat() * 0.2F), (double)(this.random.nextFloat() * 0.2F))
-      );
+      this.setDeltaMovement(deltaMovement.multiply(this.random.nextFloat() * 0.2F, this.random.nextFloat() * 0.2F, this.random.nextFloat() * 0.2F));
       this.life = 0;
    }
 
@@ -432,12 +426,12 @@ public abstract class AbstractArrow extends Projectile {
       float pow = (float)this.getDeltaMovement().length();
       double arrowDamage = this.baseDamage;
       Entity currentOwner = this.getOwner();
-      DamageSource damageSource = this.damageSources().arrow(this, (Entity)(currentOwner != null ? currentOwner : this));
+      DamageSource damageSource = this.damageSources().arrow(this, currentOwner != null ? currentOwner : this);
       if (this.getWeaponItem() != null && this.level() instanceof ServerLevel serverLevel) {
-         arrowDamage = (double)EnchantmentHelper.modifyDamage(serverLevel, this.getWeaponItem(), entity, damageSource, (float)arrowDamage);
+         arrowDamage = EnchantmentHelper.modifyDamage(serverLevel, this.getWeaponItem(), entity, damageSource, (float)arrowDamage);
       }
 
-      int damage = Mth.ceil(Mth.clamp((double)pow * arrowDamage, 0.0, 2.147483647E9));
+      int damage = Mth.ceil(Mth.clamp(pow * arrowDamage, 0.0, 2.147483647E9));
       if (this.getPierceLevel() > 0) {
          if (this.piercingIgnoreEntityIds == null) {
             this.piercingIgnoreEntityIds = new IntOpenHashSet(5);
@@ -456,8 +450,8 @@ public abstract class AbstractArrow extends Projectile {
       }
 
       if (this.isCritArrow()) {
-         long dmgIncrease = (long)this.random.nextInt(damage / 2 + 2);
-         damage = (int)Math.min(dmgIncrease + (long)damage, 2147483647L);
+         long dmgIncrease = this.random.nextInt(damage / 2 + 2);
+         damage = (int)Math.min(dmgIncrease + damage, 2147483647L);
       }
 
       if (currentOwner instanceof LivingEntity livingOwner) {
@@ -469,7 +463,7 @@ public abstract class AbstractArrow extends Projectile {
          entity.igniteForSeconds(5.0F);
       }
 
-      if (entity.hurtOrSimulate(damageSource, (float)damage)) {
+      if (entity.hurtOrSimulate(damageSource, damage)) {
          if (entity instanceof LivingEntity mob) {
             if (!this.level().isClientSide() && this.getPierceLevel() <= 0) {
                mob.setArrowCount(mob.getArrowCount() + 1);
@@ -516,11 +510,9 @@ public abstract class AbstractArrow extends Projectile {
    }
 
    protected void doKnockback(final LivingEntity mob, final DamageSource damageSource) {
-      double knockback = (double)(
-         this.firedFromWeapon != null && this.level() instanceof ServerLevel serverLevel
-            ? EnchantmentHelper.modifyKnockback(serverLevel, this.firedFromWeapon, mob, damageSource, 0.0F)
-            : 0.0F
-      );
+      double knockback = this.firedFromWeapon != null && this.level() instanceof ServerLevel serverLevel
+         ? EnchantmentHelper.modifyKnockback(serverLevel, this.firedFromWeapon, mob, damageSource, 0.0F)
+         : 0.0F;
       if (knockback > 0.0) {
          double knockbackResistance = Math.max(0.0, 1.0 - mob.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
          Vec3 movement = this.getDeltaMovement().multiply(1.0, 0.0, 1.0).normalize().scale(knockback * 0.6 * knockbackResistance);
@@ -567,9 +559,8 @@ public abstract class AbstractArrow extends Projectile {
       );
    }
 
-   @Nullable
    @Override
-   public ItemStack getWeaponItem() {
+   public @Nullable ItemStack getWeaponItem() {
       return this.firedFromWeapon;
    }
 
@@ -584,8 +575,7 @@ public abstract class AbstractArrow extends Projectile {
    protected void doPostHurtEffects(final LivingEntity mob) {
    }
 
-   @Nullable
-   protected EntityHitResult findHitEntity(final Vec3 from, final Vec3 to) {
+   protected @Nullable EntityHitResult findHitEntity(final Vec3 from, final Vec3 to) {
       return ProjectileUtil.getEntityHitResult(
          this.level(), this, from, to, this.getBoundingBox().expandTowards(this.getDeltaMovement()).inflate(1.0), this::canHitEntity
       );
@@ -599,11 +589,9 @@ public abstract class AbstractArrow extends Projectile {
 
    @Override
    protected boolean canHitEntity(final Entity entity) {
-      if (entity instanceof Player playerEntity && this.getOwner() instanceof Player player && !player.canHarmPlayer(playerEntity)) {
-         return false;
-      }
-
-      return super.canHitEntity(entity) && (this.piercingIgnoreEntityIds == null || !this.piercingIgnoreEntityIds.contains(entity.getId()));
+      return entity instanceof Player playerEntity && this.getOwner() instanceof Player player && !player.canHarmPlayer(playerEntity)
+         ? false
+         : super.canHitEntity(entity) && (this.piercingIgnoreEntityIds == null || !this.piercingIgnoreEntityIds.contains(entity.getId()));
    }
 
    @Override
@@ -639,13 +627,13 @@ public abstract class AbstractArrow extends Projectile {
    }
 
    @Override
-   public void setOwner(@Nullable final Entity owner) {
+   public void setOwner(final @Nullable Entity owner) {
       super.setOwner(owner);
 
       this.pickup = switch (owner) {
-         case null, default -> this.pickup;
          case Player ignored when this.pickup == AbstractArrow.Pickup.DISALLOWED -> AbstractArrow.Pickup.ALLOWED;
-         case OminousItemSpawner ignoredx -> AbstractArrow.Pickup.DISALLOWED;
+         case OminousItemSpawner ignored -> AbstractArrow.Pickup.DISALLOWED;
+         case null, default -> this.pickup;
       };
    }
 
@@ -726,7 +714,7 @@ public abstract class AbstractArrow extends Projectile {
    }
 
    public void setBaseDamageFromMob(final float power) {
-      this.setBaseDamage((double)(power * 2.0F) + this.random.triangle((double)this.level().getDifficulty().getId() * 0.11, 0.57425));
+      this.setBaseDamage(power * 2.0F + this.random.triangle(this.level().getDifficulty().getId() * 0.11, 0.57425));
    }
 
    protected float getWaterInertia() {
@@ -747,9 +735,8 @@ public abstract class AbstractArrow extends Projectile {
       return super.isPickable() && !this.isInGround();
    }
 
-   @Nullable
    @Override
-   public SlotAccess getSlot(final int slot) {
+   public @Nullable SlotAccess getSlot(final int slot) {
       return slot == 0 ? SlotAccess.of(this::getPickupItemStackOrigin, this::setPickupItemStack) : super.getSlot(slot);
    }
 
@@ -758,7 +745,7 @@ public abstract class AbstractArrow extends Projectile {
       return true;
    }
 
-   public static enum Pickup {
+   public enum Pickup {
       DISALLOWED,
       ALLOWED,
       CREATIVE_ONLY;

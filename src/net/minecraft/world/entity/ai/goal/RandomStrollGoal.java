@@ -37,32 +37,31 @@ public class RandomStrollGoal extends Goal {
    public boolean canUse() {
       if (this.mob.hasControllingPassenger()) {
          return false;
-      } else {
-         if (!this.forceTrigger) {
-            if (this.checkNoActionTime && this.mob.getNoActionTime() >= 100) {
-               return false;
-            }
+      }
 
-            if (this.mob.getRandom().nextInt(reducedTickDelay(this.interval)) != 0) {
-               return false;
-            }
+      if (!this.forceTrigger) {
+         if (this.checkNoActionTime && this.mob.getNoActionTime() >= 100) {
+            return false;
          }
 
-         Vec3 pos = this.getPosition();
-         if (pos == null) {
+         if (this.mob.getRandom().nextInt(reducedTickDelay(this.interval)) != 0) {
             return false;
-         } else {
-            this.wantedX = pos.x;
-            this.wantedY = pos.y;
-            this.wantedZ = pos.z;
-            this.forceTrigger = false;
-            return true;
          }
       }
+
+      Vec3 pos = this.getPosition();
+      if (pos == null) {
+         return false;
+      }
+
+      this.wantedX = pos.x;
+      this.wantedY = pos.y;
+      this.wantedZ = pos.z;
+      this.forceTrigger = false;
+      return true;
    }
 
-   @Nullable
-   protected Vec3 getPosition() {
+   protected @Nullable Vec3 getPosition() {
       return DefaultRandomPos.getPos(this.mob, 10, 7);
    }
 

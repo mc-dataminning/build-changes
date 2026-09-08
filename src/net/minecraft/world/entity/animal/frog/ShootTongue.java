@@ -149,7 +149,7 @@ public class ShootTongue extends Behavior<Frog> {
       body.getBrain().setMemoryWithExpiry(MemoryModuleType.UNREACHABLE_TONGUE_TARGETS, unreachableTargets, 100L);
    }
 
-   private static enum State {
+   private enum State {
       MOVE_TO_TARGET,
       CATCH_ANIMATION,
       EAT_ANIMATION,

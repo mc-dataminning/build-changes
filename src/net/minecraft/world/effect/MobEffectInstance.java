@@ -29,10 +29,9 @@ public class MobEffectInstance implements Comparable<MobEffectInstance> {
    public static final int MAX_AMPLIFIER = 255;
    public static final Codec<MobEffectInstance> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               MobEffect.CODEC.fieldOf("id").forGetter(MobEffectInstance::getEffect),
-               MobEffectInstance.Details.MAP_CODEC.forGetter(MobEffectInstance::asDetails)
-            )
-            .apply(i, MobEffectInstance::new)
+            MobEffect.CODEC.fieldOf("id").forGetter(MobEffectInstance::getEffect), MobEffectInstance.Details.MAP_CODEC.forGetter(MobEffectInstance::asDetails)
+         )
+         .apply(i, MobEffectInstance::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, MobEffectInstance> STREAM_CODEC = StreamCodec.composite(
       MobEffect.STREAM_CODEC, MobEffectInstance::getEffect, MobEffectInstance.Details.STREAM_CODEC, MobEffectInstance::asDetails, MobEffectInstance::new
@@ -43,8 +42,7 @@ public class MobEffectInstance implements Comparable<MobEffectInstance> {
    private boolean ambient;
    private boolean visible;
    private boolean showIcon;
-   @Nullable
-   private MobEffectInstance hiddenEffect;
+   private @Nullable MobEffectInstance hiddenEffect;
    private final MobEffectInstance.BlendState blendState = new MobEffectInstance.BlendState();
 
    public MobEffectInstance(final Holder<MobEffect> effect) {
@@ -76,7 +74,7 @@ public class MobEffectInstance implements Comparable<MobEffectInstance> {
       final boolean ambient,
       final boolean visible,
       final boolean showIcon,
-      @Nullable final MobEffectInstance hiddenEffect
+      final @Nullable MobEffectInstance hiddenEffect
    ) {
       this.effect = effect;
       this.duration = duration;
@@ -190,7 +188,7 @@ public class MobEffectInstance implements Comparable<MobEffectInstance> {
 
    public MobEffectInstance withScaledDuration(final float scale) {
       MobEffectInstance copy = new MobEffectInstance(this);
-      copy.duration = copy.mapDuration(duration -> Math.max(Mth.floor((float)duration * scale), 1));
+      copy.duration = copy.mapDuration(duration -> Math.max(Mth.floor(duration * scale), 1));
       return copy;
    }
 
@@ -225,20 +223,20 @@ public class MobEffectInstance implements Comparable<MobEffectInstance> {
    public boolean tickServer(final ServerLevel serverLevel, final LivingEntity target, final Runnable onEffectUpdate) {
       if (!this.hasRemainingDuration()) {
          return false;
-      } else {
-         int tickCount = this.isInfiniteDuration() ? target.tickCount : this.duration;
-         if (this.effect.value().shouldApplyEffectTickThisTick(tickCount, this.amplifier)
-            && !this.effect.value().applyEffectTick(serverLevel, target, this.amplifier)) {
-            return false;
-         } else {
-            this.tickDownDuration();
-            if (this.downgradeToHiddenEffect()) {
-               onEffectUpdate.run();
-            }
-
-            return this.hasRemainingDuration();
-         }
       }
+
+      int tickCount = this.isInfiniteDuration() ? target.tickCount : this.duration;
+      if (this.effect.value().shouldApplyEffectTickThisTick(tickCount, this.amplifier)
+         && !this.effect.value().applyEffectTick(serverLevel, target, this.amplifier)) {
+         return false;
+      }
+
+      this.tickDownDuration();
+      if (this.downgradeToHiddenEffect()) {
+         onEffectUpdate.run();
+      }
+
+      return this.hasRemainingDuration();
    }
 
    public void tickClient() {
@@ -393,7 +391,7 @@ public class MobEffectInstance implements Comparable<MobEffectInstance> {
             if (blendDuration == 0) {
                this.factor = target;
             } else {
-               float maxDeltaPerTick = 1.0F / (float)blendDuration;
+               float maxDeltaPerTick = 1.0F / blendDuration;
                this.factor = this.factor + Mth.clamp(target - this.factor, -maxDeltaPerTick, maxDeltaPerTick);
             }
          }
@@ -412,39 +410,39 @@ public class MobEffectInstance implements Comparable<MobEffectInstance> {
       }
    }
 
-   private static record Details(
+   private record Details(
       int amplifier, int duration, boolean ambient, boolean showParticles, boolean showIcon, Optional<MobEffectInstance.Details> hiddenEffect
    ) {
       public static final MapCodec<MobEffectInstance.Details> MAP_CODEC = MapCodec.recursive(
          "MobEffectInstance.Details",
          codec -> RecordCodecBuilder.mapCodec(
-               i -> i.group(
-                        ExtraCodecs.UNSIGNED_BYTE.optionalFieldOf("amplifier", 0).forGetter(MobEffectInstance.Details::amplifier),
-                        Codec.INT.optionalFieldOf("duration", 0).forGetter(MobEffectInstance.Details::duration),
-                        Codec.BOOL.optionalFieldOf("ambient", false).forGetter(MobEffectInstance.Details::ambient),
-                        Codec.BOOL.optionalFieldOf("show_particles", true).forGetter(MobEffectInstance.Details::showParticles),
-                        Codec.BOOL.optionalFieldOf("show_icon").forGetter(d -> Optional.of(d.showIcon())),
-                        codec.optionalFieldOf("hidden_effect").forGetter(MobEffectInstance.Details::hiddenEffect)
-                     )
-                     .apply(i, MobEffectInstance.Details::create)
-            )
+            i -> i.group(
+                  ExtraCodecs.UNSIGNED_BYTE.optionalFieldOf("amplifier", 0).forGetter(MobEffectInstance.Details::amplifier),
+                  Codec.INT.optionalFieldOf("duration", 0).forGetter(MobEffectInstance.Details::duration),
+                  Codec.BOOL.optionalFieldOf("ambient", false).forGetter(MobEffectInstance.Details::ambient),
+                  Codec.BOOL.optionalFieldOf("show_particles", true).forGetter(MobEffectInstance.Details::showParticles),
+                  Codec.BOOL.optionalFieldOf("show_icon").forGetter(d -> Optional.of(d.showIcon())),
+                  codec.optionalFieldOf("hidden_effect").forGetter(MobEffectInstance.Details::hiddenEffect)
+               )
+               .apply(i, MobEffectInstance.Details::create)
+         )
       );
       public static final StreamCodec<ByteBuf, MobEffectInstance.Details> STREAM_CODEC = StreamCodec.recursive(
          subCodec -> StreamCodec.composite(
-               ByteBufCodecs.VAR_INT,
-               MobEffectInstance.Details::amplifier,
-               ByteBufCodecs.VAR_INT,
-               MobEffectInstance.Details::duration,
-               ByteBufCodecs.BOOL,
-               MobEffectInstance.Details::ambient,
-               ByteBufCodecs.BOOL,
-               MobEffectInstance.Details::showParticles,
-               ByteBufCodecs.BOOL,
-               MobEffectInstance.Details::showIcon,
-               subCodec.apply(ByteBufCodecs::optional),
-               MobEffectInstance.Details::hiddenEffect,
-               MobEffectInstance.Details::new
-            )
+            ByteBufCodecs.VAR_INT,
+            MobEffectInstance.Details::amplifier,
+            ByteBufCodecs.VAR_INT,
+            MobEffectInstance.Details::duration,
+            ByteBufCodecs.BOOL,
+            MobEffectInstance.Details::ambient,
+            ByteBufCodecs.BOOL,
+            MobEffectInstance.Details::showParticles,
+            ByteBufCodecs.BOOL,
+            MobEffectInstance.Details::showIcon,
+            subCodec.apply(ByteBufCodecs::optional),
+            MobEffectInstance.Details::hiddenEffect,
+            MobEffectInstance.Details::new
+         )
       );
 
       private static MobEffectInstance.Details create(

@@ -1,6 +1,5 @@
 package net.minecraft.client.gui.screens;
 
-import java.util.Objects;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.ActiveTextCollector;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -55,10 +54,6 @@ public class ChatScreen extends Screen {
    protected void init() {
       this.historyPos = this.minecraft.gui.hud.getChat().getRecentChat().size();
       this.input = new EditBox(this.minecraft.fontFilterFishy, 4, this.height - 12, this.width - 4, 12, Component.translatable("chat.editBox")) {
-         {
-            Objects.requireNonNull(ChatScreen.this);
-         }
-
          @Override
          protected MutableComponent createNarrationMessage() {
             return super.createNarrationMessage().append(ChatScreen.this.commandSuggestions.getNarrationMessage());
@@ -123,27 +118,33 @@ public class ChatScreen extends Screen {
    public boolean keyPressed(final KeyEvent event) {
       if (this.commandSuggestions.keyPressed(event)) {
          return true;
-      } else if (this.isDraft && event.shortcutKey() == 8) {
+      }
+
+      if (this.isDraft && event.shortcutKey() == 8) {
          this.input.setValue("");
          this.isDraft = false;
          return true;
-      } else if (super.keyPressed(event)) {
+      }
+
+      if (super.keyPressed(event)) {
          return true;
-      } else if (event.isConfirmation()) {
+      }
+
+      if (event.isConfirmation()) {
          if (!this.commandSuggestions.hasAllowedInput()) {
             return true;
-         } else {
-            this.handleChatInput(this.input.getValue(), true);
-            if (this.closeOnSubmit) {
-               this.exitReason = ChatScreen.ExitReason.DONE;
-               this.minecraft.gui.setScreen(null);
-            } else {
-               this.input.setValue("");
-               this.minecraft.gui.hud.getChat().resetChatScroll();
-            }
-
-            return true;
          }
+
+         this.handleChatInput(this.input.getValue(), true);
+         if (this.closeOnSubmit) {
+            this.exitReason = ChatScreen.ExitReason.DONE;
+            this.minecraft.gui.setScreen(null);
+         } else {
+            this.input.setValue("");
+            this.minecraft.gui.hud.getChat().resetChatScroll();
+         }
+
+         return true;
       } else {
          switch (event.shortcutKey()) {
             case 1073741899:
@@ -174,35 +175,35 @@ public class ChatScreen extends Screen {
       scrollY = Mth.clamp(scrollY, -1.0, 1.0);
       if (this.commandSuggestions.mouseScrolled(scrollY)) {
          return true;
-      } else {
-         if (!this.minecraft.hasShiftDown()) {
-            scrollY *= 7.0;
-         }
-
-         this.minecraft.gui.hud.getChat().scrollChat((int)scrollY);
-         return true;
       }
+
+      if (!this.minecraft.hasShiftDown()) {
+         scrollY *= 7.0;
+      }
+
+      this.minecraft.gui.hud.getChat().scrollChat((int)scrollY);
+      return true;
    }
 
    @Override
    public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
       if (this.commandSuggestions.mouseClicked(event)) {
          return true;
-      } else {
-         if (event.button() == 1) {
-            int screenHeight = this.minecraft.getWindow().getGuiScaledHeight();
-            ActiveTextCollector.ClickableStyleFinder finder = new ActiveTextCollector.ClickableStyleFinder(this.getFont(), (int)event.x(), (int)event.y())
-               .includeInsertions(this.insertionClickMode());
-            this.minecraft.gui.hud.getChat().captureClickableText(finder, screenHeight, this.minecraft.gui.hud.getGuiTicks(), this.displayMode);
-            Style clicked = finder.result();
-            if (clicked != null && this.handleComponentClicked(clicked, this.insertionClickMode())) {
-               this.initial = this.input.getValue();
-               return true;
-            }
-         }
-
-         return super.mouseClicked(event, doubleClick);
       }
+
+      if (event.button() == 1) {
+         int screenHeight = this.minecraft.getWindow().getGuiScaledHeight();
+         ActiveTextCollector.ClickableStyleFinder finder = new ActiveTextCollector.ClickableStyleFinder(this.getFont(), (int)event.x(), (int)event.y())
+            .includeInsertions(this.insertionClickMode());
+         this.minecraft.gui.hud.getChat().captureClickableText(finder, screenHeight, this.minecraft.gui.hud.getGuiTicks(), this.displayMode);
+         Style clicked = finder.result();
+         if (clicked != null && this.handleComponentClicked(clicked, this.insertionClickMode())) {
+            this.initial = this.input.getValue();
+            return true;
+         }
+      }
+
+      return super.mouseClicked(event, doubleClick);
    }
 
    private boolean insertionClickMode() {
@@ -216,7 +217,6 @@ public class ChatScreen extends Screen {
             this.insertText(clicked.getInsertion(), false);
          }
       } else if (event != null) {
-         Objects.requireNonNull(event);
          switch (event) {
             case ClickEvent.Custom customEvent when customEvent.id().equals(ChatComponent.QUEUE_EXPAND_ID):
                ChatListener chatListener = this.minecraft.gui.chatListener();
@@ -224,7 +224,7 @@ public class ChatScreen extends Screen {
                   chatListener.acceptNextDelayedMessage();
                }
                break;
-            case ClickEvent.Custom customEventx when customEventx.id().equals(ChatComponent.GO_TO_RESTRICTIONS_SCREEN):
+            case ClickEvent.Custom customEvent when customEvent.id().equals(ChatComponent.GO_TO_RESTRICTIONS_SCREEN):
                this.minecraft.gui.setScreen(new RestrictionsScreen(this, this.minecraft.player.chatAbilities()));
                break;
             default:
@@ -266,8 +266,7 @@ public class ChatScreen extends Screen {
       }
    }
 
-   @Nullable
-   private FormattedCharSequence formatChat(final String text, final int offset) {
+   private @Nullable FormattedCharSequence formatChat(final String text, final int offset) {
       return this.isDraft ? FormattedCharSequence.forward(text, Style.EMPTY.withColor(ChatFormatting.GRAY).withItalic(true)) : null;
    }
 
@@ -336,7 +335,7 @@ public class ChatScreen extends Screen {
       T create(String initial, boolean isDraft);
    }
 
-   protected static enum ExitReason {
+   protected enum ExitReason {
       INTENTIONAL,
       INTERRUPTED,
       DONE;

@@ -34,11 +34,11 @@ public class GhastModel extends EntityModel<GhastRenderState> {
       RandomSource random = RandomSource.createThreadLocalInstance(1660L);
 
       for (int i = 0; i < 9; i++) {
-         float xo = (((float)(i % 3) - (float)(i / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         float yo = ((float)(i / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         float xo = ((i % 3 - i / 3 % 2 * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         float yo = (i / 3 / 2.0F * 2.0F - 1.0F) * 5.0F;
          int len = random.nextInt(7) + 8;
          root.addOrReplaceChild(
-            PartNames.tentacle(i), CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, (float)len, 2.0F), PartPose.offset(xo, 24.6F, yo)
+            PartNames.tentacle(i), CubeListBuilder.create().texOffs(0, 0).addBox(-1.0F, 0.0F, -1.0F, 2.0F, len, 2.0F), PartPose.offset(xo, 24.6F, yo)
          );
       }
 
@@ -52,7 +52,7 @@ public class GhastModel extends EntityModel<GhastRenderState> {
 
    public static void animateTentacles(final EntityRenderState state, final ModelPart[] tentacles) {
       for (int i = 0; i < tentacles.length; i++) {
-         tentacles[i].xRot = 0.2F * Mth.sin((double)(state.ageInTicks * 0.3F + (float)i)) + 0.4F;
+         tentacles[i].xRot = 0.2F * Mth.sin(state.ageInTicks * 0.3F + i) + 0.4F;
       }
    }
 }

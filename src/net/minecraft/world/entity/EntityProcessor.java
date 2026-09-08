@@ -6,6 +6,5 @@ import org.jspecify.annotations.Nullable;
 public interface EntityProcessor {
    EntityProcessor NOP = input -> input;
 
-   @Nullable
-   Entity process(Entity input);
+   @Nullable Entity process(Entity input);
 }

@@ -1,6 +1,5 @@
 package net.minecraft.world.level.block.entity;
 
-import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -14,17 +13,13 @@ import net.minecraft.world.level.block.state.BlockState;
 public class EnderChestBlockEntity extends BlockEntity implements LidBlockEntity {
    private final ChestLidController chestLidController = new ChestLidController();
    private final ContainerOpenersCounter openersCounter = new ContainerOpenersCounter() {
-      {
-         Objects.requireNonNull(EnderChestBlockEntity.this);
-      }
-
       @Override
       protected void onOpen(final Level level, final BlockPos pos, final BlockState blockState) {
          level.playSound(
             null,
-            (double)pos.getX() + 0.5,
-            (double)pos.getY() + 0.5,
-            (double)pos.getZ() + 0.5,
+            pos.getX() + 0.5,
+            pos.getY() + 0.5,
+            pos.getZ() + 0.5,
             SoundEvents.ENDER_CHEST_OPEN,
             SoundSource.BLOCKS,
             0.5F,
@@ -36,9 +31,9 @@ public class EnderChestBlockEntity extends BlockEntity implements LidBlockEntity
       protected void onClose(final Level level, final BlockPos pos, final BlockState blockState) {
          level.playSound(
             null,
-            (double)pos.getX() + 0.5,
-            (double)pos.getY() + 0.5,
-            (double)pos.getZ() + 0.5,
+            pos.getX() + 0.5,
+            pos.getY() + 0.5,
+            pos.getZ() + 0.5,
             SoundEvents.ENDER_CHEST_CLOSE,
             SoundSource.BLOCKS,
             0.5F,

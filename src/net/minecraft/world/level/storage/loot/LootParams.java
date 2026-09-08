@@ -63,7 +63,7 @@ public class LootParams {
          return this;
       }
 
-      public <T> LootParams.Builder withOptionalParameter(final ContextKey<T> param, @Nullable final T value) {
+      public <T> LootParams.Builder withOptionalParameter(final ContextKey<T> param, final @Nullable T value) {
          this.params.set(param, value);
          return this;
       }
@@ -77,8 +77,7 @@ public class LootParams {
          }
       }
 
-      @Nullable
-      public <T> T getOptionalParameter(final ContextKey<T> param) {
+      public <T> @Nullable T getOptionalParameter(final ContextKey<T> param) {
          return this.params.get(param);
       }
 

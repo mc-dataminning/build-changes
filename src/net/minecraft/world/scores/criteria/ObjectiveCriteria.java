@@ -80,14 +80,14 @@ public class ObjectiveCriteria {
       ObjectiveCriteria value = CRITERIA_CACHE.get(name);
       if (value != null) {
          return Optional.of(value);
-      } else {
-         int colonPos = name.indexOf(58);
-         return colonPos < 0
-            ? Optional.empty()
-            : BuiltInRegistries.STAT_TYPE
-               .getOptional(Identifier.bySeparator(name.substring(0, colonPos), '.'))
-               .flatMap(statType -> getStat((StatType<?>)statType, Identifier.bySeparator(name.substring(colonPos + 1), '.')));
       }
+
+      int colonPos = name.indexOf(58);
+      return colonPos < 0
+         ? Optional.empty()
+         : BuiltInRegistries.STAT_TYPE
+            .getOptional(Identifier.bySeparator(name.substring(0, colonPos), '.'))
+            .flatMap(statType -> getStat((StatType<?>)statType, Identifier.bySeparator(name.substring(colonPos + 1), '.')));
    }
 
    private static <T> Optional<ObjectiveCriteria> getStat(final StatType<T> statType, final Identifier key) {
@@ -106,14 +106,14 @@ public class ObjectiveCriteria {
       return this.renderType;
    }
 
-   public static enum RenderType implements StringRepresentable {
+   public enum RenderType implements StringRepresentable {
       INTEGER("integer"),
       HEARTS("hearts");
 
       private final String id;
       public static final StringRepresentable.EnumCodec<ObjectiveCriteria.RenderType> CODEC = StringRepresentable.fromEnum(ObjectiveCriteria.RenderType::values);
 
-      private RenderType(final String id) {
+      RenderType(final String id) {
          this.id = id;
       }
 

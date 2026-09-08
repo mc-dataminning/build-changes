@@ -16,16 +16,22 @@ public class TradeWithPlayerGoal extends Goal {
    public boolean canUse() {
       if (!this.mob.isAlive()) {
          return false;
-      } else if (this.mob.isInWater()) {
-         return false;
-      } else if (!this.mob.onGround()) {
-         return false;
-      } else if (this.mob.wasHurtRecently()) {
-         return false;
-      } else {
-         Player trader = this.mob.getTradingPlayer();
-         return trader == null ? false : !(this.mob.distanceToSqr(trader) > 16.0);
       }
+
+      if (this.mob.isInWater()) {
+         return false;
+      }
+
+      if (!this.mob.onGround()) {
+         return false;
+      }
+
+      if (this.mob.wasHurtRecently()) {
+         return false;
+      }
+
+      Player trader = this.mob.getTradingPlayer();
+      return trader == null ? false : !(this.mob.distanceToSqr(trader) > 16.0);
    }
 
    @Override

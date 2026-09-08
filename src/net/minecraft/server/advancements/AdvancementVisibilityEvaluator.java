@@ -76,7 +76,7 @@ public class AdvancementVisibilityEvaluator {
       void accept(AdvancementNode advancement, boolean visible);
    }
 
-   private static enum VisibilityRule {
+   private enum VisibilityRule {
       SHOW,
       HIDE,
       NO_CHANGE;

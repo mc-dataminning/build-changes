@@ -31,12 +31,15 @@ public class SkyLightSectionStorage extends LayerLightSectionStorage<SkyLightSec
       if (topSection != sections.currentLowestY && sectionY < topSection) {
          DataLayer layer = this.getDataLayer(sections, sectionNode);
          if (layer == null) {
-            for (blockNode = BlockPos.getFlatIndex(blockNode); layer == null; layer = this.getDataLayer(sections, sectionNode)) {
+            blockNode = BlockPos.getFlatIndex(blockNode);
+
+            while (layer == null) {
                if (++sectionY >= topSection) {
                   return 15;
                }
 
                sectionNode = SectionPos.offset(sectionNode, Direction.UP);
+               layer = this.getDataLayer(sections, sectionNode);
             }
          }
 
@@ -91,36 +94,36 @@ public class SkyLightSectionStorage extends LayerLightSectionStorage<SkyLightSec
       DataLayer queuedLayer = (DataLayer)this.queuedSections.get(sectionNode);
       if (queuedLayer != null) {
          return queuedLayer;
-      } else {
-         int topSection = this.updatingSectionData.topSections.get(SectionPos.getZeroNode(sectionNode));
-         if (topSection != this.updatingSectionData.currentLowestY && SectionPos.y(sectionNode) < topSection) {
-            long aboveSection = SectionPos.offset(sectionNode, Direction.UP);
+      }
 
-            DataLayer aboveData;
-            while ((aboveData = this.getDataLayer(aboveSection, true)) == null) {
-               aboveSection = SectionPos.offset(aboveSection, Direction.UP);
-            }
+      int topSection = this.updatingSectionData.topSections.get(SectionPos.getZeroNode(sectionNode));
+      if (topSection != this.updatingSectionData.currentLowestY && SectionPos.y(sectionNode) < topSection) {
+         long aboveSection = SectionPos.offset(sectionNode, Direction.UP);
 
-            return repeatFirstLayer(aboveData);
-         } else {
-            return this.lightOnInSection(sectionNode) ? new DataLayer(15) : new DataLayer();
+         DataLayer aboveData;
+         while ((aboveData = this.getDataLayer(aboveSection, true)) == null) {
+            aboveSection = SectionPos.offset(aboveSection, Direction.UP);
          }
+
+         return repeatFirstLayer(aboveData);
+      } else {
+         return this.lightOnInSection(sectionNode) ? new DataLayer(15) : new DataLayer();
       }
    }
 
    private static DataLayer repeatFirstLayer(final DataLayer data) {
       if (data.isDefinitelyHomogenous()) {
          return data.copy();
-      } else {
-         byte[] input = data.getData();
-         byte[] output = new byte[2048];
-
-         for (int i = 0; i < 16; i++) {
-            System.arraycopy(input, 0, output, i * 128, 128);
-         }
-
-         return new DataLayer(output);
       }
+
+      byte[] input = data.getData();
+      byte[] output = new byte[2048];
+
+      for (int i = 0; i < 16; i++) {
+         System.arraycopy(input, 0, output, i * 128, 128);
+      }
+
+      return new DataLayer(output);
    }
 
    protected boolean hasLightDataAtOrBelow(final int sectionY) {

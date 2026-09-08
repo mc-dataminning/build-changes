@@ -45,7 +45,7 @@ public interface CraftingRecipe extends Recipe<CraftingInput> {
       };
    }
 
-   public static record CraftingBookInfo(CraftingBookCategory category, String group) implements Recipe.BookInfo<CraftingBookCategory> {
+   record CraftingBookInfo(CraftingBookCategory category, String group) implements Recipe.BookInfo<CraftingBookCategory> {
       public static final MapCodec<CraftingRecipe.CraftingBookInfo> MAP_CODEC = Recipe.BookInfo.mapCodec(
          CraftingBookCategory.CODEC, CraftingBookCategory.MISC, CraftingRecipe.CraftingBookInfo::new
       );

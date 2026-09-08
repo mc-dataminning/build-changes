@@ -37,7 +37,7 @@ public class PatrolSpawner implements CustomSpawner {
                               int delta = 10;
                               if (level.hasChunksAt(spawnPos.getX() - 10, spawnPos.getZ() - 10, spawnPos.getX() + 10, spawnPos.getZ() + 10)) {
                                  if (level.environmentAttributes().getValue(EnvironmentAttributes.CAN_PILLAGER_PATROL_SPAWN, spawnPos)) {
-                                    int groupSize = (int)Math.ceil((double)level.getCurrentDifficultyAt(spawnPos).getEffectiveDifficulty()) + 1;
+                                    int groupSize = (int)Math.ceil(level.getCurrentDifficultyAt(spawnPos).getEffectiveDifficulty()) + 1;
 
                                     for (int i = 0; i < groupSize; i++) {
                                        spawnPos.setY(level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, spawnPos).getY());
@@ -68,23 +68,25 @@ public class PatrolSpawner implements CustomSpawner {
       BlockState state = level.getBlockState(pos);
       if (!NaturalSpawner.isValidEmptySpawnBlock(level, pos, state, state.getFluidState(), EntityTypes.PILLAGER)) {
          return false;
-      } else if (!PatrollingMonster.checkPatrollingMonsterSpawnRules(EntityTypes.PILLAGER, level, EntitySpawnReason.PATROL, pos, random)) {
-         return false;
-      } else {
-         PatrollingMonster mob = EntityTypes.PILLAGER.create(level, EntitySpawnReason.PATROL);
-         if (mob != null) {
-            if (isLeader) {
-               mob.setPatrolLeader(true);
-               mob.findPatrolTarget();
-            }
+      }
 
-            mob.setPos((double)pos.getX(), (double)pos.getY(), (double)pos.getZ());
-            mob.finalizeSpawn(level, level.getCurrentDifficultyAt(pos), EntitySpawnReason.PATROL, null);
-            level.addFreshEntityWithPassengers(mob);
-            return true;
-         } else {
-            return false;
+      if (!PatrollingMonster.checkPatrollingMonsterSpawnRules(EntityTypes.PILLAGER, level, EntitySpawnReason.PATROL, pos, random)) {
+         return false;
+      }
+
+      PatrollingMonster mob = EntityTypes.PILLAGER.create(level, EntitySpawnReason.PATROL);
+      if (mob != null) {
+         if (isLeader) {
+            mob.setPatrolLeader(true);
+            mob.findPatrolTarget();
          }
+
+         mob.setPos(pos.getX(), pos.getY(), pos.getZ());
+         mob.finalizeSpawn(level, level.getCurrentDifficultyAt(pos), EntitySpawnReason.PATROL, null);
+         level.addFreshEntityWithPassengers(mob);
+         return true;
+      } else {
+         return false;
       }
    }
 }

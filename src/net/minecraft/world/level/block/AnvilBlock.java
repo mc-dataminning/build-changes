@@ -59,9 +59,8 @@ public class AnvilBlock extends FallingBlock {
       return InteractionResult.SUCCESS;
    }
 
-   @Nullable
    @Override
-   protected MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
+   protected @Nullable MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
       return new SimpleMenuProvider(
          (containerId, inventory, player) -> new AnvilMenu(containerId, inventory, ContainerLevelAccess.create(level, pos)), CONTAINER_TITLE
       );
@@ -96,8 +95,7 @@ public class AnvilBlock extends FallingBlock {
       return entity.damageSources().anvil(entity);
    }
 
-   @Nullable
-   public static BlockState damage(final BlockState blockState) {
+   public static @Nullable BlockState damage(final BlockState blockState) {
       if (blockState.is(Blocks.ANVIL)) {
          return Blocks.CHIPPED_ANVIL.defaultBlockState().setValue(FACING, blockState.getValue(FACING));
       } else {

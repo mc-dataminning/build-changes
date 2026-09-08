@@ -67,9 +67,9 @@ public class WitherBossModel extends EntityModel<WitherRenderState> {
       super.setupAnim(state);
       setupHeadRotation(state, this.rightHead, 0);
       setupHeadRotation(state, this.leftHead, 1);
-      float anim = Mth.cos((double)(state.ageInTicks * 0.1F));
+      float anim = Mth.cos(state.ageInTicks * 0.1F);
       this.ribcage.xRot = (0.065F + 0.05F * anim) * (float) Math.PI;
-      this.tail.setPos(-2.0F, 6.9F + Mth.cos((double)this.ribcage.xRot) * 10.0F, -0.5F + Mth.sin((double)this.ribcage.xRot) * 10.0F);
+      this.tail.setPos(-2.0F, 6.9F + Mth.cos(this.ribcage.xRot) * 10.0F, -0.5F + Mth.sin(this.ribcage.xRot) * 10.0F);
       this.tail.xRot = (0.265F + 0.1F * anim) * (float) Math.PI;
       this.centerHead.yRot = state.yRot * (float) (Math.PI / 180.0);
       this.centerHead.xRot = state.xRot * (float) (Math.PI / 180.0);

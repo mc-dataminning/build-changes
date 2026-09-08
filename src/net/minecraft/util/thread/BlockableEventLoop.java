@@ -25,8 +25,7 @@ import org.slf4j.Logger;
 
 public abstract class BlockableEventLoop<R extends Runnable> implements Executor, TaskScheduler<R>, ProfilerMeasured {
    public static final long BLOCK_TIME_NANOS = 100000L;
-   @Nullable
-   private static volatile Supplier<CrashReport> delayedCrash;
+   private static volatile @Nullable Supplier<CrashReport> delayedCrash;
    private final boolean propagatesCrashes;
    private final String name;
    private static final Logger LOGGER = LogUtils.getLogger();
@@ -75,10 +74,10 @@ public abstract class BlockableEventLoop<R extends Runnable> implements Executor
    public CompletableFuture<Void> submit(final Runnable runnable) {
       if (this.scheduleExecutables()) {
          return this.submitAsync(runnable);
-      } else {
-         runnable.run();
-         return CompletableFuture.completedFuture(null);
       }
+
+      runnable.run();
+      return CompletableFuture.completedFuture(null);
    }
 
    public void executeBlocking(final Runnable runnable) {
@@ -127,12 +126,14 @@ public abstract class BlockableEventLoop<R extends Runnable> implements Executor
       R task = this.pendingRunnables.peek();
       if (task == null) {
          return false;
-      } else if (!this.shouldRunAllTasks() && !this.shouldRun(task)) {
-         return false;
-      } else {
-         this.doRunTask(this.pendingRunnables.remove());
-         return true;
       }
+
+      if (!this.shouldRunAllTasks() && !this.shouldRun(task)) {
+         return false;
+      }
+
+      this.doRunTask(this.pendingRunnables.remove());
+      return true;
    }
 
    public void managedBlock(final BooleanSupplier condition) {
@@ -175,9 +176,9 @@ public abstract class BlockableEventLoop<R extends Runnable> implements Executor
          if (ignored != null) {
             ignored.close();
          }
-      } catch (Exception var7) {
-         LOGGER.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.name(), var7);
-         throw var7;
+      } catch (Exception e) {
+         LOGGER.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.name(), e);
+         throw e;
       }
    }
 

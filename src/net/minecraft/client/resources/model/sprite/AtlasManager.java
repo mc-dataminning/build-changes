@@ -126,12 +126,12 @@ public class AtlasManager implements AutoCloseable, PreparableReloadListener, Sp
       ResourceManager resourceManager = currentReload.resourceManager();
       pendingStitches.pendingStitches
          .forEach(pending -> pending.entry.scheduleLoad(resourceManager, taskExecutor, this.maxMipmapLevels).whenComplete((value, throwable) -> {
-               if (value != null) {
-                  pending.preparations.complete(value);
-               } else {
-                  pending.preparations.completeExceptionally(throwable);
-               }
-            }));
+            if (value != null) {
+               pending.preparations.complete(value);
+            } else {
+               pending.preparations.completeExceptionally(throwable);
+            }
+         }));
       return pendingStitches.allReadyToUpload
          .thenCompose(preparationBarrier::wait)
          .thenAcceptAsync(unused -> this.updateSpriteMaps(pendingStitches), reloadExecutor);
@@ -156,13 +156,13 @@ public class AtlasManager implements AutoCloseable, PreparableReloadListener, Sp
          );
    }
 
-   public static record AtlasConfig(Identifier textureId, Identifier definitionLocation, boolean createMipmaps, Set<MetadataSectionType<?>> additionalMetadata) {
+   public record AtlasConfig(Identifier textureId, Identifier definitionLocation, boolean createMipmaps, Set<MetadataSectionType<?>> additionalMetadata) {
       public AtlasConfig(final Identifier textureId, final Identifier definitionLocation, final boolean createMipmaps) {
          this(textureId, definitionLocation, createMipmaps, Set.of());
       }
    }
 
-   private static record AtlasEntry(TextureAtlas atlas, AtlasManager.AtlasConfig config) implements AutoCloseable {
+   private record AtlasEntry(TextureAtlas atlas, AtlasManager.AtlasConfig config) implements AutoCloseable {
       @Override
       public void close() {
          this.atlas.close();
@@ -178,7 +178,7 @@ public class AtlasManager implements AutoCloseable, PreparableReloadListener, Sp
       }
    }
 
-   private static record PendingStitch(AtlasManager.AtlasEntry entry, CompletableFuture<SpriteLoader.Preparations> preparations) {
+   private record PendingStitch(AtlasManager.AtlasEntry entry, CompletableFuture<SpriteLoader.Preparations> preparations) {
       public void joinAndUpload(final Map<SpriteId, TextureAtlasSprite> result) {
          SpriteLoader.Preparations preparations = this.preparations.join();
          this.entry.atlas.upload(preparations);

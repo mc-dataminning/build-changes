@@ -24,13 +24,11 @@ import org.slf4j.Logger;
 
 public class VanillaPackResourcesBuilder {
    private static final Logger LOGGER = LogUtils.getLogger();
-   public static Consumer<VanillaPackResourcesBuilder> developmentConfig = builder -> {
-   };
+   public static Consumer<VanillaPackResourcesBuilder> developmentConfig = builder -> {};
    private final FixedPathPackResources.Builder fullBuilder = new FixedPathPackResources.Builder();
    private final List<FixedPathPackResources.Builder> layeredBuilders = new ArrayList<>();
    private final Set<String> namespaces = new HashSet<>();
-   @Nullable
-   private ResourceMetadata metadata;
+   private @Nullable ResourceMetadata metadata;
    private static final Map<PackType, Path> ROOT_DIR_BY_TYPE = Util.make(() -> {
       synchronized (VanillaPackResources.class) {
          Builder<PackType, Path> result = ImmutableMap.builder();
@@ -50,8 +48,8 @@ public class VanillaPackResourcesBuilder {
 
                   Path probePath = FileSystemUtil.safeGetPath(probeUri);
                   result.put(type, probePath.getParent());
-               } catch (Exception var12) {
-                  LOGGER.error("Couldn't resolve path to vanilla assets", var12);
+               } catch (Exception e) {
+                  LOGGER.error("Couldn't resolve path to vanilla assets", e);
                }
             }
          }
@@ -111,8 +109,8 @@ public class VanillaPackResourcesBuilder {
                this.pushRootPath(assetsPath.getParent());
                this.pushPathForType(packType, assetsPath);
             }
-         } catch (Exception var7) {
-            LOGGER.error("Failed to extract path from {}", url, var7);
+         } catch (Exception e) {
+            LOGGER.error("Failed to extract path from {}", url, e);
          }
       }
 

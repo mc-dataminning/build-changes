@@ -66,8 +66,7 @@ public abstract class Fluid {
    protected void entityInside(final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier) {
    }
 
-   @Nullable
-   protected ParticleOptions getDripParticle() {
+   protected @Nullable ParticleOptions getDripParticle() {
       return null;
    }
 
@@ -108,21 +107,13 @@ public abstract class Fluid {
 
    public abstract VoxelShape getShape(final FluidState state, final BlockGetter level, final BlockPos pos);
 
-   @Nullable
-   public AABB getAABB(final FluidState state, final BlockGetter level, final BlockPos pos) {
+   public @Nullable AABB getAABB(final FluidState state, final BlockGetter level, final BlockPos pos) {
       if (this.isEmpty()) {
          return null;
-      } else {
-         float height = state.getHeight(level, pos);
-         return new AABB(
-            (double)pos.getX(),
-            (double)pos.getY(),
-            (double)pos.getZ(),
-            (double)pos.getX() + 1.0,
-            (double)((float)pos.getY() + height),
-            (double)pos.getZ() + 1.0
-         );
       }
+
+      float height = state.getHeight(level, pos);
+      return new AABB(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1.0, pos.getY() + height, pos.getZ() + 1.0);
    }
 
    public Optional<SoundEvent> getPickupSound() {

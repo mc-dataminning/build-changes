@@ -16,12 +16,12 @@ public class DefaultRedstoneWireEvaluator extends RedstoneWireEvaluator {
 
    @Override
    public void updatePowerStrength(
-      final Level level, final BlockPos pos, final BlockState state, @Nullable final Orientation orientation, final boolean skipShapeUpdates
+      final Level level, final BlockPos pos, final BlockState state, final @Nullable Orientation orientation, final boolean skipShapeUpdates
    ) {
       int targetStrength = this.calculateTargetStrength(level, pos);
       if (state.getValue(RedstoneWireBlock.POWER) != targetStrength) {
          if (level.getBlockState(pos) == state) {
-            level.setBlock(pos, state.setValue(RedstoneWireBlock.POWER, Integer.valueOf(targetStrength)), 2);
+            level.setBlock(pos, state.setValue(RedstoneWireBlock.POWER, targetStrength), 2);
          }
 
          Set<BlockPos> toUpdate = Sets.newHashSet();

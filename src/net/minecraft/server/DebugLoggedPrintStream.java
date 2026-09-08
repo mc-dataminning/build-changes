@@ -13,7 +13,7 @@ public class DebugLoggedPrintStream extends LoggedPrintStream {
    }
 
    @Override
-   protected void logLine(@Nullable final String out) {
+   protected void logLine(final @Nullable String out) {
       StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
       StackTraceElement stackTraceElement = stackTrace[Math.min(3, stackTrace.length)];
       LOGGER.info("[{}]@.({}:{}): {}", new Object[]{this.name, stackTraceElement.getFileName(), stackTraceElement.getLineNumber(), out});

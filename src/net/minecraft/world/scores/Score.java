@@ -13,10 +13,8 @@ import org.jspecify.annotations.Nullable;
 public class Score implements ReadOnlyScoreInfo {
    private int value;
    private boolean locked = true;
-   @Nullable
-   private Component display;
-   @Nullable
-   private NumberFormat numberFormat;
+   private @Nullable Component display;
+   private @Nullable NumberFormat numberFormat;
 
    public Score() {
    }
@@ -50,34 +48,32 @@ public class Score implements ReadOnlyScoreInfo {
       this.locked = locked;
    }
 
-   @Nullable
-   public Component display() {
+   public @Nullable Component display() {
       return this.display;
    }
 
-   public void display(@Nullable final Component display) {
+   public void display(final @Nullable Component display) {
       this.display = display;
    }
 
-   @Nullable
    @Override
-   public NumberFormat numberFormat() {
+   public @Nullable NumberFormat numberFormat() {
       return this.numberFormat;
    }
 
-   public void numberFormat(@Nullable final NumberFormat numberFormat) {
+   public void numberFormat(final @Nullable NumberFormat numberFormat) {
       this.numberFormat = numberFormat;
    }
 
-   public static record Packed(int value, boolean locked, Optional<Component> display, Optional<NumberFormat> numberFormat) {
+   public record Packed(int value, boolean locked, Optional<Component> display, Optional<NumberFormat> numberFormat) {
       public static final MapCodec<Score.Packed> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Codec.INT.optionalFieldOf("Score", 0).forGetter(Score.Packed::value),
-                  Codec.BOOL.optionalFieldOf("Locked", false).forGetter(Score.Packed::locked),
-                  ComponentSerialization.CODEC.optionalFieldOf("display").forGetter(Score.Packed::display),
-                  NumberFormatTypes.CODEC.optionalFieldOf("format").forGetter(Score.Packed::numberFormat)
-               )
-               .apply(i, Score.Packed::new)
+               Codec.INT.optionalFieldOf("Score", 0).forGetter(Score.Packed::value),
+               Codec.BOOL.optionalFieldOf("Locked", false).forGetter(Score.Packed::locked),
+               ComponentSerialization.CODEC.optionalFieldOf("display").forGetter(Score.Packed::display),
+               NumberFormatTypes.CODEC.optionalFieldOf("format").forGetter(Score.Packed::numberFormat)
+            )
+            .apply(i, Score.Packed::new)
       );
    }
 }

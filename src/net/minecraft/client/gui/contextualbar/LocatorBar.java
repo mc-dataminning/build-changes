@@ -56,7 +56,7 @@ public class LocatorBar implements ContextualBar {
                   if (!waypoint.id().left().map(uuid -> uuid.equals(cameraEntity.getUUID())).orElse(false)) {
                      double angle = waypoint.yawAngleToCamera(level, this.minecraft.gameRenderer.mainCamera(), partialTickSupplier);
                      if (!(angle <= -60.0) && !(angle > 60.0)) {
-                        int screenMiddle = Mth.ceil((float)(graphics.guiWidth() - 9) / 2.0F);
+                        int screenMiddle = Mth.ceil((graphics.guiWidth() - 9) / 2.0F);
                         Waypoint.Icon icon = waypoint.icon();
                         WaypointStyle style = this.minecraft.gui.hud.getWaypointStyles().get(icon.style);
                         float distance = Mth.sqrt((float)waypoint.distanceSquared(cameraEntity));
@@ -64,10 +64,10 @@ public class LocatorBar implements ContextualBar {
                         int color = icon.color
                            .orElseGet(
                               () -> (Integer)waypoint.id()
-                                    .map(
-                                       uuid -> ARGB.setBrightness(ARGB.color(255, uuid.hashCode()), 0.9F),
-                                       name -> ARGB.setBrightness(ARGB.color(255, name.hashCode()), 0.9F)
-                                    )
+                                 .map(
+                                    uuid -> ARGB.setBrightness(ARGB.color(255, uuid.hashCode()), 0.9F),
+                                    name -> ARGB.setBrightness(ARGB.color(255, name.hashCode()), 0.9F)
+                                 )
                            );
                         int dotPosition = Mth.floor(angle * 173.0 / 2.0 / 60.0);
                         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, screenMiddle + dotPosition, top - 2, 9, 9, color);

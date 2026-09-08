@@ -20,7 +20,7 @@ public record StringTag(String value) implements PrimitiveTag {
       private static String readAccounted(final DataInput input, final NbtAccounter accounter) throws IOException {
          accounter.accountBytes(36L);
          String data = input.readUTF();
-         accounter.accountBytes(2L, (long)data.length());
+         accounter.accountBytes(2L, data.length());
          return data;
       }
 
@@ -45,11 +45,8 @@ public record StringTag(String value) implements PrimitiveTag {
    private static final char ESCAPE = '\\';
    private static final char NOT_SET = '\u0000';
 
-   @Deprecated(
-      forRemoval = true
-   )
-   public StringTag(String value) {
-      this.value = value;
+   @Deprecated(forRemoval = true)
+   public StringTag {
    }
 
    public static void skipString(final DataInput input) throws IOException {

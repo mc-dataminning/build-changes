@@ -96,7 +96,7 @@ public class BanlistService {
       return get(minecraftApi);
    }
 
-   private static record UserBan(NameAndId player, @Nullable String reason, String source, Optional<Instant> expires) {
+   private record UserBan(NameAndId player, @Nullable String reason, String source, Optional<Instant> expires) {
       private static BanlistService.UserBan from(final UserBanListEntry entry) {
          return new BanlistService.UserBan(
             Objects.requireNonNull(entry.getUser()), entry.getReason(), entry.getSource(), Optional.ofNullable(entry.getExpires()).map(Date::toInstant)
@@ -110,15 +110,15 @@ public class BanlistService {
       }
    }
 
-   public static record UserBanDto(PlayerDto player, Optional<String> reason, Optional<String> source, Optional<Instant> expires) {
+   public record UserBanDto(PlayerDto player, Optional<String> reason, Optional<String> source, Optional<Instant> expires) {
       public static final MapCodec<BanlistService.UserBanDto> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  PlayerDto.CODEC.codec().fieldOf("player").forGetter(BanlistService.UserBanDto::player),
-                  Codec.STRING.optionalFieldOf("reason").forGetter(BanlistService.UserBanDto::reason),
-                  Codec.STRING.optionalFieldOf("source").forGetter(BanlistService.UserBanDto::source),
-                  ExtraCodecs.INSTANT_ISO8601.optionalFieldOf("expires").forGetter(BanlistService.UserBanDto::expires)
-               )
-               .apply(i, BanlistService.UserBanDto::new)
+               PlayerDto.CODEC.codec().fieldOf("player").forGetter(BanlistService.UserBanDto::player),
+               Codec.STRING.optionalFieldOf("reason").forGetter(BanlistService.UserBanDto::reason),
+               Codec.STRING.optionalFieldOf("source").forGetter(BanlistService.UserBanDto::source),
+               ExtraCodecs.INSTANT_ISO8601.optionalFieldOf("expires").forGetter(BanlistService.UserBanDto::expires)
+            )
+            .apply(i, BanlistService.UserBanDto::new)
       );
 
       private static BanlistService.UserBanDto from(final BanlistService.UserBan ban) {

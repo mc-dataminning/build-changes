@@ -115,8 +115,7 @@ public abstract class AbstractFish extends WaterAnimal implements Bucketable {
    public void aiStep() {
       if (!this.isInWater() && this.onGround() && this.verticalCollision) {
          this.setDeltaMovement(
-            this.getDeltaMovement()
-               .add((double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F), 0.4F, (double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F))
+            this.getDeltaMovement().add((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F, 0.4F, (this.random.nextFloat() * 2.0F - 1.0F) * 0.05F)
          );
          this.setOnGround(false);
          this.needsSync = true;
@@ -180,7 +179,7 @@ public abstract class AbstractFish extends WaterAnimal implements Bucketable {
             double zd = this.wantedZ - this.mob.getZ();
             if (yd != 0.0) {
                double dd = Math.sqrt(xd * xd + yd * yd + zd * zd);
-               this.mob.setDeltaMovement(this.mob.getDeltaMovement().add(0.0, (double)this.mob.getSpeed() * (yd / dd) * 0.1, 0.0));
+               this.mob.setDeltaMovement(this.mob.getDeltaMovement().add(0.0, this.mob.getSpeed() * (yd / dd) * 0.1, 0.0));
             }
 
             if (xd != 0.0 || zd != 0.0) {

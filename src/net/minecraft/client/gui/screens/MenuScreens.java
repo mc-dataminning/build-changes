@@ -46,8 +46,7 @@ public class MenuScreens {
       }
    }
 
-   @Nullable
-   private static <T extends AbstractContainerMenu> MenuScreens.ScreenConstructor<T, ?> getConstructor(final MenuType<T> type) {
+   private static <T extends AbstractContainerMenu> MenuScreens.@Nullable ScreenConstructor<T, ?> getConstructor(final MenuType<T> type) {
       return (MenuScreens.ScreenConstructor<T, ?>)SCREENS.get(type);
    }
 

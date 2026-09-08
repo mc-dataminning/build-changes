@@ -39,59 +39,57 @@ public class WorldGenSettingsHeightAndBiomeFix extends DataFix {
                   dimensionsFinder,
                   dimensionsType,
                   dimensions -> Util.writeAndReadTypedOrThrow(
-                        dimensions,
-                        dimensionsType,
-                        dimensionsTag -> dimensionsTag.update(
-                              "minecraft:overworld",
-                              overworldTag -> overworldTag.update(
-                                    "generator",
-                                    generator -> {
-                                       String generatorType = generator.get("type").asString("");
-                                       if ("minecraft:noise".equals(generatorType)) {
-                                          MutableBoolean isLargeBiomes = new MutableBoolean();
-                                          generator = generator.update(
-                                             "biome_source",
-                                             biomeSource -> {
-                                                String type = biomeSource.get("type").asString("");
-                                                if ("minecraft:vanilla_layered".equals(type) || wasExpSnap && "minecraft:multi_noise".equals(type)) {
-                                                   if (biomeSource.get("large_biomes").asBoolean(false)) {
-                                                      isLargeBiomes.setTrue();
-                                                   }
+                     dimensions,
+                     dimensionsType,
+                     dimensionsTag -> dimensionsTag.update(
+                        "minecraft:overworld",
+                        overworldTag -> overworldTag.update(
+                           "generator",
+                           generator -> {
+                              String generatorType = generator.get("type").asString("");
+                              if ("minecraft:noise".equals(generatorType)) {
+                                 MutableBoolean isLargeBiomes = new MutableBoolean();
+                                 generator = generator.update(
+                                    "biome_source",
+                                    biomeSource -> {
+                                       String type = biomeSource.get("type").asString("");
+                                       if ("minecraft:vanilla_layered".equals(type) || wasExpSnap && "minecraft:multi_noise".equals(type)) {
+                                          if (biomeSource.get("large_biomes").asBoolean(false)) {
+                                             isLargeBiomes.setTrue();
+                                          }
 
-                                                   return biomeSource.createMap(
-                                                      ImmutableMap.of(
-                                                         biomeSource.createString("preset"),
-                                                         biomeSource.createString("minecraft:overworld"),
-                                                         biomeSource.createString("type"),
-                                                         biomeSource.createString("minecraft:multi_noise")
-                                                      )
-                                                   );
-                                                } else {
-                                                   return biomeSource;
-                                                }
-                                             }
-                                          );
-                                          return isLargeBiomes.booleanValue()
-                                             ? generator.update(
-                                                "settings",
-                                                settings -> "minecraft:overworld".equals(settings.asString(""))
-                                                      ? settings.createString("minecraft:large_biomes")
-                                                      : settings
+                                          return biomeSource.createMap(
+                                             ImmutableMap.of(
+                                                biomeSource.createString("preset"),
+                                                biomeSource.createString("minecraft:overworld"),
+                                                biomeSource.createString("type"),
+                                                biomeSource.createString("minecraft:multi_noise")
                                              )
-                                             : generator;
-                                       } else if ("minecraft:flat".equals(generatorType)) {
-                                          return wasPreviouslyIncreased
-                                             ? generator
-                                             : generator.update(
-                                                "settings", settings -> settings.update("layers", WorldGenSettingsHeightAndBiomeFix::updateLayers)
-                                             );
+                                          );
                                        } else {
-                                          return generator;
+                                          return biomeSource;
                                        }
                                     }
-                                 )
-                           )
+                                 );
+                                 return isLargeBiomes.booleanValue()
+                                    ? generator.update(
+                                       "settings",
+                                       settings -> "minecraft:overworld".equals(settings.asString(""))
+                                          ? settings.createString("minecraft:large_biomes")
+                                          : settings
+                                    )
+                                    : generator;
+                              } else if ("minecraft:flat".equals(generatorType)) {
+                                 return wasPreviouslyIncreased
+                                    ? generator
+                                    : generator.update("settings", settings -> settings.update("layers", WorldGenSettingsHeightAndBiomeFix::updateLayers));
+                              } else {
+                                 return generator;
+                              }
+                           }
+                        )
                      )
+                  )
                );
          }
       );

@@ -40,17 +40,17 @@ public interface ContainerEventHandler extends GuiEventListener {
       Optional<GuiEventListener> child = this.getChildAt(event.x(), event.y());
       if (child.isEmpty()) {
          return false;
-      } else {
-         GuiEventListener widget = child.get();
-         if (widget.mouseClicked(event, doubleClick) && widget.shouldTakeFocusAfterInteraction()) {
-            this.setFocused(widget);
-            if (event.button() == 1) {
-               this.setDragging(true);
-            }
-         }
-
-         return true;
       }
+
+      GuiEventListener widget = child.get();
+      if (widget.mouseClicked(event, doubleClick) && widget.shouldTakeFocusAfterInteraction()) {
+         this.setFocused(widget);
+         if (event.button() == 1) {
+            this.setDragging(true);
+         }
+      }
+
+      return true;
    }
 
    @Override
@@ -95,7 +95,7 @@ public interface ContainerEventHandler extends GuiEventListener {
    }
 
    @Override
-   default boolean preeditUpdated(@Nullable final PreeditEvent event) {
+   default boolean preeditUpdated(final @Nullable PreeditEvent event) {
       return this.getFocused() != null && this.getFocused().preeditUpdated(event);
    }
 
@@ -105,10 +105,9 @@ public interface ContainerEventHandler extends GuiEventListener {
       return focused != null ? focused.getBorderForArrowNavigation(opposite) : GuiEventListener.super.getBorderForArrowNavigation(opposite);
    }
 
-   @Nullable
-   GuiEventListener getFocused();
+   @Nullable GuiEventListener getFocused();
 
-   void setFocused(@Nullable final GuiEventListener focused);
+   void setFocused(final @Nullable GuiEventListener focused);
 
    @Override
    default void setFocused(final boolean focused) {
@@ -122,16 +121,14 @@ public interface ContainerEventHandler extends GuiEventListener {
       return this.getFocused() != null;
    }
 
-   @Nullable
    @Override
-   default ComponentPath getCurrentFocusPath() {
+   default @Nullable ComponentPath getCurrentFocusPath() {
       GuiEventListener focused = this.getFocused();
       return focused != null ? ComponentPath.path(this, focused.getCurrentFocusPath()) : null;
    }
 
-   @Nullable
    @Override
-   default ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
+   default @Nullable ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
       GuiEventListener focus = this.getFocused();
       if (focus != null) {
          ComponentPath focusPath = focus.nextFocusPath(navigationEvent);
@@ -147,8 +144,7 @@ public interface ContainerEventHandler extends GuiEventListener {
       }
    }
 
-   @Nullable
-   private ComponentPath handleTabNavigation(final FocusNavigationEvent.TabNavigation tabNavigation) {
+   private @Nullable ComponentPath handleTabNavigation(final FocusNavigationEvent.TabNavigation tabNavigation) {
       boolean forward = tabNavigation.forward();
       GuiEventListener focus = this.getFocused();
       List<? extends GuiEventListener> sortedChildren = new ArrayList<>(this.children());
@@ -178,17 +174,16 @@ public interface ContainerEventHandler extends GuiEventListener {
       return null;
    }
 
-   @Nullable
-   private ComponentPath handleArrowNavigation(final FocusNavigationEvent.ArrowNavigation arrowNavigation) {
+   private @Nullable ComponentPath handleArrowNavigation(final FocusNavigationEvent.ArrowNavigation arrowNavigation) {
       GuiEventListener focus = this.getFocused();
       ScreenDirection direction = arrowNavigation.direction();
       if (focus == null) {
          if (arrowNavigation.previousFocus() != null) {
             return ComponentPath.path(this, this.nextFocusPathInDirection(arrowNavigation.previousFocus(), arrowNavigation.direction(), null, arrowNavigation));
-         } else {
-            ScreenRectangle borderRectangle = this.getBorderForArrowNavigation(direction.getOpposite());
-            return ComponentPath.path(this, this.nextFocusPathInDirection(borderRectangle, direction, null, arrowNavigation));
          }
+
+         ScreenRectangle borderRectangle = this.getBorderForArrowNavigation(direction.getOpposite());
+         return ComponentPath.path(this, this.nextFocusPathInDirection(borderRectangle, direction, null, arrowNavigation));
       } else {
          ScreenRectangle focusedRectangle = focus.getBorderForArrowNavigation(direction);
          return ComponentPath.path(
@@ -197,11 +192,10 @@ public interface ContainerEventHandler extends GuiEventListener {
       }
    }
 
-   @Nullable
-   private ComponentPath nextFocusPathInDirection(
+   private @Nullable ComponentPath nextFocusPathInDirection(
       final ScreenRectangle focusedRectangle,
       final ScreenDirection direction,
-      @Nullable final GuiEventListener excluded,
+      final @Nullable GuiEventListener excluded,
       final FocusNavigationEvent.ArrowNavigation navigationEvent
    ) {
       ScreenAxis axis = direction.getAxis();
@@ -233,8 +227,8 @@ public interface ContainerEventHandler extends GuiEventListener {
       );
       potentialChildren.sort(primaryComparator.thenComparing(secondaryComparator));
 
-      for (GuiEventListener childx : potentialChildren) {
-         ComponentPath componentPath = childx.nextFocusPath(navigationEvent);
+      for (GuiEventListener child : potentialChildren) {
+         ComponentPath componentPath = child.nextFocusPath(navigationEvent);
          if (componentPath != null) {
             return componentPath;
          }
@@ -243,11 +237,10 @@ public interface ContainerEventHandler extends GuiEventListener {
       return this.nextFocusPathVaguelyInDirection(focusedRectangle, direction, excluded, navigationEvent);
    }
 
-   @Nullable
-   private ComponentPath nextFocusPathVaguelyInDirection(
+   private @Nullable ComponentPath nextFocusPathVaguelyInDirection(
       final ScreenRectangle focusedRectangle,
       final ScreenDirection direction,
-      @Nullable final GuiEventListener excluded,
+      final @Nullable GuiEventListener excluded,
       final FocusNavigationEvent navigationEvent
    ) {
       ScreenAxis axis = direction.getAxis();
@@ -272,8 +265,8 @@ public interface ContainerEventHandler extends GuiEventListener {
 
       potentialChildren.sort(Comparator.comparingDouble(Pair::getSecond));
 
-      for (Pair<GuiEventListener, Long> childx : potentialChildren) {
-         ComponentPath componentPath = ((GuiEventListener)childx.getFirst()).nextFocusPath(navigationEvent);
+      for (Pair<GuiEventListener, Long> child : potentialChildren) {
+         ComponentPath componentPath = ((GuiEventListener)child.getFirst()).nextFocusPath(navigationEvent);
          if (componentPath != null) {
             return componentPath;
          }

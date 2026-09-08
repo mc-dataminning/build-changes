@@ -60,8 +60,8 @@ public class MagmaCube extends AbstractCubeMob implements Enemy {
    public void setSize(final int size, final boolean updateHealth) {
       super.setSize(size, updateHealth);
       int actualSize = this.entityData.get(ID_SIZE);
-      this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue((double)actualSize);
-      this.getAttribute(Attributes.ARMOR).setBaseValue((double)(size * 3));
+      this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(actualSize);
+      this.getAttribute(Attributes.ARMOR).setBaseValue(size * 3);
       this.xpReward = actualSize;
    }
 
@@ -93,8 +93,8 @@ public class MagmaCube extends AbstractCubeMob implements Enemy {
    @Override
    public void jumpFromGround() {
       Vec3 movement = this.getDeltaMovement();
-      float sizeJumpBoostPower = (float)this.getSize() * 0.1F;
-      this.setDeltaMovement(movement.x, (double)(this.getJumpPower() + sizeJumpBoostPower), movement.z);
+      float sizeJumpBoostPower = this.getSize() * 0.1F;
+      this.setDeltaMovement(movement.x, this.getJumpPower() + sizeJumpBoostPower, movement.z);
       this.needsSync = true;
    }
 
@@ -102,7 +102,7 @@ public class MagmaCube extends AbstractCubeMob implements Enemy {
    protected void jumpInLiquid(final TagKey<Fluid> type) {
       if (type == FluidTags.LAVA) {
          Vec3 movement = this.getDeltaMovement();
-         this.setDeltaMovement(movement.x, (double)(0.22F + (float)this.getSize() * 0.05F), movement.z);
+         this.setDeltaMovement(movement.x, 0.22F + this.getSize() * 0.05F, movement.z);
          this.needsSync = true;
       } else {
          super.jumpInLiquid(type);
@@ -144,9 +144,8 @@ public class MagmaCube extends AbstractCubeMob implements Enemy {
       return false;
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       if (groupData == null) {

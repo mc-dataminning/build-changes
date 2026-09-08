@@ -48,6 +48,6 @@ public class LeapAtTargetGoal extends Goal {
          delta = delta.normalize().scale(0.4).add(movement.scale(0.2));
       }
 
-      this.mob.setDeltaMovement(delta.x, (double)this.yd, delta.z);
+      this.mob.setDeltaMovement(delta.x, this.yd, delta.z);
    }
 }

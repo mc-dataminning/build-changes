@@ -56,51 +56,25 @@ public record DimensionType(
    public static final float[] MOON_BRIGHTNESS_PER_PHASE = new float[]{1.0F, 0.75F, 0.5F, 0.25F, 0.0F, 0.25F, 0.5F, 0.75F};
    public static final Codec<Holder<DimensionType>> CODEC = RegistryCodecs.holder(Registries.DIMENSION_TYPE, DIRECT_CODEC);
 
-   public DimensionType(
-      boolean hasFixedTime,
-      boolean hasSkyLight,
-      boolean hasCeiling,
-      boolean hasEnderDragonFight,
-      double coordinateScale,
-      int minY,
-      int height,
-      int logicalHeight,
-      HolderSet<Block> infiniburn,
-      float ambientLight,
-      DimensionType.MonsterSettings monsterSettings,
-      DimensionType.Skybox skybox,
-      CardinalLighting.Type cardinalLightType,
-      EnvironmentAttributeMap attributes,
-      HolderSet<Timeline> timelines,
-      Optional<Holder<WorldClock>> defaultClock
-   ) {
+   public DimensionType {
       if (height < 16) {
          throw new IllegalStateException("height has to be at least 16");
-      } else if (minY + height > MAX_Y + 1) {
+      }
+
+      if (minY + height > MAX_Y + 1) {
          throw new IllegalStateException("min_y + height cannot be higher than: " + (MAX_Y + 1));
-      } else if (logicalHeight > height) {
+      }
+
+      if (logicalHeight > height) {
          throw new IllegalStateException("logical_height cannot be higher than height");
-      } else if (height % 16 != 0) {
+      }
+
+      if (height % 16 != 0) {
          throw new IllegalStateException("height has to be multiple of 16");
-      } else if (minY % 16 != 0) {
+      }
+
+      if (minY % 16 != 0) {
          throw new IllegalStateException("min_y has to be a multiple of 16");
-      } else {
-         this.hasFixedTime = hasFixedTime;
-         this.hasSkyLight = hasSkyLight;
-         this.hasCeiling = hasCeiling;
-         this.hasEnderDragonFight = hasEnderDragonFight;
-         this.coordinateScale = coordinateScale;
-         this.minY = minY;
-         this.height = height;
-         this.logicalHeight = logicalHeight;
-         this.infiniburn = infiniburn;
-         this.ambientLight = ambientLight;
-         this.monsterSettings = monsterSettings;
-         this.skybox = skybox;
-         this.cardinalLightType = cardinalLightType;
-         this.attributes = attributes;
-         this.timelines = timelines;
-         this.defaultClock = defaultClock;
       }
    }
 
@@ -108,24 +82,24 @@ public record DimensionType(
       return ExtraCodecs.catchDecoderException(
          RecordCodecBuilder.create(
             i -> i.group(
-                     Codec.BOOL.optionalFieldOf("has_fixed_time", false).forGetter(DimensionType::hasFixedTime),
-                     Codec.BOOL.fieldOf("has_skylight").forGetter(DimensionType::hasSkyLight),
-                     Codec.BOOL.fieldOf("has_ceiling").forGetter(DimensionType::hasCeiling),
-                     Codec.BOOL.fieldOf("has_ender_dragon_fight").forGetter(DimensionType::hasEnderDragonFight),
-                     Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(DimensionType::coordinateScale),
-                     Codec.intRange(MIN_Y, MAX_Y).fieldOf("min_y").forGetter(DimensionType::minY),
-                     Codec.intRange(16, Y_SIZE).fieldOf("height").forGetter(DimensionType::height),
-                     Codec.intRange(0, Y_SIZE).fieldOf("logical_height").forGetter(DimensionType::logicalHeight),
-                     RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("infiniburn").forGetter(DimensionType::infiniburn),
-                     Codec.FLOAT.fieldOf("ambient_light").forGetter(DimensionType::ambientLight),
-                     DimensionType.MonsterSettings.CODEC.forGetter(DimensionType::monsterSettings),
-                     DimensionType.Skybox.CODEC.optionalFieldOf("skybox", DimensionType.Skybox.OVERWORLD).forGetter(DimensionType::skybox),
-                     CardinalLighting.Type.CODEC.optionalFieldOf("cardinal_light", CardinalLighting.Type.DEFAULT).forGetter(DimensionType::cardinalLightType),
-                     attributeMapCodec.optionalFieldOf("attributes", EnvironmentAttributeMap.EMPTY).forGetter(DimensionType::attributes),
-                     RegistryCodecs.holderSet(Registries.TIMELINE).optionalFieldOf("timelines", HolderSet.empty()).forGetter(DimensionType::timelines),
-                     WorldClock.CODEC.optionalFieldOf("default_clock").forGetter(DimensionType::defaultClock)
-                  )
-                  .apply(i, DimensionType::new)
+                  Codec.BOOL.optionalFieldOf("has_fixed_time", false).forGetter(DimensionType::hasFixedTime),
+                  Codec.BOOL.fieldOf("has_skylight").forGetter(DimensionType::hasSkyLight),
+                  Codec.BOOL.fieldOf("has_ceiling").forGetter(DimensionType::hasCeiling),
+                  Codec.BOOL.fieldOf("has_ender_dragon_fight").forGetter(DimensionType::hasEnderDragonFight),
+                  Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(DimensionType::coordinateScale),
+                  Codec.intRange(MIN_Y, MAX_Y).fieldOf("min_y").forGetter(DimensionType::minY),
+                  Codec.intRange(16, Y_SIZE).fieldOf("height").forGetter(DimensionType::height),
+                  Codec.intRange(0, Y_SIZE).fieldOf("logical_height").forGetter(DimensionType::logicalHeight),
+                  RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("infiniburn").forGetter(DimensionType::infiniburn),
+                  Codec.FLOAT.fieldOf("ambient_light").forGetter(DimensionType::ambientLight),
+                  DimensionType.MonsterSettings.CODEC.forGetter(DimensionType::monsterSettings),
+                  DimensionType.Skybox.CODEC.optionalFieldOf("skybox", DimensionType.Skybox.OVERWORLD).forGetter(DimensionType::skybox),
+                  CardinalLighting.Type.CODEC.optionalFieldOf("cardinal_light", CardinalLighting.Type.DEFAULT).forGetter(DimensionType::cardinalLightType),
+                  attributeMapCodec.optionalFieldOf("attributes", EnvironmentAttributeMap.EMPTY).forGetter(DimensionType::attributes),
+                  RegistryCodecs.holderSet(Registries.TIMELINE).optionalFieldOf("timelines", HolderSet.empty()).forGetter(DimensionType::timelines),
+                  WorldClock.CODEC.optionalFieldOf("default_clock").forGetter(DimensionType::defaultClock)
+               )
+               .apply(i, DimensionType::new)
          )
       );
    }
@@ -152,17 +126,17 @@ public record DimensionType(
       return this.skybox == DimensionType.Skybox.END;
    }
 
-   public static record MonsterSettings(IntProvider monsterSpawnLightTest, int monsterSpawnBlockLightLimit) {
+   public record MonsterSettings(IntProvider monsterSpawnLightTest, int monsterSpawnBlockLightLimit) {
       public static final MapCodec<DimensionType.MonsterSettings> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  IntProviders.codec(0, 15).fieldOf("monster_spawn_light_level").forGetter(DimensionType.MonsterSettings::monsterSpawnLightTest),
-                  Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(DimensionType.MonsterSettings::monsterSpawnBlockLightLimit)
-               )
-               .apply(i, DimensionType.MonsterSettings::new)
+               IntProviders.codec(0, 15).fieldOf("monster_spawn_light_level").forGetter(DimensionType.MonsterSettings::monsterSpawnLightTest),
+               Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(DimensionType.MonsterSettings::monsterSpawnBlockLightLimit)
+            )
+            .apply(i, DimensionType.MonsterSettings::new)
       );
    }
 
-   public static enum Skybox implements StringRepresentable {
+   public enum Skybox implements StringRepresentable {
       NONE("none"),
       OVERWORLD("overworld"),
       END("end");
@@ -170,7 +144,7 @@ public record DimensionType(
       public static final Codec<DimensionType.Skybox> CODEC = StringRepresentable.fromEnum(DimensionType.Skybox::values);
       private final String name;
 
-      private Skybox(final String name) {
+      Skybox(final String name) {
          this.name = name;
       }
 

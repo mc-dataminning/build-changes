@@ -17,7 +17,7 @@ public enum InsideBlockEffectType {
 
    private final Consumer<Entity> effect;
 
-   private InsideBlockEffectType(final Consumer<Entity> effect) {
+   InsideBlockEffectType(final Consumer<Entity> effect) {
       this.effect = effect;
    }
 

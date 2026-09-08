@@ -58,21 +58,14 @@ public class SculkSensorBlock extends BaseEntityBlock implements SimpleWaterlogg
 
    public SculkSensorBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(PHASE, SculkSensorPhase.INACTIVE)
-            .setValue(POWER, Integer.valueOf(0))
-            .setValue(WATERLOGGED, Boolean.valueOf(false))
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(PHASE, SculkSensorPhase.INACTIVE).setValue(POWER, 0).setValue(WATERLOGGED, false));
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockPos pos = context.getClickedPos();
       FluidState replacedFluidState = context.getLevel().getFluidState(pos);
-      return this.defaultBlockState().setValue(WATERLOGGED, Boolean.valueOf(replacedFluidState.is(Fluids.WATER)));
+      return this.defaultBlockState().setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
    }
 
    @Override
@@ -112,7 +105,7 @@ public class SculkSensorBlock extends BaseEntityBlock implements SimpleWaterlogg
    protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
       if (!level.isClientSide() && !state.is(oldState.getBlock())) {
          if (state.getValue(POWER) > 0 && !level.getBlockTicks().hasScheduledTick(pos, this)) {
-            level.setBlock(pos, state.setValue(POWER, Integer.valueOf(0)), 18);
+            level.setBlock(pos, state.setValue(POWER, 0), 18);
          }
       }
    }
@@ -148,15 +141,13 @@ public class SculkSensorBlock extends BaseEntityBlock implements SimpleWaterlogg
       level.updateNeighborsAt(pos.below(), block);
    }
 
-   @Nullable
    @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
+   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
       return new SculkSensorBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return !level.isClientSide()
          ? createTickerHelper(
             type,
@@ -195,7 +186,7 @@ public class SculkSensorBlock extends BaseEntityBlock implements SimpleWaterlogg
    }
 
    public static void deactivate(final Level level, final BlockPos pos, final BlockState state) {
-      level.setBlockAndUpdate(pos, state.setValue(PHASE, SculkSensorPhase.COOLDOWN).setValue(POWER, Integer.valueOf(0)));
+      level.setBlockAndUpdate(pos, state.setValue(PHASE, SculkSensorPhase.COOLDOWN).setValue(POWER, 0));
       level.scheduleTick(pos, state.getBlock(), 10);
       updateNeighbours(level, pos, state);
    }
@@ -206,14 +197,14 @@ public class SculkSensorBlock extends BaseEntityBlock implements SimpleWaterlogg
    }
 
    public void activate(
-      @Nullable final Entity sourceEntity,
+      final @Nullable Entity sourceEntity,
       final Level level,
       final BlockPos pos,
       final BlockState state,
       final int calculatedPower,
       final int vibrationFrequency
    ) {
-      level.setBlockAndUpdate(pos, state.setValue(PHASE, SculkSensorPhase.ACTIVE).setValue(POWER, Integer.valueOf(calculatedPower)));
+      level.setBlockAndUpdate(pos, state.setValue(PHASE, SculkSensorPhase.ACTIVE).setValue(POWER, calculatedPower));
       level.scheduleTick(pos, state.getBlock(), this.getActiveTicks());
       updateNeighbours(level, pos, state);
       tryResonateVibration(sourceEntity, level, pos, vibrationFrequency);
@@ -221,9 +212,9 @@ public class SculkSensorBlock extends BaseEntityBlock implements SimpleWaterlogg
       if (!state.getValue(WATERLOGGED)) {
          level.playSound(
             null,
-            (double)pos.getX() + 0.5,
-            (double)pos.getY() + 0.5,
-            (double)pos.getZ() + 0.5,
+            pos.getX() + 0.5,
+            pos.getY() + 0.5,
+            pos.getZ() + 0.5,
             SoundEvents.SCULK_CLICKING,
             SoundSource.BLOCKS,
             1.0F,
@@ -232,7 +223,7 @@ public class SculkSensorBlock extends BaseEntityBlock implements SimpleWaterlogg
       }
    }
 
-   public static void tryResonateVibration(@Nullable final Entity sourceEntity, final Level level, final BlockPos pos, final int vibrationFrequency) {
+   public static void tryResonateVibration(final @Nullable Entity sourceEntity, final Level level, final BlockPos pos, final int vibrationFrequency) {
       for (Direction direction : Direction.values()) {
          BlockPos relativePos = pos.relative(direction);
          BlockState blockState = level.getBlockState(relativePos);
@@ -249,10 +240,10 @@ public class SculkSensorBlock extends BaseEntityBlock implements SimpleWaterlogg
       if (getPhase(state) == SculkSensorPhase.ACTIVE) {
          Direction dir = Direction.getRandom(random);
          if (dir != Direction.UP && dir != Direction.DOWN) {
-            double x = (double)pos.getX() + 0.5 + (dir.getStepX() == 0 ? 0.5 - random.nextDouble() : (double)dir.getStepX() * 0.6);
-            double y = (double)pos.getY() + 0.25;
-            double z = (double)pos.getZ() + 0.5 + (dir.getStepZ() == 0 ? 0.5 - random.nextDouble() : (double)dir.getStepZ() * 0.6);
-            double ya = (double)random.nextFloat() * 0.04;
+            double x = pos.getX() + 0.5 + (dir.getStepX() == 0 ? 0.5 - random.nextDouble() : dir.getStepX() * 0.6);
+            double y = pos.getY() + 0.25;
+            double z = pos.getZ() + 0.5 + (dir.getStepZ() == 0 ? 0.5 - random.nextDouble() : dir.getStepZ() * 0.6);
+            double ya = random.nextFloat() * 0.04;
             level.addParticle(DustColorTransitionOptions.SCULK_TO_REDSTONE, x, y, z, 0.0, ya, 0.0);
          }
       }

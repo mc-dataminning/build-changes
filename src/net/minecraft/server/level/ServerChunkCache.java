@@ -67,13 +67,12 @@ public class ServerChunkCache extends ChunkSource {
    private boolean spawnEnemies = true;
    private static final int CACHE_SIZE = 4;
    private final long[] lastChunkPos = new long[4];
-   private final ChunkStatus[] lastChunkStatus = new ChunkStatus[4];
-   private final ChunkAccess[] lastChunk = new ChunkAccess[4];
+   private final @Nullable ChunkStatus[] lastChunkStatus = new ChunkStatus[4];
+   private final @Nullable ChunkAccess[] lastChunk = new ChunkAccess[4];
    private final List<LevelChunk> spawningChunks = new ObjectArrayList();
    private final Set<ChunkHolder> chunkHoldersToBroadcast = new ReferenceOpenHashSet();
    @VisibleForDebug
-   @Nullable
-   private NaturalSpawner.SpawnState lastSpawnState;
+   private NaturalSpawner.@Nullable SpawnState lastSpawnState;
 
    public ServerChunkCache(
       final ServerLevel level,
@@ -94,8 +93,8 @@ public class ServerChunkCache extends ChunkSource {
 
       try {
          FileUtil.createDirectoriesSafe(dataFolder);
-      } catch (IOException var13) {
-         LOGGER.error("Failed to create dimension data storage directory", var13);
+      } catch (IOException e) {
+         LOGGER.error("Failed to create dimension data storage directory", e);
       }
 
       this.savedDataStorage = new SavedDataStorage(dataFolder, fixerUpper, level.registryAccess());
@@ -124,12 +123,11 @@ public class ServerChunkCache extends ChunkSource {
       return this.lightEngine;
    }
 
-   @Nullable
-   private ChunkHolder getVisibleChunkIfPresent(final long key) {
+   private @Nullable ChunkHolder getVisibleChunkIfPresent(final long key) {
       return this.chunkMap.getVisibleChunkIfPresent(key);
    }
 
-   private void storeInCache(final long pos, @Nullable final ChunkAccess chunk, final ChunkStatus status) {
+   private void storeInCache(final long pos, final @Nullable ChunkAccess chunk, final ChunkStatus status) {
       for (int i = 3; i > 0; i--) {
          this.lastChunkPos[i] = this.lastChunkPos[i - 1];
          this.lastChunkStatus[i] = this.lastChunkStatus[i - 1];
@@ -141,69 +139,67 @@ public class ServerChunkCache extends ChunkSource {
       this.lastChunk[0] = chunk;
    }
 
-   @Nullable
    @Override
-   public ChunkAccess getChunk(final int x, final int z, final ChunkStatus targetStatus, final boolean loadOrGenerate) {
+   public @Nullable ChunkAccess getChunk(final int x, final int z, final ChunkStatus targetStatus, final boolean loadOrGenerate) {
       if (Thread.currentThread() != this.mainThread) {
          return CompletableFuture.<ChunkAccess>supplyAsync(() -> this.getChunk(x, z, targetStatus, loadOrGenerate), this.mainThreadProcessor).join();
-      } else {
-         ProfilerFiller profiler = Profiler.get();
-         profiler.incrementCounter("getChunk");
-         long pos = ChunkPos.pack(x, z);
+      }
 
-         for (int i = 0; i < 4; i++) {
-            if (pos == this.lastChunkPos[i] && targetStatus == this.lastChunkStatus[i]) {
-               ChunkAccess chunkAccess = this.lastChunk[i];
-               if (chunkAccess != null || !loadOrGenerate) {
-                  return chunkAccess;
-               }
+      ProfilerFiller profiler = Profiler.get();
+      profiler.incrementCounter("getChunk");
+      long pos = ChunkPos.pack(x, z);
+
+      for (int i = 0; i < 4; i++) {
+         if (pos == this.lastChunkPos[i] && targetStatus == this.lastChunkStatus[i]) {
+            ChunkAccess chunkAccess = this.lastChunk[i];
+            if (chunkAccess != null || !loadOrGenerate) {
+               return chunkAccess;
             }
          }
-
-         profiler.incrementCounter("getChunkCacheMiss");
-         CompletableFuture<ChunkResult<ChunkAccess>> serverFuture = this.getChunkFutureMainThread(x, z, targetStatus, loadOrGenerate);
-         this.mainThreadProcessor.managedBlock(serverFuture::isDone);
-         ChunkResult<ChunkAccess> chunkResult = serverFuture.join();
-         ChunkAccess chunk = chunkResult.orElse(null);
-         if (chunk == null && loadOrGenerate) {
-            throw (IllegalStateException)Util.pauseInIde(new IllegalStateException("Chunk not there when requested: " + chunkResult.getError()));
-         } else {
-            this.storeInCache(pos, chunk, targetStatus);
-            return chunk;
-         }
       }
+
+      profiler.incrementCounter("getChunkCacheMiss");
+      CompletableFuture<ChunkResult<ChunkAccess>> serverFuture = this.getChunkFutureMainThread(x, z, targetStatus, loadOrGenerate);
+      this.mainThreadProcessor.managedBlock(serverFuture::isDone);
+      ChunkResult<ChunkAccess> chunkResult = serverFuture.join();
+      ChunkAccess chunk = chunkResult.orElse(null);
+      if (chunk == null && loadOrGenerate) {
+         throw (IllegalStateException)Util.pauseInIde(new IllegalStateException("Chunk not there when requested: " + chunkResult.getError()));
+      }
+
+      this.storeInCache(pos, chunk, targetStatus);
+      return chunk;
    }
 
-   @Nullable
    @Override
-   public LevelChunk getChunkNow(final int x, final int z) {
+   public @Nullable LevelChunk getChunkNow(final int x, final int z) {
       if (Thread.currentThread() != this.mainThread) {
          return null;
-      } else {
-         Profiler.get().incrementCounter("getChunkNow");
-         long pos = ChunkPos.pack(x, z);
+      }
 
-         for (int i = 0; i < 4; i++) {
-            if (pos == this.lastChunkPos[i] && this.lastChunkStatus[i] == ChunkStatus.FULL) {
-               return this.lastChunk[i] instanceof LevelChunk levelChunk ? levelChunk : null;
-            }
-         }
+      Profiler.get().incrementCounter("getChunkNow");
+      long pos = ChunkPos.pack(x, z);
 
-         ChunkHolder chunkHolder = this.getVisibleChunkIfPresent(pos);
-         if (chunkHolder == null) {
-            return null;
-         } else {
-            ChunkAccess chunk = chunkHolder.getChunkIfPresent(ChunkStatus.FULL);
-            if (chunk != null) {
-               this.storeInCache(pos, chunk, ChunkStatus.FULL);
-               if (chunk instanceof LevelChunk) {
-                  return (LevelChunk)chunk;
-               }
-            }
-
-            return null;
+      for (int i = 0; i < 4; i++) {
+         if (pos == this.lastChunkPos[i] && this.lastChunkStatus[i] == ChunkStatus.FULL) {
+            return this.lastChunk[i] instanceof LevelChunk levelChunk ? levelChunk : null;
          }
       }
+
+      ChunkHolder chunkHolder = this.getVisibleChunkIfPresent(pos);
+      if (chunkHolder == null) {
+         return null;
+      }
+
+      ChunkAccess chunk = chunkHolder.getChunkIfPresent(ChunkStatus.FULL);
+      if (chunk != null) {
+         this.storeInCache(pos, chunk, ChunkStatus.FULL);
+         if (chunk instanceof LevelChunk levelChunk) {
+            return levelChunk;
+         }
+      }
+
+      return null;
    }
 
    private void clearCache() {
@@ -254,7 +250,7 @@ public class ServerChunkCache extends ChunkSource {
          : chunkHolder.scheduleChunkGenerationTask(targetStatus, this.chunkMap);
    }
 
-   private boolean chunkAbsent(@Nullable final ChunkHolder chunkHolder, final int targetTicketLevel) {
+   private boolean chunkAbsent(final @Nullable ChunkHolder chunkHolder, final int targetTicketLevel) {
       return chunkHolder == null || chunkHolder.getTicketLevel() > targetTicketLevel;
    }
 
@@ -265,9 +261,8 @@ public class ServerChunkCache extends ChunkSource {
       return !this.chunkAbsent(chunkHolder, targetTicketLevel);
    }
 
-   @Nullable
    @Override
-   public LightChunk getChunkForLighting(final int x, final int z) {
+   public @Nullable LightChunk getChunkForLighting(final int x, final int z) {
       long key = ChunkPos.pack(x, z);
       ChunkHolder chunkHolder = this.getVisibleChunkIfPresent(key);
       return chunkHolder == null ? null : chunkHolder.getChunkIfPresentUnchecked(ChunkStatus.INITIALIZE_LIGHT.getParent());
@@ -287,19 +282,19 @@ public class ServerChunkCache extends ChunkSource {
       this.chunkMap.runGenerationTasks();
       if (!updated && !promoted) {
          return false;
-      } else {
-         this.clearCache();
-         return true;
       }
+
+      this.clearCache();
+      return true;
    }
 
    public boolean isPositionTicking(final long chunkKey) {
       if (!this.level.shouldTickBlocksAt(chunkKey)) {
          return false;
-      } else {
-         ChunkHolder holder = this.getVisibleChunkIfPresent(chunkKey);
-         return holder == null ? false : holder.getTickingChunkFuture().getNow(ChunkHolder.UNLOADED_LEVEL_CHUNK).isSuccess();
       }
+
+      ChunkHolder holder = this.getVisibleChunkIfPresent(chunkKey);
+      return holder == null ? false : holder.getTickingChunkFuture().getNow(ChunkHolder.UNLOADED_LEVEL_CHUNK).isSuccess();
    }
 
    public void save(final boolean flushStorage) {
@@ -484,15 +479,17 @@ public class ServerChunkCache extends ChunkSource {
    public CompletableFuture<?> addTicketAndLoadWithRadius(final TicketType type, final ChunkPos pos, final int radius) {
       if (!type.doesLoad()) {
          throw new IllegalStateException("Ticket type " + type + " does not trigger chunk loading");
-      } else if (type.canExpireIfUnloaded()) {
-         throw new IllegalStateException("Ticket type " + type + " can expire before it loads, cannot fetch asynchronously");
-      } else {
-         this.addTicketWithRadius(type, pos, radius);
-         this.runDistanceManagerUpdates();
-         ChunkHolder chunkHolder = this.getVisibleChunkIfPresent(pos.pack());
-         Objects.requireNonNull(chunkHolder, "No chunk was scheduled for loading");
-         return this.chunkMap.getChunkRangeFuture(chunkHolder, radius, distance -> ChunkStatus.FULL);
       }
+
+      if (type.canExpireIfUnloaded()) {
+         throw new IllegalStateException("Ticket type " + type + " can expire before it loads, cannot fetch asynchronously");
+      }
+
+      this.addTicketWithRadius(type, pos, radius);
+      this.runDistanceManagerUpdates();
+      ChunkHolder chunkHolder = this.getVisibleChunkIfPresent(pos.pack());
+      Objects.requireNonNull(chunkHolder, "No chunk was scheduled for loading");
+      return this.chunkMap.getChunkRangeFuture(chunkHolder, radius, distance -> ChunkStatus.FULL);
    }
 
    public void addTicketWithRadius(final TicketType type, final ChunkPos pos, final int radius) {
@@ -578,8 +575,7 @@ public class ServerChunkCache extends ChunkSource {
    }
 
    @VisibleForDebug
-   @Nullable
-   public NaturalSpawner.SpawnState getLastSpawnState() {
+   public NaturalSpawner.@Nullable SpawnState getLastSpawnState() {
       return this.lastSpawnState;
    }
 
@@ -595,7 +591,6 @@ public class ServerChunkCache extends ChunkSource {
 
    private final class MainThreadExecutor extends BlockableEventLoop<Runnable> {
       private MainThreadExecutor(final Level level) {
-         Objects.requireNonNull(ServerChunkCache.this);
          super("Chunk source main thread executor for " + level.dimension().identifier(), false);
       }
 
@@ -629,10 +624,10 @@ public class ServerChunkCache extends ChunkSource {
       protected boolean pollTask() {
          if (ServerChunkCache.this.runDistanceManagerUpdates()) {
             return true;
-         } else {
-            ServerChunkCache.this.lightEngine.tryScheduleUpdate();
-            return super.pollTask();
          }
+
+         ServerChunkCache.this.lightEngine.tryScheduleUpdate();
+         return super.pollTask();
       }
    }
 }

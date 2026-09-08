@@ -35,14 +35,14 @@ public interface StreamTagVisitor {
 
    StreamTagVisitor.ValueResult visitRootEntry(final TagType<?> type);
 
-   public static enum EntryResult {
+   enum EntryResult {
       ENTER,
       SKIP,
       BREAK,
       HALT;
    }
 
-   public static enum ValueResult {
+   enum ValueResult {
       CONTINUE,
       BREAK,
       HALT;

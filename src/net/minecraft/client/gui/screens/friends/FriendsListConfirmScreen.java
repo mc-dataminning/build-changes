@@ -37,17 +37,8 @@ public class FriendsListConfirmScreen extends ConfirmScreen {
          .build();
       focusable.setMaxRows(15);
       focusable.setComponentClickHandler(style -> {
-         if (style.getClickEvent() instanceof ClickEvent.OpenUrl $b$0) {
-            ClickEvent.OpenUrl var10000 = $b$0;
-
-            try {
-               var7 = var10000.uri();
-            } catch (Throwable var6) {
-               throw new MatchException(var6.toString(), var6);
-            }
-
-            URI patt2$temp = var7;
-            PrivacyConfirmLinkScreen.confirmLinkNow(this, patt2$temp);
+         if (style.getClickEvent() instanceof ClickEvent.OpenUrl(URI uri)) {
+            PrivacyConfirmLinkScreen.confirmLinkNow(this, uri);
          }
       });
       focusable.setNarrateMessage(false);

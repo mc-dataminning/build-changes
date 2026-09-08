@@ -25,13 +25,13 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 public class CopyBlockState extends LootItemConditionalFunction {
    public static final MapCodec<CopyBlockState> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
-            .and(
-               i.group(
-                  BuiltInRegistries.BLOCK.holderByNameCodec().fieldOf("block").forGetter(f -> f.block),
-                  Codec.STRING.listOf().fieldOf("properties").forGetter(f -> f.properties.stream().map(Property::getName).toList())
-               )
+         .and(
+            i.group(
+               BuiltInRegistries.BLOCK.holderByNameCodec().fieldOf("block").forGetter(f -> f.block),
+               Codec.STRING.listOf().fieldOf("properties").forGetter(f -> f.properties.stream().map(Property::getName).toList())
             )
-            .apply(i, CopyBlockState::new)
+         )
+         .apply(i, CopyBlockState::new)
    );
    private final Holder<Block> block;
    private final Set<Property<?>> properties;
@@ -89,10 +89,10 @@ public class CopyBlockState extends LootItemConditionalFunction {
       public CopyBlockState.Builder copy(final Property<?> property) {
          if (!this.block.value().getStateDefinition().getProperties().contains(property)) {
             throw new IllegalStateException("Property " + property + " is not present on block " + this.block);
-         } else {
-            this.properties.add(property);
-            return this;
          }
+
+         this.properties.add(property);
+         return this;
       }
 
       protected CopyBlockState.Builder getThis() {

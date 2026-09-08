@@ -56,7 +56,7 @@ public class ModelGroupCollector {
       return result;
    }
 
-   private static record GroupKey(Object equalityGroup, List<Object> coloringValues) {
+   private record GroupKey(Object equalityGroup, List<Object> coloringValues) {
       public static ModelGroupCollector.GroupKey create(
          final BlockState state, final BlockStateModel.UnbakedRoot model, final List<Property<?>> coloringProperties
       ) {

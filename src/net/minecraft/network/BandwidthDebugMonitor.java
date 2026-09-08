@@ -16,6 +16,6 @@ public class BandwidthDebugMonitor {
    }
 
    public void tick() {
-      this.bandwidthLogger.logSample((long)this.bytesReceived.getAndSet(0));
+      this.bandwidthLogger.logSample(this.bytesReceived.getAndSet(0));
    }
 }

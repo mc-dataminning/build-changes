@@ -57,8 +57,7 @@ public class WingsLayer<S extends HumanoidRenderState, M extends EntityModel<S>>
       }
    }
 
-   @Nullable
-   private static Identifier getPlayerElytraTexture(final HumanoidRenderState state) {
+   private static @Nullable Identifier getPlayerElytraTexture(final HumanoidRenderState state) {
       if (state instanceof AvatarRenderState playerState) {
          PlayerSkin skin = playerState.skin;
          if (skin.elytra() != null) {

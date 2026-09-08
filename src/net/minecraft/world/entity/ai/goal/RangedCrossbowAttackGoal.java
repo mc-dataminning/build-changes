@@ -84,7 +84,7 @@ public class RangedCrossbowAttackGoal<T extends Monster & RangedAttackMob & Cros
          }
 
          double distanceToSqr = this.mob.distanceToSqr(target);
-         boolean needsToMove = (distanceToSqr > (double)this.attackRadiusSqr || this.seeTime < 5) && this.attackDelay == 0;
+         boolean needsToMove = (distanceToSqr > this.attackRadiusSqr || this.seeTime < 5) && this.attackDelay == 0;
          if (needsToMove) {
             this.updatePathDelay--;
             if (this.updatePathDelay <= 0) {
@@ -132,7 +132,7 @@ public class RangedCrossbowAttackGoal<T extends Monster & RangedAttackMob & Cros
       return this.crossbowState == RangedCrossbowAttackGoal.CrossbowState.UNCHARGED;
    }
 
-   private static enum CrossbowState {
+   private enum CrossbowState {
       UNCHARGED,
       CHARGING,
       CHARGED,

@@ -7,7 +7,7 @@ import java.util.UUID;
 public interface PackReloadConfig {
    void scheduleReload(PackReloadConfig.Callbacks callbacks);
 
-   public interface Callbacks {
+   interface Callbacks {
       void onSuccess();
 
       void onFailure(boolean isRecovery);
@@ -15,6 +15,6 @@ public interface PackReloadConfig {
       List<PackReloadConfig.IdAndPath> packsToLoad();
    }
 
-   public static record IdAndPath(UUID id, Path path) {
+   record IdAndPath(UUID id, Path path) {
    }
 }

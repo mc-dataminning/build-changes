@@ -1,6 +1,5 @@
 package net.minecraft.world.level.block.entity;
 
-import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -24,7 +23,6 @@ public class CalibratedSculkSensorBlockEntity extends SculkSensorBlockEntity {
 
    protected class VibrationUser extends SculkSensorBlockEntity.VibrationUser {
       public VibrationUser(final BlockPos blockPos) {
-         Objects.requireNonNull(CalibratedSculkSensorBlockEntity.this);
          super(blockPos);
       }
 
@@ -34,7 +32,7 @@ public class CalibratedSculkSensorBlockEntity extends SculkSensorBlockEntity {
       }
 
       @Override
-      public boolean canReceiveVibration(final ServerLevel level, final BlockPos pos, final Holder<GameEvent> event, @Nullable final GameEvent.Context context) {
+      public boolean canReceiveVibration(final ServerLevel level, final BlockPos pos, final Holder<GameEvent> event, final GameEvent.@Nullable Context context) {
          int comparisonType = this.getBackSignal(level, this.blockPos, CalibratedSculkSensorBlockEntity.this.getBlockState());
          return comparisonType != 0 && VibrationSystem.getGameEventFrequency(event) != comparisonType
             ? false

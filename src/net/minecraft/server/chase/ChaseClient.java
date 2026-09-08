@@ -34,10 +34,8 @@ public class ChaseClient {
    private final int serverPort;
    private final MinecraftServer server;
    private volatile boolean wantsToRun;
-   @Nullable
-   private Socket socket;
-   @Nullable
-   private Thread thread;
+   private @Nullable Socket socket;
+   private @Nullable Thread thread;
 
    public ChaseClient(final String serverHost, final int serverPort, final MinecraftServer server) {
       this.serverHost = serverHost;
@@ -82,10 +80,10 @@ public class ChaseClient {
 
                   this.handleMessage(message);
                }
-            } catch (IOException var8) {
+            } catch (IOException err) {
                LOGGER.warn("Lost connection to remote control server {}. Will retry in {}s.", serverAddress, 5);
             }
-         } catch (IOException var9) {
+         } catch (IOException e) {
             LOGGER.warn("Failed to connect to remote control server {}. Will retry in {}s.", serverAddress, 5);
          }
 
@@ -107,7 +105,7 @@ public class ChaseClient {
          } else {
             LOGGER.warn("Unknown message type '{}'", head);
          }
-      } catch (NoSuchElementException var7) {
+      } catch (NoSuchElementException e) {
          LOGGER.warn("Could not parse message '{}', ignoring", message);
       }
    }
@@ -116,17 +114,17 @@ public class ChaseClient {
       parseTarget(scanner)
          .ifPresent(
             target -> this.executeCommand(
-                  String.format(
-                     Locale.ROOT,
-                     "execute in %s run tp @s %.3f %.3f %.3f %.3f %.3f",
-                     target.level.identifier(),
-                     target.pos.x,
-                     target.pos.y,
-                     target.pos.z,
-                     target.rot.y,
-                     target.rot.x
-                  )
+               String.format(
+                  Locale.ROOT,
+                  "execute in %s run tp @s %.3f %.3f %.3f %.3f %.3f",
+                  target.level.identifier(),
+                  target.pos.x,
+                  target.pos.y,
+                  target.pos.z,
+                  target.rot.y,
+                  target.rot.x
                )
+            )
          );
    }
 
@@ -134,14 +132,14 @@ public class ChaseClient {
       ResourceKey<Level> levelType = (ResourceKey<Level>)ChaseCommand.DIMENSION_NAMES.get(scanner.next());
       if (levelType == null) {
          return Optional.empty();
-      } else {
-         float x = scanner.nextFloat();
-         float y = scanner.nextFloat();
-         float z = scanner.nextFloat();
-         float yRot = scanner.nextFloat();
-         float xRot = scanner.nextFloat();
-         return Optional.of(new ChaseClient.TeleportTarget(levelType, new Vec3((double)x, (double)y, (double)z), new Vec2(xRot, yRot)));
       }
+
+      float x = scanner.nextFloat();
+      float y = scanner.nextFloat();
+      float z = scanner.nextFloat();
+      float yRot = scanner.nextFloat();
+      float xRot = scanner.nextFloat();
+      return Optional.of(new ChaseClient.TeleportTarget(levelType, new Vec3(x, y, z), new Vec2(xRot, yRot)));
    }
 
    private void executeCommand(final String command) {
@@ -168,6 +166,6 @@ public class ChaseClient {
          );
    }
 
-   private static record TeleportTarget(ResourceKey<Level> level, Vec3 pos, Vec2 rot) {
+   private record TeleportTarget(ResourceKey<Level> level, Vec3 pos, Vec2 rot) {
    }
 }

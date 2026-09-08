@@ -23,7 +23,7 @@ public class TntMinecartRenderer extends AbstractMinecartRenderer<MinecartTNT, M
       float fuse = state.fuseRemainingInTicks;
       if (fuse > -1.0F && fuse < 10.0F) {
          float swell = TntRenderer.getSwellAmount(fuse);
-         poseStack.translate((double)(-swell) * 0.5, 0.0, (double)(-swell) * 0.5);
+         poseStack.translate(-swell * 0.5, 0.0, -swell * 0.5);
          float scale = 1.0F + swell;
          poseStack.scale(scale, scale, scale);
       }
@@ -55,6 +55,6 @@ public class TntMinecartRenderer extends AbstractMinecartRenderer<MinecartTNT, M
 
    public void extractRenderState(final MinecartTNT entity, final MinecartTntRenderState state, final float partialTicks) {
       super.extractRenderState(entity, state, partialTicks);
-      state.fuseRemainingInTicks = entity.getFuse() > -1 ? (float)entity.getFuse() - partialTicks + 1.0F : -1.0F;
+      state.fuseRemainingInTicks = entity.getFuse() > -1 ? entity.getFuse() - partialTicks + 1.0F : -1.0F;
    }
 }

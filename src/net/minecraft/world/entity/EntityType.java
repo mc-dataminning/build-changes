@@ -67,8 +67,7 @@ public class EntityType<T extends Entity> implements EntityTypeTest<Entity, T>, 
    private final int clientTrackingRange;
    private final int updateInterval;
    private final String descriptionId;
-   @Nullable
-   private Component description;
+   private @Nullable Component description;
    private final Optional<ResourceKey<LootTable>> lootTable;
    private final EntityDimensions dimensions;
    private final float spawnDimensionsScale;
@@ -116,11 +115,10 @@ public class EntityType<T extends Entity> implements EntityTypeTest<Entity, T>, 
       this.trackDeltas = trackDeltas;
    }
 
-   @Nullable
-   public T spawn(
+   public @Nullable T spawn(
       final ServerLevel level,
-      @Nullable final ItemStack itemStack,
-      @Nullable final LivingEntity user,
+      final @Nullable ItemStack itemStack,
+      final @Nullable LivingEntity user,
       final BlockPos spawnPos,
       final EntitySpawnReason spawnReason,
       final boolean tryMoveDown,
@@ -137,13 +135,13 @@ public class EntityType<T extends Entity> implements EntityTypeTest<Entity, T>, 
    }
 
    public static <T extends Entity> PostSpawnProcessor<T> createDefaultStackConfig(
-      final Level level, final ItemStack itemStack, @Nullable final LivingEntity user
+      final Level level, final ItemStack itemStack, final @Nullable LivingEntity user
    ) {
       return appendDefaultStackConfig(PostSpawnProcessor.nop(), level, itemStack, user);
    }
 
    public static <T extends Entity> PostSpawnProcessor<T> appendDefaultStackConfig(
-      final PostSpawnProcessor<T> initialConfig, final Level level, final ItemStack itemStack, @Nullable final LivingEntity user
+      final PostSpawnProcessor<T> initialConfig, final Level level, final ItemStack itemStack, final @Nullable LivingEntity user
    ) {
       return appendCustomEntityStackConfig(appendComponentsConfig(initialConfig, itemStack), level, itemStack, user);
    }
@@ -153,21 +151,19 @@ public class EntityType<T extends Entity> implements EntityTypeTest<Entity, T>, 
    }
 
    public static <T extends Entity> PostSpawnProcessor<T> appendCustomEntityStackConfig(
-      final PostSpawnProcessor<T> initialConfig, final Level level, final ItemStack itemStack, @Nullable final LivingEntity user
+      final PostSpawnProcessor<T> initialConfig, final Level level, final ItemStack itemStack, final @Nullable LivingEntity user
    ) {
       TypedEntityData<EntityType<?>> entityData = itemStack.get(DataComponents.ENTITY_DATA);
       return entityData != null ? initialConfig.andThen(entity -> updateCustomEntityTag(level, user, entity, entityData)) : initialConfig;
    }
 
-   @Nullable
-   public T spawn(final ServerLevel level, final BlockPos spawnPos, final EntitySpawnReason spawnReason) {
+   public @Nullable T spawn(final ServerLevel level, final BlockPos spawnPos, final EntitySpawnReason spawnReason) {
       return this.spawn(level, null, spawnPos, spawnReason, false, false);
    }
 
-   @Nullable
-   public T spawn(
+   public @Nullable T spawn(
       final ServerLevel level,
-      @Nullable final PostSpawnProcessor<T> postSpawnConfig,
+      final @Nullable PostSpawnProcessor<T> postSpawnConfig,
       final BlockPos spawnPos,
       final EntitySpawnReason spawnReason,
       final boolean tryMoveDown,
@@ -184,10 +180,9 @@ public class EntityType<T extends Entity> implements EntityTypeTest<Entity, T>, 
       return entity;
    }
 
-   @Nullable
-   public T create(
+   public @Nullable T create(
       final ServerLevel level,
-      @Nullable final PostSpawnProcessor<T> postSpawnConfig,
+      final @Nullable PostSpawnProcessor<T> postSpawnConfig,
       final BlockPos spawnPos,
       final EntitySpawnReason spawnReason,
       final boolean tryMoveDown,
@@ -196,34 +191,28 @@ public class EntityType<T extends Entity> implements EntityTypeTest<Entity, T>, 
       T entity = this.create(level, spawnReason);
       if (entity == null) {
          return null;
-      } else {
-         double yOff;
-         if (tryMoveDown) {
-            entity.setPos((double)spawnPos.getX() + 0.5, (double)(spawnPos.getY() + 1), (double)spawnPos.getZ() + 0.5);
-            yOff = getYOffset(level, spawnPos, movedUp, entity.getBoundingBox());
-         } else {
-            yOff = 0.0;
-         }
-
-         entity.snapTo(
-            (double)spawnPos.getX() + 0.5,
-            (double)spawnPos.getY() + yOff,
-            (double)spawnPos.getZ() + 0.5,
-            Mth.wrapDegrees(level.getRandom().nextFloat() * 360.0F),
-            0.0F
-         );
-         if (entity instanceof Mob mob) {
-            mob.yHeadRot = mob.getYRot();
-            mob.yBodyRot = mob.getYRot();
-            mob.finalizeSpawn(level, level.getCurrentDifficultyAt(mob.blockPosition()), spawnReason, null);
-         }
-
-         if (postSpawnConfig != null) {
-            postSpawnConfig.apply(entity);
-         }
-
-         return entity;
       }
+
+      double yOff;
+      if (tryMoveDown) {
+         entity.setPos(spawnPos.getX() + 0.5, spawnPos.getY() + 1, spawnPos.getZ() + 0.5);
+         yOff = getYOffset(level, spawnPos, movedUp, entity.getBoundingBox());
+      } else {
+         yOff = 0.0;
+      }
+
+      entity.snapTo(spawnPos.getX() + 0.5, spawnPos.getY() + yOff, spawnPos.getZ() + 0.5, Mth.wrapDegrees(level.getRandom().nextFloat() * 360.0F), 0.0F);
+      if (entity instanceof Mob mob) {
+         mob.yHeadRot = mob.getYRot();
+         mob.yBodyRot = mob.getYRot();
+         mob.finalizeSpawn(level, level.getCurrentDifficultyAt(mob.blockPosition()), spawnReason, null);
+      }
+
+      if (postSpawnConfig != null) {
+         postSpawnConfig.apply(entity);
+      }
+
+      return entity;
    }
 
    protected static double getYOffset(final LevelReader level, final BlockPos spawnPos, final boolean movedUp, final AABB entityBox) {
@@ -237,7 +226,7 @@ public class EntityType<T extends Entity> implements EntityTypeTest<Entity, T>, 
    }
 
    public static void updateCustomEntityTag(
-      final Level level, @Nullable final LivingEntity user, @Nullable final Entity entity, final TypedEntityData<EntityType<?>> entityData
+      final Level level, final @Nullable LivingEntity user, final @Nullable Entity entity, final TypedEntityData<EntityType<?>> entityData
    ) {
       MinecraftServer server = level.getServer();
       if (server != null && entity != null) {
@@ -314,13 +303,11 @@ public class EntityType<T extends Entity> implements EntityTypeTest<Entity, T>, 
       return !this.isEnabled(level.enabledFeatures()) ? false : this.isAllowedInPeaceful() || level.getDifficulty() != Difficulty.PEACEFUL;
    }
 
-   @Nullable
-   public T create(final Level level, final EntitySpawnReason reason) {
+   public @Nullable T create(final Level level, final EntitySpawnReason reason) {
       return this.create(level, new EntitySpawnRequest(reason, false));
    }
 
-   @Nullable
-   public T create(final Level level, final EntitySpawnRequest request) {
+   public @Nullable T create(final Level level, final EntitySpawnRequest request) {
       return !request.ignoreChecks() && !this.canSpawn(level) ? null : this.factory.create(this, level);
    }
 
@@ -345,7 +332,7 @@ public class EntityType<T extends Entity> implements EntityTypeTest<Entity, T>, 
    public AABB getSpawnAABB(final double x, final double y, final double z) {
       float halfWidth = this.spawnDimensionsScale * this.getWidth() / 2.0F;
       float height = this.spawnDimensionsScale * this.getHeight();
-      return new AABB(x - (double)halfWidth, y, z - (double)halfWidth, x + (double)halfWidth, y + (double)height, z + (double)halfWidth);
+      return new AABB(x - halfWidth, y, z - halfWidth, x + halfWidth, y + height, z + halfWidth);
    }
 
    public boolean isBlockDangerous(final BlockState state) {
@@ -366,43 +353,36 @@ public class EntityType<T extends Entity> implements EntityTypeTest<Entity, T>, 
       return input.read("id", CODEC);
    }
 
-   @Nullable
-   public static Entity loadEntityRecursive(final CompoundTag tag, final Level level, final EntitySpawnRequest request, final EntityProcessor postLoad) {
-      Entity var5;
+   public static @Nullable Entity loadEntityRecursive(
+      final CompoundTag tag, final Level level, final EntitySpawnRequest request, final EntityProcessor postLoad
+   ) {
       try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(LOGGER)) {
-         var5 = loadEntityRecursive(TagValueInput.create(reporter, level.registryAccess(), tag), level, request, postLoad);
+         return loadEntityRecursive(TagValueInput.create(reporter, level.registryAccess(), tag), level, request, postLoad);
       }
-
-      return var5;
    }
 
-   @Nullable
-   public static Entity loadEntityRecursive(
+   public static @Nullable Entity loadEntityRecursive(
       final EntityType<?> type, final CompoundTag tag, final Level level, final EntitySpawnReason reason, final EntityProcessor postLoad
    ) {
-      Entity var6;
       try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(LOGGER)) {
-         var6 = loadEntityRecursive(type, TagValueInput.create(reporter, level.registryAccess(), tag), level, reason, postLoad);
+         return loadEntityRecursive(type, TagValueInput.create(reporter, level.registryAccess(), tag), level, reason, postLoad);
       }
-
-      return var6;
    }
 
-   @Nullable
-   public static Entity loadEntityRecursive(final ValueInput input, final Level level, final EntitySpawnReason reason, final EntityProcessor postLoad) {
+   public static @Nullable Entity loadEntityRecursive(final ValueInput input, final Level level, final EntitySpawnReason reason, final EntityProcessor postLoad) {
       return loadEntityRecursive(input, level, new EntitySpawnRequest(reason, false), postLoad);
    }
 
-   @Nullable
-   public static Entity loadEntityRecursive(final ValueInput input, final Level level, final EntitySpawnRequest request, final EntityProcessor postLoad) {
+   public static @Nullable Entity loadEntityRecursive(
+      final ValueInput input, final Level level, final EntitySpawnRequest request, final EntityProcessor postLoad
+   ) {
       return loadStaticEntity(input, level, request)
          .map(postLoad::process)
          .map(entity -> loadPassengersRecursive(entity, input, level, request, postLoad))
          .orElse(null);
    }
 
-   @Nullable
-   public static Entity loadEntityRecursive(
+   public static @Nullable Entity loadEntityRecursive(
       final EntityType<?> type, final ValueInput input, final Level level, final EntitySpawnReason reason, final EntityProcessor postLoad
    ) {
       return loadStaticEntity(type, input, level, reason)
@@ -426,16 +406,16 @@ public class EntityType<T extends Entity> implements EntityTypeTest<Entity, T>, 
 
    public static Stream<Entity> loadEntitiesRecursive(final ValueInput.ValueInputList entities, final Level level, final EntitySpawnReason reason) {
       return entities.stream().mapMulti((tag, output) -> loadEntityRecursive(tag, level, reason, entity -> {
-            output.accept(entity);
-            return entity;
-         }));
+         output.accept(entity);
+         return entity;
+      }));
    }
 
    private static Optional<Entity> loadStaticEntity(final ValueInput input, final Level level, final EntitySpawnRequest request) {
       try {
          return create(input, level, request);
-      } catch (RuntimeException var4) {
-         LOGGER.warn("Exception loading entity: ", var4);
+      } catch (RuntimeException e) {
+         LOGGER.warn("Exception loading entity: ", e);
          return Optional.empty();
       }
    }
@@ -443,8 +423,8 @@ public class EntityType<T extends Entity> implements EntityTypeTest<Entity, T>, 
    private static Optional<Entity> loadStaticEntity(final EntityType<?> type, final ValueInput input, final Level level, final EntitySpawnReason reason) {
       try {
          return create(type, input, level, reason);
-      } catch (RuntimeException var5) {
-         LOGGER.warn("Exception loading entity: ", var5);
+      } catch (RuntimeException e) {
+         LOGGER.warn("Exception loading entity: ", e);
          return Optional.empty();
       }
    }
@@ -465,8 +445,7 @@ public class EntityType<T extends Entity> implements EntityTypeTest<Entity, T>, 
       return this.trackDeltas;
    }
 
-   @Nullable
-   public T tryCast(final Entity entity) {
+   public @Nullable T tryCast(final Entity entity) {
       return (T)(entity.getType() == this ? entity : null);
    }
 
@@ -503,8 +482,8 @@ public class EntityType<T extends Entity> implements EntityTypeTest<Entity, T>, 
       private EntityAttachments.Builder attachments = EntityAttachments.builder();
       private FeatureFlagSet requiredFeatures = FeatureFlags.VANILLA_SET;
       private DependantName<EntityType<?>, Optional<ResourceKey<LootTable>>> lootTable = id -> Optional.of(
-            ResourceKey.create(Registries.LOOT_TABLE, id.identifier().withPrefix("entities/"))
-         );
+         ResourceKey.create(Registries.LOOT_TABLE, id.identifier().withPrefix("entities/"))
+      );
       private final DependantName<EntityType<?>, String> descriptionId = id -> Util.makeDescriptionId("entity", id.identifier());
       private boolean allowedInPeaceful = true;
       private boolean trackDeltas = true;
@@ -663,7 +642,6 @@ public class EntityType<T extends Entity> implements EntityTypeTest<Entity, T>, 
 
    @FunctionalInterface
    public interface EntityFactory<T extends Entity> {
-      @Nullable
-      T create(final EntityType<T> entityType, final Level level);
+      @Nullable T create(final EntityType<T> entityType, final Level level);
    }
 }

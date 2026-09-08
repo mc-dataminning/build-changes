@@ -9,18 +9,18 @@ public class BinaryHeap {
    public Node insert(final Node node) {
       if (node.heapIdx >= 0) {
          throw new IllegalStateException("OW KNOWS!");
-      } else {
-         if (this.size == this.heap.length) {
-            Node[] newHeap = new Node[this.size << 1];
-            System.arraycopy(this.heap, 0, newHeap, 0, this.size);
-            this.heap = newHeap;
-         }
-
-         this.heap[this.size] = node;
-         node.heapIdx = this.size;
-         this.upHeap(this.size++);
-         return node;
       }
+
+      if (this.size == this.heap.length) {
+         Node[] newHeap = new Node[this.size << 1];
+         System.arraycopy(this.heap, 0, newHeap, 0, this.size);
+         this.heap = newHeap;
+      }
+
+      this.heap[this.size] = node;
+      node.heapIdx = this.size;
+      this.upHeap(this.size++);
+      return node;
    }
 
    public void clear() {

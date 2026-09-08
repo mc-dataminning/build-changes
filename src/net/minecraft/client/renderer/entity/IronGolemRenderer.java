@@ -35,7 +35,7 @@ public class IronGolemRenderer extends MobRenderer<IronGolem, IronGolemRenderSta
 
    public void extractRenderState(final IronGolem entity, final IronGolemRenderState state, final float partialTicks) {
       super.extractRenderState(entity, state, partialTicks);
-      state.attackTicksRemaining = (float)entity.getAttackAnimationTick() > 0.0F ? (float)entity.getAttackAnimationTick() - partialTicks : 0.0F;
+      state.attackTicksRemaining = entity.getAttackAnimationTick() > 0.0F ? entity.getAttackAnimationTick() - partialTicks : 0.0F;
       state.offerFlowerTick = entity.getOfferFlowerTick();
       if (state.offerFlowerTick > 0) {
          this.blockModelResolver.update(state.flowerBlock, Blocks.POPPY.defaultBlockState(), BLOCK_DISPLAY_CONTEXT);
@@ -48,7 +48,7 @@ public class IronGolemRenderer extends MobRenderer<IronGolem, IronGolemRenderSta
 
    protected void setupRotations(final IronGolemRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
       super.setupRotations(state, poseStack, bodyRot, entityScale);
-      if (!((double)state.walkAnimationSpeed < 0.01)) {
+      if (!(state.walkAnimationSpeed < 0.01)) {
          float p = 13.0F;
          float wp = state.walkAnimationPos + 6.0F;
          float triangleWave = (Math.abs(wp % 13.0F - 6.5F) - 3.25F) / 3.25F;

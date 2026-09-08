@@ -37,9 +37,8 @@ public class TraderLlama extends Llama {
       return true;
    }
 
-   @Nullable
    @Override
-   protected Llama makeNewLlama() {
+   protected @Nullable Llama makeNewLlama() {
       TraderLlama baby = EntityTypes.TRADER_LLAMA.create(this.level(), EntitySpawnReason.BREEDING);
       if (baby != null) {
          baby.setPersistenceRequired();
@@ -115,9 +114,8 @@ public class TraderLlama extends Llama {
       return this.isLeashed() && !this.isLeashedToWanderingTrader();
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       if (spawnReason == EntitySpawnReason.EVENT) {

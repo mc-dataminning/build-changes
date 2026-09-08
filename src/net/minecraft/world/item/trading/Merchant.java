@@ -12,8 +12,7 @@ import org.jspecify.annotations.Nullable;
 public interface Merchant {
    void setTradingPlayer(@Nullable Player player);
 
-   @Nullable
-   Player getTradingPlayer();
+   @Nullable Player getTradingPlayer();
 
    MerchantOffers getOffers();
 

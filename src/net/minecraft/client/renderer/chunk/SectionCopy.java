@@ -19,8 +19,7 @@ import org.jspecify.annotations.Nullable;
 
 public class SectionCopy {
    private final Map<BlockPos, BlockEntity> blockEntities;
-   @Nullable
-   private final PalettedContainer<BlockState> section;
+   private final @Nullable PalettedContainer<BlockState> section;
    private final boolean debug;
    private final LevelHeightAccessor levelHeightAccessor;
 
@@ -41,8 +40,7 @@ public class SectionCopy {
       }
    }
 
-   @Nullable
-   public BlockEntity getBlockEntity(final BlockPos pos) {
+   public @Nullable BlockEntity getBlockEntity(final BlockPos pos) {
       return this.blockEntities.get(pos);
    }
 
@@ -61,13 +59,15 @@ public class SectionCopy {
          }
 
          return blockState == null ? Blocks.AIR.defaultBlockState() : blockState;
-      } else if (this.section == null) {
-         return Blocks.AIR.defaultBlockState();
       } else {
+         if (this.section == null) {
+            return Blocks.AIR.defaultBlockState();
+         }
+
          try {
             return this.section.get(x & 15, y & 15, z & 15);
-         } catch (Throwable var8) {
-            CrashReport report = CrashReport.forThrowable(var8, "Getting block state");
+         } catch (Throwable t) {
+            CrashReport report = CrashReport.forThrowable(t, "Getting block state");
             CrashReportCategory category = report.addCategory("Block being got");
             category.setDetail("Location", () -> CrashReportCategory.formatLocation(this.levelHeightAccessor, x, y, z));
             throw new ReportedException(report);

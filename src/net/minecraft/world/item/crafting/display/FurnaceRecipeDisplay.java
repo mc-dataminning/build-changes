@@ -12,14 +12,14 @@ public record FurnaceRecipeDisplay(SlotDisplay ingredient, SlotDisplay fuel, Slo
    implements RecipeDisplay {
    public static final MapCodec<FurnaceRecipeDisplay> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               SlotDisplay.CODEC.fieldOf("ingredient").forGetter(FurnaceRecipeDisplay::ingredient),
-               SlotDisplay.CODEC.fieldOf("fuel").forGetter(FurnaceRecipeDisplay::fuel),
-               SlotDisplay.CODEC.fieldOf("result").forGetter(FurnaceRecipeDisplay::result),
-               SlotDisplay.CODEC.fieldOf("crafting_station").forGetter(FurnaceRecipeDisplay::craftingStation),
-               Codec.INT.fieldOf("duration").forGetter(FurnaceRecipeDisplay::duration),
-               Codec.FLOAT.fieldOf("experience").forGetter(FurnaceRecipeDisplay::experience)
-            )
-            .apply(i, FurnaceRecipeDisplay::new)
+            SlotDisplay.CODEC.fieldOf("ingredient").forGetter(FurnaceRecipeDisplay::ingredient),
+            SlotDisplay.CODEC.fieldOf("fuel").forGetter(FurnaceRecipeDisplay::fuel),
+            SlotDisplay.CODEC.fieldOf("result").forGetter(FurnaceRecipeDisplay::result),
+            SlotDisplay.CODEC.fieldOf("crafting_station").forGetter(FurnaceRecipeDisplay::craftingStation),
+            Codec.INT.fieldOf("duration").forGetter(FurnaceRecipeDisplay::duration),
+            Codec.FLOAT.fieldOf("experience").forGetter(FurnaceRecipeDisplay::experience)
+         )
+         .apply(i, FurnaceRecipeDisplay::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, FurnaceRecipeDisplay> STREAM_CODEC = StreamCodec.composite(
       SlotDisplay.STREAM_CODEC,

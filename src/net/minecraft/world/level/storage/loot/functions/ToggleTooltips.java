@@ -17,8 +17,8 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 public class ToggleTooltips extends LootItemConditionalFunction {
    public static final MapCodec<ToggleTooltips> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
-            .and(Codec.unboundedMap(DataComponentType.CODEC, Codec.BOOL).fieldOf("toggles").forGetter(e -> e.values))
-            .apply(i, ToggleTooltips::new)
+         .and(Codec.unboundedMap(DataComponentType.CODEC, Codec.BOOL).fieldOf("toggles").forGetter(e -> e.values))
+         .apply(i, ToggleTooltips::new)
    );
    private final Map<DataComponentType<?>, Boolean> values;
 

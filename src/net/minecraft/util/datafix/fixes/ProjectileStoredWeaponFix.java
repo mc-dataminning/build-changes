@@ -39,7 +39,7 @@ public class ProjectileStoredWeaponFix extends DataFix {
    ) {
       OpticFinder<?> entityF = DSL.namedChoice(entityName, inputEntityChoiceType);
       return input -> input.updateTyped(
-            entityF, outputEntityChoiceType, typed -> Util.writeAndReadTypedOrThrow(typed, outputEntityChoiceType, UnaryOperator.identity())
-         );
+         entityF, outputEntityChoiceType, typed -> Util.writeAndReadTypedOrThrow(typed, outputEntityChoiceType, UnaryOperator.identity())
+      );
    }
 }

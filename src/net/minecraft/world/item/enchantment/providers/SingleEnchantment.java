@@ -15,10 +15,10 @@ import net.minecraft.world.item.enchantment.ItemEnchantments;
 public record SingleEnchantment(Holder<Enchantment> enchantment, IntProvider level) implements EnchantmentProvider {
    public static final MapCodec<SingleEnchantment> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Enchantment.CODEC.fieldOf("enchantment").forGetter(SingleEnchantment::enchantment),
-               IntProviders.CODEC.fieldOf("level").forGetter(SingleEnchantment::level)
-            )
-            .apply(i, SingleEnchantment::new)
+            Enchantment.CODEC.fieldOf("enchantment").forGetter(SingleEnchantment::enchantment),
+            IntProviders.CODEC.fieldOf("level").forGetter(SingleEnchantment::level)
+         )
+         .apply(i, SingleEnchantment::new)
    );
 
    @Override

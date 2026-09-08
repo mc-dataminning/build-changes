@@ -17,7 +17,7 @@ public class AppendStatic implements RuleBlockEntityModifier {
    }
 
    @Override
-   public CompoundTag apply(final RandomSource random, @Nullable final CompoundTag existingTag) {
+   public CompoundTag apply(final RandomSource random, final @Nullable CompoundTag existingTag) {
       return existingTag == null ? this.tag.copy() : existingTag.merge(this.tag);
    }
 

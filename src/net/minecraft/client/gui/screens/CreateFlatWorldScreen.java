@@ -1,7 +1,6 @@
 package net.minecraft.client.gui.screens;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Consumer;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.Font;
@@ -38,9 +37,8 @@ public class CreateFlatWorldScreen extends Screen {
    protected final CreateWorldScreen parent;
    private final Consumer<FlatLevelGeneratorSettings> applySettings;
    private FlatLevelGeneratorSettings generator;
-   private CreateFlatWorldScreen.DetailsList list;
-   @Nullable
-   private Button deleteLayerButton;
+   private CreateFlatWorldScreen.@Nullable DetailsList list;
+   private @Nullable Button deleteLayerButton;
 
    public CreateFlatWorldScreen(
       final CreateWorldScreen parent, final Consumer<FlatLevelGeneratorSettings> applySettings, final FlatLevelGeneratorSettings generator
@@ -125,7 +123,6 @@ public class CreateFlatWorldScreen extends Screen {
       private static final Component HEIGHT_TITLE = Component.translatable("createWorld.customize.flat.height").withStyle(ChatFormatting.UNDERLINE);
 
       public DetailsList() {
-         Objects.requireNonNull(CreateFlatWorldScreen.this);
          super(CreateFlatWorldScreen.this.minecraft, CreateFlatWorldScreen.this.width, CreateFlatWorldScreen.this.height - 103, 43, 24);
          this.populateList();
       }
@@ -139,7 +136,7 @@ public class CreateFlatWorldScreen extends Screen {
          }
       }
 
-      public void setSelected(@Nullable final CreateFlatWorldScreen.DetailsList.Entry selected) {
+      public void setSelected(final CreateFlatWorldScreen.DetailsList.@Nullable Entry selected) {
          super.setSelected(selected);
          CreateFlatWorldScreen.this.updateButtonValidity();
       }
@@ -198,8 +195,6 @@ public class CreateFlatWorldScreen extends Screen {
          private final int index;
 
          public LayerEntry(final FlatLayerInfo layerInfo, final int index) {
-            Objects.requireNonNull(DetailsList.this);
-            super();
             this.layerInfo = layerInfo;
             this.index = index;
          }
@@ -239,18 +234,18 @@ public class CreateFlatWorldScreen extends Screen {
          @Override
          public Component getNarration() {
             ItemStack itemStack = this.getDisplayItem(this.layerInfo.getBlockState());
-            return (Component)(!itemStack.isEmpty()
+            return !itemStack.isEmpty()
                ? CommonComponents.joinForNarration(
                   Component.translatable("narrator.select", itemStack.getHoverName()),
                   CreateFlatWorldScreen.DetailsList.HEIGHT_TITLE,
                   Component.literal(String.valueOf(this.layerInfo.getHeight()))
                )
-               : CommonComponents.EMPTY);
+               : CommonComponents.EMPTY;
          }
 
          @Override
          public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-            DetailsList.this.setSelected((CreateFlatWorldScreen.DetailsList.Entry)this);
+            DetailsList.this.setSelected(this);
             return super.mouseClicked(event, doubleClick);
          }
 

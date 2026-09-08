@@ -1104,9 +1104,9 @@ public class VanillaAdventureAdvancements extends AdvancementSubProvider {
          .filter(trim -> required.contains(trim.template()))
          .forEach(
             trimTemplate -> advancement.addCriterion(
-                  "armor_trimmed_" + trimTemplate.recipeId().identifier(),
-                  RecipeCraftedTrigger.TriggerInstance.craftedItem(HolderSet.direct(this.recipes.getOrThrow(trimTemplate.recipeId())))
-               )
+               "armor_trimmed_" + trimTemplate.recipeId().identifier(),
+               RecipeCraftedTrigger.TriggerInstance.craftedItem(HolderSet.direct(this.recipes.getOrThrow(trimTemplate.recipeId())))
+            )
          );
       return advancement;
    }
@@ -1117,9 +1117,9 @@ public class VanillaAdventureAdvancements extends AdvancementSubProvider {
          .map(VanillaRecipeProvider.TrimTemplate::recipeId)
          .forEach(
             recipeId -> advancement.addCriterion(
-                  "armor_trimmed_" + recipeId.identifier(),
-                  RecipeCraftedTrigger.TriggerInstance.craftedItem(HolderSet.direct(this.recipes.getOrThrow((ResourceKey<Recipe<?>>)recipeId)))
-               )
+               "armor_trimmed_" + recipeId.identifier(),
+               RecipeCraftedTrigger.TriggerInstance.craftedItem(HolderSet.direct(this.recipes.getOrThrow((ResourceKey<Recipe<?>>)recipeId)))
+            )
          );
       return advancement;
    }
@@ -1163,9 +1163,9 @@ public class VanillaAdventureAdvancements extends AdvancementSubProvider {
    private Advancement.Builder addMobsToKill(final Advancement.Builder advancement, final List<EntityType<?>> mobsToKill) {
       mobsToKill.forEach(
          mob -> advancement.addCriterion(
-               BuiltInRegistries.ENTITY_TYPE.getKey((EntityType<?>)mob).toString(),
-               KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(this.entityTypes, (EntityType<?>)mob))
-            )
+            BuiltInRegistries.ENTITY_TYPE.getKey((EntityType<?>)mob).toString(),
+            KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(this.entityTypes, (EntityType<?>)mob))
+         )
       );
       return advancement;
    }

@@ -31,11 +31,11 @@ public abstract class StriderModel extends EntityModel<StriderRenderState> {
          this.body.yRot = 0.0F;
       }
 
-      this.body.zRot = 0.1F * Mth.sin((double)(animationPos * 1.5F)) * 4.0F * animationSpeed;
-      this.leftLeg.xRot = Mth.sin((double)(animationPos * 1.5F * 0.5F)) * 2.0F * animationSpeed;
-      this.rightLeg.xRot = Mth.sin((double)(animationPos * 1.5F * 0.5F + (float) Math.PI)) * 2.0F * animationSpeed;
-      this.leftLeg.zRot = (float) (Math.PI / 18) * Mth.cos((double)(animationPos * 1.5F * 0.5F)) * animationSpeed;
-      this.rightLeg.zRot = (float) (Math.PI / 18) * Mth.cos((double)(animationPos * 1.5F * 0.5F + (float) Math.PI)) * animationSpeed;
+      this.body.zRot = 0.1F * Mth.sin(animationPos * 1.5F) * 4.0F * animationSpeed;
+      this.leftLeg.xRot = Mth.sin(animationPos * 1.5F * 0.5F) * 2.0F * animationSpeed;
+      this.rightLeg.xRot = Mth.sin(animationPos * 1.5F * 0.5F + (float) Math.PI) * 2.0F * animationSpeed;
+      this.leftLeg.zRot = (float) (Math.PI / 18) * Mth.cos(animationPos * 1.5F * 0.5F) * animationSpeed;
+      this.rightLeg.zRot = (float) (Math.PI / 18) * Mth.cos(animationPos * 1.5F * 0.5F + (float) Math.PI) * animationSpeed;
       this.customAnimations(animationPos, animationSpeed, state.ageInTicks);
    }
 
@@ -52,8 +52,8 @@ public abstract class StriderModel extends EntityModel<StriderRenderState> {
       addRotationFunction.accept(firstBristle, bristleFlow * 0.6F);
       addRotationFunction.accept(secondBristle, bristleFlow * 1.2F);
       addRotationFunction.accept(thirdBristle, bristleFlow * 1.3F);
-      addRotationFunction.accept(firstBristle, 0.1F * Mth.sin((double)(ageInTicks * 0.4F)));
-      addRotationFunction.accept(secondBristle, 0.1F * Mth.sin((double)(ageInTicks * 0.2F)));
-      addRotationFunction.accept(thirdBristle, 0.05F * Mth.sin((double)(ageInTicks * -0.4F)));
+      addRotationFunction.accept(firstBristle, 0.1F * Mth.sin(ageInTicks * 0.4F));
+      addRotationFunction.accept(secondBristle, 0.1F * Mth.sin(ageInTicks * 0.2F));
+      addRotationFunction.accept(thirdBristle, 0.05F * Mth.sin(ageInTicks * -0.4F));
    }
 }

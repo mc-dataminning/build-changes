@@ -22,15 +22,15 @@ public record FireworkExplosionPredicate(FireworkExplosionPredicate.FireworkPred
       return this.predicate.test(value);
    }
 
-   public static record FireworkPredicate(Optional<FireworkExplosion.Shape> shape, Optional<Boolean> twinkle, Optional<Boolean> trail)
+   public record FireworkPredicate(Optional<FireworkExplosion.Shape> shape, Optional<Boolean> twinkle, Optional<Boolean> trail)
       implements Predicate<FireworkExplosion> {
       public static final Codec<FireworkExplosionPredicate.FireworkPredicate> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  FireworkExplosion.Shape.CODEC.optionalFieldOf("shape").forGetter(FireworkExplosionPredicate.FireworkPredicate::shape),
-                  Codec.BOOL.optionalFieldOf("has_twinkle").forGetter(FireworkExplosionPredicate.FireworkPredicate::twinkle),
-                  Codec.BOOL.optionalFieldOf("has_trail").forGetter(FireworkExplosionPredicate.FireworkPredicate::trail)
-               )
-               .apply(i, FireworkExplosionPredicate.FireworkPredicate::new)
+               FireworkExplosion.Shape.CODEC.optionalFieldOf("shape").forGetter(FireworkExplosionPredicate.FireworkPredicate::shape),
+               Codec.BOOL.optionalFieldOf("has_twinkle").forGetter(FireworkExplosionPredicate.FireworkPredicate::twinkle),
+               Codec.BOOL.optionalFieldOf("has_trail").forGetter(FireworkExplosionPredicate.FireworkPredicate::trail)
+            )
+            .apply(i, FireworkExplosionPredicate.FireworkPredicate::new)
       );
 
       public boolean test(final FireworkExplosion fireworkExplosion) {

@@ -23,7 +23,7 @@ public class TrialSpawnerBlock extends BaseEntityBlock {
 
    public TrialSpawnerBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(STATE, TrialSpawnerState.INACTIVE).setValue(OMINOUS, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(STATE, TrialSpawnerState.INACTIVE).setValue(OMINOUS, false));
    }
 
    @Override
@@ -31,27 +31,25 @@ public class TrialSpawnerBlock extends BaseEntityBlock {
       builder.add(STATE, OMINOUS);
    }
 
-   @Nullable
    @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
+   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
       return new TrialSpawnerBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return level instanceof ServerLevel serverLevel
          ? createTickerHelper(
             type,
             BlockEntityTypes.TRIAL_SPAWNER,
             (innerLevel, pos, state, entity) -> entity.getTrialSpawner()
-                  .tickServer(serverLevel, pos, state.getOptionalValue(BlockStateProperties.OMINOUS).orElse(false))
+               .tickServer(serverLevel, pos, state.getOptionalValue(BlockStateProperties.OMINOUS).orElse(false))
          )
          : createTickerHelper(
             type,
             BlockEntityTypes.TRIAL_SPAWNER,
             (innerLevel, pos, state, entity) -> entity.getTrialSpawner()
-                  .tickClient(innerLevel, pos, state.getOptionalValue(BlockStateProperties.OMINOUS).orElse(false))
+               .tickClient(innerLevel, pos, state.getOptionalValue(BlockStateProperties.OMINOUS).orElse(false))
          );
    }
 }

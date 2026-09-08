@@ -34,7 +34,7 @@ public class LecternRenderer implements BlockEntityRenderer<LecternBlockEntity, 
       final LecternRenderState state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
       state.hasBook = blockEntity.getBlockState().getValue(LecternBlock.HAS_BOOK);

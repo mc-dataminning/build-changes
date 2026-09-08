@@ -30,7 +30,7 @@ public class DoNothing implements BehaviorControl<LivingEntity> {
    public final boolean tryStart(final ServerLevel level, final LivingEntity body, final long timestamp) {
       this.status = Behavior.Status.RUNNING;
       int duration = this.minDuration + level.getRandom().nextInt(this.maxDuration + 1 - this.minDuration);
-      this.endTimestamp = timestamp + (long)duration;
+      this.endTimestamp = timestamp + duration;
       return true;
    }
 

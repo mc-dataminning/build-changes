@@ -2,7 +2,6 @@ package net.minecraft.client.renderer.feature;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.font.TextRenderable;
 import net.minecraft.client.renderer.feature.submit.TranslucentSubmit;
@@ -22,10 +21,7 @@ public class TextFeatureRenderer extends RenderTypeFeatureRenderer<TextFeatureRe
          glyphRenderer.pose.set(submit.pose());
          glyphRenderer.lightCoords = submit.lightCoords();
          glyphRenderer.displayMode = submit.displayMode();
-         TextFeatureRenderer.Content var10000 = submit.content();
-         Objects.requireNonNull(var10000);
-         Object var7 = var10000;
-         switch (var7) {
+         switch (submit.content()) {
             case TextFeatureRenderer.Content.Text text:
                renderText(font, glyphRenderer, text);
                break;
@@ -59,26 +55,18 @@ public class TextFeatureRenderer extends RenderTypeFeatureRenderer<TextFeatureRe
    }
 
    public sealed interface Content permits TextFeatureRenderer.Content.Text, TextFeatureRenderer.Content.StandaloneBackground {
-      public static record StandaloneBackground(float x0, float y0, float x1, float y1, int color) implements TextFeatureRenderer.Content {
+      record StandaloneBackground(float x0, float y0, float x1, float y1, int color) implements TextFeatureRenderer.Content {
       }
 
-      public static record Text(float x, float y, FormattedCharSequence string, boolean dropShadow, int color, int backgroundColor, int outlineColor)
+      record Text(float x, float y, FormattedCharSequence string, boolean dropShadow, int color, int backgroundColor, int outlineColor)
          implements TextFeatureRenderer.Content {
       }
    }
 
    private class GlyphRenderer implements Font.GlyphVisitor {
-      private final Matrix4f pose;
-      private int lightCoords;
-      private Font.DisplayMode displayMode;
-
-      private GlyphRenderer() {
-         Objects.requireNonNull(TextFeatureRenderer.this);
-         super();
-         this.pose = new Matrix4f();
-         this.lightCoords = 15728880;
-         this.displayMode = Font.DisplayMode.NORMAL;
-      }
+      private final Matrix4f pose = new Matrix4f();
+      private int lightCoords = 15728880;
+      private Font.DisplayMode displayMode = Font.DisplayMode.NORMAL;
 
       @Override
       public void acceptRenderable(final TextRenderable renderable) {
@@ -87,7 +75,7 @@ public class TextFeatureRenderer extends RenderTypeFeatureRenderer<TextFeatureRe
       }
    }
 
-   public static record Submit(Matrix4fc pose, Font.DisplayMode displayMode, int lightCoords, TextFeatureRenderer.Content content) implements TranslucentSubmit {
+   public record Submit(Matrix4fc pose, Font.DisplayMode displayMode, int lightCoords, TextFeatureRenderer.Content content) implements TranslucentSubmit {
       @Override
       public float distanceToCameraSq() {
          return TranslucentSubmit.computeDistanceToCameraSq(this.pose);

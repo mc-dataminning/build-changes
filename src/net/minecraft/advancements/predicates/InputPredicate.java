@@ -16,15 +16,15 @@ public record InputPredicate(
 ) {
    public static final Codec<InputPredicate> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.BOOL.optionalFieldOf("forward").forGetter(InputPredicate::forward),
-               Codec.BOOL.optionalFieldOf("backward").forGetter(InputPredicate::backward),
-               Codec.BOOL.optionalFieldOf("left").forGetter(InputPredicate::left),
-               Codec.BOOL.optionalFieldOf("right").forGetter(InputPredicate::right),
-               Codec.BOOL.optionalFieldOf("jump").forGetter(InputPredicate::jump),
-               Codec.BOOL.optionalFieldOf("sneak").forGetter(InputPredicate::sneak),
-               Codec.BOOL.optionalFieldOf("sprint").forGetter(InputPredicate::sprint)
-            )
-            .apply(i, InputPredicate::new)
+            Codec.BOOL.optionalFieldOf("forward").forGetter(InputPredicate::forward),
+            Codec.BOOL.optionalFieldOf("backward").forGetter(InputPredicate::backward),
+            Codec.BOOL.optionalFieldOf("left").forGetter(InputPredicate::left),
+            Codec.BOOL.optionalFieldOf("right").forGetter(InputPredicate::right),
+            Codec.BOOL.optionalFieldOf("jump").forGetter(InputPredicate::jump),
+            Codec.BOOL.optionalFieldOf("sneak").forGetter(InputPredicate::sneak),
+            Codec.BOOL.optionalFieldOf("sprint").forGetter(InputPredicate::sprint)
+         )
+         .apply(i, InputPredicate::new)
    );
 
    public boolean matches(final Input input) {

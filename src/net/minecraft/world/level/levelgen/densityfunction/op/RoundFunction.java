@@ -16,32 +16,19 @@ import net.minecraft.world.level.levelgen.densityfunction.generator.ConstantFunc
 public record RoundFunction(RoundFunction.Type type, DensityFunction input, DensityFunction multiple) implements DensityFunction {
    private static float roundToInteger(final float input, final RoundFunction.Type type) {
       return switch (type) {
-         case FLOOR -> (float)Math.floor((double)input);
-         case ROUND -> (float)Math.round(input);
-         case CEIL -> (float)Math.ceil((double)input);
-         case TRUNCATE -> input > 0.0F ? (float)Math.floor((double)input) : (float)Math.ceil((double)input);
+         case FLOOR -> (float)Math.floor(input);
+         case ROUND -> Math.round(input);
+         case CEIL -> (float)Math.ceil(input);
+         case TRUNCATE -> input > 0.0F ? (float)Math.floor(input) : (float)Math.ceil(input);
       };
    }
 
    @Override
    public DensitySampler compileSampler(final DensityFunction.CompileContext context) {
       DensitySampler input = this.input.compileSampler(context);
-      if (this.multiple instanceof ConstantFunction var3) {
-         ConstantFunction var10000 = var3;
-
-         try {
-            var9 = var10000.value();
-         } catch (Throwable var8) {
-            throw new MatchException(var8.toString(), var8);
-         }
-
-         float var6 = var9;
-         if (true && var6 == 1.0F) {
-            return new RoundFunction.IntegerMultipleSampler(this.type, input);
-         }
-      }
-
-      return new RoundFunction.Sampler(this.type, input, this.multiple.compileSampler(context));
+      return this.multiple instanceof ConstantFunction(float multipleValue) && multipleValue == 1.0F
+         ? new RoundFunction.IntegerMultipleSampler(this.type, input)
+         : new RoundFunction.Sampler(this.type, input, this.multiple.compileSampler(context));
    }
 
    @Override
@@ -57,9 +44,8 @@ public record RoundFunction(RoundFunction.Type type, DensityFunction input, Dens
       return Interval.mul(Interval.mapMonotonic(Interval.div(this.input.range(), multipleRange), value -> roundToInteger(value, this.type)), multipleRange);
    }
 
-   @DensityFunction.Axes
    @Override
-   public int domainAxes() {
+   public @DensityFunction.Axes int domainAxes() {
       return this.input.domainAxes() | this.multiple.domainAxes();
    }
 
@@ -68,7 +54,7 @@ public record RoundFunction(RoundFunction.Type type, DensityFunction input, Dens
       return this.type.codec;
    }
 
-   private static record IntegerMultipleSampler(RoundFunction.Type type, DensitySampler input) implements DensitySampler {
+   private record IntegerMultipleSampler(RoundFunction.Type type, DensitySampler input) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          this.input.sampleVolume(context, outputBuffer, volume);
@@ -85,7 +71,7 @@ public record RoundFunction(RoundFunction.Type type, DensityFunction input, Dens
       }
    }
 
-   private static record Sampler(RoundFunction.Type type, DensitySampler input, DensitySampler multiple) implements DensitySampler {
+   private record Sampler(RoundFunction.Type type, DensitySampler input, DensitySampler multiple) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          this.input.sampleVolume(context, outputBuffer, volume);
@@ -113,7 +99,7 @@ public record RoundFunction(RoundFunction.Type type, DensityFunction input, Dens
       }
    }
 
-   public static enum Type {
+   public enum Type {
       FLOOR("floor"),
       ROUND("round"),
       CEIL("ceil"),
@@ -122,13 +108,13 @@ public record RoundFunction(RoundFunction.Type type, DensityFunction input, Dens
       public final String id;
       public final MapCodec<RoundFunction> codec = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  DensityFunction.CODEC.fieldOf("input").forGetter(RoundFunction::input),
-                  DensityFunction.CODEC.optionalFieldOf("multiple", DensityFunctions.constant(1.0F)).forGetter(RoundFunction::multiple)
-               )
-               .apply(i, (input, multiple) -> new RoundFunction(this, input, multiple))
+               DensityFunction.CODEC.fieldOf("input").forGetter(RoundFunction::input),
+               DensityFunction.CODEC.optionalFieldOf("multiple", DensityFunctions.constant(1.0F)).forGetter(RoundFunction::multiple)
+            )
+            .apply(i, (input, multiple) -> new RoundFunction(this, input, multiple))
       );
 
-      private Type(final String id) {
+      Type(final String id) {
          this.id = id;
       }
    }

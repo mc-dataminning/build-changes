@@ -12,25 +12,25 @@ public class SetLookAndInteract {
       int interactionRangeSqr = interactionRange * interactionRange;
       return BehaviorBuilder.create(
          i -> i.group(
-                  i.registered(MemoryModuleType.LOOK_TARGET),
-                  i.absent(MemoryModuleType.INTERACTION_TARGET),
-                  i.present(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-               )
-               .apply(
-                  i,
-                  (lookTarget, interactionTarget, nearestEntities) -> (level, body, timestamp) -> {
-                        Optional<LivingEntity> closest = i.<NearestVisibleLivingEntities>get(nearestEntities)
-                           .findClosest(e -> e.distanceToSqr(body) <= (double)interactionRangeSqr && e.is(type));
-                        if (closest.isEmpty()) {
-                           return false;
-                        } else {
-                           LivingEntity closestEntity = closest.get();
-                           interactionTarget.set(closestEntity);
-                           lookTarget.set(new EntityTracker(closestEntity, true));
-                           return true;
-                        }
-                     }
-               )
+               i.registered(MemoryModuleType.LOOK_TARGET),
+               i.absent(MemoryModuleType.INTERACTION_TARGET),
+               i.present(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
+            )
+            .apply(
+               i,
+               (lookTarget, interactionTarget, nearestEntities) -> (level, body, timestamp) -> {
+                  Optional<LivingEntity> closest = i.<NearestVisibleLivingEntities>get(nearestEntities)
+                     .findClosest(e -> e.distanceToSqr(body) <= interactionRangeSqr && e.is(type));
+                  if (closest.isEmpty()) {
+                     return false;
+                  }
+
+                  LivingEntity closestEntity = closest.get();
+                  interactionTarget.set(closestEntity);
+                  lookTarget.set(new EntityTracker(closestEntity, true));
+                  return true;
+               }
+            )
       );
    }
 }

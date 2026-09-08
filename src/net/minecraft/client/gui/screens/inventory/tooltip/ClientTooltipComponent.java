@@ -1,6 +1,5 @@
 package net.minecraft.client.gui.screens.inventory.tooltip;
 
-import java.util.Objects;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.util.FormattedCharSequence;
@@ -13,13 +12,11 @@ public interface ClientTooltipComponent {
    }
 
    static ClientTooltipComponent create(final TooltipComponent component) {
-      Objects.requireNonNull(component);
-
-      return (ClientTooltipComponent)(switch (component) {
+      return switch (component) {
          case BundleTooltip bundleTooltip -> new ClientBundleTooltip(bundleTooltip.contents());
          case ClientActivePlayersTooltip.ActivePlayersTooltip activePlayersTooltip -> new ClientActivePlayersTooltip(activePlayersTooltip);
          default -> throw new IllegalArgumentException("Unknown TooltipComponent");
-      });
+      };
    }
 
    int getHeight(final Font font);

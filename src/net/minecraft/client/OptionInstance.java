@@ -35,10 +35,9 @@ public final class OptionInstance<T> {
    private static final Logger LOGGER = LogUtils.getLogger();
    public static final OptionInstance.Enum<Boolean> BOOLEAN_VALUES = new OptionInstance.Enum<>(ImmutableList.of(Boolean.TRUE, Boolean.FALSE), Codec.BOOL);
    public static final OptionInstance.CaptionBasedToString<Boolean> BOOLEAN_TO_STRING = (var0, b) -> b
-         ? CommonComponents.OPTION_ON
-         : CommonComponents.OPTION_OFF;
-   public static final OptionInstance.ValueUpdateListener<Object> NO_ACTION = var0 -> {
-   };
+      ? CommonComponents.OPTION_ON
+      : CommonComponents.OPTION_OFF;
+   public static final OptionInstance.ValueUpdateListener<Object> NO_ACTION = var0 -> {};
    private final OptionInstance.TooltipSupplier<T> tooltip;
    private final Function<T, Component> toString;
    private final OptionInstance.ValueSet<T> values;
@@ -167,7 +166,7 @@ public final class OptionInstance<T> {
       return this.values;
    }
 
-   public static record AltEnum<T>(
+   public record AltEnum<T>(
       List<T> values, List<T> altValues, BooleanSupplier altCondition, OptionInstance.CycleableValueSet.ValueSetter<T> valueSetter, Codec<T> codec
    ) implements OptionInstance.CycleableValueSet<T> {
       @Override
@@ -186,7 +185,7 @@ public final class OptionInstance<T> {
       Component toString(Component caption, T value);
    }
 
-   public static record ClampingLazyMaxIntRange(int minInclusive, IntSupplier maxSupplier, int encodableMaxInclusive)
+   public record ClampingLazyMaxIntRange(int minInclusive, IntSupplier maxSupplier, int encodableMaxInclusive)
       implements OptionInstance.IntRangeBase,
       OptionInstance.SliderableOrCyclableValueSet<Integer> {
       public Optional<Integer> validateValue(final Integer value) {
@@ -239,21 +238,21 @@ public final class OptionInstance<T> {
          final OptionInstance.ValueUpdateListener<? super T> onValueChanged
       ) {
          return instance -> CycleButton.builder(instance.toString, instance::get)
-               .withValues(this.valueListSupplier())
-               .withTooltip(tooltip)
-               .create(x, y, width, 20, instance.caption, (var4x, value) -> {
-                  this.valueSetter().set(instance, value);
-                  options.save();
-                  onValueChanged.valueChanged(value);
-               });
+            .withValues(this.valueListSupplier())
+            .withTooltip(tooltip)
+            .create(x, y, width, 20, instance.caption, (var4x, value) -> {
+               this.valueSetter().set(instance, value);
+               options.save();
+               onValueChanged.valueChanged(value);
+            });
       }
 
-      public interface ValueSetter<T> {
+      interface ValueSetter<T> {
          void set(final OptionInstance<T> instance, final T value);
       }
    }
 
-   public static record Enum<T>(List<T> values, Codec<T> codec) implements OptionInstance.CycleableValueSet<T> {
+   public record Enum<T>(List<T> values, Codec<T> codec) implements OptionInstance.CycleableValueSet<T> {
       @Override
       public Optional<T> validateValue(final T value) {
          return this.values.contains(value) ? Optional.of(value) : Optional.empty();
@@ -265,7 +264,7 @@ public final class OptionInstance<T> {
       }
    }
 
-   public static record IntRange(int minInclusive, int maxInclusive, boolean applyValueImmediately) implements OptionInstance.IntRangeBase {
+   public record IntRange(int minInclusive, int maxInclusive, boolean applyValueImmediately) implements OptionInstance.IntRangeBase {
       public IntRange(final int minInclusive, final int maxInclusive) {
          this(minInclusive, maxInclusive, true);
       }
@@ -297,9 +296,7 @@ public final class OptionInstance<T> {
          if (value == this.minInclusive()) {
             return 0.0;
          } else {
-            return value == this.maxInclusive()
-               ? 1.0
-               : Mth.map((double)value.intValue() + 0.5, (double)this.minInclusive(), (double)this.maxInclusive() + 1.0, 0.0, 1.0);
+            return value == this.maxInclusive() ? 1.0 : Mth.map(value.intValue() + 0.5, this.minInclusive(), this.maxInclusive() + 1.0, 0.0, 1.0);
          }
       }
 
@@ -308,18 +305,14 @@ public final class OptionInstance<T> {
             slider = 0.99999F;
          }
 
-         return Mth.floor(Mth.map(slider, 0.0, 1.0, (double)this.minInclusive(), (double)this.maxInclusive() + 1.0));
+         return Mth.floor(Mth.map(slider, 0.0, 1.0, this.minInclusive(), this.maxInclusive() + 1.0));
       }
 
       default <R> OptionInstance.SliderableValueSet<R> xmap(final IntFunction<? extends R> to, final ToIntFunction<? super R> from, final boolean discrete) {
          return new OptionInstance.SliderableValueSet<R>() {
-            {
-               Objects.requireNonNull(IntRangeBase.this);
-            }
-
             @Override
             public Optional<R> validateValue(final R value) {
-               return IntRangeBase.this.validateValue(Integer.valueOf(from.applyAsInt(value))).map(to::apply);
+               return IntRangeBase.this.validateValue(from.applyAsInt(value)).map(to::apply);
             }
 
             @Override
@@ -331,20 +324,20 @@ public final class OptionInstance<T> {
             public Optional<R> next(final R current) {
                if (!discrete) {
                   return Optional.empty();
-               } else {
-                  int currentIndex = from.applyAsInt(current);
-                  return (Optional<R>)Optional.of(to.apply(IntRangeBase.this.validateValue(Integer.valueOf(currentIndex + 1)).orElse(currentIndex)));
                }
+
+               int currentIndex = from.applyAsInt(current);
+               return (Optional<R>)Optional.of(to.apply(IntRangeBase.this.validateValue(currentIndex + 1).orElse(currentIndex)));
             }
 
             @Override
             public Optional<R> previous(final R current) {
                if (!discrete) {
                   return Optional.empty();
-               } else {
-                  int currentIndex = from.applyAsInt(current);
-                  return (Optional<R>)Optional.of(to.apply(IntRangeBase.this.validateValue(Integer.valueOf(currentIndex - 1)).orElse(currentIndex)));
                }
+
+               int currentIndex = from.applyAsInt(current);
+               return (Optional<R>)Optional.of(to.apply(IntRangeBase.this.validateValue(currentIndex - 1).orElse(currentIndex)));
             }
 
             @Override
@@ -360,8 +353,7 @@ public final class OptionInstance<T> {
       }
    }
 
-   public static record LazyEnum<T>(Supplier<List<T>> values, Function<T, Optional<T>> validateValue, Codec<T> codec)
-      implements OptionInstance.CycleableValueSet<T> {
+   public record LazyEnum<T>(Supplier<List<T>> values, Function<T, Optional<T>> validateValue, Codec<T> codec) implements OptionInstance.CycleableValueSet<T> {
       @Override
       public Optional<T> validateValue(final T value) {
          return this.validateValue.apply(value);
@@ -378,8 +370,7 @@ public final class OptionInstance<T> {
       private final OptionInstance.SliderableValueSet<N> values;
       private final OptionInstance.TooltipSupplier<N> tooltipSupplier;
       private final OptionInstance.ValueUpdateListener<? super N> onValueChanged;
-      @Nullable
-      private Long delayedApplyAt;
+      private @Nullable Long delayedApplyAt;
       private final boolean applyValueImmediately;
 
       private OptionInstanceSliderButton(
@@ -458,45 +449,45 @@ public final class OptionInstance<T> {
          if (event.isSelection()) {
             this.canChangeValue = !this.canChangeValue;
             return true;
-         } else {
-            if (this.canChangeValue) {
-               boolean left = event.isLeft();
-               boolean right = event.isRight();
-               if (left) {
-                  Optional<N> previous = this.values.previous(this.values.fromSliderValue(this.value));
-                  if (previous.isPresent()) {
-                     this.setValue(this.values.toSliderValue(previous.get()));
-                     return true;
-                  }
-               }
+         }
 
-               if (right) {
-                  Optional<N> next = this.values.next(this.values.fromSliderValue(this.value));
-                  if (next.isPresent()) {
-                     this.setValue(this.values.toSliderValue(next.get()));
-                     return true;
-                  }
-               }
-
-               if (left || right) {
-                  float direction = left ? -1.0F : 1.0F;
-                  this.setValue(this.value + (double)(direction / (float)(this.width - 8)));
+         if (this.canChangeValue) {
+            boolean left = event.isLeft();
+            boolean right = event.isRight();
+            if (left) {
+               Optional<N> previous = this.values.previous(this.values.fromSliderValue(this.value));
+               if (previous.isPresent()) {
+                  this.setValue(this.values.toSliderValue(previous.get()));
                   return true;
                }
             }
 
-            return false;
+            if (right) {
+               Optional<N> next = this.values.next(this.values.fromSliderValue(this.value));
+               if (next.isPresent()) {
+                  this.setValue(this.values.toSliderValue(next.get()));
+                  return true;
+               }
+            }
+
+            if (left || right) {
+               float direction = left ? -1.0F : 1.0F;
+               this.setValue(this.value + direction / (this.width - 8));
+               return true;
+            }
          }
+
+         return false;
       }
    }
 
-   public static record SliderableEnum<T>(List<T> values, Codec<T> codec) implements OptionInstance.SliderableValueSet<T> {
+   public record SliderableEnum<T>(List<T> values, Codec<T> codec) implements OptionInstance.SliderableValueSet<T> {
       @Override
       public double toSliderValue(final T value) {
          if (value == this.values.getFirst()) {
             return 0.0;
          } else {
-            return value == this.values.getLast() ? 1.0 : Mth.map((double)this.values.indexOf(value), 0.0, (double)(this.values.size() - 1), 0.0, 1.0);
+            return value == this.values.getLast() ? 1.0 : Mth.map(this.values.indexOf(value), 0.0, this.values.size() - 1, 0.0, 1.0);
          }
       }
 
@@ -520,7 +511,7 @@ public final class OptionInstance<T> {
             slider = 0.99999F;
          }
 
-         int index = Mth.floor(Mth.map(slider, 0.0, 1.0, 0.0, (double)this.values.size()));
+         int index = Mth.floor(Mth.map(slider, 0.0, 1.0, 0.0, this.values.size()));
          return this.values.get(Mth.clamp(index, 0, this.values.size() - 1));
       }
 
@@ -576,18 +567,17 @@ public final class OptionInstance<T> {
          final OptionInstance.ValueUpdateListener<? super T> onValueChanged
       ) {
          return instance -> new OptionInstance.OptionInstanceSliderButton<>(
-               options, x, y, width, 20, instance, this, tooltip, onValueChanged, this.applyValueImmediately()
-            );
+            options, x, y, width, 20, instance, this, tooltip, onValueChanged, this.applyValueImmediately()
+         );
       }
    }
 
    @FunctionalInterface
    public interface TooltipSupplier<T> {
-      @Nullable
-      Tooltip apply(T value);
+      @Nullable Tooltip apply(T value);
    }
 
-   public static enum UnitDouble implements OptionInstance.SliderableValueSet<Double> {
+   public enum UnitDouble implements OptionInstance.SliderableValueSet<Double> {
       INSTANCE;
 
       public Optional<Double> validateValue(final Double value) {
@@ -604,10 +594,6 @@ public final class OptionInstance<T> {
 
       public <R> OptionInstance.SliderableValueSet<R> xmap(final DoubleFunction<? extends R> to, final ToDoubleFunction<? super R> from) {
          return new OptionInstance.SliderableValueSet<R>() {
-            {
-               Objects.requireNonNull(UnitDouble.this);
-            }
-
             @Override
             public Optional<R> validateValue(final R value) {
                return UnitDouble.this.validateValue(from.applyAsDouble(value)).map(to::apply);

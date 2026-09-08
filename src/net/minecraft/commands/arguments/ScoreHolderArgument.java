@@ -12,7 +12,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 import java.util.function.Supplier;
 import net.minecraft.commands.CommandBuildContext;
@@ -121,48 +120,48 @@ public class ScoreHolderArgument implements ArgumentType<ScoreHolderArgument.Res
                   return results;
                }
             };
-         } else {
-            List<ScoreHolder> nameOnlyHolder = List.of(ScoreHolder.forNameOnly(text));
-            if (text.startsWith("#")) {
-               return (sender, wildcard) -> nameOnlyHolder;
-            } else {
-               try {
-                  UUID uuid = UUID.fromString(text);
-                  return (sender, wildcard) -> {
-                     MinecraftServer server = sender.getServer();
-                     ScoreHolder firstResult = null;
-                     List<ScoreHolder> moreResults = null;
+         }
 
-                     for (ServerLevel level : server.getAllLevels()) {
-                        Entity entity = level.getEntity(uuid);
-                        if (entity != null) {
-                           if (firstResult == null) {
-                              firstResult = entity;
-                           } else {
-                              if (moreResults == null) {
-                                 moreResults = new ArrayList<>();
-                                 moreResults.add(firstResult);
-                              }
+         List<ScoreHolder> nameOnlyHolder = List.of(ScoreHolder.forNameOnly(text));
+         if (text.startsWith("#")) {
+            return (sender, wildcard) -> nameOnlyHolder;
+         }
 
-                              moreResults.add(entity);
-                           }
-                        }
-                     }
+         try {
+            UUID uuid = UUID.fromString(text);
+            return (sender, wildcard) -> {
+               MinecraftServer server = sender.getServer();
+               ScoreHolder firstResult = null;
+               List<ScoreHolder> moreResults = null;
 
-                     if (moreResults != null) {
-                        return moreResults;
+               for (ServerLevel level : server.getAllLevels()) {
+                  Entity entity = level.getEntity(uuid);
+                  if (entity != null) {
+                     if (firstResult == null) {
+                        firstResult = entity;
                      } else {
-                        return firstResult != null ? List.of(firstResult) : nameOnlyHolder;
+                        if (moreResults == null) {
+                           moreResults = new ArrayList<>();
+                           moreResults.add(firstResult);
+                        }
+
+                        moreResults.add(entity);
                      }
-                  };
-               } catch (IllegalArgumentException var7) {
-                  return (sender, wildcard) -> {
-                     MinecraftServer server = sender.getServer();
-                     ServerPlayer player = server.getPlayerList().getPlayerByName(text);
-                     return player != null ? List.of(player) : nameOnlyHolder;
-                  };
+                  }
                }
-            }
+
+               if (moreResults != null) {
+                  return moreResults;
+               } else {
+                  return firstResult != null ? List.of(firstResult) : nameOnlyHolder;
+               }
+            };
+         } catch (IllegalArgumentException var7) {
+            return (sender, wildcard) -> {
+               MinecraftServer server = sender.getServer();
+               ServerPlayer player = server.getPlayerList().getPlayerByName(text);
+               return player != null ? List.of(player) : nameOnlyHolder;
+            };
          }
       }
    }
@@ -201,8 +200,6 @@ public class ScoreHolderArgument implements ArgumentType<ScoreHolderArgument.Res
          private final boolean multiple;
 
          private Template(final boolean multiple) {
-            Objects.requireNonNull(Info.this);
-            super();
             this.multiple = multiple;
          }
 

@@ -19,10 +19,8 @@ public class FocusableTextWidget extends MultiLineTextWidget {
    private final boolean alwaysShowBorder;
    private final FocusableTextWidget.BackgroundFill backgroundFill;
    private boolean narrateMessage = true;
-   @Nullable
-   private Component focusedUsageNarration;
-   @Nullable
-   private Component hoveredUsageNarration;
+   private @Nullable Component focusedUsageNarration;
+   private @Nullable Component hoveredUsageNarration;
 
    private FocusableTextWidget(
       final Component message,
@@ -61,7 +59,7 @@ public class FocusableTextWidget extends MultiLineTextWidget {
       this.narrateMessage = narrateMessage;
    }
 
-   public void setUsageNarration(@Nullable final Component focused, @Nullable final Component hovered) {
+   public void setUsageNarration(final @Nullable Component focused, final @Nullable Component hovered) {
       this.focusedUsageNarration = focused;
       this.hoveredUsageNarration = hovered;
    }
@@ -169,7 +167,7 @@ public class FocusableTextWidget extends MultiLineTextWidget {
       return new FocusableTextWidget.Builder(message, font, padding);
    }
 
-   public static enum BackgroundFill {
+   public enum BackgroundFill {
       ALWAYS,
       ON_FOCUS,
       NEVER;

@@ -28,9 +28,7 @@ public final class Identifier implements Comparable<Identifier> {
 
    private Identifier(final String namespace, final String path) {
       assert isValidNamespace(namespace);
-
       assert isValidPath(path);
-
       this.namespace = namespace;
       this.path = path;
    }
@@ -51,13 +49,11 @@ public final class Identifier implements Comparable<Identifier> {
       return new Identifier("minecraft", assertValidPath("minecraft", path));
    }
 
-   @Nullable
-   public static Identifier tryParse(final String identifier) {
+   public static @Nullable Identifier tryParse(final String identifier) {
       return tryBySeparator(identifier, ':');
    }
 
-   @Nullable
-   public static Identifier tryBuild(final String namespace, final String path) {
+   public static @Nullable Identifier tryBuild(final String namespace, final String path) {
       return isValidNamespace(namespace) && isValidPath(path) ? new Identifier(namespace, path) : null;
    }
 
@@ -76,8 +72,7 @@ public final class Identifier implements Comparable<Identifier> {
       }
    }
 
-   @Nullable
-   public static Identifier tryBySeparator(final String identifier, final char separator) {
+   public static @Nullable Identifier tryBySeparator(final String identifier, final char separator) {
       int separatorIndex = identifier.indexOf(separator);
       if (separatorIndex >= 0) {
          String path = identifier.substring(separatorIndex + 1);
@@ -97,8 +92,8 @@ public final class Identifier implements Comparable<Identifier> {
    public static DataResult<Identifier> read(final String input) {
       try {
          return DataResult.success(parse(input));
-      } catch (IdentifierException var2) {
-         return DataResult.error(() -> "Not a valid resource location: " + input + " " + var2.getMessage());
+      } catch (IdentifierException e) {
+         return DataResult.error(() -> "Not a valid resource location: " + input + " " + e.getMessage());
       }
    }
 
@@ -132,7 +127,7 @@ public final class Identifier implements Comparable<Identifier> {
    }
 
    @Override
-   public boolean equals(@Nullable final Object o) {
+   public boolean equals(final @Nullable Object o) {
       if (this == o) {
          return true;
       } else {
@@ -207,7 +202,7 @@ public final class Identifier implements Comparable<Identifier> {
 
       try {
          return parse(raw);
-      } catch (IdentifierException var4) {
+      } catch (IdentifierException ex) {
          reader.setCursor(start);
          throw ERROR_INVALID.createWithContext(reader);
       }
@@ -218,13 +213,13 @@ public final class Identifier implements Comparable<Identifier> {
       String raw = readGreedy(reader);
       if (raw.isEmpty()) {
          throw ERROR_INVALID.createWithContext(reader);
-      } else {
-         try {
-            return parse(raw);
-         } catch (IdentifierException var4) {
-            reader.setCursor(start);
-            throw ERROR_INVALID.createWithContext(reader);
-         }
+      }
+
+      try {
+         return parse(raw);
+      } catch (IdentifierException ex) {
+         reader.setCursor(start);
+         throw ERROR_INVALID.createWithContext(reader);
       }
    }
 
@@ -245,15 +240,15 @@ public final class Identifier implements Comparable<Identifier> {
    public static boolean isValidNamespace(final String namespace) {
       if (namespace.equals("..")) {
          return false;
-      } else {
-         for (int i = 0; i < namespace.length(); i++) {
-            if (!validNamespaceChar(namespace.charAt(i))) {
-               return false;
-            }
-         }
-
-         return true;
       }
+
+      for (int i = 0; i < namespace.length(); i++) {
+         if (!validNamespaceChar(namespace.charAt(i))) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    private static String assertValidNamespace(final String namespace, final String path) {

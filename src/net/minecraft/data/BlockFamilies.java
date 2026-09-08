@@ -291,30 +291,30 @@ public class BlockFamilies {
       .getFamily();
    public static final WeatheringCopperCollection<BlockFamily> CUT_COPPER = WeatheringCopperCollection.createFamily(
       (prefix, state) -> familyBuilder(Blocks.CUT_COPPER.waxed().pick(state))
-            .slab(Blocks.CUT_COPPER_SLAB.waxed().pick(state))
-            .stairs(Blocks.CUT_COPPER_STAIRS.waxed().pick(state))
-            .recipeGroupPrefix(prefix + "cut_copper")
-            .dontGenerateModel()
-            .generateStonecutterRecipe()
-            .getFamily(),
+         .slab(Blocks.CUT_COPPER_SLAB.waxed().pick(state))
+         .stairs(Blocks.CUT_COPPER_STAIRS.waxed().pick(state))
+         .recipeGroupPrefix(prefix + "cut_copper")
+         .dontGenerateModel()
+         .generateStonecutterRecipe()
+         .getFamily(),
       (var0, state) -> familyBuilder(Blocks.CUT_COPPER.weathering().pick(state))
-            .slab(Blocks.CUT_COPPER_SLAB.weathering().pick(state))
-            .stairs(Blocks.CUT_COPPER_STAIRS.weathering().pick(state))
-            .chiseled(Blocks.CHISELED_COPPER.weathering().pick(state))
-            .dontGenerateModel()
-            .generateStonecutterRecipe()
-            .getFamily()
+         .slab(Blocks.CUT_COPPER_SLAB.weathering().pick(state))
+         .stairs(Blocks.CUT_COPPER_STAIRS.weathering().pick(state))
+         .chiseled(Blocks.CHISELED_COPPER.weathering().pick(state))
+         .dontGenerateModel()
+         .generateStonecutterRecipe()
+         .getFamily()
    );
    public static final WeatheringCopperCollection<BlockFamily> COPPER_BLOCK = WeatheringCopperCollection.createFamily(
       (prefix, state) -> familyBuilder(Blocks.COPPER_BLOCK.waxed().pick(state))
-            .cut(Blocks.CUT_COPPER.waxed().pick(state))
-            .recipeGroupPrefix(prefix + "cut_copper")
-            .dontGenerateModel()
-            .getFamily(),
+         .cut(Blocks.CUT_COPPER.waxed().pick(state))
+         .recipeGroupPrefix(prefix + "cut_copper")
+         .dontGenerateModel()
+         .getFamily(),
       (var0, state) -> familyBuilder(Blocks.COPPER_BLOCK.weathering().pick(state))
-            .cut(Blocks.CUT_COPPER.weathering().pick(state))
-            .dontGenerateModel()
-            .getFamily()
+         .cut(Blocks.CUT_COPPER.weathering().pick(state))
+         .dontGenerateModel()
+         .getFamily()
    );
    public static final BlockFamily COBBLESTONE = familyBuilder(Blocks.COBBLESTONE)
       .wall(Blocks.COBBLESTONE_WALL)
@@ -560,20 +560,20 @@ public class BlockFamilies {
    public static final ColorCollection<BlockFamily> WOOL = ColorCollection.VALUES
       .map(
          color -> familyBuilder(Blocks.WOOL.pick(color))
-               .carpet(Blocks.CARPET.pick(color))
-               .stairs(Blocks.WOOL_STAIRS.pick(color))
-               .slab(Blocks.WOOL_SLAB.pick(color))
-               .recipeGroupPrefix("woolen")
-               .getFamily()
+            .carpet(Blocks.CARPET.pick(color))
+            .stairs(Blocks.WOOL_STAIRS.pick(color))
+            .slab(Blocks.WOOL_SLAB.pick(color))
+            .recipeGroupPrefix("woolen")
+            .getFamily()
       );
    public static final ColorCollection<BlockFamily> CONCRETE = ColorCollection.VALUES
       .map(
          color -> familyBuilder(Blocks.CONCRETE.pick(color))
-               .stairs(Blocks.CONCRETE_STAIRS.pick(color))
-               .slab(Blocks.CONCRETE_SLAB.pick(color))
-               .recipeGroupPrefix("concrete")
-               .generateStonecutterRecipe()
-               .getFamily()
+            .stairs(Blocks.CONCRETE_STAIRS.pick(color))
+            .slab(Blocks.CONCRETE_SLAB.pick(color))
+            .recipeGroupPrefix("concrete")
+            .generateStonecutterRecipe()
+            .getFamily()
       );
 
    private static BlockFamily.Builder familyBuilder(final Block base) {
@@ -590,8 +590,7 @@ public class BlockFamilies {
       return MAP.values().stream();
    }
 
-   @Nullable
-   public static BlockFamily getFamily(final Block base) {
+   public static @Nullable BlockFamily getFamily(final Block base) {
       return MAP.get(base);
    }
 }

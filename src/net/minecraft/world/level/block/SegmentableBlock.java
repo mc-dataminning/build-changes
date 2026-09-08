@@ -49,7 +49,7 @@ public interface SegmentableBlock {
    ) {
       BlockState state = context.getLevel().getBlockState(context.getClickedPos());
       return state.is(block)
-         ? state.setValue(segment, Integer.valueOf(Math.min(4, state.getValue(segment) + 1)))
+         ? state.setValue(segment, Math.min(4, state.getValue(segment) + 1))
          : block.defaultBlockState().setValue(facing, context.getHorizontalDirection().getOpposite());
    }
 }

@@ -53,12 +53,12 @@ public class WardenAi {
    private static final int DISTURBANCE_LOCATION_EXPIRY_TIME = 100;
    private static final BehaviorControl<Warden> DIG_COOLDOWN_SETTER = BehaviorBuilder.create(
       i -> i.group(i.registered(MemoryModuleType.DIG_COOLDOWN)).apply(i, cooldown -> (level, body, timestamp) -> {
-               if (i.tryGet(cooldown).isPresent()) {
-                  cooldown.setWithExpiry(Unit.INSTANCE, 1200L);
-               }
+         if (i.tryGet(cooldown).isPresent()) {
+            cooldown.setWithExpiry(Unit.INSTANCE, 1200L);
+         }
 
-               return true;
-            })
+         return true;
+      })
    );
 
    protected static List<ActivityData<Warden>> getActivities(final Warden body) {

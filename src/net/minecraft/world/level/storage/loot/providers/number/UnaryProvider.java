@@ -22,7 +22,7 @@ public interface UnaryProvider<Value extends Validatable> extends Validatable {
    }
 
    @FunctionalInterface
-   public interface Factory<Value extends Validatable, Self extends UnaryProvider<Value>> {
+   interface Factory<Value extends Validatable, Self extends UnaryProvider<Value>> {
       Self create(Holder<Value> input);
    }
 }

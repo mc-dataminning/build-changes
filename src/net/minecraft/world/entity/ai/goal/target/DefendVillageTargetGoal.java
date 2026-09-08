@@ -14,8 +14,7 @@ import org.jspecify.annotations.Nullable;
 
 public class DefendVillageTargetGoal extends TargetGoal {
    private final IronGolem golem;
-   @Nullable
-   private LivingEntity potentialTarget;
+   private @Nullable LivingEntity potentialTarget;
    private final TargetingConditions attackTargeting = TargetingConditions.forCombat().range(64.0);
 
    public DefendVillageTargetGoal(final IronGolem golem) {
@@ -42,15 +41,7 @@ public class DefendVillageTargetGoal extends TargetGoal {
          }
       }
 
-      if (this.potentialTarget == null) {
-         return false;
-      } else {
-         if (this.potentialTarget instanceof Player playerx && (playerx.isSpectator() || playerx.isCreative())) {
-            return false;
-         }
-
-         return true;
-      }
+      return this.potentialTarget == null ? false : !(this.potentialTarget instanceof Player player && (player.isSpectator() || player.isCreative()));
    }
 
    @Override

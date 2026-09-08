@@ -40,7 +40,7 @@ public class FluidRenderer {
          boolean fullBlock = height == 1.0F;
          return direction != Direction.UP || fullBlock;
       } else {
-         VoxelShape shape = Shapes.box(0.0, 0.0, 0.0, 1.0, (double)height, 1.0);
+         VoxelShape shape = Shapes.box(0.0, 0.0, 0.0, 1.0, height, 1.0);
          return Shapes.blockOccludes(shape, occluder, direction);
       }
    }
@@ -116,9 +116,9 @@ public class FluidRenderer {
             );
          }
 
-         float x = (float)(pos.getX() & 15);
-         float y = (float)(pos.getY() & 15);
-         float z = (float)(pos.getZ() & 15);
+         float x = pos.getX() & 15;
+         float y = pos.getY() & 15;
+         float z = pos.getZ() & 15;
          float offs = 0.001F;
          float bottomOffs = renderDown ? 0.001F : 0.0F;
          if (renderUp
@@ -150,15 +150,15 @@ public class FluidRenderer {
                v11 = v00;
             } else {
                float angle = (float)Mth.atan2(flow.z, flow.x) - (float) (Math.PI / 2);
-               float s = Mth.sin((double)angle) * 0.25F;
-               float c = Mth.cos((double)angle) * 0.25F;
+               float s = Mth.sin(angle) * 0.25F;
+               float c = Mth.cos(angle) * 0.25F;
                float cc = 0.5F;
                TextureAtlasSprite flowingSprite = model.flowingMaterial().sprite();
                u00 = flowingSprite.getU(0.5F + (-c - s));
-               v00 = flowingSprite.getV(0.5F + -c + s);
-               u01 = flowingSprite.getU(0.5F + -c + s);
-               v01 = flowingSprite.getV(0.5F + c + s);
-               u10 = flowingSprite.getU(0.5F + c + s);
+               v00 = flowingSprite.getV(0.5F + (-c + s));
+               u01 = flowingSprite.getU(0.5F + (-c + s));
+               v01 = flowingSprite.getV(0.5F + (c + s));
+               u10 = flowingSprite.getU(0.5F + (c + s));
                v10 = flowingSprite.getV(0.5F + (c - s));
                u11 = flowingSprite.getU(0.5F + (c - s));
                v11 = flowingSprite.getV(0.5F + (-c - s));

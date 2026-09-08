@@ -7,14 +7,13 @@ import org.jspecify.annotations.Nullable;
 
 public class AdvancementNode {
    private final AdvancementHolder holder;
-   @Nullable
-   private final AdvancementNode parent;
+   private final @Nullable AdvancementNode parent;
    private final Set<AdvancementNode> children = new ReferenceOpenHashSet();
    private float x;
    private float y;
 
    @VisibleForTesting
-   public AdvancementNode(final AdvancementHolder holder, @Nullable final AdvancementNode parent) {
+   public AdvancementNode(final AdvancementHolder holder, final @Nullable AdvancementNode parent) {
       this.holder = holder;
       this.parent = parent;
    }
@@ -35,8 +34,7 @@ public class AdvancementNode {
       return this.parent == null;
    }
 
-   @Nullable
-   public AdvancementNode parent() {
+   public @Nullable AdvancementNode parent() {
       return this.parent;
    }
 
@@ -81,15 +79,7 @@ public class AdvancementNode {
 
    @Override
    public boolean equals(final Object obj) {
-      if (this == obj) {
-         return true;
-      } else {
-         if (obj instanceof AdvancementNode that && this.holder.equals(that.holder)) {
-            return true;
-         }
-
-         return false;
-      }
+      return this == obj ? true : obj instanceof AdvancementNode that && this.holder.equals(that.holder);
    }
 
    @Override

@@ -1,7 +1,6 @@
 package net.minecraft.world.inventory;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -34,13 +33,8 @@ public class StonecutterMenu extends AbstractContainerMenu {
    private long lastSoundTime;
    private final Slot inputSlot;
    private final Slot resultSlot;
-   private Runnable slotUpdateListener = () -> {
-   };
+   private Runnable slotUpdateListener = () -> {};
    public final Container container = new SimpleContainer(1) {
-      {
-         Objects.requireNonNull(StonecutterMenu.this);
-      }
-
       @Override
       public void setChanged() {
          super.setChanged();
@@ -60,10 +54,6 @@ public class StonecutterMenu extends AbstractContainerMenu {
       this.level = inventory.player.level();
       this.inputSlot = this.addSlot(new Slot(this.container, 0, 20, 33));
       this.resultSlot = this.addSlot(new Slot(this.resultContainer, 1, 143, 33) {
-         {
-            Objects.requireNonNull(StonecutterMenu.this);
-         }
-
          @Override
          public boolean mayPlace(final ItemStack itemStack) {
             return false;
@@ -121,14 +111,14 @@ public class StonecutterMenu extends AbstractContainerMenu {
    public boolean clickMenuButton(final Player player, final int buttonId) {
       if (this.selectedRecipeIndex.get() == buttonId) {
          return false;
-      } else {
-         if (this.isValidRecipeIndex(buttonId)) {
-            this.selectedRecipeIndex.set(buttonId);
-            this.setupResultSlot(buttonId);
-         }
-
-         return true;
       }
+
+      if (this.isValidRecipeIndex(buttonId)) {
+         this.selectedRecipeIndex.set(buttonId);
+         this.setupResultSlot(buttonId);
+      }
+
+      return true;
    }
 
    private boolean isValidRecipeIndex(final int buttonId) {

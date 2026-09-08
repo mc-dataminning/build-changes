@@ -34,7 +34,7 @@ public class PaintingRenderer extends EntityRenderer<Painting, PaintingRenderSta
       PaintingVariant variant = state.variant;
       if (variant != null) {
          poseStack.pushPose();
-         poseStack.rotateDegrees(Axis.YP, (float)(180 - state.direction.get2DDataValue() * 90));
+         poseStack.rotateDegrees(Axis.YP, 180 - state.direction.get2DDataValue() * 90);
          TextureAtlasSprite frontSprite = this.paintingsAtlas.getSprite(variant.assetId());
          TextureAtlasSprite backSprite = this.paintingsAtlas.getSprite(BACK_SPRITE_LOCATION);
          this.renderPainting(
@@ -68,29 +68,29 @@ public class PaintingRenderer extends EntityRenderer<Painting, PaintingRenderSta
          state.lightCoordsPerBlock = new int[width * height];
       }
 
-      float offsetX = (float)(-width) / 2.0F;
-      float offsetY = (float)(-height) / 2.0F;
+      float offsetX = -width / 2.0F;
+      float offsetY = -height / 2.0F;
       Level level = entity.level();
 
       for (int segmentY = 0; segmentY < height; segmentY++) {
          for (int segmentX = 0; segmentX < width; segmentX++) {
-            float segmentOffsetX = (float)segmentX + offsetX + 0.5F;
-            float segmentOffsetY = (float)segmentY + offsetY + 0.5F;
+            float segmentOffsetX = segmentX + offsetX + 0.5F;
+            float segmentOffsetY = segmentY + offsetY + 0.5F;
             int x = entity.getBlockX();
-            int y = Mth.floor(entity.getY() + (double)segmentOffsetY);
+            int y = Mth.floor(entity.getY() + segmentOffsetY);
             int z = entity.getBlockZ();
             switch (direction) {
                case NORTH:
-                  x = Mth.floor(entity.getX() + (double)segmentOffsetX);
+                  x = Mth.floor(entity.getX() + segmentOffsetX);
                   break;
                case WEST:
-                  z = Mth.floor(entity.getZ() - (double)segmentOffsetX);
+                  z = Mth.floor(entity.getZ() - segmentOffsetX);
                   break;
                case SOUTH:
-                  x = Mth.floor(entity.getX() - (double)segmentOffsetX);
+                  x = Mth.floor(entity.getX() - segmentOffsetX);
                   break;
                case EAST:
-                  z = Mth.floor(entity.getZ() + (double)segmentOffsetX);
+                  z = Mth.floor(entity.getZ() + segmentOffsetX);
             }
 
             state.lightCoordsPerBlock[segmentX + segmentY * width] = LightCoordsUtil.getLightCoords(level, new BlockPos(x, y, z));
@@ -109,8 +109,8 @@ public class PaintingRenderer extends EntityRenderer<Painting, PaintingRenderSta
       final TextureAtlasSprite back
    ) {
       submitNodeCollector.submitCustomGeometry(poseStack, renderType, (pose, buffer) -> {
-         float offsetX = (float)(-width) / 2.0F;
-         float offsetY = (float)(-height) / 2.0F;
+         float offsetX = -width / 2.0F;
+         float offsetY = -height / 2.0F;
          float edgeHalfWidth = 0.03125F;
          float backU0 = back.getU0();
          float backU1 = back.getU1();
@@ -124,20 +124,20 @@ public class PaintingRenderer extends EntityRenderer<Painting, PaintingRenderSta
          float leftRightU1 = back.getU(0.0625F);
          float leftRightV0 = back.getV0();
          float leftRightV1 = back.getV1();
-         double deltaU = 1.0 / (double)width;
-         double deltaV = 1.0 / (double)height;
+         double deltaU = 1.0 / width;
+         double deltaV = 1.0 / height;
 
          for (int segmentX = 0; segmentX < width; segmentX++) {
             for (int segmentY = 0; segmentY < height; segmentY++) {
-               float x0 = offsetX + (float)(segmentX + 1);
-               float x1 = offsetX + (float)segmentX;
-               float y0 = offsetY + (float)(segmentY + 1);
-               float y1 = offsetY + (float)segmentY;
+               float x0 = offsetX + (segmentX + 1);
+               float x1 = offsetX + segmentX;
+               float y0 = offsetY + (segmentY + 1);
+               float y1 = offsetY + segmentY;
                int lightCoords = lightCoordsMap[segmentX + segmentY * width];
-               float frontU0 = front.getU((float)(deltaU * (double)(width - segmentX)));
-               float frontU1 = front.getU((float)(deltaU * (double)(width - (segmentX + 1))));
-               float frontV0 = front.getV((float)(deltaV * (double)(height - segmentY)));
-               float frontV1 = front.getV((float)(deltaV * (double)(height - (segmentY + 1))));
+               float frontU0 = front.getU((float)(deltaU * (width - segmentX)));
+               float frontU1 = front.getU((float)(deltaU * (width - (segmentX + 1))));
+               float frontV0 = front.getV((float)(deltaV * (height - segmentY)));
+               float frontV1 = front.getV((float)(deltaV * (height - (segmentY + 1))));
                vertex(pose, buffer, x0, y1, frontU1, frontV0, -0.03125F, 0, 0, -1, lightCoords);
                vertex(pose, buffer, x1, y1, frontU0, frontV0, -0.03125F, 0, 0, -1, lightCoords);
                vertex(pose, buffer, x1, y0, frontU0, frontV1, -0.03125F, 0, 0, -1, lightCoords);
@@ -191,11 +191,6 @@ public class PaintingRenderer extends EntityRenderer<Painting, PaintingRenderSta
       final int nz,
       final int lightCoords
    ) {
-      buffer.addVertex(pose, x, y, z)
-         .setColor(-1)
-         .setUv(u, v)
-         .setOverlay(OverlayTexture.NO_OVERLAY)
-         .setLight(lightCoords)
-         .setNormal(pose, (float)nx, (float)ny, (float)nz);
+      buffer.addVertex(pose, x, y, z).setColor(-1).setUv(u, v).setOverlay(OverlayTexture.NO_OVERLAY).setLight(lightCoords).setNormal(pose, nx, ny, nz);
    }
 }

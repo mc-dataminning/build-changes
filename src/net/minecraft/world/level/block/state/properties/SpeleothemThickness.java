@@ -11,7 +11,7 @@ public enum SpeleothemThickness implements StringRepresentable {
 
    private final String name;
 
-   private SpeleothemThickness(final String name) {
+   SpeleothemThickness(final String name) {
       this.name = name;
    }
 

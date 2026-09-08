@@ -11,7 +11,6 @@ import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 import org.lwjgl.PointerBuffer;
 import org.lwjgl.system.MemoryStack;
@@ -23,8 +22,7 @@ import org.lwjgl.util.spvc.SpvcReflectedResource.Buffer;
 public class SPIRVModule implements SpvModule {
    private final ByteBuffer spv;
    private final ShaderType type;
-   @Nullable
-   private SpvModule.Reflection reflection;
+   private SpvModule.@Nullable Reflection reflection;
    private long spvcContext;
 
    public SPIRVModule(final ByteBuffer spv, final ShaderType type) {
@@ -59,9 +57,8 @@ public class SPIRVModule implements SpvModule {
       return this.reflection;
    }
 
-   @Nullable
    @Override
-   public SpvModule.Reflection getReflectionInfoIfAvailable() {
+   public SpvModule.@Nullable Reflection getReflectionInfoIfAvailable() {
       return this.reflection;
    }
 
@@ -94,7 +91,7 @@ public class SPIRVModule implements SpvModule {
       try {
          PointerBuffer pointerReturnBuffer = stack.callocPointer(1);
          SpvUtil.throwIfError(
-            Spvc.spvc_context_parse_spirv(this.spvcContext, spirvBuffer, (long)spirvBuffer.remaining(), pointerReturnBuffer), "Couldn't parse spirv"
+            Spvc.spvc_context_parse_spirv(this.spvcContext, spirvBuffer, spirvBuffer.remaining(), pointerReturnBuffer), "Couldn't parse spirv"
          );
          long ir = pointerReturnBuffer.get(0);
          SpvUtil.throwIfError(Spvc.spvc_context_create_compiler(this.spvcContext, 0, ir, 0, pointerReturnBuffer), "Couldn't create compiler");
@@ -113,10 +110,6 @@ public class SPIRVModule implements SpvModule {
          final List<SpvModule.Reflection.Descriptor> allDescriptors = descriptors.values().stream().flatMap(Collection::stream).toList();
          final List<SpvModule.Reflection.PushConstant> pushConstants = generatePushConstantList(compiler, spvcResources);
          this.reflection = new SpvModule.Reflection() {
-            {
-               Objects.requireNonNull(SPIRVModule.this);
-            }
-
             @Override
             public List<SpvModule.Reflection.InterfaceVariable> inputs() {
                return inputs;
@@ -176,7 +169,7 @@ public class SPIRVModule implements SpvModule {
          long spvcCount = countPointer.get(0);
          Buffer resources = SpvcReflectedResource.create(spvcList, (int)spvcCount);
 
-         for (int i = 0; (long)i < spvcCount; i++) {
+         for (int i = 0; i < spvcCount; i++) {
             final SpvcReflectedResource resource = (SpvcReflectedResource)resources.get(i);
             final String name = resource.nameString();
             if (!Spvc.spvc_compiler_get_binary_offset_for_decoration(compiler, resource.id(), 30, intReturnBuffer)) {
@@ -248,7 +241,7 @@ public class SPIRVModule implements SpvModule {
          long spvcCount = countPointer.get(0);
          Buffer resources = SpvcReflectedResource.create(spvcList, (int)spvcCount);
 
-         for (int i = 0; (long)i < spvcCount; i++) {
+         for (int i = 0; i < spvcCount; i++) {
             SpvcReflectedResource resource = (SpvcReflectedResource)resources.get(i);
             final String name = resource.nameString();
             if (!Spvc.spvc_compiler_get_binary_offset_for_decoration(compiler, resource.id(), 34, intReturnBuffer)) {
@@ -332,7 +325,7 @@ public class SPIRVModule implements SpvModule {
          long spvcCount = countPointer.get(0);
          Buffer resources = SpvcReflectedResource.create(spvcList, (int)spvcCount);
 
-         for (int i = 0; (long)i < spvcCount; i++) {
+         for (int i = 0; i < spvcCount; i++) {
             SpvcReflectedResource resource = (SpvcReflectedResource)resources.get(i);
             SPIRVModule.TypeHandle typeHandle = new SPIRVModule.TypeHandle(Spvc.spvc_compiler_get_type_handle(compiler, resource.type_id()));
             Spvc.spvc_compiler_get_declared_struct_size(compiler, typeHandle.typeHandle, pointerReturnBuffer);
@@ -358,7 +351,7 @@ public class SPIRVModule implements SpvModule {
       return ReferenceLists.unmodifiable(list);
    }
 
-   private static record TypeHandle(long typeHandle) implements SpvModule.Reflection.Type {
+   private record TypeHandle(long typeHandle) implements SpvModule.Reflection.Type {
       @Override
       public int baseType() {
          return Spvc.spvc_type_get_basetype(this.typeHandle);

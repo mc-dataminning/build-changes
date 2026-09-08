@@ -20,14 +20,14 @@ public class LegacyDragonFightFix extends DataFix {
    protected TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
          "LegacyDragonFightFix", this.getInputSchema().getType(References.LEVEL), input -> input.update(DSL.remainderFinder(), tag -> {
-               OptionalDynamic<?> dragonFight = tag.get("DragonFight");
-               if (dragonFight.result().isPresent()) {
-                  return tag;
-               } else {
-                  Dynamic<?> legacyFight = tag.get("DimensionData").get("1").get("DragonFight").orElseEmptyMap();
-                  return tag.set("DragonFight", fixDragonFight(legacyFight));
-               }
-            })
+            OptionalDynamic<?> dragonFight = tag.get("DragonFight");
+            if (dragonFight.result().isPresent()) {
+               return tag;
+            }
+
+            Dynamic<?> legacyFight = tag.get("DimensionData").get("1").get("DragonFight").orElseEmptyMap();
+            return tag.set("DragonFight", fixDragonFight(legacyFight));
+         })
       );
    }
 }

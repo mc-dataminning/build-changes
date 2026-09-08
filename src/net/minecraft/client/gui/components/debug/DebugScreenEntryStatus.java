@@ -11,7 +11,7 @@ public enum DebugScreenEntryStatus implements StringRepresentable {
    public static final Codec<DebugScreenEntryStatus> CODEC = StringRepresentable.fromEnum(DebugScreenEntryStatus::values);
    private final String name;
 
-   private DebugScreenEntryStatus(final String name) {
+   DebugScreenEntryStatus(final String name) {
       this.name = name;
    }
 

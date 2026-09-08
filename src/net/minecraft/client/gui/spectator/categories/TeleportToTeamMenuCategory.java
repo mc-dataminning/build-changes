@@ -90,10 +90,10 @@ public class TeleportToTeamMenuCategory implements SpectatorMenuCategory, Specta
 
          if (players.isEmpty()) {
             return Optional.empty();
-         } else {
-            PlayerInfo playerInfo = players.get(RandomSource.createThreadLocalInstance().nextInt(players.size()));
-            return Optional.of(new TeleportToTeamMenuCategory.TeamSelectionItem(team, players, playerInfo::getSkin));
          }
+
+         PlayerInfo playerInfo = players.get(RandomSource.createThreadLocalInstance().nextInt(players.size()));
+         return Optional.of(new TeleportToTeamMenuCategory.TeamSelectionItem(team, players, playerInfo::getSkin));
       }
 
       @Override

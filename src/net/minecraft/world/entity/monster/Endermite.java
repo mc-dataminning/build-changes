@@ -133,11 +133,13 @@ public class Endermite extends Monster {
    ) {
       if (!checkAnyLightMonsterSpawnRules(type, level, spawnReason, pos, random)) {
          return false;
-      } else if (EntitySpawnReason.isSpawner(spawnReason)) {
-         return true;
-      } else {
-         Player nearestPlayer = level.getNearestPlayer((double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, 5.0, true);
-         return nearestPlayer == null;
       }
+
+      if (EntitySpawnReason.isSpawner(spawnReason)) {
+         return true;
+      }
+
+      Player nearestPlayer = level.getNearestPlayer(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 5.0, true);
+      return nearestPlayer == null;
    }
 }

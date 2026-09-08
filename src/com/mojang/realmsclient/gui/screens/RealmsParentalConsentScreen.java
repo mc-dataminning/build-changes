@@ -18,8 +18,7 @@ public class RealmsParentalConsentScreen extends RealmsScreen {
    private static final int SPACING = 15;
    private final LinearLayout layout = LinearLayout.vertical();
    private final Screen lastScreen;
-   @Nullable
-   private MultiLineTextWidget textWidget;
+   private @Nullable MultiLineTextWidget textWidget;
 
    public RealmsParentalConsentScreen(final Screen lastScreen) {
       super(GameNarrator.NO_TITLE);

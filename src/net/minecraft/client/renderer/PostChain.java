@@ -15,12 +15,10 @@ import com.mojang.renderpearl.api.pipeline.BindGroupLayout;
 import com.mojang.renderpearl.api.pipeline.ColorTargetState;
 import com.mojang.renderpearl.api.pipeline.RenderPipeline;
 import com.mojang.renderpearl.api.pipeline.UniformType;
-import java.lang.runtime.SwitchBootstraps;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
@@ -73,16 +71,16 @@ public class PostChain implements AutoCloseable {
       Set<Identifier> invalidExternalTargets = Sets.difference(referencedExternalTargets, allowedExternalTargets);
       if (!invalidExternalTargets.isEmpty()) {
          throw new ShaderManager.CompilationException("Referenced external targets are not available in this context: " + invalidExternalTargets);
-      } else {
-         Builder<PostPass> passes = ImmutableList.builder();
-
-         for (int i = 0; i < config.passes().size(); i++) {
-            PostChainConfig.Pass pass = config.passes().get(i);
-            passes.add(createPass(textureManager, pass, id.withSuffix("/" + i)));
-         }
-
-         return new PostChain(id, passes.build(), config.internalTargets(), referencedExternalTargets, projection, projectionMatrixBuffer);
       }
+
+      Builder<PostPass> passes = ImmutableList.builder();
+
+      for (int i = 0; i < config.passes().size(); i++) {
+         PostChainConfig.Pass pass = config.passes().get(i);
+         passes.add(createPass(textureManager, pass, id.withSuffix("/" + i)));
+      }
+
+      return new PostChain(id, passes.build(), config.internalTargets(), referencedExternalTargets, projection, projectionMatrixBuffer);
    }
 
    public static Set<Identifier> getReferencedExternalTargets(final PostChainConfig config) {
@@ -90,7 +88,6 @@ public class PostChain implements AutoCloseable {
       return referencedTargets.filter(targetId -> !config.internalTargets().containsKey(targetId)).collect(Collectors.toSet());
    }
 
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
    private static PostPass createPass(final TextureManager textureManager, final PostChainConfig.Pass config, final Identifier id) throws ShaderManager.CompilationException {
       RenderPipeline.Builder pipelineBuilder = RenderPipeline.builder(RenderPipelines.POST_PROCESSING_SNIPPET)
          .withFragmentShader(config.fragmentShaderId())
@@ -113,162 +110,29 @@ public class PostChain implements AutoCloseable {
       RenderPipeline pipeline = pipelineBuilder.build();
       if (RenderSystem.getCompiledPipelineNullable(pipeline) == null) {
          throw new ShaderManager.CompilationException("Failed to compile post processing pipeline " + pipeline.getLocation());
-      } else {
-         List<PostPass.Input> inputs = new ArrayList<>();
-
-         label123:
-         for (PostChainConfig.Input input : config.inputs()) {
-            Objects.requireNonNull(input);
-            PostChainConfig.Input var9 = input;
-            byte var10 = 0;
-
-            while (true) {
-               label119:
-               while (true) {
-                  Throwable var47;
-                  switch (SwitchBootstraps.typeSwitch<"typeSwitch",PostChainConfig.TextureInput,PostChainConfig.TargetInput>(var9, var10)) {
-                     case 0:
-                        PostChainConfig.TextureInput var11 = (PostChainConfig.TextureInput)var9;
-                        PostChainConfig.TextureInput var55 = var11;
-
-                        try {
-                           var56 = var55.samplerName();
-                        } catch (Throwable var32) {
-                           var47 = var32;
-                           boolean var68 = false;
-                           break;
-                        }
-
-                        String var38 = var56;
-                        PostChainConfig.TextureInput var57 = var11;
-
-                        try {
-                           var58 = var57.location();
-                        } catch (Throwable var31) {
-                           var47 = var31;
-                           boolean var69 = false;
-                           break;
-                        }
-
-                        Identifier var39 = var58;
-                        PostChainConfig.TextureInput var59 = var11;
-
-                        try {
-                           var60 = var59.width();
-                        } catch (Throwable var30) {
-                           var47 = var30;
-                           boolean var70 = false;
-                           break;
-                        }
-
-                        int var40 = var60;
-                        if (true) {
-                           PostChainConfig.TextureInput var61 = var11;
-
-                           try {
-                              var62 = var61.height();
-                           } catch (Throwable var29) {
-                              var47 = var29;
-                              boolean var71 = false;
-                              break;
-                           }
-
-                           int var41 = var62;
-                           if (true) {
-                              PostChainConfig.TextureInput var63 = var11;
-
-                              try {
-                                 var64 = var63.bilinear();
-                              } catch (Throwable var28) {
-                                 var47 = var28;
-                                 boolean var72 = false;
-                                 break;
-                              }
-
-                              boolean var42 = var64;
-                              if (true) {
-                                 AbstractTexture var43 = textureManager.getTexture(var39.withPath(path -> "textures/effect/" + path + ".png"));
-                                 inputs.add(new PostPass.TextureInput(var38, var43, var40, var41, var42));
-                                 continue label123;
-                              }
-                           }
-                        }
-
-                        var10 = 1;
-                        continue;
-                     case 1:
-                        PostChainConfig.TargetInput texture = (PostChainConfig.TargetInput)var9;
-                        PostChainConfig.TargetInput var10000 = texture;
-
-                        try {
-                           var48 = var10000.samplerName();
-                        } catch (Throwable var27) {
-                           var47 = var27;
-                           boolean var10001 = false;
-                           break;
-                        }
-
-                        String var22 = var48;
-                        PostChainConfig.TargetInput var49 = texture;
-
-                        try {
-                           var50 = var49.targetId();
-                        } catch (Throwable var26) {
-                           var47 = var26;
-                           boolean var65 = false;
-                           break;
-                        }
-
-                        Identifier var44 = var50;
-                        PostChainConfig.TargetInput var51 = texture;
-
-                        try {
-                           var52 = var51.useDepthBuffer();
-                        } catch (Throwable var25) {
-                           var47 = var25;
-                           boolean var66 = false;
-                           break;
-                        }
-
-                        boolean var45 = var52;
-                        if (false) {
-                           break label119;
-                        }
-
-                        PostChainConfig.TargetInput var53 = texture;
-
-                        try {
-                           var54 = var53.bilinear();
-                        } catch (Throwable var24) {
-                           var47 = var24;
-                           boolean var67 = false;
-                           break;
-                        }
-
-                        boolean var46 = var54;
-                        if (true) {
-                           inputs.add(new PostPass.TargetInput(var22, var44, var45, var46));
-                           continue label123;
-                        }
-                        break label119;
-                     default:
-                        throw new MatchException(null, null);
-                  }
-
-                  Throwable var37 = var47;
-                  throw new MatchException(var37.toString(), var37);
-               }
-
-               var10 = 2;
-            }
-         }
-
-         return new PostPass(pipeline, config.outputTarget(), config.uniforms(), inputs);
       }
+
+      List<PostPass.Input> inputs = new ArrayList<>();
+
+      for (PostChainConfig.Input input : config.inputs()) {
+         switch (input) {
+            case PostChainConfig.TextureInput(String samplerName, Identifier location, int width, int height, boolean bilinear):
+               AbstractTexture var42 = textureManager.getTexture(location.withPath(path -> "textures/effect/" + path + ".png"));
+               inputs.add(new PostPass.TextureInput(samplerName, var42, width, height, bilinear));
+               break;
+            case PostChainConfig.TargetInput(String samplerName, Identifier targetId, boolean useDepthBuffer, boolean bilinear):
+               inputs.add(new PostPass.TargetInput(samplerName, targetId, useDepthBuffer, bilinear));
+               break;
+            default:
+               throw new MatchException(null, null);
+         }
+      }
+
+      return new PostPass(pipeline, config.outputTarget(), config.uniforms(), inputs);
    }
 
    public void addToFrame(final FrameGraphBuilder frame, final int screenWidth, final int screenHeight, final PostChain.TargetBundle providedTargets) {
-      this.projection.setSize((float)screenWidth, (float)screenHeight);
+      this.projection.setSize(screenWidth, screenHeight);
       GpuBufferSlice projectionBuffer = this.projectionMatrixBuffer.getBuffer(this.projection);
       Map<Identifier, ResourceHandle<RenderTarget>> targets = new HashMap<>(this.internalTargets.size() + this.externalTargets.size());
 
@@ -353,9 +217,8 @@ public class PostChain implements AutoCloseable {
                }
             }
 
-            @Nullable
             @Override
-            public ResourceHandle<RenderTarget> get(final Identifier id) {
+            public @Nullable ResourceHandle<RenderTarget> get(final Identifier id) {
                return id.equals(targetId) ? this.handle : null;
             }
          };
@@ -363,8 +226,7 @@ public class PostChain implements AutoCloseable {
 
       void replace(Identifier id, ResourceHandle<RenderTarget> handle);
 
-      @Nullable
-      ResourceHandle<RenderTarget> get(Identifier id);
+      @Nullable ResourceHandle<RenderTarget> get(Identifier id);
 
       default ResourceHandle<RenderTarget> getOrThrow(final Identifier id) {
          ResourceHandle<RenderTarget> handle = this.get(id);

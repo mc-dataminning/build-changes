@@ -8,17 +8,17 @@ public sealed interface EnvironmentAttributeLayer<Value>
    EnvironmentAttributeLayer.Positional,
    EnvironmentAttributeLayer.TimeBased {
    @FunctionalInterface
-   public non-sealed interface Constant<Value> extends EnvironmentAttributeLayer<Value> {
+   non-sealed interface Constant<Value> extends EnvironmentAttributeLayer<Value> {
       Value applyConstant(Value baseValue);
    }
 
    @FunctionalInterface
-   public non-sealed interface Positional<Value> extends EnvironmentAttributeLayer<Value> {
+   non-sealed interface Positional<Value> extends EnvironmentAttributeLayer<Value> {
       Value applyPositional(Value baseValue, Vec3 pos, @Nullable SpatialAttributeInterpolator biomeInterpolator);
    }
 
    @FunctionalInterface
-   public non-sealed interface TimeBased<Value> extends EnvironmentAttributeLayer<Value> {
+   non-sealed interface TimeBased<Value> extends EnvironmentAttributeLayer<Value> {
       Value applyTimeBased(Value baseValue, int cacheTickId);
    }
 }

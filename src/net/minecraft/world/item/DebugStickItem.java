@@ -53,44 +53,44 @@ public class DebugStickItem extends Item {
    ) {
       if (!player.canUseGameMasterBlocks()) {
          return false;
-      } else {
-         Holder<Block> block = state.typeHolder();
-         StateDefinition<Block, BlockState> definition = block.value().getStateDefinition();
-         Collection<Property<?>> properties = definition.getProperties();
-         if (properties.isEmpty()) {
-            message(player, Component.translatable(this.descriptionId + ".empty", block.getRegisteredName()));
-            return false;
-         } else {
-            DebugStickState debugStickState = itemStackInHand.get(DataComponents.DEBUG_STICK_STATE);
-            if (debugStickState == null) {
-               return false;
-            } else {
-               Property<?> property = debugStickState.properties().get(block);
-               if (cycle) {
-                  if (property == null) {
-                     property = properties.iterator().next();
-                  }
-
-                  BlockState newState = cycleState(state, property, player.isSecondaryUseActive());
-                  level.setBlock(pos, newState, 18);
-                  message(player, Component.translatable(this.descriptionId + ".update", property.getName(), getNameHelper(newState, property)));
-               } else {
-                  property = getRelative(properties, property, player.isSecondaryUseActive());
-                  itemStackInHand.set(DataComponents.DEBUG_STICK_STATE, debugStickState.withProperty(block, property));
-                  message(player, Component.translatable(this.descriptionId + ".select", property.getName(), getNameHelper(state, property)));
-               }
-
-               return true;
-            }
-         }
       }
+
+      Holder<Block> block = state.typeHolder();
+      StateDefinition<Block, BlockState> definition = block.value().getStateDefinition();
+      Collection<Property<?>> properties = definition.getProperties();
+      if (properties.isEmpty()) {
+         message(player, Component.translatable(this.descriptionId + ".empty", block.getRegisteredName()));
+         return false;
+      }
+
+      DebugStickState debugStickState = itemStackInHand.get(DataComponents.DEBUG_STICK_STATE);
+      if (debugStickState == null) {
+         return false;
+      }
+
+      Property<?> property = debugStickState.properties().get(block);
+      if (cycle) {
+         if (property == null) {
+            property = properties.iterator().next();
+         }
+
+         BlockState newState = cycleState(state, property, player.isSecondaryUseActive());
+         level.setBlock(pos, newState, 18);
+         message(player, Component.translatable(this.descriptionId + ".update", property.getName(), getNameHelper(newState, property)));
+      } else {
+         property = getRelative(properties, property, player.isSecondaryUseActive());
+         itemStackInHand.set(DataComponents.DEBUG_STICK_STATE, debugStickState.withProperty(block, property));
+         message(player, Component.translatable(this.descriptionId + ".select", property.getName(), getNameHelper(state, property)));
+      }
+
+      return true;
    }
 
    private static <T extends Comparable<T>> BlockState cycleState(final BlockState state, final Property<T> property, final boolean backward) {
       return state.setValue(property, getRelative(property.getPossibleValues(), state.getValue(property), backward));
    }
 
-   private static <T> T getRelative(final Iterable<T> collection, @Nullable final T current, final boolean backward) {
+   private static <T> T getRelative(final Iterable<T> collection, final @Nullable T current, final boolean backward) {
       return backward ? Util.findPreviousInIterable(collection, current) : Util.findNextInIterable(collection, current);
    }
 

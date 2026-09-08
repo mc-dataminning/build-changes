@@ -67,9 +67,9 @@ public class PoseStack {
    public void popPose() {
       if (this.lastIndex == 0) {
          throw new NoSuchElementException();
-      } else {
-         this.lastIndex--;
       }
+
+      this.lastIndex--;
    }
 
    public PoseStack.Pose last() {

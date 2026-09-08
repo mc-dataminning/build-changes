@@ -86,13 +86,11 @@ public class AdvancementTree {
       return this.nodes.values();
    }
 
-   @Nullable
-   public AdvancementNode get(final Identifier id) {
+   public @Nullable AdvancementNode get(final Identifier id) {
       return this.nodes.get(id);
    }
 
-   @Nullable
-   public AdvancementNode get(final AdvancementHolder advancement) {
+   public @Nullable AdvancementNode get(final AdvancementHolder advancement) {
       return this.nodes.get(advancement.id());
    }
 

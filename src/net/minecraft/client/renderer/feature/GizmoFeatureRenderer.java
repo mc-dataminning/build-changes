@@ -4,7 +4,6 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.font.TextRenderable;
 import net.minecraft.client.renderer.feature.submit.SubmitNode;
@@ -50,7 +49,7 @@ public class GizmoFeatureRenderer extends RenderTypeFeatureRenderer<GizmoFeature
             this.poseStack.scale(style.scale() / 16.0F, -style.scale() / 16.0F, style.scale() / 16.0F);
             float fontX;
             if (style.adjustLeft().isEmpty()) {
-               fontX = (float)(-font.width(text.text())) / 2.0F;
+               fontX = -font.width(text.text()) / 2.0F;
             } else {
                fontX = (float)(-style.adjustLeft().getAsDouble()) / style.scale();
             }
@@ -58,10 +57,6 @@ public class GizmoFeatureRenderer extends RenderTypeFeatureRenderer<GizmoFeature
             final Matrix4f pose = this.poseStack.last().pose();
             Font.PreparedText preparedText = font.prepareText(text.text(), fontX, 0.0F, style.color(), false, 0);
             preparedText.visit(new Font.GlyphVisitor() {
-               {
-                  Objects.requireNonNull(GizmoFeatureRenderer.this);
-               }
-
                @Override
                public void acceptRenderable(final TextRenderable renderable) {
                   VertexConsumer buffer = GizmoFeatureRenderer.this.getVertexBuilder(renderable.renderType(Font.DisplayMode.NORMAL));
@@ -175,7 +170,7 @@ public class GizmoFeatureRenderer extends RenderTypeFeatureRenderer<GizmoFeature
       }
    }
 
-   public static record Submit(DrawableGizmoPrimitives.Group group, CameraRenderState camera) implements SubmitNode {
+   public record Submit(DrawableGizmoPrimitives.Group group, CameraRenderState camera) implements SubmitNode {
       @Override
       public FeatureRendererType<GizmoFeatureRenderer.Submit> featureType() {
          return GizmoFeatureRenderer.TYPE;

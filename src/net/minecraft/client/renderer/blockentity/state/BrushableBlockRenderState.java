@@ -7,6 +7,5 @@ import org.jspecify.annotations.Nullable;
 public class BrushableBlockRenderState extends BlockEntityRenderState {
    public final ItemStackRenderState itemState = new ItemStackRenderState();
    public int dustProgress;
-   @Nullable
-   public Direction hitDirection;
+   public @Nullable Direction hitDirection;
 }

@@ -66,15 +66,15 @@ public class PowderSnowBlock extends Block implements BucketPickup {
                serverLevel.sendParticles(
                   ParticleTypes.SNOWFLAKE,
                   entity.getX(),
-                  (double)(pos.getY() + 1),
+                  pos.getY() + 1,
                   entity.getZ(),
                   1,
                   0.0,
                   0.0,
                   0.0,
-                  (double)(Mth.randomBetween(random, -1.0F, 1.0F) * 0.083333336F),
+                  Mth.randomBetween(random, -1.0F, 1.0F) * 0.083333336F,
                   0.05F,
-                  (double)(Mth.randomBetween(random, -1.0F, 1.0F) * 0.083333336F),
+                  Mth.randomBetween(random, -1.0F, 1.0F) * 0.083333336F,
                   ClientboundLevelParticlesPacket.RandomizationType.ALTERNATIVE
                );
             }
@@ -85,10 +85,10 @@ public class PowderSnowBlock extends Block implements BucketPickup {
       effectApplier.runBefore(
          InsideBlockEffectType.EXTINGUISH,
          e -> {
-            if (level instanceof ServerLevel serverLevelx
+            if (level instanceof ServerLevel serverLevel
                && e.isOnFire()
-               && (serverLevelx.getGameRules().get(GameRules.MOB_GRIEFING) || e instanceof Player)
-               && e.mayInteract(serverLevelx, position)) {
+               && (serverLevel.getGameRules().get(GameRules.MOB_GRIEFING) || e instanceof Player)
+               && e.mayInteract(serverLevel, position)) {
                level.destroyBlock(position, false);
             }
          }
@@ -145,7 +145,7 @@ public class PowderSnowBlock extends Block implements BucketPickup {
    }
 
    @Override
-   public ItemStack pickupBlock(@Nullable final LivingEntity user, final LevelAccessor level, final BlockPos pos, final BlockState state) {
+   public ItemStack pickupBlock(final @Nullable LivingEntity user, final LevelAccessor level, final BlockPos pos, final BlockState state) {
       level.setBlock(pos, Blocks.AIR.defaultBlockState(), 11);
       if (!level.isClientSide()) {
          level.levelEvent(2001, pos, Block.getId(state));

@@ -33,50 +33,47 @@ public class BoatItem extends Item {
       HitResult hitResult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.ANY);
       if (hitResult.getType() == HitResult.Type.MISS) {
          return InteractionResult.PASS;
+      }
+
+      Vec3 viewVector = player.getViewVector(1.0F);
+      double range = 5.0;
+      List<Entity> entities = level.getEntities(player, player.getBoundingBox().expandTowards(viewVector.scale(5.0)).inflate(1.0), EntitySelector.CAN_BE_PICKED);
+      if (!entities.isEmpty()) {
+         Vec3 from = player.getEyePosition();
+
+         for (Entity entity : entities) {
+            AABB bb = entity.getBoundingBox().inflate(entity.getPickRadius());
+            if (bb.contains(from)) {
+               return InteractionResult.PASS;
+            }
+         }
+      }
+
+      if (hitResult.getType() == HitResult.Type.BLOCK) {
+         AbstractBoat boat = this.getBoat(level, hitResult, itemStack, player);
+         if (boat == null) {
+            return InteractionResult.FAIL;
+         }
+
+         boat.setYRot(player.getYRot());
+         if (!level.noCollision(boat, boat.getBoundingBox())) {
+            return InteractionResult.FAIL;
+         }
+
+         if (!level.isClientSide()) {
+            level.addFreshEntity(boat);
+            level.gameEvent(player, GameEvent.ENTITY_PLACE, hitResult.getLocation());
+            itemStack.consume(1, player);
+         }
+
+         player.awardStat(Stats.ITEM_USED.get(this));
+         return InteractionResult.SUCCESS;
       } else {
-         Vec3 viewVector = player.getViewVector(1.0F);
-         double range = 5.0;
-         List<Entity> entities = level.getEntities(
-            player, player.getBoundingBox().expandTowards(viewVector.scale(5.0)).inflate(1.0), EntitySelector.CAN_BE_PICKED
-         );
-         if (!entities.isEmpty()) {
-            Vec3 from = player.getEyePosition();
-
-            for (Entity entity : entities) {
-               AABB bb = entity.getBoundingBox().inflate((double)entity.getPickRadius());
-               if (bb.contains(from)) {
-                  return InteractionResult.PASS;
-               }
-            }
-         }
-
-         if (hitResult.getType() == HitResult.Type.BLOCK) {
-            AbstractBoat boat = this.getBoat(level, hitResult, itemStack, player);
-            if (boat == null) {
-               return InteractionResult.FAIL;
-            } else {
-               boat.setYRot(player.getYRot());
-               if (!level.noCollision(boat, boat.getBoundingBox())) {
-                  return InteractionResult.FAIL;
-               } else {
-                  if (!level.isClientSide()) {
-                     level.addFreshEntity(boat);
-                     level.gameEvent(player, GameEvent.ENTITY_PLACE, hitResult.getLocation());
-                     itemStack.consume(1, player);
-                  }
-
-                  player.awardStat(Stats.ITEM_USED.get(this));
-                  return InteractionResult.SUCCESS;
-               }
-            }
-         } else {
-            return InteractionResult.PASS;
-         }
+         return InteractionResult.PASS;
       }
    }
 
-   @Nullable
-   private AbstractBoat getBoat(final Level level, final HitResult hitResult, final ItemStack itemStack, final Player player) {
+   private @Nullable AbstractBoat getBoat(final Level level, final HitResult hitResult, final ItemStack itemStack, final Player player) {
       AbstractBoat boat = this.entityType.create(level, EntitySpawnReason.SPAWN_ITEM_USE);
       if (boat != null) {
          Vec3 location = hitResult.getLocation();

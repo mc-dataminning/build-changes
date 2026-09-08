@@ -41,70 +41,70 @@ public class EntityFluidInteraction {
       AABB box = entity.getFluidInteractionBox();
       if (box == null) {
          return false;
-      } else {
-         int x0 = Mth.floor(box.minX);
-         int y0 = Mth.floor(box.minY);
-         int z0 = Mth.floor(box.minZ);
-         int x1 = Mth.ceil(box.maxX) - 1;
-         int y1 = Mth.ceil(box.maxY) - 1;
-         int z1 = Mth.ceil(box.maxZ) - 1;
-         if (!hasFluidAndLoaded(entity.level(), x0 - 1, y0, z0 - 1, x1 + 1, y1, z1 + 1)) {
-            return false;
-         } else {
-            double entityY = entity.getBoundingBox().minY;
-            int eyeBlockX = entity.getBlockX();
-            double eyeY = entity.getEyeY();
-            int eyeBlockZ = entity.getBlockZ();
-            Holder<Fluid> lastFluidType = null;
-            EntityFluidInteraction.Tracker tracker = null;
-            EntityFluidInteraction.CurrentAccumulator current = null;
-            BlockGetter level = entity.level();
-            BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
+      }
 
-            for (int x = x0; x <= x1; x++) {
-               for (int y = y0; y <= y1; y++) {
-                  for (int z = z0; z <= z1; z++) {
-                     mutablePos.set(x, y, z);
-                     FluidState fluidState = level.getFluidState(mutablePos);
-                     if (!fluidState.isEmpty()) {
-                        double fluidBottom = (double)mutablePos.getY();
-                        double fluidTop = fluidBottom + (double)fluidState.getHeight(level, mutablePos);
-                        if (!(fluidTop < box.minY)) {
-                           Holder<Fluid> fluidType = fluidState.typeHolder();
-                           if (fluidType != lastFluidType) {
-                              lastFluidType = fluidType;
-                              tracker = this.getOrCreateTrackerFor(fluidType);
-                              if (!ignoreCurrent) {
-                                 current = this.getCurrentAccumulatorFor(fluidType);
-                              }
-                           }
+      int x0 = Mth.floor(box.minX);
+      int y0 = Mth.floor(box.minY);
+      int z0 = Mth.floor(box.minZ);
+      int x1 = Mth.ceil(box.maxX) - 1;
+      int y1 = Mth.ceil(box.maxY) - 1;
+      int z1 = Mth.ceil(box.maxZ) - 1;
+      if (!hasFluidAndLoaded(entity.level(), x0 - 1, y0, z0 - 1, x1 + 1, y1, z1 + 1)) {
+         return false;
+      }
 
-                           if (x == eyeBlockX && z == eyeBlockZ && eyeY >= fluidBottom) {
-                              double fluidTopForCamera = fluidBottom + (double)fluidState.getHeightForCamera(level, mutablePos);
-                              if (eyeY <= fluidTopForCamera) {
-                                 tracker.eyesInside = true;
-                              }
-                           }
+      double entityY = entity.getBoundingBox().minY;
+      int eyeBlockX = entity.getBlockX();
+      double eyeY = entity.getEyeY();
+      int eyeBlockZ = entity.getBlockZ();
+      Holder<Fluid> lastFluidType = null;
+      EntityFluidInteraction.Tracker tracker = null;
+      EntityFluidInteraction.CurrentAccumulator current = null;
+      BlockGetter level = entity.level();
+      BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
 
-                           tracker.height = Math.max(fluidTop - entityY, tracker.height);
-                           if (current != null) {
-                              Vec3 flow = fluidState.getFlow(level, mutablePos);
-                              current.height = Math.max(tracker.height, current.height);
-                              if (current.height < 0.4) {
-                                 flow = flow.scale(current.height);
-                              }
-
-                              current.accumulate(flow);
-                           }
+      for (int x = x0; x <= x1; x++) {
+         for (int y = y0; y <= y1; y++) {
+            for (int z = z0; z <= z1; z++) {
+               mutablePos.set(x, y, z);
+               FluidState fluidState = level.getFluidState(mutablePos);
+               if (!fluidState.isEmpty()) {
+                  double fluidBottom = mutablePos.getY();
+                  double fluidTop = fluidBottom + fluidState.getHeight(level, mutablePos);
+                  if (!(fluidTop < box.minY)) {
+                     Holder<Fluid> fluidType = fluidState.typeHolder();
+                     if (fluidType != lastFluidType) {
+                        lastFluidType = fluidType;
+                        tracker = this.getOrCreateTrackerFor(fluidType);
+                        if (!ignoreCurrent) {
+                           current = this.getCurrentAccumulatorFor(fluidType);
                         }
+                     }
+
+                     if (x == eyeBlockX && z == eyeBlockZ && eyeY >= fluidBottom) {
+                        double fluidTopForCamera = fluidBottom + fluidState.getHeightForCamera(level, mutablePos);
+                        if (eyeY <= fluidTopForCamera) {
+                           tracker.eyesInside = true;
+                        }
+                     }
+
+                     tracker.height = Math.max(fluidTop - entityY, tracker.height);
+                     if (current != null) {
+                        Vec3 flow = fluidState.getFlow(level, mutablePos);
+                        current.height = Math.max(tracker.height, current.height);
+                        if (current.height < 0.4) {
+                           flow = flow.scale(current.height);
+                        }
+
+                        current.accumulate(flow);
                      }
                   }
                }
             }
-
-            return lastFluidType != null;
          }
       }
+
+      return lastFluidType != null;
    }
 
    private static boolean hasFluidAndLoaded(final Level level, final int x0, final int y0, final int z0, final int x1, final int y1, final int z1) {
@@ -144,13 +144,12 @@ public class EntityFluidInteraction {
          }
       }
 
-      EntityFluidInteraction.Tracker trackerx = new EntityFluidInteraction.Tracker(fluidType);
-      this.fluidTrackers.add(trackerx);
-      return trackerx;
+      EntityFluidInteraction.Tracker tracker = new EntityFluidInteraction.Tracker(fluidType);
+      this.fluidTrackers.add(tracker);
+      return tracker;
    }
 
-   @Nullable
-   private EntityFluidInteraction.CurrentAccumulator getCurrentAccumulatorFor(final Holder<Fluid> fluid) {
+   private EntityFluidInteraction.@Nullable CurrentAccumulator getCurrentAccumulatorFor(final Holder<Fluid> fluid) {
       ObjectIterator var2 = Reference2ObjectMaps.fastIterable(this.currentAccumulators).iterator();
 
       while (var2.hasNext()) {
@@ -218,7 +217,7 @@ public class EntityFluidInteraction {
             if (!(entity instanceof Player)) {
                impulse = this.accumulatedCurrent.normalize();
             } else {
-               impulse = this.accumulatedCurrent.scale(1.0 / (double)this.currentCount);
+               impulse = this.accumulatedCurrent.scale(1.0 / this.currentCount);
             }
 
             Vec3 oldMovement = entity.getDeltaMovement();
@@ -245,11 +244,11 @@ public class EntityFluidInteraction {
       public boolean reset() {
          if (this.height == 0.0 && !this.eyesInside) {
             return true;
-         } else {
-            this.height = 0.0;
-            this.eyesInside = false;
-            return false;
          }
+
+         this.height = 0.0;
+         this.eyesInside = false;
+         return false;
       }
    }
 }

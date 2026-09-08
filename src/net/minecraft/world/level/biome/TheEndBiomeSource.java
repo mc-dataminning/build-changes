@@ -12,13 +12,13 @@ import net.minecraft.resources.RegistryOps;
 public class TheEndBiomeSource extends BiomeSource {
    public static final MapCodec<TheEndBiomeSource> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               RegistryOps.retrieveElement(Biomes.THE_END),
-               RegistryOps.retrieveElement(Biomes.END_HIGHLANDS),
-               RegistryOps.retrieveElement(Biomes.END_MIDLANDS),
-               RegistryOps.retrieveElement(Biomes.SMALL_END_ISLANDS),
-               RegistryOps.retrieveElement(Biomes.END_BARRENS)
-            )
-            .apply(i, i.stable(TheEndBiomeSource::new))
+            RegistryOps.retrieveElement(Biomes.THE_END),
+            RegistryOps.retrieveElement(Biomes.END_HIGHLANDS),
+            RegistryOps.retrieveElement(Biomes.END_MIDLANDS),
+            RegistryOps.retrieveElement(Biomes.SMALL_END_ISLANDS),
+            RegistryOps.retrieveElement(Biomes.END_BARRENS)
+         )
+         .apply(i, i.stable(TheEndBiomeSource::new))
    );
    private final Holder<Biome> end;
    private final Holder<Biome> highlands;
@@ -67,12 +67,12 @@ public class TheEndBiomeSource extends BiomeSource {
       int blockZ = QuartPos.toBlock(quartZ);
       int chunkX = SectionPos.blockToSectionCoord(blockX);
       int chunkZ = SectionPos.blockToSectionCoord(blockZ);
-      if ((long)chunkX * (long)chunkX + (long)chunkZ * (long)chunkZ <= 4096L) {
+      if ((long)chunkX * chunkX + (long)chunkZ * chunkZ <= 4096L) {
          return this.end;
       } else {
          int weirdBlockX = (SectionPos.blockToSectionCoord(blockX) * 2 + 1) * 8;
          int weirdBlockZ = (SectionPos.blockToSectionCoord(blockZ) * 2 + 1) * 8;
-         double heightValue = (double)sampler.erosion().sampleValue(weirdBlockX, blockY, weirdBlockZ);
+         double heightValue = sampler.erosion().sampleValue(weirdBlockX, blockY, weirdBlockZ);
          if (heightValue > 0.25) {
             return this.highlands;
          } else if (heightValue >= -0.0625) {

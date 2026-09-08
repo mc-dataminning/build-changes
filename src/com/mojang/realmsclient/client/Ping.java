@@ -38,14 +38,14 @@ public class Ping {
             long t1 = now();
             socket.connect(sockAddr, 700);
             sum += now() - t1;
-         } catch (Exception var12) {
+         } catch (Exception ignored) {
             sum += 700L;
          } finally {
             IOUtils.closeQuietly(socket);
          }
       }
 
-      return (int)((double)sum / 5.0);
+      return (int)(sum / 5.0);
    }
 
    private static long now() {
@@ -56,7 +56,7 @@ public class Ping {
       return ping(Ping.Region.values());
    }
 
-   private static enum Region {
+   private enum Region {
       US_EAST_1("us-east-1", "ec2.us-east-1.amazonaws.com"),
       US_WEST_2("us-west-2", "ec2.us-west-2.amazonaws.com"),
       US_WEST_1("us-west-1", "ec2.us-west-1.amazonaws.com"),
@@ -69,7 +69,7 @@ public class Ping {
       private final String name;
       private final String endpoint;
 
-      private Region(final String name, final String endpoint) {
+      Region(final String name, final String endpoint) {
          this.name = name;
          this.endpoint = endpoint;
       }

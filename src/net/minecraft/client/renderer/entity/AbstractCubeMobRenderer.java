@@ -13,7 +13,7 @@ public abstract class AbstractCubeMobRenderer<T extends AbstractCubeMob, S exten
    }
 
    protected float getShadowRadius(final SlimeRenderState state) {
-      return (float)state.size * 0.25F;
+      return state.size * 0.25F;
    }
 
    protected void scale(final S state, final PoseStack poseStack) {
@@ -28,7 +28,7 @@ public abstract class AbstractCubeMobRenderer<T extends AbstractCubeMob, S exten
    }
 
    protected void applySizeAndSquish(final S state, final PoseStack poseStack) {
-      float size = (float)state.size;
+      float size = state.size;
       float ss = state.squish / (size * 0.5F + 1.0F);
       float w = 1.0F / (ss + 1.0F);
       poseStack.scale(w * size, 1.0F / w * size, w * size);

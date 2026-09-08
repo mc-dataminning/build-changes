@@ -16,6 +16,6 @@ public record Sine(Holder<ContextFloatProvider> input) implements ContextFloatPr
 
    @Override
    public float getFloatUnsafe(final LootContext context) {
-      return Mth.sin((double)this.input().value().getFloatUnsafe(context));
+      return Mth.sin(this.input().value().getFloatUnsafe(context));
    }
 }

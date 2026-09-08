@@ -31,7 +31,7 @@ public class LinkFileSystem extends FileSystem {
    }
 
    private static LinkFSPath buildPath(
-      final LinkFileSystem.DirectoryEntry entry, final LinkFileSystem fileSystem, final String selfName, @Nullable final LinkFSPath parent
+      final LinkFileSystem.DirectoryEntry entry, final LinkFileSystem fileSystem, final String selfName, final @Nullable LinkFSPath parent
    ) {
       Object2ObjectOpenHashMap<String, LinkFSPath> children = new Object2ObjectOpenHashMap();
       LinkFSPath result = new LinkFSPath(fileSystem, selfName, parent, new PathContents.DirectoryContents(children));
@@ -90,7 +90,9 @@ public class LinkFileSystem extends FileSystem {
       String joinedPath = path.collect(Collectors.joining("/"));
       if (joinedPath.equals("/")) {
          return this.root;
-      } else if (joinedPath.startsWith("/")) {
+      }
+
+      if (joinedPath.startsWith("/")) {
          LinkFSPath result = this.root;
 
          for (String segment : PATH_SPLITTER.split(joinedPath.substring(1))) {
@@ -165,10 +167,10 @@ public class LinkFileSystem extends FileSystem {
       public LinkFileSystem.Builder put(final List<String> path, final Path target) {
          if (path.isEmpty()) {
             throw new IllegalArgumentException("Path can't be empty");
-         } else {
-            int lastIndex = path.size() - 1;
-            return this.put(path.subList(0, lastIndex), path.get(lastIndex), target);
          }
+
+         int lastIndex = path.size() - 1;
+         return this.put(path.subList(0, lastIndex), path.get(lastIndex), target);
       }
 
       public FileSystem build(final String name) {
@@ -176,7 +178,7 @@ public class LinkFileSystem extends FileSystem {
       }
    }
 
-   private static record DirectoryEntry(Map<String, LinkFileSystem.DirectoryEntry> children, Map<String, Path> files) {
+   private record DirectoryEntry(Map<String, LinkFileSystem.DirectoryEntry> children, Map<String, Path> files) {
       public DirectoryEntry() {
          this(new HashMap<>(), new HashMap<>());
       }

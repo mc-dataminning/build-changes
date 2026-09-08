@@ -11,6 +11,6 @@ public record Stopwatch(long creationTime, long accumulatedElapsedTime) {
    }
 
    public double elapsedSeconds(final long currentTime) {
-      return (double)this.elapsedMilliseconds(currentTime) / 1000.0;
+      return this.elapsedMilliseconds(currentTime) / 1000.0;
    }
 }

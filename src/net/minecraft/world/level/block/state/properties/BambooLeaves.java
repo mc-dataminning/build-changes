@@ -9,7 +9,7 @@ public enum BambooLeaves implements StringRepresentable {
 
    private final String name;
 
-   private BambooLeaves(final String name) {
+   BambooLeaves(final String name) {
       this.name = name;
    }
 

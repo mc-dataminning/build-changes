@@ -3,7 +3,6 @@ package net.minecraft.network.protocol;
 import io.netty.buffer.ByteBuf;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import net.minecraft.network.ClientboundPacketListener;
@@ -19,8 +18,7 @@ public class ProtocolInfoBuilder<T extends PacketListener, B extends ByteBuf, C>
    private final ConnectionProtocol protocol;
    private final PacketFlow flow;
    private final List<ProtocolInfoBuilder.CodecEntry<T, ?, B, C>> codecs = new ArrayList<>();
-   @Nullable
-   private BundlerInfo bundlerInfo;
+   private @Nullable BundlerInfo bundlerInfo;
 
    public ProtocolInfoBuilder(final ConnectionProtocol protocol, final PacketFlow flow) {
       this.protocol = protocol;
@@ -90,10 +88,6 @@ public class ProtocolInfoBuilder<T extends PacketListener, B extends ByteBuf, C>
       final BundlerInfo bundlerInfo = this.bundlerInfo;
       final ProtocolInfo.Details details = buildDetails(this.protocol, this.flow, codecs);
       return new SimpleUnboundProtocol<T, B>() {
-         {
-            Objects.requireNonNull(ProtocolInfoBuilder.this);
-         }
-
          @Override
          public ProtocolInfo<T> bind(final Function<ByteBuf, B> contextWrapper) {
             return new ProtocolInfoBuilder.Implementation<>(
@@ -116,10 +110,6 @@ public class ProtocolInfoBuilder<T extends PacketListener, B extends ByteBuf, C>
       final BundlerInfo bundlerInfo = this.bundlerInfo;
       final ProtocolInfo.Details details = buildDetails(this.protocol, this.flow, codecs);
       return new UnboundProtocol<T, B, C>() {
-         {
-            Objects.requireNonNull(ProtocolInfoBuilder.this);
-         }
-
          @Override
          public ProtocolInfo<T> bind(final Function<ByteBuf, B> contextWrapper, final C context) {
             return new ProtocolInfoBuilder.Implementation<>(
@@ -177,7 +167,7 @@ public class ProtocolInfoBuilder<T extends PacketListener, B extends ByteBuf, C>
       return contextProtocol(id, PacketFlow.CLIENTBOUND, config);
    }
 
-   private static record CodecEntry<T extends PacketListener, P extends Packet<? super T>, B extends ByteBuf, C>(
+   private record CodecEntry<T extends PacketListener, P extends Packet<? super T>, B extends ByteBuf, C>(
       PacketType<P> type, StreamCodec<? super B, P> serializer, @Nullable CodecModifier<B, P, C> modifier
    ) {
       public void addToBuilder(final ProtocolCodecBuilder<ByteBuf, T> codecBuilder, final Function<ByteBuf, B> contextWrapper, final C context) {
@@ -193,7 +183,7 @@ public class ProtocolInfoBuilder<T extends PacketListener, B extends ByteBuf, C>
       }
    }
 
-   private static record Implementation<L extends PacketListener>(
+   private record Implementation<L extends PacketListener>(
       ConnectionProtocol id, PacketFlow flow, StreamCodec<ByteBuf, Packet<? super L>> codec, @Nullable BundlerInfo bundlerInfo
    ) implements ProtocolInfo<L> {
    }

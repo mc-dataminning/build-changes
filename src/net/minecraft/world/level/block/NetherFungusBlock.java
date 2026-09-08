@@ -55,7 +55,7 @@ public class NetherFungusBlock extends VegetationBlock implements BonemealableBl
 
    @Override
    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state, final BonemealSource source) {
-      return (double)random.nextFloat() < 0.4;
+      return random.nextFloat() < 0.4;
    }
 
    @Override

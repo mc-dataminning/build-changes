@@ -24,14 +24,13 @@ public class BlockCollisions<T> extends AbstractIterator<T> {
    private final VoxelShape entityShape;
    private final CollisionGetter collisionGetter;
    private final boolean onlySuffocatingBlocks;
-   @Nullable
-   private BlockGetter cachedBlockGetter;
+   private @Nullable BlockGetter cachedBlockGetter;
    private long cachedBlockGetterPos;
    private final BiFunction<BlockPos.MutableBlockPos, VoxelShape, T> resultProvider;
 
    public BlockCollisions(
       final CollisionGetter collisionGetter,
-      @Nullable final Entity source,
+      final @Nullable Entity source,
       final AABB box,
       final boolean onlySuffocatingBlocks,
       final BiFunction<BlockPos.MutableBlockPos, VoxelShape, T> resultProvider
@@ -62,19 +61,18 @@ public class BlockCollisions<T> extends AbstractIterator<T> {
       this.cursor = new Cursor3D(x0, y0, z0, x1, y1, z1);
    }
 
-   @Nullable
-   private BlockGetter getChunk(final int x, final int z) {
+   private @Nullable BlockGetter getChunk(final int x, final int z) {
       int chunkX = SectionPos.blockToSectionCoord(x);
       int chunkZ = SectionPos.blockToSectionCoord(z);
       long chunkPos = ChunkPos.pack(chunkX, chunkZ);
       if (this.cachedBlockGetter != null && this.cachedBlockGetterPos == chunkPos) {
          return this.cachedBlockGetter;
-      } else {
-         BlockGetter result = this.collisionGetter.getChunkForCollisions(chunkX, chunkZ);
-         this.cachedBlockGetter = result;
-         this.cachedBlockGetterPos = chunkPos;
-         return result;
       }
+
+      BlockGetter result = this.collisionGetter.getChunkForCollisions(chunkX, chunkZ);
+      this.cachedBlockGetter = result;
+      this.cachedBlockGetterPos = chunkPos;
+      return result;
    }
 
    protected T computeNext() {
@@ -93,7 +91,7 @@ public class BlockCollisions<T> extends AbstractIterator<T> {
                   && (cursorFaceType != 2 || blockState.is(Blocks.MOVING_PISTON))) {
                   VoxelShape blockShape = this.context.getCollisionShape(blockState, this.collisionGetter, this.pos);
                   if (blockShape == Shapes.block()) {
-                     if (this.box.intersects((double)x, (double)y, (double)z, (double)x + 1.0, (double)y + 1.0, (double)z + 1.0)) {
+                     if (this.box.intersects(x, y, z, x + 1.0, y + 1.0, z + 1.0)) {
                         return this.resultProvider.apply(this.pos, blockShape.move(this.pos));
                      }
                   } else {

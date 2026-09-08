@@ -41,17 +41,17 @@ public record KineticWeapon(
    public static final int HIT_FEEDBACK_TICKS = 10;
    public static final Codec<KineticWeapon> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("contact_cooldown_ticks", 10).forGetter(KineticWeapon::contactCooldownTicks),
-               ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("delay_ticks", 0).forGetter(KineticWeapon::delayTicks),
-               KineticWeapon.Condition.CODEC.optionalFieldOf("dismount_conditions").forGetter(KineticWeapon::dismountConditions),
-               KineticWeapon.Condition.CODEC.optionalFieldOf("knockback_conditions").forGetter(KineticWeapon::knockbackConditions),
-               KineticWeapon.Condition.CODEC.optionalFieldOf("damage_conditions").forGetter(KineticWeapon::damageConditions),
-               Codec.FLOAT.optionalFieldOf("forward_movement", 0.0F).forGetter(KineticWeapon::forwardMovement),
-               Codec.FLOAT.optionalFieldOf("damage_multiplier", 1.0F).forGetter(KineticWeapon::damageMultiplier),
-               SoundEvent.CODEC.optionalFieldOf("sound").forGetter(KineticWeapon::sound),
-               SoundEvent.CODEC.optionalFieldOf("hit_sound").forGetter(KineticWeapon::hitSound)
-            )
-            .apply(i, KineticWeapon::new)
+            ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("contact_cooldown_ticks", 10).forGetter(KineticWeapon::contactCooldownTicks),
+            ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("delay_ticks", 0).forGetter(KineticWeapon::delayTicks),
+            KineticWeapon.Condition.CODEC.optionalFieldOf("dismount_conditions").forGetter(KineticWeapon::dismountConditions),
+            KineticWeapon.Condition.CODEC.optionalFieldOf("knockback_conditions").forGetter(KineticWeapon::knockbackConditions),
+            KineticWeapon.Condition.CODEC.optionalFieldOf("damage_conditions").forGetter(KineticWeapon::damageConditions),
+            Codec.FLOAT.optionalFieldOf("forward_movement", 0.0F).forGetter(KineticWeapon::forwardMovement),
+            Codec.FLOAT.optionalFieldOf("damage_multiplier", 1.0F).forGetter(KineticWeapon::damageMultiplier),
+            SoundEvent.CODEC.optionalFieldOf("sound").forGetter(KineticWeapon::sound),
+            SoundEvent.CODEC.optionalFieldOf("hit_sound").forGetter(KineticWeapon::hitSound)
+         )
+         .apply(i, KineticWeapon::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, KineticWeapon> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.VAR_INT,
@@ -124,13 +124,13 @@ public record KineticWeapon(
                double targetSpeedProjection = attackerLookVector.dot(getMotion(otherEntity));
                double relativeSpeed = Math.max(0.0, attackerSpeedProjection - targetSpeedProjection);
                boolean dealsDismount = this.dismountConditions.isPresent()
-                  && this.dismountConditions.get().test(ticksUsed, attackerSpeedProjection, relativeSpeed, (double)actionFactor);
+                  && this.dismountConditions.get().test(ticksUsed, attackerSpeedProjection, relativeSpeed, actionFactor);
                boolean dealsKnockback = this.knockbackConditions.isPresent()
-                  && this.knockbackConditions.get().test(ticksUsed, attackerSpeedProjection, relativeSpeed, (double)actionFactor);
+                  && this.knockbackConditions.get().test(ticksUsed, attackerSpeedProjection, relativeSpeed, actionFactor);
                boolean dealsDamage = this.damageConditions.isPresent()
-                  && this.damageConditions.get().test(ticksUsed, attackerSpeedProjection, relativeSpeed, (double)actionFactor);
+                  && this.damageConditions.get().test(ticksUsed, attackerSpeedProjection, relativeSpeed, actionFactor);
                if (dealsDismount || dealsKnockback || dealsDamage) {
-                  float damageDealt = (float)baseMobDamage + (float)Mth.floor(relativeSpeed * (double)this.damageMultiplier);
+                  float damageDealt = (float)baseMobDamage + Mth.floor(relativeSpeed * this.damageMultiplier);
                   affected |= livingEntity.stabAttack(equipmentSlot, otherEntity, damageDealt, dealsDamage, dealsKnockback, dealsDismount);
                }
             }
@@ -145,14 +145,14 @@ public record KineticWeapon(
       }
    }
 
-   public static record Condition(int maxDurationTicks, float minSpeed, float minRelativeSpeed) {
+   public record Condition(int maxDurationTicks, float minSpeed, float minRelativeSpeed) {
       public static final Codec<KineticWeapon.Condition> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  ExtraCodecs.NON_NEGATIVE_INT.fieldOf("max_duration_ticks").forGetter(KineticWeapon.Condition::maxDurationTicks),
-                  Codec.FLOAT.optionalFieldOf("min_speed", 0.0F).forGetter(KineticWeapon.Condition::minSpeed),
-                  Codec.FLOAT.optionalFieldOf("min_relative_speed", 0.0F).forGetter(KineticWeapon.Condition::minRelativeSpeed)
-               )
-               .apply(i, KineticWeapon.Condition::new)
+               ExtraCodecs.NON_NEGATIVE_INT.fieldOf("max_duration_ticks").forGetter(KineticWeapon.Condition::maxDurationTicks),
+               Codec.FLOAT.optionalFieldOf("min_speed", 0.0F).forGetter(KineticWeapon.Condition::minSpeed),
+               Codec.FLOAT.optionalFieldOf("min_relative_speed", 0.0F).forGetter(KineticWeapon.Condition::minRelativeSpeed)
+            )
+            .apply(i, KineticWeapon.Condition::new)
       );
       public static final StreamCodec<ByteBuf, KineticWeapon.Condition> STREAM_CODEC = StreamCodec.composite(
          ByteBufCodecs.VAR_INT,
@@ -165,9 +165,7 @@ public record KineticWeapon(
       );
 
       public boolean test(final int ticksUsed, final double attackerSpeed, final double relativeSpeed, final double entityFactor) {
-         return ticksUsed <= this.maxDurationTicks
-            && attackerSpeed >= (double)this.minSpeed * entityFactor
-            && relativeSpeed >= (double)this.minRelativeSpeed * entityFactor;
+         return ticksUsed <= this.maxDurationTicks && attackerSpeed >= this.minSpeed * entityFactor && relativeSpeed >= this.minRelativeSpeed * entityFactor;
       }
 
       public static Optional<KineticWeapon.Condition> ofAttackerSpeed(final int untilTicks, final float minAttackerSpeed) {

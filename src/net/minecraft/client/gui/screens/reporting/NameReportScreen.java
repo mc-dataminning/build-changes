@@ -15,8 +15,7 @@ import org.jspecify.annotations.Nullable;
 public class NameReportScreen extends AbstractReportScreen<NameReport.Builder> {
    private static final Component TITLE = Component.translatable("gui.abuseReport.name.title");
    private static final Component COMMENT_BOX_LABEL = Component.translatable("gui.abuseReport.name.comment_box_label");
-   @Nullable
-   private MultiLineEditBox commentBox;
+   private @Nullable MultiLineEditBox commentBox;
 
    private NameReportScreen(final Screen lastScreen, final ReportingContext reportingContext, final NameReport.Builder reportBuilder) {
       super(TITLE, lastScreen, reportingContext, reportBuilder);

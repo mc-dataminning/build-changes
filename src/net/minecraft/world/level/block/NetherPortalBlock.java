@@ -121,24 +121,22 @@ public class NetherPortalBlock extends Block implements Portal {
          : 0;
    }
 
-   @Nullable
    @Override
-   public TeleportTransition getPortalDestination(final ServerLevel currentLevel, final Entity entity, final BlockPos portalEntryPos) {
+   public @Nullable TeleportTransition getPortalDestination(final ServerLevel currentLevel, final Entity entity, final BlockPos portalEntryPos) {
       ResourceKey<Level> newDimension = currentLevel.dimension() == Level.NETHER ? Level.OVERWORLD : Level.NETHER;
       ServerLevel newLevel = currentLevel.getServer().getLevel(newDimension);
       if (newLevel == null) {
          return null;
-      } else {
-         boolean toNether = newLevel.dimension() == Level.NETHER;
-         WorldBorder newWorldBorder = newLevel.getWorldBorder();
-         double teleportationScale = DimensionType.getTeleportationScale(currentLevel.dimensionType(), newLevel.dimensionType());
-         BlockPos approximateExitPos = newWorldBorder.clampToBounds(entity.getX() * teleportationScale, entity.getY(), entity.getZ() * teleportationScale);
-         return this.getExitPortal(newLevel, entity, portalEntryPos, approximateExitPos, toNether, newWorldBorder);
       }
+
+      boolean toNether = newLevel.dimension() == Level.NETHER;
+      WorldBorder newWorldBorder = newLevel.getWorldBorder();
+      double teleportationScale = DimensionType.getTeleportationScale(currentLevel.dimensionType(), newLevel.dimensionType());
+      BlockPos approximateExitPos = newWorldBorder.clampToBounds(entity.getX() * teleportationScale, entity.getY(), entity.getZ() * teleportationScale);
+      return this.getExitPortal(newLevel, entity, portalEntryPos, approximateExitPos, toNether, newWorldBorder);
    }
 
-   @Nullable
-   private TeleportTransition getExitPortal(
+   private @Nullable TeleportTransition getExitPortal(
       final ServerLevel newLevel,
       final Entity entity,
       final BlockPos portalEntryPos,
@@ -215,22 +213,22 @@ public class NetherPortalBlock extends Block implements Portal {
       BlockPos bottomLeft = foundRectangle.minCorner;
       BlockState blockState = newLevel.getBlockState(bottomLeft);
       Direction.Axis axis = blockState.getOptionalValue(BlockStateProperties.HORIZONTAL_AXIS).orElse(Direction.Axis.X);
-      double width = (double)foundRectangle.axis1Size;
-      double height = (double)foundRectangle.axis2Size;
+      double width = foundRectangle.axis1Size;
+      double height = foundRectangle.axis2Size;
       EntityDimensions dimensions = entity.getDimensions(entity.getPose());
       int outputRotation = portalAxis == axis ? 0 : 90;
-      double offsetRight = (double)dimensions.width() / 2.0 + (width - (double)dimensions.width()) * offset.x();
-      double offsetUp = (height - (double)dimensions.height()) * offset.y();
+      double offsetRight = dimensions.width() / 2.0 + (width - dimensions.width()) * offset.x();
+      double offsetUp = (height - dimensions.height()) * offset.y();
       double offsetForward = 0.5 + offset.z();
       boolean xAligned = axis == Direction.Axis.X;
       Vec3 targetPos = new Vec3(
-         (double)bottomLeft.getX() + (xAligned ? offsetRight : offsetForward),
-         (double)bottomLeft.getY() + offsetUp,
-         (double)bottomLeft.getZ() + (xAligned ? offsetForward : offsetRight)
+         bottomLeft.getX() + (xAligned ? offsetRight : offsetForward),
+         bottomLeft.getY() + offsetUp,
+         bottomLeft.getZ() + (xAligned ? offsetForward : offsetRight)
       );
       Vec3 collisionFreePos = PortalShape.findCollisionFreePosition(targetPos, newLevel, entity, dimensions);
       return new TeleportTransition(
-         newLevel, collisionFreePos, Vec3.ZERO, (float)outputRotation, 0.0F, Relative.union(Relative.DELTA, Relative.ROTATION), postTeleportTransition
+         newLevel, collisionFreePos, Vec3.ZERO, outputRotation, 0.0F, Relative.union(Relative.DELTA, Relative.ROTATION), postTeleportTransition
       );
    }
 
@@ -243,31 +241,24 @@ public class NetherPortalBlock extends Block implements Portal {
    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
       if (random.nextInt(100) == 0) {
          level.playLocalSound(
-            (double)pos.getX() + 0.5,
-            (double)pos.getY() + 0.5,
-            (double)pos.getZ() + 0.5,
-            SoundEvents.PORTAL_AMBIENT,
-            SoundSource.BLOCKS,
-            0.5F,
-            random.nextFloat() * 0.4F + 0.8F,
-            false
+            pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.PORTAL_AMBIENT, SoundSource.BLOCKS, 0.5F, random.nextFloat() * 0.4F + 0.8F, false
          );
       }
 
       for (int i = 0; i < 4; i++) {
-         double x = (double)pos.getX() + random.nextDouble();
-         double y = (double)pos.getY() + random.nextDouble();
-         double z = (double)pos.getZ() + random.nextDouble();
-         double xa = ((double)random.nextFloat() - 0.5) * 0.5;
-         double ya = ((double)random.nextFloat() - 0.5) * 0.5;
-         double za = ((double)random.nextFloat() - 0.5) * 0.5;
+         double x = pos.getX() + random.nextDouble();
+         double y = pos.getY() + random.nextDouble();
+         double z = pos.getZ() + random.nextDouble();
+         double xa = (random.nextFloat() - 0.5) * 0.5;
+         double ya = (random.nextFloat() - 0.5) * 0.5;
+         double za = (random.nextFloat() - 0.5) * 0.5;
          int flip = random.nextInt(2) * 2 - 1;
          if (!level.getBlockState(pos.west()).is(this) && !level.getBlockState(pos.east()).is(this)) {
-            x = (double)pos.getX() + 0.5 + 0.25 * (double)flip;
-            xa = (double)(random.nextFloat() * 2.0F * (float)flip);
+            x = pos.getX() + 0.5 + 0.25 * flip;
+            xa = random.nextFloat() * 2.0F * flip;
          } else {
-            z = (double)pos.getZ() + 0.5 + 0.25 * (double)flip;
-            za = (double)(random.nextFloat() * 2.0F * (float)flip);
+            z = pos.getZ() + 0.5 + 0.25 * flip;
+            za = random.nextFloat() * 2.0F * flip;
          }
 
          level.addParticle(ParticleTypes.PORTAL, x, y, z, xa, ya, za);

@@ -8,7 +8,6 @@ import net.minecraft.advancements.predicates.entity.EntityPredicate;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.ItemInstance;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.Validatable;
@@ -26,15 +25,15 @@ public class PlayerInteractTrigger extends SimpleCriterionTrigger<PlayerInteract
       this.trigger(player, t -> t.matches(itemStack, context));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<ItemPredicate> item, Optional<Holder<LootItemCondition>> entity)
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<ItemPredicate> item, Optional<Holder<LootItemCondition>> entity)
       implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<PlayerInteractTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(PlayerInteractTrigger.TriggerInstance::player),
-                  ItemPredicate.CODEC.optionalFieldOf("item").forGetter(PlayerInteractTrigger.TriggerInstance::item),
-                  LootItemCondition.CODEC.optionalFieldOf("entity").forGetter(PlayerInteractTrigger.TriggerInstance::entity)
-               )
-               .apply(i, PlayerInteractTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(PlayerInteractTrigger.TriggerInstance::player),
+               ItemPredicate.CODEC.optionalFieldOf("item").forGetter(PlayerInteractTrigger.TriggerInstance::item),
+               LootItemCondition.CODEC.optionalFieldOf("entity").forGetter(PlayerInteractTrigger.TriggerInstance::entity)
+            )
+            .apply(i, PlayerInteractTrigger.TriggerInstance::new)
       );
 
       public static Criterion<PlayerInteractTrigger.TriggerInstance> itemUsedOnEntity(
@@ -64,9 +63,7 @@ public class PlayerInteractTrigger extends SimpleCriterionTrigger<PlayerInteract
       }
 
       public boolean matches(final ItemStack itemStack, final LootContext interactedWith) {
-         return this.item.isPresent() && !this.item.get().test((ItemInstance)itemStack)
-            ? false
-            : this.entity.isEmpty() || this.entity.get().value().test(interactedWith);
+         return this.item.isPresent() && !this.item.get().test(itemStack) ? false : this.entity.isEmpty() || this.entity.get().value().test(interactedWith);
       }
 
       @Override

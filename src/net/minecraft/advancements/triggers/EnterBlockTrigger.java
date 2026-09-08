@@ -24,15 +24,15 @@ public class EnterBlockTrigger extends SimpleCriterionTrigger<EnterBlockTrigger.
       this.trigger(player, t -> t.matches(state));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<HolderSet<Block>> block, Optional<StatePropertiesPredicate> state)
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<HolderSet<Block>> block, Optional<StatePropertiesPredicate> state)
       implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<EnterBlockTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(EnterBlockTrigger.TriggerInstance::player),
-                  RegistryCodecs.holderSet(Registries.BLOCK).optionalFieldOf("blocks").forGetter(EnterBlockTrigger.TriggerInstance::block),
-                  StatePropertiesPredicate.CODEC.optionalFieldOf("state").forGetter(EnterBlockTrigger.TriggerInstance::state)
-               )
-               .apply(i, EnterBlockTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(EnterBlockTrigger.TriggerInstance::player),
+               RegistryCodecs.holderSet(Registries.BLOCK).optionalFieldOf("blocks").forGetter(EnterBlockTrigger.TriggerInstance::block),
+               StatePropertiesPredicate.CODEC.optionalFieldOf("state").forGetter(EnterBlockTrigger.TriggerInstance::state)
+            )
+            .apply(i, EnterBlockTrigger.TriggerInstance::new)
       );
 
       public static Criterion<EnterBlockTrigger.TriggerInstance> entersBlock(final HolderGetter<Block> blocks, final Block block) {

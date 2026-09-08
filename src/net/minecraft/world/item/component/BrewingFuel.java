@@ -13,10 +13,10 @@ import net.minecraft.world.level.storage.loot.providers.number.ints.ResolvableIn
 public record BrewingFuel(ResolvableInt uses, ResolvableFloat speedMultiplier) {
    public static final Codec<BrewingFuel> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ResolvableInt.CODEC.fieldOf("uses").forGetter(BrewingFuel::uses),
-               ResolvableFloat.CODEC.fieldOf("speed_multiplier").forGetter(BrewingFuel::speedMultiplier)
-            )
-            .apply(i, BrewingFuel::new)
+            ResolvableInt.CODEC.fieldOf("uses").forGetter(BrewingFuel::uses),
+            ResolvableFloat.CODEC.fieldOf("speed_multiplier").forGetter(BrewingFuel::speedMultiplier)
+         )
+         .apply(i, BrewingFuel::new)
    );
    public static final StreamCodec<ByteBuf, BrewingFuel> STREAM_CODEC = StreamCodec.composite(
       ResolvableInt.STREAM_CODEC, BrewingFuel::uses, ResolvableFloat.STREAM_CODEC, BrewingFuel::speedMultiplier, BrewingFuel::new

@@ -23,12 +23,12 @@ public class ParticleDescription {
       JsonArray texturesData = GsonHelper.getAsJsonArray(data, "textures", null);
       if (texturesData == null) {
          return new ParticleDescription(List.of());
-      } else {
-         List<Identifier> textures = Streams.stream(texturesData)
-            .map(element -> GsonHelper.convertToString(element, "texture"))
-            .map(Identifier::parse)
-            .collect(ImmutableList.toImmutableList());
-         return new ParticleDescription(textures);
       }
+
+      List<Identifier> textures = Streams.stream(texturesData)
+         .map(element -> GsonHelper.convertToString(element, "texture"))
+         .map(Identifier::parse)
+         .collect(ImmutableList.toImmutableList());
+      return new ParticleDescription(textures);
    }
 }

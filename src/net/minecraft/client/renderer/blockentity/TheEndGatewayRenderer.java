@@ -26,17 +26,17 @@ public class TheEndGatewayRenderer extends AbstractEndPortalRenderer<TheEndGatew
       final EndGatewayRenderState state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
       Level level = blockEntity.getLevel();
       if (blockEntity.isSpawning() || blockEntity.isCoolingDown() && level != null) {
          state.scale = blockEntity.isSpawning() ? blockEntity.getSpawnPercent(partialTicks) : blockEntity.getCooldownPercent(partialTicks);
-         double beamDistance = blockEntity.isSpawning() ? (double)blockEntity.getLevel().getMaxY() : 50.0;
-         state.scale = Mth.sin((double)(state.scale * (float) Math.PI));
-         state.height = Mth.floor((double)state.scale * beamDistance);
+         double beamDistance = blockEntity.isSpawning() ? blockEntity.getLevel().getMaxY() : 50.0;
+         state.scale = Mth.sin(state.scale * (float) Math.PI);
+         state.height = Mth.floor(state.scale * beamDistance);
          state.color = blockEntity.isSpawning() ? DyeColor.MAGENTA.getTextureDiffuseColor() : DyeColor.PURPLE.getTextureDiffuseColor();
-         state.animationTime = blockEntity.getLevel() != null ? (float)Math.floorMod(blockEntity.getLevel().getGameTime(), 40) + partialTicks : 0.0F;
+         state.animationTime = blockEntity.getLevel() != null ? Math.floorMod(blockEntity.getLevel().getGameTime(), 40) + partialTicks : 0.0F;
       } else {
          state.height = 0;
       }

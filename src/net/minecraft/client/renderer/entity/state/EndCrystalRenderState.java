@@ -5,6 +5,5 @@ import org.jspecify.annotations.Nullable;
 
 public class EndCrystalRenderState extends EntityRenderState {
    public boolean showsBottom = true;
-   @Nullable
-   public Vec3 beamOffset;
+   public @Nullable Vec3 beamOffset;
 }

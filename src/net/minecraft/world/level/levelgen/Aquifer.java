@@ -26,9 +26,8 @@ import org.jspecify.annotations.Nullable;
 public interface Aquifer {
    static Aquifer createDisabled(final Aquifer.FluidPicker fluidRule) {
       return new Aquifer() {
-         @Nullable
          @Override
-         public BlockState computeSubstance(final int blockX, final int blockY, final int blockZ, final double density) {
+         public @Nullable BlockState computeSubstance(final int blockX, final int blockY, final int blockZ, final double density) {
             return density > 0.0 ? null : fluidRule.computeFluid(blockX, blockY, blockZ).at(blockY);
          }
 
@@ -39,12 +38,11 @@ public interface Aquifer {
       };
    }
 
-   @Nullable
-   BlockState computeSubstance(int blockX, int blockY, int blockZ, double density);
+   @Nullable BlockState computeSubstance(int blockX, int blockY, int blockZ, double density);
 
    boolean shouldScheduleFluidUpdate();
 
-   public static record Config(
+   record Config(
       DensityFunction barrierNoise,
       DensityFunction fluidLevelFloodednessNoise,
       DensityFunction fluidLevelSpreadNoise,
@@ -54,14 +52,14 @@ public interface Aquifer {
    ) {
       public static final Codec<Aquifer.Config> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  DensityFunction.CODEC.fieldOf("barrier").forGetter(Aquifer.Config::barrierNoise),
-                  DensityFunction.CODEC.fieldOf("fluid_level_floodedness").forGetter(Aquifer.Config::fluidLevelFloodednessNoise),
-                  DensityFunction.CODEC.fieldOf("fluid_level_spread").forGetter(Aquifer.Config::fluidLevelSpreadNoise),
-                  DensityFunction.CODEC.fieldOf("lava").forGetter(Aquifer.Config::lavaNoise),
-                  DensityFunction.CODEC.fieldOf("exclusion").forGetter(Aquifer.Config::exclusion),
-                  DensityFunction.CODEC.fieldOf("surface_level").forGetter(Aquifer.Config::surfaceLevel)
-               )
-               .apply(i, Aquifer.Config::new)
+               DensityFunction.CODEC.fieldOf("barrier").forGetter(Aquifer.Config::barrierNoise),
+               DensityFunction.CODEC.fieldOf("fluid_level_floodedness").forGetter(Aquifer.Config::fluidLevelFloodednessNoise),
+               DensityFunction.CODEC.fieldOf("fluid_level_spread").forGetter(Aquifer.Config::fluidLevelSpreadNoise),
+               DensityFunction.CODEC.fieldOf("lava").forGetter(Aquifer.Config::lavaNoise),
+               DensityFunction.CODEC.fieldOf("exclusion").forGetter(Aquifer.Config::exclusion),
+               DensityFunction.CODEC.fieldOf("surface_level").forGetter(Aquifer.Config::surfaceLevel)
+            )
+            .apply(i, Aquifer.Config::new)
       );
 
       public Aquifer create(
@@ -74,17 +72,17 @@ public interface Aquifer {
       }
    }
 
-   public interface FluidPicker {
+   interface FluidPicker {
       Aquifer.FluidStatus computeFluid(final int blockX, final int blockY, final int blockZ);
    }
 
-   public static record FluidStatus(int fluidLevel, BlockState fluidType) {
+   record FluidStatus(int fluidLevel, BlockState fluidType) {
       public BlockState at(final int blockY) {
          return blockY < this.fluidLevel ? this.fluidType : Blocks.AIR.defaultBlockState();
       }
    }
 
-   public static class NoiseBasedAquifer implements Aquifer {
+   class NoiseBasedAquifer implements Aquifer {
       private static final int X_RANGE = 10;
       private static final int Y_RANGE = 9;
       private static final int Z_RANGE = 10;
@@ -112,7 +110,7 @@ public interface Aquifer {
       private final DensitySampler.Bound fluidLevelSpreadNoise;
       private final DensitySampler.Bound lavaNoise;
       private final PositionalRandomFactory positionalRandomFactory;
-      private final Aquifer.FluidStatus[] aquiferCache;
+      private final Aquifer.@Nullable FluidStatus[] aquiferCache;
       private final long[] aquiferLocationCache;
       private final Aquifer.FluidPicker globalFluidPicker;
       private final DensitySampler.Bound exclusion;
@@ -180,7 +178,6 @@ public interface Aquifer {
             maxQuartX - minQuartX + 1, 1, maxQuartZ - minQuartZ + 1, QuartPos.toBlock(minQuartX), 0, QuartPos.toBlock(minQuartZ), 4, 1, 4
          );
 
-         int var17;
          try (ScopedDensityBuffer buffer = this.surfaceLevel.sampleVolume(volume)) {
             int maxY = Integer.MIN_VALUE;
 
@@ -194,10 +191,8 @@ public interface Aquifer {
                }
             }
 
-            var17 = maxY;
+            return maxY;
          }
-
-         return var17;
       }
 
       private int getIndex(final int gridX, final int gridY, final int gridZ) {
@@ -207,147 +202,150 @@ public interface Aquifer {
          return (y * this.gridSizeZ + z) * this.gridSizeX + x;
       }
 
-      @Nullable
       @Override
-      public BlockState computeSubstance(final int blockX, final int blockY, final int blockZ, final double density) {
+      public @Nullable BlockState computeSubstance(final int blockX, final int blockY, final int blockZ, final double density) {
          if (density > 0.0) {
             this.shouldScheduleFluidUpdate = false;
             return null;
-         } else {
-            Aquifer.FluidStatus globalFluid = this.globalFluidPicker.computeFluid(blockX, blockY, blockZ);
-            if (blockY > this.skipSamplingAboveY) {
-               this.shouldScheduleFluidUpdate = false;
-               return globalFluid.at(blockY);
-            } else if (globalFluid.at(blockY).is(Blocks.LAVA)) {
-               this.shouldScheduleFluidUpdate = false;
-               return SharedConstants.DEBUG_DISABLE_FLUID_GENERATION ? Blocks.AIR.defaultBlockState() : Blocks.LAVA.defaultBlockState();
-            } else {
-               int xAnchor = gridX(blockX + -5);
-               int yAnchor = gridY(blockY + 1);
-               int zAnchor = gridZ(blockZ + -5);
-               int distanceSqr1 = Integer.MAX_VALUE;
-               int distanceSqr2 = Integer.MAX_VALUE;
-               int distanceSqr3 = Integer.MAX_VALUE;
-               int distanceSqr4 = Integer.MAX_VALUE;
-               int closestIndex1 = 0;
-               int closestIndex2 = 0;
-               int closestIndex3 = 0;
-               int closestIndex4 = 0;
+         }
 
-               for (int x1 = 0; x1 <= 1; x1++) {
-                  for (int y1 = -1; y1 <= 1; y1++) {
-                     for (int z1 = 0; z1 <= 1; z1++) {
-                        int spacedGridX = xAnchor + x1;
-                        int spacedGridY = yAnchor + y1;
-                        int spacedGridZ = zAnchor + z1;
-                        int index = this.getIndex(spacedGridX, spacedGridY, spacedGridZ);
-                        long existingLocation = this.aquiferLocationCache[index];
-                        long location;
-                        if (existingLocation != Long.MAX_VALUE) {
-                           location = existingLocation;
-                        } else {
-                           RandomSource random = this.positionalRandomFactory.at(spacedGridX, spacedGridY, spacedGridZ);
-                           location = BlockPos.asLong(
-                              fromGridX(spacedGridX, random.nextInt(10)), fromGridY(spacedGridY, random.nextInt(9)), fromGridZ(spacedGridZ, random.nextInt(10))
-                           );
-                           this.aquiferLocationCache[index] = location;
-                        }
+         Aquifer.FluidStatus globalFluid = this.globalFluidPicker.computeFluid(blockX, blockY, blockZ);
+         if (blockY > this.skipSamplingAboveY) {
+            this.shouldScheduleFluidUpdate = false;
+            return globalFluid.at(blockY);
+         }
 
-                        int dx = BlockPos.getX(location) - blockX;
-                        int dy = BlockPos.getY(location) - blockY;
-                        int dz = BlockPos.getZ(location) - blockZ;
-                        int newDistance = dx * dx + dy * dy + dz * dz;
-                        if (distanceSqr1 >= newDistance) {
-                           closestIndex4 = closestIndex3;
-                           closestIndex3 = closestIndex2;
-                           closestIndex2 = closestIndex1;
-                           closestIndex1 = index;
-                           distanceSqr4 = distanceSqr3;
-                           distanceSqr3 = distanceSqr2;
-                           distanceSqr2 = distanceSqr1;
-                           distanceSqr1 = newDistance;
-                        } else if (distanceSqr2 >= newDistance) {
-                           closestIndex4 = closestIndex3;
-                           closestIndex3 = closestIndex2;
-                           closestIndex2 = index;
-                           distanceSqr4 = distanceSqr3;
-                           distanceSqr3 = distanceSqr2;
-                           distanceSqr2 = newDistance;
-                        } else if (distanceSqr3 >= newDistance) {
-                           closestIndex4 = closestIndex3;
-                           closestIndex3 = index;
-                           distanceSqr4 = distanceSqr3;
-                           distanceSqr3 = newDistance;
-                        } else if (distanceSqr4 >= newDistance) {
-                           closestIndex4 = index;
-                           distanceSqr4 = newDistance;
-                        }
-                     }
-                  }
-               }
+         if (globalFluid.at(blockY).is(Blocks.LAVA)) {
+            this.shouldScheduleFluidUpdate = false;
+            return SharedConstants.DEBUG_DISABLE_FLUID_GENERATION ? Blocks.AIR.defaultBlockState() : Blocks.LAVA.defaultBlockState();
+         }
 
-               Aquifer.FluidStatus closestStatus1 = this.getAquiferStatus(closestIndex1);
-               double similarity12 = similarity(distanceSqr1, distanceSqr2);
-               BlockState fluidState = closestStatus1.at(blockY);
-               BlockState actualFluidState = SharedConstants.DEBUG_DISABLE_FLUID_GENERATION ? Blocks.AIR.defaultBlockState() : fluidState;
-               if (similarity12 <= 0.0) {
-                  if (similarity12 >= FLOWING_UPDATE_SIMULARITY) {
-                     Aquifer.FluidStatus closestStatus2 = this.getAquiferStatus(closestIndex2);
-                     this.shouldScheduleFluidUpdate = !closestStatus1.equals(closestStatus2);
+         int xAnchor = gridX(blockX + -5);
+         int yAnchor = gridY(blockY + 1);
+         int zAnchor = gridZ(blockZ + -5);
+         int distanceSqr1 = Integer.MAX_VALUE;
+         int distanceSqr2 = Integer.MAX_VALUE;
+         int distanceSqr3 = Integer.MAX_VALUE;
+         int distanceSqr4 = Integer.MAX_VALUE;
+         int closestIndex1 = 0;
+         int closestIndex2 = 0;
+         int closestIndex3 = 0;
+         int closestIndex4 = 0;
+
+         for (int x1 = 0; x1 <= 1; x1++) {
+            for (int y1 = -1; y1 <= 1; y1++) {
+               for (int z1 = 0; z1 <= 1; z1++) {
+                  int spacedGridX = xAnchor + x1;
+                  int spacedGridY = yAnchor + y1;
+                  int spacedGridZ = zAnchor + z1;
+                  int index = this.getIndex(spacedGridX, spacedGridY, spacedGridZ);
+                  long existingLocation = this.aquiferLocationCache[index];
+                  long location;
+                  if (existingLocation != Long.MAX_VALUE) {
+                     location = existingLocation;
                   } else {
-                     this.shouldScheduleFluidUpdate = false;
+                     RandomSource random = this.positionalRandomFactory.at(spacedGridX, spacedGridY, spacedGridZ);
+                     location = BlockPos.asLong(
+                        fromGridX(spacedGridX, random.nextInt(10)), fromGridY(spacedGridY, random.nextInt(9)), fromGridZ(spacedGridZ, random.nextInt(10))
+                     );
+                     this.aquiferLocationCache[index] = location;
                   }
 
-                  return actualFluidState;
-               } else if (fluidState.is(Blocks.WATER) && this.globalFluidPicker.computeFluid(blockX, blockY - 1, blockZ).at(blockY - 1).is(Blocks.LAVA)) {
-                  this.shouldScheduleFluidUpdate = true;
-                  return actualFluidState;
-               } else {
-                  MutableDouble barrierNoiseValue = new MutableDouble(Double.NaN);
-                  Aquifer.FluidStatus closestStatus2 = this.getAquiferStatus(closestIndex2);
-                  double barrier12 = similarity12 * this.calculatePressure(blockX, blockY, blockZ, barrierNoiseValue, closestStatus1, closestStatus2);
-                  if (density + barrier12 > 0.0) {
-                     this.shouldScheduleFluidUpdate = false;
-                     return null;
-                  } else {
-                     Aquifer.FluidStatus closestStatus3 = this.getAquiferStatus(closestIndex3);
-                     double similarity13 = similarity(distanceSqr1, distanceSqr3);
-                     if (similarity13 > 0.0) {
-                        double barrier13 = similarity12
-                           * similarity13
-                           * this.calculatePressure(blockX, blockY, blockZ, barrierNoiseValue, closestStatus1, closestStatus3);
-                        if (density + barrier13 > 0.0) {
-                           this.shouldScheduleFluidUpdate = false;
-                           return null;
-                        }
-                     }
-
-                     double similarity23 = similarity(distanceSqr2, distanceSqr3);
-                     if (similarity23 > 0.0) {
-                        double barrier23 = similarity12
-                           * similarity23
-                           * this.calculatePressure(blockX, blockY, blockZ, barrierNoiseValue, closestStatus2, closestStatus3);
-                        if (density + barrier23 > 0.0) {
-                           this.shouldScheduleFluidUpdate = false;
-                           return null;
-                        }
-                     }
-
-                     boolean mayFlow12 = !closestStatus1.equals(closestStatus2);
-                     boolean mayFlow23 = similarity23 >= FLOWING_UPDATE_SIMULARITY && !closestStatus2.equals(closestStatus3);
-                     boolean mayFlow13 = similarity13 >= FLOWING_UPDATE_SIMULARITY && !closestStatus1.equals(closestStatus3);
-                     if (!mayFlow12 && !mayFlow23 && !mayFlow13) {
-                        this.shouldScheduleFluidUpdate = similarity13 >= FLOWING_UPDATE_SIMULARITY
-                           && similarity(distanceSqr1, distanceSqr4) >= FLOWING_UPDATE_SIMULARITY
-                           && !closestStatus1.equals(this.getAquiferStatus(closestIndex4));
-                     } else {
-                        this.shouldScheduleFluidUpdate = true;
-                     }
-
-                     return actualFluidState;
+                  int dx = BlockPos.getX(location) - blockX;
+                  int dy = BlockPos.getY(location) - blockY;
+                  int dz = BlockPos.getZ(location) - blockZ;
+                  int newDistance = dx * dx + dy * dy + dz * dz;
+                  if (distanceSqr1 >= newDistance) {
+                     closestIndex4 = closestIndex3;
+                     closestIndex3 = closestIndex2;
+                     closestIndex2 = closestIndex1;
+                     closestIndex1 = index;
+                     distanceSqr4 = distanceSqr3;
+                     distanceSqr3 = distanceSqr2;
+                     distanceSqr2 = distanceSqr1;
+                     distanceSqr1 = newDistance;
+                  } else if (distanceSqr2 >= newDistance) {
+                     closestIndex4 = closestIndex3;
+                     closestIndex3 = closestIndex2;
+                     closestIndex2 = index;
+                     distanceSqr4 = distanceSqr3;
+                     distanceSqr3 = distanceSqr2;
+                     distanceSqr2 = newDistance;
+                  } else if (distanceSqr3 >= newDistance) {
+                     closestIndex4 = closestIndex3;
+                     closestIndex3 = index;
+                     distanceSqr4 = distanceSqr3;
+                     distanceSqr3 = newDistance;
+                  } else if (distanceSqr4 >= newDistance) {
+                     closestIndex4 = index;
+                     distanceSqr4 = newDistance;
                   }
                }
             }
+         }
+
+         Aquifer.FluidStatus closestStatus1 = this.getAquiferStatus(closestIndex1);
+         double similarity12 = similarity(distanceSqr1, distanceSqr2);
+         BlockState fluidState = closestStatus1.at(blockY);
+         BlockState actualFluidState = SharedConstants.DEBUG_DISABLE_FLUID_GENERATION ? Blocks.AIR.defaultBlockState() : fluidState;
+         if (similarity12 <= 0.0) {
+            if (similarity12 >= FLOWING_UPDATE_SIMULARITY) {
+               Aquifer.FluidStatus closestStatus2 = this.getAquiferStatus(closestIndex2);
+               this.shouldScheduleFluidUpdate = !closestStatus1.equals(closestStatus2);
+            } else {
+               this.shouldScheduleFluidUpdate = false;
+            }
+
+            return actualFluidState;
+         } else {
+            if (fluidState.is(Blocks.WATER) && this.globalFluidPicker.computeFluid(blockX, blockY - 1, blockZ).at(blockY - 1).is(Blocks.LAVA)) {
+               this.shouldScheduleFluidUpdate = true;
+               return actualFluidState;
+            }
+
+            MutableDouble barrierNoiseValue = new MutableDouble(Double.NaN);
+            Aquifer.FluidStatus closestStatus2 = this.getAquiferStatus(closestIndex2);
+            double barrier12 = similarity12 * this.calculatePressure(blockX, blockY, blockZ, barrierNoiseValue, closestStatus1, closestStatus2);
+            if (density + barrier12 > 0.0) {
+               this.shouldScheduleFluidUpdate = false;
+               return null;
+            }
+
+            Aquifer.FluidStatus closestStatus3 = this.getAquiferStatus(closestIndex3);
+            double similarity13 = similarity(distanceSqr1, distanceSqr3);
+            if (similarity13 > 0.0) {
+               double barrier13 = similarity12
+                  * similarity13
+                  * this.calculatePressure(blockX, blockY, blockZ, barrierNoiseValue, closestStatus1, closestStatus3);
+               if (density + barrier13 > 0.0) {
+                  this.shouldScheduleFluidUpdate = false;
+                  return null;
+               }
+            }
+
+            double similarity23 = similarity(distanceSqr2, distanceSqr3);
+            if (similarity23 > 0.0) {
+               double barrier23 = similarity12
+                  * similarity23
+                  * this.calculatePressure(blockX, blockY, blockZ, barrierNoiseValue, closestStatus2, closestStatus3);
+               if (density + barrier23 > 0.0) {
+                  this.shouldScheduleFluidUpdate = false;
+                  return null;
+               }
+            }
+
+            boolean mayFlow12 = !closestStatus1.equals(closestStatus2);
+            boolean mayFlow23 = similarity23 >= FLOWING_UPDATE_SIMULARITY && !closestStatus2.equals(closestStatus3);
+            boolean mayFlow13 = similarity13 >= FLOWING_UPDATE_SIMULARITY && !closestStatus1.equals(closestStatus3);
+            if (!mayFlow12 && !mayFlow23 && !mayFlow13) {
+               this.shouldScheduleFluidUpdate = similarity13 >= FLOWING_UPDATE_SIMULARITY
+                  && similarity(distanceSqr1, distanceSqr4) >= FLOWING_UPDATE_SIMULARITY
+                  && !closestStatus1.equals(this.getAquiferStatus(closestIndex4));
+            } else {
+               this.shouldScheduleFluidUpdate = true;
+            }
+
+            return actualFluidState;
          }
       }
 
@@ -358,7 +356,7 @@ public interface Aquifer {
 
       private static double similarity(final int distanceSqr1, final int distanceSqr2) {
          double threshold = 25.0;
-         return 1.0 - (double)(distanceSqr2 - distanceSqr1) / 25.0;
+         return 1.0 - (distanceSqr2 - distanceSqr1) / 25.0;
       }
 
       private double calculatePressure(
@@ -375,51 +373,51 @@ public interface Aquifer {
             int fluidYDiff = Math.abs(statusClosest1.fluidLevel - statusClosest2.fluidLevel);
             if (fluidYDiff == 0) {
                return 0.0;
-            } else {
-               double averageFluidY = 0.5 * (double)(statusClosest1.fluidLevel + statusClosest2.fluidLevel);
-               double howFarAboveAverageFluidPoint = (double)blockY + 0.5 - averageFluidY;
-               double baseValue = (double)fluidYDiff / 2.0;
-               double topBias = 0.0;
-               double furthestRocksFromTopBias = 2.5;
-               double furthestHolesFromTopBias = 1.5;
-               double bottomBias = 3.0;
-               double furthestRocksFromBottomBias = 10.0;
-               double furthestHolesFromBottomBias = 3.0;
-               double distanceFromBarrierEdgeTowardsMiddle = baseValue - Math.abs(howFarAboveAverageFluidPoint);
-               double gradient;
-               if (howFarAboveAverageFluidPoint > 0.0) {
-                  double centerPoint = 0.0 + distanceFromBarrierEdgeTowardsMiddle;
-                  if (centerPoint > 0.0) {
-                     gradient = centerPoint / 1.5;
-                  } else {
-                     gradient = centerPoint / 2.5;
-                  }
-               } else {
-                  double centerPoint = 3.0 + distanceFromBarrierEdgeTowardsMiddle;
-                  if (centerPoint > 0.0) {
-                     gradient = centerPoint / 3.0;
-                  } else {
-                     gradient = centerPoint / 10.0;
-                  }
-               }
-
-               double amplitude = 2.0;
-               double noiseValue;
-               if (!(gradient < -2.0) && !(gradient > 2.0)) {
-                  double currentNoiseValue = barrierNoiseValue.doubleValue();
-                  if (Double.isNaN(currentNoiseValue)) {
-                     double barrierNoise = (double)this.barrierNoise.sampleValue(blockX, blockY, blockZ);
-                     barrierNoiseValue.setValue(barrierNoise);
-                     noiseValue = barrierNoise;
-                  } else {
-                     noiseValue = currentNoiseValue;
-                  }
-               } else {
-                  noiseValue = 0.0;
-               }
-
-               return 2.0 * (noiseValue + gradient);
             }
+
+            double averageFluidY = 0.5 * (statusClosest1.fluidLevel + statusClosest2.fluidLevel);
+            double howFarAboveAverageFluidPoint = blockY + 0.5 - averageFluidY;
+            double baseValue = fluidYDiff / 2.0;
+            double topBias = 0.0;
+            double furthestRocksFromTopBias = 2.5;
+            double furthestHolesFromTopBias = 1.5;
+            double bottomBias = 3.0;
+            double furthestRocksFromBottomBias = 10.0;
+            double furthestHolesFromBottomBias = 3.0;
+            double distanceFromBarrierEdgeTowardsMiddle = baseValue - Math.abs(howFarAboveAverageFluidPoint);
+            double gradient;
+            if (howFarAboveAverageFluidPoint > 0.0) {
+               double centerPoint = 0.0 + distanceFromBarrierEdgeTowardsMiddle;
+               if (centerPoint > 0.0) {
+                  gradient = centerPoint / 1.5;
+               } else {
+                  gradient = centerPoint / 2.5;
+               }
+            } else {
+               double centerPoint = 3.0 + distanceFromBarrierEdgeTowardsMiddle;
+               if (centerPoint > 0.0) {
+                  gradient = centerPoint / 3.0;
+               } else {
+                  gradient = centerPoint / 10.0;
+               }
+            }
+
+            double amplitude = 2.0;
+            double noiseValue;
+            if (!(gradient < -2.0) && !(gradient > 2.0)) {
+               double currentNoiseValue = barrierNoiseValue.doubleValue();
+               if (Double.isNaN(currentNoiseValue)) {
+                  double barrierNoise = this.barrierNoise.sampleValue(blockX, blockY, blockZ);
+                  barrierNoiseValue.setValue(barrierNoise);
+                  noiseValue = barrierNoise;
+               } else {
+                  noiseValue = currentNoiseValue;
+               }
+            } else {
+               noiseValue = 0.0;
+            }
+
+            return 2.0 * (noiseValue + gradient);
          } else {
             return 2.0;
          }
@@ -453,12 +451,12 @@ public interface Aquifer {
          Aquifer.FluidStatus oldStatus = this.aquiferCache[index];
          if (oldStatus != null) {
             return oldStatus;
-         } else {
-            long location = this.aquiferLocationCache[index];
-            Aquifer.FluidStatus status = this.computeFluid(BlockPos.getX(location), BlockPos.getY(location), BlockPos.getZ(location));
-            this.aquiferCache[index] = status;
-            return status;
          }
+
+         long location = this.aquiferLocationCache[index];
+         Aquifer.FluidStatus status = this.computeFluid(BlockPos.getX(location), BlockPos.getY(location), BlockPos.getZ(location));
+         this.aquiferCache[index] = status;
+         return status;
       }
 
       private Aquifer.FluidStatus computeFluid(final int x, final int y, final int z) {
@@ -513,14 +511,14 @@ public interface Aquifer {
       ) {
          double partiallyFloodedness;
          double fullyFloodidness;
-         if ((double)this.exclusion.sampleValue(x, y, z) > 0.0) {
+         if (this.exclusion.sampleValue(x, y, z) > 0.0) {
             partiallyFloodedness = -1.0;
             fullyFloodidness = -1.0;
          } else {
             int distanceBelowSurface = this.adjustSurfaceLevel(lowestSurfaceLevel) - y;
             int floodednessMaxDepth = 64;
-            double floodednessFactor = surfaceAtCenterIsUnderGlobalFluidLevel ? Mth.clampedMap((double)distanceBelowSurface, 0.0, 64.0, 1.0, 0.0) : 0.0;
-            double floodednessNoiseValue = Mth.clamp((double)this.fluidLevelFloodednessNoise.sampleValue(x, y, z), -1.0, 1.0);
+            double floodednessFactor = surfaceAtCenterIsUnderGlobalFluidLevel ? Mth.clampedMap(distanceBelowSurface, 0.0, 64.0, 1.0, 0.0) : 0.0;
+            double floodednessNoiseValue = Mth.clamp(this.fluidLevelFloodednessNoise.sampleValue(x, y, z), -1.0, 1.0);
             double fullyFloodedThreshold = Mth.map(floodednessFactor, 1.0, 0.0, -0.3, 0.8);
             double partiallyFloodedThreshold = Mth.map(floodednessFactor, 1.0, 0.0, -0.8, 0.4);
             partiallyFloodedness = floodednessNoiseValue - partiallyFloodedThreshold;
@@ -547,7 +545,7 @@ public interface Aquifer {
          int fluidLevelCellZ = Math.floorDiv(z, 16);
          int fluidCellMiddleY = fluidLevelCellY * 40 + 20;
          int maxSpread = 10;
-         double fluidLevelSpread = (double)(this.fluidLevelSpreadNoise.sampleValue(fluidLevelCellX, fluidLevelCellY, fluidLevelCellZ) * 10.0F);
+         double fluidLevelSpread = this.fluidLevelSpreadNoise.sampleValue(fluidLevelCellX, fluidLevelCellY, fluidLevelCellZ) * 10.0F;
          int fluidLevelSpreadQuantized = Mth.quantize(fluidLevelSpread, 3);
          int targetFluidSurfaceLevel = fluidCellMiddleY + fluidLevelSpreadQuantized;
          return Math.min(lowestSurfaceLevel, targetFluidSurfaceLevel);
@@ -561,7 +559,7 @@ public interface Aquifer {
             int fluidTypeCellX = Math.floorDiv(x, 64);
             int fluidTypeCellY = Math.floorDiv(y, 40);
             int fluidTypeCellZ = Math.floorDiv(z, 64);
-            double lavaNoiseValue = (double)this.lavaNoise.sampleValue(fluidTypeCellX, fluidTypeCellY, fluidTypeCellZ);
+            double lavaNoiseValue = this.lavaNoise.sampleValue(fluidTypeCellX, fluidTypeCellY, fluidTypeCellZ);
             if (Math.abs(lavaNoiseValue) > 0.3) {
                fluidType = Blocks.LAVA.defaultBlockState();
             }

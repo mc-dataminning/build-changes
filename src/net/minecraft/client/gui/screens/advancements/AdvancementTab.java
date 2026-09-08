@@ -34,8 +34,7 @@ public class AdvancementTab {
    private int maxY = Integer.MIN_VALUE;
    private float fade;
    private boolean centered;
-   @Nullable
-   private AdvancementWidget hovered;
+   private @Nullable AdvancementWidget hovered;
 
    public AdvancementTab(
       final Minecraft minecraft,
@@ -124,14 +123,14 @@ public class AdvancementTab {
 
    public void extractContents(final GuiGraphicsExtractor graphics, final int windowLeft, final int windowTop) {
       if (!this.centered) {
-         this.scrollX = (double)(117 - (this.maxX + this.minX) / 2);
-         this.scrollY = (double)(56 - (this.maxY + this.minY) / 2);
+         this.scrollX = 117 - (this.maxX + this.minX) / 2;
+         this.scrollY = 56 - (this.maxY + this.minY) / 2;
          this.centered = true;
       }
 
       graphics.enableScissor(windowLeft, windowTop, windowLeft + 234, windowTop + 113);
       graphics.pose().pushMatrix();
-      graphics.pose().translate((float)windowLeft, (float)windowTop);
+      graphics.pose().translate(windowLeft, windowTop);
       int intScrollX = Mth.floor(this.scrollX);
       int intScrollY = Mth.floor(this.scrollY);
       int left = intScrollX % 16;
@@ -163,38 +162,37 @@ public class AdvancementTab {
       return this.type.isMouseOver(xo, yo, this.index, mx, my);
    }
 
-   @Nullable
-   public static AdvancementTab create(final Minecraft minecraft, final AdvancementsScreen screen, int index, final AdvancementNode root) {
+   public static @Nullable AdvancementTab create(final Minecraft minecraft, final AdvancementsScreen screen, int index, final AdvancementNode root) {
       AdvancementWidget rootWidget = AdvancementWidget.createWidget(minecraft, root);
       if (rootWidget == null) {
          return null;
-      } else {
-         DisplayInfo rootDisplay = rootWidget.getDisplay();
-         if (rootDisplay.background().isEmpty()) {
-            return null;
-         } else {
-            Identifier background = rootDisplay.background().get().texturePath();
-
-            for (AdvancementTabType type : AdvancementTabType.values()) {
-               if (index < type.getMax()) {
-                  return new AdvancementTab(minecraft, screen, type, index, rootWidget, rootDisplay.icon(), rootDisplay.title(), background);
-               }
-
-               index -= type.getMax();
-            }
-
-            return null;
-         }
       }
+
+      DisplayInfo rootDisplay = rootWidget.getDisplay();
+      if (rootDisplay.background().isEmpty()) {
+         return null;
+      }
+
+      Identifier background = rootDisplay.background().get().texturePath();
+
+      for (AdvancementTabType type : AdvancementTabType.values()) {
+         if (index < type.getMax()) {
+            return new AdvancementTab(minecraft, screen, type, index, rootWidget, rootDisplay.icon(), rootDisplay.title(), background);
+         }
+
+         index -= type.getMax();
+      }
+
+      return null;
    }
 
    public void scroll(final double x, final double y) {
       if (this.canScrollHorizontally()) {
-         this.scrollX = Mth.clamp(this.scrollX + x, (double)(-(this.maxX - 234)), 0.0);
+         this.scrollX = Mth.clamp(this.scrollX + x, -(this.maxX - 234), 0.0);
       }
 
       if (this.canScrollVertically()) {
-         this.scrollY = Mth.clamp(this.scrollY + y, (double)(-(this.maxY - 113)), 0.0);
+         this.scrollY = Mth.clamp(this.scrollY + y, -(this.maxY - 113), 0.0);
       }
    }
 
@@ -229,8 +227,7 @@ public class AdvancementTab {
       }
    }
 
-   @Nullable
-   public AdvancementWidget getWidget(final AdvancementHolder advancement) {
+   public @Nullable AdvancementWidget getWidget(final AdvancementHolder advancement) {
       return this.widgets.get(advancement);
    }
 

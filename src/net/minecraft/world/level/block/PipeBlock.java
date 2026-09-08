@@ -36,8 +36,8 @@ public abstract class PipeBlock extends Block {
    }
 
    private Function<BlockState, VoxelShape> makeShapes(final float size) {
-      VoxelShape core = Block.cube((double)size);
-      Map<Direction, VoxelShape> shapes = Shapes.rotateAll(Block.boxZ((double)size, 0.0, 8.0));
+      VoxelShape core = Block.cube(size);
+      Map<Direction, VoxelShape> shapes = Shapes.rotateAll(Block.boxZ(size, 0.0, 8.0));
       return this.getShapeForEachState(state -> {
          VoxelShape shape = core;
 

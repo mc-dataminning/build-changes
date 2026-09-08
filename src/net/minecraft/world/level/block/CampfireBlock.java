@@ -68,12 +68,7 @@ public class CampfireBlock extends BaseEntityBlock implements SimpleWaterloggedB
       this.spawnParticles = spawnParticles;
       this.fireDamage = fireDamage;
       this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(LIT, Boolean.valueOf(true))
-            .setValue(SIGNAL_FIRE, Boolean.valueOf(false))
-            .setValue(WATERLOGGED, Boolean.valueOf(false))
-            .setValue(FACING, Direction.NORTH)
+         this.stateDefinition.any().setValue(LIT, true).setValue(SIGNAL_FIRE, false).setValue(WATERLOGGED, false).setValue(FACING, Direction.NORTH)
       );
    }
 
@@ -105,7 +100,8 @@ public class CampfireBlock extends BaseEntityBlock implements SimpleWaterloggedB
          }
 
          douse(player, level, pos, state);
-         level.setBlockAndUpdate(pos, state.setValue(LIT, Boolean.valueOf(false)));
+         level.setBlockAndUpdate(pos, state.setValue(LIT, false));
+         itemStack.hurtAndBreak(1, player, hand.asEquipmentSlot());
          return InteractionResult.SUCCESS;
       } else {
          return InteractionResult.TRY_WITH_EMPTY_HAND;
@@ -117,22 +113,21 @@ public class CampfireBlock extends BaseEntityBlock implements SimpleWaterloggedB
       final BlockState state, final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier, final boolean isPrecise
    ) {
       if (state.getValue(LIT) && entity instanceof LivingEntity) {
-         entity.hurt(level.damageSources().campfire(), (float)this.fireDamage);
+         entity.hurt(level.damageSources().campfire(), this.fireDamage);
       }
 
       super.entityInside(state, level, pos, entity, effectApplier, isPrecise);
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       LevelAccessor level = context.getLevel();
       BlockPos pos = context.getClickedPos();
       boolean replacedWater = level.getFluidState(pos).is(Fluids.WATER);
       return this.defaultBlockState()
-         .setValue(WATERLOGGED, Boolean.valueOf(replacedWater))
-         .setValue(SIGNAL_FIRE, Boolean.valueOf(this.isSmokeSource(level.getBlockState(pos.below()))))
-         .setValue(LIT, Boolean.valueOf(!replacedWater))
+         .setValue(WATERLOGGED, replacedWater)
+         .setValue(SIGNAL_FIRE, this.isSmokeSource(level.getBlockState(pos.below())))
+         .setValue(LIT, !replacedWater)
          .setValue(FACING, context.getHorizontalDirection());
    }
 
@@ -152,7 +147,7 @@ public class CampfireBlock extends BaseEntityBlock implements SimpleWaterloggedB
       }
 
       return directionToNeighbour == Direction.DOWN
-         ? state.setValue(SIGNAL_FIRE, Boolean.valueOf(this.isSmokeSource(neighbourState)))
+         ? state.setValue(SIGNAL_FIRE, this.isSmokeSource(neighbourState))
          : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
    }
 
@@ -170,9 +165,9 @@ public class CampfireBlock extends BaseEntityBlock implements SimpleWaterloggedB
       if (state.getValue(LIT)) {
          if (random.nextInt(10) == 0) {
             level.playLocalSound(
-               (double)pos.getX() + 0.5,
-               (double)pos.getY() + 0.5,
-               (double)pos.getZ() + 0.5,
+               pos.getX() + 0.5,
+               pos.getY() + 0.5,
+               pos.getZ() + 0.5,
                SoundEvents.CAMPFIRE_CRACKLE,
                SoundSource.BLOCKS,
                0.5F + random.nextFloat(),
@@ -184,20 +179,14 @@ public class CampfireBlock extends BaseEntityBlock implements SimpleWaterloggedB
          if (this.spawnParticles && random.nextInt(5) == 0) {
             for (int i = 0; i < random.nextInt(1) + 1; i++) {
                level.addParticle(
-                  ParticleTypes.LAVA,
-                  (double)pos.getX() + 0.5,
-                  (double)pos.getY() + 0.5,
-                  (double)pos.getZ() + 0.5,
-                  (double)(random.nextFloat() / 2.0F),
-                  5.0E-5,
-                  (double)(random.nextFloat() / 2.0F)
+                  ParticleTypes.LAVA, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, random.nextFloat() / 2.0F, 5.0E-5, random.nextFloat() / 2.0F
                );
             }
          }
       }
    }
 
-   public static void douse(@Nullable final Entity source, final LevelAccessor level, final BlockPos pos, final BlockState state) {
+   public static void douse(final @Nullable Entity source, final LevelAccessor level, final BlockPos pos, final BlockState state) {
       if (level.isClientSide()) {
          for (int j = 0; j < 20; j++) {
             makeParticles((Level)level, pos, state.getValue(SIGNAL_FIRE), true);
@@ -219,7 +208,7 @@ public class CampfireBlock extends BaseEntityBlock implements SimpleWaterloggedB
             douse(null, level, pos, state);
          }
 
-         level.setBlockAndUpdate(pos, state.setValue(WATERLOGGED, Boolean.valueOf(true)).setValue(LIT, Boolean.valueOf(false)));
+         level.setBlockAndUpdate(pos, state.setValue(WATERLOGGED, true).setValue(LIT, false));
          level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));
          return true;
       } else {
@@ -235,7 +224,7 @@ public class CampfireBlock extends BaseEntityBlock implements SimpleWaterloggedB
          && projectile.mayInteract(serverLevel, pos)
          && !state.getValue(LIT)
          && !state.getValue(WATERLOGGED)) {
-         level.setBlock(pos, state.setValue(BlockStateProperties.LIT, Boolean.valueOf(true)), 11);
+         level.setBlock(pos, state.setValue(BlockStateProperties.LIT, true), 11);
       }
    }
 
@@ -245,9 +234,9 @@ public class CampfireBlock extends BaseEntityBlock implements SimpleWaterloggedB
       level.addAlwaysVisibleParticle(
          smokeParticle,
          true,
-         (double)pos.getX() + 0.5 + random.nextDouble() / 3.0 * (double)(random.nextBoolean() ? 1 : -1),
-         (double)pos.getY() + random.nextDouble() + random.nextDouble(),
-         (double)pos.getZ() + 0.5 + random.nextDouble() / 3.0 * (double)(random.nextBoolean() ? 1 : -1),
+         pos.getX() + 0.5 + random.nextDouble() / 3.0 * (random.nextBoolean() ? 1 : -1),
+         pos.getY() + random.nextDouble() + random.nextDouble(),
+         pos.getZ() + 0.5 + random.nextDouble() / 3.0 * (random.nextBoolean() ? 1 : -1),
          0.0,
          0.07,
          0.0
@@ -255,9 +244,9 @@ public class CampfireBlock extends BaseEntityBlock implements SimpleWaterloggedB
       if (smoking) {
          level.addParticle(
             ParticleTypes.SMOKE,
-            (double)pos.getX() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1),
-            (double)pos.getY() + 0.4,
-            (double)pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (double)(random.nextBoolean() ? 1 : -1),
+            pos.getX() + 0.5 + random.nextDouble() / 4.0 * (random.nextBoolean() ? 1 : -1),
+            pos.getY() + 0.4,
+            pos.getZ() + 0.5 + random.nextDouble() / 4.0 * (random.nextBoolean() ? 1 : -1),
             0.0,
             0.005,
             0.0
@@ -312,9 +301,8 @@ public class CampfireBlock extends BaseEntityBlock implements SimpleWaterloggedB
       return new CampfireBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       if (level instanceof ServerLevel serverLevel) {
          if (blockState.getValue(LIT)) {
             RecipeManager.CachedCheck<SingleRecipeInput, CampfireCookingRecipe> quickCheck = RecipeManager.createCheck(RecipeType.CAMPFIRE_COOKING);

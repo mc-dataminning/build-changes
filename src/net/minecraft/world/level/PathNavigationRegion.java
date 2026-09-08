@@ -68,7 +68,7 @@ public class PathNavigationRegion implements CollisionGetter {
       int zc = chunkZ - this.centerZ;
       if (xc >= 0 && xc < this.chunks.length && zc >= 0 && zc < this.chunks[xc].length) {
          ChunkAccess chunk = this.chunks[xc][zc];
-         return (ChunkAccess)(chunk != null ? chunk : new EmptyLevelChunk(this.level, new ChunkPos(chunkX, chunkZ), this.plains.get()));
+         return chunk != null ? chunk : new EmptyLevelChunk(this.level, new ChunkPos(chunkX, chunkZ), this.plains.get());
       } else {
          return new EmptyLevelChunk(this.level, new ChunkPos(chunkX, chunkZ), this.plains.get());
       }
@@ -85,13 +85,12 @@ public class PathNavigationRegion implements CollisionGetter {
    }
 
    @Override
-   public List<VoxelShape> getEntityCollisions(@Nullable final Entity source, final AABB testArea) {
+   public List<VoxelShape> getEntityCollisions(final @Nullable Entity source, final AABB testArea) {
       return List.of();
    }
 
-   @Nullable
    @Override
-   public BlockEntity getBlockEntity(final BlockPos pos) {
+   public @Nullable BlockEntity getBlockEntity(final BlockPos pos) {
       ChunkAccess chunk = this.getChunk(pos);
       return chunk.getBlockEntity(pos);
    }
@@ -100,20 +99,20 @@ public class PathNavigationRegion implements CollisionGetter {
    public BlockState getBlockState(final BlockPos pos) {
       if (this.isOutsideBuildHeight(pos)) {
          return Blocks.AIR.defaultBlockState();
-      } else {
-         ChunkAccess chunk = this.getChunk(pos);
-         return chunk.getBlockState(pos);
       }
+
+      ChunkAccess chunk = this.getChunk(pos);
+      return chunk.getBlockState(pos);
    }
 
    @Override
    public FluidState getFluidState(final BlockPos pos) {
       if (this.isOutsideBuildHeight(pos)) {
          return Fluids.EMPTY.defaultFluidState();
-      } else {
-         ChunkAccess chunk = this.getChunk(pos);
-         return chunk.getFluidState(pos);
       }
+
+      ChunkAccess chunk = this.getChunk(pos);
+      return chunk.getFluidState(pos);
    }
 
    @Override

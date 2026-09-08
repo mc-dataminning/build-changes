@@ -11,8 +11,7 @@ public class GameTestTicker {
    public static final GameTestTicker SINGLETON = new GameTestTicker();
    private static final Logger LOGGER = LogUtils.getLogger();
    private final Collection<GameTestInfo> testInfos = Lists.newCopyOnWriteArrayList();
-   @Nullable
-   private GameTestRunner runner;
+   private @Nullable GameTestRunner runner;
    private GameTestTicker.State state = GameTestTicker.State.IDLE;
 
    private GameTestTicker() {
@@ -55,7 +54,7 @@ public class GameTestTicker {
       }
    }
 
-   private static enum State {
+   private enum State {
       IDLE,
       RUNNING,
       HALTING;

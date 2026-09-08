@@ -39,10 +39,10 @@ public class JfrCommand {
       Environment env = Environment.from(source.getServer());
       if (!JvmProfiler.INSTANCE.start(env)) {
          throw START_FAILED.create();
-      } else {
-         source.sendSuccess(() -> Component.translatable("commands.jfr.started"), false);
-         return 1;
       }
+
+      source.sendSuccess(() -> Component.translatable("commands.jfr.started"), false);
+      return 1;
    }
 
    private static int stopJfr(final CommandSourceStack source) throws CommandSyntaxException {
@@ -53,12 +53,12 @@ public class JfrCommand {
             .withStyle(ChatFormatting.UNDERLINE)
             .withStyle(
                style -> style.withClickEvent(new ClickEvent.CopyToClipboard(clipboardPath.toString()))
-                     .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.copy.click")))
+                  .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.copy.click")))
             );
          source.sendSuccess(() -> Component.translatable("commands.jfr.stopped", fileText), false);
          return 1;
-      } catch (Throwable var4) {
-         throw DUMP_FAILED.create(var4.getMessage());
+      } catch (Throwable t) {
+         throw DUMP_FAILED.create(t.getMessage());
       }
    }
 }

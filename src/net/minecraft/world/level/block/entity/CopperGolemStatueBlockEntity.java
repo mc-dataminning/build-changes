@@ -24,8 +24,7 @@ public class CopperGolemStatueBlockEntity extends BlockEntity {
       super.setChanged();
    }
 
-   @Nullable
-   public CopperGolem removeStatue(final BlockState state) {
+   public @Nullable CopperGolem removeStatue(final BlockState state) {
       CopperGolem copperGolem = EntityTypes.COPPER_GOLEM.create(this.level, EntitySpawnReason.TRIGGERED);
       if (copperGolem != null) {
          copperGolem.setCustomName(this.components().get(DataComponents.CUSTOM_NAME));
@@ -38,7 +37,7 @@ public class CopperGolemStatueBlockEntity extends BlockEntity {
    private CopperGolem initCopperGolem(final BlockState state, final CopperGolem copperGolem) {
       BlockPos blockPos = this.getBlockPos();
       copperGolem.snapTo(
-         Vec3.atCenterOf(blockPos).x, (double)blockPos.getY(), Vec3.atCenterOf(blockPos).z, state.getValue(CopperGolemStatueBlock.FACING).toYRot(), 0.0F
+         Vec3.atCenterOf(blockPos).x, blockPos.getY(), Vec3.atCenterOf(blockPos).z, state.getValue(CopperGolemStatueBlock.FACING).toYRot(), 0.0F
       );
       copperGolem.yHeadRot = copperGolem.getYRot();
       copperGolem.yBodyRot = copperGolem.getYRot();

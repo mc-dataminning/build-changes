@@ -25,7 +25,7 @@ public abstract class BaseCoralPlantTypeBlock extends Block implements SimpleWat
 
    protected BaseCoralPlantTypeBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.valueOf(true)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, true));
    }
 
    protected void tryScheduleDieTick(
@@ -39,22 +39,21 @@ public abstract class BaseCoralPlantTypeBlock extends Block implements SimpleWat
    protected static boolean scanForWater(final BlockState state, final BlockGetter level, final BlockPos blockPos) {
       if (state.getValue(WATERLOGGED)) {
          return true;
-      } else {
-         for (Direction direction : Direction.values()) {
-            if (level.getFluidState(blockPos.relative(direction)).is(FluidTags.WATER)) {
-               return true;
-            }
-         }
-
-         return false;
       }
+
+      for (Direction direction : Direction.values()) {
+         if (level.getFluidState(blockPos.relative(direction)).is(FluidTags.WATER)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
-      return this.defaultBlockState().setValue(WATERLOGGED, Boolean.valueOf(fluidState.is(FluidTags.WATER) && fluidState.isFull()));
+      return this.defaultBlockState().setValue(WATERLOGGED, fluidState.is(FluidTags.WATER) && fluidState.isFull());
    }
 
    @Override

@@ -22,7 +22,7 @@ public interface HolderGetter<T> extends HolderOwner<T> {
       return this.get(tag).flatMap(holderSet -> holderSet.getRandomElement(random));
    }
 
-   public interface Provider {
+   interface Provider {
       <T> Optional<? extends HolderGetter<T>> lookup(final ResourceKey<? extends Registry<? extends T>> key);
 
       default <T> HolderGetter<T> lookupOrThrow(final ResourceKey<? extends Registry<? extends T>> key) {

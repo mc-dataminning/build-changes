@@ -8,18 +8,15 @@ import net.minecraft.resources.Identifier;
 import org.jspecify.annotations.Nullable;
 
 public class MapRenderState {
-   @Nullable
-   public Identifier texture;
+   public @Nullable Identifier texture;
    public final List<MapRenderState.MapDecorationRenderState> decorations = new ArrayList<>();
 
    public static class MapDecorationRenderState {
-      @Nullable
-      public TextureAtlasSprite atlasSprite;
+      public @Nullable TextureAtlasSprite atlasSprite;
       public byte x;
       public byte y;
       public byte rot;
       public boolean renderOnFrame;
-      @Nullable
-      public Component name;
+      public @Nullable Component name;
    }
 }

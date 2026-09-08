@@ -21,16 +21,16 @@ public class SpecialBlockModelWrapper<T> implements BlockModel {
       output.setupSpecialModel(this.specialRenderer, this.transformation);
    }
 
-   public static record Unbaked<T>(SpecialModelRenderer.Unbaked<T> model, Optional<Transformation> transformation) implements BlockModel.Unbaked {
+   public record Unbaked<T>(SpecialModelRenderer.Unbaked<T> model, Optional<Transformation> transformation) implements BlockModel.Unbaked {
       @Override
       public BlockModel bake(final BlockModel.BakingContext context, final Matrix4fc transformation) {
          SpecialModelRenderer<T> baked = this.model.bake(context);
          if (baked == null) {
             return EmptyBlockModel.INSTANCE;
-         } else {
-            Matrix4fc modelTransform = Transformation.compose(transformation, this.transformation);
-            return new SpecialBlockModelWrapper<>(baked, modelTransform);
          }
+
+         Matrix4fc modelTransform = Transformation.compose(transformation, this.transformation);
+         return new SpecialBlockModelWrapper<>(baked, modelTransform);
       }
    }
 }

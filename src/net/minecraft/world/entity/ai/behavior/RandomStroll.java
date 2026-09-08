@@ -44,18 +44,17 @@ public class RandomStroll {
       final float speedModifier, final Function<PathfinderMob, Vec3> fetchTargetPos, final Predicate<PathfinderMob> canRun
    ) {
       return BehaviorBuilder.create(i -> i.group(i.absent(MemoryModuleType.WALK_TARGET)).apply(i, walkTarget -> (level, body, timestamp) -> {
-               if (!canRun.test(body)) {
-                  return false;
-               } else {
-                  Optional<Vec3> pathGoalPos = Optional.ofNullable(fetchTargetPos.apply(body));
-                  walkTarget.setOrErase(pathGoalPos.map(pos -> new WalkTarget(pos, speedModifier, 0)));
-                  return true;
-               }
-            }));
+         if (!canRun.test(body)) {
+            return false;
+         }
+
+         Optional<Vec3> pathGoalPos = Optional.ofNullable(fetchTargetPos.apply(body));
+         walkTarget.setOrErase(pathGoalPos.map(pos -> new WalkTarget(pos, speedModifier, 0)));
+         return true;
+      }));
    }
 
-   @Nullable
-   private static Vec3 getTargetSwimPos(final PathfinderMob body) {
+   private static @Nullable Vec3 getTargetSwimPos(final PathfinderMob body) {
       Vec3 fallback = null;
       Vec3 targetPos = null;
 
@@ -63,11 +62,10 @@ public class RandomStroll {
          if (fallback == null) {
             targetPos = BehaviorUtils.getRandomSwimmablePos(body, distance[0], distance[1]);
          } else {
-            targetPos = body.position()
-               .add(body.position().vectorTo(fallback).normalize().multiply((double)distance[0], (double)distance[1], (double)distance[0]));
+            targetPos = body.position().add(body.position().vectorTo(fallback).normalize().multiply(distance[0], distance[1], distance[0]));
          }
 
-         boolean restrict = GoalUtils.mobRestricted(body, (double)distance[0]);
+         boolean restrict = GoalUtils.mobRestricted(body, distance[0]);
          if (targetPos == null || body.level().getFluidState(BlockPos.containing(targetPos)).isEmpty() || GoalUtils.isRestricted(restrict, body, targetPos)) {
             return fallback;
          }
@@ -78,8 +76,7 @@ public class RandomStroll {
       return targetPos;
    }
 
-   @Nullable
-   private static Vec3 getTargetFlyPos(final PathfinderMob body, final int maxHorizontalDistance, final int maxVerticalDistance) {
+   private static @Nullable Vec3 getTargetFlyPos(final PathfinderMob body, final int maxHorizontalDistance, final int maxVerticalDistance) {
       Vec3 wanderDirection = body.getViewVector(0.0F);
       return AirAndWaterRandomPos.getPos(body, maxHorizontalDistance, maxVerticalDistance, -2, wanderDirection.x, wanderDirection.z, (float) (Math.PI / 2));
    }

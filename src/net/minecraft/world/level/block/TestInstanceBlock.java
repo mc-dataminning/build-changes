@@ -16,9 +16,8 @@ public class TestInstanceBlock extends BaseEntityBlock implements GameMasterBloc
       super(properties);
    }
 
-   @Nullable
    @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
+   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
       return new TestInstanceBlockEntity(worldPosition, blockState);
    }
 
@@ -29,13 +28,13 @@ public class TestInstanceBlock extends BaseEntityBlock implements GameMasterBloc
       if (level.getBlockEntity(pos) instanceof TestInstanceBlockEntity testInstance) {
          if (!player.canUseGameMasterBlocks()) {
             return InteractionResult.PASS;
-         } else {
-            if (player.level().isClientSide()) {
-               player.openTestInstanceBlock(testInstance);
-            }
-
-            return InteractionResult.SUCCESS;
          }
+
+         if (player.level().isClientSide()) {
+            player.openTestInstanceBlock(testInstance);
+         }
+
+         return InteractionResult.SUCCESS;
       } else {
          return InteractionResult.PASS;
       }

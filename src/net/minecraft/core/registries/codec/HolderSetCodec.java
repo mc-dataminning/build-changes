@@ -70,17 +70,15 @@ public class HolderSetCodec<E> implements Codec<HolderSet<E>> {
    public <T> DataResult<T> encode(final HolderSet<E> input, final DynamicOps<T> ops, final T prefix) {
       if (input instanceof HolderSet.Named<E> named && ops instanceof RegistryOps<T> registryOps) {
          Optional<? extends HolderOwner<E>> maybeOwner = registryOps.getter(this.registryKey);
-         if (maybeOwner.isPresent()) {
-            if (!named.canSerializeIn((HolderOwner<E>)maybeOwner.get())) {
-               return DataResult.error(() -> "HolderSet " + named + " is not valid in current registry set");
-            }
-
-            return this.tagKeyOrValuesCodec.encode(Either.left(named.key()), ops, prefix);
+         if (!maybeOwner.isPresent()) {
+            return DataResult.error(() -> "Registry " + this.registryKey.identifier() + " is not available in this context");
+         } else {
+            return !named.canSerializeIn((HolderOwner<T>)maybeOwner.get())
+               ? DataResult.error(() -> "HolderSet " + named + " is not valid in current registry set")
+               : this.tagKeyOrValuesCodec.encode(Either.left(named.key()), ops, prefix);
          }
-
-         return DataResult.error(() -> "Registry " + this.registryKey.identifier() + " is not available in this context");
+      } else {
+         return this.tagKeyOrValuesCodec.encode(Either.right(input.stream().toList()), ops, prefix);
       }
-
-      return this.tagKeyOrValuesCodec.encode(Either.right(input.stream().toList()), ops, prefix);
    }
 }

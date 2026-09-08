@@ -2,7 +2,6 @@ package net.minecraft.world.level.levelgen.presets;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -53,15 +52,10 @@ public class WorldPresets {
 
    public static Optional<ResourceKey<WorldPreset>> fromSettings(final WorldDimensions dimensions) {
       return dimensions.get(LevelStem.OVERWORLD).flatMap(levelStem -> {
-         Object var10000;
-         Objects.requireNonNull(var10000);
-         ChunkGenerator selector0$temp = (ChunkGenerator)var10000;
-
-         levelStem.generator();
-         return switch (selector0$temp) {
+         return switch (levelStem.generator()) {
             case FlatLevelSource ignored -> Optional.of(FLAT);
-            case DebugLevelSource ignoredx -> Optional.of(DEBUG);
-            case NoiseBasedChunkGenerator ignoredxx -> Optional.of(NORMAL);
+            case DebugLevelSource ignored -> Optional.of(DEBUG);
+            case NoiseBasedChunkGenerator ignored -> Optional.of(NORMAL);
             default -> Optional.empty();
          };
       });

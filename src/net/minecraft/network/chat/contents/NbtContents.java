@@ -45,13 +45,13 @@ public record NbtContents(
    );
    public static final MapCodec<NbtContents> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  NBT_PATH_CODEC.fieldOf("nbt").forGetter(NbtContents::nbtPath),
-                  Codec.BOOL.lenientOptionalFieldOf("interpret", false).forGetter(NbtContents::interpreting),
-                  Codec.BOOL.lenientOptionalFieldOf("plain", false).forGetter(NbtContents::plain),
-                  ComponentSerialization.CODEC.lenientOptionalFieldOf("separator").forGetter(NbtContents::separator),
-                  DataSources.CODEC.forGetter(NbtContents::dataSource)
-               )
-               .apply(i, NbtContents::new)
+               NBT_PATH_CODEC.fieldOf("nbt").forGetter(NbtContents::nbtPath),
+               Codec.BOOL.lenientOptionalFieldOf("interpret", false).forGetter(NbtContents::interpreting),
+               Codec.BOOL.lenientOptionalFieldOf("plain", false).forGetter(NbtContents::plain),
+               ComponentSerialization.CODEC.lenientOptionalFieldOf("separator").forGetter(NbtContents::separator),
+               DataSources.CODEC.forGetter(NbtContents::dataSource)
+            )
+            .apply(i, NbtContents::new)
       )
       .validate(v -> v.interpreting && v.plain ? DataResult.error(() -> "'interpret' and 'plain' flags can't be both on") : DataResult.success(v));
 
@@ -67,7 +67,7 @@ public record NbtContents(
          Stream<Tag> elements = this.dataSource.getData(source).flatMap(t -> {
             try {
                return this.nbtPath.compiled().get(t).stream();
-            } catch (CommandSyntaxException var3x) {
+            } catch (CommandSyntaxException ignored) {
                return Stream.empty();
             }
          });
@@ -80,8 +80,8 @@ public record NbtContents(
                try {
                   Component component = (Component)ComponentSerialization.CODEC.parse(registryOps, tag).getOrThrow();
                   return Stream.of(ComponentUtils.resolve(context, component, recursionDepth));
-               } catch (Exception var5x) {
-                  LOGGER.warn("Failed to parse component: {}", tag, var5x);
+               } catch (Exception e) {
+                  LOGGER.warn("Failed to parse component: {}", tag, e);
                   return Stream.of();
                }
             }).reduce((left, right) -> left.append(resolvedSeparator).append(right)).orElseGet(Component::empty);

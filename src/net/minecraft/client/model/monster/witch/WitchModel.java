@@ -68,11 +68,11 @@ public class WitchModel extends EntityModel<WitchRenderState> implements HeadedM
       super.setupAnim(state);
       this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
       this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-      this.rightLeg.xRot = Mth.cos((double)(state.walkAnimationPos * 0.6662F)) * 1.4F * state.walkAnimationSpeed * 0.5F;
-      this.leftLeg.xRot = Mth.cos((double)(state.walkAnimationPos * 0.6662F + (float) Math.PI)) * 1.4F * state.walkAnimationSpeed * 0.5F;
-      float speed = 0.01F * (float)(state.entityId % 10);
-      this.nose.xRot = Mth.sin((double)(state.ageInTicks * speed)) * 4.5F * (float) (Math.PI / 180.0);
-      this.nose.zRot = Mth.cos((double)(state.ageInTicks * speed)) * 2.5F * (float) (Math.PI / 180.0);
+      this.rightLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F) * 1.4F * state.walkAnimationSpeed * 0.5F;
+      this.leftLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F + (float) Math.PI) * 1.4F * state.walkAnimationSpeed * 0.5F;
+      float speed = 0.01F * (state.entityId % 10);
+      this.nose.xRot = Mth.sin(state.ageInTicks * speed) * 4.5F * (float) (Math.PI / 180.0);
+      this.nose.zRot = Mth.cos(state.ageInTicks * speed) * 2.5F * (float) (Math.PI / 180.0);
       if (state.isHoldingItem) {
          this.nose.setPos(0.0F, 1.0F, -1.5F);
          this.nose.xRot = -0.9F;

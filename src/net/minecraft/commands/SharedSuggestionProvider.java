@@ -190,16 +190,16 @@ public interface SharedSuggestionProvider extends PermissionSetSupplier {
       } else {
          String[] fields = currentInput.split(" ");
          if (fields.length == 1) {
-            for (SharedSuggestionProvider.TextCoordinates coordinatex : allSuggestions) {
-               String fullValue = fields[0] + " " + coordinatex.y + " " + coordinatex.z;
+            for (SharedSuggestionProvider.TextCoordinates coordinate : allSuggestions) {
+               String fullValue = fields[0] + " " + coordinate.y + " " + coordinate.z;
                if (validator.test(fullValue)) {
-                  result.add(fields[0] + " " + coordinatex.y);
+                  result.add(fields[0] + " " + coordinate.y);
                   result.add(fullValue);
                }
             }
          } else if (fields.length == 2) {
-            for (SharedSuggestionProvider.TextCoordinates coordinatexx : allSuggestions) {
-               String fullValue = fields[0] + " " + fields[1] + " " + coordinatexx.z;
+            for (SharedSuggestionProvider.TextCoordinates coordinate : allSuggestions) {
+               String fullValue = fields[0] + " " + fields[1] + " " + coordinate.z;
                if (validator.test(fullValue)) {
                   result.add(fullValue);
                }
@@ -228,8 +228,8 @@ public interface SharedSuggestionProvider extends PermissionSetSupplier {
       } else {
          String[] fields = currentInput.split(" ");
          if (fields.length == 1) {
-            for (SharedSuggestionProvider.TextCoordinates coordinatex : allSuggestions) {
-               String fullValue = fields[0] + " " + coordinatex.z;
+            for (SharedSuggestionProvider.TextCoordinates coordinate : allSuggestions) {
+               String fullValue = fields[0] + " " + coordinate.z;
                if (validator.test(fullValue)) {
                   result.add(fullValue);
                }
@@ -300,7 +300,7 @@ public interface SharedSuggestionProvider extends PermissionSetSupplier {
       return true;
    }
 
-   public static enum ElementSuggestionType {
+   enum ElementSuggestionType {
       TAGS,
       ELEMENTS,
       ALL;
@@ -314,7 +314,7 @@ public interface SharedSuggestionProvider extends PermissionSetSupplier {
       }
    }
 
-   public static class TextCoordinates {
+   class TextCoordinates {
       public static final SharedSuggestionProvider.TextCoordinates DEFAULT_LOCAL = new SharedSuggestionProvider.TextCoordinates("^", "^", "^");
       public static final SharedSuggestionProvider.TextCoordinates DEFAULT_GLOBAL = new SharedSuggestionProvider.TextCoordinates("~", "~", "~");
       public final String x;

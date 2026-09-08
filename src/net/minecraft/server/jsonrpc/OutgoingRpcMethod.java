@@ -19,13 +19,11 @@ public interface OutgoingRpcMethod<Params, Result> {
 
    OutgoingRpcMethod.Attributes attributes();
 
-   @Nullable
-   default JsonElement encodeParams(final Params params) {
+   default @Nullable JsonElement encodeParams(final Params params) {
       return null;
    }
 
-   @Nullable
-   default Result decodeResult(final JsonElement result) {
+   default @Nullable Result decodeResult(final JsonElement result) {
       return null;
    }
 
@@ -45,19 +43,17 @@ public interface OutgoingRpcMethod<Params, Result> {
       return new OutgoingRpcMethod.OutgoingRpcMethodBuilder<>(OutgoingRpcMethod.Method::new);
    }
 
-   public static record Attributes(boolean discoverable, boolean allowPreServerInit) {
+   record Attributes(boolean discoverable, boolean allowPreServerInit) {
    }
 
    @FunctionalInterface
-   public interface Factory<Params, Result> {
+   interface Factory<Params, Result> {
       OutgoingRpcMethod<Params, Result> create(MethodInfo<Params, Result> info, OutgoingRpcMethod.Attributes attributes);
    }
 
-   public static record Method<Params, Result>(MethodInfo<Params, Result> info, OutgoingRpcMethod.Attributes attributes)
-      implements OutgoingRpcMethod<Params, Result> {
-      @Nullable
+   record Method<Params, Result>(MethodInfo<Params, Result> info, OutgoingRpcMethod.Attributes attributes) implements OutgoingRpcMethod<Params, Result> {
       @Override
-      public JsonElement encodeParams(final Params params) {
+      public @Nullable JsonElement encodeParams(final Params params) {
          if (this.info.params().isEmpty()) {
             throw new IllegalStateException("Method defined as having no parameters");
          } else {
@@ -75,10 +71,9 @@ public interface OutgoingRpcMethod<Params, Result> {
       }
    }
 
-   public static record Notification<Params>(MethodInfo<Params, Void> info, OutgoingRpcMethod.Attributes attributes) implements OutgoingRpcMethod<Params, Void> {
-      @Nullable
+   record Notification<Params>(MethodInfo<Params, Void> info, OutgoingRpcMethod.Attributes attributes) implements OutgoingRpcMethod<Params, Void> {
       @Override
-      public JsonElement encodeParams(final Params params) {
+      public @Nullable JsonElement encodeParams(final Params params) {
          if (this.info.params().isEmpty()) {
             throw new IllegalStateException("Method defined as having no parameters");
          } else {
@@ -87,14 +82,12 @@ public interface OutgoingRpcMethod<Params, Result> {
       }
    }
 
-   public static class OutgoingRpcMethodBuilder<Params, Result> {
+   class OutgoingRpcMethodBuilder<Params, Result> {
       public static final OutgoingRpcMethod.Attributes DEFAULT_ATTRIBUTES = new OutgoingRpcMethod.Attributes(true, false);
       private final OutgoingRpcMethod.Factory<Params, Result> method;
       private String description = "";
-      @Nullable
-      private ParamInfo<Params> paramInfo;
-      @Nullable
-      private ResultInfo<Result> resultInfo;
+      private @Nullable ParamInfo<Params> paramInfo;
+      private @Nullable ResultInfo<Result> resultInfo;
       private boolean allowPreServerInit = false;
 
       public OutgoingRpcMethodBuilder(final OutgoingRpcMethod.Factory<Params, Result> method) {
@@ -142,8 +135,7 @@ public interface OutgoingRpcMethod<Params, Result> {
       }
    }
 
-   public static record ParameterlessMethod<Result>(MethodInfo<Void, Result> info, OutgoingRpcMethod.Attributes attributes)
-      implements OutgoingRpcMethod<Void, Result> {
+   record ParameterlessMethod<Result>(MethodInfo<Void, Result> info, OutgoingRpcMethod.Attributes attributes) implements OutgoingRpcMethod<Void, Result> {
       @Override
       public Result decodeResult(final JsonElement result) {
          if (this.info.result().isEmpty()) {
@@ -154,6 +146,6 @@ public interface OutgoingRpcMethod<Params, Result> {
       }
    }
 
-   public static record ParmeterlessNotification(MethodInfo<Void, Void> info, OutgoingRpcMethod.Attributes attributes) implements OutgoingRpcMethod<Void, Void> {
+   record ParmeterlessNotification(MethodInfo<Void, Void> info, OutgoingRpcMethod.Attributes attributes) implements OutgoingRpcMethod<Void, Void> {
    }
 }

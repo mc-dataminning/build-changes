@@ -16,7 +16,7 @@ public class BlockPredicate implements Predicate<BlockState> {
       return new BlockPredicate(block);
    }
 
-   public boolean test(@Nullable final BlockState input) {
+   public boolean test(final @Nullable BlockState input) {
       return input != null && input.is(this.block);
    }
 }

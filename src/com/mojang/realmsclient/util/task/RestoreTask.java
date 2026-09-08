@@ -42,28 +42,28 @@ public class RestoreTask extends LongRunningTask {
 
             setScreen(this.lastScreen);
             return;
-         } catch (RetryCallException var4) {
+         } catch (RetryCallException e) {
             if (this.aborted()) {
                return;
             }
 
-            pause((long)var4.delaySeconds);
+            pause(e.delaySeconds);
             i++;
-         } catch (RealmsServiceException var5) {
+         } catch (RealmsServiceException e) {
             if (this.aborted()) {
                return;
             }
 
-            LOGGER.error("Couldn't restore backup", var5);
-            setScreen(new RealmsGenericErrorScreen(var5, this.lastScreen));
+            LOGGER.error("Couldn't restore backup", e);
+            setScreen(new RealmsGenericErrorScreen(e, this.lastScreen));
             return;
-         } catch (Exception var6) {
+         } catch (Exception e) {
             if (this.aborted()) {
                return;
             }
 
-            LOGGER.error("Couldn't restore backup", var6);
-            this.error(var6);
+            LOGGER.error("Couldn't restore backup", e);
+            this.error(e);
             return;
          }
       }

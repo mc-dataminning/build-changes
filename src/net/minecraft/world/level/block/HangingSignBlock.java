@@ -13,7 +13,7 @@ public interface HangingSignBlock {
          : HangingSignBlock.Attachment.CEILING;
    }
 
-   public static enum Attachment implements StringRepresentable {
+   enum Attachment implements StringRepresentable {
       WALL("wall"),
       CEILING("ceiling"),
       CEILING_MIDDLE("ceiling_middle");
@@ -21,7 +21,7 @@ public interface HangingSignBlock {
       public static final Codec<HangingSignBlock.Attachment> CODEC = StringRepresentable.fromEnum(HangingSignBlock.Attachment::values);
       private final String name;
 
-      private Attachment(final String name) {
+      Attachment(final String name) {
          this.name = name;
       }
 

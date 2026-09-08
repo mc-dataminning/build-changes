@@ -84,7 +84,7 @@ public class NbtPathArgument implements ArgumentType<NbtPathArgument.NbtPath> {
    }
 
    private static NbtPathArgument.Node parseNode(final StringReader reader, final boolean firstNode) throws CommandSyntaxException {
-      return (NbtPathArgument.Node)(switch (reader.peek()) {
+      return switch (reader.peek()) {
          case '"', '\'' -> readObjectNode(reader, reader.readString());
          case '[' -> {
             reader.skip();
@@ -111,7 +111,7 @@ public class NbtPathArgument implements ArgumentType<NbtPathArgument.NbtPath> {
             yield new NbtPathArgument.MatchRootObjectNode(pattern);
          }
          default -> readObjectNode(reader, readUnquotedName(reader));
-      });
+      };
    }
 
    private static NbtPathArgument.Node readObjectNode(final StringReader reader, final String name) throws CommandSyntaxException {
@@ -189,24 +189,24 @@ public class NbtPathArgument implements ArgumentType<NbtPathArgument.NbtPath> {
             if (size == 0) {
                list.addTag(0, toAdd.get());
                return 1;
-            } else {
-               Tag newValue = toAdd.get();
-               int changedCount = size - (int)list.stream().filter(newValue::equals).count();
-               if (changedCount == 0) {
-                  return 0;
-               } else {
-                  list.clear();
-                  if (!list.addTag(0, newValue)) {
-                     return 0;
-                  } else {
-                     for (int i = 1; i < size; i++) {
-                        list.addTag(i, toAdd.get());
-                     }
-
-                     return changedCount;
-                  }
-               }
             }
+
+            Tag newValue = toAdd.get();
+            int changedCount = size - (int)list.stream().filter(newValue::equals).count();
+            if (changedCount == 0) {
+               return 0;
+            }
+
+            list.clear();
+            if (!list.addTag(0, newValue)) {
+               return 0;
+            }
+
+            for (int i = 1; i < size; i++) {
+               list.addTag(i, toAdd.get());
+            }
+
+            return changedCount;
          }
       }
 
@@ -279,9 +279,9 @@ public class NbtPathArgument implements ArgumentType<NbtPathArgument.NbtPath> {
          if (parent instanceof CompoundTag compound && compound.contains(this.name)) {
             compound.remove(this.name);
             return 1;
+         } else {
+            return 0;
          }
-
-         return 0;
       }
    }
 
@@ -448,9 +448,9 @@ public class NbtPathArgument implements ArgumentType<NbtPathArgument.NbtPath> {
          if (parent instanceof CompoundTag compound) {
             Tag result = compound.get(this.name);
             if (result == null) {
-               Tag var6 = this.pattern.copy();
-               compound.put(this.name, var6);
-               output.add(var6);
+               result = this.pattern.copy();
+               compound.put(this.name, result);
+               output.add(result);
             } else if (this.predicate.test(result)) {
                output.add(result);
             }
@@ -535,8 +535,8 @@ public class NbtPathArgument implements ArgumentType<NbtPathArgument.NbtPath> {
          try {
             NbtPathArgument.NbtPath parsed = new NbtPathArgument().parse(new StringReader(string));
             return DataResult.success(parsed);
-         } catch (CommandSyntaxException var2) {
-            return DataResult.error(() -> "Failed to parse path " + string + ": " + var2.getMessage());
+         } catch (CommandSyntaxException e) {
+            return DataResult.error(() -> "Failed to parse path " + string + ": " + e.getMessage());
          }
       }, NbtPathArgument.NbtPath::asString);
 
@@ -604,46 +604,46 @@ public class NbtPathArgument implements ArgumentType<NbtPathArgument.NbtPath> {
       public static boolean isTooDeep(final Tag tag, final int depth) {
          if (depth >= 512) {
             return true;
-         } else {
-            if (tag instanceof CompoundTag compound) {
-               for (Tag child : compound.values()) {
-                  if (isTooDeep(child, depth + 1)) {
-                     return true;
-                  }
-               }
-            } else if (tag instanceof ListTag) {
-               for (Tag listEntry : (ListTag)tag) {
-                  if (isTooDeep(listEntry, depth + 1)) {
-                     return true;
-                  }
+         }
+
+         if (tag instanceof CompoundTag compound) {
+            for (Tag child : compound.values()) {
+               if (isTooDeep(child, depth + 1)) {
+                  return true;
                }
             }
-
-            return false;
+         } else if (tag instanceof ListTag) {
+            for (Tag listEntry : (ListTag)tag) {
+               if (isTooDeep(listEntry, depth + 1)) {
+                  return true;
+               }
+            }
          }
+
+         return false;
       }
 
       public int set(final Tag tag, final Tag toAdd) throws CommandSyntaxException {
          if (isTooDeep(toAdd, this.estimatePathDepth())) {
             throw NbtPathArgument.ERROR_DATA_TOO_DEEP.create();
-         } else {
-            Tag firstCopy = toAdd.copy();
-            List<Tag> result = this.getOrCreateParents(tag);
-            if (result.isEmpty()) {
-               return 0;
-            } else {
-               NbtPathArgument.Node lastNode = this.nodes[this.nodes.length - 1];
-               MutableBoolean usedFirstCopy = new MutableBoolean(false);
-               return apply(result, t -> lastNode.setTag(t, () -> {
-                     if (usedFirstCopy.isFalse()) {
-                        usedFirstCopy.setTrue();
-                        return firstCopy;
-                     } else {
-                        return firstCopy.copy();
-                     }
-                  }));
-            }
          }
+
+         Tag firstCopy = toAdd.copy();
+         List<Tag> result = this.getOrCreateParents(tag);
+         if (result.isEmpty()) {
+            return 0;
+         }
+
+         NbtPathArgument.Node lastNode = this.nodes[this.nodes.length - 1];
+         MutableBoolean usedFirstCopy = new MutableBoolean(false);
+         return apply(result, t -> lastNode.setTag(t, () -> {
+            if (usedFirstCopy.isFalse()) {
+               usedFirstCopy.setTrue();
+               return firstCopy;
+            } else {
+               return firstCopy.copy();
+            }
+         }));
       }
 
       private int estimatePathDepth() {
@@ -679,7 +679,7 @@ public class NbtPathArgument implements ArgumentType<NbtPathArgument.NbtPath> {
                      actualIndex++;
                      modified = true;
                   }
-               } catch (IndexOutOfBoundsException var16) {
+               } catch (IndexOutOfBoundsException e) {
                   throw NbtPathArgument.ERROR_INVALID_INDEX.create(actualIndex);
                }
             }

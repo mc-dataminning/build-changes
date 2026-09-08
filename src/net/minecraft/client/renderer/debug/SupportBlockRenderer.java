@@ -31,7 +31,7 @@ public class SupportBlockRenderer implements DebugRenderer.SimpleDebugRenderer {
    public void emitGizmos(
       final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
    ) {
-      double time = (double)Util.getNanos();
+      double time = Util.getNanos();
       if (time - this.lastUpdateTime > 1.0E8) {
          this.lastUpdateTime = time;
          Entity cameraEntity = this.minecraft.getCameraEntity();
@@ -63,13 +63,13 @@ public class SupportBlockRenderer implements DebugRenderer.SimpleDebugRenderer {
    }
 
    private double getBias(final Entity entity) {
-      return 0.02 * (double)(String.valueOf((double)entity.getId() + 0.132453657).hashCode() % 1000) / 1000.0;
+      return 0.02 * (String.valueOf(entity.getId() + 0.132453657).hashCode() % 1000) / 1000.0;
    }
 
    private void highlightPosition(final BlockPos pos, final double offset, final int color) {
-      double fromX = (double)pos.getX() - 2.0 * offset;
-      double fromY = (double)pos.getY() - 2.0 * offset;
-      double fromZ = (double)pos.getZ() - 2.0 * offset;
+      double fromX = pos.getX() - 2.0 * offset;
+      double fromY = pos.getY() - 2.0 * offset;
+      double fromZ = pos.getZ() - 2.0 * offset;
       double toX = fromX + 1.0 + 4.0 * offset;
       double toY = fromY + 1.0 + 4.0 * offset;
       double toZ = fromZ + 1.0 + 4.0 * offset;

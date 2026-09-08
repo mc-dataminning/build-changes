@@ -31,6 +31,6 @@ public interface ContextFloatProvider extends Validatable {
    MapCodec<? extends ContextFloatProvider> codec();
 
    static float intToFloatSafe(final int value) {
-      return (float)value;
+      return value;
    }
 }

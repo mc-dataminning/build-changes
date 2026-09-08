@@ -3,7 +3,6 @@ package net.minecraft.commands.synchronization.brigadier;
 import com.google.gson.JsonObject;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType.StringType;
-import java.util.Objects;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.synchronization.ArgumentTypeInfo;
 import net.minecraft.network.FriendlyByteBuf;
@@ -35,8 +34,6 @@ public class StringArgumentSerializer implements ArgumentTypeInfo<StringArgument
       private final StringType type;
 
       public Template(final StringType type) {
-         Objects.requireNonNull(StringArgumentSerializer.this);
-         super();
          this.type = type;
       }
 

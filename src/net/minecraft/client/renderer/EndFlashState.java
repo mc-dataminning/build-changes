@@ -38,8 +38,8 @@ public class EndFlashState {
 
    private float calculateIntensity(final long clockTime) {
       long clockTimeWithinInterval = clockTime % 600L;
-      return clockTimeWithinInterval >= (long)this.offset && clockTimeWithinInterval <= (long)(this.offset + this.duration)
-         ? Mth.sin((double)((float)(clockTimeWithinInterval - (long)this.offset) * (float) Math.PI / (float)this.duration))
+      return clockTimeWithinInterval >= this.offset && clockTimeWithinInterval <= this.offset + this.duration
+         ? Mth.sin((float)(clockTimeWithinInterval - this.offset) * (float) Math.PI / this.duration)
          : 0.0F;
    }
 

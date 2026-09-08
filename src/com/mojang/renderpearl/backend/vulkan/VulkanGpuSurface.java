@@ -57,8 +57,7 @@ public class VulkanGpuSurface implements GpuSurfaceBackend {
    private int currentAcquireSemaphore = 0;
    private long[] presentSemaphores = LongArrays.EMPTY_ARRAY;
    private int currentImageIndex = -1;
-   @Nullable
-   private SurfaceException eatenException = null;
+   private @Nullable SurfaceException eatenException = null;
    private boolean swapchainSuboptimal;
    private boolean swapchainOutOfDate;
    private final Set<GpuSurface.PresentMode> supportedPresentModes;
@@ -287,10 +286,10 @@ public class VulkanGpuSurface implements GpuSurfaceBackend {
          if (stack != null) {
             stack.close();
          }
-      } catch (SurfaceException var18) {
+      } catch (SurfaceException e) {
          this.swapchainSuboptimal = true;
          this.swapchainOutOfDate = true;
-         throw var18;
+         throw e;
       }
    }
 
@@ -305,50 +304,52 @@ public class VulkanGpuSurface implements GpuSurfaceBackend {
          SurfaceException toThrow = this.eatenException;
          this.eatenException = null;
          throw new SurfaceException(toThrow);
-      } else if (this.swapchainOutOfDate) {
+      }
+
+      if (this.swapchainOutOfDate) {
          throw new IllegalStateException("Attempt to use out of date swapchain");
-      } else {
-         MemoryStack stack = MemoryStack.stackPush();
+      }
 
-         try {
-            IntBuffer frameIndexPtr = stack.callocInt(1);
-            frameIndexPtr.put(0, -1);
-            this.currentAcquireSemaphore++;
-            this.currentAcquireSemaphore = this.currentAcquireSemaphore % this.acquireSemaphores.length;
-            long acquireSemaphore = this.acquireSemaphores[this.currentAcquireSemaphore];
-            int result = KHRSwapchain.vkAcquireNextImageKHR(this.device.vkDevice(), this.swapchain, 5000000000L, acquireSemaphore, 0L, frameIndexPtr);
-            if (result == 2) {
-               List<CheckpointExtension.QueueCheckpoints> checkpoints = this.device.checkpointExtension().retrieveCheckpoints(false);
-               throw new IllegalStateException("GPU timeout attempting to acquire next frame: " + VulkanUtils.formatCheckpoints(checkpoints));
-            }
+      MemoryStack stack = MemoryStack.stackPush();
 
-            this.currentImageIndex = frameIndexPtr.get(0);
-            if (result == -1000001004) {
-               this.swapchainSuboptimal = true;
-               this.swapchainOutOfDate = true;
-               throw new SurfaceException("Failed to acquire image, swapchain out of date");
-            }
-
-            if (result == 1000001003) {
-               this.swapchainSuboptimal = true;
-            } else {
-               VulkanUtils.crashIfFailure(this.device, result, "Failed to acquire image");
-            }
-         } catch (Throwable var8) {
-            if (stack != null) {
-               try {
-                  stack.close();
-               } catch (Throwable var7) {
-                  var8.addSuppressed(var7);
-               }
-            }
-
-            throw var8;
+      try {
+         IntBuffer frameIndexPtr = stack.callocInt(1);
+         frameIndexPtr.put(0, -1);
+         this.currentAcquireSemaphore++;
+         this.currentAcquireSemaphore = this.currentAcquireSemaphore % this.acquireSemaphores.length;
+         long acquireSemaphore = this.acquireSemaphores[this.currentAcquireSemaphore];
+         int result = KHRSwapchain.vkAcquireNextImageKHR(this.device.vkDevice(), this.swapchain, 5000000000L, acquireSemaphore, 0L, frameIndexPtr);
+         if (result == 2) {
+            List<CheckpointExtension.QueueCheckpoints> checkpoints = this.device.checkpointExtension().retrieveCheckpoints(false);
+            throw new IllegalStateException("GPU timeout attempting to acquire next frame: " + VulkanUtils.formatCheckpoints(checkpoints));
          }
 
+         this.currentImageIndex = frameIndexPtr.get(0);
+         if (result == -1000001004) {
+            this.swapchainSuboptimal = true;
+            this.swapchainOutOfDate = true;
+            throw new SurfaceException("Failed to acquire image, swapchain out of date");
+         }
+
+         if (result == 1000001003) {
+            this.swapchainSuboptimal = true;
+         } else {
+            VulkanUtils.crashIfFailure(this.device, result, "Failed to acquire image");
+         }
+      } catch (Throwable var8) {
          if (stack != null) {
-            stack.close();
+            try {
+               stack.close();
+            } catch (Throwable var7) {
+               var8.addSuppressed(var7);
+            }
          }
+
+         throw var8;
+      }
+
+      if (stack != null) {
+         stack.close();
       }
    }
 
@@ -356,188 +357,187 @@ public class VulkanGpuSurface implements GpuSurfaceBackend {
    public void blitFromTexture(final CommandEncoderBackend commandEncoder, final GpuTextureView textureView) {
       if (this.swapchainOutOfDate) {
          throw new IllegalStateException("Attempt to use out of date swapchain");
-      } else {
-         assert this.currentImageIndex != -1;
-
-         VulkanCommandEncoder vulkanCommandEncoder = (VulkanCommandEncoder)commandEncoder;
-         VkCommandBuffer blitCommandBuffer = vulkanCommandEncoder.allocateAndBeginTransientCommandBuffer();
-         long swapchainImage = this.swapchainImages.getLong(this.currentImageIndex);
-         MemoryStack stack = MemoryStack.stackGet();
-         MemoryStack var8 = stack.push();
-
-         try {
-            org.lwjgl.vulkan.VkImageMemoryBarrier2.Buffer imageBarrier = VkImageMemoryBarrier2.calloc(1, stack).sType$Default();
-            imageBarrier.srcStageMask(0L);
-            imageBarrier.srcAccessMask(0L);
-            imageBarrier.dstStageMask(4096L);
-            imageBarrier.dstAccessMask(4096L);
-            imageBarrier.oldLayout(0);
-            imageBarrier.newLayout(7);
-            imageBarrier.srcQueueFamilyIndex(-1);
-            imageBarrier.dstQueueFamilyIndex(-1);
-            imageBarrier.image(swapchainImage);
-            VkImageSubresourceRange subresourceRange = imageBarrier.subresourceRange();
-            subresourceRange.aspectMask(1);
-            subresourceRange.baseMipLevel(0);
-            subresourceRange.levelCount(1);
-            subresourceRange.baseArrayLayer(0);
-            subresourceRange.layerCount(1);
-            VkDependencyInfo depinfo = VkDependencyInfo.calloc(stack).sType$Default();
-            depinfo.pImageMemoryBarriers(imageBarrier);
-            KHRSynchronization2.vkCmdPipelineBarrier2KHR(blitCommandBuffer, depinfo);
-         } catch (Throwable var21) {
-            if (var8 != null) {
-               try {
-                  var8.close();
-               } catch (Throwable var18) {
-                  var21.addSuppressed(var18);
-               }
-            }
-
-            throw var21;
-         }
-
-         if (var8 != null) {
-            var8.close();
-         }
-
-         var8 = stack.push();
-
-         try {
-            int copyWidth = Math.min(this.swapchainWidth, textureView.getWidth(0));
-            int copyHeight = Math.min(this.swapchainHeight, textureView.getHeight(0));
-            org.lwjgl.vulkan.VkOffset3D.Buffer srcOffsets = VkOffset3D.calloc(2, stack);
-            srcOffsets.x(0).y(0).z(0);
-            srcOffsets.position(1);
-            srcOffsets.x(copyWidth).y(copyHeight).z(1);
-            srcOffsets.position(0);
-            org.lwjgl.vulkan.VkOffset3D.Buffer dstOffsets = VkOffset3D.calloc(2, stack);
-            dstOffsets.x(0).y(copyHeight).z(0);
-            dstOffsets.position(1);
-            dstOffsets.x(copyWidth).y(0).z(1);
-            dstOffsets.position(0);
-            VkImageSubresourceLayers srcSubresource = VkImageSubresourceLayers.calloc(stack);
-            srcSubresource.aspectMask(1);
-            srcSubresource.mipLevel(textureView.baseMipLevel());
-            srcSubresource.baseArrayLayer(0);
-            srcSubresource.layerCount(1);
-            VkImageSubresourceLayers dstSubresource = VkImageSubresourceLayers.calloc(stack);
-            dstSubresource.aspectMask(1);
-            dstSubresource.mipLevel(0);
-            dstSubresource.baseArrayLayer(0);
-            dstSubresource.layerCount(1);
-            org.lwjgl.vulkan.VkImageBlit.Buffer blitRegion = VkImageBlit.calloc(1, stack);
-            blitRegion.srcSubresource(srcSubresource);
-            blitRegion.srcOffsets(srcOffsets);
-            blitRegion.dstSubresource(dstSubresource);
-            blitRegion.dstOffsets(dstOffsets);
-            VK12.vkCmdBlitImage(blitCommandBuffer, ((VulkanGpuTexture)textureView.texture()).vkImage(), 1, swapchainImage, 7, blitRegion, 0);
-         } catch (Throwable var20) {
-            if (var8 != null) {
-               try {
-                  var8.close();
-               } catch (Throwable var17) {
-                  var20.addSuppressed(var17);
-               }
-            }
-
-            throw var20;
-         }
-
-         if (var8 != null) {
-            var8.close();
-         }
-
-         var8 = stack.push();
-
-         try {
-            org.lwjgl.vulkan.VkImageMemoryBarrier2.Buffer imageBarrier = VkImageMemoryBarrier2.calloc(1, stack).sType$Default();
-            imageBarrier.srcStageMask(4096L);
-            imageBarrier.srcAccessMask(4096L);
-            imageBarrier.dstStageMask(65536L);
-            imageBarrier.dstAccessMask(0L);
-            imageBarrier.oldLayout(7);
-            imageBarrier.newLayout(1000001002);
-            imageBarrier.srcQueueFamilyIndex(-1);
-            imageBarrier.dstQueueFamilyIndex(-1);
-            imageBarrier.image(swapchainImage);
-            VkImageSubresourceRange subresourceRange = imageBarrier.subresourceRange();
-            subresourceRange.aspectMask(1);
-            subresourceRange.baseMipLevel(0);
-            subresourceRange.levelCount(1);
-            subresourceRange.baseArrayLayer(0);
-            subresourceRange.layerCount(1);
-            org.lwjgl.vulkan.VkMemoryBarrier2.Buffer memoryBarrier = VkMemoryBarrier2.calloc(1, stack).sType$Default();
-            memoryBarrier.srcStageMask(4096L);
-            memoryBarrier.srcAccessMask(2048L);
-            memoryBarrier.dstStageMask(65536L);
-            memoryBarrier.dstAccessMask(98304L);
-            VkDependencyInfo depinfo = VkDependencyInfo.calloc(stack).sType$Default();
-            depinfo.pMemoryBarriers(memoryBarrier);
-            depinfo.pImageMemoryBarriers(imageBarrier);
-            KHRSynchronization2.vkCmdPipelineBarrier2KHR(blitCommandBuffer, depinfo);
-         } catch (Throwable var19) {
-            if (var8 != null) {
-               try {
-                  var8.close();
-               } catch (Throwable var16) {
-                  var19.addSuppressed(var16);
-               }
-            }
-
-            throw var19;
-         }
-
-         if (var8 != null) {
-            var8.close();
-         }
-
-         VulkanUtils.crashIfFailure(this.device, VK12.vkEndCommandBuffer(blitCommandBuffer), "Failed to end VkCommandBuffer");
-         vulkanCommandEncoder.waitSemaphore(this.acquireSemaphores[this.currentAcquireSemaphore], 0L, 65536L);
-         vulkanCommandEncoder.execute(blitCommandBuffer);
-         vulkanCommandEncoder.signalSemaphore(this.presentSemaphores[this.currentImageIndex], 0L, 4096L);
       }
+
+      assert this.currentImageIndex != -1;
+      VulkanCommandEncoder vulkanCommandEncoder = (VulkanCommandEncoder)commandEncoder;
+      VkCommandBuffer blitCommandBuffer = vulkanCommandEncoder.allocateAndBeginTransientCommandBuffer();
+      long swapchainImage = this.swapchainImages.getLong(this.currentImageIndex);
+      MemoryStack stack = MemoryStack.stackGet();
+      MemoryStack var8 = stack.push();
+
+      try {
+         org.lwjgl.vulkan.VkImageMemoryBarrier2.Buffer imageBarrier = VkImageMemoryBarrier2.calloc(1, stack).sType$Default();
+         imageBarrier.srcStageMask(0L);
+         imageBarrier.srcAccessMask(0L);
+         imageBarrier.dstStageMask(4096L);
+         imageBarrier.dstAccessMask(4096L);
+         imageBarrier.oldLayout(0);
+         imageBarrier.newLayout(7);
+         imageBarrier.srcQueueFamilyIndex(-1);
+         imageBarrier.dstQueueFamilyIndex(-1);
+         imageBarrier.image(swapchainImage);
+         VkImageSubresourceRange subresourceRange = imageBarrier.subresourceRange();
+         subresourceRange.aspectMask(1);
+         subresourceRange.baseMipLevel(0);
+         subresourceRange.levelCount(1);
+         subresourceRange.baseArrayLayer(0);
+         subresourceRange.layerCount(1);
+         VkDependencyInfo depinfo = VkDependencyInfo.calloc(stack).sType$Default();
+         depinfo.pImageMemoryBarriers(imageBarrier);
+         KHRSynchronization2.vkCmdPipelineBarrier2KHR(blitCommandBuffer, depinfo);
+      } catch (Throwable var21) {
+         if (var8 != null) {
+            try {
+               var8.close();
+            } catch (Throwable var18) {
+               var21.addSuppressed(var18);
+            }
+         }
+
+         throw var21;
+      }
+
+      if (var8 != null) {
+         var8.close();
+      }
+
+      var8 = stack.push();
+
+      try {
+         int copyWidth = Math.min(this.swapchainWidth, textureView.getWidth(0));
+         int copyHeight = Math.min(this.swapchainHeight, textureView.getHeight(0));
+         org.lwjgl.vulkan.VkOffset3D.Buffer srcOffsets = VkOffset3D.calloc(2, stack);
+         srcOffsets.x(0).y(0).z(0);
+         srcOffsets.position(1);
+         srcOffsets.x(copyWidth).y(copyHeight).z(1);
+         srcOffsets.position(0);
+         org.lwjgl.vulkan.VkOffset3D.Buffer dstOffsets = VkOffset3D.calloc(2, stack);
+         dstOffsets.x(0).y(copyHeight).z(0);
+         dstOffsets.position(1);
+         dstOffsets.x(copyWidth).y(0).z(1);
+         dstOffsets.position(0);
+         VkImageSubresourceLayers srcSubresource = VkImageSubresourceLayers.calloc(stack);
+         srcSubresource.aspectMask(1);
+         srcSubresource.mipLevel(textureView.baseMipLevel());
+         srcSubresource.baseArrayLayer(0);
+         srcSubresource.layerCount(1);
+         VkImageSubresourceLayers dstSubresource = VkImageSubresourceLayers.calloc(stack);
+         dstSubresource.aspectMask(1);
+         dstSubresource.mipLevel(0);
+         dstSubresource.baseArrayLayer(0);
+         dstSubresource.layerCount(1);
+         org.lwjgl.vulkan.VkImageBlit.Buffer blitRegion = VkImageBlit.calloc(1, stack);
+         blitRegion.srcSubresource(srcSubresource);
+         blitRegion.srcOffsets(srcOffsets);
+         blitRegion.dstSubresource(dstSubresource);
+         blitRegion.dstOffsets(dstOffsets);
+         VK12.vkCmdBlitImage(blitCommandBuffer, ((VulkanGpuTexture)textureView.texture()).vkImage(), 1, swapchainImage, 7, blitRegion, 0);
+      } catch (Throwable var20) {
+         if (var8 != null) {
+            try {
+               var8.close();
+            } catch (Throwable var17) {
+               var20.addSuppressed(var17);
+            }
+         }
+
+         throw var20;
+      }
+
+      if (var8 != null) {
+         var8.close();
+      }
+
+      var8 = stack.push();
+
+      try {
+         org.lwjgl.vulkan.VkImageMemoryBarrier2.Buffer imageBarrier = VkImageMemoryBarrier2.calloc(1, stack).sType$Default();
+         imageBarrier.srcStageMask(4096L);
+         imageBarrier.srcAccessMask(4096L);
+         imageBarrier.dstStageMask(65536L);
+         imageBarrier.dstAccessMask(0L);
+         imageBarrier.oldLayout(7);
+         imageBarrier.newLayout(1000001002);
+         imageBarrier.srcQueueFamilyIndex(-1);
+         imageBarrier.dstQueueFamilyIndex(-1);
+         imageBarrier.image(swapchainImage);
+         VkImageSubresourceRange subresourceRange = imageBarrier.subresourceRange();
+         subresourceRange.aspectMask(1);
+         subresourceRange.baseMipLevel(0);
+         subresourceRange.levelCount(1);
+         subresourceRange.baseArrayLayer(0);
+         subresourceRange.layerCount(1);
+         org.lwjgl.vulkan.VkMemoryBarrier2.Buffer memoryBarrier = VkMemoryBarrier2.calloc(1, stack).sType$Default();
+         memoryBarrier.srcStageMask(4096L);
+         memoryBarrier.srcAccessMask(2048L);
+         memoryBarrier.dstStageMask(65536L);
+         memoryBarrier.dstAccessMask(98304L);
+         VkDependencyInfo depinfo = VkDependencyInfo.calloc(stack).sType$Default();
+         depinfo.pMemoryBarriers(memoryBarrier);
+         depinfo.pImageMemoryBarriers(imageBarrier);
+         KHRSynchronization2.vkCmdPipelineBarrier2KHR(blitCommandBuffer, depinfo);
+      } catch (Throwable var19) {
+         if (var8 != null) {
+            try {
+               var8.close();
+            } catch (Throwable var16) {
+               var19.addSuppressed(var16);
+            }
+         }
+
+         throw var19;
+      }
+
+      if (var8 != null) {
+         var8.close();
+      }
+
+      VulkanUtils.crashIfFailure(this.device, VK12.vkEndCommandBuffer(blitCommandBuffer), "Failed to end VkCommandBuffer");
+      vulkanCommandEncoder.waitSemaphore(this.acquireSemaphores[this.currentAcquireSemaphore], 0L, 65536L);
+      vulkanCommandEncoder.execute(blitCommandBuffer);
+      vulkanCommandEncoder.signalSemaphore(this.presentSemaphores[this.currentImageIndex], 0L, 4096L);
    }
 
    @Override
    public void present() {
       if (this.swapchainOutOfDate) {
          throw new IllegalStateException("Attempt to use out of date swapchain");
-      } else {
-         MemoryStack stack = MemoryStack.stackPush();
+      }
 
-         try {
-            VkPresentInfoKHR presentInfo = VkPresentInfoKHR.calloc(stack).sType$Default();
-            presentInfo.pWaitSemaphores(stack.longs(this.presentSemaphores[this.currentImageIndex]));
-            presentInfo.swapchainCount(1);
-            presentInfo.pSwapchains(stack.longs(this.swapchain));
-            presentInfo.pImageIndices(stack.ints(this.currentImageIndex));
-            this.currentImageIndex = -1;
-            int result = KHRSwapchain.vkQueuePresentKHR(this.presentQueue, presentInfo);
-            if (result == -1000001004) {
-               this.swapchainSuboptimal = true;
-               this.swapchainOutOfDate = true;
-               this.eatenException = new SurfaceException("Failed to present image, swapchain out of date");
-            } else if (result == 1000001003) {
-               this.swapchainSuboptimal = true;
-            } else {
-               VulkanUtils.crashIfFailure(this.device, result, "Failed to present image");
-            }
-         } catch (Throwable var5) {
-            if (stack != null) {
-               try {
-                  stack.close();
-               } catch (Throwable var4) {
-                  var5.addSuppressed(var4);
-               }
-            }
+      MemoryStack stack = MemoryStack.stackPush();
 
-            throw var5;
+      try {
+         VkPresentInfoKHR presentInfo = VkPresentInfoKHR.calloc(stack).sType$Default();
+         presentInfo.pWaitSemaphores(stack.longs(this.presentSemaphores[this.currentImageIndex]));
+         presentInfo.swapchainCount(1);
+         presentInfo.pSwapchains(stack.longs(this.swapchain));
+         presentInfo.pImageIndices(stack.ints(this.currentImageIndex));
+         this.currentImageIndex = -1;
+         int result = KHRSwapchain.vkQueuePresentKHR(this.presentQueue, presentInfo);
+         if (result == -1000001004) {
+            this.swapchainSuboptimal = true;
+            this.swapchainOutOfDate = true;
+            this.eatenException = new SurfaceException("Failed to present image, swapchain out of date");
+         } else if (result == 1000001003) {
+            this.swapchainSuboptimal = true;
+         } else {
+            VulkanUtils.crashIfFailure(this.device, result, "Failed to present image");
          }
-
+      } catch (Throwable var5) {
          if (stack != null) {
-            stack.close();
+            try {
+               stack.close();
+            } catch (Throwable var4) {
+               var5.addSuppressed(var4);
+            }
          }
+
+         throw var5;
+      }
+
+      if (stack != null) {
+         stack.close();
       }
    }
 }

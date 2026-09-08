@@ -1,7 +1,6 @@
 package net.minecraft.world.level.block.entity;
 
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.Optional;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -61,10 +60,6 @@ public class BrewingStandBlockEntity extends BaseContainerBlockEntity implements
    private int totalFuel;
    private float speedMultiplier = 1.0F;
    protected final ContainerData dataAccess = new ContainerData() {
-      {
-         Objects.requireNonNull(BrewingStandBlockEntity.this);
-      }
-
       @Override
       public int get(final int dataId) {
          return switch (dataId) {
@@ -147,7 +142,7 @@ public class BrewingStandBlockEntity extends BaseContainerBlockEntity implements
             if (fuel.isEmpty()) {
                newFuel = fuelRemainder.create();
             } else {
-               Containers.dropItemStack(level, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), fuelRemainder.create());
+               Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), fuelRemainder.create());
             }
          }
 
@@ -171,7 +166,7 @@ public class BrewingStandBlockEntity extends BaseContainerBlockEntity implements
       } else if (brewable && entity.fuel > 0) {
          float speedMutliplier = entity.speedMultiplier > 0.0F ? entity.speedMultiplier : 1.0F;
          entity.fuel--;
-         entity.brewTime = (int)Math.ceil((double)(400.0F / speedMutliplier));
+         entity.brewTime = (int)Math.ceil(400.0F / speedMutliplier);
          entity.totalBrewTime = entity.brewTime;
          entity.ingredient = ingredient.getItem();
          setChanged(level, pos, selfState);
@@ -181,12 +176,12 @@ public class BrewingStandBlockEntity extends BaseContainerBlockEntity implements
       if (!Arrays.equals(newCount, entity.lastPotionCount)) {
          entity.lastPotionCount = newCount;
          BlockState state = selfState;
-         if (!(selfState.getBlock() instanceof BrewingStandBlock)) {
+         if (!(state.getBlock() instanceof BrewingStandBlock)) {
             return;
          }
 
          for (int i = 0; i < BrewingStandBlock.HAS_BOTTLE.length; i++) {
-            state = state.setValue(BrewingStandBlock.HAS_BOTTLE[i], Boolean.valueOf(newCount[i]));
+            state = state.setValue(BrewingStandBlock.HAS_BOTTLE[i], newCount[i]);
          }
 
          level.setBlock(pos, state, 2);
@@ -210,24 +205,24 @@ public class BrewingStandBlockEntity extends BaseContainerBlockEntity implements
       ItemStack ingredient = items.get(3);
       if (ingredient.isEmpty()) {
          return false;
-      } else {
-         RecipeManager recipeManager = serverLevel.recipeAccess();
-         if (!recipeManager.propertySet(RecipePropertySet.BREWING_REAGENTS).test(ingredient)) {
-            return false;
-         } else {
-            for (int dest = 0; dest < 3; dest++) {
-               ItemStack itemStack = items.get(dest);
-               if (!itemStack.isEmpty()) {
-                  Optional<RecipeHolder<BrewingRecipe>> recipe = entity.quickCheck.getRecipeFor(new BrewingInput(itemStack, ingredient), serverLevel);
-                  if (recipe.isPresent()) {
-                     return true;
-                  }
-               }
-            }
+      }
 
-            return false;
+      RecipeManager recipeManager = serverLevel.recipeAccess();
+      if (!recipeManager.propertySet(RecipePropertySet.BREWING_REAGENTS).test(ingredient)) {
+         return false;
+      }
+
+      for (int dest = 0; dest < 3; dest++) {
+         ItemStack itemStack = items.get(dest);
+         if (!itemStack.isEmpty()) {
+            Optional<RecipeHolder<BrewingRecipe>> recipe = entity.quickCheck.getRecipeFor(new BrewingInput(itemStack, ingredient), serverLevel);
+            if (recipe.isPresent()) {
+               return true;
+            }
          }
       }
+
+      return false;
    }
 
    private static void doBrew(final ServerLevel level, final BlockPos pos, final BrewingStandBlockEntity entity) {
@@ -247,7 +242,7 @@ public class BrewingStandBlockEntity extends BaseContainerBlockEntity implements
          if (ingredient.isEmpty()) {
             ingredient = remainder.create();
          } else {
-            Containers.dropItemStack(level, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), remainder.create());
+            Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), remainder.create());
          }
       }
 
@@ -286,14 +281,16 @@ public class BrewingStandBlockEntity extends BaseContainerBlockEntity implements
    public boolean canPlaceItem(final int slot, final ItemStack itemStack) {
       if (slot == 4) {
          return itemStack.has(DataComponents.BREWING_FUEL);
-      } else if (this.level == null) {
-         return false;
-      } else {
-         RecipeAccess recipeAccess = this.level.recipeAccess();
-         return slot == 3
-            ? recipeAccess.propertySet(RecipePropertySet.BREWING_REAGENTS).test(itemStack)
-            : PotionIngredient.isPotionInput(itemStack, recipeAccess) && this.getItem(slot).isEmpty();
       }
+
+      if (this.level == null) {
+         return false;
+      }
+
+      RecipeAccess recipeAccess = this.level.recipeAccess();
+      return slot == 3
+         ? recipeAccess.propertySet(RecipePropertySet.BREWING_REAGENTS).test(itemStack)
+         : PotionIngredient.isPotionInput(itemStack, recipeAccess) && this.getItem(slot).isEmpty();
    }
 
    @Override
@@ -306,7 +303,7 @@ public class BrewingStandBlockEntity extends BaseContainerBlockEntity implements
    }
 
    @Override
-   public boolean canPlaceItemThroughFace(final int slot, final ItemStack itemStack, @Nullable final Direction direction) {
+   public boolean canPlaceItemThroughFace(final int slot, final ItemStack itemStack, final @Nullable Direction direction) {
       return this.canPlaceItem(slot, itemStack);
    }
 

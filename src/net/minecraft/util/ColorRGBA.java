@@ -8,6 +8,6 @@ public record ColorRGBA(int rgba) {
 
    @Override
    public String toString() {
-      return HexFormat.of().toHexDigits((long)this.rgba, 8);
+      return HexFormat.of().toHexDigits(this.rgba, 8);
    }
 }

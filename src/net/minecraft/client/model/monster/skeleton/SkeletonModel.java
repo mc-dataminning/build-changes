@@ -100,8 +100,8 @@ public class SkeletonModel<S extends SkeletonRenderState> extends HumanoidModel<
       super.setupAnim(state);
       if (state.isAggressive && !state.isHoldingBow) {
          float swingAnimation = state.swingAnimation;
-         float swing2 = Mth.sin((double)(swingAnimation * (float) Math.PI));
-         float swing = Mth.sin((double)((1.0F - (1.0F - swingAnimation) * (1.0F - swingAnimation)) * (float) Math.PI));
+         float swing2 = Mth.sin(swingAnimation * (float) Math.PI);
+         float swing = Mth.sin((1.0F - (1.0F - swingAnimation) * (1.0F - swingAnimation)) * (float) Math.PI);
          this.rightArm.zRot = 0.0F;
          this.leftArm.zRot = 0.0F;
          this.rightArm.yRot = -(0.1F - swing2 * 0.6F);

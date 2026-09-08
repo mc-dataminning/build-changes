@@ -25,17 +25,17 @@ public class ItemCustomNameToComponentFix extends DataFix {
          "ItemCustomNameToComponentFix",
          itemStackType,
          itemStack -> itemStack.updateTyped(
-               tagFinder,
-               tag -> tag.updateTyped(
-                     displayFinder,
-                     display -> display.updateTyped(
-                           customNameFinder,
-                           customName -> customName.update(
-                                 textComponentFinder, textComponent -> textComponent.mapSecond(LegacyComponentDataFixUtils::createTextComponentJson)
-                              )
-                        )
+            tagFinder,
+            tag -> tag.updateTyped(
+               displayFinder,
+               display -> display.updateTyped(
+                  customNameFinder,
+                  customName -> customName.update(
+                     textComponentFinder, textComponent -> textComponent.mapSecond(LegacyComponentDataFixUtils::createTextComponentJson)
                   )
+               )
             )
+         )
       );
    }
 }

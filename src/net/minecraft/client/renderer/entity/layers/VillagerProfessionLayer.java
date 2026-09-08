@@ -97,12 +97,12 @@ public class VillagerProfessionLayer<S extends LivingEntityRenderState & Village
          ? VillagerMetadataSection.Hat.NONE
          : (VillagerMetadataSection.Hat)cache.computeIfAbsent(
             key, k -> this.resourceManager.getResource(this.getIdentifier(name, key.identifier())).flatMap(resource -> {
-                  try {
-                     return resource.metadata().getSection(VillagerMetadataSection.TYPE).map(VillagerMetadataSection::hat);
-                  } catch (IOException var2x) {
-                     return Optional.empty();
-                  }
-               }).orElse(VillagerMetadataSection.Hat.NONE)
+               try {
+                  return resource.metadata().getSection(VillagerMetadataSection.TYPE).map(VillagerMetadataSection::hat);
+               } catch (IOException ignored) {
+                  return Optional.empty();
+               }
+            }).orElse(VillagerMetadataSection.Hat.NONE)
          );
    }
 }

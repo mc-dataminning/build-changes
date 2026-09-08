@@ -15,9 +15,9 @@ public record UseCycle(float period) implements RangeSelectItemModelProperty {
    );
 
    @Override
-   public float get(final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final ItemOwner owner, final int seed) {
+   public float get(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable ItemOwner owner, final int seed) {
       LivingEntity entity = owner == null ? null : owner.asLivingEntity();
-      return entity != null && entity.getUseItem() == itemStack ? (float)entity.getUseItemRemainingTicks() % this.period : 0.0F;
+      return entity != null && entity.getUseItem() == itemStack ? entity.getUseItemRemainingTicks() % this.period : 0.0F;
    }
 
    @Override

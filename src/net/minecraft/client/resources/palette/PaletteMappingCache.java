@@ -6,7 +6,6 @@ import com.google.common.cache.LoadingCache;
 import com.mojang.logging.LogUtils;
 import java.time.Duration;
 import java.util.Map;
-import java.util.Objects;
 import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 
@@ -19,10 +18,6 @@ public class PaletteMappingCache {
          .expireAfterAccess(Duration.ofMinutes(5L))
          .maximumSize(256L)
          .build(new CacheLoader<PaletteMappingCache.IdPair, PaletteMapping>() {
-            {
-               Objects.requireNonNull(PaletteMappingCache.this);
-            }
-
             public PaletteMapping load(final PaletteMappingCache.IdPair pair) {
                Palette basePalette = palettes.get(pair.base);
                Palette targetPalette = palettes.get(pair.target);
@@ -46,6 +41,6 @@ public class PaletteMappingCache {
       return (PaletteMapping)this.cache.getUnchecked(new PaletteMappingCache.IdPair(baseId, targetId));
    }
 
-   private static record IdPair(Identifier base, Identifier target) {
+   private record IdPair(Identifier base, Identifier target) {
    }
 }

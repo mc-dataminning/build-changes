@@ -114,63 +114,63 @@ public class ChunkGeneratorStructureState {
    private CompletableFuture<List<ChunkPos>> generateRingPositions(final Holder<StructureSet> structureSet, final ConcentricRingsStructurePlacement placement) {
       if (placement.count() == 0) {
          return CompletableFuture.completedFuture(List.of());
-      } else {
-         Stopwatch stopwatch = Stopwatch.createStarted(Util.TICKER);
-         int distance = placement.distance();
-         int count = placement.count();
-         List<CompletableFuture<ChunkPos>> tasks = new ArrayList<>(count);
-         int spread = placement.spread();
-         HolderSet<Biome> preferredBiomes = placement.preferredBiomes();
-         RandomSource random = RandomSource.create();
-         random.setSeed(this.concentricRingsSeed);
-         double angle = random.nextDouble() * Math.PI * 2.0;
-         int positionInCircle = 0;
-         int circle = 0;
-
-         for (int i = 0; i < count; i++) {
-            double dist = (double)(4 * distance + distance * circle * 6) + (random.nextDouble() - 0.5) * (double)distance * 2.5;
-            int initialX = (int)Math.round(Math.cos(angle) * dist);
-            int initialZ = (int)Math.round(Math.sin(angle) * dist);
-            RandomSource biomeSearchGenerator = random.fork();
-            tasks.add(
-               CompletableFuture.supplyAsync(
-                  () -> {
-                     Pair<BlockPos, Holder<Biome>> closestBiome = this.biomeSource
-                        .findBiomeHorizontal(
-                           SectionPos.sectionToBlockCoord(initialX, 8),
-                           0,
-                           SectionPos.sectionToBlockCoord(initialZ, 8),
-                           112,
-                           preferredBiomes::contains,
-                           biomeSearchGenerator,
-                           this.randomState
-                        );
-                     if (closestBiome != null) {
-                        BlockPos position = (BlockPos)closestBiome.getFirst();
-                        return new ChunkPos(SectionPos.blockToSectionCoord(position.getX()), SectionPos.blockToSectionCoord(position.getZ()));
-                     } else {
-                        return new ChunkPos(initialX, initialZ);
-                     }
-                  },
-                  Util.backgroundExecutor().forName("structureRings")
-               )
-            );
-            angle += (Math.PI * 2) / (double)spread;
-            if (++positionInCircle == spread) {
-               circle++;
-               positionInCircle = 0;
-               spread += 2 * spread / (circle + 1);
-               spread = Math.min(spread, count - i);
-               angle += random.nextDouble() * Math.PI * 2.0;
-            }
-         }
-
-         return Util.sequence(tasks).thenApply(ringPositions -> {
-            double elapsedSeconds = (double)stopwatch.stop().elapsed(TimeUnit.MILLISECONDS) / 1000.0;
-            LOGGER.debug("Calculation for {} took {}s", structureSet, elapsedSeconds);
-            return ringPositions;
-         });
       }
+
+      Stopwatch stopwatch = Stopwatch.createStarted(Util.TICKER);
+      int distance = placement.distance();
+      int count = placement.count();
+      List<CompletableFuture<ChunkPos>> tasks = new ArrayList<>(count);
+      int spread = placement.spread();
+      HolderSet<Biome> preferredBiomes = placement.preferredBiomes();
+      RandomSource random = RandomSource.create();
+      random.setSeed(this.concentricRingsSeed);
+      double angle = random.nextDouble() * Math.PI * 2.0;
+      int positionInCircle = 0;
+      int circle = 0;
+
+      for (int i = 0; i < count; i++) {
+         double dist = 4 * distance + distance * circle * 6 + (random.nextDouble() - 0.5) * (distance * 2.5);
+         int initialX = (int)Math.round(Math.cos(angle) * dist);
+         int initialZ = (int)Math.round(Math.sin(angle) * dist);
+         RandomSource biomeSearchGenerator = random.fork();
+         tasks.add(
+            CompletableFuture.supplyAsync(
+               () -> {
+                  Pair<BlockPos, Holder<Biome>> closestBiome = this.biomeSource
+                     .findBiomeHorizontal(
+                        SectionPos.sectionToBlockCoord(initialX, 8),
+                        0,
+                        SectionPos.sectionToBlockCoord(initialZ, 8),
+                        112,
+                        preferredBiomes::contains,
+                        biomeSearchGenerator,
+                        this.randomState
+                     );
+                  if (closestBiome != null) {
+                     BlockPos position = (BlockPos)closestBiome.getFirst();
+                     return new ChunkPos(SectionPos.blockToSectionCoord(position.getX()), SectionPos.blockToSectionCoord(position.getZ()));
+                  } else {
+                     return new ChunkPos(initialX, initialZ);
+                  }
+               },
+               Util.backgroundExecutor().forName("structureRings")
+            )
+         );
+         angle += (Math.PI * 2) / spread;
+         if (++positionInCircle == spread) {
+            circle++;
+            positionInCircle = 0;
+            spread += 2 * spread / (circle + 1);
+            spread = Math.min(spread, count - i);
+            angle += random.nextDouble() * Math.PI * 2.0;
+         }
+      }
+
+      return Util.sequence(tasks).thenApply(ringPositions -> {
+         double elapsedSeconds = stopwatch.stop().elapsed(TimeUnit.MILLISECONDS) / 1000.0;
+         LOGGER.debug("Calculation for {} took {}s", structureSet, elapsedSeconds);
+         return ringPositions;
+      });
    }
 
    public ChunkPos getDimensionOrigin() {
@@ -184,8 +184,7 @@ public class ChunkGeneratorStructureState {
       }
    }
 
-   @Nullable
-   public List<ChunkPos> getRingPositionsFor(final ConcentricRingsStructurePlacement placement) {
+   public @Nullable List<ChunkPos> getRingPositionsFor(final ConcentricRingsStructurePlacement placement) {
       this.ensureStructuresGenerated();
       CompletableFuture<List<ChunkPos>> result = this.ringPositions.get(placement);
       return result != null ? result.join() : null;

@@ -62,7 +62,7 @@ public class CombatTracker {
          : Component.translatable(messageWithoutItem, this.mob.getDisplayName(), attackerName);
    }
 
-   private Component getFallMessage(final CombatEntry knockOffEntry, @Nullable final Entity killingEntity) {
+   private Component getFallMessage(final CombatEntry knockOffEntry, final @Nullable Entity killingEntity) {
       DamageSource knockOffSource = knockOffEntry.source();
       if (!knockOffSource.is(DamageTypeTags.IS_FALL) && !knockOffSource.is(DamageTypeTags.ALWAYS_MOST_SIGNIFICANT_FALL)) {
          Component killerName = getDisplayName(killingEntity);
@@ -71,9 +71,9 @@ public class CombatTracker {
          if (attackerName != null && !attackerName.equals(killerName)) {
             return this.getMessageForAssistedFall(attackerEntity, attackerName, "death.fell.assist.item", "death.fell.assist");
          } else {
-            return (Component)(killerName != null
+            return killerName != null
                ? this.getMessageForAssistedFall(killingEntity, killerName, "death.fell.finish.item", "death.fell.finish")
-               : Component.translatable("death.fell.killer", this.mob.getDisplayName()));
+               : Component.translatable("death.fell.killer", this.mob.getDisplayName());
          }
       } else {
          FallLocation fallLocation = Objects.requireNonNullElse(knockOffEntry.fallLocation(), FallLocation.GENERIC);
@@ -81,8 +81,7 @@ public class CombatTracker {
       }
    }
 
-   @Nullable
-   private static Component getDisplayName(@Nullable final Entity entity) {
+   private static @Nullable Component getDisplayName(final @Nullable Entity entity) {
       return entity == null ? null : entity.getDisplayName();
    }
 
@@ -106,8 +105,7 @@ public class CombatTracker {
       }
    }
 
-   @Nullable
-   private CombatEntry getMostSignificantFall() {
+   private @Nullable CombatEntry getMostSignificantFall() {
       CombatEntry result = null;
       CombatEntry alternative = null;
       float altDamage = 0.0F;

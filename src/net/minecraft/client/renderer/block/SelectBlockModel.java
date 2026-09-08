@@ -32,16 +32,14 @@ public class SelectBlockModel<T> implements BlockModel {
 
    @FunctionalInterface
    public interface ModelSelector<T> {
-      @Nullable
-      BlockModel get(@Nullable T value);
+      @Nullable BlockModel get(@Nullable T value);
    }
 
-   public static record SwitchCase<T>(List<T> values, BlockModel.Unbaked model) {
+   public record SwitchCase<T>(List<T> values, BlockModel.Unbaked model) {
    }
 
-   public static record Unbaked(
-      Optional<Transformation> transformation, SelectBlockModel.UnbakedSwitch<?, ?> unbakedSwitch, Optional<BlockModel.Unbaked> fallback
-   ) implements BlockModel.Unbaked {
+   public record Unbaked(Optional<Transformation> transformation, SelectBlockModel.UnbakedSwitch<?, ?> unbakedSwitch, Optional<BlockModel.Unbaked> fallback)
+      implements BlockModel.Unbaked {
       @Override
       public BlockModel bake(final BlockModel.BakingContext context, final Matrix4fc transformation) {
          Matrix4fc childTransform = Transformation.compose(transformation, this.transformation);
@@ -50,7 +48,7 @@ public class SelectBlockModel<T> implements BlockModel {
       }
    }
 
-   public static record UnbakedSwitch<P extends SelectBlockModelProperty<T>, T>(P property, List<SelectBlockModel.SwitchCase<T>> cases) {
+   public record UnbakedSwitch<P extends SelectBlockModelProperty<T>, T>(P property, List<SelectBlockModel.SwitchCase<T>> cases) {
       public BlockModel bake(final BlockModel.BakingContext context, final Matrix4fc transformation, final BlockModel fallback) {
          Object2ObjectMap<T, BlockModel> bakedModels = new Object2ObjectOpenHashMap();
 

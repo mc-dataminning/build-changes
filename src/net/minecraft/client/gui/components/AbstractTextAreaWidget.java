@@ -50,7 +50,7 @@ public abstract class AbstractTextAreaWidget extends AbstractScrollArea {
       boolean isDown = event.isDown();
       if (isUp || isDown) {
          double previousScrollAmount = this.scrollAmount();
-         this.setScrollAmount(this.scrollAmount() + (double)(isUp ? -1 : 1) * this.scrollRate());
+         this.setScrollAmount(this.scrollAmount() + (isUp ? -1 : 1) * this.scrollRate());
          if (previousScrollAmount != this.scrollAmount()) {
             return true;
          }
@@ -94,10 +94,10 @@ public abstract class AbstractTextAreaWidget extends AbstractScrollArea {
    public boolean isMouseOver(final double mouseX, final double mouseY) {
       return this.active
          && this.visible
-         && mouseX >= (double)this.getX()
-         && mouseY >= (double)this.getY()
-         && mouseX < (double)(this.getRight() + this.scrollbarWidth())
-         && mouseY < (double)this.getBottom();
+         && mouseX >= this.getX()
+         && mouseY >= this.getY()
+         && mouseX < this.getRight() + this.scrollbarWidth()
+         && mouseY < this.getBottom();
    }
 
    @Override
@@ -120,7 +120,7 @@ public abstract class AbstractTextAreaWidget extends AbstractScrollArea {
    }
 
    protected boolean withinContentAreaTopBottom(final int top, final int bottom) {
-      return (double)bottom - this.scrollAmount() >= (double)this.getY() && (double)top - this.scrollAmount() <= (double)(this.getY() + this.height);
+      return bottom - this.scrollAmount() >= this.getY() && top - this.scrollAmount() <= this.getY() + this.height;
    }
 
    protected abstract int getInnerHeight();

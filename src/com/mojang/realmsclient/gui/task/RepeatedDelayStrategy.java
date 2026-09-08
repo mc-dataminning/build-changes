@@ -34,7 +34,7 @@ public interface RepeatedDelayStrategy {
          @Override
          public long delayCyclesAfterFailure() {
             this.failureCount++;
-            long expandedDelay = Math.min(1L << this.failureCount, (long)maxBackoff);
+            long expandedDelay = Math.min(1L << this.failureCount, maxBackoff);
             LOGGER.debug("Skipping for {} extra cycles", expandedDelay);
             return expandedDelay;
          }

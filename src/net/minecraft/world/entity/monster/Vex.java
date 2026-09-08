@@ -1,7 +1,6 @@
 package net.minecraft.world.entity.monster;
 
 import java.util.EnumSet;
-import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -50,10 +49,8 @@ public class Vex extends Monster implements TraceableEntity, OwnableEntity {
    public static final int TICKS_PER_FLAP = Mth.ceil((float) (Math.PI * 5.0 / 4.0));
    protected static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(Vex.class, EntityDataSerializers.BYTE);
    private static final int FLAG_IS_CHARGING = 1;
-   @Nullable
-   private EntityReference<LivingEntity> owner;
-   @Nullable
-   private BlockPos boundOrigin;
+   private @Nullable EntityReference<LivingEntity> owner;
+   private @Nullable BlockPos boundOrigin;
    private boolean hasLimitedLife;
    private int limitedLifeTicks;
 
@@ -135,24 +132,21 @@ public class Vex extends Monster implements TraceableEntity, OwnableEntity {
       EntityReference.store(this.owner, output, "owner");
    }
 
-   @Nullable
    @Override
-   public LivingEntity getOwner() {
+   public @Nullable LivingEntity getOwner() {
       return OwnableEntity.super.getOwner();
    }
 
-   @Nullable
    @Override
-   public EntityReference<LivingEntity> getOwnerReference() {
+   public @Nullable EntityReference<LivingEntity> getOwnerReference() {
       return this.owner;
    }
 
-   @Nullable
-   public BlockPos getBoundOrigin() {
+   public @Nullable BlockPos getBoundOrigin() {
       return this.boundOrigin;
    }
 
-   public void setBoundOrigin(@Nullable final BlockPos boundOrigin) {
+   public void setBoundOrigin(final @Nullable BlockPos boundOrigin) {
       this.boundOrigin = boundOrigin;
    }
 
@@ -209,10 +203,9 @@ public class Vex extends Monster implements TraceableEntity, OwnableEntity {
       return 1.0F;
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+   public @Nullable SpawnGroupData finalizeSpawn(
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       RandomSource random = level.getRandom();
       this.populateDefaultEquipmentSlots(random, difficulty);
@@ -228,8 +221,6 @@ public class Vex extends Monster implements TraceableEntity, OwnableEntity {
 
    private class VexChargeAttackGoal extends Goal {
       public VexChargeAttackGoal() {
-         Objects.requireNonNull(Vex.this);
-         super();
          this.setFlags(EnumSet.of(Goal.Flag.MOVE));
       }
 
@@ -287,21 +278,15 @@ public class Vex extends Monster implements TraceableEntity, OwnableEntity {
    }
 
    private class VexCopyOwnerTargetGoal extends TargetGoal {
-      private final TargetingConditions copyOwnerTargeting;
+      private final TargetingConditions copyOwnerTargeting = TargetingConditions.forNonCombat().ignoreLineOfSight().ignoreInvisibilityTesting();
 
       public VexCopyOwnerTargetGoal(final PathfinderMob mob) {
-         Objects.requireNonNull(Vex.this);
          super(mob, false);
-         this.copyOwnerTargeting = TargetingConditions.forNonCombat().ignoreLineOfSight().ignoreInvisibilityTesting();
       }
 
       @Override
       public boolean canUse() {
-         if (Vex.this.getOwner() instanceof Targeting owner && owner.getTarget() != null && this.canAttack(owner.getTarget(), this.copyOwnerTargeting)) {
-            return true;
-         }
-
-         return false;
+         return Vex.this.getOwner() instanceof Targeting owner && owner.getTarget() != null && this.canAttack(owner.getTarget(), this.copyOwnerTargeting);
       }
 
       @Override
@@ -313,7 +298,6 @@ public class Vex extends Monster implements TraceableEntity, OwnableEntity {
 
    private class VexMoveControl<T extends Mob> extends MoveControl<T> {
       public VexMoveControl(final T vex) {
-         Objects.requireNonNull(Vex.this);
          super(vex);
       }
 
@@ -344,8 +328,6 @@ public class Vex extends Monster implements TraceableEntity, OwnableEntity {
 
    private class VexRandomMoveGoal extends Goal {
       public VexRandomMoveGoal() {
-         Objects.requireNonNull(Vex.this);
-         super();
          this.setFlags(EnumSet.of(Goal.Flag.MOVE));
       }
 
@@ -369,9 +351,9 @@ public class Vex extends Monster implements TraceableEntity, OwnableEntity {
          for (int attempts = 0; attempts < 3; attempts++) {
             BlockPos testPos = boundOrigin.offset(Vex.this.random.nextInt(15) - 7, Vex.this.random.nextInt(11) - 5, Vex.this.random.nextInt(15) - 7);
             if (Vex.this.level().isEmptyBlock(testPos)) {
-               Vex.this.moveControl.setWantedPosition((double)testPos.getX() + 0.5, (double)testPos.getY() + 0.5, (double)testPos.getZ() + 0.5, 0.25);
+               Vex.this.moveControl.setWantedPosition(testPos.getX() + 0.5, testPos.getY() + 0.5, testPos.getZ() + 0.5, 0.25);
                if (Vex.this.getTarget() == null) {
-                  Vex.this.getLookControl().setLookAt((double)testPos.getX() + 0.5, (double)testPos.getY() + 0.5, (double)testPos.getZ() + 0.5, 180.0F, 20.0F);
+                  Vex.this.getLookControl().setLookAt(testPos.getX() + 0.5, testPos.getY() + 0.5, testPos.getZ() + 0.5, 180.0F, 20.0F);
                }
                break;
             }

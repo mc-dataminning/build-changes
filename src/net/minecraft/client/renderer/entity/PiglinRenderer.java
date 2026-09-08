@@ -48,7 +48,7 @@ public class PiglinRenderer extends HumanoidMobRenderer<AbstractPiglin, PiglinRe
       super.extractRenderState(entity, state, partialTicks);
       state.isBrute = entity.is(EntityTypes.PIGLIN_BRUTE);
       state.armPose = entity.getArmPose();
-      state.maxCrossbowChageDuration = (float)CrossbowItem.getChargeDuration(entity.getUseItem(), entity);
+      state.maxCrossbowChageDuration = CrossbowItem.getChargeDuration(entity.getUseItem(), entity);
       state.isConverting = entity.isConverting();
    }
 

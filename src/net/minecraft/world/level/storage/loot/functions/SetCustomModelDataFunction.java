@@ -26,15 +26,15 @@ public class SetCustomModelDataFunction extends LootItemConditionalFunction {
    );
    public static final MapCodec<SetCustomModelDataFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
-            .and(
-               i.group(
-                  ListOperation.StandAlone.codec(ContextFloatProviders.CODEC, Integer.MAX_VALUE).optionalFieldOf("floats").forGetter(o -> o.floats),
-                  ListOperation.StandAlone.codec(Codec.BOOL, Integer.MAX_VALUE).optionalFieldOf("flags").forGetter(o -> o.flags),
-                  ListOperation.StandAlone.codec(Codec.STRING, Integer.MAX_VALUE).optionalFieldOf("strings").forGetter(o -> o.strings),
-                  ListOperation.StandAlone.codec(COLOR_PROVIDER_CODEC, Integer.MAX_VALUE).optionalFieldOf("colors").forGetter(o -> o.colors)
-               )
+         .and(
+            i.group(
+               ListOperation.StandAlone.codec(ContextFloatProviders.CODEC, Integer.MAX_VALUE).optionalFieldOf("floats").forGetter(o -> o.floats),
+               ListOperation.StandAlone.codec(Codec.BOOL, Integer.MAX_VALUE).optionalFieldOf("flags").forGetter(o -> o.flags),
+               ListOperation.StandAlone.codec(Codec.STRING, Integer.MAX_VALUE).optionalFieldOf("strings").forGetter(o -> o.strings),
+               ListOperation.StandAlone.codec(COLOR_PROVIDER_CODEC, Integer.MAX_VALUE).optionalFieldOf("colors").forGetter(o -> o.colors)
             )
-            .apply(i, SetCustomModelDataFunction::new)
+         )
+         .apply(i, SetCustomModelDataFunction::new)
    );
    private final Optional<ListOperation.StandAlone<Holder<ContextFloatProvider>>> floats;
    private final Optional<ListOperation.StandAlone<Boolean>> flags;

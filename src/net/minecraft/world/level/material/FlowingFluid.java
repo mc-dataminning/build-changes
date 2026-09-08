@@ -7,7 +7,6 @@ import it.unimi.dsi.fastutil.shorts.Short2BooleanOpenHashMap;
 import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
 import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Map.Entry;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.BlockPos;
@@ -78,17 +77,17 @@ public abstract class FlowingFluid extends Fluid {
             }
 
             if (distance != 0.0F) {
-               flowX += (double)((float)direction.getStepX() * distance);
-               flowZ += (double)((float)direction.getStepZ() * distance);
+               flowX += direction.getStepX() * distance;
+               flowZ += direction.getStepZ() * distance;
             }
          }
       }
 
       Vec3 flow = new Vec3(flowX, 0.0, flowZ);
       if (fluidState.getValue(FALLING)) {
-         for (Direction directionx : Direction.Plane.HORIZONTAL) {
-            blockPos.setWithOffset(pos, directionx);
-            if (this.isSolidFace(level, blockPos, directionx) || this.isSolidFace(level, blockPos.above(), directionx)) {
+         for (Direction direction : Direction.Plane.HORIZONTAL) {
+            blockPos.setWithOffset(pos, direction);
+            if (this.isSolidFace(level, blockPos, direction) || this.isSolidFace(level, blockPos.above(), direction)) {
                flow = flow.normalize().add(0.0, -6.0, 0.0);
                break;
             }
@@ -188,10 +187,10 @@ public abstract class FlowingFluid extends Fluid {
       FluidState aboveFluid = aboveState.getFluidState();
       if (!aboveFluid.isEmpty() && aboveFluid.getType().isSame(this) && canPassThroughWall(Direction.UP, level, pos, state, abovePos, aboveState)) {
          return this.getFlowing(8, true);
-      } else {
-         int amount = highestNeighbor - this.getDropOff(level);
-         return amount <= 0 ? Fluids.EMPTY.defaultFluidState() : this.getFlowing(amount, false);
       }
+
+      int amount = highestNeighbor - this.getDropOff(level);
+      return amount <= 0 ? Fluids.EMPTY.defaultFluidState() : this.getFlowing(amount, false);
    }
 
    private static boolean canPassThroughWall(
@@ -206,43 +205,45 @@ public abstract class FlowingFluid extends Fluid {
          VoxelShape targetShape = targetState.getCollisionShape(level, targetPos);
          if (targetShape == Shapes.block()) {
             return false;
-         } else {
-            VoxelShape sourceShape = sourceState.getCollisionShape(level, sourcePos);
-            if (sourceShape == Shapes.block()) {
-               return false;
-            } else if (sourceShape == Shapes.empty() && targetShape == Shapes.empty()) {
-               return true;
-            } else {
-               Object2ByteLinkedOpenHashMap<FlowingFluid.BlockStatePairKey> cache;
-               if (!sourceState.getBlock().hasDynamicShape() && !targetState.getBlock().hasDynamicShape()) {
-                  cache = OCCLUSION_CACHE.get();
-               } else {
-                  cache = null;
-               }
-
-               FlowingFluid.BlockStatePairKey key;
-               if (cache != null) {
-                  key = new FlowingFluid.BlockStatePairKey(sourceState, targetState, direction);
-                  byte cached = cache.getAndMoveToFirst(key);
-                  if (cached != 127) {
-                     return cached != 0;
-                  }
-               } else {
-                  key = null;
-               }
-
-               boolean result = !Shapes.mergedFaceOccludes(sourceShape, targetShape, direction);
-               if (cache != null) {
-                  if (cache.size() == 200) {
-                     cache.removeLastByte();
-                  }
-
-                  cache.putAndMoveToFirst(key, (byte)(result ? 1 : 0));
-               }
-
-               return result;
-            }
          }
+
+         VoxelShape sourceShape = sourceState.getCollisionShape(level, sourcePos);
+         if (sourceShape == Shapes.block()) {
+            return false;
+         }
+
+         if (sourceShape == Shapes.empty() && targetShape == Shapes.empty()) {
+            return true;
+         }
+
+         Object2ByteLinkedOpenHashMap<FlowingFluid.BlockStatePairKey> cache;
+         if (!sourceState.getBlock().hasDynamicShape() && !targetState.getBlock().hasDynamicShape()) {
+            cache = OCCLUSION_CACHE.get();
+         } else {
+            cache = null;
+         }
+
+         FlowingFluid.BlockStatePairKey key;
+         if (cache != null) {
+            key = new FlowingFluid.BlockStatePairKey(sourceState, targetState, direction);
+            byte cached = cache.getAndMoveToFirst(key);
+            if (cached != 127) {
+               return cached != 0;
+            }
+         } else {
+            key = null;
+         }
+
+         boolean result = !Shapes.mergedFaceOccludes(sourceShape, targetShape, direction);
+         if (cache != null) {
+            if (cache.size() == 200) {
+               cache.removeLastByte();
+            }
+
+            cache.putAndMoveToFirst(key, (byte)(result ? 1 : 0));
+         }
+
+         return result;
       } else {
          return false;
       }
@@ -251,13 +252,13 @@ public abstract class FlowingFluid extends Fluid {
    public abstract Fluid getFlowing();
 
    public FluidState getFlowing(final int amount, final boolean falling) {
-      return this.getFlowing().defaultFluidState().setValue(LEVEL, Integer.valueOf(amount)).setValue(FALLING, Boolean.valueOf(falling));
+      return this.getFlowing().defaultFluidState().setValue(LEVEL, amount).setValue(FALLING, falling);
    }
 
    public abstract Fluid getSource();
 
    public FluidState getSource(final boolean falling) {
-      return this.getSource().defaultFluidState().setValue(FALLING, Boolean.valueOf(falling));
+      return this.getSource().defaultFluidState().setValue(FALLING, falling);
    }
 
    protected abstract boolean canConvertToSource(ServerLevel level);
@@ -433,9 +434,9 @@ public abstract class FlowingFluid extends Fluid {
             level.setBlockAndUpdate(pos, blockState);
          } else if (newFluidState != fluidState) {
             fluidState = newFluidState;
-            blockState = newFluidState.createLegacyBlock();
+            blockState = fluidState.createLegacyBlock();
             level.setBlockAndUpdate(pos, blockState);
-            level.scheduleTick(pos, newFluidState.getType(), tickDelay);
+            level.scheduleTick(pos, fluidState.getType(), tickDelay);
          }
       }
 
@@ -457,7 +458,7 @@ public abstract class FlowingFluid extends Fluid {
 
    @Override
    public float getOwnHeight(final FluidState fluidState) {
-      return (float)fluidState.getAmount() / 9.0F;
+      return fluidState.getAmount() / 9.0F;
    }
 
    @Override
@@ -467,17 +468,13 @@ public abstract class FlowingFluid extends Fluid {
    public VoxelShape getShape(final FluidState state, final BlockGetter level, final BlockPos pos) {
       return state.getAmount() == 9 && hasSameAbove(state, level, pos)
          ? Shapes.block()
-         : this.shapes.computeIfAbsent(state, fluidState -> Shapes.box(0.0, 0.0, 0.0, 1.0, (double)fluidState.getHeight(level, pos), 1.0));
+         : this.shapes.computeIfAbsent(state, fluidState -> Shapes.box(0.0, 0.0, 0.0, 1.0, fluidState.getHeight(level, pos), 1.0));
    }
 
-   private static record BlockStatePairKey(BlockState first, BlockState second, Direction direction) {
+   private record BlockStatePairKey(BlockState first, BlockState second, Direction direction) {
       @Override
       public boolean equals(final Object o) {
-         if (o instanceof FlowingFluid.BlockStatePairKey that && this.first == that.first && this.second == that.second && this.direction == that.direction) {
-            return true;
-         }
-
-         return false;
+         return o instanceof FlowingFluid.BlockStatePairKey that && this.first == that.first && this.second == that.second && this.direction == that.direction;
       }
 
       @Override
@@ -491,14 +488,10 @@ public abstract class FlowingFluid extends Fluid {
    protected class SpreadContext {
       private final BlockGetter level;
       private final BlockPos origin;
-      private final Short2ObjectMap<BlockState> stateCache;
-      private final Short2BooleanMap holeCache;
+      private final Short2ObjectMap<BlockState> stateCache = new Short2ObjectOpenHashMap();
+      private final Short2BooleanMap holeCache = new Short2BooleanOpenHashMap();
 
       private SpreadContext(final BlockGetter level, final BlockPos origin) {
-         Objects.requireNonNull(FlowingFluid.this);
-         super();
-         this.stateCache = new Short2ObjectOpenHashMap();
-         this.holeCache = new Short2BooleanOpenHashMap();
          this.level = level;
          this.origin = origin;
       }

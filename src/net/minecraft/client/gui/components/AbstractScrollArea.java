@@ -29,23 +29,23 @@ public abstract class AbstractScrollArea extends AbstractWidget {
    public boolean mouseScrolled(final double mx, final double my, final double scrollX, final double scrollY) {
       if (!this.visible) {
          return false;
-      } else {
-         this.setScrollAmount(this.scrollAmount() - scrollY * this.scrollRate());
-         return true;
       }
+
+      this.setScrollAmount(this.scrollAmount() - scrollY * this.scrollRate());
+      return true;
    }
 
    @Override
    public boolean mouseDragged(final MouseButtonEvent event, final double dx, final double dy) {
       if (this.scrolling) {
-         if (event.y() < (double)this.getY()) {
+         if (event.y() < this.getY()) {
             this.setScrollAmount(0.0);
-         } else if (event.y() > (double)this.getBottom()) {
-            this.setScrollAmount((double)this.maxScrollAmount());
+         } else if (event.y() > this.getBottom()) {
+            this.setScrollAmount(this.maxScrollAmount());
          } else {
-            double max = (double)Math.max(1, this.maxScrollAmount());
+            double max = Math.max(1, this.maxScrollAmount());
             int barHeight = this.scrollerHeight();
-            double yDragScale = Math.max(1.0, max / (double)(this.height - barHeight));
+            double yDragScale = Math.max(1.0, max / (this.height - barHeight));
             this.setScrollAmount(this.scrollAmount() + dy * yDragScale);
          }
 
@@ -65,7 +65,7 @@ public abstract class AbstractScrollArea extends AbstractWidget {
    }
 
    public void setScrollAmount(final double scrollAmount) {
-      this.scrollAmount = Mth.clamp(scrollAmount, 0.0, (double)this.maxScrollAmount());
+      this.scrollAmount = Mth.clamp(scrollAmount, 0.0, this.maxScrollAmount());
    }
 
    public boolean updateScrolling(final MouseButtonEvent event) {
@@ -74,10 +74,7 @@ public abstract class AbstractScrollArea extends AbstractWidget {
    }
 
    protected boolean isOverScrollbar(final double x, final double y) {
-      return x >= (double)this.scrollBarX()
-         && x <= (double)(this.scrollBarX() + this.scrollbarWidth())
-         && y >= (double)this.getY()
-         && y < (double)this.getBottom();
+      return x >= this.scrollBarX() && x <= this.scrollBarX() + this.scrollbarWidth() && y >= this.getY() && y < this.getBottom();
    }
 
    public void refreshScrollAmount() {
@@ -97,7 +94,7 @@ public abstract class AbstractScrollArea extends AbstractWidget {
    }
 
    protected int scrollerHeight() {
-      return Mth.clamp((int)((float)(this.height * this.height) / (float)this.contentHeight()), 32, this.height - 8);
+      return Mth.clamp((int)((float)(this.height * this.height) / this.contentHeight()), 32, this.height - 8);
    }
 
    protected int scrollBarX() {
@@ -121,7 +118,7 @@ public abstract class AbstractScrollArea extends AbstractWidget {
          graphics.blitSprite(
             RenderPipelines.GUI_TEXTURED, this.scrollbarSettings.disabledScrollerSprite(), scrollbarX, this.getY(), this.scrollbarWidth(), scrollerHeight
          );
-         if (this.isOverScrollbar((double)mouseX, (double)mouseY)) {
+         if (this.isOverScrollbar(mouseX, mouseY)) {
             graphics.requestCursor(CursorTypes.NOT_ALLOWED);
          }
       }
@@ -133,7 +130,7 @@ public abstract class AbstractScrollArea extends AbstractWidget {
          graphics.blitSprite(
             RenderPipelines.GUI_TEXTURED, this.scrollbarSettings.scrollerSprite(), scrollbarX, scrollerY, this.scrollbarWidth(), scrollerHeight
          );
-         if (this.isOverScrollbar((double)mouseX, (double)mouseY)) {
+         if (this.isOverScrollbar(mouseX, mouseY)) {
             graphics.requestCursor(this.scrolling ? CursorTypes.RESIZE_NS : CursorTypes.POINTING_HAND);
          }
       }
@@ -142,14 +139,14 @@ public abstract class AbstractScrollArea extends AbstractWidget {
    protected abstract int contentHeight();
 
    protected double scrollRate() {
-      return (double)this.scrollbarSettings.scrollRate();
+      return this.scrollbarSettings.scrollRate();
    }
 
    public static AbstractScrollArea.ScrollbarSettings defaultSettings(final int scrollRate) {
       return new AbstractScrollArea.ScrollbarSettings(SCROLLER_SPRITE, null, SCROLLER_BACKGROUND_SPRITE, 6, 32, scrollRate, true);
    }
 
-   public static record ScrollbarSettings(
+   public record ScrollbarSettings(
       Identifier scrollerSprite,
       @Nullable Identifier disabledScrollerSprite,
       Identifier backgroundSprite,

@@ -11,8 +11,7 @@ public interface InterpolationHandler {
       return InterpolationTracker.NO_OP;
    }
 
-   @Nullable
-   PositionAndRotation target();
+   @Nullable PositionAndRotation target();
 
    boolean interpolateTo(@Nullable PositionPath position, float yRot, float xRot, boolean hasRotation);
 
@@ -24,15 +23,14 @@ public interface InterpolationHandler {
 
    void cancel();
 
-   public static class NoOpInterpolationHandler implements InterpolationHandler {
-      @Nullable
+   class NoOpInterpolationHandler implements InterpolationHandler {
       @Override
-      public PositionAndRotation target() {
+      public @Nullable PositionAndRotation target() {
          return null;
       }
 
       @Override
-      public boolean interpolateTo(@Nullable final PositionPath position, final float yRot, final float xRot, final boolean hasRotation) {
+      public boolean interpolateTo(final @Nullable PositionPath position, final float yRot, final float xRot, final boolean hasRotation) {
          return false;
       }
 

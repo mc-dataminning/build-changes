@@ -41,12 +41,10 @@ public interface ChunkTrackingView {
                   }
                }
             }
-
-            return;
+         } else {
+            from.forEach(onLeave);
+            to.forEach(onEnter);
          }
-
-         from.forEach(onLeave);
-         to.forEach(onEnter);
       }
    }
 
@@ -74,14 +72,14 @@ public interface ChunkTrackingView {
       final int centerX, final int centerZ, final int viewDistance, final int chunkX, final int chunkZ, final boolean includeNeighbors
    ) {
       int bufferRange = includeNeighbors ? 2 : 1;
-      long deltaX = (long)Math.max(0, Math.abs(chunkX - centerX) - bufferRange);
-      long deltaZ = (long)Math.max(0, Math.abs(chunkZ - centerZ) - bufferRange);
+      long deltaX = Math.max(0, Math.abs(chunkX - centerX) - bufferRange);
+      long deltaZ = Math.max(0, Math.abs(chunkZ - centerZ) - bufferRange);
       long distanceSquared = deltaX * deltaX + deltaZ * deltaZ;
       int radiusSquared = viewDistance * viewDistance;
-      return distanceSquared < (long)radiusSquared;
+      return distanceSquared < radiusSquared;
    }
 
-   public static record Positioned(ChunkPos center, int viewDistance) implements ChunkTrackingView {
+   record Positioned(ChunkPos center, int viewDistance) implements ChunkTrackingView {
       private int minX() {
          return this.center.x() - this.viewDistance - 1;
       }

@@ -35,19 +35,19 @@ public class SwitchMinigameTask extends LongRunningTask {
                setScreen(this.nextScreen);
                break;
             }
-         } catch (RetryCallException var4) {
+         } catch (RetryCallException e) {
             if (this.aborted()) {
                return;
             }
 
-            pause((long)var4.delaySeconds);
-         } catch (Exception var5) {
+            pause(e.delaySeconds);
+         } catch (Exception e) {
             if (this.aborted()) {
                return;
             }
 
             LOGGER.error("Couldn't start mini game!");
-            this.error(var5);
+            this.error(e);
          }
       }
    }

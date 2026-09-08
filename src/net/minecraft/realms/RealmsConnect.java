@@ -25,8 +25,7 @@ public class RealmsConnect {
    private static final Logger LOGGER = LogUtils.getLogger();
    private final Screen onlineScreen;
    private volatile boolean aborted;
-   @Nullable
-   private Connection connection;
+   private @Nullable Connection connection;
 
    public RealmsConnect(final Screen onlineScreen) {
       this.onlineScreen = onlineScreen;
@@ -39,10 +38,6 @@ public class RealmsConnect {
       final String hostname = hostAndPort.getHost();
       final int port = hostAndPort.getPort();
       (new Thread("Realms-connect-task") {
-            {
-               Objects.requireNonNull(RealmsConnect.this);
-            }
-
             @Override
             public void run() {
                InetSocketAddress address = null;
@@ -61,8 +56,15 @@ public class RealmsConnect {
                   }
 
                   ClientHandshakePacketListenerImpl clientHandshakePacketListener = new ClientHandshakePacketListenerImpl(
-                     RealmsConnect.this.connection, minecraft, server.toServerData(hostname), RealmsConnect.this.onlineScreen, false, null, status -> {
-                     }, new LevelLoadTracker(), null
+                     RealmsConnect.this.connection,
+                     minecraft,
+                     server.toServerData(hostname),
+                     RealmsConnect.this.onlineScreen,
+                     false,
+                     null,
+                     status -> {},
+                     new LevelLoadTracker(),
+                     null
                   );
                   if (server.isMinigameActive()) {
                      clientHandshakePacketListener.setMinigameName(server.minigameName);
@@ -82,14 +84,14 @@ public class RealmsConnect {
                   minecraft.quickPlayLog()
                      .setWorldData(QuickPlayLog.Type.REALMS, String.valueOf(server.id), Objects.requireNonNullElse(server.name, "unknown"));
                   minecraft.getDownloadedPackSource().configureForServerControl(RealmsConnect.this.connection, ServerPackManager.PackPromptStatus.ALLOWED);
-               } catch (Exception var5) {
+               } catch (Exception e) {
                   minecraft.getDownloadedPackSource().cleanupAfterDisconnect();
                   if (RealmsConnect.this.aborted) {
                      return;
                   }
 
-                  RealmsConnect.LOGGER.error("Couldn't connect to world", var5);
-                  String message = var5.toString();
+                  RealmsConnect.LOGGER.error("Couldn't connect to world", e);
+                  String message = e.toString();
                   if (address != null) {
                      String filter = address + ":" + port;
                      message = message.replaceAll(filter, "");

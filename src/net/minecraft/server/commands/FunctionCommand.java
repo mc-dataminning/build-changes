@@ -66,16 +66,16 @@ public class FunctionCommand {
 
       for (ArgProvider<DataAccessor> provider : DataCommands.SOURCE_PROVIDERS) {
          provider.wrap(sources, p -> p.executes(new FunctionCommand.FunctionCustomExecutor() {
-               @Override
-               protected CompoundTag arguments(final CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-                  return provider.access(context).getData();
-               }
-            }).then(Commands.argument("path", NbtPathArgument.nbtPath()).executes(new FunctionCommand.FunctionCustomExecutor() {
-               @Override
-               protected CompoundTag arguments(final CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
-                  return FunctionCommand.getArgumentTag(NbtPathArgument.getPath(context, "path"), provider.access(context));
-               }
-            })));
+            @Override
+            protected CompoundTag arguments(final CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+               return provider.access(context).getData();
+            }
+         }).then(Commands.argument("path", NbtPathArgument.nbtPath()).executes(new FunctionCommand.FunctionCustomExecutor() {
+            @Override
+            protected CompoundTag arguments(final CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+               return FunctionCommand.getArgumentTag(NbtPathArgument.getPath(context, "path"), provider.access(context));
+            }
+         })));
       }
 
       dispatcher.register(
@@ -84,9 +84,8 @@ public class FunctionCommand {
                ((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument("name", FunctionArgument.functions())
                         .suggests(SUGGEST_FUNCTION)
                         .executes(new FunctionCommand.FunctionCustomExecutor() {
-                           @Nullable
                            @Override
-                           protected CompoundTag arguments(final CommandContext<CommandSourceStack> context) {
+                           protected @Nullable CompoundTag arguments(final CommandContext<CommandSourceStack> context) {
                               return null;
                            }
                         }))
@@ -103,8 +102,8 @@ public class FunctionCommand {
 
    private static CompoundTag getArgumentTag(final NbtPathArgument.NbtPath path, final DataAccessor accessor) throws CommandSyntaxException {
       Tag tag = DataCommands.getSingleTag(path, accessor);
-      if (tag instanceof CompoundTag) {
-         return (CompoundTag)tag;
+      if (tag instanceof CompoundTag compoundTag) {
+         return compoundTag;
       } else {
          throw ERROR_ARGUMENT_NOT_COMPOUND.create(tag.getType().getName());
       }
@@ -116,7 +115,7 @@ public class FunctionCommand {
 
    public static <T extends ExecutionCommandSource<T>> void queueFunctions(
       final Collection<CommandFunction<T>> functions,
-      @Nullable final CompoundTag arguments,
+      final @Nullable CompoundTag arguments,
       final T originalSource,
       final T functionSource,
       final ExecutionControl<T> output,
@@ -131,7 +130,7 @@ public class FunctionCommand {
    }
 
    private static <T extends ExecutionCommandSource<T>> void instantiateAndQueueFunctions(
-      @Nullable final CompoundTag arguments,
+      final @Nullable CompoundTag arguments,
       final ExecutionControl<T> output,
       final CommandDispatcher<T> dispatcher,
       final T noCallbackSource,
@@ -143,8 +142,8 @@ public class FunctionCommand {
       try {
          InstantiatedFunction<T> instantiatedFunction = function.instantiate(arguments, dispatcher);
          output.queueNext(new CallFunction<>(instantiatedFunction, functionResultCollector, returnParentFrame).bind(noCallbackSource));
-      } catch (FunctionInstantiationException var9) {
-         throw ERROR_FUNCTION_INSTANTATION_FAILURE.create(id, var9.messageComponent());
+      } catch (FunctionInstantiationException exception) {
+         throw ERROR_FUNCTION_INSTANTATION_FAILURE.create(id, exception.messageComponent());
       }
    }
 
@@ -159,7 +158,7 @@ public class FunctionCommand {
 
    private static <T extends ExecutionCommandSource<T>> void queueFunctionsAsReturn(
       final Collection<CommandFunction<T>> functions,
-      @Nullable final CompoundTag arguments,
+      final @Nullable CompoundTag arguments,
       final T originalSource,
       final T functionSource,
       final ExecutionControl<T> output,
@@ -180,7 +179,7 @@ public class FunctionCommand {
 
    private static <T extends ExecutionCommandSource<T>> void queueFunctionsNoReturn(
       final Collection<CommandFunction<T>> functions,
-      @Nullable final CompoundTag arguments,
+      final @Nullable CompoundTag arguments,
       final T originalSource,
       final T functionSource,
       final ExecutionControl<T> output,
@@ -237,8 +236,7 @@ public class FunctionCommand {
    private abstract static class FunctionCustomExecutor
       extends CustomCommandExecutor.WithErrorHandling<CommandSourceStack>
       implements CustomCommandExecutor.CommandAdapter<CommandSourceStack> {
-      @Nullable
-      protected abstract CompoundTag arguments(final CommandContext<CommandSourceStack> context) throws CommandSyntaxException;
+      protected abstract @Nullable CompoundTag arguments(final CommandContext<CommandSourceStack> context) throws CommandSyntaxException;
 
       public void runGuarded(
          final CommandSourceStack sender,
@@ -251,25 +249,25 @@ public class FunctionCommand {
          Collection<CommandFunction<CommandSourceStack>> functions = (Collection<CommandFunction<CommandSourceStack>>)nameAndFunctions.getSecond();
          if (functions.isEmpty()) {
             throw FunctionCommand.ERROR_NO_FUNCTIONS.create(Component.translationArg((Identifier)nameAndFunctions.getFirst()));
-         } else {
-            CompoundTag arguments = this.arguments(currentContext);
-            CommandSourceStack commonFunctionContext = FunctionCommand.modifySenderForExecution(sender);
-            if (functions.size() == 1) {
-               sender.sendSuccess(
-                  () -> Component.translatable("commands.function.scheduled.single", Component.translationArg(functions.iterator().next().id())), true
-               );
-            } else {
-               sender.sendSuccess(
-                  () -> Component.translatable(
-                        "commands.function.scheduled.multiple",
-                        ComponentUtils.formatList(functions.stream().map(CommandFunction::id).toList(), Component::translationArg)
-                     ),
-                  true
-               );
-            }
-
-            FunctionCommand.queueFunctions(functions, arguments, sender, commonFunctionContext, output, FunctionCommand.FULL_CONTEXT_CALLBACKS, modifiers);
          }
+
+         CompoundTag arguments = this.arguments(currentContext);
+         CommandSourceStack commonFunctionContext = FunctionCommand.modifySenderForExecution(sender);
+         if (functions.size() == 1) {
+            sender.sendSuccess(
+               () -> Component.translatable("commands.function.scheduled.single", Component.translationArg(functions.iterator().next().id())), true
+            );
+         } else {
+            sender.sendSuccess(
+               () -> Component.translatable(
+                  "commands.function.scheduled.multiple",
+                  ComponentUtils.formatList(functions.stream().map(CommandFunction::id).toList(), Component::translationArg)
+               ),
+               true
+            );
+         }
+
+         FunctionCommand.queueFunctions(functions, arguments, sender, commonFunctionContext, output, FunctionCommand.FULL_CONTEXT_CALLBACKS, modifiers);
       }
    }
 }

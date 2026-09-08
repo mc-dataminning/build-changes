@@ -15,7 +15,7 @@ public interface NarratableEntry extends NarrationSupplier, TabOrderedElement {
       return List.of(this);
    }
 
-   public static enum NarrationPriority {
+   enum NarrationPriority {
       NONE,
       HOVERED,
       FOCUSED;

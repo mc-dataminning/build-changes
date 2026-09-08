@@ -30,8 +30,7 @@ import org.jspecify.annotations.Nullable;
 
 public class GameTestInfo {
    private final Holder.Reference<GameTestInstance> test;
-   @Nullable
-   private BlockPos testBlockPos;
+   private @Nullable BlockPos testBlockPos;
    private final ServerLevel level;
    private final Collection<GameTestListener> listeners = Lists.newArrayList();
    private final int timeoutTicks;
@@ -45,10 +44,8 @@ public class GameTestInfo {
    private final Stopwatch timer = Stopwatch.createUnstarted();
    private boolean done;
    private final Rotation extraRotation;
-   @Nullable
-   private GameTestException error;
-   @Nullable
-   private TestInstanceBlockEntity testInstanceBlockEntity;
+   private @Nullable GameTestException error;
+   private @Nullable TestInstanceBlockEntity testInstanceBlockEntity;
 
    public GameTestInfo(final Holder.Reference<GameTestInstance> test, final Rotation extraRotation, final ServerLevel level, final RetryOptions retryOptions) {
       this.test = test;
@@ -58,7 +55,7 @@ public class GameTestInfo {
       this.extraRotation = extraRotation;
    }
 
-   public void setTestBlockPos(@Nullable final BlockPos testBlockPos) {
+   public void setTestBlockPos(final @Nullable BlockPos testBlockPos) {
       this.testBlockPos = testBlockPos;
    }
 
@@ -126,13 +123,13 @@ public class GameTestInfo {
 
          while (it.hasNext()) {
             Entry<Runnable> entry = (Entry<Runnable>)it.next();
-            if (entry.getLongValue() <= (long)this.tickCount) {
+            if (entry.getLongValue() <= this.tickCount) {
                try {
                   ((Runnable)entry.getKey()).run();
-               } catch (GameTestException var4) {
-                  this.fail(var4);
-               } catch (Exception var5) {
-                  this.fail(new UnknownGameTestException(var5));
+               } catch (GameTestException error) {
+                  this.fail(error);
+               } catch (Exception exception) {
+                  this.fail(new UnknownGameTestException(exception));
                }
 
                it.remove();
@@ -162,10 +159,10 @@ public class GameTestInfo {
 
          try {
             this.test.value().run(new GameTestHelper(this));
-         } catch (GameTestException var2) {
-            this.fail(var2);
-         } catch (Exception var3) {
-            this.fail(new UnknownGameTestException(var3));
+         } catch (GameTestException e) {
+            this.fail(e);
+         } catch (Exception e) {
+            this.fail(new UnknownGameTestException(e));
          }
       }
    }
@@ -178,8 +175,7 @@ public class GameTestInfo {
       return this.test.key().identifier();
    }
 
-   @Nullable
-   public BlockPos getTestBlockPos() {
+   public @Nullable BlockPos getTestBlockPos() {
       return this.testBlockPos;
    }
 
@@ -260,8 +256,7 @@ public class GameTestInfo {
       this.error = error;
    }
 
-   @Nullable
-   public GameTestException getError() {
+   public @Nullable GameTestException getError() {
       return this.error;
    }
 
@@ -274,8 +269,7 @@ public class GameTestInfo {
       this.listeners.add(listener);
    }
 
-   @Nullable
-   public GameTestInfo prepareTestStructure() {
+   public @Nullable GameTestInfo prepareTestStructure() {
       TestInstanceBlockEntity testInstanceBlock = this.createTestInstanceBlock(Objects.requireNonNull(this.testBlockPos), this.extraRotation, this.level);
       if (testInstanceBlock != null) {
          this.testInstanceBlockEntity = testInstanceBlock;
@@ -286,8 +280,7 @@ public class GameTestInfo {
       }
    }
 
-   @Nullable
-   private TestInstanceBlockEntity createTestInstanceBlock(final BlockPos testPos, final Rotation rotation, final ServerLevel level) {
+   private @Nullable TestInstanceBlockEntity createTestInstanceBlock(final BlockPos testPos, final Rotation rotation, final ServerLevel level) {
       level.setBlockAndUpdate(testPos, Blocks.TEST_INSTANCE_BLOCK.defaultBlockState());
       if (level.getBlockEntity(testPos) instanceof TestInstanceBlockEntity blockEntity) {
          ResourceKey<GameTestInstance> test = this.getTestHolder().key();

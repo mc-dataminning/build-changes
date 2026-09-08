@@ -6,7 +6,6 @@ import java.util.Optional;
 import net.minecraft.advancements.predicates.ItemPredicate;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.ItemInstance;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 
@@ -20,14 +19,13 @@ public class FilledBucketTrigger extends SimpleCriterionTrigger<FilledBucketTrig
       this.trigger(player, t -> t.matches(item));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<ItemPredicate> item)
-      implements SimpleCriterionTrigger.SimpleInstance {
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<ItemPredicate> item) implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<FilledBucketTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(FilledBucketTrigger.TriggerInstance::player),
-                  ItemPredicate.CODEC.optionalFieldOf("item").forGetter(FilledBucketTrigger.TriggerInstance::item)
-               )
-               .apply(i, FilledBucketTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(FilledBucketTrigger.TriggerInstance::player),
+               ItemPredicate.CODEC.optionalFieldOf("item").forGetter(FilledBucketTrigger.TriggerInstance::item)
+            )
+            .apply(i, FilledBucketTrigger.TriggerInstance::new)
       );
 
       public static Criterion<FilledBucketTrigger.TriggerInstance> filledBucket(final ItemPredicate.Builder item) {
@@ -35,7 +33,7 @@ public class FilledBucketTrigger extends SimpleCriterionTrigger<FilledBucketTrig
       }
 
       public boolean matches(final ItemStack item) {
-         return !this.item.isPresent() || this.item.get().test((ItemInstance)item);
+         return !this.item.isPresent() || this.item.get().test(item);
       }
    }
 }

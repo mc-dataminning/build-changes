@@ -11,7 +11,6 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
-import java.util.Objects;
 import net.minecraft.client.gui.components.AbstractSliderButton;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.CycleButton;
@@ -50,15 +49,11 @@ public class RealmsEditInviteCodeScreen extends AbstractRealmsCodeScreen {
    private boolean active;
    private InviteCodeExpiration expiration;
    private boolean expirationChanged = false;
-   @Nullable
-   private CycleButton<Boolean> activeButton;
-   private RealmsEditInviteCodeScreen.ExpirationSlider expirationSlider;
-   @Nullable
-   private Button deleteButton;
-   @Nullable
-   private Button saveButton;
-   @Nullable
-   private Button backButton;
+   private @Nullable CycleButton<Boolean> activeButton;
+   private RealmsEditInviteCodeScreen.@Nullable ExpirationSlider expirationSlider;
+   private @Nullable Button deleteButton;
+   private @Nullable Button saveButton;
+   private @Nullable Button backButton;
 
    public RealmsEditInviteCodeScreen(final RealmsInviteCodesScreen parentScreen, final long realmId, final InviteCode inviteCode) {
       super(TITLE);
@@ -129,10 +124,10 @@ public class RealmsEditInviteCodeScreen extends AbstractRealmsCodeScreen {
       Instant expirationDate = this.inviteCode.expirationDate();
       if (expirationDate == null) {
          return NEVER_EXPIRES_LABEL;
-      } else {
-         String formattedDate = ZonedDateTime.ofInstant(expirationDate, ZoneId.systemDefault()).format(DATE_FORMAT);
-         return Component.translatable("mco.configure.world.invite_codes.edit.expires", formattedDate).withColor(-6250336);
       }
+
+      String formattedDate = ZonedDateTime.ofInstant(expirationDate, ZoneId.systemDefault()).format(DATE_FORMAT);
+      return Component.translatable("mco.configure.world.invite_codes.edit.expires", formattedDate).withColor(-6250336);
    }
 
    private void onCopy() {
@@ -183,19 +178,12 @@ public class RealmsEditInviteCodeScreen extends AbstractRealmsCodeScreen {
    }
 
    private class ExpirationSlider extends AbstractSliderButton {
-      private final InviteCodeExpiration[] values;
+      private final InviteCodeExpiration[] values = InviteCodeExpiration.values();
 
       private ExpirationSlider(final int width) {
-         Objects.requireNonNull(RealmsEditInviteCodeScreen.this);
          super(
-            0,
-            0,
-            width,
-            20,
-            CommonComponents.EMPTY,
-            (double)RealmsEditInviteCodeScreen.this.expiration.ordinal() / (double)(InviteCodeExpiration.values().length - 1)
+            0, 0, width, 20, CommonComponents.EMPTY, (double)RealmsEditInviteCodeScreen.this.expiration.ordinal() / (InviteCodeExpiration.values().length - 1)
          );
-         this.values = InviteCodeExpiration.values();
          this.updateMessage();
       }
 
@@ -208,7 +196,7 @@ public class RealmsEditInviteCodeScreen extends AbstractRealmsCodeScreen {
 
       @Override
       protected void applyValue() {
-         int index = Mth.clamp((int)Math.round(this.value * (double)(this.values.length - 1)), 0, this.values.length - 1);
+         int index = Mth.clamp((int)Math.round(this.value * (this.values.length - 1)), 0, this.values.length - 1);
          InviteCodeExpiration selectedExpiration = this.values[index];
          this.value = this.sliderValue(index);
          if (selectedExpiration != RealmsEditInviteCodeScreen.this.expiration) {
@@ -230,7 +218,7 @@ public class RealmsEditInviteCodeScreen extends AbstractRealmsCodeScreen {
       }
 
       private double sliderValue(final int index) {
-         return (double)index / (double)(this.values.length - 1);
+         return (double)index / (this.values.length - 1);
       }
    }
 }

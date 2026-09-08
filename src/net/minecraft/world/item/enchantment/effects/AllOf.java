@@ -28,7 +28,7 @@ public interface AllOf {
       return new AllOf.ValueEffects(List.of(effects));
    }
 
-   public static record EntityEffects(List<EnchantmentEntityEffect> effects) implements EnchantmentEntityEffect {
+   record EntityEffects(List<EnchantmentEntityEffect> effects) implements EnchantmentEntityEffect {
       public static final MapCodec<AllOf.EntityEffects> CODEC = AllOf.codec(
          EnchantmentEntityEffect.CODEC, AllOf.EntityEffects::new, AllOf.EntityEffects::effects
       );
@@ -46,7 +46,7 @@ public interface AllOf {
       }
    }
 
-   public static record LocationBasedEffects(List<EnchantmentLocationBasedEffect> effects) implements EnchantmentLocationBasedEffect {
+   record LocationBasedEffects(List<EnchantmentLocationBasedEffect> effects) implements EnchantmentLocationBasedEffect {
       public static final MapCodec<AllOf.LocationBasedEffects> CODEC = AllOf.codec(
          EnchantmentLocationBasedEffect.CODEC, AllOf.LocationBasedEffects::new, AllOf.LocationBasedEffects::effects
       );
@@ -78,7 +78,7 @@ public interface AllOf {
       }
    }
 
-   public static record ValueEffects(List<EnchantmentValueEffect> effects) implements EnchantmentValueEffect {
+   record ValueEffects(List<EnchantmentValueEffect> effects) implements EnchantmentValueEffect {
       public static final MapCodec<AllOf.ValueEffects> CODEC = AllOf.codec(EnchantmentValueEffect.CODEC, AllOf.ValueEffects::new, AllOf.ValueEffects::effects);
 
       @Override

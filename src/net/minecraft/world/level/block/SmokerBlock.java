@@ -28,9 +28,8 @@ public class SmokerBlock extends AbstractFurnaceBlock {
       return new SmokerBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return createFurnaceTicker(level, type, BlockEntityTypes.SMOKER);
    }
 
@@ -46,9 +45,9 @@ public class SmokerBlock extends AbstractFurnaceBlock {
    @Override
    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
       if (state.getValue(LIT)) {
-         double x = (double)pos.getX() + 0.5;
-         double y = (double)pos.getY();
-         double z = (double)pos.getZ() + 0.5;
+         double x = pos.getX() + 0.5;
+         double y = pos.getY();
+         double z = pos.getZ() + 0.5;
          if (random.nextDouble() < 0.1) {
             level.playLocalSound(x, y, z, SoundEvents.SMOKER_SMOKE, SoundSource.BLOCKS, 1.0F, 1.0F, false);
          }

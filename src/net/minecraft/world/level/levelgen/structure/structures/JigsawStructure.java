@@ -35,19 +35,19 @@ public final class JigsawStructure extends Structure {
    public static final int MAX_DEPTH = 20;
    public static final MapCodec<JigsawStructure> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  settingsCodec(i),
-                  StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(j -> j.startPool),
-                  Identifier.CODEC.optionalFieldOf("start_jigsaw_name").forGetter(j -> j.startJigsawName),
-                  Codec.intRange(0, 20).fieldOf("size").forGetter(j -> j.maxDepth),
-                  HeightProvider.CODEC.fieldOf("start_height").forGetter(j -> j.startHeight),
-                  Codec.BOOL.fieldOf("use_expansion_hack").forGetter(j -> j.useExpansionHack),
-                  Heightmap.Types.CODEC.optionalFieldOf("project_start_to_heightmap").forGetter(j -> j.projectStartToHeightmap),
-                  JigsawStructure.MaxDistance.CODEC.fieldOf("max_distance_from_center").forGetter(j -> j.maxDistanceFromCenter),
-                  Codec.list(PoolAliasBinding.CODEC).optionalFieldOf("pool_aliases", List.of()).forGetter(j -> j.poolAliases),
-                  DimensionPadding.CODEC.optionalFieldOf("dimension_padding", DEFAULT_DIMENSION_PADDING).forGetter(j -> j.dimensionPadding),
-                  LiquidSettings.CODEC.optionalFieldOf("liquid_settings", DEFAULT_LIQUID_SETTINGS).forGetter(j -> j.liquidSettings)
-               )
-               .apply(i, JigsawStructure::new)
+               settingsCodec(i),
+               StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(j -> j.startPool),
+               Identifier.CODEC.optionalFieldOf("start_jigsaw_name").forGetter(j -> j.startJigsawName),
+               Codec.intRange(0, 20).fieldOf("size").forGetter(j -> j.maxDepth),
+               HeightProvider.CODEC.fieldOf("start_height").forGetter(j -> j.startHeight),
+               Codec.BOOL.fieldOf("use_expansion_hack").forGetter(j -> j.useExpansionHack),
+               Heightmap.Types.CODEC.optionalFieldOf("project_start_to_heightmap").forGetter(j -> j.projectStartToHeightmap),
+               JigsawStructure.MaxDistance.CODEC.fieldOf("max_distance_from_center").forGetter(j -> j.maxDistanceFromCenter),
+               Codec.list(PoolAliasBinding.CODEC).optionalFieldOf("pool_aliases", List.of()).forGetter(j -> j.poolAliases),
+               DimensionPadding.CODEC.optionalFieldOf("dimension_padding", DEFAULT_DIMENSION_PADDING).forGetter(j -> j.dimensionPadding),
+               LiquidSettings.CODEC.optionalFieldOf("liquid_settings", DEFAULT_LIQUID_SETTINGS).forGetter(j -> j.liquidSettings)
+            )
+            .apply(i, JigsawStructure::new)
       )
       .validate(JigsawStructure::verifyRange);
    private final Holder<StructureTemplatePool> startPool;
@@ -177,16 +177,14 @@ public final class JigsawStructure extends Structure {
       return this.poolAliases;
    }
 
-   public static record MaxDistance(int horizontal, int vertical) {
+   public record MaxDistance(int horizontal, int vertical) {
       private static final Codec<Integer> HORIZONTAL_VALUE_CODEC = Codec.intRange(1, 128);
       private static final Codec<JigsawStructure.MaxDistance> FULL_CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  HORIZONTAL_VALUE_CODEC.fieldOf("horizontal").forGetter(JigsawStructure.MaxDistance::horizontal),
-                  ExtraCodecs.intRange(1, DimensionType.Y_SIZE)
-                     .optionalFieldOf("vertical", DimensionType.Y_SIZE)
-                     .forGetter(JigsawStructure.MaxDistance::vertical)
-               )
-               .apply(i, JigsawStructure.MaxDistance::new)
+               HORIZONTAL_VALUE_CODEC.fieldOf("horizontal").forGetter(JigsawStructure.MaxDistance::horizontal),
+               ExtraCodecs.intRange(1, DimensionType.Y_SIZE).optionalFieldOf("vertical", DimensionType.Y_SIZE).forGetter(JigsawStructure.MaxDistance::vertical)
+            )
+            .apply(i, JigsawStructure.MaxDistance::new)
       );
       public static final Codec<JigsawStructure.MaxDistance> CODEC = Codec.either(FULL_CODEC, HORIZONTAL_VALUE_CODEC)
          .xmap(

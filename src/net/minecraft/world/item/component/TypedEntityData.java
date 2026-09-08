@@ -146,7 +146,6 @@ public final class TypedEntityData<IdType> implements TooltipProvider {
    }
 
    public boolean loadInto(final BlockEntity blockEntity, final HolderLookup.Provider registries) {
-      boolean e;
       try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(blockEntity.problemPath(), LOGGER)) {
          TagValueOutput output = TagValueOutput.createWithContext(reporter, registries);
          blockEntity.saveCustomOnly(output);
@@ -158,21 +157,19 @@ public final class TypedEntityData<IdType> implements TooltipProvider {
                blockEntity.loadCustomOnly(TagValueInput.create(reporter, registries, entityTag));
                blockEntity.setChanged();
                return true;
-            } catch (Exception var11) {
-               LOGGER.warn("Failed to apply custom data to block entity at {}", blockEntity.getBlockPos(), var11);
+            } catch (Exception e) {
+               LOGGER.warn("Failed to apply custom data to block entity at {}", blockEntity.getBlockPos(), e);
 
                try {
                   blockEntity.loadCustomOnly(TagValueInput.create(reporter.forChild(() -> "(rollback)"), registries, oldTag));
-               } catch (Exception var10) {
-                  LOGGER.warn("Failed to rollback block entity at {} after failure", blockEntity.getBlockPos(), var10);
+               } catch (Exception e2) {
+                  LOGGER.warn("Failed to rollback block entity at {} after failure", blockEntity.getBlockPos(), e2);
                }
             }
          }
 
-         e = false;
+         return false;
       }
-
-      return e;
    }
 
    private CompoundTag tag() {

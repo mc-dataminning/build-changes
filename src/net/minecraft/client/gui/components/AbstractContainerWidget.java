@@ -9,8 +9,7 @@ import net.minecraft.network.chat.Component;
 import org.jspecify.annotations.Nullable;
 
 public abstract class AbstractContainerWidget extends AbstractScrollArea implements ContainerEventHandler {
-   @Nullable
-   private GuiEventListener focused;
+   private @Nullable GuiEventListener focused;
    private boolean isDragging;
 
    public AbstractContainerWidget(final int x, final int y, final int width, final int height, final Component message) {
@@ -33,14 +32,13 @@ public abstract class AbstractContainerWidget extends AbstractScrollArea impleme
       this.isDragging = dragging;
    }
 
-   @Nullable
    @Override
-   public GuiEventListener getFocused() {
+   public @Nullable GuiEventListener getFocused() {
       return this.focused;
    }
 
    @Override
-   public void setFocused(@Nullable final GuiEventListener focused) {
+   public void setFocused(final @Nullable GuiEventListener focused) {
       if (this.focused != null) {
          this.focused.setFocused(false);
       }
@@ -52,9 +50,8 @@ public abstract class AbstractContainerWidget extends AbstractScrollArea impleme
       this.focused = focused;
    }
 
-   @Nullable
    @Override
-   public ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
+   public @Nullable ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
       return ContainerEventHandler.super.nextFocusPath(navigationEvent);
    }
 

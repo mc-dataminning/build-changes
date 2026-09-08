@@ -14,15 +14,15 @@ public class ExplodeParticle extends SingleQuadParticle {
       this.gravity = -0.1F;
       this.friction = 0.9F;
       this.sprites = sprites;
-      this.xd = xa + (double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F);
-      this.yd = ya + (double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F);
-      this.zd = za + (double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F);
+      this.xd = xa + (this.random.nextFloat() * 2.0F - 1.0F) * 0.05F;
+      this.yd = ya + (this.random.nextFloat() * 2.0F - 1.0F) * 0.05F;
+      this.zd = za + (this.random.nextFloat() * 2.0F - 1.0F) * 0.05F;
       float col = this.random.nextFloat() * 0.3F + 0.7F;
       this.rCol = col;
       this.gCol = col;
       this.bCol = col;
       this.quadSize = 0.1F * (this.random.nextFloat() * this.random.nextFloat() * 6.0F + 1.0F);
-      this.lifetime = (int)(16.0 / ((double)this.random.nextFloat() * 0.8 + 0.2)) + 2;
+      this.lifetime = (int)(16.0 / (this.random.nextFloat() * 0.8 + 0.2)) + 2;
       this.setSpriteFromAge(sprites);
    }
 

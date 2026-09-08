@@ -33,23 +33,25 @@ public record HashedPatchMap(Map<DataComponentType<?>, Integer> addedComponents,
       DataComponentPatch.SplitResult split = patch.split();
       if (!split.removed().equals(this.removedComponents)) {
          return false;
-      } else if (this.addedComponents.size() != split.added().size()) {
-         return false;
-      } else {
-         for (TypedDataComponent<?> typedDataComponent : split.added()) {
-            Integer expectedHash = this.addedComponents.get(typedDataComponent.type());
-            if (expectedHash == null) {
-               return false;
-            }
+      }
 
-            Integer actualHash = hasher.apply(typedDataComponent);
-            if (!actualHash.equals(expectedHash)) {
-               return false;
-            }
+      if (this.addedComponents.size() != split.added().size()) {
+         return false;
+      }
+
+      for (TypedDataComponent<?> typedDataComponent : split.added()) {
+         Integer expectedHash = this.addedComponents.get(typedDataComponent.type());
+         if (expectedHash == null) {
+            return false;
          }
 
-         return true;
+         Integer actualHash = hasher.apply(typedDataComponent);
+         if (!actualHash.equals(expectedHash)) {
+            return false;
+         }
       }
+
+      return true;
    }
 
    @FunctionalInterface

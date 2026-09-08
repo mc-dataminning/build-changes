@@ -27,8 +27,7 @@ import org.jspecify.annotations.Nullable;
 public class HarvestFarmland extends Behavior<Villager> {
    private static final int HARVEST_DURATION = 200;
    public static final float SPEED_MODIFIER = 0.5F;
-   @Nullable
-   private BlockPos aboveFarmlandPos;
+   private @Nullable BlockPos aboveFarmlandPos;
    private long nextOkStartTime;
    private int timeWorkedSoFar;
    private final List<BlockPos> validFarmlandAroundVillager = Lists.newArrayList();
@@ -49,30 +48,31 @@ public class HarvestFarmland extends Behavior<Villager> {
    protected boolean checkExtraStartConditions(final ServerLevel level, final Villager body) {
       if (!level.getGameRules().get(GameRules.MOB_GRIEFING)) {
          return false;
-      } else if (!body.getVillagerData().profession().is(VillagerProfession.FARMER)) {
-         return false;
-      } else {
-         BlockPos.MutableBlockPos mutPos = body.blockPosition().mutable();
-         this.validFarmlandAroundVillager.clear();
+      }
 
-         for (int x = -1; x <= 1; x++) {
-            for (int y = -1; y <= 1; y++) {
-               for (int z = -1; z <= 1; z++) {
-                  mutPos.set(body.getX() + (double)x, body.getY() + (double)y, body.getZ() + (double)z);
-                  if (this.validPos(mutPos, level)) {
-                     this.validFarmlandAroundVillager.add(mutPos.immutable());
-                  }
+      if (!body.getVillagerData().profession().is(VillagerProfession.FARMER)) {
+         return false;
+      }
+
+      BlockPos.MutableBlockPos mutPos = body.blockPosition().mutable();
+      this.validFarmlandAroundVillager.clear();
+
+      for (int x = -1; x <= 1; x++) {
+         for (int y = -1; y <= 1; y++) {
+            for (int z = -1; z <= 1; z++) {
+               mutPos.set(body.getX() + x, body.getY() + y, body.getZ() + z);
+               if (this.validPos(mutPos, level)) {
+                  this.validFarmlandAroundVillager.add(mutPos.immutable());
                }
             }
          }
-
-         this.aboveFarmlandPos = this.getValidFarmland(level);
-         return this.aboveFarmlandPos != null;
       }
+
+      this.aboveFarmlandPos = this.getValidFarmland(level);
+      return this.aboveFarmlandPos != null;
    }
 
-   @Nullable
-   private BlockPos getValidFarmland(final ServerLevel level) {
+   private @Nullable BlockPos getValidFarmland(final ServerLevel level) {
       return this.validFarmlandAroundVillager.isEmpty()
          ? null
          : this.validFarmlandAroundVillager.get(level.getRandom().nextInt(this.validFarmlandAroundVillager.size()));
@@ -125,9 +125,9 @@ public class HarvestFarmland extends Behavior<Villager> {
                   if (ok) {
                      level.playSound(
                         null,
-                        (double)this.aboveFarmlandPos.getX(),
-                        (double)this.aboveFarmlandPos.getY(),
-                        (double)this.aboveFarmlandPos.getZ(),
+                        this.aboveFarmlandPos.getX(),
+                        this.aboveFarmlandPos.getY(),
+                        this.aboveFarmlandPos.getZ(),
                         SoundEvents.CROP_PLANTED,
                         SoundSource.BLOCKS,
                         1.0F,

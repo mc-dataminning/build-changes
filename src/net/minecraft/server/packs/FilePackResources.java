@@ -37,9 +37,8 @@ public class FilePackResources extends AbstractPackMetadataResources implements 
       return String.format(Locale.ROOT, "%s/%s/%s", type.getDirectory(), location.getNamespace(), location.getPath());
    }
 
-   @Nullable
    @Override
-   public IoSupplier<InputStream> getRootResource(final String... path) {
+   public @Nullable IoSupplier<InputStream> getRootResource(final String... path) {
       return this.getResource(String.join("/", path));
    }
 
@@ -52,15 +51,14 @@ public class FilePackResources extends AbstractPackMetadataResources implements 
       return this.prefix.isEmpty() ? path : this.prefix + "/" + path;
    }
 
-   @Nullable
-   private IoSupplier<InputStream> getResource(final String path) {
+   private @Nullable IoSupplier<InputStream> getResource(final String path) {
       ZipFile zipFile = this.zipFileAccess.getOrCreateZipFile();
       if (zipFile == null) {
          return null;
-      } else {
-         ZipEntry entry = zipFile.getEntry(this.addPrefix(path));
-         return entry == null ? null : IoSupplier.create(zipFile, entry);
       }
+
+      ZipEntry entry = zipFile.getEntry(this.addPrefix(path));
+      return entry == null ? null : IoSupplier.create(zipFile, entry);
    }
 
    @Override
@@ -68,37 +66,37 @@ public class FilePackResources extends AbstractPackMetadataResources implements 
       ZipFile zipFile = this.zipFileAccess.getOrCreateZipFile();
       if (zipFile == null) {
          return Set.of();
-      } else {
-         Enumeration<? extends ZipEntry> entries = zipFile.entries();
-         Set<String> namespaces = Sets.newHashSet();
-         String typePrefix = this.addPrefix(type.getDirectory() + "/");
+      }
 
-         while (entries.hasMoreElements()) {
-            ZipEntry zipEntry = entries.nextElement();
-            String name = zipEntry.getName();
-            String namespace = extractNamespace(typePrefix, name);
-            if (!namespace.isEmpty()) {
-               if (Identifier.isValidNamespace(namespace)) {
-                  namespaces.add(namespace);
-               } else {
-                  LOGGER.warn("Non {} character in namespace {} in pack {}, ignoring", new Object[]{"[a-z0-9_.-]", namespace, this.zipFileAccess.file});
-               }
+      Enumeration<? extends ZipEntry> entries = zipFile.entries();
+      Set<String> namespaces = Sets.newHashSet();
+      String typePrefix = this.addPrefix(type.getDirectory() + "/");
+
+      while (entries.hasMoreElements()) {
+         ZipEntry zipEntry = entries.nextElement();
+         String name = zipEntry.getName();
+         String namespace = extractNamespace(typePrefix, name);
+         if (!namespace.isEmpty()) {
+            if (Identifier.isValidNamespace(namespace)) {
+               namespaces.add(namespace);
+            } else {
+               LOGGER.warn("Non {} character in namespace {} in pack {}, ignoring", new Object[]{"[a-z0-9_.-]", namespace, this.zipFileAccess.file});
             }
          }
-
-         return namespaces;
       }
+
+      return namespaces;
    }
 
    @VisibleForTesting
    public static String extractNamespace(final String prefix, final String name) {
       if (!name.startsWith(prefix)) {
          return "";
-      } else {
-         int prefixLength = prefix.length();
-         int firstPart = name.indexOf(47, prefixLength);
-         return firstPart == -1 ? name.substring(prefixLength) : name.substring(prefixLength, firstPart);
       }
+
+      int prefixLength = prefix.length();
+      int firstPart = name.indexOf(47, prefixLength);
+      return firstPart == -1 ? name.substring(prefixLength) : name.substring(prefixLength, firstPart);
    }
 
    @Override
@@ -156,45 +154,43 @@ public class FilePackResources extends AbstractPackMetadataResources implements 
          List<String> overlays = metadata.overlays();
          if (overlays.isEmpty()) {
             return Stream.of(primary);
-         } else {
-            List<PackResources> overlayResources = new ArrayList<>(overlays.size());
-
-            for (String overlay : overlays) {
-               overlayResources.add(new FilePackResources(location, fileAccess, overlay));
-            }
-
-            return Stream.of(new OverlayedPackResources(primary, overlayResources));
          }
+
+         List<PackResources> overlayResources = new ArrayList<>(overlays.size());
+
+         for (String overlay : overlays) {
+            overlayResources.add(new FilePackResources(location, fileAccess, overlay));
+         }
+
+         return Stream.of(new OverlayedPackResources(primary, overlayResources));
       }
    }
 
    private static class SharedZipFileAccess implements AutoCloseable {
       private final File file;
-      @Nullable
-      private ZipFile zipFile;
+      private @Nullable ZipFile zipFile;
       private boolean failedToLoad;
 
       private SharedZipFileAccess(final File file) {
          this.file = file;
       }
 
-      @Nullable
-      private ZipFile getOrCreateZipFile() {
+      private @Nullable ZipFile getOrCreateZipFile() {
          if (this.failedToLoad) {
             return null;
-         } else {
-            if (this.zipFile == null) {
-               try {
-                  this.zipFile = new ZipFile(this.file);
-               } catch (IOException var2) {
-                  FilePackResources.LOGGER.error("Failed to open pack {}", this.file, var2);
-                  this.failedToLoad = true;
-                  return null;
-               }
-            }
-
-            return this.zipFile;
          }
+
+         if (this.zipFile == null) {
+            try {
+               this.zipFile = new ZipFile(this.file);
+            } catch (IOException e) {
+               FilePackResources.LOGGER.error("Failed to open pack {}", this.file, e);
+               this.failedToLoad = true;
+               return null;
+            }
+         }
+
+         return this.zipFile;
       }
 
       @Override

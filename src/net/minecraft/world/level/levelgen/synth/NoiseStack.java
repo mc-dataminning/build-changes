@@ -93,14 +93,14 @@ public class NoiseStack implements Noise {
          if (this.layers.stream().allMatch(layer -> layer.noise.getClass() == PerlinNoise.class)) {
             return new NoiseStack.Perlin(layers);
          } else {
-            return (NoiseStack)(this.layers.stream().allMatch(layer -> layer.noise.getClass() == SmearedPerlinNoise.class)
+            return this.layers.stream().allMatch(layer -> layer.noise.getClass() == SmearedPerlinNoise.class)
                ? new NoiseStack.SmearedPerlin(layers)
-               : new NoiseStack(layers));
+               : new NoiseStack(layers);
          }
       }
    }
 
-   protected static record Layer(Noise noise, double frequency, float amplitude) {
+   protected record Layer(Noise noise, double frequency, float amplitude) {
    }
 
    private static class Perlin extends NoiseStack {

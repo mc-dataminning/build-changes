@@ -24,7 +24,7 @@ public record ServerboundSetGameRulePacket(List<ServerboundSetGameRulePacket.Ent
       listener.handleSetGameRule(this);
    }
 
-   public static record Entry(ResourceKey<GameRule<?>> gameRuleKey, String value) {
+   public record Entry(ResourceKey<GameRule<?>> gameRuleKey, String value) {
       public static final StreamCodec<ByteBuf, ServerboundSetGameRulePacket.Entry> STREAM_CODEC = StreamCodec.composite(
          ResourceKey.streamCodec(Registries.GAME_RULE),
          ServerboundSetGameRulePacket.Entry::gameRuleKey,

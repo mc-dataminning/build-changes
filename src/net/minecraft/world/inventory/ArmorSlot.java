@@ -13,8 +13,7 @@ import org.jspecify.annotations.Nullable;
 public class ArmorSlot extends Slot {
    private final LivingEntity owner;
    private final EquipmentSlot slot;
-   @Nullable
-   private final Identifier emptyIcon;
+   private final @Nullable Identifier emptyIcon;
 
    public ArmorSlot(
       final Container inventory,
@@ -23,7 +22,7 @@ public class ArmorSlot extends Slot {
       final int slotIndex,
       final int x,
       final int y,
-      @Nullable final Identifier emptyIcon
+      final @Nullable Identifier emptyIcon
    ) {
       super(inventory, slotIndex, x, y);
       this.owner = owner;
@@ -60,9 +59,8 @@ public class ArmorSlot extends Slot {
          : super.mayPickup(player);
    }
 
-   @Nullable
    @Override
-   public Identifier getNoItemIcon() {
+   public @Nullable Identifier getNoItemIcon() {
       return this.emptyIcon;
    }
 }

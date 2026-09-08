@@ -27,9 +27,9 @@ public class SaveAllCommand {
       boolean success = server.saveEverything(true, flush, true);
       if (!success) {
          throw ERROR_FAILED.create();
-      } else {
-         source.sendSuccess(() -> Component.translatable("commands.save.success"), true);
-         return 1;
       }
+
+      source.sendSuccess(() -> Component.translatable("commands.save.success"), true);
+      return 1;
    }
 }

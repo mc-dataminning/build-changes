@@ -284,8 +284,8 @@ public class Ghast extends Mob implements Enemy {
 
       private boolean blockTraversalPossible(
          final BlockGetter level,
-         @Nullable final Vec3 start,
-         @Nullable final Vec3 end,
+         final @Nullable Vec3 start,
+         final @Nullable Vec3 end,
          final BlockPos pos,
          final boolean canPathThroughWater,
          final boolean canPathThroughLava
@@ -293,30 +293,32 @@ public class Ghast extends Mob implements Enemy {
          BlockState state = level.getBlockState(pos);
          if (state.isAir()) {
             return true;
-         } else {
-            boolean preciseBlockCollisions = start != null && end != null;
-            boolean pathNoCollisions = preciseBlockCollisions
-               ? !this.mob.collidedWithShapeMovingFrom(start, end, state.getCollisionShape(level, pos).move(new Vec3(pos)).toAabbs())
-               : state.getCollisionShape(level, pos).isEmpty();
-            if (!this.careful) {
-               return pathNoCollisions;
-            } else if (state.is(BlockTags.HAPPY_GHAST_AVOIDS)) {
-               return false;
-            } else {
-               FluidState fluidState = level.getFluidState(pos);
-               if (!fluidState.isEmpty() && (!preciseBlockCollisions || this.mob.collidedWithFluid(fluidState, pos, start, end))) {
-                  if (fluidState.is(FluidTags.WATER)) {
-                     return canPathThroughWater;
-                  }
+         }
 
-                  if (fluidState.is(FluidTags.LAVA)) {
-                     return canPathThroughLava;
-                  }
-               }
+         boolean preciseBlockCollisions = start != null && end != null;
+         boolean pathNoCollisions = preciseBlockCollisions
+            ? !this.mob.collidedWithShapeMovingFrom(start, end, state.getCollisionShape(level, pos).move(new Vec3(pos)).toAabbs())
+            : state.getCollisionShape(level, pos).isEmpty();
+         if (!this.careful) {
+            return pathNoCollisions;
+         }
 
-               return pathNoCollisions;
+         if (state.is(BlockTags.HAPPY_GHAST_AVOIDS)) {
+            return false;
+         }
+
+         FluidState fluidState = level.getFluidState(pos);
+         if (!fluidState.isEmpty() && (!preciseBlockCollisions || this.mob.collidedWithFluid(fluidState, pos, start, end))) {
+            if (fluidState.is(FluidTags.WATER)) {
+               return canPathThroughWater;
+            }
+
+            if (fluidState.is(FluidTags.LAVA)) {
+               return canPathThroughLava;
             }
          }
+
+         return pathNoCollisions;
       }
    }
 
@@ -405,13 +407,13 @@ public class Ghast extends Mob implements Enemy {
          MoveControl moveControl = this.ghast.getMoveControl();
          if (!moveControl.hasWanted()) {
             return true;
-         } else {
-            double xd = moveControl.getWantedX() - this.ghast.getX();
-            double yd = moveControl.getWantedY() - this.ghast.getY();
-            double zd = moveControl.getWantedZ() - this.ghast.getZ();
-            double dd = xd * xd + yd * yd + zd * zd;
-            return dd < 1.0 || dd > 3600.0;
          }
+
+         double xd = moveControl.getWantedX() - this.ghast.getX();
+         double yd = moveControl.getWantedY() - this.ghast.getY();
+         double zd = moveControl.getWantedZ() - this.ghast.getZ();
+         double dd = xd * xd + yd * yd + zd * zd;
+         return dd < 1.0 || dd > 3600.0;
       }
 
       @Override
@@ -454,34 +456,33 @@ public class Ghast extends Mob implements Enemy {
       private static boolean isGoodTarget(final Level level, final Vec3 target, final int distanceToBlocks) {
          if (distanceToBlocks <= 0) {
             return true;
-         } else {
-            BlockPos pos = BlockPos.containing(target);
-            if (!level.getBlockState(pos).isAir()) {
-               return false;
-            } else {
-               for (Direction dir : Direction.values()) {
-                  for (int i = 1; i < distanceToBlocks; i++) {
-                     BlockPos offset = pos.relative(dir, i);
-                     if (!level.getBlockState(offset).isAir()) {
-                        return true;
-                     }
-                  }
-               }
+         }
 
-               return false;
+         BlockPos pos = BlockPos.containing(target);
+         if (!level.getBlockState(pos).isAir()) {
+            return false;
+         }
+
+         for (Direction dir : Direction.values()) {
+            for (int i = 1; i < distanceToBlocks; i++) {
+               BlockPos offset = pos.relative(dir, i);
+               if (!level.getBlockState(offset).isAir()) {
+                  return true;
+               }
             }
          }
+
+         return false;
       }
 
       private static Vec3 chooseRandomPosition(final Vec3 center, final RandomSource random) {
-         double xTarget = center.x() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-         double yTarget = center.y() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-         double zTarget = center.z() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
+         double xTarget = center.x() + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
+         double yTarget = center.y() + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
+         double zTarget = center.z() + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
          return new Vec3(xTarget, yTarget, zTarget);
       }
 
-      @Nullable
-      private static Vec3 chooseRandomPositionWithRestriction(final Mob mob, final Vec3 center, final RandomSource random) {
+      private static @Nullable Vec3 chooseRandomPositionWithRestriction(final Mob mob, final Vec3 center, final RandomSource random) {
          Vec3 target = chooseRandomPosition(center, random);
          return mob.hasHome() && !mob.isWithinHome(target) ? null : target;
       }

@@ -36,8 +36,7 @@ public class TheEndGatewayBlockEntity extends TheEndPortalBlockEntity {
    private static final boolean DEFAULT_EXACT_TELEPORT = false;
    private long age = 0L;
    private int teleportCooldown;
-   @Nullable
-   private BlockPos exitPortal;
+   private @Nullable BlockPos exitPortal;
    private boolean exactTeleport = false;
 
    public TheEndGatewayBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
@@ -97,7 +96,7 @@ public class TheEndGatewayBlockEntity extends TheEndPortalBlockEntity {
    }
 
    public float getCooldownPercent(final float a) {
-      return 1.0F - Mth.clamp(((float)this.teleportCooldown - a) / 40.0F, 0.0F, 1.0F);
+      return 1.0F - Mth.clamp((this.teleportCooldown - a) / 40.0F, 0.0F, 1.0F);
    }
 
    public ClientboundBlockEntityDataPacket getUpdatePacket() {
@@ -127,8 +126,7 @@ public class TheEndGatewayBlockEntity extends TheEndPortalBlockEntity {
       }
    }
 
-   @Nullable
-   public Vec3 getPortalPosition(final ServerLevel currentLevel, final BlockPos portalEntryPos) {
+   public @Nullable Vec3 getPortalPosition(final ServerLevel currentLevel, final BlockPos portalEntryPos) {
       if (this.exitPortal == null && currentLevel.dimension() == Level.END) {
          BlockPos exitPortalPos = findOrCreateValidTeleportPos(currentLevel, portalEntryPos);
          exitPortalPos = exitPortalPos.above(10);
@@ -163,7 +161,7 @@ public class TheEndGatewayBlockEntity extends TheEndPortalBlockEntity {
             .flatMap(registry -> registry.get(EndFeatures.END_ISLAND))
             .ifPresent(
                endIsland -> endIsland.value()
-                     .place(level, level.getChunkSource().getGenerator(), RandomSource.create(newExitPortalPos.asLong()), newExitPortalPos)
+                  .place(level, level.getChunkSource().getGenerator(), RandomSource.create(newExitPortalPos.asLong()), newExitPortalPos)
             );
          exitPortalPos = newExitPortalPos;
       } else {
@@ -174,7 +172,7 @@ public class TheEndGatewayBlockEntity extends TheEndPortalBlockEntity {
    }
 
    private static Vec3 findExitPortalXZPosTentative(final ServerLevel level, final BlockPos endGatewayPos) {
-      Vec3 teleportXZDirectionVector = new Vec3((double)endGatewayPos.getX(), 0.0, (double)endGatewayPos.getZ()).normalize();
+      Vec3 teleportXZDirectionVector = new Vec3(endGatewayPos.getX(), 0.0, endGatewayPos.getZ()).normalize();
       int teleportDistance = 1024;
       Vec3 exitPortalXZPosTentative = teleportXZDirectionVector.scale(1024.0);
 
@@ -225,8 +223,7 @@ public class TheEndGatewayBlockEntity extends TheEndPortalBlockEntity {
       return level.getChunk(Mth.floor(pos.x / 16.0), Mth.floor(pos.z / 16.0));
    }
 
-   @Nullable
-   private static BlockPos findValidSpawnInChunk(final LevelChunk chunk) {
+   private static @Nullable BlockPos findValidSpawnInChunk(final LevelChunk chunk) {
       ChunkPos chunkPos = chunk.getPos();
       BlockPos start = new BlockPos(chunkPos.getMinBlockX(), 30, chunkPos.getMinBlockZ());
       int maxY = chunk.getHighestSectionPosition() + 16 - 1;

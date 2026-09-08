@@ -66,12 +66,12 @@ public class NetworkSummaryEvent extends Event {
 
       public void trackSentPacket(final int size) {
          this.sentPackets.incrementAndGet();
-         this.sentBytes.addAndGet((long)size);
+         this.sentBytes.addAndGet(size);
       }
 
       public void trackReceivedPacket(final int size) {
          this.receivedPackets.incrementAndGet();
-         this.receivedBytes.addAndGet((long)size);
+         this.receivedBytes.addAndGet(size);
       }
 
       public void commitEvent() {

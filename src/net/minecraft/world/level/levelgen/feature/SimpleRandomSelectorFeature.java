@@ -15,7 +15,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 public record SimpleRandomSelectorFeature(HolderSet<PlacedFeature> features) implements Feature {
    public static final MapCodec<SimpleRandomSelectorFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(ExtraCodecs.nonEmptyHolderSet(PlacedFeature.LIST_CODEC).fieldOf("features").forGetter(SimpleRandomSelectorFeature::features))
-            .apply(i, SimpleRandomSelectorFeature::new)
+         .apply(i, SimpleRandomSelectorFeature::new)
    );
 
    @Override

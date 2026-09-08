@@ -113,7 +113,7 @@ public class ClientboundPlayerInfoUpdatePacket implements Packet<ClientGamePacke
       return MoreObjects.toStringHelper(this).add("actions", this.actions).add("entries", this.entries).toString();
    }
 
-   public static enum Action {
+   public enum Action {
       ADD_PLAYER(0, (entry, input) -> {
          String name = ByteBufCodecs.PLAYER_NAME.decode(input);
          PropertyMap properties = ByteBufCodecs.GAME_PROFILE_PROPERTIES.decode(input);
@@ -149,7 +149,7 @@ public class ClientboundPlayerInfoUpdatePacket implements Packet<ClientGamePacke
       );
       public static final StreamCodec<ByteBuf, ClientboundPlayerInfoUpdatePacket.Action> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, a -> a.id);
 
-      private Action(final int id, final ClientboundPlayerInfoUpdatePacket.Action.Reader reader, final ClientboundPlayerInfoUpdatePacket.Action.Writer writer) {
+      Action(final int id, final ClientboundPlayerInfoUpdatePacket.Action.Reader reader, final ClientboundPlayerInfoUpdatePacket.Action.Writer writer) {
          this.id = id;
          this.reader = reader;
          this.writer = writer;
@@ -164,7 +164,7 @@ public class ClientboundPlayerInfoUpdatePacket implements Packet<ClientGamePacke
       }
    }
 
-   public static record Entry(
+   public record Entry(
       UUID profileId,
       @Nullable GameProfile profile,
       boolean listed,
@@ -173,7 +173,7 @@ public class ClientboundPlayerInfoUpdatePacket implements Packet<ClientGamePacke
       @Nullable Component displayName,
       boolean showHat,
       int listOrder,
-      @Nullable RemoteChatSession.Data chatSession
+      RemoteChatSession.@Nullable Data chatSession
    ) {
       private Entry(final ServerPlayer player) {
          this(
@@ -192,17 +192,14 @@ public class ClientboundPlayerInfoUpdatePacket implements Packet<ClientGamePacke
 
    private static class EntryBuilder {
       private final UUID profileId;
-      @Nullable
-      private GameProfile profile;
+      private @Nullable GameProfile profile;
       private boolean listed;
       private int latency;
       private GameType gameMode = GameType.DEFAULT_MODE;
-      @Nullable
-      private Component displayName;
+      private @Nullable Component displayName;
       private boolean showHat;
       private int listOrder;
-      @Nullable
-      private RemoteChatSession.Data chatSession;
+      private RemoteChatSession.@Nullable Data chatSession;
 
       private EntryBuilder(final UUID profileId) {
          this.profileId = profileId;

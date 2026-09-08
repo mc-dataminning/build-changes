@@ -15,15 +15,13 @@ public class ProcessorRule {
    public static final Passthrough DEFAULT_BLOCK_ENTITY_MODIFIER = Passthrough.INSTANCE;
    public static final Codec<ProcessorRule> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               RuleTest.CODEC.fieldOf("input_predicate").forGetter(r -> r.inputPredicate),
-               RuleTest.CODEC.fieldOf("location_predicate").forGetter(r -> r.locPredicate),
-               PosRuleTest.CODEC.lenientOptionalFieldOf("position_predicate", PosAlwaysTrueTest.INSTANCE).forGetter(r -> r.posPredicate),
-               BlockState.CODEC.fieldOf("output_state").forGetter(r -> r.outputState),
-               RuleBlockEntityModifier.CODEC
-                  .lenientOptionalFieldOf("block_entity_modifier", DEFAULT_BLOCK_ENTITY_MODIFIER)
-                  .forGetter(r -> r.blockEntityModifier)
-            )
-            .apply(i, ProcessorRule::new)
+            RuleTest.CODEC.fieldOf("input_predicate").forGetter(r -> r.inputPredicate),
+            RuleTest.CODEC.fieldOf("location_predicate").forGetter(r -> r.locPredicate),
+            PosRuleTest.CODEC.lenientOptionalFieldOf("position_predicate", PosAlwaysTrueTest.INSTANCE).forGetter(r -> r.posPredicate),
+            BlockState.CODEC.fieldOf("output_state").forGetter(r -> r.outputState),
+            RuleBlockEntityModifier.CODEC.lenientOptionalFieldOf("block_entity_modifier", DEFAULT_BLOCK_ENTITY_MODIFIER).forGetter(r -> r.blockEntityModifier)
+         )
+         .apply(i, ProcessorRule::new)
    );
    private final RuleTest inputPredicate;
    private final RuleTest locPredicate;
@@ -70,8 +68,7 @@ public class ProcessorRule {
       return this.outputState;
    }
 
-   @Nullable
-   public CompoundTag getOutputTag(final RandomSource random, @Nullable final CompoundTag existingTag) {
+   public @Nullable CompoundTag getOutputTag(final RandomSource random, final @Nullable CompoundTag existingTag) {
       return this.blockEntityModifier.apply(random, existingTag);
    }
 }

@@ -36,7 +36,7 @@ public class ServerboundClientCommandPacket implements Packet<ServerGamePacketLi
       return this.action;
    }
 
-   public static enum Action {
+   public enum Action {
       PERFORM_RESPAWN,
       REQUEST_STATS,
       REQUEST_GAMERULE_VALUES;

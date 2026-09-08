@@ -13,7 +13,7 @@ import org.jspecify.annotations.Nullable;
 
 public class ArrayListDeque<T> extends AbstractList<T> implements ListAndDeque<T> {
    private static final int MIN_GROWTH = 1;
-   private Object[] contents;
+   private @Nullable Object[] contents;
    private int head;
    private int size;
 
@@ -217,15 +217,13 @@ public class ArrayListDeque<T> extends AbstractList<T> implements ListAndDeque<T
       return new ArrayListDeque.ReversedView(this);
    }
 
-   @Nullable
    @Override
-   public T pollFirst() {
+   public @Nullable T pollFirst() {
       return this.size == 0 ? null : this.removeFirst();
    }
 
-   @Nullable
    @Override
-   public T pollLast() {
+   public @Nullable T pollLast() {
       return this.size == 0 ? null : this.removeLast();
    }
 
@@ -247,15 +245,13 @@ public class ArrayListDeque<T> extends AbstractList<T> implements ListAndDeque<T
       }
    }
 
-   @Nullable
    @Override
-   public T peekFirst() {
+   public @Nullable T peekFirst() {
       return this.size == 0 ? null : this.getFirst();
    }
 
-   @Nullable
    @Override
-   public T peekLast() {
+   public @Nullable T peekLast() {
       return this.size == 0 ? null : this.getLast();
    }
 
@@ -291,12 +287,9 @@ public class ArrayListDeque<T> extends AbstractList<T> implements ListAndDeque<T
    }
 
    private class DescendingIterator implements Iterator<T> {
-      private int index;
+      private int index = ArrayListDeque.this.size() - 1;
 
       public DescendingIterator() {
-         Objects.requireNonNull(ArrayListDeque.this);
-         super();
-         this.index = ArrayListDeque.this.size() - 1;
       }
 
       @Override
@@ -319,8 +312,6 @@ public class ArrayListDeque<T> extends AbstractList<T> implements ListAndDeque<T
       private final ArrayListDeque<T> source;
 
       public ReversedView(final ArrayListDeque<T> source) {
-         Objects.requireNonNull(ArrayListDeque.this);
-         super();
          this.source = source;
       }
 
@@ -359,27 +350,23 @@ public class ArrayListDeque<T> extends AbstractList<T> implements ListAndDeque<T
          return this.source.offerFirst(t);
       }
 
-      @Nullable
       @Override
-      public T pollFirst() {
+      public @Nullable T pollFirst() {
          return this.source.pollLast();
       }
 
-      @Nullable
       @Override
-      public T pollLast() {
+      public @Nullable T pollLast() {
          return this.source.pollFirst();
       }
 
-      @Nullable
       @Override
-      public T peekFirst() {
+      public @Nullable T peekFirst() {
          return this.source.peekLast();
       }
 
-      @Nullable
       @Override
-      public T peekLast() {
+      public @Nullable T peekLast() {
          return this.source.peekFirst();
       }
 

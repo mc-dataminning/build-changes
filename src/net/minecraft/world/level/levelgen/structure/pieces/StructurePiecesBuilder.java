@@ -14,8 +14,7 @@ public class StructurePiecesBuilder {
       this.pieces.add(piece);
    }
 
-   @Nullable
-   public StructurePiece findCollisionPiece(final BoundingBox box) {
+   public @Nullable StructurePiece findCollisionPiece(final BoundingBox box) {
       return StructurePiece.findCollisionPiece(this.pieces, box);
    }
 

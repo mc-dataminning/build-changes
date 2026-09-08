@@ -34,10 +34,10 @@ public class JsonRpcSslContextProvider {
       String keystorePassword = System.getenv().get("MINECRAFT_MANAGEMENT_TLS_KEYSTORE_PASSWORD");
       if (keystorePassword != null) {
          return keystorePassword;
-      } else {
-         String systemPropertyKeystorePassword = System.getProperty("management.tls.keystore.password", null);
-         return systemPropertyKeystorePassword != null ? systemPropertyKeystorePassword : keystorePasswordFromServerProperties;
       }
+
+      String systemPropertyKeystorePassword = System.getProperty("management.tls.keystore.password", null);
+      return systemPropertyKeystorePassword != null ? systemPropertyKeystorePassword : keystorePasswordFromServerProperties;
    }
 
    private static SslContext loadKeystoreFromPath(final File keyStoreFile, final String password) throws Exception {

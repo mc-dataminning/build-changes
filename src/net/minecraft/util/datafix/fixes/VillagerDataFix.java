@@ -45,20 +45,26 @@ public class VillagerDataFix extends NamedEntityFix {
          } else {
             return career == 4 ? "minecraft:fletcher" : "minecraft:farmer";
          }
-      } else if (profession == 1) {
-         return career == 2 ? "minecraft:cartographer" : "minecraft:librarian";
-      } else if (profession == 2) {
-         return "minecraft:cleric";
-      } else if (profession == 3) {
-         if (career == 2) {
-            return "minecraft:weaponsmith";
-         } else {
-            return career == 3 ? "minecraft:toolsmith" : "minecraft:armorer";
-         }
-      } else if (profession == 4) {
-         return career == 2 ? "minecraft:leatherworker" : "minecraft:butcher";
       } else {
-         return profession == 5 ? "minecraft:nitwit" : "minecraft:none";
+         if (profession == 1) {
+            return career == 2 ? "minecraft:cartographer" : "minecraft:librarian";
+         }
+
+         if (profession == 2) {
+            return "minecraft:cleric";
+         }
+
+         if (profession == 3) {
+            if (career == 2) {
+               return "minecraft:weaponsmith";
+            } else {
+               return career == 3 ? "minecraft:toolsmith" : "minecraft:armorer";
+            }
+         } else if (profession == 4) {
+            return career == 2 ? "minecraft:leatherworker" : "minecraft:butcher";
+         } else {
+            return profession == 5 ? "minecraft:nitwit" : "minecraft:none";
+         }
       }
    }
 }

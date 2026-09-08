@@ -59,15 +59,17 @@ public class FlowerPotBlock extends Block {
          .defaultBlockState();
       if (newContents.isAir()) {
          return InteractionResult.TRY_WITH_EMPTY_HAND;
-      } else if (!this.isEmpty()) {
-         return InteractionResult.CONSUME;
-      } else {
-         level.setBlockAndUpdate(pos, newContents);
-         level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-         player.awardStat(Stats.POT_FLOWER);
-         itemStack.consume(1, player);
-         return InteractionResult.SUCCESS;
       }
+
+      if (!this.isEmpty()) {
+         return InteractionResult.CONSUME;
+      }
+
+      level.setBlockAndUpdate(pos, newContents);
+      level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+      player.awardStat(Stats.POT_FLOWER);
+      itemStack.consume(1, player);
+      return InteractionResult.SUCCESS;
    }
 
    @Override
@@ -76,16 +78,16 @@ public class FlowerPotBlock extends Block {
    ) {
       if (this.isEmpty()) {
          return InteractionResult.CONSUME;
-      } else {
-         ItemStack plant = new ItemStack(this.potted);
-         if (!player.addItem(plant)) {
-            player.drop(plant, false, Prediction.PREDICTED);
-         }
-
-         level.setBlockAndUpdate(pos, Blocks.FLOWER_POT.defaultBlockState());
-         level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-         return InteractionResult.SUCCESS;
       }
+
+      ItemStack plant = new ItemStack(this.potted);
+      if (!player.addItem(plant)) {
+         player.drop(plant, false, Prediction.PREDICTED);
+      }
+
+      level.setBlockAndUpdate(pos, Blocks.FLOWER_POT.defaultBlockState());
+      level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+      return InteractionResult.SUCCESS;
    }
 
    @Override

@@ -19,16 +19,15 @@ import org.jspecify.annotations.Nullable;
 public class RandomizedIntStateProvider implements BlockStateProvider {
    public static final MapCodec<RandomizedIntStateProvider> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BlockStateProvider.CODEC.fieldOf("source").forGetter(c -> c.source),
-               Codec.STRING.fieldOf("property").forGetter(c -> c.propertyName),
-               IntProviders.CODEC.fieldOf("values").forGetter(c -> c.values)
-            )
-            .apply(i, RandomizedIntStateProvider::new)
+            BlockStateProvider.CODEC.fieldOf("source").forGetter(c -> c.source),
+            Codec.STRING.fieldOf("property").forGetter(c -> c.propertyName),
+            IntProviders.CODEC.fieldOf("values").forGetter(c -> c.values)
+         )
+         .apply(i, RandomizedIntStateProvider::new)
    );
    private final Holder<BlockStateProvider> source;
    private final String propertyName;
-   @Nullable
-   private IntegerProperty property;
+   private @Nullable IntegerProperty property;
    private final IntProvider values;
 
    public RandomizedIntStateProvider(final BlockStateProvider source, final IntegerProperty property, final IntProvider values) {
@@ -68,11 +67,10 @@ public class RandomizedIntStateProvider implements BlockStateProvider {
          this.property = property;
       }
 
-      return unmodifiedState.setValue(this.property, Integer.valueOf(this.values.sample(random)));
+      return unmodifiedState.setValue(this.property, this.values.sample(random));
    }
 
-   @Nullable
-   private static IntegerProperty findProperty(final BlockState source, final String propertyName) {
+   private static @Nullable IntegerProperty findProperty(final BlockState source, final String propertyName) {
       Collection<Property<?>> properties = source.getProperties();
       Optional<IntegerProperty> found = properties.stream()
          .filter(p -> p.getName().equals(propertyName))

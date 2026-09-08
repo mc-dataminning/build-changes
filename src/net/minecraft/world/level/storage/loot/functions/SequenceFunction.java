@@ -46,27 +46,27 @@ public class SequenceFunction extends LootItemConditionalFunction {
 
             return itemStack;
          };
-      } else {
-         return switch (functions.size()) {
-            case 0 -> IDENTITY;
-            case 1 -> {
-               Holder<LootItemFunction> function = functions.get(0);
-               yield (stack, context) -> function.value().apply(stack, context);
-            }
-            case 2 -> {
-               Holder<LootItemFunction> first = functions.get(0);
-               Holder<LootItemFunction> second = functions.get(1);
-               yield (itemStack, context) -> second.value().apply(first.value().apply(itemStack, context), context);
-            }
-            default -> (itemStack, context) -> {
+      }
+
+      return switch (functions.size()) {
+         case 0 -> IDENTITY;
+         case 1 -> {
+            Holder<LootItemFunction> function = functions.get(0);
+            yield (stack, context) -> function.value().apply(stack, context);
+         }
+         case 2 -> {
+            Holder<LootItemFunction> first = functions.get(0);
+            Holder<LootItemFunction> second = functions.get(1);
+            yield (itemStack, context) -> second.value().apply(first.value().apply(itemStack, context), context);
+         }
+         default -> (itemStack, context) -> {
             for (Holder<LootItemFunction> function : functions) {
                itemStack = function.value().apply(itemStack, context);
             }
 
             return itemStack;
          };
-         };
-      }
+      };
    }
 
    public static SequenceFunction of(final List<Holder<LootItemFunction>> functions) {

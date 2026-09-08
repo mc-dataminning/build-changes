@@ -9,10 +9,8 @@ import net.minecraft.world.level.block.state.properties.RailShape;
 import org.jspecify.annotations.Nullable;
 
 public class MinecartCollisionContext extends EntityCollisionContext {
-   @Nullable
-   private BlockPos ingoreBelow;
-   @Nullable
-   private BlockPos slopeIgnore;
+   private @Nullable BlockPos ingoreBelow;
+   private @Nullable BlockPos slopeIgnore;
 
    protected MinecartCollisionContext(final AbstractMinecart entity, final boolean alwaysStandOnFluid) {
       super(entity, alwaysStandOnFluid, false);

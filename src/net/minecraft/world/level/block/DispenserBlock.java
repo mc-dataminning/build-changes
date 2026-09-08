@@ -63,7 +63,7 @@ public class DispenserBlock extends BaseEntityBlock {
 
    protected DispenserBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(TRIGGERED, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(TRIGGERED, false));
    }
 
    @Override
@@ -101,10 +101,10 @@ public class DispenserBlock extends BaseEntityBlock {
    protected DispenseItemBehavior getDispenseMethod(final Level level, final ItemStack itemStack) {
       if (!itemStack.isItemEnabled(level.enabledFeatures())) {
          return DEFAULT_BEHAVIOR;
-      } else {
-         DispenseItemBehavior behavior = DISPENSER_REGISTRY.get(itemStack.getItem());
-         return behavior != null ? behavior : getDefaultDispenseMethod(itemStack);
       }
+
+      DispenseItemBehavior behavior = DISPENSER_REGISTRY.get(itemStack.getItem());
+      return behavior != null ? behavior : getDefaultDispenseMethod(itemStack);
    }
 
    private static DispenseItemBehavior getDefaultDispenseMethod(final ItemStack itemStack) {
@@ -113,23 +113,21 @@ public class DispenserBlock extends BaseEntityBlock {
       } else if (itemStack.is(ItemTags.SULFUR_CUBE_SWALLOWABLE)) {
          return SulfurCubeBlockDispenseItemBehavior.INSTANCE;
       } else {
-         return (DispenseItemBehavior)(itemStack.getItem() instanceof SpawnEggItem && itemStack.has(DataComponents.ENTITY_DATA)
-            ? SpawnEggItemBehavior.INSTANCE
-            : DEFAULT_BEHAVIOR);
+         return itemStack.getItem() instanceof SpawnEggItem && itemStack.has(DataComponents.ENTITY_DATA) ? SpawnEggItemBehavior.INSTANCE : DEFAULT_BEHAVIOR;
       }
    }
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       boolean shouldTrigger = level.hasNeighborSignal(pos) || level.hasNeighborSignal(pos.above());
       boolean isTriggered = state.getValue(TRIGGERED);
       if (shouldTrigger && !isTriggered) {
          level.scheduleTick(pos, this, 4);
-         level.setBlock(pos, state.setValue(TRIGGERED, Boolean.valueOf(true)), 2);
+         level.setBlock(pos, state.setValue(TRIGGERED, true), 2);
       } else if (!shouldTrigger && isTriggered) {
-         level.setBlock(pos, state.setValue(TRIGGERED, Boolean.valueOf(false)), 2);
+         level.setBlock(pos, state.setValue(TRIGGERED, false), 2);
       }
    }
 
@@ -160,11 +158,7 @@ public class DispenserBlock extends BaseEntityBlock {
    public static Position getDispensePosition(final BlockSource source, final double scale, final Vec3 offset) {
       Direction direction = source.state().getValue(FACING);
       return source.center()
-         .add(
-            scale * (double)direction.getStepX() + offset.x(),
-            scale * (double)direction.getStepY() + offset.y(),
-            scale * (double)direction.getStepZ() + offset.z()
-         );
+         .add(scale * direction.getStepX() + offset.x(), scale * direction.getStepY() + offset.y(), scale * direction.getStepZ() + offset.z());
    }
 
    @Override

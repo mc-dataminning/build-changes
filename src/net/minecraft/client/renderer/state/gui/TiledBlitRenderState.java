@@ -41,7 +41,7 @@ public record TiledBlitRenderState(
       final float v0,
       final float v1,
       final int color,
-      @Nullable final ScreenRectangle scissorArea
+      final @Nullable ScreenRectangle scissorArea
    ) {
       this(
          pipeline, textureSetup, pose, tileWidth, tileHeight, x0, y0, x1, y1, u0, u1, v0, v1, color, scissorArea, getBounds(x0, y0, x1, y1, pose, scissorArea)
@@ -62,7 +62,7 @@ public record TiledBlitRenderState(
             u1 = this.u1();
          } else {
             tileWidth = remainingWidth;
-            u1 = Mth.lerp((float)remainingWidth / (float)this.tileWidth(), this.u0(), this.u1());
+            u1 = Mth.lerp((float)remainingWidth / this.tileWidth(), this.u0(), this.u1());
          }
 
          for (int tileY = 0; tileY < height; tileY += this.tileHeight()) {
@@ -74,24 +74,23 @@ public record TiledBlitRenderState(
                v1 = this.v1();
             } else {
                tileHeight = remainingHeight;
-               v1 = Mth.lerp((float)remainingHeight / (float)this.tileHeight(), this.v0(), this.v1());
+               v1 = Mth.lerp((float)remainingHeight / this.tileHeight(), this.v0(), this.v1());
             }
 
             int x0 = this.x0() + tileX;
             int x1 = this.x0() + tileX + tileWidth;
             int y0 = this.y0() + tileY;
             int y1 = this.y0() + tileY + tileHeight;
-            vertexConsumer.addVertexWith2DPose(this.pose(), (float)x0, (float)y0).setUv(this.u0(), this.v0()).setColor(this.color());
-            vertexConsumer.addVertexWith2DPose(this.pose(), (float)x0, (float)y1).setUv(this.u0(), v1).setColor(this.color());
-            vertexConsumer.addVertexWith2DPose(this.pose(), (float)x1, (float)y1).setUv(u1, v1).setColor(this.color());
-            vertexConsumer.addVertexWith2DPose(this.pose(), (float)x1, (float)y0).setUv(u1, this.v0()).setColor(this.color());
+            vertexConsumer.addVertexWith2DPose(this.pose(), x0, y0).setUv(this.u0(), this.v0()).setColor(this.color());
+            vertexConsumer.addVertexWith2DPose(this.pose(), x0, y1).setUv(this.u0(), v1).setColor(this.color());
+            vertexConsumer.addVertexWith2DPose(this.pose(), x1, y1).setUv(u1, v1).setColor(this.color());
+            vertexConsumer.addVertexWith2DPose(this.pose(), x1, y0).setUv(u1, this.v0()).setColor(this.color());
          }
       }
    }
 
-   @Nullable
-   private static ScreenRectangle getBounds(
-      final int x0, final int y0, final int x1, final int y1, final Matrix3x2f pose, @Nullable final ScreenRectangle scissorArea
+   private static @Nullable ScreenRectangle getBounds(
+      final int x0, final int y0, final int x1, final int y1, final Matrix3x2f pose, final @Nullable ScreenRectangle scissorArea
    ) {
       ScreenRectangle bounds = new ScreenRectangle(x0, y0, x1 - x0, y1 - y0).transformMaxBounds(pose);
       return scissorArea != null ? scissorArea.intersection(bounds) : bounds;

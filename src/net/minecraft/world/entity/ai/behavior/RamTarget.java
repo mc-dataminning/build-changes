@@ -66,7 +66,7 @@ public class RamTarget extends Behavior<Goat> {
       BlockPos curPos = body.blockPosition();
       Brain<?> brain = body.getBrain();
       Vec3 ramTargetPos = brain.getMemory(MemoryModuleType.RAM_TARGET).get();
-      this.ramDirection = new Vec3((double)curPos.getX() - ramTargetPos.x(), 0.0, (double)curPos.getZ() - ramTargetPos.z()).normalize();
+      this.ramDirection = new Vec3(curPos.getX() - ramTargetPos.x(), 0.0, curPos.getZ() - ramTargetPos.z()).normalize();
       brain.setMemory(MemoryModuleType.WALK_TARGET, new WalkTarget(ramTargetPos, this.speed, 0));
    }
 
@@ -83,13 +83,13 @@ public class RamTarget extends Behavior<Goat> {
 
          int movementSpeedLevel = body.hasEffect(MobEffects.SPEED) ? body.getEffect(MobEffects.SPEED).getAmplifier() + 1 : 0;
          int movementSlowdownLevel = body.hasEffect(MobEffects.SLOWNESS) ? body.getEffect(MobEffects.SLOWNESS).getAmplifier() + 1 : 0;
-         float speedBoostPower = 0.25F * (float)(movementSpeedLevel - movementSlowdownLevel);
+         float speedBoostPower = 0.25F * (movementSpeedLevel - movementSlowdownLevel);
          float speedFactor = Mth.clamp(body.getSpeed() * 1.65F, 0.2F, 3.0F) + speedBoostPower;
          DamageSource source = level.damageSources().mobAttack(body);
          float blockedDamage = ramTarget.applyItemBlocking(level, source, damage);
          float blockingFactor = blockedDamage > 0.0F ? 0.5F : 1.0F;
          ramTarget.knockback(
-            (double)(blockingFactor * speedFactor) * this.getKnockbackForce.applyAsDouble(body), this.ramDirection.x(), this.ramDirection.z(), source, damage
+            blockingFactor * speedFactor * this.getKnockbackForce.applyAsDouble(body), this.ramDirection.x(), this.ramDirection.z(), source, damage
          );
          this.finishRam(level, body);
          level.playSound(null, body, this.getImpactSound.apply(body), SoundSource.NEUTRAL, 1.0F, 1.0F);

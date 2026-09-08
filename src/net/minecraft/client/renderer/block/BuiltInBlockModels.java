@@ -146,8 +146,8 @@ public class BuiltInBlockModels {
       return specialModelWithPropertyDispatch(
          BannerBlock.ROTATION,
          rotation -> special(
-               new BannerSpecialRenderer.Unbaked(color, BannerBlock.AttachmentType.GROUND), BannerRenderer.TRANSFORMATIONS.freeTransformations(rotation)
-            )
+            new BannerSpecialRenderer.Unbaked(color, BannerBlock.AttachmentType.GROUND), BannerRenderer.TRANSFORMATIONS.freeTransformations(rotation)
+         )
       );
    }
 
@@ -187,11 +187,11 @@ public class BuiltInBlockModels {
          ChestBlock.FACING,
          ChestBlock.TYPE,
          (facing, type) -> new ConditionalBlockModel.Unbaked(
-               Optional.empty(),
-               new IsXmas(),
-               createChest(ChestSpecialRenderer.CHRISTMAS.select(type), type, facing),
-               createChest(textures.select(type), type, facing)
-            )
+            Optional.empty(),
+            new IsXmas(),
+            createChest(ChestSpecialRenderer.CHRISTMAS.select(type), type, facing),
+            createChest(textures.select(type), type, facing)
+         )
       );
    }
 

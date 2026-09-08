@@ -12,10 +12,10 @@ import org.jspecify.annotations.Nullable;
 public record GrassColorSource(float temperature, float downfall) implements ItemTintSource {
    public static final MapCodec<GrassColorSource> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               ExtraCodecs.floatRange(0.0F, 1.0F).fieldOf("temperature").forGetter(GrassColorSource::temperature),
-               ExtraCodecs.floatRange(0.0F, 1.0F).fieldOf("downfall").forGetter(GrassColorSource::downfall)
-            )
-            .apply(i, GrassColorSource::new)
+            ExtraCodecs.floatRange(0.0F, 1.0F).fieldOf("temperature").forGetter(GrassColorSource::temperature),
+            ExtraCodecs.floatRange(0.0F, 1.0F).fieldOf("downfall").forGetter(GrassColorSource::downfall)
+         )
+         .apply(i, GrassColorSource::new)
    );
 
    public GrassColorSource() {
@@ -23,8 +23,8 @@ public record GrassColorSource(float temperature, float downfall) implements Ite
    }
 
    @Override
-   public int calculate(final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final LivingEntity owner) {
-      return GrassColor.get((double)this.temperature, (double)this.downfall);
+   public int calculate(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner) {
+      return GrassColor.get(this.temperature, this.downfall);
    }
 
    @Override

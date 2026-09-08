@@ -29,12 +29,12 @@ public interface LevelAccessor extends CommonLevelAccessor, ScheduledTickAccess 
 
    @Override
    default <T> ScheduledTick<T> createTick(final BlockPos pos, final T type, final int tickDelay, final TickPriority priority) {
-      return new ScheduledTick<>(type, pos, this.getGameTime() + (long)tickDelay, priority, this.nextSubTickCount());
+      return new ScheduledTick<>(type, pos, this.getGameTime() + tickDelay, priority, this.nextSubTickCount());
    }
 
    @Override
    default <T> ScheduledTick<T> createTick(final BlockPos pos, final T type, final int tickDelay) {
-      return new ScheduledTick<>(type, pos, this.getGameTime() + (long)tickDelay, this.nextSubTickCount());
+      return new ScheduledTick<>(type, pos, this.getGameTime() + tickDelay, this.nextSubTickCount());
    }
 
    LevelData getLevelData();
@@ -43,8 +43,7 @@ public interface LevelAccessor extends CommonLevelAccessor, ScheduledTickAccess 
       return this.getLevelData().getGameTime();
    }
 
-   @Nullable
-   MinecraftServer getServer();
+   @Nullable MinecraftServer getServer();
 
    default Difficulty getDifficulty() {
       return this.getLevelData().getDifficulty();
@@ -67,33 +66,33 @@ public interface LevelAccessor extends CommonLevelAccessor, ScheduledTickAccess 
       final BlockPos pos,
       final BlockPos neighborPos,
       final BlockState neighborState,
-      @Block.UpdateFlags final int updateFlags,
+      final @Block.UpdateFlags int updateFlags,
       final int updateLimit
    ) {
       NeighborUpdater.executeShapeUpdate(this, direction, pos, neighborPos, neighborState, updateFlags, updateLimit - 1);
    }
 
-   default void playSound(@Nullable final Entity except, final BlockPos pos, final SoundEvent soundEvent, final SoundSource source) {
+   default void playSound(final @Nullable Entity except, final BlockPos pos, final SoundEvent soundEvent, final SoundSource source) {
       this.playSound(except, pos, soundEvent, source, 1.0F, 1.0F);
    }
 
-   void playSound(@Nullable final Entity except, final BlockPos pos, final SoundEvent sound, final SoundSource source, final float volume, final float pitch);
+   void playSound(final @Nullable Entity except, final BlockPos pos, final SoundEvent sound, final SoundSource source, final float volume, final float pitch);
 
    void addParticle(final ParticleOptions particle, final double x, final double y, final double z, final double xd, final double yd, final double zd);
 
-   void levelEvent(@Nullable final Entity source, @LevelEvent.Value final int type, final BlockPos pos, final int data);
+   void levelEvent(final @Nullable Entity source, final @LevelEvent.Value int type, final BlockPos pos, final int data);
 
-   default void levelEvent(@LevelEvent.Value final int type, final BlockPos pos, final int data) {
+   default void levelEvent(final @LevelEvent.Value int type, final BlockPos pos, final int data) {
       this.levelEvent(null, type, pos, data);
    }
 
    void gameEvent(Holder<GameEvent> gameEvent, Vec3 position, GameEvent.Context context);
 
-   default void gameEvent(@Nullable final Entity sourceEntity, final Holder<GameEvent> gameEvent, final Vec3 pos) {
+   default void gameEvent(final @Nullable Entity sourceEntity, final Holder<GameEvent> gameEvent, final Vec3 pos) {
       this.gameEvent(gameEvent, pos, new GameEvent.Context(sourceEntity, null));
    }
 
-   default void gameEvent(@Nullable final Entity sourceEntity, final Holder<GameEvent> gameEvent, final BlockPos pos) {
+   default void gameEvent(final @Nullable Entity sourceEntity, final Holder<GameEvent> gameEvent, final BlockPos pos) {
       this.gameEvent(gameEvent, pos, new GameEvent.Context(sourceEntity, null));
    }
 

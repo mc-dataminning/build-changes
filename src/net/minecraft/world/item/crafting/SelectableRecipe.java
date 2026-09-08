@@ -15,7 +15,7 @@ public record SelectableRecipe<T extends Recipe<?>>(SlotDisplay optionDisplay, O
       );
    }
 
-   public static record SingleInputEntry<T extends Recipe<?>>(Ingredient input, SelectableRecipe<T> recipe) {
+   public record SingleInputEntry<T extends Recipe<?>>(Ingredient input, SelectableRecipe<T> recipe) {
       public static <T extends Recipe<?>> StreamCodec<RegistryFriendlyByteBuf, SelectableRecipe.SingleInputEntry<T>> noRecipeCodec() {
          return StreamCodec.composite(
             Ingredient.CONTENTS_STREAM_CODEC,
@@ -27,7 +27,7 @@ public record SelectableRecipe<T extends Recipe<?>>(SlotDisplay optionDisplay, O
       }
    }
 
-   public static record SingleInputSet<T extends Recipe<?>>(List<SelectableRecipe.SingleInputEntry<T>> entries) {
+   public record SingleInputSet<T extends Recipe<?>>(List<SelectableRecipe.SingleInputEntry<T>> entries) {
       public static <T extends Recipe<?>> SelectableRecipe.SingleInputSet<T> empty() {
          return new SelectableRecipe.SingleInputSet<>(List.of());
       }

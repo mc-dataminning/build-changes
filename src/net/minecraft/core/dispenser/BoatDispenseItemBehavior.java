@@ -24,10 +24,10 @@ public class BoatDispenseItemBehavior extends DefaultDispenseItemBehavior {
       Direction direction = source.state().getValue(DispenserBlock.FACING);
       ServerLevel level = source.level();
       Vec3 center = source.center();
-      double justOutsideDispenser = 0.5625 + (double)this.type.getWidth() / 2.0;
-      double spawnX = center.x() + (double)direction.getStepX() * justOutsideDispenser;
-      double spawnY = center.y() + (double)((float)direction.getStepY() * 1.125F);
-      double spawnZ = center.z() + (double)direction.getStepZ() * justOutsideDispenser;
+      double justOutsideDispenser = 0.5625 + this.type.getWidth() / 2.0;
+      double spawnX = center.x() + direction.getStepX() * justOutsideDispenser;
+      double spawnY = center.y() + direction.getStepY() * 1.125F;
+      double spawnZ = center.z() + direction.getStepZ() * justOutsideDispenser;
       BlockPos frontPos = source.pos().relative(direction);
       double yOffset;
       if (level.getFluidState(frontPos).is(FluidTags.WATER)) {

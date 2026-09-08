@@ -120,7 +120,7 @@ public class SubmitNodeCollection implements OrderedSubmitNodeCollector {
    @Override
    public void submitNameTag(
       final PoseStack poseStack,
-      @Nullable final Vec3 nameTagAttachment,
+      final @Nullable Vec3 nameTagAttachment,
       final int offset,
       final Component name,
       final boolean seeThrough,
@@ -134,7 +134,7 @@ public class SubmitNodeCollection implements OrderedSubmitNodeCollector {
          poseStack.rotate(camera.orientation);
          poseStack.scale(0.025F, -0.025F, 0.025F);
          Matrix4f pose = new Matrix4f(poseStack.last().pose());
-         float x = (float)(-minecraft.font.width(name)) / 2.0F;
+         float x = -minecraft.font.width(name) / 2.0F;
          float backgroundAlpha = minecraft.gameRenderer.gameRenderState().optionsRenderState.getBackgroundOpacity(0.25F);
          int backgroundColor = ARGB.color(backgroundAlpha, -16777216);
          float textAlpha = Math.max((backgroundAlpha + 0.75F) * 0.5F, 0.5F);
@@ -142,14 +142,11 @@ public class SubmitNodeCollection implements OrderedSubmitNodeCollector {
          FormattedCharSequence visualOrderName = name.getVisualOrderText();
          if (seeThrough) {
             this.submitNameTagPart(
-               nameTag(pose, x, (float)offset, visualOrderName, LightCoordsUtil.lightCoordsWithEmission(lightCoords, 2), -1, 0, Font.DisplayMode.NORMAL)
+               nameTag(pose, x, offset, visualOrderName, LightCoordsUtil.lightCoordsWithEmission(lightCoords, 2), -1, 0, Font.DisplayMode.NORMAL)
             );
-            this.seeThrough
-               .submit(
-                  (TranslucentSubmit)nameTag(pose, x, (float)offset, visualOrderName, lightCoords, textColor, backgroundColor, Font.DisplayMode.SEE_THROUGH)
-               );
+            this.seeThrough.submit(nameTag(pose, x, offset, visualOrderName, lightCoords, textColor, backgroundColor, Font.DisplayMode.SEE_THROUGH));
          } else {
-            this.submitNameTagPart(nameTag(pose, x, (float)offset, visualOrderName, lightCoords, textColor, backgroundColor, Font.DisplayMode.NORMAL));
+            this.submitNameTagPart(nameTag(pose, x, offset, visualOrderName, lightCoords, textColor, backgroundColor, Font.DisplayMode.NORMAL));
          }
 
          poseStack.popPose();
@@ -179,14 +176,10 @@ public class SubmitNodeCollection implements OrderedSubmitNodeCollector {
    }
 
    private static boolean canRenderAsSolid(final TextFeatureRenderer.Content content) {
-      if (content instanceof TextFeatureRenderer.Content.Text text
+      return content instanceof TextFeatureRenderer.Content.Text text
          && ARGB.alpha(text.color()) == 255
          && ARGB.alpha(text.backgroundColor()) == 0
-         && RenderSystem.isRenderingLevel) {
-         return true;
-      }
-
-      return false;
+         && RenderSystem.isRenderingLevel;
    }
 
    @Override
@@ -224,7 +217,7 @@ public class SubmitNodeCollection implements OrderedSubmitNodeCollector {
    private void submitTextPart(final PoseStack poseStack, final Font.DisplayMode displayMode, final int lightCoords, final TextFeatureRenderer.Content content) {
       TextFeatureRenderer.Submit submit = new TextFeatureRenderer.Submit(new Matrix4f(poseStack.last().pose()), displayMode, lightCoords, content);
       if (displayMode == Font.DisplayMode.SEE_THROUGH) {
-         this.seeThrough.submit((TranslucentSubmit)submit);
+         this.seeThrough.submit(submit);
       } else if (canRenderAsSolid(content)) {
          this.solid.submit(submit);
       } else {
@@ -251,7 +244,7 @@ public class SubmitNodeCollection implements OrderedSubmitNodeCollector {
       final int lightCoords,
       final int overlayCoords,
       final int tintedColor,
-      @Nullable final UvMapping uvMapping,
+      final @Nullable UvMapping uvMapping,
       final int outlineColor
    ) {
       PoseStack.Pose pose = poseStack.last().copy();
@@ -362,8 +355,7 @@ public class SubmitNodeCollection implements OrderedSubmitNodeCollector {
       }
    }
 
-   @Nullable
-   private static RenderType getOutlineRenderType(final RenderType renderType) {
+   private static @Nullable RenderType getOutlineRenderType(final RenderType renderType) {
       if (renderType.isOutline()) {
          return renderType;
       } else {

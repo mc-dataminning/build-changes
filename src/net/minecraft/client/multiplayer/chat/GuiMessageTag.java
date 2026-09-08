@@ -8,7 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import org.jspecify.annotations.Nullable;
 
-public record GuiMessageTag(int indicatorColor, @Nullable GuiMessageTag.Icon icon, @Nullable Component text, @Nullable String logTag) {
+public record GuiMessageTag(int indicatorColor, GuiMessageTag.@Nullable Icon icon, @Nullable Component text, @Nullable String logTag) {
    private static final Component SYSTEM_TEXT = Component.translatable("chat.tag.system");
    private static final Component SYSTEM_TEXT_SINGLE_PLAYER = Component.translatable("chat.tag.system_single_player");
    private static final Component CHAT_NOT_SECURE_TEXT = Component.translatable("chat.tag.not_secure");
@@ -43,14 +43,14 @@ public record GuiMessageTag(int indicatorColor, @Nullable GuiMessageTag.Icon ico
       return CHAT_ERROR;
    }
 
-   public static enum Icon {
+   public enum Icon {
       CHAT_MODIFIED(Identifier.withDefaultNamespace("icon/chat_modified"), 9, 9);
 
       public final Identifier sprite;
       public final int width;
       public final int height;
 
-      private Icon(final Identifier sprite, final int width, final int height) {
+      Icon(final Identifier sprite, final int width, final int height) {
          this.sprite = sprite;
          this.width = width;
          this.height = height;

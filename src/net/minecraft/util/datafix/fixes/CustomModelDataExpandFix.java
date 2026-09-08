@@ -19,9 +19,9 @@ public class CustomModelDataExpandFix extends DataFix {
          "Custom Model Data expansion",
          componentsType,
          component -> component.update(DSL.remainderFinder(), tag -> tag.update("minecraft:custom_model_data", cmd -> {
-                  float currentValue = cmd.asNumber(0.0F).floatValue();
-                  return cmd.createMap(Map.of(cmd.createString("floats"), cmd.createList(Stream.of(cmd.createFloat(currentValue)))));
-               }))
+            float currentValue = cmd.asNumber(0.0F).floatValue();
+            return cmd.createMap(Map.of(cmd.createString("floats"), cmd.createList(Stream.of(cmd.createFloat(currentValue)))));
+         }))
       );
    }
 }

@@ -9,12 +9,11 @@ public abstract class BaseGpuTexture implements GpuTexture {
    private final int height;
    private final int depthOrLayers;
    private final int mipLevels;
-   @GpuTexture.Usage
-   private final int usage;
+   private final @GpuTexture.Usage int usage;
    private final String label;
 
    public BaseGpuTexture(
-      @GpuTexture.Usage final int usage,
+      final @GpuTexture.Usage int usage,
       final String label,
       final GpuFormat format,
       final int width,
@@ -56,9 +55,8 @@ public abstract class BaseGpuTexture implements GpuTexture {
       return this.format;
    }
 
-   @GpuTexture.Usage
    @Override
-   public int usage() {
+   public @GpuTexture.Usage int usage() {
       return this.usage;
    }
 

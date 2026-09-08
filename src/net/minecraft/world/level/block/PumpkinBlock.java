@@ -50,16 +50,10 @@ public class PumpkinBlock extends Block {
             player,
             (ignored, pumpkinSeeds) -> {
                ItemEntity entity = new ItemEntity(
-                  level,
-                  (double)pos.getX() + 0.5 + (double)direction.getStepX() * 0.65,
-                  (double)pos.getY() + 0.1,
-                  (double)pos.getZ() + 0.5 + (double)direction.getStepZ() * 0.65,
-                  pumpkinSeeds
+                  level, pos.getX() + 0.5 + direction.getStepX() * 0.65, pos.getY() + 0.1, pos.getZ() + 0.5 + direction.getStepZ() * 0.65, pumpkinSeeds
                );
                RandomSource random = level.getRandom();
-               entity.setDeltaMovement(
-                  0.05 * (double)direction.getStepX() + random.nextDouble() * 0.02, 0.05, 0.05 * (double)direction.getStepZ() + random.nextDouble() * 0.02
-               );
+               entity.setDeltaMovement(0.05 * direction.getStepX() + random.nextDouble() * 0.02, 0.05, 0.05 * direction.getStepZ() + random.nextDouble() * 0.02);
                level.addFreshEntity(entity);
             }
          );

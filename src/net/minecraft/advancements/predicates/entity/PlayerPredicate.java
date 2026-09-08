@@ -59,31 +59,37 @@ public record PlayerPredicate(
    public static final int LOOKING_AT_RANGE = 100;
    public static final Codec<PlayerPredicate> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               MinMaxBounds.Ints.CODEC.optionalFieldOf("level", MinMaxBounds.Ints.ANY).forGetter(PlayerPredicate::level),
-               FoodPredicate.CODEC.optionalFieldOf("food", FoodPredicate.ANY).forGetter(PlayerPredicate::food),
-               GameTypePredicate.CODEC.optionalFieldOf("gamemode", GameTypePredicate.ANY).forGetter(PlayerPredicate::gameType),
-               PlayerPredicate.StatMatcher.CODEC.listOf().optionalFieldOf("stats", List.of()).forGetter(PlayerPredicate::stats),
-               ExtraCodecs.object2BooleanMap(Recipe.KEY_CODEC).optionalFieldOf("recipes", Object2BooleanMaps.emptyMap()).forGetter(PlayerPredicate::recipes),
-               Codec.unboundedMap(Identifier.CODEC, PlayerPredicate.AdvancementPredicate.CODEC)
-                  .optionalFieldOf("advancements", Map.of())
-                  .forGetter(PlayerPredicate::advancements),
-               EntityPredicate.CODEC.optionalFieldOf("looking_at").forGetter(PlayerPredicate::lookingAt),
-               InputPredicate.CODEC.optionalFieldOf("input").forGetter(PlayerPredicate::input)
-            )
-            .apply(i, PlayerPredicate::new)
+            MinMaxBounds.Ints.CODEC.optionalFieldOf("level", MinMaxBounds.Ints.ANY).forGetter(PlayerPredicate::level),
+            FoodPredicate.CODEC.optionalFieldOf("food", FoodPredicate.ANY).forGetter(PlayerPredicate::food),
+            GameTypePredicate.CODEC.optionalFieldOf("gamemode", GameTypePredicate.ANY).forGetter(PlayerPredicate::gameType),
+            PlayerPredicate.StatMatcher.CODEC.listOf().optionalFieldOf("stats", List.of()).forGetter(PlayerPredicate::stats),
+            ExtraCodecs.object2BooleanMap(Recipe.KEY_CODEC).optionalFieldOf("recipes", Object2BooleanMaps.emptyMap()).forGetter(PlayerPredicate::recipes),
+            Codec.unboundedMap(Identifier.CODEC, PlayerPredicate.AdvancementPredicate.CODEC)
+               .optionalFieldOf("advancements", Map.of())
+               .forGetter(PlayerPredicate::advancements),
+            EntityPredicate.CODEC.optionalFieldOf("looking_at").forGetter(PlayerPredicate::lookingAt),
+            InputPredicate.CODEC.optionalFieldOf("input").forGetter(PlayerPredicate::input)
+         )
+         .apply(i, PlayerPredicate::new)
    );
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
       if (!(entity instanceof ServerPlayer player)) {
          return false;
-      } else if (!this.level.matches(player.experienceLevel)) {
-         return false;
-      } else if (!this.food.matches(player.getFoodData())) {
-         return false;
-      } else if (!this.gameType.matches(player.gameMode())) {
-         return false;
       } else {
+         if (!this.level.matches(player.experienceLevel)) {
+            return false;
+         }
+
+         if (!this.food.matches(player.getFoodData())) {
+            return false;
+         }
+
+         if (!this.gameType.matches(player.gameMode())) {
+            return false;
+         }
+
          StatsCounter stats = player.getStats();
 
          for (PlayerPredicate.StatMatcher<?> stat : this.stats) {
@@ -135,7 +141,7 @@ public record PlayerPredicate(
       }
    }
 
-   private static record AdvancementCriterionsPredicate(Object2BooleanMap<String> criterions) implements PlayerPredicate.AdvancementPredicate {
+   private record AdvancementCriterionsPredicate(Object2BooleanMap<String> criterions) implements PlayerPredicate.AdvancementPredicate {
       public static final Codec<PlayerPredicate.AdvancementCriterionsPredicate> CODEC = ExtraCodecs.object2BooleanMap(Codec.STRING)
          .xmap(PlayerPredicate.AdvancementCriterionsPredicate::new, PlayerPredicate.AdvancementCriterionsPredicate::criterions);
 
@@ -154,7 +160,7 @@ public record PlayerPredicate(
       }
    }
 
-   private static record AdvancementDonePredicate(boolean state) implements PlayerPredicate.AdvancementPredicate {
+   private record AdvancementDonePredicate(boolean state) implements PlayerPredicate.AdvancementPredicate {
       public static final Codec<PlayerPredicate.AdvancementDonePredicate> CODEC = Codec.BOOL
          .xmap(PlayerPredicate.AdvancementDonePredicate::new, PlayerPredicate.AdvancementDonePredicate::state);
 
@@ -242,7 +248,7 @@ public record PlayerPredicate(
       }
    }
 
-   private static record StatMatcher<T>(StatType<T> type, Holder<T> value, MinMaxBounds.Ints range, Supplier<Stat<T>> stat) {
+   private record StatMatcher<T>(StatType<T> type, Holder<T> value, MinMaxBounds.Ints range, Supplier<Stat<T>> stat) {
       public static final Codec<PlayerPredicate.StatMatcher<?>> CODEC = BuiltInRegistries.STAT_TYPE
          .byNameCodec()
          .dispatch(PlayerPredicate.StatMatcher::type, PlayerPredicate.StatMatcher::createTypedCodec);
@@ -254,10 +260,10 @@ public record PlayerPredicate(
       private static <T> MapCodec<PlayerPredicate.StatMatcher<T>> createTypedCodec(final StatType<T> type) {
          return RecordCodecBuilder.mapCodec(
             i -> i.group(
-                     type.getRegistry().holderByNameCodec().fieldOf("stat").forGetter(PlayerPredicate.StatMatcher::value),
-                     MinMaxBounds.Ints.CODEC.optionalFieldOf("value", MinMaxBounds.Ints.ANY).forGetter(PlayerPredicate.StatMatcher::range)
-                  )
-                  .apply(i, (value, range) -> new PlayerPredicate.StatMatcher<>(type, value, range))
+                  type.getRegistry().holderByNameCodec().fieldOf("stat").forGetter(PlayerPredicate.StatMatcher::value),
+                  MinMaxBounds.Ints.CODEC.optionalFieldOf("value", MinMaxBounds.Ints.ANY).forGetter(PlayerPredicate.StatMatcher::range)
+               )
+               .apply(i, (value, range) -> new PlayerPredicate.StatMatcher<>(type, value, range))
          );
       }
 

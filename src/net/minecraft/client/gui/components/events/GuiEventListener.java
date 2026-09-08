@@ -43,12 +43,11 @@ public interface GuiEventListener extends TabOrderedElement {
       return false;
    }
 
-   default boolean preeditUpdated(@Nullable final PreeditEvent event) {
+   default boolean preeditUpdated(final @Nullable PreeditEvent event) {
       return false;
    }
 
-   @Nullable
-   default ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
+   default @Nullable ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
       return null;
    }
 
@@ -68,8 +67,7 @@ public interface GuiEventListener extends TabOrderedElement {
       return false;
    }
 
-   @Nullable
-   default ComponentPath getCurrentFocusPath() {
+   default @Nullable ComponentPath getCurrentFocusPath() {
       return this.isFocused() ? ComponentPath.leaf(this) : null;
    }
 

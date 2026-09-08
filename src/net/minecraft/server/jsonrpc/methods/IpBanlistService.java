@@ -41,16 +41,16 @@ public class IpBanlistService {
       IpBanlistService.IpBan ipBan = ban.toIpBan();
       if (ipBan != null) {
          return banIp(minecraftApi, ipBan, clientInfo);
-      } else {
-         if (ban.player().isPresent()) {
-            Optional<ServerPlayer> player = minecraftApi.playerListService().getPlayer(ban.player().get().id(), ban.player().get().name());
-            if (player.isPresent()) {
-               return banIp(minecraftApi, ban.toIpBan(player.get()), clientInfo);
-            }
-         }
-
-         return List.of();
       }
+
+      if (ban.player().isPresent()) {
+         Optional<ServerPlayer> player = minecraftApi.playerListService().getPlayer(ban.player().get().id(), ban.player().get().name());
+         if (player.isPresent()) {
+            return banIp(minecraftApi, ban.toIpBan(player.get()), clientInfo);
+         }
+      }
+
+      return List.of();
    }
 
    private static List<ServerPlayer> banIp(final MinecraftApi minecraftApi, final IpBanlistService.IpBan ban, final ClientInfo clientInfo) {
@@ -87,33 +87,30 @@ public class IpBanlistService {
       return get(minecraftApi);
    }
 
-   public static record IncomingIpBanDto(
-      Optional<PlayerDto> player, Optional<String> ip, Optional<String> reason, Optional<String> source, Optional<Instant> expires
-   ) {
+   public record IncomingIpBanDto(Optional<PlayerDto> player, Optional<String> ip, Optional<String> reason, Optional<String> source, Optional<Instant> expires) {
       public static final MapCodec<IpBanlistService.IncomingIpBanDto> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  PlayerDto.CODEC.codec().optionalFieldOf("player").forGetter(IpBanlistService.IncomingIpBanDto::player),
-                  Codec.STRING.optionalFieldOf("ip").forGetter(IpBanlistService.IncomingIpBanDto::ip),
-                  Codec.STRING.optionalFieldOf("reason").forGetter(IpBanlistService.IncomingIpBanDto::reason),
-                  Codec.STRING.optionalFieldOf("source").forGetter(IpBanlistService.IncomingIpBanDto::source),
-                  ExtraCodecs.INSTANT_ISO8601.optionalFieldOf("expires").forGetter(IpBanlistService.IncomingIpBanDto::expires)
-               )
-               .apply(i, IpBanlistService.IncomingIpBanDto::new)
+               PlayerDto.CODEC.codec().optionalFieldOf("player").forGetter(IpBanlistService.IncomingIpBanDto::player),
+               Codec.STRING.optionalFieldOf("ip").forGetter(IpBanlistService.IncomingIpBanDto::ip),
+               Codec.STRING.optionalFieldOf("reason").forGetter(IpBanlistService.IncomingIpBanDto::reason),
+               Codec.STRING.optionalFieldOf("source").forGetter(IpBanlistService.IncomingIpBanDto::source),
+               ExtraCodecs.INSTANT_ISO8601.optionalFieldOf("expires").forGetter(IpBanlistService.IncomingIpBanDto::expires)
+            )
+            .apply(i, IpBanlistService.IncomingIpBanDto::new)
       );
 
       private IpBanlistService.IpBan toIpBan(final ServerPlayer player) {
          return new IpBanlistService.IpBan(player.getIpAddress(), this.reason().orElse(null), this.source().orElse("Management server"), this.expires());
       }
 
-      @Nullable
-      private IpBanlistService.IpBan toIpBan() {
+      private IpBanlistService.@Nullable IpBan toIpBan() {
          return !this.ip().isEmpty() && InetAddresses.isInetAddress(this.ip().get())
             ? new IpBanlistService.IpBan(this.ip().get(), this.reason().orElse(null), this.source().orElse("Management server"), this.expires())
             : null;
       }
    }
 
-   private static record IpBan(String ip, @Nullable String reason, String source, Optional<Instant> expires) {
+   private record IpBan(String ip, @Nullable String reason, String source, Optional<Instant> expires) {
       private static IpBanlistService.IpBan from(final IpBanListEntry entry) {
          return new IpBanlistService.IpBan(
             Objects.requireNonNull(entry.getUser()), entry.getReason(), entry.getSource(), Optional.ofNullable(entry.getExpires()).map(Date::toInstant)
@@ -125,15 +122,15 @@ public class IpBanlistService {
       }
    }
 
-   public static record IpBanDto(String ip, Optional<String> reason, Optional<String> source, Optional<Instant> expires) {
+   public record IpBanDto(String ip, Optional<String> reason, Optional<String> source, Optional<Instant> expires) {
       public static final MapCodec<IpBanlistService.IpBanDto> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Codec.STRING.fieldOf("ip").forGetter(IpBanlistService.IpBanDto::ip),
-                  Codec.STRING.optionalFieldOf("reason").forGetter(IpBanlistService.IpBanDto::reason),
-                  Codec.STRING.optionalFieldOf("source").forGetter(IpBanlistService.IpBanDto::source),
-                  ExtraCodecs.INSTANT_ISO8601.optionalFieldOf("expires").forGetter(IpBanlistService.IpBanDto::expires)
-               )
-               .apply(i, IpBanlistService.IpBanDto::new)
+               Codec.STRING.fieldOf("ip").forGetter(IpBanlistService.IpBanDto::ip),
+               Codec.STRING.optionalFieldOf("reason").forGetter(IpBanlistService.IpBanDto::reason),
+               Codec.STRING.optionalFieldOf("source").forGetter(IpBanlistService.IpBanDto::source),
+               ExtraCodecs.INSTANT_ISO8601.optionalFieldOf("expires").forGetter(IpBanlistService.IpBanDto::expires)
+            )
+            .apply(i, IpBanlistService.IpBanDto::new)
       );
 
       private static IpBanlistService.IpBanDto from(final IpBanlistService.IpBan ban) {

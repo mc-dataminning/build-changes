@@ -11,7 +11,7 @@ public class EmptyBlockModel implements BlockModel {
    public void update(final BlockModelRenderState output, final BlockState blockState, final BlockDisplayContext displayContext, final long seed) {
    }
 
-   public static record Unbaked() implements BlockModel.Unbaked {
+   public record Unbaked() implements BlockModel.Unbaked {
       @Override
       public BlockModel bake(final BlockModel.BakingContext context, final Matrix4fc transformation) {
          return EmptyBlockModel.INSTANCE;

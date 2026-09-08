@@ -12,8 +12,7 @@ import net.minecraft.util.Util;
 import org.jspecify.annotations.Nullable;
 
 public class WidgetTooltipHolder {
-   @Nullable
-   private Tooltip tooltip;
+   private @Nullable Tooltip tooltip;
    private Duration delay = Duration.ZERO;
    private long displayStartTime;
    private boolean wasDisplayed;
@@ -22,12 +21,11 @@ public class WidgetTooltipHolder {
       this.delay = delay;
    }
 
-   public void set(@Nullable final Tooltip tooltip) {
+   public void set(final @Nullable Tooltip tooltip) {
       this.tooltip = tooltip;
    }
 
-   @Nullable
-   public Tooltip get() {
+   public @Nullable Tooltip get() {
       return this.tooltip;
    }
 
@@ -68,9 +66,9 @@ public class WidgetTooltipHolder {
    }
 
    private ClientTooltipPositioner createTooltipPositioner(final ScreenRectangle screenRectangle, final boolean isHovered, final boolean isFocused) {
-      return (ClientTooltipPositioner)(!isHovered && isFocused && Minecraft.getInstance().getLastInputType().isKeyboard()
+      return !isHovered && isFocused && Minecraft.getInstance().getLastInputType().isKeyboard()
          ? new BelowOrAboveWidgetTooltipPositioner(screenRectangle)
-         : new MenuTooltipPositioner(screenRectangle));
+         : new MenuTooltipPositioner(screenRectangle);
    }
 
    public void updateNarration(final NarrationElementOutput output) {

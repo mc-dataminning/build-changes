@@ -35,8 +35,8 @@ public class WorldUnloadEvent {
 
    public void send(final TelemetryEventSender eventSender) {
       this.worldLoadedTime.ifPresent(loadedTime -> eventSender.send(TelemetryEventType.WORLD_UNLOADED, properties -> {
-            properties.put(TelemetryProperty.SECONDS_SINCE_LOAD, this.getTimeInSecondsSinceLoad(loadedTime));
-            properties.put(TelemetryProperty.TICKS_SINCE_LOAD, (int)this.totalTicks);
-         }));
+         properties.put(TelemetryProperty.SECONDS_SINCE_LOAD, this.getTimeInSecondsSinceLoad(loadedTime));
+         properties.put(TelemetryProperty.TICKS_SINCE_LOAD, (int)this.totalTicks);
+      }));
    }
 }

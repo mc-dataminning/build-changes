@@ -15,14 +15,12 @@ public interface SignedMessageValidator {
       return null;
    };
 
-   @Nullable
-   PlayerChatMessage updateAndValidate(PlayerChatMessage message);
+   @Nullable PlayerChatMessage updateAndValidate(PlayerChatMessage message);
 
-   public static class KeyBased implements SignedMessageValidator {
+   class KeyBased implements SignedMessageValidator {
       private final SignatureValidator validator;
       private final BooleanSupplier expired;
-      @Nullable
-      private PlayerChatMessage lastMessage;
+      private @Nullable PlayerChatMessage lastMessage;
       private boolean isChainValid = true;
 
       public KeyBased(final SignatureValidator validator, final BooleanSupplier expired) {
@@ -60,16 +58,15 @@ public interface SignedMessageValidator {
          }
       }
 
-      @Nullable
       @Override
-      public PlayerChatMessage updateAndValidate(final PlayerChatMessage message) {
+      public @Nullable PlayerChatMessage updateAndValidate(final PlayerChatMessage message) {
          this.isChainValid = this.isChainValid && this.validate(message);
          if (!this.isChainValid) {
             return null;
-         } else {
-            this.lastMessage = message;
-            return message;
          }
+
+         this.lastMessage = message;
+         return message;
       }
    }
 }

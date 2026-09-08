@@ -46,13 +46,13 @@ public abstract class GrowingPlantBodyBlock extends GrowingPlantBlock implements
       GrowingPlantHeadBlock headBlock = this.getHeadBlock();
       if (directionToNeighbour == this.growthDirection && !neighbourState.is(this) && !neighbourState.is(headBlock)) {
          return this.updateHeadAfterConvertedFromBody(state, headBlock.getStateForPlacement(random));
-      } else {
-         if (this.scheduleFluidTicks) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-         }
-
-         return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
       }
+
+      if (this.scheduleFluidTicks) {
+         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+      }
+
+      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
    }
 
    @Override
@@ -65,10 +65,10 @@ public abstract class GrowingPlantBodyBlock extends GrowingPlantBlock implements
       Optional<BlockPos> headPos = this.getHeadPos(level, pos, state.getBlock());
       if (headPos.isEmpty()) {
          return false;
-      } else {
-         BlockPos growthPos = headPos.get().relative(this.growthDirection);
-         return this.getHeadBlock().canGrowInto(level.getBlockState(growthPos)) && level.isInsideBuildHeight(growthPos);
       }
+
+      BlockPos growthPos = headPos.get().relative(this.growthDirection);
+      return this.getHeadBlock().canGrowInto(level.getBlockState(growthPos)) && level.isInsideBuildHeight(growthPos);
    }
 
    @Override

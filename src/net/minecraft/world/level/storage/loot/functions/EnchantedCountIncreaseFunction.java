@@ -26,14 +26,14 @@ public class EnchantedCountIncreaseFunction extends LootItemConditionalFunction 
    public static final int NO_LIMIT = 0;
    public static final MapCodec<EnchantedCountIncreaseFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
-            .and(
-               i.group(
-                  Enchantment.CODEC.fieldOf("enchantment").forGetter(f -> f.enchantment),
-                  ContextFloatProviders.CODEC.fieldOf("count").forGetter(f -> f.count),
-                  Codec.INT.optionalFieldOf("limit", 0).forGetter(f -> f.limit)
-               )
+         .and(
+            i.group(
+               Enchantment.CODEC.fieldOf("enchantment").forGetter(f -> f.enchantment),
+               ContextFloatProviders.CODEC.fieldOf("count").forGetter(f -> f.count),
+               Codec.INT.optionalFieldOf("limit", 0).forGetter(f -> f.limit)
             )
-            .apply(i, EnchantedCountIncreaseFunction::new)
+         )
+         .apply(i, EnchantedCountIncreaseFunction::new)
    );
    private final Holder<Enchantment> enchantment;
    private final Holder<ContextFloatProvider> count;
@@ -77,7 +77,7 @@ public class EnchantedCountIncreaseFunction extends LootItemConditionalFunction 
             return itemStack;
          }
 
-         float addition = (float)level * this.count.value().getFloat(context);
+         float addition = level * this.count.value().getFloat(context);
          itemStack.grow(Math.round(addition));
          if (this.hasLimit()) {
             itemStack.limitSize(this.limit);

@@ -133,8 +133,7 @@ public class SDLEventHandler {
    private void handleMouseMotionEvent(final SDL_Event event) {
       SDL_MouseMotionEvent motion = event.motion();
       long handle = getWindowHandle(event);
-      this.minecraft
-         .execute(() -> this.minecraft.mouseHandler.onMove(handle, (double)motion.x(), (double)motion.y(), (double)motion.xrel(), (double)motion.yrel()));
+      this.minecraft.execute(() -> this.minecraft.mouseHandler.onMove(handle, motion.x(), motion.y(), motion.xrel(), motion.yrel()));
    }
 
    private void handleMouseButtonEvent(final SDL_Event event) {
@@ -159,9 +158,9 @@ public class SDLEventHandler {
    private void handleMouseWheelEvent(final SDL_Event event) {
       SDL_MouseWheelEvent wheel = event.wheel();
       Long handle = getWindowHandle(event);
-      boolean invertedScroll = isShiftInvertedScroll((double)wheel.y(), (double)wheel.x());
-      double scrollX = invertedScroll ? 0.0 : (double)wheel.x();
-      double scrollY = invertedScroll ? (double)(-wheel.x()) : (double)wheel.y();
+      boolean invertedScroll = isShiftInvertedScroll(wheel.y(), wheel.x());
+      double scrollX = invertedScroll ? 0.0 : wheel.x();
+      double scrollY = invertedScroll ? -wheel.x() : wheel.y();
       this.minecraft.execute(() -> this.minecraft.mouseHandler.onScroll(handle, scrollX, scrollY));
    }
 

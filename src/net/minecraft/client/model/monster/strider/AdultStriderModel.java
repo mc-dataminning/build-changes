@@ -34,7 +34,7 @@ public class AdultStriderModel extends StriderModel {
       this.leftTopBristle.zRot = 0.87266463F;
       this.leftMiddleBristle.zRot = 1.134464F;
       this.leftBottomBristle.zRot = 1.2217305F;
-      float bristleFlow = Mth.cos((double)(animationPos * 1.5F + (float) Math.PI)) * animationSpeed;
+      float bristleFlow = Mth.cos(animationPos * 1.5F + (float) Math.PI) * animationSpeed;
       this.animateBristle(
          ageInTicks,
          bristleFlow,
@@ -52,9 +52,9 @@ public class AdultStriderModel extends StriderModel {
          (modelPart, rotation) -> modelPart.zRot = modelPart.zRot + rotation
       );
       this.body.y = 2.0F;
-      this.body.y = this.body.y - 2.0F * Mth.cos((double)(animationPos * 1.5F)) * 2.0F * animationSpeed;
-      this.leftLeg.y = 8.0F + 2.0F * Mth.sin((double)(animationPos * 1.5F * 0.5F + (float) Math.PI)) * 2.0F * animationSpeed;
-      this.rightLeg.y = 8.0F + 2.0F * Mth.sin((double)(animationPos * 1.5F * 0.5F)) * 2.0F * animationSpeed;
+      this.body.y = this.body.y - 2.0F * Mth.cos(animationPos * 1.5F) * 2.0F * animationSpeed;
+      this.leftLeg.y = 8.0F + 2.0F * Mth.sin(animationPos * 1.5F * 0.5F + (float) Math.PI) * 2.0F * animationSpeed;
+      this.rightLeg.y = 8.0F + 2.0F * Mth.sin(animationPos * 1.5F * 0.5F) * 2.0F * animationSpeed;
    }
 
    public static LayerDefinition createBodyLayer() {

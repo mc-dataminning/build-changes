@@ -76,9 +76,9 @@ public class ParticleUtils {
       int stepY = face.getStepY();
       int stepZ = face.getStepZ();
       RandomSource random = level.getRandom();
-      double x = centerOfBlock.x + (stepX == 0 ? Mth.nextDouble(random, -0.5, 0.5) : (double)stepX * stepFactor);
-      double y = centerOfBlock.y + (stepY == 0 ? Mth.nextDouble(random, -0.5, 0.5) : (double)stepY * stepFactor);
-      double z = centerOfBlock.z + (stepZ == 0 ? Mth.nextDouble(random, -0.5, 0.5) : (double)stepZ * stepFactor);
+      double x = centerOfBlock.x + (stepX == 0 ? Mth.nextDouble(random, -0.5, 0.5) : stepX * stepFactor);
+      double y = centerOfBlock.y + (stepY == 0 ? Mth.nextDouble(random, -0.5, 0.5) : stepY * stepFactor);
+      double z = centerOfBlock.z + (stepZ == 0 ? Mth.nextDouble(random, -0.5, 0.5) : stepZ * stepFactor);
       double xBaseSpeed = stepX == 0 ? speed.x() : 0.0;
       double yBaseSpeed = stepY == 0 ? speed.y() : 0.0;
       double zBaseSpeed = stepZ == 0 ? speed.z() : 0.0;
@@ -86,9 +86,9 @@ public class ParticleUtils {
    }
 
    public static void spawnParticleBelow(final Level level, final BlockPos pos, final RandomSource random, final ParticleOptions particle) {
-      double x = (double)pos.getX() + random.nextDouble();
-      double y = (double)pos.getY() - 0.05;
-      double z = (double)pos.getZ() + random.nextDouble();
+      double x = pos.getX() + random.nextDouble();
+      double y = pos.getY() - 0.05;
+      double z = pos.getZ() + random.nextDouble();
       level.addParticle(particle, x, y, z, 0.0, 0.0, 0.0);
    }
 
@@ -115,9 +115,9 @@ public class ParticleUtils {
          double yVelocity = random.nextGaussian() * 0.02;
          double zVelocity = random.nextGaussian() * 0.02;
          double spreadStartOffset = 0.5 - spreadWidth;
-         double x = (double)pos.getX() + spreadStartOffset + random.nextDouble() * spreadWidth * 2.0;
-         double y = (double)pos.getY() + random.nextDouble() * spreadHeight;
-         double z = (double)pos.getZ() + spreadStartOffset + random.nextDouble() * spreadWidth * 2.0;
+         double x = pos.getX() + spreadStartOffset + random.nextDouble() * spreadWidth * 2.0;
+         double y = pos.getY() + random.nextDouble() * spreadHeight;
+         double z = pos.getZ() + spreadStartOffset + random.nextDouble() * spreadWidth * 2.0;
          if (allowFloatingParticles || !level.getBlockState(BlockPos.containing(x, y, z).below()).isAir()) {
             level.addParticle(particle, x, y, z, xVelocity, yVelocity, zVelocity);
          }
@@ -128,7 +128,7 @@ public class ParticleUtils {
       Vec3 center = Vec3.atCenterOf(pos).add(0.0, 0.5, 0.0);
       BlockParticleOption particle = new BlockParticleOption(ParticleTypes.DUST_PILLAR, level.getBlockState(pos));
 
-      for (int i = 0; (float)i < (float)count / 3.0F; i++) {
+      for (int i = 0; i < count / 3.0F; i++) {
          double x = center.x + level.getRandom().nextGaussian() / 2.0;
          double y = center.y;
          double z = center.z + level.getRandom().nextGaussian() / 2.0;
@@ -138,10 +138,10 @@ public class ParticleUtils {
          level.addParticle(particle, x, y, z, xd, yd, zd);
       }
 
-      for (int i = 0; (float)i < (float)count / 1.5F; i++) {
-         double x = center.x + 3.5 * Math.cos((double)i) + level.getRandom().nextGaussian() / 2.0;
+      for (int i = 0; i < count / 1.5F; i++) {
+         double x = center.x + 3.5 * Math.cos(i) + level.getRandom().nextGaussian() / 2.0;
          double y = center.y;
-         double z = center.z + 3.5 * Math.sin((double)i) + level.getRandom().nextGaussian() / 2.0;
+         double z = center.z + 3.5 * Math.sin(i) + level.getRandom().nextGaussian() / 2.0;
          double xd = level.getRandom().nextGaussian() * 0.05F;
          double yd = level.getRandom().nextGaussian() * 0.05F;
          double zd = level.getRandom().nextGaussian() * 0.05F;

@@ -34,9 +34,8 @@ public class EndGatewayBlock extends BaseEntityBlock implements Portal {
       return new TheEndGatewayBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return createTickerHelper(
          type, BlockEntityTypes.END_GATEWAY, level.isClientSide() ? TheEndGatewayBlockEntity::beamAnimationTick : TheEndGatewayBlockEntity::portalTick
       );
@@ -48,19 +47,19 @@ public class EndGatewayBlock extends BaseEntityBlock implements Portal {
          int particleCount = theEndGatewayBlockEntity.getParticleAmount();
 
          for (int i = 0; i < particleCount; i++) {
-            double x = (double)pos.getX() + random.nextDouble();
-            double y = (double)pos.getY() + random.nextDouble();
-            double z = (double)pos.getZ() + random.nextDouble();
+            double x = pos.getX() + random.nextDouble();
+            double y = pos.getY() + random.nextDouble();
+            double z = pos.getZ() + random.nextDouble();
             double xa = (random.nextDouble() - 0.5) * 0.5;
             double ya = (random.nextDouble() - 0.5) * 0.5;
             double za = (random.nextDouble() - 0.5) * 0.5;
             int flip = random.nextInt(2) * 2 - 1;
             if (random.nextBoolean()) {
-               z = (double)pos.getZ() + 0.5 + 0.25 * (double)flip;
-               za = (double)(random.nextFloat() * 2.0F * (float)flip);
+               z = pos.getZ() + 0.5 + 0.25 * flip;
+               za = random.nextFloat() * 2.0F * flip;
             } else {
-               x = (double)pos.getX() + 0.5 + 0.25 * (double)flip;
-               xa = (double)(random.nextFloat() * 2.0F * (float)flip);
+               x = pos.getX() + 0.5 + 0.25 * flip;
+               xa = random.nextFloat() * 2.0F * flip;
             }
 
             level.addParticle(ParticleTypes.PORTAL, x, y, z, xa, ya, za);
@@ -91,9 +90,8 @@ public class EndGatewayBlock extends BaseEntityBlock implements Portal {
       }
    }
 
-   @Nullable
    @Override
-   public TeleportTransition getPortalDestination(final ServerLevel currentLevel, final Entity entity, final BlockPos portalEntryPos) {
+   public @Nullable TeleportTransition getPortalDestination(final ServerLevel currentLevel, final Entity entity, final BlockPos portalEntryPos) {
       if (currentLevel.getBlockEntity(portalEntryPos) instanceof TheEndGatewayBlockEntity endGatewayBlockEntity) {
          Vec3 teleportPosition = endGatewayBlockEntity.getPortalPosition(currentLevel, portalEntryPos);
          if (teleportPosition == null) {

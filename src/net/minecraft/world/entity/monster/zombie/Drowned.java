@@ -197,7 +197,7 @@ public class Drowned extends Zombie implements RangedAttackMob {
 
    @Override
    protected void populateDefaultEquipmentSlots(final RandomSource random, final DifficultyInstance difficulty) {
-      if ((double)random.nextFloat() > 0.9) {
+      if (random.nextFloat() > 0.9) {
          int rand = random.nextInt(16);
          if (rand < 10) {
             this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.TRIDENT));
@@ -222,7 +222,7 @@ public class Drowned extends Zombie implements RangedAttackMob {
       return level.isUnobstructed(this);
    }
 
-   public boolean okTarget(@Nullable final LivingEntity target) {
+   public boolean okTarget(final @Nullable LivingEntity target) {
       return target != null ? !this.level().isBrightOutside() || target.isInWater() : false;
    }
 
@@ -234,10 +234,10 @@ public class Drowned extends Zombie implements RangedAttackMob {
    public boolean wantsToSwim() {
       if (this.searchingForLand) {
          return true;
-      } else {
-         LivingEntity target = this.getTarget();
-         return target != null && target.isInWater();
       }
+
+      LivingEntity target = this.getTarget();
+      return target != null && target.isInWater();
    }
 
    @Override
@@ -268,7 +268,7 @@ public class Drowned extends Zombie implements RangedAttackMob {
       if (path != null) {
          BlockPos pos = path.getTarget();
          if (pos != null) {
-            double sqrDistToNextPos = this.distanceToSqr((double)pos.getX(), (double)pos.getY(), (double)pos.getZ());
+            double sqrDistToNextPos = this.distanceToSqr(pos.getX(), pos.getY(), pos.getZ());
             if (sqrDistToNextPos < 4.0) {
                return true;
             }
@@ -364,7 +364,7 @@ public class Drowned extends Zombie implements RangedAttackMob {
          return super.canUse()
             && !this.drowned.level().isBrightOutside()
             && this.drowned.isInWater()
-            && this.drowned.getY() >= (double)(this.drowned.level().getSeaLevel() - 3);
+            && this.drowned.getY() >= this.drowned.level().getSeaLevel() - 3;
       }
 
       @Override
@@ -409,19 +409,21 @@ public class Drowned extends Zombie implements RangedAttackMob {
       public boolean canUse() {
          if (!this.level.isBrightOutside()) {
             return false;
-         } else if (this.mob.isInWater()) {
-            return false;
-         } else {
-            Vec3 pos = this.getWaterPos();
-            if (pos == null) {
-               return false;
-            } else {
-               this.wantedX = pos.x;
-               this.wantedY = pos.y;
-               this.wantedZ = pos.z;
-               return true;
-            }
          }
+
+         if (this.mob.isInWater()) {
+            return false;
+         }
+
+         Vec3 pos = this.getWaterPos();
+         if (pos == null) {
+            return false;
+         }
+
+         this.wantedX = pos.x;
+         this.wantedY = pos.y;
+         this.wantedZ = pos.z;
+         return true;
       }
 
       @Override
@@ -434,8 +436,7 @@ public class Drowned extends Zombie implements RangedAttackMob {
          this.mob.getNavigation().moveTo(this.wantedX, this.wantedY, this.wantedZ, this.speedModifier);
       }
 
-      @Nullable
-      private Vec3 getWaterPos() {
+      private @Nullable Vec3 getWaterPos() {
          RandomSource random = this.mob.getRandom();
          BlockPos pos = this.mob.blockPosition();
 
@@ -479,8 +480,7 @@ public class Drowned extends Zombie implements RangedAttackMob {
             float targetSpeed = (float)(this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED));
             float newSpeed = Mth.lerp(0.125F, this.mob.getSpeed(), targetSpeed);
             this.mob.setSpeed(newSpeed);
-            this.mob
-               .setDeltaMovement(this.mob.getDeltaMovement().add((double)newSpeed * xd * 0.005, (double)newSpeed * yd * 0.1, (double)newSpeed * zd * 0.005));
+            this.mob.setDeltaMovement(this.mob.getDeltaMovement().add(newSpeed * xd * 0.005, newSpeed * yd * 0.1, newSpeed * zd * 0.005));
          } else {
             if (!this.mob.onGround()) {
                this.mob.setDeltaMovement(this.mob.getDeltaMovement().add(0.0, -0.008, 0.0));
@@ -505,7 +505,7 @@ public class Drowned extends Zombie implements RangedAttackMob {
 
       @Override
       public boolean canUse() {
-         return !this.drowned.level().isBrightOutside() && this.drowned.isInWater() && this.drowned.getY() < (double)(this.seaLevel - 2);
+         return !this.drowned.level().isBrightOutside() && this.drowned.isInWater() && this.drowned.getY() < this.seaLevel - 2;
       }
 
       @Override
@@ -515,9 +515,9 @@ public class Drowned extends Zombie implements RangedAttackMob {
 
       @Override
       public void tick() {
-         if (this.drowned.getY() < (double)(this.seaLevel - 1) && (this.drowned.getNavigation().isDone() || this.drowned.closeToNextPos())) {
+         if (this.drowned.getY() < this.seaLevel - 1 && (this.drowned.getNavigation().isDone() || this.drowned.closeToNextPos())) {
             Vec3 nextPos = DefaultRandomPos.getPosTowards(
-               this.drowned, 4, 8, new Vec3(this.drowned.getX(), (double)(this.seaLevel - 1), this.drowned.getZ()), (float) (Math.PI / 2)
+               this.drowned, 4, 8, new Vec3(this.drowned.getX(), this.seaLevel - 1, this.drowned.getZ()), (float) (Math.PI / 2)
             );
             if (nextPos == null) {
                this.stuck = true;

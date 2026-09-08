@@ -31,8 +31,7 @@ public final class TextColor {
    public static final TextColor YELLOW = named("yellow", 16777045);
    public static final TextColor WHITE = named("white", 16777215);
    private final int value;
-   @Nullable
-   private final String name;
+   private final @Nullable String name;
 
    private TextColor(final int value, final String name) {
       this.value = value & 16777215;
@@ -84,8 +83,7 @@ public final class TextColor {
       return this.serialize();
    }
 
-   @Nullable
-   public static TextColor fromLegacyFormat(final ChatFormatting format) {
+   public static @Nullable TextColor fromLegacyFormat(final ChatFormatting format) {
       return switch (format) {
          case BLACK -> BLACK;
          case DARK_BLUE -> DARK_BLUE;
@@ -118,7 +116,7 @@ public final class TextColor {
             return value >= 0 && value <= 16777215
                ? DataResult.success(fromRgb(value), Lifecycle.stable())
                : DataResult.error(() -> "Color value out of range: " + color);
-         } catch (NumberFormatException var2) {
+         } catch (NumberFormatException e) {
             return DataResult.error(() -> "Invalid color value: " + color);
          }
       } else {

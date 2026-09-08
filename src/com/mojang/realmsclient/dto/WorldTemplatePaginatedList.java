@@ -40,8 +40,8 @@ public record WorldTemplatePaginatedList(List<WorldTemplate> templates, int page
          page = JsonUtils.getIntOr("page", object, 0);
          size = JsonUtils.getIntOr("size", object, 0);
          total = JsonUtils.getIntOr("total", object, 0);
-      } catch (Exception var9) {
-         LOGGER.error("Could not parse WorldTemplatePaginatedList", var9);
+      } catch (Exception e) {
+         LOGGER.error("Could not parse WorldTemplatePaginatedList", e);
       }
 
       return new WorldTemplatePaginatedList(templates, page, size, total);

@@ -107,10 +107,10 @@ public class GiveGiftToHero extends Behavior<Villager> {
    private static ResourceKey<LootTable> getLootTableToThrow(final Villager villager) {
       if (villager.isBaby()) {
          return BuiltInLootTables.BABY_VILLAGER_GIFT;
-      } else {
-         Optional<ResourceKey<VillagerProfession>> profession = villager.getVillagerData().profession().unwrapKey();
-         return profession.isEmpty() ? BuiltInLootTables.UNEMPLOYED_GIFT : GIFTS.getOrDefault(profession.get(), BuiltInLootTables.UNEMPLOYED_GIFT);
       }
+
+      Optional<ResourceKey<VillagerProfession>> profession = villager.getVillagerData().profession().unwrapKey();
+      return profession.isEmpty() ? BuiltInLootTables.UNEMPLOYED_GIFT : GIFTS.getOrDefault(profession.get(), BuiltInLootTables.UNEMPLOYED_GIFT);
    }
 
    private boolean isHeroVisible(final Villager body) {

@@ -32,13 +32,7 @@ public class DetectorRailBlock extends BaseRailBlock {
 
    public DetectorRailBlock(final BlockBehaviour.Properties properties) {
       super(true, properties);
-      this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(POWERED, Boolean.valueOf(false))
-            .setValue(SHAPE, RailShape.NORTH_SOUTH)
-            .setValue(WATERLOGGED, Boolean.valueOf(false))
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(POWERED, false).setValue(SHAPE, RailShape.NORTH_SOUTH).setValue(WATERLOGGED, false));
    }
 
    @Override
@@ -88,7 +82,7 @@ public class DetectorRailBlock extends BaseRailBlock {
          }
 
          if (shouldBePressed && !wasPressed) {
-            BlockState newState = state.setValue(POWERED, Boolean.valueOf(true));
+            BlockState newState = state.setValue(POWERED, true);
             level.setBlockAndUpdate(pos, newState);
             this.updatePowerToConnected(level, pos, newState, true);
             level.updateNeighborsAt(pos, this);
@@ -97,7 +91,7 @@ public class DetectorRailBlock extends BaseRailBlock {
          }
 
          if (!shouldBePressed && wasPressed) {
-            BlockState newState = state.setValue(POWERED, Boolean.valueOf(false));
+            BlockState newState = state.setValue(POWERED, false);
             level.setBlockAndUpdate(pos, newState);
             this.updatePowerToConnected(level, pos, newState, false);
             level.updateNeighborsAt(pos, this);
@@ -165,14 +159,7 @@ public class DetectorRailBlock extends BaseRailBlock {
 
    private AABB getSearchBB(final BlockPos pos) {
       double b = 0.2;
-      return new AABB(
-         (double)pos.getX() + 0.2,
-         (double)pos.getY(),
-         (double)pos.getZ() + 0.2,
-         (double)(pos.getX() + 1) - 0.2,
-         (double)(pos.getY() + 1) - 0.2,
-         (double)(pos.getZ() + 1) - 0.2
-      );
+      return new AABB(pos.getX() + 0.2, pos.getY(), pos.getZ() + 0.2, pos.getX() + 1 - 0.2, pos.getY() + 1 - 0.2, pos.getZ() + 1 - 0.2);
    }
 
    @Override

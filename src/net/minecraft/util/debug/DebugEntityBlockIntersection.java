@@ -16,7 +16,7 @@ public enum DebugEntityBlockIntersection {
    private final int id;
    private final int color;
 
-   private DebugEntityBlockIntersection(final int id, final int color) {
+   DebugEntityBlockIntersection(final int id, final int color) {
       this.id = id;
       this.color = color;
    }

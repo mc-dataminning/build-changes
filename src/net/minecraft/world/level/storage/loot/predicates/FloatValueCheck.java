@@ -13,10 +13,10 @@ import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFlo
 public record FloatValueCheck(Holder<ContextFloatProvider> value, FloatRangePredicate range) implements LootItemCondition {
    public static final MapCodec<FloatValueCheck> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               ContextFloatProviders.CODEC.fieldOf("value").forGetter(FloatValueCheck::value),
-               FloatRangePredicate.CODEC.fieldOf("test").forGetter(FloatValueCheck::range)
-            )
-            .apply(i, FloatValueCheck::new)
+            ContextFloatProviders.CODEC.fieldOf("value").forGetter(FloatValueCheck::value),
+            FloatRangePredicate.CODEC.fieldOf("test").forGetter(FloatValueCheck::range)
+         )
+         .apply(i, FloatValueCheck::new)
    );
 
    @Override

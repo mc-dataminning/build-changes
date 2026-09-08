@@ -15,7 +15,7 @@ public record WritableBookPredicate(Optional<CollectionPredicate<Filterable<Stri
    implements SingleComponentItemPredicate<WritableBookContent> {
    public static final Codec<WritableBookPredicate> CODEC = RecordCodecBuilder.create(
       i -> i.group(CollectionPredicate.codec(WritableBookPredicate.PagePredicate.CODEC).optionalFieldOf("pages").forGetter(WritableBookPredicate::pages))
-            .apply(i, WritableBookPredicate::new)
+         .apply(i, WritableBookPredicate::new)
    );
 
    @Override
@@ -27,7 +27,7 @@ public record WritableBookPredicate(Optional<CollectionPredicate<Filterable<Stri
       return !this.pages.isPresent() || this.pages.get().test(value.pages());
    }
 
-   public static record PagePredicate(String contents) implements Predicate<Filterable<String>> {
+   public record PagePredicate(String contents) implements Predicate<Filterable<String>> {
       public static final Codec<WritableBookPredicate.PagePredicate> CODEC = Codec.STRING
          .xmap(WritableBookPredicate.PagePredicate::new, WritableBookPredicate.PagePredicate::contents);
 

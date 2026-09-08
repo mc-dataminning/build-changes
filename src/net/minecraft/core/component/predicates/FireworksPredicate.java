@@ -16,12 +16,12 @@ public record FireworksPredicate(
 ) implements SingleComponentItemPredicate<Fireworks> {
    public static final Codec<FireworksPredicate> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               CollectionPredicate.codec(FireworkExplosionPredicate.FireworkPredicate.CODEC)
-                  .optionalFieldOf("explosions")
-                  .forGetter(FireworksPredicate::explosions),
-               MinMaxBounds.Ints.CODEC.optionalFieldOf("flight_duration", MinMaxBounds.Ints.ANY).forGetter(FireworksPredicate::flightDuration)
-            )
-            .apply(i, FireworksPredicate::new)
+            CollectionPredicate.codec(FireworkExplosionPredicate.FireworkPredicate.CODEC)
+               .optionalFieldOf("explosions")
+               .forGetter(FireworksPredicate::explosions),
+            MinMaxBounds.Ints.CODEC.optionalFieldOf("flight_duration", MinMaxBounds.Ints.ANY).forGetter(FireworksPredicate::flightDuration)
+         )
+         .apply(i, FireworksPredicate::new)
    );
 
    @Override

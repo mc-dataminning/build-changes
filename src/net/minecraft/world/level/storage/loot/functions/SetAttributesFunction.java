@@ -30,13 +30,13 @@ import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFlo
 public class SetAttributesFunction extends LootItemConditionalFunction {
    public static final MapCodec<SetAttributesFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
-            .and(
-               i.group(
-                  SetAttributesFunction.Modifier.CODEC.listOf().fieldOf("modifiers").forGetter(f -> f.modifiers),
-                  Codec.BOOL.optionalFieldOf("replace", true).forGetter(f -> f.replace)
-               )
+         .and(
+            i.group(
+               SetAttributesFunction.Modifier.CODEC.listOf().fieldOf("modifiers").forGetter(f -> f.modifiers),
+               Codec.BOOL.optionalFieldOf("replace", true).forGetter(f -> f.replace)
             )
-            .apply(i, SetAttributesFunction::new)
+         )
+         .apply(i, SetAttributesFunction::new)
    );
    private final List<SetAttributesFunction.Modifier> modifiers;
    private final boolean replace;
@@ -77,7 +77,7 @@ public class SetAttributesFunction extends LootItemConditionalFunction {
       for (SetAttributesFunction.Modifier modifier : this.modifiers) {
          EquipmentSlotGroup slot = Util.getRandom(modifier.slots, random);
          itemModifiers = itemModifiers.withModifierAdded(
-            modifier.attribute, new AttributeModifier(modifier.id, (double)modifier.amount.value().getFloat(context), modifier.operation), slot
+            modifier.attribute, new AttributeModifier(modifier.id, modifier.amount.value().getFloat(context), modifier.operation), slot
          );
       }
 
@@ -121,19 +121,19 @@ public class SetAttributesFunction extends LootItemConditionalFunction {
       }
    }
 
-   private static record Modifier(
+   private record Modifier(
       Identifier id, Holder<Attribute> attribute, AttributeModifier.Operation operation, Holder<ContextFloatProvider> amount, List<EquipmentSlotGroup> slots
    ) implements LootContextUser {
       private static final Codec<List<EquipmentSlotGroup>> SLOTS_CODEC = ExtraCodecs.nonEmptyList(ExtraCodecs.compactListCodec(EquipmentSlotGroup.CODEC));
       public static final Codec<SetAttributesFunction.Modifier> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Identifier.CODEC.fieldOf("id").forGetter(SetAttributesFunction.Modifier::id),
-                  Attribute.CODEC.fieldOf("attribute").forGetter(SetAttributesFunction.Modifier::attribute),
-                  AttributeModifier.Operation.CODEC.fieldOf("operation").forGetter(SetAttributesFunction.Modifier::operation),
-                  ContextFloatProviders.CODEC.fieldOf("amount").forGetter(SetAttributesFunction.Modifier::amount),
-                  SLOTS_CODEC.fieldOf("slot").forGetter(SetAttributesFunction.Modifier::slots)
-               )
-               .apply(i, SetAttributesFunction.Modifier::new)
+               Identifier.CODEC.fieldOf("id").forGetter(SetAttributesFunction.Modifier::id),
+               Attribute.CODEC.fieldOf("attribute").forGetter(SetAttributesFunction.Modifier::attribute),
+               AttributeModifier.Operation.CODEC.fieldOf("operation").forGetter(SetAttributesFunction.Modifier::operation),
+               ContextFloatProviders.CODEC.fieldOf("amount").forGetter(SetAttributesFunction.Modifier::amount),
+               SLOTS_CODEC.fieldOf("slot").forGetter(SetAttributesFunction.Modifier::slots)
+            )
+            .apply(i, SetAttributesFunction.Modifier::new)
       );
 
       @Override

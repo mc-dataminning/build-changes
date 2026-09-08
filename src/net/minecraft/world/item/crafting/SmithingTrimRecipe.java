@@ -21,13 +21,13 @@ import net.minecraft.world.item.equipment.trim.TrimPattern;
 public class SmithingTrimRecipe extends SimpleSmithingRecipe {
    public static final MapCodec<SmithingTrimRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
-               Ingredient.CODEC.fieldOf("template").forGetter(o -> o.template),
-               Ingredient.CODEC.fieldOf("base").forGetter(o -> o.base),
-               Ingredient.CODEC.fieldOf("addition").forGetter(o -> o.addition),
-               TrimPattern.CODEC.fieldOf("pattern").forGetter(o -> o.pattern)
-            )
-            .apply(i, SmithingTrimRecipe::new)
+            Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
+            Ingredient.CODEC.fieldOf("template").forGetter(o -> o.template),
+            Ingredient.CODEC.fieldOf("base").forGetter(o -> o.base),
+            Ingredient.CODEC.fieldOf("addition").forGetter(o -> o.addition),
+            TrimPattern.CODEC.fieldOf("pattern").forGetter(o -> o.pattern)
+         )
+         .apply(i, SmithingTrimRecipe::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, SmithingTrimRecipe> STREAM_CODEC = StreamCodec.composite(
       Recipe.CommonInfo.STREAM_CODEC,
@@ -69,11 +69,11 @@ public class SmithingTrimRecipe extends SimpleSmithingRecipe {
          ArmorTrim newTrim = new ArmorTrim(material, pattern);
          if (Objects.equals(existingTrim, newTrim)) {
             return ItemStack.EMPTY;
-         } else {
-            ItemStack trimmedItem = baseItem.copyWithCount(1);
-            trimmedItem.set(DataComponents.TRIM, newTrim);
-            return trimmedItem;
          }
+
+         ItemStack trimmedItem = baseItem.copyWithCount(1);
+         trimmedItem.set(DataComponents.TRIM, newTrim);
+         return trimmedItem;
       } else {
          return ItemStack.EMPTY;
       }

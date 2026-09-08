@@ -7,12 +7,9 @@ public class GuardianRenderState extends LivingEntityRenderState {
    public float spikesAnimation;
    public float tailAnimation;
    public Vec3 eyePosition = Vec3.ZERO;
-   @Nullable
-   public Vec3 lookDirection;
-   @Nullable
-   public Vec3 lookAtPosition;
-   @Nullable
-   public Vec3 attackTargetPosition;
+   public @Nullable Vec3 lookDirection;
+   public @Nullable Vec3 lookAtPosition;
+   public @Nullable Vec3 attackTargetPosition;
    public float attackTime;
    public float attackScale;
 }

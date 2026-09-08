@@ -10,8 +10,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
 public class DragonDeathPhase extends AbstractDragonPhaseInstance {
-   @Nullable
-   private Vec3 targetLocation;
+   private @Nullable Vec3 targetLocation;
    private int time;
 
    public DragonDeathPhase(final EnderDragon dragon) {
@@ -26,15 +25,7 @@ public class DragonDeathPhase extends AbstractDragonPhaseInstance {
          float zo = (this.dragon.getRandom().nextFloat() - 0.5F) * 8.0F;
          this.dragon
             .level()
-            .addParticle(
-               ParticleTypes.EXPLOSION_EMITTER,
-               this.dragon.getX() + (double)xo,
-               this.dragon.getY() + 2.0 + (double)yo,
-               this.dragon.getZ() + (double)zo,
-               0.0,
-               0.0,
-               0.0
-            );
+            .addParticle(ParticleTypes.EXPLOSION_EMITTER, this.dragon.getX() + xo, this.dragon.getY() + 2.0 + yo, this.dragon.getZ() + zo, 0.0, 0.0, 0.0);
       }
    }
 
@@ -65,9 +56,8 @@ public class DragonDeathPhase extends AbstractDragonPhaseInstance {
       return 3.0F;
    }
 
-   @Nullable
    @Override
-   public Vec3 getFlyTargetLocation() {
+   public @Nullable Vec3 getFlyTargetLocation() {
       return this.targetLocation;
    }
 

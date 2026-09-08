@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Map.Entry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -35,6 +33,7 @@ import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.Identifier;
+import org.jspecify.annotations.Nullable;
 
 public class DebugOptionsScreen extends Screen {
    private static final Component TITLE = Component.translatable("debug.options.title");
@@ -45,7 +44,7 @@ public class DebugOptionsScreen extends Screen {
    private static final Component NOT_ALLOWED_TOOLTIP = Component.translatable("debug.options.notAllowed.tooltip");
    private static final Component SEARCH = Component.translatable("debug.options.search").withStyle(EditBox.SEARCH_HINT_STYLE);
    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this, 61, 33);
-   private DebugOptionsScreen.OptionList optionList;
+   private DebugOptionsScreen.@Nullable OptionList optionList;
    private EditBox searchBox;
    private final List<Button> profileButtons = new ArrayList<>();
 
@@ -115,7 +114,7 @@ public class DebugOptionsScreen extends Screen {
       }
    }
 
-   public DebugOptionsScreen.OptionList getOptionList() {
+   public DebugOptionsScreen.@Nullable OptionList getOptionList() {
       return this.optionList;
    }
 
@@ -127,8 +126,6 @@ public class DebugOptionsScreen extends Screen {
       private final FocusableTextWidget widget;
 
       public CategoryEntry(final Component category) {
-         Objects.requireNonNull(DebugOptionsScreen.this);
-         super();
          this.widget = FocusableTextWidget.builder(category, DebugOptionsScreen.this.minecraft.font)
             .alwaysShowBorder(false)
             .backgroundFill(FocusableTextWidget.BackgroundFill.ON_FOCUS)
@@ -160,7 +157,7 @@ public class DebugOptionsScreen extends Screen {
    private class OptionEntry extends DebugOptionsScreen.AbstractOptionEntry {
       private static final int BUTTON_WIDTH = 60;
       private final Identifier location;
-      protected final List<AbstractWidget> children;
+      protected final List<AbstractWidget> children = Lists.newArrayList();
       private final CycleButton<Boolean> always;
       private final CycleButton<Boolean> overlay;
       private final CycleButton<Boolean> never;
@@ -168,9 +165,6 @@ public class DebugOptionsScreen extends Screen {
       private final boolean isAllowed;
 
       public OptionEntry(final Identifier location) {
-         Objects.requireNonNull(DebugOptionsScreen.this);
-         super();
-         this.children = Lists.newArrayList();
          this.location = location;
          DebugScreenEntry entry = DebugScreenEntries.getEntry(location);
          this.isAllowed = entry != null && entry.isAllowed(DebugOptionsScreen.this.minecraft.showOnlyReducedInfo());
@@ -272,7 +266,6 @@ public class DebugOptionsScreen extends Screen {
       private static final int ITEM_HEIGHT = 20;
 
       public OptionList() {
-         Objects.requireNonNull(DebugOptionsScreen.this);
          super(
             Minecraft.getInstance(),
             DebugOptionsScreen.this.width,

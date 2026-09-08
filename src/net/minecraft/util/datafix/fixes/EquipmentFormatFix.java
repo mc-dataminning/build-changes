@@ -117,9 +117,9 @@ public class EquipmentFormatFix extends DataFix {
    private static <ItemStack> Either<ItemStack, Unit> getItemFromList(final int index, final List<ItemStack> items, final Predicate<ItemStack> isPlaceholder) {
       if (index >= items.size()) {
          return Either.right(Unit.INSTANCE);
-      } else {
-         ItemStack item = items.get(index);
-         return isPlaceholder.test(item) ? Either.right(Unit.INSTANCE) : Either.left(item);
       }
+
+      ItemStack item = items.get(index);
+      return isPlaceholder.test(item) ? Either.right(Unit.INSTANCE) : Either.left(item);
    }
 }

@@ -41,7 +41,7 @@ public interface StringReaderTerms {
       return reader;
    }
 
-   public abstract static class TerminalCharacters implements Term<StringReader> {
+   abstract class TerminalCharacters implements Term<StringReader> {
       private final DelayedException<CommandSyntaxException> error;
       private final SuggestionSupplier<StringReader> suggestions;
 
@@ -57,16 +57,16 @@ public interface StringReaderTerms {
          int cursor = state.mark();
          if (state.input().canRead() && this.isAccepted(state.input().read())) {
             return true;
-         } else {
-            state.errorCollector().store(cursor, this.suggestions, this.error);
-            return false;
          }
+
+         state.errorCollector().store(cursor, this.suggestions, this.error);
+         return false;
       }
 
       protected abstract boolean isAccepted(char value);
    }
 
-   public static final class TerminalWord implements Term<StringReader> {
+   final class TerminalWord implements Term<StringReader> {
       private final String value;
       private final DelayedException<CommandSyntaxException> error;
       private final SuggestionSupplier<StringReader> suggestions;

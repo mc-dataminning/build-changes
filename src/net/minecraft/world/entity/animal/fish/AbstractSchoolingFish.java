@@ -12,8 +12,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import org.jspecify.annotations.Nullable;
 
 public abstract class AbstractSchoolingFish extends AbstractFish {
-   @Nullable
-   private AbstractSchoolingFish leader;
+   private @Nullable AbstractSchoolingFish leader;
    private int schoolSize = 1;
 
    public AbstractSchoolingFish(final EntityType<? extends AbstractSchoolingFish> type, final Level level) {
@@ -94,14 +93,11 @@ public abstract class AbstractSchoolingFish extends AbstractFish {
    }
 
    public void addFollowers(final Stream<? extends AbstractSchoolingFish> abstractSchoolingFishStream) {
-      abstractSchoolingFishStream.limit((long)(this.getMaxSchoolSize() - this.schoolSize))
-         .filter(f -> f != this)
-         .forEach(otherFish -> otherFish.startFollowing(this));
+      abstractSchoolingFishStream.limit(this.getMaxSchoolSize() - this.schoolSize).filter(f -> f != this).forEach(otherFish -> otherFish.startFollowing(this));
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       super.finalizeSpawn(level, difficulty, spawnReason, groupData);

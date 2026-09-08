@@ -10,11 +10,11 @@ import net.minecraft.util.RandomSource;
 public record TrapezoidInt(int minInclusive, int maxInclusive, int plateau) implements IntProvider {
    public static final MapCodec<TrapezoidInt> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Codec.INT.fieldOf("min").forGetter(TrapezoidInt::minInclusive),
-                  Codec.INT.fieldOf("max").forGetter(TrapezoidInt::maxInclusive),
-                  Codec.INT.fieldOf("plateau").forGetter(TrapezoidInt::plateau)
-               )
-               .apply(i, TrapezoidInt::new)
+               Codec.INT.fieldOf("min").forGetter(TrapezoidInt::minInclusive),
+               Codec.INT.fieldOf("max").forGetter(TrapezoidInt::maxInclusive),
+               Codec.INT.fieldOf("plateau").forGetter(TrapezoidInt::plateau)
+            )
+            .apply(i, TrapezoidInt::new)
       )
       .validate(
          c -> {
@@ -40,16 +40,16 @@ public record TrapezoidInt(int minInclusive, int maxInclusive, int plateau) impl
    public int sample(final RandomSource random) {
       if (this.plateau == 0 && this.maxInclusive == -this.minInclusive) {
          return random.nextInt(this.maxInclusive + 1) - random.nextInt(this.maxInclusive + 1);
-      } else {
-         int range = this.maxInclusive - this.minInclusive;
-         if (this.plateau == range) {
-            return Mth.randomBetweenInclusive(random, this.minInclusive, this.maxInclusive);
-         } else {
-            int plateauStart = (range - this.plateau) / 2;
-            int plateauEnd = range - plateauStart;
-            return this.minInclusive + Mth.randomBetweenInclusive(random, 0, plateauEnd) + Mth.randomBetweenInclusive(random, 0, plateauStart);
-         }
       }
+
+      int range = this.maxInclusive - this.minInclusive;
+      if (this.plateau == range) {
+         return Mth.randomBetweenInclusive(random, this.minInclusive, this.maxInclusive);
+      }
+
+      int plateauStart = (range - this.plateau) / 2;
+      int plateauEnd = range - plateauStart;
+      return this.minInclusive + Mth.randomBetweenInclusive(random, 0, plateauEnd) + Mth.randomBetweenInclusive(random, 0, plateauStart);
    }
 
    @Override

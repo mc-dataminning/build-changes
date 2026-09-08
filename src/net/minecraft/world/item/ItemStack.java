@@ -111,13 +111,13 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
    public static final MapCodec<ItemStack> MAP_CODEC = MapCodec.recursive(
       "ItemStack",
       subCodec -> RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                     Item.CODEC_WITH_BOUND_COMPONENTS.fieldOf("id").forGetter(ItemStack::typeHolder),
-                     ExtraCodecs.optionalAlwaysPresentFieldOf(ExtraCodecs.intRange(1, 99), "count", 1).forGetter(ItemStack::getCount),
-                     DataComponentPatch.CODEC.optionalFieldOf("components", DataComponentPatch.EMPTY).forGetter(s -> s.components.asPatch())
-                  )
-                  .apply(i, ItemStack::new)
-         )
+         i -> i.group(
+               Item.CODEC_WITH_BOUND_COMPONENTS.fieldOf("id").forGetter(ItemStack::typeHolder),
+               ExtraCodecs.optionalAlwaysPresentFieldOf(ExtraCodecs.intRange(1, 99), "count", 1).forGetter(ItemStack::getCount),
+               DataComponentPatch.CODEC.optionalFieldOf("components", DataComponentPatch.EMPTY).forGetter(s -> s.components.asPatch())
+            )
+            .apply(i, ItemStack::new)
+      )
    );
    public static final Codec<ItemStack> CODEC = Codec.lazyInitialized(MAP_CODEC::codec);
    public static final Codec<ItemStack> OPTIONAL_CODEC = ExtraCodecs.optionalEmptyMap(CODEC)
@@ -139,9 +139,9 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
       public void encode(final RegistryFriendlyByteBuf output, final ItemStack itemStack) {
          if (itemStack.isEmpty()) {
             throw new EncoderException("Empty ItemStack not allowed");
-         } else {
-            ItemStack.OPTIONAL_STREAM_CODEC.encode(output, itemStack);
          }
+
+         ItemStack.OPTIONAL_STREAM_CODEC.encode(output, itemStack);
       }
    };
    public static final StreamCodec<RegistryFriendlyByteBuf, List<ItemStack>> OPTIONAL_LIST_STREAM_CODEC = OPTIONAL_STREAM_CODEC.apply(
@@ -153,8 +153,7 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
    private int count;
    private int popTime;
    @Deprecated
-   @Nullable
-   private final Holder<Item> item;
+   private final @Nullable Holder<Item> item;
    private final PatchedDataComponentMap components;
 
    public static DataResult<ItemStack> validateStrict(final ItemStack itemStack) {
@@ -176,11 +175,11 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
             int count = input.readVarInt();
             if (count <= 0) {
                return ItemStack.EMPTY;
-            } else {
-               Holder<Item> item = Item.STREAM_CODEC.decode(input);
-               DataComponentPatch patch = patchCodec.decode(input);
-               return new ItemStack(item, count, patch);
             }
+
+            Holder<Item> item = Item.STREAM_CODEC.decode(input);
+            DataComponentPatch patch = patchCodec.decode(input);
+            return new ItemStack(item, count, patch);
          }
 
          public void encode(final RegistryFriendlyByteBuf output, final ItemStack itemStack) {
@@ -219,7 +218,7 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
 
    @Override
    public DataComponentMap getComponents() {
-      return (DataComponentMap)(!this.isEmpty() ? this.components : DataComponentMap.EMPTY);
+      return !this.isEmpty() ? this.components : DataComponentMap.EMPTY;
    }
 
    public DataComponentMap getPrototype() {
@@ -264,46 +263,46 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
       this.components = components;
    }
 
-   private ItemStack(@Nullable final Void nullMarker) {
+   private ItemStack(final @Nullable Void nullMarker) {
       this.item = null;
       this.components = new PatchedDataComponentMap(DataComponentMap.EMPTY);
    }
 
    private static DataResult<?> validateComponents(final DataComponentMap components) {
-      if (components.has(DataComponents.MAX_DAMAGE) && components.getOrDefault(DataComponents.MAX_STACK_SIZE, Integer.valueOf(1)) > 1) {
+      if (components.has(DataComponents.MAX_DAMAGE) && components.getOrDefault(DataComponents.MAX_STACK_SIZE, 1) > 1) {
          return DataResult.error(() -> "Item cannot be both damageable and stackable");
-      } else {
-         ItemContainerContents container = components.get(DataComponents.CONTAINER);
-         if (container != null) {
-            DataResult<?> validationContents = validateContainedItemSizes(container.nonEmptyItems());
-            if (validationContents.isError()) {
-               return validationContents;
-            }
-         }
-
-         BundleContents bundle = components.get(DataComponents.BUNDLE_CONTENTS);
-         if (bundle != null) {
-            DataResult<?> validationResult = validateContainedItemSizes(bundle.items());
-            if (validationResult.isError()) {
-               return validationResult;
-            }
-
-            validationResult = bundle.weight();
-            if (validationResult.isError()) {
-               return validationResult;
-            }
-         }
-
-         ChargedProjectiles chargedProjectiles = components.get(DataComponents.CHARGED_PROJECTILES);
-         if (chargedProjectiles != null) {
-            DataResult<?> validationResultx = validateContainedItemSizes(chargedProjectiles.items());
-            if (validationResultx.isError()) {
-               return validationResultx;
-            }
-         }
-
-         return DataResult.success(Unit.INSTANCE);
       }
+
+      ItemContainerContents container = components.get(DataComponents.CONTAINER);
+      if (container != null) {
+         DataResult<?> validationContents = validateContainedItemSizes(container.nonEmptyItems());
+         if (validationContents.isError()) {
+            return validationContents;
+         }
+      }
+
+      BundleContents bundle = components.get(DataComponents.BUNDLE_CONTENTS);
+      if (bundle != null) {
+         DataResult<?> validationResult = validateContainedItemSizes(bundle.items());
+         if (validationResult.isError()) {
+            return validationResult;
+         }
+
+         validationResult = bundle.weight();
+         if (validationResult.isError()) {
+            return validationResult;
+         }
+      }
+
+      ChargedProjectiles chargedProjectiles = components.get(DataComponents.CHARGED_PROJECTILES);
+      if (chargedProjectiles != null) {
+         DataResult<?> validationResult = validateContainedItemSizes(chargedProjectiles.items());
+         if (validationResult.isError()) {
+            return validationResult;
+         }
+      }
+
+      return DataResult.success(Unit.INSTANCE);
    }
 
    private static DataResult<?> validateContainedItemSizes(final Iterable<? extends ItemInstance> items) {
@@ -336,11 +335,11 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
    public ItemStack copyAndClear() {
       if (this.isEmpty()) {
          return EMPTY;
-      } else {
-         ItemStack result = this.copy();
-         this.setCount(0);
-         return result;
       }
+
+      ItemStack result = this.copy();
+      this.setCount(0);
+      return result;
    }
 
    public Item getItem() {
@@ -349,7 +348,7 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
 
    @Override
    public Holder<Item> typeHolder() {
-      return (Holder<Item>)(this.isEmpty() ? Items.AIR.builtInRegistryHolder() : this.item);
+      return this.isEmpty() ? Items.AIR.builtInRegistryHolder() : this.item;
    }
 
    public boolean is(final Predicate<Holder<Item>> item) {
@@ -370,9 +369,9 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
             ItemStack transformTo = success.heldItemTransformedTo() == null ? this : success.heldItemTransformedTo();
             ItemStack resultItemStack = transformTo.applyAfterUseComponentSideEffects(player, stackBeforeUse);
             return success.heldItemTransformedTo(resultItemStack);
+         } else {
+            return result;
          }
-
-         return result;
       }
    }
 
@@ -405,7 +404,7 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
       int stackCountBeforeUsing = stackBeforeUsing.getCount();
       ItemStack result = this;
       if (useRemainder != null) {
-         result = useRemainder.convertIntoRemainder(this, stackCountBeforeUsing, user.hasInfiniteMaterials(), user::handleExtraItemsCreatedOnUse);
+         result = useRemainder.convertIntoRemainder(result, stackCountBeforeUsing, user.hasInfiniteMaterials(), user::handleExtraItemsCreatedOnUse);
       }
 
       if (useCooldown != null) {
@@ -428,7 +427,7 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
    }
 
    public int getDamageValue() {
-      return Mth.clamp(this.getOrDefault(DataComponents.DAMAGE, Integer.valueOf(0)), 0, this.getMaxDamage());
+      return Mth.clamp(this.getOrDefault(DataComponents.DAMAGE, 0), 0, this.getMaxDamage());
    }
 
    public void setDamageValue(final int value) {
@@ -436,7 +435,7 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
    }
 
    public int getMaxDamage() {
-      return this.getOrDefault(DataComponents.MAX_DAMAGE, Integer.valueOf(0));
+      return this.getOrDefault(DataComponents.MAX_DAMAGE, 0);
    }
 
    public boolean isBroken() {
@@ -447,14 +446,14 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
       return this.isDamageableItem() && this.getDamageValue() >= this.getMaxDamage() - 1;
    }
 
-   public void hurtAndBreak(final int amount, final ServerLevel level, @Nullable final ServerPlayer player, final Consumer<ItemStack> onBreak) {
+   public void hurtAndBreak(final int amount, final ServerLevel level, final @Nullable ServerPlayer player, final Consumer<ItemStack> onBreak) {
       int newAmount = this.processDurabilityChange(amount, level, player);
       if (newAmount != 0) {
          this.applyDamage(this.getDamageValue() + newAmount, player, onBreak);
       }
    }
 
-   private int processDurabilityChange(final int amount, final ServerLevel level, @Nullable final ServerPlayer player) {
+   private int processDurabilityChange(final int amount, final ServerLevel level, final @Nullable ServerPlayer player) {
       if (!this.isDamageableItem()) {
          return 0;
       } else if (player != null && player.hasInfiniteMaterials()) {
@@ -464,7 +463,7 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
       }
    }
 
-   private void applyDamage(final int newDamage, @Nullable final ServerPlayer player, final Consumer<ItemStack> onBreak) {
+   private void applyDamage(final int newDamage, final @Nullable ServerPlayer player, final Consumer<ItemStack> onBreak) {
       if (player != null) {
          CriteriaTriggers.ITEM_DURABILITY_CHANGED.trigger(player, this, newDamage);
       }
@@ -485,8 +484,7 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
          }
 
          int newDamage = Math.min(this.getDamageValue() + newAmount, this.getMaxDamage() - 1);
-         this.applyDamage(newDamage, serverPlayer, i -> {
-         });
+         this.applyDamage(newDamage, serverPlayer, i -> {});
       }
    }
 
@@ -586,21 +584,21 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
    public ItemStack copy() {
       if (this.isEmpty()) {
          return EMPTY;
-      } else {
-         ItemStack copy = new ItemStack(this.typeHolder(), this.count, this.components.copy());
-         copy.setPopTime(this.getPopTime());
-         return copy;
       }
+
+      ItemStack copy = new ItemStack(this.typeHolder(), this.count, this.components.copy());
+      copy.setPopTime(this.getPopTime());
+      return copy;
    }
 
    public ItemStack copyWithCount(final int count) {
       if (this.isEmpty()) {
          return EMPTY;
-      } else {
-         ItemStack copy = this.copy();
-         copy.setCount(count);
-         return copy;
       }
+
+      ItemStack copy = this.copy();
+      copy.setCount(count);
+      return copy;
    }
 
    public ItemStack transmuteCopy(final ItemLike newItem) {
@@ -627,15 +625,15 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
    public static boolean listMatches(final List<ItemStack> left, final List<ItemStack> right) {
       if (left.size() != right.size()) {
          return false;
-      } else {
-         for (int i = 0; i < left.size(); i++) {
-            if (!matches(left.get(i), right.get(i))) {
-               return false;
-            }
-         }
-
-         return true;
       }
+
+      for (int i = 0; i < left.size(); i++) {
+         if (!matches(left.get(i), right.get(i))) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    public static boolean isSameItem(final ItemStack a, final ItemStack b) {
@@ -653,29 +651,37 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
    public static boolean matchesIgnoringComponents(final ItemStack a, final ItemStack b, final Predicate<DataComponentType<?>> ignoredPredicate) {
       if (a == b) {
          return true;
-      } else if (a.getCount() != b.getCount()) {
-         return false;
-      } else if (!a.is(b.getItem())) {
-         return false;
-      } else if (a.isEmpty() && b.isEmpty()) {
-         return true;
-      } else if (a.components.size() != b.components.size()) {
-         return false;
-      } else {
-         for (DataComponentType<?> type : a.components.keySet()) {
-            Object componentA = a.components.get(type);
-            Object componentB = b.components.get(type);
-            if (componentA == null || componentB == null) {
-               return false;
-            }
+      }
 
-            if (!Objects.equals(componentA, componentB) && !ignoredPredicate.test(type)) {
-               return false;
-            }
-         }
+      if (a.getCount() != b.getCount()) {
+         return false;
+      }
 
+      if (!a.is(b.getItem())) {
+         return false;
+      }
+
+      if (a.isEmpty() && b.isEmpty()) {
          return true;
       }
+
+      if (a.components.size() != b.components.size()) {
+         return false;
+      }
+
+      for (DataComponentType<?> type : a.components.keySet()) {
+         Object componentA = a.components.get(type);
+         Object componentB = b.components.get(type);
+         if (componentA == null || componentB == null) {
+            return false;
+         }
+
+         if (!Objects.equals(componentA, componentB) && !ignoredPredicate.test(type)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    public static MapCodec<ItemStack> lenientOptionalFieldOf(final String name) {
@@ -683,7 +689,7 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
          .xmap(itemStack -> itemStack.orElse(EMPTY), itemStack -> itemStack.isEmpty() ? Optional.empty() : Optional.of(itemStack));
    }
 
-   public static int hashItemAndComponents(@Nullable final ItemStack item) {
+   public static int hashItemAndComponents(final @Nullable ItemStack item) {
       if (item != null) {
          int result = 31 + item.getItem().hashCode();
          return 31 * result + item.getComponents().hashCode();
@@ -708,7 +714,7 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
       return this.getCount() + " " + this.getItem();
    }
 
-   public void inventoryTick(final Level level, final Entity owner, @Nullable final EquipmentSlot slot) {
+   public void inventoryTick(final Level level, final Entity owner, final @Nullable EquipmentSlot slot) {
       if (this.popTime > 0) {
          this.popTime--;
       }
@@ -756,13 +762,11 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
       return this.getItem().useOnRelease(this);
    }
 
-   @Nullable
-   public <T> T set(final DataComponentType<T> type, @Nullable final T value) {
+   public <T> @Nullable T set(final DataComponentType<T> type, final @Nullable T value) {
       return this.components.set(type, value);
    }
 
-   @Nullable
-   public <T> T set(final TypedDataComponent<T> value) {
+   public <T> @Nullable T set(final TypedDataComponent<T> value) {
       return this.components.set(value);
    }
 
@@ -770,19 +774,16 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
       this.set(type, source.get(type));
    }
 
-   @Nullable
-   public <T, U> T update(final DataComponentType<T> type, final T defaultValue, final U value, final BiFunction<T, U, T> combiner) {
+   public <T, U> @Nullable T update(final DataComponentType<T> type, final T defaultValue, final U value, final BiFunction<T, U, T> combiner) {
       return this.set(type, combiner.apply(this.getOrDefault(type, defaultValue), value));
    }
 
-   @Nullable
-   public <T> T update(final DataComponentType<T> type, final T defaultValue, final UnaryOperator<T> function) {
+   public <T> @Nullable T update(final DataComponentType<T> type, final T defaultValue, final UnaryOperator<T> function) {
       T value = this.getOrDefault(type, defaultValue);
       return this.set(type, function.apply(value));
    }
 
-   @Nullable
-   public <T> T remove(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T remove(final DataComponentType<? extends T> type) {
       return this.components.remove(type);
    }
 
@@ -809,22 +810,21 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
       return customName != null ? customName : this.getItemName();
    }
 
-   @Nullable
-   public Component getCustomName() {
+   public @Nullable Component getCustomName() {
       Component customName = this.get(DataComponents.CUSTOM_NAME);
       if (customName != null) {
          return customName;
-      } else {
-         WrittenBookContent content = this.get(DataComponents.WRITTEN_BOOK_CONTENT);
-         if (content != null) {
-            String title = content.title().raw();
-            if (!StringUtil.isBlank(title)) {
-               return Component.literal(title);
-            }
-         }
-
-         return null;
       }
+
+      WrittenBookContent content = this.get(DataComponents.WRITTEN_BOOK_CONTENT);
+      if (content != null) {
+         String title = content.title().raw();
+         if (!StringUtil.isBlank(title)) {
+            return Component.literal(title);
+         }
+      }
+
+      return null;
    }
 
    public Component getItemName() {
@@ -864,7 +864,7 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
       this.addToTooltip(type, c -> c, context, display, consumer, flag);
    }
 
-   public List<Component> getTooltipLines(final Item.TooltipContext context, @Nullable final Player player, final TooltipFlag tooltipFlag) {
+   public List<Component> getTooltipLines(final Item.TooltipContext context, final @Nullable Player player, final TooltipFlag tooltipFlag) {
       TooltipDisplay display = this.getOrDefault(DataComponents.TOOLTIP_DISPLAY, TooltipDisplay.DEFAULT);
       if (!tooltipFlag.isCreative() && display.hideTooltip()) {
          boolean shouldPrintOpWarning = this.getItem().shouldPrintOpWarning(this, player);
@@ -880,7 +880,7 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
    public void addDetailsToTooltip(
       final Item.TooltipContext context,
       final TooltipDisplay display,
-      @Nullable final Player player,
+      final @Nullable Player player,
       final TooltipFlag tooltipFlag,
       final Consumer<Component> builder
    ) {
@@ -964,7 +964,7 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
       }
    }
 
-   private void addAttributeTooltips(final Consumer<Component> consumer, final TooltipDisplay display, @Nullable final Player player) {
+   private void addAttributeTooltips(final Consumer<Component> consumer, final TooltipDisplay display, final @Nullable Player player) {
       if (display.shows(DataComponents.ATTRIBUTE_MODIFIERS)) {
          for (EquipmentSlotGroup slot : EquipmentSlotGroup.values()) {
             MutableBoolean first = new MutableBoolean(true);
@@ -992,22 +992,22 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
       Rarity baseRarity = this.getOrDefault(DataComponents.RARITY, Rarity.COMMON);
       if (!this.isEnchanted()) {
          return baseRarity;
-      } else {
-         return switch (baseRarity) {
-            case COMMON, UNCOMMON -> Rarity.RARE;
-            case RARE -> Rarity.EPIC;
-            default -> baseRarity;
-         };
       }
+
+      return switch (baseRarity) {
+         case COMMON, UNCOMMON -> Rarity.RARE;
+         case RARE -> Rarity.EPIC;
+         default -> baseRarity;
+      };
    }
 
    public boolean isEnchantable() {
       if (!this.has(DataComponents.ENCHANTABLE)) {
          return false;
-      } else {
-         ItemEnchantments enchantments = this.get(DataComponents.ENCHANTMENTS);
-         return enchantments != null && enchantments.isEmpty();
       }
+
+      ItemEnchantments enchantments = this.get(DataComponents.ENCHANTMENTS);
+      return enchantments != null && enchantments.isEmpty();
    }
 
    public void enchant(final Holder<Enchantment> enchantment, final int level) {
@@ -1101,13 +1101,13 @@ public final class ItemStack implements DataComponentHolder, ItemInstance {
       this.grow(-amount);
    }
 
-   public void consume(final int amount, @Nullable final LivingEntity owner) {
+   public void consume(final int amount, final @Nullable LivingEntity owner) {
       if (owner == null || !owner.hasInfiniteMaterials()) {
          this.shrink(amount);
       }
    }
 
-   public ItemStack consumeAndReturn(final int amount, @Nullable final LivingEntity owner) {
+   public ItemStack consumeAndReturn(final int amount, final @Nullable LivingEntity owner) {
       ItemStack split = this.copyWithCount(amount);
       this.consume(amount, owner);
       return split;

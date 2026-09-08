@@ -9,7 +9,7 @@ import org.jspecify.annotations.Nullable;
 public final class AbortedFileFixException extends FileFixException {
    private final List<FileMove> notRevertedMoves;
 
-   public AbortedFileFixException(final Exception cause, final List<FileMove> notRevertedMoves, @Nullable final FileSystemCapabilities fileSystemCapabilities) {
+   public AbortedFileFixException(final Exception cause, final List<FileMove> notRevertedMoves, final @Nullable FileSystemCapabilities fileSystemCapabilities) {
       super(cause, fileSystemCapabilities);
       this.notRevertedMoves = notRevertedMoves;
    }

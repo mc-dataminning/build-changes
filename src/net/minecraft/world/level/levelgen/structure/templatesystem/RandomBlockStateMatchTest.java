@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class RandomBlockStateMatchTest extends RuleTest {
    public static final MapCodec<RandomBlockStateMatchTest> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(BlockState.CODEC.fieldOf("block_state").forGetter(t -> t.blockState), Codec.FLOAT.fieldOf("probability").forGetter(t -> t.probability))
-            .apply(i, RandomBlockStateMatchTest::new)
+         .apply(i, RandomBlockStateMatchTest::new)
    );
    private final BlockState blockState;
    private final float probability;

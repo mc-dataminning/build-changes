@@ -49,7 +49,7 @@ public interface BonemealableBlock {
       return BonemealableBlock.Type.GROWER;
    }
 
-   public static enum Type {
+   enum Type {
       NEIGHBOR_SPREADER,
       GROWER;
    }

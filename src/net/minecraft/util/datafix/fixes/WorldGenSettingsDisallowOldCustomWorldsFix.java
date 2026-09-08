@@ -19,16 +19,16 @@ public class WorldGenSettingsDisallowOldCustomWorldsFix extends DataFix {
          "WorldGenSettingsDisallowOldCustomWorldsFix_" + this.getOutputSchema().getVersionKey(),
          worldGenSettingsType,
          input -> input.updateTyped(dimensionsFinder, dimensions -> {
-               dimensions.write().map(tag -> tag.getMapValues().map(map -> {
-                     map.forEach((key, value) -> {
-                        if (value.get("type").asString().result().isEmpty()) {
-                           throw new NbtFormatException("Unable load old custom worlds.");
-                        }
-                     });
-                     return map;
-                  }));
-               return dimensions;
-            })
+            dimensions.write().map(tag -> tag.getMapValues().map(map -> {
+               map.forEach((key, value) -> {
+                  if (value.get("type").asString().result().isEmpty()) {
+                     throw new NbtFormatException("Unable load old custom worlds.");
+                  }
+               });
+               return map;
+            }));
+            return dimensions;
+         })
       );
    }
 }

@@ -2,6 +2,7 @@ package net.minecraft.client.gui.screens;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
+import com.mojang.blaze3d.Blaze3D;
 import com.mojang.logging.LogUtils;
 import java.net.URI;
 import java.nio.file.Path;
@@ -73,10 +74,8 @@ public abstract class Screen extends AbstractContainerEventHandler implements Re
    private final ScreenNarrationCollector narrationState = new ScreenNarrationCollector();
    private long narrationSuppressTime = Long.MIN_VALUE;
    private long nextNarrationTime = Long.MAX_VALUE;
-   @Nullable
-   protected CycleButton<NarratorStatus> narratorButton;
-   @Nullable
-   private NarratableEntry lastNarratable;
+   protected @Nullable CycleButton<NarratorStatus> narratorButton;
+   private @Nullable NarratableEntry lastNarratable;
    private NarrationTrigger nextNarrationTriggeredBy = NarrationTrigger.SYSTEM;
    protected final Executor screenExecutor;
 
@@ -89,10 +88,10 @@ public abstract class Screen extends AbstractContainerEventHandler implements Re
       this.font = font;
       this.title = title;
       this.screenExecutor = runnable -> minecraft.execute(() -> {
-            if (minecraft.gui.screen() == this) {
-               runnable.run();
-            }
-         });
+         if (minecraft.gui.screen() == this) {
+            runnable.run();
+         }
+      });
    }
 
    public Component getTitle() {
@@ -123,31 +122,33 @@ public abstract class Screen extends AbstractContainerEventHandler implements Re
       if (event.isEscape() && this.shouldCloseOnEsc()) {
          this.onClose();
          return true;
-      } else if (super.keyPressed(event)) {
-         return true;
-      } else {
-         FocusNavigationEvent navigationEvent = (FocusNavigationEvent)(switch (event.shortcutKey()) {
-            case 9 -> this.createTabEvent(!event.hasShiftDown());
-            case 1073741903 -> this.createArrowEvent(ScreenDirection.RIGHT);
-            case 1073741904 -> this.createArrowEvent(ScreenDirection.LEFT);
-            case 1073741905 -> this.createArrowEvent(ScreenDirection.DOWN);
-            case 1073741906 -> this.createArrowEvent(ScreenDirection.UP);
-            default -> null;
-         });
-         if (navigationEvent != null) {
-            ComponentPath focusPath = super.nextFocusPath(navigationEvent);
-            if (focusPath == null && navigationEvent instanceof FocusNavigationEvent.TabNavigation) {
-               this.clearFocus();
-               focusPath = super.nextFocusPath(navigationEvent);
-            }
+      }
 
-            if (focusPath != null) {
-               this.changeFocus(focusPath);
-            }
+      if (super.keyPressed(event)) {
+         return true;
+      }
+
+      FocusNavigationEvent navigationEvent = switch (event.shortcutKey()) {
+         case 9 -> this.createTabEvent(!event.hasShiftDown());
+         case 1073741903 -> this.createArrowEvent(ScreenDirection.RIGHT);
+         case 1073741904 -> this.createArrowEvent(ScreenDirection.LEFT);
+         case 1073741905 -> this.createArrowEvent(ScreenDirection.DOWN);
+         case 1073741906 -> this.createArrowEvent(ScreenDirection.UP);
+         default -> null;
+      };
+      if (navigationEvent != null) {
+         ComponentPath focusPath = super.nextFocusPath(navigationEvent);
+         if (focusPath == null && navigationEvent instanceof FocusNavigationEvent.TabNavigation) {
+            this.clearFocus();
+            focusPath = super.nextFocusPath(navigationEvent);
          }
 
-         return false;
+         if (focusPath != null) {
+            this.changeFocus(focusPath);
+         }
       }
+
+      return false;
    }
 
    private FocusNavigationEvent.TabNavigation createTabEvent(final boolean forward) {
@@ -250,21 +251,11 @@ public abstract class Screen extends AbstractContainerEventHandler implements Re
    protected void insertText(final String text, final boolean replace) {
    }
 
-   protected static void defaultHandleGameClickEvent(final ClickEvent event, final Minecraft minecraft, @Nullable final Screen activeScreen) {
+   protected static void defaultHandleGameClickEvent(final ClickEvent event, final Minecraft minecraft, final @Nullable Screen activeScreen) {
       LocalPlayer player = Objects.requireNonNull(minecraft.player, "Player not available");
-      Objects.requireNonNull(event);
       switch (event) {
-         case ClickEvent.RunCommand var6:
-            ClickEvent.RunCommand var10000 = var6;
-
-            try {
-               var12 = var10000.command();
-            } catch (Throwable var10) {
-               throw new MatchException(var10.toString(), var10);
-            }
-
-            String var11 = var12;
-            clickCommandAction(player, var11, activeScreen);
+         case ClickEvent.RunCommand(String command):
+            clickCommandAction(player, command, activeScreen);
             break;
          case ClickEvent.ShowDialog dialog:
             player.connection.showDialog(dialog.dialog(), activeScreen);
@@ -280,102 +271,58 @@ public abstract class Screen extends AbstractContainerEventHandler implements Re
       }
    }
 
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
-   protected static void defaultHandleClickEvent(final ClickEvent event, final Minecraft minecraft, @Nullable final Screen activeScreen) {
-      boolean var10000;
-      label49: {
-         Objects.requireNonNull(event);
-         Throwable var20;
-         switch (event) {
-            case ClickEvent.OpenUrl var6:
-               ClickEvent.OpenUrl var24 = var6;
-
-               try {
-                  var25 = var24.uri();
-               } catch (Throwable var16) {
-                  var20 = var16;
-                  boolean var27 = false;
-                  break;
-               }
-
-               URI var17 = var25;
-               clickUrlAction(minecraft, activeScreen, var17);
-               var10000 = false;
-               break label49;
-            case ClickEvent.OpenFile openFile:
-               Util.getPlatform().openFile(openFile.file());
-               var10000 = true;
-               break label49;
-            case ClickEvent.SuggestCommand var9:
-               ClickEvent.SuggestCommand var22 = var9;
-
-               try {
-                  var23 = var22.command();
-               } catch (Throwable var15) {
-                  var20 = var15;
-                  boolean var26 = false;
-                  break;
-               }
-
-               String var18 = var23;
-               if (activeScreen != null) {
-                  activeScreen.insertText(var18, true);
-               }
-
-               var10000 = true;
-               break label49;
-            case ClickEvent.CopyToClipboard var11:
-               ClickEvent.CopyToClipboard var19 = var11;
-
-               try {
-                  var21 = var19.value();
-               } catch (Throwable var14) {
-                  var20 = var14;
-                  boolean var10001 = false;
-                  break;
-               }
-
-               String var13 = var21;
-               minecraft.keyboardHandler.setClipboard(var13);
-               var10000 = true;
-               break label49;
-            default:
-               LOGGER.error("Don't know how to handle {}", event);
-               var10000 = true;
-               break label49;
+   protected static void defaultHandleClickEvent(final ClickEvent event, final Minecraft minecraft, final @Nullable Screen activeScreen) {
+      boolean shouldActivateScreen = switch (event) {
+         case ClickEvent.OpenUrl(URI uri) -> {
+            clickUrlAction(minecraft, activeScreen, uri);
+            yield false;
          }
+         case ClickEvent.OpenFile openFile -> {
+            Blaze3D.openPath(openFile.file().toPath());
+            yield true;
+         }
+         case ClickEvent.SuggestCommand(String command) -> {
+            if (activeScreen != null) {
+               activeScreen.insertText(command, true);
+            }
 
-         Throwable var4 = var20;
-         throw new MatchException(var4.toString(), var4);
-      }
-
-      boolean shouldActivateScreen = var10000;
+            yield true;
+         }
+         case ClickEvent.CopyToClipboard(String value) -> {
+            minecraft.keyboardHandler.setClipboard(value);
+            yield true;
+         }
+         default -> {
+            LOGGER.error("Don't know how to handle {}", event);
+            yield true;
+         }
+      };
       if (shouldActivateScreen && minecraft.gui.screen() != activeScreen) {
          minecraft.gui.setScreen(activeScreen);
       }
    }
 
-   protected static boolean clickUrlAction(final Minecraft minecraft, @Nullable final Screen screen, final URI uri) {
+   protected static boolean clickUrlAction(final Minecraft minecraft, final @Nullable Screen screen, final URI uri) {
       if (!minecraft.options.chatLinks().get()) {
          return false;
-      } else {
-         if (minecraft.options.chatLinksPrompt().get()) {
-            minecraft.gui.setScreen(new ConfirmLinkScreen(result -> {
-               if (result) {
-                  Util.getPlatform().openUri(uri);
-               }
-
-               minecraft.gui.setScreen(screen);
-            }, uri.toString(), false));
-         } else {
-            Util.getPlatform().openUri(uri);
-         }
-
-         return true;
       }
+
+      if (minecraft.options.chatLinksPrompt().get()) {
+         minecraft.gui.setScreen(new ConfirmLinkScreen(result -> {
+            if (result) {
+               Blaze3D.openUri(uri);
+            }
+
+            minecraft.gui.setScreen(screen);
+         }, uri, false));
+      } else {
+         Blaze3D.openUri(uri);
+      }
+
+      return true;
    }
 
-   protected static void clickCommandAction(final LocalPlayer player, final String command, @Nullable final Screen screenAfterCommand) {
+   protected static void clickCommandAction(final LocalPlayer player, final String command, final @Nullable Screen screenAfterCommand) {
       player.connection.sendUnattendedCommand(Commands.trimOptionalPrefix(command), screenAfterCommand);
    }
 
@@ -446,7 +393,7 @@ public abstract class Screen extends AbstractContainerEventHandler implements Re
    }
 
    protected void extractBlurredBackground(final GuiGraphicsExtractor graphics) {
-      float blurRadius = (float)this.minecraft.options.getMenuBackgroundBlurriness();
+      float blurRadius = this.minecraft.options.getMenuBackgroundBlurriness();
       if (blurRadius >= 1.0F) {
          graphics.blurBeforeThisStratum();
       }
@@ -623,9 +570,8 @@ public abstract class Screen extends AbstractContainerEventHandler implements Re
       return Component.translatable("narration.component_list.usage");
    }
 
-   @Nullable
-   public static Screen.NarratableSearchResult findNarratableWidget(
-      final List<? extends NarratableEntry> narratableEntries, @Nullable final NarratableEntry lastNarratable
+   public static Screen.@Nullable NarratableSearchResult findNarratableWidget(
+      final List<? extends NarratableEntry> narratableEntries, final @Nullable NarratableEntry lastNarratable
    ) {
       Screen.NarratableSearchResult result = null;
       Screen.NarratableSearchResult lowPrioNarratable = null;
@@ -675,11 +621,10 @@ public abstract class Screen extends AbstractContainerEventHandler implements Re
       return new ScreenRectangle(0, 0, this.width, this.height);
    }
 
-   @Nullable
-   public Music getBackgroundMusic() {
+   public @Nullable Music getBackgroundMusic() {
       return null;
    }
 
-   public static record NarratableSearchResult(NarratableEntry entry, int index, NarratableEntry.NarrationPriority priority) {
+   public record NarratableSearchResult(NarratableEntry entry, int index, NarratableEntry.NarrationPriority priority) {
    }
 }

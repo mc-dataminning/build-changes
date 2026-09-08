@@ -15,9 +15,9 @@ public class NoteParticle extends SingleQuadParticle {
       this.yd *= 0.01F;
       this.zd *= 0.01F;
       this.yd += 0.2;
-      this.rCol = Math.max(0.0F, Mth.sin((double)(((float)color + 0.0F) * (float) (Math.PI * 2))) * 0.65F + 0.35F);
-      this.gCol = Math.max(0.0F, Mth.sin((double)(((float)color + 0.33333334F) * (float) (Math.PI * 2))) * 0.65F + 0.35F);
-      this.bCol = Math.max(0.0F, Mth.sin((double)(((float)color + 0.6666667F) * (float) (Math.PI * 2))) * 0.65F + 0.35F);
+      this.rCol = Math.max(0.0F, Mth.sin(((float)color + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.gCol = Math.max(0.0F, Mth.sin(((float)color + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.bCol = Math.max(0.0F, Mth.sin(((float)color + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
       this.quadSize *= 1.5F;
       this.lifetime = 6;
    }
@@ -29,7 +29,7 @@ public class NoteParticle extends SingleQuadParticle {
 
    @Override
    public float getQuadSize(final float a) {
-      return this.quadSize * Mth.clamp(((float)this.age + a) / (float)this.lifetime * 32.0F, 0.0F, 1.0F);
+      return this.quadSize * Mth.clamp((this.age + a) / this.lifetime * 32.0F, 0.0F, 1.0F);
    }
 
    public static class Provider implements ParticleProvider<SimpleParticleType> {

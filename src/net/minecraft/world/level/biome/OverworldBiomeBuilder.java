@@ -917,10 +917,10 @@ public final class OverworldBiomeBuilder {
    private ResourceKey<Biome> pickMiddleBiome(final int temperatureIndex, final int humidityIndex, final Climate.Parameter weirdness) {
       if (weirdness.max() < 0L) {
          return this.MIDDLE_BIOMES[temperatureIndex][humidityIndex];
-      } else {
-         ResourceKey<Biome> variant = this.MIDDLE_BIOMES_VARIANT[temperatureIndex][humidityIndex];
-         return variant == null ? this.MIDDLE_BIOMES[temperatureIndex][humidityIndex] : variant;
       }
+
+      ResourceKey<Biome> variant = this.MIDDLE_BIOMES_VARIANT[temperatureIndex][humidityIndex];
+      return variant == null ? this.MIDDLE_BIOMES[temperatureIndex][humidityIndex] : variant;
    }
 
    private ResourceKey<Biome> pickMiddleBiomeOrBadlandsIfHot(final int temperatureIndex, final int humidityIndex, final Climate.Parameter weirdness) {
@@ -1043,31 +1043,31 @@ public final class OverworldBiomeBuilder {
    }
 
    public static String getDebugStringForPeaksAndValleys(final double peaksAndValleys) {
-      if (peaksAndValleys < (double)NoiseRouterData.peaksAndValleys(0.05F)) {
+      if (peaksAndValleys < NoiseRouterData.peaksAndValleys(0.05F)) {
          return "Valley";
-      } else if (peaksAndValleys < (double)NoiseRouterData.peaksAndValleys(0.26666668F)) {
+      } else if (peaksAndValleys < NoiseRouterData.peaksAndValleys(0.26666668F)) {
          return "Low";
-      } else if (peaksAndValleys < (double)NoiseRouterData.peaksAndValleys(0.4F)) {
+      } else if (peaksAndValleys < NoiseRouterData.peaksAndValleys(0.4F)) {
          return "Mid";
       } else {
-         return peaksAndValleys < (double)NoiseRouterData.peaksAndValleys(0.56666666F) ? "High" : "Peak";
+         return peaksAndValleys < NoiseRouterData.peaksAndValleys(0.56666666F) ? "High" : "Peak";
       }
    }
 
    public String getDebugStringForContinentalness(final double continentalness) {
-      double continentalnessQuantized = (double)Climate.quantizeCoord((float)continentalness);
-      if (continentalnessQuantized < (double)this.mushroomFieldsContinentalness.max()) {
+      double continentalnessQuantized = Climate.quantizeCoord((float)continentalness);
+      if (continentalnessQuantized < this.mushroomFieldsContinentalness.max()) {
          return "Mushroom fields";
-      } else if (continentalnessQuantized < (double)this.deepOceanContinentalness.max()) {
+      } else if (continentalnessQuantized < this.deepOceanContinentalness.max()) {
          return "Deep ocean";
-      } else if (continentalnessQuantized < (double)this.oceanContinentalness.max()) {
+      } else if (continentalnessQuantized < this.oceanContinentalness.max()) {
          return "Ocean";
-      } else if (continentalnessQuantized < (double)this.coastContinentalness.max()) {
+      } else if (continentalnessQuantized < this.coastContinentalness.max()) {
          return "Coast";
-      } else if (continentalnessQuantized < (double)this.nearInlandContinentalness.max()) {
+      } else if (continentalnessQuantized < this.nearInlandContinentalness.max()) {
          return "Near inland";
       } else {
-         return continentalnessQuantized < (double)this.midInlandContinentalness.max() ? "Mid inland" : "Far inland";
+         return continentalnessQuantized < this.midInlandContinentalness.max() ? "Mid inland" : "Far inland";
       }
    }
 
@@ -1084,10 +1084,10 @@ public final class OverworldBiomeBuilder {
    }
 
    private static String getDebugStringForNoiseValue(final double noiseValue, final Climate.Parameter[] array) {
-      double noiseValueQuantized = (double)Climate.quantizeCoord((float)noiseValue);
+      double noiseValueQuantized = Climate.quantizeCoord((float)noiseValue);
 
       for (int i = 0; i < array.length; i++) {
-         if (noiseValueQuantized < (double)array[i].max()) {
+         if (noiseValueQuantized < array[i].max()) {
             return i + "";
          }
       }

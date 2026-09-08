@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import net.minecraft.client.resources.model.ModelDebugName;
@@ -31,8 +30,7 @@ public class TextureSlots {
       this.resolvedValues = resolvedValues;
    }
 
-   @Nullable
-   public Material getMaterial(String reference) {
+   public @Nullable Material getMaterial(String reference) {
       if (isTextureReference(reference)) {
          reference = reference.substring(1);
       }
@@ -62,7 +60,7 @@ public class TextureSlots {
       }
    }
 
-   public static record Data(Map<String, TextureSlots.SlotContents> values) {
+   public record Data(Map<String, TextureSlots.SlotContents> values) {
       public static final TextureSlots.Data EMPTY = new TextureSlots.Data(Map.of());
 
       public static class Builder {
@@ -84,7 +82,7 @@ public class TextureSlots {
       }
    }
 
-   private static record Reference(String target) implements TextureSlots.SlotContents {
+   private record Reference(String target) implements TextureSlots.SlotContents {
    }
 
    public static class Resolver {
@@ -104,70 +102,69 @@ public class TextureSlots {
       public TextureSlots resolve(final ModelDebugName debugNameProvider) {
          if (this.entries.isEmpty()) {
             return TextureSlots.EMPTY;
-         } else {
-            Object2ObjectMap<String, Material> resolved = new Object2ObjectArrayMap();
-            Object2ObjectMap<String, TextureSlots.Reference> unresolved = new Object2ObjectArrayMap();
+         }
 
-            for (TextureSlots.Data data : Lists.reverse(this.entries)) {
-               data.values.forEach((slot, contents) -> {
-                  Objects.requireNonNull(contents);
-                  switch (contents) {
-                     case TextureSlots.Value value:
-                        unresolved.remove(slot);
-                        resolved.put(slot, value.material());
-                        break;
-                     case TextureSlots.Reference reference:
-                        resolved.remove(slot);
-                        unresolved.put(slot, reference);
-                        break;
-                     default:
-                        throw new MatchException(null, null);
-                  }
-               });
-            }
+         Object2ObjectMap<String, Material> resolved = new Object2ObjectArrayMap();
+         Object2ObjectMap<String, TextureSlots.Reference> unresolved = new Object2ObjectArrayMap();
 
-            if (unresolved.isEmpty()) {
-               return new TextureSlots(resolved);
-            } else {
-               boolean hasChanges = true;
-
-               while (hasChanges) {
-                  hasChanges = false;
-                  ObjectIterator<it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, TextureSlots.Reference>> iterator = Object2ObjectMaps.fastIterator(
-                     unresolved
-                  );
-
-                  while (iterator.hasNext()) {
-                     it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, TextureSlots.Reference> entry = (it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, TextureSlots.Reference>)iterator.next();
-                     Material maybeResolved = (Material)resolved.get(((TextureSlots.Reference)entry.getValue()).target);
-                     if (maybeResolved != null) {
-                        resolved.put((String)entry.getKey(), maybeResolved);
-                        iterator.remove();
-                        hasChanges = true;
-                     }
-                  }
+         for (TextureSlots.Data data : Lists.reverse(this.entries)) {
+            data.values.forEach((slot, contents) -> {
+               switch (contents) {
+                  case TextureSlots.Value value:
+                     unresolved.remove(slot);
+                     resolved.put(slot, value.material());
+                     break;
+                  case TextureSlots.Reference reference:
+                     resolved.remove(slot);
+                     unresolved.put(slot, reference);
+                     break;
+                  default:
+                     throw new MatchException(null, null);
                }
+            });
+         }
 
-               if (!unresolved.isEmpty()) {
-                  LOGGER.warn(
-                     "Unresolved texture references in {}:\n{}",
-                     debugNameProvider.debugName(),
-                     unresolved.entrySet()
-                        .stream()
-                        .map(e -> "\t#" + (String)e.getKey() + "-> #" + ((TextureSlots.Reference)e.getValue()).target + "\n")
-                        .collect(Collectors.joining())
-                  );
+         if (unresolved.isEmpty()) {
+            return new TextureSlots(resolved);
+         }
+
+         boolean hasChanges = true;
+
+         while (hasChanges) {
+            hasChanges = false;
+            ObjectIterator<it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, TextureSlots.Reference>> iterator = Object2ObjectMaps.fastIterator(
+               unresolved
+            );
+
+            while (iterator.hasNext()) {
+               it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, TextureSlots.Reference> entry = (it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, TextureSlots.Reference>)iterator.next();
+               Material maybeResolved = (Material)resolved.get(((TextureSlots.Reference)entry.getValue()).target);
+               if (maybeResolved != null) {
+                  resolved.put((String)entry.getKey(), maybeResolved);
+                  iterator.remove();
+                  hasChanges = true;
                }
-
-               return new TextureSlots(resolved);
             }
          }
+
+         if (!unresolved.isEmpty()) {
+            LOGGER.warn(
+               "Unresolved texture references in {}:\n{}",
+               debugNameProvider.debugName(),
+               unresolved.entrySet()
+                  .stream()
+                  .map(e -> "\t#" + (String)e.getKey() + "-> #" + ((TextureSlots.Reference)e.getValue()).target + "\n")
+                  .collect(Collectors.joining())
+            );
+         }
+
+         return new TextureSlots(resolved);
       }
    }
 
    public sealed interface SlotContents permits TextureSlots.Value, TextureSlots.Reference {
    }
 
-   private static record Value(Material material) implements TextureSlots.SlotContents {
+   private record Value(Material material) implements TextureSlots.SlotContents {
    }
 }

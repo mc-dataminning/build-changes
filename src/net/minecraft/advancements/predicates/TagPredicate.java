@@ -14,10 +14,10 @@ public record TagPredicate<T>(HolderSet<T> tag, boolean expected) {
    public static <T> Codec<TagPredicate<T>> codec(final ResourceKey<? extends Registry<T>> registryKey) {
       return RecordCodecBuilder.create(
          i -> i.group(
-                  RegistryCodecs.holderSet(registryKey).fieldOf("id").forGetter(TagPredicate::tag),
-                  Codec.BOOL.fieldOf("expected").forGetter(TagPredicate::expected)
-               )
-               .apply(i, TagPredicate::new)
+               RegistryCodecs.holderSet(registryKey).fieldOf("id").forGetter(TagPredicate::tag),
+               Codec.BOOL.fieldOf("expected").forGetter(TagPredicate::expected)
+            )
+            .apply(i, TagPredicate::new)
       );
    }
 

@@ -195,9 +195,8 @@ public class BakedSheetGlyph implements EffectGlyph, BakedGlyph {
       return new BakedSheetGlyph.EffectInstance(this, x0, y0, x1, y1, depth, color, shadowColor, shadowOffset);
    }
 
-   private static record EffectInstance(
-      BakedSheetGlyph glyph, float x0, float y0, float x1, float y1, float depth, int color, int shadowColor, float shadowOffset
-   ) implements TextRenderable {
+   private record EffectInstance(BakedSheetGlyph glyph, float x0, float y0, float x1, float y1, float depth, int color, int shadowColor, float shadowOffset)
+      implements TextRenderable {
       @Override
       public float left() {
          return this.x0;
@@ -243,7 +242,7 @@ public class BakedSheetGlyph implements EffectGlyph, BakedGlyph {
       }
    }
 
-   private static record GlyphInstance(float x, float y, int color, int shadowColor, BakedSheetGlyph glyph, Style style, float boldOffset, float shadowOffset)
+   private record GlyphInstance(float x, float y, int color, int shadowColor, BakedSheetGlyph glyph, Style style, float boldOffset, float shadowOffset)
       implements TextRenderable.Styled {
       @Override
       public float left() {

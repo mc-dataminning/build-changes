@@ -37,10 +37,10 @@ public class WardenSpawnTrackerCommand {
                      Commands.argument("warning_level", IntegerArgumentType.integer(0, 4))
                         .executes(
                            c -> setWarningLevel(
-                                 (CommandSourceStack)c.getSource(),
-                                 ImmutableList.of(((CommandSourceStack)c.getSource()).getPlayerOrException()),
-                                 IntegerArgumentType.getInteger(c, "warning_level")
-                              )
+                              (CommandSourceStack)c.getSource(),
+                              ImmutableList.of(((CommandSourceStack)c.getSource()).getPlayerOrException()),
+                              IntegerArgumentType.getInteger(c, "warning_level")
+                           )
                         )
                   )
             )

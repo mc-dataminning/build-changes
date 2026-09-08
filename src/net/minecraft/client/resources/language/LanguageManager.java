@@ -43,8 +43,8 @@ public class LanguageManager implements ResourceManagerReloadListener {
             if (languageMetadataSection != null) {
                languageMetadataSection.languages().forEach(result::putIfAbsent);
             }
-         } catch (Exception var3) {
-            LOGGER.warn("Unable to parse language metadata section of resourcepack: {}", resourcePack.packId(), var3);
+         } catch (Exception e) {
+            LOGGER.warn("Unable to parse language metadata section of resourcepack: {}", resourcePack.packId(), e);
          }
       });
       return ImmutableMap.copyOf(result);
@@ -68,18 +68,18 @@ public class LanguageManager implements ResourceManagerReloadListener {
          ClientLanguage locale = ClientLanguage.loadFrom(resourceManager, languageStack, defaultRightToLeft);
          Language.inject(locale);
          this.reloadCallback.accept(locale);
-      } catch (EmptyTranslationsException var5) {
+      } catch (EmptyTranslationsException ex) {
          this.minecraft
             .gui
             .setScreen(
                new ErrorScreen(
                   Component.translatable("options.language.load_translations_failed"),
-                  Component.translatable("options.language.empty_or_missing_translation", var5.getLanguageCode())
+                  Component.translatable("options.language.empty_or_missing_translation", ex.getLanguageCode())
                )
             );
-         LOGGER.warn("Skipped unable to find any translations for {}", var5.getLanguageCode());
-      } catch (Exception var6) {
-         LOGGER.warn("Unable to load languages: {} ({})", languageStack, var6.toString());
+         LOGGER.warn("Skipped unable to find any translations for {}", ex.getLanguageCode());
+      } catch (Exception ex) {
+         LOGGER.warn("Unable to load languages: {} ({})", languageStack, ex.toString());
       }
    }
 
@@ -95,8 +95,7 @@ public class LanguageManager implements ResourceManagerReloadListener {
       return new TreeMap<>(this.languages);
    }
 
-   @Nullable
-   public LanguageInfo getLanguage(final String code) {
+   public @Nullable LanguageInfo getLanguage(final String code) {
       return this.languages.get(code);
    }
 }

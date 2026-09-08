@@ -35,7 +35,7 @@ public class FrameGraphBuilder {
    }
 
    private <T> FrameGraphBuilder.InternalVirtualResource<T> createInternalResource(
-      final String name, final ResourceDescriptor<T> descriptor, final FrameGraphBuilder.Pass createdBy
+      final String name, final ResourceDescriptor<T> descriptor, final FrameGraphBuilder.@Nullable Pass createdBy
    ) {
       int id = this.internalResources.size();
       FrameGraphBuilder.InternalVirtualResource<T> resource = new FrameGraphBuilder.InternalVirtualResource<>(id, name, createdBy, descriptor);
@@ -115,7 +115,9 @@ public class FrameGraphBuilder {
       if (visiting.get(pass.id)) {
          String involvedPasses = visiting.stream().mapToObj(idx -> this.passes.get(idx).name).collect(Collectors.joining(", "));
          throw new IllegalStateException("Frame graph cycle detected between " + involvedPasses);
-      } else if (passesToFind.get(pass.id)) {
+      }
+
+      if (passesToFind.get(pass.id)) {
          visiting.set(pass.id);
          passesToFind.clear(pass.id);
 
@@ -158,7 +160,7 @@ public class FrameGraphBuilder {
    private static class ExternalResource<T> extends FrameGraphBuilder.VirtualResource<T> {
       private final T resource;
 
-      public ExternalResource(final String name, final FrameGraphBuilder.Pass createdBy, final T resource) {
+      public ExternalResource(final String name, final FrameGraphBuilder.@Nullable Pass createdBy, final T resource) {
          super(name, createdBy);
          this.resource = resource;
       }
@@ -172,12 +174,11 @@ public class FrameGraphBuilder {
    private static class Handle<T> implements ResourceHandle<T> {
       private final FrameGraphBuilder.VirtualResource<T> holder;
       private final int version;
-      private final FrameGraphBuilder.Pass createdBy;
+      private final FrameGraphBuilder.@Nullable Pass createdBy;
       private final BitSet readBy = new BitSet();
-      @Nullable
-      private FrameGraphBuilder.Handle<T> aliasedBy;
+      private FrameGraphBuilder.@Nullable Handle<T> aliasedBy;
 
-      private Handle(final FrameGraphBuilder.VirtualResource<T> holder, final int version, final FrameGraphBuilder.Pass createdBy) {
+      private Handle(final FrameGraphBuilder.VirtualResource<T> holder, final int version, final FrameGraphBuilder.@Nullable Pass createdBy) {
          this.holder = holder;
          this.version = version;
          this.createdBy = createdBy;
@@ -191,12 +192,12 @@ public class FrameGraphBuilder {
       private FrameGraphBuilder.Handle<T> writeAndAlias(final FrameGraphBuilder.Pass pass) {
          if (this.holder.handle != this) {
             throw new IllegalStateException("Handle " + this + " is no longer valid, as its contents were moved into " + this.aliasedBy);
-         } else {
-            FrameGraphBuilder.Handle<T> newHandle = new FrameGraphBuilder.Handle<>(this.holder, this.version + 1, pass);
-            this.holder.handle = newHandle;
-            this.aliasedBy = newHandle;
-            return newHandle;
          }
+
+         FrameGraphBuilder.Handle<T> newHandle = new FrameGraphBuilder.Handle<>(this.holder, this.version + 1, pass);
+         this.holder.handle = newHandle;
+         this.aliasedBy = newHandle;
+         return newHandle;
       }
 
       @Override
@@ -206,8 +207,7 @@ public class FrameGraphBuilder {
    }
 
    public interface Inspector {
-      FrameGraphBuilder.Inspector NONE = new FrameGraphBuilder.Inspector() {
-      };
+      FrameGraphBuilder.Inspector NONE = new FrameGraphBuilder.Inspector() {};
 
       default void acquireResource(final String name) {
       }
@@ -225,10 +225,9 @@ public class FrameGraphBuilder {
    private static class InternalVirtualResource<T> extends FrameGraphBuilder.VirtualResource<T> {
       private final int id;
       private final ResourceDescriptor<T> descriptor;
-      @Nullable
-      private T physicalResource;
+      private @Nullable T physicalResource;
 
-      public InternalVirtualResource(final int id, final String name, final FrameGraphBuilder.Pass createdBy, final ResourceDescriptor<T> descriptor) {
+      public InternalVirtualResource(final int id, final String name, final FrameGraphBuilder.@Nullable Pass createdBy, final ResourceDescriptor<T> descriptor) {
          super(name, createdBy);
          this.id = id;
          this.descriptor = descriptor;
@@ -242,42 +241,33 @@ public class FrameGraphBuilder {
       public void acquire(final GraphicsResourceAllocator allocator) {
          if (this.physicalResource != null) {
             throw new IllegalStateException("Tried to acquire physical resource, but it was already assigned");
-         } else {
-            this.physicalResource = allocator.acquire(this.descriptor);
          }
+
+         this.physicalResource = allocator.acquire(this.descriptor);
       }
 
       public void release(final GraphicsResourceAllocator allocator) {
          if (this.physicalResource == null) {
             throw new IllegalStateException("Tried to release physical resource that was not allocated");
-         } else {
-            allocator.release(this.descriptor, this.physicalResource);
-            this.physicalResource = null;
          }
+
+         allocator.release(this.descriptor, this.physicalResource);
+         this.physicalResource = null;
       }
    }
 
    private class Pass implements FramePass {
       private final int id;
       private final String name;
-      private final List<FrameGraphBuilder.Handle<?>> writesFrom;
-      private final BitSet requiredResourceIds;
-      private final BitSet requiredPassIds;
-      private Runnable task;
-      private final List<FrameGraphBuilder.InternalVirtualResource<?>> resourcesToAcquire;
-      private final BitSet resourcesToRelease;
+      private final List<FrameGraphBuilder.Handle<?>> writesFrom = new ArrayList<>();
+      private final BitSet requiredResourceIds = new BitSet();
+      private final BitSet requiredPassIds = new BitSet();
+      private Runnable task = () -> {};
+      private final List<FrameGraphBuilder.InternalVirtualResource<?>> resourcesToAcquire = new ArrayList<>();
+      private final BitSet resourcesToRelease = new BitSet();
       private boolean disableCulling;
 
       public Pass(final int id, final String name) {
-         Objects.requireNonNull(FrameGraphBuilder.this);
-         super();
-         this.writesFrom = new ArrayList<>();
-         this.requiredResourceIds = new BitSet();
-         this.requiredPassIds = new BitSet();
-         this.task = () -> {
-         };
-         this.resourcesToAcquire = new ArrayList<>();
-         this.resourcesToRelease = new BitSet();
          this.id = id;
          this.name = name;
       }
@@ -349,7 +339,7 @@ public class FrameGraphBuilder {
       public final String name;
       public FrameGraphBuilder.Handle<T> handle;
 
-      public VirtualResource(final String name, final FrameGraphBuilder.Pass createdBy) {
+      public VirtualResource(final String name, final FrameGraphBuilder.@Nullable Pass createdBy) {
          this.name = name;
          this.handle = new FrameGraphBuilder.Handle<>(this, 0, createdBy);
       }

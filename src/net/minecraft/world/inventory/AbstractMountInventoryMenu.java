@@ -59,16 +59,17 @@ public abstract class AbstractMountInventoryMenu extends AbstractContainerMenu {
             }
          } else if (this.mountContainer.getContainerSize() == 0 || !this.moveItemStackTo(stack, 2, playerContainerStart, false)) {
             int playerContainerEnd = playerContainerStart + 27;
-            int playerHotBarEnd = playerContainerEnd + 9;
-            if (slotIndex >= playerContainerEnd && slotIndex < playerHotBarEnd) {
+            int playerHotBarStart = playerContainerEnd;
+            int playerHotBarEnd = playerHotBarStart + 9;
+            if (slotIndex >= playerHotBarStart && slotIndex < playerHotBarEnd) {
                if (!this.moveItemStackTo(stack, playerContainerStart, playerContainerEnd, false)) {
                   return ItemStack.EMPTY;
                }
             } else if (slotIndex >= playerContainerStart && slotIndex < playerContainerEnd) {
-               if (!this.moveItemStackTo(stack, playerContainerEnd, playerHotBarEnd, false)) {
+               if (!this.moveItemStackTo(stack, playerHotBarStart, playerHotBarEnd, false)) {
                   return ItemStack.EMPTY;
                }
-            } else if (!this.moveItemStackTo(stack, playerContainerEnd, playerContainerEnd, false)) {
+            } else if (!this.moveItemStackTo(stack, playerHotBarStart, playerContainerEnd, false)) {
                return ItemStack.EMPTY;
             }
 

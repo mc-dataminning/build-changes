@@ -82,20 +82,20 @@ public class AdultFelineModel<T extends FelineRenderState> extends AbstractFelin
          float animationSpeed = state.walkAnimationSpeed;
          float animationPos = state.walkAnimationPos;
          if (state.isSprinting) {
-            this.leftHindLeg.xRot = Mth.cos((double)(animationPos * 0.6662F)) * animationSpeed;
-            this.rightHindLeg.xRot = Mth.cos((double)(animationPos * 0.6662F + 0.3F)) * animationSpeed;
-            this.leftFrontLeg.xRot = Mth.cos((double)(animationPos * 0.6662F + (float) Math.PI + 0.3F)) * animationSpeed;
-            this.rightFrontLeg.xRot = Mth.cos((double)(animationPos * 0.6662F + (float) Math.PI)) * animationSpeed;
-            this.tail2.xRot = 1.7278761F + (float) (Math.PI / 10) * Mth.cos((double)animationPos) * animationSpeed;
+            this.leftHindLeg.xRot = Mth.cos(animationPos * 0.6662F) * animationSpeed;
+            this.rightHindLeg.xRot = Mth.cos(animationPos * 0.6662F + 0.3F) * animationSpeed;
+            this.leftFrontLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI + 0.3F) * animationSpeed;
+            this.rightFrontLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * animationSpeed;
+            this.tail2.xRot = 1.7278761F + (float) (Math.PI / 10) * Mth.cos(animationPos) * animationSpeed;
          } else {
-            this.leftHindLeg.xRot = Mth.cos((double)(animationPos * 0.6662F)) * animationSpeed;
-            this.rightHindLeg.xRot = Mth.cos((double)(animationPos * 0.6662F + (float) Math.PI)) * animationSpeed;
-            this.leftFrontLeg.xRot = Mth.cos((double)(animationPos * 0.6662F + (float) Math.PI)) * animationSpeed;
-            this.rightFrontLeg.xRot = Mth.cos((double)(animationPos * 0.6662F)) * animationSpeed;
+            this.leftHindLeg.xRot = Mth.cos(animationPos * 0.6662F) * animationSpeed;
+            this.rightHindLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * animationSpeed;
+            this.leftFrontLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * animationSpeed;
+            this.rightFrontLeg.xRot = Mth.cos(animationPos * 0.6662F) * animationSpeed;
             if (!state.isCrouching) {
-               this.tail2.xRot = 1.7278761F + (float) (Math.PI / 4) * Mth.cos((double)animationPos) * animationSpeed;
+               this.tail2.xRot = 1.7278761F + (float) (Math.PI / 4) * Mth.cos(animationPos) * animationSpeed;
             } else {
-               this.tail2.xRot = 1.7278761F + 0.47123894F * Mth.cos((double)animationPos) * animationSpeed;
+               this.tail2.xRot = 1.7278761F + 0.47123894F * Mth.cos(animationPos) * animationSpeed;
             }
          }
       }

@@ -13,7 +13,7 @@ public class FramerateLimiter {
    private static int lastFramerateLimit;
 
    public static void limitDisplayFPS(final int framerateLimit) {
-      long targetTimePerFrame = 1000000000L / (long)framerateLimit;
+      long targetTimePerFrame = 1000000000L / framerateLimit;
       long targetTimeNs = lastFrameTime + targetTimePerFrame;
       if (framerateLimit != lastFramerateLimit) {
          averageOvershootNs = 0L;
@@ -30,7 +30,7 @@ public class FramerateLimiter {
                long sleepDurationNs = System.nanoTime() - sleepStartTimeNs;
                long currentOvershootNs = sleepDurationNs - expectedSleepTimeNs;
                if (currentOvershootNs > 0L && currentOvershootNs < 25000000L) {
-                  averageOvershootNs = (long)(0.1 * (double)currentOvershootNs + 0.9 * (double)averageOvershootNs);
+                  averageOvershootNs = (long)(0.1 * currentOvershootNs + 0.9 * averageOvershootNs);
                   averageOvershootNs = Math.min(averageOvershootNs, 2000000L);
                }
             }

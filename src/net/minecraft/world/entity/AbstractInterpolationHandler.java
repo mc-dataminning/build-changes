@@ -20,15 +20,14 @@ public abstract class AbstractInterpolationHandler implements InterpolationHandl
 
    protected abstract void doInterpolate();
 
-   @Nullable
    @Override
-   public PositionAndRotation target() {
+   public @Nullable PositionAndRotation target() {
       return this.hasActiveInterpolation() ? this.interpolationData().immutable() : null;
    }
 
    @Override
-   public boolean interpolateTo(@Nullable final PositionPath position, final float yRot, final float xRot, final boolean hasRotation) {
-      PositionAndRotation current = (PositionAndRotation)(this.hasActiveInterpolation() ? this.interpolationData() : this.entity.storePositionAndRotation());
+   public boolean interpolateTo(final @Nullable PositionPath position, final float yRot, final float xRot, final boolean hasRotation) {
+      PositionAndRotation current = this.hasActiveInterpolation() ? this.interpolationData() : this.entity.storePositionAndRotation();
       this.interpolateTo(
          position != null ? position : PositionPath.of(current.position()), hasRotation ? yRot : current.yRot(), hasRotation ? xRot : current.xRot()
       );

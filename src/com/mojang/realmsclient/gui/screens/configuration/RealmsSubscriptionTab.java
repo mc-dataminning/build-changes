@@ -67,8 +67,9 @@ public class RealmsSubscriptionTab extends GridLayoutTab implements RealmsConfig
          Button.builder(
                Component.translatable("mco.configure.world.subscription.extend"),
                button -> ConfirmLinkScreen.confirmLinkNow(
-                     configurationScreen, CommonLinks.extendRealms(serverData.remoteSubscriptionId, minecraft.getUser().getProfileId())
-                  )
+                  configurationScreen,
+                  CommonLinks.extendRealms(serverData.remoteSubscriptionId, minecraft.getUser().getProfileId(), CommonLinks.ExtensionReference.NONE)
+               )
             )
             .bounds(0, 0, 200, 20)
             .build()
@@ -78,11 +79,11 @@ public class RealmsSubscriptionTab extends GridLayoutTab implements RealmsConfig
          Button.builder(
                Component.translatable("mco.configure.world.delete.button"),
                var3 -> minecraft.gui
-                     .setScreen(
-                        RealmsPopups.warningPopupScreen(
-                           configurationScreen, Component.translatable("mco.configure.world.delete.question.line1"), popup -> this.deleteRealm()
-                        )
+                  .setScreen(
+                     RealmsPopups.warningPopupScreen(
+                        configurationScreen, Component.translatable("mco.configure.world.delete.question.line1"), popup -> this.deleteRealm()
                      )
+                  )
             )
             .bounds(0, 0, 200, 20)
             .build()

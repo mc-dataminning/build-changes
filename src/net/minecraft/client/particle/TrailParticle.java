@@ -25,9 +25,9 @@ public class TrailParticle extends SingleQuadParticle {
    ) {
       super(level, x, y, z, xAux, yAux, zAux, sprite);
       color = ARGB.scaleRGB(color, 0.875F + this.random.nextFloat() * 0.25F, 0.875F + this.random.nextFloat() * 0.25F, 0.875F + this.random.nextFloat() * 0.25F);
-      this.rCol = (float)ARGB.red(color) / 255.0F;
-      this.gCol = (float)ARGB.green(color) / 255.0F;
-      this.bCol = (float)ARGB.blue(color) / 255.0F;
+      this.rCol = ARGB.red(color) / 255.0F;
+      this.gCol = ARGB.green(color) / 255.0F;
+      this.bCol = ARGB.blue(color) / 255.0F;
       this.quadSize = 0.26F;
       this.target = target;
    }
@@ -46,7 +46,7 @@ public class TrailParticle extends SingleQuadParticle {
          this.remove();
       } else {
          int ticksRemaining = this.lifetime - this.age;
-         double alpha = 1.0 / (double)ticksRemaining;
+         double alpha = 1.0 / ticksRemaining;
          this.x = Mth.lerp(alpha, this.x, this.target.x());
          this.y = Mth.lerp(alpha, this.y, this.target.y());
          this.z = Mth.lerp(alpha, this.z, this.target.z());

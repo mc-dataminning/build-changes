@@ -13,10 +13,10 @@ import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFlo
 public record BinomialDistributionGenerator(Holder<ContextIntProvider> n, Holder<ContextFloatProvider> p) implements ContextIntProvider {
    public static final MapCodec<BinomialDistributionGenerator> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               ContextIntProviders.CODEC.fieldOf("n").forGetter(BinomialDistributionGenerator::n),
-               ContextFloatProviders.CODEC.fieldOf("p").forGetter(BinomialDistributionGenerator::p)
-            )
-            .apply(i, BinomialDistributionGenerator::new)
+            ContextIntProviders.CODEC.fieldOf("n").forGetter(BinomialDistributionGenerator::n),
+            ContextFloatProviders.CODEC.fieldOf("p").forGetter(BinomialDistributionGenerator::p)
+         )
+         .apply(i, BinomialDistributionGenerator::new)
    );
 
    @Override

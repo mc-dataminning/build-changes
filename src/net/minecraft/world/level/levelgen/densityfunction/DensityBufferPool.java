@@ -22,14 +22,13 @@ public class DensityBufferPool implements DensityBufferArena {
       ScopedDensityBuffer buffer = this.tryTakeBest(roundedMinSize, roundedMinSize * 2);
       if (buffer == null) {
          return new ScopedDensityBuffer(this, roundedMinSize, size);
-      } else {
-         buffer.restore(size);
-         return buffer;
       }
+
+      buffer.restore(size);
+      return buffer;
    }
 
-   @Nullable
-   private ScopedDensityBuffer tryTakeBest(final int minCapacity, final int maxCapacity) {
+   private @Nullable ScopedDensityBuffer tryTakeBest(final int minCapacity, final int maxCapacity) {
       int bestIndex = -1;
       int bestCapacity = maxCapacity + 1;
 

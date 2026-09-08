@@ -11,7 +11,7 @@ public class IpBanListEntry extends BanListEntry<String> {
    }
 
    public IpBanListEntry(
-      final String address, @Nullable final Date created, @Nullable final String source, @Nullable final Date expires, @Nullable final String reason
+      final String address, final @Nullable Date created, final @Nullable String source, final @Nullable Date expires, final @Nullable String reason
    ) {
       super(address, created, source, expires, reason);
    }

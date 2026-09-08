@@ -6,9 +6,8 @@ import org.jspecify.annotations.Nullable;
 public interface DataComponentHolder extends DataComponentGetter {
    DataComponentMap getComponents();
 
-   @Nullable
    @Override
-   default <T> T get(final DataComponentType<? extends T> type) {
+   default <T> @Nullable T get(final DataComponentType<? extends T> type) {
       return this.getComponents().get(type);
    }
 

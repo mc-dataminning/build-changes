@@ -5,7 +5,7 @@ import net.minecraft.world.phys.AABB;
 
 public class PistonMath {
    public static AABB getMovementArea(final AABB aabb, final Direction direction, final double amount) {
-      double delta = amount * (double)direction.getAxisDirection().getStep();
+      double delta = amount * direction.getAxisDirection().getStep();
       double min = Math.min(delta, 0.0);
       double max = Math.max(delta, 0.0);
       switch (direction) {

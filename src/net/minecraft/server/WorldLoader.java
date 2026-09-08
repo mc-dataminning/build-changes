@@ -85,7 +85,7 @@ public class WorldLoader {
          );
    }
 
-   public static record DataLoadContext(
+   public record DataLoadContext(
       ResourceManager resources,
       WorldDataConfiguration dataConfiguration,
       HolderLookup.Provider datapackWorldRegistries,
@@ -93,13 +93,13 @@ public class WorldLoader {
    ) {
    }
 
-   public static record DataLoadOutput<D>(D cookie, RegistryAccess.Frozen finalDimensions) {
+   public record DataLoadOutput<D>(D cookie, RegistryAccess.Frozen finalDimensions) {
    }
 
-   public static record InitConfig(WorldLoader.PackConfig packConfig, Commands.CommandSelection commandSelection, PermissionSet functionCompilationPermissions) {
+   public record InitConfig(WorldLoader.PackConfig packConfig, Commands.CommandSelection commandSelection, PermissionSet functionCompilationPermissions) {
    }
 
-   public static record PackConfig(PackRepository packRepository, WorldDataConfiguration initialDataConfig, boolean safeMode, boolean initMode) {
+   public record PackConfig(PackRepository packRepository, WorldDataConfiguration initialDataConfig, boolean safeMode, boolean initMode) {
       public Pair<WorldDataConfiguration, CloseableResourceManager> createResourceManager() {
          WorldDataConfiguration newPackConfig = MinecraftServer.configurePackRepository(
             this.packRepository, this.initialDataConfig, this.initMode, this.safeMode

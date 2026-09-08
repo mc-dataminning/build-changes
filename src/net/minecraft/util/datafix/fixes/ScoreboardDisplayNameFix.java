@@ -28,9 +28,9 @@ public class ScoreboardDisplayNameFix extends DataFix {
          this.name,
          inputType,
          team -> team.updateTyped(
-               displayNameF,
-               displayName -> displayName.update(textComponentF, textComponent -> textComponent.mapSecond(LegacyComponentDataFixUtils::createTextComponentJson))
-            )
+            displayNameF,
+            displayName -> displayName.update(textComponentF, textComponent -> textComponent.mapSecond(LegacyComponentDataFixUtils::createTextComponentJson))
+         )
       );
    }
 }

@@ -15,10 +15,10 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 public record RandomSelectorFeature(List<WeightedPlacedFeature> features, Holder<PlacedFeature> defaultFeature) implements Feature {
    public static final MapCodec<RandomSelectorFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               WeightedPlacedFeature.CODEC.listOf().fieldOf("features").forGetter(RandomSelectorFeature::features),
-               PlacedFeature.CODEC.fieldOf("default").forGetter(RandomSelectorFeature::defaultFeature)
-            )
-            .apply(i, RandomSelectorFeature::new)
+            WeightedPlacedFeature.CODEC.listOf().fieldOf("features").forGetter(RandomSelectorFeature::features),
+            PlacedFeature.CODEC.fieldOf("default").forGetter(RandomSelectorFeature::defaultFeature)
+         )
+         .apply(i, RandomSelectorFeature::new)
    );
 
    @Override

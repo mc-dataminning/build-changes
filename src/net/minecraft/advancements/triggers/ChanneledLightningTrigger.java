@@ -26,14 +26,14 @@ public class ChanneledLightningTrigger extends SimpleCriterionTrigger<ChanneledL
       this.trigger(player, t -> t.matches(victimsContexts));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, List<Holder<LootItemCondition>> victims)
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, List<Holder<LootItemCondition>> victims)
       implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<ChanneledLightningTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(ChanneledLightningTrigger.TriggerInstance::player),
-                  LootItemCondition.CODEC.listOf().optionalFieldOf("victims", List.of()).forGetter(ChanneledLightningTrigger.TriggerInstance::victims)
-               )
-               .apply(i, ChanneledLightningTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(ChanneledLightningTrigger.TriggerInstance::player),
+               LootItemCondition.CODEC.listOf().optionalFieldOf("victims", List.of()).forGetter(ChanneledLightningTrigger.TriggerInstance::victims)
+            )
+            .apply(i, ChanneledLightningTrigger.TriggerInstance::new)
       );
 
       public static Criterion<ChanneledLightningTrigger.TriggerInstance> channeledLightning(final EntityPredicate.Builder... victims) {

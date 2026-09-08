@@ -11,14 +11,14 @@ public interface PlainSignBlock {
       return blockState.getBlock() instanceof PlainSignBlock plainSignBlock ? plainSignBlock.attachmentPoint(blockState) : PlainSignBlock.Attachment.GROUND;
    }
 
-   public static enum Attachment implements StringRepresentable {
+   enum Attachment implements StringRepresentable {
       WALL("wall"),
       GROUND("ground");
 
       public static final Codec<PlainSignBlock.Attachment> CODEC = StringRepresentable.fromEnum(PlainSignBlock.Attachment::values);
       private final String name;
 
-      private Attachment(final String name) {
+      Attachment(final String name) {
          this.name = name;
       }
 

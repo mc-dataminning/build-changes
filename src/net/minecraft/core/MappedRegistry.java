@@ -41,11 +41,9 @@ public class MappedRegistry<T> implements WritableRegistry<T> {
    private Lifecycle registryLifecycle;
    private final Map<TagKey<T>, HolderSet.Named<T>> frozenTags = new IdentityHashMap<>();
    private MappedRegistry.TagSet<T> allTags = MappedRegistry.TagSet.unbound();
-   @Nullable
-   private DataComponentLookup<T> componentLookup;
+   private @Nullable DataComponentLookup<T> componentLookup;
    private boolean frozen;
-   @Nullable
-   private Map<T, Holder.Reference<T>> unregisteredIntrusiveHolders;
+   private @Nullable Map<T, Holder.Reference<T>> unregisteredIntrusiveHolders;
 
    @Override
    public Stream<HolderSet.Named<T>> listTags() {
@@ -93,36 +91,37 @@ public class MappedRegistry<T> implements WritableRegistry<T> {
       Objects.requireNonNull(value);
       if (this.byLocation.containsKey(key.identifier())) {
          throw (IllegalStateException)Util.pauseInIde(new IllegalStateException("Adding duplicate key '" + key + "' to registry"));
-      } else if (this.byValue.containsKey(value)) {
-         throw (IllegalStateException)Util.pauseInIde(new IllegalStateException("Adding duplicate value '" + value + "' to registry"));
-      } else {
-         Holder.Reference<T> holder;
-         if (this.unregisteredIntrusiveHolders != null) {
-            holder = this.unregisteredIntrusiveHolders.remove(value);
-            if (holder == null) {
-               throw new AssertionError("Missing intrusive holder for " + key + ":" + value);
-            }
+      }
 
-            holder.bindKey(key);
-         } else {
-            holder = this.byKey.computeIfAbsent(key, k -> Holder.Reference.createStandAlone(this, (ResourceKey<T>)k));
+      if (this.byValue.containsKey(value)) {
+         throw (IllegalStateException)Util.pauseInIde(new IllegalStateException("Adding duplicate value '" + value + "' to registry"));
+      }
+
+      Holder.Reference<T> holder;
+      if (this.unregisteredIntrusiveHolders != null) {
+         holder = this.unregisteredIntrusiveHolders.remove(value);
+         if (holder == null) {
+            throw new AssertionError("Missing intrusive holder for " + key + ":" + value);
          }
 
-         this.byKey.put(key, holder);
-         this.byLocation.put(key.identifier(), holder);
-         this.byValue.put(value, holder);
-         int newId = this.byId.size();
-         this.byId.add(holder);
-         this.toId.put(value, newId);
-         this.registrationInfos.put(key, registrationInfo);
-         this.registryLifecycle = this.registryLifecycle.add(registrationInfo.lifecycle());
-         return holder;
+         holder.bindKey(key);
+      } else {
+         holder = this.byKey.computeIfAbsent(key, k -> Holder.Reference.createStandAlone(this, (ResourceKey<T>)k));
       }
+
+      this.byKey.put(key, holder);
+      this.byLocation.put(key.identifier(), holder);
+      this.byValue.put(value, holder);
+      int newId = this.byId.size();
+      this.byId.add(holder);
+      this.toId.put(value, newId);
+      this.registrationInfos.put(key, registrationInfo);
+      this.registryLifecycle = this.registryLifecycle.add(registrationInfo.lifecycle());
+      return holder;
    }
 
-   @Nullable
    @Override
-   public Identifier getKey(final T thing) {
+   public @Nullable Identifier getKey(final T thing) {
       Holder.Reference<T> holder = this.byValue.get(thing);
       return holder != null ? holder.key().identifier() : null;
    }
@@ -133,19 +132,17 @@ public class MappedRegistry<T> implements WritableRegistry<T> {
    }
 
    @Override
-   public int getId(@Nullable final T thing) {
+   public int getId(final @Nullable T thing) {
       return this.toId.getInt(thing);
    }
 
-   @Nullable
    @Override
-   public T getValue(@Nullable final ResourceKey<T> key) {
+   public @Nullable T getValue(final @Nullable ResourceKey<T> key) {
       return getValueFromNullable(this.byKey.get(key));
    }
 
-   @Nullable
    @Override
-   public T byId(final int id) {
+   public @Nullable T byId(final int id) {
       return (T)(id >= 0 && id < this.byId.size() ? ((Holder.Reference)this.byId.get(id)).value() : null);
    }
 
@@ -172,17 +169,17 @@ public class MappedRegistry<T> implements WritableRegistry<T> {
    @Override
    public Holder<T> wrapAsHolder(final T value) {
       Holder.Reference<T> existingHolder = this.byValue.get(value);
-      return (Holder<T>)(existingHolder != null ? existingHolder : Holder.direct(value));
+      return existingHolder != null ? existingHolder : Holder.direct(value);
    }
 
    private Holder.Reference<T> getOrCreateHolderOrThrow(final ResourceKey<T> key) {
       return this.byKey.computeIfAbsent(key, id -> {
          if (this.unregisteredIntrusiveHolders != null) {
             throw new IllegalStateException("This registry can't create new holders without value");
-         } else {
-            this.validateWrite((ResourceKey<T>)id);
-            return Holder.Reference.createStandAlone(this, (ResourceKey<T>)id);
          }
+
+         this.validateWrite((ResourceKey<T>)id);
+         return Holder.Reference.createStandAlone(this, (ResourceKey<T>)id);
       });
    }
 
@@ -206,15 +203,13 @@ public class MappedRegistry<T> implements WritableRegistry<T> {
       return Iterators.transform(this.byId.iterator(), Holder::value);
    }
 
-   @Nullable
    @Override
-   public T getValue(@Nullable final Identifier key) {
+   public @Nullable T getValue(final @Nullable Identifier key) {
       Holder.Reference<T> result = this.byLocation.get(key);
       return getValueFromNullable(result);
    }
 
-   @Nullable
-   private static <T> T getValueFromNullable(@Nullable final Holder.Reference<T> result) {
+   private static <T> @Nullable T getValueFromNullable(final Holder.@Nullable Reference<T> result) {
       return result != null ? result.value() : null;
    }
 
@@ -280,58 +275,46 @@ public class MappedRegistry<T> implements WritableRegistry<T> {
    public Registry<T> freeze() {
       if (this.frozen) {
          return this;
-      } else {
-         this.frozen = true;
-         this.byValue.forEach((value, holder) -> holder.bindValue((T)value));
-         List<Identifier> unboundEntries = this.byKey
-            .entrySet()
-            .stream()
-            .filter(e -> !e.getValue().isBound())
-            .map(e -> e.getKey().identifier())
-            .sorted()
-            .toList();
-         if (!unboundEntries.isEmpty()) {
-            throw new IllegalStateException("Unbound values in registry " + this.key() + ": " + unboundEntries);
-         } else {
-            if (this.unregisteredIntrusiveHolders != null) {
-               if (!this.unregisteredIntrusiveHolders.isEmpty()) {
-                  throw new IllegalStateException("Some intrusive holders were not registered: " + this.unregisteredIntrusiveHolders.values());
-               }
-
-               this.unregisteredIntrusiveHolders = null;
-            }
-
-            if (this.allTags.isBound()) {
-               throw new IllegalStateException("Tags already present before freezing");
-            } else {
-               List<Identifier> unboundTags = this.frozenTags
-                  .entrySet()
-                  .stream()
-                  .filter(e -> !e.getValue().isBound())
-                  .map(e -> e.getKey().location())
-                  .sorted()
-                  .toList();
-               if (!unboundTags.isEmpty()) {
-                  throw new IllegalStateException("Unbound tags in registry " + this.key() + ": " + unboundTags);
-               } else {
-                  this.componentLookup = new DataComponentLookup<>(this.byId);
-                  this.allTags = MappedRegistry.TagSet.fromMap(this.frozenTags);
-                  this.refreshTagsInHolders();
-                  return this;
-               }
-            }
-         }
       }
+
+      this.frozen = true;
+      this.byValue.forEach((value, holder) -> holder.bindValue((T)value));
+      List<Identifier> unboundEntries = this.byKey.entrySet().stream().filter(e -> !e.getValue().isBound()).map(e -> e.getKey().identifier()).sorted().toList();
+      if (!unboundEntries.isEmpty()) {
+         throw new IllegalStateException("Unbound values in registry " + this.key() + ": " + unboundEntries);
+      }
+
+      if (this.unregisteredIntrusiveHolders != null) {
+         if (!this.unregisteredIntrusiveHolders.isEmpty()) {
+            throw new IllegalStateException("Some intrusive holders were not registered: " + this.unregisteredIntrusiveHolders.values());
+         }
+
+         this.unregisteredIntrusiveHolders = null;
+      }
+
+      if (this.allTags.isBound()) {
+         throw new IllegalStateException("Tags already present before freezing");
+      }
+
+      List<Identifier> unboundTags = this.frozenTags.entrySet().stream().filter(e -> !e.getValue().isBound()).map(e -> e.getKey().location()).sorted().toList();
+      if (!unboundTags.isEmpty()) {
+         throw new IllegalStateException("Unbound tags in registry " + this.key() + ": " + unboundTags);
+      }
+
+      this.componentLookup = new DataComponentLookup<>(this.byId);
+      this.allTags = MappedRegistry.TagSet.fromMap(this.frozenTags);
+      this.refreshTagsInHolders();
+      return this;
    }
 
    @Override
    public Holder.Reference<T> createIntrusiveHolder(final T value) {
       if (this.unregisteredIntrusiveHolders == null) {
          throw new IllegalStateException("This registry can't create intrusive holders");
-      } else {
-         this.validateWrite();
-         return this.unregisteredIntrusiveHolders.computeIfAbsent(value, v -> Holder.Reference.createIntrusive(this, (T)v));
       }
+
+      this.validateWrite();
+      return this.unregisteredIntrusiveHolders.computeIfAbsent(value, v -> Holder.Reference.createIntrusive(this, (T)v));
    }
 
    @Override
@@ -342,8 +325,8 @@ public class MappedRegistry<T> implements WritableRegistry<T> {
    private Holder.Reference<T> validateAndUnwrapTagElement(final TagKey<T> id, final Holder<T> value) {
       if (!value.canSerializeIn(this)) {
          throw new IllegalStateException("Can't create named set " + id + " containing value " + value + " from outside registry " + this);
-      } else if (value instanceof Holder.Reference) {
-         return (Holder.Reference<T>)value;
+      } else if (value instanceof Holder.Reference<T> reference) {
+         return reference;
       } else {
          throw new IllegalStateException("Found direct holder " + value + " value in tag " + id);
       }
@@ -376,10 +359,6 @@ public class MappedRegistry<T> implements WritableRegistry<T> {
    public HolderGetter<T> createRegistrationLookup() {
       this.validateWrite();
       return new HolderGetter<T>() {
-         {
-            Objects.requireNonNull(MappedRegistry.this);
-         }
-
          @Override
          public Optional<Holder.Reference<T>> get(final ResourceKey<T> id) {
             return Optional.of(this.getOrThrow(id));
@@ -411,70 +390,62 @@ public class MappedRegistry<T> implements WritableRegistry<T> {
    public Registry.PendingTags<T> prepareTagReload(final TagLoader.LoadResult<T> tags) {
       if (!this.frozen) {
          throw new IllegalStateException("Invalid method used for tag loading");
-      } else {
-         Builder<TagKey<T>, HolderSet.Named<T>> pendingTagsBuilder = ImmutableMap.builder();
-         final Map<TagKey<T>, List<Holder<T>>> pendingContents = new HashMap<>();
-         tags.tags().forEach((id, contents) -> {
-            HolderSet.Named<T> tagToAdd = this.frozenTags.get(id);
-            if (tagToAdd == null) {
-               tagToAdd = this.createTag((TagKey<T>)id);
-            }
-
-            pendingTagsBuilder.put(id, tagToAdd);
-            pendingContents.put((TagKey<T>)id, List.copyOf(contents));
-         });
-         final ImmutableMap<TagKey<T>, HolderSet.Named<T>> pendingTags = pendingTagsBuilder.build();
-         final HolderLookup.RegistryLookup<T> patchedHolder = new HolderLookup.RegistryLookup.Delegate<T>() {
-            {
-               Objects.requireNonNull(MappedRegistry.this);
-            }
-
-            @Override
-            public HolderLookup.RegistryLookup<T> parent() {
-               return MappedRegistry.this;
-            }
-
-            @Override
-            public Optional<HolderSet.Named<T>> get(final TagKey<T> id) {
-               return Optional.ofNullable((HolderSet.Named<T>)pendingTags.get(id));
-            }
-
-            @Override
-            public Stream<HolderSet.Named<T>> listTags() {
-               return pendingTags.values().stream();
-            }
-         };
-         return new Registry.PendingTags<T>() {
-            {
-               Objects.requireNonNull(MappedRegistry.this);
-            }
-
-            @Override
-            public ResourceKey<? extends Registry<? extends T>> key() {
-               return MappedRegistry.this.key();
-            }
-
-            @Override
-            public int size() {
-               return pendingContents.size();
-            }
-
-            @Override
-            public HolderLookup.RegistryLookup<T> lookup() {
-               return patchedHolder;
-            }
-
-            @Override
-            public void apply() {
-               pendingTags.forEach((id, tag) -> {
-                  List<Holder<T>> values = pendingContents.getOrDefault(id, List.of());
-                  tag.bind(values);
-               });
-               MappedRegistry.this.allTags = MappedRegistry.TagSet.fromMap(pendingTags);
-               MappedRegistry.this.refreshTagsInHolders();
-            }
-         };
       }
+
+      Builder<TagKey<T>, HolderSet.Named<T>> pendingTagsBuilder = ImmutableMap.builder();
+      final Map<TagKey<T>, List<Holder<T>>> pendingContents = new HashMap<>();
+      tags.tags().forEach((id, contents) -> {
+         HolderSet.Named<T> tagToAdd = this.frozenTags.get(id);
+         if (tagToAdd == null) {
+            tagToAdd = this.createTag((TagKey<T>)id);
+         }
+
+         pendingTagsBuilder.put(id, tagToAdd);
+         pendingContents.put((TagKey<T>)id, List.copyOf(contents));
+      });
+      final ImmutableMap<TagKey<T>, HolderSet.Named<T>> pendingTags = pendingTagsBuilder.build();
+      final HolderLookup.RegistryLookup<T> patchedHolder = new HolderLookup.RegistryLookup.Delegate<T>() {
+         @Override
+         public HolderLookup.RegistryLookup<T> parent() {
+            return MappedRegistry.this;
+         }
+
+         @Override
+         public Optional<HolderSet.Named<T>> get(final TagKey<T> id) {
+            return Optional.ofNullable((HolderSet.Named<T>)pendingTags.get(id));
+         }
+
+         @Override
+         public Stream<HolderSet.Named<T>> listTags() {
+            return pendingTags.values().stream();
+         }
+      };
+      return new Registry.PendingTags<T>() {
+         @Override
+         public ResourceKey<? extends Registry<? extends T>> key() {
+            return MappedRegistry.this.key();
+         }
+
+         @Override
+         public int size() {
+            return pendingContents.size();
+         }
+
+         @Override
+         public HolderLookup.RegistryLookup<T> lookup() {
+            return patchedHolder;
+         }
+
+         @Override
+         public void apply() {
+            pendingTags.forEach((id, tag) -> {
+               List<Holder<T>> values = pendingContents.getOrDefault(id, List.of());
+               tag.bind(values);
+            });
+            MappedRegistry.this.allTags = MappedRegistry.TagSet.fromMap(pendingTags);
+            MappedRegistry.this.refreshTagsInHolders();
+         }
+      };
    }
 
    private interface TagSet<T> {

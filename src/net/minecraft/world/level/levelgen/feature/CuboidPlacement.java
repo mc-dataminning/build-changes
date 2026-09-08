@@ -14,12 +14,12 @@ import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 public record CuboidPlacement(IntProvider xzSize, IntProvider ySize, boolean includeEdges, boolean includeInterior) implements PlacementModifier {
    public static final MapCodec<CuboidPlacement> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               IntProviders.codec(1, 16).fieldOf("xz_size").forGetter(CuboidPlacement::xzSize),
-               IntProviders.codec(1, 16).fieldOf("y_size").forGetter(CuboidPlacement::ySize),
-               Codec.BOOL.optionalFieldOf("include_edges", true).forGetter(CuboidPlacement::includeEdges),
-               Codec.BOOL.optionalFieldOf("include_interior", true).forGetter(CuboidPlacement::includeInterior)
-            )
-            .apply(i, CuboidPlacement::new)
+            IntProviders.codec(1, 16).fieldOf("xz_size").forGetter(CuboidPlacement::xzSize),
+            IntProviders.codec(1, 16).fieldOf("y_size").forGetter(CuboidPlacement::ySize),
+            Codec.BOOL.optionalFieldOf("include_edges", true).forGetter(CuboidPlacement::includeEdges),
+            Codec.BOOL.optionalFieldOf("include_interior", true).forGetter(CuboidPlacement::includeInterior)
+         )
+         .apply(i, CuboidPlacement::new)
    );
 
    @Override

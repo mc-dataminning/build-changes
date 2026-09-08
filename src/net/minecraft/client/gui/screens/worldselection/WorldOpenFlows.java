@@ -121,24 +121,24 @@ public class WorldOpenFlows {
                WorldStem::new
             );
             this.minecraft.doWorldLoad(levelSourceAccess, packRepository, worldStem, Optional.empty(), true);
-         } catch (Exception var11) {
-            LOGGER.warn("Failed to load datapacks, can't proceed with server load", var11);
+         } catch (Exception e) {
+            LOGGER.warn("Failed to load datapacks, can't proceed with server load", e);
             levelSourceAccess.safeClose();
             this.minecraft.gui.setScreen(parentScreen);
          }
       }
    }
 
-   private LevelStorageSource.LevelStorageAccess createWorldAccess(final String levelId) {
+   private LevelStorageSource.@Nullable LevelStorageAccess createWorldAccess(final String levelId) {
       try {
          return this.levelSource.validateAndCreateAccess(levelId);
-      } catch (IOException var3) {
-         LOGGER.warn("Failed to read level {} data", levelId, var3);
+      } catch (IOException e) {
+         LOGGER.warn("Failed to read level {} data", levelId, e);
          SystemToast.onWorldAccessFailure(this.minecraft, levelId);
          this.minecraft.gui.setScreen(null);
          return null;
-      } catch (ContentValidationException var4) {
-         LOGGER.warn("{}", var4.getMessage());
+      } catch (ContentValidationException e) {
+         LOGGER.warn("{}", e.getMessage());
          this.minecraft.gui.setScreen(NoticeWithLinkScreen.createWorldSymlinkWarningScreen(() -> this.minecraft.gui.setScreen(null)));
          return null;
       }
@@ -186,52 +186,52 @@ public class WorldOpenFlows {
       int dataVersion = NbtUtils.getDataVersion(unfixedDataTag);
       if (DataFixers.getFileFixer().requiresFileFixing(dataVersion)) {
          throw new IllegalStateException("Can't recreate world before file fixing; shouldn't be able to get here");
-      } else {
-         Dynamic<?> levelDataTag = DataFixTypes.LEVEL.updateToCurrentVersion(DataFixers.getDataFixer(), unfixedDataTag, dataVersion);
-         WorldLoader.PackConfig packConfig = LevelStorageSource.getPackConfig(levelDataTag, packRepository, false);
-
-         record Data(LevelSettings levelSettings, WorldOptions options, Registry<LevelStem> existingDimensions) {
-         }
-
-         return this.loadWorldDataBlocking(
-            packConfig,
-            context -> {
-               Registry<LevelStem> noDatapackDimensions = new MappedRegistry<>(Registries.LEVEL_STEM, Lifecycle.stable()).freeze();
-               LevelDataAndDimensions existingData = LevelStorageSource.getLevelDataAndDimensions(
-                  levelSourceAccess, levelDataTag, context.dataConfiguration(), noDatapackDimensions, context.datapackWorldRegistries()
-               );
-               return new WorldLoader.DataLoadOutput<>(
-                  new Data(
-                     existingData.worldDataAndGenSettings().data().getLevelSettings(),
-                     existingData.worldDataAndGenSettings().genSettings().options(),
-                     existingData.dimensions().dimensions()
-                  ),
-                  context.datapackDimensions()
-               );
-            },
-            (resources, managers, registries, loadedData) -> {
-               resources.close();
-               DataResult<GameRuleMap> existingGameRules = LevelStorageSource.readExistingSavedData(
-                  levelSourceAccess, registries.compositeAccess(), GameRuleMap.TYPE
-               );
-               existingGameRules.ifError(e -> LOGGER.error("Failed to parse existing game rules: {}", e.message()));
-               InitialWorldCreationOptions initialWorldCreationOptions = new InitialWorldCreationOptions(
-                  WorldCreationUiState.SelectedGameMode.SURVIVAL, existingGameRules.result().orElse(GameRuleMap.of()), null
-               );
-               return Pair.of(
-                  loadedData.levelSettings,
-                  new WorldCreationContext(
-                     loadedData.options,
-                     new WorldDimensions(loadedData.existingDimensions),
-                     registries,
-                     managers,
-                     loadedData.levelSettings.dataConfiguration(),
-                     initialWorldCreationOptions
-                  )
-               );
-            }
-         );
       }
+
+      Dynamic<?> levelDataTag = DataFixTypes.LEVEL.updateToCurrentVersion(DataFixers.getDataFixer(), unfixedDataTag, dataVersion);
+      WorldLoader.PackConfig packConfig = LevelStorageSource.getPackConfig(levelDataTag, packRepository, false);
+
+      record Data(LevelSettings levelSettings, WorldOptions options, Registry<LevelStem> existingDimensions) {
+      }
+
+      return this.loadWorldDataBlocking(
+         packConfig,
+         context -> {
+            Registry<LevelStem> noDatapackDimensions = new MappedRegistry<>(Registries.LEVEL_STEM, Lifecycle.stable()).freeze();
+            LevelDataAndDimensions existingData = LevelStorageSource.getLevelDataAndDimensions(
+               levelSourceAccess, levelDataTag, context.dataConfiguration(), noDatapackDimensions, context.datapackWorldRegistries()
+            );
+            return new WorldLoader.DataLoadOutput<>(
+               new Data(
+                  existingData.worldDataAndGenSettings().data().getLevelSettings(),
+                  existingData.worldDataAndGenSettings().genSettings().options(),
+                  existingData.dimensions().dimensions()
+               ),
+               context.datapackDimensions()
+            );
+         },
+         (resources, managers, registries, loadedData) -> {
+            resources.close();
+            DataResult<GameRuleMap> existingGameRules = LevelStorageSource.readExistingSavedData(
+               levelSourceAccess, registries.compositeAccess(), GameRuleMap.TYPE
+            );
+            existingGameRules.ifError(e -> LOGGER.error("Failed to parse existing game rules: {}", e.message()));
+            InitialWorldCreationOptions initialWorldCreationOptions = new InitialWorldCreationOptions(
+               WorldCreationUiState.SelectedGameMode.SURVIVAL, existingGameRules.result().orElse(GameRuleMap.of()), null
+            );
+            return Pair.of(
+               loadedData.levelSettings,
+               new WorldCreationContext(
+                  loadedData.options,
+                  new WorldDimensions(loadedData.existingDimensions),
+                  registries,
+                  managers,
+                  loadedData.levelSettings.dataConfiguration(),
+                  initialWorldCreationOptions
+               )
+            );
+         }
+      );
    }
 
    private <D, R> R loadWorldDataBlocking(
@@ -265,7 +265,7 @@ public class WorldOpenFlows {
             new BackupConfirmScreen(
                cancelCallback,
                (backup, eraseCache) -> EditWorldScreen.conditionallyMakeBackupAndShowToast(backup, levelAccess)
-                     .thenAcceptAsync(var1x -> proceedCallback.run(), this.minecraft),
+                  .thenAcceptAsync(var1x -> proceedCallback.run(), this.minecraft),
                backupQuestion,
                backupWarning,
                false
@@ -320,7 +320,7 @@ public class WorldOpenFlows {
       try {
          levelDataTag = worldAccess.getUnfixedDataTag(false);
          summary = worldAccess.fixAndGetSummaryFromTag(levelDataTag);
-      } catch (NbtException | ReportedNbtException | IOException var10) {
+      } catch (IOException | NbtException | ReportedNbtException e) {
          this.minecraft.gui.setScreen(new RecoverWorldDataScreen(this.minecraft, success -> {
             if (success) {
                this.openWorldLoadLevelData(worldAccess, onCancel);
@@ -330,12 +330,12 @@ public class WorldOpenFlows {
             }
          }, worldAccess));
          return;
-      } catch (OutOfMemoryError var11) {
+      } catch (OutOfMemoryError e) {
          MemoryReserve.release();
          String detailedMessage = "Ran out of memory trying to read level data of world folder \"" + worldAccess.getLevelId() + "\"";
          LOGGER.error(LogUtils.FATAL_MARKER, "{}", detailedMessage);
          OutOfMemoryError detailedException = new OutOfMemoryError("Ran out of memory reading level data");
-         detailedException.initCause(var11);
+         detailedException.initCause(e);
          CrashReport crashReport = CrashReport.forThrowable(detailedException, detailedMessage);
          CrashReportCategory worldDetails = crashReport.addCategory("World details");
          worldDetails.setDetail("World folder", worldAccess.getLevelId());
@@ -421,33 +421,32 @@ public class WorldOpenFlows {
       });
    }
 
-   @Nullable
-   private Dynamic<?> tryFileFixAndReportErrors(
+   private @Nullable Dynamic<?> tryFileFixAndReportErrors(
       final LevelStorageSource.LevelStorageAccess worldAccess, final Dynamic<?> levelDataTag, final UpgradeProgress upgradeProgress, final Runnable cleanup
    ) {
       try {
          return DataFixers.getFileFixer().fix(worldAccess, levelDataTag, upgradeProgress);
-      } catch (CanceledFileFixException var8) {
+      } catch (CanceledFileFixException e) {
          this.minecraft
             .execute(
                () -> this.minecraft
-                     .setScreenAndShow(
-                        new AlertScreen(
-                           cleanup,
-                           Component.translatable("upgradeWorld.canceled.title"),
-                           Component.translatable("upgradeWorld.canceled.message"),
-                           CommonComponents.GUI_OK,
-                           true
-                        )
+                  .setScreenAndShow(
+                     new AlertScreen(
+                        cleanup,
+                        Component.translatable("upgradeWorld.canceled.title"),
+                        Component.translatable("upgradeWorld.canceled.message"),
+                        CommonComponents.GUI_OK,
+                        true
                      )
+                  )
             );
          return null;
-      } catch (AbortedFileFixException var9) {
+      } catch (AbortedFileFixException e) {
          this.minecraft
             .execute(
                () -> {
-                  LOGGER.error("File fixing was aborted", var9);
-                  if (var9.getCause() instanceof CowFSSymlinkException) {
+                  LOGGER.error("File fixing was aborted", e);
+                  if (e.getCause() instanceof CowFSSymlinkException) {
                      this.minecraft
                         .setScreenAndShow(
                            new AlertScreen(
@@ -456,7 +455,7 @@ public class WorldOpenFlows {
                         );
                   } else {
                      Component message;
-                     if (var9.getCause() instanceof FileAlreadyExistsException) {
+                     if (e.getCause() instanceof FileAlreadyExistsException) {
                         message = Component.translatable("upgradeWorld.aborted.file_already_exists");
                      } else {
                         message = Component.translatable("upgradeWorld.aborted.message");
@@ -467,25 +466,25 @@ public class WorldOpenFlows {
                }
             );
          return null;
-      } catch (FailedCleanupFileFixException var10) {
+      } catch (FailedCleanupFileFixException e) {
          this.minecraft
             .execute(
                () -> this.minecraft
-                     .setScreenAndShow(
-                        new AlertScreen(
-                           cleanup,
-                           Component.translatable("upgradeWorld.failed_cleanup.title"),
-                           Component.translatable("upgradeWorld.failed_cleanup.message", Component.literal(var10.newWorldFolderName()).withColor(-8355712))
-                        )
+                  .setScreenAndShow(
+                     new AlertScreen(
+                        cleanup,
+                        Component.translatable("upgradeWorld.failed_cleanup.title"),
+                        Component.translatable("upgradeWorld.failed_cleanup.message", Component.literal(e.newWorldFolderName()).withColor(-8355712))
                      )
+                  )
             );
          return null;
-      } catch (FileFixException var11) {
-         this.minecraft.delayCrash(var11.makeReportedException().getReport());
+      } catch (FileFixException e) {
+         this.minecraft.delayCrash(e.makeReportedException().getReport());
          return null;
-      } catch (Exception var12) {
-         LOGGER.error("Failed to upgrade the file structure of the world.", var12);
-         CrashReport report = CrashReport.forThrowable(var12, "Failed to update file structure");
+      } catch (Exception e) {
+         LOGGER.error("Failed to upgrade the file structure of the world.", e);
+         CrashReport report = CrashReport.forThrowable(e, "Failed to update file structure");
          this.minecraft.delayCrash(report);
          return null;
       }
@@ -504,8 +503,8 @@ public class WorldOpenFlows {
          for (LevelStem levelStem : worldStem.registries().compositeAccess().lookupOrThrow(Registries.LEVEL_STEM)) {
             levelStem.generator().validate();
          }
-      } catch (Exception var9) {
-         LOGGER.warn("Failed to load level data or datapacks, can't proceed with server load", var9);
+      } catch (Exception e) {
+         LOGGER.warn("Failed to load level data or datapacks, can't proceed with server load", e);
          if (!safeMode) {
             this.minecraft.gui.setScreen(new DatapackLoadFailureScreen(() -> {
                worldAccess.safeClose();

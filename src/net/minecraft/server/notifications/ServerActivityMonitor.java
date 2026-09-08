@@ -13,7 +13,7 @@ public class ServerActivityMonitor {
 
    public ServerActivityMonitor(final NotificationManager notificationManager, final int secondsBetweenNotifications) {
       this.notificationManager = notificationManager;
-      this.minimumMillisBetweenNotifications = TimeUnit.SECONDS.toMillis((long)secondsBetweenNotifications);
+      this.minimumMillisBetweenNotifications = TimeUnit.SECONDS.toMillis(secondsBetweenNotifications);
    }
 
    public void tick() {

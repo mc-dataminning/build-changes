@@ -12,21 +12,19 @@ import org.slf4j.Logger;
 public record InviteCode(String code, @Nullable Instant expirationDate, boolean enabled) {
    private static final Logger LOGGER = LogUtils.getLogger();
 
-   @Nullable
-   public static InviteCode parse(final String json) {
+   public static @Nullable InviteCode parse(final String json) {
       try {
          JsonObject object = LenientJsonParser.parse(json).getAsJsonObject();
          JsonElement result = object.get("result");
          JsonObject payload = result != null && result.isJsonObject() ? result.getAsJsonObject() : object;
          return parse(payload);
-      } catch (Exception var4) {
-         LOGGER.error("Could not parse InviteCode", var4);
+      } catch (Exception e) {
+         LOGGER.error("Could not parse InviteCode", e);
          return null;
       }
    }
 
-   @Nullable
-   public static InviteCode parse(final JsonObject json) {
+   public static @Nullable InviteCode parse(final JsonObject json) {
       try {
          String code = JsonUtils.getStringOr("code", json, "");
          if (code.isEmpty()) {
@@ -35,8 +33,8 @@ public record InviteCode(String code, @Nullable Instant expirationDate, boolean 
          } else {
             return new InviteCode(code, JsonUtils.getEpochMillisOr("expirationDate", json, null), JsonUtils.getBooleanOr("enabled", json, false));
          }
-      } catch (Exception var2) {
-         LOGGER.error("Could not parse InviteCode", var2);
+      } catch (Exception e) {
+         LOGGER.error("Could not parse InviteCode", e);
          return null;
       }
    }

@@ -12,7 +12,7 @@ import net.minecraft.server.dialog.action.StaticAction;
 import org.jspecify.annotations.Nullable;
 
 public class ServerLinksDialogScreen extends ButtonListDialogScreen<ServerLinksDialog> {
-   public ServerLinksDialogScreen(@Nullable final Screen previousScreen, final ServerLinksDialog dialog, final DialogConnectionAccess connectionAccess) {
+   public ServerLinksDialogScreen(final @Nullable Screen previousScreen, final ServerLinksDialog dialog, final DialogConnectionAccess connectionAccess) {
       super(previousScreen, dialog, connectionAccess);
    }
 

@@ -29,10 +29,10 @@ public class MipmapGenerator {
             float texelCoverage = 0.0F;
 
             for (int subsample_y = 0; subsample_y < 4; subsample_y++) {
-               float fy = ((float)subsample_y + 0.5F) / 4.0F;
+               float fy = (subsample_y + 0.5F) / 4.0F;
 
                for (int subsample_x = 0; subsample_x < 4; subsample_x++) {
-                  float fx = ((float)subsample_x + 0.5F) / 4.0F;
+                  float fx = (subsample_x + 0.5F) / 4.0F;
                   float alpha = alpha00 * (1.0F - fx) * (1.0F - fy) + alpha10 * fx * (1.0F - fy) + alpha01 * (1.0F - fx) * fy + alpha11 * fx * fy;
                   if (alpha > alphaRef) {
                      texelCoverage++;
@@ -44,7 +44,7 @@ public class MipmapGenerator {
          }
       }
 
-      return coverage / (float)((width - 1) * (height - 1));
+      return coverage / ((width - 1) * (height - 1));
    }
 
    private static void scaleAlphaToCoverage(final NativeImage image, final float desiredCoverage, final float alphaRef, final float alphaCutoffBias) {
@@ -110,51 +110,51 @@ public class MipmapGenerator {
 
       if (newMipLevel + 1 <= currentMips.length) {
          return currentMips;
-      } else {
-         NativeImage[] result = new NativeImage[newMipLevel + 1];
-         result[0] = currentMips[0];
-         boolean isCutoutMip = mipmapStrategy == MipmapStrategy.CUTOUT
-            || mipmapStrategy == MipmapStrategy.STRICT_CUTOUT
-            || mipmapStrategy == MipmapStrategy.DARK_CUTOUT;
-         float cutoutRef = mipmapStrategy == MipmapStrategy.STRICT_CUTOUT ? 0.3F : 0.5F;
-         float originalCoverage = isCutoutMip ? alphaTestCoverage(currentMips[0], cutoutRef, 1.0F) : 0.0F;
+      }
 
-         for (int level = 1; level <= newMipLevel; level++) {
-            if (level < currentMips.length) {
-               result[level] = currentMips[level];
-            } else {
-               NativeImage lastData = result[level - 1];
-               NativeImage data = new NativeImage(lastData.getWidth() >> 1, lastData.getHeight() >> 1, false);
-               int width = data.getWidth();
-               int height = data.getHeight();
+      NativeImage[] result = new NativeImage[newMipLevel + 1];
+      result[0] = currentMips[0];
+      boolean isCutoutMip = mipmapStrategy == MipmapStrategy.CUTOUT
+         || mipmapStrategy == MipmapStrategy.STRICT_CUTOUT
+         || mipmapStrategy == MipmapStrategy.DARK_CUTOUT;
+      float cutoutRef = mipmapStrategy == MipmapStrategy.STRICT_CUTOUT ? 0.3F : 0.5F;
+      float originalCoverage = isCutoutMip ? alphaTestCoverage(currentMips[0], cutoutRef, 1.0F) : 0.0F;
 
-               for (int x = 0; x < width; x++) {
-                  for (int y = 0; y < height; y++) {
-                     int color1 = lastData.getPixel(x * 2 + 0, y * 2 + 0);
-                     int color2 = lastData.getPixel(x * 2 + 1, y * 2 + 0);
-                     int color3 = lastData.getPixel(x * 2 + 0, y * 2 + 1);
-                     int color4 = lastData.getPixel(x * 2 + 1, y * 2 + 1);
-                     int color;
-                     if (mipmapStrategy == MipmapStrategy.DARK_CUTOUT) {
-                        color = darkenedAlphaBlend(color1, color2, color3, color4);
-                     } else {
-                        color = ARGB.meanLinear(color1, color2, color3, color4);
-                     }
+      for (int level = 1; level <= newMipLevel; level++) {
+         if (level < currentMips.length) {
+            result[level] = currentMips[level];
+         } else {
+            NativeImage lastData = result[level - 1];
+            NativeImage data = new NativeImage(lastData.getWidth() >> 1, lastData.getHeight() >> 1, false);
+            int width = data.getWidth();
+            int height = data.getHeight();
 
-                     data.setPixel(x, y, color);
+            for (int x = 0; x < width; x++) {
+               for (int y = 0; y < height; y++) {
+                  int color1 = lastData.getPixel(x * 2 + 0, y * 2 + 0);
+                  int color2 = lastData.getPixel(x * 2 + 1, y * 2 + 0);
+                  int color3 = lastData.getPixel(x * 2 + 0, y * 2 + 1);
+                  int color4 = lastData.getPixel(x * 2 + 1, y * 2 + 1);
+                  int color;
+                  if (mipmapStrategy == MipmapStrategy.DARK_CUTOUT) {
+                     color = darkenedAlphaBlend(color1, color2, color3, color4);
+                  } else {
+                     color = ARGB.meanLinear(color1, color2, color3, color4);
                   }
+
+                  data.setPixel(x, y, color);
                }
-
-               result[level] = data;
             }
 
-            if (isCutoutMip) {
-               scaleAlphaToCoverage(result[level], originalCoverage, cutoutRef, alphaCutoffBias);
-            }
+            result[level] = data;
          }
 
-         return result;
+         if (isCutoutMip) {
+            scaleAlphaToCoverage(result[level], originalCoverage, cutoutRef, alphaCutoffBias);
+         }
       }
+
+      return result;
    }
 
    private static int darkenedAlphaBlend(final int color1, final int color2, final int color3, final int color4) {

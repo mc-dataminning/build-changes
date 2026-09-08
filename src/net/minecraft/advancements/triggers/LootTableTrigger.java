@@ -20,14 +20,13 @@ public class LootTableTrigger extends SimpleCriterionTrigger<LootTableTrigger.Tr
       this.trigger(player, t -> t.matches(lootTable));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, HolderSet<LootTable> lootTable)
-      implements SimpleCriterionTrigger.SimpleInstance {
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, HolderSet<LootTable> lootTable) implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<LootTableTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(LootTableTrigger.TriggerInstance::player),
-                  LootTable.LIST_CODEC.fieldOf("loot_tables").forGetter(LootTableTrigger.TriggerInstance::lootTable)
-               )
-               .apply(i, LootTableTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(LootTableTrigger.TriggerInstance::player),
+               LootTable.LIST_CODEC.fieldOf("loot_tables").forGetter(LootTableTrigger.TriggerInstance::lootTable)
+            )
+            .apply(i, LootTableTrigger.TriggerInstance::new)
       );
 
       public static Criterion<LootTableTrigger.TriggerInstance> lootTableUsed(final Holder<LootTable> lootTable) {

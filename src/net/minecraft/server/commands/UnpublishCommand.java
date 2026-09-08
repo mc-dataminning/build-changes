@@ -23,9 +23,9 @@ public class UnpublishCommand {
    private static int unpublish(final CommandSourceStack source) throws CommandSyntaxException {
       if (!source.getServer().unpublishServer()) {
          throw ERROR_NOT_PUBLISHED.create();
-      } else {
-         source.sendSuccess(() -> Component.translatable("commands.unpublish.success"), true);
-         return 1;
       }
+
+      source.sendSuccess(() -> Component.translatable("commands.unpublish.success"), true);
+      return 1;
    }
 }

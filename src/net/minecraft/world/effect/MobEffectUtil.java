@@ -16,10 +16,10 @@ public final class MobEffectUtil {
    public static Component formatDuration(final MobEffectInstance instance, final float scale, final float tickrate) {
       if (instance.isInfiniteDuration()) {
          return Component.translatable("effect.duration.infinite");
-      } else {
-         int duration = Mth.floor((float)instance.getDuration() * scale);
-         return Component.literal(StringUtil.formatTickDuration(duration, tickrate));
       }
+
+      int duration = Mth.floor(instance.getDuration() * scale);
+      return Component.literal(StringUtil.formatTickDuration(duration, tickrate));
    }
 
    public static boolean hasDigSpeed(final LivingEntity mob) {
@@ -50,7 +50,7 @@ public final class MobEffectUtil {
 
    public static List<ServerPlayer> addEffectToPlayersAround(
       final ServerLevel level,
-      @Nullable final Entity source,
+      final @Nullable Entity source,
       final Vec3 position,
       final double radius,
       final MobEffectInstance effectInstance,
@@ -59,13 +59,13 @@ public final class MobEffectUtil {
       Holder<MobEffect> effect = effectInstance.getEffect();
       List<ServerPlayer> players = level.getPlayers(
          input -> input.gameMode.isSurvival()
-               && (source == null || !source.isAlliedTo(input))
-               && position.closerThan(input.position(), radius)
-               && (
-                  !input.hasEffect(effect)
-                     || input.getEffect(effect).getAmplifier() < effectInstance.getAmplifier()
-                     || input.getEffect(effect).endsWithin(displayEffectLimit - 1)
-               )
+            && (source == null || !source.isAlliedTo(input))
+            && position.closerThan(input.position(), radius)
+            && (
+               !input.hasEffect(effect)
+                  || input.getEffect(effect).getAmplifier() < effectInstance.getAmplifier()
+                  || input.getEffect(effect).endsWithin(displayEffectLimit - 1)
+            )
       );
       players.forEach(player -> player.addEffect(new MobEffectInstance(effectInstance), source));
       return players;

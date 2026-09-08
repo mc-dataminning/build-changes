@@ -23,9 +23,8 @@ public class ConditionalBlockModel implements BlockModel {
       (this.property.get(blockState) ? this.onTrue : this.onFalse).update(output, blockState, displayContext, seed);
    }
 
-   public static record Unbaked(
-      Optional<Transformation> transformation, ConditionalBlockModelProperty property, BlockModel.Unbaked onTrue, BlockModel.Unbaked onFalse
-   ) implements BlockModel.Unbaked {
+   public record Unbaked(Optional<Transformation> transformation, ConditionalBlockModelProperty property, BlockModel.Unbaked onTrue, BlockModel.Unbaked onFalse)
+      implements BlockModel.Unbaked {
       @Override
       public BlockModel bake(final BlockModel.BakingContext context, final Matrix4fc transformation) {
          Matrix4fc childTransform = Transformation.compose(transformation, this.transformation);

@@ -35,7 +35,7 @@ public interface CaveVines {
             );
             float pitch = Mth.randomBetween(serverLevel.getRandom(), 0.8F, 1.2F);
             serverLevel.playSound(null, pos, SoundEvents.CAVE_VINES_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, pitch);
-            BlockState newState = state.setValue(BERRIES, Boolean.valueOf(false));
+            BlockState newState = state.setValue(BERRIES, false);
             serverLevel.setBlock(pos, newState, 2);
             serverLevel.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(sourceEntity, newState));
          }

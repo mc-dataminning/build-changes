@@ -63,7 +63,7 @@ public enum Direction implements Directional, StringRepresentable {
       .sorted(Comparator.comparingInt(d -> d.data2d))
       .toArray(Direction[]::new);
 
-   private Direction(
+   Direction(
       final int data3d,
       final int oppositeIndex,
       final int data2d,
@@ -80,16 +80,16 @@ public enum Direction implements Directional, StringRepresentable {
       this.axisDirection = axisDirection;
       this.normal = normal;
       this.normalVec3 = Vec3.atLowerCornerOf(normal);
-      this.normalVec3f = new Vector3f((float)normal.getX(), (float)normal.getY(), (float)normal.getZ());
+      this.normalVec3f = new Vector3f(normal.getX(), normal.getY(), normal.getZ());
    }
 
    public static Direction[] orderedByNearest(final Entity entity) {
       float pitch = entity.getViewXRot(1.0F) * (float) (Math.PI / 180.0);
       float yaw = -entity.getViewYRot(1.0F) * (float) (Math.PI / 180.0);
-      float pitchSin = Mth.sin((double)pitch);
-      float pitchCos = Mth.cos((double)pitch);
-      float yawSin = Mth.sin((double)yaw);
-      float yawCos = Mth.cos((double)yaw);
+      float pitchSin = Mth.sin(pitch);
+      float pitchCos = Mth.cos(pitch);
+      float yawSin = Mth.sin(yaw);
+      float yawCos = Mth.cos(yaw);
       boolean xPos = yawSin > 0.0F;
       boolean yPos = pitchSin < 0.0F;
       boolean zPos = yawCos > 0.0F;
@@ -284,8 +284,7 @@ public enum Direction implements Directional, StringRepresentable {
       return this.axis;
    }
 
-   @Nullable
-   public static Direction byName(final String name) {
+   public static @Nullable Direction byName(final String name) {
       return CODEC.byName(name);
    }
 
@@ -310,7 +309,7 @@ public enum Direction implements Directional, StringRepresentable {
    }
 
    public float toYRot() {
-      return (float)((this.data2d & 3) * 90);
+      return (this.data2d & 3) * 90;
    }
 
    public static Direction getRandom(final RandomSource random) {
@@ -326,7 +325,7 @@ public enum Direction implements Directional, StringRepresentable {
       float highestDot = Float.MIN_VALUE;
 
       for (Direction direction : VALUES) {
-         float dot = dx * (float)direction.normal.getX() + dy * (float)direction.normal.getY() + dz * (float)direction.normal.getZ();
+         float dot = dx * direction.normal.getX() + dy * direction.normal.getY() + dz * direction.normal.getZ();
          if (dot > highestDot) {
             highestDot = dot;
             result = direction;
@@ -341,8 +340,7 @@ public enum Direction implements Directional, StringRepresentable {
    }
 
    @Contract("_,_,_,!null->!null;_,_,_,_->_")
-   @Nullable
-   public static Direction getNearest(final int x, final int y, final int z, @Nullable final Direction orElse) {
+   public static @Nullable Direction getNearest(final int x, final int y, final int z, final @Nullable Direction orElse) {
       int absX = Math.abs(x);
       int absY = Math.abs(y);
       int absZ = Math.abs(z);
@@ -358,8 +356,7 @@ public enum Direction implements Directional, StringRepresentable {
    }
 
    @Contract("_,!null->!null;_,_->_")
-   @Nullable
-   public static Direction getNearest(final Vec3i vec, @Nullable final Direction orElse) {
+   public static @Nullable Direction getNearest(final Vec3i vec, final @Nullable Direction orElse) {
       return getNearest(vec.getX(), vec.getY(), vec.getZ(), orElse);
    }
 
@@ -405,12 +402,12 @@ public enum Direction implements Directional, StringRepresentable {
 
    public boolean isFacingAngle(final float yAngle) {
       float radians = yAngle * (float) (Math.PI / 180.0);
-      float dx = -Mth.sin((double)radians);
-      float dz = Mth.cos((double)radians);
-      return (float)this.normal.getX() * dx + (float)this.normal.getZ() * dz > 0.0F;
+      float dx = -Mth.sin(radians);
+      float dz = Mth.cos(radians);
+      return this.normal.getX() * dx + this.normal.getZ() * dz > 0.0F;
    }
 
-   public static enum Axis implements Predicate<Direction>, StringRepresentable {
+   public enum Axis implements Predicate<Direction>, StringRepresentable {
       X("x"),
       Y("y"),
       Z("z");
@@ -419,12 +416,11 @@ public enum Direction implements Directional, StringRepresentable {
       public static final StringRepresentable.EnumCodec<Direction.Axis> CODEC = StringRepresentable.fromEnum(Direction.Axis::values);
       private final String name;
 
-      private Axis(final String name) {
+      Axis(final String name) {
          this.name = name;
       }
 
-      @Nullable
-      public static Direction.Axis byName(final String name) {
+      public static Direction.@Nullable Axis byName(final String name) {
          return CODEC.byName(name);
       }
 
@@ -469,7 +465,7 @@ public enum Direction implements Directional, StringRepresentable {
          return Util.getRandom(VALUES, random);
       }
 
-      public boolean test(@Nullable final Direction input) {
+      public boolean test(final @Nullable Direction input) {
          return input != null && input.getAxis() == this;
       }
 
@@ -510,14 +506,14 @@ public enum Direction implements Directional, StringRepresentable {
       }
    }
 
-   public static enum AxisDirection {
+   public enum AxisDirection {
       POSITIVE(1, "Towards positive"),
       NEGATIVE(-1, "Towards negative");
 
       private final int step;
       private final String name;
 
-      private AxisDirection(final int step, final String name) {
+      AxisDirection(final int step, final String name) {
          this.step = step;
          this.name = name;
       }
@@ -540,14 +536,14 @@ public enum Direction implements Directional, StringRepresentable {
       }
    }
 
-   public static enum Plane implements Predicate<Direction>, Iterable<Direction> {
+   public enum Plane implements Predicate<Direction>, Iterable<Direction> {
       HORIZONTAL(new Direction[]{Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST}, new Direction.Axis[]{Direction.Axis.X, Direction.Axis.Z}),
       VERTICAL(new Direction[]{Direction.UP, Direction.DOWN}, new Direction.Axis[]{Direction.Axis.Y});
 
       private final Direction[] faces;
       private final Direction.Axis[] axis;
 
-      private Plane(final Direction[] faces, final Direction.Axis[] axis) {
+      Plane(final Direction[] faces, final Direction.Axis[] axis) {
          this.faces = faces;
          this.axis = axis;
       }
@@ -560,7 +556,7 @@ public enum Direction implements Directional, StringRepresentable {
          return Util.getRandom(this.axis, random);
       }
 
-      public boolean test(@Nullable final Direction input) {
+      public boolean test(final @Nullable Direction input) {
          return input != null && input.getAxis().getPlane() == this;
       }
 

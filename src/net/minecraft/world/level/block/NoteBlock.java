@@ -41,20 +41,18 @@ public class NoteBlock extends Block {
 
    public NoteBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(INSTRUMENT, NoteBlockInstrument.HARP).setValue(NOTE, Integer.valueOf(0)).setValue(POWERED, Boolean.valueOf(false))
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(INSTRUMENT, NoteBlockInstrument.HARP).setValue(NOTE, 0).setValue(POWERED, false));
    }
 
    private BlockState setInstrument(final LevelReader level, final BlockPos position, final BlockState state) {
       NoteBlockInstrument instrumentAbove = level.getBlockState(position.above()).instrument();
       if (instrumentAbove.worksAboveNoteBlock()) {
          return state.setValue(INSTRUMENT, instrumentAbove);
-      } else {
-         NoteBlockInstrument instrumentBelow = level.getBlockState(position.below()).instrument();
-         NoteBlockInstrument newBelow = instrumentBelow.worksAboveNoteBlock() ? NoteBlockInstrument.HARP : instrumentBelow;
-         return state.setValue(INSTRUMENT, newBelow);
       }
+
+      NoteBlockInstrument instrumentBelow = level.getBlockState(position.below()).instrument();
+      NoteBlockInstrument newBelow = instrumentBelow.worksAboveNoteBlock() ? NoteBlockInstrument.HARP : instrumentBelow;
+      return state.setValue(INSTRUMENT, newBelow);
    }
 
    @Override
@@ -81,7 +79,7 @@ public class NoteBlock extends Block {
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       boolean signal = level.hasNeighborSignal(pos);
       if (signal != state.getValue(POWERED)) {
@@ -89,11 +87,11 @@ public class NoteBlock extends Block {
             this.playNote(null, state, level, pos);
          }
 
-         level.setBlockAndUpdate(pos, state.setValue(POWERED, Boolean.valueOf(signal)));
+         level.setBlockAndUpdate(pos, state.setValue(POWERED, signal));
       }
    }
 
-   private void playNote(@Nullable final Entity source, final BlockState state, final Level level, final BlockPos pos) {
+   private void playNote(final @Nullable Entity source, final BlockState state, final Level level, final BlockPos pos) {
       if (state.getValue(INSTRUMENT).worksAboveNoteBlock() || level.getBlockState(pos.above()).isAir()) {
          level.blockEvent(pos, this, 0, 0);
          level.gameEvent(source, GameEvent.NOTE_BLOCK_PLAY, pos);
@@ -110,9 +108,9 @@ public class NoteBlock extends Block {
       final InteractionHand hand,
       final BlockHitResult hitResult
    ) {
-      return (InteractionResult)(itemStack.is(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS) && hitResult.getDirection() == Direction.UP
+      return itemStack.is(ItemTags.NOTE_BLOCK_TOP_INSTRUMENTS) && hitResult.getDirection() == Direction.UP
          ? InteractionResult.PASS
-         : super.useItemOn(itemStack, state, level, pos, player, hand, hitResult));
+         : super.useItemOn(itemStack, state, level, pos, player, hand, hitResult);
    }
 
    @Override
@@ -136,7 +134,7 @@ public class NoteBlock extends Block {
    }
 
    public static float getPitchFromNote(final int twoOctaveRangeNote) {
-      return (float)Math.pow(2.0, (double)(twoOctaveRangeNote - 12) / 12.0);
+      return (float)Math.pow(2.0, (twoOctaveRangeNote - 12) / 12.0);
    }
 
    @Override
@@ -146,7 +144,7 @@ public class NoteBlock extends Block {
       if (instrument.isTunable()) {
          int note = state.getValue(NOTE);
          pitch = getPitchFromNote(note);
-         level.addParticle(ParticleTypes.NOTE, (double)pos.getX() + 0.5, (double)pos.getY() + 1.2, (double)pos.getZ() + 0.5, (double)note / 24.0, 0.0, 0.0);
+         level.addParticle(ParticleTypes.NOTE, pos.getX() + 0.5, pos.getY() + 1.2, pos.getZ() + 0.5, note / 24.0, 0.0, 0.0);
       } else {
          pitch = 1.0F;
       }
@@ -164,21 +162,12 @@ public class NoteBlock extends Block {
       }
 
       level.playSeededSound(
-         null,
-         (double)pos.getX() + 0.5,
-         (double)pos.getY() + 0.5,
-         (double)pos.getZ() + 0.5,
-         soundEvent,
-         SoundSource.RECORDS,
-         3.0F,
-         pitch,
-         level.getRandom().nextLong()
+         null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, soundEvent, SoundSource.RECORDS, 3.0F, pitch, level.getRandom().nextLong()
       );
       return true;
    }
 
-   @Nullable
-   private Identifier getCustomSoundId(final Level level, final BlockPos pos) {
+   private @Nullable Identifier getCustomSoundId(final Level level, final BlockPos pos) {
       return level.getBlockEntity(pos.above()) instanceof SkullBlockEntity head ? head.getNoteBlockSound() : null;
    }
 

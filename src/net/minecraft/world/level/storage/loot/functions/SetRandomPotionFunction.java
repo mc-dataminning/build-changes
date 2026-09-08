@@ -17,8 +17,8 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 public class SetRandomPotionFunction extends LootItemConditionalFunction {
    public static final MapCodec<SetRandomPotionFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
-            .and(RegistryCodecs.holderSet(Registries.POTION).optionalFieldOf("options").forGetter(f -> f.options))
-            .apply(i, SetRandomPotionFunction::new)
+         .and(RegistryCodecs.holderSet(Registries.POTION).optionalFieldOf("options").forGetter(f -> f.options))
+         .apply(i, SetRandomPotionFunction::new)
    );
    private final Optional<HolderSet<Potion>> options;
 

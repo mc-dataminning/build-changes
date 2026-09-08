@@ -9,10 +9,8 @@ import net.minecraft.util.RandomSource;
 import org.jspecify.annotations.Nullable;
 
 public abstract class AbstractSoundInstance implements SoundInstance {
-   @Nullable
-   protected Sound sound;
-   @Nullable
-   protected WeighedSoundEvents soundEvent;
+   protected @Nullable Sound sound;
+   protected @Nullable WeighedSoundEvents soundEvent;
    protected final SoundSource source;
    protected final Identifier identifier;
    protected float volume = 1.0F;
@@ -41,33 +39,30 @@ public abstract class AbstractSoundInstance implements SoundInstance {
       return this.identifier;
    }
 
-   @Nullable
    @Override
-   public WeighedSoundEvents getOrResolve(final SoundManager soundManager) {
+   public @Nullable WeighedSoundEvents getOrResolve(final SoundManager soundManager) {
       if (this.identifier.equals(SoundManager.INTENTIONALLY_EMPTY_SOUND_LOCATION)) {
          this.sound = SoundManager.INTENTIONALLY_EMPTY_SOUND;
          return SoundManager.INTENTIONALLY_EMPTY_SOUND_EVENT;
-      } else {
-         this.soundEvent = soundManager.getSoundEvent(this.identifier);
-         if (this.soundEvent == null) {
-            this.sound = SoundManager.EMPTY_SOUND;
-         } else {
-            this.sound = this.soundEvent.getSound(this.random);
-         }
-
-         return this.soundEvent;
       }
+
+      this.soundEvent = soundManager.getSoundEvent(this.identifier);
+      if (this.soundEvent == null) {
+         this.sound = SoundManager.EMPTY_SOUND;
+      } else {
+         this.sound = this.soundEvent.getSound(this.random);
+      }
+
+      return this.soundEvent;
    }
 
-   @Nullable
    @Override
-   public Sound getSound() {
+   public @Nullable Sound getSound() {
       return this.sound;
    }
 
-   @Nullable
    @Override
-   public WeighedSoundEvents getSoundEvent() {
+   public @Nullable WeighedSoundEvents getSoundEvent() {
       return this.soundEvent;
    }
 

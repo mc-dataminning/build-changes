@@ -15,18 +15,17 @@ import org.jspecify.annotations.Nullable;
 public class MoveToSkySeeingSpot {
    public static OneShot<LivingEntity> create(final float speedModifier) {
       return BehaviorBuilder.create(i -> i.group(i.absent(MemoryModuleType.WALK_TARGET)).apply(i, walkTarget -> (level, body, timestamp) -> {
-               if (level.canSeeSky(body.blockPosition())) {
-                  return false;
-               } else {
-                  Optional<Vec3> landPos = Optional.ofNullable(getOutdoorPosition(level, body));
-                  landPos.ifPresent(pos -> walkTarget.set(new WalkTarget(pos, speedModifier, 0)));
-                  return true;
-               }
-            }));
+         if (level.canSeeSky(body.blockPosition())) {
+            return false;
+         }
+
+         Optional<Vec3> landPos = Optional.ofNullable(getOutdoorPosition(level, body));
+         landPos.ifPresent(pos -> walkTarget.set(new WalkTarget(pos, speedModifier, 0)));
+         return true;
+      }));
    }
 
-   @Nullable
-   private static Vec3 getOutdoorPosition(final ServerLevel level, final LivingEntity body) {
+   private static @Nullable Vec3 getOutdoorPosition(final ServerLevel level, final LivingEntity body) {
       RandomSource random = body.getRandom();
       BlockPos pos = body.blockPosition();
 
@@ -41,6 +40,6 @@ public class MoveToSkySeeingSpot {
    }
 
    public static boolean hasNoBlocksAbove(final ServerLevel level, final LivingEntity body, final BlockPos target) {
-      return level.canSeeSky(target) && (double)level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, target).getY() <= body.getY();
+      return level.canSeeSky(target) && level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, target).getY() <= body.getY();
    }
 }

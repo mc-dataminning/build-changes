@@ -21,8 +21,7 @@ public class SpectatorGui implements SpectatorMenuListener {
    private static final long FADE_OUT_TIME = 2000L;
    private final Minecraft minecraft;
    private long lastSelectionTime;
-   @Nullable
-   private SpectatorMenu menu;
+   private @Nullable SpectatorMenu menu;
 
    public SpectatorGui(final Minecraft minecraft) {
       this.minecraft = minecraft;
@@ -49,7 +48,7 @@ public class SpectatorGui implements SpectatorMenuListener {
             this.menu.exit();
          } else {
             int screenCenter = graphics.guiWidth() / 2;
-            int y = Mth.floor((float)graphics.guiHeight() - 22.0F * alpha);
+            int y = Mth.floor(graphics.guiHeight() - 22.0F * alpha);
             SpectatorPage page = this.menu.getCurrentPage();
             this.extractPage(graphics, alpha, screenCenter, y, page);
          }
@@ -64,14 +63,14 @@ public class SpectatorGui implements SpectatorMenuListener {
       }
 
       for (int slot = 0; slot < 9; slot++) {
-         this.extractSlot(graphics, slot, graphics.guiWidth() / 2 - 90 + slot * 20 + 2, (float)(y + 3), alpha, page.getItem(slot));
+         this.extractSlot(graphics, slot, graphics.guiWidth() / 2 - 90 + slot * 20 + 2, y + 3, alpha, page.getItem(slot));
       }
    }
 
    private void extractSlot(final GuiGraphicsExtractor graphics, final int slot, final int x, final float y, final float alpha, final SpectatorMenuItem item) {
       if (item != SpectatorMenu.EMPTY_SLOT) {
          graphics.pose().pushMatrix();
-         graphics.pose().translate((float)x, y);
+         graphics.pose().translate(x, y);
          float brightness = item.isEnabled() ? 1.0F : 0.25F;
          item.extractIcon(graphics, brightness, alpha);
          graphics.pose().popMatrix();

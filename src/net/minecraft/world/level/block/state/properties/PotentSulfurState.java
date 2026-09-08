@@ -11,7 +11,7 @@ public enum PotentSulfurState implements StringRepresentable {
 
    private final String name;
 
-   private PotentSulfurState(final String name) {
+   PotentSulfurState(final String name) {
       this.name = name;
    }
 

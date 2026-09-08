@@ -12,12 +12,12 @@ import net.minecraft.world.level.levelgen.synth.NormalNoise;
 public record NoiseThresholdCondition(ResourceKey<NormalNoise> noise, double minThreshold, double maxThreshold, boolean is3d) implements MaterialCondition {
    public static final MapCodec<NoiseThresholdCondition> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               ResourceKey.codec(Registries.NOISE).fieldOf("noise").forGetter(NoiseThresholdCondition::noise),
-               Codec.DOUBLE.fieldOf("min_threshold").forGetter(NoiseThresholdCondition::minThreshold),
-               Codec.DOUBLE.fieldOf("max_threshold").forGetter(NoiseThresholdCondition::maxThreshold),
-               Codec.BOOL.optionalFieldOf("is_3d", false).forGetter(NoiseThresholdCondition::is3d)
-            )
-            .apply(i, NoiseThresholdCondition::new)
+            ResourceKey.codec(Registries.NOISE).fieldOf("noise").forGetter(NoiseThresholdCondition::noise),
+            Codec.DOUBLE.fieldOf("min_threshold").forGetter(NoiseThresholdCondition::minThreshold),
+            Codec.DOUBLE.fieldOf("max_threshold").forGetter(NoiseThresholdCondition::maxThreshold),
+            Codec.BOOL.optionalFieldOf("is_3d", false).forGetter(NoiseThresholdCondition::is3d)
+         )
+         .apply(i, NoiseThresholdCondition::new)
    );
 
    @Override

@@ -52,7 +52,7 @@ public class CreakingHeartDecorator extends TreeDecorator {
                   Blocks.CREAKING_HEART
                      .defaultBlockState()
                      .setValue(CreakingHeartBlock.STATE, CreakingHeartState.DORMANT)
-                     .setValue(CreakingHeartBlock.NATURAL, Boolean.valueOf(true))
+                     .setValue(CreakingHeartBlock.NATURAL, true)
                );
             }
          }

@@ -88,105 +88,104 @@ public class LeavesFix extends DataFix {
       Type<?> sectionsType = sectionsFinder.type();
       if (!(sectionsType instanceof ListType)) {
          throw new IllegalStateException("Expecting sections to be a list.");
-      } else {
-         Type<?> sectionType = ((ListType)sectionsType).getElement();
-         OpticFinder<?> sectionFinder = DSL.typeFinder(sectionType);
-         return this.fixTypeEverywhereTyped(
-            "Leaves fix",
-            chunkType,
-            chunk -> chunk.updateTyped(
-                  levelFinder,
-                  level -> {
-                     int[] sides = new int[]{0};
-                     Typed<?> newLevel = level.updateTyped(
-                        sectionsFinder,
-                        sections -> {
-                           Int2ObjectMap<LeavesFix.LeavesSection> sectionMap = new Int2ObjectOpenHashMap(
-                              sections.getAllTyped(sectionFinder)
-                                 .stream()
-                                 .map(sectionx -> new LeavesFix.LeavesSection(sectionx, this.getInputSchema()))
-                                 .collect(Collectors.toMap(LeavesFix.Section::getIndex, s -> (LeavesFix.LeavesSection)s))
-                           );
-                           if (sectionMap.values().stream().allMatch(LeavesFix.Section::isSkippable)) {
-                              return sections;
-                           } else {
-                              List<IntSet> queue = Lists.newArrayList();
+      }
 
-                              for (int i = 0; i < 7; i++) {
-                                 queue.add(new IntOpenHashSet());
-                              }
-
-                              Iterator i$ = sectionMap.values().iterator();
-
-                              while (i$.hasNext()) {
-                                 LeavesFix.LeavesSection section = (LeavesFix.LeavesSection)i$.next();
-                                 if (!section.isSkippable()) {
-                                    for (int i = 0; i < 4096; i++) {
-                                       int block = section.getBlock(i);
-                                       if (section.isLog(block)) {
-                                          queue.get(0).add(section.getIndex() << 12 | i);
-                                       } else if (section.isLeaf(block)) {
-                                          int x = this.getX(i);
-                                          int z = this.getZ(i);
-                                          sides[0] |= getSideMask(x == 0, x == 15, z == 0, z == 15);
-                                       }
-                                    }
-                                 }
-                              }
-
-                              for (int ix = 1; ix < 7; ix++) {
-                                 IntSet set = queue.get(ix - 1);
-                                 IntSet newSet = queue.get(ix);
-                                 IntIterator iterator = set.iterator();
-
-                                 while (iterator.hasNext()) {
-                                    int posChunk = iterator.nextInt();
-                                    int x = this.getX(posChunk);
-                                    int y = this.getY(posChunk);
-                                    int z = this.getZ(posChunk);
-
-                                    for (int[] direction : DIRECTIONS) {
-                                       int nx = x + direction[0];
-                                       int nyChunk = y + direction[1];
-                                       int nz = z + direction[2];
-                                       if (nx >= 0 && nx <= 15 && nz >= 0 && nz <= 15 && nyChunk >= 0 && nyChunk <= 255) {
-                                          LeavesFix.LeavesSection section = (LeavesFix.LeavesSection)sectionMap.get(nyChunk >> 4);
-                                          if (section != null && !section.isSkippable()) {
-                                             int posSection = getIndex(nx, nyChunk & 15, nz);
-                                             int block = section.getBlock(posSection);
-                                             if (section.isLeaf(block)) {
-                                                int oldDistance = section.getDistance(block);
-                                                if (oldDistance > ix) {
-                                                   section.setDistance(posSection, block, ix);
-                                                   newSet.add(getIndex(nx, nyChunk, nz));
-                                                }
-                                             }
-                                          }
-                                       }
-                                    }
-                                 }
-                              }
-
-                              return sections.updateTyped(
-                                 sectionFinder,
-                                 sectionx -> ((LeavesFix.LeavesSection)sectionMap.get(((Dynamic)sectionx.get(DSL.remainderFinder())).get("Y").asInt(0)))
-                                       .write(sectionx)
-                              );
-                           }
-                        }
+      Type<?> sectionType = ((ListType)sectionsType).getElement();
+      OpticFinder<?> sectionFinder = DSL.typeFinder(sectionType);
+      return this.fixTypeEverywhereTyped(
+         "Leaves fix",
+         chunkType,
+         chunk -> chunk.updateTyped(
+            levelFinder,
+            level -> {
+               int[] sides = new int[]{0};
+               Typed<?> newLevel = level.updateTyped(
+                  sectionsFinder,
+                  sections -> {
+                     Int2ObjectMap<LeavesFix.LeavesSection> sectionMap = new Int2ObjectOpenHashMap(
+                        sections.getAllTyped(sectionFinder)
+                           .stream()
+                           .map(sectionx -> new LeavesFix.LeavesSection(sectionx, this.getInputSchema()))
+                           .collect(Collectors.toMap(LeavesFix.Section::getIndex, s -> (LeavesFix.LeavesSection)s))
                      );
-                     if (sides[0] != 0) {
-                        newLevel = newLevel.update(DSL.remainderFinder(), tag -> {
-                           Dynamic<?> upgradeData = (Dynamic<?>)DataFixUtils.orElse(tag.get("UpgradeData").result(), tag.emptyMap());
-                           return tag.set("UpgradeData", upgradeData.set("Sides", tag.createByte((byte)(upgradeData.get("Sides").asByte((byte)0) | sides[0]))));
-                        });
+                     if (sectionMap.values().stream().allMatch(LeavesFix.Section::isSkippable)) {
+                        return sections;
                      }
 
-                     return newLevel;
+                     List<IntSet> queue = Lists.newArrayList();
+
+                     for (int i = 0; i < 7; i++) {
+                        queue.add(new IntOpenHashSet());
+                     }
+
+                     Iterator i$ = sectionMap.values().iterator();
+
+                     while (i$.hasNext()) {
+                        LeavesFix.LeavesSection section = (LeavesFix.LeavesSection)i$.next();
+                        if (!section.isSkippable()) {
+                           for (int i = 0; i < 4096; i++) {
+                              int block = section.getBlock(i);
+                              if (section.isLog(block)) {
+                                 queue.get(0).add(section.getIndex() << 12 | i);
+                              } else if (section.isLeaf(block)) {
+                                 int x = this.getX(i);
+                                 int z = this.getZ(i);
+                                 sides[0] |= getSideMask(x == 0, x == 15, z == 0, z == 15);
+                              }
+                           }
+                        }
+                     }
+
+                     for (int i = 1; i < 7; i++) {
+                        IntSet set = queue.get(i - 1);
+                        IntSet newSet = queue.get(i);
+                        IntIterator iterator = set.iterator();
+
+                        while (iterator.hasNext()) {
+                           int posChunk = iterator.nextInt();
+                           int x = this.getX(posChunk);
+                           int y = this.getY(posChunk);
+                           int z = this.getZ(posChunk);
+
+                           for (int[] direction : DIRECTIONS) {
+                              int nx = x + direction[0];
+                              int nyChunk = y + direction[1];
+                              int nz = z + direction[2];
+                              if (nx >= 0 && nx <= 15 && nz >= 0 && nz <= 15 && nyChunk >= 0 && nyChunk <= 255) {
+                                 LeavesFix.LeavesSection section = (LeavesFix.LeavesSection)sectionMap.get(nyChunk >> 4);
+                                 if (section != null && !section.isSkippable()) {
+                                    int posSection = getIndex(nx, nyChunk & 15, nz);
+                                    int block = section.getBlock(posSection);
+                                    if (section.isLeaf(block)) {
+                                       int oldDistance = section.getDistance(block);
+                                       if (oldDistance > i) {
+                                          section.setDistance(posSection, block, i);
+                                          newSet.add(getIndex(nx, nyChunk, nz));
+                                       }
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+
+                     return sections.updateTyped(
+                        sectionFinder,
+                        sectionx -> ((LeavesFix.LeavesSection)sectionMap.get(((Dynamic)sectionx.get(DSL.remainderFinder())).get("Y").asInt(0))).write(sectionx)
+                     );
                   }
-               )
-         );
-      }
+               );
+               if (sides[0] != 0) {
+                  newLevel = newLevel.update(DSL.remainderFinder(), tag -> {
+                     Dynamic<?> upgradeData = (Dynamic<?>)DataFixUtils.orElse(tag.get("UpgradeData").result(), tag.emptyMap());
+                     return tag.set("UpgradeData", upgradeData.set("Sides", tag.createByte((byte)(upgradeData.get("Sides").asByte((byte)0) | sides[0]))));
+                  });
+               }
+
+               return newLevel;
+            }
+         )
+      );
    }
 
    public static int getIndex(final int x, final int y, final int z) {
@@ -236,12 +235,9 @@ public class LeavesFix extends DataFix {
       private static final String PERSISTENT = "persistent";
       private static final String DECAYABLE = "decayable";
       private static final String DISTANCE = "distance";
-      @Nullable
-      private IntSet leaveIds;
-      @Nullable
-      private IntSet logIds;
-      @Nullable
-      private Int2IntMap stateToIdMap;
+      private @Nullable IntSet leaveIds;
+      private @Nullable IntSet logIds;
+      private @Nullable Int2IntMap stateToIdMap;
 
       public LeavesSection(final Typed<?> section, final Schema inputSchema) {
          super(section, inputSchema);
@@ -327,20 +323,19 @@ public class LeavesFix extends DataFix {
       protected final OpticFinder<List<Pair<String, Dynamic<?>>>> paletteFinder = DSL.fieldFinder("Palette", DSL.list(this.blockStateType));
       protected final List<Dynamic<?>> palette;
       protected final int index;
-      @Nullable
-      protected PackedBitStorage storage;
+      protected @Nullable PackedBitStorage storage;
 
       public Section(final Typed<?> section, final Schema inputSchema) {
          if (!Objects.equals(inputSchema.getType(References.BLOCK_STATE), this.blockStateType)) {
             throw new IllegalStateException("Block state type is not what was expected.");
-         } else {
-            Optional<List<Pair<String, Dynamic<?>>>> typedPalette = section.getOptional(this.paletteFinder);
-            this.palette = typedPalette.<List<Dynamic<?>>>map(p -> p.stream().<Dynamic<?>>map(Pair::getSecond).collect(Collectors.toList()))
-               .orElse(ImmutableList.of());
-            Dynamic<?> tag = (Dynamic<?>)section.get(DSL.remainderFinder());
-            this.index = tag.get("Y").asInt(0);
-            this.readStorage(tag);
          }
+
+         Optional<List<Pair<String, Dynamic<?>>>> typedPalette = section.getOptional(this.paletteFinder);
+         this.palette = typedPalette.<List<Dynamic<?>>>map(p -> p.stream().<Dynamic<?>>map(Pair::getSecond).collect(Collectors.toList()))
+            .orElse(ImmutableList.of());
+         Dynamic<?> tag = (Dynamic<?>)section.get(DSL.remainderFinder());
+         this.index = tag.get("Y").asInt(0);
+         this.readStorage(tag);
       }
 
       protected void readStorage(final Dynamic<?> tag) {

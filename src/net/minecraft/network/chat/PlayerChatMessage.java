@@ -20,20 +20,20 @@ public record PlayerChatMessage(
 ) {
    public static final MapCodec<PlayerChatMessage> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               SignedMessageLink.CODEC.fieldOf("link").forGetter(PlayerChatMessage::link),
-               MessageSignature.CODEC.optionalFieldOf("signature").forGetter(playerChatMessage -> Optional.ofNullable(playerChatMessage.signature)),
-               SignedMessageBody.MAP_CODEC.forGetter(PlayerChatMessage::signedBody),
-               ComponentSerialization.CODEC
-                  .optionalFieldOf("unsigned_content")
-                  .forGetter(playerChatMessage -> Optional.ofNullable(playerChatMessage.unsignedContent)),
-               FilterMask.CODEC.optionalFieldOf("filter_mask", FilterMask.PASS_THROUGH).forGetter(PlayerChatMessage::filterMask)
+            SignedMessageLink.CODEC.fieldOf("link").forGetter(PlayerChatMessage::link),
+            MessageSignature.CODEC.optionalFieldOf("signature").forGetter(playerChatMessage -> Optional.ofNullable(playerChatMessage.signature)),
+            SignedMessageBody.MAP_CODEC.forGetter(PlayerChatMessage::signedBody),
+            ComponentSerialization.CODEC
+               .optionalFieldOf("unsigned_content")
+               .forGetter(playerChatMessage -> Optional.ofNullable(playerChatMessage.unsignedContent)),
+            FilterMask.CODEC.optionalFieldOf("filter_mask", FilterMask.PASS_THROUGH).forGetter(PlayerChatMessage::filterMask)
+         )
+         .apply(
+            i,
+            (link, signature, signedBody, unsignedContent, filterMask) -> new PlayerChatMessage(
+               link, (MessageSignature)signature.orElse(null), signedBody, (Component)unsignedContent.orElse(null), filterMask
             )
-            .apply(
-               i,
-               (link, signature, signedBody, unsignedContent, filterMask) -> new PlayerChatMessage(
-                     link, (MessageSignature)signature.orElse(null), signedBody, (Component)unsignedContent.orElse(null), filterMask
-                  )
-            )
+         )
    );
    private static final UUID SYSTEM_SENDER = Util.NIL_UUID;
    public static final Duration MESSAGE_EXPIRES_AFTER_SERVER = Duration.ofMinutes(5L);

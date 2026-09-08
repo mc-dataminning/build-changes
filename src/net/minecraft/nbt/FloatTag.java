@@ -39,11 +39,8 @@ public record FloatTag(float value) implements NumericTag {
       }
    };
 
-   @Deprecated(
-      forRemoval = true
-   )
-   public FloatTag(float value) {
-      this.value = value;
+   @Deprecated(forRemoval = true)
+   public FloatTag {
    }
 
    public static FloatTag valueOf(final float data) {
@@ -101,7 +98,7 @@ public record FloatTag(float value) implements NumericTag {
 
    @Override
    public double doubleValue() {
-      return (double)this.value;
+      return this.value;
    }
 
    @Override

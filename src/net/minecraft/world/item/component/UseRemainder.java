@@ -20,17 +20,19 @@ public record UseRemainder(ItemStackTemplate convertInto) {
    ) {
       if (hasInfiniteMaterials) {
          return usedStack;
-      } else if (usedStack.getCount() >= stackCountBeforeUsing) {
-         return usedStack;
-      } else {
-         ItemStack remainderStack = this.convertInto.create();
-         if (usedStack.isEmpty()) {
-            return remainderStack;
-         } else {
-            onExtraCreatedRemainder.apply(remainderStack);
-            return usedStack;
-         }
       }
+
+      if (usedStack.getCount() >= stackCountBeforeUsing) {
+         return usedStack;
+      }
+
+      ItemStack remainderStack = this.convertInto.create();
+      if (usedStack.isEmpty()) {
+         return remainderStack;
+      }
+
+      onExtraCreatedRemainder.apply(remainderStack);
+      return usedStack;
    }
 
    @FunctionalInterface

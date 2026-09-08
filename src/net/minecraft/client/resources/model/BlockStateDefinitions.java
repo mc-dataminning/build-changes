@@ -25,7 +25,7 @@ public class BlockStateDefinitions {
    }
 
    public static BlockState getItemFrameFakeState(final boolean isGlowing, final boolean map) {
-      return (isGlowing ? GLOW_ITEM_FRAME_FAKE_DEFINITION : ITEM_FRAME_FAKE_DEFINITION).any().setValue(BlockStateProperties.MAP, Boolean.valueOf(map));
+      return (isGlowing ? GLOW_ITEM_FRAME_FAKE_DEFINITION : ITEM_FRAME_FAKE_DEFINITION).any().setValue(BlockStateProperties.MAP, map);
    }
 
    public static Function<Identifier, StateDefinition<Block, BlockState>> definitionLocationToBlockStateMapper() {

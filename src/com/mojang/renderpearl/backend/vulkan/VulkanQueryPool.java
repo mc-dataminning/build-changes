@@ -58,41 +58,41 @@ public class VulkanQueryPool implements GpuQueryPool, Destroyable {
          throw new IndexOutOfBoundsException(
             "getValues would read out-of-bounds for an array of " + count + " starting at " + index + ", when total size is " + this.size
          );
-      } else {
-         OptionalLong[] result = new OptionalLong[count];
-         MemoryStack stack = MemoryStack.stackPush();
-
-         try {
-            LongBuffer values = stack.callocLong(2 * count);
-            VulkanUtils.crashIfFailure(
-               this.device, VK12.vkGetQueryPoolResults(this.device.vkDevice(), this.vkQueryPool, index, count, values, 16L, 5), "Cannot fetch query results"
-            );
-
-            for (int i = 0; i < count; i++) {
-               if (values.get(i * 2 + 1) != 0L) {
-                  result[i] = OptionalLong.of(values.get(i * 2));
-               } else {
-                  result[i] = OptionalLong.empty();
-               }
-            }
-         } catch (Throwable var8) {
-            if (stack != null) {
-               try {
-                  stack.close();
-               } catch (Throwable var7) {
-                  var8.addSuppressed(var7);
-               }
-            }
-
-            throw var8;
-         }
-
-         if (stack != null) {
-            stack.close();
-         }
-
-         return result;
       }
+
+      OptionalLong[] result = new OptionalLong[count];
+      MemoryStack stack = MemoryStack.stackPush();
+
+      try {
+         LongBuffer values = stack.callocLong(2 * count);
+         VulkanUtils.crashIfFailure(
+            this.device, VK12.vkGetQueryPoolResults(this.device.vkDevice(), this.vkQueryPool, index, count, values, 16L, 5), "Cannot fetch query results"
+         );
+
+         for (int i = 0; i < count; i++) {
+            if (values.get(i * 2 + 1) != 0L) {
+               result[i] = OptionalLong.of(values.get(i * 2));
+            } else {
+               result[i] = OptionalLong.empty();
+            }
+         }
+      } catch (Throwable var8) {
+         if (stack != null) {
+            try {
+               stack.close();
+            } catch (Throwable var7) {
+               var8.addSuppressed(var7);
+            }
+         }
+
+         throw var8;
+      }
+
+      if (stack != null) {
+         stack.close();
+      }
+
+      return result;
    }
 
    protected long vkQueryPool() {

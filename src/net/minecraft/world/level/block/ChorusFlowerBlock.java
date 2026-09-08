@@ -29,7 +29,7 @@ public class ChorusFlowerBlock extends Block {
    protected ChorusFlowerBlock(final Block plant, final BlockBehaviour.Properties properties) {
       super(properties);
       this.plant = plant;
-      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(0)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
    }
 
    @Override
@@ -115,16 +115,16 @@ public class ChorusFlowerBlock extends Block {
    }
 
    private void placeGrownFlower(final Level level, final BlockPos pos, final int age) {
-      level.setBlock(pos, this.defaultBlockState().setValue(AGE, Integer.valueOf(age)), 2);
+      level.setBlock(pos, this.defaultBlockState().setValue(AGE, age), 2);
       level.levelEvent(1033, pos, 0);
    }
 
    private void placeDeadFlower(final Level level, final BlockPos pos) {
-      level.setBlock(pos, this.defaultBlockState().setValue(AGE, Integer.valueOf(5)), 2);
+      level.setBlock(pos, this.defaultBlockState().setValue(AGE, 5), 2);
       level.levelEvent(1034, pos, 0);
    }
 
-   private static boolean allNeighborsEmpty(final LevelReader level, final BlockPos pos, @Nullable final Direction ignore) {
+   private static boolean allNeighborsEmpty(final LevelReader level, final BlockPos pos, final @Nullable Direction ignore) {
       for (Direction direction : Direction.Plane.HORIZONTAL) {
          if (direction != ignore && !level.isEmptyBlock(pos.relative(direction))) {
             return false;
@@ -158,24 +158,24 @@ public class ChorusFlowerBlock extends Block {
       if (!belowState.is(this.plant) && !belowState.is(BlockTags.SUPPORTS_CHORUS_FLOWER)) {
          if (!belowState.isAir()) {
             return false;
-         } else {
-            boolean oneNeighbor = false;
+         }
 
-            for (Direction direction : Direction.Plane.HORIZONTAL) {
-               BlockState neighbor = level.getBlockState(pos.relative(direction));
-               if (neighbor.is(this.plant)) {
-                  if (oneNeighbor) {
-                     return false;
-                  }
+         boolean oneNeighbor = false;
 
-                  oneNeighbor = true;
-               } else if (!neighbor.isAir()) {
+         for (Direction direction : Direction.Plane.HORIZONTAL) {
+            BlockState neighbor = level.getBlockState(pos.relative(direction));
+            if (neighbor.is(this.plant)) {
+               if (oneNeighbor) {
                   return false;
                }
-            }
 
-            return oneNeighbor;
+               oneNeighbor = true;
+            } else if (!neighbor.isAir()) {
+               return false;
+            }
          }
+
+         return oneNeighbor;
       } else {
          return true;
       }
@@ -238,7 +238,7 @@ public class ChorusFlowerBlock extends Block {
       }
 
       if (!placedStem) {
-         level.setBlock(current.above(height), Blocks.CHORUS_FLOWER.defaultBlockState().setValue(AGE, Integer.valueOf(5)), 2);
+         level.setBlock(current.above(height), Blocks.CHORUS_FLOWER.defaultBlockState().setValue(AGE, 5), 2);
       }
    }
 

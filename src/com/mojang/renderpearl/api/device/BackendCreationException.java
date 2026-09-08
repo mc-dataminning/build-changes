@@ -24,7 +24,7 @@ public class BackendCreationException extends Exception {
       return this.missingCapabilities;
    }
 
-   public static enum Reason {
+   public enum Reason {
       PLATFORM_ERROR("platform_error"),
       VULKAN_LOADER_MISSING("vulkan_loader_missing"),
       VULKAN_INSTANCE_CREATION_FAILED("vulkan_instance_creation_failed"),
@@ -39,7 +39,7 @@ public class BackendCreationException extends Exception {
 
       private final String displayName;
 
-      private Reason(final String key) {
+      Reason(final String key) {
          this.displayName = key;
       }
 

@@ -15,24 +15,24 @@ public class PoiCompetitorScan {
    public static BehaviorControl<Villager> create() {
       return BehaviorBuilder.create(
          i -> i.group(i.present(MemoryModuleType.JOB_SITE), i.present(MemoryModuleType.NEAREST_LIVING_ENTITIES))
-               .apply(
-                  i,
-                  (jobSite, nearestEntities) -> (level, body, timestamp) -> {
-                        GlobalPos pos = i.get(jobSite);
-                        level.getPoiManager()
-                           .getType(pos.pos())
-                           .ifPresent(
-                              poiType -> i.<List<LivingEntity>>get(nearestEntities)
-                                    .stream()
-                                    .filter(v -> v instanceof Villager && v != body)
-                                    .map(v -> (Villager)v)
-                                    .filter(LivingEntity::isAlive)
-                                    .filter(nearbyVillager -> competesForSameJobsite(pos, poiType, nearbyVillager))
-                                    .reduce(body, PoiCompetitorScan::selectWinner)
-                           );
-                        return true;
-                     }
-               )
+            .apply(
+               i,
+               (jobSite, nearestEntities) -> (level, body, timestamp) -> {
+                  GlobalPos pos = i.get(jobSite);
+                  level.getPoiManager()
+                     .getType(pos.pos())
+                     .ifPresent(
+                        poiType -> i.<List<LivingEntity>>get(nearestEntities)
+                           .stream()
+                           .filter(v -> v instanceof Villager && v != body)
+                           .map(v -> (Villager)v)
+                           .filter(LivingEntity::isAlive)
+                           .filter(nearbyVillager -> competesForSameJobsite(pos, poiType, nearbyVillager))
+                           .reduce(body, PoiCompetitorScan::selectWinner)
+                     );
+                  return true;
+               }
+            )
       );
    }
 

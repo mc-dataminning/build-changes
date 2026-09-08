@@ -14,7 +14,7 @@ public enum PrimitiveTopology {
    public final int primitiveStride;
    public final boolean connectedPrimitives;
 
-   private PrimitiveTopology(final int primitiveLength, final int primitiveStride, final boolean connectedPrimitives) {
+   PrimitiveTopology(final int primitiveLength, final int primitiveStride, final boolean connectedPrimitives) {
       this.primitiveLength = primitiveLength;
       this.primitiveStride = primitiveStride;
       this.connectedPrimitives = connectedPrimitives;

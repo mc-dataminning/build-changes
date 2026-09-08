@@ -19,12 +19,12 @@ public enum PlayerModelType implements StringRepresentable {
    private final String id;
    private final String legacyServicesId;
 
-   private PlayerModelType(final String id, final String legacyServicesId) {
+   PlayerModelType(final String id, final String legacyServicesId) {
       this.id = id;
       this.legacyServicesId = legacyServicesId;
    }
 
-   public static PlayerModelType byLegacyServicesName(@Nullable final String name) {
+   public static PlayerModelType byLegacyServicesName(final @Nullable String name) {
       return Objects.requireNonNullElse(NAME_LOOKUP.apply(name), WIDE);
    }
 

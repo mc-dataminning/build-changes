@@ -72,26 +72,26 @@ public class LegacyQueryHandler extends ChannelInboundHandlerAdapter {
       short packetId = in.readUnsignedByte();
       if (packetId != 250) {
          return false;
-      } else {
-         String channelId = LegacyProtocolUtils.readLegacyString(in);
-         if (!"MC|PingHost".equals(channelId)) {
-            return false;
-         } else {
-            int payloadSize = in.readUnsignedShort();
-            if (in.readableBytes() != payloadSize) {
-               return false;
-            } else {
-               short protocolVersion = in.readUnsignedByte();
-               if (protocolVersion < 73) {
-                  return false;
-               } else {
-                  String host = LegacyProtocolUtils.readLegacyString(in);
-                  int port = in.readInt();
-                  return port <= 65535;
-               }
-            }
-         }
       }
+
+      String channelId = LegacyProtocolUtils.readLegacyString(in);
+      if (!"MC|PingHost".equals(channelId)) {
+         return false;
+      }
+
+      int payloadSize = in.readUnsignedShort();
+      if (in.readableBytes() != payloadSize) {
+         return false;
+      }
+
+      short protocolVersion = in.readUnsignedByte();
+      if (protocolVersion < 73) {
+         return false;
+      }
+
+      String host = LegacyProtocolUtils.readLegacyString(in);
+      int port = in.readInt();
+      return port <= 65535;
    }
 
    private static String createVersion0Response(final ServerInfo server) {

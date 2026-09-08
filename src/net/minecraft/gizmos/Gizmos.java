@@ -8,7 +8,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
 public class Gizmos {
-   private static final ThreadLocal<GizmoCollector> collector = new ThreadLocal<>();
+   private static final ThreadLocal<@Nullable GizmoCollector> collector = new ThreadLocal<>();
 
    private Gizmos() {
    }
@@ -41,7 +41,7 @@ public class Gizmos {
    }
 
    public static GizmoProperties cuboid(final BlockPos blockPos, final float padding, final GizmoStyle style) {
-      return cuboid(new AABB(blockPos).inflate((double)padding), style);
+      return cuboid(new AABB(blockPos).inflate(padding), style);
    }
 
    public static GizmoProperties circle(final Vec3 pos, final float radius, final GizmoStyle style) {
@@ -80,7 +80,7 @@ public class Gizmos {
       double firstRowStartPosition = 1.3;
       double rowHeight = 0.2;
       GizmoProperties properties = billboardText(
-         text, Vec3.atLowerCornerWithOffset(pos, 0.5, 1.3 + (double)row * 0.2, 0.5), TextGizmo.Style.forColorAndCentered(color).withScale(scale)
+         text, Vec3.atLowerCornerWithOffset(pos, 0.5, 1.3 + row * 0.2, 0.5), TextGizmo.Style.forColorAndCentered(color).withScale(scale)
       );
       properties.setAlwaysOnTop();
       return properties;
@@ -89,9 +89,9 @@ public class Gizmos {
    public static GizmoProperties billboardTextOverMob(final Entity entity, final int row, final String text, final int color, final float scale) {
       double firstRowStartPosition = 2.4;
       double rowHeight = 0.25;
-      double x = (double)entity.getBlockX() + 0.5;
-      double y = entity.getY() + 2.4 + (double)row * 0.25;
-      double z = (double)entity.getBlockZ() + 0.5;
+      double x = entity.getBlockX() + 0.5;
+      double y = entity.getY() + 2.4 + row * 0.25;
+      double z = entity.getBlockZ() + 0.5;
       float textAdjustLeft = 0.5F;
       GizmoProperties properties = billboardText(text, new Vec3(x, y, z), TextGizmo.Style.forColor(color).withScale(scale).withLeftAlignment(0.5F));
       properties.setAlwaysOnTop();
@@ -103,8 +103,7 @@ public class Gizmos {
    }
 
    public static class TemporaryCollection implements AutoCloseable {
-      @Nullable
-      private final GizmoCollector old = Gizmos.collector.get();
+      private final @Nullable GizmoCollector old = Gizmos.collector.get();
       private boolean closed;
 
       private TemporaryCollection() {

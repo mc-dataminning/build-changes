@@ -64,8 +64,7 @@ public final class Window implements AutoCloseable {
    private boolean iconified;
    private boolean focused = true;
    private boolean shouldClose;
-   @Nullable
-   private Runnable closeCallback;
+   private @Nullable Runnable closeCallback;
    private boolean allowCursorChanges;
    private boolean quitShortcuts;
    private CursorType currentCursor = CursorType.DEFAULT;
@@ -75,11 +74,24 @@ public final class Window implements AutoCloseable {
    public Window(
       final WindowEventHandler eventHandler,
       final DisplayData displayData,
-      @Nullable final String fullscreenVideoModeString,
+      final @Nullable String fullscreenVideoModeString,
       final boolean exclusiveFullscreen,
       final String title,
       final MonitorManager monitorManager,
       final GpuBackend backend
+   ) {
+      this(eventHandler, displayData, fullscreenVideoModeString, exclusiveFullscreen, title, monitorManager, backend, 0);
+   }
+
+   public Window(
+      final WindowEventHandler eventHandler,
+      final DisplayData displayData,
+      final @Nullable String fullscreenVideoModeString,
+      final boolean exclusiveFullscreen,
+      final String title,
+      final MonitorManager monitorManager,
+      final GpuBackend backend,
+      final int maximumSize
    ) {
       this.monitorManager = monitorManager;
       this.exclusiveFullscreen = exclusiveFullscreen;
@@ -100,6 +112,7 @@ public final class Window implements AutoCloseable {
       this.windowedWidth = this.width = allowedWindowMinSize(displayData.width(), 320);
       this.windowedHeight = this.height = allowedWindowMinSize(displayData.height(), 240);
       this.handle = this.createWindow(backend, this.width, this.height, title);
+      this.setWindowMaxSize(maximumSize, maximumSize);
       MacosUtil.disableCloseWindowMenuItem();
       if (initialMonitor != null) {
          this.windowedX = this.x = initialMonitor.x() + (initialMonitor.w() - this.width) / 2;
@@ -116,16 +129,16 @@ public final class Window implements AutoCloseable {
 
             this.windowedX = this.x = actualX.get(0);
             this.windowedY = this.y = actualY.get(0);
-         } catch (Throwable var14) {
+         } catch (Throwable var15) {
             if (stack != null) {
                try {
                   stack.close();
-               } catch (Throwable var13) {
-                  var14.addSuppressed(var13);
+               } catch (Throwable var14) {
+                  var15.addSuppressed(var14);
                }
             }
 
-            throw var14;
+            throw var15;
          }
 
          if (stack != null) {
@@ -142,8 +155,7 @@ public final class Window implements AutoCloseable {
       return platform == null ? "unknown platform" : platform;
    }
 
-   @Nullable
-   private static SDL_Surface createIconSurface(final NativeImage image) {
+   private static @Nullable SDL_Surface createIconSurface(final NativeImage image) {
       int pitch = image.getWidth() * 4;
       return SDLSurface.SDL_CreateSurfaceFrom(image.getWidth(), image.getHeight(), 376840196, image.getPixelBytes(), pitch);
    }
@@ -153,29 +165,27 @@ public final class Window implements AutoCloseable {
       long windowHandle = backend.createWindow(title, width, height, 8224L);
       if (windowHandle == 0L) {
          throw new IllegalStateException("Failed to create window: " + Objects.requireNonNullElse(SDLError.SDL_GetError(), "<no error>"));
-      } else {
-         SDLVideo.SDL_SetWindowMinimumSize(windowHandle, 320, 240);
-         LOGGER.info("Created window using SDL video driver: {}", SDLVideo.SDL_GetCurrentVideoDriver());
-         return windowHandle;
       }
+
+      SDLVideo.SDL_SetWindowMinimumSize(windowHandle, 320, 240);
+      LOGGER.info("Created window using SDL video driver: {}", SDLVideo.SDL_GetCurrentVideoDriver());
+      return windowHandle;
    }
 
-   @Nullable
-   public VideoMode getActiveVideoMode() {
+   public @Nullable VideoMode getActiveVideoMode() {
       RenderSystem.assertOnRenderThread();
       SDL_DisplayMode mode = this.getActiveDisplayMode();
       return mode == null ? null : new VideoMode(mode);
    }
 
-   @Nullable
-   private SDL_DisplayMode getActiveDisplayMode() {
+   private @Nullable SDL_DisplayMode getActiveDisplayMode() {
       SDL_DisplayMode windowMode = SDLVideo.SDL_GetWindowFullscreenMode(this.handle);
       if (windowMode != null) {
          return windowMode;
-      } else {
-         int displayId = SDLVideo.SDL_GetDisplayForWindow(this.handle);
-         return displayId == 0 ? null : SDLVideo.SDL_GetCurrentDisplayMode(displayId);
       }
+
+      int displayId = SDLVideo.SDL_GetDisplayForWindow(this.handle);
+      return displayId == 0 ? null : SDLVideo.SDL_GetCurrentDisplayMode(displayId);
    }
 
    public boolean shouldClose() {
@@ -237,6 +247,7 @@ public final class Window implements AutoCloseable {
 
    private void onDisplayModeChanged(final int displayId) {
       this.monitorManager.onDisplayModeChanged(displayId);
+      this.refreshFramebufferSize();
       this.eventHandler.framebufferSizeChanged();
    }
 
@@ -308,8 +319,7 @@ public final class Window implements AutoCloseable {
       }
    }
 
-   @Nullable
-   private static SDL_Surface createIconSurface(final IoSupplier<InputStream> iconStream, final List<NativeImage> images) throws IOException {
+   private static @Nullable SDL_Surface createIconSurface(final IoSupplier<InputStream> iconStream, final List<NativeImage> images) throws IOException {
       NativeImage image = NativeImage.read(iconStream.get());
       images.add(image);
       SDL_Surface surface = createIconSurface(image);
@@ -337,7 +347,7 @@ public final class Window implements AutoCloseable {
    private void onMove(final int x, final int y) {
       this.x = x;
       this.y = y;
-      if (!this.fullscreen) {
+      if (!this.isWindowFullscreen()) {
          this.windowedX = x;
          this.windowedY = y;
       }
@@ -346,15 +356,15 @@ public final class Window implements AutoCloseable {
    private void onResize(final int newWidth, final int newHeight) {
       this.width = newWidth;
       this.height = newHeight;
-      if (!this.fullscreen) {
+      if (!this.isWindowFullscreen()) {
          this.windowedWidth = allowedWindowMinSize(newWidth, 320);
          this.windowedHeight = allowedWindowMinSize(newHeight, 240);
       }
 
       this.updateWindowMouseGrab();
       if (Minecraft.getInstance().mouseHandler.isMouseGrabbed()) {
-         double xpos = (double)this.getScreenWidth() / 2.0;
-         double ypos = (double)this.getScreenHeight() / 2.0;
+         double xpos = this.getScreenWidth() / 2.0;
+         double ypos = this.getScreenHeight() / 2.0;
          InputConstants.grabMouse(this, xpos, ypos);
       }
    }
@@ -368,8 +378,8 @@ public final class Window implements AutoCloseable {
 
          try {
             this.eventHandler.framebufferSizeChanged();
-         } catch (Exception var8) {
-            CrashReport report = CrashReport.forThrowable(var8, "Window resize");
+         } catch (Exception e) {
+            CrashReport report = CrashReport.forThrowable(e, "Window resize");
             CrashReportCategory windowSizeDetails = report.addCategory("Window Dimensions");
             windowSizeDetails.setDetail("Old", oldWidth + "x" + oldHeight);
             windowSizeDetails.setDetail("New", newWidth + "x" + newHeight);
@@ -385,7 +395,7 @@ public final class Window implements AutoCloseable {
    }
 
    private int framebufferWidthPadding() {
-      return this.useBorderlessFullscreenWindow() ? 1 : 0;
+      return this.borderlessFullscreen ? 1 : 0;
    }
 
    public Window.FramebufferSize queryFramebufferSize() {
@@ -472,24 +482,21 @@ public final class Window implements AutoCloseable {
          this.fullscreenRequested = this.fullscreen;
          this.eventHandler.fullscreenStateChanged(this.fullscreen);
       } else {
-         if (!SDLVideo.SDL_SyncWindow(this.handle)) {
-            LOGGER.warn("Failed to synchronize SDL window after fullscreen change: {}", SDLError.SDL_GetError());
-         }
-
+         this.syncWindow();
          this.updateFullscreenState();
          this.refreshFramebufferSize();
-         if (!this.isRuntimeExclusiveFullscreen()) {
+         if (!this.isExclusiveFullscreen()) {
             this.updateWindowMouseGrab();
          }
 
-         if (this.exclusiveFullscreen && this.fullscreen && !this.isRuntimeExclusiveFullscreen()) {
+         if (this.exclusiveFullscreen && this.fullscreen && !this.isExclusiveFullscreen()) {
             LOGGER.info("Exclusive fullscreen request resolved to borderless desktop");
          }
       }
    }
 
    private void updateWindowMouseGrab() {
-      boolean shouldGrabMouse = this.fullscreen && this.isRuntimeExclusiveFullscreen();
+      boolean shouldGrabMouse = this.fullscreen && this.isExclusiveFullscreen();
       if (!SDLVideo.SDL_SetWindowMouseGrab(this.handle, shouldGrabMouse)) {
          LOGGER.warn("Failed to update window mouse grab state: {}", SDLError.SDL_GetError());
       }
@@ -499,17 +506,17 @@ public final class Window implements AutoCloseable {
       return this.borderlessFullscreen || (SDLVideo.SDL_GetWindowFlags(this.handle) & 1L) != 0L;
    }
 
-   private boolean isRuntimeExclusiveFullscreen() {
+   public boolean isExclusiveFullscreen() {
       return this.isWindowFullscreen() && SDLVideo.SDL_GetWindowFullscreenMode(this.handle) != null;
    }
 
    private boolean applyFullscreen() {
       if (this.useBorderlessFullscreenWindow()) {
          return this.applyBorderlessFullscreenWindow();
-      } else {
-         this.leaveBorderlessFullscreenWindow();
-         return this.applyFullscreenMode() && SDLVideo.SDL_SetWindowFullscreen(this.handle, true);
       }
+
+      this.leaveBorderlessFullscreenWindow();
+      return this.applyFullscreenMode() && SDLVideo.SDL_SetWindowFullscreen(this.handle, true);
    }
 
    private boolean useBorderlessFullscreenWindow() {
@@ -539,41 +546,35 @@ public final class Window implements AutoCloseable {
       if (monitor == null) {
          LOGGER.warn("Failed to find suitable monitor for exclusive fullscreen, falling back to borderless fullscreen");
          return this.applyBorderlessFullscreen();
-      } else {
-         VideoMode videoMode = monitor.getPreferredVideoMode(this.preferredFullscreenVideoMode);
-         LOGGER.info("Exclusive target {} on monitor {}", videoMode, monitor);
-         MemoryStack stack = MemoryStack.stackPush();
+      }
 
-         boolean var8;
-         label47: {
-            try {
-               SDL_DisplayMode mode = SDL_DisplayMode.malloc(stack);
-               if (SDLVideo.SDL_GetClosestFullscreenDisplayMode(
-                  monitor.id(), videoMode.getWidth(), videoMode.getHeight(), videoMode.getRefreshRate(), true, mode
-               )) {
-                  var8 = SDLVideo.SDL_SetWindowFullscreenMode(this.handle, mode);
-                  break label47;
-               }
+      VideoMode videoMode = monitor.getPreferredVideoMode(this.preferredFullscreenVideoMode);
+      LOGGER.info("Exclusive target {} on monitor {}", videoMode, monitor);
+      MemoryStack stack = MemoryStack.stackPush();
 
-               LOGGER.warn("No matching exclusive fullscreen mode found for {}, falling back to borderless fullscreen", videoMode);
-               var8 = this.applyBorderlessFullscreen();
-            } catch (Throwable var7) {
-               if (stack != null) {
-                  try {
-                     stack.close();
-                  } catch (Throwable var6) {
-                     var7.addSuppressed(var6);
-                  }
-               }
-
-               throw var7;
+      boolean var8;
+      label47: {
+         try {
+            SDL_DisplayMode mode = SDL_DisplayMode.malloc(stack);
+            if (SDLVideo.SDL_GetClosestFullscreenDisplayMode(monitor.id(), videoMode.getWidth(), videoMode.getHeight(), videoMode.getRefreshRate(), true, mode)
+               )
+             {
+               var8 = SDLVideo.SDL_SetWindowFullscreenMode(this.handle, mode);
+               break label47;
             }
 
+            LOGGER.warn("No matching exclusive fullscreen mode found for {}, falling back to borderless fullscreen", videoMode);
+            var8 = this.applyBorderlessFullscreen();
+         } catch (Throwable var7) {
             if (stack != null) {
-               stack.close();
+               try {
+                  stack.close();
+               } catch (Throwable var6) {
+                  var7.addSuppressed(var6);
+               }
             }
 
-            return var8;
+            throw var7;
          }
 
          if (stack != null) {
@@ -582,6 +583,12 @@ public final class Window implements AutoCloseable {
 
          return var8;
       }
+
+      if (stack != null) {
+         stack.close();
+      }
+
+      return var8;
    }
 
    private boolean applyWindowed() {
@@ -598,48 +605,43 @@ public final class Window implements AutoCloseable {
       if (monitor == null) {
          LOGGER.warn("Failed to find suitable monitor for borderless fullscreen, falling back to SDL borderless fullscreen");
          return this.applySdlBorderlessFullscreen();
-      } else {
-         MemoryStack stack = MemoryStack.stackPush();
+      }
 
-         boolean var8;
-         label65: {
-            label66: {
-               try {
-                  SDL_Rect bounds = SDL_Rect.malloc(stack);
-                  if (!SDLVideo.SDL_GetDisplayBounds(monitor.id(), bounds)) {
-                     LOGGER.warn("Failed to query bounds of monitor {}, falling back to SDL borderless fullscreen: {}", monitor, SDLError.SDL_GetError());
-                     var8 = this.applySdlBorderlessFullscreen();
-                     break label65;
-                  }
+      MemoryStack stack = MemoryStack.stackPush();
 
-                  if (this.applyBorderlessFullscreen() && SDLVideo.SDL_SetWindowFullscreen(this.handle, false)) {
-                     this.borderlessFullscreen = true;
-                     if (!SDLVideo.SDL_SetWindowBordered(this.handle, false)) {
-                        LOGGER.warn("Failed to remove window decorations for borderless fullscreen: {}", SDLError.SDL_GetError());
-                     }
-
-                     var8 = this.setWindowSizeAndPosition(bounds.x(), bounds.y(), bounds.w() + 1, bounds.h());
-                     break label66;
-                  }
-
-                  var8 = false;
-               } catch (Throwable var6) {
-                  if (stack != null) {
-                     try {
-                        stack.close();
-                     } catch (Throwable var5) {
-                        var6.addSuppressed(var5);
-                     }
-                  }
-
-                  throw var6;
+      boolean var8;
+      label65: {
+         label66: {
+            try {
+               SDL_Rect bounds = SDL_Rect.malloc(stack);
+               if (!SDLVideo.SDL_GetDisplayBounds(monitor.id(), bounds)) {
+                  LOGGER.warn("Failed to query bounds of monitor {}, falling back to SDL borderless fullscreen: {}", monitor, SDLError.SDL_GetError());
+                  var8 = this.applySdlBorderlessFullscreen();
+                  break label65;
                }
 
+               if (this.applyBorderlessFullscreen() && SDLVideo.SDL_SetWindowFullscreen(this.handle, false)) {
+                  this.restoreWindow();
+                  this.borderlessFullscreen = true;
+                  if (!SDLVideo.SDL_SetWindowBordered(this.handle, false)) {
+                     LOGGER.warn("Failed to remove window decorations for borderless fullscreen: {}", SDLError.SDL_GetError());
+                  }
+
+                  var8 = this.setWindowSizeAndPosition(bounds.x(), bounds.y(), bounds.w() + 1, bounds.h());
+                  break label66;
+               }
+
+               var8 = false;
+            } catch (Throwable var6) {
                if (stack != null) {
-                  stack.close();
+                  try {
+                     stack.close();
+                  } catch (Throwable var5) {
+                     var6.addSuppressed(var5);
+                  }
                }
 
-               return var8;
+               throw var6;
             }
 
             if (stack != null) {
@@ -655,6 +657,26 @@ public final class Window implements AutoCloseable {
 
          return var8;
       }
+
+      if (stack != null) {
+         stack.close();
+      }
+
+      return var8;
+   }
+
+   private void restoreWindow() {
+      if (!SDLVideo.SDL_RestoreWindow(this.handle)) {
+         LOGGER.warn("Failed to restore window before entering fullscreen: {}", SDLError.SDL_GetError());
+      } else {
+         this.syncWindow();
+      }
+   }
+
+   private void syncWindow() {
+      if (!SDLVideo.SDL_SyncWindow(this.handle)) {
+         LOGGER.warn("Failed to synchronize SDL window: {}", SDLError.SDL_GetError());
+      }
    }
 
    private boolean setWindowSizeAndPosition(final int windowX, final int windowY, final int windowWidth, final int windowHeight) {
@@ -664,13 +686,13 @@ public final class Window implements AutoCloseable {
       this.height = windowHeight;
       if (!SDLVideo.SDL_SetWindowSize(this.handle, this.width, this.height)) {
          return false;
-      } else {
-         if (!SDLVideo.SDL_SetWindowPosition(this.handle, this.x, this.y)) {
-            LOGGER.debug("Window manager declined window positioning: {}", SDLError.SDL_GetError());
-         }
-
-         return true;
       }
+
+      if (!SDLVideo.SDL_SetWindowPosition(this.handle, this.x, this.y)) {
+         LOGGER.debug("Window manager declined window positioning: {}", SDLError.SDL_GetError());
+      }
+
+      return true;
    }
 
    private boolean applyBorderlessFullscreen() {
@@ -724,10 +746,6 @@ public final class Window implements AutoCloseable {
 
    public long handle() {
       return this.handle;
-   }
-
-   public boolean isFullscreen() {
-      return this.fullscreen;
    }
 
    public void setFullscreen(final boolean fullscreen) {
@@ -788,8 +806,8 @@ public final class Window implements AutoCloseable {
 
    public void setGuiScale(final int guiScale) {
       this.guiScale = guiScale;
-      this.guiScaledWidth = (int)Math.ceil((double)this.framebufferWidth / (double)guiScale);
-      this.guiScaledHeight = (int)Math.ceil((double)this.framebufferHeight / (double)guiScale);
+      this.guiScaledWidth = (int)Math.ceil((double)this.framebufferWidth / guiScale);
+      this.guiScaledHeight = (int)Math.ceil((double)this.framebufferHeight / guiScale);
    }
 
    public float getPixelDensity() {
@@ -797,8 +815,7 @@ public final class Window implements AutoCloseable {
       return density > 0.0F ? density : 1.0F;
    }
 
-   @Nullable
-   public Monitor findBestMonitor() {
+   public @Nullable Monitor findBestMonitor() {
       return this.monitorManager.findBestMonitor(this);
    }
 
@@ -824,14 +841,14 @@ public final class Window implements AutoCloseable {
    }
 
    public float getAppropriateLineWidth() {
-      return Math.max(2.5F, (float)this.getWidth() / 1920.0F * 2.5F);
+      return Math.max(2.5F, this.getWidth() / 1920.0F * 2.5F);
    }
 
    private static int allowedWindowMinSize(final int size, final int minSize) {
       return Math.max(size, minSize);
    }
 
-   public static record FramebufferSize(int width, int height) {
+   public record FramebufferSize(int width, int height) {
    }
 
    public static class WindowInitFailed extends SilentInitException {

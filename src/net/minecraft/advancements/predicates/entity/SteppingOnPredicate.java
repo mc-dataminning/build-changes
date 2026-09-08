@@ -11,12 +11,12 @@ public record SteppingOnPredicate(LocationPredicate predicate) implements Entity
    public static final Codec<SteppingOnPredicate> CODEC = LocationPredicate.CODEC.xmap(SteppingOnPredicate::new, SteppingOnPredicate::predicate);
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
       if (!entity.onGround()) {
          return false;
-      } else {
-         Vec3 onPos = Vec3.atCenterOf(entity.getOnPos());
-         return this.predicate.matches(level, onPos.x(), onPos.y(), onPos.z());
       }
+
+      Vec3 onPos = Vec3.atCenterOf(entity.getOnPos());
+      return this.predicate.matches(level, onPos.x(), onPos.y(), onPos.z());
    }
 }

@@ -43,8 +43,8 @@ public abstract class ParticleGroup<P extends Particle> {
    private void tickParticle(final Particle particle) {
       try {
          particle.tick();
-      } catch (Throwable var5) {
-         CrashReport report = CrashReport.forThrowable(var5, "Ticking Particle");
+      } catch (Throwable t) {
+         CrashReport report = CrashReport.forThrowable(t, "Ticking Particle");
          CrashReportCategory category = report.addCategory("Particle being ticked");
          category.setDetail("Particle", particle::toString);
          category.setDetail("Particle Type", particle.getGroup()::toString);
@@ -56,17 +56,17 @@ public abstract class ParticleGroup<P extends Particle> {
       int currentSize = this.particles.size();
       if (currentSize >= 16384) {
          return false;
-      } else {
-         if (currentSize >= 12288) {
-            float freeSpace = (float)(16384 - currentSize) / 4096.0F;
-            if (this.engine.getRandom().nextFloat() >= freeSpace * freeSpace) {
-               return false;
-            }
-         }
-
-         this.particles.add((P)particle);
-         return true;
       }
+
+      if (currentSize >= 12288) {
+         float freeSpace = (16384 - currentSize) / 4096.0F;
+         if (this.engine.getRandom().nextFloat() >= freeSpace * freeSpace) {
+            return false;
+         }
+      }
+
+      this.particles.add((P)particle);
+      return true;
    }
 
    public int size() {

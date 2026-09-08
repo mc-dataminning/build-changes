@@ -45,9 +45,8 @@ public class PointedDripstoneBlock extends SpeleothemBlock {
       super(blockToGrowOn, properties);
    }
 
-   @LevelEvent.Value
    @Override
-   protected int getStalactiteLandingSound() {
+   protected @LevelEvent.Value int getStalactiteLandingSound() {
       return 1045;
    }
 
@@ -132,9 +131,9 @@ public class PointedDripstoneBlock extends SpeleothemBlock {
    ) {
       Vec3 offset = stalactiteTipState.getOffset(stalactiteTipPos);
       double PIXEL_SIZE = 0.0625;
-      double x = (double)stalactiteTipPos.getX() + 0.5 + offset.x;
-      double y = (double)stalactiteTipPos.getY() + STALACTITE_DRIP_START_PIXEL - 0.0625;
-      double z = (double)stalactiteTipPos.getZ() + 0.5 + offset.z;
+      double x = stalactiteTipPos.getX() + 0.5 + offset.x;
+      double y = stalactiteTipPos.getY() + STALACTITE_DRIP_START_PIXEL - 0.0625;
+      double z = stalactiteTipPos.getZ() + 0.5 + offset.z;
       ParticleOptions dripParticle = getDripParticle(level, fluidAbove, posAbove);
       level.addParticle(dripParticle, x, y, z, 0.0, 0.0, 0.0);
    }
@@ -142,22 +141,20 @@ public class PointedDripstoneBlock extends SpeleothemBlock {
    private static Optional<BlockPos> findRootBlock(final Level level, final BlockPos pos, final BlockState dripStoneState, final int maxSearchLength) {
       Direction tipDirection = dripStoneState.getValue(TIP_DIRECTION);
       BiPredicate<BlockPos, BlockState> pathPredicate = (pathPos, state) -> state.is(dripStoneState.getBlock())
-            && state.getValue(TIP_DIRECTION) == tipDirection;
+         && state.getValue(TIP_DIRECTION) == tipDirection;
       return findBlockVertical(
          level, pos, tipDirection.getOpposite().getAxisDirection(), pathPredicate, state -> !state.is(dripStoneState.getBlock()), maxSearchLength
       );
    }
 
-   @Nullable
-   private static BlockPos findFillableCauldronBelowStalactiteTip(final Level level, final BlockPos stalactiteTipPos, final Fluid fluid) {
+   private static @Nullable BlockPos findFillableCauldronBelowStalactiteTip(final Level level, final BlockPos stalactiteTipPos, final Fluid fluid) {
       Predicate<BlockState> cauldronPredicate = state -> state.getBlock() instanceof AbstractCauldronBlock
-            && ((AbstractCauldronBlock)state.getBlock()).canReceiveStalactiteDrip(fluid);
+         && ((AbstractCauldronBlock)state.getBlock()).canReceiveStalactiteDrip(fluid);
       BiPredicate<BlockPos, BlockState> pathPredicate = (pos, state) -> canDripThrough(level, pos, state);
       return findBlockVertical(level, stalactiteTipPos, Direction.DOWN.getAxisDirection(), pathPredicate, cauldronPredicate, 11).orElse(null);
    }
 
-   @Nullable
-   public static BlockPos findStalactiteTipAboveCauldron(final Level level, final BlockPos cauldronPos) {
+   public static @Nullable BlockPos findStalactiteTipAboveCauldron(final Level level, final BlockPos cauldronPos) {
       BiPredicate<BlockPos, BlockState> pathPredicate = (pos, state) -> canDripThrough(level, pos, state);
       return findBlockVertical(level, cauldronPos, Direction.UP.getAxisDirection(), pathPredicate, SpeleothemBlock::isFreeHangingStalactite, 11).orElse(null);
    }
@@ -212,16 +209,20 @@ public class PointedDripstoneBlock extends SpeleothemBlock {
    private static boolean canDripThrough(final BlockGetter level, final BlockPos pos, final BlockState state) {
       if (state.isAir()) {
          return true;
-      } else if (state.isSolidRender()) {
-         return false;
-      } else if (!state.getFluidState().isEmpty()) {
-         return false;
-      } else {
-         VoxelShape collisionShape = state.getCollisionShape(level, pos);
-         return !Shapes.joinIsNotEmpty(REQUIRED_SPACE_TO_DRIP_THROUGH_NON_SOLID_BLOCK, collisionShape, BooleanOp.AND);
       }
+
+      if (state.isSolidRender()) {
+         return false;
+      }
+
+      if (!state.getFluidState().isEmpty()) {
+         return false;
+      }
+
+      VoxelShape collisionShape = state.getCollisionShape(level, pos);
+      return !Shapes.joinIsNotEmpty(REQUIRED_SPACE_TO_DRIP_THROUGH_NON_SOLID_BLOCK, collisionShape, BooleanOp.AND);
    }
 
-   private static record FluidInfo(BlockPos pos, Fluid fluid, BlockState sourceState) {
+   private record FluidInfo(BlockPos pos, Fluid fluid, BlockState sourceState) {
    }
 }

@@ -14,12 +14,9 @@ import org.jspecify.annotations.Nullable;
 
 public class DamageSource {
    private final Holder<DamageType> type;
-   @Nullable
-   private final Entity causingEntity;
-   @Nullable
-   private final Entity directEntity;
-   @Nullable
-   private final Vec3 damageSourcePosition;
+   private final @Nullable Entity causingEntity;
+   private final @Nullable Entity directEntity;
+   private final @Nullable Vec3 damageSourcePosition;
 
    @Override
    public String toString() {
@@ -35,7 +32,7 @@ public class DamageSource {
    }
 
    private DamageSource(
-      final Holder<DamageType> type, @Nullable final Entity directEntity, @Nullable final Entity causingEntity, @Nullable final Vec3 damageSourcePosition
+      final Holder<DamageType> type, final @Nullable Entity directEntity, final @Nullable Entity causingEntity, final @Nullable Vec3 damageSourcePosition
    ) {
       this.type = type;
       this.causingEntity = causingEntity;
@@ -43,7 +40,7 @@ public class DamageSource {
       this.damageSourcePosition = damageSourcePosition;
    }
 
-   public DamageSource(final Holder<DamageType> type, @Nullable final Entity directEntity, @Nullable final Entity causingEntity) {
+   public DamageSource(final Holder<DamageType> type, final @Nullable Entity directEntity, final @Nullable Entity causingEntity) {
       this(type, directEntity, causingEntity, null);
    }
 
@@ -51,7 +48,7 @@ public class DamageSource {
       this(type, null, null, damageSourcePosition);
    }
 
-   public DamageSource(final Holder<DamageType> type, @Nullable final Entity causingEntity) {
+   public DamageSource(final Holder<DamageType> type, final @Nullable Entity causingEntity) {
       this(type, causingEntity, causingEntity);
    }
 
@@ -59,18 +56,15 @@ public class DamageSource {
       this(type, null, null, null);
    }
 
-   @Nullable
-   public Entity getDirectEntity() {
+   public @Nullable Entity getDirectEntity() {
       return this.directEntity;
    }
 
-   @Nullable
-   public Entity getEntity() {
+   public @Nullable Entity getEntity() {
       return this.causingEntity;
    }
 
-   @Nullable
-   public ItemStack getWeaponItem() {
+   public @Nullable ItemStack getWeaponItem() {
       return this.directEntity != null ? this.directEntity.getWeaponItem() : null;
    }
 
@@ -104,15 +98,10 @@ public class DamageSource {
    }
 
    public boolean isCreativePlayer() {
-      if (this.getEntity() instanceof Player player && player.getAbilities().instabuild) {
-         return true;
-      }
-
-      return false;
+      return this.getEntity() instanceof Player player && player.getAbilities().instabuild;
    }
 
-   @Nullable
-   public Vec3 getSourcePosition() {
+   public @Nullable Vec3 getSourcePosition() {
       if (this.damageSourcePosition != null) {
          return this.damageSourcePosition;
       } else {
@@ -120,8 +109,7 @@ public class DamageSource {
       }
    }
 
-   @Nullable
-   public Vec3 sourcePositionRaw() {
+   public @Nullable Vec3 sourcePositionRaw() {
       return this.damageSourcePosition;
    }
 

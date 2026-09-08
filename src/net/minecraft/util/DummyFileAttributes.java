@@ -59,9 +59,8 @@ public abstract class DummyFileAttributes implements BasicFileAttributes {
       return 0L;
    }
 
-   @Nullable
    @Override
-   public Object fileKey() {
+   public @Nullable Object fileKey() {
       return null;
    }
 }

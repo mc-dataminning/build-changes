@@ -17,12 +17,12 @@ import net.minecraft.world.level.Level;
 public class FireworkRocketRecipe extends CustomRecipe {
    public static final MapCodec<FireworkRocketRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Ingredient.CODEC.fieldOf("shell").forGetter(o -> o.shell),
-               Ingredient.CODEC.fieldOf("fuel").forGetter(o -> o.fuel),
-               Ingredient.CODEC.fieldOf("star").forGetter(o -> o.star),
-               ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
-            )
-            .apply(i, FireworkRocketRecipe::new)
+            Ingredient.CODEC.fieldOf("shell").forGetter(o -> o.shell),
+            Ingredient.CODEC.fieldOf("fuel").forGetter(o -> o.fuel),
+            Ingredient.CODEC.fieldOf("star").forGetter(o -> o.star),
+            ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
+         )
+         .apply(i, FireworkRocketRecipe::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, FireworkRocketRecipe> STREAM_CODEC = StreamCodec.composite(
       Ingredient.CONTENTS_STREAM_CODEC,
@@ -51,31 +51,31 @@ public class FireworkRocketRecipe extends CustomRecipe {
    public boolean matches(final CraftingInput input, final Level level) {
       if (input.ingredientCount() < 2) {
          return false;
-      } else {
-         boolean hasShell = false;
-         int fuelCount = 0;
+      }
 
-         for (int slot = 0; slot < input.size(); slot++) {
-            ItemStack itemStack = input.getItem(slot);
-            if (!itemStack.isEmpty()) {
-               if (this.shell.test(itemStack)) {
-                  if (hasShell) {
-                     return false;
-                  }
+      boolean hasShell = false;
+      int fuelCount = 0;
 
-                  hasShell = true;
-               } else if (this.fuel.test(itemStack)) {
-                  if (++fuelCount > 3) {
-                     return false;
-                  }
-               } else if (!this.star.test(itemStack)) {
+      for (int slot = 0; slot < input.size(); slot++) {
+         ItemStack itemStack = input.getItem(slot);
+         if (!itemStack.isEmpty()) {
+            if (this.shell.test(itemStack)) {
+               if (hasShell) {
                   return false;
                }
+
+               hasShell = true;
+            } else if (this.fuel.test(itemStack)) {
+               if (++fuelCount > 3) {
+                  return false;
+               }
+            } else if (!this.star.test(itemStack)) {
+               return false;
             }
          }
-
-         return hasShell && fuelCount >= 1;
       }
+
+      return hasShell && fuelCount >= 1;
    }
 
    public ItemStack assemble(final CraftingInput input) {

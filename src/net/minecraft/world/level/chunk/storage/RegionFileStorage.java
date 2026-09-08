@@ -37,8 +37,7 @@ public final class RegionFileStorage implements AutoCloseable {
       return this.folder.resolve("r." + pos.getRegionX() + "." + pos.getRegionZ() + ".mca");
    }
 
-   @Nullable
-   private RegionFile getRegionFile(final ChunkPos pos, final boolean create) throws IOException {
+   private @Nullable RegionFile getRegionFile(final ChunkPos pos, final boolean create) throws IOException {
       long key = ChunkPos.pack(pos.getRegionX(), pos.getRegionZ());
       Optional<RegionFile> cached = (Optional<RegionFile>)this.regionCache.getAndMoveToFirst(key);
       if (cached != null) {
@@ -77,22 +76,14 @@ public final class RegionFileStorage implements AutoCloseable {
       }
    }
 
-   @Nullable
-   public CompoundTag read(final ChunkPos pos) throws IOException {
+   public @Nullable CompoundTag read(final ChunkPos pos) throws IOException {
       RegionFile region = this.getRegionFile(pos, false);
       if (region == null) {
          return null;
-      } else {
-         CompoundTag var4;
-         try (DataInputStream regionChunkInputStream = region.getChunkDataInputStream(pos)) {
-            if (regionChunkInputStream == null) {
-               return null;
-            }
+      }
 
-            var4 = NbtIo.read(regionChunkInputStream);
-         }
-
-         return var4;
+      try (DataInputStream regionChunkInputStream = region.getChunkDataInputStream(pos)) {
+         return regionChunkInputStream == null ? null : NbtIo.read(regionChunkInputStream);
       }
    }
 
@@ -107,7 +98,7 @@ public final class RegionFileStorage implements AutoCloseable {
       }
    }
 
-   public void write(final ChunkPos pos, @Nullable final CompoundTag value) throws IOException {
+   public void write(final ChunkPos pos, final @Nullable CompoundTag value) throws IOException {
       if (!SharedConstants.DEBUG_DONT_SAVE_WORLD) {
          RegionFile region = this.getOrCreateRegionFile(pos);
          if (value == null) {
@@ -130,8 +121,8 @@ public final class RegionFileStorage implements AutoCloseable {
          if (!entry.isEmpty()) {
             try {
                entry.get().close();
-            } catch (IOException var5) {
-               exception.add(var5);
+            } catch (IOException e) {
+               exception.add(e);
             }
          }
       }

@@ -5,8 +5,8 @@ import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
 import com.mojang.renderpearl.api.commands.CommandEncoder;
 import com.mojang.renderpearl.api.device.GpuDevice;
 import java.nio.ByteBuffer;
-import java.util.Objects;
 import net.minecraft.client.renderer.MappableRingBuffer;
+import org.jspecify.annotations.Nullable;
 import org.lwjgl.system.MemoryUtil;
 
 public abstract class StagingBuffer implements AutoCloseable {
@@ -14,25 +14,27 @@ public abstract class StagingBuffer implements AutoCloseable {
    private int usedBufferCount;
 
    public static StagingBuffer create(final String name, final GpuDevice gpuDevice, final int bufferSize) {
-      return (StagingBuffer)(gpuDevice.getDeviceInfo().hintsAndWorkarounds().writeToBufferIsSlow() && gpuDevice.getDeviceInfo().features().persistentMapping()
+      return gpuDevice.getDeviceInfo().hintsAndWorkarounds().writeToBufferIsSlow() && gpuDevice.getDeviceInfo().features().persistentMapping()
          ? new StagingBuffer.PersistentlyMapped(name, bufferSize)
-         : new StagingBuffer.Cpu(bufferSize));
+         : new StagingBuffer.Cpu(bufferSize);
    }
 
-   public StagingBuffer.BufferHandle tryAppend(final ByteBuffer buffer) {
+   public StagingBuffer.@Nullable BufferHandle tryAppend(final ByteBuffer buffer) {
       int writeOffset = this.nextWriteOffset;
       int bufferSize = buffer.remaining();
       ByteBuffer writeBuffer = this.getWriteBuffer();
       if (bufferSize > writeBuffer.capacity()) {
          throw new IllegalArgumentException("Cannot fit allocation of size " + bufferSize + " into staging buffer of size " + writeBuffer.capacity());
-      } else if (bufferSize > writeBuffer.capacity() - writeOffset) {
-         return null;
-      } else {
-         MemoryUtil.memCopy(buffer, writeBuffer.position(writeOffset));
-         this.nextWriteOffset += bufferSize;
-         this.usedBufferCount++;
-         return new StagingBuffer.BufferHandle(writeOffset, bufferSize);
       }
+
+      if (bufferSize > writeBuffer.capacity() - writeOffset) {
+         return null;
+      }
+
+      MemoryUtil.memCopy(buffer, writeBuffer.position(writeOffset));
+      this.nextWriteOffset += bufferSize;
+      this.usedBufferCount++;
+      return new StagingBuffer.BufferHandle(writeOffset, bufferSize);
    }
 
    protected abstract ByteBuffer getWriteBuffer();
@@ -62,8 +64,6 @@ public abstract class StagingBuffer implements AutoCloseable {
       private boolean closed;
 
       public BufferHandle(final int offset, final int size) {
-         Objects.requireNonNull(StagingBuffer.this);
-         super();
          this.offset = offset;
          this.size = size;
       }
@@ -71,13 +71,15 @@ public abstract class StagingBuffer implements AutoCloseable {
       private void checkValidFor(final StagingBuffer stagingBuffer) {
          if (this.closed) {
             throw new IllegalStateException("Buffer has already been closed");
-         } else if (stagingBuffer != StagingBuffer.this) {
+         }
+
+         if (stagingBuffer != StagingBuffer.this) {
             throw new IllegalArgumentException("Buffer is not valid for " + stagingBuffer);
          }
       }
 
       public long size() {
-         return (long)this.size;
+         return this.size;
       }
 
       @Override
@@ -155,14 +157,12 @@ public abstract class StagingBuffer implements AutoCloseable {
       private final CommandEncoder encoder;
 
       public Uploader(final CommandEncoder encoder) {
-         Objects.requireNonNull(StagingBuffer.this);
-         super();
          this.encoder = encoder;
       }
 
       public void copyTo(final StagingBuffer.BufferHandle srcBuffer, final GpuBuffer dstBuffer, final long dstOffset) {
          srcBuffer.checkValidFor(StagingBuffer.this);
-         StagingBuffer.this.copyTo(this.encoder, dstBuffer, dstOffset, (long)srcBuffer.offset, (long)srcBuffer.size);
+         StagingBuffer.this.copyTo(this.encoder, dstBuffer, dstOffset, srcBuffer.offset, srcBuffer.size);
       }
 
       @Override

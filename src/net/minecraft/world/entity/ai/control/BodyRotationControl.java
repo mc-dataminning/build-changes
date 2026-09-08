@@ -38,17 +38,17 @@ public class BodyRotationControl implements Control {
    }
 
    private void rotateBodyIfNecessary() {
-      this.mob.yBodyRot = Mth.rotateIfNecessary(this.mob.yBodyRot, this.mob.yHeadRot, (float)this.mob.getMaxHeadYRot());
+      this.mob.yBodyRot = Mth.rotateIfNecessary(this.mob.yBodyRot, this.mob.yHeadRot, this.mob.getMaxHeadYRot());
    }
 
    private void rotateHeadIfNecessary() {
-      this.mob.yHeadRot = Mth.rotateIfNecessary(this.mob.yHeadRot, this.mob.yBodyRot, (float)this.mob.getMaxHeadYRot());
+      this.mob.yHeadRot = Mth.rotateIfNecessary(this.mob.yHeadRot, this.mob.yBodyRot, this.mob.getMaxHeadYRot());
    }
 
    private void rotateHeadTowardsFront() {
       int timeSinceStartingToFaceForward = this.headStableTime - 10;
-      float faceForwardFraction = Mth.clamp((float)timeSinceStartingToFaceForward / 10.0F, 0.0F, 1.0F);
-      float angleRemainingUntilFacingForward = (float)this.mob.getMaxHeadYRot() * (1.0F - faceForwardFraction);
+      float faceForwardFraction = Mth.clamp(timeSinceStartingToFaceForward / 10.0F, 0.0F, 1.0F);
+      float angleRemainingUntilFacingForward = this.mob.getMaxHeadYRot() * (1.0F - faceForwardFraction);
       this.mob.yBodyRot = Mth.rotateIfNecessary(this.mob.yBodyRot, this.mob.yHeadRot, angleRemainingUntilFacingForward);
    }
 

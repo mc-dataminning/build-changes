@@ -69,36 +69,36 @@ public class DatapackStructureReport implements DataProvider {
       return result;
    }
 
-   private static record CustomPackEntry(DatapackStructureReport.Format format, DatapackStructureReport.Entry entry) {
+   private record CustomPackEntry(DatapackStructureReport.Format format, DatapackStructureReport.Entry entry) {
       public static final Codec<DatapackStructureReport.CustomPackEntry> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  DatapackStructureReport.Format.CODEC.fieldOf("format").forGetter(DatapackStructureReport.CustomPackEntry::format),
-                  DatapackStructureReport.Entry.MAP_CODEC.forGetter(DatapackStructureReport.CustomPackEntry::entry)
-               )
-               .apply(i, DatapackStructureReport.CustomPackEntry::new)
+               DatapackStructureReport.Format.CODEC.fieldOf("format").forGetter(DatapackStructureReport.CustomPackEntry::format),
+               DatapackStructureReport.Entry.MAP_CODEC.forGetter(DatapackStructureReport.CustomPackEntry::entry)
+            )
+            .apply(i, DatapackStructureReport.CustomPackEntry::new)
       );
    }
 
-   private static record Entry(boolean elements, boolean tags, boolean stable) {
+   private record Entry(boolean elements, boolean tags, boolean stable) {
       public static final MapCodec<DatapackStructureReport.Entry> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Codec.BOOL.fieldOf("elements").forGetter(DatapackStructureReport.Entry::elements),
-                  Codec.BOOL.fieldOf("tags").forGetter(DatapackStructureReport.Entry::tags),
-                  Codec.BOOL.fieldOf("stable").forGetter(DatapackStructureReport.Entry::stable)
-               )
-               .apply(i, DatapackStructureReport.Entry::new)
+               Codec.BOOL.fieldOf("elements").forGetter(DatapackStructureReport.Entry::elements),
+               Codec.BOOL.fieldOf("tags").forGetter(DatapackStructureReport.Entry::tags),
+               Codec.BOOL.fieldOf("stable").forGetter(DatapackStructureReport.Entry::stable)
+            )
+            .apply(i, DatapackStructureReport.Entry::new)
       );
       public static final Codec<DatapackStructureReport.Entry> CODEC = MAP_CODEC.codec();
    }
 
-   private static enum Format implements StringRepresentable {
+   private enum Format implements StringRepresentable {
       STRUCTURE("structure"),
       MCFUNCTION("mcfunction");
 
       public static final Codec<DatapackStructureReport.Format> CODEC = StringRepresentable.fromEnum(DatapackStructureReport.Format::values);
       private final String name;
 
-      private Format(final String name) {
+      Format(final String name) {
          this.name = name;
       }
 
@@ -108,19 +108,19 @@ public class DatapackStructureReport implements DataProvider {
       }
    }
 
-   private static record Report(
+   private record Report(
       Map<ResourceKey<? extends Registry<?>>, DatapackStructureReport.Entry> registries, Map<String, DatapackStructureReport.CustomPackEntry> others
    ) {
       public static final Codec<DatapackStructureReport.Report> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Codec.unboundedMap(DatapackStructureReport.REGISTRY_KEY_CODEC, DatapackStructureReport.Entry.CODEC)
-                     .fieldOf("registries")
-                     .forGetter(DatapackStructureReport.Report::registries),
-                  Codec.unboundedMap(Codec.STRING, DatapackStructureReport.CustomPackEntry.CODEC)
-                     .fieldOf("others")
-                     .forGetter(DatapackStructureReport.Report::others)
-               )
-               .apply(i, DatapackStructureReport.Report::new)
+               Codec.unboundedMap(DatapackStructureReport.REGISTRY_KEY_CODEC, DatapackStructureReport.Entry.CODEC)
+                  .fieldOf("registries")
+                  .forGetter(DatapackStructureReport.Report::registries),
+               Codec.unboundedMap(Codec.STRING, DatapackStructureReport.CustomPackEntry.CODEC)
+                  .fieldOf("others")
+                  .forGetter(DatapackStructureReport.Report::others)
+            )
+            .apply(i, DatapackStructureReport.Report::new)
       );
    }
 }

@@ -50,8 +50,8 @@ public final class MinecraftServerStatistics implements DynamicMBean {
    public static void registerJmxMonitoring(final MinecraftServer server) {
       try {
          ManagementFactory.getPlatformMBeanServer().registerMBean(new MinecraftServerStatistics(server), new ObjectName("net.minecraft.server:type=Server"));
-      } catch (InstanceAlreadyExistsException | MBeanRegistrationException | NotCompliantMBeanException | MalformedObjectNameException var2) {
-         LOGGER.warn("Failed to initialise server as JMX bean", var2);
+      } catch (MalformedObjectNameException | InstanceAlreadyExistsException | MBeanRegistrationException | NotCompliantMBeanException e) {
+         LOGGER.warn("Failed to initialise server as JMX bean", e);
       }
    }
 
@@ -63,9 +63,8 @@ public final class MinecraftServerStatistics implements DynamicMBean {
       return this.server.getTickTimesNanos();
    }
 
-   @Nullable
    @Override
-   public Object getAttribute(final String attribute) {
+   public @Nullable Object getAttribute(final String attribute) {
       MinecraftServerStatistics.AttributeDescription attributeDescription = this.attributeDescriptionByName.get(attribute);
       return attributeDescription == null ? null : attributeDescription.getter.get();
    }
@@ -89,9 +88,8 @@ public final class MinecraftServerStatistics implements DynamicMBean {
       return new AttributeList();
    }
 
-   @Nullable
    @Override
-   public Object invoke(final String actionName, final Object[] params, final String[] signature) {
+   public @Nullable Object invoke(final String actionName, final Object[] params, final String[] signature) {
       return null;
    }
 

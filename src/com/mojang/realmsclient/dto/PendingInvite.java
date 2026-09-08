@@ -12,8 +12,7 @@ import org.slf4j.Logger;
 public record PendingInvite(String invitationId, String realmName, String realmOwnerName, UUID realmOwnerUuid, Instant date) {
    private static final Logger LOGGER = LogUtils.getLogger();
 
-   @Nullable
-   public static PendingInvite parse(final JsonObject json) {
+   public static @Nullable PendingInvite parse(final JsonObject json) {
       try {
          return new PendingInvite(
             JsonUtils.getStringOr("invitationId", json, ""),
@@ -22,8 +21,8 @@ public record PendingInvite(String invitationId, String realmName, String realmO
             JsonUtils.getUuidOr("worldOwnerUuid", json, Util.NIL_UUID),
             JsonUtils.getDateOr("date", json)
          );
-      } catch (Exception var2) {
-         LOGGER.error("Could not parse PendingInvite", var2);
+      } catch (Exception e) {
+         LOGGER.error("Could not parse PendingInvite", e);
          return null;
       }
    }

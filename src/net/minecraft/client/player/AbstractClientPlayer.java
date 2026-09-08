@@ -17,8 +17,7 @@ import net.minecraft.world.level.GameType;
 import org.jspecify.annotations.Nullable;
 
 public abstract class AbstractClientPlayer extends Player implements ClientAvatarEntity {
-   @Nullable
-   private PlayerInfo playerInfo;
+   private @Nullable PlayerInfo playerInfo;
    private final boolean showExtraEars;
    private final ClientAvatarState clientAvatarState = new ClientAvatarState();
 
@@ -27,15 +26,13 @@ public abstract class AbstractClientPlayer extends Player implements ClientAvata
       this.showExtraEars = "deadmau5".equals(this.getGameProfile().name());
    }
 
-   @Nullable
    @Override
-   public GameType gameMode() {
+   public @Nullable GameType gameMode() {
       PlayerInfo info = this.getPlayerInfo();
       return info != null ? info.getGameMode() : null;
    }
 
-   @Nullable
-   protected PlayerInfo getPlayerInfo() {
+   protected @Nullable PlayerInfo getPlayerInfo() {
       if (this.playerInfo == null) {
          this.playerInfo = Minecraft.getInstance().getConnection().getPlayerInfo(this.getUUID());
       }
@@ -64,9 +61,8 @@ public abstract class AbstractClientPlayer extends Player implements ClientAvata
       return info == null ? DefaultPlayerSkin.get(this.getUUID()) : info.getSkin();
    }
 
-   @Nullable
    @Override
-   public Parrot.Variant getParrotVariantOnShoulder(final boolean left) {
+   public Parrot.@Nullable Variant getParrotVariantOnShoulder(final boolean left) {
       return (left ? this.getShoulderParrotLeft() : this.getShoulderParrotRight()).orElse(null);
    }
 
@@ -107,7 +103,7 @@ public abstract class AbstractClientPlayer extends Player implements ClientAvata
 
       if (this.isUsingItem()) {
          if (this.getUseItem().is(Items.BOW)) {
-            float scale = Math.min((float)this.getTicksUsingItem() / 20.0F, 1.0F);
+            float scale = Math.min(this.getTicksUsingItem() / 20.0F, 1.0F);
             modifier *= 1.0F - Mth.square(scale) * 0.15F;
          } else if (firstPerson && this.isScoping()) {
             return 0.1F;

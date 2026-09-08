@@ -48,13 +48,11 @@ public class EntityLookup<T extends EntityAccess> {
       this.byId.remove(entity.getId());
    }
 
-   @Nullable
-   public T getEntity(final int id) {
+   public @Nullable T getEntity(final int id) {
       return (T)this.byId.get(id);
    }
 
-   @Nullable
-   public T getEntity(final UUID id) {
+   public @Nullable T getEntity(final UUID id) {
       return this.byUuid.get(id);
    }
 

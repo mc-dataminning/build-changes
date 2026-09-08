@@ -44,15 +44,15 @@ public class GeyserPlumeParticle extends SingleQuadParticle {
       this.lifetime = plumeHeight * 5;
       this.yd = 0.0;
       this.startY = y;
-      this.maxY = this.startY + (double)plumeHeight - 1.0;
+      this.maxY = this.startY + plumeHeight - 1.0;
       this.horizontalSprayX = (level.getRandom().nextFloat() - 0.5F) * 0.2F;
       this.horizontalSprayZ = (level.getRandom().nextFloat() - 0.5F) * 0.2F;
       this.friction = 1.0F;
-      this.initialPropulsion = (options.waterBlocks() == 1 ? 1.5F : 1.0F) * (float)plumeHeight * 1.45F;
+      this.initialPropulsion = (options.waterBlocks() == 1 ? 1.5F : 1.0F) * plumeHeight * 1.45F;
       this.gravity = -this.initialPropulsion;
       float initiallyRandomizedSize = this.quadSize * 0.75F;
-      this.minSize = initiallyRandomizedSize * (2.0F + (float)plumeHeight / 8.0F);
-      this.maxSize = initiallyRandomizedSize * (3.0F + (float)plumeHeight / 8.0F);
+      this.minSize = initiallyRandomizedSize * (2.0F + plumeHeight / 8.0F);
+      this.maxSize = initiallyRandomizedSize * (3.0F + plumeHeight / 8.0F);
       this.quadSize = this.minSize;
       this.sprites = sprites;
       this.setSpriteFromAge(sprites);
@@ -70,10 +70,10 @@ public class GeyserPlumeParticle extends SingleQuadParticle {
       double yProgressLinear = Math.clamp((this.y - this.startY) / (this.maxY - this.startY), 0.0, 1.0);
       double yProgressExponential = Math.pow(yProgressLinear, 3.0);
       this.gravity = this.initialPropulsion * (float)yProgressExponential * 0.12F;
-      this.xd = yProgressLinear * (double)this.horizontalSprayX;
-      this.zd = yProgressLinear * (double)this.horizontalSprayZ;
+      this.xd = yProgressLinear * this.horizontalSprayX;
+      this.zd = yProgressLinear * this.horizontalSprayZ;
       this.setSpriteFromAge(this.sprites);
-      this.quadSize = this.minSize + (float)(yProgressLinear * (double)(this.maxSize - this.minSize));
+      this.quadSize = this.minSize + (float)(yProgressLinear * (this.maxSize - this.minSize));
    }
 
    @Override
@@ -88,8 +88,7 @@ public class GeyserPlumeParticle extends SingleQuadParticle {
          this.sprites = sprites;
       }
 
-      @Nullable
-      public Particle createParticle(
+      public @Nullable Particle createParticle(
          final GeyserParticleOptions options,
          final ClientLevel level,
          final double x,
@@ -100,9 +99,9 @@ public class GeyserPlumeParticle extends SingleQuadParticle {
          final double zAux,
          final RandomSource random
       ) {
-         double randomX = x + (double)((random.nextFloat() - 0.5F) * 0.2F);
-         double randomY = y + (double)random.nextFloat();
-         double randomZ = z + (double)((random.nextFloat() - 0.5F) * 0.2F);
+         double randomX = x + (random.nextFloat() - 0.5F) * 0.2F;
+         double randomY = y + random.nextFloat();
+         double randomZ = z + (random.nextFloat() - 0.5F) * 0.2F;
          return new GeyserPlumeParticle(level, randomX, randomY, randomZ, xAux, yAux, zAux, options, this.sprites);
       }
    }

@@ -102,19 +102,19 @@ public class RemoveBlockEntityTagFix extends DataFix {
          chunkType,
          chunkTypeOut,
          input -> input.update(blockEntitiesF, blockEntitiesTypeOut, listTag -> {
-               ArrayList<Object> keptBlockEntities = new ArrayList<>();
+            ArrayList<Object> keptBlockEntities = new ArrayList<>();
 
-               for (Object untypedBlockEntity : listTag) {
-                  Typed<?> typedBlockEntity = ExtraDataFixUtils.cast(blockEntityElementsType, untypedBlockEntity, input.getOps());
-                  Typed<?> typedBlockEntityUnwrapped = typedBlockEntity.getOrCreateTyped(blockEntityTypeFinder);
-                  String blockEntityId = typedBlockEntityUnwrapped.getOptional(blockEntityIdF).orElse("");
-                  if (!this.blockEntityIdsToDrop.contains(blockEntityId)) {
-                     keptBlockEntities.add(untypedBlockEntity);
-                  }
+            for (Object untypedBlockEntity : listTag) {
+               Typed<?> typedBlockEntity = ExtraDataFixUtils.cast(blockEntityElementsType, untypedBlockEntity, input.getOps());
+               Typed<?> typedBlockEntityUnwrapped = typedBlockEntity.getOrCreateTyped(blockEntityTypeFinder);
+               String blockEntityId = typedBlockEntityUnwrapped.getOptional(blockEntityIdF).orElse("");
+               if (!this.blockEntityIdsToDrop.contains(blockEntityId)) {
+                  keptBlockEntities.add(untypedBlockEntity);
                }
+            }
 
-               return List.copyOf(keptBlockEntities);
-            })
+            return List.copyOf(keptBlockEntities);
+         })
       );
    }
 
@@ -132,11 +132,11 @@ public class RemoveBlockEntityTagFix extends DataFix {
       Optional<? extends Typed<?>> maybeBlockEntity = tag.getOptionalTyped(blockEntityF);
       if (maybeBlockEntity.isEmpty()) {
          return tag;
-      } else {
-         String blockEntityId = maybeBlockEntity.get().getOptional(blockEntityIdF).orElse("");
-         return !this.blockEntityIdsToDrop.contains(blockEntityId)
-            ? tag
-            : Util.writeAndReadTypedOrThrow(tag, tag.getType(), tagData -> tagData.remove(blockEntityFieldName));
       }
+
+      String blockEntityId = maybeBlockEntity.get().getOptional(blockEntityIdF).orElse("");
+      return !this.blockEntityIdsToDrop.contains(blockEntityId)
+         ? tag
+         : Util.writeAndReadTypedOrThrow(tag, tag.getType(), tagData -> tagData.remove(blockEntityFieldName));
    }
 }

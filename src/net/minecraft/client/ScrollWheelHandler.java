@@ -21,11 +21,11 @@ public class ScrollWheelHandler {
       int wheelY = (int)this.accumulatedScrollY;
       if (wheelX == 0 && wheelY == 0) {
          return new Vector2i(0, 0);
-      } else {
-         this.accumulatedScrollX -= (double)wheelX;
-         this.accumulatedScrollY -= (double)wheelY;
-         return new Vector2i(wheelX, wheelY);
       }
+
+      this.accumulatedScrollX -= wheelX;
+      this.accumulatedScrollY -= wheelY;
+      return new Vector2i(wheelX, wheelY);
    }
 
    public static int getNextScrollWheelSelection(final double wheel, int currentSelected, final int limit) {

@@ -26,15 +26,13 @@ public class CalibratedSculkSensorBlock extends SculkSensorBlock {
       this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));
    }
 
-   @Nullable
    @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
+   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
       return new CalibratedSculkSensorBlockEntity(worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return !level.isClientSide()
          ? createTickerHelper(
             type,
@@ -44,9 +42,8 @@ public class CalibratedSculkSensorBlock extends SculkSensorBlock {
          : null;
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection());
    }
 

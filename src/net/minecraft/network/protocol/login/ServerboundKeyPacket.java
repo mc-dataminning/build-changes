@@ -47,7 +47,7 @@ public class ServerboundKeyPacket implements Packet<ServerLoginPacketListener> {
    public boolean isChallengeValid(final byte[] challenge, final PrivateKey privateKey) {
       try {
          return Arrays.equals(challenge, Crypt.decryptUsingKey(privateKey, this.encryptedChallenge));
-      } catch (CryptException var4) {
+      } catch (CryptException e) {
          return false;
       }
    }

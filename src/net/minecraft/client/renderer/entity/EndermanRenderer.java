@@ -29,7 +29,7 @@ public class EndermanRenderer extends MobRenderer<Enderman, EndermanRenderState,
    public Vec3 getRenderOffset(final EndermanRenderState state) {
       Vec3 offset = super.getRenderOffset(state);
       if (state.isCreepy) {
-         double d = 0.02 * (double)state.scale;
+         double d = 0.02 * state.scale;
          return offset.add(this.random.nextGaussian() * d, 0.0, this.random.nextGaussian() * d);
       } else {
          return offset;

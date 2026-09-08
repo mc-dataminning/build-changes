@@ -10,8 +10,7 @@ import org.jspecify.annotations.Nullable;
 
 public class PacketBundlePacker extends MessageToMessageDecoder<Packet<?>> {
    private final BundlerInfo bundlerInfo;
-   @Nullable
-   private BundlerInfo.Bundler currentBundler;
+   private BundlerInfo.@Nullable Bundler currentBundler;
 
    public PacketBundlePacker(final BundlerInfo bundlerInfo) {
       this.bundlerInfo = bundlerInfo;

@@ -22,10 +22,10 @@ public class FileFixUtil {
          Path toAbsolute = baseDirectory.resolve(to);
          if (Files.exists(toAbsolute)) {
             throw new FileAlreadyExistsException(String.format(Locale.ROOT, "Cannot move file from %s to %s: Target already exists", from, to));
-         } else {
-            FileUtil.createDirectoriesSafe(toAbsolute.getParent());
-            Files.move(fromAbsolute, toAbsolute, StandardCopyOption.COPY_ATTRIBUTES);
          }
+
+         FileUtil.createDirectoriesSafe(toAbsolute.getParent());
+         Files.move(fromAbsolute, toAbsolute, StandardCopyOption.COPY_ATTRIBUTES);
       }
    }
 
@@ -45,16 +45,16 @@ public class FileFixUtil {
                }
 
                List var12;
-               try (Stream<Path> pathsx = Files.list(toDelete)) {
-                  var12 = pathsx.toList();
+               try (Stream<Path> paths = Files.list(toDelete)) {
+                  var12 = paths.toList();
                }
 
                if (!var12.isEmpty()) {
                   LOGGER.warn("Failed to delete directory '{}', as it's not empty. Content: {}", toDelete, var12);
                   return;
                }
-            } catch (IOException var11) {
-               LOGGER.warn("Failed to delete directory '{}' because {}", toDelete, var11.toString());
+            } catch (IOException e) {
+               LOGGER.warn("Failed to delete directory '{}' because {}", toDelete, e.toString());
                return;
             }
          }

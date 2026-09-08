@@ -14,7 +14,7 @@ public enum TickPriority {
    public static final Codec<TickPriority> CODEC = Codec.INT.xmap(TickPriority::byValue, TickPriority::getValue);
    private final int value;
 
-   private TickPriority(final int value) {
+   TickPriority(final int value) {
       this.value = value;
    }
 

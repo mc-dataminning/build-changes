@@ -50,14 +50,7 @@ public class PathfindingRenderer implements DebugRenderer.SimpleDebugRenderer {
       BlockPos pos = path.getTarget();
       if (distanceToCamera(pos, camX, camY, camZ) <= 80.0F) {
          Gizmos.cuboid(
-            new AABB(
-               (double)((float)pos.getX() + 0.25F),
-               (double)((float)pos.getY() + 0.25F),
-               (double)pos.getZ() + 0.25,
-               (double)((float)pos.getX() + 0.75F),
-               (double)((float)pos.getY() + 0.75F),
-               (double)((float)pos.getZ() + 0.75F)
-            ),
+            new AABB(pos.getX() + 0.25F, pos.getY() + 0.25F, pos.getZ() + 0.25, pos.getX() + 0.75F, pos.getY() + 0.75F, pos.getZ() + 0.75F),
             GizmoStyle.fill(ARGB.colorFromFloat(0.5F, 0.0F, 1.0F, 0.0F))
          );
 
@@ -67,12 +60,12 @@ public class PathfindingRenderer implements DebugRenderer.SimpleDebugRenderer {
                float r = i == path.getNextNodeIndex() ? 1.0F : 0.0F;
                float b = i == path.getNextNodeIndex() ? 0.0F : 1.0F;
                AABB aabb = new AABB(
-                  (double)((float)n.x + 0.5F - maxNodeDistance),
-                  (double)((float)n.y + 0.01F * (float)i),
-                  (double)((float)n.z + 0.5F - maxNodeDistance),
-                  (double)((float)n.x + 0.5F + maxNodeDistance),
-                  (double)((float)n.y + 0.25F + 0.01F * (float)i),
-                  (double)((float)n.z + 0.5F + maxNodeDistance)
+                  n.x + 0.5F - maxNodeDistance,
+                  n.y + 0.01F * i,
+                  n.z + 0.5F - maxNodeDistance,
+                  n.x + 0.5F + maxNodeDistance,
+                  n.y + 0.25F + 0.01F * i,
+                  n.z + 0.5F + maxNodeDistance
                );
                Gizmos.cuboid(aabb, GizmoStyle.fill(ARGB.colorFromFloat(0.5F, r, 0.0F, b)));
             }
@@ -85,28 +78,28 @@ public class PathfindingRenderer implements DebugRenderer.SimpleDebugRenderer {
             if (distanceToCamera(node.asBlockPos(), camX, camY, camZ) <= 80.0F) {
                Gizmos.cuboid(
                   new AABB(
-                     (double)((float)node.x + 0.5F - maxNodeDistance / 2.0F),
-                     (double)((float)node.y + 0.01F),
-                     (double)((float)node.z + 0.5F - maxNodeDistance / 2.0F),
-                     (double)((float)node.x + 0.5F + maxNodeDistance / 2.0F),
-                     (double)node.y + 0.1,
-                     (double)((float)node.z + 0.5F + maxNodeDistance / 2.0F)
+                     node.x + 0.5F - maxNodeDistance / 2.0F,
+                     node.y + 0.01F,
+                     node.z + 0.5F - maxNodeDistance / 2.0F,
+                     node.x + 0.5F + maxNodeDistance / 2.0F,
+                     node.y + 0.1,
+                     node.z + 0.5F + maxNodeDistance / 2.0F
                   ),
                   GizmoStyle.fill(ARGB.colorFromFloat(0.5F, 1.0F, 0.8F, 0.8F))
                );
             }
          }
 
-         for (Node nodex : debugData.openSet()) {
-            if (distanceToCamera(nodex.asBlockPos(), camX, camY, camZ) <= 80.0F) {
+         for (Node node : debugData.openSet()) {
+            if (distanceToCamera(node.asBlockPos(), camX, camY, camZ) <= 80.0F) {
                Gizmos.cuboid(
                   new AABB(
-                     (double)((float)nodex.x + 0.5F - maxNodeDistance / 2.0F),
-                     (double)((float)nodex.y + 0.01F),
-                     (double)((float)nodex.z + 0.5F - maxNodeDistance / 2.0F),
-                     (double)((float)nodex.x + 0.5F + maxNodeDistance / 2.0F),
-                     (double)nodex.y + 0.1,
-                     (double)((float)nodex.z + 0.5F + maxNodeDistance / 2.0F)
+                     node.x + 0.5F - maxNodeDistance / 2.0F,
+                     node.y + 0.01F,
+                     node.z + 0.5F - maxNodeDistance / 2.0F,
+                     node.x + 0.5F + maxNodeDistance / 2.0F,
+                     node.y + 0.1,
+                     node.z + 0.5F + maxNodeDistance / 2.0F
                   ),
                   GizmoStyle.fill(ARGB.colorFromFloat(0.5F, 0.8F, 1.0F, 1.0F))
                );
@@ -115,18 +108,14 @@ public class PathfindingRenderer implements DebugRenderer.SimpleDebugRenderer {
       }
 
       if (renderGroundLabels) {
-         for (int ix = 0; ix < path.getNodeCount(); ix++) {
-            Node n = path.getNode(ix);
+         for (int i = 0; i < path.getNodeCount(); i++) {
+            Node n = path.getNode(i);
             if (distanceToCamera(n.asBlockPos(), camX, camY, camZ) <= 80.0F) {
-               Gizmos.billboardText(
-                     String.valueOf(n.type),
-                     new Vec3((double)n.x + 0.5, (double)n.y + 0.75, (double)n.z + 0.5),
-                     TextGizmo.Style.whiteAndCentered().withScale(0.32F)
-                  )
+               Gizmos.billboardText(String.valueOf(n.type), new Vec3(n.x + 0.5, n.y + 0.75, n.z + 0.5), TextGizmo.Style.whiteAndCentered().withScale(0.32F))
                   .setAlwaysOnTop();
                Gizmos.billboardText(
                      String.format(Locale.ROOT, "%.2f", n.costMalus),
-                     new Vec3((double)n.x + 0.5, (double)n.y + 0.25, (double)n.z + 0.5),
+                     new Vec3(n.x + 0.5, n.y + 0.25, n.z + 0.5),
                      TextGizmo.Style.whiteAndCentered().withScale(0.32F)
                   )
                   .setAlwaysOnTop();
@@ -144,7 +133,7 @@ public class PathfindingRenderer implements DebugRenderer.SimpleDebugRenderer {
             if (distanceToCamera(n.asBlockPos(), camX, camY, camZ) > 80.0F) {
                last = n.asVec3();
             } else {
-               float hue = (float)i / (float)path.getNodeCount() * 0.33F;
+               float hue = (float)i / path.getNodeCount() * 0.33F;
                int color = ARGB.opaque(Mth.hsvToRgb(hue, 0.9F, 0.9F));
                Gizmos.arrow(last.add(0.5, 0.5, 0.5), n.asVec3().add(0.5, 0.5, 0.5), color);
                last = n.asVec3();
@@ -154,6 +143,6 @@ public class PathfindingRenderer implements DebugRenderer.SimpleDebugRenderer {
    }
 
    private static float distanceToCamera(final BlockPos n, final double camX, final double camY, final double camZ) {
-      return (float)(Math.abs((double)n.getX() - camX) + Math.abs((double)n.getY() - camY) + Math.abs((double)n.getZ() - camZ));
+      return (float)(Math.abs(n.getX() - camX) + Math.abs(n.getY() - camY) + Math.abs(n.getZ() - camZ));
    }
 }

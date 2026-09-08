@@ -87,13 +87,13 @@ public class FogRenderer implements AutoCloseable {
 
    public GpuBufferSlice getBuffer(final FogRenderer.FogMode mode) {
       if (!fogEnabled) {
-         return this.emptyBuffer.slice(0L, (long)FOG_UBO_SIZE);
-      } else {
-         return switch (mode) {
-            case NONE -> this.emptyBuffer.slice(0L, (long)FOG_UBO_SIZE);
-            case WORLD -> this.regularBuffer.currentBuffer().slice(0L, (long)FOG_UBO_SIZE);
-         };
+         return this.emptyBuffer.slice(0L, FOG_UBO_SIZE);
       }
+
+      return switch (mode) {
+         case NONE -> this.emptyBuffer.slice(0L, FOG_UBO_SIZE);
+         case WORLD -> this.regularBuffer.currentBuffer().slice(0L, FOG_UBO_SIZE);
+      };
    }
 
    private void computeFogColor(
@@ -118,60 +118,55 @@ public class FogRenderer implements AutoCloseable {
 
       if (colorSourceEnvironment == null) {
          throw new IllegalStateException("No color source environment found");
-      } else {
-         Vector3fc color = colorSourceEnvironment.getBaseColor(level, camera, renderDistance, partialTicks);
-         float voidDarknessOnsetRange = level.getLevelData().voidDarknessOnsetRange();
-         float darkness = Mth.clamp((voidDarknessOnsetRange + (float)level.getMinY() - (float)camera.position().y) / voidDarknessOnsetRange, 0.0F, 1.0F);
-         if (darknessModifyingEnvironment != null) {
-            LivingEntity livingEntity = (LivingEntity)entity;
-            darkness = darknessModifyingEnvironment.getModifiedDarkness(livingEntity, darkness, partialTicks);
-         }
-
-         float fogRed = color.x();
-         float fogGreen = color.y();
-         float fogBlue = color.z();
-         if (darkness > 0.0F && fogType != FogType.LAVA && fogType != FogType.POWDER_SNOW) {
-            float brightness = Mth.square(1.0F - darkness);
-            fogRed *= brightness;
-            fogGreen *= brightness;
-            fogBlue *= brightness;
-         }
-
-         if (darkenWorldAmount > 0.0F) {
-            fogRed = Mth.lerp(darkenWorldAmount, fogRed, fogRed * 0.7F);
-            fogGreen = Mth.lerp(darkenWorldAmount, fogGreen, fogGreen * 0.6F);
-            fogBlue = Mth.lerp(darkenWorldAmount, fogBlue, fogBlue * 0.6F);
-         }
-
-         float brightenFactor;
-         if (fogType == FogType.WATER) {
-            if (entity instanceof LocalPlayer localPlayer) {
-               brightenFactor = localPlayer.getWaterVision();
-            } else {
-               brightenFactor = 1.0F;
-            }
-         } else {
-            label57: {
-               if (entity instanceof LivingEntity livingEntity
-                  && livingEntity.hasEffect(MobEffects.NIGHT_VISION)
-                  && !livingEntity.hasEffect(MobEffects.DARKNESS)) {
-                  brightenFactor = GameRenderer.nightVisionScale(livingEntity, partialTicks);
-                  break label57;
-               }
-
-               brightenFactor = 0.0F;
-            }
-         }
-
-         if (fogRed != 0.0F && fogGreen != 0.0F && fogBlue != 0.0F) {
-            float targetScale = 1.0F / Math.max(fogRed, Math.max(fogGreen, fogBlue));
-            fogRed = Mth.lerp(brightenFactor, fogRed, fogRed * targetScale);
-            fogGreen = Mth.lerp(brightenFactor, fogGreen, fogGreen * targetScale);
-            fogBlue = Mth.lerp(brightenFactor, fogBlue, fogBlue * targetScale);
-         }
-
-         dest.set(fogRed, fogGreen, fogBlue, 1.0F);
       }
+
+      Vector3fc color = colorSourceEnvironment.getBaseColor(level, camera, renderDistance, partialTicks);
+      float voidDarknessOnsetRange = level.getLevelData().voidDarknessOnsetRange();
+      float darkness = Mth.clamp((voidDarknessOnsetRange + level.getMinY() - (float)camera.position().y) / voidDarknessOnsetRange, 0.0F, 1.0F);
+      if (darknessModifyingEnvironment != null) {
+         LivingEntity livingEntity = (LivingEntity)entity;
+         darkness = darknessModifyingEnvironment.getModifiedDarkness(livingEntity, darkness, partialTicks);
+      }
+
+      float fogRed = color.x();
+      float fogGreen = color.y();
+      float fogBlue = color.z();
+      if (darkness > 0.0F && fogType != FogType.LAVA && fogType != FogType.POWDER_SNOW) {
+         float brightness = Mth.square(1.0F - darkness);
+         fogRed *= brightness;
+         fogGreen *= brightness;
+         fogBlue *= brightness;
+      }
+
+      if (darkenWorldAmount > 0.0F) {
+         fogRed = Mth.lerp(darkenWorldAmount, fogRed, fogRed * 0.7F);
+         fogGreen = Mth.lerp(darkenWorldAmount, fogGreen, fogGreen * 0.6F);
+         fogBlue = Mth.lerp(darkenWorldAmount, fogBlue, fogBlue * 0.6F);
+      }
+
+      float brightenFactor;
+      if (fogType == FogType.WATER) {
+         if (entity instanceof LocalPlayer localPlayer) {
+            brightenFactor = localPlayer.getWaterVision();
+         } else {
+            brightenFactor = 1.0F;
+         }
+      } else if (entity instanceof LivingEntity livingEntity && livingEntity.hasEffect(MobEffects.NIGHT_VISION) && !livingEntity.hasEffect(MobEffects.DARKNESS)
+         )
+       {
+         brightenFactor = GameRenderer.nightVisionScale(livingEntity, partialTicks);
+      } else {
+         brightenFactor = 0.0F;
+      }
+
+      if (fogRed != 0.0F && fogGreen != 0.0F && fogBlue != 0.0F) {
+         float targetScale = 1.0F / Math.max(fogRed, Math.max(fogGreen, fogBlue));
+         fogRed = Mth.lerp(brightenFactor, fogRed, fogRed * targetScale);
+         fogGreen = Mth.lerp(brightenFactor, fogGreen, fogGreen * targetScale);
+         fogBlue = Mth.lerp(brightenFactor, fogBlue, fogBlue * targetScale);
+      }
+
+      dest.set(fogRed, fogGreen, fogBlue, 1.0F);
    }
 
    public static boolean toggleFog() {
@@ -182,7 +177,7 @@ public class FogRenderer implements AutoCloseable {
       final Camera camera, final int renderDistanceInChunks, final DeltaTracker deltaTracker, final float darkenWorldAmount, final ClientLevel level
    ) {
       float partialTickTime = deltaTracker.getGameTimeDeltaPartialTick(false);
-      float renderDistanceInBlocks = (float)(renderDistanceInChunks * 16);
+      float renderDistanceInBlocks = renderDistanceInChunks * 16;
       FogType fogType = this.getFogType(camera);
       Entity entity = camera.entity();
       FogData fog = new FogData();
@@ -236,7 +231,7 @@ public class FogRenderer implements AutoCloseable {
          .putFloat(endClouds);
    }
 
-   public static enum FogMode {
+   public enum FogMode {
       NONE,
       WORLD;
    }

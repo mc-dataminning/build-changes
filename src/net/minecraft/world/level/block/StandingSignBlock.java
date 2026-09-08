@@ -21,7 +21,7 @@ public class StandingSignBlock extends SignBlock implements PlainSignBlock {
 
    public StandingSignBlock(final WoodType type, final BlockBehaviour.Properties properties) {
       super(type, properties.sound(type.soundType()));
-      this.registerDefaultState(this.stateDefinition.any().setValue(ROTATION, Integer.valueOf(8)).setValue(WATERLOGGED, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(ROTATION, 8).setValue(WATERLOGGED, false));
    }
 
    @Override
@@ -33,8 +33,8 @@ public class StandingSignBlock extends SignBlock implements PlainSignBlock {
    public BlockState getStateForPlacement(final BlockPlaceContext context) {
       FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
       return this.defaultBlockState()
-         .setValue(ROTATION, Integer.valueOf(RotationSegment.convertToSegment(context.getRotation() + 180.0F)))
-         .setValue(WATERLOGGED, Boolean.valueOf(replacedFluidState.is(Fluids.WATER)));
+         .setValue(ROTATION, RotationSegment.convertToSegment(context.getRotation() + 180.0F))
+         .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
    }
 
    @Override
@@ -60,12 +60,12 @@ public class StandingSignBlock extends SignBlock implements PlainSignBlock {
 
    @Override
    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(ROTATION, Integer.valueOf(rotation.rotate(state.getValue(ROTATION), 16)));
+      return state.setValue(ROTATION, rotation.rotate(state.getValue(ROTATION), 16));
    }
 
    @Override
    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.setValue(ROTATION, Integer.valueOf(mirror.mirror(state.getValue(ROTATION), 16)));
+      return state.setValue(ROTATION, mirror.mirror(state.getValue(ROTATION), 16));
    }
 
    @Override

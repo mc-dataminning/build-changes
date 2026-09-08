@@ -34,7 +34,7 @@ public enum Pose implements StringRepresentable {
    private final int id;
    private final String name;
 
-   private Pose(final int id, final String name) {
+   Pose(final int id, final String name) {
       this.id = id;
       this.name = name;
    }

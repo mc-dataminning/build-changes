@@ -42,9 +42,8 @@ public class LoadingDotsWidget extends AbstractWidget {
       return false;
    }
 
-   @Nullable
    @Override
-   public ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
+   public @Nullable ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
       return null;
    }
 }

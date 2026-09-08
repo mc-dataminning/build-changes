@@ -29,7 +29,7 @@ public class PistonHeadRenderer implements BlockEntityRenderer<PistonMovingBlock
       final PistonHeadRenderState state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
       state.xOffset = blockEntity.getXOff(partialTicks);
@@ -42,7 +42,7 @@ public class PistonHeadRenderer implements BlockEntityRenderer<PistonMovingBlock
          BlockPos pos = blockEntity.getBlockPos().relative(blockEntity.getMovementDirection().getOpposite());
          Holder<Biome> biome = level.getBiome(pos);
          if (blockState.is(Blocks.PISTON_HEAD) && blockEntity.getProgress(partialTicks) <= 4.0F) {
-            blockState = blockState.setValue(PistonHeadBlock.SHORT, Boolean.valueOf(blockEntity.getProgress(partialTicks) <= 0.5F));
+            blockState = blockState.setValue(PistonHeadBlock.SHORT, blockEntity.getProgress(partialTicks) <= 0.5F);
             state.block = createMovingBlock(pos, blockState, biome, level);
          } else if (blockEntity.isSourcePiston() && !blockEntity.isExtending()) {
             PistonType value = blockState.is(Blocks.STICKY_PISTON) ? PistonType.STICKY : PistonType.DEFAULT;
@@ -50,10 +50,10 @@ public class PistonHeadRenderer implements BlockEntityRenderer<PistonMovingBlock
                .defaultBlockState()
                .setValue(PistonHeadBlock.TYPE, value)
                .setValue(PistonHeadBlock.FACING, blockState.getValue(PistonBaseBlock.FACING));
-            pistonHeadState = pistonHeadState.setValue(PistonHeadBlock.SHORT, Boolean.valueOf(blockEntity.getProgress(partialTicks) >= 0.5F));
+            pistonHeadState = pistonHeadState.setValue(PistonHeadBlock.SHORT, blockEntity.getProgress(partialTicks) >= 0.5F);
             state.block = createMovingBlock(pos, pistonHeadState, biome, level);
             BlockPos basePos = pos.relative(blockEntity.getMovementDirection());
-            blockState = blockState.setValue(PistonBaseBlock.EXTENDED, Boolean.valueOf(true));
+            blockState = blockState.setValue(PistonBaseBlock.EXTENDED, true);
             state.base = createMovingBlock(basePos, blockState, biome, level);
          } else {
             state.block = createMovingBlock(pos, blockState, biome, level);

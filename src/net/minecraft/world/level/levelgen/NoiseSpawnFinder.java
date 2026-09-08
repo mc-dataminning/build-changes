@@ -26,15 +26,15 @@ public class NoiseSpawnFinder {
       BlockPos searchOrigin = this.result.location();
 
       while (radius <= maxRadius) {
-         int x = searchOrigin.getX() + (int)(Math.sin((double)angle) * (double)radius);
-         int z = searchOrigin.getZ() + (int)(Math.cos((double)angle) * (double)radius);
+         int x = searchOrigin.getX() + (int)(Math.sin(angle) * radius);
+         int z = searchOrigin.getZ() + (int)(Math.cos(angle) * radius);
          NoiseSpawnFinder.Result candidate = getSpawnPositionAndFitness(samplers, targetPoints, x, z);
          if (candidate.fitness() < this.result.fitness()) {
             this.result = candidate;
          }
 
          angle += radiusIncrement / radius;
-         if ((double)angle > Math.PI * 2) {
+         if (angle > Math.PI * 2) {
             angle = 0.0F;
             radius += radiusIncrement;
          }
@@ -57,6 +57,6 @@ public class NoiseSpawnFinder {
       return new NoiseSpawnFinder.Result(new BlockPos(blockX, 0, blockZ), fitnessWithDistance);
    }
 
-   private static record Result(BlockPos location, long fitness) {
+   private record Result(BlockPos location, long fitness) {
    }
 }

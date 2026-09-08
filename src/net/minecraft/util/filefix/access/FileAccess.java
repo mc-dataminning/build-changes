@@ -11,8 +11,7 @@ public class FileAccess<T extends AutoCloseable> implements AutoCloseable {
    private final FileAccessProvider fileAccessProvider;
    private final FileResourceType<T> type;
    private final FileRelation fileRelation;
-   @Nullable
-   private List<T> files;
+   private @Nullable List<T> files;
 
    public FileAccess(final FileAccessProvider fileAccessProvider, final FileResourceType<T> type, final FileRelation fileRelation) {
       this.fileAccessProvider = fileAccessProvider;
@@ -48,8 +47,8 @@ public class FileAccess<T extends AutoCloseable> implements AutoCloseable {
          for (T file : this.files) {
             try {
                file.close();
-            } catch (Exception var4) {
-               LOGGER.error("Failed to close file: ", var4);
+            } catch (Exception e) {
+               LOGGER.error("Failed to close file: ", e);
             }
          }
 

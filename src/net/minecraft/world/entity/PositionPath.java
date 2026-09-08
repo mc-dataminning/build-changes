@@ -23,7 +23,7 @@ public sealed interface PositionPath permits PositionPath.Linear, PositionPath.S
       return new PositionPath.Stepped(steps);
    }
 
-   public static record Linear(Vec3 endPosition) implements PositionPath {
+   record Linear(Vec3 endPosition) implements PositionPath {
       public static final StreamCodec<ByteBuf, PositionPath.Linear> STREAM_CODEC = Vec3.STREAM_CODEC
          .map(PositionPath.Linear::new, PositionPath.Linear::endPosition);
 
@@ -33,7 +33,7 @@ public sealed interface PositionPath permits PositionPath.Linear, PositionPath.S
       }
    }
 
-   public static record Stepped(Vec3 endPosition, List<PositionStep> steps) implements PositionPath {
+   record Stepped(Vec3 endPosition, List<PositionStep> steps) implements PositionPath {
       public static final StreamCodec<ByteBuf, PositionPath.Stepped> STREAM_CODEC = PositionStep.STREAM_CODEC
          .apply(ByteBufCodecs.list())
          .map(PositionPath.Stepped::new, PositionPath.Stepped::steps);
@@ -48,7 +48,7 @@ public sealed interface PositionPath permits PositionPath.Linear, PositionPath.S
       }
    }
 
-   public static enum Type {
+   enum Type {
       LINEAR(PositionPath.Linear.STREAM_CODEC),
       STEPPED(PositionPath.Stepped.STREAM_CODEC);
 
@@ -56,7 +56,7 @@ public sealed interface PositionPath permits PositionPath.Linear, PositionPath.S
       public static final StreamCodec<ByteBuf, PositionPath.Type> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Enum::ordinal);
       private final StreamCodec<ByteBuf, ? extends PositionPath> streamCodec;
 
-      private Type(final StreamCodec<ByteBuf, ? extends PositionPath> streamCodec) {
+      Type(final StreamCodec<ByteBuf, ? extends PositionPath> streamCodec) {
          this.streamCodec = streamCodec;
       }
 

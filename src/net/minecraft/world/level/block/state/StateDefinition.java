@@ -90,9 +90,7 @@ public class StateDefinition<O, S extends StateHolder<O, S>> {
 
       for (int i = 0; i < valueCount; i++) {
          T propertyValue = (T)propertyValues.get(i);
-
          assert property.getInternalIndex(propertyValue) == i;
-
          S blockState = (S)factory.create(owner, propertyKeys, new Comparable[]{propertyValue});
          states.add(blockState);
          propertyNeighbours[i] = blockState;
@@ -135,8 +133,7 @@ public class StateDefinition<O, S extends StateHolder<O, S>> {
    private static <S extends StateHolder<?, S>, T extends Comparable<T>> MapCodec<S> appendPropertyCodec(
       final MapCodec<S> codec, final Supplier<S> defaultSupplier, final String name, final Property<T> property
    ) {
-      return Codec.mapPair(codec, property.valueCodec().fieldOf(name).orElseGet(var0 -> {
-         }, () -> property.value(defaultSupplier.get())))
+      return Codec.mapPair(codec, property.valueCodec().fieldOf(name).orElseGet(var0 -> {}, () -> property.value(defaultSupplier.get())))
          .xmap(
             pair -> (StateHolder)((StateHolder)pair.getFirst()).setValue(property, ((Property.Value)pair.getSecond()).value()),
             state -> Pair.of(state, property.value(state))
@@ -171,8 +168,7 @@ public class StateDefinition<O, S extends StateHolder<O, S>> {
          .toString();
    }
 
-   @Nullable
-   public Property<?> getProperty(final String name) {
+   public @Nullable Property<?> getProperty(final String name) {
       return (Property<?>)this.propertiesByName.get(name);
    }
 
@@ -201,22 +197,22 @@ public class StateDefinition<O, S extends StateHolder<O, S>> {
          String name = property.getName();
          if (!StateDefinition.NAME_PATTERN.matcher(name).matches()) {
             throw new IllegalArgumentException(this.owner + " has invalidly named property: " + name);
-         } else {
-            Collection<T> values = property.getPossibleValues();
-            if (values.size() <= 1) {
-               throw new IllegalArgumentException(this.owner + " attempted use property " + name + " with <= 1 possible values");
-            } else {
-               for (T comparable : values) {
-                  String valueName = property.getName(comparable);
-                  if (!StateDefinition.NAME_PATTERN.matcher(valueName).matches()) {
-                     throw new IllegalArgumentException(this.owner + " has property: " + name + " with invalidly named value: " + valueName);
-                  }
-               }
+         }
 
-               if (this.properties.containsKey(name)) {
-                  throw new IllegalArgumentException(this.owner + " has duplicate property: " + name);
-               }
+         Collection<T> values = property.getPossibleValues();
+         if (values.size() <= 1) {
+            throw new IllegalArgumentException(this.owner + " attempted use property " + name + " with <= 1 possible values");
+         }
+
+         for (T comparable : values) {
+            String valueName = property.getName(comparable);
+            if (!StateDefinition.NAME_PATTERN.matcher(valueName).matches()) {
+               throw new IllegalArgumentException(this.owner + " has property: " + name + " with invalidly named value: " + valueName);
             }
+         }
+
+         if (this.properties.containsKey(name)) {
+            throw new IllegalArgumentException(this.owner + " has duplicate property: " + name);
          }
       }
 
@@ -229,7 +225,7 @@ public class StateDefinition<O, S extends StateHolder<O, S>> {
       S create(O type, Property<?>[] propertyKeys, Comparable<?>[] propertyValues);
    }
 
-   static record StateCollection<S extends StateHolder<?, ?>>(Map<List<Comparable<?>>, S> statesByValues, Map<List<Comparable<?>>, S[]> statesByPivotCache) {
+   record StateCollection<S extends StateHolder<?, ?>>(Map<List<Comparable<?>>, S> statesByValues, Map<List<Comparable<?>>, S[]> statesByPivotCache) {
       public S[][] fillNeighborsForState(final Property<?>[] propertyKeys, final List<Comparable<?>> propertyValues) {
          S[][] neighbors = (S[][])(new StateHolder[propertyKeys.length][]);
          List<Comparable<?>> valuesKey = new ArrayList<>(propertyValues);
@@ -244,22 +240,19 @@ public class StateDefinition<O, S extends StateHolder<O, S>> {
       private <T extends Comparable<T>> S[] fillStatesForPivot(final List<Comparable<?>> valuesKey, final Property<T> pivot, final int pivotIndex) {
          Comparable<?> ownPivotValue = valuesKey.set(pivotIndex, StateDefinition.StateCollection.Wildcard.INSTANCE);
 
-         S[] neighbourStatesForPivot;
          try {
             S[] cachedResult = (S[])((StateHolder[])this.statesByPivotCache.get(valuesKey));
-            if (cachedResult == null) {
-               neighbourStatesForPivot = this.computeStatesForPivot(valuesKey, pivot, pivotIndex);
-               valuesKey.set(pivotIndex, StateDefinition.StateCollection.Wildcard.INSTANCE);
-               this.statesByPivotCache.put(List.copyOf(valuesKey), neighbourStatesForPivot);
-               return neighbourStatesForPivot;
+            if (cachedResult != null) {
+               return cachedResult;
             }
 
-            neighbourStatesForPivot = cachedResult;
+            S[] neighbourStatesForPivot = this.computeStatesForPivot(valuesKey, pivot, pivotIndex);
+            valuesKey.set(pivotIndex, StateDefinition.StateCollection.Wildcard.INSTANCE);
+            this.statesByPivotCache.put(List.copyOf(valuesKey), neighbourStatesForPivot);
+            return neighbourStatesForPivot;
          } finally {
             valuesKey.set(pivotIndex, ownPivotValue);
          }
-
-         return neighbourStatesForPivot;
       }
 
       private <T extends Comparable<T>> S[] computeStatesForPivot(final List<Comparable<?>> valuesKey, final Property<T> pivot, final int pivotIndex) {
@@ -269,9 +262,7 @@ public class StateDefinition<O, S extends StateHolder<O, S>> {
 
          for (int pivotValueIndex = 0; pivotValueIndex < pivotValuesCount; pivotValueIndex++) {
             T possiblePivotValue = (T)possiblePivotValues.get(pivotValueIndex);
-
             assert pivot.getInternalIndex(possiblePivotValue) == pivotValueIndex;
-
             valuesKey.set(pivotIndex, possiblePivotValue);
             S neighbourState = Objects.requireNonNull(this.statesByValues.get(valuesKey));
             result[pivotValueIndex] = neighbourState;
@@ -280,7 +271,7 @@ public class StateDefinition<O, S extends StateHolder<O, S>> {
          return result;
       }
 
-      private static enum Wildcard {
+      private enum Wildcard {
          INSTANCE;
       }
    }

@@ -18,7 +18,7 @@ class WindChargedMobEffect extends MobEffect {
    public void onMobRemoved(final ServerLevel level, final LivingEntity mob, final int amplifier, final Entity.RemovalReason reason) {
       if (reason == Entity.RemovalReason.KILLED) {
          double x = mob.getX();
-         double y = mob.getY() + (double)(mob.getBbHeight() / 2.0F);
+         double y = mob.getY() + mob.getBbHeight() / 2.0F;
          double z = mob.getZ();
          float gustStrength = 3.0F + mob.getRandom().nextFloat() * 2.0F;
          level.explode(

@@ -25,21 +25,23 @@ public class SetEntityLookTargetSometimes {
       SetEntityLookTargetSometimes.Ticker ticker = new SetEntityLookTargetSometimes.Ticker(interval);
       return BehaviorBuilder.create(
          i -> i.group(i.absent(MemoryModuleType.LOOK_TARGET), i.present(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES))
-               .apply(
-                  i,
-                  (lookTarget, nearestEntities) -> (level, body, timestamp) -> {
-                        Optional<LivingEntity> target = i.<NearestVisibleLivingEntities>get(nearestEntities)
-                           .findClosest(predicate.and(mob -> mob.distanceToSqr(body) <= (double)maxDistSqr));
-                        if (target.isEmpty()) {
-                           return false;
-                        } else if (!ticker.tickDownAndCheck(level.getRandom())) {
-                           return false;
-                        } else {
-                           lookTarget.set(new EntityTracker(target.get(), true));
-                           return true;
-                        }
-                     }
-               )
+            .apply(
+               i,
+               (lookTarget, nearestEntities) -> (level, body, timestamp) -> {
+                  Optional<LivingEntity> target = i.<NearestVisibleLivingEntities>get(nearestEntities)
+                     .findClosest(predicate.and(mob -> mob.distanceToSqr(body) <= maxDistSqr));
+                  if (target.isEmpty()) {
+                     return false;
+                  }
+
+                  if (!ticker.tickDownAndCheck(level.getRandom())) {
+                     return false;
+                  }
+
+                  lookTarget.set(new EntityTracker(target.get(), true));
+                  return true;
+               }
+            )
       );
    }
 
@@ -50,9 +52,9 @@ public class SetEntityLookTargetSometimes {
       public Ticker(final UniformInt interval) {
          if (interval.minInclusive() <= 1) {
             throw new IllegalArgumentException();
-         } else {
-            this.interval = interval;
          }
+
+         this.interval = interval;
       }
 
       public boolean tickDownAndCheck(final RandomSource random) {

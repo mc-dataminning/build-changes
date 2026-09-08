@@ -315,11 +315,7 @@ public class OceanRuinPieces {
          final String markerId, final BlockPos position, final ServerLevelAccessor level, final RandomSource random, final BoundingBox chunkBB
       ) {
          if ("chest".equals(markerId)) {
-            level.setBlock(
-               position,
-               Blocks.CHEST.defaultBlockState().setValue(ChestBlock.WATERLOGGED, Boolean.valueOf(level.getFluidState(position).is(FluidTags.WATER))),
-               2
-            );
+            level.setBlock(position, Blocks.CHEST.defaultBlockState().setValue(ChestBlock.WATERLOGGED, level.getFluidState(position).is(FluidTags.WATER)), 2);
             if (level.getBlockEntity(position) instanceof ChestBlockEntity chestBlockEntity) {
                chestBlockEntity.setLootTable(this.isLarge ? BuiltInLootTables.UNDERWATER_RUIN_BIG : BuiltInLootTables.UNDERWATER_RUIN_SMALL, random.nextLong());
             }

@@ -26,22 +26,22 @@ public abstract class LegacyBlockRenameFix extends DataFix {
       Type<Pair<String, String>> expectedType = DSL.named(References.BLOCK_NAME.typeName(), NamespacedSchema.namespacedString());
       if (!Objects.equals(blockType, expectedType)) {
          throw new IllegalStateException("block type is not what was expected.");
-      } else {
-         TypeRewriteRule blockRule = this.fixTypeEverywhere(this.name + " for block", expectedType, ops -> input -> input.mapSecond(this::renameBlock));
-         TypeRewriteRule blockStateRule = this.fixTypeEverywhereTyped(
-            this.name + " for block_state",
-            this.getInputSchema().getType(References.BLOCK_STATE),
-            input -> input.update(DSL.remainderFinder(), this::fixBlockState)
-         );
-         TypeRewriteRule flatBlockStateRule = this.fixTypeEverywhereTyped(
-            this.name + " for flat_block_state",
-            this.getInputSchema().getType(References.FLAT_BLOCK_STATE),
-            input -> input.update(
-                  DSL.remainderFinder(), tag -> (Dynamic)DataFixUtils.orElse(tag.asString().result().map(this::fixFlatBlockState).map(tag::createString), tag)
-               )
-         );
-         return TypeRewriteRule.seq(blockRule, new TypeRewriteRule[]{blockStateRule, flatBlockStateRule});
       }
+
+      TypeRewriteRule blockRule = this.fixTypeEverywhere(this.name + " for block", expectedType, ops -> input -> input.mapSecond(this::renameBlock));
+      TypeRewriteRule blockStateRule = this.fixTypeEverywhereTyped(
+         this.name + " for block_state",
+         this.getInputSchema().getType(References.BLOCK_STATE),
+         input -> input.update(DSL.remainderFinder(), this::fixBlockState)
+      );
+      TypeRewriteRule flatBlockStateRule = this.fixTypeEverywhereTyped(
+         this.name + " for flat_block_state",
+         this.getInputSchema().getType(References.FLAT_BLOCK_STATE),
+         input -> input.update(
+            DSL.remainderFinder(), tag -> (Dynamic)DataFixUtils.orElse(tag.asString().result().map(this::fixFlatBlockState).map(tag::createString), tag)
+         )
+      );
+      return TypeRewriteRule.seq(blockRule, new TypeRewriteRule[]{blockStateRule, flatBlockStateRule});
    }
 
    private Dynamic<?> fixBlockState(final Dynamic<?> tag) {

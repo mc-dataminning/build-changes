@@ -35,7 +35,7 @@ public class SlabBlock extends Block implements SimpleWaterloggedBlock {
 
    public SlabBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.defaultBlockState().setValue(TYPE, SlabType.BOTTOM).setValue(WATERLOGGED, Boolean.valueOf(false)));
+      this.registerDefaultState(this.defaultBlockState().setValue(TYPE, SlabType.BOTTOM).setValue(WATERLOGGED, false));
    }
 
    @Override
@@ -57,23 +57,20 @@ public class SlabBlock extends Block implements SimpleWaterloggedBlock {
       };
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockPos pos = context.getClickedPos();
       BlockState replacedBlockState = context.getLevel().getBlockState(pos);
       if (replacedBlockState.is(this)) {
-         return replacedBlockState.setValue(TYPE, SlabType.DOUBLE).setValue(WATERLOGGED, Boolean.valueOf(false));
-      } else {
-         FluidState replacedFluidState = context.getLevel().getFluidState(pos);
-         BlockState result = this.defaultBlockState()
-            .setValue(TYPE, SlabType.BOTTOM)
-            .setValue(WATERLOGGED, Boolean.valueOf(replacedFluidState.is(Fluids.WATER)));
-         Direction clickedFace = context.getClickedFace();
-         return clickedFace != Direction.DOWN && (clickedFace == Direction.UP || !(context.getClickLocation().y - (double)pos.getY() > 0.5))
-            ? result
-            : result.setValue(TYPE, SlabType.TOP);
+         return replacedBlockState.setValue(TYPE, SlabType.DOUBLE).setValue(WATERLOGGED, false);
       }
+
+      FluidState replacedFluidState = context.getLevel().getFluidState(pos);
+      BlockState result = this.defaultBlockState().setValue(TYPE, SlabType.BOTTOM).setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
+      Direction clickedFace = context.getClickedFace();
+      return clickedFace != Direction.DOWN && (clickedFace == Direction.UP || !(context.getClickLocation().y - pos.getY() > 0.5))
+         ? result
+         : result.setValue(TYPE, SlabType.TOP);
    }
 
    @Override
@@ -83,7 +80,7 @@ public class SlabBlock extends Block implements SimpleWaterloggedBlock {
       if (type == SlabType.DOUBLE || !itemStack.is(this.asItem())) {
          return false;
       } else if (context.replacingClickedOnBlock()) {
-         boolean above = context.getClickLocation().y - (double)context.getClickedPos().getY() > 0.5;
+         boolean above = context.getClickLocation().y - context.getClickedPos().getY() > 0.5;
          Direction clickedFace = context.getClickedFace();
          return type == SlabType.BOTTOM
             ? clickedFace == Direction.UP || above && clickedFace.getAxis().isHorizontal()
@@ -104,7 +101,7 @@ public class SlabBlock extends Block implements SimpleWaterloggedBlock {
    }
 
    @Override
-   public boolean canPlaceLiquid(@Nullable final LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
+   public boolean canPlaceLiquid(final @Nullable LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
       return state.getValue(TYPE) != SlabType.DOUBLE ? SimpleWaterloggedBlock.super.canPlaceLiquid(user, level, pos, state, type) : false;
    }
 

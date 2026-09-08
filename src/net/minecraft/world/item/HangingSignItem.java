@@ -14,10 +14,8 @@ public class HangingSignItem extends StandingAndWallBlockItem {
 
    @Override
    protected boolean canPlace(final LevelReader level, final BlockState possibleState, final BlockPos pos) {
-      if (possibleState.getBlock() instanceof WallHangingSignBlock hangingSign && !hangingSign.canPlace(possibleState, level, pos)) {
-         return false;
-      }
-
-      return super.canPlace(level, possibleState, pos);
+      return possibleState.getBlock() instanceof WallHangingSignBlock hangingSign && !hangingSign.canPlace(possibleState, level, pos)
+         ? false
+         : super.canPlace(level, possibleState, pos);
    }
 }

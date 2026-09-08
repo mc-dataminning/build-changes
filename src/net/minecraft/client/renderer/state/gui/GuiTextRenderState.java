@@ -16,12 +16,9 @@ public final class GuiTextRenderState implements ScreenArea {
    private final int backgroundColor;
    private final boolean dropShadow;
    private final boolean includeEmpty;
-   @Nullable
-   public final ScreenRectangle scissor;
-   @Nullable
-   private Font.PreparedText preparedText;
-   @Nullable
-   private ScreenRectangle bounds;
+   public final @Nullable ScreenRectangle scissor;
+   private Font.@Nullable PreparedText preparedText;
+   private @Nullable ScreenRectangle bounds;
 
    public GuiTextRenderState(
       final Font font,
@@ -33,7 +30,7 @@ public final class GuiTextRenderState implements ScreenArea {
       final int backgroundColor,
       final boolean dropShadow,
       final boolean includeEmpty,
-      @Nullable final ScreenRectangle scissor
+      final @Nullable ScreenRectangle scissor
    ) {
       this.font = font;
       this.text = text;
@@ -49,8 +46,7 @@ public final class GuiTextRenderState implements ScreenArea {
 
    public Font.PreparedText ensurePrepared() {
       if (this.preparedText == null) {
-         this.preparedText = this.font
-            .prepareText(this.text, (float)this.x, (float)this.y, this.color, this.dropShadow, this.includeEmpty, this.backgroundColor);
+         this.preparedText = this.font.prepareText(this.text, this.x, this.y, this.color, this.dropShadow, this.includeEmpty, this.backgroundColor);
          ScreenRectangle bounds = this.preparedText.bounds();
          if (bounds != null) {
             bounds = bounds.transformMaxBounds(this.pose);
@@ -61,9 +57,8 @@ public final class GuiTextRenderState implements ScreenArea {
       return this.preparedText;
    }
 
-   @Nullable
    @Override
-   public ScreenRectangle bounds() {
+   public @Nullable ScreenRectangle bounds() {
       this.ensurePrepared();
       return this.bounds;
    }

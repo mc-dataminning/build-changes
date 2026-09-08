@@ -15,11 +15,11 @@ public class OptionsMusicToastFix extends DataFix {
          "OptionsMusicToastFix",
          this.getInputSchema().getType(References.OPTIONS),
          input -> input.update(
-               DSL.remainderFinder(),
-               tag -> tag.renameAndFixField(
-                     "showNowPlayingToast", "musicToast", old -> tag.createString(old.asString("false").equals("false") ? "never" : "pause_and_toast")
-                  )
+            DSL.remainderFinder(),
+            tag -> tag.renameAndFixField(
+               "showNowPlayingToast", "musicToast", old -> tag.createString(old.asString("false").equals("false") ? "never" : "pause_and_toast")
             )
+         )
       );
    }
 }

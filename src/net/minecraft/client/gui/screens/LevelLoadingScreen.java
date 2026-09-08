@@ -33,8 +33,7 @@ public class LevelLoadingScreen extends Screen {
    private float smoothedProgress;
    private long lastNarration = -1L;
    private LevelLoadingScreen.Reason reason;
-   @Nullable
-   private TextureAtlasSprite cachedNetherPortalSprite;
+   private @Nullable TextureAtlasSprite cachedNetherPortalSprite;
    private static final Object2IntMap<ChunkStatus> COLORS = Util.make(new Object2IntOpenHashMap(), map -> {
       map.defaultReturnValue(0);
       map.put(ChunkStatus.EMPTY, 5526612);
@@ -115,7 +114,7 @@ public class LevelLoadingScreen extends Screen {
 
    private void drawProgressBar(final GuiGraphicsExtractor graphics, final int left, final int top, final int width, final int height, final float progress) {
       graphics.fill(left, top, left + width, top + height, -16777216);
-      graphics.fill(left, top, left + Math.round(progress * (float)width), top + height, -16711936);
+      graphics.fill(left, top, left + Math.round(progress * width), top + height, -16711936);
    }
 
    public static void extractChunksForRendering(
@@ -166,14 +165,14 @@ public class LevelLoadingScreen extends Screen {
    private TextureAtlasSprite getNetherPortalSprite() {
       if (this.cachedNetherPortalSprite != null) {
          return this.cachedNetherPortalSprite;
-      } else {
-         this.cachedNetherPortalSprite = this.minecraft
-            .getModelManager()
-            .getBlockStateModelSet()
-            .getParticleMaterial(Blocks.NETHER_PORTAL.defaultBlockState())
-            .sprite();
-         return this.cachedNetherPortalSprite;
       }
+
+      this.cachedNetherPortalSprite = this.minecraft
+         .getModelManager()
+         .getBlockStateModelSet()
+         .getParticleMaterial(Blocks.NETHER_PORTAL.defaultBlockState())
+         .sprite();
+      return this.cachedNetherPortalSprite;
    }
 
    @Override
@@ -187,7 +186,7 @@ public class LevelLoadingScreen extends Screen {
       return false;
    }
 
-   public static enum Reason {
+   public enum Reason {
       NETHER_PORTAL,
       END_PORTAL,
       OTHER;

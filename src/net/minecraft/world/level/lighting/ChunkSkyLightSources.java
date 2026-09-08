@@ -80,19 +80,19 @@ public class ChunkSkyLightSources {
       int currentLowestSourceY = this.get(index);
       if (upperEdgeY < currentLowestSourceY) {
          return false;
-      } else {
-         BlockPos topPos = this.mutablePos1.set(x, y + 1, z);
-         BlockState topState = level.getBlockState(topPos);
-         BlockPos middlePos = this.mutablePos2.set(x, y, z);
-         BlockState middleState = level.getBlockState(middlePos);
-         if (this.updateEdge(level, index, currentLowestSourceY, topPos, topState, middlePos, middleState)) {
-            return true;
-         } else {
-            BlockPos bottomPos = this.mutablePos1.set(x, y - 1, z);
-            BlockState bottomState = level.getBlockState(bottomPos);
-            return this.updateEdge(level, index, currentLowestSourceY, middlePos, middleState, bottomPos, bottomState);
-         }
       }
+
+      BlockPos topPos = this.mutablePos1.set(x, y + 1, z);
+      BlockState topState = level.getBlockState(topPos);
+      BlockPos middlePos = this.mutablePos2.set(x, y, z);
+      BlockState middleState = level.getBlockState(middlePos);
+      if (this.updateEdge(level, index, currentLowestSourceY, topPos, topState, middlePos, middleState)) {
+         return true;
+      }
+
+      BlockPos bottomPos = this.mutablePos1.set(x, y - 1, z);
+      BlockState bottomState = level.getBlockState(bottomPos);
+      return this.updateEdge(level, index, currentLowestSourceY, middlePos, middleState, bottomPos, bottomState);
    }
 
    private boolean updateEdge(
@@ -140,11 +140,11 @@ public class ChunkSkyLightSources {
    private static boolean isEdgeOccluded(final BlockState topState, final BlockState bottomState) {
       if (bottomState.getLightDampening() != 0) {
          return true;
-      } else {
-         VoxelShape topShape = LightEngine.getOcclusionShape(topState, Direction.DOWN);
-         VoxelShape bottomShape = LightEngine.getOcclusionShape(bottomState, Direction.UP);
-         return Shapes.faceShapeOccludes(topShape, bottomShape);
       }
+
+      VoxelShape topShape = LightEngine.getOcclusionShape(topState, Direction.DOWN);
+      VoxelShape bottomShape = LightEngine.getOcclusionShape(bottomState, Direction.UP);
+      return Shapes.faceShapeOccludes(topShape, bottomShape);
    }
 
    public int getLowestSourceY(final int x, final int z) {

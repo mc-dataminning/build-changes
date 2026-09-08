@@ -7,10 +7,10 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 public record FloatWithAlpha(float value, float alpha) {
    private static final Codec<FloatWithAlpha> FULL_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.FLOAT.fieldOf("value").forGetter(FloatWithAlpha::value),
-               Codec.floatRange(0.0F, 1.0F).optionalFieldOf("alpha", 1.0F).forGetter(FloatWithAlpha::alpha)
-            )
-            .apply(i, FloatWithAlpha::new)
+            Codec.FLOAT.fieldOf("value").forGetter(FloatWithAlpha::value),
+            Codec.floatRange(0.0F, 1.0F).optionalFieldOf("alpha", 1.0F).forGetter(FloatWithAlpha::alpha)
+         )
+         .apply(i, FloatWithAlpha::new)
    );
    public static final Codec<FloatWithAlpha> CODEC = Codec.either(Codec.FLOAT, FULL_CODEC)
       .xmap(

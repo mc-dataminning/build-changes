@@ -18,7 +18,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemInstance;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -33,7 +32,7 @@ public class KilledByArrowTrigger extends SimpleCriterionTrigger<KilledByArrowTr
       return KilledByArrowTrigger.TriggerInstance.CODEC;
    }
 
-   public void trigger(final ServerPlayer player, final Collection<Entity> victims, @Nullable final ItemStack firedByWeapon) {
+   public void trigger(final ServerPlayer player, final Collection<Entity> victims, final @Nullable ItemStack firedByWeapon) {
       List<LootContext> victimContexts = Lists.newArrayList();
       Set<EntityType<?>> entityTypes = Sets.newHashSet();
 
@@ -45,7 +44,7 @@ public class KilledByArrowTrigger extends SimpleCriterionTrigger<KilledByArrowTr
       this.trigger(player, t -> t.matches(victimContexts, entityTypes.size(), firedByWeapon));
    }
 
-   public static record TriggerInstance(
+   public record TriggerInstance(
       Optional<Holder<LootItemCondition>> player,
       List<Holder<LootItemCondition>> victims,
       MinMaxBounds.Ints uniqueEntityTypes,
@@ -53,14 +52,14 @@ public class KilledByArrowTrigger extends SimpleCriterionTrigger<KilledByArrowTr
    ) implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<KilledByArrowTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(KilledByArrowTrigger.TriggerInstance::player),
-                  LootItemCondition.CODEC.listOf().optionalFieldOf("victims", List.of()).forGetter(KilledByArrowTrigger.TriggerInstance::victims),
-                  MinMaxBounds.Ints.CODEC
-                     .optionalFieldOf("unique_entity_types", MinMaxBounds.Ints.ANY)
-                     .forGetter(KilledByArrowTrigger.TriggerInstance::uniqueEntityTypes),
-                  ItemPredicate.CODEC.optionalFieldOf("fired_from_weapon").forGetter(KilledByArrowTrigger.TriggerInstance::firedFromWeapon)
-               )
-               .apply(i, KilledByArrowTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(KilledByArrowTrigger.TriggerInstance::player),
+               LootItemCondition.CODEC.listOf().optionalFieldOf("victims", List.of()).forGetter(KilledByArrowTrigger.TriggerInstance::victims),
+               MinMaxBounds.Ints.CODEC
+                  .optionalFieldOf("unique_entity_types", MinMaxBounds.Ints.ANY)
+                  .forGetter(KilledByArrowTrigger.TriggerInstance::uniqueEntityTypes),
+               ItemPredicate.CODEC.optionalFieldOf("fired_from_weapon").forGetter(KilledByArrowTrigger.TriggerInstance::firedFromWeapon)
+            )
+            .apply(i, KilledByArrowTrigger.TriggerInstance::new)
       );
 
       public static Criterion<KilledByArrowTrigger.TriggerInstance> crossbowKilled(final HolderGetter<Item> items, final EntityPredicate.Builder... victims) {
@@ -84,8 +83,8 @@ public class KilledByArrowTrigger extends SimpleCriterionTrigger<KilledByArrowTr
             );
       }
 
-      public boolean matches(final Collection<LootContext> victims, final int uniqueEntityTypes, @Nullable final ItemStack firedFromWeapon) {
-         if (!this.firedFromWeapon.isPresent() || firedFromWeapon != null && this.firedFromWeapon.get().test((ItemInstance)firedFromWeapon)) {
+      public boolean matches(final Collection<LootContext> victims, final int uniqueEntityTypes, final @Nullable ItemStack firedFromWeapon) {
+         if (!this.firedFromWeapon.isPresent() || firedFromWeapon != null && this.firedFromWeapon.get().test(firedFromWeapon)) {
             if (!this.victims.isEmpty()) {
                List<LootContext> victimsCopy = Lists.newArrayList(victims);
 

@@ -45,14 +45,14 @@ public class AmdCheckpointExtension implements CheckpointExtension {
 
       protected AmdCheckpointStorage(final VulkanDevice device, final VulkanQueue queue, final int maxFramesInFlight) {
          super(queue, maxFramesInFlight);
-         this.buffer = device.createBuffer(() -> "Internal marker storage", 9, (long)(AmdCheckpointExtension.STAGES.length * 4));
+         this.buffer = device.createBuffer(() -> "Internal marker storage", 9, AmdCheckpointExtension.STAGES.length * 4);
          this.mappedView = this.buffer.map(true, false);
       }
 
       @Override
       protected void recordCheckpoint(final VkCommandBuffer commandBuffer, final int id) {
          for (int i = 0; i < AmdCheckpointExtension.STAGES.length; i++) {
-            AMDBufferMarker.vkCmdWriteBufferMarker2AMD(commandBuffer, AmdCheckpointExtension.STAGES[i], this.buffer.vkBuffer(), (long)(i * 4), id);
+            AMDBufferMarker.vkCmdWriteBufferMarker2AMD(commandBuffer, AmdCheckpointExtension.STAGES[i], this.buffer.vkBuffer(), i * 4, id);
          }
       }
 

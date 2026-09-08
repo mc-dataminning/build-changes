@@ -1,7 +1,6 @@
 package net.minecraft.world.level.levelgen.material;
 
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
@@ -90,7 +89,7 @@ public class MaterialSystem {
       final ChunkAccess protoChunk,
       final NoiseChunk noiseChunk,
       final MaterialRule ruleSource,
-      @Nullable final Set<Holder<Biome>> possibleBiomes
+      final @Nullable Set<Holder<Biome>> possibleBiomes
    ) {
       final BlockPos.MutableBlockPos columnPos = new BlockPos.MutableBlockPos();
       final ChunkPos chunkPos = protoChunk.getPos();
@@ -100,10 +99,6 @@ public class MaterialSystem {
       final int minY = heightAccessor.getMinY();
       final int maxY = heightAccessor.getMaxY();
       BlockColumn column = new BlockColumn() {
-         {
-            Objects.requireNonNull(MaterialSystem.this);
-         }
-
          @Override
          public BlockState getBlock(final int blockY) {
             return protoChunk.getBlockState(columnPos.setY(blockY));
@@ -213,12 +208,12 @@ public class MaterialSystem {
    }
 
    protected int getSurfaceDepth(final int blockX, final int blockZ) {
-      double noiseValue = (double)this.surfaceNoise.get((double)blockX, 0.0, (double)blockZ);
+      double noiseValue = this.surfaceNoise.get(blockX, 0.0, blockZ);
       return (int)(noiseValue * 2.75 + 3.0 + this.noiseRandom.at(blockX, 0, blockZ).nextDouble() * 0.25);
    }
 
    protected double getSurfaceSecondary(final int blockX, final int blockZ) {
-      return (double)this.surfaceSecondaryNoise.get((double)blockX, 0.0, (double)blockZ);
+      return this.surfaceSecondaryNoise.get(blockX, 0.0, blockZ);
    }
 
    private boolean isStone(final BlockState state) {
@@ -257,13 +252,12 @@ public class MaterialSystem {
    private void erodedBadlandsExtension(final BlockColumn column, final int blockX, final int blockZ, final int height, final LevelHeightAccessor protoChunk) {
       double pillarNoiseScale = 0.2;
       double pillarBuffer = Math.min(
-         Math.abs((double)this.badlandsSurfaceNoise.get((double)blockX, 0.0, (double)blockZ) * 8.25),
-         (double)(this.badlandsPillarNoise.get((double)blockX * 0.2, 0.0, (double)blockZ * 0.2) * 15.0F)
+         Math.abs(this.badlandsSurfaceNoise.get(blockX, 0.0, blockZ) * 8.25), this.badlandsPillarNoise.get(blockX * 0.2, 0.0, blockZ * 0.2) * 15.0F
       );
       if (!(pillarBuffer <= 0.0)) {
          double floorNoiseSampleResolution = 0.75;
          double floorAmplitude = 1.5;
-         double pillarFloor = Math.abs((double)this.badlandsPillarRoofNoise.get((double)blockX * 0.75, 0.0, (double)blockZ * 0.75) * 1.5);
+         double pillarFloor = Math.abs(this.badlandsPillarRoofNoise.get(blockX * 0.75, 0.0, blockZ * 0.75) * 1.5);
          double extensionTop = 64.0 + Math.min(pillarBuffer * pillarBuffer * 2.5, Math.ceil(pillarFloor * 50.0) + 24.0);
          int startY = Mth.floor(extensionTop);
          if (height <= startY) {
@@ -296,28 +290,27 @@ public class MaterialSystem {
    ) {
       double pillarScale = 1.28;
       double iceberg = Math.min(
-         Math.abs((double)this.icebergSurfaceNoise.get((double)blockX, 0.0, (double)blockZ) * 8.25),
-         (double)(this.icebergPillarNoise.get((double)blockX * 1.28, 0.0, (double)blockZ * 1.28) * 15.0F)
+         Math.abs(this.icebergSurfaceNoise.get(blockX, 0.0, blockZ) * 8.25), this.icebergPillarNoise.get(blockX * 1.28, 0.0, blockZ * 1.28) * 15.0F
       );
       if (!(iceberg <= 1.8)) {
          double roofScale = 1.17;
          double roofAmplitude = 1.5;
-         double icebergRoof = Math.abs((double)this.icebergPillarRoofNoise.get((double)blockX * 1.17, 0.0, (double)blockZ * 1.17) * 1.5);
+         double icebergRoof = Math.abs(this.icebergPillarRoofNoise.get(blockX * 1.17, 0.0, blockZ * 1.17) * 1.5);
          double top = Math.min(iceberg * iceberg * 1.2, Math.ceil(icebergRoof * 40.0) + 14.0);
          if (surfaceBiome.shouldMeltFrozenOceanIcebergSlightly(blockPos.set(blockX, this.seaLevel, blockZ), this.seaLevel)) {
             top -= 2.0;
          }
 
          if (!(top <= 2.0)) {
-            double extensionBottom = (double)this.seaLevel - top - 7.0;
-            top += (double)this.seaLevel;
+            double extensionBottom = this.seaLevel - top - 7.0;
+            top += this.seaLevel;
             double extensionTop = top;
             RandomSource random = this.noiseRandom.at(blockX, 0, blockZ);
             int maxSnowDepth = 2 + random.nextInt(4);
             int minSnowHeight = this.seaLevel + 18 + random.nextInt(10);
             int snowDepth = 0;
 
-            for (int y = Math.max(height, (int)top + 1); y >= minSurfaceLevel; y--) {
+            for (int y = Math.max(height, (int)extensionTop + 1); y >= minSurfaceLevel; y--) {
                if (column.getBlock(y).isAir() && y < (int)extensionTop && random.nextDouble() > 0.01
                   || column.getBlock(y).is(Blocks.WATER) && y > (int)extensionBottom && y < this.seaLevel && random.nextDouble() > 0.15) {
                   if (snowDepth <= maxSnowDepth && y > minSnowHeight) {
@@ -347,9 +340,9 @@ public class MaterialSystem {
       makeBands(random, clayBands, 2, BROWN_TERRACOTTA);
       makeBands(random, clayBands, 1, RED_TERRACOTTA);
       int whiteBandCount = random.nextIntBetweenInclusive(9, 15);
-      int ix = 0;
+      int i = 0;
 
-      for (int start = 0; ix < whiteBandCount && start < clayBands.length; start += random.nextInt(16) + 4) {
+      for (int start = 0; i < whiteBandCount && start < clayBands.length; start += random.nextInt(16) + 4) {
          clayBands[start] = WHITE_TERRACOTTA;
          if (start - 1 > 0 && random.nextBoolean()) {
             clayBands[start - 1] = LIGHT_GRAY_TERRACOTTA;
@@ -359,7 +352,7 @@ public class MaterialSystem {
             clayBands[start + 1] = LIGHT_GRAY_TERRACOTTA;
          }
 
-         ix++;
+         i++;
       }
 
       return clayBands;
@@ -379,7 +372,7 @@ public class MaterialSystem {
    }
 
    protected BlockState getBand(final int worldX, final int y, final int worldZ) {
-      int offset = Math.round(this.clayBandsOffsetNoise.get((double)worldX, 0.0, (double)worldZ) * 4.0F);
+      int offset = Math.round(this.clayBandsOffsetNoise.get(worldX, 0.0, worldZ) * 4.0F);
       return this.clayBands[(y + offset + this.clayBands.length) % this.clayBands.length];
    }
 

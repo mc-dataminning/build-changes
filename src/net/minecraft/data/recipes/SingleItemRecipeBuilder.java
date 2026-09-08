@@ -41,7 +41,7 @@ public class SingleItemRecipeBuilder implements RecipeBuilder {
       return this;
    }
 
-   public SingleItemRecipeBuilder group(@Nullable final String group) {
+   public SingleItemRecipeBuilder group(final @Nullable String group) {
       return this;
    }
 

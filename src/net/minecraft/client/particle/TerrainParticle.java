@@ -42,9 +42,9 @@ public class TerrainParticle extends SingleQuadParticle {
       BlockTintSource tintSource = Minecraft.getInstance().getBlockColors().getTintSource(blockState, 0);
       if (tintSource != null) {
          int col = tintSource.colorAsTerrainParticle(blockState, level, pos);
-         this.rCol *= (float)(col >> 16 & 0xFF) / 255.0F;
-         this.gCol *= (float)(col >> 8 & 0xFF) / 255.0F;
-         this.bCol *= (float)(col & 0xFF) / 255.0F;
+         this.rCol *= (col >> 16 & 0xFF) / 255.0F;
+         this.gCol *= (col >> 8 & 0xFF) / 255.0F;
+         this.bCol *= (col & 0xFF) / 255.0F;
       }
 
       this.quadSize /= 2.0F;
@@ -78,8 +78,7 @@ public class TerrainParticle extends SingleQuadParticle {
       return this.sprite.getV((this.vo + 1.0F) / 4.0F);
    }
 
-   @Nullable
-   private static TerrainParticle createTerrainParticle(
+   private static @Nullable TerrainParticle createTerrainParticle(
       final BlockParticleOption options,
       final ClientLevel level,
       final double x,
@@ -96,8 +95,7 @@ public class TerrainParticle extends SingleQuadParticle {
    }
 
    public static class CrumblingProvider implements ParticleProvider<BlockParticleOption> {
-      @Nullable
-      public Particle createParticle(
+      public @Nullable Particle createParticle(
          final BlockParticleOption options,
          final ClientLevel level,
          final double x,
@@ -119,8 +117,7 @@ public class TerrainParticle extends SingleQuadParticle {
    }
 
    public static class DustPillarProvider implements ParticleProvider<BlockParticleOption> {
-      @Nullable
-      public Particle createParticle(
+      public @Nullable Particle createParticle(
          final BlockParticleOption options,
          final ClientLevel level,
          final double x,
@@ -142,8 +139,7 @@ public class TerrainParticle extends SingleQuadParticle {
    }
 
    public static class Provider implements ParticleProvider<BlockParticleOption> {
-      @Nullable
-      public Particle createParticle(
+      public @Nullable Particle createParticle(
          final BlockParticleOption options,
          final ClientLevel level,
          final double x,

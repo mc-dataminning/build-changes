@@ -74,7 +74,7 @@ public class BannerRenderer implements BlockEntityRenderer<BannerBlockEntity, Ba
       final BannerRenderState state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
       state.baseColor = blockEntity.getBaseColor();
@@ -90,7 +90,7 @@ public class BannerRenderer implements BlockEntityRenderer<BannerBlockEntity, Ba
 
       long gameTime = blockEntity.getLevel() != null ? blockEntity.getLevel().getGameTime() : 0L;
       BlockPos blockPos = blockEntity.getBlockPos();
-      state.phase = ((float)Math.floorMod((long)(blockPos.getX() * 7 + blockPos.getY() * 9 + blockPos.getZ() * 13) + gameTime, 100L) + partialTicks) / 100.0F;
+      state.phase = ((float)Math.floorMod(blockPos.getX() * 7 + blockPos.getY() * 9 + blockPos.getZ() * 13 + gameTime, 100L) + partialTicks) / 100.0F;
    }
 
    private BannerModel bannerModel(final BannerBlock.AttachmentType type) {
@@ -164,12 +164,12 @@ public class BannerRenderer implements BlockEntityRenderer<BannerBlockEntity, Ba
       final float phase,
       final DyeColor baseColor,
       final BannerPatternLayers patterns,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress,
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress,
       final int outlineColor
    ) {
       SpriteId sprite = Sheets.BANNER_BASE;
       submitNodeCollector.submitModel(model, Unit.INSTANCE, poseStack, lightCoords, overlayCoords, -1, sprite, sprites, outlineColor);
-      submitNodeCollector.submitModel(flagModel, Float.valueOf(phase), poseStack, lightCoords, overlayCoords, -1, sprite, sprites, outlineColor);
+      submitNodeCollector.submitModel(flagModel, phase, poseStack, lightCoords, overlayCoords, -1, sprite, sprites, outlineColor);
       if (breakProgress != null) {
          int overlayOrder = patterns.layers().size() + 2;
          submitNodeCollector.order(overlayOrder)

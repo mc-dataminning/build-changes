@@ -32,14 +32,14 @@ public class CowSoundVariants {
       return registryAccess.lookupOrThrow(Registries.COW_SOUND_VARIANT).getRandom(random).orElseThrow();
    }
 
-   public static enum SoundSet {
+   public enum SoundSet {
       CLASSIC("classic", "cow"),
       MOODY("moody", "cow_moody");
 
       private final String identifier;
       private final String soundEventIdentifier;
 
-      private SoundSet(final String identifier, final String soundEventIdentifier) {
+      SoundSet(final String identifier, final String soundEventIdentifier) {
          this.identifier = identifier;
          this.soundEventIdentifier = soundEventIdentifier;
       }

@@ -28,7 +28,7 @@ public class LadderBlock extends Block implements SimpleWaterloggedBlock {
 
    protected LadderBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false));
    }
 
    @Override
@@ -60,18 +60,17 @@ public class LadderBlock extends Block implements SimpleWaterloggedBlock {
    ) {
       if (directionToNeighbour.getOpposite() == state.getValue(FACING) && !state.canSurvive(level, pos)) {
          return Blocks.AIR.defaultBlockState();
-      } else {
-         if (state.getValue(WATERLOGGED)) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-         }
-
-         return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
       }
+
+      if (state.getValue(WATERLOGGED)) {
+         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+      }
+
+      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       if (!context.replacingClickedOnBlock()) {
          BlockState state = context.getLevel().getBlockState(context.getClickedPos().relative(context.getClickedFace().getOpposite()));
          if (state.is(this) && state.getValue(FACING) == context.getClickedFace()) {
@@ -88,7 +87,7 @@ public class LadderBlock extends Block implements SimpleWaterloggedBlock {
          if (direction.getAxis().isHorizontal()) {
             state = state.setValue(FACING, direction.getOpposite());
             if (state.canSurvive(level, pos)) {
-               return state.setValue(WATERLOGGED, Boolean.valueOf(replacedFluidState.is(Fluids.WATER)));
+               return state.setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
             }
          }
       }

@@ -35,7 +35,7 @@ public interface DataComponentPredicate {
 
    boolean matches(DataComponentGetter components);
 
-   public static final class AnyValueType extends DataComponentPredicate.TypeBase<AnyValue> {
+   final class AnyValueType extends DataComponentPredicate.TypeBase<AnyValue> {
       private final AnyValue predicate;
 
       public AnyValueType(final AnyValue predicate) {
@@ -56,19 +56,19 @@ public interface DataComponentPredicate {
       }
    }
 
-   public static final class ConcreteType<T extends DataComponentPredicate> extends DataComponentPredicate.TypeBase<T> {
+   final class ConcreteType<T extends DataComponentPredicate> extends DataComponentPredicate.TypeBase<T> {
       public ConcreteType(final Codec<T> codec) {
          super(codec);
       }
    }
 
-   public static record Single<T extends DataComponentPredicate>(DataComponentPredicate.Type<T> type, T predicate) {
+   record Single<T extends DataComponentPredicate>(DataComponentPredicate.Type<T> type, T predicate) {
       private static <T extends DataComponentPredicate> MapCodec<DataComponentPredicate.Single<T>> wrapCodec(
          final DataComponentPredicate.Type<T> type, final Codec<T> codec
       ) {
          return RecordCodecBuilder.mapCodec(
             i -> i.group(codec.fieldOf("value").forGetter(DataComponentPredicate.Single::predicate))
-                  .apply(i, predicate -> new DataComponentPredicate.Single<>(type, (T)predicate))
+               .apply(i, predicate -> new DataComponentPredicate.Single<>(type, (T)predicate))
          );
       }
 
@@ -77,7 +77,7 @@ public interface DataComponentPredicate {
       }
    }
 
-   public interface Type<T extends DataComponentPredicate> {
+   interface Type<T extends DataComponentPredicate> {
       Codec<DataComponentPredicate.Type<?>> CODEC = Codec.either(
             BuiltInRegistries.DATA_COMPONENT_PREDICATE_TYPE.byNameCodec(), BuiltInRegistries.DATA_COMPONENT_TYPE.byNameCodec()
          )
@@ -102,7 +102,7 @@ public interface DataComponentPredicate {
       StreamCodec<RegistryFriendlyByteBuf, DataComponentPredicate.Single<T>> singleStreamCodec();
    }
 
-   public abstract static class TypeBase<T extends DataComponentPredicate> implements DataComponentPredicate.Type<T> {
+   abstract class TypeBase<T extends DataComponentPredicate> implements DataComponentPredicate.Type<T> {
       private final Codec<T> codec;
       private final MapCodec<DataComponentPredicate.Single<T>> wrappedCodec;
       private final StreamCodec<RegistryFriendlyByteBuf, DataComponentPredicate.Single<T>> singleStreamCodec;

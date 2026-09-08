@@ -20,13 +20,11 @@ import org.jspecify.annotations.Nullable;
 public class NullOps implements DynamicOps<Unit> {
    public static final NullOps INSTANCE = new NullOps();
    private static final MapLike<Unit> EMPTY_MAP = new MapLike<Unit>() {
-      @Nullable
-      public Unit get(final Unit key) {
+      public @Nullable Unit get(final Unit key) {
          return null;
       }
 
-      @Nullable
-      public Unit get(final String key) {
+      public @Nullable Unit get(final String key) {
          return null;
       }
 
@@ -127,8 +125,7 @@ public class NullOps implements DynamicOps<Unit> {
    }
 
    public DataResult<Consumer<BiConsumer<Unit, Unit>>> getMapEntries(final Unit input) {
-      return DataResult.success((Consumer<BiConsumer>)consumer -> {
-      });
+      return DataResult.success((Consumer<BiConsumer>)consumer -> {});
    }
 
    public DataResult<MapLike<Unit>> getMap(final Unit input) {
@@ -140,8 +137,7 @@ public class NullOps implements DynamicOps<Unit> {
    }
 
    public DataResult<Consumer<Consumer<Unit>>> getList(final Unit input) {
-      return DataResult.success((Consumer<Consumer>)consumer -> {
-      });
+      return DataResult.success((Consumer<Consumer>)consumer -> {});
    }
 
    public DataResult<ByteBuffer> getByteBuffer(final Unit input) {

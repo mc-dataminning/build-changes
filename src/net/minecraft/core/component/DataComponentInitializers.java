@@ -35,7 +35,8 @@ public class DataComponentInitializers {
       final Map<ResourceKey<? extends Registry<?>>, DataComponentInitializers.PendingComponentBuilders<?>> buildersByRegistry,
       final ResourceKey<? extends Registry<? extends T>> registryKey
    ) {
-      buildersByRegistry.put(registryKey, new DataComponentInitializers.PendingComponentBuilders<>(registryKey, new HashMap<>()));
+      ResourceKey<? extends Registry<T>> registryKeyButSane = (ResourceKey<? extends Registry<T>>)registryKey;
+      buildersByRegistry.put(registryKey, new DataComponentInitializers.PendingComponentBuilders<>(registryKeyButSane, new HashMap<>()));
    }
 
    private static <T> void addBuilder(
@@ -76,8 +77,8 @@ public class DataComponentInitializers {
          .filter(e -> !elementsWithComponents.contains(e))
          .forEach(
             elementWithoutComponents -> entries.add(
-                  new DataComponentInitializers.BakedEntry<>((Holder.Reference<T>)elementWithoutComponents, DataComponentMap.EMPTY)
-               )
+               new DataComponentInitializers.BakedEntry<>((Holder.Reference<T>)elementWithoutComponents, DataComponentMap.EMPTY)
+            )
          );
       return new DataComponentInitializers.PendingComponents<T>() {
          @Override
@@ -97,7 +98,7 @@ public class DataComponentInitializers {
       };
    }
 
-   private static record BakedEntry<T>(Holder.Reference<T> element, DataComponentMap components) {
+   private record BakedEntry<T>(Holder.Reference<T> element, DataComponentMap components) {
       public void apply() {
          this.element.bindComponents(this.components);
       }
@@ -119,13 +120,13 @@ public class DataComponentInitializers {
       }
    }
 
-   private static record InitializerEntry<T>(ResourceKey<T> key, DataComponentInitializers.Initializer<T> initializer) {
+   private record InitializerEntry<T>(ResourceKey<T> key, DataComponentInitializers.Initializer<T> initializer) {
       public void run(final DataComponentMap.Builder components, final HolderLookup.Provider context) {
          this.initializer.run(components, context, this.key);
       }
    }
 
-   private static record PendingComponentBuilders<T>(ResourceKey<? extends Registry<T>> registryKey, Map<ResourceKey<T>, DataComponentMap.Builder> builders) {
+   private record PendingComponentBuilders<T>(ResourceKey<? extends Registry<T>> registryKey, Map<ResourceKey<T>, DataComponentMap.Builder> builders) {
    }
 
    public interface PendingComponents<T> {

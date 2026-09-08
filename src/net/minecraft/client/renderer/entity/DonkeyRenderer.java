@@ -45,7 +45,7 @@ public class DonkeyRenderer<T extends AbstractChestedHorse> extends AbstractHors
       state.hasChest = entity.hasChest();
    }
 
-   public static enum Type {
+   public enum Type {
       DONKEY(Identifier.withDefaultNamespace("textures/entity/horse/donkey.png"), ModelLayers.DONKEY),
       DONKEY_BABY(Identifier.withDefaultNamespace("textures/entity/horse/donkey_baby.png"), ModelLayers.DONKEY_BABY),
       MULE(Identifier.withDefaultNamespace("textures/entity/horse/mule.png"), ModelLayers.MULE),
@@ -54,7 +54,7 @@ public class DonkeyRenderer<T extends AbstractChestedHorse> extends AbstractHors
       private final Identifier texture;
       private final ModelLayerLocation model;
 
-      private Type(final Identifier texture, final ModelLayerLocation model) {
+      Type(final Identifier texture, final ModelLayerLocation model) {
          this.texture = texture;
          this.model = model;
       }

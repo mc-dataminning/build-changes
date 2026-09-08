@@ -52,7 +52,7 @@ public class NautilusAi {
    protected static final TargetingConditions ATTACK_TARGET_CONDITIONS = TargetingConditions.forCombat()
       .selector(
          (target, level) -> (level.getGameRules().get(GameRules.MOB_GRIEFING) || !target.is(EntityTypes.ARMOR_STAND))
-               && level.getWorldBorder().isWithinBounds(target.getBoundingBox())
+            && level.getWorldBorder().isWithinBounds(target.getBoundingBox())
       );
 
    protected static void initMemories(final AbstractNautilus body, final RandomSource random) {
@@ -118,18 +118,20 @@ public class NautilusAi {
             .filter(entity -> entity.isInWater() && Sensor.isEntityAttackableIgnoringLineOfSight(level, body, entity));
          if (angryAt.isPresent()) {
             return angryAt;
-         } else if (body.getBrain().hasMemoryValue(MemoryModuleType.ATTACK_TARGET_COOLDOWN)) {
-            return Optional.empty();
-         } else {
-            RandomSource random = level.getRandom();
-            body.getBrain().setMemory(MemoryModuleType.ATTACK_TARGET_COOLDOWN, TIME_BETWEEN_NON_PLAYER_ATTACKS.sample(random));
-            return random.nextFloat() < 0.5F
-               ? Optional.empty()
-               : body.getBrain()
-                  .getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-                  .orElse(NearestVisibleLivingEntities.empty())
-                  .findClosest(NautilusAi::isHostileTarget);
          }
+
+         if (body.getBrain().hasMemoryValue(MemoryModuleType.ATTACK_TARGET_COOLDOWN)) {
+            return Optional.empty();
+         }
+
+         RandomSource random = level.getRandom();
+         body.getBrain().setMemory(MemoryModuleType.ATTACK_TARGET_COOLDOWN, TIME_BETWEEN_NON_PLAYER_ATTACKS.sample(random));
+         return random.nextFloat() < 0.5F
+            ? Optional.empty()
+            : body.getBrain()
+               .getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
+               .orElse(NearestVisibleLivingEntities.empty())
+               .findClosest(NautilusAi::isHostileTarget);
       } else {
          return Optional.empty();
       }

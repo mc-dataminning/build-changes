@@ -3,7 +3,6 @@ package net.minecraft.world.level.levelgen.densityfunction;
 import com.mojang.serialization.MapCodec;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Function;
@@ -15,10 +14,6 @@ public class DensityFunctionCompiler {
    private final Map<DensityFunction, DensitySampler> samplers = new ConcurrentHashMap<>();
    private final Function<DensityFunction, DensitySampler> optimizeAndCompile = this::optimizeAndCompile;
    private final DfRewriteRule optimizerRule = DfRewriteRule.sequence(new DfRewriteRule() {
-      {
-         Objects.requireNonNull(DensityFunctionCompiler.this);
-      }
-
       @Override
       public DensityFunction rewrite(DensityFunction function) {
          function = DfRewriteRule.INLINE_REFERENCE.rewrite(function);
@@ -40,15 +35,12 @@ public class DensityFunctionCompiler {
    private DensitySampler optimizeAndCompile(final DensityFunction function) {
       this.compileLock.lock();
 
-      DensitySampler var3;
       try {
          DensityFunction optimizedFunction = this.optimizerRule.rewrite(function);
-         var3 = optimizedFunction.compileSampler(this.context);
+         return optimizedFunction.compileSampler(this.context);
       } finally {
          this.compileLock.unlock();
       }
-
-      return var3;
    }
 
    private DensityFunction reuseOrPrepareCache(final CacheFunction cache) {
@@ -68,7 +60,7 @@ public class DensityFunctionCompiler {
       return new DensityFunctionCompiler.PreparedCache(id, input.range(), input.domainAxes(), cachingSampler);
    }
 
-   private static record PreparedCache(int id, Interval range, @DensityFunction.Axes int domainAxes, DensitySampler cachingSampler) implements DensityFunction {
+   private record PreparedCache(int id, Interval range, @DensityFunction.Axes int domainAxes, DensitySampler cachingSampler) implements DensityFunction {
       @Override
       public DensitySampler compileSampler(final DensityFunction.CompileContext context) {
          return this.cachingSampler;

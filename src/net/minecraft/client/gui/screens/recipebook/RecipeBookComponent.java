@@ -70,32 +70,26 @@ public abstract class RecipeBookComponent<T extends RecipeBookMenu> implements G
    private int width;
    private int height;
    private float time;
-   @Nullable
-   private RecipeDisplayId lastPlacedRecipe;
+   private @Nullable RecipeDisplayId lastPlacedRecipe;
    private final GhostSlots ghostSlots;
    private final List<RecipeBookTabButton> tabButtons = Lists.newArrayList();
-   @Nullable
-   private RecipeBookTabButton selectedTab;
+   private @Nullable RecipeBookTabButton selectedTab;
    protected CycleButton<Boolean> filterButton;
    protected final T menu;
    protected Minecraft minecraft;
-   @Nullable
-   private EditBox searchBox;
+   private @Nullable EditBox searchBox;
    private String lastSearch = "";
    private final List<RecipeBookComponent.TabInfo> tabInfos;
    private ClientRecipeBook book;
    private final RecipeBookPage recipeBookPage;
-   @Nullable
-   private RecipeDisplayId lastRecipe;
-   @Nullable
-   private RecipeCollection lastRecipeCollection;
+   private @Nullable RecipeDisplayId lastRecipe;
+   private @Nullable RecipeCollection lastRecipeCollection;
    private final StackedItemContents stackedContents = new StackedItemContents();
    private int timesInventoryChanged;
    private boolean ignoreTextInput;
    private boolean visible;
    private boolean widthTooNarrow;
-   @Nullable
-   private ScreenRectangle magnifierIconPlacement;
+   private @Nullable ScreenRectangle magnifierIconPlacement;
 
    public RecipeBookComponent(final T menu, final List<RecipeBookComponent.TabInfo> tabInfos) {
       this.menu = menu;
@@ -215,7 +209,7 @@ public abstract class RecipeBookComponent<T extends RecipeBookMenu> implements G
 
    protected abstract boolean isCraftingSlot(Slot slot);
 
-   public void slotClicked(@Nullable final Slot slot) {
+   public void slotClicked(final @Nullable Slot slot) {
       if (slot != null && this.isCraftingSlot(slot)) {
          this.lastPlacedRecipe = null;
          this.ghostSlots.clear();
@@ -320,7 +314,7 @@ public abstract class RecipeBookComponent<T extends RecipeBookMenu> implements G
       }
    }
 
-   public void extractTooltip(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, @Nullable final Slot hoveredSlot) {
+   public void extractTooltip(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final @Nullable Slot hoveredSlot) {
       if (this.isVisible()) {
          this.recipeBookPage.extractTooltip(graphics, mouseX, mouseY);
          this.ghostSlots.extractTooltip(graphics, this.minecraft, mouseX, mouseY, hoveredSlot);
@@ -366,15 +360,15 @@ public abstract class RecipeBookComponent<T extends RecipeBookMenu> implements G
 
             if (this.filterButton.mouseClicked(event, doubleClick)) {
                return true;
-            } else {
-               for (RecipeBookTabButton tabButton : this.tabButtons) {
-                  if (tabButton.mouseClicked(event, doubleClick)) {
-                     return true;
-                  }
-               }
-
-               return false;
             }
+
+            for (RecipeBookTabButton tabButton : this.tabButtons) {
+               if (tabButton.mouseClicked(event, doubleClick)) {
+                  return true;
+               }
+            }
+
+            return false;
          }
       } else {
          return false;
@@ -389,12 +383,12 @@ public abstract class RecipeBookComponent<T extends RecipeBookMenu> implements G
    private boolean tryPlaceRecipe(final RecipeCollection recipeCollection, final RecipeDisplayId recipe, final boolean useMaxItems) {
       if (!recipeCollection.isCraftable(recipe) && recipe.equals(this.lastPlacedRecipe)) {
          return false;
-      } else {
-         this.lastPlacedRecipe = recipe;
-         this.ghostSlots.clear();
-         this.minecraft.gameMode.handlePlaceRecipe(this.minecraft.player.containerMenu.containerId, recipe, useMaxItems);
-         return true;
       }
+
+      this.lastPlacedRecipe = recipe;
+      this.ghostSlots.clear();
+      this.minecraft.gameMode.handlePlaceRecipe(this.minecraft.player.containerMenu.containerId, recipe, useMaxItems);
+      return true;
    }
 
    private void onTabButtonPress(final Button button) {
@@ -422,11 +416,11 @@ public abstract class RecipeBookComponent<T extends RecipeBookMenu> implements G
    public boolean hasClickedOutside(final double mx, final double my, final int leftPos, final int topPos, final int imageWidth, final int imageHeight) {
       if (!this.isVisible()) {
          return true;
-      } else {
-         boolean clickedOutside = mx < (double)leftPos || my < (double)topPos || mx >= (double)(leftPos + imageWidth) || my >= (double)(topPos + imageHeight);
-         boolean clickedOnRecipeBook = (double)(leftPos - 147) < mx && mx < (double)leftPos && (double)topPos < my && my < (double)(topPos + imageHeight);
-         return clickedOutside && !clickedOnRecipeBook && !this.selectedTab.isHoveredOrFocused();
       }
+
+      boolean clickedOutside = mx < leftPos || my < topPos || mx >= leftPos + imageWidth || my >= topPos + imageHeight;
+      boolean clickedOnRecipeBook = leftPos - 147 < mx && mx < leftPos && topPos < my && my < topPos + imageHeight;
+      return clickedOutside && !clickedOnRecipeBook && !this.selectedTab.isHoveredOrFocused();
    }
 
    @Override
@@ -475,7 +469,7 @@ public abstract class RecipeBookComponent<T extends RecipeBookMenu> implements G
    }
 
    @Override
-   public boolean preeditUpdated(@Nullable final PreeditEvent event) {
+   public boolean preeditUpdated(final @Nullable PreeditEvent event) {
       if (this.ignoreTextInput) {
          return false;
       } else if (!this.isVisible() || this.minecraft.player.isSpectator()) {
@@ -584,7 +578,7 @@ public abstract class RecipeBookComponent<T extends RecipeBookMenu> implements G
       }
    }
 
-   public static record TabInfo(ItemStack primaryIcon, Optional<ItemStack> secondaryIcon, ExtendedRecipeBookCategory category) {
+   public record TabInfo(ItemStack primaryIcon, Optional<ItemStack> secondaryIcon, ExtendedRecipeBookCategory category) {
       public TabInfo(final SearchRecipeBookCategory category) {
          this(new ItemStack(Items.COMPASS), Optional.empty(), category);
       }

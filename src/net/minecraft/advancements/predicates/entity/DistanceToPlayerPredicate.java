@@ -12,7 +12,7 @@ public record DistanceToPlayerPredicate(DistancePredicate distance) implements E
       .xmap(DistanceToPlayerPredicate::new, DistanceToPlayerPredicate::distance);
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
       return position == null ? false : this.distance.matches(position.x, position.y, position.z, entity.getX(), entity.getY(), entity.getZ());
    }
 }

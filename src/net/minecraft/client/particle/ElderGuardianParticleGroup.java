@@ -30,12 +30,12 @@ public class ElderGuardianParticleGroup extends ParticleGroup<ElderGuardianParti
       );
    }
 
-   private static record ElderGuardianParticleRenderState(Model<Unit> model, PoseStack poseStack, RenderType renderType, int color) {
+   private record ElderGuardianParticleRenderState(Model<Unit> model, PoseStack poseStack, RenderType renderType, int color) {
       public static ElderGuardianParticleGroup.ElderGuardianParticleRenderState fromParticle(
          final ElderGuardianParticle particle, final Camera camera, final float partialTickTime
       ) {
-         float ageScale = ((float)particle.age + partialTickTime) / (float)particle.lifetime;
-         float alpha = 0.05F + 0.5F * Mth.sin((double)(ageScale * (float) Math.PI));
+         float ageScale = (particle.age + partialTickTime) / particle.lifetime;
+         float alpha = 0.05F + 0.5F * Mth.sin(ageScale * (float) Math.PI);
          int color = ARGB.colorFromFloat(alpha, 1.0F, 1.0F, 1.0F);
          PoseStack poseStack = new PoseStack();
          poseStack.pushPose();
@@ -48,7 +48,7 @@ public class ElderGuardianParticleGroup extends ParticleGroup<ElderGuardianParti
       }
    }
 
-   private static record State(List<ElderGuardianParticleGroup.ElderGuardianParticleRenderState> states) implements ParticleGroupRenderState {
+   private record State(List<ElderGuardianParticleGroup.ElderGuardianParticleRenderState> states) implements ParticleGroupRenderState {
       @Override
       public void submit(final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
          for (ElderGuardianParticleGroup.ElderGuardianParticleRenderState state : this.states) {

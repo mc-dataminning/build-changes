@@ -43,19 +43,19 @@ public class PanicGoal extends Goal {
    public boolean canUse() {
       if (!this.shouldPanic()) {
          return false;
-      } else {
-         if (this.mob.isOnFire()) {
-            BlockPos blockPos = this.lookForWater(this.mob.level(), this.mob, 5);
-            if (blockPos != null) {
-               this.posX = (double)blockPos.getX();
-               this.posY = (double)blockPos.getY();
-               this.posZ = (double)blockPos.getZ();
-               return true;
-            }
-         }
-
-         return this.findRandomPosition();
       }
+
+      if (this.mob.isOnFire()) {
+         BlockPos blockPos = this.lookForWater(this.mob.level(), this.mob, 5);
+         if (blockPos != null) {
+            this.posX = blockPos.getX();
+            this.posY = blockPos.getY();
+            this.posZ = blockPos.getZ();
+            return true;
+         }
+      }
+
+      return this.findRandomPosition();
    }
 
    protected boolean shouldPanic() {
@@ -66,12 +66,12 @@ public class PanicGoal extends Goal {
       Vec3 pos = DefaultRandomPos.getPos(this.mob, 5, 4);
       if (pos == null) {
          return false;
-      } else {
-         this.posX = pos.x;
-         this.posY = pos.y;
-         this.posZ = pos.z;
-         return true;
       }
+
+      this.posX = pos.x;
+      this.posY = pos.y;
+      this.posZ = pos.z;
+      return true;
    }
 
    public boolean isRunning() {
@@ -94,8 +94,7 @@ public class PanicGoal extends Goal {
       return !this.mob.getNavigation().isDone();
    }
 
-   @Nullable
-   protected BlockPos lookForWater(final LevelReader level, final Entity mob, final int xzDist) {
+   protected @Nullable BlockPos lookForWater(final LevelReader level, final Entity mob, final int xzDist) {
       BlockPos mobPosition = mob.blockPosition();
       return !level.getBlockState(mobPosition).getCollisionShape(level, mobPosition).isEmpty()
          ? null

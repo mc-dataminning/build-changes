@@ -66,6 +66,7 @@ import net.minecraft.client.player.KeyboardInput;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.player.RemotePlayer;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
+import net.minecraft.client.renderer.extract.TransientBlock;
 import net.minecraft.client.resources.sounds.BeeAggressiveSoundInstance;
 import net.minecraft.client.resources.sounds.BeeFlyingSoundInstance;
 import net.minecraft.client.resources.sounds.BeeSoundInstance;
@@ -108,6 +109,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.protocol.configuration.ConfigurationProtocols;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
+import net.minecraft.network.protocol.game.ClientboundAddTransientBlockPacket;
 import net.minecraft.network.protocol.game.ClientboundAnimatePacket;
 import net.minecraft.network.protocol.game.ClientboundAwardStatsPacket;
 import net.minecraft.network.protocol.game.ClientboundBlockChangedAckPacket;
@@ -268,6 +270,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.ProblemReporter;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.SignatureValidator;
+import net.minecraft.util.Util;
 import net.minecraft.util.debug.DebugValueAccess;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionHand;
@@ -365,7 +368,7 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
 
       @Override
       public ArgumentBuilder<ClientSuggestionProvider, ?> createArgument(
-         final String id, final ArgumentType<?> argumentType, @Nullable final Identifier suggestionId
+         final String id, final ArgumentType<?> argumentType, final @Nullable Identifier suggestionId
       ) {
          RequiredArgumentBuilder<ClientSuggestionProvider, ?> builder = RequiredArgumentBuilder.argument(id, argumentType);
          if (suggestionId != null) {
@@ -410,21 +413,17 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
    private final FeatureFlagSet enabledFeatures;
    private final HashedPatchMap.HashGenerator decoratedHashOpsGenerator;
    private OptionalInt removedPlayerVehicleId = OptionalInt.empty();
-   @Nullable
-   private LocalChatSession chatSession;
+   private @Nullable LocalChatSession chatSession;
    private SignedMessageChain.Encoder signedMessageEncoder = SignedMessageChain.Encoder.UNSIGNED;
    private int nextChatIndex;
    private LastSeenMessagesTracker lastSeenMessages = new LastSeenMessagesTracker(20);
    private MessageSignatureCache messageSignatureCache = MessageSignatureCache.createDefault();
-   @Nullable
-   private CompletableFuture<Optional<ProfileKeyPair>> keyPairFuture;
-   @Nullable
-   private ClientInformation remoteClientInformation;
+   private @Nullable CompletableFuture<Optional<ProfileKeyPair>> keyPairFuture;
+   private @Nullable ClientInformation remoteClientInformation;
    private final ChunkBatchSizeCalculator chunkBatchSizeCalculator = new ChunkBatchSizeCalculator();
    private final PingDebugMonitor pingDebugMonitor;
    private final ClientDebugSubscriber debugSubscriber;
-   @Nullable
-   private LevelLoadTracker levelLoadTracker;
+   private @Nullable LevelLoadTracker levelLoadTracker;
    private boolean serverEnforcesSecureChat;
    private boolean onlineMode;
    private volatile boolean closed;
@@ -441,8 +440,8 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
       this.registryAccess = cookie.receivedRegistries();
       RegistryOps<HashCode> hashOps = this.registryAccess.createSerializationContext(HashOps.CRC32C_INSTANCE);
       this.decoratedHashOpsGenerator = component -> ((HashCode)component.encodeValue(hashOps)
-               .getOrThrow(msg -> new IllegalArgumentException("Failed to hash " + component + ": " + msg)))
-            .asInt();
+            .getOrThrow(msg -> new IllegalArgumentException("Failed to hash " + component + ": " + msg)))
+         .asInt();
       this.enabledFeatures = cookie.enabledFeatures();
       this.advancements = new ClientAdvancements(minecraft, this.telemetryManager);
       PermissionSet playerPermissions = permission -> {
@@ -592,8 +591,7 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
       }
    }
 
-   @Nullable
-   private Entity createEntityFromPacket(final ClientboundAddEntityPacket packet) {
+   private @Nullable Entity createEntityFromPacket(final ClientboundAddEntityPacket packet) {
       EntityType<?> type = packet.getType();
       if (type == EntityTypes.PLAYER) {
          PlayerInfo playerInfo = this.getPlayerInfo(packet.getUUID());
@@ -798,6 +796,9 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
       this.connection
          .send(new ServerboundAcceptTeleportationPacket(packet.id(), player.getX(), player.getY(), player.getZ(), player.getYRot(), player.getXRot()));
       this.minecraft.level.getBlockStatePredictionHandler().onTeleport();
+      if (this.minecraft.gameMode != null) {
+         this.minecraft.gameMode.stopDestroyBlock();
+      }
    }
 
    private static boolean setValuesFromPositionPacket(
@@ -1173,6 +1174,14 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
    }
 
    @Override
+   public void handleAddTransientBlockPacket(final ClientboundAddTransientBlockPacket packet) {
+      PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
+      this.minecraft
+         .levelExtractor
+         .queueTransientBlock(new TransientBlock(packet.getPos(), packet.getBlockState(), TransientBlock.DEFAULT_TIME_TO_LIVE, Util.getNanos()));
+   }
+
+   @Override
    public void handleEntityLinkPacket(final ClientboundSetEntityLinkPacket packet) {
       PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
       if (this.level.getEntity(packet.getSourceId()) instanceof Leashable leashable) {
@@ -1478,14 +1487,14 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
 
          try {
             blockEntity.loadWithComponents(TagValueInput.create(reporter, this.registryAccess, packet.getTag()));
-         } catch (Throwable var7) {
+         } catch (Throwable t$) {
             try {
                reporter.close();
-            } catch (Throwable var6) {
-               var7.addSuppressed(var6);
+            } catch (Throwable x2) {
+               t$.addSuppressed(x2);
             }
 
-            throw var7;
+            throw t$;
          }
 
          reporter.close();
@@ -2007,13 +2016,13 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
          }
       }
 
-      for (ClientboundPlayerInfoUpdatePacket.Entry entryx : packet.entries()) {
-         PlayerInfo info = this.playerInfoMap.get(entryx.profileId());
+      for (ClientboundPlayerInfoUpdatePacket.Entry entry : packet.entries()) {
+         PlayerInfo info = this.playerInfoMap.get(entry.profileId());
          if (info == null) {
-            LOGGER.warn("Ignoring player info update for unknown player {} ({})", entryx.profileId(), packet.actions());
+            LOGGER.warn("Ignoring player info update for unknown player {} ({})", entry.profileId(), packet.actions());
          } else {
             for (ClientboundPlayerInfoUpdatePacket.Action action : packet.actions()) {
-               this.applyPlayerInfoUpdate(action, entryx, info);
+               this.applyPlayerInfoUpdate(action, entry, info);
             }
          }
       }
@@ -2066,8 +2075,8 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
             try {
                RemoteChatSession chatSession = chatSessionData.validate(profile, signatureValidator);
                info.setChatSession(chatSession);
-            } catch (ProfilePublicKey.ValidationException var7) {
-               LOGGER.error("Failed to validate profile key for player: '{}'", profile.name(), var7);
+            } catch (ProfilePublicKey.ValidationException e) {
+               LOGGER.error("Failed to validate profile key for player: '{}'", profile.name(), e);
                info.clearChatSession(this.enforcesSecureChat());
             }
          } else {
@@ -2298,20 +2307,20 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
    public void handleParticleEvent(final ClientboundLevelParticlesPacket packet) {
       PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
       if (packet.count() == 0) {
-         double xa = (double)(packet.xMaxSpeed() * packet.xDist());
-         double ya = (double)(packet.yMaxSpeed() * packet.yDist());
-         double za = (double)(packet.zMaxSpeed() * packet.zDist());
+         double xa = packet.xMaxSpeed() * packet.xDist();
+         double ya = packet.yMaxSpeed() * packet.yDist();
+         double za = packet.zMaxSpeed() * packet.zDist();
          this.tryAddParticle(packet, packet.x(), packet.y(), packet.z(), xa, ya, za);
       } else {
          ClientboundLevelParticlesPacket.RandomizationType randomizationType = packet.randomizationType();
          if (randomizationType.isAlternative()) {
             for (int i = 0; i < packet.count(); i++) {
-               double xVariance = this.random.nextDouble() * (double)packet.xDist();
-               double yVariance = this.random.nextDouble() * (double)packet.yDist();
-               double zVariance = this.random.nextDouble() * (double)packet.zDist();
-               double xa = (double)packet.xMaxSpeed();
-               double ya = (double)packet.yMaxSpeed();
-               double za = (double)packet.zMaxSpeed();
+               double xVariance = this.random.nextDouble() * packet.xDist();
+               double yVariance = this.random.nextDouble() * packet.yDist();
+               double zVariance = this.random.nextDouble() * packet.zDist();
+               double xa = packet.xMaxSpeed();
+               double ya = packet.yMaxSpeed();
+               double za = packet.zMaxSpeed();
                if (randomizationType == ClientboundLevelParticlesPacket.RandomizationType.ALTERNATIVE_WITH_SPEED) {
                   xa *= this.random.nextDouble();
                   ya *= this.random.nextDouble();
@@ -2324,13 +2333,13 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
             }
          } else {
             for (int i = 0; i < packet.count(); i++) {
-               double xVariancex = this.random.nextGaussian() * (double)packet.xDist();
-               double yVariancex = this.random.nextGaussian() * (double)packet.yDist();
-               double zVariancex = this.random.nextGaussian() * (double)packet.zDist();
-               double xax = this.random.nextGaussian() * (double)packet.xMaxSpeed();
-               double yax = this.random.nextGaussian() * (double)packet.yMaxSpeed();
-               double zax = this.random.nextGaussian() * (double)packet.zMaxSpeed();
-               if (!this.tryAddParticle(packet, packet.x() + xVariancex, packet.y() + yVariancex, packet.z() + zVariancex, xax, yax, zax)) {
+               double xVariance = this.random.nextGaussian() * packet.xDist();
+               double yVariance = this.random.nextGaussian() * packet.yDist();
+               double zVariance = this.random.nextGaussian() * packet.zDist();
+               double xa = this.random.nextGaussian() * packet.xMaxSpeed();
+               double ya = this.random.nextGaussian() * packet.yMaxSpeed();
+               double za = this.random.nextGaussian() * packet.zMaxSpeed();
+               if (!this.tryAddParticle(packet, packet.x() + xVariance, packet.y() + yVariance, packet.z() + zVariance, xa, ya, za)) {
                   return;
                }
             }
@@ -2344,7 +2353,7 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
       try {
          this.level.addParticle(packet.particle(), packet.overrideLimiter(), packet.alwaysShow(), x, y, z, xa, ya, za);
          return true;
-      } catch (Throwable var15) {
+      } catch (Throwable ignored) {
          LOGGER.warn("Could not spawn particle effect {}", packet.particle());
          return false;
       }
@@ -2586,13 +2595,11 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
       return this.playerInfoMap.keySet();
    }
 
-   @Nullable
-   public PlayerInfo getPlayerInfo(final UUID player) {
+   public @Nullable PlayerInfo getPlayerInfo(final UUID player) {
       return this.playerInfoMap.get(player);
    }
 
-   @Nullable
-   public PlayerInfo getPlayerInfo(final String player) {
+   public @Nullable PlayerInfo getPlayerInfo(final String player) {
       for (PlayerInfo playerInfo : this.playerInfoMap.values()) {
          if (playerInfo.getProfile().name().equals(player)) {
             return playerInfo;
@@ -2606,8 +2613,7 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
       return this.seenPlayers;
    }
 
-   @Nullable
-   public PlayerInfo getPlayerInfoIgnoreCase(final String player) {
+   public @Nullable PlayerInfo getPlayerInfoIgnoreCase(final String player) {
       for (PlayerInfo playerInfo : this.playerInfoMap.values()) {
          if (playerInfo.getProfile().name().equalsIgnoreCase(player)) {
             return playerInfo;
@@ -2682,7 +2688,7 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
       }
    }
 
-   public void sendUnattendedCommand(final String command, @Nullable final Screen screenAfterCommand) {
+   public void sendUnattendedCommand(final String command, final @Nullable Screen screenAfterCommand) {
       switch (this.verifyCommand(command)) {
          case NO_ISSUES:
             this.send(new ServerboundChatCommandPacket(command));
@@ -2703,14 +2709,16 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
       ParseResults<ClientSuggestionProvider> parseWithCurrentPermissions = this.commands.parse(command, this.suggestionsProvider);
       if (!isValidCommand(parseWithCurrentPermissions)) {
          return ClientPacketListener.CommandCheckResult.PARSE_ERRORS;
-      } else if (SignableCommand.hasSignableArguments(parseWithCurrentPermissions)) {
-         return ClientPacketListener.CommandCheckResult.SIGNATURE_REQUIRED;
-      } else {
-         ParseResults<ClientSuggestionProvider> parseWithoutPermissions = this.commands.parse(command, this.restrictedSuggestionsProvider);
-         return !isValidCommand(parseWithoutPermissions)
-            ? ClientPacketListener.CommandCheckResult.PERMISSIONS_REQUIRED
-            : ClientPacketListener.CommandCheckResult.NO_ISSUES;
       }
+
+      if (SignableCommand.hasSignableArguments(parseWithCurrentPermissions)) {
+         return ClientPacketListener.CommandCheckResult.SIGNATURE_REQUIRED;
+      }
+
+      ParseResults<ClientSuggestionProvider> parseWithoutPermissions = this.commands.parse(command, this.restrictedSuggestionsProvider);
+      return !isValidCommand(parseWithoutPermissions)
+         ? ClientPacketListener.CommandCheckResult.PERMISSIONS_REQUIRED
+         : ClientPacketListener.CommandCheckResult.NO_ISSUES;
    }
 
    private static boolean isValidCommand(final ParseResults<?> parseResults) {
@@ -2738,14 +2746,14 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
          );
    }
 
-   private void openCommandSendConfirmationWindow(final String command, final String messageKey, @Nullable final Screen screenAfterCommand) {
+   private void openCommandSendConfirmationWindow(final String command, final String messageKey, final @Nullable Screen screenAfterCommand) {
       this.openSendConfirmationWindow(command, messageKey, BUTTON_RUN_COMMAND, () -> {
          this.send(new ServerboundChatCommandPacket(command));
          this.minecraft.gui.setScreen(screenAfterCommand);
       });
    }
 
-   private void openSignedCommandSendConfirmationWindow(final String command, final String messageKey, @Nullable final Screen screenAfterCommand) {
+   private void openSignedCommandSendConfirmationWindow(final String command, final String messageKey, final @Nullable Screen screenAfterCommand) {
       boolean canOpenChatScreen = screenAfterCommand == null && this.minecraft.player != null && this.minecraft.player.chatAbilities().canSendCommands();
       if (canOpenChatScreen) {
          this.openSendConfirmationWindow(
@@ -2803,8 +2811,7 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
       }
    }
 
-   @Nullable
-   public Runnable getPlayerCompiledSectionCallback() {
+   public @Nullable Runnable getPlayerCompiledSectionCallback() {
       return this.levelLoadTracker != null ? this.levelLoadTracker.getPlayerCompiledSectionCallback() : null;
    }
 
@@ -2825,19 +2832,14 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
    @Override
    protected DialogConnectionAccess createDialogAccess() {
       return new ClientCommonPacketListenerImpl.CommonDialogAccess() {
-         {
-            Objects.requireNonNull(ClientPacketListener.this);
-         }
-
          @Override
-         public void runCommand(final String command, @Nullable final Screen activeScreen) {
+         public void runCommand(final String command, final @Nullable Screen activeScreen) {
             ClientPacketListener.this.sendUnattendedCommand(command, activeScreen);
          }
       };
    }
 
-   @Nullable
-   public ServerData getServerData() {
+   public @Nullable ServerData getServerData() {
       return this.serverData;
    }
 
@@ -2889,7 +2891,7 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
       return this.clockManager;
    }
 
-   private static enum CommandCheckResult {
+   private enum CommandCheckResult {
       NO_ISSUES,
       PARSE_ERRORS,
       SIGNATURE_REQUIRED,

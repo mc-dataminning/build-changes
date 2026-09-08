@@ -42,20 +42,15 @@ public class RegionStorageUpgrader {
    private final UpgradeProgress upgradeProgress;
    private final String type;
    private final String folderName;
-   @Nullable
-   protected CompletableFuture<Void> previousWriteFuture;
+   protected @Nullable CompletableFuture<Void> previousWriteFuture;
    protected final DataFixTypes dataFixType;
    protected final int defaultVersion;
    private final boolean recreateRegionFiles;
-   @Nullable
-   private ResourceKey<Level> dimensionKey;
-   @Nullable
-   private SimpleRegionStorage storage;
-   @Nullable
-   private List<FileToUpgrade> files;
+   private @Nullable ResourceKey<Level> dimensionKey;
+   private @Nullable SimpleRegionStorage storage;
+   private @Nullable List<FileToUpgrade> files;
    private final int startIndex;
-   @Nullable
-   private final CompoundTag dataFixContextTag;
+   private final @Nullable CompoundTag dataFixContextTag;
    private final Int2ObjectMap<RegionStorageUpgrader.TagModifier> tagModifiers;
 
    protected RegionStorageUpgrader(
@@ -67,7 +62,7 @@ public class RegionStorageUpgrader {
       final boolean recreateRegionFiles,
       final UpgradeProgress upgradeProgress,
       final int startIndex,
-      @Nullable final CompoundTag dataFixContextTag,
+      final @Nullable CompoundTag dataFixContextTag,
       final Int2ObjectMap<RegionStorageUpgrader.TagModifier> tagModifiers
    ) {
       this.dataFixer = dataFixer;
@@ -93,8 +88,10 @@ public class RegionStorageUpgrader {
    public void upgrade() {
       if (this.dimensionKey == null || this.storage == null || this.files == null) {
          throw new IllegalStateException("RegionStorageUpgrader has not been initialized");
-      } else if (!this.files.isEmpty()) {
-         float totalSize = (float)this.upgradeProgress.getTotalFileFixStats().totalOperations();
+      }
+
+      if (!this.files.isEmpty()) {
+         float totalSize = this.upgradeProgress.getTotalFileFixStats().totalOperations();
          this.upgradeProgress.setStatus(UpgradeProgress.Status.UPGRADING);
          ListIterator<FileToUpgrade> iterator = this.files.listIterator();
 
@@ -120,8 +117,8 @@ public class RegionStorageUpgrader {
             }
 
             int nextIndex = iterator.nextIndex();
-            float currentDimensionProgress = (float)nextIndex / totalSize;
-            float currentTotalProgress = (float)(this.startIndex + nextIndex) / totalSize;
+            float currentDimensionProgress = nextIndex / totalSize;
+            float currentTotalProgress = (this.startIndex + nextIndex) / totalSize;
             this.upgradeProgress.setDimensionProgress(this.dimensionKey, currentDimensionProgress);
             totalProgress += currentTotalProgress;
             this.upgradeProgress.setTotalProgress(totalProgress);
@@ -134,14 +131,14 @@ public class RegionStorageUpgrader {
 
          try {
             this.storage.close();
-         } catch (Exception var9) {
-            LOGGER.error("Error upgrading chunk", var9);
+         } catch (Exception e) {
+            LOGGER.error("Error upgrading chunk", e);
          }
       }
    }
 
    protected final SimpleRegionStorage createStorage(final RegionStorageInfo info, final Path regionFolder) {
-      return (SimpleRegionStorage)(this.recreateRegionFiles
+      return this.recreateRegionFiles
          ? new RecreatingSimpleRegionStorage(
             info.withTypeSuffix("source"),
             regionFolder,
@@ -151,7 +148,7 @@ public class RegionStorageUpgrader {
             true,
             this.dataFixType
          )
-         : new SimpleRegionStorage(info, regionFolder, this.dataFixer, true, this.dataFixType));
+         : new SimpleRegionStorage(info, regionFolder, this.dataFixer, true, this.dataFixType);
    }
 
    private List<FileToUpgrade> getFilesToProcess(final RegionStorageInfo info, final Path regionFolder) {
@@ -169,37 +166,37 @@ public class RegionStorageUpgrader {
       File[] files = regionFolder.toFile().listFiles((dir, name) -> name.endsWith(".mca"));
       if (files == null) {
          return List.of();
-      } else {
-         List<FileToUpgrade> regionFileChunks = Lists.newArrayList();
+      }
 
-         for (File regionFile : files) {
-            Matcher regex = REGEX.matcher(regionFile.getName());
-            if (regex.matches()) {
-               int xOffset = Integer.parseInt(regex.group(1)) << 5;
-               int zOffset = Integer.parseInt(regex.group(2)) << 5;
-               List<ChunkPos> chunkPositions = Lists.newArrayList();
+      List<FileToUpgrade> regionFileChunks = Lists.newArrayList();
 
-               try (RegionFile regionSource = new RegionFile(info, regionFile.toPath(), regionFolder, true)) {
-                  for (int x = 0; x < 32; x++) {
-                     for (int z = 0; z < 32; z++) {
-                        ChunkPos pos = new ChunkPos(x + xOffset, z + zOffset);
-                        if (regionSource.doesChunkExist(pos)) {
-                           chunkPositions.add(pos);
-                        }
+      for (File regionFile : files) {
+         Matcher regex = REGEX.matcher(regionFile.getName());
+         if (regex.matches()) {
+            int xOffset = Integer.parseInt(regex.group(1)) << 5;
+            int zOffset = Integer.parseInt(regex.group(2)) << 5;
+            List<ChunkPos> chunkPositions = Lists.newArrayList();
+
+            try (RegionFile regionSource = new RegionFile(info, regionFile.toPath(), regionFolder, true)) {
+               for (int x = 0; x < 32; x++) {
+                  for (int z = 0; z < 32; z++) {
+                     ChunkPos pos = new ChunkPos(x + xOffset, z + zOffset);
+                     if (regionSource.doesChunkExist(pos)) {
+                        chunkPositions.add(pos);
                      }
                   }
-
-                  if (!chunkPositions.isEmpty()) {
-                     regionFileChunks.add(new FileToUpgrade(regionSource, chunkPositions));
-                  }
-               } catch (Throwable var18) {
-                  LOGGER.error("Failed to read chunks from region file {}", regionFile.toPath(), var18);
                }
+
+               if (!chunkPositions.isEmpty()) {
+                  regionFileChunks.add(new FileToUpgrade(regionSource, chunkPositions));
+               }
+            } catch (Throwable t) {
+               LOGGER.error("Failed to read chunks from region file {}", regionFile.toPath(), t);
             }
          }
-
-         return regionFileChunks;
       }
+
+      return regionFileChunks;
    }
 
    private boolean processOnePosition(final SimpleRegionStorage storage, final ChunkPos pos) {
@@ -207,10 +204,10 @@ public class RegionStorageUpgrader {
 
       try {
          converted = this.tryProcessOnePosition(storage, pos);
-      } catch (CompletionException | ReportedException var6) {
-         Throwable cause = var6.getCause();
+      } catch (ReportedException | CompletionException e) {
+         Throwable cause = e.getCause();
          if (!(cause instanceof IOException)) {
-            throw var6;
+            throw e;
          }
 
          LOGGER.error("Error upgrading chunk {}", pos, cause);
@@ -276,8 +273,8 @@ public class RegionStorageUpgrader {
             } else {
                LOGGER.error("Failed to replace an old region file. New file {} does not exist.", newFilePath);
             }
-         } catch (IOException var6) {
-            LOGGER.error("Failed to replace an old region file", var6);
+         } catch (IOException e) {
+            LOGGER.error("Failed to replace an old region file", e);
          }
       }
    }
@@ -288,17 +285,13 @@ public class RegionStorageUpgrader {
 
    public static class Builder {
       private final DataFixer dataFixer;
-      @Nullable
-      private DataFixTypes dataFixType;
-      @Nullable
-      private String type;
-      @Nullable
-      private String folderName;
+      private @Nullable DataFixTypes dataFixType;
+      private @Nullable String type;
+      private @Nullable String folderName;
       private int defaultVersion = -1;
       private boolean recreateRegionFiles;
       private UpgradeProgress upgradeProgress = new UpgradeProgress.Noop();
-      @Nullable
-      private CompoundTag dataFixContextTag;
+      private @Nullable CompoundTag dataFixContextTag;
       private Int2ObjectAVLTreeMap<RegionStorageUpgrader.TagModifier> tagModifiers = new Int2ObjectAVLTreeMap();
 
       public Builder(final DataFixer dataFixer) {
@@ -339,7 +332,7 @@ public class RegionStorageUpgrader {
          return this;
       }
 
-      public RegionStorageUpgrader.Builder setDataFixContextTag(@Nullable final CompoundTag dataFixContextTag) {
+      public RegionStorageUpgrader.Builder setDataFixContextTag(final @Nullable CompoundTag dataFixContextTag) {
          this.dataFixContextTag = dataFixContextTag;
          return this;
       }
@@ -347,10 +340,10 @@ public class RegionStorageUpgrader {
       public RegionStorageUpgrader.Builder addTagModifier(final int version, final RegionStorageUpgrader.TagModifier tagModifier) {
          if (this.tagModifiers.containsKey(version)) {
             throw new IllegalStateException("Can't add two fixers for the same data version");
-         } else {
-            this.tagModifiers.put(version, tagModifier);
-            return this;
          }
+
+         this.tagModifiers.put(version, tagModifier);
+         return this;
       }
 
       private RegionStorageUpgrader.Builder setTagModifiers(final Int2ObjectAVLTreeMap<RegionStorageUpgrader.TagModifier> tagModifiers) {

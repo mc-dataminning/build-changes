@@ -32,16 +32,16 @@ public class ExplorationMapFunction extends LootItemConditionalFunction {
    public static final boolean DEFAULT_SKIP_EXISTING = true;
    public static final MapCodec<ExplorationMapFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
-            .and(
-               i.group(
-                  RegistryCodecs.holderSet(Registries.STRUCTURE).fieldOf("destination").forGetter(f -> f.destination),
-                  MapDecorationType.CODEC.optionalFieldOf("decoration", DEFAULT_DECORATION).forGetter(f -> f.mapDecoration),
-                  Codec.BYTE.optionalFieldOf("zoom", (byte)2).forGetter(f -> f.zoom),
-                  Codec.INT.optionalFieldOf("search_radius", 50).forGetter(f -> f.searchRadius),
-                  Codec.BOOL.optionalFieldOf("skip_existing_chunks", true).forGetter(f -> f.skipKnownStructures)
-               )
+         .and(
+            i.group(
+               RegistryCodecs.holderSet(Registries.STRUCTURE).fieldOf("destination").forGetter(f -> f.destination),
+               MapDecorationType.CODEC.optionalFieldOf("decoration", DEFAULT_DECORATION).forGetter(f -> f.mapDecoration),
+               Codec.BYTE.optionalFieldOf("zoom", (byte)2).forGetter(f -> f.zoom),
+               Codec.INT.optionalFieldOf("search_radius", 50).forGetter(f -> f.searchRadius),
+               Codec.BOOL.optionalFieldOf("skip_existing_chunks", true).forGetter(f -> f.skipKnownStructures)
             )
-            .apply(i, ExplorationMapFunction::new)
+         )
+         .apply(i, ExplorationMapFunction::new)
    );
    private final HolderSet<Structure> destination;
    private final Holder<MapDecorationType> mapDecoration;
@@ -79,28 +79,28 @@ public class ExplorationMapFunction extends LootItemConditionalFunction {
    public ItemStack run(final ItemStack itemStack, final LootContext context) {
       if (itemStack.isEmpty()) {
          return itemStack;
-      } else {
-         Vec3 lootPos = context.getOptional(LootContextParams.ORIGIN);
-         if (lootPos == null) {
-            return itemStack;
-         } else {
-            ServerLevel level = context.getLevel();
-            BlockPos lootBlockPos = BlockPos.containing(lootPos);
-            if (this.skipKnownStructures) {
-               this.claimStructureAt(level, lootBlockPos);
-            }
-
-            BlockPos nearestMapStructure = level.findNearestMapStructure(this.destination, lootBlockPos, this.searchRadius, this.skipKnownStructures);
-            if (nearestMapStructure == null) {
-               return itemStack;
-            } else {
-               MapItem.applyNewSavedData(level, itemStack, nearestMapStructure.getX(), nearestMapStructure.getZ(), this.zoom, true, true);
-               MapItem.renderBiomePreviewMap(level, itemStack);
-               MapItemSavedData.addTargetDecoration(itemStack, nearestMapStructure, "+", this.mapDecoration);
-               return itemStack;
-            }
-         }
       }
+
+      Vec3 lootPos = context.getOptional(LootContextParams.ORIGIN);
+      if (lootPos == null) {
+         return itemStack;
+      }
+
+      ServerLevel level = context.getLevel();
+      BlockPos lootBlockPos = BlockPos.containing(lootPos);
+      if (this.skipKnownStructures) {
+         this.claimStructureAt(level, lootBlockPos);
+      }
+
+      BlockPos nearestMapStructure = level.findNearestMapStructure(this.destination, lootBlockPos, this.searchRadius, this.skipKnownStructures);
+      if (nearestMapStructure == null) {
+         return itemStack;
+      }
+
+      MapItem.applyNewSavedData(level, itemStack, nearestMapStructure.getX(), nearestMapStructure.getZ(), this.zoom, true, true);
+      MapItem.renderBiomePreviewMap(level, itemStack);
+      MapItemSavedData.addTargetDecoration(itemStack, nearestMapStructure, "+", this.mapDecoration);
+      return itemStack;
    }
 
    private void claimStructureAt(final ServerLevel level, final BlockPos pos) {

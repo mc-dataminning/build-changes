@@ -19,21 +19,17 @@ public class RealmsSelectFileToUploadScreen extends RealmsScreen {
    private static final Logger LOGGER = LogUtils.getLogger();
    public static final Component TITLE = Component.translatable("mco.upload.select.world.title");
    private static final Component UNABLE_TO_LOAD_WORLD = Component.translatable("selectWorld.unable_to_load");
-   @Nullable
-   private final RealmCreationTask realmCreationTask;
+   private final @Nullable RealmCreationTask realmCreationTask;
    private final RealmsResetWorldScreen lastScreen;
    private final long realmId;
    private final int slotId;
    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this, 8 + 9 + 8 + 20 + 4, 33);
-   @Nullable
-   protected EditBox searchBox;
-   @Nullable
-   private WorldSelectionList list;
-   @Nullable
-   private Button uploadButton;
+   protected @Nullable EditBox searchBox;
+   private @Nullable WorldSelectionList list;
+   private @Nullable Button uploadButton;
 
    public RealmsSelectFileToUploadScreen(
-      @Nullable final RealmCreationTask realmCreationTask, final long realmId, final int slotId, final RealmsResetWorldScreen lastScreen
+      final @Nullable RealmCreationTask realmCreationTask, final long realmId, final int slotId, final RealmsResetWorldScreen lastScreen
    ) {
       super(TITLE);
       this.realmCreationTask = realmCreationTask;
@@ -67,9 +63,9 @@ public class RealmsSelectFileToUploadScreen extends RealmsScreen {
                   .onEntryInteract(this::upload)
                   .build()
             );
-      } catch (Exception var4) {
-         LOGGER.error("Couldn't load level list", var4);
-         this.minecraft.gui.setScreen(new RealmsGenericErrorScreen(UNABLE_TO_LOAD_WORLD, Component.nullToEmpty(var4.getMessage()), this.lastScreen));
+      } catch (Exception e) {
+         LOGGER.error("Couldn't load level list", e);
+         this.minecraft.gui.setScreen(new RealmsGenericErrorScreen(UNABLE_TO_LOAD_WORLD, Component.nullToEmpty(e.getMessage()), this.lastScreen));
          return;
       }
 
@@ -80,7 +76,8 @@ public class RealmsSelectFileToUploadScreen extends RealmsScreen {
       );
       footer.addChild(Button.builder(CommonComponents.GUI_BACK, button -> this.onClose()).build());
       this.updateButtonState(null);
-      this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
+      RealmsSelectFileToUploadScreen var3 = this;
+      this.layout.visitWidgets(x$0 -> var3.addRenderableWidget(x$0));
       this.repositionElements();
    }
 
@@ -98,7 +95,7 @@ public class RealmsSelectFileToUploadScreen extends RealmsScreen {
       this.setInitialFocus(this.searchBox);
    }
 
-   private void updateButtonState(@Nullable final LevelSummary ignored) {
+   private void updateButtonState(final @Nullable LevelSummary ignored) {
       if (this.list != null && this.uploadButton != null) {
          this.uploadButton.active = this.list.getSelected() != null;
       }

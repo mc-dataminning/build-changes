@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 import java.util.function.BiConsumer;
@@ -95,39 +94,31 @@ public class ClientDebugSubscriber {
       }
    }
 
-   @Nullable
-   private <V> ClientDebugSubscriber.ValueMaps<V> getValueMaps(final DebugSubscription<V> subscription) {
+   private <V> ClientDebugSubscriber.@Nullable ValueMaps<V> getValueMaps(final DebugSubscription<V> subscription) {
       return (ClientDebugSubscriber.ValueMaps<V>)this.valuesBySubscription.get(subscription);
    }
 
-   @Nullable
-   private <K, V> ClientDebugSubscriber.ValueMap<K, V> getValueMap(
+   private <K, V> ClientDebugSubscriber.@Nullable ValueMap<K, V> getValueMap(
       final DebugSubscription<V> subscription, final ClientDebugSubscriber.ValueMapType<K, V> mapType
    ) {
       ClientDebugSubscriber.ValueMaps<V> maps = this.getValueMaps(subscription);
       return maps != null ? mapType.get(maps) : null;
    }
 
-   @Nullable
-   private <K, V> V getValue(final DebugSubscription<V> subscription, final K key, final ClientDebugSubscriber.ValueMapType<K, V> type) {
+   private <K, V> @Nullable V getValue(final DebugSubscription<V> subscription, final K key, final ClientDebugSubscriber.ValueMapType<K, V> type) {
       ClientDebugSubscriber.ValueMap<K, V> values = this.getValueMap(subscription, type);
       return values != null ? values.getValue(key) : null;
    }
 
    public DebugValueAccess createDebugValueAccess(final Level level) {
       return new DebugValueAccess() {
-         {
-            Objects.requireNonNull(ClientDebugSubscriber.this);
-         }
-
          @Override
          public <T> void forEachChunk(final DebugSubscription<T> subscription, final BiConsumer<ChunkPos, T> consumer) {
             ClientDebugSubscriber.this.forEachValue(subscription, ClientDebugSubscriber.chunks(), consumer);
          }
 
-         @Nullable
          @Override
-         public <T> T getChunkValue(final DebugSubscription<T> subscription, final ChunkPos chunkPos) {
+         public <T> @Nullable T getChunkValue(final DebugSubscription<T> subscription, final ChunkPos chunkPos) {
             return ClientDebugSubscriber.this.getValue(subscription, chunkPos, ClientDebugSubscriber.chunks());
          }
 
@@ -136,9 +127,8 @@ public class ClientDebugSubscriber {
             ClientDebugSubscriber.this.forEachValue(subscription, ClientDebugSubscriber.blocks(), consumer);
          }
 
-         @Nullable
          @Override
-         public <T> T getBlockValue(final DebugSubscription<T> subscription, final BlockPos blockPos) {
+         public <T> @Nullable T getBlockValue(final DebugSubscription<T> subscription, final BlockPos blockPos) {
             return ClientDebugSubscriber.this.getValue(subscription, blockPos, ClientDebugSubscriber.blocks());
          }
 
@@ -152,9 +142,8 @@ public class ClientDebugSubscriber {
             });
          }
 
-         @Nullable
          @Override
-         public <T> T getEntityValue(final DebugSubscription<T> subscription, final Entity entity) {
+         public <T> @Nullable T getEntityValue(final DebugSubscription<T> subscription, final Entity entity) {
             return ClientDebugSubscriber.this.getValue(subscription, entity.getUUID(), ClientDebugSubscriber.entities());
          }
 
@@ -189,7 +178,7 @@ public class ClientDebugSubscriber {
    public <T> void pushEvent(final long gameTime, final DebugSubscription.Event<T> event) {
       ClientDebugSubscriber.ValueMaps<T> values = this.getValueMaps(event.subscription());
       if (values != null) {
-         values.events.add(new ClientDebugSubscriber.ValueWrapper<>(event.value(), gameTime + (long)event.subscription().expireAfterTicks()));
+         values.events.add(new ClientDebugSubscriber.ValueWrapper<>(event.value(), gameTime + event.subscription().expireAfterTicks()));
       }
    }
 
@@ -259,15 +248,14 @@ public class ClientDebugSubscriber {
          this.values.keySet().removeIf(predicate);
       }
 
-      @Nullable
-      public V getValue(final K key) {
+      public @Nullable V getValue(final K key) {
          ClientDebugSubscriber.ValueWrapper<V> result = this.values.get(key);
          return result != null ? result.value() : null;
       }
 
       public void apply(final long gameTime, final K key, final DebugSubscription.Update<V> update) {
          if (update.value().isPresent()) {
-            this.values.put(key, new ClientDebugSubscriber.ValueWrapper<>(update.value().get(), gameTime + (long)update.subscription().expireAfterTicks()));
+            this.values.put(key, new ClientDebugSubscriber.ValueWrapper<>(update.value().get(), gameTime + update.subscription().expireAfterTicks()));
          } else {
             this.values.remove(key);
          }
@@ -303,7 +291,7 @@ public class ClientDebugSubscriber {
       }
    }
 
-   private static record ValueWrapper<T>(T value, long expiresAfterTime) {
+   private record ValueWrapper<T>(T value, long expiresAfterTime) {
       private static final long NO_EXPIRY = -1L;
 
       public boolean hasExpired(final long gameTime) {

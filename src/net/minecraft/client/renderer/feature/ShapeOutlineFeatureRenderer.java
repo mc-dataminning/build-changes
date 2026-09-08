@@ -28,7 +28,7 @@ public class ShapeOutlineFeatureRenderer extends RenderTypeFeatureRenderer<Shape
       }
    }
 
-   public static record Submit(PoseStack.Pose pose, VoxelShape shape, RenderType renderType, int color, float width) implements SubmitNode {
+   public record Submit(PoseStack.Pose pose, VoxelShape shape, RenderType renderType, int color, float width) implements SubmitNode {
       @Override
       public FeatureRendererType<ShapeOutlineFeatureRenderer.Submit> featureType() {
          return ShapeOutlineFeatureRenderer.TYPE;

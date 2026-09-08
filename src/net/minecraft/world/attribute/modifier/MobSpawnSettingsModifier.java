@@ -25,7 +25,7 @@ public interface MobSpawnSettingsModifier extends AttributeModifier<MobSpawnSett
       return attribute.type().keyframeLerp();
    }
 
-   public static record Overlay() implements MobSpawnSettingsModifier {
+   record Overlay() implements MobSpawnSettingsModifier {
       private static final MobSpawnSettingsModifier.Overlay INSTANCE = new MobSpawnSettingsModifier.Overlay();
       private static final MobCategory[] ALL_CATEGORIES = MobCategory.values();
 
@@ -36,27 +36,31 @@ public interface MobSpawnSettingsModifier extends AttributeModifier<MobSpawnSett
          Map<EntityType<?>, MobSpawnSettings.MobSpawnCost> secondSpawnCosts = second.allSpawnCosts();
          if (firstCategories.isEmpty() && firstSpawnCosts.isEmpty()) {
             return second;
-         } else if (secondCategories.isEmpty() && secondSpawnCosts.isEmpty()) {
-            return first;
-         } else if (secondCategories.containsAll(firstCategories) && secondSpawnCosts.keySet().containsAll(firstSpawnCosts.keySet())) {
-            return second;
-         } else {
-            MobSpawnSettings.Builder builder = new MobSpawnSettings.Builder();
+         }
 
-            for (MobCategory category : ALL_CATEGORIES) {
-               WeightedList<MobSpawnSettings.SpawnerData> secondSpawns = second.getMobsInCategory(category);
-               if (secondSpawns != null) {
-                  builder.addAllSpawns(category, secondSpawns);
-               } else {
-                  WeightedList<MobSpawnSettings.SpawnerData> firstSpawns = first.getMobsInCategory(category);
-                  if (firstSpawns != null) {
-                     builder.addAllSpawns(category, firstSpawns);
-                  }
+         if (secondCategories.isEmpty() && secondSpawnCosts.isEmpty()) {
+            return first;
+         }
+
+         if (secondCategories.containsAll(firstCategories) && secondSpawnCosts.keySet().containsAll(firstSpawnCosts.keySet())) {
+            return second;
+         }
+
+         MobSpawnSettings.Builder builder = new MobSpawnSettings.Builder();
+
+         for (MobCategory category : ALL_CATEGORIES) {
+            WeightedList<MobSpawnSettings.SpawnerData> secondSpawns = second.getMobsInCategory(category);
+            if (secondSpawns != null) {
+               builder.addAllSpawns(category, secondSpawns);
+            } else {
+               WeightedList<MobSpawnSettings.SpawnerData> firstSpawns = first.getMobsInCategory(category);
+               if (firstSpawns != null) {
+                  builder.addAllSpawns(category, firstSpawns);
                }
             }
-
-            return builder.addAllCosts(firstSpawnCosts).addAllCosts(secondSpawnCosts).build();
          }
+
+         return builder.addAllCosts(firstSpawnCosts).addAllCosts(secondSpawnCosts).build();
       }
    }
 }

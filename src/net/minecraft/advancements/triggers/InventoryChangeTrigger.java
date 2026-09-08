@@ -13,7 +13,6 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.item.ItemInstance;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
@@ -50,18 +49,17 @@ public class InventoryChangeTrigger extends SimpleCriterionTrigger<InventoryChan
       this.trigger(player, t -> t.matches(inventory, changedItem, slotsFull, slotsEmpty, slotsOccupied));
    }
 
-   public static record TriggerInstance(
-      Optional<Holder<LootItemCondition>> player, InventoryChangeTrigger.TriggerInstance.Slots slots, List<ItemPredicate> items
-   ) implements SimpleCriterionTrigger.SimpleInstance {
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, InventoryChangeTrigger.TriggerInstance.Slots slots, List<ItemPredicate> items)
+      implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<InventoryChangeTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(InventoryChangeTrigger.TriggerInstance::player),
-                  InventoryChangeTrigger.TriggerInstance.Slots.CODEC
-                     .optionalFieldOf("slots", InventoryChangeTrigger.TriggerInstance.Slots.ANY)
-                     .forGetter(InventoryChangeTrigger.TriggerInstance::slots),
-                  ItemPredicate.CODEC.listOf().optionalFieldOf("items", List.of()).forGetter(InventoryChangeTrigger.TriggerInstance::items)
-               )
-               .apply(i, InventoryChangeTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(InventoryChangeTrigger.TriggerInstance::player),
+               InventoryChangeTrigger.TriggerInstance.Slots.CODEC
+                  .optionalFieldOf("slots", InventoryChangeTrigger.TriggerInstance.Slots.ANY)
+                  .forGetter(InventoryChangeTrigger.TriggerInstance::slots),
+               ItemPredicate.CODEC.listOf().optionalFieldOf("items", List.of()).forGetter(InventoryChangeTrigger.TriggerInstance::items)
+            )
+            .apply(i, InventoryChangeTrigger.TriggerInstance::new)
       );
 
       public static Criterion<InventoryChangeTrigger.TriggerInstance> hasItems(final ItemPredicate.Builder... items) {
@@ -88,9 +86,13 @@ public class InventoryChangeTrigger extends SimpleCriterionTrigger<InventoryChan
       public boolean matches(final Inventory inventory, final ItemStack changedItem, final int slotsFull, final int slotsEmpty, final int slotsOccupied) {
          if (!this.slots.matches(slotsFull, slotsEmpty, slotsOccupied)) {
             return false;
-         } else if (this.items.isEmpty()) {
+         }
+
+         if (this.items.isEmpty()) {
             return true;
-         } else if (this.items.size() != 1) {
+         }
+
+         if (this.items.size() != 1) {
             List<ItemPredicate> predicates = new ObjectArrayList(this.items);
             int count = inventory.getContainerSize();
 
@@ -101,26 +103,24 @@ public class InventoryChangeTrigger extends SimpleCriterionTrigger<InventoryChan
 
                ItemStack itemStack = inventory.getItem(slot);
                if (!itemStack.isEmpty()) {
-                  predicates.removeIf(predicate -> predicate.test((ItemInstance)itemStack));
+                  predicates.removeIf(predicate -> predicate.test(itemStack));
                }
             }
 
             return predicates.isEmpty();
          } else {
-            return !changedItem.isEmpty() && this.items.get(0).test((ItemInstance)changedItem);
+            return !changedItem.isEmpty() && this.items.get(0).test(changedItem);
          }
       }
 
-      public static record Slots(MinMaxBounds.Ints occupied, MinMaxBounds.Ints full, MinMaxBounds.Ints empty) {
+      public record Slots(MinMaxBounds.Ints occupied, MinMaxBounds.Ints full, MinMaxBounds.Ints empty) {
          public static final Codec<InventoryChangeTrigger.TriggerInstance.Slots> CODEC = RecordCodecBuilder.create(
             i -> i.group(
-                     MinMaxBounds.Ints.CODEC
-                        .optionalFieldOf("occupied", MinMaxBounds.Ints.ANY)
-                        .forGetter(InventoryChangeTrigger.TriggerInstance.Slots::occupied),
-                     MinMaxBounds.Ints.CODEC.optionalFieldOf("full", MinMaxBounds.Ints.ANY).forGetter(InventoryChangeTrigger.TriggerInstance.Slots::full),
-                     MinMaxBounds.Ints.CODEC.optionalFieldOf("empty", MinMaxBounds.Ints.ANY).forGetter(InventoryChangeTrigger.TriggerInstance.Slots::empty)
-                  )
-                  .apply(i, InventoryChangeTrigger.TriggerInstance.Slots::new)
+                  MinMaxBounds.Ints.CODEC.optionalFieldOf("occupied", MinMaxBounds.Ints.ANY).forGetter(InventoryChangeTrigger.TriggerInstance.Slots::occupied),
+                  MinMaxBounds.Ints.CODEC.optionalFieldOf("full", MinMaxBounds.Ints.ANY).forGetter(InventoryChangeTrigger.TriggerInstance.Slots::full),
+                  MinMaxBounds.Ints.CODEC.optionalFieldOf("empty", MinMaxBounds.Ints.ANY).forGetter(InventoryChangeTrigger.TriggerInstance.Slots::empty)
+               )
+               .apply(i, InventoryChangeTrigger.TriggerInstance.Slots::new)
          );
          public static final InventoryChangeTrigger.TriggerInstance.Slots ANY = new InventoryChangeTrigger.TriggerInstance.Slots(
             MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.ANY

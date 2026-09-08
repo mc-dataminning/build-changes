@@ -9,7 +9,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.UUID;
 import net.minecraft.server.packs.DownloadQueue;
 import org.jspecify.annotations.Nullable;
@@ -48,7 +47,7 @@ public class ServerPackManager {
       }
    }
 
-   public void pushPack(final UUID id, final URL url, @Nullable final HashCode hash) {
+   public void pushPack(final UUID id, final URL url, final @Nullable HashCode hash) {
       if (this.packPromptStatus == ServerPackManager.PackPromptStatus.DECLINED) {
          this.packLoadFeedback.reportFinalResult(id, PackLoadFeedback.FinalResult.DECLINED);
       } else {
@@ -63,8 +62,8 @@ public class ServerPackManager {
          URL url;
          try {
             url = path.toUri().toURL();
-         } catch (MalformedURLException var5) {
-            throw new IllegalStateException("Can't convert path to URL " + path, var5);
+         } catch (MalformedURLException e) {
+            throw new IllegalStateException("Can't convert path to URL " + path, e);
          }
 
          ServerPackManager.ServerPackData pack = new ServerPackManager.ServerPackData(id, url, null);
@@ -89,8 +88,7 @@ public class ServerPackManager {
       pack.promptAccepted = true;
    }
 
-   @Nullable
-   private ServerPackManager.ServerPackData findPackInfo(final UUID id) {
+   private ServerPackManager.@Nullable ServerPackData findPackInfo(final UUID id) {
       for (ServerPackManager.ServerPackData pack : this.packs) {
          if (!pack.isRemoved() && pack.id.equals(id)) {
             return pack;
@@ -157,7 +155,9 @@ public class ServerPackManager {
       this.packs.removeIf(data -> {
          if (data.activationStatus != ServerPackManager.ActivationStatus.INACTIVE) {
             return false;
-         } else if (data.removalReason != null) {
+         }
+
+         if (data.removalReason != null) {
             PackLoadFeedback.FinalResult response = data.removalReason.serverResponse;
             if (response != null) {
                this.packLoadFeedback.reportFinalResult(data.id, response);
@@ -183,13 +183,13 @@ public class ServerPackManager {
          }
       }
 
-      for (ServerPackManager.ServerPackData packx : data) {
-         Path packFile = result.downloaded().get(packx.id);
+      for (ServerPackManager.ServerPackData pack : data) {
+         Path packFile = result.downloaded().get(pack.id);
          if (packFile != null) {
-            packx.downloadStatus = ServerPackManager.PackDownloadStatus.DONE;
-            packx.path = packFile;
-            if (!packx.isRemoved()) {
-               this.packLoadFeedback.reportUpdate(packx.id, PackLoadFeedback.Update.DOWNLOADED);
+            pack.downloadStatus = ServerPackManager.PackDownloadStatus.DONE;
+            pack.path = packFile;
+            if (!pack.isRemoved()) {
+               this.packLoadFeedback.reportUpdate(pack.id, PackLoadFeedback.Update.DOWNLOADED);
             }
          }
       }
@@ -217,8 +217,8 @@ public class ServerPackManager {
       if (!downloadPacks.isEmpty()) {
          Map<UUID, DownloadQueue.DownloadRequest> downloadRequests = new HashMap<>();
 
-         for (ServerPackManager.ServerPackData packx : downloadPacks) {
-            downloadRequests.put(packx.id, new DownloadQueue.DownloadRequest(packx.url, packx.hash));
+         for (ServerPackManager.ServerPackData pack : downloadPacks) {
+            downloadRequests.put(pack.id, new DownloadQueue.DownloadRequest(pack.url, pack.hash));
          }
 
          this.downloader.download(downloadRequests, result -> this.onDownload(downloadPacks, result));
@@ -260,15 +260,11 @@ public class ServerPackManager {
             }
          }
 
-         for (ServerPackManager.ServerPackData packx : packsToUnload) {
-            packx.activationStatus = ServerPackManager.ActivationStatus.PENDING;
+         for (ServerPackManager.ServerPackData pack : packsToUnload) {
+            pack.activationStatus = ServerPackManager.ActivationStatus.PENDING;
          }
 
          this.reloadConfig.scheduleReload(new PackReloadConfig.Callbacks() {
-            {
-               Objects.requireNonNull(ServerPackManager.this);
-            }
-
             @Override
             public void onSuccess() {
                for (ServerPackManager.ServerPackData pack : packsToLoad) {
@@ -278,8 +274,8 @@ public class ServerPackManager {
                   }
                }
 
-               for (ServerPackManager.ServerPackData packx : packsToUnload) {
-                  packx.activationStatus = ServerPackManager.ActivationStatus.INACTIVE;
+               for (ServerPackManager.ServerPackData pack : packsToUnload) {
+                  pack.activationStatus = ServerPackManager.ActivationStatus.INACTIVE;
                }
 
                ServerPackManager.this.registerForUpdate();
@@ -322,25 +318,25 @@ public class ServerPackManager {
       }
    }
 
-   private static enum ActivationStatus {
+   private enum ActivationStatus {
       INACTIVE,
       PENDING,
       ACTIVE;
    }
 
-   private static enum PackDownloadStatus {
+   private enum PackDownloadStatus {
       REQUESTED,
       PENDING,
       DONE;
    }
 
-   public static enum PackPromptStatus {
+   public enum PackPromptStatus {
       PENDING,
       ALLOWED,
       DECLINED;
    }
 
-   private static enum RemovalReason {
+   private enum RemovalReason {
       DOWNLOAD_FAILED(PackLoadFeedback.FinalResult.DOWNLOAD_FAILED),
       ACTIVATION_FAILED(PackLoadFeedback.FinalResult.ACTIVATION_FAILED),
       DECLINED(PackLoadFeedback.FinalResult.DECLINED),
@@ -348,10 +344,9 @@ public class ServerPackManager {
       SERVER_REMOVED(null),
       SERVER_REPLACED(null);
 
-      @Nullable
-      private final PackLoadFeedback.FinalResult serverResponse;
+      private final PackLoadFeedback.@Nullable FinalResult serverResponse;
 
-      private RemovalReason(@Nullable final PackLoadFeedback.FinalResult serverResponse) {
+      RemovalReason(final PackLoadFeedback.@Nullable FinalResult serverResponse) {
          this.serverResponse = serverResponse;
       }
    }
@@ -359,17 +354,14 @@ public class ServerPackManager {
    private static class ServerPackData {
       private final UUID id;
       private final URL url;
-      @Nullable
-      private final HashCode hash;
-      @Nullable
-      private Path path;
-      @Nullable
-      private ServerPackManager.RemovalReason removalReason;
+      private final @Nullable HashCode hash;
+      private @Nullable Path path;
+      private ServerPackManager.@Nullable RemovalReason removalReason;
       private ServerPackManager.PackDownloadStatus downloadStatus = ServerPackManager.PackDownloadStatus.REQUESTED;
       private ServerPackManager.ActivationStatus activationStatus = ServerPackManager.ActivationStatus.INACTIVE;
       private boolean promptAccepted;
 
-      private ServerPackData(final UUID id, final URL url, @Nullable final HashCode hash) {
+      private ServerPackData(final UUID id, final URL url, final @Nullable HashCode hash) {
          this.id = id;
          this.url = url;
          this.hash = hash;

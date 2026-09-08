@@ -9,8 +9,7 @@ public interface ClientAvatarEntity {
 
    PlayerSkin getSkin();
 
-   @Nullable
-   Parrot.Variant getParrotVariantOnShoulder(boolean left);
+   Parrot.@Nullable Variant getParrotVariantOnShoulder(boolean left);
 
    boolean showExtraEars();
 }

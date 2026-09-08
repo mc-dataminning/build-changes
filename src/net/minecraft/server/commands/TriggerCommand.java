@@ -38,10 +38,10 @@ public class TriggerCommand {
                         .suggests((c, p) -> suggestObjectives((CommandSourceStack)c.getSource(), p))
                         .executes(
                            c -> simpleTrigger(
-                                 (CommandSourceStack)c.getSource(),
-                                 ((CommandSourceStack)c.getSource()).getPlayerOrException(),
-                                 ObjectiveArgument.getObjective(c, "objective")
-                              )
+                              (CommandSourceStack)c.getSource(),
+                              ((CommandSourceStack)c.getSource()).getPlayerOrException(),
+                              ObjectiveArgument.getObjective(c, "objective")
+                           )
                         ))
                      .then(
                         Commands.literal("add")
@@ -49,11 +49,11 @@ public class TriggerCommand {
                               Commands.argument("value", IntegerArgumentType.integer())
                                  .executes(
                                     c -> addValue(
-                                          (CommandSourceStack)c.getSource(),
-                                          ((CommandSourceStack)c.getSource()).getPlayerOrException(),
-                                          ObjectiveArgument.getObjective(c, "objective"),
-                                          IntegerArgumentType.getInteger(c, "value")
-                                       )
+                                       (CommandSourceStack)c.getSource(),
+                                       ((CommandSourceStack)c.getSource()).getPlayerOrException(),
+                                       ObjectiveArgument.getObjective(c, "objective"),
+                                       IntegerArgumentType.getInteger(c, "value")
+                                    )
                                  )
                            )
                      ))
@@ -63,11 +63,11 @@ public class TriggerCommand {
                            Commands.argument("value", IntegerArgumentType.integer())
                               .executes(
                                  c -> setValue(
-                                       (CommandSourceStack)c.getSource(),
-                                       ((CommandSourceStack)c.getSource()).getPlayerOrException(),
-                                       ObjectiveArgument.getObjective(c, "objective"),
-                                       IntegerArgumentType.getInteger(c, "value")
-                                    )
+                                    (CommandSourceStack)c.getSource(),
+                                    ((CommandSourceStack)c.getSource()).getPlayerOrException(),
+                                    ObjectiveArgument.getObjective(c, "objective"),
+                                    IntegerArgumentType.getInteger(c, "value")
+                                 )
                               )
                         )
                   )

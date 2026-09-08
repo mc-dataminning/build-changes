@@ -57,22 +57,22 @@ public interface AbstractHugeMushroomFeature extends Feature {
       if (y >= level.getMinY() + 1 && y + treeHeight + 1 <= level.getMaxY()) {
          if (!this.canPlaceOn().test(level, origin.below())) {
             return false;
-         } else {
-            for (int dy = 0; dy <= treeHeight; dy++) {
-               int radius = this.getTreeRadiusForHeight(-1, -1, this.foliageRadius(), dy);
+         }
 
-               for (int dx = -radius; dx <= radius; dx++) {
-                  for (int dz = -radius; dz <= radius; dz++) {
-                     BlockState state = level.getBlockState(blockPos.setWithOffset(origin, dx, dy, dz));
-                     if (!state.isAir() && !state.is(BlockTags.LEAVES)) {
-                        return false;
-                     }
+         for (int dy = 0; dy <= treeHeight; dy++) {
+            int radius = this.getTreeRadiusForHeight(-1, -1, this.foliageRadius(), dy);
+
+            for (int dx = -radius; dx <= radius; dx++) {
+               for (int dz = -radius; dz <= radius; dz++) {
+                  BlockState state = level.getBlockState(blockPos.setWithOffset(origin, dx, dy, dz));
+                  if (!state.isAir() && !state.is(BlockTags.LEAVES)) {
+                     return false;
                   }
                }
             }
-
-            return true;
          }
+
+         return true;
       } else {
          return false;
       }
@@ -84,11 +84,11 @@ public interface AbstractHugeMushroomFeature extends Feature {
       BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
       if (!this.isValidPosition(level, origin, treeHeight, blockPos)) {
          return false;
-      } else {
-         this.makeCap(level, random, origin, treeHeight, blockPos);
-         this.placeTrunk(level, random, origin, treeHeight, blockPos);
-         return true;
       }
+
+      this.makeCap(level, random, origin, treeHeight, blockPos);
+      this.placeTrunk(level, random, origin, treeHeight, blockPos);
+      return true;
    }
 
    int getTreeRadiusForHeight(final int trunkHeight, final int treeHeight, final int leafRadius, final int yo);

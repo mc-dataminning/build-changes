@@ -39,13 +39,7 @@ public class ScaffoldingBlock extends Block implements SimpleWaterloggedBlock {
 
    protected ScaffoldingBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(DISTANCE, Integer.valueOf(7))
-            .setValue(WATERLOGGED, Boolean.valueOf(false))
-            .setValue(BOTTOM, Boolean.valueOf(false))
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(DISTANCE, 7).setValue(WATERLOGGED, false).setValue(BOTTOM, false));
    }
 
    @Override
@@ -78,9 +72,9 @@ public class ScaffoldingBlock extends Block implements SimpleWaterloggedBlock {
       Level level = context.getLevel();
       int distance = getDistance(level, pos);
       return this.defaultBlockState()
-         .setValue(WATERLOGGED, Boolean.valueOf(level.getFluidState(pos).is(Fluids.WATER)))
-         .setValue(DISTANCE, Integer.valueOf(distance))
-         .setValue(BOTTOM, Boolean.valueOf(this.isBottom(level, pos, distance)));
+         .setValue(WATERLOGGED, level.getFluidState(pos).is(Fluids.WATER))
+         .setValue(DISTANCE, distance)
+         .setValue(BOTTOM, this.isBottom(level, pos, distance));
    }
 
    @Override
@@ -115,7 +109,7 @@ public class ScaffoldingBlock extends Block implements SimpleWaterloggedBlock {
    @Override
    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
       int distance = getDistance(level, pos);
-      BlockState newState = state.setValue(DISTANCE, Integer.valueOf(distance)).setValue(BOTTOM, Boolean.valueOf(this.isBottom(level, pos, distance)));
+      BlockState newState = state.setValue(DISTANCE, distance).setValue(BOTTOM, this.isBottom(level, pos, distance));
       if (newState.getValue(DISTANCE) == 7) {
          if (state.getValue(DISTANCE) == 7) {
             FallingBlockEntity.fall(level, pos, newState);

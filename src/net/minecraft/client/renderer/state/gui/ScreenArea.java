@@ -4,6 +4,5 @@ import net.minecraft.client.gui.navigation.ScreenRectangle;
 import org.jspecify.annotations.Nullable;
 
 public interface ScreenArea {
-   @Nullable
-   ScreenRectangle bounds();
+   @Nullable ScreenRectangle bounds();
 }

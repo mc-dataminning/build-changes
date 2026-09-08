@@ -30,9 +30,9 @@ public class TrackingEmitter extends NoRenderParticle {
    @Override
    public void tick() {
       for (int i = 0; i < 16; i++) {
-         double xa = (double)(this.random.nextFloat() * 2.0F - 1.0F);
-         double ya = (double)(this.random.nextFloat() * 2.0F - 1.0F);
-         double za = (double)(this.random.nextFloat() * 2.0F - 1.0F);
+         double xa = this.random.nextFloat() * 2.0F - 1.0F;
+         double ya = this.random.nextFloat() * 2.0F - 1.0F;
+         double za = this.random.nextFloat() * 2.0F - 1.0F;
          if (!(xa * xa + ya * ya + za * za > 1.0)) {
             double x = this.entity.getX(xa / 4.0);
             double y = this.entity.getY(0.5 + ya / 4.0);

@@ -102,14 +102,14 @@ public class ServerFunctionLibrary implements PreparableReloadListener {
                Map<Identifier, CompletableFuture<CommandFunction<CommandSourceStack>>> functionFutures = (Map<Identifier, CompletableFuture<CommandFunction<CommandSourceStack>>>)data.getSecond();
                Builder<Identifier, CommandFunction<CommandSourceStack>> newFunctions = ImmutableMap.builder();
                functionFutures.forEach((id, functionFuture) -> functionFuture.handle((function, throwable) -> {
-                     if (throwable != null) {
-                        LOGGER.error("Failed to load function {}", id, throwable);
-                     } else {
-                        newFunctions.put(id, function);
-                     }
+                  if (throwable != null) {
+                     LOGGER.error("Failed to load function {}", id, throwable);
+                  } else {
+                     newFunctions.put(id, function);
+                  }
 
-                     return null;
-                  }).join());
+                  return null;
+               }).join());
                this.functions = newFunctions.build();
                this.tags = this.tagsLoader.build((Map<Identifier, List<TagLoader.EntryWithSource>>)data.getFirst());
             },
@@ -118,15 +118,10 @@ public class ServerFunctionLibrary implements PreparableReloadListener {
    }
 
    private static List<String> readLines(final Resource resource) {
-      try {
-         List var2;
-         try (BufferedReader reader = resource.openAsReader()) {
-            var2 = reader.lines().toList();
-         }
-
-         return var2;
-      } catch (IOException var6) {
-         throw new CompletionException(var6);
+      try (BufferedReader reader = resource.openAsReader()) {
+         return reader.lines().toList();
+      } catch (IOException ex) {
+         throw new CompletionException(ex);
       }
    }
 }

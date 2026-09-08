@@ -21,25 +21,25 @@ public class ValidateNearbyPoi {
 
    public static BehaviorControl<LivingEntity> create(final Predicate<Holder<PoiType>> poiType, final MemoryModuleType<GlobalPos> memoryType) {
       return BehaviorBuilder.create(i -> i.group(i.present(memoryType)).apply(i, memory -> (level, body, timestamp) -> {
-               GlobalPos globalPos = i.get(memory);
-               BlockPos pos = globalPos.pos();
-               if (level.dimension() == globalPos.dimension() && pos.closerToCenterThan(body.position(), 16.0)) {
-                  ServerLevel poiLevel = level.getServer().getLevel(globalPos.dimension());
-                  if (poiLevel == null || !poiLevel.getPoiManager().exists(pos, poiType)) {
-                     memory.erase();
-                  } else if (bedIsOccupied(poiLevel, pos, body)) {
-                     memory.erase();
-                     if (!bedIsOccupiedByVillager(poiLevel, pos)) {
-                        level.getPoiManager().release(pos);
-                        level.debugSynchronizers().updatePoi(pos);
-                     }
-                  }
-
-                  return true;
-               } else {
-                  return false;
+         GlobalPos globalPos = i.get(memory);
+         BlockPos pos = globalPos.pos();
+         if (level.dimension() == globalPos.dimension() && pos.closerToCenterThan(body.position(), 16.0)) {
+            ServerLevel poiLevel = level.getServer().getLevel(globalPos.dimension());
+            if (poiLevel == null || !poiLevel.getPoiManager().exists(pos, poiType)) {
+               memory.erase();
+            } else if (bedIsOccupied(poiLevel, pos, body)) {
+               memory.erase();
+               if (!bedIsOccupiedByVillager(poiLevel, pos)) {
+                  level.getPoiManager().release(pos);
+                  level.debugSynchronizers().updatePoi(pos);
                }
-            }));
+            }
+
+            return true;
+         } else {
+            return false;
+         }
+      }));
    }
 
    private static boolean bedIsOccupied(final ServerLevel poiLevel, final BlockPos poiPos, final LivingEntity body) {

@@ -16,6 +16,6 @@ public record Ceiling(Holder<ContextFloatProvider> input) implements ContextFloa
 
    @Override
    public float getFloatUnsafe(final LootContext context) {
-      return (float)Mth.ceil(this.input().value().getFloatUnsafe(context));
+      return Mth.ceil(this.input().value().getFloatUnsafe(context));
    }
 }

@@ -66,6 +66,6 @@ public class SalmonModel extends EntityModel<SalmonRenderState> {
          angleMultiplier = 1.7F;
       }
 
-      this.bodyBack.yRot = -amplitudeMultiplier * 0.25F * Mth.sin((double)(angleMultiplier * 0.6F * state.ageInTicks));
+      this.bodyBack.yRot = -amplitudeMultiplier * 0.25F * Mth.sin(angleMultiplier * 0.6F * state.ageInTicks);
    }
 }

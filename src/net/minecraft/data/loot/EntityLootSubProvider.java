@@ -153,19 +153,19 @@ public abstract class EntityLootSubProvider implements LootTableSubProvider {
                         builders.forEach((id, builder) -> {
                            if (!seen.add((ResourceKey<LootTable>)id)) {
                               throw new IllegalStateException(String.format(Locale.ROOT, "Duplicate loottable '%s' for '%s'", id, holder.key().identifier()));
-                           } else {
-                              this.output.accept((ResourceKey<LootTable>)id, builder);
                            }
+
+                           this.output.accept((ResourceKey<LootTable>)id, builder);
                         });
                      }
                   } else {
-                     Map<ResourceKey<LootTable>, LootTable.Builder> buildersx = this.map.remove(type);
-                     if (buildersx != null) {
+                     Map<ResourceKey<LootTable>, LootTable.Builder> builders = this.map.remove(type);
+                     if (builders != null) {
                         throw new IllegalStateException(
                            String.format(
                               Locale.ROOT,
                               "Weird loottables '%s' for '%s', not a LivingEntity so should not have loot",
-                              buildersx.keySet().stream().map(r -> r.identifier().toString()).collect(Collectors.joining(",")),
+                              builders.keySet().stream().map(r -> r.identifier().toString()).collect(Collectors.joining(",")),
                               holder.key().identifier()
                            )
                         );

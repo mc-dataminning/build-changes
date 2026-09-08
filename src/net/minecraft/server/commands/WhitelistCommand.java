@@ -115,31 +115,31 @@ public class WhitelistCommand {
 
       if (success == 0) {
          throw ERROR_NOT_WHITELISTED.create();
-      } else {
-         source.getServer().kickUnlistedPlayers();
-         return success;
       }
+
+      source.getServer().kickUnlistedPlayers();
+      return success;
    }
 
    private static int enableWhitelist(final CommandSourceStack source) throws CommandSyntaxException {
       if (source.getServer().isUsingWhitelist()) {
          throw ERROR_ALREADY_ENABLED.create();
-      } else {
-         source.getServer().setUsingWhitelist(true);
-         source.sendSuccess(() -> Component.translatable("commands.whitelist.enabled"), true);
-         source.getServer().kickUnlistedPlayers();
-         return 1;
       }
+
+      source.getServer().setUsingWhitelist(true);
+      source.sendSuccess(() -> Component.translatable("commands.whitelist.enabled"), true);
+      source.getServer().kickUnlistedPlayers();
+      return 1;
    }
 
    private static int disableWhitelist(final CommandSourceStack source) throws CommandSyntaxException {
       if (!source.getServer().isUsingWhitelist()) {
          throw ERROR_ALREADY_DISABLED.create();
-      } else {
-         source.getServer().setUsingWhitelist(false);
-         source.sendSuccess(() -> Component.translatable("commands.whitelist.disabled"), true);
-         return 1;
       }
+
+      source.getServer().setUsingWhitelist(false);
+      source.sendSuccess(() -> Component.translatable("commands.whitelist.disabled"), true);
+      return 1;
    }
 
    private static int showList(final CommandSourceStack source) {

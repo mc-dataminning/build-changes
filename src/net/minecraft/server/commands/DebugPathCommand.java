@@ -35,12 +35,14 @@ public class DebugPathCommand {
          Path path = pathNavigation.createPath(target, 0);
          if (path == null) {
             throw ERROR_NO_PATH.create();
-         } else if (!path.canReach()) {
-            throw ERROR_NOT_COMPLETE.create();
-         } else {
-            source.sendSuccess(() -> Component.literal("Made path"), true);
-            return 1;
          }
+
+         if (!path.canReach()) {
+            throw ERROR_NOT_COMPLETE.create();
+         }
+
+         source.sendSuccess(() -> Component.literal("Made path"), true);
+         return 1;
       } else {
          throw ERROR_NOT_MOB.create();
       }

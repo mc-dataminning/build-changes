@@ -21,6 +21,6 @@ class AbsorptionMobEffect extends MobEffect {
    @Override
    public void onEffectStarted(final LivingEntity mob, final int amplifier) {
       super.onEffectStarted(mob, amplifier);
-      mob.setAbsorptionAmount(Math.max(mob.getAbsorptionAmount(), (float)(4 * (1 + amplifier))));
+      mob.setAbsorptionAmount(Math.max(mob.getAbsorptionAmount(), 4 * (1 + amplifier)));
    }
 }

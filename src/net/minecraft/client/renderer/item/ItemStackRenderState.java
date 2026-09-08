@@ -4,7 +4,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -27,8 +26,7 @@ public class ItemStackRenderState {
    private int activeLayerCount;
    private boolean animated;
    private boolean oversizedInGui;
-   @Nullable
-   private AABB cachedModelBoundingBox;
+   private @Nullable AABB cachedModelBoundingBox;
    private ItemStackRenderState.LayerRenderState[] layers = new ItemStackRenderState.LayerRenderState[]{new ItemStackRenderState.LayerRenderState()};
 
    public void ensureCapacity(final int requestedCount) {
@@ -84,8 +82,7 @@ public class ItemStackRenderState {
       return this.firstLayer().usesBlockLight;
    }
 
-   @Nullable
-   public Material.Baked pickParticleMaterial(final RandomSource randomSource) {
+   public Material.@Nullable Baked pickParticleMaterial(final RandomSource randomSource) {
       return this.activeLayerCount == 0 ? null : this.layers[randomSource.nextInt(this.activeLayerCount)].particleMaterial;
    }
 
@@ -118,13 +115,13 @@ public class ItemStackRenderState {
    public AABB getModelBoundingBox() {
       if (this.cachedModelBoundingBox != null) {
          return this.cachedModelBoundingBox;
-      } else {
-         AABB.Builder collector = new AABB.Builder();
-         this.visitExtents(collector::include);
-         AABB aabb = collector.isDefined() ? collector.build() : AABB.ofSize(Vec3.ZERO, 0.0, 0.0, 0.0);
-         this.cachedModelBoundingBox = aabb;
-         return aabb;
       }
+
+      AABB.Builder collector = new AABB.Builder();
+      this.visitExtents(collector::include);
+      AABB aabb = collector.isDefined() ? collector.build() : AABB.ofSize(Vec3.ZERO, 0.0, 0.0, 0.0);
+      this.cachedModelBoundingBox = aabb;
+      return aabb;
    }
 
    public void setOversizedInGui(final boolean oversizedInGui) {
@@ -135,7 +132,7 @@ public class ItemStackRenderState {
       return this.oversizedInGui;
    }
 
-   public static enum FoilType {
+   public enum FoilType {
       NONE,
       STANDARD,
       SPECIAL;
@@ -145,30 +142,16 @@ public class ItemStackRenderState {
       private static final Vector3fc[] NO_EXTENTS = new Vector3fc[0];
       public static final Supplier<Vector3fc[]> NO_EXTENTS_SUPPLIER = () -> NO_EXTENTS;
       public static final int[] EMPTY_TINTS = new int[0];
-      private ItemQuads quads;
+      private ItemQuads quads = ItemQuads.EMPTY;
       private boolean usesBlockLight;
-      @Nullable
-      private Material.Baked particleMaterial;
-      private ItemTransform itemTransform;
-      private final Matrix4f localTransform;
-      private ItemStackRenderState.FoilType foilType;
-      @Nullable
-      private IntList tintLayers;
-      @Nullable
-      private SpecialModelRenderer<Object> specialRenderer;
-      @Nullable
-      private Object argumentForSpecialRendering;
-      private Supplier<Vector3fc[]> extents;
-
-      public LayerRenderState() {
-         Objects.requireNonNull(ItemStackRenderState.this);
-         super();
-         this.quads = ItemQuads.EMPTY;
-         this.itemTransform = ItemTransform.NO_TRANSFORM;
-         this.localTransform = new Matrix4f();
-         this.foilType = ItemStackRenderState.FoilType.NONE;
-         this.extents = NO_EXTENTS_SUPPLIER;
-      }
+      private Material.@Nullable Baked particleMaterial;
+      private ItemTransform itemTransform = ItemTransform.NO_TRANSFORM;
+      private final Matrix4f localTransform = new Matrix4f();
+      private ItemStackRenderState.FoilType foilType = ItemStackRenderState.FoilType.NONE;
+      private @Nullable IntList tintLayers;
+      private @Nullable SpecialModelRenderer<Object> specialRenderer;
+      private @Nullable Object argumentForSpecialRendering;
+      private Supplier<Vector3fc[]> extents = NO_EXTENTS_SUPPLIER;
 
       public void clear() {
          this.quads = ItemQuads.EMPTY;
@@ -210,7 +193,7 @@ public class ItemStackRenderState {
          this.localTransform.set(transform);
       }
 
-      public <T> void setupSpecialModel(final SpecialModelRenderer<T> renderer, @Nullable final T argument) {
+      public <T> void setupSpecialModel(final SpecialModelRenderer<T> renderer, final @Nullable T argument) {
          this.specialRenderer = eraseSpecialRenderer(renderer);
          this.argumentForSpecialRendering = argument;
       }

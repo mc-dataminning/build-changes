@@ -44,7 +44,7 @@ public enum ChatRestriction {
    private final Component display;
    private final Optional<ChatRestriction.Action> action;
 
-   private ChatRestriction(final Component display, final Optional<ChatRestriction.Action> action) {
+   ChatRestriction(final Component display, final Optional<ChatRestriction.Action> action) {
       this.display = display;
       this.action = action;
    }
@@ -69,7 +69,7 @@ public enum ChatRestriction {
 
    public abstract void modifyPermissions(Set<Permission> permissionSet);
 
-   public static record Action(Component title, BiConsumer<Minecraft, Screen> runnable) {
+   public record Action(Component title, BiConsumer<Minecraft, Screen> runnable) {
       public static final ChatRestriction.Action GO_TO_ACCOUNT = new ChatRestriction.Action(
          Component.translatable("chat_restriction.disabled_by_profile.action"),
          (minecraft, screen) -> ConfirmLinkScreen.confirmLinkNow(screen, CommonLinks.ACCOUNT_SETTINGS, true)

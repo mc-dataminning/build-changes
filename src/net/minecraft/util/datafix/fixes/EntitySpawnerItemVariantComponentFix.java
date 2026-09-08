@@ -35,9 +35,9 @@ public class EntitySpawnerItemVariantComponentFix extends DataFix {
                case "minecraft:axolotl_bucket" -> input.updateTyped(componentsFinder, EntitySpawnerItemVariantComponentFix::fixAxolotlBucket);
                case "minecraft:tropical_fish_bucket" -> input.updateTyped(componentsFinder, EntitySpawnerItemVariantComponentFix::fixTropicalFishBucket);
                case "minecraft:painting" -> input.updateTyped(
-               componentsFinder,
-               components -> Util.writeAndReadTypedOrThrow(components, components.getType(), EntitySpawnerItemVariantComponentFix::fixPainting)
-            );
+                  componentsFinder,
+                  components -> Util.writeAndReadTypedOrThrow(components, components.getType(), EntitySpawnerItemVariantComponentFix::fixPainting)
+               );
                default -> input;
             };
          }
@@ -73,32 +73,32 @@ public class EntitySpawnerItemVariantComponentFix extends DataFix {
       Optional<Number> oldVariant = bucketData.get("BucketVariantTag").asNumber().result();
       if (oldVariant.isEmpty()) {
          return remainder;
-      } else {
-         int packedVariant = oldVariant.get().intValue();
-         String pattern = getPattern(packedVariant);
-         String baseColor = getBaseColor(packedVariant);
-         String patternColor = getPatternColor(packedVariant);
-         return remainder.update("minecraft:bucket_entity_data", b -> b.remove("BucketVariantTag"))
-            .set("minecraft:tropical_fish/pattern", remainder.createString(pattern))
-            .set("minecraft:tropical_fish/base_color", remainder.createString(baseColor))
-            .set("minecraft:tropical_fish/pattern_color", remainder.createString(patternColor));
       }
+
+      int packedVariant = oldVariant.get().intValue();
+      String pattern = getPattern(packedVariant);
+      String baseColor = getBaseColor(packedVariant);
+      String patternColor = getPatternColor(packedVariant);
+      return remainder.update("minecraft:bucket_entity_data", b -> b.remove("BucketVariantTag"))
+         .set("minecraft:tropical_fish/pattern", remainder.createString(pattern))
+         .set("minecraft:tropical_fish/base_color", remainder.createString(baseColor))
+         .set("minecraft:tropical_fish/pattern_color", remainder.createString(patternColor));
    }
 
    private static <T> Dynamic<T> fixAxolotlBucket(final Dynamic<T> remainder, final Dynamic<T> bucketData) {
       Optional<Number> oldVariant = bucketData.get("Variant").asNumber().result();
       if (oldVariant.isEmpty()) {
          return remainder;
-      } else {
-         String newVariant = switch (oldVariant.get().intValue()) {
-            case 1 -> "wild";
-            case 2 -> "gold";
-            case 3 -> "cyan";
-            case 4 -> "blue";
-            default -> "lucy";
-         };
-         return remainder.update("minecraft:bucket_entity_data", b -> b.remove("Variant")).set("minecraft:axolotl/variant", remainder.createString(newVariant));
       }
+
+      String newVariant = switch (oldVariant.get().intValue()) {
+         case 1 -> "wild";
+         case 2 -> "gold";
+         case 3 -> "cyan";
+         case 4 -> "blue";
+         default -> "lucy";
+      };
+      return remainder.update("minecraft:bucket_entity_data", b -> b.remove("Variant")).set("minecraft:axolotl/variant", remainder.createString(newVariant));
    }
 
    private static <T> Dynamic<T> fixSalmonBucket(final Dynamic<T> remainder, final Dynamic<T> bucketData) {
@@ -110,23 +110,25 @@ public class EntitySpawnerItemVariantComponentFix extends DataFix {
       Optional<Dynamic<T>> entityData = components.get("minecraft:entity_data").result();
       if (entityData.isEmpty()) {
          return components;
-      } else if (entityData.get().get("id").asString().result().filter(id -> id.equals("minecraft:painting")).isEmpty()) {
-         return components;
-      } else {
-         Optional<Dynamic<T>> result = entityData.get().get("variant").result();
-         Dynamic<T> entityDataRemainder = entityData.get().remove("variant");
-         if (entityDataRemainder.remove("id").equals(entityDataRemainder.emptyMap())) {
-            components = components.remove("minecraft:entity_data");
-         } else {
-            components = components.set("minecraft:entity_data", entityDataRemainder);
-         }
+      }
 
-         if (result.isPresent()) {
-            components = components.set("minecraft:painting/variant", result.get());
-         }
-
+      if (entityData.get().get("id").asString().result().filter(id -> id.equals("minecraft:painting")).isEmpty()) {
          return components;
       }
+
+      Optional<Dynamic<T>> result = entityData.get().get("variant").result();
+      Dynamic<T> entityDataRemainder = entityData.get().remove("variant");
+      if (entityDataRemainder.remove("id").equals(entityDataRemainder.emptyMap())) {
+         components = components.remove("minecraft:entity_data");
+      } else {
+         components = components.set("minecraft:entity_data", entityDataRemainder);
+      }
+
+      if (result.isPresent()) {
+         components = components.set("minecraft:painting/variant", result.get());
+      }
+
+      return components;
    }
 
    @FunctionalInterface

@@ -15,8 +15,7 @@ import org.jspecify.annotations.Nullable;
 
 public class OversizedItemRenderer extends PictureInPictureRenderer<OversizedItemRenderState> {
    private boolean usedOnThisFrame;
-   @Nullable
-   private Object modelOnTextureIdentity;
+   private @Nullable Object modelOnTextureIdentity;
 
    public boolean usedOnThisFrame() {
       return this.usedOnThisFrame;
@@ -40,10 +39,10 @@ public class OversizedItemRenderer extends PictureInPictureRenderer<OversizedIte
       GuiItemRenderState guiItemRenderState = renderState.guiItemRenderState();
       ScreenRectangle itemBounds = guiItemRenderState.oversizedItemBounds();
       Objects.requireNonNull(itemBounds);
-      float itemBoundsCenterX = (float)(itemBounds.left() + itemBounds.right()) / 2.0F;
-      float itemBoundsCenterY = (float)(itemBounds.top() + itemBounds.bottom()) / 2.0F;
-      float slotCenterX = (float)guiItemRenderState.x() + 8.0F;
-      float slotCenterY = (float)guiItemRenderState.y() + 8.0F;
+      float itemBoundsCenterX = (itemBounds.left() + itemBounds.right()) / 2.0F;
+      float itemBoundsCenterY = (itemBounds.top() + itemBounds.bottom()) / 2.0F;
+      float slotCenterX = guiItemRenderState.x() + 8.0F;
+      float slotCenterY = guiItemRenderState.y() + 8.0F;
       poseStack.translate((slotCenterX - itemBoundsCenterX) / 16.0F, (itemBoundsCenterY - slotCenterY) / 16.0F, 0.0F);
       TrackingItemStackRenderState itemStackRenderState = guiItemRenderState.itemStackRenderState();
       boolean flat = !itemStackRenderState.usesBlockLight();
@@ -69,7 +68,7 @@ public class OversizedItemRenderer extends PictureInPictureRenderer<OversizedIte
 
    @Override
    protected float getTranslateY(final int height, final int guiScale) {
-      return (float)height / 2.0F;
+      return height / 2.0F;
    }
 
    @Override

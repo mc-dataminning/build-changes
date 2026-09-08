@@ -63,11 +63,11 @@ public class OptionsScreen extends Screen {
          this.openScreenButton(
             RESOURCEPACK,
             () -> new PackSelectionScreen(
-                  this.minecraft.getResourcePackRepository(),
-                  this::applyPacks,
-                  this.minecraft.getResourcePackDirectory(),
-                  Component.translatable("resourcePack.title")
-               )
+               this.minecraft.getResourcePackRepository(),
+               this::applyPacks,
+               this.minecraft.getResourcePackDirectory(),
+               Component.translatable("resourcePack.title")
+            )
          )
       );
       helper.addChild(this.openScreenButton(ACCESSIBILITY, () -> new AccessibilityOptionsScreen(this, this.options)));

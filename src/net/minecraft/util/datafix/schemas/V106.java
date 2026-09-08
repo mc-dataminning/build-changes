@@ -20,8 +20,8 @@ public class V106 extends Schema {
          true,
          References.UNTAGGED_SPAWNER,
          () -> DSL.optionalFields(
-               "SpawnPotentials", DSL.list(DSL.fields("Entity", References.ENTITY_TREE.in(schema))), "SpawnData", References.ENTITY_TREE.in(schema)
-            )
+            "SpawnPotentials", DSL.list(DSL.fields("Entity", References.ENTITY_TREE.in(schema))), "SpawnData", References.ENTITY_TREE.in(schema)
+         )
       );
    }
 }

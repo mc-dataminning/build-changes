@@ -11,17 +11,17 @@ public class StopBeingAngryIfTargetDead {
    public static BehaviorControl<LivingEntity> create() {
       return BehaviorBuilder.create(
          i -> i.group(i.present(MemoryModuleType.ANGRY_AT))
-               .apply(
-                  i,
-                  angryAt -> (level, body, timestamp) -> {
-                        Optional.ofNullable(level.getEntity(i.get(angryAt)))
-                           .map(entity -> entity instanceof LivingEntity livingEntity ? livingEntity : null)
-                           .filter(LivingEntity::isDeadOrDying)
-                           .filter(angerTarget -> !angerTarget.is(EntityTypes.PLAYER) || level.getGameRules().get(GameRules.FORGIVE_DEAD_PLAYERS))
-                           .ifPresent(angerTarget -> angryAt.erase());
-                        return true;
-                     }
-               )
+            .apply(
+               i,
+               angryAt -> (level, body, timestamp) -> {
+                  Optional.ofNullable(level.getEntity(i.get(angryAt)))
+                     .map(entity -> entity instanceof LivingEntity livingEntity ? livingEntity : null)
+                     .filter(LivingEntity::isDeadOrDying)
+                     .filter(angerTarget -> !angerTarget.is(EntityTypes.PLAYER) || level.getGameRules().get(GameRules.FORGIVE_DEAD_PLAYERS))
+                     .ifPresent(angerTarget -> angryAt.erase());
+                  return true;
+               }
+            )
       );
    }
 }

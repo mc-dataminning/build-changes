@@ -10,16 +10,16 @@ import net.minecraft.world.level.LevelAccessor;
 public record VolumeMatchPredicate(Vec3i min, Vec3i max, BlockPredicate match) implements BlockPredicate {
    private static final MapCodec<VolumeMatchPredicate> UNVALIDATED_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Vec3i.offsetCodec(16).fieldOf("min").forGetter(VolumeMatchPredicate::min),
-               Vec3i.offsetCodec(16).fieldOf("max").forGetter(VolumeMatchPredicate::max),
-               BlockPredicate.CODEC.fieldOf("match").forGetter(VolumeMatchPredicate::match)
-            )
-            .apply(i, VolumeMatchPredicate::new)
+            Vec3i.offsetCodec(16).fieldOf("min").forGetter(VolumeMatchPredicate::min),
+            Vec3i.offsetCodec(16).fieldOf("max").forGetter(VolumeMatchPredicate::max),
+            BlockPredicate.CODEC.fieldOf("match").forGetter(VolumeMatchPredicate::match)
+         )
+         .apply(i, VolumeMatchPredicate::new)
    );
    public static final MapCodec<VolumeMatchPredicate> CODEC = UNVALIDATED_CODEC.validate(
       p -> p.min.getX() <= p.max.getX() && p.min.getY() <= p.max.getY() && p.min.getZ() <= p.max.getZ()
-            ? DataResult.success(p)
-            : DataResult.error(() -> "min bound cannot be larger than max bound")
+         ? DataResult.success(p)
+         : DataResult.error(() -> "min bound cannot be larger than max bound")
    );
 
    @Override

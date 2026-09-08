@@ -80,13 +80,10 @@ public abstract class ClientCommonPacketListenerImpl implements ClientCommonPack
    private static final Logger LOGGER = LogUtils.getLogger();
    protected final Minecraft minecraft;
    protected final Connection connection;
-   @Nullable
-   protected final ServerData serverData;
-   @Nullable
-   protected String serverBrand;
+   protected final @Nullable ServerData serverData;
+   protected @Nullable String serverBrand;
    protected final WorldSessionTelemetryManager telemetryManager;
-   @Nullable
-   protected final Screen postDisconnectScreen;
+   protected final @Nullable Screen postDisconnectScreen;
    protected boolean isTransferring;
    private final List<ClientCommonPacketListenerImpl.DeferredPacket> deferredPackets = new ArrayList<>();
    protected final Map<Identifier, byte[]> serverCookies;
@@ -129,7 +126,7 @@ public abstract class ClientCommonPacketListenerImpl implements ClientCommonPack
       return new DisconnectionDetails(reason, report, bugReportUrl);
    }
 
-   private Optional<Path> storeDisconnectionReport(@Nullable final Packet packet, final Throwable cause) {
+   private Optional<Path> storeDisconnectionReport(final @Nullable Packet packet, final Throwable cause) {
       CrashReport report = CrashReport.forThrowable(cause, "Packet handling error");
       PacketUtils.fillCrashReport(report, this, packet);
       Path debugDir = this.minecraft.gameDirectory.toPath().resolve("debug");
@@ -203,22 +200,21 @@ public abstract class ClientCommonPacketListenerImpl implements ClientCommonPack
       PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
       if (this.minecraft.player == null) {
          throw new IllegalStateException("Cannot set player post effects before the player is created.");
-      } else {
-         this.minecraft.player.setActivePostEffects(packet.postEffects());
       }
+
+      this.minecraft.player.setActivePostEffects(packet.postEffects());
    }
 
-   private static Component preparePackPrompt(final Component header, @Nullable final Component prompt) {
-      return (Component)(prompt == null ? header : Component.translatable("multiplayer.texturePrompt.serverPrompt", header, prompt));
+   private static Component preparePackPrompt(final Component header, final @Nullable Component prompt) {
+      return prompt == null ? header : Component.translatable("multiplayer.texturePrompt.serverPrompt", header, prompt);
    }
 
-   @Nullable
-   private static URL parseResourcePackUrl(final String urlString) {
+   private static @Nullable URL parseResourcePackUrl(final String urlString) {
       try {
          URL url = new URL(urlString);
          String protocol = url.getProtocol();
          return !"http".equals(protocol) && !"https".equals(protocol) ? null : url;
-      } catch (MalformedURLException var3) {
+      } catch (MalformedURLException e) {
          return null;
       }
    }
@@ -251,8 +247,8 @@ public abstract class ClientCommonPacketListenerImpl implements ClientCommonPack
          try {
             URI parsedLink = Util.parseAndValidateUntrustedUri(entry.link());
             trustedEntries.add(new ServerLinks.Entry(entry.type(), parsedLink));
-         } catch (Exception var7) {
-            LOGGER.warn("Received invalid link for type {}:{}", new Object[]{entry.type(), entry.link(), var7});
+         } catch (Exception e) {
+            LOGGER.warn("Received invalid link for type {}:{}", new Object[]{entry.type(), entry.link(), e});
          }
       }
 
@@ -267,11 +263,11 @@ public abstract class ClientCommonPacketListenerImpl implements ClientCommonPack
 
    protected abstract DialogConnectionAccess createDialogAccess();
 
-   public void showDialog(final Holder<Dialog> dialog, @Nullable final Screen activeScreen) {
+   public void showDialog(final Holder<Dialog> dialog, final @Nullable Screen activeScreen) {
       this.showDialog(dialog, this.createDialogAccess(), activeScreen);
    }
 
-   protected void showDialog(final Holder<Dialog> dialog, final DialogConnectionAccess connectionAccess, @Nullable final Screen activeScreen) {
+   protected void showDialog(final Holder<Dialog> dialog, final DialogConnectionAccess connectionAccess, final @Nullable Screen activeScreen) {
       if (activeScreen instanceof DialogScreen.WarningScreen existingWarningScreen) {
          Screen hiddenScreen = existingWarningScreen.returnScreen();
          Screen previousScreen = hiddenScreen instanceof DialogScreen<?> hiddenDialog ? hiddenDialog.previousScreen() : hiddenScreen;
@@ -322,20 +318,20 @@ public abstract class ClientCommonPacketListenerImpl implements ClientCommonPack
       PacketUtils.ensureRunningOnSameThread(packet, this, this.minecraft.packetProcessor());
       if (this.serverData == null) {
          throw new IllegalStateException("Cannot transfer to server from singleplayer");
-      } else {
-         this.connection.disconnect(Component.translatable("disconnect.transfer"));
-         this.connection.setReadOnly();
-         this.connection.handleDisconnection();
-         ServerAddress address = new ServerAddress(packet.host(), packet.port());
-         ConnectScreen.startConnecting(
-            Objects.requireNonNullElseGet(this.postDisconnectScreen, TitleScreen::new),
-            this.minecraft,
-            address,
-            this.serverData,
-            false,
-            new TransferState(this.serverCookies, this.seenPlayers, this.seenInsecureChatWarning)
-         );
       }
+
+      this.connection.disconnect(Component.translatable("disconnect.transfer"));
+      this.connection.setReadOnly();
+      this.connection.handleDisconnection();
+      ServerAddress address = new ServerAddress(packet.host(), packet.port());
+      ConnectScreen.startConnecting(
+         Objects.requireNonNullElseGet(this.postDisconnectScreen, TitleScreen::new),
+         this.minecraft,
+         address,
+         this.serverData,
+         false,
+         new TransferState(this.serverCookies, this.seenPlayers, this.seenInsecureChatWarning)
+      );
    }
 
    @Override
@@ -381,15 +377,14 @@ public abstract class ClientCommonPacketListenerImpl implements ClientCommonPack
 
    protected Screen createDisconnectScreen(final DisconnectionDetails details) {
       Screen callbackScreen = Objects.requireNonNullElseGet(
-         this.postDisconnectScreen, () -> (Screen)(this.serverData != null ? new JoinMultiplayerScreen(new TitleScreen()) : new TitleScreen())
+         this.postDisconnectScreen, () -> this.serverData != null ? new JoinMultiplayerScreen(new TitleScreen()) : new TitleScreen()
       );
       return this.serverData != null && this.serverData.isRealm()
          ? new DisconnectedScreen(callbackScreen, GENERIC_DISCONNECT_MESSAGE, details, CommonComponents.GUI_BACK)
          : new DisconnectedScreen(callbackScreen, GENERIC_DISCONNECT_MESSAGE, details);
    }
 
-   @Nullable
-   public String serverBrand() {
+   public @Nullable String serverBrand() {
       return this.serverBrand;
    }
 
@@ -401,7 +396,7 @@ public abstract class ClientCommonPacketListenerImpl implements ClientCommonPack
       }
    }
 
-   private Screen addOrUpdatePackPrompt(final UUID packId, final URL url, final String hash, final boolean required, @Nullable final Component prompt) {
+   private Screen addOrUpdatePackPrompt(final UUID packId, final URL url, final String hash, final boolean required, final @Nullable Component prompt) {
       Screen currentScreen = this.minecraft.gui.screen();
       return currentScreen instanceof ClientCommonPacketListenerImpl.PackConfirmScreen promptScreen
          ? promptScreen.update(this.minecraft, packId, url, hash, required, prompt)
@@ -411,11 +406,6 @@ public abstract class ClientCommonPacketListenerImpl implements ClientCommonPack
    }
 
    protected abstract class CommonDialogAccess implements DialogConnectionAccess {
-      protected CommonDialogAccess() {
-         Objects.requireNonNull(ClientCommonPacketListenerImpl.this);
-         super();
-      }
-
       @Override
       public void disconnect(final Component message) {
          ClientCommonPacketListenerImpl.this.connection.disconnect(message);
@@ -423,7 +413,7 @@ public abstract class ClientCommonPacketListenerImpl implements ClientCommonPack
       }
 
       @Override
-      public void openDialog(final Holder<Dialog> dialog, @Nullable final Screen activeScreen) {
+      public void openDialog(final Holder<Dialog> dialog, final @Nullable Screen activeScreen) {
          ClientCommonPacketListenerImpl.this.showDialog(dialog, this, activeScreen);
       }
 
@@ -438,22 +428,20 @@ public abstract class ClientCommonPacketListenerImpl implements ClientCommonPack
       }
    }
 
-   private static record DeferredPacket(Packet<? extends ServerboundPacketListener> packet, BooleanSupplier sendCondition, long expirationTime) {
+   private record DeferredPacket(Packet<? extends ServerboundPacketListener> packet, BooleanSupplier sendCondition, long expirationTime) {
    }
 
    private class PackConfirmScreen extends ConfirmScreen {
       private final List<ClientCommonPacketListenerImpl.PackConfirmScreen.PendingRequest> requests;
-      @Nullable
-      private final Screen parentScreen;
+      private final @Nullable Screen parentScreen;
 
       private PackConfirmScreen(
          final Minecraft minecraft,
-         @Nullable final Screen parentScreen,
+         final @Nullable Screen parentScreen,
          final List<ClientCommonPacketListenerImpl.PackConfirmScreen.PendingRequest> requests,
          final boolean required,
-         @Nullable final Component prompt
+         final @Nullable Component prompt
       ) {
-         Objects.requireNonNull(ClientCommonPacketListenerImpl.this);
          super(
             result -> {
                minecraft.gui.setScreen(parentScreen);
@@ -496,7 +484,7 @@ public abstract class ClientCommonPacketListenerImpl implements ClientCommonPack
       }
 
       public ClientCommonPacketListenerImpl.PackConfirmScreen update(
-         final Minecraft minecraft, final UUID id, final URL url, final String hash, final boolean required, @Nullable final Component prompt
+         final Minecraft minecraft, final UUID id, final URL url, final String hash, final boolean required, final @Nullable Component prompt
       ) {
          List<ClientCommonPacketListenerImpl.PackConfirmScreen.PendingRequest> extendedRequests = ImmutableList.builderWithExpectedSize(
                this.requests.size() + 1
@@ -507,7 +495,7 @@ public abstract class ClientCommonPacketListenerImpl implements ClientCommonPack
          return ClientCommonPacketListenerImpl.this.new PackConfirmScreen(minecraft, this.parentScreen, extendedRequests, required, prompt);
       }
 
-      private static record PendingRequest(UUID id, URL url, String hash) {
+      private record PendingRequest(UUID id, URL url, String hash) {
       }
    }
 }

@@ -61,7 +61,7 @@ public enum VaultState implements StringRepresentable {
    private final String stateName;
    private final VaultState.LightLevel lightLevel;
 
-   private VaultState(final String stateName, final VaultState.LightLevel lightLevel) {
+   VaultState(final String stateName, final VaultState.LightLevel lightLevel) {
       this.stateName = stateName;
       this.lightLevel = lightLevel;
    }
@@ -95,7 +95,7 @@ public enum VaultState implements StringRepresentable {
                sharedData.setDisplayItem(serverData.getNextItemToEject());
                boolean isLastEjection = serverData.getItemsToEject().isEmpty();
                int ejectionDelay = isLastEjection ? 20 : 20;
-               serverData.pauseStateUpdatingUntil(serverLevel.getGameTime() + (long)ejectionDelay);
+               serverData.pauseStateUpdatingUntil(serverLevel.getGameTime() + ejectionDelay);
                yield EJECTING;
             }
          }
@@ -141,13 +141,13 @@ public enum VaultState implements StringRepresentable {
       serverLevel.playSound(null, pos, SoundEvents.VAULT_EJECT_ITEM, SoundSource.BLOCKS, 1.0F, 0.8F + 0.4F * ejectionSoundProgress);
    }
 
-   private static enum LightLevel {
+   private enum LightLevel {
       HALF_LIT(6),
       LIT(12);
 
       private final int value;
 
-      private LightLevel(final int value) {
+      LightLevel(final int value) {
          this.value = value;
       }
    }

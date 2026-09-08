@@ -33,8 +33,7 @@ public class WanderingTraderSpawner implements CustomSpawner {
    private final RandomSource random = RandomSource.create();
    private final SavedDataStorage savedDataStorage;
    private int tickDelay;
-   @Nullable
-   private WanderingTraderData traderData;
+   private @Nullable WanderingTraderData traderData;
 
    public WanderingTraderSpawner(final SavedDataStorage savedDataStorage) {
       this.savedDataStorage = savedDataStorage;
@@ -77,35 +76,37 @@ public class WanderingTraderSpawner implements CustomSpawner {
       Player player = level.getRandomPlayer();
       if (player == null) {
          return true;
-      } else if (this.random.nextInt(10) != 0) {
-         return false;
-      } else {
-         BlockPos playerPos = player.blockPosition();
-         int radius = 48;
-         PoiManager poiManager = level.getPoiManager();
-         Optional<BlockPos> poiPos = poiManager.find(p -> p.is(PoiTypes.MEETING), p -> true, playerPos, 48, PoiManager.Occupancy.ANY);
-         BlockPos referencePos = poiPos.orElse(playerPos);
-         BlockPos spawnPosition = this.findSpawnPositionNear(level, referencePos, 48);
-         if (spawnPosition != null && this.hasEnoughSpace(level, spawnPosition)) {
-            if (level.getBiome(spawnPosition).is(BiomeTags.WITHOUT_WANDERING_TRADER_SPAWNS)) {
-               return false;
-            }
+      }
 
-            WanderingTrader trader = EntityTypes.WANDERING_TRADER.spawn(level, spawnPosition, EntitySpawnReason.EVENT);
-            if (trader != null) {
-               for (int i = 0; i < 2; i++) {
-                  this.tryToSpawnLlamaFor(level, trader, 4);
-               }
-
-               trader.setDespawnDelay(48000);
-               trader.setWanderTarget(referencePos);
-               trader.setHomeTo(referencePos, 16);
-               return true;
-            }
-         }
-
+      if (this.random.nextInt(10) != 0) {
          return false;
       }
+
+      BlockPos playerPos = player.blockPosition();
+      int radius = 48;
+      PoiManager poiManager = level.getPoiManager();
+      Optional<BlockPos> poiPos = poiManager.find(p -> p.is(PoiTypes.MEETING), p -> true, playerPos, 48, PoiManager.Occupancy.ANY);
+      BlockPos referencePos = poiPos.orElse(playerPos);
+      BlockPos spawnPosition = this.findSpawnPositionNear(level, referencePos, 48);
+      if (spawnPosition != null && this.hasEnoughSpace(level, spawnPosition)) {
+         if (level.getBiome(spawnPosition).is(BiomeTags.WITHOUT_WANDERING_TRADER_SPAWNS)) {
+            return false;
+         }
+
+         WanderingTrader trader = EntityTypes.WANDERING_TRADER.spawn(level, spawnPosition, EntitySpawnReason.EVENT);
+         if (trader != null) {
+            for (int i = 0; i < 2; i++) {
+               this.tryToSpawnLlamaFor(level, trader, 4);
+            }
+
+            trader.setDespawnDelay(48000);
+            trader.setWanderTarget(referencePos);
+            trader.setHomeTo(referencePos, 16);
+            return true;
+         }
+      }
+
+      return false;
    }
 
    private void tryToSpawnLlamaFor(final ServerLevel level, final WanderingTrader trader, final int radius) {
@@ -118,8 +119,7 @@ public class WanderingTraderSpawner implements CustomSpawner {
       }
    }
 
-   @Nullable
-   private BlockPos findSpawnPositionNear(final LevelReader level, final BlockPos referencePosition, final int radius) {
+   private @Nullable BlockPos findSpawnPositionNear(final LevelReader level, final BlockPos referencePosition, final int radius) {
       BlockPos spawnPosition = null;
       SpawnPlacementType wanderingTraderSpawnType = SpawnPlacements.getPlacementType(EntityTypes.WANDERING_TRADER);
 

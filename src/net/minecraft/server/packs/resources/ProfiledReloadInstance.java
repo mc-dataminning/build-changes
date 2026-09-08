@@ -71,14 +71,14 @@ public class ProfiledReloadInstance extends SimpleReloadInstance<ProfiledReloadI
 
    private static Executor profiledExecutor(final Executor executor, final AtomicLong accumulatedNanos, final AtomicLong taskCount, final String name) {
       return r -> executor.execute(() -> {
-            ProfilerFiller profiler = Profiler.get();
-            profiler.push(name);
-            long nanos = Util.getNanos();
-            r.run();
-            accumulatedNanos.addAndGet(Util.getNanos() - nanos);
-            taskCount.incrementAndGet();
-            profiler.pop();
-         });
+         ProfilerFiller profiler = Profiler.get();
+         profiler.push(name);
+         long nanos = Util.getNanos();
+         r.run();
+         accumulatedNanos.addAndGet(Util.getNanos() - nanos);
+         taskCount.incrementAndGet();
+         profiler.pop();
+      });
    }
 
    private List<ProfiledReloadInstance.State> finish(final List<ProfiledReloadInstance.State> result) {
@@ -105,6 +105,6 @@ public class ProfiledReloadInstance extends SimpleReloadInstance<ProfiledReloadI
       return result;
    }
 
-   public static record State(String name, AtomicLong preparationNanos, AtomicLong preparationCount, AtomicLong reloadNanos, AtomicLong reloadCount) {
+   public record State(String name, AtomicLong preparationNanos, AtomicLong preparationCount, AtomicLong reloadNanos, AtomicLong reloadCount) {
    }
 }

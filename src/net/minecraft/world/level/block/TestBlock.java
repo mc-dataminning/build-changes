@@ -31,9 +31,8 @@ public class TestBlock extends BaseEntityBlock implements GameMasterBlock {
       super(properties);
    }
 
-   @Nullable
    @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
+   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
       return new TestBlockEntity(worldPosition, blockState);
    }
 
@@ -63,13 +62,13 @@ public class TestBlock extends BaseEntityBlock implements GameMasterBlock {
       if (level.getBlockEntity(pos) instanceof TestBlockEntity testBlockEntity) {
          if (!player.canUseGameMasterBlocks()) {
             return InteractionResult.PASS;
-         } else {
-            if (level.isClientSide()) {
-               player.openTestBlock(testBlockEntity);
-            }
-
-            return InteractionResult.SUCCESS;
          }
+
+         if (level.isClientSide()) {
+            player.openTestBlock(testBlockEntity);
+         }
+
+         return InteractionResult.SUCCESS;
       } else {
          return InteractionResult.PASS;
       }
@@ -85,7 +84,7 @@ public class TestBlock extends BaseEntityBlock implements GameMasterBlock {
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       TestBlockEntity testBlock = getServerTestBlockEntity(level, pos);
       if (testBlock != null) {
@@ -102,16 +101,8 @@ public class TestBlock extends BaseEntityBlock implements GameMasterBlock {
       }
    }
 
-   @Nullable
-   private static TestBlockEntity getServerTestBlockEntity(final Level level, final BlockPos pos) {
-      if (level instanceof ServerLevel serverLevel) {
-         BlockEntity var4 = serverLevel.getBlockEntity(pos);
-         if (var4 instanceof TestBlockEntity) {
-            return (TestBlockEntity)var4;
-         }
-      }
-
-      return null;
+   private static @Nullable TestBlockEntity getServerTestBlockEntity(final Level level, final BlockPos pos) {
+      return level instanceof ServerLevel serverLevel && serverLevel.getBlockEntity(pos) instanceof TestBlockEntity testBlockEntity ? testBlockEntity : null;
    }
 
    @Override

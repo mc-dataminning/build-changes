@@ -113,32 +113,14 @@ public class ProcessorLists {
                   new ProcessorRule(new RandomBlockMatchTest(Blocks.GLASS_PANE, 0.5F), AlwaysTrueTest.INSTANCE, Blocks.COBWEB.defaultBlockState()),
                   new ProcessorRule[]{
                      new ProcessorRule(
-                        new BlockStateMatchTest(
-                           Blocks.GLASS_PANE
-                              .defaultBlockState()
-                              .setValue(IronBarsBlock.NORTH, Boolean.valueOf(true))
-                              .setValue(IronBarsBlock.SOUTH, Boolean.valueOf(true))
-                        ),
+                        new BlockStateMatchTest(Blocks.GLASS_PANE.defaultBlockState().setValue(IronBarsBlock.NORTH, true).setValue(IronBarsBlock.SOUTH, true)),
                         AlwaysTrueTest.INSTANCE,
-                        Blocks.STAINED_GLASS_PANE
-                           .brown()
-                           .defaultBlockState()
-                           .setValue(IronBarsBlock.NORTH, Boolean.valueOf(true))
-                           .setValue(IronBarsBlock.SOUTH, Boolean.valueOf(true))
+                        Blocks.STAINED_GLASS_PANE.brown().defaultBlockState().setValue(IronBarsBlock.NORTH, true).setValue(IronBarsBlock.SOUTH, true)
                      ),
                      new ProcessorRule(
-                        new BlockStateMatchTest(
-                           Blocks.GLASS_PANE
-                              .defaultBlockState()
-                              .setValue(IronBarsBlock.EAST, Boolean.valueOf(true))
-                              .setValue(IronBarsBlock.WEST, Boolean.valueOf(true))
-                        ),
+                        new BlockStateMatchTest(Blocks.GLASS_PANE.defaultBlockState().setValue(IronBarsBlock.EAST, true).setValue(IronBarsBlock.WEST, true)),
                         AlwaysTrueTest.INSTANCE,
-                        Blocks.STAINED_GLASS_PANE
-                           .brown()
-                           .defaultBlockState()
-                           .setValue(IronBarsBlock.EAST, Boolean.valueOf(true))
-                           .setValue(IronBarsBlock.WEST, Boolean.valueOf(true))
+                        Blocks.STAINED_GLASS_PANE.brown().defaultBlockState().setValue(IronBarsBlock.EAST, true).setValue(IronBarsBlock.WEST, true)
                      ),
                      new ProcessorRule(new RandomBlockMatchTest(Blocks.WHEAT, 0.3F), AlwaysTrueTest.INSTANCE, Blocks.CARROTS.defaultBlockState()),
                      new ProcessorRule(new RandomBlockMatchTest(Blocks.WHEAT, 0.2F), AlwaysTrueTest.INSTANCE, Blocks.POTATOES.defaultBlockState()),
@@ -170,33 +152,15 @@ public class ProcessorLists {
                   new ProcessorRule(new RandomBlockMatchTest(Blocks.DYED_TERRACOTTA.red(), 0.05F), AlwaysTrueTest.INSTANCE, Blocks.COBWEB.defaultBlockState()),
                   new ProcessorRule(new RandomBlockMatchTest(Blocks.GLASS_PANE, 0.5F), AlwaysTrueTest.INSTANCE, Blocks.COBWEB.defaultBlockState()),
                   new ProcessorRule(
-                     new BlockStateMatchTest(
-                        Blocks.GLASS_PANE
-                           .defaultBlockState()
-                           .setValue(IronBarsBlock.NORTH, Boolean.valueOf(true))
-                           .setValue(IronBarsBlock.SOUTH, Boolean.valueOf(true))
-                     ),
+                     new BlockStateMatchTest(Blocks.GLASS_PANE.defaultBlockState().setValue(IronBarsBlock.NORTH, true).setValue(IronBarsBlock.SOUTH, true)),
                      AlwaysTrueTest.INSTANCE,
-                     Blocks.STAINED_GLASS_PANE
-                        .brown()
-                        .defaultBlockState()
-                        .setValue(IronBarsBlock.NORTH, Boolean.valueOf(true))
-                        .setValue(IronBarsBlock.SOUTH, Boolean.valueOf(true))
+                     Blocks.STAINED_GLASS_PANE.brown().defaultBlockState().setValue(IronBarsBlock.NORTH, true).setValue(IronBarsBlock.SOUTH, true)
                   ),
                   new ProcessorRule[]{
                      new ProcessorRule(
-                        new BlockStateMatchTest(
-                           Blocks.GLASS_PANE
-                              .defaultBlockState()
-                              .setValue(IronBarsBlock.EAST, Boolean.valueOf(true))
-                              .setValue(IronBarsBlock.WEST, Boolean.valueOf(true))
-                        ),
+                        new BlockStateMatchTest(Blocks.GLASS_PANE.defaultBlockState().setValue(IronBarsBlock.EAST, true).setValue(IronBarsBlock.WEST, true)),
                         AlwaysTrueTest.INSTANCE,
-                        Blocks.STAINED_GLASS_PANE
-                           .brown()
-                           .defaultBlockState()
-                           .setValue(IronBarsBlock.EAST, Boolean.valueOf(true))
-                           .setValue(IronBarsBlock.WEST, Boolean.valueOf(true))
+                        Blocks.STAINED_GLASS_PANE.brown().defaultBlockState().setValue(IronBarsBlock.EAST, true).setValue(IronBarsBlock.WEST, true)
                      ),
                      new ProcessorRule(new RandomBlockMatchTest(Blocks.WHEAT, 0.1F), AlwaysTrueTest.INSTANCE, Blocks.MELON_STEM.defaultBlockState())
                   }
@@ -220,32 +184,14 @@ public class ProcessorLists {
                   new ProcessorRule(new RandomBlockMatchTest(Blocks.STRIPPED_SPRUCE_WOOD, 0.05F), AlwaysTrueTest.INSTANCE, Blocks.COBWEB.defaultBlockState()),
                   new ProcessorRule(new RandomBlockMatchTest(Blocks.GLASS_PANE, 0.5F), AlwaysTrueTest.INSTANCE, Blocks.COBWEB.defaultBlockState()),
                   new ProcessorRule(
-                     new BlockStateMatchTest(
-                        Blocks.GLASS_PANE
-                           .defaultBlockState()
-                           .setValue(IronBarsBlock.NORTH, Boolean.valueOf(true))
-                           .setValue(IronBarsBlock.SOUTH, Boolean.valueOf(true))
-                     ),
+                     new BlockStateMatchTest(Blocks.GLASS_PANE.defaultBlockState().setValue(IronBarsBlock.NORTH, true).setValue(IronBarsBlock.SOUTH, true)),
                      AlwaysTrueTest.INSTANCE,
-                     Blocks.STAINED_GLASS_PANE
-                        .brown()
-                        .defaultBlockState()
-                        .setValue(IronBarsBlock.NORTH, Boolean.valueOf(true))
-                        .setValue(IronBarsBlock.SOUTH, Boolean.valueOf(true))
+                     Blocks.STAINED_GLASS_PANE.brown().defaultBlockState().setValue(IronBarsBlock.NORTH, true).setValue(IronBarsBlock.SOUTH, true)
                   ),
                   new ProcessorRule(
-                     new BlockStateMatchTest(
-                        Blocks.GLASS_PANE
-                           .defaultBlockState()
-                           .setValue(IronBarsBlock.EAST, Boolean.valueOf(true))
-                           .setValue(IronBarsBlock.WEST, Boolean.valueOf(true))
-                     ),
+                     new BlockStateMatchTest(Blocks.GLASS_PANE.defaultBlockState().setValue(IronBarsBlock.EAST, true).setValue(IronBarsBlock.WEST, true)),
                      AlwaysTrueTest.INSTANCE,
-                     Blocks.STAINED_GLASS_PANE
-                        .brown()
-                        .defaultBlockState()
-                        .setValue(IronBarsBlock.EAST, Boolean.valueOf(true))
-                        .setValue(IronBarsBlock.WEST, Boolean.valueOf(true))
+                     Blocks.STAINED_GLASS_PANE.brown().defaultBlockState().setValue(IronBarsBlock.EAST, true).setValue(IronBarsBlock.WEST, true)
                   ),
                   new ProcessorRule(new RandomBlockMatchTest(Blocks.WHEAT, 0.1F), AlwaysTrueTest.INSTANCE, Blocks.CARROTS.defaultBlockState()),
                   new ProcessorRule[]{
@@ -266,40 +212,20 @@ public class ProcessorLists {
                   new ProcessorRule(new BlockMatchTest(Blocks.TORCH), AlwaysTrueTest.INSTANCE, Blocks.AIR.defaultBlockState()),
                   new ProcessorRule(new BlockMatchTest(Blocks.WALL_TORCH), AlwaysTrueTest.INSTANCE, Blocks.AIR.defaultBlockState()),
                   new ProcessorRule(
-                     new BlockMatchTest(Blocks.CAMPFIRE),
-                     AlwaysTrueTest.INSTANCE,
-                     Blocks.CAMPFIRE.defaultBlockState().setValue(CampfireBlock.LIT, Boolean.valueOf(false))
+                     new BlockMatchTest(Blocks.CAMPFIRE), AlwaysTrueTest.INSTANCE, Blocks.CAMPFIRE.defaultBlockState().setValue(CampfireBlock.LIT, false)
                   ),
                   new ProcessorRule(new RandomBlockMatchTest(Blocks.COBBLESTONE, 0.08F), AlwaysTrueTest.INSTANCE, Blocks.COBWEB.defaultBlockState()),
                   new ProcessorRule(new RandomBlockMatchTest(Blocks.SPRUCE_LOG, 0.08F), AlwaysTrueTest.INSTANCE, Blocks.COBWEB.defaultBlockState()),
                   new ProcessorRule(new RandomBlockMatchTest(Blocks.GLASS_PANE, 0.5F), AlwaysTrueTest.INSTANCE, Blocks.COBWEB.defaultBlockState()),
                   new ProcessorRule(
-                     new BlockStateMatchTest(
-                        Blocks.GLASS_PANE
-                           .defaultBlockState()
-                           .setValue(IronBarsBlock.NORTH, Boolean.valueOf(true))
-                           .setValue(IronBarsBlock.SOUTH, Boolean.valueOf(true))
-                     ),
+                     new BlockStateMatchTest(Blocks.GLASS_PANE.defaultBlockState().setValue(IronBarsBlock.NORTH, true).setValue(IronBarsBlock.SOUTH, true)),
                      AlwaysTrueTest.INSTANCE,
-                     Blocks.STAINED_GLASS_PANE
-                        .brown()
-                        .defaultBlockState()
-                        .setValue(IronBarsBlock.NORTH, Boolean.valueOf(true))
-                        .setValue(IronBarsBlock.SOUTH, Boolean.valueOf(true))
+                     Blocks.STAINED_GLASS_PANE.brown().defaultBlockState().setValue(IronBarsBlock.NORTH, true).setValue(IronBarsBlock.SOUTH, true)
                   ),
                   new ProcessorRule(
-                     new BlockStateMatchTest(
-                        Blocks.GLASS_PANE
-                           .defaultBlockState()
-                           .setValue(IronBarsBlock.EAST, Boolean.valueOf(true))
-                           .setValue(IronBarsBlock.WEST, Boolean.valueOf(true))
-                     ),
+                     new BlockStateMatchTest(Blocks.GLASS_PANE.defaultBlockState().setValue(IronBarsBlock.EAST, true).setValue(IronBarsBlock.WEST, true)),
                      AlwaysTrueTest.INSTANCE,
-                     Blocks.STAINED_GLASS_PANE
-                        .brown()
-                        .defaultBlockState()
-                        .setValue(IronBarsBlock.EAST, Boolean.valueOf(true))
-                        .setValue(IronBarsBlock.WEST, Boolean.valueOf(true))
+                     Blocks.STAINED_GLASS_PANE.brown().defaultBlockState().setValue(IronBarsBlock.EAST, true).setValue(IronBarsBlock.WEST, true)
                   ),
                   new ProcessorRule(new RandomBlockMatchTest(Blocks.WHEAT, 0.3F), AlwaysTrueTest.INSTANCE, Blocks.PUMPKIN_STEM.defaultBlockState()),
                   new ProcessorRule(new RandomBlockMatchTest(Blocks.WHEAT, 0.2F), AlwaysTrueTest.INSTANCE, Blocks.POTATOES.defaultBlockState()),
@@ -817,17 +743,17 @@ public class ProcessorLists {
                   new ProcessorRule(
                      new RandomBlockMatchTest(Blocks.COPPER_BULB.waxed().unaffected(), 0.1F),
                      AlwaysTrueTest.INSTANCE,
-                     Blocks.COPPER_BULB.waxed().oxidized().defaultBlockState().setValue(CopperBulbBlock.LIT, Boolean.valueOf(true))
+                     Blocks.COPPER_BULB.waxed().oxidized().defaultBlockState().setValue(CopperBulbBlock.LIT, true)
                   ),
                   new ProcessorRule(
                      new RandomBlockMatchTest(Blocks.COPPER_BULB.waxed().unaffected(), 0.33333334F),
                      AlwaysTrueTest.INSTANCE,
-                     Blocks.COPPER_BULB.waxed().weathered().defaultBlockState().setValue(CopperBulbBlock.LIT, Boolean.valueOf(true))
+                     Blocks.COPPER_BULB.waxed().weathered().defaultBlockState().setValue(CopperBulbBlock.LIT, true)
                   ),
                   new ProcessorRule(
                      new RandomBlockMatchTest(Blocks.COPPER_BULB.waxed().unaffected(), 0.5F),
                      AlwaysTrueTest.INSTANCE,
-                     Blocks.COPPER_BULB.waxed().exposed().defaultBlockState().setValue(CopperBulbBlock.LIT, Boolean.valueOf(true))
+                     Blocks.COPPER_BULB.waxed().exposed().defaultBlockState().setValue(CopperBulbBlock.LIT, true)
                   )
                )
             ),

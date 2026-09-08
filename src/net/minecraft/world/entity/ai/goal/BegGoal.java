@@ -12,8 +12,7 @@ import org.jspecify.annotations.Nullable;
 
 public class BegGoal extends Goal {
    private final Wolf wolf;
-   @Nullable
-   private Player player;
+   private @Nullable Player player;
    private final ServerLevel level;
    private final float lookDistance;
    private int lookTime;
@@ -23,7 +22,7 @@ public class BegGoal extends Goal {
       this.wolf = wolf;
       this.level = getServerLevel(wolf);
       this.lookDistance = lookDistance;
-      this.begTargeting = TargetingConditions.forNonCombat().range((double)lookDistance);
+      this.begTargeting = TargetingConditions.forNonCombat().range(lookDistance);
       this.setFlags(EnumSet.of(Goal.Flag.LOOK));
    }
 
@@ -38,7 +37,7 @@ public class BegGoal extends Goal {
       if (!this.player.isAlive()) {
          return false;
       } else {
-         return this.wolf.distanceToSqr(this.player) > (double)(this.lookDistance * this.lookDistance)
+         return this.wolf.distanceToSqr(this.player) > this.lookDistance * this.lookDistance
             ? false
             : this.lookTime > 0 && this.playerHoldingInteresting(this.player);
       }
@@ -58,7 +57,7 @@ public class BegGoal extends Goal {
 
    @Override
    public void tick() {
-      this.wolf.getLookControl().setLookAt(this.player.getX(), this.player.getEyeY(), this.player.getZ(), 10.0F, (float)this.wolf.getMaxHeadXRot());
+      this.wolf.getLookControl().setLookAt(this.player.getX(), this.player.getEyeY(), this.player.getZ(), 10.0F, this.wolf.getMaxHeadXRot());
       this.lookTime--;
    }
 

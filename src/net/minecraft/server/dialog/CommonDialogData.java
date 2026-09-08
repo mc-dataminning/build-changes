@@ -21,20 +21,20 @@ public record CommonDialogData(
 ) {
    public static final MapCodec<CommonDialogData> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  ComponentSerialization.CODEC.fieldOf("title").forGetter(CommonDialogData::title),
-                  ComponentSerialization.CODEC.optionalFieldOf("external_title").forGetter(CommonDialogData::externalTitle),
-                  Codec.BOOL.optionalFieldOf("can_close_with_escape", true).forGetter(CommonDialogData::canCloseWithEscape),
-                  Codec.BOOL.optionalFieldOf("pause", true).forGetter(CommonDialogData::pause),
-                  DialogAction.CODEC.optionalFieldOf("after_action", DialogAction.CLOSE).forGetter(CommonDialogData::afterAction),
-                  DialogBody.COMPACT_LIST_CODEC.optionalFieldOf("body", List.of()).forGetter(CommonDialogData::body),
-                  Input.CODEC.listOf().optionalFieldOf("inputs", List.of()).forGetter(CommonDialogData::inputs)
-               )
-               .apply(i, CommonDialogData::new)
+               ComponentSerialization.CODEC.fieldOf("title").forGetter(CommonDialogData::title),
+               ComponentSerialization.CODEC.optionalFieldOf("external_title").forGetter(CommonDialogData::externalTitle),
+               Codec.BOOL.optionalFieldOf("can_close_with_escape", true).forGetter(CommonDialogData::canCloseWithEscape),
+               Codec.BOOL.optionalFieldOf("pause", true).forGetter(CommonDialogData::pause),
+               DialogAction.CODEC.optionalFieldOf("after_action", DialogAction.CLOSE).forGetter(CommonDialogData::afterAction),
+               DialogBody.COMPACT_LIST_CODEC.optionalFieldOf("body", List.of()).forGetter(CommonDialogData::body),
+               Input.CODEC.listOf().optionalFieldOf("inputs", List.of()).forGetter(CommonDialogData::inputs)
+            )
+            .apply(i, CommonDialogData::new)
       )
       .validate(
          data -> data.pause && !data.afterAction.willUnpause()
-               ? DataResult.error(() -> "Dialogs that pause the game must use after_action values that unpause it after user action!")
-               : DataResult.success(data)
+            ? DataResult.error(() -> "Dialogs that pause the game must use after_action values that unpause it after user action!")
+            : DataResult.success(data)
       );
 
    public Component computeExternalTitle() {

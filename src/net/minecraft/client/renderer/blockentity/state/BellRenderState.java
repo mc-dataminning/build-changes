@@ -4,7 +4,6 @@ import net.minecraft.core.Direction;
 import org.jspecify.annotations.Nullable;
 
 public class BellRenderState extends BlockEntityRenderState {
-   @Nullable
-   public Direction shakeDirection;
+   public @Nullable Direction shakeDirection;
    public float ticks;
 }

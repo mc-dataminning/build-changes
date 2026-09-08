@@ -18,7 +18,7 @@ public abstract class RecipeBookMenu extends AbstractContainerMenu {
 
    public abstract RecipeBookType getRecipeBookType();
 
-   public static enum PostPlaceAction {
+   public enum PostPlaceAction {
       NOTHING,
       PLACE_GHOST_RECIPE;
    }

@@ -19,14 +19,14 @@ public interface PoolAliasLookup {
    static PoolAliasLookup create(final List<PoolAliasBinding> poolAliasBindings, final BlockPos pos, final long seed) {
       if (poolAliasBindings.isEmpty()) {
          return EMPTY;
-      } else {
-         RandomSource random = RandomSource.create(seed).forkPositional().at(pos);
-         Builder<ResourceKey<StructureTemplatePool>, ResourceKey<StructureTemplatePool>> builder = ImmutableMap.builder();
-         poolAliasBindings.forEach(binding -> binding.forEachResolved(random, builder::put));
-         Map<ResourceKey<StructureTemplatePool>, ResourceKey<StructureTemplatePool>> aliasMappings = builder.build();
-         return resourceKey -> Objects.requireNonNull(
-               aliasMappings.getOrDefault(resourceKey, resourceKey), () -> "alias " + resourceKey.identifier() + " was mapped to null value"
-            );
       }
+
+      RandomSource random = RandomSource.create(seed).forkPositional().at(pos);
+      Builder<ResourceKey<StructureTemplatePool>, ResourceKey<StructureTemplatePool>> builder = ImmutableMap.builder();
+      poolAliasBindings.forEach(binding -> binding.forEachResolved(random, builder::put));
+      Map<ResourceKey<StructureTemplatePool>, ResourceKey<StructureTemplatePool>> aliasMappings = builder.build();
+      return resourceKey -> Objects.requireNonNull(
+         aliasMappings.getOrDefault(resourceKey, resourceKey), () -> "alias " + resourceKey.identifier() + " was mapped to null value"
+      );
    }
 }

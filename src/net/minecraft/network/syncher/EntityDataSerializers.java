@@ -149,8 +149,7 @@ public class EntityDataSerializers {
       SERIALIZERS.add(serializer);
    }
 
-   @Nullable
-   public static EntityDataSerializer<?> getSerializer(final int id) {
+   public static @Nullable EntityDataSerializer<?> getSerializer(final int id) {
       return SERIALIZERS.byId(id);
    }
 

@@ -62,8 +62,7 @@ public class ChannelAccess {
    }
 
    public class ChannelHandle {
-      @Nullable
-      private Channel channel;
+      private @Nullable Channel channel;
       private boolean stopped;
 
       public boolean isStopped() {
@@ -71,8 +70,6 @@ public class ChannelAccess {
       }
 
       public ChannelHandle(final Channel channel) {
-         Objects.requireNonNull(ChannelAccess.this);
-         super();
          this.channel = channel;
       }
 

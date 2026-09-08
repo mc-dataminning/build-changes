@@ -28,10 +28,10 @@ public class AbstractArrowPickupFix extends DataFix {
    private static Dynamic<?> updatePickup(final Dynamic<?> tag) {
       if (tag.get("pickup").result().isPresent()) {
          return tag;
-      } else {
-         boolean fromPlayer = tag.get("player").asBoolean(true);
-         return tag.set("pickup", tag.createByte((byte)(fromPlayer ? 1 : 0))).remove("player");
       }
+
+      boolean fromPlayer = tag.get("player").asBoolean(true);
+      return tag.set("pickup", tag.createByte((byte)(fromPlayer ? 1 : 0))).remove("player");
    }
 
    private Typed<?> updateEntity(final Typed<?> input, final String name, final Function<Dynamic<?>, Dynamic<?>> function) {

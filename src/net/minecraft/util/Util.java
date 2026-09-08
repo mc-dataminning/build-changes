@@ -29,7 +29,6 @@ import it.unimi.dsi.fastutil.objects.Reference2IntMap;
 import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ReferenceImmutableList;
 import it.unimi.dsi.fastutil.objects.ReferenceList;
-import java.io.File;
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadInfo;
@@ -138,7 +137,7 @@ public class Util {
                case '\u000b' -> "\\v";
                case '\f' -> "\\f";
                case '\r' -> "\\r";
-               default -> "\\x" + hexFormat.toHexDigits((long)c, 2);
+               default -> "\\x" + hexFormat.toHexDigits(c, 2);
             };
             escaper.addEscape(c, replacement);
          }
@@ -146,8 +145,7 @@ public class Util {
 
       escaper.addEscape('\\', "\\\\");
    }).build();
-   private static Consumer<String> thePauser = msg -> {
-   };
+   private static Consumer<String> thePauser = msg -> {};
 
    public static <K, V> Collector<Entry<? extends K, ? extends V>, ?, Map<K, V>> toMap() {
       return Collectors.toMap(Entry::getKey, Entry::getValue);
@@ -161,7 +159,7 @@ public class Util {
       return key.getName((T)value);
    }
 
-   public static String makeDescriptionId(final String prefix, @Nullable final Identifier location) {
+   public static String makeDescriptionId(final String prefix, final @Nullable Identifier location) {
       return location == null ? prefix + ".unregistered_sadface" : prefix + "." + location.getNamespace() + "." + location.getPath().replace('/', '.');
    }
 
@@ -191,7 +189,7 @@ public class Util {
    }
 
    public static long toMillis(final double seconds) {
-      return (long)Mth.floor(seconds * 1000.0);
+      return Mth.floor(seconds * 1000.0);
    }
 
    public static String getFilenameFormattedDateTime() {
@@ -215,7 +213,7 @@ public class Util {
                }
 
                @Override
-               protected void onTermination(@Nullable final Throwable exception) {
+               protected void onTermination(final @Nullable Throwable exception) {
                   if (exception != null) {
                      Util.LOGGER.warn("{} died", this.getName(), exception);
                   } else {
@@ -247,7 +245,7 @@ public class Util {
             }
 
             LOGGER.error("Wrong {} property value '{}'. Should be an integer value between 1 and {}.", new Object[]{"max.bg.threads", maxThreadsString, 255});
-         } catch (NumberFormatException var2) {
+         } catch (NumberFormatException e) {
             LOGGER.error(
                "Could not parse {} property value '{}'. Should be an integer value between 1 and {}.", new Object[]{"max.bg.threads", maxThreadsString, 255}
             );
@@ -309,23 +307,21 @@ public class Util {
       BlockableEventLoop.relayDelayCrash(report);
    }
 
-   @Nullable
-   public static Type<?> fetchChoiceType(final TypeReference reference, final String name) {
+   public static @Nullable Type<?> fetchChoiceType(final TypeReference reference, final String name) {
       return !SharedConstants.CHECK_DATA_FIXER_SCHEMA ? null : doFetchChoiceType(reference, name);
    }
 
-   @Nullable
-   private static Type<?> doFetchChoiceType(final TypeReference reference, final String name) {
+   private static @Nullable Type<?> doFetchChoiceType(final TypeReference reference, final String name) {
       Type<?> dataType = null;
 
       try {
          dataType = DataFixers.getDataFixer()
             .getSchema(DataFixUtils.makeKey(SharedConstants.getCurrentVersion().dataVersion().version()))
             .getChoiceType(reference, name);
-      } catch (IllegalArgumentException var4) {
+      } catch (IllegalArgumentException e) {
          LOGGER.error("No data fixer registered for {}", name);
          if (SharedConstants.IS_RUNNING_IN_IDE) {
-            throw var4;
+            throw e;
          }
       }
 
@@ -422,10 +418,10 @@ public class Util {
       final Predicate<? super T> condition5
    ) {
       return context -> condition1.test(context)
-            && condition2.test(context)
-            && condition3.test(context)
-            && condition4.test(context)
-            && condition5.test(context);
+         && condition2.test(context)
+         && condition3.test(context)
+         && condition4.test(context)
+         && condition5.test(context);
    }
 
    @SafeVarargs
@@ -448,18 +444,18 @@ public class Util {
          case 2 -> allOf((Predicate<? super T>)conditions.get(0), (Predicate<? super T>)conditions.get(1));
          case 3 -> allOf((Predicate<? super T>)conditions.get(0), (Predicate<? super T>)conditions.get(1), (Predicate<? super T>)conditions.get(2));
          case 4 -> allOf(
-         (Predicate<? super T>)conditions.get(0),
-         (Predicate<? super T>)conditions.get(1),
-         (Predicate<? super T>)conditions.get(2),
-         (Predicate<? super T>)conditions.get(3)
-      );
+            (Predicate<? super T>)conditions.get(0),
+            (Predicate<? super T>)conditions.get(1),
+            (Predicate<? super T>)conditions.get(2),
+            (Predicate<? super T>)conditions.get(3)
+         );
          case 5 -> allOf(
-         (Predicate<? super T>)conditions.get(0),
-         (Predicate<? super T>)conditions.get(1),
-         (Predicate<? super T>)conditions.get(2),
-         (Predicate<? super T>)conditions.get(3),
-         (Predicate<? super T>)conditions.get(4)
-      );
+            (Predicate<? super T>)conditions.get(0),
+            (Predicate<? super T>)conditions.get(1),
+            (Predicate<? super T>)conditions.get(2),
+            (Predicate<? super T>)conditions.get(3),
+            (Predicate<? super T>)conditions.get(4)
+         );
          default -> {
             Predicate<? super T>[] conditionsCopy = conditions.toArray(Predicate[]::new);
             yield allOf(conditionsCopy);
@@ -500,10 +496,10 @@ public class Util {
       final Predicate<? super T> condition5
    ) {
       return context -> condition1.test(context)
-            || condition2.test(context)
-            || condition3.test(context)
-            || condition4.test(context)
-            || condition5.test(context);
+         || condition2.test(context)
+         || condition3.test(context)
+         || condition4.test(context)
+         || condition5.test(context);
    }
 
    @SafeVarargs
@@ -526,18 +522,18 @@ public class Util {
          case 2 -> anyOf((Predicate<? super T>)conditions.get(0), (Predicate<? super T>)conditions.get(1));
          case 3 -> anyOf((Predicate<? super T>)conditions.get(0), (Predicate<? super T>)conditions.get(1), (Predicate<? super T>)conditions.get(2));
          case 4 -> anyOf(
-         (Predicate<? super T>)conditions.get(0),
-         (Predicate<? super T>)conditions.get(1),
-         (Predicate<? super T>)conditions.get(2),
-         (Predicate<? super T>)conditions.get(3)
-      );
+            (Predicate<? super T>)conditions.get(0),
+            (Predicate<? super T>)conditions.get(1),
+            (Predicate<? super T>)conditions.get(2),
+            (Predicate<? super T>)conditions.get(3)
+         );
          case 5 -> anyOf(
-         (Predicate<? super T>)conditions.get(0),
-         (Predicate<? super T>)conditions.get(1),
-         (Predicate<? super T>)conditions.get(2),
-         (Predicate<? super T>)conditions.get(3),
-         (Predicate<? super T>)conditions.get(4)
-      );
+            (Predicate<? super T>)conditions.get(0),
+            (Predicate<? super T>)conditions.get(1),
+            (Predicate<? super T>)conditions.get(2),
+            (Predicate<? super T>)conditions.get(3),
+            (Predicate<? super T>)conditions.get(4)
+         );
          default -> {
             Predicate<? super T>[] conditionsCopy = conditions.toArray(Predicate[]::new);
             yield anyOf(conditionsCopy);
@@ -548,31 +544,29 @@ public class Util {
    public static <T> boolean isSymmetrical(final int width, final int height, final List<T> ingredients) {
       if (width == 1) {
          return true;
-      } else {
-         int centerX = width / 2;
+      }
 
-         for (int y = 0; y < height; y++) {
-            for (int leftX = 0; leftX < centerX; leftX++) {
-               int rightX = width - 1 - leftX;
-               T left = ingredients.get(leftX + y * width);
-               T right = ingredients.get(rightX + y * width);
-               if (!left.equals(right)) {
-                  return false;
-               }
+      int centerX = width / 2;
+
+      for (int y = 0; y < height; y++) {
+         for (int leftX = 0; leftX < centerX; leftX++) {
+            int rightX = width - 1 - leftX;
+            T left = ingredients.get(leftX + y * width);
+            T right = ingredients.get(rightX + y * width);
+            if (!left.equals(right)) {
+               return false;
             }
          }
-
-         return true;
       }
+
+      return true;
    }
 
    public static int growByHalf(final int currentSize, final int minimalNewSize) {
-      return (int)Math.max(Math.min((long)currentSize + (long)(currentSize >> 1), 2147483639L), (long)minimalNewSize);
+      return (int)Math.max(Math.min((long)currentSize + (currentSize >> 1), 2147483639L), minimalNewSize);
    }
 
-   @SuppressForbidden(
-      reason = "Intentional use of default locale for user-visible date"
-   )
+   @SuppressForbidden(reason = "Intentional use of default locale for user-visible date")
    public static DateTimeFormatter localizedDateFormatter(final FormatStyle formatStyle) {
       return DateTimeFormatter.ofLocalizedDateTime(formatStyle);
    }
@@ -623,7 +617,7 @@ public class Util {
       }
    }
 
-   public static <T> T findNextInIterable(final Iterable<T> collection, @Nullable final T current) {
+   public static <T> T findNextInIterable(final Iterable<T> collection, final @Nullable T current) {
       Iterator<T> iterator = collection.iterator();
       T first = iterator.next();
       if (current != null) {
@@ -643,7 +637,7 @@ public class Util {
       return first;
    }
 
-   public static <T> T findPreviousInIterable(final Iterable<T> collection, @Nullable final T current) {
+   public static <T> T findPreviousInIterable(final Iterable<T> collection, final @Nullable T current) {
       Iterator<T> iterator = collection.iterator();
       T last = null;
 
@@ -696,12 +690,14 @@ public class Util {
    public static <V> CompletableFuture<List<V>> sequence(final List<? extends CompletableFuture<V>> futures) {
       if (futures.isEmpty()) {
          return CompletableFuture.completedFuture(List.of());
-      } else if (futures.size() == 1) {
-         return futures.getFirst().thenApply(ObjectLists::singleton);
-      } else {
-         CompletableFuture<Void> all = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
-         return all.thenApply(ignored -> futures.stream().map(CompletableFuture::join).toList());
       }
+
+      if (futures.size() == 1) {
+         return futures.getFirst().thenApply(ObjectLists::singleton);
+      }
+
+      CompletableFuture<Void> all = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
+      return all.thenApply(ignored -> futures.stream().map(CompletableFuture::join).toList());
    }
 
    public static <V> CompletableFuture<List<V>> sequenceFailFast(final List<? extends CompletableFuture<? extends V>> futures) {
@@ -856,8 +852,8 @@ public class Util {
             try {
                Files.move(from, to, options);
                return true;
-            } catch (IOException var2) {
-               Util.LOGGER.error("Failed to rename", var2);
+            } catch (IOException e) {
+               Util.LOGGER.error("Failed to rename", e);
                return false;
             }
          }
@@ -876,8 +872,8 @@ public class Util {
             try {
                Files.deleteIfExists(target);
                return true;
-            } catch (IOException var2) {
-               Util.LOGGER.warn("Failed to delete", var2);
+            } catch (IOException e) {
+               Util.LOGGER.warn("Failed to delete", e);
                return false;
             }
          }
@@ -975,7 +971,7 @@ public class Util {
             }
          }
       } else {
-         for (int ix = offset; pos > 0 && ix < 0; ix++) {
+         for (int i = offset; pos > 0 && i < 0; i++) {
             pos--;
             if (Character.isLowSurrogate(input.charAt(pos)) && pos > 0 && Character.isHighSurrogate(input.charAt(pos - 1))) {
                pos--;
@@ -991,7 +987,7 @@ public class Util {
    }
 
    public static DataResult<int[]> fixedSize(final IntStream stream, final int size) {
-      int[] ints = stream.limit((long)(size + 1)).toArray();
+      int[] ints = stream.limit(size + 1).toArray();
       if (ints.length != size) {
          Supplier<String> message = () -> "Input is not a list of " + size + " ints";
          return ints.length >= size ? DataResult.error(message, Arrays.copyOf(ints, size)) : DataResult.error(message);
@@ -1001,7 +997,7 @@ public class Util {
    }
 
    public static DataResult<long[]> fixedSize(final LongStream stream, final int size) {
-      long[] longs = stream.limit((long)(size + 1)).toArray();
+      long[] longs = stream.limit(size + 1).toArray();
       if (longs.length != size) {
          Supplier<String> message = () -> "Input is not a list of " + size + " longs";
          return longs.length >= size ? DataResult.error(message, Arrays.copyOf(longs, size)) : DataResult.error(message);
@@ -1026,7 +1022,7 @@ public class Util {
             while (true) {
                try {
                   Thread.sleep(2147483647L);
-               } catch (InterruptedException var2) {
+               } catch (InterruptedException e) {
                   Util.LOGGER.warn("Timer hack thread interrupted, that really should not happen");
                   return;
                }
@@ -1140,7 +1136,7 @@ public class Util {
             if (runnable != null) {
                runnable.run();
             }
-         } catch (InterruptedException var5) {
+         } catch (InterruptedException e) {
             LOGGER.warn("Interrupted wait");
             break;
          }
@@ -1158,16 +1154,16 @@ public class Util {
       int size = values.size();
       if (size < 8) {
          return values::indexOf;
-      } else {
-         Object2IntMap<T> lookup = new Object2IntOpenHashMap(size);
-         lookup.defaultReturnValue(-1);
-
-         for (int i = 0; i < size; i++) {
-            lookup.put(values.get(i), i);
-         }
-
-         return lookup;
       }
+
+      Object2IntMap<T> lookup = new Object2IntOpenHashMap(size);
+      lookup.defaultReturnValue(-1);
+
+      for (int i = 0; i < size; i++) {
+         lookup.put(values.get(i), i);
+      }
+
+      return lookup;
    }
 
    public static <T> ToIntFunction<T> createIndexIdentityLookup(final List<T> values) {
@@ -1175,16 +1171,16 @@ public class Util {
       if (size < 8) {
          ReferenceList<T> referenceLookup = new ReferenceImmutableList(values);
          return referenceLookup::indexOf;
-      } else {
-         Reference2IntMap<T> lookup = new Reference2IntOpenHashMap(size);
-         lookup.defaultReturnValue(-1);
-
-         for (int i = 0; i < size; i++) {
-            lookup.put(values.get(i), i);
-         }
-
-         return lookup;
       }
+
+      Reference2IntMap<T> lookup = new Reference2IntOpenHashMap(size);
+      lookup.defaultReturnValue(-1);
+
+      for (int i = 0; i < size; i++) {
+         lookup.put(values.get(i), i);
+      }
+
+      return lookup;
    }
 
    public static <A, B> Typed<B> writeAndReadTypedOrThrow(final Typed<A> typed, final Type<B> newType, final UnaryOperator<Dynamic<?>> function) {
@@ -1201,8 +1197,8 @@ public class Util {
 
       try {
          return acceptPartial ? (Typed)result.getPartialOrThrow(IllegalStateException::new) : (Typed)result.getOrThrow(IllegalStateException::new);
-      } catch (IllegalStateException var7) {
-         CrashReport report = CrashReport.forThrowable(var7, "Reading type");
+      } catch (IllegalStateException e) {
+         CrashReport report = CrashReport.forThrowable(e, "Reading type");
          CrashReportCategory category = report.addCategory("Info");
          category.setDetail("Data", dynamic);
          category.setDetail("Type", type);
@@ -1249,63 +1245,17 @@ public class Util {
       return ImmutableMap.builderWithExpectedSize(map.size() + 1).putAll(map).put(key, value).buildKeepingLast();
    }
 
-   public static enum OS {
+   public enum OS {
       LINUX("linux"),
       SOLARIS("solaris"),
-      WINDOWS("windows") {
-         @Override
-         protected String[] getOpenUriArguments(final URI uri) {
-            return new String[]{"rundll32", "url.dll,FileProtocolHandler", uri.toString()};
-         }
-      },
-      OSX("mac") {
-         @Override
-         protected String[] getOpenUriArguments(final URI uri) {
-            return new String[]{"open", uri.toString()};
-         }
-      },
+      WINDOWS("windows"),
+      OSX("mac"),
       UNKNOWN("unknown");
 
       private final String telemetryName;
 
-      private OS(final String telemetryName) {
+      OS(final String telemetryName) {
          this.telemetryName = telemetryName;
-      }
-
-      public void openUri(final URI uri) {
-         try {
-            Process process = Runtime.getRuntime().exec(this.getOpenUriArguments(uri));
-            process.getInputStream().close();
-            process.getErrorStream().close();
-            process.getOutputStream().close();
-         } catch (IOException var3) {
-            Util.LOGGER.error("Couldn't open location '{}'", uri, var3);
-         }
-      }
-
-      public void openFile(final File file) {
-         this.openUri(file.toURI());
-      }
-
-      public void openPath(final Path path) {
-         this.openUri(path.toUri());
-      }
-
-      protected String[] getOpenUriArguments(final URI uri) {
-         String string = uri.toString();
-         if ("file".equals(uri.getScheme())) {
-            string = string.replace("file:", "file://");
-         }
-
-         return new String[]{"xdg-open", string};
-      }
-
-      public void openUri(final String uri) {
-         try {
-            this.openUri(new URI(uri));
-         } catch (IllegalArgumentException | URISyntaxException var3) {
-            Util.LOGGER.error("Couldn't open uri '{}'", uri, var3);
-         }
       }
 
       public String telemetryName() {

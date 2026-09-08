@@ -107,7 +107,7 @@ public abstract class TemplateStructurePiece extends StructurePiece {
 
                try {
                   targetState = BlockStateParser.parseForBlock(level.holderLookup(Registries.BLOCK), stateString, true).blockState();
-               } catch (CommandSyntaxException var15) {
+               } catch (CommandSyntaxException e) {
                   LOGGER.error("Error while parsing blockstate {} in jigsaw block @ {}", stateString, jigsawBlock.pos());
                }
 

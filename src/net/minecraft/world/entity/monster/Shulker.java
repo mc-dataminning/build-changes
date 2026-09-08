@@ -1,7 +1,6 @@
 package net.minecraft.world.entity.monster;
 
 import java.util.EnumSet;
-import java.util.Objects;
 import java.util.Optional;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -84,8 +83,7 @@ public class Shulker extends AbstractGolem implements Enemy {
    private static final float MAX_SCALE = 3.0F;
    private float currentPeekAmountO;
    private float currentPeekAmount;
-   @Nullable
-   private BlockPos clientOldAttachPosition;
+   private @Nullable BlockPos clientOldAttachPosition;
    private int clientSideTeleportInterpolation;
    private static final float MAX_LID_OPEN = 1.0F;
 
@@ -208,7 +206,7 @@ public class Shulker extends AbstractGolem implements Enemy {
    }
 
    private static float getPhysicalPeek(final float amount) {
-      return 0.5F - Mth.sin((double)((0.5F + amount) * (float) Math.PI)) * 0.5F;
+      return 0.5F - Mth.sin((0.5F + amount) * (float) Math.PI) * 0.5F;
    }
 
    @Override
@@ -224,18 +222,18 @@ public class Shulker extends AbstractGolem implements Enemy {
 
    private boolean updatePeekAmount() {
       this.currentPeekAmountO = this.currentPeekAmount;
-      float targetPeekAmount = (float)this.getRawPeekAmount() * 0.01F;
+      float targetPeekAmount = this.getRawPeekAmount() * 0.01F;
       if (this.currentPeekAmount == targetPeekAmount) {
          return false;
-      } else {
-         if (this.currentPeekAmount > targetPeekAmount) {
-            this.currentPeekAmount = Mth.clamp(this.currentPeekAmount - 0.05F, targetPeekAmount, 1.0F);
-         } else {
-            this.currentPeekAmount = Mth.clamp(this.currentPeekAmount + 0.05F, 0.0F, targetPeekAmount);
-         }
-
-         return true;
       }
+
+      if (this.currentPeekAmount > targetPeekAmount) {
+         this.currentPeekAmount = Mth.clamp(this.currentPeekAmount - 0.05F, targetPeekAmount, 1.0F);
+      } else {
+         this.currentPeekAmount = Mth.clamp(this.currentPeekAmount + 0.05F, 0.0F, targetPeekAmount);
+      }
+
+      return true;
    }
 
    private void onPeekAmountChange() {
@@ -253,12 +251,7 @@ public class Shulker extends AbstractGolem implements Enemy {
                EntitySelector.NO_SPECTATORS.and(e -> !e.isPassengerOfSameVehicle(this))
             )) {
             if (!(entity instanceof Shulker) && !entity.noPhysics) {
-               entity.move(
-                  MoverType.SHULKER,
-                  new Vec3(
-                     (double)(push * (float)direction.getStepX()), (double)(push * (float)direction.getStepY()), (double)(push * (float)direction.getStepZ())
-                  )
-               );
+               entity.move(MoverType.SHULKER, new Vec3(push * direction.getStepX(), push * direction.getStepY(), push * direction.getStepZ()));
             }
          }
       }
@@ -269,18 +262,16 @@ public class Shulker extends AbstractGolem implements Enemy {
    }
 
    public static AABB getProgressDeltaAabb(final float size, final Direction direction, final float progressFrom, final float progressTo, final Vec3 position) {
-      AABB boundsAtBottomCenter = new AABB((double)(-size) * 0.5, 0.0, (double)(-size) * 0.5, (double)size * 0.5, (double)size, (double)size * 0.5);
-      double maxMovement = (double)Math.max(progressFrom, progressTo);
-      double minMovement = (double)Math.min(progressFrom, progressTo);
+      AABB boundsAtBottomCenter = new AABB(-size * 0.5, 0.0, -size * 0.5, size * 0.5, size, size * 0.5);
+      double maxMovement = Math.max(progressFrom, progressTo);
+      double minMovement = Math.min(progressFrom, progressTo);
       AABB aabb = boundsAtBottomCenter.expandTowards(
-            (double)direction.getStepX() * maxMovement * (double)size,
-            (double)direction.getStepY() * maxMovement * (double)size,
-            (double)direction.getStepZ() * maxMovement * (double)size
+            direction.getStepX() * maxMovement * size, direction.getStepY() * maxMovement * size, direction.getStepZ() * maxMovement * size
          )
          .contract(
-            (double)(-direction.getStepX()) * (1.0 + minMovement) * (double)size,
-            (double)(-direction.getStepY()) * (1.0 + minMovement) * (double)size,
-            (double)(-direction.getStepZ()) * (1.0 + minMovement) * (double)size
+            -direction.getStepX() * (1.0 + minMovement) * size,
+            -direction.getStepY() * (1.0 + minMovement) * size,
+            -direction.getStepZ() * (1.0 + minMovement) * size
          );
       return aabb.move(position.x, position.y, position.z);
    }
@@ -307,10 +298,9 @@ public class Shulker extends AbstractGolem implements Enemy {
       this.yBodyRot = 0.0F;
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+   public @Nullable SpawnGroupData finalizeSpawn(
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       this.setYRot(0.0F);
       this.yHeadRot = this.getYRot();
@@ -342,7 +332,7 @@ public class Shulker extends AbstractGolem implements Enemy {
       if (this.isPassenger()) {
          super.setPos(x, y, z);
       } else {
-         super.setPos((double)Mth.floor(x) + 0.5, (double)Mth.floor(y + 0.5), (double)Mth.floor(z) + 0.5);
+         super.setPos(Mth.floor(x) + 0.5, Mth.floor(y + 0.5), Mth.floor(z) + 0.5);
       }
 
       if (this.tickCount != 0) {
@@ -361,8 +351,7 @@ public class Shulker extends AbstractGolem implements Enemy {
       }
    }
 
-   @Nullable
-   protected Direction findAttachableSurface(final BlockPos target) {
+   protected @Nullable Direction findAttachableSurface(final BlockPos target) {
       for (Direction direction : Direction.values()) {
          if (this.canStayAt(target, direction)) {
             return direction;
@@ -375,25 +364,25 @@ public class Shulker extends AbstractGolem implements Enemy {
    private boolean canStayAt(final BlockPos target, final Direction face) {
       if (this.isPositionBlocked(target)) {
          return false;
-      } else {
-         Direction oppositeFace = face.getOpposite();
-         if (!this.level().loadedAndEntityCanStandOnFace(target.relative(face), this, oppositeFace)) {
-            return false;
-         } else {
-            AABB fullyOpened = getProgressAabb(this.getScale(), oppositeFace, 1.0F, Vec3.atBottomCenterOf(target)).deflate(1.0E-6);
-            return this.level().noCollision(this, fullyOpened);
-         }
       }
+
+      Direction oppositeFace = face.getOpposite();
+      if (!this.level().loadedAndEntityCanStandOnFace(target.relative(face), this, oppositeFace)) {
+         return false;
+      }
+
+      AABB fullyOpened = getProgressAabb(this.getScale(), oppositeFace, 1.0F, Vec3.atBottomCenterOf(target)).deflate(1.0E-6);
+      return this.level().noCollision(this, fullyOpened);
    }
 
    private boolean isPositionBlocked(final BlockPos target) {
       BlockState state = this.level().getBlockState(target);
       if (state.isAir()) {
          return false;
-      } else {
-         boolean movingPistonInOurCurrentPosition = state.is(Blocks.MOVING_PISTON) && target.equals(this.blockPosition());
-         return !movingPistonInOurCurrentPosition;
       }
+
+      boolean movingPistonInOurCurrentPosition = state.is(Blocks.MOVING_PISTON) && target.equals(this.blockPosition());
+      return !movingPistonInOurCurrentPosition;
    }
 
    protected boolean teleportSomewhere() {
@@ -414,7 +403,7 @@ public class Shulker extends AbstractGolem implements Enemy {
                   this.unRide();
                   this.setAttachFace(attachmentDirection);
                   this.playSound(SoundEvents.SHULKER_TELEPORT, 1.0F, 1.0F);
-                  this.setPos((double)target.getX() + 0.5, (double)target.getY(), (double)target.getZ() + 0.5);
+                  this.setPos(target.getX() + 0.5, target.getY(), target.getZ() + 0.5);
                   level.gameEvent(GameEvent.TELEPORT, oldPos, GameEvent.Context.of(this));
                   int packedDiff = BlockUtil.packDifferenceInPosition(oldPos, this.blockPosition(), 8, 8, 8);
                   level.levelEvent(2016, oldPos, packedDiff);
@@ -447,18 +436,18 @@ public class Shulker extends AbstractGolem implements Enemy {
 
       if (!super.hurtServer(level, source, damage)) {
          return false;
-      } else {
-         if ((double)this.getHealth() < (double)this.getMaxHealth() * 0.5 && this.random.nextInt(4) == 0) {
-            this.teleportSomewhere();
-         } else if (source.is(DamageTypeTags.IS_PROJECTILE)) {
-            Entity directEntity = source.getDirectEntity();
-            if (directEntity != null && directEntity.is(EntityTypes.SHULKER_BULLET)) {
-               this.hitByShulkerBullet();
-            }
-         }
-
-         return true;
       }
+
+      if (this.getHealth() < this.getMaxHealth() * 0.5 && this.random.nextInt(4) == 0) {
+         this.teleportSomewhere();
+      } else if (source.is(DamageTypeTags.IS_PROJECTILE)) {
+         Entity directEntity = source.getDirectEntity();
+         if (directEntity != null && directEntity.is(EntityTypes.SHULKER_BULLET)) {
+            this.hitByShulkerBullet();
+         }
+      }
+
+      return true;
    }
 
    private boolean isClosed() {
@@ -470,7 +459,7 @@ public class Shulker extends AbstractGolem implements Enemy {
       AABB oldAabb = this.getBoundingBox();
       if (!this.isClosed() && this.teleportSomewhere()) {
          int shulkerCount = this.level().getEntities(EntityTypes.SHULKER, oldAabb.inflate(8.0), Entity::isAlive).size();
-         float failureChance = (float)(shulkerCount - 1) / 5.0F;
+         float failureChance = (shulkerCount - 1) / 5.0F;
          if (!(this.level().getRandom().nextFloat() < failureChance)) {
             Shulker baby = EntityTypes.SHULKER.create(this.level(), EntitySpawnReason.BREEDING);
             if (baby != null) {
@@ -483,7 +472,7 @@ public class Shulker extends AbstractGolem implements Enemy {
    }
 
    @Override
-   public boolean canBeCollidedWith(@Nullable final Entity other) {
+   public boolean canBeCollidedWith(final @Nullable Entity other) {
       return this.isAlive();
    }
 
@@ -549,16 +538,15 @@ public class Shulker extends AbstractGolem implements Enemy {
    public void push(final Entity entity) {
    }
 
-   @Nullable
-   public Vec3 getRenderPosition(final float a) {
+   public @Nullable Vec3 getRenderPosition(final float a) {
       if (this.clientOldAttachPosition != null && this.clientSideTeleportInterpolation > 0) {
-         double scale = (double)((float)this.clientSideTeleportInterpolation - a) / 6.0;
+         double scale = (this.clientSideTeleportInterpolation - a) / 6.0;
          scale *= scale;
-         scale *= (double)this.getScale();
+         scale *= this.getScale();
          BlockPos currentPos = this.blockPosition();
-         double ox = (double)(currentPos.getX() - this.clientOldAttachPosition.getX()) * scale;
-         double oy = (double)(currentPos.getY() - this.clientOldAttachPosition.getY()) * scale;
-         double oz = (double)(currentPos.getZ() - this.clientOldAttachPosition.getZ()) * scale;
+         double ox = (currentPos.getX() - this.clientOldAttachPosition.getX()) * scale;
+         double oy = (currentPos.getY() - this.clientOldAttachPosition.getY()) * scale;
+         double oz = (currentPos.getZ() - this.clientOldAttachPosition.getZ()) * scale;
          return new Vec3(-ox, -oy, -oz);
       } else {
          return null;
@@ -578,15 +566,13 @@ public class Shulker extends AbstractGolem implements Enemy {
       return Optional.ofNullable(this.getColor());
    }
 
-   @Nullable
-   public DyeColor getColor() {
+   public @Nullable DyeColor getColor() {
       byte color = this.entityData.get(DATA_COLOR_ID);
       return color != 16 && color <= 15 ? DyeColor.byId(color) : null;
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       return type == DataComponents.SHULKER_COLOR ? castComponentValue((DataComponentType<T>)type, this.getColor()) : super.get(type);
    }
 
@@ -610,8 +596,6 @@ public class Shulker extends AbstractGolem implements Enemy {
       private int attackTime;
 
       public ShulkerAttackGoal() {
-         Objects.requireNonNull(Shulker.this);
-         super();
          this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
       }
 
@@ -696,7 +680,6 @@ public class Shulker extends AbstractGolem implements Enemy {
 
    private class ShulkerLookControl extends LookControl {
       public ShulkerLookControl(final Mob mob) {
-         Objects.requireNonNull(Shulker.this);
          super(mob);
       }
 
@@ -709,7 +692,7 @@ public class Shulker extends AbstractGolem implements Enemy {
          Direction attachFace = Shulker.this.getAttachFace().getOpposite();
          Vector3f forward = attachFace.getRotation().transform(new Vector3f(Shulker.FORWARD));
          Vec3i upNormal = attachFace.getUnitVec3i();
-         Vector3f right = new Vector3f((float)upNormal.getX(), (float)upNormal.getY(), (float)upNormal.getZ());
+         Vector3f right = new Vector3f(upNormal.getX(), upNormal.getY(), upNormal.getZ());
          right.cross(forward);
          double xd = this.wantedX - this.mob.getX();
          double yd = this.wantedY - this.mob.getEyeY();
@@ -719,7 +702,7 @@ public class Shulker extends AbstractGolem implements Enemy {
          float deltaForward = forward.dot(out);
          return !(Math.abs(deltaRight) > 1.0E-5F) && !(Math.abs(deltaForward) > 1.0E-5F)
             ? Optional.empty()
-            : Optional.of((float)(Mth.atan2((double)(-deltaRight), (double)deltaForward) * 180.0F / (float)Math.PI));
+            : Optional.of((float)(Mth.atan2(-deltaRight, deltaForward) * 180.0F / (float)Math.PI));
       }
 
       @Override
@@ -730,7 +713,6 @@ public class Shulker extends AbstractGolem implements Enemy {
 
    private class ShulkerNearestAttackGoal extends NearestAttackableTargetGoal<Player> {
       public ShulkerNearestAttackGoal(final Shulker mob) {
-         Objects.requireNonNull(Shulker.this);
          super(mob, Player.class, true);
       }
 
@@ -754,11 +736,6 @@ public class Shulker extends AbstractGolem implements Enemy {
 
    private class ShulkerPeekGoal extends Goal {
       private int peekTime;
-
-      private ShulkerPeekGoal() {
-         Objects.requireNonNull(Shulker.this);
-         super();
-      }
 
       @Override
       public boolean canUse() {

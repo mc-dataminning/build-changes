@@ -14,15 +14,12 @@ import org.jspecify.annotations.Nullable;
 
 public class PlayerInfo {
    private final GameProfile profile;
-   @Nullable
-   private Supplier<PlayerSkin> skinLookup;
+   private @Nullable Supplier<PlayerSkin> skinLookup;
    private GameType gameMode = GameType.DEFAULT_MODE;
    private int latency;
-   @Nullable
-   private Component tabListDisplayName;
+   private @Nullable Component tabListDisplayName;
    private boolean showHat = true;
-   @Nullable
-   private RemoteChatSession chatSession;
+   private @Nullable RemoteChatSession chatSession;
    private SignedMessageValidator messageValidator;
    private int tabListOrder;
 
@@ -41,8 +38,7 @@ public class PlayerInfo {
       return this.profile;
    }
 
-   @Nullable
-   public RemoteChatSession getChatSession() {
+   public @Nullable RemoteChatSession getChatSession() {
       return this.chatSession;
    }
 
@@ -92,17 +88,15 @@ public class PlayerInfo {
       return this.skinLookup.get();
    }
 
-   @Nullable
-   public PlayerTeam getTeam() {
+   public @Nullable PlayerTeam getTeam() {
       return Minecraft.getInstance().level.getScoreboard().getPlayersTeam(this.getProfile().name());
    }
 
-   public void setTabListDisplayName(@Nullable final Component tabListDisplayName) {
+   public void setTabListDisplayName(final @Nullable Component tabListDisplayName) {
       this.tabListDisplayName = tabListDisplayName;
    }
 
-   @Nullable
-   public Component getTabListDisplayName() {
+   public @Nullable Component getTabListDisplayName() {
       return this.tabListDisplayName;
    }
 

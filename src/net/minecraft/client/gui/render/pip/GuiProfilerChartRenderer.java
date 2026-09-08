@@ -29,20 +29,20 @@ public class GuiProfilerChartRenderer extends PictureInPictureRenderer<GuiProfil
             buffer.addVertex(pose, 0.0F, 0.0F, 0.0F).setColor(color);
 
             for (int j = steps; j >= 0; j--) {
-               float dir = (float)((currentPercentage + slicePercentage * (double)j / (double)steps) * (float) (Math.PI * 2) / 100.0);
-               float xx = Mth.sin((double)dir) * 105.0F;
-               float yy = Mth.cos((double)dir) * 105.0F * 0.5F;
+               float dir = (float)((currentPercentage + slicePercentage * j / steps) * (float) (Math.PI * 2) / 100.0);
+               float xx = Mth.sin(dir) * 105.0F;
+               float yy = Mth.cos(dir) * 105.0F * 0.5F;
                buffer.addVertex(pose, xx, yy, 0.0F).setColor(color);
             }
          });
          submitNodeCollector.submitCustomGeometry(poseStack, RenderTypes.debugQuads(), (pose, buffer) -> {
             for (int j = steps; j > 0; j--) {
-               float dir0 = (float)((currentPercentage + slicePercentage * (double)j / (double)steps) * (float) (Math.PI * 2) / 100.0);
-               float x0 = Mth.sin((double)dir0) * 105.0F;
-               float y0 = Mth.cos((double)dir0) * 105.0F * 0.5F;
-               float dir1 = (float)((currentPercentage + slicePercentage * (double)(j - 1) / (double)steps) * (float) (Math.PI * 2) / 100.0);
-               float x1 = Mth.sin((double)dir1) * 105.0F;
-               float y1 = Mth.cos((double)dir1) * 105.0F * 0.5F;
+               float dir0 = (float)((currentPercentage + slicePercentage * j / steps) * (float) (Math.PI * 2) / 100.0);
+               float x0 = Mth.sin(dir0) * 105.0F;
+               float y0 = Mth.cos(dir0) * 105.0F * 0.5F;
+               float dir1 = (float)((currentPercentage + slicePercentage * (j - 1) / steps) * (float) (Math.PI * 2) / 100.0);
+               float x1 = Mth.sin(dir1) * 105.0F;
+               float y1 = Mth.cos(dir1) * 105.0F * 0.5F;
                if (!((y0 + y1) / 2.0F < 0.0F)) {
                   buffer.addVertex(pose, x0, y0, 0.0F).setColor(shadeColor);
                   buffer.addVertex(pose, x0, y0 + 10.0F, 0.0F).setColor(shadeColor);
@@ -56,7 +56,7 @@ public class GuiProfilerChartRenderer extends PictureInPictureRenderer<GuiProfil
 
    @Override
    protected float getTranslateY(final int height, final int guiScale) {
-      return (float)height / 2.0F;
+      return height / 2.0F;
    }
 
    @Override

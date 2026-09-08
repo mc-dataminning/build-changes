@@ -13,37 +13,26 @@ import org.jspecify.annotations.Nullable;
 
 public record RenderPassDescriptor(
    Supplier<String> label,
-   List<RenderPassDescriptor.Attachment<Optional<Vector4fc>>> colorAttachments,
-   @Nullable RenderPassDescriptor.Attachment<OptionalDouble> depthAttachment,
+   List<RenderPassDescriptor.@Nullable Attachment<Optional<Vector4fc>>> colorAttachments,
+   RenderPassDescriptor.@Nullable Attachment<OptionalDouble> depthAttachment,
    RenderPass.RenderArea renderArea
 ) {
-   public RenderPassDescriptor(
-      Supplier<String> label,
-      List<RenderPassDescriptor.Attachment<Optional<Vector4fc>>> colorAttachments,
-      @Nullable RenderPassDescriptor.Attachment<OptionalDouble> depthAttachment,
-      RenderPass.RenderArea renderArea
-   ) {
+   public RenderPassDescriptor {
       List<RenderPassDescriptor.Attachment<Optional<Vector4fc>>> var5 = ReferenceLists.unmodifiable(new ReferenceArrayList(colorAttachments));
-      this.label = label;
-      this.colorAttachments = var5;
-      this.depthAttachment = depthAttachment;
-      this.renderArea = renderArea;
    }
 
    public static RenderPassDescriptor.Builder builder(final Supplier<String> label) {
       return new RenderPassDescriptor.Builder(label);
    }
 
-   public static record Attachment<T>(GpuTextureView textureView, T clearValue) {
+   public record Attachment<T>(GpuTextureView textureView, T clearValue) {
    }
 
    public static class Builder {
       private final Supplier<String> label;
-      private final List<RenderPassDescriptor.Attachment<Optional<Vector4fc>>> colorAttachments = new ArrayList<>();
-      @Nullable
-      private RenderPassDescriptor.Attachment<OptionalDouble> depthAttachment;
-      @Nullable
-      private RenderPass.RenderArea renderArea;
+      private final List<RenderPassDescriptor.@Nullable Attachment<Optional<Vector4fc>>> colorAttachments = new ArrayList<>();
+      private RenderPassDescriptor.@Nullable Attachment<OptionalDouble> depthAttachment;
+      private RenderPass.@Nullable RenderArea renderArea;
 
       private Builder(final Supplier<String> label) {
          this.label = label;
@@ -85,8 +74,8 @@ public record RenderPassDescriptor(
       }
 
       private static RenderPass.RenderArea defaultRenderArea(
-         final List<RenderPassDescriptor.Attachment<Optional<Vector4fc>>> colorAttachments,
-         @Nullable final RenderPassDescriptor.Attachment<OptionalDouble> depthAttachment
+         final List<RenderPassDescriptor.@Nullable Attachment<Optional<Vector4fc>>> colorAttachments,
+         final RenderPassDescriptor.@Nullable Attachment<OptionalDouble> depthAttachment
       ) {
          int width = 0;
          int height = 0;

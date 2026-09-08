@@ -220,18 +220,18 @@ public class ItemStackComponentizationFix extends DataFix {
 
    private static Dynamic<?> fixBlockStateTag(final Dynamic<?> blockStateTag) {
       return (Dynamic<?>)DataFixUtils.orElse(blockStateTag.asMapOpt().result().map(entries -> entries.collect(Collectors.toMap(Pair::getFirst, entry -> {
-            String key = ((Dynamic)entry.getFirst()).asString("");
-            Dynamic<?> value = (Dynamic<?>)entry.getSecond();
-            if (BOOLEAN_BLOCK_STATE_PROPERTIES.contains(key)) {
-               Optional<Boolean> bool = value.asBoolean().result();
-               if (bool.isPresent()) {
-                  return value.createString(String.valueOf(bool.get()));
-               }
+         String key = ((Dynamic)entry.getFirst()).asString("");
+         Dynamic<?> value = (Dynamic<?>)entry.getSecond();
+         if (BOOLEAN_BLOCK_STATE_PROPERTIES.contains(key)) {
+            Optional<Boolean> bool = value.asBoolean().result();
+            if (bool.isPresent()) {
+               return value.createString(String.valueOf(bool.get()));
             }
+         }
 
-            Optional<Number> number = value.asNumber().result();
-            return number.isPresent() ? value.createString(number.get().toString()) : value;
-         }))).map(blockStateTag::createMap), blockStateTag);
+         Optional<Number> number = value.asNumber().result();
+         return number.isPresent() ? value.createString(number.get().toString()) : value;
+      }))).map(blockStateTag::createMap), blockStateTag);
    }
 
    private static Dynamic<?> fixDisplay(final ItemStackComponentizationFix.ItemStackData itemStack, Dynamic<?> display, final int hideFlags) {
@@ -555,23 +555,22 @@ public class ItemStackComponentizationFix extends DataFix {
       itemStack.setComponent("minecraft:written_book_content", component);
    }
 
-   @Nullable
-   private static Dynamic<?> fixBookPages(final ItemStackComponentizationFix.ItemStackData itemStack, final Dynamic<?> dynamic) {
+   private static @Nullable Dynamic<?> fixBookPages(final ItemStackComponentizationFix.ItemStackData itemStack, final Dynamic<?> dynamic) {
       List<String> pages = itemStack.removeTag("pages").asList(pagex -> pagex.asString(""));
       Map<String, String> filteredPages = itemStack.removeTag("filtered_pages").asMap(key -> key.asString("0"), pagex -> pagex.asString(""));
       if (pages.isEmpty()) {
          return null;
-      } else {
-         List<Dynamic<?>> fixedPages = new ArrayList<>(pages.size());
-
-         for (int i = 0; i < pages.size(); i++) {
-            String page = pages.get(i);
-            String filteredPage = filteredPages.get(String.valueOf(i));
-            fixedPages.add(createFilteredText(dynamic, page, Optional.ofNullable(filteredPage)));
-         }
-
-         return dynamic.createList(fixedPages.stream());
       }
+
+      List<Dynamic<?>> fixedPages = new ArrayList<>(pages.size());
+
+      for (int i = 0; i < pages.size(); i++) {
+         String page = pages.get(i);
+         String filteredPage = filteredPages.get(String.valueOf(i));
+         fixedPages.add(createFilteredText(dynamic, page, Optional.ofNullable(filteredPage)));
+      }
+
+      return dynamic.createList(fixedPages.stream());
    }
 
    private static Dynamic<?> createFilteredText(final Dynamic<?> dynamic, final String text, final Optional<String> filtered) {
@@ -654,57 +653,42 @@ public class ItemStackComponentizationFix extends DataFix {
       Optional<String> simpleName = dynamic.asString().result();
       if (simpleName.isPresent()) {
          return isValidPlayerName(simpleName.get()) ? dynamic.emptyMap().set("name", dynamic.createString(simpleName.get())) : dynamic.emptyMap();
-      } else {
-         String name = dynamic.get("Name").asString("");
-         Optional<? extends Dynamic<?>> id = dynamic.get("Id").result();
-         Dynamic<?> properties = fixProfileProperties(dynamic.get("Properties"));
-         Dynamic<?> profile = dynamic.emptyMap();
-         if (isValidPlayerName(name)) {
-            profile = profile.set("name", dynamic.createString(name));
-         }
-
-         if (id.isPresent()) {
-            profile = profile.set("id", id.get());
-         }
-
-         if (properties != null) {
-            profile = profile.set("properties", properties);
-         }
-
-         return profile;
       }
+
+      String name = dynamic.get("Name").asString("");
+      Optional<? extends Dynamic<?>> id = dynamic.get("Id").result();
+      Dynamic<?> properties = fixProfileProperties(dynamic.get("Properties"));
+      Dynamic<?> profile = dynamic.emptyMap();
+      if (isValidPlayerName(name)) {
+         profile = profile.set("name", dynamic.createString(name));
+      }
+
+      if (id.isPresent()) {
+         profile = profile.set("id", id.get());
+      }
+
+      if (properties != null) {
+         profile = profile.set("properties", properties);
+      }
+
+      return profile;
    }
 
    private static boolean isValidPlayerName(final String name) {
       return name.length() > 16 ? false : name.chars().filter(c -> c <= 32 || c >= 127).findAny().isEmpty();
    }
 
-   @Nullable
-   private static Dynamic<?> fixProfileProperties(final OptionalDynamic<?> dynamic) {
+   private static @Nullable Dynamic<?> fixProfileProperties(final OptionalDynamic<?> dynamic) {
       Map<String, List<Pair<String, Optional<String>>>> properties = dynamic.asMap(key -> key.asString(""), list -> list.asList(property -> {
-            String value = property.get("Value").asString("");
-            Optional<String> signature = property.get("Signature").asString().result();
-            return Pair.of(value, signature);
-         }));
-      return properties.isEmpty()
-         ? null
-         : dynamic.createList(
-            properties.entrySet()
-               .stream()
-               .flatMap(
-                  entry -> entry.getValue()
-                        .stream()
-                        .map(
-                           pair -> {
-                              Dynamic<?> property = dynamic.emptyMap()
-                                 .set("name", dynamic.createString(entry.getKey()))
-                                 .set("value", dynamic.createString((String)pair.getFirst()));
-                              Optional<String> signature = (Optional<String>)pair.getSecond();
-                              return signature.isPresent() ? property.set("signature", dynamic.createString(signature.get())) : property;
-                           }
-                        )
-               )
-         );
+         String value = property.get("Value").asString("");
+         Optional<String> signature = property.get("Signature").asString().result();
+         return Pair.of(value, signature);
+      }));
+      return properties.isEmpty() ? null : dynamic.createList(properties.entrySet().stream().flatMap(entry -> entry.getValue().stream().map(pair -> {
+         Dynamic<?> property = dynamic.emptyMap().set("name", dynamic.createString(entry.getKey())).set("value", dynamic.createString((String)pair.getFirst()));
+         Optional<String> signature = (Optional<String>)pair.getSecond();
+         return signature.isPresent() ? property.set("signature", dynamic.createString(signature.get())) : property;
+      })));
    }
 
    protected TypeRewriteRule makeRule() {

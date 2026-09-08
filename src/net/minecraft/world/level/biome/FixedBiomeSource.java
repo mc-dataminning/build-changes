@@ -42,9 +42,8 @@ public class FixedBiomeSource extends BiomeSource implements BiomeResolver {
       return this.biome;
    }
 
-   @Nullable
    @Override
-   public Pair<BlockPos, Holder<Biome>> findBiomeHorizontal(
+   public @Nullable Pair<BlockPos, Holder<Biome>> findBiomeHorizontal(
       final int originX,
       final int originY,
       final int originZ,
@@ -64,9 +63,8 @@ public class FixedBiomeSource extends BiomeSource implements BiomeResolver {
       }
    }
 
-   @Nullable
    @Override
-   public Pair<BlockPos, Holder<Biome>> findClosestBiome3d(
+   public @Nullable Pair<BlockPos, Holder<Biome>> findClosestBiome3d(
       final BlockPos origin,
       final int searchRadius,
       final int sampleResolutionHorizontal,

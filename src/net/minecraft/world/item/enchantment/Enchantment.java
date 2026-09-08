@@ -60,12 +60,12 @@ public record Enchantment(Component description, Enchantment.EnchantmentDefiniti
    public static final int MAX_LEVEL = 255;
    public static final Codec<Enchantment> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ComponentSerialization.CODEC.fieldOf("description").forGetter(Enchantment::description),
-               Enchantment.EnchantmentDefinition.CODEC.forGetter(Enchantment::definition),
-               RegistryCodecs.holderSet(Registries.ENCHANTMENT).optionalFieldOf("exclusive_set", HolderSet.empty()).forGetter(Enchantment::exclusiveSet),
-               EnchantmentEffectComponents.CODEC.optionalFieldOf("effects", DataComponentMap.EMPTY).forGetter(Enchantment::effects)
-            )
-            .apply(i, Enchantment::new)
+            ComponentSerialization.CODEC.fieldOf("description").forGetter(Enchantment::description),
+            Enchantment.EnchantmentDefinition.CODEC.forGetter(Enchantment::definition),
+            RegistryCodecs.holderSet(Registries.ENCHANTMENT).optionalFieldOf("exclusive_set", HolderSet.empty()).forGetter(Enchantment::exclusiveSet),
+            EnchantmentEffectComponents.CODEC.optionalFieldOf("effects", DataComponentMap.EMPTY).forGetter(Enchantment::effects)
+         )
+         .apply(i, Enchantment::new)
    );
    public static final Codec<Holder<Enchantment>> CODEC = RegistryCodecs.holder(Registries.ENCHANTMENT);
    public static final StreamCodec<RegistryFriendlyByteBuf, Holder<Enchantment>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.ENCHANTMENT);
@@ -653,13 +653,13 @@ public record Enchantment(Component description, Enchantment.EnchantmentDefiniti
       }
    }
 
-   public static record Cost(int base, int perLevelAboveFirst) {
+   public record Cost(int base, int perLevelAboveFirst) {
       public static final Codec<Enchantment.Cost> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Codec.INT.fieldOf("base").forGetter(Enchantment.Cost::base),
-                  Codec.INT.fieldOf("per_level_above_first").forGetter(Enchantment.Cost::perLevelAboveFirst)
-               )
-               .apply(i, Enchantment.Cost::new)
+               Codec.INT.fieldOf("base").forGetter(Enchantment.Cost::base),
+               Codec.INT.fieldOf("per_level_above_first").forGetter(Enchantment.Cost::perLevelAboveFirst)
+            )
+            .apply(i, Enchantment.Cost::new)
       );
 
       public int calculate(final int level) {
@@ -667,7 +667,7 @@ public record Enchantment(Component description, Enchantment.EnchantmentDefiniti
       }
    }
 
-   public static record EnchantmentDefinition(
+   public record EnchantmentDefinition(
       HolderSet<Item> supportedItems,
       Optional<HolderSet<Item>> primaryItems,
       int weight,
@@ -679,16 +679,16 @@ public record Enchantment(Component description, Enchantment.EnchantmentDefiniti
    ) {
       public static final MapCodec<Enchantment.EnchantmentDefinition> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  RegistryCodecs.holderSet(Registries.ITEM).fieldOf("supported_items").forGetter(Enchantment.EnchantmentDefinition::supportedItems),
-                  RegistryCodecs.holderSet(Registries.ITEM).optionalFieldOf("primary_items").forGetter(Enchantment.EnchantmentDefinition::primaryItems),
-                  ExtraCodecs.intRange(1, 1024).fieldOf("weight").forGetter(Enchantment.EnchantmentDefinition::weight),
-                  ExtraCodecs.intRange(1, 255).fieldOf("max_level").forGetter(Enchantment.EnchantmentDefinition::maxLevel),
-                  Enchantment.Cost.CODEC.fieldOf("min_cost").forGetter(Enchantment.EnchantmentDefinition::minCost),
-                  Enchantment.Cost.CODEC.fieldOf("max_cost").forGetter(Enchantment.EnchantmentDefinition::maxCost),
-                  ExtraCodecs.NON_NEGATIVE_INT.fieldOf("anvil_cost").forGetter(Enchantment.EnchantmentDefinition::anvilCost),
-                  EquipmentSlotGroup.CODEC.listOf().fieldOf("slots").forGetter(Enchantment.EnchantmentDefinition::slots)
-               )
-               .apply(i, Enchantment.EnchantmentDefinition::new)
+               RegistryCodecs.holderSet(Registries.ITEM).fieldOf("supported_items").forGetter(Enchantment.EnchantmentDefinition::supportedItems),
+               RegistryCodecs.holderSet(Registries.ITEM).optionalFieldOf("primary_items").forGetter(Enchantment.EnchantmentDefinition::primaryItems),
+               ExtraCodecs.intRange(1, 1024).fieldOf("weight").forGetter(Enchantment.EnchantmentDefinition::weight),
+               ExtraCodecs.intRange(1, 255).fieldOf("max_level").forGetter(Enchantment.EnchantmentDefinition::maxLevel),
+               Enchantment.Cost.CODEC.fieldOf("min_cost").forGetter(Enchantment.EnchantmentDefinition::minCost),
+               Enchantment.Cost.CODEC.fieldOf("max_cost").forGetter(Enchantment.EnchantmentDefinition::maxCost),
+               ExtraCodecs.NON_NEGATIVE_INT.fieldOf("anvil_cost").forGetter(Enchantment.EnchantmentDefinition::anvilCost),
+               EquipmentSlotGroup.CODEC.listOf().fieldOf("slots").forGetter(Enchantment.EnchantmentDefinition::slots)
+            )
+            .apply(i, Enchantment.EnchantmentDefinition::new)
       );
    }
 

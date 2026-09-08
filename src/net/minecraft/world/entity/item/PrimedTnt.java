@@ -54,8 +54,7 @@ public class PrimedTnt extends Entity implements TraceableEntity {
          return block.is(Blocks.NETHER_PORTAL) ? Optional.empty() : super.getBlockExplosionResistance(explosion, level, pos, block, fluid);
       }
    };
-   @Nullable
-   private EntityReference<LivingEntity> owner;
+   private @Nullable EntityReference<LivingEntity> owner;
    private boolean usedPortal;
    private float explosionPower = 4.0F;
 
@@ -64,7 +63,7 @@ public class PrimedTnt extends Entity implements TraceableEntity {
       this.blocksBuilding = true;
    }
 
-   public PrimedTnt(final Level level, final double x, final double y, final double z, @Nullable final LivingEntity owner) {
+   public PrimedTnt(final Level level, final double x, final double y, final double z, final @Nullable LivingEntity owner) {
       this(EntityTypes.TNT, level);
       this.setPos(x, y, z);
       double rot = level.getRandom().nextDouble() * (float) (Math.PI * 2);
@@ -103,7 +102,7 @@ public class PrimedTnt extends Entity implements TraceableEntity {
       this.applyGravity();
       this.move(MoverType.SELF, this.getDeltaMovement());
       this.applyEffectsFromBlocks();
-      this.setDeltaMovement(this.getDeltaMovement().scale((double)this.getAirDrag()));
+      this.setDeltaMovement(this.getDeltaMovement().scale(this.getAirDrag()));
       if (this.onGround()) {
          this.setDeltaMovement(this.getDeltaMovement().multiply(0.7, -0.5, 0.7));
       }
@@ -161,8 +160,7 @@ public class PrimedTnt extends Entity implements TraceableEntity {
       this.owner = EntityReference.read(input, "owner");
    }
 
-   @Nullable
-   public LivingEntity getOwner() {
+   public @Nullable LivingEntity getOwner() {
       return EntityReference.getLivingEntity(this.owner, this.level());
    }
 
@@ -198,9 +196,8 @@ public class PrimedTnt extends Entity implements TraceableEntity {
       this.usedPortal = usedPortal;
    }
 
-   @Nullable
    @Override
-   public Entity teleport(final TeleportTransition transition) {
+   public @Nullable Entity teleport(final TeleportTransition transition) {
       Entity newEntity = super.teleport(transition);
       if (newEntity instanceof PrimedTnt tnt) {
          tnt.setUsedPortal(true);

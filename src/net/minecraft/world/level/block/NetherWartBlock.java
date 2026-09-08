@@ -19,11 +19,11 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class NetherWartBlock extends VegetationBlock {
    public static final int MAX_AGE = 3;
    public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
-   private static final VoxelShape[] SHAPES = Block.boxes(3, age -> Block.column(16.0, 0.0, (double)(5 + age * 3)));
+   private static final VoxelShape[] SHAPES = Block.boxes(3, age -> Block.column(16.0, 0.0, 5 + age * 3));
 
    protected NetherWartBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(0)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
    }
 
    @Override
@@ -45,7 +45,7 @@ public class NetherWartBlock extends VegetationBlock {
    protected void randomTick(BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
       int age = state.getValue(AGE);
       if (age < 3 && random.nextInt(10) == 0) {
-         state = state.setValue(AGE, Integer.valueOf(age + 1));
+         state = state.setValue(AGE, age + 1);
          level.setBlock(pos, state, 2);
       }
    }

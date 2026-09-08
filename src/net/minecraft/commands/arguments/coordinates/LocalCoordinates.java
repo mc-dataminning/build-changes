@@ -17,14 +17,14 @@ public record LocalCoordinates(double left, double up, double forwards) implemen
    }
 
    public Vec3 apply(final Vec3 source, final Vec2 rotation) {
-      float yCos = Mth.cos((double)((rotation.y + 90.0F) * (float) (Math.PI / 180.0)));
-      float ySin = Mth.sin((double)((rotation.y + 90.0F) * (float) (Math.PI / 180.0)));
-      float xCos = Mth.cos((double)(-rotation.x * (float) (Math.PI / 180.0)));
-      float xSin = Mth.sin((double)(-rotation.x * (float) (Math.PI / 180.0)));
-      float xCosUp = Mth.cos((double)((-rotation.x + 90.0F) * (float) (Math.PI / 180.0)));
-      float xSinUp = Mth.sin((double)((-rotation.x + 90.0F) * (float) (Math.PI / 180.0)));
-      Vec3 forwards = new Vec3((double)(yCos * xCos), (double)xSin, (double)(ySin * xCos));
-      Vec3 up = new Vec3((double)(yCos * xCosUp), (double)xSinUp, (double)(ySin * xCosUp));
+      float yCos = Mth.cos((rotation.y + 90.0F) * (float) (Math.PI / 180.0));
+      float ySin = Mth.sin((rotation.y + 90.0F) * (float) (Math.PI / 180.0));
+      float xCos = Mth.cos(-rotation.x * (float) (Math.PI / 180.0));
+      float xSin = Mth.sin(-rotation.x * (float) (Math.PI / 180.0));
+      float xCosUp = Mth.cos((-rotation.x + 90.0F) * (float) (Math.PI / 180.0));
+      float xSinUp = Mth.sin((-rotation.x + 90.0F) * (float) (Math.PI / 180.0));
+      Vec3 forwards = new Vec3(yCos * xCos, xSin, ySin * xCos);
+      Vec3 up = new Vec3(yCos * xCosUp, xSinUp, ySin * xCosUp);
       Vec3 left = forwards.cross(up).scale(-1.0);
       return source.add(
          forwards.x * this.forwards + up.x * this.up + left.x * this.left,

@@ -18,8 +18,7 @@ public class TransmuteRecipeBuilder implements RecipeBuilder {
    private final Ingredient input;
    private final Ingredient material;
    private final RecipeUnlockAdvancementBuilder advancementBuilder = new RecipeUnlockAdvancementBuilder();
-   @Nullable
-   private String group;
+   private @Nullable String group;
    private MinMaxBounds.Ints materialCount = TransmuteRecipe.DEFAULT_MATERIAL_COUNT;
    private boolean addMaterialCountToOutput;
 
@@ -51,7 +50,7 @@ public class TransmuteRecipeBuilder implements RecipeBuilder {
       return this;
    }
 
-   public TransmuteRecipeBuilder group(@Nullable final String group) {
+   public TransmuteRecipeBuilder group(final @Nullable String group) {
       this.group = group;
       return this;
    }
@@ -66,9 +65,8 @@ public class TransmuteRecipeBuilder implements RecipeBuilder {
       return this;
    }
 
-   @Nullable
    @Override
-   public ResourceKey<Recipe<?>> defaultId() {
+   public @Nullable ResourceKey<Recipe<?>> defaultId() {
       return this.result
          .item()
          .map(item -> RecipeBuilder.getDefaultRecipeId(new ItemStackTemplate((Holder<Item>)item, this.result.count(), this.result.components())))

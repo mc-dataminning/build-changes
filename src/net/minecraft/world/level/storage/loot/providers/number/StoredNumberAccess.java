@@ -15,14 +15,13 @@ import org.jspecify.annotations.Nullable;
 public record StoredNumberAccess(Identifier storage, NbtPathArgument.NbtPath path) {
    public static final MapCodec<StoredNumberAccess> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Identifier.CODEC.fieldOf("storage").forGetter(StoredNumberAccess::storage),
-               NbtPathArgument.NbtPath.CODEC.fieldOf("path").forGetter(StoredNumberAccess::path)
-            )
-            .apply(i, StoredNumberAccess::new)
+            Identifier.CODEC.fieldOf("storage").forGetter(StoredNumberAccess::storage),
+            NbtPathArgument.NbtPath.CODEC.fieldOf("path").forGetter(StoredNumberAccess::path)
+         )
+         .apply(i, StoredNumberAccess::new)
    );
 
-   @Nullable
-   public Number getNumericTag(final LootContext context) {
+   public @Nullable Number getNumericTag(final LootContext context) {
       CompoundTag value = context.getLevel().getServer().getCommandStorage().get(this.storage);
 
       try {

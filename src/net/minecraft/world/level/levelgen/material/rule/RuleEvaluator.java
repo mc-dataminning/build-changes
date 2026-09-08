@@ -5,6 +5,5 @@ import org.jspecify.annotations.Nullable;
 
 @FunctionalInterface
 public interface RuleEvaluator {
-   @Nullable
-   BlockState tryApply(int blockX, int blockY, int blockZ);
+   @Nullable BlockState tryApply(int blockX, int blockY, int blockZ);
 }

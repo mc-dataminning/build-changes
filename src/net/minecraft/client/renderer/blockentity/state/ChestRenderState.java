@@ -9,7 +9,7 @@ public class ChestRenderState extends BlockEntityRenderState {
    public Direction facing = Direction.SOUTH;
    public ChestRenderState.ChestMaterialType material = ChestRenderState.ChestMaterialType.REGULAR;
 
-   public static enum ChestMaterialType {
+   public enum ChestMaterialType {
       ENDER_CHEST,
       CHRISTMAS,
       TRAPPED,

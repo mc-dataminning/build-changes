@@ -16,7 +16,7 @@ public record MoonBrightnessCheck(MinMaxBounds.Doubles range) implements SpawnCo
    public boolean test(final SpawnContext context) {
       MoonPhase moonPhase = context.environmentAttributes().getValue(EnvironmentAttributes.MOON_PHASE, Vec3.atCenterOf(context.pos()));
       float moonBrightness = DimensionType.MOON_BRIGHTNESS_PER_PHASE[moonPhase.index()];
-      return this.range.matches((double)moonBrightness);
+      return this.range.matches(moonBrightness);
    }
 
    @Override

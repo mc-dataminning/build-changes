@@ -65,8 +65,8 @@ public class ReportPlayerScreen extends Screen {
             Button.builder(
                   REPORT_SKIN,
                   var1x -> this.minecraft
-                        .gui
-                        .setScreen(new SkinReportScreen(this.lastScreen, this.context, this.player.getPlayerId(), this.player.getSkinGetter()))
+                     .gui
+                     .setScreen(new SkinReportScreen(this.lastScreen, this.context, this.player.getPlayerId(), this.player.getSkinGetter()))
                )
                .build()
          );
@@ -75,8 +75,8 @@ public class ReportPlayerScreen extends Screen {
             Button.builder(
                   REPORT_NAME,
                   b -> this.minecraft
-                        .gui
-                        .setScreen(new NameReportScreen(this.lastScreen, this.context, this.player.getPlayerId(), this.player.getPlayerName()))
+                     .gui
+                     .setScreen(new NameReportScreen(this.lastScreen, this.context, this.player.getPlayerId(), this.player.getPlayerName()))
                )
                .build()
          );

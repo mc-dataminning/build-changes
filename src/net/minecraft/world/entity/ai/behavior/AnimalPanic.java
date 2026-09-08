@@ -87,8 +87,7 @@ public class AnimalPanic<E extends PathfinderMob> extends Behavior<E> {
       }
    }
 
-   @Nullable
-   private Vec3 getPanicPos(final E body, final ServerLevel level) {
+   private @Nullable Vec3 getPanicPos(final E body, final ServerLevel level) {
       if (body.isOnFire()) {
          Optional<Vec3> nearestWater = this.lookForWater(level, body).map(Vec3::atBottomCenterOf);
          if (nearestWater.isPresent()) {
@@ -103,16 +102,16 @@ public class AnimalPanic<E extends PathfinderMob> extends Behavior<E> {
       BlockPos mobPosition = mob.blockPosition();
       if (!level.getBlockState(mobPosition).getCollisionShape(level, mobPosition).isEmpty()) {
          return Optional.empty();
-      } else {
-         OrderedBlockMatcher blockMatcher = level.findBlocksInBoxByManhattanDistance(mobPosition, 5, 1).filterState(AnimalPanic::isWater);
-         return Mth.ceil(mob.getBbWidth()) == 2
-            ? blockMatcher.findFirst(
-               (pos, var2) -> isWater(level.getBlockState(pos.south()))
-                     && isWater(level.getBlockState(pos.east()))
-                     && isWater(level.getBlockState(pos.south().east()))
-            )
-            : blockMatcher.findFirst();
       }
+
+      OrderedBlockMatcher blockMatcher = level.findBlocksInBoxByManhattanDistance(mobPosition, 5, 1).filterState(AnimalPanic::isWater);
+      return Mth.ceil(mob.getBbWidth()) == 2
+         ? blockMatcher.findFirst(
+            (pos, var2) -> isWater(level.getBlockState(pos.south()))
+               && isWater(level.getBlockState(pos.east()))
+               && isWater(level.getBlockState(pos.south().east()))
+         )
+         : blockMatcher.findFirst();
    }
 
    private static boolean isWater(final BlockState state) {

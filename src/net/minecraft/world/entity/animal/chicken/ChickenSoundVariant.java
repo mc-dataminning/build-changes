@@ -21,24 +21,22 @@ public record ChickenSoundVariant(ChickenSoundVariant.ChickenSoundSet adultSound
    private static Codec<ChickenSoundVariant> codec() {
       return RecordCodecBuilder.create(
          i -> i.group(
-                  ChickenSoundVariant.ChickenSoundSet.CODEC.fieldOf("adult_sounds").forGetter(ChickenSoundVariant::adultSounds),
-                  ChickenSoundVariant.ChickenSoundSet.CODEC.fieldOf("baby_sounds").forGetter(ChickenSoundVariant::babySounds)
-               )
-               .apply(i, ChickenSoundVariant::new)
+               ChickenSoundVariant.ChickenSoundSet.CODEC.fieldOf("adult_sounds").forGetter(ChickenSoundVariant::adultSounds),
+               ChickenSoundVariant.ChickenSoundSet.CODEC.fieldOf("baby_sounds").forGetter(ChickenSoundVariant::babySounds)
+            )
+            .apply(i, ChickenSoundVariant::new)
       );
    }
 
-   public static record ChickenSoundSet(
-      Holder<SoundEvent> ambientSound, Holder<SoundEvent> hurtSound, Holder<SoundEvent> deathSound, Holder<SoundEvent> stepSound
-   ) {
+   public record ChickenSoundSet(Holder<SoundEvent> ambientSound, Holder<SoundEvent> hurtSound, Holder<SoundEvent> deathSound, Holder<SoundEvent> stepSound) {
       private static final Codec<ChickenSoundVariant.ChickenSoundSet> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  SoundEvent.CODEC.fieldOf("ambient_sound").forGetter(ChickenSoundVariant.ChickenSoundSet::ambientSound),
-                  SoundEvent.CODEC.fieldOf("hurt_sound").forGetter(ChickenSoundVariant.ChickenSoundSet::hurtSound),
-                  SoundEvent.CODEC.fieldOf("death_sound").forGetter(ChickenSoundVariant.ChickenSoundSet::deathSound),
-                  SoundEvent.CODEC.fieldOf("step_sound").forGetter(ChickenSoundVariant.ChickenSoundSet::stepSound)
-               )
-               .apply(i, ChickenSoundVariant.ChickenSoundSet::new)
+               SoundEvent.CODEC.fieldOf("ambient_sound").forGetter(ChickenSoundVariant.ChickenSoundSet::ambientSound),
+               SoundEvent.CODEC.fieldOf("hurt_sound").forGetter(ChickenSoundVariant.ChickenSoundSet::hurtSound),
+               SoundEvent.CODEC.fieldOf("death_sound").forGetter(ChickenSoundVariant.ChickenSoundSet::deathSound),
+               SoundEvent.CODEC.fieldOf("step_sound").forGetter(ChickenSoundVariant.ChickenSoundSet::stepSound)
+            )
+            .apply(i, ChickenSoundVariant.ChickenSoundSet::new)
       );
    }
 }

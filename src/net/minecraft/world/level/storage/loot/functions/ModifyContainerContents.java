@@ -15,13 +15,13 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 public class ModifyContainerContents extends LootItemConditionalFunction {
    public static final MapCodec<ModifyContainerContents> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> commonFields(i)
-            .and(
-               i.group(
-                  ContainerComponentManipulators.CODEC.fieldOf("component").forGetter(f -> f.component),
-                  LootItemFunctions.CODEC.fieldOf("modifier").forGetter(f -> f.modifier)
-               )
+         .and(
+            i.group(
+               ContainerComponentManipulators.CODEC.fieldOf("component").forGetter(f -> f.component),
+               LootItemFunctions.CODEC.fieldOf("modifier").forGetter(f -> f.modifier)
             )
-            .apply(i, ModifyContainerContents::new)
+         )
+         .apply(i, ModifyContainerContents::new)
    );
    private final ContainerComponentManipulator<?> component;
    private final Holder<LootItemFunction> modifier;
@@ -43,10 +43,10 @@ public class ModifyContainerContents extends LootItemConditionalFunction {
    public ItemStack run(final ItemStack itemStack, final LootContext context) {
       if (itemStack.isEmpty()) {
          return itemStack;
-      } else {
-         this.component.modifyItems(itemStack, c -> this.modifier.value().apply(c, context));
-         return itemStack;
       }
+
+      this.component.modifyItems(itemStack, c -> this.modifier.value().apply(c, context));
+      return itemStack;
    }
 
    @Override

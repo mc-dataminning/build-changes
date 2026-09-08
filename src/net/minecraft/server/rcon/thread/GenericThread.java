@@ -12,8 +12,7 @@ public abstract class GenericThread implements Runnable {
    private static final int MAX_STOP_WAIT = 5;
    protected volatile boolean running;
    protected final String name;
-   @Nullable
-   protected Thread thread;
+   protected @Nullable Thread thread;
 
    protected GenericThread(final String name) {
       this.name = name;
@@ -22,14 +21,14 @@ public abstract class GenericThread implements Runnable {
    public synchronized boolean start() {
       if (this.running) {
          return true;
-      } else {
-         this.running = true;
-         this.thread = new Thread(this, this.name + " #" + UNIQUE_THREAD_ID.incrementAndGet());
-         this.thread.setUncaughtExceptionHandler(new DefaultUncaughtExceptionHandlerWithName(LOGGER));
-         this.thread.start();
-         LOGGER.info("Thread {} started", this.name);
-         return true;
       }
+
+      this.running = true;
+      this.thread = new Thread(this, this.name + " #" + UNIQUE_THREAD_ID.incrementAndGet());
+      this.thread.setUncaughtExceptionHandler(new DefaultUncaughtExceptionHandlerWithName(LOGGER));
+      this.thread.start();
+      LOGGER.info("Thread {} started", this.name);
+      return true;
    }
 
    public synchronized void stop() {

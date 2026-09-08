@@ -41,15 +41,14 @@ public class SnbtOperations {
             }
          }
 
-         @Nullable
-         private static <T> Boolean convert(final DynamicOps<T> ops, final T arg) {
+         private static <T> @Nullable Boolean convert(final DynamicOps<T> ops, final T arg) {
             Optional<Boolean> asBoolean = ops.getBooleanValue(arg).result();
             if (asBoolean.isPresent()) {
                return asBoolean.get();
-            } else {
-               Optional<Number> asNumber = ops.getNumberValue(arg).result();
-               return asNumber.isPresent() ? asNumber.get().doubleValue() != 0.0 : null;
             }
+
+            Optional<Number> asNumber = ops.getNumberValue(arg).result();
+            return asNumber.isPresent() ? asNumber.get().doubleValue() != 0.0 : null;
          }
       }, new SnbtOperations.BuiltinKey("uuid", 1), new SnbtOperations.BuiltinOperation() {
          @Override
@@ -58,17 +57,17 @@ public class SnbtOperations {
             if (arg.isEmpty()) {
                state.errorCollector().store(state.mark(), SnbtOperations.ERROR_EXPECTED_STRING_UUID);
                return null;
-            } else {
-               UUID uuid;
-               try {
-                  uuid = UUID.fromString(arg.get());
-               } catch (IllegalArgumentException var7) {
-                  state.errorCollector().store(state.mark(), SnbtOperations.ERROR_EXPECTED_STRING_UUID);
-                  return null;
-               }
-
-               return (T)ops.createIntList(IntStream.of(UUIDUtil.uuidToIntArray(uuid)));
             }
+
+            UUID uuid;
+            try {
+               uuid = UUID.fromString(arg.get());
+            } catch (IllegalArgumentException e) {
+               state.errorCollector().store(state.mark(), SnbtOperations.ERROR_EXPECTED_STRING_UUID);
+               return null;
+            }
+
+            return (T)ops.createIntList(IntStream.of(UUIDUtil.uuidToIntArray(uuid)));
          }
       }
    );
@@ -84,7 +83,7 @@ public class SnbtOperations {
       }
    };
 
-   public static record BuiltinKey(String id, int argCount) {
+   public record BuiltinKey(String id, int argCount) {
       @Override
       public String toString() {
          return this.id + "/" + this.argCount;
@@ -92,7 +91,6 @@ public class SnbtOperations {
    }
 
    public interface BuiltinOperation {
-      @Nullable
-      <T> T run(DynamicOps<T> ops, List<T> arguments, ParseState<StringReader> state);
+      <T> @Nullable T run(DynamicOps<T> ops, List<T> arguments, ParseState<StringReader> state);
    }
 }

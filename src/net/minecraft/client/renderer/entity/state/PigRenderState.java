@@ -6,6 +6,5 @@ import org.jspecify.annotations.Nullable;
 
 public class PigRenderState extends LivingEntityRenderState {
    public ItemStack saddle = ItemStack.EMPTY;
-   @Nullable
-   public PigVariant variant;
+   public @Nullable PigVariant variant;
 }

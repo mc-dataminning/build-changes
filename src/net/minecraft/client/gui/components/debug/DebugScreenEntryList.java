@@ -32,8 +32,7 @@ public class DebugScreenEntryList {
    private final Map<Identifier, DebugScreenEntryStatus> allStatuses = new HashMap<>();
    private final List<Identifier> currentlyEnabled = new ArrayList<>();
    private boolean isOverlayVisible = false;
-   @Nullable
-   private DebugScreenProfile profile;
+   private @Nullable DebugScreenProfile profile;
    private final File debugProfileFile;
    private long currentlyEnabledVersion;
    private final Codec<DebugScreenEntryList.SerializedOptions> codec;
@@ -64,8 +63,8 @@ public class DebugScreenEntryList {
             this.resetStatuses(serializedOptions.custom().orElse(Map.of()));
             this.profile = null;
          }
-      } catch (JsonSyntaxException | IOException var3) {
-         LOGGER.error("Couldn't read debug profile file {}, resetting to default", this.debugProfileFile, var3);
+      } catch (IOException | JsonSyntaxException e) {
+         LOGGER.error("Couldn't read debug profile file {}, resetting to default", this.debugProfileFile, e);
          this.resetToProfile(DebugScreenProfile.DEFAULT);
          this.save();
       }
@@ -106,10 +105,6 @@ public class DebugScreenEntryList {
    public boolean toggleStatus(final Identifier location) {
       DebugScreenEntryStatus status = this.allStatuses.get(location);
       switch (status) {
-         case null:
-         default:
-            this.setStatus(location, DebugScreenEntryStatus.ALWAYS_ON);
-            return true;
          case ALWAYS_ON:
             this.setStatus(location, DebugScreenEntryStatus.NEVER);
             return false;
@@ -128,6 +123,10 @@ public class DebugScreenEntryList {
                this.setStatus(location, DebugScreenEntryStatus.ALWAYS_ON);
             }
 
+            return true;
+         case null:
+         default:
+            this.setStatus(location, DebugScreenEntryStatus.ALWAYS_ON);
             return true;
       }
    }
@@ -183,21 +182,21 @@ public class DebugScreenEntryList {
          FileUtils.writeStringToFile(
             this.debugProfileFile, ((JsonElement)this.codec.encodeStart(JsonOps.INSTANCE, serializedOptions).getOrThrow()).toString(), StandardCharsets.UTF_8
          );
-      } catch (IOException var3) {
-         LOGGER.error("Failed to save debug profile file {}", this.debugProfileFile, var3);
+      } catch (IOException e) {
+         LOGGER.error("Failed to save debug profile file {}", this.debugProfileFile, e);
       }
    }
 
-   private static record SerializedOptions(Optional<DebugScreenProfile> profile, Optional<Map<Identifier, DebugScreenEntryStatus>> custom) {
+   private record SerializedOptions(Optional<DebugScreenProfile> profile, Optional<Map<Identifier, DebugScreenEntryStatus>> custom) {
       private static final Codec<Map<Identifier, DebugScreenEntryStatus>> CUSTOM_ENTRIES_CODEC = Codec.unboundedMap(
          Identifier.CODEC, DebugScreenEntryStatus.CODEC
       );
       public static final Codec<DebugScreenEntryList.SerializedOptions> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  DebugScreenProfile.CODEC.optionalFieldOf("profile").forGetter(DebugScreenEntryList.SerializedOptions::profile),
-                  CUSTOM_ENTRIES_CODEC.optionalFieldOf("custom").forGetter(DebugScreenEntryList.SerializedOptions::custom)
-               )
-               .apply(i, DebugScreenEntryList.SerializedOptions::new)
+               DebugScreenProfile.CODEC.optionalFieldOf("profile").forGetter(DebugScreenEntryList.SerializedOptions::profile),
+               CUSTOM_ENTRIES_CODEC.optionalFieldOf("custom").forGetter(DebugScreenEntryList.SerializedOptions::custom)
+            )
+            .apply(i, DebugScreenEntryList.SerializedOptions::new)
       );
    }
 }

@@ -13,10 +13,10 @@ public record FluidModel(
    ChunkSectionLayer layer,
    Material.Baked stillMaterial,
    Material.Baked flowingMaterial,
-   @Nullable Material.Baked overlayMaterial,
+   Material.@Nullable Baked overlayMaterial,
    @Nullable BlockTintSource tintSource
 ) {
-   public static record Unbaked(Material stillMaterial, Material flowingMaterial, @Nullable Material overlayMaterial, @Nullable BlockTintSource tintSource) {
+   public record Unbaked(Material stillMaterial, Material flowingMaterial, @Nullable Material overlayMaterial, @Nullable BlockTintSource tintSource) {
       public FluidModel bake(final MaterialBaker materials, final ModelDebugName modelName) {
          Material.Baked stillMaterial = this.getAndValidateMaterial(this.stillMaterial, materials, "still", modelName);
          Material.Baked flowingMaterial = this.getAndValidateMaterial(this.flowingMaterial, materials, "flowing", modelName);

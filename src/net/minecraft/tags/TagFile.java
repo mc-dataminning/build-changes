@@ -7,8 +7,8 @@ import java.util.List;
 public record TagFile(List<TagEntry> entries, boolean replace) {
    public static final Codec<TagFile> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               TagEntry.CODEC.listOf().fieldOf("values").forGetter(TagFile::entries), Codec.BOOL.optionalFieldOf("replace", false).forGetter(TagFile::replace)
-            )
-            .apply(i, TagFile::new)
+            TagEntry.CODEC.listOf().fieldOf("values").forGetter(TagFile::entries), Codec.BOOL.optionalFieldOf("replace", false).forGetter(TagFile::replace)
+         )
+         .apply(i, TagFile::new)
    );
 }

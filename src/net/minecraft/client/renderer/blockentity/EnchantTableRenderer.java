@@ -36,12 +36,12 @@ public class EnchantTableRenderer implements BlockEntityRenderer<EnchantingTable
       final EnchantTableRenderState state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
       state.flip = Mth.lerp(partialTicks, blockEntity.oFlip, blockEntity.flip);
       state.open = Mth.lerp(partialTicks, blockEntity.oOpen, blockEntity.open);
-      state.time = (float)blockEntity.time + partialTicks;
+      state.time = blockEntity.time + partialTicks;
       float or = blockEntity.rot - blockEntity.oRot;
 
       while (or >= (float) Math.PI) {
@@ -60,7 +60,7 @@ public class EnchantTableRenderer implements BlockEntityRenderer<EnchantingTable
    ) {
       poseStack.pushPose();
       poseStack.translate(0.5F, 0.75F, 0.5F);
-      poseStack.translate(0.0F, 0.1F + Mth.sin((double)(state.time * 0.1F)) * 0.01F, 0.0F);
+      poseStack.translate(0.0F, 0.1F + Mth.sin(state.time * 0.1F) * 0.01F, 0.0F);
       float yRot = state.yRot;
       poseStack.rotate(Axis.YP, -yRot);
       poseStack.rotateDegrees(Axis.ZP, 80.0F);

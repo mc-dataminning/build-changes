@@ -2,7 +2,6 @@ package net.minecraft.world.level.levelgen.material;
 
 import java.util.IdentityHashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 import java.util.function.DoubleSupplier;
 import java.util.function.Function;
@@ -35,11 +34,9 @@ public final class MaterialRuleContext {
    private final DensitySamplerSet densitySamplers;
    private final Function<BlockPos, Holder<Biome>> biomeGetter;
    private final WorldGenerationContext context;
-   @Nullable
-   private final Set<Holder<Biome>> possibleBiomes;
+   private final @Nullable Set<Holder<Biome>> possibleBiomes;
    private final DensityVolume preliminarySurfaceVolume;
-   @Nullable
-   private DensityBuffer preliminarySurfaceBuffer;
+   private @Nullable DensityBuffer preliminarySurfaceBuffer;
    private final Map<ResourceKey<NormalNoise>, DoubleSupplier> noiseSamplers2d = new IdentityHashMap<>();
    private final Map<ResourceKey<NormalNoise>, DoubleSupplier> noiseSamplers3d = new IdentityHashMap<>();
    private long lastUpdateXZ = -9223372036854775807L;
@@ -54,8 +51,7 @@ public final class MaterialRuleContext {
    private int minSurfaceLevel;
    private long lastUpdateY = -9223372036854775807L;
    private final BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-   @Nullable
-   private Holder<Biome> biome;
+   private @Nullable Holder<Biome> biome;
    private int blockY;
    private int waterHeight;
    private int stoneDepthBelow;
@@ -68,7 +64,7 @@ public final class MaterialRuleContext {
       final DensitySamplerSet densitySamplers,
       final Function<BlockPos, Holder<Biome>> biomeGetter,
       final WorldGenerationContext context,
-      @Nullable final Set<Holder<Biome>> possibleBiomes
+      final @Nullable Set<Holder<Biome>> possibleBiomes
    ) {
       this.system = system;
       this.randomState = randomState;
@@ -157,14 +153,13 @@ public final class MaterialRuleContext {
          private double lastNoise;
 
          {
-            Objects.requireNonNull(MaterialRuleContext.this);
             this.lastUpdateXZ = MaterialRuleContext.this.lastUpdateXZ - 1L;
          }
 
          @Override
          public double getAsDouble() {
             if (this.lastUpdateXZ != MaterialRuleContext.this.lastUpdateXZ) {
-               this.lastNoise = (double)noise.get((double)MaterialRuleContext.this.blockX, 0.0, (double)MaterialRuleContext.this.blockZ);
+               this.lastNoise = noise.get(MaterialRuleContext.this.blockX, 0.0, MaterialRuleContext.this.blockZ);
                this.lastUpdateXZ = MaterialRuleContext.this.lastUpdateXZ;
             }
 
@@ -180,16 +175,13 @@ public final class MaterialRuleContext {
          private double lastNoise;
 
          {
-            Objects.requireNonNull(MaterialRuleContext.this);
             this.lastUpdateY = MaterialRuleContext.this.lastUpdateY - 1L;
          }
 
          @Override
          public double getAsDouble() {
             if (this.lastUpdateY != MaterialRuleContext.this.lastUpdateY) {
-               this.lastNoise = (double)noise.get(
-                  (double)MaterialRuleContext.this.blockX, (double)MaterialRuleContext.this.blockY, (double)MaterialRuleContext.this.blockZ
-               );
+               this.lastNoise = noise.get(MaterialRuleContext.this.blockX, MaterialRuleContext.this.blockY, MaterialRuleContext.this.blockZ);
                this.lastUpdateY = MaterialRuleContext.this.lastUpdateY;
             }
 
@@ -216,8 +208,7 @@ public final class MaterialRuleContext {
       }
    }
 
-   @Nullable
-   public Set<Holder<Biome>> possibleBiomes() {
+   public @Nullable Set<Holder<Biome>> possibleBiomes() {
       return this.possibleBiomes;
    }
 
@@ -272,8 +263,7 @@ public final class MaterialRuleContext {
    public abstract static class LazyXZCondition implements ConditionEvaluator {
       protected final MaterialRuleContext context;
       private long lastUpdate;
-      @Nullable
-      private Boolean result;
+      private @Nullable Boolean result;
 
       protected LazyXZCondition(final MaterialRuleContext context) {
          this.context = context;
@@ -302,8 +292,7 @@ public final class MaterialRuleContext {
    public abstract static class LazyYCondition implements ConditionEvaluator {
       protected final MaterialRuleContext context;
       private long lastUpdate;
-      @Nullable
-      private Boolean result;
+      private @Nullable Boolean result;
 
       protected LazyYCondition(final MaterialRuleContext context) {
          this.context = context;

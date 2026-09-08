@@ -11,7 +11,7 @@ public interface InterpolationTracker {
 
    void clear();
 
-   public static record NoOpInterpolationTracker() implements InterpolationTracker {
+   record NoOpInterpolationTracker() implements InterpolationTracker {
       @Override
       public void updateTracking(final Vec3 trackingPos) {
       }

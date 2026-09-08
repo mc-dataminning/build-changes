@@ -10,8 +10,7 @@ public abstract class AggregatedTelemetryEvent {
    private static final int SAMPLES_PER_EVENT = 10;
    private int sampleCount;
    private boolean ticking = false;
-   @Nullable
-   private Instant lastSampleTime;
+   private @Nullable Instant lastSampleTime;
 
    public void start() {
       this.ticking = true;

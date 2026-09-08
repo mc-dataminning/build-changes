@@ -6,7 +6,6 @@ import com.ibm.icu.text.Bidi;
 import com.mojang.blaze3d.font.GlyphInfo;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.client.StringSplitter;
 import net.minecraft.client.gui.font.EmptyArea;
 import net.minecraft.client.gui.font.TextRenderable;
@@ -56,7 +55,7 @@ public class Font {
    }
 
    public Font.PreparedText prepare8xTextOutline(final FormattedCharSequence str, final float x, final float y, final int outlineColor) {
-      Font.PreparedTextBuilder outlineOutput = new Font.PreparedTextBuilder(this, 0.0F, 0.0F, outlineColor, false, false);
+      Font.PreparedTextBuilder outlineOutput = new Font.PreparedTextBuilder(0.0F, 0.0F, outlineColor, false, false);
 
       for (int xo = -1; xo <= 1; xo++) {
          for (int yo = -1; yo <= 1; yo++) {
@@ -67,8 +66,8 @@ public class Font {
                str.accept((position, style, codepoint) -> {
                   boolean bold = style.isBold();
                   BakedGlyph glyph = this.getGlyph(codepoint, style);
-                  outlineOutput.x = startX[0] + (float)finalXo * glyph.info().getShadowOffset();
-                  outlineOutput.y = y + (float)finalYo * glyph.info().getShadowOffset();
+                  outlineOutput.x = startX[0] + finalXo * glyph.info().getShadowOffset();
+                  outlineOutput.y = y + finalYo * glyph.info().getShadowOffset();
                   startX[0] += glyph.info().getAdvance(bold);
                   return outlineOutput.accept(position, style.withColor(outlineColor), glyph);
                });
@@ -100,7 +99,7 @@ public class Font {
          text = this.bidirectionalShaping(text);
       }
 
-      Font.PreparedTextBuilder output = new Font.PreparedTextBuilder(this, x, y, originalColor, backgroundColor, drawShadow, false);
+      Font.PreparedTextBuilder output = new Font.PreparedTextBuilder(x, y, originalColor, backgroundColor, drawShadow, false);
       StringDecomposer.iterateFormatted(text, Style.EMPTY, output);
       return output;
    }
@@ -114,7 +113,7 @@ public class Font {
       final boolean includeEmpty,
       final int backgroundColor
    ) {
-      Font.PreparedTextBuilder builder = new Font.PreparedTextBuilder(this, x, y, originalColor, backgroundColor, drawShadow, includeEmpty);
+      Font.PreparedTextBuilder builder = new Font.PreparedTextBuilder(x, y, originalColor, backgroundColor, drawShadow, includeEmpty);
       text.accept(builder);
       return builder;
    }
@@ -163,7 +162,7 @@ public class Font {
       return this.splitter;
    }
 
-   public static enum DisplayMode {
+   public enum DisplayMode {
       NORMAL,
       SEE_THROUGH,
       POLYGON_OFFSET;
@@ -188,8 +187,7 @@ public class Font {
    public interface PreparedText {
       void visit(Font.GlyphVisitor visitor);
 
-      @Nullable
-      ScreenRectangle bounds();
+      @Nullable ScreenRectangle bounds();
    }
 
    private class PreparedTextBuilder implements Font.PreparedText, FormattedCharSink {
@@ -199,39 +197,23 @@ public class Font {
       private final boolean includeEmpty;
       private float x;
       private float y;
-      private float left;
-      private float top;
-      private float right;
-      private float bottom;
-      private float backgroundLeft;
-      private float backgroundTop;
-      private float backgroundRight;
-      private float backgroundBottom;
-      private final List<TextRenderable.Styled> glyphs;
-      @Nullable
-      private List<TextRenderable> effects;
-      @Nullable
-      private List<EmptyArea> emptyAreas;
+      private float left = Float.MAX_VALUE;
+      private float top = Float.MAX_VALUE;
+      private float right = -Float.MAX_VALUE;
+      private float bottom = -Float.MAX_VALUE;
+      private float backgroundLeft = Float.MAX_VALUE;
+      private float backgroundTop = Float.MAX_VALUE;
+      private float backgroundRight = -Float.MAX_VALUE;
+      private float backgroundBottom = -Float.MAX_VALUE;
+      private final List<TextRenderable.Styled> glyphs = new ArrayList<>();
+      private @Nullable List<TextRenderable> effects;
+      private @Nullable List<EmptyArea> emptyAreas;
 
-      public PreparedTextBuilder(final Font this$0, final float x, final float y, final int color, final boolean drawShadow, final boolean includeEmpty) {
-         this(this$0x, x, y, color, 0, drawShadow, includeEmpty);
+      public PreparedTextBuilder(final float x, final float y, final int color, final boolean drawShadow, final boolean includeEmpty) {
+         this(x, y, color, 0, drawShadow, includeEmpty);
       }
 
-      public PreparedTextBuilder(
-         final Font this$0, final float x, final float y, final int color, final int backgroundColor, final boolean drawShadow, final boolean includeEmpty
-      ) {
-         Objects.requireNonNull(this$0x);
-         this.this$0 = this$0x;
-         super();
-         this.left = Float.MAX_VALUE;
-         this.top = Float.MAX_VALUE;
-         this.right = -Float.MAX_VALUE;
-         this.bottom = -Float.MAX_VALUE;
-         this.backgroundLeft = Float.MAX_VALUE;
-         this.backgroundTop = Float.MAX_VALUE;
-         this.backgroundRight = -Float.MAX_VALUE;
-         this.backgroundBottom = -Float.MAX_VALUE;
-         this.glyphs = new ArrayList<>();
+      public PreparedTextBuilder(final float x, final float y, final int color, final int backgroundColor, final boolean drawShadow, final boolean includeEmpty) {
          this.x = x;
          this.y = y;
          this.drawShadow = drawShadow;
@@ -282,7 +264,7 @@ public class Font {
 
       @Override
       public boolean accept(final int position, final Style style, final int c) {
-         BakedGlyph glyph = this.this$0.getGlyph(c, style);
+         BakedGlyph glyph = Font.this.getGlyph(c, style);
          return this.accept(position, style, glyph);
       }
 
@@ -306,8 +288,7 @@ public class Font {
          this.markBackground(this.x, this.y, advance);
          if (style.isStrikethrough()) {
             this.addEffect(
-               this.this$0
-                  .provider
+               Font.this.provider
                   .effect()
                   .createEffect(effectX0, this.y + 4.5F - 1.0F, this.x + advance, this.y + 4.5F, 0.01F, textColor, shadowColor, shadowOffset)
             );
@@ -315,8 +296,7 @@ public class Font {
 
          if (style.isUnderlined()) {
             this.addEffect(
-               this.this$0
-                  .provider
+               Font.this.provider
                   .effect()
                   .createEffect(effectX0, this.y + 9.0F - 1.0F, this.x + advance, this.y + 9.0F, 0.01F, textColor, shadowColor, shadowOffset)
             );
@@ -330,8 +310,7 @@ public class Font {
       public void visit(final Font.GlyphVisitor visitor) {
          if (ARGB.alpha(this.backgroundColor) != 0) {
             visitor.acceptEffect(
-               this.this$0
-                  .provider
+               Font.this.provider
                   .effect()
                   .createEffect(this.backgroundLeft, this.backgroundTop, this.backgroundRight, this.backgroundBottom, -0.01F, this.backgroundColor, 0, 0.0F)
             );
@@ -358,7 +337,7 @@ public class Font {
          this.effects = null;
       }
 
-      private int getTextColor(@Nullable final TextColor textColor) {
+      private int getTextColor(final @Nullable TextColor textColor) {
          if (textColor != null) {
             int alpha = ARGB.alpha(this.color);
             int rgb = textColor.getValue();
@@ -379,9 +358,8 @@ public class Font {
          }
       }
 
-      @Nullable
       @Override
-      public ScreenRectangle bounds() {
+      public @Nullable ScreenRectangle bounds() {
          if (!(this.left >= this.right) && !(this.top >= this.bottom)) {
             int left = Mth.floor(this.left);
             int top = Mth.floor(this.top);

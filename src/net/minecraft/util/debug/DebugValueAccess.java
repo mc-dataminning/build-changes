@@ -9,23 +9,20 @@ import org.jspecify.annotations.Nullable;
 public interface DebugValueAccess {
    <T> void forEachChunk(DebugSubscription<T> subscription, BiConsumer<ChunkPos, T> consumer);
 
-   @Nullable
-   <T> T getChunkValue(DebugSubscription<T> subscription, ChunkPos chunkPos);
+   <T> @Nullable T getChunkValue(DebugSubscription<T> subscription, ChunkPos chunkPos);
 
    <T> void forEachBlock(DebugSubscription<T> subscription, BiConsumer<BlockPos, T> consumer);
 
-   @Nullable
-   <T> T getBlockValue(DebugSubscription<T> subscription, BlockPos blockPos);
+   <T> @Nullable T getBlockValue(DebugSubscription<T> subscription, BlockPos blockPos);
 
    <T> void forEachEntity(DebugSubscription<T> subscription, BiConsumer<Entity, T> consumer);
 
-   @Nullable
-   <T> T getEntityValue(DebugSubscription<T> subscription, Entity entity);
+   <T> @Nullable T getEntityValue(DebugSubscription<T> subscription, Entity entity);
 
    <T> void forEachEvent(DebugSubscription<T> subscription, DebugValueAccess.EventVisitor<T> visitor);
 
    @FunctionalInterface
-   public interface EventVisitor<T> {
+   interface EventVisitor<T> {
       void accept(T value, int remainingTicks, int totalLifetime);
    }
 }

@@ -7,8 +7,7 @@ import org.jspecify.annotations.Nullable;
 
 public class LayeringTransform {
    private final String name;
-   @Nullable
-   private final Consumer<Matrix4f> modifier;
+   private final @Nullable Consumer<Matrix4f> modifier;
    public static final LayeringTransform NO_LAYERING = new LayeringTransform("no_layering", null);
    public static final LayeringTransform VIEW_OFFSET_Z_LAYERING = new LayeringTransform(
       "view_offset_z_layering", modelViewMatrix -> RenderSystem.getProjectionType().applyLayeringTransform(modelViewMatrix, 1.0F)
@@ -17,7 +16,7 @@ public class LayeringTransform {
       "view_offset_z_layering_forward", modelViewMatrix -> RenderSystem.getProjectionType().applyLayeringTransform(modelViewMatrix, -1.0F)
    );
 
-   public LayeringTransform(final String name, @Nullable final Consumer<Matrix4f> modifier) {
+   public LayeringTransform(final String name, final @Nullable Consumer<Matrix4f> modifier) {
       this.name = name;
       this.modifier = modifier;
    }
@@ -27,8 +26,7 @@ public class LayeringTransform {
       return "LayeringTransform[" + this.name + "]";
    }
 
-   @Nullable
-   public Consumer<Matrix4f> getModifier() {
+   public @Nullable Consumer<Matrix4f> getModifier() {
       return this.modifier;
    }
 }

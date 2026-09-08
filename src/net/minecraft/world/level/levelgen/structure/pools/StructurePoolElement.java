@@ -31,8 +31,7 @@ public abstract class StructurePoolElement {
       .byNameCodec()
       .dispatch("element_type", StructurePoolElement::getType, StructurePoolElementType::codec);
    private static final Holder<StructureProcessorList> EMPTY = Holder.direct(new StructureProcessorList(List.of()));
-   @Nullable
-   private volatile StructureTemplatePool.Projection projection;
+   private volatile StructureTemplatePool.@Nullable Projection projection;
 
    protected static <E extends StructurePoolElement> RecordCodecBuilder<E, StructureTemplatePool.Projection> projectionCodec() {
       return StructureTemplatePool.Projection.CODEC.fieldOf("projection").forGetter(StructurePoolElement::getProjection);

@@ -22,17 +22,17 @@ public class EquipmentDispenseItemBehavior extends DefaultDispenseItemBehavior {
       List<LivingEntity> entities = source.level().getEntitiesOfClass(LivingEntity.class, new AABB(pos), entity -> entity.canEquipWithDispenser(dispensed));
       if (entities.isEmpty()) {
          return false;
-      } else {
-         LivingEntity target = entities.getFirst();
-         EquipmentSlot slot = target.getEquipmentSlotForItem(dispensed);
-         ItemStack equip = dispensed.split(1);
-         target.setItemSlot(slot, equip);
-         if (target instanceof Mob targetMob) {
-            targetMob.setGuaranteedDrop(slot);
-            targetMob.setPersistenceRequired();
-         }
-
-         return true;
       }
+
+      LivingEntity target = entities.getFirst();
+      EquipmentSlot slot = target.getEquipmentSlotForItem(dispensed);
+      ItemStack equip = dispensed.split(1);
+      target.setItemSlot(slot, equip);
+      if (target instanceof Mob targetMob) {
+         targetMob.setGuaranteedDrop(slot);
+         targetMob.setPersistenceRequired();
+      }
+
+      return true;
    }
 }

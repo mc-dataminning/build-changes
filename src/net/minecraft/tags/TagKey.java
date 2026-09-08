@@ -15,9 +15,7 @@ public record TagKey<T>(ResourceKey<? extends Registry<T>> registry, Identifier 
    private static final Interner<TagKey<?>> VALUES = Interners.newWeakInterner();
 
    @Deprecated
-   public TagKey(ResourceKey<? extends Registry<T>> registry, Identifier location) {
-      this.registry = registry;
-      this.location = location;
+   public TagKey {
    }
 
    public static <T> Codec<TagKey<T>> codec(final ResourceKey<? extends Registry<T>> registryName) {

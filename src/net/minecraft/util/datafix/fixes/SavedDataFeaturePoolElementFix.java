@@ -52,12 +52,12 @@ public class SavedDataFeaturePoolElementFix extends DataFix {
             String id = child.get("id").asString("");
             if (!PIECE_TYPE.contains(id)) {
                return child;
-            } else {
-               OptionalDynamic<?> poolElement = child.get("pool_element");
-               return !poolElement.get("element_type").asString("").equals("minecraft:feature_pool_element")
-                  ? child
-                  : child.update("pool_element", pool -> pool.update("feature", SavedDataFeaturePoolElementFix::fixFeature));
             }
+
+            OptionalDynamic<?> poolElement = child.get("pool_element");
+            return !poolElement.get("element_type").asString("").equals("minecraft:feature_pool_element")
+               ? child
+               : child.update("pool_element", pool -> pool.update("feature", SavedDataFeaturePoolElementFix::fixFeature));
          }
       );
    }
@@ -65,27 +65,27 @@ public class SavedDataFeaturePoolElementFix extends DataFix {
    private static <T> OptionalDynamic<T> get(final Dynamic<T> input, final String... path) {
       if (path.length == 0) {
          throw new IllegalArgumentException("Missing path");
-      } else {
-         OptionalDynamic<T> output = input.get(path[0]);
-
-         for (int i = 1; i < path.length; i++) {
-            String element = path[i];
-            Matcher matcher = INDEX_PATTERN.matcher(element);
-            if (matcher.matches()) {
-               int id = Integer.parseInt(matcher.group(1));
-               List<? extends Dynamic<T>> dynamics = output.asList(Function.identity());
-               if (id >= 0 && id < dynamics.size()) {
-                  output = new OptionalDynamic(input.getOps(), DataResult.success(dynamics.get(id)));
-               } else {
-                  output = new OptionalDynamic(input.getOps(), DataResult.error(() -> "Missing id:" + id));
-               }
-            } else {
-               output = output.get(element);
-            }
-         }
-
-         return output;
       }
+
+      OptionalDynamic<T> output = input.get(path[0]);
+
+      for (int i = 1; i < path.length; i++) {
+         String element = path[i];
+         Matcher matcher = INDEX_PATTERN.matcher(element);
+         if (matcher.matches()) {
+            int id = Integer.parseInt(matcher.group(1));
+            List<? extends Dynamic<T>> dynamics = output.asList(Function.identity());
+            if (id >= 0 && id < dynamics.size()) {
+               output = new OptionalDynamic(input.getOps(), DataResult.success(dynamics.get(id)));
+            } else {
+               output = new OptionalDynamic(input.getOps(), DataResult.error(() -> "Missing id:" + id));
+            }
+         } else {
+            output = output.get(element);
+         }
+      }
+
+      return output;
    }
 
    @VisibleForTesting

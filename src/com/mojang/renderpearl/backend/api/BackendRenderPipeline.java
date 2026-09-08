@@ -13,7 +13,7 @@ import org.jspecify.annotations.Nullable;
 public interface BackendRenderPipeline extends UncheckedAutoCloseable {
    boolean isClosed();
 
-   public static record CreateInfo(
+   record CreateInfo(
       String name,
       List<BackendRenderPipeline.CreateInfo.Shader> shaders,
       List<BackendRenderPipeline.CreateInfo.VertexBuffer> vertexBuffers,
@@ -23,24 +23,23 @@ public interface BackendRenderPipeline extends UncheckedAutoCloseable {
       @Nullable DepthStencilState depthStencilState,
       PolygonMode polygonMode,
       boolean cull,
-      List<ColorTargetState> colorTargetStates,
+      List<@Nullable ColorTargetState> colorTargetStates,
       PrimitiveTopology primitiveTopology
    ) {
-      public static record AttribBinding(int bufferSlot, int location, int offset, GpuFormat format) {
+      public record AttribBinding(int bufferSlot, int location, int offset, GpuFormat format) {
       }
 
-      public static record Shader(String name, String entryPoint, SpvModule module) {
+      public record Shader(String name, String entryPoint, SpvModule module) {
       }
 
-      public static record VertexBuffer(int bufferSlot, int stride, int stepRate) {
+      public record VertexBuffer(int bufferSlot, int stride, int stepRate) {
       }
    }
 
    @FunctionalInterface
-   public interface Pending {
+   interface Pending {
       BackendRenderPipeline.Pending NULL = () -> null;
 
-      @Nullable
-      BackendRenderPipeline finishCompile();
+      @Nullable BackendRenderPipeline finishCompile();
    }
 }

@@ -65,29 +65,37 @@ public record PngInfo(int width, int height, byte bitDepth, byte colorType) {
       buffer.order(ByteOrder.BIG_ENDIAN);
       if (buffer.limit() < 33) {
          throw new IOException("PNG header missing");
-      } else if (buffer.getLong(0) != -8552249625308161526L) {
-         throw new IOException("Bad PNG Signature");
-      } else if (buffer.getInt(8) != 13) {
-         throw new IOException("Bad length for IHDR chunk!");
-      } else if (buffer.getInt(12) != 1229472850) {
-         throw new IOException("Bad type for IHDR chunk!");
-      } else {
-         int width = buffer.getInt(16);
-         int height = buffer.getInt(20);
-         byte bitDepth = buffer.get(24);
-         if (!validateBitDepth(bitDepth)) {
-            throw new IOException("Invalid bit depth: " + bitDepth);
-         } else {
-            byte colorType = buffer.get(25);
-            if (!validateColorType(colorType)) {
-               throw new IOException("Invalid color type: " + colorType);
-            } else if (!validateBounds(width, height, bitDepth, colorType)) {
-               throw new IOException("Bounds check failed, " + width + "x" + height + "@" + bitDepth + ", type: " + colorType);
-            } else {
-               buffer.order(order);
-            }
-         }
       }
+
+      if (buffer.getLong(0) != -8552249625308161526L) {
+         throw new IOException("Bad PNG Signature");
+      }
+
+      if (buffer.getInt(8) != 13) {
+         throw new IOException("Bad length for IHDR chunk!");
+      }
+
+      if (buffer.getInt(12) != 1229472850) {
+         throw new IOException("Bad type for IHDR chunk!");
+      }
+
+      int width = buffer.getInt(16);
+      int height = buffer.getInt(20);
+      byte bitDepth = buffer.get(24);
+      if (!validateBitDepth(bitDepth)) {
+         throw new IOException("Invalid bit depth: " + bitDepth);
+      }
+
+      byte colorType = buffer.get(25);
+      if (!validateColorType(colorType)) {
+         throw new IOException("Invalid color type: " + colorType);
+      }
+
+      if (!validateBounds(width, height, bitDepth, colorType)) {
+         throw new IOException("Bounds check failed, " + width + "x" + height + "@" + bitDepth + ", type: " + colorType);
+      }
+
+      buffer.order(order);
    }
 
    private static boolean validateBitDepth(final int bitDepth) {
@@ -107,8 +115,8 @@ public record PngInfo(int width, int height, byte bitDepth, byte colorType) {
    private static boolean validateBounds(final int width, final int height, final byte bitDepth, final byte colorType) {
       if (bitDepth == 16) {
          long componentCount = 4L;
-         long bufferEstimate = 4L * (long)width * (long)height * 2L;
-         if (bufferEstimate != (long)((int)bufferEstimate)) {
+         long bufferEstimate = 4L * width * height * 2L;
+         if (bufferEstimate != (int)bufferEstimate) {
             return false;
          }
       }

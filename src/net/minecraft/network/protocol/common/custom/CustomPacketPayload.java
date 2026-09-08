@@ -49,13 +49,13 @@ public interface CustomPacketPayload {
       };
    }
 
-   public interface FallbackProvider<B extends FriendlyByteBuf> {
+   interface FallbackProvider<B extends FriendlyByteBuf> {
       StreamCodec<B, ? extends CustomPacketPayload> create(Identifier typeId);
    }
 
-   public static record Type<T extends CustomPacketPayload>(Identifier id) {
+   record Type<T extends CustomPacketPayload>(Identifier id) {
    }
 
-   public static record TypeAndCodec<B extends FriendlyByteBuf, T extends CustomPacketPayload>(CustomPacketPayload.Type<T> type, StreamCodec<B, T> codec) {
+   record TypeAndCodec<B extends FriendlyByteBuf, T extends CustomPacketPayload>(CustomPacketPayload.Type<T> type, StreamCodec<B, T> codec) {
    }
 }

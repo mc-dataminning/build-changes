@@ -17,7 +17,7 @@ public class WeightedPressurePlateBlock extends BasePressurePlateBlock {
 
    protected WeightedPressurePlateBlock(final int maxWeight, final BlockSetType type, final BlockBehaviour.Properties properties) {
       super(properties, type);
-      this.registerDefaultState(this.stateDefinition.any().setValue(POWER, Integer.valueOf(0)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(POWER, 0));
       this.maxWeight = maxWeight;
    }
 
@@ -25,7 +25,7 @@ public class WeightedPressurePlateBlock extends BasePressurePlateBlock {
    protected int getSignalStrength(final Level level, final BlockPos pos) {
       int count = Math.min(getEntityCount(level, TOUCH_AABB.move(pos), Entity.class), this.maxWeight);
       if (count > 0) {
-         float percent = (float)Math.min(this.maxWeight, count) / (float)this.maxWeight;
+         float percent = (float)Math.min(this.maxWeight, count) / this.maxWeight;
          return Mth.ceil(percent * 15.0F);
       } else {
          return 0;
@@ -39,7 +39,7 @@ public class WeightedPressurePlateBlock extends BasePressurePlateBlock {
 
    @Override
    protected BlockState setSignalForState(final BlockState state, final int signal) {
-      return state.setValue(POWER, Integer.valueOf(signal));
+      return state.setValue(POWER, signal);
    }
 
    @Override

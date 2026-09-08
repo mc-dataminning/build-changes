@@ -7,11 +7,11 @@ import net.minecraft.core.BlockPos;
 public record MapFrame(BlockPos pos, int rotation, int entityId) {
    public static final Codec<MapFrame> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               BlockPos.CODEC.fieldOf("pos").forGetter(MapFrame::pos),
-               Codec.INT.fieldOf("rotation").forGetter(MapFrame::rotation),
-               Codec.INT.fieldOf("entity_id").forGetter(MapFrame::entityId)
-            )
-            .apply(i, MapFrame::new)
+            BlockPos.CODEC.fieldOf("pos").forGetter(MapFrame::pos),
+            Codec.INT.fieldOf("rotation").forGetter(MapFrame::rotation),
+            Codec.INT.fieldOf("entity_id").forGetter(MapFrame::entityId)
+         )
+         .apply(i, MapFrame::new)
    );
 
    public String getId() {

@@ -13,16 +13,14 @@ import org.jspecify.annotations.Nullable;
 public class BulkSectionAccess implements AutoCloseable {
    private final LevelAccessor level;
    private final Long2ObjectMap<LevelChunkSection> acquiredSections = new Long2ObjectOpenHashMap();
-   @Nullable
-   private LevelChunkSection lastSection;
+   private @Nullable LevelChunkSection lastSection;
    private long lastSectionKey;
 
    public BulkSectionAccess(final LevelAccessor level) {
       this.level = level;
    }
 
-   @Nullable
-   public LevelChunkSection getSection(final BlockPos pos) {
+   public @Nullable LevelChunkSection getSection(final BlockPos pos) {
       int sectionIndex = this.level.getSectionIndex(pos.getY());
       if (sectionIndex >= 0 && sectionIndex < this.level.getSectionsCount()) {
          long sectionKey = SectionPos.asLong(pos);
@@ -46,12 +44,12 @@ public class BulkSectionAccess implements AutoCloseable {
       LevelChunkSection section = this.getSection(pos);
       if (section == null) {
          return Blocks.AIR.defaultBlockState();
-      } else {
-         int sectionRelativeX = SectionPos.sectionRelative(pos.getX());
-         int sectionRelativeY = SectionPos.sectionRelative(pos.getY());
-         int sectionRelativeZ = SectionPos.sectionRelative(pos.getZ());
-         return section.getBlockState(sectionRelativeX, sectionRelativeY, sectionRelativeZ);
       }
+
+      int sectionRelativeX = SectionPos.sectionRelative(pos.getX());
+      int sectionRelativeY = SectionPos.sectionRelative(pos.getY());
+      int sectionRelativeZ = SectionPos.sectionRelative(pos.getZ());
+      return section.getBlockState(sectionRelativeX, sectionRelativeY, sectionRelativeZ);
    }
 
    @Override

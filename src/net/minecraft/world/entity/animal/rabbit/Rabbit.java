@@ -175,7 +175,7 @@ public class Rabbit extends Animal {
    }
 
    public float getJumpCompletion(final float a) {
-      return this.jumpDuration == 0 ? 0.0F : ((float)this.jumpTicks + a) / (float)this.jumpDuration;
+      return this.jumpDuration == 0 ? 0.0F : (this.jumpTicks + a) / this.jumpDuration;
    }
 
    public void setSpeedModifier(final double speed) {
@@ -339,20 +339,16 @@ public class Rabbit extends Animal {
       return this.getVariant() == Rabbit.Variant.EVIL ? SoundSource.HOSTILE : SoundSource.NEUTRAL;
    }
 
-   @Nullable
-   public Rabbit getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable Rabbit getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       Rabbit offspring = EntityTypes.RABBIT.create(level, EntitySpawnReason.BREEDING);
       if (offspring != null) {
-         Rabbit.Variant variant;
-         variant = getRandomRabbitVariant(level, this.blockPosition());
-         label16:
+         Rabbit.Variant variant = getRandomRabbitVariant(level, this.blockPosition());
          if (this.random.nextInt(20) != 0) {
             if (partner instanceof Rabbit rabbitPartner && this.random.nextBoolean()) {
                variant = rabbitPartner.getVariant();
-               break label16;
+            } else {
+               variant = this.getVariant();
             }
-
-            variant = this.getVariant();
          }
 
          offspring.setVariant(variant);
@@ -389,9 +385,8 @@ public class Rabbit extends Animal {
       this.entityData.set(DATA_TYPE_ID, variant.id);
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       return type == DataComponents.RABBIT_VARIANT ? castComponentValue((DataComponentType<T>)type, this.getVariant()) : super.get(type);
    }
 
@@ -411,9 +406,8 @@ public class Rabbit extends Animal {
       }
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       Rabbit.Variant variant = getRandomRabbitVariant(level, this.blockPosition());
@@ -450,7 +444,7 @@ public class Rabbit extends Animal {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 1) {
          this.spawnSprintParticle();
          this.jumpDuration = 15;
@@ -462,7 +456,7 @@ public class Rabbit extends Animal {
 
    @Override
    public Vec3 getLeashOffset() {
-      return new Vec3(0.0, (double)(0.6F * this.getEyeHeight()), (double)(this.getBbWidth() * 0.4F));
+      return new Vec3(0.0, 0.6F * this.getEyeHeight(), this.getBbWidth() * 0.4F);
    }
 
    private void setupAnimationStates() {
@@ -483,7 +477,7 @@ public class Rabbit extends Animal {
    }
 
    @Override
-   public void setLeashData(@Nullable final Leashable.LeashData leashData) {
+   public void setLeashData(final Leashable.@Nullable LeashData leashData) {
       super.setLeashData(leashData);
       this.idleHeadTiltAnimationState.stop();
    }
@@ -631,13 +625,7 @@ public class Rabbit extends Animal {
          super.tick();
          this.rabbit
             .getLookControl()
-            .setLookAt(
-               (double)this.blockPos.getX() + 0.5,
-               (double)(this.blockPos.getY() + 1),
-               (double)this.blockPos.getZ() + 0.5,
-               10.0F,
-               (float)this.rabbit.getMaxHeadXRot()
-            );
+            .setLookAt(this.blockPos.getX() + 0.5, this.blockPos.getY() + 1, this.blockPos.getZ() + 0.5, 10.0F, this.rabbit.getMaxHeadXRot());
          if (this.isReachedTarget()) {
             Level level = this.rabbit.level();
             BlockPos cropsPos = this.blockPos.above();
@@ -649,7 +637,7 @@ public class Rabbit extends Animal {
                   level.setBlock(cropsPos, Blocks.AIR.defaultBlockState(), 2);
                   level.destroyBlock(cropsPos, true, this.rabbit);
                } else {
-                  level.setBlock(cropsPos, blockState.setValue(CarrotBlock.AGE, Integer.valueOf(carrotAge - 1)), 2);
+                  level.setBlock(cropsPos, blockState.setValue(CarrotBlock.AGE, carrotAge - 1), 2);
                   level.gameEvent(GameEvent.BLOCK_CHANGE, cropsPos, GameEvent.Context.of(this.rabbit));
                   level.levelEvent(2001, cropsPos, Block.getId(blockState));
                }
@@ -677,7 +665,7 @@ public class Rabbit extends Animal {
       }
    }
 
-   public static enum Variant implements StringRepresentable {
+   public enum Variant implements StringRepresentable {
       BROWN(0, "brown"),
       WHITE(1, "white"),
       BLACK(2, "black"),
@@ -695,7 +683,7 @@ public class Rabbit extends Animal {
       private final int id;
       private final String name;
 
-      private Variant(final int id, final String name) {
+      Variant(final int id, final String name) {
          this.id = id;
          this.name = name;
       }

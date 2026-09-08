@@ -9,11 +9,11 @@ import net.minecraft.world.level.storage.loot.LootTable;
 public interface LootTableSubProvider {
    void run();
 
-   public interface Context extends BootstrapContextAccess {
+   interface Context extends BootstrapContextAccess {
       Holder.Reference<LootTable> accept(ResourceKey<LootTable> key, LootTable.Builder value);
    }
 
-   public interface Factory {
+   interface Factory {
       LootTableSubProvider create(LootTableSubProvider.Context context);
    }
 }

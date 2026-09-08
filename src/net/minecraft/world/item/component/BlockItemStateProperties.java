@@ -40,8 +40,7 @@ public record BlockItemStateProperties(Map<String, String> properties) implement
       return this.with(property, state.getValue(property));
    }
 
-   @Nullable
-   public <T extends Comparable<T>> T get(final Property<T> property) {
+   public <T extends Comparable<T>> @Nullable T get(final Property<T> property) {
       String value = this.properties.get(property.getName());
       return value == null ? null : property.getValue(value).orElse(null);
    }

@@ -11,14 +11,11 @@ import org.jspecify.annotations.Nullable;
 
 public class WorldLoadEvent {
    private boolean eventSent;
-   @Nullable
-   private TelemetryProperty.GameMode gameMode;
-   @Nullable
-   private String serverBrand;
-   @Nullable
-   private final String minigameName;
+   private TelemetryProperty.@Nullable GameMode gameMode;
+   private @Nullable String serverBrand;
+   private final @Nullable String minigameName;
 
-   public WorldLoadEvent(@Nullable final String minigameName) {
+   public WorldLoadEvent(final @Nullable String minigameName) {
       this.minigameName = minigameName;
    }
 

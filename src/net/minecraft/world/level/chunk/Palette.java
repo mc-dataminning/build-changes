@@ -22,7 +22,7 @@ public interface Palette<T> {
 
    Palette<T> copy();
 
-   public interface Factory {
+   interface Factory {
       <A> Palette<A> create(int bits, List<A> paletteEntries);
    }
 }

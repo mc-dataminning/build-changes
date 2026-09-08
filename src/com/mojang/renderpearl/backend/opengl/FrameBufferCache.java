@@ -10,12 +10,15 @@ import org.jspecify.annotations.Nullable;
 public class FrameBufferCache {
    private final Object2IntMap<FrameBufferCache.CacheKey> cache = new Object2IntOpenHashMap();
 
-   public int getFbo(final DirectStateAccess dsa, final List<FrameBufferAttachment> colorTextures, @Nullable final FrameBufferAttachment depthTexture) {
+   public int getFbo(final DirectStateAccess dsa, final List<@Nullable FrameBufferAttachment> colorTextures, final @Nullable FrameBufferAttachment depthTexture) {
       return this.getFbo(dsa, colorTextures, depthTexture, 0);
    }
 
    public int getFbo(
-      final DirectStateAccess dsa, final List<FrameBufferAttachment> colorTextures, @Nullable final FrameBufferAttachment depthTexture, final int mipOffset
+      final DirectStateAccess dsa,
+      final List<@Nullable FrameBufferAttachment> colorTextures,
+      final @Nullable FrameBufferAttachment depthTexture,
+      final int mipOffset
    ) {
       FrameBufferCache.CacheKey cacheKey = new FrameBufferCache.CacheKey(colorTextures, depthTexture, mipOffset);
       return this.cache.computeIfAbsent(cacheKey, var6 -> this.createFbo(cacheKey, dsa, colorTextures, depthTexture, mipOffset));
@@ -24,8 +27,8 @@ public class FrameBufferCache {
    private int createFbo(
       final FrameBufferCache.CacheKey key,
       final DirectStateAccess dsa,
-      final List<FrameBufferAttachment> colorAttachments,
-      @Nullable final FrameBufferAttachment depthAttachment,
+      final List<@Nullable FrameBufferAttachment> colorAttachments,
+      final @Nullable FrameBufferAttachment depthAttachment,
       final int mipOffset
    ) {
       int fbo = dsa.createFrameBufferObject();
@@ -71,9 +74,9 @@ public class FrameBufferCache {
    public static class CacheKey {
       private final int[] data;
       private final int hash;
-      public final List<FrameBufferAttachment> associatedAttachments;
+      public final List<@Nullable FrameBufferAttachment> associatedAttachments;
 
-      public CacheKey(final List<FrameBufferAttachment> colorAttachments, @Nullable final FrameBufferAttachment depthAttachment, final int mipOffset) {
+      public CacheKey(final List<@Nullable FrameBufferAttachment> colorAttachments, final @Nullable FrameBufferAttachment depthAttachment, final int mipOffset) {
          int colorAttachmentCount = colorAttachments.size();
          this.data = new int[(colorAttachmentCount + (depthAttachment != null ? 1 : 0)) * 2];
 

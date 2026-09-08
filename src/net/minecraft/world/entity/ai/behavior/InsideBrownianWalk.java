@@ -13,27 +13,27 @@ public class InsideBrownianWalk {
    public static BehaviorControl<PathfinderMob> create(final float speedModifier) {
       return BehaviorBuilder.create(
          i -> i.group(i.absent(MemoryModuleType.WALK_TARGET))
-               .apply(
-                  i,
-                  walkTarget -> (level, body, timestamp) -> {
-                        if (level.canSeeSky(body.blockPosition())) {
-                           return false;
-                        } else {
-                           BlockPos bodyPos = body.blockPosition();
-                           List<BlockPos> poses = BlockPos.betweenClosedStream(bodyPos.offset(-1, -1, -1), bodyPos.offset(1, 1, 1))
-                              .map(BlockPos::immutable)
-                              .collect(Util.toMutableList());
-                           Collections.shuffle(poses);
-                           poses.stream()
-                              .filter(pos -> !level.canSeeSky(pos))
-                              .filter(pos -> level.loadedAndEntityCanStandOn(pos, body))
-                              .filter(pos -> level.noCollision(body))
-                              .findFirst()
-                              .ifPresent(target -> walkTarget.set(new WalkTarget(target, speedModifier, 0)));
-                           return true;
-                        }
-                     }
-               )
+            .apply(
+               i,
+               walkTarget -> (level, body, timestamp) -> {
+                  if (level.canSeeSky(body.blockPosition())) {
+                     return false;
+                  }
+
+                  BlockPos bodyPos = body.blockPosition();
+                  List<BlockPos> poses = BlockPos.betweenClosedStream(bodyPos.offset(-1, -1, -1), bodyPos.offset(1, 1, 1))
+                     .map(BlockPos::immutable)
+                     .collect(Util.toMutableList());
+                  Collections.shuffle(poses);
+                  poses.stream()
+                     .filter(pos -> !level.canSeeSky(pos))
+                     .filter(pos -> level.loadedAndEntityCanStandOn(pos, body))
+                     .filter(pos -> level.noCollision(body))
+                     .findFirst()
+                     .ifPresent(target -> walkTarget.set(new WalkTarget(target, speedModifier, 0)));
+                  return true;
+               }
+            )
       );
    }
 }

@@ -48,42 +48,36 @@ public class JfrStatsParser {
    private final List<ThreadAllocationStat> threadAllocationStats = new ArrayList<>();
    private final List<FpsStat> fps = new ArrayList<>();
    private final List<TickTimeStat> serverTickTimes = new ArrayList<>();
-   @Nullable
-   private Duration worldCreationDuration = null;
+   private @Nullable Duration worldCreationDuration = null;
 
    private JfrStatsParser(final Stream<RecordedEvent> events) {
       this.capture(events);
    }
 
    public static JfrStatsResult parse(final Path path) {
-      try {
-         JfrStatsResult var4;
-         try (final RecordingFile recordingFile = new RecordingFile(path)) {
-            Iterator<RecordedEvent> iterator = new Iterator<RecordedEvent>() {
-               @Override
-               public boolean hasNext() {
-                  return recordingFile.hasMoreEvents();
+      try (final RecordingFile recordingFile = new RecordingFile(path)) {
+         Iterator<RecordedEvent> iterator = new Iterator<RecordedEvent>() {
+            @Override
+            public boolean hasNext() {
+               return recordingFile.hasMoreEvents();
+            }
+
+            public RecordedEvent next() {
+               if (!this.hasNext()) {
+                  throw new NoSuchElementException();
                }
 
-               public RecordedEvent next() {
-                  if (!this.hasNext()) {
-                     throw new NoSuchElementException();
-                  } else {
-                     try {
-                        return recordingFile.readEvent();
-                     } catch (IOException var2) {
-                        throw new UncheckedIOException(var2);
-                     }
-                  }
+               try {
+                  return recordingFile.readEvent();
+               } catch (IOException e) {
+                  throw new UncheckedIOException(e);
                }
-            };
-            Stream<RecordedEvent> events = StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator, 1297), false);
-            var4 = new JfrStatsParser(events).results();
-         }
-
-         return var4;
-      } catch (IOException var7) {
-         throw new UncheckedIOException(var7);
+            }
+         };
+         Stream<RecordedEvent> events = StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator, 1297), false);
+         return new JfrStatsParser(events).results();
+      } catch (IOException e) {
+         throw new UncheckedIOException(e);
       }
    }
 
@@ -120,8 +114,7 @@ public class JfrStatsParser {
             this.recordingStarted = event.getStartTime();
          }
 
-         String s0$ = event.getEventType().getName();
-         switch (s0$) {
+         switch (event.getEventType().getName()) {
             case "minecraft.ChunkGeneration":
                this.chunkGenStats.add(ChunkGenStat.from(event));
                break;
@@ -196,7 +189,7 @@ public class JfrStatsParser {
       private long totalSize;
 
       public void increment(final int bytes) {
-         this.totalSize += (long)bytes;
+         this.totalSize += bytes;
          this.count++;
       }
 

@@ -21,18 +21,18 @@ public class LevelLegacyWorldGenSettingsFix extends DataFix {
    protected TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
          "LevelLegacyWorldGenSettingsFix", this.getInputSchema().getType(References.LEVEL), input -> input.update(DSL.remainderFinder(), dataTag -> {
-               Dynamic<?> worldGenSettings = dataTag.get("WorldGenSettings").orElseEmptyMap();
+            Dynamic<?> worldGenSettings = dataTag.get("WorldGenSettings").orElseEmptyMap();
 
-               for (String key : OLD_SETTINGS_KEYS) {
-                  Optional<? extends Dynamic<?>> oldSetting = dataTag.get(key).result();
-                  if (oldSetting.isPresent()) {
-                     dataTag = dataTag.remove(key);
-                     worldGenSettings = worldGenSettings.set(key, oldSetting.get());
-                  }
+            for (String key : OLD_SETTINGS_KEYS) {
+               Optional<? extends Dynamic<?>> oldSetting = dataTag.get(key).result();
+               if (oldSetting.isPresent()) {
+                  dataTag = dataTag.remove(key);
+                  worldGenSettings = worldGenSettings.set(key, oldSetting.get());
                }
+            }
 
-               return dataTag.set("WorldGenSettings", worldGenSettings);
-            })
+            return dataTag.set("WorldGenSettings", worldGenSettings);
+         })
       );
    }
 }

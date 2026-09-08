@@ -49,18 +49,14 @@ public interface ChangeOverTimeBlock<T extends Enum<T>> {
          });
       if (aborted) {
          return Optional.empty();
-      } else {
-         float chance = (float)(olderCount.intValue() + 1) / (float)(olderCount.intValue() + sameAgeCount.intValue() + 1);
-         float actualChance = chance * chance * this.getChanceModifier();
-         return random.nextFloat() < actualChance ? this.getNext(state) : Optional.empty();
       }
+
+      float chance = (float)(olderCount.intValue() + 1) / (olderCount.intValue() + sameAgeCount.intValue() + 1);
+      float actualChance = chance * chance * this.getChanceModifier();
+      return random.nextFloat() < actualChance ? this.getNext(state) : Optional.empty();
    }
 
    private boolean isSameAgeingType(final BlockState state) {
-      if (state.getBlock() instanceof ChangeOverTimeBlock<?> neighborBlock && this.getAge().getClass() == neighborBlock.getAge().getClass()) {
-         return true;
-      }
-
-      return false;
+      return state.getBlock() instanceof ChangeOverTimeBlock<?> neighborBlock && this.getAge().getClass() == neighborBlock.getAge().getClass();
    }
 }

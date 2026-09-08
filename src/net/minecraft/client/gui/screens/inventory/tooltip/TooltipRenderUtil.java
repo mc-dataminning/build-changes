@@ -17,7 +17,7 @@ public class TooltipRenderUtil {
    private static final int MARGIN = 9;
 
    public static void extractTooltipBackground(
-      final GuiGraphicsExtractor graphics, final int x, final int y, final int w, final int h, @Nullable final Identifier style
+      final GuiGraphicsExtractor graphics, final int x, final int y, final int w, final int h, final @Nullable Identifier style
    ) {
       int x0 = x - 3 - 9;
       int y0 = y - 3 - 9;
@@ -27,11 +27,11 @@ public class TooltipRenderUtil {
       graphics.blitSprite(RenderPipelines.GUI_TEXTURED, getFrameSprite(style), x0, y0, paddedWidth, paddedHeight);
    }
 
-   private static Identifier getBackgroundSprite(@Nullable final Identifier style) {
+   private static Identifier getBackgroundSprite(final @Nullable Identifier style) {
       return style == null ? BACKGROUND_SPRITE : style.withPath(path -> "tooltip/" + path + "_background");
    }
 
-   private static Identifier getFrameSprite(@Nullable final Identifier style) {
+   private static Identifier getFrameSprite(final @Nullable Identifier style) {
       return style == null ? FRAME_SPRITE : style.withPath(path -> "tooltip/" + path + "_frame");
    }
 }

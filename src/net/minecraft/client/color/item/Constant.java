@@ -14,13 +14,12 @@ public record Constant(int value) implements ItemTintSource {
       i -> i.group(ExtraCodecs.RGB_COLOR_CODEC.fieldOf("value").forGetter(Constant::value)).apply(i, Constant::new)
    );
 
-   public Constant(int value) {
+   public Constant {
       value = ARGB.opaque(value);
-      this.value = value;
    }
 
    @Override
-   public int calculate(final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final LivingEntity owner) {
+   public int calculate(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner) {
       return this.value;
    }
 

@@ -84,16 +84,16 @@ public abstract class Monster extends PathfinderMob implements Enemy {
    public static boolean isDarkEnoughToSpawn(final ServerLevelAccessor level, final BlockPos pos, final RandomSource random) {
       if (level.getBrightness(LightLayer.SKY, pos) > random.nextInt(32)) {
          return false;
-      } else {
-         DimensionType dimensionType = level.dimensionType();
-         int blockLightLimit = dimensionType.monsterSpawnBlockLightLimit();
-         if (blockLightLimit < 15 && level.getBrightness(LightLayer.BLOCK, pos) > blockLightLimit) {
-            return false;
-         } else {
-            int brightness = level.getLevel().isThundering() ? level.getMaxLocalRawBrightness(pos, 10) : level.getMaxLocalRawBrightness(pos);
-            return brightness <= dimensionType.monsterSpawnLightTest().sample(random);
-         }
       }
+
+      DimensionType dimensionType = level.dimensionType();
+      int blockLightLimit = dimensionType.monsterSpawnBlockLightLimit();
+      if (blockLightLimit < 15 && level.getBrightness(LightLayer.BLOCK, pos) > blockLightLimit) {
+         return false;
+      }
+
+      int brightness = level.getLevel().isThundering() ? level.getMaxLocalRawBrightness(pos, 10) : level.getMaxLocalRawBrightness(pos);
+      return brightness <= dimensionType.monsterSpawnLightTest().sample(random);
    }
 
    public static boolean checkMonsterSpawnRules(

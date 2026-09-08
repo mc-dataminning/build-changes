@@ -12,8 +12,7 @@ import org.jspecify.annotations.Nullable;
 
 public final class SequencedPriorityIterator<T> extends AbstractIterator<T> {
    private static final int MIN_PRIO = Integer.MIN_VALUE;
-   @Nullable
-   private Deque<T> highestPrioQueue = null;
+   private @Nullable Deque<T> highestPrioQueue = null;
    private int highestPrio = Integer.MIN_VALUE;
    private final Int2ObjectMap<Deque<T>> queuesByPriority = new Int2ObjectOpenHashMap();
 
@@ -30,22 +29,21 @@ public final class SequencedPriorityIterator<T> extends AbstractIterator<T> {
       }
    }
 
-   @Nullable
-   protected T computeNext() {
+   protected @Nullable T computeNext() {
       if (this.highestPrioQueue == null) {
          return (T)this.endOfData();
-      } else {
-         T result = this.highestPrioQueue.removeFirst();
-         if (result == null) {
-            return (T)this.endOfData();
-         } else {
-            if (this.highestPrioQueue.isEmpty()) {
-               this.switchCacheToNextHighestPrioQueue();
-            }
-
-            return result;
-         }
       }
+
+      T result = this.highestPrioQueue.removeFirst();
+      if (result == null) {
+         return (T)this.endOfData();
+      }
+
+      if (this.highestPrioQueue.isEmpty()) {
+         this.switchCacheToNextHighestPrioQueue();
+      }
+
+      return result;
    }
 
    private void switchCacheToNextHighestPrioQueue() {

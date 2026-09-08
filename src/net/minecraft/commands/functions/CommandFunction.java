@@ -76,8 +76,8 @@ public interface CommandFunction<T> {
             } else {
                try {
                   functionBuilder.addCommand(parseCommand(dispatcher, compilationContext, input));
-               } catch (CommandSyntaxException var11) {
-                  throw new IllegalArgumentException("Whilst parsing command on line " + lineNumber + ": " + var11.getMessage());
+               } catch (CommandSyntaxException e) {
+                  throw new IllegalArgumentException("Whilst parsing command on line " + lineNumber + ": " + e.getMessage());
                }
             }
          }

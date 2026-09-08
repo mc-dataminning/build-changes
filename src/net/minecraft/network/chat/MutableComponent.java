@@ -13,8 +13,7 @@ public final class MutableComponent implements Component {
    private final List<Component> siblings;
    private Style style;
    private FormattedCharSequence visualOrderText = FormattedCharSequence.EMPTY;
-   @Nullable
-   private Language decomposedWith;
+   private @Nullable Language decomposedWith;
 
    MutableComponent(final ComponentContents contents, final List<Component> siblings, final Style style) {
       this.contents = contents;
@@ -103,15 +102,9 @@ public final class MutableComponent implements Component {
 
    @Override
    public boolean equals(final Object o) {
-      if (this == o) {
-         return true;
-      } else {
-         if (o instanceof MutableComponent that && this.contents.equals(that.contents) && this.style.equals(that.style) && this.siblings.equals(that.siblings)) {
-            return true;
-         }
-
-         return false;
-      }
+      return this == o
+         ? true
+         : o instanceof MutableComponent that && this.contents.equals(that.contents) && this.style.equals(that.style) && this.siblings.equals(that.siblings);
    }
 
    @Override

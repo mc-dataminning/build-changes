@@ -36,7 +36,7 @@ public class TemptingSensor extends Sensor<PathfinderMob> {
 
    protected void doTick(final ServerLevel level, final PathfinderMob body) {
       Brain<?> brain = body.getBrain();
-      TargetingConditions targeting = TEMPT_TARGETING.copy().range((double)((float)body.getAttributeValue(Attributes.TEMPT_RANGE)));
+      TargetingConditions targeting = TEMPT_TARGETING.copy().range((float)body.getAttributeValue(Attributes.TEMPT_RANGE));
       List<Player> players = level.players()
          .stream()
          .filter(EntitySelector.NO_SPECTATORS)

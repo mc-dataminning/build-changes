@@ -31,7 +31,7 @@ public class CoralPlantBlock extends BaseCoralPlantTypeBlock {
    @Override
    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
       if (!scanForWater(state, level, pos)) {
-         level.setBlock(pos, this.deadBlock.defaultBlockState().setValue(WATERLOGGED, Boolean.valueOf(false)), 2);
+         level.setBlock(pos, this.deadBlock.defaultBlockState().setValue(WATERLOGGED, false), 2);
       }
    }
 
@@ -48,14 +48,14 @@ public class CoralPlantBlock extends BaseCoralPlantTypeBlock {
    ) {
       if (directionToNeighbour == Direction.DOWN && !state.canSurvive(level, pos)) {
          return Blocks.AIR.defaultBlockState();
-      } else {
-         this.tryScheduleDieTick(state, level, ticks, random, pos);
-         if (state.getValue(WATERLOGGED)) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-         }
-
-         return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
       }
+
+      this.tryScheduleDieTick(state, level, ticks, random, pos);
+      if (state.getValue(WATERLOGGED)) {
+         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+      }
+
+      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
    }
 
    @Override

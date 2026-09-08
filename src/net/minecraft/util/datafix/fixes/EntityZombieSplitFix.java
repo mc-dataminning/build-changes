@@ -21,31 +21,31 @@ public class EntityZombieSplitFix extends EntityRenameFix {
    protected Pair<String, Typed<?>> fix(final String name, final Typed<?> entity) {
       if (!name.equals("Zombie")) {
          return Pair.of(name, entity);
-      } else {
-         Dynamic<?> tag = (Dynamic<?>)entity.getOptional(DSL.remainderFinder()).orElseThrow();
-         int type = tag.get("ZombieType").asInt(0);
-         String newName;
-         Typed<?> newEntity;
-         switch (type) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-               newName = "ZombieVillager";
-               newEntity = this.changeSchemaToZombieVillager(entity, type - 1);
-               break;
-            case 6:
-               newName = "Husk";
-               newEntity = entity;
-               break;
-            default:
-               newName = "Zombie";
-               newEntity = entity;
-         }
-
-         return Pair.of(newName, newEntity.update(DSL.remainderFinder(), e -> e.remove("ZombieType")));
       }
+
+      Dynamic<?> tag = (Dynamic<?>)entity.getOptional(DSL.remainderFinder()).orElseThrow();
+      int type = tag.get("ZombieType").asInt(0);
+      String newName;
+      Typed<?> newEntity;
+      switch (type) {
+         case 1:
+         case 2:
+         case 3:
+         case 4:
+         case 5:
+            newName = "ZombieVillager";
+            newEntity = this.changeSchemaToZombieVillager(entity, type - 1);
+            break;
+         case 6:
+            newName = "Husk";
+            newEntity = entity;
+            break;
+         default:
+            newName = "Zombie";
+            newEntity = entity;
+      }
+
+      return Pair.of(newName, newEntity.update(DSL.remainderFinder(), e -> e.remove("ZombieType")));
    }
 
    private Typed<?> changeSchemaToZombieVillager(final Typed<?> entity, final int profession) {

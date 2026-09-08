@@ -10,10 +10,10 @@ public record ScheduledTick<T>(T type, BlockPos pos, long triggerTick, TickPrior
       int compare = Long.compare(o1.triggerTick, o2.triggerTick);
       if (compare != 0) {
          return compare;
-      } else {
-         compare = o1.priority.compareTo(o2.priority);
-         return compare != 0 ? compare : Long.compare(o1.subTickOrder, o2.subTickOrder);
       }
+
+      compare = o1.priority.compareTo(o2.priority);
+      return compare != 0 ? compare : Long.compare(o1.subTickOrder, o2.subTickOrder);
    };
    public static final Comparator<ScheduledTick<?>> INTRA_TICK_DRAIN_ORDER = (o1, o2) -> {
       int compare = o1.priority.compareTo(o2.priority);
@@ -24,7 +24,7 @@ public record ScheduledTick<T>(T type, BlockPos pos, long triggerTick, TickPrior
          return 31 * o.pos().hashCode() + o.type().hashCode();
       }
 
-      public boolean equals(@Nullable final ScheduledTick<?> a, @Nullable final ScheduledTick<?> b) {
+      public boolean equals(final @Nullable ScheduledTick<?> a, final @Nullable ScheduledTick<?> b) {
          if (a == b) {
             return true;
          } else {
@@ -37,13 +37,8 @@ public record ScheduledTick<T>(T type, BlockPos pos, long triggerTick, TickPrior
       this(type, pos, triggerTick, TickPriority.NORMAL, subTickOrder);
    }
 
-   public ScheduledTick(T type, BlockPos pos, long triggerTick, TickPriority priority, long subTickOrder) {
+   public ScheduledTick {
       pos = pos.immutable();
-      this.type = type;
-      this.pos = pos;
-      this.triggerTick = triggerTick;
-      this.priority = priority;
-      this.subTickOrder = subTickOrder;
    }
 
    public static <T> ScheduledTick<T> probe(final T type, final BlockPos pos) {

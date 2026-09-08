@@ -19,8 +19,7 @@ public class MusicManager {
    private static final int STARTING_DELAY = 100;
    private final RandomSource random = RandomSource.create();
    private final Minecraft minecraft;
-   @Nullable
-   private SoundInstance currentMusic;
+   private @Nullable SoundInstance currentMusic;
    private MusicManager.MusicFrequency gameMusicFrequency;
    private float currentGain = 1.0F;
    private int nextSongDelay = 100;
@@ -108,29 +107,31 @@ public class MusicManager {
    private boolean fadePlaying(final float volume) {
       if (this.currentMusic == null) {
          return false;
-      } else if (this.currentGain == volume) {
-         return true;
-      } else {
-         if (this.currentGain < volume) {
-            this.currentGain = this.currentGain + Mth.clamp(this.currentGain, 5.0E-4F, 0.005F);
-            if (this.currentGain > volume) {
-               this.currentGain = volume;
-            }
-         } else {
-            this.currentGain = 0.03F * volume + 0.97F * this.currentGain;
-            if (Math.abs(this.currentGain - volume) < 1.0E-4F || this.currentGain < volume) {
-               this.currentGain = volume;
-            }
-         }
+      }
 
-         this.currentGain = Mth.clamp(this.currentGain, 0.0F, 1.0F);
-         if (this.currentGain <= 1.0E-4F) {
-            this.stopPlaying();
-            return false;
-         } else {
-            this.minecraft.getSoundManager().updateCategoryVolume(SoundSource.MUSIC, this.currentGain);
-            return true;
+      if (this.currentGain == volume) {
+         return true;
+      }
+
+      if (this.currentGain < volume) {
+         this.currentGain = this.currentGain + Mth.clamp(this.currentGain, 5.0E-4F, 0.005F);
+         if (this.currentGain > volume) {
+            this.currentGain = volume;
          }
+      } else {
+         this.currentGain = 0.03F * volume + 0.97F * this.currentGain;
+         if (Math.abs(this.currentGain - volume) < 1.0E-4F || this.currentGain < volume) {
+            this.currentGain = volume;
+         }
+      }
+
+      this.currentGain = Mth.clamp(this.currentGain, 0.0F, 1.0F);
+      if (this.currentGain <= 1.0E-4F) {
+         this.stopPlaying();
+         return false;
+      } else {
+         this.minecraft.getSoundManager().updateCategoryVolume(SoundSource.MUSIC, this.currentGain);
+         return true;
       }
    }
 
@@ -138,8 +139,7 @@ public class MusicManager {
       return this.currentMusic == null ? false : music.sound().value().location().equals(this.currentMusic.getIdentifier());
    }
 
-   @Nullable
-   public String getCurrentMusicTranslationKey() {
+   public @Nullable String getCurrentMusicTranslationKey() {
       if (this.currentMusic != null) {
          Sound sound = this.currentMusic.getSound();
          if (sound != null) {
@@ -155,7 +155,7 @@ public class MusicManager {
       this.nextSongDelay = this.gameMusicFrequency.getNextSongDelay(this.minecraft.getSituationalMusic(), this.random);
    }
 
-   public static enum MusicFrequency implements StringRepresentable {
+   public enum MusicFrequency implements StringRepresentable {
       DEFAULT("DEFAULT", "options.music_frequency.default", 20),
       FREQUENT("FREQUENT", "options.music_frequency.frequent", 10),
       CONSTANT("CONSTANT", "options.music_frequency.constant", 0);
@@ -165,22 +165,24 @@ public class MusicManager {
       private final int maxFrequency;
       private final Component caption;
 
-      private MusicFrequency(final String name, final String translationKey, final int maxFrequencyMinutes) {
+      MusicFrequency(final String name, final String translationKey, final int maxFrequencyMinutes) {
          this.name = name;
          this.maxFrequency = maxFrequencyMinutes * 1200;
          this.caption = Component.translatable(translationKey);
       }
 
-      private int getNextSongDelay(@Nullable final Music music, final RandomSource random) {
+      private int getNextSongDelay(final @Nullable Music music, final RandomSource random) {
          if (music == null) {
             return this.maxFrequency;
-         } else if (this == CONSTANT) {
-            return 100;
-         } else {
-            int minFrequency = Math.min(music.minDelay(), this.maxFrequency);
-            int maxFrequency = Math.min(music.maxDelay(), this.maxFrequency);
-            return Mth.nextInt(random, minFrequency, maxFrequency);
          }
+
+         if (this == CONSTANT) {
+            return 100;
+         }
+
+         int minFrequency = Math.min(music.minDelay(), this.maxFrequency);
+         int maxFrequency = Math.min(music.maxDelay(), this.maxFrequency);
+         return Mth.nextInt(random, minFrequency, maxFrequency);
       }
 
       public Component caption() {

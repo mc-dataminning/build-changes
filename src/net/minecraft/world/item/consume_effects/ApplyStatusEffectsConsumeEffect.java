@@ -15,10 +15,10 @@ import net.minecraft.world.level.Level;
 public record ApplyStatusEffectsConsumeEffect(List<MobEffectInstance> effects, float probability) implements ConsumeEffect {
    public static final MapCodec<ApplyStatusEffectsConsumeEffect> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               MobEffectInstance.CODEC.listOf().fieldOf("effects").forGetter(ApplyStatusEffectsConsumeEffect::effects),
-               Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(ApplyStatusEffectsConsumeEffect::probability)
-            )
-            .apply(i, ApplyStatusEffectsConsumeEffect::new)
+            MobEffectInstance.CODEC.listOf().fieldOf("effects").forGetter(ApplyStatusEffectsConsumeEffect::effects),
+            Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(ApplyStatusEffectsConsumeEffect::probability)
+         )
+         .apply(i, ApplyStatusEffectsConsumeEffect::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, ApplyStatusEffectsConsumeEffect> STREAM_CODEC = StreamCodec.composite(
       MobEffectInstance.STREAM_CODEC.apply(ByteBufCodecs.list()),
@@ -49,16 +49,16 @@ public record ApplyStatusEffectsConsumeEffect(List<MobEffectInstance> effects, f
    public boolean apply(final Level level, final ItemStack stack, final LivingEntity user) {
       if (user.getRandom().nextFloat() >= this.probability) {
          return false;
-      } else {
-         boolean anyApplied = false;
-
-         for (MobEffectInstance effect : this.effects) {
-            if (user.addEffect(new MobEffectInstance(effect))) {
-               anyApplied = true;
-            }
-         }
-
-         return anyApplied;
       }
+
+      boolean anyApplied = false;
+
+      for (MobEffectInstance effect : this.effects) {
+         if (user.addEffect(new MobEffectInstance(effect))) {
+            anyApplied = true;
+         }
+      }
+
+      return anyApplied;
    }
 }

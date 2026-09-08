@@ -256,7 +256,7 @@ public class UpgradeData {
       }
    }
 
-   private static enum BlockFixers implements UpgradeData.BlockFixer {
+   private enum BlockFixers implements UpgradeData.BlockFixer {
       BLACKLIST(
          Blocks.OBSERVER,
          Blocks.NETHER_PORTAL,
@@ -431,7 +431,7 @@ public class UpgradeData {
                   BlockPos pos = (BlockPos)var8.next();
                   BlockState state = level.getBlockState(pos);
                   if (state.getValue(BlockStateProperties.DISTANCE) >= currentDistance) {
-                     level.setBlock(pos, state.setValue(BlockStateProperties.DISTANCE, Integer.valueOf(currentDistance)), 18);
+                     level.setBlock(pos, state.setValue(BlockStateProperties.DISTANCE, currentDistance), 18);
                      if (neighborDistance != 7) {
                         for (Direction direction : DIRECTIONS) {
                            neighborPos.setWithOffset(pos, direction);
@@ -473,11 +473,11 @@ public class UpgradeData {
 
       public static final Direction[] DIRECTIONS = Direction.values();
 
-      private BlockFixers(final Block... blocks) {
+      BlockFixers(final Block... blocks) {
          this(false, blocks);
       }
 
-      private BlockFixers(final boolean chunky, final Block... blocks) {
+      BlockFixers(final boolean chunky, final Block... blocks) {
          for (Block block : blocks) {
             UpgradeData.MAP.put(block, this);
          }

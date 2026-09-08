@@ -22,17 +22,17 @@ public class MoveTowardsRestrictionGoal extends Goal {
    public boolean canUse() {
       if (this.mob.isWithinHome()) {
          return false;
-      } else {
-         Vec3 pos = DefaultRandomPos.getPosTowards(this.mob, 16, 7, Vec3.atBottomCenterOf(this.mob.getHomePosition()), (float) (Math.PI / 2));
-         if (pos == null) {
-            return false;
-         } else {
-            this.wantedX = pos.x;
-            this.wantedY = pos.y;
-            this.wantedZ = pos.z;
-            return true;
-         }
       }
+
+      Vec3 pos = DefaultRandomPos.getPosTowards(this.mob, 16, 7, Vec3.atBottomCenterOf(this.mob.getHomePosition()), (float) (Math.PI / 2));
+      if (pos == null) {
+         return false;
+      }
+
+      this.wantedX = pos.x;
+      this.wantedY = pos.y;
+      this.wantedZ = pos.z;
+      return true;
    }
 
    @Override

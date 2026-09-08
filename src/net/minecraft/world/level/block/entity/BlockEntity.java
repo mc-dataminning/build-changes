@@ -3,7 +3,6 @@ package net.minecraft.world.level.block.entity;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 import net.minecraft.CrashReportCategory;
 import net.minecraft.core.BlockPos;
@@ -43,8 +42,7 @@ public abstract class BlockEntity implements DebugValueSource, TypedInstance<Blo
    private static final Codec<BlockEntityType<?>> TYPE_CODEC = BuiltInRegistries.BLOCK_ENTITY_TYPE.byNameCodec();
    private static final Logger LOGGER = LogUtils.getLogger();
    private final BlockEntityType<?> type;
-   @Nullable
-   protected Level level;
+   protected @Nullable Level level;
    protected final BlockPos worldPosition;
    protected boolean remove;
    private BlockState blockState;
@@ -82,8 +80,7 @@ public abstract class BlockEntity implements DebugValueSource, TypedInstance<Blo
       return new BlockPos(x, y, z);
    }
 
-   @Nullable
-   public Level getLevel() {
+   public @Nullable Level getLevel() {
       return this.level;
    }
 
@@ -111,14 +108,11 @@ public abstract class BlockEntity implements DebugValueSource, TypedInstance<Blo
    }
 
    public final CompoundTag saveWithFullMetadata(final HolderLookup.Provider registries) {
-      CompoundTag var4;
       try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(this.problemPath(), LOGGER)) {
          TagValueOutput output = TagValueOutput.createWithContext(reporter, registries);
          this.saveWithFullMetadata(output);
-         var4 = output.buildResult();
+         return output.buildResult();
       }
-
-      return var4;
    }
 
    public void saveWithFullMetadata(final ValueOutput output) {
@@ -132,14 +126,11 @@ public abstract class BlockEntity implements DebugValueSource, TypedInstance<Blo
    }
 
    public final CompoundTag saveWithoutMetadata(final HolderLookup.Provider registries) {
-      CompoundTag var4;
       try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(this.problemPath(), LOGGER)) {
          TagValueOutput output = TagValueOutput.createWithContext(reporter, registries);
          this.saveWithoutMetadata(output);
-         var4 = output.buildResult();
+         return output.buildResult();
       }
-
-      return var4;
    }
 
    public void saveWithoutMetadata(final ValueOutput output) {
@@ -148,14 +139,11 @@ public abstract class BlockEntity implements DebugValueSource, TypedInstance<Blo
    }
 
    public final CompoundTag saveCustomOnly(final HolderLookup.Provider registries) {
-      CompoundTag var4;
       try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(this.problemPath(), LOGGER)) {
          TagValueOutput output = TagValueOutput.createWithContext(reporter, registries);
          this.saveCustomOnly(output);
-         var4 = output.buildResult();
+         return output.buildResult();
       }
-
-      return var4;
    }
 
    public void saveCustomOnly(final ValueOutput output) {
@@ -177,33 +165,27 @@ public abstract class BlockEntity implements DebugValueSource, TypedInstance<Blo
       output.putInt("z", this.worldPosition.getZ());
    }
 
-   @Nullable
-   public static BlockEntity loadStatic(final BlockPos pos, final BlockState state, final CompoundTag tag, final HolderLookup.Provider registries) {
+   public static @Nullable BlockEntity loadStatic(final BlockPos pos, final BlockState state, final CompoundTag tag, final HolderLookup.Provider registries) {
       BlockEntityType<?> type = tag.<BlockEntityType<?>>read("id", TYPE_CODEC).orElse(null);
       if (type == null) {
          LOGGER.error("Skipping block entity with invalid type: {}", tag.get("id"));
          return null;
-      } else {
-         BlockEntity entity;
-         try {
-            entity = type.create(pos, state);
-         } catch (Throwable var12) {
-            LOGGER.error("Failed to create block entity {} for block {} at position {} ", new Object[]{type, state, pos, var12});
-            return null;
-         }
+      }
 
-         try {
-            BlockEntity var7;
-            try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(entity.problemPath(), LOGGER)) {
-               entity.loadWithComponents(TagValueInput.create(reporter, registries, tag));
-               var7 = entity;
-            }
+      BlockEntity entity;
+      try {
+         entity = type.create(pos, state);
+      } catch (Throwable t) {
+         LOGGER.error("Failed to create block entity {} for block {} at position {} ", new Object[]{type, state, pos, t});
+         return null;
+      }
 
-            return var7;
-         } catch (Throwable var11) {
-            LOGGER.error("Failed to load data for block entity {} for block {} at position {}", new Object[]{type, state, pos, var11});
-            return null;
-         }
+      try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(entity.problemPath(), LOGGER)) {
+         entity.loadWithComponents(TagValueInput.create(reporter, registries, tag));
+         return entity;
+      } catch (Throwable t) {
+         LOGGER.error("Failed to load data for block entity {} for block {} at position {}", new Object[]{type, state, pos, t});
+         return null;
       }
    }
 
@@ -228,8 +210,7 @@ public abstract class BlockEntity implements DebugValueSource, TypedInstance<Blo
       return this.blockState;
    }
 
-   @Nullable
-   public Packet<ClientGamePacketListener> getUpdatePacket() {
+   public @Nullable Packet<ClientGamePacketListener> getUpdatePacket() {
       return null;
    }
 
@@ -302,13 +283,8 @@ public abstract class BlockEntity implements DebugValueSource, TypedInstance<Blo
       implicitComponents.add(DataComponents.BLOCK_STATE);
       final DataComponentMap fullView = PatchedDataComponentMap.fromPatch(prototype, patch);
       this.applyImplicitComponents(new DataComponentGetter() {
-         {
-            Objects.requireNonNull(BlockEntity.this);
-         }
-
-         @Nullable
          @Override
-         public <T> T get(final DataComponentType<? extends T> type) {
+         public <T> @Nullable T get(final DataComponentType<? extends T> type) {
             implicitComponents.add(type);
             return fullView.get(type);
          }
@@ -345,8 +321,7 @@ public abstract class BlockEntity implements DebugValueSource, TypedInstance<Blo
       this.components = components;
    }
 
-   @Nullable
-   public static Component parseCustomNameSafe(final ValueInput input, final String name) {
+   public static @Nullable Component parseCustomNameSafe(final ValueInput input, final String name) {
       return input.<Component>read(name, ComponentSerialization.CODEC).orElse(null);
    }
 
@@ -358,7 +333,7 @@ public abstract class BlockEntity implements DebugValueSource, TypedInstance<Blo
    public void registerDebugValues(final ServerLevel level, final DebugValueSource.Registration registration) {
    }
 
-   private static record BlockEntityPathElement(BlockEntity blockEntity) implements ProblemReporter.PathElement {
+   private record BlockEntityPathElement(BlockEntity blockEntity) implements ProblemReporter.PathElement {
       @Override
       public String get() {
          return this.blockEntity.getNameForReporting() + "@" + this.blockEntity.getBlockPos();

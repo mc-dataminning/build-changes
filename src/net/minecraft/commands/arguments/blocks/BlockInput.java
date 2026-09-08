@@ -24,10 +24,9 @@ public class BlockInput implements Predicate<BlockInWorld> {
    private static final Logger LOGGER = LogUtils.getLogger();
    private final BlockState state;
    private final Set<Property<?>> properties;
-   @Nullable
-   private final CompoundTag tag;
+   private final @Nullable CompoundTag tag;
 
-   public BlockInput(final BlockState state, final Set<Property<?>> properties, @Nullable final CompoundTag tag) {
+   public BlockInput(final BlockState state, final Set<Property<?>> properties, final @Nullable CompoundTag tag) {
       this.state = state;
       this.properties = properties;
       this.tag = tag;
@@ -45,27 +44,27 @@ public class BlockInput implements Predicate<BlockInWorld> {
       BlockState state = blockInWorld.getState();
       if (!state.is(this.state.getBlock())) {
          return false;
-      } else {
-         for (Property<?> property : this.properties) {
-            if (state.getValue(property) != this.state.getValue(property)) {
-               return false;
-            }
-         }
+      }
 
-         if (this.tag == null) {
-            return true;
-         } else {
-            BlockEntity entity = blockInWorld.getEntity();
-            return entity != null && NbtUtils.compareNbt(this.tag, entity.saveWithFullMetadata(blockInWorld.getLevel().registryAccess()), true);
+      for (Property<?> property : this.properties) {
+         if (state.getValue(property) != this.state.getValue(property)) {
+            return false;
          }
       }
+
+      if (this.tag == null) {
+         return true;
+      }
+
+      BlockEntity entity = blockInWorld.getEntity();
+      return entity != null && NbtUtils.compareNbt(this.tag, entity.saveWithFullMetadata(blockInWorld.getLevel().registryAccess()), true);
    }
 
    public boolean test(final ServerLevel level, final BlockPos pos) {
       return this.test(new BlockInWorld(level, pos, false));
    }
 
-   public boolean place(final ServerLevel level, final BlockPos pos, @Block.UpdateFlags final int update) {
+   public boolean place(final ServerLevel level, final BlockPos pos, final @Block.UpdateFlags int update) {
       BlockState state = (update & 16) != 0 ? this.state : Block.updateFromNeighbourShapes(this.state, level, pos);
       if (state.isAir()) {
          state = this.state;
@@ -105,12 +104,12 @@ public class BlockInput implements Predicate<BlockInWorld> {
    private BlockState overwriteWithDefinedProperties(BlockState state) {
       if (state == this.state) {
          return state;
-      } else {
-         for (Property<?> property : this.properties) {
-            state = BlockBehaviour.BlockStateBase.copyProperty(this.state, state, property);
-         }
-
-         return state;
       }
+
+      for (Property<?> property : this.properties) {
+         state = BlockBehaviour.BlockStateBase.copyProperty(this.state, state, property);
+      }
+
+      return state;
    }
 }

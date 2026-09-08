@@ -43,9 +43,8 @@ public class MovingPistonBlock extends BaseEntityBlock {
       this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(TYPE, PistonType.DEFAULT));
    }
 
-   @Nullable
    @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
+   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
       return null;
    }
 
@@ -60,9 +59,8 @@ public class MovingPistonBlock extends BaseEntityBlock {
       return new PistonMovingBlockEntity(position, blockState, movedState, direction, extending, isSourcePiston);
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return createTickerHelper(type, BlockEntityTypes.PISTON, PistonMovingBlockEntity::tick);
    }
 
@@ -104,10 +102,8 @@ public class MovingPistonBlock extends BaseEntityBlock {
       return blockEntity != null ? blockEntity.getCollisionShape(level, pos) : Shapes.empty();
    }
 
-   @Nullable
-   private PistonMovingBlockEntity getBlockEntity(final BlockGetter level, final BlockPos pos) {
-      BlockEntity blockEntity = level.getBlockEntity(pos);
-      return blockEntity instanceof PistonMovingBlockEntity ? (PistonMovingBlockEntity)blockEntity : null;
+   private @Nullable PistonMovingBlockEntity getBlockEntity(final BlockGetter level, final BlockPos pos) {
+      return level.getBlockEntity(pos) instanceof PistonMovingBlockEntity pistonMovingBlockEntity ? pistonMovingBlockEntity : null;
    }
 
    @Override

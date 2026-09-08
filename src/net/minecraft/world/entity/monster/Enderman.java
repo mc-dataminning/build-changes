@@ -85,8 +85,7 @@ public class Enderman extends Monster implements NeutralMob {
    private int targetChangeTime;
    private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
    private long persistentAngerEndTime;
-   @Nullable
-   private EntityReference<LivingEntity> persistentAngerTarget;
+   private @Nullable EntityReference<LivingEntity> persistentAngerTarget;
 
    public Enderman(final EntityType<? extends Enderman> type, final Level level) {
       super(type, level);
@@ -124,7 +123,7 @@ public class Enderman extends Monster implements NeutralMob {
    }
 
    @Override
-   public void setTarget(@Nullable final LivingEntity target) {
+   public void setTarget(final @Nullable LivingEntity target) {
       super.setTarget(target);
       AttributeInstance movementSpeed = this.getAttribute(Attributes.MOVEMENT_SPEED);
       if (target == null) {
@@ -151,7 +150,7 @@ public class Enderman extends Monster implements NeutralMob {
 
    @Override
    public void startPersistentAngerTimer() {
-      this.setTimeToRemainAngry((long)PERSISTENT_ANGER_TIME.sample(this.random));
+      this.setTimeToRemainAngry(PERSISTENT_ANGER_TIME.sample(this.random));
    }
 
    @Override
@@ -165,13 +164,12 @@ public class Enderman extends Monster implements NeutralMob {
    }
 
    @Override
-   public void setPersistentAngerTarget(@Nullable final EntityReference<LivingEntity> persistentAngerTarget) {
+   public void setPersistentAngerTarget(final @Nullable EntityReference<LivingEntity> persistentAngerTarget) {
       this.persistentAngerTarget = persistentAngerTarget;
    }
 
-   @Nullable
    @Override
-   public EntityReference<LivingEntity> getPersistentAngerTarget() {
+   public @Nullable EntityReference<LivingEntity> getPersistentAngerTarget() {
       return this.persistentAngerTarget;
    }
 
@@ -212,7 +210,7 @@ public class Enderman extends Monster implements NeutralMob {
    }
 
    private boolean isBeingStaredBy(final Player player) {
-      return !LivingEntity.PLAYER_NOT_WEARING_DISGUISE_ITEM.test(player) ? false : this.isLookingAtMe(player, 0.025, true, false, new double[]{this.getEyeY()});
+      return !LivingEntity.PLAYER_NOT_WEARING_DISGUISE_ITEM.test(player) ? false : this.isLookingAtMe(player, 0.025, true, false, this.getEyeY());
    }
 
    @Override
@@ -261,7 +259,7 @@ public class Enderman extends Monster implements NeutralMob {
    protected boolean teleport() {
       if (!this.level().isClientSide() && this.isAlive()) {
          double xx = this.getX() + (this.random.nextDouble() - 0.5) * 64.0;
-         double yy = this.getY() + (double)(this.random.nextInt(64) - 32);
+         double yy = this.getY() + (this.random.nextInt(64) - 32);
          double zz = this.getZ() + (this.random.nextDouble() - 0.5) * 64.0;
          return this.teleport(xx, yy, zz);
       } else {
@@ -274,7 +272,7 @@ public class Enderman extends Monster implements NeutralMob {
       dir = dir.normalize();
       double d = 16.0;
       double xx = this.getX() + (this.random.nextDouble() - 0.5) * 8.0 - dir.x * 16.0;
-      double yy = this.getY() + (double)(this.random.nextInt(16) - 8) - dir.y * 16.0;
+      double yy = this.getY() + (this.random.nextInt(16) - 8) - dir.y * 16.0;
       double zz = this.getZ() + (this.random.nextDouble() - 0.5) * 8.0 - dir.z * 16.0;
       return this.teleport(xx, yy, zz);
    }
@@ -283,23 +281,23 @@ public class Enderman extends Monster implements NeutralMob {
    public boolean teleport(final double x, final double y, final double z) {
       if (this.isPassenger()) {
          return false;
-      } else {
-         Vec3 oldPos = this.position();
-         boolean result = this.randomTeleport(x, y, z, true, BlockTags.ENDERMAN_DOES_NOT_TELEPORT_TO);
-         if (result) {
-            Level level = this.level();
-            level.gameEvent(GameEvent.TELEPORT, oldPos, GameEvent.Context.of(this));
-            if (!this.isSilent()) {
-               BlockPos oldBlockPos = BlockPos.containing(oldPos);
-               int packedDiff = BlockUtil.clampedPackDifferenceInPosition(oldBlockPos, this.blockPosition(), 127, 127, 127);
-               level.levelEvent(2018, oldBlockPos, packedDiff);
-               level.playSound(null, this.xo, this.yo, this.zo, SoundEvents.ENDERMAN_TELEPORT, this.getSoundSource(), 1.0F, 1.0F);
-               this.playSound(SoundEvents.ENDERMAN_TELEPORT, 1.0F, 1.0F);
-            }
-         }
-
-         return result;
       }
+
+      Vec3 oldPos = this.position();
+      boolean result = this.randomTeleport(x, y, z, true, BlockTags.ENDERMAN_DOES_NOT_TELEPORT_TO);
+      if (result) {
+         Level level = this.level();
+         level.gameEvent(GameEvent.TELEPORT, oldPos, GameEvent.Context.of(this));
+         if (!this.isSilent()) {
+            BlockPos oldBlockPos = BlockPos.containing(oldPos);
+            int packedDiff = BlockUtil.clampedPackDifferenceInPosition(oldBlockPos, this.blockPosition(), 127, 127, 127);
+            level.levelEvent(2018, oldBlockPos, packedDiff);
+            level.playSound(null, this.xo, this.yo, this.zo, SoundEvents.ENDERMAN_TELEPORT, this.getSoundSource(), 1.0F, 1.0F);
+            this.playSound(SoundEvents.ENDERMAN_TELEPORT, 1.0F, 1.0F);
+         }
+      }
+
+      return result;
    }
 
    @Override
@@ -358,12 +356,11 @@ public class Enderman extends Monster implements NeutralMob {
       }
    }
 
-   public void setCarriedBlock(@Nullable final BlockState carryingBlock) {
+   public void setCarriedBlock(final @Nullable BlockState carryingBlock) {
       this.entityData.set(DATA_CARRY_STATE, Optional.ofNullable(carryingBlock));
    }
 
-   @Nullable
-   public BlockState getCarriedBlock() {
+   public @Nullable BlockState getCarriedBlock() {
       return this.entityData.get(DATA_CARRY_STATE).orElse(null);
    }
 
@@ -371,24 +368,26 @@ public class Enderman extends Monster implements NeutralMob {
    public boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
       if (this.isInvulnerableTo(level, source)) {
          return false;
-      } else {
-         AbstractThrownPotion thrownPotion = source.getDirectEntity() instanceof AbstractThrownPotion potion ? potion : null;
-         if (source.is(DamageTypeTags.IS_PROJECTILE) && !this.isPassenger()) {
-            this.repeatedlyTryToTeleport();
-            return false;
-         } else if (thrownPotion != null) {
-            boolean hurtWithCleanWater = this.hurtWithCleanWater(level, source, thrownPotion, damage);
-            this.repeatedlyTryToTeleport();
-            return hurtWithCleanWater;
-         } else {
-            boolean result = super.hurtServer(level, source, damage);
-            if (!(source.getEntity() instanceof LivingEntity) && this.random.nextInt(10) != 0) {
-               this.teleport();
-            }
-
-            return result;
-         }
       }
+
+      AbstractThrownPotion thrownPotion = source.getDirectEntity() instanceof AbstractThrownPotion potion ? potion : null;
+      if (source.is(DamageTypeTags.IS_PROJECTILE) && !this.isPassenger()) {
+         this.repeatedlyTryToTeleport();
+         return false;
+      }
+
+      if (thrownPotion != null) {
+         boolean hurtWithCleanWater = this.hurtWithCleanWater(level, source, thrownPotion, damage);
+         this.repeatedlyTryToTeleport();
+         return hurtWithCleanWater;
+      }
+
+      boolean result = super.hurtServer(level, source, damage);
+      if (!(source.getEntity() instanceof LivingEntity) && this.random.nextInt(10) != 0) {
+         this.teleport();
+      }
+
+      return result;
    }
 
    private boolean hurtWithCleanWater(final ServerLevel level, final DamageSource source, final AbstractThrownPotion thrownPotion, final float damage) {
@@ -421,8 +420,7 @@ public class Enderman extends Monster implements NeutralMob {
 
    private static class EndermanFreezeWhenLookedAt extends Goal {
       private final Enderman enderman;
-      @Nullable
-      private LivingEntity target;
+      private @Nullable LivingEntity target;
 
       public EndermanFreezeWhenLookedAt(final Enderman enderman) {
          this.enderman = enderman;
@@ -505,19 +503,18 @@ public class Enderman extends Monster implements NeutralMob {
 
    private static class EndermanLookForPlayerGoal extends NearestAttackableTargetGoal<Player> {
       private final Enderman enderman;
-      @Nullable
-      private Player pendingTarget;
+      private @Nullable Player pendingTarget;
       private int aggroTime;
       private int teleportTime;
       private final TargetingConditions startAggroTargetConditions;
       private final TargetingConditions continueAggroTargetConditions = TargetingConditions.forCombat().ignoreLineOfSight();
       private final TargetingConditions.Selector isAngerInducing;
 
-      public EndermanLookForPlayerGoal(final Enderman enderman, @Nullable final TargetingConditions.Selector isAngryAt) {
+      public EndermanLookForPlayerGoal(final Enderman enderman, final TargetingConditions.@Nullable Selector isAngryAt) {
          super(enderman, Player.class, 10, false, false, isAngryAt);
          this.enderman = enderman;
          this.isAngerInducing = (target, level) -> (enderman.isBeingStaredBy((Player)target) || enderman.isAngryAt(target, level))
-               && !enderman.hasIndirectPassenger(target);
+            && !enderman.hasIndirectPassenger(target);
          this.startAggroTargetConditions = TargetingConditions.forCombat().range(this.getFollowDistance()).selector(this.isAngerInducing);
       }
 
@@ -545,10 +542,10 @@ public class Enderman extends Monster implements NeutralMob {
          if (this.pendingTarget != null) {
             if (!this.isAngerInducing.test(this.pendingTarget, getServerLevel(this.enderman))) {
                return false;
-            } else {
-               this.enderman.lookAt(this.pendingTarget, 10.0F, 10.0F);
-               return true;
             }
+
+            this.enderman.lookAt(this.pendingTarget, 10.0F, 10.0F);
+            return true;
          } else {
             if (this.target != null) {
                if (this.enderman.hasIndirectPassenger(this.target)) {
@@ -623,8 +620,8 @@ public class Enderman extends Monster implements NeutralMob {
          int zt = Mth.floor(this.enderman.getZ() - 2.0 + random.nextDouble() * 4.0);
          BlockPos pos = new BlockPos(xt, yt, zt);
          BlockState blockState = level.getBlockState(pos);
-         Vec3 from = new Vec3((double)this.enderman.getBlockX() + 0.5, (double)yt + 0.5, (double)this.enderman.getBlockZ() + 0.5);
-         Vec3 to = new Vec3((double)xt + 0.5, (double)yt + 0.5, (double)zt + 0.5);
+         Vec3 from = new Vec3(this.enderman.getBlockX() + 0.5, yt + 0.5, this.enderman.getBlockZ() + 0.5);
+         Vec3 to = new Vec3(xt + 0.5, yt + 0.5, zt + 0.5);
          BlockHitResult result = level.clip(new ClipContext(from, to, ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, this.enderman));
          boolean reachable = result.getBlockPos().equals(pos);
          if (blockState.is(BlockTags.ENDERMAN_HOLDABLE) && reachable) {

@@ -18,7 +18,7 @@ public class NoiseChunk implements AutoCloseable {
 
    public NoiseChunk(
       final RandomState randomState,
-      @Nullable final Beardifier beardifier,
+      final @Nullable Beardifier beardifier,
       final NoiseGeneratorSettings settings,
       final Aquifer.FluidPicker globalFluidPicker,
       final Blender blender,

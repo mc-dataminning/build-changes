@@ -39,21 +39,21 @@ public class PoiRecord {
    protected boolean acquireTicket() {
       if (this.freeTickets <= 0) {
          return false;
-      } else {
-         this.freeTickets--;
-         this.setDirty.run();
-         return true;
       }
+
+      this.freeTickets--;
+      this.setDirty.run();
+      return true;
    }
 
    protected boolean releaseTicket() {
       if (this.freeTickets >= this.poiType.value().maxTickets()) {
          return false;
-      } else {
-         this.freeTickets++;
-         this.setDirty.run();
-         return true;
       }
+
+      this.freeTickets++;
+      this.setDirty.run();
+      return true;
    }
 
    public boolean hasSpace() {
@@ -86,14 +86,14 @@ public class PoiRecord {
       return this.pos.hashCode();
    }
 
-   public static record Packed(BlockPos pos, Holder<PoiType> poiType, int freeTickets) {
+   public record Packed(BlockPos pos, Holder<PoiType> poiType, int freeTickets) {
       public static final Codec<PoiRecord.Packed> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  BlockPos.CODEC.fieldOf("pos").forGetter(PoiRecord.Packed::pos),
-                  RegistryCodecs.holder(Registries.POINT_OF_INTEREST_TYPE).fieldOf("type").forGetter(PoiRecord.Packed::poiType),
-                  Codec.INT.optionalFieldOf("free_tickets", 0).forGetter(PoiRecord.Packed::freeTickets)
-               )
-               .apply(i, PoiRecord.Packed::new)
+               BlockPos.CODEC.fieldOf("pos").forGetter(PoiRecord.Packed::pos),
+               RegistryCodecs.holder(Registries.POINT_OF_INTEREST_TYPE).fieldOf("type").forGetter(PoiRecord.Packed::poiType),
+               Codec.INT.optionalFieldOf("free_tickets", 0).forGetter(PoiRecord.Packed::freeTickets)
+            )
+            .apply(i, PoiRecord.Packed::new)
       );
 
       public PoiRecord unpack(final Runnable setDirty) {

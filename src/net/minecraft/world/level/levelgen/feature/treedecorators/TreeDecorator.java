@@ -51,7 +51,7 @@ public abstract class TreeDecorator {
       }
 
       public void placeVine(final BlockPos pos, final BooleanProperty direction) {
-         this.setBlock(pos, Blocks.VINE.defaultBlockState().setValue(direction, Boolean.valueOf(true)));
+         this.setBlock(pos, Blocks.VINE.defaultBlockState().setValue(direction, true));
       }
 
       public void setBlock(final BlockPos pos, final BlockState state) {

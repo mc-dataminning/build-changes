@@ -26,8 +26,7 @@ public class BiomeAmbientSoundsHandler implements AmbientSoundHandler {
    private final RandomSource random;
    private final Object2ObjectArrayMap<Holder<SoundEvent>, BiomeAmbientSoundsHandler.LoopSoundInstance> loopSounds = new Object2ObjectArrayMap();
    private float moodiness;
-   @Nullable
-   private Holder<SoundEvent> previousLoopSound;
+   private @Nullable Holder<SoundEvent> previousLoopSound;
 
    public BiomeAmbientSoundsHandler(final LocalPlayer player, final SoundManager soundManager) {
       this.random = player.level().getRandom();
@@ -73,21 +72,21 @@ public class BiomeAmbientSoundsHandler implements AmbientSoundHandler {
             mood -> {
                int searchSpan = mood.blockSearchExtent() * 2 + 1;
                BlockPos blockSamplingPos = BlockPos.containing(
-                  this.player.getX() + (double)this.random.nextInt(searchSpan) - (double)mood.blockSearchExtent(),
-                  this.player.getEyeY() + (double)this.random.nextInt(searchSpan) - (double)mood.blockSearchExtent(),
-                  this.player.getZ() + (double)this.random.nextInt(searchSpan) - (double)mood.blockSearchExtent()
+                  this.player.getX() + this.random.nextInt(searchSpan) - mood.blockSearchExtent(),
+                  this.player.getEyeY() + this.random.nextInt(searchSpan) - mood.blockSearchExtent(),
+                  this.player.getZ() + this.random.nextInt(searchSpan) - mood.blockSearchExtent()
                );
                int skyBrightness = level.getBrightness(LightLayer.SKY, blockSamplingPos);
                if (skyBrightness > 0) {
-                  this.moodiness -= (float)skyBrightness / 15.0F * 0.001F;
+                  this.moodiness -= skyBrightness / 15.0F * 0.001F;
                } else {
-                  this.moodiness = this.moodiness - (float)(level.getBrightness(LightLayer.BLOCK, blockSamplingPos) - 1) / (float)mood.tickDelay();
+                  this.moodiness = this.moodiness - (float)(level.getBrightness(LightLayer.BLOCK, blockSamplingPos) - 1) / mood.tickDelay();
                }
 
                if (this.moodiness >= 1.0F) {
-                  double blockSampleX = (double)blockSamplingPos.getX() + 0.5;
-                  double blockSampleY = (double)blockSamplingPos.getY() + 0.5;
-                  double blockSampleZ = (double)blockSamplingPos.getZ() + 0.5;
+                  double blockSampleX = blockSamplingPos.getX() + 0.5;
+                  double blockSampleY = blockSamplingPos.getY() + 0.5;
+                  double blockSampleZ = blockSamplingPos.getZ() + 0.5;
                   double blockDirectionX = blockSampleX - this.player.getX();
                   double blockDirectionY = blockSampleY - this.player.getEyeY();
                   double blockDirectionZ = blockSampleZ - this.player.getZ();
@@ -128,7 +127,7 @@ public class BiomeAmbientSoundsHandler implements AmbientSoundHandler {
          }
 
          this.fade = this.fade + this.fadeDirection;
-         this.volume = Mth.clamp((float)this.fade / 40.0F, 0.0F, 1.0F);
+         this.volume = Mth.clamp(this.fade / 40.0F, 0.0F, 1.0F);
       }
 
       public void fadeOut() {

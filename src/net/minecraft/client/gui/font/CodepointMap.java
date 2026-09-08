@@ -13,7 +13,7 @@ public class CodepointMap<T> {
    private static final int MAX_BLOCK = 4351;
    private static final int BLOCK_COUNT = 4352;
    private final T[] empty;
-   private final T[][] blockMap;
+   private final @Nullable T[][] blockMap;
    private final IntFunction<T[]> blockConstructor;
 
    public CodepointMap(final IntFunction<T[]> blockConstructor, final IntFunction<T[][]> blockMapConstructor) {
@@ -27,15 +27,13 @@ public class CodepointMap<T> {
       Arrays.fill(this.blockMap, this.empty);
    }
 
-   @Nullable
-   public T get(final int codepoint) {
+   public @Nullable T get(final int codepoint) {
       int block = codepoint >> 8;
       int offset = codepoint & 0xFF;
       return this.blockMap[block][offset];
    }
 
-   @Nullable
-   public T put(final int codepoint, final T value) {
+   public @Nullable T put(final int codepoint, final T value) {
       int block = codepoint >> 8;
       int offset = codepoint & 0xFF;
       T[] blockData = this.blockMap[block];
@@ -58,30 +56,29 @@ public class CodepointMap<T> {
       T current = blockData[offset];
       if (current != null) {
          return current;
-      } else {
-         if (blockData == this.empty) {
-            blockData = (T[])((Object[])this.blockConstructor.apply(256));
-            this.blockMap[block] = blockData;
-         }
-
-         T result = mapper.apply(codepoint);
-         blockData[offset] = result;
-         return result;
       }
+
+      if (blockData == this.empty) {
+         blockData = (T[])((Object[])this.blockConstructor.apply(256));
+         this.blockMap[block] = blockData;
+      }
+
+      T result = mapper.apply(codepoint);
+      blockData[offset] = result;
+      return result;
    }
 
-   @Nullable
-   public T remove(final int codepoint) {
+   public @Nullable T remove(final int codepoint) {
       int block = codepoint >> 8;
       int offset = codepoint & 0xFF;
       T[] blockData = this.blockMap[block];
       if (blockData == this.empty) {
          return null;
-      } else {
-         T previous = blockData[offset];
-         blockData[offset] = null;
-         return previous;
       }
+
+      T previous = blockData[offset];
+      blockData[offset] = null;
+      return previous;
    }
 
    public void forEach(final CodepointMap.Output<T> output) {

@@ -76,9 +76,9 @@ public class BlockStateProperties {
       "shape",
       RailShape.class,
       railShape -> railShape != RailShape.NORTH_EAST
-            && railShape != RailShape.NORTH_WEST
-            && railShape != RailShape.SOUTH_EAST
-            && railShape != RailShape.SOUTH_WEST
+         && railShape != RailShape.NORTH_WEST
+         && railShape != RailShape.SOUTH_EAST
+         && railShape != RailShape.SOUTH_WEST
    );
    public static final int MAX_AGE_1 = 1;
    public static final int MAX_AGE_2 = 2;

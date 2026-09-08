@@ -71,12 +71,12 @@ public class TitleCommand {
                                     Commands.argument("title", ComponentArgument.textComponent(context))
                                        .executes(
                                           c -> showTitle(
-                                                (CommandSourceStack)c.getSource(),
-                                                EntityArgument.getPlayers(c, "targets"),
-                                                ComponentArgument.getRawComponent(c, "title"),
-                                                RESPONSE_SHOW_TITLE,
-                                                ClientboundSetTitleTextPacket::new
-                                             )
+                                             (CommandSourceStack)c.getSource(),
+                                             EntityArgument.getPlayers(c, "targets"),
+                                             ComponentArgument.getRawComponent(c, "title"),
+                                             RESPONSE_SHOW_TITLE,
+                                             ClientboundSetTitleTextPacket::new
+                                          )
                                        )
                                  )
                            ))
@@ -86,12 +86,12 @@ public class TitleCommand {
                                  Commands.argument("title", ComponentArgument.textComponent(context))
                                     .executes(
                                        c -> showTitle(
-                                             (CommandSourceStack)c.getSource(),
-                                             EntityArgument.getPlayers(c, "targets"),
-                                             ComponentArgument.getRawComponent(c, "title"),
-                                             RESPONSE_SHOW_SUBTITLE,
-                                             ClientboundSetSubtitleTextPacket::new
-                                          )
+                                          (CommandSourceStack)c.getSource(),
+                                          EntityArgument.getPlayers(c, "targets"),
+                                          ComponentArgument.getRawComponent(c, "title"),
+                                          RESPONSE_SHOW_SUBTITLE,
+                                          ClientboundSetSubtitleTextPacket::new
+                                       )
                                     )
                               )
                         ))
@@ -101,12 +101,12 @@ public class TitleCommand {
                               Commands.argument("title", ComponentArgument.textComponent(context))
                                  .executes(
                                     c -> showTitle(
-                                          (CommandSourceStack)c.getSource(),
-                                          EntityArgument.getPlayers(c, "targets"),
-                                          ComponentArgument.getRawComponent(c, "title"),
-                                          RESPONSE_SHOW_ACTIONBAR,
-                                          ClientboundSetActionBarTextPacket::new
-                                       )
+                                       (CommandSourceStack)c.getSource(),
+                                       EntityArgument.getPlayers(c, "targets"),
+                                       ComponentArgument.getRawComponent(c, "title"),
+                                       RESPONSE_SHOW_ACTIONBAR,
+                                       ClientboundSetActionBarTextPacket::new
+                                    )
                                  )
                            )
                      ))
@@ -120,12 +120,12 @@ public class TitleCommand {
                                        Commands.argument("fadeOut", TimeArgument.time())
                                           .executes(
                                              c -> setTimes(
-                                                   (CommandSourceStack)c.getSource(),
-                                                   EntityArgument.getPlayers(c, "targets"),
-                                                   IntegerArgumentType.getInteger(c, "fadeIn"),
-                                                   IntegerArgumentType.getInteger(c, "stay"),
-                                                   IntegerArgumentType.getInteger(c, "fadeOut")
-                                                )
+                                                (CommandSourceStack)c.getSource(),
+                                                EntityArgument.getPlayers(c, "targets"),
+                                                IntegerArgumentType.getInteger(c, "fadeIn"),
+                                                IntegerArgumentType.getInteger(c, "stay"),
+                                                IntegerArgumentType.getInteger(c, "fadeOut")
+                                             )
                                           )
                                     )
                               )

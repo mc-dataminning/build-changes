@@ -26,7 +26,7 @@ public interface EnvironmentAttributeProvider extends LootContextUser {
    }
 
    @FunctionalInterface
-   public interface Factory<Self extends EnvironmentAttributeProvider> {
+   interface Factory<Self extends EnvironmentAttributeProvider> {
       Self create(EnvironmentAttribute<?> attribute);
    }
 }

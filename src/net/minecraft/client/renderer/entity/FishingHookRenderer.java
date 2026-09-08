@@ -72,39 +72,39 @@ public class FishingHookRenderer extends EntityRenderer<FishingHook, FishingHook
    private Vec3 getPlayerHandPos(final Player owner, final float swing, final float partialTicks) {
       int invert = getHoldingArm(owner) == HumanoidArm.RIGHT ? 1 : -1;
       if (this.entityRenderDispatcher.options.getCameraType().isFirstPerson() && owner == Minecraft.getInstance().player) {
-         float fov = (float)this.entityRenderDispatcher.options.fov().get().intValue();
-         double viewBobbingScale = 960.0 / (double)fov;
+         float fov = this.entityRenderDispatcher.options.fov().get().intValue();
+         double viewBobbingScale = 960.0 / fov;
          Vec3 viewVec = this.entityRenderDispatcher
             .camera
             .getNearPlane(fov)
-            .getPointOnPlane((float)invert * 0.525F, -0.1F)
+            .getPointOnPlane(invert * 0.525F, -0.1F)
             .scale(viewBobbingScale)
             .yRot(swing * 0.5F)
             .xRot(-swing * 0.7F);
          return owner.getEyePosition(partialTicks).add(viewVec);
       } else {
          float ownerYRot = Mth.lerp(partialTicks, owner.yBodyRotO, owner.yBodyRot) * (float) (Math.PI / 180.0);
-         double sin = (double)Mth.sin((double)ownerYRot);
-         double cos = (double)Mth.cos((double)ownerYRot);
+         double sin = Mth.sin(ownerYRot);
+         double cos = Mth.cos(ownerYRot);
          float playerScale = owner.getScale();
-         double rightOffset = (double)invert * 0.35 * (double)playerScale;
-         double forwardOffset = 0.8 * (double)playerScale;
+         double rightOffset = invert * 0.35 * playerScale;
+         double forwardOffset = 0.8 * playerScale;
          float yOffset = owner.isCrouching() ? -0.1875F : 0.0F;
          return owner.getEyePosition(partialTicks)
-            .add(-cos * rightOffset - sin * forwardOffset, (double)yOffset - 0.45 * (double)playerScale, -sin * rightOffset + cos * forwardOffset);
+            .add(-cos * rightOffset - sin * forwardOffset, yOffset - 0.45 * playerScale, -sin * rightOffset + cos * forwardOffset);
       }
    }
 
    private static float fraction(final int i, final int steps) {
-      return (float)i / (float)steps;
+      return (float)i / steps;
    }
 
    private static void vertex(
       final VertexConsumer builder, final PoseStack.Pose pose, final int lightCoords, final float x, final int y, final int u, final int v
    ) {
-      builder.addVertex(pose, x - 0.5F, (float)y - 0.5F, 0.0F)
+      builder.addVertex(pose, x - 0.5F, y - 0.5F, 0.0F)
          .setColor(-1)
-         .setUv((float)u, (float)v)
+         .setUv(u, v)
          .setOverlay(OverlayTexture.NO_OVERLAY)
          .setLight(lightCoords)
          .setNormal(pose, 0.0F, 1.0F, 0.0F);
@@ -144,7 +144,7 @@ public class FishingHookRenderer extends EntityRenderer<FishingHook, FishingHook
          state.lineOriginOffset = Vec3.ZERO;
       } else {
          float swing = owner.getSwingAnimation(partialTicks);
-         float swing2 = Mth.sin((double)(Mth.sqrt(swing) * (float) Math.PI));
+         float swing2 = Mth.sin(Mth.sqrt(swing) * (float) Math.PI);
          Vec3 playerPos = this.getPlayerHandPos(owner, swing2, partialTicks);
          Vec3 hookPos = entity.getPosition(partialTicks).add(0.0, 0.25, 0.0);
          state.lineOriginOffset = playerPos.subtract(hookPos);

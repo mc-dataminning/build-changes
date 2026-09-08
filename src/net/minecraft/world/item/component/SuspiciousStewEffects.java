@@ -55,13 +55,13 @@ public record SuspiciousStewEffects(List<SuspiciousStewEffects.Entry> effects) i
       }
    }
 
-   public static record Entry(Holder<MobEffect> effect, int duration) {
+   public record Entry(Holder<MobEffect> effect, int duration) {
       public static final Codec<SuspiciousStewEffects.Entry> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  MobEffect.CODEC.fieldOf("id").forGetter(SuspiciousStewEffects.Entry::effect),
-                  Codec.INT.lenientOptionalFieldOf("duration", 160).forGetter(SuspiciousStewEffects.Entry::duration)
-               )
-               .apply(i, SuspiciousStewEffects.Entry::new)
+               MobEffect.CODEC.fieldOf("id").forGetter(SuspiciousStewEffects.Entry::effect),
+               Codec.INT.lenientOptionalFieldOf("duration", 160).forGetter(SuspiciousStewEffects.Entry::duration)
+            )
+            .apply(i, SuspiciousStewEffects.Entry::new)
       );
       public static final StreamCodec<RegistryFriendlyByteBuf, SuspiciousStewEffects.Entry> STREAM_CODEC = StreamCodec.composite(
          MobEffect.STREAM_CODEC,

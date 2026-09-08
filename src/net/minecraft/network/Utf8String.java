@@ -35,22 +35,22 @@ public class Utf8String {
    public static void write(final ByteBuf output, final CharSequence value, final int maxLength) {
       if (value.length() > maxLength) {
          throw new EncoderException("String too big (was " + value.length() + " characters, max " + maxLength + ")");
-      } else {
-         int maxEncodedValueLength = ByteBufUtil.utf8MaxBytes(value);
-         ByteBuf tmp = output.alloc().buffer(maxEncodedValueLength);
+      }
 
-         try {
-            int bytesWritten = ByteBufUtil.writeUtf8(tmp, value);
-            int maxAllowedEncodedLength = ByteBufUtil.utf8MaxBytes(maxLength);
-            if (bytesWritten > maxAllowedEncodedLength) {
-               throw new EncoderException("String too big (was " + bytesWritten + " bytes encoded, max " + maxAllowedEncodedLength + ")");
-            }
+      int maxEncodedValueLength = ByteBufUtil.utf8MaxBytes(value);
+      ByteBuf tmp = output.alloc().buffer(maxEncodedValueLength);
 
-            VarInt.write(output, bytesWritten);
-            output.writeBytes(tmp);
-         } finally {
-            tmp.release();
+      try {
+         int bytesWritten = ByteBufUtil.writeUtf8(tmp, value);
+         int maxAllowedEncodedLength = ByteBufUtil.utf8MaxBytes(maxLength);
+         if (bytesWritten > maxAllowedEncodedLength) {
+            throw new EncoderException("String too big (was " + bytesWritten + " bytes encoded, max " + maxAllowedEncodedLength + ")");
          }
+
+         VarInt.write(output, bytesWritten);
+         output.writeBytes(tmp);
+      } finally {
+         tmp.release();
       }
    }
 }

@@ -50,22 +50,21 @@ public interface EquipmentUser {
       }
    }
 
-   @Nullable
-   default EquipmentSlot resolveSlot(final ItemStack toEquip, final List<EquipmentSlot> alreadyInsertedIntoSlots) {
+   default @Nullable EquipmentSlot resolveSlot(final ItemStack toEquip, final List<EquipmentSlot> alreadyInsertedIntoSlots) {
       if (toEquip.isEmpty()) {
          return null;
-      } else {
-         Equippable equippable = toEquip.get(DataComponents.EQUIPPABLE);
-         if (equippable != null) {
-            EquipmentSlot slot = equippable.slot();
-            if (!alreadyInsertedIntoSlots.contains(slot)) {
-               return slot;
-            }
-         } else if (!alreadyInsertedIntoSlots.contains(EquipmentSlot.MAINHAND)) {
-            return EquipmentSlot.MAINHAND;
-         }
-
-         return null;
       }
+
+      Equippable equippable = toEquip.get(DataComponents.EQUIPPABLE);
+      if (equippable != null) {
+         EquipmentSlot slot = equippable.slot();
+         if (!alreadyInsertedIntoSlots.contains(slot)) {
+            return slot;
+         }
+      } else if (!alreadyInsertedIntoSlots.contains(EquipmentSlot.MAINHAND)) {
+         return EquipmentSlot.MAINHAND;
+      }
+
+      return null;
    }
 }

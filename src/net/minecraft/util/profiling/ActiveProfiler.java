@@ -35,8 +35,7 @@ public class ActiveProfiler implements ProfileCollector {
    private final int startTimeTicks;
    private String path = "";
    private boolean started;
-   @Nullable
-   private ActiveProfiler.PathEntry currentEntry;
+   private ActiveProfiler.@Nullable PathEntry currentEntry;
    private final BooleanSupplier suppressWarnings;
    private final Set<Pair<String, MetricCategory>> chartedPaths = new ObjectArraySet();
 
@@ -122,7 +121,7 @@ public class ActiveProfiler implements ProfileCollector {
             LOGGER.warn(
                "Something's taking too long! '{}' took approximately {} ms",
                LogUtils.defer(() -> ProfileResults.demanglePath(this.path)),
-               LogUtils.defer(() -> (double)time / 1000000.0)
+               LogUtils.defer(() -> time / 1000000.0)
             );
          }
 
@@ -153,12 +152,12 @@ public class ActiveProfiler implements ProfileCollector {
 
    @Override
    public void incrementCounter(final String name, final int amount) {
-      this.getCurrentEntry().counters.addTo(name, (long)amount);
+      this.getCurrentEntry().counters.addTo(name, amount);
    }
 
    @Override
    public void incrementCounter(final Supplier<String> name, final int amount) {
-      this.getCurrentEntry().counters.addTo(name.get(), (long)amount);
+      this.getCurrentEntry().counters.addTo(name.get(), amount);
    }
 
    @Override
@@ -166,9 +165,8 @@ public class ActiveProfiler implements ProfileCollector {
       return new FilledProfileResults(this.entries, this.startTimeNano, this.startTimeTicks, this.getRealTime.getAsLong(), this.getTickTime.getAsInt());
    }
 
-   @Nullable
    @Override
-   public ActiveProfiler.PathEntry getEntry(final String path) {
+   public ActiveProfiler.@Nullable PathEntry getEntry(final String path) {
       return this.entries.get(path);
    }
 

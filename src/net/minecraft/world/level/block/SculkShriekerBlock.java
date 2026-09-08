@@ -39,13 +39,7 @@ public class SculkShriekerBlock extends BaseEntityBlock implements SimpleWaterlo
 
    public SculkShriekerBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(SHRIEKING, Boolean.valueOf(false))
-            .setValue(WATERLOGGED, Boolean.valueOf(false))
-            .setValue(CAN_SUMMON, Boolean.valueOf(false))
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(SHRIEKING, false).setValue(WATERLOGGED, false).setValue(CAN_SUMMON, false));
    }
 
    @Override
@@ -70,7 +64,7 @@ public class SculkShriekerBlock extends BaseEntityBlock implements SimpleWaterlo
    @Override
    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
       if (state.getValue(SHRIEKING)) {
-         level.setBlockAndUpdate(pos, state.setValue(SHRIEKING, Boolean.valueOf(false)));
+         level.setBlockAndUpdate(pos, state.setValue(SHRIEKING, false));
          level.getBlockEntity(pos, BlockEntityTypes.SCULK_SHRIEKER).ifPresent(shrieker -> shrieker.tryRespond(level));
       }
    }
@@ -90,9 +84,8 @@ public class SculkShriekerBlock extends BaseEntityBlock implements SimpleWaterlo
       return true;
    }
 
-   @Nullable
    @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
+   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
       return new SculkShriekerBlockEntity(worldPosition, blockState);
    }
 
@@ -114,10 +107,9 @@ public class SculkShriekerBlock extends BaseEntityBlock implements SimpleWaterlo
       return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.defaultBlockState().setValue(WATERLOGGED, Boolean.valueOf(context.getLevel().getFluidState(context.getClickedPos()).is(Fluids.WATER)));
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
+      return this.defaultBlockState().setValue(WATERLOGGED, context.getLevel().getFluidState(context.getClickedPos()).is(Fluids.WATER));
    }
 
    @Override
@@ -133,9 +125,8 @@ public class SculkShriekerBlock extends BaseEntityBlock implements SimpleWaterlo
       }
    }
 
-   @Nullable
    @Override
-   public <T extends BlockEntity> BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
+   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
       return !level.isClientSide()
          ? BaseEntityBlock.createTickerHelper(
             type,

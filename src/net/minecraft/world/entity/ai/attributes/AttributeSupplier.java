@@ -40,16 +40,15 @@ public class AttributeSupplier {
       }
    }
 
-   @Nullable
-   public AttributeInstance createInstance(final Consumer<AttributeInstance> onDirty, final Holder<Attribute> attribute) {
+   public @Nullable AttributeInstance createInstance(final Consumer<AttributeInstance> onDirty, final Holder<Attribute> attribute) {
       AttributeInstance template = this.instances.get(attribute);
       if (template == null) {
          return null;
-      } else {
-         AttributeInstance result = new AttributeInstance(attribute, onDirty);
-         result.replaceFrom(template);
-         return result;
       }
+
+      AttributeInstance result = new AttributeInstance(attribute, onDirty);
+      result.replaceFrom(template);
+      return result;
    }
 
    public static AttributeSupplier.Builder builder() {

@@ -17,9 +17,9 @@ public class OptionsAmbientOcclusionFix extends DataFix {
          "OptionsAmbientOcclusionFix",
          this.getInputSchema().getType(References.OPTIONS),
          input -> input.update(
-               DSL.remainderFinder(),
-               tag -> (Dynamic)DataFixUtils.orElse(tag.get("ao").asString().map(value -> tag.set("ao", tag.createString(updateValue(value)))).result(), tag)
-            )
+            DSL.remainderFinder(),
+            tag -> (Dynamic)DataFixUtils.orElse(tag.get("ao").asString().map(value -> tag.set("ao", tag.createString(updateValue(value)))).result(), tag)
+         )
       );
    }
 

@@ -102,7 +102,7 @@ public class ServerClockManager extends SavedData implements ClockManager {
    }
 
    public void addTicks(final Holder<WorldClock> clock, final int ticks) {
-      this.modifyClock(clock, instance -> instance.totalTicks = Math.max(instance.totalTicks + (long)ticks, 0L));
+      this.modifyClock(clock, instance -> instance.totalTicks = Math.max(instance.totalTicks + ticks, 0L));
    }
 
    public void setPaused(final Holder<WorldClock> clock, final boolean paused) {
@@ -143,7 +143,7 @@ public class ServerClockManager extends SavedData implements ClockManager {
       return this.getInstance(clock).timeMarkers.entrySet().stream().filter(entry -> entry.getValue().showInCommands()).map(Entry::getKey);
    }
 
-   public static enum MoveResult {
+   public enum MoveResult {
       NO_TIME_MARKER_FOUND,
       NOT_MOVED,
       MOVED;
@@ -167,8 +167,8 @@ public class ServerClockManager extends SavedData implements ClockManager {
          if (!this.paused) {
             this.partialTick = this.partialTick + this.rate;
             int fullTicks = Mth.floor(this.partialTick);
-            this.partialTick -= (float)fullTicks;
-            this.totalTicks += (long)fullTicks;
+            this.partialTick -= fullTicks;
+            this.totalTicks += fullTicks;
          }
       }
 

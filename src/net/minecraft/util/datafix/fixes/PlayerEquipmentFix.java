@@ -21,14 +21,14 @@ public class PlayerEquipmentFix extends DataFix {
       return this.writeFixAndRead("Player Equipment Fix", oldPlayerType, newPlayerType, tag -> {
          Map<Dynamic<?>, Dynamic<?>> equipment = new HashMap<>();
          tag = tag.update("Inventory", inventory -> inventory.createList(inventory.asStream().filter(item -> {
-               int inventorySlot = item.get("Slot").asInt(-1);
-               String equipmentSlot = SLOT_TRANSLATIONS.get(inventorySlot);
-               if (equipmentSlot != null) {
-                  equipment.put(inventory.createString(equipmentSlot), item.remove("Slot"));
-               }
+            int inventorySlot = item.get("Slot").asInt(-1);
+            String equipmentSlot = SLOT_TRANSLATIONS.get(inventorySlot);
+            if (equipmentSlot != null) {
+               equipment.put(inventory.createString(equipmentSlot), item.remove("Slot"));
+            }
 
-               return equipmentSlot == null;
-            })));
+            return equipmentSlot == null;
+         })));
          return tag.set("equipment", tag.createMap(equipment));
       });
    }

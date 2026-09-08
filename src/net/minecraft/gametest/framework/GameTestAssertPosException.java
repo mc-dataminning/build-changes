@@ -33,13 +33,11 @@ public class GameTestAssertPosException extends GameTestAssertException {
       return this.message;
    }
 
-   @Nullable
-   public BlockPos getRelativePos() {
+   public @Nullable BlockPos getRelativePos() {
       return this.relativePos;
    }
 
-   @Nullable
-   public BlockPos getAbsolutePos() {
+   public @Nullable BlockPos getAbsolutePos() {
       return this.absolutePos;
    }
 }

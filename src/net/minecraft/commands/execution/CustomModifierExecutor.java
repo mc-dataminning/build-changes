@@ -10,7 +10,7 @@ import java.util.List;
 public interface CustomModifierExecutor<T> {
    void apply(T originalSource, List<T> currentSources, ContextChain<T> currentStep, ChainModifiers modifiers, ExecutionControl<T> output);
 
-   public interface ModifierAdapter<T> extends CustomModifierExecutor<T>, RedirectModifier<T> {
+   interface ModifierAdapter<T> extends CustomModifierExecutor<T>, RedirectModifier<T> {
       default Collection<T> apply(final CommandContext<T> context) throws CommandSyntaxException {
          throw new UnsupportedOperationException("This function should not run");
       }

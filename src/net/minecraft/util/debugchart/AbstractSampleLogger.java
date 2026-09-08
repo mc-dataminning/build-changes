@@ -7,10 +7,10 @@ public abstract class AbstractSampleLogger implements SampleLogger {
    protected AbstractSampleLogger(final int dimensions, final long[] defaults) {
       if (defaults.length != dimensions) {
          throw new IllegalArgumentException("defaults have incorrect length of " + defaults.length);
-      } else {
-         this.sample = new long[dimensions];
-         this.defaults = defaults;
       }
+
+      this.sample = new long[dimensions];
+      this.defaults = defaults;
    }
 
    @Override

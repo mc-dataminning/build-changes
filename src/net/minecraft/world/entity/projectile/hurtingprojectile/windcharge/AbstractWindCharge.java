@@ -57,14 +57,7 @@ public abstract class AbstractWindCharge extends AbstractHurtingProjectile imple
       float width = this.getType().getDimensions().width() / 2.0F;
       float height = this.getType().getDimensions().height();
       float offset = 0.15F;
-      return new AABB(
-         position.x - (double)width,
-         position.y - 0.15F,
-         position.z - (double)width,
-         position.x + (double)width,
-         position.y - 0.15F + (double)height,
-         position.z + (double)width
-      );
+      return new AABB(position.x - width, position.y - 0.15F, position.z - width, position.x + width, position.y - 0.15F + height, position.z + width);
    }
 
    @Override
@@ -86,13 +79,13 @@ public abstract class AbstractWindCharge extends AbstractHurtingProjectile imple
       super.onHitEntity(hitResult);
       if (this.level() instanceof ServerLevel serverLevel) {
          LivingEntity owner = this.getOwner() instanceof LivingEntity entity ? entity : null;
-         Entity entityx = hitResult.getEntity();
+         Entity entity = hitResult.getEntity();
          if (owner != null) {
-            owner.setLastHurtMob(entityx);
+            owner.setLastHurtMob(entity);
          }
 
          DamageSource source = this.damageSources().windCharge(this, owner);
-         if (entityx.hurtServer(serverLevel, source, 1.0F) && entityx instanceof LivingEntity mob) {
+         if (entity.hurtServer(serverLevel, source, 1.0F) && entity instanceof LivingEntity mob) {
             EnchantmentHelper.doPostAttackEffects(serverLevel, mob, source);
          }
 
@@ -146,9 +139,8 @@ public abstract class AbstractWindCharge extends AbstractHurtingProjectile imple
       return this.getInertia();
    }
 
-   @Nullable
    @Override
-   protected ParticleOptions getTrailParticle() {
+   protected @Nullable ParticleOptions getTrailParticle() {
       return null;
    }
 

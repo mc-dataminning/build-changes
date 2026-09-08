@@ -32,10 +32,8 @@ import org.jspecify.annotations.Nullable;
 
 public class StructureUtils {
    public static final int DEFAULT_Y_SEARCH_RADIUS = 10;
-   @Nullable
-   public static Path testStructuresTargetDir;
-   @Nullable
-   public static Path testStructuresSourceDir;
+   public static @Nullable Path testStructuresTargetDir;
+   public static @Nullable Path testStructuresSourceDir;
 
    public static Rotation getRotationForRotationSteps(final int rotationSteps) {
       return switch (rotationSteps) {

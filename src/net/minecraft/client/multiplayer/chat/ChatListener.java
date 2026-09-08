@@ -66,7 +66,7 @@ public class ChatListener {
    }
 
    public long queueSize() {
-      return (long)this.delayedMessageQueue.size();
+      return this.delayedMessageQueue.size();
    }
 
    public void flushQueue() {
@@ -79,7 +79,7 @@ public class ChatListener {
       return this.delayedMessageQueue.removeIf(message -> signature.equals(message.signature()));
    }
 
-   private void handleMessage(@Nullable final MessageSignature signature, final BooleanSupplier handler) {
+   private void handleMessage(final @Nullable MessageSignature signature, final BooleanSupplier handler) {
       if (this.messageDelay > 0L) {
          this.delayedMessageQueue.add(new ChatListener.Message(signature, handler));
       } else {
@@ -103,7 +103,7 @@ public class ChatListener {
       });
    }
 
-   public void handleChatMessageError(final UUID senderId, @Nullable final MessageSignature invalidSignature, final ChatType.Bound boundChatType) {
+   public void handleChatMessageError(final UUID senderId, final @Nullable MessageSignature invalidSignature, final ChatType.Bound boundChatType) {
       this.handleMessage(null, () -> {
          ClientPacketListener connection = this.minecraft.getConnection();
          if (connection != null && invalidSignature != null) {
@@ -157,32 +157,34 @@ public class ChatListener {
       ChatTrustLevel trustLevel = this.evaluateTrustLevel(message, decoratedMessage, received);
       if (onlyShowSecure && trustLevel.isNotSecure()) {
          return false;
-      } else if (!this.minecraft.isBlocked(message.sender()) && !message.isFullyFiltered()) {
+      }
+
+      if (!this.minecraft.isBlocked(message.sender()) && !message.isFullyFiltered()) {
          if (this.minecraft.isFriendOnlyRestricted(message.sender())) {
             return false;
-         } else {
-            LocalPlayer receiver = this.minecraft.player;
-            if (receiver != null && receiver.chatAbilities().canReceivePlayerMessages()) {
-               GuiMessageTag tag = trustLevel.createTag(message);
-               MessageSignature signature = message.signature();
-               FilterMask filterMask = message.filterMask();
-               if (filterMask.isEmpty()) {
-                  this.minecraft.gui.hud.getChat().addPlayerMessage(decoratedMessage, signature, tag);
-                  this.narrateChatMessage(boundChatType, message.decoratedContent());
-               } else {
-                  Component filteredContent = filterMask.applyWithFormatting(message.signedContent());
-                  if (filteredContent != null) {
-                     this.minecraft.gui.hud.getChat().addPlayerMessage(boundChatType.decorate(filteredContent), signature, tag);
-                     this.narrateChatMessage(boundChatType, filteredContent);
-                  }
-               }
+         }
 
-               this.logPlayerMessage(message, sender, trustLevel);
-               this.previousMessageTime = Util.getMillis();
-               return true;
+         LocalPlayer receiver = this.minecraft.player;
+         if (receiver != null && receiver.chatAbilities().canReceivePlayerMessages()) {
+            GuiMessageTag tag = trustLevel.createTag(message);
+            MessageSignature signature = message.signature();
+            FilterMask filterMask = message.filterMask();
+            if (filterMask.isEmpty()) {
+               this.minecraft.gui.hud.getChat().addPlayerMessage(decoratedMessage, signature, tag);
+               this.narrateChatMessage(boundChatType, message.decoratedContent());
             } else {
-               return false;
+               Component filteredContent = filterMask.applyWithFormatting(message.signedContent());
+               if (filteredContent != null) {
+                  this.minecraft.gui.hud.getChat().addPlayerMessage(boundChatType.decorate(filteredContent), signature, tag);
+                  this.narrateChatMessage(boundChatType, filteredContent);
+               }
             }
+
+            this.logPlayerMessage(message, sender, trustLevel);
+            this.previousMessageTime = Util.getMillis();
+            return true;
+         } else {
+            return false;
          }
       } else {
          return false;
@@ -246,7 +248,7 @@ public class ChatListener {
       }
    }
 
-   private static record Message(@Nullable MessageSignature signature, BooleanSupplier handler) {
+   private record Message(@Nullable MessageSignature signature, BooleanSupplier handler) {
       public boolean accept() {
          return this.handler.getAsBoolean();
       }

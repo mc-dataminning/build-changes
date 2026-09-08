@@ -14,11 +14,11 @@ public class DustColorTransitionOptions extends ScalableParticleOptionsBase {
    public static final DustColorTransitionOptions SCULK_TO_REDSTONE = new DustColorTransitionOptions(3790560, 16711680, 1.0F);
    public static final MapCodec<DustColorTransitionOptions> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               ExtraCodecs.RGB_COLOR_CODEC.fieldOf("from_color").forGetter(o -> o.fromColor),
-               ExtraCodecs.RGB_COLOR_CODEC.fieldOf("to_color").forGetter(o -> o.toColor),
-               SCALE.fieldOf("scale").forGetter(ScalableParticleOptionsBase::getScale)
-            )
-            .apply(i, DustColorTransitionOptions::new)
+            ExtraCodecs.RGB_COLOR_CODEC.fieldOf("from_color").forGetter(o -> o.fromColor),
+            ExtraCodecs.RGB_COLOR_CODEC.fieldOf("to_color").forGetter(o -> o.toColor),
+            SCALE.fieldOf("scale").forGetter(ScalableParticleOptionsBase::getScale)
+         )
+         .apply(i, DustColorTransitionOptions::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, DustColorTransitionOptions> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.INT,

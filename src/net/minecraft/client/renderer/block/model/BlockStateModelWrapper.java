@@ -39,7 +39,7 @@ public class BlockStateModelWrapper implements BlockModel {
       }
    }
 
-   public static record Unbaked(BlockState model, List<BlockTintSource> tints, Optional<Transformation> transformation) implements BlockModel.Unbaked {
+   public record Unbaked(BlockState model, List<BlockTintSource> tints, Optional<Transformation> transformation) implements BlockModel.Unbaked {
       @Override
       public BlockModel bake(final BlockModel.BakingContext context, final Matrix4fc transformation) {
          BlockStateModel baseModel = context.modelGetter().apply(this.model);

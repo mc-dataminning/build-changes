@@ -122,9 +122,9 @@ public class GuardianModel extends EntityModel<GuardianRenderState> {
 
       this.eye.visible = true;
       float swim = state.tailAnimation;
-      this.tailParts[0].yRot = Mth.sin((double)swim) * (float) Math.PI * 0.05F;
-      this.tailParts[1].yRot = Mth.sin((double)swim) * (float) Math.PI * 0.1F;
-      this.tailParts[2].yRot = Mth.sin((double)swim) * (float) Math.PI * 0.15F;
+      this.tailParts[0].yRot = Mth.sin(swim) * (float) Math.PI * 0.05F;
+      this.tailParts[1].yRot = Mth.sin(swim) * (float) Math.PI * 0.1F;
+      this.tailParts[2].yRot = Mth.sin(swim) * (float) Math.PI * 0.15F;
    }
 
    private void setupSpikes(final float ageInTicks, final float withdrawal) {
@@ -136,7 +136,7 @@ public class GuardianModel extends EntityModel<GuardianRenderState> {
    }
 
    private static float getSpikeOffset(final int spike, final float ageInTicks, final float withdrawal) {
-      return 1.0F + Mth.cos((double)(ageInTicks * 1.5F + (float)spike)) * 0.01F - withdrawal;
+      return 1.0F + Mth.cos(ageInTicks * 1.5F + spike) * 0.01F - withdrawal;
    }
 
    private static float getSpikeX(final int spike, final float ageInTicks, final float withdrawal) {

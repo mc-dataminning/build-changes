@@ -42,7 +42,7 @@ public class DragonHeadModel extends SkullModelBase {
 
    public void setupAnim(final SkullModelBase.State state) {
       super.setupAnim(state);
-      this.jaw.xRot = (float)(Math.sin((double)(state.animationPos * (float) Math.PI * 0.2F)) + 1.0) * 0.2F;
+      this.jaw.xRot = (float)(Math.sin(state.animationPos * (float) Math.PI * 0.2F) + 1.0) * 0.2F;
       this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
       this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
    }

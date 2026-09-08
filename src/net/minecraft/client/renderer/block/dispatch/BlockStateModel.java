@@ -7,7 +7,6 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.client.resources.model.ModelBaker;
 import net.minecraft.client.resources.model.ResolvableModel;
 import net.minecraft.client.resources.model.geometry.BakedQuad;
@@ -23,20 +22,15 @@ public interface BlockStateModel {
 
    Material.Baked particleMaterial();
 
-   @BakedQuad.MaterialFlags
-   int materialFlags();
+   @BakedQuad.MaterialFlags int materialFlags();
 
-   default boolean hasMaterialFlag(@BakedQuad.MaterialFlags final int flag) {
+   default boolean hasMaterialFlag(final @BakedQuad.MaterialFlags int flag) {
       return (this.materialFlags() & flag) != 0;
    }
 
-   public static class SimpleCachedUnbakedRoot implements BlockStateModel.UnbakedRoot {
+   class SimpleCachedUnbakedRoot implements BlockStateModel.UnbakedRoot {
       private final BlockStateModel.Unbaked contents;
       private final ModelBaker.SharedOperationKey<BlockStateModel> bakingKey = new ModelBaker.SharedOperationKey<BlockStateModel>() {
-         {
-            Objects.requireNonNull(SimpleCachedUnbakedRoot.this);
-         }
-
          public BlockStateModel compute(final ModelBaker modelBakery) {
             return SimpleCachedUnbakedRoot.this.contents.bake(modelBakery);
          }
@@ -62,10 +56,10 @@ public interface BlockStateModel {
       }
    }
 
-   public interface Unbaked extends ResolvableModel {
+   interface Unbaked extends ResolvableModel {
       Codec<Weighted<Variant>> ELEMENT_CODEC = RecordCodecBuilder.create(
          i -> i.group(Variant.MAP_CODEC.forGetter(Weighted::value), ExtraCodecs.POSITIVE_INT.optionalFieldOf("weight", 1).forGetter(Weighted::weight))
-               .apply(i, Weighted::new)
+            .apply(i, Weighted::new)
       );
       Codec<WeightedVariants.Unbaked> HARDCODED_WEIGHTED_CODEC = ExtraCodecs.nonEmptyList(ELEMENT_CODEC.listOf())
          .flatComapMap(w -> new WeightedVariants.Unbaked(WeightedList.of(Lists.transform(w, e -> e.map(SingleVariant.Unbaked::new)))), unbaked -> {
@@ -84,8 +78,6 @@ public interface BlockStateModel {
          });
       Codec<BlockStateModel.Unbaked> CODEC = Codec.either(HARDCODED_WEIGHTED_CODEC, SingleVariant.Unbaked.CODEC)
          .flatComapMap(v -> (BlockStateModel.Unbaked)v.map(l -> l, r -> r), o -> {
-            Objects.requireNonNull(o);
-
             return switch (o) {
                case SingleVariant.Unbaked single -> DataResult.success(Either.right(single));
                case WeightedVariants.Unbaked multiple -> DataResult.success(Either.left(multiple));
@@ -100,7 +92,7 @@ public interface BlockStateModel {
       }
    }
 
-   public interface UnbakedRoot extends ResolvableModel {
+   interface UnbakedRoot extends ResolvableModel {
       BlockStateModel bake(BlockState blockState, ModelBaker modelBakery);
 
       Object visualEqualityGroup(BlockState blockState);

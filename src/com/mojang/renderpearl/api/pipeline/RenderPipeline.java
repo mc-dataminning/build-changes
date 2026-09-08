@@ -24,12 +24,11 @@ public class RenderPipeline {
    private final Map<ShaderType, Identifier> shaders;
    private final ShaderDefines shaderDefines;
    private final List<BindGroupLayout> bindGroupLayouts;
-   @Nullable
-   private final DepthStencilState depthStencilState;
+   private final @Nullable DepthStencilState depthStencilState;
    private final PolygonMode polygonMode;
    private final boolean cull;
-   private final List<ColorTargetState> colorTargetStates;
-   private final List<VertexFormat> vertexFormatPerBuffer;
+   private final List<@Nullable ColorTargetState> colorTargetStates;
+   private final List<@Nullable VertexFormat> vertexFormatPerBuffer;
    private final PrimitiveTopology primitiveTopology;
    private final int pushConstantSize;
    private final int sortKey;
@@ -40,11 +39,11 @@ public class RenderPipeline {
       final Map<ShaderType, Identifier> shaders,
       final ShaderDefines shaderDefines,
       final Collection<BindGroupLayout> bindGroupLayouts,
-      final ColorTargetState[] colorTargetStates,
-      @Nullable final DepthStencilState depthStencilState,
+      final @Nullable ColorTargetState[] colorTargetStates,
+      final @Nullable DepthStencilState depthStencilState,
       final PolygonMode polygonMode,
       final boolean cull,
-      final VertexFormat[] vertexFormatPerBuffer,
+      final @Nullable VertexFormat[] vertexFormatPerBuffer,
       final PrimitiveTopology primitiveTopology,
       final int pushConstantSize,
       final int sortKey
@@ -84,12 +83,11 @@ public class RenderPipeline {
       return this.cull;
    }
 
-   public List<ColorTargetState> getColorTargetStates() {
+   public List<@Nullable ColorTargetState> getColorTargetStates() {
       return this.colorTargetStates;
    }
 
-   @Nullable
-   public DepthStencilState getDepthStencilState() {
+   public @Nullable DepthStencilState getDepthStencilState() {
       return this.depthStencilState;
    }
 
@@ -97,12 +95,11 @@ public class RenderPipeline {
       return this.location;
    }
 
-   public List<VertexFormat> getVertexFormatBindings() {
+   public List<@Nullable VertexFormat> getVertexFormatBindings() {
       return this.vertexFormatPerBuffer;
    }
 
-   @Nullable
-   public VertexFormat getVertexFormatBinding(final int bindingIndex) {
+   public @Nullable VertexFormat getVertexFormatBinding(final int bindingIndex) {
       return this.vertexFormatPerBuffer.get(bindingIndex);
    }
 
@@ -149,9 +146,9 @@ public class RenderPipeline {
       private Optional<DepthStencilState> depthStencilState = Optional.empty();
       private Optional<PolygonMode> polygonMode = Optional.empty();
       private Optional<Boolean> cull = Optional.empty();
-      private final ColorTargetState[] colorTargetStates = new ColorTargetState[8];
+      private final @Nullable ColorTargetState[] colorTargetStates = new ColorTargetState[8];
       private int activeColorTargetStateCount;
-      private final VertexFormat[] vertexFormatPerBuffer = new VertexFormat[16];
+      private final @Nullable VertexFormat[] vertexFormatPerBuffer = new VertexFormat[16];
       private Optional<PrimitiveTopology> primitiveTopology = Optional.empty();
       private int pushConstantSize = 0;
 
@@ -302,7 +299,7 @@ public class RenderPipeline {
 
          snippet.bindGroupLayouts.ifPresent(snippetLayouts -> {
             if (this.bindGroupLayouts.isPresent()) {
-               this.bindGroupLayouts.get().addAll(snippetLayouts);
+               this.bindGroupLayouts.get().addAll((Collection<? extends BindGroupLayout>)snippetLayouts);
             } else {
                this.bindGroupLayouts = Optional.of(new ObjectOpenHashSet(snippetLayouts));
             }
@@ -323,10 +320,10 @@ public class RenderPipeline {
 
          this.activeColorTargetStateCount = Math.max(this.activeColorTargetStateCount, snippet.activeColorTargetStateCount);
 
-         for (int ix = 0; ix < snippet.vertexFormatPerBuffer.length; ix++) {
-            VertexFormat vertexFormat = snippet.vertexFormatPerBuffer[ix];
+         for (int i = 0; i < snippet.vertexFormatPerBuffer.length; i++) {
+            VertexFormat vertexFormat = snippet.vertexFormatPerBuffer[i];
             if (vertexFormat != null) {
-               this.vertexFormatPerBuffer[ix] = vertexFormat;
+               this.vertexFormatPerBuffer[i] = vertexFormat;
             }
          }
 
@@ -361,76 +358,82 @@ public class RenderPipeline {
       public RenderPipeline build() {
          if (this.location.isEmpty()) {
             throw new IllegalStateException("Missing location");
-         } else if (!this.shaders.containsKey(ShaderType.VERTEX)) {
-            throw new IllegalStateException("Missing vertex shader");
-         } else if (!this.shaders.containsKey(ShaderType.FRAGMENT)) {
-            throw new IllegalStateException("Missing fragment shader");
-         } else if (this.primitiveTopology.isEmpty()) {
-            throw new IllegalStateException("Missing primitive topology");
-         } else {
-            ColorTargetState[] activeColorTargetStates;
-            if (this.activeColorTargetStateCount == 0) {
-               activeColorTargetStates = new ColorTargetState[0];
-            } else {
-               activeColorTargetStates = Arrays.copyOf(this.colorTargetStates, this.activeColorTargetStateCount);
-               Optional<BlendFunction> lastBlend = Optional.empty();
+         }
 
-               for (ColorTargetState activeColorTargetState : activeColorTargetStates) {
-                  if (activeColorTargetState != null) {
-                     Optional<BlendFunction> currentBlend = activeColorTargetState.blendFunction();
-                     if (currentBlend.isPresent()) {
-                        if (lastBlend.isEmpty()) {
-                           lastBlend = currentBlend;
-                        } else if (!currentBlend.equals(lastBlend)) {
-                           throw new IllegalStateException("Blend functions must currently be the same for all color targets");
-                        }
+         if (!this.shaders.containsKey(ShaderType.VERTEX)) {
+            throw new IllegalStateException("Missing vertex shader");
+         }
+
+         if (!this.shaders.containsKey(ShaderType.FRAGMENT)) {
+            throw new IllegalStateException("Missing fragment shader");
+         }
+
+         if (this.primitiveTopology.isEmpty()) {
+            throw new IllegalStateException("Missing primitive topology");
+         }
+
+         ColorTargetState[] activeColorTargetStates;
+         if (this.activeColorTargetStateCount == 0) {
+            activeColorTargetStates = new ColorTargetState[0];
+         } else {
+            activeColorTargetStates = Arrays.copyOf(this.colorTargetStates, this.activeColorTargetStateCount);
+            Optional<BlendFunction> lastBlend = Optional.empty();
+
+            for (ColorTargetState activeColorTargetState : activeColorTargetStates) {
+               if (activeColorTargetState != null) {
+                  Optional<BlendFunction> currentBlend = activeColorTargetState.blendFunction();
+                  if (currentBlend.isPresent()) {
+                     if (lastBlend.isEmpty()) {
+                        lastBlend = currentBlend;
+                     } else if (!currentBlend.equals(lastBlend)) {
+                        throw new IllegalStateException("Blend functions must currently be the same for all color targets");
                      }
                   }
                }
             }
+         }
 
-            int boundVertexAttribCount = 0;
+         int boundVertexAttribCount = 0;
 
-            for (VertexFormat bindings : this.vertexFormatPerBuffer) {
-               if (bindings != null) {
-                  boundVertexAttribCount += bindings.getElements().size();
-               }
+         for (VertexFormat bindings : this.vertexFormatPerBuffer) {
+            if (bindings != null) {
+               boundVertexAttribCount += bindings.getElements().size();
             }
+         }
 
-            if (boundVertexAttribCount > 16) {
-               throw new IllegalStateException("Binding more than 16 vertex attributes is not supported");
-            } else if (this.pushConstantSize > 128) {
-               throw new IllegalStateException("Maximum push constant size is 128 bytes");
-            } else {
-               return new RenderPipeline(
-                  this.location.get(),
-                  this.shaders,
-                  this.definesBuilder.orElse(ShaderDefines.builder()).build(),
-                  this.bindGroupLayouts.orElse(Collections.emptySet()),
-                  activeColorTargetStates,
-                  this.depthStencilState.orElse(null),
-                  this.polygonMode.orElse(PolygonMode.FILL),
-                  this.cull.orElse(true),
-                  this.vertexFormatPerBuffer,
-                  this.primitiveTopology.get(),
-                  this.pushConstantSize,
-                  nextPipelineSortKey++
-               );
-            }
+         if (boundVertexAttribCount > 16) {
+            throw new IllegalStateException("Binding more than 16 vertex attributes is not supported");
+         } else if (this.pushConstantSize > 128) {
+            throw new IllegalStateException("Maximum push constant size is 128 bytes");
+         } else {
+            return new RenderPipeline(
+               this.location.get(),
+               this.shaders,
+               this.definesBuilder.orElse(ShaderDefines.builder()).build(),
+               this.bindGroupLayouts.orElse(Collections.emptySet()),
+               activeColorTargetStates,
+               this.depthStencilState.orElse(null),
+               this.polygonMode.orElse(PolygonMode.FILL),
+               this.cull.orElse(true),
+               this.vertexFormatPerBuffer,
+               this.primitiveTopology.get(),
+               this.pushConstantSize,
+               nextPipelineSortKey++
+            );
          }
       }
    }
 
-   public static record Snippet(
+   public record Snippet(
       Map<ShaderType, Identifier> shaders,
       Optional<ShaderDefines> shaderDefines,
       Optional<List<BindGroupLayout>> bindGroupLayouts,
-      ColorTargetState[] colorTargetStates,
+      @Nullable ColorTargetState[] colorTargetStates,
       int activeColorTargetStateCount,
       Optional<DepthStencilState> depthStencilState,
       Optional<PolygonMode> polygonMode,
       Optional<Boolean> cull,
-      VertexFormat[] vertexFormatPerBuffer,
+      @Nullable VertexFormat[] vertexFormatPerBuffer,
       Optional<PrimitiveTopology> vertexFormatMode,
       int pushConstantSize
    ) {

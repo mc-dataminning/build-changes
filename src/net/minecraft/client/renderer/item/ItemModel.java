@@ -26,7 +26,7 @@ public interface ItemModel {
       int seed
    );
 
-   public static record BakingContext(
+   record BakingContext(
       ModelBaker blockModelBaker,
       EntityModelSet entityModelSet,
       SpriteGetter sprites,
@@ -39,7 +39,7 @@ public interface ItemModel {
       }
    }
 
-   public interface Unbaked extends ResolvableModel {
+   interface Unbaked extends ResolvableModel {
       MapCodec<? extends ItemModel.Unbaked> type();
 
       ItemModel bake(ItemModel.BakingContext context, Matrix4fc transformation);

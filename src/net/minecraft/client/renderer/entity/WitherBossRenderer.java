@@ -44,7 +44,7 @@ public class WitherBossRenderer extends MobRenderer<WitherBoss, WitherRenderStat
    public void extractRenderState(final WitherBoss entity, final WitherRenderState state, final float partialTicks) {
       super.extractRenderState(entity, state, partialTicks);
       int invulnerableTicks = entity.getInvulnerableTicks();
-      state.invulnerableTicks = invulnerableTicks > 0 ? (float)invulnerableTicks - partialTicks : 0.0F;
+      state.invulnerableTicks = invulnerableTicks > 0 ? invulnerableTicks - partialTicks : 0.0F;
       System.arraycopy(entity.getHeadXRots(), 0, state.xHeadRots, 0, state.xHeadRots.length);
       System.arraycopy(entity.getHeadYRots(), 0, state.yHeadRots, 0, state.yHeadRots.length);
       state.isPowered = entity.isPowered();

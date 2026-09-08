@@ -36,10 +36,8 @@ import org.jspecify.annotations.Nullable;
 
 public class ShulkerBullet extends Projectile {
    private static final double SPEED = 0.15;
-   @Nullable
-   private EntityReference<Entity> finalTarget;
-   @Nullable
-   private Direction currentMoveDirection;
+   private @Nullable EntityReference<Entity> finalTarget;
+   private @Nullable Direction currentMoveDirection;
    private int flightSteps;
    private double targetDeltaX;
    private double targetDeltaY;
@@ -94,28 +92,27 @@ public class ShulkerBullet extends Projectile {
    protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
    }
 
-   @Nullable
-   private Direction getMoveDirection() {
+   private @Nullable Direction getMoveDirection() {
       return this.currentMoveDirection;
    }
 
-   private void setMoveDirection(@Nullable final Direction direction) {
+   private void setMoveDirection(final @Nullable Direction direction) {
       this.currentMoveDirection = direction;
    }
 
-   private void selectNextMoveDirection(@Nullable final Direction.Axis avoidAxis, @Nullable final Entity target) {
+   private void selectNextMoveDirection(final Direction.@Nullable Axis avoidAxis, final @Nullable Entity target) {
       double yOffset = 0.5;
       BlockPos targetPos;
       if (target == null) {
          targetPos = this.blockPosition().below();
       } else {
-         yOffset = (double)target.getBbHeight() * 0.5;
+         yOffset = target.getBbHeight() * 0.5;
          targetPos = BlockPos.containing(target.getX(), target.getY() + yOffset, target.getZ());
       }
 
-      double targetX = (double)targetPos.getX() + 0.5;
-      double targetY = (double)targetPos.getY() + yOffset;
-      double targetZ = (double)targetPos.getZ() + 0.5;
+      double targetX = targetPos.getX() + 0.5;
+      double targetY = targetPos.getY() + yOffset;
+      double targetZ = targetPos.getZ() + 0.5;
       Direction selection = null;
       if (!targetPos.closerToCenterThan(this.position(), 2.0)) {
          BlockPos current = this.blockPosition();
@@ -153,9 +150,9 @@ public class ShulkerBullet extends Projectile {
             selection = options.get(this.random.nextInt(options.size()));
          }
 
-         targetX = this.getX() + (double)selection.getStepX();
-         targetY = this.getY() + (double)selection.getStepY();
-         targetZ = this.getZ() + (double)selection.getStepZ();
+         targetX = this.getX() + selection.getStepX();
+         targetY = this.getY() + selection.getStepY();
+         targetZ = this.getZ() + selection.getStepZ();
       }
 
       this.setMoveDirection(selection);

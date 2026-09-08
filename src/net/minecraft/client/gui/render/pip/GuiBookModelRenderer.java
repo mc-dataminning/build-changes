@@ -33,7 +33,7 @@ public class GuiBookModelRenderer extends PictureInPictureRenderer<GuiBookModelR
 
    @Override
    protected float getTranslateY(final int height, final int guiScale) {
-      return (float)(17 * guiScale);
+      return 17 * guiScale;
    }
 
    @Override

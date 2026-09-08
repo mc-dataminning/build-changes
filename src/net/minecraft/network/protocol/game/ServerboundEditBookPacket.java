@@ -19,11 +19,8 @@ public record ServerboundEditBookPacket(int slot, List<String> pages, Optional<S
       ServerboundEditBookPacket::new
    );
 
-   public ServerboundEditBookPacket(int slot, List<String> pages, Optional<String> title) {
+   public ServerboundEditBookPacket {
       pages = List.copyOf(pages);
-      this.slot = slot;
-      this.pages = pages;
-      this.title = title;
    }
 
    @Override

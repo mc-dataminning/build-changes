@@ -157,31 +157,31 @@ public class GlConst {
 
    public static int toGl(final BlendFactor blendFactor) {
       return switch (blendFactor) {
-         case CONSTANT_ALPHA -> '考';
-         case CONSTANT_COLOR -> '老';
-         case DST_ALPHA -> '̄';
-         case DST_COLOR -> '̆';
-         case ONE -> '\u0001';
-         case ONE_MINUS_CONSTANT_ALPHA -> '耄';
-         case ONE_MINUS_CONSTANT_COLOR -> '耂';
-         case ONE_MINUS_DST_ALPHA -> '̅';
-         case ONE_MINUS_DST_COLOR -> '̇';
-         case ONE_MINUS_SRC_ALPHA -> '̃';
-         case ONE_MINUS_SRC_COLOR -> '́';
-         case SRC_ALPHA -> '̂';
-         case SRC_ALPHA_SATURATE -> '̈';
-         case SRC_COLOR -> '̀';
-         case ZERO -> '\u0000';
+         case CONSTANT_ALPHA -> 32771;
+         case CONSTANT_COLOR -> 32769;
+         case DST_ALPHA -> 772;
+         case DST_COLOR -> 774;
+         case ONE -> 1;
+         case ONE_MINUS_CONSTANT_ALPHA -> 32772;
+         case ONE_MINUS_CONSTANT_COLOR -> 32770;
+         case ONE_MINUS_DST_ALPHA -> 773;
+         case ONE_MINUS_DST_COLOR -> 775;
+         case ONE_MINUS_SRC_ALPHA -> 771;
+         case ONE_MINUS_SRC_COLOR -> 769;
+         case SRC_ALPHA -> 770;
+         case SRC_ALPHA_SATURATE -> 776;
+         case SRC_COLOR -> 768;
+         case ZERO -> 0;
       };
    }
 
    public static int toGl(final BlendOp blendOp) {
       return switch (blendOp) {
-         case ADD -> '耆';
-         case SUBTRACT -> '耊';
-         case REVERSE_SUBTRACT -> '耋';
-         case MIN -> '耇';
-         case MAX -> '耈';
+         case ADD -> 32774;
+         case SUBTRACT -> 32778;
+         case REVERSE_SUBTRACT -> 32779;
+         case MIN -> 32775;
+         case MAX -> 32776;
       };
    }
 
@@ -207,8 +207,8 @@ public class GlConst {
 
    public static int toGl(final AddressMode addressMode) {
       return switch (addressMode) {
-         case REPEAT -> '⤁';
-         case CLAMP_TO_EDGE -> '脯';
+         case REPEAT -> 10497;
+         case CLAMP_TO_EDGE -> 33071;
       };
    }
 
@@ -237,99 +237,99 @@ public class GlConst {
 
    public static int toGlInternalId(final GpuFormat gpuFormat) {
       return switch (gpuFormat) {
-         case R8_UNORM -> '舩';
-         case R8_SNORM -> '辔';
-         case R16_UNORM -> '航';
-         case R16_SNORM -> '辘';
-         case RG8_UNORM -> '舫';
-         case RG8_SNORM -> '辕';
-         case RG16_UNORM -> '般';
-         case RG16_SNORM -> '辙';
-         default -> '\u0000';
-         case RGBA8_UNORM -> '聘';
-         case RGBA8_SNORM -> '辗';
-         case RGBA16_UNORM -> '聛';
-         case RGB10A2_UNORM -> '聙';
-         case D16_UNORM -> '膥';
-         case RGBA16_SNORM -> '辛';
-         case R8_UINT -> '舲';
-         case R8_SINT -> '舱';
-         case RG8_UINT -> '舸';
-         case RG8_SINT -> '舷';
-         case RGBA8_UINT -> '赼';
-         case RGBA8_SINT -> '趎';
-         case R16_UINT -> '舴';
-         case R16_SINT -> '舳';
-         case RG16_UINT -> '舺';
-         case RG16_SINT -> '船';
-         case RGBA16_UINT -> '赶';
-         case RGBA16_SINT -> '趈';
-         case R32_UINT -> '舶';
-         case R32_SINT -> '舵';
-         case RG32_UINT -> '舼';
-         case RG32_SINT -> '舻';
-         case RGB32_UINT -> '赱';
-         case RGB32_SINT -> '趃';
-         case RGBA32_UINT -> '走';
-         case RGBA32_SINT -> '趂';
-         case R16_FLOAT -> '舭';
-         case RG16_FLOAT -> '舯';
-         case RGBA16_FLOAT -> '蠚';
-         case R32_FLOAT -> '舮';
-         case RG32_FLOAT -> '舰';
-         case RGBA32_FLOAT -> '蠔';
-         case RGB10A2_UINT -> '遯';
-         case RG11B10_FLOAT -> '谺';
-         case D32_FLOAT -> '責';
-         case D32_FLOAT_S8_UINT -> '貭';
-         case D24_UNORM_S8_UINT -> '裰';
-         case S8_UINT -> '赈';
+         case R8_UNORM -> 33321;
+         case R8_SNORM -> 36756;
+         case R16_UNORM -> 33322;
+         case R16_SNORM -> 36760;
+         case RG8_UNORM -> 33323;
+         case RG8_SNORM -> 36757;
+         case RG16_UNORM -> 33324;
+         case RG16_SNORM -> 36761;
+         default -> 0;
+         case RGBA8_UNORM -> 32856;
+         case RGBA8_SNORM -> 36759;
+         case RGBA16_UNORM -> 32859;
+         case RGB10A2_UNORM -> 32857;
+         case D16_UNORM -> 33189;
+         case RGBA16_SNORM -> 36763;
+         case R8_UINT -> 33330;
+         case R8_SINT -> 33329;
+         case RG8_UINT -> 33336;
+         case RG8_SINT -> 33335;
+         case RGBA8_UINT -> 36220;
+         case RGBA8_SINT -> 36238;
+         case R16_UINT -> 33332;
+         case R16_SINT -> 33331;
+         case RG16_UINT -> 33338;
+         case RG16_SINT -> 33337;
+         case RGBA16_UINT -> 36214;
+         case RGBA16_SINT -> 36232;
+         case R32_UINT -> 33334;
+         case R32_SINT -> 33333;
+         case RG32_UINT -> 33340;
+         case RG32_SINT -> 33339;
+         case RGB32_UINT -> 36209;
+         case RGB32_SINT -> 36227;
+         case RGBA32_UINT -> 36208;
+         case RGBA32_SINT -> 36226;
+         case R16_FLOAT -> 33325;
+         case RG16_FLOAT -> 33327;
+         case RGBA16_FLOAT -> 34842;
+         case R32_FLOAT -> 33326;
+         case RG32_FLOAT -> 33328;
+         case RGBA32_FLOAT -> 34836;
+         case RGB10A2_UINT -> 36975;
+         case RG11B10_FLOAT -> 35898;
+         case D32_FLOAT -> 36012;
+         case D32_FLOAT_S8_UINT -> 36013;
+         case D24_UNORM_S8_UINT -> 35056;
+         case S8_UINT -> 36168;
       };
    }
 
    public static int toGlExternalId(final GpuFormat gpuFormat) {
       return switch (gpuFormat) {
-         case R8_UNORM, R8_SNORM, R16_UNORM, R16_SNORM, R16_FLOAT, R32_FLOAT -> 'ᤃ';
-         case RG8_UNORM, RG8_SNORM, RG16_UNORM, RG16_SNORM, RG16_FLOAT, RG32_FLOAT -> '舧';
-         case RGB8_UNORM, RGB8_SNORM, RGB16_UNORM, RGB16_SNORM, RG11B10_FLOAT, RGB16_FLOAT, RGB32_FLOAT -> 'ᤇ';
-         case RGBA8_UNORM, RGBA8_SNORM, RGBA16_UNORM, RGB10A2_UNORM, RGBA16_SNORM, RGBA16_FLOAT, RGBA32_FLOAT -> 'ᤈ';
-         case D16_UNORM, D32_FLOAT -> 'ᤂ';
-         case R8_UINT, R8_SINT, R16_UINT, R16_SINT, R32_UINT, R32_SINT -> '趔';
-         case RG8_UINT, RG8_SINT, RG16_UINT, RG16_SINT, RG32_UINT, RG32_SINT -> '舨';
-         case RGBA8_UINT, RGBA8_SINT, RGBA16_UINT, RGBA16_SINT, RGBA32_UINT, RGBA32_SINT, RGB10A2_UINT -> '趙';
-         case RGB32_UINT, RGB32_SINT, RGB8_UINT, RGB8_SINT, RGB16_UINT, RGB16_SINT -> '趘';
-         case D32_FLOAT_S8_UINT, D24_UNORM_S8_UINT -> '蓹';
-         case S8_UINT -> 'ᤁ';
-         default -> '\u0000';
+         case R8_UNORM, R8_SNORM, R16_UNORM, R16_SNORM, R16_FLOAT, R32_FLOAT -> 6403;
+         case RG8_UNORM, RG8_SNORM, RG16_UNORM, RG16_SNORM, RG16_FLOAT, RG32_FLOAT -> 33319;
+         case RGB8_UNORM, RGB8_SNORM, RGB16_UNORM, RGB16_SNORM, RG11B10_FLOAT, RGB16_FLOAT, RGB32_FLOAT -> 6407;
+         case RGBA8_UNORM, RGBA8_SNORM, RGBA16_UNORM, RGB10A2_UNORM, RGBA16_SNORM, RGBA16_FLOAT, RGBA32_FLOAT -> 6408;
+         case D16_UNORM, D32_FLOAT -> 6402;
+         case R8_UINT, R8_SINT, R16_UINT, R16_SINT, R32_UINT, R32_SINT -> 36244;
+         case RG8_UINT, RG8_SINT, RG16_UINT, RG16_SINT, RG32_UINT, RG32_SINT -> 33320;
+         case RGBA8_UINT, RGBA8_SINT, RGBA16_UINT, RGBA16_SINT, RGBA32_UINT, RGBA32_SINT, RGB10A2_UINT -> 36249;
+         case RGB32_UINT, RGB32_SINT, RGB8_UINT, RGB8_SINT, RGB16_UINT, RGB16_SINT -> 36248;
+         case D32_FLOAT_S8_UINT, D24_UNORM_S8_UINT -> 34041;
+         case S8_UINT -> 6401;
+         default -> 0;
       };
    }
 
    public static int toGlType(final GpuFormat gpuFormat) {
       return switch (gpuFormat) {
-         case R8_UNORM, RG8_UNORM, RGB8_UNORM, RGBA8_UNORM, R8_UINT, RG8_UINT, RGBA8_UINT, S8_UINT, RGB8_UINT -> 'ᐁ';
-         case R8_SNORM, RG8_SNORM, RGB8_SNORM, RGBA8_SNORM, R8_SINT, RG8_SINT, RGBA8_SINT, RGB8_SINT -> '᐀';
-         case R16_UNORM, RG16_UNORM, RGB16_UNORM, RGBA16_UNORM, D16_UNORM, R16_UINT, RG16_UINT, RGBA16_UINT, RGB16_UINT -> 'ᐃ';
-         case R16_SNORM, RG16_SNORM, RGB16_SNORM, RGBA16_SNORM, R16_SINT, RG16_SINT, RGBA16_SINT, RGB16_SINT -> 'ᐂ';
-         case RGB10A2_UNORM, RGB10A2_UINT -> '荨';
-         case R32_UINT, RG32_UINT, RGB32_UINT, RGBA32_UINT -> 'ᐅ';
-         case R32_SINT, RG32_SINT, RGB32_SINT, RGBA32_SINT -> 'ᐄ';
-         case R16_FLOAT, RG16_FLOAT, RGBA16_FLOAT, RGB16_FLOAT -> 'ᐋ';
-         case R32_FLOAT, RG32_FLOAT, RGBA32_FLOAT, D32_FLOAT, RGB32_FLOAT -> 'ᐆ';
-         case RG11B10_FLOAT -> '谻';
-         case D32_FLOAT_S8_UINT -> '趭';
-         case D24_UNORM_S8_UINT -> '蓺';
-         default -> '\u0000';
+         case R8_UNORM, RG8_UNORM, RGB8_UNORM, RGBA8_UNORM, R8_UINT, RG8_UINT, RGBA8_UINT, S8_UINT, RGB8_UINT -> 5121;
+         case R8_SNORM, RG8_SNORM, RGB8_SNORM, RGBA8_SNORM, R8_SINT, RG8_SINT, RGBA8_SINT, RGB8_SINT -> 5120;
+         case R16_UNORM, RG16_UNORM, RGB16_UNORM, RGBA16_UNORM, D16_UNORM, R16_UINT, RG16_UINT, RGBA16_UINT, RGB16_UINT -> 5123;
+         case R16_SNORM, RG16_SNORM, RGB16_SNORM, RGBA16_SNORM, R16_SINT, RG16_SINT, RGBA16_SINT, RGB16_SINT -> 5122;
+         case RGB10A2_UNORM, RGB10A2_UINT -> 33640;
+         case R32_UINT, RG32_UINT, RGB32_UINT, RGBA32_UINT -> 5125;
+         case R32_SINT, RG32_SINT, RGB32_SINT, RGBA32_SINT -> 5124;
+         case R16_FLOAT, RG16_FLOAT, RGBA16_FLOAT, RGB16_FLOAT -> 5131;
+         case R32_FLOAT, RG32_FLOAT, RGBA32_FLOAT, D32_FLOAT, RGB32_FLOAT -> 5126;
+         case RG11B10_FLOAT -> 35899;
+         case D32_FLOAT_S8_UINT -> 36269;
+         case D24_UNORM_S8_UINT -> 34042;
+         default -> 0;
       };
    }
 
    public static int toGl(final ShaderType type) {
       return switch (type) {
-         case VERTEX -> '謱';
-         case FRAGMENT -> '謰';
+         case VERTEX -> 35633;
+         case FRAGMENT -> 35632;
       };
    }
 
-   public static int bufferUsageToGlFlag(@GpuBuffer.Usage final int usage) {
+   public static int bufferUsageToGlFlag(final @GpuBuffer.Usage int usage) {
       int result = 0;
       if ((usage & 1) != 0) {
          result |= 193;
@@ -350,7 +350,7 @@ public class GlConst {
       return result;
    }
 
-   public static int bufferUsageToGlEnum(@GpuBuffer.Usage final int usage) {
+   public static int bufferUsageToGlEnum(final @GpuBuffer.Usage int usage) {
       boolean clientStorage = (usage & 4) != 0;
       if ((usage & 2) != 0) {
          return clientStorage ? 35040 : 35044;

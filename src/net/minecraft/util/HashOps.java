@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Map.Entry;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -88,15 +87,13 @@ public class HashOps implements DynamicOps<HashCode> {
    }
 
    public HashCode createNumeric(final Number value) {
-      Objects.requireNonNull(value);
-
       return switch (value) {
          case Byte v -> this.createByte(v);
-         case Short vx -> this.createShort(vx);
-         case Integer vxx -> this.createInt(vxx);
-         case Long vxxx -> this.createLong(vxxx);
-         case Double vxxxx -> this.createDouble(vxxxx);
-         case Float vxxxxx -> this.createFloat(vxxxxx);
+         case Short v -> this.createShort(v);
+         case Integer v -> this.createInt(v);
+         case Long v -> this.createLong(v);
+         case Double v -> this.createDouble(v);
+         case Float v -> this.createFloat(v);
          default -> this.createDouble(value.doubleValue());
       };
    }
@@ -306,7 +303,6 @@ public class HashOps implements DynamicOps<HashCode> {
 
    private class ListHashBuilder extends AbstractListBuilder<HashCode, Hasher> {
       public ListHashBuilder() {
-         Objects.requireNonNull(HashOps.this);
          super(HashOps.this);
       }
 
@@ -320,7 +316,6 @@ public class HashOps implements DynamicOps<HashCode> {
 
       protected DataResult<HashCode> build(final Hasher hasher, final HashCode prefix) {
          assert prefix.equals(HashOps.this.empty);
-
          hasher.putByte((byte)5);
          return DataResult.success(hasher.hash());
       }
@@ -328,7 +323,6 @@ public class HashOps implements DynamicOps<HashCode> {
 
    private final class MapHashBuilder extends AbstractUniversalBuilder<HashCode, List<Pair<HashCode, HashCode>>> {
       public MapHashBuilder() {
-         Objects.requireNonNull(HashOps.this);
          super(HashOps.this);
       }
 
@@ -343,7 +337,6 @@ public class HashOps implements DynamicOps<HashCode> {
 
       protected DataResult<HashCode> build(final List<Pair<HashCode, HashCode>> builder, final HashCode prefix) {
          assert HashOps.this.isEmpty(prefix);
-
          return DataResult.success(HashOps.hashMap(HashOps.this.hashFunction.newHasher(), builder.stream()).hash());
       }
    }

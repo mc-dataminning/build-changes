@@ -32,7 +32,7 @@ public record ServerLinks(List<ServerLinks.Entry> entries) {
       return this.entries.stream().map(e -> new ServerLinks.UntrustedEntry(e.type, e.link.toString())).toList();
    }
 
-   public static record Entry(Either<ServerLinks.KnownLinkType, Component> type, URI link) {
+   public record Entry(Either<ServerLinks.KnownLinkType, Component> type, URI link) {
       public static ServerLinks.Entry knownType(final ServerLinks.KnownLinkType type, final URI link) {
          return new ServerLinks.Entry(Either.left(type), link);
       }
@@ -46,7 +46,7 @@ public record ServerLinks(List<ServerLinks.Entry> entries) {
       }
    }
 
-   public static enum KnownLinkType {
+   public enum KnownLinkType {
       BUG_REPORT(0, "report_bug"),
       COMMUNITY_GUIDELINES(1, "community_guidelines"),
       SUPPORT(2, "support"),
@@ -63,7 +63,7 @@ public record ServerLinks(List<ServerLinks.Entry> entries) {
       private final int id;
       private final String name;
 
-      private KnownLinkType(final int id, final String name) {
+      KnownLinkType(final int id, final String name) {
          this.id = id;
          this.name = name;
       }
@@ -77,7 +77,7 @@ public record ServerLinks(List<ServerLinks.Entry> entries) {
       }
    }
 
-   public static record UntrustedEntry(Either<ServerLinks.KnownLinkType, Component> type, String link) {
+   public record UntrustedEntry(Either<ServerLinks.KnownLinkType, Component> type, String link) {
       public static final StreamCodec<ByteBuf, ServerLinks.UntrustedEntry> STREAM_CODEC = StreamCodec.composite(
          ServerLinks.TYPE_STREAM_CODEC,
          ServerLinks.UntrustedEntry::type,

@@ -76,7 +76,7 @@ public class StringWidget extends AbstractStringWidget {
       }
    }
 
-   public static enum TextOverflow {
+   public enum TextOverflow {
       CLAMPED,
       SCROLLING;
    }

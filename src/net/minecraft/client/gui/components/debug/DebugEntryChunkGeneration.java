@@ -20,15 +20,14 @@ import org.jspecify.annotations.Nullable;
 public class DebugEntryChunkGeneration implements DebugScreenEntry {
    private static final Identifier GROUP = Identifier.withDefaultNamespace("chunk_generation");
    private final List<String> result = new ArrayList<>();
-   @Nullable
-   private BlockPos lastPos = null;
+   private @Nullable BlockPos lastPos = null;
 
    @Override
    public void display(
       final DebugScreenDisplayer displayer,
-      @Nullable final Level serverOrClientLevel,
-      @Nullable final LevelChunk clientChunk,
-      @Nullable final LevelChunk serverChunk
+      final @Nullable Level serverOrClientLevel,
+      final @Nullable LevelChunk clientChunk,
+      final @Nullable LevelChunk serverChunk
    ) {
       Minecraft minecraft = Minecraft.getInstance();
       Entity entity = minecraft.getCameraEntity();
@@ -43,7 +42,7 @@ public class DebugEntryChunkGeneration implements DebugScreenEntry {
       }
    }
 
-   private void update(@Nullable final LevelChunk serverChunk, final BlockPos feetPos, final ServerLevel serverLevel) {
+   private void update(final @Nullable LevelChunk serverChunk, final BlockPos feetPos, final ServerLevel serverLevel) {
       this.result.clear();
       this.lastPos = feetPos;
       ServerChunkCache chunkSource = serverLevel.getChunkSource();

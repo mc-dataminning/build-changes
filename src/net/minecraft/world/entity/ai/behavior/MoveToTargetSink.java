@@ -19,10 +19,8 @@ import org.jspecify.annotations.Nullable;
 public class MoveToTargetSink extends Behavior<Mob> {
    private static final int MAX_COOLDOWN_BEFORE_RETRYING = 40;
    private int remainingCooldown;
-   @Nullable
-   private Path path;
-   @Nullable
-   private BlockPos lastTargetPos;
+   private @Nullable Path path;
+   private @Nullable BlockPos lastTargetPos;
    private float speedModifier;
 
    public MoveToTargetSink() {
@@ -48,22 +46,22 @@ public class MoveToTargetSink extends Behavior<Mob> {
       if (this.remainingCooldown > 0) {
          this.remainingCooldown--;
          return false;
-      } else {
-         Brain<?> brain = body.getBrain();
-         WalkTarget walkTarget = brain.getMemory(MemoryModuleType.WALK_TARGET).get();
-         boolean reachedTarget = this.reachedTarget(body, walkTarget);
-         if (!reachedTarget && this.tryComputePath(body, walkTarget, level.getGameTime())) {
-            this.lastTargetPos = walkTarget.getTarget().currentBlockPosition();
-            return true;
-         } else {
-            brain.eraseMemory(MemoryModuleType.WALK_TARGET);
-            if (reachedTarget) {
-               brain.eraseMemory(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE);
-            }
-
-            return false;
-         }
       }
+
+      Brain<?> brain = body.getBrain();
+      WalkTarget walkTarget = brain.getMemory(MemoryModuleType.WALK_TARGET).get();
+      boolean reachedTarget = this.reachedTarget(body, walkTarget);
+      if (!reachedTarget && this.tryComputePath(body, walkTarget, level.getGameTime())) {
+         this.lastTargetPos = walkTarget.getTarget().currentBlockPosition();
+         return true;
+      }
+
+      brain.eraseMemory(MemoryModuleType.WALK_TARGET);
+      if (reachedTarget) {
+         brain.eraseMemory(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE);
+      }
+
+      return false;
    }
 
    protected boolean canStillUse(final ServerLevel level, final Mob body, final long timestamp) {
@@ -92,7 +90,7 @@ public class MoveToTargetSink extends Behavior<Mob> {
 
    protected void start(final ServerLevel level, final Mob body, final long timestamp) {
       body.getBrain().setMemory(MemoryModuleType.PATH, this.path);
-      body.getNavigation().moveTo(this.path, (double)this.speedModifier);
+      body.getNavigation().moveTo(this.path, this.speedModifier);
    }
 
    protected void tick(final ServerLevel level, final Mob body, final long timestamp) {

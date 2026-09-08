@@ -67,10 +67,10 @@ public class SaddleEquipmentSlotFix extends DataFix {
       tag = tag.remove("Saddle");
       if (!hasSaddle) {
          return tag;
-      } else {
-         Dynamic<?> saddleItem = tag.emptyMap().set("id", tag.createString("minecraft:saddle")).set("count", tag.createInt(1));
-         return fixDropChances(tag.set("saddle", saddleItem));
       }
+
+      Dynamic<?> saddleItem = tag.emptyMap().set("id", tag.createString("minecraft:saddle")).set("count", tag.createInt(1));
+      return fixDropChances(tag.set("saddle", saddleItem));
    }
 
    private static Dynamic<?> fixDropChances(final Dynamic<?> tag) {

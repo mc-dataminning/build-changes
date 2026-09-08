@@ -7,7 +7,7 @@ import org.jspecify.annotations.Nullable;
 public abstract class DataLayerStorageMap<M extends DataLayerStorageMap<M>> {
    private static final int CACHE_SIZE = 2;
    private final long[] lastSectionKeys = new long[2];
-   private final DataLayer[] lastSections = new DataLayer[2];
+   private final @Nullable DataLayer[] lastSections = new DataLayer[2];
    private boolean cacheEnabled;
    protected final Long2ObjectOpenHashMap<DataLayer> map;
 
@@ -30,8 +30,7 @@ public abstract class DataLayerStorageMap<M extends DataLayerStorageMap<M>> {
       return this.map.containsKey(sectionNode);
    }
 
-   @Nullable
-   public DataLayer getLayer(final long sectionNode) {
+   public @Nullable DataLayer getLayer(final long sectionNode) {
       if (this.cacheEnabled) {
          for (int i = 0; i < 2; i++) {
             if (sectionNode == this.lastSectionKeys[i]) {
@@ -43,23 +42,22 @@ public abstract class DataLayerStorageMap<M extends DataLayerStorageMap<M>> {
       DataLayer data = (DataLayer)this.map.get(sectionNode);
       if (data == null) {
          return null;
-      } else {
-         if (this.cacheEnabled) {
-            for (int ix = 1; ix > 0; ix--) {
-               this.lastSectionKeys[ix] = this.lastSectionKeys[ix - 1];
-               this.lastSections[ix] = this.lastSections[ix - 1];
-            }
+      }
 
-            this.lastSectionKeys[0] = sectionNode;
-            this.lastSections[0] = data;
+      if (this.cacheEnabled) {
+         for (int i = 1; i > 0; i--) {
+            this.lastSectionKeys[i] = this.lastSectionKeys[i - 1];
+            this.lastSections[i] = this.lastSections[i - 1];
          }
 
-         return data;
+         this.lastSectionKeys[0] = sectionNode;
+         this.lastSections[0] = data;
       }
+
+      return data;
    }
 
-   @Nullable
-   public DataLayer removeLayer(final long sectionNode) {
+   public @Nullable DataLayer removeLayer(final long sectionNode) {
       return (DataLayer)this.map.remove(sectionNode);
    }
 

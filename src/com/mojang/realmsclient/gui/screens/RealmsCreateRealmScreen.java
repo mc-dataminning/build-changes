@@ -99,17 +99,17 @@ public class RealmsCreateRealmScreen extends RealmsScreen {
 
       try {
          return client.createSnapshotRealm(server.id);
-      } catch (RealmsServiceException var3) {
-         throw new RuntimeException(var3);
+      } catch (RealmsServiceException e) {
+         throw new RuntimeException(e);
       }
    }
 
    private void showResetWorldScreen(final RealmsServer server) {
       RealmCreationTask realmCreationTask = new RealmCreationTask(server.id, this.nameBox.getValue().trim(), this.descriptionBox.getValue().trim());
       RealmsResetWorldScreen resetWorldScreen = RealmsResetWorldScreen.forNewRealm(this, server, realmCreationTask, () -> this.minecraft.execute(() -> {
-            RealmsMainScreen.refreshServerList();
-            this.minecraft.gui.setScreen(this.lastScreen);
-         }));
+         RealmsMainScreen.refreshServerList();
+         this.minecraft.gui.setScreen(this.lastScreen);
+      }));
       this.minecraft.gui.setScreen(resetWorldScreen);
    }
 

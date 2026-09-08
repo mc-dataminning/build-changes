@@ -28,10 +28,10 @@ public class EatBlockGoal extends Goal {
    public boolean canUse() {
       if (this.mob.getRandom().nextInt(this.adjustedTickDelay(this.mob.isBaby() ? 50 : 1000)) != 0) {
          return false;
-      } else {
-         BlockPos pos = this.mob.blockPosition();
-         return IS_EDIBLE.test(this.level.getBlockState(pos)) ? true : this.level.getBlockState(pos.below()).is(Blocks.GRASS_BLOCK);
       }
+
+      BlockPos pos = this.mob.blockPosition();
+      return IS_EDIBLE.test(this.level.getBlockState(pos)) ? true : this.level.getBlockState(pos.below()).is(Blocks.GRASS_BLOCK);
    }
 
    @Override

@@ -130,7 +130,7 @@ public abstract class AbstractThrownPotion extends ThrowableItemProjectile {
       } else if (CampfireBlock.isLitCampfire(blockState)) {
          this.level().levelEvent(null, 1009, pos, 0);
          CampfireBlock.douse(this.getOwner(), this.level(), pos, blockState);
-         this.level().setBlockAndUpdate(pos, blockState.setValue(CampfireBlock.LIT, Boolean.valueOf(false)));
+         this.level().setBlockAndUpdate(pos, blockState.setValue(CampfireBlock.LIT, false));
       }
    }
 

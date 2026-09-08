@@ -24,7 +24,7 @@ public class ClientSideMerchant implements Merchant {
    }
 
    @Override
-   public void setTradingPlayer(@Nullable final Player player) {
+   public void setTradingPlayer(final @Nullable Player player) {
    }
 
    @Override

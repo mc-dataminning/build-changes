@@ -6,7 +6,6 @@ import com.google.common.cache.LoadingCache;
 import com.mojang.authlib.GameProfile;
 import com.mojang.renderpearl.api.textures.GpuTextureView;
 import java.time.Duration;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
@@ -28,18 +27,12 @@ public class PlayerSkinRenderCache {
       .expireAfterAccess(CACHE_DURATION)
       .build(
          new CacheLoader<ResolvableProfile, CompletableFuture<Optional<PlayerSkinRenderCache.RenderInfo>>>() {
-            {
-               Objects.requireNonNull(PlayerSkinRenderCache.this);
-            }
-
             public CompletableFuture<Optional<PlayerSkinRenderCache.RenderInfo>> load(final ResolvableProfile profile) {
                return profile.resolveProfile(PlayerSkinRenderCache.this.profileResolver)
                   .thenCompose(
                      resolvedProfile -> PlayerSkinRenderCache.this.skinManager
-                           .get(resolvedProfile)
-                           .thenApply(
-                              playerSkin -> playerSkin.map(skin -> PlayerSkinRenderCache.this.new RenderInfo(resolvedProfile, skin, profile.skinPatch()))
-                           )
+                        .get(resolvedProfile)
+                        .thenApply(playerSkin -> playerSkin.map(skin -> PlayerSkinRenderCache.this.new RenderInfo(resolvedProfile, skin, profile.skinPatch())))
                   );
             }
          }
@@ -47,10 +40,6 @@ public class PlayerSkinRenderCache {
    private final LoadingCache<ResolvableProfile, PlayerSkinRenderCache.RenderInfo> defaultSkinCache = CacheBuilder.newBuilder()
       .expireAfterAccess(CACHE_DURATION)
       .build(new CacheLoader<ResolvableProfile, PlayerSkinRenderCache.RenderInfo>() {
-         {
-            Objects.requireNonNull(PlayerSkinRenderCache.this);
-         }
-
          public PlayerSkinRenderCache.RenderInfo load(final ResolvableProfile profile) {
             GameProfile temporaryProfile = profile.partialProfile();
             return PlayerSkinRenderCache.this.new RenderInfo(temporaryProfile, DefaultPlayerSkin.get(temporaryProfile), profile.skinPatch());
@@ -95,16 +84,11 @@ public class PlayerSkinRenderCache {
    public final class RenderInfo {
       private final GameProfile gameProfile;
       private final PlayerSkin playerSkin;
-      @Nullable
-      private RenderType itemRenderType;
-      @Nullable
-      private GpuTextureView textureView;
-      @Nullable
-      private GlyphRenderTypes glyphRenderTypes;
+      private @Nullable RenderType itemRenderType;
+      private @Nullable GpuTextureView textureView;
+      private @Nullable GlyphRenderTypes glyphRenderTypes;
 
       public RenderInfo(final GameProfile gameProfile, final PlayerSkin playerSkin, final PlayerSkin.Patch patch) {
-         Objects.requireNonNull(PlayerSkinRenderCache.this);
-         super();
          this.gameProfile = gameProfile;
          this.playerSkin = playerSkin.with(patch);
       }
@@ -143,15 +127,8 @@ public class PlayerSkinRenderCache {
 
       @Override
       public boolean equals(final Object o) {
-         if (this == o) {
-            return true;
-         } else {
-            if (o instanceof PlayerSkinRenderCache.RenderInfo that && this.gameProfile.equals(that.gameProfile) && this.playerSkin.equals(that.playerSkin)) {
-               return true;
-            }
-
-            return false;
-         }
+         return this == o
+            || o instanceof PlayerSkinRenderCache.RenderInfo that && this.gameProfile.equals(that.gameProfile) && this.playerSkin.equals(that.playerSkin);
       }
 
       @Override

@@ -10,12 +10,13 @@ import javax.swing.JComponent;
 import javax.swing.Timer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.TimeUtil;
+import org.jspecify.annotations.Nullable;
 
 public class StatsComponent extends JComponent {
    private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("########0.000", DecimalFormatSymbols.getInstance(Locale.ROOT));
    private final int[] values = new int[256];
    private int vp;
-   private final String[] msgs = new String[11];
+   private final @Nullable String[] msgs = new String[11];
    private final MinecraftServer server;
    private final Timer timer;
 
@@ -36,7 +37,7 @@ public class StatsComponent extends JComponent {
          + " mb ("
          + Runtime.getRuntime().freeMemory() * 100L / Runtime.getRuntime().maxMemory()
          + "% free)";
-      this.msgs[1] = "Avg tick: " + DECIMAL_FORMAT.format((double)this.server.getAverageTickTimeNanos() / (double)TimeUtil.NANOSECONDS_PER_MILLISECOND) + " ms";
+      this.msgs[1] = "Avg tick: " + DECIMAL_FORMAT.format((double)this.server.getAverageTickTimeNanos() / TimeUtil.NANOSECONDS_PER_MILLISECOND) + " ms";
       this.values[this.vp++ & 0xFF] = (int)(usedRam * 100L / Runtime.getRuntime().maxMemory());
       this.repaint();
    }

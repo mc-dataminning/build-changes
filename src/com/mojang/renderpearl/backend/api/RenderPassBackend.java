@@ -17,7 +17,7 @@ public interface RenderPassBackend {
 
    void setPipeline(final BackendRenderPipeline pipeline);
 
-   void setUniform(final int index, @Nullable final Object value);
+   void setUniform(final int index, final @Nullable Object value);
 
    void pushConstants(ByteBuffer value);
 
@@ -25,7 +25,7 @@ public interface RenderPassBackend {
 
    void disableScissor();
 
-   void setVertexBuffer(final int slot, @Nullable final GpuBufferSlice vertexBuffer);
+   void setVertexBuffer(final int slot, final @Nullable GpuBufferSlice vertexBuffer);
 
    void setIndexBuffer(final GpuBuffer indexBuffer, final IndexType indexType);
 

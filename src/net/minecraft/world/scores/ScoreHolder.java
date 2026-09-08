@@ -16,8 +16,7 @@ public interface ScoreHolder {
 
    String getScoreboardName();
 
-   @Nullable
-   default Component getDisplayName() {
+   default @Nullable Component getDisplayName() {
       return null;
    }
 
@@ -31,20 +30,20 @@ public interface ScoreHolder {
    static ScoreHolder forNameOnly(final String name) {
       if (name.equals("*")) {
          return WILDCARD;
-      } else {
-         final Component feedbackName = Component.literal(name);
-         return new ScoreHolder() {
-            @Override
-            public String getScoreboardName() {
-               return name;
-            }
-
-            @Override
-            public Component getFeedbackDisplayName() {
-               return feedbackName;
-            }
-         };
       }
+
+      final Component feedbackName = Component.literal(name);
+      return new ScoreHolder() {
+         @Override
+         public String getScoreboardName() {
+            return name;
+         }
+
+         @Override
+         public Component getFeedbackDisplayName() {
+            return feedbackName;
+         }
+      };
    }
 
    static ScoreHolder fromGameProfile(final GameProfile profile) {

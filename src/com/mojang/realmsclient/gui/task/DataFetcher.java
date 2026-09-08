@@ -5,7 +5,6 @@ import com.mojang.logging.LogUtils;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
@@ -40,18 +39,15 @@ public class DataFetcher {
       return new DataFetcher.Subscription();
    }
 
-   private static record ComputationResult<T>(Either<T, Exception> value, long time) {
+   private record ComputationResult<T>(Either<T, Exception> value, long time) {
    }
 
    private class SubscribedTask<T> {
       private final DataFetcher.Task<T> task;
       private final Consumer<T> output;
-      private long lastCheckTime;
+      private long lastCheckTime = -1L;
 
       private SubscribedTask(final DataFetcher.Task<T> task, final Consumer<T> output) {
-         Objects.requireNonNull(DataFetcher.this);
-         super();
-         this.lastCheckTime = -1L;
          this.task = task;
          this.output = output;
       }
@@ -84,13 +80,7 @@ public class DataFetcher {
    }
 
    public class Subscription {
-      private final List<DataFetcher.SubscribedTask<?>> subscriptions;
-
-      public Subscription() {
-         Objects.requireNonNull(DataFetcher.this);
-         super();
-         this.subscriptions = new ArrayList<>();
-      }
+      private final List<DataFetcher.SubscribedTask<?>> subscriptions = new ArrayList<>();
 
       public <T> void subscribe(final DataFetcher.Task<T> task, final Consumer<T> output) {
          DataFetcher.SubscribedTask<T> subscription = DataFetcher.this.new SubscribedTask<>(task, output);
@@ -117,7 +107,7 @@ public class DataFetcher {
       }
    }
 
-   private static record SuccessfulComputationResult<T>(T value, long time) {
+   private record SuccessfulComputationResult<T>(T value, long time) {
    }
 
    public class Task<T> {
@@ -125,16 +115,11 @@ public class DataFetcher {
       private final Callable<T> updater;
       private final long period;
       private final RepeatedDelayStrategy repeatStrategy;
-      @Nullable
-      private CompletableFuture<DataFetcher.ComputationResult<T>> pendingTask;
-      @Nullable
-      private DataFetcher.SuccessfulComputationResult<T> lastResult;
-      private long nextUpdate;
+      private @Nullable CompletableFuture<DataFetcher.ComputationResult<T>> pendingTask;
+      private DataFetcher.@Nullable SuccessfulComputationResult<T> lastResult;
+      private long nextUpdate = -1L;
 
       private Task(final String id, final Callable<T> updater, final long period, final RepeatedDelayStrategy repeatStrategy) {
-         Objects.requireNonNull(DataFetcher.this);
-         super();
-         this.nextUpdate = -1L;
          this.id = id;
          this.updater = updater;
          this.period = period;
@@ -166,9 +151,9 @@ public class DataFetcher {
                   T resultx = this.updater.call();
                   long completionTimex = DataFetcher.this.timeSource.get(DataFetcher.this.resolution);
                   return new DataFetcher.ComputationResult<>(Either.left(resultx), completionTimex);
-               } catch (Exception var4x) {
-                  long completionTimex = DataFetcher.this.timeSource.get(DataFetcher.this.resolution);
-                  return new DataFetcher.ComputationResult<>(Either.right(var4x), completionTimex);
+               } catch (Exception e) {
+                  long completionTimexx = DataFetcher.this.timeSource.get(DataFetcher.this.resolution);
+                  return new DataFetcher.ComputationResult<>(Either.right(e), completionTimexx);
                }
             }, DataFetcher.this.executor);
          }

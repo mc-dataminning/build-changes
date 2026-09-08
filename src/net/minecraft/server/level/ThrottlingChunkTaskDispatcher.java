@@ -25,9 +25,8 @@ public class ThrottlingChunkTaskDispatcher extends ChunkTaskDispatcher {
       this.chunkPositionsInExecution.remove(key);
    }
 
-   @Nullable
    @Override
-   protected ChunkTaskPriorityQueue.TasksForChunk popTasks() {
+   protected ChunkTaskPriorityQueue.@Nullable TasksForChunk popTasks() {
       return this.chunkPositionsInExecution.size() < this.maxChunksInExecution ? super.popTasks() : null;
    }
 

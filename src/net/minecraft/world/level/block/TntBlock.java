@@ -37,7 +37,7 @@ public class TntBlock extends Block {
 
    public TntBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.defaultBlockState().setValue(UNSTABLE, Boolean.valueOf(false)));
+      this.registerDefaultState(this.defaultBlockState().setValue(UNSTABLE, false));
    }
 
    @Override
@@ -51,7 +51,7 @@ public class TntBlock extends Block {
 
    @Override
    protected void neighborChanged(
-      final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
       if (level.hasNeighborSignal(pos) && prime(level, pos)) {
          level.removeBlock(pos, false);
@@ -70,7 +70,7 @@ public class TntBlock extends Block {
    @Override
    public void wasExploded(final ServerLevel level, final BlockPos pos, final Explosion explosion) {
       if (level.getGameRules().get(GameRules.TNT_EXPLODES)) {
-         PrimedTnt primed = new PrimedTnt(level, (double)pos.getX() + 0.5, (double)pos.getY(), (double)pos.getZ() + 0.5, explosion.getIndirectSourceEntity());
+         PrimedTnt primed = new PrimedTnt(level, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, explosion.getIndirectSourceEntity());
          primed.setFuse(PrimedTnt.getRandomShortFuse(primed.getFuse(), level.getRandom()));
          level.addFreshEntity(primed);
       }
@@ -80,22 +80,20 @@ public class TntBlock extends Block {
       return prime(level, pos, null, ItemStack.EMPTY);
    }
 
-   public static boolean prime(final Level level, final BlockPos pos, @Nullable final LivingEntity source, final ItemStack itemStack) {
-      if (!(level instanceof ServerLevel serverLevel) || !serverLevel.getGameRules().get(GameRules.TNT_EXPLODES)) {
+   public static boolean prime(final Level level, final BlockPos pos, final @Nullable LivingEntity source, final ItemStack itemStack) {
+      if (!(level instanceof ServerLevel serverLevel && serverLevel.getGameRules().get(GameRules.TNT_EXPLODES))) {
          return false;
-      }
-
-      if (source instanceof Player player
+      } else if (source instanceof Player player
          && player.gameMode() == GameType.ADVENTURE
          && !itemStack.canBreakBlockInAdventureMode(new BlockInWorld(level, pos, false))) {
          return false;
+      } else {
+         PrimedTnt tnt = new PrimedTnt(level, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, source);
+         level.addFreshEntity(tnt);
+         level.playSound(null, tnt.getX(), tnt.getY(), tnt.getZ(), SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
+         level.gameEvent(source, GameEvent.PRIME_FUSE, pos);
+         return true;
       }
-
-      PrimedTnt tnt = new PrimedTnt(level, (double)pos.getX() + 0.5, (double)pos.getY(), (double)pos.getZ() + 0.5, source);
-      level.addFreshEntity(tnt);
-      level.playSound(null, tnt.getX(), tnt.getY(), tnt.getZ(), SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
-      level.gameEvent(source, GameEvent.PRIME_FUSE, pos);
-      return true;
    }
 
    @Override
@@ -110,24 +108,24 @@ public class TntBlock extends Block {
    ) {
       if (!itemStack.is(Items.FLINT_AND_STEEL) && !itemStack.is(Items.FIRE_CHARGE)) {
          return super.useItemOn(itemStack, state, level, pos, player, hand, hitResult);
-      } else {
-         if (prime(level, pos, player, itemStack)) {
-            level.setBlock(pos, Blocks.AIR.defaultBlockState(), 11);
-            Item item = itemStack.getItem();
-            if (itemStack.is(Items.FLINT_AND_STEEL)) {
-               itemStack.hurtAndBreak(1, player, hand.asEquipmentSlot());
-            } else {
-               itemStack.consume(1, player);
-            }
+      }
 
-            player.awardStat(Stats.ITEM_USED.get(item));
-         } else if (level instanceof ServerLevel serverLevel && !serverLevel.getGameRules().get(GameRules.TNT_EXPLODES)) {
-            player.sendOverlayMessage(Component.translatable("block.minecraft.tnt.disabled"));
-            return InteractionResult.PASS;
+      if (prime(level, pos, player, itemStack)) {
+         level.setBlock(pos, Blocks.AIR.defaultBlockState(), 11);
+         Item item = itemStack.getItem();
+         if (itemStack.is(Items.FLINT_AND_STEEL)) {
+            itemStack.hurtAndBreak(1, player, hand.asEquipmentSlot());
+         } else {
+            itemStack.consume(1, player);
          }
 
-         return InteractionResult.SUCCESS;
+         player.awardStat(Stats.ITEM_USED.get(item));
+      } else if (level instanceof ServerLevel serverLevel && !serverLevel.getGameRules().get(GameRules.TNT_EXPLODES)) {
+         player.sendOverlayMessage(Component.translatable("block.minecraft.tnt.disabled"));
+         return InteractionResult.PASS;
       }
+
+      return InteractionResult.SUCCESS;
    }
 
    @Override

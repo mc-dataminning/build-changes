@@ -108,9 +108,9 @@ public class SculkCatalystBlockEntity extends BlockEntity implements GameEventLi
       }
 
       private void bloom(final ServerLevel level, final BlockPos pos, final BlockState state, final RandomSource random) {
-         level.setBlockAndUpdate(pos, state.setValue(SculkCatalystBlock.PULSE, Boolean.valueOf(true)));
+         level.setBlockAndUpdate(pos, state.setValue(SculkCatalystBlock.PULSE, true));
          level.scheduleTick(pos, state.getBlock(), 8);
-         level.sendParticles(ParticleTypes.SCULK_SOUL, (double)pos.getX() + 0.5, (double)pos.getY() + 1.15, (double)pos.getZ() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
+         level.sendParticles(ParticleTypes.SCULK_SOUL, pos.getX() + 0.5, pos.getY() + 1.15, pos.getZ() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
          level.playSound(null, pos, SoundEvents.SCULK_CATALYST_BLOOM, SoundSource.BLOCKS, 2.0F, 0.6F + random.nextFloat() * 0.4F);
       }
 

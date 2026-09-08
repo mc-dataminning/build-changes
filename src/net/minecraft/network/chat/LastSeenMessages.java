@@ -40,7 +40,7 @@ public record LastSeenMessages(List<MessageSignature> entries) {
       return checksumByte == 0 ? 1 : checksumByte;
    }
 
-   public static record Packed(List<MessageSignature.Packed> entries) {
+   public record Packed(List<MessageSignature.Packed> entries) {
       public static final LastSeenMessages.Packed EMPTY = new LastSeenMessages.Packed(List.of());
       public static final StreamCodec<ByteBuf, LastSeenMessages.Packed> STREAM_CODEC = StreamCodec.composite(
          MessageSignature.Packed.STREAM_CODEC.apply(ByteBufCodecs.list(20)), LastSeenMessages.Packed::entries, LastSeenMessages.Packed::new
@@ -62,7 +62,7 @@ public record LastSeenMessages(List<MessageSignature> entries) {
       }
    }
 
-   public static record Update(int offset, BitSet acknowledged, byte checksum) {
+   public record Update(int offset, BitSet acknowledged, byte checksum) {
       public static final byte IGNORE_CHECKSUM = 0;
       public static final StreamCodec<ByteBuf, LastSeenMessages.Update> STREAM_CODEC = StreamCodec.composite(
          ByteBufCodecs.VAR_INT,

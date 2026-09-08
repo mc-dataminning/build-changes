@@ -45,19 +45,19 @@ public record WeatheringCopperCollection<T>(WeatheringCopperCollection.ByState<T
    ) {
       return ids.apply(
          weatheringIds -> zipMap(
-               STATES,
-               weatheringIds,
-               (state, id) -> (Block)register.apply(
-                     id, (Function<BlockBehaviour.Properties, Block>)p -> weatheringFactory.apply(state, p), propertiesSupplier.apply(state)
-                  )
-            ),
-         waxedIds -> zipMap(
-               STATES,
-               waxedIds,
-               (state, id) -> (Block)register.apply(
-                     id, (Function<BlockBehaviour.Properties, Block>)p -> waxedBlockFactory.apply(state, p), propertiesSupplier.apply(state)
-                  )
+            STATES,
+            weatheringIds,
+            (state, id) -> (Block)register.apply(
+               id, (Function<BlockBehaviour.Properties, Block>)p -> weatheringFactory.apply(state, p), propertiesSupplier.apply(state)
             )
+         ),
+         waxedIds -> zipMap(
+            STATES,
+            waxedIds,
+            (state, id) -> (Block)register.apply(
+               id, (Function<BlockBehaviour.Properties, Block>)p -> waxedBlockFactory.apply(state, p), propertiesSupplier.apply(state)
+            )
+         )
       );
    }
 
@@ -137,7 +137,7 @@ public record WeatheringCopperCollection<T>(WeatheringCopperCollection.ByState<T
       );
    }
 
-   public static record ByState<T>(T unaffected, T exposed, T weathered, T oxidized) {
+   public record ByState<T>(T unaffected, T exposed, T weathered, T oxidized) {
       public static <T> WeatheringCopperCollection.ByState<T> create(final T value) {
          return new WeatheringCopperCollection.ByState<>(value, value, value, value);
       }

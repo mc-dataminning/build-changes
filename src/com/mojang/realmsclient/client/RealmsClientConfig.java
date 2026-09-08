@@ -4,11 +4,9 @@ import java.net.Proxy;
 import org.jspecify.annotations.Nullable;
 
 public class RealmsClientConfig {
-   @Nullable
-   private static Proxy proxy;
+   private static @Nullable Proxy proxy;
 
-   @Nullable
-   public static Proxy getProxy() {
+   public static @Nullable Proxy getProxy() {
       return proxy;
    }
 

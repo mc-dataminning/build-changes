@@ -29,9 +29,9 @@ public class RunningTrimmedMean {
 
       if (this.count > 2) {
          total -= min + max;
-         return total / (long)(this.count - 2);
+         return total / (this.count - 2);
       } else {
-         return total > 0L ? (long)this.count / total : 0L;
+         return total > 0L ? this.count / total : 0L;
       }
    }
 }

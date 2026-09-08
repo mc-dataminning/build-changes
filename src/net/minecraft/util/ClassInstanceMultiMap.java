@@ -57,10 +57,10 @@ public class ClassInstanceMultiMap<T> extends AbstractCollection<T> {
    public <S> Collection<S> find(final Class<S> index) {
       if (!this.baseClass.isAssignableFrom(index)) {
          throw new IllegalArgumentException("Don't know how to search for " + index);
-      } else {
-         List<? extends T> instances = this.byClass.computeIfAbsent(index, k -> this.allInstances.stream().filter(k::isInstance).collect(Util.toMutableList()));
-         return (Collection<S>)Collections.unmodifiableCollection(instances);
       }
+
+      List<? extends T> instances = this.byClass.computeIfAbsent(index, k -> this.allInstances.stream().filter(k::isInstance).collect(Util.toMutableList()));
+      return (Collection<S>)Collections.unmodifiableCollection(instances);
    }
 
    @Override

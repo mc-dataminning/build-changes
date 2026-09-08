@@ -65,9 +65,9 @@ public class JigsawBlock extends Block implements EntityBlock, GameMasterBlock {
       if (level.getBlockEntity(pos) instanceof JigsawBlockEntity jigsawBlockEntity && player.canUseGameMasterBlocks()) {
          player.openJigsawBlock(jigsawBlockEntity);
          return InteractionResult.SUCCESS;
+      } else {
+         return InteractionResult.PASS;
       }
-
-      return InteractionResult.PASS;
    }
 
    public static boolean canAttach(final StructureTemplate.JigsawBlockInfo source, final StructureTemplate.JigsawBlockInfo target) {

@@ -50,8 +50,7 @@ public class PoiSection {
       return this.byType.entrySet().stream().filter(e -> predicate.test(e.getKey())).flatMap(e -> e.getValue().stream()).filter(occupancy.getTest());
    }
 
-   @Nullable
-   public PoiRecord add(final BlockPos blockPos, final Holder<PoiType> type) {
+   public @Nullable PoiRecord add(final BlockPos blockPos, final Holder<PoiType> type) {
       PoiRecord record = new PoiRecord(blockPos, type, this.setDirty);
       if (this.add(record)) {
          LOGGER.debug("Added POI of type {} @ {}", type.getRegisteredName(), blockPos);
@@ -101,11 +100,11 @@ public class PoiSection {
       PoiRecord record = (PoiRecord)this.records.get(SectionPos.sectionRelativePos(pos));
       if (record == null) {
          throw (IllegalStateException)Util.pauseInIde(new IllegalStateException("POI never registered at " + pos));
-      } else {
-         boolean success = record.releaseTicket();
-         this.setDirty.run();
-         return success;
       }
+
+      boolean success = record.releaseTicket();
+      this.setDirty.run();
+      return success;
    }
 
    public boolean exists(final BlockPos pos, final Predicate<Holder<PoiType>> predicate) {
@@ -147,13 +146,13 @@ public class PoiSection {
       return this.isValid;
    }
 
-   public static record Packed(boolean isValid, List<PoiRecord.Packed> records) {
+   public record Packed(boolean isValid, List<PoiRecord.Packed> records) {
       public static final Codec<PoiSection.Packed> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Codec.BOOL.lenientOptionalFieldOf("Valid", false).forGetter(PoiSection.Packed::isValid),
-                  PoiRecord.Packed.CODEC.listOf().fieldOf("Records").forGetter(PoiSection.Packed::records)
-               )
-               .apply(i, PoiSection.Packed::new)
+               Codec.BOOL.lenientOptionalFieldOf("Valid", false).forGetter(PoiSection.Packed::isValid),
+               PoiRecord.Packed.CODEC.listOf().fieldOf("Records").forGetter(PoiSection.Packed::records)
+            )
+            .apply(i, PoiSection.Packed::new)
       );
 
       public PoiSection unpack(final Runnable setDirty) {

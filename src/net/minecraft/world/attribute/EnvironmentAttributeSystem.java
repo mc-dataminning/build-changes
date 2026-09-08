@@ -31,10 +31,10 @@ public class EnvironmentAttributeSystem implements EnvironmentAttributeReader {
    private EnvironmentAttributeSystem(final Map<EnvironmentAttribute<?>, List<EnvironmentAttributeLayer<?>>> layersByAttribute) {
       layersByAttribute.forEach(
          (attribute, layers) -> this.attributeSamplers
-               .put(
-                  (EnvironmentAttribute<?>)attribute,
-                  this.bakeLayerSampler((EnvironmentAttribute<?>)attribute, (List<? extends EnvironmentAttributeLayer<?>>)layers)
-               )
+            .put(
+               (EnvironmentAttribute<?>)attribute,
+               this.bakeLayerSampler((EnvironmentAttribute<?>)attribute, (List<? extends EnvironmentAttributeLayer<?>>)layers)
+            )
       );
    }
 
@@ -95,12 +95,12 @@ public class EnvironmentAttributeSystem implements EnvironmentAttributeReader {
          (baseValue, pos, biomeWeights) -> {
             if (biomeWeights != null && attribute.isSpatiallyInterpolated()) {
                return biomeWeights.applyAttributeLayer(attribute, baseValue);
-            } else {
-               Holder<Biome> biome = attribute.isFullResolutionBiomes()
-                  ? biomeManager.getBiome(Mth.floor(pos.x), Mth.floor(pos.y), Mth.floor(pos.z))
-                  : biomeManager.getNoiseBiomeAtPosition(pos.x, pos.y, pos.z);
-               return biome.value().getAttributes().applyModifier(attribute, baseValue);
             }
+
+            Holder<Biome> biome = attribute.isFullResolutionBiomes()
+               ? biomeManager.getBiome(Mth.floor(pos.x), Mth.floor(pos.y), Mth.floor(pos.z))
+               : biomeManager.getNoiseBiomeAtPosition(pos.x, pos.y, pos.z);
+            return biome.value().getAttributes().applyModifier(attribute, baseValue);
          }
       );
    }
@@ -109,8 +109,7 @@ public class EnvironmentAttributeSystem implements EnvironmentAttributeReader {
       this.attributeSamplers.values().forEach(EnvironmentAttributeSystem.ValueSampler::invalidateTickCache);
    }
 
-   @Nullable
-   private <Value> EnvironmentAttributeSystem.ValueSampler<Value> getValueSampler(final EnvironmentAttribute<Value> attribute) {
+   private <Value> EnvironmentAttributeSystem.@Nullable ValueSampler<Value> getValueSampler(final EnvironmentAttribute<Value> attribute) {
       return (EnvironmentAttributeSystem.ValueSampler<Value>)this.attributeSamplers.get(attribute);
    }
 
@@ -118,14 +117,14 @@ public class EnvironmentAttributeSystem implements EnvironmentAttributeReader {
    public <Value> Value getDimensionValue(final EnvironmentAttribute<Value> attribute) {
       if (SharedConstants.IS_RUNNING_IN_IDE && attribute.isPositional()) {
          throw new IllegalStateException("Position must always be provided for positional attribute " + attribute);
-      } else {
-         EnvironmentAttributeSystem.ValueSampler<Value> sampler = this.getValueSampler(attribute);
-         return sampler == null ? attribute.defaultValue() : sampler.getDimensionValue();
       }
+
+      EnvironmentAttributeSystem.ValueSampler<Value> sampler = this.getValueSampler(attribute);
+      return sampler == null ? attribute.defaultValue() : sampler.getDimensionValue();
    }
 
    @Override
-   public <Value> Value getValue(final EnvironmentAttribute<Value> attribute, final Vec3 pos, @Nullable final SpatialAttributeInterpolator biomeInterpolator) {
+   public <Value> Value getValue(final EnvironmentAttribute<Value> attribute, final Vec3 pos, final @Nullable SpatialAttributeInterpolator biomeInterpolator) {
       EnvironmentAttributeSystem.ValueSampler<Value> sampler = this.getValueSampler(attribute);
       return sampler == null ? attribute.defaultValue() : sampler.getValue(pos, biomeInterpolator);
    }
@@ -230,8 +229,7 @@ public class EnvironmentAttributeSystem implements EnvironmentAttributeReader {
       private final Value baseValue;
       private final List<EnvironmentAttributeLayer<Value>> layers;
       private final boolean isAffectedByPosition;
-      @Nullable
-      private Value cachedTickValue;
+      private @Nullable Value cachedTickValue;
       private int cacheTickId;
 
       private ValueSampler(
@@ -254,29 +252,27 @@ public class EnvironmentAttributeSystem implements EnvironmentAttributeReader {
       public Value getDimensionValue() {
          if (this.cachedTickValue != null) {
             return this.cachedTickValue;
-         } else {
-            Value result = this.computeValueNotPositional();
-            this.cachedTickValue = result;
-            return result;
          }
+
+         Value result = this.computeValueNotPositional();
+         this.cachedTickValue = result;
+         return result;
       }
 
-      public Value getValue(final Vec3 pos, @Nullable final SpatialAttributeInterpolator biomeInterpolator) {
+      public Value getValue(final Vec3 pos, final @Nullable SpatialAttributeInterpolator biomeInterpolator) {
          return !this.isAffectedByPosition ? this.getDimensionValue() : this.computeValuePositional(pos, biomeInterpolator);
       }
 
-      private Value computeValuePositional(final Vec3 pos, @Nullable final SpatialAttributeInterpolator biomeInterpolator) {
+      private Value computeValuePositional(final Vec3 pos, final @Nullable SpatialAttributeInterpolator biomeInterpolator) {
          Value result = this.baseValue;
 
          for (EnvironmentAttributeLayer<Value> layer : this.layers) {
-            Objects.requireNonNull(layer);
-
             result = (Value)(switch (layer) {
-               case EnvironmentAttributeLayer.Constant constantLayer -> constantLayer.applyConstant(result);
-               case EnvironmentAttributeLayer.TimeBased timeBasedLayer -> timeBasedLayer.applyTimeBased(result, this.cacheTickId);
-               case EnvironmentAttributeLayer.Positional positionalLayer -> positionalLayer.applyPositional(
-               result, Objects.requireNonNull(pos), biomeInterpolator
-            );
+               case EnvironmentAttributeLayer.Constant<Value> constantLayer -> constantLayer.applyConstant(result);
+               case EnvironmentAttributeLayer.TimeBased<Value> timeBasedLayer -> timeBasedLayer.applyTimeBased(result, this.cacheTickId);
+               case EnvironmentAttributeLayer.Positional<Value> positionalLayer -> positionalLayer.applyPositional(
+                  result, Objects.requireNonNull(pos), biomeInterpolator
+               );
                default -> throw new MatchException(null, null);
             });
          }
@@ -288,12 +284,10 @@ public class EnvironmentAttributeSystem implements EnvironmentAttributeReader {
          Value result = this.baseValue;
 
          for (EnvironmentAttributeLayer<Value> layer : this.layers) {
-            Objects.requireNonNull(layer);
-
             result = (Value)(switch (layer) {
-               case EnvironmentAttributeLayer.Constant constantLayer -> constantLayer.applyConstant(result);
-               case EnvironmentAttributeLayer.TimeBased timeBasedLayer -> timeBasedLayer.applyTimeBased(result, this.cacheTickId);
-               case EnvironmentAttributeLayer.Positional ignored -> result;
+               case EnvironmentAttributeLayer.Constant<Value> constantLayer -> constantLayer.applyConstant(result);
+               case EnvironmentAttributeLayer.TimeBased<Value> timeBasedLayer -> timeBasedLayer.applyTimeBased(result, this.cacheTickId);
+               case EnvironmentAttributeLayer.Positional<Value> ignored -> result;
                default -> throw new MatchException(null, null);
             });
          }

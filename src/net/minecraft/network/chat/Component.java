@@ -43,23 +43,18 @@ public interface Component extends Message, FormattedText {
          int remaining = limit - builder.length();
          if (remaining <= 0) {
             return STOP_ITERATION;
-         } else {
-            builder.append(contents.length() <= remaining ? contents : contents.substring(0, remaining));
-            return Optional.empty();
          }
+
+         builder.append(contents.length() <= remaining ? contents : contents.substring(0, remaining));
+         return Optional.empty();
       });
       return builder.toString();
    }
 
    List<Component> getSiblings();
 
-   @Nullable
-   default String tryCollapseToString() {
-      if (this.getContents() instanceof PlainTextContents text && this.getSiblings().isEmpty() && this.getStyle().isEmpty()) {
-         return text.text();
-      }
-
-      return null;
+   default @Nullable String tryCollapseToString() {
+      return this.getContents() instanceof PlainTextContents text && this.getSiblings().isEmpty() && this.getStyle().isEmpty() ? text.text() : null;
    }
 
    default MutableComponent plainCopy() {
@@ -78,16 +73,16 @@ public interface Component extends Message, FormattedText {
       Optional<T> selfResult = this.getContents().visit(output, selfStyle);
       if (selfResult.isPresent()) {
          return selfResult;
-      } else {
-         for (Component sibling : this.getSiblings()) {
-            Optional<T> result = sibling.visit(output, selfStyle);
-            if (result.isPresent()) {
-               return result;
-            }
-         }
-
-         return Optional.empty();
       }
+
+      for (Component sibling : this.getSiblings()) {
+         Optional<T> result = sibling.visit(output, selfStyle);
+         if (result.isPresent()) {
+            return result;
+         }
+      }
+
+      return Optional.empty();
    }
 
    @Override
@@ -95,16 +90,16 @@ public interface Component extends Message, FormattedText {
       Optional<T> selfResult = this.getContents().visit(output);
       if (selfResult.isPresent()) {
          return selfResult;
-      } else {
-         for (Component sibling : this.getSiblings()) {
-            Optional<T> result = sibling.visit(output);
-            if (result.isPresent()) {
-               return result;
-            }
-         }
-
-         return Optional.empty();
       }
+
+      for (Component sibling : this.getSiblings()) {
+         Optional<T> result = sibling.visit(output);
+         if (result.isPresent()) {
+            return result;
+         }
+      }
+
+      return Optional.empty();
    }
 
    default List<Component> toFlatList() {
@@ -126,15 +121,15 @@ public interface Component extends Message, FormattedText {
    default boolean contains(final Component other) {
       if (this.equals(other)) {
          return true;
-      } else {
-         List<Component> flat = this.toFlatList();
-         List<Component> otherFlat = other.toFlatList(this.getStyle());
-         return Collections.indexOfSubList(flat, otherFlat) != -1;
       }
+
+      List<Component> flat = this.toFlatList();
+      List<Component> otherFlat = other.toFlatList(this.getStyle());
+      return Collections.indexOfSubList(flat, otherFlat) != -1;
    }
 
-   static Component nullToEmpty(@Nullable final String text) {
-      return (Component)(text != null ? literal(text) : CommonComponents.EMPTY);
+   static Component nullToEmpty(final @Nullable String text) {
+      return text != null ? literal(text) : CommonComponents.EMPTY;
    }
 
    static MutableComponent literal(final String text) {
@@ -160,11 +155,11 @@ public interface Component extends Message, FormattedText {
       return translatable(key, args);
    }
 
-   static MutableComponent translatableWithFallback(final String key, @Nullable final String fallback) {
+   static MutableComponent translatableWithFallback(final String key, final @Nullable String fallback) {
       return MutableComponent.create(new TranslatableContents(key, fallback, TranslatableContents.NO_ARGS));
    }
 
-   static MutableComponent translatableWithFallback(final String key, @Nullable final String fallback, final Object... args) {
+   static MutableComponent translatableWithFallback(final String key, final @Nullable String fallback, final Object... args) {
       return MutableComponent.create(new TranslatableContents(key, fallback, args));
    }
 
@@ -211,7 +206,7 @@ public interface Component extends Message, FormattedText {
    }
 
    static Component translationArg(final Message message) {
-      return (Component)(message instanceof Component component ? component : literal(message.getString()));
+      return message instanceof Component component ? component : literal(message.getString());
    }
 
    static Component translationArg(final UUID uuid) {

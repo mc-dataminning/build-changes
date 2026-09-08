@@ -36,42 +36,32 @@ public class ClientItemInfoLoader {
                List<CompletableFuture<ClientItemInfoLoader.PendingLoad>> pendingLoads = new ArrayList<>(resources.size());
                resources.forEach(
                   (resourceId, resource) -> pendingLoads.add(
-                        CompletableFuture.supplyAsync(
-                           () -> {
-                              Identifier modelId = LISTER.fileToId(resourceId);
+                     CompletableFuture.supplyAsync(
+                        () -> {
+                           Identifier modelId = LISTER.fileToId(resourceId);
 
-                              try {
-                                 ClientItemInfoLoader.PendingLoad var8;
-                                 try (Reader reader = resource.openAsReader()) {
-                                    PlaceholderLookupProvider lookup = new PlaceholderLookupProvider(staticRegistries);
-                                    DynamicOps<JsonElement> ops = lookup.createSerializationContext(JsonOps.INSTANCE);
-                                    ClientItem parsedInfo = ClientItem.CODEC
-                                       .parse(ops, StrictJsonParser.parse(reader))
-                                       .ifError(
-                                          error -> LOGGER.error(
-                                                "Couldn't parse item model '{}' from pack '{}': {}",
-                                                new Object[]{modelId, resource.sourcePackId(), error.message()}
-                                             )
-                                       )
-                                       .result()
-                                       .map(
-                                          clientItem -> lookup.hasRegisteredPlaceholders()
-                                                ? clientItem.withRegistrySwapper(lookup.createSwapper())
-                                                : clientItem
-                                       )
-                                       .orElse(null);
-                                    var8 = new ClientItemInfoLoader.PendingLoad(modelId, parsedInfo);
-                                 }
-
-                                 return var8;
-                              } catch (Exception var11) {
-                                 LOGGER.error("Failed to open item model {} from pack '{}'", new Object[]{resourceId, resource.sourcePackId(), var11});
-                                 return new ClientItemInfoLoader.PendingLoad(modelId, null);
-                              }
-                           },
-                           executor
-                        )
+                           try (Reader reader = resource.openAsReader()) {
+                              PlaceholderLookupProvider lookup = new PlaceholderLookupProvider(staticRegistries);
+                              DynamicOps<JsonElement> ops = lookup.createSerializationContext(JsonOps.INSTANCE);
+                              ClientItem parsedInfo = ClientItem.CODEC
+                                 .parse(ops, StrictJsonParser.parse(reader))
+                                 .ifError(
+                                    error -> LOGGER.error(
+                                       "Couldn't parse item model '{}' from pack '{}': {}", new Object[]{modelId, resource.sourcePackId(), error.message()}
+                                    )
+                                 )
+                                 .result()
+                                 .map(clientItem -> lookup.hasRegisteredPlaceholders() ? clientItem.withRegistrySwapper(lookup.createSwapper()) : clientItem)
+                                 .orElse(null);
+                              return new ClientItemInfoLoader.PendingLoad(modelId, parsedInfo);
+                           } catch (Exception e) {
+                              LOGGER.error("Failed to open item model {} from pack '{}'", new Object[]{resourceId, resource.sourcePackId(), e});
+                              return new ClientItemInfoLoader.PendingLoad(modelId, null);
+                           }
+                        },
+                        executor
                      )
+                  )
                );
                return Util.sequence(pendingLoads).thenApply(loads -> {
                   Map<Identifier, ClientItem> resultMap = new HashMap<>();
@@ -88,9 +78,9 @@ public class ClientItemInfoLoader {
          );
    }
 
-   public static record LoadedClientInfos(Map<Identifier, ClientItem> contents) {
+   public record LoadedClientInfos(Map<Identifier, ClientItem> contents) {
    }
 
-   private static record PendingLoad(Identifier id, @Nullable ClientItem clientItemInfo) {
+   private record PendingLoad(Identifier id, @Nullable ClientItem clientItemInfo) {
    }
 }

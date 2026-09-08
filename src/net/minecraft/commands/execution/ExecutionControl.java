@@ -8,8 +8,7 @@ public interface ExecutionControl<T> {
 
    void tracer(@Nullable TraceCallbacks tracer);
 
-   @Nullable
-   TraceCallbacks tracer();
+   @Nullable TraceCallbacks tracer();
 
    Frame currentFrame();
 
@@ -21,13 +20,12 @@ public interface ExecutionControl<T> {
          }
 
          @Override
-         public void tracer(@Nullable final TraceCallbacks tracer) {
+         public void tracer(final @Nullable TraceCallbacks tracer) {
             context.tracer(tracer);
          }
 
-         @Nullable
          @Override
-         public TraceCallbacks tracer() {
+         public @Nullable TraceCallbacks tracer() {
             return context.tracer();
          }
 

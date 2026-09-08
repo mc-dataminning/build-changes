@@ -50,10 +50,8 @@ public class ItemEntity extends Entity implements TraceableEntity {
    private int age = 0;
    private int pickupDelay = 0;
    private int health = 5;
-   @Nullable
-   private EntityReference<Entity> thrower;
-   @Nullable
-   private UUID target;
+   private @Nullable EntityReference<Entity> thrower;
+   private @Nullable UUID target;
    public final float bobOffs = this.random.nextFloat() * (float) Math.PI * 2.0F;
 
    public ItemEntity(final EntityType<? extends ItemEntity> type, final Level level) {
@@ -89,9 +87,8 @@ public class ItemEntity extends Entity implements TraceableEntity {
       return this.getItem().is(ItemTags.DAMPENS_VIBRATIONS);
    }
 
-   @Nullable
    @Override
-   public Entity getOwner() {
+   public @Nullable Entity getOwner() {
       return EntityReference.getEntity(this.thrower, this.level());
    }
 
@@ -157,10 +154,10 @@ public class ItemEntity extends Entity implements TraceableEntity {
             float airDrag = this.getAirDrag();
             float groundFriction = airDrag;
             if (this.onGround()) {
-               groundFriction = airDrag * this.level().getBlockState(this.getBlockPosBelowThatAffectsMyMovement()).getBlock().getFriction();
+               groundFriction *= this.level().getBlockState(this.getBlockPosBelowThatAffectsMyMovement()).getBlock().getFriction();
             }
 
-            this.setDeltaMovement(this.getDeltaMovement().multiply((double)groundFriction, (double)airDrag, (double)groundFriction));
+            this.setDeltaMovement(this.getDeltaMovement().multiply(groundFriction, airDrag, groundFriction));
             if (this.onGround()) {
                Vec3 movement = this.getDeltaMovement();
                if (movement.y < 0.0) {
@@ -210,7 +207,7 @@ public class ItemEntity extends Entity implements TraceableEntity {
 
    private void setFluidMovement(final double multiplier) {
       Vec3 movement = this.getDeltaMovement();
-      this.setDeltaMovement(movement.x * multiplier, movement.y + (double)(movement.y < 0.06F ? 5.0E-4F : 0.0F), movement.z * multiplier);
+      this.setDeltaMovement(movement.x * multiplier, movement.y + (movement.y < 0.06F ? 5.0E-4F : 0.0F), movement.z * multiplier);
    }
 
    private void mergeWithNeighbours() {
@@ -290,21 +287,25 @@ public class ItemEntity extends Entity implements TraceableEntity {
    public final boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
       if (this.isInvulnerableToBase(source)) {
          return false;
-      } else if (!level.getGameRules().get(GameRules.MOB_GRIEFING) && source.getEntity() instanceof Mob) {
-         return false;
-      } else if (!this.getItem().canBeHurtBy(source)) {
-         return false;
-      } else {
-         this.markHurt();
-         this.health = (int)((float)this.health - damage);
-         this.gameEvent(GameEvent.ENTITY_DAMAGE, source.getEntity());
-         if (this.health <= 0) {
-            this.getItem().onDestroyed(this);
-            this.discard();
-         }
-
-         return true;
       }
+
+      if (!level.getGameRules().get(GameRules.MOB_GRIEFING) && source.getEntity() instanceof Mob) {
+         return false;
+      }
+
+      if (!this.getItem().canBeHurtBy(source)) {
+         return false;
+      }
+
+      this.markHurt();
+      this.health = (int)(this.health - damage);
+      this.gameEvent(GameEvent.ENTITY_DAMAGE, source.getEntity());
+      if (this.health <= 0) {
+         this.getItem().onDestroyed(this);
+         this.discard();
+      }
+
+      return true;
    }
 
    @Override
@@ -367,9 +368,8 @@ public class ItemEntity extends Entity implements TraceableEntity {
       return false;
    }
 
-   @Nullable
    @Override
-   public Entity teleport(final TeleportTransition transition) {
+   public @Nullable Entity teleport(final TeleportTransition transition) {
       Entity entity = super.teleport(transition);
       if (!this.level().isClientSide() && entity instanceof ItemEntity item) {
          item.mergeWithNeighbours();
@@ -386,7 +386,7 @@ public class ItemEntity extends Entity implements TraceableEntity {
       this.getEntityData().set(DATA_ITEM, itemStack);
    }
 
-   public void setTarget(@Nullable final UUID target) {
+   public void setTarget(final @Nullable UUID target) {
       this.target = target;
    }
 
@@ -442,12 +442,11 @@ public class ItemEntity extends Entity implements TraceableEntity {
 
    @Override
    public float getVisualRotationYInDegrees() {
-      return 180.0F - getSpin((float)this.getAge() + 0.5F, this.bobOffs) / (float) (Math.PI * 2) * 360.0F;
+      return 180.0F - getSpin(this.getAge() + 0.5F, this.bobOffs) / (float) (Math.PI * 2) * 360.0F;
    }
 
-   @Nullable
    @Override
-   public SlotAccess getSlot(final int slot) {
+   public @Nullable SlotAccess getSlot(final int slot) {
       return slot == 0 ? SlotAccess.of(this::getItem, this::setItem) : super.getSlot(slot);
    }
 

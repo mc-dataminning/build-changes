@@ -15,11 +15,11 @@ import net.minecraft.world.level.storage.loot.ValidationContext;
 public record TimeCheck(Holder<WorldClock> clock, Optional<Long> period, IntRangePredicate value) implements LootItemCondition {
    public static final MapCodec<TimeCheck> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               WorldClock.CODEC.fieldOf("clock").forGetter(TimeCheck::clock),
-               Codec.LONG.optionalFieldOf("period").forGetter(TimeCheck::period),
-               IntRangePredicate.CODEC.fieldOf("value").forGetter(TimeCheck::value)
-            )
-            .apply(i, TimeCheck::new)
+            WorldClock.CODEC.fieldOf("clock").forGetter(TimeCheck::clock),
+            Codec.LONG.optionalFieldOf("period").forGetter(TimeCheck::period),
+            IntRangePredicate.CODEC.fieldOf("value").forGetter(TimeCheck::value)
+         )
+         .apply(i, TimeCheck::new)
    );
 
    @Override

@@ -75,11 +75,11 @@ public class PhantomModel extends EntityModel<PhantomRenderState> {
       super.setupAnim(state);
       float anim = state.flapTime * 7.448451F * (float) (Math.PI / 180.0);
       float flapAmount = 16.0F;
-      this.leftWingBase.zRot = Mth.cos((double)anim) * 16.0F * (float) (Math.PI / 180.0);
-      this.leftWingTip.zRot = Mth.cos((double)anim) * 16.0F * (float) (Math.PI / 180.0);
+      this.leftWingBase.zRot = Mth.cos(anim) * 16.0F * (float) (Math.PI / 180.0);
+      this.leftWingTip.zRot = Mth.cos(anim) * 16.0F * (float) (Math.PI / 180.0);
       this.rightWingBase.zRot = -this.leftWingBase.zRot;
       this.rightWingTip.zRot = -this.leftWingTip.zRot;
-      this.tailBase.xRot = -(5.0F + Mth.cos((double)(anim * 2.0F)) * 5.0F) * (float) (Math.PI / 180.0);
-      this.tailTip.xRot = -(5.0F + Mth.cos((double)(anim * 2.0F)) * 5.0F) * (float) (Math.PI / 180.0);
+      this.tailBase.xRot = -(5.0F + Mth.cos(anim * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
+      this.tailTip.xRot = -(5.0F + Mth.cos(anim * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
    }
 }

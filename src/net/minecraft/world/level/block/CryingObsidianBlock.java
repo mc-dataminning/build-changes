@@ -21,12 +21,10 @@ public class CryingObsidianBlock extends Block {
             BlockPos relativePos = pos.relative(dir);
             BlockState blockState = level.getBlockState(relativePos);
             if (!state.canOcclude() || !blockState.isFaceSturdy(level, relativePos, dir.getOpposite())) {
-               double xOffset = dir.getStepX() == 0 ? random.nextDouble() : 0.5 + (double)dir.getStepX() * 0.6;
-               double yOffset = dir.getStepY() == 0 ? random.nextDouble() : 0.5 + (double)dir.getStepY() * 0.6;
-               double zOffset = dir.getStepZ() == 0 ? random.nextDouble() : 0.5 + (double)dir.getStepZ() * 0.6;
-               level.addParticle(
-                  ParticleTypes.DRIPPING_OBSIDIAN_TEAR, (double)pos.getX() + xOffset, (double)pos.getY() + yOffset, (double)pos.getZ() + zOffset, 0.0, 0.0, 0.0
-               );
+               double xOffset = dir.getStepX() == 0 ? random.nextDouble() : 0.5 + dir.getStepX() * 0.6;
+               double yOffset = dir.getStepY() == 0 ? random.nextDouble() : 0.5 + dir.getStepY() * 0.6;
+               double zOffset = dir.getStepZ() == 0 ? random.nextDouble() : 0.5 + dir.getStepZ() * 0.6;
+               level.addParticle(ParticleTypes.DRIPPING_OBSIDIAN_TEAR, pos.getX() + xOffset, pos.getY() + yOffset, pos.getZ() + zOffset, 0.0, 0.0, 0.0);
             }
          }
       }

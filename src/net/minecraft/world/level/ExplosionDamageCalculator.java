@@ -31,8 +31,8 @@ public class ExplosionDamageCalculator {
    public float getEntityDamageAmount(final Explosion explosion, final Entity entity, final float exposure) {
       float doubleRadius = explosion.radius() * 2.0F;
       Vec3 center = explosion.center();
-      double dist = Math.sqrt(entity.distanceToSqr(center)) / (double)doubleRadius;
-      double pow = (1.0 - dist) * (double)exposure;
-      return (float)((pow * pow + pow) / 2.0 * 7.0 * (double)doubleRadius + 1.0);
+      double dist = Math.sqrt(entity.distanceToSqr(center)) / doubleRadius;
+      double pow = (1.0 - dist) * exposure;
+      return (float)((pow * pow + pow) / 2.0 * 7.0 * doubleRadius + 1.0);
    }
 }

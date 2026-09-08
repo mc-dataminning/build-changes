@@ -12,7 +12,7 @@ import net.minecraft.util.Util;
 public record RandomlySelectedPlacement(List<PlacementModifier> placements) implements PlacementModifier {
    public static final MapCodec<RandomlySelectedPlacement> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(ExtraCodecs.nonEmptyList(PlacementModifier.CODEC.listOf()).fieldOf("placements").forGetter(RandomlySelectedPlacement::placements))
-            .apply(i, RandomlySelectedPlacement::new)
+         .apply(i, RandomlySelectedPlacement::new)
    );
 
    public RandomlySelectedPlacement(final PlacementModifier... placements) {

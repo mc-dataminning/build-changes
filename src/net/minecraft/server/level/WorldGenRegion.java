@@ -67,7 +67,7 @@ import org.slf4j.Logger;
 public class WorldGenRegion implements WorldGenLevel {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static final Identifier WORLDGEN_REGION_RANDOM = Identifier.withDefaultNamespace("worldgen_region_random");
-   private final StaticCache2D<ChunkAccess> cache;
+   private final StaticCache2D<@Nullable ChunkAccess> cache;
    private final ChunkAccess center;
    private final ServerLevel level;
    private final long seed;
@@ -78,8 +78,7 @@ public class WorldGenRegion implements WorldGenLevel {
    private final WorldGenTickAccess<Fluid> fluidTicks = new WorldGenTickAccess<>(pos -> this.getChunk(pos).getFluidTicks());
    private final BiomeManager biomeManager;
    private final ChunkStep generatingStep;
-   @Nullable
-   private Supplier<String> currentlyGenerating;
+   private @Nullable Supplier<String> currentlyGenerating;
    private final AtomicLong subTickCount = new AtomicLong();
    private final EnvironmentAttributeSystem environmentAttributes;
    private final BiomeResolver uncachedBiomeResolver;
@@ -119,7 +118,7 @@ public class WorldGenRegion implements WorldGenLevel {
    }
 
    @Override
-   public void setCurrentlyGenerating(@Nullable final Supplier<String> currentlyGenerating) {
+   public void setCurrentlyGenerating(final @Nullable Supplier<String> currentlyGenerating) {
       this.currentlyGenerating = currentlyGenerating;
    }
 
@@ -128,9 +127,8 @@ public class WorldGenRegion implements WorldGenLevel {
       return this.getChunk(chunkX, chunkZ, ChunkStatus.EMPTY);
    }
 
-   @Nullable
    @Override
-   public ChunkAccess getChunk(final int chunkX, final int chunkZ, final ChunkStatus targetStatus, final boolean loadOrGenerate) {
+   public @Nullable ChunkAccess getChunk(final int chunkX, final int chunkZ, final ChunkStatus targetStatus, final boolean loadOrGenerate) {
       int distance = this.center.getPos().getChessboardDistance(chunkX, chunkZ);
       ChunkStatus maxAllowedStatus = distance >= this.generatingStep.directDependencies().size()
          ? null
@@ -182,9 +180,8 @@ public class WorldGenRegion implements WorldGenLevel {
       return this.getChunk(chunkX, chunkZ).getFluidState(pos);
    }
 
-   @Nullable
    @Override
-   public Player getNearestPlayer(final double x, final double y, final double z, final double maxDist, @Nullable final Predicate<Entity> predicate) {
+   public @Nullable Player getNearestPlayer(final double x, final double y, final double z, final double maxDist, final @Nullable Predicate<Entity> predicate) {
       return null;
    }
 
@@ -209,44 +206,43 @@ public class WorldGenRegion implements WorldGenLevel {
    }
 
    @Override
-   public boolean destroyBlock(final BlockPos pos, final boolean dropResources, @Nullable final Entity breaker, final int updateLimit) {
+   public boolean destroyBlock(final BlockPos pos, final boolean dropResources, final @Nullable Entity breaker, final int updateLimit) {
       BlockState blockState = this.getBlockState(pos);
       return blockState.isAir() ? false : this.setBlock(pos, Blocks.AIR.defaultBlockState(), 3, updateLimit);
    }
 
-   @Nullable
    @Override
-   public BlockEntity getBlockEntity(final BlockPos pos) {
+   public @Nullable BlockEntity getBlockEntity(final BlockPos pos) {
       ChunkAccess chunk = this.getChunk(pos);
       BlockEntity blockEntity = chunk.getBlockEntity(pos);
       if (blockEntity != null) {
          return blockEntity;
-      } else {
-         CompoundTag tag = chunk.getBlockEntityNbt(pos);
-         BlockState state = chunk.getBlockState(pos);
-         if (tag != null) {
-            if ("DUMMY".equals(tag.getStringOr("id", ""))) {
-               if (!state.hasBlockEntity()) {
-                  return null;
-               }
-
-               blockEntity = ((EntityBlock)state.getBlock()).newBlockEntity(pos, state);
-            } else {
-               blockEntity = BlockEntity.loadStatic(pos, state, tag, this.level.registryAccess());
-            }
-
-            if (blockEntity != null) {
-               chunk.setBlockEntity(blockEntity);
-               return blockEntity;
-            }
-         }
-
-         if (state.hasBlockEntity()) {
-            LOGGER.warn("Tried to access a block entity before it was created. {}", pos);
-         }
-
-         return null;
       }
+
+      CompoundTag tag = chunk.getBlockEntityNbt(pos);
+      BlockState state = chunk.getBlockState(pos);
+      if (tag != null) {
+         if ("DUMMY".equals(tag.getStringOr("id", ""))) {
+            if (!state.hasBlockEntity()) {
+               return null;
+            }
+
+            blockEntity = ((EntityBlock)state.getBlock()).newBlockEntity(pos, state);
+         } else {
+            blockEntity = BlockEntity.loadStatic(pos, state, tag, this.level.registryAccess());
+         }
+
+         if (blockEntity != null) {
+            chunk.setBlockEntity(blockEntity);
+            return blockEntity;
+         }
+      }
+
+      if (state.hasBlockEntity()) {
+         LOGGER.warn("Tried to access a block entity before it was created. {}", pos);
+      }
+
+      return null;
    }
 
    private void warnIfReadOutsideWriteZone(final int chunkX, final int chunkZ) {
@@ -325,45 +321,45 @@ public class WorldGenRegion implements WorldGenLevel {
    }
 
    @Override
-   public boolean setBlock(final BlockPos pos, final BlockState blockState, @Block.UpdateFlags final int updateFlags, final int updateLimit) {
+   public boolean setBlock(final BlockPos pos, final BlockState blockState, final @Block.UpdateFlags int updateFlags, final int updateLimit) {
       if (!this.ensureCanWrite(pos)) {
          return false;
-      } else {
-         ChunkAccess chunk = this.getChunk(pos);
-         BlockState oldState = chunk.setBlockState(pos, blockState, updateFlags);
-         if (oldState != null) {
-            this.level.updatePOIOnBlockStateChange(pos, oldState, blockState);
-         }
-
-         if (blockState.hasBlockEntity()) {
-            if (chunk.getPersistedStatus().getChunkType() == ChunkType.LEVELCHUNK) {
-               BlockEntity blockEntity = ((EntityBlock)blockState.getBlock()).newBlockEntity(pos, blockState);
-               if (blockEntity != null) {
-                  chunk.setBlockEntity(blockEntity);
-               } else {
-                  chunk.removeBlockEntity(pos);
-               }
-            } else {
-               CompoundTag tag = new CompoundTag();
-               tag.putInt("x", pos.getX());
-               tag.putInt("y", pos.getY());
-               tag.putInt("z", pos.getZ());
-               tag.putString("id", "DUMMY");
-               chunk.setBlockEntityNbt(tag);
-            }
-         } else if (oldState != null && oldState.hasBlockEntity()) {
-            chunk.removeBlockEntity(pos);
-         }
-
-         if ((updateFlags & 16) == 0) {
-            BlockPos postProcessPos = blockState.getPostProcessPos(this, pos);
-            if (postProcessPos != null) {
-               this.markPosForPostProcessing(postProcessPos);
-            }
-         }
-
-         return true;
       }
+
+      ChunkAccess chunk = this.getChunk(pos);
+      BlockState oldState = chunk.setBlockState(pos, blockState, updateFlags);
+      if (oldState != null) {
+         this.level.updatePOIOnBlockStateChange(pos, oldState, blockState);
+      }
+
+      if (blockState.hasBlockEntity()) {
+         if (chunk.getPersistedStatus().getChunkType() == ChunkType.LEVELCHUNK) {
+            BlockEntity blockEntity = ((EntityBlock)blockState.getBlock()).newBlockEntity(pos, blockState);
+            if (blockEntity != null) {
+               chunk.setBlockEntity(blockEntity);
+            } else {
+               chunk.removeBlockEntity(pos);
+            }
+         } else {
+            CompoundTag tag = new CompoundTag();
+            tag.putInt("x", pos.getX());
+            tag.putInt("y", pos.getY());
+            tag.putInt("z", pos.getZ());
+            tag.putString("id", "DUMMY");
+            chunk.setBlockEntityNbt(tag);
+         }
+      } else if (oldState != null && oldState.hasBlockEntity()) {
+         chunk.removeBlockEntity(pos);
+      }
+
+      if ((updateFlags & 16) == 0) {
+         BlockPos postProcessPos = blockState.getPostProcessPos(this, pos);
+         if (postProcessPos != null) {
+            this.markPosForPostProcessing(postProcessPos);
+         }
+      }
+
+      return true;
    }
 
    private void markPosForPostProcessing(final BlockPos blockPos) {
@@ -423,9 +419,8 @@ public class WorldGenRegion implements WorldGenLevel {
       }
    }
 
-   @Nullable
    @Override
-   public MinecraftServer getServer() {
+   public @Nullable MinecraftServer getServer() {
       return this.level.getServer();
    }
 
@@ -469,7 +464,7 @@ public class WorldGenRegion implements WorldGenLevel {
 
    @Override
    public void playSound(
-      @Nullable final Entity except, final BlockPos pos, final SoundEvent sound, final SoundSource source, final float volume, final float pitch
+      final @Nullable Entity except, final BlockPos pos, final SoundEvent sound, final SoundSource source, final float volume, final float pitch
    ) {
    }
 
@@ -478,7 +473,7 @@ public class WorldGenRegion implements WorldGenLevel {
    }
 
    @Override
-   public void levelEvent(@Nullable final Entity source, @LevelEvent.Value final int type, final BlockPos pos, final int data) {
+   public void levelEvent(final @Nullable Entity source, final @LevelEvent.Value int type, final BlockPos pos, final int data) {
    }
 
    @Override
@@ -506,7 +501,7 @@ public class WorldGenRegion implements WorldGenLevel {
    }
 
    @Override
-   public List<Entity> getEntities(@Nullable final Entity except, final AABB bb, @Nullable final Predicate<? super Entity> selector) {
+   public List<Entity> getEntities(final @Nullable Entity except, final AABB bb, final @Nullable Predicate<? super Entity> selector) {
       return Collections.emptyList();
    }
 

@@ -7,8 +7,7 @@ import org.jspecify.annotations.Nullable;
 
 public class SwellGoal extends Goal {
    private final Creeper creeper;
-   @Nullable
-   private LivingEntity target;
+   private @Nullable LivingEntity target;
 
    public SwellGoal(final Creeper creeper) {
       this.creeper = creeper;

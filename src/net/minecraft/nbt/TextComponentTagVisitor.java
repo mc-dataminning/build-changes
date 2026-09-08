@@ -168,15 +168,15 @@ public class TextComponentTagVisitor implements TagVisitor {
    private static boolean shouldWrapListElements(final ListTag list) {
       if (list.size() >= 8) {
          return false;
-      } else {
-         for (Tag element : list) {
-            if (!(element instanceof NumericTag)) {
-               return true;
-            }
-         }
-
-         return false;
       }
+
+      for (Tag element : list) {
+         if (!(element instanceof NumericTag)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Override
@@ -289,12 +289,12 @@ public class TextComponentTagVisitor implements TagVisitor {
    private Component handleEscapePretty(final String input) {
       if (SIMPLE_VALUE.matcher(input).matches()) {
          return Component.literal(input).withStyle(this.styling.keyStyle());
-      } else {
-         String quoted = StringTag.quoteAndEscape(input);
-         String quote = quoted.substring(0, 1);
-         Component inner = Component.literal(quoted.substring(1, quoted.length() - 1)).withStyle(this.styling.keyStyle());
-         return Component.literal(quote).append(inner).append(quote);
       }
+
+      String quoted = StringTag.quoteAndEscape(input);
+      String quote = quoted.substring(0, 1);
+      Component inner = Component.literal(quoted.substring(1, quoted.length() - 1)).withStyle(this.styling.keyStyle());
+      return Component.literal(quote).append(inner).append(quote);
    }
 
    @Override
@@ -391,7 +391,7 @@ public class TextComponentTagVisitor implements TagVisitor {
       Component token(final TextComponentTagVisitor.Token token);
    }
 
-   public static enum Token {
+   public enum Token {
       FOLDED("<...>"),
       ELEMENT_SEPARATOR(","),
       LIST_CLOSE("]"),
@@ -411,7 +411,7 @@ public class TextComponentTagVisitor implements TagVisitor {
 
       public final String text;
 
-      private Token(final String text) {
+      Token(final String text) {
          this.text = text;
       }
    }

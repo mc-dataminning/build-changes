@@ -129,8 +129,7 @@ public class FeatureRenderDispatcher implements AutoCloseable {
       private final FeatureRenderDispatcher.PreparedFrame frame;
       private final List<SubmitNode> allSubmits;
       private final List<FeatureRenderDispatcher.PreparedGroup<?>> phaseGroups;
-      @Nullable
-      private FeatureRenderDispatcher.PreparedGroup<?> lastGroup;
+      private FeatureRenderDispatcher.@Nullable PreparedGroup<?> lastGroup;
 
       public PhaseSubmitGrouper(final FeatureRenderDispatcher.PreparedFrame frame, final FeatureRenderPhase<?> phase) {
          this.frame = frame;
@@ -181,30 +180,20 @@ public class FeatureRenderDispatcher implements AutoCloseable {
    }
 
    public class PreparedFrame implements AutoCloseable {
-      @Nullable
-      private FeatureFrameContext context;
-      @Nullable
-      private SubmitNodeStorage submitNodeStorage;
-      private final List<SubmitNode> allSubmits;
-      private final Map<FeatureRenderPhase<?>, List<FeatureRenderDispatcher.PreparedGroup<?>>> groupsByPhase;
-      private final Map<FeatureRendererType<?>, List<FeatureRenderDispatcher.PreparedGroup<?>>> groupsByFeature;
-
-      public PreparedFrame() {
-         Objects.requireNonNull(FeatureRenderDispatcher.this);
-         super();
-         this.allSubmits = new ArrayList<>();
-         this.groupsByPhase = new IdentityHashMap<>();
-         this.groupsByFeature = new IdentityHashMap<>();
-      }
+      private @Nullable FeatureFrameContext context;
+      private @Nullable SubmitNodeStorage submitNodeStorage;
+      private final List<SubmitNode> allSubmits = new ArrayList<>();
+      private final Map<FeatureRenderPhase<?>, List<FeatureRenderDispatcher.PreparedGroup<?>>> groupsByPhase = new IdentityHashMap<>();
+      private final Map<FeatureRendererType<?>, List<FeatureRenderDispatcher.PreparedGroup<?>>> groupsByFeature = new IdentityHashMap<>();
 
       private FeatureRenderDispatcher.PreparedFrame begin(final FeatureFrameContext context, final SubmitNodeStorage submitNodeStorage) {
          if (this.context != null) {
             throw new IllegalStateException("PreparedFrame already in use");
-         } else {
-            this.context = context;
-            this.submitNodeStorage = submitNodeStorage;
-            return this;
          }
+
+         this.context = context;
+         this.submitNodeStorage = submitNodeStorage;
+         return this;
       }
 
       public void executeSolid(final RenderPass renderPass) {
@@ -316,7 +305,7 @@ public class FeatureRenderDispatcher implements AutoCloseable {
       }
 
       private void executePhase(
-         final FeatureRenderPhase<?> phase, final FeatureFrameContext context, @Nullable final OitStage stage, final RenderPass renderPass
+         final FeatureRenderPhase<?> phase, final FeatureFrameContext context, final @Nullable OitStage stage, final RenderPass renderPass
       ) {
          ProfilerFiller profiler = Profiler.get();
 
@@ -387,10 +376,10 @@ public class FeatureRenderDispatcher implements AutoCloseable {
          groupsSet.removeIf(groups -> {
             if (groups.isEmpty()) {
                return true;
-            } else {
-               groups.clear();
-               return false;
             }
+
+            groups.clear();
+            return false;
          });
       }
    }
@@ -423,7 +412,7 @@ public class FeatureRenderDispatcher implements AutoCloseable {
 
       public void execute(
          final FeatureFrameContext context,
-         @Nullable final OitStage stage,
+         final @Nullable OitStage stage,
          final RenderPass renderPass,
          final FeatureRendererMap featureRenderers,
          final List<SubmitNode> submits

@@ -166,11 +166,9 @@ public abstract class AbstractNautilus extends TamableAnimal implements PlayerRi
       return !this.isVehicle();
    }
 
-   @Nullable
    @Override
-   public LivingEntity getControllingPassenger() {
-      Entity firstPassenger = this.getFirstPassenger();
-      return (LivingEntity)(this.isSaddled() && firstPassenger instanceof Player ? (Player)firstPassenger : super.getControllingPassenger());
+   public @Nullable LivingEntity getControllingPassenger() {
+      return this.isSaddled() && this.getFirstPassenger() instanceof Player player ? player : super.getControllingPassenger();
    }
 
    @Override
@@ -179,8 +177,8 @@ public abstract class AbstractNautilus extends TamableAnimal implements PlayerRi
       float forward = 0.0F;
       float up = 0.0F;
       if (controller.zza != 0.0F) {
-         float forwardLook = Mth.cos((double)(controller.getXRot() * (float) (Math.PI / 180.0)));
-         float upLook = -Mth.sin((double)(controller.getXRot() * (float) (Math.PI / 180.0)));
+         float forwardLook = Mth.cos(controller.getXRot() * (float) (Math.PI / 180.0));
+         float upLook = -Mth.sin(controller.getXRot() * (float) (Math.PI / 180.0));
          if (controller.zza < 0.0F) {
             forwardLook *= -0.5F;
             upLook *= -0.5F;
@@ -190,7 +188,7 @@ public abstract class AbstractNautilus extends TamableAnimal implements PlayerRi
          forward = forwardLook;
       }
 
-      return new Vec3((double)strafe, (double)up, (double)forward);
+      return new Vec3(strafe, up, forward);
    }
 
    protected Vec2 getRiddenRotation(final LivingEntity controller) {
@@ -247,7 +245,7 @@ public abstract class AbstractNautilus extends TamableAnimal implements PlayerRi
    protected void checkRestriction() {
       if (!this.isLeashed() && !this.isVehicle() && this.isTame()) {
          int radius = this.getNautilusRestrictionRadius();
-         if (!this.hasHome() || !this.getHomePosition().closerThan(this.blockPosition(), (double)(radius + 8)) || radius != this.getHomeRadius()) {
+         if (!this.hasHome() || !this.getHomePosition().closerThan(this.blockPosition(), radius + 8) || radius != this.getHomeRadius()) {
             this.setHomeTo(this.blockPosition(), radius);
          }
       }
@@ -272,14 +270,14 @@ public abstract class AbstractNautilus extends TamableAnimal implements PlayerRi
    private void spawnBubbles() {
       double speed = this.getDeltaMovement().length();
       double bubbleProbability = Mth.clamp(speed * 2.0, 0.15F, 1.0);
-      if ((double)this.random.nextFloat() < bubbleProbability) {
+      if (this.random.nextFloat() < bubbleProbability) {
          float yRot = this.getYRot();
          float xRot = Mth.clamp(this.getXRot(), -10.0F, 10.0F);
          Vec3 mouthDirectionVector = calculateViewVector(xRot, yRot);
          double spread = this.random.nextDouble() * 0.8 * (1.0 + speed);
-         double dx = ((double)this.random.nextFloat() - 0.5) * spread;
-         double dy = ((double)this.random.nextFloat() - 0.5) * spread;
-         double dz = ((double)this.random.nextFloat() - 0.5) * spread;
+         double dx = (this.random.nextFloat() - 0.5) * spread;
+         double dy = (this.random.nextFloat() - 0.5) * spread;
+         double dz = (this.random.nextFloat() - 0.5) * spread;
          this.level()
             .addParticle(
                ParticleTypes.BUBBLE,
@@ -345,7 +343,7 @@ public abstract class AbstractNautilus extends TamableAnimal implements PlayerRi
    protected void executeRidersJump(final float amount, final Player controller) {
       this.addDeltaMovement(
          controller.getLookAngle()
-            .scale((double)((this.isInWater() ? 1.2F : 0.5F) * amount) * this.getAttributeValue(Attributes.MOVEMENT_SPEED) * (double)this.getBlockSpeedFactor())
+            .scale((this.isInWater() ? 1.2F : 0.5F) * amount * this.getAttributeValue(Attributes.MOVEMENT_SPEED) * this.getBlockSpeedFactor())
       );
       this.dashCooldown = 40;
       this.setDashing(true);
@@ -381,13 +379,11 @@ public abstract class AbstractNautilus extends TamableAnimal implements PlayerRi
    protected void playStepSound(final BlockPos pos, final BlockState blockState) {
    }
 
-   @Nullable
-   protected SoundEvent getDashSound() {
+   protected @Nullable SoundEvent getDashSound() {
       return null;
    }
 
-   @Nullable
-   protected SoundEvent getDashReadySound() {
+   protected @Nullable SoundEvent getDashReadySound() {
       return null;
    }
 
@@ -402,34 +398,36 @@ public abstract class AbstractNautilus extends TamableAnimal implements PlayerRi
       ItemStack itemStack = player.getItemInHand(hand);
       if (this.isBaby()) {
          return super.mobInteract(player, hand);
-      } else if (this.isTame() && player.isSecondaryUseActive()) {
+      }
+
+      if (this.isTame() && player.isSecondaryUseActive()) {
          this.openCustomInventoryScreen(player);
          return InteractionResult.SUCCESS;
-      } else {
-         if (!itemStack.isEmpty()) {
-            if (!this.level().isClientSide() && !this.isTame() && this.isFood(itemStack)) {
-               this.usePlayerItem(player, hand, itemStack);
-               this.tryToTame(player);
-               return InteractionResult.SUCCESS_SERVER;
-            }
+      }
 
-            if (this.isFood(itemStack) && this.getHealth() < this.getMaxHealth()) {
-               this.feed(player, hand, itemStack, 2.0F, 1.0F);
-               return InteractionResult.SUCCESS;
-            }
-
-            InteractionResult interactionResult = itemStack.interactLivingEntity(player, this, hand);
-            if (interactionResult.consumesAction()) {
-               return interactionResult;
-            }
+      if (!itemStack.isEmpty()) {
+         if (!this.level().isClientSide() && !this.isTame() && this.isFood(itemStack)) {
+            this.usePlayerItem(player, hand, itemStack);
+            this.tryToTame(player);
+            return InteractionResult.SUCCESS_SERVER;
          }
 
-         if (this.isTame() && !player.isSecondaryUseActive() && !this.isFood(itemStack)) {
-            this.doPlayerRide(player);
+         if (this.isFood(itemStack) && this.getHealth() < this.getMaxHealth()) {
+            this.feed(player, hand, itemStack, 2.0F, 1.0F);
             return InteractionResult.SUCCESS;
-         } else {
-            return super.mobInteract(player, hand);
          }
+
+         InteractionResult interactionResult = itemStack.interactLivingEntity(player, this, hand);
+         if (interactionResult.consumesAction()) {
+            return interactionResult;
+         }
+      }
+
+      if (this.isTame() && !player.isSecondaryUseActive() && !this.isFood(itemStack)) {
+         this.doPlayerRide(player);
+         return InteractionResult.SUCCESS;
+      } else {
+         return super.mobInteract(player, hand);
       }
    }
 
@@ -467,7 +465,7 @@ public abstract class AbstractNautilus extends TamableAnimal implements PlayerRi
 
    @Override
    public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       RandomSource random = level.getRandom();
       NautilusAi.initMemories(this, random);
@@ -479,7 +477,7 @@ public abstract class AbstractNautilus extends TamableAnimal implements PlayerRi
       if (slot == EquipmentSlot.SADDLE && this.isUnderWater()) {
          return SoundEvents.NAUTILUS_SADDLE_UNDERWATER_EQUIP;
       } else {
-         return (Holder<SoundEvent>)(slot == EquipmentSlot.SADDLE ? SoundEvents.NAUTILUS_SADDLE_EQUIP : super.getEquipSound(slot, stack, equippable));
+         return slot == EquipmentSlot.SADDLE ? SoundEvents.NAUTILUS_SADDLE_EQUIP : super.getEquipSound(slot, stack, equippable);
       }
    }
 
@@ -509,9 +507,8 @@ public abstract class AbstractNautilus extends TamableAnimal implements PlayerRi
       }
    }
 
-   @Nullable
    @Override
-   public SlotAccess getSlot(final int slot) {
+   public @Nullable SlotAccess getSlot(final int slot) {
       int inventorySlot = slot - 500;
       return inventorySlot >= 0 && inventorySlot < this.inventory.getContainerSize() ? this.inventory.getSlot(inventorySlot) : super.getSlot(slot);
    }

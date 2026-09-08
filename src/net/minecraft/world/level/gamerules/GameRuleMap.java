@@ -49,8 +49,7 @@ public final class GameRuleMap extends SavedData {
       return this.map.containsKey(gameRule);
    }
 
-   @Nullable
-   public <T> T get(final GameRule<T> gameRule) {
+   public <T> @Nullable T get(final GameRule<T> gameRule) {
       return (T)this.map.get(gameRule);
    }
 
@@ -63,8 +62,7 @@ public final class GameRuleMap extends SavedData {
       this.set(gameRule, gameRule.defaultValue());
    }
 
-   @Nullable
-   public <T> T remove(final GameRule<T> gameRule) {
+   public <T> @Nullable T remove(final GameRule<T> gameRule) {
       this.setDirty();
       return (T)this.map.remove(gameRule);
    }

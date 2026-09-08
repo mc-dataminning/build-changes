@@ -42,8 +42,8 @@ public class SkinTextureDownloader {
          NativeImage loadedSkin;
          try {
             loadedSkin = this.downloadSkin(localCopy, texture.url());
-         } catch (IOException var6) {
-            throw new UncheckedIOException(var6);
+         } catch (IOException e) {
+            throw new UncheckedIOException(e);
          }
 
          return processLegacySkin ? processLegacySkin(loadedSkin, texture.url()) : loadedSkin;
@@ -54,18 +54,14 @@ public class SkinTextureDownloader {
       if (Files.isRegularFile(localCopy)) {
          LOGGER.debug("Loading HTTP texture from local cache ({})", localCopy);
 
-         NativeImage var18;
          try (InputStream inputStream = Files.newInputStream(localCopy)) {
-            var18 = NativeImage.read(inputStream);
+            return NativeImage.read(inputStream);
          }
-
-         return var18;
       } else {
          HttpURLConnection connection = null;
          LOGGER.debug("Downloading HTTP texture from {} to {}", url, localCopy);
          URI uri = URI.create(url);
 
-         NativeImage e;
          try {
             connection = (HttpURLConnection)uri.toURL().openConnection(this.proxy);
             connection.setDoInput(true);
@@ -81,18 +77,16 @@ public class SkinTextureDownloader {
             try {
                FileUtil.createDirectoriesSafe(localCopy.getParent());
                Files.write(localCopy, imageContents);
-            } catch (IOException var14) {
+            } catch (IOException e) {
                LOGGER.warn("Failed to cache texture {} in {}", url, localCopy);
             }
 
-            e = NativeImage.read(imageContents);
+            return NativeImage.read(imageContents);
          } finally {
             if (connection != null) {
                connection.disconnect();
             }
          }
-
-         return e;
       }
    }
 
@@ -114,19 +108,19 @@ public class SkinTextureDownloader {
             newImage.copyFrom(image);
             image.close();
             image = newImage;
-            newImage.fillRect(0, 32, 64, 32, 0);
-            newImage.copyRect(4, 16, 16, 32, 4, 4, true, false);
-            newImage.copyRect(8, 16, 16, 32, 4, 4, true, false);
-            newImage.copyRect(0, 20, 24, 32, 4, 12, true, false);
-            newImage.copyRect(4, 20, 16, 32, 4, 12, true, false);
-            newImage.copyRect(8, 20, 8, 32, 4, 12, true, false);
-            newImage.copyRect(12, 20, 16, 32, 4, 12, true, false);
-            newImage.copyRect(44, 16, -8, 32, 4, 4, true, false);
-            newImage.copyRect(48, 16, -8, 32, 4, 4, true, false);
-            newImage.copyRect(40, 20, 0, 32, 4, 12, true, false);
-            newImage.copyRect(44, 20, -8, 32, 4, 12, true, false);
-            newImage.copyRect(48, 20, -16, 32, 4, 12, true, false);
-            newImage.copyRect(52, 20, -8, 32, 4, 12, true, false);
+            image.fillRect(0, 32, 64, 32, 0);
+            image.copyRect(4, 16, 16, 32, 4, 4, true, false);
+            image.copyRect(8, 16, 16, 32, 4, 4, true, false);
+            image.copyRect(0, 20, 24, 32, 4, 12, true, false);
+            image.copyRect(4, 20, 16, 32, 4, 12, true, false);
+            image.copyRect(8, 20, 8, 32, 4, 12, true, false);
+            image.copyRect(12, 20, 16, 32, 4, 12, true, false);
+            image.copyRect(44, 16, -8, 32, 4, 4, true, false);
+            image.copyRect(48, 16, -8, 32, 4, 4, true, false);
+            image.copyRect(40, 20, 0, 32, 4, 12, true, false);
+            image.copyRect(44, 20, -8, 32, 4, 12, true, false);
+            image.copyRect(48, 20, -16, 32, 4, 12, true, false);
+            image.copyRect(52, 20, -8, 32, 4, 12, true, false);
          }
 
          setNoAlpha(image, 0, 0, 32, 16);
@@ -154,8 +148,8 @@ public class SkinTextureDownloader {
       }
 
       for (int x = x0; x < x1; x++) {
-         for (int yx = y0; yx < y1; yx++) {
-            image.setPixel(x, yx, image.getPixel(x, yx) & 16777215);
+         for (int y = y0; y < y1; y++) {
+            image.setPixel(x, y, image.getPixel(x, y) & 16777215);
          }
       }
    }

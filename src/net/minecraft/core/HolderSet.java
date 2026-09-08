@@ -67,11 +67,10 @@ public interface HolderSet<T> extends Iterable<Holder<T>> {
       return direct(elements.stream().map(holderGetter).toList());
    }
 
-   public static final class Direct<T> extends HolderSet.ListBacked<T> {
+   final class Direct<T> extends HolderSet.ListBacked<T> {
       private static final HolderSet.Direct<?> EMPTY = new HolderSet.Direct(List.of());
       private final List<Holder<T>> contents;
-      @Nullable
-      private Set<Holder<T>> contentsSet;
+      private @Nullable Set<Holder<T>> contentsSet;
 
       private Direct(final List<Holder<T>> contents) {
          this.contents = contents;
@@ -113,15 +112,7 @@ public interface HolderSet<T> extends Iterable<Holder<T>> {
 
       @Override
       public boolean equals(final Object obj) {
-         if (this == obj) {
-            return true;
-         } else {
-            if (obj instanceof HolderSet.Direct<?> direct && this.contents.equals(direct.contents)) {
-               return true;
-            }
-
-            return false;
-         }
+         return this == obj ? true : obj instanceof HolderSet.Direct<?> direct && this.contents.equals(direct.contents);
       }
 
       @Override
@@ -130,7 +121,7 @@ public interface HolderSet<T> extends Iterable<Holder<T>> {
       }
    }
 
-   public abstract static class ListBacked<T> implements HolderSet<T> {
+   abstract class ListBacked<T> implements HolderSet<T> {
       protected abstract List<Holder<T>> contents();
 
       @Override
@@ -169,11 +160,10 @@ public interface HolderSet<T> extends Iterable<Holder<T>> {
       }
    }
 
-   public static class Named<T> extends HolderSet.ListBacked<T> {
+   class Named<T> extends HolderSet.ListBacked<T> {
       private final HolderOwner<T> owner;
       private final TagKey<T> key;
-      @Nullable
-      private List<Holder<T>> contents;
+      private @Nullable List<Holder<T>> contents;
 
       Named(final HolderOwner<T> owner, final TagKey<T> key) {
          this.owner = owner;

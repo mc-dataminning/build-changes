@@ -14,17 +14,19 @@ public class StrollToPoi {
       MutableLong nextOkStartTime = new MutableLong(0L);
       return BehaviorBuilder.create(
          i -> i.group(i.registered(MemoryModuleType.WALK_TARGET), i.present(memoryType)).apply(i, (walkTarget, memory) -> (level, body, timestamp) -> {
-                  GlobalPos pos = i.get(memory);
-                  if (level.dimension() != pos.dimension() || !pos.pos().closerToCenterThan(body.position(), (double)maxDistanceFromPoi)) {
-                     return false;
-                  } else if (timestamp <= nextOkStartTime.longValue()) {
-                     return true;
-                  } else {
-                     walkTarget.set(new WalkTarget(pos.pos(), speedModifier, closeEnoughDist));
-                     nextOkStartTime.setValue(timestamp + 80L);
-                     return true;
-                  }
-               })
+            GlobalPos pos = i.get(memory);
+            if (level.dimension() != pos.dimension() || !pos.pos().closerToCenterThan(body.position(), maxDistanceFromPoi)) {
+               return false;
+            }
+
+            if (timestamp <= nextOkStartTime.longValue()) {
+               return true;
+            }
+
+            walkTarget.set(new WalkTarget(pos.pos(), speedModifier, closeEnoughDist));
+            nextOkStartTime.setValue(timestamp + 80L);
+            return true;
+         })
       );
    }
 }

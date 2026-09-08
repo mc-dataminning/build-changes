@@ -13,7 +13,7 @@ public interface SculkBehaviour {
    SculkBehaviour DEFAULT = new SculkBehaviour() {
       @Override
       public boolean attemptSpreadVein(
-         final LevelAccessor level, final BlockPos pos, final BlockState state, @Nullable final Collection<Direction> facings, final boolean postProcess
+         final LevelAccessor level, final BlockPos pos, final BlockState state, final @Nullable Collection<Direction> facings, final boolean postProcess
       ) {
          if (facings == null) {
             return ((SculkVeinBlock)Blocks.SCULK_VEIN).getSameSpaceSpreader().spreadAll(level.getBlockState(pos), level, pos, postProcess) > 0L;
@@ -54,7 +54,7 @@ public interface SculkBehaviour {
    }
 
    default boolean attemptSpreadVein(
-      final LevelAccessor level, final BlockPos pos, final BlockState state, @Nullable final Collection<Direction> facings, final boolean postProcess
+      final LevelAccessor level, final BlockPos pos, final BlockState state, final @Nullable Collection<Direction> facings, final boolean postProcess
    ) {
       return ((MultifaceSpreadeableBlock)Blocks.SCULK_VEIN).getSpreader().spreadAll(state, level, pos, postProcess) > 0L;
    }

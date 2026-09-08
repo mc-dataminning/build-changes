@@ -17,19 +17,19 @@ public class TriggerGate {
       final GateBehavior.RunningPolicy runningPolicy
    ) {
       ShufflingList<Trigger<? super E>> behaviors = new ShufflingList<>();
-      weightedBehaviors.forEach(entry -> behaviors.add((Trigger<? super E>)entry.getFirst(), (Integer)entry.getSecond()));
+      weightedBehaviors.forEach(entry -> behaviors.add((Trigger)entry.getFirst(), (Integer)entry.getSecond()));
       return BehaviorBuilder.create(i -> i.point((level, body, timestamp) -> {
-            if (orderPolicy == GateBehavior.OrderPolicy.SHUFFLED) {
-               behaviors.shuffle();
-            }
+         if (orderPolicy == GateBehavior.OrderPolicy.SHUFFLED) {
+            behaviors.shuffle();
+         }
 
-            for (Trigger<? super E> behavior : behaviors) {
-               if (behavior.trigger(level, body, timestamp) && runningPolicy == GateBehavior.RunningPolicy.RUN_ONE) {
-                  break;
-               }
+         for (Trigger<? super E> behavior : behaviors) {
+            if (behavior.trigger(level, body, timestamp) && runningPolicy == GateBehavior.RunningPolicy.RUN_ONE) {
+               break;
             }
+         }
 
-            return true;
-         }));
+         return true;
+      }));
    }
 }

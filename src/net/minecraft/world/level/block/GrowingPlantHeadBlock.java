@@ -29,12 +29,12 @@ public abstract class GrowingPlantHeadBlock extends GrowingPlantBlock implements
    ) {
       super(properties, growthDirection, shape, scheduleFluidTicks);
       this.growPerTickProbability = growPerTickProbability;
-      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(0)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
    }
 
    @Override
    public BlockState getStateForPlacement(final RandomSource random) {
-      return this.defaultBlockState().setValue(AGE, Integer.valueOf(random.nextInt(25)));
+      return this.defaultBlockState().setValue(AGE, random.nextInt(25));
    }
 
    @Override
@@ -57,7 +57,7 @@ public abstract class GrowingPlantHeadBlock extends GrowingPlantBlock implements
    }
 
    public BlockState getMaxAgeState(final BlockState fromState) {
-      return fromState.setValue(AGE, Integer.valueOf(25));
+      return fromState.setValue(AGE, 25);
    }
 
    public boolean isMaxAge(final BlockState state) {
@@ -124,7 +124,7 @@ public abstract class GrowingPlantHeadBlock extends GrowingPlantBlock implements
       int blocksToGrow = this.getBlocksToGrowWhenBonemealed(random);
 
       for (int i = 0; i < blocksToGrow && this.canGrowInto(level.getBlockState(forwardPos)) && !level.isOutsideBuildHeight(forwardPos); i++) {
-         level.setBlockAndUpdate(forwardPos, state.setValue(AGE, Integer.valueOf(nextAge)));
+         level.setBlockAndUpdate(forwardPos, state.setValue(AGE, nextAge));
          forwardPos = forwardPos.relative(this.growthDirection);
          nextAge = Math.min(nextAge + 1, 25);
       }

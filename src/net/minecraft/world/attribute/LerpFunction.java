@@ -50,28 +50,30 @@ public interface LerpFunction<T> {
       return (alpha, from, to) -> {
          if (alpha == 0.0F) {
             return from;
-         } else if (alpha == 1.0F) {
-            return to;
-         } else {
-            Builder<T> builder = ImmutableList.builderWithExpectedSize(from.size() + to.size());
-
-            for (T element : from) {
-               builder.add(scaler.apply(element, 1.0F - alpha));
-            }
-
-            for (T element : to) {
-               builder.add(scaler.apply(element, alpha));
-            }
-
-            return builder.build();
          }
+
+         if (alpha == 1.0F) {
+            return to;
+         }
+
+         Builder<T> builder = ImmutableList.builderWithExpectedSize(from.size() + to.size());
+
+         for (T element : from) {
+            builder.add(scaler.apply(element, 1.0F - alpha));
+         }
+
+         for (T element : to) {
+            builder.add(scaler.apply(element, alpha));
+         }
+
+         return builder.build();
       };
    }
 
    T apply(float alpha, T from, T to);
 
    @FunctionalInterface
-   public interface AlphaScaler<T> {
+   interface AlphaScaler<T> {
       T apply(T item, float alpha);
    }
 }

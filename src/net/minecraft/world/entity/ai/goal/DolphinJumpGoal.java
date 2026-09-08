@@ -25,20 +25,20 @@ public class DolphinJumpGoal extends JumpGoal {
    public boolean canUse() {
       if (this.dolphin.getRandom().nextInt(this.interval) != 0) {
          return false;
-      } else {
-         Direction motion = this.dolphin.getMotionDirection();
-         int stepX = motion.getStepX();
-         int stepZ = motion.getStepZ();
-         BlockPos dolphinPos = this.dolphin.blockPosition();
-
-         for (int i : STEPS_TO_CHECK) {
-            if (!this.waterIsClear(dolphinPos, stepX, stepZ, i) || !this.surfaceIsClear(dolphinPos, stepX, stepZ, i)) {
-               return false;
-            }
-         }
-
-         return true;
       }
+
+      Direction motion = this.dolphin.getMotionDirection();
+      int stepX = motion.getStepX();
+      int stepZ = motion.getStepZ();
+      BlockPos dolphinPos = this.dolphin.blockPosition();
+
+      for (int i : STEPS_TO_CHECK) {
+         if (!this.waterIsClear(dolphinPos, stepX, stepZ, i) || !this.surfaceIsClear(dolphinPos, stepX, stepZ, i)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    private boolean waterIsClear(final BlockPos dolphinPos, final int stepX, final int stepZ, final int currentStep) {
@@ -66,7 +66,7 @@ public class DolphinJumpGoal extends JumpGoal {
    @Override
    public void start() {
       Direction direction = this.dolphin.getMotionDirection();
-      this.dolphin.setDeltaMovement(this.dolphin.getDeltaMovement().add((double)direction.getStepX() * 0.6, 0.7, (double)direction.getStepZ() * 0.6));
+      this.dolphin.setDeltaMovement(this.dolphin.getDeltaMovement().add(direction.getStepX() * 0.6, 0.7, direction.getStepZ() * 0.6));
       this.dolphin.getNavigation().stop();
    }
 

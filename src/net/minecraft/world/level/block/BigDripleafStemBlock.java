@@ -31,7 +31,7 @@ public class BigDripleafStemBlock extends HorizontalDirectionalBlock implements 
 
    protected BigDripleafStemBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.valueOf(false)).setValue(FACING, Direction.NORTH));
+      this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false).setValue(FACING, Direction.NORTH));
    }
 
    @Override
@@ -60,7 +60,7 @@ public class BigDripleafStemBlock extends HorizontalDirectionalBlock implements 
    protected static boolean place(final LevelAccessor level, final BlockPos pos, final FluidState fluidState, final Direction facing) {
       BlockState newState = Blocks.BIG_DRIPLEAF_STEM
          .defaultBlockState()
-         .setValue(WATERLOGGED, Boolean.valueOf(fluidState.isSourceOfType(Fluids.WATER)))
+         .setValue(WATERLOGGED, fluidState.isSourceOfType(Fluids.WATER))
          .setValue(FACING, facing);
       return level.setBlockAndUpdate(pos, newState);
    }

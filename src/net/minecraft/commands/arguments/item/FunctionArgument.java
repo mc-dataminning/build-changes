@@ -10,7 +10,6 @@ import com.mojang.datafixers.util.Pair;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Objects;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.functions.CommandFunction;
 import net.minecraft.network.chat.Component;
@@ -34,10 +33,6 @@ public class FunctionArgument implements ArgumentType<FunctionArgument.Result> {
          reader.skip();
          final Identifier id = Identifier.read(reader);
          return new FunctionArgument.Result() {
-            {
-               Objects.requireNonNull(FunctionArgument.this);
-            }
-
             @Override
             public Collection<CommandFunction<CommandSourceStack>> create(final CommandContext<CommandSourceStack> c) throws CommandSyntaxException {
                return FunctionArgument.getFunctionTag(c, id);
@@ -58,10 +53,6 @@ public class FunctionArgument implements ArgumentType<FunctionArgument.Result> {
       } else {
          final Identifier id = Identifier.read(reader);
          return new FunctionArgument.Result() {
-            {
-               Objects.requireNonNull(FunctionArgument.this);
-            }
-
             @Override
             public Collection<CommandFunction<CommandSourceStack>> create(final CommandContext<CommandSourceStack> c) throws CommandSyntaxException {
                return Collections.singleton(FunctionArgument.getFunction(c, id));

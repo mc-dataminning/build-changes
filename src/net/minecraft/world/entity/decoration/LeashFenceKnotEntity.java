@@ -36,7 +36,7 @@ public class LeashFenceKnotEntity extends BlockAttachedEntity {
 
    public LeashFenceKnotEntity(final Level level, final BlockPos pos) {
       super(EntityTypes.LEASH_KNOT, level, pos);
-      this.setPos((double)pos.getX(), (double)pos.getY(), (double)pos.getZ());
+      this.setPos(pos.getX(), pos.getY(), pos.getZ());
    }
 
    @Override
@@ -45,9 +45,9 @@ public class LeashFenceKnotEntity extends BlockAttachedEntity {
 
    @Override
    protected void recalculateBoundingBox() {
-      this.setPosRaw((double)this.pos.getX() + 0.5, (double)this.pos.getY() + 0.375, (double)this.pos.getZ() + 0.5);
-      double halfWidth = (double)this.getType().getWidth() / 2.0;
-      double height = (double)this.getType().getHeight();
+      this.setPosRaw(this.pos.getX() + 0.5, this.pos.getY() + 0.375, this.pos.getZ() + 0.5);
+      double halfWidth = this.getType().getWidth() / 2.0;
+      double height = this.getType().getHeight();
       this.setBoundingBox(
          new AABB(this.getX() - halfWidth, this.getY(), this.getZ() - halfWidth, this.getX() + halfWidth, this.getY() + height, this.getZ() + halfWidth)
       );
@@ -59,7 +59,7 @@ public class LeashFenceKnotEntity extends BlockAttachedEntity {
    }
 
    @Override
-   public void dropItem(final ServerLevel level, @Nullable final Entity causedBy) {
+   public void dropItem(final ServerLevel level, final @Nullable Entity causedBy) {
       this.playSound(SoundEvents.LEAD_UNTIED, 1.0F, 1.0F);
    }
 
@@ -75,41 +75,41 @@ public class LeashFenceKnotEntity extends BlockAttachedEntity {
    public InteractionResult interact(final Player player, final InteractionHand hand, final Vec3 location) {
       if (this.level().isClientSide()) {
          return InteractionResult.SUCCESS;
-      } else {
-         if (player.getItemInHand(hand).is(Items.SHEARS)) {
-            InteractionResult result = super.interact(player, hand, location);
-            if (result instanceof InteractionResult.Success success && success.wasItemInteraction()) {
-               return result;
-            }
-         }
+      }
 
-         boolean attachedMob = false;
-
-         for (Leashable leashable : Leashable.leashableLeashedTo(player)) {
-            if (leashable.canHaveALeashAttachedTo(this)) {
-               leashable.setLeashedTo(this, true);
-               attachedMob = true;
-            }
-         }
-
-         boolean anyDropped = false;
-         if (!attachedMob && !player.isSecondaryUseActive()) {
-            for (Leashable mob : Leashable.leashableLeashedTo(this)) {
-               if (mob.canHaveALeashAttachedTo(player)) {
-                  mob.setLeashedTo(player, true);
-                  anyDropped = true;
-               }
-            }
-         }
-
-         if (!attachedMob && !anyDropped) {
-            return super.interact(player, hand, location);
-         } else {
-            this.gameEvent(GameEvent.BLOCK_ATTACH, player);
-            this.playSound(SoundEvents.LEAD_TIED);
-            return InteractionResult.SUCCESS;
+      if (player.getItemInHand(hand).is(Items.SHEARS)) {
+         InteractionResult result = super.interact(player, hand, location);
+         if (result instanceof InteractionResult.Success success && success.wasItemInteraction()) {
+            return result;
          }
       }
+
+      boolean attachedMob = false;
+
+      for (Leashable leashable : Leashable.leashableLeashedTo(player)) {
+         if (leashable.canHaveALeashAttachedTo(this)) {
+            leashable.setLeashedTo(this, true);
+            attachedMob = true;
+         }
+      }
+
+      boolean anyDropped = false;
+      if (!attachedMob && !player.isSecondaryUseActive()) {
+         for (Leashable mob : Leashable.leashableLeashedTo(this)) {
+            if (mob.canHaveALeashAttachedTo(player)) {
+               mob.setLeashedTo(player, true);
+               anyDropped = true;
+            }
+         }
+      }
+
+      if (!attachedMob && !anyDropped) {
+         return super.interact(player, hand, location);
+      }
+
+      this.gameEvent(GameEvent.BLOCK_ATTACH, player);
+      this.playSound(SoundEvents.LEAD_TIED);
+      return InteractionResult.SUCCESS;
    }
 
    @Override
@@ -133,9 +133,7 @@ public class LeashFenceKnotEntity extends BlockAttachedEntity {
       int y = pos.getY();
       int z = pos.getZ();
 
-      for (LeashFenceKnotEntity knot : level.getEntitiesOfClass(
-         LeashFenceKnotEntity.class, new AABB((double)x - 1.0, (double)y - 1.0, (double)z - 1.0, (double)x + 1.0, (double)y + 1.0, (double)z + 1.0)
-      )) {
+      for (LeashFenceKnotEntity knot : level.getEntitiesOfClass(LeashFenceKnotEntity.class, new AABB(x - 1.0, y - 1.0, z - 1.0, x + 1.0, y + 1.0, z + 1.0))) {
          if (knot.getPos().equals(pos)) {
             return Optional.of(knot);
          }

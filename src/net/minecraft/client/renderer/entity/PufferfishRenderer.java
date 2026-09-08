@@ -35,7 +35,7 @@ public class PufferfishRenderer extends MobRenderer<Pufferfish, PufferfishRender
    }
 
    protected float getShadowRadius(final PufferfishRenderState state) {
-      return 0.1F + 0.1F * (float)state.puffState;
+      return 0.1F + 0.1F * state.puffState;
    }
 
    public void submit(
@@ -55,7 +55,7 @@ public class PufferfishRenderer extends MobRenderer<Pufferfish, PufferfishRender
    }
 
    protected void setupRotations(final PufferfishRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
-      poseStack.translate(0.0F, Mth.cos((double)(state.ageInTicks * 0.05F)) * 0.08F, 0.0F);
+      poseStack.translate(0.0F, Mth.cos(state.ageInTicks * 0.05F) * 0.08F, 0.0F);
       super.setupRotations(state, poseStack, bodyRot, entityScale);
    }
 }

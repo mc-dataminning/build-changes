@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 
 public class SortedArraySet<T> extends AbstractSet<T> {
@@ -19,9 +18,9 @@ public class SortedArraySet<T> extends AbstractSet<T> {
       this.comparator = comparator;
       if (initialCapacity < 0) {
          throw new IllegalArgumentException("Initial capacity (" + initialCapacity + ") is negative");
-      } else {
-         this.contents = (T[])castRawArray(new Object[initialCapacity]);
       }
+
+      this.contents = (T[])castRawArray(new Object[initialCapacity]);
    }
 
    public static <T extends Comparable<T>> SortedArraySet<T> create() {
@@ -57,11 +56,11 @@ public class SortedArraySet<T> extends AbstractSet<T> {
       int position = this.findIndex(t);
       if (position >= 0) {
          return false;
-      } else {
-         int pos = getInsertionPosition(position);
-         this.addInternal(t, pos);
-         return true;
       }
+
+      int pos = getInsertionPosition(position);
+      this.addInternal(t, pos);
+      return true;
    }
 
    private void grow(int capacity) {
@@ -105,10 +104,10 @@ public class SortedArraySet<T> extends AbstractSet<T> {
       int position = this.findIndex(t);
       if (position >= 0) {
          return this.getInternal(position);
-      } else {
-         this.addInternal(t, getInsertionPosition(position));
-         return t;
       }
+
+      this.addInternal(t, getInsertionPosition(position));
+      return t;
    }
 
    @Override
@@ -122,8 +121,7 @@ public class SortedArraySet<T> extends AbstractSet<T> {
       }
    }
 
-   @Nullable
-   public T get(final T t) {
+   public @Nullable T get(final T t) {
       int position = this.findIndex(t);
       return position >= 0 ? this.getInternal(position) : null;
    }
@@ -161,14 +159,14 @@ public class SortedArraySet<T> extends AbstractSet<T> {
    public <U> U[] toArray(final U[] a) {
       if (a.length < this.size) {
          return (U[])Arrays.copyOf(this.contents, this.size, (Class<? extends T[]>)a.getClass());
-      } else {
-         System.arraycopy(this.contents, 0, a, 0, this.size);
-         if (a.length > this.size) {
-            a[this.size] = null;
-         }
-
-         return a;
       }
+
+      System.arraycopy(this.contents, 0, a, 0, this.size);
+      if (a.length > this.size) {
+         a[this.size] = null;
+      }
+
+      return a;
    }
 
    @Override
@@ -182,23 +180,15 @@ public class SortedArraySet<T> extends AbstractSet<T> {
       if (this == o) {
          return true;
       } else {
-         if (o instanceof SortedArraySet<?> that && this.comparator.equals(that.comparator)) {
-            return this.size == that.size && Arrays.equals(this.contents, that.contents);
-         }
-
-         return super.equals(o);
+         return o instanceof SortedArraySet<?> that && this.comparator.equals(that.comparator)
+            ? this.size == that.size && Arrays.equals(this.contents, that.contents)
+            : super.equals(o);
       }
    }
 
    private class ArrayIterator implements Iterator<T> {
       private int index;
-      private int last;
-
-      private ArrayIterator() {
-         Objects.requireNonNull(SortedArraySet.this);
-         super();
-         this.last = -1;
-      }
+      private int last = -1;
 
       @Override
       public boolean hasNext() {
@@ -209,21 +199,21 @@ public class SortedArraySet<T> extends AbstractSet<T> {
       public T next() {
          if (this.index >= SortedArraySet.this.size) {
             throw new NoSuchElementException();
-         } else {
-            this.last = this.index++;
-            return SortedArraySet.this.contents[this.last];
          }
+
+         this.last = this.index++;
+         return SortedArraySet.this.contents[this.last];
       }
 
       @Override
       public void remove() {
          if (this.last == -1) {
             throw new IllegalStateException();
-         } else {
-            SortedArraySet.this.removeInternal(this.last);
-            this.index--;
-            this.last = -1;
          }
+
+         SortedArraySet.this.removeInternal(this.last);
+         this.index--;
+         this.last = -1;
       }
    }
 }

@@ -15,15 +15,14 @@ import org.jspecify.annotations.Nullable;
 public record MapBanner(BlockPos pos, DyeColor color, Optional<Component> name) {
    public static final Codec<MapBanner> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               BlockPos.CODEC.fieldOf("pos").forGetter(MapBanner::pos),
-               DyeColor.CODEC.lenientOptionalFieldOf("color", DyeColor.WHITE).forGetter(MapBanner::color),
-               ComponentSerialization.CODEC.lenientOptionalFieldOf("name").forGetter(MapBanner::name)
-            )
-            .apply(i, MapBanner::new)
+            BlockPos.CODEC.fieldOf("pos").forGetter(MapBanner::pos),
+            DyeColor.CODEC.lenientOptionalFieldOf("color", DyeColor.WHITE).forGetter(MapBanner::color),
+            ComponentSerialization.CODEC.lenientOptionalFieldOf("name").forGetter(MapBanner::name)
+         )
+         .apply(i, MapBanner::new)
    );
 
-   @Nullable
-   public static MapBanner fromWorld(final BlockGetter level, final BlockPos pos) {
+   public static @Nullable MapBanner fromWorld(final BlockGetter level, final BlockPos pos) {
       if (level.getBlockEntity(pos) instanceof BannerBlockEntity banner) {
          DyeColor color = banner.getBaseColor();
          Optional<Component> name = Optional.ofNullable(banner.getCustomName());

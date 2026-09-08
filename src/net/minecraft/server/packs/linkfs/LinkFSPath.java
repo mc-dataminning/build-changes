@@ -29,22 +29,19 @@ class LinkFSPath implements Path {
    private static final Comparator<LinkFSPath> PATH_COMPARATOR = Comparator.comparing(LinkFSPath::pathToString);
    private final String name;
    private final LinkFileSystem fileSystem;
-   @Nullable
-   private final LinkFSPath parent;
-   @Nullable
-   private List<String> pathToRoot;
-   @Nullable
-   private String pathString;
+   private final @Nullable LinkFSPath parent;
+   private @Nullable List<String> pathToRoot;
+   private @Nullable String pathString;
    private final PathContents pathContents;
 
-   public LinkFSPath(final LinkFileSystem fileSystem, final String name, @Nullable final LinkFSPath parent, final PathContents pathContents) {
+   public LinkFSPath(final LinkFileSystem fileSystem, final String name, final @Nullable LinkFSPath parent, final PathContents pathContents) {
       this.fileSystem = fileSystem;
       this.name = name;
       this.parent = parent;
       this.pathContents = pathContents;
    }
 
-   private LinkFSPath createRelativePath(@Nullable final LinkFSPath parent, final String name) {
+   private LinkFSPath createRelativePath(final @Nullable LinkFSPath parent, final String name) {
       return new LinkFSPath(this.fileSystem, name, parent, PathContents.RELATIVE);
    }
 
@@ -66,8 +63,7 @@ class LinkFSPath implements Path {
       }
    }
 
-   @Nullable
-   public LinkFSPath getRoot() {
+   public @Nullable LinkFSPath getRoot() {
       return this.isAbsolute() ? this.fileSystem.rootPath() : null;
    }
 
@@ -75,8 +71,7 @@ class LinkFSPath implements Path {
       return this.createRelativePath(null, this.name);
    }
 
-   @Nullable
-   public LinkFSPath getParent() {
+   public @Nullable LinkFSPath getParent() {
       return this.parent;
    }
 
@@ -88,19 +83,19 @@ class LinkFSPath implements Path {
    private List<String> pathToRoot() {
       if (this.name.isEmpty()) {
          return List.of();
-      } else {
-         if (this.pathToRoot == null) {
-            Builder<String> result = ImmutableList.builder();
-            if (this.parent != null) {
-               result.addAll(this.parent.pathToRoot());
-            }
+      }
 
-            result.add(this.name);
-            this.pathToRoot = result.build();
+      if (this.pathToRoot == null) {
+         Builder<String> result = ImmutableList.builder();
+         if (this.parent != null) {
+            result.addAll(this.parent.pathToRoot());
          }
 
-         return this.pathToRoot;
+         result.add(this.name);
+         this.pathToRoot = result.build();
       }
+
+      return this.pathToRoot;
    }
 
    public LinkFSPath getName(final int index) {
@@ -131,25 +126,27 @@ class LinkFSPath implements Path {
    public boolean startsWith(final Path other) {
       if (other.isAbsolute() != this.isAbsolute()) {
          return false;
-      } else if (other instanceof LinkFSPath otherLink) {
+      }
+
+      if (other instanceof LinkFSPath otherLink) {
          if (otherLink.fileSystem != this.fileSystem) {
             return false;
-         } else {
-            List<String> thisNames = this.pathToRoot();
-            List<String> otherNames = otherLink.pathToRoot();
-            int otherSize = otherNames.size();
-            if (otherSize > thisNames.size()) {
-               return false;
-            } else {
-               for (int i = 0; i < otherSize; i++) {
-                  if (!otherNames.get(i).equals(thisNames.get(i))) {
-                     return false;
-                  }
-               }
+         }
 
-               return true;
+         List<String> thisNames = this.pathToRoot();
+         List<String> otherNames = otherLink.pathToRoot();
+         int otherSize = otherNames.size();
+         if (otherSize > thisNames.size()) {
+            return false;
+         }
+
+         for (int i = 0; i < otherSize; i++) {
+            if (!otherNames.get(i).equals(thisNames.get(i))) {
+               return false;
             }
          }
+
+         return true;
       } else {
          return false;
       }
@@ -159,26 +156,28 @@ class LinkFSPath implements Path {
    public boolean endsWith(final Path other) {
       if (other.isAbsolute() && !this.isAbsolute()) {
          return false;
-      } else if (other instanceof LinkFSPath otherLink) {
+      }
+
+      if (other instanceof LinkFSPath otherLink) {
          if (otherLink.fileSystem != this.fileSystem) {
             return false;
-         } else {
-            List<String> thisNames = this.pathToRoot();
-            List<String> otherNames = otherLink.pathToRoot();
-            int otherSize = otherNames.size();
-            int delta = thisNames.size() - otherSize;
-            if (delta < 0) {
-               return false;
-            } else {
-               for (int i = otherSize - 1; i >= 0; i--) {
-                  if (!otherNames.get(i).equals(thisNames.get(delta + i))) {
-                     return false;
-                  }
-               }
+         }
 
-               return true;
+         List<String> thisNames = this.pathToRoot();
+         List<String> otherNames = otherLink.pathToRoot();
+         int otherSize = otherNames.size();
+         int delta = thisNames.size() - otherSize;
+         if (delta < 0) {
+            return false;
+         }
+
+         for (int i = otherSize - 1; i >= 0; i--) {
+            if (!otherNames.get(i).equals(thisNames.get(delta + i))) {
+               return false;
             }
          }
+
+         return true;
       } else {
          return false;
       }
@@ -224,29 +223,29 @@ class LinkFSPath implements Path {
       LinkFSPath otherLink = this.toLinkPath(other);
       if (this.isAbsolute() != otherLink.isAbsolute()) {
          throw new IllegalArgumentException("absolute mismatch");
-      } else {
-         List<String> thisNames = this.pathToRoot();
-         List<String> otherNames = otherLink.pathToRoot();
-         if (thisNames.size() >= otherNames.size()) {
-            throw new IllegalArgumentException();
-         } else {
-            for (int i = 0; i < thisNames.size(); i++) {
-               if (!thisNames.get(i).equals(otherNames.get(i))) {
-                  throw new IllegalArgumentException();
-               }
-            }
+      }
 
-            return otherLink.subpath(thisNames.size(), otherNames.size());
+      List<String> thisNames = this.pathToRoot();
+      List<String> otherNames = otherLink.pathToRoot();
+      if (thisNames.size() >= otherNames.size()) {
+         throw new IllegalArgumentException();
+      }
+
+      for (int i = 0; i < thisNames.size(); i++) {
+         if (!thisNames.get(i).equals(otherNames.get(i))) {
+            throw new IllegalArgumentException();
          }
       }
+
+      return otherLink.subpath(thisNames.size(), otherNames.size());
    }
 
    @Override
    public URI toUri() {
       try {
          return new URI("x-mc-link", this.fileSystem.store().name(), this.pathToString(), null);
-      } catch (URISyntaxException var2) {
-         throw new AssertionError("Failed to create URI", var2);
+      } catch (URISyntaxException e) {
+         throw new AssertionError("Failed to create URI", e);
       }
    }
 
@@ -273,7 +272,9 @@ class LinkFSPath implements Path {
    public boolean equals(final Object other) {
       if (other == this) {
          return true;
-      } else if (other instanceof LinkFSPath that) {
+      }
+
+      if (other instanceof LinkFSPath that) {
          if (this.fileSystem != that.fileSystem) {
             return false;
          } else {
@@ -319,14 +320,12 @@ class LinkFSPath implements Path {
       return this.pathString;
    }
 
-   private LinkFSPath toLinkPath(@Nullable final Path path) {
+   private LinkFSPath toLinkPath(final @Nullable Path path) {
       if (path == null) {
          throw new NullPointerException();
+      } else if (path instanceof LinkFSPath p && p.fileSystem == this.fileSystem) {
+         return p;
       } else {
-         if (path instanceof LinkFSPath p && p.fileSystem == this.fileSystem) {
-            return p;
-         }
-
          throw new ProviderMismatchException();
       }
    }
@@ -335,22 +334,16 @@ class LinkFSPath implements Path {
       return this.hasRealContents();
    }
 
-   @Nullable
-   public Path getTargetPath() {
+   public @Nullable Path getTargetPath() {
       return this.pathContents instanceof PathContents.FileContents file ? file.contents() : null;
    }
 
-   @Nullable
-   public PathContents.DirectoryContents getDirectoryContents() {
+   public PathContents.@Nullable DirectoryContents getDirectoryContents() {
       return this.pathContents instanceof PathContents.DirectoryContents dir ? dir : null;
    }
 
    public BasicFileAttributeView getBasicAttributeView() {
       return new BasicFileAttributeView() {
-         {
-            Objects.requireNonNull(LinkFSPath.this);
-         }
-
          @Override
          public String name() {
             return "basic";

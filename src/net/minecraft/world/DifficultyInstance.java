@@ -25,7 +25,7 @@ public class DifficultyInstance {
    }
 
    public boolean isHard() {
-      return this.effectiveDifficulty >= (float)Difficulty.HARD.ordinal();
+      return this.effectiveDifficulty >= Difficulty.HARD.ordinal();
    }
 
    public boolean isHarderThan(final float requiredDifficulty) {
@@ -43,20 +43,20 @@ public class DifficultyInstance {
    private float calculateDifficulty(final Difficulty base, final long totalGameTime, final long localGameTime, final float moonBrightness) {
       if (base == Difficulty.PEACEFUL) {
          return 0.0F;
-      } else {
-         boolean isHard = base == Difficulty.HARD;
-         float scale = 0.75F;
-         float globalScale = Mth.clamp(((float)totalGameTime + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
-         scale += globalScale;
-         float localScale = 0.0F;
-         localScale += Mth.clamp((float)localGameTime / 3600000.0F, 0.0F, 1.0F) * (isHard ? 1.0F : 0.75F);
-         localScale += Mth.clamp(moonBrightness * 0.25F, 0.0F, globalScale);
-         if (base == Difficulty.EASY) {
-            localScale *= 0.5F;
-         }
-
-         scale += localScale;
-         return (float)base.getId() * scale;
       }
+
+      boolean isHard = base == Difficulty.HARD;
+      float scale = 0.75F;
+      float globalScale = Mth.clamp(((float)totalGameTime + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
+      scale += globalScale;
+      float localScale = 0.0F;
+      localScale += Mth.clamp((float)localGameTime / 3600000.0F, 0.0F, 1.0F) * (isHard ? 1.0F : 0.75F);
+      localScale += Mth.clamp(moonBrightness * 0.25F, 0.0F, globalScale);
+      if (base == Difficulty.EASY) {
+         localScale *= 0.5F;
+      }
+
+      scale += localScale;
+      return base.getId() * scale;
    }
 }

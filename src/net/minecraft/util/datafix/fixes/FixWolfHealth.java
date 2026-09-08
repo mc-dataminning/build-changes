@@ -23,20 +23,20 @@ public class FixWolfHealth extends NamedEntityFix {
             dynamic = dynamic.update(
                "Attributes",
                attributes -> attributes.createList(
-                     attributes.asStream()
-                        .map(
-                           attribute -> "minecraft:generic.max_health".equals(NamespacedSchema.ensureNamespaced(attribute.get("Name").asString("")))
-                                 ? attribute.update("Base", base -> {
-                                    if (base.asDouble(0.0) == 20.0) {
-                                       healthAdjusted.setTrue();
-                                       return base.createDouble(40.0);
-                                    } else {
-                                       return base;
-                                    }
-                                 })
-                                 : attribute
-                        )
-                  )
+                  attributes.asStream()
+                     .map(
+                        attribute -> "minecraft:generic.max_health".equals(NamespacedSchema.ensureNamespaced(attribute.get("Name").asString("")))
+                           ? attribute.update("Base", base -> {
+                              if (base.asDouble(0.0) == 20.0) {
+                                 healthAdjusted.setTrue();
+                                 return base.createDouble(40.0);
+                              } else {
+                                 return base;
+                              }
+                           })
+                           : attribute
+                     )
+               )
             );
             if (healthAdjusted.isTrue()) {
                dynamic = dynamic.update("Health", health -> health.createFloat(health.asFloat(0.0F) * 2.0F));

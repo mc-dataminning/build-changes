@@ -130,7 +130,7 @@ public class GameRules {
       }
    }
 
-   public <T> void set(final GameRule<T> gameRule, final T value, @Nullable final MinecraftServer server) {
+   public <T> void set(final GameRule<T> gameRule, final T value, final @Nullable MinecraftServer server) {
       if (!this.rules.has(gameRule)) {
          LOGGER.warn("Tried to set invalid game rule '{}' to value '{}'", gameRule.getIdentifierWithFallback(), value);
       } else {
@@ -145,15 +145,15 @@ public class GameRules {
       return new GameRules(enabledFeatures, GameRuleMap.copyOf(this.rules));
    }
 
-   public void setAll(final GameRules other, @Nullable final MinecraftServer server) {
+   public void setAll(final GameRules other, final @Nullable MinecraftServer server) {
       this.setAll(other.rules, server);
    }
 
-   public void setAll(final GameRuleMap gameRulesMap, @Nullable final MinecraftServer server) {
+   public void setAll(final GameRuleMap gameRulesMap, final @Nullable MinecraftServer server) {
       gameRulesMap.keySet().forEach(gameRule -> this.setFromOther(gameRulesMap, (GameRule<?>)gameRule, server));
    }
 
-   private <T> void setFromOther(final GameRuleMap gameRulesMap, final GameRule<T> gameRule, @Nullable final MinecraftServer server) {
+   private <T> void setFromOther(final GameRuleMap gameRulesMap, final GameRule<T> gameRule, final @Nullable MinecraftServer server) {
       this.set(gameRule, Objects.requireNonNull(gameRulesMap.get(gameRule)), server);
    }
 

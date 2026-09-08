@@ -44,8 +44,7 @@ public class MobEffect implements FeatureElement {
    private final MobEffectCategory category;
    private final int color;
    private final Function<MobEffectInstance, ParticleOptions> particleFactory;
-   @Nullable
-   private String descriptionId;
+   private @Nullable String descriptionId;
    private int blendInDurationTicks;
    private int blendOutDurationTicks;
    private int blendOutAdvanceTicks;
@@ -84,7 +83,7 @@ public class MobEffect implements FeatureElement {
    }
 
    public void applyInstantaneousEffect(
-      final ServerLevel level, @Nullable final Entity source, @Nullable final Entity owner, final LivingEntity mob, final int amplification, final double scale
+      final ServerLevel level, final @Nullable Entity source, final @Nullable Entity owner, final LivingEntity mob, final int amplification, final double scale
    ) {
       this.applyEffectTick(level, mob, amplification);
    }
@@ -198,9 +197,9 @@ public class MobEffect implements FeatureElement {
       return this.requiredFeatures;
    }
 
-   private static record AttributeTemplate(Identifier id, double amount, AttributeModifier.Operation operation) {
+   private record AttributeTemplate(Identifier id, double amount, AttributeModifier.Operation operation) {
       public AttributeModifier create(final int amplifier) {
-         return new AttributeModifier(this.id, this.amount * (double)(amplifier + 1), this.operation);
+         return new AttributeModifier(this.id, this.amount * (amplifier + 1), this.operation);
       }
    }
 }

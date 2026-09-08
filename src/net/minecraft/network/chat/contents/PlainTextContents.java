@@ -25,7 +25,7 @@ public interface PlainTextContents extends ComponentContents {
    };
 
    static PlainTextContents create(final String text) {
-      return (PlainTextContents)(text.isEmpty() ? EMPTY : new PlainTextContents.LiteralContents(text));
+      return text.isEmpty() ? EMPTY : new PlainTextContents.LiteralContents(text);
    }
 
    String text();
@@ -35,7 +35,7 @@ public interface PlainTextContents extends ComponentContents {
       return MAP_CODEC;
    }
 
-   public static record LiteralContents(String text) implements PlainTextContents {
+   record LiteralContents(String text) implements PlainTextContents {
       @Override
       public <T> Optional<T> visit(final FormattedText.ContentConsumer<T> output) {
          return output.accept(this.text);

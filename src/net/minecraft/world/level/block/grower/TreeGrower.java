@@ -83,15 +83,14 @@ public final class TreeGrower {
    private final WeightedList<ResourceKey<Feature>> trees;
    private final WeightedList<ResourceKey<Feature>> megaTrees;
    private final WeightedList<ResourceKey<Feature>> flowerTrees;
-   @Nullable
-   private final ResourceKey<Feature> shortestTreeType;
+   private final @Nullable ResourceKey<Feature> shortestTreeType;
 
    public TreeGrower(
       final String name,
       final WeightedList<ResourceKey<Feature>> trees,
       final WeightedList<ResourceKey<Feature>> megaTrees,
       final WeightedList<ResourceKey<Feature>> flowerTrees,
-      @Nullable final ResourceKey<Feature> shortestTreeType
+      final @Nullable ResourceKey<Feature> shortestTreeType
    ) {
       this.name = name;
       this.trees = trees;
@@ -101,13 +100,11 @@ public final class TreeGrower {
       GROWERS.put(name, this);
    }
 
-   @Nullable
-   private ResourceKey<Feature> getConfiguredFeature(final RandomSource random, final boolean hasFlowers) {
+   private @Nullable ResourceKey<Feature> getConfiguredFeature(final RandomSource random, final boolean hasFlowers) {
       return hasFlowers && !this.flowerTrees.isEmpty() ? this.flowerTrees.getRandom(random).orElse(null) : this.trees.getRandom(random).orElse(null);
    }
 
-   @Nullable
-   private ResourceKey<Feature> getConfiguredMegaFeature(final RandomSource random) {
+   private @Nullable ResourceKey<Feature> getConfiguredMegaFeature(final RandomSource random) {
       return this.megaTrees.getRandom(random).orElse(null);
    }
 
@@ -136,21 +133,21 @@ public final class TreeGrower {
       ResourceKey<Feature> featureKey = this.getConfiguredFeature(random, this.hasFlowers(level, pos));
       if (featureKey == null) {
          return false;
-      } else {
-         Holder<Feature> featureHolder = level.registryAccess().lookupOrThrow(Registries.FEATURE).get(featureKey).orElse(null);
-         if (featureHolder == null) {
-            return false;
-         } else {
-            Feature feature = featureHolder.value();
-            removeSapling(level, pos);
-            if (feature.place(level, generator, random, pos)) {
-               return true;
-            } else {
-               resetSaplings(level, List.of(Pair.of(state, pos)));
-               return false;
-            }
-         }
       }
+
+      Holder<Feature> featureHolder = level.registryAccess().lookupOrThrow(Registries.FEATURE).get(featureKey).orElse(null);
+      if (featureHolder == null) {
+         return false;
+      }
+
+      Feature feature = featureHolder.value();
+      removeSapling(level, pos);
+      if (feature.place(level, generator, random, pos)) {
+         return true;
+      }
+
+      resetSaplings(level, List.of(Pair.of(state, pos)));
+      return false;
    }
 
    private static List<Pair<BlockState, BlockPos>> getSurroundingBlockStates(final ServerLevel level, final BlockPos pos, final int dx, final int dz) {
@@ -201,12 +198,12 @@ public final class TreeGrower {
       ResourceKey<Feature> featureKey = this.shortestTreeType;
       if (featureKey == null) {
          return OptionalInt.empty();
-      } else {
-         Holder<Feature> featureHolder = level.registryAccess().lookupOrThrow(Registries.FEATURE).get(featureKey).orElse(null);
-         return featureHolder != null && featureHolder.value() instanceof TreeFeature treeFeature
-            ? OptionalInt.of(treeFeature.trunkPlacer().getBaseHeight())
-            : OptionalInt.empty();
       }
+
+      Holder<Feature> featureHolder = level.registryAccess().lookupOrThrow(Registries.FEATURE).get(featureKey).orElse(null);
+      return featureHolder != null && featureHolder.value() instanceof TreeFeature treeFeature
+         ? OptionalInt.of(treeFeature.trunkPlacer().getBaseHeight())
+         : OptionalInt.empty();
    }
 
    public boolean canGrow(final ServerLevel level, final BlockPos pos, final BlockState state) {
@@ -228,6 +225,6 @@ public final class TreeGrower {
       return Optional.empty();
    }
 
-   private static record TwoByTwoSaplingPos(int offsetX, int offsetZ, List<Pair<BlockState, BlockPos>> groundLevelSurroundingBlocks) {
+   private record TwoByTwoSaplingPos(int offsetX, int offsetZ, List<Pair<BlockState, BlockPos>> groundLevelSurroundingBlocks) {
    }
 }

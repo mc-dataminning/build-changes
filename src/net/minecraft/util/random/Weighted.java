@@ -16,16 +16,13 @@ import org.slf4j.Logger;
 public record Weighted<T>(T value, int weight) {
    private static final Logger LOGGER = LogUtils.getLogger();
 
-   public Weighted(T value, int weight) {
+   public Weighted {
       if (weight < 0) {
          throw (IllegalArgumentException)Util.pauseInIde(new IllegalArgumentException("Weight should be >= 0"));
-      } else {
-         if (weight == 0 && SharedConstants.IS_RUNNING_IN_IDE) {
-            LOGGER.warn("Found 0 weight, make sure this is intentional!");
-         }
+      }
 
-         this.value = value;
-         this.weight = weight;
+      if (weight == 0 && SharedConstants.IS_RUNNING_IN_IDE) {
+         LOGGER.warn("Found 0 weight, make sure this is intentional!");
       }
    }
 
@@ -36,7 +33,7 @@ public record Weighted<T>(T value, int weight) {
    public static <E> Codec<Weighted<E>> codec(final MapCodec<E> elementCodec) {
       return RecordCodecBuilder.create(
          i -> i.group(elementCodec.forGetter(Weighted::value), ExtraCodecs.NON_NEGATIVE_INT.fieldOf("weight").forGetter(Weighted::weight))
-               .apply(i, Weighted::new)
+            .apply(i, Weighted::new)
       );
    }
 

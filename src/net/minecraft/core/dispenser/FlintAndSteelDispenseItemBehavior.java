@@ -30,7 +30,7 @@ public class FlintAndSteelDispenseItemBehavior extends OptionalDispenseItemBehav
             level.setBlockAndUpdate(targetPos, BaseFireBlock.getState(level, targetPos));
             level.gameEvent(null, GameEvent.BLOCK_PLACE, targetPos);
          } else if (CampfireBlock.canLight(target) || CandleBlock.canLight(target) || CandleCakeBlock.canLight(target)) {
-            level.setBlockAndUpdate(targetPos, target.setValue(BlockStateProperties.LIT, Boolean.valueOf(true)));
+            level.setBlockAndUpdate(targetPos, target.setValue(BlockStateProperties.LIT, true));
             level.gameEvent(null, GameEvent.BLOCK_CHANGE, targetPos);
          } else if (target.getBlock() instanceof TntBlock) {
             if (TntBlock.prime(level, targetPos, null, dispensed)) {
@@ -42,8 +42,7 @@ public class FlintAndSteelDispenseItemBehavior extends OptionalDispenseItemBehav
       }
 
       if (this.isSuccess()) {
-         dispensed.hurtAndBreak(1, level, null, item -> {
-         });
+         dispensed.hurtAndBreak(1, level, null, item -> {});
       }
 
       return dispensed;
@@ -53,9 +52,9 @@ public class FlintAndSteelDispenseItemBehavior extends OptionalDispenseItemBehav
       List<SulfurCube> entities = level.getEntitiesOfClass(SulfurCube.class, new AABB(pos), SulfurCube::canExplode);
       if (entities.isEmpty()) {
          return false;
-      } else {
-         entities.getFirst().primeTime(false);
-         return true;
       }
+
+      entities.getFirst().primeTime(false);
+      return true;
    }
 }

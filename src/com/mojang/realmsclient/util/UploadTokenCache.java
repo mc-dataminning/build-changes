@@ -15,7 +15,7 @@ public class UploadTokenCache {
       TOKEN_CACHE.remove(realmId);
    }
 
-   public static void put(final long realmId, @Nullable final String token) {
+   public static void put(final long realmId, final @Nullable String token) {
       TOKEN_CACHE.put(realmId, token);
    }
 }

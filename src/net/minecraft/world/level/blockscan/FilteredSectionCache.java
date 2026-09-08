@@ -12,7 +12,7 @@ import org.jspecify.annotations.Nullable;
 
 public class FilteredSectionCache {
    private final LevelReader level;
-   private final FilteredSectionCache.CacheEntry[] sectionCache;
+   private final FilteredSectionCache.@Nullable CacheEntry[] sectionCache;
    private final Predicate<BlockState> statePredicate;
 
    public FilteredSectionCache(final LevelReader level, final Predicate<BlockState> statePredicate) {
@@ -21,8 +21,7 @@ public class FilteredSectionCache {
       this.sectionCache = new FilteredSectionCache.CacheEntry[8];
    }
 
-   @Nullable
-   public BlockState getBlockState(final BlockPos pos) {
+   public @Nullable BlockState getBlockState(final BlockPos pos) {
       int sectionX = SectionPos.blockToSectionCoord(pos.getX());
       int sectionY = SectionPos.blockToSectionCoord(pos.getY());
       int sectionZ = SectionPos.blockToSectionCoord(pos.getZ());
@@ -30,21 +29,20 @@ public class FilteredSectionCache {
          LevelChunkSection section = this.getOrLoad(sectionX, sectionY, sectionZ);
          if (section == null) {
             return null;
-         } else {
-            int relativeX = SectionPos.sectionRelative(pos.getX());
-            int relativeY = SectionPos.sectionRelative(pos.getY());
-            int relativeZ = SectionPos.sectionRelative(pos.getZ());
-            BlockState blockState = section.getBlockState(relativeX, relativeY, relativeZ);
-            return this.statePredicate.test(blockState) ? blockState : null;
          }
+
+         int relativeX = SectionPos.sectionRelative(pos.getX());
+         int relativeY = SectionPos.sectionRelative(pos.getY());
+         int relativeZ = SectionPos.sectionRelative(pos.getZ());
+         BlockState blockState = section.getBlockState(relativeX, relativeY, relativeZ);
+         return this.statePredicate.test(blockState) ? blockState : null;
       } else {
          BlockState air = Blocks.AIR.defaultBlockState();
          return this.statePredicate.test(air) ? air : null;
       }
    }
 
-   @Nullable
-   private LevelChunkSection getOrLoad(final int sectionX, final int sectionY, final int sectionZ) {
+   private @Nullable LevelChunkSection getOrLoad(final int sectionX, final int sectionY, final int sectionZ) {
       int hash = this.getHash(sectionX, sectionY, sectionZ);
       FilteredSectionCache.CacheEntry cacheEntry = this.sectionCache[hash];
       if (cacheEntry == null || cacheEntry.sectionX != sectionX || cacheEntry.sectionY != sectionY || cacheEntry.sectionZ != sectionZ) {
@@ -64,6 +62,6 @@ public class FilteredSectionCache {
       return ((relativeZ << 1) + relativeY << 1) + relativeX;
    }
 
-   private static record CacheEntry(@Nullable LevelChunkSection chunkSection, int sectionX, int sectionY, int sectionZ) {
+   private record CacheEntry(@Nullable LevelChunkSection chunkSection, int sectionX, int sectionY, int sectionZ) {
    }
 }

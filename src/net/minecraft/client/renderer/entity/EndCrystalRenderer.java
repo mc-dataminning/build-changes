@@ -46,7 +46,7 @@ public class EndCrystalRenderer extends EntityRenderer<EndCrystal, EndCrystalRen
    }
 
    public static float getY(final float timeInTicks) {
-      float hh = Mth.sin((double)(timeInTicks * 0.2F)) / 2.0F + 0.5F;
+      float hh = Mth.sin(timeInTicks * 0.2F) / 2.0F + 0.5F;
       hh = (hh * hh + hh) * 0.4F;
       return hh - 1.4F;
    }
@@ -57,7 +57,7 @@ public class EndCrystalRenderer extends EntityRenderer<EndCrystal, EndCrystalRen
 
    public void extractRenderState(final EndCrystal entity, final EndCrystalRenderState state, final float partialTicks) {
       super.extractRenderState(entity, state, partialTicks);
-      state.ageInTicks = (float)entity.time + partialTicks;
+      state.ageInTicks = entity.time + partialTicks;
       state.showsBottom = entity.showsBottom();
       BlockPos beamTarget = entity.getBeamTarget();
       if (beamTarget != null) {

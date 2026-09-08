@@ -24,12 +24,11 @@ final class Removed {
       return value == INSTANCE;
    }
 
-   public static Object nullToRemoved(@Nullable final Object value) {
+   public static Object nullToRemoved(final @Nullable Object value) {
       return value == null ? INSTANCE : value;
    }
 
-   @Nullable
-   public static Object removedToNull(final Object value) {
+   public static @Nullable Object removedToNull(final Object value) {
       return value == INSTANCE ? null : value;
    }
 }

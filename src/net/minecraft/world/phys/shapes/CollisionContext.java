@@ -1,6 +1,5 @@
 package net.minecraft.world.phys.shapes;
 
-import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -23,14 +22,12 @@ public interface CollisionContext {
    }
 
    static CollisionContext of(final Entity entity) {
-      Objects.requireNonNull(entity);
-
-      return (CollisionContext)(switch (entity) {
+      return switch (entity) {
          case AbstractMinecart minecart -> AbstractMinecart.useExperimentalMovement(minecart.level())
-         ? new MinecartCollisionContext(minecart, false)
-         : new EntityCollisionContext(entity, false, false);
+            ? new MinecartCollisionContext(minecart, false)
+            : new EntityCollisionContext(entity, false, false);
          default -> new EntityCollisionContext(entity, false, false);
-      });
+      };
    }
 
    static CollisionContext of(final Entity entity, final boolean alwaysCollideWithFluid) {
@@ -41,7 +38,7 @@ public interface CollisionContext {
       return new PositionCollisionContext(y);
    }
 
-   static CollisionContext placementContext(@Nullable final Player player) {
+   static CollisionContext placementContext(final @Nullable Player player) {
       return new EntityCollisionContext(
          player != null ? player.isDescending() : false,
          true,
@@ -52,7 +49,7 @@ public interface CollisionContext {
       );
    }
 
-   static CollisionContext withPosition(@Nullable final Entity entity, final double position) {
+   static CollisionContext withPosition(final @Nullable Entity entity, final double position) {
       return new EntityCollisionContext(
          entity != null ? entity.isDescending() : false,
          true,

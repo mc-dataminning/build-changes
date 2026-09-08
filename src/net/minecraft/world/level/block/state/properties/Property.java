@@ -13,13 +13,12 @@ import org.jspecify.annotations.Nullable;
 public abstract class Property<T extends Comparable<T>> {
    private final Class<T> clazz;
    private final String name;
-   @Nullable
-   private Integer hashCode;
+   private @Nullable Integer hashCode;
    private final Codec<T> codec = Codec.STRING
       .comapFlatMap(
          namex -> this.getValue(namex)
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + namex)),
+            .<DataResult>map(DataResult::success)
+            .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + namex)),
          this::getName
       );
    private final Codec<Property.Value<T>> valueCodec = this.codec.xmap(this::value, Property.Value::value);
@@ -97,13 +96,10 @@ public abstract class Property<T extends Comparable<T>> {
       return parsed.map(v -> state.setValue(this, v)).setPartial(state);
    }
 
-   public static record Value<T extends Comparable<T>>(Property<T> property, T value) {
-      public Value(Property<T> property, T value) {
+   public record Value<T extends Comparable<T>>(Property<T> property, T value) {
+      public Value {
          if (!property.getPossibleValues().contains(value)) {
             throw new IllegalArgumentException("Value " + value + " does not belong to property " + property);
-         } else {
-            this.property = property;
-            this.value = value;
          }
       }
 

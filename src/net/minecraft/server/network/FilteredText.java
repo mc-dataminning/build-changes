@@ -15,8 +15,7 @@ public record FilteredText(String raw, FilterMask mask) {
       return new FilteredText(message, FilterMask.FULLY_FILTERED);
    }
 
-   @Nullable
-   public String filtered() {
+   public @Nullable String filtered() {
       return this.mask.apply(this.raw);
    }
 

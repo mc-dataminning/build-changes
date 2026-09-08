@@ -11,7 +11,7 @@ public enum TilingMode implements StringRepresentable {
    public static final Codec<TilingMode> CODEC = StringRepresentable.fromEnum(TilingMode::values);
    private final String name;
 
-   private TilingMode(final String name) {
+   TilingMode(final String name) {
       this.name = name;
    }
 

@@ -30,10 +30,10 @@ public class Crackiness {
    }
 
    public Crackiness.Level byDamage(final int damage, final int maxDamage) {
-      return this.byFraction((float)(maxDamage - damage) / (float)maxDamage);
+      return this.byFraction((float)(maxDamage - damage) / maxDamage);
    }
 
-   public static enum Level {
+   public enum Level {
       NONE,
       LOW,
       MEDIUM,

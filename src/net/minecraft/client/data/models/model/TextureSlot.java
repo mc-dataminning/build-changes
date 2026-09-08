@@ -49,8 +49,7 @@ public final class TextureSlot {
    public static final TextureSlot TENTACLES = create("tentacles");
    public static final TextureSlot BARS = create("bars");
    private final String id;
-   @Nullable
-   private final TextureSlot parent;
+   private final @Nullable TextureSlot parent;
 
    private static TextureSlot create(final String id) {
       return new TextureSlot(id, null);
@@ -60,7 +59,7 @@ public final class TextureSlot {
       return new TextureSlot(id, parent);
    }
 
-   private TextureSlot(final String id, @Nullable final TextureSlot parent) {
+   private TextureSlot(final String id, final @Nullable TextureSlot parent) {
       this.id = id;
       this.parent = parent;
    }
@@ -69,8 +68,7 @@ public final class TextureSlot {
       return this.id;
    }
 
-   @Nullable
-   public TextureSlot getParent() {
+   public @Nullable TextureSlot getParent() {
       return this.parent;
    }
 

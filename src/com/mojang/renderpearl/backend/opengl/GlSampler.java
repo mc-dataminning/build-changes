@@ -34,7 +34,7 @@ public class GlSampler implements GpuSampler {
       GL33C.glSamplerParameteri(this.id, 10242, GlConst.toGl(addressModeU));
       GL33C.glSamplerParameteri(this.id, 10243, GlConst.toGl(addressModeV));
       if (maxAnisotropy > 1) {
-         GL33C.glSamplerParameterf(this.id, 34046, (float)maxAnisotropy);
+         GL33C.glSamplerParameterf(this.id, 34046, maxAnisotropy);
       }
 
       switch (minFilter) {

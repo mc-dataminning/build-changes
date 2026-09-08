@@ -36,18 +36,17 @@ public class HelpCommand {
                         );
                         if (command.getContext().getNodes().isEmpty()) {
                            throw ERROR_FAILED.create();
-                        } else {
-                           Map<CommandNode<CommandSourceStack>, String> usage = dispatcher.getSmartUsage(
-                              ((ParsedCommandNode)Iterables.getLast(command.getContext().getNodes())).getNode(), (CommandSourceStack)s.getSource()
-                           );
-
-                           for (String line : usage.values()) {
-                              ((CommandSourceStack)s.getSource())
-                                 .sendSuccess(() -> Component.literal("/" + command.getReader().getString() + " " + line), false);
-                           }
-
-                           return usage.size();
                         }
+
+                        Map<CommandNode<CommandSourceStack>, String> usage = dispatcher.getSmartUsage(
+                           ((ParsedCommandNode)Iterables.getLast(command.getContext().getNodes())).getNode(), (CommandSourceStack)s.getSource()
+                        );
+
+                        for (String line : usage.values()) {
+                           ((CommandSourceStack)s.getSource()).sendSuccess(() -> Component.literal("/" + command.getReader().getString() + " " + line), false);
+                        }
+
+                        return usage.size();
                      }
                   )
             )

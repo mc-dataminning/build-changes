@@ -49,8 +49,7 @@ public class BlockColors {
       return this.sources.getOrDefault(state.getBlock(), List.of());
    }
 
-   @Nullable
-   public BlockTintSource getTintSource(final BlockState state, final int layer) {
+   public @Nullable BlockTintSource getTintSource(final BlockState state, final int layer) {
       List<BlockTintSource> layers = this.getTintSources(state);
       return layer >= layers.size() ? null : layers.get(layer);
    }
@@ -65,16 +64,18 @@ public class BlockColors {
       List<BlockTintSource> sources = this.sources.getOrDefault(block, List.of());
       if (sources.isEmpty()) {
          return Set.of();
-      } else if (sources.size() == 1) {
-         return sources.getFirst().relevantProperties();
-      } else {
-         Set<Property<?>> result = new HashSet<>();
-
-         for (BlockTintSource source : sources) {
-            result.addAll(source.relevantProperties());
-         }
-
-         return result;
       }
+
+      if (sources.size() == 1) {
+         return sources.getFirst().relevantProperties();
+      }
+
+      Set<Property<?>> result = new HashSet<>();
+
+      for (BlockTintSource source : sources) {
+         result.addAll(source.relevantProperties());
+      }
+
+      return result;
    }
 }

@@ -111,7 +111,7 @@ public class ClientboundLevelChunkPacketData {
       return this.heightmaps;
    }
 
-   private static record BlockEntityInfo(byte packedXZ, short y, BlockEntityType<?> type, Optional<CompoundTag> tag) {
+   private record BlockEntityInfo(byte packedXZ, short y, BlockEntityType<?> type, Optional<CompoundTag> tag) {
       public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundLevelChunkPacketData.BlockEntityInfo> STREAM_CODEC = StreamCodec.composite(
          ByteBufCodecs.BYTE,
          ClientboundLevelChunkPacketData.BlockEntityInfo::packedXZ,

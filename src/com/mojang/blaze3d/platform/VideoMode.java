@@ -20,14 +20,14 @@ public final class VideoMode {
    private static final Logger LOGGER = LogUtils.getLogger();
    public static final Codec<VideoMode> CODEC = RecordCodecBuilder.create(
       instance -> instance.group(
-               Codec.INT.fieldOf("width").forGetter(VideoMode::getWidth),
-               Codec.INT.fieldOf("height").forGetter(VideoMode::getHeight),
-               Codec.INT.fieldOf("red_bits").forGetter(VideoMode::getRedBits),
-               Codec.INT.fieldOf("green_bits").forGetter(VideoMode::getGreenBits),
-               Codec.INT.fieldOf("blue_bits").forGetter(VideoMode::getBlueBits),
-               Codec.FLOAT.fieldOf("refresh_rate").forGetter(VideoMode::getRefreshRate)
-            )
-            .apply(instance, VideoMode::new)
+            Codec.INT.fieldOf("width").forGetter(VideoMode::getWidth),
+            Codec.INT.fieldOf("height").forGetter(VideoMode::getHeight),
+            Codec.INT.fieldOf("red_bits").forGetter(VideoMode::getRedBits),
+            Codec.INT.fieldOf("green_bits").forGetter(VideoMode::getGreenBits),
+            Codec.INT.fieldOf("blue_bits").forGetter(VideoMode::getBlueBits),
+            Codec.FLOAT.fieldOf("refresh_rate").forGetter(VideoMode::getRefreshRate)
+         )
+         .apply(instance, VideoMode::new)
    );
    private static final Gson GSON = new Gson();
    private final int width;
@@ -60,17 +60,17 @@ public final class VideoMode {
       this.blueBits = details != null ? details.Bbits() : 8;
    }
 
-   public static Optional<VideoMode> read(@Nullable final String s) {
+   public static Optional<VideoMode> read(final @Nullable String s) {
       if (s == null) {
          return Optional.empty();
-      } else {
-         try {
-            JsonElement json = JsonParser.parseString(s);
-            return CODEC.parse(JsonOps.INSTANCE, json).resultOrPartial(errorx -> LOGGER.warn("Failed to parse video mode '{}': {}", s, errorx));
-         } catch (RuntimeException var2) {
-            LOGGER.warn("Failed to parse video mode '{}'", s, var2);
-            return Optional.empty();
-         }
+      }
+
+      try {
+         JsonElement json = JsonParser.parseString(s);
+         return CODEC.parse(JsonOps.INSTANCE, json).resultOrPartial(errorx -> LOGGER.warn("Failed to parse video mode '{}': {}", s, errorx));
+      } catch (RuntimeException error) {
+         LOGGER.warn("Failed to parse video mode '{}'", s, error);
+         return Optional.empty();
       }
    }
 
@@ -100,7 +100,7 @@ public final class VideoMode {
 
    public String refreshRateLabel() {
       float rate = this.getRefreshRate();
-      return (double)rate == Math.rint((double)rate) ? Integer.toString((int)rate) : String.format(Locale.ROOT, "%.2f", rate);
+      return rate == Math.rint(rate) ? Integer.toString((int)rate) : String.format(Locale.ROOT, "%.2f", rate);
    }
 
    @Override

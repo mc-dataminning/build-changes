@@ -14,7 +14,6 @@ import com.mojang.realmsclient.util.task.ResettingTemplateWorldTask;
 import com.mojang.realmsclient.util.task.SwitchSlotTask;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
@@ -64,8 +63,7 @@ public class RealmsResetWorldScreen extends RealmsScreen {
    private WorldTemplatePaginatedList experiences;
    private WorldTemplatePaginatedList inspirations;
    public final int slot;
-   @Nullable
-   private final RealmCreationTask realmCreationTask;
+   private final @Nullable RealmCreationTask realmCreationTask;
    private final Runnable resetWorldRunnable;
    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
 
@@ -88,7 +86,7 @@ public class RealmsResetWorldScreen extends RealmsScreen {
       final Component title,
       final Component subtitle,
       final Component resetTaskTitle,
-      @Nullable final RealmCreationTask realmCreationTask,
+      final @Nullable RealmCreationTask realmCreationTask,
       final Runnable resetWorldRunnable
    ) {
       super(title);
@@ -135,10 +133,6 @@ public class RealmsResetWorldScreen extends RealmsScreen {
       header.addChild(new StringWidget(this.title, this.font), LayoutSettings::alignHorizontallyCenter);
       header.addChild(new StringWidget(this.subtitle, this.font), LayoutSettings::alignHorizontallyCenter);
       (new Thread("Realms-reset-world-fetcher") {
-         {
-            Objects.requireNonNull(RealmsResetWorldScreen.this);
-         }
-
          @Override
          public void run() {
             RealmsClient client = RealmsClient.getOrCreate();
@@ -154,8 +148,8 @@ public class RealmsResetWorldScreen extends RealmsScreen {
                   RealmsResetWorldScreen.this.experiences = experiences;
                   RealmsResetWorldScreen.this.inspirations = inspirations;
                });
-            } catch (RealmsServiceException var6) {
-               RealmsResetWorldScreen.LOGGER.error("Couldn't fetch templates in reset world", var6);
+            } catch (RealmsServiceException e) {
+               RealmsResetWorldScreen.LOGGER.error("Couldn't fetch templates in reset world", e);
             }
          }
       }).start();
@@ -184,10 +178,10 @@ public class RealmsResetWorldScreen extends RealmsScreen {
             WORLD_TEMPLATES_TITLE,
             SURVIVAL_SPAWN_LOCATION,
             var1x -> this.minecraft
-                  .gui
-                  .setScreen(
-                     new RealmsSelectWorldTemplateScreen(WORLD_TEMPLATES_TITLE, this::templateSelectionCallback, RealmsServer.WorldType.NORMAL, this.templates)
-                  )
+               .gui
+               .setScreen(
+                  new RealmsSelectWorldTemplateScreen(WORLD_TEMPLATES_TITLE, this::templateSelectionCallback, RealmsServer.WorldType.NORMAL, this.templates)
+               )
          )
       );
       helper.addChild(SpacerElement.height(16), 3);
@@ -197,12 +191,12 @@ public class RealmsResetWorldScreen extends RealmsScreen {
             ADVENTURES_TITLE,
             ADVENTURE_MAP_LOCATION,
             var1x -> this.minecraft
-                  .gui
-                  .setScreen(
-                     new RealmsSelectWorldTemplateScreen(
-                        ADVENTURES_TITLE, this::templateSelectionCallback, RealmsServer.WorldType.ADVENTUREMAP, this.adventuremaps
-                     )
+               .gui
+               .setScreen(
+                  new RealmsSelectWorldTemplateScreen(
+                     ADVENTURES_TITLE, this::templateSelectionCallback, RealmsServer.WorldType.ADVENTUREMAP, this.adventuremaps
                   )
+               )
          )
       );
       helper.addChild(
@@ -211,12 +205,10 @@ public class RealmsResetWorldScreen extends RealmsScreen {
             EXPERIENCES_TITLE,
             EXPERIENCE_LOCATION,
             var1x -> this.minecraft
-                  .gui
-                  .setScreen(
-                     new RealmsSelectWorldTemplateScreen(
-                        EXPERIENCES_TITLE, this::templateSelectionCallback, RealmsServer.WorldType.EXPERIENCE, this.experiences
-                     )
-                  )
+               .gui
+               .setScreen(
+                  new RealmsSelectWorldTemplateScreen(EXPERIENCES_TITLE, this::templateSelectionCallback, RealmsServer.WorldType.EXPERIENCE, this.experiences)
+               )
          )
       );
       helper.addChild(
@@ -225,12 +217,10 @@ public class RealmsResetWorldScreen extends RealmsScreen {
             INSPIRATION_TITLE,
             INSPIRATION_LOCATION,
             var1x -> this.minecraft
-                  .gui
-                  .setScreen(
-                     new RealmsSelectWorldTemplateScreen(
-                        INSPIRATION_TITLE, this::templateSelectionCallback, RealmsServer.WorldType.INSPIRATION, this.inspirations
-                     )
-                  )
+               .gui
+               .setScreen(
+                  new RealmsSelectWorldTemplateScreen(INSPIRATION_TITLE, this::templateSelectionCallback, RealmsServer.WorldType.INSPIRATION, this.inspirations)
+               )
          )
       );
       this.layout.addToFooter(Button.builder(CommonComponents.GUI_BACK, button -> this.onClose()).build());
@@ -253,7 +243,7 @@ public class RealmsResetWorldScreen extends RealmsScreen {
       this.minecraft.gui.setScreen(this.lastScreen);
    }
 
-   private void templateSelectionCallback(@Nullable final WorldTemplate template) {
+   private void templateSelectionCallback(final @Nullable WorldTemplate template) {
       this.minecraft.gui.setScreen(this);
       if (template != null) {
          this.runResetTasks(new ResettingTemplateWorldTask(template, this.serverData.id, this.resetTaskTitle, this.resetWorldRunnable));
@@ -269,8 +259,7 @@ public class RealmsResetWorldScreen extends RealmsScreen {
       }
 
       if (this.slot != this.serverData.activeSlot) {
-         tasks.add(new SwitchSlotTask(this.serverData.id, this.slot, () -> {
-         }));
+         tasks.add(new SwitchSlotTask(this.serverData.id, this.slot, () -> {}));
       }
 
       tasks.add(resetTask);
@@ -285,7 +274,6 @@ public class RealmsResetWorldScreen extends RealmsScreen {
       private final Identifier image;
 
       private FrameButton(final Font font, final Component text, final Identifier image, final Button.OnPress onPress) {
-         Objects.requireNonNull(RealmsResetWorldScreen.this);
          super(0, 0, 60, 60 + 9, text, onPress, DEFAULT_NARRATION);
          this.image = image;
       }

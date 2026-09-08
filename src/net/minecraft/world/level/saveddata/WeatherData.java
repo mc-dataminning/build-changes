@@ -8,13 +8,13 @@ import net.minecraft.util.datafix.DataFixTypes;
 public final class WeatherData extends SavedData {
    public static final Codec<WeatherData> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.INT.fieldOf("clear_weather_time").forGetter(WeatherData::getClearWeatherTime),
-               Codec.INT.fieldOf("rain_time").forGetter(WeatherData::getRainTime),
-               Codec.INT.fieldOf("thunder_time").forGetter(WeatherData::getThunderTime),
-               Codec.BOOL.fieldOf("raining").forGetter(WeatherData::isRaining),
-               Codec.BOOL.fieldOf("thundering").forGetter(WeatherData::isThundering)
-            )
-            .apply(i, WeatherData::new)
+            Codec.INT.fieldOf("clear_weather_time").forGetter(WeatherData::getClearWeatherTime),
+            Codec.INT.fieldOf("rain_time").forGetter(WeatherData::getRainTime),
+            Codec.INT.fieldOf("thunder_time").forGetter(WeatherData::getThunderTime),
+            Codec.BOOL.fieldOf("raining").forGetter(WeatherData::isRaining),
+            Codec.BOOL.fieldOf("thundering").forGetter(WeatherData::isThundering)
+         )
+         .apply(i, WeatherData::new)
    );
    public static final SavedDataType<WeatherData> TYPE = new SavedDataType<>(
       Identifier.withDefaultNamespace("weather"), WeatherData::new, CODEC, DataFixTypes.SAVED_DATA_WEATHER

@@ -9,25 +9,23 @@ import org.jspecify.annotations.Nullable;
 
 public class Optionull {
    @Deprecated
-   public static <T> T orElse(@Nullable final T t, final T defaultValue) {
+   public static <T> T orElse(final @Nullable T t, final T defaultValue) {
       return Objects.requireNonNullElse(t, defaultValue);
    }
 
-   @Nullable
-   public static <T, R> R map(@Nullable final T t, final Function<T, R> map) {
+   public static <T, R> @Nullable R map(final @Nullable T t, final Function<T, R> map) {
       return t == null ? null : map.apply(t);
    }
 
-   public static <T, R> R mapOrDefault(@Nullable final T t, final Function<T, R> map, final R defaultValue) {
+   public static <T, R> R mapOrDefault(final @Nullable T t, final Function<T, R> map, final R defaultValue) {
       return t == null ? defaultValue : map.apply(t);
    }
 
-   public static <T, R> R mapOrElse(@Nullable final T t, final Function<T, R> map, final Supplier<R> elseSupplier) {
+   public static <T, R> R mapOrElse(final @Nullable T t, final Function<T, R> map, final Supplier<R> elseSupplier) {
       return t == null ? elseSupplier.get() : map.apply(t);
    }
 
-   @Nullable
-   public static <T> T first(final Collection<T> collection) {
+   public static <T> @Nullable T first(final Collection<T> collection) {
       Iterator<T> iterator = collection.iterator();
       return iterator.hasNext() ? iterator.next() : null;
    }
@@ -42,39 +40,39 @@ public class Optionull {
       return iterator.hasNext() ? iterator.next() : elseSupplier.get();
    }
 
-   public static <T> boolean isNullOrEmpty(@Nullable final T[] t) {
+   public static <T> boolean isNullOrEmpty(final T @Nullable [] t) {
       return t == null || t.length == 0;
    }
 
-   public static boolean isNullOrEmpty(@Nullable final boolean[] t) {
+   public static boolean isNullOrEmpty(final boolean @Nullable [] t) {
       return t == null || t.length == 0;
    }
 
-   public static boolean isNullOrEmpty(@Nullable final byte[] t) {
+   public static boolean isNullOrEmpty(final byte @Nullable [] t) {
       return t == null || t.length == 0;
    }
 
-   public static boolean isNullOrEmpty(@Nullable final char[] t) {
+   public static boolean isNullOrEmpty(final char @Nullable [] t) {
       return t == null || t.length == 0;
    }
 
-   public static boolean isNullOrEmpty(@Nullable final short[] t) {
+   public static boolean isNullOrEmpty(final short @Nullable [] t) {
       return t == null || t.length == 0;
    }
 
-   public static boolean isNullOrEmpty(@Nullable final int[] t) {
+   public static boolean isNullOrEmpty(final int @Nullable [] t) {
       return t == null || t.length == 0;
    }
 
-   public static boolean isNullOrEmpty(@Nullable final long[] t) {
+   public static boolean isNullOrEmpty(final long @Nullable [] t) {
       return t == null || t.length == 0;
    }
 
-   public static boolean isNullOrEmpty(@Nullable final float[] t) {
+   public static boolean isNullOrEmpty(final float @Nullable [] t) {
       return t == null || t.length == 0;
    }
 
-   public static boolean isNullOrEmpty(@Nullable final double[] t) {
+   public static boolean isNullOrEmpty(final double @Nullable [] t) {
       return t == null || t.length == 0;
    }
 }

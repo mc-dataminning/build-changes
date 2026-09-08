@@ -52,19 +52,19 @@ public class OpenServerTask extends LongRunningTask {
                });
                break;
             }
-         } catch (RetryCallException var4) {
+         } catch (RetryCallException e) {
             if (this.aborted()) {
                return;
             }
 
-            pause((long)var4.delaySeconds);
-         } catch (Exception var5) {
+            pause(e.delaySeconds);
+         } catch (Exception e) {
             if (this.aborted()) {
                return;
             }
 
-            LOGGER.error("Failed to open server", var5);
-            this.error(var5);
+            LOGGER.error("Failed to open server", e);
+            this.error(e);
          }
       }
    }

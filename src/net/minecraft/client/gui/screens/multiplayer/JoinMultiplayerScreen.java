@@ -37,8 +37,7 @@ public class JoinMultiplayerScreen extends Screen {
    private Button deleteButton;
    private ServerData editingServer;
    private LanServerDetection.LanServerList lanServerList;
-   @Nullable
-   private LanServerDetection.LanServerDetector lanServerDetector;
+   private LanServerDetection.@Nullable LanServerDetector lanServerDetector;
 
    public JoinMultiplayerScreen(final Screen lastScreen) {
       super(Component.translatable("multiplayer.title"));
@@ -55,8 +54,8 @@ public class JoinMultiplayerScreen extends Screen {
       try {
          this.lanServerDetector = new LanServerDetection.LanServerDetector(this.lanServerList);
          this.lanServerDetector.start();
-      } catch (Exception var5) {
-         LOGGER.warn("Unable to start LAN server detection", var5);
+      } catch (Exception e) {
+         LOGGER.warn("Unable to start LAN server detection", e);
       }
 
       this.serverSelectionList = this.layout
@@ -124,7 +123,8 @@ public class JoinMultiplayerScreen extends Screen {
       }).width(74).build());
       bottomFooterButtons.addChild(Button.builder(Component.translatable("selectServer.refresh"), var1x -> this.refreshServerList()).width(74).build());
       bottomFooterButtons.addChild(Button.builder(CommonComponents.GUI_BACK, var1x -> this.onClose()).width(74).build());
-      this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
+      JoinMultiplayerScreen var4 = this;
+      this.layout.visitWidgets(x$0 -> var4.addRenderableWidget(x$0));
       this.repositionElements();
       this.onSelectedChange();
    }
@@ -173,7 +173,7 @@ public class JoinMultiplayerScreen extends Screen {
       if (result && entry instanceof ServerSelectionList.OnlineServerEntry onlineServerEntry) {
          this.servers.remove(onlineServerEntry.getServerData());
          this.servers.save();
-         this.serverSelectionList.setSelected(null);
+         this.serverSelectionList.setSelected((ServerSelectionList.Entry)null);
          this.serverSelectionList.updateOnlineServers(this.servers);
       }
 
@@ -205,7 +205,7 @@ public class JoinMultiplayerScreen extends Screen {
             this.servers.save();
          }
 
-         this.serverSelectionList.setSelected(null);
+         this.serverSelectionList.setSelected((ServerSelectionList.Entry)null);
          this.serverSelectionList.updateOnlineServers(this.servers);
       }
 

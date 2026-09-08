@@ -54,9 +54,9 @@ public abstract class BaseFireBlock extends Block {
    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
       if (random.nextInt(24) == 0) {
          level.playLocalSound(
-            (double)pos.getX() + 0.5,
-            (double)pos.getY() + 0.5,
-            (double)pos.getZ() + 0.5,
+            pos.getX() + 0.5,
+            pos.getY() + 0.5,
+            pos.getZ() + 0.5,
             SoundEvents.FIRE_AMBIENT,
             SoundSource.BLOCKS,
             1.0F + random.nextFloat(),
@@ -70,53 +70,53 @@ public abstract class BaseFireBlock extends Block {
       if (!this.canBurn(belowState) && !belowState.isFaceSturdy(level, below, Direction.UP)) {
          if (this.canBurn(level.getBlockState(pos.west()))) {
             for (int i = 0; i < 2; i++) {
-               double xx = (double)pos.getX() + random.nextDouble() * 0.1F;
-               double yy = (double)pos.getY() + random.nextDouble();
-               double zz = (double)pos.getZ() + random.nextDouble();
+               double xx = pos.getX() + random.nextDouble() * 0.1F;
+               double yy = pos.getY() + random.nextDouble();
+               double zz = pos.getZ() + random.nextDouble();
                level.addParticle(ParticleTypes.LARGE_SMOKE, xx, yy, zz, 0.0, 0.0, 0.0);
             }
          }
 
          if (this.canBurn(level.getBlockState(pos.east()))) {
             for (int i = 0; i < 2; i++) {
-               double xx = (double)(pos.getX() + 1) - random.nextDouble() * 0.1F;
-               double yy = (double)pos.getY() + random.nextDouble();
-               double zz = (double)pos.getZ() + random.nextDouble();
+               double xx = pos.getX() + 1 - random.nextDouble() * 0.1F;
+               double yy = pos.getY() + random.nextDouble();
+               double zz = pos.getZ() + random.nextDouble();
                level.addParticle(ParticleTypes.LARGE_SMOKE, xx, yy, zz, 0.0, 0.0, 0.0);
             }
          }
 
          if (this.canBurn(level.getBlockState(pos.north()))) {
             for (int i = 0; i < 2; i++) {
-               double xx = (double)pos.getX() + random.nextDouble();
-               double yy = (double)pos.getY() + random.nextDouble();
-               double zz = (double)pos.getZ() + random.nextDouble() * 0.1F;
+               double xx = pos.getX() + random.nextDouble();
+               double yy = pos.getY() + random.nextDouble();
+               double zz = pos.getZ() + random.nextDouble() * 0.1F;
                level.addParticle(ParticleTypes.LARGE_SMOKE, xx, yy, zz, 0.0, 0.0, 0.0);
             }
          }
 
          if (this.canBurn(level.getBlockState(pos.south()))) {
             for (int i = 0; i < 2; i++) {
-               double xx = (double)pos.getX() + random.nextDouble();
-               double yy = (double)pos.getY() + random.nextDouble();
-               double zz = (double)(pos.getZ() + 1) - random.nextDouble() * 0.1F;
+               double xx = pos.getX() + random.nextDouble();
+               double yy = pos.getY() + random.nextDouble();
+               double zz = pos.getZ() + 1 - random.nextDouble() * 0.1F;
                level.addParticle(ParticleTypes.LARGE_SMOKE, xx, yy, zz, 0.0, 0.0, 0.0);
             }
          }
 
          if (this.canBurn(level.getBlockState(pos.above()))) {
             for (int i = 0; i < 2; i++) {
-               double xx = (double)pos.getX() + random.nextDouble();
-               double yy = (double)(pos.getY() + 1) - random.nextDouble() * 0.1F;
-               double zz = (double)pos.getZ() + random.nextDouble();
+               double xx = pos.getX() + random.nextDouble();
+               double yy = pos.getY() + 1 - random.nextDouble() * 0.1F;
+               double zz = pos.getZ() + random.nextDouble();
                level.addParticle(ParticleTypes.LARGE_SMOKE, xx, yy, zz, 0.0, 0.0, 0.0);
             }
          }
       } else {
          for (int i = 0; i < 3; i++) {
-            double xx = (double)pos.getX() + random.nextDouble();
-            double yy = (double)pos.getY() + random.nextDouble() * 0.5 + 0.5;
-            double zz = (double)pos.getZ() + random.nextDouble();
+            double xx = pos.getX() + random.nextDouble();
+            double yy = pos.getY() + random.nextDouble() * 0.5 + 0.5;
+            double zz = pos.getZ() + random.nextDouble();
             level.addParticle(ParticleTypes.LARGE_SMOKE, xx, yy, zz, 0.0, 0.0, 0.0);
          }
       }
@@ -170,7 +170,7 @@ public abstract class BaseFireBlock extends Block {
    }
 
    @Override
-   public void spawnDestroyByEntityParticles(final Level level, @Nullable final Entity entity, final BlockPos pos, final BlockState state) {
+   public void spawnDestroyByEntityParticles(final Level level, final @Nullable Entity entity, final BlockPos pos, final BlockState state) {
    }
 
    @Override
@@ -190,20 +190,20 @@ public abstract class BaseFireBlock extends Block {
    private static boolean isPortal(final Level level, final BlockPos pos, final Direction forwardDirection) {
       if (!inPortalDimension(level)) {
          return false;
-      } else {
-         BlockPos.MutableBlockPos testPos = pos.mutable();
-
-         for (Direction face : Direction.values()) {
-            BlockState state = level.getBlockState(testPos.set(pos).move(face));
-            if (PortalShape.FRAME.test(state)) {
-               Direction.Axis preferredAxis = forwardDirection.getAxis().isHorizontal()
-                  ? forwardDirection.getCounterClockWise().getAxis()
-                  : Direction.Plane.HORIZONTAL.getRandomAxis(level.getRandom());
-               return PortalShape.findEmptyPortalShape(level, pos, preferredAxis).isPresent();
-            }
-         }
-
-         return false;
       }
+
+      BlockPos.MutableBlockPos testPos = pos.mutable();
+
+      for (Direction face : Direction.values()) {
+         BlockState state = level.getBlockState(testPos.set(pos).move(face));
+         if (PortalShape.FRAME.test(state)) {
+            Direction.Axis preferredAxis = forwardDirection.getAxis().isHorizontal()
+               ? forwardDirection.getCounterClockWise().getAxis()
+               : Direction.Plane.HORIZONTAL.getRandomAxis(level.getRandom());
+            return PortalShape.findEmptyPortalShape(level, pos, preferredAxis).isPresent();
+         }
+      }
+
+      return false;
    }
 }

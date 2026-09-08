@@ -27,8 +27,7 @@ public class CollectToTag implements StreamTagVisitor {
       this.containerStack.addLast(new CollectToTag.RootBuilder());
    }
 
-   @Nullable
-   public Tag getResult() {
+   public @Nullable Tag getResult() {
       return this.containerStack.getFirst().build();
    }
 
@@ -180,8 +179,7 @@ public class CollectToTag implements StreamTagVisitor {
 
       void acceptValue(Tag tag);
 
-      @Nullable
-      Tag build();
+      @Nullable Tag build();
    }
 
    private static class ListBuilder implements CollectToTag.ContainerBuilder {
@@ -199,17 +197,15 @@ public class CollectToTag implements StreamTagVisitor {
    }
 
    private static class RootBuilder implements CollectToTag.ContainerBuilder {
-      @Nullable
-      private Tag result;
+      private @Nullable Tag result;
 
       @Override
       public void acceptValue(final Tag tag) {
          this.result = tag;
       }
 
-      @Nullable
       @Override
-      public Tag build() {
+      public @Nullable Tag build() {
          return this.result;
       }
    }

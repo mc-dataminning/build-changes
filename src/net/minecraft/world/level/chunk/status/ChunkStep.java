@@ -24,19 +24,16 @@ public record ChunkStep(
       if (chunk.getPersistedStatus().isBefore(this.targetStatus)) {
          String stepName = this.targetStatus.getName();
 
-         CompletableFuture var7;
          try (Zone var5 = Profiler.get().zone(stepName)) {
             ProfiledDuration profiledDuration = JvmProfiler.INSTANCE.onChunkGenerate(chunk.getPos(), context.level().dimension(), stepName);
-            var7 = this.task.doWork(context, this, cache, chunk).thenApply(newCenterChunk -> this.completeChunkGeneration(newCenterChunk, profiledDuration));
+            return this.task.doWork(context, this, cache, chunk).thenApply(newCenterChunk -> this.completeChunkGeneration(newCenterChunk, profiledDuration));
          }
-
-         return var7;
       } else {
          return this.task.doWork(context, this, cache, chunk);
       }
    }
 
-   private ChunkAccess completeChunkGeneration(final ChunkAccess newCenterChunk, @Nullable final ProfiledDuration profiledDuration) {
+   private ChunkAccess completeChunkGeneration(final ChunkAccess newCenterChunk, final @Nullable ProfiledDuration profiledDuration) {
       if (newCenterChunk instanceof ProtoChunk protochunk && protochunk.getPersistedStatus().isBefore(this.targetStatus)) {
          protochunk.setPersistedStatus(this.targetStatus);
       }
@@ -50,8 +47,7 @@ public record ChunkStep(
 
    public static class Builder {
       private final ChunkStatus status;
-      @Nullable
-      private final ChunkStep parent;
+      private final @Nullable ChunkStep parent;
       private ChunkStatus[] directDependenciesByRadius;
       private int blockStateWriteRadius = -1;
       private ChunkStatusTask task = ChunkStatusTasks::passThrough;
@@ -59,40 +55,40 @@ public record ChunkStep(
       protected Builder(final ChunkStatus status) {
          if (status.getParent() != status) {
             throw new IllegalArgumentException("Not starting with the first status: " + status);
-         } else {
-            this.status = status;
-            this.parent = null;
-            this.directDependenciesByRadius = new ChunkStatus[0];
          }
+
+         this.status = status;
+         this.parent = null;
+         this.directDependenciesByRadius = new ChunkStatus[0];
       }
 
       protected Builder(final ChunkStatus status, final ChunkStep parent) {
          if (parent.targetStatus.getIndex() != status.getIndex() - 1) {
             throw new IllegalArgumentException("Out of order status: " + status);
-         } else {
-            this.status = status;
-            this.parent = parent;
-            this.directDependenciesByRadius = new ChunkStatus[]{parent.targetStatus};
          }
+
+         this.status = status;
+         this.parent = parent;
+         this.directDependenciesByRadius = new ChunkStatus[]{parent.targetStatus};
       }
 
       public ChunkStep.Builder addRequirement(final ChunkStatus status, final int radius) {
          if (status.isOrAfter(this.status)) {
             throw new IllegalArgumentException("Status " + status + " can not be required by " + this.status);
-         } else {
-            ChunkStatus[] previous = this.directDependenciesByRadius;
-            int newLength = radius + 1;
-            if (newLength > previous.length) {
-               this.directDependenciesByRadius = new ChunkStatus[newLength];
-               Arrays.fill(this.directDependenciesByRadius, status);
-            }
-
-            for (int i = 0; i < Math.min(newLength, previous.length); i++) {
-               this.directDependenciesByRadius[i] = ChunkStatus.max(previous[i], status);
-            }
-
-            return this;
          }
+
+         ChunkStatus[] previous = this.directDependenciesByRadius;
+         int newLength = radius + 1;
+         if (newLength > previous.length) {
+            this.directDependenciesByRadius = new ChunkStatus[newLength];
+            Arrays.fill(this.directDependenciesByRadius, status);
+         }
+
+         for (int i = 0; i < Math.min(newLength, previous.length); i++) {
+            this.directDependenciesByRadius[i] = ChunkStatus.max(previous[i], status);
+         }
+
+         return this;
       }
 
       public ChunkStep.Builder blockStateWriteRadius(final int radius) {
@@ -118,24 +114,24 @@ public record ChunkStep(
       private ChunkStatus[] buildAccumulatedDependencies() {
          if (this.parent == null) {
             return this.directDependenciesByRadius;
-         } else {
-            int radiusOfParent = this.getRadiusOfParent(this.parent.targetStatus);
-            ChunkDependencies parentDependencies = this.parent.accumulatedDependencies;
-            ChunkStatus[] accumulatedDependencies = new ChunkStatus[Math.max(radiusOfParent + parentDependencies.size(), this.directDependenciesByRadius.length)];
-
-            for (int distance = 0; distance < accumulatedDependencies.length; distance++) {
-               int distanceInParent = distance - radiusOfParent;
-               if (distanceInParent < 0 || distanceInParent >= parentDependencies.size()) {
-                  accumulatedDependencies[distance] = this.directDependenciesByRadius[distance];
-               } else if (distance >= this.directDependenciesByRadius.length) {
-                  accumulatedDependencies[distance] = parentDependencies.get(distanceInParent);
-               } else {
-                  accumulatedDependencies[distance] = ChunkStatus.max(this.directDependenciesByRadius[distance], parentDependencies.get(distanceInParent));
-               }
-            }
-
-            return accumulatedDependencies;
          }
+
+         int radiusOfParent = this.getRadiusOfParent(this.parent.targetStatus);
+         ChunkDependencies parentDependencies = this.parent.accumulatedDependencies;
+         ChunkStatus[] accumulatedDependencies = new ChunkStatus[Math.max(radiusOfParent + parentDependencies.size(), this.directDependenciesByRadius.length)];
+
+         for (int distance = 0; distance < accumulatedDependencies.length; distance++) {
+            int distanceInParent = distance - radiusOfParent;
+            if (distanceInParent < 0 || distanceInParent >= parentDependencies.size()) {
+               accumulatedDependencies[distance] = this.directDependenciesByRadius[distance];
+            } else if (distance >= this.directDependenciesByRadius.length) {
+               accumulatedDependencies[distance] = parentDependencies.get(distanceInParent);
+            } else {
+               accumulatedDependencies[distance] = ChunkStatus.max(this.directDependenciesByRadius[distance], parentDependencies.get(distanceInParent));
+            }
+         }
+
+         return accumulatedDependencies;
       }
 
       private int getRadiusOfParent(final ChunkStatus status) {

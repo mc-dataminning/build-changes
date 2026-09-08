@@ -61,11 +61,7 @@ public abstract class SpeleothemBlock extends Block implements SimpleWaterlogged
       super(properties);
       this.blockToGrowOn = blockToGrowOn;
       this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(TIP_DIRECTION, Direction.UP)
-            .setValue(THICKNESS, SpeleothemThickness.TIP)
-            .setValue(WATERLOGGED, Boolean.valueOf(false))
+         this.stateDefinition.any().setValue(TIP_DIRECTION, Direction.UP).setValue(THICKNESS, SpeleothemThickness.TIP).setValue(WATERLOGGED, false)
       );
    }
 
@@ -96,47 +92,47 @@ public abstract class SpeleothemBlock extends Block implements SimpleWaterlogged
 
       if (directionToNeighbour != Direction.UP && directionToNeighbour != Direction.DOWN) {
          return state;
-      } else {
-         Direction tipDirection = state.getValue(TIP_DIRECTION);
-         if (tipDirection == Direction.DOWN && ticks.getBlockTicks().hasScheduledTick(pos, this)) {
-            return state;
-         } else if (directionToNeighbour == tipDirection.getOpposite() && !this.canSurvive(state, level, pos)) {
-            if (tipDirection == Direction.DOWN) {
-               ticks.scheduleTick(pos, this, 2);
-            } else {
-               ticks.scheduleTick(pos, this, 1);
-            }
+      }
 
-            return state;
+      Direction tipDirection = state.getValue(TIP_DIRECTION);
+      if (tipDirection == Direction.DOWN && ticks.getBlockTicks().hasScheduledTick(pos, this)) {
+         return state;
+      }
+
+      if (directionToNeighbour == tipDirection.getOpposite() && !this.canSurvive(state, level, pos)) {
+         if (tipDirection == Direction.DOWN) {
+            ticks.scheduleTick(pos, this, 2);
          } else {
-            boolean mergeOpposingTips = state.getValue(THICKNESS) == SpeleothemThickness.TIP_MERGE;
-            SpeleothemThickness newThickness = this.calculateSpeleothemThickness(level, pos, tipDirection, mergeOpposingTips);
-            return state.setValue(THICKNESS, newThickness);
+            ticks.scheduleTick(pos, this, 1);
          }
+
+         return state;
+      } else {
+         boolean mergeOpposingTips = state.getValue(THICKNESS) == SpeleothemThickness.TIP_MERGE;
+         SpeleothemThickness newThickness = this.calculateSpeleothemThickness(level, pos, tipDirection, mergeOpposingTips);
+         return state.setValue(THICKNESS, newThickness);
       }
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       LevelAccessor level = context.getLevel();
       BlockPos pos = context.getClickedPos();
       Direction defaultTipDirection = context.getNearestLookingVerticalDirection().getOpposite();
       Direction tipDirection = this.calculateTipDirection(level, pos, defaultTipDirection);
       if (tipDirection == null) {
          return null;
-      } else {
-         boolean mergeOpposingTips = !context.isSecondaryUseActive();
-         SpeleothemThickness thickness = this.calculateSpeleothemThickness(level, pos, tipDirection, mergeOpposingTips);
-         return this.defaultBlockState()
-            .setValue(TIP_DIRECTION, tipDirection)
-            .setValue(THICKNESS, thickness)
-            .setValue(WATERLOGGED, Boolean.valueOf(level.getFluidState(pos).is(Fluids.WATER)));
       }
+
+      boolean mergeOpposingTips = !context.isSecondaryUseActive();
+      SpeleothemThickness thickness = this.calculateSpeleothemThickness(level, pos, tipDirection, mergeOpposingTips);
+      return this.defaultBlockState()
+         .setValue(TIP_DIRECTION, tipDirection)
+         .setValue(THICKNESS, thickness)
+         .setValue(WATERLOGGED, level.getFluidState(pos).is(Fluids.WATER));
    }
 
-   @Nullable
-   private Direction calculateTipDirection(final LevelReader level, final BlockPos pos, final Direction defaultTipDirection) {
+   private @Nullable Direction calculateTipDirection(final LevelReader level, final BlockPos pos, final Direction defaultTipDirection) {
       Direction tipDirection;
       if (this.isValidSpeleothemPlacement(level, pos, defaultTipDirection)) {
          tipDirection = defaultTipDirection;
@@ -214,7 +210,7 @@ public abstract class SpeleothemBlock extends Block implements SimpleWaterlogged
          FallingBlockEntity entity = FallingBlockEntity.fall(level, fallPos, fallState);
          if (isTip(fallState, true)) {
             int size = Math.max(1 + pos.getY() - fallPos.getY(), 6);
-            float damagePerFallDistance = 1.0F * (float)size;
+            float damagePerFallDistance = 1.0F * size;
             entity.setHurtsEntities(damagePerFallDistance, 40);
             break;
          }
@@ -235,10 +231,10 @@ public abstract class SpeleothemBlock extends Block implements SimpleWaterlogged
    private static boolean isTip(final BlockState state, final boolean includeMergedTip) {
       if (!state.is(BlockTags.SPELEOTHEMS)) {
          return false;
-      } else {
-         SpeleothemThickness thickness = state.getValue(THICKNESS);
-         return thickness == SpeleothemThickness.TIP || includeMergedTip && thickness == SpeleothemThickness.TIP_MERGE;
       }
+
+      SpeleothemThickness thickness = state.getValue(THICKNESS);
+      return thickness == SpeleothemThickness.TIP || includeMergedTip && thickness == SpeleothemThickness.TIP_MERGE;
    }
 
    @Override
@@ -248,8 +244,7 @@ public abstract class SpeleothemBlock extends Block implements SimpleWaterlogged
       }
    }
 
-   @LevelEvent.Value
-   protected abstract int getStalactiteLandingSound();
+   protected abstract @LevelEvent.Value int getStalactiteLandingSound();
 
    @Override
    public DamageSource getFallDamageSource(final Entity entity) {
@@ -322,21 +317,20 @@ public abstract class SpeleothemBlock extends Block implements SimpleWaterlogged
       return level.getBlockState(pos.above()).is(this.blockToGrowOn.getBlock());
    }
 
-   @Nullable
-   protected static BlockPos findTip(
+   protected static @Nullable BlockPos findTip(
       final BlockState speleothemState, final LevelAccessor level, final BlockPos speleothemPos, final int maxSearchLength, final boolean includeMergedTip
    ) {
       if (isTip(speleothemState, includeMergedTip)) {
          return speleothemPos;
-      } else {
-         Direction searchDirection = speleothemState.getValue(TIP_DIRECTION);
-         BiPredicate<BlockPos, BlockState> pathPredicate = (pos, state) -> state.is(speleothemState.getBlock())
-               && state.getValue(TIP_DIRECTION) == searchDirection;
-         return findBlockVertical(
-               level, speleothemPos, searchDirection.getAxisDirection(), pathPredicate, speleothem -> isTip(speleothem, includeMergedTip), maxSearchLength
-            )
-            .orElse(null);
       }
+
+      Direction searchDirection = speleothemState.getValue(TIP_DIRECTION);
+      BiPredicate<BlockPos, BlockState> pathPredicate = (pos, state) -> state.is(speleothemState.getBlock())
+         && state.getValue(TIP_DIRECTION) == searchDirection;
+      return findBlockVertical(
+            level, speleothemPos, searchDirection.getAxisDirection(), pathPredicate, speleothem -> isTip(speleothem, includeMergedTip), maxSearchLength
+         )
+         .orElse(null);
    }
 
    protected static Optional<BlockPos> findBlockVertical(
@@ -394,7 +388,7 @@ public abstract class SpeleothemBlock extends Block implements SimpleWaterlogged
       BlockState state = this.defaultBlockState()
          .setValue(TIP_DIRECTION, direction)
          .setValue(THICKNESS, thickness)
-         .setValue(WATERLOGGED, Boolean.valueOf(level.getFluidState(pos).is(Fluids.WATER)));
+         .setValue(WATERLOGGED, level.getFluidState(pos).is(Fluids.WATER));
       level.setBlockAndUpdate(pos, state);
    }
 

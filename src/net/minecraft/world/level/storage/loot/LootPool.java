@@ -29,13 +29,13 @@ import org.apache.commons.lang3.mutable.MutableInt;
 public class LootPool implements Validatable {
    public static final Codec<LootPool> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               LootPoolEntries.CODEC.listOf().fieldOf("entries").forGetter(p -> p.entries),
-               LootItemCondition.CODEC.optionalFieldOf("condition").forGetter(p -> p.condition),
-               LootItemFunctions.CODEC.optionalFieldOf("modifier").forGetter(p -> p.modifier),
-               ContextIntProviders.CODEC.fieldOf("rolls").forGetter(p -> p.rolls),
-               ContextFloatProviders.CODEC.optionalFieldOf("bonus_rolls", ContextFloatProviders.exactly(0.0F)).forGetter(p -> p.bonusRolls)
-            )
-            .apply(i, LootPool::new)
+            LootPoolEntries.CODEC.listOf().fieldOf("entries").forGetter(p -> p.entries),
+            LootItemCondition.CODEC.optionalFieldOf("condition").forGetter(p -> p.condition),
+            LootItemFunctions.CODEC.optionalFieldOf("modifier").forGetter(p -> p.modifier),
+            ContextIntProviders.CODEC.fieldOf("rolls").forGetter(p -> p.rolls),
+            ContextFloatProviders.CODEC.optionalFieldOf("bonus_rolls", ContextFloatProviders.exactly(0.0F)).forGetter(p -> p.bonusRolls)
+         )
+         .apply(i, LootPool::new)
    );
    private final List<LootPoolEntryContainer> entries;
    private final Optional<Holder<LootItemCondition>> condition;

@@ -21,7 +21,7 @@ import org.jspecify.annotations.Nullable;
 
 public record CuboidModel(
    @Nullable UnbakedGeometry geometry,
-   @Nullable UnbakedModel.GuiLight guiLight,
+   UnbakedModel.@Nullable GuiLight guiLight,
    @Nullable Boolean ambientOcclusion,
    @Nullable ItemTransforms transforms,
    TextureSlots.Data textureSlots,
@@ -75,24 +75,22 @@ public record CuboidModel(
          return GsonHelper.getAsString(object, "parent", "");
       }
 
-      @Nullable
-      protected Boolean getAmbientOcclusion(final JsonObject object) {
+      protected @Nullable Boolean getAmbientOcclusion(final JsonObject object) {
          return object.has("ambientocclusion") ? GsonHelper.getAsBoolean(object, "ambientocclusion") : null;
       }
 
-      @Nullable
-      protected UnbakedGeometry getElements(final JsonDeserializationContext context, final JsonObject object) {
+      protected @Nullable UnbakedGeometry getElements(final JsonDeserializationContext context, final JsonObject object) {
          if (!object.has("elements")) {
             return null;
-         } else {
-            List<CuboidModelElement> elements = new ArrayList<>();
-
-            for (JsonElement element : GsonHelper.getAsJsonArray(object, "elements")) {
-               elements.add((CuboidModelElement)context.deserialize(element, CuboidModelElement.class));
-            }
-
-            return new UnbakedCuboidGeometry(elements);
          }
+
+         List<CuboidModelElement> elements = new ArrayList<>();
+
+         for (JsonElement element : GsonHelper.getAsJsonArray(object, "elements")) {
+            elements.add((CuboidModelElement)context.deserialize(element, CuboidModelElement.class));
+         }
+
+         return new UnbakedCuboidGeometry(elements);
       }
    }
 }

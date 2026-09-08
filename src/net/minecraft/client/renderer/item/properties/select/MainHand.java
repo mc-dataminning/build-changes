@@ -15,9 +15,8 @@ public record MainHand() implements SelectItemModelProperty<HumanoidArm> {
       MapCodec.unit(new MainHand()), VALUE_CODEC
    );
 
-   @Nullable
-   public HumanoidArm get(
-      final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final LivingEntity owner, final int seed, final ItemDisplayContext displayContext
+   public @Nullable HumanoidArm get(
+      final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner, final int seed, final ItemDisplayContext displayContext
    ) {
       return owner == null ? null : owner.getMainArm();
    }

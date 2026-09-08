@@ -35,8 +35,8 @@ public class LightningBoltRenderer extends EntityRenderer<LightningBolt, Lightni
       for (int heightSegmentIndex = 7; heightSegmentIndex >= 0; heightSegmentIndex--) {
          xOffsets[heightSegmentIndex] = xOffset;
          zOffsets[heightSegmentIndex] = zOffset;
-         xOffset += (float)(random.nextInt(11) - 5);
-         zOffset += (float)(random.nextInt(11) - 5);
+         xOffset += random.nextInt(11) - 5;
+         zOffset += random.nextInt(11) - 5;
       }
 
       float finalXOff = xOffset;
@@ -61,18 +61,18 @@ public class LightningBoltRenderer extends EntityRenderer<LightningBolt, Lightni
                      float segmentEndX = segmentStartX;
                      float segmentEndZ = segmentStartZ;
                      if (isTrunkBranch) {
-                        segmentStartX += (float)(randomx.nextInt(11) - 5);
-                        segmentStartZ += (float)(randomx.nextInt(11) - 5);
+                        segmentStartX += randomx.nextInt(11) - 5;
+                        segmentStartZ += randomx.nextInt(11) - 5;
                      } else {
-                        segmentStartX += (float)(randomx.nextInt(31) - 15);
-                        segmentStartZ += (float)(randomx.nextInt(31) - 15);
+                        segmentStartX += randomx.nextInt(31) - 15;
+                        segmentStartZ += randomx.nextInt(31) - 15;
                      }
 
-                     float topRadius = 0.1F + (float)layer * 0.2F;
+                     float topRadius = 0.1F + layer * 0.2F;
                      float bottomRadius = topRadius;
                      if (isTrunkBranch) {
-                        topRadius *= (float)currentSegment * 0.1F + 1.0F;
-                        bottomRadius *= (float)(currentSegment - 1) * 0.1F + 1.0F;
+                        topRadius *= currentSegment * 0.1F + 1.0F;
+                        bottomRadius *= (currentSegment - 1) * 0.1F + 1.0F;
                      }
 
                      quad(
@@ -160,28 +160,22 @@ public class LightningBoltRenderer extends EntityRenderer<LightningBolt, Lightni
       buffer.addVertex(
             pose,
             segmentStartX + (rightXPositive ? bottomRadius : -bottomRadius),
-            (float)(currentSegment * 16),
+            currentSegment * 16,
             segmentStartZ + (rightZPositive ? bottomRadius : -bottomRadius)
          )
          .setColor(0.45F, 0.45F, 0.5F, 0.3F);
       buffer.addVertex(
-            pose,
-            segmentEndX + (rightXPositive ? topRadius : -topRadius),
-            (float)((currentSegment + 1) * 16),
-            segmentEndZ + (rightZPositive ? topRadius : -topRadius)
+            pose, segmentEndX + (rightXPositive ? topRadius : -topRadius), (currentSegment + 1) * 16, segmentEndZ + (rightZPositive ? topRadius : -topRadius)
          )
          .setColor(0.45F, 0.45F, 0.5F, 0.3F);
       buffer.addVertex(
-            pose,
-            segmentEndX + (leftXPositive ? topRadius : -topRadius),
-            (float)((currentSegment + 1) * 16),
-            segmentEndZ + (leftZPositive ? topRadius : -topRadius)
+            pose, segmentEndX + (leftXPositive ? topRadius : -topRadius), (currentSegment + 1) * 16, segmentEndZ + (leftZPositive ? topRadius : -topRadius)
          )
          .setColor(0.45F, 0.45F, 0.5F, 0.3F);
       buffer.addVertex(
             pose,
             segmentStartX + (leftXPositive ? bottomRadius : -bottomRadius),
-            (float)(currentSegment * 16),
+            currentSegment * 16,
             segmentStartZ + (leftZPositive ? bottomRadius : -bottomRadius)
          )
          .setColor(0.45F, 0.45F, 0.5F, 0.3F);

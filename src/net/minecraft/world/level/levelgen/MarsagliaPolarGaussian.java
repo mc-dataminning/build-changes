@@ -20,20 +20,20 @@ public class MarsagliaPolarGaussian {
       if (this.haveNextNextGaussian) {
          this.haveNextNextGaussian = false;
          return this.nextNextGaussian;
-      } else {
-         double x;
-         double y;
-         double radiusSquared;
-         do {
-            x = 2.0 * this.randomSource.nextDouble() - 1.0;
-            y = 2.0 * this.randomSource.nextDouble() - 1.0;
-            radiusSquared = Mth.square(x) + Mth.square(y);
-         } while (radiusSquared >= 1.0 || radiusSquared == 0.0);
-
-         double multiplier = Math.sqrt(-2.0 * Math.log(radiusSquared) / radiusSquared);
-         this.nextNextGaussian = y * multiplier;
-         this.haveNextNextGaussian = true;
-         return x * multiplier;
       }
+
+      double x;
+      double y;
+      double radiusSquared;
+      do {
+         x = 2.0 * this.randomSource.nextDouble() - 1.0;
+         y = 2.0 * this.randomSource.nextDouble() - 1.0;
+         radiusSquared = Mth.square(x) + Mth.square(y);
+      } while (radiusSquared >= 1.0 || radiusSquared == 0.0);
+
+      double multiplier = Math.sqrt(-2.0 * Math.log(radiusSquared) / radiusSquared);
+      this.nextNextGaussian = y * multiplier;
+      this.haveNextNextGaussian = true;
+      return x * multiplier;
    }
 }

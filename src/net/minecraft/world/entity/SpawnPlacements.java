@@ -68,7 +68,7 @@ public class SpawnPlacements {
       return getPlacementType(type).isSpawnPositionOk(level, blockPos, type);
    }
 
-   public static Heightmap.Types getHeightmapType(@Nullable final EntityType<?> type) {
+   public static Heightmap.Types getHeightmapType(final @Nullable EntityType<?> type) {
       SpawnPlacements.Data data = DATA_BY_TYPE.get(type);
       return data == null ? Heightmap.Types.MOTION_BLOCKING_NO_LEAVES : data.heightMap;
    }
@@ -78,10 +78,10 @@ public class SpawnPlacements {
    ) {
       if (!type.isAllowedInPeaceful() && level.getDifficulty() == Difficulty.PEACEFUL) {
          return false;
-      } else {
-         SpawnPlacements.Data data = DATA_BY_TYPE.get(type);
-         return data == null || data.predicate.test(type, level, spawnReason, pos, random);
       }
+
+      SpawnPlacements.Data data = DATA_BY_TYPE.get(type);
+      return data == null || data.predicate.test(type, level, spawnReason, pos, random);
    }
 
    static {
@@ -189,7 +189,7 @@ public class SpawnPlacements {
       register(EntityTypes.WARDEN, SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
    }
 
-   private static record Data(Heightmap.Types heightMap, SpawnPlacementType placement, SpawnPlacements.SpawnPredicate<?> predicate) {
+   private record Data(Heightmap.Types heightMap, SpawnPlacementType placement, SpawnPlacements.SpawnPredicate<?> predicate) {
    }
 
    @FunctionalInterface

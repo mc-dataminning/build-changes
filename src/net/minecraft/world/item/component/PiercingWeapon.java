@@ -25,12 +25,12 @@ import net.minecraft.world.phys.EntityHitResult;
 public record PiercingWeapon(boolean dealsKnockback, boolean dismounts, Optional<Holder<SoundEvent>> sound, Optional<Holder<SoundEvent>> hitSound) {
    public static final Codec<PiercingWeapon> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.BOOL.optionalFieldOf("deals_knockback", true).forGetter(PiercingWeapon::dealsKnockback),
-               Codec.BOOL.optionalFieldOf("dismounts", false).forGetter(PiercingWeapon::dismounts),
-               SoundEvent.CODEC.optionalFieldOf("sound").forGetter(PiercingWeapon::sound),
-               SoundEvent.CODEC.optionalFieldOf("hit_sound").forGetter(PiercingWeapon::hitSound)
-            )
-            .apply(i, PiercingWeapon::new)
+            Codec.BOOL.optionalFieldOf("deals_knockback", true).forGetter(PiercingWeapon::dealsKnockback),
+            Codec.BOOL.optionalFieldOf("dismounts", false).forGetter(PiercingWeapon::dismounts),
+            SoundEvent.CODEC.optionalFieldOf("sound").forGetter(PiercingWeapon::sound),
+            SoundEvent.CODEC.optionalFieldOf("hit_sound").forGetter(PiercingWeapon::hitSound)
+         )
+         .apply(i, PiercingWeapon::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, PiercingWeapon> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.BOOL,
@@ -66,11 +66,9 @@ public record PiercingWeapon(boolean dealsKnockback, boolean dismounts, Optional
       } else if (!target.canBeHitByProjectile()) {
          return false;
       } else {
-         if (target instanceof Player targetPlayer && jabber instanceof Player jabbingPlayer && !jabbingPlayer.canHarmPlayer(targetPlayer)) {
-            return false;
-         }
-
-         return !jabber.isPassengerOfSameVehicle(target);
+         return target instanceof Player targetPlayer && jabber instanceof Player jabbingPlayer && !jabbingPlayer.canHarmPlayer(targetPlayer)
+            ? false
+            : !jabber.isPassengerOfSameVehicle(target);
       }
    }
 

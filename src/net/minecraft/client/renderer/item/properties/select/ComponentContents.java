@@ -19,11 +19,12 @@ public record ComponentContents<T>(DataComponentType<T> componentType) implement
       Codec<? extends DataComponentType<?>> rawComponentCodec = BuiltInRegistries.DATA_COMPONENT_TYPE
          .byNameCodec()
          .validate(t -> t.isTransient() ? DataResult.error(() -> "Component can't be serialized") : DataResult.success(t));
-      MapCodec<SelectItemModel.UnbakedSwitch<ComponentContents<T>, T>> switchCodec = rawComponentCodec.dispatchMap(
+      Codec<DataComponentType<T>> componentCodec = (Codec<DataComponentType<T>>)rawComponentCodec;
+      MapCodec<SelectItemModel.UnbakedSwitch<ComponentContents<T>, T>> switchCodec = componentCodec.dispatchMap(
          "component",
          switchObject -> ((ComponentContents)switchObject.property()).componentType,
          componentType -> SelectItemModelProperty.Type.createCasesFieldCodec(componentType.codecOrThrow())
-               .xmap(cases -> new SelectItemModel.UnbakedSwitch<>(new ComponentContents(componentType), cases), SelectItemModel.UnbakedSwitch::cases)
+            .xmap(cases -> new SelectItemModel.UnbakedSwitch<>(new ComponentContents(componentType), cases), SelectItemModel.UnbakedSwitch::cases)
       );
       return new SelectItemModelProperty.Type<>(switchCodec);
    }
@@ -32,10 +33,9 @@ public record ComponentContents<T>(DataComponentType<T> componentType) implement
       return (SelectItemModelProperty.Type<ComponentContents<T>, T>)TYPE;
    }
 
-   @Nullable
    @Override
-   public T get(
-      final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final LivingEntity owner, final int seed, final ItemDisplayContext displayContext
+   public @Nullable T get(
+      final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner, final int seed, final ItemDisplayContext displayContext
    ) {
       return itemStack.get(this.componentType);
    }

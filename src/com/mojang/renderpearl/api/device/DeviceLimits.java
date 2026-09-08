@@ -12,6 +12,6 @@ public record DeviceLimits(
    int maxDrawIndirectDrawCount
 ) {
    public int maxTextureSizeForFormat(final GpuFormat format) {
-      return Integer.highestOneBit(Math.min(this.maxTextureSize, (int)Math.sqrt((double)this.maxMemoryAllocationSize / (double)format.blockSize())));
+      return Integer.highestOneBit(Math.min(this.maxTextureSize, (int)Math.sqrt((double)this.maxMemoryAllocationSize / format.blockSize())));
    }
 }

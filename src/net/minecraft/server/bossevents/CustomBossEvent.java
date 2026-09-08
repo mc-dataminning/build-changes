@@ -71,13 +71,13 @@ public class CustomBossEvent extends ServerBossEvent {
 
    public void setValue(final int value) {
       this.value = value;
-      this.setProgress(Mth.clamp((float)value / (float)this.max, 0.0F, 1.0F));
+      this.setProgress(Mth.clamp((float)value / this.max, 0.0F, 1.0F));
       this.setDirty();
    }
 
    public void setMax(final int max) {
       this.max = max;
-      this.setProgress(Mth.clamp((float)this.value / (float)max, 0.0F, 1.0F));
+      this.setProgress(Mth.clamp((float)this.value / max, 0.0F, 1.0F));
       this.setDirty();
    }
 
@@ -85,8 +85,8 @@ public class CustomBossEvent extends ServerBossEvent {
       return ComponentUtils.wrapInSquareBrackets(this.getName())
          .withStyle(
             s -> s.withColor(this.getColor().getFormatting())
-                  .withHoverEvent(new HoverEvent.ShowText(Component.literal(this.customId().toString())))
-                  .withInsertion(this.customId().toString())
+               .withHoverEvent(new HoverEvent.ShowText(Component.literal(this.customId().toString())))
+               .withInsertion(this.customId().toString())
          );
    }
 
@@ -109,34 +109,34 @@ public class CustomBossEvent extends ServerBossEvent {
          }
       }
 
-      for (ServerPlayer playerx : players) {
+      for (ServerPlayer player : players) {
          boolean found = false;
 
          for (UUID uuid : this.players) {
-            if (playerx.getUUID().equals(uuid)) {
+            if (player.getUUID().equals(uuid)) {
                found = true;
                break;
             }
          }
 
          if (!found) {
-            toAdd.add(playerx);
+            toAdd.add(player);
          }
       }
 
-      for (UUID uuidx : toRemove) {
-         for (ServerPlayer playerx : this.getPlayers()) {
-            if (playerx.getUUID().equals(uuidx)) {
-               this.removePlayer(playerx);
+      for (UUID uuid : toRemove) {
+         for (ServerPlayer player : this.getPlayers()) {
+            if (player.getUUID().equals(uuid)) {
+               this.removePlayer(player);
                break;
             }
          }
 
-         this.players.remove(uuidx);
+         this.players.remove(uuid);
       }
 
-      for (ServerPlayer playerxx : toAdd) {
-         this.addPlayer(playerxx);
+      for (ServerPlayer player : toAdd) {
+         this.addPlayer(player);
       }
 
       boolean playersChanged = !toRemove.isEmpty() || !toAdd.isEmpty();
@@ -191,7 +191,7 @@ public class CustomBossEvent extends ServerBossEvent {
       this.dirtyCallback.run();
    }
 
-   public static record Packed(
+   public record Packed(
       Component name,
       boolean visible,
       int value,
@@ -205,18 +205,18 @@ public class CustomBossEvent extends ServerBossEvent {
    ) {
       public static final Codec<CustomBossEvent.Packed> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  ComponentSerialization.CODEC.fieldOf("Name").forGetter(CustomBossEvent.Packed::name),
-                  Codec.BOOL.optionalFieldOf("Visible", false).forGetter(CustomBossEvent.Packed::visible),
-                  Codec.INT.optionalFieldOf("Value", 0).forGetter(CustomBossEvent.Packed::value),
-                  Codec.INT.optionalFieldOf("Max", 100).forGetter(CustomBossEvent.Packed::max),
-                  BossEvent.BossBarColor.CODEC.optionalFieldOf("Color", BossEvent.BossBarColor.WHITE).forGetter(CustomBossEvent.Packed::color),
-                  BossEvent.BossBarOverlay.CODEC.optionalFieldOf("Overlay", BossEvent.BossBarOverlay.PROGRESS).forGetter(CustomBossEvent.Packed::overlay),
-                  Codec.BOOL.optionalFieldOf("DarkenScreen", false).forGetter(CustomBossEvent.Packed::darkenScreen),
-                  Codec.BOOL.optionalFieldOf("PlayBossMusic", false).forGetter(CustomBossEvent.Packed::playBossMusic),
-                  Codec.BOOL.optionalFieldOf("CreateWorldFog", false).forGetter(CustomBossEvent.Packed::createWorldFog),
-                  UUIDUtil.CODEC_SET.optionalFieldOf("Players", Set.of()).forGetter(CustomBossEvent.Packed::players)
-               )
-               .apply(i, CustomBossEvent.Packed::new)
+               ComponentSerialization.CODEC.fieldOf("Name").forGetter(CustomBossEvent.Packed::name),
+               Codec.BOOL.optionalFieldOf("Visible", false).forGetter(CustomBossEvent.Packed::visible),
+               Codec.INT.optionalFieldOf("Value", 0).forGetter(CustomBossEvent.Packed::value),
+               Codec.INT.optionalFieldOf("Max", 100).forGetter(CustomBossEvent.Packed::max),
+               BossEvent.BossBarColor.CODEC.optionalFieldOf("Color", BossEvent.BossBarColor.WHITE).forGetter(CustomBossEvent.Packed::color),
+               BossEvent.BossBarOverlay.CODEC.optionalFieldOf("Overlay", BossEvent.BossBarOverlay.PROGRESS).forGetter(CustomBossEvent.Packed::overlay),
+               Codec.BOOL.optionalFieldOf("DarkenScreen", false).forGetter(CustomBossEvent.Packed::darkenScreen),
+               Codec.BOOL.optionalFieldOf("PlayBossMusic", false).forGetter(CustomBossEvent.Packed::playBossMusic),
+               Codec.BOOL.optionalFieldOf("CreateWorldFog", false).forGetter(CustomBossEvent.Packed::createWorldFog),
+               UUIDUtil.CODEC_SET.optionalFieldOf("Players", Set.of()).forGetter(CustomBossEvent.Packed::players)
+            )
+            .apply(i, CustomBossEvent.Packed::new)
       );
    }
 }

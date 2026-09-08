@@ -20,9 +20,9 @@ public class V1458 extends NamespacedSchema {
          true,
          References.ENTITY,
          () -> DSL.and(
-               References.ENTITY_EQUIPMENT.in(schema),
-               DSL.optionalFields("CustomName", References.TEXT_COMPONENT.in(schema), DSL.taggedChoiceLazy("id", namespacedString(), entityTypes))
-            )
+            References.ENTITY_EQUIPMENT.in(schema),
+            DSL.optionalFields("CustomName", References.TEXT_COMPONENT.in(schema), DSL.taggedChoiceLazy("id", namespacedString(), entityTypes))
+         )
       );
    }
 

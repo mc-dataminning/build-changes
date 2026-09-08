@@ -63,7 +63,7 @@ public class ServerWaypointManager implements WaypointManager<WaypointTransmitte
       }
 
       if (player.isTransmittingWaypoint()) {
-         this.trackWaypoint((WaypointTransmitter)player);
+         this.trackWaypoint(player);
       }
    }
 
@@ -90,7 +90,7 @@ public class ServerWaypointManager implements WaypointManager<WaypointTransmitte
          connection.disconnect();
          return true;
       });
-      this.untrackWaypoint((WaypointTransmitter)player);
+      this.untrackWaypoint(player);
       this.players.remove(player);
    }
 

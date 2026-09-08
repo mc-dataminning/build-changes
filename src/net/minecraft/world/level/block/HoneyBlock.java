@@ -77,16 +77,20 @@ public class HoneyBlock extends HalfTransparentBlock {
    private boolean isSlidingDown(final BlockPos pos, final Entity entity) {
       if (entity.onGround()) {
          return false;
-      } else if (entity.getY() > (double)pos.getY() + 0.9375 - 1.0E-7) {
-         return false;
-      } else if (getOldDeltaY(entity.getDeltaMovement().y) >= -0.08) {
-         return false;
-      } else {
-         double dx = Math.abs((double)pos.getX() + 0.5 - entity.getX());
-         double dz = Math.abs((double)pos.getZ() + 0.5 - entity.getZ());
-         double overlapDistance = 0.4375 + (double)(entity.getBbWidth() / 2.0F);
-         return dx + 1.0E-7 > overlapDistance || dz + 1.0E-7 > overlapDistance;
       }
+
+      if (entity.getY() > pos.getY() + 0.9375 - 1.0E-7) {
+         return false;
+      }
+
+      if (getOldDeltaY(entity.getDeltaMovement().y) >= -0.08) {
+         return false;
+      }
+
+      double dx = Math.abs(pos.getX() + 0.5 - entity.getX());
+      double dz = Math.abs(pos.getZ() + 0.5 - entity.getZ());
+      double overlapDistance = 0.4375 + entity.getBbWidth() / 2.0F;
+      return dx + 1.0E-7 > overlapDistance || dz + 1.0E-7 > overlapDistance;
    }
 
    private void maybeDoSlideAchievement(final Entity entity, final BlockPos pos) {

@@ -21,9 +21,9 @@ public record ExpirableValue<T>(T value, Optional<Long> timeToLive) {
    public static <T> Codec<ExpirableValue<T>> codec(final Codec<T> valueCodec) {
       return RecordCodecBuilder.create(
          i -> i.group(
-                  valueCodec.fieldOf("value").forGetter(ExpirableValue::value), Codec.LONG.lenientOptionalFieldOf("ttl").forGetter(ExpirableValue::timeToLive)
-               )
-               .apply(i, ExpirableValue::new)
+               valueCodec.fieldOf("value").forGetter(ExpirableValue::value), Codec.LONG.lenientOptionalFieldOf("ttl").forGetter(ExpirableValue::timeToLive)
+            )
+            .apply(i, ExpirableValue::new)
       );
    }
 }

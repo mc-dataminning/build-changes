@@ -1,12 +1,10 @@
 package net.minecraft.world.level.storage;
 
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.DataResult.Error;
 import com.mojang.serialization.DataResult.Success;
-import java.util.Objects;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -36,14 +34,11 @@ public class TagValueOutput implements ValueOutput {
 
    @Override
    public <T> void store(final String name, final Codec<T> codec, final T value) {
-      DataResult var10000 = codec.encodeStart(this.ops, value);
-      Objects.requireNonNull(var10000);
-      Object var4 = var10000;
-      switch (var4) {
-         case Success success:
+      switch (codec.encodeStart(this.ops, value)) {
+         case Success<Tag> success:
             this.output.put(name, (Tag)success.value());
             break;
-         case Error error:
+         case Error<Tag> error:
             this.problemReporter.report(new TagValueOutput.EncodeToFieldFailedProblem(name, value, error));
             error.partialValue().ifPresent(partial -> this.output.put(name, partial));
             break;
@@ -53,7 +48,7 @@ public class TagValueOutput implements ValueOutput {
    }
 
    @Override
-   public <T> void storeNullable(final String name, final Codec<T> codec, @Nullable final T value) {
+   public <T> void storeNullable(final String name, final Codec<T> codec, final @Nullable T value) {
       if (value != null) {
          this.store(name, codec, value);
       }
@@ -61,14 +56,11 @@ public class TagValueOutput implements ValueOutput {
 
    @Override
    public <T> void store(final MapCodec<T> codec, final T value) {
-      DataResult var10000 = codec.encoder().encodeStart(this.ops, value);
-      Objects.requireNonNull(var10000);
-      Object var3 = var10000;
-      switch (var3) {
-         case Success success:
+      switch (codec.encoder().encodeStart(this.ops, value)) {
+         case Success<Tag> success:
             this.output.merge((CompoundTag)success.value());
             break;
-         case Error error:
+         case Error<Tag> error:
             this.problemReporter.report(new TagValueOutput.EncodeToMapFailedProblem(value, error));
             error.partialValue().ifPresent(partial -> this.output.merge((CompoundTag)partial));
             break;
@@ -161,21 +153,21 @@ public class TagValueOutput implements ValueOutput {
       return this.output;
    }
 
-   public static record EncodeToFieldFailedProblem(String name, Object value, Error<?> error) implements ProblemReporter.Problem {
+   public record EncodeToFieldFailedProblem(String name, Object value, Error<?> error) implements ProblemReporter.Problem {
       @Override
       public String description() {
          return "Failed to encode value '" + this.value + "' to field '" + this.name + "': " + this.error.message();
       }
    }
 
-   public static record EncodeToListFailedProblem(String name, Object value, Error<?> error) implements ProblemReporter.Problem {
+   public record EncodeToListFailedProblem(String name, Object value, Error<?> error) implements ProblemReporter.Problem {
       @Override
       public String description() {
          return "Failed to append value '" + this.value + "' to list '" + this.name + "': " + this.error.message();
       }
    }
 
-   public static record EncodeToMapFailedProblem(Object value, Error<?> error) implements ProblemReporter.Problem {
+   public record EncodeToMapFailedProblem(Object value, Error<?> error) implements ProblemReporter.Problem {
       @Override
       public String description() {
          return "Failed to merge value '" + this.value + "' to an object: " + this.error.message();
@@ -231,14 +223,11 @@ public class TagValueOutput implements ValueOutput {
 
       @Override
       public void add(final T value) {
-         DataResult var10000 = this.codec.encodeStart(this.ops, value);
-         Objects.requireNonNull(var10000);
-         Object var2 = var10000;
-         switch (var2) {
-            case Success success:
+         switch (this.codec.encodeStart(this.ops, value)) {
+            case Success<Tag> success:
                this.output.add((Tag)success.value());
                break;
-            case Error error:
+            case Error<Tag> error:
                this.problemReporter.report(new TagValueOutput.EncodeToListFailedProblem(this.name, value, error));
                error.partialValue().ifPresent(this.output::add);
                break;

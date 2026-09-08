@@ -34,7 +34,7 @@ public class GlStateManager {
    private static final GlStateManager.TextureState[] TEXTURES = IntStream.range(0, 12)
       .mapToObj(i -> new GlStateManager.TextureState())
       .toArray(GlStateManager.TextureState[]::new);
-   private static final int[] COLOR_MASK = new int[8];
+   private static final @ColorTargetState.WriteMask int[] COLOR_MASK = new int[8];
    private static int readFbo;
    private static int writeFbo;
 
@@ -217,7 +217,7 @@ public class GlStateManager {
 
    static void incrementTrackedBuffers() {
       numBuffers++;
-      PLOT_BUFFERS.setValue((double)numBuffers);
+      PLOT_BUFFERS.setValue(numBuffers);
    }
 
    public static int _glGenBuffers() {
@@ -256,8 +256,7 @@ public class GlStateManager {
       GL33C.glBufferData(target, size, usage);
    }
 
-   @Nullable
-   public static ByteBuffer _glMapBufferRange(final int target, final long offset, final long length, final int access) {
+   public static @Nullable ByteBuffer _glMapBufferRange(final int target, final long offset, final long length, final int access) {
       RenderSystem.assertOnRenderThread();
       return GL33C.glMapBufferRange(target, offset, length, access);
    }
@@ -270,7 +269,7 @@ public class GlStateManager {
    public static void _glDeleteBuffers(final int buffer) {
       RenderSystem.assertOnRenderThread();
       numBuffers--;
-      PLOT_BUFFERS.setValue((double)numBuffers);
+      PLOT_BUFFERS.setValue(numBuffers);
       GL33C.glDeleteBuffers(buffer);
    }
 
@@ -429,7 +428,7 @@ public class GlStateManager {
    public static int _genTexture() {
       RenderSystem.assertOnRenderThread();
       numTextures++;
-      PLOT_TEXTURES.setValue((double)numTextures);
+      PLOT_TEXTURES.setValue(numTextures);
       return GL33C.glGenTextures();
    }
 
@@ -444,7 +443,7 @@ public class GlStateManager {
       }
 
       numTextures--;
-      PLOT_TEXTURES.setValue((double)numTextures);
+      PLOT_TEXTURES.setValue(numTextures);
    }
 
    public static void _bindTexture(final int id) {
@@ -464,7 +463,7 @@ public class GlStateManager {
       final int border,
       final int format,
       final int type,
-      @Nullable final ByteBuffer pixels
+      final @Nullable ByteBuffer pixels
    ) {
       RenderSystem.assertOnRenderThread();
       GL33C.glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
@@ -504,7 +503,7 @@ public class GlStateManager {
       GL33C.glViewport(x, y, width, height);
    }
 
-   public static void _colorMask(@ColorTargetState.WriteMask final int writeMask) {
+   public static void _colorMask(final @ColorTargetState.WriteMask int writeMask) {
       RenderSystem.assertOnRenderThread();
 
       for (int i = 0; i < COLOR_MASK.length; i++) {
@@ -515,7 +514,7 @@ public class GlStateManager {
       }
    }
 
-   public static void _colorMask(final int index, @ColorTargetState.WriteMask final int writeMask) {
+   public static void _colorMask(final int index, final @ColorTargetState.WriteMask int writeMask) {
       RenderSystem.assertOnRenderThread();
       if (writeMask != COLOR_MASK[index]) {
          COLOR_MASK[index] = writeMask;

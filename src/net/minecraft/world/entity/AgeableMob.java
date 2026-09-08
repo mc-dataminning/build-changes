@@ -43,9 +43,8 @@ public abstract class AgeableMob extends PathfinderMob {
       super(type, level);
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       if (groupData == null) {
@@ -63,8 +62,7 @@ public abstract class AgeableMob extends PathfinderMob {
       return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
    }
 
-   @Nullable
-   public abstract AgeableMob getBreedOffspring(final ServerLevel level, AgeableMob partner);
+   public abstract @Nullable AgeableMob getBreedOffspring(final ServerLevel level, AgeableMob partner);
 
    @Override
    protected InteractionResult mobInteract(final Player player, final InteractionHand hand) {
@@ -124,12 +122,13 @@ public abstract class AgeableMob extends PathfinderMob {
 
    public void ageUp(final int seconds, final boolean forced) {
       int age = this.getAge();
+      int oldAge = age;
       age += seconds * 20;
       if (age > 0) {
          age = 0;
       }
 
-      int delta = age - age;
+      int delta = age - oldAge;
       this.setAge(age);
       if (forced) {
          this.forcedAge += delta;
@@ -229,7 +228,7 @@ public abstract class AgeableMob extends PathfinderMob {
       if (ageLockParticleTimer > 0) {
          if (ageLockParticleTimer % 2 == 0 && level instanceof ServerLevel serverLevel) {
             float yParticleOffset = isAgeLocked ? 0.2F : 0.0F;
-            Vec3 spawnPosition = new Vec3(mob.getRandomX(1.0), mob.getRandomY(0.2) + (double)mob.getBbHeight() + (double)yParticleOffset, mob.getRandomZ(1.0));
+            Vec3 spawnPosition = new Vec3(mob.getRandomX(1.0), mob.getRandomY(0.2) + mob.getBbHeight() + yParticleOffset, mob.getRandomZ(1.0));
             serverLevel.sendParticles(
                isAgeLocked ? ParticleTypes.PAUSE_MOB_GROWTH : ParticleTypes.RESET_MOB_GROWTH,
                spawnPosition.x,
@@ -272,7 +271,7 @@ public abstract class AgeableMob extends PathfinderMob {
    }
 
    public static int getSpeedUpSecondsWhenFeeding(final int ticksUntilAdult) {
-      return (int)((float)(ticksUntilAdult / 20) * 0.1F);
+      return (int)(ticksUntilAdult / 20 * 0.1F);
    }
 
    @VisibleForTesting

@@ -36,20 +36,20 @@ public record BlocksAttacks(
 ) {
    public static final Codec<BlocksAttacks> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ExtraCodecs.NON_NEGATIVE_FLOAT.optionalFieldOf("block_delay_seconds", 0.0F).forGetter(BlocksAttacks::blockDelaySeconds),
-               ExtraCodecs.NON_NEGATIVE_FLOAT.optionalFieldOf("disable_cooldown_scale", 1.0F).forGetter(BlocksAttacks::disableCooldownScale),
-               BlocksAttacks.DamageReduction.CODEC
-                  .listOf()
-                  .optionalFieldOf("damage_reductions", List.of(new BlocksAttacks.DamageReduction(90.0F, Optional.empty(), 0.0F, 1.0F)))
-                  .forGetter(BlocksAttacks::damageReductions),
-               BlocksAttacks.ItemDamageFunction.CODEC
-                  .optionalFieldOf("item_damage", BlocksAttacks.ItemDamageFunction.DEFAULT)
-                  .forGetter(BlocksAttacks::itemDamage),
-               RegistryCodecs.holderSet(Registries.DAMAGE_TYPE).optionalFieldOf("bypassed_by").forGetter(BlocksAttacks::bypassedBy),
-               SoundEvent.CODEC.optionalFieldOf("block_sound").forGetter(BlocksAttacks::blockSound),
-               SoundEvent.CODEC.optionalFieldOf("disabled_sound").forGetter(BlocksAttacks::disableSound)
-            )
-            .apply(i, BlocksAttacks::new)
+            ExtraCodecs.NON_NEGATIVE_FLOAT.optionalFieldOf("block_delay_seconds", 0.0F).forGetter(BlocksAttacks::blockDelaySeconds),
+            ExtraCodecs.NON_NEGATIVE_FLOAT.optionalFieldOf("disable_cooldown_scale", 1.0F).forGetter(BlocksAttacks::disableCooldownScale),
+            BlocksAttacks.DamageReduction.CODEC
+               .listOf()
+               .optionalFieldOf("damage_reductions", List.of(new BlocksAttacks.DamageReduction(90.0F, Optional.empty(), 0.0F, 1.0F)))
+               .forGetter(BlocksAttacks::damageReductions),
+            BlocksAttacks.ItemDamageFunction.CODEC
+               .optionalFieldOf("item_damage", BlocksAttacks.ItemDamageFunction.DEFAULT)
+               .forGetter(BlocksAttacks::itemDamage),
+            RegistryCodecs.holderSet(Registries.DAMAGE_TYPE).optionalFieldOf("bypassed_by").forGetter(BlocksAttacks::bypassedBy),
+            SoundEvent.CODEC.optionalFieldOf("block_sound").forGetter(BlocksAttacks::blockSound),
+            SoundEvent.CODEC.optionalFieldOf("disabled_sound").forGetter(BlocksAttacks::disableSound)
+         )
+         .apply(i, BlocksAttacks::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, BlocksAttacks> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.FLOAT,
@@ -73,15 +73,8 @@ public record BlocksAttacks(
       this.blockSound
          .ifPresent(
             sound -> level.playSound(
-                  null,
-                  user.getX(),
-                  user.getY(),
-                  user.getZ(),
-                  (Holder<SoundEvent>)sound,
-                  user.getSoundSource(),
-                  1.0F,
-                  0.8F + level.getRandom().nextFloat() * 0.4F
-               )
+               null, user.getX(), user.getY(), user.getZ(), (Holder<SoundEvent>)sound, user.getSoundSource(), 1.0F, 0.8F + level.getRandom().nextFloat() * 0.4F
+            )
          );
    }
 
@@ -96,15 +89,15 @@ public record BlocksAttacks(
          this.disableSound
             .ifPresent(
                sound -> level.playSound(
-                     null,
-                     user.getX(),
-                     user.getY(),
-                     user.getZ(),
-                     (Holder<SoundEvent>)sound,
-                     user.getSoundSource(),
-                     0.8F,
-                     0.8F + level.getRandom().nextFloat() * 0.4F
-                  )
+                  null,
+                  user.getX(),
+                  user.getY(),
+                  user.getZ(),
+                  (Holder<SoundEvent>)sound,
+                  user.getSoundSource(),
+                  0.8F,
+                  0.8F + level.getRandom().nextFloat() * 0.4F
+               )
             );
       }
    }
@@ -141,17 +134,15 @@ public record BlocksAttacks(
       return Mth.clamp(blockedDamage, 0.0F, dealtDamage);
    }
 
-   public static record DamageReduction(float horizontalBlockingAngle, Optional<HolderSet<DamageType>> type, float base, float factor) {
+   public record DamageReduction(float horizontalBlockingAngle, Optional<HolderSet<DamageType>> type, float base, float factor) {
       public static final Codec<BlocksAttacks.DamageReduction> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  ExtraCodecs.POSITIVE_FLOAT
-                     .optionalFieldOf("horizontal_blocking_angle", 90.0F)
-                     .forGetter(BlocksAttacks.DamageReduction::horizontalBlockingAngle),
-                  RegistryCodecs.holderSet(Registries.DAMAGE_TYPE).optionalFieldOf("type").forGetter(BlocksAttacks.DamageReduction::type),
-                  Codec.FLOAT.fieldOf("base").forGetter(BlocksAttacks.DamageReduction::base),
-                  Codec.FLOAT.fieldOf("factor").forGetter(BlocksAttacks.DamageReduction::factor)
-               )
-               .apply(i, BlocksAttacks.DamageReduction::new)
+               ExtraCodecs.POSITIVE_FLOAT.optionalFieldOf("horizontal_blocking_angle", 90.0F).forGetter(BlocksAttacks.DamageReduction::horizontalBlockingAngle),
+               RegistryCodecs.holderSet(Registries.DAMAGE_TYPE).optionalFieldOf("type").forGetter(BlocksAttacks.DamageReduction::type),
+               Codec.FLOAT.fieldOf("base").forGetter(BlocksAttacks.DamageReduction::base),
+               Codec.FLOAT.fieldOf("factor").forGetter(BlocksAttacks.DamageReduction::factor)
+            )
+            .apply(i, BlocksAttacks.DamageReduction::new)
       );
       public static final StreamCodec<RegistryFriendlyByteBuf, BlocksAttacks.DamageReduction> STREAM_CODEC = StreamCodec.composite(
          ByteBufCodecs.FLOAT,
@@ -166,7 +157,7 @@ public record BlocksAttacks(
       );
 
       public float resolve(final DamageSource source, final float dealtDamage, final double angle) {
-         if (angle > (double)((float) (Math.PI / 180.0) * this.horizontalBlockingAngle)) {
+         if (angle > (float) (Math.PI / 180.0) * this.horizontalBlockingAngle) {
             return 0.0F;
          } else {
             return this.type.isPresent() && !this.type.get().contains(source.typeHolder())
@@ -176,14 +167,14 @@ public record BlocksAttacks(
       }
    }
 
-   public static record ItemDamageFunction(float threshold, float base, float factor) {
+   public record ItemDamageFunction(float threshold, float base, float factor) {
       public static final Codec<BlocksAttacks.ItemDamageFunction> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  ExtraCodecs.NON_NEGATIVE_FLOAT.fieldOf("threshold").forGetter(BlocksAttacks.ItemDamageFunction::threshold),
-                  Codec.FLOAT.fieldOf("base").forGetter(BlocksAttacks.ItemDamageFunction::base),
-                  Codec.FLOAT.fieldOf("factor").forGetter(BlocksAttacks.ItemDamageFunction::factor)
-               )
-               .apply(i, BlocksAttacks.ItemDamageFunction::new)
+               ExtraCodecs.NON_NEGATIVE_FLOAT.fieldOf("threshold").forGetter(BlocksAttacks.ItemDamageFunction::threshold),
+               Codec.FLOAT.fieldOf("base").forGetter(BlocksAttacks.ItemDamageFunction::base),
+               Codec.FLOAT.fieldOf("factor").forGetter(BlocksAttacks.ItemDamageFunction::factor)
+            )
+            .apply(i, BlocksAttacks.ItemDamageFunction::new)
       );
       public static final StreamCodec<ByteBuf, BlocksAttacks.ItemDamageFunction> STREAM_CODEC = StreamCodec.composite(
          ByteBufCodecs.FLOAT,

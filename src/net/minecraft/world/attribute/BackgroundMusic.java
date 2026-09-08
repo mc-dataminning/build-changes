@@ -13,11 +13,11 @@ public record BackgroundMusic(Optional<Music> defaultMusic, Optional<Music> crea
    public static final BackgroundMusic OVERWORLD = new BackgroundMusic(Optional.of(Musics.GAME), Optional.of(Musics.CREATIVE), Optional.empty());
    public static final Codec<BackgroundMusic> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Music.CODEC.optionalFieldOf("default").forGetter(BackgroundMusic::defaultMusic),
-               Music.CODEC.optionalFieldOf("creative").forGetter(BackgroundMusic::creativeMusic),
-               Music.CODEC.optionalFieldOf("underwater").forGetter(BackgroundMusic::underwaterMusic)
-            )
-            .apply(i, BackgroundMusic::new)
+            Music.CODEC.optionalFieldOf("default").forGetter(BackgroundMusic::defaultMusic),
+            Music.CODEC.optionalFieldOf("creative").forGetter(BackgroundMusic::creativeMusic),
+            Music.CODEC.optionalFieldOf("underwater").forGetter(BackgroundMusic::underwaterMusic)
+         )
+         .apply(i, BackgroundMusic::new)
    );
 
    public BackgroundMusic(final Music music) {

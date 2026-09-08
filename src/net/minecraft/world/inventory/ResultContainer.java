@@ -10,8 +10,7 @@ import org.jspecify.annotations.Nullable;
 
 public class ResultContainer implements Container, RecipeCraftingHolder {
    private final NonNullList<ItemStack> itemStacks = NonNullList.withSize(1, ItemStack.EMPTY);
-   @Nullable
-   private RecipeHolder<?> recipeUsed;
+   private @Nullable RecipeHolder<?> recipeUsed;
 
    @Override
    public int getContainerSize() {
@@ -64,13 +63,12 @@ public class ResultContainer implements Container, RecipeCraftingHolder {
    }
 
    @Override
-   public void setRecipeUsed(@Nullable final RecipeHolder<?> recipeUsed) {
+   public void setRecipeUsed(final @Nullable RecipeHolder<?> recipeUsed) {
       this.recipeUsed = recipeUsed;
    }
 
-   @Nullable
    @Override
-   public RecipeHolder<?> getRecipeUsed() {
+   public @Nullable RecipeHolder<?> getRecipeUsed() {
       return this.recipeUsed;
    }
 }

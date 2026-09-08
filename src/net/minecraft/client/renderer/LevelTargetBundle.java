@@ -21,8 +21,7 @@ public class LevelTargetBundle implements PostChain.TargetBundle {
    public ResourceHandle<RenderTarget> accumulate = ResourceHandle.invalid();
    public ResourceHandle<RenderTarget> oitCloudDepth = ResourceHandle.invalid();
    public ResourceHandle<RenderTarget> oitTerrainWithWaterPatchDepth = ResourceHandle.invalid();
-   @Nullable
-   public ResourceHandle<RenderTarget> entityOutline;
+   public @Nullable ResourceHandle<RenderTarget> entityOutline;
 
    public LevelTargetBundle() {
       for (int i = 0; i < LevelRenderer.OIT_TRANSMITTANCE_TARGET_COUNT; i++) {
@@ -43,9 +42,8 @@ public class LevelTargetBundle implements PostChain.TargetBundle {
       }
    }
 
-   @Nullable
    @Override
-   public ResourceHandle<RenderTarget> get(final Identifier id) {
+   public @Nullable ResourceHandle<RenderTarget> get(final Identifier id) {
       if (id.equals(MAIN_TARGET_ID)) {
          return this.main;
       } else {

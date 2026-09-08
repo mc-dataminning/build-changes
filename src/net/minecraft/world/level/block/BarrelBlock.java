@@ -29,7 +29,7 @@ public class BarrelBlock extends BaseEntityBlock {
 
    public BarrelBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OPEN, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OPEN, false));
    }
 
    @Override
@@ -57,9 +57,8 @@ public class BarrelBlock extends BaseEntityBlock {
       }
    }
 
-   @Nullable
    @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
+   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
       return new BarrelBlockEntity(worldPosition, blockState);
    }
 

@@ -111,7 +111,7 @@ public class ThreadedLevelLightEngine extends LevelLightEngine implements AutoCl
    }
 
    @Override
-   public void queueSectionData(final LightLayer layer, final SectionPos pos, @Nullable final DataLayer data) {
+   public void queueSectionData(final LightLayer layer, final SectionPos pos, final @Nullable DataLayer data) {
       this.addTask(
          pos.x(),
          pos.z(),
@@ -214,11 +214,10 @@ public class ThreadedLevelLightEngine extends LevelLightEngine implements AutoCl
    }
 
    public CompletableFuture<?> waitForPendingTasks(final int chunkX, final int chunkZ) {
-      return CompletableFuture.runAsync(() -> {
-      }, r -> this.addTask(chunkX, chunkZ, ThreadedLevelLightEngine.TaskType.POST_UPDATE, r));
+      return CompletableFuture.runAsync(() -> {}, r -> this.addTask(chunkX, chunkZ, ThreadedLevelLightEngine.TaskType.POST_UPDATE, r));
    }
 
-   private static enum TaskType {
+   private enum TaskType {
       PRE_UPDATE,
       POST_UPDATE;
    }

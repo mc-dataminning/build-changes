@@ -23,15 +23,15 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 public class UpwardsBranchingTrunkPlacer extends TrunkPlacer {
    public static final MapCodec<UpwardsBranchingTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(
       i -> trunkPlacerParts(i)
-            .and(
-               i.group(
-                  IntProviders.POSITIVE_CODEC.fieldOf("extra_branch_steps").forGetter(p -> p.extraBranchSteps),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter(p -> p.placeBranchPerLogProbability),
-                  IntProviders.NON_NEGATIVE_CODEC.fieldOf("extra_branch_length").forGetter(c -> c.extraBranchLength),
-                  RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("can_grow_through").forGetter(t -> t.canGrowThrough)
-               )
+         .and(
+            i.group(
+               IntProviders.POSITIVE_CODEC.fieldOf("extra_branch_steps").forGetter(p -> p.extraBranchSteps),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter(p -> p.placeBranchPerLogProbability),
+               IntProviders.NON_NEGATIVE_CODEC.fieldOf("extra_branch_length").forGetter(c -> c.extraBranchLength),
+               RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("can_grow_through").forGetter(t -> t.canGrowThrough)
             )
-            .apply(i, UpwardsBranchingTrunkPlacer::new)
+         )
+         .apply(i, UpwardsBranchingTrunkPlacer::new)
    );
    private final IntProvider extraBranchSteps;
    private final float placeBranchPerLogProbability;
@@ -116,7 +116,7 @@ public class UpwardsBranchingTrunkPlacer extends TrunkPlacer {
             logZ += branchDir.getStepZ();
             heightAlongBranch = placementHeight;
             if (this.placeLog(level, trunkSetter, random, logPos.set(logX, placementHeight, logZ), tree)) {
-               heightAlongBranch = placementHeight + 1;
+               heightAlongBranch++;
             }
 
             attachments.add(new FoliagePlacer.FoliageAttachment(logPos.immutable(), 0, false));

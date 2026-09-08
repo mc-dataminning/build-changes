@@ -33,7 +33,7 @@ public class DustColorTransitionParticle extends DustParticleBase<DustColorTrans
    }
 
    private void lerpColors(final float partialTickTime) {
-      float a = ((float)this.age + partialTickTime) / ((float)this.lifetime + 1.0F);
+      float a = (this.age + partialTickTime) / (this.lifetime + 1.0F);
       Vector3f lerpedColor = new Vector3f(this.fromColor).lerp(this.toColor, a);
       this.rCol = lerpedColor.x();
       this.gCol = lerpedColor.y();

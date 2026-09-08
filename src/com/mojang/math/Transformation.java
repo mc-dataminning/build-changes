@@ -21,25 +21,21 @@ public final class Transformation {
    private final Matrix4fc matrix;
    public static final Codec<Transformation> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               ExtraCodecs.VECTOR3F.fieldOf("translation").forGetter(Transformation::translation),
-               ExtraCodecs.QUATERNIONF.fieldOf("left_rotation").forGetter(Transformation::leftRotation),
-               ExtraCodecs.VECTOR3F.fieldOf("scale").forGetter(Transformation::scale),
-               ExtraCodecs.QUATERNIONF.fieldOf("right_rotation").forGetter(Transformation::rightRotation)
-            )
-            .apply(i, Transformation::new)
+            ExtraCodecs.VECTOR3F.fieldOf("translation").forGetter(Transformation::translation),
+            ExtraCodecs.QUATERNIONF.fieldOf("left_rotation").forGetter(Transformation::leftRotation),
+            ExtraCodecs.VECTOR3F.fieldOf("scale").forGetter(Transformation::scale),
+            ExtraCodecs.QUATERNIONF.fieldOf("right_rotation").forGetter(Transformation::rightRotation)
+         )
+         .apply(i, Transformation::new)
    );
    public static final Codec<Transformation> EXTENDED_CODEC = Codec.withAlternative(
       CODEC, ExtraCodecs.MATRIX4F.xmap(Transformation::new, Transformation::getMatrix)
    );
    private boolean decomposed;
-   @Nullable
-   private Vector3fc translation;
-   @Nullable
-   private Quaternionfc leftRotation;
-   @Nullable
-   private Vector3fc scale;
-   @Nullable
-   private Quaternionfc rightRotation;
+   private @Nullable Vector3fc translation;
+   private @Nullable Quaternionfc leftRotation;
+   private @Nullable Vector3fc scale;
+   private @Nullable Quaternionfc rightRotation;
    public static final Transformation IDENTITY = Util.make(() -> {
       Transformation identity = new Transformation(new Matrix4f());
       identity.translation = ZERO_TRANSLATION;
@@ -55,10 +51,10 @@ public final class Transformation {
    }
 
    public Transformation(
-      @Nullable final Vector3fc translation,
-      @Nullable final Quaternionfc leftRotation,
-      @Nullable final Vector3fc scale,
-      @Nullable final Quaternionfc rightRotation
+      final @Nullable Vector3fc translation,
+      final @Nullable Quaternionfc leftRotation,
+      final @Nullable Vector3fc scale,
+      final @Nullable Quaternionfc rightRotation
    ) {
       this.matrix = compose(translation, leftRotation, scale, rightRotation);
       this.translation = Objects.requireNonNullElse(translation, ZERO_TRANSLATION);
@@ -74,14 +70,13 @@ public final class Transformation {
       return new Transformation(matrix);
    }
 
-   @Nullable
-   public Transformation inverse() {
+   public @Nullable Transformation inverse() {
       if (this == IDENTITY) {
          return this;
-      } else {
-         Matrix4f matrix = this.getMatrixCopy().invertAffine();
-         return matrix.isFinite() ? new Transformation(matrix) : null;
       }
+
+      Matrix4f matrix = this.getMatrixCopy().invertAffine();
+      return matrix.isFinite() ? new Transformation(matrix) : null;
    }
 
    private void ensureDecomposed() {
@@ -100,10 +95,10 @@ public final class Transformation {
    }
 
    private static Matrix4f compose(
-      @Nullable final Vector3fc translation,
-      @Nullable final Quaternionfc leftRotation,
-      @Nullable final Vector3fc scale,
-      @Nullable final Quaternionfc rightRotation
+      final @Nullable Vector3fc translation,
+      final @Nullable Quaternionfc leftRotation,
+      final @Nullable Vector3fc scale,
+      final @Nullable Quaternionfc rightRotation
    ) {
       Matrix4f result = new Matrix4f();
       if (translation != null) {

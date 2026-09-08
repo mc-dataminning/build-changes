@@ -3,7 +3,6 @@ package net.minecraft.world.level.storage;
 import com.google.common.collect.AbstractIterator;
 import com.google.common.collect.Streams;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.DataResult.Error;
@@ -50,34 +49,25 @@ public class TagValueInput implements ValueInput {
       Tag tag = this.input.get(name);
       if (tag == null) {
          return Optional.empty();
-      } else {
-         Object var10000;
-         Objects.requireNonNull(var10000);
-         Object var4 = var10000;
-
-         codec.parse(this.context.ops(), tag);
-         return switch (var4) {
-            case Success success -> Optional.of(success.value());
-            case Error error -> {
-               this.problemReporter.report(new TagValueInput.DecodeFromFieldFailedProblem(name, tag, error));
-               yield error.partialValue();
-            }
-            default -> throw new MatchException(null, null);
-         };
       }
+
+      return switch (codec.parse(this.context.ops(), tag)) {
+         case Success<T> success -> Optional.of(success.value());
+         case Error<T> error -> {
+            this.problemReporter.report(new TagValueInput.DecodeFromFieldFailedProblem(name, tag, error));
+            yield error.partialValue();
+         }
+         default -> throw new MatchException(null, null);
+      };
    }
 
    @Override
    public <T> Optional<T> read(final MapCodec<T> codec) {
       DynamicOps<Tag> ops = this.context.ops();
-      Object var10000;
-      Objects.requireNonNull(var10000);
-      Object var3 = var10000;
 
-      ops.getMap(this.input).flatMap(map -> codec.decode(ops, map));
-      return switch (var3) {
-         case Success success -> Optional.of(success.value());
-         case Error error -> {
+      return switch (ops.getMap(this.input).flatMap(map -> codec.decode(ops, map))) {
+         case Success<T> success -> Optional.of(success.value());
+         case Error<T> error -> {
             this.problemReporter.report(new TagValueInput.DecodeFromMapFailedProblem(error));
             yield error.partialValue();
          }
@@ -85,8 +75,7 @@ public class TagValueInput implements ValueInput {
       };
    }
 
-   @Nullable
-   private <T extends Tag> T getOptionalTypedTag(final String name, final TagType<T> expectedType) {
+   private <T extends Tag> @Nullable T getOptionalTypedTag(final String name, final TagType<T> expectedType) {
       Tag tag = this.input.get(name);
       if (tag == null) {
          return null;
@@ -101,13 +90,12 @@ public class TagValueInput implements ValueInput {
       }
    }
 
-   @Nullable
-   private NumericTag getNumericTag(final String name) {
+   private @Nullable NumericTag getNumericTag(final String name) {
       Tag tag = this.input.get(name);
       if (tag == null) {
          return null;
-      } else if (tag instanceof NumericTag) {
-         return (NumericTag)tag;
+      } else if (tag instanceof NumericTag numericTag) {
+         return numericTag;
       } else {
          this.problemReporter.report(new TagValueInput.UnexpectedNonNumberProblem(name, tag.getType()));
          return null;
@@ -228,23 +216,21 @@ public class TagValueInput implements ValueInput {
    }
 
    private ValueInput wrapChild(final String name, final CompoundTag compoundTag) {
-      return (ValueInput)(compoundTag.isEmpty()
+      return compoundTag.isEmpty()
          ? this.context.empty()
-         : new TagValueInput(this.problemReporter.forChild(new ProblemReporter.FieldPathElement(name)), this.context, compoundTag));
+         : new TagValueInput(this.problemReporter.forChild(new ProblemReporter.FieldPathElement(name)), this.context, compoundTag);
    }
 
    private static ValueInput wrapChild(final ProblemReporter problemReporter, final ValueInputContextHelper context, final CompoundTag compoundTag) {
-      return (ValueInput)(compoundTag.isEmpty() ? context.empty() : new TagValueInput(problemReporter, context, compoundTag));
+      return compoundTag.isEmpty() ? context.empty() : new TagValueInput(problemReporter, context, compoundTag);
    }
 
    private ValueInput.ValueInputList wrapList(final String name, final ValueInputContextHelper context, final ListTag list) {
-      return (ValueInput.ValueInputList)(list.isEmpty() ? context.emptyList() : new TagValueInput.ListWrapper(this.problemReporter, name, context, list));
+      return list.isEmpty() ? context.emptyList() : new TagValueInput.ListWrapper(this.problemReporter, name, context, list);
    }
 
    private <T> ValueInput.TypedInputList<T> wrapTypedList(final String name, final ListTag list, final Codec<T> codec) {
-      return (ValueInput.TypedInputList<T>)(list.isEmpty()
-         ? this.context.emptyTypedList()
-         : new TagValueInput.TypedListWrapper<>(this.problemReporter, name, this.context, codec, list));
+      return list.isEmpty() ? this.context.emptyTypedList() : new TagValueInput.TypedListWrapper<>(this.problemReporter, name, this.context, codec, list);
    }
 
    private static class CompoundListWrapper implements ValueInput.ValueInputList {
@@ -276,12 +262,7 @@ public class TagValueInput implements ValueInput {
       public Iterator<ValueInput> iterator() {
          final ListIterator<CompoundTag> iterator = this.list.listIterator();
          return new AbstractIterator<ValueInput>() {
-            {
-               Objects.requireNonNull(CompoundListWrapper.this);
-            }
-
-            @Nullable
-            protected ValueInput computeNext() {
+            protected @Nullable ValueInput computeNext() {
                if (iterator.hasNext()) {
                   int index = iterator.nextIndex();
                   CompoundTag value = iterator.next();
@@ -294,21 +275,21 @@ public class TagValueInput implements ValueInput {
       }
    }
 
-   public static record DecodeFromFieldFailedProblem(String name, Tag tag, Error<?> error) implements ProblemReporter.Problem {
+   public record DecodeFromFieldFailedProblem(String name, Tag tag, Error<?> error) implements ProblemReporter.Problem {
       @Override
       public String description() {
          return "Failed to decode value '" + this.tag + "' from field '" + this.name + "': " + this.error.message();
       }
    }
 
-   public static record DecodeFromListFailedProblem(String name, int index, Tag tag, Error<?> error) implements ProblemReporter.Problem {
+   public record DecodeFromListFailedProblem(String name, int index, Tag tag, Error<?> error) implements ProblemReporter.Problem {
       @Override
       public String description() {
          return "Failed to decode value '" + this.tag + "' from field '" + this.name + "' at index " + this.index + "': " + this.error.message();
       }
    }
 
-   public static record DecodeFromMapFailedProblem(Error<?> error) implements ProblemReporter.Problem {
+   public record DecodeFromMapFailedProblem(Error<?> error) implements ProblemReporter.Problem {
       @Override
       public String description() {
          return "Failed to decode from map: " + this.error.message();
@@ -359,12 +340,7 @@ public class TagValueInput implements ValueInput {
          return new AbstractIterator<ValueInput>() {
             private int index;
 
-            {
-               Objects.requireNonNull(ListWrapper.this);
-            }
-
-            @Nullable
-            protected ValueInput computeNext() {
+            protected @Nullable ValueInput computeNext() {
                while (iterator.hasNext()) {
                   Tag value = iterator.next();
                   int currentIndex = this.index++;
@@ -410,14 +386,9 @@ public class TagValueInput implements ValueInput {
       @Override
       public Stream<T> stream() {
          return Streams.mapWithIndex(this.list.stream(), (value, index) -> {
-            Object var10000;
-            Objects.requireNonNull(var10000);
-            DataResult selector0$temp = (DataResult)var10000;
-
-            this.codec.parse(this.context.ops(), value);
-            return switch (selector0$temp) {
-               case Success success -> success.value();
-               case Error error -> {
+            return switch (this.codec.parse(this.context.ops(), value)) {
+               case Success<T> success -> success.value();
+               case Error<T> error -> {
                   this.reportIndexUnwrapProblem((int)index, value, error);
                   yield error.partialValue().orElse(null);
                }
@@ -430,22 +401,14 @@ public class TagValueInput implements ValueInput {
       public Iterator<T> iterator() {
          final ListIterator<Tag> iterator = this.list.listIterator();
          return new AbstractIterator<T>() {
-            {
-               Objects.requireNonNull(TypedListWrapper.this);
-            }
-
-            @Nullable
-            protected T computeNext() {
+            protected @Nullable T computeNext() {
                while (iterator.hasNext()) {
                   int index = iterator.nextIndex();
                   Tag value = iterator.next();
-                  DataResult var10000 = TypedListWrapper.this.codec.parse(TypedListWrapper.this.context.ops(), value);
-                  Objects.requireNonNull(var10000);
-                  Object var3 = var10000;
-                  switch (var3) {
-                     case Success success:
+                  switch (TypedListWrapper.this.codec.parse(TypedListWrapper.this.context.ops(), value)) {
+                     case Success<T> success:
                         return (T)success.value();
-                     case Error error:
+                     case Error<T> error:
                         TypedListWrapper.this.reportIndexUnwrapProblem(index, value, error);
                         if (!error.partialValue().isPresent()) {
                            break;
@@ -463,7 +426,7 @@ public class TagValueInput implements ValueInput {
       }
    }
 
-   public static record UnexpectedListElementTypeProblem(String name, int index, TagType<?> expected, TagType<?> actual) implements ProblemReporter.Problem {
+   public record UnexpectedListElementTypeProblem(String name, int index, TagType<?> expected, TagType<?> actual) implements ProblemReporter.Problem {
       @Override
       public String description() {
          return "Expected list '"
@@ -477,14 +440,14 @@ public class TagValueInput implements ValueInput {
       }
    }
 
-   public static record UnexpectedNonNumberProblem(String name, TagType<?> actual) implements ProblemReporter.Problem {
+   public record UnexpectedNonNumberProblem(String name, TagType<?> actual) implements ProblemReporter.Problem {
       @Override
       public String description() {
          return "Expected field '" + this.name + "' to contain number, but got " + this.actual.getName();
       }
    }
 
-   public static record UnexpectedTypeProblem(String name, TagType<?> expected, TagType<?> actual) implements ProblemReporter.Problem {
+   public record UnexpectedTypeProblem(String name, TagType<?> expected, TagType<?> actual) implements ProblemReporter.Problem {
       @Override
       public String description() {
          return "Expected field '" + this.name + "' to contain value of type " + this.expected.getName() + ", but got " + this.actual.getName();

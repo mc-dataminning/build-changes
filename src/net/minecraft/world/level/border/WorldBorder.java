@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
@@ -47,7 +46,7 @@ public class WorldBorder extends SavedData {
    }
 
    public boolean isWithinBounds(final BlockPos pos) {
-      return this.isWithinBounds((double)pos.getX(), (double)pos.getZ());
+      return this.isWithinBounds(pos.getX(), pos.getZ());
    }
 
    public boolean isWithinBounds(final Vec3 pos) {
@@ -55,8 +54,7 @@ public class WorldBorder extends SavedData {
    }
 
    public boolean isWithinBounds(final ChunkPos pos) {
-      return this.isWithinBounds((double)pos.getMinBlockX(), (double)pos.getMinBlockZ())
-         && this.isWithinBounds((double)pos.getMaxBlockX(), (double)pos.getMaxBlockZ());
+      return this.isWithinBounds(pos.getMinBlockX(), pos.getMinBlockZ()) && this.isWithinBounds(pos.getMaxBlockX(), pos.getMaxBlockZ());
    }
 
    public boolean isWithinBounds(final AABB aabb) {
@@ -76,7 +74,7 @@ public class WorldBorder extends SavedData {
    }
 
    public BlockPos clampToBounds(final BlockPos position) {
-      return this.clampToBounds((double)position.getX(), (double)position.getY(), (double)position.getZ());
+      return this.clampToBounds(position.getX(), position.getY(), position.getZ());
    }
 
    public BlockPos clampToBounds(final Vec3 position) {
@@ -195,9 +193,7 @@ public class WorldBorder extends SavedData {
    }
 
    public void lerpSizeBetween(final double from, final double to, final long ticks, final long gameTime) {
-      this.extent = (WorldBorder.BorderExtent)(from == to
-         ? new WorldBorder.StaticBorderExtent(to)
-         : new WorldBorder.MovingBorderExtent(from, to, ticks, gameTime));
+      this.extent = from == to ? new WorldBorder.StaticBorderExtent(to) : new WorldBorder.MovingBorderExtent(from, to, ticks, gameTime);
       this.setDirty();
 
       for (BorderChangeListener listener : this.getListeners()) {
@@ -342,11 +338,9 @@ public class WorldBorder extends SavedData {
       private double previousSize;
 
       private MovingBorderExtent(final double from, final double to, final long duration, final long gameTime) {
-         Objects.requireNonNull(WorldBorder.this);
-         super();
          this.from = from;
          this.to = to;
-         this.lerpDuration = (double)duration;
+         this.lerpDuration = duration;
          this.lerpProgress = duration;
          this.lerpBegin = gameTime;
          this.lerpEnd = this.lerpBegin + duration;
@@ -358,36 +352,36 @@ public class WorldBorder extends SavedData {
       @Override
       public double getMinX(final float deltaPartialTick) {
          return Mth.clamp(
-            WorldBorder.this.getCenterX() - Mth.lerp((double)deltaPartialTick, this.getPreviousSize(), this.getSize()) / 2.0,
-            (double)(-WorldBorder.this.absoluteMaxSize),
-            (double)WorldBorder.this.absoluteMaxSize
+            WorldBorder.this.getCenterX() - Mth.lerp(deltaPartialTick, this.getPreviousSize(), this.getSize()) / 2.0,
+            -WorldBorder.this.absoluteMaxSize,
+            WorldBorder.this.absoluteMaxSize
          );
       }
 
       @Override
       public double getMinZ(final float deltaPartialTick) {
          return Mth.clamp(
-            WorldBorder.this.getCenterZ() - Mth.lerp((double)deltaPartialTick, this.getPreviousSize(), this.getSize()) / 2.0,
-            (double)(-WorldBorder.this.absoluteMaxSize),
-            (double)WorldBorder.this.absoluteMaxSize
+            WorldBorder.this.getCenterZ() - Mth.lerp(deltaPartialTick, this.getPreviousSize(), this.getSize()) / 2.0,
+            -WorldBorder.this.absoluteMaxSize,
+            WorldBorder.this.absoluteMaxSize
          );
       }
 
       @Override
       public double getMaxX(final float deltaPartialTick) {
          return Mth.clamp(
-            WorldBorder.this.getCenterX() + Mth.lerp((double)deltaPartialTick, this.getPreviousSize(), this.getSize()) / 2.0,
-            (double)(-WorldBorder.this.absoluteMaxSize),
-            (double)WorldBorder.this.absoluteMaxSize
+            WorldBorder.this.getCenterX() + Mth.lerp(deltaPartialTick, this.getPreviousSize(), this.getSize()) / 2.0,
+            -WorldBorder.this.absoluteMaxSize,
+            WorldBorder.this.absoluteMaxSize
          );
       }
 
       @Override
       public double getMaxZ(final float deltaPartialTick) {
          return Mth.clamp(
-            WorldBorder.this.getCenterZ() + Mth.lerp((double)deltaPartialTick, this.getPreviousSize(), this.getSize()) / 2.0,
-            (double)(-WorldBorder.this.absoluteMaxSize),
-            (double)WorldBorder.this.absoluteMaxSize
+            WorldBorder.this.getCenterZ() + Mth.lerp(deltaPartialTick, this.getPreviousSize(), this.getSize()) / 2.0,
+            -WorldBorder.this.absoluteMaxSize,
+            WorldBorder.this.absoluteMaxSize
          );
       }
 
@@ -401,13 +395,13 @@ public class WorldBorder extends SavedData {
       }
 
       private double calculateSize() {
-         double progress = (this.lerpDuration - (double)this.lerpProgress) / this.lerpDuration;
+         double progress = (this.lerpDuration - this.lerpProgress) / this.lerpDuration;
          return progress < 1.0 ? Mth.lerp(progress, this.from, this.to) : this.to;
       }
 
       @Override
       public double getLerpSpeed() {
-         return Math.abs(this.from - this.to) / (double)(this.lerpEnd - this.lerpBegin);
+         return Math.abs(this.from - this.to) / (this.lerpEnd - this.lerpBegin);
       }
 
       @Override
@@ -439,7 +433,7 @@ public class WorldBorder extends SavedData {
          this.previousSize = this.size;
          this.size = this.calculateSize();
          WorldBorder.this.setDirty();
-         return (WorldBorder.BorderExtent)(this.lerpProgress <= 0L ? WorldBorder.this.new StaticBorderExtent(this.to) : this);
+         return this.lerpProgress <= 0L ? WorldBorder.this.new StaticBorderExtent(this.to) : this;
       }
 
       @Override
@@ -459,23 +453,23 @@ public class WorldBorder extends SavedData {
       }
    }
 
-   public static record Settings(
+   public record Settings(
       double centerX, double centerZ, double damagePerBlock, double safeZone, int warningBlocks, int warningTime, double size, long lerpTime, double lerpTarget
    ) {
       public static final WorldBorder.Settings DEFAULT = new WorldBorder.Settings(0.0, 0.0, 0.2, 5.0, 5, 300, 5.999997E7F, 0L, 0.0);
       public static final Codec<WorldBorder.Settings> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Codec.doubleRange(-2.9999984E7, 2.9999984E7).fieldOf("center_x").forGetter(WorldBorder.Settings::centerX),
-                  Codec.doubleRange(-2.9999984E7, 2.9999984E7).fieldOf("center_z").forGetter(WorldBorder.Settings::centerZ),
-                  Codec.DOUBLE.fieldOf("damage_per_block").forGetter(WorldBorder.Settings::damagePerBlock),
-                  Codec.DOUBLE.fieldOf("safe_zone").forGetter(WorldBorder.Settings::safeZone),
-                  Codec.INT.fieldOf("warning_blocks").forGetter(WorldBorder.Settings::warningBlocks),
-                  Codec.INT.fieldOf("warning_time").forGetter(WorldBorder.Settings::warningTime),
-                  Codec.DOUBLE.fieldOf("size").forGetter(WorldBorder.Settings::size),
-                  Codec.LONG.fieldOf("lerp_time").forGetter(WorldBorder.Settings::lerpTime),
-                  Codec.DOUBLE.fieldOf("lerp_target").forGetter(WorldBorder.Settings::lerpTarget)
-               )
-               .apply(i, WorldBorder.Settings::new)
+               Codec.doubleRange(-2.9999984E7, 2.9999984E7).fieldOf("center_x").forGetter(WorldBorder.Settings::centerX),
+               Codec.doubleRange(-2.9999984E7, 2.9999984E7).fieldOf("center_z").forGetter(WorldBorder.Settings::centerZ),
+               Codec.DOUBLE.fieldOf("damage_per_block").forGetter(WorldBorder.Settings::damagePerBlock),
+               Codec.DOUBLE.fieldOf("safe_zone").forGetter(WorldBorder.Settings::safeZone),
+               Codec.INT.fieldOf("warning_blocks").forGetter(WorldBorder.Settings::warningBlocks),
+               Codec.INT.fieldOf("warning_time").forGetter(WorldBorder.Settings::warningTime),
+               Codec.DOUBLE.fieldOf("size").forGetter(WorldBorder.Settings::size),
+               Codec.LONG.fieldOf("lerp_time").forGetter(WorldBorder.Settings::lerpTime),
+               Codec.DOUBLE.fieldOf("lerp_target").forGetter(WorldBorder.Settings::lerpTarget)
+            )
+            .apply(i, WorldBorder.Settings::new)
       );
 
       public Settings(final WorldBorder worldBorder) {
@@ -502,8 +496,6 @@ public class WorldBorder extends SavedData {
       private VoxelShape shape;
 
       public StaticBorderExtent(final double size) {
-         Objects.requireNonNull(WorldBorder.this);
-         super();
          this.size = size;
          this.updateBox();
       }
@@ -554,18 +546,10 @@ public class WorldBorder extends SavedData {
       }
 
       private void updateBox() {
-         this.minX = Mth.clamp(
-            WorldBorder.this.getCenterX() - this.size / 2.0, (double)(-WorldBorder.this.absoluteMaxSize), (double)WorldBorder.this.absoluteMaxSize
-         );
-         this.minZ = Mth.clamp(
-            WorldBorder.this.getCenterZ() - this.size / 2.0, (double)(-WorldBorder.this.absoluteMaxSize), (double)WorldBorder.this.absoluteMaxSize
-         );
-         this.maxX = Mth.clamp(
-            WorldBorder.this.getCenterX() + this.size / 2.0, (double)(-WorldBorder.this.absoluteMaxSize), (double)WorldBorder.this.absoluteMaxSize
-         );
-         this.maxZ = Mth.clamp(
-            WorldBorder.this.getCenterZ() + this.size / 2.0, (double)(-WorldBorder.this.absoluteMaxSize), (double)WorldBorder.this.absoluteMaxSize
-         );
+         this.minX = Mth.clamp(WorldBorder.this.getCenterX() - this.size / 2.0, -WorldBorder.this.absoluteMaxSize, WorldBorder.this.absoluteMaxSize);
+         this.minZ = Mth.clamp(WorldBorder.this.getCenterZ() - this.size / 2.0, -WorldBorder.this.absoluteMaxSize, WorldBorder.this.absoluteMaxSize);
+         this.maxX = Mth.clamp(WorldBorder.this.getCenterX() + this.size / 2.0, -WorldBorder.this.absoluteMaxSize, WorldBorder.this.absoluteMaxSize);
+         this.maxZ = Mth.clamp(WorldBorder.this.getCenterZ() + this.size / 2.0, -WorldBorder.this.absoluteMaxSize, WorldBorder.this.absoluteMaxSize);
          this.shape = Shapes.join(
             Shapes.INFINITY,
             Shapes.box(

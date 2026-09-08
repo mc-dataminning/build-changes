@@ -39,7 +39,7 @@ public class SweetBerryBushBlock extends VegetationBlock implements Bonemealable
 
    public SweetBerryBushBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(0)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
    }
 
    @Override
@@ -65,7 +65,7 @@ public class SweetBerryBushBlock extends VegetationBlock implements Bonemealable
    protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
       int age = state.getValue(AGE);
       if (age < 3 && random.nextInt(5) == 0 && level.getRawBrightness(pos.above(), 0) >= 9) {
-         BlockState newState = state.setValue(AGE, Integer.valueOf(age + 1));
+         BlockState newState = state.setValue(AGE, age + 1);
          level.setBlock(pos, newState, 2);
          level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(newState));
       }
@@ -86,8 +86,6 @@ public class SweetBerryBushBlock extends VegetationBlock implements Bonemealable
                   entity.hurtServer(serverLevel, level.damageSources().sweetBerryBush(), 1.0F);
                }
             }
-
-            return;
          }
       }
    }
@@ -104,9 +102,7 @@ public class SweetBerryBushBlock extends VegetationBlock implements Bonemealable
    ) {
       int age = state.getValue(AGE);
       boolean isMaxAge = age == 3;
-      return (InteractionResult)(!isMaxAge && itemStack.is(Items.BONE_MEAL)
-         ? InteractionResult.PASS
-         : super.useItemOn(itemStack, state, level, pos, player, hand, hitResult));
+      return !isMaxAge && itemStack.is(Items.BONE_MEAL) ? InteractionResult.PASS : super.useItemOn(itemStack, state, level, pos, player, hand, hitResult);
    }
 
    @Override
@@ -128,7 +124,7 @@ public class SweetBerryBushBlock extends VegetationBlock implements Bonemealable
             serverLevel.playSound(
                null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + serverLevel.getRandom().nextFloat() * 0.4F
             );
-            BlockState newState = state.setValue(AGE, Integer.valueOf(1));
+            BlockState newState = state.setValue(AGE, 1);
             serverLevel.setBlock(pos, newState, 2);
             serverLevel.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, newState));
          }
@@ -157,6 +153,6 @@ public class SweetBerryBushBlock extends VegetationBlock implements Bonemealable
    @Override
    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state, final BonemealSource source) {
       int newAge = Math.min(3, state.getValue(AGE) + 1);
-      level.setBlock(pos, state.setValue(AGE, Integer.valueOf(newAge)), 2);
+      level.setBlock(pos, state.setValue(AGE, newAge), 2);
    }
 }

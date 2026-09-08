@@ -26,8 +26,7 @@ public class RealmsLongRunningMcoTaskScreen extends RealmsScreen {
    private final Screen lastScreen;
    protected final LinearLayout layout = LinearLayout.vertical();
    private volatile Component title;
-   @Nullable
-   private LoadingDotsWidget loadingDotsWidget;
+   private @Nullable LoadingDotsWidget loadingDotsWidget;
 
    public RealmsLongRunningMcoTaskScreen(final Screen lastScreen, final LongRunningTask... tasks) {
       super(GameNarrator.NO_TITLE);
@@ -35,25 +34,25 @@ public class RealmsLongRunningMcoTaskScreen extends RealmsScreen {
       this.queuedTasks = List.of(tasks);
       if (this.queuedTasks.isEmpty()) {
          throw new IllegalArgumentException("No tasks added");
-      } else {
-         this.title = this.queuedTasks.get(0).getTitle();
-         Runnable runnable = () -> {
-            for (LongRunningTask task : tasks) {
-               this.setTitle(task.getTitle());
-               if (task.aborted()) {
-                  break;
-               }
-
-               task.run();
-               if (task.aborted()) {
-                  return;
-               }
-            }
-         };
-         Thread thread = new Thread(runnable, "Realms-long-running-task");
-         thread.setUncaughtExceptionHandler(new RealmsDefaultUncaughtExceptionHandler(LOGGER));
-         thread.start();
       }
+
+      this.title = this.queuedTasks.get(0).getTitle();
+      Runnable runnable = () -> {
+         for (LongRunningTask task : tasks) {
+            this.setTitle(task.getTitle());
+            if (task.aborted()) {
+               break;
+            }
+
+            task.run();
+            if (task.aborted()) {
+               return;
+            }
+         }
+      };
+      Thread thread = new Thread(runnable, "Realms-long-running-task");
+      thread.setUncaughtExceptionHandler(new RealmsDefaultUncaughtExceptionHandler(LOGGER));
+      thread.start();
    }
 
    @Override

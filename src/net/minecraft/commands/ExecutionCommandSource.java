@@ -24,7 +24,7 @@ public interface ExecutionCommandSource<T extends ExecutionCommandSource<T>> ext
 
    boolean isSilent();
 
-   default void handleError(final CommandSyntaxException e, final boolean forked, @Nullable final TraceCallbacks tracer) {
+   default void handleError(final CommandSyntaxException e, final boolean forked, final @Nullable TraceCallbacks tracer) {
       this.handleError(e.getType(), e.getRawMessage(), forked, tracer);
    }
 

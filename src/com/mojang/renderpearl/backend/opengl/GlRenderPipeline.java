@@ -18,7 +18,7 @@ public final class GlRenderPipeline implements BackendRenderPipeline {
    private final boolean writeDepth;
    private final float depthBiasConstant;
    private final float depthBiasScaleFactor;
-   private final int[] writeMasks;
+   private final @ColorTargetState.WriteMask int[] writeMasks;
    private final boolean[] blendEnabled;
    private final int srcRgb;
    private final int dstRgb;

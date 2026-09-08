@@ -14,14 +14,12 @@ public class InvalidLockComponentFix extends DataComponentRemainderFix {
       super(outputSchema, "InvalidLockComponentPredicateFix", "minecraft:lock");
    }
 
-   @Nullable
    @Override
-   protected <T> Dynamic<T> fixComponent(final Dynamic<T> input) {
+   protected <T> @Nullable Dynamic<T> fixComponent(final Dynamic<T> input) {
       return fixLock(input);
    }
 
-   @Nullable
-   public static <T> Dynamic<T> fixLock(final Dynamic<T> input) {
+   public static <T> @Nullable Dynamic<T> fixLock(final Dynamic<T> input) {
       return isBrokenLock(input) ? null : input;
    }
 

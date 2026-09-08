@@ -17,9 +17,7 @@ public class MyceliumBlock extends SpreadingSnowyBlock {
    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
       super.animateTick(state, level, pos, random);
       if (random.nextInt(10) == 0) {
-         level.addParticle(
-            ParticleTypes.MYCELIUM, (double)pos.getX() + random.nextDouble(), (double)pos.getY() + 1.1, (double)pos.getZ() + random.nextDouble(), 0.0, 0.0, 0.0
-         );
+         level.addParticle(ParticleTypes.MYCELIUM, pos.getX() + random.nextDouble(), pos.getY() + 1.1, pos.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
       }
    }
 }

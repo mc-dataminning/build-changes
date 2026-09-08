@@ -16,15 +16,15 @@ public class PotentialCalculator {
    public double getPotentialEnergyChange(final BlockPos pos, final double charge) {
       if (charge == 0.0) {
          return 0.0;
-      } else {
-         double potentialChange = 0.0;
-
-         for (PotentialCalculator.PointCharge point : this.charges) {
-            potentialChange += point.getPotentialChange(pos);
-         }
-
-         return potentialChange * charge;
       }
+
+      double potentialChange = 0.0;
+
+      for (PotentialCalculator.PointCharge point : this.charges) {
+         potentialChange += point.getPotentialChange(pos);
+      }
+
+      return potentialChange * charge;
    }
 
    private static class PointCharge {

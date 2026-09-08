@@ -28,11 +28,11 @@ public record ContainerComponentManipulator<T extends ContainerComponent<T>>(Dat
          UnaryOperator<ItemStack> nonEmptyModifier = currentItemStack -> {
             if (currentItemStack.isEmpty()) {
                return currentItemStack;
-            } else {
-               ItemStack newItemStack = modifier.apply(currentItemStack);
-               newItemStack.limitSize(newItemStack.getMaxStackSize());
-               return newItemStack;
             }
+
+            ItemStack newItemStack = modifier.apply(currentItemStack);
+            newItemStack.limitSize(newItemStack.getMaxStackSize());
+            return newItemStack;
          };
          this.setContents(itemStack, contents.itemCopies().map(nonEmptyModifier));
       }
@@ -42,7 +42,7 @@ public record ContainerComponentManipulator<T extends ContainerComponent<T>>(Dat
       return new ContainerComponentManipulator.ComponentSlotCollection<>(itemStack, this);
    }
 
-   private static record ComponentSlotCollection<T extends ContainerComponent<T>>(ItemStack itemStack, ContainerComponentManipulator<T> component)
+   private record ComponentSlotCollection<T extends ContainerComponent<T>>(ItemStack itemStack, ContainerComponentManipulator<T> component)
       implements SlotCollection {
       @Override
       public Stream<ItemStack> itemCopies() {

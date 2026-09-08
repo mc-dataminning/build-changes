@@ -5,7 +5,6 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.longs.Long2FloatLinkedOpenHashMap;
-import java.util.Objects;
 import java.util.Optional;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -40,20 +39,20 @@ import org.jspecify.annotations.Nullable;
 public final class Biome {
    public static final Codec<Biome> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Biome.ClimateSettings.CODEC.forGetter(b -> b.climateSettings),
-               EnvironmentAttributeMap.CODEC_ONLY_POSITIONAL.optionalFieldOf("attributes", EnvironmentAttributeMap.EMPTY).forGetter(b -> b.attributes),
-               BiomeSpecialEffects.CODEC.fieldOf("effects").forGetter(b -> b.specialEffects),
-               BiomeGenerationSettings.CODEC.forGetter(b -> b.generationSettings)
-            )
-            .apply(i, Biome::new)
+            Biome.ClimateSettings.CODEC.forGetter(b -> b.climateSettings),
+            EnvironmentAttributeMap.CODEC_ONLY_POSITIONAL.optionalFieldOf("attributes", EnvironmentAttributeMap.EMPTY).forGetter(b -> b.attributes),
+            BiomeSpecialEffects.CODEC.fieldOf("effects").forGetter(b -> b.specialEffects),
+            BiomeGenerationSettings.CODEC.forGetter(b -> b.generationSettings)
+         )
+         .apply(i, Biome::new)
    );
    public static final Codec<Biome> NETWORK_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Biome.ClimateSettings.CODEC.forGetter(b -> b.climateSettings),
-               EnvironmentAttributeMap.NETWORK_CODEC.optionalFieldOf("attributes", EnvironmentAttributeMap.EMPTY).forGetter(b -> b.attributes),
-               BiomeSpecialEffects.CODEC.fieldOf("effects").forGetter(b -> b.specialEffects)
-            )
-            .apply(i, (climateSettings, attributes, specialEffects) -> new Biome(climateSettings, attributes, specialEffects, BiomeGenerationSettings.EMPTY))
+            Biome.ClimateSettings.CODEC.forGetter(b -> b.climateSettings),
+            EnvironmentAttributeMap.NETWORK_CODEC.optionalFieldOf("attributes", EnvironmentAttributeMap.EMPTY).forGetter(b -> b.attributes),
+            BiomeSpecialEffects.CODEC.fieldOf("effects").forGetter(b -> b.specialEffects)
+         )
+         .apply(i, (climateSettings, attributes, specialEffects) -> new Biome(climateSettings, attributes, specialEffects, BiomeGenerationSettings.EMPTY))
    );
    public static final Codec<Holder<Biome>> CODEC = RegistryCodecs.holder(Registries.BIOME, DIRECT_CODEC);
    public static final Codec<HolderSet<Biome>> LIST_CODEC = RegistryCodecs.holderSet(Registries.BIOME, DIRECT_CODEC);
@@ -69,9 +68,7 @@ public final class Biome {
             .build();
       }
    );
-   @Deprecated(
-      forRemoval = true
-   )
+   @Deprecated(forRemoval = true)
    public static final Noise BIOME_INFO_NOISE = new SimplexNoise(new WorldgenRandom(new LegacyRandomSource(2345L)), true);
    private static final int TEMPERATURE_CACHE_SIZE = 1024;
    private final Biome.ClimateSettings climateSettings;
@@ -80,10 +77,6 @@ public final class Biome {
    private final BiomeSpecialEffects specialEffects;
    private final ThreadLocal<Long2FloatLinkedOpenHashMap> temperatureCache = ThreadLocal.withInitial(() -> {
       Long2FloatLinkedOpenHashMap map = new Long2FloatLinkedOpenHashMap(1024, 0.25F) {
-         {
-            Objects.requireNonNull(Biome.this);
-         }
-
          protected void rehash(final int newN) {
          }
       };
@@ -119,8 +112,8 @@ public final class Biome {
       float adjustedTemperature = this.climateSettings.temperatureModifier.modifyTemperature(pos, this.getBaseTemperature());
       int snowLevel = seaLevel + 17;
       if (pos.getY() > snowLevel) {
-         float v = TEMPERATURE_NOISE.get((double)((float)pos.getX() / 8.0F), (double)((float)pos.getZ() / 8.0F)) * 8.0F;
-         return adjustedTemperature - (v + (float)pos.getY() - (float)snowLevel) * 0.05F / 40.0F;
+         float v = TEMPERATURE_NOISE.get(pos.getX() / 8.0F, pos.getZ() / 8.0F) * 8.0F;
+         return adjustedTemperature - (v + pos.getY() - snowLevel) * 0.05F / 40.0F;
       } else {
          return adjustedTemperature;
       }
@@ -133,15 +126,15 @@ public final class Biome {
       float cached = cache.get(key);
       if (!Float.isNaN(cached)) {
          return cached;
-      } else {
-         float temp = this.getHeightAdjustedTemperature(pos, seaLevel);
-         if (cache.size() == 1024) {
-            cache.removeFirstFloat();
-         }
-
-         cache.put(key, temp);
-         return temp;
       }
+
+      float temp = this.getHeightAdjustedTemperature(pos, seaLevel);
+      if (cache.size() == 1024) {
+         cache.removeFirstFloat();
+      }
+
+      cache.put(key, temp);
+      return temp;
    }
 
    public boolean shouldFreeze(final LevelReader level, final BlockPos pos) {
@@ -151,27 +144,27 @@ public final class Biome {
    public boolean shouldFreeze(final LevelReader level, final BlockPos pos, final boolean checkNeighbors) {
       if (this.warmEnoughToRain(pos, level.getSeaLevel())) {
          return false;
-      } else {
-         if (level.isInsideBuildHeight(pos.getY()) && level.getBrightness(LightLayer.BLOCK, pos) < 10) {
-            BlockState blockState = level.getBlockState(pos);
-            FluidState fluidState = level.getFluidState(pos);
-            if (fluidState.is(Fluids.WATER) && blockState.getBlock() instanceof LiquidBlock) {
-               if (!checkNeighbors) {
-                  return true;
-               }
+      }
 
-               boolean surroundedByWater = level.isWaterAt(pos.west())
-                  && level.isWaterAt(pos.east())
-                  && level.isWaterAt(pos.north())
-                  && level.isWaterAt(pos.south());
-               if (!surroundedByWater) {
-                  return true;
-               }
+      if (level.isInsideBuildHeight(pos.getY()) && level.getBrightness(LightLayer.BLOCK, pos) < 10) {
+         BlockState blockState = level.getBlockState(pos);
+         FluidState fluidState = level.getFluidState(pos);
+         if (fluidState.is(Fluids.WATER) && blockState.getBlock() instanceof LiquidBlock) {
+            if (!checkNeighbors) {
+               return true;
+            }
+
+            boolean surroundedByWater = level.isWaterAt(pos.west())
+               && level.isWaterAt(pos.east())
+               && level.isWaterAt(pos.north())
+               && level.isWaterAt(pos.south());
+            if (!surroundedByWater) {
+               return true;
             }
          }
-
-         return false;
       }
+
+      return false;
    }
 
    public boolean coldEnoughToSnow(final BlockPos pos, final int seaLevel) {
@@ -189,16 +182,16 @@ public final class Biome {
    public boolean shouldSnow(final LevelReader level, final BlockPos pos) {
       if (this.getPrecipitationAt(pos, level.getSeaLevel()) != Biome.Precipitation.SNOW) {
          return false;
-      } else {
-         if (level.isInsideBuildHeight(pos.getY()) && level.getBrightness(LightLayer.BLOCK, pos) < 10) {
-            BlockState state = level.getBlockState(pos);
-            if ((state.isAir() || state.is(Blocks.SNOW)) && Blocks.SNOW.defaultBlockState().canSurvive(level, pos)) {
-               return true;
-            }
-         }
-
-         return false;
       }
+
+      if (level.isInsideBuildHeight(pos.getY()) && level.getBrightness(LightLayer.BLOCK, pos) < 10) {
+         BlockState state = level.getBlockState(pos);
+         if ((state.isAir() || state.is(Blocks.SNOW)) && Blocks.SNOW.defaultBlockState().canSurvive(level, pos)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    public BiomeGenerationSettings getGenerationSettings() {
@@ -216,8 +209,8 @@ public final class Biome {
    }
 
    private int getGrassColorFromTexture() {
-      double temp = (double)Mth.clamp(this.climateSettings.temperature, 0.0F, 1.0F);
-      double rain = (double)Mth.clamp(this.climateSettings.downfall, 0.0F, 1.0F);
+      double temp = Mth.clamp(this.climateSettings.temperature, 0.0F, 1.0F);
+      double rain = Mth.clamp(this.climateSettings.downfall, 0.0F, 1.0F);
       return GrassColor.get(temp, rain);
    }
 
@@ -226,8 +219,8 @@ public final class Biome {
    }
 
    private int getFoliageColorFromTexture() {
-      double temp = (double)Mth.clamp(this.climateSettings.temperature, 0.0F, 1.0F);
-      double rain = (double)Mth.clamp(this.climateSettings.downfall, 0.0F, 1.0F);
+      double temp = Mth.clamp(this.climateSettings.temperature, 0.0F, 1.0F);
+      double rain = Mth.clamp(this.climateSettings.downfall, 0.0F, 1.0F);
       return FoliageColor.get(temp, rain);
    }
 
@@ -236,8 +229,8 @@ public final class Biome {
    }
 
    private int getDryFoliageColorFromTexture() {
-      double temp = (double)Mth.clamp(this.climateSettings.temperature, 0.0F, 1.0F);
-      double rain = (double)Mth.clamp(this.climateSettings.downfall, 0.0F, 1.0F);
+      double temp = Mth.clamp(this.climateSettings.temperature, 0.0F, 1.0F);
+      double rain = Mth.clamp(this.climateSettings.downfall, 0.0F, 1.0F);
       return DryFoliageColor.get(temp, rain);
    }
 
@@ -259,16 +252,12 @@ public final class Biome {
 
    public static class BiomeBuilder {
       private boolean hasPrecipitation = true;
-      @Nullable
-      private Float temperature;
+      private @Nullable Float temperature;
       private Biome.TemperatureModifier temperatureModifier = Biome.TemperatureModifier.NONE;
-      @Nullable
-      private Float downfall;
+      private @Nullable Float downfall;
       private final EnvironmentAttributeMap.Builder attributes = EnvironmentAttributeMap.builder();
-      @Nullable
-      private BiomeSpecialEffects specialEffects;
-      @Nullable
-      private BiomeGenerationSettings generationSettings;
+      private @Nullable BiomeSpecialEffects specialEffects;
+      private @Nullable BiomeGenerationSettings generationSettings;
 
       public Biome.BiomeBuilder hasPrecipitation(final boolean hasPrecipitation) {
          this.hasPrecipitation = hasPrecipitation;
@@ -357,19 +346,19 @@ public final class Biome {
       }
    }
 
-   private static record ClimateSettings(boolean hasPrecipitation, float temperature, Biome.TemperatureModifier temperatureModifier, float downfall) {
+   private record ClimateSettings(boolean hasPrecipitation, float temperature, Biome.TemperatureModifier temperatureModifier, float downfall) {
       public static final MapCodec<Biome.ClimateSettings> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Codec.BOOL.fieldOf("has_precipitation").forGetter(b -> b.hasPrecipitation),
-                  Codec.FLOAT.fieldOf("temperature").forGetter(b -> b.temperature),
-                  Biome.TemperatureModifier.CODEC.optionalFieldOf("temperature_modifier", Biome.TemperatureModifier.NONE).forGetter(b -> b.temperatureModifier),
-                  Codec.FLOAT.fieldOf("downfall").forGetter(b -> b.downfall)
-               )
-               .apply(i, Biome.ClimateSettings::new)
+               Codec.BOOL.fieldOf("has_precipitation").forGetter(b -> b.hasPrecipitation),
+               Codec.FLOAT.fieldOf("temperature").forGetter(b -> b.temperature),
+               Biome.TemperatureModifier.CODEC.optionalFieldOf("temperature_modifier", Biome.TemperatureModifier.NONE).forGetter(b -> b.temperatureModifier),
+               Codec.FLOAT.fieldOf("downfall").forGetter(b -> b.downfall)
+            )
+            .apply(i, Biome.ClimateSettings::new)
       );
    }
 
-   public static enum Precipitation implements StringRepresentable {
+   public enum Precipitation implements StringRepresentable {
       NONE("none"),
       RAIN("rain"),
       SNOW("snow");
@@ -377,7 +366,7 @@ public final class Biome {
       public static final Codec<Biome.Precipitation> CODEC = StringRepresentable.fromEnum(Biome.Precipitation::values);
       private final String name;
 
-      private Precipitation(final String name) {
+      Precipitation(final String name) {
          this.name = name;
       }
 
@@ -387,7 +376,7 @@ public final class Biome {
       }
    }
 
-   public static enum TemperatureModifier implements StringRepresentable {
+   public enum TemperatureModifier implements StringRepresentable {
       NONE("none") {
          @Override
          public float modifyTemperature(final BlockPos pos, final float baseTemperature) {
@@ -397,11 +386,11 @@ public final class Biome {
       FROZEN("frozen") {
          @Override
          public float modifyTemperature(final BlockPos pos, final float baseTemperature) {
-            double groundValueLargeVariation = (double)(Biome.FROZEN_TEMPERATURE_NOISE.get((double)pos.getX() * 0.05, (double)pos.getZ() * 0.05) * 7.0F);
-            double groundValueEdgeVariation = (double)Biome.BIOME_INFO_NOISE.get((double)pos.getX() * 0.2, (double)pos.getZ() * 0.2);
+            double groundValueLargeVariation = Biome.FROZEN_TEMPERATURE_NOISE.get(pos.getX() * 0.05, pos.getZ() * 0.05) * 7.0F;
+            double groundValueEdgeVariation = Biome.BIOME_INFO_NOISE.get(pos.getX() * 0.2, pos.getZ() * 0.2);
             double icePatches = groundValueLargeVariation + groundValueEdgeVariation;
             if (icePatches < 0.3) {
-               double groundValueSmallVariation = (double)Biome.BIOME_INFO_NOISE.get((double)pos.getX() * 0.09, (double)pos.getZ() * 0.09);
+               double groundValueSmallVariation = Biome.BIOME_INFO_NOISE.get(pos.getX() * 0.09, pos.getZ() * 0.09);
                if (groundValueSmallVariation < 0.8) {
                   return 0.2F;
                }
@@ -416,7 +405,7 @@ public final class Biome {
 
       public abstract float modifyTemperature(final BlockPos pos, final float baseTemperature);
 
-      private TemperatureModifier(final String name) {
+      TemperatureModifier(final String name) {
          this.name = name;
       }
 

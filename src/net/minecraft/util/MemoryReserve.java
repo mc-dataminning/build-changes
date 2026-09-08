@@ -3,8 +3,7 @@ package net.minecraft.util;
 import org.jspecify.annotations.Nullable;
 
 public class MemoryReserve {
-   @Nullable
-   private static byte[] reserve;
+   private static byte @Nullable [] reserve;
 
    public static void allocate() {
       reserve = new byte[10485760];

@@ -34,7 +34,7 @@ public class NoiseProvider extends NoiseBasedStateProvider {
 
    @Override
    public BlockState getState(final LevelAccessor level, final RandomSource random, final BlockPos pos) {
-      return this.getRandomState(this.states, pos, (double)this.scale);
+      return this.getRandomState(this.states, pos, this.scale);
    }
 
    protected BlockState getRandomState(final List<BlockState> states, final BlockPos pos, final double scale) {
@@ -44,6 +44,6 @@ public class NoiseProvider extends NoiseBasedStateProvider {
 
    protected BlockState getRandomState(final List<BlockState> states, final float noiseValue) {
       float placementValue = Mth.clamp((1.0F + noiseValue) / 2.0F, 0.0F, 0.9999F);
-      return states.get((int)(placementValue * (float)states.size()));
+      return states.get((int)(placementValue * states.size()));
    }
 }

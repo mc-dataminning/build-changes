@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class Containers {
    public static void dropContents(final Level level, final BlockPos pos, final Container container) {
-      dropContents(level, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), container);
+      dropContents(level, pos.getX(), pos.getY(), pos.getZ(), container);
    }
 
    public static void dropContents(final Level level, final Entity entity, final Container container) {
@@ -26,11 +26,11 @@ public class Containers {
    }
 
    public static void dropContents(final Level level, final BlockPos pos, final NonNullList<ItemStack> list) {
-      list.forEach(itemStack -> dropItemStack(level, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), itemStack));
+      list.forEach(itemStack -> dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), itemStack));
    }
 
    public static void dropItemStack(final Level level, final double x, final double y, final double z, final ItemStack itemStack) {
-      double size = (double)EntityTypes.ITEM.getWidth();
+      double size = EntityTypes.ITEM.getWidth();
       double centerRange = 1.0 - size;
       double halfSize = size / 2.0;
       RandomSource random = level.getRandom();

@@ -11,7 +11,7 @@ import net.minecraft.util.InclusiveRange;
 public record PackMetadataSection(Component description, InclusiveRange<PackFormat> supportedFormats) {
    private static final Codec<PackMetadataSection> FALLBACK_CODEC = RecordCodecBuilder.create(
       i -> i.group(ComponentSerialization.CODEC.fieldOf("description").forGetter(PackMetadataSection::description))
-            .apply(i, description -> new PackMetadataSection(description, new InclusiveRange<>(PackFormat.of(Integer.MAX_VALUE))))
+         .apply(i, description -> new PackMetadataSection(description, new InclusiveRange<>(PackFormat.of(Integer.MAX_VALUE))))
    );
    public static final MetadataSectionType<PackMetadataSection> CLIENT_TYPE = new MetadataSectionType<>("pack", codecForPackType(PackType.CLIENT_RESOURCES));
    public static final MetadataSectionType<PackMetadataSection> SERVER_TYPE = new MetadataSectionType<>("pack", codecForPackType(PackType.SERVER_DATA));
@@ -20,10 +20,10 @@ public record PackMetadataSection(Component description, InclusiveRange<PackForm
    private static Codec<PackMetadataSection> codecForPackType(final PackType packType) {
       return RecordCodecBuilder.create(
          i -> i.group(
-                  ComponentSerialization.CODEC.fieldOf("description").forGetter(PackMetadataSection::description),
-                  PackFormat.packCodec(packType).forGetter(PackMetadataSection::supportedFormats)
-               )
-               .apply(i, PackMetadataSection::new)
+               ComponentSerialization.CODEC.fieldOf("description").forGetter(PackMetadataSection::description),
+               PackFormat.packCodec(packType).forGetter(PackMetadataSection::supportedFormats)
+            )
+            .apply(i, PackMetadataSection::new)
       );
    }
 

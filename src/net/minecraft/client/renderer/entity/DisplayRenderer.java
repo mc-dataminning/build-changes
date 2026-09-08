@@ -91,8 +91,8 @@ public abstract class DisplayRenderer<T extends Display, S, ST extends DisplayEn
          case HORIZONTAL -> output.rotationYXZ((float) (-Math.PI / 180.0) * state.entityYRot, (float) (Math.PI / 180.0) * transformXRot(state.cameraXRot), 0.0F);
          case VERTICAL -> output.rotationYXZ((float) (-Math.PI / 180.0) * transformYRot(state.cameraYRot), (float) (Math.PI / 180.0) * state.entityXRot, 0.0F);
          case CENTER -> output.rotationYXZ(
-         (float) (-Math.PI / 180.0) * transformYRot(state.cameraYRot), (float) (Math.PI / 180.0) * transformXRot(state.cameraXRot), 0.0F
-      );
+            (float) (-Math.PI / 180.0) * transformYRot(state.cameraYRot), (float) (Math.PI / 180.0) * transformXRot(state.cameraXRot), 0.0F
+         );
       };
    }
 
@@ -257,19 +257,19 @@ public abstract class DisplayRenderer<T extends Display, S, ST extends DisplayEn
          int lineHeight = 9 + 1;
          int width = cachedInfo.width();
          int height = cachedInfo.lines().size() * lineHeight - 1;
-         pose.translate(1.0F - (float)width / 2.0F, (float)(-height), 0.0F);
+         pose.translate(1.0F - width / 2.0F, -height, 0.0F);
          if (backgroundColor != 0) {
-            submitNodeCollector.submitTextBackground(poseStack, -1.0F, -1.0F, (float)width, (float)height, backgroundColor, textDisplayMode, lightCoords);
+            submitNodeCollector.submitTextBackground(poseStack, -1.0F, -1.0F, width, height, backgroundColor, textDisplayMode, lightCoords);
          }
 
          for (Display.TextDisplay.CachedLine line : cachedInfo.lines()) {
             float offset = switch (alignment) {
                case LEFT -> 0.0F;
-               case RIGHT -> (float)(width - line.width());
-               case CENTER -> (float)width / 2.0F - (float)line.width() / 2.0F;
+               case RIGHT -> width - line.width();
+               case CENTER -> width / 2.0F - line.width() / 2.0F;
             };
             submitNodeCollector.submitText(poseStack, offset, y, line.contents(), shadow, textDisplayMode, lightCoords, textOpacity << 24 | 16777215, 0, 0);
-            y += (float)lineHeight;
+            y += lineHeight;
          }
       }
    }

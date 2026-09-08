@@ -41,8 +41,7 @@ public class RecipeMap {
       return this.byKey.values();
    }
 
-   @Nullable
-   public RecipeHolder<?> byKey(final ResourceKey<Recipe<?>> recipeId) {
+   public @Nullable RecipeHolder<?> byKey(final ResourceKey<Recipe<?>> recipeId) {
       return this.byKey.get(recipeId);
    }
 

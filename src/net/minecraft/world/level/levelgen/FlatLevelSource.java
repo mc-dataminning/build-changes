@@ -70,7 +70,7 @@ public class FlatLevelSource extends ChunkGenerator {
       final RandomState randomState,
       final StructureManager structureManager,
       final BiomeManager biomeManager,
-      @Nullable final WorldGenRegion carverBiomeRegion,
+      final @Nullable WorldGenRegion carverBiomeRegion,
       final Set<Holder<Biome>> possibleBiomes
    ) {
       List<BlockState> layers = this.settings.getLayers();
@@ -117,7 +117,7 @@ public class FlatLevelSource extends ChunkGenerator {
          this.settings
             .getLayers()
             .stream()
-            .limit((long)heightAccessor.getHeight())
+            .limit(heightAccessor.getHeight())
             .map(state -> state == null ? Blocks.AIR.defaultBlockState() : state)
             .toArray(BlockState[]::new)
       );

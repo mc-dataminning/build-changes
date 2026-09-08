@@ -20,8 +20,7 @@ import net.minecraft.world.item.component.Fireworks;
 import org.jspecify.annotations.Nullable;
 
 public class CelebrateVillagersSurvivedRaid extends Behavior<Villager> {
-   @Nullable
-   private Raid currentRaid;
+   private @Nullable Raid currentRaid;
 
    public CelebrateVillagersSurvivedRaid(final int minDuration, final int maxDuration) {
       super(ImmutableMap.of(), minDuration, maxDuration);

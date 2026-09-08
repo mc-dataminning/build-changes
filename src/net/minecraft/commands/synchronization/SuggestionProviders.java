@@ -26,13 +26,13 @@ public class SuggestionProviders {
    public static final SuggestionProvider<SharedSuggestionProvider> SUMMONABLE_ENTITIES = register(
       Identifier.withDefaultNamespace("summonable_entities"),
       (c, p) -> SharedSuggestionProvider.suggestResource(
-            BuiltInRegistries.ENTITY_TYPE
-               .stream()
-               .filter(entityType -> entityType.isEnabled(((SharedSuggestionProvider)c.getSource()).enabledFeatures()) && entityType.canSummon()),
-            p,
-            EntityType::getKey,
-            EntityType::getDescription
-         )
+         BuiltInRegistries.ENTITY_TYPE
+            .stream()
+            .filter(entityType -> entityType.isEnabled(((SharedSuggestionProvider)c.getSource()).enabledFeatures()) && entityType.canSummon()),
+         p,
+         EntityType::getKey,
+         EntityType::getDescription
+      )
    );
    public static final SuggestionProvider<SharedSuggestionProvider> POST_EFFECTS = register(
       Identifier.withDefaultNamespace("post_effects"),
@@ -62,7 +62,7 @@ public class SuggestionProviders {
       return provider instanceof SuggestionProviders.RegisteredSuggestion registeredProvider ? registeredProvider.name : ID_ASK_SERVER;
    }
 
-   private static record RegisteredSuggestion(Identifier name, SuggestionProvider<SharedSuggestionProvider> delegate)
+   private record RegisteredSuggestion(Identifier name, SuggestionProvider<SharedSuggestionProvider> delegate)
       implements SuggestionProvider<SharedSuggestionProvider> {
       public CompletableFuture<Suggestions> getSuggestions(final CommandContext<SharedSuggestionProvider> context, final SuggestionsBuilder builder) throws CommandSyntaxException {
          return this.delegate.getSuggestions(context, builder);

@@ -32,9 +32,8 @@ public record BlendDensityFunction(DensityFunction input) implements DensityFunc
       return this.input.range();
    }
 
-   @DensityFunction.Axes
    @Override
-   public int domainAxes() {
+   public @DensityFunction.Axes int domainAxes() {
       return this.input.domainAxes();
    }
 
@@ -43,7 +42,7 @@ public record BlendDensityFunction(DensityFunction input) implements DensityFunc
       return CODEC;
    }
 
-   private static record Sampler(DensitySampler input) implements DensitySampler {
+   private record Sampler(DensitySampler input) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          this.input.sampleVolume(context, outputBuffer, volume);

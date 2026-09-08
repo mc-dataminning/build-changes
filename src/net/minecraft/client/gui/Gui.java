@@ -5,13 +5,13 @@ import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.minecraft.BanDetails;
 import com.mojang.authlib.services.ProfileActionType;
 import com.mojang.authlib.services.ProfileResult;
+import com.mojang.blaze3d.Blaze3D;
 import com.mojang.jtracy.Section;
 import com.mojang.jtracy.SectionCategory;
 import com.mojang.jtracy.TracyClient;
 import com.mojang.logging.LogUtils;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import java.util.function.Function;
 import net.minecraft.CrashReport;
@@ -57,7 +57,6 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.server.packs.resources.ReloadableResourceManager;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.CommonLinks;
-import net.minecraft.util.Util;
 import net.minecraft.util.profiling.Profiler;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.util.profiling.Zone;
@@ -73,18 +72,14 @@ public class Gui {
    private final Minecraft minecraft;
    public final Hud hud;
    private final GuiRenderState guiRenderState;
-   @Nullable
-   private Section screenTracySection;
-   @Nullable
-   private Screen screen;
-   @Nullable
-   private Overlay overlay;
+   private @Nullable Section screenTracySection;
+   private @Nullable Screen screen;
+   private @Nullable Overlay overlay;
    private boolean clientLevelTeardownInProgress;
    private final SplashManager splashManager;
    private final ToastManager toastManager;
    private final ChatListener chatListener;
-   @Nullable
-   private TutorialToast socialInteractionsToast;
+   private @Nullable TutorialToast socialInteractionsToast;
 
    public Gui(final Minecraft minecraft, final Hud hud, final GuiRenderState guiRenderState) {
       this.minecraft = minecraft;
@@ -138,8 +133,8 @@ public class Gui {
          if (this.screen != null) {
             this.screen.handleDelayedNarration();
          }
-      } catch (Throwable var4) {
-         CrashReport report = CrashReport.forThrowable(var4, "Narrating screen");
+      } catch (Throwable t) {
+         CrashReport report = CrashReport.forThrowable(t, "Narrating screen");
          CrashReportCategory category = report.addCategory("Screen details");
          category.setDetail("Screen name", () -> this.screen.getClass().getCanonicalName());
          throw new ReportedException(report);
@@ -164,8 +159,8 @@ public class Gui {
 
          try {
             this.overlay.extractRenderState(graphics, xMouse, yMouse, deltaTracker.getGameTimeDeltaTicks());
-         } catch (Throwable var13) {
-            CrashReport report = CrashReport.forThrowable(var13, "Extracting overlay render state");
+         } catch (Throwable t) {
+            CrashReport report = CrashReport.forThrowable(t, "Extracting overlay render state");
             CrashReportCategory category = report.addCategory("Overlay details");
             category.setDetail("Overlay name", () -> this.overlay.getClass().getCanonicalName());
             throw new ReportedException(report);
@@ -177,8 +172,8 @@ public class Gui {
 
          try {
             this.screen.extractRenderStateWithTooltipAndSubtitles(graphics, xMouse, yMouse, deltaTracker.getGameTimeDeltaTicks());
-         } catch (Throwable var12) {
-            CrashReport report = CrashReport.forThrowable(var12, "Rendering screen");
+         } catch (Throwable t) {
+            CrashReport report = CrashReport.forThrowable(t, "Rendering screen");
             CrashReportCategory category = report.addCategory("Screen render details");
             category.setDetail("Screen name", () -> this.screen.getClass().getCanonicalName());
             this.minecraft.mouseHandler.fillMousePositionDetails(category, this.minecraft.getWindow());
@@ -215,11 +210,8 @@ public class Gui {
       graphics.applyCursor(this.minecraft.getWindow());
    }
 
-   @Contract(
-      pure = true
-   )
-   @Nullable
-   public Screen screen() {
+   @Contract(pure = true)
+   public @Nullable Screen screen() {
       return this.screen;
    }
 
@@ -284,15 +276,12 @@ public class Gui {
       this.minecraft.updateTitle();
    }
 
-   @Contract(
-      pure = true
-   )
-   @Nullable
-   public Overlay overlay() {
+   @Contract(pure = true)
+   public @Nullable Overlay overlay() {
       return this.overlay;
    }
 
-   public void setOverlay(@Nullable final Overlay overlay) {
+   public void setOverlay(final @Nullable Overlay overlay) {
       this.overlay = overlay;
    }
 
@@ -376,7 +365,7 @@ public class Gui {
       }
    }
 
-   public Runnable buildInitialScreens(@Nullable final GameLoadCookie cookie) {
+   public Runnable buildInitialScreens(final @Nullable GameLoadCookie cookie) {
       List<Function<Runnable, Screen>> screens = new ArrayList<>();
       boolean onboardingScreenAdded = this.addInitialScreens(screens);
       Runnable nextStep = () -> {
@@ -405,12 +394,12 @@ public class Gui {
       BanDetails multiplayerBan = this.minecraft.multiplayerBan();
       if (multiplayerBan != null) {
          screens.add(next -> BanNoticeScreens.create(result -> {
-               if (result) {
-                  Util.getPlatform().openUri(CommonLinks.SUSPENSION_HELP);
-               }
+            if (result) {
+               Blaze3D.openUri(CommonLinks.SUSPENSION_HELP);
+            }
 
-               next.run();
-            }, multiplayerBan));
+            next.run();
+         }, multiplayerBan));
       }
 
       ProfileResult profileResult = this.minecraft.getProfileResult();
@@ -442,49 +431,45 @@ public class Gui {
       this.guiRenderState
          .forEachText(
             text -> text.ensurePrepared()
-                  .visit(
-                     new Font.GlyphVisitor() {
-                        private int index;
+               .visit(
+                  new Font.GlyphVisitor() {
+                     private int index;
 
-                        {
-                           Objects.requireNonNull(Gui.this);
-                        }
-
-                        @Override
-                        public void acceptGlyph(final TextRenderable.Styled glyph) {
-                           this.renderDebugMarkers(glyph, false);
-                        }
-
-                        @Override
-                        public void acceptEmptyArea(final EmptyArea empty) {
-                           this.renderDebugMarkers(empty, true);
-                        }
-
-                        private void renderDebugMarkers(final ActiveArea glyph, final boolean isEmpty) {
-                           int intensity = (isEmpty ? 128 : 255) - (this.index++ & 1) * 64;
-                           Style style = glyph.style();
-                           int red = style.getClickEvent() != null ? intensity : 0;
-                           int green = style.getHoverEvent() != null ? intensity : 0;
-                           int blue = red != 0 && green != 0 ? 0 : intensity;
-                           int color = ARGB.color(128, red, green, blue);
-                           Gui.this.guiRenderState
-                              .addGuiElement(
-                                 new ColoredRectangleRenderState(
-                                    RenderPipelines.GUI,
-                                    TextureSetup.noTexture(),
-                                    text.pose,
-                                    (int)glyph.activeLeft(),
-                                    (int)glyph.activeTop(),
-                                    (int)glyph.activeRight(),
-                                    (int)glyph.activeBottom(),
-                                    color,
-                                    color,
-                                    text.scissor
-                                 )
-                              );
-                        }
+                     @Override
+                     public void acceptGlyph(final TextRenderable.Styled glyph) {
+                        this.renderDebugMarkers(glyph, false);
                      }
-                  )
+
+                     @Override
+                     public void acceptEmptyArea(final EmptyArea empty) {
+                        this.renderDebugMarkers(empty, true);
+                     }
+
+                     private void renderDebugMarkers(final ActiveArea glyph, final boolean isEmpty) {
+                        int intensity = (isEmpty ? 128 : 255) - (this.index++ & 1) * 64;
+                        Style style = glyph.style();
+                        int red = style.getClickEvent() != null ? intensity : 0;
+                        int green = style.getHoverEvent() != null ? intensity : 0;
+                        int blue = red != 0 && green != 0 ? 0 : intensity;
+                        int color = ARGB.color(128, red, green, blue);
+                        Gui.this.guiRenderState
+                           .addGuiElement(
+                              new ColoredRectangleRenderState(
+                                 RenderPipelines.GUI,
+                                 TextureSetup.noTexture(),
+                                 text.pose,
+                                 (int)glyph.activeLeft(),
+                                 (int)glyph.activeTop(),
+                                 (int)glyph.activeRight(),
+                                 (int)glyph.activeBottom(),
+                                 color,
+                                 color,
+                                 text.scissor
+                              )
+                           );
+                     }
+                  }
+               )
          );
    }
 }

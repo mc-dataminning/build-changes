@@ -85,33 +85,33 @@ public class Stitcher<T extends Stitcher.Entry> {
       boolean yCanGrow = yNewSize <= this.maxHeight;
       if (!xCanGrow && !yCanGrow) {
          return false;
+      }
+
+      boolean xWillGrow = xCanGrow && xCurrentSize != xNewSize;
+      boolean yWillGrow = yCanGrow && yCurrentSize != yNewSize;
+      boolean growOnX;
+      if (xWillGrow ^ yWillGrow) {
+         growOnX = xWillGrow;
       } else {
-         boolean xWillGrow = xCanGrow && xCurrentSize != xNewSize;
-         boolean yWillGrow = yCanGrow && yCurrentSize != yNewSize;
-         boolean growOnX;
-         if (xWillGrow ^ yWillGrow) {
-            growOnX = xWillGrow;
-         } else {
-            growOnX = xCanGrow && xCurrentSize <= yCurrentSize;
-         }
+         growOnX = xCanGrow && xCurrentSize <= yCurrentSize;
+      }
 
-         Stitcher.Region<T> slot;
-         if (growOnX) {
-            if (this.storageY == 0) {
-               this.storageY = yNewSize;
-            }
-
-            slot = new Stitcher.Region<>(this.storageX, 0, xNewSize - this.storageX, this.storageY);
-            this.storageX = xNewSize;
-         } else {
-            slot = new Stitcher.Region<>(0, this.storageY, this.storageX, yNewSize - this.storageY);
+      Stitcher.Region<T> slot;
+      if (growOnX) {
+         if (this.storageY == 0) {
             this.storageY = yNewSize;
          }
 
-         slot.add(holder);
-         this.storage.add(slot);
-         return true;
+         slot = new Stitcher.Region<>(this.storageX, 0, xNewSize - this.storageX, this.storageY);
+         this.storageX = xNewSize;
+      } else {
+         slot = new Stitcher.Region<>(0, this.storageY, this.storageX, yNewSize - this.storageY);
+         this.storageY = yNewSize;
       }
+
+      slot.add(holder);
+      this.storage.add(slot);
+      return true;
    }
 
    public interface Entry {
@@ -122,7 +122,7 @@ public class Stitcher<T extends Stitcher.Entry> {
       Identifier name();
    }
 
-   private static record Holder<T extends Stitcher.Entry>(T entry, int width, int height) {
+   private record Holder<T extends Stitcher.Entry>(T entry, int width, int height) {
    }
 
    public static class Region<T extends Stitcher.Entry> {
@@ -130,10 +130,8 @@ public class Stitcher<T extends Stitcher.Entry> {
       private final int originY;
       private final int width;
       private final int height;
-      @Nullable
-      private List<Stitcher.Region<T>> subSlots;
-      @Nullable
-      private Stitcher.Holder<T> holder;
+      private @Nullable List<Stitcher.Region<T>> subSlots;
+      private Stitcher.@Nullable Holder<T> holder;
 
       public Region(final int originX, final int originY, final int width, final int height) {
          this.originX = originX;
@@ -153,47 +151,47 @@ public class Stitcher<T extends Stitcher.Entry> {
       public boolean add(final Stitcher.Holder<T> holder) {
          if (this.holder != null) {
             return false;
-         } else {
-            int textureWidth = holder.width;
-            int textureHeight = holder.height;
-            if (textureWidth <= this.width && textureHeight <= this.height) {
-               if (textureWidth == this.width && textureHeight == this.height) {
-                  this.holder = holder;
-                  return true;
-               } else {
-                  if (this.subSlots == null) {
-                     this.subSlots = new ArrayList<>(1);
-                     this.subSlots.add(new Stitcher.Region<>(this.originX, this.originY, textureWidth, textureHeight));
-                     int spareWidth = this.width - textureWidth;
-                     int spareHeight = this.height - textureHeight;
-                     if (spareHeight > 0 && spareWidth > 0) {
-                        int right = Math.max(this.height, spareWidth);
-                        int bottom = Math.max(this.width, spareHeight);
-                        if (right >= bottom) {
-                           this.subSlots.add(new Stitcher.Region<>(this.originX, this.originY + textureHeight, textureWidth, spareHeight));
-                           this.subSlots.add(new Stitcher.Region<>(this.originX + textureWidth, this.originY, spareWidth, this.height));
-                        } else {
-                           this.subSlots.add(new Stitcher.Region<>(this.originX + textureWidth, this.originY, spareWidth, textureHeight));
-                           this.subSlots.add(new Stitcher.Region<>(this.originX, this.originY + textureHeight, this.width, spareHeight));
-                        }
-                     } else if (spareWidth == 0) {
-                        this.subSlots.add(new Stitcher.Region<>(this.originX, this.originY + textureHeight, textureWidth, spareHeight));
-                     } else if (spareHeight == 0) {
-                        this.subSlots.add(new Stitcher.Region<>(this.originX + textureWidth, this.originY, spareWidth, textureHeight));
-                     }
-                  }
+         }
 
-                  for (Stitcher.Region<T> subSlot : this.subSlots) {
-                     if (subSlot.add(holder)) {
-                        return true;
-                     }
-                  }
-
-                  return false;
-               }
-            } else {
-               return false;
+         int textureWidth = holder.width;
+         int textureHeight = holder.height;
+         if (textureWidth <= this.width && textureHeight <= this.height) {
+            if (textureWidth == this.width && textureHeight == this.height) {
+               this.holder = holder;
+               return true;
             }
+
+            if (this.subSlots == null) {
+               this.subSlots = new ArrayList<>(1);
+               this.subSlots.add(new Stitcher.Region<>(this.originX, this.originY, textureWidth, textureHeight));
+               int spareWidth = this.width - textureWidth;
+               int spareHeight = this.height - textureHeight;
+               if (spareHeight > 0 && spareWidth > 0) {
+                  int right = Math.max(this.height, spareWidth);
+                  int bottom = Math.max(this.width, spareHeight);
+                  if (right >= bottom) {
+                     this.subSlots.add(new Stitcher.Region<>(this.originX, this.originY + textureHeight, textureWidth, spareHeight));
+                     this.subSlots.add(new Stitcher.Region<>(this.originX + textureWidth, this.originY, spareWidth, this.height));
+                  } else {
+                     this.subSlots.add(new Stitcher.Region<>(this.originX + textureWidth, this.originY, spareWidth, textureHeight));
+                     this.subSlots.add(new Stitcher.Region<>(this.originX, this.originY + textureHeight, this.width, spareHeight));
+                  }
+               } else if (spareWidth == 0) {
+                  this.subSlots.add(new Stitcher.Region<>(this.originX, this.originY + textureHeight, textureWidth, spareHeight));
+               } else if (spareHeight == 0) {
+                  this.subSlots.add(new Stitcher.Region<>(this.originX + textureWidth, this.originY, spareWidth, textureHeight));
+               }
+            }
+
+            for (Stitcher.Region<T> subSlot : this.subSlots) {
+               if (subSlot.add(holder)) {
+                  return true;
+               }
+            }
+
+            return false;
+         } else {
+            return false;
          }
       }
 

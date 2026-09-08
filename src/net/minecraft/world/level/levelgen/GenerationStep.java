@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import net.minecraft.util.StringRepresentable;
 
 public class GenerationStep {
-   public static enum Decoration implements StringRepresentable {
+   public enum Decoration implements StringRepresentable {
       RAW_GENERATION("raw_generation"),
       LAKES("lakes"),
       LOCAL_MODIFICATIONS("local_modifications"),
@@ -20,7 +20,7 @@ public class GenerationStep {
       public static final Codec<GenerationStep.Decoration> CODEC = StringRepresentable.fromEnum(GenerationStep.Decoration::values);
       private final String name;
 
-      private Decoration(final String name) {
+      Decoration(final String name) {
          this.name = name;
       }
 

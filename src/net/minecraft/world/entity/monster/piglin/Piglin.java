@@ -139,9 +139,8 @@ public class Piglin extends AbstractPiglin implements CrossbowAttackMob, Invento
       return this.inventory.canAddItem(itemStack);
    }
 
-   @Nullable
    @Override
-   public SlotAccess getSlot(final int slot) {
+   public @Nullable SlotAccess getSlot(final int slot) {
       int inventorySlot = slot - 300;
       return inventorySlot >= 0 && inventorySlot < this.inventory.getContainerSize() ? this.inventory.getSlot(inventorySlot) : super.getSlot(slot);
    }
@@ -172,10 +171,9 @@ public class Piglin extends AbstractPiglin implements CrossbowAttackMob, Invento
       return !level.getBlockState(pos.below()).is(Blocks.NETHER_WART_BLOCK);
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+   public @Nullable SpawnGroupData finalizeSpawn(
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       RandomSource random = level.getRandom();
       if (spawnReason != EntitySpawnReason.STRUCTURE) {
@@ -227,7 +225,7 @@ public class Piglin extends AbstractPiglin implements CrossbowAttackMob, Invento
          return PiglinAi.mobInteract(level, this, player, hand);
       } else {
          boolean canAdmire = PiglinAi.canAdmire(this, player.getItemInHand(hand)) && this.getArmPose() != PiglinArmPose.ADMIRING_ITEM;
-         return (InteractionResult)(canAdmire ? InteractionResult.SUCCESS : InteractionResult.PASS);
+         return canAdmire ? InteractionResult.SUCCESS : InteractionResult.PASS;
       }
    }
 
@@ -285,14 +283,13 @@ public class Piglin extends AbstractPiglin implements CrossbowAttackMob, Invento
    }
 
    private ItemStack createSpawnWeapon() {
-      return (double)this.random.nextFloat() < 0.5
+      return this.random.nextFloat() < 0.5
          ? new ItemStack(Items.CROSSBOW)
          : new ItemStack(this.random.nextInt(10) == 0 ? Items.GOLDEN_SPEAR : Items.GOLDEN_SWORD);
    }
 
-   @Nullable
    @Override
-   public TagKey<Item> getPreferredWeaponType() {
+   public @Nullable TagKey<Item> getPreferredWeaponType() {
       return this.isBaby() ? null : ItemTags.PIGLIN_PREFERRED_WEAPONS;
    }
 
@@ -412,9 +409,8 @@ public class Piglin extends AbstractPiglin implements CrossbowAttackMob, Invento
       return counter != 1 && !passengers.isEmpty() ? this.getTopPassenger(passengers.getFirst(), counter - 1) : vehicle;
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getAmbientSound() {
+   protected @Nullable SoundEvent getAmbientSound() {
       return this.level().isClientSide() ? null : PiglinAi.getSoundForCurrentActivity(this).orElse(null);
    }
 

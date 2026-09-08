@@ -67,10 +67,10 @@ public class EntitySectionStorage<T extends EntityAccess> {
       LongSortedSet chunkSections = this.getChunkSections(x, z);
       if (chunkSections.isEmpty()) {
          return LongStream.empty();
-      } else {
-         OfLong iterator = chunkSections.iterator();
-         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize(iterator, 1301), false);
       }
+
+      OfLong iterator = chunkSections.iterator();
+      return StreamSupport.longStream(Spliterators.spliteratorUnknownSize(iterator, 1301), false);
    }
 
    private LongSortedSet getChunkSections(final int x, final int z) {
@@ -91,8 +91,7 @@ public class EntitySectionStorage<T extends EntityAccess> {
       return (EntitySection<T>)this.sections.computeIfAbsent(key, this::createSection);
    }
 
-   @Nullable
-   public EntitySection<T> getSection(final long key) {
+   public @Nullable EntitySection<T> getSection(final long key) {
       return (EntitySection<T>)this.sections.get(key);
    }
 

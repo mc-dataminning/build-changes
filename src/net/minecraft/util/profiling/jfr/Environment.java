@@ -8,7 +8,7 @@ public enum Environment {
 
    private final String description;
 
-   private Environment(final String description) {
+   Environment(final String description) {
       this.description = description;
    }
 

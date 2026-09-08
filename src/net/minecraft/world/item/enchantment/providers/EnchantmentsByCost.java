@@ -18,10 +18,10 @@ import net.minecraft.world.item.enchantment.ItemEnchantments;
 public record EnchantmentsByCost(HolderSet<Enchantment> enchantments, IntProvider cost) implements EnchantmentProvider {
    public static final MapCodec<EnchantmentsByCost> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               RegistryCodecs.holderSet(Registries.ENCHANTMENT).fieldOf("enchantments").forGetter(EnchantmentsByCost::enchantments),
-               IntProviders.CODEC.fieldOf("cost").forGetter(EnchantmentsByCost::cost)
-            )
-            .apply(i, EnchantmentsByCost::new)
+            RegistryCodecs.holderSet(Registries.ENCHANTMENT).fieldOf("enchantments").forGetter(EnchantmentsByCost::enchantments),
+            IntProviders.CODEC.fieldOf("cost").forGetter(EnchantmentsByCost::cost)
+         )
+         .apply(i, EnchantmentsByCost::new)
    );
 
    @Override

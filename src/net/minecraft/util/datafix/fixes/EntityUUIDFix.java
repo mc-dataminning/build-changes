@@ -68,11 +68,11 @@ public class EntityUUIDFix extends AbstractUUIDFix {
       return tag.update(
          "Brain",
          brain -> brain.update(
-               "memories", memories -> memories.update("minecraft:angry_at", angryAt -> replaceUUIDString(angryAt, "value", "value").orElseGet(() -> {
-                        LOGGER.warn("angry_at has no value.");
-                        return angryAt;
-                     }))
-            )
+            "memories", memories -> memories.update("minecraft:angry_at", angryAt -> replaceUUIDString(angryAt, "value", "value").orElseGet(() -> {
+               LOGGER.warn("angry_at has no value.");
+               return angryAt;
+            }))
+         )
       );
    }
 
@@ -102,9 +102,9 @@ public class EntityUUIDFix extends AbstractUUIDFix {
       Optional<Dynamic<?>> trustedUUIDs = tag.get("TrustedUUIDs")
          .result()
          .map(uuidTags -> tag.createList(uuidTags.asStream().map(uuidTag -> (Dynamic)createUUIDFromML((Dynamic<?>)uuidTag).orElseGet(() -> {
-                  LOGGER.warn("Trusted contained invalid data.");
-                  return (Dynamic<?>)uuidTag;
-               }))));
+            LOGGER.warn("Trusted contained invalid data.");
+            return (Dynamic<?>)uuidTag;
+         }))));
       return (Dynamic<?>)DataFixUtils.orElse(trustedUUIDs.map(trusted -> tag.remove("TrustedUUIDs").set("Trusted", trusted)), tag);
    }
 
@@ -130,17 +130,16 @@ public class EntityUUIDFix extends AbstractUUIDFix {
       return tag.update(
          "Attributes",
          attributes -> tag.createList(
-               attributes.asStream()
-                  .map(
-                     attribute -> attribute.update(
-                           "Modifiers",
-                           modifiers -> attribute.createList(
-                                 modifiers.asStream()
-                                    .map(modifier -> (Dynamic)replaceUUIDLeastMost((Dynamic<?>)modifier, "UUID", "UUID").orElse((Dynamic<?>)modifier))
-                              )
-                        )
+            attributes.asStream()
+               .map(
+                  attribute -> attribute.update(
+                     "Modifiers",
+                     modifiers -> attribute.createList(
+                        modifiers.asStream().map(modifier -> (Dynamic)replaceUUIDLeastMost((Dynamic<?>)modifier, "UUID", "UUID").orElse((Dynamic<?>)modifier))
+                     )
                   )
-            )
+               )
+         )
       );
    }
 

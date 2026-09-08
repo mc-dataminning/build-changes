@@ -104,7 +104,7 @@ public class PrepareRamNearestTarget<E extends PathfinderMob> extends Behavior<E
                   this.reachedRamPositionTimestamp = Optional.of(timestamp);
                }
 
-               if (timestamp - this.reachedRamPositionTimestamp.get() >= (long)this.ramPrepareTime) {
+               if (timestamp - this.reachedRamPositionTimestamp.get() >= this.ramPrepareTime) {
                   body.getBrain().setMemory(MemoryModuleType.RAM_TARGET, this.getEdgeOfBlock(startRamPos, this.ramCandidate.get().getTargetPosition()));
                   level.playSound(null, body, this.getPrepareRamSound.apply(body), SoundSource.NEUTRAL, 1.0F, body.getVoicePitch());
                   this.ramCandidate = Optional.empty();
@@ -116,8 +116,8 @@ public class PrepareRamNearestTarget<E extends PathfinderMob> extends Behavior<E
 
    private Vec3 getEdgeOfBlock(final BlockPos startRamPos, final BlockPos targetPos) {
       double offsetDistance = 0.5;
-      double xOffset = 0.5 * (double)Mth.sign((double)(targetPos.getX() - startRamPos.getX()));
-      double zOffset = 0.5 * (double)Mth.sign((double)(targetPos.getZ() - startRamPos.getZ()));
+      double xOffset = 0.5 * Mth.sign(targetPos.getX() - startRamPos.getX());
+      double zOffset = 0.5 * Mth.sign(targetPos.getZ() - startRamPos.getZ());
       return Vec3.atBottomCenterOf(targetPos).add(xOffset, 0.0, zOffset);
    }
 
@@ -125,31 +125,31 @@ public class PrepareRamNearestTarget<E extends PathfinderMob> extends Behavior<E
       BlockPos targetPos = ramableTarget.blockPosition();
       if (!this.isWalkableBlock(body, targetPos)) {
          return Optional.empty();
-      } else {
-         List<BlockPos> possibleRamPositions = Lists.newArrayList();
-         BlockPos.MutableBlockPos walkablePosFurthestAwayFromTarget = targetPos.mutable();
+      }
 
-         for (Direction direction : Direction.Plane.HORIZONTAL) {
-            walkablePosFurthestAwayFromTarget.set(targetPos);
+      List<BlockPos> possibleRamPositions = Lists.newArrayList();
+      BlockPos.MutableBlockPos walkablePosFurthestAwayFromTarget = targetPos.mutable();
 
-            for (int distance = 0; distance < this.maxRamDistance; distance++) {
-               if (!this.isWalkableBlock(body, walkablePosFurthestAwayFromTarget.move(direction))) {
-                  walkablePosFurthestAwayFromTarget.move(direction.getOpposite());
-                  break;
-               }
-            }
+      for (Direction direction : Direction.Plane.HORIZONTAL) {
+         walkablePosFurthestAwayFromTarget.set(targetPos);
 
-            if (walkablePosFurthestAwayFromTarget.distManhattan(targetPos) >= this.minRamDistance) {
-               possibleRamPositions.add(walkablePosFurthestAwayFromTarget.immutable());
+         for (int distance = 0; distance < this.maxRamDistance; distance++) {
+            if (!this.isWalkableBlock(body, walkablePosFurthestAwayFromTarget.move(direction))) {
+               walkablePosFurthestAwayFromTarget.move(direction.getOpposite());
+               break;
             }
          }
 
-         PathNavigation navigation = body.getNavigation();
-         return possibleRamPositions.stream().sorted(Comparator.comparingDouble(body.blockPosition()::distSqr)).filter(pos -> {
-            Path path = navigation.createPath(pos, 0);
-            return path != null && path.canReach();
-         }).findFirst();
+         if (walkablePosFurthestAwayFromTarget.distManhattan(targetPos) >= this.minRamDistance) {
+            possibleRamPositions.add(walkablePosFurthestAwayFromTarget.immutable());
+         }
       }
+
+      PathNavigation navigation = body.getNavigation();
+      return possibleRamPositions.stream().sorted(Comparator.comparingDouble(body.blockPosition()::distSqr)).filter(pos -> {
+         Path path = navigation.createPath(pos, 0);
+         return path != null && path.canReach();
+      }).findFirst();
    }
 
    private boolean isWalkableBlock(final PathfinderMob body, final BlockPos targetPos) {

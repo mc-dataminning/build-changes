@@ -30,56 +30,56 @@ public class ServerStateService {
       Component component = systemMessage.message().asComponent().orElse(null);
       if (component == null) {
          return false;
-      } else {
-         if (systemMessage.receivingPlayers().isPresent()) {
-            if (systemMessage.receivingPlayers().get().isEmpty()) {
-               return false;
-            }
+      }
 
-            for (PlayerDto playerDto : systemMessage.receivingPlayers().get()) {
-               ServerPlayer player;
-               if (playerDto.id().isPresent()) {
-                  player = minecraftApi.playerListService().getPlayer(playerDto.id().get());
-               } else {
-                  if (!playerDto.name().isPresent()) {
-                     continue;
-                  }
-
-                  player = minecraftApi.playerListService().getPlayerByName(playerDto.name().get());
-               }
-
-               if (player != null) {
-                  player.sendSystemMessage(component, systemMessage.overlay());
-               }
-            }
-         } else {
-            minecraftApi.serverStateService().broadcastSystemMessage(component, systemMessage.overlay(), clientInfo);
+      if (systemMessage.receivingPlayers().isPresent()) {
+         if (systemMessage.receivingPlayers().get().isEmpty()) {
+            return false;
          }
 
-         return true;
+         for (PlayerDto playerDto : systemMessage.receivingPlayers().get()) {
+            ServerPlayer player;
+            if (playerDto.id().isPresent()) {
+               player = minecraftApi.playerListService().getPlayer(playerDto.id().get());
+            } else {
+               if (!playerDto.name().isPresent()) {
+                  continue;
+               }
+
+               player = minecraftApi.playerListService().getPlayerByName(playerDto.name().get());
+            }
+
+            if (player != null) {
+               player.sendSystemMessage(component, systemMessage.overlay());
+            }
+         }
+      } else {
+         minecraftApi.serverStateService().broadcastSystemMessage(component, systemMessage.overlay(), clientInfo);
       }
+
+      return true;
    }
 
-   public static record ServerState(boolean started, List<PlayerDto> players, ServerStatus.Version version) {
+   public record ServerState(boolean started, List<PlayerDto> players, ServerStatus.Version version) {
       public static final Codec<ServerStateService.ServerState> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Codec.BOOL.fieldOf("started").forGetter(ServerStateService.ServerState::started),
-                  PlayerDto.CODEC.codec().listOf().lenientOptionalFieldOf("players", List.of()).forGetter(ServerStateService.ServerState::players),
-                  ServerStatus.Version.CODEC.fieldOf("version").forGetter(ServerStateService.ServerState::version)
-               )
-               .apply(i, ServerStateService.ServerState::new)
+               Codec.BOOL.fieldOf("started").forGetter(ServerStateService.ServerState::started),
+               PlayerDto.CODEC.codec().listOf().lenientOptionalFieldOf("players", List.of()).forGetter(ServerStateService.ServerState::players),
+               ServerStatus.Version.CODEC.fieldOf("version").forGetter(ServerStateService.ServerState::version)
+            )
+            .apply(i, ServerStateService.ServerState::new)
       );
       public static final ServerStateService.ServerState NOT_STARTED = new ServerStateService.ServerState(false, List.of(), ServerStatus.Version.current());
    }
 
-   public static record SystemMessage(Message message, boolean overlay, Optional<List<PlayerDto>> receivingPlayers) {
+   public record SystemMessage(Message message, boolean overlay, Optional<List<PlayerDto>> receivingPlayers) {
       public static final Codec<ServerStateService.SystemMessage> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Message.CODEC.fieldOf("message").forGetter(ServerStateService.SystemMessage::message),
-                  Codec.BOOL.fieldOf("overlay").forGetter(ServerStateService.SystemMessage::overlay),
-                  PlayerDto.CODEC.codec().listOf().lenientOptionalFieldOf("receivingPlayers").forGetter(ServerStateService.SystemMessage::receivingPlayers)
-               )
-               .apply(i, ServerStateService.SystemMessage::new)
+               Message.CODEC.fieldOf("message").forGetter(ServerStateService.SystemMessage::message),
+               Codec.BOOL.fieldOf("overlay").forGetter(ServerStateService.SystemMessage::overlay),
+               PlayerDto.CODEC.codec().listOf().lenientOptionalFieldOf("receivingPlayers").forGetter(ServerStateService.SystemMessage::receivingPlayers)
+            )
+            .apply(i, ServerStateService.SystemMessage::new)
       );
    }
 }

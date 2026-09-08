@@ -28,7 +28,7 @@ public abstract class AbstractFurnaceBlock extends BaseEntityBlock {
 
    protected AbstractFurnaceBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(LIT, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(LIT, false));
    }
 
    @Override
@@ -79,8 +79,7 @@ public abstract class AbstractFurnaceBlock extends BaseEntityBlock {
       builder.add(FACING, LIT);
    }
 
-   @Nullable
-   protected static <T extends BlockEntity> BlockEntityTicker<T> createFurnaceTicker(
+   protected static <T extends BlockEntity> @Nullable BlockEntityTicker<T> createFurnaceTicker(
       final Level level, final BlockEntityType<T> actualType, final BlockEntityType<? extends AbstractFurnaceBlockEntity> expectedType
    ) {
       return level instanceof ServerLevel serverLevel

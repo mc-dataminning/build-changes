@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableMap;
 import com.mojang.logging.LogUtils;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
@@ -53,7 +52,6 @@ public interface RegistryAccess extends HolderLookup.Provider {
    default RegistryAccess.Frozen freeze() {
       class FrozenAccess extends RegistryAccess.ImmutableRegistryAccess implements RegistryAccess.Frozen {
          protected FrozenAccess(final Stream<RegistryAccess.RegistryEntry<?>> entries) {
-            Objects.requireNonNull(RegistryAccess.this);
             super(entries);
          }
       }
@@ -61,10 +59,10 @@ public interface RegistryAccess extends HolderLookup.Provider {
       return new FrozenAccess(this.registries().map(RegistryAccess.RegistryEntry::freeze));
    }
 
-   public interface Frozen extends RegistryAccess {
+   interface Frozen extends RegistryAccess {
    }
 
-   public static class ImmutableRegistryAccess implements RegistryAccess {
+   class ImmutableRegistryAccess implements RegistryAccess {
       private final Map<? extends ResourceKey<? extends Registry<?>>, ? extends Registry<?>> registries;
 
       public ImmutableRegistryAccess(final List<? extends Registry<?>> registries) {
@@ -90,7 +88,7 @@ public interface RegistryAccess extends HolderLookup.Provider {
       }
    }
 
-   public static record RegistryEntry<T>(ResourceKey<? extends Registry<T>> key, Registry<T> value) {
+   record RegistryEntry<T>(ResourceKey<? extends Registry<T>> key, Registry<T> value) {
       private static <T, R extends Registry<? extends T>> RegistryAccess.RegistryEntry<T> fromMapEntry(
          final Entry<? extends ResourceKey<? extends Registry<?>>, R> e
       ) {

@@ -97,16 +97,15 @@ public class TabNavigationBar extends AbstractContainerWidget {
    }
 
    @Override
-   public void setFocused(@Nullable final GuiEventListener focused) {
+   public void setFocused(final @Nullable GuiEventListener focused) {
       super.setFocused(focused);
       if (focused instanceof TabButton button && button.isActive()) {
          this.tabManager.setCurrentTab(button.tab(), true);
       }
    }
 
-   @Nullable
    @Override
-   public ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
+   public @Nullable ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
       if (!this.isFocused()) {
          TabButton button = this.currentTabButton();
          if (button != null) {
@@ -185,7 +184,7 @@ public class TabNavigationBar extends AbstractContainerWidget {
       }
    }
 
-   public void setTabTooltip(final int index, @Nullable final Tooltip hint) {
+   public void setTabTooltip(final int index, final @Nullable Tooltip hint) {
       if (index >= 0 && index < this.tabButtons.size()) {
          ((TabButton)this.tabButtons.get(index)).setTooltip(hint);
       }
@@ -227,8 +226,7 @@ public class TabNavigationBar extends AbstractContainerWidget {
       return index != -1 ? index : -1;
    }
 
-   @Nullable
-   private TabButton currentTabButton() {
+   private @Nullable TabButton currentTabButton() {
       int index = this.currentTabIndex();
       return index != -1 ? (TabButton)this.tabButtons.get(index) : null;
    }

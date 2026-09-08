@@ -17,7 +17,7 @@ public interface BlockEntityRenderer<T extends BlockEntity, S extends BlockEntit
       final S state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       BlockEntityRenderState.extractBase(blockEntity, state, breakProgress);
    }
@@ -33,6 +33,6 @@ public interface BlockEntityRenderer<T extends BlockEntity, S extends BlockEntit
    }
 
    default boolean shouldRender(final T blockEntity, final Vec3 cameraPosition) {
-      return Vec3.atCenterOf(blockEntity.getBlockPos()).closerThan(cameraPosition, (double)this.getViewDistance());
+      return Vec3.atCenterOf(blockEntity.getBlockPos()).closerThan(cameraPosition, this.getViewDistance());
    }
 }

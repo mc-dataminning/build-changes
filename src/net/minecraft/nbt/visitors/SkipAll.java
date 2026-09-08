@@ -4,8 +4,7 @@ import net.minecraft.nbt.StreamTagVisitor;
 import net.minecraft.nbt.TagType;
 
 public interface SkipAll extends StreamTagVisitor {
-   SkipAll INSTANCE = new SkipAll() {
-   };
+   SkipAll INSTANCE = new SkipAll() {};
 
    @Override
    default StreamTagVisitor.ValueResult visitEnd() {

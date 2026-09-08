@@ -15,56 +15,56 @@ public final class LongJumpUtil {
       Vec3 directionVectorPlane = new Vec3(targetPos.x - mobPos.x, 0.0, targetPos.z - mobPos.z).normalize().scale(0.5);
       Vec3 targetPosition = targetPos.subtract(directionVectorPlane);
       Vec3 directionVector = targetPosition.subtract(mobPos);
-      float angrad = (float)angle * (float) Math.PI / 180.0F;
+      float angrad = angle * (float) Math.PI / 180.0F;
       double xzAng = Math.atan2(directionVector.z, directionVector.x);
       double r2 = directionVector.subtract(0.0, directionVector.y, 0.0).lengthSqr();
       double r = Math.sqrt(r2);
       double y = directionVector.y;
       double g = body.getGravity();
-      double sin2ang = Math.sin((double)(2.0F * angrad));
-      double cosangsqr = Math.pow(Math.cos((double)angrad), 2.0);
-      double sinangrad = Math.sin((double)angrad);
-      double cosangrad = Math.cos((double)angrad);
+      double sin2ang = Math.sin(2.0F * angrad);
+      double cosangsqr = Math.pow(Math.cos(angrad), 2.0);
+      double sinangrad = Math.sin(angrad);
+      double cosangrad = Math.cos(angrad);
       double sinxzAng = Math.sin(xzAng);
       double cosxzAng = Math.cos(xzAng);
       double v0sqr = r2 * g / (r * sin2ang - 2.0 * y * cosangsqr);
       if (v0sqr < 0.0) {
          return Optional.empty();
-      } else {
-         double v0 = Math.sqrt(v0sqr);
-         if (v0 > (double)maxJumpVelocity) {
-            return Optional.empty();
-         } else {
-            double v0r = v0 * cosangrad;
-            double v0y = v0 * sinangrad;
-            if (checkCollision) {
-               int samples = Mth.ceil(r / v0r) * 2;
-               double ri = 0.0;
-               Vec3 previousPos = null;
-               EntityDimensions mobDimensions = body.getDimensions(Pose.LONG_JUMPING);
+      }
 
-               for (int i = 0; i < samples - 1; i++) {
-                  ri += r / (double)samples;
-                  double yi = sinangrad / cosangrad * ri - Math.pow(ri, 2.0) * g / (2.0 * v0sqr * Math.pow(cosangrad, 2.0));
-                  double xi = ri * cosxzAng;
-                  double zi = ri * sinxzAng;
-                  Vec3 samplePos = new Vec3(mobPos.x + xi, mobPos.y + yi, mobPos.z + zi);
-                  if (previousPos != null && !isClearTransition(body, mobDimensions, previousPos, samplePos)) {
-                     return Optional.empty();
-                  }
+      double v0 = Math.sqrt(v0sqr);
+      if (v0 > maxJumpVelocity) {
+         return Optional.empty();
+      }
 
-                  previousPos = samplePos;
-               }
+      double v0r = v0 * cosangrad;
+      double v0y = v0 * sinangrad;
+      if (checkCollision) {
+         int samples = Mth.ceil(r / v0r) * 2;
+         double ri = 0.0;
+         Vec3 previousPos = null;
+         EntityDimensions mobDimensions = body.getDimensions(Pose.LONG_JUMPING);
+
+         for (int i = 0; i < samples - 1; i++) {
+            ri += r / samples;
+            double yi = sinangrad / cosangrad * ri - Math.pow(ri, 2.0) * g / (2.0 * v0sqr * Math.pow(cosangrad, 2.0));
+            double xi = ri * cosxzAng;
+            double zi = ri * sinxzAng;
+            Vec3 samplePos = new Vec3(mobPos.x + xi, mobPos.y + yi, mobPos.z + zi);
+            if (previousPos != null && !isClearTransition(body, mobDimensions, previousPos, samplePos)) {
+               return Optional.empty();
             }
 
-            return Optional.of(new Vec3(v0r * cosxzAng, v0y, v0r * sinxzAng).scale(0.95F));
+            previousPos = samplePos;
          }
       }
+
+      return Optional.of(new Vec3(v0r * cosxzAng, v0y, v0r * sinxzAng).scale(0.95F));
    }
 
    private static boolean isClearTransition(final Mob body, final EntityDimensions entityDimensions, final Vec3 position1, final Vec3 position2) {
       Vec3 direction = position2.subtract(position1);
-      double minDimension = (double)Math.min(entityDimensions.width(), entityDimensions.height());
+      double minDimension = Math.min(entityDimensions.width(), entityDimensions.height());
       int checks = Mth.ceil(direction.length() / minDimension);
       Vec3 normalizedDirection = direction.normalize();
       Vec3 nextPointToCheck = position1;

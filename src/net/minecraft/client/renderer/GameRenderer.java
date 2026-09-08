@@ -126,8 +126,7 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
    private final GuiRenderer guiRenderer;
    private final FeatureRenderDispatcher featureRenderDispatcher;
    private final SubmitNodeStorage handAndScreenSubmitNodeStorage = new SubmitNodeStorage();
-   @Nullable
-   private Identifier spectatedEntityPostEffect;
+   private @Nullable Identifier spectatedEntityPostEffect;
    private boolean spectatedEntityEffectActive;
    private final Camera mainCamera = new Camera();
    private final Projection hudProjection = new Projection();
@@ -153,12 +152,12 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
       try {
          int maxSectionBuilders = Runtime.getRuntime().availableProcessors();
          this.renderBuffers = new RenderBuffers(maxSectionBuilders);
-      } catch (OutOfMemoryError var6) {
+      } catch (OutOfMemoryError e) {
          MessageBox.error(
             "Oh no! The game was unable to allocate memory off-heap while trying to start. You may try to free some memory by closing other applications on your computer, check that your system meets the minimum requirements, and try again. If the problem persists, please visit: "
                + CommonLinks.GENERAL_HELP
          );
-         throw new SilentInitException("Unable to allocate render buffers", var6);
+         throw new SilentInitException("Unable to allocate render buffers", e);
       }
 
       AtlasManager atlasManager = minecraft.getAtlasManager();
@@ -224,20 +223,20 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
       this.spectatedEntityEffectActive = !this.spectatedEntityEffectActive;
    }
 
-   public void checkEntityPostEffect(@Nullable final Entity cameraEntity) {
+   public void checkEntityPostEffect(final @Nullable Entity cameraEntity) {
       switch (cameraEntity) {
-         case null:
-         default:
-            this.clearSpectatedEntityPostEffect();
-            break;
          case Creeper ignored:
             this.setSpectatedEntityPostEffect(Identifier.withDefaultNamespace("creeper"));
             break;
-         case Spider ignoredx:
+         case Spider ignored:
             this.setSpectatedEntityPostEffect(Identifier.withDefaultNamespace("spider"));
             break;
-         case Enderman ignoredxx:
+         case Enderman ignored:
             this.setSpectatedEntityPostEffect(Identifier.withDefaultNamespace("invert"));
+            break;
+         case null:
+         default:
+            this.clearSpectatedEntityPostEffect();
       }
    }
 
@@ -257,22 +256,20 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
       GpuDevice device = RenderSystem.getDevice();
       final Map<Identifier, ShaderSource.CachedIncludeSource> includes = ShaderManager.listAllIncludes(resourceManager);
       ShaderSource shaderSource = new ShaderSource() {
-         @Nullable
          @Override
-         public String getShader(final Identifier id, final ShaderType type) {
+         public @Nullable String getShader(final Identifier id, final ShaderType type) {
             Identifier location = type.idConverter().idToFile(id);
 
             try {
                return resourceManager.getResourceOrThrow(location).readAllAsString();
-            } catch (Exception var5) {
-               GameRenderer.LOGGER.error("Couldn't preload shader {}", location, var5);
+            } catch (Exception exception) {
+               GameRenderer.LOGGER.error("Couldn't preload shader {}", location, exception);
                return null;
             }
          }
 
-         @Nullable
          @Override
-         public ShaderSource.CachedIncludeSource getInclude(final Identifier id) {
+         public ShaderSource.@Nullable CachedIncludeSource getInclude(final Identifier id) {
             return includes.get(id);
          }
 
@@ -314,8 +311,7 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
       }
    }
 
-   @Nullable
-   public Identifier spectatedEntityPostEffect() {
+   public @Nullable Identifier spectatedEntityPostEffect() {
       return this.spectatedEntityPostEffect;
    }
 
@@ -352,11 +348,11 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
             return;
          }
 
-         hurt /= (float)cameraState.entityRenderState.hurtDuration;
-         hurt = Mth.sin((double)(hurt * hurt * hurt * hurt * (float) Math.PI));
+         hurt /= cameraState.entityRenderState.hurtDuration;
+         hurt = Mth.sin(hurt * hurt * hurt * hurt * (float) Math.PI);
          float rr = cameraState.entityRenderState.hurtDir;
          poseStack.rotateDegrees(Axis.YP, -rr);
-         float tiltAmount = (float)((double)(-hurt) * 14.0 * this.gameRenderState.optionsRenderState.damageTiltStrength);
+         float tiltAmount = (float)(-hurt * 14.0 * this.gameRenderState.optionsRenderState.damageTiltStrength);
          poseStack.rotateDegrees(Axis.ZP, tiltAmount);
          poseStack.rotateDegrees(Axis.YP, rr);
       }
@@ -367,12 +363,12 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
          float backwardsInterpolatedWalkDistance = cameraState.entityRenderState.backwardsInterpolatedWalkDistance;
          float bob = cameraState.entityRenderState.bob;
          poseStack.translate(
-            Mth.sin((double)(backwardsInterpolatedWalkDistance * (float) Math.PI)) * bob * 0.5F,
-            -Math.abs(Mth.cos((double)(backwardsInterpolatedWalkDistance * (float) Math.PI)) * bob),
+            Mth.sin(backwardsInterpolatedWalkDistance * (float) Math.PI) * bob * 0.5F,
+            -Math.abs(Mth.cos(backwardsInterpolatedWalkDistance * (float) Math.PI) * bob),
             0.0F
          );
-         poseStack.rotateDegrees(Axis.ZP, Mth.sin((double)(backwardsInterpolatedWalkDistance * (float) Math.PI)) * bob * 3.0F);
-         poseStack.rotateDegrees(Axis.XP, Math.abs(Mth.cos((double)(backwardsInterpolatedWalkDistance * (float) Math.PI - 0.2F)) * bob) * 5.0F);
+         poseStack.rotateDegrees(Axis.ZP, Mth.sin(backwardsInterpolatedWalkDistance * (float) Math.PI) * bob * 3.0F);
+         poseStack.rotateDegrees(Axis.XP, Math.abs(Mth.cos(backwardsInterpolatedWalkDistance * (float) Math.PI - 0.2F) * bob) * 5.0F);
       }
    }
 
@@ -420,7 +416,7 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
 
    public static float nightVisionScale(final LivingEntity camera, final float a) {
       MobEffectInstance nightVision = camera.getEffect(MobEffects.NIGHT_VISION);
-      return !nightVision.endsWithin(200) ? 1.0F : 0.7F + Mth.sin((double)(((float)nightVision.getDuration() - a) * (float) Math.PI * 0.2F)) * 0.3F;
+      return !nightVision.endsWithin(200) ? 1.0F : 0.7F + Mth.sin((nightVision.getDuration() - a) * (float) Math.PI * 0.2F) * 0.3F;
    }
 
    public void update(final DeltaTracker deltaTracker) {
@@ -537,8 +533,8 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
                   previousPostEffects.remove(postChain);
                }
             }
-         } catch (RuntimeException var7) {
-            LOGGER.warn("Failed to load post effect {}", postEffect, var7);
+         } catch (RuntimeException e) {
+            LOGGER.warn("Failed to load post effect {}", postEffect, e);
             this.failedPostEffects.add(postEffect);
          }
       }
@@ -552,8 +548,8 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
       for (PostChain postChain : this.appliedPostEffects) {
          try {
             postChain.process(this.mainRenderTarget, this.resourcePool);
-         } catch (RuntimeException var4) {
-            LOGGER.warn("Failed to apply post effect {}", postChain.id(), var4);
+         } catch (RuntimeException e) {
+            LOGGER.warn("Failed to apply post effect {}", postChain.id(), e);
             this.failedPostEffects.add(postChain.id());
          }
       }
@@ -581,55 +577,55 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
    private void takeAutoScreenshot(final Path screenshotFile) {
       if (this.minecraft.levelExtractor.countRenderedSections() > 10 && this.minecraft.levelRenderer.hasRenderedAllSections()) {
          Screenshot.takeScreenshot(this.mainRenderTarget, screenshot -> Util.ioPool().execute(() -> {
-               int width = screenshot.getWidth();
-               int height = screenshot.getHeight();
-               int x = 0;
-               int y = 0;
-               if (width > height) {
-                  x = (width - height) / 2;
-                  width = height;
-               } else {
-                  y = (height - width) / 2;
-                  height = width;
-               }
+            int width = screenshot.getWidth();
+            int height = screenshot.getHeight();
+            int x = 0;
+            int y = 0;
+            if (width > height) {
+               x = (width - height) / 2;
+               width = height;
+            } else {
+               y = (height - width) / 2;
+               height = width;
+            }
 
-               try (NativeImage scaled = new NativeImage(64, 64, false)) {
-                  screenshot.resizeSubRectTo(x, y, width, height, scaled);
-                  scaled.writeToFile(screenshotFile);
-               } catch (IOException var16) {
-                  LOGGER.warn("Couldn't save auto screenshot", var16);
-               } finally {
-                  screenshot.close();
-               }
-            }));
+            try (NativeImage scaled = new NativeImage(64, 64, false)) {
+               screenshot.resizeSubRectTo(x, y, width, height, scaled);
+               scaled.writeToFile(screenshotFile);
+            } catch (IOException e) {
+               LOGGER.warn("Couldn't save auto screenshot", e);
+            } finally {
+               screenshot.close();
+            }
+         }));
       }
    }
 
    private boolean shouldRenderBlockOutline() {
       if (!this.renderBlockOutline) {
          return false;
-      } else {
-         Entity cameraEntity = this.minecraft.getCameraEntity();
-         boolean renderOutline = cameraEntity instanceof Player && !this.minecraft.gui.hud.isHidden();
-         if (renderOutline && !((Player)cameraEntity).getAbilities().mayBuild) {
-            ItemStack itemStack = ((LivingEntity)cameraEntity).getMainHandItem();
-            HitResult hitResult = this.minecraft.hitResult;
-            if (hitResult != null && hitResult.getType() == HitResult.Type.BLOCK) {
-               BlockHitResult blockHitResult = (BlockHitResult)hitResult;
-               BlockPos pos = blockHitResult.getBlockPos();
-               if (this.minecraft.gameMode.getPlayerMode() == GameType.SPECTATOR) {
-                  BlockState blockState = this.minecraft.level.getBlockState(pos);
-                  renderOutline = blockState.showAsInteractableInSpectatorMode(this.minecraft.level, pos, blockHitResult);
-               } else {
-                  BlockInWorld blockInWorld = new BlockInWorld(this.minecraft.level, pos, false);
-                  renderOutline = !itemStack.isEmpty()
-                     && (itemStack.canBreakBlockInAdventureMode(blockInWorld) || itemStack.canPlaceOnBlockInAdventureMode(blockInWorld));
-               }
+      }
+
+      Entity cameraEntity = this.minecraft.getCameraEntity();
+      boolean renderOutline = cameraEntity instanceof Player && !this.minecraft.gui.hud.isHidden();
+      if (renderOutline && !((Player)cameraEntity).getAbilities().mayBuild) {
+         ItemStack itemStack = ((LivingEntity)cameraEntity).getMainHandItem();
+         HitResult hitResult = this.minecraft.hitResult;
+         if (hitResult != null && hitResult.getType() == HitResult.Type.BLOCK) {
+            BlockHitResult blockHitResult = (BlockHitResult)hitResult;
+            BlockPos pos = blockHitResult.getBlockPos();
+            if (this.minecraft.gameMode.getPlayerMode() == GameType.SPECTATOR) {
+               BlockState blockState = this.minecraft.level.getBlockState(pos);
+               renderOutline = blockState.showAsInteractableInSpectatorMode(this.minecraft.level, pos, blockHitResult);
+            } else {
+               BlockInWorld blockInWorld = new BlockInWorld(this.minecraft.level, pos, false);
+               renderOutline = !itemStack.isEmpty()
+                  && (itemStack.canBreakBlockInAdventureMode(blockInWorld) || itemStack.canPlaceOnBlockInAdventureMode(blockInWorld));
             }
          }
-
-         return renderOutline;
       }
+
+      return renderOutline;
    }
 
    public void renderLevel() {
@@ -651,7 +647,7 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
       float screenEffectScale = optionsState.screenEffectScale;
       float portalIntensity = playerState.portalEffectIntensity;
       float nauseaIntensity = playerState.nauseaEffectIntensity;
-      float spinningEffectIntensity = Math.max(portalIntensity, nauseaIntensity) * screenEffectScale * screenEffectScale;
+      float spinningEffectIntensity = Math.max(portalIntensity, nauseaIntensity) * (screenEffectScale * screenEffectScale);
       if (spinningEffectIntensity > 0.0F) {
          float skew = 5.0F / (spinningEffectIntensity * spinningEffectIntensity + 5.0F) - spinningEffectIntensity * 0.04F;
          skew *= skew;
@@ -682,11 +678,7 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
       profiler.popPush("hand");
       this.hudProjection
          .setupPerspective(
-            0.05F,
-            cameraState.depthFar,
-            cameraState.hudFov,
-            (float)this.gameRenderState.windowRenderState.width,
-            (float)this.gameRenderState.windowRenderState.height
+            0.05F, cameraState.depthFar, cameraState.hudFov, this.gameRenderState.windowRenderState.width, this.gameRenderState.windowRenderState.height
          );
       RenderSystem.setProjectionMatrix(this.hud3dProjectionMatrixBuffer.getBuffer(this.hudProjection), ProjectionType.PERSPECTIVE);
       GpuTexture depthTexture = consistentDepthRequired ? this.hud3DTarget.getDepthTexture() : this.mainRenderTarget.getDepthTexture();
@@ -841,19 +833,21 @@ public class GameRenderer implements AutoCloseable, TrackedWaypoint.Projector, R
       float xRot = this.mainCamera.xRot();
       if (xRot <= -90.0F) {
          return Double.NEGATIVE_INFINITY;
-      } else if (xRot >= 90.0F) {
-         return Double.POSITIVE_INFINITY;
-      } else {
-         float fov = this.mainCamera.getFov();
-         return Math.tan((double)(xRot * (float) (Math.PI / 180.0))) / Math.tan((double)(fov / 2.0F * (float) (Math.PI / 180.0)));
       }
+
+      if (xRot >= 90.0F) {
+         return Double.POSITIVE_INFINITY;
+      }
+
+      float fov = this.mainCamera.getFov();
+      return Math.tan(xRot * (float) (Math.PI / 180.0)) / Math.tan(fov / 2.0F * (float) (Math.PI / 180.0));
    }
 
    public Lighting lighting() {
       return this.lighting;
    }
 
-   public void setLevel(@Nullable final ClientLevel level) {
+   public void setLevel(final @Nullable ClientLevel level) {
       if (level != null) {
          this.lighting.updateLevel(level.dimensionType().cardinalLightType());
       }

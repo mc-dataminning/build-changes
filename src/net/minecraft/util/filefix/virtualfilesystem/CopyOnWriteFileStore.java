@@ -57,9 +57,8 @@ public class CopyOnWriteFileStore extends FileStore {
       return "basic".equals(name);
    }
 
-   @Nullable
    @Override
-   public <V extends FileStoreAttributeView> V getFileStoreAttributeView(final Class<V> type) {
+   public <V extends FileStoreAttributeView> @Nullable V getFileStoreAttributeView(final Class<V> type) {
       throw new UnsupportedOperationException();
    }
 

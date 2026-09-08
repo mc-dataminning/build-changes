@@ -38,15 +38,15 @@ public class SetRandomDyesFunction extends LootItemConditionalFunction {
       int rolls = this.numberOfDyes.value().getInt(context);
       if (rolls <= 0) {
          return itemStack;
-      } else {
-         List<DyeColor> dyes = new ArrayList<>(rolls);
-
-         for (int i = 0; i < rolls; i++) {
-            dyes.add(Util.getRandom(DyeColor.VALUES, random));
-         }
-
-         return DyedItemColor.applyDyes(itemStack, dyes);
       }
+
+      List<DyeColor> dyes = new ArrayList<>(rolls);
+
+      for (int i = 0; i < rolls; i++) {
+         dyes.add(Util.getRandom(DyeColor.VALUES, random));
+      }
+
+      return DyedItemColor.applyDyes(itemStack, dyes);
    }
 
    public static LootItemConditionalFunction.Builder<?> withCount(final Holder<ContextIntProvider> numberOfDyes) {

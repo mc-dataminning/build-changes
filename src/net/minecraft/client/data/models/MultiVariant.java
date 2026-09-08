@@ -10,11 +10,9 @@ import net.minecraft.util.random.Weighted;
 import net.minecraft.util.random.WeightedList;
 
 public record MultiVariant(WeightedList<Variant> variants) {
-   public MultiVariant(WeightedList<Variant> variants) {
+   public MultiVariant {
       if (variants.isEmpty()) {
          throw new IllegalArgumentException("Variant list must contain at least one element");
-      } else {
-         this.variants = variants;
       }
    }
 
@@ -24,8 +22,8 @@ public record MultiVariant(WeightedList<Variant> variants) {
 
    public BlockStateModel.Unbaked toUnbaked() {
       List<Weighted<Variant>> entries = this.variants.unwrap();
-      return (BlockStateModel.Unbaked)(entries.size() == 1
+      return entries.size() == 1
          ? new SingleVariant.Unbaked(entries.getFirst().value())
-         : new WeightedVariants.Unbaked(this.variants.map(SingleVariant.Unbaked::new)));
+         : new WeightedVariants.Unbaked(this.variants.map(SingleVariant.Unbaked::new));
    }
 }

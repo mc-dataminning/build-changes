@@ -16,10 +16,10 @@ public record ModelAndTexture<T>(T model, ClientAsset.ResourceTexture asset) {
    public static <T> MapCodec<ModelAndTexture<T>> codec(final Codec<T> modelCodec, final T defaultModel) {
       return RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  modelCodec.optionalFieldOf("model", defaultModel).forGetter(ModelAndTexture::model),
-                  ClientAsset.ResourceTexture.DEFAULT_FIELD_CODEC.forGetter(ModelAndTexture::asset)
-               )
-               .apply(i, ModelAndTexture::new)
+               modelCodec.optionalFieldOf("model", defaultModel).forGetter(ModelAndTexture::model),
+               ClientAsset.ResourceTexture.DEFAULT_FIELD_CODEC.forGetter(ModelAndTexture::asset)
+            )
+            .apply(i, ModelAndTexture::new)
       );
    }
 

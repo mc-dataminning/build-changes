@@ -28,7 +28,7 @@ public class BubblePopParticle extends SingleQuadParticle {
       if (this.age++ >= this.lifetime) {
          this.remove();
       } else {
-         this.yd = this.yd - (double)this.gravity;
+         this.yd = this.yd - this.gravity;
          this.move(this.xd, this.yd, this.zd);
          this.setSpriteFromAge(this.sprites);
       }

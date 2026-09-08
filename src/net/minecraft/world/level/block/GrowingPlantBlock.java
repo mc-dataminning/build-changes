@@ -27,9 +27,8 @@ public abstract class GrowingPlantBlock extends Block {
       this.scheduleFluidTicks = scheduleFluidTicks;
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockState growthDirectionState = context.getLevel().getBlockState(context.getClickedPos().relative(this.growthDirection));
       return !growthDirectionState.is(this.getHeadBlock()) && !growthDirectionState.is(this.getBodyBlock())
          ? this.getStateForPlacement(context.getLevel().getRandom())

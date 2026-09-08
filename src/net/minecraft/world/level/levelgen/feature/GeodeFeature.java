@@ -52,21 +52,21 @@ public record GeodeFeature(
    public static final Codec<Double> CHANCE_RANGE = Codec.doubleRange(0.0, 1.0);
    public static final MapCodec<GeodeFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               GeodeBlockSettings.CODEC.fieldOf("blocks").forGetter(GeodeFeature::blockSettings),
-               GeodeLayerSettings.CODEC.fieldOf("layers").forGetter(GeodeFeature::layerSettings),
-               GeodeCrackSettings.CODEC.fieldOf("crack").forGetter(GeodeFeature::crackSettings),
-               CHANCE_RANGE.optionalFieldOf("use_potential_placements_chance", 0.35).forGetter(GeodeFeature::usePotentialPlacementsChance),
-               CHANCE_RANGE.optionalFieldOf("use_alternate_layer0_chance", 0.0).forGetter(GeodeFeature::useAlternateLayer0Chance),
-               Codec.BOOL.optionalFieldOf("placements_require_layer0_alternate", true).forGetter(GeodeFeature::placementsRequireLayer0Alternate),
-               IntProviders.codec(1, 20).optionalFieldOf("outer_wall_distance", UniformInt.of(4, 5)).forGetter(GeodeFeature::outerWallDistance),
-               IntProviders.codec(1, 20).optionalFieldOf("distribution_points", UniformInt.of(3, 4)).forGetter(GeodeFeature::distributionPoints),
-               IntProviders.codec(0, 10).optionalFieldOf("point_offset", UniformInt.of(1, 2)).forGetter(GeodeFeature::pointOffset),
-               Codec.INT.optionalFieldOf("min_gen_offset", -16).forGetter(GeodeFeature::minGenOffset),
-               Codec.INT.optionalFieldOf("max_gen_offset", 16).forGetter(GeodeFeature::maxGenOffset),
-               CHANCE_RANGE.optionalFieldOf("noise_multiplier", 0.05).forGetter(GeodeFeature::noiseMultiplier),
-               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter(GeodeFeature::invalidBlocksThreshold)
-            )
-            .apply(i, GeodeFeature::new)
+            GeodeBlockSettings.CODEC.fieldOf("blocks").forGetter(GeodeFeature::blockSettings),
+            GeodeLayerSettings.CODEC.fieldOf("layers").forGetter(GeodeFeature::layerSettings),
+            GeodeCrackSettings.CODEC.fieldOf("crack").forGetter(GeodeFeature::crackSettings),
+            CHANCE_RANGE.optionalFieldOf("use_potential_placements_chance", 0.35).forGetter(GeodeFeature::usePotentialPlacementsChance),
+            CHANCE_RANGE.optionalFieldOf("use_alternate_layer0_chance", 0.0).forGetter(GeodeFeature::useAlternateLayer0Chance),
+            Codec.BOOL.optionalFieldOf("placements_require_layer0_alternate", true).forGetter(GeodeFeature::placementsRequireLayer0Alternate),
+            IntProviders.codec(1, 20).optionalFieldOf("outer_wall_distance", UniformInt.of(4, 5)).forGetter(GeodeFeature::outerWallDistance),
+            IntProviders.codec(1, 20).optionalFieldOf("distribution_points", UniformInt.of(3, 4)).forGetter(GeodeFeature::distributionPoints),
+            IntProviders.codec(0, 10).optionalFieldOf("point_offset", UniformInt.of(1, 2)).forGetter(GeodeFeature::pointOffset),
+            Codec.INT.optionalFieldOf("min_gen_offset", -16).forGetter(GeodeFeature::minGenOffset),
+            Codec.INT.optionalFieldOf("max_gen_offset", 16).forGetter(GeodeFeature::maxGenOffset),
+            CHANCE_RANGE.optionalFieldOf("noise_multiplier", 0.05).forGetter(GeodeFeature::noiseMultiplier),
+            Codec.INT.fieldOf("invalid_blocks_threshold").forGetter(GeodeFeature::invalidBlocksThreshold)
+         )
+         .apply(i, GeodeFeature::new)
    );
    private static final Direction[] DIRECTIONS = Direction.values();
 
@@ -81,13 +81,13 @@ public record GeodeFeature(
       int numPoints = this.distributionPoints.sample(random);
       Noise noise = NOISE_PARAMETERS.create(new WorldgenRandom(new LegacyRandomSource(level.getSeed())));
       List<BlockPos> crackPoints = Lists.newLinkedList();
-      double crackSizeAdjustment = (double)numPoints / (double)this.outerWallDistance.maxInclusive();
+      double crackSizeAdjustment = (double)numPoints / this.outerWallDistance.maxInclusive();
       double innerAir = 1.0 / Math.sqrt(this.layerSettings.filling);
       double innermostBlockLayer = 1.0 / Math.sqrt(this.layerSettings.innerLayer + crackSizeAdjustment);
       double innerCrust = 1.0 / Math.sqrt(this.layerSettings.middleLayer + crackSizeAdjustment);
       double outerCrust = 1.0 / Math.sqrt(this.layerSettings.outerLayer + crackSizeAdjustment);
       double crackSize = 1.0 / Math.sqrt(this.crackSettings.baseCrackSize + random.nextDouble() / 2.0 + (numPoints > 3 ? crackSizeAdjustment : 0.0));
-      boolean shouldGenerateCrack = (double)random.nextFloat() < this.crackSettings.generateCrackChance;
+      boolean shouldGenerateCrack = random.nextFloat() < this.crackSettings.generateCrackChance;
       int numInvalidPoints = 0;
 
       for (int i = 0; i < numPoints; i++) {
@@ -134,11 +134,11 @@ public record GeodeFeature(
       for (BlockPos pointInside : BlockPos.betweenClosed(
          origin.offset(this.minGenOffset, this.minGenOffset, this.minGenOffset), origin.offset(this.maxGenOffset, this.maxGenOffset, this.maxGenOffset)
       )) {
-         double noiseOffset = (double)noise.get((double)pointInside.getX(), (double)pointInside.getY(), (double)pointInside.getZ()) * this.noiseMultiplier;
+         double noiseOffset = noise.get(pointInside.getX(), pointInside.getY(), pointInside.getZ()) * this.noiseMultiplier;
          double distSumShell = 0.0;
 
          for (Pair<BlockPos, Integer> point : points) {
-            distSumShell += Mth.invSqrt(pointInside.distSqr((Vec3i)point.getFirst()) + (double)((Integer)point.getSecond()).intValue()) + noiseOffset;
+            distSumShell += Mth.invSqrt(pointInside.distSqr((Vec3i)point.getFirst()) + ((Integer)point.getSecond()).intValue()) + noiseOffset;
          }
 
          if (!(distSumShell < outerCrust)) {
@@ -148,7 +148,7 @@ public record GeodeFeature(
                double distSumCrack = 0.0;
 
                for (BlockPos point : crackPoints) {
-                  distSumCrack += Mth.invSqrt(pointInside.distSqr(point) + (double)this.crackSettings.crackPointOffset) + noiseOffset;
+                  distSumCrack += Mth.invSqrt(pointInside.distSqr(point) + this.crackSettings.crackPointOffset) + noiseOffset;
                }
 
                if (shouldGenerateCrack && distSumCrack >= crackSize) {
@@ -162,7 +162,7 @@ public record GeodeFeature(
                      }
                   }
                } else if (distSumShell >= innermostBlockLayer) {
-                  boolean useAlternateLayer = (double)random.nextFloat() < this.useAlternateLayer0Chance;
+                  boolean useAlternateLayer = random.nextFloat() < this.useAlternateLayer0Chance;
                   if (useAlternateLayer) {
                      this.safeSetBlock(
                         level, pointInside, this.blockSettings.alternateInnerLayerProvider().value().getState(level, random, pointInside), canReplace
@@ -171,7 +171,7 @@ public record GeodeFeature(
                      this.safeSetBlock(level, pointInside, this.blockSettings.innerLayerProvider().value().getState(level, random, pointInside), canReplace);
                   }
 
-                  if ((!this.placementsRequireLayer0Alternate || useAlternateLayer) && (double)random.nextFloat() < this.usePotentialPlacementsChance) {
+                  if ((!this.placementsRequireLayer0Alternate || useAlternateLayer) && random.nextFloat() < this.usePotentialPlacementsChance) {
                      potentialCrystalPlacements.add(pointInside.immutable());
                   }
                } else if (distSumShell >= innerCrust) {
@@ -188,15 +188,15 @@ public record GeodeFeature(
       for (BlockPos crystalPos : potentialCrystalPlacements) {
          BlockState blockState = Util.getRandom(innerPlacements, random);
 
-         for (Direction directionx : DIRECTIONS) {
+         for (Direction direction : DIRECTIONS) {
             if (blockState.hasProperty(BlockStateProperties.FACING)) {
-               blockState = blockState.setValue(BlockStateProperties.FACING, directionx);
+               blockState = blockState.setValue(BlockStateProperties.FACING, direction);
             }
 
-            BlockPos placePos = crystalPos.relative(directionx);
+            BlockPos placePos = crystalPos.relative(direction);
             BlockState placeState = level.getBlockState(placePos);
             if (blockState.hasProperty(BlockStateProperties.WATERLOGGED)) {
-               blockState = blockState.setValue(BlockStateProperties.WATERLOGGED, Boolean.valueOf(placeState.getFluidState().isSource()));
+               blockState = blockState.setValue(BlockStateProperties.WATERLOGGED, placeState.getFluidState().isSource());
             }
 
             if (BuddingAmethystBlock.canClusterGrowAtState(placeState)) {

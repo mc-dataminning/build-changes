@@ -53,12 +53,10 @@ public class Guardian extends Monster {
    private float clientSideTailAnimationSpeed;
    private float clientSideSpikesAnimation;
    private float clientSideSpikesAnimationO;
-   @Nullable
-   private LivingEntity clientSideCachedAttackTarget;
+   private @Nullable LivingEntity clientSideCachedAttackTarget;
    private int clientSideAttackTime;
    private boolean clientSideTouchedGround;
-   @Nullable
-   protected RandomStrollGoal randomStrollGoal;
+   protected @Nullable RandomStrollGoal randomStrollGoal;
 
    public Guardian(final EntityType<? extends Guardian> type, final Level level) {
       super(type, level);
@@ -120,11 +118,12 @@ public class Guardian extends Monster {
       return this.entityData.get(DATA_ID_ATTACK_TARGET) != 0;
    }
 
-   @Nullable
-   public LivingEntity getActiveAttackTarget() {
+   public @Nullable LivingEntity getActiveAttackTarget() {
       if (!this.hasActiveAttackTarget()) {
          return null;
-      } else if (this.level().isClientSide()) {
+      }
+
+      if (this.level().isClientSide()) {
          if (this.clientSideCachedAttackTarget != null) {
             return this.clientSideCachedAttackTarget;
          } else if (this.level().getEntity(this.entityData.get(DATA_ID_ATTACK_TARGET)) instanceof LivingEntity livingEntity) {
@@ -236,7 +235,7 @@ public class Guardian extends Monster {
                if (attackTarget != null) {
                   this.getLookControl().setLookAt(attackTarget, 90.0F, 90.0F);
                   this.getLookControl().tick();
-                  double at = (double)this.getAttackAnimationScale(0.0F);
+                  double at = this.getAttackAnimationScale(0.0F);
                   double dx = attackTarget.getX() - this.getX();
                   double dy = attackTarget.getY(0.5) - this.getEyeY();
                   double dz = attackTarget.getZ() - this.getZ();
@@ -259,8 +258,7 @@ public class Guardian extends Monster {
             this.setAirSupply(300);
          } else if (this.onGround()) {
             this.setDeltaMovement(
-               this.getDeltaMovement()
-                  .add((double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.4F), 0.5, (double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.4F))
+               this.getDeltaMovement().add((this.random.nextFloat() * 2.0F - 1.0F) * 0.4F, 0.5, (this.random.nextFloat() * 2.0F - 1.0F) * 0.4F)
             );
             this.setYRot(this.random.nextFloat() * 360.0F);
             this.setOnGround(false);
@@ -288,11 +286,11 @@ public class Guardian extends Monster {
    }
 
    public float getAttackAnimationScale(final float a) {
-      return ((float)this.clientSideAttackTime + a) / (float)this.getAttackDuration();
+      return (this.clientSideAttackTime + a) / this.getAttackDuration();
    }
 
    public float getClientSideAttackTime() {
-      return (float)this.clientSideAttackTime;
+      return this.clientSideAttackTime;
    }
 
    @Override
@@ -431,7 +429,7 @@ public class Guardian extends Monster {
       }
 
       @Override
-      public boolean test(@Nullable final LivingEntity target, final ServerLevel level) {
+      public boolean test(final @Nullable LivingEntity target, final ServerLevel level) {
          return (target instanceof Player || target instanceof Squid || target instanceof Axolotl) && target.distanceToSqr(this.guardian) > 9.0;
       }
    }
@@ -455,11 +453,11 @@ public class Guardian extends Monster {
             float targetSpeed = (float)(this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED));
             float newSpeed = Mth.lerp(0.125F, this.mob.getSpeed(), targetSpeed);
             this.mob.setSpeed(newSpeed);
-            double push = Math.sin((double)(this.mob.tickCount + this.mob.getId()) * 0.5) * 0.05;
-            double cos = Math.cos((double)(this.mob.getYRot() * (float) (Math.PI / 180.0)));
-            double sin = Math.sin((double)(this.mob.getYRot() * (float) (Math.PI / 180.0)));
-            double yPush = Math.sin((double)(this.mob.tickCount + this.mob.getId()) * 0.75) * 0.05;
-            this.mob.setDeltaMovement(this.mob.getDeltaMovement().add(push * cos, yPush * (sin + cos) * 0.25 + (double)newSpeed * yd * 0.1, push * sin));
+            double push = Math.sin((this.mob.tickCount + this.mob.getId()) * 0.5) * 0.05;
+            double cos = Math.cos(this.mob.getYRot() * (float) (Math.PI / 180.0));
+            double sin = Math.sin(this.mob.getYRot() * (float) (Math.PI / 180.0));
+            double yPush = Math.sin((this.mob.tickCount + this.mob.getId()) * 0.75) * 0.05;
+            this.mob.setDeltaMovement(this.mob.getDeltaMovement().add(push * cos, yPush * (sin + cos) * 0.25 + newSpeed * yd * 0.1, push * sin));
             LookControl control = this.mob.getLookControl();
             double newLookX = this.mob.getX() + xd * 2.0;
             double newLookY = this.mob.getEyeY() + yd / length;

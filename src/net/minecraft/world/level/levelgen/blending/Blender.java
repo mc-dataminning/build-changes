@@ -6,7 +6,6 @@ import com.google.common.collect.ImmutableMap.Builder;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.CompositeDirection;
@@ -66,48 +65,47 @@ public class Blender {
    private static final double OLD_CHUNK_XZ_RADIUS = 8.0;
    private final Long2ObjectOpenHashMap<BlendingData> heightAndBiomeBlendingData;
    private final Long2ObjectOpenHashMap<BlendingData> densityBlendingData;
-   @Nullable
-   private final CarvingMask.Filter carvingFilter;
+   private final CarvingMask.@Nullable Filter carvingFilter;
 
    public static Blender empty() {
       return EMPTY;
    }
 
-   public static Blender of(@Nullable final WorldGenRegion region) {
+   public static Blender of(final @Nullable WorldGenRegion region) {
       if (!SharedConstants.DEBUG_DISABLE_BLENDING && region != null) {
          ChunkPos centerPos = region.getCenter();
          if (!region.isOldChunkAround(centerPos, HEIGHT_BLENDING_RANGE_CHUNKS)) {
             return EMPTY;
-         } else {
-            Long2ObjectOpenHashMap<BlendingData> heightAndBiomeData = new Long2ObjectOpenHashMap();
-            Long2ObjectOpenHashMap<BlendingData> densityData = new Long2ObjectOpenHashMap();
-            int maxDistSq = Mth.square(HEIGHT_BLENDING_RANGE_CHUNKS + 1);
+         }
 
-            for (int dx = -HEIGHT_BLENDING_RANGE_CHUNKS; dx <= HEIGHT_BLENDING_RANGE_CHUNKS; dx++) {
-               for (int dz = -HEIGHT_BLENDING_RANGE_CHUNKS; dz <= HEIGHT_BLENDING_RANGE_CHUNKS; dz++) {
-                  if (dx * dx + dz * dz <= maxDistSq) {
-                     int chunkX = centerPos.x() + dx;
-                     int chunkZ = centerPos.z() + dz;
-                     BlendingData blendingData = BlendingData.getOrUpdateBlendingData(region, chunkX, chunkZ);
-                     if (blendingData != null) {
-                        heightAndBiomeData.put(ChunkPos.pack(chunkX, chunkZ), blendingData);
-                        if (dx >= -DENSITY_BLENDING_RANGE_CHUNKS
-                           && dx <= DENSITY_BLENDING_RANGE_CHUNKS
-                           && dz >= -DENSITY_BLENDING_RANGE_CHUNKS
-                           && dz <= DENSITY_BLENDING_RANGE_CHUNKS) {
-                           densityData.put(ChunkPos.pack(chunkX, chunkZ), blendingData);
-                        }
+         Long2ObjectOpenHashMap<BlendingData> heightAndBiomeData = new Long2ObjectOpenHashMap();
+         Long2ObjectOpenHashMap<BlendingData> densityData = new Long2ObjectOpenHashMap();
+         int maxDistSq = Mth.square(HEIGHT_BLENDING_RANGE_CHUNKS + 1);
+
+         for (int dx = -HEIGHT_BLENDING_RANGE_CHUNKS; dx <= HEIGHT_BLENDING_RANGE_CHUNKS; dx++) {
+            for (int dz = -HEIGHT_BLENDING_RANGE_CHUNKS; dz <= HEIGHT_BLENDING_RANGE_CHUNKS; dz++) {
+               if (dx * dx + dz * dz <= maxDistSq) {
+                  int chunkX = centerPos.x() + dx;
+                  int chunkZ = centerPos.z() + dz;
+                  BlendingData blendingData = BlendingData.getOrUpdateBlendingData(region, chunkX, chunkZ);
+                  if (blendingData != null) {
+                     heightAndBiomeData.put(ChunkPos.pack(chunkX, chunkZ), blendingData);
+                     if (dx >= -DENSITY_BLENDING_RANGE_CHUNKS
+                        && dx <= DENSITY_BLENDING_RANGE_CHUNKS
+                        && dz >= -DENSITY_BLENDING_RANGE_CHUNKS
+                        && dz <= DENSITY_BLENDING_RANGE_CHUNKS) {
+                        densityData.put(ChunkPos.pack(chunkX, chunkZ), blendingData);
                      }
                   }
                }
             }
-
-            ChunkAccess centerChunk = region.getChunk(centerPos.x(), centerPos.z());
-            CarvingMask.Filter carvingFilter = createAroundOldChunksCarvingMaskFilter(region, centerChunk);
-            return heightAndBiomeData.isEmpty() && densityData.isEmpty() && carvingFilter == null
-               ? EMPTY
-               : new Blender(heightAndBiomeData, densityData, carvingFilter);
          }
+
+         ChunkAccess centerChunk = region.getChunk(centerPos.x(), centerPos.z());
+         CarvingMask.Filter carvingFilter = createAroundOldChunksCarvingMaskFilter(region, centerChunk);
+         return heightAndBiomeData.isEmpty() && densityData.isEmpty() && carvingFilter == null
+            ? EMPTY
+            : new Blender(heightAndBiomeData, densityData, carvingFilter);
       } else {
          return EMPTY;
       }
@@ -116,7 +114,7 @@ public class Blender {
    private Blender(
       final Long2ObjectOpenHashMap<BlendingData> heightAndBiomeBlendingData,
       final Long2ObjectOpenHashMap<BlendingData> densityBlendingData,
-      @Nullable final CarvingMask.Filter carvingFilter
+      final CarvingMask.@Nullable Filter carvingFilter
    ) {
       this.heightAndBiomeBlendingData = heightAndBiomeBlendingData;
       this.densityBlendingData = densityBlendingData;
@@ -154,37 +152,37 @@ public class Blender {
       int cellZ = QuartPos.fromBlock(blockZ);
       float fixedHeight = this.getBlendingDataValue(cellX, 0, cellZ, BlendingData::getHeight);
       if (fixedHeight != Float.MAX_VALUE) {
-         return new Blender.BlendingOutput(0.0F, (float)heightToOffset((double)fixedHeight));
-      } else {
-         MutableDouble totalWeight = new MutableDouble(0.0);
-         MutableDouble weightedHeights = new MutableDouble(0.0);
-         MutableDouble closestDistance = new MutableDouble(Double.POSITIVE_INFINITY);
-         this.heightAndBiomeBlendingData
-            .forEach(
-               (chunkPos, blendingData) -> blendingData.iterateHeights(
-                     QuartPos.fromSection(ChunkPos.getX(chunkPos)), QuartPos.fromSection(ChunkPos.getZ(chunkPos)), (testCellX, testCellZ, height) -> {
-                        double distance = (double)Mth.length((float)(cellX - testCellX), (float)(cellZ - testCellZ));
-                        if (!(distance > (double)HEIGHT_BLENDING_RANGE_CELLS)) {
-                           if (distance < closestDistance.doubleValue()) {
-                              closestDistance.setValue(distance);
-                           }
-
-                           double weight = 1.0 / (distance * distance * distance * distance);
-                           weightedHeights.add((double)height * weight);
-                           totalWeight.add(weight);
-                        }
-                     }
-                  )
-            );
-         if (closestDistance.doubleValue() == Double.POSITIVE_INFINITY) {
-            return new Blender.BlendingOutput(1.0F, 0.0F);
-         } else {
-            double averageHeight = weightedHeights.doubleValue() / totalWeight.doubleValue();
-            double alpha = Mth.clamp(closestDistance.doubleValue() / (double)(HEIGHT_BLENDING_RANGE_CELLS + 1), 0.0, 1.0);
-            alpha = 3.0 * alpha * alpha - 2.0 * alpha * alpha * alpha;
-            return new Blender.BlendingOutput((float)alpha, (float)heightToOffset(averageHeight));
-         }
+         return new Blender.BlendingOutput(0.0F, (float)heightToOffset(fixedHeight));
       }
+
+      MutableDouble totalWeight = new MutableDouble(0.0);
+      MutableDouble weightedHeights = new MutableDouble(0.0);
+      MutableDouble closestDistance = new MutableDouble(Double.POSITIVE_INFINITY);
+      this.heightAndBiomeBlendingData
+         .forEach(
+            (chunkPos, blendingData) -> blendingData.iterateHeights(
+               QuartPos.fromSection(ChunkPos.getX(chunkPos)), QuartPos.fromSection(ChunkPos.getZ(chunkPos)), (testCellX, testCellZ, height) -> {
+                  double distance = Mth.length(cellX - testCellX, cellZ - testCellZ);
+                  if (!(distance > HEIGHT_BLENDING_RANGE_CELLS)) {
+                     if (distance < closestDistance.doubleValue()) {
+                        closestDistance.setValue(distance);
+                     }
+
+                     double weight = 1.0 / (distance * distance * distance * distance);
+                     weightedHeights.add(height * weight);
+                     totalWeight.add(weight);
+                  }
+               }
+            )
+         );
+      if (closestDistance.doubleValue() == Double.POSITIVE_INFINITY) {
+         return new Blender.BlendingOutput(1.0F, 0.0F);
+      }
+
+      double averageHeight = weightedHeights.doubleValue() / totalWeight.doubleValue();
+      double alpha = Mth.clamp(closestDistance.doubleValue() / (HEIGHT_BLENDING_RANGE_CELLS + 1), 0.0, 1.0);
+      alpha = 3.0 * alpha * alpha - 2.0 * alpha * alpha * alpha;
+      return new Blender.BlendingOutput((float)alpha, (float)heightToOffset(averageHeight));
    }
 
    private static double heightToOffset(final double height) {
@@ -201,39 +199,39 @@ public class Blender {
       float fixedDensity = this.getBlendingDataValue(cellX, cellY, cellZ, BlendingData::getDensity);
       if (fixedDensity != Float.MAX_VALUE) {
          return fixedDensity;
-      } else {
-         MutableDouble totalWeight = new MutableDouble(0.0);
-         MutableDouble weightedHeights = new MutableDouble(0.0);
-         MutableDouble closestDistance = new MutableDouble(Double.POSITIVE_INFINITY);
-         this.densityBlendingData
-            .forEach(
-               (chunkPos, blendingData) -> blendingData.iterateDensities(
-                     QuartPos.fromSection(ChunkPos.getX(chunkPos)),
-                     QuartPos.fromSection(ChunkPos.getZ(chunkPos)),
-                     cellY - 1,
-                     cellY + 1,
-                     (testCellX, testCellY, testCellZ, density) -> {
-                        double distance = (double)Mth.length((float)(cellX - testCellX), (float)((cellY - testCellY) * 2), (float)(cellZ - testCellZ));
-                        if (!(distance > 2.0)) {
-                           if (distance < closestDistance.doubleValue()) {
-                              closestDistance.setValue(distance);
-                           }
-
-                           double weight = 1.0 / (distance * distance * distance * distance);
-                           weightedHeights.add((double)density * weight);
-                           totalWeight.add(weight);
-                        }
-                     }
-                  )
-            );
-         if (closestDistance.doubleValue() == Double.POSITIVE_INFINITY) {
-            return noiseValue;
-         } else {
-            double averageDensity = weightedHeights.doubleValue() / totalWeight.doubleValue();
-            double alpha = Mth.clamp(closestDistance.doubleValue() / 3.0, 0.0, 1.0);
-            return (float)Mth.lerp(alpha, averageDensity, (double)noiseValue);
-         }
       }
+
+      MutableDouble totalWeight = new MutableDouble(0.0);
+      MutableDouble weightedHeights = new MutableDouble(0.0);
+      MutableDouble closestDistance = new MutableDouble(Double.POSITIVE_INFINITY);
+      this.densityBlendingData
+         .forEach(
+            (chunkPos, blendingData) -> blendingData.iterateDensities(
+               QuartPos.fromSection(ChunkPos.getX(chunkPos)),
+               QuartPos.fromSection(ChunkPos.getZ(chunkPos)),
+               cellY - 1,
+               cellY + 1,
+               (testCellX, testCellY, testCellZ, density) -> {
+                  double distance = Mth.length(cellX - testCellX, (cellY - testCellY) * 2, cellZ - testCellZ);
+                  if (!(distance > 2.0)) {
+                     if (distance < closestDistance.doubleValue()) {
+                        closestDistance.setValue(distance);
+                     }
+
+                     double weight = 1.0 / (distance * distance * distance * distance);
+                     weightedHeights.add(density * weight);
+                     totalWeight.add(weight);
+                  }
+               }
+            )
+         );
+      if (closestDistance.doubleValue() == Double.POSITIVE_INFINITY) {
+         return noiseValue;
+      }
+
+      double averageDensity = weightedHeights.doubleValue() / totalWeight.doubleValue();
+      double alpha = Mth.clamp(closestDistance.doubleValue() / 3.0, 0.0, 1.0);
+      return (float)Mth.lerp(alpha, averageDensity, noiseValue);
    }
 
    private float getBlendingDataValue(final int cellX, final int cellY, final int cellZ, final Blender.CellValueGetter cellValueGetter) {
@@ -283,24 +281,24 @@ public class Blender {
       this.heightAndBiomeBlendingData
          .forEach(
             (chunkPos, blendingData) -> blendingData.iterateBiomes(
-                  QuartPos.fromSection(ChunkPos.getX(chunkPos)), quartY, QuartPos.fromSection(ChunkPos.getZ(chunkPos)), (testCellX, testCellZ, biome) -> {
-                     float distance = Mth.length((float)(quartX - testCellX), (float)(quartZ - testCellZ));
-                     if (!(distance > (float)HEIGHT_BLENDING_RANGE_CELLS)) {
-                        if (distance < closestDistance.floatValue()) {
-                           closestBiome.setValue(biome);
-                           closestDistance.setValue(distance);
-                        }
+               QuartPos.fromSection(ChunkPos.getX(chunkPos)), quartY, QuartPos.fromSection(ChunkPos.getZ(chunkPos)), (testCellX, testCellZ, biome) -> {
+                  float distance = Mth.length(quartX - testCellX, quartZ - testCellZ);
+                  if (!(distance > HEIGHT_BLENDING_RANGE_CELLS)) {
+                     if (distance < closestDistance.floatValue()) {
+                        closestBiome.setValue(biome);
+                        closestDistance.setValue(distance);
                      }
                   }
-               )
+               }
+            )
          );
       if (closestDistance.floatValue() == Float.POSITIVE_INFINITY) {
          return null;
-      } else {
-         float shiftNoise = SHIFT_NOISE.get((double)quartX, 0.0, (double)quartZ) * 12.0F;
-         float alpha = Mth.clamp((closestDistance.floatValue() + shiftNoise) / (float)(HEIGHT_BLENDING_RANGE_CELLS + 1), 0.0F, 1.0F);
-         return alpha > 0.5F ? null : (Holder)closestBiome.get();
       }
+
+      float shiftNoise = SHIFT_NOISE.get(quartX, 0.0, quartZ) * 12.0F;
+      float alpha = Mth.clamp((closestDistance.floatValue() + shiftNoise) / (HEIGHT_BLENDING_RANGE_CELLS + 1), 0.0F, 1.0F);
+      return alpha > 0.5F ? null : (Holder)closestBiome.get();
    }
 
    public static void generateBorderTicks(final WorldGenRegion region, final ChunkAccess chunk) {
@@ -358,13 +356,11 @@ public class Blender {
       }
    }
 
-   @Nullable
-   public CarvingMask.Filter getCarvingFilter() {
+   public CarvingMask.@Nullable Filter getCarvingFilter() {
       return this.carvingFilter;
    }
 
-   @Nullable
-   private static CarvingMask.Filter createAroundOldChunksCarvingMaskFilter(final WorldGenLevel region, final ChunkAccess chunk) {
+   private static CarvingMask.@Nullable Filter createAroundOldChunksCarvingMaskFilter(final WorldGenLevel region, final ChunkAccess chunk) {
       ChunkPos chunkPos = chunk.getPos();
       Builder<CompositeDirection.Direction8, BlendingData> builder = ImmutableMap.builder();
 
@@ -381,19 +377,19 @@ public class Blender {
       BlendingData centerBlendingData = chunk.getBlendingData();
       if (centerBlendingData == null && oldSidesBlendingData.isEmpty()) {
          return null;
-      } else {
-         Blender.DistanceGetter distanceGetter = makeOldChunkDistanceGetter(centerBlendingData, oldSidesBlendingData);
-         return (x, y, z) -> {
-            double shiftedX = (double)x + 0.5 + (double)(SHIFT_NOISE.get((double)x, (double)y, (double)z) * 4.0F);
-            double shiftedY = (double)y + 0.5 + (double)(SHIFT_NOISE.get((double)y, (double)z, (double)x) * 4.0F);
-            double shiftedZ = (double)z + 0.5 + (double)(SHIFT_NOISE.get((double)z, (double)x, (double)y) * 4.0F);
-            return distanceGetter.getDistance(shiftedX, shiftedY, shiftedZ) < 4.0;
-         };
       }
+
+      Blender.DistanceGetter distanceGetter = makeOldChunkDistanceGetter(centerBlendingData, oldSidesBlendingData);
+      return (x, y, z) -> {
+         double shiftedX = x + 0.5 + SHIFT_NOISE.get(x, y, z) * 4.0F;
+         double shiftedY = y + 0.5 + SHIFT_NOISE.get(y, z, x) * 4.0F;
+         double shiftedZ = z + 0.5 + SHIFT_NOISE.get(z, x, y) * 4.0F;
+         return distanceGetter.getDistance(shiftedX, shiftedY, shiftedZ) < 4.0;
+      };
    }
 
    public static Blender.DistanceGetter makeOldChunkDistanceGetter(
-      @Nullable final BlendingData centerBlendingData, final Map<CompositeDirection.Direction8, BlendingData> oldSidesBlendingData
+      final @Nullable BlendingData centerBlendingData, final Map<CompositeDirection.Direction8, BlendingData> oldSidesBlendingData
    ) {
       List<Blender.DistanceGetter> distanceGetters = Lists.newArrayList();
       if (centerBlendingData != null) {
@@ -415,20 +411,20 @@ public class Blender {
       };
    }
 
-   private static Blender.DistanceGetter makeOffsetOldChunkDistanceGetter(@Nullable final CompositeDirection.Direction8 offset, final BlendingData blendingData) {
+   private static Blender.DistanceGetter makeOffsetOldChunkDistanceGetter(final CompositeDirection.@Nullable Direction8 offset, final BlendingData blendingData) {
       double offsetX = 0.0;
       double offsetZ = 0.0;
       if (offset != null) {
          for (Direction direction : offset.getDirections()) {
-            offsetX += (double)(direction.getStepX() * 16);
-            offsetZ += (double)(direction.getStepZ() * 16);
+            offsetX += direction.getStepX() * 16;
+            offsetZ += direction.getStepZ() * 16;
          }
       }
 
       double finalOffsetX = offsetX;
       double finalOffsetZ = offsetZ;
-      double oldChunkYRadius = (double)blendingData.getAreaWithOldGeneration().getHeight() / 2.0;
-      double oldChunkCenterY = (double)blendingData.getAreaWithOldGeneration().getMinY() + oldChunkYRadius;
+      double oldChunkYRadius = blendingData.getAreaWithOldGeneration().getHeight() / 2.0;
+      double oldChunkCenterY = blendingData.getAreaWithOldGeneration().getMinY() + oldChunkYRadius;
       return (x, y, z) -> distanceToCube(x - 8.0 - finalOffsetX, y - oldChunkCenterY, z - 8.0 - finalOffsetZ, 8.0, oldChunkYRadius, 8.0);
    }
 
@@ -439,7 +435,7 @@ public class Blender {
       return Mth.length(Math.max(0.0, deltaX), Math.max(0.0, deltaY), Math.max(0.0, deltaZ));
    }
 
-   protected static record BlendingOutput(float alpha, float blendingOffset) {
+   protected record BlendingOutput(float alpha, float blendingOffset) {
    }
 
    private interface CellValueGetter {
@@ -450,15 +446,11 @@ public class Blender {
       double getDistance(double x, double y, double z);
    }
 
-   public static record OutputBuffer(Blender blender, int minCellX, int minCellZ, int cellCountX, int cellCountZ, float[] alphas, float[] offsets) {
+   public record OutputBuffer(Blender blender, int minCellX, int minCellZ, int cellCountX, int cellCountZ, float[] alphas, float[] offsets) {
       private static final int NO_VALUE = -1;
 
       public DensitySampler createAlphaSampler() {
          return new DensitySampler() {
-            {
-               Objects.requireNonNull(OutputBuffer.this);
-            }
-
             @Override
             public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
                DensitySampler.sampleVolumeNaive(context, outputBuffer, volume, this);
@@ -473,10 +465,6 @@ public class Blender {
 
       public DensitySampler createOffsetSampler() {
          return new DensitySampler() {
-            {
-               Objects.requireNonNull(OutputBuffer.this);
-            }
-
             @Override
             public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
                DensitySampler.sampleVolumeNaive(context, outputBuffer, volume, this);

@@ -19,12 +19,12 @@ import net.minecraft.util.Mth;
 public record JukeboxSong(Holder<SoundEvent> soundEvent, Component description, float lengthInSeconds, int comparatorOutput) {
    public static final Codec<JukeboxSong> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               SoundEvent.CODEC.fieldOf("sound_event").forGetter(JukeboxSong::soundEvent),
-               ComponentSerialization.CODEC.fieldOf("description").forGetter(JukeboxSong::description),
-               ExtraCodecs.POSITIVE_FLOAT.fieldOf("length_in_seconds").forGetter(JukeboxSong::lengthInSeconds),
-               ExtraCodecs.intRange(0, 15).fieldOf("comparator_output").forGetter(JukeboxSong::comparatorOutput)
-            )
-            .apply(i, JukeboxSong::new)
+            SoundEvent.CODEC.fieldOf("sound_event").forGetter(JukeboxSong::soundEvent),
+            ComponentSerialization.CODEC.fieldOf("description").forGetter(JukeboxSong::description),
+            ExtraCodecs.POSITIVE_FLOAT.fieldOf("length_in_seconds").forGetter(JukeboxSong::lengthInSeconds),
+            ExtraCodecs.intRange(0, 15).fieldOf("comparator_output").forGetter(JukeboxSong::comparatorOutput)
+         )
+         .apply(i, JukeboxSong::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, JukeboxSong> DIRECT_STREAM_CODEC = StreamCodec.composite(
       SoundEvent.STREAM_CODEC,
@@ -48,7 +48,7 @@ public record JukeboxSong(Holder<SoundEvent> soundEvent, Component description, 
    }
 
    public boolean hasFinished(final long ticksElapsed) {
-      return ticksElapsed >= (long)(this.lengthInTicks() + 20);
+      return ticksElapsed >= this.lengthInTicks() + 20;
    }
 
    public static Optional<Holder<JukeboxSong>> fromStack(final ItemStack stack) {

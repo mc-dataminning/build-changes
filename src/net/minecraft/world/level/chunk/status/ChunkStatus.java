@@ -35,7 +35,7 @@ public class ChunkStatus {
    private final EnumSet<Heightmap.Types> heightmapsAfter;
 
    private static ChunkStatus register(
-      final String name, @Nullable final ChunkStatus parent, final EnumSet<Heightmap.Types> heightmaps, final ChunkType chunkType
+      final String name, final @Nullable ChunkStatus parent, final EnumSet<Heightmap.Types> heightmaps, final ChunkType chunkType
    ) {
       return Registry.register(BuiltInRegistries.CHUNK_STATUS, name, new ChunkStatus(parent, heightmaps, chunkType));
    }
@@ -54,7 +54,7 @@ public class ChunkStatus {
    }
 
    @VisibleForTesting
-   protected ChunkStatus(@Nullable final ChunkStatus parent, final EnumSet<Heightmap.Types> heightmapsAfter, final ChunkType chunkType) {
+   protected ChunkStatus(final @Nullable ChunkStatus parent, final EnumSet<Heightmap.Types> heightmapsAfter, final ChunkType chunkType) {
       this.parent = parent == null ? this : parent;
       this.chunkType = chunkType;
       this.heightmapsAfter = heightmapsAfter;

@@ -163,9 +163,8 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
       return this.isClientSide;
    }
 
-   @Nullable
    @Override
-   public MinecraftServer getServer() {
+   public @Nullable MinecraftServer getServer() {
       return null;
    }
 
@@ -203,9 +202,8 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
       return (LevelChunk)this.getChunk(chunkX, chunkZ, ChunkStatus.FULL);
    }
 
-   @Nullable
    @Override
-   public ChunkAccess getChunk(final int chunkX, final int chunkZ, final ChunkStatus status, final boolean loadOrGenerate) {
+   public @Nullable ChunkAccess getChunk(final int chunkX, final int chunkZ, final ChunkStatus status, final boolean loadOrGenerate) {
       ChunkAccess chunk = this.getChunkSource().getChunk(chunkX, chunkZ, status, loadOrGenerate);
       if (chunk == null && loadOrGenerate) {
          throw new IllegalStateException("Should always be able to create a chunk!");
@@ -215,50 +213,52 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    }
 
    @Override
-   public boolean setBlock(final BlockPos pos, final BlockState blockState, @Block.UpdateFlags final int updateFlags, final int updateLimit) {
+   public boolean setBlock(final BlockPos pos, final BlockState blockState, final @Block.UpdateFlags int updateFlags, final int updateLimit) {
       if (!this.isInValidBounds(pos)) {
          return false;
-      } else if (!this.isClientSide() && this.isDebug()) {
-         return false;
-      } else {
-         LevelChunk chunk = this.getChunkAt(pos);
-         Block block = blockState.getBlock();
-         BlockState oldState = chunk.setBlockState(pos, blockState, updateFlags);
-         if (oldState == null) {
-            return false;
-         } else {
-            BlockState newState = this.getBlockState(pos);
-            if (newState == blockState) {
-               if (oldState != newState) {
-                  this.setBlocksDirty(pos, oldState, newState);
-               }
-
-               if ((updateFlags & 2) != 0
-                  && (!this.isClientSide() || (updateFlags & 4) == 0)
-                  && (this.isClientSide() || chunk.getFullStatus() != null && chunk.getFullStatus().isOrAfter(FullChunkStatus.BLOCK_TICKING))) {
-                  this.sendBlockUpdated(pos, oldState, blockState, updateFlags);
-               }
-
-               if ((updateFlags & 1) != 0) {
-                  this.updateNeighborsAt(pos, oldState.getBlock());
-                  if (!this.isClientSide() && blockState.hasAnalogOutputSignal()) {
-                     this.updateNeighbourForOutputSignal(pos, block);
-                  }
-               }
-
-               if ((updateFlags & 16) == 0 && updateLimit > 0) {
-                  int neighbourUpdateFlags = updateFlags & -34;
-                  oldState.updateIndirectNeighbourShapes(this, pos, neighbourUpdateFlags, updateLimit - 1);
-                  blockState.updateNeighbourShapes(this, pos, neighbourUpdateFlags, updateLimit - 1);
-                  blockState.updateIndirectNeighbourShapes(this, pos, neighbourUpdateFlags, updateLimit - 1);
-               }
-
-               this.updatePOIOnBlockStateChange(pos, oldState, newState);
-            }
-
-            return true;
-         }
       }
+
+      if (!this.isClientSide() && this.isDebug()) {
+         return false;
+      }
+
+      LevelChunk chunk = this.getChunkAt(pos);
+      Block block = blockState.getBlock();
+      BlockState oldState = chunk.setBlockState(pos, blockState, updateFlags);
+      if (oldState == null) {
+         return false;
+      }
+
+      BlockState newState = this.getBlockState(pos);
+      if (newState == blockState) {
+         if (oldState != newState) {
+            this.setBlocksDirty(pos, oldState, newState);
+         }
+
+         if ((updateFlags & 2) != 0
+            && (!this.isClientSide() || (updateFlags & 4) == 0)
+            && (this.isClientSide() || chunk.getFullStatus() != null && chunk.getFullStatus().isOrAfter(FullChunkStatus.BLOCK_TICKING))) {
+            this.sendBlockUpdated(pos, oldState, blockState, updateFlags);
+         }
+
+         if ((updateFlags & 1) != 0) {
+            this.updateNeighborsAt(pos, oldState.getBlock());
+            if (!this.isClientSide() && blockState.hasAnalogOutputSignal()) {
+               this.updateNeighbourForOutputSignal(pos, block);
+            }
+         }
+
+         if ((updateFlags & 16) == 0 && updateLimit > 0) {
+            int neighbourUpdateFlags = updateFlags & -34;
+            oldState.updateIndirectNeighbourShapes(this, pos, neighbourUpdateFlags, updateLimit - 1);
+            blockState.updateNeighbourShapes(this, pos, neighbourUpdateFlags, updateLimit - 1);
+            blockState.updateIndirectNeighbourShapes(this, pos, neighbourUpdateFlags, updateLimit - 1);
+         }
+
+         this.updatePOIOnBlockStateChange(pos, oldState, newState);
+      }
+
+      return true;
    }
 
    public void updatePOIOnBlockStateChange(final BlockPos pos, final BlockState oldState, final BlockState newState) {
@@ -271,25 +271,25 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    }
 
    @Override
-   public boolean destroyBlock(final BlockPos pos, final boolean dropResources, @Nullable final Entity breaker, final int updateLimit) {
+   public boolean destroyBlock(final BlockPos pos, final boolean dropResources, final @Nullable Entity breaker, final int updateLimit) {
       BlockState blockState = this.getBlockState(pos);
       if (blockState.isAir()) {
          return false;
-      } else {
-         blockState.getBlock().spawnDestroyParticles(this, pos, blockState);
-         if (dropResources) {
-            BlockEntity blockEntity = blockState.hasBlockEntity() ? this.getBlockEntity(pos) : null;
-            Block.dropResources(blockState, this, pos, blockEntity, breaker, ItemStack.EMPTY);
-         }
-
-         FluidState fluidState = this.getFluidState(pos);
-         boolean destroyed = this.setBlock(pos, fluidState.createLegacyBlock(), 3, updateLimit);
-         if (destroyed) {
-            this.gameEvent(GameEvent.BLOCK_DESTROY, pos, GameEvent.Context.of(breaker, blockState));
-         }
-
-         return destroyed;
       }
+
+      blockState.getBlock().spawnDestroyParticles(this, pos, blockState);
+      if (dropResources) {
+         BlockEntity blockEntity = blockState.hasBlockEntity() ? this.getBlockEntity(pos) : null;
+         Block.dropResources(blockState, this, pos, blockEntity, breaker, ItemStack.EMPTY);
+      }
+
+      FluidState fluidState = this.getFluidState(pos);
+      boolean destroyed = this.setBlock(pos, fluidState.createLegacyBlock(), 3, updateLimit);
+      if (destroyed) {
+         this.gameEvent(GameEvent.BLOCK_DESTROY, pos, GameEvent.Context.of(breaker, blockState));
+      }
+
+      return destroyed;
    }
 
    public void addDestroyBlockEffect(final BlockPos pos, final BlockState blockState) {
@@ -300,19 +300,19 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    public void setBlocksDirty(final BlockPos pos, final BlockState oldState, final BlockState newState) {
    }
 
-   public void updateNeighborsAt(final BlockPos pos, final Block sourceBlock, @Nullable final Orientation orientation) {
+   public void updateNeighborsAt(final BlockPos pos, final Block sourceBlock, final @Nullable Orientation orientation) {
    }
 
    public void updateNeighborsAtExceptFromFacing(
-      final BlockPos pos, final Block blockObject, final Direction skipDirection, @Nullable final Orientation orientation
+      final BlockPos pos, final Block blockObject, final Direction skipDirection, final @Nullable Orientation orientation
    ) {
    }
 
-   public void neighborChanged(final BlockPos pos, final Block changedBlock, @Nullable final Orientation orientation) {
+   public void neighborChanged(final BlockPos pos, final Block changedBlock, final @Nullable Orientation orientation) {
    }
 
    public void neighborChanged(
-      final BlockState state, final BlockPos pos, final Block changedBlock, @Nullable final Orientation orientation, final boolean movedByPiston
+      final BlockState state, final BlockPos pos, final Block changedBlock, final @Nullable Orientation orientation, final boolean movedByPiston
    ) {
    }
 
@@ -322,7 +322,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
       final BlockPos pos,
       final BlockPos neighborPos,
       final BlockState neighborState,
-      @Block.UpdateFlags final int updateFlags,
+      final @Block.UpdateFlags int updateFlags,
       final int updateLimit
    ) {
       this.neighborUpdater.shapeUpdate(direction, neighborState, pos, neighborPos, updateFlags, updateLimit);
@@ -353,20 +353,20 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    public BlockState getBlockState(final BlockPos pos) {
       if (!this.isInValidBounds(pos)) {
          return Blocks.VOID_AIR.defaultBlockState();
-      } else {
-         LevelChunk chunk = this.getChunk(SectionPos.blockToSectionCoord(pos.getX()), SectionPos.blockToSectionCoord(pos.getZ()));
-         return chunk.getBlockState(pos);
       }
+
+      LevelChunk chunk = this.getChunk(SectionPos.blockToSectionCoord(pos.getX()), SectionPos.blockToSectionCoord(pos.getZ()));
+      return chunk.getBlockState(pos);
    }
 
    @Override
    public FluidState getFluidState(final BlockPos pos) {
       if (!this.isInValidBounds(pos)) {
          return Fluids.EMPTY.defaultFluidState();
-      } else {
-         LevelChunk chunk = this.getChunkAt(pos);
-         return chunk.getFluidState(pos);
       }
+
+      LevelChunk chunk = this.getChunkAt(pos);
+      return chunk.getFluidState(pos);
    }
 
    public boolean isBrightOutside() {
@@ -379,13 +379,13 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
 
    @Override
    public void playSound(
-      @Nullable final Entity except, final BlockPos pos, final SoundEvent sound, final SoundSource source, final float volume, final float pitch
+      final @Nullable Entity except, final BlockPos pos, final SoundEvent sound, final SoundSource source, final float volume, final float pitch
    ) {
-      this.playSound(except, (double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, sound, source, volume, pitch);
+      this.playSound(except, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, sound, source, volume, pitch);
    }
 
    public abstract void playSeededSound(
-      @Nullable final Entity except,
+      final @Nullable Entity except,
       final double x,
       final double y,
       final double z,
@@ -397,7 +397,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    );
 
    public void playSeededSound(
-      @Nullable final Entity except,
+      final @Nullable Entity except,
       final double x,
       final double y,
       final double z,
@@ -411,7 +411,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    }
 
    public abstract void playSeededSound(
-      @Nullable final Entity except,
+      final @Nullable Entity except,
       final Entity sourceEntity,
       final Holder<SoundEvent> sound,
       final SoundSource source,
@@ -420,12 +420,12 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
       final long seed
    );
 
-   public void playSound(@Nullable final Entity except, final double x, final double y, final double z, final SoundEvent sound, final SoundSource source) {
+   public void playSound(final @Nullable Entity except, final double x, final double y, final double z, final SoundEvent sound, final SoundSource source) {
       this.playSound(except, x, y, z, sound, source, 1.0F, 1.0F);
    }
 
    public void playSound(
-      @Nullable final Entity except,
+      final @Nullable Entity except,
       final double x,
       final double y,
       final double z,
@@ -438,7 +438,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    }
 
    public void playSound(
-      @Nullable final Entity except,
+      final @Nullable Entity except,
       final double x,
       final double y,
       final double z,
@@ -451,13 +451,13 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    }
 
    public void playSound(
-      @Nullable final Entity except, final Entity sourceEntity, final SoundEvent sound, final SoundSource source, final float volume, final float pitch
+      final @Nullable Entity except, final Entity sourceEntity, final SoundEvent sound, final SoundSource source, final float volume, final float pitch
    ) {
       this.playSeededSound(except, sourceEntity, BuiltInRegistries.SOUND_EVENT.wrapAsHolder(sound), source, volume, pitch, this.soundSeedGenerator.nextLong());
    }
 
    public void playSound(
-      @Nullable final Entity except, final Entity sourceEntity, final Holder<SoundEvent> sound, final SoundSource source, final float volume, final float pitch
+      final @Nullable Entity except, final Entity sourceEntity, final Holder<SoundEvent> sound, final SoundSource source, final float volume, final float pitch
    ) {
       this.playSeededSound(except, sourceEntity, sound, source, volume, pitch, this.soundSeedGenerator.nextLong());
    }
@@ -465,7 +465,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    public void playLocalSound(
       final BlockPos pos, final SoundEvent sound, final SoundSource source, final float volume, final float pitch, final boolean distanceDelay
    ) {
-      this.playLocalSound((double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, sound, source, volume, pitch, distanceDelay);
+      this.playLocalSound(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, sound, source, volume, pitch, distanceDelay);
    }
 
    public void playLocalSound(final Entity sourceEntity, final SoundEvent sound, final SoundSource source, final float volume, final float pitch) {
@@ -549,8 +549,8 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    public <T extends Entity> void guardEntityTick(final Consumer<T> tick, final T entity) {
       try {
          tick.accept(entity);
-      } catch (Throwable var6) {
-         CrashReport report = CrashReport.forThrowable(var6, "Ticking entity");
+      } catch (Throwable t) {
+         CrashReport report = CrashReport.forThrowable(t, "Ticking entity");
          CrashReportCategory category = report.addCategory("Entity being ticked");
          entity.fillCrashReportCategory(category);
          throw new ReportedException(report);
@@ -570,7 +570,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    }
 
    public void explode(
-      @Nullable final Entity source, final double x, final double y, final double z, final float r, final Level.ExplosionInteraction blockInteraction
+      final @Nullable Entity source, final double x, final double y, final double z, final float r, final Level.ExplosionInteraction blockInteraction
    ) {
       this.explode(
          source,
@@ -590,7 +590,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    }
 
    public void explode(
-      @Nullable final Entity source,
+      final @Nullable Entity source,
       final double x,
       final double y,
       final double z,
@@ -616,9 +616,9 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    }
 
    public void explode(
-      @Nullable final Entity source,
-      @Nullable final DamageSource damageSource,
-      @Nullable final ExplosionDamageCalculator damageCalculator,
+      final @Nullable Entity source,
+      final @Nullable DamageSource damageSource,
+      final @Nullable ExplosionDamageCalculator damageCalculator,
       final Vec3 boomPos,
       final float r,
       final boolean fire,
@@ -642,9 +642,9 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    }
 
    public void explode(
-      @Nullable final Entity source,
-      @Nullable final DamageSource damageSource,
-      @Nullable final ExplosionDamageCalculator damageCalculator,
+      final @Nullable Entity source,
+      final @Nullable DamageSource damageSource,
+      final @Nullable ExplosionDamageCalculator damageCalculator,
       final double x,
       final double y,
       final double z,
@@ -670,9 +670,9 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    }
 
    public abstract void explode(
-      @Nullable final Entity source,
-      @Nullable final DamageSource damageSource,
-      @Nullable final ExplosionDamageCalculator damageCalculator,
+      final @Nullable Entity source,
+      final @Nullable DamageSource damageSource,
+      final @Nullable ExplosionDamageCalculator damageCalculator,
       final double x,
       final double y,
       final double z,
@@ -687,9 +687,8 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
 
    public abstract String gatherChunkSourceStats();
 
-   @Nullable
    @Override
-   public BlockEntity getBlockEntity(final BlockPos pos) {
+   public @Nullable BlockEntity getBlockEntity(final BlockPos pos) {
       if (!this.isInValidBounds(pos)) {
          return null;
       } else {
@@ -721,10 +720,10 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    public boolean loadedAndEntityCanStandOnFace(final BlockPos pos, final Entity entity, final Direction faceDirection) {
       if (!this.isInValidBounds(pos)) {
          return false;
-      } else {
-         ChunkAccess chunk = this.getChunk(SectionPos.blockToSectionCoord(pos.getX()), SectionPos.blockToSectionCoord(pos.getZ()), ChunkStatus.FULL, false);
-         return chunk == null ? false : chunk.getBlockState(pos).entityCanStandOnFace(this, pos, entity, faceDirection);
       }
+
+      ChunkAccess chunk = this.getChunk(SectionPos.blockToSectionCoord(pos.getX()), SectionPos.blockToSectionCoord(pos.getZ()), ChunkStatus.FULL, false);
+      return chunk == null ? false : chunk.getBlockState(pos).entityCanStandOnFace(this, pos, entity, faceDirection);
    }
 
    public boolean loadedAndEntityCanStandOn(final BlockPos pos, final Entity entity) {
@@ -758,14 +757,13 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
       this.getChunkSource().close();
    }
 
-   @Nullable
    @Override
-   public BlockGetter getChunkForCollisions(final int chunkX, final int chunkZ) {
+   public @Nullable BlockGetter getChunkForCollisions(final int chunkX, final int chunkZ) {
       return this.getChunk(chunkX, chunkZ, ChunkStatus.FULL, false);
    }
 
    @Override
-   public List<Entity> getEntities(@Nullable final Entity except, final AABB bb, final Predicate<? super Entity> selector) {
+   public List<Entity> getEntities(final @Nullable Entity except, final AABB bb, final Predicate<? super Entity> selector) {
       Profiler.get().incrementCounter("getEntities");
       List<Entity> output = Lists.newArrayList();
       this.getEntities().get(bb, entity -> {
@@ -831,19 +829,19 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
          if (selector.test(e)) {
             hasEntities.setTrue();
             return Continuation.ABORT;
-         } else {
-            if (e instanceof EnderDragon enderDragon) {
-               for (EnderDragonPart subEntity : enderDragon.getSubEntities()) {
-                  T castSubPart = type.tryCast(subEntity);
-                  if (castSubPart != null && selector.test(castSubPart)) {
-                     hasEntities.setTrue();
-                     return Continuation.ABORT;
-                  }
+         }
+
+         if (e instanceof EnderDragon enderDragon) {
+            for (EnderDragonPart subEntity : enderDragon.getSubEntities()) {
+               T castSubPart = type.tryCast(subEntity);
+               if (castSubPart != null && selector.test(castSubPart)) {
+                  hasEntities.setTrue();
+                  return Continuation.ABORT;
                }
             }
-
-            return Continuation.CONTINUE;
          }
+
+         return Continuation.CONTINUE;
       });
       return hasEntities.isTrue();
    }
@@ -852,21 +850,17 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
       return this.getEntities(pusher, boundingBox, EntitySelector.pushableBy(pusher));
    }
 
-   @Nullable
-   public abstract Entity getEntity(int id);
+   public abstract @Nullable Entity getEntity(int id);
 
-   @Nullable
-   public Entity getEntity(final UUID uuid) {
+   public @Nullable Entity getEntity(final UUID uuid) {
       return this.getEntities().get(uuid);
    }
 
-   @Nullable
-   public Entity getEntityInAnyDimension(final UUID uuid) {
+   public @Nullable Entity getEntityInAnyDimension(final UUID uuid) {
       return this.getEntity(uuid);
    }
 
-   @Nullable
-   public Player getPlayerInAnyDimension(final UUID uuid) {
+   public @Nullable Player getPlayerInAnyDimension(final UUID uuid) {
       return this.getPlayerByUUID(uuid);
    }
 
@@ -897,7 +891,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
       return true;
    }
 
-   public void broadcastEntityEvent(final Entity entity, @EntityEvent.Value final byte event) {
+   public void broadcastEntityEvent(final Entity entity, final @EntityEvent.Value byte event) {
    }
 
    public void broadcastDamageEvent(final Entity entity, final DamageSource source) {
@@ -943,11 +937,11 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    }
 
    public boolean isThundering() {
-      return this.canHaveWeather() && (double)this.getThunderLevel(1.0F) > 0.9;
+      return this.canHaveWeather() && this.getThunderLevel(1.0F) > 0.9;
    }
 
    public boolean isRaining() {
-      return this.canHaveWeather() && (double)this.getRainLevel(1.0F) > 0.2;
+      return this.canHaveWeather() && this.getRainLevel(1.0F) > 0.2;
    }
 
    public boolean isRainingAt(final BlockPos pos) {
@@ -957,20 +951,23 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    public Biome.Precipitation precipitationAt(final BlockPos pos) {
       if (!this.isRaining()) {
          return Biome.Precipitation.NONE;
-      } else if (!this.canSeeSky(pos)) {
-         return Biome.Precipitation.NONE;
-      } else if (this.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, pos).getY() > pos.getY()) {
-         return Biome.Precipitation.NONE;
-      } else {
-         Biome biome = this.getBiome(pos).value();
-         return biome.getPrecipitationAt(pos, this.getSeaLevel());
       }
+
+      if (!this.canSeeSky(pos)) {
+         return Biome.Precipitation.NONE;
+      }
+
+      if (this.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, pos).getY() > pos.getY()) {
+         return Biome.Precipitation.NONE;
+      }
+
+      Biome biome = this.getBiome(pos).value();
+      return biome.getPrecipitationAt(pos, this.getSeaLevel());
    }
 
-   @Nullable
-   public abstract MapItemSavedData getMapData(MapId id);
+   public abstract @Nullable MapItemSavedData getMapData(MapId id);
 
-   public void globalLevelEvent(@LevelEvent.Value final int type, final BlockPos pos, final int data) {
+   public void globalLevelEvent(final @LevelEvent.Value int type, final BlockPos pos, final int data) {
    }
 
    public CrashReportCategory fillReportDetails(final CrashReport report) {
@@ -985,8 +982,8 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
 
       try {
          this.levelData.fillCrashReportCategory(category, this);
-      } catch (Throwable var4) {
-         category.setDetailError("Level Data Unobtainable", var4);
+      } catch (Throwable t) {
+         category.setDetailError("Level Data Unobtainable", t);
       }
 
       return category;
@@ -1115,7 +1112,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
       return this.palettedContainerFactory;
    }
 
-   public static enum ExplosionInteraction implements StringRepresentable {
+   public enum ExplosionInteraction implements StringRepresentable {
       NONE("none"),
       BLOCK("block"),
       MOB("mob"),
@@ -1125,7 +1122,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
       public static final Codec<Level.ExplosionInteraction> CODEC = StringRepresentable.fromEnum(Level.ExplosionInteraction::values);
       private final String id;
 
-      private ExplosionInteraction(final String id) {
+      ExplosionInteraction(final String id) {
          this.id = id;
       }
 

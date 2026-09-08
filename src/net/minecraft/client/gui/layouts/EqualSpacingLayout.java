@@ -103,7 +103,7 @@ public class EqualSpacingLayout extends AbstractLayout {
       }
    }
 
-   public static enum Orientation {
+   public enum Orientation {
       HORIZONTAL,
       VERTICAL;
 

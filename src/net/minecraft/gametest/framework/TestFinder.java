@@ -120,7 +120,7 @@ public class TestFinder implements TestInstanceFinder, TestPosFinder {
             source,
             TestFinder.NO_FUNCTIONS,
             () -> StructureUtils.lookedAtTestPos(BlockPos.containing(source.getPosition()), source.getPlayer().getCamera(), source.getLevel())
-                  .map(p -> new GlobalPos(source.getLevel().dimension(), p))
+               .map(p -> new GlobalPos(source.getLevel().dimension(), p))
          );
       }
 

@@ -54,11 +54,10 @@ public class MultiPackResourceManager implements CloseableResourceManager {
       this.namespacedManagers = namespacedManagers;
    }
 
-   @Nullable
-   private ResourceFilterSection getPackFilterSection(final PackResources pack) {
+   private @Nullable ResourceFilterSection getPackFilterSection(final PackResources pack) {
       try {
          return pack.getMetadataSection(ResourceFilterSection.TYPE);
-      } catch (Exception var3) {
+      } catch (Exception e) {
          LOGGER.error("Failed to get filter section from pack {}", pack.packId());
          return null;
       }

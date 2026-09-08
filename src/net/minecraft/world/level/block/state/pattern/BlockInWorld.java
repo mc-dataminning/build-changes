@@ -11,10 +11,8 @@ public class BlockInWorld {
    private final LevelReader level;
    private final BlockPos pos;
    private final boolean loadChunks;
-   @Nullable
-   private BlockState state;
-   @Nullable
-   private BlockEntity entity;
+   private @Nullable BlockState state;
+   private @Nullable BlockEntity entity;
    private boolean cachedEntity;
 
    public BlockInWorld(final LevelReader level, final BlockPos pos, final boolean loadChunks) {
@@ -31,8 +29,7 @@ public class BlockInWorld {
       return this.state;
    }
 
-   @Nullable
-   public BlockEntity getEntity() {
+   public @Nullable BlockEntity getEntity() {
       if (this.entity == null && !this.cachedEntity) {
          this.entity = this.level.getBlockEntity(this.pos);
          this.cachedEntity = true;
@@ -49,7 +46,7 @@ public class BlockInWorld {
       return this.pos;
    }
 
-   public static Predicate<BlockInWorld> hasState(final Predicate<BlockState> predicate) {
+   public static Predicate<@Nullable BlockInWorld> hasState(final Predicate<BlockState> predicate) {
       return input -> input != null && predicate.test(input.getState());
    }
 }

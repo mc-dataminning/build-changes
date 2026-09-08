@@ -85,13 +85,13 @@ public class PlayerTeam extends Team {
    public void setDisplayName(final Component displayName) {
       if (displayName == null) {
          throw new IllegalArgumentException("Name cannot be null");
-      } else {
-         this.displayName = displayName;
-         this.scoreboard.onTeamChanged(this);
       }
+
+      this.displayName = displayName;
+      this.scoreboard.onTeamChanged(this);
    }
 
-   public void setPlayerPrefix(@Nullable final Component playerPrefix) {
+   public void setPlayerPrefix(final @Nullable Component playerPrefix) {
       this.playerPrefix = playerPrefix == null ? CommonComponents.EMPTY : playerPrefix;
       this.scoreboard.onTeamChanged(this);
    }
@@ -100,7 +100,7 @@ public class PlayerTeam extends Team {
       return this.playerPrefix;
    }
 
-   public void setPlayerSuffix(@Nullable final Component playerSuffix) {
+   public void setPlayerSuffix(final @Nullable Component playerSuffix) {
       this.playerSuffix = playerSuffix == null ? CommonComponents.EMPTY : playerSuffix;
       this.scoreboard.onTeamChanged(this);
    }
@@ -119,7 +119,7 @@ public class PlayerTeam extends Team {
       return this.applyColor(Component.empty().append(this.playerPrefix).append(teamMemberName).append(this.playerSuffix));
    }
 
-   public static MutableComponent formatNameForTeam(@Nullable final Team team, final Component name) {
+   public static MutableComponent formatNameForTeam(final @Nullable Team team, final Component name) {
       return team == null ? name.copy() : team.getFormattedName(name);
    }
 
@@ -173,8 +173,7 @@ public class PlayerTeam extends Team {
       this.scoreboard.onTeamChanged(this);
    }
 
-   @PlayerTeam.OptionFlags
-   public byte packOptions() {
+   public @PlayerTeam.OptionFlags byte packOptions() {
       byte result = 0;
       if (this.isAllowFriendlyFire()) {
          result = (byte)(result | 1);
@@ -187,7 +186,7 @@ public class PlayerTeam extends Team {
       return result;
    }
 
-   public void unpackOptions(@PlayerTeam.OptionFlags final byte options) {
+   public void unpackOptions(final @PlayerTeam.OptionFlags byte options) {
       this.setAllowFriendlyFire((options & 1) != 0);
       this.setSeeFriendlyInvisibles((options & 2) != 0);
    }
@@ -203,11 +202,11 @@ public class PlayerTeam extends Team {
    }
 
    @Retention(RetentionPolicy.CLASS)
-   @Target({ElementType.TYPE_USE})
+   @Target(ElementType.TYPE_USE)
    public @interface OptionFlags {
    }
 
-   public static record Packed(
+   public record Packed(
       String name,
       Optional<Component> displayName,
       Optional<TeamColor> color,
@@ -222,19 +221,19 @@ public class PlayerTeam extends Team {
    ) {
       public static final Codec<PlayerTeam.Packed> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Codec.STRING.fieldOf("Name").forGetter(PlayerTeam.Packed::name),
-                  ComponentSerialization.CODEC.optionalFieldOf("DisplayName").forGetter(PlayerTeam.Packed::displayName),
-                  TeamColor.CODEC.optionalFieldOf("TeamColor").forGetter(PlayerTeam.Packed::color),
-                  Codec.BOOL.optionalFieldOf("AllowFriendlyFire", true).forGetter(PlayerTeam.Packed::allowFriendlyFire),
-                  Codec.BOOL.optionalFieldOf("SeeFriendlyInvisibles", true).forGetter(PlayerTeam.Packed::seeFriendlyInvisibles),
-                  ComponentSerialization.CODEC.optionalFieldOf("MemberNamePrefix", CommonComponents.EMPTY).forGetter(PlayerTeam.Packed::memberNamePrefix),
-                  ComponentSerialization.CODEC.optionalFieldOf("MemberNameSuffix", CommonComponents.EMPTY).forGetter(PlayerTeam.Packed::memberNameSuffix),
-                  Team.Visibility.CODEC.optionalFieldOf("NameTagVisibility", Team.Visibility.ALWAYS).forGetter(PlayerTeam.Packed::nameTagVisibility),
-                  Team.Visibility.CODEC.optionalFieldOf("DeathMessageVisibility", Team.Visibility.ALWAYS).forGetter(PlayerTeam.Packed::deathMessageVisibility),
-                  Team.CollisionRule.CODEC.optionalFieldOf("CollisionRule", Team.CollisionRule.ALWAYS).forGetter(PlayerTeam.Packed::collisionRule),
-                  Codec.STRING.listOf().optionalFieldOf("Players", List.of()).forGetter(PlayerTeam.Packed::players)
-               )
-               .apply(i, PlayerTeam.Packed::new)
+               Codec.STRING.fieldOf("Name").forGetter(PlayerTeam.Packed::name),
+               ComponentSerialization.CODEC.optionalFieldOf("DisplayName").forGetter(PlayerTeam.Packed::displayName),
+               TeamColor.CODEC.optionalFieldOf("TeamColor").forGetter(PlayerTeam.Packed::color),
+               Codec.BOOL.optionalFieldOf("AllowFriendlyFire", true).forGetter(PlayerTeam.Packed::allowFriendlyFire),
+               Codec.BOOL.optionalFieldOf("SeeFriendlyInvisibles", true).forGetter(PlayerTeam.Packed::seeFriendlyInvisibles),
+               ComponentSerialization.CODEC.optionalFieldOf("MemberNamePrefix", CommonComponents.EMPTY).forGetter(PlayerTeam.Packed::memberNamePrefix),
+               ComponentSerialization.CODEC.optionalFieldOf("MemberNameSuffix", CommonComponents.EMPTY).forGetter(PlayerTeam.Packed::memberNameSuffix),
+               Team.Visibility.CODEC.optionalFieldOf("NameTagVisibility", Team.Visibility.ALWAYS).forGetter(PlayerTeam.Packed::nameTagVisibility),
+               Team.Visibility.CODEC.optionalFieldOf("DeathMessageVisibility", Team.Visibility.ALWAYS).forGetter(PlayerTeam.Packed::deathMessageVisibility),
+               Team.CollisionRule.CODEC.optionalFieldOf("CollisionRule", Team.CollisionRule.ALWAYS).forGetter(PlayerTeam.Packed::collisionRule),
+               Codec.STRING.listOf().optionalFieldOf("Players", List.of()).forGetter(PlayerTeam.Packed::players)
+            )
+            .apply(i, PlayerTeam.Packed::new)
       );
    }
 }

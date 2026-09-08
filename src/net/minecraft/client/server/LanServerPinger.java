@@ -41,8 +41,8 @@ public class LanServerPinger extends Thread {
             InetAddress group = InetAddress.getByName("224.0.2.60");
             DatagramPacket packet = new DatagramPacket(ping, ping.length, group, 4445);
             this.socket.send(packet);
-         } catch (IOException var6) {
-            LOGGER.warn("LanServerPinger failed to run", var6);
+         } catch (IOException e) {
+            LOGGER.warn("LanServerPinger failed to run", e);
             break;
          }
 
@@ -67,30 +67,29 @@ public class LanServerPinger extends Thread {
       int startIndex = pingString.indexOf("[MOTD]");
       if (startIndex < 0) {
          return "missing no";
-      } else {
-         int endIndex = pingString.indexOf("[/MOTD]", startIndex + "[MOTD]".length());
-         return endIndex < startIndex ? "missing no" : pingString.substring(startIndex + "[MOTD]".length(), endIndex);
       }
+
+      int endIndex = pingString.indexOf("[/MOTD]", startIndex + "[MOTD]".length());
+      return endIndex < startIndex ? "missing no" : pingString.substring(startIndex + "[MOTD]".length(), endIndex);
    }
 
-   @Nullable
-   public static String parseAddress(final String pingString) {
+   public static @Nullable String parseAddress(final String pingString) {
       int endMotdIndex = pingString.indexOf("[/MOTD]");
       if (endMotdIndex < 0) {
          return null;
-      } else {
-         int secondEndMotdIndex = pingString.indexOf("[/MOTD]", endMotdIndex + "[/MOTD]".length());
-         if (secondEndMotdIndex >= 0) {
-            return null;
-         } else {
-            int startIndex = pingString.indexOf("[AD]", endMotdIndex + "[/MOTD]".length());
-            if (startIndex < 0) {
-               return null;
-            } else {
-               int endIndex = pingString.indexOf("[/AD]", startIndex + "[AD]".length());
-               return endIndex < startIndex ? null : pingString.substring(startIndex + "[AD]".length(), endIndex);
-            }
-         }
       }
+
+      int secondEndMotdIndex = pingString.indexOf("[/MOTD]", endMotdIndex + "[/MOTD]".length());
+      if (secondEndMotdIndex >= 0) {
+         return null;
+      }
+
+      int startIndex = pingString.indexOf("[AD]", endMotdIndex + "[/MOTD]".length());
+      if (startIndex < 0) {
+         return null;
+      }
+
+      int endIndex = pingString.indexOf("[/AD]", startIndex + "[AD]".length());
+      return endIndex < startIndex ? null : pingString.substring(startIndex + "[AD]".length(), endIndex);
    }
 }

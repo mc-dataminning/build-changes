@@ -1,7 +1,6 @@
 package net.minecraft.world.level.block;
 
 import java.util.Collection;
-import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -43,21 +42,21 @@ public class SculkVeinBlock extends MultifaceSpreadeableBlock implements SculkBe
 
       for (Direction face : faces) {
          if (canAttachTo(level, pos, face)) {
-            newState = newState.setValue(getFaceProperty(face), Boolean.valueOf(true));
+            newState = newState.setValue(getFaceProperty(face), true);
             hasAtLeastOneFace = true;
          }
       }
 
       if (!hasAtLeastOneFace) {
          return false;
-      } else {
-         if (!existing.getFluidState().isEmpty()) {
-            newState = newState.setValue(MultifaceBlock.WATERLOGGED, Boolean.valueOf(true));
-         }
-
-         level.setBlockAndUpdate(pos, newState);
-         return true;
       }
+
+      if (!existing.getFluidState().isEmpty()) {
+         newState = newState.setValue(MultifaceBlock.WATERLOGGED, true);
+      }
+
+      level.setBlockAndUpdate(pos, newState);
+      return true;
    }
 
    @Override
@@ -66,7 +65,7 @@ public class SculkVeinBlock extends MultifaceSpreadeableBlock implements SculkBe
          for (Direction dir : DIRECTIONS) {
             BooleanProperty sideProperty = getFaceProperty(dir);
             if (state.getValue(sideProperty) && level.getBlockState(pos.relative(dir)).is(Blocks.SCULK)) {
-               state = state.setValue(sideProperty, Boolean.valueOf(false));
+               state = state.setValue(sideProperty, false);
             }
          }
 
@@ -92,7 +91,7 @@ public class SculkVeinBlock extends MultifaceSpreadeableBlock implements SculkBe
       if (spreadVeins && this.attemptPlaceSculk(spreader, level, cursor.getPos(), random)) {
          return cursor.getCharge() - 1;
       } else {
-         return random.nextInt(spreader.chargeDecayRate()) == 0 ? Mth.floor((float)cursor.getCharge() * 0.5F) : cursor.getCharge();
+         return random.nextInt(spreader.chargeDecayRate()) == 0 ? Mth.floor(cursor.getCharge() * 0.5F) : cursor.getCharge();
       }
    }
 
@@ -133,22 +132,21 @@ public class SculkVeinBlock extends MultifaceSpreadeableBlock implements SculkBe
    public static boolean hasSubstrateAccess(final LevelAccessor level, final BlockState state, final BlockPos pos) {
       if (!state.is(Blocks.SCULK_VEIN)) {
          return false;
-      } else {
-         for (Direction direction : DIRECTIONS) {
-            if (hasFace(state, direction) && level.getBlockState(pos.relative(direction)).is(BlockTags.SCULK_REPLACEABLE)) {
-               return true;
-            }
-         }
-
-         return false;
       }
+
+      for (Direction direction : DIRECTIONS) {
+         if (hasFace(state, direction) && level.getBlockState(pos.relative(direction)).is(BlockTags.SCULK_REPLACEABLE)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    private class SculkVeinSpreaderConfig extends MultifaceSpreader.DefaultSpreaderConfig {
       private final MultifaceSpreader.SpreadType[] spreadTypes;
 
       public SculkVeinSpreaderConfig(final MultifaceSpreader.SpreadType... spreadTypes) {
-         Objects.requireNonNull(SculkVeinBlock.this);
          super(SculkVeinBlock.this);
          this.spreadTypes = spreadTypes;
       }

@@ -7,7 +7,7 @@ public interface SignatureUpdater {
    void update(SignatureUpdater.Output output) throws SignatureException;
 
    @FunctionalInterface
-   public interface Output {
+   interface Output {
       void update(byte[] payload) throws SignatureException;
    }
 }

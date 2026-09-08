@@ -11,19 +11,19 @@ public class StopAdmiringIfItemTooFarAway<E extends Piglin> {
    public static BehaviorControl<LivingEntity> create(final int maxDistanceToItem) {
       return BehaviorBuilder.create(
          i -> i.group(i.present(MemoryModuleType.ADMIRING_ITEM), i.registered(MemoryModuleType.NEAREST_VISIBLE_WANTED_ITEM))
-               .apply(i, (admiring, nearest) -> (level, body, timestamp) -> {
-                     if (!body.getOffhandItem().isEmpty()) {
-                        return false;
-                     } else {
-                        Optional<ItemEntity> nearestVisibleWantedItem = i.tryGet(nearest);
-                        if (nearestVisibleWantedItem.isPresent() && nearestVisibleWantedItem.get().closerThan(body, (double)maxDistanceToItem)) {
-                           return false;
-                        } else {
-                           admiring.erase();
-                           return true;
-                        }
-                     }
-                  })
+            .apply(i, (admiring, nearest) -> (level, body, timestamp) -> {
+               if (!body.getOffhandItem().isEmpty()) {
+                  return false;
+               }
+
+               Optional<ItemEntity> nearestVisibleWantedItem = i.tryGet(nearest);
+               if (nearestVisibleWantedItem.isPresent() && nearestVisibleWantedItem.get().closerThan(body, maxDistanceToItem)) {
+                  return false;
+               }
+
+               admiring.erase();
+               return true;
+            })
       );
    }
 }

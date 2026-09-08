@@ -39,11 +39,11 @@ public class BlockTintCache {
       int cached = layer[index];
       if (cached != -1) {
          return cached;
-      } else {
-         int calculated = this.source.applyAsInt(pos);
-         layer[index] = calculated;
-         return calculated;
       }
+
+      int calculated = this.source.applyAsInt(pos);
+      layer[index] = calculated;
+      return calculated;
    }
 
    public void invalidateForChunk(final int chunkX, final int chunkZ) {
@@ -89,28 +89,25 @@ public class BlockTintCache {
 
       this.lock.writeLock().lock();
 
-      BlockTintCache.CacheData newCache;
       try {
          BlockTintCache.CacheData existingNow = (BlockTintCache.CacheData)this.cache.get(key);
-         if (existingNow == null) {
-            newCache = new BlockTintCache.CacheData();
-            if (this.cache.size() >= 256) {
-               BlockTintCache.CacheData cacheData = (BlockTintCache.CacheData)this.cache.removeFirst();
-               if (cacheData != null) {
-                  cacheData.invalidate();
-               }
-            }
-
-            this.cache.put(key, newCache);
-            return newCache;
+         if (existingNow != null) {
+            return existingNow;
          }
 
-         newCache = existingNow;
+         BlockTintCache.CacheData newCache = new BlockTintCache.CacheData();
+         if (this.cache.size() >= 256) {
+            BlockTintCache.CacheData cacheData = (BlockTintCache.CacheData)this.cache.removeFirst();
+            if (cacheData != null) {
+               cacheData.invalidate();
+            }
+         }
+
+         this.cache.put(key, newCache);
+         return newCache;
       } finally {
          this.lock.writeLock().unlock();
       }
-
-      return newCache;
    }
 
    private static class CacheData {
@@ -133,14 +130,11 @@ public class BlockTintCache {
 
          this.lock.writeLock().lock();
 
-         int[] var12;
          try {
-            var12 = (int[])this.cache.computeIfAbsent(y, n -> this.allocateLayer());
+            return (int[])this.cache.computeIfAbsent(y, n -> this.allocateLayer());
          } finally {
             this.lock.writeLock().unlock();
          }
-
-         return var12;
       }
 
       private int[] allocateLayer() {
@@ -161,7 +155,6 @@ public class BlockTintCache {
    private static class LatestCacheInfo {
       private int x = Integer.MIN_VALUE;
       private int z = Integer.MIN_VALUE;
-      @Nullable
-      private BlockTintCache.CacheData cache;
+      private BlockTintCache.@Nullable CacheData cache;
    }
 }

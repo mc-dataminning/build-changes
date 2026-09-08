@@ -41,9 +41,9 @@ public class DefaultDispenseItemBehavior implements DispenseItemBehavior {
       RandomSource random = level.getRandom();
       double pow = random.nextDouble() * 0.1 + 0.2;
       itemEntity.setDeltaMovement(
-         random.triangle((double)direction.getStepX() * pow, 0.0172275 * (double)accuracy),
-         random.triangle(0.2, 0.0172275 * (double)accuracy),
-         random.triangle((double)direction.getStepZ() * pow, 0.0172275 * (double)accuracy)
+         random.triangle(direction.getStepX() * pow, 0.0172275 * accuracy),
+         random.triangle(0.2, 0.0172275 * accuracy),
+         random.triangle(direction.getStepZ() * pow, 0.0172275 * accuracy)
       );
       level.addFreshEntity(itemEntity);
    }
@@ -68,10 +68,10 @@ public class DefaultDispenseItemBehavior implements DispenseItemBehavior {
       dispensed.shrink(1);
       if (dispensed.isEmpty()) {
          return remainder;
-      } else {
-         this.addToInventoryOrDispense(source, remainder);
-         return dispensed;
       }
+
+      this.addToInventoryOrDispense(source, remainder);
+      return dispensed;
    }
 
    private void addToInventoryOrDispense(final BlockSource source, final ItemStack itemStack) {

@@ -13,6 +13,6 @@ public class ChestRaft extends AbstractChestBoat {
 
    @Override
    protected double rideHeight(final EntityDimensions dimensions) {
-      return (double)(dimensions.height() * 0.8888889F);
+      return dimensions.height() * 0.8888889F;
    }
 }

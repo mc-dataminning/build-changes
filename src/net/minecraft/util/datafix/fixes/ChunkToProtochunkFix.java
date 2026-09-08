@@ -47,16 +47,16 @@ public class ChunkToProtochunkFix extends DataFix {
 
    private static <T> Dynamic<T> repackBiomes(final Dynamic<T> tag) {
       return tag.update("Biomes", biomes -> (Dynamic)DataFixUtils.orElse(biomes.asByteBufferOpt().result().map(buffer -> {
-            int[] newBiomes = new int[256];
+         int[] newBiomes = new int[256];
 
-            for (int i = 0; i < newBiomes.length; i++) {
-               if (i < buffer.capacity()) {
-                  newBiomes[i] = buffer.get(i) & 255;
-               }
+         for (int i = 0; i < newBiomes.length; i++) {
+            if (i < buffer.capacity()) {
+               newBiomes[i] = buffer.get(i) & 255;
             }
+         }
 
-            return tag.createIntList(Arrays.stream(newBiomes));
-         }), biomes));
+         return tag.createIntList(Arrays.stream(newBiomes));
+      }), biomes));
    }
 
    private static <T> Dynamic<T> repackTicks(final Dynamic<T> tag) {

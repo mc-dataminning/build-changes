@@ -1,7 +1,6 @@
 package net.minecraft.world.inventory;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import net.minecraft.advancements.triggers.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
@@ -33,10 +32,6 @@ import net.minecraft.world.level.block.EnchantingTableBlock;
 public class EnchantmentMenu extends AbstractContainerMenu {
    private static final Identifier EMPTY_SLOT_LAPIS_LAZULI = Identifier.withDefaultNamespace("container/slot/lapis_lazuli");
    private final Container enchantSlots = new SimpleContainer(2) {
-      {
-         Objects.requireNonNull(EnchantmentMenu.this);
-      }
-
       @Override
       public void setChanged() {
          super.setChanged();
@@ -58,20 +53,12 @@ public class EnchantmentMenu extends AbstractContainerMenu {
       super(MenuType.ENCHANTMENT, containerId);
       this.access = access;
       this.addSlot(new Slot(this.enchantSlots, 0, 15, 47) {
-         {
-            Objects.requireNonNull(EnchantmentMenu.this);
-         }
-
          @Override
          public int getMaxStackSize() {
             return 1;
          }
       });
       this.addSlot(new Slot(this.enchantSlots, 1, 35, 47) {
-         {
-            Objects.requireNonNull(EnchantmentMenu.this);
-         }
-
          @Override
          public boolean mayPlace(final ItemStack itemStack) {
             return itemStack.is(Items.LAPIS_LAZULI);
@@ -110,7 +97,7 @@ public class EnchantmentMenu extends AbstractContainerMenu {
                   }
                }
 
-               this.random.setSeed((long)this.enchantmentSeed.get());
+               this.random.setSeed(this.enchantmentSeed.get());
 
                for (int ixx = 0; ixx < 3; ixx++) {
                   this.costs[ixx] = EnchantmentHelper.getEnchantmentCost(this.random, ixx, bookcases, itemStack);
@@ -152,43 +139,45 @@ public class EnchantmentMenu extends AbstractContainerMenu {
          int enchantmentCost = buttonId + 1;
          if ((currency.isEmpty() || currency.getCount() < enchantmentCost) && !player.hasInfiniteMaterials()) {
             return false;
-         } else if (this.costs[buttonId] <= 0
+         }
+
+         if (this.costs[buttonId] <= 0
             || itemStack.isEmpty()
             || (player.experienceLevel < enchantmentCost || player.experienceLevel < this.costs[buttonId]) && !player.hasInfiniteMaterials()) {
             return false;
-         } else {
-            this.access.execute((level, pos) -> {
-               ItemStack enchantmentItem = itemStack;
-               List<EnchantmentInstance> newEnchantment = this.getEnchantmentList(level.registryAccess(), itemStack, buttonId, this.costs[buttonId]);
-               if (!newEnchantment.isEmpty()) {
-                  player.onEnchantmentPerformed(itemStack, enchantmentCost);
-                  if (itemStack.is(Items.BOOK)) {
-                     enchantmentItem = itemStack.transmuteCopy(Items.ENCHANTED_BOOK);
-                     this.enchantSlots.setItem(0, enchantmentItem);
-                  }
-
-                  for (EnchantmentInstance enchantment : newEnchantment) {
-                     enchantmentItem.enchant(enchantment.enchantment(), enchantment.level());
-                  }
-
-                  currency.consume(enchantmentCost, player);
-                  if (currency.isEmpty()) {
-                     this.enchantSlots.setItem(1, ItemStack.EMPTY);
-                  }
-
-                  player.awardStat(Stats.ENCHANT_ITEM);
-                  if (player instanceof ServerPlayer serverPlayer) {
-                     CriteriaTriggers.ENCHANTED_ITEM.trigger(serverPlayer, enchantmentItem, enchantmentCost);
-                  }
-
-                  this.enchantSlots.setChanged();
-                  this.enchantmentSeed.set(player.getEnchantmentSeed());
-                  this.slotsChanged(this.enchantSlots);
-                  level.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
-               }
-            });
-            return true;
          }
+
+         this.access.execute((level, pos) -> {
+            ItemStack enchantmentItem = itemStack;
+            List<EnchantmentInstance> newEnchantment = this.getEnchantmentList(level.registryAccess(), enchantmentItem, buttonId, this.costs[buttonId]);
+            if (!newEnchantment.isEmpty()) {
+               player.onEnchantmentPerformed(enchantmentItem, enchantmentCost);
+               if (enchantmentItem.is(Items.BOOK)) {
+                  enchantmentItem = itemStack.transmuteCopy(Items.ENCHANTED_BOOK);
+                  this.enchantSlots.setItem(0, enchantmentItem);
+               }
+
+               for (EnchantmentInstance enchantment : newEnchantment) {
+                  enchantmentItem.enchant(enchantment.enchantment(), enchantment.level());
+               }
+
+               currency.consume(enchantmentCost, player);
+               if (currency.isEmpty()) {
+                  this.enchantSlots.setItem(1, ItemStack.EMPTY);
+               }
+
+               player.awardStat(Stats.ENCHANT_ITEM);
+               if (player instanceof ServerPlayer serverPlayer) {
+                  CriteriaTriggers.ENCHANTED_ITEM.trigger(serverPlayer, enchantmentItem, enchantmentCost);
+               }
+
+               this.enchantSlots.setChanged();
+               this.enchantmentSeed.set(player.getEnchantmentSeed());
+               this.slotsChanged(this.enchantSlots);
+               level.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
+            }
+         });
+         return true;
       } else {
          Util.logAndPauseIfInIde(player.getPlainTextName() + " pressed invalid button id: " + buttonId);
          return false;
@@ -196,18 +185,18 @@ public class EnchantmentMenu extends AbstractContainerMenu {
    }
 
    private List<EnchantmentInstance> getEnchantmentList(final RegistryAccess access, final ItemStack itemStack, final int slot, final int enchantmentCost) {
-      this.random.setSeed((long)(this.enchantmentSeed.get() + slot));
+      this.random.setSeed(this.enchantmentSeed.get() + slot);
       Optional<HolderSet.Named<Enchantment>> tag = access.lookupOrThrow(Registries.ENCHANTMENT).get(EnchantmentTags.IN_ENCHANTING_TABLE);
       if (tag.isEmpty()) {
          return List.of();
-      } else {
-         List<EnchantmentInstance> list = EnchantmentHelper.selectEnchantment(this.random, itemStack, enchantmentCost, tag.get().stream());
-         if (itemStack.is(Items.BOOK) && list.size() > 1) {
-            list.remove(this.random.nextInt(list.size()));
-         }
-
-         return list;
       }
+
+      List<EnchantmentInstance> list = EnchantmentHelper.selectEnchantment(this.random, itemStack, enchantmentCost, tag.get().stream());
+      if (itemStack.is(Items.BOOK) && list.size() > 1) {
+         list.remove(this.random.nextInt(list.size()));
+      }
+
+      return list;
    }
 
    public int getGoldCount() {

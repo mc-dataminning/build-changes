@@ -17,8 +17,8 @@ public record RealmsServerList(@SerializedName("servers") List<RealmsServer> ser
          }
 
          LOGGER.error("Could not parse McoServerList: {}", json);
-      } catch (Exception var3) {
-         LOGGER.error("Could not parse McoServerList", var3);
+      } catch (Exception e) {
+         LOGGER.error("Could not parse McoServerList", e);
       }
 
       return new RealmsServerList(List.of());

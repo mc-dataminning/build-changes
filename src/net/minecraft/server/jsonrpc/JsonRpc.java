@@ -16,34 +16,33 @@ import org.slf4j.Logger;
 public class JsonRpc {
    private static final Logger LOGGER = LogUtils.getLogger();
 
-   @Nullable
-   public static ManagementServer create(final DedicatedServerSettings settings, final NotificationManager notificationManager) {
+   public static @Nullable ManagementServer create(final DedicatedServerSettings settings, final NotificationManager notificationManager) {
       DedicatedServerProperties properties = settings.getProperties();
       if (properties.managementServerEnabled) {
          String managementServerSecret = properties.managementServerSecret;
          if (!SecurityConfig.isValid(managementServerSecret)) {
             throw new IllegalStateException("Invalid management server secret, must be 40 alphanumeric characters");
-         } else {
-            String managementHost = properties.managementServerHost;
-            int managementPort = properties.managementServerPort;
-            HostAndPort hostAndPort = HostAndPort.fromParts(managementHost, managementPort);
-            SecurityConfig securityConfig = new SecurityConfig(managementServerSecret);
-            String allowedOrigins = properties.managementServerAllowedOrigins;
-            AuthenticationHandler authenticationHandler = new AuthenticationHandler(securityConfig, allowedOrigins);
-            LOGGER.info("Starting json RPC server on {}", hostAndPort);
-            ManagementServer jsonRpcServer = new ManagementServer(hostAndPort, authenticationHandler);
-            MinecraftApi minecraftApi = MinecraftApi.of(notificationManager);
-            minecraftApi.notificationManager().registerService(new JsonRpcNotificationService(minecraftApi, jsonRpcServer));
-            if (properties.managementServerTlsEnabled) {
-               SslContext sslContext = createSslContext(properties);
-               jsonRpcServer.startWithTls(minecraftApi, sslContext);
-            } else {
-               jsonRpcServer.startWithoutTls(minecraftApi);
-            }
-
-            jsonRpcServer.scheduleHeartbeat(notificationManager, (long)properties.statusHeartbeatInterval.get().intValue());
-            return jsonRpcServer;
          }
+
+         String managementHost = properties.managementServerHost;
+         int managementPort = properties.managementServerPort;
+         HostAndPort hostAndPort = HostAndPort.fromParts(managementHost, managementPort);
+         SecurityConfig securityConfig = new SecurityConfig(managementServerSecret);
+         String allowedOrigins = properties.managementServerAllowedOrigins;
+         AuthenticationHandler authenticationHandler = new AuthenticationHandler(securityConfig, allowedOrigins);
+         LOGGER.info("Starting json RPC server on {}", hostAndPort);
+         ManagementServer jsonRpcServer = new ManagementServer(hostAndPort, authenticationHandler);
+         MinecraftApi minecraftApi = MinecraftApi.of(notificationManager);
+         minecraftApi.notificationManager().registerService(new JsonRpcNotificationService(minecraftApi, jsonRpcServer));
+         if (properties.managementServerTlsEnabled) {
+            SslContext sslContext = createSslContext(properties);
+            jsonRpcServer.startWithTls(minecraftApi, sslContext);
+         } else {
+            jsonRpcServer.startWithoutTls(minecraftApi);
+         }
+
+         jsonRpcServer.scheduleHeartbeat(notificationManager, properties.statusHeartbeatInterval.get().intValue());
+         return jsonRpcServer;
       } else {
          return null;
       }
@@ -52,9 +51,9 @@ public class JsonRpc {
    private static SslContext createSslContext(final DedicatedServerProperties properties) {
       try {
          return JsonRpcSslContextProvider.createFrom(properties.managementServerTlsKeystore, properties.managementServerTlsKeystorePassword);
-      } catch (Exception var2) {
+      } catch (Exception e) {
          JsonRpcSslContextProvider.printInstructions();
-         throw new IllegalStateException("Failed to configure TLS for the server management protocol", var2);
+         throw new IllegalStateException("Failed to configure TLS for the server management protocol", e);
       }
    }
 }

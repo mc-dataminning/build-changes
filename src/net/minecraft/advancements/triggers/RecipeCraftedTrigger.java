@@ -25,15 +25,15 @@ public class RecipeCraftedTrigger extends SimpleCriterionTrigger<RecipeCraftedTr
       this.trigger(player, t -> t.matches(id, usedIngredients));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, HolderSet<Recipe<?>> recipes, List<ItemPredicate> ingredients)
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, HolderSet<Recipe<?>> recipes, List<ItemPredicate> ingredients)
       implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<RecipeCraftedTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(RecipeCraftedTrigger.TriggerInstance::player),
-                  Recipe.LIST_CODEC.fieldOf("recipes").forGetter(RecipeCraftedTrigger.TriggerInstance::recipes),
-                  ItemPredicate.CODEC.listOf().optionalFieldOf("ingredients", List.of()).forGetter(RecipeCraftedTrigger.TriggerInstance::ingredients)
-               )
-               .apply(i, RecipeCraftedTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(RecipeCraftedTrigger.TriggerInstance::player),
+               Recipe.LIST_CODEC.fieldOf("recipes").forGetter(RecipeCraftedTrigger.TriggerInstance::recipes),
+               ItemPredicate.CODEC.listOf().optionalFieldOf("ingredients", List.of()).forGetter(RecipeCraftedTrigger.TriggerInstance::ingredients)
+            )
+            .apply(i, RecipeCraftedTrigger.TriggerInstance::new)
       );
 
       public static Criterion<RecipeCraftedTrigger.TriggerInstance> craftedItem(
@@ -56,28 +56,28 @@ public class RecipeCraftedTrigger extends SimpleCriterionTrigger<RecipeCraftedTr
       private boolean matches(final ResourceKey<Recipe<?>> id, final List<ItemStack> usedIngredients) {
          if (this.recipes.stream().noneMatch(holder -> holder.is(id))) {
             return false;
-         } else {
-            List<ItemStack> remaining = new ArrayList<>(usedIngredients);
+         }
 
-            for (ItemPredicate predicate : this.ingredients) {
-               boolean found = false;
-               Iterator<ItemStack> iterator = remaining.iterator();
+         List<ItemStack> remaining = new ArrayList<>(usedIngredients);
 
-               while (iterator.hasNext()) {
-                  if (predicate.test(iterator.next())) {
-                     iterator.remove();
-                     found = true;
-                     break;
-                  }
-               }
+         for (ItemPredicate predicate : this.ingredients) {
+            boolean found = false;
+            Iterator<ItemStack> iterator = remaining.iterator();
 
-               if (!found) {
-                  return false;
+            while (iterator.hasNext()) {
+               if (predicate.test(iterator.next())) {
+                  iterator.remove();
+                  found = true;
+                  break;
                }
             }
 
-            return true;
+            if (!found) {
+               return false;
+            }
          }
+
+         return true;
       }
    }
 }

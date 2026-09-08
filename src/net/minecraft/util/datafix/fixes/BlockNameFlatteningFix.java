@@ -28,8 +28,8 @@ public class BlockNameFlatteningFix extends DataFix {
             expectedBlockType,
             expectedNewBlockType,
             ops -> block -> block.mapSecond(
-                     choice -> (String)choice.map(BlockStateData::upgradeBlock, name -> BlockStateData.upgradeBlock(NamespacedSchema.ensureNamespaced(name)))
-                  )
+               choice -> (String)choice.map(BlockStateData::upgradeBlock, name -> BlockStateData.upgradeBlock(NamespacedSchema.ensureNamespaced(name)))
+            )
          );
       } else {
          throw new IllegalStateException("Expected and actual types don't match.");

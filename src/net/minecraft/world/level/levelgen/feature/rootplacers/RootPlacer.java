@@ -78,7 +78,7 @@ public abstract class RootPlacer {
    protected BlockState getPotentiallyWaterloggedState(final LevelSimulatedReader level, final BlockPos pos, final BlockState state) {
       if (state.hasProperty(BlockStateProperties.WATERLOGGED)) {
          boolean waterlogged = level.isFluidAtPosition(pos, s -> s.is(FluidTags.WATER));
-         return state.setValue(BlockStateProperties.WATERLOGGED, Boolean.valueOf(waterlogged));
+         return state.setValue(BlockStateProperties.WATERLOGGED, waterlogged);
       } else {
          return state;
       }

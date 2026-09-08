@@ -8,7 +8,7 @@ import net.minecraft.server.dialog.SimpleDialog;
 import org.jspecify.annotations.Nullable;
 
 public class SimpleDialogScreen<T extends SimpleDialog> extends DialogScreen<T> {
-   public SimpleDialogScreen(@Nullable final Screen previousScreen, final T dialog, final DialogConnectionAccess connectionAccess) {
+   public SimpleDialogScreen(final @Nullable Screen previousScreen, final T dialog, final DialogConnectionAccess connectionAccess) {
       super(previousScreen, dialog, connectionAccess);
    }
 

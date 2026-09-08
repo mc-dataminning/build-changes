@@ -14,7 +14,7 @@ import net.minecraft.world.level.saveddata.SavedDataType;
 public final class WorldGenSettings extends SavedData {
    public static final Codec<WorldGenSettings> CODEC = RecordCodecBuilder.create(
       i -> i.group(WorldOptions.CODEC.forGetter(WorldGenSettings::options), WorldDimensions.CODEC.forGetter(WorldGenSettings::dimensions))
-            .apply(i, i.stable(WorldGenSettings::new))
+         .apply(i, i.stable(WorldGenSettings::new))
    );
    public static final SavedDataType<WorldGenSettings> TYPE = new SavedDataType<>(
       Identifier.withDefaultNamespace("world_gen_settings"),

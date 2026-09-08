@@ -40,8 +40,7 @@ public class PathFinder {
       this.maxVisitedNodes = maxVisitedNodes;
    }
 
-   @Nullable
-   public Path findPath(
+   public @Nullable Path findPath(
       final PathNavigationRegion level,
       final Mob entity,
       final Set<BlockPos> targets,
@@ -54,17 +53,16 @@ public class PathFinder {
       Node from = this.nodeEvaluator.getStart();
       if (from == null) {
          return null;
-      } else {
-         Map<Target, BlockPos> tos = targets.stream()
-            .collect(Collectors.toMap(pos -> this.nodeEvaluator.getTarget((double)pos.getX(), (double)pos.getY(), (double)pos.getZ()), Function.identity()));
-         Path path = this.findPath(from, tos, maxPathLength, reachRange, maxVisitedNodesMultiplier);
-         this.nodeEvaluator.done();
-         return path;
       }
+
+      Map<Target, BlockPos> tos = targets.stream()
+         .collect(Collectors.toMap(pos -> this.nodeEvaluator.getTarget(pos.getX(), pos.getY(), pos.getZ()), Function.identity()));
+      Path path = this.findPath(from, tos, maxPathLength, reachRange, maxVisitedNodesMultiplier);
+      this.nodeEvaluator.done();
+      return path;
    }
 
-   @Nullable
-   private Path findPath(
+   private @Nullable Path findPath(
       final Node from, final Map<Target, BlockPos> targetMap, final float maxPathLength, final int reachRange, final float maxVisitedNodesMultiplier
    ) {
       ProfilerFiller profiler = Profiler.get();
@@ -77,10 +75,10 @@ public class PathFinder {
       this.openSet.clear();
       this.openSet.insert(from);
       boolean captureDebug = this.captureDebug.getAsBoolean();
-      Set<Node> closedSet = (Set<Node>)(captureDebug ? new HashSet<>() : Set.of());
+      Set<Node> closedSet = captureDebug ? new HashSet<>() : Set.of();
       int count = 0;
       Set<Target> reachedTargets = Sets.newHashSetWithExpectedSize(targets.size());
-      int maxVisitedNodesAdjusted = (int)((float)this.maxVisitedNodes * maxVisitedNodesMultiplier);
+      int maxVisitedNodesAdjusted = (int)(this.maxVisitedNodes * maxVisitedNodesMultiplier);
 
       while (!this.openSet.isEmpty()) {
          if (++count >= maxVisitedNodesAdjusted) {
@@ -91,7 +89,7 @@ public class PathFinder {
          current.closed = true;
 
          for (Target target : targets) {
-            if (current.distanceManhattan(target) <= (float)reachRange) {
+            if (current.distanceManhattan(target) <= reachRange) {
                target.setReached();
                reachedTargets.add(target);
             }
@@ -130,22 +128,22 @@ public class PathFinder {
 
       Optional<Path> optPath = !reachedTargets.isEmpty()
          ? reachedTargets.stream()
-            .map(targetx -> this.reconstructPath(targetx.getBestNode(), targetMap.get(targetx), true))
+            .map(target -> this.reconstructPath(target.getBestNode(), targetMap.get(target), true))
             .min(Comparator.comparingInt(Path::getNodeCount))
          : targets.stream()
-            .map(targetx -> this.reconstructPath(targetx.getBestNode(), targetMap.get(targetx), false))
+            .map(target -> this.reconstructPath(target.getBestNode(), targetMap.get(target), false))
             .min(Comparator.comparingDouble(Path::getDistToTarget).thenComparingInt(Path::getNodeCount));
       profiler.pop();
       if (optPath.isEmpty()) {
          return null;
-      } else {
-         Path path = optPath.get();
-         if (captureDebug) {
-            path.setDebug(List.of(this.openSet.getHeap()), List.copyOf(closedSet), targets);
-         }
-
-         return path;
       }
+
+      Path path = optPath.get();
+      if (captureDebug) {
+         path.setDebug(List.of(this.openSet.getHeap()), List.copyOf(closedSet), targets);
+      }
+
+      return path;
    }
 
    protected float distance(final Node from, final Node to) {
@@ -167,7 +165,7 @@ public class PathFinder {
    private Path reconstructPath(final Node closest, final BlockPos target, final boolean reached) {
       List<Node> nodes = Lists.newArrayList();
       Node node = closest;
-      nodes.add(0, closest);
+      nodes.add(0, node);
 
       while (node.cameFrom != null) {
          node = node.cameFrom;

@@ -32,13 +32,13 @@ public class PacketEncoder<T extends PacketListener> extends MessageToByteEncode
          }
 
          JvmProfiler.INSTANCE.onPacketSent(this.protocolInfo.id(), packetId, ctx.channel().remoteAddress(), writtenBytes);
-      } catch (Throwable var9) {
-         LOGGER.error("Error sending packet {}", packetId, var9);
+      } catch (Throwable t) {
+         LOGGER.error("Error sending packet {}", packetId, t);
          if (packet.isSkippable()) {
-            throw new SkipPacketEncoderException(var9);
+            throw new SkipPacketEncoderException(t);
          }
 
-         throw var9;
+         throw t;
       } finally {
          ProtocolSwapHandler.handleOutboundTerminalPacket(ctx, packet);
       }

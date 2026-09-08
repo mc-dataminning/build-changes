@@ -65,15 +65,15 @@ public class SessionSearchTrees {
             CompletableFuture<?> previous = this.recipeSearch;
             this.recipeSearch = CompletableFuture.supplyAsync(
                () -> new FullTextSearchTree<>(
-                     collection -> getTooltipLines(
-                           collection.getRecipes().stream().flatMap(e -> e.resultItems(recipeContext).stream()), tooltipContext, tooltipFlag
-                        ),
-                     collection -> collection.getRecipes()
-                           .stream()
-                           .flatMap(e -> e.resultItems(recipeContext).stream())
-                           .map(stack -> itemRegistries.getKey(stack.getItem())),
-                     recipes
+                  collection -> getTooltipLines(
+                     collection.getRecipes().stream().flatMap(e -> e.resultItems(recipeContext).stream()), tooltipContext, tooltipFlag
                   ),
+                  collection -> collection.getRecipes()
+                     .stream()
+                     .flatMap(e -> e.resultItems(recipeContext).stream())
+                     .map(stack -> itemRegistries.getKey(stack.getItem())),
+                  recipes
+               ),
                Util.backgroundExecutor()
             );
             previous.cancel(true);
@@ -111,10 +111,10 @@ public class SessionSearchTrees {
             CompletableFuture<?> previous = this.creativeByNameSearch;
             this.creativeByNameSearch = CompletableFuture.supplyAsync(
                () -> new FullTextSearchTree<>(
-                     itemStack -> getTooltipLines(Stream.of(itemStack), tooltipContext, tooltipFlag),
-                     itemStack -> itemStack.typeHolder().unwrapKey().map(ResourceKey::identifier).stream(),
-                     itemStacks
-                  ),
+                  itemStack -> getTooltipLines(Stream.of(itemStack), tooltipContext, tooltipFlag),
+                  itemStack -> itemStack.typeHolder().unwrapKey().map(ResourceKey::identifier).stream(),
+                  itemStacks
+               ),
                Util.backgroundExecutor()
             );
             previous.cancel(true);

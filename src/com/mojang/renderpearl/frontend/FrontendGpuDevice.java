@@ -35,8 +35,7 @@ public class FrontendGpuDevice implements GpuDevice {
    private static final Logger LOGGER = LogUtils.getLogger();
    public static final boolean STRICT_VALIDATION = SharedConstants.IS_RUNNING_IN_IDE;
    private final GpuDeviceBackend backend;
-   @Nullable
-   private final TracyGpuProfiler profiler;
+   private final @Nullable TracyGpuProfiler profiler;
    private final CommandEncoder encoder;
    private final PipelineBuilder pipelineBuilder;
 
@@ -81,8 +80,8 @@ public class FrontendGpuDevice implements GpuDevice {
 
    @Override
    public GpuTexture createTexture(
-      @Nullable final Supplier<String> label,
-      @GpuTexture.Usage final int usage,
+      final @Nullable Supplier<String> label,
+      final @GpuTexture.Usage int usage,
       final GpuFormat format,
       final int width,
       final int height,
@@ -94,8 +93,8 @@ public class FrontendGpuDevice implements GpuDevice {
 
    @Override
    public GpuTexture createTexture(
-      @Nullable final String label,
-      @GpuTexture.Usage final int usage,
+      final @Nullable String label,
+      final @GpuTexture.Usage int usage,
       final GpuFormat format,
       final int width,
       final int height,
@@ -106,44 +105,46 @@ public class FrontendGpuDevice implements GpuDevice {
       return this.backend.createTexture(label, usage, format, width, height, depthOrLayers, mipLevels);
    }
 
-   private void verifyTextureCreationArgs(@GpuTexture.Usage final int usage, final int width, final int height, final int depthOrLayers, final int mipLevels) {
+   private void verifyTextureCreationArgs(final @GpuTexture.Usage int usage, final int width, final int height, final int depthOrLayers, final int mipLevels) {
       if (mipLevels < 1) {
          throw new IllegalArgumentException("mipLevels must be at least 1");
-      } else {
-         int maxDimension = Math.max(width, height);
-         int maxMipSupported = Mth.log2(maxDimension) + 1;
-         if (mipLevels > maxMipSupported) {
-            throw new IllegalArgumentException(
-               "mipLevels must be at most "
-                  + maxMipSupported
-                  + " for a texture of width "
-                  + width
-                  + " and height "
-                  + height
-                  + " (asked for "
-                  + mipLevels
-                  + " mipLevels)"
-            );
-         } else if (depthOrLayers < 1) {
-            throw new IllegalArgumentException("depthOrLayers must be at least 1");
-         } else {
-            boolean isCubemap = (usage & 16) != 0;
-            if (isCubemap) {
-               if (width != height) {
-                  throw new IllegalArgumentException("Cubemap compatible textures must be square, but size is " + width + "x" + height);
-               }
+      }
 
-               if (depthOrLayers % 6 != 0) {
-                  throw new IllegalArgumentException("Cubemap compatible textures must have a layer count with a multiple of 6, was " + depthOrLayers);
-               }
+      int maxDimension = Math.max(width, height);
+      int maxMipSupported = Mth.log2(maxDimension) + 1;
+      if (mipLevels > maxMipSupported) {
+         throw new IllegalArgumentException(
+            "mipLevels must be at most "
+               + maxMipSupported
+               + " for a texture of width "
+               + width
+               + " and height "
+               + height
+               + " (asked for "
+               + mipLevels
+               + " mipLevels)"
+         );
+      }
 
-               if (depthOrLayers > 6) {
-                  throw new UnsupportedOperationException("Array textures are not yet supported");
-               }
-            } else if (depthOrLayers > 1) {
-               throw new UnsupportedOperationException("Array or 3D textures are not yet supported");
-            }
+      if (depthOrLayers < 1) {
+         throw new IllegalArgumentException("depthOrLayers must be at least 1");
+      }
+
+      boolean isCubemap = (usage & 16) != 0;
+      if (isCubemap) {
+         if (width != height) {
+            throw new IllegalArgumentException("Cubemap compatible textures must be square, but size is " + width + "x" + height);
          }
+
+         if (depthOrLayers % 6 != 0) {
+            throw new IllegalArgumentException("Cubemap compatible textures must have a layer count with a multiple of 6, was " + depthOrLayers);
+         }
+
+         if (depthOrLayers > 6) {
+            throw new UnsupportedOperationException("Array textures are not yet supported");
+         }
+      } else if (depthOrLayers > 1) {
+         throw new UnsupportedOperationException("Array or 3D textures are not yet supported");
       }
    }
 
@@ -169,7 +170,7 @@ public class FrontendGpuDevice implements GpuDevice {
    }
 
    @Override
-   public GpuBuffer createBuffer(@Nullable final Supplier<String> label, @GpuBuffer.Usage final int usage, final long size) {
+   public GpuBuffer createBuffer(final @Nullable Supplier<String> label, final @GpuBuffer.Usage int usage, final long size) {
       if (size <= 0L) {
          throw new IllegalArgumentException("Buffer size must be greater than zero");
       } else {
@@ -178,7 +179,7 @@ public class FrontendGpuDevice implements GpuDevice {
    }
 
    @Override
-   public GpuBuffer createBuffer(@Nullable final Supplier<String> label, @GpuBuffer.Usage final int usage, final ByteBuffer data) {
+   public GpuBuffer createBuffer(final @Nullable Supplier<String> label, final @GpuBuffer.Usage int usage, final ByteBuffer data) {
       if (!data.hasRemaining()) {
          throw new IllegalArgumentException("Buffer source must not be empty");
       } else {

@@ -25,7 +25,7 @@ public class SaplingBlock extends VegetationBlock implements BonemealableBlock {
    protected SaplingBlock(final TreeGrower treeGrower, final BlockBehaviour.Properties properties) {
       super(properties);
       this.treeGrower = treeGrower;
-      this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, Integer.valueOf(0)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, 0));
    }
 
    @Override
@@ -53,10 +53,10 @@ public class SaplingBlock extends VegetationBlock implements BonemealableBlock {
       if (level instanceof ServerLevel serverLevel) {
          if (!this.treeGrower.canGrow(serverLevel, pos, state)) {
             return false;
-         } else {
-            int heightOffset = this.treeGrower.getMinimumHeight(serverLevel).orElse(0);
-            return level.isInsideBuildHeight(pos.above(heightOffset));
          }
+
+         int heightOffset = this.treeGrower.getMinimumHeight(serverLevel).orElse(0);
+         return level.isInsideBuildHeight(pos.above(heightOffset));
       } else {
          return false;
       }
@@ -64,7 +64,7 @@ public class SaplingBlock extends VegetationBlock implements BonemealableBlock {
 
    @Override
    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state, final BonemealSource source) {
-      return (double)level.getRandom().nextFloat() < 0.45;
+      return level.getRandom().nextFloat() < 0.45;
    }
 
    @Override

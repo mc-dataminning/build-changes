@@ -15,11 +15,11 @@ import net.minecraft.world.level.block.entity.BannerPatternLayers;
 public class ShieldDecorationRecipe extends CustomRecipe {
    public static final MapCodec<ShieldDecorationRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Ingredient.CODEC.fieldOf("banner").forGetter(o -> o.banner),
-               Ingredient.CODEC.fieldOf("target").forGetter(o -> o.target),
-               ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
-            )
-            .apply(i, ShieldDecorationRecipe::new)
+            Ingredient.CODEC.fieldOf("banner").forGetter(o -> o.banner),
+            Ingredient.CODEC.fieldOf("target").forGetter(o -> o.target),
+            ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
+         )
+         .apply(i, ShieldDecorationRecipe::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, ShieldDecorationRecipe> STREAM_CODEC = StreamCodec.composite(
       Ingredient.CONTENTS_STREAM_CODEC,
@@ -44,40 +44,40 @@ public class ShieldDecorationRecipe extends CustomRecipe {
    public boolean matches(final CraftingInput input, final Level level) {
       if (input.ingredientCount() != 2) {
          return false;
-      } else {
-         boolean hasClearTarget = false;
-         boolean hasPatternBanner = false;
+      }
 
-         for (int slot = 0; slot < input.size(); slot++) {
-            ItemStack itemStack = input.getItem(slot);
-            if (!itemStack.isEmpty()) {
-               if (this.banner.test(itemStack) && itemStack.getItem() instanceof BannerItem) {
-                  if (hasPatternBanner) {
-                     return false;
-                  }
+      boolean hasClearTarget = false;
+      boolean hasPatternBanner = false;
 
-                  hasPatternBanner = true;
-               } else {
-                  if (!this.target.test(itemStack)) {
-                     return false;
-                  }
-
-                  if (hasClearTarget) {
-                     return false;
-                  }
-
-                  BannerPatternLayers patterns = itemStack.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY);
-                  if (!patterns.layers().isEmpty()) {
-                     return false;
-                  }
-
-                  hasClearTarget = true;
+      for (int slot = 0; slot < input.size(); slot++) {
+         ItemStack itemStack = input.getItem(slot);
+         if (!itemStack.isEmpty()) {
+            if (this.banner.test(itemStack) && itemStack.getItem() instanceof BannerItem) {
+               if (hasPatternBanner) {
+                  return false;
                }
+
+               hasPatternBanner = true;
+            } else {
+               if (!this.target.test(itemStack)) {
+                  return false;
+               }
+
+               if (hasClearTarget) {
+                  return false;
+               }
+
+               BannerPatternLayers patterns = itemStack.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY);
+               if (!patterns.layers().isEmpty()) {
+                  return false;
+               }
+
+               hasClearTarget = true;
             }
          }
-
-         return hasClearTarget && hasPatternBanner;
       }
+
+      return hasClearTarget && hasPatternBanner;
    }
 
    public ItemStack assemble(final CraftingInput input) {

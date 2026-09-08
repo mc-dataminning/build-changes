@@ -46,51 +46,51 @@ public class LevelFlatGeneratorInfoFix extends DataFix {
    String fixString(final String generatorOptions) {
       if (generatorOptions.isEmpty()) {
          return "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
+      }
+
+      Iterator<String> parts = SPLITTER.split(generatorOptions).iterator();
+      String firstPart = parts.next();
+      int version;
+      String layerInfo;
+      if (parts.hasNext()) {
+         version = NumberUtils.toInt(firstPart, 0);
+         layerInfo = parts.next();
       } else {
-         Iterator<String> parts = SPLITTER.split(generatorOptions).iterator();
-         String firstPart = parts.next();
-         int version;
-         String layerInfo;
-         if (parts.hasNext()) {
-            version = NumberUtils.toInt(firstPart, 0);
-            layerInfo = parts.next();
-         } else {
-            version = 0;
-            layerInfo = firstPart;
-         }
+         version = 0;
+         layerInfo = firstPart;
+      }
 
-         if (version >= 0 && version <= 3) {
-            StringBuilder result = new StringBuilder();
-            Splitter heightSplitter = version < 3 ? OLD_AMOUNT_SPLITTER : AMOUNT_SPLITTER;
-            result.append(StreamSupport.<String>stream(LAYER_SPLITTER.split(layerInfo).spliterator(), false).map(layerString -> {
-               List<String> list = heightSplitter.splitToList(layerString);
-               int height;
-               String layerType;
-               if (list.size() == 2) {
-                  height = NumberUtils.toInt(list.get(0));
-                  layerType = list.get(1);
-               } else {
-                  height = 1;
-                  layerType = list.get(0);
-               }
-
-               List<String> layerParts = BLOCK_SPLITTER.splitToList(layerType);
-               int nameIndex = layerParts.get(0).equals("minecraft") ? 1 : 0;
-               String blockString = layerParts.get(nameIndex);
-               int blockId = version == 3 ? EntityBlockStateFix.getBlockId("minecraft:" + blockString) : NumberUtils.toInt(blockString, 0);
-               int dataIndex = nameIndex + 1;
-               int data = layerParts.size() > dataIndex ? NumberUtils.toInt(layerParts.get(dataIndex), 0) : 0;
-               return (height == 1 ? "" : height + "*") + BlockStateData.getTag(blockId << 4 | data).get("Name").asString("");
-            }).collect(Collectors.joining(",")));
-
-            while (parts.hasNext()) {
-               result.append(';').append(parts.next());
+      if (version >= 0 && version <= 3) {
+         StringBuilder result = new StringBuilder();
+         Splitter heightSplitter = version < 3 ? OLD_AMOUNT_SPLITTER : AMOUNT_SPLITTER;
+         result.append(StreamSupport.<String>stream(LAYER_SPLITTER.split(layerInfo).spliterator(), false).map(layerString -> {
+            List<String> list = heightSplitter.splitToList(layerString);
+            int height;
+            String layerType;
+            if (list.size() == 2) {
+               height = NumberUtils.toInt(list.get(0));
+               layerType = list.get(1);
+            } else {
+               height = 1;
+               layerType = list.get(0);
             }
 
-            return result.toString();
-         } else {
-            return "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
+            List<String> layerParts = BLOCK_SPLITTER.splitToList(layerType);
+            int nameIndex = layerParts.get(0).equals("minecraft") ? 1 : 0;
+            String blockString = layerParts.get(nameIndex);
+            int blockId = version == 3 ? EntityBlockStateFix.getBlockId("minecraft:" + blockString) : NumberUtils.toInt(blockString, 0);
+            int dataIndex = nameIndex + 1;
+            int data = layerParts.size() > dataIndex ? NumberUtils.toInt(layerParts.get(dataIndex), 0) : 0;
+            return (height == 1 ? "" : height + "*") + BlockStateData.getTag(blockId << 4 | data).get("Name").asString("");
+         }).collect(Collectors.joining(",")));
+
+         while (parts.hasNext()) {
+            result.append(';').append(parts.next());
          }
+
+         return result.toString();
+      } else {
+         return "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
       }
    }
 }

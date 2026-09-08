@@ -30,7 +30,7 @@ public record EntityTypePredicate(HolderSet<EntityType<?>> types) implements Ent
    }
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
       return this.matches(entity.typeHolder());
    }
 }

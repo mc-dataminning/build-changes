@@ -73,9 +73,9 @@ public class SuppressedExceptionCollector {
       return result.isEmpty() ? "~~NONE~~" : result.toString();
    }
 
-   private static record LongEntry(long timestampMs, String location, Class<? extends Throwable> cls, String message) {
+   private record LongEntry(long timestampMs, String location, Class<? extends Throwable> cls, String message) {
    }
 
-   private static record ShortEntry(String location, Class<? extends Throwable> cls) {
+   private record ShortEntry(String location, Class<? extends Throwable> cls) {
    }
 }

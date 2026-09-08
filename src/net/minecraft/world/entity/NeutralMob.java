@@ -23,10 +23,9 @@ public interface NeutralMob {
 
    void setPersistentAngerEndTime(long endTime);
 
-   @Nullable
-   EntityReference<LivingEntity> getPersistentAngerTarget();
+   @Nullable EntityReference<LivingEntity> getPersistentAngerTarget();
 
-   void setPersistentAngerTarget(@Nullable final EntityReference<LivingEntity> persistentAngerTarget);
+   void setPersistentAngerTarget(final @Nullable EntityReference<LivingEntity> persistentAngerTarget);
 
    void startPersistentAngerTimer();
 
@@ -44,7 +43,7 @@ public interface NeutralMob {
       } else {
          Optional<Integer> angerTime = input.getInt("AngerTime");
          if (angerTime.isPresent()) {
-            this.setTimeToRemainAngry((long)angerTime.get().intValue());
+            this.setTimeToRemainAngry(angerTime.get().intValue());
          } else {
             this.setPersistentAngerEndTime(-1L);
          }
@@ -90,22 +89,20 @@ public interface NeutralMob {
    }
 
    private static boolean isValidPlayerTarget(final LivingEntity target) {
-      if (target instanceof Player player && !player.isCreative() && !player.isSpectator() && player.level().getDifficulty() != Difficulty.PEACEFUL) {
-         return true;
-      }
-
-      return false;
+      return target instanceof Player player && !player.isCreative() && !player.isSpectator() && player.level().getDifficulty() != Difficulty.PEACEFUL;
    }
 
    default boolean isAngryAt(final LivingEntity entity, final ServerLevel level) {
       if (!this.canAttack(entity)) {
          return false;
-      } else if (isValidPlayerTarget(entity) && this.isAngryAtAllPlayers(level)) {
-         return true;
-      } else {
-         EntityReference<LivingEntity> persistentAngerTarget = this.getPersistentAngerTarget();
-         return persistentAngerTarget != null && persistentAngerTarget.matches(entity);
       }
+
+      if (isValidPlayerTarget(entity) && this.isAngryAtAllPlayers(level)) {
+         return true;
+      }
+
+      EntityReference<LivingEntity> persistentAngerTarget = this.getPersistentAngerTarget();
+      return persistentAngerTarget != null && persistentAngerTarget.matches(entity);
    }
 
    default boolean isAngryAtAllPlayers(final ServerLevel level) {
@@ -143,18 +140,15 @@ public interface NeutralMob {
       this.setPersistentAngerEndTime(-1L);
    }
 
-   @Nullable
-   LivingEntity getLastHurtByMob();
+   @Nullable LivingEntity getLastHurtByMob();
 
-   void setLastHurtByMob(@Nullable final LivingEntity hurtBy);
+   void setLastHurtByMob(final @Nullable LivingEntity hurtBy);
 
-   void setTarget(@Nullable final LivingEntity target);
+   void setTarget(final @Nullable LivingEntity target);
 
    boolean canAttack(final LivingEntity target);
 
-   @Nullable
-   LivingEntity getTarget();
+   @Nullable LivingEntity getTarget();
 
-   @Nullable
-   LivingEntity getTargetUnchecked();
+   @Nullable LivingEntity getTargetUnchecked();
 }

@@ -60,17 +60,15 @@ public abstract class ChunkAccess implements LightChunk, StructureAccess, BiomeR
    public static final int NO_FILLED_SECTION = -1;
    private static final Logger LOGGER = LogUtils.getLogger();
    private static final LongSet EMPTY_REFERENCE_SET = new LongOpenHashSet();
-   protected final ShortList[] postProcessing;
+   protected final @Nullable ShortList[] postProcessing;
    private volatile boolean unsaved;
    private volatile boolean isLightCorrect;
    protected final ChunkPos chunkPos;
    private long inhabitedTime;
    @Deprecated
-   @Nullable
-   private BiomeGenerationSettings carverBiomeSettings;
+   private @Nullable BiomeGenerationSettings carverBiomeSettings;
    protected final UpgradeData upgradeData;
-   @Nullable
-   protected final BlendingData blendingData;
+   protected final @Nullable BlendingData blendingData;
    protected final Map<Heightmap.Types, Heightmap> heightmaps = Maps.newEnumMap(Heightmap.Types.class);
    protected ChunkSkyLightSources skyLightSources;
    private final Map<Structure, StructureStart> structureStarts = Maps.newHashMap();
@@ -86,8 +84,8 @@ public abstract class ChunkAccess implements LightChunk, StructureAccess, BiomeR
       final LevelHeightAccessor levelHeightAccessor,
       final PalettedContainerFactory containerFactory,
       final long inhabitedTime,
-      @Nullable final LevelChunkSection[] sections,
-      @Nullable final BlendingData blendingData
+      final LevelChunkSection @Nullable [] sections,
+      final @Nullable BlendingData blendingData
    ) {
       this.chunkPos = chunkPos;
       this.upgradeData = upgradeData;
@@ -120,13 +118,11 @@ public abstract class ChunkAccess implements LightChunk, StructureAccess, BiomeR
       return GameEventListenerRegistry.NOOP;
    }
 
-   @Nullable
-   public BlockState setBlockState(final BlockPos pos, final BlockState state) {
+   public @Nullable BlockState setBlockState(final BlockPos pos, final BlockState state) {
       return this.setBlockState(pos, state, 3);
    }
 
-   @Nullable
-   public abstract BlockState setBlockState(BlockPos pos, BlockState state, @Block.UpdateFlags int flags);
+   public abstract @Nullable BlockState setBlockState(BlockPos pos, BlockState state, @Block.UpdateFlags int flags);
 
    public abstract void setBlockEntity(BlockEntity blockEntity);
 
@@ -145,9 +141,7 @@ public abstract class ChunkAccess implements LightChunk, StructureAccess, BiomeR
       return -1;
    }
 
-   @Deprecated(
-      forRemoval = true
-   )
+   @Deprecated(forRemoval = true)
    public int getHighestSectionPosition() {
       int sectionIndex = this.getHighestFilledSectionIndex();
       return sectionIndex == -1 ? this.getMinY() : SectionPos.sectionToBlockCoord(this.getSectionYFromSectionIndex(sectionIndex));
@@ -201,9 +195,8 @@ public abstract class ChunkAccess implements LightChunk, StructureAccess, BiomeR
       return this.chunkPos;
    }
 
-   @Nullable
    @Override
-   public StructureStart getStartForStructure(final Structure structure) {
+   public @Nullable StructureStart getStartForStructure(final Structure structure) {
       return this.structureStarts.get(structure);
    }
 
@@ -300,7 +293,7 @@ public abstract class ChunkAccess implements LightChunk, StructureAccess, BiomeR
       LOGGER.warn("Trying to mark a block for post processing @ {}, but this operation is not supported.", blockPos);
    }
 
-   public ShortList[] getPostProcessing() {
+   public @Nullable ShortList[] getPostProcessing() {
       return this.postProcessing;
    }
 
@@ -315,13 +308,11 @@ public abstract class ChunkAccess implements LightChunk, StructureAccess, BiomeR
       }
    }
 
-   @Nullable
-   public CompoundTag getBlockEntityNbt(final BlockPos blockPos) {
+   public @Nullable CompoundTag getBlockEntityNbt(final BlockPos blockPos) {
       return this.pendingBlockEntities.get(blockPos);
    }
 
-   @Nullable
-   public abstract CompoundTag getBlockEntityNbtForSaving(BlockPos blockPos, HolderLookup.Provider registryAccess);
+   public abstract @Nullable CompoundTag getBlockEntityNbtForSaving(BlockPos blockPos, HolderLookup.Provider registryAccess);
 
    @Override
    public final void findBlockLightSources(final BiConsumer<BlockPos, BlockState> consumer) {
@@ -368,8 +359,7 @@ public abstract class ChunkAccess implements LightChunk, StructureAccess, BiomeR
       return this.blendingData != null;
    }
 
-   @Nullable
-   public BlendingData getBlendingData() {
+   public @Nullable BlendingData getBlendingData() {
       return this.blendingData;
    }
 
@@ -385,7 +375,7 @@ public abstract class ChunkAccess implements LightChunk, StructureAccess, BiomeR
       this.inhabitedTime = inhabitedTime;
    }
 
-   public static ShortList getOrCreateOffsetList(final ShortList[] list, final int sectionIndex) {
+   public static ShortList getOrCreateOffsetList(final @Nullable ShortList[] list, final int sectionIndex) {
       ShortList result = list[sectionIndex];
       if (result == null) {
          result = new ShortArrayList();
@@ -431,8 +421,8 @@ public abstract class ChunkAccess implements LightChunk, StructureAccess, BiomeR
          int clampedQuartY = Mth.clamp(quartY, quartMinY, quartMaxY);
          int sectionIndex = this.getSectionIndex(QuartPos.toBlock(clampedQuartY));
          return this.sections[sectionIndex].getNoiseBiome(quartX & 3, clampedQuartY & 3, quartZ & 3);
-      } catch (Throwable var8) {
-         CrashReport report = CrashReport.forThrowable(var8, "Getting biome");
+      } catch (Throwable t) {
+         CrashReport report = CrashReport.forThrowable(t, "Getting biome");
          CrashReportCategory category = report.addCategory("Biome being got");
          category.setDetail("Location", () -> CrashReportCategory.formatLocation(this, quartX, quartY, quartZ));
          throw new ReportedException(report);
@@ -452,8 +442,7 @@ public abstract class ChunkAccess implements LightChunk, StructureAccess, BiomeR
       }
    }
 
-   @Nullable
-   public BelowZeroRetrogen getBelowZeroRetrogen() {
+   public @Nullable BelowZeroRetrogen getBelowZeroRetrogen() {
       return null;
    }
 
@@ -482,13 +471,13 @@ public abstract class ChunkAccess implements LightChunk, StructureAccess, BiomeR
       return problemPath(this.getPos());
    }
 
-   private static record ChunkPathElement(ChunkPos pos) implements ProblemReporter.PathElement {
+   private record ChunkPathElement(ChunkPos pos) implements ProblemReporter.PathElement {
       @Override
       public String get() {
          return "chunk@" + this.pos;
       }
    }
 
-   public static record PackedTicks(List<SavedTick<Block>> blocks, List<SavedTick<Fluid>> fluids) {
+   public record PackedTicks(List<SavedTick<Block>> blocks, List<SavedTick<Fluid>> fluids) {
    }
 }

@@ -20,8 +20,8 @@ public class BlockStatePredictionHandler implements AutoCloseable {
          .compute(
             pos.asLong(),
             (key, serverVerifiedState) -> serverVerifiedState != null
-                  ? serverVerifiedState.setSequence(this.currentSequenceNr)
-                  : new BlockStatePredictionHandler.ServerVerifiedState(this.currentSequenceNr, state, player.position())
+               ? serverVerifiedState.setSequence(this.currentSequenceNr)
+               : new BlockStatePredictionHandler.ServerVerifiedState(this.currentSequenceNr, state, player.position())
          );
    }
 
@@ -30,10 +30,10 @@ public class BlockStatePredictionHandler implements AutoCloseable {
          .get(pos.asLong());
       if (serverVerifiedState == null) {
          return false;
-      } else {
-         serverVerifiedState.setBlockState(blockState);
-         return true;
       }
+
+      serverVerifiedState.setBlockState(blockState);
+      return true;
    }
 
    public void endPredictionsUpTo(final int sequence, final ClientLevel clientLevel) {

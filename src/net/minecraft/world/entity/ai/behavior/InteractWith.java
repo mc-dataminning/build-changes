@@ -33,30 +33,25 @@ public class InteractWith {
       Predicate<LivingEntity> isTargetValid = mob -> mob.is(type) && targetFilter.test((T)mob);
       return BehaviorBuilder.create(
          i -> i.group(
-                  i.registered(interactionTarget),
-                  i.registered(MemoryModuleType.LOOK_TARGET),
-                  i.absent(MemoryModuleType.WALK_TARGET),
-                  i.present(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-               )
-               .apply(
-                  i,
-                  (target, lookTarget, walkTarget, nearestEntities) -> (level, body, timestamp) -> {
-                        NearestVisibleLivingEntities entities = i.get(nearestEntities);
-                        if (selfFilter.test((E)body) && entities.contains(isTargetValid)) {
-                           Optional<LivingEntity> closest = entities.findClosest(
-                              mob -> mob.distanceToSqr(body) <= (double)interactionRangeSqr && isTargetValid.test(mob)
-                           );
-                           closest.ifPresent(mob -> {
-                              target.set(mob);
-                              lookTarget.set(new EntityTracker(mob, true));
-                              walkTarget.set(new WalkTarget(new EntityTracker(mob, false), speedModifier, stopDistance));
-                           });
-                           return true;
-                        } else {
-                           return false;
-                        }
-                     }
-               )
+               i.registered(interactionTarget),
+               i.registered(MemoryModuleType.LOOK_TARGET),
+               i.absent(MemoryModuleType.WALK_TARGET),
+               i.present(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
+            )
+            .apply(i, (target, lookTarget, walkTarget, nearestEntities) -> (level, body, timestamp) -> {
+               NearestVisibleLivingEntities entities = i.get(nearestEntities);
+               if (selfFilter.test((E)body) && entities.contains(isTargetValid)) {
+                  Optional<LivingEntity> closest = entities.findClosest(mob -> mob.distanceToSqr(body) <= interactionRangeSqr && isTargetValid.test(mob));
+                  closest.ifPresent(mob -> {
+                     target.set(mob);
+                     lookTarget.set(new EntityTracker(mob, true));
+                     walkTarget.set(new WalkTarget(new EntityTracker(mob, false), speedModifier, stopDistance));
+                  });
+                  return true;
+               } else {
+                  return false;
+               }
+            })
       );
    }
 }

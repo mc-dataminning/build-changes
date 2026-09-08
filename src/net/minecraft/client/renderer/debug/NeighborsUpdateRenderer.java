@@ -19,10 +19,10 @@ public class NeighborsUpdateRenderer implements DebugRenderer.SimpleDebugRendere
       final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
    ) {
       int shrinkTime = DebugSubscriptions.NEIGHBOR_UPDATES.expireAfterTicks();
-      double shrinkSpeed = 1.0 / (double)(shrinkTime * 2);
+      double shrinkSpeed = 1.0 / (shrinkTime * 2);
       Map<BlockPos, NeighborsUpdateRenderer.LastUpdate> lastUpdates = new HashMap<>();
       debugValues.forEachEvent(DebugSubscriptions.NEIGHBOR_UPDATES, (blockPos, remainingTicks, totalLifetime) -> {
-         long age = (long)(totalLifetime - remainingTicks);
+         long age = totalLifetime - remainingTicks;
          NeighborsUpdateRenderer.LastUpdate lastUpdatex = lastUpdates.getOrDefault(blockPos, NeighborsUpdateRenderer.LastUpdate.NONE);
          lastUpdates.put(blockPos, lastUpdatex.tryCount((int)age));
       });
@@ -30,7 +30,7 @@ public class NeighborsUpdateRenderer implements DebugRenderer.SimpleDebugRendere
       for (Entry<BlockPos, NeighborsUpdateRenderer.LastUpdate> entry : lastUpdates.entrySet()) {
          BlockPos pos = entry.getKey();
          NeighborsUpdateRenderer.LastUpdate lastUpdate = entry.getValue();
-         AABB aabb = new AABB(pos).inflate(0.002).deflate(shrinkSpeed * (double)lastUpdate.age);
+         AABB aabb = new AABB(pos).inflate(0.002).deflate(shrinkSpeed * lastUpdate.age);
          Gizmos.cuboid(aabb, GizmoStyle.stroke(-1));
       }
 
@@ -41,7 +41,7 @@ public class NeighborsUpdateRenderer implements DebugRenderer.SimpleDebugRendere
       }
    }
 
-   private static record LastUpdate(int count, int age) {
+   private record LastUpdate(int count, int age) {
       private static final NeighborsUpdateRenderer.LastUpdate NONE = new NeighborsUpdateRenderer.LastUpdate(0, Integer.MAX_VALUE);
 
       public NeighborsUpdateRenderer.LastUpdate tryCount(final int age) {

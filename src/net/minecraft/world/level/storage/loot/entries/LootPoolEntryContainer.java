@@ -5,7 +5,6 @@ import com.mojang.datafixers.Products.P2;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
 import net.minecraft.core.Holder;
@@ -52,20 +51,16 @@ public abstract class LootPoolEntryContainer implements ComposableEntryContainer
 
    private Consumer<LootPoolEntry> adjustOutput(final Consumer<LootPoolEntry> output) {
       return this.modifier.isEmpty() ? output : rawEntry -> output.accept(new LootPoolEntry() {
-            {
-               Objects.requireNonNull(LootPoolEntryContainer.this);
-            }
+         @Override
+         public int getWeight(final float luck) {
+            return rawEntry.getWeight(luck);
+         }
 
-            @Override
-            public int getWeight(final float luck) {
-               return rawEntry.getWeight(luck);
-            }
-
-            @Override
-            public void createItemStack(final Consumer<ItemStack> output, final LootContext context) {
-               rawEntry.createItemStack(LootItemFunction.decorate(LootPoolEntryContainer.this.modifier, output, context), context);
-            }
-         });
+         @Override
+         public void createItemStack(final Consumer<ItemStack> output, final LootContext context) {
+            rawEntry.createItemStack(LootItemFunction.decorate(LootPoolEntryContainer.this.modifier, output, context), context);
+         }
+      });
    }
 
    private boolean canRun(final LootContext context) {

@@ -28,16 +28,12 @@ public class StagedVertexBuffer implements AutoCloseable {
    private final ByteBufferBuilder stagingBuffer;
    private final StagedVertexBuffer.GpuBufferPool stagingGpuBufferPool;
    private final List<StagedVertexBuffer.Draw> draws = new ArrayList<>();
-   @Nullable
-   private StagedVertexBuffer.Draw lastBuildingDraw;
-   @Nullable
-   private BufferBuilder lastVertexBuilder;
+   private StagedVertexBuffer.@Nullable Draw lastBuildingDraw;
+   private @Nullable BufferBuilder lastVertexBuilder;
    private final StagedVertexBuffer.GpuBufferPool vertexBufferPool;
    private final StagedVertexBuffer.GpuBufferPool indexBufferPool;
-   @Nullable
-   private GpuBuffer currentVertexBuffer;
-   @Nullable
-   private GpuBuffer currentIndexBuffer;
+   private @Nullable GpuBuffer currentVertexBuffer;
+   private @Nullable GpuBuffer currentIndexBuffer;
 
    public StagedVertexBuffer(final Supplier<String> label, final int initialCapacity) {
       this.stagingBuffer = new ByteBufferBuilder(initialCapacity);
@@ -50,29 +46,33 @@ public class StagedVertexBuffer implements AutoCloseable {
       return this.appendDraw(format, primitiveTopology, null);
    }
 
-   public StagedVertexBuffer.Draw appendDraw(final VertexFormat format, final PrimitiveTopology primitiveTopology, @Nullable final VertexSorting quadSorting) {
+   public StagedVertexBuffer.Draw appendDraw(final VertexFormat format, final PrimitiveTopology primitiveTopology, final @Nullable VertexSorting quadSorting) {
       if (this.currentVertexBuffer != null) {
          throw new IllegalStateException("Cannot append draw after upload");
-      } else if (quadSorting != null && primitiveTopology != PrimitiveTopology.QUADS) {
-         throw new IllegalArgumentException("Cannot sort draw with " + primitiveTopology);
-      } else {
-         StagedVertexBuffer.Draw draw = new StagedVertexBuffer.Draw(format, primitiveTopology, quadSorting);
-         this.draws.add(draw);
-         return draw;
       }
+
+      if (quadSorting != null && primitiveTopology != PrimitiveTopology.QUADS) {
+         throw new IllegalArgumentException("Cannot sort draw with " + primitiveTopology);
+      }
+
+      StagedVertexBuffer.Draw draw = new StagedVertexBuffer.Draw(format, primitiveTopology, quadSorting);
+      this.draws.add(draw);
+      return draw;
    }
 
    public VertexConsumer getVertexBuilder(final StagedVertexBuffer.Draw draw) {
       if (this.currentVertexBuffer != null) {
          throw new IllegalStateException("Cannot append draw after upload");
-      } else if (this.lastBuildingDraw == draw) {
-         return Objects.requireNonNull(this.lastVertexBuilder);
-      } else {
-         this.finishLastVertexBuilder();
-         this.lastBuildingDraw = draw;
-         this.lastVertexBuilder = new BufferBuilder(this.stagingBuffer, draw.primitiveTopology, draw.format);
-         return this.lastVertexBuilder;
       }
+
+      if (this.lastBuildingDraw == draw) {
+         return Objects.requireNonNull(this.lastVertexBuilder);
+      }
+
+      this.finishLastVertexBuilder();
+      this.lastBuildingDraw = draw;
+      this.lastVertexBuilder = new BufferBuilder(this.stagingBuffer, draw.primitiveTopology, draw.format);
+      return this.lastVertexBuilder;
    }
 
    private void finishLastVertexBuilder() {
@@ -90,7 +90,9 @@ public class StagedVertexBuffer implements AutoCloseable {
    public void upload() {
       if (this.currentVertexBuffer != null) {
          throw new IllegalStateException("Already uploaded");
-      } else if (!this.draws.isEmpty()) {
+      }
+
+      if (!this.draws.isEmpty()) {
          this.finishLastVertexBuilder();
          int nextVertexOffset = 0;
          int nextIndexOffset = 0;
@@ -110,11 +112,13 @@ public class StagedVertexBuffer implements AutoCloseable {
             }
          }
 
-         if (nextVertexOffset != 0) {
+         int vertexBufferSize = nextVertexOffset;
+         int indexBufferSize = nextIndexOffset;
+         if (vertexBufferSize != 0) {
             GpuDevice device = RenderSystem.getDevice();
-            this.currentVertexBuffer = this.vertexBufferPool.acquire(device, nextVertexOffset);
-            this.currentIndexBuffer = nextIndexOffset > 0 ? this.indexBufferPool.acquire(device, nextIndexOffset) : null;
-            this.uploadDrawsToBuffers(device, this.draws, this.currentVertexBuffer, this.currentIndexBuffer, nextVertexOffset, nextIndexOffset);
+            this.currentVertexBuffer = this.vertexBufferPool.acquire(device, vertexBufferSize);
+            this.currentIndexBuffer = indexBufferSize > 0 ? this.indexBufferPool.acquire(device, indexBufferSize) : null;
+            this.uploadDrawsToBuffers(device, this.draws, this.currentVertexBuffer, this.currentIndexBuffer, vertexBufferSize, indexBufferSize);
          }
       }
    }
@@ -123,7 +127,7 @@ public class StagedVertexBuffer implements AutoCloseable {
       final GpuDevice device,
       final List<StagedVertexBuffer.Draw> draws,
       final GpuBuffer vertexGpuBuffer,
-      @Nullable final GpuBuffer indexGpuBuffer,
+      final @Nullable GpuBuffer indexGpuBuffer,
       final int vertexBufferSize,
       final int indexBufferSize
    ) {
@@ -131,7 +135,7 @@ public class StagedVertexBuffer implements AutoCloseable {
       int stagingBufferSize = vertexBufferSize + indexBufferSize;
       GpuBuffer stagingBuffer = this.stagingGpuBufferPool.acquire(device, stagingBufferSize);
 
-      try (GpuBufferSlice.MappedView view = stagingBuffer.slice(0L, (long)stagingBufferSize).map(false, true)) {
+      try (GpuBufferSlice.MappedView view = stagingBuffer.slice(0L, stagingBufferSize).map(false, true)) {
          ByteBuffer buffer = view.data();
 
          for (StagedVertexBuffer.Draw draw : draws) {
@@ -144,22 +148,22 @@ public class StagedVertexBuffer implements AutoCloseable {
             }
          }
 
-         for (StagedVertexBuffer.Draw drawx : draws) {
-            if (!drawx.isEmpty()) {
-               if (indexGpuBuffer != null && drawx.quadSorting != null) {
-                  MeshData.SortState sortState = new MeshData.SortState(decodeSortingPoints(drawx), drawx.indexType());
-                  buffer.position(vertexBufferSize + drawx.indexOffset);
-                  sortState.writeSortedIndexBuffer(buffer, drawx.quadSorting);
+         for (StagedVertexBuffer.Draw draw : draws) {
+            if (!draw.isEmpty()) {
+               if (indexGpuBuffer != null && draw.quadSorting != null) {
+                  MeshData.SortState sortState = new MeshData.SortState(decodeSortingPoints(draw), draw.indexType());
+                  buffer.position(vertexBufferSize + draw.indexOffset);
+                  sortState.writeSortedIndexBuffer(buffer, draw.quadSorting);
                }
 
-               drawx.freeVertexData();
+               draw.freeVertexData();
             }
          }
       }
 
-      commandEncoder.copyToBuffer(stagingBuffer.slice(0L, (long)vertexBufferSize), vertexGpuBuffer.slice(0L, (long)vertexBufferSize));
+      commandEncoder.copyToBuffer(stagingBuffer.slice(0L, vertexBufferSize), vertexGpuBuffer.slice(0L, vertexBufferSize));
       if (indexGpuBuffer != null) {
-         commandEncoder.copyToBuffer(stagingBuffer.slice((long)vertexBufferSize, (long)indexBufferSize), indexGpuBuffer.slice(0L, (long)indexBufferSize));
+         commandEncoder.copyToBuffer(stagingBuffer.slice(vertexBufferSize, indexBufferSize), indexGpuBuffer.slice(0L, indexBufferSize));
       }
    }
 
@@ -177,8 +181,7 @@ public class StagedVertexBuffer implements AutoCloseable {
       return points;
    }
 
-   @Nullable
-   public StagedVertexBuffer.ExecuteInfo getExecuteInfo(final StagedVertexBuffer.Draw draw) {
+   public StagedVertexBuffer.@Nullable ExecuteInfo getExecuteInfo(final StagedVertexBuffer.Draw draw) {
       if (draw.isEmpty()) {
          return null;
       } else if (this.currentVertexBuffer == null) {
@@ -233,8 +236,7 @@ public class StagedVertexBuffer implements AutoCloseable {
    public static class Draw {
       private final VertexFormat format;
       private final PrimitiveTopology primitiveTopology;
-      @Nullable
-      private final VertexSorting quadSorting;
+      private final @Nullable VertexSorting quadSorting;
       private final List<ByteBufferBuilder.Result> vertexBufferSlices = new ArrayList<>();
       private int vertexBufferSize;
       private int vertexCount;
@@ -242,7 +244,7 @@ public class StagedVertexBuffer implements AutoCloseable {
       private int vertexOffset;
       private int indexOffset;
 
-      private Draw(final VertexFormat format, final PrimitiveTopology primitiveTopology, @Nullable final VertexSorting quadSorting) {
+      private Draw(final VertexFormat format, final PrimitiveTopology primitiveTopology, final @Nullable VertexSorting quadSorting) {
          this.format = format;
          this.primitiveTopology = primitiveTopology;
          this.quadSorting = quadSorting;
@@ -250,7 +252,6 @@ public class StagedVertexBuffer implements AutoCloseable {
 
       private void append(final MeshData mesh) {
          assert mesh.indexBuffer() == null;
-
          this.vertexBufferSlices.add(mesh.vertexBufferSlice());
          this.vertexBufferSize = this.vertexBufferSize + mesh.vertexBuffer().remaining();
          this.vertexCount = this.vertexCount + mesh.drawState().vertexCount();
@@ -271,7 +272,7 @@ public class StagedVertexBuffer implements AutoCloseable {
       }
    }
 
-   public static record ExecuteInfo(
+   public record ExecuteInfo(
       GpuBuffer vertexBuffer,
       @Nullable GpuBuffer customIndexBuffer,
       IndexType indexType,
@@ -294,13 +295,12 @@ public class StagedVertexBuffer implements AutoCloseable {
       private static final int BUFFER_SIZE_INCREMENT = 262144;
       private static final int MAX_REUSE_SIZE_FACTOR = 4;
       private final Supplier<String> label;
-      @GpuBuffer.Usage
-      private final int usage;
+      private final @GpuBuffer.Usage int usage;
       private final List<GpuBuffer> available = new ArrayList<>();
       private final List<GpuBuffer> usedThisFrame = new ArrayList<>();
       private final List<StagedVertexBuffer.GpuBufferPool.PendingRecycle> pendingRecycle = new ArrayList<>();
 
-      private GpuBufferPool(final Supplier<String> label, @GpuBuffer.Usage final int usage) {
+      private GpuBufferPool(final Supplier<String> label, final @GpuBuffer.Usage int usage) {
          this.label = label;
          this.usage = usage;
       }
@@ -321,25 +321,24 @@ public class StagedVertexBuffer implements AutoCloseable {
          int roundedMinSize = Mth.roundToward(minSize, 262144);
          GpuBuffer buffer = this.takeBestAvailable(roundedMinSize, roundedMinSize * 4);
          if (buffer == null) {
-            buffer = device.createBuffer(this.label, this.usage, (long)roundedMinSize);
+            buffer = device.createBuffer(this.label, this.usage, roundedMinSize);
          }
 
          this.usedThisFrame.add(buffer);
          return buffer;
       }
 
-      @Nullable
-      private GpuBuffer takeBestAvailable(final int minSize, final int maxSize) {
+      private @Nullable GpuBuffer takeBestAvailable(final int minSize, final int maxSize) {
          int bestIndex = -1;
-         long bestSize = (long)(maxSize + 1);
+         long bestSize = maxSize + 1;
 
          for (int i = 0; i < this.available.size(); i++) {
             long size = this.available.get(i).size();
-            if (size == (long)minSize) {
+            if (size == minSize) {
                return this.available.remove(i);
             }
 
-            if (size > (long)minSize && size < bestSize) {
+            if (size > minSize && size < bestSize) {
                bestIndex = i;
                bestSize = size;
             }
@@ -373,9 +372,8 @@ public class StagedVertexBuffer implements AutoCloseable {
          this.pendingRecycle.clear();
       }
 
-      private static record PendingRecycle(List<GpuBuffer> buffers, GpuFence fence) implements AutoCloseable {
-         @Nullable
-         public List<GpuBuffer> tryRecycle() {
+      private record PendingRecycle(List<GpuBuffer> buffers, GpuFence fence) implements AutoCloseable {
+         public @Nullable List<GpuBuffer> tryRecycle() {
             if (this.fence.awaitCompletion(0L)) {
                this.fence.close();
                return this.buffers;

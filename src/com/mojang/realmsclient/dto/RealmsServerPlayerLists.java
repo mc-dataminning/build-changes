@@ -45,8 +45,8 @@ public record RealmsServerPlayerLists(Map<Long, List<ResolvableProfile>> servers
                elements.put(JsonUtils.getLongOr("serverId", node, -1L), players);
             }
          }
-      } catch (Exception var10) {
-         LOGGER.error("Could not parse RealmsServerPlayerLists", var10);
+      } catch (Exception e) {
+         LOGGER.error("Could not parse RealmsServerPlayerLists", e);
       }
 
       return new RealmsServerPlayerLists(elements.build());

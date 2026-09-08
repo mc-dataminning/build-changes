@@ -34,8 +34,8 @@ public class PublishCommand {
                      Commands.argument("port", IntegerArgumentType.integer(0, 65535))
                         .executes(
                            c -> publish(
-                                 (CommandSourceStack)c.getSource(), IntegerArgumentType.getInteger(c, "port"), BoolArgumentType.getBool(c, "allowCommands")
-                              )
+                              (CommandSourceStack)c.getSource(), IntegerArgumentType.getInteger(c, "port"), BoolArgumentType.getBool(c, "allowCommands")
+                           )
                         )
                   )
             )
@@ -46,12 +46,14 @@ public class PublishCommand {
       MinecraftServer server = source.getServer();
       if (server.isPublished() && server.getPort() > -1) {
          throw ERROR_ALREADY_PUBLISHED_LAN.create(server.getPort());
-      } else if (!server.publishServer(MinecraftServer.MultiplayerScope.LAN, allowCommands, port)) {
-         throw ERROR_FAILED.create();
-      } else {
-         source.sendSuccess(() -> getSuccessMessage(port), true);
-         return port;
       }
+
+      if (!server.publishServer(MinecraftServer.MultiplayerScope.LAN, allowCommands, port)) {
+         throw ERROR_FAILED.create();
+      }
+
+      source.sendSuccess(() -> getSuccessMessage(port), true);
+      return port;
    }
 
    public static MutableComponent getSuccessMessage(final int port) {

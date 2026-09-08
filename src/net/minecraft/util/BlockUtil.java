@@ -27,11 +27,11 @@ public class BlockUtil {
       int negativeDelta1 = getLimit(test, pos.set(center), negativeDirection1, limit1);
       int positiveDelta1 = getLimit(test, pos.set(center), positiveDirection1, limit1);
       int centerIndex1 = negativeDelta1;
-      BlockUtil.IntBounds[] boundsByAxis1 = new BlockUtil.IntBounds[negativeDelta1 + 1 + positiveDelta1];
-      boundsByAxis1[negativeDelta1] = new BlockUtil.IntBounds(
+      BlockUtil.IntBounds[] boundsByAxis1 = new BlockUtil.IntBounds[centerIndex1 + 1 + positiveDelta1];
+      boundsByAxis1[centerIndex1] = new BlockUtil.IntBounds(
          getLimit(test, pos.set(center), negativeDirection2, limit2), getLimit(test, pos.set(center), positiveDirection2, limit2)
       );
-      int centerIndex2 = boundsByAxis1[negativeDelta1].min;
+      int centerIndex2 = boundsByAxis1[centerIndex1].min;
 
       for (int i = 1; i <= negativeDelta1; i++) {
          BlockUtil.IntBounds lastBounds = boundsByAxis1[centerIndex1 - (i - 1)];

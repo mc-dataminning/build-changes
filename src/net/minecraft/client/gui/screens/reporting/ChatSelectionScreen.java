@@ -3,7 +3,6 @@ package net.minecraft.client.gui.screens.reporting;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.minecraft.report.AbuseReportLimits;
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -40,18 +39,17 @@ public class ChatSelectionScreen extends Screen {
    private static final Identifier CHECKMARK_SPRITE = Identifier.withDefaultNamespace("icon/checkmark");
    private static final Component TITLE = Component.translatable("gui.chatSelection.title");
    private static final Component CONTEXT_INFO = Component.translatable("gui.chatSelection.context");
-   @Nullable
-   private final Screen lastScreen;
+   private final @Nullable Screen lastScreen;
    private final ReportingContext reportingContext;
    private Button confirmSelectedButton;
    private MultiLineLabel contextInfoLabel;
-   private ChatSelectionScreen.ChatSelectionList chatSelectionList;
+   private ChatSelectionScreen.@Nullable ChatSelectionList chatSelectionList;
    private final ChatReport.Builder report;
    private final Consumer<ChatReport.Builder> onSelected;
    private ChatSelectionLogFiller chatLogFiller;
 
    public ChatSelectionScreen(
-      @Nullable final Screen lastScreen,
+      final @Nullable Screen lastScreen,
       final ReportingContext reportingContext,
       final ChatReport.Builder report,
       final Consumer<ChatReport.Builder> onSelected
@@ -77,7 +75,7 @@ public class ChatSelectionScreen extends Screen {
       }).bounds(this.width / 2 - 155 + 160, this.height - 32, 150, 20).build());
       this.updateConfirmSelectedButton();
       this.extendLog();
-      this.chatSelectionList.setScrollAmount((double)this.chatSelectionList.maxScrollAmount());
+      this.chatSelectionList.setScrollAmount(this.chatSelectionList.maxScrollAmount());
    }
 
    private boolean canReport(final LoggedChatMessage message) {
@@ -123,11 +121,9 @@ public class ChatSelectionScreen extends Screen {
 
    public class ChatSelectionList extends ObjectSelectionList<ChatSelectionScreen.ChatSelectionList.Entry> implements ChatSelectionLogFiller.Output {
       public static final int ITEM_HEIGHT = 16;
-      @Nullable
-      private ChatSelectionScreen.ChatSelectionList.Heading previousHeading;
+      private ChatSelectionScreen.ChatSelectionList.@Nullable Heading previousHeading;
 
       public ChatSelectionList(final Minecraft minecraft, final int upperMargin) {
-         Objects.requireNonNull(ChatSelectionScreen.this);
          super(minecraft, ChatSelectionScreen.this.width, ChatSelectionScreen.this.height - upperMargin - 80, 40, 16);
       }
 
@@ -135,7 +131,7 @@ public class ChatSelectionScreen extends Screen {
       public void setScrollAmount(final double scrollAmount) {
          double prevScrollAmount = this.scrollAmount();
          super.setScrollAmount(scrollAmount);
-         if ((float)this.maxScrollAmount() > 1.0E-5F && scrollAmount <= 1.0E-5F && !Mth.equal(scrollAmount, prevScrollAmount)) {
+         if (this.maxScrollAmount() > 1.0E-5F && scrollAmount <= 1.0E-5F && !Mth.equal(scrollAmount, prevScrollAmount)) {
             ChatSelectionScreen.this.onReachedScrollTop();
          }
       }
@@ -205,12 +201,11 @@ public class ChatSelectionScreen extends Screen {
          }
       }
 
-      @Nullable
-      protected ChatSelectionScreen.ChatSelectionList.Entry nextEntry(final ScreenDirection dir) {
+      protected ChatSelectionScreen.ChatSelectionList.@Nullable Entry nextEntry(final ScreenDirection dir) {
          return this.nextEntry(dir, ChatSelectionScreen.ChatSelectionList.Entry::canSelect);
       }
 
-      public void setSelected(@Nullable final ChatSelectionScreen.ChatSelectionList.Entry selected) {
+      public void setSelected(final ChatSelectionScreen.ChatSelectionList.@Nullable Entry selected) {
          super.setSelected(selected);
          ChatSelectionScreen.ChatSelectionList.Entry entry = this.nextEntry(ScreenDirection.UP);
          if (entry == null) {
@@ -232,8 +227,6 @@ public class ChatSelectionScreen extends Screen {
          private final Component text;
 
          public DividerEntry(final Component text) {
-            Objects.requireNonNull(ChatSelectionList.this);
-            super();
             this.text = text;
          }
 
@@ -277,7 +270,7 @@ public class ChatSelectionScreen extends Screen {
          }
       }
 
-      private static record Heading(UUID sender, ChatSelectionScreen.ChatSelectionList.Entry entry) {
+      private record Heading(UUID sender, ChatSelectionScreen.ChatSelectionList.Entry entry) {
          public boolean canCombine(final ChatSelectionScreen.ChatSelectionList.Heading other) {
             return other.sender.equals(this.sender);
          }
@@ -291,12 +284,9 @@ public class ChatSelectionScreen extends Screen {
          private final int chatId;
          private final FormattedText text;
          private final Component narration;
-         @Nullable
-         private final List<FormattedCharSequence> hoverText;
-         @Nullable
-         private final GuiMessageTag.Icon tagIcon;
-         @Nullable
-         private final List<FormattedCharSequence> tagHoverText;
+         private final @Nullable List<FormattedCharSequence> hoverText;
+         private final GuiMessageTag.@Nullable Icon tagIcon;
+         private final @Nullable List<FormattedCharSequence> tagHoverText;
          private final boolean canReport;
          private final boolean playerMessage;
 
@@ -304,12 +294,10 @@ public class ChatSelectionScreen extends Screen {
             final int chatId,
             final Component text,
             final Component narration,
-            @Nullable final GuiMessageTag tag,
+            final @Nullable GuiMessageTag tag,
             final boolean canReport,
             final boolean playerMessage
          ) {
-            Objects.requireNonNull(ChatSelectionList.this);
-            super();
             this.chatId = chatId;
             this.tagIcon = Optionull.map(tag, GuiMessageTag::icon);
             this.tagHoverText = tag != null && tag.text() != null
@@ -364,8 +352,9 @@ public class ChatSelectionScreen extends Screen {
          }
 
          private void extractSelectedCheckmark(final GuiGraphicsExtractor graphics, final int rowTop, final int rowLeft, final int rowHeight) {
+            int left = rowLeft;
             int top = rowTop + (rowHeight - 8) / 2;
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, ChatSelectionScreen.CHECKMARK_SPRITE, rowLeft, top, 9, 8);
+            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, ChatSelectionScreen.CHECKMARK_SPRITE, left, top, 9, 8);
          }
 
          private int getMaximumTextWidth() {
@@ -379,12 +368,12 @@ public class ChatSelectionScreen extends Screen {
 
          @Override
          public Component getNarration() {
-            return (Component)(this.isSelected() ? Component.translatable("narrator.select", this.narration) : this.narration);
+            return this.isSelected() ? Component.translatable("narrator.select", this.narration) : this.narration;
          }
 
          @Override
          public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-            ChatSelectionList.this.setSelected(null);
+            ChatSelectionList.this.setSelected((ChatSelectionScreen.ChatSelectionList.Entry)null);
             return this.toggleReport();
          }
 
@@ -427,8 +416,6 @@ public class ChatSelectionScreen extends Screen {
          private final boolean canReport;
 
          public MessageHeadingEntry(final GameProfile profile, final Component heading, final boolean canReport) {
-            Objects.requireNonNull(ChatSelectionList.this);
-            super();
             this.heading = heading;
             this.canReport = canReport;
             this.skin = ChatSelectionList.this.minecraft.getSkinManager().createLookup(profile, true);

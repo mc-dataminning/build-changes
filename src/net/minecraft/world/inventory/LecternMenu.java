@@ -1,6 +1,5 @@
 package net.minecraft.world.inventory;
 
-import java.util.Objects;
 import net.minecraft.util.Prediction;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -28,10 +27,6 @@ public class LecternMenu extends AbstractContainerMenu {
       this.lectern = lectern;
       this.lecternData = lecternData;
       this.addSlot(new Slot(lectern, 0, 0, 0) {
-         {
-            Objects.requireNonNull(LecternMenu.this);
-         }
-
          @Override
          public void setChanged() {
             super.setChanged();
@@ -47,33 +42,33 @@ public class LecternMenu extends AbstractContainerMenu {
          int pageToSet = buttonId - 100;
          this.setData(0, pageToSet);
          return true;
-      } else {
-         switch (buttonId) {
-            case 1: {
-               int currentPage = this.lecternData.get(0);
-               this.setData(0, currentPage - 1);
-               return true;
-            }
-            case 2: {
-               int currentPage = this.lecternData.get(0);
-               this.setData(0, currentPage + 1);
-               return true;
-            }
-            case 3:
-               if (!player.mayBuild()) {
-                  return false;
-               }
+      }
 
-               ItemStack book = this.lectern.removeItemNoUpdate(0);
-               this.lectern.setChanged();
-               if (!player.getInventory().add(book)) {
-                  player.drop(book, false, Prediction.PREDICTED);
-               }
-
-               return true;
-            default:
-               return false;
+      switch (buttonId) {
+         case 1: {
+            int currentPage = this.lecternData.get(0);
+            this.setData(0, currentPage - 1);
+            return true;
          }
+         case 2: {
+            int currentPage = this.lecternData.get(0);
+            this.setData(0, currentPage + 1);
+            return true;
+         }
+         case 3:
+            if (!player.mayBuild()) {
+               return false;
+            }
+
+            ItemStack book = this.lectern.removeItemNoUpdate(0);
+            this.lectern.setChanged();
+            if (!player.getInventory().add(book)) {
+               player.drop(book, false, Prediction.PREDICTED);
+            }
+
+            return true;
+         default:
+            return false;
       }
    }
 

@@ -14,8 +14,7 @@ public class FaviconTexture implements AutoCloseable {
    private static final int HEIGHT = 64;
    private final TextureManager textureManager;
    private final Identifier textureLocation;
-   @Nullable
-   private DynamicTexture texture;
+   private @Nullable DynamicTexture texture;
    private boolean closed;
 
    private FaviconTexture(final TextureManager textureManager, final Identifier textureLocation) {
@@ -48,10 +47,10 @@ public class FaviconTexture implements AutoCloseable {
             }
 
             this.textureManager.register(this.textureLocation, this.texture);
-         } catch (Throwable var3) {
+         } catch (Throwable t) {
             image.close();
             this.clear();
-            throw var3;
+            throw t;
          }
       } else {
          image.close();

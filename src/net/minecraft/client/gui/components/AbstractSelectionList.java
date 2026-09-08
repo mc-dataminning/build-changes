@@ -37,10 +37,8 @@ public abstract class AbstractSelectionList<E extends AbstractSelectionList.Entr
    protected final int defaultEntryHeight;
    private final List<E> children = new AbstractSelectionList.TrackedList();
    protected boolean centerListVertically = true;
-   @Nullable
-   private E selected;
-   @Nullable
-   private E hovered;
+   private @Nullable E selected;
+   private @Nullable E hovered;
 
    public AbstractSelectionList(final Minecraft minecraft, final int width, final int height, final int y, final int defaultEntryHeight) {
       super(0, y, width, height, CommonComponents.EMPTY, AbstractScrollArea.defaultSettings(defaultEntryHeight / 2));
@@ -48,12 +46,11 @@ public abstract class AbstractSelectionList<E extends AbstractSelectionList.Entr
       this.defaultEntryHeight = defaultEntryHeight;
    }
 
-   @Nullable
-   public E getSelected() {
+   public @Nullable E getSelected() {
       return this.selected;
    }
 
-   public void setSelected(@Nullable final E selected) {
+   public void setSelected(final @Nullable E selected) {
       this.selected = selected;
       if (selected != null) {
          boolean topClipped = selected.getContentY() < this.getY();
@@ -64,8 +61,7 @@ public abstract class AbstractSelectionList<E extends AbstractSelectionList.Entr
       }
    }
 
-   @Nullable
-   public E getFocused() {
+   public @Nullable E getFocused() {
       return (E)super.getFocused();
    }
 
@@ -137,11 +133,11 @@ public abstract class AbstractSelectionList<E extends AbstractSelectionList.Entr
    }
 
    protected void addEntryToTop(final E entry, final int height) {
-      double scrollFromBottom = (double)this.maxScrollAmount() - this.scrollAmount();
+      double scrollFromBottom = this.maxScrollAmount() - this.scrollAmount();
       entry.setHeight(height);
       this.children.addFirst(entry);
       this.repositionEntries();
-      this.setScrollAmount((double)this.maxScrollAmount() - scrollFromBottom);
+      this.setScrollAmount(this.maxScrollAmount() - scrollFromBottom);
    }
 
    private void repositionEntries() {
@@ -156,9 +152,9 @@ public abstract class AbstractSelectionList<E extends AbstractSelectionList.Entr
    }
 
    protected void removeEntryFromTop(final E entry) {
-      double scrollFromBottom = (double)this.maxScrollAmount() - this.scrollAmount();
+      double scrollFromBottom = this.maxScrollAmount() - this.scrollAmount();
       this.removeEntry(entry);
-      this.setScrollAmount((double)this.maxScrollAmount() - scrollFromBottom);
+      this.setScrollAmount(this.maxScrollAmount() - scrollFromBottom);
    }
 
    protected int getItemCount() {
@@ -169,8 +165,7 @@ public abstract class AbstractSelectionList<E extends AbstractSelectionList.Entr
       return true;
    }
 
-   @Nullable
-   protected final E getEntryAtPosition(final double posX, final double posY) {
+   protected final @Nullable E getEntryAtPosition(final double posX, final double posY) {
       for (E child : this.children) {
          if (child.isMouseOver(posX, posY)) {
             return child;
@@ -212,7 +207,7 @@ public abstract class AbstractSelectionList<E extends AbstractSelectionList.Entr
 
    @Override
    public void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      this.hovered = this.isMouseOver((double)mouseX, (double)mouseY) ? this.getEntryAtPosition((double)mouseX, (double)mouseY) : null;
+      this.hovered = this.isMouseOver(mouseX, mouseY) ? this.getEntryAtPosition(mouseX, mouseY) : null;
       this.extractListBackground(graphics);
       this.enableScissor(graphics);
       this.extractListItems(graphics, mouseX, mouseY, a);
@@ -235,8 +230,8 @@ public abstract class AbstractSelectionList<E extends AbstractSelectionList.Entr
          menuListBackground,
          this.getX(),
          this.getY(),
-         (float)this.getRight(),
-         (float)(this.getBottom() + (int)this.scrollAmount()),
+         this.getRight(),
+         this.getBottom() + (int)this.scrollAmount(),
          this.getWidth(),
          this.getHeight(),
          32,
@@ -277,11 +272,11 @@ public abstract class AbstractSelectionList<E extends AbstractSelectionList.Entr
          y += child.getHeight();
       }
 
-      this.setScrollAmount((double)y - (double)this.height / 2.0);
+      this.setScrollAmount(y - this.height / 2.0);
    }
 
    private void scroll(final int amount) {
-      this.setScrollAmount(this.scrollAmount() + (double)amount);
+      this.setScrollAmount(this.scrollAmount() + amount);
    }
 
    @Override
@@ -301,7 +296,7 @@ public abstract class AbstractSelectionList<E extends AbstractSelectionList.Entr
    }
 
    @Override
-   public void setFocused(@Nullable final GuiEventListener focused) {
+   public void setFocused(final @Nullable GuiEventListener focused) {
       E oldFocus = this.getFocused();
       if (oldFocus != focused && oldFocus instanceof ContainerEventHandler oldFocusContainer) {
          oldFocusContainer.setFocused(null);
@@ -315,18 +310,15 @@ public abstract class AbstractSelectionList<E extends AbstractSelectionList.Entr
       }
    }
 
-   @Nullable
-   protected E nextEntry(final ScreenDirection dir) {
+   protected @Nullable E nextEntry(final ScreenDirection dir) {
       return this.nextEntry(dir, entry -> true);
    }
 
-   @Nullable
-   protected E nextEntry(final ScreenDirection dir, final Predicate<E> canSelect) {
+   protected @Nullable E nextEntry(final ScreenDirection dir, final Predicate<E> canSelect) {
       return this.nextEntry(dir, canSelect, this.getSelected());
    }
 
-   @Nullable
-   protected E nextEntry(final ScreenDirection dir, final Predicate<E> canSelect, @Nullable final E startEntry) {
+   protected @Nullable E nextEntry(final ScreenDirection dir, final Predicate<E> canSelect, final @Nullable E startEntry) {
       int delta = switch (dir) {
          case RIGHT, LEFT -> 0;
          case UP -> -1;
@@ -421,8 +413,7 @@ public abstract class AbstractSelectionList<E extends AbstractSelectionList.Entr
       }
    }
 
-   @Nullable
-   protected E getHovered() {
+   protected @Nullable E getHovered() {
       return this.hovered;
    }
 
@@ -546,13 +537,7 @@ public abstract class AbstractSelectionList<E extends AbstractSelectionList.Entr
    }
 
    private class TrackedList extends AbstractList<E> {
-      private final List<E> delegate;
-
-      private TrackedList() {
-         Objects.requireNonNull(AbstractSelectionList.this);
-         super();
-         this.delegate = Lists.newArrayList();
-      }
+      private final List<E> delegate = Lists.newArrayList();
 
       public E get(final int index) {
          return this.delegate.get(index);

@@ -47,14 +47,14 @@ public interface LevelBasedValue {
 
    MapCodec<? extends LevelBasedValue> codec();
 
-   public static record Clamped(LevelBasedValue value, float min, float max) implements LevelBasedValue {
+   record Clamped(LevelBasedValue value, float min, float max) implements LevelBasedValue {
       public static final MapCodec<LevelBasedValue.Clamped> CODEC = RecordCodecBuilder.mapCodec(
             i -> i.group(
-                     LevelBasedValue.CODEC.fieldOf("value").forGetter(LevelBasedValue.Clamped::value),
-                     Codec.FLOAT.fieldOf("min").forGetter(LevelBasedValue.Clamped::min),
-                     Codec.FLOAT.fieldOf("max").forGetter(LevelBasedValue.Clamped::max)
-                  )
-                  .apply(i, LevelBasedValue.Clamped::new)
+                  LevelBasedValue.CODEC.fieldOf("value").forGetter(LevelBasedValue.Clamped::value),
+                  Codec.FLOAT.fieldOf("min").forGetter(LevelBasedValue.Clamped::min),
+                  Codec.FLOAT.fieldOf("max").forGetter(LevelBasedValue.Clamped::max)
+               )
+               .apply(i, LevelBasedValue.Clamped::new)
          )
          .validate(u -> u.max <= u.min ? DataResult.error(() -> "Max must be larger than min, min: " + u.min + ", max: " + u.max) : DataResult.success(u));
 
@@ -69,7 +69,7 @@ public interface LevelBasedValue {
       }
    }
 
-   public static record Constant(float value) implements LevelBasedValue {
+   record Constant(float value) implements LevelBasedValue {
       public static final Codec<LevelBasedValue.Constant> CODEC = Codec.FLOAT.xmap(LevelBasedValue.Constant::new, LevelBasedValue.Constant::value);
       public static final MapCodec<LevelBasedValue.Constant> TYPED_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(Codec.FLOAT.fieldOf("value").forGetter(LevelBasedValue.Constant::value)).apply(i, LevelBasedValue.Constant::new)
@@ -86,18 +86,18 @@ public interface LevelBasedValue {
       }
    }
 
-   public static record Exponent(LevelBasedValue base, LevelBasedValue power) implements LevelBasedValue {
+   record Exponent(LevelBasedValue base, LevelBasedValue power) implements LevelBasedValue {
       public static final MapCodec<LevelBasedValue.Exponent> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  LevelBasedValue.CODEC.fieldOf("base").forGetter(LevelBasedValue.Exponent::base),
-                  LevelBasedValue.CODEC.fieldOf("power").forGetter(LevelBasedValue.Exponent::power)
-               )
-               .apply(i, LevelBasedValue.Exponent::new)
+               LevelBasedValue.CODEC.fieldOf("base").forGetter(LevelBasedValue.Exponent::base),
+               LevelBasedValue.CODEC.fieldOf("power").forGetter(LevelBasedValue.Exponent::power)
+            )
+            .apply(i, LevelBasedValue.Exponent::new)
       );
 
       @Override
       public float calculate(final int level) {
-         return (float)Math.pow((double)this.base.calculate(level), (double)this.power.calculate(level));
+         return (float)Math.pow(this.base.calculate(level), this.power.calculate(level));
       }
 
       @Override
@@ -106,13 +106,13 @@ public interface LevelBasedValue {
       }
    }
 
-   public static record Fraction(LevelBasedValue numerator, LevelBasedValue denominator) implements LevelBasedValue {
+   record Fraction(LevelBasedValue numerator, LevelBasedValue denominator) implements LevelBasedValue {
       public static final MapCodec<LevelBasedValue.Fraction> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  LevelBasedValue.CODEC.fieldOf("numerator").forGetter(LevelBasedValue.Fraction::numerator),
-                  LevelBasedValue.CODEC.fieldOf("denominator").forGetter(LevelBasedValue.Fraction::denominator)
-               )
-               .apply(i, LevelBasedValue.Fraction::new)
+               LevelBasedValue.CODEC.fieldOf("numerator").forGetter(LevelBasedValue.Fraction::numerator),
+               LevelBasedValue.CODEC.fieldOf("denominator").forGetter(LevelBasedValue.Fraction::denominator)
+            )
+            .apply(i, LevelBasedValue.Fraction::new)
       );
 
       @Override
@@ -127,14 +127,14 @@ public interface LevelBasedValue {
       }
    }
 
-   public static record LevelsSquared(float added) implements LevelBasedValue {
+   record LevelsSquared(float added) implements LevelBasedValue {
       public static final MapCodec<LevelBasedValue.LevelsSquared> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(Codec.FLOAT.fieldOf("added").forGetter(LevelBasedValue.LevelsSquared::added)).apply(i, LevelBasedValue.LevelsSquared::new)
       );
 
       @Override
       public float calculate(final int level) {
-         return (float)Mth.square(level) + this.added;
+         return Mth.square(level) + this.added;
       }
 
       @Override
@@ -143,18 +143,18 @@ public interface LevelBasedValue {
       }
    }
 
-   public static record Linear(float base, float perLevelAboveFirst) implements LevelBasedValue {
+   record Linear(float base, float perLevelAboveFirst) implements LevelBasedValue {
       public static final MapCodec<LevelBasedValue.Linear> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Codec.FLOAT.fieldOf("base").forGetter(LevelBasedValue.Linear::base),
-                  Codec.FLOAT.fieldOf("per_level_above_first").forGetter(LevelBasedValue.Linear::perLevelAboveFirst)
-               )
-               .apply(i, LevelBasedValue.Linear::new)
+               Codec.FLOAT.fieldOf("base").forGetter(LevelBasedValue.Linear::base),
+               Codec.FLOAT.fieldOf("per_level_above_first").forGetter(LevelBasedValue.Linear::perLevelAboveFirst)
+            )
+            .apply(i, LevelBasedValue.Linear::new)
       );
 
       @Override
       public float calculate(final int level) {
-         return this.base + this.perLevelAboveFirst * (float)(level - 1);
+         return this.base + this.perLevelAboveFirst * (level - 1);
       }
 
       @Override
@@ -163,13 +163,13 @@ public interface LevelBasedValue {
       }
    }
 
-   public static record Lookup(List<Float> values, LevelBasedValue fallback) implements LevelBasedValue {
+   record Lookup(List<Float> values, LevelBasedValue fallback) implements LevelBasedValue {
       public static final MapCodec<LevelBasedValue.Lookup> CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Codec.FLOAT.listOf().fieldOf("values").forGetter(LevelBasedValue.Lookup::values),
-                  LevelBasedValue.CODEC.fieldOf("fallback").forGetter(LevelBasedValue.Lookup::fallback)
-               )
-               .apply(i, LevelBasedValue.Lookup::new)
+               Codec.FLOAT.listOf().fieldOf("values").forGetter(LevelBasedValue.Lookup::values),
+               LevelBasedValue.CODEC.fieldOf("fallback").forGetter(LevelBasedValue.Lookup::fallback)
+            )
+            .apply(i, LevelBasedValue.Lookup::new)
       );
 
       @Override

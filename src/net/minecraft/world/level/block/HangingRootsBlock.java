@@ -24,7 +24,7 @@ public class HangingRootsBlock extends Block implements SimpleWaterloggedBlock {
 
    protected HangingRootsBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.valueOf(false)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false));
    }
 
    @Override
@@ -37,13 +37,12 @@ public class HangingRootsBlock extends Block implements SimpleWaterloggedBlock {
       return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockState state = super.getStateForPlacement(context);
       if (state != null) {
          FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
-         return state.setValue(WATERLOGGED, Boolean.valueOf(fluidState.is(Fluids.WATER)));
+         return state.setValue(WATERLOGGED, fluidState.is(Fluids.WATER));
       } else {
          return null;
       }
@@ -74,12 +73,12 @@ public class HangingRootsBlock extends Block implements SimpleWaterloggedBlock {
    ) {
       if (directionToNeighbour == Direction.UP && !this.canSurvive(state, level, pos)) {
          return Blocks.AIR.defaultBlockState();
-      } else {
-         if (state.getValue(WATERLOGGED)) {
-            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-         }
-
-         return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
       }
+
+      if (state.getValue(WATERLOGGED)) {
+         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+      }
+
+      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
    }
 }

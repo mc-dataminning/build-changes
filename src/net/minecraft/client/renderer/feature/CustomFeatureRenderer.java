@@ -18,7 +18,7 @@ public class CustomFeatureRenderer extends RenderTypeFeatureRenderer<CustomFeatu
       }
    }
 
-   public static record Submit(PoseStack.Pose pose, RenderType renderType, SubmitNodeCollector.CustomGeometryRenderer customGeometryRenderer)
+   public record Submit(PoseStack.Pose pose, RenderType renderType, SubmitNodeCollector.CustomGeometryRenderer customGeometryRenderer)
       implements BatchableSubmit {
       @Override
       public Object batchKey() {

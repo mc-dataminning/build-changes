@@ -6,12 +6,11 @@ import org.jspecify.annotations.Nullable;
 public interface DebugValueSource {
    void registerDebugValues(ServerLevel level, DebugValueSource.Registration registration);
 
-   public interface Registration {
+   interface Registration {
       <T> void register(DebugSubscription<T> subscription, DebugValueSource.ValueGetter<T> getter);
    }
 
-   public interface ValueGetter<T> {
-      @Nullable
-      T get();
+   interface ValueGetter<T> {
+      @Nullable T get();
    }
 }

@@ -1,6 +1,5 @@
 package net.minecraft.world.level.block.entity;
 
-import java.util.Objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -21,17 +20,13 @@ import org.jspecify.annotations.Nullable;
 
 public class SpawnerBlockEntity extends BlockEntity implements Spawner {
    private final BaseSpawner spawner = new BaseSpawner() {
-      {
-         Objects.requireNonNull(SpawnerBlockEntity.this);
-      }
-
       @Override
       public void broadcastEvent(final Level level, final BlockPos pos, final int id) {
          level.blockEvent(pos, Blocks.SPAWNER, id, 0);
       }
 
       @Override
-      public void setNextSpawnData(@Nullable final Level level, final BlockPos pos, final SpawnData nextSpawnData) {
+      public void setNextSpawnData(final @Nullable Level level, final BlockPos pos, final SpawnData nextSpawnData) {
          super.setNextSpawnData(level, pos, nextSpawnData);
          if (level != null) {
             BlockState state = level.getBlockState(pos);

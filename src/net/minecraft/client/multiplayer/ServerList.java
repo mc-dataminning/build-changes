@@ -44,8 +44,8 @@ public class ServerList {
                this.serverList.add(serverData);
             }
          });
-      } catch (Exception var2) {
-         LOGGER.error("Couldn't load server list", var2);
+      } catch (Exception e) {
+         LOGGER.error("Couldn't load server list", e);
       }
    }
 
@@ -73,8 +73,8 @@ public class ServerList {
          Path oldFile = gameDirectoryPath.resolve("servers.dat_old");
          Path currentFile = gameDirectoryPath.resolve("servers.dat");
          Util.safeReplaceFile(currentFile, newFile, oldFile);
-      } catch (Exception var7) {
-         LOGGER.error("Couldn't save server list", var7);
+      } catch (Exception e) {
+         LOGGER.error("Couldn't save server list", e);
       }
    }
 
@@ -82,25 +82,23 @@ public class ServerList {
       return this.serverList.get(index);
    }
 
-   @Nullable
-   public ServerData get(final String ip) {
+   public @Nullable ServerData get(final String ip) {
       for (ServerData serverData : this.serverList) {
          if (serverData.ip.equals(ip)) {
             return serverData;
          }
       }
 
-      for (ServerData serverDatax : this.hiddenServerList) {
-         if (serverDatax.ip.equals(ip)) {
-            return serverDatax;
+      for (ServerData serverData : this.hiddenServerList) {
+         if (serverData.ip.equals(ip)) {
+            return serverData;
          }
       }
 
       return null;
    }
 
-   @Nullable
-   public ServerData unhide(final String ip) {
+   public @Nullable ServerData unhide(final String ip) {
       for (int i = 0; i < this.hiddenServerList.size(); i++) {
          ServerData serverData = this.hiddenServerList.get(i);
          if (serverData.ip.equals(ip)) {

@@ -116,7 +116,7 @@ public class NoiseRouterData {
       context.register(ZERO, DensityFunctions.zero());
       int belowBottom = DimensionType.MIN_Y * 2;
       int aboveTop = DimensionType.MAX_Y * 2;
-      context.register(Y, DensityFunctions.yClampedGradient(belowBottom, aboveTop, (float)belowBottom, (float)aboveTop));
+      context.register(Y, DensityFunctions.yClampedGradient(belowBottom, aboveTop, belowBottom, aboveTop));
       registerOreVeins(context);
       DensityFunction shiftX = registerAndWrap(context, SHIFT_X, DensityFunctions.cache(DensityFunctions.shiftA(noises.getOrThrow(Noises.SHIFT))));
       DensityFunction shiftZ = registerAndWrap(context, SHIFT_Z, DensityFunctions.cache(DensityFunctions.shiftB(noises.getOrThrow(Noises.SHIFT))));
@@ -327,7 +327,7 @@ public class NoiseRouterData {
          spaghetti2DRarityModulator, noises.getOrThrow(Noises.SPAGHETTI_2D)
       );
       DensityFunction spaghetti2DElevationModulator = DensityFunctions.mappedNoise(
-         noises.getOrThrow(Noises.SPAGHETTI_2D_ELEVATION), 0.0, (float)Math.floorDiv(-64, 8), 8.0F
+         noises.getOrThrow(Noises.SPAGHETTI_2D_ELEVATION), 0.0, Math.floorDiv(-64, 8), 8.0F
       );
       DensityFunction spaghetti2DThicknessModulator = getFunction(functions, SPAGHETTI_2D_THICKNESS_MODULATOR);
       DensityFunction slopedSpaghetti = DensityFunctions.add(
@@ -443,13 +443,13 @@ public class NoiseRouterData {
       final boolean whenTogglePositive
    ) {
       DensityFunction noVein = DensityFunctions.constant(-1.0F);
-      DensityFunction distanceFromEdge = DensityFunctions.min(DensityFunctions.constant((float)type.maxY).sub(y), y.sub((float)type.minY));
+      DensityFunction distanceFromEdge = DensityFunctions.min(DensityFunctions.constant(type.maxY).sub(y), y.sub(type.minY));
       DensityFunction edgeRoundoff = DensityFunctions.clampedMap(distanceFromEdge, 0.0F, 20.0F, -0.2F, 0.0F);
       DensityFunction veininess = whenTogglePositive ? toggle : toggle.negate();
       return DensityFunctions.rangeChoice(
          y,
-         (float)type.minY,
-         (float)type.maxY,
+         type.minY,
+         type.maxY,
          DensityFunctions.rangeChoice(
             baseVeinMask,
             0.0F,
@@ -573,9 +573,7 @@ public class NoiseRouterData {
       final int cellSizeY
    ) {
       return DensityFunctions.interpolated(
-         DensityFunctions.rangeChoice(y, (float)minYInclusive, (float)(maxYInclusive + 1), whenInRange, DensityFunctions.constant((float)whenOutOfRange)),
-         cellSizeXz,
-         cellSizeY
+         DensityFunctions.rangeChoice(y, minYInclusive, maxYInclusive + 1, whenInRange, DensityFunctions.constant(whenOutOfRange)), cellSizeXz, cellSizeY
       );
    }
 
@@ -590,8 +588,9 @@ public class NoiseRouterData {
       final int bottomEndY,
       final float bottomTarget
    ) {
+      DensityFunction noiseValue = caves;
       DensityFunction topFactor = DensityFunctions.yClampedGradient(minY + height - topStartY, minY + height - topEndY, 1.0F, 0.0F);
-      DensityFunction noiseValue = DensityFunctions.lerp(topFactor, topTarget, caves);
+      noiseValue = DensityFunctions.lerp(topFactor, topTarget, noiseValue);
       DensityFunction bottomFactor = DensityFunctions.yClampedGradient(minY + bottomStartY, minY + bottomEndY, 0.0F, 1.0F);
       return DensityFunctions.lerp(bottomFactor, bottomTarget, noiseValue);
    }
@@ -627,7 +626,7 @@ public class NoiseRouterData {
       }
 
       private static DensityFunction noiseFunctionForRarity(final Holder<NormalNoise> noise, final float rarity) {
-         return DensityFunctions.noise(noise, 1.0 / (double)rarity, 1.0 / (double)rarity).mul(rarity);
+         return DensityFunctions.noise(noise, 1.0 / rarity, 1.0 / rarity).mul(rarity);
       }
    }
 }

@@ -15,10 +15,10 @@ public record UseDuration(boolean remaining) implements RangeSelectItemModelProp
    );
 
    @Override
-   public float get(final ItemStack itemStack, @Nullable final ClientLevel level, @Nullable final ItemOwner owner, final int seed) {
+   public float get(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable ItemOwner owner, final int seed) {
       LivingEntity entity = owner == null ? null : owner.asLivingEntity();
       if (entity != null && entity.getUseItem() == itemStack) {
-         return this.remaining ? (float)entity.getUseItemRemainingTicks() : (float)useDuration(itemStack, entity);
+         return this.remaining ? entity.getUseItemRemainingTicks() : useDuration(itemStack, entity);
       } else {
          return 0.0F;
       }

@@ -26,9 +26,8 @@ public record ConstantFunction(float value) implements DensityFunction {
       return Interval.ofExact(this.value);
    }
 
-   @DensityFunction.Axes
    @Override
-   public int domainAxes() {
+   public @DensityFunction.Axes int domainAxes() {
       return 0;
    }
 
@@ -42,7 +41,7 @@ public record ConstantFunction(float value) implements DensityFunction {
       return this;
    }
 
-   public static record Sampler(float value) implements DensitySampler {
+   public record Sampler(float value) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
          outputBuffer.fill(this.value);

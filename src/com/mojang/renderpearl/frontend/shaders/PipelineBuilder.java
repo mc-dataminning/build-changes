@@ -194,9 +194,7 @@ public class PipelineBuilder implements UncheckedAutoCloseable {
             it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry<PipelineBuilder.InterfaceVariableInfo> entry = (it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry<PipelineBuilder.InterfaceVariableInfo>)var35.next();
             int location = entry.getIntKey();
             PipelineBuilder.InterfaceVariableInfo input = (PipelineBuilder.InterfaceVariableInfo)entry.getValue();
-
             assert input != null;
-
             PipelineBuilder.InterfaceVariableInfo output = (PipelineBuilder.InterfaceVariableInfo)outputSlotMap.get(location);
             if (output == null) {
                throw new ShaderCompileException(
@@ -301,31 +299,29 @@ public class PipelineBuilder implements UncheckedAutoCloseable {
          ObjectIterator var50 = uniformBindings.keySet().iterator();
 
          while (var50.hasNext()) {
-            String uniformNamex = (String)var50.next();
-            BindGroupLayout.UniformDescription pipelineUniformx = pipelineUniformsByName.get(uniformNamex);
-
-            assert pipelineUniformx != null;
-
-            int uniformBinding = uniformBindings.getInt(uniformNamex);
+            String uniformName = (String)var50.next();
+            BindGroupLayout.UniformDescription pipelineUniform = pipelineUniformsByName.get(uniformName);
+            assert pipelineUniform != null;
+            int uniformBinding = uniformBindings.getInt(uniformName);
             int definedResourceType = uniformResourceTypes.getInt(uniformBinding);
-            int expectedResourceType = SpvUtil.resourceType(pipelineUniformx.type());
+            int expectedResourceType = SpvUtil.resourceType(pipelineUniform.type());
             int definedDimensions = uniformDimensions.getInt(uniformBinding);
             if (expectedResourceType != definedResourceType) {
-               throw new ShaderCompileException("Uniform type in shader does not match expected type from RenderPipeline for (" + uniformNamex + ")");
+               throw new ShaderCompileException("Uniform type in shader does not match expected type from RenderPipeline for (" + uniformName + ")");
             }
 
             if (definedDimensions != Integer.MAX_VALUE) {
                UniformType expectedUniformType = switch (definedDimensions) {
-                  case 0 -> throw new ShaderCompileException("1D textures not supported (" + uniformNamex + ")");
+                  case 0 -> throw new ShaderCompileException("1D textures not supported (" + uniformName + ")");
                   case 1 -> UniformType.COMBINED_IMAGE_SAMPLER;
-                  case 2 -> throw new ShaderCompileException("3D textures not supported (" + uniformNamex + ")");
+                  case 2 -> throw new ShaderCompileException("3D textures not supported (" + uniformName + ")");
                   case 3 -> UniformType.COMBINED_IMAGE_SAMPLER;
                   case 4 -> UniformType.COMBINED_IMAGE_SAMPLER;
                   case 5 -> UniformType.TEXEL_BUFFER;
-                  default -> throw new ShaderCompileException("Unexpected SpvDim (" + definedDimensions + ") for uniform (" + uniformNamex + ")");
+                  default -> throw new ShaderCompileException("Unexpected SpvDim (" + definedDimensions + ") for uniform (" + uniformName + ")");
                };
-               if (pipelineUniformx.type() != expectedUniformType) {
-                  throw new ShaderCompileException("Unexpected dimensions for uniform (" + uniformNamex + "), does not match RenderPipeline definition");
+               if (pipelineUniform.type() != expectedUniformType) {
+                  throw new ShaderCompileException("Unexpected dimensions for uniform (" + uniformName + "), does not match RenderPipeline definition");
                }
             }
          }
@@ -360,8 +356,8 @@ public class PipelineBuilder implements UncheckedAutoCloseable {
             pipeline.getColorTargetStates(),
             pipeline.getPrimitiveTopology()
          );
-      } catch (ShaderCompileException var26) {
-         LOGGER.error("Couldn't compile pipeline ({}): ", pipeline.getLocation(), var26);
+      } catch (ShaderCompileException e) {
+         LOGGER.error("Couldn't compile pipeline ({}): ", pipeline.getLocation(), e);
          shaderCreateInfos.forEach(shader -> shader.module().close());
          return null;
       }
@@ -384,16 +380,16 @@ public class PipelineBuilder implements UncheckedAutoCloseable {
                try {
                   tracyZone.addText(pipeline.getLocation().toString());
                   createInfo = this.generateBackendCreateInfo(pipeline, shaderSource, shaderCreateInfos, uniformBindings);
-               } catch (Throwable var14) {
+               } catch (Throwable t$) {
                   if (tracyZone != null) {
                      try {
                         tracyZone.close();
-                     } catch (Throwable var12) {
-                        var14.addSuppressed(var12);
+                     } catch (Throwable x2) {
+                        t$.addSuppressed(x2);
                      }
                   }
 
-                  throw var14;
+                  throw t$;
                }
 
                if (tracyZone != null) {
@@ -402,74 +398,73 @@ public class PipelineBuilder implements UncheckedAutoCloseable {
 
                if (createInfo == null) {
                   return CompiledRenderPipeline.Pending.NULL;
-               } else {
-                  Zone tracyZonex = TracyClient.beginZone("Backend Compile", false);
-
-                  try {
-                     tracyZonex.addText(pipeline.getLocation().toString());
-                     backendPendingPipeline = this.backendDevice.compilePipeline(createInfo);
-                  } catch (Throwable var13) {
-                     if (tracyZonex != null) {
-                        try {
-                           tracyZonex.close();
-                        } catch (Throwable var11) {
-                           var13.addSuppressed(var11);
-                        }
-                     }
-
-                     throw var13;
-                  }
-
-                  if (tracyZonex != null) {
-                     tracyZonex.close();
-                  }
-
-                  return () -> {
-                     Zone tracyZonexx = TracyClient.beginZone("Complete Compile", false);
-
-                     BackendRenderPipeline backendPipeline;
-                     try {
-                        tracyZonexx.addText(pipeline.getLocation().toString());
-                        backendPipeline = backendPendingPipeline.finishCompile();
-                     } catch (Throwable var10) {
-                        if (tracyZonexx != null) {
-                           try {
-                              tracyZonexx.close();
-                           } catch (Throwable var9) {
-                              var10.addSuppressed(var9);
-                           }
-                        }
-
-                        throw var10;
-                     }
-
-                     if (tracyZonexx != null) {
-                        tracyZonexx.close();
-                     }
-
-                     executor.execute(() -> shaderCreateInfos.forEach(shader -> shader.module().close()));
-                     return backendPipeline == null
-                        ? null
-                        : new FrontendRenderPipeline(
-                           pipeline.getLocation().toString(),
-                           backendPipeline,
-                           ReferenceLists.unmodifiable(new ReferenceArrayList(pipeline.getVertexFormatBindings())),
-                           Object2IntMaps.unmodifiable(uniformBindings),
-                           BindGroupLayout.flattenUniforms(pipeline.getBindGroupLayouts()),
-                           ReferenceLists.unmodifiable(new ReferenceArrayList(pipeline.getColorTargetStates())),
-                           pipeline.wantsDepthTexture(),
-                           pipeline.pushConstantSize()
-                        );
-                  };
                }
+
+               Zone tracyZonex = TracyClient.beginZone("Backend Compile", false);
+
+               try {
+                  tracyZonex.addText(pipeline.getLocation().toString());
+                  backendPendingPipeline = this.backendDevice.compilePipeline(createInfo);
+               } catch (Throwable t$) {
+                  if (tracyZonex != null) {
+                     try {
+                        tracyZonex.close();
+                     } catch (Throwable x2) {
+                        t$.addSuppressed(x2);
+                     }
+                  }
+
+                  throw t$;
+               }
+
+               if (tracyZonex != null) {
+                  tracyZonex.close();
+               }
+
+               return () -> {
+                  Zone tracyZonexx = TracyClient.beginZone("Complete Compile", false);
+
+                  BackendRenderPipeline backendPipeline;
+                  try {
+                     tracyZonexx.addText(pipeline.getLocation().toString());
+                     backendPipeline = backendPendingPipeline.finishCompile();
+                  } catch (Throwable t$) {
+                     if (tracyZonexx != null) {
+                        try {
+                           tracyZonexx.close();
+                        } catch (Throwable x2) {
+                           t$.addSuppressed(x2);
+                        }
+                     }
+
+                     throw t$;
+                  }
+
+                  if (tracyZonexx != null) {
+                     tracyZonexx.close();
+                  }
+
+                  executor.execute(() -> shaderCreateInfos.forEach(shader -> shader.module().close()));
+                  return backendPipeline == null
+                     ? null
+                     : new FrontendRenderPipeline(
+                        pipeline.getLocation().toString(),
+                        backendPipeline,
+                        ReferenceLists.unmodifiable(new ReferenceArrayList(pipeline.getVertexFormatBindings())),
+                        Object2IntMaps.unmodifiable(uniformBindings),
+                        BindGroupLayout.flattenUniforms(pipeline.getBindGroupLayouts()),
+                        ReferenceLists.unmodifiable(new ReferenceArrayList(pipeline.getColorTargetStates())),
+                        pipeline.wantsDepthTexture(),
+                        pipeline.pushConstantSize()
+                     );
+               };
             },
             executor
          );
       }
    }
 
-   @Nullable
-   private static String loadShaderSource(final Identifier id, final ShaderType type, final ShaderSource shaderSource) {
+   private static @Nullable String loadShaderSource(final Identifier id, final ShaderType type, final ShaderSource shaderSource) {
       String source = shaderSource.getShader(id, type);
       if (source == null) {
          LOGGER.error("Couldn't find source for {} shader ({})", type, id);
@@ -538,6 +533,6 @@ public class PipelineBuilder implements UncheckedAutoCloseable {
       return slotMap;
    }
 
-   private static record InterfaceVariableInfo(int baseType, int vectorLength, boolean flatInterpolated) {
+   private record InterfaceVariableInfo(int baseType, int vectorLength, boolean flatInterpolated) {
    }
 }

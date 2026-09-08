@@ -69,6 +69,6 @@ public class HorseMarkingLayer extends RenderLayer<HorseRenderState, HorseModel>
       }
    }
 
-   private static record HorseMarkingTextures(Identifier adult, Identifier baby) {
+   private record HorseMarkingTextures(Identifier adult, Identifier baby) {
    }
 }

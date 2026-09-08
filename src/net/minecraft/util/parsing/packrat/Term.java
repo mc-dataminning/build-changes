@@ -104,7 +104,7 @@ public interface Term<S> {
       };
    }
 
-   public static record Alternative<S>(Term<S>[] elements) implements Term<S> {
+   record Alternative<S>(Term<S>[] elements) implements Term<S> {
       @Override
       public boolean parse(final ParseState<S> state, final Scope scope, final Control control) {
          Control controlForThis = state.acquireControl();
@@ -134,7 +134,7 @@ public interface Term<S> {
       }
    }
 
-   public static record LookAhead<S>(Term<S> term, boolean positive) implements Term<S> {
+   record LookAhead<S>(Term<S> term, boolean positive) implements Term<S> {
       @Override
       public boolean parse(final ParseState<S> state, final Scope scope, final Control control) {
          int mark = state.mark();
@@ -144,7 +144,7 @@ public interface Term<S> {
       }
    }
 
-   public static record Marker<S, T>(Atom<T> name, T value) implements Term<S> {
+   record Marker<S, T>(Atom<T> name, T value) implements Term<S> {
       @Override
       public boolean parse(final ParseState<S> state, final Scope scope, final Control control) {
          scope.put(this.name, this.value);
@@ -152,7 +152,7 @@ public interface Term<S> {
       }
    }
 
-   public static record Maybe<S>(Term<S> term) implements Term<S> {
+   record Maybe<S>(Term<S> term) implements Term<S> {
       @Override
       public boolean parse(final ParseState<S> state, final Scope scope, final Control control) {
          int mark = state.mark();
@@ -164,7 +164,7 @@ public interface Term<S> {
       }
    }
 
-   public static record Repeated<S, T>(NamedRule<S, T> element, Atom<List<T>> listName, int minRepetitions) implements Term<S> {
+   record Repeated<S, T>(NamedRule<S, T> element, Atom<List<T>> listName, int minRepetitions) implements Term<S> {
       @Override
       public boolean parse(final ParseState<S> state, final Scope scope, final Control control) {
          int mark = state.mark();
@@ -189,9 +189,8 @@ public interface Term<S> {
       }
    }
 
-   public static record RepeatedWithSeparator<S, T>(
-      NamedRule<S, T> element, Atom<List<T>> listName, Term<S> separator, int minRepetitions, boolean allowTrailingSeparator
-   ) implements Term<S> {
+   record RepeatedWithSeparator<S, T>(NamedRule<S, T> element, Atom<List<T>> listName, Term<S> separator, int minRepetitions, boolean allowTrailingSeparator)
+      implements Term<S> {
       @Override
       public boolean parse(final ParseState<S> state, final Scope scope, final Control control) {
          int listMark = state.mark();
@@ -235,7 +234,7 @@ public interface Term<S> {
       }
    }
 
-   public static record Sequence<S>(Term<S>[] elements) implements Term<S> {
+   record Sequence<S>(Term<S>[] elements) implements Term<S> {
       @Override
       public boolean parse(final ParseState<S> state, final Scope scope, final Control control) {
          int mark = state.mark();

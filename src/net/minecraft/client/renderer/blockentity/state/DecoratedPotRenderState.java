@@ -7,8 +7,7 @@ import org.jspecify.annotations.Nullable;
 
 public class DecoratedPotRenderState extends BlockEntityRenderState {
    public float yRot;
-   @Nullable
-   public DecoratedPotBlockEntity.WobbleStyle wobbleStyle;
+   public DecoratedPotBlockEntity.@Nullable WobbleStyle wobbleStyle;
    public float wobbleProgress;
    public PotDecorations decorations = PotDecorations.EMPTY;
    public Direction direction = Direction.NORTH;

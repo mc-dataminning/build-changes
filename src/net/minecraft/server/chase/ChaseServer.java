@@ -27,8 +27,7 @@ public class ChaseServer {
    private final PlayerList playerList;
    private final int broadcastIntervalMs;
    private volatile boolean wantsToRun;
-   @Nullable
-   private ServerSocket serverSocket;
+   private @Nullable ServerSocket serverSocket;
    private final CopyOnWriteArrayList<Socket> clientSockets = new CopyOnWriteArrayList<>();
 
    public ChaseServer(final String serverBindAddress, final int serverPort, final PlayerList playerList, final int broadcastIntervalMs) {
@@ -70,8 +69,8 @@ public class ChaseServer {
                            OutputStream output = clientSocket.getOutputStream();
                            output.write(messageBytes);
                            output.flush();
-                        } catch (IOException var3x) {
-                           LOGGER.info("Remote control client socket got an IO exception and will be closed", var3x);
+                        } catch (IOException e) {
+                           LOGGER.info("Remote control client socket got an IO exception and will be closed", e);
                            IOUtils.closeQuietly(clientSocket);
                         }
                      });
@@ -85,7 +84,7 @@ public class ChaseServer {
 
          if (this.wantsToRun) {
             try {
-               Thread.sleep((long)this.broadcastIntervalMs);
+               Thread.sleep(this.broadcastIntervalMs);
             } catch (InterruptedException var6) {
             }
          }
@@ -108,13 +107,13 @@ public class ChaseServer {
                this.clientSockets.add(clientSocket);
             }
          }
-      } catch (ClosedByInterruptException var6) {
+      } catch (ClosedByInterruptException e) {
          if (this.wantsToRun) {
             LOGGER.info("Remote control server closed by interrupt");
          }
-      } catch (IOException var7) {
+      } catch (IOException e) {
          if (this.wantsToRun) {
-            LOGGER.error("Remote control server closed because of an IO exception", var7);
+            LOGGER.error("Remote control server closed because of an IO exception", e);
          }
       } finally {
          IOUtils.closeQuietly(this.serverSocket);
@@ -124,21 +123,20 @@ public class ChaseServer {
       this.wantsToRun = false;
    }
 
-   @Nullable
-   private ChaseServer.PlayerPosition getPlayerPosition() {
+   private ChaseServer.@Nullable PlayerPosition getPlayerPosition() {
       List<ServerPlayer> players = this.playerList.getPlayers();
       if (players.isEmpty()) {
          return null;
-      } else {
-         ServerPlayer player = players.get(0);
-         String dimensionName = (String)ChaseCommand.DIMENSION_NAMES.inverse().get(player.level().dimension());
-         return dimensionName == null
-            ? null
-            : new ChaseServer.PlayerPosition(dimensionName, player.getX(), player.getY(), player.getZ(), player.getYRot(), player.getXRot());
       }
+
+      ServerPlayer player = players.get(0);
+      String dimensionName = (String)ChaseCommand.DIMENSION_NAMES.inverse().get(player.level().dimension());
+      return dimensionName == null
+         ? null
+         : new ChaseServer.PlayerPosition(dimensionName, player.getX(), player.getY(), player.getZ(), player.getYRot(), player.getXRot());
    }
 
-   private static record PlayerPosition(String dimensionName, double x, double y, double z, float yRot, float xRot) {
+   private record PlayerPosition(String dimensionName, double x, double y, double z, float yRot, float xRot) {
       private String format() {
          return String.format(Locale.ROOT, "t %s %.2f %.2f %.2f %.2f %.2f\n", this.dimensionName, this.x, this.y, this.z, this.yRot, this.xRot);
       }

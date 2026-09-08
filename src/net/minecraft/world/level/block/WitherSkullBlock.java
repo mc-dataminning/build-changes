@@ -23,17 +23,15 @@ import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
 import org.jspecify.annotations.Nullable;
 
 public class WitherSkullBlock extends SkullBlock {
-   @Nullable
-   private static BlockPattern witherPatternFull;
-   @Nullable
-   private static BlockPattern witherPatternBase;
+   private static @Nullable BlockPattern witherPatternFull;
+   private static @Nullable BlockPattern witherPatternBase;
 
    protected WitherSkullBlock(final BlockBehaviour.Properties properties) {
       super(SkullBlock.Types.WITHER_SKELETON, properties);
    }
 
    @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, @Nullable final LivingEntity by, final ItemStack itemStack) {
+   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
       checkSpawn(level, pos);
    }
 
@@ -55,9 +53,9 @@ public class WitherSkullBlock extends SkullBlock {
                   CarvedPumpkinBlock.clearPatternBlocks(level, match);
                   BlockPos spawnPos = match.getBlock(1, 2, 0).getPos();
                   witherBoss.snapTo(
-                     (double)spawnPos.getX() + 0.5,
-                     (double)spawnPos.getY() + 0.55,
-                     (double)spawnPos.getZ() + 0.5,
+                     spawnPos.getX() + 0.5,
+                     spawnPos.getY() + 0.55,
+                     spawnPos.getZ() + 0.5,
                      match.getForwards().getAxis() == Direction.Axis.X ? 0.0F : 90.0F,
                      0.0F
                   );

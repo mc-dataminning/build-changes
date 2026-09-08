@@ -69,6 +69,6 @@ public class VanillaChargedCreeperExplosionLoot implements LootTableSubProvider 
          );
    }
 
-   private static record Entry(ResourceKey<LootTable> lootTable, EntityType<?> entityType, Item item) {
+   private record Entry(ResourceKey<LootTable> lootTable, EntityType<?> entityType, Item item) {
    }
 }

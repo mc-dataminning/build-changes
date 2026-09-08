@@ -29,9 +29,9 @@ public record PreparedRenderType(
    public void drawFromBufferOit(final StagedVertexBuffer.ExecuteInfo info, final OitStage stage, final RenderPass renderPass) {
       if (this.oitPipelineSet == null) {
          throw new IllegalStateException("Render type " + this.name + " does not have OIT pipelines set up.");
-      } else {
-         this.draw(info, renderPass, this.oitPipelineSet.getPipeline(stage));
       }
+
+      this.draw(info, renderPass, this.oitPipelineSet.getPipeline(stage));
    }
 
    private void draw(final StagedVertexBuffer.ExecuteInfo info, final RenderPass renderPass, final RenderPipeline renderPipeline) {
@@ -55,6 +55,6 @@ public record PreparedRenderType(
       renderPass.popDebugGroup();
    }
 
-   public static record Texture(String name, GpuTextureView textureView, GpuSampler sampler) {
+   public record Texture(String name, GpuTextureView textureView, GpuSampler sampler) {
    }
 }

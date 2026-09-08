@@ -42,7 +42,7 @@ public class ChunkCullingDebugRenderer implements DebugRenderer.SimpleDebugRende
             if (node != null) {
                BlockPos renderOffset = section.getRenderOrigin();
                if (sectionPath) {
-                  int color = node.step == 0 ? 0 : Mth.hsvToRgb((float)node.step / 50.0F, 0.9F, 0.9F);
+                  int color = node.step == 0 ? 0 : Mth.hsvToRgb(node.step / 50.0F, 0.9F, 0.9F);
 
                   for (int i = 0; i < DIRECTIONS.length; i++) {
                      if (node.hasSourceDirection(i)) {
@@ -50,10 +50,7 @@ public class ChunkCullingDebugRenderer implements DebugRenderer.SimpleDebugRende
                         Gizmos.line(
                            Vec3.atLowerCornerWithOffset(renderOffset, 8.0, 8.0, 8.0),
                            Vec3.atLowerCornerWithOffset(
-                              renderOffset,
-                              (double)(8 - 16 * direction.getStepX()),
-                              (double)(8 - 16 * direction.getStepY()),
-                              (double)(8 - 16 * direction.getStepZ())
+                              renderOffset, 8 - 16 * direction.getStepX(), 8 - 16 * direction.getStepY(), 8 - 16 * direction.getStepZ()
                            ),
                            ARGB.opaque(color)
                         );
@@ -71,16 +68,10 @@ public class ChunkCullingDebugRenderer implements DebugRenderer.SimpleDebugRende
                            c++;
                            Gizmos.line(
                               Vec3.atLowerCornerWithOffset(
-                                 renderOffset,
-                                 (double)(8 + 8 * direction1.getStepX()),
-                                 (double)(8 + 8 * direction1.getStepY()),
-                                 (double)(8 + 8 * direction1.getStepZ())
+                                 renderOffset, 8 + 8 * direction1.getStepX(), 8 + 8 * direction1.getStepY(), 8 + 8 * direction1.getStepZ()
                               ),
                               Vec3.atLowerCornerWithOffset(
-                                 renderOffset,
-                                 (double)(8 + 8 * direction2.getStepX()),
-                                 (double)(8 + 8 * direction2.getStepY()),
-                                 (double)(8 + 8 * direction2.getStepZ())
+                                 renderOffset, 8 + 8 * direction2.getStepX(), 8 + 8 * direction2.getStepY(), 8 + 8 * direction2.getStepZ()
                               ),
                               ARGB.color(255, 255, 0, 0)
                            );
@@ -124,11 +115,7 @@ public class ChunkCullingDebugRenderer implements DebugRenderer.SimpleDebugRende
    }
 
    private void addFrustumLine(final Vec3 offset, final Vector4f a, final Vector4f b) {
-      Gizmos.line(
-         new Vec3(offset.x + (double)a.x, offset.y + (double)a.y, offset.z + (double)a.z),
-         new Vec3(offset.x + (double)b.x, offset.y + (double)b.y, offset.z + (double)b.z),
-         -16777216
-      );
+      Gizmos.line(new Vec3(offset.x + a.x, offset.y + a.y, offset.z + a.z), new Vec3(offset.x + b.x, offset.y + b.y, offset.z + b.z), -16777216);
    }
 
    private void addFrustumQuad(
@@ -136,11 +123,11 @@ public class ChunkCullingDebugRenderer implements DebugRenderer.SimpleDebugRende
    ) {
       float a = 0.25F;
       Gizmos.rect(
-         new Vec3((double)frustumPoints[i0].x(), (double)frustumPoints[i0].y(), (double)frustumPoints[i0].z()).add(offset),
-         new Vec3((double)frustumPoints[i1].x(), (double)frustumPoints[i1].y(), (double)frustumPoints[i1].z()).add(offset),
-         new Vec3((double)frustumPoints[i2].x(), (double)frustumPoints[i2].y(), (double)frustumPoints[i2].z()).add(offset),
-         new Vec3((double)frustumPoints[i3].x(), (double)frustumPoints[i3].y(), (double)frustumPoints[i3].z()).add(offset),
-         GizmoStyle.fill(ARGB.colorFromFloat(0.25F, (float)r, (float)g, (float)b))
+         new Vec3(frustumPoints[i0].x(), frustumPoints[i0].y(), frustumPoints[i0].z()).add(offset),
+         new Vec3(frustumPoints[i1].x(), frustumPoints[i1].y(), frustumPoints[i1].z()).add(offset),
+         new Vec3(frustumPoints[i2].x(), frustumPoints[i2].y(), frustumPoints[i2].z()).add(offset),
+         new Vec3(frustumPoints[i3].x(), frustumPoints[i3].y(), frustumPoints[i3].z()).add(offset),
+         GizmoStyle.fill(ARGB.colorFromFloat(0.25F, r, g, b))
       );
    }
 }

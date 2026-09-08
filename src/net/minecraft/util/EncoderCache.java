@@ -7,7 +7,6 @@ import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.DynamicOps;
-import java.util.Objects;
 import net.minecraft.nbt.Tag;
 
 public class EncoderCache {
@@ -15,14 +14,10 @@ public class EncoderCache {
 
    public EncoderCache(final int maximumSize) {
       this.cache = CacheBuilder.newBuilder()
-         .maximumSize((long)maximumSize)
+         .maximumSize(maximumSize)
          .concurrencyLevel(1)
          .softValues()
          .build(new CacheLoader<EncoderCache.Key<?, ?>, DataResult<?>>() {
-            {
-               Objects.requireNonNull(EncoderCache.this);
-            }
-
             public DataResult<?> load(final EncoderCache.Key<?, ?> key) {
                return key.resolve();
             }
@@ -31,10 +26,6 @@ public class EncoderCache {
 
    public <A> Codec<A> wrap(final Codec<A> codec) {
       return new Codec<A>() {
-         {
-            Objects.requireNonNull(EncoderCache.this);
-         }
-
          public <T> DataResult<Pair<A, T>> decode(final DynamicOps<T> ops, final T input) {
             return codec.decode(ops, input);
          }
@@ -46,7 +37,7 @@ public class EncoderCache {
       };
    }
 
-   private static record Key<A, T>(Codec<A> codec, A value, DynamicOps<T> ops) {
+   private record Key<A, T>(Codec<A> codec, A value, DynamicOps<T> ops) {
       public DataResult<T> resolve() {
          return this.codec.encodeStart(this.ops, this.value);
       }

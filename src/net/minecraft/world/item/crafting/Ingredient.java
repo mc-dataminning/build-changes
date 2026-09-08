@@ -38,7 +38,9 @@ public final class Ingredient implements Predicate<ItemStack>, StackedContents.I
       values.unwrap().ifRight(directValues -> {
          if (directValues.isEmpty()) {
             throw new UnsupportedOperationException("Ingredients can't be empty");
-         } else if (directValues.contains(Items.AIR.builtInRegistryHolder())) {
+         }
+
+         if (directValues.contains(Items.AIR.builtInRegistryHolder())) {
             throw new UnsupportedOperationException("Ingredient can't contain air");
          }
       });

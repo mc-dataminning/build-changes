@@ -42,13 +42,11 @@ public class EntityVariantFix extends NamedEntityFix {
       return typed.update(
          DSL.remainderFinder(),
          remainder -> updateAndRename(
-               remainder,
-               this.fieldName,
-               "variant",
-               catType -> (Dynamic)DataFixUtils.orElse(
-                     catType.asNumber().map(e -> catType.createString(this.idConversions.apply(e.intValue()))).result(), catType
-                  )
-            )
+            remainder,
+            this.fieldName,
+            "variant",
+            catType -> (Dynamic)DataFixUtils.orElse(catType.asNumber().map(e -> catType.createString(this.idConversions.apply(e.intValue()))).result(), catType)
+         )
       );
    }
 }

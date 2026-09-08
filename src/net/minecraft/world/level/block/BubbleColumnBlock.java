@@ -39,7 +39,7 @@ public class BubbleColumnBlock extends Block implements BucketPickup {
 
    public BubbleColumnBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(DRAG_DOWN, Boolean.valueOf(true)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(DRAG_DOWN, true));
    }
 
    @Override
@@ -92,22 +92,22 @@ public class BubbleColumnBlock extends Block implements BucketPickup {
    private static boolean canOccupy(final Block bubbleColumn, final BlockState occupyState) {
       if (occupyState.is(bubbleColumn)) {
          return true;
-      } else {
-         FluidState occupyFluid = occupyState.getFluidState();
-         return occupyFluid.is(FluidTags.BUBBLE_COLUMN_CAN_OCCUPY)
-            && occupyState.getBlock() instanceof LiquidBlock
-            && occupyFluid.isSource()
-            && occupyFluid.getAmount() >= 8;
       }
+
+      FluidState occupyFluid = occupyState.getFluidState();
+      return occupyFluid.is(FluidTags.BUBBLE_COLUMN_CAN_OCCUPY)
+         && occupyState.getBlock() instanceof LiquidBlock
+         && occupyFluid.isSource()
+         && occupyFluid.getAmount() >= 8;
    }
 
    private static BlockState getColumnState(final Block bubbleColumn, final BlockState belowState, final BlockState occupyState) {
       if (belowState.is(bubbleColumn)) {
          return belowState;
       } else if (belowState.is(BlockTags.ENABLES_BUBBLE_COLUMN_PUSH_UP)) {
-         return bubbleColumn.defaultBlockState().setValue(DRAG_DOWN, Boolean.valueOf(false));
+         return bubbleColumn.defaultBlockState().setValue(DRAG_DOWN, false);
       } else if (belowState.is(BlockTags.ENABLES_BUBBLE_COLUMN_DRAG_DOWN)) {
-         return bubbleColumn.defaultBlockState().setValue(DRAG_DOWN, Boolean.valueOf(true));
+         return bubbleColumn.defaultBlockState().setValue(DRAG_DOWN, true);
       } else {
          return occupyState.is(bubbleColumn) ? Blocks.WATER.defaultBlockState() : occupyState;
       }
@@ -115,9 +115,9 @@ public class BubbleColumnBlock extends Block implements BucketPickup {
 
    @Override
    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      double x = (double)pos.getX();
-      double y = (double)pos.getY();
-      double z = (double)pos.getZ();
+      double x = pos.getX();
+      double y = pos.getY();
+      double z = pos.getZ();
       if (state.getValue(DRAG_DOWN)) {
          level.addAlwaysVisibleParticle(ParticleTypes.CURRENT_DOWN, x + 0.5, y + 0.8, z, 0.0, 0.0, 0.0);
          if (random.nextInt(200) == 0) {
@@ -134,9 +134,7 @@ public class BubbleColumnBlock extends Block implements BucketPickup {
          }
       } else {
          level.addAlwaysVisibleParticle(ParticleTypes.BUBBLE_COLUMN_UP, x + 0.5, y, z + 0.5, 0.0, 0.04, 0.0);
-         level.addAlwaysVisibleParticle(
-            ParticleTypes.BUBBLE_COLUMN_UP, x + (double)random.nextFloat(), y + (double)random.nextFloat(), z + (double)random.nextFloat(), 0.0, 0.04, 0.0
-         );
+         level.addAlwaysVisibleParticle(ParticleTypes.BUBBLE_COLUMN_UP, x + random.nextFloat(), y + random.nextFloat(), z + random.nextFloat(), 0.0, 0.04, 0.0);
          if (random.nextInt(200) == 0) {
             level.playLocalSound(
                x,
@@ -195,7 +193,7 @@ public class BubbleColumnBlock extends Block implements BucketPickup {
    }
 
    @Override
-   public ItemStack pickupBlock(@Nullable final LivingEntity user, final LevelAccessor level, final BlockPos pos, final BlockState state) {
+   public ItemStack pickupBlock(final @Nullable LivingEntity user, final LevelAccessor level, final BlockPos pos, final BlockState state) {
       level.setBlock(pos, Blocks.AIR.defaultBlockState(), 11);
       return new ItemStack(Items.WATER_BUCKET);
    }

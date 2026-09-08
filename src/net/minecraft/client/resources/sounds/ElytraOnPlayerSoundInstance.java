@@ -22,11 +22,11 @@ public class ElytraOnPlayerSoundInstance extends AbstractTickableSoundInstance {
    public void tick() {
       this.time++;
       if (!this.player.isRemoved() && (this.time <= 20 || this.player.isFallFlying())) {
-         this.x = (double)((float)this.player.getX());
-         this.y = (double)((float)this.player.getY());
-         this.z = (double)((float)this.player.getZ());
+         this.x = (float)this.player.getX();
+         this.y = (float)this.player.getY();
+         this.z = (float)this.player.getZ();
          float speed = (float)this.player.getDeltaMovement().lengthSqr();
-         if ((double)speed >= 1.0E-7) {
+         if (speed >= 1.0E-7) {
             this.volume = Mth.clamp(speed / 4.0F, 0.0F, 1.0F);
          } else {
             this.volume = 0.0F;
@@ -35,7 +35,7 @@ public class ElytraOnPlayerSoundInstance extends AbstractTickableSoundInstance {
          if (this.time < 20) {
             this.volume = 0.0F;
          } else if (this.time < 40) {
-            this.volume = this.volume * ((float)(this.time - 20) / 20.0F);
+            this.volume = this.volume * ((this.time - 20) / 20.0F);
          }
 
          float pitchThreshold = 0.8F;

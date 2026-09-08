@@ -10,6 +10,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 
 public class ServerCommandSuggestionsProvider {
@@ -17,7 +18,7 @@ public class ServerCommandSuggestionsProvider {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static final int MIN_INTERVAL_TICKS = 1;
    private final ServerPlayer player;
-   private final AtomicReference<ServerCommandSuggestionsProvider.Request> lastRequest = new AtomicReference<>();
+   private final AtomicReference<ServerCommandSuggestionsProvider.@Nullable Request> lastRequest = new AtomicReference<>();
    private volatile boolean hasBudget;
 
    public ServerCommandSuggestionsProvider(final ServerPlayer player) {
@@ -51,8 +52,8 @@ public class ServerCommandSuggestionsProvider {
                }
 
                dispatcher.getCompletionSuggestions(parse).thenAccept(suggestions -> request.future.complete(limitSuggestionCount(suggestions)));
-            } catch (Exception var6) {
-               LOGGER.error("Failed to resolve command suggestions for {}", this.player.getGameProfile().name(), var6);
+            } catch (Exception e) {
+               LOGGER.error("Failed to resolve command suggestions for {}", this.player.getGameProfile().name(), e);
             }
          }
       }

@@ -157,21 +157,19 @@ public class FriendlyByteBuf extends ByteBuf {
       return this.readBoolean() ? Either.left(leftReader.decode(this)) : Either.right(rightReader.decode(this));
    }
 
-   @Nullable
-   public <T> T readNullable(final StreamDecoder<? super FriendlyByteBuf, T> valueDecoder) {
+   public <T> @Nullable T readNullable(final StreamDecoder<? super FriendlyByteBuf, T> valueDecoder) {
       return readNullable(this, valueDecoder);
    }
 
-   @Nullable
-   public static <T, B extends ByteBuf> T readNullable(final B input, final StreamDecoder<? super B, T> valueDecoder) {
+   public static <T, B extends ByteBuf> @Nullable T readNullable(final B input, final StreamDecoder<? super B, T> valueDecoder) {
       return input.readBoolean() ? valueDecoder.decode(input) : null;
    }
 
-   public <T> void writeNullable(@Nullable final T value, final StreamEncoder<? super FriendlyByteBuf, T> valueEncoder) {
+   public <T> void writeNullable(final @Nullable T value, final StreamEncoder<? super FriendlyByteBuf, T> valueEncoder) {
       writeNullable(this, value, valueEncoder);
    }
 
-   public static <T, B extends ByteBuf> void writeNullable(final B output, @Nullable final T value, final StreamEncoder<? super B, T> valueEncoder) {
+   public static <T, B extends ByteBuf> void writeNullable(final B output, final @Nullable T value, final StreamEncoder<? super B, T> valueEncoder) {
       if (value != null) {
          output.writeBoolean(true);
          valueEncoder.encode(output, value);
@@ -206,11 +204,11 @@ public class FriendlyByteBuf extends ByteBuf {
       int size = VarInt.read(input);
       if (size > maxSize) {
          throw new DecoderException("ByteArray with size " + size + " is bigger than allowed " + maxSize);
-      } else {
-         byte[] bytes = new byte[size];
-         input.readBytes(bytes);
-         return bytes;
       }
+
+      byte[] bytes = new byte[size];
+      input.readBytes(bytes);
+      return bytes;
    }
 
    public FriendlyByteBuf writeVarIntArray(final int[] ints) {
@@ -231,15 +229,15 @@ public class FriendlyByteBuf extends ByteBuf {
       int size = this.readVarInt();
       if (size > maxSize) {
          throw new DecoderException("VarIntArray with size " + size + " is bigger than allowed " + maxSize);
-      } else {
-         int[] ints = new int[size];
-
-         for (int i = 0; i < ints.length; i++) {
-            ints[i] = this.readVarInt();
-         }
-
-         return ints;
       }
+
+      int[] ints = new int[size];
+
+      for (int i = 0; i < ints.length; i++) {
+         ints[i] = this.readVarInt();
+      }
+
+      return ints;
    }
 
    public FriendlyByteBuf writeLongArray(final long[] longs) {
@@ -427,7 +425,7 @@ public class FriendlyByteBuf extends ByteBuf {
       return this;
    }
 
-   public FriendlyByteBuf writeNbt(@Nullable final Tag tag) {
+   public FriendlyByteBuf writeNbt(final @Nullable Tag tag) {
       writeNbt(this, tag);
       return this;
    }
@@ -439,18 +437,16 @@ public class FriendlyByteBuf extends ByteBuf {
 
       try {
          NbtIo.writeAnyTag(tag, new ByteBufOutputStream(output));
-      } catch (IOException var3) {
-         throw new EncoderException(var3);
+      } catch (IOException e) {
+         throw new EncoderException(e);
       }
    }
 
-   @Nullable
-   public CompoundTag readNbt() {
+   public @Nullable CompoundTag readNbt() {
       return readNbt(this);
    }
 
-   @Nullable
-   public static CompoundTag readNbt(final ByteBuf input) {
+   public static @Nullable CompoundTag readNbt(final ByteBuf input) {
       Tag result = readNbt(input, NbtAccounter.defaultQuota());
       if (result != null && !(result instanceof CompoundTag)) {
          throw new DecoderException("Not a compound tag: " + result);
@@ -459,18 +455,16 @@ public class FriendlyByteBuf extends ByteBuf {
       }
    }
 
-   @Nullable
-   public static Tag readNbt(final ByteBuf input, final NbtAccounter accounter) {
+   public static @Nullable Tag readNbt(final ByteBuf input, final NbtAccounter accounter) {
       try {
          Tag tag = NbtIo.readAnyTag(new ByteBufInputStream(input), accounter);
          return tag.getId() == 0 ? null : tag;
-      } catch (IOException var3) {
-         throw new EncoderException(var3);
+      } catch (IOException e) {
+         throw new EncoderException(e);
       }
    }
 
-   @Nullable
-   public Tag readNbt(final NbtAccounter accounter) {
+   public @Nullable Tag readNbt(final NbtAccounter accounter) {
       return readNbt(this, accounter);
    }
 
@@ -539,10 +533,10 @@ public class FriendlyByteBuf extends ByteBuf {
    public static void writeFixedBitSet(final ByteBuf output, final BitSet bitSet, final int size) {
       if (bitSet.length() > size) {
          throw new EncoderException("BitSet is larger than expected size (" + bitSet.length() + ">" + size + ")");
-      } else {
-         byte[] bytes = bitSet.toByteArray();
-         output.writeBytes(Arrays.copyOf(bytes, Mth.positiveCeilDiv(size, 8)));
       }
+
+      byte[] bytes = bitSet.toByteArray();
+      output.writeBytes(Arrays.copyOf(bytes, Mth.positiveCeilDiv(size, 8)));
    }
 
    public static int readContainerId(final ByteBuf input) {

@@ -24,13 +24,13 @@ public class EmptyMapItem extends Item {
          ItemStack map = MapItem.create(serverLevel, player.getBlockX(), player.getBlockZ(), (byte)0, true, false);
          if (itemStack.isEmpty()) {
             return InteractionResult.SUCCESS.heldItemTransformedTo(map);
-         } else {
-            if (!player.getInventory().add(map.copy())) {
-               player.drop(map, false, Prediction.SERVER_ONLY);
-            }
-
-            return InteractionResult.SUCCESS;
          }
+
+         if (!player.getInventory().add(map.copy())) {
+            player.drop(map, false, Prediction.SERVER_ONLY);
+         }
+
+         return InteractionResult.SUCCESS;
       } else {
          return InteractionResult.SUCCESS;
       }

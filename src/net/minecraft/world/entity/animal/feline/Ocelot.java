@@ -65,10 +65,8 @@ public class Ocelot extends Animal {
    private static final EntityDimensions BABY_DIMENSIONS = EntityDimensions.scalable(0.3F, 0.35F)
       .withEyeHeight(0.34375F)
       .withAttachments(EntityAttachments.builder().attach(EntityAttachment.PASSENGER, 0.0F, 0.3125F, 0.0F));
-   @Nullable
-   private Ocelot.OcelotAvoidEntityGoal<Player> ocelotAvoidPlayersGoal;
-   @Nullable
-   private Ocelot.OcelotTemptGoal temptGoal;
+   private Ocelot.@Nullable OcelotAvoidEntityGoal<Player> ocelotAvoidPlayersGoal;
+   private Ocelot.@Nullable OcelotTemptGoal temptGoal;
 
    public Ocelot(final EntityType<? extends Ocelot> type, final Level level) {
       super(type, level);
@@ -145,9 +143,8 @@ public class Ocelot extends Animal {
       return Animal.createAnimalAttributes().add(Attributes.MAX_HEALTH, 10.0).add(Attributes.MOVEMENT_SPEED, 0.3F).add(Attributes.ATTACK_DAMAGE, 3.0);
    }
 
-   @Nullable
    @Override
-   protected SoundEvent getAmbientSound() {
+   protected @Nullable SoundEvent getAmbientSound() {
       return SoundEvents.OCELOT_AMBIENT;
    }
 
@@ -189,7 +186,7 @@ public class Ocelot extends Animal {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 41) {
          this.spawnTrustingParticles(true);
       } else if (id == 40) {
@@ -229,8 +226,7 @@ public class Ocelot extends Animal {
       return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
    }
 
-   @Nullable
-   public Ocelot getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable Ocelot getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       return EntityTypes.OCELOT.create(level, EntitySpawnReason.BREEDING);
    }
 
@@ -262,9 +258,8 @@ public class Ocelot extends Animal {
       return false;
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       if (groupData == null) {
@@ -276,7 +271,7 @@ public class Ocelot extends Animal {
 
    @Override
    public Vec3 getLeashOffset() {
-      return new Vec3(0.0, (double)(0.5F * this.getEyeHeight()), (double)(this.getBbWidth() * 0.4F));
+      return new Vec3(0.0, 0.5F * this.getEyeHeight(), this.getBbWidth() * 0.4F);
    }
 
    @Override

@@ -49,6 +49,6 @@ public class ClientActivePlayersTooltip implements ClientTooltipComponent {
       }
    }
 
-   public static record ActivePlayersTooltip(List<PlayerSkinRenderCache.RenderInfo> profiles) implements TooltipComponent {
+   public record ActivePlayersTooltip(List<PlayerSkinRenderCache.RenderInfo> profiles) implements TooltipComponent {
    }
 }

@@ -3,7 +3,6 @@ package net.minecraft.client.gui.narration;
 import com.google.common.collect.Maps;
 import java.util.Comparator;
 import java.util.Map;
-import java.util.Objects;
 import java.util.function.Consumer;
 
 public class ScreenNarrationCollector {
@@ -20,12 +19,7 @@ public class ScreenNarrationCollector {
    public String collectNarrationText(final boolean force) {
       final StringBuilder result = new StringBuilder();
       Consumer<String> appender = new Consumer<String>() {
-         private boolean firstEntry;
-
-         {
-            Objects.requireNonNull(ScreenNarrationCollector.this);
-            this.firstEntry = true;
-         }
+         private boolean firstEntry = true;
 
          public void accept(final String s) {
             if (!this.firstEntry) {
@@ -45,7 +39,7 @@ public class ScreenNarrationCollector {
       return result.toString();
    }
 
-   private static record EntryKey(NarratedElementType type, int depth) {
+   private record EntryKey(NarratedElementType type, int depth) {
    }
 
    private static class NarrationEntry {
@@ -71,8 +65,6 @@ public class ScreenNarrationCollector {
       private final NarrationTrigger narrationTrigger;
 
       private Output(final int depth, final NarrationTrigger narrationTrigger) {
-         Objects.requireNonNull(ScreenNarrationCollector.this);
-         super();
          this.depth = depth;
          this.narrationTrigger = narrationTrigger;
       }

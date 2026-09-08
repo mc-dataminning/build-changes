@@ -18,7 +18,7 @@ public interface GlyphBitmap {
    }
 
    default float getRight() {
-      return this.getLeft() + (float)this.getPixelWidth() / this.getOversample();
+      return this.getLeft() + this.getPixelWidth() / this.getOversample();
    }
 
    default float getTop() {
@@ -26,7 +26,7 @@ public interface GlyphBitmap {
    }
 
    default float getBottom() {
-      return this.getTop() + (float)this.getPixelHeight() / this.getOversample();
+      return this.getTop() + this.getPixelHeight() / this.getOversample();
    }
 
    default float getBearingLeft() {

@@ -38,9 +38,7 @@ public class BambooStalkBlock extends Block implements BonemealableBlock {
 
    public BambooStalkBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(AGE, Integer.valueOf(0)).setValue(LEAVES, BambooLeaves.NONE).setValue(STAGE, Integer.valueOf(0))
-      );
+      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0).setValue(LEAVES, BambooLeaves.NONE).setValue(STAGE, 0));
    }
 
    @Override
@@ -74,29 +72,26 @@ public class BambooStalkBlock extends Block implements BonemealableBlock {
       return false;
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
       if (!fluidState.isEmpty()) {
          return null;
-      } else {
-         BlockState belowState = context.getLevel().getBlockState(context.getClickedPos().below());
-         if (belowState.is(BlockTags.SUPPORTS_BAMBOO)) {
-            if (belowState.is(Blocks.BAMBOO_SAPLING)) {
-               return this.defaultBlockState().setValue(AGE, Integer.valueOf(0));
-            } else if (belowState.is(Blocks.BAMBOO)) {
-               int age = belowState.getValue(AGE) > 0 ? 1 : 0;
-               return this.defaultBlockState().setValue(AGE, Integer.valueOf(age));
-            } else {
-               BlockState aboveState = context.getLevel().getBlockState(context.getClickedPos().above());
-               return aboveState.is(Blocks.BAMBOO)
-                  ? this.defaultBlockState().setValue(AGE, aboveState.getValue(AGE))
-                  : Blocks.BAMBOO_SAPLING.defaultBlockState();
-            }
+      }
+
+      BlockState belowState = context.getLevel().getBlockState(context.getClickedPos().below());
+      if (belowState.is(BlockTags.SUPPORTS_BAMBOO)) {
+         if (belowState.is(Blocks.BAMBOO_SAPLING)) {
+            return this.defaultBlockState().setValue(AGE, 0);
+         } else if (belowState.is(Blocks.BAMBOO)) {
+            int age = belowState.getValue(AGE) > 0 ? 1 : 0;
+            return this.defaultBlockState().setValue(AGE, age);
          } else {
-            return null;
+            BlockState aboveState = context.getLevel().getBlockState(context.getClickedPos().above());
+            return aboveState.is(Blocks.BAMBOO) ? this.defaultBlockState().setValue(AGE, aboveState.getValue(AGE)) : Blocks.BAMBOO_SAPLING.defaultBlockState();
          }
+      } else {
+         return null;
       }
    }
 
@@ -205,9 +200,7 @@ public class BambooStalkBlock extends Block implements BonemealableBlock {
 
       int age = state.getValue(AGE) != 1 && !twoBelowState.is(Blocks.BAMBOO) ? 0 : 1;
       int stage = (height < 11 || !(random.nextFloat() < 0.25F)) && height != 15 ? 0 : 1;
-      level.setBlockAndUpdate(
-         pos.above(), this.defaultBlockState().setValue(AGE, Integer.valueOf(age)).setValue(LEAVES, leaves).setValue(STAGE, Integer.valueOf(stage))
-      );
+      level.setBlockAndUpdate(pos.above(), this.defaultBlockState().setValue(AGE, age).setValue(LEAVES, leaves).setValue(STAGE, stage));
    }
 
    protected int getHeightAboveUpToMax(final BlockGetter level, final BlockPos pos) {

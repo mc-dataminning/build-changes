@@ -25,16 +25,15 @@ public class RealmsPreferredRegionSelectionScreen extends Screen {
    private static final int SPACING = 8;
    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
    private final Screen parent;
-   private final BiConsumer<RegionSelectionPreference, RealmsRegion> applySettings;
+   private final BiConsumer<RegionSelectionPreference, @Nullable RealmsRegion> applySettings;
    private final Map<RealmsRegion, ServiceQuality> regionServiceQuality;
-   private RealmsPreferredRegionSelectionScreen.RegionSelectionList list;
+   private RealmsPreferredRegionSelectionScreen.@Nullable RegionSelectionList list;
    private RealmsSettingsTab.RegionSelection selection;
-   @Nullable
-   private Button doneButton;
+   private @Nullable Button doneButton;
 
    public RealmsPreferredRegionSelectionScreen(
       final Screen parent,
-      final BiConsumer<RegionSelectionPreference, RealmsRegion> applySettings,
+      final BiConsumer<RegionSelectionPreference, @Nullable RealmsRegion> applySettings,
       final Map<RealmsRegion, ServiceQuality> regionServiceQuality,
       final RealmsSettingsTab.RegionSelection currentSelection
    ) {
@@ -85,7 +84,6 @@ public class RealmsPreferredRegionSelectionScreen extends Screen {
 
    private class RegionSelectionList extends ObjectSelectionList<RealmsPreferredRegionSelectionScreen.RegionSelectionList.Entry> {
       private RegionSelectionList() {
-         Objects.requireNonNull(RealmsPreferredRegionSelectionScreen.this);
          super(
             RealmsPreferredRegionSelectionScreen.this.minecraft,
             RealmsPreferredRegionSelectionScreen.this.width,
@@ -93,16 +91,16 @@ public class RealmsPreferredRegionSelectionScreen extends Screen {
             40,
             16
          );
-         this.addEntry(new RealmsPreferredRegionSelectionScreen.RegionSelectionList.Entry(this, RegionSelectionPreference.AUTOMATIC_PLAYER, null));
-         this.addEntry(new RealmsPreferredRegionSelectionScreen.RegionSelectionList.Entry(this, RegionSelectionPreference.AUTOMATIC_OWNER, null));
+         this.addEntry(new RealmsPreferredRegionSelectionScreen.RegionSelectionList.Entry(RegionSelectionPreference.AUTOMATIC_PLAYER, null));
+         this.addEntry(new RealmsPreferredRegionSelectionScreen.RegionSelectionList.Entry(RegionSelectionPreference.AUTOMATIC_OWNER, null));
          RealmsPreferredRegionSelectionScreen.this.regionServiceQuality
             .keySet()
             .stream()
-            .map(region -> new RealmsPreferredRegionSelectionScreen.RegionSelectionList.Entry(this, RegionSelectionPreference.MANUAL, region))
+            .map(region -> new RealmsPreferredRegionSelectionScreen.RegionSelectionList.Entry(RegionSelectionPreference.MANUAL, region))
             .forEach(x$0 -> this.addEntry(x$0));
       }
 
-      public void setSelected(final RealmsPreferredRegionSelectionScreen.RegionSelectionList.Entry selected) {
+      public void setSelected(final RealmsPreferredRegionSelectionScreen.RegionSelectionList.@Nullable Entry selected) {
          super.setSelected(selected);
          if (selected != null) {
             RealmsPreferredRegionSelectionScreen.this.selection = selected.regionSelection;
@@ -115,18 +113,11 @@ public class RealmsPreferredRegionSelectionScreen extends Screen {
          private final RealmsSettingsTab.RegionSelection regionSelection;
          private final Component name;
 
-         public Entry(
-            final RealmsPreferredRegionSelectionScreen.RegionSelectionList this$1,
-            @Nullable final RegionSelectionPreference preference,
-            final RealmsRegion region
-         ) {
-            this(this$1x, new RealmsSettingsTab.RegionSelection(preference, region));
+         public Entry(final RegionSelectionPreference preference, final @Nullable RealmsRegion region) {
+            this(new RealmsSettingsTab.RegionSelection(preference, region));
          }
 
-         public Entry(final RealmsPreferredRegionSelectionScreen.RegionSelectionList this$1, final RealmsSettingsTab.RegionSelection regionSelection) {
-            Objects.requireNonNull(this$1x);
-            this.this$1 = this$1x;
-            super();
+         public Entry(final RealmsSettingsTab.RegionSelection regionSelection) {
             this.regionSelection = regionSelection;
             if (regionSelection.preference() == RegionSelectionPreference.MANUAL) {
                if (regionSelection.region() != null) {
@@ -157,9 +148,9 @@ public class RealmsPreferredRegionSelectionScreen extends Screen {
 
          @Override
          public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-            this.this$1.setSelected(this);
+            RegionSelectionList.this.setSelected(this);
             if (doubleClick) {
-               this.this$1.playDownSound(this.this$1.minecraft.getSoundManager());
+               RegionSelectionList.this.playDownSound(RegionSelectionList.this.minecraft.getSoundManager());
                RealmsPreferredRegionSelectionScreen.this.onDone();
                return true;
             } else {
@@ -170,7 +161,7 @@ public class RealmsPreferredRegionSelectionScreen extends Screen {
          @Override
          public boolean keyPressed(final KeyEvent event) {
             if (event.isSelection()) {
-               this.this$1.playDownSound(this.this$1.minecraft.getSoundManager());
+               RegionSelectionList.this.playDownSound(RegionSelectionList.this.minecraft.getSoundManager());
                RealmsPreferredRegionSelectionScreen.this.onDone();
                return true;
             } else {

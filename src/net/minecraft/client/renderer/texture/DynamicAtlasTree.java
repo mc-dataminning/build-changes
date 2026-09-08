@@ -7,10 +7,8 @@ public class DynamicAtlasTree implements DynamicAtlasTreeSlot {
    private final int y;
    private final int width;
    private final int height;
-   @Nullable
-   private DynamicAtlasTree left;
-   @Nullable
-   private DynamicAtlasTree right;
+   private @Nullable DynamicAtlasTree left;
+   private @Nullable DynamicAtlasTree right;
    private boolean occupied;
 
    public DynamicAtlasTree(final int x, final int y, final int width, final int height) {
@@ -20,13 +18,11 @@ public class DynamicAtlasTree implements DynamicAtlasTreeSlot {
       this.height = height;
    }
 
-   @Nullable
-   public DynamicAtlasTreeSlot insert(final int slotWidth, final int slotHeight, final int spacing) {
+   public @Nullable DynamicAtlasTreeSlot insert(final int slotWidth, final int slotHeight, final int spacing) {
       return this.insertInner(slotWidth, slotHeight, spacing);
    }
 
-   @Nullable
-   private DynamicAtlasTree insertInner(final int slotWidth, final int slotHeight, final int spacing) {
+   private @Nullable DynamicAtlasTree insertInner(final int slotWidth, final int slotHeight, final int spacing) {
       if (this.left != null && this.right != null) {
          DynamicAtlasTree newNode = this.left.insertInner(slotWidth, slotHeight, spacing);
          if (newNode == null) {
@@ -34,14 +30,20 @@ public class DynamicAtlasTree implements DynamicAtlasTreeSlot {
          }
 
          return newNode;
-      } else if (this.occupied) {
-         return null;
-      } else if (slotWidth > this.width || slotHeight > this.height) {
-         return null;
-      } else if (slotWidth == this.width && slotHeight == this.height) {
-         this.occupied = true;
-         return this;
       } else {
+         if (this.occupied) {
+            return null;
+         }
+
+         if (slotWidth > this.width || slotHeight > this.height) {
+            return null;
+         }
+
+         if (slotWidth == this.width && slotHeight == this.height) {
+            this.occupied = true;
+            return this;
+         }
+
          int deltaWidth = this.width - slotWidth;
          int deltaHeight = this.height - slotHeight;
          if (deltaWidth > deltaHeight) {

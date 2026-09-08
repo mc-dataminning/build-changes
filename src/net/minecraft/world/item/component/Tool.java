@@ -17,12 +17,12 @@ import net.minecraft.world.level.block.state.BlockState;
 public record Tool(List<Tool.Rule> rules, float defaultMiningSpeed, int damagePerBlock, boolean canDestroyBlocksInCreative) {
    public static final Codec<Tool> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Tool.Rule.CODEC.listOf().fieldOf("rules").forGetter(Tool::rules),
-               Codec.FLOAT.optionalFieldOf("default_mining_speed", 1.0F).forGetter(Tool::defaultMiningSpeed),
-               ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("damage_per_block", 1).forGetter(Tool::damagePerBlock),
-               Codec.BOOL.optionalFieldOf("can_destroy_blocks_in_creative", true).forGetter(Tool::canDestroyBlocksInCreative)
-            )
-            .apply(i, Tool::new)
+            Tool.Rule.CODEC.listOf().fieldOf("rules").forGetter(Tool::rules),
+            Codec.FLOAT.optionalFieldOf("default_mining_speed", 1.0F).forGetter(Tool::defaultMiningSpeed),
+            ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("damage_per_block", 1).forGetter(Tool::damagePerBlock),
+            Codec.BOOL.optionalFieldOf("can_destroy_blocks_in_creative", true).forGetter(Tool::canDestroyBlocksInCreative)
+         )
+         .apply(i, Tool::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, Tool> STREAM_CODEC = StreamCodec.composite(
       Tool.Rule.STREAM_CODEC.apply(ByteBufCodecs.list()),
@@ -56,14 +56,14 @@ public record Tool(List<Tool.Rule> rules, float defaultMiningSpeed, int damagePe
       return false;
    }
 
-   public static record Rule(HolderSet<Block> blocks, Optional<Float> speed, Optional<Boolean> correctForDrops) {
+   public record Rule(HolderSet<Block> blocks, Optional<Float> speed, Optional<Boolean> correctForDrops) {
       public static final Codec<Tool.Rule> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("blocks").forGetter(Tool.Rule::blocks),
-                  ExtraCodecs.POSITIVE_FLOAT.optionalFieldOf("speed").forGetter(Tool.Rule::speed),
-                  Codec.BOOL.optionalFieldOf("correct_for_drops").forGetter(Tool.Rule::correctForDrops)
-               )
-               .apply(i, Tool.Rule::new)
+               RegistryCodecs.holderSet(Registries.BLOCK).fieldOf("blocks").forGetter(Tool.Rule::blocks),
+               ExtraCodecs.POSITIVE_FLOAT.optionalFieldOf("speed").forGetter(Tool.Rule::speed),
+               Codec.BOOL.optionalFieldOf("correct_for_drops").forGetter(Tool.Rule::correctForDrops)
+            )
+            .apply(i, Tool.Rule::new)
       );
       public static final StreamCodec<RegistryFriendlyByteBuf, Tool.Rule> STREAM_CODEC = StreamCodec.composite(
          ByteBufCodecs.holderSet(Registries.BLOCK),

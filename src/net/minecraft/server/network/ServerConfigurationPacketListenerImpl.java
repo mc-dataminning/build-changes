@@ -48,13 +48,10 @@ public class ServerConfigurationPacketListenerImpl extends ServerCommonPacketLis
    private static final Component DISCONNECT_REASON_CONFIGURATION_ERROR = Component.translatable("multiplayer.disconnect.configuration_error");
    private final GameProfile gameProfile;
    private final Queue<ConfigurationTask> configurationTasks = new ConcurrentLinkedQueue<>();
-   @Nullable
-   private ConfigurationTask currentTask;
+   private @Nullable ConfigurationTask currentTask;
    private ClientInformation clientInformation;
-   @Nullable
-   private SynchronizeRegistriesTask synchronizeRegistriesTask;
-   @Nullable
-   private PrepareSpawnTask prepareSpawnTask;
+   private @Nullable SynchronizeRegistriesTask synchronizeRegistriesTask;
+   private @Nullable PrepareSpawnTask prepareSpawnTask;
 
    public ServerConfigurationPacketListenerImpl(final MinecraftServer server, final Connection connection, final CommonListenerCookie cookie) {
       super(server, connection, cookie);
@@ -148,10 +145,10 @@ public class ServerConfigurationPacketListenerImpl extends ServerCommonPacketLis
       PacketUtils.ensureRunningOnSameThread(packet, this, this.server.packetProcessor());
       if (this.synchronizeRegistriesTask == null) {
          throw new IllegalStateException("Unexpected response from client: received pack selection, but no negotiation ongoing");
-      } else {
-         this.synchronizeRegistriesTask.handleResponse(packet.knownPacks(), this::send);
-         this.finishCurrentTask(SynchronizeRegistriesTask.TYPE);
       }
+
+      this.synchronizeRegistriesTask.handleResponse(packet.knownPacks(), this::send);
+      this.finishCurrentTask(SynchronizeRegistriesTask.TYPE);
    }
 
    @Override
@@ -179,8 +176,8 @@ public class ServerConfigurationPacketListenerImpl extends ServerCommonPacketLis
          }
 
          Objects.requireNonNull(this.prepareSpawnTask).spawnPlayer(this.connection, this.createCookie(this.clientInformation));
-      } catch (Exception var4) {
-         LOGGER.error("Couldn't place player in world", var4);
+      } catch (Exception e) {
+         LOGGER.error("Couldn't place player in world", e);
          this.disconnect(DISCONNECT_REASON_INVALID_DATA);
       }
    }
@@ -194,8 +191,8 @@ public class ServerConfigurationPacketListenerImpl extends ServerCommonPacketLis
             if (task.tick()) {
                this.finishCurrentTask(task.type());
             }
-         } catch (Exception var3) {
-            LOGGER.error("Failed to tick configuration task {}", task.type(), var3);
+         } catch (Exception e) {
+            LOGGER.error("Failed to tick configuration task {}", task.type(), e);
             this.disconnect(DISCONNECT_REASON_CONFIGURATION_ERROR);
          }
       }
@@ -208,15 +205,17 @@ public class ServerConfigurationPacketListenerImpl extends ServerCommonPacketLis
    private void startNextTask() {
       if (this.currentTask != null) {
          throw new IllegalStateException("Task " + this.currentTask.type().id() + " has not finished yet");
-      } else if (this.isAcceptingMessages()) {
+      }
+
+      if (this.isAcceptingMessages()) {
          ConfigurationTask task = this.configurationTasks.poll();
          if (task != null) {
             this.currentTask = task;
 
             try {
                task.start(this::send);
-            } catch (Exception var3) {
-               LOGGER.error("Failed to start configuration task {}", task.type(), var3);
+            } catch (Exception e) {
+               LOGGER.error("Failed to start configuration task {}", task.type(), e);
                this.disconnect(DISCONNECT_REASON_CONFIGURATION_ERROR);
             }
          }
@@ -227,9 +226,9 @@ public class ServerConfigurationPacketListenerImpl extends ServerCommonPacketLis
       ConfigurationTask.Type currentTaskType = this.currentTask != null ? this.currentTask.type() : null;
       if (!taskTypeToFinish.equals(currentTaskType)) {
          throw new IllegalStateException("Unexpected request for task finish, current task: " + currentTaskType + ", requested: " + taskTypeToFinish);
-      } else {
-         this.currentTask = null;
-         this.startNextTask();
       }
+
+      this.currentTask = null;
+      this.startNextTask();
    }
 }

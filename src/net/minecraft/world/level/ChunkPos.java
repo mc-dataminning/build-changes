@@ -71,7 +71,7 @@ public record ChunkPos(int x, int z) {
    }
 
    public static long pack(final int x, final int z) {
-      return (long)x & 4294967295L | ((long)z & 4294967295L) << 32;
+      return x & 4294967295L | (z & 4294967295L) << 32;
    }
 
    public static long fromSectionNode(final long sectionNode) {
@@ -209,9 +209,8 @@ public record ChunkPos(int x, int z) {
       int zSize = Math.abs(from.z - to.z) + 1;
       final int xDiff = from.x < to.x ? 1 : -1;
       final int zDiff = from.z < to.z ? 1 : -1;
-      return StreamSupport.stream(new AbstractSpliterator<ChunkPos>((long)(xSize * zSize), 64) {
-         @Nullable
-         private ChunkPos pos;
+      return StreamSupport.stream(new AbstractSpliterator<ChunkPos>(xSize * zSize, 64) {
+         private @Nullable ChunkPos pos;
 
          @Override
          public boolean tryAdvance(final Consumer<? super ChunkPos> action) {

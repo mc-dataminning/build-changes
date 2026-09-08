@@ -14,23 +14,23 @@ public record TargetedConditionalEffect<T>(EnchantmentTarget enchanted, Enchantm
    public static <S> Codec<TargetedConditionalEffect<S>> codec(final Codec<S> effectCodec) {
       return RecordCodecBuilder.create(
          i -> i.group(
-                  EnchantmentTarget.CODEC.fieldOf("enchanted").forGetter(TargetedConditionalEffect::enchanted),
-                  EnchantmentTarget.CODEC.fieldOf("affected").forGetter(TargetedConditionalEffect::affected),
-                  effectCodec.fieldOf("effect").forGetter(TargetedConditionalEffect::effect),
-                  LootItemCondition.CODEC.optionalFieldOf("requirements").forGetter(TargetedConditionalEffect::requirements)
-               )
-               .apply(i, TargetedConditionalEffect::new)
+               EnchantmentTarget.CODEC.fieldOf("enchanted").forGetter(TargetedConditionalEffect::enchanted),
+               EnchantmentTarget.CODEC.fieldOf("affected").forGetter(TargetedConditionalEffect::affected),
+               effectCodec.fieldOf("effect").forGetter(TargetedConditionalEffect::effect),
+               LootItemCondition.CODEC.optionalFieldOf("requirements").forGetter(TargetedConditionalEffect::requirements)
+            )
+            .apply(i, TargetedConditionalEffect::new)
       );
    }
 
    public static <S> Codec<TargetedConditionalEffect<S>> equipmentDropsCodec(final Codec<S> effectCodec) {
       return RecordCodecBuilder.create(
          i -> i.group(
-                  EnchantmentTarget.NON_DAMAGE_CODEC.fieldOf("enchanted").forGetter(TargetedConditionalEffect::enchanted),
-                  effectCodec.fieldOf("effect").forGetter(TargetedConditionalEffect::effect),
-                  LootItemCondition.CODEC.optionalFieldOf("requirements").forGetter(TargetedConditionalEffect::requirements)
-               )
-               .apply(i, (target, effect, requirements) -> new TargetedConditionalEffect<>(target, EnchantmentTarget.VICTIM, effect, requirements))
+               EnchantmentTarget.NON_DAMAGE_CODEC.fieldOf("enchanted").forGetter(TargetedConditionalEffect::enchanted),
+               effectCodec.fieldOf("effect").forGetter(TargetedConditionalEffect::effect),
+               LootItemCondition.CODEC.optionalFieldOf("requirements").forGetter(TargetedConditionalEffect::requirements)
+            )
+            .apply(i, (target, effect, requirements) -> new TargetedConditionalEffect<>(target, EnchantmentTarget.VICTIM, effect, requirements))
       );
    }
 

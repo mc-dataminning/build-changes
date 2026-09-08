@@ -39,10 +39,10 @@ public abstract class NamedEntityWriteReadFix extends DataFix {
       return this.fixTypeEverywhereTyped(this.name, inputEntityType, outputEntityType, typed -> {
          if (typed.getOptional(choiceFinder).isEmpty()) {
             return ExtraDataFixUtils.cast(outputEntityType, typed);
-         } else {
-            Typed<?> fakeTyped = ExtraDataFixUtils.cast(patchedEntityType, typed);
-            return Util.writeAndReadTypedOrThrow((Typed<A>)fakeTyped, outputEntityType, this::fix);
          }
+
+         Typed<?> fakeTyped = ExtraDataFixUtils.cast(patchedEntityType, typed);
+         return Util.writeAndReadTypedOrThrow((Typed<A>)fakeTyped, outputEntityType, this::fix);
       });
    }
 

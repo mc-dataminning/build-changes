@@ -12,7 +12,7 @@ import org.jspecify.annotations.Nullable;
 public record ContextScoreboardNameProvider(LootContext.EntityTarget target) implements ScoreboardNameProvider {
    public static final MapCodec<ContextScoreboardNameProvider> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(LootContext.EntityTarget.CODEC.fieldOf("target").forGetter(ContextScoreboardNameProvider::target))
-            .apply(i, ContextScoreboardNameProvider::new)
+         .apply(i, ContextScoreboardNameProvider::new)
    );
    public static final Codec<ContextScoreboardNameProvider> INLINE_CODEC = LootContext.EntityTarget.CODEC
       .xmap(ContextScoreboardNameProvider::new, ContextScoreboardNameProvider::target);
@@ -26,9 +26,8 @@ public record ContextScoreboardNameProvider(LootContext.EntityTarget target) imp
       return MAP_CODEC;
    }
 
-   @Nullable
    @Override
-   public ScoreHolder getScoreHolder(final LootContext context) {
+   public @Nullable ScoreHolder getScoreHolder(final LootContext context) {
       return context.getOptional(this.target.contextParam());
    }
 

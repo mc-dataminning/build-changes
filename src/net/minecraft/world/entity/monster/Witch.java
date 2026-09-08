@@ -125,7 +125,7 @@ public class Witch extends Raider implements RangedAttackMob {
                this.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
                PotionContents potion = itemStack.get(DataComponents.POTION_CONTENTS);
                if (itemStack.is(Items.POTION) && potion != null) {
-                  potion.forEachEffect(this::addEffect, itemStack.getOrDefault(DataComponents.POTION_DURATION_SCALE, Float.valueOf(1.0F)));
+                  potion.forEachEffect(this::addEffect, itemStack.getOrDefault(DataComponents.POTION_DURATION_SCALE, 1.0F));
                }
 
                this.gameEvent(GameEvent.DRINK);
@@ -186,7 +186,7 @@ public class Witch extends Raider implements RangedAttackMob {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 15) {
          for (int i = 0; i < this.random.nextInt(35) + 10; i++) {
             this.level()

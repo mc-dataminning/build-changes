@@ -9,7 +9,6 @@ import com.mojang.datafixers.util.Either;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.function.Predicate;
@@ -171,8 +170,7 @@ public abstract class Player extends Avatar implements ContainerUser {
    private final ItemCooldowns cooldowns = this.createItemCooldowns();
    private Optional<GlobalPos> lastDeathLocation = Optional.empty();
    protected final List<Identifier> postEffects = new ArrayList<>();
-   @Nullable
-   public FishingHook fishing;
+   public @Nullable FishingHook fishing;
    protected float hurtDir;
 
    public Player(final Level level, final GameProfile gameProfile) {
@@ -192,14 +190,18 @@ public abstract class Player extends Avatar implements ContainerUser {
    public boolean blockActionRestricted(final Level level, final BlockPos pos, final GameType gameType) {
       if (!gameType.isBlockPlacingRestricted()) {
          return false;
-      } else if (gameType == GameType.SPECTATOR) {
-         return true;
-      } else if (this.mayBuild()) {
-         return false;
-      } else {
-         ItemStack itemStack = this.getMainHandItem();
-         return itemStack.isEmpty() || !itemStack.canBreakBlockInAdventureMode(new BlockInWorld(level, pos, false));
       }
+
+      if (gameType == GameType.SPECTATOR) {
+         return true;
+      }
+
+      if (this.mayBuild()) {
+         return false;
+      }
+
+      ItemStack itemStack = this.getMainHandItem();
+      return itemStack.isEmpty() || !itemStack.canBreakBlockInAdventureMode(new BlockInWorld(level, pos, false));
    }
 
    public static AttributeSupplier.Builder createAttributes() {
@@ -410,7 +412,7 @@ public abstract class Player extends Avatar implements ContainerUser {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 9) {
          this.completeUsingItem();
       } else if (id == 23) {
@@ -531,9 +533,9 @@ public abstract class Player extends Avatar implements ContainerUser {
 
       if (source != null) {
          this.setDeltaMovement(
-            (double)(-Mth.cos((double)((this.getHurtDir() + this.getYRot()) * (float) (Math.PI / 180.0))) * 0.1F),
+            -Mth.cos((this.getHurtDir() + this.getYRot()) * (float) (Math.PI / 180.0)) * 0.1F,
             0.1F,
-            (double)(-Mth.sin((double)((this.getHurtDir() + this.getYRot()) * (float) (Math.PI / 180.0))) * 0.1F)
+            -Mth.sin((this.getHurtDir() + this.getYRot()) * (float) (Math.PI / 180.0)) * 0.1F
          );
       } else {
          this.setDeltaMovement(0.0, 0.1, 0.0);
@@ -585,12 +587,12 @@ public abstract class Player extends Avatar implements ContainerUser {
       }
 
       if (MobEffectUtil.hasDigSpeed(this)) {
-         speed *= 1.0F + (float)(MobEffectUtil.getDigSpeedAmplification(this) + 1) * 0.2F;
+         speed *= 1.0F + (MobEffectUtil.getDigSpeedAmplification(this) + 1) * 0.2F;
       }
 
       if (this.hasEffect(MobEffects.MINING_FATIGUE)) {
          int amplifier = this.getEffect(MobEffects.MINING_FATIGUE).getAmplifier();
-         float scale = (float)Math.pow(0.3, (double)(amplifier + 1));
+         float scale = (float)Math.pow(0.3, amplifier + 1);
          speed *= scale;
       }
 
@@ -628,7 +630,7 @@ public abstract class Player extends Avatar implements ContainerUser {
       this.setScore(input.getIntOr("Score", 0));
       this.foodData.readAdditionalSaveData(input);
       input.<Abilities.Packed>read("abilities", Abilities.Packed.CODEC).ifPresent(this.abilities::apply);
-      this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue((double)this.abilities.getWalkingSpeed());
+      this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(this.abilities.getWalkingSpeed());
       this.enderChestInventory.fromSlots(input.listOrEmpty("EnderItems", ItemStackWithSlot.CODEC));
       this.setLastDeathLocation(input.read("LastDeathLocation", GlobalPos.CODEC));
    }
@@ -670,31 +672,33 @@ public abstract class Player extends Avatar implements ContainerUser {
    public boolean hurtServer(final ServerLevel level, final DamageSource source, float damage) {
       if (this.isInvulnerableTo(level, source)) {
          return false;
-      } else if (this.abilities.invulnerable && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
+      }
+
+      if (this.abilities.invulnerable && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
          return false;
-      } else {
-         this.noActionTime = 0;
-         if (this.isDeadOrDying()) {
-            return false;
-         } else {
-            this.removeEntitiesOnShoulder();
-            if (source.scalesWithDifficulty()) {
-               if (level.getDifficulty() == Difficulty.PEACEFUL) {
-                  damage = 0.0F;
-               }
+      }
 
-               if (level.getDifficulty() == Difficulty.EASY) {
-                  damage = Math.min(damage / 2.0F + 1.0F, damage);
-               }
+      this.noActionTime = 0;
+      if (this.isDeadOrDying()) {
+         return false;
+      }
 
-               if (level.getDifficulty() == Difficulty.HARD) {
-                  damage = damage * 3.0F / 2.0F;
-               }
-            }
+      this.removeEntitiesOnShoulder();
+      if (source.scalesWithDifficulty()) {
+         if (level.getDifficulty() == Difficulty.PEACEFUL) {
+            damage = 0.0F;
+         }
 
-            return damage == 0.0F ? false : super.hurtServer(level, source, damage);
+         if (level.getDifficulty() == Difficulty.EASY) {
+            damage = Math.min(damage / 2.0F + 1.0F, damage);
+         }
+
+         if (level.getDifficulty() == Difficulty.HARD) {
+            damage = damage * 3.0F / 2.0F;
          }
       }
+
+      return damage == 0.0F ? false : super.hurtServer(level, source, damage);
    }
 
    @Override
@@ -719,12 +723,12 @@ public abstract class Player extends Avatar implements ContainerUser {
 
    @Override
    protected void hurtArmor(final DamageSource damageSource, final float damage) {
-      this.doHurtEquipment(damageSource, damage, new EquipmentSlot[]{EquipmentSlot.FEET, EquipmentSlot.LEGS, EquipmentSlot.CHEST, EquipmentSlot.HEAD});
+      this.doHurtEquipment(damageSource, damage, EquipmentSlot.FEET, EquipmentSlot.LEGS, EquipmentSlot.CHEST, EquipmentSlot.HEAD);
    }
 
    @Override
    protected void hurtHelmet(final DamageSource damageSource, final float damage) {
-      this.doHurtEquipment(damageSource, damage, new EquipmentSlot[]{EquipmentSlot.HEAD});
+      this.doHurtEquipment(damageSource, damage, EquipmentSlot.HEAD);
    }
 
    @Override
@@ -732,19 +736,20 @@ public abstract class Player extends Avatar implements ContainerUser {
       if (!this.isInvulnerableTo(level, source)) {
          dmg = this.getDamageAfterArmorAbsorb(source, dmg);
          dmg = this.getDamageAfterMagicAbsorb(source, dmg);
-         float var8 = Math.max(dmg - this.getAbsorptionAmount(), 0.0F);
-         this.setAbsorptionAmount(this.getAbsorptionAmount() - (dmg - var8));
-         float absorbedDamage = dmg - var8;
+         float originalDamage = dmg;
+         dmg = Math.max(dmg - this.getAbsorptionAmount(), 0.0F);
+         this.setAbsorptionAmount(this.getAbsorptionAmount() - (originalDamage - dmg));
+         float absorbedDamage = originalDamage - dmg;
          if (absorbedDamage > 0.0F && absorbedDamage < 3.4028235E37F) {
             this.awardStat(Stats.DAMAGE_ABSORBED, Math.round(absorbedDamage * 10.0F));
          }
 
-         if (var8 != 0.0F) {
+         if (dmg != 0.0F) {
             this.causeFoodExhaustion(source.getFoodExhaustion());
-            this.getCombatTracker().recordDamage(source, var8);
-            this.setHealth(this.getHealth() - var8);
-            if (var8 < 3.4028235E37F) {
-               this.awardStat(Stats.DAMAGE_TAKEN, Math.round(var8 * 10.0F));
+            this.getCombatTracker().recordDamage(source, dmg);
+            this.setHealth(this.getHealth() - dmg);
+            if (dmg < 3.4028235E37F) {
+               this.awardStat(Stats.DAMAGE_TAKEN, Math.round(dmg * 10.0F));
             }
 
             this.gameEvent(GameEvent.ENTITY_DAMAGE);
@@ -783,7 +788,7 @@ public abstract class Player extends Avatar implements ContainerUser {
    public void openNautilusInventory(final AbstractNautilus nautilus, final Container container) {
    }
 
-   public OptionalInt openMenu(@Nullable final MenuProvider provider) {
+   public OptionalInt openMenu(final @Nullable MenuProvider provider) {
       return OptionalInt.empty();
    }
 
@@ -870,16 +875,18 @@ public abstract class Player extends Avatar implements ContainerUser {
          double deltaZ = delta.z;
          double step = 0.05;
          double stepX = Math.signum(deltaX) * 0.05;
+         double stepZ = Math.signum(deltaZ) * 0.05;
 
-         double stepZ;
-         for (stepZ = Math.signum(deltaZ) * 0.05; deltaX != 0.0 && this.canFallAtLeast(deltaX, 0.0, (double)maxDownStep); deltaX -= stepX) {
+         while (deltaX != 0.0 && this.canFallAtLeast(deltaX, 0.0, maxDownStep)) {
             if (Math.abs(deltaX) <= 0.05) {
                deltaX = 0.0;
                break;
             }
+
+            deltaX -= stepX;
          }
 
-         while (deltaZ != 0.0 && this.canFallAtLeast(0.0, deltaZ, (double)maxDownStep)) {
+         while (deltaZ != 0.0 && this.canFallAtLeast(0.0, deltaZ, maxDownStep)) {
             if (Math.abs(deltaZ) <= 0.05) {
                deltaZ = 0.0;
                break;
@@ -888,7 +895,7 @@ public abstract class Player extends Avatar implements ContainerUser {
             deltaZ -= stepZ;
          }
 
-         while (deltaX != 0.0 && deltaZ != 0.0 && this.canFallAtLeast(deltaX, deltaZ, (double)maxDownStep)) {
+         while (deltaX != 0.0 && deltaZ != 0.0 && this.canFallAtLeast(deltaX, deltaZ, maxDownStep)) {
             if (Math.abs(deltaX) <= 0.05) {
                deltaX = 0.0;
             } else {
@@ -909,7 +916,7 @@ public abstract class Player extends Avatar implements ContainerUser {
    }
 
    private boolean isAboveGround(final float maxDownStep) {
-      return this.onGround() || this.fallDistance < (double)maxDownStep && !this.canFallAtLeast(0.0, 0.0, (double)maxDownStep - this.fallDistance);
+      return this.onGround() || this.fallDistance < maxDownStep && !this.canFallAtLeast(0.0, 0.0, maxDownStep - this.fallDistance);
    }
 
    private boolean canFallAtLeast(final double deltaX, final double deltaZ, final double minHeight) {
@@ -1004,9 +1011,9 @@ public abstract class Player extends Avatar implements ContainerUser {
          && projectile.deflect(ProjectileDeflection.AIM_DEFLECT, this, EntityReference.of(this), true, 1.0)) {
          this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.PLAYER_ATTACK_NODAMAGE, this.getSoundSource());
          return true;
+      } else {
+         return false;
       }
-
-      return false;
    }
 
    private boolean canCriticalAttack(final Entity entity) {
@@ -1023,7 +1030,7 @@ public abstract class Player extends Avatar implements ContainerUser {
    private boolean isSweepAttack(final boolean fullStrengthAttack, final boolean criticalAttack, final boolean knockbackAttack) {
       if (fullStrengthAttack && !criticalAttack && !knockbackAttack && this.onGround()) {
          double approximateSpeedSq = this.getKnownMovement().horizontalDistanceSqr();
-         double maxSpeedForSweepAttack = (double)this.getSpeed() * 2.5;
+         double maxSpeedForSweepAttack = this.getSpeed() * 2.5;
          if (approximateSpeedSq < Mth.square(maxSpeedForSweepAttack)) {
             return this.getItemInHand(InteractionHand.MAIN_HAND).is(ItemTags.SWORDS);
          }
@@ -1059,7 +1066,7 @@ public abstract class Player extends Avatar implements ContainerUser {
          float actualDamage = oldLivingEntityHealth - livingEntity.getHealth();
          this.awardStat(Stats.DAMAGE_DEALT, Math.round(actualDamage * 10.0F));
          if (this.level() instanceof ServerLevel && actualDamage > 2.0F) {
-            int count = (int)((double)actualDamage * 0.5);
+            int count = (int)(actualDamage * 0.5);
             ((ServerLevel)this.level())
                .sendParticles(ParticleTypes.DAMAGE_INDICATOR, entity.getX(), entity.getY(0.5), entity.getZ(), count, 0.1, 0.0, 0.1, 0.2);
          }
@@ -1110,18 +1117,18 @@ public abstract class Player extends Avatar implements ContainerUser {
       if (knockbackAmount > 0.0F) {
          if (entity instanceof LivingEntity livingTarget) {
             livingTarget.knockback(
-               (double)knockbackAmount,
-               (double)Mth.sin((double)(this.getYRot() * (float) (Math.PI / 180.0))),
-               (double)(-Mth.cos((double)(this.getYRot() * (float) (Math.PI / 180.0)))),
+               knockbackAmount,
+               Mth.sin(this.getYRot() * (float) (Math.PI / 180.0)),
+               -Mth.cos(this.getYRot() * (float) (Math.PI / 180.0)),
                damageSource,
                damage,
                comesFromEffect
             );
          } else {
             entity.push(
-               (double)(-Mth.sin((double)(this.getYRot() * (float) (Math.PI / 180.0))) * knockbackAmount),
+               -Mth.sin(this.getYRot() * (float) (Math.PI / 180.0)) * knockbackAmount,
                0.1,
-               (double)(Mth.cos((double)(this.getYRot() * (float) (Math.PI / 180.0))) * knockbackAmount)
+               Mth.cos(this.getYRot() * (float) (Math.PI / 180.0)) * knockbackAmount
             );
          }
 
@@ -1147,32 +1154,27 @@ public abstract class Player extends Avatar implements ContainerUser {
          float var12 = 1.0F + (float)this.getAttributeValue(Attributes.SWEEPING_DAMAGE_RATIO) * baseDamage;
 
          for (LivingEntity nearby : this.level().getEntitiesOfClass(LivingEntity.class, entity.getBoundingBox().inflate(1.0, 0.25, 1.0))) {
-            if (nearby != this && nearby != entity && !this.isAlliedTo(nearby)) {
-               if (nearby instanceof ArmorStand) {
-                  ArmorStand armorStand = (ArmorStand)nearby;
-                  if (armorStand.isMarker()) {
-                     continue;
-                  }
-               }
-
-               if (this.distanceToSqr(nearby) < 9.0) {
-                  float enchantedDamage = this.getEnchantedDamage(nearby, var12, damageSource) * attackStrengthScale;
-                  if (nearby.hurtServer(serverLevel, damageSource, enchantedDamage)) {
-                     nearby.knockback(
-                        0.4F,
-                        (double)Mth.sin((double)(this.getYRot() * (float) (Math.PI / 180.0))),
-                        (double)(-Mth.cos((double)(this.getYRot() * (float) (Math.PI / 180.0)))),
-                        damageSource,
-                        enchantedDamage
-                     );
-                     EnchantmentHelper.doPostAttackEffects(serverLevel, nearby, damageSource);
-                  }
+            if (nearby != this
+               && nearby != entity
+               && !this.isAlliedTo(nearby)
+               && !(nearby instanceof ArmorStand armorStand && armorStand.isMarker())
+               && this.distanceToSqr(nearby) < 9.0) {
+               float enchantedDamage = this.getEnchantedDamage(nearby, var12, damageSource) * attackStrengthScale;
+               if (nearby.hurtServer(serverLevel, damageSource, enchantedDamage)) {
+                  nearby.knockback(
+                     0.4F,
+                     Mth.sin(this.getYRot() * (float) (Math.PI / 180.0)),
+                     -Mth.cos(this.getYRot() * (float) (Math.PI / 180.0)),
+                     damageSource,
+                     enchantedDamage
+                  );
+                  EnchantmentHelper.doPostAttackEffects(serverLevel, nearby, damageSource);
                }
             }
          }
 
-         double dx = (double)(-Mth.sin((double)(this.getYRot() * (float) (Math.PI / 180.0))));
-         double dz = (double)Mth.cos((double)(this.getYRot() * (float) (Math.PI / 180.0)));
+         double dx = -Mth.sin(this.getYRot() * (float) (Math.PI / 180.0));
+         double dz = Mth.cos(this.getYRot() * (float) (Math.PI / 180.0));
          serverLevel.sendParticles(ParticleTypes.SWEEP_ATTACK, this.getX() + dx, this.getY(0.5), this.getZ() + dz, 0, dx, 0.0, dz, 0.0);
       }
    }
@@ -1200,49 +1202,49 @@ public abstract class Player extends Avatar implements ContainerUser {
    ) {
       if (this.cannotAttack(target)) {
          return false;
-      } else {
-         ItemStack weaponItem = this.getItemBySlot(slot);
-         DamageSource damageSource = this.createAttackSource(weaponItem);
-         float magicBoost = this.getEnchantedDamage(target, baseDamage, damageSource) - baseDamage;
-         if (!this.isUsingItem() || this.getUsedItemHand().asEquipmentSlot() != slot) {
-            magicBoost *= this.getAttackStrengthScale(0.5F);
-            baseDamage *= this.baseDamageScaleFactor();
-         }
-
-         if (dealsKnockback && this.deflectProjectile(target)) {
-            return true;
-         } else {
-            float totalDamage = dealsDamage ? baseDamage + magicBoost : 0.0F;
-            float oldLivingEntityHealth = 0.0F;
-            if (target instanceof LivingEntity livingTarget) {
-               oldLivingEntityHealth = livingTarget.getHealth();
-            }
-
-            Vec3 oldMovement = target.getDeltaMovement();
-            boolean wasHurt = dealsDamage && target.hurtOrSimulate(damageSource, totalDamage);
-            if (dealsKnockback) {
-               this.causeExtraKnockback(target, 0.4F, oldMovement, damageSource, totalDamage, false);
-               this.causeExtraKnockback(target, this.getKnockback(target, damageSource), oldMovement, damageSource, totalDamage, true);
-            }
-
-            boolean dismounted = false;
-            if (dismounts && target.isPassenger() && !target.is(EntityTypeTags.CANNOT_BE_DISMOUNTED_BY_ITEM_USAGE)) {
-               dismounted = true;
-               target.stopRiding();
-            }
-
-            if (!wasHurt && !dealsKnockback && !dismounted) {
-               return false;
-            } else {
-               this.attackVisualEffects(target, false, false, dealsDamage, true, magicBoost);
-               this.setLastHurtMob(target);
-               this.itemAttackInteraction(target, weaponItem, damageSource, wasHurt);
-               this.damageStatsAndHearts(target, oldLivingEntityHealth);
-               this.causeFoodExhaustion(0.1F);
-               return true;
-            }
-         }
       }
+
+      ItemStack weaponItem = this.getItemBySlot(slot);
+      DamageSource damageSource = this.createAttackSource(weaponItem);
+      float magicBoost = this.getEnchantedDamage(target, baseDamage, damageSource) - baseDamage;
+      if (!this.isUsingItem() || this.getUsedItemHand().asEquipmentSlot() != slot) {
+         magicBoost *= this.getAttackStrengthScale(0.5F);
+         baseDamage *= this.baseDamageScaleFactor();
+      }
+
+      if (dealsKnockback && this.deflectProjectile(target)) {
+         return true;
+      }
+
+      float totalDamage = dealsDamage ? baseDamage + magicBoost : 0.0F;
+      float oldLivingEntityHealth = 0.0F;
+      if (target instanceof LivingEntity livingTarget) {
+         oldLivingEntityHealth = livingTarget.getHealth();
+      }
+
+      Vec3 oldMovement = target.getDeltaMovement();
+      boolean wasHurt = dealsDamage && target.hurtOrSimulate(damageSource, totalDamage);
+      if (dealsKnockback) {
+         this.causeExtraKnockback(target, 0.4F, oldMovement, damageSource, totalDamage, false);
+         this.causeExtraKnockback(target, this.getKnockback(target, damageSource), oldMovement, damageSource, totalDamage, true);
+      }
+
+      boolean dismounted = false;
+      if (dismounts && target.isPassenger() && !target.is(EntityTypeTags.CANNOT_BE_DISMOUNTED_BY_ITEM_USAGE)) {
+         dismounted = true;
+         target.stopRiding();
+      }
+
+      if (!wasHurt && !dealsKnockback && !dismounted) {
+         return false;
+      }
+
+      this.attackVisualEffects(target, false, false, dealsDamage, true, magicBoost);
+      this.setLastHurtMob(target);
+      this.itemAttackInteraction(target, weaponItem, damageSource, wasHurt);
+      this.damageStatsAndHearts(target, oldLivingEntityHealth);
+      this.causeFoodExhaustion(0.1F);
+      return true;
    }
 
    public void magicCrit(final Entity entity) {
@@ -1322,10 +1324,10 @@ public abstract class Player extends Avatar implements ContainerUser {
    ) {
       if (!this.startSleeping(pos)) {
          return Either.left(Player.BedSleepingProblem.OTHER_PROBLEM);
-      } else {
-         this.sleepCounter = 0;
-         return Either.right(Unit.INSTANCE);
       }
+
+      this.sleepCounter = 0;
+      return Either.right(Unit.INSTANCE);
    }
 
    public void stopSleepInBed(final boolean forcefulWakeUp, final boolean updateLevelList) {
@@ -1434,13 +1436,13 @@ public abstract class Player extends Avatar implements ContainerUser {
    public boolean causeFallDamage(final double fallDistance, final float damageModifier, final DamageSource damageSource) {
       if (this.abilities.mayfly) {
          return false;
-      } else {
-         if (fallDistance >= 2.0) {
-            this.awardStat(Stats.FALL_ONE_CM, (int)Math.round(fallDistance * 100.0));
-         }
-
-         return super.causeFallDamage(fallDistance, damageModifier, damageSource);
       }
+
+      if (fallDistance >= 2.0) {
+         this.awardStat(Stats.FALL_ONE_CM, (int)Math.round(fallDistance * 100.0));
+      }
+
+      return super.causeFallDamage(fallDistance, damageModifier, damageSource);
    }
 
    public boolean tryToStartFallFlying() {
@@ -1505,14 +1507,14 @@ public abstract class Player extends Avatar implements ContainerUser {
 
    public void giveExperiencePoints(final int i) {
       this.increaseScore(i);
-      this.experienceProgress = this.experienceProgress + (float)i / (float)this.getXpNeededForNextLevel();
+      this.experienceProgress = this.experienceProgress + (float)i / this.getXpNeededForNextLevel();
       this.totalExperience = Mth.clamp(this.totalExperience + i, 0, Integer.MAX_VALUE);
 
       while (this.experienceProgress < 0.0F) {
-         float remaining = this.experienceProgress * (float)this.getXpNeededForNextLevel();
+         float remaining = this.experienceProgress * this.getXpNeededForNextLevel();
          if (this.experienceLevel > 0) {
             this.giveExperienceLevels(-1);
-            this.experienceProgress = 1.0F + remaining / (float)this.getXpNeededForNextLevel();
+            this.experienceProgress = 1.0F + remaining / this.getXpNeededForNextLevel();
          } else {
             this.giveExperienceLevels(-1);
             this.experienceProgress = 0.0F;
@@ -1520,9 +1522,9 @@ public abstract class Player extends Avatar implements ContainerUser {
       }
 
       while (this.experienceProgress >= 1.0F) {
-         this.experienceProgress = (this.experienceProgress - 1.0F) * (float)this.getXpNeededForNextLevel();
+         this.experienceProgress = (this.experienceProgress - 1.0F) * this.getXpNeededForNextLevel();
          this.giveExperienceLevels(1);
-         this.experienceProgress = this.experienceProgress / (float)this.getXpNeededForNextLevel();
+         this.experienceProgress = this.experienceProgress / this.getXpNeededForNextLevel();
       }
    }
 
@@ -1549,8 +1551,8 @@ public abstract class Player extends Avatar implements ContainerUser {
          this.totalExperience = 0;
       }
 
-      if (amount > 0 && this.experienceLevel % 5 == 0 && (float)this.lastLevelUpTime < (float)this.tickCount - 100.0F) {
-         float vol = this.experienceLevel > 30 ? 1.0F : (float)this.experienceLevel / 30.0F;
+      if (amount > 0 && this.experienceLevel % 5 == 0 && this.lastLevelUpTime < this.tickCount - 100.0F) {
+         float vol = this.experienceLevel > 30 ? 1.0F : this.experienceLevel / 30.0F;
          this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.PLAYER_LEVELUP, this.getSoundSource(), vol * 0.75F, 1.0F);
          this.lastLevelUpTime = this.tickCount;
       }
@@ -1595,11 +1597,11 @@ public abstract class Player extends Avatar implements ContainerUser {
    public boolean mayUseItemAt(final BlockPos pos, final Direction direction, final ItemStack itemStack) {
       if (this.abilities.mayBuild) {
          return true;
-      } else {
-         BlockPos target = pos.relative(direction.getOpposite());
-         BlockInWorld block = new BlockInWorld(this.level(), target, false);
-         return itemStack.canPlaceOnBlockInAdventureMode(block);
       }
+
+      BlockPos target = pos.relative(direction.getOpposite());
+      BlockInWorld block = new BlockInWorld(this.level(), target, false);
+      return itemStack.canPlaceOnBlockInAdventureMode(block);
    }
 
    @Override
@@ -1648,8 +1650,7 @@ public abstract class Player extends Avatar implements ContainerUser {
       return this.inventory.add(itemStack);
    }
 
-   @Nullable
-   public abstract GameType gameMode();
+   public abstract @Nullable GameType gameMode();
 
    @Override
    public boolean isSpectator() {
@@ -1703,15 +1704,10 @@ public abstract class Player extends Avatar implements ContainerUser {
       return this.getEntityData().get(DATA_PLAYER_ABSORPTION_ID);
    }
 
-   @Nullable
    @Override
-   public SlotAccess getSlot(final int slot) {
+   public @Nullable SlotAccess getSlot(final int slot) {
       if (slot == 499) {
          return new SlotAccess() {
-            {
-               Objects.requireNonNull(Player.this);
-            }
-
             @Override
             public ItemStack get() {
                return Player.this.containerMenu.getCarried();
@@ -1723,35 +1719,31 @@ public abstract class Player extends Avatar implements ContainerUser {
                return true;
             }
          };
-      } else {
-         final int craftSlot = slot - 500;
-         if (craftSlot >= 0 && craftSlot < 4) {
-            return new SlotAccess() {
-               {
-                  Objects.requireNonNull(Player.this);
-               }
-
-               @Override
-               public ItemStack get() {
-                  return Player.this.inventoryMenu.getCraftSlots().getItem(craftSlot);
-               }
-
-               @Override
-               public boolean set(final ItemStack itemStack) {
-                  Player.this.inventoryMenu.getCraftSlots().setItem(craftSlot, itemStack);
-                  Player.this.inventoryMenu.slotsChanged(Player.this.inventory);
-                  return true;
-               }
-            };
-         } else if (slot >= 0 && slot < this.inventory.getNonEquipmentItems().size()) {
-            return this.inventory.getSlot(slot);
-         } else {
-            int enderSlot = slot - 200;
-            return enderSlot >= 0 && enderSlot < this.enderChestInventory.getContainerSize()
-               ? this.enderChestInventory.getSlot(enderSlot)
-               : super.getSlot(slot);
-         }
       }
+
+      final int craftSlot = slot - 500;
+      if (craftSlot >= 0 && craftSlot < 4) {
+         return new SlotAccess() {
+            @Override
+            public ItemStack get() {
+               return Player.this.inventoryMenu.getCraftSlots().getItem(craftSlot);
+            }
+
+            @Override
+            public boolean set(final ItemStack itemStack) {
+               Player.this.inventoryMenu.getCraftSlots().setItem(craftSlot, itemStack);
+               Player.this.inventoryMenu.slotsChanged(Player.this.inventory);
+               return true;
+            }
+         };
+      }
+
+      if (slot >= 0 && slot < this.inventory.getNonEquipmentItems().size()) {
+         return this.inventory.getSlot(slot);
+      }
+
+      int enderSlot = slot - 200;
+      return enderSlot >= 0 && enderSlot < this.enderChestInventory.getContainerSize() ? this.enderChestInventory.getSlot(enderSlot) : super.getSlot(slot);
    }
 
    public boolean isReducedDebugInfo() {
@@ -1807,17 +1799,17 @@ public abstract class Player extends Avatar implements ContainerUser {
    }
 
    public boolean cannotAttackWithItem(final ItemStack itemStack, final int tolerance) {
-      float requiredStrength = itemStack.getOrDefault(DataComponents.MINIMUM_ATTACK_CHARGE, Float.valueOf(0.0F));
-      float optimisticStrength = (float)(this.attackStrengthTicker + tolerance) / this.getCurrentItemAttackStrengthDelay();
+      float requiredStrength = itemStack.getOrDefault(DataComponents.MINIMUM_ATTACK_CHARGE, 0.0F);
+      float optimisticStrength = (this.attackStrengthTicker + tolerance) / this.getCurrentItemAttackStrengthDelay();
       return requiredStrength > 0.0F && optimisticStrength < requiredStrength;
    }
 
    public float getAttackStrengthScale(final float a) {
-      return Mth.clamp(((float)this.attackStrengthTicker + a) / this.getCurrentItemAttackStrengthDelay(), 0.0F, 1.0F);
+      return Mth.clamp((this.attackStrengthTicker + a) / this.getCurrentItemAttackStrengthDelay(), 0.0F, 1.0F);
    }
 
    public float getItemSwapScale(final float a) {
-      return Mth.clamp(((float)this.itemSwapTicker + a) / this.getCurrentItemAttackStrengthDelay(), 0.0F, 1.0F);
+      return Mth.clamp((this.itemSwapTicker + a) / this.getCurrentItemAttackStrengthDelay(), 0.0F, 1.0F);
    }
 
    public void resetAttackStrengthTicker() {
@@ -1866,24 +1858,24 @@ public abstract class Player extends Avatar implements ContainerUser {
    public ItemStack getProjectile(final ItemStack heldWeapon) {
       if (!(heldWeapon.getItem() instanceof ProjectileWeaponItem)) {
          return ItemStack.EMPTY;
-      } else {
-         Predicate<ItemStack> supportedProjectiles = ((ProjectileWeaponItem)heldWeapon.getItem()).getSupportedHeldProjectiles();
-         ItemStack heldProjectile = ProjectileWeaponItem.getHeldProjectile(this, supportedProjectiles);
-         if (!heldProjectile.isEmpty()) {
-            return heldProjectile;
-         } else {
-            supportedProjectiles = ((ProjectileWeaponItem)heldWeapon.getItem()).getAllSupportedProjectiles();
+      }
 
-            for (int i = 0; i < this.inventory.getContainerSize(); i++) {
-               ItemStack itemStack = this.inventory.getItem(i);
-               if (supportedProjectiles.test(itemStack)) {
-                  return itemStack;
-               }
-            }
+      Predicate<ItemStack> supportedProjectiles = ((ProjectileWeaponItem)heldWeapon.getItem()).getSupportedHeldProjectiles();
+      ItemStack heldProjectile = ProjectileWeaponItem.getHeldProjectile(this, supportedProjectiles);
+      if (!heldProjectile.isEmpty()) {
+         return heldProjectile;
+      }
 
-            return this.hasInfiniteMaterials() ? new ItemStack(Items.ARROW) : ItemStack.EMPTY;
+      supportedProjectiles = ((ProjectileWeaponItem)heldWeapon.getItem()).getAllSupportedProjectiles();
+
+      for (int i = 0; i < this.inventory.getContainerSize(); i++) {
+         ItemStack itemStack = this.inventory.getItem(i);
+         if (supportedProjectiles.test(itemStack)) {
+            return itemStack;
          }
       }
+
+      return this.hasInfiniteMaterials() ? new ItemStack(Items.ARROW) : ItemStack.EMPTY;
    }
 
    @Override
@@ -1906,9 +1898,11 @@ public abstract class Player extends Avatar implements ContainerUser {
          }
 
          return this.getPosition(partialTickTime).add(new Vec3(xOff, -0.11, 0.85).zRot(-zRot).xRot(-xRot).yRot(-yRot));
-      } else if (this.isVisuallySwimming()) {
-         return this.getPosition(partialTickTime).add(new Vec3(xOff, 0.2, -0.15).xRot(-xRot).yRot(-yRot));
       } else {
+         if (this.isVisuallySwimming()) {
+            return this.getPosition(partialTickTime).add(new Vec3(xOff, 0.2, -0.15).xRot(-xRot).yRot(-yRot));
+         }
+
          double yOff = this.getBoundingBox().getYsize() - 1.0;
          double zOff = this.isCrouching() ? -0.2 : 0.07;
          return this.getPosition(partialTickTime).add(new Vec3(xOff, yOff, zOff).yRot(-yRot));
@@ -2044,7 +2038,7 @@ public abstract class Player extends Avatar implements ContainerUser {
       return this.damageSources().playerAttack(this);
    }
 
-   public static record BedSleepingProblem(@Nullable Component message) {
+   public record BedSleepingProblem(@Nullable Component message) {
       public static final Player.BedSleepingProblem TOO_FAR_AWAY = new Player.BedSleepingProblem(Component.translatable("block.minecraft.bed.too_far_away"));
       public static final Player.BedSleepingProblem OBSTRUCTED = new Player.BedSleepingProblem(Component.translatable("block.minecraft.bed.obstructed"));
       public static final Player.BedSleepingProblem OTHER_PROBLEM = new Player.BedSleepingProblem(null);

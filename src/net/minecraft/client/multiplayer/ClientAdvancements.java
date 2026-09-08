@@ -26,10 +26,8 @@ public class ClientAdvancements {
    private final WorldSessionTelemetryManager telemetryManager;
    private final AdvancementTree tree = new AdvancementTree();
    private final Map<AdvancementHolder, AdvancementProgress> progress = new Object2ObjectOpenHashMap();
-   @Nullable
-   private ClientAdvancements.Listener listener;
-   @Nullable
-   private AdvancementHolder selectedTab;
+   private ClientAdvancements.@Nullable Listener listener;
+   private @Nullable AdvancementHolder selectedTab;
 
    public ClientAdvancements(final Minecraft minecraft, final WorldSessionTelemetryManager telemetryManager) {
       this.minecraft = minecraft;
@@ -89,7 +87,7 @@ public class ClientAdvancements {
       return this.tree;
    }
 
-   public void setSelectedTab(@Nullable final AdvancementHolder selectedTab, final boolean tellServer) {
+   public void setSelectedTab(final @Nullable AdvancementHolder selectedTab, final boolean tellServer) {
       ClientPacketListener connection = this.minecraft.getConnection();
       if (connection != null && selectedTab != null && tellServer) {
          connection.send(ServerboundSeenAdvancementsPacket.openedTab(selectedTab));
@@ -103,7 +101,7 @@ public class ClientAdvancements {
       }
    }
 
-   public void setListener(@Nullable final ClientAdvancements.Listener listener) {
+   public void setListener(final ClientAdvancements.@Nullable Listener listener) {
       this.listener = listener;
       if (listener != null) {
          listener.onAdvancementsUpdated();
@@ -111,8 +109,7 @@ public class ClientAdvancements {
       }
    }
 
-   @Nullable
-   public AdvancementHolder get(final Identifier id) {
+   public @Nullable AdvancementHolder get(final Identifier id) {
       AdvancementNode node = this.tree.get(id);
       return node != null ? node.holder() : null;
    }

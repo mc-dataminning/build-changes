@@ -28,17 +28,15 @@ public record AmbientLeavesBlockSoundPlayer(
    private static final int NEARBY_SAME_LEAVES_REQUIRED = 3;
    public static final Codec<AmbientLeavesBlockSoundPlayer> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               SoundEvent.CODEC.optionalFieldOf("ambient_sound").forGetter(AmbientLeavesBlockSoundPlayer::ambientSound),
-               ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("chance", 300).forGetter(AmbientLeavesBlockSoundPlayer::chance),
-               TagKey.codec(Registries.BLOCK).optionalFieldOf("satisfying_blocks").forGetter(AmbientLeavesBlockSoundPlayer::satisfyingBlocks),
-               ExtraCodecs.NON_NEGATIVE_INT
-                  .optionalFieldOf("nearby_satisfying_blocks_required", 1)
-                  .forGetter(AmbientLeavesBlockSoundPlayer::nearbySatisfyingBlocksRequired),
-               ExtraCodecs.NON_NEGATIVE_INT
-                  .optionalFieldOf("nearby_same_leaves_required", 3)
-                  .forGetter(AmbientLeavesBlockSoundPlayer::nearbySameLeavesRequired)
-            )
-            .apply(i, AmbientLeavesBlockSoundPlayer::new)
+            SoundEvent.CODEC.optionalFieldOf("ambient_sound").forGetter(AmbientLeavesBlockSoundPlayer::ambientSound),
+            ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("chance", 300).forGetter(AmbientLeavesBlockSoundPlayer::chance),
+            TagKey.codec(Registries.BLOCK).optionalFieldOf("satisfying_blocks").forGetter(AmbientLeavesBlockSoundPlayer::satisfyingBlocks),
+            ExtraCodecs.NON_NEGATIVE_INT
+               .optionalFieldOf("nearby_satisfying_blocks_required", 1)
+               .forGetter(AmbientLeavesBlockSoundPlayer::nearbySatisfyingBlocksRequired),
+            ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("nearby_same_leaves_required", 3).forGetter(AmbientLeavesBlockSoundPlayer::nearbySameLeavesRequired)
+         )
+         .apply(i, AmbientLeavesBlockSoundPlayer::new)
    );
    private static final AmbientLeavesBlockSoundPlayer NO_SOUND = new AmbientLeavesBlockSoundPlayer(Optional.empty(), 0, Optional.empty(), 0, 0);
 
@@ -68,9 +66,7 @@ public record AmbientLeavesBlockSoundPlayer(
             }
 
             if (nearbyLogs == this.nearbySatisfyingBlocksRequired && nearbyLeaves == this.nearbySameLeavesRequired) {
-               level.playLocalSound(
-                  (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), this.ambientSound.get().value(), SoundSource.AMBIENT, 1.0F, 1.0F, false
-               );
+               level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), this.ambientSound.get().value(), SoundSource.AMBIENT, 1.0F, 1.0F, false);
                return;
             }
          }

@@ -1,6 +1,5 @@
 package net.minecraft.world.inventory;
 
-import java.util.Objects;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.Container;
@@ -20,10 +19,6 @@ public class HorseInventoryMenu extends AbstractMountInventoryMenu {
       super(containerId, playerInventory, horseInventory, horse);
       Container saddleContainer = horse.createEquipmentSlotContainer(EquipmentSlot.SADDLE);
       this.addSlot(new ArmorSlot(saddleContainer, horse, EquipmentSlot.SADDLE, 0, 8, 18, SADDLE_SLOT_SPRITE) {
-         {
-            Objects.requireNonNull(HorseInventoryMenu.this);
-         }
-
          @Override
          public boolean isActive() {
             return horse.canUseSlot(EquipmentSlot.SADDLE) && horse.is(EntityTypeTags.CAN_EQUIP_SADDLE);
@@ -33,10 +28,6 @@ public class HorseInventoryMenu extends AbstractMountInventoryMenu {
       Identifier armorSprite = isLlama ? LLAMA_ARMOR_SLOT_SPRITE : ARMOR_SLOT_SPRITE;
       Container armorContainer = horse.createEquipmentSlotContainer(EquipmentSlot.BODY);
       this.addSlot(new ArmorSlot(armorContainer, horse, EquipmentSlot.BODY, 0, 8, 36, armorSprite) {
-         {
-            Objects.requireNonNull(HorseInventoryMenu.this);
-         }
-
          @Override
          public boolean isActive() {
             return horse.canUseSlot(EquipmentSlot.BODY) && (horse.is(EntityTypeTags.CAN_WEAR_HORSE_ARMOR) || isLlama);

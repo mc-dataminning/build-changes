@@ -39,9 +39,9 @@ public class BiomeManager {
       int parentX = absX >> 2;
       int parentY = absY >> 2;
       int parentZ = absZ >> 2;
-      double fractX = (double)(absX & 3) / 4.0;
-      double fractY = (double)(absY & 3) / 4.0;
-      double fractZ = (double)(absZ & 3) / 4.0;
+      double fractX = (absX & 3) / 4.0;
+      double fractY = (absY & 3) / 4.0;
+      double fractZ = (absZ & 3) / 4.0;
       int minI = 0;
       double minFiddledDistance = Double.POSITIVE_INFINITY;
 
@@ -89,12 +89,13 @@ public class BiomeManager {
    private static double getFiddledDistance(
       final long seed, final int xRandom, final int yRandom, final int zRandom, final double distanceX, final double distanceY, final double distanceZ
    ) {
-      long rval = LinearCongruentialGenerator.next(seed, (long)xRandom);
-      rval = LinearCongruentialGenerator.next(rval, (long)yRandom);
-      rval = LinearCongruentialGenerator.next(rval, (long)zRandom);
-      rval = LinearCongruentialGenerator.next(rval, (long)xRandom);
-      rval = LinearCongruentialGenerator.next(rval, (long)yRandom);
-      rval = LinearCongruentialGenerator.next(rval, (long)zRandom);
+      long rval = seed;
+      rval = LinearCongruentialGenerator.next(rval, xRandom);
+      rval = LinearCongruentialGenerator.next(rval, yRandom);
+      rval = LinearCongruentialGenerator.next(rval, zRandom);
+      rval = LinearCongruentialGenerator.next(rval, xRandom);
+      rval = LinearCongruentialGenerator.next(rval, yRandom);
+      rval = LinearCongruentialGenerator.next(rval, zRandom);
       double fiddleX = getFiddle(rval);
       rval = LinearCongruentialGenerator.next(rval, seed);
       double fiddleY = getFiddle(rval);
@@ -104,7 +105,7 @@ public class BiomeManager {
    }
 
    private static double getFiddle(final long rval) {
-      double uniform = (double)Math.floorMod(rval >> 24, 1024) / 1024.0;
+      double uniform = Math.floorMod(rval >> 24, 1024) / 1024.0;
       return (uniform - 0.5) * 0.9;
    }
 }

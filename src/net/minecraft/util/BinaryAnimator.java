@@ -27,7 +27,7 @@ public class BinaryAnimator {
    }
 
    public float getFactor(final float partialTicks) {
-      float factor = Mth.lerp(partialTicks, (float)this.ticksOld, (float)this.ticks) / (float)this.animationLength;
+      float factor = Mth.lerp(partialTicks, this.ticksOld, this.ticks) / this.animationLength;
       return this.easing.apply(factor);
    }
 }

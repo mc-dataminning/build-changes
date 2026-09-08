@@ -67,14 +67,14 @@ public interface SlotDisplay {
          List<ItemStack> firstItems = firstDisplay.resolveForStacks(context);
          if (firstItems.isEmpty()) {
             return Stream.empty();
-         } else {
-            List<ItemStack> secondItems = secondDisplay.resolveForStacks(context);
-            return secondItems.isEmpty() ? Stream.empty() : Stream.<ItemStack>generate(() -> {
-               ItemStack first = Util.getRandom(firstItems, randomSource);
-               ItemStack second = Util.getRandom(secondItems, randomSource);
-               return operation.apply(first, second);
-            }).limit(256L).filter(s -> !s.isEmpty()).limit(16L).map(stacks::forStack);
          }
+
+         List<ItemStack> secondItems = secondDisplay.resolveForStacks(context);
+         return secondItems.isEmpty() ? Stream.empty() : Stream.<ItemStack>generate(() -> {
+            ItemStack first = Util.getRandom(firstItems, randomSource);
+            ItemStack second = Util.getRandom(secondItems, randomSource);
+            return operation.apply(first, second);
+         }).limit(256L).filter(s -> !s.isEmpty()).limit(16L).map(stacks::forStack);
       } else {
          return Stream.empty();
       }
@@ -91,28 +91,28 @@ public interface SlotDisplay {
          List<ItemStack> firstItems = firstDisplay.resolveForStacks(context);
          if (firstItems.isEmpty()) {
             return Stream.empty();
-         } else {
-            List<ItemStack> secondItems = secondDisplay.resolveForStacks(context);
-            if (secondItems.isEmpty()) {
-               return Stream.empty();
-            } else {
-               int cycle = firstItems.size() * secondItems.size();
-               return IntStream.range(0, cycle).mapToObj(index -> {
-                  int firstItemCount = firstItems.size();
-                  int firstItemIndex = index % firstItemCount;
-                  int secondItemIndex = index / firstItemCount;
-                  ItemStack first = firstItems.get(firstItemIndex);
-                  ItemStack second = secondItems.get(secondItemIndex);
-                  return operation.apply(first, second);
-               }).filter(s -> !s.isEmpty()).limit(16L).map(stacks::forStack);
-            }
          }
+
+         List<ItemStack> secondItems = secondDisplay.resolveForStacks(context);
+         if (secondItems.isEmpty()) {
+            return Stream.empty();
+         }
+
+         int cycle = firstItems.size() * secondItems.size();
+         return IntStream.range(0, cycle).mapToObj(index -> {
+            int firstItemCount = firstItems.size();
+            int firstItemIndex = index % firstItemCount;
+            int secondItemIndex = index / firstItemCount;
+            ItemStack first = firstItems.get(firstItemIndex);
+            ItemStack second = secondItems.get(secondItemIndex);
+            return operation.apply(first, second);
+         }).filter(s -> !s.isEmpty()).limit(16L).map(stacks::forStack);
       } else {
          return Stream.empty();
       }
    }
 
-   public static class AnyFuel implements SlotDisplay {
+   class AnyFuel implements SlotDisplay {
       public static final SlotDisplay.AnyFuel INSTANCE = new SlotDisplay.AnyFuel();
       public static final MapCodec<SlotDisplay.AnyFuel> MAP_CODEC = MapCodec.unit(INSTANCE);
       public static final StreamCodec<RegistryFriendlyByteBuf, SlotDisplay.AnyFuel> STREAM_CODEC = StreamCodec.unit(INSTANCE);
@@ -144,7 +144,7 @@ public interface SlotDisplay {
       }
    }
 
-   public static record Composite(List<SlotDisplay> contents) implements SlotDisplay {
+   record Composite(List<SlotDisplay> contents) implements SlotDisplay {
       public static final MapCodec<SlotDisplay.Composite> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(SlotDisplay.CODEC.listOf().fieldOf("contents").forGetter(SlotDisplay.Composite::contents)).apply(i, SlotDisplay.Composite::new)
       );
@@ -169,13 +169,13 @@ public interface SlotDisplay {
       }
    }
 
-   public static record DyedSlotDemo(SlotDisplay dye, SlotDisplay target) implements SlotDisplay {
+   record DyedSlotDemo(SlotDisplay dye, SlotDisplay target) implements SlotDisplay {
       public static final MapCodec<SlotDisplay.DyedSlotDemo> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  SlotDisplay.CODEC.fieldOf("dye").forGetter(SlotDisplay.DyedSlotDemo::dye),
-                  SlotDisplay.CODEC.fieldOf("target").forGetter(SlotDisplay.DyedSlotDemo::target)
-               )
-               .apply(i, SlotDisplay.DyedSlotDemo::new)
+               SlotDisplay.CODEC.fieldOf("dye").forGetter(SlotDisplay.DyedSlotDemo::dye),
+               SlotDisplay.CODEC.fieldOf("target").forGetter(SlotDisplay.DyedSlotDemo::target)
+            )
+            .apply(i, SlotDisplay.DyedSlotDemo::new)
       );
       public static final StreamCodec<RegistryFriendlyByteBuf, SlotDisplay.DyedSlotDemo> STREAM_CODEC = StreamCodec.composite(
          SlotDisplay.STREAM_CODEC, SlotDisplay.DyedSlotDemo::dye, SlotDisplay.STREAM_CODEC, SlotDisplay.DyedSlotDemo::target, SlotDisplay.DyedSlotDemo::new
@@ -197,7 +197,7 @@ public interface SlotDisplay {
       }
    }
 
-   public static class Empty implements SlotDisplay {
+   class Empty implements SlotDisplay {
       public static final SlotDisplay.Empty INSTANCE = new SlotDisplay.Empty();
       public static final MapCodec<SlotDisplay.Empty> MAP_CODEC = MapCodec.unit(INSTANCE);
       public static final StreamCodec<RegistryFriendlyByteBuf, SlotDisplay.Empty> STREAM_CODEC = StreamCodec.unit(INSTANCE);
@@ -222,7 +222,7 @@ public interface SlotDisplay {
       }
    }
 
-   public static record ItemSlotDisplay(Holder<Item> item) implements SlotDisplay {
+   record ItemSlotDisplay(Holder<Item> item) implements SlotDisplay {
       public static final MapCodec<SlotDisplay.ItemSlotDisplay> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(Item.CODEC.fieldOf("item").forGetter(SlotDisplay.ItemSlotDisplay::item)).apply(i, SlotDisplay.ItemSlotDisplay::new)
       );
@@ -251,7 +251,7 @@ public interface SlotDisplay {
       }
    }
 
-   public static class ItemStackContentsFactory implements DisplayContentsFactory.ForStacks<ItemStack> {
+   class ItemStackContentsFactory implements DisplayContentsFactory.ForStacks<ItemStack> {
       public static final SlotDisplay.ItemStackContentsFactory INSTANCE = new SlotDisplay.ItemStackContentsFactory();
 
       public ItemStack forStack(final ItemStack stack) {
@@ -259,10 +259,10 @@ public interface SlotDisplay {
       }
    }
 
-   public static record ItemStackSlotDisplay(ItemStackTemplate stack) implements SlotDisplay {
+   record ItemStackSlotDisplay(ItemStackTemplate stack) implements SlotDisplay {
       public static final MapCodec<SlotDisplay.ItemStackSlotDisplay> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(ItemStackTemplate.CODEC.fieldOf("item").forGetter(SlotDisplay.ItemStackSlotDisplay::stack))
-               .apply(i, SlotDisplay.ItemStackSlotDisplay::new)
+            .apply(i, SlotDisplay.ItemStackSlotDisplay::new)
       );
       public static final StreamCodec<RegistryFriendlyByteBuf, SlotDisplay.ItemStackSlotDisplay> STREAM_CODEC = StreamCodec.composite(
          ItemStackTemplate.STREAM_CODEC, SlotDisplay.ItemStackSlotDisplay::stack, SlotDisplay.ItemStackSlotDisplay::new
@@ -285,13 +285,13 @@ public interface SlotDisplay {
       }
    }
 
-   public static record OnlyWithComponent(SlotDisplay source, DataComponentType<?> component) implements SlotDisplay {
+   record OnlyWithComponent(SlotDisplay source, DataComponentType<?> component) implements SlotDisplay {
       public static final MapCodec<SlotDisplay.OnlyWithComponent> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  SlotDisplay.CODEC.fieldOf("contents").forGetter(SlotDisplay.OnlyWithComponent::source),
-                  DataComponentType.CODEC.fieldOf("component").forGetter(SlotDisplay.OnlyWithComponent::component)
-               )
-               .apply(i, SlotDisplay.OnlyWithComponent::new)
+               SlotDisplay.CODEC.fieldOf("contents").forGetter(SlotDisplay.OnlyWithComponent::source),
+               DataComponentType.CODEC.fieldOf("component").forGetter(SlotDisplay.OnlyWithComponent::component)
+            )
+            .apply(i, SlotDisplay.OnlyWithComponent::new)
       );
       public static final StreamCodec<RegistryFriendlyByteBuf, SlotDisplay.OnlyWithComponent> STREAM_CODEC = StreamCodec.composite(
          SlotDisplay.STREAM_CODEC,
@@ -315,14 +315,14 @@ public interface SlotDisplay {
       }
    }
 
-   public static record SmithingTrimDemoSlotDisplay(SlotDisplay base, SlotDisplay material, Holder<TrimPattern> pattern) implements SlotDisplay {
+   record SmithingTrimDemoSlotDisplay(SlotDisplay base, SlotDisplay material, Holder<TrimPattern> pattern) implements SlotDisplay {
       public static final MapCodec<SlotDisplay.SmithingTrimDemoSlotDisplay> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  SlotDisplay.CODEC.fieldOf("base").forGetter(SlotDisplay.SmithingTrimDemoSlotDisplay::base),
-                  SlotDisplay.CODEC.fieldOf("material").forGetter(SlotDisplay.SmithingTrimDemoSlotDisplay::material),
-                  TrimPattern.CODEC.fieldOf("pattern").forGetter(SlotDisplay.SmithingTrimDemoSlotDisplay::pattern)
-               )
-               .apply(i, SlotDisplay.SmithingTrimDemoSlotDisplay::new)
+               SlotDisplay.CODEC.fieldOf("base").forGetter(SlotDisplay.SmithingTrimDemoSlotDisplay::base),
+               SlotDisplay.CODEC.fieldOf("material").forGetter(SlotDisplay.SmithingTrimDemoSlotDisplay::material),
+               TrimPattern.CODEC.fieldOf("pattern").forGetter(SlotDisplay.SmithingTrimDemoSlotDisplay::pattern)
+            )
+            .apply(i, SlotDisplay.SmithingTrimDemoSlotDisplay::new)
       );
       public static final StreamCodec<RegistryFriendlyByteBuf, SlotDisplay.SmithingTrimDemoSlotDisplay> STREAM_CODEC = StreamCodec.composite(
          SlotDisplay.STREAM_CODEC,
@@ -342,16 +342,16 @@ public interface SlotDisplay {
 
       @Override
       public <T> Stream<T> resolve(final ContextMap context, final DisplayContentsFactory<T> factory) {
-         RandomSource randomSource = RandomSource.createThreadLocalInstance((long)System.identityHashCode(this));
+         RandomSource randomSource = RandomSource.createThreadLocalInstance(System.identityHashCode(this));
          BinaryOperator<ItemStack> transformation = (base, material) -> SmithingTrimRecipe.applyTrim(base, material, this.pattern);
          return SlotDisplay.applyDemoTransformation(context, factory, this.base, this.material, randomSource, transformation);
       }
    }
 
-   public static record TagSlotDisplay(HolderSet<Item> tag) implements SlotDisplay {
+   record TagSlotDisplay(HolderSet<Item> tag) implements SlotDisplay {
       public static final MapCodec<SlotDisplay.TagSlotDisplay> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(RegistryCodecs.holderSet(Registries.ITEM).fieldOf("tag").forGetter(SlotDisplay.TagSlotDisplay::tag))
-               .apply(i, SlotDisplay.TagSlotDisplay::new)
+            .apply(i, SlotDisplay.TagSlotDisplay::new)
       );
       public static final StreamCodec<RegistryFriendlyByteBuf, SlotDisplay.TagSlotDisplay> STREAM_CODEC = StreamCodec.composite(
          ByteBufCodecs.holderSet(Registries.ITEM), SlotDisplay.TagSlotDisplay::tag, SlotDisplay.TagSlotDisplay::new
@@ -369,10 +369,10 @@ public interface SlotDisplay {
       }
    }
 
-   public static record Type<T extends SlotDisplay>(MapCodec<T> codec, StreamCodec<RegistryFriendlyByteBuf, T> streamCodec) {
+   record Type<T extends SlotDisplay>(MapCodec<T> codec, StreamCodec<RegistryFriendlyByteBuf, T> streamCodec) {
    }
 
-   public static record WithAnyPotion(SlotDisplay display) implements SlotDisplay {
+   record WithAnyPotion(SlotDisplay display) implements SlotDisplay {
       public static final MapCodec<SlotDisplay.WithAnyPotion> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(SlotDisplay.CODEC.fieldOf("contents").forGetter(SlotDisplay.WithAnyPotion::display)).apply(i, SlotDisplay.WithAnyPotion::new)
       );
@@ -406,13 +406,13 @@ public interface SlotDisplay {
       }
    }
 
-   public static record WithRemainder(SlotDisplay input, SlotDisplay remainder) implements SlotDisplay {
+   record WithRemainder(SlotDisplay input, SlotDisplay remainder) implements SlotDisplay {
       public static final MapCodec<SlotDisplay.WithRemainder> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  SlotDisplay.CODEC.fieldOf("input").forGetter(SlotDisplay.WithRemainder::input),
-                  SlotDisplay.CODEC.fieldOf("remainder").forGetter(SlotDisplay.WithRemainder::remainder)
-               )
-               .apply(i, SlotDisplay.WithRemainder::new)
+               SlotDisplay.CODEC.fieldOf("input").forGetter(SlotDisplay.WithRemainder::input),
+               SlotDisplay.CODEC.fieldOf("remainder").forGetter(SlotDisplay.WithRemainder::remainder)
+            )
+            .apply(i, SlotDisplay.WithRemainder::new)
       );
       public static final StreamCodec<RegistryFriendlyByteBuf, SlotDisplay.WithRemainder> STREAM_CODEC = StreamCodec.composite(
          SlotDisplay.STREAM_CODEC,

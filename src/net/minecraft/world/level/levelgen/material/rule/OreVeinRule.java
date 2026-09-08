@@ -33,47 +33,47 @@ public record OreVeinRule(
    public static final float SKIP_ORE_IF_GAP_NOISE_IS_BELOW = -0.3F;
    public static final MapCodec<OreVeinRule> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BlockState.CODEC.fieldOf("ore_block").forGetter(OreVeinRule::oreBlock),
-               BlockState.CODEC.fieldOf("raw_ore_block").forGetter(OreVeinRule::rawOreBlock),
-               BlockState.CODEC.fieldOf("filler_block").forGetter(OreVeinRule::fillerBlock),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("raw_ore_chance").forGetter(OreVeinRule::rawOreChance),
-               DensityFunction.CODEC.fieldOf("density").forGetter(OreVeinRule::density),
-               DensityFunction.CODEC.fieldOf("richness").forGetter(OreVeinRule::richness),
-               DensityFunction.CODEC.fieldOf("filler_gap").forGetter(OreVeinRule::fillerGap)
-            )
-            .apply(i, OreVeinRule::new)
+            BlockState.CODEC.fieldOf("ore_block").forGetter(OreVeinRule::oreBlock),
+            BlockState.CODEC.fieldOf("raw_ore_block").forGetter(OreVeinRule::rawOreBlock),
+            BlockState.CODEC.fieldOf("filler_block").forGetter(OreVeinRule::fillerBlock),
+            Codec.floatRange(0.0F, 1.0F).fieldOf("raw_ore_chance").forGetter(OreVeinRule::rawOreChance),
+            DensityFunction.CODEC.fieldOf("density").forGetter(OreVeinRule::density),
+            DensityFunction.CODEC.fieldOf("richness").forGetter(OreVeinRule::richness),
+            DensityFunction.CODEC.fieldOf("filler_gap").forGetter(OreVeinRule::fillerGap)
+         )
+         .apply(i, OreVeinRule::new)
    );
 
    @Override
    public RuleEvaluator compile(final MaterialRuleContext context) {
       if (SharedConstants.DEBUG_DISABLE_ORE_VEINS) {
          return (var0, var1, var2x) -> null;
-      } else {
-         BlockState defaultState = SharedConstants.DEBUG_ORE_VEINS ? Blocks.AIR.defaultBlockState() : null;
-         MaterialRules.DensityGetter densitySampler = context.getDensitiesInChunk(this.density, true);
-         MaterialRules.DensityGetter richnessSampler = context.getDensitiesInChunk(this.richness, true);
-         MaterialRules.DensityGetter fillerGapSampler = context.getDensitiesInChunk(this.fillerGap, false);
-         PositionalRandomFactory randomFactory = context.getOrCreateRandomFactory(Identifier.withDefaultNamespace("ore"));
-         BlockState fillerBlock = SharedConstants.DEBUG_ORE_VEINS ? Blocks.OAK_BUTTON.defaultBlockState() : this.fillerBlock;
-         return (blockX, blockY, blockZ) -> {
-            float density = densitySampler.get();
-            if (density <= 0.0F) {
+      }
+
+      BlockState defaultState = SharedConstants.DEBUG_ORE_VEINS ? Blocks.AIR.defaultBlockState() : null;
+      MaterialRules.DensityGetter densitySampler = context.getDensitiesInChunk(this.density, true);
+      MaterialRules.DensityGetter richnessSampler = context.getDensitiesInChunk(this.richness, true);
+      MaterialRules.DensityGetter fillerGapSampler = context.getDensitiesInChunk(this.fillerGap, false);
+      PositionalRandomFactory randomFactory = context.getOrCreateRandomFactory(Identifier.withDefaultNamespace("ore"));
+      BlockState fillerBlock = SharedConstants.DEBUG_ORE_VEINS ? Blocks.OAK_BUTTON.defaultBlockState() : this.fillerBlock;
+      return (blockX, blockY, blockZ) -> {
+         float density = densitySampler.get();
+         if (density <= 0.0F) {
+            return defaultState;
+         } else {
+            RandomSource random = randomFactory.at(blockX, blockY, blockZ);
+            if (random.nextFloat() > density) {
                return defaultState;
             } else {
-               RandomSource random = randomFactory.at(blockX, blockY, blockZ);
-               if (random.nextFloat() > density) {
-                  return defaultState;
+               float richness = richnessSampler.get();
+               if (random.nextFloat() < richness && fillerGapSampler.get() < 0.0F) {
+                  return random.nextFloat() < this.rawOreChance ? this.rawOreBlock : this.oreBlock;
                } else {
-                  float richness = richnessSampler.get();
-                  if (random.nextFloat() < richness && fillerGapSampler.get() < 0.0F) {
-                     return random.nextFloat() < this.rawOreChance ? this.rawOreBlock : this.oreBlock;
-                  } else {
-                     return fillerBlock;
-                  }
+                  return fillerBlock;
                }
             }
-         };
-      }
+         }
+      };
    }
 
    @Override
@@ -81,7 +81,7 @@ public record OreVeinRule(
       return CODEC;
    }
 
-   public static enum VeinType {
+   public enum VeinType {
       COPPER(Blocks.COPPER_ORE.defaultBlockState(), Blocks.RAW_COPPER_BLOCK.defaultBlockState(), Blocks.GRANITE.defaultBlockState(), 0, 50),
       IRON(Blocks.DEEPSLATE_IRON_ORE.defaultBlockState(), Blocks.RAW_IRON_BLOCK.defaultBlockState(), Blocks.TUFF.defaultBlockState(), -60, -8);
 
@@ -91,7 +91,7 @@ public record OreVeinRule(
       public final int minY;
       public final int maxY;
 
-      private VeinType(final BlockState oreBlock, final BlockState rawOreBlock, final BlockState fillerBlock, final int minY, final int maxY) {
+      VeinType(final BlockState oreBlock, final BlockState rawOreBlock, final BlockState fillerBlock, final int minY, final int maxY) {
          this.oreBlock = oreBlock;
          this.rawOreBlock = rawOreBlock;
          this.fillerBlock = fillerBlock;

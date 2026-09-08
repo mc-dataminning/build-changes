@@ -11,7 +11,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
@@ -49,8 +48,8 @@ public abstract class CrossCollisionBlock extends Block implements SimpleWaterlo
    protected Function<BlockState, VoxelShape> makeShapes(
       final float postWidth, final float postHeight, final float wallWidth, final float wallBottom, final float wallTop
    ) {
-      VoxelShape post = Block.column((double)postWidth, 0.0, (double)postHeight);
-      Map<Direction, VoxelShape> arms = Shapes.rotateHorizontal(Block.boxZ((double)wallWidth, (double)wallBottom, (double)wallTop, 0.0, 8.0));
+      VoxelShape post = Block.column(postWidth, 0.0, postHeight);
+      Map<Direction, VoxelShape> arms = Shapes.rotateHorizontal(Block.boxZ(wallWidth, wallBottom, wallTop, 0.0, 8.0));
       return this.getShapeForEachState(state -> {
          VoxelShape shape = post;
 
@@ -61,7 +60,7 @@ public abstract class CrossCollisionBlock extends Block implements SimpleWaterlo
          }
 
          return shape;
-      }, new Property[]{WATERLOGGED});
+      }, WATERLOGGED);
    }
 
    @Override
@@ -93,17 +92,17 @@ public abstract class CrossCollisionBlock extends Block implements SimpleWaterlo
    protected BlockState rotate(final BlockState state, final Rotation rotation) {
       return switch (rotation) {
          case CLOCKWISE_180 -> (BlockState)state.setValue(NORTH, state.getValue(SOUTH))
-         .setValue(EAST, state.getValue(WEST))
-         .setValue(SOUTH, state.getValue(NORTH))
-         .setValue(WEST, state.getValue(EAST));
+            .setValue(EAST, state.getValue(WEST))
+            .setValue(SOUTH, state.getValue(NORTH))
+            .setValue(WEST, state.getValue(EAST));
          case COUNTERCLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(EAST))
-         .setValue(EAST, state.getValue(SOUTH))
-         .setValue(SOUTH, state.getValue(WEST))
-         .setValue(WEST, state.getValue(NORTH));
+            .setValue(EAST, state.getValue(SOUTH))
+            .setValue(SOUTH, state.getValue(WEST))
+            .setValue(WEST, state.getValue(NORTH));
          case CLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(WEST))
-         .setValue(EAST, state.getValue(NORTH))
-         .setValue(SOUTH, state.getValue(EAST))
-         .setValue(WEST, state.getValue(SOUTH));
+            .setValue(EAST, state.getValue(NORTH))
+            .setValue(SOUTH, state.getValue(EAST))
+            .setValue(WEST, state.getValue(SOUTH));
          default -> state;
       };
    }

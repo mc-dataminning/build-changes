@@ -5,7 +5,6 @@ import com.mojang.realmsclient.dto.RealmsServer;
 import com.mojang.realmsclient.dto.RealmsSlot;
 import com.mojang.realmsclient.dto.RealmsWorldOptions;
 import java.util.List;
-import java.util.Objects;
 import net.minecraft.client.gui.components.AbstractSliderButton;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.CycleButton;
@@ -45,9 +44,8 @@ public class RealmsSlotOptionsScreen extends RealmsScreen {
    private Difficulty difficulty;
    private GameType gameMode;
    private String worldName;
-   @Nullable
-   private StringWidget warningHeader;
-   private RealmsSlotOptionsScreen.SettingsSlider spawnProtectionButton;
+   private @Nullable StringWidget warningHeader;
+   private RealmsSlotOptionsScreen.@Nullable SettingsSlider spawnProtectionButton;
 
    public RealmsSlotOptionsScreen(
       final RealmsConfigureWorldScreen configureWorldScreen, final RealmsSlot slot, final RealmsServer.WorldType worldType, final int activeSlot
@@ -146,9 +144,7 @@ public class RealmsSlotOptionsScreen extends RealmsScreen {
 
    @Override
    public Component getNarrationMessage() {
-      return (Component)(this.warningHeader == null
-         ? super.getNarrationMessage()
-         : CommonComponents.joinForNarration(this.getTitle(), this.warningHeader.getMessage()));
+      return this.warningHeader == null ? super.getNarrationMessage() : CommonComponents.joinForNarration(this.getTitle(), this.warningHeader.getMessage());
    }
 
    private void setWorldName(final String value) {
@@ -206,11 +202,10 @@ public class RealmsSlotOptionsScreen extends RealmsScreen {
       private final double maxValue;
 
       public SettingsSlider(final int x, final int y, final int width, final int currentValue, final float minValue, final float maxValue) {
-         Objects.requireNonNull(RealmsSlotOptionsScreen.this);
          super(x, y, width, 20, CommonComponents.EMPTY, 0.0);
-         this.minValue = (double)minValue;
-         this.maxValue = (double)maxValue;
-         this.value = (double)((Mth.clamp((float)currentValue, minValue, maxValue) - minValue) / (maxValue - minValue));
+         this.minValue = minValue;
+         this.maxValue = maxValue;
+         this.value = (Mth.clamp(currentValue, minValue, maxValue) - minValue) / (maxValue - minValue);
          this.updateMessage();
       }
 
@@ -226,9 +221,9 @@ public class RealmsSlotOptionsScreen extends RealmsScreen {
          this.setMessage(
             CommonComponents.optionNameValue(
                RealmsSlotOptionsScreen.SPAWN_PROTECTION_TEXT,
-               (Component)(RealmsSlotOptionsScreen.this.spawnProtection == 0
+               RealmsSlotOptionsScreen.this.spawnProtection == 0
                   ? CommonComponents.OPTION_OFF
-                  : Component.literal(String.valueOf(RealmsSlotOptionsScreen.this.spawnProtection)))
+                  : Component.literal(String.valueOf(RealmsSlotOptionsScreen.this.spawnProtection))
             )
          );
       }

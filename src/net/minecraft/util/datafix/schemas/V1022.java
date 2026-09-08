@@ -22,19 +22,18 @@ public class V1022 extends Schema {
          false,
          References.PLAYER,
          () -> DSL.optionalFields(
-               new Pair[]{
-                  Pair.of("RootVehicle", DSL.optionalFields("Entity", References.ENTITY_TREE.in(schema))),
-                  Pair.of("ender_pearls", DSL.list(References.ENTITY_TREE.in(schema))),
-                  Pair.of("Inventory", DSL.list(References.ITEM_STACK.in(schema))),
-                  Pair.of("EnderItems", DSL.list(References.ITEM_STACK.in(schema))),
-                  Pair.of("ShoulderEntityLeft", References.ENTITY_TREE.in(schema)),
-                  Pair.of("ShoulderEntityRight", References.ENTITY_TREE.in(schema)),
-                  Pair.of(
-                     "recipeBook",
-                     DSL.optionalFields("recipes", DSL.list(References.RECIPE.in(schema)), "toBeDisplayed", DSL.list(References.RECIPE.in(schema)))
-                  )
-               }
-            )
+            new Pair[]{
+               Pair.of("RootVehicle", DSL.optionalFields("Entity", References.ENTITY_TREE.in(schema))),
+               Pair.of("ender_pearls", DSL.list(References.ENTITY_TREE.in(schema))),
+               Pair.of("Inventory", DSL.list(References.ITEM_STACK.in(schema))),
+               Pair.of("EnderItems", DSL.list(References.ITEM_STACK.in(schema))),
+               Pair.of("ShoulderEntityLeft", References.ENTITY_TREE.in(schema)),
+               Pair.of("ShoulderEntityRight", References.ENTITY_TREE.in(schema)),
+               Pair.of(
+                  "recipeBook", DSL.optionalFields("recipes", DSL.list(References.RECIPE.in(schema)), "toBeDisplayed", DSL.list(References.RECIPE.in(schema)))
+               )
+            }
+         )
       );
       schema.registerType(false, References.HOTBAR, () -> DSL.compoundList(DSL.list(References.ITEM_STACK.in(schema))));
    }

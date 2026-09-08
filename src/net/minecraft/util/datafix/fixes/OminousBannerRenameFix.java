@@ -15,16 +15,16 @@ public class OminousBannerRenameFix extends ItemStackTagFix {
       return tag.update(
          "display",
          display -> display.update(
-               "Name",
-               name -> {
-                  Optional<String> string = name.asString().result();
-                  return string.isPresent()
-                     ? name.createString(
-                        string.get().replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"")
-                     )
-                     : name;
-               }
-            )
+            "Name",
+            name -> {
+               Optional<String> string = name.asString().result();
+               return string.isPresent()
+                  ? name.createString(
+                     string.get().replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"")
+                  )
+                  : name;
+            }
+         )
       );
    }
 

@@ -13,7 +13,7 @@ import org.joml.Matrix4fc;
 public interface BlockModel {
    void update(BlockModelRenderState output, BlockState blockState, BlockDisplayContext displayContext, long seed);
 
-   public static record BakingContext(
+   record BakingContext(
       EntityModelSet entityModelSet,
       SpriteGetter sprites,
       PlayerSkinRenderCache playerSkinRenderCache,
@@ -22,7 +22,7 @@ public interface BlockModel {
    ) implements SpecialModelRenderer.BakingContext {
    }
 
-   public interface Unbaked {
+   interface Unbaked {
       BlockModel bake(BlockModel.BakingContext context, Matrix4fc transformation);
    }
 }

@@ -14,19 +14,19 @@ import net.minecraft.world.level.material.FluidState;
 public record FluidPredicate(Optional<HolderSet<Fluid>> fluids, Optional<StatePropertiesPredicate> properties) {
    public static final Codec<FluidPredicate> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               RegistryCodecs.holderSet(Registries.FLUID).optionalFieldOf("fluids").forGetter(FluidPredicate::fluids),
-               StatePropertiesPredicate.CODEC.optionalFieldOf("state").forGetter(FluidPredicate::properties)
-            )
-            .apply(i, FluidPredicate::new)
+            RegistryCodecs.holderSet(Registries.FLUID).optionalFieldOf("fluids").forGetter(FluidPredicate::fluids),
+            StatePropertiesPredicate.CODEC.optionalFieldOf("state").forGetter(FluidPredicate::properties)
+         )
+         .apply(i, FluidPredicate::new)
    );
 
    public boolean matches(final ServerLevel level, final BlockPos pos) {
       if (!level.isLoaded(pos)) {
          return false;
-      } else {
-         FluidState state = level.getFluidState(pos);
-         return this.fluids.isPresent() && !state.is(this.fluids.get()) ? false : !this.properties.isPresent() || this.properties.get().matches(state);
       }
+
+      FluidState state = level.getFluidState(pos);
+      return this.fluids.isPresent() && !state.is(this.fluids.get()) ? false : !this.properties.isPresent() || this.properties.get().matches(state);
    }
 
    public static class Builder {

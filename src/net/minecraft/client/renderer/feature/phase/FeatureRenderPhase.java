@@ -12,7 +12,7 @@ public interface FeatureRenderPhase<Submit extends SubmitNode> {
    boolean isEmpty();
 
    @FunctionalInterface
-   public interface Output {
+   interface Output {
       void accept(SubmitNode submit, boolean strictlyOrdered);
 
       default <Submit extends SubmitNode> void acceptFeatureGroup(

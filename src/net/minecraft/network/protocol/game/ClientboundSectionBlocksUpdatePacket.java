@@ -46,7 +46,7 @@ public class ClientboundSectionBlocksUpdatePacket implements Packet<ClientGamePa
 
       for (int i = 0; i < count; i++) {
          long packedChange = input.readVarLong();
-         this.positions[i] = (short)((int)(packedChange & 4095L));
+         this.positions[i] = (short)(packedChange & 4095L);
          this.states[i] = Block.BLOCK_STATE_REGISTRY.byId((int)(packedChange >>> 12));
       }
    }
@@ -56,7 +56,7 @@ public class ClientboundSectionBlocksUpdatePacket implements Packet<ClientGamePa
       output.writeVarInt(this.positions.length);
 
       for (int i = 0; i < this.positions.length; i++) {
-         output.writeVarLong((long)Block.getId(this.states[i]) << 12 | (long)this.positions[i]);
+         output.writeVarLong((long)Block.getId(this.states[i]) << 12 | this.positions[i]);
       }
    }
 

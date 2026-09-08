@@ -8,13 +8,13 @@ public sealed interface Uniform extends UncheckedAutoCloseable permits Uniform.S
    default void close() {
    }
 
-   public static record Sampler(int samplerIndex) implements Uniform {
+   record Sampler(int samplerIndex) implements Uniform {
    }
 
-   public static record Ubo(int blockBinding) implements Uniform {
+   record Ubo(int blockBinding) implements Uniform {
    }
 
-   public static record Utb(int samplerIndex, GpuFormat format, int texture) implements Uniform {
+   record Utb(int samplerIndex, GpuFormat format, int texture) implements Uniform {
       public Utb(final int samplerIndex, final GpuFormat format) {
          this(samplerIndex, format, GlStateManager._genTexture());
       }

@@ -27,8 +27,7 @@ public final class StructureStart {
    private final PiecesContainer pieceContainer;
    private final ChunkPos chunkPos;
    private int references;
-   @Nullable
-   private volatile BoundingBox cachedBoundingBox;
+   private volatile @Nullable BoundingBox cachedBoundingBox;
 
    public StructureStart(final Structure structure, final ChunkPos chunkPos, final int references, final PiecesContainer pieceContainer) {
       this.structure = structure;
@@ -37,34 +36,33 @@ public final class StructureStart {
       this.pieceContainer = pieceContainer;
    }
 
-   @Nullable
-   public static StructureStart loadStaticStart(final StructurePieceSerializationContext context, final CompoundTag tag, final long seed) {
+   public static @Nullable StructureStart loadStaticStart(final StructurePieceSerializationContext context, final CompoundTag tag, final long seed) {
       String id = tag.getStringOr("id", "");
       if ("INVALID".equals(id)) {
          return INVALID_START;
-      } else {
-         Registry<Structure> structuresRegistry = context.registryAccess().lookupOrThrow(Registries.STRUCTURE);
-         Structure stucture = structuresRegistry.getValue(Identifier.parse(id));
-         if (stucture == null) {
-            LOGGER.error("Unknown stucture id: {}", id);
-            return null;
-         } else {
-            ChunkPos chunkPos = new ChunkPos(tag.getIntOr("ChunkX", 0), tag.getIntOr("ChunkZ", 0));
-            int references = tag.getIntOr("references", 0);
-            ListTag children = tag.getListOrEmpty("Children");
+      }
 
-            try {
-               PiecesContainer pieces = PiecesContainer.load(children, context);
-               if (stucture instanceof OceanMonumentStructure) {
-                  pieces = OceanMonumentStructure.regeneratePiecesAfterLoad(chunkPos, seed, pieces);
-               }
+      Registry<Structure> structuresRegistry = context.registryAccess().lookupOrThrow(Registries.STRUCTURE);
+      Structure stucture = structuresRegistry.getValue(Identifier.parse(id));
+      if (stucture == null) {
+         LOGGER.error("Unknown stucture id: {}", id);
+         return null;
+      }
 
-               return new StructureStart(stucture, chunkPos, references, pieces);
-            } catch (Exception var11) {
-               LOGGER.error("Failed Start with id {}", id, var11);
-               return null;
-            }
+      ChunkPos chunkPos = new ChunkPos(tag.getIntOr("ChunkX", 0), tag.getIntOr("ChunkZ", 0));
+      int references = tag.getIntOr("references", 0);
+      ListTag children = tag.getListOrEmpty("Children");
+
+      try {
+         PiecesContainer pieces = PiecesContainer.load(children, context);
+         if (stucture instanceof OceanMonumentStructure) {
+            pieces = OceanMonumentStructure.regeneratePiecesAfterLoad(chunkPos, seed, pieces);
          }
+
+         return new StructureStart(stucture, chunkPos, references, pieces);
+      } catch (Exception e) {
+         LOGGER.error("Failed Start with id {}", id, e);
+         return null;
       }
    }
 

@@ -43,8 +43,7 @@ public class NowPlayingToast implements Toast {
       }
    }
 
-   @Nullable
-   private static String getCurrentSongName() {
+   private static @Nullable String getCurrentSongName() {
       return Minecraft.getInstance().getMusicManager().getCurrentMusicTranslationKey();
    }
 
@@ -54,12 +53,12 @@ public class NowPlayingToast implements Toast {
          if (now > lastMusicNoteColorChange + 25L) {
             musicNoteColorTick++;
             lastMusicNoteColorChange = now;
-            musicNoteColor = ColorLerper.getLerpedColor(ColorLerper.Type.MUSIC_NOTE, (float)musicNoteColorTick);
+            musicNoteColor = ColorLerper.getLerpedColor(ColorLerper.Type.MUSIC_NOTE, musicNoteColorTick);
          }
       }
    }
 
-   private static Component getNowPlayingString(@Nullable final String currentSongKey) {
+   private static Component getNowPlayingString(final @Nullable String currentSongKey) {
       return currentSongKey == null ? Component.empty() : Component.translatable(currentSongKey.replace("/", "."));
    }
 
@@ -72,7 +71,7 @@ public class NowPlayingToast implements Toast {
    @Override
    public void update(final ToastManager manager, final long fullyVisibleForMs) {
       if (this.updateToast) {
-         this.wantedVisibility = (double)fullyVisibleForMs < 5000.0 * this.notificationDisplayTimeMultiplier ? Toast.Visibility.SHOW : Toast.Visibility.HIDE;
+         this.wantedVisibility = fullyVisibleForMs < 5000.0 * this.notificationDisplayTimeMultiplier ? Toast.Visibility.SHOW : Toast.Visibility.HIDE;
          tickMusicNotes();
       }
    }
@@ -92,7 +91,7 @@ public class NowPlayingToast implements Toast {
       return getWidth(getCurrentSongName(), this.minecraft.font);
    }
 
-   private static int getWidth(@Nullable final String currentSong, final Font font) {
+   private static int getWidth(final @Nullable String currentSong, final Font font) {
       return 30 + font.width(getNowPlayingString(currentSong)) + 7;
    }
 
@@ -103,7 +102,7 @@ public class NowPlayingToast implements Toast {
 
    @Override
    public float xPos(final int screenWidth, final float visiblePortion) {
-      return (float)this.width() * visiblePortion - (float)this.width();
+      return this.width() * visiblePortion - this.width();
    }
 
    @Override

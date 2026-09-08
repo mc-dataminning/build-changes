@@ -14,7 +14,7 @@ import net.minecraft.world.level.chunk.ChunkGenerator;
 public record EndGatewayFeature(Optional<BlockPos> exit, boolean exact) implements Feature {
    public static final MapCodec<EndGatewayFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(BlockPos.CODEC.optionalFieldOf("exit").forGetter(EndGatewayFeature::exit), Codec.BOOL.fieldOf("exact").forGetter(EndGatewayFeature::exact))
-            .apply(i, EndGatewayFeature::new)
+         .apply(i, EndGatewayFeature::new)
    );
 
    @Override

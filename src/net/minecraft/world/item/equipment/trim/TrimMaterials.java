@@ -49,7 +49,7 @@ public class TrimMaterials {
       return ResourceKey.create(Registries.TRIM_MATERIAL, Identifier.withDefaultNamespace(id));
    }
 
-   public static enum Palette {
+   public enum Palette {
       QUARTZ("quartz"),
       IRON("iron"),
       IRON_DARKER("iron_darker"),
@@ -70,7 +70,7 @@ public class TrimMaterials {
       private final String suffix;
       private final Identifier id;
 
-      private Palette(final String name) {
+      Palette(final String name) {
          this.suffix = name;
          this.id = Identifier.withDefaultNamespace("trim/" + name);
       }

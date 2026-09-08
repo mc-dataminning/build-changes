@@ -75,12 +75,12 @@ public class ItemStackEnchantmentNamesFix extends DataFix {
       return tag.update(
          "StoredEnchantments",
          list -> (Dynamic)DataFixUtils.orElse(
-               list.asStreamOpt()
-                  .map(l -> l.map(enchant -> enchant.set("id", enchant.createString((String)MAP.getOrDefault(enchant.get("id").asInt(0), "null")))))
-                  .map(list::createList)
-                  .result(),
-               list
-            )
+            list.asStreamOpt()
+               .map(l -> l.map(enchant -> enchant.set("id", enchant.createString((String)MAP.getOrDefault(enchant.get("id").asInt(0), "null")))))
+               .map(list::createList)
+               .result(),
+            list
+         )
       );
    }
 }

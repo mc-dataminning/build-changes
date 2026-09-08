@@ -90,14 +90,14 @@ public class CloneCommands {
       final InCommandFunction<CommandContext<CommandSourceStack>, ServerLevel> toDimension
    ) {
       InCommandFunction<CommandContext<CommandSourceStack>, CloneCommands.DimensionAndPosition> beginPos = c -> getLoadedDimensionAndPosition(
-            c, fromDimension.apply(c), "begin"
-         );
+         c, fromDimension.apply(c), "begin"
+      );
       InCommandFunction<CommandContext<CommandSourceStack>, CloneCommands.DimensionAndPosition> endPos = c -> getLoadedDimensionAndPosition(
-            c, fromDimension.apply(c), "end"
-         );
+         c, fromDimension.apply(c), "end"
+      );
       InCommandFunction<CommandContext<CommandSourceStack>, CloneCommands.DimensionAndPosition> destinationPos = c -> getLoadedDimensionAndPosition(
-            c, toDimension.apply(c), "destination"
-         );
+         c, toDimension.apply(c), "destination"
+      );
       return modeSuffix(context, beginPos, endPos, destinationPos, false, Commands.argument("destination", BlockPosArgument.blockPos()))
          .then(modeSuffix(context, beginPos, endPos, destinationPos, true, Commands.literal("strict")));
    }
@@ -112,8 +112,8 @@ public class CloneCommands {
    ) {
       return builder.executes(
             c -> clone(
-                  (CommandSourceStack)c.getSource(), beginPos.apply(c), endPos.apply(c), destinationPos.apply(c), b -> true, CloneCommands.Mode.NORMAL, strict
-               )
+               (CommandSourceStack)c.getSource(), beginPos.apply(c), endPos.apply(c), destinationPos.apply(c), b -> true, CloneCommands.Mode.NORMAL, strict
+            )
          )
          .then(wrapWithCloneMode(beginPos, endPos, destinationPos, c -> b -> true, strict, Commands.literal("replace")))
          .then(wrapWithCloneMode(beginPos, endPos, destinationPos, c -> FILTER_AIR, strict, Commands.literal("masked")))
@@ -142,55 +142,55 @@ public class CloneCommands {
    ) {
       return builder.executes(
             c -> clone(
-                  (CommandSourceStack)c.getSource(),
-                  beginPos.apply(c),
-                  endPos.apply(c),
-                  destinationPos.apply(c),
-                  filter.apply(c),
-                  CloneCommands.Mode.NORMAL,
-                  strict
-               )
+               (CommandSourceStack)c.getSource(),
+               beginPos.apply(c),
+               endPos.apply(c),
+               destinationPos.apply(c),
+               filter.apply(c),
+               CloneCommands.Mode.NORMAL,
+               strict
+            )
          )
          .then(
             Commands.literal("force")
                .executes(
                   c -> clone(
-                        (CommandSourceStack)c.getSource(),
-                        beginPos.apply(c),
-                        endPos.apply(c),
-                        destinationPos.apply(c),
-                        filter.apply(c),
-                        CloneCommands.Mode.FORCE,
-                        strict
-                     )
+                     (CommandSourceStack)c.getSource(),
+                     beginPos.apply(c),
+                     endPos.apply(c),
+                     destinationPos.apply(c),
+                     filter.apply(c),
+                     CloneCommands.Mode.FORCE,
+                     strict
+                  )
                )
          )
          .then(
             Commands.literal("move")
                .executes(
                   c -> clone(
-                        (CommandSourceStack)c.getSource(),
-                        beginPos.apply(c),
-                        endPos.apply(c),
-                        destinationPos.apply(c),
-                        filter.apply(c),
-                        CloneCommands.Mode.MOVE,
-                        strict
-                     )
+                     (CommandSourceStack)c.getSource(),
+                     beginPos.apply(c),
+                     endPos.apply(c),
+                     destinationPos.apply(c),
+                     filter.apply(c),
+                     CloneCommands.Mode.MOVE,
+                     strict
+                  )
                )
          )
          .then(
             Commands.literal("normal")
                .executes(
                   c -> clone(
-                        (CommandSourceStack)c.getSource(),
-                        beginPos.apply(c),
-                        endPos.apply(c),
-                        destinationPos.apply(c),
-                        filter.apply(c),
-                        CloneCommands.Mode.NORMAL,
-                        strict
-                     )
+                     (CommandSourceStack)c.getSource(),
+                     beginPos.apply(c),
+                     endPos.apply(c),
+                     destinationPos.apply(c),
+                     filter.apply(c),
+                     CloneCommands.Mode.NORMAL,
+                     strict
+                  )
                )
          );
    }
@@ -214,147 +214,151 @@ public class CloneCommands {
       ServerLevel toDimension = destPosAndDimension.dimension();
       if (!mode.canOverlap() && fromDimension == toDimension && destination.intersects(from)) {
          throw ERROR_OVERLAP.create();
-      } else {
-         long area = (long)from.getXSpan() * (long)from.getYSpan() * (long)from.getZSpan();
-         int limit = source.getLevel().getGameRules().get(GameRules.MAX_BLOCK_MODIFICATIONS);
-         if (area > (long)limit) {
-            throw ERROR_AREA_TOO_LARGE.create(limit, area);
-         } else if (!fromDimension.hasChunksAt(startPos, endPos) || !toDimension.hasChunksAt(destPos, destEndPos)) {
-            throw BlockPosArgument.ERROR_NOT_LOADED.create();
-         } else if (toDimension.isDebug()) {
-            throw ERROR_FAILED.create();
-         } else {
-            List<CloneCommands.CloneBlockInfo> solidList = Lists.newArrayList();
-            List<CloneCommands.CloneBlockInfo> blockEntitiesList = Lists.newArrayList();
-            List<CloneCommands.CloneBlockInfo> otherBlocksList = Lists.newArrayList();
-            Deque<BlockPos> clearBlocksList = Lists.newLinkedList();
-            int count = 0;
-            ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(LOGGER);
+      }
 
-            try {
-               BlockPos offset = new BlockPos(destination.minX() - from.minX(), destination.minY() - from.minY(), destination.minZ() - from.minZ());
+      long area = (long)from.getXSpan() * from.getYSpan() * from.getZSpan();
+      int limit = source.getLevel().getGameRules().get(GameRules.MAX_BLOCK_MODIFICATIONS);
+      if (area > limit) {
+         throw ERROR_AREA_TOO_LARGE.create(limit, area);
+      }
 
-               for (int z = from.minZ(); z <= from.maxZ(); z++) {
-                  for (int y = from.minY(); y <= from.maxY(); y++) {
-                     for (int x = from.minX(); x <= from.maxX(); x++) {
-                        BlockPos sourcePos = new BlockPos(x, y, z);
-                        BlockPos destinationPos = sourcePos.offset(offset);
-                        BlockInWorld block = new BlockInWorld(fromDimension, sourcePos, false);
-                        BlockState blockState = block.getState();
-                        if (predicate.test(block)) {
-                           BlockEntity blockEntity = fromDimension.getBlockEntity(sourcePos);
-                           if (blockEntity != null) {
-                              TagValueOutput output = TagValueOutput.createWithContext(reporter.forChild(blockEntity.problemPath()), source.registryAccess());
-                              blockEntity.saveCustomOnly(output);
-                              CloneCommands.CloneBlockEntityInfo blockEntityInfo = new CloneCommands.CloneBlockEntityInfo(
-                                 output.buildResult(), blockEntity.components()
-                              );
-                              blockEntitiesList.add(
-                                 new CloneCommands.CloneBlockInfo(destinationPos, blockState, blockEntityInfo, toDimension.getBlockState(destinationPos))
-                              );
-                              clearBlocksList.addLast(sourcePos);
-                           } else if (!blockState.isSolidRender() && !blockState.isCollisionShapeFullBlock(fromDimension, sourcePos)) {
-                              otherBlocksList.add(new CloneCommands.CloneBlockInfo(destinationPos, blockState, null, toDimension.getBlockState(destinationPos)));
-                              clearBlocksList.addFirst(sourcePos);
-                           } else {
-                              solidList.add(new CloneCommands.CloneBlockInfo(destinationPos, blockState, null, toDimension.getBlockState(destinationPos)));
-                              clearBlocksList.addLast(sourcePos);
-                           }
-                        }
+      if (!fromDimension.hasChunksAt(startPos, endPos) || !toDimension.hasChunksAt(destPos, destEndPos)) {
+         throw BlockPosArgument.ERROR_NOT_LOADED.create();
+      }
+
+      if (toDimension.isDebug()) {
+         throw ERROR_FAILED.create();
+      }
+
+      List<CloneCommands.CloneBlockInfo> solidList = Lists.newArrayList();
+      List<CloneCommands.CloneBlockInfo> blockEntitiesList = Lists.newArrayList();
+      List<CloneCommands.CloneBlockInfo> otherBlocksList = Lists.newArrayList();
+      Deque<BlockPos> clearBlocksList = Lists.newLinkedList();
+      int count = 0;
+      ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(LOGGER);
+
+      try {
+         BlockPos offset = new BlockPos(destination.minX() - from.minX(), destination.minY() - from.minY(), destination.minZ() - from.minZ());
+
+         for (int z = from.minZ(); z <= from.maxZ(); z++) {
+            for (int y = from.minY(); y <= from.maxY(); y++) {
+               for (int x = from.minX(); x <= from.maxX(); x++) {
+                  BlockPos sourcePos = new BlockPos(x, y, z);
+                  BlockPos destinationPos = sourcePos.offset(offset);
+                  BlockInWorld block = new BlockInWorld(fromDimension, sourcePos, false);
+                  BlockState blockState = block.getState();
+                  if (predicate.test(block)) {
+                     BlockEntity blockEntity = fromDimension.getBlockEntity(sourcePos);
+                     if (blockEntity != null) {
+                        TagValueOutput output = TagValueOutput.createWithContext(reporter.forChild(blockEntity.problemPath()), source.registryAccess());
+                        blockEntity.saveCustomOnly(output);
+                        CloneCommands.CloneBlockEntityInfo blockEntityInfo = new CloneCommands.CloneBlockEntityInfo(
+                           output.buildResult(), blockEntity.components()
+                        );
+                        blockEntitiesList.add(
+                           new CloneCommands.CloneBlockInfo(destinationPos, blockState, blockEntityInfo, toDimension.getBlockState(destinationPos))
+                        );
+                        clearBlocksList.addLast(sourcePos);
+                     } else if (!blockState.isSolidRender() && !blockState.isCollisionShapeFullBlock(fromDimension, sourcePos)) {
+                        otherBlocksList.add(new CloneCommands.CloneBlockInfo(destinationPos, blockState, null, toDimension.getBlockState(destinationPos)));
+                        clearBlocksList.addFirst(sourcePos);
+                     } else {
+                        solidList.add(new CloneCommands.CloneBlockInfo(destinationPos, blockState, null, toDimension.getBlockState(destinationPos)));
+                        clearBlocksList.addLast(sourcePos);
                      }
                   }
                }
-
-               int defaultUpdateFlags = 2 | (strict ? 816 : 0);
-               if (mode == CloneCommands.Mode.MOVE) {
-                  for (BlockPos pos : clearBlocksList) {
-                     fromDimension.setBlock(pos, Blocks.BARRIER.defaultBlockState(), defaultUpdateFlags | 816);
-                  }
-
-                  int standardUpdateFlags = strict ? defaultUpdateFlags : 3;
-
-                  for (BlockPos pos : clearBlocksList) {
-                     fromDimension.setBlock(pos, Blocks.AIR.defaultBlockState(), standardUpdateFlags);
-                  }
-               }
-
-               List<CloneCommands.CloneBlockInfo> blockInfoList = Lists.newArrayList();
-               blockInfoList.addAll(solidList);
-               blockInfoList.addAll(blockEntitiesList);
-               blockInfoList.addAll(otherBlocksList);
-               List<CloneCommands.CloneBlockInfo> reverse = Lists.reverse(blockInfoList);
-
-               for (CloneCommands.CloneBlockInfo cloneInfo : reverse) {
-                  toDimension.setBlock(cloneInfo.pos, Blocks.BARRIER.defaultBlockState(), defaultUpdateFlags | 816);
-               }
-
-               for (CloneCommands.CloneBlockInfo cloneInfo : blockInfoList) {
-                  if (toDimension.setBlock(cloneInfo.pos, cloneInfo.state, defaultUpdateFlags)) {
-                     count++;
-                  }
-               }
-
-               for (CloneCommands.CloneBlockInfo cloneInfox : blockEntitiesList) {
-                  BlockEntity newBlockEntity = toDimension.getBlockEntity(cloneInfox.pos);
-                  if (cloneInfox.blockEntityInfo != null && newBlockEntity != null) {
-                     newBlockEntity.loadCustomOnly(
-                        TagValueInput.create(reporter.forChild(newBlockEntity.problemPath()), toDimension.registryAccess(), cloneInfox.blockEntityInfo.tag)
-                     );
-                     newBlockEntity.setComponents(cloneInfox.blockEntityInfo.components);
-                     newBlockEntity.setChanged();
-                  }
-
-                  toDimension.setBlock(cloneInfox.pos, cloneInfox.state, defaultUpdateFlags);
-               }
-
-               if (!strict) {
-                  for (CloneCommands.CloneBlockInfo cloneInfox : reverse) {
-                     toDimension.updateNeighboursOnBlockSet(cloneInfox.pos, cloneInfox.previousStateAtDestination);
-                  }
-               }
-
-               toDimension.getBlockTicks().copyAreaFrom(fromDimension.getBlockTicks(), from, offset);
-            } catch (Throwable var36) {
-               try {
-                  reporter.close();
-               } catch (Throwable var35) {
-                  var36.addSuppressed(var35);
-               }
-
-               throw var36;
-            }
-
-            reporter.close();
-            if (count == 0) {
-               throw ERROR_FAILED.create();
-            } else {
-               int finalCount = count;
-               source.sendSuccess(() -> Component.translatable("commands.clone.success", finalCount), true);
-               return count;
             }
          }
+
+         int defaultUpdateFlags = 2 | (strict ? 816 : 0);
+         if (mode == CloneCommands.Mode.MOVE) {
+            for (BlockPos pos : clearBlocksList) {
+               fromDimension.setBlock(pos, Blocks.BARRIER.defaultBlockState(), defaultUpdateFlags | 816);
+            }
+
+            int standardUpdateFlags = strict ? defaultUpdateFlags : 3;
+
+            for (BlockPos pos : clearBlocksList) {
+               fromDimension.setBlock(pos, Blocks.AIR.defaultBlockState(), standardUpdateFlags);
+            }
+         }
+
+         List<CloneCommands.CloneBlockInfo> blockInfoList = Lists.newArrayList();
+         blockInfoList.addAll(solidList);
+         blockInfoList.addAll(blockEntitiesList);
+         blockInfoList.addAll(otherBlocksList);
+         List<CloneCommands.CloneBlockInfo> reverse = Lists.reverse(blockInfoList);
+
+         for (CloneCommands.CloneBlockInfo cloneInfo : reverse) {
+            toDimension.setBlock(cloneInfo.pos, Blocks.BARRIER.defaultBlockState(), defaultUpdateFlags | 816);
+         }
+
+         for (CloneCommands.CloneBlockInfo cloneInfo : blockInfoList) {
+            if (toDimension.setBlock(cloneInfo.pos, cloneInfo.state, defaultUpdateFlags)) {
+               count++;
+            }
+         }
+
+         for (CloneCommands.CloneBlockInfo cloneInfo : blockEntitiesList) {
+            BlockEntity newBlockEntity = toDimension.getBlockEntity(cloneInfo.pos);
+            if (cloneInfo.blockEntityInfo != null && newBlockEntity != null) {
+               newBlockEntity.loadCustomOnly(
+                  TagValueInput.create(reporter.forChild(newBlockEntity.problemPath()), toDimension.registryAccess(), cloneInfo.blockEntityInfo.tag)
+               );
+               newBlockEntity.setComponents(cloneInfo.blockEntityInfo.components);
+               newBlockEntity.setChanged();
+            }
+
+            toDimension.setBlock(cloneInfo.pos, cloneInfo.state, defaultUpdateFlags);
+         }
+
+         if (!strict) {
+            for (CloneCommands.CloneBlockInfo cloneInfo : reverse) {
+               toDimension.updateNeighboursOnBlockSet(cloneInfo.pos, cloneInfo.previousStateAtDestination);
+            }
+         }
+
+         toDimension.getBlockTicks().copyAreaFrom(fromDimension.getBlockTicks(), from, offset);
+      } catch (Throwable var36) {
+         try {
+            reporter.close();
+         } catch (Throwable var35) {
+            var36.addSuppressed(var35);
+         }
+
+         throw var36;
       }
+
+      reporter.close();
+      if (count == 0) {
+         throw ERROR_FAILED.create();
+      }
+
+      int finalCount = count;
+      source.sendSuccess(() -> Component.translatable("commands.clone.success", finalCount), true);
+      return count;
    }
 
-   private static record CloneBlockEntityInfo(CompoundTag tag, DataComponentMap components) {
+   private record CloneBlockEntityInfo(CompoundTag tag, DataComponentMap components) {
    }
 
-   private static record CloneBlockInfo(
-      BlockPos pos, BlockState state, @Nullable CloneCommands.CloneBlockEntityInfo blockEntityInfo, BlockState previousStateAtDestination
+   private record CloneBlockInfo(
+      BlockPos pos, BlockState state, CloneCommands.@Nullable CloneBlockEntityInfo blockEntityInfo, BlockState previousStateAtDestination
    ) {
    }
 
-   private static record DimensionAndPosition(ServerLevel dimension, BlockPos position) {
+   private record DimensionAndPosition(ServerLevel dimension, BlockPos position) {
    }
 
-   private static enum Mode {
+   private enum Mode {
       FORCE(true),
       MOVE(true),
       NORMAL(false);
 
       private final boolean canOverlap;
 
-      private Mode(final boolean canOverlap) {
+      Mode(final boolean canOverlap) {
          this.canOverlap = canOverlap;
       }
 

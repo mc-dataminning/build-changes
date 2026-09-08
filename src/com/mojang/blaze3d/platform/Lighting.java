@@ -26,8 +26,8 @@ public class Lighting implements AutoCloseable {
 
    public Lighting() {
       GpuDevice device = RenderSystem.getDevice();
-      this.paddedSize = (long)Mth.roundToward(UBO_SIZE, device.getDeviceInfo().limits().minUniformOffsetAlignment());
-      this.buffer = device.createBuffer(() -> "Lighting UBO", 136, this.paddedSize * (long)Lighting.Entry.values().length);
+      this.paddedSize = Mth.roundToward(UBO_SIZE, device.getDeviceInfo().limits().minUniformOffsetAlignment());
+      this.buffer = device.createBuffer(() -> "Lighting UBO", 136, this.paddedSize * Lighting.Entry.values().length);
       Matrix4f flatPose = new Matrix4f().rotationY((float) (-Math.PI / 8)).rotateX((float) (Math.PI * 3.0 / 4.0));
       this.updateBuffer(
          Lighting.Entry.ITEMS_FLAT, flatPose.transformDirection(DIFFUSE_LIGHT_0, new Vector3f()), flatPose.transformDirection(DIFFUSE_LIGHT_1, new Vector3f())
@@ -65,7 +65,7 @@ public class Lighting implements AutoCloseable {
 
       try {
          ByteBuffer byteBuffer = Std140Builder.onStack(stack, UBO_SIZE).putVec3(light0).putVec3(light1).get();
-         RenderSystem.getDevice().createCommandEncoder().writeToBuffer(this.buffer.slice((long)entry.ordinal() * this.paddedSize, this.paddedSize), byteBuffer);
+         RenderSystem.getDevice().createCommandEncoder().writeToBuffer(this.buffer.slice(entry.ordinal() * this.paddedSize, this.paddedSize), byteBuffer);
       } catch (Throwable var8) {
          if (stack != null) {
             try {
@@ -84,7 +84,7 @@ public class Lighting implements AutoCloseable {
    }
 
    public void setupFor(final Lighting.Entry entry) {
-      RenderSystem.setShaderLights(this.buffer.slice((long)entry.ordinal() * this.paddedSize, (long)UBO_SIZE));
+      RenderSystem.setShaderLights(this.buffer.slice(entry.ordinal() * this.paddedSize, UBO_SIZE));
    }
 
    @Override
@@ -92,7 +92,7 @@ public class Lighting implements AutoCloseable {
       this.buffer.close();
    }
 
-   public static enum Entry {
+   public enum Entry {
       LEVEL,
       ITEMS_FLAT,
       ITEMS_3D,

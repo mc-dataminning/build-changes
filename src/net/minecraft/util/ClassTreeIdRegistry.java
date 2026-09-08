@@ -11,18 +11,18 @@ public class ClassTreeIdRegistry {
       int id = this.classToLastIdCache.getInt(clazz);
       if (id != -1) {
          return id;
-      } else {
-         Class<?> superclass = clazz;
-
-         while ((superclass = superclass.getSuperclass()) != Object.class) {
-            int newId = this.classToLastIdCache.getInt(superclass);
-            if (newId != -1) {
-               return newId;
-            }
-         }
-
-         return -1;
       }
+
+      Class<?> superclass = clazz;
+
+      while ((superclass = superclass.getSuperclass()) != Object.class) {
+         int newId = this.classToLastIdCache.getInt(superclass);
+         if (newId != -1) {
+            return newId;
+         }
+      }
+
+      return -1;
    }
 
    public int getCount(final Class<?> clazz) {

@@ -30,19 +30,19 @@ public class ColorParticleOption implements ParticleOptions {
    }
 
    public float getRed() {
-      return (float)ARGB.red(this.color) / 255.0F;
+      return ARGB.red(this.color) / 255.0F;
    }
 
    public float getGreen() {
-      return (float)ARGB.green(this.color) / 255.0F;
+      return ARGB.green(this.color) / 255.0F;
    }
 
    public float getBlue() {
-      return (float)ARGB.blue(this.color) / 255.0F;
+      return ARGB.blue(this.color) / 255.0F;
    }
 
    public float getAlpha() {
-      return (float)ARGB.alpha(this.color) / 255.0F;
+      return ARGB.alpha(this.color) / 255.0F;
    }
 
    public static ColorParticleOption create(final ParticleType<ColorParticleOption> type, final int color) {

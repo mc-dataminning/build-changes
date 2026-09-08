@@ -40,11 +40,11 @@ public class EnchantCommand {
    private static final CommandResponseTracker.MessagesWithArgs<Entity, Holder<Enchantment>, Integer> RESPONSE_ENCHANT = CommandResponseTracker.messages(
       ERROR_NOTHING_HAPPENED,
       (entity, var1, enchantment, level) -> Component.translatable(
-            "commands.enchant.success.single", Enchantment.getFullname(enchantment, level), entity.getDisplayName()
-         ),
+         "commands.enchant.success.single", Enchantment.getFullname(enchantment, level), entity.getDisplayName()
+      ),
       (entityCount, var1, enchantment, level) -> Component.translatable(
-            "commands.enchant.success.multiple", Enchantment.getFullname(enchantment, level), entityCount
-         )
+         "commands.enchant.success.multiple", Enchantment.getFullname(enchantment, level), entityCount
+      )
    );
 
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
@@ -56,21 +56,21 @@ public class EnchantCommand {
                      ((RequiredArgumentBuilder)Commands.argument("enchantment", ResourceArgument.resource(context, Registries.ENCHANTMENT))
                            .executes(
                               c -> enchant(
-                                    (CommandSourceStack)c.getSource(),
-                                    EntityArgument.getEntities(c, "targets"),
-                                    ResourceArgument.getEnchantment(c, "enchantment"),
-                                    1
-                                 )
+                                 (CommandSourceStack)c.getSource(),
+                                 EntityArgument.getEntities(c, "targets"),
+                                 ResourceArgument.getEnchantment(c, "enchantment"),
+                                 1
+                              )
                            ))
                         .then(
                            Commands.argument("level", IntegerArgumentType.integer(0))
                               .executes(
                                  c -> enchant(
-                                       (CommandSourceStack)c.getSource(),
-                                       EntityArgument.getEntities(c, "targets"),
-                                       ResourceArgument.getEnchantment(c, "enchantment"),
-                                       IntegerArgumentType.getInteger(c, "level")
-                                    )
+                                    (CommandSourceStack)c.getSource(),
+                                    EntityArgument.getEntities(c, "targets"),
+                                    ResourceArgument.getEnchantment(c, "enchantment"),
+                                    IntegerArgumentType.getInteger(c, "level")
+                                 )
                               )
                         )
                   )
@@ -84,30 +84,29 @@ public class EnchantCommand {
       Enchantment enchantment = enchantmentHolder.value();
       if (level > enchantment.getMaxLevel()) {
          throw ERROR_LEVEL_TOO_HIGH.create(level, enchantment.getMaxLevel());
-      } else {
-         CommandResponseTracker<Entity> tracker = CommandResponseTracker.create();
+      }
 
-         for (Entity entity : targets) {
-            if (entity instanceof LivingEntity) {
-               LivingEntity target = (LivingEntity)entity;
-               ItemStack item = target.getMainHandItem();
-               if (!item.isEmpty()) {
-                  if (enchantment.canEnchant(item)
-                     && EnchantmentHelper.isEnchantmentCompatible(EnchantmentHelper.getEnchantmentsForCrafting(item).keySet(), enchantmentHolder)) {
-                     item.enchant(enchantmentHolder, level);
-                     tracker.track(entity);
-                  } else if (targets.size() == 1) {
-                     throw ERROR_INCOMPATIBLE.create(item.getHoverName().getString());
-                  }
+      CommandResponseTracker<Entity> tracker = CommandResponseTracker.create();
+
+      for (Entity entity : targets) {
+         if (entity instanceof LivingEntity target) {
+            ItemStack item = target.getMainHandItem();
+            if (!item.isEmpty()) {
+               if (enchantment.canEnchant(item)
+                  && EnchantmentHelper.isEnchantmentCompatible(EnchantmentHelper.getEnchantmentsForCrafting(item).keySet(), enchantmentHolder)) {
+                  item.enchant(enchantmentHolder, level);
+                  tracker.track(entity);
                } else if (targets.size() == 1) {
-                  throw ERROR_NO_ITEM.create(target.getDisplayName().getString());
+                  throw ERROR_INCOMPATIBLE.create(item.getHoverName().getString());
                }
             } else if (targets.size() == 1) {
-               throw ERROR_NOT_LIVING_ENTITY.create(entity.getDisplayName().getString());
+               throw ERROR_NO_ITEM.create(target.getDisplayName().getString());
             }
+         } else if (targets.size() == 1) {
+            throw ERROR_NOT_LIVING_ENTITY.create(entity.getDisplayName().getString());
          }
-
-         return tracker.sendFeedback(source, true, RESPONSE_ENCHANT, enchantmentHolder, level);
       }
+
+      return tracker.sendFeedback(source, true, RESPONSE_ENCHANT, enchantmentHolder, level);
    }
 }

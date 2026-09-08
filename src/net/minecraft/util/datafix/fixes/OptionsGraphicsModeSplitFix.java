@@ -28,12 +28,12 @@ public class OptionsGraphicsModeSplitFix extends DataFix {
          "graphicsMode split to " + this.newFieldName,
          this.getInputSchema().getType(References.OPTIONS),
          input -> input.update(
-               DSL.remainderFinder(),
-               tag -> (Dynamic)DataFixUtils.orElseGet(
-                     tag.get("graphicsMode").asString().map(mode -> tag.set(this.newFieldName, tag.createString(this.getValue(mode)))).result(),
-                     () -> tag.set(this.newFieldName, tag.createString(this.valueIfFancy))
-                  )
+            DSL.remainderFinder(),
+            tag -> (Dynamic)DataFixUtils.orElseGet(
+               tag.get("graphicsMode").asString().map(mode -> tag.set(this.newFieldName, tag.createString(this.getValue(mode)))).result(),
+               () -> tag.set(this.newFieldName, tag.createString(this.valueIfFancy))
             )
+         )
       );
    }
 

@@ -47,11 +47,9 @@ public class AdvancementWidget {
    private final int width;
    private final List<FormattedCharSequence> description;
    private final Minecraft minecraft;
-   @Nullable
-   private AdvancementWidget parent;
+   private @Nullable AdvancementWidget parent;
    private final List<AdvancementWidget> children = Lists.newArrayList();
-   @Nullable
-   private AdvancementProgress progress;
+   private @Nullable AdvancementProgress progress;
    private final int x;
    private final int y;
 
@@ -78,8 +76,7 @@ public class AdvancementWidget {
       this.icon = display.icon().create();
    }
 
-   @Nullable
-   public static AdvancementWidget createWidget(final Minecraft minecraft, final AdvancementNode node) {
+   public static @Nullable AdvancementWidget createWidget(final Minecraft minecraft, final AdvancementNode node) {
       Optional<DisplayInfo> display = node.advancement().display();
       return display.isEmpty() ? null : new AdvancementWidget(minecraft, node, display.get());
    }
@@ -88,11 +85,11 @@ public class AdvancementWidget {
       int maxCriteraRequired = this.advancementNode.advancement().requirements().size();
       if (maxCriteraRequired <= 1) {
          return 0;
-      } else {
-         int spacing = 8;
-         Component fakeMaxProgress = Component.translatable("advancements.progress", maxCriteraRequired, maxCriteraRequired);
-         return this.minecraft.font.width(fakeMaxProgress) + 8;
       }
+
+      int spacing = 8;
+      Component fakeMaxProgress = Component.translatable("advancements.progress", maxCriteraRequired, maxCriteraRequired);
+      return this.minecraft.font.width(fakeMaxProgress) + 8;
    }
 
    private static float getMaxWidth(final StringSplitter splitter, final List<FormattedText> input) {
@@ -106,7 +103,7 @@ public class AdvancementWidget {
 
       for (int testMargin : TEST_SPLIT_OFFSETS) {
          List<FormattedText> testSplit = splitter.splitLines(input, preferredWidth - testMargin, Style.EMPTY);
-         float distance = Math.abs(getMaxWidth(splitter, testSplit) - (float)preferredWidth);
+         float distance = Math.abs(getMaxWidth(splitter, testSplit) - preferredWidth);
          if (distance <= 10.0F) {
             return testSplit;
          }
@@ -120,8 +117,7 @@ public class AdvancementWidget {
       return bestSplit;
    }
 
-   @Nullable
-   private static AdvancementHolder findFirstVisibleParent(AdvancementNode node) {
+   private static @Nullable AdvancementHolder findFirstVisibleParent(AdvancementNode node) {
       do {
          node = node.parent();
       } while (node != null && node.advancement().display().isEmpty());
@@ -203,7 +199,7 @@ public class AdvancementWidget {
       int progressWidth = progressText == null ? 0 : font.width(progressText);
       boolean topSide = titleBarBottom + descriptionHeight >= 113;
       float amount = this.progress == null ? 0.0F : this.progress.getPercent();
-      int firstHalfWidth = Mth.floor(amount * (float)this.width);
+      int firstHalfWidth = Mth.floor(amount * this.width);
       AdvancementWidgetType firstHalf;
       AdvancementWidgetType secondHalf;
       AdvancementWidgetType iconFrame;

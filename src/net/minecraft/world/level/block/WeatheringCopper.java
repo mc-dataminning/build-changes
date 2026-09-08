@@ -51,7 +51,7 @@ public interface WeatheringCopper extends ChangeOverTimeBlock<WeatheringCopper.W
    static Block getFirst(final Block block) {
       Block candiate = block;
 
-      for (Block previous = (Block)PREVIOUS_BY_BLOCK.get().get(block); previous != null; previous = (Block)PREVIOUS_BY_BLOCK.get().get(previous)) {
+      for (Block previous = (Block)PREVIOUS_BY_BLOCK.get().get(candiate); previous != null; previous = (Block)PREVIOUS_BY_BLOCK.get().get(candiate)) {
          candiate = previous;
       }
 
@@ -80,7 +80,7 @@ public interface WeatheringCopper extends ChangeOverTimeBlock<WeatheringCopper.W
       return this.getAge() == WeatheringCopper.WeatherState.UNAFFECTED ? 0.75F : 1.0F;
    }
 
-   public static enum WeatherState implements StringRepresentable {
+   enum WeatherState implements StringRepresentable {
       UNAFFECTED("unaffected"),
       EXPOSED("exposed"),
       WEATHERED("weathered"),
@@ -91,7 +91,7 @@ public interface WeatheringCopper extends ChangeOverTimeBlock<WeatheringCopper.W
       public static final StreamCodec<ByteBuf, WeatheringCopper.WeatherState> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Enum::ordinal);
       private final String name;
 
-      private WeatherState(final String name) {
+      WeatherState(final String name) {
          this.name = name;
       }
 

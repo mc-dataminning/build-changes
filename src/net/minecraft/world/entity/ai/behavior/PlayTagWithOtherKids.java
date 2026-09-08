@@ -27,39 +27,39 @@ public class PlayTagWithOtherKids {
    public static BehaviorControl<PathfinderMob> create() {
       return BehaviorBuilder.create(
          i -> i.group(
-                  i.present(MemoryModuleType.VISIBLE_VILLAGER_BABIES),
-                  i.absent(MemoryModuleType.WALK_TARGET),
-                  i.registered(MemoryModuleType.LOOK_TARGET),
-                  i.registered(MemoryModuleType.INTERACTION_TARGET)
-               )
-               .apply(i, (babies, walkTarget, lookTarget, interactionTarget) -> (level, me, timestamp) -> {
-                     if (level.getRandom().nextInt(10) != 0) {
-                        return false;
-                     } else {
-                        List<LivingEntity> friendsNearby = i.get(babies);
-                        Optional<LivingEntity> otherKidChasingMe = friendsNearby.stream().filter(friend -> isFriendChasingMe(me, friend)).findAny();
-                        if (!otherKidChasingMe.isPresent()) {
-                           Optional<LivingEntity> otherKidBeingChased = findSomeoneBeingChased(friendsNearby);
-                           if (otherKidBeingChased.isPresent()) {
-                              chaseKid(interactionTarget, lookTarget, walkTarget, otherKidBeingChased.get());
-                              return true;
-                           } else {
-                              friendsNearby.stream().findAny().ifPresent(entity -> chaseKid(interactionTarget, lookTarget, walkTarget, entity));
-                              return true;
-                           }
-                        } else {
-                           for (int j = 0; j < 10; j++) {
-                              Vec3 pos = LandRandomPos.getPos(me, 20, 8);
-                              if (pos != null && level.isVillage(BlockPos.containing(pos))) {
-                                 walkTarget.set(new WalkTarget(pos, 0.6F, 0));
-                                 break;
-                              }
-                           }
+               i.present(MemoryModuleType.VISIBLE_VILLAGER_BABIES),
+               i.absent(MemoryModuleType.WALK_TARGET),
+               i.registered(MemoryModuleType.LOOK_TARGET),
+               i.registered(MemoryModuleType.INTERACTION_TARGET)
+            )
+            .apply(i, (babies, walkTarget, lookTarget, interactionTarget) -> (level, me, timestamp) -> {
+               if (level.getRandom().nextInt(10) != 0) {
+                  return false;
+               }
 
-                           return true;
-                        }
+               List<LivingEntity> friendsNearby = i.get(babies);
+               Optional<LivingEntity> otherKidChasingMe = friendsNearby.stream().filter(friend -> isFriendChasingMe(me, friend)).findAny();
+               if (!otherKidChasingMe.isPresent()) {
+                  Optional<LivingEntity> otherKidBeingChased = findSomeoneBeingChased(friendsNearby);
+                  if (otherKidBeingChased.isPresent()) {
+                     chaseKid(interactionTarget, lookTarget, walkTarget, otherKidBeingChased.get());
+                     return true;
+                  } else {
+                     friendsNearby.stream().findAny().ifPresent(entity -> chaseKid(interactionTarget, lookTarget, walkTarget, entity));
+                     return true;
+                  }
+               } else {
+                  for (int j = 0; j < 10; j++) {
+                     Vec3 pos = LandRandomPos.getPos(me, 20, 8);
+                     if (pos != null && level.isVillage(BlockPos.containing(pos))) {
+                        walkTarget.set(new WalkTarget(pos, 0.6F, 0));
+                        break;
                      }
-                  })
+                  }
+
+                  return true;
+               }
+            })
       );
    }
 

@@ -8,7 +8,7 @@ public enum RemoteDebugSampleType {
 
    private final DebugSubscription<?> subscription;
 
-   private RemoteDebugSampleType(final DebugSubscription<?> subscription) {
+   RemoteDebugSampleType(final DebugSubscription<?> subscription) {
       this.subscription = subscription;
    }
 

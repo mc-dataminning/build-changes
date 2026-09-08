@@ -32,8 +32,7 @@ public class BlockEntityType<T extends BlockEntity> {
       return this.builtInRegistryHolder;
    }
 
-   @Nullable
-   public T getBlockEntity(final BlockGetter level, final BlockPos pos) {
+   public @Nullable T getBlockEntity(final BlockGetter level, final BlockPos pos) {
       BlockEntity entity = level.getBlockEntity(pos);
       return (T)(entity != null && entity.getType() == this ? entity : null);
    }

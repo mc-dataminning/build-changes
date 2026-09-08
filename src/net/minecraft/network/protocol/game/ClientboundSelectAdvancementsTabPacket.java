@@ -11,10 +11,9 @@ public class ClientboundSelectAdvancementsTabPacket implements Packet<ClientGame
    public static final StreamCodec<FriendlyByteBuf, ClientboundSelectAdvancementsTabPacket> STREAM_CODEC = Packet.codec(
       ClientboundSelectAdvancementsTabPacket::write, ClientboundSelectAdvancementsTabPacket::new
    );
-   @Nullable
-   private final Identifier tab;
+   private final @Nullable Identifier tab;
 
-   public ClientboundSelectAdvancementsTabPacket(@Nullable final Identifier tab) {
+   public ClientboundSelectAdvancementsTabPacket(final @Nullable Identifier tab) {
       this.tab = tab;
    }
 
@@ -35,8 +34,7 @@ public class ClientboundSelectAdvancementsTabPacket implements Packet<ClientGame
       listener.handleSelectAdvancementsTab(this);
    }
 
-   @Nullable
-   public Identifier getTab() {
+   public @Nullable Identifier getTab() {
       return this.tab;
    }
 }

@@ -12,8 +12,8 @@ public record EnvironmentAttributeValue(EnvironmentAttribute<?> attribute) imple
    private static final Codec<EnvironmentAttribute<?>> ATTRIBUTE_CODEC = EnvironmentAttributes.CODEC
       .validate(
          attribute -> attribute.type().toFloat() == null
-               ? DataResult.error(() -> attribute + " cannot be converted to a float")
-               : DataResult.success(attribute)
+            ? DataResult.error(() -> attribute + " cannot be converted to a float")
+            : DataResult.success(attribute)
       );
    public static final MapCodec<EnvironmentAttributeValue> MAP_CODEC = EnvironmentAttributeProvider.mapCodec(ATTRIBUTE_CODEC, EnvironmentAttributeValue::new);
 

@@ -11,22 +11,22 @@ public class BackUpIfTooClose {
    public static OneShot<Mob> create(final int tooCloseDistance, final float strafeSpeed) {
       return BehaviorBuilder.create(
          i -> i.group(
-                  i.absent(MemoryModuleType.WALK_TARGET),
-                  i.registered(MemoryModuleType.LOOK_TARGET),
-                  i.present(MemoryModuleType.ATTACK_TARGET),
-                  i.present(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
-               )
-               .apply(i, (walkTarget, lookTarget, attackTarget, nearestVisible) -> (level, body, timestamp) -> {
-                     LivingEntity target = i.get(attackTarget);
-                     if (target.closerThan(body, (double)tooCloseDistance) && i.<NearestVisibleLivingEntities>get(nearestVisible).contains(target)) {
-                        lookTarget.set(new EntityTracker(target, true));
-                        body.getMoveControl().strafe(-strafeSpeed, 0.0F);
-                        body.setYRot(Mth.rotateIfNecessary(body.getYRot(), body.yHeadRot, 0.0F));
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  })
+               i.absent(MemoryModuleType.WALK_TARGET),
+               i.registered(MemoryModuleType.LOOK_TARGET),
+               i.present(MemoryModuleType.ATTACK_TARGET),
+               i.present(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES)
+            )
+            .apply(i, (walkTarget, lookTarget, attackTarget, nearestVisible) -> (level, body, timestamp) -> {
+               LivingEntity target = i.get(attackTarget);
+               if (target.closerThan(body, tooCloseDistance) && i.<NearestVisibleLivingEntities>get(nearestVisible).contains(target)) {
+                  lookTarget.set(new EntityTracker(target, true));
+                  body.getMoveControl().strafe(-strafeSpeed, 0.0F);
+                  body.setYRot(Mth.rotateIfNecessary(body.getYRot(), body.yHeadRot, 0.0F));
+                  return true;
+               } else {
+                  return false;
+               }
+            })
       );
    }
 }

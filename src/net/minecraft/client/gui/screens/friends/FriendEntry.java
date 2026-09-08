@@ -24,14 +24,13 @@ class FriendEntry extends AbstractFriendsEntryContainerWidget {
    private static final Component PRESENCE_OFFLINE = Component.translatable("gui.friends.presence.status.offline").withColor(-6250336);
    private final SpriteIconButton removeButton;
    private final StringWidget statusWidget;
-   @Nullable
-   private PresenceStatusDto presence;
+   private @Nullable PresenceStatusDto presence;
 
    public FriendEntry(
       final Minecraft minecraft,
       final FriendsOverlayScreen screen,
       final PlayerSocialManager.PlayerData playerData,
-      @Nullable final PresenceStatusDto presence,
+      final @Nullable PresenceStatusDto presence,
       final boolean initiallyLoading,
       final Runnable onAction
    ) {
@@ -53,7 +52,7 @@ class FriendEntry extends AbstractFriendsEntryContainerWidget {
       this.addChild(this.removeButton);
    }
 
-   private static Component presenceStatusComponent(@Nullable final PresenceStatusDto presence) {
+   private static Component presenceStatusComponent(final @Nullable PresenceStatusDto presence) {
       if (presence != null && presence.status() != PresenceStatus.OFFLINE) {
          String key = "gui.friends.presence.status." + presence.status().toString().toLowerCase(Locale.ROOT);
          return Component.translatable(key).withColor(-16711936);
@@ -62,7 +61,7 @@ class FriendEntry extends AbstractFriendsEntryContainerWidget {
       }
    }
 
-   void applyPresence(@Nullable final PresenceStatusDto newPresence) {
+   void applyPresence(final @Nullable PresenceStatusDto newPresence) {
       this.presence = newPresence;
       this.statusWidget.setMessage(presenceStatusComponent(newPresence));
    }

@@ -13,8 +13,7 @@ import org.lwjgl.system.MemoryStack;
 public class ProjectionMatrixBuffer implements AutoCloseable {
    private final GpuBuffer buffer;
    private final GpuBufferSlice bufferSlice;
-   @Nullable
-   private Projection lastUploadedProjection;
+   private @Nullable Projection lastUploadedProjection;
    private long projectionMatrixVersion;
    private final Matrix4f tempMatrix = new Matrix4f();
 
@@ -22,20 +21,19 @@ public class ProjectionMatrixBuffer implements AutoCloseable {
       this.lastUploadedProjection = null;
       this.projectionMatrixVersion = -1L;
       GpuDevice device = RenderSystem.getDevice();
-      this.buffer = device.createBuffer(() -> "Camera projection matrix UBO " + name, 136, (long)RenderSystem.PROJECTION_MATRIX_UBO_SIZE);
-      this.bufferSlice = this.buffer.slice(0L, (long)RenderSystem.PROJECTION_MATRIX_UBO_SIZE);
+      this.buffer = device.createBuffer(() -> "Camera projection matrix UBO " + name, 136, RenderSystem.PROJECTION_MATRIX_UBO_SIZE);
+      this.bufferSlice = this.buffer.slice(0L, RenderSystem.PROJECTION_MATRIX_UBO_SIZE);
    }
 
    public GpuBufferSlice getBuffer(final Projection projection) {
       assert projection.getMatrixVersion() != -1L;
-
       if (this.lastUploadedProjection == projection && projection.getMatrixVersion() == this.projectionMatrixVersion) {
          return this.bufferSlice;
-      } else {
-         this.lastUploadedProjection = projection;
-         this.projectionMatrixVersion = projection.getMatrixVersion();
-         return this.writeBuffer(projection.getMatrix(this.tempMatrix));
       }
+
+      this.lastUploadedProjection = projection;
+      this.projectionMatrixVersion = projection.getMatrixVersion();
+      return this.writeBuffer(projection.getMatrix(this.tempMatrix));
    }
 
    public GpuBufferSlice getBuffer(final Matrix4f projectionMatrix) {

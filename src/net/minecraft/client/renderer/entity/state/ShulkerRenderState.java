@@ -7,8 +7,7 @@ import org.jspecify.annotations.Nullable;
 
 public class ShulkerRenderState extends LivingEntityRenderState {
    public Vec3 renderOffset = Vec3.ZERO;
-   @Nullable
-   public DyeColor color;
+   public @Nullable DyeColor color;
    public float peekAmount;
    public float yHeadRot;
    public float yBodyRot;

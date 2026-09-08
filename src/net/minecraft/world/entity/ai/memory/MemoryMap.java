@@ -28,18 +28,13 @@ public final class MemoryMap implements Iterable<MemoryMap.Value<?>> {
       return new MemoryMap(memories.collect(Collectors.toMap(MemoryMap.Value::type, MemoryMap.Value::value)));
    }
 
-   @Nullable
-   public <U> ExpirableValue<U> get(final MemoryModuleType<U> type) {
+   public <U> @Nullable ExpirableValue<U> get(final MemoryModuleType<U> type) {
       return (ExpirableValue<U>)this.memories.get(type);
    }
 
    @Override
    public boolean equals(final Object obj) {
-      if (obj instanceof MemoryMap map && this.memories.equals(map.memories)) {
-         return true;
-      }
-
-      return false;
+      return obj instanceof MemoryMap map && this.memories.equals(map.memories);
    }
 
    @Override
@@ -72,7 +67,7 @@ public final class MemoryMap implements Iterable<MemoryMap.Value<?>> {
       }
    }
 
-   public static record Value<U>(MemoryModuleType<U> type, ExpirableValue<U> value) {
+   public record Value<U>(MemoryModuleType<U> type, ExpirableValue<U> value) {
       public static <U> MemoryMap.Value<U> createUnchecked(final MemoryModuleType<U> type, final ExpirableValue<?> value) {
          return new MemoryMap.Value<>(type, (ExpirableValue<U>)value);
       }

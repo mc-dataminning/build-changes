@@ -55,9 +55,9 @@ public class EntityAnchorArgument implements ArgumentType<EntityAnchorArgument.A
       return EXAMPLES;
    }
 
-   public static enum Anchor {
+   public enum Anchor {
       FEET("feet", (p, e) -> p),
-      EYES("eyes", (p, e) -> new Vec3(p.x, p.y + (double)e.getEyeHeight(), p.z));
+      EYES("eyes", (p, e) -> new Vec3(p.x, p.y + e.getEyeHeight(), p.z));
 
       private static final Map<String, EntityAnchorArgument.Anchor> BY_NAME = Util.make(Maps.newHashMap(), map -> {
          for (EntityAnchorArgument.Anchor anchor : values()) {
@@ -67,13 +67,12 @@ public class EntityAnchorArgument implements ArgumentType<EntityAnchorArgument.A
       private final String name;
       private final BiFunction<Vec3, Entity, Vec3> transform;
 
-      private Anchor(final String name, final BiFunction<Vec3, Entity, Vec3> transform) {
+      Anchor(final String name, final BiFunction<Vec3, Entity, Vec3> transform) {
          this.name = name;
          this.transform = transform;
       }
 
-      @Nullable
-      public static EntityAnchorArgument.Anchor getByName(final String name) {
+      public static EntityAnchorArgument.@Nullable Anchor getByName(final String name) {
          return BY_NAME.get(name);
       }
 

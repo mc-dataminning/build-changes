@@ -36,10 +36,10 @@ public class ModelFeatureRenderer extends RenderTypeFeatureRenderer<ModelFeature
       model.renderToBuffer(this.poseStack, buffer, submit.lightCoords(), submit.overlayCoords(), submit.tintedColor());
    }
 
-   public static record CrumblingOverlay(int progress, PoseStack.Pose cameraPose) {
+   public record CrumblingOverlay(int progress, PoseStack.Pose cameraPose) {
    }
 
-   public static record Submit<S>(
+   public record Submit<S>(
       RenderType renderType,
       PoseStack.Pose pose,
       Model<? super S> model,
@@ -48,7 +48,7 @@ public class ModelFeatureRenderer extends RenderTypeFeatureRenderer<ModelFeature
       int overlayCoords,
       int tintedColor,
       @Nullable UvMapping uvMapping,
-      @Nullable PoseStack.Pose sheetedDecalPose
+      PoseStack.@Nullable Pose sheetedDecalPose
    ) implements BatchableSubmit, TranslucentSubmit {
       @Override
       public Object batchKey() {

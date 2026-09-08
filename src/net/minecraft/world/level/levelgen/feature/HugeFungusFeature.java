@@ -23,14 +23,14 @@ public record HugeFungusFeature(
    private static final float HUGE_PROBABILITY = 0.06F;
    public static final MapCodec<HugeFungusFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BlockState.CODEC.fieldOf("valid_base_block").forGetter(HugeFungusFeature::validBaseState),
-               BlockState.CODEC.fieldOf("stem_state").forGetter(HugeFungusFeature::stemState),
-               BlockState.CODEC.fieldOf("hat_state").forGetter(HugeFungusFeature::hatState),
-               BlockState.CODEC.fieldOf("decor_state").forGetter(HugeFungusFeature::decorState),
-               BlockPredicate.CODEC.fieldOf("replaceable_blocks").forGetter(HugeFungusFeature::replaceableBlocks),
-               Codec.BOOL.optionalFieldOf("planted", false).forGetter(HugeFungusFeature::planted)
-            )
-            .apply(i, HugeFungusFeature::new)
+            BlockState.CODEC.fieldOf("valid_base_block").forGetter(HugeFungusFeature::validBaseState),
+            BlockState.CODEC.fieldOf("stem_state").forGetter(HugeFungusFeature::stemState),
+            BlockState.CODEC.fieldOf("hat_state").forGetter(HugeFungusFeature::hatState),
+            BlockState.CODEC.fieldOf("decor_state").forGetter(HugeFungusFeature::decorState),
+            BlockPredicate.CODEC.fieldOf("replaceable_blocks").forGetter(HugeFungusFeature::replaceableBlocks),
+            Codec.BOOL.optionalFieldOf("planted", false).forGetter(HugeFungusFeature::planted)
+         )
+         .apply(i, HugeFungusFeature::new)
    );
 
    @Override
@@ -49,25 +49,25 @@ public record HugeFungusFeature(
 
       if (newOrigin == null) {
          return false;
-      } else {
-         int totalHeight = Mth.nextInt(random, 4, 13);
-         if (random.nextInt(12) == 0) {
-            totalHeight *= 2;
-         }
-
-         if (!this.planted()) {
-            int maxHeight = chunkGenerator.getGenDepth();
-            if (newOrigin.getY() + totalHeight + 1 >= maxHeight) {
-               return false;
-            }
-         }
-
-         boolean isHuge = !this.planted() && random.nextFloat() < 0.06F;
-         level.setBlock(origin, Blocks.AIR.defaultBlockState(), 260);
-         this.placeStem(level, random, newOrigin, totalHeight, isHuge);
-         this.placeHat(level, random, newOrigin, totalHeight, isHuge);
-         return true;
       }
+
+      int totalHeight = Mth.nextInt(random, 4, 13);
+      if (random.nextInt(12) == 0) {
+         totalHeight *= 2;
+      }
+
+      if (!this.planted()) {
+         int maxHeight = chunkGenerator.getGenDepth();
+         if (newOrigin.getY() + totalHeight + 1 >= maxHeight) {
+            return false;
+         }
+      }
+
+      boolean isHuge = !this.planted() && random.nextFloat() < 0.06F;
+      level.setBlock(origin, Blocks.AIR.defaultBlockState(), 260);
+      this.placeStem(level, random, newOrigin, totalHeight, isHuge);
+      this.placeHat(level, random, newOrigin, totalHeight, isHuge);
+      return true;
    }
 
    private boolean isReplaceable(final WorldGenLevel level, final BlockPos pos, final boolean checkNonReplaceablePlants) {
@@ -175,7 +175,7 @@ public record HugeFungusFeature(
    private void placeHatDropBlock(final LevelAccessor level, final RandomSource random, final BlockPos blockPos, final boolean placeVines) {
       if (level.getBlockState(blockPos.below()).is(this.hatState.getBlock())) {
          this.setBlock(level, blockPos, this.hatState);
-      } else if ((double)random.nextFloat() < 0.15) {
+      } else if (random.nextFloat() < 0.15) {
          this.setBlock(level, blockPos, this.hatState);
          if (placeVines && random.nextInt(11) == 0) {
             tryPlaceWeepingVines(blockPos, level, random);
@@ -205,11 +205,7 @@ public record HugeFungusFeature(
       for (int height = 0; height <= totalHeight; height++) {
          if (level.isEmptyBlock(placePos)) {
             if (height == totalHeight || !level.isEmptyBlock(placePos.below())) {
-               level.setBlock(
-                  placePos,
-                  Blocks.WEEPING_VINES.defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Integer.valueOf(Mth.nextInt(random, minAge, naxAge))),
-                  2
-               );
+               level.setBlock(placePos, Blocks.WEEPING_VINES.defaultBlockState().setValue(GrowingPlantHeadBlock.AGE, Mth.nextInt(random, minAge, naxAge)), 2);
                break;
             }
 

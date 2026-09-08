@@ -50,15 +50,14 @@ public class PitcherCropBlock extends DoublePlantBlock implements BonemealableBl
          int width = state.getValue(AGE) == 0 ? 6 : 10;
 
          return switch ((DoubleBlockHalf)state.getValue(HALF)) {
-            case LOWER -> Block.column((double)width, -1.0, (double)Math.min(16, -1 + height));
-            case UPPER -> Block.column((double)width, 0.0, (double)Math.max(0, -1 + height - 16));
+            case LOWER -> Block.column(width, -1.0, Math.min(16, -1 + height));
+            case UPPER -> Block.column(width, 0.0, Math.max(0, -1 + height - 16));
          };
       });
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       return this.defaultBlockState();
    }
 
@@ -125,7 +124,7 @@ public class PitcherCropBlock extends DoublePlantBlock implements BonemealableBl
    }
 
    @Override
-   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, @Nullable final LivingEntity by, final ItemStack itemStack) {
+   public void setPlacedBy(final Level level, final BlockPos pos, final BlockState state, final @Nullable LivingEntity by, final ItemStack itemStack) {
    }
 
    @Override
@@ -145,7 +144,7 @@ public class PitcherCropBlock extends DoublePlantBlock implements BonemealableBl
    private void grow(final ServerLevel level, final BlockState lowerState, final BlockPos lowerPos, final int increase) {
       int updatedAge = Math.min(lowerState.getValue(AGE) + increase, 4);
       if (this.canGrow(level, lowerPos, lowerState, updatedAge)) {
-         BlockState newLowerState = lowerState.setValue(AGE, Integer.valueOf(updatedAge));
+         BlockState newLowerState = lowerState.setValue(AGE, updatedAge);
          level.setBlock(lowerPos, newLowerState, 2);
          if (isDouble(updatedAge)) {
             level.setBlockAndUpdate(lowerPos.above(), newLowerState.setValue(HALF, DoubleBlockHalf.UPPER));
@@ -181,15 +180,14 @@ public class PitcherCropBlock extends DoublePlantBlock implements BonemealableBl
       return state.getValue(AGE) >= 4;
    }
 
-   @Nullable
-   private PitcherCropBlock.PosAndState getLowerHalf(final LevelReader level, final BlockPos pos, final BlockState state) {
+   private PitcherCropBlock.@Nullable PosAndState getLowerHalf(final LevelReader level, final BlockPos pos, final BlockState state) {
       if (isLower(state)) {
          return new PitcherCropBlock.PosAndState(pos, state);
-      } else {
-         BlockPos lowerPos = pos.below();
-         BlockState lowerState = level.getBlockState(lowerPos);
-         return isLower(lowerState) ? new PitcherCropBlock.PosAndState(lowerPos, lowerState) : null;
       }
+
+      BlockPos lowerPos = pos.below();
+      BlockState lowerState = level.getBlockState(lowerPos);
+      return isLower(lowerState) ? new PitcherCropBlock.PosAndState(lowerPos, lowerState) : null;
    }
 
    @Override
@@ -211,6 +209,6 @@ public class PitcherCropBlock extends DoublePlantBlock implements BonemealableBl
       }
    }
 
-   private static record PosAndState(BlockPos pos, BlockState state) {
+   private record PosAndState(BlockPos pos, BlockState state) {
    }
 }

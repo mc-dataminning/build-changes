@@ -35,16 +35,16 @@ public class FlatLevelGeneratorSettings {
    private static final Logger LOGGER = LogUtils.getLogger();
    public static final Codec<FlatLevelGeneratorSettings> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  RegistryCodecs.holderSet(Registries.STRUCTURE_SET).lenientOptionalFieldOf("structure_overrides").forGetter(c -> c.structureOverrides),
-                  FlatLayerInfo.CODEC.listOf().fieldOf("layers").forGetter(FlatLevelGeneratorSettings::getLayersInfo),
-                  ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "lakes", false).forGetter(s -> s.addLakes),
-                  ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "features", false).forGetter(s -> s.decoration),
-                  Biome.CODEC.lenientOptionalFieldOf("biome").orElseGet(Optional::empty).forGetter(s -> Optional.of(s.biome)),
-                  RegistryOps.retrieveElement(Biomes.PLAINS),
-                  RegistryOps.retrieveElement(MiscOverworldPlacements.LAKE_LAVA_UNDERGROUND),
-                  RegistryOps.retrieveElement(MiscOverworldPlacements.LAKE_LAVA_SURFACE)
-               )
-               .apply(i, FlatLevelGeneratorSettings::new)
+               RegistryCodecs.holderSet(Registries.STRUCTURE_SET).lenientOptionalFieldOf("structure_overrides").forGetter(c -> c.structureOverrides),
+               FlatLayerInfo.CODEC.listOf().fieldOf("layers").forGetter(FlatLevelGeneratorSettings::getLayersInfo),
+               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "lakes", false).forGetter(s -> s.addLakes),
+               ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "features", false).forGetter(s -> s.decoration),
+               Biome.CODEC.lenientOptionalFieldOf("biome").orElseGet(Optional::empty).forGetter(s -> Optional.of(s.biome)),
+               RegistryOps.retrieveElement(Biomes.PLAINS),
+               RegistryOps.retrieveElement(MiscOverworldPlacements.LAKE_LAVA_UNDERGROUND),
+               RegistryOps.retrieveElement(MiscOverworldPlacements.LAKE_LAVA_SURFACE)
+            )
+            .apply(i, FlatLevelGeneratorSettings::new)
       )
       .comapFlatMap(FlatLevelGeneratorSettings::validateHeight, Function.identity())
       .stable();
@@ -137,42 +137,42 @@ public class FlatLevelGeneratorSettings {
    public BiomeGenerationSettings adjustGenerationSettings(final Holder<Biome> sourceBiome) {
       if (!sourceBiome.equals(this.biome)) {
          return sourceBiome.value().getGenerationSettings();
-      } else {
-         BiomeGenerationSettings biomeGenerationSettings = this.getBiome().value().getGenerationSettings();
-         BiomeGenerationSettings.PlainBuilder newGenerationSettings = new BiomeGenerationSettings.PlainBuilder();
-         if (this.addLakes) {
-            for (Holder<PlacedFeature> lake : this.lakes) {
-               newGenerationSettings.addFeature(GenerationStep.Decoration.LAKES, lake);
-            }
+      }
+
+      BiomeGenerationSettings biomeGenerationSettings = this.getBiome().value().getGenerationSettings();
+      BiomeGenerationSettings.PlainBuilder newGenerationSettings = new BiomeGenerationSettings.PlainBuilder();
+      if (this.addLakes) {
+         for (Holder<PlacedFeature> lake : this.lakes) {
+            newGenerationSettings.addFeature(GenerationStep.Decoration.LAKES, lake);
          }
+      }
 
-         boolean biomeDecoration = (!this.voidGen || sourceBiome.is(Biomes.THE_VOID)) && this.decoration;
-         if (biomeDecoration) {
-            List<HolderSet<PlacedFeature>> features = biomeGenerationSettings.features();
+      boolean biomeDecoration = (!this.voidGen || sourceBiome.is(Biomes.THE_VOID)) && this.decoration;
+      if (biomeDecoration) {
+         List<HolderSet<PlacedFeature>> features = biomeGenerationSettings.features();
 
-            for (int stepIndex = 0; stepIndex < features.size(); stepIndex++) {
-               if (stepIndex != GenerationStep.Decoration.UNDERGROUND_STRUCTURES.ordinal()
-                  && stepIndex != GenerationStep.Decoration.SURFACE_STRUCTURES.ordinal()
-                  && (!this.addLakes || stepIndex != GenerationStep.Decoration.LAKES.ordinal())) {
-                  for (Holder<PlacedFeature> feature : features.get(stepIndex)) {
-                     newGenerationSettings.addFeature(stepIndex, feature);
-                  }
+         for (int stepIndex = 0; stepIndex < features.size(); stepIndex++) {
+            if (stepIndex != GenerationStep.Decoration.UNDERGROUND_STRUCTURES.ordinal()
+               && stepIndex != GenerationStep.Decoration.SURFACE_STRUCTURES.ordinal()
+               && (!this.addLakes || stepIndex != GenerationStep.Decoration.LAKES.ordinal())) {
+               for (Holder<PlacedFeature> feature : features.get(stepIndex)) {
+                  newGenerationSettings.addFeature(stepIndex, feature);
                }
             }
          }
-
-         List<BlockState> layers = this.getLayers();
-
-         for (int i = 0; i < layers.size(); i++) {
-            BlockState layer = layers.get(i);
-            if (!Heightmap.Types.MOTION_BLOCKING.isOpaque().test(layer)) {
-               layers.set(i, null);
-               newGenerationSettings.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, PlacementUtils.inlinePlaced(new FillLayerFeature(i, layer)));
-            }
-         }
-
-         return newGenerationSettings.build();
       }
+
+      List<BlockState> layers = this.getLayers();
+
+      for (int i = 0; i < layers.size(); i++) {
+         BlockState layer = layers.get(i);
+         if (!Heightmap.Types.MOTION_BLOCKING.isOpaque().test(layer)) {
+            layers.set(i, null);
+            newGenerationSettings.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, PlacementUtils.inlinePlaced(new FillLayerFeature(i, layer)));
+         }
+      }
+
+      return newGenerationSettings.build();
    }
 
    public Optional<HolderSet<StructureSet>> structureOverrides() {

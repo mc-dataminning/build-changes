@@ -19,13 +19,12 @@ public record GuiMessage(int addedTime, Component content, @Nullable MessageSign
       return ComponentRenderUtils.wrapComponents(this.content, maxWidth, font);
    }
 
-   public static record Line(GuiMessage parent, FormattedCharSequence content, boolean endOfEntry) {
+   public record Line(GuiMessage parent, FormattedCharSequence content, boolean endOfEntry) {
       public int getTagIconLeft(final Font font) {
          return font.width(this.content) + 4;
       }
 
-      @Nullable
-      public GuiMessageTag tag() {
+      public @Nullable GuiMessageTag tag() {
          return this.parent.tag;
       }
 

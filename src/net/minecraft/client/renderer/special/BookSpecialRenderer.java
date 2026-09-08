@@ -44,14 +44,14 @@ public class BookSpecialRenderer implements NoDataSpecialModelRenderer {
       this.model.root().getExtentsForGui(poseStack, output);
    }
 
-   public static record Unbaked(float openAngle, float page1, float page2) implements NoDataSpecialModelRenderer.Unbaked {
+   public record Unbaked(float openAngle, float page1, float page2) implements NoDataSpecialModelRenderer.Unbaked {
       public static final MapCodec<BookSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Codec.FLOAT.fieldOf("open_angle").forGetter(BookSpecialRenderer.Unbaked::openAngle),
-                  Codec.FLOAT.fieldOf("page1").forGetter(BookSpecialRenderer.Unbaked::page1),
-                  Codec.FLOAT.fieldOf("page2").forGetter(BookSpecialRenderer.Unbaked::page2)
-               )
-               .apply(i, BookSpecialRenderer.Unbaked::new)
+               Codec.FLOAT.fieldOf("open_angle").forGetter(BookSpecialRenderer.Unbaked::openAngle),
+               Codec.FLOAT.fieldOf("page1").forGetter(BookSpecialRenderer.Unbaked::page1),
+               Codec.FLOAT.fieldOf("page2").forGetter(BookSpecialRenderer.Unbaked::page2)
+            )
+            .apply(i, BookSpecialRenderer.Unbaked::new)
       );
 
       @Override

@@ -29,8 +29,7 @@ public class EnchantingTableBlockEntity extends BlockEntity implements Nameable 
    public float oRot;
    public float tRot;
    private static final RandomSource RANDOM = RandomSource.create();
-   @Nullable
-   private Component name;
+   private @Nullable Component name;
 
    public EnchantingTableBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
       super(BlockEntityTypes.ENCHANTING_TABLE, worldPosition, blockState);
@@ -51,19 +50,17 @@ public class EnchantingTableBlockEntity extends BlockEntity implements Nameable 
    public static void bookAnimationTick(final Level level, final BlockPos worldPosition, final BlockState state, final EnchantingTableBlockEntity entity) {
       entity.oOpen = entity.open;
       entity.oRot = entity.rot;
-      Player player = level.getNearestPlayer(
-         (double)worldPosition.getX() + 0.5, (double)worldPosition.getY() + 0.5, (double)worldPosition.getZ() + 0.5, 3.0, false
-      );
+      Player player = level.getNearestPlayer(worldPosition.getX() + 0.5, worldPosition.getY() + 0.5, worldPosition.getZ() + 0.5, 3.0, false);
       if (player != null) {
-         double xd = player.getX() - ((double)worldPosition.getX() + 0.5);
-         double zd = player.getZ() - ((double)worldPosition.getZ() + 0.5);
+         double xd = player.getX() - (worldPosition.getX() + 0.5);
+         double zd = player.getZ() - (worldPosition.getZ() + 0.5);
          entity.tRot = (float)Mth.atan2(zd, xd);
          entity.open += 0.1F;
          if (entity.open < 0.5F || RANDOM.nextInt(40) == 0) {
             float old = entity.flipT;
 
             do {
-               entity.flipT = entity.flipT + (float)(RANDOM.nextInt(4) - RANDOM.nextInt(4));
+               entity.flipT = entity.flipT + (RANDOM.nextInt(4) - RANDOM.nextInt(4));
             } while (old == entity.flipT);
          }
       } else {
@@ -113,13 +110,12 @@ public class EnchantingTableBlockEntity extends BlockEntity implements Nameable 
       return this.name != null ? this.name : DEFAULT_NAME;
    }
 
-   public void setCustomName(@Nullable final Component name) {
+   public void setCustomName(final @Nullable Component name) {
       this.name = name;
    }
 
-   @Nullable
    @Override
-   public Component getCustomName() {
+   public @Nullable Component getCustomName() {
       return this.name;
    }
 

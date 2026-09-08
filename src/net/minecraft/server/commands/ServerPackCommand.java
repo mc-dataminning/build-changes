@@ -29,20 +29,20 @@ public class ServerPackCommand {
                                           Commands.argument("hash", StringArgumentType.word())
                                              .executes(
                                                 c -> pushPack(
-                                                      (CommandSourceStack)c.getSource(),
-                                                      StringArgumentType.getString(c, "url"),
-                                                      Optional.of(UuidArgument.getUuid(c, "uuid")),
-                                                      Optional.of(StringArgumentType.getString(c, "hash"))
-                                                   )
+                                                   (CommandSourceStack)c.getSource(),
+                                                   StringArgumentType.getString(c, "url"),
+                                                   Optional.of(UuidArgument.getUuid(c, "uuid")),
+                                                   Optional.of(StringArgumentType.getString(c, "hash"))
+                                                )
                                              )
                                        ))
                                     .executes(
                                        c -> pushPack(
-                                             (CommandSourceStack)c.getSource(),
-                                             StringArgumentType.getString(c, "url"),
-                                             Optional.of(UuidArgument.getUuid(c, "uuid")),
-                                             Optional.empty()
-                                          )
+                                          (CommandSourceStack)c.getSource(),
+                                          StringArgumentType.getString(c, "url"),
+                                          Optional.of(UuidArgument.getUuid(c, "uuid")),
+                                          Optional.empty()
+                                       )
                                     )
                               ))
                            .executes(

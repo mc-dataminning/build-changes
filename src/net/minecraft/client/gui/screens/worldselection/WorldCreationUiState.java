@@ -32,8 +32,7 @@ public class WorldCreationUiState {
    private String name = DEFAULT_WORLD_NAME.getString();
    private WorldCreationUiState.SelectedGameMode gameMode = WorldCreationUiState.SelectedGameMode.SURVIVAL;
    private Difficulty difficulty = Difficulty.NORMAL;
-   @Nullable
-   private Boolean allowCommands;
+   private @Nullable Boolean allowCommands;
    private String seed;
    private boolean generateStructures;
    private boolean bonusChest;
@@ -95,8 +94,8 @@ public class WorldCreationUiState {
       if (!Files.exists(this.savesFolder)) {
          try {
             Files.createDirectory(this.savesFolder);
-         } catch (IOException var6) {
-            throw new LevelStorageException(Component.literal("Could not create save folder"), var6);
+         } catch (IOException e) {
+            throw new LevelStorageException(Component.literal("Could not create save folder"), e);
          }
       }
 
@@ -107,8 +106,8 @@ public class WorldCreationUiState {
       } catch (Exception var5) {
          try {
             return FileUtil.findAvailableName(this.savesFolder, "World", "");
-         } catch (IOException var4) {
-            throw new LevelStorageException(Component.literal("Could not create world folder"), var4);
+         } catch (IOException e) {
+            throw new LevelStorageException(Component.literal("Could not create world folder"), e);
          }
       }
    }
@@ -235,8 +234,7 @@ public class WorldCreationUiState {
       return this.worldType;
    }
 
-   @Nullable
-   public PresetEditor getPresetEditor() {
+   public @Nullable PresetEditor getPresetEditor() {
       Holder<WorldPreset> preset = this.getWorldType().preset();
       return preset != null ? PresetEditor.EDITORS.get(preset.unwrapKey()) : null;
    }
@@ -290,7 +288,7 @@ public class WorldCreationUiState {
       return this.gameRules;
    }
 
-   public static enum SelectedGameMode {
+   public enum SelectedGameMode {
       SURVIVAL("survival", GameType.SURVIVAL),
       HARDCORE("hardcore", GameType.SURVIVAL),
       CREATIVE("creative", GameType.CREATIVE),
@@ -300,7 +298,7 @@ public class WorldCreationUiState {
       public final Component displayName;
       private final Component info;
 
-      private SelectedGameMode(final String name, final GameType gameType) {
+      SelectedGameMode(final String name, final GameType gameType) {
          this.gameType = gameType;
          this.displayName = Component.translatable("selectWorld.gameMode." + name);
          this.info = Component.translatable("selectWorld.gameMode." + name + ".info");
@@ -311,7 +309,7 @@ public class WorldCreationUiState {
       }
    }
 
-   public static record WorldTypeEntry(@Nullable Holder<WorldPreset> preset) {
+   public record WorldTypeEntry(@Nullable Holder<WorldPreset> preset) {
       private static final Component CUSTOM_WORLD_DESCRIPTION = Component.translatable("generator.custom");
 
       public Component describePreset() {

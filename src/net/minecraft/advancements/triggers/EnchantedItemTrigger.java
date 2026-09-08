@@ -7,7 +7,6 @@ import net.minecraft.advancements.predicates.ItemPredicate;
 import net.minecraft.advancements.predicates.MinMaxBounds;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.ItemInstance;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 
@@ -21,15 +20,15 @@ public class EnchantedItemTrigger extends SimpleCriterionTrigger<EnchantedItemTr
       this.trigger(player, t -> t.matches(itemStack, levels));
    }
 
-   public static record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<ItemPredicate> item, MinMaxBounds.Ints levels)
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<ItemPredicate> item, MinMaxBounds.Ints levels)
       implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<EnchantedItemTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(EnchantedItemTrigger.TriggerInstance::player),
-                  ItemPredicate.CODEC.optionalFieldOf("item").forGetter(EnchantedItemTrigger.TriggerInstance::item),
-                  MinMaxBounds.Ints.CODEC.optionalFieldOf("levels", MinMaxBounds.Ints.ANY).forGetter(EnchantedItemTrigger.TriggerInstance::levels)
-               )
-               .apply(i, EnchantedItemTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(EnchantedItemTrigger.TriggerInstance::player),
+               ItemPredicate.CODEC.optionalFieldOf("item").forGetter(EnchantedItemTrigger.TriggerInstance::item),
+               MinMaxBounds.Ints.CODEC.optionalFieldOf("levels", MinMaxBounds.Ints.ANY).forGetter(EnchantedItemTrigger.TriggerInstance::levels)
+            )
+            .apply(i, EnchantedItemTrigger.TriggerInstance::new)
       );
 
       public static Criterion<EnchantedItemTrigger.TriggerInstance> enchantedItem() {
@@ -38,7 +37,7 @@ public class EnchantedItemTrigger extends SimpleCriterionTrigger<EnchantedItemTr
       }
 
       public boolean matches(final ItemStack itemStack, final int levels) {
-         return this.item.isPresent() && !this.item.get().test((ItemInstance)itemStack) ? false : this.levels.matches(levels);
+         return this.item.isPresent() && !this.item.get().test(itemStack) ? false : this.levels.matches(levels);
       }
    }
 }

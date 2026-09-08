@@ -36,8 +36,7 @@ public class LightningBolt extends Entity {
    public long seed;
    private int flashes;
    private boolean visualOnly;
-   @Nullable
-   private ServerPlayer cause;
+   private @Nullable ServerPlayer cause;
    private final Set<Entity> hitEntities = Sets.newHashSet();
    private int blocksSetOnFire;
 
@@ -57,12 +56,11 @@ public class LightningBolt extends Entity {
       return SoundSource.WEATHER;
    }
 
-   @Nullable
-   public ServerPlayer getCause() {
+   public @Nullable ServerPlayer getCause() {
       return this.cause;
    }
 
-   public void setCause(@Nullable final ServerPlayer cause) {
+   public void setCause(final @Nullable ServerPlayer cause) {
       this.cause = cause;
    }
 

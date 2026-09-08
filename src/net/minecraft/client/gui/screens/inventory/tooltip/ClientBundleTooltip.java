@@ -137,7 +137,7 @@ public class ClientBundleTooltip implements ClientTooltipComponent {
    }
 
    private int getAmountOfHiddenItems(final List<ItemStackTemplate> shownItems) {
-      return this.contents.items().stream().skip((long)shownItems.size()).mapToInt(ItemInstance::count).sum();
+      return this.contents.items().stream().skip(shownItems.size()).mapToInt(ItemInstance::count).sum();
    }
 
    private void extractSlot(
@@ -214,8 +214,7 @@ public class ClientBundleTooltip implements ClientTooltipComponent {
       return weight.compareTo(Fraction.ONE) >= 0 ? PROGRESSBAR_FULL_SPRITE : PROGRESSBAR_FILL_SPRITE;
    }
 
-   @Nullable
-   private static Component getProgressBarFillText(final Fraction weight) {
+   private static @Nullable Component getProgressBarFillText(final Fraction weight) {
       if (weight.compareTo(Fraction.ZERO) == 0) {
          return BUNDLE_EMPTY_TEXT;
       } else {

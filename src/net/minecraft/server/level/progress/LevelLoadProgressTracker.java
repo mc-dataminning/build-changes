@@ -45,7 +45,7 @@ public class LevelLoadProgressTracker implements LevelLoadListener {
    @Override
    public void update(final LevelLoadListener.Stage stage, final int currentChunks, final int totalChunks) {
       if (this.tracksStage(stage)) {
-         this.segmentFraction = totalChunks == 0 ? 0.0F : (float)currentChunks / (float)totalChunks;
+         this.segmentFraction = totalChunks == 0 ? 0.0F : (float)currentChunks / totalChunks;
          this.updateProgress();
       }
    }
@@ -75,8 +75,8 @@ public class LevelLoadProgressTracker implements LevelLoadListener {
       if (this.totalWeight == 0) {
          this.progress = 0.0F;
       } else {
-         float currentWeight = (float)this.finalizedWeight + this.segmentFraction * (float)this.segmentWeight;
-         this.progress = currentWeight / (float)this.totalWeight;
+         float currentWeight = this.finalizedWeight + this.segmentFraction * this.segmentWeight;
+         this.progress = currentWeight / this.totalWeight;
       }
    }
 

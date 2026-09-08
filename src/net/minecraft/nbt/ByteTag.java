@@ -39,11 +39,8 @@ public record ByteTag(byte value) implements NumericTag {
    public static final ByteTag ZERO = valueOf((byte)0);
    public static final ByteTag ONE = valueOf((byte)1);
 
-   @Deprecated(
-      forRemoval = true
-   )
-   public ByteTag(byte value) {
-      this.value = value;
+   @Deprecated(forRemoval = true)
+   public ByteTag {
    }
 
    public static ByteTag valueOf(final byte data) {
@@ -85,7 +82,7 @@ public record ByteTag(byte value) implements NumericTag {
 
    @Override
    public long longValue() {
-      return (long)this.value;
+      return this.value;
    }
 
    @Override
@@ -95,7 +92,7 @@ public record ByteTag(byte value) implements NumericTag {
 
    @Override
    public short shortValue() {
-      return (short)this.value;
+      return this.value;
    }
 
    @Override
@@ -105,12 +102,12 @@ public record ByteTag(byte value) implements NumericTag {
 
    @Override
    public double doubleValue() {
-      return (double)this.value;
+      return this.value;
    }
 
    @Override
    public float floatValue() {
-      return (float)this.value;
+      return this.value;
    }
 
    @Override

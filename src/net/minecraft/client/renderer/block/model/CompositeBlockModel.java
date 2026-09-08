@@ -21,7 +21,7 @@ public class CompositeBlockModel implements BlockModel {
       this.custom.update(output, blockState, displayContext, seed);
    }
 
-   public static record Unbaked(BlockModel.Unbaked normal, BlockModel.Unbaked custom, Optional<Transformation> transformation) implements BlockModel.Unbaked {
+   public record Unbaked(BlockModel.Unbaked normal, BlockModel.Unbaked custom, Optional<Transformation> transformation) implements BlockModel.Unbaked {
       @Override
       public BlockModel bake(final BlockModel.BakingContext context, final Matrix4fc transformation) {
          Matrix4fc childTransform = Transformation.compose(transformation, this.transformation);

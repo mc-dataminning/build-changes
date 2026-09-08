@@ -26,10 +26,10 @@ public record TeleportRandomlyConsumeEffect(float diameter, boolean directionalP
    private static final float DEFAULT_DIAMETER = 16.0F;
    public static final MapCodec<TeleportRandomlyConsumeEffect> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               ExtraCodecs.POSITIVE_FLOAT.optionalFieldOf("diameter", 16.0F).forGetter(TeleportRandomlyConsumeEffect::diameter),
-               Codec.BOOL.optionalFieldOf("directional_particles", true).forGetter(TeleportRandomlyConsumeEffect::directionalParticles)
-            )
-            .apply(i, TeleportRandomlyConsumeEffect::new)
+            ExtraCodecs.POSITIVE_FLOAT.optionalFieldOf("diameter", 16.0F).forGetter(TeleportRandomlyConsumeEffect::diameter),
+            Codec.BOOL.optionalFieldOf("directional_particles", true).forGetter(TeleportRandomlyConsumeEffect::directionalParticles)
+         )
+         .apply(i, TeleportRandomlyConsumeEffect::new)
    );
    public static final StreamCodec<RegistryFriendlyByteBuf, TeleportRandomlyConsumeEffect> STREAM_CODEC = StreamCodec.composite(
       ByteBufCodecs.FLOAT,
@@ -51,13 +51,11 @@ public record TeleportRandomlyConsumeEffect(float diameter, boolean directionalP
    @Override
    public boolean apply(final Level level, final ItemStack stack, final LivingEntity user) {
       for (int attempt = 0; attempt < 16; attempt++) {
-         double xx = user.getX() + (user.getRandom().nextDouble() - 0.5) * (double)this.diameter;
+         double xx = user.getX() + (user.getRandom().nextDouble() - 0.5) * this.diameter;
          double yy = Mth.clamp(
-            user.getY() + (user.getRandom().nextDouble() - 0.5) * (double)this.diameter,
-            (double)level.getMinY(),
-            (double)(level.getMinY() + ((ServerLevel)level).getLogicalHeight() - 1)
+            user.getY() + (user.getRandom().nextDouble() - 0.5) * this.diameter, level.getMinY(), level.getMinY() + ((ServerLevel)level).getLogicalHeight() - 1
          );
-         double zz = user.getZ() + (user.getRandom().nextDouble() - 0.5) * (double)this.diameter;
+         double zz = user.getZ() + (user.getRandom().nextDouble() - 0.5) * this.diameter;
          if (user.isPassenger()) {
             user.stopRiding();
          }

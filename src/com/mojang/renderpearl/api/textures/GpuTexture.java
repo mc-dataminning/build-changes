@@ -24,15 +24,14 @@ public interface GpuTexture extends UncheckedAutoCloseable {
 
    GpuFormat getFormat();
 
-   @GpuTexture.Usage
-   int usage();
+   @GpuTexture.Usage int usage();
 
    String getLabel();
 
    boolean isClosed();
 
    @Retention(RetentionPolicy.CLASS)
-   @Target({ElementType.TYPE_USE})
-   public @interface Usage {
+   @Target(ElementType.TYPE_USE)
+   @interface Usage {
    }
 }

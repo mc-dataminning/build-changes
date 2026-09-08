@@ -51,7 +51,7 @@ public class ClientTelemetryManager implements AutoCloseable {
    }
 
    public WorldSessionTelemetryManager createWorldSessionManager(
-      final boolean newWorld, @Nullable final Duration worldLoadDuration, @Nullable final String minigameName, final UUID sessionId
+      final boolean newWorld, final @Nullable Duration worldLoadDuration, final @Nullable String minigameName, final UUID sessionId
    ) {
       return new WorldSessionTelemetryManager(this.createEventSender(), newWorld, worldLoadDuration, minigameName, sessionId);
    }
@@ -63,33 +63,33 @@ public class ClientTelemetryManager implements AutoCloseable {
    private TelemetryEventSender createEventSender() {
       if (!this.minecraft.allowsTelemetry()) {
          return TelemetryEventSender.DISABLED;
-      } else {
-         TelemetrySession telemetrySession = this.userApiService.newTelemetrySession(EXECUTOR);
-         if (!telemetrySession.isEnabled()) {
-            return TelemetryEventSender.DISABLED;
-         } else {
-            CompletableFuture<Optional<TelemetryEventLogger>> loggerFuture = this.logManager
-               .thenCompose(manager -> manager.map(TelemetryLogManager::openLogger).orElseGet(() -> CompletableFuture.completedFuture(Optional.empty())));
-            return (type, buildFunction) -> {
-               if (!type.isOptIn() || Minecraft.getInstance().telemetryOptInExtra()) {
-                  TelemetryPropertyMap.Builder properties = TelemetryPropertyMap.builder();
-                  properties.putAll(this.deviceSessionProperties);
-                  properties.put(TelemetryProperty.EVENT_TIMESTAMP_UTC, Instant.now());
-                  properties.put(TelemetryProperty.OPT_IN, type.isOptIn());
-                  buildFunction.accept(properties);
-                  TelemetryEventInstance event = new TelemetryEventInstance(type, properties.build());
-                  loggerFuture.thenAccept(logger -> {
-                     if (!logger.isEmpty()) {
-                        logger.get().log(event);
-                        if (!SharedConstants.IS_RUNNING_IN_IDE || !SharedConstants.DEBUG_DONT_SEND_TELEMETRY_TO_BACKEND) {
-                           event.export(telemetrySession).send();
-                        }
-                     }
-                  });
-               }
-            };
-         }
       }
+
+      TelemetrySession telemetrySession = this.userApiService.newTelemetrySession(EXECUTOR);
+      if (!telemetrySession.isEnabled()) {
+         return TelemetryEventSender.DISABLED;
+      }
+
+      CompletableFuture<Optional<TelemetryEventLogger>> loggerFuture = this.logManager
+         .thenCompose(manager -> manager.map(TelemetryLogManager::openLogger).orElseGet(() -> CompletableFuture.completedFuture(Optional.empty())));
+      return (type, buildFunction) -> {
+         if (!type.isOptIn() || Minecraft.getInstance().telemetryOptInExtra()) {
+            TelemetryPropertyMap.Builder properties = TelemetryPropertyMap.builder();
+            properties.putAll(this.deviceSessionProperties);
+            properties.put(TelemetryProperty.EVENT_TIMESTAMP_UTC, Instant.now());
+            properties.put(TelemetryProperty.OPT_IN, type.isOptIn());
+            buildFunction.accept(properties);
+            TelemetryEventInstance event = new TelemetryEventInstance(type, properties.build());
+            loggerFuture.thenAccept(logger -> {
+               if (!logger.isEmpty()) {
+                  logger.get().log(event);
+                  if (!SharedConstants.IS_RUNNING_IN_IDE || !SharedConstants.DEBUG_DONT_SEND_TELEMETRY_TO_BACKEND) {
+                     event.export(telemetrySession).send();
+                  }
+               }
+            });
+         }
+      };
    }
 
    public Path getLogDirectory() {

@@ -13,7 +13,7 @@ import net.minecraft.server.players.NameAndId;
 public record PlayerDto(Optional<UUID> id, Optional<String> name) {
    public static final MapCodec<PlayerDto> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(UUIDUtil.STRING_CODEC.optionalFieldOf("id").forGetter(PlayerDto::id), Codec.STRING.optionalFieldOf("name").forGetter(PlayerDto::name))
-            .apply(i, PlayerDto::new)
+         .apply(i, PlayerDto::new)
    );
 
    public static PlayerDto from(final GameProfile gameProfile) {

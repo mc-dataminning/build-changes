@@ -111,7 +111,7 @@ public class CopperGolemAi {
    }
 
    private static TransportItemsBetweenContainers.OnTargetReachedInteraction onReachedTargetInteraction(
-      final CopperGolemState state, @Nullable final SoundEvent sound
+      final CopperGolemState state, final @Nullable SoundEvent sound
    ) {
       return (body, target, ticksSinceReachingTarget) -> {
          if (body instanceof CopperGolem copperGolem) {
@@ -148,7 +148,7 @@ public class CopperGolemAi {
 
    private static Predicate<TransportItemsBetweenContainers.TransportItemTarget> shouldQueueForTarget() {
       return transportTarget -> transportTarget.blockEntity() instanceof ChestBlockEntity chestBlockEntity
-            ? !chestBlockEntity.getEntitiesWithContainerOpen().isEmpty()
-            : false;
+         ? !chestBlockEntity.getEntitiesWithContainerOpen().isEmpty()
+         : false;
    }
 }

@@ -80,6 +80,6 @@ public class SheepColorSpawnRules {
       DyeColor get(RandomSource random);
    }
 
-   private static record SheepColorSpawnConfiguration(SheepColorSpawnRules.SheepColorProvider colors) {
+   private record SheepColorSpawnConfiguration(SheepColorSpawnRules.SheepColorProvider colors) {
    }
 }

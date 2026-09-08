@@ -2,7 +2,6 @@ package net.minecraft.commands.synchronization.brigadier;
 
 import com.google.gson.JsonObject;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
-import java.util.Objects;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.synchronization.ArgumentTypeInfo;
 import net.minecraft.commands.synchronization.ArgumentUtils;
@@ -48,8 +47,6 @@ public class IntegerArgumentInfo implements ArgumentTypeInfo<IntegerArgumentType
       private final int max;
 
       private Template(final int min, final int max) {
-         Objects.requireNonNull(IntegerArgumentInfo.this);
-         super();
          this.min = min;
          this.max = max;
       }

@@ -171,10 +171,7 @@ public class JungleTemplePiece extends ScatteredFeaturePiece {
          this.generateBox(level, chunkBB, 6, -1, 1, 6, -1, 1, false, random, STONE_SELECTOR);
          this.placeBlock(
             level,
-            Blocks.TRIPWIRE_HOOK
-               .defaultBlockState()
-               .setValue(TripWireHookBlock.FACING, Direction.EAST)
-               .setValue(TripWireHookBlock.ATTACHED, Boolean.valueOf(true)),
+            Blocks.TRIPWIRE_HOOK.defaultBlockState().setValue(TripWireHookBlock.FACING, Direction.EAST).setValue(TripWireHookBlock.ATTACHED, true),
             1,
             -3,
             8,
@@ -182,10 +179,7 @@ public class JungleTemplePiece extends ScatteredFeaturePiece {
          );
          this.placeBlock(
             level,
-            Blocks.TRIPWIRE_HOOK
-               .defaultBlockState()
-               .setValue(TripWireHookBlock.FACING, Direction.WEST)
-               .setValue(TripWireHookBlock.ATTACHED, Boolean.valueOf(true)),
+            Blocks.TRIPWIRE_HOOK.defaultBlockState().setValue(TripWireHookBlock.FACING, Direction.WEST).setValue(TripWireHookBlock.ATTACHED, true),
             4,
             -3,
             8,
@@ -193,11 +187,7 @@ public class JungleTemplePiece extends ScatteredFeaturePiece {
          );
          this.placeBlock(
             level,
-            Blocks.TRIPWIRE
-               .defaultBlockState()
-               .setValue(TripWireBlock.EAST, Boolean.valueOf(true))
-               .setValue(TripWireBlock.WEST, Boolean.valueOf(true))
-               .setValue(TripWireBlock.ATTACHED, Boolean.valueOf(true)),
+            Blocks.TRIPWIRE.defaultBlockState().setValue(TripWireBlock.EAST, true).setValue(TripWireBlock.WEST, true).setValue(TripWireBlock.ATTACHED, true),
             2,
             -3,
             8,
@@ -205,11 +195,7 @@ public class JungleTemplePiece extends ScatteredFeaturePiece {
          );
          this.placeBlock(
             level,
-            Blocks.TRIPWIRE
-               .defaultBlockState()
-               .setValue(TripWireBlock.EAST, Boolean.valueOf(true))
-               .setValue(TripWireBlock.WEST, Boolean.valueOf(true))
-               .setValue(TripWireBlock.ATTACHED, Boolean.valueOf(true)),
+            Blocks.TRIPWIRE.defaultBlockState().setValue(TripWireBlock.EAST, true).setValue(TripWireBlock.WEST, true).setValue(TripWireBlock.ATTACHED, true),
             3,
             -3,
             8,
@@ -246,13 +232,10 @@ public class JungleTemplePiece extends ScatteredFeaturePiece {
             this.placedTrap1 = this.createDispenser(level, chunkBB, random, 3, -2, 1, Direction.NORTH, BuiltInLootTables.JUNGLE_TEMPLE_DISPENSER);
          }
 
-         this.placeBlock(level, Blocks.VINE.defaultBlockState().setValue(VineBlock.SOUTH, Boolean.valueOf(true)), 3, -2, 2, chunkBB);
+         this.placeBlock(level, Blocks.VINE.defaultBlockState().setValue(VineBlock.SOUTH, true), 3, -2, 2, chunkBB);
          this.placeBlock(
             level,
-            Blocks.TRIPWIRE_HOOK
-               .defaultBlockState()
-               .setValue(TripWireHookBlock.FACING, Direction.NORTH)
-               .setValue(TripWireHookBlock.ATTACHED, Boolean.valueOf(true)),
+            Blocks.TRIPWIRE_HOOK.defaultBlockState().setValue(TripWireHookBlock.FACING, Direction.NORTH).setValue(TripWireHookBlock.ATTACHED, true),
             7,
             -3,
             1,
@@ -260,10 +243,7 @@ public class JungleTemplePiece extends ScatteredFeaturePiece {
          );
          this.placeBlock(
             level,
-            Blocks.TRIPWIRE_HOOK
-               .defaultBlockState()
-               .setValue(TripWireHookBlock.FACING, Direction.SOUTH)
-               .setValue(TripWireHookBlock.ATTACHED, Boolean.valueOf(true)),
+            Blocks.TRIPWIRE_HOOK.defaultBlockState().setValue(TripWireHookBlock.FACING, Direction.SOUTH).setValue(TripWireHookBlock.ATTACHED, true),
             7,
             -3,
             5,
@@ -271,11 +251,7 @@ public class JungleTemplePiece extends ScatteredFeaturePiece {
          );
          this.placeBlock(
             level,
-            Blocks.TRIPWIRE
-               .defaultBlockState()
-               .setValue(TripWireBlock.NORTH, Boolean.valueOf(true))
-               .setValue(TripWireBlock.SOUTH, Boolean.valueOf(true))
-               .setValue(TripWireBlock.ATTACHED, Boolean.valueOf(true)),
+            Blocks.TRIPWIRE.defaultBlockState().setValue(TripWireBlock.NORTH, true).setValue(TripWireBlock.SOUTH, true).setValue(TripWireBlock.ATTACHED, true),
             7,
             -3,
             2,
@@ -283,11 +259,7 @@ public class JungleTemplePiece extends ScatteredFeaturePiece {
          );
          this.placeBlock(
             level,
-            Blocks.TRIPWIRE
-               .defaultBlockState()
-               .setValue(TripWireBlock.NORTH, Boolean.valueOf(true))
-               .setValue(TripWireBlock.SOUTH, Boolean.valueOf(true))
-               .setValue(TripWireBlock.ATTACHED, Boolean.valueOf(true)),
+            Blocks.TRIPWIRE.defaultBlockState().setValue(TripWireBlock.NORTH, true).setValue(TripWireBlock.SOUTH, true).setValue(TripWireBlock.ATTACHED, true),
             7,
             -3,
             3,
@@ -295,11 +267,7 @@ public class JungleTemplePiece extends ScatteredFeaturePiece {
          );
          this.placeBlock(
             level,
-            Blocks.TRIPWIRE
-               .defaultBlockState()
-               .setValue(TripWireBlock.NORTH, Boolean.valueOf(true))
-               .setValue(TripWireBlock.SOUTH, Boolean.valueOf(true))
-               .setValue(TripWireBlock.ATTACHED, Boolean.valueOf(true)),
+            Blocks.TRIPWIRE.defaultBlockState().setValue(TripWireBlock.NORTH, true).setValue(TripWireBlock.SOUTH, true).setValue(TripWireBlock.ATTACHED, true),
             7,
             -3,
             4,
@@ -335,8 +303,8 @@ public class JungleTemplePiece extends ScatteredFeaturePiece {
             this.placedTrap2 = this.createDispenser(level, chunkBB, random, 9, -2, 3, Direction.WEST, BuiltInLootTables.JUNGLE_TEMPLE_DISPENSER);
          }
 
-         this.placeBlock(level, Blocks.VINE.defaultBlockState().setValue(VineBlock.EAST, Boolean.valueOf(true)), 8, -1, 3, chunkBB);
-         this.placeBlock(level, Blocks.VINE.defaultBlockState().setValue(VineBlock.EAST, Boolean.valueOf(true)), 8, -2, 3, chunkBB);
+         this.placeBlock(level, Blocks.VINE.defaultBlockState().setValue(VineBlock.EAST, true), 8, -1, 3, chunkBB);
+         this.placeBlock(level, Blocks.VINE.defaultBlockState().setValue(VineBlock.EAST, true), 8, -2, 3, chunkBB);
          if (!this.placedMainChest) {
             this.placedMainChest = this.createChest(level, chunkBB, random, 8, -3, 3, BuiltInLootTables.JUNGLE_TEMPLE);
          }

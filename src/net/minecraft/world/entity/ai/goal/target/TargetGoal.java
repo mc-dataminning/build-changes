@@ -20,8 +20,7 @@ public abstract class TargetGoal extends Goal {
    private int reachCache;
    private int reachCacheTime;
    private int unseenTicks;
-   @Nullable
-   protected LivingEntity targetMob;
+   protected @Nullable LivingEntity targetMob;
    protected int unseenMemoryTicks = 60;
 
    public TargetGoal(final Mob mob, final boolean mustSee) {
@@ -43,31 +42,33 @@ public abstract class TargetGoal extends Goal {
 
       if (target == null) {
          return false;
-      } else if (!this.mob.canAttack(target)) {
-         return false;
-      } else {
-         Team mobTeam = this.mob.getTeam();
-         Team targetTeam = target.getTeam();
-         if (mobTeam != null && targetTeam == mobTeam) {
-            return false;
-         } else {
-            double within = this.getFollowDistance();
-            if (this.mob.distanceToSqr(target) > within * within) {
-               return false;
-            } else {
-               if (this.mustSee) {
-                  if (this.mob.getSensing().hasLineOfSight(target)) {
-                     this.unseenTicks = 0;
-                  } else if (++this.unseenTicks > reducedTickDelay(this.unseenMemoryTicks)) {
-                     return false;
-                  }
-               }
+      }
 
-               this.mob.setTarget(target);
-               return true;
-            }
+      if (!this.mob.canAttack(target)) {
+         return false;
+      }
+
+      Team mobTeam = this.mob.getTeam();
+      Team targetTeam = target.getTeam();
+      if (mobTeam != null && targetTeam == mobTeam) {
+         return false;
+      }
+
+      double within = this.getFollowDistance();
+      if (this.mob.distanceToSqr(target) > within * within) {
+         return false;
+      }
+
+      if (this.mustSee) {
+         if (this.mob.getSensing().hasLineOfSight(target)) {
+            this.unseenTicks = 0;
+         } else if (++this.unseenTicks > reducedTickDelay(this.unseenMemoryTicks)) {
+            return false;
          }
       }
+
+      this.mob.setTarget(target);
+      return true;
    }
 
    protected double getFollowDistance() {
@@ -87,30 +88,34 @@ public abstract class TargetGoal extends Goal {
       this.targetMob = null;
    }
 
-   protected boolean canAttack(@Nullable final LivingEntity target, final TargetingConditions targetConditions) {
+   protected boolean canAttack(final @Nullable LivingEntity target, final TargetingConditions targetConditions) {
       if (target == null) {
          return false;
-      } else if (!targetConditions.test(getServerLevel(this.mob), this.mob, target)) {
-         return false;
-      } else if (!this.mob.isWithinHome(target.blockPosition())) {
-         return false;
-      } else {
-         if (this.mustReach) {
-            if (--this.reachCacheTime <= 0) {
-               this.reachCache = 0;
-            }
+      }
 
-            if (this.reachCache == 0) {
-               this.reachCache = this.canReach(target) ? 1 : 2;
-            }
+      if (!targetConditions.test(getServerLevel(this.mob), this.mob, target)) {
+         return false;
+      }
 
-            if (this.reachCache == 2) {
-               return false;
-            }
+      if (!this.mob.isWithinHome(target.blockPosition())) {
+         return false;
+      }
+
+      if (this.mustReach) {
+         if (--this.reachCacheTime <= 0) {
+            this.reachCache = 0;
          }
 
-         return true;
+         if (this.reachCache == 0) {
+            this.reachCache = this.canReach(target) ? 1 : 2;
+         }
+
+         if (this.reachCache == 2) {
+            return false;
+         }
       }
+
+      return true;
    }
 
    private boolean canReach(final LivingEntity target) {
@@ -118,16 +123,16 @@ public abstract class TargetGoal extends Goal {
       Path path = this.mob.getNavigation().createPath(target, 0);
       if (path == null) {
          return false;
-      } else {
-         Node last = path.getEndNode();
-         if (last == null) {
-            return false;
-         } else {
-            int xx = last.x - target.getBlockX();
-            int zz = last.z - target.getBlockZ();
-            return (double)(xx * xx + zz * zz) <= 2.25;
-         }
       }
+
+      Node last = path.getEndNode();
+      if (last == null) {
+         return false;
+      }
+
+      int xx = last.x - target.getBlockX();
+      int zz = last.z - target.getBlockZ();
+      return xx * xx + zz * zz <= 2.25;
    }
 
    public TargetGoal setUnseenMemoryTicks(final int unseenMemoryTicks) {

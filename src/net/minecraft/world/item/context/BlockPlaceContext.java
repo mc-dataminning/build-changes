@@ -23,7 +23,7 @@ public class BlockPlaceContext extends UseOnContext {
    }
 
    protected BlockPlaceContext(
-      final Level level, @Nullable final Player player, final InteractionHand hand, final ItemStack itemStackInHand, final BlockHitResult hitResult
+      final Level level, final @Nullable Player player, final InteractionHand hand, final ItemStack itemStackInHand, final BlockHitResult hitResult
    ) {
       super(level, player, hand, itemStackInHand, hitResult);
       this.relativePos = hitResult.getBlockPos().relative(hitResult.getDirection());
@@ -38,9 +38,7 @@ public class BlockPlaceContext extends UseOnContext {
          context.getItemInHand(),
          new BlockHitResult(
             new Vec3(
-               (double)pos.getX() + 0.5 + (double)direction.getStepX() * 0.5,
-               (double)pos.getY() + 0.5 + (double)direction.getStepY() * 0.5,
-               (double)pos.getZ() + 0.5 + (double)direction.getStepZ() * 0.5
+               pos.getX() + 0.5 + direction.getStepX() * 0.5, pos.getY() + 0.5 + direction.getStepY() * 0.5, pos.getZ() + 0.5 + direction.getStepZ() * 0.5
             ),
             direction,
             pos,
@@ -74,20 +72,20 @@ public class BlockPlaceContext extends UseOnContext {
       Direction[] directions = Direction.orderedByNearest(this.getPlayer());
       if (this.replaceClicked) {
          return directions;
-      } else {
-         Direction clickedFace = this.getClickedFace();
-         int index = 0;
-
-         while (index < directions.length && directions[index] != clickedFace.getOpposite()) {
-            index++;
-         }
-
-         if (index > 0) {
-            System.arraycopy(directions, 0, directions, 1, index);
-            directions[0] = clickedFace.getOpposite();
-         }
-
-         return directions;
       }
+
+      Direction clickedFace = this.getClickedFace();
+      int index = 0;
+
+      while (index < directions.length && directions[index] != clickedFace.getOpposite()) {
+         index++;
+      }
+
+      if (index > 0) {
+         System.arraycopy(directions, 0, directions, 1, index);
+         directions[0] = clickedFace.getOpposite();
+      }
+
+      return directions;
    }
 }

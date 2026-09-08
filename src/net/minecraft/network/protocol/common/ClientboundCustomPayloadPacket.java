@@ -18,8 +18,7 @@ public record ClientboundCustomPayloadPacket(CustomPacketPayload payload) implem
          id -> DiscardedPayload.codec(id, 1048576),
          Util.make(
             Lists.newArrayList(new CustomPacketPayload.TypeAndCodec[]{new CustomPacketPayload.TypeAndCodec<>(BrandPayload.TYPE, BrandPayload.STREAM_CODEC)}),
-            types -> {
-            }
+            types -> {}
          )
       )
       .map(ClientboundCustomPayloadPacket::new, ClientboundCustomPayloadPacket::payload);

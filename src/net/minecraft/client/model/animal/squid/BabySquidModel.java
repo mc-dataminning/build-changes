@@ -25,11 +25,11 @@ public class BabySquidModel extends SquidModel {
       CubeListBuilder tentacle = CubeListBuilder.create().texOffs(0, 18).addBox(-1.0F, -0.5F, -1.0F, 2.0F, 6.0F, 2.0F);
 
       for (int i = 0; i < 8; i++) {
-         double angle = (double)i * Math.PI * 2.0 / 8.0;
+         double angle = i * Math.PI * 2.0 / 8.0;
          float x = (float)Math.cos(angle) * 3.0F;
          float y = 18.5F;
          float z = (float)Math.sin(angle) * 3.0F;
-         angle = (double)i * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
+         angle = i * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
          float yRot = (float)angle;
          root.addOrReplaceChild(createTentacleName(i), tentacle, PartPose.offsetAndRotation(x, 18.5F, z, 0.0F, yRot, 0.0F));
       }

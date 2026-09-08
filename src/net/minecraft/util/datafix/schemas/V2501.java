@@ -17,13 +17,13 @@ public class V2501 extends NamespacedSchema {
          map,
          name,
          () -> DSL.optionalFields(
-               "Items",
-               DSL.list(References.ITEM_STACK.in(schema)),
-               "CustomName",
-               References.TEXT_COMPONENT.in(schema),
-               "RecipesUsed",
-               DSL.compoundList(References.RECIPE.in(schema), DSL.constType(DSL.intType()))
-            )
+            "Items",
+            DSL.list(References.ITEM_STACK.in(schema)),
+            "CustomName",
+            References.TEXT_COMPONENT.in(schema),
+            "RecipesUsed",
+            DSL.compoundList(References.RECIPE.in(schema), DSL.constType(DSL.intType()))
+         )
       );
    }
 

@@ -17,12 +17,12 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 public record DiskFeature(Holder<BlockStateProvider> stateProvider, BlockPredicate target, IntProvider radius, int halfHeight) implements Feature {
    public static final MapCodec<DiskFeature> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               BlockStateProvider.CODEC.fieldOf("state_provider").forGetter(DiskFeature::stateProvider),
-               BlockPredicate.CODEC.fieldOf("target").forGetter(DiskFeature::target),
-               IntProviders.codec(0, 8).fieldOf("radius").forGetter(DiskFeature::radius),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(DiskFeature::halfHeight)
-            )
-            .apply(i, DiskFeature::new)
+            BlockStateProvider.CODEC.fieldOf("state_provider").forGetter(DiskFeature::stateProvider),
+            BlockPredicate.CODEC.fieldOf("target").forGetter(DiskFeature::target),
+            IntProviders.codec(0, 8).fieldOf("radius").forGetter(DiskFeature::radius),
+            Codec.intRange(0, 4).fieldOf("half_height").forGetter(DiskFeature::halfHeight)
+         )
+         .apply(i, DiskFeature::new)
    );
 
    @Override

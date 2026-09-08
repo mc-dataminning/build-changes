@@ -46,30 +46,30 @@ public class BlockStateModelLoader {
                            if (stateDefinition == null) {
                               LOGGER.debug("Discovered unknown block state definition {}, ignoring", stateDefinitionId);
                               return null;
-                           } else {
-                              List<Resource> stack = resourceStack.getValue();
-                              List<BlockStateModelLoader.LoadedBlockStateModelDispatcher> loadedStack = new ArrayList<>(stack.size());
+                           }
 
-                              for (Resource resource : stack) {
-                                 try (Reader reader = resource.openAsReader()) {
-                                    JsonElement element = StrictJsonParser.parse(reader);
-                                    BlockStateModelDispatcher definition = (BlockStateModelDispatcher)BlockStateModelDispatcher.CODEC
-                                       .parse(JsonOps.INSTANCE, element)
-                                       .getOrThrow(JsonParseException::new);
-                                    loadedStack.add(new BlockStateModelLoader.LoadedBlockStateModelDispatcher(resource.sourcePackId(), definition));
-                                 } catch (Exception var14) {
-                                    LOGGER.error(
-                                       "Failed to load blockstate definition {} from pack {}", new Object[]{stateDefinitionId, resource.sourcePackId(), var14}
-                                    );
-                                 }
-                              }
+                           List<Resource> stack = resourceStack.getValue();
+                           List<BlockStateModelLoader.LoadedBlockStateModelDispatcher> loadedStack = new ArrayList<>(stack.size());
 
-                              try {
-                                 return loadBlockStateDefinitionStack(stateDefinitionId, stateDefinition, loadedStack);
-                              } catch (Exception var11) {
-                                 LOGGER.error("Failed to load blockstate definition {}", stateDefinitionId, var11);
-                                 return null;
+                           for (Resource resource : stack) {
+                              try (Reader reader = resource.openAsReader()) {
+                                 JsonElement element = StrictJsonParser.parse(reader);
+                                 BlockStateModelDispatcher definition = (BlockStateModelDispatcher)BlockStateModelDispatcher.CODEC
+                                    .parse(JsonOps.INSTANCE, element)
+                                    .getOrThrow(JsonParseException::new);
+                                 loadedStack.add(new BlockStateModelLoader.LoadedBlockStateModelDispatcher(resource.sourcePackId(), definition));
+                              } catch (Exception e) {
+                                 LOGGER.error(
+                                    "Failed to load blockstate definition {} from pack {}", new Object[]{stateDefinitionId, resource.sourcePackId(), e}
+                                 );
                               }
+                           }
+
+                           try {
+                              return loadBlockStateDefinitionStack(stateDefinitionId, stateDefinition, loadedStack);
+                           } catch (Exception e) {
+                              LOGGER.error("Failed to load blockstate definition {}", stateDefinitionId, e);
+                              return null;
                            }
                         },
                         executor
@@ -106,9 +106,9 @@ public class BlockStateModelLoader {
       return new BlockStateModelLoader.LoadedModels(result);
    }
 
-   private static record LoadedBlockStateModelDispatcher(String source, BlockStateModelDispatcher contents) {
+   private record LoadedBlockStateModelDispatcher(String source, BlockStateModelDispatcher contents) {
    }
 
-   public static record LoadedModels(Map<BlockState, BlockStateModel.UnbakedRoot> models) {
+   public record LoadedModels(Map<BlockState, BlockStateModel.UnbakedRoot> models) {
    }
 }

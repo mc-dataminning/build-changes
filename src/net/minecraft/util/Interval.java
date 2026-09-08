@@ -19,23 +19,27 @@ public final class Interval {
    public static Interval of(final float min, final float max) {
       if (max < min) {
          throw new IllegalArgumentException("max (" + max + ") < min (" + min + ")");
-      } else if (Float.isNaN(min) || Float.isNaN(max)) {
-         throw new IllegalArgumentException("Bounds cannot include NaN [" + min + "; " + max + "]: use Interval.NaI explicitly");
-      } else if (min == Float.NEGATIVE_INFINITY && max == Float.POSITIVE_INFINITY) {
-         return INFINITE;
-      } else {
-         if (max == 1.0F) {
-            if (min == 0.0F) {
-               return ZERO_TO_ONE;
-            }
+      }
 
-            if (min == -1.0F) {
-               return NEGATIVE_ONE_TO_ONE;
-            }
+      if (Float.isNaN(min) || Float.isNaN(max)) {
+         throw new IllegalArgumentException("Bounds cannot include NaN [" + min + "; " + max + "]: use Interval.NaI explicitly");
+      }
+
+      if (min == Float.NEGATIVE_INFINITY && max == Float.POSITIVE_INFINITY) {
+         return INFINITE;
+      }
+
+      if (max == 1.0F) {
+         if (min == 0.0F) {
+            return ZERO_TO_ONE;
          }
 
-         return new Interval(min, max);
+         if (min == -1.0F) {
+            return NEGATIVE_ONE_TO_ONE;
+         }
       }
+
+      return new Interval(min, max);
    }
 
    public static Interval ofSymmetric(final float range) {
@@ -49,19 +53,19 @@ public final class Interval {
    public static Interval encapsulating(final List<Interval> intervals) {
       if (intervals.isEmpty()) {
          throw new IllegalArgumentException("At least one interval required");
-      } else {
-         float min = Float.POSITIVE_INFINITY;
-         float max = Float.NEGATIVE_INFINITY;
-
-         for (Interval interval : intervals) {
-            if (!interval.isNaI()) {
-               min = Math.min(interval.min, min);
-               max = Math.max(interval.max, max);
-            }
-         }
-
-         return max < min ? NaI : of(min, max);
       }
+
+      float min = Float.POSITIVE_INFINITY;
+      float max = Float.NEGATIVE_INFINITY;
+
+      for (Interval interval : intervals) {
+         if (!interval.isNaI()) {
+            min = Math.min(interval.min, min);
+            max = Math.max(interval.max, max);
+         }
+      }
+
+      return max < min ? NaI : of(min, max);
    }
 
    public static Interval encapsulating(final Interval... intervals) {
@@ -155,39 +159,39 @@ public final class Interval {
    public static Interval abs(final Interval input) {
       if (input.isNaI()) {
          return NaI;
-      } else {
-         float max = Math.max(Math.abs(input.min), Math.abs(input.max));
-         return input.contains(0.0F) ? of(0.0F, max) : of(Math.min(Math.abs(input.min), Math.abs(input.max)), max);
       }
+
+      float max = Math.max(Math.abs(input.min), Math.abs(input.max));
+      return input.contains(0.0F) ? of(0.0F, max) : of(Math.min(Math.abs(input.min), Math.abs(input.max)), max);
    }
 
    public static Interval square(final Interval input) {
       if (input.isNaI()) {
          return NaI;
-      } else {
-         float max = Math.max(Mth.square(input.min), Mth.square(input.max));
-         return input.contains(0.0F) ? of(0.0F, max) : of(Math.min(Mth.square(input.min), Mth.square(input.max)), max);
       }
+
+      float max = Math.max(Mth.square(input.min), Mth.square(input.max));
+      return input.contains(0.0F) ? of(0.0F, max) : of(Math.min(Mth.square(input.min), Mth.square(input.max)), max);
    }
 
    public static Interval pow(final Interval base, final Interval exponent) {
       if (!base.isNaI() && !exponent.isNaI()) {
          if (base.min() == base.max()) {
             return pow(base.min(), exponent);
-         } else {
-            Interval result = encapsulating(pow(base.min(), exponent), pow(base.max(), exponent));
-            if (base.contains(0.0F)) {
-               if (base.max() > 0.0F) {
-                  result = encapsulating(result, pow(0.0F, exponent));
-               }
+         }
 
-               if (base.min() < 0.0F) {
-                  result = encapsulating(result, pow(-0.0F, exponent));
-               }
+         Interval result = encapsulating(pow(base.min(), exponent), pow(base.max(), exponent));
+         if (base.contains(0.0F)) {
+            if (base.max() > 0.0F) {
+               result = encapsulating(result, pow(0.0F, exponent));
             }
 
-            return result;
+            if (base.min() < 0.0F) {
+               result = encapsulating(result, pow(-0.0F, exponent));
+            }
          }
+
+         return result;
       } else {
          return NaI;
       }
@@ -196,7 +200,7 @@ public final class Interval {
    private static Interval pow(final float base, final Interval exponent) {
       if (!Float.isNaN(base) && !exponent.isNaI()) {
          if (exponent.min() == exponent.max()) {
-            float value = (float)Math.pow((double)base, (double)exponent.min());
+            float value = (float)Math.pow(base, exponent.min());
             return Float.isNaN(value) ? NaI : ofExact(value);
          } else if (base == 0.0F) {
             return mul(powZeroBase(exponent), ofExact(Math.copySign(1.0F, base)));
@@ -212,7 +216,7 @@ public final class Interval {
 
    private static Interval powPositiveBase(final float base, final Interval exponent) {
       return Float.isFinite(exponent.min()) && Float.isFinite(exponent.max())
-         ? encapsulating((float)Math.pow((double)base, (double)exponent.min()), (float)Math.pow((double)base, (double)exponent.max()))
+         ? encapsulating((float)Math.pow(base, exponent.min()), (float)Math.pow(base, exponent.max()))
          : powInfiniteExponent(base, exponent);
    }
 
@@ -232,48 +236,44 @@ public final class Interval {
       if (Float.isInfinite(exponent.min()) && Float.isInfinite(exponent.max())) {
          return of(0.0F, Float.POSITIVE_INFINITY);
       } else if (Float.isInfinite(exponent.min())) {
-         return base < 1.0F
-            ? of((float)Math.pow((double)base, (double)exponent.max()), Float.POSITIVE_INFINITY)
-            : of(0.0F, (float)Math.pow((double)base, (double)exponent.max()));
+         return base < 1.0F ? of((float)Math.pow(base, exponent.max()), Float.POSITIVE_INFINITY) : of(0.0F, (float)Math.pow(base, exponent.max()));
       } else {
-         return base < 1.0F
-            ? of(0.0F, (float)Math.pow((double)base, (double)exponent.min()))
-            : of((float)Math.pow((double)base, (double)exponent.min()), Float.POSITIVE_INFINITY);
+         return base < 1.0F ? of(0.0F, (float)Math.pow(base, exponent.min())) : of((float)Math.pow(base, exponent.min()), Float.POSITIVE_INFINITY);
       }
    }
 
    private static Interval powNegativeBase(final float base, final Interval exponent) {
-      float exponentMinInt = (float)Math.ceil((double)exponent.min());
-      float exponentMaxInt = (float)Math.floor((double)exponent.max());
+      float exponentMinInt = (float)Math.ceil(exponent.min());
+      float exponentMaxInt = (float)Math.floor(exponent.max());
       if (exponentMaxInt < exponentMinInt) {
          return NaI;
-      } else {
-         float baseToMinInt = (float)Math.pow((double)base, (double)exponentMinInt);
-         float baseToMaxInt = (float)Math.pow((double)base, (double)exponentMaxInt);
-         Interval result = encapsulating(baseToMinInt, baseToMaxInt);
-         if (Float.isInfinite(exponentMinInt)) {
-            result = encapsulating(result, -baseToMinInt);
-         } else if (exponentMinInt + 1.0F < exponentMaxInt) {
-            result = encapsulating(result, (float)Math.pow((double)base, (double)(exponentMinInt + 1.0F)));
-         }
-
-         if (Float.isInfinite(exponentMaxInt)) {
-            result = encapsulating(result, -baseToMaxInt);
-         } else if (exponentMaxInt - 1.0F > exponentMinInt) {
-            result = encapsulating(result, (float)Math.pow((double)base, (double)(exponentMaxInt - 1.0F)));
-         }
-
-         return result;
       }
+
+      float baseToMinInt = (float)Math.pow(base, exponentMinInt);
+      float baseToMaxInt = (float)Math.pow(base, exponentMaxInt);
+      Interval result = encapsulating(baseToMinInt, baseToMaxInt);
+      if (Float.isInfinite(exponentMinInt)) {
+         result = encapsulating(result, -baseToMinInt);
+      } else if (exponentMinInt + 1.0F < exponentMaxInt) {
+         result = encapsulating(result, (float)Math.pow(base, exponentMinInt + 1.0F));
+      }
+
+      if (Float.isInfinite(exponentMaxInt)) {
+         result = encapsulating(result, -baseToMaxInt);
+      } else if (exponentMaxInt - 1.0F > exponentMinInt) {
+         result = encapsulating(result, (float)Math.pow(base, exponentMaxInt - 1.0F));
+      }
+
+      return result;
    }
 
    public static Interval log(final Interval input) {
       if (input.max() < 0.0F) {
          return NaI;
-      } else {
-         Interval clippedInput = max(input, ofExact(0.0F));
-         return mapMonotonic(clippedInput, x -> (float)Math.log((double)x));
       }
+
+      Interval clippedInput = max(input, ofExact(0.0F));
+      return mapMonotonic(clippedInput, x -> (float)Math.log(x));
    }
 
    public static Interval mapMonotonic(final Interval input, final FloatUnaryOperator monotonicOp) {
@@ -317,11 +317,11 @@ public final class Interval {
    private static Interval lerpInfiniteBounds(final Interval alpha, final float first, final float second) {
       if (first == second) {
          return ofExact(first);
-      } else {
-         float newMin = lerpInfiniteBound(alpha.min, first, second);
-         float newMax = lerpInfiniteBound(alpha.max, first, second);
-         return !Float.isNaN(newMin) && !Float.isNaN(newMax) ? encapsulating(newMin, newMax) : NaI;
       }
+
+      float newMin = lerpInfiniteBound(alpha.min, first, second);
+      float newMax = lerpInfiniteBound(alpha.max, first, second);
+      return !Float.isNaN(newMin) && !Float.isNaN(newMax) ? encapsulating(newMin, newMax) : NaI;
    }
 
    private static float lerpInfiniteBound(final float alpha, final float first, final float second) {
@@ -341,9 +341,13 @@ public final class Interval {
    public static Interval sign(final Interval input) {
       if (input.isNaI()) {
          return NaI;
-      } else if (input.min() == input.max()) {
+      }
+
+      if (input.min() == input.max()) {
          return ofExact(Math.signum(input.min()));
-      } else if (input.contains(0.0F)) {
+      }
+
+      if (input.contains(0.0F)) {
          if (input.min() == 0.0F) {
             return of(0.0F, 1.0F);
          } else {
@@ -376,15 +380,7 @@ public final class Interval {
 
    @Override
    public boolean equals(final Object obj) {
-      if (obj == this) {
-         return true;
-      } else {
-         if (obj instanceof Interval interval && this.min == interval.min && this.max == interval.max) {
-            return true;
-         }
-
-         return false;
-      }
+      return obj == this ? true : obj instanceof Interval interval && this.min == interval.min && this.max == interval.max;
    }
 
    @Override

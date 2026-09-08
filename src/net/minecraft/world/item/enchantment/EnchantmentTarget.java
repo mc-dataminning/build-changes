@@ -12,7 +12,7 @@ public enum EnchantmentTarget implements StringRepresentable {
    public static final Codec<EnchantmentTarget> NON_DAMAGE_CODEC = StringRepresentable.fromEnum(() -> new EnchantmentTarget[]{ATTACKER, VICTIM});
    private final String id;
 
-   private EnchantmentTarget(final String id) {
+   EnchantmentTarget(final String id) {
       this.id = id;
    }
 

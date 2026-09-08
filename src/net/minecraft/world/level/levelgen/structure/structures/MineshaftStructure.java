@@ -69,7 +69,7 @@ public class MineshaftStructure extends Structure {
       return StructureType.MINESHAFT;
    }
 
-   public static enum Type implements StringRepresentable {
+   public enum Type implements StringRepresentable {
       NORMAL("normal", Blocks.OAK_LOG, Blocks.OAK_PLANKS, Blocks.OAK_FENCE),
       MESA("mesa", Blocks.DARK_OAK_LOG, Blocks.DARK_OAK_PLANKS, Blocks.DARK_OAK_FENCE);
 
@@ -80,7 +80,7 @@ public class MineshaftStructure extends Structure {
       private final BlockState planksState;
       private final BlockState fenceState;
 
-      private Type(final String name, final Block wood, final Block plank, final Block fence) {
+      Type(final String name, final Block wood, final Block plank, final Block fence) {
          this.name = name;
          this.woodState = wood.defaultBlockState();
          this.planksState = plank.defaultBlockState();

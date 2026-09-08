@@ -9,8 +9,7 @@ public interface ComponentPath {
       return new ComponentPath.Leaf(component);
    }
 
-   @Nullable
-   static ComponentPath path(final ContainerEventHandler container, @Nullable final ComponentPath childPath) {
+   static @Nullable ComponentPath path(final ContainerEventHandler container, final @Nullable ComponentPath childPath) {
       return childPath == null ? null : new ComponentPath.Path(container, childPath);
    }
 
@@ -30,7 +29,7 @@ public interface ComponentPath {
 
    GuiEventListener leafComponent();
 
-   public static record Leaf(GuiEventListener component) implements ComponentPath {
+   record Leaf(GuiEventListener component) implements ComponentPath {
       @Override
       public void applyFocus(final boolean focused) {
          this.component.setFocused(focused);
@@ -42,7 +41,7 @@ public interface ComponentPath {
       }
    }
 
-   public static record Path(ContainerEventHandler component, ComponentPath childPath) implements ComponentPath {
+   record Path(ContainerEventHandler component, ComponentPath childPath) implements ComponentPath {
       @Override
       public void applyFocus(final boolean focused) {
          if (!focused) {

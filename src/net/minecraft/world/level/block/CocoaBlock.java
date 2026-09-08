@@ -28,12 +28,12 @@ public class CocoaBlock extends HorizontalDirectionalBlock implements Bonemealab
    public static final int MAX_AGE = 2;
    public static final IntegerProperty AGE = BlockStateProperties.AGE_2;
    private static final List<Map<Direction, VoxelShape>> SHAPES = IntStream.rangeClosed(0, 2)
-      .mapToObj(i -> Shapes.rotateHorizontal(Block.column((double)(4 + i * 2), (double)(7 - i * 2), 12.0).move(0.0, 0.0, (double)(i - 5) / 16.0).optimize()))
+      .mapToObj(i -> Shapes.rotateHorizontal(Block.column(4 + i * 2, 7 - i * 2, 12.0).move(0.0, 0.0, (i - 5) / 16.0).optimize()))
       .toList();
 
    public CocoaBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(AGE, Integer.valueOf(0)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(AGE, 0));
    }
 
    @Override
@@ -46,7 +46,7 @@ public class CocoaBlock extends HorizontalDirectionalBlock implements Bonemealab
       if (level.getRandom().nextInt(5) == 0) {
          int age = state.getValue(AGE);
          if (age < 2) {
-            level.setBlock(pos, state.setValue(AGE, Integer.valueOf(age + 1)), 2);
+            level.setBlock(pos, state.setValue(AGE, age + 1), 2);
          }
       }
    }
@@ -62,9 +62,8 @@ public class CocoaBlock extends HorizontalDirectionalBlock implements Bonemealab
       return SHAPES.get(state.getValue(AGE)).get(state.getValue(FACING));
    }
 
-   @Nullable
    @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
+   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
       BlockState state = this.defaultBlockState();
       LevelReader level = context.getLevel();
       BlockPos pos = context.getClickedPos();
@@ -109,7 +108,7 @@ public class CocoaBlock extends HorizontalDirectionalBlock implements Bonemealab
 
    @Override
    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state, final BonemealSource source) {
-      level.setBlock(pos, state.setValue(AGE, Integer.valueOf(state.getValue(AGE) + 1)), 2);
+      level.setBlock(pos, state.setValue(AGE, state.getValue(AGE) + 1), 2);
    }
 
    @Override

@@ -33,7 +33,7 @@ public class GameRulesService {
       return minecraftApi.gameRuleService().updateGameRule(update, clientInfo);
    }
 
-   public static record GameRuleUpdate<T>(GameRule<T> gameRule, T value) {
+   public record GameRuleUpdate<T>(GameRule<T> gameRule, T value) {
       public static final Codec<GameRulesService.GameRuleUpdate<?>> TYPED_CODEC = BuiltInRegistries.GAME_RULE
          .byNameCodec()
          .dispatch("key", GameRulesService.GameRuleUpdate::gameRule, GameRulesService.GameRuleUpdate::getValueAndTypeCodec);
@@ -50,10 +50,10 @@ public class GameRulesService {
       private static <T> MapCodec<? extends GameRulesService.GameRuleUpdate<T>> getValueAndTypeCodec(final GameRule<T> gameRule) {
          return RecordCodecBuilder.mapCodec(
             i -> i.group(
-                     StringRepresentable.fromEnum(GameRuleType::values).fieldOf("type").forGetter(r -> r.gameRule.gameRuleType()),
-                     gameRule.valueCodec().fieldOf("value").forGetter(GameRulesService.GameRuleUpdate::value)
-                  )
-                  .apply(i, (type, value) -> getUntypedRule(gameRule, type, (T)value))
+                  StringRepresentable.fromEnum(GameRuleType::values).fieldOf("type").forGetter(r -> r.gameRule.gameRuleType()),
+                  gameRule.valueCodec().fieldOf("value").forGetter(GameRulesService.GameRuleUpdate::value)
+               )
+               .apply(i, (type, value) -> getUntypedRule(gameRule, type, (T)value))
          );
       }
 

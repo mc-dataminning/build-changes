@@ -19,9 +19,9 @@ public class RangeSlotSource implements SlotSource {
    );
    public static final MapCodec<RangeSlotSource> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               SOURCE_CODEC.optionalFieldOf("source", CONTAINER_ARG).forGetter(t -> t.source), SlotRanges.CODEC.fieldOf("slots").forGetter(t -> t.slotRange)
-            )
-            .apply(i, RangeSlotSource::new)
+            SOURCE_CODEC.optionalFieldOf("source", CONTAINER_ARG).forGetter(t -> t.source), SlotRanges.CODEC.fieldOf("slots").forGetter(t -> t.slotRange)
+         )
+         .apply(i, RangeSlotSource::new)
    );
    private final LootContextArg<Object> source;
    private final SlotRange slotRange;

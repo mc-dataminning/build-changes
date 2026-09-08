@@ -53,12 +53,12 @@ public class FillBiomeCommand {
                            ((RequiredArgumentBuilder)Commands.argument("biome", ResourceArgument.resource(context, Registries.BIOME))
                                  .executes(
                                     c -> fill(
-                                          (CommandSourceStack)c.getSource(),
-                                          BlockPosArgument.getLoadedBlockPos(c, "from"),
-                                          BlockPosArgument.getLoadedBlockPos(c, "to"),
-                                          ResourceArgument.getResource(c, "biome", Registries.BIOME),
-                                          b -> true
-                                       )
+                                       (CommandSourceStack)c.getSource(),
+                                       BlockPosArgument.getLoadedBlockPos(c, "from"),
+                                       BlockPosArgument.getLoadedBlockPos(c, "to"),
+                                       ResourceArgument.getResource(c, "biome", Registries.BIOME),
+                                       b -> true
+                                    )
                                  ))
                               .then(
                                  Commands.literal("replace")
@@ -66,12 +66,12 @@ public class FillBiomeCommand {
                                        Commands.argument("filter", ResourceOrTagArgument.resourceOrTag(context, Registries.BIOME))
                                           .executes(
                                              c -> fill(
-                                                   (CommandSourceStack)c.getSource(),
-                                                   BlockPosArgument.getLoadedBlockPos(c, "from"),
-                                                   BlockPosArgument.getLoadedBlockPos(c, "to"),
-                                                   ResourceArgument.getResource(c, "biome", Registries.BIOME),
-                                                   ResourceOrTagArgument.getResourceOrTag(c, "filter", Registries.BIOME)
-                                                )
+                                                (CommandSourceStack)c.getSource(),
+                                                BlockPosArgument.getLoadedBlockPos(c, "from"),
+                                                BlockPosArgument.getLoadedBlockPos(c, "to"),
+                                                ResourceArgument.getResource(c, "biome", Registries.BIOME),
+                                                ResourceOrTagArgument.getResourceOrTag(c, "filter", Registries.BIOME)
+                                             )
                                           )
                                     )
                               )
@@ -110,8 +110,7 @@ public class FillBiomeCommand {
    }
 
    public static Either<Integer, CommandSyntaxException> fill(final ServerLevel level, final BlockPos rawFrom, final BlockPos rawTo, final Holder<Biome> biome) {
-      return fill(level, rawFrom, rawTo, biome, var0 -> true, var0 -> {
-      });
+      return fill(level, rawFrom, rawTo, biome, var0 -> true, var0 -> {});
    }
 
    public static Either<Integer, CommandSyntaxException> fill(
@@ -125,57 +124,50 @@ public class FillBiomeCommand {
       BlockPos from = quantize(rawFrom);
       BlockPos to = quantize(rawTo);
       BoundingBox region = BoundingBox.fromCorners(from, to);
-      long volume = (long)region.getXSpan() * (long)region.getYSpan() * (long)region.getZSpan();
+      long volume = (long)region.getXSpan() * region.getYSpan() * region.getZSpan();
       int limit = level.getGameRules().get(GameRules.MAX_BLOCK_MODIFICATIONS);
-      if (volume > (long)limit) {
+      if (volume > limit) {
          return Either.right(ERROR_VOLUME_TOO_LARGE.create(limit, volume));
-      } else {
-         List<ChunkAccess> chunks = new ArrayList<>();
+      }
 
-         for (int chunkZ = SectionPos.blockToSectionCoord(region.minZ()); chunkZ <= SectionPos.blockToSectionCoord(region.maxZ()); chunkZ++) {
-            for (int chunkX = SectionPos.blockToSectionCoord(region.minX()); chunkX <= SectionPos.blockToSectionCoord(region.maxX()); chunkX++) {
-               ChunkAccess chunk = level.getChunk(chunkX, chunkZ, ChunkStatus.FULL, false);
-               if (chunk == null) {
-                  return Either.right(ERROR_NOT_LOADED.create());
-               }
+      List<ChunkAccess> chunks = new ArrayList<>();
 
-               chunks.add(chunk);
+      for (int chunkZ = SectionPos.blockToSectionCoord(region.minZ()); chunkZ <= SectionPos.blockToSectionCoord(region.maxZ()); chunkZ++) {
+         for (int chunkX = SectionPos.blockToSectionCoord(region.minX()); chunkX <= SectionPos.blockToSectionCoord(region.maxX()); chunkX++) {
+            ChunkAccess chunk = level.getChunk(chunkX, chunkZ, ChunkStatus.FULL, false);
+            if (chunk == null) {
+               return Either.right(ERROR_NOT_LOADED.create());
             }
+
+            chunks.add(chunk);
          }
+      }
 
-         MutableInt changedCount = new MutableInt(0);
-         Iterator<ChunkAccess> iterator = chunks.iterator();
+      MutableInt changedCount = new MutableInt(0);
+      Iterator<ChunkAccess> iterator = chunks.iterator();
 
-         while (iterator.hasNext()) {
-            ChunkAccess chunk = iterator.next();
-            int previousChangedCount = changedCount.intValue();
-            chunk.fillBiomesFromNoise(makeResolver(changedCount, chunk, region, biome, filter));
-            if (previousChangedCount != changedCount.intValue()) {
-               chunk.markUnsaved();
-            } else {
-               iterator.remove();
-            }
-         }
-
-         int finalChangedCount = changedCount.intValue();
-         if (finalChangedCount > 0) {
-            level.getChunkSource().chunkMap.resendBiomesForChunks(chunks);
-            successMessageConsumer.accept(
-               () -> Component.translatable(
-                     "commands.fillbiome.success.count",
-                     finalChangedCount,
-                     region.minX(),
-                     region.minY(),
-                     region.minZ(),
-                     region.maxX(),
-                     region.maxY(),
-                     region.maxZ()
-                  )
-            );
-            return Either.left(finalChangedCount);
+      while (iterator.hasNext()) {
+         ChunkAccess chunk = iterator.next();
+         int previousChangedCount = changedCount.intValue();
+         chunk.fillBiomesFromNoise(makeResolver(changedCount, chunk, region, biome, filter));
+         if (previousChangedCount != changedCount.intValue()) {
+            chunk.markUnsaved();
          } else {
-            return Either.right(ERROR_NO_BIOMES_SET.create());
+            iterator.remove();
          }
+      }
+
+      int finalChangedCount = changedCount.intValue();
+      if (finalChangedCount > 0) {
+         level.getChunkSource().chunkMap.resendBiomesForChunks(chunks);
+         successMessageConsumer.accept(
+            () -> Component.translatable(
+               "commands.fillbiome.success.count", finalChangedCount, region.minX(), region.minY(), region.minZ(), region.maxX(), region.maxY(), region.maxZ()
+            )
+         );
+         return Either.left(finalChangedCount);
+      } else {
+         return Either.right(ERROR_NO_BIOMES_SET.create());
       }
    }
 

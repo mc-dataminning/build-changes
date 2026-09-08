@@ -28,9 +28,8 @@ public class HorseInventoryScreen extends AbstractMountInventoryScreen<HorseInve
       return SLOT_SPRITE;
    }
 
-   @Nullable
    @Override
-   protected Identifier getChestSlotsSpriteLocation() {
+   protected @Nullable Identifier getChestSlotsSpriteLocation() {
       return CHEST_SLOTS_SPRITE;
    }
 

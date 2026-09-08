@@ -24,7 +24,7 @@ public class SugarCaneBlock extends Block {
 
    protected SugarCaneBlock(final BlockBehaviour.Properties properties) {
       super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(0)));
+      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
    }
 
    @Override
@@ -52,9 +52,9 @@ public class SugarCaneBlock extends Block {
             int age = state.getValue(AGE);
             if (age == 15) {
                level.setBlockAndUpdate(pos.above(), this.defaultBlockState());
-               level.setBlock(pos, state.setValue(AGE, Integer.valueOf(0)), 260);
+               level.setBlock(pos, state.setValue(AGE, 0), 260);
             } else {
-               level.setBlock(pos, state.setValue(AGE, Integer.valueOf(age + 1)), 260);
+               level.setBlock(pos, state.setValue(AGE, age + 1), 260);
             }
          }
       }
@@ -83,21 +83,21 @@ public class SugarCaneBlock extends Block {
       BlockState stateBelow = level.getBlockState(pos.below());
       if (stateBelow.is(this)) {
          return true;
-      } else {
-         if (stateBelow.is(BlockTags.SUPPORTS_SUGAR_CANE)) {
-            BlockPos below = pos.below();
+      }
 
-            for (Direction direction : Direction.Plane.HORIZONTAL) {
-               BlockState blockState = level.getBlockState(below.relative(direction));
-               FluidState fluidState = level.getFluidState(below.relative(direction));
-               if (fluidState.is(FluidTags.SUPPORTS_SUGAR_CANE_ADJACENTLY) || blockState.is(BlockTags.SUPPORTS_SUGAR_CANE_ADJACENTLY)) {
-                  return true;
-               }
+      if (stateBelow.is(BlockTags.SUPPORTS_SUGAR_CANE)) {
+         BlockPos below = pos.below();
+
+         for (Direction direction : Direction.Plane.HORIZONTAL) {
+            BlockState blockState = level.getBlockState(below.relative(direction));
+            FluidState fluidState = level.getFluidState(below.relative(direction));
+            if (fluidState.is(FluidTags.SUPPORTS_SUGAR_CANE_ADJACENTLY) || blockState.is(BlockTags.SUPPORTS_SUGAR_CANE_ADJACENTLY)) {
+               return true;
             }
          }
-
-         return false;
       }
+
+      return false;
    }
 
    @Override

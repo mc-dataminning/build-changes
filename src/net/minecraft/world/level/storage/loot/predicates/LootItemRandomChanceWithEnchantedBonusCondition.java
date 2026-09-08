@@ -20,11 +20,11 @@ public record LootItemRandomChanceWithEnchantedBonusCondition(float unenchantedC
    implements LootItemCondition {
    public static final MapCodec<LootItemRandomChanceWithEnchantedBonusCondition> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("unenchanted_chance").forGetter(LootItemRandomChanceWithEnchantedBonusCondition::unenchantedChance),
-               LevelBasedValue.CODEC.fieldOf("enchanted_chance").forGetter(LootItemRandomChanceWithEnchantedBonusCondition::enchantedChance),
-               Enchantment.CODEC.fieldOf("enchantment").forGetter(LootItemRandomChanceWithEnchantedBonusCondition::enchantment)
-            )
-            .apply(i, LootItemRandomChanceWithEnchantedBonusCondition::new)
+            Codec.floatRange(0.0F, 1.0F).fieldOf("unenchanted_chance").forGetter(LootItemRandomChanceWithEnchantedBonusCondition::unenchantedChance),
+            LevelBasedValue.CODEC.fieldOf("enchanted_chance").forGetter(LootItemRandomChanceWithEnchantedBonusCondition::enchantedChance),
+            Enchantment.CODEC.fieldOf("enchantment").forGetter(LootItemRandomChanceWithEnchantedBonusCondition::enchantment)
+         )
+         .apply(i, LootItemRandomChanceWithEnchantedBonusCondition::new)
    );
 
    @Override
@@ -48,7 +48,7 @@ public record LootItemRandomChanceWithEnchantedBonusCondition(float unenchantedC
       final HolderGetter<Enchantment> enchantments, final float chance, final float perEnchantmentLevel
    ) {
       return () -> new LootItemRandomChanceWithEnchantedBonusCondition(
-            chance, new LevelBasedValue.Linear(chance + perEnchantmentLevel, perEnchantmentLevel), enchantments.getOrThrow(Enchantments.LOOTING)
-         );
+         chance, new LevelBasedValue.Linear(chance + perEnchantmentLevel, perEnchantmentLevel), enchantments.getOrThrow(Enchantments.LOOTING)
+      );
    }
 }

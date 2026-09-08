@@ -14,7 +14,7 @@ public class ArrowItem extends Item implements ProjectileItem {
       super(properties);
    }
 
-   public AbstractArrow createArrow(final Level level, final ItemStack itemStack, final LivingEntity owner, @Nullable final ItemStack firedFromWeapon) {
+   public AbstractArrow createArrow(final Level level, final ItemStack itemStack, final LivingEntity owner, final @Nullable ItemStack firedFromWeapon) {
       return new Arrow(level, owner, itemStack.copyWithCount(1), firedFromWeapon);
    }
 

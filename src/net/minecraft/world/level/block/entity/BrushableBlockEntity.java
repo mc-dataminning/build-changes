@@ -48,10 +48,8 @@ public class BrushableBlockEntity extends BlockEntity {
    private long brushCountResetsAtTick;
    private long coolDownEndsAtTick;
    private ItemStack item = ItemStack.EMPTY;
-   @Nullable
-   private Direction hitDirection;
-   @Nullable
-   private ResourceKey<LootTable> lootTable;
+   private @Nullable Direction hitDirection;
+   private @Nullable ResourceKey<LootTable> lootTable;
    private long lootTableSeed;
 
    public BrushableBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
@@ -66,25 +64,25 @@ public class BrushableBlockEntity extends BlockEntity {
       this.brushCountResetsAtTick = gameTime + 40L;
       if (gameTime < this.coolDownEndsAtTick) {
          return false;
-      } else {
-         this.coolDownEndsAtTick = gameTime + 10L;
-         this.unpackLootTable(level, user, brush);
-         int previousCompletionState = this.getCompletionState();
-         if (++this.brushCount >= 10) {
-            this.brushingCompleted(level, user, brush);
-            return true;
-         } else {
-            level.scheduleTick(this.getBlockPos(), this.getBlockState().getBlock(), 2);
-            int completionState = this.getCompletionState();
-            if (previousCompletionState != completionState) {
-               BlockState previousState = this.getBlockState();
-               BlockState state = previousState.setValue(BlockStateProperties.DUSTED, Integer.valueOf(completionState));
-               level.setBlockAndUpdate(this.getBlockPos(), state);
-            }
-
-            return false;
-         }
       }
+
+      this.coolDownEndsAtTick = gameTime + 10L;
+      this.unpackLootTable(level, user, brush);
+      int previousCompletionState = this.getCompletionState();
+      if (++this.brushCount >= 10) {
+         this.brushingCompleted(level, user, brush);
+         return true;
+      }
+
+      level.scheduleTick(this.getBlockPos(), this.getBlockState().getBlock(), 2);
+      int completionState = this.getCompletionState();
+      if (previousCompletionState != completionState) {
+         BlockState previousState = this.getBlockState();
+         BlockState state = previousState.setValue(BlockStateProperties.DUSTED, completionState);
+         level.setBlockAndUpdate(this.getBlockPos(), state);
+      }
+
+      return false;
    }
 
    private void unpackLootTable(final ServerLevel level, final LivingEntity user, final ItemInstance brush) {
@@ -132,14 +130,14 @@ public class BrushableBlockEntity extends BlockEntity {
    private void dropContent(final ServerLevel level, final LivingEntity user, final ItemStack brush) {
       this.unpackLootTable(level, user, brush);
       if (!this.item.isEmpty()) {
-         double size = (double)EntityTypes.ITEM.getWidth();
+         double size = EntityTypes.ITEM.getWidth();
          double centerRange = 1.0 - size;
          double halfSize = size / 2.0;
          Direction dropDirection = Objects.requireNonNullElse(this.hitDirection, Direction.UP);
          BlockPos dropPos = this.worldPosition.relative(dropDirection, 1);
-         double xo = (double)dropPos.getX() + 0.5 * centerRange + halfSize;
-         double yo = (double)dropPos.getY() + 0.5 + (double)(EntityTypes.ITEM.getHeight() / 2.0F);
-         double zo = (double)dropPos.getZ() + 0.5 * centerRange + halfSize;
+         double xo = dropPos.getX() + 0.5 * centerRange + halfSize;
+         double yo = dropPos.getY() + 0.5 + EntityTypes.ITEM.getHeight() / 2.0F;
+         double zo = dropPos.getZ() + 0.5 * centerRange + halfSize;
          ItemEntity entity = new ItemEntity(level, xo, yo, zo, this.item.split(level.getRandom().nextInt(21) + 10));
          entity.setDeltaMovement(Vec3.ZERO);
          level.addFreshEntity(entity);
@@ -153,7 +151,7 @@ public class BrushableBlockEntity extends BlockEntity {
          this.brushCount = Math.max(0, this.brushCount - 2);
          int completionState = this.getCompletionState();
          if (previousCompletionState != completionState) {
-            level.setBlockAndUpdate(this.getBlockPos(), this.getBlockState().setValue(BlockStateProperties.DUSTED, Integer.valueOf(completionState)));
+            level.setBlockAndUpdate(this.getBlockPos(), this.getBlockState().setValue(BlockStateProperties.DUSTED, completionState));
          }
 
          int retractionSpeed = 4;
@@ -178,14 +176,14 @@ public class BrushableBlockEntity extends BlockEntity {
    private boolean trySaveLootTable(final ValueOutput base) {
       if (this.lootTable == null) {
          return false;
-      } else {
-         base.store("LootTable", LootTable.KEY_CODEC, this.lootTable);
-         if (this.lootTableSeed != 0L) {
-            base.putLong("LootTableSeed", this.lootTableSeed);
-         }
-
-         return true;
       }
+
+      base.store("LootTable", LootTable.KEY_CODEC, this.lootTable);
+      if (this.lootTableSeed != 0L) {
+         base.putLong("LootTableSeed", this.lootTableSeed);
+      }
+
+      return true;
    }
 
    @Override
@@ -239,8 +237,7 @@ public class BrushableBlockEntity extends BlockEntity {
       }
    }
 
-   @Nullable
-   public Direction getHitDirection() {
+   public @Nullable Direction getHitDirection() {
       return this.hitDirection;
    }
 

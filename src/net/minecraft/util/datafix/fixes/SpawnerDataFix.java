@@ -28,11 +28,11 @@ public class SpawnerDataFix extends DataFix {
          oldType,
          newType,
          spawner -> spawner.updateTyped(spawnDataFinder, newSpawnDataType, spawnData -> this.wrapEntityToSpawnData(newSpawnDataType, spawnData))
-               .updateTyped(
-                  spawnPotentialsFinder,
-                  newSpawnPotentialsType,
-                  spawnPotentials -> this.wrapSpawnPotentialsToWeightedEntries(newSpawnPotentialsType, spawnPotentials)
-               )
+            .updateTyped(
+               spawnPotentialsFinder,
+               newSpawnPotentialsType,
+               spawnPotentials -> this.wrapSpawnPotentialsToWeightedEntries(newSpawnPotentialsType, spawnPotentials)
+            )
       );
    }
 

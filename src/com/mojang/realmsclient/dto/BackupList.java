@@ -23,8 +23,8 @@ public record BackupList(List<Backup> backups) {
                }
             }
          }
-      } catch (Exception var6) {
-         LOGGER.error("Could not parse BackupList", var6);
+      } catch (Exception e) {
+         LOGGER.error("Could not parse BackupList", e);
       }
 
       return new BackupList(backups);

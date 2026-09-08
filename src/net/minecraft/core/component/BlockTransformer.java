@@ -55,64 +55,64 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
    public InteractionResult transformBlock(final UseOnContext context) {
       if (playerHasBlockingItemUseIntent(context)) {
          return InteractionResult.PASS;
-      } else {
-         BlockPos pos = context.getClickedPos();
-         Level level = context.getLevel();
+      }
 
-         for (BlockTransformer.BlockTransformData transformData : this.transforms) {
-            Direction clickedFace = context.getClickedFace();
-            if (!transformData.disallowedFaces().contains(clickedFace)) {
-               BlockState newBlockState = transformData.blockStateProvider.value().getOptionalState(level, level.getRandom(), pos);
-               if (newBlockState != null) {
-                  BlockState updatedShape = transformData.updateFromNeighbors ? Block.updateFromNeighbourShapes(newBlockState, level, pos) : newBlockState;
-                  Player player = context.getPlayer();
-                  ItemStack itemInHand = context.getItemInHand();
-                  if (player instanceof ServerPlayer serverPlayer) {
-                     CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, itemInHand);
-                  }
+      BlockPos pos = context.getClickedPos();
+      Level level = context.getLevel();
 
-                  BlockState oldBlockState = level.getBlockState(pos);
-                  if (level instanceof ServerLevel serverLevel) {
-                     transformData.loot
-                        .ifPresent(
-                           lt -> Block.dropFromBlockInteractLootTable(
-                                 serverLevel,
-                                 (ResourceKey<LootTable>)lt,
-                                 pos,
-                                 oldBlockState,
-                                 level.getBlockEntity(pos),
-                                 itemInHand,
-                                 player,
-                                 (sl, stack) -> transformData.dropStrategy.resourcePopper.pop(sl, pos, clickedFace, stack)
-                              )
-                        );
-                  }
-
-                  if (itemInHand.isStackable()) {
-                     itemInHand.consume(transformData.consumeOnUse ? 1 : 0, player);
-                  } else if (player != null) {
-                     itemInHand.hurtAndBreak(transformData.itemDamagePerUse, player, context.getHand().asEquipmentSlot());
-                  }
-
-                  level.setBlock(pos, updatedShape, 11);
-                  level.playSound(player, pos, transformData.sound.value(), SoundSource.BLOCKS, 1.0F, 1.0F);
-                  transformData.particle.send(level, player, pos);
-                  level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, updatedShape));
-                  if (transformData.transformType == BlockTransformer.TransformType.COPPER_CHEST
-                     && oldBlockState.getBlock() instanceof CopperChestBlock
-                     && oldBlockState.getValue(ChestBlock.TYPE) != ChestType.SINGLE) {
-                     BlockPos neighborPos = ChestBlock.getConnectedBlockPos(pos, oldBlockState);
-                     level.gameEvent(GameEvent.BLOCK_CHANGE, neighborPos, GameEvent.Context.of(player, level.getBlockState(neighborPos)));
-                     transformData.particle.send(level, player, neighborPos);
-                  }
-
-                  return InteractionResult.SUCCESS;
+      for (BlockTransformer.BlockTransformData transformData : this.transforms) {
+         Direction clickedFace = context.getClickedFace();
+         if (!transformData.disallowedFaces().contains(clickedFace)) {
+            BlockState newBlockState = transformData.blockStateProvider.value().getOptionalState(level, level.getRandom(), pos);
+            if (newBlockState != null) {
+               BlockState updatedShape = transformData.updateFromNeighbors ? Block.updateFromNeighbourShapes(newBlockState, level, pos) : newBlockState;
+               Player player = context.getPlayer();
+               ItemStack itemInHand = context.getItemInHand();
+               if (player instanceof ServerPlayer serverPlayer) {
+                  CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, itemInHand);
                }
+
+               BlockState oldBlockState = level.getBlockState(pos);
+               if (level instanceof ServerLevel serverLevel) {
+                  transformData.loot
+                     .ifPresent(
+                        lt -> Block.dropFromBlockInteractLootTable(
+                           serverLevel,
+                           (ResourceKey<LootTable>)lt,
+                           pos,
+                           oldBlockState,
+                           level.getBlockEntity(pos),
+                           itemInHand,
+                           player,
+                           (sl, stack) -> transformData.dropStrategy.resourcePopper.pop(sl, pos, clickedFace, stack)
+                        )
+                     );
+               }
+
+               if (itemInHand.isStackable()) {
+                  itemInHand.consume(transformData.consumeOnUse ? 1 : 0, player);
+               } else if (player != null) {
+                  itemInHand.hurtAndBreak(transformData.itemDamagePerUse, player, context.getHand().asEquipmentSlot());
+               }
+
+               level.setBlock(pos, updatedShape, 11);
+               level.playSound(player, pos, transformData.sound.value(), SoundSource.BLOCKS, 1.0F, 1.0F);
+               transformData.particle.send(level, player, pos);
+               level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, updatedShape));
+               if (transformData.transformType == BlockTransformer.TransformType.COPPER_CHEST
+                  && oldBlockState.getBlock() instanceof CopperChestBlock
+                  && oldBlockState.getValue(ChestBlock.TYPE) != ChestType.SINGLE) {
+                  BlockPos neighborPos = ChestBlock.getConnectedBlockPos(pos, oldBlockState);
+                  level.gameEvent(GameEvent.BLOCK_CHANGE, neighborPos, GameEvent.Context.of(player, level.getBlockState(neighborPos)));
+                  transformData.particle.send(level, player, neighborPos);
+               }
+
+               return InteractionResult.SUCCESS;
             }
          }
-
-         return InteractionResult.PASS;
       }
+
+      return InteractionResult.PASS;
    }
 
    private static boolean playerHasBlockingItemUseIntent(final UseOnContext context) {
@@ -122,7 +122,7 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
          && !player.isSecondaryUseActive();
    }
 
-   public static record BlockTransformData(
+   public record BlockTransformData(
       Holder<BlockStateProvider> blockStateProvider,
       Holder<SoundEvent> sound,
       BlockTransformer.TransformParticle particle,
@@ -136,26 +136,26 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
    ) {
       public static final Codec<BlockTransformer.BlockTransformData> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  BlockStateProvider.CODEC.fieldOf("block_state_provider").forGetter(BlockTransformer.BlockTransformData::blockStateProvider),
-                  SoundEvent.CODEC
-                     .optionalFieldOf("sound", BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.EMPTY))
-                     .forGetter(BlockTransformer.BlockTransformData::sound),
-                  BlockTransformer.TransformParticle.CODEC
-                     .optionalFieldOf("particle", BlockTransformer.TransformParticle.NONE)
-                     .forGetter(BlockTransformer.BlockTransformData::particle),
-                  Direction.CODEC.listOf().optionalFieldOf("disallowed_faces", List.of()).forGetter(BlockTransformer.BlockTransformData::disallowedFaces),
-                  LootTable.KEY_CODEC.optionalFieldOf("loot").forGetter(BlockTransformer.BlockTransformData::loot),
-                  BlockTransformer.DropStrategy.CODEC
-                     .optionalFieldOf("drop_strategy", BlockTransformer.DropStrategy.FROM_MIDDLE)
-                     .forGetter(BlockTransformer.BlockTransformData::dropStrategy),
-                  Codec.BOOL.optionalFieldOf("update_from_neighbors", true).forGetter(BlockTransformer.BlockTransformData::updateFromNeighbors),
-                  BlockTransformer.TransformType.CODEC
-                     .optionalFieldOf("transform_type", BlockTransformer.TransformType.SINGLE_BLOCK)
-                     .forGetter(BlockTransformer.BlockTransformData::transformType),
-                  Codec.BOOL.optionalFieldOf("consume_on_use", true).forGetter(BlockTransformer.BlockTransformData::consumeOnUse),
-                  ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("item_damage_per_use", 0).forGetter(BlockTransformer.BlockTransformData::itemDamagePerUse)
-               )
-               .apply(i, BlockTransformer.BlockTransformData::new)
+               BlockStateProvider.CODEC.fieldOf("block_state_provider").forGetter(BlockTransformer.BlockTransformData::blockStateProvider),
+               SoundEvent.CODEC
+                  .optionalFieldOf("sound", BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.EMPTY))
+                  .forGetter(BlockTransformer.BlockTransformData::sound),
+               BlockTransformer.TransformParticle.CODEC
+                  .optionalFieldOf("particle", BlockTransformer.TransformParticle.NONE)
+                  .forGetter(BlockTransformer.BlockTransformData::particle),
+               Direction.CODEC.listOf().optionalFieldOf("disallowed_faces", List.of()).forGetter(BlockTransformer.BlockTransformData::disallowedFaces),
+               LootTable.KEY_CODEC.optionalFieldOf("loot").forGetter(BlockTransformer.BlockTransformData::loot),
+               BlockTransformer.DropStrategy.CODEC
+                  .optionalFieldOf("drop_strategy", BlockTransformer.DropStrategy.FROM_MIDDLE)
+                  .forGetter(BlockTransformer.BlockTransformData::dropStrategy),
+               Codec.BOOL.optionalFieldOf("update_from_neighbors", true).forGetter(BlockTransformer.BlockTransformData::updateFromNeighbors),
+               BlockTransformer.TransformType.CODEC
+                  .optionalFieldOf("transform_type", BlockTransformer.TransformType.SINGLE_BLOCK)
+                  .forGetter(BlockTransformer.BlockTransformData::transformType),
+               Codec.BOOL.optionalFieldOf("consume_on_use", true).forGetter(BlockTransformer.BlockTransformData::consumeOnUse),
+               ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("item_damage_per_use", 0).forGetter(BlockTransformer.BlockTransformData::itemDamagePerUse)
+            )
+            .apply(i, BlockTransformer.BlockTransformData::new)
       );
       public static final StreamCodec<RegistryFriendlyByteBuf, BlockTransformer.BlockTransformData> STREAM_CODEC = StreamCodec.composite(
          ByteBufCodecs.fromCodecWithRegistries(BlockStateProvider.CODEC),
@@ -271,7 +271,7 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
       }
    }
 
-   public static enum DropStrategy implements StringRepresentable {
+   public enum DropStrategy implements StringRepresentable {
       CLICKED_FACE(0, "clicked_face", BlockTransformer.DropStrategy.ResourcePopper.FROM_FACE),
       FROM_MIDDLE(1, "from_middle", BlockTransformer.DropStrategy.ResourcePopper.FROM_MIDDLE);
 
@@ -284,7 +284,7 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
       );
       public static final StreamCodec<ByteBuf, BlockTransformer.DropStrategy> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, BlockTransformer.DropStrategy::getId);
 
-      private DropStrategy(final int id, final String name, final BlockTransformer.DropStrategy.ResourcePopper resourcePopper) {
+      DropStrategy(final int id, final String name, final BlockTransformer.DropStrategy.ResourcePopper resourcePopper) {
          this.id = id;
          this.name = name;
          this.resourcePopper = resourcePopper;
@@ -312,7 +312,7 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
       }
    }
 
-   public static enum TransformParticle implements StringRepresentable {
+   public enum TransformParticle implements StringRepresentable {
       NONE(0, "none", 0),
       SCRAPE(1, "scrape", 3005),
       WAX_ON(2, "wax_on", 3003),
@@ -320,8 +320,7 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
 
       private final int id;
       private final String name;
-      @LevelEvent.Value
-      private final int levelEvent;
+      private final @LevelEvent.Value int levelEvent;
       public static final Codec<BlockTransformer.TransformParticle> CODEC = StringRepresentable.fromValues(BlockTransformer.TransformParticle::values);
       private static final IntFunction<BlockTransformer.TransformParticle> BY_ID = ByIdMap.continuous(
          BlockTransformer.TransformParticle::getId, values(), ByIdMap.OutOfBoundsStrategy.ZERO
@@ -330,13 +329,13 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
          BY_ID, BlockTransformer.TransformParticle::getId
       );
 
-      private TransformParticle(final int id, final String name, @LevelEvent.Value final int levelEvent) {
+      TransformParticle(final int id, final String name, final @LevelEvent.Value int levelEvent) {
          this.id = id;
          this.name = name;
          this.levelEvent = levelEvent;
       }
 
-      public void send(final Level level, @Nullable final Entity player, final BlockPos pos) {
+      public void send(final Level level, final @Nullable Entity player, final BlockPos pos) {
          if (!this.equals(NONE)) {
             level.levelEvent(player, this.getLevelEvent(), pos, 0);
          }
@@ -351,13 +350,12 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
          return this.id;
       }
 
-      @LevelEvent.Value
-      public int getLevelEvent() {
+      public @LevelEvent.Value int getLevelEvent() {
          return this.levelEvent;
       }
    }
 
-   public static enum TransformType implements StringRepresentable {
+   public enum TransformType implements StringRepresentable {
       SINGLE_BLOCK(0, "single_block"),
       COPPER_CHEST(1, "copper_chest");
 
@@ -371,7 +369,7 @@ public record BlockTransformer(List<BlockTransformer.BlockTransformData> transfo
          BY_ID, BlockTransformer.TransformType::getId
       );
 
-      private TransformType(final int id, final String name) {
+      TransformType(final int id, final String name) {
          this.id = id;
          this.name = name;
       }

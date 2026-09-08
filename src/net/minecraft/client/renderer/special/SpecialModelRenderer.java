@@ -24,10 +24,9 @@ public interface SpecialModelRenderer<T> {
 
    void getExtents(Consumer<Vector3fc> output);
 
-   @Nullable
-   T extractArgument(ItemStack stack);
+   @Nullable T extractArgument(ItemStack stack);
 
-   public interface BakingContext {
+   interface BakingContext {
       EntityModelSet entityModelSet();
 
       SpriteGetter sprites();
@@ -35,9 +34,8 @@ public interface SpecialModelRenderer<T> {
       PlayerSkinRenderCache playerSkinRenderCache();
    }
 
-   public interface Unbaked<T> {
-      @Nullable
-      SpecialModelRenderer<T> bake(SpecialModelRenderer.BakingContext context);
+   interface Unbaked<T> {
+      @Nullable SpecialModelRenderer<T> bake(SpecialModelRenderer.BakingContext context);
 
       MapCodec<? extends SpecialModelRenderer.Unbaked<T>> type();
    }

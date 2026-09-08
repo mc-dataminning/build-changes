@@ -9,7 +9,6 @@ import com.mojang.realmsclient.exception.RealmsServiceException;
 import com.mojang.realmsclient.gui.screens.RealmsLongRunningMcoTaskScreen;
 import com.mojang.realmsclient.util.task.GetServerDetailsTask;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.ConnectScreen;
@@ -45,7 +44,6 @@ public class QuickPlay {
          LOGGER.error("Quick play disabled");
          minecraft.gui.setScreen(new TitleScreen());
       } else {
-         Objects.requireNonNull(quickPlayVariant);
          switch (quickPlayVariant) {
             case GameConfig.QuickPlayMultiplayerData multiplayerData:
                joinMultiplayerWorld(minecraft, multiplayerData.serverAddress());
@@ -71,8 +69,7 @@ public class QuickPlay {
       }
    }
 
-   @Nullable
-   private static String getLatestSingleplayerWorld(final LevelStorageSource levelSource) {
+   private static @Nullable String getLatestSingleplayerWorld(final LevelStorageSource levelSource) {
       try {
          List<LevelSummary> levels = levelSource.loadLevelSummaries(levelSource.findLevelCandidates()).get();
          if (levels.isEmpty()) {
@@ -81,13 +78,13 @@ public class QuickPlay {
          } else {
             return levels.getFirst().getLevelId();
          }
-      } catch (ExecutionException | InterruptedException var2) {
-         LOGGER.error("failed to load singleplayer world summaries", var2);
+      } catch (InterruptedException | ExecutionException e) {
+         LOGGER.error("failed to load singleplayer world summaries", e);
          return null;
       }
    }
 
-   private static void joinSingleplayerWorld(final Minecraft minecraft, @Nullable final String identifier) {
+   private static void joinSingleplayerWorld(final Minecraft minecraft, final @Nullable String identifier) {
       if (!StringUtil.isBlank(identifier) && minecraft.getLevelSource().levelExists(identifier)) {
          minecraft.createWorldOpenFlows().openWorld(identifier, () -> minecraft.gui.setScreen(new TitleScreen()));
       } else {
@@ -116,13 +113,13 @@ public class QuickPlay {
       try {
          realmId = Long.parseLong(identifier);
          realmsServerList = realmsClient.listRealms();
-      } catch (NumberFormatException var8) {
+      } catch (NumberFormatException e) {
          Screen parent = new RealmsMainScreen(new TitleScreen());
          minecraft.gui.setScreen(new DisconnectedScreen(parent, ERROR_TITLE, INVALID_IDENTIFIER, TO_REALMS_LIST));
          return;
-      } catch (RealmsServiceException var9) {
-         Screen parentx = new TitleScreen();
-         minecraft.gui.setScreen(new DisconnectedScreen(parentx, ERROR_TITLE, REALM_CONNECT, TO_TITLE));
+      } catch (RealmsServiceException e) {
+         Screen parent = new TitleScreen();
+         minecraft.gui.setScreen(new DisconnectedScreen(parent, ERROR_TITLE, REALM_CONNECT, TO_TITLE));
          return;
       }
 

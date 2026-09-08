@@ -14,12 +14,12 @@ public class DayTimeToClockFix extends DataFix {
    protected TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
          "DayTimeToClockFix", this.getInputSchema().getType(References.LEVEL), typed -> typed.update(DSL.remainderFinder(), input -> {
-               long gameTime = input.get("Time").asLong(0L);
-               long dayTime = input.get("DayTime").asLong(gameTime);
-               input = input.remove("DayTime");
-               Dynamic<?> overworldClock = createClock(input, dayTime);
-               return input.set("world_clocks", input.emptyMap().set("minecraft:overworld", overworldClock));
-            })
+            long gameTime = input.get("Time").asLong(0L);
+            long dayTime = input.get("DayTime").asLong(gameTime);
+            input = input.remove("DayTime");
+            Dynamic<?> overworldClock = createClock(input, dayTime);
+            return input.set("world_clocks", input.emptyMap().set("minecraft:overworld", overworldClock));
+         })
       );
    }
 

@@ -42,8 +42,7 @@ public class AttributeMap {
       return this.attributes.values().stream().filter(instance -> instance.getAttribute().value().isClientSyncable()).collect(Collectors.toList());
    }
 
-   @Nullable
-   public AttributeInstance getInstance(final Holder<Attribute> attribute) {
+   public @Nullable AttributeInstance getInstance(final Holder<Attribute> attribute) {
       return this.attributes.computeIfAbsent(attribute, key -> this.supplier.createInstance(this::onAttributeModified, (Holder<Attribute>)key));
    }
 
@@ -120,14 +119,14 @@ public class AttributeMap {
    public boolean resetBaseValue(final Holder<Attribute> attribute) {
       if (!this.supplier.hasAttribute(attribute)) {
          return false;
-      } else {
-         AttributeInstance instance = this.attributes.get(attribute);
-         if (instance != null) {
-            instance.setBaseValue(this.supplier.getBaseValue(attribute));
-         }
-
-         return true;
       }
+
+      AttributeInstance instance = this.attributes.get(attribute);
+      if (instance != null) {
+         instance.setBaseValue(this.supplier.getBaseValue(attribute));
+      }
+
+      return true;
    }
 
    public List<AttributeInstance.Packed> pack() {

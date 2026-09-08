@@ -74,10 +74,8 @@ public class Llama extends AbstractChestedHorse implements RangedAttackMob {
       .withAttachments(EntityAttachments.builder().attach(EntityAttachment.PASSENGER, 0.0F, EntityTypes.LLAMA.getHeight() - 0.25F, -0.3F))
       .scale(0.5F);
    private boolean didSpit;
-   @Nullable
-   private Llama caravanHead;
-   @Nullable
-   private Llama caravanTail;
+   private @Nullable Llama caravanHead;
+   private @Nullable Llama caravanTail;
 
    public Llama(final EntityType<? extends Llama> type, final Level level) {
       super(type, level);
@@ -151,9 +149,8 @@ public class Llama extends AbstractChestedHorse implements RangedAttackMob {
       this.entityData.set(DATA_VARIANT_ID, variant.id);
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       return type == DataComponents.LLAMA_VARIANT ? castComponentValue((DataComponentType<T>)type, this.getVariant()) : super.get(type);
    }
 
@@ -241,9 +238,8 @@ public class Llama extends AbstractChestedHorse implements RangedAttackMob {
       return this.isDeadOrDying() || this.isEating();
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
+   public @Nullable SpawnGroupData finalizeSpawn(
       final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
    ) {
       RandomSource random = level.getRandom();
@@ -317,15 +313,10 @@ public class Llama extends AbstractChestedHorse implements RangedAttackMob {
 
    @Override
    public boolean canMate(final Animal partner) {
-      if (partner != this && partner instanceof Llama llama && this.canParent() && llama.canParent()) {
-         return true;
-      }
-
-      return false;
+      return partner != this && partner instanceof Llama llama && this.canParent() && llama.canParent();
    }
 
-   @Nullable
-   public Llama getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
+   public @Nullable Llama getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
       Llama baby = this.makeNewLlama();
       if (baby != null) {
          this.setOffspringAttributes(partner, baby);
@@ -342,8 +333,7 @@ public class Llama extends AbstractChestedHorse implements RangedAttackMob {
       return baby;
    }
 
-   @Nullable
-   protected Llama makeNewLlama() {
+   protected @Nullable Llama makeNewLlama() {
       return EntityTypes.LLAMA.create(this.level(), EntitySpawnReason.BREEDING);
    }
 
@@ -383,15 +373,15 @@ public class Llama extends AbstractChestedHorse implements RangedAttackMob {
       int dmg = this.calculateFallDamage(fallDistance, damageModifier);
       if (dmg <= 0) {
          return false;
-      } else {
-         if (fallDistance >= 6.0) {
-            this.hurt(damageSource, (float)dmg);
-            this.propagateFallToPassengers(fallDistance, damageModifier, damageSource);
-         }
-
-         this.playBlockFallSound();
-         return true;
       }
+
+      if (fallDistance >= 6.0) {
+         this.hurt(damageSource, dmg);
+         this.propagateFallToPassengers(fallDistance, damageModifier, damageSource);
+      }
+
+      this.playBlockFallSound();
+      return true;
    }
 
    public void leaveCaravan() {
@@ -415,8 +405,7 @@ public class Llama extends AbstractChestedHorse implements RangedAttackMob {
       return this.caravanHead != null;
    }
 
-   @Nullable
-   public Llama getCaravanHead() {
+   public @Nullable Llama getCaravanHead() {
       return this.caravanHead;
    }
 
@@ -454,7 +443,7 @@ public class Llama extends AbstractChestedHorse implements RangedAttackMob {
 
    @Override
    public Vec3 getLeashOffset() {
-      return new Vec3(0.0, 0.75 * (double)this.getEyeHeight(), (double)this.getBbWidth() * 0.5);
+      return new Vec3(0.0, 0.75 * this.getEyeHeight(), this.getBbWidth() * 0.5);
    }
 
    @Override
@@ -497,13 +486,13 @@ public class Llama extends AbstractChestedHorse implements RangedAttackMob {
          if (this.mob instanceof Llama llama && llama.didSpit) {
             llama.setDidSpit(false);
             return false;
+         } else {
+            return super.canContinueToUse();
          }
-
-         return super.canContinueToUse();
       }
    }
 
-   public static enum Variant implements StringRepresentable {
+   public enum Variant implements StringRepresentable {
       CREAMY(0, "creamy"),
       WHITE(1, "white"),
       BROWN(2, "brown"),
@@ -518,7 +507,7 @@ public class Llama extends AbstractChestedHorse implements RangedAttackMob {
       private final int id;
       private final String name;
 
-      private Variant(final int id, final String name) {
+      Variant(final int id, final String name) {
          this.id = id;
          this.name = name;
       }

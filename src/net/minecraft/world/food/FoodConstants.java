@@ -28,6 +28,6 @@ public class FoodConstants {
    public static final float EXHAUSTION_SWIM = 0.01F;
 
    public static float saturationByModifier(final int nutrition, final float modifier) {
-      return (float)nutrition * modifier * 2.0F;
+      return nutrition * modifier * 2.0F;
    }
 }

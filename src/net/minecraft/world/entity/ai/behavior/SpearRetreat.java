@@ -23,8 +23,7 @@ public class SpearRetreat extends Behavior<PathfinderMob> {
       this.speedModifierWhenRepositioning = speedModifierWhenRepositioning;
    }
 
-   @Nullable
-   private LivingEntity getTarget(final PathfinderMob mob) {
+   private @Nullable LivingEntity getTarget(final PathfinderMob mob) {
       return mob.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).orElse(null);
    }
 
@@ -36,21 +35,21 @@ public class SpearRetreat extends Behavior<PathfinderMob> {
       if (this.ableToAttack(body) && !body.isUsingItem()) {
          if (body.getBrain().getMemory(MemoryModuleType.SPEAR_STATUS).orElse(SpearAttack.SpearStatus.APPROACH) != SpearAttack.SpearStatus.RETREAT) {
             return false;
-         } else {
-            LivingEntity target = this.getTarget(body);
-            double targetDistSqr = body.distanceToSqr(target.getX(), target.getY(), target.getZ());
-            int mountDistance = body.isPassenger() ? 2 : 0;
-            double distance = Math.sqrt(targetDistSqr);
-            Vec3 awayPos = LandRandomPos.getPosAway(
-               body, Math.max(0.0, (double)(9 + mountDistance) - distance), Math.max(1.0, (double)(11 + mountDistance) - distance), 7, target.position()
-            );
-            if (awayPos == null) {
-               return false;
-            } else {
-               body.getBrain().setMemory(MemoryModuleType.SPEAR_FLEEING_POSITION, awayPos);
-               return true;
-            }
          }
+
+         LivingEntity target = this.getTarget(body);
+         double targetDistSqr = body.distanceToSqr(target.getX(), target.getY(), target.getZ());
+         int mountDistance = body.isPassenger() ? 2 : 0;
+         double distance = Math.sqrt(targetDistSqr);
+         Vec3 awayPos = LandRandomPos.getPosAway(
+            body, Math.max(0.0, 9 + mountDistance - distance), Math.max(1.0, 11 + mountDistance - distance), 7, target.position()
+         );
+         if (awayPos == null) {
+            return false;
+         }
+
+         body.getBrain().setMemory(MemoryModuleType.SPEAR_FLEEING_POSITION, awayPos);
+         return true;
       } else {
          return false;
       }
@@ -76,7 +75,7 @@ public class SpearRetreat extends Behavior<PathfinderMob> {
       mob.getBrain().setMemory(MemoryModuleType.SPEAR_FLEEING_TIME, mob.getBrain().getMemory(MemoryModuleType.SPEAR_FLEEING_TIME).orElse(0) + 1);
       mob.getBrain()
          .getMemory(MemoryModuleType.SPEAR_FLEEING_POSITION)
-         .ifPresent(fleePos -> mob.getNavigation().moveTo(fleePos.x, fleePos.y, fleePos.z, (double)speedModifier * this.speedModifierWhenRepositioning));
+         .ifPresent(fleePos -> mob.getNavigation().moveTo(fleePos.x, fleePos.y, fleePos.z, speedModifier * this.speedModifierWhenRepositioning));
    }
 
    protected void stop(final ServerLevel level, final PathfinderMob body, final long timestamp) {

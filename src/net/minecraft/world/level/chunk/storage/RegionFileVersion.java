@@ -45,14 +45,13 @@ public class RegionFileVersion {
    public static final RegionFileVersion DEFAULT = VERSION_DEFLATE;
    private static volatile RegionFileVersion selected = DEFAULT;
    private final int id;
-   @Nullable
-   private final String optionName;
+   private final @Nullable String optionName;
    private final RegionFileVersion.StreamWrapper<InputStream> inputWrapper;
    private final RegionFileVersion.StreamWrapper<OutputStream> outputWrapper;
 
    private RegionFileVersion(
       final int id,
-      @Nullable final String optionName,
+      final @Nullable String optionName,
       final RegionFileVersion.StreamWrapper<InputStream> inputWrapper,
       final RegionFileVersion.StreamWrapper<OutputStream> outputWrapper
    ) {
@@ -71,8 +70,7 @@ public class RegionFileVersion {
       return version;
    }
 
-   @Nullable
-   public static RegionFileVersion fromId(final int id) {
+   public static @Nullable RegionFileVersion fromId(final int id) {
       return (RegionFileVersion)VERSIONS.get(id);
    }
 

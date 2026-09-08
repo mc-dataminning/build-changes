@@ -28,7 +28,7 @@ public class PiglinHeadModel extends SkullModelBase {
       this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
       this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
       float asymmetry = 1.2F;
-      this.leftEar.zRot = (float)(-(Math.cos((double)(state.animationPos * (float) Math.PI * 0.2F * 1.2F)) + 2.5)) * 0.2F;
-      this.rightEar.zRot = (float)(Math.cos((double)(state.animationPos * (float) Math.PI * 0.2F)) + 2.5) * 0.2F;
+      this.leftEar.zRot = (float)(-(Math.cos(state.animationPos * (float) Math.PI * 0.2F * 1.2F) + 2.5)) * 0.2F;
+      this.rightEar.zRot = (float)(Math.cos(state.animationPos * (float) Math.PI * 0.2F) + 2.5) * 0.2F;
    }
 }

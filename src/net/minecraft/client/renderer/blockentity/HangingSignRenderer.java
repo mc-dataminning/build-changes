@@ -38,7 +38,7 @@ public class HangingSignRenderer extends AbstractSignRenderer<HangingSignRenderS
       final HangingSignRenderState state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
       BlockState blockState = blockEntity.getBlockState();

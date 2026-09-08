@@ -29,19 +29,18 @@ public class TrialSpawnerConfigInRegistryFix extends NamedEntityFix {
       Optional<Dynamic<Tag>> normalConfig = input.get("normal_config").result();
       if (normalConfig.isEmpty()) {
          return input;
-      } else {
-         Optional<Dynamic<Tag>> ominousConfig = input.get("ominous_config").result();
-         if (ominousConfig.isEmpty()) {
-            return input;
-         } else {
-            Identifier registryLocation = TrialSpawnerConfigInRegistryFix.VanillaTrialChambers.CONFIGS_TO_KEY
-               .get(Pair.of(normalConfig.get(), ominousConfig.get()));
-            return registryLocation == null
-               ? input
-               : input.set("normal_config", input.createString(registryLocation.withSuffix("/normal").toString()))
-                  .set("ominous_config", input.createString(registryLocation.withSuffix("/ominous").toString()));
-         }
       }
+
+      Optional<Dynamic<Tag>> ominousConfig = input.get("ominous_config").result();
+      if (ominousConfig.isEmpty()) {
+         return input;
+      }
+
+      Identifier registryLocation = TrialSpawnerConfigInRegistryFix.VanillaTrialChambers.CONFIGS_TO_KEY.get(Pair.of(normalConfig.get(), ominousConfig.get()));
+      return registryLocation == null
+         ? input
+         : input.set("normal_config", input.createString(registryLocation.withSuffix("/normal").toString()))
+            .set("ominous_config", input.createString(registryLocation.withSuffix("/ominous").toString()));
    }
 
    @Override
@@ -66,8 +65,8 @@ public class TrialSpawnerConfigInRegistryFix extends NamedEntityFix {
             CONFIGS_TO_KEY.put(Pair.of(dynamicNormal, asDynamic(ominousTag)), location);
             CONFIGS_TO_KEY.put(Pair.of(dynamicNormal, asDynamic(ominousMergedTag)), location);
             CONFIGS_TO_KEY.put(Pair.of(dynamicNormal, asDynamic(ominousMergedTagDefaultsOmitted)), location);
-         } catch (RuntimeException var8) {
-            throw new IllegalStateException("Failed to parse NBT for " + location, var8);
+         } catch (RuntimeException e) {
+            throw new IllegalStateException("Failed to parse NBT for " + location, e);
          }
       }
 
@@ -78,8 +77,8 @@ public class TrialSpawnerConfigInRegistryFix extends NamedEntityFix {
       private static CompoundTag parse(final String nbt) {
          try {
             return TagParser.parseCompoundFully(nbt);
-         } catch (CommandSyntaxException var2) {
-            throw new IllegalArgumentException("Failed to parse Trial Spawner NBT config: " + nbt, var2);
+         } catch (CommandSyntaxException e) {
+            throw new IllegalArgumentException("Failed to parse Trial Spawner NBT config: " + nbt, e);
          }
       }
 

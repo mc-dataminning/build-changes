@@ -13,10 +13,10 @@ public record ShaderDefines(Map<String, String> values, Set<String> flags) {
    public static final ShaderDefines EMPTY = new ShaderDefines(Map.of(), Set.of());
    public static final Codec<ShaderDefines> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-               Codec.unboundedMap(Codec.STRING, Codec.STRING).optionalFieldOf("values", Map.of()).forGetter(ShaderDefines::values),
-               Codec.STRING.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("flags", Set.of()).forGetter(ShaderDefines::flags)
-            )
-            .apply(i, ShaderDefines::new)
+            Codec.unboundedMap(Codec.STRING, Codec.STRING).optionalFieldOf("values", Map.of()).forGetter(ShaderDefines::values),
+            Codec.STRING.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("flags", Set.of()).forGetter(ShaderDefines::flags)
+         )
+         .apply(i, ShaderDefines::new)
    );
 
    public static ShaderDefines.Builder builder() {
@@ -26,19 +26,21 @@ public record ShaderDefines(Map<String, String> values, Set<String> flags) {
    public ShaderDefines withOverrides(final ShaderDefines defines) {
       if (this.isEmpty()) {
          return defines;
-      } else if (defines.isEmpty()) {
-         return this;
-      } else {
-         com.google.common.collect.ImmutableMap.Builder<String, String> newValues = ImmutableMap.builderWithExpectedSize(
-            this.values.size() + defines.values.size()
-         );
-         newValues.putAll(this.values);
-         newValues.putAll(defines.values);
-         com.google.common.collect.ImmutableSet.Builder<String> newFlags = ImmutableSet.builderWithExpectedSize(this.flags.size() + defines.flags.size());
-         newFlags.addAll(this.flags);
-         newFlags.addAll(defines.flags);
-         return new ShaderDefines(newValues.buildKeepingLast(), newFlags.build());
       }
+
+      if (defines.isEmpty()) {
+         return this;
+      }
+
+      com.google.common.collect.ImmutableMap.Builder<String, String> newValues = ImmutableMap.builderWithExpectedSize(
+         this.values.size() + defines.values.size()
+      );
+      newValues.putAll(this.values);
+      newValues.putAll(defines.values);
+      com.google.common.collect.ImmutableSet.Builder<String> newFlags = ImmutableSet.builderWithExpectedSize(this.flags.size() + defines.flags.size());
+      newFlags.addAll(this.flags);
+      newFlags.addAll(defines.flags);
+      return new ShaderDefines(newValues.buildKeepingLast(), newFlags.build());
    }
 
    public String asSourceDirectives() {
@@ -71,10 +73,10 @@ public record ShaderDefines(Map<String, String> values, Set<String> flags) {
       public ShaderDefines.Builder define(final String key, final String value) {
          if (value.isBlank()) {
             throw new IllegalArgumentException("Cannot define empty string");
-         } else {
-            this.values.put(key, escapeNewLines(value));
-            return this;
          }
+
+         this.values.put(key, escapeNewLines(value));
+         return this;
       }
 
       private static String escapeNewLines(final String value) {

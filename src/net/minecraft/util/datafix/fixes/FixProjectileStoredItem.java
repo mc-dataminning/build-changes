@@ -45,7 +45,8 @@ public class FixProjectileStoredItem extends DataFix {
       final String entityName, final FixProjectileStoredItem.SubFixer<?> fixer, final Type<?> inputEntityChoiceType, final Type<T> outputEntityChoiceType
    ) {
       OpticFinder<?> entityF = DSL.namedChoice(entityName, inputEntityChoiceType);
-      return input -> input.updateTyped(entityF, outputEntityChoiceType, typed -> fixer.fix(typed, outputEntityChoiceType));
+      FixProjectileStoredItem.SubFixer<T> typedFixer = (FixProjectileStoredItem.SubFixer<T>)fixer;
+      return input -> input.updateTyped(entityF, outputEntityChoiceType, typed -> typedFixer.fix(typed, outputEntityChoiceType));
    }
 
    private static <T> Typed<T> fixArrow(final Typed<?> typed, final Type<T> outputType) {

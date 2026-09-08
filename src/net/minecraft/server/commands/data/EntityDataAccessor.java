@@ -24,8 +24,8 @@ public class EntityDataAccessor implements DataAccessor {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static final SimpleCommandExceptionType ERROR_NO_PLAYERS = new SimpleCommandExceptionType(Component.translatable("commands.data.entity.invalid"));
    public static final ArgProvider.Factory<DataAccessor> PROVIDER = arg -> ArgProvider.create(
-         "entity", () -> Commands.argument(arg, EntityArgument.entity()), c -> new EntityDataAccessor(EntityArgument.getEntity(c, arg))
-      );
+      "entity", () -> Commands.argument(arg, EntityArgument.entity()), c -> new EntityDataAccessor(EntityArgument.getEntity(c, arg))
+   );
    private final Entity entity;
 
    public EntityDataAccessor(final Entity entity) {
@@ -36,14 +36,14 @@ public class EntityDataAccessor implements DataAccessor {
    public void setData(final CompoundTag tag) throws CommandSyntaxException {
       if (this.entity instanceof Player) {
          throw ERROR_NO_PLAYERS.create();
-      } else {
-         UUID uuid = this.entity.getUUID();
+      }
 
-         try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(this.entity.problemPath(), LOGGER)) {
-            this.entity.load(TagValueInput.create(reporter, this.entity.registryAccess(), tag));
-            this.entity.setUUID(uuid);
-            this.entity.postDataManipulated();
-         }
+      UUID uuid = this.entity.getUUID();
+
+      try (ProblemReporter.ScopedCollector reporter = new ProblemReporter.ScopedCollector(this.entity.problemPath(), LOGGER)) {
+         this.entity.load(TagValueInput.create(reporter, this.entity.registryAccess(), tag));
+         this.entity.setUUID(uuid);
+         this.entity.postDataManipulated();
       }
    }
 

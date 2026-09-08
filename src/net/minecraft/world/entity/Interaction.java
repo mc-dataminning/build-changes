@@ -34,10 +34,8 @@ public class Interaction extends Entity implements Attackable, Targeting {
    private static final float DEFAULT_WIDTH = 1.0F;
    private static final float DEFAULT_HEIGHT = 1.0F;
    private static final boolean DEFAULT_RESPONSE = false;
-   @Nullable
-   private Interaction.PlayerAction attack;
-   @Nullable
-   private Interaction.PlayerAction interaction;
+   private Interaction.@Nullable PlayerAction attack;
+   private Interaction.@Nullable PlayerAction interaction;
 
    public Interaction(final EntityType<?> type, final Level level) {
       super(type, level);
@@ -121,25 +119,23 @@ public class Interaction extends Entity implements Attackable, Targeting {
    public InteractionResult interact(final Player player, final InteractionHand hand, final Vec3 location) {
       if (this.level().isClientSide()) {
          return this.getResponse() ? InteractionResult.SUCCESS : InteractionResult.CONSUME;
-      } else {
-         this.interaction = new Interaction.PlayerAction(player.getUUID(), this.level().getGameTime());
-         return InteractionResult.CONSUME;
       }
+
+      this.interaction = new Interaction.PlayerAction(player.getUUID(), this.level().getGameTime());
+      return InteractionResult.CONSUME;
    }
 
    @Override
    public void tick() {
    }
 
-   @Nullable
    @Override
-   public LivingEntity getLastAttacker() {
+   public @Nullable LivingEntity getLastAttacker() {
       return this.attack != null ? this.level().getPlayerByUUID(this.attack.player()) : null;
    }
 
-   @Nullable
    @Override
-   public LivingEntity getTarget() {
+   public @Nullable LivingEntity getTarget() {
       return this.interaction != null ? this.level().getPlayerByUUID(this.interaction.player()) : null;
    }
 
@@ -181,13 +177,13 @@ public class Interaction extends Entity implements Attackable, Targeting {
       return this.getDimensions().makeBoundingBox(position);
    }
 
-   private static record PlayerAction(UUID player, long timestamp) {
+   private record PlayerAction(UUID player, long timestamp) {
       public static final Codec<Interaction.PlayerAction> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  UUIDUtil.CODEC.fieldOf("player").forGetter(Interaction.PlayerAction::player),
-                  Codec.LONG.fieldOf("timestamp").forGetter(Interaction.PlayerAction::timestamp)
-               )
-               .apply(i, Interaction.PlayerAction::new)
+               UUIDUtil.CODEC.fieldOf("player").forGetter(Interaction.PlayerAction::player),
+               Codec.LONG.fieldOf("timestamp").forGetter(Interaction.PlayerAction::timestamp)
+            )
+            .apply(i, Interaction.PlayerAction::new)
       );
    }
 }

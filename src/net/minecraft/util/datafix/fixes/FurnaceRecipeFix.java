@@ -43,8 +43,8 @@ public class FurnaceRecipeFix extends DataFix {
          oldEntityType,
          newEntityType,
          input -> input.updateTyped(oldFurnaceFinder, newFurnaceType, furnace -> this.updateFurnaceContents(recipeType, replacedType, furnace))
-               .updateTyped(oldBlastFurnaceFinder, newBlastFurnaceFinder, blastFurnace -> this.updateFurnaceContents(recipeType, replacedType, blastFurnace))
-               .updateTyped(oldSmokerFinder, newSmokerFinder, smoker -> this.updateFurnaceContents(recipeType, replacedType, smoker))
+            .updateTyped(oldBlastFurnaceFinder, newBlastFurnaceFinder, blastFurnace -> this.updateFurnaceContents(recipeType, replacedType, blastFurnace))
+            .updateTyped(oldSmokerFinder, newSmokerFinder, smoker -> this.updateFurnaceContents(recipeType, replacedType, smoker))
       );
    }
 

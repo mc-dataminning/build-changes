@@ -29,7 +29,7 @@ public record ModCheck(ModCheck.Confidence confidence, String description) {
       return this.confidence.description + " " + this.description;
    }
 
-   public static enum Confidence {
+   public enum Confidence {
       PROBABLY_NOT("Probably not.", false),
       VERY_LIKELY("Very likely;", true),
       DEFINITELY("Definitely;", true);
@@ -37,7 +37,7 @@ public record ModCheck(ModCheck.Confidence confidence, String description) {
       private final String description;
       private final boolean shouldReportAsModified;
 
-      private Confidence(final String description, final boolean shouldReportAsModified) {
+      Confidence(final String description, final boolean shouldReportAsModified) {
          this.description = description;
          this.shouldReportAsModified = shouldReportAsModified;
       }

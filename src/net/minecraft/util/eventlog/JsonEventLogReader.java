@@ -18,19 +18,18 @@ public interface JsonEventLogReader<T> extends Closeable {
       final JsonReader jsonReader = new JsonReader(reader);
       jsonReader.setStrictness(Strictness.LENIENT);
       return new JsonEventLogReader<T>() {
-         @Nullable
          @Override
-         public T next() throws IOException {
+         public @Nullable T next() throws IOException {
             try {
                if (!jsonReader.hasNext()) {
                   return null;
-               } else {
-                  JsonElement json = JsonParser.parseReader(jsonReader);
-                  return (T)codec.parse(JsonOps.INSTANCE, json).getOrThrow(IOException::new);
                }
-            } catch (JsonParseException var2) {
-               throw new IOException(var2);
-            } catch (EOFException var3) {
+
+               JsonElement json = JsonParser.parseReader(jsonReader);
+               return (T)codec.parse(JsonOps.INSTANCE, json).getOrThrow(IOException::new);
+            } catch (JsonParseException e) {
+               throw new IOException(e);
+            } catch (EOFException e) {
                return null;
             }
          }
@@ -42,6 +41,5 @@ public interface JsonEventLogReader<T> extends Closeable {
       };
    }
 
-   @Nullable
-   T next() throws IOException;
+   @Nullable T next() throws IOException;
 }

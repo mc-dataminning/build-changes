@@ -11,10 +11,10 @@ import net.minecraft.world.level.storage.loot.providers.number.StoredNumberAcces
 public record StorageValue(StoredNumberAccess access, Holder<ContextIntProvider> fallback) implements ContextIntProvider {
    public static final MapCodec<StorageValue> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               StoredNumberAccess.MAP_CODEC.forGetter(StorageValue::access),
-               ContextIntProviders.CODEC.optionalFieldOf("fallback", ContextIntProviders.exactly(0)).forGetter(StorageValue::fallback)
-            )
-            .apply(i, StorageValue::new)
+            StoredNumberAccess.MAP_CODEC.forGetter(StorageValue::access),
+            ContextIntProviders.CODEC.optionalFieldOf("fallback", ContextIntProviders.exactly(0)).forGetter(StorageValue::fallback)
+         )
+         .apply(i, StorageValue::new)
    );
 
    @Override

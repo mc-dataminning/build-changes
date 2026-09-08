@@ -19,17 +19,17 @@ public record EnchantmentsByCostWithDifficulty(HolderSet<Enchantment> enchantmen
    public static final int MAX_ALLOWED_VALUE_PART = 10000;
    public static final MapCodec<EnchantmentsByCostWithDifficulty> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               RegistryCodecs.holderSet(Registries.ENCHANTMENT).fieldOf("enchantments").forGetter(EnchantmentsByCostWithDifficulty::enchantments),
-               ExtraCodecs.intRange(1, 10000).fieldOf("min_cost").forGetter(EnchantmentsByCostWithDifficulty::minCost),
-               ExtraCodecs.intRange(0, 10000).fieldOf("max_cost_span").forGetter(EnchantmentsByCostWithDifficulty::maxCostSpan)
-            )
-            .apply(i, EnchantmentsByCostWithDifficulty::new)
+            RegistryCodecs.holderSet(Registries.ENCHANTMENT).fieldOf("enchantments").forGetter(EnchantmentsByCostWithDifficulty::enchantments),
+            ExtraCodecs.intRange(1, 10000).fieldOf("min_cost").forGetter(EnchantmentsByCostWithDifficulty::minCost),
+            ExtraCodecs.intRange(0, 10000).fieldOf("max_cost_span").forGetter(EnchantmentsByCostWithDifficulty::maxCostSpan)
+         )
+         .apply(i, EnchantmentsByCostWithDifficulty::new)
    );
 
    @Override
    public void enchant(final ItemStack item, final ItemEnchantments.Mutable itemEnchantments, final RandomSource random, final DifficultyInstance difficulty) {
       float difficultyModifier = difficulty.getSpecialMultiplier();
-      int cost = Mth.randomBetweenInclusive(random, this.minCost, this.minCost + (int)(difficultyModifier * (float)this.maxCostSpan));
+      int cost = Mth.randomBetweenInclusive(random, this.minCost, this.minCost + (int)(difficultyModifier * this.maxCostSpan));
 
       for (EnchantmentInstance instance : EnchantmentHelper.selectEnchantment(random, item, cost, this.enchantments.stream())) {
          itemEnchantments.upgrade(instance.enchantment(), instance.level());

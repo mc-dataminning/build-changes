@@ -79,7 +79,7 @@ public class AnvilScreen extends ItemCombinerScreen<AnvilMenu> {
       Slot slot = this.menu.getSlot(0);
       if (slot.hasItem()) {
          String newName = name;
-         if (!slot.getItem().has(DataComponents.CUSTOM_NAME) && name.equals(slot.getItem().getHoverName().getString())) {
+         if (!slot.getItem().has(DataComponents.CUSTOM_NAME) && newName.equals(slot.getItem().getHoverName().getString())) {
             newName = "";
          }
 

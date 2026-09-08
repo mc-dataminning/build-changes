@@ -23,9 +23,8 @@ public abstract class ContainerObjectSelectionList<E extends ContainerObjectSele
       super(minecraft, width, height, y, itemHeight);
    }
 
-   @Nullable
    @Override
-   public ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
+   public @Nullable ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
       if (this.getItemCount() == 0) {
          return null;
       } else if (!(navigationEvent instanceof FocusNavigationEvent.ArrowNavigation arrowNavigation)) {
@@ -34,47 +33,47 @@ public abstract class ContainerObjectSelectionList<E extends ContainerObjectSele
          E focused = this.getFocused();
          if (arrowNavigation.direction().getAxis() == ScreenAxis.HORIZONTAL && focused != null) {
             return ComponentPath.path(this, focused.nextFocusPath(navigationEvent));
-         } else {
-            int index = -1;
-            ScreenDirection direction = arrowNavigation.direction();
-            if (focused != null) {
-               index = focused.children().indexOf(focused.getFocused());
-            }
-
-            if (index == -1) {
-               switch (direction) {
-                  case LEFT:
-                     index = Integer.MAX_VALUE;
-                     direction = ScreenDirection.DOWN;
-                     break;
-                  case RIGHT:
-                     index = 0;
-                     direction = ScreenDirection.DOWN;
-                     break;
-                  default:
-                     index = 0;
-               }
-            }
-
-            E entry = focused;
-
-            ComponentPath componentPath;
-            do {
-               entry = this.nextEntry(direction, e -> !e.children().isEmpty(), entry);
-               if (entry == null) {
-                  return null;
-               }
-
-               componentPath = entry.focusPathAtIndex(arrowNavigation, index);
-            } while (componentPath == null);
-
-            return ComponentPath.path(this, componentPath);
          }
+
+         int index = -1;
+         ScreenDirection direction = arrowNavigation.direction();
+         if (focused != null) {
+            index = focused.children().indexOf(focused.getFocused());
+         }
+
+         if (index == -1) {
+            switch (direction) {
+               case LEFT:
+                  index = Integer.MAX_VALUE;
+                  direction = ScreenDirection.DOWN;
+                  break;
+               case RIGHT:
+                  index = 0;
+                  direction = ScreenDirection.DOWN;
+                  break;
+               default:
+                  index = 0;
+            }
+         }
+
+         E entry = focused;
+
+         ComponentPath componentPath;
+         do {
+            entry = this.nextEntry(direction, e -> !e.children().isEmpty(), entry);
+            if (entry == null) {
+               return null;
+            }
+
+            componentPath = entry.focusPathAtIndex(arrowNavigation, index);
+         } while (componentPath == null);
+
+         return ComponentPath.path(this, componentPath);
       }
    }
 
    @Override
-   public void setFocused(@Nullable final GuiEventListener focused) {
+   public void setFocused(final @Nullable GuiEventListener focused) {
       if (this.getFocused() != focused) {
          super.setFocused(focused);
          if (focused == null) {
@@ -110,10 +109,8 @@ public abstract class ContainerObjectSelectionList<E extends ContainerObjectSele
    }
 
    public abstract static class Entry<E extends ContainerObjectSelectionList.Entry<E>> extends AbstractSelectionList.Entry<E> implements ContainerEventHandler {
-      @Nullable
-      private GuiEventListener focused;
-      @Nullable
-      private NarratableEntry lastNarratable;
+      private @Nullable GuiEventListener focused;
+      private @Nullable NarratableEntry lastNarratable;
       private boolean dragging;
 
       @Override
@@ -132,7 +129,7 @@ public abstract class ContainerObjectSelectionList<E extends ContainerObjectSele
       }
 
       @Override
-      public void setFocused(@Nullable final GuiEventListener focused) {
+      public void setFocused(final @Nullable GuiEventListener focused) {
          if (this.focused != null) {
             this.focused.setFocused(false);
          }
@@ -144,25 +141,22 @@ public abstract class ContainerObjectSelectionList<E extends ContainerObjectSele
          this.focused = focused;
       }
 
-      @Nullable
       @Override
-      public GuiEventListener getFocused() {
+      public @Nullable GuiEventListener getFocused() {
          return this.focused;
       }
 
-      @Nullable
-      public ComponentPath focusPathAtIndex(final FocusNavigationEvent navigationEvent, final int currentIndex) {
+      public @Nullable ComponentPath focusPathAtIndex(final FocusNavigationEvent navigationEvent, final int currentIndex) {
          if (this.children().isEmpty()) {
             return null;
-         } else {
-            ComponentPath componentPath = this.children().get(Math.min(currentIndex, this.children().size() - 1)).nextFocusPath(navigationEvent);
-            return ComponentPath.path(this, componentPath);
          }
+
+         ComponentPath componentPath = this.children().get(Math.min(currentIndex, this.children().size() - 1)).nextFocusPath(navigationEvent);
+         return ComponentPath.path(this, componentPath);
       }
 
-      @Nullable
       @Override
-      public ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
+      public @Nullable ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
          if (navigationEvent instanceof FocusNavigationEvent.ArrowNavigation arrowNavigation) {
             int delta = switch (arrowNavigation.direction()) {
                case LEFT -> -1;

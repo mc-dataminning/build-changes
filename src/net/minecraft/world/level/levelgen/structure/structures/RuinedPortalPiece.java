@@ -201,7 +201,7 @@ public class RuinedPortalPiece extends TemplateStructurePiece {
          if (neighourState.isAir()) {
             if (Block.isFaceFull(state.getCollisionShape(level, pos), direction)) {
                BooleanProperty vineDir = VineBlock.getPropertyForFace(direction.getOpposite());
-               level.setBlockAndUpdate(neighbourPos, Blocks.VINE.defaultBlockState().setValue(vineDir, Boolean.valueOf(true)));
+               level.setBlockAndUpdate(neighbourPos, Blocks.VINE.defaultBlockState().setValue(vineDir, true));
             }
          }
       }
@@ -209,7 +209,7 @@ public class RuinedPortalPiece extends TemplateStructurePiece {
 
    private void maybeAddLeavesAbove(final RandomSource random, final LevelAccessor level, final BlockPos pos) {
       if (random.nextFloat() < 0.5F && level.getBlockState(pos).is(Blocks.NETHERRACK) && level.getBlockState(pos.above()).isAir()) {
-         level.setBlockAndUpdate(pos.above(), Blocks.JUNGLE_LEAVES.defaultBlockState().setValue(LeavesBlock.PERSISTENT, Boolean.valueOf(true)));
+         level.setBlockAndUpdate(pos.above(), Blocks.JUNGLE_LEAVES.defaultBlockState().setValue(LeavesBlock.PERSISTENT, true));
       }
    }
 
@@ -255,7 +255,7 @@ public class RuinedPortalPiece extends TemplateStructurePiece {
             int adjustedDistance = Math.max(0, distance + distanceAdjustment);
             if (adjustedDistance < maxDistance) {
                float probabilityOfNetherrack = netherrackProbabilityByDistance[adjustedDistance];
-               if (random.nextDouble() < (double)probabilityOfNetherrack) {
+               if (random.nextDouble() < probabilityOfNetherrack) {
                   int surfaceY = getSurfaceY(level, x, z, this.verticalPlacement);
                   int y = followGroundSurface ? surfaceY : Math.min(this.boundingBox.minY(), surfaceY);
                   pos.set(x, y, z);
@@ -310,21 +310,21 @@ public class RuinedPortalPiece extends TemplateStructurePiece {
       return new ProcessorRule(new BlockMatchTest(source), AlwaysTrueTest.INSTANCE, target.defaultBlockState());
    }
 
-   public static record Properties(boolean cold, float mossiness, boolean airPocket, boolean overgrown, boolean vines, boolean replaceWithBlackstone) {
+   public record Properties(boolean cold, float mossiness, boolean airPocket, boolean overgrown, boolean vines, boolean replaceWithBlackstone) {
       public static final Codec<RuinedPortalPiece.Properties> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Codec.BOOL.fieldOf("cold").forGetter(RuinedPortalPiece.Properties::cold),
-                  Codec.FLOAT.fieldOf("mossiness").forGetter(RuinedPortalPiece.Properties::mossiness),
-                  Codec.BOOL.fieldOf("air_pocket").forGetter(RuinedPortalPiece.Properties::airPocket),
-                  Codec.BOOL.fieldOf("overgrown").forGetter(RuinedPortalPiece.Properties::overgrown),
-                  Codec.BOOL.fieldOf("vines").forGetter(RuinedPortalPiece.Properties::vines),
-                  Codec.BOOL.fieldOf("replace_with_blackstone").forGetter(RuinedPortalPiece.Properties::replaceWithBlackstone)
-               )
-               .apply(i, RuinedPortalPiece.Properties::new)
+               Codec.BOOL.fieldOf("cold").forGetter(RuinedPortalPiece.Properties::cold),
+               Codec.FLOAT.fieldOf("mossiness").forGetter(RuinedPortalPiece.Properties::mossiness),
+               Codec.BOOL.fieldOf("air_pocket").forGetter(RuinedPortalPiece.Properties::airPocket),
+               Codec.BOOL.fieldOf("overgrown").forGetter(RuinedPortalPiece.Properties::overgrown),
+               Codec.BOOL.fieldOf("vines").forGetter(RuinedPortalPiece.Properties::vines),
+               Codec.BOOL.fieldOf("replace_with_blackstone").forGetter(RuinedPortalPiece.Properties::replaceWithBlackstone)
+            )
+            .apply(i, RuinedPortalPiece.Properties::new)
       );
    }
 
-   public static enum VerticalPlacement implements StringRepresentable {
+   public enum VerticalPlacement implements StringRepresentable {
       ON_LAND_SURFACE("on_land_surface"),
       PARTLY_BURIED("partly_buried"),
       ON_OCEAN_FLOOR("on_ocean_floor"),
@@ -335,7 +335,7 @@ public class RuinedPortalPiece extends TemplateStructurePiece {
       public static final Codec<RuinedPortalPiece.VerticalPlacement> CODEC = StringRepresentable.fromEnum(RuinedPortalPiece.VerticalPlacement::values);
       private final String name;
 
-      private VerticalPlacement(final String name) {
+      VerticalPlacement(final String name) {
          this.name = name;
       }
 

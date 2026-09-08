@@ -43,10 +43,10 @@ public class LanServerDetection {
 
             try {
                this.socket.receive(packet);
-            } catch (SocketTimeoutException var5) {
+            } catch (SocketTimeoutException ignored) {
                continue;
-            } catch (IOException var6) {
-               LanServerDetection.LOGGER.error("Couldn't ping server", var6);
+            } catch (IOException e) {
+               LanServerDetection.LOGGER.error("Couldn't ping server", e);
                break;
             }
 
@@ -68,8 +68,7 @@ public class LanServerDetection {
       private final List<LanServer> servers = Lists.newArrayList();
       private boolean isDirty;
 
-      @Nullable
-      public synchronized List<LanServer> takeDirtyServers() {
+      public synchronized @Nullable List<LanServer> takeDirtyServers() {
          if (this.isDirty) {
             List<LanServer> newServers = List.copyOf(this.servers);
             this.isDirty = false;

@@ -30,7 +30,7 @@ public class TrialSpawnerRenderer implements BlockEntityRenderer<TrialSpawnerBlo
       final SpawnerRenderState state,
       final float partialTicks,
       final Vec3 cameraPosition,
-      @Nullable final ModelFeatureRenderer.CrumblingOverlay breakProgress
+      final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
    ) {
       BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
       if (blockEntity.getLevel() != null) {
@@ -44,7 +44,7 @@ public class TrialSpawnerRenderer implements BlockEntityRenderer<TrialSpawnerBlo
    public static void extractSpawnerData(
       final SpawnerRenderState state,
       final float partialTicks,
-      @Nullable final Entity displayEntity,
+      final @Nullable Entity displayEntity,
       final EntityRenderDispatcher entityRenderer,
       final double oSpin,
       final double spin
@@ -52,10 +52,10 @@ public class TrialSpawnerRenderer implements BlockEntityRenderer<TrialSpawnerBlo
       if (displayEntity != null) {
          state.displayEntity = entityRenderer.extractEntity(displayEntity, partialTicks);
          state.displayEntity.lightCoords = state.lightCoords;
-         state.spin = (float)Mth.lerp((double)partialTicks, oSpin, spin) * 10.0F;
+         state.spin = (float)Mth.lerp(partialTicks, oSpin, spin) * 10.0F;
          state.scale = 0.53125F;
          float maxLength = Math.max(displayEntity.getBbWidth(), displayEntity.getBbHeight());
-         if ((double)maxLength > 1.0) {
+         if (maxLength > 1.0) {
             state.scale /= maxLength;
          }
       }

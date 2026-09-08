@@ -38,7 +38,7 @@ public class BellModel extends Model<BellModel.State> {
       float xRot = 0.0F;
       float zRot = 0.0F;
       if (state.shakeDirection != null) {
-         float baseRot = Mth.sin((double)(state.ticks / (float) Math.PI)) / (4.0F + state.ticks / 3.0F);
+         float baseRot = Mth.sin(state.ticks / (float) Math.PI) / (4.0F + state.ticks / 3.0F);
          switch (state.shakeDirection) {
             case NORTH:
                xRot = -baseRot;
@@ -58,6 +58,6 @@ public class BellModel extends Model<BellModel.State> {
       this.bellBody.zRot = zRot;
    }
 
-   public static record State(float ticks, @Nullable Direction shakeDirection) {
+   public record State(float ticks, @Nullable Direction shakeDirection) {
    }
 }

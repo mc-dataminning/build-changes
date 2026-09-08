@@ -49,21 +49,21 @@ public class MergeTerrainChunkStatusFix extends DataFix {
       );
       if (!Objects.equals(sectionType, expectedSectionType)) {
          throw new IllegalStateException(sectionType + " did not match " + expectedSectionType);
-      } else {
-         OpticFinder<Pair<Either<Biomes, Unit>, Pair<Either<BlockStates, Unit>, Dynamic<?>>>> sectionF = DSL.typeFinder(expectedSectionType);
-         return this.fixTypeEverywhereTyped("MergeTerrainChunkStatusFix", chunkType, chunk -> {
-            MergeTerrainChunkStatusFix.FixedAndStatuses statuses = this.fixStatuses(chunk);
-            chunk = statuses.fixed;
-            boolean statusIntermediate = OLD_INTERMEDIATE_TERRAIN_STATUSES.contains(statuses.oldStatus);
-            boolean targetStatusIntermediate = statuses.oldTargetStatus != null && OLD_INTERMEDIATE_TERRAIN_STATUSES.contains(statuses.oldTargetStatus);
-            if (statusIntermediate || targetStatusIntermediate) {
-               boolean onlyRemoveBlocksBelowZero = statuses.oldTargetStatus != null && !targetStatusIntermediate;
-               chunk = removeBlockStates(chunk, sectionsF, sectionF, onlyRemoveBlocksBelowZero);
-            }
-
-            return chunk;
-         });
       }
+
+      OpticFinder<Pair<Either<Biomes, Unit>, Pair<Either<BlockStates, Unit>, Dynamic<?>>>> sectionF = DSL.typeFinder(expectedSectionType);
+      return this.fixTypeEverywhereTyped("MergeTerrainChunkStatusFix", chunkType, chunk -> {
+         MergeTerrainChunkStatusFix.FixedAndStatuses statuses = this.fixStatuses(chunk);
+         chunk = statuses.fixed;
+         boolean statusIntermediate = OLD_INTERMEDIATE_TERRAIN_STATUSES.contains(statuses.oldStatus);
+         boolean targetStatusIntermediate = statuses.oldTargetStatus != null && OLD_INTERMEDIATE_TERRAIN_STATUSES.contains(statuses.oldTargetStatus);
+         if (statusIntermediate || targetStatusIntermediate) {
+            boolean onlyRemoveBlocksBelowZero = statuses.oldTargetStatus != null && !targetStatusIntermediate;
+            chunk = removeBlockStates(chunk, sectionsF, sectionF, onlyRemoveBlocksBelowZero);
+         }
+
+         return chunk;
+      });
    }
 
    private static <Biomes, BlockStates> Typed<?> removeBlockStates(
@@ -76,17 +76,17 @@ public class MergeTerrainChunkStatusFix extends DataFix {
          .updateTyped(
             sectionsF,
             sections -> sections.update(
-                  sectionF,
-                  section -> {
-                     byte y = ((Dynamic)((Pair)section.getSecond()).getSecond()).get("Y").asByte((byte)0);
-                     return y >= 0 && onlyBelowZero
-                        ? section
-                        : section.mapSecond(
-                           blockStatesAndRemainder -> blockStatesAndRemainder.mapFirst(var0x -> Either.right(Unit.INSTANCE))
-                                 .mapSecond(sectionRemainder -> sectionRemainder.remove("block_states"))
-                        );
-                  }
-               )
+               sectionF,
+               section -> {
+                  byte y = ((Dynamic)((Pair)section.getSecond()).getSecond()).get("Y").asByte((byte)0);
+                  return y >= 0 && onlyBelowZero
+                     ? section
+                     : section.mapSecond(
+                        blockStatesAndRemainder -> blockStatesAndRemainder.mapFirst(var0x -> Either.right(Unit.INSTANCE))
+                           .mapSecond(sectionRemainder -> sectionRemainder.remove("block_states"))
+                     );
+               }
+            )
          );
    }
 
@@ -120,6 +120,6 @@ public class MergeTerrainChunkStatusFix extends DataFix {
       }
    }
 
-   private static record FixedAndStatuses(Typed<?> fixed, String oldStatus, @Nullable String oldTargetStatus) {
+   private record FixedAndStatuses(Typed<?> fixed, String oldStatus, @Nullable String oldTargetStatus) {
    }
 }

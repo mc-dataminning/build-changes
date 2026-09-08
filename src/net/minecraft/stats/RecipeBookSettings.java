@@ -25,12 +25,12 @@ public final class RecipeBookSettings {
    );
    public static final MapCodec<RecipeBookSettings> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               RecipeBookSettings.TypeSettings.CRAFTING_MAP_CODEC.forGetter(o -> o.crafting),
-               RecipeBookSettings.TypeSettings.FURNACE_MAP_CODEC.forGetter(o -> o.furnace),
-               RecipeBookSettings.TypeSettings.BLAST_FURNACE_MAP_CODEC.forGetter(o -> o.blastFurnace),
-               RecipeBookSettings.TypeSettings.SMOKER_MAP_CODEC.forGetter(o -> o.smoker)
-            )
-            .apply(i, RecipeBookSettings::new)
+            RecipeBookSettings.TypeSettings.CRAFTING_MAP_CODEC.forGetter(o -> o.crafting),
+            RecipeBookSettings.TypeSettings.FURNACE_MAP_CODEC.forGetter(o -> o.furnace),
+            RecipeBookSettings.TypeSettings.BLAST_FURNACE_MAP_CODEC.forGetter(o -> o.blastFurnace),
+            RecipeBookSettings.TypeSettings.SMOKER_MAP_CODEC.forGetter(o -> o.smoker)
+         )
+         .apply(i, RecipeBookSettings::new)
    );
    private RecipeBookSettings.TypeSettings crafting;
    private RecipeBookSettings.TypeSettings furnace;
@@ -111,7 +111,7 @@ public final class RecipeBookSettings {
       this.smoker = other.smoker;
    }
 
-   public static record TypeSettings(boolean open, boolean filtering) {
+   public record TypeSettings(boolean open, boolean filtering) {
       public static final RecipeBookSettings.TypeSettings DEFAULT = new RecipeBookSettings.TypeSettings(false, false);
       public static final MapCodec<RecipeBookSettings.TypeSettings> CRAFTING_MAP_CODEC = codec("isGuiOpen", "isFilteringCraftable");
       public static final MapCodec<RecipeBookSettings.TypeSettings> FURNACE_MAP_CODEC = codec("isFurnaceGuiOpen", "isFurnaceFilteringCraftable");
@@ -143,10 +143,10 @@ public final class RecipeBookSettings {
       private static MapCodec<RecipeBookSettings.TypeSettings> codec(final String openFieldName, final String filteringFieldName) {
          return RecordCodecBuilder.mapCodec(
             i -> i.group(
-                     Codec.BOOL.optionalFieldOf(openFieldName, false).forGetter(RecipeBookSettings.TypeSettings::open),
-                     Codec.BOOL.optionalFieldOf(filteringFieldName, false).forGetter(RecipeBookSettings.TypeSettings::filtering)
-                  )
-                  .apply(i, RecipeBookSettings.TypeSettings::new)
+                  Codec.BOOL.optionalFieldOf(openFieldName, false).forGetter(RecipeBookSettings.TypeSettings::open),
+                  Codec.BOOL.optionalFieldOf(filteringFieldName, false).forGetter(RecipeBookSettings.TypeSettings::filtering)
+               )
+               .apply(i, RecipeBookSettings.TypeSettings::new)
          );
       }
    }

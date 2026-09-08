@@ -50,9 +50,8 @@ public class VaultBlockEntity extends BlockEntity {
       super(BlockEntityTypes.VAULT, worldPosition, blockState);
    }
 
-   @Nullable
    @Override
-   public Packet<ClientGamePacketListener> getUpdatePacket() {
+   public @Nullable Packet<ClientGamePacketListener> getUpdatePacket() {
       return ClientboundBlockEntityDataPacket.create(this);
    }
 
@@ -79,8 +78,7 @@ public class VaultBlockEntity extends BlockEntity {
       input.<VaultSharedData>read("shared_data", VaultSharedData.CODEC).ifPresent(this.sharedData::set);
    }
 
-   @Nullable
-   public VaultServerData getServerData() {
+   public @Nullable VaultServerData getServerData() {
       return this.level != null && !this.level.isClientSide() ? this.serverData : null;
    }
 
@@ -156,7 +154,7 @@ public class VaultBlockEntity extends BlockEntity {
 
       private static void emitConnectionParticlesForPlayer(final Level level, final Vec3 flyTowards, final Player player) {
          RandomSource random = level.getRandom();
-         Vec3 direction = flyTowards.vectorTo(player.position().add(0.0, (double)(player.getBbHeight() / 2.0F), 0.0));
+         Vec3 direction = flyTowards.vectorTo(player.position().add(0.0, player.getBbHeight() / 2.0F, 0.0));
          int particleCount = Mth.nextInt(random, 2, 5);
 
          for (int i = 0; i < particleCount; i++) {
@@ -211,7 +209,7 @@ public class VaultBlockEntity extends BlockEntity {
       }
 
       private static Vec3 keyholePos(final BlockPos blockPos, final Direction blockFacing) {
-         return Vec3.atBottomCenterOf(blockPos).add((double)blockFacing.getStepX() * 0.5, 1.75, (double)blockFacing.getStepZ() * 0.5);
+         return Vec3.atBottomCenterOf(blockPos).add(blockFacing.getStepX() * 0.5, 1.75, blockFacing.getStepZ() * 0.5);
       }
    }
 
@@ -235,7 +233,7 @@ public class VaultBlockEntity extends BlockEntity {
 
          BlockState nextBlockState = blockState;
          if (serverLevel.getGameTime() >= serverData.stateUpdatingResumesAt()) {
-            nextBlockState = blockState.setValue(VaultBlock.STATE, currentState.tickAndGetNext(serverLevel, pos, config, serverData, sharedData));
+            nextBlockState = nextBlockState.setValue(VaultBlock.STATE, currentState.tickAndGetNext(serverLevel, pos, config, serverData, sharedData));
             if (blockState != nextBlockState) {
                setVaultState(serverLevel, pos, blockState, nextBlockState, config, sharedData);
             }

@@ -7,7 +7,6 @@ import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.stream.Collectors;
@@ -56,8 +55,8 @@ public class ServerWatchdog implements Runnable {
             serverStats.setDetail(
                "Level stats",
                () -> Streams.stream(this.server.getAllLevels())
-                     .map(level -> level.dimension().identifier() + ": " + level.getWatchdogStats())
-                     .collect(Collectors.joining(",\n"))
+                  .map(level -> level.dimension().identifier() + ": " + level.getWatchdogStats())
+                  .collect(Collectors.joining(",\n"))
             );
             Bootstrap.realStdoutPrintln("Crash report:\n" + report.getFriendlyReport(ReportType.CRASH));
             Path file = this.server.getServerDirectory().resolve("crash-reports").resolve("crash-" + Util.getFilenameFormattedDateTime() + "-server.txt");
@@ -102,17 +101,13 @@ public class ServerWatchdog implements Runnable {
       try {
          Timer timer = new Timer();
          timer.schedule(new TimerTask() {
-            {
-               Objects.requireNonNull(ServerWatchdog.this);
-            }
-
             @Override
             public void run() {
                Runtime.getRuntime().halt(1);
             }
          }, 10000L);
          System.exit(1);
-      } catch (Throwable var2) {
+      } catch (Throwable ignored) {
          Runtime.getRuntime().halt(1);
       }
    }

@@ -33,8 +33,7 @@ public class Backup extends ValueObject {
       return ZonedDateTime.ofInstant(this.lastModified, ZoneId.systemDefault());
    }
 
-   @Nullable
-   public static Backup parse(final JsonElement node) {
+   public static @Nullable Backup parse(final JsonElement node) {
       JsonObject object = node.getAsJsonObject();
 
       try {
@@ -53,8 +52,8 @@ public class Backup extends ValueObject {
          }
 
          return new Backup(backupId, lastModifiedDate, size, metadata);
-      } catch (Exception var11) {
-         LOGGER.error("Could not parse Backup", var11);
+      } catch (Exception e) {
+         LOGGER.error("Could not parse Backup", e);
          return null;
       }
    }

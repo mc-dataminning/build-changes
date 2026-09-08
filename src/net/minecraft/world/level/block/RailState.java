@@ -91,22 +91,22 @@ public class RailState {
       return BaseRailBlock.isRail(this.level, pos) || BaseRailBlock.isRail(this.level, pos.above()) || BaseRailBlock.isRail(this.level, pos.below());
    }
 
-   @Nullable
-   private RailState getRail(final BlockPos pos) {
-      BlockState testState = this.level.getBlockState(pos);
+   private @Nullable RailState getRail(final BlockPos pos) {
+      BlockPos testPos = pos;
+      BlockState testState = this.level.getBlockState(testPos);
       if (BaseRailBlock.isRail(testState)) {
-         return new RailState(this.level, pos, testState);
-      } else {
-         BlockPos testPos = pos.above();
-         testState = this.level.getBlockState(testPos);
-         if (BaseRailBlock.isRail(testState)) {
-            return new RailState(this.level, testPos, testState);
-         } else {
-            testPos = pos.below();
-            testState = this.level.getBlockState(testPos);
-            return BaseRailBlock.isRail(testState) ? new RailState(this.level, testPos, testState) : null;
-         }
+         return new RailState(this.level, testPos, testState);
       }
+
+      testPos = pos.above();
+      testState = this.level.getBlockState(testPos);
+      if (BaseRailBlock.isRail(testState)) {
+         return new RailState(this.level, testPos, testState);
+      }
+
+      testPos = pos.below();
+      testState = this.level.getBlockState(testPos);
+      return BaseRailBlock.isRail(testState) ? new RailState(this.level, testPos, testState) : null;
    }
 
    private boolean connectsTo(final RailState rail) {
@@ -209,10 +209,10 @@ public class RailState {
       RailState neighbor = this.getRail(railPos);
       if (neighbor == null) {
          return false;
-      } else {
-         neighbor.removeSoftConnections();
-         return neighbor.canConnectTo(this);
       }
+
+      neighbor.removeSoftConnections();
+      return neighbor.canConnectTo(this);
    }
 
    public RailState place(final boolean hasSignal, final boolean first, final RailShape defaultShape) {

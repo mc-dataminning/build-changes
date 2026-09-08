@@ -17,11 +17,9 @@ import org.jspecify.annotations.Nullable;
 public class LevelChunkTicks<T> implements TickContainerAccess<T>, SerializableTickContainer<T> {
    private static final Comparator<ScheduledTick<?>> SUB_TICK_ORDERING = Comparator.comparingLong(ScheduledTick::subTickOrder);
    private final Queue<ScheduledTick<T>> tickQueue = new PriorityQueue<>(ScheduledTick.DRAIN_ORDER);
-   @Nullable
-   private List<SavedTick<T>> pendingTicks;
+   private @Nullable List<SavedTick<T>> pendingTicks;
    private final Set<ScheduledTick<?>> ticksPerPosition = new ObjectOpenCustomHashSet(ScheduledTick.UNIQUE_TICK_HASH);
-   @Nullable
-   private BiConsumer<LevelChunkTicks<T>, ScheduledTick<T>> onTickAdded;
+   private @Nullable BiConsumer<LevelChunkTicks<T>, ScheduledTick<T>> onTickAdded;
 
    public LevelChunkTicks() {
    }
@@ -34,17 +32,15 @@ public class LevelChunkTicks<T> implements TickContainerAccess<T>, SerializableT
       }
    }
 
-   public void setOnTickAdded(@Nullable final BiConsumer<LevelChunkTicks<T>, ScheduledTick<T>> onTickAdded) {
+   public void setOnTickAdded(final @Nullable BiConsumer<LevelChunkTicks<T>, ScheduledTick<T>> onTickAdded) {
       this.onTickAdded = onTickAdded;
    }
 
-   @Nullable
-   public ScheduledTick<T> peek() {
+   public @Nullable ScheduledTick<T> peek() {
       return this.tickQueue.peek();
    }
 
-   @Nullable
-   public ScheduledTick<T> poll() {
+   public @Nullable ScheduledTick<T> poll() {
       ScheduledTick<T> result = this.tickQueue.poll();
       if (result != null) {
          this.ticksPerPosition.remove(result);
@@ -115,7 +111,7 @@ public class LevelChunkTicks<T> implements TickContainerAccess<T>, SerializableT
          int subTickBase = -this.pendingTicks.size();
 
          for (SavedTick<T> pendingTick : this.pendingTicks) {
-            this.scheduleUnchecked(pendingTick.unpack(currentTick, (long)(subTickBase++)));
+            this.scheduleUnchecked(pendingTick.unpack(currentTick, subTickBase++));
          }
       }
 

@@ -8,7 +8,6 @@ import net.minecraft.advancements.predicates.entity.EntityPredicate;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.Validatable;
 import net.minecraft.world.level.storage.loot.ValidationContextSource;
@@ -21,21 +20,20 @@ public class EffectsChangedTrigger extends SimpleCriterionTrigger<EffectsChanged
       return EffectsChangedTrigger.TriggerInstance.CODEC;
    }
 
-   public void trigger(final ServerPlayer player, @Nullable final Entity source) {
+   public void trigger(final ServerPlayer player, final @Nullable Entity source) {
       LootContext wrappedSource = source != null ? EntityPredicate.createContext(player, source) : null;
       this.trigger(player, t -> t.matches(player, wrappedSource));
    }
 
-   public static record TriggerInstance(
-      Optional<Holder<LootItemCondition>> player, Optional<MobEffectsPredicate> effects, Optional<Holder<LootItemCondition>> source
-   ) implements SimpleCriterionTrigger.SimpleInstance {
+   public record TriggerInstance(Optional<Holder<LootItemCondition>> player, Optional<MobEffectsPredicate> effects, Optional<Holder<LootItemCondition>> source)
+      implements SimpleCriterionTrigger.SimpleInstance {
       public static final Codec<EffectsChangedTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  LootItemCondition.CODEC.optionalFieldOf("player").forGetter(EffectsChangedTrigger.TriggerInstance::player),
-                  MobEffectsPredicate.CODEC.optionalFieldOf("effects").forGetter(EffectsChangedTrigger.TriggerInstance::effects),
-                  LootItemCondition.CODEC.optionalFieldOf("source").forGetter(EffectsChangedTrigger.TriggerInstance::source)
-               )
-               .apply(i, EffectsChangedTrigger.TriggerInstance::new)
+               LootItemCondition.CODEC.optionalFieldOf("player").forGetter(EffectsChangedTrigger.TriggerInstance::player),
+               MobEffectsPredicate.CODEC.optionalFieldOf("effects").forGetter(EffectsChangedTrigger.TriggerInstance::effects),
+               LootItemCondition.CODEC.optionalFieldOf("source").forGetter(EffectsChangedTrigger.TriggerInstance::source)
+            )
+            .apply(i, EffectsChangedTrigger.TriggerInstance::new)
       );
 
       public static Criterion<EffectsChangedTrigger.TriggerInstance> hasEffects(final MobEffectsPredicate.Builder effects) {
@@ -48,8 +46,8 @@ public class EffectsChangedTrigger extends SimpleCriterionTrigger<EffectsChanged
             .createCriterion(new EffectsChangedTrigger.TriggerInstance(Optional.empty(), Optional.empty(), Optional.of(EntityPredicate.wrap(source.build()))));
       }
 
-      public boolean matches(final ServerPlayer player, @Nullable final LootContext source) {
-         return this.effects.isPresent() && !this.effects.get().matches((LivingEntity)player)
+      public boolean matches(final ServerPlayer player, final @Nullable LootContext source) {
+         return this.effects.isPresent() && !this.effects.get().matches(player)
             ? false
             : !this.source.isPresent() || source != null && this.source.get().value().test(source);
       }

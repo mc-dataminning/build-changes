@@ -411,12 +411,12 @@ public abstract class BlockLootSubProvider implements LootTableSubProvider {
                      LootItem.lootTableItem(drop)
                         .apply(
                            StemBlock.AGE.getPossibleValues(),
-                           age -> SetItemCountFunction.setCount(ContextIntProviders.binomial(3, (float)(age + 1) / 15.0F))
-                                 .when(
-                                    MatchBlock.blockMatches(
-                                       this.blocks, block, StatePropertiesPredicate.Builder.properties().hasProperty(StemBlock.AGE, age.intValue())
-                                    )
+                           age -> SetItemCountFunction.setCount(ContextIntProviders.binomial(3, (age + 1) / 15.0F))
+                              .when(
+                                 MatchBlock.blockMatches(
+                                    this.blocks, block, StatePropertiesPredicate.Builder.properties().hasProperty(StemBlock.AGE, age.intValue())
                                  )
+                              )
                         )
                   )
             )
@@ -457,11 +457,11 @@ public abstract class BlockLootSubProvider implements LootTableSubProvider {
                         .apply(
                            Direction.values(),
                            dir -> SetItemCountFunction.setCount(ContextIntProviders.exactly(1), true)
-                                 .when(
-                                    MatchBlock.blockMatches(
-                                       this.blocks, block, StatePropertiesPredicate.Builder.properties().hasProperty(MultifaceBlock.getFaceProperty(dir), true)
-                                    )
+                              .when(
+                                 MatchBlock.blockMatches(
+                                    this.blocks, block, StatePropertiesPredicate.Builder.properties().hasProperty(MultifaceBlock.getFaceProperty(dir), true)
                                  )
+                              )
                         )
                         .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(-1), true))
                   )
@@ -480,11 +480,11 @@ public abstract class BlockLootSubProvider implements LootTableSubProvider {
                         .apply(
                            Direction.values(),
                            dir -> SetItemCountFunction.setCount(ContextIntProviders.exactly(1), true)
-                                 .when(
-                                    MatchBlock.blockMatches(
-                                       this.blocks, block, StatePropertiesPredicate.Builder.properties().hasProperty(MultifaceBlock.getFaceProperty(dir), true)
-                                    )
+                              .when(
+                                 MatchBlock.blockMatches(
+                                    this.blocks, block, StatePropertiesPredicate.Builder.properties().hasProperty(MultifaceBlock.getFaceProperty(dir), true)
                                  )
+                              )
                         )
                         .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(-1), true))
                   )
@@ -640,11 +640,11 @@ public abstract class BlockLootSubProvider implements LootTableSubProvider {
                         .apply(
                            List.of(2, 3, 4),
                            count -> SetItemCountFunction.setCount(ContextIntProviders.exactly(count))
-                                 .when(
-                                    MatchBlock.blockMatches(
-                                       this.blocks, block, StatePropertiesPredicate.Builder.properties().hasProperty(CandleBlock.CANDLES, count.intValue())
-                                    )
+                              .when(
+                                 MatchBlock.blockMatches(
+                                    this.blocks, block, StatePropertiesPredicate.Builder.properties().hasProperty(CandleBlock.CANDLES, count.intValue())
                                  )
+                              )
                         )
                   )
                )
@@ -664,14 +664,13 @@ public abstract class BlockLootSubProvider implements LootTableSubProvider {
                            .apply(
                               IntStream.rangeClosed(1, 4).boxed().toList(),
                               count -> SetItemCountFunction.setCount(ContextIntProviders.exactly(count))
-                                    .when(
-                                       MatchBlock.blockMatches(
-                                          this.blocks,
-                                          block,
-                                          StatePropertiesPredicate.Builder.properties()
-                                             .hasProperty(segmentableBlock.getSegmentAmountProperty(), count.intValue())
-                                       )
+                                 .when(
+                                    MatchBlock.blockMatches(
+                                       this.blocks,
+                                       block,
+                                       StatePropertiesPredicate.Builder.properties().hasProperty(segmentableBlock.getSegmentAmountProperty(), count.intValue())
                                     )
+                                 )
                            )
                      )
                   )

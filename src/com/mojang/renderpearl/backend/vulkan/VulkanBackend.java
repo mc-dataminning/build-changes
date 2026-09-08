@@ -47,8 +47,7 @@ import org.slf4j.Logger;
 public class VulkanBackend implements GpuBackend {
    private static final Logger LOGGER = LogUtils.getLogger();
    private boolean libraryLoaded;
-   @Nullable
-   private BackendCreationException libraryLoadFailure;
+   private @Nullable BackendCreationException libraryLoadFailure;
 
    @Override
    public String getName() {
@@ -60,21 +59,27 @@ public class VulkanBackend implements GpuBackend {
       if (!this.libraryLoaded) {
          if (this.libraryLoadFailure != null) {
             throw this.libraryLoadFailure;
-         } else if (!NativeLibrariesBootstrap.isVulkanLoaderAvailable()) {
+         }
+
+         if (!NativeLibrariesBootstrap.isVulkanLoaderAvailable()) {
             this.libraryLoadFailure = new BackendCreationException("Vulkan loader library is missing", BackendCreationException.Reason.VULKAN_LOADER_MISSING);
             throw this.libraryLoadFailure;
-         } else if (!SDLVulkan.SDL_Vulkan_LoadLibrary(((SharedLibrary)VK.getFunctionProvider()).getPath())) {
+         }
+
+         if (!SDLVulkan.SDL_Vulkan_LoadLibrary(((SharedLibrary)VK.getFunctionProvider()).getPath())) {
             this.libraryLoadFailure = new BackendCreationException(
                "Vulkan is not supported: " + Objects.requireNonNullElse(SDLError.SDL_GetError(), "<no error>"), BackendCreationException.Reason.PLATFORM_ERROR
             );
             throw this.libraryLoadFailure;
-         } else if (VK.getFunctionProvider().getFunctionAddress("vkGetInstanceProcAddr") != SDLVulkan.SDL_Vulkan_GetVkGetInstanceProcAddr()) {
+         }
+
+         if (VK.getFunctionProvider().getFunctionAddress("vkGetInstanceProcAddr") != SDLVulkan.SDL_Vulkan_GetVkGetInstanceProcAddr()) {
             this.libraryLoadFailure = new BackendCreationException("vkGetInstanceProcAddr mismatch", BackendCreationException.Reason.PLATFORM_ERROR);
             SDLVulkan.SDL_Vulkan_UnloadLibrary();
             throw this.libraryLoadFailure;
-         } else {
-            this.libraryLoaded = true;
          }
+
+         this.libraryLoaded = true;
       }
    }
 
@@ -86,48 +91,38 @@ public class VulkanBackend implements GpuBackend {
       }
    }
 
-   @Nullable
-   public static BackendCreationException checkBackendAvailable() {
+   public static @Nullable BackendCreationException checkBackendAvailable() {
       VulkanBackend probe = new VulkanBackend();
 
       try {
          probe.loadLibrary();
-      } catch (BackendCreationException var6) {
-         return var6;
+      } catch (BackendCreationException e) {
+         return e;
       }
 
-      BackendCreationException e;
       try {
-         e = probe.checkBackendAvailableWithLoadedLibrary();
+         return probe.checkBackendAvailableWithLoadedLibrary();
       } finally {
          probe.unloadLibrary();
       }
-
-      return e;
    }
 
-   @Nullable
-   private BackendCreationException checkBackendAvailableWithLoadedLibrary() {
+   private @Nullable BackendCreationException checkBackendAvailableWithLoadedLibrary() {
       Set<FeatureSet> requiredFeatureSets = VulkanFeatureSets.requiredFeatureSets();
       Set<FeatureSet> requiredIfExtensionsAvailableFeatureSets = VulkanFeatureSets.requiredIfExtensionsAvailableFeatureSets();
 
-      try {
-         Object var5;
-         try (
-            VulkanInstance instance = new VulkanInstance(0, false, false);
-            VulkanPhysicalDevice physicalDevice = findPhysicalDevice(instance, requiredFeatureSets, requiredIfExtensionsAvailableFeatureSets);
-         ) {
-            var5 = null;
-         }
-
-         return (BackendCreationException)var5;
-      } catch (BackendCreationException var11) {
-         return var11;
+      try (
+         VulkanInstance instance = new VulkanInstance(0, false, false);
+         VulkanPhysicalDevice physicalDevice = findPhysicalDevice(instance, requiredFeatureSets, requiredIfExtensionsAvailableFeatureSets);
+      ) {
+         return null;
+      } catch (BackendCreationException e) {
+         return e;
       }
    }
 
    @Override
-   public long createWindow(@Nullable final String title, final int width, final int height, final long flags) {
+   public long createWindow(final @Nullable String title, final int width, final int height, final long flags) {
       return SDLVideo.SDL_CreateWindow(title, width, height, 268435456L | flags);
    }
 
@@ -135,75 +130,75 @@ public class VulkanBackend implements GpuBackend {
    public GpuDevice createDevice(final GpuDebugOptions debugOptions) throws BackendCreationException {
       if (!NativeLibrariesBootstrap.isVulkanLoaderAvailable()) {
          throw new BackendCreationException("Vulkan loader library is missing", BackendCreationException.Reason.VULKAN_LOADER_MISSING);
-      } else {
-         Set<FeatureSet> requiredFeatureSets = VulkanFeatureSets.requiredFeatureSets();
-         Set<FeatureSet> requiredIfExtensionsAvailableFeatureSets = VulkanFeatureSets.requiredIfExtensionsAvailableFeatureSets();
-         Set<FeatureSet> optionalFeatureSets = VulkanFeatureSets.optionalFeatureSets();
-         VulkanInstance instance = null;
-         VulkanPhysicalDevice physicalDevice = null;
-         VkDevice device = null;
-         long vma = 0L;
-         CheckpointExtension checkpointExtension = NoopCheckpointExtension.INSTANCE;
+      }
 
-         FeatureSet enabledFeatures;
-         try {
-            boolean renderdocAttached = "1".equals(System.getenv("ENABLE_VULKAN_RENDERDOC_CAPTURE"));
-            instance = new VulkanInstance(debugOptions.logLevel(), debugOptions.useLabels() || renderdocAttached, debugOptions.useValidationLayers());
-            physicalDevice = findPhysicalDevice(instance, requiredFeatureSets, requiredIfExtensionsAvailableFeatureSets);
-            Set<String> deviceExtensions = VulkanUtils.enumerateExtensions(physicalDevice.vkPhysicalDevice());
-            Set<FeatureSet> enabledFeatureSets = new ObjectOpenHashSet(requiredFeatureSets);
+      Set<FeatureSet> requiredFeatureSets = VulkanFeatureSets.requiredFeatureSets();
+      Set<FeatureSet> requiredIfExtensionsAvailableFeatureSets = VulkanFeatureSets.requiredIfExtensionsAvailableFeatureSets();
+      Set<FeatureSet> optionalFeatureSets = VulkanFeatureSets.optionalFeatureSets();
+      VulkanInstance instance = null;
+      VulkanPhysicalDevice physicalDevice = null;
+      VkDevice device = null;
+      long vma = 0L;
+      CheckpointExtension checkpointExtension = NoopCheckpointExtension.INSTANCE;
 
-            for (FeatureSet featureSet : requiredIfExtensionsAvailableFeatureSets) {
-               if (featureSet.isSupported(physicalDevice.vkPhysicalDevice(), deviceExtensions)) {
-                  enabledFeatureSets.add(featureSet);
-                  LOGGER.info("Enabling required for device FeatureSet [{}]", featureSet.name());
-               }
+      FeatureSet enabledFeatures;
+      try {
+         boolean renderdocAttached = "1".equals(System.getenv("ENABLE_VULKAN_RENDERDOC_CAPTURE"));
+         instance = new VulkanInstance(debugOptions.logLevel(), debugOptions.useLabels() || renderdocAttached, debugOptions.useValidationLayers());
+         physicalDevice = findPhysicalDevice(instance, requiredFeatureSets, requiredIfExtensionsAvailableFeatureSets);
+         Set<String> deviceExtensions = VulkanUtils.enumerateExtensions(physicalDevice.vkPhysicalDevice());
+         Set<FeatureSet> enabledFeatureSets = new ObjectOpenHashSet(requiredFeatureSets);
+
+         for (FeatureSet featureSet : requiredIfExtensionsAvailableFeatureSets) {
+            if (featureSet.isSupported(physicalDevice.vkPhysicalDevice(), deviceExtensions)) {
+               enabledFeatureSets.add(featureSet);
+               LOGGER.info("Enabling required for device FeatureSet [{}]", featureSet.name());
             }
-
-            for (FeatureSet featureSetx : optionalFeatureSets) {
-               if (featureSetx.isSupported(physicalDevice.vkPhysicalDevice(), deviceExtensions)) {
-                  if (featureSetx.checkCondition(physicalDevice.vkPhysicalDevice())) {
-                     enabledFeatureSets.add(featureSetx);
-                     LOGGER.info("Enabling optional FeatureSet [{}]", featureSetx.name());
-                  } else {
-                     LOGGER.info("Optional FeatureSet [{}] supported but device condition failed and will not be enabled", featureSetx.name());
-                  }
-               } else {
-                  LOGGER.info("Optional FeatureSet [{}] not supported", featureSetx.name());
-               }
-            }
-
-            if (enabledFeatureSets.contains(VulkanFeatureSets.AMD_BUFFER_MARKER_FEATURESET)) {
-               checkpointExtension = new AmdCheckpointExtension();
-            } else if (enabledFeatureSets.contains(VulkanFeatureSets.NV_DIAGNOSTIC_CHECKPOINT_FEATURESET)) {
-               checkpointExtension = new NvidiaCheckpointExtension();
-            }
-
-            enabledFeatures = new FeatureSet("Enabled", enabledFeatureSets);
-            device = createDevice(enabledFeatures, physicalDevice);
-            vma = createVma(device);
-         } catch (BackendCreationException var17) {
-            if (vma != 0L) {
-               Vma.vmaDestroyAllocator(vma);
-            }
-
-            if (device != null) {
-               VK12.vkDestroyDevice(device, null);
-            }
-
-            if (physicalDevice != null) {
-               physicalDevice.close();
-            }
-
-            if (instance != null) {
-               instance.close();
-            }
-
-            throw var17;
          }
 
-         return new FrontendGpuDevice(new VulkanDevice(instance, physicalDevice, enabledFeatures, device, vma, checkpointExtension));
+         for (FeatureSet featureSet : optionalFeatureSets) {
+            if (featureSet.isSupported(physicalDevice.vkPhysicalDevice(), deviceExtensions)) {
+               if (featureSet.checkCondition(physicalDevice.vkPhysicalDevice())) {
+                  enabledFeatureSets.add(featureSet);
+                  LOGGER.info("Enabling optional FeatureSet [{}]", featureSet.name());
+               } else {
+                  LOGGER.info("Optional FeatureSet [{}] supported but device condition failed and will not be enabled", featureSet.name());
+               }
+            } else {
+               LOGGER.info("Optional FeatureSet [{}] not supported", featureSet.name());
+            }
+         }
+
+         if (enabledFeatureSets.contains(VulkanFeatureSets.AMD_BUFFER_MARKER_FEATURESET)) {
+            checkpointExtension = new AmdCheckpointExtension();
+         } else if (enabledFeatureSets.contains(VulkanFeatureSets.NV_DIAGNOSTIC_CHECKPOINT_FEATURESET)) {
+            checkpointExtension = new NvidiaCheckpointExtension();
+         }
+
+         enabledFeatures = new FeatureSet("Enabled", enabledFeatureSets);
+         device = createDevice(enabledFeatures, physicalDevice);
+         vma = createVma(device);
+      } catch (BackendCreationException e) {
+         if (vma != 0L) {
+            Vma.vmaDestroyAllocator(vma);
+         }
+
+         if (device != null) {
+            VK12.vkDestroyDevice(device, null);
+         }
+
+         if (physicalDevice != null) {
+            physicalDevice.close();
+         }
+
+         if (instance != null) {
+            instance.close();
+         }
+
+         throw e;
       }
+
+      return new FrontendGpuDevice(new VulkanDevice(instance, physicalDevice, enabledFeatures, device, vma, checkpointExtension));
    }
 
    private static long createVma(final VkDevice vkDevice) throws BackendCreationException {
@@ -397,7 +392,6 @@ public class VulkanBackend implements GpuBackend {
    private static BackendCreationException checkDeviceSuitability(
       final VkPhysicalDevice vkPhysicalDevice, final Set<FeatureSet> requiredFeatureSets, final Set<FeatureSet> requiredIfExtensionsAvailable
    ) throws BackendCreationException {
-      Object var22;
       try (VulkanPhysicalDevice physicalDevice = new VulkanPhysicalDevice(vkPhysicalDevice)) {
          String deviceName = physicalDevice.deviceName();
          if (!deviceMeetsFeatureQueryRequirements(vkPhysicalDevice)) {
@@ -430,12 +424,12 @@ public class VulkanBackend implements GpuBackend {
          List<String> missingCapabilities = new ReferenceArrayList();
          BackendCreationException.Reason mostProminentReason = null;
 
-         for (FeatureSet featureSetx : deviceRequiredFeatureSets) {
-            Set<VulkanFeature> missingFeatures = featureSetx.unsupportedFeatures(vkPhysicalDevice);
+         for (FeatureSet featureSet : deviceRequiredFeatureSets) {
+            Set<VulkanFeature> missingFeatures = featureSet.unsupportedFeatures(vkPhysicalDevice);
             if (!missingFeatures.isEmpty()) {
                LOGGER.warn(
                   "Device [{}] does not support required features from FeatureSet [{}], missing: {}",
-                  new Object[]{deviceName, featureSetx.name(), missingFeatures}
+                  new Object[]{deviceName, featureSet.name(), missingFeatures}
                );
                mostProminentReason = BackendCreationException.Reason.VULKAN_MISSING_FEATURE;
 
@@ -445,12 +439,12 @@ public class VulkanBackend implements GpuBackend {
             }
          }
 
-         for (FeatureSet featureSetxx : deviceRequiredFeatureSets) {
-            Set<String> missingExtensions = featureSetxx.unsupportedExtensions(deviceExtensions);
+         for (FeatureSet featureSet : deviceRequiredFeatureSets) {
+            Set<String> missingExtensions = featureSet.unsupportedExtensions(deviceExtensions);
             if (!missingExtensions.isEmpty()) {
                LOGGER.warn(
                   "Device [{}] does not support required extensions from FeatureSet [{}], missing: {}",
-                  new Object[]{deviceName, featureSetxx.name(), missingExtensions}
+                  new Object[]{deviceName, featureSet.name(), missingExtensions}
                );
                mostProminentReason = BackendCreationException.Reason.VULKAN_MISSING_EXTENSION;
                missingCapabilities.addAll(missingExtensions);
@@ -472,15 +466,12 @@ public class VulkanBackend implements GpuBackend {
          if (mostProminentReason != null) {
             LOGGER.debug("Device [{}] is not suitable", deviceName);
             return new BackendCreationException("Device missing capabilities", mostProminentReason, missingCapabilities);
+         } else {
+            assert missingCapabilities.isEmpty();
+            LOGGER.debug("Device [{}] is suitable", deviceName);
+            return null;
          }
-
-         assert missingCapabilities.isEmpty();
-
-         LOGGER.debug("Device [{}] is suitable", deviceName);
-         var22 = null;
       }
-
-      return (BackendCreationException)var22;
    }
 
    private static VkDevice createDevice(final FeatureSet featureSet, final VulkanPhysicalDevice physicalDevice) throws BackendCreationException {

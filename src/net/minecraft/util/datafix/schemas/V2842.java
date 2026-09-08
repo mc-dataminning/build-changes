@@ -20,24 +20,24 @@ public class V2842 extends NamespacedSchema {
          false,
          References.CHUNK,
          () -> DSL.optionalFields(
-               "entities",
-               DSL.list(References.ENTITY_TREE.in(schema)),
-               "block_entities",
-               DSL.list(DSL.or(References.BLOCK_ENTITY.in(schema), DSL.remainder())),
-               "block_ticks",
-               DSL.list(DSL.fields("i", References.BLOCK_NAME.in(schema))),
-               "sections",
-               DSL.list(
-                  DSL.optionalFields(
-                     "biomes",
-                     DSL.optionalFields("palette", DSL.list(References.BIOME.in(schema))),
-                     "block_states",
-                     DSL.optionalFields("palette", DSL.list(References.BLOCK_STATE.in(schema)))
-                  )
-               ),
-               "structures",
-               DSL.optionalFields("starts", DSL.compoundList(References.STRUCTURE_FEATURE.in(schema)))
-            )
+            "entities",
+            DSL.list(References.ENTITY_TREE.in(schema)),
+            "block_entities",
+            DSL.list(DSL.or(References.BLOCK_ENTITY.in(schema), DSL.remainder())),
+            "block_ticks",
+            DSL.list(DSL.fields("i", References.BLOCK_NAME.in(schema))),
+            "sections",
+            DSL.list(
+               DSL.optionalFields(
+                  "biomes",
+                  DSL.optionalFields("palette", DSL.list(References.BIOME.in(schema))),
+                  "block_states",
+                  DSL.optionalFields("palette", DSL.list(References.BLOCK_STATE.in(schema)))
+               )
+            ),
+            "structures",
+            DSL.optionalFields("starts", DSL.compoundList(References.STRUCTURE_FEATURE.in(schema)))
+         )
       );
    }
 }

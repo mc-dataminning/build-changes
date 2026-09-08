@@ -20,7 +20,7 @@ public record FishingHookPredicate(Optional<Boolean> inOpenWater) implements Ent
    }
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
       if (this.inOpenWater.isEmpty()) {
          return true;
       } else {

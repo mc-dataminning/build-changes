@@ -18,11 +18,11 @@ import org.jspecify.annotations.Nullable;
 public record ScoreboardValue(ScoreboardNameProvider target, String score, Holder<ContextIntProvider> fallback) implements ContextIntProvider {
    public static final MapCodec<ScoreboardValue> MAP_CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               ScoreboardNameProviders.CODEC.fieldOf("target").forGetter(ScoreboardValue::target),
-               Codec.STRING.fieldOf("score").forGetter(ScoreboardValue::score),
-               ContextIntProviders.CODEC.optionalFieldOf("fallback", ContextIntProviders.exactly(0)).forGetter(ScoreboardValue::fallback)
-            )
-            .apply(i, ScoreboardValue::new)
+            ScoreboardNameProviders.CODEC.fieldOf("target").forGetter(ScoreboardValue::target),
+            Codec.STRING.fieldOf("score").forGetter(ScoreboardValue::score),
+            ContextIntProviders.CODEC.optionalFieldOf("fallback", ContextIntProviders.exactly(0)).forGetter(ScoreboardValue::fallback)
+         )
+         .apply(i, ScoreboardValue::new)
    );
 
    @Override
@@ -36,16 +36,15 @@ public record ScoreboardValue(ScoreboardNameProvider target, String score, Holde
       Validatable.validateHolder(context, "fallback", this.fallback);
    }
 
-   @Nullable
-   private ReadOnlyScoreInfo getScoreInfo(final LootContext context) {
+   private @Nullable ReadOnlyScoreInfo getScoreInfo(final LootContext context) {
       ScoreHolder scoreHolder = this.target.getScoreHolder(context);
       if (scoreHolder == null) {
          return null;
-      } else {
-         Scoreboard scoreboard = context.getLevel().getScoreboard();
-         Objective objective = scoreboard.getObjective(this.score);
-         return objective == null ? null : scoreboard.getPlayerScoreInfo(scoreHolder, objective);
       }
+
+      Scoreboard scoreboard = context.getLevel().getScoreboard();
+      Objective objective = scoreboard.getObjective(this.score);
+      return objective == null ? null : scoreboard.getPlayerScoreInfo(scoreHolder, objective);
    }
 
    @Override

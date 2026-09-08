@@ -14,12 +14,12 @@ import net.minecraft.util.ExtraCodecs;
 public record SingleOptionInput(int width, List<SingleOptionInput.Entry> entries, Component label, boolean labelVisible) implements InputControl {
    public static final MapCodec<SingleOptionInput> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(
-                  Dialog.WIDTH_CODEC.optionalFieldOf("width", 200).forGetter(SingleOptionInput::width),
-                  ExtraCodecs.nonEmptyList(SingleOptionInput.Entry.CODEC.listOf()).fieldOf("options").forGetter(SingleOptionInput::entries),
-                  ComponentSerialization.CODEC.fieldOf("label").forGetter(SingleOptionInput::label),
-                  Codec.BOOL.optionalFieldOf("label_visible", true).forGetter(SingleOptionInput::labelVisible)
-               )
-               .apply(i, SingleOptionInput::new)
+               Dialog.WIDTH_CODEC.optionalFieldOf("width", 200).forGetter(SingleOptionInput::width),
+               ExtraCodecs.nonEmptyList(SingleOptionInput.Entry.CODEC.listOf()).fieldOf("options").forGetter(SingleOptionInput::entries),
+               ComponentSerialization.CODEC.fieldOf("label").forGetter(SingleOptionInput::label),
+               Codec.BOOL.optionalFieldOf("label_visible", true).forGetter(SingleOptionInput::labelVisible)
+            )
+            .apply(i, SingleOptionInput::new)
       )
       .validate(o -> {
          long initialCount = o.entries.stream().filter(SingleOptionInput.Entry::initial).count();
@@ -35,14 +35,14 @@ public record SingleOptionInput(int width, List<SingleOptionInput.Entry> entries
       return this.entries.stream().filter(SingleOptionInput.Entry::initial).findFirst();
    }
 
-   public static record Entry(String id, Optional<Component> display, boolean initial) {
+   public record Entry(String id, Optional<Component> display, boolean initial) {
       public static final Codec<SingleOptionInput.Entry> FULL_CODEC = RecordCodecBuilder.create(
          i -> i.group(
-                  Codec.STRING.fieldOf("id").forGetter(SingleOptionInput.Entry::id),
-                  ComponentSerialization.CODEC.optionalFieldOf("display").forGetter(SingleOptionInput.Entry::display),
-                  Codec.BOOL.optionalFieldOf("initial", false).forGetter(SingleOptionInput.Entry::initial)
-               )
-               .apply(i, SingleOptionInput.Entry::new)
+               Codec.STRING.fieldOf("id").forGetter(SingleOptionInput.Entry::id),
+               ComponentSerialization.CODEC.optionalFieldOf("display").forGetter(SingleOptionInput.Entry::display),
+               Codec.BOOL.optionalFieldOf("initial", false).forGetter(SingleOptionInput.Entry::initial)
+            )
+            .apply(i, SingleOptionInput.Entry::new)
       );
       public static final Codec<SingleOptionInput.Entry> CODEC = Codec.withAlternative(
          FULL_CODEC, Codec.STRING, id -> new SingleOptionInput.Entry(id, Optional.empty(), false)

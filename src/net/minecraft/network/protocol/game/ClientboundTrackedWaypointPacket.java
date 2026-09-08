@@ -68,7 +68,7 @@ public record ClientboundTrackedWaypointPacket(ClientboundTrackedWaypointPacket.
       this.operation.action.accept(manager, this.waypoint);
    }
 
-   private static enum Operation {
+   private enum Operation {
       TRACK(WaypointManager::trackWaypoint),
       UNTRACK(WaypointManager::untrackWaypoint),
       UPDATE(WaypointManager::updateWaypoint);
@@ -79,7 +79,7 @@ public record ClientboundTrackedWaypointPacket(ClientboundTrackedWaypointPacket.
       );
       public static final StreamCodec<ByteBuf, ClientboundTrackedWaypointPacket.Operation> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Enum::ordinal);
 
-      private Operation(final BiConsumer<TrackedWaypointManager, TrackedWaypoint> action) {
+      Operation(final BiConsumer<TrackedWaypointManager, TrackedWaypoint> action) {
          this.action = action;
       }
    }

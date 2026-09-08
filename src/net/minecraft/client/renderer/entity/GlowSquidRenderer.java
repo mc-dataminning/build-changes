@@ -21,7 +21,7 @@ public class GlowSquidRenderer extends SquidRenderer<GlowSquid> {
    }
 
    protected int getBlockLightLevel(final GlowSquid entity, final BlockPos blockPos) {
-      int glowLightLevel = (int)Mth.clampedLerp(1.0F - (float)entity.getDarkTicksRemaining() / 10.0F, 0.0F, 15.0F);
+      int glowLightLevel = (int)Mth.clampedLerp(1.0F - entity.getDarkTicksRemaining() / 10.0F, 0.0F, 15.0F);
       return glowLightLevel == 15 ? 15 : Math.max(glowLightLevel, super.getBlockLightLevel(entity, blockPos));
    }
 }

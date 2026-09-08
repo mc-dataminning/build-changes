@@ -32,7 +32,7 @@ public class IceBlock extends HalfTransparentBlock {
       final ServerPlayer player,
       final BlockPos pos,
       final BlockState state,
-      @Nullable final BlockEntity blockEntity,
+      final @Nullable BlockEntity blockEntity,
       final ItemStack destroyedWith
    ) {
       super.playerDestroy(level, player, pos, state, blockEntity, destroyedWith);

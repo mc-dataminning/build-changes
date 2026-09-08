@@ -218,10 +218,10 @@ public class HumanoidModel<T extends HumanoidRenderState> extends EntityModel<T>
 
       float animationPos = state.walkAnimationPos;
       float animationSpeed = state.walkAnimationSpeed;
-      this.rightArm.xRot = Mth.cos((double)(animationPos * 0.6662F + (float) Math.PI)) * 2.0F * animationSpeed * 0.5F / state.speedValue;
-      this.leftArm.xRot = Mth.cos((double)(animationPos * 0.6662F)) * 2.0F * animationSpeed * 0.5F / state.speedValue;
-      this.rightLeg.xRot = Mth.cos((double)(animationPos * 0.6662F)) * 1.4F * animationSpeed / state.speedValue;
-      this.leftLeg.xRot = Mth.cos((double)(animationPos * 0.6662F + (float) Math.PI)) * 1.4F * animationSpeed / state.speedValue;
+      this.rightArm.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * 2.0F * animationSpeed * 0.5F / state.speedValue;
+      this.leftArm.xRot = Mth.cos(animationPos * 0.6662F) * 2.0F * animationSpeed * 0.5F / state.speedValue;
+      this.rightLeg.xRot = Mth.cos(animationPos * 0.6662F) * 1.4F * animationSpeed / state.speedValue;
+      this.leftLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * 1.4F * animationSpeed / state.speedValue;
       this.rightLeg.yRot = 0.005F;
       this.leftLeg.yRot = -0.005F;
       this.rightLeg.zRot = 0.005F;
@@ -325,8 +325,8 @@ public class HumanoidModel<T extends HumanoidRenderState> extends EntityModel<T>
 
       float amplitude = 0.3F;
       float slowdown = 0.33333334F;
-      this.leftLeg.xRot = Mth.lerp(swimAmount, this.leftLeg.xRot, 0.3F * Mth.cos((double)(animationPos * 0.33333334F + (float) Math.PI)));
-      this.rightLeg.xRot = Mth.lerp(swimAmount, this.rightLeg.xRot, 0.3F * Mth.cos((double)(animationPos * 0.33333334F)));
+      this.leftLeg.xRot = Mth.lerp(swimAmount, this.leftLeg.xRot, 0.3F * Mth.cos(animationPos * 0.33333334F + (float) Math.PI));
+      this.rightLeg.xRot = Mth.lerp(swimAmount, this.rightLeg.xRot, 0.3F * Mth.cos(animationPos * 0.33333334F));
    }
 
    private void poseRightArm(final T state) {
@@ -429,27 +429,27 @@ public class HumanoidModel<T extends HumanoidRenderState> extends EntityModel<T>
       LivingEntity.SwingDescription swing = state.currentSwing;
       if (!(swingAnimation <= 0.0F) && swing != null) {
          HumanoidArm swingArm = swing.hand().asArm(state.mainArm);
-         this.body.yRot = Mth.sin((double)(Mth.sqrt(swingAnimation) * (float) (Math.PI * 2))) * 0.2F;
+         this.body.yRot = Mth.sin(Mth.sqrt(swingAnimation) * (float) (Math.PI * 2)) * 0.2F;
          if (swingArm == HumanoidArm.LEFT) {
             this.body.yRot *= -1.0F;
          }
 
          float ageScale = state.ageScale;
-         this.rightArm.z = Mth.sin((double)this.body.yRot) * 5.0F * ageScale;
-         this.rightArm.x = -Mth.cos((double)this.body.yRot) * 5.0F * ageScale;
-         this.leftArm.z = -Mth.sin((double)this.body.yRot) * 5.0F * ageScale;
-         this.leftArm.x = Mth.cos((double)this.body.yRot) * 5.0F * ageScale;
+         this.rightArm.z = Mth.sin(this.body.yRot) * 5.0F * ageScale;
+         this.rightArm.x = -Mth.cos(this.body.yRot) * 5.0F * ageScale;
+         this.leftArm.z = -Mth.sin(this.body.yRot) * 5.0F * ageScale;
+         this.leftArm.x = Mth.cos(this.body.yRot) * 5.0F * ageScale;
          this.rightArm.yRot = this.rightArm.yRot + this.body.yRot;
          this.leftArm.yRot = this.leftArm.yRot + this.body.yRot;
          this.leftArm.xRot = this.leftArm.xRot + this.body.yRot;
          switch (swing.animation().type()) {
             case WHACK:
-               float aa = Mth.sin((double)(Ease.outQuart(swingAnimation) * (float) Math.PI));
-               float bb = Mth.sin((double)(swingAnimation * (float) Math.PI)) * -(this.head.xRot - 0.7F) * 0.75F;
+               float aa = Mth.sin(Ease.outQuart(swingAnimation) * (float) Math.PI);
+               float bb = Mth.sin(swingAnimation * (float) Math.PI) * -(this.head.xRot - 0.7F) * 0.75F;
                ModelPart attackArm = this.getArm(swingArm);
                attackArm.xRot -= aa * 1.2F + bb;
                attackArm.yRot = attackArm.yRot + this.body.yRot * 2.0F;
-               attackArm.zRot = attackArm.zRot + Mth.sin((double)(swingAnimation * (float) Math.PI)) * -0.4F;
+               attackArm.zRot = attackArm.zRot + Mth.sin(swingAnimation * (float) Math.PI) * -0.4F;
             case NONE:
             default:
                break;
@@ -477,7 +477,7 @@ public class HumanoidModel<T extends HumanoidRenderState> extends EntityModel<T>
       return this.head;
    }
 
-   public static enum ArmPose {
+   public enum ArmPose {
       EMPTY(false, false),
       ITEM(false, false),
       BLOCK(false, false),
@@ -500,7 +500,7 @@ public class HumanoidModel<T extends HumanoidRenderState> extends EntityModel<T>
       private final boolean twoHanded;
       private final boolean affectsOffhandPose;
 
-      private ArmPose(final boolean twoHanded, final boolean affectsOffhandPose) {
+      ArmPose(final boolean twoHanded, final boolean affectsOffhandPose) {
          this.twoHanded = twoHanded;
          this.affectsOffhandPose = affectsOffhandPose;
       }

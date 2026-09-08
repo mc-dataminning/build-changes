@@ -55,35 +55,25 @@ public class Cushion extends BlockAttachedEntity {
    }
 
    @Override
-   public void dropItem(final ServerLevel level, @Nullable final Entity causedBy) {
+   public void dropItem(final ServerLevel level, final @Nullable Entity causedBy) {
       this.playSound(SoundEvents.CUSHION_BREAK, 1.0F, 1.0F);
       this.showBreakingParticles();
       if (level.getGameRules().get(GameRules.ENTITY_DROPS)) {
-         if (causedBy instanceof Player player && player.hasInfiniteMaterials()) {
-            return;
-         }
-
-         ItemEntity itemEntity = this.spawnAtLocation(level, this.getCushionItemStackWithData());
-         if (itemEntity != null && causedBy instanceof LightningBolt) {
-            itemEntity.setInvulnerableTime(20);
+         if (!(causedBy instanceof Player player && player.hasInfiniteMaterials())) {
+            ItemEntity itemEntity = this.spawnAtLocation(level, this.getCushionItemStackWithData());
+            if (itemEntity != null && causedBy instanceof LightningBolt) {
+               itemEntity.setInvulnerableTime(20);
+            }
          }
       }
    }
 
    private static boolean isBreakingDeniedFor(final DamageSource source) {
-      if (source.getEntity() instanceof Player player && !player.mayBuild()) {
-         return true;
-      }
-
-      return false;
+      return source.getEntity() instanceof Player player && !player.mayBuild();
    }
 
    private boolean isBreakingDeniedAtPosFor(final ServerLevel level, final DamageSource source) {
-      if (source.getEntity() instanceof Player player && !level.mayInteract(player, this.pos)) {
-         return true;
-      }
-
-      return false;
+      return source.getEntity() instanceof Player player && !level.mayInteract(player, this.pos);
    }
 
    @Override
@@ -166,9 +156,9 @@ public class Cushion extends BlockAttachedEntity {
             this.getY(0.6666666666666666),
             this.getZ(),
             10,
-            (double)(this.getBbWidth() / 4.0F),
-            (double)(this.getBbHeight() / 4.0F),
-            (double)(this.getBbWidth() / 4.0F),
+            this.getBbWidth() / 4.0F,
+            this.getBbHeight() / 4.0F,
+            this.getBbWidth() / 4.0F,
             0.05
          );
       }
@@ -244,9 +234,8 @@ public class Cushion extends BlockAttachedEntity {
       this.setColor(input.<DyeColor>read("color", DyeColor.CODEC).orElse(DEFAULT_COLOR));
    }
 
-   @Nullable
    @Override
-   public <T> T get(final DataComponentType<? extends T> type) {
+   public <T> @Nullable T get(final DataComponentType<? extends T> type) {
       return type == DataComponents.CUSHION_COLOR ? castComponentValue((DataComponentType<T>)type, this.getColor()) : super.get(type);
    }
 

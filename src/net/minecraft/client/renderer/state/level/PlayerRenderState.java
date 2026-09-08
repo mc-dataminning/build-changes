@@ -8,8 +8,7 @@ import org.jspecify.annotations.Nullable;
 
 public class PlayerRenderState {
    public boolean hasPlayer;
-   @Nullable
-   public AvatarRenderState avatarRenderState;
+   public @Nullable AvatarRenderState avatarRenderState;
    public final FirstPersonHandsAndItemsRenderState firstPersonHandsAndItems = new FirstPersonHandsAndItemsRenderState();
    public float portalEffectIntensity;
    public float nauseaEffectIntensity;
@@ -18,12 +17,9 @@ public class PlayerRenderState {
    public boolean isOnFire;
    public boolean isUnderWater;
    public double eyePositionY;
-   @Nullable
-   public PlayerRenderState.BlockOverlay blockOverlay;
-   @Nullable
-   public PlayerRenderState.WaterOverlay waterOverlay;
-   @Nullable
-   public PlayerRenderState.ItemActivationRenderState itemActivation;
+   public PlayerRenderState.@Nullable BlockOverlay blockOverlay;
+   public PlayerRenderState.@Nullable WaterOverlay waterOverlay;
+   public PlayerRenderState.@Nullable ItemActivationRenderState itemActivation;
 
    public void reset() {
       this.hasPlayer = false;
@@ -33,7 +29,7 @@ public class PlayerRenderState {
       this.itemActivation = null;
    }
 
-   public static record BlockOverlay(Identifier atlasLocation, float u0, float v0, float u1, float v1) {
+   public record BlockOverlay(Identifier atlasLocation, float u0, float v0, float u1, float v1) {
    }
 
    public static class ItemActivationRenderState {
@@ -51,6 +47,6 @@ public class PlayerRenderState {
       }
    }
 
-   public static record WaterOverlay(int color, float uOffset, float vOffset) {
+   public record WaterOverlay(int color, float uOffset, float vOffset) {
    }
 }

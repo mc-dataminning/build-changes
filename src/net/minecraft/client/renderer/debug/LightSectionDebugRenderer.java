@@ -26,8 +26,7 @@ public class LightSectionDebugRenderer implements DebugRenderer.SimpleDebugRende
    private final Minecraft minecraft;
    private final LightLayer lightLayer;
    private Instant lastUpdateTime = Instant.now();
-   @Nullable
-   private LightSectionDebugRenderer.SectionData data;
+   private LightSectionDebugRenderer.@Nullable SectionData data;
 
    public LightSectionDebugRenderer(final Minecraft minecraft, final LightLayer lightLayer) {
       this.minecraft = minecraft;
@@ -75,7 +74,7 @@ public class LightSectionDebugRenderer implements DebugRenderer.SimpleDebugRende
 
    private static void renderFace(final Direction direction, final int sectionX, final int sectionY, final int sectionZ, final int color) {
       Vec3 cuboidCornerA = new Vec3(
-         (double)SectionPos.sectionToBlockCoord(sectionX), (double)SectionPos.sectionToBlockCoord(sectionY), (double)SectionPos.sectionToBlockCoord(sectionZ)
+         SectionPos.sectionToBlockCoord(sectionX), SectionPos.sectionToBlockCoord(sectionY), SectionPos.sectionToBlockCoord(sectionZ)
       );
       Vec3 cuboidCornerB = cuboidCornerA.add(16.0, 16.0, 16.0);
       Gizmos.rect(cuboidCornerA, cuboidCornerB, direction, GizmoStyle.fill(color));
@@ -84,12 +83,12 @@ public class LightSectionDebugRenderer implements DebugRenderer.SimpleDebugRende
    private static void renderEdge(
       final int sectionX0, final int sectionY0, final int sectionZ0, final int sectionX1, final int sectionY1, final int sectionZ1, final int color
    ) {
-      double x0 = (double)SectionPos.sectionToBlockCoord(sectionX0);
-      double y0 = (double)SectionPos.sectionToBlockCoord(sectionY0);
-      double z0 = (double)SectionPos.sectionToBlockCoord(sectionZ0);
-      double x1 = (double)SectionPos.sectionToBlockCoord(sectionX1);
-      double y1 = (double)SectionPos.sectionToBlockCoord(sectionY1);
-      double z1 = (double)SectionPos.sectionToBlockCoord(sectionZ1);
+      double x0 = SectionPos.sectionToBlockCoord(sectionX0);
+      double y0 = SectionPos.sectionToBlockCoord(sectionY0);
+      double z0 = SectionPos.sectionToBlockCoord(sectionZ0);
+      double x1 = SectionPos.sectionToBlockCoord(sectionX1);
+      double y1 = SectionPos.sectionToBlockCoord(sectionY1);
+      double z1 = SectionPos.sectionToBlockCoord(sectionZ1);
       int opaqueColor = ARGB.opaque(color);
       Gizmos.line(new Vec3(x0, y0, z0), new Vec3(x1, y1, z1), opaqueColor);
    }

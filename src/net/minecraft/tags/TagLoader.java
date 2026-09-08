@@ -64,8 +64,8 @@ public class TagLoader<T> {
 
                String sourceId = resource.sourcePackId();
                parsedContents.entries().forEach(ex -> tagContents.add(new TagLoader.EntryWithSource(ex, sourceId)));
-            } catch (Exception var17) {
-               LOGGER.error("Couldn't read tag list {} from {} in data pack {}", new Object[]{id, location, resource.sourcePackId(), var17});
+            } catch (Exception e) {
+               LOGGER.error("Couldn't read tag list {} from {} in data pack {}", new Object[]{id, location, resource.sourcePackId(), e});
             }
          }
       }
@@ -89,19 +89,13 @@ public class TagLoader<T> {
    public Map<Identifier, List<T>> build(final Map<Identifier, List<TagLoader.EntryWithSource>> builders) {
       final Map<Identifier, List<T>> newTags = new HashMap<>();
       TagEntry.Lookup<T> lookup = new TagEntry.Lookup<T>() {
-         {
-            Objects.requireNonNull(TagLoader.this);
-         }
-
-         @Nullable
          @Override
-         public T element(final Identifier key, final boolean required) {
+         public @Nullable T element(final Identifier key, final boolean required) {
             return (T)TagLoader.this.elementLookup.get(key, required).orElse(null);
          }
 
-         @Nullable
          @Override
-         public Collection<T> tag(final Identifier key) {
+         public @Nullable Collection<T> tag(final Identifier key) {
             return newTags.get(key);
          }
       };
@@ -109,14 +103,14 @@ public class TagLoader<T> {
       builders.forEach((id, entry) -> sorter.addEntry(id, new TagLoader.SortingEntry((List<TagLoader.EntryWithSource>)entry)));
       sorter.orderByDependencies(
          (id, contents) -> this.tryBuildTag(lookup, contents.entries)
-               .ifLeft(
-                  missing -> LOGGER.error(
-                        "Couldn't load tag {} as it is missing following references: {}",
-                        id,
-                        missing.stream().map(Objects::toString).collect(Collectors.joining(", "))
-                     )
+            .ifLeft(
+               missing -> LOGGER.error(
+                  "Couldn't load tag {} as it is missing following references: {}",
+                  id,
+                  missing.stream().map(Objects::toString).collect(Collectors.joining(", "))
                )
-               .ifRight(tag -> newTags.put(id, tag))
+            )
+            .ifRight(tag -> newTags.put(id, tag))
       );
       return newTags;
    }
@@ -159,13 +153,14 @@ public class TagLoader<T> {
       List<HolderLookup.RegistryLookup<?>> result = new ArrayList<>();
       registries.registries().forEach(lookup -> {
          Registry.PendingTags<?> foundTags = findTagsForRegistry(tags, lookup.key());
-         result.add((HolderLookup.RegistryLookup<?>)(foundTags != null ? foundTags.lookup() : lookup.value()));
+         result.add(foundTags != null ? foundTags.lookup() : lookup.value());
       });
       return result;
    }
 
-   @Nullable
-   private static Registry.PendingTags<?> findTagsForRegistry(final List<Registry.PendingTags<?>> tags, final ResourceKey<? extends Registry<?>> registryKey) {
+   private static Registry.@Nullable PendingTags<?> findTagsForRegistry(
+      final List<Registry.PendingTags<?>> tags, final ResourceKey<? extends Registry<?>> registryKey
+   ) {
       for (Registry.PendingTags<?> tag : tags) {
          if (tag.key() == registryKey) {
             return tag;
@@ -193,17 +188,17 @@ public class TagLoader<T> {
       }
    }
 
-   public static record EntryWithSource(TagEntry entry, String source) {
+   public record EntryWithSource(TagEntry entry, String source) {
       @Override
       public String toString() {
          return this.entry + " (from " + this.source + ")";
       }
    }
 
-   public static record LoadResult<T>(ResourceKey<? extends Registry<T>> key, Map<TagKey<T>, List<Holder<T>>> tags) {
+   public record LoadResult<T>(ResourceKey<? extends Registry<T>> key, Map<TagKey<T>, List<Holder<T>>> tags) {
    }
 
-   private static record SortingEntry(List<TagLoader.EntryWithSource> entries) implements DependencySorter.Entry<Identifier> {
+   private record SortingEntry(List<TagLoader.EntryWithSource> entries) implements DependencySorter.Entry<Identifier> {
       @Override
       public void visitRequiredDependencies(final Consumer<Identifier> output) {
          this.entries.forEach(e -> e.entry.visitRequiredDependencies(output));

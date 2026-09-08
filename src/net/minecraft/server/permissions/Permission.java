@@ -17,7 +17,7 @@ public interface Permission {
 
    MapCodec<? extends Permission> codec();
 
-   public static record Atom(Identifier id) implements Permission {
+   record Atom(Identifier id) implements Permission {
       public static final MapCodec<Permission.Atom> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(Identifier.CODEC.fieldOf("id").forGetter(Permission.Atom::id)).apply(i, Permission.Atom::new)
       );
@@ -36,7 +36,7 @@ public interface Permission {
       }
    }
 
-   public static record HasCommandLevel(PermissionLevel level) implements Permission {
+   record HasCommandLevel(PermissionLevel level) implements Permission {
       public static final MapCodec<Permission.HasCommandLevel> MAP_CODEC = RecordCodecBuilder.mapCodec(
          i -> i.group(PermissionLevel.CODEC.fieldOf("level").forGetter(Permission.HasCommandLevel::level)).apply(i, Permission.HasCommandLevel::new)
       );

@@ -57,11 +57,11 @@ public class SwimNodeEvaluator extends NodeEvaluator {
          }
       }
 
-      for (Direction directionx : Direction.Plane.HORIZONTAL) {
-         Direction secondDirection = directionx.getClockWise();
-         if (hasMalus(nodes.get(directionx)) && hasMalus(nodes.get(secondDirection))) {
+      for (Direction direction : Direction.Plane.HORIZONTAL) {
+         Direction secondDirection = direction.getClockWise();
+         if (hasMalus(nodes.get(direction)) && hasMalus(nodes.get(secondDirection))) {
             Node diagonalNode = this.findAcceptedNode(
-               pos.x + directionx.getStepX() + secondDirection.getStepX(), pos.y, pos.z + directionx.getStepZ() + secondDirection.getStepZ()
+               pos.x + direction.getStepX() + secondDirection.getStepX(), pos.y, pos.z + direction.getStepZ() + secondDirection.getStepZ()
             );
             if (this.isNodeValid(diagonalNode)) {
                neighbors[count++] = diagonalNode;
@@ -72,16 +72,15 @@ public class SwimNodeEvaluator extends NodeEvaluator {
       return count;
    }
 
-   protected boolean isNodeValid(@Nullable final Node node) {
+   protected boolean isNodeValid(final @Nullable Node node) {
       return node != null && !node.closed;
    }
 
-   private static boolean hasMalus(@Nullable final Node node) {
+   private static boolean hasMalus(final @Nullable Node node) {
       return node != null && node.costMalus >= 0.0F;
    }
 
-   @Nullable
-   protected Node findAcceptedNode(final int x, final int y, final int z) {
+   protected @Nullable Node findAcceptedNode(final int x, final int y, final int z) {
       Node best = null;
       PathType pathType = this.getCachedBlockType(x, y, z);
       if (this.allowBreaching && pathType == PathType.BREACH || pathType == PathType.WATER) {
@@ -129,7 +128,7 @@ public class SwimNodeEvaluator extends NodeEvaluator {
          }
       }
 
-      BlockState blockStatex = context.getBlockState(pos);
-      return blockStatex.isPathfindable(PathComputationType.WATER) ? PathType.WATER : PathType.BLOCKED;
+      BlockState blockState = context.getBlockState(pos);
+      return blockState.isPathfindable(PathComputationType.WATER) ? PathType.WATER : PathType.BLOCKED;
    }
 }

@@ -34,18 +34,20 @@ public class MeleeAttackGoal extends Goal {
       long time = this.mob.level().getGameTime();
       if (time - this.lastCanUseCheck < 20L) {
          return false;
-      } else {
-         this.lastCanUseCheck = time;
-         LivingEntity target = this.mob.getTarget();
-         if (target == null) {
-            return false;
-         } else if (!target.isAlive()) {
-            return false;
-         } else {
-            this.path = this.mob.getNavigation().createPath(target, 0);
-            return this.path != null ? true : this.mob.isWithinMeleeAttackRange(target);
-         }
       }
+
+      this.lastCanUseCheck = time;
+      LivingEntity target = this.mob.getTarget();
+      if (target == null) {
+         return false;
+      }
+
+      if (!target.isAlive()) {
+         return false;
+      }
+
+      this.path = this.mob.getNavigation().createPath(target, 0);
+      return this.path != null ? true : this.mob.isWithinMeleeAttackRange(target);
    }
 
    @Override
@@ -57,14 +59,8 @@ public class MeleeAttackGoal extends Goal {
          return false;
       } else if (!this.followingTargetEvenIfNotSeen) {
          return !this.mob.getNavigation().isDone();
-      } else if (!this.mob.isWithinHome(target.blockPosition())) {
-         return false;
       } else {
-         if (target instanceof Player player && (player.isSpectator() || player.isCreative())) {
-            return false;
-         }
-
-         return true;
+         return !this.mob.isWithinHome(target.blockPosition()) ? false : !(target instanceof Player player && (player.isSpectator() || player.isCreative()));
       }
    }
 

@@ -33,7 +33,7 @@ public class PowderedSnowFogEnvironment extends FogEnvironment {
    }
 
    @Override
-   public boolean isApplicable(@Nullable final FogType fogType, final Entity entity) {
+   public boolean isApplicable(final @Nullable FogType fogType, final Entity entity) {
       return fogType == FogType.POWDER_SNOW;
    }
 }

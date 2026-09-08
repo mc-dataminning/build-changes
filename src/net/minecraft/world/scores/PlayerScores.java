@@ -11,8 +11,7 @@ import org.jspecify.annotations.Nullable;
 class PlayerScores {
    private final Reference2ObjectOpenHashMap<Objective, Score> scores = new Reference2ObjectOpenHashMap(16, 0.5F);
 
-   @Nullable
-   public Score get(final Objective objective) {
+   public @Nullable Score get(final Objective objective) {
       return (Score)this.scores.get(objective);
    }
 

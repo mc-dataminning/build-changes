@@ -32,14 +32,14 @@ public enum EquipmentSlotGroup implements StringRepresentable, Iterable<Equipmen
    private final Predicate<EquipmentSlot> predicate;
    private final List<EquipmentSlot> slots;
 
-   private EquipmentSlotGroup(final int id, final String key, final Predicate<EquipmentSlot> predicate) {
+   EquipmentSlotGroup(final int id, final String key, final Predicate<EquipmentSlot> predicate) {
       this.id = id;
       this.key = key;
       this.predicate = predicate;
       this.slots = EquipmentSlot.VALUES.stream().filter(predicate).toList();
    }
 
-   private EquipmentSlotGroup(final int id, final String key, final EquipmentSlot slot) {
+   EquipmentSlotGroup(final int id, final String key, final EquipmentSlot slot) {
       this(id, key, s -> s == slot);
    }
 

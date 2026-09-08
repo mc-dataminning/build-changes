@@ -103,8 +103,8 @@ public class TickCommand {
       long[] samples = Arrays.copyOf(source.getServer().getTickTimesNanos(), source.getServer().getTickTimesNanos().length);
       Arrays.sort(samples);
       String p50 = nanosToMilisString(samples[samples.length / 2]);
-      String p95 = nanosToMilisString(samples[(int)((double)samples.length * 0.95)]);
-      String p99 = nanosToMilisString(samples[(int)((double)samples.length * 0.99)]);
+      String p95 = nanosToMilisString(samples[(int)(samples.length * 0.95)]);
+      String p99 = nanosToMilisString(samples[(int)(samples.length * 0.99)]);
       source.sendSuccess(() -> Component.translatable("commands.tick.query.percentiles", p50, p95, p99, samples.length), false);
       return (int)tickRate;
    }
@@ -144,27 +144,27 @@ public class TickCommand {
    private static int step(final CommandSourceStack source, final int advance) throws CommandSyntaxException {
       if (!source.getServer().tickRateManager().stepGameIfPaused(advance)) {
          throw ERROR_TICK_STEP_NOT_FROZEN.create();
-      } else {
-         source.sendSuccess(() -> Component.translatable("commands.tick.step.success", advance), true);
-         return 1;
       }
+
+      source.sendSuccess(() -> Component.translatable("commands.tick.step.success", advance), true);
+      return 1;
    }
 
    private static int stopStepping(final CommandSourceStack source) throws CommandSyntaxException {
       if (!source.getServer().tickRateManager().stopStepping()) {
          throw ERROR_STEP_STOP_NOT_STEPPING.create();
-      } else {
-         source.sendSuccess(() -> Component.translatable("commands.tick.step.stop.success"), true);
-         return 1;
       }
+
+      source.sendSuccess(() -> Component.translatable("commands.tick.step.stop.success"), true);
+      return 1;
    }
 
    private static int stopSprinting(final CommandSourceStack source) throws CommandSyntaxException {
       if (!source.getServer().tickRateManager().stopSprinting()) {
          throw ERROR_SPRINT_STOP_NOT_SPRINTING.create();
-      } else {
-         source.sendSuccess(() -> Component.translatable("commands.tick.sprint.stop.success"), true);
-         return 1;
       }
+
+      source.sendSuccess(() -> Component.translatable("commands.tick.sprint.stop.success"), true);
+      return 1;
    }
 }

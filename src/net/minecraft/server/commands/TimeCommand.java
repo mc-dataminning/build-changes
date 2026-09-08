@@ -60,7 +60,7 @@ public class TimeCommand {
    private static final int MAX_CLOCK_RATE = 1000;
 
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
-      LiteralArgumentBuilder<CommandSourceStack> baseCommand = (LiteralArgumentBuilder<CommandSourceStack>)Commands.literal("time")
+      var baseCommand = (LiteralArgumentBuilder<CommandSourceStack> & ArgumentBuilder)Commands.literal("time")
          .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS));
       dispatcher.register(addClockNodes(context, baseCommand, c -> getDefaultClock((CommandSourceStack)c.getSource())));
       dispatcher.register(
@@ -94,10 +94,10 @@ public class TimeCommand {
                      .suggests((c, p) -> suggestTimeMarkers((CommandSourceStack)c.getSource(), p, clockGetter.getClock(c)))
                      .executes(
                         c -> setTimeToTimeMarker(
-                              (CommandSourceStack)c.getSource(),
-                              clockGetter.getClock(c),
-                              ResourceKey.create(ClockTimeMarkers.ROOT_ID, IdentifierArgument.getId(c, "timemarker"))
-                           )
+                           (CommandSourceStack)c.getSource(),
+                           clockGetter.getClock(c),
+                           ResourceKey.create(ClockTimeMarkers.ROOT_ID, IdentifierArgument.getId(c, "timemarker"))
+                        )
                      )
                )
          )
@@ -130,8 +130,8 @@ public class TimeCommand {
                         Commands.literal("repetition")
                            .executes(
                               c -> queryTimelineRepetitions(
-                                    (CommandSourceStack)c.getSource(), clockGetter.getClock(c), ResourceArgument.getTimeline(c, "timeline")
-                                 )
+                                 (CommandSourceStack)c.getSource(), clockGetter.getClock(c), ResourceArgument.getTimeline(c, "timeline")
+                              )
                            )
                      )
                )
@@ -171,34 +171,34 @@ public class TimeCommand {
    private static int queryTimelineTicks(final CommandSourceStack source, final Holder<WorldClock> clock, final Holder<Timeline> timeline) throws CommandSyntaxException {
       if (!clock.equals(timeline.value().clock())) {
          throw ERROR_WRONG_TIMELINE_FOR_CLOCK.create(clock.getRegisteredName(), timeline.getRegisteredName());
-      } else {
-         ServerClockManager clockManager = source.getServer().clockManager();
-         long currentTicks = timeline.value().getCurrentTicks(clockManager);
-         source.sendSuccess(() -> Component.translatable("commands.time.query.timeline", timeline.getRegisteredName(), currentTicks), false);
-         return wrapTime(currentTicks);
       }
+
+      ServerClockManager clockManager = source.getServer().clockManager();
+      long currentTicks = timeline.value().getCurrentTicks(clockManager);
+      source.sendSuccess(() -> Component.translatable("commands.time.query.timeline", timeline.getRegisteredName(), currentTicks), false);
+      return wrapTime(currentTicks);
    }
 
    private static int queryTimelineRepetitions(final CommandSourceStack source, final Holder<WorldClock> clock, final Holder<Timeline> timeline) throws CommandSyntaxException {
       if (!clock.equals(timeline.value().clock())) {
          throw ERROR_WRONG_TIMELINE_FOR_CLOCK.create(clock.getRegisteredName(), timeline.getRegisteredName());
-      } else {
-         ServerClockManager clockManager = source.getServer().clockManager();
-         long repetitions = (long)timeline.value().getPeriodCount(clockManager);
-         source.sendSuccess(() -> Component.translatable("commands.time.query.timeline.repetitions", timeline.getRegisteredName(), repetitions), false);
-         return wrapTime(repetitions);
       }
+
+      ServerClockManager clockManager = source.getServer().clockManager();
+      long repetitions = timeline.value().getPeriodCount(clockManager);
+      source.sendSuccess(() -> Component.translatable("commands.time.query.timeline.repetitions", timeline.getRegisteredName(), repetitions), false);
+      return wrapTime(repetitions);
    }
 
    private static int setTotalTicks(final CommandSourceStack source, final Holder<WorldClock> clock, final int totalTicks) throws CommandSyntaxException {
       ServerClockManager clockManager = source.getServer().clockManager();
-      if (clockManager.getInstance(clock).totalTicks() == (long)totalTicks) {
+      if (clockManager.getInstance(clock).totalTicks() == totalTicks) {
          throw ERROR_ALREADY_AT_TIME.create(clock.getRegisteredName(), totalTicks);
-      } else {
-         clockManager.setTotalTicks(clock, (long)totalTicks);
-         source.sendSuccess(() -> Component.translatable("commands.time.set.absolute", clock.getRegisteredName(), totalTicks), true);
-         return totalTicks;
       }
+
+      clockManager.setTotalTicks(clock, totalTicks);
+      source.sendSuccess(() -> Component.translatable("commands.time.set.absolute", clock.getRegisteredName(), totalTicks), true);
+      return totalTicks;
    }
 
    private static int addTime(final CommandSourceStack source, final Holder<WorldClock> clock, final int time) {
@@ -246,11 +246,11 @@ public class TimeCommand {
       ServerClockManager clockManager = source.getServer().clockManager();
       if (clockManager.getInstance(clock).rate() == rate) {
          throw ERROR_ALREADY_SAME_RATE.create(clock.getRegisteredName(), rate);
-      } else {
-         clockManager.setRate(clock, rate);
-         source.sendSuccess(() -> Component.translatable("commands.time.rate", clock.getRegisteredName(), rate), true);
-         return 1;
       }
+
+      clockManager.setRate(clock, rate);
+      source.sendSuccess(() -> Component.translatable("commands.time.rate", clock.getRegisteredName(), rate), true);
+      return 1;
    }
 
    private static int wrapTime(final long ticks) {

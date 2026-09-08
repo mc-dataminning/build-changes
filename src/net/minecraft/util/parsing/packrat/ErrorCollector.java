@@ -3,6 +3,7 @@ package net.minecraft.util.parsing.packrat;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.util.Util;
+import org.jspecify.annotations.Nullable;
 
 public interface ErrorCollector<S> {
    void store(int cursor, SuggestionSupplier<S> suggestions, Object reason);
@@ -13,8 +14,8 @@ public interface ErrorCollector<S> {
 
    void finish(int finalCursor);
 
-   public static class LongestOnly<S> implements ErrorCollector<S> {
-      private ErrorCollector.LongestOnly.MutableErrorEntry<S>[] entries = new ErrorCollector.LongestOnly.MutableErrorEntry[16];
+   class LongestOnly<S> implements ErrorCollector<S> {
+      private ErrorCollector.LongestOnly.@Nullable MutableErrorEntry<S>[] entries = new ErrorCollector.LongestOnly.MutableErrorEntry[16];
       private int nextErrorEntry;
       private int lastCursor = -1;
 
@@ -62,16 +63,16 @@ public interface ErrorCollector<S> {
          int errorCount = this.nextErrorEntry;
          if (errorCount == 0) {
             return List.of();
-         } else {
-            List<ErrorEntry<S>> result = new ArrayList<>(errorCount);
-
-            for (int i = 0; i < errorCount; i++) {
-               ErrorCollector.LongestOnly.MutableErrorEntry<S> entry = this.entries[i];
-               result.add(new ErrorEntry<>(this.lastCursor, entry.suggestions, entry.reason));
-            }
-
-            return result;
          }
+
+         List<ErrorEntry<S>> result = new ArrayList<>(errorCount);
+
+         for (int i = 0; i < errorCount; i++) {
+            ErrorCollector.LongestOnly.MutableErrorEntry<S> entry = this.entries[i];
+            result.add(new ErrorEntry<>(this.lastCursor, entry.suggestions, entry.reason));
+         }
+
+         return result;
       }
 
       public int cursor() {
@@ -84,7 +85,7 @@ public interface ErrorCollector<S> {
       }
    }
 
-   public static class Nop<S> implements ErrorCollector<S> {
+   class Nop<S> implements ErrorCollector<S> {
       @Override
       public void store(final int cursor, final SuggestionSupplier<S> suggestions, final Object reason) {
       }

@@ -70,7 +70,7 @@ public class KeyframeAnimation {
       return this.definition.looping() ? secondsSinceStart % this.definition.lengthInSeconds() : secondsSinceStart;
    }
 
-   private static record Entry(ModelPart part, AnimationChannel.Target target, Keyframe[] keyframes) {
+   private record Entry(ModelPart part, AnimationChannel.Target target, Keyframe[] keyframes) {
       public void apply(final float secondsSinceStart, final float targetScale, final Vector3f scratchVector) {
          int prev = Math.max(0, Mth.binarySearch(0, this.keyframes.length, i -> secondsSinceStart <= this.keyframes[i].timestamp()) - 1);
          int next = Math.min(this.keyframes.length - 1, prev + 1);

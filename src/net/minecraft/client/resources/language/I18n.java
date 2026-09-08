@@ -13,7 +13,7 @@ public class I18n {
 
       try {
          return String.format(Locale.ROOT, value, args);
-      } catch (IllegalFormatException var4) {
+      } catch (IllegalFormatException ignored) {
          return "Format error: " + value;
       }
    }

@@ -153,10 +153,9 @@ public class Zoglin extends Monster implements HoglinBase {
       }
    }
 
-   @Nullable
    @Override
-   public SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable final SpawnGroupData groupData
+   public @Nullable SpawnGroupData finalizeSpawn(
+      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final @Nullable SpawnGroupData groupData
    ) {
       if (level.getRandom().nextFloat() < 0.2F) {
          this.setBaby(true);
@@ -269,7 +268,7 @@ public class Zoglin extends Monster implements HoglinBase {
    }
 
    @Override
-   public void handleEntityEvent(@EntityEvent.Value final byte id) {
+   public void handleEntityEvent(final @EntityEvent.Value byte id) {
       if (id == 4) {
          this.attackAnimationRemainingTicks = 10;
          this.makeSound(SoundEvents.ZOGLIN_ATTACK);
@@ -311,9 +310,8 @@ public class Zoglin extends Monster implements HoglinBase {
       this.makeSound(SoundEvents.ZOGLIN_ANGRY);
    }
 
-   @Nullable
    @Override
-   public LivingEntity getTarget() {
+   public @Nullable LivingEntity getTarget() {
       return this.getTargetFromBrain();
    }
 

@@ -12,10 +12,10 @@ import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 public record DirectPoolAlias(ResourceKey<StructureTemplatePool> alias, ResourceKey<StructureTemplatePool> target) implements PoolAliasBinding {
    public static final MapCodec<DirectPoolAlias> CODEC = RecordCodecBuilder.mapCodec(
       i -> i.group(
-               ResourceKey.codec(Registries.TEMPLATE_POOL).fieldOf("alias").forGetter(DirectPoolAlias::alias),
-               ResourceKey.codec(Registries.TEMPLATE_POOL).fieldOf("target").forGetter(DirectPoolAlias::target)
-            )
-            .apply(i, DirectPoolAlias::new)
+            ResourceKey.codec(Registries.TEMPLATE_POOL).fieldOf("alias").forGetter(DirectPoolAlias::alias),
+            ResourceKey.codec(Registries.TEMPLATE_POOL).fieldOf("target").forGetter(DirectPoolAlias::target)
+         )
+         .apply(i, DirectPoolAlias::new)
    );
 
    @Override

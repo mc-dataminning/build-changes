@@ -85,8 +85,8 @@ public class AttributeModifierIdFix extends DataFix {
             "AttributeIdFix (ItemStack)",
             itemStackType,
             itemStack -> itemStack.updateTyped(
-                  componentsFinder, components -> components.update(DSL.remainderFinder(), AttributeModifierIdFix::fixItemStackComponents)
-               )
+               componentsFinder, components -> components.update(DSL.remainderFinder(), AttributeModifierIdFix::fixItemStackComponents)
+            )
          ),
          new TypeRewriteRule[]{
             this.fixTypeEverywhereTyped("AttributeIdFix (Entity)", this.getInputSchema().getType(References.ENTITY), AttributeModifierIdFix::fixEntity),
@@ -146,11 +146,11 @@ public class AttributeModifierIdFix extends DataFix {
       return components.update(
          "minecraft:attribute_modifiers",
          attributeModifiers -> attributeModifiers.update(
-               "modifiers",
-               modifiers -> (Dynamic)DataFixUtils.orElse(
-                     modifiers.asStreamOpt().result().map(AttributeModifierIdFix::fixModifiersTypeWrapper).map(modifiers::createList), modifiers
-                  )
+            "modifiers",
+            modifiers -> (Dynamic)DataFixUtils.orElse(
+               modifiers.asStreamOpt().result().map(AttributeModifierIdFix::fixModifiersTypeWrapper).map(modifiers::createList), modifiers
             )
+         )
       );
    }
 
@@ -161,13 +161,13 @@ public class AttributeModifierIdFix extends DataFix {
             "Modifiers",
             "modifiers",
             modifiers -> (Dynamic)DataFixUtils.orElse(
-                  modifiers.asStreamOpt()
-                     .result()
-                     .map(s -> s.map(AttributeModifierIdFix::convertModifierForEntity))
-                     .map(AttributeModifierIdFix::fixModifiersTypeWrapper)
-                     .map(attribute::createList),
-                  modifiers
-               )
+               modifiers.asStreamOpt()
+                  .result()
+                  .map(s -> s.map(AttributeModifierIdFix::convertModifierForEntity))
+                  .map(AttributeModifierIdFix::fixModifiersTypeWrapper)
+                  .map(attribute::createList),
+               modifiers
+            )
          );
    }
 
@@ -175,19 +175,16 @@ public class AttributeModifierIdFix extends DataFix {
       return entity.update(
          DSL.remainderFinder(),
          tag -> tag.renameAndFixField(
-               "Attributes",
-               "attributes",
-               attributeList -> (Dynamic)DataFixUtils.orElse(
-                     attributeList.asStreamOpt().result().map(s -> s.map(AttributeModifierIdFix::fixAttribute)).map(attributeList::createList), attributeList
-                  )
+            "Attributes",
+            "attributes",
+            attributeList -> (Dynamic)DataFixUtils.orElse(
+               attributeList.asStreamOpt().result().map(s -> s.map(AttributeModifierIdFix::fixAttribute)).map(attributeList::createList), attributeList
             )
+         )
       );
    }
 
-   @Nullable
-   public static UUID uuidFromIntArray(final int[] intArray) {
-      return intArray.length != 4
-         ? null
-         : new UUID((long)intArray[0] << 32 | (long)intArray[1] & 4294967295L, (long)intArray[2] << 32 | (long)intArray[3] & 4294967295L);
+   public static @Nullable UUID uuidFromIntArray(final int[] intArray) {
+      return intArray.length != 4 ? null : new UUID((long)intArray[0] << 32 | intArray[1] & 4294967295L, (long)intArray[2] << 32 | intArray[3] & 4294967295L);
    }
 }

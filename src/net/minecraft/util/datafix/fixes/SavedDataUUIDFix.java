@@ -19,29 +19,28 @@ public class SavedDataUUIDFix extends AbstractUUIDFix {
          "SavedDataUUIDFix",
          this.getInputSchema().getType(this.typeReference),
          input -> input.update(
-               DSL.remainderFinder(),
-               container -> container.update(
-                     "data",
-                     tag -> tag.update(
-                           "Raids",
-                           raids -> raids.createList(
-                                 raids.asStream()
-                                    .map(
-                                       raid -> raid.update(
-                                             "HeroesOfTheVillage",
-                                             heros -> heros.createList(
-                                                   heros.asStream()
-                                                      .map(hero -> (Dynamic)createUUIDFromLongs((Dynamic<?>)hero, "UUIDMost", "UUIDLeast").orElseGet(() -> {
-                                                            LOGGER.warn("HeroesOfTheVillage contained invalid UUIDs.");
-                                                            return (Dynamic<?>)hero;
-                                                         }))
-                                                )
-                                          )
-                                    )
+            DSL.remainderFinder(),
+            container -> container.update(
+               "data",
+               tag -> tag.update(
+                  "Raids",
+                  raids -> raids.createList(
+                     raids.asStream()
+                        .map(
+                           raid -> raid.update(
+                              "HeroesOfTheVillage",
+                              heros -> heros.createList(
+                                 heros.asStream().map(hero -> (Dynamic)createUUIDFromLongs((Dynamic<?>)hero, "UUIDMost", "UUIDLeast").orElseGet(() -> {
+                                    LOGGER.warn("HeroesOfTheVillage contained invalid UUIDs.");
+                                    return (Dynamic<?>)hero;
+                                 }))
                               )
+                           )
                         )
                   )
+               )
             )
+         )
       );
    }
 }

@@ -10,14 +10,14 @@ public interface LoggedChatEvent {
 
    LoggedChatEvent.Type type();
 
-   public static enum Type implements StringRepresentable {
+   enum Type implements StringRepresentable {
       PLAYER("player", () -> LoggedChatMessage.Player.CODEC),
       SYSTEM("system", () -> LoggedChatMessage.System.CODEC);
 
       private final String serializedName;
       private final Supplier<MapCodec<? extends LoggedChatEvent>> codec;
 
-      private Type(final String serializedName, final Supplier<MapCodec<? extends LoggedChatEvent>> codec) {
+      Type(final String serializedName, final Supplier<MapCodec<? extends LoggedChatEvent>> codec) {
          this.serializedName = serializedName;
          this.codec = codec;
       }

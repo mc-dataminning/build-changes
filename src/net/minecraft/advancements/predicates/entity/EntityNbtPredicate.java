@@ -11,7 +11,7 @@ public record EntityNbtPredicate(NbtPredicate nbt) implements EntitySubPredicate
    public static final Codec<EntityNbtPredicate> CODEC = NbtPredicate.CODEC.xmap(EntityNbtPredicate::new, EntityNbtPredicate::nbt);
 
    @Override
-   public boolean matches(final Entity entity, final ServerLevel level, @Nullable final Vec3 position) {
+   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
       return this.nbt.matches(NbtPredicate.getEntityTagToCompare(entity));
    }
 }

@@ -57,10 +57,10 @@ public class RabbitRenderer extends AgeableMobRenderer<Rabbit, RabbitRenderState
    public Identifier getTextureLocation(final RabbitRenderState state) {
       if (state.isToast) {
          return state.isBaby ? TOAST_BABY : TOAST;
-      } else {
-         Map<Rabbit.Variant, Identifier> locations = state.isBaby ? BABY_RABBIT_LOCATIONS : RABBIT_LOCATIONS;
-         return locations.get(state.variant);
       }
+
+      Map<Rabbit.Variant, Identifier> locations = state.isBaby ? BABY_RABBIT_LOCATIONS : RABBIT_LOCATIONS;
+      return locations.get(state.variant);
    }
 
    public RabbitRenderState createRenderState() {

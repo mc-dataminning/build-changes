@@ -23,7 +23,7 @@ public class Panorama {
       Minecraft minecraft = Minecraft.getInstance();
       if (this.shouldSpin) {
          float a = minecraft.getDeltaTracker().getRealtimeDeltaTicks();
-         float delta = (float)((double)a * minecraft.gameRenderer.gameRenderState().optionsRenderState.panoramaSpeed);
+         float delta = (float)(a * minecraft.gameRenderer.gameRenderState().optionsRenderState.panoramaSpeed);
          this.spin = Mth.wrapDegrees(this.spin + delta * 0.1F);
       }
 

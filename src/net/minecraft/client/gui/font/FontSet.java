@@ -34,9 +34,8 @@ public class FontSet implements AutoCloseable {
          return SpecialGlyphs.MISSING;
       }
 
-      @Nullable
       @Override
-      public TextRenderable.Styled createGlyph(
+      public TextRenderable.@Nullable Styled createGlyph(
          final float x, final float y, final int color, final int shadowColor, final Style style, final float boldOffset, final float shadowOffset
       ) {
          return null;
@@ -44,10 +43,6 @@ public class FontSet implements AutoCloseable {
    };
    private final GlyphStitcher stitcher;
    private final UnbakedGlyph.Stitcher wrappedStitcher = new UnbakedGlyph.Stitcher() {
-      {
-         Objects.requireNonNull(FontSet.this);
-      }
-
       @Override
       public BakedGlyph stitch(final GlyphInfo glyphInfo, final GlyphBitmap glyphBitmap) {
          return Objects.requireNonNullElse(FontSet.this.stitcher.stitch(glyphInfo, glyphBitmap), FontSet.this.missingGlyph);
@@ -66,8 +61,7 @@ public class FontSet implements AutoCloseable {
    private BakedGlyph missingGlyph = INVISIBLE_MISSING_GLYPH;
    private final Supplier<BakedGlyph> missingGlyphGetter = () -> this.missingGlyph;
    private final FontSet.SelectedGlyphs missingSelectedGlyphs = new FontSet.SelectedGlyphs(this.missingGlyphGetter, this.missingGlyphGetter);
-   @Nullable
-   private EffectGlyph whiteGlyph;
+   private @Nullable EffectGlyph whiteGlyph;
    private final GlyphSource anyGlyphs = new FontSet.Source(false);
    private final GlyphSource nonFishyGlyphs = new FontSet.Source(true);
 
@@ -178,12 +172,9 @@ public class FontSet implements AutoCloseable {
 
    private class DelayedBake implements Supplier<BakedGlyph> {
       private final UnbakedGlyph unbaked;
-      @Nullable
-      private BakedGlyph baked;
+      private @Nullable BakedGlyph baked;
 
       private DelayedBake(final UnbakedGlyph unbaked) {
-         Objects.requireNonNull(FontSet.this);
-         super();
          this.unbaked = unbaked;
       }
 
@@ -196,7 +187,7 @@ public class FontSet implements AutoCloseable {
       }
    }
 
-   private static record SelectedGlyphs(Supplier<BakedGlyph> any, Supplier<BakedGlyph> nonFishy) {
+   private record SelectedGlyphs(Supplier<BakedGlyph> any, Supplier<BakedGlyph> nonFishy) {
       private Supplier<BakedGlyph> select(final boolean filterFishy) {
          return filterFishy ? this.nonFishy : this.any;
       }
@@ -206,8 +197,6 @@ public class FontSet implements AutoCloseable {
       private final boolean filterFishyGlyphs;
 
       public Source(final boolean filterFishyGlyphs) {
-         Objects.requireNonNull(FontSet.this);
-         super();
          this.filterFishyGlyphs = filterFishyGlyphs;
       }
 

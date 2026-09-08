@@ -26,7 +26,7 @@ public interface WaypointTransmitter extends Waypoint {
          double broadcastRange = Math.min(
             source.getAttributeValue(Attributes.WAYPOINT_TRANSMIT_RANGE), receiver.getAttributeValue(Attributes.WAYPOINT_RECEIVE_RANGE)
          );
-         return (double)source.distanceTo(receiver) >= broadcastRange;
+         return source.distanceTo(receiver) >= broadcastRange;
       } else {
          return true;
       }
@@ -40,7 +40,7 @@ public interface WaypointTransmitter extends Waypoint {
       return source.distanceTo(receiver) > 332.0F;
    }
 
-   public interface BlockConnection extends WaypointTransmitter.Connection {
+   interface BlockConnection extends WaypointTransmitter.Connection {
       int distanceManhattan();
 
       @Override
@@ -49,7 +49,7 @@ public interface WaypointTransmitter extends Waypoint {
       }
    }
 
-   public interface ChunkConnection extends WaypointTransmitter.Connection {
+   interface ChunkConnection extends WaypointTransmitter.Connection {
       int distanceChessboard();
 
       @Override
@@ -58,7 +58,7 @@ public interface WaypointTransmitter extends Waypoint {
       }
    }
 
-   public interface Connection {
+   interface Connection {
       void connect();
 
       void disconnect();
@@ -68,7 +68,7 @@ public interface WaypointTransmitter extends Waypoint {
       boolean isBroken();
    }
 
-   public static class EntityAzimuthConnection implements WaypointTransmitter.Connection {
+   class EntityAzimuthConnection implements WaypointTransmitter.Connection {
       private final LivingEntity source;
       private final Waypoint.Icon icon;
       private final ServerPlayer receiver;
@@ -110,7 +110,7 @@ public interface WaypointTransmitter extends Waypoint {
       }
    }
 
-   public static class EntityBlockConnection implements WaypointTransmitter.BlockConnection {
+   class EntityBlockConnection implements WaypointTransmitter.BlockConnection {
       private final LivingEntity source;
       private final Waypoint.Icon icon;
       private final ServerPlayer receiver;
@@ -153,7 +153,7 @@ public interface WaypointTransmitter extends Waypoint {
       }
    }
 
-   public static class EntityChunkConnection implements WaypointTransmitter.ChunkConnection {
+   class EntityChunkConnection implements WaypointTransmitter.ChunkConnection {
       private final LivingEntity source;
       private final Waypoint.Icon icon;
       private final ServerPlayer receiver;
