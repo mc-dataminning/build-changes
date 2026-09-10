@@ -702,8 +702,10 @@ public abstract class Player extends Avatar implements ContainerUser {
    }
 
    @Override
-   protected void blockUsingItem(final ServerLevel level, final LivingEntity attacker, final DamageSource source, final float damage) {
-      super.blockUsingItem(level, attacker, source, damage);
+   protected void blockUsingItem(
+      final ServerLevel level, final LivingEntity attacker, final DamageSource source, final float damage, final boolean fullyBlocked
+   ) {
+      super.blockUsingItem(level, attacker, source, damage, fullyBlocked);
       ItemStack itemBlockingWith = this.getItemBlockingWith();
       BlocksAttacks blocksAttacks = itemBlockingWith != null ? itemBlockingWith.get(DataComponents.BLOCKS_ATTACKS) : null;
       float secondsToDisableBlocking = attacker.getSecondsToDisableBlocking();

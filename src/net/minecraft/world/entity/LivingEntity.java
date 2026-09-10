@@ -1336,11 +1336,8 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
 
             float damageBlocked = blocksAttacks.resolveBlockedDamage(source, damage, angle);
             blocksAttacks.hurtBlockingItem(this.level(), blockingWith, this, this.getUsedItemHand(), damageBlocked);
-            if (damageBlocked > 0.0F
-               && damageBlocked < damage
-               && !source.is(DamageTypeTags.IS_PROJECTILE)
-               && source.getDirectEntity() instanceof LivingEntity livingEntity) {
-               this.blockUsingItem(level, livingEntity, source, damage);
+            if (damageBlocked > 0.0F && !source.is(DamageTypeTags.IS_PROJECTILE) && source.getDirectEntity() instanceof LivingEntity livingEntity) {
+               this.blockUsingItem(level, livingEntity, source, damage, damageBlocked >= damage);
             }
 
             return damageBlocked;
@@ -1381,12 +1378,16 @@ public abstract class LivingEntity extends Entity implements Attackable, Waypoin
       return EntityReference.getPlayer(this.lastHurtByPlayer, this.level());
    }
 
-   protected void blockUsingItem(final ServerLevel level, final LivingEntity attacker, final DamageSource source, final float damage) {
-      attacker.blockedByItem(this, source, damage);
+   protected void blockUsingItem(
+      final ServerLevel level, final LivingEntity attacker, final DamageSource source, final float damage, final boolean fullyBlocked
+   ) {
+      attacker.blockedByItem(this, source, damage, fullyBlocked);
    }
 
-   protected void blockedByItem(final LivingEntity defender, final DamageSource source, final float damage) {
-      defender.knockback(0.5, defender.getX() - this.getX(), defender.getZ() - this.getZ(), source, damage);
+   protected void blockedByItem(final LivingEntity defender, final DamageSource source, final float damage, final boolean fullyBlocked) {
+      if (!fullyBlocked) {
+         defender.knockback(0.5, defender.getX() - this.getX(), defender.getZ() - this.getZ(), source, damage);
+      }
    }
 
    private boolean checkTotemDeathProtection(final DamageSource killingDamage) {

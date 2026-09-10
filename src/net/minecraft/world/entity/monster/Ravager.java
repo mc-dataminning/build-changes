@@ -206,7 +206,7 @@ public class Ravager extends Raider {
    }
 
    @Override
-   protected void blockedByItem(final LivingEntity defender, final DamageSource source, final float damage) {
+   protected void blockedByItem(final LivingEntity defender, final DamageSource source, final float damage, final boolean fullyBlocked) {
       if (this.roarTick == 0) {
          if (this.random.nextDouble() < 0.5) {
             this.stunnedTick = 40;

@@ -58,7 +58,7 @@ public record BlockPredicate(
          return false;
       }
 
-      if (this.nbt.isPresent() || !this.components.isEmpty()) {
+      if (this.willMatchBlockEntity()) {
          BlockEntity blockEntity = level.getBlockEntity(pos);
          if (!this.matchesBlockEntity(level, blockEntity)) {
             return false;
@@ -66,6 +66,10 @@ public record BlockPredicate(
       }
 
       return true;
+   }
+
+   public boolean willMatchBlockEntity() {
+      return this.nbt.isPresent() || !this.components.isEmpty();
    }
 
    public boolean matches(final BlockInWorld blockInWorld) {

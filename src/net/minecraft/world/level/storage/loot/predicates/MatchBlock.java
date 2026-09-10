@@ -22,7 +22,9 @@ public record MatchBlock(BlockPredicate predicate) implements LootItemCondition 
 
    @Override
    public Set<ContextKey<?>> getReferencedContextParams() {
-      return Set.of(LootContextParams.BLOCK_STATE, LootContextParams.BLOCK_ENTITY);
+      return this.predicate.willMatchBlockEntity()
+         ? Set.of(LootContextParams.BLOCK_STATE, LootContextParams.BLOCK_ENTITY)
+         : Set.of(LootContextParams.BLOCK_STATE);
    }
 
    public boolean test(final LootContext context) {

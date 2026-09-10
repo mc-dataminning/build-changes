@@ -55,7 +55,6 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.ARGB;
-import net.minecraft.util.Continuation;
 import net.minecraft.util.Mth;
 import net.minecraft.util.Util;
 import net.minecraft.util.VisibleForDebug;
@@ -68,7 +67,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -79,7 +77,6 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.apache.commons.lang3.mutable.MutableObject;
 import org.joml.Vector4fc;
 import org.jspecify.annotations.Nullable;
 
@@ -479,18 +476,22 @@ public class LevelExtractor implements ResourceManagerReloadListener {
          return null;
       }
 
-      Level level = player.level();
       AABB nearPlaneBB = frustum.getNearPlaneBounds().move(player.getEyePosition());
-      MutableObject<BlockState> outState = new MutableObject();
-      level.findBlocksIn(nearPlaneBB).filterState(state -> state.getRenderShape() != RenderShape.INVISIBLE).forEachUntil((pos, state) -> {
-         if (state.isViewBlocking(level, pos, nearPlaneBB)) {
-            outState.setValue(state);
-            return Continuation.ABORT;
-         } else {
-            return Continuation.CONTINUE;
+      BlockPos.MutableBlockPos testPos = new BlockPos.MutableBlockPos();
+
+      for (int i = 0; i < 8; i++) {
+         testPos.set(
+            player.getX() + ((i >> 0) % 2 - 0.5F) * player.getBbWidth() * 0.8F,
+            player.getEyeY() + ((i >> 1) % 2 - 0.5F) * 0.1F * player.getScale(),
+            player.getZ() + ((i >> 2) % 2 - 0.5F) * player.getBbWidth() * 0.8F
+         );
+         BlockState blockState = player.level().getBlockState(testPos);
+         if (blockState.getRenderShape() != RenderShape.INVISIBLE && blockState.isViewBlocking(player.level(), testPos, nearPlaneBB)) {
+            return blockState;
          }
-      });
-      return (BlockState)outState.get();
+      }
+
+      return null;
    }
 
    private void applyFrustum(final Frustum frustum) {
