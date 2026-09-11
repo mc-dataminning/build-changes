@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import java.net.URI;
 import java.nio.file.Path;
 import net.minecraft.util.TimeUtil;
+import net.minecraft.util.Util;
 import org.lwjgl.sdl.SDLError;
 import org.lwjgl.sdl.SDLMisc;
 import org.lwjgl.sdl.SDLTimer;
@@ -25,9 +26,11 @@ public class Blaze3D {
    }
 
    public static void openUri(final URI uri) {
-      if (!SDLMisc.SDL_OpenURL(uri.toString())) {
-         LOGGER.warn("Failed to open uri {}: {}", uri, SDLError.SDL_GetError());
-      }
+      Util.nonCriticalIoPool().execute(() -> {
+         if (!SDLMisc.SDL_OpenURL(uri.toString())) {
+            LOGGER.warn("Failed to open uri {}: {}", uri, SDLError.SDL_GetError());
+         }
+      });
    }
 
    public static void openPath(final Path path) {
