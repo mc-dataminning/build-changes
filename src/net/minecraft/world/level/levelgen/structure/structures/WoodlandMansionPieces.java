@@ -238,61 +238,286 @@ public class WoodlandMansionPieces {
       }
 
       private void setupThirdFloor() {
-         List<WoodlandMansionPieces.MansionGrid.GridPos> potentialRooms = new ArrayList<>();
-         WoodlandMansionPieces.SimpleGrid floor = this.floorRooms[1];
-
-         for (int y = 0; y < this.thirdFloorGrid.height; y++) {
-            for (int x = 0; x < this.thirdFloorGrid.width; x++) {
-               int roomData = floor.get(x, y);
-               int roomType = roomData & 983040;
-               if (roomType == 131072 && (roomData & 2097152) == 2097152) {
-                  potentialRooms.add(new WoodlandMansionPieces.MansionGrid.GridPos(x, y));
-               }
-            }
-         }
-
-         if (potentialRooms.isEmpty()) {
-            this.thirdFloorGrid.set(0, 0, this.thirdFloorGrid.width, this.thirdFloorGrid.height, 5);
-         } else {
-            WoodlandMansionPieces.MansionGrid.GridPos roomPos = potentialRooms.get(this.random.nextInt(potentialRooms.size()));
-            int roomData = floor.get(roomPos.x(), roomPos.y());
-            floor.set(roomPos.x(), roomPos.y(), roomData | 4194304);
-            Direction roomDir = this.get1x2RoomDirection(this.baseGrid, roomPos.x(), roomPos.y(), 1, roomData & 65535);
-            int roomEndX = roomPos.x() + roomDir.getStepX();
-            int roomEndY = roomPos.y() + roomDir.getStepZ();
-
-            for (int y = 0; y < this.thirdFloorGrid.height; y++) {
-               for (int x = 0; x < this.thirdFloorGrid.width; x++) {
-                  if (!isHouse(this.baseGrid, x, y)) {
-                     this.thirdFloorGrid.set(x, y, 5);
-                  } else if (x == roomPos.x() && y == roomPos.y()) {
-                     this.thirdFloorGrid.set(x, y, 3);
-                  } else if (x == roomEndX && y == roomEndY) {
-                     this.thirdFloorGrid.set(x, y, 3);
-                     this.floorRooms[2].set(x, y, 8388608);
-                  }
-               }
-            }
-
-            List<Direction> potentialCorridors = new ArrayList<>();
-
-            for (Direction direction : Direction.Plane.HORIZONTAL) {
-               if (this.thirdFloorGrid.get(roomEndX + direction.getStepX(), roomEndY + direction.getStepZ()) == 0) {
-                  potentialCorridors.add(direction);
-               }
-            }
-
-            if (potentialCorridors.isEmpty()) {
-               this.thirdFloorGrid.set(0, 0, this.thirdFloorGrid.width, this.thirdFloorGrid.height, 5);
-               floor.set(roomPos.x(), roomPos.y(), roomData);
-            } else {
-               Direction corridorDir = potentialCorridors.get(this.random.nextInt(potentialCorridors.size()));
-               this.recursiveCorridor(this.thirdFloorGrid, roomEndX + corridorDir.getStepX(), roomEndY + corridorDir.getStepZ(), corridorDir, 4);
-
-               while (this.cleanEdges(this.thirdFloorGrid)) {
-               }
-            }
-         }
+         // $VF: Couldn't be decompiled
+         // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+         // java.lang.OutOfMemoryError: Java heap space
+         //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.iterateChildExprent(StackVarsProcessor.java:760)
+         //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.iterateChildExprent(StackVarsProcessor.java:763)
+         //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.iterateExprent(StackVarsProcessor.java:321)
+         //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.iterateStatements(StackVarsProcessor.java:192)
+         //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.simplifyStackVars(StackVarsProcessor.java:74)
+         //   at org.jetbrains.java.decompiler.modules.decompiler.StackVarsProcessor.simplifyStackVars(StackVarsProcessor.java:43)
+         //   at org.jetbrains.java.decompiler.main.rels.MethodProcessor.codeToJava(MethodProcessor.java:238)
+         //
+         // Bytecode:
+         // 000: new java/util/ArrayList
+         // 003: dup
+         // 004: invokespecial java/util/ArrayList.<init> ()V
+         // 007: astore 1
+         // 008: aload 0
+         // 009: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.floorRooms [Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;
+         // 00c: bipush 1
+         // 00d: aaload
+         // 00e: astore 2
+         // 00f: bipush 0
+         // 010: istore 3
+         // 011: iload 3
+         // 012: aload 0
+         // 013: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.thirdFloorGrid Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;
+         // 016: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid.height I
+         // 019: if_icmpge 069
+         // 01c: bipush 0
+         // 01d: istore 4
+         // 01f: iload 4
+         // 021: aload 0
+         // 022: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.thirdFloorGrid Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;
+         // 025: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid.width I
+         // 028: if_icmpge 063
+         // 02b: aload 2
+         // 02c: iload 4
+         // 02e: iload 3
+         // 02f: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid.get (II)I
+         // 032: istore 5
+         // 034: iload 5
+         // 036: ldc 983040
+         // 038: iand
+         // 039: istore 6
+         // 03b: iload 6
+         // 03d: ldc 131072
+         // 03f: if_icmpne 05d
+         // 042: iload 5
+         // 044: ldc 2097152
+         // 046: iand
+         // 047: ldc 2097152
+         // 049: if_icmpne 05d
+         // 04c: aload 1
+         // 04d: new net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid$GridPos
+         // 050: dup
+         // 051: iload 4
+         // 053: iload 3
+         // 054: invokespecial net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid$GridPos.<init> (II)V
+         // 057: invokeinterface java/util/List.add (Ljava/lang/Object;)Z 2
+         // 05c: pop
+         // 05d: iinc 4 1
+         // 060: goto 01f
+         // 063: iinc 3 1
+         // 066: goto 011
+         // 069: aload 1
+         // 06a: invokeinterface java/util/List.isEmpty ()Z 1
+         // 06f: ifeq 08b
+         // 072: aload 0
+         // 073: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.thirdFloorGrid Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;
+         // 076: bipush 0
+         // 077: bipush 0
+         // 078: aload 0
+         // 079: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.thirdFloorGrid Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;
+         // 07c: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid.width I
+         // 07f: aload 0
+         // 080: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.thirdFloorGrid Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;
+         // 083: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid.height I
+         // 086: bipush 5
+         // 087: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid.set (IIIII)V
+         // 08a: return
+         // 08b: aload 1
+         // 08c: aload 0
+         // 08d: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.random Lnet/minecraft/util/RandomSource;
+         // 090: aload 1
+         // 091: invokeinterface java/util/List.size ()I 1
+         // 096: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+         // 09b: invokeinterface java/util/List.get (I)Ljava/lang/Object; 2
+         // 0a0: checkcast net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid$GridPos
+         // 0a3: astore 3
+         // 0a4: aload 2
+         // 0a5: aload 3
+         // 0a6: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid$GridPos.x ()I
+         // 0a9: aload 3
+         // 0aa: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid$GridPos.y ()I
+         // 0ad: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid.get (II)I
+         // 0b0: istore 4
+         // 0b2: aload 2
+         // 0b3: aload 3
+         // 0b4: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid$GridPos.x ()I
+         // 0b7: aload 3
+         // 0b8: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid$GridPos.y ()I
+         // 0bb: iload 4
+         // 0bd: ldc 4194304
+         // 0bf: ior
+         // 0c0: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid.set (III)V
+         // 0c3: aload 0
+         // 0c4: aload 0
+         // 0c5: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.baseGrid Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;
+         // 0c8: aload 3
+         // 0c9: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid$GridPos.x ()I
+         // 0cc: aload 3
+         // 0cd: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid$GridPos.y ()I
+         // 0d0: bipush 1
+         // 0d1: iload 4
+         // 0d3: ldc 65535
+         // 0d5: iand
+         // 0d6: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.get1x2RoomDirection (Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;IIII)Lnet/minecraft/core/Direction;
+         // 0d9: astore 5
+         // 0db: aload 3
+         // 0dc: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid$GridPos.x ()I
+         // 0df: aload 5
+         // 0e1: invokevirtual net/minecraft/core/Direction.getStepX ()I
+         // 0e4: iadd
+         // 0e5: istore 6
+         // 0e7: aload 3
+         // 0e8: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid$GridPos.y ()I
+         // 0eb: aload 5
+         // 0ed: invokevirtual net/minecraft/core/Direction.getStepZ ()I
+         // 0f0: iadd
+         // 0f1: istore 7
+         // 0f3: bipush 0
+         // 0f4: istore 8
+         // 0f6: iload 8
+         // 0f8: aload 0
+         // 0f9: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.thirdFloorGrid Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;
+         // 0fc: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid.height I
+         // 0ff: if_icmpge 184
+         // 102: bipush 0
+         // 103: istore 9
+         // 105: iload 9
+         // 107: aload 0
+         // 108: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.thirdFloorGrid Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;
+         // 10b: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid.width I
+         // 10e: if_icmpge 17e
+         // 111: aload 0
+         // 112: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.baseGrid Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;
+         // 115: iload 9
+         // 117: iload 8
+         // 119: invokestatic net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.isHouse (Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;II)Z
+         // 11c: ifne 12e
+         // 11f: aload 0
+         // 120: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.thirdFloorGrid Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;
+         // 123: iload 9
+         // 125: iload 8
+         // 127: bipush 5
+         // 128: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid.set (III)V
+         // 12b: goto 178
+         // 12e: iload 9
+         // 130: aload 3
+         // 131: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid$GridPos.x ()I
+         // 134: if_icmpne 14f
+         // 137: iload 8
+         // 139: aload 3
+         // 13a: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid$GridPos.y ()I
+         // 13d: if_icmpne 14f
+         // 140: aload 0
+         // 141: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.thirdFloorGrid Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;
+         // 144: iload 9
+         // 146: iload 8
+         // 148: bipush 3
+         // 149: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid.set (III)V
+         // 14c: goto 178
+         // 14f: iload 9
+         // 151: iload 6
+         // 153: if_icmpne 178
+         // 156: iload 8
+         // 158: iload 7
+         // 15a: if_icmpne 178
+         // 15d: aload 0
+         // 15e: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.thirdFloorGrid Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;
+         // 161: iload 9
+         // 163: iload 8
+         // 165: bipush 3
+         // 166: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid.set (III)V
+         // 169: aload 0
+         // 16a: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.floorRooms [Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;
+         // 16d: bipush 2
+         // 16e: aaload
+         // 16f: iload 9
+         // 171: iload 8
+         // 173: ldc 8388608
+         // 175: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid.set (III)V
+         // 178: iinc 9 1
+         // 17b: goto 105
+         // 17e: iinc 8 1
+         // 181: goto 0f6
+         // 184: new java/util/ArrayList
+         // 187: dup
+         // 188: invokespecial java/util/ArrayList.<init> ()V
+         // 18b: astore 8
+         // 18d: getstatic net/minecraft/core/Direction$Plane.HORIZONTAL Lnet/minecraft/core/Direction$Plane;
+         // 190: invokevirtual net/minecraft/core/Direction$Plane.iterator ()Ljava/util/Iterator;
+         // 193: astore 9
+         // 195: aload 9
+         // 197: invokeinterface java/util/Iterator.hasNext ()Z 1
+         // 19c: ifeq 1d2
+         // 19f: aload 9
+         // 1a1: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
+         // 1a6: checkcast net/minecraft/core/Direction
+         // 1a9: astore 10
+         // 1ab: aload 0
+         // 1ac: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.thirdFloorGrid Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;
+         // 1af: iload 6
+         // 1b1: aload 10
+         // 1b3: invokevirtual net/minecraft/core/Direction.getStepX ()I
+         // 1b6: iadd
+         // 1b7: iload 7
+         // 1b9: aload 10
+         // 1bb: invokevirtual net/minecraft/core/Direction.getStepZ ()I
+         // 1be: iadd
+         // 1bf: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid.get (II)I
+         // 1c2: ifne 1cf
+         // 1c5: aload 8
+         // 1c7: aload 10
+         // 1c9: invokeinterface java/util/List.add (Ljava/lang/Object;)Z 2
+         // 1ce: pop
+         // 1cf: goto 195
+         // 1d2: aload 8
+         // 1d4: invokeinterface java/util/List.isEmpty ()Z 1
+         // 1d9: ifeq 203
+         // 1dc: aload 0
+         // 1dd: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.thirdFloorGrid Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;
+         // 1e0: bipush 0
+         // 1e1: bipush 0
+         // 1e2: aload 0
+         // 1e3: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.thirdFloorGrid Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;
+         // 1e6: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid.width I
+         // 1e9: aload 0
+         // 1ea: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.thirdFloorGrid Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;
+         // 1ed: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid.height I
+         // 1f0: bipush 5
+         // 1f1: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid.set (IIIII)V
+         // 1f4: aload 2
+         // 1f5: aload 3
+         // 1f6: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid$GridPos.x ()I
+         // 1f9: aload 3
+         // 1fa: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid$GridPos.y ()I
+         // 1fd: iload 4
+         // 1ff: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid.set (III)V
+         // 202: return
+         // 203: aload 8
+         // 205: aload 0
+         // 206: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.random Lnet/minecraft/util/RandomSource;
+         // 209: aload 8
+         // 20b: invokeinterface java/util/List.size ()I 1
+         // 210: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
+         // 215: invokeinterface java/util/List.get (I)Ljava/lang/Object; 2
+         // 21a: checkcast net/minecraft/core/Direction
+         // 21d: astore 9
+         // 21f: aload 0
+         // 220: aload 0
+         // 221: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.thirdFloorGrid Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;
+         // 224: iload 6
+         // 226: aload 9
+         // 228: invokevirtual net/minecraft/core/Direction.getStepX ()I
+         // 22b: iadd
+         // 22c: iload 7
+         // 22e: aload 9
+         // 230: invokevirtual net/minecraft/core/Direction.getStepZ ()I
+         // 233: iadd
+         // 234: aload 9
+         // 236: bipush 4
+         // 237: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.recursiveCorridor (Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;IILnet/minecraft/core/Direction;I)V
+         // 23a: aload 0
+         // 23b: aload 0
+         // 23c: getfield net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.thirdFloorGrid Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;
+         // 23f: invokevirtual net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$MansionGrid.cleanEdges (Lnet/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$SimpleGrid;)Z
+         // 242: ifeq 248
+         // 245: goto 23a
+         // 248: return
       }
 
       private void identifyRooms(final WoodlandMansionPieces.SimpleGrid fromGrid, final WoodlandMansionPieces.SimpleGrid roomGrid) {
