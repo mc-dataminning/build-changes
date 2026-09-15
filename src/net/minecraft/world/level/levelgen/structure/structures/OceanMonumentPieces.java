@@ -2,12 +2,15 @@ package net.minecraft.world.level.levelgen.structure.structures;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 import java.util.List;
 import java.util.Set;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.Util;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.monster.ElderGuardian;
@@ -223,473 +226,118 @@ public class OceanMonumentPieces {
       }
 
       private List<OceanMonumentPieces.RoomDefinition> generateRoomGraph(final RandomSource random) {
-         // $VF: Couldn't be decompiled
-         // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-         //
-         // Bytecode:
-         // 000: bipush 75
-         // 002: anewarray 42
-         // 005: astore 2
-         // 006: bipush 0
-         // 007: istore 3
-         // 008: iload 3
-         // 009: bipush 5
-         // 00a: if_icmpge 03b
-         // 00d: bipush 0
-         // 00e: istore 4
-         // 010: iload 4
-         // 012: bipush 4
-         // 013: if_icmpge 035
-         // 016: bipush 0
-         // 017: istore 5
-         // 019: iload 3
-         // 01a: bipush 0
-         // 01b: iload 4
-         // 01d: invokestatic net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$MonumentBuilding.getRoomIndex (III)I
-         // 020: istore 6
-         // 022: aload 2
-         // 023: iload 6
-         // 025: new net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition
-         // 028: dup
-         // 029: iload 6
-         // 02b: invokespecial net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.<init> (I)V
-         // 02e: aastore
-         // 02f: iinc 4 1
-         // 032: goto 010
-         // 035: iinc 3 1
-         // 038: goto 008
-         // 03b: bipush 0
-         // 03c: istore 3
-         // 03d: iload 3
-         // 03e: bipush 5
-         // 03f: if_icmpge 070
-         // 042: bipush 0
-         // 043: istore 4
-         // 045: iload 4
-         // 047: bipush 4
-         // 048: if_icmpge 06a
-         // 04b: bipush 1
-         // 04c: istore 5
-         // 04e: iload 3
-         // 04f: bipush 1
-         // 050: iload 4
-         // 052: invokestatic net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$MonumentBuilding.getRoomIndex (III)I
-         // 055: istore 6
-         // 057: aload 2
-         // 058: iload 6
-         // 05a: new net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition
-         // 05d: dup
-         // 05e: iload 6
-         // 060: invokespecial net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.<init> (I)V
-         // 063: aastore
-         // 064: iinc 4 1
-         // 067: goto 045
-         // 06a: iinc 3 1
-         // 06d: goto 03d
-         // 070: bipush 1
-         // 071: istore 3
-         // 072: iload 3
-         // 073: bipush 4
-         // 074: if_icmpge 0a5
-         // 077: bipush 0
-         // 078: istore 4
-         // 07a: iload 4
-         // 07c: bipush 2
-         // 07d: if_icmpge 09f
-         // 080: bipush 2
-         // 081: istore 5
-         // 083: iload 3
-         // 084: bipush 2
-         // 085: iload 4
-         // 087: invokestatic net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$MonumentBuilding.getRoomIndex (III)I
-         // 08a: istore 6
-         // 08c: aload 2
-         // 08d: iload 6
-         // 08f: new net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition
-         // 092: dup
-         // 093: iload 6
-         // 095: invokespecial net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.<init> (I)V
-         // 098: aastore
-         // 099: iinc 4 1
-         // 09c: goto 07a
-         // 09f: iinc 3 1
-         // 0a2: goto 072
-         // 0a5: aload 0
-         // 0a6: aload 2
-         // 0a7: getstatic net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$MonumentBuilding.GRIDROOM_SOURCE_INDEX I
-         // 0aa: aaload
-         // 0ab: putfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$MonumentBuilding.sourceRoom Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 0ae: bipush 0
-         // 0af: istore 3
-         // 0b0: iload 3
-         // 0b1: bipush 5
-         // 0b2: if_icmpge 188
-         // 0b5: bipush 0
-         // 0b6: istore 4
-         // 0b8: iload 4
-         // 0ba: bipush 5
-         // 0bb: if_icmpge 182
-         // 0be: bipush 0
-         // 0bf: istore 5
-         // 0c1: iload 5
-         // 0c3: bipush 3
-         // 0c4: if_icmpge 17c
-         // 0c7: iload 3
-         // 0c8: iload 5
-         // 0ca: iload 4
-         // 0cc: invokestatic net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$MonumentBuilding.getRoomIndex (III)I
-         // 0cf: istore 6
-         // 0d1: aload 2
-         // 0d2: iload 6
-         // 0d4: aaload
-         // 0d5: ifnonnull 0db
-         // 0d8: goto 176
-         // 0db: invokestatic net/minecraft/core/Direction.values ()[Lnet/minecraft/core/Direction;
-         // 0de: astore 7
-         // 0e0: aload 7
-         // 0e2: arraylength
-         // 0e3: istore 8
-         // 0e5: bipush 0
-         // 0e6: istore 9
-         // 0e8: iload 9
-         // 0ea: iload 8
-         // 0ec: if_icmpge 176
-         // 0ef: aload 7
-         // 0f1: iload 9
-         // 0f3: aaload
-         // 0f4: astore 10
-         // 0f6: iload 3
-         // 0f7: aload 10
-         // 0f9: invokevirtual net/minecraft/core/Direction.getStepX ()I
-         // 0fc: iadd
-         // 0fd: istore 11
-         // 0ff: iload 5
-         // 101: aload 10
-         // 103: invokevirtual net/minecraft/core/Direction.getStepY ()I
-         // 106: iadd
-         // 107: istore 12
-         // 109: iload 4
-         // 10b: aload 10
-         // 10d: invokevirtual net/minecraft/core/Direction.getStepZ ()I
-         // 110: iadd
-         // 111: istore 13
-         // 113: iload 11
-         // 115: iflt 170
-         // 118: iload 11
-         // 11a: bipush 5
-         // 11b: if_icmpge 170
-         // 11e: iload 13
-         // 120: iflt 170
-         // 123: iload 13
-         // 125: bipush 5
-         // 126: if_icmpge 170
-         // 129: iload 12
-         // 12b: iflt 170
-         // 12e: iload 12
-         // 130: bipush 3
-         // 131: if_icmpge 170
-         // 134: iload 11
-         // 136: iload 12
-         // 138: iload 13
-         // 13a: invokestatic net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$MonumentBuilding.getRoomIndex (III)I
-         // 13d: istore 14
-         // 13f: aload 2
-         // 140: iload 14
-         // 142: aaload
-         // 143: ifnonnull 149
-         // 146: goto 170
-         // 149: iload 13
-         // 14b: iload 4
-         // 14d: if_icmpne 160
-         // 150: aload 2
-         // 151: iload 6
-         // 153: aaload
-         // 154: aload 10
-         // 156: aload 2
-         // 157: iload 14
-         // 159: aaload
-         // 15a: invokevirtual net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.setConnection (Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;)V
-         // 15d: goto 170
-         // 160: aload 2
-         // 161: iload 6
-         // 163: aaload
-         // 164: aload 10
-         // 166: invokevirtual net/minecraft/core/Direction.getOpposite ()Lnet/minecraft/core/Direction;
-         // 169: aload 2
-         // 16a: iload 14
-         // 16c: aaload
-         // 16d: invokevirtual net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.setConnection (Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;)V
-         // 170: iinc 9 1
-         // 173: goto 0e8
-         // 176: iinc 5 1
-         // 179: goto 0c1
-         // 17c: iinc 4 1
-         // 17f: goto 0b8
-         // 182: iinc 3 1
-         // 185: goto 0b0
-         // 188: new net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition
-         // 18b: dup
-         // 18c: sipush 1003
-         // 18f: invokespecial net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.<init> (I)V
-         // 192: astore 3
-         // 193: new net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition
-         // 196: dup
-         // 197: sipush 1001
-         // 19a: invokespecial net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.<init> (I)V
-         // 19d: astore 4
-         // 19f: new net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition
-         // 1a2: dup
-         // 1a3: sipush 1002
-         // 1a6: invokespecial net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.<init> (I)V
-         // 1a9: astore 5
-         // 1ab: aload 2
-         // 1ac: getstatic net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$MonumentBuilding.GRIDROOM_TOP_CONNECT_INDEX I
-         // 1af: aaload
-         // 1b0: getstatic net/minecraft/core/Direction.UP Lnet/minecraft/core/Direction;
-         // 1b3: aload 3
-         // 1b4: invokevirtual net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.setConnection (Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;)V
-         // 1b7: aload 2
-         // 1b8: getstatic net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$MonumentBuilding.GRIDROOM_LEFTWING_CONNECT_INDEX I
-         // 1bb: aaload
-         // 1bc: getstatic net/minecraft/core/Direction.SOUTH Lnet/minecraft/core/Direction;
-         // 1bf: aload 4
-         // 1c1: invokevirtual net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.setConnection (Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;)V
-         // 1c4: aload 2
-         // 1c5: getstatic net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$MonumentBuilding.GRIDROOM_RIGHTWING_CONNECT_INDEX I
-         // 1c8: aaload
-         // 1c9: getstatic net/minecraft/core/Direction.SOUTH Lnet/minecraft/core/Direction;
-         // 1cc: aload 5
-         // 1ce: invokevirtual net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.setConnection (Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;)V
-         // 1d1: aload 3
-         // 1d2: bipush 1
-         // 1d3: putfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.claimed Z
-         // 1d6: aload 4
-         // 1d8: bipush 1
-         // 1d9: putfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.claimed Z
-         // 1dc: aload 5
-         // 1de: bipush 1
-         // 1df: putfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.claimed Z
-         // 1e2: aload 0
-         // 1e3: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$MonumentBuilding.sourceRoom Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 1e6: bipush 1
-         // 1e7: putfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.isSource Z
-         // 1ea: aload 0
-         // 1eb: aload 2
-         // 1ec: aload 1
-         // 1ed: bipush 4
-         // 1ee: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
-         // 1f3: bipush 0
-         // 1f4: bipush 2
-         // 1f5: invokestatic net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$MonumentBuilding.getRoomIndex (III)I
-         // 1f8: aaload
-         // 1f9: putfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$MonumentBuilding.coreRoom Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 1fc: aload 0
-         // 1fd: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$MonumentBuilding.coreRoom Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 200: bipush 1
-         // 201: putfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.claimed Z
-         // 204: aload 0
-         // 205: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$MonumentBuilding.coreRoom Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 208: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.connections [Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 20b: getstatic net/minecraft/core/Direction.EAST Lnet/minecraft/core/Direction;
-         // 20e: invokevirtual net/minecraft/core/Direction.get3DDataValue ()I
-         // 211: aaload
-         // 212: bipush 1
-         // 213: putfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.claimed Z
-         // 216: aload 0
-         // 217: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$MonumentBuilding.coreRoom Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 21a: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.connections [Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 21d: getstatic net/minecraft/core/Direction.NORTH Lnet/minecraft/core/Direction;
-         // 220: invokevirtual net/minecraft/core/Direction.get3DDataValue ()I
-         // 223: aaload
-         // 224: bipush 1
-         // 225: putfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.claimed Z
-         // 228: aload 0
-         // 229: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$MonumentBuilding.coreRoom Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 22c: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.connections [Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 22f: getstatic net/minecraft/core/Direction.EAST Lnet/minecraft/core/Direction;
-         // 232: invokevirtual net/minecraft/core/Direction.get3DDataValue ()I
-         // 235: aaload
-         // 236: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.connections [Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 239: getstatic net/minecraft/core/Direction.NORTH Lnet/minecraft/core/Direction;
-         // 23c: invokevirtual net/minecraft/core/Direction.get3DDataValue ()I
-         // 23f: aaload
-         // 240: bipush 1
-         // 241: putfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.claimed Z
-         // 244: aload 0
-         // 245: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$MonumentBuilding.coreRoom Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 248: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.connections [Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 24b: getstatic net/minecraft/core/Direction.UP Lnet/minecraft/core/Direction;
-         // 24e: invokevirtual net/minecraft/core/Direction.get3DDataValue ()I
-         // 251: aaload
-         // 252: bipush 1
-         // 253: putfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.claimed Z
-         // 256: aload 0
-         // 257: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$MonumentBuilding.coreRoom Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 25a: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.connections [Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 25d: getstatic net/minecraft/core/Direction.EAST Lnet/minecraft/core/Direction;
-         // 260: invokevirtual net/minecraft/core/Direction.get3DDataValue ()I
-         // 263: aaload
-         // 264: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.connections [Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 267: getstatic net/minecraft/core/Direction.UP Lnet/minecraft/core/Direction;
-         // 26a: invokevirtual net/minecraft/core/Direction.get3DDataValue ()I
-         // 26d: aaload
-         // 26e: bipush 1
-         // 26f: putfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.claimed Z
-         // 272: aload 0
-         // 273: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$MonumentBuilding.coreRoom Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 276: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.connections [Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 279: getstatic net/minecraft/core/Direction.NORTH Lnet/minecraft/core/Direction;
-         // 27c: invokevirtual net/minecraft/core/Direction.get3DDataValue ()I
-         // 27f: aaload
-         // 280: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.connections [Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 283: getstatic net/minecraft/core/Direction.UP Lnet/minecraft/core/Direction;
-         // 286: invokevirtual net/minecraft/core/Direction.get3DDataValue ()I
-         // 289: aaload
-         // 28a: bipush 1
-         // 28b: putfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.claimed Z
-         // 28e: aload 0
-         // 28f: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$MonumentBuilding.coreRoom Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 292: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.connections [Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 295: getstatic net/minecraft/core/Direction.EAST Lnet/minecraft/core/Direction;
-         // 298: invokevirtual net/minecraft/core/Direction.get3DDataValue ()I
-         // 29b: aaload
-         // 29c: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.connections [Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 29f: getstatic net/minecraft/core/Direction.NORTH Lnet/minecraft/core/Direction;
-         // 2a2: invokevirtual net/minecraft/core/Direction.get3DDataValue ()I
-         // 2a5: aaload
-         // 2a6: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.connections [Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 2a9: getstatic net/minecraft/core/Direction.UP Lnet/minecraft/core/Direction;
-         // 2ac: invokevirtual net/minecraft/core/Direction.get3DDataValue ()I
-         // 2af: aaload
-         // 2b0: bipush 1
-         // 2b1: putfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.claimed Z
-         // 2b4: new it/unimi/dsi/fastutil/objects/ObjectArrayList
-         // 2b7: dup
-         // 2b8: invokespecial it/unimi/dsi/fastutil/objects/ObjectArrayList.<init> ()V
-         // 2bb: astore 6
-         // 2bd: aload 2
-         // 2be: astore 7
-         // 2c0: aload 7
-         // 2c2: arraylength
-         // 2c3: istore 8
-         // 2c5: bipush 0
-         // 2c6: istore 9
-         // 2c8: iload 9
-         // 2ca: iload 8
-         // 2cc: if_icmpge 2ee
-         // 2cf: aload 7
-         // 2d1: iload 9
-         // 2d3: aaload
-         // 2d4: astore 10
-         // 2d6: aload 10
-         // 2d8: ifnull 2e8
-         // 2db: aload 10
-         // 2dd: invokevirtual net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.updateOpenings ()V
-         // 2e0: aload 6
-         // 2e2: aload 10
-         // 2e4: invokevirtual it/unimi/dsi/fastutil/objects/ObjectArrayList.add (Ljava/lang/Object;)Z
-         // 2e7: pop
-         // 2e8: iinc 9 1
-         // 2eb: goto 2c8
-         // 2ee: aload 3
-         // 2ef: invokevirtual net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.updateOpenings ()V
-         // 2f2: aload 6
-         // 2f4: aload 1
-         // 2f5: invokestatic net/minecraft/util/Util.shuffle (Ljava/util/List;Lnet/minecraft/util/RandomSource;)V
-         // 2f8: bipush 1
-         // 2f9: istore 7
-         // 2fb: aload 6
-         // 2fd: invokevirtual it/unimi/dsi/fastutil/objects/ObjectArrayList.iterator ()Lit/unimi/dsi/fastutil/objects/ObjectListIterator;
-         // 300: astore 8
-         // 302: aload 8
-         // 304: invokeinterface java/util/Iterator.hasNext ()Z 1
-         // 309: ifeq 3ab
-         // 30c: aload 8
-         // 30e: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
-         // 313: checkcast net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition
-         // 316: astore 9
-         // 318: bipush 0
-         // 319: istore 10
-         // 31b: bipush 0
-         // 31c: istore 11
-         // 31e: iload 10
-         // 320: bipush 2
-         // 321: if_icmpge 3a8
-         // 324: iload 11
-         // 326: bipush 5
-         // 327: if_icmpge 3a8
-         // 32a: iinc 11 1
-         // 32d: aload 1
-         // 32e: bipush 6
-         // 330: invokeinterface net/minecraft/util/RandomSource.nextInt (I)I 2
-         // 335: istore 12
-         // 337: aload 9
-         // 339: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.hasOpening [Z
-         // 33c: iload 12
-         // 33e: baload
-         // 33f: ifeq 3a5
-         // 342: iload 12
-         // 344: invokestatic net/minecraft/core/Direction.from3DDataValue (I)Lnet/minecraft/core/Direction;
-         // 347: invokevirtual net/minecraft/core/Direction.getOpposite ()Lnet/minecraft/core/Direction;
-         // 34a: invokevirtual net/minecraft/core/Direction.get3DDataValue ()I
-         // 34d: istore 13
-         // 34f: aload 9
-         // 351: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.hasOpening [Z
-         // 354: iload 12
-         // 356: bipush 0
-         // 357: bastore
-         // 358: aload 9
-         // 35a: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.connections [Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 35d: iload 12
-         // 35f: aaload
-         // 360: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.hasOpening [Z
-         // 363: iload 13
-         // 365: bipush 0
-         // 366: bastore
-         // 367: aload 9
-         // 369: iload 7
-         // 36b: iinc 7 1
-         // 36e: invokevirtual net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.findSource (I)Z
-         // 371: ifeq 38d
-         // 374: aload 9
-         // 376: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.connections [Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 379: iload 12
-         // 37b: aaload
-         // 37c: iload 7
-         // 37e: iinc 7 1
-         // 381: invokevirtual net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.findSource (I)Z
-         // 384: ifeq 38d
-         // 387: iinc 10 1
-         // 38a: goto 3a5
-         // 38d: aload 9
-         // 38f: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.hasOpening [Z
-         // 392: iload 12
-         // 394: bipush 1
-         // 395: bastore
-         // 396: aload 9
-         // 398: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.connections [Lnet/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition;
-         // 39b: iload 12
-         // 39d: aaload
-         // 39e: getfield net/minecraft/world/level/levelgen/structure/structures/OceanMonumentPieces$RoomDefinition.hasOpening [Z
-         // 3a1: iload 13
-         // 3a3: bipush 1
-         // 3a4: bastore
-         // 3a5: goto 31e
-         // 3a8: goto 302
-         // 3ab: aload 6
-         // 3ad: aload 3
-         // 3ae: invokevirtual it/unimi/dsi/fastutil/objects/ObjectArrayList.add (Ljava/lang/Object;)Z
-         // 3b1: pop
-         // 3b2: aload 6
-         // 3b4: aload 4
-         // 3b6: invokevirtual it/unimi/dsi/fastutil/objects/ObjectArrayList.add (Ljava/lang/Object;)Z
-         // 3b9: pop
-         // 3ba: aload 6
-         // 3bc: aload 5
-         // 3be: invokevirtual it/unimi/dsi/fastutil/objects/ObjectArrayList.add (Ljava/lang/Object;)Z
-         // 3c1: pop
-         // 3c2: aload 6
-         // 3c4: areturn
+         OceanMonumentPieces.RoomDefinition[] roomGrid = new OceanMonumentPieces.RoomDefinition[75];
+
+         for (int x = 0; x < 5; x++) {
+            for (int z = 0; z < 4; z++) {
+               int y = 0;
+               int pos = getRoomIndex(x, 0, z);
+               roomGrid[pos] = new OceanMonumentPieces.RoomDefinition(pos);
+            }
+         }
+
+         for (int x = 0; x < 5; x++) {
+            for (int z = 0; z < 4; z++) {
+               int y = 1;
+               int pos = getRoomIndex(x, 1, z);
+               roomGrid[pos] = new OceanMonumentPieces.RoomDefinition(pos);
+            }
+         }
+
+         for (int x = 1; x < 4; x++) {
+            for (int z = 0; z < 2; z++) {
+               int y = 2;
+               int pos = getRoomIndex(x, 2, z);
+               roomGrid[pos] = new OceanMonumentPieces.RoomDefinition(pos);
+            }
+         }
+
+         this.sourceRoom = roomGrid[GRIDROOM_SOURCE_INDEX];
+
+         for (int x = 0; x < 5; x++) {
+            for (int z = 0; z < 5; z++) {
+               for (int y = 0; y < 3; y++) {
+                  int pos = getRoomIndex(x, y, z);
+                  if (roomGrid[pos] != null) {
+                     for (Direction direction : Direction.values()) {
+                        int neighX = x + direction.getStepX();
+                        int neighY = y + direction.getStepY();
+                        int neighZ = z + direction.getStepZ();
+                        if (neighX >= 0 && neighX < 5 && neighZ >= 0 && neighZ < 5 && neighY >= 0 && neighY < 3) {
+                           int neighPos = getRoomIndex(neighX, neighY, neighZ);
+                           if (roomGrid[neighPos] != null) {
+                              if (neighZ == z) {
+                                 roomGrid[pos].setConnection(direction, roomGrid[neighPos]);
+                              } else {
+                                 roomGrid[pos].setConnection(direction.getOpposite(), roomGrid[neighPos]);
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+
+         OceanMonumentPieces.RoomDefinition roofRoom = new OceanMonumentPieces.RoomDefinition(1003);
+         OceanMonumentPieces.RoomDefinition leftWing = new OceanMonumentPieces.RoomDefinition(1001);
+         OceanMonumentPieces.RoomDefinition rightWing = new OceanMonumentPieces.RoomDefinition(1002);
+         roomGrid[GRIDROOM_TOP_CONNECT_INDEX].setConnection(Direction.UP, roofRoom);
+         roomGrid[GRIDROOM_LEFTWING_CONNECT_INDEX].setConnection(Direction.SOUTH, leftWing);
+         roomGrid[GRIDROOM_RIGHTWING_CONNECT_INDEX].setConnection(Direction.SOUTH, rightWing);
+         roofRoom.claimed = true;
+         leftWing.claimed = true;
+         rightWing.claimed = true;
+         this.sourceRoom.isSource = true;
+         this.coreRoom = roomGrid[getRoomIndex(random.nextInt(4), 0, 2)];
+         this.coreRoom.claimed = true;
+         this.coreRoom.connections[Direction.EAST.get3DDataValue()].claimed = true;
+         this.coreRoom.connections[Direction.NORTH.get3DDataValue()].claimed = true;
+         this.coreRoom.connections[Direction.EAST.get3DDataValue()].connections[Direction.NORTH.get3DDataValue()].claimed = true;
+         this.coreRoom.connections[Direction.UP.get3DDataValue()].claimed = true;
+         this.coreRoom.connections[Direction.EAST.get3DDataValue()].connections[Direction.UP.get3DDataValue()].claimed = true;
+         this.coreRoom.connections[Direction.NORTH.get3DDataValue()].connections[Direction.UP.get3DDataValue()].claimed = true;
+         this.coreRoom.connections[Direction.EAST.get3DDataValue()].connections[Direction.NORTH.get3DDataValue()].connections[Direction.UP.get3DDataValue()].claimed = true;
+         ObjectArrayList<OceanMonumentPieces.RoomDefinition> roomDefs = new ObjectArrayList();
+
+         for (OceanMonumentPieces.RoomDefinition definition : roomGrid) {
+            if (definition != null) {
+               definition.updateOpenings();
+               roomDefs.add(definition);
+            }
+         }
+
+         roofRoom.updateOpenings();
+         Util.shuffle(roomDefs, random);
+         int scanIndex = 1;
+         ObjectListIterator var34 = roomDefs.iterator();
+
+         while (var34.hasNext()) {
+            OceanMonumentPieces.RoomDefinition definition = (OceanMonumentPieces.RoomDefinition)var34.next();
+            int closeCount = 0;
+            int attemptCount = 0;
+
+            while (closeCount < 2 && attemptCount < 5) {
+               attemptCount++;
+               int f = random.nextInt(6);
+               if (definition.hasOpening[f]) {
+                  int of = Direction.from3DDataValue(f).getOpposite().get3DDataValue();
+                  definition.hasOpening[f] = false;
+                  definition.connections[f].hasOpening[of] = false;
+                  if (definition.findSource(scanIndex++) && definition.connections[f].findSource(scanIndex++)) {
+                     closeCount++;
+                  } else {
+                     definition.hasOpening[f] = true;
+                     definition.connections[f].hasOpening[of] = true;
+                  }
+               }
+            }
+         }
+
+         roomDefs.add(roofRoom);
+         roomDefs.add(leftWing);
+         roomDefs.add(rightWing);
+         return roomDefs;
       }
 
       @Override

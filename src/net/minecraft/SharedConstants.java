@@ -11,9 +11,9 @@ import org.jspecify.annotations.Nullable;
 @SuppressForbidden(reason = "System.out needed before bootstrap")
 public class SharedConstants {
    @Deprecated
-   public static final boolean SNAPSHOT = true;
+   public static final boolean SNAPSHOT = false;
    @Deprecated
-   public static final int WORLD_VERSION = 5022;
+   public static final int WORLD_VERSION = 5023;
    @Deprecated
    public static final String SERIES = "main";
    @Deprecated
@@ -205,7 +205,7 @@ public class SharedConstants {
    }
 
    public static int getProtocolVersion() {
-      return 1073742162;
+      return 777;
    }
 
    public static boolean debugVoidTerrain(final ChunkPos pos) {
