@@ -3,7 +3,6 @@ package net.minecraft.world.level.levelgen.material.rule;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.SharedConstants;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Blocks;
@@ -46,30 +45,24 @@ public record OreVeinRule(
 
    @Override
    public RuleEvaluator compile(final MaterialRuleContext context) {
-      if (SharedConstants.DEBUG_DISABLE_ORE_VEINS) {
-         return (var0, var1, var2x) -> null;
-      }
-
-      BlockState defaultState = SharedConstants.DEBUG_ORE_VEINS ? Blocks.AIR.defaultBlockState() : null;
       MaterialRules.DensityGetter densitySampler = context.getDensitiesInChunk(this.density, true);
       MaterialRules.DensityGetter richnessSampler = context.getDensitiesInChunk(this.richness, true);
       MaterialRules.DensityGetter fillerGapSampler = context.getDensitiesInChunk(this.fillerGap, false);
       PositionalRandomFactory randomFactory = context.getOrCreateRandomFactory(Identifier.withDefaultNamespace("ore"));
-      BlockState fillerBlock = SharedConstants.DEBUG_ORE_VEINS ? Blocks.OAK_BUTTON.defaultBlockState() : this.fillerBlock;
       return (blockX, blockY, blockZ) -> {
          float density = densitySampler.get();
          if (density <= 0.0F) {
-            return defaultState;
+            return null;
          } else {
             RandomSource random = randomFactory.at(blockX, blockY, blockZ);
             if (random.nextFloat() > density) {
-               return defaultState;
+               return null;
             } else {
                float richness = richnessSampler.get();
                if (random.nextFloat() < richness && fillerGapSampler.get() < 0.0F) {
                   return random.nextFloat() < this.rawOreChance ? this.rawOreBlock : this.oreBlock;
                } else {
-                  return fillerBlock;
+                  return this.fillerBlock;
                }
             }
          }

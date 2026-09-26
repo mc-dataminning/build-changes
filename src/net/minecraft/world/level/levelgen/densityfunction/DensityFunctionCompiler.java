@@ -1,5 +1,6 @@
 package net.minecraft.world.level.levelgen.densityfunction;
 
+import com.mojang.jtracy.TracyClient;
 import com.mojang.serialization.MapCodec;
 import java.util.HashMap;
 import java.util.Map;
@@ -7,6 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Function;
 import net.minecraft.util.Interval;
+import net.minecraft.world.level.levelgen.densityfunction.generator.ConstantFunction;
 import net.minecraft.world.level.levelgen.densityfunction.op.CacheFunction;
 
 public class DensityFunctionCompiler {
@@ -32,11 +34,21 @@ public class DensityFunctionCompiler {
       return this.samplers.computeIfAbsent(function, this.optimizeAndCompile);
    }
 
+   private DensityFunction preprocessFunction(final DensityFunction function) {
+      return TracyClient.isAvailable() ? (new DfRewriteRule() {
+         @Override
+         public DensityFunction rewrite(final DensityFunction function) {
+            return function instanceof ConstantFunction ? function : new TracyProfiledFunction(function.getDebugName(), function.rewriteChildren(this));
+         }
+      }).rewrite(function) : function;
+   }
+
    private DensitySampler optimizeAndCompile(final DensityFunction function) {
+      DensityFunction preprocessedFunction = this.preprocessFunction(function);
       this.compileLock.lock();
 
       try {
-         DensityFunction optimizedFunction = this.optimizerRule.rewrite(function);
+         DensityFunction optimizedFunction = this.optimizerRule.rewrite(preprocessedFunction);
          return optimizedFunction.compileSampler(this.context);
       } finally {
          this.compileLock.unlock();
@@ -74,6 +86,11 @@ public class DensityFunctionCompiler {
       @Override
       public MapCodec<DensityFunctionCompiler.PreparedCache> codec() {
          throw new UnsupportedOperationException("PreparedCache should never be encoded");
+      }
+
+      @Override
+      public String getDebugName() {
+         return "cache";
       }
    }
 }

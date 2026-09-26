@@ -177,7 +177,6 @@ import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.BiomeManager;
 import net.minecraft.world.level.block.AbstractBedBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
@@ -1917,6 +1916,11 @@ public class ServerPlayer extends Player {
       );
    }
 
+   @Override
+   public String debugInfo(final boolean includeLevelName) {
+      return this.debugInfoBuilder(includeLevelName).add("debug", this.connection.debugInfo().print()).toString();
+   }
+
    public boolean canChatInColor() {
       return this.canChatColor;
    }
@@ -2206,7 +2210,6 @@ public class ServerPlayer extends Player {
       return new CommonPlayerSpawnInfo(
          level.dimensionTypeRegistration(),
          level.dimension(),
-         BiomeManager.obfuscateSeed(level.getSeed()),
          this.gameMode.getGameModeForPlayer(),
          Optional.ofNullable(this.gameMode.getPreviousGameModeForPlayer()),
          level.isDebug(),

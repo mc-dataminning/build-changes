@@ -1,8 +1,6 @@
 package net.minecraft.world.entity.animal.rabbit;
 
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentGetter;
@@ -10,7 +8,7 @@ import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.codec.EnumStreamCodec;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -22,7 +20,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.ByIdMap;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringRepresentable;
@@ -675,11 +672,10 @@ public class Rabbit extends Animal {
       EVIL(99, "evil");
 
       public static final Rabbit.Variant DEFAULT = BROWN;
-      private static final IntFunction<Rabbit.Variant> BY_ID = ByIdMap.sparse(Rabbit.Variant::id, values(), DEFAULT);
+      public static final EnumStreamCodec<Rabbit.Variant> STREAM_CODEC = ByteBufCodecs.sparseEnumCodec(Rabbit.Variant.class, Rabbit.Variant::id, DEFAULT);
       public static final Codec<Rabbit.Variant> CODEC = StringRepresentable.fromEnum(Rabbit.Variant::values);
       @Deprecated
-      public static final Codec<Rabbit.Variant> LEGACY_CODEC = Codec.INT.xmap(BY_ID::apply, Rabbit.Variant::id);
-      public static final StreamCodec<ByteBuf, Rabbit.Variant> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Rabbit.Variant::id);
+      public static final Codec<Rabbit.Variant> LEGACY_CODEC = Codec.INT.xmap(Rabbit.Variant::byId, Rabbit.Variant::id);
       private final int id;
       private final String name;
 
@@ -698,7 +694,7 @@ public class Rabbit extends Animal {
       }
 
       public static Rabbit.Variant byId(final int id) {
-         return BY_ID.apply(id);
+         return STREAM_CODEC.byId(id);
       }
    }
 }

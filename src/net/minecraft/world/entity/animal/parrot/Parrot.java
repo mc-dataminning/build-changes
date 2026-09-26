@@ -3,10 +3,8 @@ package net.minecraft.world.entity.animal.parrot;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
 import java.util.List;
 import java.util.Map;
-import java.util.function.IntFunction;
 import java.util.function.Predicate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -14,7 +12,7 @@ import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.codec.EnumStreamCodec;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -522,11 +520,12 @@ public class Parrot extends ShoulderRidingEntity {
       GRAY(4, "gray");
 
       public static final Parrot.Variant DEFAULT = RED_BLUE;
-      private static final IntFunction<Parrot.Variant> BY_ID = ByIdMap.continuous(Parrot.Variant::getId, values(), ByIdMap.OutOfBoundsStrategy.CLAMP);
+      public static final EnumStreamCodec<Parrot.Variant> STREAM_CODEC = ByteBufCodecs.enumCodec(
+         Parrot.Variant.class, Parrot.Variant::getId, ByIdMap.OutOfBoundsStrategy.CLAMP
+      );
       public static final Codec<Parrot.Variant> CODEC = StringRepresentable.fromEnum(Parrot.Variant::values);
       @Deprecated
-      public static final Codec<Parrot.Variant> LEGACY_CODEC = Codec.INT.xmap(BY_ID::apply, Parrot.Variant::getId);
-      public static final StreamCodec<ByteBuf, Parrot.Variant> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Parrot.Variant::getId);
+      public static final Codec<Parrot.Variant> LEGACY_CODEC = Codec.INT.xmap(Parrot.Variant::byId, Parrot.Variant::getId);
       private final int id;
       private final String name;
 
@@ -540,7 +539,7 @@ public class Parrot extends ShoulderRidingEntity {
       }
 
       public static Parrot.Variant byId(final int id) {
-         return BY_ID.apply(id);
+         return STREAM_CODEC.byId(id);
       }
 
       @Override

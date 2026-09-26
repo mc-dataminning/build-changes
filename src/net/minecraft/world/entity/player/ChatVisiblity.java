@@ -1,11 +1,9 @@
 package net.minecraft.world.entity.player;
 
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.codec.EnumStreamCodec;
 import net.minecraft.util.ByIdMap;
 
 public enum ChatVisiblity {
@@ -13,9 +11,8 @@ public enum ChatVisiblity {
    SYSTEM(1, "options.chat.visibility.system"),
    HIDDEN(2, "options.chat.visibility.hidden");
 
-   private static final IntFunction<ChatVisiblity> BY_ID = ByIdMap.continuous(v -> v.id, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
-   public static final Codec<ChatVisiblity> LEGACY_CODEC = Codec.INT.xmap(BY_ID::apply, v -> v.id);
-   public static final StreamCodec<ByteBuf, ChatVisiblity> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, v -> v.id);
+   public static final EnumStreamCodec<ChatVisiblity> STREAM_CODEC = ByteBufCodecs.enumCodec(ChatVisiblity.class, v -> v.id, ByIdMap.OutOfBoundsStrategy.WRAP);
+   public static final Codec<ChatVisiblity> LEGACY_CODEC = Codec.INT.xmap(STREAM_CODEC::byId, v -> v.id);
    private final int id;
    private final Component caption;
 

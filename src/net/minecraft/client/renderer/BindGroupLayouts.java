@@ -58,8 +58,8 @@ public class BindGroupLayouts {
    static {
       BindGroupLayout.Builder builder = BindGroupLayout.builder().withUniform("DepthBoundsSampler", UniformType.COMBINED_IMAGE_SAMPLER);
 
-      for (int i = 0; i < LevelRenderer.OIT_TRANSMITTANCE_TARGET_COUNT; i++) {
-         builder.withUniform("Coeff" + i, UniformType.COMBINED_IMAGE_SAMPLER);
+      for (int i = 0; i < 2; i++) {
+         builder.withUniform("Bins" + i, UniformType.COMBINED_IMAGE_SAMPLER);
       }
 
       OIT_COEFFS_DEPTH_BOUNDS_SAMPLER = builder.build();
@@ -67,8 +67,8 @@ public class BindGroupLayouts {
          .withUniform("Sampler0", UniformType.COMBINED_IMAGE_SAMPLER)
          .withUniform("DepthBoundsSampler", UniformType.COMBINED_IMAGE_SAMPLER);
 
-      for (int i = 0; i < LevelRenderer.OIT_TRANSMITTANCE_TARGET_COUNT; i++) {
-         builder.withUniform("Coeff" + i, UniformType.COMBINED_IMAGE_SAMPLER);
+      for (int i = 0; i < 2; i++) {
+         builder.withUniform("Bins" + i, UniformType.COMBINED_IMAGE_SAMPLER);
       }
 
       SAMPLER0_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER = builder.build();
@@ -77,8 +77,8 @@ public class BindGroupLayouts {
          .withUniform("Sampler2", UniformType.COMBINED_IMAGE_SAMPLER)
          .withUniform("DepthBoundsSampler", UniformType.COMBINED_IMAGE_SAMPLER);
 
-      for (int i = 0; i < LevelRenderer.OIT_TRANSMITTANCE_TARGET_COUNT; i++) {
-         builder.withUniform("Coeff" + i, UniformType.COMBINED_IMAGE_SAMPLER);
+      for (int i = 0; i < 2; i++) {
+         builder.withUniform("Bins" + i, UniformType.COMBINED_IMAGE_SAMPLER);
       }
 
       SAMPLER0_SAMPLER2_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER = builder.build();
@@ -87,8 +87,8 @@ public class BindGroupLayouts {
          .withUniform("CloudFaces", UniformType.TEXEL_BUFFER, GpuFormat.R8_SINT)
          .withUniform("DepthBoundsSampler", UniformType.COMBINED_IMAGE_SAMPLER);
 
-      for (int i = 0; i < LevelRenderer.OIT_TRANSMITTANCE_TARGET_COUNT; i++) {
-         builder.withUniform("Coeff" + i, UniformType.COMBINED_IMAGE_SAMPLER);
+      for (int i = 0; i < 2; i++) {
+         builder.withUniform("Bins" + i, UniformType.COMBINED_IMAGE_SAMPLER);
       }
 
       CLOUD_INFO_OIT_COEFFS_DEPTH_BOUNDS_SAMPLER = builder.build();

@@ -57,6 +57,9 @@ public class GlSurface implements GpuSurfaceBackend {
 
    @Override
    public void close() {
+      if (GlGlobalState.isWindowCurrent(this.windowHandle)) {
+         this.device.makeCurrent(0L);
+      }
    }
 
    @Override

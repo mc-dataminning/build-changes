@@ -1,6 +1,7 @@
 package net.minecraft.client.resources.model.cuboid;
 
 import com.mojang.math.Quadrant;
+import java.util.BitSet;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -28,7 +29,8 @@ public class ItemModelGenerator implements UnbakedModel {
    private static final TextureSlots.Data TEXTURE_SLOTS = new TextureSlots.Data.Builder().addReference("particle", "layer0").build();
    private static final CuboidFace.UVs SOUTH_FACE_UVS = new CuboidFace.UVs(0.0F, 0.0F, 16.0F, 16.0F);
    private static final CuboidFace.UVs NORTH_FACE_UVS = new CuboidFace.UVs(16.0F, 0.0F, 0.0F, 16.0F);
-   private static final float UV_SHRINK = 0.1F;
+   private static final float UV_SHRINK = 0.01F;
+   private static final float NORTH_AND_SOUTH_FACE_INSET = 0.01F;
 
    @Override
    public TextureSlots.Data textureSlots() {
@@ -80,8 +82,8 @@ public class ItemModelGenerator implements UnbakedModel {
    private static void bakeExtrudedSprite(
       final QuadCollection.Builder builder, final ModelBaker.Interner interner, final ModelState modelState, final BakedQuad.MaterialInfo materialInfo
    ) {
-      Vector3f from = new Vector3f(0.0F, 0.0F, 7.5F);
-      Vector3f to = new Vector3f(16.0F, 16.0F, 8.5F);
+      Vector3f from = new Vector3f(0.0F, 0.0F, 7.51F);
+      Vector3f to = new Vector3f(16.0F, 16.0F, 8.49F);
       builder.addUnculledFace(FaceBakery.bakeQuad(interner, from, to, SOUTH_FACE_UVS, Quadrant.R0, materialInfo, Direction.SOUTH, modelState, null));
       builder.addUnculledFace(FaceBakery.bakeQuad(interner, from, to, NORTH_FACE_UVS, Quadrant.R0, materialInfo, Direction.NORTH, modelState, null));
       bakeSideFaces(builder, interner, modelState, materialInfo);
@@ -97,25 +99,23 @@ public class ItemModelGenerator implements UnbakedModel {
       Vector3f to = new Vector3f();
 
       for (ItemModelGenerator.SideFace sideFace : getSideFaces(sprite)) {
-         float x = sideFace.x();
-         float y = sideFace.y();
          ItemModelGenerator.SideDirection sideDirection = sideFace.facing();
-         float u0 = x + 0.1F;
-         float u1 = x + 1.0F - 0.1F;
+         float startX = sideFace.startX();
+         float startY = sideFace.startY();
+         float endX = sideFace.endX();
+         float endY = sideFace.endY();
+         float u0 = startX + 0.01F;
+         float u1 = endX + 1.0F - 0.01F;
          float v0;
          float v1;
          if (sideDirection.isHorizontal()) {
-            v0 = y + 0.1F;
-            v1 = y + 1.0F - 0.1F;
+            v0 = startY + 0.01F;
+            v1 = endY + 1.0F - 0.01F;
          } else {
-            v0 = y + 1.0F - 0.1F;
-            v1 = y + 0.1F;
+            v0 = endY + 1.0F - 0.01F;
+            v1 = startY + 0.01F;
          }
 
-         float startX = x;
-         float startY = y;
-         float endX = x;
-         float endY = y;
          switch (sideDirection) {
             case UP:
                endX++;
@@ -166,43 +166,136 @@ public class ItemModelGenerator implements UnbakedModel {
       }
    }
 
-   private static Collection<ItemModelGenerator.SideFace> getSideFaces(final SpriteContents sprite) {
+   private static List<ItemModelGenerator.SideFace> getSideFaces(final SpriteContents sprite) {
       int width = sprite.width();
       int height = sprite.height();
       Set<ItemModelGenerator.SideFace> sideFaces = new HashSet<>();
+      ItemModelGenerator.FaceBuilder topFace = new ItemModelGenerator.FaceBuilder(ItemModelGenerator.SideDirection.UP, sideFaces);
+      ItemModelGenerator.FaceBuilder bottomFace = new ItemModelGenerator.FaceBuilder(ItemModelGenerator.SideDirection.DOWN, sideFaces);
+      ItemModelGenerator.FaceBuilder leftFace = new ItemModelGenerator.FaceBuilder(ItemModelGenerator.SideDirection.LEFT, sideFaces);
+      ItemModelGenerator.FaceBuilder rightFace = new ItemModelGenerator.FaceBuilder(ItemModelGenerator.SideDirection.RIGHT, sideFaces);
+      BitSet leftEdges = new BitSet(width * height);
+      BitSet rightEdges = new BitSet(width * height);
       sprite.getUniqueFrames().forEach(frame -> {
-         for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-               boolean thisOpaque = !isTransparent(sprite, frame, x, y, width, height);
-               if (thisOpaque) {
-                  checkTransition(ItemModelGenerator.SideDirection.UP, sideFaces, sprite, frame, x, y, width, height);
-                  checkTransition(ItemModelGenerator.SideDirection.DOWN, sideFaces, sprite, frame, x, y, width, height);
-                  checkTransition(ItemModelGenerator.SideDirection.LEFT, sideFaces, sprite, frame, x, y, width, height);
-                  checkTransition(ItemModelGenerator.SideDirection.RIGHT, sideFaces, sprite, frame, x, y, width, height);
-               }
-            }
-         }
+         leftEdges.clear();
+         rightEdges.clear();
+         addTopAndBottomFaces(sprite, frame, topFace, bottomFace, leftEdges, rightEdges);
+         addLeftAndRightFaces(sprite, leftFace, rightFace, leftEdges, rightEdges);
       });
-      return sideFaces;
+      return List.copyOf(sideFaces);
    }
 
-   private static void checkTransition(
-      final ItemModelGenerator.SideDirection facing,
-      final Set<ItemModelGenerator.SideFace> sideFaces,
+   private static void addTopAndBottomFaces(
       final SpriteContents sprite,
       final int frame,
-      final int x,
-      final int y,
-      final int width,
-      final int height
+      final ItemModelGenerator.FaceBuilder topFace,
+      final ItemModelGenerator.FaceBuilder bottomFace,
+      final BitSet leftEdges,
+      final BitSet rightEdges
    ) {
-      if (isTransparent(sprite, frame, x - facing.direction.getStepX(), y - facing.direction.getStepY(), width, height)) {
-         sideFaces.add(new ItemModelGenerator.SideFace(facing, x, y));
+      int width = sprite.width();
+      int height = sprite.height();
+
+      for (int y = 0; y < height; y++) {
+         boolean leftOpaque = false;
+
+         for (int x = 0; x < width; x++) {
+            boolean thisOpaque = !isTransparent(sprite, frame, x, y, width, height);
+            topFace.markEdge(x, y, thisOpaque && isNeighborTransparent(ItemModelGenerator.SideDirection.UP, sprite, frame, x, y, width, height));
+            bottomFace.markEdge(x, y, thisOpaque && isNeighborTransparent(ItemModelGenerator.SideDirection.DOWN, sprite, frame, x, y, width, height));
+            if (leftOpaque != thisOpaque) {
+               if (thisOpaque) {
+                  leftEdges.set(x + y * width);
+               } else {
+                  rightEdges.set(x - 1 + y * width);
+               }
+
+               leftOpaque = thisOpaque;
+            }
+         }
+
+         if (leftOpaque) {
+            rightEdges.set(width - 1 + y * width);
+         }
+
+         topFace.flush();
+         bottomFace.flush();
       }
+   }
+
+   private static void addLeftAndRightFaces(
+      final SpriteContents sprite,
+      final ItemModelGenerator.FaceBuilder leftFace,
+      final ItemModelGenerator.FaceBuilder rightFace,
+      final BitSet leftEdges,
+      final BitSet rightEdges
+   ) {
+      int width = sprite.width();
+      int height = sprite.height();
+
+      for (int x = 0; x < width; x++) {
+         for (int y = 0; y < height; y++) {
+            int index = x + y * width;
+            leftFace.markEdge(x, y, leftEdges.get(index));
+            rightFace.markEdge(x, y, rightEdges.get(index));
+         }
+
+         leftFace.flush();
+         rightFace.flush();
+      }
+   }
+
+   private static boolean isNeighborTransparent(
+      final ItemModelGenerator.SideDirection facing, final SpriteContents sprite, final int frame, final int x, final int y, final int width, final int height
+   ) {
+      return isTransparent(sprite, frame, x - facing.direction.getStepX(), y - facing.direction.getStepY(), width, height);
    }
 
    private static boolean isTransparent(final SpriteContents sprite, final int frame, final int x, final int y, final int width, final int height) {
       return x >= 0 && y >= 0 && x < width && y < height ? sprite.isTransparent(frame, x, y) : true;
+   }
+
+   private static class FaceBuilder {
+      private final ItemModelGenerator.SideDirection direction;
+      private final Collection<ItemModelGenerator.SideFace> output;
+      private int startX;
+      private int startY;
+      private int length;
+
+      private FaceBuilder(final ItemModelGenerator.SideDirection direction, final Collection<ItemModelGenerator.SideFace> output) {
+         this.direction = direction;
+         this.output = output;
+      }
+
+      public void markEdge(final int x, final int y, final boolean edge) {
+         if (edge) {
+            if (this.length == 0) {
+               this.startX = x;
+               this.startY = y;
+            }
+
+            this.length++;
+         } else {
+            this.flush();
+         }
+      }
+
+      public void flush() {
+         if (this.length != 0) {
+            boolean horizontal = this.direction.isHorizontal();
+            this.output
+               .add(
+                  new ItemModelGenerator.SideFace(
+                     this.direction,
+                     this.startX,
+                     this.startY,
+                     horizontal ? this.startX + this.length - 1 : this.startX,
+                     horizontal ? this.startY : this.startY + this.length - 1
+                  )
+               );
+            this.length = 0;
+         }
+      }
    }
 
    private record ItemLayerKey(Material.Baked material, ModelState modelState, int layerIndex) implements ModelBaker.SharedOperationKey<QuadCollection> {
@@ -236,6 +329,6 @@ public class ItemModelGenerator implements UnbakedModel {
       }
    }
 
-   private record SideFace(ItemModelGenerator.SideDirection facing, int x, int y) {
+   private record SideFace(ItemModelGenerator.SideDirection facing, int startX, int startY, int endX, int endY) {
    }
 }

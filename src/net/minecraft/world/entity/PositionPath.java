@@ -2,10 +2,8 @@ package net.minecraft.world.entity;
 
 import io.netty.buffer.ByteBuf;
 import java.util.List;
-import java.util.function.IntFunction;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
 import net.minecraft.world.phys.Vec3;
 
 public sealed interface PositionPath permits PositionPath.Linear, PositionPath.Stepped {
@@ -49,15 +47,20 @@ public sealed interface PositionPath permits PositionPath.Linear, PositionPath.S
    }
 
    enum Type {
-      LINEAR(PositionPath.Linear.STREAM_CODEC),
-      STEPPED(PositionPath.Stepped.STREAM_CODEC);
+      LINEAR(0, PositionPath.Linear.STREAM_CODEC),
+      STEPPED(1, PositionPath.Stepped.STREAM_CODEC);
 
-      public static final IntFunction<PositionPath.Type> BY_ID = ByIdMap.continuous(Enum::ordinal, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-      public static final StreamCodec<ByteBuf, PositionPath.Type> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Enum::ordinal);
+      public static final StreamCodec<ByteBuf, PositionPath.Type> STREAM_CODEC = ByteBufCodecs.enumCodec(PositionPath.Type.class, PositionPath.Type::getId);
+      private final int id;
       private final StreamCodec<ByteBuf, ? extends PositionPath> streamCodec;
 
-      Type(final StreamCodec<ByteBuf, ? extends PositionPath> streamCodec) {
+      Type(final int id, final StreamCodec<ByteBuf, ? extends PositionPath> streamCodec) {
+         this.id = id;
          this.streamCodec = streamCodec;
+      }
+
+      public int getId() {
+         return this.id;
       }
 
       public StreamCodec<ByteBuf, ? extends PositionPath> streamCodec() {

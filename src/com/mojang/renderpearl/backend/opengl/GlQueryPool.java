@@ -5,10 +5,12 @@ import java.util.OptionalLong;
 import org.lwjgl.opengl.GL33C;
 
 public class GlQueryPool implements GpuQueryPool {
+   private final GlDevice device;
    private final int[] handles;
    private boolean closed;
 
-   public GlQueryPool(final int size) {
+   public GlQueryPool(final GlDevice device, final int size) {
+      this.device = device;
       this.handles = new int[size];
       GL33C.glGenQueries(this.handles);
    }
@@ -20,6 +22,7 @@ public class GlQueryPool implements GpuQueryPool {
 
    @Override
    public OptionalLong getValue(final int index) {
+      this.device.ensureCurrent();
       int handle = this.handles[index];
       return GL33C.glGetQueryObjecti(handle, 34919) == 0 ? OptionalLong.empty() : OptionalLong.of(GL33C.glGetQueryObjectui64(handle, 34918));
    }
@@ -42,6 +45,7 @@ public class GlQueryPool implements GpuQueryPool {
    }
 
    protected void writeTimestamp(final int index) {
+      this.device.ensureCurrent();
       GL33C.glQueryCounter(this.handles[index], 36392);
    }
 
@@ -49,6 +53,7 @@ public class GlQueryPool implements GpuQueryPool {
    public void close() {
       if (!this.closed) {
          this.closed = true;
+         this.device.ensureCurrent();
          GL33C.glDeleteQueries(this.handles);
       }
    }

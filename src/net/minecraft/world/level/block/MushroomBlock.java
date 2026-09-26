@@ -44,14 +44,14 @@ public class MushroomBlock extends VegetationBlock implements BonemealableBlock 
          BlockPos offset = pos.offset(random.nextInt(3) - 1, random.nextInt(2) - random.nextInt(2), random.nextInt(3) - 1);
 
          for (int i = 0; i < 4; i++) {
-            if (level.isEmptyBlock(offset) && state.canSurvive(level, offset)) {
+            if (this.canSpreadTo(level, offset)) {
                pos = offset;
             }
 
             offset = pos.offset(random.nextInt(3) - 1, random.nextInt(2) - random.nextInt(2), random.nextInt(3) - 1);
          }
 
-         if (level.isEmptyBlock(offset) && state.canSurvive(level, offset)) {
+         if (this.canSpreadTo(level, offset)) {
             level.setBlock(offset, state, 2);
          }
       }
@@ -68,11 +68,16 @@ public class MushroomBlock extends VegetationBlock implements BonemealableBlock 
       return state.isSolidRender();
    }
 
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
+   protected boolean canSpreadTo(final LevelReader level, final BlockPos pos) {
       BlockPos belowPos = pos.below();
       BlockState below = level.getBlockState(belowPos);
-      return below.is(BlockTags.OVERRIDES_MUSHROOM_LIGHT_REQUIREMENT) ? true : level.getRawBrightness(pos, 0) < 13 && this.mayPlaceOn(below, level, belowPos);
+      if (below.is(BlockTags.OVERRIDES_MUSHROOM_LIGHT_REQUIREMENT)) {
+         return true;
+      } else if (level.getRawBrightness(pos, 0) < 13) {
+         return false;
+      } else {
+         return this.mayPlaceOn(below, level, belowPos) ? false : !level.isEmptyBlock(pos);
+      }
    }
 
    public boolean growMushroom(final ServerLevel level, final BlockPos pos, final BlockState state, final RandomSource random) {

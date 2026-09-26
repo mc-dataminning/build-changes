@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.ExtraCodecs;
+import net.minecraft.util.InclusiveRange;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Util;
 
@@ -22,6 +23,20 @@ public record RandomlySelectedPlacement(List<PlacementModifier> placements) impl
    @Override
    public void modify(final PlacementContext context, final RandomSource random, final BlockPos origin, final Consumer<BlockPos> output) {
       Util.getRandom(this.placements, random).modify(context, random, origin, output);
+   }
+
+   @Override
+   public InclusiveRange<Integer> modifyXzDomain(final InclusiveRange<Integer> inputDomain) {
+      int minInclusive = Integer.MAX_VALUE;
+      int maxInclusive = Integer.MIN_VALUE;
+
+      for (PlacementModifier placement : this.placements) {
+         InclusiveRange<Integer> placementDomain = placement.modifyXzDomain(inputDomain);
+         minInclusive = Math.min(placementDomain.minInclusive(), minInclusive);
+         maxInclusive = Math.max(placementDomain.maxInclusive(), maxInclusive);
+      }
+
+      return new InclusiveRange<>(minInclusive, maxInclusive);
    }
 
    @Override

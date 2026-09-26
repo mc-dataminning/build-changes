@@ -166,7 +166,7 @@ public abstract class PathNavigation {
       if (path != null && path.getTarget() != null) {
          this.targetPos = path.getTarget();
          this.reachRange = reachRange;
-         this.resetStuckTimeout();
+         this.resetTimeout();
       }
 
       return path;
@@ -195,7 +195,8 @@ public abstract class PathNavigation {
          return false;
       }
 
-      if (!newPath.sameAs(this.path)) {
+      boolean pathChanged = !newPath.sameAs(this.path);
+      if (pathChanged) {
          this.path = newPath;
       }
 
@@ -209,9 +210,10 @@ public abstract class PathNavigation {
       }
 
       this.speedModifier = speedModifier;
-      Vec3 mobPos = this.getTempMobPos();
-      this.lastStuckCheck = this.tick;
-      this.lastStuckCheckPos = mobPos;
+      if (pathChanged) {
+         this.resetStuckCheck();
+      }
+
       return true;
    }
 
@@ -232,7 +234,7 @@ public abstract class PathNavigation {
             Vec3 mobPos = this.getTempMobPos();
             Vec3 pos = this.path.getNextEntityPos(this.mob);
             if (mobPos.y > pos.y && !this.mob.onGround() && Mth.floor(mobPos.x) == Mth.floor(pos.x) && Mth.floor(mobPos.z) == Mth.floor(pos.z)) {
-               this.path.advance();
+               this.advancePath();
             }
          }
 
@@ -259,7 +261,7 @@ public abstract class PathNavigation {
          && zDistance < this.maxDistanceToWaypoint
          && yDistance < this.getMaxVerticalDistanceToWaypoint();
       if (isCloseEnoughToCurrentNode || this.canCutCorner(this.path.getNextNode().type) && this.shouldTargetNextNodeInDirection(mobPos)) {
-         this.path.advance();
+         this.advancePath();
       }
 
       this.doStuckDetection(mobPos);
@@ -330,15 +332,28 @@ public abstract class PathNavigation {
    }
 
    private void timeoutPath() {
-      this.resetStuckTimeout();
+      this.resetTimeout();
       this.stop();
    }
 
-   private void resetStuckTimeout() {
+   private void resetTimeout() {
       this.timeoutCachedNode = Vec3i.ZERO;
       this.timeoutTimer = 0L;
       this.timeoutLimit = 0.0;
       this.isStuck = false;
+   }
+
+   private void resetStuckCheck() {
+      Vec3 mobPos = this.getTempMobPos();
+      this.lastStuckCheck = this.tick;
+      this.lastStuckCheckPos = mobPos;
+   }
+
+   private void advancePath() {
+      if (this.path != null) {
+         this.path.advance();
+         this.resetStuckCheck();
+      }
    }
 
    public boolean isDone() {
@@ -420,6 +435,11 @@ public abstract class PathNavigation {
 
    public float getMaxDistanceToWaypoint() {
       return this.maxDistanceToWaypoint;
+   }
+
+   public int getStuckCountdown() {
+      int countdown = 100 - (this.tick - this.lastStuckCheck);
+      return Math.max(countdown, 0);
    }
 
    public float getMaxVerticalDistanceToWaypoint() {

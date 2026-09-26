@@ -201,6 +201,7 @@ import net.minecraft.util.datafix.fixes.MergeTerrainChunkStatusFix;
 import net.minecraft.util.datafix.fixes.MissingDimensionFix;
 import net.minecraft.util.datafix.fixes.MobEffectIdFix;
 import net.minecraft.util.datafix.fixes.MobSpawnerEntityIdentifiersFix;
+import net.minecraft.util.datafix.fixes.MoveNoiseBiomesFix;
 import net.minecraft.util.datafix.fixes.NamedEntityConvertUncheckedFix;
 import net.minecraft.util.datafix.fixes.NamedEntityWriteReadFix;
 import net.minecraft.util.datafix.fixes.NamespacedTypeRenameFix;
@@ -411,6 +412,7 @@ import net.minecraft.util.datafix.schemas.V4996_1;
 import net.minecraft.util.datafix.schemas.V4997;
 import net.minecraft.util.datafix.schemas.V5000;
 import net.minecraft.util.datafix.schemas.V501;
+import net.minecraft.util.datafix.schemas.V5116;
 import net.minecraft.util.datafix.schemas.V700;
 import net.minecraft.util.datafix.schemas.V701;
 import net.minecraft.util.datafix.schemas.V702;
@@ -434,7 +436,7 @@ public class DataFixers {
    private static final BiFunction<Integer, Schema, Schema> SAME_NAMESPACED = NamespacedSchema::new;
    private static final Result DATA_FIXER;
    private static final FileFixerUpper FILE_FIXER;
-   public static final int BLENDING_VERSION = 4997;
+   public static final int BLENDING_VERSION = 5118;
 
    private DataFixers() {
    }
@@ -1634,16 +1636,12 @@ public class DataFixers {
       fixerUpper.addFixer(new RemoveBlockEntityTagFix(v4885, Set.of("minecraft:bed")));
       Schema v4888 = fixerUpper.addSchema(4888, SAME_NAMESPACED);
       fixerUpper.addFixer(new RenameNameplateToNameTagFix(v4888));
-      Schema v4892 = fixerUpper.addSchema(4892, SAME_NAMESPACED);
-      fixerUpper.addFixer(new OptionsForceDefaultGraphicsApiFix(v4892));
       Schema v4899 = fileFixerUpper.addSchema(fixerUpper, 4899, SAME_NAMESPACED);
       fileFixerUpper.addFixer(new ReenableSpectatorsGenerateChunksInHardcoreWorldsFileFix(v4899));
       Schema v4996 = fixerUpper.addSchema(4996, V4996::new);
       fixerUpper.addFixer(new PotDecorationsComponentUnflatteningFix(v4996));
       Schema v4996_1 = fixerUpper.addSchema(4996, 1, V4996_1::new);
       fixerUpper.addFixer(new PotDecorationsBlockEntityUnflatteningFix(v4996_1));
-      Schema blendingSchema = fixerUpper.addSchema(4997, SAME_NAMESPACED);
-      fixerUpper.addFixer(new BlendingDataFix(blendingSchema));
       Schema v4997 = fixerUpper.addSchema(4997, V4997::new);
       fixerUpper.addFixer(new AddNewChoices(v4997, "Added Poplar Boat and Poplar Chest Boat", References.ENTITY));
       Schema v5000 = fixerUpper.addSchema(5000, V5000::new);
@@ -1688,6 +1686,12 @@ public class DataFixers {
       fixerUpper.addFixer(new RemoveBlockTransformerComponentFix(v5014));
       Schema v5016 = fixerUpper.addSchema(5016, SAME_NAMESPACED);
       fixerUpper.addFixer(new UnfilledBuriedTreasureMapFix(v5016));
+      Schema v5116 = fixerUpper.addSchema(5116, V5116::new);
+      fixerUpper.addFixer(new MoveNoiseBiomesFix(v5116));
+      Schema v5117 = fixerUpper.addSchema(5117, SAME_NAMESPACED);
+      fixerUpper.addFixer(new OptionsForceDefaultGraphicsApiFix(v5117));
+      Schema blendingSchema = fixerUpper.addSchema(5118, SAME_NAMESPACED);
+      fixerUpper.addFixer(new BlendingDataFix(blendingSchema));
    }
 
    private static UnaryOperator<String> createRenamerNoNamespace(final Map<String, String> map) {

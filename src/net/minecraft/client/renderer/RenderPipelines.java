@@ -1,5 +1,6 @@
 package net.minecraft.client.renderer;
 
+import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.renderpearl.api.GpuFormat;
 import com.mojang.renderpearl.api.pipeline.BlendFactor;
@@ -9,7 +10,6 @@ import com.mojang.renderpearl.api.pipeline.CompareOp;
 import com.mojang.renderpearl.api.pipeline.DepthStencilState;
 import com.mojang.renderpearl.api.pipeline.PolygonMode;
 import com.mojang.renderpearl.api.pipeline.PrimitiveTopology;
-import com.mojang.renderpearl.api.pipeline.RenderPipeline;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,9 +33,8 @@ public class RenderPipelines {
       .buildSnippet();
    private static final RenderPipeline.Snippet OIT_SNIPPET = RenderPipeline.builder(GLOBALS_SNIPPET)
       .withShaderDefine("OIT")
-      .withShaderDefine("OIT_WAVELET_RANK", 2)
-      .withShaderDefine("OIT_COEFF_COUNT", LevelRenderer.OIT_COEFFICIENT_COUNT)
-      .withShaderDefine("OIT_COEFF_ATTACHMENT_COUNT", LevelRenderer.OIT_TRANSMITTANCE_TARGET_COUNT)
+      .withShaderDefine("OIT_NUMBER_OF_DEPTH_BINS", 8)
+      .withShaderDefine("OIT_TRANSMITTANCE_TARGET_COUNT", 2)
       .buildSnippet();
    public static final RenderPipeline.Snippet OIT_DEPTH_BOUNDS_SNIPPET = RenderPipeline.builder(OIT_SNIPPET)
       .withBindGroupLayout(BindGroupLayouts.GLOBALS)
@@ -51,9 +50,7 @@ public class RenderPipelines {
       .withBindGroupLayout(BindGroupLayouts.DEPTH_BOUNDS_SAMPLER)
       .withShaderDefine("OIT_ALPHA_ONLY")
       .withShaderDefine("OIT_TRANSMITTANCE")
-      .withColorTargetStates(
-         0, LevelRenderer.OIT_TRANSMITTANCE_TARGET_COUNT - 1, () -> new ColorTargetState(Optional.of(BlendFunction.ADDITIVE), GpuFormat.RGBA16_FLOAT, 15)
-      )
+      .withColorTargetStates(0, 1, () -> new ColorTargetState(Optional.of(BlendFunction.ADDITIVE), GpuFormat.RGBA16_FLOAT, 15))
       .withDepthStencilState(new DepthStencilState(CompareOp.GREATER_THAN_OR_EQUAL, false))
       .buildSnippet();
    public static final RenderPipeline.Snippet OIT_ACCUMULATE_SNIPPET = RenderPipeline.builder(OIT_SNIPPET)
@@ -987,7 +984,7 @@ public class RenderPipelines {
          .withCull(false)
          .withVertexBinding(0, DefaultVertexFormat.POSITION_TEX)
          .withPrimitiveTopology(PrimitiveTopology.QUADS)
-         .withDepthStencilState(new DepthStencilState(CompareOp.GREATER_THAN_OR_EQUAL, true, 3.0F, 3.0F))
+         .withDepthStencilState(new DepthStencilState(CompareOp.GREATER_THAN_OR_EQUAL, true))
          .build()
    );
    public static final OitPipelineSet OIT_WORLD_BORDER = register(
@@ -1001,7 +998,7 @@ public class RenderPipelines {
                .withCull(false)
                .withPrimitiveTopology(PrimitiveTopology.QUADS)
                .withVertexBinding(0, DefaultVertexFormat.POSITION_TEX)
-               .withDepthStencilState(new DepthStencilState(CompareOp.GREATER_THAN_OR_EQUAL, false, 3.0F, 3.0F))
+               .withDepthStencilState(new DepthStencilState(CompareOp.GREATER_THAN_OR_EQUAL, false))
                .withShaderDefine("OIT_ADDITIVE")
          )
          .build()

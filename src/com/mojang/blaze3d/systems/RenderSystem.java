@@ -2,7 +2,9 @@ package com.mojang.blaze3d.systems;
 
 import com.mojang.blaze3d.ProjectionType;
 import com.mojang.blaze3d.buffers.Std140SizeCalculator;
+import com.mojang.blaze3d.pipeline.PipelineBuilder;
 import com.mojang.blaze3d.pipeline.PipelineCache;
+import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.mojang.blaze3d.platform.SDLEventHandler;
 import com.mojang.blaze3d.platform.SdlDebug;
 import com.mojang.logging.LogUtils;
@@ -15,7 +17,6 @@ import com.mojang.renderpearl.api.device.GpuDevice;
 import com.mojang.renderpearl.api.pipeline.CompiledRenderPipeline;
 import com.mojang.renderpearl.api.pipeline.IndexType;
 import com.mojang.renderpearl.api.pipeline.PrimitiveTopology;
-import com.mojang.renderpearl.api.pipeline.RenderPipeline;
 import java.nio.ByteBuffer;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -46,6 +47,7 @@ public class RenderSystem {
    private static @Nullable Thread renderThread;
    private static @Nullable GpuDevice DEVICE;
    private static @Nullable GpuBackend BACKEND;
+   private static @Nullable PipelineBuilder PIPELINE_BUILDER;
    private static final RenderSystem.AutoStorageIndexBuffer sharedSequential = new RenderSystem.AutoStorageIndexBuffer(1, 1, IntConsumer::accept);
    private static final RenderSystem.AutoStorageIndexBuffer sharedSequentialQuad = new RenderSystem.AutoStorageIndexBuffer(4, 6, (c, i) -> {
       c.accept(i);
@@ -223,6 +225,7 @@ public class RenderSystem {
       }
 
       DEVICE = device;
+      PIPELINE_BUILDER = new PipelineBuilder(DEVICE);
       dynamicGpuData = new DynamicGpuData();
       samplerCache.initialize();
    }
@@ -246,6 +249,10 @@ public class RenderSystem {
 
       if (DEVICE != null) {
          DEVICE.close();
+      }
+
+      if (PIPELINE_BUILDER != null) {
+         PIPELINE_BUILDER.close();
       }
    }
 
@@ -350,6 +357,14 @@ public class RenderSystem {
 
    public static @Nullable GpuDevice tryGetDevice() {
       return DEVICE;
+   }
+
+   public static PipelineBuilder getPipelineBuilder() {
+      if (PIPELINE_BUILDER == null) {
+         throw new IllegalStateException("Can't getPipelineBuilder() before it was initialized");
+      } else {
+         return PIPELINE_BUILDER;
+      }
    }
 
    public static boolean isWireframeAvailable() {

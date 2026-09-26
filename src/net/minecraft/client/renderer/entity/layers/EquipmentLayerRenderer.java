@@ -35,7 +35,7 @@ public class EquipmentLayerRenderer {
       this.trimTextureLookup = Util.memoize(key -> key.getOrPrepareTexture(palettedTextures));
    }
 
-   public <S> void renderLayers(
+   public <S> int renderLayers(
       final EquipmentClientInfo.LayerType layerType,
       final ResourceKey<EquipmentAsset> equipmentAssetId,
       final Model<? super S> model,
@@ -46,10 +46,10 @@ public class EquipmentLayerRenderer {
       final int lightCoords,
       final int outlineColor
    ) {
-      this.renderLayers(layerType, equipmentAssetId, model, state, itemStack, poseStack, submitNodeCollector, lightCoords, null, outlineColor, 1);
+      return this.renderLayers(layerType, equipmentAssetId, model, state, itemStack, poseStack, submitNodeCollector, lightCoords, null, outlineColor, 1);
    }
 
-   public <S> void renderLayers(
+   public <S> int renderLayers(
       final EquipmentClientInfo.LayerType layerType,
       final ResourceKey<EquipmentAsset> equipmentAssetId,
       final Model<? super S> model,
@@ -64,39 +64,42 @@ public class EquipmentLayerRenderer {
    ) {
       EquipmentClientInfo equipmentInfo = this.equipmentAssets.get(equipmentAssetId);
       List<EquipmentClientInfo.Layer> layers = equipmentInfo.getLayers(layerType);
-      if (!layers.isEmpty()) {
-         int dyeColor = DyedItemColor.getOrDefault(itemStack, 0);
-         boolean hasFoil = itemStack.hasFoil();
-         ArmorTrim trim = itemStack.get(DataComponents.TRIM);
-         boolean hasTrim = trim != null && layerType != EquipmentClientInfo.LayerType.HUMANOID_BABY;
-         boolean renderShaderGlint = hasFoil && !hasTrim;
-         int nextOrder = order;
+      if (layers.isEmpty()) {
+         return order;
+      }
 
-         for (EquipmentClientInfo.Layer layer : layers) {
-            int color = getColorForLayer(layer, dyeColor);
-            if (color != 0) {
-               Identifier layerTexture = layer.usePlayerTexture() && playerTextureOverride != null
-                  ? playerTextureOverride
-                  : this.layerTextureLookup.apply(new EquipmentLayerRenderer.LayerTextureKey(layerType, layer));
-               RenderType renderType = renderShaderGlint ? RenderTypes.armorCutoutNoCullGlint(layerTexture) : RenderTypes.armorCutoutNoCull(layerTexture);
-               submitNodeCollector.order(nextOrder++)
-                  .submitModel(model, state, poseStack, renderType, lightCoords, OverlayTexture.NO_OVERLAY, color, null, outlineColor);
-               renderShaderGlint = false;
-            }
-         }
+      int dyeColor = DyedItemColor.getOrDefault(itemStack, 0);
+      boolean hasFoil = itemStack.hasFoil();
+      ArmorTrim trim = itemStack.get(DataComponents.TRIM);
+      boolean hasTrim = trim != null && layerType != EquipmentClientInfo.LayerType.HUMANOID_BABY;
+      boolean renderShaderGlint = hasFoil && !hasTrim;
+      int nextOrder = order;
 
-         if (hasTrim) {
-            PalettedTextureManager.Handle textureHandle = this.trimTextureLookup
-               .apply(new EquipmentLayerRenderer.TrimTextureKey(trim, layerType, equipmentInfo));
-            RenderType renderType = RenderTypes.armorTrim(textureHandle.textureLocation(), trim.pattern().value().decal());
+      for (EquipmentClientInfo.Layer layer : layers) {
+         int color = getColorForLayer(layer, dyeColor);
+         if (color != 0) {
+            Identifier layerTexture = layer.usePlayerTexture() && playerTextureOverride != null
+               ? playerTextureOverride
+               : this.layerTextureLookup.apply(new EquipmentLayerRenderer.LayerTextureKey(layerType, layer));
+            RenderType renderType = renderShaderGlint ? RenderTypes.armorCutoutNoCullGlint(layerTexture) : RenderTypes.armorCutoutNoCull(layerTexture);
             submitNodeCollector.order(nextOrder++)
-               .submitModel(model, state, poseStack, renderType, lightCoords, OverlayTexture.NO_OVERLAY, -1, textureHandle, outlineColor);
-            if (hasFoil) {
-               submitNodeCollector.order(nextOrder++)
-                  .submitModel(model, state, poseStack, RenderTypes.trimmedArmorGlint(), lightCoords, OverlayTexture.NO_OVERLAY, -1, null, 0);
-            }
+               .submitModel(model, state, poseStack, renderType, lightCoords, OverlayTexture.NO_OVERLAY, color, null, outlineColor);
+            renderShaderGlint = false;
          }
       }
+
+      if (hasTrim) {
+         PalettedTextureManager.Handle textureHandle = this.trimTextureLookup.apply(new EquipmentLayerRenderer.TrimTextureKey(trim, layerType, equipmentInfo));
+         RenderType renderType = RenderTypes.armorTrim(textureHandle.textureLocation(), trim.pattern().value().decal());
+         submitNodeCollector.order(nextOrder++)
+            .submitModel(model, state, poseStack, renderType, lightCoords, OverlayTexture.NO_OVERLAY, -1, textureHandle, outlineColor);
+         if (hasFoil) {
+            submitNodeCollector.order(nextOrder++)
+               .submitModel(model, state, poseStack, RenderTypes.trimmedArmorGlint(), lightCoords, OverlayTexture.NO_OVERLAY, -1, null, 0);
+         }
+      }
+
+      return nextOrder;
    }
 
    private static int getColorForLayer(final EquipmentClientInfo.Layer layer, final int dyeColor) {

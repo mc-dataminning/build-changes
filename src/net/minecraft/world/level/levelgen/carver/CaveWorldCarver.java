@@ -13,7 +13,7 @@ import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.IntProviders;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.chunk.CarverOutput;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.heightproviders.HeightProvider;
 
 public record CaveWorldCarver(
@@ -51,14 +51,18 @@ public record CaveWorldCarver(
 
    @Override
    public boolean carve(
-      final WorldGenerationContext context, final RandomSource random, final ChunkPos chunkPos, final ChunkPos sourceChunkPos, final CarverOutput output
+      final VerticalAnchor.Context verticalAnchorContext,
+      final RandomSource random,
+      final ChunkPos chunkPos,
+      final ChunkPos sourceChunkPos,
+      final CarverOutput output
    ) {
       int maxDistance = SectionPos.sectionToBlockCoord(this.getRange() * 2 - 1);
       int caveCount = this.count.sample(random);
 
       for (int cave = 0; cave < caveCount; cave++) {
          double x = sourceChunkPos.getBlockX(random.nextInt(16));
-         double y = this.y.sample(random, context);
+         double y = this.y.sample(random, verticalAnchorContext);
          double z = sourceChunkPos.getBlockZ(random.nextInt(16));
          double horizontalRadiusMultiplier = this.horizontalRadiusMultiplier.sample(random);
          double verticalRadiusMultiplier = this.verticalRadiusMultiplier.sample(random);

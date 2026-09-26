@@ -37,7 +37,6 @@ import net.minecraft.world.flag.FeatureElement;
 import net.minecraft.world.flag.FeatureFlag;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -168,7 +167,6 @@ public abstract class BlockBehaviour implements FeatureElement {
    ) {
       if (!state.isAir() && explosion.getBlockInteraction() != Explosion.BlockInteraction.TRIGGER_BLOCK) {
          Block block = state.getBlock();
-         boolean doDropExperienceHack = explosion.getIndirectSourceEntity() instanceof Player;
          if (block.dropFromExplosion(explosion)) {
             BlockEntity blockEntity = state.hasBlockEntity() ? level.getBlockEntity(pos) : null;
             LootParams.Builder params = new LootParams.Builder(level)
@@ -180,7 +178,8 @@ public abstract class BlockBehaviour implements FeatureElement {
                params.withParameter(LootContextParams.EXPLOSION_RADIUS, explosion.radius());
             }
 
-            state.spawnAfterBreak(level, pos, ItemStack.EMPTY, doDropExperienceHack);
+            boolean doDropExperienceHack = explosion.getIndirectSourceEntity() instanceof Player;
+            state.spawnAfterBreak(level, pos, ItemStack.EMPTY, doDropExperienceHack, explosion.getDirectSourceEntity());
             state.getDrops(params).forEach(stack -> onHit.accept(stack, pos));
          }
 
@@ -351,7 +350,9 @@ public abstract class BlockBehaviour implements FeatureElement {
       return player.getDestroySpeed(state) / destroySpeed / modifier;
    }
 
-   protected void spawnAfterBreak(final BlockState state, final ServerLevel level, final BlockPos pos, final ItemStack tool, final boolean dropExperience) {
+   protected void spawnAfterBreak(
+      final BlockState state, final ServerLevel level, final BlockPos pos, final ItemStack tool, final boolean dropExperience, final @Nullable Entity breaker
+   ) {
    }
 
    protected void attack(final BlockState state, final Level level, final BlockPos pos, final Player player) {
@@ -775,8 +776,10 @@ public abstract class BlockBehaviour implements FeatureElement {
          this.getBlock().entityInside(this.asState(), level, pos, entity, effectApplier, isPrecise);
       }
 
-      public void spawnAfterBreak(final ServerLevel level, final BlockPos pos, final ItemStack tool, final boolean dropExperience) {
-         this.getBlock().spawnAfterBreak(this.asState(), level, pos, tool, dropExperience);
+      public void spawnAfterBreak(
+         final ServerLevel level, final BlockPos pos, final ItemStack tool, final boolean dropExperience, final @Nullable Entity breaker
+      ) {
+         this.getBlock().spawnAfterBreak(this.asState(), level, pos, tool, dropExperience, breaker);
       }
 
       public List<ItemStack> getDrops(final LootParams.Builder params) {
@@ -1091,13 +1094,8 @@ public abstract class BlockBehaviour implements FeatureElement {
          return copyTo;
       }
 
-      public BlockBehaviour.Properties mapColor(final DyeColor dyeColor) {
-         this.mapColor = state -> dyeColor.getMapColor();
-         return this;
-      }
-
       public BlockBehaviour.Properties mapColor(final MapColor mapColor) {
-         this.mapColor = state -> mapColor;
+         this.mapColor = var1 -> mapColor;
          return this;
       }
 

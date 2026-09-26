@@ -33,8 +33,6 @@ import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.LevelHeightAccessor;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeManager;
-import net.minecraft.world.level.biome.BiomeResolver;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.EntityBlock;
@@ -76,12 +74,10 @@ public class WorldGenRegion implements WorldGenLevel {
    private final DimensionType dimensionType;
    private final WorldGenTickAccess<Block> blockTicks = new WorldGenTickAccess<>(pos -> this.getChunk(pos).getBlockTicks());
    private final WorldGenTickAccess<Fluid> fluidTicks = new WorldGenTickAccess<>(pos -> this.getChunk(pos).getFluidTicks());
-   private final BiomeManager biomeManager;
    private final ChunkStep generatingStep;
    private @Nullable Supplier<String> currentlyGenerating;
    private final AtomicLong subTickCount = new AtomicLong();
    private final EnvironmentAttributeSystem environmentAttributes;
-   private final BiomeResolver uncachedBiomeResolver;
    private final int centerChunkX;
    private final int centerChunkZ;
    private final int writeRadius;
@@ -100,8 +96,6 @@ public class WorldGenRegion implements WorldGenLevel {
       RandomState randomState = level.getChunkSource().randomState();
       this.random = randomState.getOrCreateRandomFactory(WORLDGEN_REGION_RANDOM).at(this.center.getPos().getWorldPosition());
       this.dimensionType = level.dimensionType();
-      this.uncachedBiomeResolver = level.uncachedBiomeResolver();
-      this.biomeManager = new BiomeManager(this, BiomeManager.obfuscateSeed(this.seed));
       ChunkPos centerPos = center.getPos();
       this.centerChunkX = centerPos.x();
       this.centerChunkZ = centerPos.z();
@@ -191,13 +185,8 @@ public class WorldGenRegion implements WorldGenLevel {
    }
 
    @Override
-   public BiomeManager getBiomeManager() {
-      return this.biomeManager;
-   }
-
-   @Override
-   public Holder<Biome> getUncachedNoiseBiome(final int quartX, final int quartY, final int quartZ) {
-      return this.uncachedBiomeResolver.getNoiseBiome(quartX, quartY, quartZ);
+   public Holder<Biome> getUncachedBiome(final int x, final int y, final int z) {
+      return this.level.getUncachedBiome(x, y, z);
    }
 
    @Override

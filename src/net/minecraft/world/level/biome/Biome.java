@@ -5,12 +5,21 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.longs.Long2FloatLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
+import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.codec.RegistryCodecs;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.InclusiveRange;
 import net.minecraft.util.Mth;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.util.Util;
@@ -29,6 +38,8 @@ import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.LegacyRandomSource;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.synth.Noise;
 import net.minecraft.world.level.levelgen.synth.NoiseStack;
 import net.minecraft.world.level.levelgen.synth.SimplexNoise;
@@ -73,6 +84,7 @@ public final class Biome {
    private static final int TEMPERATURE_CACHE_SIZE = 1024;
    private final Biome.ClimateSettings climateSettings;
    private final BiomeGenerationSettings generationSettings;
+   private static final InclusiveRange<Integer> ALLOWED_FEATURE_DOMAIN_XZ = new InclusiveRange<>(-16, 31);
    private final EnvironmentAttributeMap attributes;
    private final BiomeSpecialEffects specialEffects;
    private final ThreadLocal<Long2FloatLinkedOpenHashMap> temperatureCache = ThreadLocal.withInitial(() -> {
@@ -83,6 +95,60 @@ public final class Biome {
       map.defaultReturnValue(Float.NaN);
       return map;
    });
+
+   public static void validateRegistry(final Registry<Biome> registry, final Map<ResourceKey<?>, Exception> loadingErrors) {
+      record PlacementError(Holder<PlacedFeature> feature, int stepIndex, int featureIndex, InclusiveRange<Integer> domain) {
+      }
+
+      List<PlacementError> placementErrors = new ArrayList<>();
+      Set<Holder<PlacedFeature>> visited = new ObjectOpenHashSet();
+      registry.listElements()
+         .forEach(
+            biome -> {
+               List<HolderSet<PlacedFeature>> steps = biome.value().generationSettings.features();
+
+               for (int stepIndex = 0; stepIndex < steps.size(); stepIndex++) {
+                  int featureIndex = 0;
+
+                  for (Holder<PlacedFeature> feature : steps.get(stepIndex)) {
+                     if (!visited.add(feature)) {
+                        featureIndex++;
+                     } else {
+                        InclusiveRange<Integer> domain = getFeaturePlacementDomainInChunk(feature);
+                        if (!ALLOWED_FEATURE_DOMAIN_XZ.contains(domain)) {
+                           placementErrors.add(new PlacementError(feature, stepIndex, featureIndex, domain));
+                        }
+
+                        featureIndex++;
+                     }
+                  }
+               }
+
+               if (!placementErrors.isEmpty()) {
+                  String description = placementErrors.stream()
+                     .map(error -> error.feature.getRegisteredName() + " (features[" + error.stepIndex + "][" + error.featureIndex + "]) has " + error.domain)
+                     .collect(Collectors.joining(", "));
+                  loadingErrors.put(
+                     biome.key(),
+                     new IllegalStateException(
+                        "Placement(s) cover too large domain in XZ plane, must be at most " + ALLOWED_FEATURE_DOMAIN_XZ + ": " + description
+                     )
+                  );
+                  placementErrors.clear();
+               }
+            }
+         );
+   }
+
+   private static InclusiveRange<Integer> getFeaturePlacementDomainInChunk(final Holder<PlacedFeature> feature) {
+      InclusiveRange<Integer> domain = new InclusiveRange<>(0, 0);
+
+      for (PlacementModifier modifier : feature.value().placement()) {
+         domain = modifier.modifyXzDomain(domain);
+      }
+
+      return domain;
+   }
 
    private Biome(
       final Biome.ClimateSettings climateSettings,

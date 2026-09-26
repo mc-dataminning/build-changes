@@ -23,7 +23,6 @@ import net.minecraft.world.level.levelgen.synth.NormalNoise;
 
 public record NoiseGeneratorSettings(
    NoiseSettings noiseSettings,
-   BlockState defaultBlock,
    BlockState defaultFluid,
    NoiseRouter noiseRouter,
    Holder<MaterialRule> materialRule,
@@ -37,7 +36,6 @@ public record NoiseGeneratorSettings(
    public static final Codec<NoiseGeneratorSettings> DIRECT_CODEC = RecordCodecBuilder.create(
       i -> i.group(
             NoiseSettings.CODEC.fieldOf("noise").forGetter(NoiseGeneratorSettings::noiseSettings),
-            BlockState.CODEC.fieldOf("default_block").forGetter(NoiseGeneratorSettings::defaultBlock),
             BlockState.CODEC.fieldOf("default_fluid").forGetter(NoiseGeneratorSettings::defaultFluid),
             NoiseRouter.CODEC.fieldOf("noise_router").forGetter(NoiseGeneratorSettings::noiseRouter),
             MaterialRule.HOLDER_CODEC.fieldOf("material_rule").forGetter(NoiseGeneratorSettings::materialRule),
@@ -87,7 +85,6 @@ public record NoiseGeneratorSettings(
       NoiseRouter router = NoiseRouterData.end(context.lookup(Registries.DENSITY_FUNCTION));
       return new NoiseGeneratorSettings(
          NoiseSettings.END_NOISE_SETTINGS,
-         Blocks.END_STONE.defaultBlockState(),
          Blocks.AIR.defaultBlockState(),
          router,
          context.lookup(Registries.MATERIAL_RULE).getOrThrow(EndMaterialRules.END),
@@ -108,7 +105,6 @@ public record NoiseGeneratorSettings(
       NoiseRouter router = NoiseRouterData.nether(context.lookup(Registries.DENSITY_FUNCTION), context.lookup(Registries.NOISE));
       return new NoiseGeneratorSettings(
          NoiseSettings.NETHER_NOISE_SETTINGS,
-         Blocks.NETHERRACK.defaultBlockState(),
          Blocks.LAVA.defaultBlockState(),
          router,
          context.lookup(Registries.MATERIAL_RULE).getOrThrow(NetherMaterialRules.NETHER),
@@ -144,7 +140,6 @@ public record NoiseGeneratorSettings(
       NoiseRouter router = NoiseRouterData.overworld(functions, functionNames);
       return new NoiseGeneratorSettings(
          NoiseSettings.OVERWORLD_NOISE_SETTINGS,
-         Blocks.STONE.defaultBlockState(),
          Blocks.WATER.defaultBlockState(),
          router,
          context.lookup(Registries.MATERIAL_RULE).getOrThrow(OverworldMaterialRules.OVERWORLD),
@@ -173,7 +168,6 @@ public record NoiseGeneratorSettings(
       NoiseRouter router = NoiseRouterData.caves(context.lookup(Registries.DENSITY_FUNCTION));
       return new NoiseGeneratorSettings(
          NoiseSettings.CAVES_NOISE_SETTINGS,
-         Blocks.STONE.defaultBlockState(),
          Blocks.WATER.defaultBlockState(),
          router,
          context.lookup(Registries.MATERIAL_RULE).getOrThrow(OverworldMaterialRules.OVERWORLD_CAVES),
@@ -190,7 +184,6 @@ public record NoiseGeneratorSettings(
       NoiseRouter router = NoiseRouterData.floatingIslands(context.lookup(Registries.DENSITY_FUNCTION), context.lookup(Registries.NOISE));
       return new NoiseGeneratorSettings(
          NoiseSettings.FLOATING_ISLANDS_NOISE_SETTINGS,
-         Blocks.STONE.defaultBlockState(),
          Blocks.WATER.defaultBlockState(),
          router,
          context.lookup(Registries.MATERIAL_RULE).getOrThrow(OverworldMaterialRules.OVERWORLD_FLOATING_ISLANDS),

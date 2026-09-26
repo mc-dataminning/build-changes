@@ -186,20 +186,20 @@ public abstract class Projectile extends Entity implements TraceableEntity {
       float zd = Mth.cos(yRot * (float) (Math.PI / 180.0)) * Mth.cos(xRot * (float) (Math.PI / 180.0));
       this.shoot(xd, yd, zd, pow, uncertainty);
       Vec3 sourceMovement = source.getKnownMovement();
-      this.setDeltaMovement(this.getDeltaMovement().add(sourceMovement.x, source.onGround() ? 0.0 : sourceMovement.y, sourceMovement.z));
+      this.addDeltaMovement(sourceMovement.x, source.onGround() ? 0.0 : sourceMovement.y, sourceMovement.z);
    }
 
    @Override
    public void onAboveBubbleColumn(final boolean dragDown, final BlockPos pos) {
       double yd = dragDown ? -0.03 : 0.1;
-      this.setDeltaMovement(this.getDeltaMovement().add(0.0, yd, 0.0));
+      this.addDeltaMovement(0.0, yd, 0.0);
       sendBubbleColumnParticles(this.level(), pos);
    }
 
    @Override
    public void onInsideBubbleColumn(final boolean dragDown) {
       double yd = dragDown ? -0.03 : 0.06;
-      this.setDeltaMovement(this.getDeltaMovement().add(0.0, yd, 0.0));
+      this.addDeltaMovement(0.0, yd, 0.0);
       this.resetFallDistance();
    }
 

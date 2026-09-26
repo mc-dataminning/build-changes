@@ -57,7 +57,7 @@ public class TheEndBiomeSource extends BiomeSource {
    }
 
    @Override
-   public BiomeResolver createResolver(final Climate.Sampler sampler) {
+   public NoiseBiomeResolver createResolver(final Climate.Sampler sampler) {
       return (quartX, quartY, quartZ) -> this.getNoiseBiome(quartX, quartY, quartZ, sampler);
    }
 

@@ -6,7 +6,8 @@ import com.mojang.renderpearl.api.textures.GpuSampler;
 import java.util.OptionalDouble;
 import org.lwjgl.opengl.GL33C;
 
-public class GlSampler implements GpuSampler {
+class GlSampler implements GpuSampler {
+   private final GlDevice device;
    private final int id;
    private final AddressMode addressModeU;
    private final AddressMode addressModeV;
@@ -17,6 +18,7 @@ public class GlSampler implements GpuSampler {
    private boolean closed;
 
    public GlSampler(
+      final GlDevice device,
       final AddressMode addressModeU,
       final AddressMode addressModeV,
       final FilterMode minFilter,
@@ -24,6 +26,7 @@ public class GlSampler implements GpuSampler {
       final int maxAnisotropy,
       final OptionalDouble maxLod
    ) {
+      this.device = device;
       this.addressModeU = addressModeU;
       this.addressModeV = addressModeV;
       this.minFilter = minFilter;
@@ -96,6 +99,7 @@ public class GlSampler implements GpuSampler {
    public void close() {
       if (!this.closed) {
          this.closed = true;
+         this.device.ensureCurrent();
          GL33C.glDeleteSamplers(this.id);
       }
    }

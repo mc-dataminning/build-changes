@@ -57,7 +57,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.FireworkExplosion;
 import net.minecraft.world.item.crafting.RecipeAccess;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeManager;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LevelEvent;
@@ -124,7 +123,6 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
    private final Holder<DimensionType> dimensionTypeRegistration;
    protected final WritableLevelData levelData;
    private final boolean isClientSide;
-   private final BiomeManager biomeManager;
    private final ResourceKey<Level> dimension;
    private final RegistryAccess registryAccess;
    private final DamageSources damageSources;
@@ -138,7 +136,6 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
       final Holder<DimensionType> dimensionTypeRegistration,
       final boolean isClientSide,
       final boolean isDebug,
-      final long biomeZoomSeed,
       final int maxChainedNeighborUpdates
    ) {
       this.levelData = levelData;
@@ -146,7 +143,6 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
       this.dimension = dimension;
       this.isClientSide = isClientSide;
       this.thread = Thread.currentThread();
-      this.biomeManager = new BiomeManager(this, biomeZoomSeed);
       this.isDebug = isDebug;
       this.neighborUpdater = new CollectingNeighborUpdater(this, maxChainedNeighborUpdates);
       this.registryAccess = registryAccess;
@@ -972,9 +968,9 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
 
    public CrashReportCategory fillReportDetails(final CrashReport report) {
       CrashReportCategory category = report.addCategory("Affected level", 1);
-      category.setDetail("All players", () -> {
+      category.setDetail("Players in level", () -> {
          List<? extends Player> players = this.players();
-         return players.size() + " total; " + players.stream().map(Player::debugInfo).collect(Collectors.joining(", "));
+         return players.size() + " total; " + players.stream().map(p -> p.debugInfo(false)).collect(Collectors.joining(", "));
       });
       category.setDetail("Chunk stats", this.getChunkSource()::gatherStats);
       category.setDetail("Level dimension", () -> this.dimension().identifier().toString());
@@ -1073,11 +1069,6 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
 
    public boolean noSave() {
       return false;
-   }
-
-   @Override
-   public BiomeManager getBiomeManager() {
-      return this.biomeManager;
    }
 
    public final boolean isDebug() {

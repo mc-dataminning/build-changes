@@ -8,7 +8,6 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.DyeColor;
 import org.jspecify.annotations.Nullable;
 
 public class NowPlayingToast implements Toast {
@@ -19,7 +18,7 @@ public class NowPlayingToast implements Toast {
    private static final int HEIGHT = 30;
    private static final int MUSIC_NOTES_SPACE = 30;
    private static final int VISIBILITY_DURATION = 5000;
-   private static final int TEXT_COLOR = DyeColor.LIGHT_GRAY.getTextColor();
+   private static final int TEXT_COLOR = -2894893;
    private static final long MUSIC_COLOR_CHANGE_FREQUENCY_MS = 25L;
    private static int musicNoteColorTick;
    private static long lastMusicNoteColorChange;
@@ -39,7 +38,7 @@ public class NowPlayingToast implements Toast {
          graphics.blitSprite(RenderPipelines.GUI_TEXTURED, NOW_PLAYING_BACKGROUND_SPRITE, 0, 0, getWidth(currentSong, font), 30);
          int notesOffset = 7;
          graphics.blitSprite(RenderPipelines.GUI_TEXTURED, MUSIC_NOTES_SPRITE, 7, 7, 16, 16, musicNoteColor);
-         graphics.text(font, getNowPlayingString(currentSong), 30, 15 - 9 / 2, TEXT_COLOR);
+         graphics.text(font, getNowPlayingString(currentSong), 30, 15 - 9 / 2, -2894893);
       }
    }
 

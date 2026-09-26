@@ -19,7 +19,8 @@ public record ServerStatus(
    Optional<ServerStatus.Players> players,
    Optional<ServerStatus.Version> version,
    Optional<ServerStatus.Favicon> favicon,
-   boolean enforcesSecureChat
+   boolean enforcesSecureChat,
+   Optional<String> contact
 ) {
    public static final Codec<ServerStatus> CODEC = RecordCodecBuilder.create(
       i -> i.group(
@@ -27,7 +28,8 @@ public record ServerStatus(
             ServerStatus.Players.CODEC.lenientOptionalFieldOf("players").forGetter(ServerStatus::players),
             ServerStatus.Version.CODEC.lenientOptionalFieldOf("version").forGetter(ServerStatus::version),
             ServerStatus.Favicon.CODEC.lenientOptionalFieldOf("favicon").forGetter(ServerStatus::favicon),
-            Codec.BOOL.lenientOptionalFieldOf("enforcesSecureChat", false).forGetter(ServerStatus::enforcesSecureChat)
+            Codec.BOOL.lenientOptionalFieldOf("enforcesSecureChat", false).forGetter(ServerStatus::enforcesSecureChat),
+            Codec.STRING.lenientOptionalFieldOf("contact").forGetter(ServerStatus::contact)
          )
          .apply(i, ServerStatus::new)
    );

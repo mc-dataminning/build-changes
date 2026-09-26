@@ -11,7 +11,7 @@ import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.JsonOps;
 import net.minecraft.util.LenientJsonParser;
-import net.minecraft.util.Util;
+import net.minecraft.util.datafix.ExtraDataFixUtils;
 import org.slf4j.Logger;
 
 public class UnflattenTextComponentFix extends DataFix {
@@ -32,7 +32,7 @@ public class UnflattenTextComponentFix extends DataFix {
          "UnflattenTextComponentFix",
          textComponentType,
          newTextComponentType,
-         ops -> input -> Util.readTypedOrThrow(newTextComponentType, unflattenJson(ops, (String)input.getSecond()), true).getValue()
+         ops -> input -> ExtraDataFixUtils.readTypedOrThrow(newTextComponentType, unflattenJson(ops, (String)input.getSecond()), true).getValue()
       );
    }
 

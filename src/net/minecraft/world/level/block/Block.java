@@ -26,8 +26,11 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.IdMapper;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -79,6 +82,10 @@ public class Block extends BlockBehaviour implements ItemLike {
    private static final Logger LOGGER = LogUtils.getLogger();
    private final Holder.Reference<Block> builtInRegistryHolder = BuiltInRegistries.BLOCK.createIntrusiveHolder(this);
    public static final IdMapper<BlockState> BLOCK_STATE_REGISTRY = new IdMapper<>();
+   public static final StreamCodec<RegistryFriendlyByteBuf, BlockState> BLOCK_STATE_REGISTRY_STREAM_CODEC = ByteBufCodecs.idMapper(
+         BLOCK_STATE_REGISTRY::byIdOrThrow, BLOCK_STATE_REGISTRY::getIdOrThrow
+      )
+      .cast();
    private static final LoadingCache<VoxelShape, Boolean> SHAPE_FULL_BLOCK_CACHE = CacheBuilder.newBuilder()
       .maximumSize(512L)
       .weakKeys()
@@ -353,14 +360,6 @@ public class Block extends BlockBehaviour implements ItemLike {
    public void destroy(final LevelAccessor level, final BlockPos pos, final BlockState state) {
    }
 
-   public static List<ItemStack> getDrops(final BlockState state, final ServerLevel level, final BlockPos pos, final @Nullable BlockEntity blockEntity) {
-      LootParams.Builder params = new LootParams.Builder(level)
-         .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
-         .withParameter(LootContextParams.TOOL, ItemStack.EMPTY)
-         .withOptionalParameter(LootContextParams.BLOCK_ENTITY, blockEntity);
-      return state.getDrops(params);
-   }
-
    public static List<ItemStack> getDrops(
       final BlockState state,
       final ServerLevel level,
@@ -378,16 +377,12 @@ public class Block extends BlockBehaviour implements ItemLike {
    }
 
    public static void dropResources(final BlockState state, final Level level, final BlockPos pos) {
-      if (level instanceof ServerLevel serverLevel) {
-         getDrops(state, serverLevel, pos, null).forEach(stack -> popResource(level, pos, stack));
-         state.spawnAfterBreak(serverLevel, pos, ItemStack.EMPTY, true);
-      }
+      dropResources(state, level, pos, null, null, ItemStack.EMPTY);
    }
 
    public static void dropResources(final BlockState state, final LevelAccessor level, final BlockPos pos, final @Nullable BlockEntity blockEntity) {
       if (level instanceof ServerLevel serverLevel) {
-         getDrops(state, serverLevel, pos, blockEntity).forEach(stack -> popResource(serverLevel, pos, stack));
-         state.spawnAfterBreak(serverLevel, pos, ItemStack.EMPTY, true);
+         dropResources(state, serverLevel, pos, blockEntity, null, ItemStack.EMPTY);
       }
    }
 
@@ -401,7 +396,7 @@ public class Block extends BlockBehaviour implements ItemLike {
    ) {
       if (level instanceof ServerLevel serverLevel) {
          getDrops(state, serverLevel, pos, blockEntity, breaker, tool).forEach(stack -> popResource(level, pos, stack));
-         state.spawnAfterBreak(serverLevel, pos, tool, true);
+         state.spawnAfterBreak(serverLevel, pos, tool, true, breaker);
       }
    }
 

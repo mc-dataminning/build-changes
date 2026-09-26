@@ -49,21 +49,22 @@ import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelHeightAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.NoiseColumn;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.BiomeManager;
-import net.minecraft.world.level.biome.BiomeResolver;
 import net.minecraft.world.level.biome.BiomeSource;
+import net.minecraft.world.level.biome.CachedChunkBiomeResolver;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.biome.FeatureSorter;
 import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.biome.NoiseBiomeResolver;
 import net.minecraft.world.level.chunk.status.ChunkStatus;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.LegacyRandomSource;
+import net.minecraft.world.level.levelgen.NoiseColumn;
 import net.minecraft.world.level.levelgen.RandomState;
 import net.minecraft.world.level.levelgen.RandomSupport;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
@@ -123,22 +124,25 @@ public abstract class ChunkGenerator {
       return BuiltInRegistries.CHUNK_GENERATOR.getResourceKey(this.codec()).map(ResourceKey::identifier);
    }
 
-   public CompletableFuture<ChunkAccess> createBiomes(
-      final RandomState randomState, final Blender blender, final StructureManager structureManager, final ChunkAccess protoChunk
+   public CompletableFuture<ChunkAccess> createNoiseBiomes(
+      final RandomState randomState, final Blender blender, final ProtoChunk protoChunk, final PalettedContainerFactory containerFactory
    ) {
       return CompletableFuture.supplyAsync(() -> {
-         this.doCreateBiomes(blender, randomState, protoChunk);
+         this.doCreateNoiseBiomes(blender, randomState, protoChunk, containerFactory);
          return protoChunk;
-      }, Util.backgroundExecutor().forName("createBiomes"));
+      }, Util.backgroundExecutor().forName("createNoiseBiomes"));
    }
 
-   private void doCreateBiomes(final Blender blender, final RandomState randomState, final ChunkAccess protoChunk) {
+   private void doCreateNoiseBiomes(
+      final Blender blender, final RandomState randomState, final ProtoChunk protoChunk, final PalettedContainerFactory containerFactory
+   ) {
       DensityBufferPool bufferPool = randomState.acquireDensityBufferPool();
+      SamplerContext samplerContext = SamplerContext.builder().enableCaches().useBufferArena(bufferPool).build();
 
       try {
-         Climate.Sampler climateSampler = randomState.createClimateSampler(SamplerContext.builder().enableCaches().useBufferArena(bufferPool).build());
+         Climate.Sampler climateSampler = randomState.createClimateSampler(samplerContext);
          ChunkPos pos = protoChunk.getPos();
-         BiomeResolver biomeResolver = this.biomeSource
+         NoiseBiomeResolver noiseBiomeResolver = this.biomeSource
             .createResolverForChunk(
                climateSampler,
                QuartPos.fromBlock(pos.getMinBlockX()),
@@ -148,14 +152,22 @@ public abstract class ChunkGenerator {
                QuartPos.fromBlock(protoChunk.getHeight()),
                QuartPos.fromBlock(16)
             );
-         protoChunk.fillBiomesFromNoise(this.decorateBiomeResolver(blender, protoChunk, biomeResolver));
+         protoChunk.fillNoiseBiomesFromNoise(containerFactory, this.decorateBiomeResolver(blender, protoChunk, noiseBiomeResolver));
       } finally {
+         samplerContext.clearCaches();
          randomState.releaseDensityBufferPool(bufferPool);
       }
    }
 
-   protected BiomeResolver decorateBiomeResolver(final Blender blender, final ChunkAccess protoChunk, final BiomeResolver biomeResolver) {
+   protected NoiseBiomeResolver decorateBiomeResolver(final Blender blender, final ProtoChunk protoChunk, final NoiseBiomeResolver biomeResolver) {
       return biomeResolver;
+   }
+
+   public CompletableFuture<ChunkAccess> createBiomes(final NoiseBiomeResolver noiseBiomeResolver, final RandomState randomState, final ChunkAccess protoChunk) {
+      return CompletableFuture.supplyAsync(() -> {
+         protoChunk.fillBiomes(new CachedChunkBiomeResolver(protoChunk, noiseBiomeResolver, BiomeManager.obfuscateSeed(randomState.seed())));
+         return protoChunk;
+      }, Util.backgroundExecutor().forName("createBiomes"));
    }
 
    public @Nullable Pair<BlockPos, Holder<Structure>> findNearestMapStructure(
@@ -361,10 +373,7 @@ public abstract class ChunkGenerator {
          Set<Holder<Biome>> possibleBiomes = new ObjectArraySet();
          ChunkPos.rangeClosed(sectionPos.chunk(), 1).forEach(chunkPos -> {
             ChunkAccess chunkInRange = level.getChunk(chunkPos.x(), chunkPos.z());
-
-            for (LevelChunkSection section : chunkInRange.getSections()) {
-               section.getBiomes().getAll(possibleBiomes::add);
-            }
+            chunkInRange.collectBiomesInPalette(possibleBiomes);
          });
          possibleBiomes.retainAll(this.biomeSource.possibleBiomes());
          int featureStepCount = featureList.size();
@@ -668,7 +677,6 @@ public abstract class ChunkGenerator {
       Blender blender,
       RandomState randomState,
       StructureManager structureManager,
-      BiomeManager biomeManager,
       @Nullable WorldGenRegion carverBiomeRegion,
       Set<Holder<Biome>> possibleBiomes
    );
@@ -677,18 +685,21 @@ public abstract class ChunkGenerator {
 
    public abstract int getMinY();
 
-   public abstract int getBaseHeight(int x, int z, final Heightmap.Types type, final LevelHeightAccessor heightAccessor, final RandomState randomState);
-
    public abstract NoiseColumn getBaseColumn(final int x, final int z, final LevelHeightAccessor heightAccessor, final RandomState randomState);
 
    public int getFirstFreeHeight(final int x, final int z, final Heightmap.Types type, final LevelHeightAccessor heightAccessor, final RandomState randomState) {
-      return this.getBaseHeight(x, z, type, heightAccessor, randomState);
+      NoiseColumn baseColumn = this.getBaseColumn(x, z, heightAccessor, randomState);
+
+      return switch (type) {
+         case WORLD_SURFACE, WORLD_SURFACE_WG -> baseColumn.topBlockY() + 1;
+         default -> baseColumn.findTopSolidBlockY() + 1;
+      };
    }
 
    public int getFirstOccupiedHeight(
       final int x, final int z, final Heightmap.Types type, final LevelHeightAccessor heightAccessor, final RandomState randomState
    ) {
-      return this.getBaseHeight(x, z, type, heightAccessor, randomState) - 1;
+      return this.getFirstFreeHeight(x, z, type, heightAccessor, randomState) - 1;
    }
 
    public abstract void addDebugScreenInfo(

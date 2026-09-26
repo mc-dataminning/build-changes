@@ -14,7 +14,6 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
-import net.minecraft.util.Util;
 import net.minecraft.util.datafix.ExtraDataFixUtils;
 import org.jspecify.annotations.Nullable;
 
@@ -65,7 +64,7 @@ public class TextComponentHoverAndClickEventFix extends DataFix {
             });
             return !hasHoverOrClick
                ? textComponent
-               : Util.writeAndReadTypedOrThrow(
+               : ExtraDataFixUtils.writeAndReadTypedOrThrow(
                      ExtraDataFixUtils.cast(patchedInputType, textComponent, ops), newTextComponentType, TextComponentHoverAndClickEventFix::fixTextComponent
                   )
                   .getValue();

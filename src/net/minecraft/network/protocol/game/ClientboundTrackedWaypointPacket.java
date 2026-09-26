@@ -3,7 +3,6 @@ package net.minecraft.network.protocol.game;
 import io.netty.buffer.ByteBuf;
 import java.util.UUID;
 import java.util.function.BiConsumer;
-import java.util.function.IntFunction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -69,18 +68,23 @@ public record ClientboundTrackedWaypointPacket(ClientboundTrackedWaypointPacket.
    }
 
    private enum Operation {
-      TRACK(WaypointManager::trackWaypoint),
-      UNTRACK(WaypointManager::untrackWaypoint),
-      UPDATE(WaypointManager::updateWaypoint);
+      TRACK(0, WaypointManager::trackWaypoint),
+      UNTRACK(1, WaypointManager::untrackWaypoint),
+      UPDATE(2, WaypointManager::updateWaypoint);
 
+      private final int id;
       private final BiConsumer<TrackedWaypointManager, TrackedWaypoint> action;
-      public static final IntFunction<ClientboundTrackedWaypointPacket.Operation> BY_ID = ByIdMap.continuous(
-         Enum::ordinal, values(), ByIdMap.OutOfBoundsStrategy.WRAP
+      public static final StreamCodec<ByteBuf, ClientboundTrackedWaypointPacket.Operation> STREAM_CODEC = ByteBufCodecs.enumCodec(
+         ClientboundTrackedWaypointPacket.Operation.class, ClientboundTrackedWaypointPacket.Operation::getId, ByIdMap.OutOfBoundsStrategy.WRAP
       );
-      public static final StreamCodec<ByteBuf, ClientboundTrackedWaypointPacket.Operation> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Enum::ordinal);
 
-      Operation(final BiConsumer<TrackedWaypointManager, TrackedWaypoint> action) {
+      Operation(final int id, final BiConsumer<TrackedWaypointManager, TrackedWaypoint> action) {
+         this.id = id;
          this.action = action;
+      }
+
+      private int getId() {
+         return this.id;
       }
    }
 }

@@ -10,7 +10,6 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
-import java.util.function.IntFunction;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -39,8 +38,9 @@ public enum Direction implements Directional, StringRepresentable {
 
    public static final StringRepresentable.EnumCodec<Direction> CODEC = StringRepresentable.fromEnum(Direction::values);
    public static final Codec<Direction> VERTICAL_CODEC = CODEC.validate(Direction::verifyVertical);
-   public static final IntFunction<Direction> BY_ID = ByIdMap.continuous(Direction::get3DDataValue, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
-   public static final StreamCodec<ByteBuf, Direction> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Direction::get3DDataValue);
+   public static final StreamCodec<ByteBuf, Direction> STREAM_CODEC = ByteBufCodecs.enumCodec(
+      Direction.class, Direction::get3DDataValue, ByIdMap.OutOfBoundsStrategy.WRAP
+   );
    @Deprecated
    public static final Codec<Direction> LEGACY_ID_CODEC = Codec.BYTE.xmap(Direction::from3DDataValue, d -> (byte)d.get3DDataValue());
    @Deprecated

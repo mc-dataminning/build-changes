@@ -8,7 +8,12 @@ import java.util.List;
 import org.jspecify.annotations.Nullable;
 
 public class FrameBufferCache {
+   private final GlStateManager stateManager;
    private final Object2IntMap<FrameBufferCache.CacheKey> cache = new Object2IntOpenHashMap();
+
+   public FrameBufferCache(final GlStateManager stateManager) {
+      this.stateManager = stateManager;
+   }
 
    public int getFbo(final DirectStateAccess dsa, final List<@Nullable FrameBufferAttachment> colorTextures, final @Nullable FrameBufferAttachment depthTexture) {
       return this.getFbo(dsa, colorTextures, depthTexture, 0);
@@ -67,7 +72,7 @@ public class FrameBufferCache {
          }
 
          int fboId = this.cache.removeInt(key);
-         GlStateManager._glDeleteFramebuffers(fboId);
+         this.stateManager._glDeleteFramebuffers(fboId);
       }
    }
 

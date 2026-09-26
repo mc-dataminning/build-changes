@@ -30,9 +30,9 @@ import net.minecraft.world.level.LevelHeightAccessor;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeResolver;
 import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.biome.Climate;
+import net.minecraft.world.level.biome.NoiseBiomeResolver;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -205,7 +205,7 @@ public abstract class Structure {
       ChunkGenerator chunkGenerator,
       BiomeSource biomeSource,
       Climate.Sampler climateSampler,
-      BiomeResolver biomeResolver,
+      NoiseBiomeResolver noiseBiomeResolver,
       RandomState randomState,
       StructureTemplateManager structureTemplateManager,
       WorldgenRandom random,
@@ -252,7 +252,8 @@ public abstract class Structure {
          BlockPos startPos = stub.position();
          return this.validBiome
             .test(
-               this.biomeResolver.getNoiseBiome(QuartPos.fromBlock(startPos.getX()), QuartPos.fromBlock(startPos.getY()), QuartPos.fromBlock(startPos.getZ()))
+               this.noiseBiomeResolver
+                  .getNoiseBiome(QuartPos.fromBlock(startPos.getX()), QuartPos.fromBlock(startPos.getY()), QuartPos.fromBlock(startPos.getZ()))
             );
       }
 
@@ -261,7 +262,7 @@ public abstract class Structure {
          int quartZ = QuartPos.fromBlock(blockZ);
          int minQuartY = QuartPos.fromBlock(minBlockY);
          int maxQuartY = QuartPos.fromBlock(maxBlockY);
-         BiomeResolver columnResolver = this.biomeSource
+         NoiseBiomeResolver columnResolver = this.biomeSource
             .createResolverForChunk(this.climateSampler, quartX, minQuartY, quartZ, 1, maxQuartY - minQuartY + 1, 1);
 
          for (int quartY = minQuartY; quartY <= maxQuartY; quartY++) {

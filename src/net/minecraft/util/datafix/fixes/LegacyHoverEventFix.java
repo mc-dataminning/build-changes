@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import net.minecraft.util.GsonHelper;
-import net.minecraft.util.Util;
+import net.minecraft.util.datafix.ExtraDataFixUtils;
 
 public class LegacyHoverEventFix extends DataFix {
    public LegacyHoverEventFix(final Schema outputSchema) {
@@ -77,7 +77,7 @@ public class LegacyHoverEventFix extends DataFix {
 
    private static <H> H fixShowTextHover(final Type<H> hoverEventType, final Dynamic<?> oldHoverEvent) {
       Dynamic<?> newHoverEvent = oldHoverEvent.renameField("value", "contents");
-      return (H)Util.readTypedOrThrow(hoverEventType, newHoverEvent).getValue();
+      return (H)ExtraDataFixUtils.readTypedOrThrow(hoverEventType, newHoverEvent).getValue();
    }
 
    private static <H> H createPlaceholderHover(final Type<H> hoverEventType, final Dynamic<?> oldHoverEvent) {
@@ -86,6 +86,6 @@ public class LegacyHoverEventFix extends DataFix {
          JavaOps.INSTANCE,
          Map.of("action", "show_text", "contents", Map.<String, String>of("text", "Legacy hoverEvent: " + GsonHelper.toStableString(oldJson)))
       );
-      return (H)Util.readTypedOrThrow(hoverEventType, placeholderHoverEvent).getValue();
+      return (H)ExtraDataFixUtils.readTypedOrThrow(hoverEventType, placeholderHoverEvent).getValue();
    }
 }

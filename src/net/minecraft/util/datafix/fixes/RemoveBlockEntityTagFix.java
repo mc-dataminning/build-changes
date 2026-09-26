@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import net.minecraft.util.Util;
 import net.minecraft.util.datafix.ExtraDataFixUtils;
 import net.minecraft.util.datafix.schemas.NamespacedSchema;
 
@@ -137,6 +136,6 @@ public class RemoveBlockEntityTagFix extends DataFix {
       String blockEntityId = maybeBlockEntity.get().getOptional(blockEntityIdF).orElse("");
       return !this.blockEntityIdsToDrop.contains(blockEntityId)
          ? tag
-         : Util.writeAndReadTypedOrThrow(tag, tag.getType(), tagData -> tagData.remove(blockEntityFieldName));
+         : ExtraDataFixUtils.writeAndReadTypedOrThrow(tag, tag.getType(), tagData -> tagData.remove(blockEntityFieldName));
    }
 }

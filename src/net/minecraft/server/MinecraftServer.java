@@ -62,7 +62,9 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.features.MiscOverworldFeatures;
 import net.minecraft.gametest.framework.GameTestTicker;
 import net.minecraft.nbt.Tag;
+import net.minecraft.network.Connection;
 import net.minecraft.network.PacketProcessor;
+import net.minecraft.network.ServerConnectionDetails;
 import net.minecraft.network.chat.ChatDecorator;
 import net.minecraft.network.chat.ChatType;
 import net.minecraft.network.chat.Component;
@@ -154,7 +156,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelSettings;
 import net.minecraft.world.level.TicketStorage;
 import net.minecraft.world.level.WorldDataConfiguration;
-import net.minecraft.world.level.biome.BiomeManager;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.chunk.status.ChunkStatus;
 import net.minecraft.world.level.chunk.storage.ChunkIOErrorReporter;
@@ -414,14 +415,12 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
       boolean isDebug = this.worldData.isDebugWorld();
       Registry<LevelStem> dimensions = this.registries.compositeAccess().lookupOrThrow(Registries.LEVEL_STEM);
       WorldOptions worldOptions = this.worldGenSettings.options();
-      long seed = worldOptions.seed();
-      long biomeZoomSeed = BiomeManager.obfuscateSeed(seed);
       List<CustomSpawner> overworldCustomSpawners = ImmutableList.of(
          new PhantomSpawner(), new PatrolSpawner(), new CatSpawner(), new VillageSiege(), new WanderingTraderSpawner(this.savedDataStorage)
       );
       LevelStem overworldData = dimensions.getValue(LevelStem.OVERWORLD);
       ServerLevel overworld = new ServerLevel(
-         this, this.executor, this.storageSource, levelData, Level.OVERWORLD, overworldData, isDebug, biomeZoomSeed, overworldCustomSpawners, true
+         this, this.executor, this.storageSource, levelData, Level.OVERWORLD, overworldData, isDebug, overworldCustomSpawners, true
       );
       this.levels.put(Level.OVERWORLD, overworld);
       this.scoreboard.load(this.savedDataStorage.computeIfAbsent(ScoreboardSaveData.TYPE).getData());
@@ -439,7 +438,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
 
             try {
                overworld.fillReportDetails(report);
-            } catch (Throwable var19) {
+            } catch (Throwable var15) {
             }
 
             throw new ReportedException(report);
@@ -457,9 +456,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          if (name != LevelStem.OVERWORLD) {
             ResourceKey<Level> dimension = ResourceKey.create(Registries.DIMENSION, name.identifier());
             DerivedLevelData derivedLevelData = new DerivedLevelData(this.worldData, levelData);
-            level = new ServerLevel(
-               this, this.executor, this.storageSource, derivedLevelData, dimension, entry.getValue(), isDebug, biomeZoomSeed, ImmutableList.of(), false
-            );
+            level = new ServerLevel(this, this.executor, this.storageSource, derivedLevelData, dimension, entry.getValue(), isDebug, ImmutableList.of(), false);
             this.levels.put(dimension, level);
          } else {
             level = overworld;
@@ -1040,7 +1037,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          Optional.of(players),
          Optional.of(ServerStatus.Version.current()),
          Optional.ofNullable(this.statusIcon),
-         this.enforceSecureProfile()
+         this.enforceSecureProfile(),
+         Optional.ofNullable(this.statusContactDetails())
       );
    }
 
@@ -1204,7 +1202,15 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
       systemReport.setDetail("Server Running", () -> Boolean.toString(this.running));
       if (this.playerList != null) {
          systemReport.setDetail(
-            "Player Count", () -> this.playerList.getPlayerCount() + " / " + this.playerList.getMaxPlayers() + "; " + this.playerList.getPlayers()
+            "All players",
+            () -> {
+               List<ServerPlayer> players = this.playerList.getPlayers();
+               return players.size()
+                  + " / "
+                  + this.playerList.getMaxPlayers()
+                  + "; "
+                  + players.stream().map(p -> p.debugInfo(true)).collect(Collectors.joining(", "));
+            }
          );
       }
 
@@ -1418,6 +1424,10 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
       return true;
    }
 
+   public boolean enableLegacyStatus() {
+      return true;
+   }
+
    public boolean hidesOnlinePlayers() {
       return false;
    }
@@ -1475,6 +1485,10 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
 
    public boolean enforceSecureProfile() {
       return false;
+   }
+
+   public @Nullable String statusContactDetails() {
+      return null;
    }
 
    public long getNextTickTime() {
@@ -2123,6 +2137,11 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
 
    public boolean acceptsTransfers() {
       return false;
+   }
+
+   @Override
+   public boolean acceptsConnection(final Connection connection, final ServerConnectionDetails details) {
+      return true;
    }
 
    private void storeChunkIoError(final CrashReport report, final ChunkPos pos, final RegionStorageInfo storageInfo) {

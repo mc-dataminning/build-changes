@@ -3,6 +3,7 @@ package net.minecraft.server.network;
 import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
 import io.netty.channel.ChannelFutureListener;
+import java.util.Map;
 import net.minecraft.CrashReport;
 import net.minecraft.CrashReportCategory;
 import net.minecraft.ReportedException;
@@ -20,7 +21,11 @@ import net.minecraft.network.protocol.common.ServerboundCustomPayloadPacket;
 import net.minecraft.network.protocol.common.ServerboundKeepAlivePacket;
 import net.minecraft.network.protocol.common.ServerboundPongPacket;
 import net.minecraft.network.protocol.common.ServerboundResourcePackPacket;
+import net.minecraft.network.protocol.common.custom.BrandPayload;
+import net.minecraft.network.protocol.common.custom.ModListPayload;
+import net.minecraft.network.protocol.common.custom.PropertyMap;
 import net.minecraft.network.protocol.cookie.ServerboundCookieResponsePacket;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ClientInformation;
 import net.minecraft.server.players.NameAndId;
@@ -46,6 +51,7 @@ public abstract class ServerCommonPacketListenerImpl implements ServerCommonPack
    private boolean closed = false;
    private int latency;
    private volatile boolean suspendFlushingOnServerThread = false;
+   private final ClientDebugInfo debugInfo;
 
    public ServerCommonPacketListenerImpl(final MinecraftServer server, final Connection connection, final CommonListenerCookie cookie) {
       this.server = server;
@@ -53,6 +59,7 @@ public abstract class ServerCommonPacketListenerImpl implements ServerCommonPack
       this.keepAliveTime = Util.getMillis();
       this.latency = cookie.latency();
       this.transferred = cookie.transferred();
+      this.debugInfo = cookie.debugInfo();
    }
 
    private void close() {
@@ -93,6 +100,16 @@ public abstract class ServerCommonPacketListenerImpl implements ServerCommonPack
 
    @Override
    public void handleCustomPayload(final ServerboundCustomPayloadPacket packet) {
+      PacketUtils.ensureRunningOnSameThread(packet, this, this.server.packetProcessor());
+      switch (packet.payload()) {
+         case BrandPayload(String brand):
+            this.debugInfo.setBrand(brand);
+            break;
+         case ModListPayload(Map<Identifier, PropertyMap> entries):
+            this.debugInfo.appendModInfo(entries);
+            break;
+         default:
+      }
    }
 
    @Override
@@ -181,7 +198,6 @@ public abstract class ServerCommonPacketListenerImpl implements ServerCommonPack
    public void disconnect(final DisconnectionDetails details) {
       this.connection.send(new ClientboundDisconnectPacket(details.reason()), PacketSendListener.thenRun(() -> this.connection.disconnect(details)));
       this.connection.setReadOnly();
-      this.server.executeBlocking(this.connection::handleDisconnection);
    }
 
    protected boolean isSingleplayerOwner() {
@@ -199,7 +215,11 @@ public abstract class ServerCommonPacketListenerImpl implements ServerCommonPack
       return this.latency;
    }
 
+   public ClientDebugInfo debugInfo() {
+      return this.debugInfo;
+   }
+
    protected CommonListenerCookie createCookie(final ClientInformation clientInformation) {
-      return new CommonListenerCookie(this.playerProfile(), this.latency, clientInformation, this.transferred);
+      return new CommonListenerCookie(this.playerProfile(), this.latency, clientInformation, this.transferred, this.debugInfo);
    }
 }

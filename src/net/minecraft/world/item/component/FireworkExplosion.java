@@ -3,11 +3,11 @@ package net.minecraft.world.item.component;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.ArrayList;
 import java.util.function.Consumer;
-import java.util.function.IntFunction;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.network.chat.CommonComponents;
@@ -15,11 +15,13 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
 import net.minecraft.util.StringRepresentable;
+import net.minecraft.util.Util;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.block.ColorCollection;
+import org.jspecify.annotations.Nullable;
 
 public record FireworkExplosion(FireworkExplosion.Shape shape, IntList colors, IntList fadeColors, boolean hasTrail, boolean hasTwinkle)
    implements TooltipProvider {
@@ -51,7 +53,23 @@ public record FireworkExplosion(FireworkExplosion.Shape shape, IntList colors, I
       FireworkExplosion::hasTwinkle,
       FireworkExplosion::new
    );
+   public static final ColorCollection<Integer> DEFAULT_COLOR_TINTS = new ColorCollection<>(
+      15790320, 15435844, 12801229, 6719955, 14602026, 4312372, 14188952, 4408131, 11250603, 2651799, 8073150, 2437522, 5320730, 3887386, 11743532, 1973019
+   );
+   private static final Int2ObjectOpenHashMap<DyeColor> COLOR_TO_DYE = Util.make(
+      new Int2ObjectOpenHashMap(), map -> ColorCollection.zipApply(DEFAULT_COLOR_TINTS, ColorCollection.VALUES, map::put)
+   );
+   private static final ColorCollection<Component> DEFAULT_COLOR_NAMES = ColorCollection.VALUES
+      .map(dye -> Component.translatable("item.minecraft.firework_star." + dye.getName()));
    private static final Component CUSTOM_COLOR_NAME = Component.translatable("item.minecraft.firework_star.custom_color");
+
+   private static @Nullable DyeColor byFireworkTint(final int color) {
+      return (DyeColor)COLOR_TO_DYE.get(color);
+   }
+
+   public static int defaultFireworkTint(final DyeColor dyeColor) {
+      return DEFAULT_COLOR_TINTS.pick(dyeColor);
+   }
 
    @Override
    public void addToTooltip(final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components) {
@@ -94,8 +112,8 @@ public record FireworkExplosion(FireworkExplosion.Shape shape, IntList colors, I
    }
 
    private static Component getColorName(final int colorIndex) {
-      DyeColor color = DyeColor.byFireworkColor(colorIndex);
-      return color == null ? CUSTOM_COLOR_NAME : Component.translatable("item.minecraft.firework_star." + color.getName());
+      DyeColor color = byFireworkTint(colorIndex);
+      return color == null ? CUSTOM_COLOR_NAME : DEFAULT_COLOR_NAMES.pick(color);
    }
 
    public FireworkExplosion withFadeColors(final IntList fadeColors) {
@@ -109,10 +127,9 @@ public record FireworkExplosion(FireworkExplosion.Shape shape, IntList colors, I
       CREEPER(3, "creeper"),
       BURST(4, "burst");
 
-      private static final IntFunction<FireworkExplosion.Shape> BY_ID = ByIdMap.continuous(
-         FireworkExplosion.Shape::getId, values(), ByIdMap.OutOfBoundsStrategy.ZERO
+      public static final StreamCodec<ByteBuf, FireworkExplosion.Shape> STREAM_CODEC = ByteBufCodecs.enumCodec(
+         FireworkExplosion.Shape.class, FireworkExplosion.Shape::getId
       );
-      public static final StreamCodec<ByteBuf, FireworkExplosion.Shape> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, FireworkExplosion.Shape::getId);
       public static final Codec<FireworkExplosion.Shape> CODEC = StringRepresentable.fromValues(FireworkExplosion.Shape::values);
       private final int id;
       private final String name;
@@ -128,10 +145,6 @@ public record FireworkExplosion(FireworkExplosion.Shape shape, IntList colors, I
 
       public int getId() {
          return this.id;
-      }
-
-      public static FireworkExplosion.Shape byId(final int id) {
-         return BY_ID.apply(id);
       }
 
       @Override

@@ -70,7 +70,7 @@ public class EntityDataSerializers {
          return value.copy();
       }
    };
-   public static final EntityDataSerializer<BlockState> BLOCK_STATE = EntityDataSerializer.forValueType(ByteBufCodecs.idMapper(Block.BLOCK_STATE_REGISTRY));
+   public static final EntityDataSerializer<BlockState> BLOCK_STATE = EntityDataSerializer.forValueType(Block.BLOCK_STATE_REGISTRY_STREAM_CODEC);
    private static final StreamCodec<ByteBuf, Optional<BlockState>> OPTIONAL_BLOCK_STATE_CODEC = new StreamCodec<ByteBuf, Optional<BlockState>>() {
       public void encode(final ByteBuf output, final Optional<BlockState> value) {
          if (value.isPresent()) {

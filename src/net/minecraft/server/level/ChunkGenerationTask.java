@@ -76,7 +76,7 @@ public class ChunkGenerationTask {
    }
 
    private void releaseClaim() {
-      GenerationChunkHolder chunkHolder = this.cache.get(this.pos.x(), this.pos.z());
+      GenerationChunkHolder chunkHolder = this.cache.get(this.pos);
       chunkHolder.removeTask(this);
       this.cache.forEach(this.chunkMap::releaseGeneration);
    }
@@ -86,7 +86,7 @@ public class ChunkGenerationTask {
          return true;
       }
 
-      ChunkStatus highestGeneratedStatus = this.cache.get(this.pos.x(), this.pos.z()).getPersistedStatus();
+      ChunkStatus highestGeneratedStatus = this.cache.get(this.pos).getPersistedStatus();
       if (highestGeneratedStatus != null && !highestGeneratedStatus.isBefore(this.targetStatus)) {
          ChunkDependencies dependencies = ChunkPyramid.LOADING_PYRAMID.getStepTo(this.targetStatus).accumulatedDependencies();
          int range = dependencies.getRadius();
@@ -109,7 +109,7 @@ public class ChunkGenerationTask {
    }
 
    public GenerationChunkHolder getCenter() {
-      return this.cache.get(this.pos.x(), this.pos.z());
+      return this.cache.get(this.pos);
    }
 
    private void scheduleLayer(final ChunkStatus status, final boolean needsGeneration) {

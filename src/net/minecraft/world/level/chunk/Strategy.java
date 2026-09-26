@@ -47,7 +47,7 @@ public abstract class Strategy<T> {
       };
    }
 
-   public static <T> Strategy<T> createForBiomes(final IdMap<T> registry) {
+   public static <T> Strategy<T> createForNoiseBiomes(final IdMap<T> registry) {
       return new Strategy<T>(registry, 2) {
          @Override
          public Configuration getConfigurationForBitCount(final int entryBits) {
@@ -62,8 +62,32 @@ public abstract class Strategy<T> {
       };
    }
 
+   public static <T> Strategy<T> createForBiomes(final IdMap<T> registry) {
+      return new Strategy<T>(registry, 4) {
+         @Override
+         public Configuration getConfigurationForBitCount(final int entryBits) {
+            return switch (entryBits) {
+               case 0 -> Strategy.ZERO_BITS;
+               case 1 -> Strategy.ONE_BIT_LINEAR;
+               case 2 -> Strategy.TWO_BITS_LINEAR;
+               case 3 -> Strategy.THREE_BITS_LINEAR;
+               case 4 -> Strategy.FOUR_BITS_LINEAR;
+               case 5 -> Strategy.FIVE_BITS_HASHMAP;
+               case 6 -> Strategy.SIX_BITS_HASHMAP;
+               case 7 -> Strategy.SEVEN_BITS_HASHMAP;
+               case 8 -> Strategy.EIGHT_BITS_HASHMAP;
+               default -> new Configuration.Global(this.globalPaletteBitsInMemory, entryBits);
+            };
+         }
+      };
+   }
+
    public int entryCount() {
       return this.entryCount;
+   }
+
+   public int countPerAxis() {
+      return 1 << this.bitsPerAxis;
    }
 
    public int getIndex(final int x, final int y, final int z) {

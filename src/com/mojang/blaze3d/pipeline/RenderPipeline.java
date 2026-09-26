@@ -1,6 +1,14 @@
-package com.mojang.renderpearl.api.pipeline;
+package com.mojang.blaze3d.pipeline;
 
-import com.mojang.renderpearl.api.vertex.VertexFormat;
+import com.mojang.blaze3d.vertex.VertexFormat;
+import com.mojang.renderpearl.api.GpuFormat;
+import com.mojang.renderpearl.api.pipeline.BindGroupLayout;
+import com.mojang.renderpearl.api.pipeline.ColorTargetState;
+import com.mojang.renderpearl.api.pipeline.CompiledRenderPipeline;
+import com.mojang.renderpearl.api.pipeline.DepthStencilState;
+import com.mojang.renderpearl.api.pipeline.PolygonMode;
+import com.mojang.renderpearl.api.pipeline.PrimitiveTopology;
+import com.mojang.renderpearl.api.pipeline.ShaderType;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import it.unimi.dsi.fastutil.objects.ReferenceArrayList;
 import it.unimi.dsi.fastutil.objects.ReferenceLists;
@@ -25,6 +33,7 @@ public class RenderPipeline {
    private final ShaderDefines shaderDefines;
    private final List<BindGroupLayout> bindGroupLayouts;
    private final @Nullable DepthStencilState depthStencilState;
+   private final GpuFormat depthStencilFormat;
    private final PolygonMode polygonMode;
    private final boolean cull;
    private final List<@Nullable ColorTargetState> colorTargetStates;
@@ -41,6 +50,7 @@ public class RenderPipeline {
       final Collection<BindGroupLayout> bindGroupLayouts,
       final @Nullable ColorTargetState[] colorTargetStates,
       final @Nullable DepthStencilState depthStencilState,
+      final GpuFormat depthStencilFormat,
       final PolygonMode polygonMode,
       final boolean cull,
       final @Nullable VertexFormat[] vertexFormatPerBuffer,
@@ -53,6 +63,7 @@ public class RenderPipeline {
       this.shaderDefines = shaderDefines;
       this.bindGroupLayouts = List.copyOf(bindGroupLayouts);
       this.depthStencilState = depthStencilState;
+      this.depthStencilFormat = depthStencilFormat;
       this.polygonMode = polygonMode;
       this.cull = cull;
       this.colorTargetStates = ReferenceLists.unmodifiable(new ReferenceArrayList(colorTargetStates));
@@ -89,6 +100,10 @@ public class RenderPipeline {
 
    public @Nullable DepthStencilState getDepthStencilState() {
       return this.depthStencilState;
+   }
+
+   public GpuFormat getDepthStencilFormat() {
+      return this.depthStencilFormat;
    }
 
    public Identifier getLocation() {
@@ -144,11 +159,12 @@ public class RenderPipeline {
       private Optional<ShaderDefines.Builder> definesBuilder = Optional.empty();
       private Optional<Set<BindGroupLayout>> bindGroupLayouts = Optional.empty();
       private Optional<DepthStencilState> depthStencilState = Optional.empty();
+      private Optional<GpuFormat> depthStencilFormat = Optional.empty();
       private Optional<PolygonMode> polygonMode = Optional.empty();
       private Optional<Boolean> cull = Optional.empty();
       private final @Nullable ColorTargetState[] colorTargetStates = new ColorTargetState[8];
       private int activeColorTargetStateCount;
-      private final @Nullable VertexFormat[] vertexFormatPerBuffer = new VertexFormat[16];
+      private final @Nullable VertexFormat[] vertexFormatPerBuffer = new VertexFormat[CompiledRenderPipeline.CreateInfo.MAX_VERTEX_BUFFERS];
       private Optional<PrimitiveTopology> primitiveTopology = Optional.empty();
       private int pushConstantSize = 0;
 
@@ -264,6 +280,15 @@ public class RenderPipeline {
          return this;
       }
 
+      public RenderPipeline.Builder withDepthStencilFormat(final GpuFormat depthStencilFormat) {
+         if (!depthStencilFormat.hasDepthAspect()) {
+            throw new IllegalArgumentException("Depth/stencil format must have a depth aspect");
+         }
+
+         this.depthStencilFormat = Optional.of(depthStencilFormat);
+         return this;
+      }
+
       public RenderPipeline.Builder withVertexBinding(final int bindingIndex, final VertexFormat vertexFormat) {
          this.vertexFormatPerBuffer[bindingIndex] = vertexFormat;
          return this;
@@ -308,6 +333,10 @@ public class RenderPipeline {
             this.depthStencilState = snippet.depthStencilState;
          }
 
+         if (snippet.depthStencilFormat.isPresent()) {
+            this.depthStencilFormat = snippet.depthStencilFormat;
+         }
+
          if (snippet.cull.isPresent()) {
             this.cull = snippet.cull;
          }
@@ -347,6 +376,7 @@ public class RenderPipeline {
             this.colorTargetStates,
             this.activeColorTargetStateCount,
             this.depthStencilState,
+            this.depthStencilFormat,
             this.polygonMode,
             this.cull,
             this.vertexFormatPerBuffer,
@@ -377,50 +407,23 @@ public class RenderPipeline {
             activeColorTargetStates = new ColorTargetState[0];
          } else {
             activeColorTargetStates = Arrays.copyOf(this.colorTargetStates, this.activeColorTargetStateCount);
-            Optional<BlendFunction> lastBlend = Optional.empty();
-
-            for (ColorTargetState activeColorTargetState : activeColorTargetStates) {
-               if (activeColorTargetState != null) {
-                  Optional<BlendFunction> currentBlend = activeColorTargetState.blendFunction();
-                  if (currentBlend.isPresent()) {
-                     if (lastBlend.isEmpty()) {
-                        lastBlend = currentBlend;
-                     } else if (!currentBlend.equals(lastBlend)) {
-                        throw new IllegalStateException("Blend functions must currently be the same for all color targets");
-                     }
-                  }
-               }
-            }
          }
 
-         int boundVertexAttribCount = 0;
-
-         for (VertexFormat bindings : this.vertexFormatPerBuffer) {
-            if (bindings != null) {
-               boundVertexAttribCount += bindings.getElements().size();
-            }
-         }
-
-         if (boundVertexAttribCount > 16) {
-            throw new IllegalStateException("Binding more than 16 vertex attributes is not supported");
-         } else if (this.pushConstantSize > 128) {
-            throw new IllegalStateException("Maximum push constant size is 128 bytes");
-         } else {
-            return new RenderPipeline(
-               this.location.get(),
-               this.shaders,
-               this.definesBuilder.orElse(ShaderDefines.builder()).build(),
-               this.bindGroupLayouts.orElse(Collections.emptySet()),
-               activeColorTargetStates,
-               this.depthStencilState.orElse(null),
-               this.polygonMode.orElse(PolygonMode.FILL),
-               this.cull.orElse(true),
-               this.vertexFormatPerBuffer,
-               this.primitiveTopology.get(),
-               this.pushConstantSize,
-               nextPipelineSortKey++
-            );
-         }
+         return new RenderPipeline(
+            this.location.get(),
+            this.shaders,
+            this.definesBuilder.orElse(ShaderDefines.builder()).build(),
+            this.bindGroupLayouts.orElse(Collections.emptySet()),
+            activeColorTargetStates,
+            this.depthStencilState.orElse(null),
+            this.depthStencilFormat.orElse(GpuFormat.D32_FLOAT),
+            this.polygonMode.orElse(PolygonMode.FILL),
+            this.cull.orElse(true),
+            this.vertexFormatPerBuffer,
+            this.primitiveTopology.get(),
+            this.pushConstantSize,
+            nextPipelineSortKey++
+         );
       }
    }
 
@@ -431,6 +434,7 @@ public class RenderPipeline {
       @Nullable ColorTargetState[] colorTargetStates,
       int activeColorTargetStateCount,
       Optional<DepthStencilState> depthStencilState,
+      Optional<GpuFormat> depthStencilFormat,
       Optional<PolygonMode> polygonMode,
       Optional<Boolean> cull,
       @Nullable VertexFormat[] vertexFormatPerBuffer,

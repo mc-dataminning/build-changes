@@ -10,10 +10,9 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Util;
-import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -41,7 +40,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jspecify.annotations.Nullable;
 
-public class SculkSensorBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
+public class SculkSensorBlock extends DropExperienceEntityBlock implements SimpleWaterloggedBlock {
    public static final int ACTIVE_TICKS = 30;
    public static final int COOLDOWN_TICKS = 10;
    public static final EnumProperty<SculkSensorPhase> PHASE = BlockStateProperties.SCULK_SENSOR_PHASE;
@@ -56,8 +55,8 @@ public class SculkSensorBlock extends BaseEntityBlock implements SimpleWaterlogg
       }
    });
 
-   public SculkSensorBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
+   public SculkSensorBlock(final IntProvider xpRange, final BlockBehaviour.Properties properties) {
+      super(xpRange, properties);
       this.registerDefaultState(this.stateDefinition.any().setValue(PHASE, SculkSensorPhase.INACTIVE).setValue(POWER, 0).setValue(WATERLOGGED, false));
    }
 
@@ -276,13 +275,5 @@ public class SculkSensorBlock extends BaseEntityBlock implements SimpleWaterlogg
    @Override
    protected boolean useShapeForLightOcclusion(final BlockState state) {
       return true;
-   }
-
-   @Override
-   protected void spawnAfterBreak(final BlockState state, final ServerLevel level, final BlockPos pos, final ItemStack tool, final boolean dropExperience) {
-      super.spawnAfterBreak(state, level, pos, tool, dropExperience);
-      if (dropExperience) {
-         this.tryDropExperience(level, pos, tool, ConstantInt.of(5));
-      }
    }
 }

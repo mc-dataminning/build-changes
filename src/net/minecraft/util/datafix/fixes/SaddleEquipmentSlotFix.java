@@ -11,7 +11,6 @@ import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Set;
-import net.minecraft.util.Util;
 import net.minecraft.util.datafix.ExtraDataFixUtils;
 import net.minecraft.util.datafix.schemas.NamespacedSchema;
 
@@ -48,10 +47,10 @@ public class SaddleEquipmentSlotFix extends DataFix {
             String entityId = input.getOptional(entityIdF).<String>map(Pair::getFirst).map(NamespacedSchema::ensureNamespaced).orElse("");
             Typed<?> fixedInput = ExtraDataFixUtils.cast(patchedInputType, input);
             if (ENTITIES_WITH_SADDLE_ITEM.contains(entityId)) {
-               return Util.writeAndReadTypedOrThrow(fixedInput, outputType, SaddleEquipmentSlotFix::fixEntityWithSaddleItem);
+               return ExtraDataFixUtils.writeAndReadTypedOrThrow(fixedInput, outputType, SaddleEquipmentSlotFix::fixEntityWithSaddleItem);
             } else {
                return ENTITIES_WITH_SADDLE_FLAG.contains(entityId)
-                  ? Util.writeAndReadTypedOrThrow(fixedInput, outputType, SaddleEquipmentSlotFix::fixEntityWithSaddleFlag)
+                  ? ExtraDataFixUtils.writeAndReadTypedOrThrow(fixedInput, outputType, SaddleEquipmentSlotFix::fixEntityWithSaddleFlag)
                   : ExtraDataFixUtils.cast(outputType, input);
             }
          }

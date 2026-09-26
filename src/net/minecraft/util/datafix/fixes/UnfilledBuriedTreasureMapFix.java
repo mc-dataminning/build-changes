@@ -9,7 +9,6 @@ import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import java.util.Optional;
-import net.minecraft.util.Util;
 import net.minecraft.util.datafix.ExtraDataFixUtils;
 import net.minecraft.util.datafix.schemas.NamespacedSchema;
 
@@ -38,7 +37,7 @@ public class UnfilledBuriedTreasureMapFix extends DataFix {
    }
 
    private static <T> Typed<T> fix(final Typed<T> typed) {
-      return Util.writeAndReadTypedOrThrow(
+      return ExtraDataFixUtils.writeAndReadTypedOrThrow(
          typed,
          typed.getType(),
          value -> {

@@ -1,5 +1,6 @@
 package com.mojang.renderpearl.frontend.shaders;
 
+import com.mojang.renderpearl.api.pipeline.ShaderType;
 import com.mojang.renderpearl.api.pipeline.UniformType;
 import com.mojang.renderpearl.util.ShaderCompileException;
 import it.unimi.dsi.fastutil.ints.IntList;
@@ -71,6 +72,13 @@ public class SpvUtil {
          case 18 -> "sampler";
          case 19 -> "acceleration_structure";
          default -> "UNKNOWN_TYPE";
+      };
+   }
+
+   public static int executionModel(final ShaderType type) {
+      return switch (type) {
+         case VERTEX -> 0;
+         case FRAGMENT -> 4;
       };
    }
 }

@@ -50,6 +50,7 @@ public class DedicatedServerProperties extends Settings<DedicatedServerPropertie
    private static final Logger LOGGER = LogUtils.getLogger();
    private static final Pattern SHA1 = Pattern.compile("^[a-fA-F0-9]{40}$");
    private static final Splitter COMMA_SPLITTER = Splitter.on(',').trimResults();
+   private static final Splitter COMMA_SPLITTER_NO_EMPTY = COMMA_SPLITTER.omitEmptyStrings();
    public static final String MANAGEMENT_SERVER_TLS_ENABLED_KEY = "management-server-tls-enabled";
    public static final String MANAGEMENT_SERVER_TLS_KEYSTORE_KEY = "management-server-tls-keystore";
    public static final String MANAGEMENT_SERVER_TLS_KEYSTORE_PASSWORD_KEY = "management-server-tls-keystore-password";
@@ -58,6 +59,7 @@ public class DedicatedServerProperties extends Settings<DedicatedServerPropertie
    public final String serverIp = this.get("server-ip", "");
    public final Settings<DedicatedServerProperties>.MutableValue<Boolean> allowFlight = this.getMutable("allow-flight", false);
    public final Settings<DedicatedServerProperties>.MutableValue<String> motd = this.getMutable("motd", "A Minecraft Server");
+   public final String statusContactDetails = this.get("status-contact-details", "");
    public final boolean codeOfConduct = this.get("enable-code-of-conduct", false);
    public final String bugReportLink = this.get("bug-report-link", "");
    public final Settings<DedicatedServerProperties>.MutableValue<Boolean> forceGameMode = this.getMutable("force-gamemode", false);
@@ -112,6 +114,7 @@ public class DedicatedServerProperties extends Settings<DedicatedServerPropertie
    public final String regionFileComression = this.get("region-file-compression", "deflate");
    public final boolean enableJmxMonitoring = this.get("enable-jmx-monitoring", false);
    public final Settings<DedicatedServerProperties>.MutableValue<Boolean> enableStatus = this.getMutable("enable-status", true);
+   public final boolean enableLegacyStatus = this.get("enable-legacy-status", true);
    public final Settings<DedicatedServerProperties>.MutableValue<Boolean> hideOnlinePlayers = this.getMutable("hide-online-players", false);
    public final Settings<DedicatedServerProperties>.MutableValue<Integer> entityBroadcastRangePercentage = this.getMutable(
       "entity-broadcast-range-percentage", v -> Mth.clamp(Integer.parseInt(v), 10, 1000), 100
@@ -126,6 +129,7 @@ public class DedicatedServerProperties extends Settings<DedicatedServerPropertie
    public final boolean enforceSecureProfile = this.get("enforce-secure-profile", true);
    public final boolean logIPs = this.get("log-ips", true);
    public final Settings<DedicatedServerProperties>.MutableValue<Integer> pauseWhenEmptySeconds = this.getMutable("pause-when-empty-seconds", 60);
+   public final String allowedConnectionIds = this.get("allowed-connection-ids", "");
    private final DedicatedServerProperties.WorldDimensionData worldDimensionData;
    public final WorldOptions worldOptions;
    public final Settings<DedicatedServerProperties>.MutableValue<Boolean> acceptsTransfers = this.getMutable("accepts-transfers", false);
@@ -247,6 +251,16 @@ public class DedicatedServerProperties extends Settings<DedicatedServerPropertie
 
    public WorldDimensions createDimensions(final HolderLookup.Provider registries) {
       return this.worldDimensionData.create(registries);
+   }
+
+   public boolean acceptsConnectionId(final @Nullable String id) {
+      for (String s : COMMA_SPLITTER_NO_EMPTY.split(this.allowedConnectionIds)) {
+         if (s.equals(id)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    private record WorldDimensionData(JsonObject generatorSettings, String levelType) {

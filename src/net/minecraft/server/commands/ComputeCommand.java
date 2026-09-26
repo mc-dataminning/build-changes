@@ -22,10 +22,10 @@ import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntPr
 
 public class ComputeCommand {
    private static final Dynamic2CommandExceptionType INVALID_NAMED_VALUE = new Dynamic2CommandExceptionType(
-      (provider, value) -> Component.translatableEscape("command.compute.result.named.invalid", provider, value)
+      (provider, value) -> Component.translatableEscape("commands.compute.result.named.invalid", provider, value)
    );
    private static final DynamicCommandExceptionType INVALID_UNNAMED_VALUE = new DynamicCommandExceptionType(
-      value -> Component.translatableEscape("command.compute.result.unnamed.invalid", value)
+      value -> Component.translatableEscape("commands.compute.result.unnamed.invalid", value)
    );
 
    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
@@ -63,8 +63,8 @@ public class ComputeCommand {
    private static void printExactOutput(final CommandSourceStack source, final Holder<?> provider, final int result) {
       source.sendSuccess(
          () -> provider.unwrapKey()
-            .map(key -> Component.translatable("command.compute.result.named.exact", Component.translationArg(key.identifier()), result))
-            .orElseGet(() -> Component.translatable("command.compute.result.unnamed.exact", result)),
+            .map(key -> Component.translatable("commands.compute.result.named.exact", Component.translationArg(key.identifier()), result))
+            .orElseGet(() -> Component.translatable("commands.compute.result.unnamed.exact", result)),
          false
       );
    }
@@ -72,8 +72,8 @@ public class ComputeCommand {
    private static void printRoundedOutput(final CommandSourceStack source, final Holder<?> provider, final int result, final float original) {
       source.sendSuccess(
          () -> provider.unwrapKey()
-            .map(key -> Component.translatable("command.compute.result.named.rounded", Component.translationArg(key.identifier()), original, result))
-            .orElseGet(() -> Component.translatable("command.compute.result.unnamed.rounded", original, result)),
+            .map(key -> Component.translatable("commands.compute.result.named.rounded", Component.translationArg(key.identifier()), original, result))
+            .orElseGet(() -> Component.translatable("commands.compute.result.unnamed.rounded", original, result)),
          false
       );
    }

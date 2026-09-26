@@ -1,5 +1,6 @@
 package net.minecraft.server.dedicated;
 
+import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.ImmutableMap.Builder;
@@ -29,6 +30,8 @@ import net.minecraft.SharedConstants;
 import net.minecraft.SystemReport;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.Connection;
+import net.minecraft.network.ServerConnectionDetails;
 import net.minecraft.network.protocol.game.ClientboundLowDiskSpaceWarningPacket;
 import net.minecraft.server.ConsoleInput;
 import net.minecraft.server.MinecraftServer;
@@ -544,6 +547,11 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface 
    }
 
    @Override
+   public boolean enableLegacyStatus() {
+      return this.getProperties().enableLegacyStatus;
+   }
+
+   @Override
    public boolean hidesOnlinePlayers() {
       return this.getProperties().hideOnlinePlayers.get();
    }
@@ -623,6 +631,11 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface 
    public boolean enforceSecureProfile() {
       DedicatedServerProperties properties = this.getProperties();
       return properties.enforceSecureProfile && properties.onlineMode && this.services.canValidateProfileKeys();
+   }
+
+   @Override
+   public @Nullable String statusContactDetails() {
+      return Strings.emptyToNull(this.getProperties().statusContactDetails);
    }
 
    @Override
@@ -811,6 +824,12 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface 
 
    public void setAcceptsTransfers(final boolean acceptTransfers) {
       this.settings.update(p -> p.acceptsTransfers.update(this.registryAccess(), acceptTransfers));
+   }
+
+   @Override
+   public boolean acceptsConnection(final Connection connection, final ServerConnectionDetails details) {
+      DedicatedServerProperties properties = this.settings.getProperties();
+      return properties.allowedConnectionIds.isEmpty() ? true : properties.acceptsConnectionId(details.properties().get("_id"));
    }
 
    @Override

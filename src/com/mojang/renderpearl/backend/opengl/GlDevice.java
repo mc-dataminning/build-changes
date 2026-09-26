@@ -8,6 +8,8 @@ import com.mojang.renderpearl.api.device.BackendCreationException;
 import com.mojang.renderpearl.api.device.DeviceInfo;
 import com.mojang.renderpearl.api.device.GpuDebugOptions;
 import com.mojang.renderpearl.api.device.GpuOutOfMemoryException;
+import com.mojang.renderpearl.api.pipeline.CompiledRenderPipeline;
+import com.mojang.renderpearl.api.pipeline.SpvModule;
 import com.mojang.renderpearl.api.textures.AddressMode;
 import com.mojang.renderpearl.api.textures.FilterMode;
 import com.mojang.renderpearl.api.textures.GpuSampler;
@@ -55,17 +57,17 @@ class GlDevice implements GpuDeviceBackend {
    private final long initialWindowHandle;
    private final long glContext;
    private final GlHeuristics heuristics;
+   private final GlStateManager stateManager;
    private final GlCommandEncoder encoder;
    private final @Nullable GlDebug debugLog;
    private final GlDebugLabel debugLabels;
    private final DirectStateAccess directStateAccess;
-   private final FrameBufferCache frameBufferCache = new FrameBufferCache();
-   private final BiFunction<GlProgram, BackendRenderPipeline.CreateInfo, VertexArray> vertexArraySource;
+   private final FrameBufferCache frameBufferCache;
+   private final BiFunction<GlProgram, CompiledRenderPipeline.CreateInfo, VertexArray> vertexArraySource;
    private final BufferStorage bufferStorage;
    private final DeviceInfo deviceInfo;
    private final GlPipelineRecompiler recompiler;
    private boolean shaderCompilerRequiresSacrifice = true;
-   private long currentWindow = 0L;
 
    public GlDevice(final GlBackend backend, final GpuDebugOptions debugOptions) throws BackendCreationException {
       this.initialWindowHandle = backend.createWindow("Minecraft - RenderPearl OpenGL Hidden Utility Window", 320, 480, 2147614728L);
@@ -86,7 +88,7 @@ class GlDevice implements GpuDeviceBackend {
       }
 
       this.glContext = glContext;
-      this.makeCurrent(this.initialWindowHandle);
+      this.makeCurrent(0L);
 
       try {
          MemoryStack stack = MemoryStack.stackPush();
@@ -138,11 +140,12 @@ class GlDevice implements GpuDeviceBackend {
             maxSupportedAnisotropy = 1;
          }
 
-         this.heuristics = new GlHeuristics(GlStateManager._getString(7937), GlStateManager._getString(7936));
+         this.heuristics = new GlHeuristics(GL33C.glGetString(7937), GL33C.glGetString(7936));
+         this.stateManager = new GlStateManager();
          this.debugLog = GlDebug.enableDebugCallback(debugOptions.logLevel(), debugOptions.synchronousLogs(), enabledExtensions);
          this.debugLabels = GlDebugLabel.create(capabilities, debugOptions.useLabels(), enabledExtensions);
          this.bufferStorage = BufferStorage.create(capabilities, enabledExtensions, this.heuristics.couldBeIntelGen7() || this.heuristics.isNvidia());
-         this.directStateAccess = DirectStateAccess.create(capabilities, enabledExtensions, this.heuristics);
+         this.directStateAccess = DirectStateAccess.create(this.stateManager, capabilities, enabledExtensions, this.heuristics);
          this.vertexArraySource = VertexArray.createSource(capabilities, enabledExtensions);
          GL33C.glEnable(34895);
          GL33C.glEnable(34370);
@@ -168,10 +171,12 @@ class GlDevice implements GpuDeviceBackend {
 
          this.deviceInfo = this.heuristics.createDeviceInfo(capabilities, maxSupportedAnisotropy, enabledExtensions);
          this.encoder = new GlCommandEncoder(this);
-         this.recompiler = new GlPipelineRecompiler(this.debugLabels, this.deviceInfo.features().shaderDrawParameters());
+         this.recompiler = new GlPipelineRecompiler(this.stateManager, this.debugLabels, this.deviceInfo.features().shaderDrawParameters());
+         this.frameBufferCache = new FrameBufferCache(this.stateManager);
       } catch (Throwable throwable) {
          SDLVideo.SDL_GL_DestroyContext(glContext);
          SDLVideo.SDL_DestroyWindow(this.initialWindowHandle);
+         GlGlobalState.makeCurrent(0L, 0L);
          throw throwable;
       }
    }
@@ -182,6 +187,10 @@ class GlDevice implements GpuDeviceBackend {
 
    public GlDebugLabel debugLabels() {
       return this.debugLabels;
+   }
+
+   public GlStateManager stateManager() {
+      return this.stateManager;
    }
 
    @Override
@@ -203,7 +212,8 @@ class GlDevice implements GpuDeviceBackend {
       final int maxAnisotropy,
       final OptionalDouble maxLod
    ) {
-      return new GlSampler(addressModeU, addressModeV, minFilter, magFilter, maxAnisotropy, maxLod);
+      this.ensureCurrent();
+      return new GlSampler(this, addressModeU, addressModeV, minFilter, magFilter, maxAnisotropy, maxLod);
    }
 
    @Override
@@ -216,8 +226,9 @@ class GlDevice implements GpuDeviceBackend {
       final int depthOrLayers,
       final int mipLevels
    ) {
+      this.ensureCurrent();
       GlStateManager.clearGlErrors();
-      int id = GlStateManager._genTexture();
+      int id = this.stateManager._genTexture();
       if (label == null) {
          label = String.valueOf(id);
       }
@@ -228,15 +239,15 @@ class GlDevice implements GpuDeviceBackend {
          GL33C.glBindTexture(34067, id);
          target = 34067;
       } else {
-         GlStateManager._bindTexture(id);
+         this.stateManager._bindTexture(id);
          target = 3553;
       }
 
-      GlStateManager._texParameter(target, 33085, mipLevels - 1);
-      GlStateManager._texParameter(target, 33082, 0);
-      GlStateManager._texParameter(target, 33083, mipLevels - 1);
+      GL33C.glTexParameteri(target, 33085, mipLevels - 1);
+      GL33C.glTexParameteri(target, 33082, 0);
+      GL33C.glTexParameteri(target, 33083, mipLevels - 1);
       if (format.hasDepthAspect()) {
-         GlStateManager._texParameter(target, 34892, 0);
+         GL33C.glTexParameteri(target, 34892, 0);
       }
 
       int glInternalID = GlConst.toGlInternalId(format);
@@ -246,16 +257,16 @@ class GlDevice implements GpuDeviceBackend {
          if (isCubemap) {
             for (int cubeTarget : GlConst.CUBEMAP_TARGETS) {
                for (int i = 0; i < mipLevels; i++) {
-                  GlStateManager._texImage2D(cubeTarget, i, glInternalID, width >> i, height >> i, 0, glExternalID, glType, null);
+                  GL33C.glTexImage2D(cubeTarget, i, glInternalID, width >> i, height >> i, 0, glExternalID, glType, (ByteBuffer)null);
                }
             }
          } else {
             for (int i = 0; i < mipLevels; i++) {
-               GlStateManager._texImage2D(target, i, glInternalID, width >> i, height >> i, 0, glExternalID, glType, null);
+               GL33C.glTexImage2D(target, i, glInternalID, width >> i, height >> i, 0, glExternalID, glType, (ByteBuffer)null);
             }
          }
 
-         int error = GlStateManager._getError();
+         int error = GL33C.glGetError();
          if (error == 1285) {
             throw new GpuOutOfMemoryException("Could not allocate texture of " + width + "x" + height + " for " + label);
          }
@@ -264,7 +275,7 @@ class GlDevice implements GpuDeviceBackend {
             throw new IllegalStateException("OpenGL error " + error);
          }
 
-         GlTexture texture = new GlTexture(usage, label, format, width, height, depthOrLayers, mipLevels, id, this.frameBufferCache);
+         GlTexture texture = new GlTexture(this, usage, label, format, width, height, depthOrLayers, mipLevels, id, this.frameBufferCache);
          this.debugLabels.applyLabel(texture);
          return texture;
       } else {
@@ -274,14 +285,15 @@ class GlDevice implements GpuDeviceBackend {
 
    @Override
    public GpuTextureView createTextureView(final GpuTexture texture, final int baseMipLevel, final int mipLevels) {
-      return new GlTextureView((GlTexture)texture, baseMipLevel, mipLevels, this.frameBufferCache);
+      return new GlTextureView(this, (GlTexture)texture, baseMipLevel, mipLevels, this.frameBufferCache);
    }
 
    @Override
    public GpuBuffer createBuffer(final @Nullable Supplier<String> label, final @GpuBuffer.Usage int usage, final long size) {
+      this.ensureCurrent();
       GlStateManager.clearGlErrors();
-      GlBuffer buffer = this.bufferStorage.createBuffer(this.heuristics, this.directStateAccess, usage, size);
-      int error = GlStateManager._getError();
+      GlBuffer buffer = this.bufferStorage.createBuffer(this, this.heuristics, this.directStateAccess, usage, size);
+      int error = GL33C.glGetError();
       if (error == 1285) {
          throw new GpuOutOfMemoryException("Could not allocate buffer of " + size + " for " + label);
       }
@@ -296,10 +308,11 @@ class GlDevice implements GpuDeviceBackend {
 
    @Override
    public GpuBuffer createBuffer(final @Nullable Supplier<String> label, final @GpuBuffer.Usage int usage, final ByteBuffer data) {
+      this.ensureCurrent();
       GlStateManager.clearGlErrors();
       long size = data.remaining();
-      GlBuffer buffer = this.bufferStorage.createBuffer(this.heuristics, this.directStateAccess, usage, data);
-      int error = GlStateManager._getError();
+      GlBuffer buffer = this.bufferStorage.createBuffer(this, this.heuristics, this.directStateAccess, usage, data);
+      int error = GL33C.glGetError();
       if (error == 1285) {
          throw new GpuOutOfMemoryException("Could not allocate buffer of " + size + " for " + label);
       }
@@ -325,13 +338,13 @@ class GlDevice implements GpuDeviceBackend {
    private void sacrificeShaderToOpenGlAndAmd() {
       if (this.shaderCompilerRequiresSacrifice) {
          this.shaderCompilerRequiresSacrifice = false;
-         String glRenderer = GlStateManager._getString(7937);
+         String glRenderer = GL33C.glGetString(7937);
          if (glRenderer.contains("AMD")) {
-            int shader = GlStateManager.glCreateShader(35633);
-            int program = GlStateManager.glCreateProgram();
-            GlStateManager.glAttachShader(program, shader);
-            GlStateManager.glDeleteShader(shader);
-            GlStateManager.glDeleteProgram(program);
+            int shader = GL33C.glCreateShader(35633);
+            int program = GL33C.glCreateProgram();
+            GL33C.glAttachShader(program, shader);
+            GL33C.glDeleteShader(shader);
+            GL33C.glDeleteProgram(program);
          }
       }
    }
@@ -342,7 +355,9 @@ class GlDevice implements GpuDeviceBackend {
 
    @Override
    public void close() {
+      this.ensureCurrent();
       this.encoder.close();
+      GlGlobalState.makeCurrent(0L, 0L);
       SDLVideo.SDL_GL_DestroyContext(this.glContext);
       SDLVideo.SDL_DestroyWindow(this.initialWindowHandle);
    }
@@ -352,9 +367,10 @@ class GlDevice implements GpuDeviceBackend {
    }
 
    @Override
-   public BackendRenderPipeline.Pending compilePipeline(final BackendRenderPipeline.CreateInfo createInfo) {
-      Map<BackendRenderPipeline.CreateInfo.Shader, String> decompiledShaders = this.recompiler.decompileShaders(createInfo);
+   public BackendRenderPipeline.Pending compilePipeline(final CompiledRenderPipeline.CreateInfo createInfo) {
+      Map<SpvModule, String> decompiledShaders = this.recompiler.decompileShaders(createInfo);
       return decompiledShaders == null ? BackendRenderPipeline.Pending.NULL : () -> {
+         this.ensureCurrent();
          this.sacrificeShaderToOpenGlAndAmd();
          GlProgram glProgram = this.recompiler.compileProgram(createInfo, decompiledShaders);
          if (glProgram == null) {
@@ -376,11 +392,13 @@ class GlDevice implements GpuDeviceBackend {
 
    @Override
    public GpuQueryPool createTimestampQueryPool(final int size) {
-      return new GlQueryPool(size);
+      this.ensureCurrent();
+      return new GlQueryPool(this, size);
    }
 
    @Override
    public long getTimestampCalibrationOffset() {
+      this.ensureCurrent();
       long deviceTime = GL33C.glGetInteger64(36392);
       long hostTime = System.nanoTime();
       return hostTime - deviceTime;
@@ -391,10 +409,17 @@ class GlDevice implements GpuDeviceBackend {
       return this.deviceInfo;
    }
 
+   void ensureCurrent() {
+      if (!GlGlobalState.isContextCurrent(this.glContext)) {
+         this.makeCurrent(0L);
+      }
+   }
+
    void makeCurrent(final long windowHandle) {
-      if (windowHandle != this.currentWindow) {
-         this.currentWindow = windowHandle;
-         SDLVideo.SDL_GL_MakeCurrent(windowHandle, this.glContext);
+      if (windowHandle == 0L) {
+         GlGlobalState.makeCurrent(this.initialWindowHandle, this.glContext);
+      } else {
+         GlGlobalState.makeCurrent(windowHandle, this.glContext);
       }
    }
 }

@@ -13,7 +13,6 @@ public class EnvironmentAttribute<Value> {
    private final boolean isSyncable;
    private final boolean isPositional;
    private final boolean isSpatiallyInterpolated;
-   private final boolean fullResolutionBiomes;
 
    private EnvironmentAttribute(
       final AttributeType<Value> type,
@@ -21,8 +20,7 @@ public class EnvironmentAttribute<Value> {
       final AttributeRange<Value> valueRange,
       final boolean isSyncable,
       final boolean isPositional,
-      final boolean isSpatiallyInterpolated,
-      final boolean fullResolutionBiomes
+      final boolean isSpatiallyInterpolated
    ) {
       this.type = type;
       this.defaultValue = defaultValue;
@@ -30,7 +28,6 @@ public class EnvironmentAttribute<Value> {
       this.isSyncable = isSyncable;
       this.isPositional = isPositional;
       this.isSpatiallyInterpolated = isSpatiallyInterpolated;
-      this.fullResolutionBiomes = fullResolutionBiomes;
    }
 
    public static <Value> EnvironmentAttribute.Builder<Value> builder(final AttributeType<Value> type) {
@@ -65,10 +62,6 @@ public class EnvironmentAttribute<Value> {
       return this.isSpatiallyInterpolated;
    }
 
-   public boolean isFullResolutionBiomes() {
-      return this.fullResolutionBiomes;
-   }
-
    @Override
    public String toString() {
       return Util.getRegisteredName(BuiltInRegistries.ENVIRONMENT_ATTRIBUTE, this);
@@ -81,7 +74,6 @@ public class EnvironmentAttribute<Value> {
       private boolean isSyncable = false;
       private boolean isPositional = true;
       private boolean isSpatiallyInterpolated = false;
-      private boolean fullResolutionBiomes = false;
 
       public Builder(final AttributeType<Value> type) {
          this.type = type;
@@ -112,12 +104,6 @@ public class EnvironmentAttribute<Value> {
          return this;
       }
 
-      @Deprecated
-      public EnvironmentAttribute.Builder<Value> fullResolutionBiomes() {
-         this.fullResolutionBiomes = true;
-         return this;
-      }
-
       public EnvironmentAttribute<Value> build() {
          return new EnvironmentAttribute<>(
             this.type,
@@ -125,8 +111,7 @@ public class EnvironmentAttribute<Value> {
             this.valueRange,
             this.isSyncable,
             this.isPositional,
-            this.isSpatiallyInterpolated,
-            this.fullResolutionBiomes
+            this.isSpatiallyInterpolated
          );
       }
    }

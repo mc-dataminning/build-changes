@@ -3,6 +3,7 @@ package net.minecraft.world.level.levelgen.placement;
 import com.mojang.serialization.MapCodec;
 import java.util.function.Consumer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.InclusiveRange;
 import net.minecraft.util.RandomSource;
 
 public interface PlacementFilter extends PlacementModifier {
@@ -11,6 +12,11 @@ public interface PlacementFilter extends PlacementModifier {
       if (this.shouldPlace(context, random, origin)) {
          output.accept(origin);
       }
+   }
+
+   @Override
+   default InclusiveRange<Integer> modifyXzDomain(final InclusiveRange<Integer> inputDomain) {
+      return inputDomain;
    }
 
    boolean shouldPlace(PlacementContext context, RandomSource random, BlockPos origin);

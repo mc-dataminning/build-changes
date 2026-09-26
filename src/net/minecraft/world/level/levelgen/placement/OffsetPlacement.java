@@ -5,6 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.Consumer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.InclusiveRange;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.IntProvider;
@@ -52,6 +53,13 @@ public record OffsetPlacement(IntProvider x, IntProvider y, IntProvider z) imple
    @Override
    public void modify(final PlacementContext context, final RandomSource random, final BlockPos origin, final Consumer<BlockPos> output) {
       output.accept(origin.offset(this.x.sample(random), this.y.sample(random), this.z.sample(random)));
+   }
+
+   @Override
+   public InclusiveRange<Integer> modifyXzDomain(final InclusiveRange<Integer> inputDomain) {
+      int minOffset = Math.min(this.x.minInclusive(), this.z.minInclusive());
+      int maxOffset = Math.max(this.x.maxInclusive(), this.z.maxInclusive());
+      return new InclusiveRange<>(inputDomain.minInclusive() + minOffset, inputDomain.maxInclusive() + maxOffset);
    }
 
    @Override

@@ -6,13 +6,16 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import java.util.Objects;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.codec.RegistryCodecs;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Interval;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.VisibleForDebug;
 import net.minecraft.world.level.levelgen.synth.Noise;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 
@@ -53,6 +56,16 @@ public interface DensityFunction {
    @DensityFunction.Axes int domainAxes();
 
    MapCodec<? extends DensityFunction> codec();
+
+   static String idShortString(final Holder<?> inner) {
+      return inner.unwrapKey().orElseThrow().identifier().toShortString();
+   }
+
+   @VisibleForDebug
+   default String getDebugName() {
+      Identifier key = BuiltInRegistries.DENSITY_FUNCTION_TYPE.getKey(this.codec());
+      return Objects.requireNonNull(key).toShortString();
+   }
 
    default DensityFunction clamp(final float min, final float max) {
       return DensityFunctions.clamp(this, min, max);

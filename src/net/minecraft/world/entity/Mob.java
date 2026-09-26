@@ -448,7 +448,7 @@ public abstract class Mob extends LivingEntity implements Targeting, EquipmentUs
       this.setXxa(0.0F);
       this.setYya(0.0F);
       this.setSpeed(0.0F);
-      this.setDeltaMovement(0.0, 0.0, 0.0);
+      this.setDeltaMovement(Vec3.ZERO);
       this.resetAngularLeashMomentum();
    }
 
@@ -1405,7 +1405,7 @@ public abstract class Mob extends LivingEntity implements Targeting, EquipmentUs
       if (this.getNavigation().canFloat()) {
          super.jumpInLiquid(type);
       } else {
-         this.setDeltaMovement(this.getDeltaMovement().add(0.0, 0.3, 0.0));
+         this.addDeltaMovement(0.0, 0.3, 0.0);
       }
    }
 
@@ -1452,10 +1452,15 @@ public abstract class Mob extends LivingEntity implements Targeting, EquipmentUs
 
    @Override
    public void registerDebugValues(final ServerLevel level, final DebugValueSource.Registration registration) {
-      registration.register(DebugSubscriptions.ENTITY_PATHS, () -> {
-         Path path = this.getNavigation().getPath();
-         return path != null && path.debugData() != null ? new DebugPathInfo(path.copy(), this.getNavigation().getMaxDistanceToWaypoint()) : null;
-      });
+      registration.register(
+         DebugSubscriptions.ENTITY_PATHS,
+         () -> {
+            Path path = this.getNavigation().getPath();
+            return path != null && path.debugData() != null
+               ? new DebugPathInfo(path.copy(), this.getNavigation().getMaxDistanceToWaypoint(), this.getNavigation().getStuckCountdown())
+               : null;
+         }
+      );
       registration.register(
          DebugSubscriptions.GOAL_SELECTORS,
          () -> {

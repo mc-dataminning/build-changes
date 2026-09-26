@@ -17,11 +17,12 @@ import org.lwjgl.opengl.ARBBufferStorage;
 import org.lwjgl.opengl.GL33C;
 import org.lwjgl.system.MemoryUtil;
 
-public abstract class GlTransientMemory implements TransientMemory, UncheckedAutoCloseable {
+abstract class GlTransientMemory implements TransientMemory, UncheckedAutoCloseable {
    private static final long BLOCK_SIZE = 524288L;
    private static final long MAX_CPU_ALIGNMENT = 16L;
    private static final long MAX_GPU_ALIGNMENT = Long.highestOneBit(Long.MAX_VALUE);
-   final GlCommandEncoder encoder;
+   protected final GlDevice device;
+   protected final GlCommandEncoder encoder;
    protected final DirectStateAccess dsa;
    protected final BufferStorage bufferStorage;
    protected final GlDebugLabel debugLabels;
@@ -31,6 +32,7 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
    );
 
    GlTransientMemory(final GlDevice device, final GlCommandEncoder encoder) {
+      this.device = device;
       this.encoder = encoder;
       this.dsa = device.directStateAccess();
       this.bufferStorage = device.getBufferStorage();
@@ -74,7 +76,8 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
       }
 
       private GlTransientMemory.Fallback.GlAllocation allocateGlBlock(final long size) {
-         GlBuffer buffer = this.bufferStorage.createBuffer(this.heuristics, this.dsa, 40, size);
+         this.device.ensureCurrent();
+         GlBuffer buffer = this.bufferStorage.createBuffer(this.device, this.heuristics, this.dsa, 40, size);
          this.debugLabels.applyLabel(buffer, () -> "OpenGL Transient Buffer");
          long hostPtr = MemoryUtil.nmemAlloc(size);
          return new GlTransientMemory.Fallback.GlAllocation(buffer, hostPtr);
@@ -92,20 +95,23 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
          TransientBlockAllocator.Allocation<GlTransientMemory.Fallback.GlAllocation> allocation = this.blockAllocator
             .allocate(size, alignment, minimumAllocation, elementSize);
          GlTransientMemory.TransientGpuBuffer transientBuffer = new GlTransientMemory.TransientGpuBuffer(
-            allocation.block().glBuffer().handle(), usage, allocation.block().glBuffer().size()
+            this.device, allocation.block().glBuffer().handle(), usage, allocation.block().glBuffer().size()
          );
          GpuBufferSlice slice = new GpuBufferSlice(transientBuffer, allocation.offset(), allocation.size());
          ByteBuffer hostBuffer = MemoryUtil.memByteBuffer(allocation.block().hostBuffer + allocation.offset(), (int)allocation.size());
          return new GpuBufferSlice.MappedView(
             slice,
             hostBuffer,
-            () -> this.dsa
-               .bufferSubData(
-                  transientBuffer.handle(),
-                  slice.offset(),
-                  MemoryUtil.memByteBuffer(allocation.block().hostBuffer + allocation.offset(), (int)allocation.size()),
-                  usage
-               )
+            () -> {
+               this.device.ensureCurrent();
+               this.dsa
+                  .bufferSubData(
+                     transientBuffer.handle(),
+                     slice.offset(),
+                     MemoryUtil.memByteBuffer(allocation.block().hostBuffer + allocation.offset(), (int)allocation.size()),
+                     usage
+                  );
+            }
          );
       }
 
@@ -116,7 +122,7 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
          TransientBlockAllocator.Allocation<GlTransientMemory.Fallback.GlAllocation> allocation = this.blockAllocator
             .allocate(size, alignment, minimumAllocation, elementSize);
          GlTransientMemory.TransientGpuBuffer transientBuffer = new GlTransientMemory.TransientGpuBuffer(
-            allocation.block().glBuffer().handle(), usage, allocation.block().glBuffer().size()
+            this.device, allocation.block().glBuffer().handle(), usage, allocation.block().glBuffer().size()
          );
          return new GpuBufferSlice(transientBuffer, allocation.offset(), allocation.size());
       }
@@ -139,6 +145,7 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
       public GpuBufferSlice uploadGpu(
          final List<ByteBuffer> data, final long alignment, final @GpuBuffer.Usage int usage, final long minimumAllocation, final long elementSize
       ) {
+         this.device.ensureCurrent();
          long totalSize = 0L;
 
          for (int i = 0; i < data.size(); i++) {
@@ -148,7 +155,7 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
 
          GpuBufferSlice bufferSlice = this.allocateGpu(totalSize, alignment, usage);
          int target = GlUtil.selectBufferBindTarget(usage);
-         GlStateManager._glBindBuffer(target, ((GlBuffer)bufferSlice.buffer()).handle());
+         GL33C.glBindBuffer(target, ((GlBuffer)bufferSlice.buffer()).handle());
          long ptr = GL33C.nglMapBufferRange(target, bufferSlice.offset(), totalSize, 38);
          long offset = 0L;
 
@@ -160,7 +167,7 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
          }
 
          GL33C.glUnmapBuffer(target);
-         GlStateManager._glBindBuffer(target, 0);
+         GL33C.glBindBuffer(target, 0);
          return bufferSlice;
       }
 
@@ -171,6 +178,7 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
 
       @Override
       public List<GpuBufferSlice> multiUploadGpu(final List<ByteBuffer> data, final long alignment, final @GpuBuffer.Usage int usage) {
+         this.device.ensureCurrent();
          ReferenceArrayList<GpuBufferSlice> uploadedBuffers = new ReferenceArrayList();
          uploadedBuffers.size(data.size());
          IntArrayList sortedDataIndices = IntArrayList.toList(IntStream.range(0, data.size()));
@@ -187,7 +195,7 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
                   sortedDataIndices.removeInt(i);
                   GpuBufferSlice bufferSlice = this.allocateGpu(currentBuffer.remaining(), alignment, usage);
                   uploadedBuffers.set(bufferIndex, bufferSlice);
-                  GlStateManager._glBindBuffer(target, ((GlBuffer)bufferSlice.buffer()).handle());
+                  GL33C.glBindBuffer(target, ((GlBuffer)bufferSlice.buffer()).handle());
                   long ptr = GL33C.nglMapBufferRange(target, bufferSlice.offset(), bufferSlice.length(), 38);
                   MemoryUtil.memCopy(MemoryUtil.memAddress(currentBuffer), ptr, bufferSlice.length());
                   GL33C.glUnmapBuffer(target);
@@ -201,14 +209,14 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
                ByteBuffer currentBuffer = data.get(bufferIndex);
                GpuBufferSlice bufferSlice = this.allocateGpu(currentBuffer.remaining(), alignment, usage);
                uploadedBuffers.set(bufferIndex, bufferSlice);
-               GlStateManager._glBindBuffer(target, ((GlBuffer)bufferSlice.buffer()).handle());
+               GL33C.glBindBuffer(target, ((GlBuffer)bufferSlice.buffer()).handle());
                long ptr = GL33C.nglMapBufferRange(target, bufferSlice.offset(), bufferSlice.length(), 38);
                MemoryUtil.memCopy(MemoryUtil.memAddress(currentBuffer), ptr, bufferSlice.length());
                GL33C.glUnmapBuffer(target);
             }
          }
 
-         GlStateManager._glBindBuffer(target, 0);
+         GL33C.glBindBuffer(target, 0);
          return uploadedBuffers;
       }
 
@@ -270,6 +278,7 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
       }
 
       private GlTransientMemory.PersistentMapping.GlAllocation allocateGlBlock(final long size, final boolean host, final boolean mapped) {
+         this.device.ensureCurrent();
          int glBuffer = this.dsa.createBuffer();
          int usageFlags = 0;
          if (host) {
@@ -282,7 +291,7 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
             usageFlags |= 128;
          }
 
-         GlStateManager._glBindBuffer(34962, glBuffer);
+         GL33C.glBindBuffer(34962, glBuffer);
          ARBBufferStorage.glBufferStorage(34962, size, usageFlags);
          long hostPtr;
          if (mapped) {
@@ -291,8 +300,8 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
             hostPtr = 0L;
          }
 
-         GlStateManager._glBindBuffer(34962, 0);
-         this.debugLabels.applyLabel(new GlTransientMemory.TransientGpuBuffer(glBuffer, 0, size), () -> "OpenGL Transient Buffer");
+         GL33C.glBindBuffer(34962, 0);
+         this.debugLabels.applyLabel(new GlTransientMemory.TransientGpuBuffer(this.device, glBuffer, 0, size), () -> "OpenGL Transient Buffer");
          return new GlTransientMemory.PersistentMapping.GlAllocation(glBuffer, hostPtr, size);
       }
 
@@ -307,7 +316,9 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
          assert size <= 2147483647L;
          TransientBlockAllocator.Allocation<GlTransientMemory.PersistentMapping.GlAllocation> alloc = this.stagingBlockAllocator
             .allocate(size, alignment, minimumAllocation, elementSize);
-         GlTransientMemory.TransientGpuBuffer apiBuffer = new GlTransientMemory.TransientGpuBuffer(alloc.block().glBuffer, usage, (int)alloc.block().size);
+         GlTransientMemory.TransientGpuBuffer apiBuffer = new GlTransientMemory.TransientGpuBuffer(
+            this.device, alloc.block().glBuffer, usage, (int)alloc.block().size
+         );
          ByteBuffer cpuBuffer = MemoryUtil.memByteBuffer(alloc.block().hostPtr + alloc.offset(), (int)alloc.size());
          return new GpuBufferSlice.MappedView(new GpuBufferSlice(apiBuffer, alloc.offset(), alloc.size()), cpuBuffer, () -> {});
       }
@@ -319,7 +330,9 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
          assert size <= 2147483647L;
          TransientBlockAllocator.Allocation<GlTransientMemory.PersistentMapping.GlAllocation> alloc = this.gpuBlockAllocator
             .allocate(size, alignment, minimumAllocation, elementSize);
-         GlTransientMemory.TransientGpuBuffer apiBuffer = new GlTransientMemory.TransientGpuBuffer(alloc.block().glBuffer, usage, (int)alloc.block().size);
+         GlTransientMemory.TransientGpuBuffer apiBuffer = new GlTransientMemory.TransientGpuBuffer(
+            this.device, alloc.block().glBuffer, usage, (int)alloc.block().size
+         );
          return new GpuBufferSlice(apiBuffer, alloc.offset(), alloc.size());
       }
 
@@ -330,7 +343,9 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
          assert size <= 2147483647L;
          TransientBlockAllocator.Allocation<GlTransientMemory.PersistentMapping.GlAllocation> alloc = this.gpuMappedBlockAllocator
             .allocate(size, alignment, minimumAllocation, elementSize);
-         GlTransientMemory.TransientGpuBuffer apiBuffer = new GlTransientMemory.TransientGpuBuffer(alloc.block().glBuffer, usage, (int)alloc.block().size);
+         GlTransientMemory.TransientGpuBuffer apiBuffer = new GlTransientMemory.TransientGpuBuffer(
+            this.device, alloc.block().glBuffer, usage, (int)alloc.block().size
+         );
          ByteBuffer cpuBuffer = MemoryUtil.memByteBuffer(alloc.block().hostPtr + alloc.offset(), (int)alloc.size());
          return new GpuBufferSlice.MappedView(new GpuBufferSlice(apiBuffer, alloc.offset(), alloc.size()), cpuBuffer, () -> {});
       }
@@ -456,8 +471,8 @@ public abstract class GlTransientMemory implements TransientMemory, UncheckedAut
       private boolean closed = false;
       private final long bufferSubmitIndex = GlTransientMemory.this.encoder.currentSubmitIndex();
 
-      protected TransientGpuBuffer(final int handle, final @GpuBuffer.Usage int usage, final long size) {
-         super(usage, size, handle, true);
+      protected TransientGpuBuffer(final GlDevice device, final int handle, final @GpuBuffer.Usage int usage, final long size) {
+         super(device, usage, size, handle, true);
       }
 
       @Override

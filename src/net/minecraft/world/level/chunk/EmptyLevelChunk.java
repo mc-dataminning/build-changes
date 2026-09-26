@@ -75,7 +75,7 @@ public class EmptyLevelChunk extends LevelChunk {
    }
 
    @Override
-   public Holder<Biome> getNoiseBiome(final int quartX, final int quartY, final int quartZ) {
+   public Holder<Biome> getBiome(final int x, final int y, final int z) {
       return this.biome;
    }
 }

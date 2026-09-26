@@ -140,8 +140,7 @@ public class ConnectScreen extends Screen {
 
                ConnectScreen.this.connection
                   .initiateServerboundPlayConnection(
-                     address.getHostName(),
-                     address.getPort(),
+                     hostAndPort.createConnectionDetails(address),
                      LoginProtocols.SERVERBOUND,
                      LoginProtocols.CLIENTBOUND,
                      new ClientHandshakePacketListenerImpl(

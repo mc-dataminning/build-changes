@@ -168,8 +168,7 @@ public interface EnvironmentAttributes {
       "gameplay/can_pillager_patrol_spawn", EnvironmentAttribute.builder(AttributeTypes.BOOLEAN).defaultValue(true)
    );
    EnvironmentAttribute<MobSpawnSettings> NATURAL_MOB_SPAWNS = register(
-      "gameplay/natural_mob_spawns",
-      EnvironmentAttribute.builder(AttributeTypes.MOB_SPAWN_SETTINGS).defaultValue(MobSpawnSettings.EMPTY).fullResolutionBiomes()
+      "gameplay/natural_mob_spawns", EnvironmentAttribute.builder(AttributeTypes.MOB_SPAWN_SETTINGS).defaultValue(MobSpawnSettings.EMPTY)
    );
    EnvironmentAttribute<Float> CREATURE_WORLD_GEN_SPAWN_PROBABILITY = register(
       "gameplay/creature_world_gen_spawn_probability",

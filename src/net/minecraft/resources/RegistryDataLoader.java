@@ -97,7 +97,7 @@ public class RegistryDataLoader {
    private static final Comparator<ResourceKey<?>> ERROR_KEY_COMPARATOR = Comparator.comparing(ResourceKey::registry).thenComparing(ResourceKey::identifier);
    public static final List<RegistryDataLoader.RegistryData<?>> WORLD_REGISTRIES = List.of(
       new RegistryDataLoader.RegistryData<>(Registries.DIMENSION_TYPE, DimensionType.DIRECT_CODEC),
-      new RegistryDataLoader.RegistryData<>(Registries.BIOME, Biome.DIRECT_CODEC),
+      new RegistryDataLoader.RegistryData<>(Registries.BIOME, Biome.DIRECT_CODEC, Biome::validateRegistry),
       new RegistryDataLoader.RegistryData<>(Registries.CHAT_TYPE, ChatType.DIRECT_CODEC),
       new RegistryDataLoader.RegistryData<>(Registries.CARVER, WorldCarver.DIRECT_CODEC),
       new RegistryDataLoader.RegistryData<>(Registries.FEATURE, Feature.DIRECT_CODEC),

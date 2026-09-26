@@ -1,13 +1,11 @@
 package net.minecraft.world.entity.animal.fish;
 
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
 import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.codec.EnumStreamCodec;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -108,7 +106,7 @@ public class Salmon extends AbstractSchoolingFish {
    }
 
    public Salmon.Variant getVariant() {
-      return Salmon.Variant.BY_ID.apply(this.entityData.get(DATA_TYPE));
+      return Salmon.Variant.byId(this.entityData.get(DATA_TYPE));
    }
 
    @Override
@@ -160,8 +158,9 @@ public class Salmon extends AbstractSchoolingFish {
 
       public static final Salmon.Variant DEFAULT = MEDIUM;
       public static final Codec<Salmon.Variant> CODEC = StringRepresentable.fromEnum(Salmon.Variant::values);
-      private static final IntFunction<Salmon.Variant> BY_ID = ByIdMap.continuous(Salmon.Variant::id, values(), ByIdMap.OutOfBoundsStrategy.CLAMP);
-      public static final StreamCodec<ByteBuf, Salmon.Variant> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Salmon.Variant::id);
+      public static final EnumStreamCodec<Salmon.Variant> STREAM_CODEC = ByteBufCodecs.enumCodec(
+         Salmon.Variant.class, Salmon.Variant::id, ByIdMap.OutOfBoundsStrategy.CLAMP
+      );
       private final String name;
       private final int id;
       private final float boundingBoxScale;
@@ -179,6 +178,10 @@ public class Salmon extends AbstractSchoolingFish {
 
       private int id() {
          return this.id;
+      }
+
+      public static Salmon.Variant byId(final int id) {
+         return STREAM_CODEC.byId(id);
       }
    }
 }

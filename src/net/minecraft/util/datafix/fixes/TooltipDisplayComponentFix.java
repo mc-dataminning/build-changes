@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.UnaryOperator;
-import net.minecraft.util.Util;
+import net.minecraft.util.datafix.ExtraDataFixUtils;
 
 public class TooltipDisplayComponentFix extends DataFix {
    private static final List<String> CONVERTED_ADDITIONAL_TOOLTIP_TYPES = List.of(
@@ -134,18 +134,20 @@ public class TooltipDisplayComponentFix extends DataFix {
    private static Typed<?> fixAdventureModePredicate(
       final Typed<?> typedComponents, final OpticFinder<?> componentFinder, final Type<?> newType, final String componentId, final Set<String> hiddenTooltips
    ) {
-      return typedComponents.updateTyped(componentFinder, newType, typedComponent -> Util.writeAndReadTypedOrThrow(typedComponent, newType, component -> {
-         OptionalDynamic<?> predicates = component.get("predicates");
-         if (predicates.result().isEmpty()) {
-            return component;
-         }
+      return typedComponents.updateTyped(
+         componentFinder, newType, typedComponent -> ExtraDataFixUtils.writeAndReadTypedOrThrow(typedComponent, newType, component -> {
+            OptionalDynamic<?> predicates = component.get("predicates");
+            if (predicates.result().isEmpty()) {
+               return component;
+            }
 
-         boolean showInTooltip = component.get("show_in_tooltip").asBoolean(true);
-         if (!showInTooltip) {
-            hiddenTooltips.add(componentId);
-         }
+            boolean showInTooltip = component.get("show_in_tooltip").asBoolean(true);
+            if (!showInTooltip) {
+               hiddenTooltips.add(componentId);
+            }
 
-         return (Dynamic)predicates.result().get();
-      }));
+            return (Dynamic)predicates.result().get();
+         })
+      );
    }
 }

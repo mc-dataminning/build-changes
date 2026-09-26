@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.Map.Entry;
-import net.minecraft.util.Util;
+import net.minecraft.util.datafix.ExtraDataFixUtils;
 import net.minecraft.util.datafix.schemas.V1451_6;
 import org.apache.commons.lang3.StringUtils;
 import org.jspecify.annotations.Nullable;
@@ -252,7 +252,7 @@ public class StatsCounterFix extends DataFix {
             }
          }
 
-         return Util.readTypedOrThrow(outputType, tag.emptyMap().set("stats", tag.createMap(stats)));
+         return ExtraDataFixUtils.readTypedOrThrow(outputType, tag.emptyMap().set("stats", tag.createMap(stats)));
       });
    }
 
@@ -269,7 +269,7 @@ public class StatsCounterFix extends DataFix {
             StatsCounterFix.StatType statType = unpackLegacyKey(key);
             return statType == null ? "dummy" : V1451_6.packNamespacedWithDot(statType.type) + ":" + V1451_6.packNamespacedWithDot(statType.typeKey);
          }).map(name::createString), name));
-         return Util.readTypedOrThrow(outputType, updatedTag);
+         return ExtraDataFixUtils.readTypedOrThrow(outputType, updatedTag);
       });
    }
 

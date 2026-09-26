@@ -32,7 +32,15 @@ public record ClampFunction(DensityFunction input, float min, float max) impleme
 
    @Override
    public DensitySampler compileSampler(final DensityFunction.CompileContext context) {
-      return new ClampFunction.Sampler(this.input.compileSampler(context), this.min, this.max);
+      Interval inputRange = this.input.range();
+      DensitySampler input = this.input.compileSampler(context);
+      if (this.min <= inputRange.min() && this.max >= inputRange.max()) {
+         return input;
+      } else if (this.max >= inputRange.max()) {
+         return new BinaryFunction.ConstMaxSampler(input, this.min);
+      } else {
+         return this.min <= inputRange.min() ? new BinaryFunction.ConstMinSampler(input, this.max) : new ClampFunction.Sampler(input, this.min, this.max);
+      }
    }
 
    @Override

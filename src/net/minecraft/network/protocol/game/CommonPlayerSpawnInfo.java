@@ -15,7 +15,6 @@ import net.minecraft.world.level.dimension.DimensionType;
 public record CommonPlayerSpawnInfo(
    Holder<DimensionType> dimensionType,
    ResourceKey<Level> dimension,
-   long seed,
    GameType gameType,
    Optional<GameType> previousGameType,
    boolean isDebug,
@@ -29,8 +28,6 @@ public record CommonPlayerSpawnInfo(
       CommonPlayerSpawnInfo::dimensionType,
       ResourceKey.streamCodec(Registries.DIMENSION),
       CommonPlayerSpawnInfo::dimension,
-      ByteBufCodecs.LONG,
-      CommonPlayerSpawnInfo::seed,
       GameType.STREAM_CODEC,
       CommonPlayerSpawnInfo::gameType,
       GameType.OPTIONAL_STREAM_CODEC,

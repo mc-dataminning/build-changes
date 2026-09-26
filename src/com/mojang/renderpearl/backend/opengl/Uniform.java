@@ -14,14 +14,14 @@ public sealed interface Uniform extends UncheckedAutoCloseable permits Uniform.S
    record Ubo(int blockBinding) implements Uniform {
    }
 
-   record Utb(int samplerIndex, GpuFormat format, int texture) implements Uniform {
-      public Utb(final int samplerIndex, final GpuFormat format) {
-         this(samplerIndex, format, GlStateManager._genTexture());
+   record Utb(GlStateManager stateManager, int samplerIndex, GpuFormat format, int texture) implements Uniform {
+      public Utb(final GlStateManager stateManager, final int samplerIndex, final GpuFormat format) {
+         this(stateManager, samplerIndex, format, stateManager._genTexture());
       }
 
       @Override
       public void close() {
-         GlStateManager._deleteTexture(this.texture);
+         this.stateManager._deleteTexture(this.texture);
       }
    }
 }

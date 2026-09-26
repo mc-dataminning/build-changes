@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
-import java.util.function.IntFunction;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -35,7 +34,6 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.ARGB;
-import net.minecraft.util.ByIdMap;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -480,10 +478,9 @@ public class TestInstanceBlockEntity extends BlockEntity implements BoundingBoxR
       RUNNING("running", 1),
       FINISHED("finished", 2);
 
-      private static final IntFunction<TestInstanceBlockEntity.Status> ID_MAP = ByIdMap.continuous(s -> s.index, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
       public static final Codec<TestInstanceBlockEntity.Status> CODEC = StringRepresentable.fromEnum(TestInstanceBlockEntity.Status::values);
-      public static final StreamCodec<ByteBuf, TestInstanceBlockEntity.Status> STREAM_CODEC = ByteBufCodecs.idMapper(
-         TestInstanceBlockEntity.Status::byIndex, s -> s.index
+      public static final StreamCodec<ByteBuf, TestInstanceBlockEntity.Status> STREAM_CODEC = ByteBufCodecs.enumCodec(
+         TestInstanceBlockEntity.Status.class, s -> s.index
       );
       private final String id;
       private final int index;
@@ -496,10 +493,6 @@ public class TestInstanceBlockEntity extends BlockEntity implements BoundingBoxR
       @Override
       public String getSerializedName() {
          return this.id;
-      }
-
-      public static TestInstanceBlockEntity.Status byIndex(final int index) {
-         return ID_MAP.apply(index);
       }
    }
 }

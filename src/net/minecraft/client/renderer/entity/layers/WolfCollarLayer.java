@@ -8,11 +8,14 @@ import net.minecraft.client.renderer.entity.state.WolfRenderState;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.Identifier;
+import net.minecraft.util.CommonColors;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.level.block.ColorCollection;
 
 public class WolfCollarLayer extends RenderLayer<WolfRenderState, WolfModel> {
    private static final Identifier WOLF_COLLAR_LOCATION = Identifier.withDefaultNamespace("textures/entity/wolf/wolf_collar.png");
    private static final Identifier WOLF_BABY_COLLAR_LOCATION = Identifier.withDefaultNamespace("textures/entity/wolf/wolf_collar_baby.png");
+   private static final ColorCollection<Integer> COLLAR_COLORS = CommonColors.TEXTURE_TINT_COLORS;
 
    public WolfCollarLayer(final RenderLayerParent<WolfRenderState, WolfModel> renderer) {
       super(renderer);
@@ -28,7 +31,7 @@ public class WolfCollarLayer extends RenderLayer<WolfRenderState, WolfModel> {
    ) {
       DyeColor collarColor = state.collarColor;
       if (collarColor != null && !state.isInvisible) {
-         int color = collarColor.getTextureDiffuseColor();
+         int color = COLLAR_COLORS.pick(collarColor);
          Identifier collarLocation = state.isBaby ? WOLF_BABY_COLLAR_LOCATION : WOLF_COLLAR_LOCATION;
          submitNodeCollector.order(1)
             .submitModel(

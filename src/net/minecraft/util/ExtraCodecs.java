@@ -678,6 +678,36 @@ public class ExtraCodecs {
       return optionalAlwaysPresentFieldOf(elementCodec, name, defaultValue, false);
    }
 
+   public static <K, V> Codec<V> singleKeyDispatch(final Codec<K> keyCodec, final Function<V, K> keyGetter, final Function<K, Codec<V>> valueCodecGetter) {
+      return new Codec<V>() {
+         public <T> DataResult<Pair<V, T>> decode(final DynamicOps<T> ops, final T input) {
+            return ops.getMap(input).flatMap(map -> {
+               List<Pair<T, T>> entries = map.entries().toList();
+               if (entries.size() != 1) {
+                  return DataResult.error(() -> "Expected one field, got " + entries.size() + " in " + input);
+               }
+
+               Pair<T, T> entry = entries.getFirst();
+               return keyCodec.parse(ops, entry.getFirst()).flatMap(key -> {
+                  Codec<V> valueCodec = valueCodecGetter.apply((K)key);
+                  return valueCodec.parse(ops, entry.getSecond()).map(value -> Pair.of(value, input));
+               });
+            });
+         }
+
+         public <T> DataResult<T> encode(final V input, final DynamicOps<T> ops, final T prefix) {
+            if (!Objects.equals(prefix, ops.empty())) {
+               return DataResult.error(() -> "Cannot merge single-key dispatched value with " + prefix);
+            }
+
+            K key = keyGetter.apply(input);
+            DataResult<T> keyResult = keyCodec.encodeStart(ops, key);
+            DataResult<T> valueResult = valueCodecGetter.apply(key).encodeStart(ops, input);
+            return keyResult.apply2stable((encodedKey, encodedValue) -> ops.createMap(Map.of(encodedKey, encodedValue)), valueResult);
+         }
+      };
+   }
+
    public static class LateBoundIdMapper<I, V> {
       private final BiMap<I, V> idToValue = HashBiMap.create();
 

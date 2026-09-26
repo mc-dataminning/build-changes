@@ -2,6 +2,7 @@ package net.minecraft.util;
 
 import java.util.Locale;
 import java.util.function.Consumer;
+import net.minecraft.world.level.ChunkPos;
 import org.jspecify.annotations.Nullable;
 
 public class StaticCache2D<T> {
@@ -40,6 +41,10 @@ public class StaticCache2D<T> {
       for (Object o : this.cache) {
          consumer.accept((T)o);
       }
+   }
+
+   public T get(final ChunkPos pos) {
+      return this.get(pos.x(), pos.z());
    }
 
    public T get(final int x, final int z) {

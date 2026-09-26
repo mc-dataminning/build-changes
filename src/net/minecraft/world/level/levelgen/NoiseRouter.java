@@ -5,6 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.levelgen.densityfunction.DensityFunction;
 import net.minecraft.world.level.levelgen.densityfunction.DensitySamplerSet;
+import net.minecraft.world.level.levelgen.densityfunction.DfRewriteRule;
 
 public record NoiseRouter(
    DensityFunction temperature,
@@ -29,6 +30,19 @@ public record NoiseRouter(
          )
          .apply(i, NoiseRouter::new)
    );
+
+   public NoiseRouter rewrite(final DfRewriteRule rule) {
+      return new NoiseRouter(
+         rule.rewrite(this.temperature),
+         rule.rewrite(this.vegetation),
+         rule.rewrite(this.continents),
+         rule.rewrite(this.erosion),
+         rule.rewrite(this.depth),
+         rule.rewrite(this.ridges),
+         rule.rewrite(this.chunkSurfaceLevel),
+         rule.rewrite(this.finalDensity)
+      );
+   }
 
    public Climate.Sampler createClimateSampler(final DensitySamplerSet densitySamplers) {
       return new Climate.Sampler(

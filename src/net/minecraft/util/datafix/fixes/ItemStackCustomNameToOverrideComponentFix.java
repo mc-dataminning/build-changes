@@ -12,7 +12,7 @@ import com.mojang.serialization.OptionalDynamic;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Predicate;
-import net.minecraft.util.Util;
+import net.minecraft.util.datafix.ExtraDataFixUtils;
 import net.minecraft.util.datafix.LegacyComponentDataFixUtils;
 import net.minecraft.util.datafix.schemas.NamespacedSchema;
 
@@ -65,7 +65,7 @@ public class ItemStackCustomNameToOverrideComponentFix extends DataFix {
    }
 
    private static <T> Typed<T> fixCustomName(final Typed<T> typed, final Predicate<String> expectedTranslationKey) {
-      return Util.writeAndReadTypedOrThrow(
+      return ExtraDataFixUtils.writeAndReadTypedOrThrow(
          typed,
          typed.getType(),
          value -> {

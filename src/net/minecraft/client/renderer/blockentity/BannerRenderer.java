@@ -22,9 +22,11 @@ import net.minecraft.client.resources.model.sprite.SpriteGetter;
 import net.minecraft.client.resources.model.sprite.SpriteId;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.CommonColors;
 import net.minecraft.util.Unit;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.BannerBlock;
+import net.minecraft.world.level.block.ColorCollection;
 import net.minecraft.world.level.block.WallBannerBlock;
 import net.minecraft.world.level.block.entity.BannerBlockEntity;
 import net.minecraft.world.level.block.entity.BannerPatternLayers;
@@ -43,6 +45,7 @@ public class BannerRenderer implements BlockEntityRenderer<BannerBlockEntity, Ba
    public static final WallAndGroundTransformations<Transformation> TRANSFORMATIONS = new WallAndGroundTransformations<>(
       BannerRenderer::createWallTransformation, BannerRenderer::createGroundTransformation, 16
    );
+   public static final ColorCollection<Integer> DYED_PATTERN_COLOR = CommonColors.TEXTURE_TINT_COLORS;
    private final SpriteGetter sprites;
    private final BannerModel standingModel;
    private final BannerModel wallModel;
@@ -223,7 +226,7 @@ public class BannerRenderer implements BlockEntityRenderer<BannerBlockEntity, Ba
       final SpriteId sprite,
       final DyeColor color
    ) {
-      int diffuseColor = color.getTextureDiffuseColor();
+      int diffuseColor = DYED_PATTERN_COLOR.pick(color);
       submitNodeCollector.submitModel(
          model, state, poseStack, sprite.renderType(RenderTypes::bannerPattern), lightCoords, overlayCoords, diffuseColor, sprites.get(sprite), 0
       );

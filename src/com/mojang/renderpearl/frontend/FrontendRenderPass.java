@@ -1,5 +1,6 @@
 package com.mojang.renderpearl.frontend;
 
+import com.mojang.renderpearl.api.GpuFormat;
 import com.mojang.renderpearl.api.buffers.GpuBuffer;
 import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
 import com.mojang.renderpearl.api.commands.GpuQueryPool;
@@ -7,7 +8,6 @@ import com.mojang.renderpearl.api.commands.RenderPass;
 import com.mojang.renderpearl.api.commands.RenderPassDescriptor;
 import com.mojang.renderpearl.api.device.DeviceFeatures;
 import com.mojang.renderpearl.api.device.DeviceLimits;
-import com.mojang.renderpearl.api.pipeline.BindGroupLayout;
 import com.mojang.renderpearl.api.pipeline.ColorTargetState;
 import com.mojang.renderpearl.api.pipeline.CompiledRenderPipeline;
 import com.mojang.renderpearl.api.pipeline.IndexType;
@@ -40,11 +40,11 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
    private final Runnable onFinish;
    private final RenderPass.@Nullable RenderArea renderArea;
    private final List<RenderPassDescriptor.@Nullable Attachment<Optional<Vector4fc>>> colorAttachments;
-   private final boolean hasDepthAttachment;
+   private final @Nullable GpuFormat depthAttachmentFormat;
    private boolean isClosed;
    private int pushedDebugGroups;
    private @Nullable FrontendRenderPipeline boundPipeline;
-   private final @Nullable GpuBufferSlice[] vertexBuffers = new GpuBufferSlice[16];
+   private final @Nullable GpuBufferSlice[] vertexBuffers = new GpuBufferSlice[CompiledRenderPipeline.CreateInfo.MAX_VERTEX_BUFFERS];
    protected @Nullable GpuBuffer indexBuffer;
    protected final HashMap<String, Object> uniforms = new HashMap<>();
    private boolean constantsPushed = false;
@@ -53,7 +53,7 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
       final RenderPassBackend backend,
       final GpuDeviceBackend device,
       final List<RenderPassDescriptor.@Nullable Attachment<Optional<Vector4fc>>> colorAttachments,
-      final boolean hasDepthAttachment,
+      final @Nullable GpuFormat depthAttachmentFormat,
       final Runnable onFinish,
       final RenderPass.@Nullable RenderArea renderArea
    ) {
@@ -62,7 +62,7 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
       this.deviceFeatures = device.getDeviceInfo().features();
       this.deviceLimits = device.getDeviceInfo().limits();
       this.colorAttachments = colorAttachments;
-      this.hasDepthAttachment = hasDepthAttachment;
+      this.depthAttachmentFormat = depthAttachmentFormat;
       this.onFinish = onFinish;
       this.renderArea = renderArea;
    }
@@ -118,6 +118,22 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
                   throw new IllegalStateException("Render pass color attachment " + i + " format doesn't match pipeline format.");
                }
             }
+         }
+
+         if (this.depthAttachmentFormat != null && frontendPipeline.depthStencilFormat() != this.depthAttachmentFormat) {
+            throw new IllegalStateException(
+               "Render pass depth/stencil attachment format "
+                  + this.depthAttachmentFormat
+                  + " doesn't match pipeline format "
+                  + frontendPipeline.depthStencilFormat()
+                  + "."
+            );
+         }
+
+         if (frontendPipeline.wantsDepthTexture() && this.depthAttachmentFormat == null) {
+            throw new IllegalStateException(
+               String.format(Locale.ROOT, "Render pipeline %s wants a depth texture but none was provided", frontendPipeline.name())
+            );
          }
 
          this.boundPipeline = frontendPipeline;
@@ -210,7 +226,7 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
 
    @Override
    public void setVertexBuffer(final int slot, final @Nullable GpuBufferSlice vertexBuffer) {
-      if (slot < 0 || slot >= 16) {
+      if (slot < 0 || slot >= CompiledRenderPipeline.CreateInfo.MAX_VERTEX_BUFFERS) {
          throw new IllegalArgumentException("Vertex buffer slot is out of range: " + slot);
       }
 
@@ -365,8 +381,8 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
                throw new IllegalStateException("Index buffer has been closed!");
             }
 
-            if (draw.slot() < 0 || draw.slot() >= 16) {
-               throw new IllegalStateException("Vertex buffer slot must be between 0 and 16");
+            if (draw.slot() < 0 || draw.slot() >= CompiledRenderPipeline.CreateInfo.MAX_VERTEX_BUFFERS) {
+               throw new IllegalStateException("Vertex buffer slot must be between 0 and " + CompiledRenderPipeline.CreateInfo.MAX_VERTEX_BUFFERS);
             }
 
             if (this.vertexBuffers[draw.slot()] != null) {
@@ -527,18 +543,18 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
          }
 
          if (!dynamicVertexBuffer) {
-            for (int i = 0; i < 16; i++) {
-               if (this.vertexBuffers[i] == null && this.boundPipeline.vertexFormats().get(i) != null) {
-                  throw new IllegalStateException("Vertex format contains elements but vertex buffer at slot " + i + " is null");
+            for (int i = 0; i < this.boundPipeline.usedVertexBufferSlots().size(); i++) {
+               int bufferSlot = this.boundPipeline.usedVertexBufferSlots().getInt(i);
+               GpuBufferSlice buffer = this.vertexBuffers[bufferSlot];
+               if (buffer == null) {
+                  throw new IllegalStateException("Vertex format contains elements but vertex buffer at slot " + bufferSlot + " is null");
                }
 
-               if (this.vertexBuffers[i] != null) {
-                  ((BaseGpuBuffer)this.vertexBuffers[i].buffer()).checkCanBeUsed();
-               }
+               ((BaseGpuBuffer)buffer.buffer()).checkCanBeUsed();
             }
          }
 
-         for (BindGroupLayout.UniformDescription uniform : this.boundPipeline.uniforms()) {
+         for (CompiledRenderPipeline.CreateInfo.Uniform uniform : this.boundPipeline.uniforms()) {
             Object value = this.uniforms.get(uniform.name());
             if (!dynamicUniforms.contains(uniform.name())) {
                if (value == null) {
@@ -585,23 +601,23 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
                      TextureViewAndSampler var10000 = var9;
 
                      try {
-                        var30 = var10000.view();
+                        var32 = var10000.view();
                      } catch (Throwable var18) {
                         throw new MatchException(var18.toString(), var18);
                      }
 
-                     GpuTextureView length = var30;
+                     GpuTextureView length = var32;
                      GpuTextureView textureView = length;
                      var10000 = var9;
 
                      try {
-                        var32 = var10000.sampler();
+                        var34 = var10000.sampler();
                      } catch (Throwable var17) {
                         throw new MatchException(var17.toString(), var17);
                      }
 
-                     GpuSampler var26 = var32;
-                     GpuSampler sampler = var26;
+                     GpuSampler var28 = var34;
+                     GpuSampler sampler = var28;
                      if (textureView.isClosed()) {
                         throw new IllegalStateException("Texture view " + uniform.name() + " (" + textureView.texture().getLabel() + ") has been closed!");
                      }
@@ -617,12 +633,6 @@ public class FrontendRenderPass implements RenderPass, RenderPass.UniformUploade
                      }
                }
             }
-         }
-
-         if (this.boundPipeline.wantsDepthTexture() && !this.hasDepthAttachment) {
-            throw new IllegalStateException(
-               String.format(Locale.ROOT, "Render pipeline %s wants a depth texture but none was provided", this.boundPipeline.name())
-            );
          }
       }
    }

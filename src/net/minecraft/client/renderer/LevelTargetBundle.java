@@ -24,7 +24,7 @@ public class LevelTargetBundle implements PostChain.TargetBundle {
    public @Nullable ResourceHandle<RenderTarget> entityOutline;
 
    public LevelTargetBundle() {
-      for (int i = 0; i < LevelRenderer.OIT_TRANSMITTANCE_TARGET_COUNT; i++) {
+      for (int i = 0; i < 2; i++) {
          this.transmittance.add(ResourceHandle.invalid());
       }
    }

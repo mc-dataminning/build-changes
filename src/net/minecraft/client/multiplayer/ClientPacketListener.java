@@ -509,16 +509,7 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
       ClientLevel.ClientLevelData levelData = new ClientLevel.ClientLevelData(Difficulty.NORMAL, packet.hardcore(), isFlat);
       this.levelData = levelData;
       this.level = new ClientLevel(
-         this,
-         levelData,
-         dimension,
-         dimensionType,
-         this.serverChunkRadius,
-         this.serverSimulationDistance,
-         this.minecraft.levelExtractor,
-         isDebug,
-         spawnInfo.seed(),
-         seaLevel
+         this, levelData, dimension, dimensionType, this.serverChunkRadius, this.serverSimulationDistance, this.minecraft.levelExtractor, isDebug, seaLevel
       );
       this.minecraft.setLevel(this.level);
       if (this.minecraft.player == null) {
@@ -1275,7 +1266,6 @@ public class ClientPacketListener extends ClientCommonPacketListenerImpl impleme
             this.serverSimulationDistance,
             this.minecraft.levelExtractor,
             isDebug,
-            spawnInfo.seed(),
             seaLevel
          );
          this.level.addMapData(mapData);

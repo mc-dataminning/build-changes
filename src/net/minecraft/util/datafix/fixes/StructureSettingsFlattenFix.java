@@ -8,7 +8,7 @@ import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import net.minecraft.util.Util;
+import net.minecraft.util.datafix.ExtraDataFixUtils;
 
 public class StructureSettingsFlattenFix extends DataFix {
    public StructureSettingsFlattenFix(final Schema outputSchema) {
@@ -23,7 +23,7 @@ public class StructureSettingsFlattenFix extends DataFix {
          worldGenSettingsType,
          input -> input.updateTyped(
             dimensions,
-            typed -> Util.writeAndReadTypedOrThrow(
+            typed -> ExtraDataFixUtils.writeAndReadTypedOrThrow(
                typed, dimensions.type(), serialized -> serialized.updateMapValues(StructureSettingsFlattenFix::fixDimension)
             )
          )

@@ -7,6 +7,8 @@ import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
 public class LegacyWorldBorderFix extends DataFix {
+   private static final double MAX_BORDER_SIZE = 5.999997E7F;
+
    public LegacyWorldBorderFix(final Schema outputSchema) {
       super(outputSchema, false);
    }

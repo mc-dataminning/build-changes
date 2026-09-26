@@ -3,6 +3,7 @@ package net.minecraft.world.level.levelgen.placement;
 import com.mojang.serialization.MapCodec;
 import java.util.function.Consumer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.InclusiveRange;
 import net.minecraft.util.RandomSource;
 
 public class InSquarePlacement implements PlacementModifier {
@@ -18,6 +19,11 @@ public class InSquarePlacement implements PlacementModifier {
       int x = random.nextInt(16) + origin.getX();
       int z = random.nextInt(16) + origin.getZ();
       output.accept(new BlockPos(x, origin.getY(), z));
+   }
+
+   @Override
+   public InclusiveRange<Integer> modifyXzDomain(final InclusiveRange<Integer> inputDomain) {
+      return new InclusiveRange<>(inputDomain.minInclusive(), inputDomain.maxInclusive() + 16 - 1);
    }
 
    @Override

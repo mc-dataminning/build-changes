@@ -1,6 +1,7 @@
 package net.minecraft.world.entity.player;
 
 import com.google.common.base.MoreObjects;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.math.IntMath;
@@ -9,6 +10,7 @@ import com.mojang.datafixers.util.Either;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.function.Predicate;
@@ -1397,7 +1399,7 @@ public abstract class Player extends Avatar implements ContainerUser {
                || this.jumping
                || !this.level().getFluidState(BlockPos.containing(this.getX(), this.getY() + 1.0 - 0.1, this.getZ())).isEmpty()) {
                Vec3 movement = this.getDeltaMovement();
-               this.setDeltaMovement(movement.add(0.0, (lookAngleY - movement.y) * multiplier, 0.0));
+               this.addDeltaMovement(0.0, (lookAngleY - movement.y) * multiplier, 0.0);
             }
          }
 
@@ -2008,14 +2010,23 @@ public abstract class Player extends Avatar implements ContainerUser {
       return this.abilities.flying ? false : super.onClimbable();
    }
 
-   public String debugInfo() {
-      return MoreObjects.toStringHelper(this)
+   protected ToStringHelper debugInfoBuilder(final boolean includeLevelName) {
+      Vec3 position = this.position();
+      ToStringHelper result = MoreObjects.toStringHelper(this)
          .add("name", this.getPlainTextName())
          .add("id", this.getId())
-         .add("pos", this.position())
+         .add("pos", String.format(Locale.ROOT, "[%.2f,%.2f,%.2f]", position.x, position.y, position.z))
          .add("mode", this.gameMode())
-         .add("permission", printPlayerPermissions(this.permissions()))
-         .toString();
+         .add("permission", printPlayerPermissions(this.permissions()));
+      if (includeLevelName) {
+         result.add("level", this.level());
+      }
+
+      return result;
+   }
+
+   public String debugInfo(final boolean includeLevelName) {
+      return this.debugInfoBuilder(includeLevelName).toString();
    }
 
    private static String printPlayerPermissions(final PermissionSet permissions) {

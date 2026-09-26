@@ -9,6 +9,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
@@ -69,7 +70,7 @@ public class TransferCommand {
       CommandResponseTracker<ServerPlayer> tracker = CommandResponseTracker.create();
 
       for (ServerPlayer player : players) {
-         player.connection.send(new ClientboundTransferPacket(hostname, port));
+         player.connection.send(new ClientboundTransferPacket(hostname, port, Map.of()));
          tracker.track(player);
       }
 

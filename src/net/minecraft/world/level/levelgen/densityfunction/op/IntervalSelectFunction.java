@@ -99,35 +99,55 @@ public record IntervalSelectFunction(DensityFunction input, FloatList thresholds
    private record Sampler(DensitySampler input, float[] thresholds, DensitySampler[] samplers) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
-         this.input.sampleVolume(context, outputBuffer, volume);
-         ScopedDensityBuffer[] buffers = new ScopedDensityBuffer[this.samplers.length];
+         try (ScopedDensityBuffer inputBuffer = context.acquireBuffer(volume)) {
+            this.input.sampleVolume(context, inputBuffer, volume);
+            int firstSamplerIndex = this.selectSamplerIndex(inputBuffer.get(0));
+            this.samplers[firstSamplerIndex].sampleVolume(context, outputBuffer, volume);
 
-         try {
-            for (int i = 0; i < this.samplers.length; i++) {
-               ScopedDensityBuffer buffer = context.acquireBuffer(volume);
-               buffers[i] = buffer;
-               this.samplers[i].sampleVolume(context, buffer, volume);
+            int i;
+            for (i = 1; i < inputBuffer.size(); i++) {
+               int samplerIndex = this.selectSamplerIndex(inputBuffer.get(i));
+               if (samplerIndex != firstSamplerIndex) {
+                  break;
+               }
             }
 
-            for (int i = 0; i < outputBuffer.size(); i++) {
-               int samplerIndex = this.selectSamplerIndex(outputBuffer.get(i));
-               outputBuffer.set(i, buffers[samplerIndex].get(i));
+            if (i == inputBuffer.size()) {
+               return;
             }
-         } finally {
-            ScopedDensityBuffer[] var10 = buffers;
-            int var11 = var10.length;
-            int var12 = 0;
 
-            while (true) {
-               if (var12 >= var11) {
-                  ;
-               } else {
-                  ScopedDensityBuffer buffer = var10[var12];
-                  if (buffer != null) {
-                     buffer.close();
+            DensityBuffer[] buffers = new DensityBuffer[this.samplers.length];
+            buffers[firstSamplerIndex] = outputBuffer;
+
+            try {
+               while (i < inputBuffer.size()) {
+                  int samplerIndex = this.selectSamplerIndex(inputBuffer.get(i));
+                  DensityBuffer buffer = buffers[samplerIndex];
+                  if (buffer == null) {
+                     buffer = context.acquireBuffer(volume);
+                     buffers[samplerIndex] = buffer;
+                     this.samplers[samplerIndex].sampleVolume(context, buffer, volume);
                   }
 
-                  var12++;
+                  outputBuffer.set(i, buffer.get(i));
+                  i++;
+               }
+            } finally {
+               DensityBuffer[] var14 = buffers;
+               int var15 = var14.length;
+               int var16 = 0;
+
+               while (true) {
+                  if (var16 >= var15) {
+                     ;
+                  } else {
+                     DensityBuffer buffer = var14[var16];
+                     if (buffer != outputBuffer && buffer instanceof ScopedDensityBuffer scoped) {
+                        scoped.close();
+                     }
+
+                     var16++;
+                  }
                }
             }
          }
@@ -151,19 +171,37 @@ public record IntervalSelectFunction(DensityFunction input, FloatList thresholds
    }
 
    private record SingleThresholdSampler(DensitySampler input, float threshold, DensitySampler ifBelow, DensitySampler ifAbove) implements DensitySampler {
+      private boolean isBelow(final float input) {
+         return input < this.threshold;
+      }
+
+      private DensitySampler selectSampler(final boolean firstBelow) {
+         return firstBelow ? this.ifBelow : this.ifAbove;
+      }
+
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
-         this.input.sampleVolume(context, outputBuffer, volume);
+         try (ScopedDensityBuffer inputBuffer = context.acquireBuffer(volume)) {
+            this.input.sampleVolume(context, inputBuffer, volume);
+            boolean firstBelow = this.isBelow(inputBuffer.get(0));
+            this.selectSampler(firstBelow).sampleVolume(context, outputBuffer, volume);
+            int i = 1;
 
-         try (ScopedDensityBuffer ifBelowBuffer = context.acquireBuffer(volume)) {
-            this.ifBelow.sampleVolume(context, ifBelowBuffer, volume);
+            while (i < inputBuffer.size() && firstBelow == this.isBelow(inputBuffer.get(i))) {
+               i++;
+            }
 
-            try (ScopedDensityBuffer ifAboveBuffer = context.acquireBuffer(volume)) {
-               this.ifAbove.sampleVolume(context, ifAboveBuffer, volume);
+            if (i == inputBuffer.size()) {
+               return;
+            }
 
-               for (int i = 0; i < outputBuffer.size(); i++) {
-                  float input = outputBuffer.get(i);
-                  outputBuffer.set(i, input < this.threshold ? ifBelowBuffer.get(i) : ifAboveBuffer.get(i));
+            try (ScopedDensityBuffer otherBuffer = context.acquireBuffer(volume)) {
+               this.selectSampler(!firstBelow).sampleVolume(context, otherBuffer, volume);
+
+               for (; i < inputBuffer.size(); i++) {
+                  if (firstBelow != this.isBelow(inputBuffer.get(i))) {
+                     outputBuffer.set(i, otherBuffer.get(i));
+                  }
                }
             }
          }
@@ -172,7 +210,7 @@ public record IntervalSelectFunction(DensityFunction input, FloatList thresholds
       @Override
       public float sampleValue(final SamplerContext context, final int blockX, final int blockY, final int blockZ) {
          float input = this.input.sampleValue(context, blockX, blockY, blockZ);
-         return input < this.threshold ? this.ifBelow.sampleValue(context, blockX, blockY, blockZ) : this.ifAbove.sampleValue(context, blockX, blockY, blockZ);
+         return this.isBelow(input) ? this.ifBelow.sampleValue(context, blockX, blockY, blockZ) : this.ifAbove.sampleValue(context, blockX, blockY, blockZ);
       }
    }
 }

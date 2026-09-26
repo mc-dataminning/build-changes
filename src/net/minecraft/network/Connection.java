@@ -24,7 +24,6 @@ import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.TimeoutException;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
-import java.nio.channels.ClosedChannelException;
 import java.util.Objects;
 import java.util.Queue;
 import java.util.concurrent.RejectedExecutionException;
@@ -64,7 +63,7 @@ public class Connection extends SimpleChannelInboundHandler<Packet<?>> {
    public static final Marker PACKET_SENT_MARKER = Util.make(MarkerFactory.getMarker("PACKET_SENT"), m -> m.add(PACKET_MARKER));
    private static final ProtocolInfo<ServerHandshakePacketListener> INITIAL_PROTOCOL = HandshakeProtocols.SERVERBOUND;
    private final PacketFlow receiving;
-   private volatile boolean sendLoginDisconnect = true;
+   private volatile Connection.ClientboundDisconnectPacketType disconnectPacketType = Connection.ClientboundDisconnectPacketType.NONE;
    private final Queue<Consumer<Connection>> pendingActions = Queues.newConcurrentLinkedQueue();
    private Channel channel;
    private SocketAddress address;
@@ -120,9 +119,17 @@ public class Connection extends SimpleChannelInboundHandler<Packet<?>> {
 
                if (isFirstFault) {
                   LOGGER.debug("Failed to sent packet", cause);
+                  Packet<?> disconnectPacket = null;
                   if (this.getSending() == PacketFlow.CLIENTBOUND) {
-                     Packet<?> packet = this.sendLoginDisconnect ? new ClientboundLoginDisconnectPacket(reason) : new ClientboundDisconnectPacket(reason);
-                     this.send(packet, PacketSendListener.thenRun(() -> this.disconnect(details)));
+                     disconnectPacket = switch (this.disconnectPacketType) {
+                        case NONE -> null;
+                        case LOGIN -> new ClientboundLoginDisconnectPacket(reason);
+                        case STRICT -> new ClientboundDisconnectPacket(reason);
+                     };
+                  }
+
+                  if (disconnectPacket != null) {
+                     this.send(disconnectPacket, PacketSendListener.thenRun(() -> this.disconnect(details)));
                   } else {
                      this.disconnect(details);
                   }
@@ -177,18 +184,6 @@ public class Connection extends SimpleChannelInboundHandler<Packet<?>> {
       }
    }
 
-   private static void syncAfterConfigurationChange(final ChannelFuture future) {
-      try {
-         future.syncUninterruptibly();
-      } catch (Exception e) {
-         if (e instanceof ClosedChannelException) {
-            LOGGER.info("Connection closed during protocol change");
-         } else {
-            throw e;
-         }
-      }
-   }
-
    public <T extends PacketListener> void setupInboundProtocol(final ProtocolInfo<T> protocol, final T packetListener) {
       this.validateListener(protocol, packetListener);
       if (protocol.flow() != this.getReceiving()) {
@@ -204,7 +199,7 @@ public class Connection extends SimpleChannelInboundHandler<Packet<?>> {
          configMessage = configMessage.andThen(ctx -> ctx.pipeline().addAfter("decoder", "bundler", newBundler));
       }
 
-      syncAfterConfigurationChange(this.channel.writeAndFlush(configMessage));
+      this.channel.writeAndFlush(configMessage);
    }
 
    public void setupOutboundProtocol(final ProtocolInfo<?> protocol) {
@@ -218,9 +213,12 @@ public class Connection extends SimpleChannelInboundHandler<Packet<?>> {
          PacketBundleUnpacker newUnbundler = new PacketBundleUnpacker(bundlerInfo);
          configMessage = configMessage.andThen(ctx -> ctx.pipeline().addAfter("encoder", "unbundler", newUnbundler));
       }
-
-      boolean isLoginProtocol = protocol.id() == ConnectionProtocol.LOGIN;
-      syncAfterConfigurationChange(this.channel.writeAndFlush(configMessage.andThen(ctx -> this.sendLoginDisconnect = isLoginProtocol)));
+      Connection.ClientboundDisconnectPacketType pendingDisconnectPacketType = switch (protocol.id()) {
+         case HANDSHAKING, STATUS -> Connection.ClientboundDisconnectPacketType.NONE;
+         case LOGIN -> Connection.ClientboundDisconnectPacketType.LOGIN;
+         case PLAY, CONFIGURATION -> Connection.ClientboundDisconnectPacketType.STRICT;
+      };
+      this.channel.writeAndFlush(configMessage.andThen(ctx -> this.disconnectPacketType = pendingDisconnectPacketType));
    }
 
    public void setListenerForServerboundHandshake(final PacketListener packetListener) {
@@ -235,33 +233,39 @@ public class Connection extends SimpleChannelInboundHandler<Packet<?>> {
       }
    }
 
-   public void initiateServerboundStatusConnection(final String hostName, final int port, final ClientStatusPacketListener listener) {
-      this.initiateServerboundConnection(hostName, port, StatusProtocols.SERVERBOUND, StatusProtocols.CLIENTBOUND, listener, ClientIntent.STATUS);
+   public void initiateServerboundStatusConnection(final ServerConnectionDetails hostInfo, final ClientStatusPacketListener listener) {
+      this.initiateServerboundConnection(hostInfo, StatusProtocols.SERVERBOUND, StatusProtocols.CLIENTBOUND, listener, ClientIntent.STATUS);
    }
 
-   public void initiateServerboundPlayConnection(final String hostName, final int port, final ClientLoginPacketListener listener) {
-      this.initiateServerboundConnection(hostName, port, LoginProtocols.SERVERBOUND, LoginProtocols.CLIENTBOUND, listener, ClientIntent.LOGIN);
+   public void initiateServerboundPlayConnection(final ServerConnectionDetails hostInfo, final ClientLoginPacketListener listener) {
+      this.initiateServerboundConnection(hostInfo, LoginProtocols.SERVERBOUND, LoginProtocols.CLIENTBOUND, listener, ClientIntent.LOGIN);
    }
 
    public <S extends ServerboundPacketListener, C extends ClientboundPacketListener> void initiateServerboundPlayConnection(
-      final String hostName, final int port, final ProtocolInfo<S> outbound, final ProtocolInfo<C> inbound, final C listener, final boolean transfer
+      final ServerConnectionDetails hostInfo, final ProtocolInfo<S> outbound, final ProtocolInfo<C> inbound, final C listener, final boolean transfer
    ) {
-      this.initiateServerboundConnection(hostName, port, outbound, inbound, listener, transfer ? ClientIntent.TRANSFER : ClientIntent.LOGIN);
+      this.initiateServerboundConnection(hostInfo, outbound, inbound, listener, transfer ? ClientIntent.TRANSFER : ClientIntent.LOGIN);
    }
 
    private <S extends ServerboundPacketListener, C extends ClientboundPacketListener> void initiateServerboundConnection(
-      final String hostName, final int port, final ProtocolInfo<S> outbound, final ProtocolInfo<C> inbound, final C listener, final ClientIntent intent
+      final ServerConnectionDetails hostInfo, final ProtocolInfo<S> outbound, final ProtocolInfo<C> inbound, final C listener, final ClientIntent intent
    ) {
       if (outbound.id() != inbound.id()) {
          throw new IllegalStateException("Mismatched initial protocols");
       }
 
       this.disconnectListener = listener;
-      this.runOnceConnected(connection -> {
-         this.setupInboundProtocol(inbound, listener);
-         connection.sendPacket(new ClientIntentionPacket(SharedConstants.getCurrentVersion().protocolVersion(), hostName, port, intent), null, true);
-         this.setupOutboundProtocol(outbound);
-      });
+      this.runOnceConnected(
+         connection -> {
+            this.setupInboundProtocol(inbound, listener);
+            connection.sendPacket(
+               new ClientIntentionPacket(SharedConstants.getCurrentVersion().protocolVersion(), hostInfo.hostForIntentPacket(), hostInfo.port(), intent),
+               null,
+               true
+            );
+            this.setupOutboundProtocol(outbound);
+         }
+      );
    }
 
    public void send(final Packet<?> packet) {
@@ -591,5 +595,11 @@ public class Connection extends SimpleChannelInboundHandler<Packet<?>> {
 
    public void setBandwidthLogger(final LocalSampleLogger bandwidthLogger) {
       this.bandwidthDebugMonitor = new BandwidthDebugMonitor(bandwidthLogger);
+   }
+
+   public enum ClientboundDisconnectPacketType {
+      NONE,
+      LOGIN,
+      STRICT;
    }
 }

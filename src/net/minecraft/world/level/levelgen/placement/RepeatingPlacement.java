@@ -3,6 +3,7 @@ package net.minecraft.world.level.levelgen.placement;
 import com.mojang.serialization.MapCodec;
 import java.util.function.Consumer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.InclusiveRange;
 import net.minecraft.util.RandomSource;
 
 public interface RepeatingPlacement extends PlacementModifier {
@@ -15,6 +16,11 @@ public interface RepeatingPlacement extends PlacementModifier {
       for (int i = 0; i < count; i++) {
          output.accept(origin);
       }
+   }
+
+   @Override
+   default InclusiveRange<Integer> modifyXzDomain(final InclusiveRange<Integer> inputDomain) {
+      return inputDomain;
    }
 
    @Override

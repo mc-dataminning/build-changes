@@ -10,7 +10,7 @@ import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.OptionalDynamic;
 import java.util.stream.Stream;
-import net.minecraft.util.Util;
+import net.minecraft.util.datafix.ExtraDataFixUtils;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 
 public class WorldGenSettingsHeightAndBiomeFix extends DataFix {
@@ -38,7 +38,7 @@ public class WorldGenSettingsHeightAndBiomeFix extends DataFix {
                .updateTyped(
                   dimensionsFinder,
                   dimensionsType,
-                  dimensions -> Util.writeAndReadTypedOrThrow(
+                  dimensions -> ExtraDataFixUtils.writeAndReadTypedOrThrow(
                      dimensions,
                      dimensionsType,
                      dimensionsTag -> dimensionsTag.update(

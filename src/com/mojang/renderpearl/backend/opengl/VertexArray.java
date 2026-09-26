@@ -1,7 +1,7 @@
 package com.mojang.renderpearl.backend.opengl;
 
 import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
-import com.mojang.renderpearl.backend.api.BackendRenderPipeline;
+import com.mojang.renderpearl.api.pipeline.CompiledRenderPipeline;
 import com.mojang.renderpearl.util.UncheckedAutoCloseable;
 import java.util.Arrays;
 import java.util.Set;
@@ -14,7 +14,7 @@ import org.lwjgl.opengl.GLCapabilities;
 public abstract sealed class VertexArray implements UncheckedAutoCloseable permits VertexArray.Emulated, VertexArray.Separate {
    protected final int vertexArrayId = GL33C.glGenVertexArrays();
 
-   public static BiFunction<GlProgram, BackendRenderPipeline.CreateInfo, VertexArray> createSource(
+   public static BiFunction<GlProgram, CompiledRenderPipeline.CreateInfo, VertexArray> createSource(
       final GLCapabilities capabilities, final Set<String> enabledExtensions
    ) {
       if (capabilities.GL_ARB_vertex_attrib_binding && GlDevice.USE_GL_ARB_vertex_attrib_binding) {
@@ -36,26 +36,26 @@ public abstract sealed class VertexArray implements UncheckedAutoCloseable permi
    public abstract void bind(final @Nullable GpuBufferSlice[] vertexBuffers);
 
    private static final class Emulated extends VertexArray {
-      private final int[] bufferStride = new int[16];
-      private final int[] bufferDivisor = new int[16];
-      private final int[] bufferIndex = new int[16];
-      private final int[] channelCount = new int[16];
-      private final int[] glType = new int[16];
-      private final boolean[] isInteger = new boolean[16];
-      private final boolean[] isNormalized = new boolean[16];
-      private final int[] elementOffset = new int[16];
+      private final int[] bufferStride = new int[CompiledRenderPipeline.CreateInfo.MAX_VERTEX_BUFFERS];
+      private final int[] bufferDivisor = new int[CompiledRenderPipeline.CreateInfo.MAX_VERTEX_BUFFERS];
+      private final int[] bufferIndex = new int[CompiledRenderPipeline.CreateInfo.MAX_VERTEX_ATTRIBS];
+      private final int[] channelCount = new int[CompiledRenderPipeline.CreateInfo.MAX_VERTEX_ATTRIBS];
+      private final int[] glType = new int[CompiledRenderPipeline.CreateInfo.MAX_VERTEX_ATTRIBS];
+      private final boolean[] isInteger = new boolean[CompiledRenderPipeline.CreateInfo.MAX_VERTEX_ATTRIBS];
+      private final boolean[] isNormalized = new boolean[CompiledRenderPipeline.CreateInfo.MAX_VERTEX_ATTRIBS];
+      private final int[] elementOffset = new int[CompiledRenderPipeline.CreateInfo.MAX_VERTEX_ATTRIBS];
 
-      private Emulated(final GlProgram program, final BackendRenderPipeline.CreateInfo createInfo) {
-         GlStateManager._glBindVertexArray(this.vertexArrayId);
+      private Emulated(final GlProgram program, final CompiledRenderPipeline.CreateInfo createInfo) {
+         GL33C.glBindVertexArray(this.vertexArrayId);
 
-         for (BackendRenderPipeline.CreateInfo.VertexBuffer vertexBuffer : createInfo.vertexBuffers()) {
+         for (CompiledRenderPipeline.CreateInfo.VertexBuffer vertexBuffer : createInfo.vertexBuffers()) {
             this.bufferStride[vertexBuffer.bufferSlot()] = vertexBuffer.stride();
             this.bufferDivisor[vertexBuffer.bufferSlot()] = vertexBuffer.stepRate();
          }
 
          Arrays.fill(this.bufferIndex, -1);
 
-         for (BackendRenderPipeline.CreateInfo.AttribBinding attribBinding : createInfo.attribBindings()) {
+         for (CompiledRenderPipeline.CreateInfo.AttribBinding attribBinding : createInfo.attribBindings()) {
             int attribLocation = attribBinding.location();
             GL33C.glEnableVertexAttribArray(attribLocation);
             this.bufferIndex[attribLocation] = attribBinding.bufferSlot();
@@ -67,21 +67,21 @@ public abstract sealed class VertexArray implements UncheckedAutoCloseable permi
             this.elementOffset[attribLocation] = attribBinding.offset();
          }
 
-         GlStateManager._glBindVertexArray(0);
+         GL33C.glBindVertexArray(0);
       }
 
       @Override
       public void bind(final @Nullable GpuBufferSlice[] vertexBuffers) {
-         GlStateManager._glBindVertexArray(this.vertexArrayId);
+         GL33C.glBindVertexArray(this.vertexArrayId);
 
-         for (int attributeIndex = 0; attributeIndex < 16; attributeIndex++) {
+         for (int attributeIndex = 0; attributeIndex < CompiledRenderPipeline.CreateInfo.MAX_VERTEX_ATTRIBS; attributeIndex++) {
             if (this.bufferIndex[attributeIndex] != -1) {
                int vertexBufferIndex = this.bufferIndex[attributeIndex];
                if (vertexBuffers[vertexBufferIndex] == null) {
                   throw new IllegalStateException("Vertex buffer slot " + vertexBufferIndex + " not specified but required");
                }
 
-               GlStateManager._glBindBuffer(34962, ((GlBuffer)vertexBuffers[vertexBufferIndex].buffer()).handle());
+               GL33C.glBindBuffer(34962, ((GlBuffer)vertexBuffers[vertexBufferIndex].buffer()).handle());
                long totalOffset = vertexBuffers[vertexBufferIndex].offset() + this.elementOffset[attributeIndex];
                if (this.isInteger[attributeIndex]) {
                   GL33C.glVertexAttribIPointer(
@@ -106,9 +106,9 @@ public abstract sealed class VertexArray implements UncheckedAutoCloseable permi
 
    private static final class Separate extends VertexArray {
       private final boolean needsMesaWorkaround;
-      private final int[] strides = new int[16];
+      private final int[] strides = new int[CompiledRenderPipeline.CreateInfo.MAX_VERTEX_BUFFERS];
 
-      private Separate(final GlProgram program, final BackendRenderPipeline.CreateInfo createInfo) {
+      private Separate(final GlProgram program, final CompiledRenderPipeline.CreateInfo createInfo) {
          if ("Mesa".equals(GL33C.glGetString(7936))) {
             String version = GL33C.glGetString(7938);
             this.needsMesaWorkaround = version.contains("25.0.0") || version.contains("25.0.1") || version.contains("25.0.2");
@@ -116,14 +116,14 @@ public abstract sealed class VertexArray implements UncheckedAutoCloseable permi
             this.needsMesaWorkaround = false;
          }
 
-         GlStateManager._glBindVertexArray(this.vertexArrayId);
+         GL33C.glBindVertexArray(this.vertexArrayId);
 
-         for (BackendRenderPipeline.CreateInfo.VertexBuffer vertexBuffer : createInfo.vertexBuffers()) {
+         for (CompiledRenderPipeline.CreateInfo.VertexBuffer vertexBuffer : createInfo.vertexBuffers()) {
             this.strides[vertexBuffer.bufferSlot()] = vertexBuffer.stride();
             ARBVertexAttribBinding.glVertexBindingDivisor(vertexBuffer.bufferSlot(), vertexBuffer.stepRate());
          }
 
-         for (BackendRenderPipeline.CreateInfo.AttribBinding attribBinding : createInfo.attribBindings()) {
+         for (CompiledRenderPipeline.CreateInfo.AttribBinding attribBinding : createInfo.attribBindings()) {
             int attribLocation = attribBinding.location();
             GL33C.glEnableVertexAttribArray(attribLocation);
             int glExternalId = GlConst.toGlExternalId(attribBinding.format());
@@ -140,12 +140,12 @@ public abstract sealed class VertexArray implements UncheckedAutoCloseable permi
             ARBVertexAttribBinding.glVertexAttribBinding(attribLocation, attribBinding.bufferSlot());
          }
 
-         GlStateManager._glBindVertexArray(0);
+         GL33C.glBindVertexArray(0);
       }
 
       @Override
       public void bind(final @Nullable GpuBufferSlice[] vertexBuffers) {
-         GlStateManager._glBindVertexArray(this.vertexArrayId);
+         GL33C.glBindVertexArray(this.vertexArrayId);
 
          for (int i = 0; i < vertexBuffers.length; i++) {
             if (this.strides[i] != 0) {

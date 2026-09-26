@@ -7,12 +7,24 @@ public class DensityBuffer {
    protected int size;
 
    protected DensityBuffer(final int size) {
-      this.values = new float[size];
+      this(new float[size], size);
+   }
+
+   private DensityBuffer(final float[] values, final int size) {
+      this.values = values;
       this.size = size;
    }
 
    public static DensityBuffer createUnpooled(final int size) {
       return new DensityBuffer(size);
+   }
+
+   public DensityBuffer slice(final int size) {
+      if (size > this.size) {
+         throw new IllegalArgumentException(size + " larger than maximum " + this.size);
+      } else {
+         return new DensityBuffer(this.values, size);
+      }
    }
 
    public void set(final int index, final float value) {
@@ -41,6 +53,18 @@ public class DensityBuffer {
       }
 
       System.arraycopy(other.values, 0, this.values, 0, this.size());
+   }
+
+   public void copyFrom(final DensityBuffer other, final int fromIndex, final int toIndex, final int length) {
+      if (fromIndex < 0 || fromIndex + length > other.size) {
+         throw new IllegalArgumentException("Cannot copy " + length + " values from " + fromIndex + " in buffer with size=" + other.size);
+      }
+
+      if (toIndex >= 0 && toIndex + length <= this.size) {
+         System.arraycopy(other.values, fromIndex, this.values, toIndex, length);
+      } else {
+         throw new IllegalArgumentException("Cannot copy " + length + " values to " + toIndex + " in buffer with size=" + this.size);
+      }
    }
 
    public int capacity() {

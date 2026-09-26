@@ -9,7 +9,6 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
-import java.util.function.IntFunction;
 import net.minecraft.Optionull;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -21,7 +20,6 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.PacketType;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.ByIdMap;
 import net.minecraft.world.entity.player.PlayerModelPart;
 import net.minecraft.world.level.GameType;
 import org.jspecify.annotations.Nullable;
@@ -144,10 +142,9 @@ public class ClientboundPlayerInfoUpdatePacket implements Packet<ClientGamePacke
       private final int id;
       private final ClientboundPlayerInfoUpdatePacket.Action.Reader reader;
       private final ClientboundPlayerInfoUpdatePacket.Action.Writer writer;
-      private static final IntFunction<ClientboundPlayerInfoUpdatePacket.Action> BY_ID = ByIdMap.continuous(
-         a -> a.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO
+      public static final StreamCodec<ByteBuf, ClientboundPlayerInfoUpdatePacket.Action> STREAM_CODEC = ByteBufCodecs.enumCodec(
+         ClientboundPlayerInfoUpdatePacket.Action.class, a -> a.id
       );
-      public static final StreamCodec<ByteBuf, ClientboundPlayerInfoUpdatePacket.Action> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, a -> a.id);
 
       Action(final int id, final ClientboundPlayerInfoUpdatePacket.Action.Reader reader, final ClientboundPlayerInfoUpdatePacket.Action.Writer writer) {
          this.id = id;

@@ -1,60 +1,47 @@
 package net.minecraft.world.level.levelgen;
 
 import com.google.common.base.Suppliers;
-import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.List;
 import java.util.Locale;
-import java.util.OptionalInt;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import java.util.function.Predicate;
 import java.util.function.Supplier;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.QuartPos;
-import net.minecraft.core.SectionPos;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.WorldGenRegion;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.Mth;
 import net.minecraft.util.Util;
+import net.minecraft.util.context.ContextMap;
 import net.minecraft.util.profiling.Profiler;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.util.profiling.Zone;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.LevelHeightAccessor;
 import net.minecraft.world.level.NaturalSpawner;
-import net.minecraft.world.level.NoiseColumn;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
-import net.minecraft.world.level.biome.BiomeManager;
-import net.minecraft.world.level.biome.BiomeResolver;
 import net.minecraft.world.level.biome.BiomeSource;
+import net.minecraft.world.level.biome.Climate;
+import net.minecraft.world.level.biome.NoiseBiomeResolver;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.CarvingMask;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.chunk.LevelChunkSection;
+import net.minecraft.world.level.chunk.ProtoChunk;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.levelgen.blending.Blender;
 import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import net.minecraft.world.level.levelgen.densityfunction.DensityFunction;
-import net.minecraft.world.level.levelgen.densityfunction.DensitySampler;
 import net.minecraft.world.level.levelgen.densityfunction.DensitySamplerSet;
 import net.minecraft.world.level.levelgen.densityfunction.DensityVolume;
 import net.minecraft.world.level.levelgen.densityfunction.SamplerContext;
-import net.minecraft.world.level.levelgen.densityfunction.ScopedDensityBuffer;
-import net.minecraft.world.level.levelgen.material.rule.MaterialRule;
-import org.apache.commons.lang3.mutable.MutableObject;
 import org.jspecify.annotations.Nullable;
 
 public final class NoiseBasedChunkGenerator extends ChunkGenerator {
@@ -65,7 +52,6 @@ public final class NoiseBasedChunkGenerator extends ChunkGenerator {
          )
          .apply(i, i.stable(NoiseBasedChunkGenerator::new))
    );
-   private static final BlockState AIR = Blocks.AIR.defaultBlockState();
    private static final DecimalFormat DEBUG_DENSITY_FORMAT = new DecimalFormat("0.000", DecimalFormatSymbols.getInstance(Locale.ROOT));
    private final Holder<NoiseGeneratorSettings> settings;
    private final Supplier<Aquifer.FluidPicker> globalFluidPicker;
@@ -91,21 +77,35 @@ public final class NoiseBasedChunkGenerator extends ChunkGenerator {
    }
 
    @Override
-   protected BiomeResolver decorateBiomeResolver(final Blender blender, final ChunkAccess protoChunk, BiomeResolver biomeResolver) {
-      biomeResolver = blender.getBiomeResolver(biomeResolver);
-      return BelowZeroRetrogen.getBiomeResolver(biomeResolver, protoChunk);
+   protected NoiseBiomeResolver decorateBiomeResolver(final Blender blender, final ProtoChunk protoChunk, NoiseBiomeResolver noiseBiomeResolver) {
+      noiseBiomeResolver = blender.getBiomeResolver(noiseBiomeResolver);
+      return RetroGen.getBiomeResolver(noiseBiomeResolver, protoChunk);
    }
 
-   private NoiseChunk createNoiseChunk(
-      final ChunkAccess chunk, final StructureManager structureManager, final Blender blender, final RandomState randomState, final NoiseSettings noiseSettings
-   ) {
-      Beardifier beardifier = Beardifier.forStructuresInChunk(structureManager, chunk.getPos());
-      return new NoiseChunk(randomState, beardifier, this.settings.value(), this.globalFluidPicker.get(), blender, chunkVolume(chunk, noiseSettings));
+   private NoiseChunk createNoiseChunk(final RandomState randomState, final DensityVolume chunkVolume, final ContextMap chunkSamplerFields) {
+      NoiseGeneratorSettings settings = this.settings.value();
+      DensityFunction finalDensity = settings.noiseRouter().finalDensity();
+      Aquifer.Config aquifers = settings.aquifers().orElse(null);
+      return new NoiseChunk(randomState, chunkVolume, chunkSamplerFields, finalDensity, aquifers, this.globalFluidPicker.get());
    }
 
    private static DensityVolume chunkVolume(final ChunkAccess chunk, final NoiseSettings noiseSettings) {
       ChunkPos pos = chunk.getPos();
       return new DensityVolume(16, noiseSettings.height(), 16, pos.getMinBlockX(), noiseSettings.minY(), pos.getMinBlockZ());
+   }
+
+   private static ContextMap chunkSamplerFields(
+      final ChunkAccess chunk, final Blender blender, final StructureManager structureManager, final DensityVolume volume
+   ) {
+      ContextMap.Builder userFields = ContextMap.builder().set(Beardifier.CONTEXT_KEY, Beardifier.forStructuresInChunk(structureManager, chunk.getPos()));
+      if (!blender.isEmpty()) {
+         Blender.OutputBuffer blendBuffer = blender.blendOffsetAndFactor(volume);
+         userFields.set(Blender.CONTEXT_KEY, blender)
+            .set(Blender.ALPHA_KEY, blendBuffer.createAlphaSampler())
+            .set(Blender.OFFSET_KEY, blendBuffer.createOffsetSampler());
+      }
+
+      return userFields.build();
    }
 
    @Override
@@ -133,18 +133,6 @@ public final class NoiseBasedChunkGenerator extends ChunkGenerator {
    }
 
    @Override
-   public int getBaseHeight(final int x, final int z, final Heightmap.Types type, final LevelHeightAccessor heightAccessor, final RandomState randomState) {
-      return this.iterateNoiseColumn(heightAccessor, randomState, x, z, null, type.isOpaque()).orElse(heightAccessor.getMinY());
-   }
-
-   @Override
-   public NoiseColumn getBaseColumn(final int x, final int z, final LevelHeightAccessor heightAccessor, final RandomState randomState) {
-      MutableObject<NoiseColumn> result = new MutableObject();
-      this.iterateNoiseColumn(heightAccessor, randomState, x, z, result, null);
-      return (NoiseColumn)result.get();
-   }
-
-   @Override
    public void addDebugScreenInfo(final List<String> result, final RandomState randomState, final BlockPos feetPos, final SamplerContext samplerContext) {
       List<NoiseGeneratorSettings.DebugFunctionEntry> functions = this.settings.value().debugFunctions().functions();
       if (!functions.isEmpty()) {
@@ -162,191 +150,77 @@ public final class NoiseBasedChunkGenerator extends ChunkGenerator {
       }
    }
 
-   private OptionalInt iterateNoiseColumn(
-      final LevelHeightAccessor heightAccessor,
-      final RandomState randomState,
-      final int blockX,
-      final int blockZ,
-      final @Nullable MutableObject<NoiseColumn> columnReference,
-      final @Nullable Predicate<BlockState> tester
-   ) {
+   @Override
+   public NoiseColumn getBaseColumn(final int blockX, final int blockZ, final LevelHeightAccessor heightAccessor, final RandomState randomState) {
       NoiseSettings noiseSettings = this.settings.value().noiseSettings().clampToHeightAccessor(heightAccessor);
       if (noiseSettings.height() <= 0) {
-         return OptionalInt.empty();
+         return new NoiseColumn(noiseSettings.minY(), 0);
       }
 
       DensityVolume volume = new DensityVolume(1, noiseSettings.height(), 1, blockX, noiseSettings.minY(), blockZ);
-      BlockState[] writeTo;
-      if (columnReference == null) {
-         writeTo = null;
-      } else {
-         writeTo = new BlockState[volume.sizeY()];
-         columnReference.setValue(new NoiseColumn(volume.minBlockY(), writeTo));
-      }
 
-      try (NoiseChunk noiseChunk = new NoiseChunk(randomState, null, this.settings.value(), this.globalFluidPicker.get(), Blender.empty(), volume)) {
-         Aquifer aquifer = noiseChunk.aquifer();
-         BlockState defaultState = this.settings.value().defaultBlock();
-         DensitySampler.Bound finalDensity = noiseChunk.cachingSamplers().get(this.settings.value().noiseRouter().finalDensity());
-
-         try (ScopedDensityBuffer densityBuffer = finalDensity.sampleVolume(noiseChunk.volume())) {
-            for (int y = volume.sizeY() - 1; y >= 0; y--) {
-               float density = densityBuffer.get(volume.indexUnchecked(0, y, 0));
-               int blockY = volume.blockY(y);
-               BlockState baseState = aquifer.computeSubstance(blockX, blockY, blockZ, density);
-               BlockState state = baseState == null ? defaultState : baseState;
-               if (writeTo != null) {
-                  writeTo[y] = state;
-               }
-
-               if (tester != null && tester.test(state)) {
-                  return OptionalInt.of(blockY + 1);
-               }
-            }
-         }
-      }
-
-      return OptionalInt.empty();
-   }
-
-   private void buildSurface(
-      final ChunkAccess protoChunk,
-      final NoiseChunk noiseChunk,
-      final RandomState randomState,
-      final BiomeManager biomeManager,
-      final Set<Holder<Biome>> possibleBiomes,
-      final MaterialRule materialRule
-   ) {
-      if (!SharedConstants.debugVoidTerrain(protoChunk.getPos()) && !SharedConstants.DEBUG_DISABLE_SURFACE) {
-         WorldGenerationContext context = new WorldGenerationContext(this, protoChunk.getHeightAccessorForGeneration());
-         randomState.surfaceSystem().buildSurface(randomState, biomeManager, context, protoChunk, noiseChunk, materialRule, possibleBiomes);
+      try (NoiseChunk noiseChunk = this.createNoiseChunk(randomState, volume, ContextMap.EMPTY)) {
+         return noiseChunk.prepareColumn(0, 0);
       }
    }
 
-   private void generateCarvers(
+   private @Nullable CarvingMask generateCarvingMask(
       final ChunkAccess chunk,
       final Blender blender,
-      final NoiseChunk noiseChunk,
       final RandomState randomState,
-      final BiomeManager biomeManager,
       final @Nullable WorldGenRegion carverBiomeRegion,
-      final MaterialRule materialRule
+      final NoiseBiomeResolver noiseBiomeResolver,
+      final VerticalAnchor.Context verticalAnchorContext
    ) {
-      if (!SharedConstants.DEBUG_DISABLE_CARVERS && !SharedConstants.debugVoidTerrain(chunk.getPos())) {
-         BiomeResolver biomeResolver = this.biomeSource.createUncachedResolver(randomState);
-         WorldgenRandom random = new WorldgenRandom(new LegacyRandomSource(RandomSupport.generateUniqueSeed()));
-         int range = 8;
-         ChunkPos pos = chunk.getPos();
-         WorldGenerationContext context = new WorldGenerationContext(this, chunk.getHeightAccessorForGeneration());
-         int protectedBlocksOnTop = chunk.isUpgrading() ? 0 : 7;
-         int maxY = context.getMinGenY() + context.getGenDepth() - 1 - protectedBlocksOnTop;
-         CarvingMask mask = new CarvingMask(context.getMinGenY() + 1, maxY);
+      if (SharedConstants.DEBUG_DISABLE_CARVERS) {
+         return null;
+      }
 
-         for (int dx = -8; dx <= 8; dx++) {
-            for (int dz = -8; dz <= 8; dz++) {
-               ChunkPos sourcePos = new ChunkPos(pos.x() + dx, pos.z() + dz);
-               BiomeGenerationSettings sourceBiomeGenerationSettings;
-               if (carverBiomeRegion != null) {
-                  ChunkAccess carverCenterChunk = carverBiomeRegion.getChunk(sourcePos.x(), sourcePos.z());
-                  sourceBiomeGenerationSettings = carverCenterChunk.carverBiome(() -> this.getBiomeGenerationSettingsForCarver(biomeResolver, sourcePos));
-               } else {
-                  sourceBiomeGenerationSettings = this.getBiomeGenerationSettingsForCarver(biomeResolver, sourcePos);
-               }
+      WorldgenRandom random = new WorldgenRandom(new LegacyRandomSource(RandomSupport.generateUniqueSeed()));
+      int range = 8;
+      ChunkPos pos = chunk.getPos();
+      int protectedBlocksOnTop = chunk.isUpgrading() ? 0 : 7;
+      int maxY = verticalAnchorContext.maxY() - protectedBlocksOnTop;
+      CarvingMask mask = new CarvingMask(verticalAnchorContext.minY() + 1, maxY);
 
-               Iterable<Holder<WorldCarver>> carvers = sourceBiomeGenerationSettings.getCarvers();
-               int index = 0;
-
-               for (Holder<WorldCarver> carverHolder : carvers) {
-                  WorldCarver carver = carverHolder.value();
-                  random.setLargeFeatureSeed(randomState.seed() + index, sourcePos.x(), sourcePos.z());
-                  if (carver.isStartChunk(random)) {
-                     carver.carve(context, random, chunk.getPos(), sourcePos, mask);
-                  }
-
-                  index++;
-               }
+      for (int dx = -8; dx <= 8; dx++) {
+         for (int dz = -8; dz <= 8; dz++) {
+            ChunkPos sourcePos = new ChunkPos(pos.x() + dx, pos.z() + dz);
+            BiomeGenerationSettings sourceBiomeGenerationSettings;
+            if (carverBiomeRegion != null) {
+               ChunkAccess carverCenterChunk = carverBiomeRegion.getChunk(sourcePos.x(), sourcePos.z());
+               sourceBiomeGenerationSettings = carverCenterChunk.carverBiome(() -> this.getBiomeGenerationSettingsForCarver(noiseBiomeResolver, sourcePos));
+            } else {
+               sourceBiomeGenerationSettings = this.getBiomeGenerationSettingsForCarver(noiseBiomeResolver, sourcePos);
             }
-         }
 
-         if (!mask.isEmpty()) {
-            try (Zone var27 = Profiler.get().zone("applyCarvingMask")) {
-               BiomeManager correctBiomeManager = biomeManager.withDifferentSource(biomeResolver);
-               this.applyCarvingMask(chunk, mask, randomState, materialRule, context, noiseChunk, correctBiomeManager::getBiome, blender.getCarvingFilter());
+            Iterable<Holder<WorldCarver>> carvers = sourceBiomeGenerationSettings.getCarvers();
+            int index = 0;
+
+            for (Holder<WorldCarver> carverHolder : carvers) {
+               WorldCarver carver = carverHolder.value();
+               random.setLargeFeatureSeed(randomState.seed() + index, sourcePos.x(), sourcePos.z());
+               if (carver.isStartChunk(random)) {
+                  carver.carve(verticalAnchorContext, random, chunk.getPos(), sourcePos, mask);
+               }
+
+               index++;
             }
          }
       }
+
+      CarvingMask.Filter blenderFilter = blender.getCarvingFilter();
+      if (blenderFilter != null) {
+         mask.applyFilter(blenderFilter);
+      }
+
+      return mask.isEmpty() ? null : mask;
    }
 
-   private void applyCarvingMask(
-      final ChunkAccess chunk,
-      final CarvingMask mask,
-      final RandomState randomState,
-      final MaterialRule materialRule,
-      final WorldGenerationContext context,
-      final NoiseChunk noiseChunk,
-      final Function<BlockPos, Holder<Biome>> biomeGetter,
-      final CarvingMask.@Nullable Filter filter
-   ) {
-      ChunkPos chunkPos = chunk.getPos();
-      BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
-      BlockPos.MutableBlockPos helperPos = new BlockPos.MutableBlockPos();
-      Aquifer aquifer = noiseChunk.aquifer();
-      mask.visit(
-         (x, z, bottomY, topY) -> {
-            boolean hasGrass = false;
-            int worldX = chunkPos.getBlockX(x);
-            int worldZ = chunkPos.getBlockZ(z);
-
-            for (int worldY = topY; worldY >= bottomY; worldY--) {
-               if (filter == null || filter.test(x, worldY, z)) {
-                  blockPos.set(worldX, worldY, worldZ);
-                  BlockState blockState = chunk.getBlockState(blockPos);
-                  if (!blockState.is(BlockTags.UNCARVABLE)) {
-                     if (blockState.is(Blocks.GRASS_BLOCK) || blockState.is(Blocks.MYCELIUM)) {
-                        hasGrass = true;
-                     }
-
-                     BlockState state = aquifer.computeSubstance(worldX, worldY, worldZ, 0.0);
-                     if (state != null) {
-                        chunk.setBlockState(blockPos, state);
-                        if (aquifer.shouldScheduleFluidUpdate() && !state.getFluidState().isEmpty()) {
-                           chunk.markPosForPostProcessing(blockPos);
-                        }
-
-                        if (hasGrass) {
-                           helperPos.setWithOffset(blockPos, Direction.DOWN);
-                           if (chunk.getBlockState(helperPos).is(Blocks.DIRT)) {
-                              randomState.surfaceSystem()
-                                 .topMaterial(
-                                    materialRule,
-                                    randomState,
-                                    context,
-                                    biomeGetter,
-                                    chunk,
-                                    noiseChunk.cachingSamplers(),
-                                    helperPos,
-                                    !state.getFluidState().isEmpty()
-                                 )
-                                 .ifPresent(topMaterial -> {
-                                    chunk.setBlockState(helperPos, topMaterial);
-                                    if (!topMaterial.getFluidState().isEmpty()) {
-                                       chunk.markPosForPostProcessing(helperPos);
-                                    }
-                                 });
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      );
-   }
-
-   private BiomeGenerationSettings getBiomeGenerationSettingsForCarver(final BiomeResolver biomeResolver, final ChunkPos sourcePos) {
+   private BiomeGenerationSettings getBiomeGenerationSettingsForCarver(final NoiseBiomeResolver noiseBiomeResolver, final ChunkPos sourcePos) {
       int quartX = QuartPos.fromBlock(sourcePos.getMinBlockX());
       int quartZ = QuartPos.fromBlock(sourcePos.getMinBlockZ());
-      return this.getBiomeGenerationSettings(biomeResolver.getNoiseBiome(quartX, 0, quartZ));
+      return this.getBiomeGenerationSettings(noiseBiomeResolver.getNoiseBiome(quartX, 0, quartZ));
    }
 
    @Override
@@ -355,104 +229,57 @@ public final class NoiseBasedChunkGenerator extends ChunkGenerator {
       final Blender blender,
       final RandomState randomState,
       final StructureManager structureManager,
-      final BiomeManager biomeManager,
       final @Nullable WorldGenRegion carverBiomeRegion,
       final Set<Holder<Biome>> possibleBiomes
    ) {
       NoiseSettings noiseSettings = this.settings.value().noiseSettings().clampToHeightAccessor(chunk.getHeightAccessorForGeneration());
-      return noiseSettings.height() > 0 && !SharedConstants.debugVoidTerrain(chunk.getPos()) ? CompletableFuture.supplyAsync(() -> {
-         ProfilerFiller profiler = Profiler.get();
-
-         try (NoiseChunk noiseChunk = this.createNoiseChunk(chunk, structureManager, blender, randomState, noiseSettings)) {
-            DensityVolume volume = noiseChunk.volume();
-            int topSectionIndex = chunk.getSectionIndex(volume.maxBlockY());
-            int bottomSectionIndex = chunk.getSectionIndex(volume.minBlockY());
-            Set<LevelChunkSection> sections = Sets.newHashSet();
-
-            for (int sectionIndex = topSectionIndex; sectionIndex >= bottomSectionIndex; sectionIndex--) {
-               LevelChunkSection section = chunk.getSection(sectionIndex);
-               section.acquire();
-               sections.add(section);
-            }
-
-            try (Zone var39 = profiler.zone("doFill")) {
-               this.doFill(noiseChunk, chunk);
-            } finally {
-               for (LevelChunkSection section : sections) {
-                  section.release();
-               }
-            }
-
-            MaterialRule materialRule = this.settings.value().materialRule().value();
-
-            try (Zone var41 = profiler.zone("buildSurface")) {
-               this.buildSurface(chunk, noiseChunk, randomState, biomeManager, possibleBiomes, materialRule);
-            }
-
-            try (Zone var42 = profiler.zone("generateCarvers")) {
-               this.generateCarvers(chunk, blender, noiseChunk, randomState, biomeManager, carverBiomeRegion, materialRule);
-            }
-
-            return chunk;
-         }
-      }, Util.backgroundExecutor().forName("buildTerrain")) : CompletableFuture.completedFuture(chunk);
+      return noiseSettings.height() > 0 && !SharedConstants.debugVoidTerrain(chunk.getPos())
+         ? CompletableFuture.supplyAsync(
+            () -> this.buildTerrain(chunk, blender, randomState, structureManager, carverBiomeRegion, possibleBiomes, noiseSettings),
+            Util.backgroundExecutor().forName("buildTerrain")
+         )
+         : CompletableFuture.completedFuture(chunk);
    }
 
-   private void doFill(final NoiseChunk noiseChunk, final ChunkAccess chunk) {
-      Heightmap oceanFloor = chunk.getOrCreateHeightmapUnprimed(Heightmap.Types.OCEAN_FLOOR_WG);
-      Heightmap worldSurface = chunk.getOrCreateHeightmapUnprimed(Heightmap.Types.WORLD_SURFACE_WG);
-      Aquifer aquifer = noiseChunk.aquifer();
-      BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
-      DensityVolume volume = noiseChunk.volume();
-      DensitySampler.Bound finalDensity = noiseChunk.cachingSamplers().get(this.settings.value().noiseRouter().finalDensity());
+   private ChunkAccess buildTerrain(
+      final ChunkAccess chunk,
+      final Blender blender,
+      final RandomState randomState,
+      final StructureManager structureManager,
+      final @Nullable WorldGenRegion carverBiomeRegion,
+      final Set<Holder<Biome>> possibleBiomes,
+      final NoiseSettings noiseSettings
+   ) {
+      ProfilerFiller profiler = Profiler.get();
+      DensityVolume volume = chunkVolume(chunk, noiseSettings);
+      ContextMap chunkSamplerFields = chunkSamplerFields(chunk, blender, structureManager, volume);
 
-      try (ScopedDensityBuffer densityBuffer = finalDensity.sampleVolume(volume)) {
-         for (int z = 0; z < volume.sizeZ(); z++) {
-            int blockZ = volume.blockZ(z);
+      try (NoiseChunk noiseChunk = this.createNoiseChunk(randomState, volume, chunkSamplerFields)) {
+         Climate.Sampler noiseClimateSampler = this.settings.value().noiseRouter().createClimateSampler(noiseChunk.cachingSamplers());
+         NoiseBiomeResolver noiseBiomeResolver = this.biomeSource.createResolver(noiseClimateSampler);
+         VerticalAnchor.Context verticalAnchorContext = VerticalAnchor.Context.from(this, chunk.getHeightAccessorForGeneration());
 
-            for (int x = 0; x < volume.sizeX(); x++) {
-               int blockX = volume.blockX(x);
-
-               for (int y = volume.sizeY() - 1; y >= 0; y--) {
-                  int blockY = volume.blockY(y);
-                  LevelChunkSection section = chunk.getSection(chunk.getSectionIndex(blockY));
-                  float density = densityBuffer.get(volume.indexUnchecked(x, y, z));
-                  BlockState state = aquifer.computeSubstance(blockX, blockY, blockZ, density);
-                  if (state == null) {
-                     state = this.settings.value().defaultBlock();
-                  }
-
-                  state = this.debugPreliminarySurfaceLevel(noiseChunk, blockX, blockY, blockZ, state);
-                  if (state != AIR) {
-                     section.setBlockState(x, SectionPos.sectionRelative(blockY), z, state, false);
-                     oceanFloor.update(x, blockY, z, state);
-                     worldSurface.update(x, blockY, z, state);
-                     if (aquifer.shouldScheduleFluidUpdate() && !state.getFluidState().isEmpty()) {
-                        blockPos.set(blockX, blockY, blockZ);
-                        chunk.markPosForPostProcessing(blockPos);
-                     }
-                  }
-               }
-            }
+         CarvingMask carvingMask;
+         try (Zone terrainBuilder = profiler.zone("generateCarvingMask")) {
+            carvingMask = this.generateCarvingMask(chunk, blender, randomState, carverBiomeRegion, noiseBiomeResolver, verticalAnchorContext);
          }
+
+         ChunkTerrainBuilder terrainBuilder = new ChunkTerrainBuilder(
+            randomState,
+            noiseChunk.cachingSamplers(),
+            noiseChunk.volumeWithBlocks(),
+            verticalAnchorContext,
+            this.settings.value().materialRule().value(),
+            chunk,
+            possibleBiomes
+         );
+
+         try (Zone var17 = profiler.zone("fillChunk")) {
+            terrainBuilder.fillChunk(chunk, noiseChunk, carvingMask);
+         }
+
+         return chunk;
       }
-   }
-
-   private BlockState debugPreliminarySurfaceLevel(final NoiseChunk noiseChunk, final int posX, final int posY, final int posZ, BlockState state) {
-      if (SharedConstants.DEBUG_AQUIFERS && posZ >= 0 && posZ % 4 == 0) {
-         DensityFunction surfaceLevelFunction = this.settings.value().aquifers().map(Aquifer.Config::surfaceLevel).orElse(null);
-         if (surfaceLevelFunction == null) {
-            return state;
-         }
-
-         int preliminarySurfaceLevel = Mth.floor(noiseChunk.cachingSamplers().sampleValue(surfaceLevelFunction, posX, 0, posZ));
-         int adjustedSurfaceLevel = preliminarySurfaceLevel + 8;
-         if (posY == adjustedSurfaceLevel) {
-            state = adjustedSurfaceLevel < this.getSeaLevel() ? Blocks.SLIME_BLOCK.defaultBlockState() : Blocks.HONEY_BLOCK.defaultBlockState();
-         }
-      }
-
-      return state;
    }
 
    @Override

@@ -42,6 +42,7 @@ import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.LevelHeightAccessor;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.NoiseBiomeChunk;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -58,8 +59,8 @@ import net.minecraft.world.level.chunk.ProtoChunk;
 import net.minecraft.world.level.chunk.UpgradeData;
 import net.minecraft.world.level.chunk.status.ChunkStatus;
 import net.minecraft.world.level.chunk.status.ChunkType;
-import net.minecraft.world.level.levelgen.BelowZeroRetrogen;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.RetroGen;
 import net.minecraft.world.level.levelgen.blending.BlendingData;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureStart;
@@ -81,13 +82,14 @@ public record SerializableChunkData(
    long inhabitedTime,
    ChunkStatus chunkStatus,
    BlendingData.@Nullable Packed blendingData,
-   @Nullable BelowZeroRetrogen belowZeroRetrogen,
+   @Nullable RetroGen retroGen,
    UpgradeData upgradeData,
    Map<Heightmap.Types, long[]> heightmaps,
    ChunkAccess.PackedTicks packedTicks,
    @Nullable ShortList[] postProcessingSections,
    boolean lightCorrect,
    List<SerializableChunkData.SectionData> sectionData,
+   @Nullable NoiseBiomeChunk noiseBiomeChunk,
    List<CompoundTag> entities,
    List<CompoundTag> blockEntities,
    CompoundTag structureData
@@ -105,22 +107,23 @@ public record SerializableChunkData(
    public static final String SECTIONS_TAG = "sections";
    public static final String BLOCK_LIGHT_TAG = "BlockLight";
    public static final String SKY_LIGHT_TAG = "SkyLight";
+   public static final String STATUS_TAG = "status";
 
    public static SerializableChunkData parse(
       final LevelHeightAccessor levelHeight, final PalettedContainerFactory containerFactory, final CompoundTag chunkData
    ) {
-      if (chunkData.getString("Status").isEmpty()) {
+      if (chunkData.getString("status").isEmpty()) {
          return null;
       }
 
       ChunkPos chunkPos = new ChunkPos(chunkData.getIntOr("xPos", 0), chunkData.getIntOr("zPos", 0));
       long lastUpdateTime = chunkData.getLongOr("LastUpdate", 0L);
       long inhabitedTime = chunkData.getLongOr("InhabitedTime", 0L);
-      ChunkStatus status = chunkData.<ChunkStatus>read("Status", ChunkStatus.CODEC).orElse(ChunkStatus.EMPTY);
+      ChunkStatus status = chunkData.<ChunkStatus>read("status", ChunkStatus.CODEC).orElse(ChunkStatus.EMPTY);
       UpgradeData upgradeData = chunkData.getCompound("UpgradeData").map(tag -> new UpgradeData(tag, levelHeight)).orElse(UpgradeData.EMPTY);
       boolean lightCorrect = chunkData.getBooleanOr("isLightOn", false);
       BlendingData.Packed blendingData = chunkData.<BlendingData.Packed>read("blending_data", BlendingData.Packed.CODEC).orElse(null);
-      BelowZeroRetrogen belowZeroRetrogen = chunkData.<BelowZeroRetrogen>read("below_zero_retrogen", BelowZeroRetrogen.CODEC).orElse(null);
+      RetroGen retroGen = chunkData.<RetroGen>read("retrogen", RetroGen.CODEC).orElse(null);
       Map<Heightmap.Types, long[]> heightmaps = new EnumMap<>(Heightmap.Types.class);
       chunkData.getCompound("Heightmaps").ifPresent(heightmapsTag -> {
          for (Heightmap.Types type : Heightmap.Types.values()) {
@@ -155,8 +158,10 @@ public record SerializableChunkData(
       CompoundTag structureData = chunkData.getCompoundOrEmpty("structures");
       ListTag sectionTags = chunkData.getListOrEmpty("sections");
       List<SerializableChunkData.SectionData> sectionData = new ArrayList<>(sectionTags.size());
+      Codec<PalettedContainerRO<Holder<Biome>>> noiseBiomeCodec = containerFactory.noiseBiomeContainerCodec();
       Codec<PalettedContainerRO<Holder<Biome>>> biomesCodec = containerFactory.biomeContainerCodec();
       Codec<PalettedContainer<BlockState>> blockStatesCodec = containerFactory.blockStatesContainerCodec();
+      NoiseBiomeChunk.Builder noiseBiomeChunkBuilder = new NoiseBiomeChunk.Builder(levelHeight, chunkPos);
 
       for (int i = 0; i < sectionTags.size(); i++) {
          Optional<CompoundTag> maybeSectionTag = sectionTags.getCompound(i);
@@ -179,6 +184,13 @@ public record SerializableChunkData(
                         .getOrThrow(SerializableChunkData.ChunkReadException::new)
                   )
                   .orElseGet(containerFactory::createForBiomes);
+               sectionTag.getCompound("noise_biomes")
+                  .map(
+                     container -> (PalettedContainerRO)noiseBiomeCodec.parse(NbtOps.INSTANCE, container)
+                        .promotePartial(msg -> logErrors(chunkPos, y, msg))
+                        .getOrThrow(SerializableChunkData.ChunkReadException::new)
+                  )
+                  .ifPresent(noiseBiomes -> noiseBiomeChunkBuilder.addSection(y, (PalettedContainerRO<Holder<Biome>>)noiseBiomes));
                section = new LevelChunkSection(blocks, biomes);
             } else {
                section = null;
@@ -190,6 +202,7 @@ public record SerializableChunkData(
          }
       }
 
+      NoiseBiomeChunk noiseBiomeChunk = noiseBiomeChunkBuilder.build(containerFactory);
       return new SerializableChunkData(
          containerFactory,
          chunkPos,
@@ -198,13 +211,14 @@ public record SerializableChunkData(
          inhabitedTime,
          status,
          blendingData,
-         belowZeroRetrogen,
+         retroGen,
          upgradeData,
          heightmaps,
          packedTicks,
          postProcessingSections,
          lightCorrect,
          sectionData,
+         noiseBiomeChunk,
          entities,
          blockEntities,
          structureData
@@ -274,14 +288,16 @@ public record SerializableChunkData(
          );
          chunk = protoChunk;
          chunk.setInhabitedTime(this.inhabitedTime);
-         if (this.belowZeroRetrogen != null) {
-            protoChunk.setBelowZeroRetrogen(this.belowZeroRetrogen);
+         if (this.retroGen != null) {
+            protoChunk.setRetroGen(this.retroGen);
          }
 
          protoChunk.setPersistedStatus(this.chunkStatus);
-         if (this.chunkStatus.isOrAfter(ChunkStatus.INITIALIZE_LIGHT)) {
+         if (this.chunkStatus.isOrAfter(ChunkStatus.INITIALIZE_LIGHT) || this.retroGen != null && this.retroGen.keepsLight()) {
             protoChunk.setLightEngine(lightEngine);
          }
+
+         protoChunk.setNoiseBiomeChunk(this.noiseBiomeChunk);
       }
 
       chunk.setLightCorrect(this.lightCorrect);
@@ -304,7 +320,7 @@ public record SerializableChunkData(
       }
 
       if (chunkType == ChunkType.LEVELCHUNK) {
-         return new ImposterProtoChunk((LevelChunk)chunk, false);
+         return new ImposterProtoChunk((LevelChunk)chunk);
       }
 
       ProtoChunk protoChunk = (ProtoChunk)chunk;
@@ -374,6 +390,7 @@ public record SerializableChunkData(
          .map(shorts -> shorts != null && !shorts.isEmpty() ? new ShortArrayList(shorts) : null)
          .toArray(ShortList[]::new);
       CompoundTag structureData = packStructureData(StructurePieceSerializationContext.fromLevel(level), pos, chunk.getAllStarts(), chunk.getAllReferences());
+      NoiseBiomeChunk noiseBiomeChunk = chunk instanceof ProtoChunk protoChunk ? protoChunk.getNoiseBiomeChunk() : null;
       return new SerializableChunkData(
          level.palettedContainerFactory(),
          pos,
@@ -382,13 +399,14 @@ public record SerializableChunkData(
          chunk.getInhabitedTime(),
          chunk.getPersistedStatus(),
          Optionull.map(chunk.getBlendingData(), BlendingData::pack),
-         chunk.getBelowZeroRetrogen(),
+         chunk.getRetroGen(),
          chunk.getUpgradeData().copy(),
          heightmaps,
          ticksForSerialization,
          postProcessingSections,
          chunk.isLightCorrect(),
          sectionData,
+         noiseBiomeChunk,
          entities,
          blockEntities,
          structureData
@@ -402,16 +420,17 @@ public record SerializableChunkData(
       tag.putInt("zPos", this.chunkPos.z());
       tag.putLong("LastUpdate", this.lastUpdateTime);
       tag.putLong("InhabitedTime", this.inhabitedTime);
-      tag.putString("Status", BuiltInRegistries.CHUNK_STATUS.getKey(this.chunkStatus).toString());
+      tag.putString("status", BuiltInRegistries.CHUNK_STATUS.getKey(this.chunkStatus).toString());
       tag.storeNullable("blending_data", BlendingData.Packed.CODEC, this.blendingData);
-      tag.storeNullable("below_zero_retrogen", BelowZeroRetrogen.CODEC, this.belowZeroRetrogen);
+      tag.storeNullable("retrogen", RetroGen.CODEC, this.retroGen);
       if (!this.upgradeData.isEmpty()) {
          tag.put("UpgradeData", this.upgradeData.write());
       }
 
       ListTag sectionTags = new ListTag();
-      Codec<PalettedContainer<BlockState>> blockStatesCodec = this.containerFactory.blockStatesContainerCodec();
+      Codec<PalettedContainerRO<Holder<Biome>>> noiseBiomeCodec = this.containerFactory.noiseBiomeContainerCodec();
       Codec<PalettedContainerRO<Holder<Biome>>> biomeCodec = this.containerFactory.biomeContainerCodec();
+      Codec<PalettedContainer<BlockState>> blockStatesCodec = this.containerFactory.blockStatesContainerCodec();
 
       for (SerializableChunkData.SectionData section : this.sectionData) {
          CompoundTag sectionTag = new CompoundTag();
@@ -419,6 +438,10 @@ public record SerializableChunkData(
          if (chunkSection != null) {
             sectionTag.store("block_states", blockStatesCodec, chunkSection.getStates());
             sectionTag.store("biomes", biomeCodec, chunkSection.getBiomes());
+         }
+
+         if (this.noiseBiomeChunk != null) {
+            sectionTag.store("noise_biomes", noiseBiomeCodec, this.noiseBiomeChunk.getSection(section.y));
          }
 
          if (section.blockLight != null) {
@@ -464,7 +487,7 @@ public record SerializableChunkData(
    }
 
    public static ChunkStatus getChunkStatusFromTag(final @Nullable CompoundTag tag) {
-      return tag != null ? tag.<ChunkStatus>read("Status", ChunkStatus.CODEC).orElse(ChunkStatus.EMPTY) : ChunkStatus.EMPTY;
+      return tag != null ? tag.<ChunkStatus>read("status", ChunkStatus.CODEC).orElse(ChunkStatus.EMPTY) : ChunkStatus.EMPTY;
    }
 
    private static LevelChunk.@Nullable PostLoadProcessor postLoadChunk(

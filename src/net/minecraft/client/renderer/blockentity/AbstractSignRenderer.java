@@ -15,6 +15,7 @@ import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.level.block.ColorCollection;
 import net.minecraft.world.level.block.entity.SignBlockEntity;
 import net.minecraft.world.level.block.entity.SignText;
 import net.minecraft.world.level.block.entity.SignTextSlot;
@@ -24,6 +25,10 @@ import org.jspecify.annotations.Nullable;
 public abstract class AbstractSignRenderer<S extends SignRenderState> implements BlockEntityRenderer<SignBlockEntity, S> {
    private static final int BLACK_TEXT_OUTLINE_COLOR = -988212;
    private static final int OUTLINE_RENDER_DISTANCE = Mth.square(16);
+   public static final ColorCollection<Integer> BRIGHT_TEXT_COLORS = new ColorCollection<>(
+      -1, -38881, -65281, -6635315, -256, -4194560, -38476, -8355712, -2894893, -16711681, -6283024, -16776961, -7650029, -16711936, -65536, -16777216
+   );
+   public static final ColorCollection<Integer> DARK_TEXT_COLORS = BRIGHT_TEXT_COLORS.map(c -> ARGB.scaleRGB(c, 0.4F));
    private final Font font;
 
    public AbstractSignRenderer(final BlockEntityRendererProvider.Context context) {
@@ -47,39 +52,33 @@ public abstract class AbstractSignRenderer<S extends SignRenderState> implements
    }
 
    private void submitSignText(final S state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final SignText signText) {
-      int darkColor = getDarkColor(signText);
       int signMidpoint = 4 * state.textLineHeight / 2;
       FormattedCharSequence[] formattedLines = signText.getRenderMessages(state.isTextFilteringEnabled, input -> {
          List<FormattedCharSequence> components = this.font.split(input, state.maxTextLineWidth);
          return components.isEmpty() ? FormattedCharSequence.EMPTY : components.get(0);
       });
       int textColor;
-      boolean drawOutline;
+      int outlineColor;
       int lightVal;
       if (signText.hasGlowingText()) {
-         textColor = signText.getColor().getTextColor();
-         drawOutline = textColor == DyeColor.BLACK.getTextColor() || state.drawOutline;
+         textColor = BRIGHT_TEXT_COLORS.pick(signText.getColor());
          lightVal = 15728880;
+         if (signText.getColor() == DyeColor.BLACK) {
+            outlineColor = -988212;
+         } else {
+            outlineColor = state.drawOutline ? DARK_TEXT_COLORS.pick(signText.getColor()) : 0;
+         }
       } else {
-         textColor = darkColor;
-         drawOutline = false;
+         textColor = DARK_TEXT_COLORS.pick(signText.getColor());
          lightVal = state.lightCoords;
+         outlineColor = 0;
       }
 
       for (int i = 0; i < formattedLines.length; i++) {
          FormattedCharSequence actualLine = formattedLines[i];
          float x1 = -this.font.width(actualLine) / 2;
          submitNodeCollector.submitText(
-            poseStack,
-            x1,
-            i * state.textLineHeight - signMidpoint,
-            actualLine,
-            false,
-            Font.DisplayMode.POLYGON_OFFSET,
-            lightVal,
-            textColor,
-            0,
-            drawOutline ? darkColor : 0
+            poseStack, x1, i * state.textLineHeight - signMidpoint, actualLine, false, Font.DisplayMode.POLYGON_OFFSET, lightVal, textColor, 0, outlineColor
          );
       }
    }
@@ -93,11 +92,6 @@ public abstract class AbstractSignRenderer<S extends SignRenderState> implements
 
       Entity camera = minecraft.getCameraEntity();
       return camera != null && camera.distanceToSqr(Vec3.atCenterOf(pos)) < OUTLINE_RENDER_DISTANCE;
-   }
-
-   public static int getDarkColor(final SignText signText) {
-      int color = signText.getColor().getTextColor();
-      return color == DyeColor.BLACK.getTextColor() && signText.hasGlowingText() ? -988212 : ARGB.scaleRGB(color, 0.4F);
    }
 
    public void extractRenderState(

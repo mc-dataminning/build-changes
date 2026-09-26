@@ -20,6 +20,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
@@ -196,22 +197,29 @@ public class TestCommand {
    private static int run(final TestFinder finder, final RetryOptions retryOptions, final int extraRotationSteps, final int testsPerRow) {
       stopTests();
       CommandSourceStack source = finder.source();
-      Collection<GameTestInfo> infos = Stream.concat(
+      Map<Boolean, List<GameTestInfo>> infos = Stream.concat(
             toGameTestInfos(source, retryOptions, finder), toGameTestInfo(source, retryOptions, finder, extraRotationSteps)
          )
-         .toList();
-      if (infos.isEmpty()) {
+         .collect(Collectors.partitioningBy(test -> test.getTest().manualOnly()));
+      if (infos.get(true).isEmpty() && infos.get(false).isEmpty()) {
          source.sendSuccess(() -> Component.translatable("commands.test.no_tests"), false);
          return 0;
-      } else {
-         FailedTestTracker.forgetFailedTests();
-         source.sendSuccess(() -> Component.translatable("commands.test.run.running", infos.size()), false);
-         Function<ResourceKey<Level>, BlockPos> testPos = dimension -> createTestPositionAround(source, dimension);
-         GameTestRunner runner = GameTestRunner.Builder.fromInfo(infos, source.getServer())
-            .newStructureSpawner(new StructureGridSpawner(testPos, testsPerRow, false))
-            .build();
-         return trackAndStartRunner(source, runner);
       }
+
+      FailedTestTracker.forgetFailedTests();
+      Function<ResourceKey<Level>, BlockPos> testPos = dimension -> createTestPositionAround(source, dimension);
+      List<GameTestInfo> testsToRun;
+      if (infos.get(false).isEmpty()) {
+         testsToRun = infos.get(true);
+      } else {
+         testsToRun = infos.get(false);
+      }
+
+      GameTestRunner runner = GameTestRunner.Builder.fromInfo(testsToRun, source.getServer())
+         .newStructureSpawner(new StructureGridSpawner(testPos, testsPerRow, false))
+         .build();
+      source.sendSuccess(() -> Component.translatable("commands.test.run.running", testsToRun.size()), false);
+      return trackAndStartRunner(source, runner);
    }
 
    private static Stream<GlobalPos> findSelectedTestPositionsAcrossDimensions(final TestFinder finder) {
@@ -328,7 +336,7 @@ public class TestCommand {
          runArgument,
          finder,
          then -> then.then(
-            ((RequiredArgumentBuilder)Commands.argument("rotationSteps", IntegerArgumentType.integer())
+            ((RequiredArgumentBuilder)Commands.argument("rotationSteps", IntegerArgumentType.integer(0, 3))
                   .executes(
                      c -> run(
                         finder.apply(c),

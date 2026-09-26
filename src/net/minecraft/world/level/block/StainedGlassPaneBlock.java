@@ -1,9 +1,11 @@
 package net.minecraft.world.level.block;
 
+import net.minecraft.util.CommonColors;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 public class StainedGlassPaneBlock extends IronBarsBlock implements BeaconBeamBlock {
+   private static final ColorCollection<Integer> BEAM_DYE_COLORS = CommonColors.TEXTURE_TINT_COLORS;
    private final DyeColor color;
 
    public StainedGlassPaneBlock(final DyeColor color, final BlockBehaviour.Properties properties) {
@@ -15,7 +17,7 @@ public class StainedGlassPaneBlock extends IronBarsBlock implements BeaconBeamBl
    }
 
    @Override
-   public DyeColor getColor() {
-      return this.color;
+   public int getColor() {
+      return BEAM_DYE_COLORS.pick(this.color);
    }
 }

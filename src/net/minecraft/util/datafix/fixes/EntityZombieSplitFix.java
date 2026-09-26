@@ -8,7 +8,7 @@ import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.function.Supplier;
-import net.minecraft.util.Util;
+import net.minecraft.util.datafix.ExtraDataFixUtils;
 
 public class EntityZombieSplitFix extends EntityRenameFix {
    private final Supplier<Type<?>> zombieVillagerType = Suppliers.memoize(() -> this.getOutputSchema().getChoiceType(References.ENTITY, "ZombieVillager"));
@@ -49,7 +49,7 @@ public class EntityZombieSplitFix extends EntityRenameFix {
    }
 
    private Typed<?> changeSchemaToZombieVillager(final Typed<?> entity, final int profession) {
-      return Util.writeAndReadTypedOrThrow(
+      return ExtraDataFixUtils.writeAndReadTypedOrThrow(
          entity, this.zombieVillagerType.get(), serializedEntity -> serializedEntity.set("Profession", serializedEntity.createInt(profession))
       );
    }

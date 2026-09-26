@@ -178,9 +178,7 @@ public abstract class BlockableEventLoop<R extends Runnable> implements Executor
          }
       } catch (Exception e) {
          LOGGER.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.name(), e);
-         if (isNonRecoverable(e)) {
-            throw e;
-         }
+         throw e;
       }
    }
 

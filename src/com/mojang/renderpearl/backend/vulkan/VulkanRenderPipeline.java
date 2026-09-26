@@ -1,14 +1,14 @@
 package com.mojang.renderpearl.backend.vulkan;
 
-import com.mojang.renderpearl.api.pipeline.BindGroupLayout;
 import com.mojang.renderpearl.api.pipeline.BlendFunction;
 import com.mojang.renderpearl.api.pipeline.ColorTargetState;
+import com.mojang.renderpearl.api.pipeline.CompiledRenderPipeline;
 import com.mojang.renderpearl.api.pipeline.DepthStencilState;
+import com.mojang.renderpearl.api.pipeline.SpvModule;
 import com.mojang.renderpearl.backend.api.BackendRenderPipeline;
 import it.unimi.dsi.fastutil.longs.LongArrayList;
 import it.unimi.dsi.fastutil.longs.LongList;
 import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 import java.util.List;
 import org.lwjgl.system.MemoryStack;
@@ -24,7 +24,6 @@ import org.lwjgl.vulkan.VkPipelineInputAssemblyStateCreateInfo;
 import org.lwjgl.vulkan.VkPipelineLayoutCreateInfo;
 import org.lwjgl.vulkan.VkPipelineMultisampleStateCreateInfo;
 import org.lwjgl.vulkan.VkPipelineRasterizationStateCreateInfo;
-import org.lwjgl.vulkan.VkPipelineRenderingCreateInfoKHR;
 import org.lwjgl.vulkan.VkPipelineShaderStageCreateInfo;
 import org.lwjgl.vulkan.VkPipelineVertexInputDivisorStateCreateInfoEXT;
 import org.lwjgl.vulkan.VkPipelineVertexInputStateCreateInfo;
@@ -43,7 +42,8 @@ public final class VulkanRenderPipeline implements BackendRenderPipeline, Destro
    private final long pipelineLayout;
    private final long descriptorSetLayout;
    private final LongList shaderModules;
-   private final List<BindGroupLayout.UniformDescription> uniforms;
+   private final List<CompiledRenderPipeline.CreateInfo.Uniform> uniforms;
+   private final int maxUniformBinding;
    private boolean closed;
 
    public VulkanRenderPipeline(
@@ -53,7 +53,7 @@ public final class VulkanRenderPipeline implements BackendRenderPipeline, Destro
       final long pipelineLayout,
       final long descriptorSetLayout,
       final LongList shaderModules,
-      final List<BindGroupLayout.UniformDescription> uniforms
+      final List<CompiledRenderPipeline.CreateInfo.Uniform> uniforms
    ) {
       this.device = device;
       this.withDepthPipeline = withDepthPipeline;
@@ -62,6 +62,13 @@ public final class VulkanRenderPipeline implements BackendRenderPipeline, Destro
       this.descriptorSetLayout = descriptorSetLayout;
       this.shaderModules = shaderModules;
       this.uniforms = uniforms;
+      int maxBinding = 0;
+
+      for (CompiledRenderPipeline.CreateInfo.Uniform uniform : uniforms) {
+         maxBinding = Math.max(maxBinding, uniform.binding());
+      }
+
+      this.maxUniformBinding = maxBinding;
    }
 
    @Override
@@ -77,7 +84,7 @@ public final class VulkanRenderPipeline implements BackendRenderPipeline, Destro
       }
    }
 
-   public static VulkanRenderPipeline compile(final VulkanDevice device, final BackendRenderPipeline.CreateInfo pipelineCreateInfo) {
+   public static VulkanRenderPipeline compile(final VulkanDevice device, final CompiledRenderPipeline.CreateInfo pipelineCreateInfo) {
       MemoryStack stack = MemoryStack.stackPush();
 
       long descriptorSetLayout;
@@ -87,21 +94,21 @@ public final class VulkanRenderPipeline implements BackendRenderPipeline, Destro
 
          for (int i = 0; i < descriptorCount; i++) {
             VkDescriptorSetLayoutBinding binding = VkDescriptorSetLayoutBinding.calloc(stack);
+            CompiledRenderPipeline.CreateInfo.Uniform uniform = pipelineCreateInfo.uniforms().get(i);
 
-            binding.descriptorType(switch (pipelineCreateInfo.uniforms().get(i).type()) {
+            binding.descriptorType(switch (uniform.type()) {
                case UNIFORM_BUFFER -> 6;
                case COMBINED_IMAGE_SAMPLER -> 1;
                case TEXEL_BUFFER -> 4;
             });
             binding.descriptorCount(1);
-            binding.binding(i);
+            binding.binding(uniform.binding());
             binding.stageFlags(17);
             bindings.put(binding);
          }
 
          bindings.flip();
          VkDescriptorSetLayoutCreateInfo setCreateInfo = VkDescriptorSetLayoutCreateInfo.calloc(stack).sType$Default();
-         setCreateInfo.flags(1);
          setCreateInfo.pBindings(bindings);
          LongBuffer pointer = stack.callocLong(1);
          VulkanUtils.crashIfFailure(
@@ -110,16 +117,16 @@ public final class VulkanRenderPipeline implements BackendRenderPipeline, Destro
             "Can't create descriptor set layout for " + pipelineCreateInfo.name()
          );
          descriptorSetLayout = pointer.get(0);
-      } catch (Throwable var41) {
+      } catch (Throwable var39) {
          if (stack != null) {
             try {
                stack.close();
-            } catch (Throwable var37) {
-               var41.addSuppressed(var37);
+            } catch (Throwable var35) {
+               var39.addSuppressed(var35);
             }
          }
 
-         throw var41;
+         throw var39;
       }
 
       if (stack != null) {
@@ -145,16 +152,16 @@ public final class VulkanRenderPipeline implements BackendRenderPipeline, Destro
          );
          pipelineLayout = pointer.get(0);
          device.instance().debug().setObjectName(device.vkDevice(), 17, pipelineLayout, () -> "Pipeline layout for " + pipelineCreateInfo.name());
-      } catch (Throwable var40) {
+      } catch (Throwable var38) {
          if (stackx != null) {
             try {
                stackx.close();
-            } catch (Throwable var36) {
-               var40.addSuppressed(var36);
+            } catch (Throwable var34) {
+               var38.addSuppressed(var34);
             }
          }
 
-         throw var40;
+         throw var38;
       }
 
       if (stackx != null) {
@@ -164,37 +171,37 @@ public final class VulkanRenderPipeline implements BackendRenderPipeline, Destro
       LongList compiledShaderModules = new LongArrayList();
       MemoryStack stackxx = MemoryStack.stackPush();
 
-      VulkanRenderPipeline var33;
+      VulkanRenderPipeline var31;
       try {
          org.lwjgl.vulkan.VkPipelineShaderStageCreateInfo.Buffer shaderStages = VkPipelineShaderStageCreateInfo.calloc(
             pipelineCreateInfo.shaders().size(), stackxx
          );
 
-         for (BackendRenderPipeline.CreateInfo.Shader shader : pipelineCreateInfo.shaders()) {
+         for (SpvModule shader : pipelineCreateInfo.shaders()) {
             MemoryStack vertexInputDivisorState = stackxx.push();
 
             long module;
             try {
-               VkShaderModuleCreateInfo info = VkShaderModuleCreateInfo.calloc(stackxx).sType$Default().pCode(shader.module().spv());
+               VkShaderModuleCreateInfo info = VkShaderModuleCreateInfo.calloc(stackxx).sType$Default().pCode(shader.spv());
                LongBuffer pointer = stackxx.callocLong(1);
                VulkanUtils.crashIfFailure(
                   device,
                   VK12.vkCreateShaderModule(device.vkDevice(), info, null, pointer),
-                  "Can't compile " + shader.name() + " (" + shader.module().type() + ") for pipeline " + pipelineCreateInfo.name()
+                  "Can't compile " + shader.name() + " (" + shader.type() + ") for pipeline " + pipelineCreateInfo.name()
                );
                device.instance().debug().setObjectName(device.vkDevice(), 15, pointer.get(0), pipelineCreateInfo::name);
                module = pointer.get(0);
                compiledShaderModules.add(module);
-            } catch (Throwable var38) {
+            } catch (Throwable var36) {
                if (vertexInputDivisorState != null) {
                   try {
                      vertexInputDivisorState.close();
-                  } catch (Throwable var35) {
-                     var38.addSuppressed(var35);
+                  } catch (Throwable var33) {
+                     var36.addSuppressed(var33);
                   }
                }
 
-               throw var38;
+               throw var36;
             }
 
             if (vertexInputDivisorState != null) {
@@ -204,14 +211,14 @@ public final class VulkanRenderPipeline implements BackendRenderPipeline, Destro
             ByteBuffer entryPoint = stackxx.UTF8(shader.entryPoint());
             VkPipelineShaderStageCreateInfo stage = VkPipelineShaderStageCreateInfo.calloc(stackxx)
                .sType$Default()
-               .stage(VulkanConst.toVk(shader.module().type()))
+               .stage(VulkanConst.toVk(shader.type()))
                .module(module)
                .pName(entryPoint);
             shaderStages.put(stage);
          }
 
          shaderStages.flip();
-         List<BackendRenderPipeline.CreateInfo.VertexBuffer> vertexBindings = pipelineCreateInfo.vertexBuffers();
+         List<CompiledRenderPipeline.CreateInfo.VertexBuffer> vertexBindings = pipelineCreateInfo.vertexBuffers();
          org.lwjgl.vulkan.VkVertexInputBindingDescription.Buffer vertexBindingDescriptions = VkVertexInputBindingDescription.calloc(
             vertexBindings.size(), stackxx
          );
@@ -219,7 +226,7 @@ public final class VulkanRenderPipeline implements BackendRenderPipeline, Destro
             vertexBindings.size(), stackxx
          );
 
-         for (BackendRenderPipeline.CreateInfo.VertexBuffer vertexBinding : vertexBindings) {
+         for (CompiledRenderPipeline.CreateInfo.VertexBuffer vertexBinding : vertexBindings) {
             VkVertexInputBindingDescription bindingDescription = VkVertexInputBindingDescription.calloc(stackxx)
                .binding(vertexBinding.bufferSlot())
                .stride(vertexBinding.stride())
@@ -239,7 +246,7 @@ public final class VulkanRenderPipeline implements BackendRenderPipeline, Destro
             pipelineCreateInfo.attribBindings().size(), stackxx
          );
 
-         for (BackendRenderPipeline.CreateInfo.AttribBinding attribBinding : pipelineCreateInfo.attribBindings()) {
+         for (CompiledRenderPipeline.CreateInfo.AttribBinding attribBinding : pipelineCreateInfo.attribBindings()) {
             VkVertexInputAttributeDescription attributeDescription = VkVertexInputAttributeDescription.calloc(stackxx)
                .location(attribBinding.location())
                .binding(attribBinding.bufferSlot())
@@ -306,16 +313,6 @@ public final class VulkanRenderPipeline implements BackendRenderPipeline, Destro
          VkPipelineDynamicStateCreateInfo dynamicStateInfo = VkPipelineDynamicStateCreateInfo.calloc(stackxx)
             .sType$Default()
             .pDynamicStates(stackxx.ints(1, 0));
-         VkPipelineRenderingCreateInfoKHR renderingInfo = VkPipelineRenderingCreateInfoKHR.calloc(stackxx).sType$Default();
-         IntBuffer colorAttachmentFormats = stackxx.mallocInt(colorTargetStates.size());
-
-         for (int i = 0; i < colorTargetStates.size(); i++) {
-            ColorTargetState colorTargetState = colorTargetStates.get(i);
-            colorAttachmentFormats.put(i, colorTargetState != null ? VulkanConst.toVk(colorTargetState.format()) : 0);
-         }
-
-         renderingInfo.pColorAttachmentFormats(colorAttachmentFormats);
-         renderingInfo.depthAttachmentFormat(126);
          org.lwjgl.vulkan.VkGraphicsPipelineCreateInfo.Buffer createInfo = VkGraphicsPipelineCreateInfo.calloc(1, stackxx)
             .sType$Default()
             .flags(0)
@@ -329,7 +326,8 @@ public final class VulkanRenderPipeline implements BackendRenderPipeline, Destro
             .pMultisampleState(multisampleState)
             .pDynamicState(dynamicStateInfo)
             .layout(pipelineLayout)
-            .pNext(renderingInfo);
+            .renderPass(device.renderpassCache().getRenderPass(VulkanConst.toVk(pipelineCreateInfo.depthStencilFormat()), colorTargetStates))
+            .subpass(0);
          LongBuffer pointer = stackxx.callocLong(1);
          VulkanUtils.crashIfFailure(
             device, VK12.vkCreateGraphicsPipelines(device.vkDevice(), 0L, createInfo, null, pointer), "Can't compile pipeline " + pipelineCreateInfo.name()
@@ -338,7 +336,7 @@ public final class VulkanRenderPipeline implements BackendRenderPipeline, Destro
          device.instance().debug().setObjectName(device.vkDevice(), 19, withDepthPipeline, () -> "Pipeline " + pipelineCreateInfo.name());
          long withoutDepthPipeline;
          if (depthStencilState == null) {
-            renderingInfo.depthAttachmentFormat(0);
+            createInfo.renderPass(device.renderpassCache().getRenderPass(0, colorTargetStates));
             VulkanUtils.crashIfFailure(
                device, VK12.vkCreateGraphicsPipelines(device.vkDevice(), 0L, createInfo, null, pointer), "Can't compile pipeline " + pipelineCreateInfo.name()
             );
@@ -348,26 +346,26 @@ public final class VulkanRenderPipeline implements BackendRenderPipeline, Destro
             withoutDepthPipeline = 0L;
          }
 
-         var33 = new VulkanRenderPipeline(
+         var31 = new VulkanRenderPipeline(
             device, withDepthPipeline, withoutDepthPipeline, pipelineLayout, descriptorSetLayout, compiledShaderModules, pipelineCreateInfo.uniforms()
          );
-      } catch (Throwable var39) {
+      } catch (Throwable var37) {
          if (stackxx != null) {
             try {
                stackxx.close();
-            } catch (Throwable var34) {
-               var39.addSuppressed(var34);
+            } catch (Throwable var32) {
+               var37.addSuppressed(var32);
             }
          }
 
-         throw var39;
+         throw var37;
       }
 
       if (stackxx != null) {
          stackxx.close();
       }
 
-      return var33;
+      return var31;
    }
 
    @Override
@@ -412,7 +410,15 @@ public final class VulkanRenderPipeline implements BackendRenderPipeline, Destro
       return this.pipelineLayout;
    }
 
-   public List<BindGroupLayout.UniformDescription> uniforms() {
+   public long descriptorSetLayout() {
+      return this.descriptorSetLayout;
+   }
+
+   public List<CompiledRenderPipeline.CreateInfo.Uniform> uniforms() {
       return this.uniforms;
+   }
+
+   public int maxUniformBinding() {
+      return this.maxUniformBinding;
    }
 }

@@ -11,10 +11,14 @@ import net.minecraft.client.renderer.entity.layers.TropicalFishPatternLayer;
 import net.minecraft.client.renderer.entity.state.TropicalFishRenderState;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.resources.Identifier;
+import net.minecraft.util.CommonColors;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.animal.fish.TropicalFish;
+import net.minecraft.world.level.block.ColorCollection;
 
 public class TropicalFishRenderer extends MobRenderer<TropicalFish, TropicalFishRenderState, EntityModel<TropicalFishRenderState>> {
+   private static final ColorCollection<Integer> BASE_COLORS = CommonColors.TEXTURE_TINT_COLORS;
+   private static final ColorCollection<Integer> PATTERN_COLORS = CommonColors.TEXTURE_TINT_COLORS;
    private final EntityModel<TropicalFishRenderState> smallModel = this.getModel();
    private final EntityModel<TropicalFishRenderState> largeModel;
    private static final Identifier SMALL_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fish/tropical_a.png");
@@ -40,8 +44,8 @@ public class TropicalFishRenderer extends MobRenderer<TropicalFish, TropicalFish
    public void extractRenderState(final TropicalFish entity, final TropicalFishRenderState state, final float partialTicks) {
       super.extractRenderState(entity, state, partialTicks);
       state.pattern = entity.getPattern();
-      state.baseColor = entity.getBaseColor().getTextureDiffuseColor();
-      state.patternColor = entity.getPatternColor().getTextureDiffuseColor();
+      state.baseColor = BASE_COLORS.pick(entity.getBaseColor());
+      state.patternColor = PATTERN_COLORS.pick(entity.getPatternColor());
    }
 
    public void submit(

@@ -12,14 +12,9 @@ public record ChunkPyramid(ImmutableList<ChunkStep> steps) {
       .step(ChunkStatus.EMPTY, s -> s)
       .step(ChunkStatus.STRUCTURE_STARTS, s -> s.setTask(ChunkStatusTasks::generateStructureStarts))
       .step(ChunkStatus.STRUCTURE_REFERENCES, s -> s.addRequirement(ChunkStatus.STRUCTURE_STARTS, 8).setTask(ChunkStatusTasks::generateStructureReferences))
-      .step(ChunkStatus.BIOMES, s -> s.addRequirement(ChunkStatus.STRUCTURE_STARTS, 8).setTask(ChunkStatusTasks::generateBiomes))
-      .step(
-         ChunkStatus.TERRAIN,
-         s -> s.addRequirement(ChunkStatus.STRUCTURE_STARTS, 8)
-            .addRequirement(ChunkStatus.BIOMES, 1)
-            .blockStateWriteRadius(0)
-            .setTask(ChunkStatusTasks::buildTerrain)
-      )
+      .step(ChunkStatus.NOISE_BIOMES, s -> s.addRequirement(ChunkStatus.EMPTY, 8).setTask(ChunkStatusTasks::generateNoiseBiomes))
+      .step(ChunkStatus.BIOMES, s -> s.addRequirement(ChunkStatus.NOISE_BIOMES, 1).setTask(ChunkStatusTasks::upscaleBiomes))
+      .step(ChunkStatus.TERRAIN, s -> s.addRequirement(ChunkStatus.STRUCTURE_STARTS, 8).blockStateWriteRadius(0).setTask(ChunkStatusTasks::buildTerrain))
       .step(
          ChunkStatus.FEATURES,
          s -> s.addRequirement(ChunkStatus.STRUCTURE_STARTS, 8)
@@ -29,16 +24,17 @@ public record ChunkPyramid(ImmutableList<ChunkStep> steps) {
       )
       .step(ChunkStatus.INITIALIZE_LIGHT, s -> s.setTask(ChunkStatusTasks::initializeLight))
       .step(ChunkStatus.LIGHT, s -> s.addRequirement(ChunkStatus.INITIALIZE_LIGHT, 1).setTask(ChunkStatusTasks::light))
-      .step(ChunkStatus.SPAWN, s -> s.addRequirement(ChunkStatus.BIOMES, 1).setTask(ChunkStatusTasks::generateSpawn))
+      .step(ChunkStatus.SPAWN, s -> s.addRequirement(ChunkStatus.FEATURES, 1).setTask(ChunkStatusTasks::generateSpawn))
       .step(ChunkStatus.FULL, s -> s.setTask(ChunkStatusTasks::full))
       .build();
    public static final ChunkPyramid LOADING_PYRAMID = new ChunkPyramid.Builder()
       .step(ChunkStatus.EMPTY, s -> s)
       .step(ChunkStatus.STRUCTURE_STARTS, s -> s.setTask(ChunkStatusTasks::loadStructureStarts))
       .step(ChunkStatus.STRUCTURE_REFERENCES, s -> s)
+      .step(ChunkStatus.NOISE_BIOMES, s -> s)
       .step(ChunkStatus.BIOMES, s -> s)
       .step(ChunkStatus.TERRAIN, s -> s)
-      .step(ChunkStatus.FEATURES, s -> s)
+      .step(ChunkStatus.FEATURES, s -> s.setTask(ChunkStatusTasks::dropNoiseBiomes))
       .step(ChunkStatus.INITIALIZE_LIGHT, s -> s.setTask(ChunkStatusTasks::initializeLight))
       .step(ChunkStatus.LIGHT, s -> s.addRequirement(ChunkStatus.INITIALIZE_LIGHT, 1).setTask(ChunkStatusTasks::light))
       .step(ChunkStatus.SPAWN, s -> s)

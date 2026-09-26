@@ -218,9 +218,7 @@ public class FishingHook extends Projectile {
                if (isInWater) {
                   this.outOfWaterTime = Math.max(0, this.outOfWaterTime - 1);
                   if (this.biting) {
-                     this.setDeltaMovement(
-                        this.getDeltaMovement().add(0.0, -0.1 * this.syncronizedRandom.nextFloat() * this.syncronizedRandom.nextFloat(), 0.0)
-                     );
+                     this.addDeltaMovement(0.0, -0.1 * this.syncronizedRandom.nextFloat() * this.syncronizedRandom.nextFloat(), 0.0);
                   }
 
                   if (!this.level().isClientSide()) {
@@ -233,7 +231,7 @@ public class FishingHook extends Projectile {
          }
 
          if (!fluidState.is(FluidTags.WATER) && !this.onGround() && this.hookedIn == null) {
-            this.setDeltaMovement(this.getDeltaMovement().add(0.0, -this.getDefaultGravity(), 0.0));
+            this.addDeltaMovement(0.0, -this.getDefaultGravity(), 0.0);
          }
 
          this.move(MoverType.SELF, this.getDeltaMovement());
@@ -501,7 +499,7 @@ public class FishingHook extends Projectile {
       Entity owner = this.getOwner();
       if (owner != null && entity.canSimulateMovement()) {
          Vec3 delta = new Vec3(owner.getX() - this.getX(), owner.getY() - this.getY(), owner.getZ() - this.getZ()).scale(0.1);
-         entity.setDeltaMovement(entity.getDeltaMovement().add(delta));
+         entity.addDeltaMovement(delta);
       }
    }
 

@@ -83,20 +83,36 @@ public record RangeChoiceFunction(DensityFunction input, float minInclusive, flo
 
    private record Sampler(DensitySampler input, float minInclusive, float maxExclusive, DensitySampler whenInRange, DensitySampler whenOutOfRange)
       implements DensitySampler {
+      private boolean isInRange(final float input) {
+         return input >= this.minInclusive && input < this.maxExclusive;
+      }
+
+      private DensitySampler selectSampler(final boolean firstInRange) {
+         return firstInRange ? this.whenInRange : this.whenOutOfRange;
+      }
+
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
-         this.whenInRange.sampleVolume(context, outputBuffer, volume);
-
          try (ScopedDensityBuffer inputBuffer = context.acquireBuffer(volume)) {
             this.input.sampleVolume(context, inputBuffer, volume);
+            boolean firstInRange = this.isInRange(inputBuffer.get(0));
+            this.selectSampler(firstInRange).sampleVolume(context, outputBuffer, volume);
+            int i = 1;
 
-            try (ScopedDensityBuffer whenOutOfRangeBuffer = context.acquireBuffer(volume)) {
-               this.whenOutOfRange.sampleVolume(context, whenOutOfRangeBuffer, volume);
+            while (i < inputBuffer.size() && firstInRange == this.isInRange(inputBuffer.get(i))) {
+               i++;
+            }
 
-               for (int i = 0; i < outputBuffer.size(); i++) {
-                  float input = inputBuffer.get(i);
-                  if (!(input >= this.minInclusive) || !(input < this.maxExclusive)) {
-                     outputBuffer.set(i, whenOutOfRangeBuffer.get(i));
+            if (i == inputBuffer.size()) {
+               return;
+            }
+
+            try (ScopedDensityBuffer otherBuffer = context.acquireBuffer(volume)) {
+               this.selectSampler(!firstInRange).sampleVolume(context, otherBuffer, volume);
+
+               for (; i < inputBuffer.size(); i++) {
+                  if (firstInRange != this.isInRange(inputBuffer.get(i))) {
+                     outputBuffer.set(i, otherBuffer.get(i));
                   }
                }
             }
@@ -106,7 +122,7 @@ public record RangeChoiceFunction(DensityFunction input, float minInclusive, flo
       @Override
       public float sampleValue(final SamplerContext context, final int blockX, final int blockY, final int blockZ) {
          float inputValue = this.input.sampleValue(context, blockX, blockY, blockZ);
-         return inputValue >= this.minInclusive && inputValue < this.maxExclusive
+         return this.isInRange(inputValue)
             ? this.whenInRange.sampleValue(context, blockX, blockY, blockZ)
             : this.whenOutOfRange.sampleValue(context, blockX, blockY, blockZ);
       }

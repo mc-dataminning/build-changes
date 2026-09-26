@@ -270,7 +270,7 @@ public class Turtle extends Animal {
       this.move(MoverType.SELF, this.getDeltaMovement());
       this.setDeltaMovement(this.getDeltaMovement().scale(0.9));
       if (this.getTarget() == null && (!this.goingHome || !this.homePos.closerToCenterThan(this.position(), 20.0))) {
-         this.setDeltaMovement(this.getDeltaMovement().add(0.0, -0.005, 0.0));
+         this.addDeltaMovement(0.0, -0.005, 0.0);
       }
    }
 
@@ -486,7 +486,7 @@ public class Turtle extends Animal {
 
       private void updateSpeed() {
          if (this.mob.isInWater()) {
-            this.mob.setDeltaMovement(this.mob.getDeltaMovement().add(0.0, 0.005, 0.0));
+            this.mob.addDeltaMovement(0.0, 0.005, 0.0);
             if (!this.mob.getHomePos().closerToCenterThan(this.mob.position(), 16.0)) {
                this.mob.setSpeed(Math.max(this.mob.getSpeed() / 2.0F, 0.08F));
             }
@@ -516,7 +516,7 @@ public class Turtle extends Animal {
                this.mob.yBodyRot = this.mob.getYRot();
                float targetSpeed = (float)(this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED));
                this.mob.setSpeed(Mth.lerp(0.125F, this.mob.getSpeed(), targetSpeed));
-               this.mob.setDeltaMovement(this.mob.getDeltaMovement().add(0.0, this.mob.getSpeed() * yd * 0.1, 0.0));
+               this.mob.addDeltaMovement(0.0, this.mob.getSpeed() * yd * 0.1, 0.0);
             }
          } else {
             this.mob.setSpeed(0.0F);

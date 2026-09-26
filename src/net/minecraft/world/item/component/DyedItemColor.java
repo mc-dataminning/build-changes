@@ -12,17 +12,20 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.ARGB;
+import net.minecraft.util.CommonColors;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.block.ColorCollection;
 import org.jspecify.annotations.Nullable;
 
 public record DyedItemColor(int rgb) implements TooltipProvider {
    public static final Codec<DyedItemColor> CODEC = ExtraCodecs.RGB_COLOR_CODEC.xmap(DyedItemColor::new, DyedItemColor::rgb);
    public static final StreamCodec<ByteBuf, DyedItemColor> STREAM_CODEC = StreamCodec.composite(ByteBufCodecs.INT, DyedItemColor::rgb, DyedItemColor::new);
    public static final int LEATHER_COLOR = -6265536;
+   private static final ColorCollection<Integer> DYE_COLORS = CommonColors.TEXTURE_TINT_COLORS;
 
    public static int getOrDefault(final ItemStack itemStack, final int defaultColor) {
       DyedItemColor color = itemStack.get(DataComponents.DYED_COLOR);
@@ -55,7 +58,7 @@ public record DyedItemColor(int rgb) implements TooltipProvider {
       }
 
       for (DyeColor dye : dyes) {
-         int color = dye.getTextureDiffuseColor();
+         int color = DYE_COLORS.pick(dye);
          int red = ARGB.red(color);
          int green = ARGB.green(color);
          int blue = ARGB.blue(color);

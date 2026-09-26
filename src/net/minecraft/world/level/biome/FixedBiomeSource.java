@@ -14,7 +14,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.levelgen.RandomState;
 import org.jspecify.annotations.Nullable;
 
-public class FixedBiomeSource extends BiomeSource implements BiomeResolver {
+public class FixedBiomeSource extends BiomeSource implements NoiseBiomeResolver {
    public static final MapCodec<FixedBiomeSource> CODEC = Biome.CODEC.fieldOf("biome").xmap(FixedBiomeSource::new, s -> s.biome).stable();
    private final Holder<Biome> biome;
 
@@ -33,7 +33,7 @@ public class FixedBiomeSource extends BiomeSource implements BiomeResolver {
    }
 
    @Override
-   public BiomeResolver createResolver(final Climate.Sampler sampler) {
+   public NoiseBiomeResolver createResolver(final Climate.Sampler sampler) {
       return this;
    }
 

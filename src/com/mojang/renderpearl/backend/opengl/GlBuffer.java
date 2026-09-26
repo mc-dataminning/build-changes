@@ -9,14 +9,16 @@ import java.nio.ByteBuffer;
 import org.jspecify.annotations.Nullable;
 import org.lwjgl.system.MemoryUtil;
 
-public abstract class GlBuffer extends BaseGpuBuffer {
+abstract class GlBuffer extends BaseGpuBuffer {
    protected static final MemoryPool MEMORY_POOL = TracyClient.createMemoryPool("GPU Buffers");
+   protected final GlDevice device;
    private final int handle;
    protected final boolean canPersistentMap;
    protected int mappingRefCount = 0;
 
-   protected GlBuffer(final @GpuBuffer.Usage int usage, final long size, final int handle, final boolean canPersistentMap) {
+   protected GlBuffer(final GlDevice device, final @GpuBuffer.Usage int usage, final long size, final int handle, final boolean canPersistentMap) {
       super(usage, size);
+      this.device = device;
       this.handle = handle;
       this.canPersistentMap = canPersistentMap;
    }
@@ -34,13 +36,14 @@ public abstract class GlBuffer extends BaseGpuBuffer {
       }
    }
 
-   public static class Direct extends GlBuffer {
+   static class Direct extends GlBuffer {
       private boolean closed;
       private final DirectStateAccess dsa;
       protected final int mappingFlags;
       protected @Nullable ByteBuffer mappedBuffer;
 
       protected Direct(
+         final GlDevice device,
          final GlHeuristics heuristics,
          final DirectStateAccess dsa,
          final @GpuBuffer.Usage int usage,
@@ -68,7 +71,7 @@ public abstract class GlBuffer extends BaseGpuBuffer {
          }
 
          this.mappingFlags = mappingFlags;
-         super(usage, size, handle, canPersistentMap);
+         super(device, usage, size, handle, canPersistentMap);
          if (canPersistentMap && (usage & 3) != 0) {
             this.map(0L, size, (usage & 1) != 0, (usage & 2) != 0);
          }
@@ -91,6 +94,7 @@ public abstract class GlBuffer extends BaseGpuBuffer {
                throw new IllegalStateException("Attempt to close a mapped buffer");
             }
 
+            this.device.ensureCurrent();
             GlStateManager._glDeleteBuffers(this.handle());
             MEMORY_POOL.free(this.handle());
          }
@@ -133,6 +137,7 @@ public abstract class GlBuffer extends BaseGpuBuffer {
          if (offset >= 0L && length >= 0L) {
             this.mappingRefCount++;
             if (this.mappedBuffer == null) {
+               this.device.ensureCurrent();
                GlStateManager.clearGlErrors();
                this.mappedBuffer = this.dsa.mapBufferRange(this.handle(), 0L, this.size(), this.mappingFlags, this.usage());
                if (this.mappedBuffer == null) {
@@ -159,6 +164,7 @@ public abstract class GlBuffer extends BaseGpuBuffer {
       private void unmap() {
          this.mappingRefCount--;
          if (this.mappingRefCount == 0) {
+            this.device.ensureCurrent();
             this.dsa.unmapBuffer(this.handle(), this.usage());
             this.mappedBuffer = null;
          }

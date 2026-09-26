@@ -4,7 +4,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 
 public class WeightedListHeight extends HeightProvider {
    public static final MapCodec<WeightedListHeight> CODEC = RecordCodecBuilder.mapCodec(
@@ -17,8 +17,8 @@ public class WeightedListHeight extends HeightProvider {
    }
 
    @Override
-   public int sample(final RandomSource random, final WorldGenerationContext heightAccessor) {
-      return this.distribution.getRandomOrThrow(random).sample(random, heightAccessor);
+   public int sample(final RandomSource random, final VerticalAnchor.Context anchorContext) {
+      return this.distribution.getRandomOrThrow(random).sample(random, anchorContext);
    }
 
    @Override

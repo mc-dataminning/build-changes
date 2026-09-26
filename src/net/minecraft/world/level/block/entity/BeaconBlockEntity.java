@@ -139,7 +139,7 @@ public class BeaconBlockEntity extends BlockEntity implements MenuProvider, Name
       for (int i = 0; i < 10 && checkPos.getY() <= lastSetBlock; i++) {
          BlockState state = level.getBlockState(checkPos);
          if (state.getBlock() instanceof BeaconBeamBlock beaconBeamBlock) {
-            int color = beaconBeamBlock.getColor().getTextureDiffuseColor();
+            int color = beaconBeamBlock.getColor();
             if (entity.checkingBeamSections.size() <= 1) {
                lastBeamSection = new BeaconBeamOwner.Section(color);
                entity.checkingBeamSections.add(lastBeamSection);

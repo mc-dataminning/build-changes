@@ -7,7 +7,6 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
 import org.slf4j.Logger;
 
 public class TrapezoidHeight extends HeightProvider {
@@ -39,9 +38,9 @@ public class TrapezoidHeight extends HeightProvider {
    }
 
    @Override
-   public int sample(final RandomSource random, final WorldGenerationContext context) {
-      int min = this.minInclusive.resolveY(context);
-      int max = this.maxInclusive.resolveY(context);
+   public int sample(final RandomSource random, final VerticalAnchor.Context anchorContext) {
+      int min = this.minInclusive.resolveY(anchorContext);
+      int max = this.maxInclusive.resolveY(anchorContext);
       if (min > max) {
          LOGGER.warn("Empty height range: {}", this);
          return min;

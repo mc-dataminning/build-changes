@@ -13,12 +13,10 @@ import net.minecraft.core.HolderSet;
 import net.minecraft.server.level.WorldGenRegion;
 import net.minecraft.util.Util;
 import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.NoiseColumn;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeManager;
 import net.minecraft.world.level.biome.FixedBiomeSource;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.ChunkGenerator;
@@ -69,14 +67,11 @@ public class FlatLevelSource extends ChunkGenerator {
       final Blender blender,
       final RandomState randomState,
       final StructureManager structureManager,
-      final BiomeManager biomeManager,
       final @Nullable WorldGenRegion carverBiomeRegion,
       final Set<Holder<Biome>> possibleBiomes
    ) {
       List<BlockState> layers = this.settings.getLayers();
       BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
-      Heightmap oceanFloor = chunk.getOrCreateHeightmapUnprimed(Heightmap.Types.OCEAN_FLOOR_WG);
-      Heightmap worldSurface = chunk.getOrCreateHeightmapUnprimed(Heightmap.Types.WORLD_SURFACE_WG);
 
       for (int layerIndex = 0; layerIndex < Math.min(chunk.getHeight(), layers.size()); layerIndex++) {
          BlockState blockState = layers.get(layerIndex);
@@ -86,8 +81,6 @@ public class FlatLevelSource extends ChunkGenerator {
             for (int x = 0; x < 16; x++) {
                for (int z = 0; z < 16; z++) {
                   chunk.setBlockState(blockPos.set(x, y, z), blockState);
-                  oceanFloor.update(x, y, z, blockState);
-                  worldSurface.update(x, y, z, blockState);
                }
             }
          }
@@ -97,30 +90,23 @@ public class FlatLevelSource extends ChunkGenerator {
    }
 
    @Override
-   public int getBaseHeight(final int x, final int z, final Heightmap.Types type, final LevelHeightAccessor heightAccessor, final RandomState randomState) {
+   public NoiseColumn getBaseColumn(final int x, final int z, final LevelHeightAccessor heightAccessor, final RandomState randomState) {
       List<BlockState> layers = this.settings.getLayers();
+      int minY = heightAccessor.getMinY();
+      NoiseColumn noiseColumn = new NoiseColumn(minY, layers.size());
 
-      for (int layerIndex = Math.min(layers.size() - 1, heightAccessor.getMaxY()); layerIndex >= 0; layerIndex--) {
-         BlockState state = layers.get(layerIndex);
-         if (state != null && type.isOpaque().test(state)) {
-            return heightAccessor.getMinY() + layerIndex + 1;
+      for (int y = 0; y < layers.size(); y++) {
+         BlockState block = layers.get(y);
+         if (!block.isAir()) {
+            if (block.getBlock() instanceof LiquidBlock) {
+               noiseColumn.setFluid(y + minY, block);
+            } else {
+               noiseColumn.setSolid(y + minY);
+            }
          }
       }
 
-      return heightAccessor.getMinY();
-   }
-
-   @Override
-   public NoiseColumn getBaseColumn(final int x, final int z, final LevelHeightAccessor heightAccessor, final RandomState randomState) {
-      return new NoiseColumn(
-         heightAccessor.getMinY(),
-         this.settings
-            .getLayers()
-            .stream()
-            .limit(heightAccessor.getHeight())
-            .map(state -> state == null ? Blocks.AIR.defaultBlockState() : state)
-            .toArray(BlockState[]::new)
-      );
+      return noiseColumn;
    }
 
    @Override

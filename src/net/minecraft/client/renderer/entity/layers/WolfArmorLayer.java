@@ -50,7 +50,7 @@ public class WolfArmorLayer extends RenderLayer<WolfRenderState, WolfModel> {
       ItemStack armorItem = state.bodyArmorItem;
       Equippable equippable = armorItem.get(DataComponents.EQUIPPABLE);
       if (equippable != null && !equippable.assetId().isEmpty() && !state.isBaby) {
-         this.equipmentRenderer
+         int nextOrder = this.equipmentRenderer
             .renderLayers(
                EquipmentClientInfo.LayerType.WOLF_BODY,
                equippable.assetId().get(),
@@ -62,7 +62,7 @@ public class WolfArmorLayer extends RenderLayer<WolfRenderState, WolfModel> {
                lightCoords,
                state.outlineColor
             );
-         this.maybeRenderCracks(poseStack, submitNodeCollector, lightCoords, armorItem, this.adultModel, state);
+         this.maybeRenderCracks(poseStack, submitNodeCollector, lightCoords, armorItem, this.adultModel, state, nextOrder);
       }
    }
 
@@ -72,12 +72,13 @@ public class WolfArmorLayer extends RenderLayer<WolfRenderState, WolfModel> {
       final int lightCoords,
       final ItemStack armorItem,
       final Model<WolfRenderState> model,
-      final WolfRenderState state
+      final WolfRenderState state,
+      final int nextOrder
    ) {
       Crackiness.Level crackiness = Crackiness.WOLF_ARMOR.byDamage(armorItem);
       if (crackiness != Crackiness.Level.NONE) {
          Identifier damageTexture = ARMOR_CRACK_LOCATIONS.get(crackiness);
-         submitNodeCollector.order(1)
+         submitNodeCollector.order(nextOrder)
             .submitModel(model, state, poseStack, RenderTypes.wolfArmorCracks(damageTexture), lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
       }
    }

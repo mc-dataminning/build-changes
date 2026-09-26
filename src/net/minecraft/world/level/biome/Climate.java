@@ -123,7 +123,7 @@ public class Climate {
       }
 
       public long distance(final long target) {
-         long above = target - this.max;
+         long above = target - this.max + 1L;
          long below = this.min - target;
          return above > 0L ? above : Math.max(below, 0L);
       }
@@ -145,7 +145,44 @@ public class Climate {
                   )
                   .listOf()
             )
+            .validate(Climate.ParameterList::validate)
             .xmap(Climate.ParameterList::new, Climate.ParameterList::values);
+      }
+
+      private static <T> DataResult<List<Pair<Climate.ParameterPoint, T>>> validate(final List<Pair<Climate.ParameterPoint, T>> values) {
+         for (int firstIndex = 0; firstIndex < values.size(); firstIndex++) {
+            Pair<Climate.ParameterPoint, T> first = values.get(firstIndex);
+            Climate.ParameterPoint firstParameters = (Climate.ParameterPoint)first.getFirst();
+            T firstValue = (T)first.getSecond();
+
+            for (int secondIndex = firstIndex + 1; secondIndex < values.size(); secondIndex++) {
+               Pair<Climate.ParameterPoint, T> second = values.get(secondIndex);
+               Climate.ParameterPoint secondParameters = (Climate.ParameterPoint)second.getFirst();
+               T secondValue = (T)second.getSecond();
+               if (!firstValue.equals(secondValue)
+                  && firstParameters.offset() == secondParameters.offset()
+                  && allNoiseParametersOverlap(firstParameters, secondParameters)) {
+                  int firstEntry = firstIndex;
+                  int secondEntry = secondIndex;
+                  return DataResult.error(() -> "Entries " + firstEntry + " and " + secondEntry + " overlap in all noise parameters");
+               }
+            }
+         }
+
+         return DataResult.success(values);
+      }
+
+      private static boolean allNoiseParametersOverlap(final Climate.ParameterPoint first, final Climate.ParameterPoint second) {
+         return parametersOverlap(first.temperature(), second.temperature())
+            && parametersOverlap(first.humidity(), second.humidity())
+            && parametersOverlap(first.continentalness(), second.continentalness())
+            && parametersOverlap(first.erosion(), second.erosion())
+            && parametersOverlap(first.depth(), second.depth())
+            && parametersOverlap(first.weirdness(), second.weirdness());
+      }
+
+      private static boolean parametersOverlap(final Climate.Parameter first, final Climate.Parameter second) {
+         return first.equals(second) || Math.max(first.min(), second.min()) < Math.min(first.max(), second.max());
       }
 
       public ParameterList(final List<Pair<Climate.ParameterPoint, T>> values) {

@@ -1,13 +1,14 @@
 package net.minecraft.client.resources.sounds;
 
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
 
 public class RidingEntitySoundInstance extends AbstractTickableSoundInstance {
-   private final Player player;
+   private final LocalPlayer player;
+   private final int ridingSoundId;
    private final Entity entity;
    private final boolean underwaterSound;
    private final float volumeMin;
@@ -15,7 +16,8 @@ public class RidingEntitySoundInstance extends AbstractTickableSoundInstance {
    private final float volumeAmplifier;
 
    public RidingEntitySoundInstance(
-      final Player player,
+      final LocalPlayer player,
+      final int ridingSoundId,
       final Entity entity,
       final boolean underwaterSound,
       final SoundEvent soundEvent,
@@ -26,6 +28,7 @@ public class RidingEntitySoundInstance extends AbstractTickableSoundInstance {
    ) {
       super(soundEvent, soundSource, SoundInstance.createUnseededRandom());
       this.player = player;
+      this.ridingSoundId = ridingSoundId;
       this.entity = entity;
       this.x = entity.getX();
       this.y = entity.getY();
@@ -64,7 +67,10 @@ public class RidingEntitySoundInstance extends AbstractTickableSoundInstance {
 
    @Override
    public void tick() {
-      if (this.entity.isRemoved() || !this.player.isPassenger() || this.player.getVehicle() != this.entity) {
+      if (this.entity.isRemoved()
+         || !this.player.isPassenger()
+         || this.player.getVehicle() != this.entity
+         || this.player.getRidingSoundId() != this.ridingSoundId) {
          this.stop();
       } else if (this.shouldNotPlayUnderwaterSound()) {
          this.volume = this.volumeMin;

@@ -82,6 +82,11 @@ public record NoiseFunction(
       return CODEC;
    }
 
+   @Override
+   public String getDebugName() {
+      return "noise(" + DensityFunction.idShortString(this.noise) + ")";
+   }
+
    public record Sampler(Noise noise, double xzScale, double yScale) implements DensitySampler {
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {

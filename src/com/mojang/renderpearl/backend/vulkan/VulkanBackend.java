@@ -392,15 +392,15 @@ public class VulkanBackend implements GpuBackend {
    private static BackendCreationException checkDeviceSuitability(
       final VkPhysicalDevice vkPhysicalDevice, final Set<FeatureSet> requiredFeatureSets, final Set<FeatureSet> requiredIfExtensionsAvailable
    ) throws BackendCreationException {
+      if (!deviceMeetsFeatureQueryRequirements(vkPhysicalDevice)) {
+         LOGGER.warn("Device [{}] does not support Vulkan 1.1, skipping further capability checks", getDeviceName(vkPhysicalDevice));
+         return new BackendCreationException(
+            "Device missing capabilities", BackendCreationException.Reason.VULKAN_DEVICE_VERSION_TOO_LOW, List.of("VULKAN_CORE_1_1")
+         );
+      }
+
       try (VulkanPhysicalDevice physicalDevice = new VulkanPhysicalDevice(vkPhysicalDevice)) {
          String deviceName = physicalDevice.deviceName();
-         if (!deviceMeetsFeatureQueryRequirements(vkPhysicalDevice)) {
-            LOGGER.warn("Device [{}] does not support Vulkan 1.1, skipping further capability checks", deviceName);
-            return new BackendCreationException(
-               "Device missing capabilities", BackendCreationException.Reason.VULKAN_DEVICE_VERSION_TOO_LOW, List.of("VULKAN_CORE_1_1")
-            );
-         }
-
          VulkanUtils.DeviceUUID deviceUUID = new VulkanUtils.DeviceUUID(
             physicalDevice.vkPhysicalDeviceDriverProperties().driverID(),
             physicalDevice.vkPhysicalDeviceProperties().vendorID(),

@@ -59,12 +59,12 @@ public class MultiNoiseBiomeSource extends BiomeSource {
    }
 
    @Override
-   public BiomeResolver createResolver(final Climate.Sampler sampler) {
+   public NoiseBiomeResolver createResolver(final Climate.Sampler sampler) {
       return (quartX, quartY, quartZ) -> this.getNoiseBiome(sampler.sample(quartX, quartY, quartZ));
    }
 
    @Override
-   public BiomeResolver createResolverForChunk(
+   public NoiseBiomeResolver createResolverForChunk(
       final Climate.Sampler sampler,
       final int minQuartX,
       final int minQuartY,

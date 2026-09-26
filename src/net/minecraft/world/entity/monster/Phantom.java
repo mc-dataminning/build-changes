@@ -418,7 +418,7 @@ public class Phantom extends Mob implements Enemy {
             double tzd = this.speed * Mth.sin(moveAngle * (float) (Math.PI / 180.0)) * Math.abs(tdz / sd2);
             double tyd = this.speed * Mth.sin(xRotD * (float) (Math.PI / 180.0)) * Math.abs(tdy / sd2);
             Vec3 movement = Phantom.this.getDeltaMovement();
-            Phantom.this.setDeltaMovement(movement.add(new Vec3(txd, tyd, tzd).subtract(movement).scale(0.2)));
+            Phantom.this.addDeltaMovement(new Vec3(txd, tyd, tzd).subtract(movement).scale(0.2));
          }
       }
    }

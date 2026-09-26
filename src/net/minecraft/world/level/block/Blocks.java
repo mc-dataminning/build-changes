@@ -715,7 +715,7 @@ public class Blocks {
       Blocks::register,
       BedBlock::new,
       color -> BlockBehaviour.Properties.of()
-         .mapColor(state -> state.getValue(BedBlock.PART) == BedPart.FOOT ? color.getMapColor() : MapColor.WOOL)
+         .mapColor(state -> state.getValue(BedBlock.PART) == BedPart.FOOT ? MapColor.DYE_TO_DEFAULT_COLOR.pick(color) : MapColor.WOOL)
          .sound(SoundType.WOOD)
          .strength(0.2F)
          .bounceRestitution(0.75F)
@@ -876,7 +876,7 @@ public class Blocks {
       Blocks::register,
       (var0, p) -> new Block(p),
       color -> BlockBehaviour.Properties.of()
-         .mapColor(color.getMapColor())
+         .mapColor(MapColor.DYE_TO_DEFAULT_COLOR.pick(color))
          .instrument(NoteBlockInstrument.GUITAR)
          .strength(0.8F)
          .sound(SoundType.WOOL)
@@ -2028,7 +2028,7 @@ public class Blocks {
    );
    public static final Block REDSTONE_ORE = register(
       BlockItemIds.REDSTONE_ORE,
-      RedStoneOreBlock::new,
+      p -> new RedStoneOreBlock(UniformInt.of(1, 5), p),
       BlockBehaviour.Properties.of()
          .mapColor(MapColor.STONE)
          .instrument(NoteBlockInstrument.BASEDRUM)
@@ -2039,7 +2039,7 @@ public class Blocks {
    );
    public static final Block DEEPSLATE_REDSTONE_ORE = register(
       BlockItemIds.DEEPSLATE_REDSTONE_ORE,
-      RedStoneOreBlock::new,
+      p -> new RedStoneOreBlock(UniformInt.of(1, 5), p),
       BlockBehaviour.Properties.ofLegacyCopy(REDSTONE_ORE).mapColor(MapColor.DEEPSLATE).strength(4.5F, 3.0F).sound(SoundType.DEEPSLATE)
    );
    public static final Block REDSTONE_TORCH = register(
@@ -2243,7 +2243,7 @@ public class Blocks {
       Blocks::register,
       StainedGlassBlock::new,
       color -> BlockBehaviour.Properties.of()
-         .mapColor(color.getMapColor())
+         .mapColor(MapColor.DYE_TO_DEFAULT_COLOR.pick(color))
          .instrument(NoteBlockInstrument.HAT)
          .strength(0.3F)
          .sound(SoundType.GLASS)
@@ -3014,7 +3014,7 @@ public class Blocks {
       Blocks::register,
       (var0, p) -> new Block(p),
       color -> BlockBehaviour.Properties.of()
-         .mapColor(color.getTerracottaColor())
+         .mapColor(MapColor.DYE_TO_TERRACOTTA_COLOR.pick(color))
          .instrument(NoteBlockInstrument.BASEDRUM)
          .requiresCorrectToolForDrops()
          .strength(1.25F, 4.2F)
@@ -3103,7 +3103,7 @@ public class Blocks {
       BlockItemIds.CARPET,
       Blocks::register,
       WoolCarpetBlock::new,
-      color -> BlockBehaviour.Properties.of().mapColor(color.getMapColor()).strength(0.1F).sound(SoundType.WOOL).ignitedByLava()
+      color -> BlockBehaviour.Properties.of().mapColor(MapColor.DYE_TO_DEFAULT_COLOR.pick(color)).strength(0.1F).sound(SoundType.WOOL).ignitedByLava()
    );
    public static final Block TERRACOTTA = register(
       BlockItemIds.TERRACOTTA,
@@ -3766,14 +3766,14 @@ public class Blocks {
       BlockItemIds.DYED_SHULKER_BOX,
       Blocks::register,
       ShulkerBoxBlock::new,
-      color -> shulkerBoxProperties(color == DyeColor.PURPLE ? MapColor.TERRACOTTA_PURPLE : color.getMapColor())
+      color -> shulkerBoxProperties(color == DyeColor.PURPLE ? MapColor.TERRACOTTA_PURPLE : MapColor.DYE_TO_DEFAULT_COLOR.pick(color))
    );
    public static final ColorCollection<Block> GLAZED_TERRACOTTA = ColorCollection.registerBlocks(
       BlockItemIds.GLAZED_TERRACOTTA,
       Blocks::register,
       (var0, p) -> new GlazedTerracottaBlock(p),
       color -> BlockBehaviour.Properties.of()
-         .mapColor(color.getMapColor())
+         .mapColor(MapColor.DYE_TO_DEFAULT_COLOR.pick(color))
          .instrument(NoteBlockInstrument.BASEDRUM)
          .requiresCorrectToolForDrops()
          .strength(1.4F)
@@ -3784,7 +3784,7 @@ public class Blocks {
       Blocks::register,
       (var0, p) -> new Block(p),
       color -> BlockBehaviour.Properties.of()
-         .mapColor(color.getMapColor())
+         .mapColor(MapColor.DYE_TO_DEFAULT_COLOR.pick(color))
          .instrument(NoteBlockInstrument.BASEDRUM)
          .requiresCorrectToolForDrops()
          .strength(1.8F)
@@ -3799,7 +3799,11 @@ public class Blocks {
       BlockItemIds.CONCRETE_POWDER,
       Blocks::register,
       (color, p) -> new ConcretePowderBlock(CONCRETE.pick(color), p),
-      color -> BlockBehaviour.Properties.of().mapColor(color.getMapColor()).instrument(NoteBlockInstrument.SNARE).strength(0.5F).sound(SoundType.SAND)
+      color -> BlockBehaviour.Properties.of()
+         .mapColor(MapColor.DYE_TO_DEFAULT_COLOR.pick(color))
+         .instrument(NoteBlockInstrument.SNARE)
+         .strength(0.5F)
+         .sound(SoundType.SAND)
    );
    public static final Block KELP = register(
       BlockItemIds.KELP,
@@ -4871,7 +4875,7 @@ public class Blocks {
       BlockItemIds.DYED_CANDLE,
       Blocks::register,
       (var0, p) -> new CandleBlock(p),
-      color -> candleProperties(color == DyeColor.WHITE ? MapColor.WOOL : color.getMapColor())
+      color -> candleProperties(color == DyeColor.WHITE ? MapColor.WOOL : MapColor.DYE_TO_DEFAULT_COLOR.pick(color))
    );
    public static final Block CANDLE_CAKE = register(
       BlockIds.CANDLE_CAKE, p -> new CandleCakeBlock(CANDLE, p), BlockBehaviour.Properties.ofLegacyCopy(CAKE).lightLevel(litBlockEmission(3))
@@ -5024,7 +5028,7 @@ public class Blocks {
    );
    public static final Block SCULK_SENSOR = register(
       BlockItemIds.SCULK_SENSOR,
-      SculkSensorBlock::new,
+      p -> new SculkSensorBlock(ConstantInt.of(5), p),
       BlockBehaviour.Properties.of()
          .mapColor(MapColor.COLOR_CYAN)
          .strength(1.5F)
@@ -5033,7 +5037,7 @@ public class Blocks {
          .emissiveRendering(state -> SculkSensorBlock.getPhase(state) == SculkSensorPhase.ACTIVE)
    );
    public static final Block CALIBRATED_SCULK_SENSOR = register(
-      BlockItemIds.CALIBRATED_SCULK_SENSOR, CalibratedSculkSensorBlock::new, BlockBehaviour.Properties.ofLegacyCopy(SCULK_SENSOR)
+      BlockItemIds.CALIBRATED_SCULK_SENSOR, p -> new CalibratedSculkSensorBlock(ConstantInt.of(5), p), BlockBehaviour.Properties.ofLegacyCopy(SCULK_SENSOR)
    );
    public static final Block SCULK = register(
       BlockItemIds.SCULK, SculkBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(0.2F).sound(SoundType.SCULK)
@@ -5051,12 +5055,12 @@ public class Blocks {
    );
    public static final Block SCULK_CATALYST = register(
       BlockItemIds.SCULK_CATALYST,
-      SculkCatalystBlock::new,
+      p -> new SculkCatalystBlock(ConstantInt.of(5), p),
       BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 3.0F).sound(SoundType.SCULK_CATALYST).lightLevel(state -> 6)
    );
    public static final Block SCULK_SHRIEKER = register(
       BlockItemIds.SCULK_SHRIEKER,
-      SculkShriekerBlock::new,
+      p -> new SculkShriekerBlock(ConstantInt.of(5), p),
       BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 3.0F).sound(SoundType.SCULK_SHRIEKER)
    );
    public static final WeatheringCopperCollection<Block> COPPER_BLOCK = WeatheringCopperCollection.registerBlocks(

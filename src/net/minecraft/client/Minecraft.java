@@ -46,7 +46,6 @@ import com.mojang.renderpearl.api.device.GpuDevice;
 import com.mojang.renderpearl.api.device.GpuSurface;
 import com.mojang.renderpearl.api.device.SurfaceException;
 import com.mojang.renderpearl.api.textures.GpuTextureView;
-import com.mojang.renderpearl.backend.vulkan.VulkanBackend;
 import java.io.File;
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -182,6 +181,7 @@ import net.minecraft.gizmos.Gizmos;
 import net.minecraft.gizmos.SimpleGizmoCollector;
 import net.minecraft.network.Connection;
 import net.minecraft.network.PacketProcessor;
+import net.minecraft.network.ServerConnectionDetails;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.contents.KeybindResolver;
@@ -461,23 +461,10 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
          LOGGER.warn(
             "Graphics backend forced to {} by launch argument, in-game preferred graphics backend setting is ignored", forcedGraphicsApi.getSerializedName()
          );
-      } else if (!lastStartWasClean) {
-         if (this.options.preferredGraphicsBackend().get() == PreferredGraphicsApi.VULKAN) {
-            LOGGER.warn("Detected unexpected shutdown during last game startup: resetting preferred graphics API to Default");
-            this.options.preferredGraphicsBackend().set(PreferredGraphicsApi.DEFAULT);
-            this.options.save();
-         } else if (this.options.preferredGraphicsBackend().get() == PreferredGraphicsApi.DEFAULT) {
-            LOGGER.warn("Detected unexpected shutdown during last game startup: forcing preferred graphics API to OpenGL");
-            this.options.preferredGraphicsBackend().set(PreferredGraphicsApi.OPENGL);
-         }
       }
 
       PreferredGraphicsApi preferredGraphicsBackend = forcedGraphicsApi == null ? this.options.preferredGraphicsBackend().get() : forcedGraphicsApi;
       GpuBackend[] backendsToTry = preferredGraphicsBackend.getBackendsToTry();
-      if (preferredGraphicsBackend == PreferredGraphicsApi.DEFAULT) {
-         this.backendCreationException = VulkanBackend.checkBackendAvailable();
-      }
-
       String initialWindowTitle = this.createTitle();
 
       for (GpuBackend backendToTry : backendsToTry) {
@@ -2062,8 +2049,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
       SocketAddress socketAddress = this.singleplayerServer.getConnection().startMemoryChannel();
       Connection connection = Connection.connectToLocalServer(socketAddress);
       connection.initiateServerboundPlayConnection(
-         socketAddress.toString(),
-         0,
+         ServerConnectionDetails.local(socketAddress),
          new ClientHandshakePacketListenerImpl(connection, this, null, null, newWorld, worldLoadDuration, var0 -> {}, loadTracker, null)
       );
       connection.send(new ServerboundHelloPacket(this.getUser().getName(), this.getUser().getProfileId()));

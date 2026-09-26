@@ -11,7 +11,6 @@ import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Map;
 import java.util.Optional;
-import net.minecraft.util.Util;
 import net.minecraft.util.datafix.ExtraDataFixUtils;
 import net.minecraft.util.datafix.schemas.NamespacedSchema;
 
@@ -94,7 +93,7 @@ public class ExplorerMapItemFix extends DataFix {
             }
 
             String legacyNameKey = DECORATION_TYPE_TO_LEGACY_NAME_KEY.get(decorationType);
-            return Util.writeAndReadTypedOrThrow(
+            return ExtraDataFixUtils.writeAndReadTypedOrThrow(
                itemStack,
                itemStack.getType(),
                data -> data.set("id", data.createString(newItemId)).update("components", componentData -> removeLegacyItemName(componentData, legacyNameKey))

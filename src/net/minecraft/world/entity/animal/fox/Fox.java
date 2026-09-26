@@ -1,11 +1,9 @@
 package net.minecraft.world.entity.animal.fox;
 
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.IntFunction;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 import net.minecraft.advancements.triggers.CriteriaTriggers;
@@ -17,7 +15,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.codec.EnumStreamCodec;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -29,7 +27,6 @@ import net.minecraft.stats.Stats;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.ByIdMap;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringRepresentable;
@@ -1178,7 +1175,7 @@ public class Fox extends Animal {
          if (target != null) {
             Fox.this.getLookControl().setLookAt(target, 60.0F, 30.0F);
             Vec3 uv = new Vec3(target.getX() - Fox.this.getX(), target.getY() - Fox.this.getY(), target.getZ() - Fox.this.getZ()).normalize();
-            Fox.this.setDeltaMovement(Fox.this.getDeltaMovement().add(uv.x * 0.8, 0.9, uv.z * 0.8));
+            Fox.this.addDeltaMovement(uv.x * 0.8, 0.9, uv.z * 0.8);
          }
 
          Fox.this.getNavigation().stop();
@@ -1503,8 +1500,7 @@ public class Fox extends Animal {
 
       public static final Fox.Variant DEFAULT = RED;
       public static final Codec<Fox.Variant> CODEC = StringRepresentable.fromEnum(Fox.Variant::values);
-      private static final IntFunction<Fox.Variant> BY_ID = ByIdMap.continuous(Fox.Variant::getId, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-      public static final StreamCodec<ByteBuf, Fox.Variant> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Fox.Variant::getId);
+      public static final EnumStreamCodec<Fox.Variant> STREAM_CODEC = ByteBufCodecs.enumCodec(Fox.Variant.class, Fox.Variant::getId);
       private final int id;
       private final String name;
 
@@ -1523,7 +1519,7 @@ public class Fox extends Animal {
       }
 
       public static Fox.Variant byId(final int id) {
-         return BY_ID.apply(id);
+         return STREAM_CODEC.byId(id);
       }
 
       public static Fox.Variant byBiome(final Holder<Biome> biome) {

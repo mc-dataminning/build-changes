@@ -257,9 +257,7 @@ public class Guardian extends Monster {
          if (this.isInWater()) {
             this.setAirSupply(300);
          } else if (this.onGround()) {
-            this.setDeltaMovement(
-               this.getDeltaMovement().add((this.random.nextFloat() * 2.0F - 1.0F) * 0.4F, 0.5, (this.random.nextFloat() * 2.0F - 1.0F) * 0.4F)
-            );
+            this.addDeltaMovement((this.random.nextFloat() * 2.0F - 1.0F) * 0.4F, 0.5, (this.random.nextFloat() * 2.0F - 1.0F) * 0.4F);
             this.setYRot(this.random.nextFloat() * 360.0F);
             this.setOnGround(false);
             this.needsSync = true;
@@ -334,7 +332,7 @@ public class Guardian extends Monster {
       this.move(MoverType.SELF, this.getDeltaMovement());
       this.setDeltaMovement(this.getDeltaMovement().scale(0.9));
       if (!this.isMoving() && this.getTarget() == null) {
-         this.setDeltaMovement(this.getDeltaMovement().add(0.0, -0.005, 0.0));
+         this.addDeltaMovement(0.0, -0.005, 0.0);
       }
    }
 
@@ -457,7 +455,7 @@ public class Guardian extends Monster {
             double cos = Math.cos(this.mob.getYRot() * (float) (Math.PI / 180.0));
             double sin = Math.sin(this.mob.getYRot() * (float) (Math.PI / 180.0));
             double yPush = Math.sin((this.mob.tickCount + this.mob.getId()) * 0.75) * 0.05;
-            this.mob.setDeltaMovement(this.mob.getDeltaMovement().add(push * cos, yPush * (sin + cos) * 0.25 + newSpeed * yd * 0.1, push * sin));
+            this.mob.addDeltaMovement(push * cos, yPush * (sin + cos) * 0.25 + newSpeed * yd * 0.1, push * sin);
             LookControl control = this.mob.getLookControl();
             double newLookX = this.mob.getX() + xd * 2.0;
             double newLookY = this.mob.getEyeY() + yd / length;

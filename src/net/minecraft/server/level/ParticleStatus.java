@@ -1,11 +1,9 @@
 package net.minecraft.server.level;
 
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.codec.EnumStreamCodec;
 import net.minecraft.util.ByIdMap;
 
 public enum ParticleStatus {
@@ -13,9 +11,8 @@ public enum ParticleStatus {
    DECREASED(1, "options.particles.decreased"),
    MINIMAL(2, "options.particles.minimal");
 
-   private static final IntFunction<ParticleStatus> BY_ID = ByIdMap.continuous(s -> s.id, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
-   public static final Codec<ParticleStatus> LEGACY_CODEC = Codec.INT.xmap(BY_ID::apply, s -> s.id);
-   public static final StreamCodec<ByteBuf, ParticleStatus> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, s -> s.id);
+   public static final EnumStreamCodec<ParticleStatus> STREAM_CODEC = ByteBufCodecs.enumCodec(ParticleStatus.class, s -> s.id, ByIdMap.OutOfBoundsStrategy.WRAP);
+   public static final Codec<ParticleStatus> LEGACY_CODEC = Codec.INT.xmap(STREAM_CODEC::byId, s -> s.id);
    private final int id;
    private final Component caption;
 

@@ -9,7 +9,6 @@ import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
-import net.minecraft.util.Util;
 import net.minecraft.util.datafix.ExtraDataFixUtils;
 
 public class ProjectileStoredWeaponFix extends DataFix {
@@ -39,7 +38,7 @@ public class ProjectileStoredWeaponFix extends DataFix {
    ) {
       OpticFinder<?> entityF = DSL.namedChoice(entityName, inputEntityChoiceType);
       return input -> input.updateTyped(
-         entityF, outputEntityChoiceType, typed -> Util.writeAndReadTypedOrThrow(typed, outputEntityChoiceType, UnaryOperator.identity())
+         entityF, outputEntityChoiceType, typed -> ExtraDataFixUtils.writeAndReadTypedOrThrow(typed, outputEntityChoiceType, UnaryOperator.identity())
       );
    }
 }

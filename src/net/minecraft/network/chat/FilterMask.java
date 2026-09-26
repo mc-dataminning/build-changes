@@ -5,12 +5,10 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import io.netty.buffer.ByteBuf;
 import java.util.BitSet;
-import java.util.function.IntFunction;
 import java.util.function.Supplier;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.StringRepresentable;
 import org.apache.commons.lang3.StringUtils;
@@ -137,8 +135,7 @@ public class FilterMask {
          () -> ByteBufCodecs.BIT_SET.map(FilterMask::new, FilterMask::mask)
       );
 
-      private static final IntFunction<FilterMask.Type> ID_MAP = ByIdMap.continuous(t -> t.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-      public static final StreamCodec<ByteBuf, FilterMask.Type> STREAM_CODEC = ByteBufCodecs.idMapper(ID_MAP, t -> t.id);
+      public static final StreamCodec<ByteBuf, FilterMask.Type> STREAM_CODEC = ByteBufCodecs.enumCodec(FilterMask.Type.class, t -> t.id);
       private final int id;
       private final String serializedName;
       private final Supplier<MapCodec<FilterMask>> codec;

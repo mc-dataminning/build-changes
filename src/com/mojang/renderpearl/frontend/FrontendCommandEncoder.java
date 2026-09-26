@@ -204,7 +204,7 @@ public class FrontendCommandEncoder implements CommandEncoder {
             this.backend.createRenderPass(descriptor),
             this.device,
             descriptor.colorAttachments(),
-            descriptor.depthAttachment() != null,
+            descriptor.depthAttachment() != null ? descriptor.depthAttachment().textureView().texture().getFormat() : null,
             this::submitRenderPass,
             renderArea
          );

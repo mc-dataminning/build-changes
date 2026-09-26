@@ -245,32 +245,36 @@ public sealed interface CubicSpline<I> permits CubicSpline.Multipoint, CubicSpli
          final I coordinate, final float[] derivatives, final float[] locations, final List<CubicSpline<I>> values, final C c
       ) {
          float input = coordinate.apply(c);
-         int start = findIntervalStart(locations, input);
+         if (Float.isNaN(input)) {
+            return Float.NaN;
+         }
+
          int lastIndex = locations.length - 1;
-         if (start < 0) {
+         if (input <= locations[0]) {
             return linearExtend(input, locations, CubicSpline.sample(values.getFirst(), c), derivatives, 0);
          }
 
-         if (start == lastIndex) {
+         if (input >= locations[lastIndex]) {
             return linearExtend(input, locations, CubicSpline.sample(values.get(lastIndex), c), derivatives, lastIndex);
          }
 
-         float x1 = locations[start];
-         float x2 = locations[start + 1];
-         float t = (input - x1) / (x2 - x1);
-         CubicSpline<I> f1 = values.get(start);
-         CubicSpline<I> f2 = values.get(start + 1);
-         float d1 = derivatives[start];
-         float d2 = derivatives[start + 1];
-         float y1 = CubicSpline.sample(f1, c);
-         float y2 = CubicSpline.sample(f2, c);
-         float a = d1 * (x2 - x1) - (y2 - y1);
-         float b = -d2 * (x2 - x1) + (y2 - y1);
-         return Mth.lerp(t, y1, y2) + t * (1.0F - t) * Mth.lerp(t, a, b);
-      }
+         int i2 = 1;
 
-      private static int findIntervalStart(final float[] locations, final float input) {
-         return Mth.binarySearch(0, locations.length, i -> input < locations[i]) - 1;
+         while (i2 < locations.length - 1 && !(input < locations[i2])) {
+            i2++;
+         }
+
+         int i1 = i2 - 1;
+         float x1 = locations[i1];
+         float x2 = locations[i2];
+         float y1 = CubicSpline.sample(values.get(i1), c);
+         float y2 = CubicSpline.sample(values.get(i2), c);
+         float dx = x2 - x1;
+         float dy = y2 - y1;
+         float t = (input - x1) / dx;
+         float a = derivatives[i1] * dx - dy;
+         float b = -derivatives[i2] * dx + dy;
+         return Mth.lerp(t, y1, y2) + t * (1.0F - t) * Mth.lerp(t, a, b);
       }
 
       @VisibleForTesting
@@ -302,8 +306,7 @@ public sealed interface CubicSpline<I> permits CubicSpline.Multipoint, CubicSpli
          }
       }
 
-      @Override
-      public <R extends BoundedFloatFunction<?>> CubicSpline<R> mapCoordinates(final Function<I, R> mapper) {
+      public <R extends BoundedFloatFunction<?>> CubicSpline.Multipoint<R> mapCoordinates(final Function<I, R> mapper) {
          return new CubicSpline.Multipoint<>(
             mapper.apply(this.coordinate), this.locations, this.values.stream().map(v -> v.mapCoordinates(mapper)).toList(), this.derivatives
          );

@@ -20,7 +20,7 @@ import net.minecraft.util.context.ContextKey;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeResolver;
+import net.minecraft.world.level.biome.NoiseBiomeResolver;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.CarvingMask;
 import net.minecraft.world.level.chunk.ChunkAccess;
@@ -53,8 +53,8 @@ public class Blender {
       }
 
       @Override
-      public BiomeResolver getBiomeResolver(final BiomeResolver biomeResolver) {
-         return biomeResolver;
+      public NoiseBiomeResolver getBiomeResolver(final NoiseBiomeResolver noiseBiomeResolver) {
+         return noiseBiomeResolver;
       }
    };
    private static final Noise SHIFT_NOISE = NoiseData.DEFAULT_SHIFT.create(new XoroshiroRandomSource(42L));
@@ -268,10 +268,10 @@ public class Blender {
          : Float.MAX_VALUE;
    }
 
-   public BiomeResolver getBiomeResolver(final BiomeResolver biomeResolver) {
+   public NoiseBiomeResolver getBiomeResolver(final NoiseBiomeResolver noiseBiomeResolver) {
       return (quartX, quartY, quartZ) -> {
          Holder<Biome> biome = this.blendBiome(quartX, quartY, quartZ);
-         return biome == null ? biomeResolver.getNoiseBiome(quartX, quartY, quartZ) : biome;
+         return biome == null ? noiseBiomeResolver.getNoiseBiome(quartX, quartY, quartZ) : biome;
       };
    }
 

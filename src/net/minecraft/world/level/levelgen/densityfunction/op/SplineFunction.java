@@ -16,6 +16,7 @@ import net.minecraft.world.level.levelgen.densityfunction.DensityVolume;
 import net.minecraft.world.level.levelgen.densityfunction.DfRewriteRule;
 import net.minecraft.world.level.levelgen.densityfunction.SamplerContext;
 import net.minecraft.world.level.levelgen.densityfunction.ScopedDensityBuffer;
+import net.minecraft.world.level.levelgen.densityfunction.generator.ConstantFunction;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.jspecify.annotations.Nullable;
@@ -26,7 +27,11 @@ public record SplineFunction(CubicSpline<SplineFunction.Coordinate> spline) impl
 
    @Override
    public DensitySampler compileSampler(final DensityFunction.CompileContext context) {
-      return new SplineFunction.Sampler(context, this.spline);
+      return switch (this.spline) {
+         case CubicSpline.Constant<SplineFunction.Coordinate> constant -> new ConstantFunction.Sampler(constant.value());
+         case CubicSpline.Multipoint<SplineFunction.Coordinate> multipoint -> new SplineFunction.Sampler(context, multipoint);
+         default -> throw new MatchException(null, null);
+      };
    }
 
    @Override
@@ -70,20 +75,29 @@ public record SplineFunction(CubicSpline<SplineFunction.Coordinate> spline) impl
    private static class BufferSplineInput implements SplineFunction.SplineInput, AutoCloseable {
       private final SamplerContext context;
       private final DensityVolume volume;
-      private final @Nullable ScopedDensityBuffer[] buffers;
+      private final @Nullable DensityBuffer[] buffers;
+      private final DensityBuffer outputBuffer;
+      private boolean usedOutputBuffer;
       private int index;
 
-      private BufferSplineInput(final SamplerContext context, final DensityVolume volume, final int coordinateCount) {
+      private BufferSplineInput(final SamplerContext context, final DensityVolume volume, final int coordinateCount, final DensityBuffer outputBuffer) {
          this.context = context;
          this.volume = volume;
-         this.buffers = new ScopedDensityBuffer[coordinateCount];
+         this.buffers = new DensityBuffer[coordinateCount];
+         this.outputBuffer = outputBuffer;
       }
 
       @Override
       public float sampleCoordinate(final DensitySampler coordinateSampler, final int coordinateIndex) {
-         ScopedDensityBuffer buffer = this.buffers[coordinateIndex];
+         DensityBuffer buffer = this.buffers[coordinateIndex];
          if (buffer == null) {
-            buffer = this.context.acquireBuffer(this.volume);
+            if (!this.usedOutputBuffer) {
+               buffer = this.outputBuffer;
+               this.usedOutputBuffer = true;
+            } else {
+               buffer = this.context.acquireBuffer(this.volume);
+            }
+
             coordinateSampler.sampleVolume(this.context, buffer, this.volume);
             this.buffers[coordinateIndex] = buffer;
          }
@@ -93,9 +107,9 @@ public record SplineFunction(CubicSpline<SplineFunction.Coordinate> spline) impl
 
       @Override
       public void close() {
-         for (ScopedDensityBuffer buffer : this.buffers) {
-            if (buffer != null) {
-               buffer.close();
+         for (DensityBuffer buffer : this.buffers) {
+            if (buffer instanceof ScopedDensityBuffer scoped && buffer != this.outputBuffer) {
+               scoped.close();
             }
          }
       }
@@ -145,32 +159,32 @@ public record SplineFunction(CubicSpline<SplineFunction.Coordinate> spline) impl
    }
 
    private static class Sampler implements DensitySampler {
-      private final BoundedFloatFunction<SplineFunction.SplineInput> sampler;
+      private final CubicSpline.Multipoint<SplineFunction.SamplerCoordinate> spline;
       private final int coordinateCount;
 
-      public Sampler(final DensityFunction.CompileContext context, final CubicSpline<SplineFunction.Coordinate> spline) {
+      public Sampler(final DensityFunction.CompileContext context, final CubicSpline.Multipoint<SplineFunction.Coordinate> spline) {
          Map<DensityFunction, SplineFunction.SamplerCoordinate> coordinates = new HashMap<>();
-         this.sampler = CubicSpline.asSampler(spline.mapCoordinates(coordinate -> coordinates.computeIfAbsent(coordinate.function(), function -> {
+         this.spline = spline.mapCoordinates(coordinate -> coordinates.computeIfAbsent(coordinate.function(), function -> {
             int index = coordinates.size();
             DensitySampler sampler = function.compileSampler(context);
             return new SplineFunction.SamplerCoordinate(sampler, index, function.range());
-         })));
+         }));
          this.coordinateCount = coordinates.size();
       }
 
       @Override
       public void sampleVolume(final SamplerContext context, final DensityBuffer outputBuffer, final DensityVolume volume) {
-         try (SplineFunction.BufferSplineInput input = new SplineFunction.BufferSplineInput(context, volume, this.coordinateCount)) {
+         try (SplineFunction.BufferSplineInput input = new SplineFunction.BufferSplineInput(context, volume, this.coordinateCount, outputBuffer)) {
             for (int i = 0; i < outputBuffer.size(); i++) {
                input.index = i;
-               outputBuffer.set(i, this.sampler.apply(input));
+               outputBuffer.set(i, CubicSpline.Multipoint.sample(this.spline, input));
             }
          }
       }
 
       @Override
       public float sampleValue(final SamplerContext context, final int blockX, final int blockY, final int blockZ) {
-         return this.sampler.apply(new SplineFunction.PointSplineInput(context, blockX, blockY, blockZ, this.coordinateCount));
+         return CubicSpline.Multipoint.sample(this.spline, new SplineFunction.PointSplineInput(context, blockX, blockY, blockZ, this.coordinateCount));
       }
    }
 

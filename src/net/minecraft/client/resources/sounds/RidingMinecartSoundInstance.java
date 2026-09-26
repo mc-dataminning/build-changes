@@ -1,18 +1,19 @@
 package net.minecraft.client.resources.sounds;
 
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
 import net.minecraft.world.entity.vehicle.minecart.NewMinecartBehavior;
 
 public class RidingMinecartSoundInstance extends RidingEntitySoundInstance {
-   private final Player player;
+   private final LocalPlayer player;
    private final AbstractMinecart minecart;
    private final boolean underwaterSound;
 
    public RidingMinecartSoundInstance(
-      final Player player,
+      final LocalPlayer player,
+      final int ridingSoundId,
       final AbstractMinecart minecart,
       final boolean underwaterSound,
       final SoundEvent soundEvent,
@@ -20,7 +21,7 @@ public class RidingMinecartSoundInstance extends RidingEntitySoundInstance {
       final float volumeMax,
       final float volumeAmplifier
    ) {
-      super(player, minecart, underwaterSound, soundEvent, SoundSource.NEUTRAL, volumeMin, volumeMax, volumeAmplifier);
+      super(player, ridingSoundId, minecart, underwaterSound, soundEvent, SoundSource.NEUTRAL, volumeMin, volumeMax, volumeAmplifier);
       this.player = player;
       this.minecart = minecart;
       this.underwaterSound = underwaterSound;

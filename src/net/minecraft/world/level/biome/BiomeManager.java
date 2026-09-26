@@ -1,21 +1,16 @@
 package net.minecraft.world.level.biome;
 
 import com.google.common.hash.Hashing;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.core.QuartPos;
 import net.minecraft.util.LinearCongruentialGenerator;
 import net.minecraft.util.Mth;
 
-public class BiomeManager {
-   public static final int CHUNK_CENTER_QUART = QuartPos.fromBlock(8);
-   private static final int ZOOM_BITS = 2;
-   private static final int ZOOM = 4;
-   private static final int ZOOM_MASK = 3;
-   private final BiomeResolver noiseBiomeSource;
+public class BiomeManager implements BiomeResolver, NoiseBiomeResolver {
+   public static final int HALF_QUART = 2;
+   private final NoiseBiomeResolver noiseBiomeSource;
    private final long biomeZoomSeed;
 
-   public BiomeManager(final BiomeResolver noiseBiomeSource, final long seed) {
+   public BiomeManager(final NoiseBiomeResolver noiseBiomeSource, final long seed) {
       this.noiseBiomeSource = noiseBiomeSource;
       this.biomeZoomSeed = seed;
    }
@@ -24,14 +19,7 @@ public class BiomeManager {
       return Hashing.sha256().hashLong(seed).asLong();
    }
 
-   public BiomeManager withDifferentSource(final BiomeResolver biomeSource) {
-      return new BiomeManager(biomeSource, this.biomeZoomSeed);
-   }
-
-   public Holder<Biome> getBiome(final BlockPos pos) {
-      return this.getBiome(pos.getX(), pos.getY(), pos.getZ());
-   }
-
+   @Override
    public Holder<Biome> getBiome(final int x, final int y, final int z) {
       int absX = x - 2;
       int absY = y - 2;
@@ -68,43 +56,38 @@ public class BiomeManager {
       return this.noiseBiomeSource.getNoiseBiome(biomeX, biomeY, biomeZ);
    }
 
-   public Holder<Biome> getNoiseBiomeAtPosition(final double x, final double y, final double z) {
-      int quartX = QuartPos.fromBlock(Mth.floor(x));
-      int quartY = QuartPos.fromBlock(Mth.floor(y));
-      int quartZ = QuartPos.fromBlock(Mth.floor(z));
-      return this.getNoiseBiomeAtQuart(quartX, quartY, quartZ);
-   }
-
-   public Holder<Biome> getNoiseBiomeAtPosition(final BlockPos blockPos) {
-      int quartX = QuartPos.fromBlock(blockPos.getX());
-      int quartY = QuartPos.fromBlock(blockPos.getY());
-      int quartZ = QuartPos.fromBlock(blockPos.getZ());
-      return this.getNoiseBiomeAtQuart(quartX, quartY, quartZ);
-   }
-
-   public Holder<Biome> getNoiseBiomeAtQuart(final int quartX, final int quartY, final int quartZ) {
+   @Override
+   public Holder<Biome> getNoiseBiome(final int quartX, final int quartY, final int quartZ) {
       return this.noiseBiomeSource.getNoiseBiome(quartX, quartY, quartZ);
    }
 
    private static double getFiddledDistance(
       final long seed, final int xRandom, final int yRandom, final int zRandom, final double distanceX, final double distanceY, final double distanceZ
    ) {
-      long rval = seed;
-      rval = LinearCongruentialGenerator.next(rval, xRandom);
-      rval = LinearCongruentialGenerator.next(rval, yRandom);
-      rval = LinearCongruentialGenerator.next(rval, zRandom);
-      rval = LinearCongruentialGenerator.next(rval, xRandom);
-      rval = LinearCongruentialGenerator.next(rval, yRandom);
-      rval = LinearCongruentialGenerator.next(rval, zRandom);
-      double fiddleX = getFiddle(rval);
-      rval = LinearCongruentialGenerator.next(rval, seed);
-      double fiddleY = getFiddle(rval);
-      rval = LinearCongruentialGenerator.next(rval, seed);
-      double fiddleZ = getFiddle(rval);
+      long fiddleSeed = prepareFiddleSeed(seed, xRandom, yRandom, zRandom);
+      double fiddleX = getFiddle(fiddleSeed);
+      fiddleSeed = nextFiddleSeed(seed, fiddleSeed);
+      double fiddleY = getFiddle(fiddleSeed);
+      fiddleSeed = nextFiddleSeed(seed, fiddleSeed);
+      double fiddleZ = getFiddle(fiddleSeed);
       return Mth.square(distanceZ + fiddleZ) + Mth.square(distanceY + fiddleY) + Mth.square(distanceX + fiddleX);
    }
 
-   private static double getFiddle(final long rval) {
+   protected static long prepareFiddleSeed(final long seed, final int xRandom, final int yRandom, final int zRandom) {
+      long fiddleSeed = seed;
+      fiddleSeed = LinearCongruentialGenerator.next(fiddleSeed, xRandom);
+      fiddleSeed = LinearCongruentialGenerator.next(fiddleSeed, yRandom);
+      fiddleSeed = LinearCongruentialGenerator.next(fiddleSeed, zRandom);
+      fiddleSeed = LinearCongruentialGenerator.next(fiddleSeed, xRandom);
+      fiddleSeed = LinearCongruentialGenerator.next(fiddleSeed, yRandom);
+      return LinearCongruentialGenerator.next(fiddleSeed, zRandom);
+   }
+
+   protected static long nextFiddleSeed(final long seed, final long fiddleSeed) {
+      return LinearCongruentialGenerator.next(fiddleSeed, seed);
+   }
+
+   protected static double getFiddle(final long rval) {
       double uniform = Math.floorMod(rval >> 24, 1024) / 1024.0;
       return (uniform - 0.5) * 0.9;
    }

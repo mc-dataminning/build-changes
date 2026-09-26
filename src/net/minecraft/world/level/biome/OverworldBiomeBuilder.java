@@ -887,7 +887,14 @@ public final class OverworldBiomeBuilder {
 
    private void addUndergroundBiomes(final Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> biomes) {
       this.addUndergroundBiome(
-         biomes, this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(0.8F, 1.0F), this.FULL_RANGE, this.FULL_RANGE, 0.0F, Biomes.DRIPSTONE_CAVES
+         biomes,
+         this.FULL_RANGE,
+         Climate.Parameter.span(-1.0F, 0.7F),
+         Climate.Parameter.span(0.8F, 1.0F),
+         this.FULL_RANGE,
+         this.FULL_RANGE,
+         0.0F,
+         Biomes.DRIPSTONE_CAVES
       );
       this.addUndergroundBiome(
          biomes, this.FULL_RANGE, Climate.Parameter.span(0.7F, 1.0F), this.FULL_RANGE, this.FULL_RANGE, this.FULL_RANGE, 0.0F, Biomes.LUSH_CAVES
@@ -895,7 +902,7 @@ public final class OverworldBiomeBuilder {
       this.addUndergroundBiome(
          biomes,
          this.FULL_RANGE,
-         this.FULL_RANGE,
+         Climate.Parameter.span(-1.0F, 0.7F),
          Climate.Parameter.span(this.coastContinentalness, this.inlandContinentalness),
          Climate.Parameter.span(this.erosions[5], this.erosions[6]),
          Climate.Parameter.span(-1.1F, -0.85F),

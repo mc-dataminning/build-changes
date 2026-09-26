@@ -170,7 +170,7 @@ public class ExperienceOrb extends Entity {
          );
          double length = delta.lengthSqr();
          double power = 1.0 - Math.sqrt(length) / 8.0;
-         this.setDeltaMovement(this.getDeltaMovement().add(delta.normalize().scale(power * power * 0.1)));
+         this.addDeltaMovement(delta.normalize().scale(power * power * 0.1));
       }
    }
 

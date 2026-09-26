@@ -122,7 +122,7 @@ import net.minecraft.world.level.ServerExplosion;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeResolver;
+import net.minecraft.world.level.biome.BiomeManager;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LevelEvent;
@@ -219,7 +219,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
    private final List<CustomSpawner> customSpawners;
    private @Nullable EnderDragonFight dragonFight;
    private final Int2ObjectMap<EnderDragonPart> dragonParts = new Int2ObjectOpenHashMap();
-   private final BiomeResolver uncachedBiomeResolver;
+   private final BiomeManager uncachedBiomeResolver;
    private final StructureManager structureManager;
    private final StructureCheck structureCheck;
    private final boolean tickTime;
@@ -233,11 +233,10 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
       final ResourceKey<Level> dimension,
       final LevelStem levelStem,
       final boolean isDebug,
-      final long biomeZoomSeed,
       final List<CustomSpawner> customSpawners,
       final boolean tickTime
    ) {
-      super(levelData, dimension, server.registryAccess(), levelStem.type(), false, isDebug, biomeZoomSeed, server.getMaxChainedNeighborUpdates());
+      super(levelData, dimension, server.registryAccess(), levelStem.type(), false, isDebug, server.getMaxChainedNeighborUpdates());
       this.tickTime = tickTime;
       this.server = server;
       this.customSpawners = customSpawners;
@@ -305,7 +304,9 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
       this.gameEventDispatcher = new GameEventDispatcher(this);
       this.waypointManager = new ServerWaypointManager();
       this.environmentAttributes = EnvironmentAttributeSystem.builder().addDefaultLayers(this).build();
-      this.uncachedBiomeResolver = this.getChunkSource().getGenerator().getBiomeSource().createUncachedResolver(this.getChunkSource().randomState());
+      this.uncachedBiomeResolver = new BiomeManager(
+         this.getChunkSource().getGenerator().getBiomeSource().createUncachedResolver(this.getChunkSource().randomState()), BiomeManager.obfuscateSeed(seed)
+      );
       this.updateSkyBrightness();
    }
 
@@ -327,12 +328,8 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
    }
 
    @Override
-   public Holder<Biome> getUncachedNoiseBiome(final int quartX, final int quartY, final int quartZ) {
-      return this.uncachedBiomeResolver.getNoiseBiome(quartX, quartY, quartZ);
-   }
-
-   public BiomeResolver uncachedBiomeResolver() {
-      return this.uncachedBiomeResolver;
+   public Holder<Biome> getUncachedBiome(final int x, final int y, final int z) {
+      return this.uncachedBiomeResolver.getBiome(x, y, z);
    }
 
    public StructureManager structureManager() {

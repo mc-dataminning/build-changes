@@ -4,25 +4,22 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.BitSet;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.function.Function;
-import java.util.function.Predicate;
 import java.util.stream.LongStream;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.LevelHeightAccessor;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeResolver;
-import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.biome.NoiseBiomeResolver;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.ProtoChunk;
 import net.minecraft.world.level.chunk.status.ChunkStatus;
 
-public final class BelowZeroRetrogen {
+public final class RetroGen {
    private static final BitSet EMPTY = new BitSet(0);
    private static final Codec<BitSet> BITSET_CODEC = Codec.LONG_STREAM
       .xmap(longStream -> BitSet.valueOf(longStream.toArray()), bitSet -> LongStream.of(bitSet.toLongArray()));
@@ -31,15 +28,16 @@ public final class BelowZeroRetrogen {
       .comapFlatMap(
          status -> status == ChunkStatus.EMPTY ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success(status), Function.identity()
       );
-   public static final Codec<BelowZeroRetrogen> CODEC = RecordCodecBuilder.create(
+   public static final Codec<RetroGen> CODEC = RecordCodecBuilder.create(
       i -> i.group(
-            NON_EMPTY_CHUNK_STATUS.fieldOf("target_status").forGetter(BelowZeroRetrogen::targetStatus),
+            NON_EMPTY_CHUNK_STATUS.fieldOf("target_status").forGetter(RetroGen::targetStatus),
+            NON_EMPTY_CHUNK_STATUS.listOf().fieldOf("statuses_to_rerun").forGetter(RetroGen::getStatusesToRerun),
+            Codec.BOOL.optionalFieldOf("has_below_zero_retrogen", false).forGetter(RetroGen::hasBelowZeroRetroGen),
             BITSET_CODEC.lenientOptionalFieldOf("missing_bedrock")
                .forGetter(b -> b.missingBedrock.isEmpty() ? Optional.empty() : Optional.of(b.missingBedrock))
          )
-         .apply(i, BelowZeroRetrogen::new)
+         .apply(i, RetroGen::new)
    );
-   private static final Set<ResourceKey<Biome>> RETAINED_RETROGEN_BIOMES = Set.of(Biomes.LUSH_CAVES, Biomes.DRIPSTONE_CAVES, Biomes.DEEP_DARK);
    public static final LevelHeightAccessor UPGRADE_HEIGHT_ACCESSOR = new LevelHeightAccessor() {
       @Override
       public int getHeight() {
@@ -53,10 +51,16 @@ public final class BelowZeroRetrogen {
    };
    private final ChunkStatus targetStatus;
    private final BitSet missingBedrock;
+   private final List<ChunkStatus> statusesToRerun;
+   private final boolean hasBelowZeroRetroGen;
 
-   private BelowZeroRetrogen(final ChunkStatus targetStatus, final Optional<BitSet> missingBedrock) {
+   private RetroGen(
+      final ChunkStatus targetStatus, final List<ChunkStatus> statusesToRerun, final boolean hasBelowZeroRetroGen, final Optional<BitSet> missingBedrock
+   ) {
       this.targetStatus = targetStatus;
       this.missingBedrock = missingBedrock.orElse(EMPTY);
+      this.statusesToRerun = statusesToRerun;
+      this.hasBelowZeroRetroGen = hasBelowZeroRetroGen;
    }
 
    public static void replaceOldBedrock(final ProtoChunk chunk) {
@@ -86,6 +90,27 @@ public final class BelowZeroRetrogen {
       return this.targetStatus;
    }
 
+   public ChunkStatus getNextStatus(ChunkStatus status) {
+      while (!status.isOrAfter(this.targetStatus)) {
+         ChunkStatus nextStatus = status.getNext();
+         if (nextStatus == null) {
+            return status;
+         }
+
+         if (this.statusesToRerun.contains(nextStatus)) {
+            return status;
+         }
+
+         status = nextStatus;
+      }
+
+      return this.targetStatus;
+   }
+
+   private List<ChunkStatus> getStatusesToRerun() {
+      return this.statusesToRerun;
+   }
+
    public boolean hasBedrockHoles() {
       return !this.missingBedrock.isEmpty();
    }
@@ -94,15 +119,23 @@ public final class BelowZeroRetrogen {
       return this.missingBedrock.get((z & 15) * 16 + (x & 15));
    }
 
-   public static BiomeResolver getBiomeResolver(final BiomeResolver biomeResolver, final ChunkAccess protoChunk) {
+   public static NoiseBiomeResolver getBiomeResolver(final NoiseBiomeResolver noiseBiomeResolver, final ProtoChunk protoChunk) {
       if (!protoChunk.isUpgrading()) {
-         return biomeResolver;
+         return noiseBiomeResolver;
       }
 
-      Predicate<ResourceKey<Biome>> retainedBiomes = RETAINED_RETROGEN_BIOMES::contains;
-      return (quartX, quartY, quartZ) -> {
-         Holder<Biome> noiseBiome = biomeResolver.getNoiseBiome(quartX, quartY, quartZ);
-         return noiseBiome.is(retainedBiomes) ? noiseBiome : protoChunk.getNoiseBiome(quartX, 0, quartZ);
+      NoiseBiomeResolver oldBiomeResolver = protoChunk.getNoiseBiomeChunk();
+      return oldBiomeResolver == null ? noiseBiomeResolver : (quartX, quartY, quartZ) -> {
+         Holder<Biome> noiseBiome = noiseBiomeResolver.getNoiseBiome(quartX, quartY, quartZ);
+         return noiseBiome.is(BiomeTags.GENERATED_IN_BELOW_ZERO_RETROGEN) ? noiseBiome : oldBiomeResolver.getNoiseBiome(quartX, 0, quartZ);
       };
+   }
+
+   public boolean keepsLight() {
+      return this.targetStatus.isOrAfter(ChunkStatus.INITIALIZE_LIGHT) && !this.statusesToRerun.contains(ChunkStatus.INITIALIZE_LIGHT);
+   }
+
+   private boolean hasBelowZeroRetroGen() {
+      return this.hasBelowZeroRetroGen;
    }
 }

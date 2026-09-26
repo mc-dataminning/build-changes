@@ -6,7 +6,6 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.QuartPos;
@@ -16,13 +15,11 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Util;
 import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.NoiseColumn;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.NoiseColumn;
 import net.minecraft.world.level.levelgen.RandomState;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
@@ -110,7 +107,7 @@ public class RuinedPortalStructure extends Structure {
       BlockPos basePosition = context.chunkPos().getWorldPosition();
       BoundingBox boundingBox = template.getBoundingBox(basePosition, rotation, pivot, mirror);
       BlockPos center = boundingBox.getCenter();
-      int surfaceY = chunkGenerator.getBaseHeight(
+      int surfaceY = chunkGenerator.getFirstFreeHeight(
             center.getX(), center.getZ(), RuinedPortalPiece.getHeightMapType(setup.placement()), heightAccessor, randomState
          )
          - 1;
@@ -126,7 +123,7 @@ public class RuinedPortalStructure extends Structure {
                   setup.canBeCold()
                      && isCold(
                         origin,
-                        context.biomeResolver()
+                        context.noiseBiomeResolver()
                            .getNoiseBiome(QuartPos.fromBlock(origin.getX()), QuartPos.fromBlock(origin.getY()), QuartPos.fromBlock(origin.getZ())),
                         chunkGenerator.getSeaLevel()
                      ),
@@ -206,20 +203,16 @@ public class RuinedPortalStructure extends Structure {
          new BlockPos(boundingBox.minX(), 0, boundingBox.maxZ()),
          new BlockPos(boundingBox.maxX(), 0, boundingBox.maxZ())
       );
-      List<NoiseColumn> columns = bottomCorners.stream()
-         .map(p -> generator.getBaseColumn(p.getX(), p.getZ(), heightAccessor, randomState))
-         .collect(Collectors.toList());
-      Heightmap.Types heightmap = verticalPlacement == RuinedPortalPiece.VerticalPlacement.ON_OCEAN_FLOOR
-         ? Heightmap.Types.OCEAN_FLOOR_WG
-         : Heightmap.Types.WORLD_SURFACE_WG;
+      List<NoiseColumn> columns = bottomCorners.stream().map(p -> generator.getBaseColumn(p.getX(), p.getZ(), heightAccessor, randomState)).toList();
+      boolean onOceanFloor = verticalPlacement == RuinedPortalPiece.VerticalPlacement.ON_OCEAN_FLOOR;
 
       int projectedY;
       for (projectedY = newY; projectedY > minY; projectedY--) {
          int cornersOnSolidGround = 0;
 
          for (NoiseColumn column : columns) {
-            BlockState blockState = column.getBlock(projectedY);
-            if (heightmap.isOpaque().test(blockState)) {
+            boolean matches = onOceanFloor ? column.isSolid(projectedY) : !column.isEmpty(projectedY);
+            if (matches) {
                if (++cornersOnSolidGround == 3) {
                   return projectedY;
                }

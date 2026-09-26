@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.ScissorState;
 import com.mojang.renderpearl.api.buffers.GpuBuffer;
 import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
 import com.mojang.renderpearl.api.commands.GpuQueryPool;
+import com.mojang.renderpearl.api.pipeline.CompiledRenderPipeline;
 import com.mojang.renderpearl.api.pipeline.IndexType;
 import com.mojang.renderpearl.backend.api.BackendRenderPipeline;
 import com.mojang.renderpearl.backend.api.RenderPassBackend;
@@ -22,14 +23,14 @@ class GlRenderPass implements RenderPassBackend {
    private final GlDevice device;
    private final ScissorState defaultScissorState;
    protected @Nullable GlRenderPipeline pipeline;
-   protected final @Nullable GpuBufferSlice[] vertexBuffers = new GpuBufferSlice[16];
+   protected final @Nullable GpuBufferSlice[] vertexBuffers = new GpuBufferSlice[CompiledRenderPipeline.CreateInfo.MAX_VERTEX_BUFFERS];
    protected boolean vertexBufferDirty = true;
    protected @Nullable GpuBuffer indexBuffer;
    protected IndexType indexType = IndexType.INT;
    protected boolean indexBufferDirty = false;
    private final ScissorState scissorState = new ScissorState();
    protected boolean scissorStateDirty = true;
-   protected final ReferenceList<Object> uniforms = new ReferenceArrayList();
+   protected final ReferenceList<@Nullable Object> uniforms = new ReferenceArrayList();
    protected final BooleanList dirtyUniforms = new BooleanArrayList();
    protected boolean anyUniformDirty = false;
    protected @Nullable GpuBufferSlice pushConstants;
@@ -46,11 +47,13 @@ class GlRenderPass implements RenderPassBackend {
 
    @Override
    public void pushDebugGroup(final Supplier<String> label) {
+      this.device.ensureCurrent();
       this.device.debugLabels().pushDebugGroup(label);
    }
 
    @Override
    public void popDebugGroup() {
+      this.device.ensureCurrent();
       this.device.debugLabels().popDebugGroup();
    }
 
@@ -61,9 +64,9 @@ class GlRenderPass implements RenderPassBackend {
       } else {
          if (this.pipeline == null || this.pipeline != pipeline) {
             this.uniforms.clear();
-            this.uniforms.size(glRenderPipeline.program().uniformCount());
+            this.uniforms.size(glRenderPipeline.program().maxUniformBinding() + 1);
             this.dirtyUniforms.clear();
-            this.dirtyUniforms.size(glRenderPipeline.program().uniformCount());
+            this.dirtyUniforms.size(glRenderPipeline.program().maxUniformBinding() + 1);
 
             for (int i = 0; i < this.dirtyUniforms.size(); i++) {
                this.dirtyUniforms.set(i, true);

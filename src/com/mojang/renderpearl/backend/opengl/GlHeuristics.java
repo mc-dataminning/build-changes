@@ -6,6 +6,7 @@ import com.mojang.renderpearl.api.device.DeviceInfo;
 import com.mojang.renderpearl.api.device.DeviceLimits;
 import com.mojang.renderpearl.api.device.DeviceType;
 import com.mojang.renderpearl.api.device.HintsAndWorkarounds;
+import java.nio.ByteBuffer;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -61,11 +62,11 @@ public class GlHeuristics {
    }
 
    private static int getMaxSupportedTextureSize() {
-      int maxReported = GlStateManager._getInteger(3379);
+      int maxReported = GL33C.glGetInteger(3379);
 
       for (int texSize = Math.max(32768, maxReported); texSize >= 1024; texSize >>= 1) {
-         GlStateManager._texImage2D(32868, 0, 6408, texSize, texSize, 0, 6408, 5121, null);
-         int width = GlStateManager._getTexLevelParameter(32868, 0, 4096);
+         GL33C.glTexImage2D(32868, 0, 6408, texSize, texSize, 0, 6408, 5121, (ByteBuffer)null);
+         int width = GL33C.glGetTexLevelParameteri(32868, 0, 4096);
          if (width != 0) {
             return texSize;
          }
@@ -77,8 +78,8 @@ public class GlHeuristics {
    }
 
    public DeviceInfo createDeviceInfo(final GLCapabilities capabilities, final int maxSupportedAnisotropy, final Set<String> enabledExtensions) {
-      String renderer = GlStateManager._getString(7937);
-      String vendor = GlStateManager._getString(7936);
+      String renderer = GL33C.glGetString(7937);
+      String vendor = GL33C.glGetString(7936);
       String rendererLowerCase = renderer.toLowerCase(Locale.ROOT);
       String vendorLowerCase = vendor.toLowerCase(Locale.ROOT);
       int drawIndirectCount = enabledExtensions.contains("GL_ARB_multi_draw_indirect")
@@ -87,7 +88,7 @@ public class GlHeuristics {
       return new DeviceInfo(
          renderer,
          vendor,
-         GlStateManager._getString(7938),
+         GL33C.glGetString(7938),
          capabilities.GL_ARB_clip_control,
          "OpenGL",
          1.0F,

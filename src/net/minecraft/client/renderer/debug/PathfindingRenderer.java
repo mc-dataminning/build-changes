@@ -23,6 +23,10 @@ public class PathfindingRenderer implements DebugRenderer.SimpleDebugRenderer {
    private static final boolean SHOW_OPEN_CLOSED_COST_MALUS = false;
    private static final boolean SHOW_OPEN_CLOSED_NODE_TYPE_WITH_TEXT = false;
    private static final boolean SHOW_OPEN_CLOSED_NODE_TYPE_WITH_BOX = true;
+   private static final boolean SHOW_STUCK_COUNTDOWN = true;
+   private static final int TARGET_NODE_COLOR = -65536;
+   private static final int PAST_NODE_COLOR = -8355712;
+   private static final int NEXT_NODE_COLOR = -16776961;
    private static final boolean SHOW_GROUND_LABELS = true;
    private static final float TEXT_SCALE = 0.32F;
 
@@ -30,16 +34,21 @@ public class PathfindingRenderer implements DebugRenderer.SimpleDebugRenderer {
    public void emitGizmos(
       final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
    ) {
-      debugValues.forEachEntity(DebugSubscriptions.ENTITY_PATHS, (entity, info) -> renderPath(camX, camY, camZ, info.path(), info.maxNodeDistance()));
+      debugValues.forEachEntity(
+         DebugSubscriptions.ENTITY_PATHS, (entity, info) -> renderPath(camX, camY, camZ, info.path(), info.maxNodeDistance(), info.stuckCountdown())
+      );
    }
 
-   private static void renderPath(final double camX, final double camY, final double camZ, final Path path, final float maxNodeDistance) {
-      renderPath(path, maxNodeDistance, true, true, camX, camY, camZ);
+   private static void renderPath(
+      final double camX, final double camY, final double camZ, final Path path, final float maxNodeDistance, final int stuckCountdown
+   ) {
+      renderPath(path, maxNodeDistance, stuckCountdown, true, true, camX, camY, camZ);
    }
 
    public static void renderPath(
       final Path path,
       final float maxNodeDistance,
+      final int stuckCountdown,
       final boolean renderOpenAndClosedSets,
       final boolean renderGroundLabels,
       final double camX,
@@ -48,6 +57,7 @@ public class PathfindingRenderer implements DebugRenderer.SimpleDebugRenderer {
    ) {
       renderPathLine(path, camX, camY, camZ);
       BlockPos pos = path.getTarget();
+      int nextNodeIndex = path.getNextNodeIndex();
       if (distanceToCamera(pos, camX, camY, camZ) <= 80.0F) {
          Gizmos.cuboid(
             new AABB(pos.getX() + 0.25F, pos.getY() + 0.25F, pos.getZ() + 0.25, pos.getX() + 0.75F, pos.getY() + 0.75F, pos.getZ() + 0.75F),
@@ -57,8 +67,6 @@ public class PathfindingRenderer implements DebugRenderer.SimpleDebugRenderer {
          for (int i = 0; i < path.getNodeCount(); i++) {
             Node n = path.getNode(i);
             if (distanceToCamera(n.asBlockPos(), camX, camY, camZ) <= 80.0F) {
-               float r = i == path.getNextNodeIndex() ? 1.0F : 0.0F;
-               float b = i == path.getNextNodeIndex() ? 0.0F : 1.0F;
                AABB aabb = new AABB(
                   n.x + 0.5F - maxNodeDistance,
                   n.y + 0.01F * i,
@@ -67,7 +75,9 @@ public class PathfindingRenderer implements DebugRenderer.SimpleDebugRenderer {
                   n.y + 0.25F + 0.01F * i,
                   n.z + 0.5F + maxNodeDistance
                );
-               Gizmos.cuboid(aabb, GizmoStyle.fill(ARGB.colorFromFloat(0.5F, r, 0.0F, b)));
+               boolean isNextNode = i == nextNodeIndex;
+               int nodeColor = isNextNode ? -65536 : (i < nextNodeIndex ? -8355712 : -16776961);
+               Gizmos.cuboid(aabb, GizmoStyle.fill(nodeColor));
             }
          }
       }
@@ -113,12 +123,22 @@ public class PathfindingRenderer implements DebugRenderer.SimpleDebugRenderer {
             if (distanceToCamera(n.asBlockPos(), camX, camY, camZ) <= 80.0F) {
                Gizmos.billboardText(String.valueOf(n.type), new Vec3(n.x + 0.5, n.y + 0.75, n.z + 0.5), TextGizmo.Style.whiteAndCentered().withScale(0.32F))
                   .setAlwaysOnTop();
-               Gizmos.billboardText(
-                     String.format(Locale.ROOT, "%.2f", n.costMalus),
-                     new Vec3(n.x + 0.5, n.y + 0.25, n.z + 0.5),
-                     TextGizmo.Style.whiteAndCentered().withScale(0.32F)
-                  )
-                  .setAlwaysOnTop();
+               boolean isNextNode = i == nextNodeIndex;
+               if (isNextNode) {
+                  Gizmos.billboardText(
+                        Integer.toString(stuckCountdown),
+                        new Vec3(n.x + 0.5, n.y + 0.25, n.z + 0.5),
+                        TextGizmo.Style.forColorAndCentered(-256).withScale(0.32F)
+                     )
+                     .setAlwaysOnTop();
+               } else {
+                  Gizmos.billboardText(
+                        String.format(Locale.ROOT, "%.2f", n.costMalus),
+                        new Vec3(n.x + 0.5, n.y + 0.25, n.z + 0.5),
+                        TextGizmo.Style.whiteAndCentered().withScale(0.32F)
+                     )
+                     .setAlwaysOnTop();
+               }
             }
          }
       }

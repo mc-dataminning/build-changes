@@ -56,6 +56,6 @@ public interface CustomPacketPayload {
    record Type<T extends CustomPacketPayload>(Identifier id) {
    }
 
-   record TypeAndCodec<B extends FriendlyByteBuf, T extends CustomPacketPayload>(CustomPacketPayload.Type<T> type, StreamCodec<B, T> codec) {
+   record TypeAndCodec<B extends FriendlyByteBuf, T extends CustomPacketPayload>(CustomPacketPayload.Type<T> type, StreamCodec<? super B, T> codec) {
    }
 }

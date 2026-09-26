@@ -461,7 +461,7 @@ public class Drowned extends Zombie implements RangedAttackMob {
          LivingEntity target = this.mob.getTarget();
          if (this.mob.wantsToSwim() && this.mob.isInWater()) {
             if (target != null && target.getY() > this.mob.getY() || this.mob.isSearchingForLand()) {
-               this.mob.setDeltaMovement(this.mob.getDeltaMovement().add(0.0, 0.002, 0.0));
+               this.mob.addDeltaMovement(0.0, 0.002, 0.0);
             }
 
             if (this.operation != MoveControl.Operation.MOVE_TO || this.mob.getNavigation().isDone()) {
@@ -480,10 +480,10 @@ public class Drowned extends Zombie implements RangedAttackMob {
             float targetSpeed = (float)(this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED));
             float newSpeed = Mth.lerp(0.125F, this.mob.getSpeed(), targetSpeed);
             this.mob.setSpeed(newSpeed);
-            this.mob.setDeltaMovement(this.mob.getDeltaMovement().add(newSpeed * xd * 0.005, newSpeed * yd * 0.1, newSpeed * zd * 0.005));
+            this.mob.addDeltaMovement(newSpeed * xd * 0.005, newSpeed * yd * 0.1, newSpeed * zd * 0.005);
          } else {
             if (!this.mob.onGround()) {
-               this.mob.setDeltaMovement(this.mob.getDeltaMovement().add(0.0, -0.008, 0.0));
+               this.mob.addDeltaMovement(0.0, -0.008, 0.0);
             }
 
             super.tick();

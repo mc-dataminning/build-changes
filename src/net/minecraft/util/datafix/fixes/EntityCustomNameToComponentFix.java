@@ -10,7 +10,6 @@ import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.DynamicOps;
 import java.util.Optional;
-import net.minecraft.util.Util;
 import net.minecraft.util.datafix.ExtraDataFixUtils;
 import net.minecraft.util.datafix.LegacyComponentDataFixUtils;
 import net.minecraft.util.datafix.schemas.NamespacedSchema;
@@ -40,12 +39,12 @@ public class EntityCustomNameToComponentFix extends DataFix {
       }
 
       if (customName.get().isEmpty()) {
-         return Util.writeAndReadTypedOrThrow(entity, newEntityType, dynamic -> dynamic.remove("CustomName"));
+         return ExtraDataFixUtils.writeAndReadTypedOrThrow(entity, newEntityType, dynamic -> dynamic.remove("CustomName"));
       }
 
       String id = entity.getOptional(idF).orElse("");
       Dynamic<?> component = fixCustomName(entity.getOps(), customName.get(), id);
-      return entity.set(customNameF, Util.readTypedOrThrow(newCustomNameType, component));
+      return entity.set(customNameF, ExtraDataFixUtils.readTypedOrThrow(newCustomNameType, component));
    }
 
    private static <T> Dynamic<T> fixCustomName(final DynamicOps<T> ops, final String customName, final String id) {

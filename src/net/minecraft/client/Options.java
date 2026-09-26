@@ -130,7 +130,6 @@ public class Options {
    );
    private PreferredGraphicsApi preferredGraphicsBackendFromStartup = PreferredGraphicsApi.DEFAULT;
    private static final Component GRAPHICS_API_TOOLTIP = Component.translatable("options.graphicsApi.tooltip");
-   private static final Component GRAPHICS_API_TOOLTIP_VULKAN = Component.translatable("options.graphicsApi.tooltip.vulkan");
    private final OptionInstance<PreferredGraphicsApi> preferredGraphicsBackend = new OptionInstance<>(
       "options.graphicsApi",
       value -> {
@@ -141,11 +140,6 @@ public class Options {
          }
 
          tooltipLines.add(GRAPHICS_API_TOOLTIP);
-         if (value == PreferredGraphicsApi.VULKAN) {
-            tooltipLines.add(CommonComponents.EMPTY);
-            tooltipLines.add(GRAPHICS_API_TOOLTIP_VULKAN);
-         }
-
          return Tooltip.create(CommonComponents.joinLines(tooltipLines));
       },
       (caption, value) -> ((PreferredGraphicsApi)value).caption(),

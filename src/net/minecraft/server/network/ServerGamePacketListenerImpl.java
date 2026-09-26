@@ -1176,11 +1176,11 @@ public class ServerGamePacketListenerImpl
             }
 
             boolean playerStandsOnSomething = this.player.verticalCollisionBelow;
+            this.player.move(MoverType.PLAYER, new Vec3(xDist, yDist, zDist));
             if (isOnGround && !playerStandsOnSomething) {
                this.forceSendPlayerSupportBlocks();
             }
 
-            this.player.move(MoverType.PLAYER, new Vec3(xDist, yDist, zDist));
             double oyDist = yDist;
             xDist = targetX - this.player.getX();
             yDist = targetY - this.player.getY();
@@ -2259,6 +2259,8 @@ public class ServerGamePacketListenerImpl
 
    @Override
    public void handleCustomPayload(final ServerboundCustomPayloadPacket packet) {
+      PacketUtils.ensureRunningOnSameThread(packet, this, this.server.packetProcessor());
+      super.handleCustomPayload(packet);
    }
 
    @Override

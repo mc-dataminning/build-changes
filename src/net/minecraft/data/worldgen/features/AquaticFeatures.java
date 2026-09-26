@@ -135,7 +135,7 @@ public class AquaticFeatures {
                         PlacementUtils.inlinePlaced(
                            blockFeature,
                            OffsetPlacement.vertical(UniformInt.of(-3, -1)),
-                           new CuboidPlacement(UniformInt.of(3, 5), UniformInt.of(3, 5), false, false),
+                           new CuboidPlacement(UniformInt.of(4, 6), UniformInt.of(4, 6), false, false),
                            new RandomChancePlacement(0.9F),
                            coralAllowed
                         )

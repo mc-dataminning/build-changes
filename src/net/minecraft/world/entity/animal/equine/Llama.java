@@ -1,15 +1,13 @@
 package net.minecraft.world.entity.animal.equine;
 
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.codec.EnumStreamCodec;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -499,11 +497,12 @@ public class Llama extends AbstractChestedHorse implements RangedAttackMob {
       GRAY(3, "gray");
 
       public static final Llama.Variant DEFAULT = CREAMY;
-      private static final IntFunction<Llama.Variant> BY_ID = ByIdMap.continuous(Llama.Variant::getId, values(), ByIdMap.OutOfBoundsStrategy.CLAMP);
+      public static final EnumStreamCodec<Llama.Variant> STREAM_CODEC = ByteBufCodecs.enumCodec(
+         Llama.Variant.class, Llama.Variant::getId, ByIdMap.OutOfBoundsStrategy.CLAMP
+      );
       public static final Codec<Llama.Variant> CODEC = StringRepresentable.fromEnum(Llama.Variant::values);
       @Deprecated
-      public static final Codec<Llama.Variant> LEGACY_CODEC = Codec.INT.xmap(BY_ID::apply, Llama.Variant::getId);
-      public static final StreamCodec<ByteBuf, Llama.Variant> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, Llama.Variant::getId);
+      public static final Codec<Llama.Variant> LEGACY_CODEC = Codec.INT.xmap(Llama.Variant::byId, Llama.Variant::getId);
       private final int id;
       private final String name;
 
@@ -517,7 +516,7 @@ public class Llama extends AbstractChestedHorse implements RangedAttackMob {
       }
 
       public static Llama.Variant byId(final int id) {
-         return BY_ID.apply(id);
+         return STREAM_CODEC.byId(id);
       }
 
       @Override
